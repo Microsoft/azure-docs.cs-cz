@@ -11,7 +11,7 @@ ms.author: zhanxia
 ms.date: 05/02/2019
 ms.openlocfilehash: a1a6817c08223b360c08804e0595f12f2947ea5f
 ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/21/2019
 ms.locfileid: "72693077"
@@ -1163,7 +1163,7 @@ Chybová zpráva z podregistru se obvykle hlásí zpět v protokolu chyb, takže
 + Ověřte, že dotaz funguje správně mimo Azure Machine Learning tím, že se přihlásí do konzoly podregistru clusteru Hadoop a spustí se dotaz.  
 + Zkuste umístit komentáře do skriptu v podregistru do samostatného řádku, a to na rozdíl v kombinování spustitelných příkazů a komentářů na jednom řádku.  
 
-### <a name="resources"></a>Materiály
+### <a name="resources"></a>Zdroje a prostředky
 
 Nápovědu k dotazům na podregistr pro strojové učení najdete v následujících článcích:
 

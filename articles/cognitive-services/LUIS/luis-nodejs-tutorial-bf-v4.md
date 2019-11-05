@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Language Understanding robot Node. js v4'
+title: 'Kurz: Language Understanding bot Node. js v4'
 titleSuffix: Azure Cognitive Services
 description: Pomocí Node.js vytvořte chatovacího robota integrovaného se službou Language Understanding (LUIS). Tento chatovací robot používá k rychlé implementaci řešení robota aplikaci Human Resources. K vytvoření robota se používá Bot Framework ve verzi 4 a Web App Bot Azure.
 services: cognitive-services
@@ -9,18 +9,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 8f0438ab015f9d16fd3776421b8d0032fc0a0639
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 9a38f43b24e5db6a60ff38cd0f1d9b59b9875bba
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772904"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492672"
 ---
-# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Kurz: Použití robota webové aplikace s podporou Language Understanding v Node. js 
+# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Kurz: použití robota webové aplikace s podporou Language Understanding v Node. js 
 
 Pomocí Node. js můžete sestavit robota chatu integrovanou s jazykem Language porozumění (LUIS). Robot má vytvořenou službu Azure [Web App bot](https://docs.microsoft.com/azure/bot-service/) Resource a [bot Framework verze](https://github.com/Microsoft/botbuilder-dotnet) v4.
+
+[!INCLUDE [Waiting for Bot refresh](./includes/wait-bot-upgrade.md)]
 
 **V tomto kurzu se naučíte:**
 
@@ -38,7 +40,7 @@ Pomocí Node. js můžete sestavit robota chatu integrovanou s jazykem Language 
 
 ## <a name="create-a-web-app-bot-resource"></a>Vytvoření prostředku robota webové aplikace
 
-1. Na portálu **Azure Portal** vyberte [Vytvořit nový prostředek](https://portal.azure.com).
+1. Na portálu [Azure Portal](https://portal.azure.com) vyberte **Vytvořit nový prostředek**.
 
 1. Ve vyhledávací poli vyhledejte a vyberte **Web App Bot**. Vyberte **Vytvořit**.
 
@@ -68,7 +70,7 @@ Pomocí Node. js můžete sestavit robota chatu integrovanou s jazykem Language 
     
 1. Vyberte **Vytvořit**. Tím se vytvoří a nasadí služba robota do Azure. Část tohoto procesu vytvoří aplikaci LUIS nazvanou `luis-nodejs-bot-XXXX`. Tento název vychází z názvu aplikace služby/Azure bot.
 
-    [![Vytvoření robota webové aplikace](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
+    [![vytvoření robota webové aplikace](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
 
     Než budete pokračovat, počkejte, než se vytvoří služba robot.
 
@@ -81,12 +83,12 @@ Proces vytvoření služby robot také vytvoří novou aplikaci LUIS s záměry 
 |Kniha let|`Travel to Paris`|
 |Zrušit|`bye`|
 |Getpočasí|`what's the weather like?`|
-|Žádné|Cokoli mimo doménu aplikace|
+|Žádný|Cokoli mimo doménu aplikace|
 
-## <a name="test-the-bot-in-web-chat"></a>Testování ve Web Chat robota
+## <a name="test-the-bot-in-web-chat"></a>Testování robota ve webovém chatu
 
 1. I když jste stále v Azure Portal pro nový robot, vyberte **test na webu chat**. 
-1. Do textového pole **text zprávy** zadejte text `Book a flight from Seattle to Berlin tomorrow`. Robot odpoví s ověřením, že chcete zarezervovat let. 
+1. Do textového pole **Zadejte text zprávy** zadejte text `Book a flight from Seattle to Berlin tomorrow`. Robot odpoví s ověřením, že chcete zarezervovat let. 
 
     ![Snímek obrazovky Azure Portal zadejte text Hello.](./media/bfv4-nodejs/ask-bot-question-in-portal-test-in-web-chat.png)
 
@@ -99,7 +101,7 @@ Pokud chcete vyvíjet kód Web App Bota, stáhněte si kód a použijte ho ve sv
 
 1. Vyberte **Download Bot source code** (Stáhnout zdrojový kód robota). 
 
-    [![Stažení zdrojového kódu robota webové aplikace pro základní bot](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
+    [![stáhnout zdrojový kód robota webové aplikace pro základní bot](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
 1. Když se automaticky otevře okno s dotazem **zahrnout nastavení aplikace ve staženém souboru ZIP?** vyberte **Ano**. To poskytuje LUIS nastavení. 
 
@@ -199,22 +201,22 @@ Pokud chcete vyvíjet kód Web App Bota, stáhněte si kód a použijte ho ve sv
 Zeptejte se robota na záměr na knihu letu.
 
 1. Spusťte emulátor bot a vyberte **otevřít robot**.
-1. V automaticky **otevřeném okně robota** zadejte adresu URL robota, například `http://localhost:3978/api/messages`. `/api/messages` Trasa je webová adresa pro robota.
+1. V překryvném okně **otevřete robota** zadejte adresu URL robota, například `http://localhost:3978/api/messages`. `/api/messages` trasa je webová adresa pro robot.
 1. Zadejte **ID aplikace Microsoftu** a **heslo aplikace Microsoftu**, které najdete v souboru **. env** v kořenovém adresáři kódu robota, který jste stáhli.
 
 1. V emulátoru bot zadejte `Book a flight from Seattle to Berlin tomorrow` a získejte stejnou reakci na základní bot, jak jste dostali v **testu na webu chat**.
 
-    [![Základní odpověď robota v emulátoru](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
+    [![základní odpověď robota v emulátoru](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
 1. Vyberte **Ano**. Robot odpoví souhrnem jeho akcí. 
 1. V protokolu emulátoru bot vyberte řádek, který obsahuje `Luis Trace`. Tím se zobrazí odpověď JSON z LUIS pro záměr a entity utterance.
 
-    [![Základní odpověď robota v emulátoru](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
+    [![základní odpověď robota v emulátoru](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 
 
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Podívejte se na další [ukázky](https://github.com/microsoft/botframework-solutions) s konverzací roboty. 
 

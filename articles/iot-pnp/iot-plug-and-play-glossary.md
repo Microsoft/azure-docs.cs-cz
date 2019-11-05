@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: db3581616b369345ad654593192048e8573c6fa4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0d132a46db39308911f472941c02f8bb04a44e0d
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935217"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72988790"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Glosář pojmů pro IoT technologie Plug and Play Preview
 
@@ -117,7 +117,7 @@ Vývojář zařízení používá model, [rozhraní](#interface)a sadu [funkcí]
 
 ## <a name="device-provisioning-service"></a>Služba Device Provisioning
 
-[Azure IoT Central](#azure-iot-central) používá službu Device Provisioning ke správě veškeré registrace a připojení zařízení. Další informace najdete v tématu [připojení zařízení v Azure IoT Central](../iot-central/core/concepts-connectivity-pnp.md). Službu Device Provisioning můžete použít také ke správě registrace zařízení a připojení k řešení IoT založenému na IoT Hub. Další informace najdete v tématu [zřizování zařízení pomocí Azure IoT Hub Device Provisioning Service](../iot-dps/about-iot-dps.md).
+[Azure IoT Central](#azure-iot-central) používá službu Device Provisioning ke správě veškeré registrace a připojení zařízení. Další informace najdete v tématu [připojení zařízení v Azure IoT Central](../iot-central/core/overview-iot-central-get-connected-pnp.md). Službu Device Provisioning můžete použít také ke správě registrace zařízení a připojení k řešení IoT založenému na IoT Hub. Další informace najdete v tématu [zřizování zařízení pomocí Azure IoT Hub Device Provisioning Service](../iot-dps/about-iot-dps.md).
 
 ## <a name="device-registration"></a>Registrace zařízení
 
@@ -195,7 +195,7 @@ Signatury sdíleného přístupu jsou mechanismy ověřování založené na zab
 
 Vývojář řešení vytvoří back-end řešení. Vývojář řešení obvykle funguje s prostředky Azure, jako jsou [IoT Hub](#azure-iot-hub) a [úložiště modelů](#model-repository), nebo funguje s [IoT Central](#azure-iot-central).
 
-## <a name="telemetry"></a>Telemetrie
+## <a name="telemetry"></a>Telemetrická data
 
 Pole telemetrie definovaná v [rozhraní](#interface) reprezentují měření. Tato měření jsou obvykle hodnoty, jako jsou například čtení senzorů, které jsou odesílány [zařízením IoT technologie Plug and Play](#iot-plug-and-play-device) jako datový proud dat.
 

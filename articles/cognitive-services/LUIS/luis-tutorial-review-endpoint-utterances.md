@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: f81066ed21702dfe94ad7897adc3b82ed5a49f4d
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 04f30818e3c871d74d94bfd92bd3f73e4e6637a0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387525"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499413"
 ---
-# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Kurz: Opravte nejistotu předpovědi kontrolou Endpoint projevy
+# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Kurz: Opravte si nejistotu, že předpovědi zkontroluje projevy koncového bodu.
 V tomto kurzu vylepšíte predikce aplikace ověřením nebo opravou promluv získaných prostřednictvím koncového bodu HTTPS služby LUIS, které nemusí mít tato služba správně naučené. U některých promluv může být potřeba zkontrolovat záměr, zatímco u jiných entitu. Promluvy koncového bodu byste měli pravidelně kontrolovat v rámci plánované údržby služby LUIS. 
 
 Tento proces kontroly představuje další způsob, jakým se LUIS seznamuje s vaší aplikační doménou. Služba LUIS vybrala promluvy zobrazené v seznamu revizí. Tento seznam:
@@ -29,14 +29,16 @@ Tento proces kontroly představuje další způsob, jakým se LUIS seznamuje s v
 
 Kontrolou projevů koncového bodu ověřujete nebo opravujete předpokládaný záměr promluvy. Označíte také vlastní entity, které nebyly předpovězené, nebo jejichž předpověď byla nesprávná. 
 
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+
 **V tomto kurzu se naučíte:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Importovat ukázkovou aplikaci
 > * Kontrola promluv koncového bodu
-> * Aktualizace seznamu frází
-> * Vytrénovat aplikaci
+> * Aktualizovat seznam frází
+> * Trénovat aplikaci
 > * Publikování aplikace
 > * Odeslání dotazu na koncový bod aplikace a zobrazení odpovědi JSON ze služby LUIS
 
@@ -68,14 +70,14 @@ Použijte k tomu následující postup:
 
 1. V levém navigačním panelu vyberte **Review endpoint utterances** (Kontrola promluv koncového bodu). Seznam je filtrovaný pro záměr **ApplyForJob**. 
 
-    [![Snímek obrazovky s tlačítkem revize koncového bodu projevy v levém navigačním panelu](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png#lightbox)
+    [![snímku obrazovky revize projevy koncového bodu v levém navigačním panelu](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png#lightbox)
 
 1. Přepněte zobrazení entit (**Entities view**), aby se zobrazily označené entity. 
     
-    [![Snímek obrazovky projevy koncového bodu se zvýrazněným přepínačem zobrazení entit](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
+    [![snímek obrazovky projevy koncového bodu se zvýrazněným přepínačem zobrazení entit](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
 
 
-    Tento utterance, `I'm looking for a job with Natural Language Processing`není ve správném záměru. 
+    Tento utterance `I'm looking for a job with Natural Language Processing`není správného záměru. 
 
     Důvodem, proč byl utterance, je, že **ApplyForJob** záměr má oproti 7 projevy v **GetJobInformation**v porovnání s 21 projevy. Záměr s více projevy bude mít vyšší předpověď. Je důležité, aby množství a kvalita projevy napříč záměry byly vyvážené.
 
@@ -85,7 +87,7 @@ Použijte k tomu následující postup:
     |:--|:--|:--|
     |`I'm looking for a job with Natural Language Processing`|GetJobInfo|Job – "Natural Language Process"|
 
-    Pokud chcete `natural language processing` změnit entitu keyPhrase na entitu úlohy, vyberte ji a pak v seznamu vyberte možnost **úloha** . Pokud chcete pro jinou entitu vybrat jenom část textu keyPhrase, musíte keyPhrase odebrat jako entitu, označit jinou entitu a pak znovu použít entitu keyPhrase do aplikace. 
+    Chcete-li změnit `natural language processing` z entity keyPhrase na entitu úlohy, vyberte frázi a v seznamu vyberte možnost **úloha** . Pokud chcete pro jinou entitu vybrat jenom část textu keyPhrase, musíte keyPhrase odebrat jako entitu, označit jinou entitu a pak znovu použít entitu keyPhrase do aplikace. 
 
     Přidáním utterance se přesune utterance z **koncového bodu recenze projevy** do záměru **GetJobInformation** . Promluva koncového bodu je teď příkladem promluvy pro tento záměr. 
 
@@ -99,7 +101,7 @@ Použijte k tomu následující postup:
 
     Pokračujte tak dlouho, dokud v seznamu filtru nebudou žádné záměry a entity. Tato aplikace je velmi malá. Celý proces kontroly trvá jenom několik minut. 
 
-## <a name="update-phrase-list"></a>Aktualizace seznamu frází
+## <a name="update-phrase-list"></a>Aktualizovat seznam frází
 Aktualizujte seznam frází každým nově zjištěným názvem pracovní pozice. 
 
 1. V levém navigačním panelu vyberte **Phrase lists** (Seznam frází).
@@ -237,7 +239,7 @@ Některé z promluv koncového bodu budou mít v seznamu kontrol vysoké skóre 
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste zkontrolovali promluvy získané z koncového bodu, které nemusela mít služba LUIS správně naučené. Jakmile se takové promluvy ověří a přesunou jako ukázkové promluvy do správných záměrů, zlepší se ve službě LUIS přesnost předpovědí.
 
 > [!div class="nextstepaction"]

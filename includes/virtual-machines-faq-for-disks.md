@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 155ca71ae30559cc79e090a8a7bbc12c896b637f
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
-ms.translationtype: MT
+ms.openlocfilehash: f8c049cc8d2b09cb37dbd444427b03c1013da65c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973003"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73522543"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy k diskům virtuálních počítačů Azure IaaS a spravovaným a nespravovaným prémiovým diskům
 
@@ -31,11 +31,11 @@ Standardní spravovaný disk vytvořený z disku VHD 80 GB se považuje za dalš
 
 **Jsou nějaké transakční náklady na standard Managed disks?**
 
-Ano. Účtují se vám poplatky za jednotlivé transakce. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/storage).
+Ano. Účtují se vám poplatky za všechny transakce. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/storage).
 
 **U standardního spravovaného disku se mi bude účtovat skutečná velikost dat na disku nebo zajištěná kapacita disku?**
 
-Účtují se vám poplatky podle zřízené kapacity disku. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/storage).
+Poplatky se vám účtují na základě zřízené kapacity disku. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/storage).
 
 **Jak se ceny za spravované disky úrovně Premium liší od nespravovaných disků?**
 
@@ -145,6 +145,30 @@ Dělení GPT se dá použít jenom na datových discích, nikoli na discích s o
 
 Snímky podpory SSD úrovně Premium, Standard SSD a standardní HDD. U těchto tří typů disků se snímky podporují pro všechny velikosti disků (včetně disků až do 32 TiB velikosti). Disky Ultra nepodporují snímky.
 
+### <a name="disk-reservation"></a>Rezervace disku
+
+**Co je rezervace disku Azure?**
+Rezervace disku je možnost předem si koupit jeden rok diskového úložiště a snížit tak celkové náklady.
+
+**Jaké možnosti nabízí rezervace disku Azure?**
+Rezervace disku Azure nabízí možnost koupit SSD úrovně Premium v zadaných SKU z P30 (1 TiB) až P80 (32 TiB) po dobu jednoho roku. Minimální množství disků potřebných k zakoupení rezervovaného disku není nijak omezené. Kromě toho se můžete rozhodnout, že platíte s jednou, předem platbou nebo měsíčními platbami. Pro SSD úrovně Premium Managed Disks se neúčtují žádné další transakční náklady.
+
+Rezervace se provádějí ve formě disků, mimo kapacitu. Jinými slovy, když rezervujete disk P80 (32 TiB), dostanete na jeden P80 disk, ale nebudete moct Divvy tuto specifickou rezervaci na dva menší P70 (16 TiB) disky. Můžete samozřejmě vyhradit tolik disků, kolik jich budete chtít, a to včetně dvou samostatných disků P70 (16 TiB).
+
+**Jak se mi bude účtovat rezervace disku Azure?**
+- Pro zákazníky smlouva Enterprise (EA) se peněžní závazek Azure nejdřív použije k nákupu rezervací disků Azure. Ve scénářích, kdy zákazníci se smlouvou EA používali veškerý svůj peněžní závazek, mohou být zaúčtovány rezervace disku a tyto nákupy budou za jednotlivé poplatky za nadlimitní platby vyfakturovány.
+
+- Pro zákazníky, kteří si kupují přes Azure.com, se v době nákupu účtuje platební karta za úplnou platbu předem (nebo měsíční pevné platby) rezervace disků Azure.
+
+**Jak se používá rezervace disku Azure?**
+Rezervace disků sleduje model podobný vyhrazeným instancím virtuálních počítačů. Rozdíl mezi tím, že se rezervace disku nedá použít u různých SKU, zatímco instance virtuálního počítače může. Další informace o instancích virtuálních počítačů najdete v tématu [úspory nákladů pomocí Azure Reserved VM Instances](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md) . 
+
+**Můžu použít svoje úložiště dat zakoupené prostřednictvím rezervovaného disku Azure v několika oblastech?**
+Rezervace disků Azure se kupuje pro konkrétní oblast a SKU (jako je P30 v Východní USA 2), a proto se nedá použít mimo tyto konstrukce. U všech potřeb diskových úložišť, které jsou v jiných oblastech nebo SKU, si vždycky můžete koupit další rezervované disky Azure.
+
+**Co se stane, když vyprší platnost rezervace na discích Azure?**
+Před vypršením platnosti a znovu po datu vypršení platnosti obdržíte e-mailová oznámení 30 dnů. Po vypršení platnosti rezervace budou nasazené disky i nadále spuštěné a budou se fakturovat s nejnovějšími [tarify](https://azure.microsoft.com/pricing/details/managed-disks/)průběžných plateb.
+
 ## <a name="ultra-disks"></a>Disky Ultra
 
 **Jaké oblasti v současné době podporují Ultra disks?**
@@ -219,7 +243,7 @@ Ano, Azure Backup je teď k dispozici.
 SSD úrovně Standard disky můžete vytvořit pomocí šablon Azure Resource Manager, sady SDK, PowerShellu nebo rozhraní příkazového řádku. Níže jsou uvedeny parametry, které jsou potřeba v šabloně Správce prostředků k vytvoření SSD úrovně Standard disků:
 
 * *apiVersion* pro Microsoft. COMPUTE musí být nastavená na `2018-04-01` (nebo novější).
-* Zadejte *managedDisk. storageAccountType* jako `StandardSSD_LRS`.
+* Jako `StandardSSD_LRS` zadejte *managedDisk. storageAccountType.*
 
 Následující příklad ukazuje oddíl *Properties. storageProfile. osDisk* pro virtuální počítač, který používá SSD úrovně Standard disky:
 
@@ -250,7 +274,7 @@ Ne, standardní disky SSD jsou k dispozici pouze jako Managed Disks.
 **Podporuje SSD úrovně Standard disky smlouvu SLA pro virtuální počítače s jednou instancí?**
 Ne, standardní SSD nemají smlouvu SLA pro virtuální počítače s jednou instancí. Pro smlouvu SLA pro virtuální počítače s jednou instancí použijte SSD úrovně Premium disky.
 
-## <a name="migrate-to-managed-disks"></a>Migrace na Spravované disky
+## <a name="migrate-to-managed-disks"></a>Migrace na spravované disky
 
 **Existuje dopad migrace na Managed Disks výkon?**
 
@@ -334,6 +358,18 @@ Ano
 Ne. Pokud ale exportujete VHD na zašifrovaný účet úložiště ze zašifrovaného spravovaného disku nebo snímku, bude zašifrovaný. 
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>Disky úrovně Premium: spravované a nespravované
+
+**Které oblasti podporují možnosti shlukování pro platnou velikost disku SSD úrovně Premium?**
+
+Funkce shlukování se v současnosti podporuje v Azure Středozápadní USA.
+
+**Jaké oblasti jsou 4/8/16 GiB spravované velikosti disků (P1/P2/P3, E1/E2/E3), které jsou podporovány v?**
+
+Tyto nové velikosti disků se v současnosti v Azure Středozápadní USA podporují.
+
+**Jsou velikosti disků P1/P2/P3 podporované pro nespravované disky nebo objekty blob stránky?**
+
+Ne, podporuje se jenom u SSD úrovně Premium Managed Disks. 
 
 **Pokud virtuální počítač používá řadu velikostí, která podporuje SSD úrovně Premium disky, jako je DSv2, můžu připojit datové disky Premium i Standard?** 
 

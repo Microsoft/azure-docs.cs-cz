@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 0a2bf306ccfa3a4a4fc80d0d55493f284185bba9
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 26793c91c85ba4cc33a07358ab8ff318becb325f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648437"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490690"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,20 +42,22 @@ V tomto rychlém startu budete účet úložiště Azure (konkrétně úložišt
 Pro tento rychlý Start budete potřebovat název svého účtu úložiště Azure. Následující postup popisuje kroky pro získání názvu účtu úložiště: 
 
 1. Ve webovém prohlížeči přejdete na [Azure Portal](https://portal.azure.com) a přihlaste se pomocí uživatelského jména a hesla Azure.
-2. Vyberte **všechny služby** > **úložiště** > **účty úložiště**.
+2. V nabídce Azure Portal vyberte **všechny služby**a pak vyberte **úložiště** > **účty úložiště**. Můžete také vyhledat a vybrat *účty úložiště* z libovolné stránky.
 3. Na stránce **účty úložiště** vyfiltrujte váš účet úložiště (Pokud je to potřeba) a pak vyberte svůj účet úložiště. 
+
+Můžete také vyhledat a vybrat *účty úložiště* z libovolné stránky.
 
 #### <a name="create-a-blob-container"></a>Vytvoření kontejneru objektů blob
 V této části vytvoříte v úložišti objektů blob v Azure kontejner objektů blob s názvem **adftutorial**.
 
-1. Na stránce účet úložiště vyberte přehledy > **objektů BLOB**.
-2. Na panelu nástrojů -  *název účtu>objektyblobstránkyvyberte\<* kontejner.
-3. V dialogovém okně **Nový kontejner** jako název zadejte **adftutorial** a pak vyberte **OK**. Stránka název -   *účtu>objektyBLOBseaktualizujetak,abyzahrnovalaadftutorialv\<* seznamu kontejnerů.
+1. Na stránce účet úložiště vyberte **přehled** > **objekty blob**.
+2. Na panelu nástrojů *\<název účtu >*  - stránky **objektů BLOB** vyberte **kontejner**.
+3. V dialogovém okně **Nový kontejner** jako název zadejte **adftutorial** a pak vyberte **OK**. Stránka *\<název účtu >*  - **objektů BLOB** se aktualizuje tak, aby zahrnovala **adftutorial** v seznamu kontejnerů.
 
    ![Seznam kontejnerů](media/data-factory-quickstart-prerequisites/list-of-containers.png)
 
 #### <a name="add-an-input-folder-and-file-for-the-blob-container"></a>Přidání vstupní složky a souboru pro kontejner objektů BLOB
-V této části vytvoříte složku s názvem **input** v kontejneru, který jste právě vytvořili, a potom nahrajete do vstupní složky ukázkový soubor. Než začnete, otevřete textový editor, jako je například Poznámkový **blok**, a vytvořte soubor s názvem **EMP. txt** s následujícím obsahem:
+V této části vytvoříte složku s názvem **input** v kontejneru, který jste právě vytvořili, a potom nahrajete do vstupní složky ukázkový soubor. Než začnete, otevřete textový editor, jako je například **Poznámkový blok**, a vytvořte soubor s názvem **EMP. txt** s následujícím obsahem:
 
 ```emp.txt
 John, Doe
@@ -64,7 +66,12 @@ Jane, Doe
 
 Uložte soubor do složky **C:\ADFv2QuickStartPSH** . (Pokud složka ještě neexistuje, vytvořte ji.) Pak se vraťte do Azure Portal a proveďte následující kroky:
 
-1. Na stránce s -  *názvem účtu>objektyblob,nakterýchjsteskončili,vyberteadftutorialzaktualizovanéhoseznamukontejnerů\<* . (Pokud jste okno zavřeli nebo jste přešli na > jinou stránku, přihlaste se znovu k [Azure Portal](https://portal.azure.com) , vyberte **všechny služby služby** > úložiště**účty**úložiště, vyberte svůj účet úložiště a pak vyberte **objekty blob** . **adftutorial.** )  > 
+1. Na stránce *\<název účtu >*  - **objektů BLOB** na místě, kde jste skončili, vyberte **adftutorial** z aktualizovaného seznamu kontejnerů.
+
+   1. Pokud jste okno zavřeli nebo jste přešli na jinou stránku, přihlaste se k [Azure Portal](https://portal.azure.com) znovu.
+   1. V nabídce Azure Portal vyberte **všechny služby**a pak vyberte **úložiště** > **účty úložiště**. Můžete také vyhledat a vybrat *účty úložiště* z libovolné stránky.
+   1. Vyberte svůj účet úložiště a pak vyberte **objekty blob** > **adftutorial**.
+
 2. Na panelu nástrojů na stránce kontejneru **adftutorial** vyberte **nahrát**.
 3. Na stránce **nahrát objekt BLOB** vyberte pole **soubory** a pak vyhledejte a vyberte soubor **EMP. txt** .
 4. Rozbalte nadpis **Upřesnit** . Stránka se teď zobrazí, jak je znázorněno na následujícím obrázku:

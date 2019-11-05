@@ -2,25 +2,25 @@
 title: Osvědčené postupy pro tvarování JSON v Azure Time Series Insights dotazy | Microsoft Docs
 description: Přečtěte si, jak vylepšit efektivitu dotazů Azure Time Series Insights.
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
+ms.author: dpalled
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: article
 ms.date: 10/09/2019
-ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: 4916397d05ad9d5fcae7624bf558eb7dc5be940f
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 09090354012d2cd3ba050ff9c94593947f27b006
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274403"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990285"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>Formát JSON obrazce pro maximalizaci výkonu dotazů 
 
 V tomto článku najdete pokyny k tomu, jak můžete tvarovat JSON a maximalizovat efektivitu vašich Azure Time Series Insights dotazů.
 
-## <a name="video"></a>Obrazový
+## <a name="video"></a>Video
 
 ### <a name="learn-best-practices-for-shaping-json-to-meet-your-storage-needsbr"></a>Naučte se osvědčené postupy pro tvarování formátu JSON, abyste splnili požadavky na úložiště.</br>
 
@@ -35,6 +35,9 @@ Zamyslete se nad tím, jak odesíláte události do Time Series Insights. Konkr�
 1. Ujistěte se, že nedosáhnete Time Series Insights maximálních limitů vlastností pro:
    - 600 vlastnosti (sloupce) pro prostředí S1.
    - 800 vlastnosti (sloupce) pro prostředí S2
+
+> [!TIP]
+> Přečtěte si [omezení a plánování](time-series-insights-update-plan.md) v Azure Time Series Insights Preview.
 
 Následující doprovodné materiály pomáhají zajistit nejlepší možný výkon dotazů:
 
@@ -58,7 +61,7 @@ Příklady jsou založeny na scénáři, ve kterém více zařízení odesílá 
 
 V následujícím příkladu je k dispozici jedna zpráva Azure IoT Hub, kde vnější pole obsahuje sdílený oddíl běžných hodnot dimenzí. Vnější pole používá referenční data ke zvýšení efektivity zprávy. Referenční data obsahují metadata zařízení, která se při každé události nemění, ale poskytují užitečné vlastnosti pro analýzu dat. Dávkování běžných hodnot dimenzí a využívání referenčních dat se ukládá v bajtech odesílaných po síti, což usnadňuje zpracování zprávy.
 
-Zvažte následující datovou část JSON odeslanou do prostředí Time Series Insights GA pomocí [objektu zprávy zařízení IoT](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.message?view=azure-dotnet) , který se při odeslání do cloudu Azure serializovat do formátu JSON:
+Vezměte v úvahu následující datovou část JSON odeslanou do prostředí Time Series Insights GA pomocí [objektu zprávy zařízení IoT](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.message?view=azure-dotnet) , který se při odeslání do cloudu Azure serializovaný do formátu JSON:
 
 
 ```JSON
@@ -94,16 +97,16 @@ Zvažte následující datovou část JSON odeslanou do prostředí Time Series 
 
    | deviceId | Parametr | deviceLocation |
    | --- | --- | --- |
-   | FXXX | ŘÁDEK @ no__t – 0DATA | BALIJŠITNA |
-   | FYYY | ŘÁDEK @ no__t – 0DATA | US |
+   | FXXX | ŘÁDKová\_ová DATA | EU |
+   | FYYY | ŘÁDKová\_ová DATA | USA |
 
 * Time Series Insights tabulka událostí po sloučení:
 
    | deviceId | Parametr | deviceLocation | časové razítko | řadu. Rychlost toku ft3/s | řadu. Psí tlak v oleji motoru |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | ŘÁDEK @ no__t – 0DATA | BALIJŠITNA | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
-   | FXXX | ŘÁDEK @ no__t – 0DATA | BALIJŠITNA | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
-   | FYYY | ŘÁDEK @ no__t – 0DATA | US | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
+   | FXXX | ŘÁDKová\_ová DATA | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
+   | FXXX | ŘÁDKová\_ová DATA | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
+   | FYYY | ŘÁDKová\_ová DATA | USA | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
 
 > [!NOTE]
 > - Sloupec **deviceId** slouží jako záhlaví sloupce pro různá zařízení v rámci loďstva. Když hodnota **deviceId** nastaví svůj název vlastní vlastnosti, omezí se celkový počet zařízení na 595 (pro prostředí S1) nebo 795 (pro prostředí S2) s dalšími pěti sloupci.
@@ -162,23 +165,23 @@ Příklad datové části JSON:
 
 * Tabulka referenčních dat, která má vlastnosti klíče **deviceId** a **Series. tagId**:
 
-   | deviceId | Series. tagId | Parametr | deviceLocation | – typ | jednotce |
+   | deviceId | Series. tagId | Parametr | deviceLocation | type | jednotce |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | ŘÁDEK @ no__t – 0DATA | BALIJŠITNA | Rychlost toku | ft3/s |
-   | FXXX | oilPressure | ŘÁDEK @ no__t – 0DATA | BALIJŠITNA | Tlak v oleji motoru | rozhraní |
-   | FYYY | pumpRate | ŘÁDEK @ no__t – 0DATA | US | Rychlost toku | ft3/s |
-   | FYYY | oilPressure | ŘÁDEK @ no__t – 0DATA | US | Tlak v oleji motoru | rozhraní |
+   | FXXX | pumpRate | ŘÁDKová\_ová DATA | EU | Rychlost toku | ft3/s |
+   | FXXX | oilPressure | ŘÁDKová\_ová DATA | EU | Tlak v oleji motoru | psi |
+   | FYYY | pumpRate | ŘÁDKová\_ová DATA | USA | Rychlost toku | ft3/s |
+   | FYYY | oilPressure | ŘÁDKová\_ová DATA | USA | Tlak v oleji motoru | psi |
 
 * Time Series Insights tabulka událostí po sloučení:
 
-   | deviceId | Series. tagId | Parametr | deviceLocation | – typ | jednotce | časové razítko | Series. Value |
+   | deviceId | Series. tagId | Parametr | deviceLocation | type | jednotce | časové razítko | Series. Value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | ŘÁDEK @ no__t – 0DATA | BALIJŠITNA | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
-   | FXXX | oilPressure | ŘÁDEK @ no__t – 0DATA | BALIJŠITNA | Tlak v oleji motoru | rozhraní | 2018-01-17T01:17:00Z | 34,7 |
-   | FXXX | pumpRate | ŘÁDEK @ no__t – 0DATA | BALIJŠITNA | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | oilPressure | ŘÁDEK @ no__t – 0DATA | BALIJŠITNA | Tlak v oleji motoru | rozhraní | 2018-01-17T01:17:00Z | 49,2 |
-   | FYYY | pumpRate | ŘÁDEK @ no__t – 0DATA | US | Rychlost toku | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-   | FYYY | oilPressure | ŘÁDEK @ no__t – 0DATA | US | Tlak v oleji motoru | rozhraní | 2018-01-17T01:18:00Z | 22,2 |
+   | FXXX | pumpRate | ŘÁDKová\_ová DATA | EU | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | oilPressure | ŘÁDKová\_ová DATA | EU | Tlak v oleji motoru | psi | 2018-01-17T01:17:00Z | 34,7 |
+   | FXXX | pumpRate | ŘÁDKová\_ová DATA | EU | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | oilPressure | ŘÁDKová\_ová DATA | EU | Tlak v oleji motoru | psi | 2018-01-17T01:17:00Z | 49,2 |
+   | FYYY | pumpRate | ŘÁDKová\_ová DATA | USA | Rychlost toku | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+   | FYYY | oilPressure | ŘÁDKová\_ová DATA | USA | Tlak v oleji motoru | psi | 2018-01-17T01:18:00Z | 22,2 |
 
 > [!NOTE]
 > - Sloupce **deviceId** a **Series. tagId** slouží jako záhlaví sloupců pro různá zařízení a značky v rámci loďstva. Použití každého vlastního atributu omezí dotaz na 594 (pro prostředí S1) nebo 794 (pro prostředí S2) celkem zařízení s ostatními šesti sloupci.
@@ -195,7 +198,7 @@ Pro vlastnost s velkým počtem možných hodnot je nejlepší poslat jako jedin
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o posílání [IoT Hub zpráv zařízení do cloudu](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+- Přečtěte si další informace o posílání [IoT Hub zpráv zařízení do cloudu](../iot-hub/iot-hub-devguide-messages-construct.md).
 
 - Další informace o syntaxi dotazu pro Time Series Insights REST API přístupu k datům najdete v [Azure Time Series Insights syntaxi dotazů](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax) .
 

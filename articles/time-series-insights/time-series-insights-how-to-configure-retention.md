@@ -3,20 +3,19 @@ title: Postup konfigurace uchovávání v prostředí Azure Time Series Insights
 description: Tento článek popisuje, jak nakonfigurovat uchovávání v prostředí Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: bf6788bac7003bec0ccfc171d622cd9b28bf43e0
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ff4d326af691ae27894dc94d7581ba68951f090e
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330888"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990060"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Konfigurace uchovávání v Time Series Insights
 
@@ -35,13 +34,13 @@ Podrobné informace o tom, jak tato nastavení lépe pochopit, najdete [v Time S
 
 ## <a name="configure-data-retention"></a>Konfigurace uchovávání dat
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Vyhledejte existující Time Series Insights prostředí. Vyberte **všechny prostředky** v nabídce na levé straně Azure Portal. Vyberte vaše prostředí Time Series Insights.
 
 1. V záhlaví **Nastavení** vyberte **Konfigurovat**.
 
-    [@no__t – nastavení 1Select a pak konfigurace](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
+    [![vyberte nastavení a pak nakonfigurujte](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
 1. Vyberte **dobu uchovávání dat (ve dnech)** pro konfiguraci uchovávání pomocí posuvníku nebo zadejte číslo do textového pole.
 
@@ -49,7 +48,7 @@ Podrobné informace o tom, jak tato nastavení lépe pochopit, najdete [v Time S
 
 1. Přepínání nastavení **chování při překročení limitu úložiště** Vyberte **Vymazat stará data** nebo **pozastavit** chování příchozího přenosu dat.
 
-    [@no__t – uchování 1Data – přijmout a uložit.](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
+    [![uchovávání dat – přijměte a uložte.](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
 
 1. Přijměte zaškrtávací políčko s oznámením, že jste si přečetli dokumentaci a rozumíte potenciálním rizikům ztráty dat. Vyberte **Uložit** a proveďte konfiguraci změn.
 

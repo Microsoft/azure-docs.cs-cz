@@ -9,21 +9,22 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 05/30/2019
-ms.openlocfilehash: 1b62d4b2ac1bb69e2270c3202d29eb595df7aac4
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
-ms.translationtype: MT
+ms.openlocfilehash: aa1120db5451583153928bd2cbc383a46781a267
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806031"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489573"
 ---
-**COMPUTE cíle lze znovu použít z jedné trénovací úlohu na další**. Například po připojení vzdáleném virtuálním počítači do svého pracovního prostoru, jej můžete znovu použít pro více úloh.
+**Cíle výpočetní služby se dají znovu použít z jedné školicí úlohy do další**. Když například připojíte vzdálený virtuální počítač k pracovnímu prostoru, můžete ho znovu použít pro více úloh.
 
-|Školení &nbsp;cíle| Podpora GPU |[Automatizované ML](../articles/machine-learning/service/concept-automated-ml.md) | [Kanály ML](../articles/machine-learning/service/concept-ml-pipelines.md) | [Vizuální rozhraní](../articles/machine-learning/service/ui-concept-visual-interface.md)
+|Školení &nbsp;ch cílů| Podpora GPU |[Automatizované ML](../articles/machine-learning/service/concept-automated-ml.md) | [Kanály ML](../articles/machine-learning/service/concept-ml-pipelines.md) | [Návrhář Azure Machine Learning](../articles/machine-learning/service/concept-designer.md)
 |----|:----:|:----:|:----:|:----:|
 |[Místní počítač](../articles/machine-learning/service/how-to-set-up-training-targets.md#local)| Možná | ano | &nbsp; | &nbsp; |
-|[Azure Machine Learning Compute](../articles/machine-learning/service/how-to-set-up-training-targets.md#amlcompute)| ano | Ano & <br/>hyperparameter&nbsp;ladění | ano | ano |
-|[Vzdáleném virtuálním počítači](../articles/machine-learning/service/how-to-set-up-training-targets.md#vm) |ano | Ano & <br/>hyperparametrů | ano | &nbsp; |
-|[Azure&nbsp;Databricks](../articles/machine-learning/service/how-to-create-your-first-pipeline.md#databricks)| &nbsp; | ano | ano | &nbsp; |
+|[Azure Machine Learning výpočetní instance](../articles/machine-learning/service/concept-compute-instance.md)| ano | | ano |  |
+|[Azure Machine Learning výpočetní cluster](../articles/machine-learning/service/how-to-set-up-training-targets.md#amlcompute)| ano | Ano & <br/>&nbsp;ladění parametrů | ano | ano |
+|[Vzdálený virtuální počítač](../articles/machine-learning/service/how-to-set-up-training-targets.md#vm) |ano | Ano & <br/>ladění parametrů | ano | &nbsp; |
+|[Datacihly Azure&nbsp;](../articles/machine-learning/service/how-to-create-your-first-pipeline.md#databricks)| &nbsp; | ano | ano | &nbsp; |
 |[Azure Data Lake Analytics](../articles/machine-learning/service/how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | ano | &nbsp; |
 |[Azure HDInsight](../articles/machine-learning/service/how-to-set-up-training-targets.md#hdinsight)| &nbsp; | &nbsp; | ano | &nbsp; |
 |[Azure Batch](../articles/machine-learning/service/how-to-set-up-training-targets.md#azbatch)| &nbsp; | &nbsp; | ano | &nbsp; |

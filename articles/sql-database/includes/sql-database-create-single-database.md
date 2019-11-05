@@ -3,14 +3,14 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 07/31/2019
+ms.date: 11/04/2019
 ms.author: mathoma
-ms.openlocfilehash: ff5505c2cb35d088565773e8d0ba01e8abb4b8c3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0fad326107fa101cbba869311724710bd3f5307b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933238"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496150"
 ---
 V tomto kroku vytvoříte Azure SQL Database jedinou databázi. 
 
@@ -55,12 +55,12 @@ Vytvořte skupinu prostředků a jedinou databázi pomocí Azure Portal.
 
      ![Podrobnosti SQL Database](../media/sql-database-get-started-portal/sql-db-basic-db-details.png)
 
-   - Vyberte **zřízené** a **Gen5**.
+   - Vyberte **zřízený**.
 
      ![Zřízené COMPUTE GEN4 –](../media/sql-database-get-started-portal/create-database-provisioned.png)
 
-   - Zkontrolujte nastavení **maximálního počtu virtuální jádra**, **min virtuální jádra**, **zpoždění při autopauzu**a **maximální velikosti dat**. Změňte je podle potřeby.
-   - Přijměte podmínky verze Preview a klikněte na **OK**.
+   - Zkontrolujte nastavení pro **virtuální jádra**a **maximální velikost dat**. Změňte je podle potřeby. 
+     - Volitelně můžete také vybrat možnost **změnit konfiguraci** a změnit tak generování hardwaru.
    - Vyberte **Použít**.
 
 5. Vyberte kartu **Další nastavení** . 

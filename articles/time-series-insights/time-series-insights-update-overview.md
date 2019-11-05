@@ -3,20 +3,19 @@ title: 'Přehled: Azure Time Series Insights Preview | Microsoft Docs'
 description: Přehled Azure Time Series Insights Preview.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: dpalled
 ms.workload: big-data
 ms.topic: overview
-ms.date: 09/23/2019
+ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: da81d5603eb26ae3b209bbbc01a8d6fc31e1ba3a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
-ms.translationtype: MT
+ms.openlocfilehash: 588d6dafd3703743f5f4c50bea4f27ef0225bbf7
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72381991"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989748"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Co je Azure Time Series Insights ve verzi Preview?
 
@@ -45,7 +44,7 @@ V důsledku toho se pro provozní a obchodní účely použijí jenom zlomky dat
 
 Na následujícím obrázku se zobrazí typický tok dat IoT.
 
-  [tok dat ![IoT](media/v2-update-overview/overview-one.png)](media/v2-update-overview/overview-one.png#lightbox)
+  [![toku dat IoT](media/v2-update-overview/overview-one.png)](media/v2-update-overview/overview-one.png#lightbox)
 
 ## <a name="azure-time-series-insights-for-industrial-iot"></a>Azure Time Series Insights pro průmyslový IoT
 
@@ -70,7 +69,7 @@ Provozní přehledy a zkoumání dat jsou společně nabízeny s jednoduchým ce
 
 Tento diagram vysoké úrovně toku dat zobrazuje aktualizace.
 
-  [funkce @no__t – 1Key](media/v2-update-overview/overview-two.png)](media/v2-update-overview/overview-two.png#lightbox)
+  [![funkce klíčů](media/v2-update-overview/overview-two.png)](media/v2-update-overview/overview-two.png#lightbox)
 
 Díky zavedení těchto klíčových funkcí pro průmyslové účely IoT Time Series Insights poskytuje následující klíčové výhody.
 

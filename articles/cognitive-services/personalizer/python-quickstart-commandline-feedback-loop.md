@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/26/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 947ca0b603483479479285ff14636240d2ac7433
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 02c4e0142ed7b3719cc07306f089769c532d6653
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515183"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494432"
 ---
 # <a name="quickstart-personalizer-client-library-for-python"></a>Rychlý Start: Klientská knihovna pro přizpůsobování pro Python
 
@@ -26,9 +26,9 @@ Začínáme s klientskou knihovnou přizpůsobování pro Python Pomocí těchto
  * Seřadit seznam akcí pro přizpůsobení.
  * Vykázat skóre odměňování, které indikuje úspěšnost horní seřazené akce.
 
-[Balíček (PyPi)](https://pypi.org/project/azure-cognitiveservices-personalizer/)  | [ukázky](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
+[Balíček (PyPi)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | [ukázky](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * [Python 3. x](https://www.python.org/)
@@ -39,7 +39,7 @@ Začínáme s klientskou knihovnou přizpůsobování pro Python Pomocí těchto
 V tomto rychlém startu se používá několik kroků:
 
 * V Azure Portal vytvořte prostředek pro přizpůsobení.
-* V Azure Portal u prostředku přizpůsobeného nástroji změňte na stránce **Nastavení** četnost aktualizace modelu.
+* V Azure Portal u prostředku přizpůsobeného nástroji změňte na stránce **Konfigurace** četnost aktualizace modelu.
 * V editoru kódu vytvořte soubor kódu a upravte soubor s kódem.
 * V příkazovém řádku nebo terminálu nainstalujte sadu SDK z příkazového řádku.
 * V příkazovém řádku nebo terminálu spusťte soubor kódu.
@@ -70,7 +70,7 @@ pip install azure-cognitiveservices-personalizer
 
 ## <a name="change-the-model-update-frequency"></a>Změna frekvence aktualizace modelu
 
-V Azure Portal změňte v prostředku přizpůsobeném na stránce **Nastavení** **Četnost aktualizace modelu** na 10 sekund. Tím se služba bude vytvářet rychle a umožní vám to zjistit, jak se hlavní akce mění pro každou iteraci.
+V Azure Portal změňte v prostředku přizpůsobeném na stránce **Konfigurace** **Četnost aktualizace modelu** na 10 sekund. Tím se služba bude vytvářet rychle a umožní vám to zjistit, jak se hlavní akce mění pro každou iteraci.
 
 ![Změna frekvence aktualizace modelu](./media/settings/configure-model-update-frequency-settings.png)
 

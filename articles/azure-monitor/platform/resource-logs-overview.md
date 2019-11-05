@@ -7,12 +7,12 @@ ms.topic: reference
 author: rboucher
 ms.author: robb
 ms.date: 10/22/2019
-ms.openlocfilehash: e1bf6a55568671ddb8f6999356cc9be43ce6a728
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: b953f9b5e5fd8c853746caad3047986786bd1317
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804020"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989610"
 ---
 # <a name="azure-resource-logs-overview"></a>Přehled protokolů prostředků Azure
 Protokoly prostředků Azure jsou [protokoly platforem](platform-logs-overview.md) vydávané prostředky Azure, které popisují jejich vnitřní provoz. Všechny protokoly prostředků sdílejí společné schéma nejvyšší úrovně s flexibilitou pro každou službu, aby vygenerovala jedinečné vlastnosti pro vlastní události.
@@ -25,8 +25,8 @@ Protokoly prostředků se automaticky generují pomocí podporovaných prostřed
 
 | Cíl | Scénář |
 |:---|:---|:---|
-| [Pracovní prostor služby Log Analytics](resource-logs-collect-storage.md) | Analyzujte protokoly s dalšími daty monitorování a využijte Azure Monitorch funkcí, jako jsou dotazy protokolů a výstrahy protokolu. |
-| [Úložiště Azure](archive-diagnostic-logs.md) | Archivujte protokoly pro auditování nebo zálohování. |
+| [Pracovní prostor služby Log Analytics](resource-logs-collect-workspace.md) | Analyzujte protokoly s dalšími daty monitorování a využijte Azure Monitorch funkcí, jako jsou dotazy protokolů a výstrahy protokolu. |
+| [Úložiště Azure](resource-logs-collect-storage.md) | Archivujte protokoly pro auditování nebo zálohování. |
 | [Centrum událostí](resource-logs-stream-event-hubs.md) | Streamujte protokoly do systémů protokolování a telemetrie třetích stran.  |
 
 ## <a name="compute-resources"></a>Výpočetní prostředky

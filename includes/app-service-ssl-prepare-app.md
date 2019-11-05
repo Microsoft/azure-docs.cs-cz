@@ -8,26 +8,30 @@ ms.topic: include
 ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: ecdd419331c88e712644851f9213861f882cf0f6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3a44dc35c27cd084e6589482f180b13b258f0b24
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175167"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471006"
 ---
 ## <a name="prepare-your-web-app"></a>Příprava webové aplikace
 
 Pokud chcete vytvořit vazbu vlastního certifikátu SSL (certifikát třetí strany nebo certifikát App Service) ke své webové aplikaci, váš [plán služby App Service](https://azure.microsoft.com/pricing/details/app-service/) musí být na úrovni **Basic**, **Standard**, **Premium** nebo **Isolated**. V tomto kroku se ujistíte, že je vaše webová aplikace na podporované cenové úrovni.
 
-### <a name="log-in-to-azure"></a>Přihlášení k Azure
+### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Otevřete web [Azure Portal](https://portal.azure.com).
 
 ### <a name="navigate-to-your-web-app"></a>Přechod do webové aplikace
 
-V levé nabídce klikněte na **App Services** a pak klikněte na název vaší webové aplikace.
+Vyhledejte a vyberte **App Services**.
 
-![Výběr webové aplikace](./media/app-service-ssl-prepare-app/select-app.png)
+![Vyberte App Services](./media/app-service-ssl-prepare-app/app-services.png)
+
+Na stránce **App Services** vyberte název aplikace Azure.
+
+![Přechod do aplikace Azure na portálu](./media/app-service-ssl-prepare-app/select-app.png)
 
 Byli jste přesměrování na stránku pro správu vaší webové aplikace.  
 
@@ -41,13 +45,13 @@ Zkontrolujte, že vaše webová aplikace není na úrovni **F1** nebo **D1**. Ak
 
 ![Kontrola cenové úrovně](./media/app-service-ssl-prepare-app/check-pricing-tier.png)
 
-Na úrovni **F1** a **D1** se nepodporuje vlastní SSL. Pokud potřebujete vertikálně navýšit kapacitu, postupujte podle kroků v další části. Jinak zavřete **vertikálně navýšit kapacitu** stránce a Přejít [vertikální navýšení kapacity plánu služby App Service](#scale-up-your-app-service-plan) části.
+Na úrovni **F1** a **D1** se nepodporuje vlastní SSL. Pokud potřebujete vertikálně navýšit kapacitu, postupujte podle kroků v další části. V opačném případě zavřete stránku **horizontálního navýšení kapacity** a přeskočte část [navýšení kapacity schématu App Service](#scale-up-your-app-service-plan) .
 
 ### <a name="scale-up-your-app-service-plan"></a>Vertikální navýšení kapacity plánu služby App Service
 
 Vyberte některou z placených úrovní (**B1**, **B2**, **B3** nebo kteroukoli úroveň v kategorii **Produkční**). Další možnosti se zobrazí po kliknutí na odkaz **Zobrazit další možnosti**.
 
-Klikněte na tlačítko **Použít**.
+Klikněte na **Použít**.
 
 ![Výběr cenové úrovně](./media/app-service-ssl-prepare-app/choose-pricing-tier.png)
 

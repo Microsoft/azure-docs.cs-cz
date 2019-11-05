@@ -8,19 +8,22 @@ ms.topic: include
 ms.date: 10/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ed828a09843648b129b701c9afd22aac9e2fa9b0
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 12c28969ed00a1370b90e06e9d57cd666c50ea29
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970836"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73522549"
 ---
-1. Na levé straně portálu klikněte na **+ Vytvořit prostředek** a do vyhledávacího pole zadejte text „Brána virtuální sítě“. Ve výsledcích hledání vyhledejte položku **Brána virtuální sítě** a klikněte na ni. Na stránce **Brána virtuální sítě** klikněte na **vytvořit**. Tím otevřete stránku **Vytvořit bránu virtuální sítě**.
+1. V nabídce [Azure Portal](https://portal.azure.com) vyberte **vytvořit prostředek**. 
 
-   ![Pole na stránce Vytvořit bránu virtuální sítě](./media/vpn-gateway-add-gw-rm-portal-include/p2sgw.png "Pole na stránce Vytvořit bránu virtuální sítě")
+   ![Vytvoření prostředku v Azure Portal](./media/vpn-gateway-add-gw-rm-portal-include/azure-portal-create-resource.png)
+2. Do pole **Hledat na Marketplace** zadejte ' Virtual Network Gateway '. Ve výsledcích hledání vyhledejte položku **Brána virtuální sítě** a klikněte na ni. Na stránce **Brána virtuální sítě** klikněte na **vytvořit**. Tím otevřete stránku **Vytvořit bránu virtuální sítě**.
 
-   ![Pole na stránce Vytvořit bránu virtuální sítě](./media/vpn-gateway-add-gw-rm-portal-include/p2sgw2.png "Pole na stránce Vytvořit bránu virtuální sítě")
-2. Na stránce **Vytvořit bránu virtuální sítě** vyplňte hodnoty pro vaši bránu virtuální sítě.
+   ![Vytvořit pole stránky brány virtuální sítě](./media/vpn-gateway-add-gw-rm-portal-include/p2sgw.png "Vytvořit pole stránky brány virtuální sítě")
+
+   ![Vytvořit pole stránky brány virtuální sítě](./media/vpn-gateway-add-gw-rm-portal-include/p2sgw2.png "Vytvořit pole stránky brány virtuální sítě")
+3. Na stránce **Vytvořit bránu virtuální sítě** vyplňte hodnoty pro vaši bránu virtuální sítě.
 
    **Podrobnosti o projektu**
 
@@ -49,6 +52,6 @@ ms.locfileid: "71970836"
 
    Možnost **Konfigurovat číslo ASN pro protokol BGP** nechte nevybranou s výjimkou případů, kdy vaše konfigurace specificky vyžaduje toto nastavení. Pokud toto nastavení skutečně vyžadujete, výchozí ASN je 65515. Dá se ale změnit.
 
-3. Kliknutím na tlačítko **zkontrolovat + vytvořit** spusťte ověřování. Po úspěšném ověření kliknutím na **vytvořit** nasaďte bránu VPN. Pro úplné vytvoření a nasazení brány může trvat až 45 minut. Stav nasazení můžete zobrazit na stránce Přehled pro vaši bránu.
+4. Kliknutím na tlačítko **zkontrolovat + vytvořit** spusťte ověřování. Po úspěšném ověření kliknutím na **vytvořit** nasaďte bránu VPN. Pro úplné vytvoření a nasazení brány může trvat až 45 minut. Stav nasazení můžete zobrazit na stránce Přehled pro vaši bránu.
 
 Po vytvoření brány můžete zobrazením virtuální sítě na portálu zobrazit IP adresu, která jí byla přiřazena. Brána se zobrazí jako připojené zařízení.

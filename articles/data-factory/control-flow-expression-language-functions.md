@@ -142,7 +142,7 @@ V následujícím příkladu kanál přijímá parametry **inputPath** a **outpu
 Tento [kurz](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf) vás provede procesem předávání parametrů mezi kanálem a aktivitou a mezi aktivitami.
 
   
-## <a name="functions"></a>Funkce  
+## <a name="functions"></a>Functions  
  Můžete volat funkce v rámci výrazů. Následující části obsahují informace o funkcích, které lze použít ve výrazu.  
 
 ## <a name="string-functions"></a>Funkce řetězců  
