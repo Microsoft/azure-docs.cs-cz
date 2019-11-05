@@ -8,19 +8,20 @@ ms.topic: include
 author: sgilley
 ms.author: sgilley
 ms.date: 05/06/2019
-ms.openlocfilehash: 695153438ba33d9803f7f938aa15b6552d28da40
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 18e855a5f87e700481b69c39c4fe03a69437895e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692578"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490017"
 ---
-1. [Vytvořte pracovní prostor služby Azure Machine Learning](../articles/machine-learning/service/how-to-manage-workspace.md) , pokud ho nemáte.
+1. [Vytvořte pracovní prostor Azure Machine Learning](../articles/machine-learning/service/how-to-manage-workspace.md) , pokud ho nemáte.
 
-1. Otevřete pracovní prostor v [Azure Portal](https://portal.azure.com/).  Pokud si nejste jistí, jak váš pracovní prostor najít na portálu, přečtěte si téma [Jak najít pracovní prostor](../articles/machine-learning/service/how-to-manage-workspace.md#view).  
+1. Přihlaste se k [ml.Azure.com](https://ml.azure.com) a vyberte pracovní prostor, se kterým chcete pracovat.
 
-1. V pracovním prostoru vyberte možnost **vizuální rozhraní**.  
- 
-    ![Spustit vizuální rozhraní](./media/aml-ui-prereq/launch-ui.png)
+1. Vyberte **Návrhář**.
 
-    K vizuálnímu rozhraní můžete přistupovat také z [cílové stránky pracovního prostoru (Preview)](https://ml.azure.com).
+    ![Spustit návrháře](./media/aml-ui-prereq/launch-designer.png)
+
+
+

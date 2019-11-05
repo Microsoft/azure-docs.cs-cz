@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Role vzoru – LUIS'
+title: 'Kurz: vzorové role – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Vzory extrahují data z dobře formátované šablony projevy. Šablona promluvy používá jednoduchou entitu a role k extrakci takových souvisejících dat, jako jsou umístění původu a umístění cíle.
 ms.custom: seodec18
@@ -9,32 +9,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 7b95dcf6a93c9abdeab9520f0a0fd80eb17dccff
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 13a1589a6cc6ed48f159f361ff69a5a3ba8f0f80
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387643"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499450"
 ---
-# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Kurz: Extrakce kontextem souvisejících vzorů pomocí rolí
+# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Kurz: extrakce kontextem souvisejících vzorů pomocí rolí
 
 V tomto kurzu budete používat vzor k extrakci dat z dobře formulované šablony promluvy. Šablona utterance používá [jednoduchou entitu](luis-concept-entity-types.md#simple-entity) a [role](luis-concept-roles.md) k extrakci souvisejících dat, jako je zdrojové umístění a cílové umístění.  Záměr bude při použití vzorů potřebovat méně ukázkových promluv.
 
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **V tomto kurzu se naučíte:**
 
 > [!div class="checklist"]
 > * Importovat ukázkovou aplikaci
-> * Tvorba nových entit
-> * Tvorba nového záměru
+> * Vytvořit nové entity
+> * Vytvořit nový záměr
 > * Trénování
 > * Publikování
-> * Zjistit záměry a entity z koncového bodu
+> * Získat záměry a entity z koncového bodu
 > * Vytvořit vzor s rolemi
 > * Vytvořit seznam frází měst
-> * Zjistit záměry a entity z koncového bodu
+> * Získat záměry a entity z koncového bodu
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
@@ -47,7 +48,7 @@ Jméno nového zaměstnance (Billy Patterson) ještě není součástí seznamu 
 
 Nového zaměstnance s rodinou je teď potřeba přesunout z aktuálního města do města, kde sídlí fiktivní společnost. Protože může nový zaměstnanec pocházet z libovolného města, je potřeba zjistit umístění. Seznam sad, jako například seznam entity, by nefungoval, protože to by dovolovalo extrahovat pouze města, která tento seznam obsahuje.
 
-Názvy rolí spojených s městem původu a cílovým městem musejí být jedinečná napříč všemi entitami. Snadný způsob, jak zajistit, aby byly role jedinečné, je spojit tyto role s entitou, která je obsahuje, pomocí strategie vytváření názvů. Entita **NewEmployeeRelocation** je jednoduchou entitou se dvěma rolemi: **NewEmployeeReloOrigin** a **NewEmployeeReloDestination**. Relo je zkráceně relokace (přemístění).
+Názvy rolí spojených s městem původu a cílovým městem musejí být jedinečná napříč všemi entitami. Snadný způsob, jak zajistit, aby byly role jedinečné, je spojit tyto role s entitou, která je obsahuje, pomocí strategie vytváření názvů. Entita **NewEmployeeRelocation** je jednoduchá entita obsahující dvě role: **NewEmployeeReloOrigin** and **NewEmployeeReloDestination**. Relo je zkráceně relokace (přemístění).
 
 Protože má ukázková promluva `Move new employee Robert Williams from Sacramento and San Francisco` pouze strojově naučené entity, je důležité poskytnout záměru dostatek ukázkových promluv, aby se daly entity určit.  
 
@@ -66,7 +67,7 @@ Použijte k tomu následující postup:
 
 3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `roles`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
 
-## <a name="create-new-entities"></a>Tvorba nových entit
+## <a name="create-new-entities"></a>Vytvořit nové entity
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
@@ -86,7 +87,7 @@ Použijte k tomu následující postup:
 
 9. Zadejte `NewEmployeeReloDestination` jako druhou roli.
 
-## <a name="create-new-intent"></a>Tvorba nového záměru
+## <a name="create-new-intent"></a>Vytvořit nový záměr
 Označování entit v následujících krocích může být jednodušší, když před jeho zahájením odstraníte předpřipravenou entitu keyPhrase. V tom případě pak tuto entitu po dokončení popsaného postupu přidejte zpátky. 
 
 1. Vyberte **Intents** (Záměry) v levé navigaci.
@@ -107,7 +108,7 @@ Označování entit v následujících krocích může být jednodušší, když
     |Přestěhovat **J. Benson** z **Boston** do **Staines-upon-Thames**|J. Benson|Boston, Staines-upon-Thames|
     |Přestěhovat **Travis "Trav" Hinton** z **Castelo Branco** do **Orlando**|Travis "Trav" Hinton|Castelo Branco, Orlando|
     |Přestěhovat **Trevor Nottington III** z **Aranda de Duero** do **Boise**|Trevor Nottington III|Aranda de Duero, Boise|
-    |Přestěhovat **Dr. Greg Williams** z **Orlando** do **Ellicott City**|Dr. Greg Williams|Orlando, Ellicott City|
+    |Přesunout **Dr. Greg Williams** z **Orlandu** na **Ellicott City**|Dr. Greg Williams|Orlando, Ellicott City|
     |Přestěhovat **Robert "Bobby" Gregson** z **Kansas City** do **San Juan Capistrano**|Robert "Bobby" Gregson|Kansas City, San Juan Capistrano|
     |Přestěhovat **Patti Owens** z **Bellevue** do **Rockford**|Patti Owens|Bellevue, Rockford|
     |Přestěhovat **Janet Bartlet** z **Tuscan** do **Santa Fe**|Janet Bartlet|Tuscan, Santa Fe|
@@ -378,7 +379,7 @@ Skóre záměru je mnohem vyšší a názvy rolí jsou součástí odpovědi ent
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Tento kurz přidal entitu s rolemi a záměr s ukázkovými promluvami. První predikce koncového bodu za použití entity správně predikovala záměr, ale s nízkým skóre sebejistoty. Detekovala se jen jedna entita ze dvou. Tento kurz dále přidal vzor, který použil role entity a seznam frází ke zvýšení hodnoty názvů měst v promluvách. Druhá predikce koncového bodu vrátila vysoké skóre sebejistoty a našla obě role entity. 
 

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vytvoření nové aplikace na portálu LUIS'
+title: 'Rychlý Start: vytvoření nové aplikace na portálu LUIS'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu vytvoříte novou aplikaci na portálu LUIS. Vytvoření základních částí aplikace, záměrů a entit. Otestujte aplikaci zadáním ukázkového uživatele utterance na interaktivním panelu testů, který získá předpokládaný záměr. Sestavování aplikace je zdarma. nevyžaduje předplatné Azure.
 services: cognitive-services
@@ -10,14 +10,17 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: ff666437790a1e32dde83f9e3be90b4c62637181
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
-ms.translationtype: MT
+ms.openlocfilehash: 6888c53122e649d6a0e91f8ece30101f051c08e8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307729"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488789"
 ---
-# <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rychlý start: Vytvoření nové aplikace na portálu LUIS
+# <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rychlý Start: vytvoření nové aplikace na portálu LUIS
+
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 V tomto rychlém startu vytvoříte novou aplikaci na [portálu Luis](https://www.luis.ai). Nejdřív vytvoříte základní části aplikace, **záměrů**a **entit**. Pak otestujete aplikaci zadáním ukázkového uživatele utterance na interaktivním panelu testů, který získá předpokládaný záměr.
 
@@ -25,19 +28,19 @@ Sestavování aplikace je bezplatné a nevyžaduje předplatné Azure. Až budet
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
-## <a name="create-an-app"></a>Vytvoření nové aplikace
+## <a name="create-an-app"></a>Vytvoření aplikace
 
-1. Na panelu nástrojů kontextu vyberte **vytvořit novou aplikaci** .
+1. Na panelu nástrojů kontextu vyberte **+ vytvořit** .
 
-   [![Vytvoření nové aplikace na portálu LUIS](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
+   [![vytvoření nové aplikace na portálu LUIS](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
 
 1. V automaticky otevíraném okně nakonfigurujte aplikaci s následujícím nastavením a potom vyberte **Hotovo**.
 
-   |Název nastavení| Value | Účel|
+   |Název nastavení| Hodnota | Účel|
    |--|--|--|
-   |Name|`myEnglishApp`|Jedinečný název aplikace LUIS<br>povinné|
-   |Jazyková verze|**Angličtina**|Jazyk projevy od uživatelů, **en-US**<br>povinné|
-   |Popis|`App made with LUIS Portal`|Popis aplikace<br>nepovinné|
+   |Name (Název)|`myEnglishApp`|Jedinečný název aplikace LUIS<br>Požadovanou|
+   |Jazyková verze|**Angličtina**|Jazyk projevy od uživatelů, **en-US**<br>Požadovanou|
+   |Popis|`App made with LUIS Portal`|Popis aplikace<br>Volitelné|
    | | | |
 
    ![Zadat nové nastavení aplikace](./media/get-started-portal-build-app/create-new-app-settings.png)
@@ -60,21 +63,21 @@ Chcete-li vytvořit záměry, proveďte následující kroky:
 
 1. Po vytvoření aplikace se nacházíte na stránce **záměry** v části **sestavení** . Vyberte **Create new intent** (Vytvořit nový záměr).
 
-   [![Tlačítko pro výběr vytvoření nového záměru](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
+   [![výběr tlačítka vytvořit nový záměr](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
-1. Zadejte název `FindForm`záměru a potom vyberte **Hotovo**.
+1. Zadejte název záměru `FindForm`a potom vyberte **Hotovo**.
 
    ![Zadejte název záměru pro FindForm.](./media/get-started-portal-build-app/create-new-intent-dialog.png)
 
-## <a name="add-an-example-utterance"></a>Přidat utterance příklad
+## <a name="add-an-example-utterance"></a>Přidat příklad utterance
 
 Můžete přidat příklad projevy po vytvoření záměrů. Příkladem projevy je text, který uživatel zadá do robota chatu nebo jiné klientské aplikace. Namapují záměr textu uživatele na LUIS záměr.
 
-Pro tento příklad `FindForm` záměru aplikace bude vzorový projevy obsahovat číslo formuláře. Klientská aplikace potřebuje ke splnění požadavku uživatele číslo formuláře, takže je důležité ho zahrnout do utterance.
+Pro tento příklad záměru aplikace `FindForm`, například projevy, bude obsahovat číslo formuláře. Klientská aplikace potřebuje ke splnění požadavku uživatele číslo formuláře, takže je důležité ho zahrnout do utterance.
 
-[![Zadejte příklad projevy pro záměr FindForm.](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+[![zadejte příklad projevy pro záměr FindForm.](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
 
-Přidejte následující 15 příkladů projevy k `FindForm` záměru.
+Přidejte následující 15 příkladů projevy do záměru `FindForm`.
 
 |#|Ukázkové promluvy|
 |--|--|
@@ -85,19 +88,19 @@ Přidejte následující 15 příkladů projevy k `FindForm` záměru.
 |5|Potřebuji pro interní úlohu použít HRF-234695?|
 |6|Potřebuje mi správce vědět, že ho mám použít pro úlohu s HRF-234091|
 |7|Kam můžu odeslat HRF-234918? Zobrazuje se mi e-mailová odpověď, která byla přijata?|
-|8|hrf-234555|
+|8|HRF-234555|
 |9|Kdy byla aktualizace HRF-234987?|
 |10|Použít formu HRF-876345 k použití pro technické pozice|
 |11|Byla pro moji Open REQ odeslána nová verze HRF-765234?|
 |12|Používám HRF-234234 pro mezinárodní úlohy?|
 |13|HRF-234598 pravopisná chyba|
 |14|bude HRF-234567 upravovat nové požadavky|
-|15|hrf-123456, hrf-123123, hrf-234567|
+|15|HRF-123456, HRF-123123, HRF-234567|
 
 Podle návrhu se tyto příklady projevy liší následujícími způsoby:
 
 * Délka utterance
-* oddělovač
+* Oddělovač
 * Volba Wordu
 * příkaz vhodné (is, was, bude)
 * pořadí slov
@@ -112,7 +115,7 @@ Chcete-li vrátit číslo formuláře v odpovědi předpovědi modulu runtime, m
 
 1. Na stránce **entity** vyberte **vytvořit novou entitu** .
 
-1. Zadejte název `Human Resources Form Number`, vyberte typ entity **Regex** a zadejte regulární výraz `hrf-[0-9]{6}`. Tato položka odpovídá znakům literálu `hrf-`, a umožňuje přesně 6 číslic.
+1. Zadejte název `Human Resources Form Number`, vyberte typ entity **Regex** a zadejte regulární výraz `hrf-[0-9]{6}`. Tato položka odpovídá literálovým znakům, `hrf-`a umožňuje přesně 6 číslic.
 
    ![Zadejte informace o entitě pro entitu regulárního výrazu.](./media/get-started-portal-build-app/create-regular-expression-entity.png)
 
@@ -146,7 +149,7 @@ V nabídce v pravém horním rohu vyberte možnost **vlak** , aby se projevily z
 
    Entita je označena tak, jak se zobrazuje v příkladu projevy. Chcete-li zobrazit původní text místo názvu entity, přepínejte **zobrazení entit** z panelu nástrojů.
 
-   [![Všechny příklady projevy označené entitami](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
+   [![všechny příklady projevy označené entitami](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
 
 ## <a name="test-your-new-app-with-the-interactive-test-pane"></a>Otestujte novou aplikaci pomocí interaktivního testovacího podokna.
 
@@ -166,9 +169,9 @@ Pomocí interaktivního **testovacího** podokna na portálu Luis ověřte, že 
 
 Až budete s tímto rychlým startem hotovi a nepřesouváte se k dalšímu rychlému startu, vyberte **Moje aplikace** z horní navigační nabídky. Pak ze seznamu vyberte levé políčko aplikace a na panelu nástrojů kontext vyberte tlačítko **Odstranit** nad seznamem.
 
-[![Odstranit aplikaci ze seznamu Moje aplikace](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
+[![odstranit aplikaci ze seznamu Moje aplikace](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [2. Nasazení aplikace](get-started-portal-deploy-app.md)
+> [2. nasazení aplikace](get-started-portal-deploy-app.md)

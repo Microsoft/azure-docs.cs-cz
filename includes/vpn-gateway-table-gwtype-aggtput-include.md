@@ -5,27 +5,38 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 05/22/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 65c1011e6e005c190d1ae5d51fdd009f66a20956
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 17499fad64c8ae313f7a544015a04cc20e8bbabe
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70919659"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495702"
 ---
-|**SKU**   | **Tunely<br> S2S/VNet-to-VNet** | **Připojení P2S<br> SSTP** | **Připojení<br> P2S IKEv2/OpenVPN** | **Srovnávací test<br>agregované propustnosti** | **BGP** | **Zone-redundant** |
-|---       | ---        | ---       | ---            | ---       | --- | --- |
-|**Basic** | Max. 10    | Max. 128  | Není podporováno  | 100 Mb/s  | Není podporováno| Ne |
-|**VpnGw1**| Max. 30*   | Max. 128  | Max. 250       | 650 Mb/s  | Podporováno | Ne |
-|**VpnGw2**| Max. 30*   | Max. 128  | Max. 500       | 1 Gb/s    | Podporováno | Ne |
-|**VpnGw3**| Max. 30*   | Max. 128  | Max. 1000      | 1,25 Gb/s | Podporováno | Ne |
-|**VpnGw1AZ**| Max. 30*   | Max. 128  | Max. 250       | 650 Mb/s  | Podporováno | Ano |
-|**VpnGw2AZ**| Max. 30*   | Max. 128  | Max. 500       | 1 Gb/s    | Podporováno | Ano |
-|**VpnGw3AZ**| Max. 30*   | Max. 128  | Max. 1000      | 1,25 Gb/s | Podporováno | Ano |
+|**Generace<br>brány VPN<br>** |**SKU**   | **Tunely<br> S2S/VNet-to-VNet** | **Připojení P2S<br> SSTP** | **Připojení P2S<br> IKEv2/OpenVPN** | **Srovnávací test<br>agregované propustnosti** | **BGP** | **Zóna – redundantní** |
+|---            |---         | ---        | ---       | ---            | ---       | ---       | ---|
+|**Generation1**|**Basic**   | Max. 10    | Max. 128  | Nepodporuje se  | 100 Mb/s  | Nepodporuje se| Ne |
+|**Generation1**|**VpnGw1**  | Max. 30*   | Max. 128  | Max. 250       | 650 Mb/s  | Podporuje se | Ne |
+|**Generation1**|**VpnGw2**  | Max. 30*   | Max. 128  | Max. 500       | 1 Gb/s    | Podporuje se | Ne |
+|**Generation1**|**VpnGw3**  | Max. 30*   | Max. 128  | Max. 1000      | 1,25 Gb/s | Podporuje se | Ne |
+|**Generation1**|**VpnGw1AZ**| Max. 30*   | Max. 128  | Max. 250       | 650 Mb/s  | Podporuje se | Ano |
+|**Generation1**|**VpnGw2AZ**| Max. 30*   | Max. 128  | Max. 500       | 1 Gb/s    | Podporuje se | Ano |
+|**Generation1**|**VpnGw3AZ**| Max. 30*   | Max. 128  | Max. 1000      | 1,25 Gb/s | Podporuje se | Ano |
+|        |            |            |           |                |           |           |     |
+|**Generation2**|**VpnGw2**  | Max. 30*   | Max. 128  | Max. 500       | 1,25 Gb/s | Podporuje se | Ne |
+|**Generation2**|**VpnGw3**  | Max. 30*   | Max. 128  | Max. 1000      | 2,5 GB/s  | Podporuje se | Ne |
+|**Generation2**|**VpnGw4**  | Max. 30*   | Max. 128  | Max. 1000      | 5 Gb/s    | Podporuje se | Ne |
+|**Generation2**|**VpnGw5**  | Max. 30*   | Max. 128  | Max. 1000      | 10 Gb/s   | Podporuje se | Ne |
+|**Generation2**|**VpnGw2AZ**| Max. 30*   | Max. 128  | Max. 500       | 1,25 Gb/s | Podporuje se | Ano |
+|**Generation2**|**VpnGw3AZ**| Max. 30*   | Max. 128  | Max. 1000      | 2,5 GB/s  | Podporuje se | Ano |
+|**Generation2**|**VpnGw4AZ**| Max. 30*   | Max. 128  | Max. 1000      | 5 Gb/s    | Podporuje se | Ano |
+|**Generation2**|**VpnGw5AZ**| Max. 30*   | Max. 128  | Max. 1000      | 10 Gb/s   | Podporuje se | Ano |
 
 (*) Pokud potřebujete více než 30 tunelů VPN S2S, použijte službu [Virtual WAN](../articles/virtual-wan/virtual-wan-about.md).
+
+* Změna velikosti SKU VpnGw je povolena v rámci stejné generace s výjimkou změny velikosti základní SKU. Základní SKU je starší verze SKU a má omezení funkcí. Aby bylo možné přejít ze základního na jinou SKLADOVOU položku VpnGw, je nutné odstranit základní bránu VPN Gateway a vytvořit novou bránu s požadovanou kombinací velikosti pro generaci a SKU.
 
 * Tato omezení připojení jsou nezávislá. Pro skladovou položku VpnGw1 můžete například mít 128 připojení SSTP a také 250 připojení IKEv2.
 
@@ -33,19 +44,15 @@ ms.locfileid: "70919659"
 
 * Informace o smlouvě SLA (smlouva o úrovni služeb) můžete najít na stránce [SLA](https://azure.microsoft.com/support/legal/sla/vpn-gateway/).
 
-* VpnGw1, VpnGw2, VpnGw3, VpnGw1AZ, VpnGw2AZ a VpnGw3AZ se podporují jenom pro brány VPN, které používají model nasazení Správce prostředků.
+* U jediného tunelu lze dosáhnout maximální propustnosti 1 GB/s. Srovnávací srovnávací test propustnosti ve výše uvedené tabulce je založený na měření více tunelů agregovaných prostřednictvím jedné brány. Srovnávací test agregované propustnosti pro VPN Gateway je kombinací S2S + P2S. **Pokud máte velké množství připojení typu P2S, může to vzhledem k omezením propustnosti negativně ovlivnit připojení S2S.** Srovnávací srovnávací test propustnosti není zaručená propustnost v důsledku podmínek internetového provozu a chování vaší aplikace.
 
-* Základní SKU se považuje za starší SKU. Základní skladová položka má určitá omezení funkcí. Nemůžete změnit velikost brány, která používá základní SKU na jednu z nových SKU brány, musíte místo toho přejít na novou SKU, která zahrnuje odstranění a opětovné vytvoření brány VPN. Před použitím základní SKU ověřte, zda je funkce, kterou potřebujete, podporována.
+* Abychom zákazníkům porozuměli relativnímu výkonu SKU pomocí různých algoritmů, používali jsme veřejně dostupné nástroje iPerf a CTSTraffic k měření výkonností. V následující tabulce jsou uvedeny výsledky testů výkonnosti pro VpnGw SKU generace 1. Jak vidíte, dosáhnete nejlepšího výkonu, když jsme použili GCMAES256 algoritmus pro šifrování a integritu protokolu IPsec. Dostali jsme průměrný výkon při použití AES256 pro šifrování protokolem IPsec a SHA256 pro zajištění integrity. Když jsme používali DES3 pro šifrování protokolem IPsec a SHA256 pro zajištění integrity, máme nejnižší výkon.
 
-* Srovnávací test agregované propustnosti je založen na měření více tunelů agregovaných prostřednictvím jedné brány. Srovnávací test agregované propustnosti pro VPN Gateway je kombinací S2S + P2S. **Pokud máte velké množství připojení typu P2S, může to vzhledem k omezením propustnosti negativně ovlivnit připojení S2S.** Srovnávací srovnávací test propustnosti není zaručená propustnost v důsledku podmínek internetového provozu a chování vaší aplikace.
-
-* Abychom našim zákazníkům porozuměli relativnímu výkonu VpnGw SKU, používali jsme veřejně dostupné iPerf a CTSTraffic nástroje k měření výkonností. Následující tabulka uvádí výsledky testů výkonnosti pomocí různých algoritmů. Jak vidíte, dosáhnete nejlepšího výkonu, když jsme použili GCMAES256 algoritmus pro šifrování a integritu protokolu IPsec. Dostali jsme průměrný výkon při použití AES256 pro šifrování protokolem IPsec a SHA256 pro zajištění integrity. Když jsme používali DES3 pro šifrování protokolem IPsec a SHA256 pro zajištění integrity, máme nejnižší výkon.
-
-|**SKU**   | **Použité<br>algoritmy** | **Zjištěná propustnost<br>** | **Pakety za sekundu<br>pozorovány** |
-|---       | ---                 | ---            | ---                    |
-|**VpnGw1**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 650 Mb/s<br>500 Mb/s<br>120 MB/s   | 58 000<br>50,000<br>50,000|
-|**VpnGw2**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1 Gb/s<br>500 Mb/s<br>120 MB/s | 90,000<br>80,000<br>55 000|
-|**VpnGw3**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1,25 Gb/s<br>550 MB/s<br>120 MB/s | 105 000<br>90,000<br>60,000|
-|**VpnGw1AZ**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 650 Mb/s<br>500 Mb/s<br>120 MB/s   | 58 000<br>50,000<br>50,000|
-|**VpnGw2AZ**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1 Gb/s<br>500 Mb/s<br>120 MB/s | 90,000<br>80,000<br>55 000|
-|**VpnGw3AZ**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1,25 Gb/s<br>550 MB/s<br>120 MB/s | 105 000<br>90,000<br>60,000|
+|**Nezbytných**|**SKU**   | **Používané<br>algoritmů** | **<br>propustnosti pozorována** | **Zjištěné<br>paketů za sekundu** |
+|---           |---       | ---                 | ---            | ---                    |
+|**Generation1**|**VpnGw1**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 650 Mb/s<br>500 Mb/s<br>120 MB/s   | 58 000<br>50 000<br>50 000|
+|**Generation1**|**VpnGw2**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1 Gb/s<br>500 Mb/s<br>120 MB/s | 90 000<br>80 000<br>55 000|
+|**Generation1**|**VpnGw3**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1,25 Gb/s<br>550 MB/s<br>120 MB/s | 105 000<br>90 000<br>60 000|
+|**Generation1**|**VpnGw1AZ**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 650 Mb/s<br>500 Mb/s<br>120 MB/s   | 58 000<br>50 000<br>50 000|
+|**Generation1**|**VpnGw2AZ**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1 Gb/s<br>500 Mb/s<br>120 MB/s | 90 000<br>80 000<br>55 000|
+|**Generation1**|**VpnGw3AZ**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1,25 Gb/s<br>550 MB/s<br>120 MB/s | 105 000<br>90 000<br>60 000|

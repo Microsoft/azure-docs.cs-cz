@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: af5b2a8c6894846ec529763f80c78bc50debabe6
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: e7f4d58ceab78aea7031d2c706504bdcb99434c6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965511"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520643"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace Azure Storage bran firewall a virtuálních sítí
 
@@ -60,7 +60,7 @@ Ve výchozím nastavení účty úložiště přijímají připojení z klientů
 
 Pomocí Azure Portal, PowerShellu nebo CLIv2 můžete spravovat výchozí pravidla přístupu k síti pro účty úložiště.
 
-#### <a name="azure-portal"></a>Portál Azure
+#### <a name="azure-portal"></a>portál Azure
 
 1. Přejít na účet úložiště, který chcete zabezpečit.
 
@@ -144,7 +144,7 @@ Aby bylo možné použít pravidlo virtuální sítě pro účet úložiště, m
 
 Pravidla virtuální sítě pro účty úložiště můžete spravovat prostřednictvím Azure Portal, PowerShellu nebo CLIv2.
 
-#### <a name="azure-portal"></a>Portál Azure
+#### <a name="azure-portal"></a>portál Azure
 
 1. Přejít na účet úložiště, který chcete zabezpečit.
 
@@ -262,13 +262,13 @@ Každý účet úložiště podporuje až 100 pravidel sítě IP.
 
 Pokud chcete udělit přístup z místních sítí k vašemu účtu úložiště pomocí pravidla sítě protokolu IP, musíte identifikovat internetové IP adresy, které používá vaše síť. Požádejte o nápovědu správce sítě.
 
-Pokud používáte [ExpressRoute](/azure/expressroute/expressroute-introduction) z vašich místních partnerských vztahů nebo partnerských vztahů Microsoftu, budete muset určit IP adresy NAT, které se používají. Ve veřejných partnerských vztazích každý okruh ExpressRoute automaticky využívá dvě IP adresy pro překlad adres (NAT), které se používají k provozu služeb Azure při vstupu do páteřní sítě Microsoft Azure. IP adresy pro překlad adres (NAT) používané v partnerských vztazích s Microsoftem poskytuje zákazník nebo poskytovatel služby. Pokud chcete povolit přístup k prostředkům služby, musíte tyto veřejné IP adresy povolit v nastavení IP adresy brány firewall prostředku. Pokud chcete zjistit IP adresy veřejného partnerského okruhu ExpressRoute, [otevřete lístek podpory pro ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) na webu Azure Portal. Další informace o [překladu adres (NAT) pro veřejné partnerské vztahy a partnerské vztahy s Microsoftem v ExpressRoute.](/azure/expressroute/expressroute-nat#nat-requirements-for-azure-public-peering)
+Pokud používáte [ExpressRoute](/azure/expressroute/expressroute-introduction) z vašich místních partnerských vztahů nebo partnerských vztahů Microsoftu, budete muset určit IP adresy NAT, které se používají. Ve veřejných partnerských vztazích každý okruh ExpressRoute automaticky využívá dvě IP adresy pro překlad adres (NAT), které se používají k provozu služeb Azure při vstupu do páteřní sítě Microsoft Azure. V případě partnerského vztahu Microsoftu se používají IP adresy NAT buď poskytované zákazníkem, nebo poskytovatelem služeb. Pokud chcete povolit přístup k prostředkům služby, musíte tyto veřejné IP adresy povolit v nastavení IP adresy brány firewall prostředku. Pokud chcete zjistit IP adresy veřejného partnerského okruhu ExpressRoute, [otevřete lístek podpory pro ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) na webu Azure Portal. Další informace o [překladu adres (NAT) pro veřejné partnerské vztahy a partnerské vztahy s Microsoftem v ExpressRoute.](/azure/expressroute/expressroute-nat#nat-requirements-for-azure-public-peering)
 
 ### <a name="managing-ip-network-rules"></a>Správa pravidel sítě IP
 
 Pravidla sítě IP pro účty úložiště můžete spravovat pomocí Azure Portal, PowerShellu nebo CLIv2.
 
-#### <a name="azure-portal"></a>Portál Azure
+#### <a name="azure-portal"></a>portál Azure
 
 1. Přejít na účet úložiště, který chcete zabezpečit.
 
@@ -362,36 +362,37 @@ Síťová pravidla usnadňují vytvoření zabezpečeného prostředí pro přip
 
 ### <a name="trusted-microsoft-services"></a>Důvěryhodné služby Microsoftu
 
-Některé služby společnosti Microsoft pracují z sítí, které nelze zahrnout do síťových pravidel. Můžete umožnit podmnožině takových důvěryhodných služeb Microsoftu přístup k účtu úložiště a přitom zachovat Síťová pravidla pro ostatní aplikace. Tyto služby se pak můžou pomocí silného ověřování připojit k účtu úložiště bezpečně. Pro služby Microsoftu povolíme dva typy důvěryhodných přístupů.
+Některé služby společnosti Microsoft pracují z sítí, které nelze zahrnout do síťových pravidel. Podmnožině takových důvěryhodných služeb Microsoftu získáte přístup k účtu úložiště a přitom zachováte Síťová pravidla pro ostatní aplikace. Tyto důvěryhodné služby se pak můžou pomocí silného ověřování připojit k účtu úložiště bezpečně. Pro služby Microsoftu povolíme dva typy důvěryhodných přístupů.
 
-- Prostředkům některých služeb lze udělit přístup pro vybrané operace, jako je například zápis protokolů nebo zálohování.
-- Konkrétní instanci některých služeb je možné udělit přístup [přiřazením role RBAC](storage-auth-aad.md#assign-rbac-roles-for-access-rights) k instanci prostředku.
+- Prostředky některých služeb, **Pokud jsou zaregistrované ve vašem předplatném**, můžou mít přístup k účtům úložiště **ve stejném předplatném** jenom pro operace výběru, jako je například zápis protokolů nebo zálohování.
+- Instance prostředků některých služeb můžou udělit explicitní přístup k vašemu účtu úložiště [**přiřazením role RBAC**](storage-auth-aad.md#assign-rbac-roles-for-access-rights) k instanci prostředku.
 
 
-Pokud povolíte výjimku **Povolit důvěryhodné služby společnosti Microsoft...** , budou následující služby (při registraci ve vašem předplatném) uděleny přístup k účtu úložiště pro vybrané operace, jak je popsáno níže:
+Pokud povolíte výjimku **Povolit důvěryhodné služby Microsoftu...** , budou tyto služby (pokud jsou zaregistrované ve vašem předplatném) udělené přístup k účtu úložiště pro vybrané operace, jak je popsáno níže:
 
 | Služba                  | Název poskytovatele prostředků     | Účel                            |
 |:------------------------ |:-------------------------- |:---------------------------------- |
-| Azure Backup             | Microsoft. RecoveryServices | Spusťte zálohování a obnovujte nespravované disky ve virtuálních počítačích IAAS. (není vyžadováno pro Managed Disks). [Další informace](/azure/backup/backup-introduction-to-azure-backup). |
-| Azure Data Box           | Microsoft. DataBox          | Umožňuje importovat data do Azure pomocí Data Box. [Další informace](/azure/databox/data-box-overview). |
-| Testovací a vývojová prostředí Azure       | Microsoft. DevTestLab       | Vytvoření vlastní image a instalace artefaktů. [Další informace](/azure/devtest-lab/devtest-lab-overview). |
+| Azure Backup             | Microsoft. RecoveryServices | Spusťte zálohování a obnovujte nespravované disky ve virtuálních počítačích IAAS. (není vyžadováno pro Managed Disks). [Další informace](/azure/backup/backup-introduction-to-azure-backup) |
+| Azure Data Box           | Microsoft. DataBox          | Umožňuje importovat data do Azure pomocí Data Box. [Další informace](/azure/databox/data-box-overview) |
+| Azure DevTest Labs       | Microsoft. DevTestLab       | Vytvoření vlastní image a instalace artefaktů. [Další informace](/azure/devtest-lab/devtest-lab-overview) |
 | Azure Event Grid         | Microsoft. EventGrid        | Povolte publikování událostí Blob Storage a umožněte Event Grid publikování do front úložiště. Přečtěte si informace o [událostech služby Blob Storage](/azure/event-grid/event-sources) a [publikování do front](/azure/event-grid/event-handlers). |
 | Azure Event Hubs         | Microsoft. EventHub         | Archivujte data pomocí Event Hubsho zachycení. [Další informace](/azure/event-hubs/event-hubs-capture-overview) |
 | Synchronizace souborů Azure          | Microsoft. StorageSync      | Umožňuje transformovat souborový server Prem na mezipaměť pro sdílené složky Azure. Povoluje se synchronizace více webů, rychlé zotavení po havárii a zálohování na straně cloudu. [Další informace](../files/storage-sync-files-planning.md) |
-| Azure HDInsight          | Microsoft. HDInsight        | Zřídí počáteční obsah výchozího systému souborů pro nový cluster HDInsight. [Další informace](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/). |
-| Služba Azure Machine Learning | Microsoft.MachineLearningServices | Autorizované pracovní prostory Azure Machine Learning zapisují výstup, modely a protokoly do úložiště objektů BLOB experiment. [Další informace](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
+| Azure HDInsight          | Microsoft. HDInsight        | Zřídí počáteční obsah výchozího systému souborů pro nový cluster HDInsight. [Další informace](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/) |
+| Azure Machine Learning | Microsoft.MachineLearningServices | Autorizované pracovní prostory Azure Machine Learning zapisují výstup, modely a protokoly do úložiště objektů BLOB experiment. [Další informace](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)   
 | Azure Monitor            | Microsoft. Insights         | Umožňuje zápis dat monitorování do zabezpečeného účtu úložiště. [Další informace najdete](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)v části. |
-| Sítě Azure         | Microsoft.Network          | Ukládejte a analyzujte protokoly síťového provozu. [Další informace](/azure/network-watcher/network-watcher-packet-capture-overview). |
-| Azure Site Recovery      | Microsoft. SiteRecovery     | Povolení replikace pro zotavení po havárii virtuálních počítačů Azure s IaaS při použití mezipaměti, zdrojového nebo cílového účtu úložiště podporujícího bránu firewall  [Další informace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication). |
+| Sítě Azure         | Microsoft.Network          | Ukládejte a analyzujte protokoly síťového provozu. [Další informace](/azure/network-watcher/network-watcher-packet-capture-overview) |
+| Azure Site Recovery      | Microsoft. SiteRecovery     | Povolení replikace pro zotavení po havárii virtuálních počítačů Azure s IaaS při použití mezipaměti, zdrojového nebo cílového účtu úložiště podporujícího bránu firewall  [Další informace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) |
 
-Výjimka **Povolit důvěryhodné služby společnosti Microsoft...** umožňuje konkrétním instancím těchto služeb získat přístup k účtu úložiště, pokud je přiřazena [spravovaná identita přiřazená systému](../../active-directory/managed-identities-azure-resources/overview.md) k dané instanci role RBAC.
+Výjimka **Povolit důvěryhodné služby společnosti Microsoft...** pro přístup k účtu úložiště povoluje určitou instanci níže uvedených služeb, pokud explicitně přiřadíte roli RBAC k [spravované identitě přiřazené systémem](../../active-directory/managed-identities-azure-resources/overview.md) pro danou instanci prostředku.
 
-| Služba                  | Název poskytovatele prostředků          | Účel                            |
-| :----------------------- | :------------------------------ | :--------------------------------- |
-| Azure Data Factory       | Microsoft. DataFactory/továrny | Umožňuje přístup k účtům úložiště pomocí modulu runtime ADF. |
-| Azure Logic Apps         | Microsoft. Logic/Workflows       | Povoluje Logic Apps přístup k účtům úložiště. |
-| Azure SQL Data Warehouse | Microsoft.Sql                   | Umožňuje importovat a exportovat data z konkrétních instancí SQL Database pomocí základu. [Další informace](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
-| Azure Stream Analytics   | Microsoft. StreamAnalytics       | Umožňuje zapsat data z úlohy streamování do úložiště objektů BLOB. Tato funkce je aktuálně ve verzi Preview. [Další informace](../../stream-analytics/blob-output-managed-identity.md). |
+| Služba                        | Název poskytovatele prostředků          | Účel                            |
+| :----------------------------- | :------------------------------ | :--------------------------------- |
+| Azure Data Factory             | Microsoft. DataFactory/továrny | Umožňuje přístup k účtům úložiště pomocí modulu runtime ADF. |
+| Azure Logic Apps               | Microsoft. Logic/Workflows       | Povoluje Logic Apps přístup k účtům úložiště. |
+| Služba Azure Machine Learning | Microsoft.MachineLearningServices | Autorizované pracovní prostory Azure Machine Learning zapisují výstup, modely a protokoly do úložiště objektů BLOB experiment. [Další informace](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace) | 
+| Azure SQL Data Warehouse       | Microsoft.Sql                   | Umožňuje importovat a exportovat data z konkrétních instancí SQL Database pomocí základu. [Další informace](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) |
+| Azure Stream Analytics         | Microsoft. StreamAnalytics       | Umožňuje zapsat data z úlohy streamování do úložiště objektů BLOB. Tato funkce je aktuálně ve verzi Preview. [Další informace](../../stream-analytics/blob-output-managed-identity.md) |
 
 
 ### <a name="storage-analytics-data-access"></a>Přístup k datům Analytics Storage
@@ -402,7 +403,7 @@ V některých případech se přístup ke čtení diagnostických protokolů a m
 
 Výjimky síťového pravidla můžete spravovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI v2.
 
-#### <a name="azure-portal"></a>Portál Azure
+#### <a name="azure-portal"></a>portál Azure
 
 1. Přejít na účet úložiště, který chcete zabezpečit.
 

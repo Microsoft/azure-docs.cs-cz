@@ -10,14 +10,14 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: anroth
-ms.openlocfilehash: 40f30ddece9881f565f45f4ef6c9d0e2ad85fe95
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0ca849e75f01573bbb356105b281f03d267836e6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561133"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "73520468"
 ---
-# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Rychlý start: Postup vytvoření objektu pro rozpoznávání objektů pomocí Custom Vision
+# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Rychlý Start: vytvoření objektu detektoru pomocí Custom Vision
 
 V tomto rychlém startu se dozvíte, jak vytvořit objektový detektor prostřednictvím webu Custom Vision. Jakmile sestavíte model detektoru, můžete použít službu Custom Vision pro detekci objektů.
 
@@ -29,7 +29,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Vytvoření prostředků Custom Vision v Azure Portal
 
-Pokud chcete použít Custom Vision Service, budete muset vytvořit Custom Vision školení a předpovědi prostředků v Azure Portal. Vyplňte dialogové okno na stránce [vytvořit Custom Vision](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) , abyste vytvořili prostředek pro školení i předpověď. 
+[!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="create-a-new-project"></a>Vytvoření nového projektu
 
@@ -51,7 +51,7 @@ Ve webovém prohlížeči přejděte na [webovou stránku Custom Vision](https:/
 
 1. V dalším kroku vyberte jednu z dostupných domén. Každá doména optimalizuje detektor pro konkrétní typy imagí, jak je popsáno v následující tabulce. V případě potřeby budete moci doménu později změnit.
 
-    |Doména|Účel|
+    |Domain (Doména)|Účel|
     |---|---|
     |__Obecné__| Optimalizováno pro širokou škálu úloh detekce objektů. Pokud žádná z ostatních domén není vhodná nebo si nejste jisti, kterou doménu si zvolíte, vyberte obecnou doménu. |
     |__Symbol__|Optimalizováno pro hledání loga značky v obrázcích.|
@@ -75,7 +75,7 @@ V této části nahrajete a ručně označíte obrázky, které vám pomůžou n
 
     ![Nahrané obrázky v oddílu bez příznaku](./media/get-started-build-detector/images-untagged.png)
 
-1. Klikněte na obdélník kolem objektu v imagi a přetáhněte ho. Pak zadejte nový název značky s **+** tlačítkem nebo vyberte existující značku z rozevíracího seznamu. Je velmi důležité označit všechny instance objektů, které chcete detekovat, protože detektor používá oblast bez příznaku na pozadí jako negativní příklad při výuce. Po dokončení označování značek klikněte na šipku vpravo a uložte značky a přejděte k dalšímu obrázku.
+1. Klikněte na obdélník kolem objektu v imagi a přetáhněte ho. Potom zadejte nový název značky pomocí tlačítka **+** nebo vyberte existující značku z rozevíracího seznamu. Je velmi důležité označit všechny instance objektů, které chcete detekovat, protože detektor používá oblast bez příznaku na pozadí jako negativní příklad při výuce. Po dokončení označování značek klikněte na šipku vpravo a uložte značky a přejděte k dalšímu obrázku.
 
     ![Označení objektu obdélníkovým výběrem](./media/get-started-build-detector/image-tagging.png)
 
@@ -106,9 +106,9 @@ Po dokončení školení se vypočítává a zobrazuje výkon modelu. Služba Cu
 
 ## <a name="manage-training-iterations"></a>Spravovat iterace cvičení
 
-Při každém výukovém detektoru vytvoříte novou iteraci s  vlastní aktualizovanou metrikou výkonu. Všechny své iterace můžete zobrazit v levém podokně karty **výkon** . V levém podokně se zobrazí také tlačítko **Odstranit** , které můžete použít k odstranění iterace, pokud je zastaralá. Odstraněním iterace odstraníte všechny bitové kopie, které s ní jsou jednoznačně přidružené.
+Při každém výukovém detektoru vytvoříte novou _iteraci_ s vlastní aktualizovanou metrikou výkonu. Všechny své iterace můžete zobrazit v levém podokně karty **výkon** . V levém podokně se zobrazí také tlačítko **Odstranit** , které můžete použít k odstranění iterace, pokud je zastaralá. Odstraněním iterace odstraníte všechny bitové kopie, které s ní jsou jednoznačně přidružené.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste zjistili, jak vytvořit a naučit model objektového detektoru pomocí Custom Vision webu. Dále Získejte další informace o iterativním procesu zlepšení modelu.
 

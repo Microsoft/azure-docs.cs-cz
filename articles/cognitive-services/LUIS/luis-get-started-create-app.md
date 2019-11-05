@@ -9,20 +9,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/27/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 748c51e74db20ac101dc2dff0d924567acded114
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
-ms.translationtype: MT
+ms.openlocfilehash: 4acf6e4df978ffee6e0f8320bafbb64994aa0639
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703244"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495433"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rychlý start: Použití předem připravené aplikace domácí automatizace
 
 V tomto rychlém startu vytvoříte aplikaci LUIS, která používá předem připravenou doménu `HomeAutomation` pro zapínání a vypínání světel a zařízení. Tato předem připravená doména poskytuje záměry, entity a příklady promluv. Až budete hotovi, budete mít koncový bod služby LUIS spuštěný v cloudu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro účely tohoto článku potřebujete bezplatný účet LUIS, vytvořený na portálu LUIS na webu [https://www.luis.ai](https://www.luis.ai). 
 
@@ -31,48 +31,44 @@ Pro účely tohoto článku potřebujete bezplatný účet LUIS, vytvořený na 
 ## <a name="create-a-new-app"></a>Vytvoření nové aplikace
 Aplikace můžete vytvářet a spravovat na stránce **My Apps** (Moje aplikace). 
 
-1. Vyberte **Create new app** (Vytvořit novou aplikaci).
+1. Na portálu LUIS v seznamu Moje aplikace vyberte **+ vytvořit**.
 
-    [![Snímek](media/luis-quickstart-new-app/app-list.png "obrazovky se") seznamem aplikací v seznamu aplikací](media/luis-quickstart-new-app/app-list.png)
+    ![Na portálu LUIS vyberte v seznamu Moje aplikace možnost + vytvořit.](./media/create-app-in-portal.png)
 
-1. V dialogovém okně pojmenujte svou aplikaci „Home Automation“.
+1. V dialogovém okně pojmenujte aplikaci `Home Automation` potom vyberte **Hotovo**. LUIS vytvoří aplikaci.
 
-    [![Snímek obrazovky s dialogovým oknem vytvořit novou aplikaci –](media/luis-quickstart-new-app/create-new-app-dialog.png "snímek obrazovky s dialogovým oknem vytvořit nové aplikace – místní obrazovka")](media/luis-quickstart-new-app/create-new-app-dialog.png)
-
-1. Zvolte jazykovou verzi aplikace. Pro tuto aplikaci domácí automatizace vyberte angličtinu. Potom vyberte **Done** (Hotovo). LUIS vytvoří aplikaci Home Automation. 
+    ![V dialogovém okně pojmenujte svou aplikaci jako domovskou automatizaci.](./media/create-new-app-details.png)
 
     >[!NOTE]
     >Jakmile se aplikace vytvoří, nemůžete změnit její jazykovou verzi. 
 
 ## <a name="add-prebuilt-domain"></a>Přidání předem připravené domény
 
-V levém navigačním podokně vyberte **Prebuilt domains** (Předem připravené domény). Potom vyhledejte „Home“. Vyberte **Add domain** (Přidat doménu).
+Vyberte **předem připravené domény** a pak vyhledejte **HomeAutomation**. Na kartě HomeAutomation vyberte **Přidat doménu** .
 
-[![Snímek obrazovky domovské domény služby Automation v nabídce předem připravená doména](media/luis-quickstart-new-app/home-automation.png "snímek obrazovky domácí domény automatizace s názvem v nabídce předem vytvořená") doména](media/luis-quickstart-new-app/home-automation.png)
+![Vyberte předem sestavené domény a vyhledejte "HomeAutomation". Na kartě HomeAutomation vyberte Přidat doménu.](media/luis-quickstart-new-app/home-automation.png)
 
 Po úspěšném přidání domény pak pole předem připravené domény zobrazuje tlačítko **Remove domain** (Odebrat doménu).
 
-[![Snímek obrazovky domovské domény služby Automation s tlačítkem odebrat](media/luis-quickstart-new-app/remove-domain.png "snímek obrazovky domovské domény v doméně automatizace s tlačítkem odebrat")](media/luis-quickstart-new-app/remove-domain.png)
-
 ## <a name="intents-and-entities"></a>Záměry a entity
 
-V levém navigačním podokně vyberte **Intents** (Záměry) a podívejte se na záměry domény Home Automation. Každý záměr má ukázkové promluvy.
+Pokud chcete zkontrolovat záměry domény HomeAutomation, vyberte **záměry** . Předem sestavené záměry domény mají ukázkovou projevy.
 
-Snímek obrazovky se ![seznamem HomeAutomation záměrů]pro seznam záměrů(media/luis-quickstart-new-app/home-automation-intents.png "HomeAutomation")]
+![Snímek obrazovky seznamu HomeAutomation záměrů](media/luis-quickstart-new-app/home-automation-intents.png "Snímek obrazovky seznamu HomeAutomation záměrů")
 
 > [!NOTE]
 > **None** (Žádný) je záměr, který poskytují všechny aplikace LUIS. Používá se ke zpracování promluv, které neodpovídají funkci poskytované vaší aplikací. 
 
 Vyberte záměr **HomeAutomation.TurnOff**. Vidíte, že záměr obsahuje seznam promluv, které jsou označené entitami.
 
-[![Snímek obrazovky záměru HomeAutomation. TurnOff](media/luis-quickstart-new-app/home-automation-turnoff.png "pro HomeAutomation. TurnOff záměr")](media/luis-quickstart-new-app/home-automation-turnoff.png)
+[![Snímek obrazovky HomeAutomation. TurnOff – záměr](media/luis-quickstart-new-app/home-automation-turnoff.png "Snímek obrazovky HomeAutomation. TurnOff – záměr")](media/luis-quickstart-new-app/home-automation-turnoff.png)
 
 ## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="test-your-app"></a>Testování aplikace
-Jakmile aplikaci vytrénujete, můžete ji otestovat. V horní navigaci vyberte **Test** (Testovat). Do podokna Interactive Testing (Interaktivní testování) zadejte testovací promluvu, například „Turn off the lights“ (Vypnout světla), a stiskněte Enter. 
+Jakmile aplikaci vytrénujete, můžete ji otestovat. Vyberte **test**. Do interaktivního testovacího podokna zadejte utterance testu, jako je `Turn off the lights`, a stiskněte klávesu ENTER. 
 
 ```
 Turn off the lights
@@ -82,12 +78,11 @@ Zkontrolujte, že záměr s nejvyšším bodováním odpovídá záměru, který
 
 V tomto příkladu je `Turn off the lights` správně identifikovaný jako nejlepší vyhodnocovací záměr **HomeAutomation. TurnOff**.
 
-[![Snímek obrazovky testovacího panelu se zvýrazněným utteranceem](media/luis-quickstart-new-app/test.png "obrazovky testovacího panelu se zvýrazněným utterance")](media/luis-quickstart-new-app/test.png)
-
+![Snímek obrazovky testovacího panelu se zvýrazněným utterance](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
 
 Pokud si chcete prohlédnout Další informace o předpovědi, vyberte **zkontrolovat** .
 
-![Snímek obrazovky testovacího panelu se zvýrazněným utterance](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
+![Snímek obrazovky testovacího panelu s informacemi o kontrole](media/luis-quickstart-new-app/test.png)
 
 Znovu vyberte **Test** (Testovat) a sbalte podokno testování. 
 
@@ -95,75 +90,96 @@ Znovu vyberte **Test** (Testovat) a sbalte podokno testování.
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikování aplikace a získání adresy URL koncového bodu
 
-[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](./includes/howto-publish.md)]
 
-## <a name="query-the-v2-api-prediction-endpoint"></a>Dotaz na koncový bod předpovědi rozhraní v2 API
+<a name="query-the-v2-api-prediction-endpoint"></a>
 
-1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
+## <a name="query-the-v3-api-prediction-endpoint"></a>Dotaz na koncový bod prediktivního rozhraní API V3
 
-1. Na konec adresy URL zadejte `turn off the living room light` a stiskněte Enter. 
+[!INCLUDE [LUIS How to get endpoint first step](./includes/v3-prediction-endpoint.md)] 
 
-    #### <a name="v2-prediction-endpointtabv2"></a>[Koncový bod pro předpověď v2](#tab/V2)
+1. V adresním řádku prohlížeče pro řetězec dotazu se ujistěte, že jsou v adrese URL následující řádky názvů a hodnot. Pokud nejsou v řetězci dotazu, přidejte je:
 
-    `https://<region>.api.cognitive.microsoft.com/luis/**v2.0**/apps/<appID>?subscription-key=<YOUR_KEY>&**q=<user-utterance-text>**`
+    |Dvojice název/hodnota|
+    |--|
+    |`verbose=true`|
+    |`show-all-intents=true`|
 
-    V prohlížeči se zobrazí verze **v2 API** odpovědi na váš koncový bod HTTP.
-
-    ```json
-    {
-      "query": "turn off the lights",
-      "topScoringIntent": {
-        "intent": "HomeAutomation.TurnOff",
-        "score": 0.995867
-      },
-      "entities": [
-        {
-          "entity": "lights",
-          "type": "HomeAutomation.DeviceType",
-          "startIndex": 13,
-          "endIndex": 18,
-          "resolution": {
-            "values": [
-              "light"
-            ]
-          }
-        }
-      ]
-    }
-    ```
-    
-    #### <a name="v3-prediction-endpointtabv3"></a>[Prediktivní koncový bod V3](#tab/V3)
-
-    Pro [dotaz rozhraní API V3](luis-migration-api-v3.md)v prohlížeči změňte požadavek metody Get https a změňte hodnoty v lomených závorkách na vaše vlastní hodnoty.     
-
-    `https://<region>.api.cognitive.microsoft.com/luis/**v3.0-preview**/apps/<appID>/**slots**/**production**/**predict**?subscription-key=<YOUR_KEY>&**query=<user-utterance-text>**`
+1. V adresním řádku prohlížeče přejděte na konec adresy URL a jako hodnotu _dotazu_ zadejte `turn off the living room light` a potom stiskněte klávesu ENTER.
 
     ```json
     {
-        "query": "turn off the lights",
+        "query": "turn off the living room light",
         "prediction": {
-            "normalizedQuery": "turn off the lights",
             "topIntent": "HomeAutomation.TurnOff",
             "intents": {
                 "HomeAutomation.TurnOff": {
-                    "score": 0.99649024
+                    "score": 0.967174649
                 }
             },
             "entities": {
+                "HomeAutomation.Location": [
+                    "living room"
+                ],
+                "HomeAutomation.DeviceName": [
+                    [
+                        "living room light"
+                    ]
+                ],
                 "HomeAutomation.DeviceType": [
                     [
                         "light"
                     ]
-                ]
+                ],
+                "$instance": {
+                    "HomeAutomation.Location": [
+                        {
+                            "type": "HomeAutomation.Location",
+                            "text": "living room",
+                            "startIndex": 13,
+                            "length": 11,
+                            "score": 0.9494325,
+                            "modelTypeId": 1,
+                            "modelType": "Entity Extractor",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ],
+                    "HomeAutomation.DeviceName": [
+                        {
+                            "type": "HomeAutomation.DeviceName",
+                            "text": "living room light",
+                            "startIndex": 13,
+                            "length": 17,
+                            "modelTypeId": 5,
+                            "modelType": "List Entity Extractor",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ],
+                    "HomeAutomation.DeviceType": [
+                        {
+                            "type": "HomeAutomation.DeviceType",
+                            "text": "light",
+                            "startIndex": 25,
+                            "length": 5,
+                            "modelTypeId": 5,
+                            "modelType": "List Entity Extractor",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ]
+                }
             }
         }
     }
     ```
 
-
     Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
     
-    * * * 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

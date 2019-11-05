@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 10/09/2019
-ms.openlocfilehash: 3f969fb346ce341e694458dcc38bf193f012226b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f7cdfb8b9edbce5ef2b094cf6a603904d39a7404
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792632"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493584"
 ---
 Kanál se spouští na výpočetním cíli, což je výpočetní prostředek, který je připojený k vašemu pracovnímu prostoru. Jakmile vytvoříte cílový výpočetní výkon, můžete ho znovu použít pro budoucí spuštění.
 
@@ -25,11 +25,11 @@ Kanál se spouští na výpočetním cíli, což je výpočetní prostředek, kt
     Pokud už máte dostupný cíl výpočtů, můžete ho vybrat ke spuštění tohoto kanálu.
 
     > [!NOTE]
-    > Vizuální rozhraní může spouštět experimenty jenom u Výpočetní prostředky služby Machine Learningch cílů. Další cíle výpočtů nebudou zobrazeny.
+    > Návrhář může spouštět experimenty na Výpočetní prostředky služby Machine Learningch cílech. Další cíle výpočtů nebudou zobrazeny.
 
 1. Zadejte název výpočetního prostředku.
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
     ![Nastavit cíl pro výpočet](./media/aml-ui-create-training-compute/set-compute.png)
 

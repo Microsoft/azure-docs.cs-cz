@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vzor. jakékoli entity – LUIS'
+title: 'Kurz: vzor. any entity – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Pomocí entity Pattern.any můžete extrahovat data ze správně naformátovaných promluv, kde je možné snadno zaměnit konec dat se zbývajícími slovy promluvy.
 services: cognitive-services
@@ -9,18 +9,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 57a7deee3112737dc457646d040d5d3e02e63d46
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 43ad6558b685d3959562be720f7494b3d2a7334e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390286"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499432"
 ---
-# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Kurz: Extrahujte data z volných formulářů pomocí vzoru. libovolná entita
+# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Kurz: extrakce dat z volných formulářů pomocí vzoru. libovolná entita
 
 V tomto kurzu použijete entitu Pattern.any k extrakci dat ze správně naformátovaných promluv, kde je možné snadno zaměnit konec dat se zbývajícími slovy promluvy. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **V tomto kurzu se naučíte:**
 
@@ -143,7 +145,7 @@ Pokud zjistíte, že váš vzor zahrnující entitu Pattern.any neextrahuje enti
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu se do stávajícího záměru přidaly ukázkové promluvy a pak se vytvořila nová entita Pattern.any pro název formuláře. Pak se vytvořil vzor pro stávající záměr s novými ukázkovými promluvami a entitou. Interaktivní testování ukázalo, že se předpověděl vzor a jeho záměr, protože se našla entita. 
 

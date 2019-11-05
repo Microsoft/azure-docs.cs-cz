@@ -9,24 +9,24 @@ ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b1287f9c7e946c7b4d035b2ad6301947ffad3cea
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717121"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73522623"
 ---
-# <a name="azure-premium-storage-design-for-high-performance"></a>Azure premium storage: návrh pro vysoký výkon
+# <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: návrh pro vysoký výkon
 
-Tento článek obsahuje pokyny pro vytváření vysoce výkonné aplikace využívající Azure Premium Storage. Můžete použít pokyny uvedené v tomto dokumentu v kombinaci s osvědčené postupy z hlediska výkonu pro technologie, které používá vaše aplikace. Pro ilustraci, pokyny, jsme pomocí SQL serveru běžícího na Premium Storage jako příklad v tomto dokumentu.
+Tento článek poskytuje pokyny pro vytváření aplikací s vysokým výkonem pomocí Azure Premium Storage. Pokyny uvedené v tomto dokumentu můžete použít v kombinaci s osvědčenými postupy pro výkon, které platí pro technologie používané vaší aplikací. Pro ilustraci pokynů jsme použili SQL Server spuštěnou v Premium Storage jako příklad v celém tomto dokumentu.
 
-Když jsme situacích výkonu pro vrstvy úložiště v tomto článku, je potřeba optimalizovat aplikační vrstvu. Například pokud hostujete Sharepointovou farmu na Azure Premium Storage, můžete použít SQL Server příklady v tomto článku optimalizovat databázového serveru. Kromě toho Optimalizujte webový server farmy služby SharePoint a aplikační server většina výkon.
+I když řešíte scénáře výkonu pro vrstvu úložiště v tomto článku, budete muset optimalizovat aplikační vrstvu. Pokud například hostete farmu služby SharePoint v Azure Premium Storage, můžete použít příklady SQL Server z tohoto článku k optimalizaci databázového serveru. Kromě toho Optimalizujte webový server farmy služby SharePoint a aplikační server, abyste získali maximální výkon.
 
-V tomto článku se vám pomohou zodpovědět následující běžné otázky týkající se optimalizace výkonu aplikace na Azure Premium Storage
+Tento článek vám pomůže zodpovědět následující otázky týkající se optimalizace výkonu aplikace v Azure Premium Storage.
 
-* Postupy: měření výkonu vaší aplikace?  
-* Proč se zobrazuje očekávaný vysoký výkon?  
-* Faktory, které ovlivňují výkon vašich aplikací ve službě Storage úrovně Premium?  
-* Jak tyto faktory mají vliv na výkon vaší aplikace ve službě Storage úrovně Premium?  
-* Optimalizace můžete pro vstupně-výstupních operací, šířky pásma a latencí?  
+* Jak změřit výkon aplikace?  
+* Proč se vám nezobrazuje očekávaný vysoký výkon?  
+* Které faktory ovlivňují výkon vaší aplikace na Premium Storage?  
+* Jak tyto faktory ovlivňují výkon aplikace na Premium Storage?  
+* Jak se dá optimalizovat pro IOPS, šířku pásma a latenci?  
 
-Nabízíme tyto pokyny konkrétně pro Premium Storage, protože úlohy běžící ve službě Storage úrovně Premium jsou vysoce citlivé na výkon. Uvádíme příklady, kde je to vhodné. Můžete také použít některé z těchto pokynů pro aplikace běžící na virtuálních počítačích IaaS s disky Storage úrovně Standard.
+Tyto pokyny poskytujeme konkrétně pro Premium Storage, protože úlohy spuštěné v Premium Storage jsou vysoce výkonná. V případě potřeby jsme zadali příklady. Některé z těchto pokynů můžete také použít pro aplikace běžící na virtuálních počítačích s IaaS se standardními disky úložiště.
