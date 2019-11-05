@@ -1,0 +1,57 @@
+- name: Dokumentace ke službě Azure Firewall Manager
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je Azure Firewall Manager?
+      href: overview.md
+- name: Kurzy
+  expanded: true
+  items:
+    - name: Zabezpečení cloudové sítě – portál
+      href: secure-cloud-network.md
+- name: Koncepty
+  items:
+    - name: Co je zabezpečené virtuální centrum?
+      href: secured-virtual-hub.md
+    - name: Obecný proces nasazení
+      href: deployment-overview.md
+    - name: Důvěryhodní partneři pro zabezpečení
+      href: trusted-security-partners.md
+    - name: Logika zpracování pravidel
+      href: rule-processing.md
+- name: Návody
+  items:
+    - name: Nasazení důvěryhodných partnerů pro zabezpečení
+      href: deploy-trusted-security-partner.md
+    - name: Migrace na zásady firewallu
+      href: migrate-to-policy.md
+- name: Referenční informace
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/azure-firewall/network/firewall
+    - name: Azure PowerShell
+      href: /powershell/module/az.network/new-azfirewall
+    - name: .NET
+      href: /dotnet/api
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/firewall
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/resource-group-overview.md
+- name: Zdroje a prostředky
+  items:
+    - name: Tvorba šablon
+      href: ../azure-resource-manager/resource-group-authoring-templates.md
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Komunitní šablony
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/azure-firewall/'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/regions/services/'

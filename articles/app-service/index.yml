@@ -105,7 +105,7 @@ sections:
         items:
           - html: Vytvoření aplikace pomocí <a href="/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase">.NET s Azure SQL DB</a> nebo <a href="/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app">Node.js s MongoDB</a>
           - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">Mapování existující vlastní domény na aplikaci</a>
-          - html: <a href="/azure/app-service/app-service-web-tutorial-custom-SSL">Vytvoření vazby stávajícího certifikátu SSL na vaši aplikaci</a>
+          - html: <a href="/azure/app-service/configure-ssl-certificate">Zabezpečení vlastního názvu DNS s využitím vazby SSL ve službě Azure App Service</a>
           - html: <a href="/azure/app-service/app-service-web-tutorial-content-delivery-network">Přidání sítě CDN do aplikace</a>
   - title: Získávání dovedností pomocí Microsoft Learn
     items:

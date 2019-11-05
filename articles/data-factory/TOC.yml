@@ -80,8 +80,12 @@
           items:
             - name: Nástroj pro kopírování dat
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
-    - name: Transformace dat s využitím toků dat mapování
-      href: tutorial-data-flow.md
+    - name: Transformace a příprava dat s využitím toků dat
+      items:
+        - name: Transformace dat s využitím toku dat mapování
+          href: tutorial-data-flow.md
+        - name: Příprava dat s využitím toku dat transformace
+          href: wrangling-data-flow-tutorial.md
     - name: Externí transformace
       items:
         - name: HDInsight Spark
@@ -143,28 +147,36 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Prostředí Integration Runtime
       href: concepts-integration-runtime.md
-    - name: Toky dat mapování
+    - name: Toky dat
       items:
-        - name: Přehled mapování toků dat
-          href: concepts-data-flow-overview.md
-        - name: Režim ladění
-          href: concepts-data-flow-debug-mode.md
-        - name: Zpracování JSON
-          href: concepts-data-flow-json.md
-        - name: Posun schématu
-          href: concepts-data-flow-schema-drift.md
-        - name: Vzory sloupců
-          href: concepts-data-flow-column-pattern.md
-        - name: Sledování toku dat
-          href: concepts-data-flow-monitoring.md
-        - name: Výkon toku dat
-          href: concepts-data-flow-performance.md
-        - name: Přesun uzlů
-          href: concepts-data-flow-move-nodes.md
-        - name: Tvůrce výrazů
-          href: concepts-data-flow-expression-builder.md
-        - name: Jazyk výrazů
-          href: data-flow-expression-functions.md
+        - name: Transformace dat s využitím toků dat mapování
+          items:
+            - name: Přehled mapování toků dat
+              href: concepts-data-flow-overview.md
+            - name: Režim ladění
+              href: concepts-data-flow-debug-mode.md
+            - name: Zpracování JSON
+              href: concepts-data-flow-json.md
+            - name: Posun schématu
+              href: concepts-data-flow-schema-drift.md
+            - name: Vzory sloupců
+              href: concepts-data-flow-column-pattern.md
+            - name: Sledování toku dat
+              href: concepts-data-flow-monitoring.md
+            - name: Výkon toku dat
+              href: concepts-data-flow-performance.md
+            - name: Přesun uzlů
+              href: concepts-data-flow-move-nodes.md
+            - name: Tvůrce výrazů
+              href: concepts-data-flow-expression-builder.md
+            - name: Jazyk výrazů
+              href: data-flow-expression-functions.md
+        - name: Příprava dat s využitím toků dat transformace
+          items:
+            - name: Přehled toků dat transformace
+              href: wrangling-data-flow-overview.md
+            - name: Podporované funkce
+              href: wrangling-data-flow-functions.md
     - name: Role a oprávnění
       href: concepts-roles-permissions.md
     - name: Vysvětlení cen

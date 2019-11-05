@@ -3,12 +3,14 @@
 - name: Přehled
   expanded: true
   items:
-    - name: Co je služba Cognitive Services?
+    - name: Co jsou služby Cognitive Services?
       href: Welcome.md
-    - name: Vlastní podřízené domény pro Cognitive Services
-      href: cognitive-services-custom-subdomains.md
     - name: Cognitive Services a strojové učení
       href: cognitive-services-and-machine-learning.md
+    - name: Virtuální sítě pro Cognitive Services
+      href: cognitive-services-virtual-networks.md
+    - name: Vlastní podřízené domény pro Cognitive Services
+      href: cognitive-services-custom-subdomains.md
     - name: Podpora jazyků
       href: language-support.md
 - name: Podpora kontejnerů

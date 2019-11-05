@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Dokumentace k nástroji Azure Machine Learning Studio
-summary: Machine Learning Studio je nástroj, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy.
+title: Dokumentace k prostředí Azure Machine Learning Studio (Classic)
+summary: Machine Learning Studio (Classic) je nástroj, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy.
 metadata:
-  title: Dokumentace k nástroji Machine Learning Studio – Azure
-  description: Machine Learning Studio je nástroj, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy.
+  title: Dokumentace k prostředí Machine Learning Studio (Classic) – Azure
+  description: Machine Learning Studio (Classic) je nástroj, ve kterém je možné přetahováním vytvářet, testovat a nasazovat řešení prediktivní analýzy.
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: studio
@@ -12,18 +12,18 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 09/04/2019
-  ms.openlocfilehash: b6c9013d61df1a0076817af5baab0e0af6375083
-  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  ms.openlocfilehash: 651c816b72dd63845b786dcf73a8c395b9c8f337
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70309183"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73492873"
 landingContent:
-- title: Začínáme se sadou Studio
+- title: Začínáme se sadou Studio (Classic)
   linkLists:
   - linkListType: get-started
     links:
-    - text: Co je Studio?
+    - text: Co je Studio (Classic)?
       url: what-is-ml-studio.md
     - text: Vytvoření prvního experimentu ML
       url: create-experiment.md
@@ -45,7 +45,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Služba Azure Machine Learning
+    - text: Azure Machine Learning
       url: /azure/machine-learning/
     - text: Virtuální počítač pro datové vědy
       url: /azure/machine-learning/data-science-virtual-machine

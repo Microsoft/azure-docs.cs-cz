@@ -104,6 +104,8 @@
       href: text-analytics-resource-faq.md
     - name: Podpora jazyků a oblastí
       href: language-support.md
+    - name: Typy pojmenovaných entit
+      href: named-entity-types.md
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: Regionální dostupnost

@@ -45,7 +45,7 @@
           href: tutorial-deploy-function.md
         - name: Zjištění průměrů s využitím Azure Stream Analytics
           href: tutorial-deploy-stream-analytics.md
-        - name: Hodnocení dat s využitím služby Azure Machine Learning
+        - name: Hodnocení dat s využitím Azure Machine Learningu
           href: tutorial-deploy-machine-learning.md
         - name: Klasifikace obrázků s využitím Custom Vision
           href: tutorial-deploy-custom-vision.md

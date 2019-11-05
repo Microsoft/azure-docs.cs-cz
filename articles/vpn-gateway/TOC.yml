@@ -124,6 +124,8 @@
               href: point-to-site-how-to-vpn-client-install-azure-cert.md
             - name: Vytvoření a instalace konfiguračních souborů klienta VPN
               href: point-to-site-vpn-client-configuration-azure-cert.md
+            - name: Informace o stažení souboru profilu klienta VPN
+              href: about-vpn-profile-download.md
         - name: Ověřování RADIUS
           items:
             - name: Konfigurace P2S VPN
@@ -138,6 +140,14 @@
               href: vpn-gateway-howto-openvpn.md
             - name: Konfigurace klientů OpenVPN
               href: vpn-gateway-howto-openvpn-clients.md
+            - name: OpenVPN – ověřování Azure Active Directory
+              items:
+                - name: Konfigurace tenanta Azure AD
+                  href: openvpn-azure-ad-tenant.md
+                - name: Konfigurace klienta VPN – Azure AD
+                  href: openvpn-azure-ad-client.md
+        - name: Přechod na certifikát veřejné brány CA pro P2S
+          href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: Konfigurace tunelu zařízení VPN AlwaysOn
           href: vpn-gateway-howto-always-on-device-tunnel.md
         - name: Konfigurace tunelu uživatele VPN AlwaysOn
@@ -188,6 +198,10 @@
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
         - name: Nastavení upozornění na základě diagnostických protokolů
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
+    - name: Konfigurace zachytávání paketů
+      href: packet-capture.md
+    - name: Konfigurace vlastních selektorů provozu
+      href: custom-traffic-selectors.md
     - name: Řešení potíží
       href: vpn-gateway-troubleshoot.md
       items:
@@ -203,6 +217,8 @@
               href: vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md
             - name: Problémy s připojením typu Point-to-Site – klient Mac OS X VPN
               href: vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md
+            - name: Připojení typu Point-to-Site – ověřování Azure AD
+              href: troubleshoot-ad-vpn-client.md
         - name: Potíže s připojením typu Site-to-Site
           items:
             - name: Připojení typu Site-to-Site

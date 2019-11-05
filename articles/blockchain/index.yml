@@ -10,13 +10,13 @@ metadata:
   ms.topic: hub-page
   author: PatAltimore
   ms.author: patricka
-  ms.date: 09/25/2019
-  ms.openlocfilehash: 0bdf46585a05ffc286e26087dad005eb102ed6b8
-  ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+  ms.date: 10/23/2019
+  ms.openlocfilehash: 87184cc5be0494ade7cc3e055083134b6cbe4bd7
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/29/2019
-  ms.locfileid: "73027123"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73466081"
 productDirectory:
   items:
   - title: Služba Azure Blockchain
@@ -32,6 +32,13 @@ productDirectory:
     - url: ./workbench/overview.md
       text: Co je Azure Blockchain Workbench?
     - url: ./workbench/index.yml
+      text: Zobrazit víc >
+  - title: Azure Blockchain Tokens
+    imageSrc: ./media/index/blockchain-tokens.svg
+    links:
+    - url: ./tokens/overview.md
+      text: Co je služba Azure Blockchain Tokens?
+    - url: ./tokens/index.yml
       text: Zobrazit víc >
 conceptualContent:
   title: Začínáme
@@ -64,6 +71,28 @@ conceptualContent:
     - url: https://channel9.msdn.com/Shows/Blocktalk/Building-your-first-Azure-Blockchain-Workbench-application
       itemType: video
       text: Jak vytvořit první aplikaci
+  - title: Vytvoření a správa tokenů
+    links:
+    - url: ./tokens/templates.md
+      itemType: concept
+      text: Definování tokenu pomocí předem připravené šablony
+    - url: ./tokens/account-management.md
+      itemType: concept
+      text: Správa tokenů s využitím služby Azure Blockchain Tokens
+    - url: https://aka.ms/ABTokensPartI
+      itemType: video
+      text: Sledování základního přehledu služby Azure Blockchain Tokens
+  - title: Publikování dat blockchainu s využitím Blockchain Data Manageru
+    links:
+    - url: ./service/data-manager.md
+      itemType: concept
+      text: Co je Blockchain Data Manager pro Azure Blockchain Service?
+    - url: ./service/data-manager-portal.md
+      itemType: how-to-guide
+      text: Vytvoření instance Blockchain Data Manageru s využitím webu Azure Portal
+    - url: https://aka.ms/BTDataManager
+      itemType: video
+      text: Sledování základního přehledu služby Blockchain Data Manager
   - title: Sestavení s využitím registru, který vyhovuje vašemu případu použití
     links:
     - url: ./templates/ethereum-poa-deployment.md

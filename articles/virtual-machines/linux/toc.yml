@@ -137,6 +137,8 @@
           href: disk-encryption.md
         - name: Návrh pro vysoký výkon
           href: premium-storage-performance.md
+        - name: Zvládání výkonových špiček disků
+          href: disk-bursting.md
         - name: Cíle škálovatelnosti pro disky
           href: disk-scalability-targets.md
         - name: Zálohování a zotavení po havárii pro disky

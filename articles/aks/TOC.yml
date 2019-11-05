@@ -102,6 +102,8 @@
       href: supported-kubernetes-versions.md
     - name: Posílení zabezpečení v operačním systému hostitele
       href: security-hardened-vm-host-image.md
+    - name: Přehled diagnostiky služby Azure Kubernetes Service
+      href: concepts-diagnostics.md
 - name: Návody
   items:
     - name: Operace clusteru
@@ -128,11 +130,11 @@
               href: virtual-nodes-portal.md
         - name: Použití Virtual Kubeletu
           href: virtual-kubelet.md
-        - name: Použití automatického škálování clusteru (Preview)
+        - name: Použití automatického škálování clusteru
           href: cluster-autoscaler.md
-        - name: Použití zón dostupnosti (Preview)
+        - name: Použití zón dostupnosti
           href: availability-zones.md
-        - name: Použití fondů s více uzly (Preview)
+        - name: Použití fondů s více uzly
           href: use-multiple-node-pools.md
         - name: Nasazení AKS s Terraformem
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
@@ -199,7 +201,7 @@
           href: use-network-policies.md
         - name: Použití zásad zabezpečení podu (Preview)
           href: use-pod-security-policies.md
-        - name: Definování rozsahů IP adres autorizovaných serverem podporujícím rozhraní API (Preview)
+        - name: Definování rozsahů IP adres autorizovaných serverem podporujícím rozhraní API
           href: api-server-authorized-ip-ranges.md
         - name: Řízení nasazování s využitím Azure Policy (Preview)
           href: ../governance/policy/concepts/rego-for-aks.md?toc=/azure/aks/toc.json
@@ -225,8 +227,8 @@
           href: view-master-logs.md
         - name: Zobrazení protokolů Kubelet
           href: kubelet-logs.md
-        - name: Zobrazení protokolů kontejneru v reálném čase (preview)
-          href: ../azure-monitor/insights/container-insights-live-logs.md
+        - name: Zobrazení dat kontejnerů v reálném čase
+          href: ../azure-monitor/insights/container-insights-livedata-overview.md
           maintainContext: true
     - name: Použití kontejnerů Windows Serveru (Preview)
       items:

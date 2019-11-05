@@ -1,0 +1,27 @@
+- name: Dokumentace ke službě SQL Database Edge
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je SQL Database Edge?
+      href: overview.md
+- name: Šablony Rychlý start
+  expanded: true
+  items:
+    - name: Nasazení služby SQL Database Edge
+      href: deploy-portal.md
+    - name: Nasazení ONNX ve službě SQL Database Edge
+      href: deploy-onnx.md
+- name: Kurzy
+  items:
+    - name: Synchronizace dat s využitím Azure Data Factory
+      href: tutorial-sync-data-factory.md
+    - name: Synchronizace dat s využitím Synchronizace dat SQL
+      href: tutorial-sync-data-sync.md
+- name: Postup
+  items:
+    - name: Balíčky aplikace DAC a úlohy Stream Analytics
+      href: stream-analytics.md
+- name: Koncepty
+  items:
+    - name: Strojové učení a AI s využitím ONNX
+      href: onnx-overview.md

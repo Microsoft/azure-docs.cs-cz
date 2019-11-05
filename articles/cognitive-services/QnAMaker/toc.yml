@@ -147,6 +147,10 @@
       href: limits.md
     - name: Řešení potíží
       href: troubleshooting.md
+    - name: Formáty souborů
+      items:
+        - name: Dávkové testování TSV
+          href: reference-tsv-format-batch-testing.md
     - name: Reference k rozhraní REST API
       items:
         - name: Rozhraní API pro vytváření

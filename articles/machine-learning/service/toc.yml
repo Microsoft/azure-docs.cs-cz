@@ -6,6 +6,9 @@
     - name: Co je Azure Machine Learning?
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
+    - name: Azure Machine Learning vs. Studio
+      displayName: 'AML, Studio, designer'
+      href: ../compare-azure-ml-to-studio-classic.md
     - name: Architektura a podmínky
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
@@ -32,15 +35,22 @@
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
         - name: Kanály Machine Learningu (pokročilé)
-          href: tutorial-pipeline-batch-scoring-classification.md
-    - name: Vizuální rozhraní
+          items:
+            - name: Dávkové vyhodnocování klasifikačního modelu
+              displayName: pipelines
+              href: tutorial-pipeline-batch-scoring-classification.md
+    - name: R SDK
+      items:
+        - name: Vytvoření prvního experimentu ML (R)
+          href: tutorial-1st-r-experiment.md
+    - name: Designer
       items:
         - name: 1. Trénování regresního modelu
           displayName: studio
-          href: ui-tutorial-automobile-price-train-score.md
+          href: tutorial-designer-automobile-price-train-score.md
         - name: 2. Nasazení regresního modelu
           displayName: studio
-          href: ui-tutorial-automobile-price-deploy.md
+          href: tutorial-designer-automobile-price-deploy.md
     - name: Automatizované strojové učení (rozhraní)
       displayName: 'automl, automated, auto ml, portal, ui'
       href: tutorial-first-experiment-automated-ml.md
@@ -57,42 +67,51 @@
   items:
     - name: Pracovní prostor
       href: concept-workspace.md
-    - name: Cílový výpočetní objekt
-      displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
-      href: concept-compute-target.md
     - name: Trénování modelu
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
-    - name: Vizuální rozhraní
-      displayName: studio
-      href: ui-concept-visual-interface.md
-    - name: Automatizované strojové učení
-      displayName: 'automl, auto ml'
-      href: concept-automated-ml.md
     - name: Správa modelů (MLOps)
       displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
+    - name: Interpretovatelnost
+      displayName: explainability
+      href: how-to-machine-learning-interpretability.md
+    - name: 'Designer: ML bez kódu'
+      displayName: studio
+      href: concept-designer.md
+    - name: Tahák s algoritmy
+      href: /azure/machine-learning/algorithm-cheat-sheet?context=azure/machine-learning/service/context/ml-context
+    - name: Automatizované strojové učení
+      displayName: 'automl, auto ml'
+      href: concept-automated-ml.md
+    - name: Instance služby Compute
+      displayName: 'resource, dsvm, Data Science Virtual Machine'
+      href: concept-compute-instance.md
+    - name: Cílový výpočetní objekt
+      displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
+      href: concept-compute-target.md
     - name: Kanály ML
       href: concept-ml-pipelines.md
-    - name: Interpretovatelnost modelů
-      displayName: explainability
-      href: machine-learning-interpretability-explainability.md
     - name: ONNX
       href: concept-onnx.md
-    - name: Zabezpečení
+    - name: Zabezpečení a připravenost na úrovni podniku
       items:
-        - name: Přehled zabezpečení podniku
-          displayName: authorization authentication encryption aad azure active directory
-          href: concept-enterprise-security.md
-        - name: Správa uživatelů a skupin
-          href: how-to-assign-roles.md
-        - name: Použití virtuálních sítí
-          displayName: vnet
-          href: how-to-enable-virtual-network.md
-        - name: Zabezpečení webových služeb pomocí SSL
-          href: how-to-secure-web-service.md
-        - name: Opětovné vygenerování přístupových klíčů k úložišti
-          href: how-to-change-storage-access-key.md
+        - name: Podnikové zabezpečení
+          items:
+            - name: Přehled zabezpečení podniku
+              displayName: authorization authentication encryption aad azure active directory
+              href: concept-enterprise-security.md
+            - name: Správa uživatelů a skupin
+              href: how-to-assign-roles.md
+            - name: Použití virtuálních sítí
+              displayName: vnet
+              href: how-to-enable-virtual-network.md
+            - name: Zabezpečení webových služeb pomocí SSL
+              href: how-to-secure-web-service.md
+            - name: Opětovné vygenerování přístupových klíčů k úložišti
+              href: how-to-change-storage-access-key.md
+        - name: Monitorování Azure Machine Learningu
+          href: monitor-azure-machine-learning.md
     - name: Hloubkové učení
       displayName: 'deep learning vs machine learning, deep learning, vs, versus'
       href: concept-deep-learning-vs-machine-learning.md
@@ -138,32 +157,38 @@
         - name: Trénování s datovými sadami
           displayName: 'data, dataset'
           href: how-to-train-with-datasets.md
+        - name: Detekce posunů u datových sad
+          displayName: 'data, dataset'
+          href: how-to-monitor-datasets.md
         - name: Správa verzí a sledování datových sad
           displayName: 'data, data set'
           href: how-to-version-track-datasets.md
     - name: Trénování modelů
       items:
-        - name: Použití vizuálního rozhraní
-          displayName: sample visual interface experiments
+        - name: Použití designeru
+          displayName: sample designer experiments
           items:
             - name: Predikce ceny
               displayName: 'regression, studio'
-              href: how-to-ui-sample-regression-predict-automobile-price-basic.md
+              href: how-to-designer-sample-regression-automobile-price-basic.md
             - name: Predikce ceny (pokročilá)
               displayName: 'regression, studio'
-              href: how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md
-            - name: Predikce úvěrového rizika
+              href: how-to-designer-sample-regression-automobile-price-compare-algorithms.md
+            - name: Predikce příjmu
               displayName: 'classification, studio'
-              href: how-to-ui-sample-classification-predict-credit-risk-basic.md
+              href: how-to-designer-sample-classification-predict-income.md
             - name: Predikce úvěrového rizika (pokročilá)
               displayName: 'classification, studio'
-              href: how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md
+              href: how-to-designer-sample-classification-credit-risk-cost-sensitive.md
             - name: Predikce četnosti změn
               displayName: 'classification, studio'
-              href: how-to-ui-sample-classification-predict-churn.md
+              href: how-to-designer-sample-classification-churn.md
             - name: Predikce zpoždění letů
               displayName: 'classification, studio'
-              href: how-to-ui-sample-classification-predict-flight-delay.md
+              href: how-to-designer-sample-classification-flight-delay.md
+            - name: Klasifikace testu
+              displayName: 'classification, studio'
+              href: how-to-designer-sample-text-classification.md
         - name: Použití nástrojů pro odhady pro ML
           items:
             - name: Vytváření odhadů při trénování
@@ -187,6 +212,15 @@
           href: how-to-train-pytorch.md
         - name: Chainer
           href: how-to-train-chainer.md
+    - name: Interpretace modelů
+      displayName: interpretability
+      items:
+        - name: Interpretace místních a vzdálených modelů
+          displayName: 'SDK, interpret'
+          href: how-to-machine-learning-interpretability-aml.md
+        - name: Interpretace automatizovaných modelů ML
+          displayName: 'SDK, interpret, automl'
+          href: how-to-machine-learning-interpretability-automl.md
     - name: Automatizace strojového učení
       displayName: 'automl, auto ml'
       items:
@@ -236,7 +270,7 @@
         - name: Azure App Service
           displayName: web app
           href: how-to-deploy-app-service.md
-        - name: Virtuální počítače poznámkového bloku
+        - name: Instance služby Compute
           href: how-to-deploy-local-container-notebook-vm.md
         - name: Použití vlastní image Dockeru
           href: how-to-deploy-custom-docker-image.md
@@ -253,6 +287,9 @@
         - name: Spuštění dávkových predikcí
           displayName: score scoring asynchronous consume pipeline
           href: how-to-run-batch-predictions.md
+        - name: Použití designeru pro dávkové predikce
+          displayName: score scoring asynchronous consume pipeline
+          href: how-to-run-batch-predictions-ui.md
     - name: Monitorování modelů
       items:
         - name: Shromažďování a vyhodnocování dat modelů
@@ -262,18 +299,18 @@
           href: how-to-monitor-data-drift.md
         - name: Monitorování pomocí Application Insights
           href: how-to-enable-app-insights.md
-    - name: Vytváření opakovaně použitelných pracovních postupů
+    - name: Vytváření a použití kanálů ML
       displayName: pipelines
       items:
-        - name: Vytváření kanálů ML v Pythonu
+        - name: Vytváření kanálů ML (Python)
           href: how-to-create-your-first-pipeline.md
-        - name: Ladění a řešení potíží s kanály ML
+        - name: Naplánování kanálu (Python)
+          href: how-to-schedule-pipelines.md
+        - name: Ladění a řešení potíží s kanály
           href: how-to-debug-pipelines.md
         - name: Azure Pipelines pro CI/CD
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
-        - name: Naplánování kanálů ML v Pythonu
-          href: how-to-schedule-pipelines.md
     - name: Správa kvót prostředků
       displayName: limits
       href: how-to-manage-quotas.md
@@ -282,15 +319,20 @@
       href: how-to-export-delete-data.md
 - name: Referenční informace
   items:
-    - name: Sada Machine Learning SDK
+    - name: ML SDK (Python)
       displayName: 'api, core, package, python, class'
       href: 'https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py'
+    - name: ML SDK (R)
+      displayName: 'api, core, package, R, class'
+      href: 'https://azure.github.io/azureml-sdk-for-r/reference/index.html'
     - name: Machine Learning CLI
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
+    - name: Monitorování odkazů na data
+      href: monitor-resource-reference.md
     - name: Reference YAML ke kanálu strojového učení
       href: reference-pipeline-yaml.md
-    - name: Moduly vizuálního rozhraní
+    - name: Moduly designeru
       displayName: 'module, reference, algorithm, studio'
       items:
         - name: Přehled referenčních informací k modulům
@@ -299,18 +341,14 @@
           items:
             - name: Převod na C
               href: ../algorithm-module-reference/convert-to-csv.md
+            - name: Převod na datovou sadu
+              href: ../algorithm-module-reference/convert-to-dataset.md
         - name: Vstup a výstup dat
           items:
             - name: Import dat
               items:
                 - name: Import dat
                   href: ../algorithm-module-reference/import-data.md
-                - name: Import z webové adresy URL přes HTTP
-                  href: ../algorithm-module-reference/import-from-web-url-via-http.md
-                - name: Import z modulu Azure Blob Storage
-                  href: ../algorithm-module-reference/import-from-azure-blob-storage.md
-                - name: Import z Azure SQL Database
-                  href: ../algorithm-module-reference/import-from-azure-sql-database.md
             - name: Export dat
               href: ../algorithm-module-reference/export-data.md
             - name: Ruční zadávání dat
@@ -319,12 +357,18 @@
           items:
             - name: Výběr sloupců v datové sadě
               href: ../algorithm-module-reference/select-columns-in-dataset.md
+            - name: Transformace pro výběr sloupců
+              href: ../algorithm-module-reference/select-columns-transform.md
             - name: Úpravy metadat
               href: ../algorithm-module-reference/edit-metadata.md
             - name: Vyčištění chybějících dat
               href: ../algorithm-module-reference/clean-missing-data.md
             - name: Hashování funkcí
               href: ../algorithm-module-reference/feature-hashing.md
+            - name: Důležitost funkce permutací
+              href: ../algorithm-module-reference/permutation-feature-importance.md
+            - name: Výběr funkcí na základě filtrů
+              href: ../algorithm-module-reference/filter-based-feature-selection.md
             - name: Extrakce funkcí n-gramů z textu
               href: ../algorithm-module-reference/extract-n-gram-features-from-text.md
             - name: Přidání sloupců
@@ -341,6 +385,8 @@
               href: ../algorithm-module-reference/split-data.md
             - name: Normalizace dat
               href: ../algorithm-module-reference/normalize-data.md
+            - name: SMOTE
+              href: ../algorithm-module-reference/smote.md
             - name: Rozdělení a ukázky
               href: ../algorithm-module-reference/partition-and-sample.md
             - name: Oříznutí hodnot
@@ -351,14 +397,24 @@
           items:
             - name: Určení skóre modelu
               href: ../algorithm-module-reference/score-model.md
+            - name: Určení skóre doporučovacího systému SVD
+              href: ../algorithm-module-reference/score-svd-recommender.md
             - name: Přiřazení dat do clusterů
               href: ../algorithm-module-reference/assign-data-to-clusters.md
             - name: Trénování modelu
               href: ../algorithm-module-reference/train-model.md
             - name: Trénování modelu clusteringu
               href: ../algorithm-module-reference/train-clustering-model.md
+            - name: Trénování doporučovacího systému SVD
+              href: ../algorithm-module-reference/train-svd-recommender.md
+            - name: Ladění hyperparametrů modelů
+              href: ../algorithm-module-reference/tune-model-hyperparameters.md
+            - name: Křížové ověření modelu
+              href: ../algorithm-module-reference/cross-validate-model.md
             - name: Vyhodnocení modelu
               href: ../algorithm-module-reference/evaluate-model.md
+            - name: Vyhodnocení doporučovacího systému
+              href: ../algorithm-module-reference/evaluate-recommender.md
             - name: Použití transformace
               href: ../algorithm-module-reference/apply-transformation.md
             - name: Lineární regrese
@@ -381,6 +437,8 @@
               href: ../algorithm-module-reference/multiclass-decision-forest.md
             - name: Posílený rozhodovací strom s několika třídami
               href: ../algorithm-module-reference/multiclass-boosted-decision-tree.md
+            - name: One vs. All Multiclass
+              href: ../algorithm-module-reference/one-vs-all-multiclass.md
             - name: Zprůměrovaný perceptron se dvěma třídami
               href: ../algorithm-module-reference/two-class-averaged-perceptron.md
             - name: Rozhodovací les se dvěma třídami

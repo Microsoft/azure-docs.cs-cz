@@ -33,7 +33,7 @@
       href: search-get-started-python.md
 - name: Kurzy
   items:
-    - name: Vytvoření první aplikace
+    - name: 'Vytvoření první aplikace v C#'
       items:
         - name: 1. Základní vyhledávací stránka
           href: tutorial-csharp-create-first-app.md
@@ -215,8 +215,6 @@
           href: search-howto-schedule-indexers.md
         - name: Pole map
           href: search-indexer-field-mappings.md
-        - name: Přírůstkové indexování
-          href: search-howto-incremental-index.md
         - name: Připojení ke spravované instanci SQL
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: Připojení k virtuálním počítačům s SQL Serverem
@@ -239,14 +237,14 @@
               href: cognitive-search-output-field-mapping.md
             - name: Zpracování a extrahování informací z obrázků
               href: cognitive-search-concept-image-scenarios.md
+            - name: Nastavení přírůstkového indexování
+              href: search-howto-incremental-index.md
         - name: Vlastní dovednosti
           items:
             - name: Integrace vlastních dovedností
               href: cognitive-search-custom-skill-interface.md
             - name: Příklad – Azure Functions
               href: cognitive-search-create-custom-skill-example.md
-            - name: Příklady – Power Skills
-              href: 'https://aka.ms/powerskills'
             - name: Příklad – kontejnery
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: Rady pro řešení potíží
@@ -378,6 +376,8 @@
           href: cognitive-search-skill-shaper.md
         - name: Podmíněné
           href: cognitive-search-skill-conditional.md
+        - name: Extrakce dokumentů
+          href: cognitive-search-skill-document-extraction.md
     - name: Vlastní dovednosti
       items:
         - name: Vlastní webové rozhraní API

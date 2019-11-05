@@ -49,6 +49,14 @@
       href: manage-consortium-powershell.md
     - name: Použití Logic Apps
       href: ethereum-logic-app.md
+- name: Data Manager pro blokchain
+  items:
+    - name: Přehled Data Manageru
+      href: data-manager.md
+    - name: Konfigurace Data Manageru – portál
+      href: data-manager-portal.md
+    - name: Konfigurace Data Manageru – CLI
+      href: data-manager-cli.md
 - name: Zdroje a prostředky
   items:
     - name: Blockchainové rozhraní REST API

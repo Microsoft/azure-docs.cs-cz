@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure SQL Data Warehouse
-summary: Naučte se používat službu Azure SQL Data Warehouse, která kombinuje relační databáze SQL s architekturou MPP (Massively Parallel Processing). Kurzy a další dokumentace ukazují, jak navrhovat, načítat, spravovat a analyzovat data pomocí datového skladu.
+title: Azure Synapse Analytics (dříve Azure SQL Data Warehouse)
+summary: Azure Synapse je neomezená analytická služba, která spojuje podnikové skladování dat a analýzy velkých objemů dat. Dává vám možnost dotazovat se na data podle toho, jak vám to vyhovuje, s využitím bezserverové architektury na vyžádání, nebo zřízených prostředků, a to ve velkém měřítku.
 metadata:
-  title: Azure SQL Data Warehouse
-  description: description
+  title: Azure Synapse Analytics
+  description: Azure Synapse je neomezená analytická služba, která spojuje podnikové skladování dat a analýzy velkých objemů dat. Dává vám možnost dotazovat se na data podle toho, jak vám to vyhovuje, s využitím bezserverové architektury na vyžádání, nebo zřízených prostředků, a to ve velkém měřítku.
   services: sql-data-warehouse
   ms.service: sql-data-warehouse
   ms.subservice: design
@@ -12,38 +12,38 @@ metadata:
   author: julieMSFT
   ms.author: jrasnick
   ms.date: 10/03/2019
-  ms.openlocfilehash: ffb90d5d15b83570511c3f70b39f9f83f000ab35
-  ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+  ms.openlocfilehash: 2ad2e5b4d17c4642b42efd51de2b91308f49a101
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/10/2019
-  ms.locfileid: "72245843"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73492216"
 landingContent:
-- title: Informace o službě SQL Data Warehouse
+- title: Informace o službě Azure Synapse Analytics
   linkLists:
   - linkListType: overview
     links:
-    - text: Co je SQL Data Warehouse?
+    - text: Co je Azure Synapse?
       url: sql-data-warehouse-overview-what-is.md
   - linkListType: architecture
     links:
-    - text: SQL Data Warehouse – architektura MPP
+    - text: Architektura služby Azure Synapse
       url: massively-parallel-processing-mpp-architecture.md
-    - text: Tipy a osvědčené postupy pro datový sklad
+    - text: Tipy a osvědčené postupy
       url: cheat-sheet.md
 - title: Začínáme
   linkLists:
   - linkListType: deploy
     links:
-    - text: Vytvoření SQL Data Warehouse
+    - text: Vytvoření fondu SQL (datový sklad)
       url: create-data-warehouse-portal.md
 - title: Načtení dat
   linkLists:
   - linkListType: concept
     links:
-    - text: Návrh strategie načítání dat pomocí PolyBase
+    - text: Návrh strategie načítání dat
       url: design-elt-data-loading.md
-    - text: Osvědčené postupy načítání dat
+    - text: Osvědčené postupy
       url: guidance-for-loading-data.md
   - linkListType: how-to-guide
     links:
@@ -57,7 +57,7 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
-    - text: Osvědčené postupy pro SQL Data Warehouse
+    - text: Osvědčené postupy
       url: sql-data-warehouse-best-practices.md
     - text: Optimalizace uspořádaného clusterovaného indexu columnstore
       url: performance-tuning-ordered-cci.md
@@ -67,11 +67,11 @@ landingContent:
     links:
     - text: Analýza úloh
       url: analyze-your-workload.md
-- title: Správa a monitorování služby SQL Data Warehouse
+- title: Správa a monitorování
   linkLists:
   - linkListType: overview
     links:
-    - text: Další informace o správě a monitorování služby SQL Data Warehouse
+    - text: Další informace o správě a monitorování vašeho datového skladu
       url: sql-data-warehouse-overview-manageability-monitoring.md
   - linkListType: how-to-guide
     links:
@@ -79,11 +79,11 @@ landingContent:
       url: sql-data-warehouse-manage-monitor.md
     - text: Správa a monitorování důležitosti úloh
       url: sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md
-- title: Zabezpečení služby SQL Data Warehouse
+- title: Zabezpečení datového skladu
   linkLists:
   - linkListType: overview
     links:
-    - text: Základní informace o zabezpečení služby SQL Data Warehouse
+    - text: Základní informace o zabezpečení datového skladu
       url: sql-data-warehouse-overview-manage-security.md
   - linkListType: how-to-guide
     links:
@@ -93,5 +93,5 @@ landingContent:
   linkLists:
   - linkListType: video
     links:
-    - text: Sledovat nejnovější videa k Azure SQL Data Warehouse
+    - text: Sledovat nejnovější videa k datovým skladům
       url: sql-data-warehouse-videos.md

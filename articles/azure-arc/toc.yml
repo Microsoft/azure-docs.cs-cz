@@ -1,0 +1,18 @@
+- name: Dokumentace ke službě Azure Arc
+  href: index.yml
+- name: Přehled
+  expanded: true
+  items:
+    - name: Co je Azure Arc pro servery?
+      href: ./servers/overview.md
+- name: Šablony Rychlý start
+  expanded: true
+  items:
+    - name: Připojení počítačů k Azure s využitím služby Azure Arc pro servery – portál
+      href: ./servers/quickstart-onboard-portal.md
+    - name: Připojení počítačů k Azure s využitím služby Azure Arc pro servery – PowerShell
+      href: ./servers/quickstart-onboard-powershell.md
+- name: Referenční informace
+  items:
+    - name: Rozhraní příkazového řádku agenta připojeného počítače Azure
+      href: ./servers/azcmagent-reference.md

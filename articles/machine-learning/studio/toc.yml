@@ -1,9 +1,9 @@
-- name: Dokumentace k nástroji Machine Learning Studio
+- name: Dokumentace k prostředí Machine Learning Studio (Classic)
   href: index.yml
 - name: Přehled
   expanded: true
   items:
-    - name: Machine Learning Studio
+    - name: Machine Learning Studio (Classic)
       displayName: overview
       href: what-is-ml-studio.md
     - name: Porovnání našich produktů ML
@@ -106,8 +106,6 @@
       items:
         - name: Volba algoritmů
           href: algorithm-choice.md
-        - name: Tahák s algoritmy
-          href: algorithm-cheat-sheet.md
         - name: Příklady algoritmů
           displayName: 'infographic, studio basics'
           href: basics-infographic-with-algorithm-examples.md
@@ -153,11 +151,11 @@
           href: azure-ml-customer-churn-scenario.md
         - name: Analýza mínění
           href: text-analytics-module-tutorial.md
-        - name: Migrace analýzy z Excelu do sady Studio
+        - name: Migrace analýzy z Excelu do sady Studio (Classic)
           href: linear-regression-in-azure.md
     - name: Odstranění a export zákaznických dat
       items:
-        - name: Data sady Studio
+        - name: Data sady Studio (Classic)
           displayName: export
           href: export-delete-personal-data-dsr.md
         - name: Data galerie

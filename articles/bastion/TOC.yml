@@ -7,13 +7,19 @@
 - name: Návody
   items:
     - name: Vytvoření hostitele typu bašta
-      href: bastion-create-host-portal.md
+      items:
+        - name: portál Azure
+          href: bastion-create-host-portal.md
+        - name: Azure PowerShell
+          href: bastion-create-host-powershell.md
     - name: Připojení k virtuálnímu počítači
       items:
         - name: SSH (Linux)
           href: bastion-connect-vm-ssh.md
         - name: RDP (Windows)
           href: bastion-connect-vm-rdp.md
+    - name: Připojení ke škálovací sadě virtuálních počítačů
+      href: bastion-connect-vm-scale-set.md
     - name: Připojení k virtuálním počítačům DevTest Labs
       href: ../lab-services/enable-browser-connection-lab-virtual-machines.md?toc=%2fazure%2fbastion%2ftoc.json
     - name: Práce s využitím relace virtuálního počítače
@@ -24,6 +30,12 @@
           href: bastion-vm-full-screen.md
     - name: Práce se skupinami zabezpečení sítě
       href: bastion-nsg.md
+    - name: Přístup k diagnostickým protokolům a jejich konfigurace
+      href: diagnostic-logs.md
+    - name: Monitorování a správa relací
+      href: session-monitoring.md
+    - name: Řešení potíží
+      href: troubleshoot.md
 - name: Zdroje a prostředky
   items:
     - name: Nejčastější dotazy ke službě Bastion

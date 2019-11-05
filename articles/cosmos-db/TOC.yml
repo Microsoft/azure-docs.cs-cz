@@ -12,7 +12,9 @@
       items:
         - name: portál Azure
           href: create-cosmosdb-resources-portal.md
-        - name: Aplikace v .NET
+        - name: Aplikace v .NET – SDK V4
+          href: create-sql-api-dotnet-v4.md
+        - name: Aplikace v .NET – SDK V3
           href: create-sql-api-dotnet.md
         - name: Aplikace v Javě
           href: create-sql-api-java.md
@@ -47,8 +49,11 @@
             - name: Xamarin
               href: mobile-apps-with-xamarin.md
     - name: 2. Migrace dat
-      displayName: import
-      href: import-data.md
+      items:
+        - name: Použití nástroje pro migraci dat
+          href: import-data.md
+        - name: Použití hromadné podpory .NET
+          href: tutorial-sql-api-dotnet-bulk-import.md
     - name: 3. Dotazování dat
       href: tutorial-query-sql-api.md
     - name: 4. Vytvoření poznámkového bloku
@@ -122,6 +127,8 @@
         - name: Zřízení propustnosti u kontejnerů a databází
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
+        - name: Zřízení propustnosti – režim autopilota
+          href: provision-throughput-autopilot.md
     - name: Referenční materiály k dotazům SQL
       items:
         - name: Začínáme
@@ -953,6 +960,11 @@
           href: how-to-configure-firewall.md
         - name: Konfigurace přístupu z virtuálních sítí
           href: how-to-configure-vnet-service-endpoint.md
+        - name: Konfigurace přístupu z privátních koncových bodů
+          href: how-to-configure-private-endpoints.md
+        - name: Privátní připojení k účtu Cosmos DB
+          href: /azure/private-link/create-private-endpoint-cosmosdb-portal
+          maintainContext: true
         - name: 'Konfigurace sdílení prostředků mezi zdroji (CORS, Cross-Origin Resource Sharing)'
           href: how-to-configure-cross-origin-resource-sharing.md
         - name: Zabezpečení klíčů Azure Cosmos s využitím služby Key Vault

@@ -1,0 +1,140 @@
+- name: Dokumentace ke službě Firewall webových aplikací Azure
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je Firewall webových aplikací Azure?
+      href: overview.md
+    - name: Application Gateway
+      items:
+        - name: Firewall webových aplikací ve službě Application Gateway
+          href: ./ag/ag-overview.md
+        - name: Co je nového
+          href: ./ag/whats-new.md
+    - name: Front Door
+      items:
+        - name: Firewall webových aplikací ve službě Azure Front Door
+          href: ./afds/afds-overview.md
+- name: Kurzy
+  items:
+    - name: Application Gateway
+      items:
+        - name: Povolení Firewallu webových aplikací
+          href: ./ag/application-gateway-web-application-firewall-portal.md
+    - name: Front Door
+      items:
+        - name: Konfigurace zásad WAF – portál
+          href: ./afds/waf-front-door-create-portal.md
+- name: Ukázky
+  items:
+    - name: Azure PowerShell
+      href: ./ag/powershell-samples.md
+    - name: Šablony Resource Manageru
+      href: ./ag/resource-manager-template-samples.md
+- name: Koncepty
+  items:
+    - name: Application Gateway
+      items:
+        - name: Spravovaná pravidla
+          href: ./ag/application-gateway-crs-rulegroups-rules.md
+        - name: Přehled vlastních pravidel
+          href: ./ag/custom-waf-rules-overview.md
+        - name: Omezení velikosti požadavků a seznamy vyloučení
+          href: ./ag/application-gateway-waf-configuration.md
+    - name: Front Door
+      items:
+        - name: Vlastní pravidla
+          href: ./afds/waf-front-door-custom-rules.md
+        - name: Nastavení zásad
+          href: ./afds/waf-front-door-policy-settings.md
+        - name: Geografické filtrování
+          href: ./afds/waf-front-door-geo-filtering.md
+        - name: Nejčastější dotazy
+          href: ./afds/waf-faq.md
+- name: Návody
+  items:
+    - name: Application Gateway
+      items:
+        - name: Vytvořit zásad WAF
+          href: ./ag/create-waf-policy-ag.md
+        - name: Konfigurace Firewallu webových aplikací
+          items:
+            - name: Azure PowerShell
+              href: ./ag/tutorial-restrict-web-traffic-powershell.md
+            - name: Azure CLI
+              href: ./ag/tutorial-restrict-web-traffic-cli.md
+        - name: Přizpůsobení pravidel WAF
+          items:
+            - name: portál Azure
+              href: ./ag/application-gateway-customize-waf-rules-portal.md
+            - name: Azure PowerShell
+              href: ./ag/application-gateway-customize-waf-rules-powershell.md
+            - name: Azure CLI
+              href: ./ag/application-gateway-customize-waf-rules-cli.md
+        - name: Konfigurace vlastního pravidla WAF v2 – PowerShell
+          href: ./ag/configure-waf-custom-rules.md
+        - name: Příklady vlastních pravidel
+          href: ./ag/create-custom-waf-rules.md
+        - name: Ochrana před roboty
+          href: ./ag/bot-protection.md
+        - name: Přidružení zásad ke stávající službě Application Gateway
+          href: ./ag/associate-waf-policy-existing-gateway.md
+        - name: Diagnostické protokoly
+          href: ./ag/web-application-firewall-logs.md
+        - name: Řešení potíží s WAF
+          href: ./ag/web-application-firewall-troubleshoot.md
+    - name: Front Door
+      items:
+        - name: Konfigurace zásad WAF – PowerShell
+          href: ./afds/waf-front-door-custom-rules-powershell.md
+        - name: Konfigurace ochrany před roboty
+          href: ./afds/waf-front-door-policy-configure-bot-protection.md
+        - name: Konfigurace vlastního kódu odpovědi
+          href: ./afds/waf-front-door-configure-custom-response-code.md
+        - name: Konfigurace omezení IP adres
+          href: ./afds/waf-front-door-configure-ip-restriction.md
+        - name: Konfigurace omezení četnosti – PowerShell
+          href: ./afds/waf-front-door-rate-limit-powershell.md
+        - name: Konfigurace zásad WAF geografického filtrování
+          href: ./afds/waf-front-door-tutorial-geo-filtering.md
+        - name: Monitorování a protokolování
+          href: ./afds/waf-front-door-monitor.md
+- name: Řešení potíží
+  items:
+    - name: Application Gateway
+      items:
+        - name: Řešení potíží s WAF
+          href: ./ag/web-application-firewall-troubleshoot.md
+        - name: Log Analytics
+          href: ./ag/log-analytics.md
+- name: Referenční informace
+  items:
+    - name: Pravidla CRS
+      href: ./ag/application-gateway-crs-rulegroups-rules.md
+    - name: Azure CLI
+      href: /cli/azure/ext/azure-firewall/network/firewall
+    - name: Azure PowerShell
+      href: /powershell/module/az.network/new-azfirewall
+    - name: .NET
+      href: /dotnet/api
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/firewall
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/resource-group-overview.md
+- name: Zdroje a prostředky
+  items:
+    - name: Tvorba šablon
+      href: ../azure-resource-manager/resource-group-authoring-templates.md
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Komunitní šablony
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/web-application-firewall/'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/regions/services/'

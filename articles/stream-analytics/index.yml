@@ -10,12 +10,12 @@ metadata:
   author: mamccrea
   ms.author: mamccrea
   ms.date: 09/16/2019
-  ms.openlocfilehash: a4573c9f6938db56eba80da084004a620a54e9e4
-  ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+  ms.openlocfilehash: 3939133ae0e562a081e2ac555ce90683a17fcab1
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/16/2019
-  ms.locfileid: "71018861"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73479599"
 landingContent:
 - title: Informace o službě Azure Stream Analytics
   linkLists:
@@ -141,7 +141,7 @@ landingContent:
     links:
     - text: Využití strojového učení ke zjištění anomálií
       url: stream-analytics-machine-learning-anomaly-detection.md
-    - text: Analýzy mínění s využitím sady Azure Machine Learning Studio
+    - text: Analýza mínění s využitím sady Azure Machine Learning Studio (Classic)
       url: stream-analytics-machine-learning-integration-tutorial.md
     - text: Škálování úloh s využitím funkcí sady Machine Learning Studio
       url: stream-analytics-scale-with-machine-learning-functions.md

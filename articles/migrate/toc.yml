@@ -30,8 +30,18 @@
           href: tutorial-assess-hyper-v.md
         - name: Migrace virtuálních počítačů Hyper-V
           href: tutorial-migrate-hyper-v.md
-    - name: Migrace fyzických serverů a virtuálních počítačů
-      href: tutorial-migrate-physical-virtual-machines.md
+    - name: Vyhodnocení a migrace fyzických serverů
+      items:
+        - name: Příprava fyzických serverů pro vyhodnocení a migraci
+          href: tutorial-prepare-physical.md
+        - name: Vyhodnocení fyzických serverů
+          href: tutorial-assess-physical.md
+        - name: Migrace fyzických serverů
+          href: tutorial-migrate-physical-virtual-machines.md
+    - name: Vyhodnocení importovaných serverů pro migraci
+      items:
+        - name: Vyhodnocení importovaných serverů pro migraci
+          href: tutorial-assess-import.md
 - name: Koncepty
   items:
     - name: Časté dotazy
@@ -44,6 +54,8 @@
           href: migrate-support-matrix-vmware.md
         - name: Matice podpory pro vyhodnocení a migraci Hyper-V
           href: migrate-support-matrix-hyper-v.md
+        - name: Matice podpory pro vyhodnocení a migraci fyzických serverů
+          href: migrate-support-matrix-physical.md
     - name: Architektura migrace Hyper-V
       href: hyper-v-migration-architecture.md
     - name: Architektura migrace založené na agentech
@@ -66,6 +78,10 @@
       href: how-to-set-up-appliance-vmware.md
     - name: Nasazení zařízení Hyper-V
       href: how-to-set-up-appliance-hyper-v.md
+    - name: Nasazení zařízení fyzického serveru
+      href: how-to-set-up-appliance-physical.md
+    - name: Zjišťování aplikací/rolí/funkcí
+      href: how-to-discover-applications.md
     - name: První přidání nástroje
       href: how-to-add-tool-first-time.md
     - name: Přidání nástrojů pro vyhodnocení
@@ -74,6 +90,8 @@
       href: how-to-create-a-group.md
     - name: Seskupení počítačů s využitím vizualizace závislostí
       href: how-to-create-group-machine-dependencies.md
+    - name: Seskupení počítačů s využitím vizualizace závislostí bz agentů
+      href: how-to-create-group-machine-dependencies-agentless.md
     - name: Vytvoření posouzení
       href: how-to-create-assessment.md
     - name: Posouzení databáze SQL Serveru
@@ -84,6 +102,8 @@
       href: how-to-migrate.md
     - name: Příprava počítačů na migraci
       href: prepare-for-migration.md
+    - name: Odstranění projektu Azure Migrate
+      href: how-to-delete-project.md
 - name: Vyhodnocení a migrace ve velkém měřítku
   items:
     - name: Přístup k velkému počtu virtuálních počítačů VMware

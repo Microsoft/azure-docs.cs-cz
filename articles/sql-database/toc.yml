@@ -20,29 +20,34 @@
           items:
             - name: Přehled
               href: sql-database-purchase-models.md
-            - name: Model na základě virtuálních jader
-              href: sql-database-service-tiers-vcore.md
+            - name: Model virtuálních jader
               items:
-                - name: Bezserverová výpočetní úroveň
+                - name: Přehled modelů virtuálních jader
+                  href: sql-database-service-tiers-vcore.md
+                - name: Bez serveru
                   href: sql-database-serverless.md
-                - name: Předplacení záložní kapacity
+                - name: Zvýhodněné hybridní využití Azure
+                  href: sql-database-azure-hybrid-benefit.md
+                - name: Rezervovaná kapacita
                   href: sql-database-reserved-capacity.md
-            - name: Úrovně služby DTU
+            - name: Přehled modelů DTU
               href: sql-database-service-tiers-dtu.md
+            - name: Migrace z DTU na virtuální jádra
+              href: sql-database-dtu-to-vcore.md
         - name: Výpočetní prostředky a úložiště
           items:
             - name: Přehled
               href: sql-database-service-tiers-general-purpose-business-critical.md
               displayName: provisioned compute tier
-            - name: Úrovně služby Pro obecné účely / Standard
+            - name: Pro obecné účely / Standard
               href: sql-database-service-tier-general-purpose.md
-            - name: Úrovně služby Pro důležité obchodní informace / Premium
+            - name: Pro důležité obchodní informace / Premium
               href: sql-database-service-tier-business-critical.md
-            - name: Hyperškálování úrovně služby
+            - name: Hyperškálování
               href: sql-database-service-tier-hyperscale.md
             - name: Nejčastější dotazy k hyperškálování
               href: sql-database-service-tier-hyperscale-faq.md
-            - name: Migrace z úrovně služby Premium RS
+            - name: Migrace z Premium RS
               href: sql-database-service-tiers-prs.md
 - name: Šablony Rychlý start
   expanded: true
@@ -501,17 +506,17 @@
       items:
         - name: Prostředky izolované databáze
           items:
-            - name: Omezení prostředků na základě virtuálních jader
+            - name: Limity prostředků virtuálních jader
               href: sql-database-vcore-resource-limits-single-databases.md
-            - name: Omezení prostředků na základě DTU
+            - name: Limity prostředků DTU
               href: sql-database-dtu-resource-limits-single-databases.md
             - name: Škálování prostředků
               href: sql-database-single-database-scale.md
         - name: Prostředky elastických fondů
           items:
-            - name: Omezení prostředků na základě virtuálních jader
+            - name: Limity prostředků virtuálních jader
               href: sql-database-vcore-resource-limits-elastic-pools.md
-            - name: Omezení prostředků na základě DTU
+            - name: Limity prostředků DTU
               href: sql-database-dtu-resource-limits-elastic-pools.md
             - name: Škálování prostředků
               href: sql-database-elastic-pool-scale.md

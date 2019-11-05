@@ -92,6 +92,8 @@
               href: concepts-data-access-and-security-vnet.md
             - name: Architektura připojení
               href: concepts-connectivity-architecture.md
+            - name: Ověřování Azure AD
+              href: concepts-aad-authentication.md
         - name: Kontinuita podnikových procesů
           items:
             - name: Úvod do provozní kontinuity
@@ -153,8 +155,14 @@
               href: concepts-hyperscale-firewall-rules.md
             - name: Konfigurace SSL
               href: concepts-hyperscale-ssl-connection-security.md
+        - name: Monitorování a ladění
+          items:
+            - name: Monitorování a ladění
+              href: concepts-hyperscale-monitoring.md
         - name: Rozšíření PostgreSQL
           href: concepts-hyperscale-extensions.md
+        - name: Vysoká dostupnost
+          href: concepts-hyperscale-high-availability.md
         - name: Zdroje a prostředky
           items:
             - name: Možnosti konfigurace
@@ -163,8 +171,12 @@
   items:
     - name: Jeden server
       items:
-        - name: Vytvoření uživatelů
-          href: howto-create-users.md
+        - name: Authentication
+          items:
+            - name: Vytvoření uživatelů
+              href: howto-create-users.md
+            - name: Konfigurace integrace Azure AD
+              href: howto-configure-sign-in-aad-authentication.md
         - name: Optimalizace
           items:
             - name: Hromadné vkládání
@@ -245,12 +257,20 @@
               href: howto-read-replicas-cli.md
     - name: Hyperscale (Citus)
       items:
-        - name: Škálování
+        - name: Vytvoření uživatelů
+          href: howto-hyperscale-create-users.md
+        - name: Měřítko
           href: howto-hyperscale-scaling.md
         - name: Správa brány firewall
           items:
             - name: portál Azure
               href: howto-hyperscale-manage-firewall-using-portal.md
+        - name: Vysoká dostupnost
+          href: howto-hyperscale-high-availability.md
+        - name: Monitorování
+          items:
+            - name: Vytváření upozornění na metriky
+              href: howto-hyperscale-alert-on-metric.md
         - name: Řešení potíží
           items:
             - name: Řešení chyb připojení

@@ -1,10 +1,10 @@
-- name: Dokumentace ke službě SQL Data Warehouse
+- name: Dokumentace ke službě Azure Synapse Analytics
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je SQL Data Warehouse?
+    - name: Co je Azure Synapse Analytics?
       href: sql-data-warehouse-overview-what-is.md
-    - name: Architektura služby SQL Data Warehouse
+    - name: Architektura služby Azure Synapse Analytics
       href: massively-parallel-processing-mpp-architecture.md
     - name: Jednotky datového skladu
       href: what-is-a-data-warehouse-unit-dwu-cdwu.md
@@ -257,20 +257,22 @@
           href: sql-data-warehouse-encryption-tde-tsql.md
     - name: Načtení dat
       items:
-        - name: Údaje o newyorských taxících
-          href: load-data-from-azure-blob-storage-using-polybase.md
-        - name: Veřejná data společnosti Contoso
-          href: sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
-        - name: Azure Data Lake Storage
+        - name: Z Azure Data Lake Storage (ADLS)
           href: sql-data-warehouse-load-from-azure-data-lake-store.md
-        - name: Azure Databricks
+        - name: S využitím Azure Databricks (ADB)
           href: /azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
-        - name: Data Factory
+        - name: S využitím Data Factory (ADF)
           href: /azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
-        - name: SSIS
+        - name: S využitím SQL Server Integration Services (SSIS)
           href: /sql/integration-services/load-data-to-sql-data-warehouse
-        - name: Načtení WideWorldImporters
-          href: load-data-wideworldimportersdw.md
+        - name: Ukázky
+          items:
+            - name: Newyorská taxislužba
+              href: load-data-from-azure-blob-storage-using-polybase.md
+            - name: Contoso
+              href: sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
+            - name: Wide World Importers
+              href: load-data-wideworldimportersdw.md
     - name: Vývoj
       items:
         - name: Přehled
@@ -351,9 +353,9 @@
       items:
         - name: Úplný přehled
           href: /sql/t-sql/language-reference?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
-        - name: Elementy jazyka SQL DW
+        - name: Elementy jazyka TSQL v Azure Synapse Analytics
           href: sql-data-warehouse-reference-tsql-language-elements.md
-        - name: Příkazy SQL DW
+        - name: Příkazy TSQL v Azure Synapse Analytics
           href: sql-data-warehouse-reference-tsql-statements.md
     - name: Systémová zobrazení
       href: sql-data-warehouse-reference-tsql-system-views.md

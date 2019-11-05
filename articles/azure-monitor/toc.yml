@@ -781,20 +781,32 @@
                   href: insights/container-insights-enable-new-cluster.md
                 - name: Povolení pro stávající cluster
                   href: insights/container-insights-enable-existing-clusters.md
+                - name: Povolení pro hybridní cluster
+                  href: insights/container-insights-hybrid-setup.md
                 - name: Mapování oblastí
                   href: insights/container-insights-region-mapping.md
             - name: Analýza
               href: insights/container-insights-analyze.md
             - name: Zákaz monitorování
               href: insights/container-insights-optout.md
-            - name: Zobrazení živých protokolů
-              href: insights/container-insights-live-logs.md
+            - name: Zobrazení živých dat
+              items:
+                - name: Přehled živých dat (Preview)
+                  href: insights/container-insights-livedata-overview.md
+                - name: Nastavení
+                  href: insights/container-insights-livedata-setup.md
+                - name: Zobrazení metrik clusteru
+                  href: insights/container-insights-livedata-metrics.md
+                - name: Zobrazení nasazení
+                  href: insights/container-insights-livedata-deployments.md
             - name: Analýza dat s využitím dotazů na protokoly
               href: insights/container-insights-log-search.md
             - name: Zobrazení výstrah
               href: insights/container-insights-alerts.md
             - name: Správa agentů
               href: insights/container-insights-manage-agent.md
+            - name: Konfigurace získávání metrik v systému Prometheus
+              href: insights/container-insights-prometheus-integration.md
             - name: Konfigurace nastavení kolekce agentů
               href: insights/container-insights-agent-config.md
             - name: Aktualizace pro zapnutí metrik

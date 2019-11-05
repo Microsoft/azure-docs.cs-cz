@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: Dokumentace ke službě Firewall webových aplikací
+summary: Firewall webových aplikací (WAF) poskytuje centralizovanou ochranu webových aplikací před běžným zneužitím a ohrožením zabezpečení. Můžete nasadit WAF ve službě Azure Application Gateway nebo WAF ve službě Azure Front Door Service.
+metadata:
+  title: Dokumentace ke službě Firewall webových aplikací
+  description: Další informace o službě Firewall webových aplikací, která se dá nasadit se službami Application Gateway a Front Door
+  services: web-application-firewall
+  ms.service: web-application-firewall
+  ms.topic: landing-page
+  author: vhorne
+  ms.author: victorh
+  ms.date: 09/28/2019
+  ms.openlocfilehash: 1fb58cdf0f5c88a560ccbd4140564497745b503e
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73508767"
+landingContent:
+- title: Přehled
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Firewall webových aplikací Azure?
+      url: overview.md
+    - text: Firewall webových aplikací ve službě Application Gateway
+      url: ./ag/ag-overview.md
+    - text: Firewall webových aplikací ve službě Front Door
+      url: ./afds/afds-overview.md
+- title: Začínáme
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Firewall webových aplikací ve službě Application Gateway
+      url: ./ag/application-gateway-web-application-firewall-portal.md
+    - text: Firewall webových aplikací ve službě Front Door
+      url: ./afds/waf-front-door-create-portal.md
+- title: Správa pravidel WAF ve službě Application Gateway
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Přizpůsobení pravidel Firewallu webových aplikací ve službě Azure Application Gateway
+      url: ./ag/application-gateway-customize-waf-rules-portal.md
+  - linkListType: overview
+    links:
+    - text: Pravidla a skupiny pravidel CRS služby Firewall webových aplikací
+      url: ./ag/application-gateway-crs-rulegroups-rules.md
+- title: Konfigurace WAF ve službě Front Door
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurace ochrany před roboty
+      url: ./afds/waf-front-door-policy-configure-bot-protection.md
+    - text: Konfigurace vlastní odpovědi
+      url: ./afds/waf-front-door-configure-custom-response-code.md

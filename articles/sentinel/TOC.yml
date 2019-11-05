@@ -76,12 +76,26 @@
               href: connect-fortinet.md
             - name: Připojení F5
               href: connect-f5.md
+            - name: Připojení F5 BIG-IP
+              href: connect-f5-big-ip.md
             - name: Připojení Syslogu
               href: connect-syslog.md
             - name: Propojení Symantec ICDX
               href: connect-symantec.md
             - name: Připojení Cisca
               href: connect-cisco.md
+            - name: Připojení brány Barracuda CloudGen Firewall
+              href: connect-barracuda-cloudgen-firewall.md
+            - name: Připojení Citrix Analytics (zabezpečení)
+              href: connect-citrix-analytics.md
+            - name: Připojení ExtraHop Reveal(x)
+              href: connect-extrahop.md
+            - name: One Identity Safeguard
+              href: connect-one-identity.md
+            - name: Trend Micro Deep Security
+              href: connect-trend-micro.md
+            - name: Propojení Zscaleru
+              href: connect-zscaler.md
         - name: Připojení analýzy hrozeb
           href: connect-threat-intelligence.md
         - name: Připojení virtuálních počítačů Azure Stack
@@ -97,6 +111,8 @@
           href: notebooks.md
         - name: Využití záložek k vyhledávání
           href: bookmarks.md
+        - name: Využití Livestreamu k vyhledávání
+          href: livestream.md
     - name: Odebrání Azure Sentinelu
       href: offboard.md
 - name: Zdroje a prostředky

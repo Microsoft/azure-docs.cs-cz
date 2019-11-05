@@ -36,17 +36,7 @@
         - name: Získání záměru
           href: luis-get-started-get-intent-from-rest.md
         - name: Změna modelu
-          items:
-            - name: 'C#'
-              href: luis-get-started-cs-add-utterance.md
-            - name: Přejít
-              href: luis-get-started-go-add-utterance.md
-            - name: Java
-              href: luis-get-started-java-add-utterance.md
-            - name: Node.js
-              href: luis-get-started-node-add-utterance.md
-            - name: Python
-              href: luis-get-started-python-add-utterance.md
+          href: get-started-get-model-rest-apis.md
 - name: Kurzy
   items:
     - name: Sestavování aplikací
@@ -103,49 +93,47 @@
               href: luis-tutorial-bot-nodejs-appinsights.md
 - name: Koncepty
   items:
-    - name: Osvědčené postupy
-      href: luis-concept-best-practices.md
-      displayName: 'phrase list, pattern, intent, utterance, version, do, don''t, example utterances, iteration, cycle, correct, right'
-    - name: S využitím LUIS a QnA Makeru
-      href: choose-natural-language-processing-service.md
-      displayName: 'nlp, qna maker'
+    - name: Životní cyklus vývoje
+      href: luis-concept-app-iteration.md
     - name: Plánování aplikace
       displayName: 'simple, composite, prebuilt, list, regex, regular expression'
       href: luis-how-plan-your-app.md
-    - name: Klíče pro vytváření obsahu a běhové klíče
-      displayName: 'shared, transfer, ownership, author, access, import'
-      href: luis-concept-keys.md
-    - name: Vytvoření modelu aplikace
+    - name: Modely aplikací
       items:
-        - name: Cyklus vytváření
-          href: luis-concept-app-iteration.md
-        - name: Správa verzí
-          href: luis-concept-version.md
-          displayName: import
-    - name: Model návrhu
-      items:
+        - name: Typy
+          href: luis-concept-model.md
         - name: Záměry
           href: luis-concept-intent.md
+        - name: Projevy
+          href: luis-concept-utterance.md
         - name: Entity
           displayName: 'prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, machine-learn, exact, mixed, roles'
           href: luis-concept-entity-types.md
-        - name: Role entit
-          href: luis-concept-roles.md
-        - name: Projevy
-          href: luis-concept-utterance.md
         - name: Předem připravené modely
           href: luis-concept-prebuilt-model.md
-    - name: Zvýšení výkonu aplikací
-      items:
-        - name: Skóre předpovědi
-          href: luis-concept-prediction-score.md
-        - name: Kontrola promluv koncového bodu
-          href: luis-concept-review-endpoint-utterances.md
-        - name: Seznamy frází
-          href: luis-concept-feature.md
         - name: Vzory
           href: luis-concept-patterns.md
           displayName: roles
+        - name: Funkce
+          href: luis-concept-feature.md
+    - name: Skóre předpovědi
+      href: luis-concept-prediction-score.md
+    - name: Osvědčené postupy
+      href: luis-concept-best-practices.md
+      displayName: 'phrase list, pattern, intent, utterance, version, do, don''t, example utterances, iteration, cycle, correct, right'
+    - name: Zvýšení výkonu aplikací
+      items:
+        - name: Kontrola promluv koncového bodu
+          href: luis-concept-review-endpoint-utterances.md
+    - name: Test
+      items:
+        - name: Interaktivní testování
+          href: luis-concept-test.md
+        - name: Dávkové testování
+          href: luis-concept-batch-test.md
+    - name: Klíče pro vytváření obsahu a běhové klíče
+      displayName: 'shared, transfer, ownership, author, access, import'
+      href: luis-concept-keys.md
     - name: Správa dat
       items:
         - name: Změna dat
@@ -157,12 +145,9 @@
           displayName: roles
         - name: Úložiště dat
           href: luis-concept-data-storage.md
-    - name: Test
-      items:
-        - name: Interaktivní testování
-          href: luis-concept-test.md
-        - name: Dávkové testování
-          href: luis-concept-batch-test.md
+    - name: S využitím LUIS a QnA Makeru
+      href: choose-natural-language-processing-service.md
+      displayName: 'nlp, qna maker'
     - name: Enterprise
       items:
         - name: Strategie návrhu
@@ -183,13 +168,7 @@
           href: luis-how-to-add-entities.md
           displayName: 'roles, import'
         - name: Použití předem připravených modelů
-          items:
-            - name: Použití domén
-              href: luis-prebuilt-domains.md
-            - name: Záměry použití
-              href: luis-prebuilt-intent.md
-            - name: Použití entit
-              href: luis-prebuilt-entities.md
+          href: howto-add-prebuilt-models.md
         - name: S využitím REST API
           items:
             - name: Programové sestavení aplikace s využitím Node.js
@@ -218,6 +197,7 @@
           href: luis-how-to-model-intent-pattern.md
     - name: Trénování
       href: luis-how-to-train.md
+      displayName: 'negative sampling, nondeterministic, non-deterministic, UseAllTrainingData'
     - name: Test
       items:
         - name: Interaktivní testování
@@ -246,13 +226,17 @@
           diplayName: 'import, export, container'
         - name: S využitím Traffic Manageru
           href: luis-traffic-manager.md
-    - name: Migrace rozhraní API
+    - name: Použití rozhraní API
       items:
-        - name: Migrace na REST API V2
-          href: luis-migration-api-v1-to-v2.md
-        - name: Migrace na REST API V3
+        - name: Pro vývojáře
+          href: developer-reference-resource.md
+        - name: Rozhraní API pro vytváření
+          href: luis-migration-api-authoring.md
+        - name: Migrace na API V3
           href: luis-migration-api-v3.md
           displayName: 'json, response, verbose, dynamic, dynamic list object, brackets, array, role, show-all-intents,prebuilt domain, domain, external entities, "$instance",TimezoneOffset, datetimeReference, overridePredictions, override'
+        - name: Migrace na API V2
+          href: luis-migration-api-v1-to-v2.md
     - name: Použití kontejnerů
       items:
         - name: Instalace a spuštění kontejnerů
@@ -262,6 +246,9 @@
           href: luis-container-configuration.md
         - name: Použití instancí kontejneru
           href: deploy-luis-on-container-instances.md
+        - name: Omezení kontejnerů
+          href: luis-container-limitations.md
+          displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
 - name: Referenční informace
   items:
     - name: Ochrana osobních údajů uživatele
@@ -325,6 +312,8 @@
           href: reference-entity-regular-expression.md
         - name: Jednoduchá entita
           href: reference-entity-simple.md
+    - name: Mínění
+      href: luis-reference-prebuilt-sentiment.md
     - name: Materiály pro vývojáře
       href: developer-reference-resource.md
       displayName: 'SDK, API, quickstart, REST, cli, powershell, azure, rm, resource manager, samples, package, module, tool, dispatch, bot'
@@ -334,9 +323,15 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2092157'
     - name: Rozhraní REST API
       items:
-        - name: Vytváření rozhraní REST API V2
+        - name: Rozhraní REST API pro vytváření V3 (Preview)
+          href: 'https://aka.ms/luis-apim-v3-authoring'
+        - name: Rozhraní REST API pro předpovědi V3
+          href: 'https://aka.ms/luis-apim-v3-prediction'
+        - name: Rozhraní REST API pro vytváření V2
           href: 'https://go.microsoft.com/fwlink/?linkid=2092087'
-        - name: Rozhraní REST API V2 koncového bodu
+        - name: Rozhraní REST API pro předpovědi V2
+          href: 'https://go.microsoft.com/fwlink/?linkid=2092356'
+        - name: Rozhraní REST API pro koncové body V3
           href: 'https://go.microsoft.com/fwlink/?linkid=2092356'
         - name: Kódy HTTP
           displayName: '400, 401, 403, 409, 410, 414, 429'
@@ -413,7 +408,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Podpora jazyků a oblastí
       href: luis-language-support.md
-      displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, Germain, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+      displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, German, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
     - name: Plány Azure do budoucna
       href: 'https://go.microsoft.com/fwlink/?linkid=2092089'
     - name: Glosář

@@ -37,6 +37,14 @@
       href: security-center-using-recommendations.md
     - name: Správa napříč tenanty
       href: security-center-cross-tenant-management.md
+    - name: Zabezpečení kontejneru
+      items:
+        - name: Přehled zabezpečení kontejnerů
+          href: container-security.md
+        - name: Integrace se službou Azure Container Registry
+          href: azure-container-registry-integration.md
+        - name: Integrace se službou Azure Kubernetes Service
+          href: azure-kubernetes-service-integration.md
     - name: Incidenty a upozornění detekce hrozeb
       items:
         - name: Přehled výstrah zabezpečení
@@ -51,7 +59,7 @@
           href: security-center-alerts-compute.md
         - name: Detekce hrozeb pro datové služby
           href: security-center-alerts-data-services.md
-        - name: Detekce hrozeb pro vrstvu služeb Azure
+        - name: Detekce hrozeb pro vrstvy služeb Azure
           href: security-center-alerts-service-layer.md
         - name: Integrace s produkty zabezpečení Azure
           href: security-center-alerts-integration.md
@@ -67,33 +75,47 @@
       href: security-center-secure-score.md
     - name: Upgrade na pokročilé zabezpečení
       href: security-center-onboarding.md
-    - name: Ochrana serveru pomocí programu Microsoft Defender ATP
+    - name: Ochrana serverů pomocí služby Microsoft Defender ATP
       href: security-center-wdatp.md
-    - name: Pokročilé zabezpečení dat pro SQL na virtuálních počítačích Azure (Public Preview)
+    - name: Použití pokročilého zabezpečení dat pro SQL na virtuálních počítačích Azure
       href: security-center-iaas-advanced-data.md
     - name: Použití služby App Service k ochraně aplikací
       href: security-center-app-services.md
-    - name: Práce se zásadami zabezpečení
-      href: tutorial-security-policy.md
+    - name: Použití zásad zabezpečení
+      items:
+        - name: Přehled zásad zabezpečení
+          href: tutorial-security-policy.md
+        - name: Použití předdefinovaných zásad zabezpečení
+          href: security-center-policy-definitions.md
+        - name: Vytváření vlastních zásad zabezpečení
+          href: custom-security-policies.md
+        - name: Správa zásad s využitím REST API služby Azure Policy
+          href: configure-security-policy-azure-policy.md
+    - name: Přidání dynamických balíčků pro dodržování předpisů
+      href: update-regulatory-compliance-packages.md
     - name: Přizpůsobení zásad Information Protection
       href: security-center-info-protection-policy.md
     - name: Správa řešení zabezpečení
       href: security-center-partner-integration.md
     - name: Automatizace onboardingu pomocí PowerShellu
       href: security-center-powershell-onboarding.md
-    - name: Nastavení služby Security Center
-      href: security-center-policies-overview.md
+    - name: Integrace s řešením Windows Admin Center
+      href: windows-admin-center-integration.md
     - name: Porovnání standardních hodnot s využitím monitorování Integrity souborů
       href: security-center-file-integrity-monitoring-baselines.md
-    - name: Shromažďování dat
+    - name: Automatizace odpovědí na upozornění a doporučení
+      href: workflow-automation.md
+    - name: Export upozornění a doporučení
+      href: continuous-export.md
+    - name: Konfigurace shromažďování dat
       href: security-center-enable-data-collection.md
-    - name: Předdefinované zásady zabezpečení
-      href: security-center-policy-definitions.md
-    - name: E-mailová oznámení
+    - name: Nastavení služby Advanced Threat Protection pro Azure Key Vault
+      href: advanced-threat-protection-key-vault.md
+    - name: Nastavení e-mailových oznámení
       href: security-center-provide-security-contact-details.md
     - name: Ceny
       href: security-center-pricing.md
-    - name: Viditelnost v rámci celého tenanta
+    - name: Zajištění viditelnosti v rámci celého tenanta
       href: security-center-management-groups.md
     - name: Implementace doporučení pro zabezpečení
       items:
@@ -160,7 +182,7 @@
     - name: Správa uživatelských dat
       href: security-center-privacy.md
     - name: Dokumentace ke službě Azure Security Center pro IoT
-      href: 'https://docs.microsoft.com/en-us/azure/asc-for-iot/'
+      href: 'https://docs.microsoft.com/azure/asc-for-iot/'
     - name: Nejčastější dotazy
       href: security-center-faq.md
     - name: Dokumentace k zabezpečení Azure

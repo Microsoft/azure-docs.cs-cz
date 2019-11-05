@@ -1,0 +1,32 @@
+- name: Azure Blockchain Tokens (Preview)
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Informace o službě Azure Blockchain Tokens
+      href: overview.md
+- name: Koncepty
+  items:
+    - name: Správa účtů
+      href: account-management.md
+    - name: Šablony
+      href: templates.md
+    - name: Možnosti sestavování
+      href: composability.md
+- name: Zdroje a prostředky
+  items:
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: Rozšíření služby Azure Blockchain editoru Visual Studio Code
+      href: 'https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki'
+    - name: Ukázky kódů
+      href: 'https://github.com/Azure-Samples/blockchain'
+    - name: Komunita
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
+    - name: Fórum
+      href: 'https://aka.ms/workbenchforum'
+    - name: Zpětná vazba k produktu
+      href: 'https://feedback.azure.com/forums/586780-blockchain'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/blockchain-tokens'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/AzureBlockchainService'

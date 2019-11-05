@@ -1,0 +1,37 @@
+### YamlMime:Landing
+title: Azure Arc
+summary: Azure ARC rozšiřuje možnosti Azure Resource Manageru na servery se systémy Linux a Windows a také clustery Kubernetes na jakékoli infrastruktuře napříč místním prostředím, několika cloudy a hraničními zařízeními. Se službou Azure Arc mohou zákazníci také kdekoli spouštět datové služby Azure a využívat přitom výhody cloudových inovací, včetně vždy aktuálních datových funkcí, nasazování v řádu sekund (ne hodin) a dynamické škálovatelnosti na jakékoli infrastruktuře. Azure Arc pro servery je momentálně ve verzi Public Preview.
+metadata:
+  title: Azure Arc pro servery
+  description: Další informace o správě místních počítačů v Azure
+  author: bobbytreed
+  manager: carmonm
+  ms.service: azure-arc
+  ms.topic: landing-page
+  ms.date: 11/04/2019
+  ms.author: robreed
+  ms.openlocfilehash: 2ff0b9a194faf4d5a6b9e5181c52dc135208bdee
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73508546"
+landingContent:
+- title: Přehled služby Azure Arc
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Další informace o službě Azure Arc
+      url: https://aka.ms/Azure-Arc-Info
+- title: Připojení počítačů k Azure s využitím služby Azure Arc pro servery
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Arc pro servery?
+      url: ./servers/overview.md
+  - linkListType: quickstart
+    links:
+    - text: Připojení počítačů k Azure s využitím služby Azure Arc pro servery – portál
+      url: ./servers/quickstart-onboard-portal.md
+    - text: Připojení počítačů k Azure s využitím služby Azure Arc pro servery – PowerShell
+      url: ./servers/quickstart-onboard-portal.md

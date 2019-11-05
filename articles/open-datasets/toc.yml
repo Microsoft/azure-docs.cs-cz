@@ -9,7 +9,13 @@
 - name: Kurz
   items:
     - name: Regrese s využitím automatizovaného strojového učení
-      href: tutorial-opendatasets-automl.md
+      href: /azure/machine-learning/service/tutorial-auto-train-models?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+    - name: Obohacení modelu klasifikace obrázků
+      href: /azure/machine-learning/service/tutorial-train-models-with-aml?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+- name: Návody
+  items:
+    - name: Datové sady ve službě Azure Machine Learning
+      href: ../machine-learning/service/how-to-create-register-datasets.md?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
 - name: Ukázky
   displayName: 'example, examples, Jupyter, azure notebooks, python, notebook, GitHub'
   href: samples.md

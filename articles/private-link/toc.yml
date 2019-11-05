@@ -30,6 +30,8 @@
   items:
     - name: Privátní připojení k účtu úložiště
       href: create-private-endpoint-storage-portal.md
+    - name: Privátní připojení k účtu Cosmos DB
+      href: create-private-endpoint-cosmosdb-portal.md
     - name: Zablokování síťových zásad pro privátní koncový bod
       href: disable-private-endpoint-network-policy.md
     - name: Zablokování síťových zásad pro službu privátního propojení
