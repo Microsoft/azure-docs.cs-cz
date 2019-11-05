@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
-ms.date: 10/04/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 7c0dc40ee2d748b1f48c3254a3e3a6e197069c08
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6bc306551d158d4b996002de0bb5ab991a0bcbd9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515172"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467244"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Kurz: použití přizpůsobeného úložiště v Azure poznámkovém bloku
 
@@ -65,7 +65,7 @@ Systém obdrží pořadí voleb kávy a pak porovná tuto předpověď se známo
 > Toto je simulace, takže algoritmus pro odměnu je jednoduchý. Ve scénáři reálného světa by měl algoritmus používat obchodní logiku, případně i váhy pro různé aspekty prostředí zákazníka, a určit tak skóre odměňování. 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet [poznámkového bloku Azure](https://notebooks.azure.com/) . 
 * [Prostředek pro přizpůsobování Azure](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer). 
@@ -81,7 +81,7 @@ Popisy souborů:
 
 ## <a name="configure-personalizer-resource"></a>Konfigurace prostředku přizpůsobeného pro přizpůsobování
 
-V Azure Portal nakonfigurujte [prostředek](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) přizpůsobeného přizpůsobeného pomocí **Frekvence aktualizace modelu** nastavenou na 15 sekund a **dobu čekání na odměnu** 15 sekund. Tato nastavení najdete na stránce **[Nastavení](how-to-settings.md#configure-service-settings-in-the-azure-portal)** . 
+V Azure Portal nakonfigurujte [prostředek](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) přizpůsobeného přizpůsobeného pomocí **Frekvence aktualizace modelu** nastavenou na 15 sekund a **dobu čekání na odměnu** 15 sekund. Tyto hodnoty jsou k dispozici na stránce **[Konfigurace](how-to-settings.md#configure-service-settings-in-the-azure-portal)** . 
 
 |Nastavení|Hodnota|
 |--|--|
@@ -97,7 +97,7 @@ Tyto hodnoty mají velmi krátkou dobu trvání, aby bylo možné zobrazit změn
 
 ## <a name="run-notebook-cells"></a>Spustit buňky poznámkového bloku
 
-Spusťte každou spustitelnou buňku a počkejte, než se vrátí. Víte, že se nachází v závorkách vedle buňky místo `*` zobrazuje číslo. Následující části vysvětlují, co jednotlivé buňky programově a co mají očekávat pro výstup. 
+Spusťte každou spustitelnou buňku a počkejte, než se vrátí. Víte, že se nachází v závorkách vedle buňky místo `*`zobrazuje číslo. Následující části vysvětlují, co jednotlivé buňky programově a co mají očekávat pro výstup. 
 
 ### <a name="include-the-python-modules"></a>Zahrnutí modulů Pythonu
 
@@ -170,7 +170,7 @@ def get_last_updated(currentModifiedDate):
 
 Ověřte stav služby pomocí těchto dvou volání REST.
 
-Tyto buňky nemají žádný výstup. Funkce při volání vypíše výstup nastavení služby.
+Tyto buňky nemají žádný výstup. Funkce provede výstup hodnot služeb při volání.
 
 ```python
 def get_service_settings():
@@ -574,11 +574,11 @@ Tento graf znázorňuje úspěšnost modelu pro aktuální výchozí zásady uč
 ![Tento graf znázorňuje úspěšnost aktuálních zásad učení po dobu trvání testu.](./media/tutorial-azure-notebook/azure-notebook-chart-results.png)
 
 
-V ideálním cíli, který je na konci testu, smyčka je průměrnou mírou úspěšnosti, která je blízko až 100% minus průzkumu. Výchozí nastavení průzkumu je 20%. 
+V ideálním cíli, který je na konci testu, smyčka je průměrnou mírou úspěšnosti, která je blízko až 100% minus průzkumu. Výchozí hodnota průzkumu je 20%. 
 
 `100-20=80`
 
-Toto nastavení průzkumu se nachází v Azure Portal pro prostředek přizpůsobeného nástroji na stránce **Nastavení** . 
+Tato hodnota průzkumu se nachází v Azure Portal pro prostředek přizpůsobeného nástroji na stránce **Konfigurace** . 
 
 Pokud chcete najít lepší zásady učení na základě vašich dat na rozhraní API pro řazení, spusťte na portálu pro vaši smyčku pro přizpůsobování [offline testování](how-to-offline-evaluation.md) .
 
@@ -587,7 +587,7 @@ Pokud chcete najít lepší zásady učení na základě vašich dat na rozhran�
 1. V Azure Portal otevřete stránku **hodnocení** prostředku přizpůsobeného pro přizpůsobení.
 1. Vyberte **vytvořit vyhodnocení**.
 1. Zadejte požadovaná data zkušebního názvu a rozsah dat pro vyhodnocení smyčky. Rozsah kalendářních dat by měl obsahovat jenom dny, na které se zaměřujete pro vyhodnocení. 
-    ![In Azure Portal otevřete stránku vyhodnocení prostředku přizpůsobeného pro přizpůsobení. Vyberte vytvořit vyhodnocení. Zadejte název vyhodnocení a rozsah dat. ](./media/tutorial-azure-notebook/create-offline-evaluation.png)
+    ![v Azure Portal otevřete stránku vyhodnocení prostředku přizpůsobeného pro přizpůsobení. Vyberte vytvořit vyhodnocení. Zadejte název vyhodnocení a rozsah dat.](./media/tutorial-azure-notebook/create-offline-evaluation.png)
 
     Účelem spuštění tohoto testování v režimu offline je určit, jestli jsou k dispozici lepší zásady učení pro funkce a akce použité v této smyčce. Pokud chcete zjistit, jestli jsou zásady optimalizace zapnuté, ujistěte se, že jsou zapnuté **zásady optimalizace** .
 
@@ -598,7 +598,7 @@ Pokud chcete najít lepší zásady učení na základě vašich dat na rozhran�
 
 ## <a name="change-update-model-frequency-to-5-minutes"></a>Změna frekvence aktualizace modelu na 5 minut
 
-1. V Azure Portal ještě na prostředku přizpůsobeného nástroji vyberte stránku **Nastavení** . 
+1. V Azure Portal ještě na prostředku přizpůsobeného nástroji vyberte stránku **Konfigurace** . 
 1. Změňte **Četnost aktualizace modelu** a nastavte **dobu čekání** na 5 minut a vyberte **Uložit**.
 
 Přečtěte si další informace o [době čekání na odměnu](concept-rewards.md#reward-wait-time) a [četnosti aktualizací modelu](how-to-settings.md#model-update-frequency).

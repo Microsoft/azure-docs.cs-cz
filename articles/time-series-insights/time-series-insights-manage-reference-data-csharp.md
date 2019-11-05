@@ -3,21 +3,20 @@ title: Správa referenčních dat v prostředí Azure Time Series Insights C# po
 description: Tento článek popisuje, jak spravovat referenční data pro prostředí Azure Time Series Insights vytvořením vlastní aplikace napsané v jazyce .NET C# (c-Sharp).
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: d4f206b63be38c902f93a084889e60184ce03e07
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 4eb8a22ee56203fe84df6ee1cff779e3f3bdf491
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958041"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990048"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Správa referenčních dat GA pro Azure Time Series Insights prostředí pomocíC#
 
@@ -29,7 +28,7 @@ Před kompilací a spuštěním ukázkového kódu proveďte následující krok
 
 1. [Vytvořte referenční datovou sadu](time-series-insights-add-reference-data-set.md).
 
-1. Nakonfigurujte autorizační přístupový token pro aplikaci. Ujistěte se, že se token získává prostřednictvím rozhraní Azure Active Directory API. Tento token byste měli předat v hlavičce `Authorization` každého požadavku rozhraní API pro dotazování.
+1. Nakonfigurujte autorizační přístupový token pro aplikaci. Ujistěte se, že se token získává prostřednictvím rozhraní Azure Active Directory API. Tento token byste měli předat v hlavičce `Authorization` každé žádosti rozhraní API pro dotazy.
 
    Informace o tom, jak nastavit neinteraktivní aplikace, najdete v tématu [ověřování a autorizace](time-series-insights-authentication-and-authorization.md).
 

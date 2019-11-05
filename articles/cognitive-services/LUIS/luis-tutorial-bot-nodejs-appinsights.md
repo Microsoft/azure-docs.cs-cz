@@ -9,17 +9,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: f488cfaf1e55edd8ae0d2bfd177553deb2677f8b
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: b0bc4a93df7db7145accf2b485c45256f53c324d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387911"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498954"
 ---
 # <a name="tutorial-add-luis-results-to-application-insights-from-a-bot-in-nodejs"></a>Kurz: Přidání výsledků LUIS do Application Insights z robota v Node. js
-V tomto kurzu se pro [Application Insights](https://azure.microsoft.com/services/application-insights/) úložiště dat telemetrie přidají informace o robotech a Language Understanding. Jakmile tato data máte, můžete je pomocí jazyka Kusto nebo Power BI analyzovat, agregovat a sestavovat v reálném čase a entity utterance. Tato analýza pomůže zároveň pomáhá určit, pokud by měl přidat nebo upravit záměry a entity aplikace LUIS.
+V tomto kurzu se pro [Application Insights](https://azure.microsoft.com/services/application-insights/) úložiště dat telemetrie přidají informace o robotech a Language Understanding. Jakmile tato data máte, můžete je pomocí jazyka Kusto nebo Power BI analyzovat, agregovat a sestavovat v reálném čase a entity utterance. Tato analýza vám pomůže určit, jestli byste měli přidat nebo upravit záměry a entity aplikace LUIS.
+
+[!INCLUDE [Waiting for Bot refresh](./includes/wait-bot-upgrade.md)]
 
 V tomto kurzu se naučíte:
 
@@ -37,7 +39,7 @@ V tomto kurzu se naučíte:
 Veškerý kód v tomto kurzu je k dispozici v [úložišti Azure-samples Language Understanding GitHubu](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/v4/luis-nodejs-bot-johnsmith-src-telemetry). 
 
 ## <a name="add-application-insights-to-web-app-bot-project"></a>Přidat Application Insights do projektu bot webové aplikace
-V současné době služba Application Insights, použít v tomto použijete web app bot shromažďuje telemetrii celkový stav pro robota. Neshromažďuje informace o LUIS. 
+V současné době služba Application Insights použitá v této bot webové aplikace shromažďuje obecnou telemetrii stavu pro robota. Neshromažďuje informace o LUIS. 
 
 Aby bylo možné zachytit informace LUIS, robot webové aplikace musí mít nainstalovaný a nakonfigurovaný balíček npm pro **[Application Insights](https://www.npmjs.com/package/applicationinsights)** .  
 
@@ -51,7 +53,7 @@ Aby bylo možné zachytit informace LUIS, robot webové aplikace musí mít nain
     
 
 
-## <a name="capture-and-send-luis-query-results-to-application-insights"></a>Zaznamenávat a odesílat LUIS výsledků dotazu do Application Insights
+## <a name="capture-and-send-luis-query-results-to-application-insights"></a>Zaznamenání a odeslání výsledků dotazu LUIS do Application Insights
 
 1. V VSCode vytvořte nový soubor **appInsightsLog. js** a přidejte následující kód:
 
@@ -177,7 +179,7 @@ Aby bylo možné zachytit informace LUIS, robot webové aplikace musí mít nain
 
 Aby bylo možné přidat data do Application Insights, budete potřebovat klíč instrumentace.
 
-1. V prohlížeči v [Azure Portal](https://portal.azure.com)najděte prostředek **Application Insights** robota. Jeho název bude mít většinu názvu bot, potom náhodně znaky na konci názvu, například `luis-nodejs-bot-johnsmithxqowom`. 
+1. V prohlížeči v [Azure Portal](https://portal.azure.com)najděte prostředek **Application Insights** robota. Jeho název bude mít většinu názvu bot a potom náhodně znaky na konci názvu, například `luis-nodejs-bot-johnsmithxqowom`. 
 1. Na Application Insights prostředku na stránce **Přehled** zkopírujte **klíč instrumentace**.
 1. V VSCode otevřete soubor **. env** v kořenu projektu bot. Tento soubor obsahuje všechny proměnné prostředí.  
 1. Přidejte novou proměnnou `MicrosoftApplicationInsightsInstrumentationKey` s hodnotou klíče instrumentace. Nevkládat hodnotu do uvozovek. 
@@ -194,9 +196,9 @@ Aby bylo možné přidat data do Application Insights, budete potřebovat klíč
 
 1. Zeptejte se robota na otázku. Tento [Krok](luis-nodejs-tutorial-bf-v4.md#ask-bot-a-question-for-the-book-flight-intent) je k dispozici v předchozím kurzu.
 
-## <a name="view-luis-entries-in-application-insights"></a>Zobrazení LUIS položky ve službě Application Insights
+## <a name="view-luis-entries-in-application-insights"></a>Zobrazit LUIS položky v Application Insights
 
-Otevřete službu Application Insights zobrazíte položky LUIS. Může trvat několik minut, než se data zobrazí v Application Insights.
+Otevřete Application Insights pro zobrazení položek LUIS. Může trvat několik minut, než se data zobrazí v Application Insights.
 
 1. V [Azure Portal](https://portal.azure.com)otevřete prostředek Application Insights robota. 
 1. Po otevření prostředku vyberte **Hledat** a vyhledejte všechna data za posledních **30 minut** pomocí typu události **Trace**. Vyberte trasování s názvem **Luis**. 
@@ -207,8 +209,8 @@ Otevřete službu Application Insights zobrazíte položky LUIS. Může trvat n�
 ## <a name="query-application-insights-for-intent-score-and-utterance"></a>Dotaz Application Insights pro záměr, skóre a utterance
 Application Insights vám dává oprávnění k dotazování dat pomocí jazyka [Kusto](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview#what-language-do-log-queries-use) a také k jejich exportu do [Power BI](https://powerbi.microsoft.com). 
 
-1. Vyberte **protokol (Analytics)** . Otevře se okno nové okno dotazu v horní části a okno tabulky dat pod ním. Pokud jste použili databází před, je toto uspořádání zkušenosti. Dotaz představuje vaše předchozí filtrovaná data. Ve sloupci **CustomDimensions** jsou informace robot a Luis.
-1. Pokud chcete načíst nejvyšší záměr, skóre a utterance, přidejte následující těsně nad poslední řádek ( `|top...` řádek) v okně dotazu:
+1. Vyberte **protokol (Analytics)** . Otevře se nové okno s oknem dotazu v horní části a v okně tabulky dat níže. Pokud jste databáze používali dřív, toto uspořádání je známé. Dotaz představuje vaše předchozí filtrovaná data. Ve sloupci **CustomDimensions** jsou informace robot a Luis.
+1. Pokud chcete získat nejvyšší záměr, skóre a utterance, přidejte následující těsně nad poslední řádek (`|top...` řádek) do okna dotazu:
 
     ```kusto
     | extend topIntent = tostring(customDimensions.LUIS_luisResponse_luisResult_topScoringIntent_intent)
@@ -216,15 +218,15 @@ Application Insights vám dává oprávnění k dotazování dat pomocí jazyka 
     | extend utterance = tostring(customDimensions.LUIS_luisResponse_text)
     ```
 
-1. Spusťte dotaz. Nové sloupce topIntent, skóre a utterance jsou k dispozici. Vyberte sloupec topIntent, který chcete seřadit.
+1. Spusťte dotaz. K dispozici jsou nové sloupce topIntent, skore a utterance. Vyberte sloupec topIntent, který chcete seřadit.
 
 Přečtěte si další informace o [dotazovacím jazyku Kusto](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) nebo [exportujte data do Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace, které chcete přidat do application insights data zahrnuje ID aplikace, ID verze, datum poslední změny modelu, datum posledního trénování, datum posledního publikování. Tyto hodnoty můžete načíst buď z adresy URL koncového bodu (ID aplikace a ID verze), nebo z volání rozhraní API pro vytváření obsahu, které pak nastavíte v nastavení robota webové aplikace a odtud z něj načtete.  
+Další informace, které můžete chtít přidat do dat Application Insights, zahrnují ID aplikace, ID verze, datum poslední změny modelu, datum posledního vlaku, datum posledního publikování. Tyto hodnoty můžete načíst buď z adresy URL koncového bodu (ID aplikace a ID verze), nebo z volání rozhraní API pro vytváření obsahu, které pak nastavíte v nastavení robota webové aplikace a odtud z něj načtete.  
 
-Pokud používáte stejné předplatné koncový bod pro více než jednu aplikaci LUIS, by měl také obsahovat ID předplatného a vlastnost s informacemi o tom, že se jedná o sdílený klíč. 
+Pokud používáte stejné předplatné koncového bodu pro více než jednu aplikaci LUIS, měli byste také zahrnout ID předplatného a vlastnost informující o tom, že se jedná o sdílený klíč. 
 
 > [!div class="nextstepaction"]
-> [Další informace o příklad projevy](luis-how-to-add-example-utterances.md)
+> [Další informace o příkladu projevy](luis-how-to-add-example-utterances.md)

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8e8ea11da0339103375009709be8795cdede2448
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 1a5871a052998e9dd32d698c5a89f57064cc7d6b
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972931"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72987569"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Použití Azure AD jako zprostředkovatele identity pro vCenter v privátním cloudu CloudSimple
 
@@ -86,16 +86,23 @@ Volitelně můžete nakonfigurovat další funkce služby Azure AD.  Nevyžaduj�
     | **Možnost** | **Popis** |
     |------------|-----------------|
     | **Název** | Název zdroje identity |
-    | **Základní rozlišující název pro uživatele** | Základní rozlišující název pro uživatele  Pro Azure AD použijte: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>`Příklad: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`.|
+    | **Základní rozlišující název pro uživatele** | Základní rozlišující název pro uživatele  Pro Azure AD použijte: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` příklad: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`.|
     | **Název domény** | Nezadávejte domény, například example.com. V tomto textovém poli nezadávejte IP adresu. |
     | **Alias domény** | *(volitelné)* Název domény pro rozhraní NetBIOS. Pokud používáte ověřování pomocí rozhraní SSPI, přidejte název domény služby Active Directory jako alias zdroje identity. |
-    | **Základní rozlišující název pro skupiny** | Základní rozlišující název pro skupiny Pro Azure AD použijte: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>`Případě`OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
-    | **Adresa URL primárního serveru** | Server LDAP primárního řadiče domény pro doménu.<br><br>Použijte formát `ldaps://hostname:port`. Port je obvykle 636 pro připojení LDAPs. <br><br>Certifikát, který vytváří vztah důvěryhodnosti pro koncový bod LDAPS serveru Active Directory, se vyžaduje při použití `ldaps://` v primární nebo sekundární adrese URL protokolu LDAP. |
+    | **Základní rozlišující název pro skupiny** | Základní rozlišující název pro skupiny Pro Azure AD použijte: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` příklad: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
+    | **Adresa URL primárního serveru** | Server LDAP primárního řadiče domény pro doménu.<br><br>Použijte `ldaps://hostname:port`formátu. Port je obvykle 636 pro připojení LDAPs. <br><br>Certifikát, který vytváří vztah důvěryhodnosti pro koncový bod LDAPs serveru Active Directory, se vyžaduje při použití `ldaps://` v primární nebo sekundární adrese URL protokolu LDAP. |
     | **Adresa URL sekundárního serveru** | Adresa serveru LDAP sekundárního řadiče domény, který se používá pro převzetí služeb při selhání. |
-    | **Zvolit certifikát** | Pokud chcete použít LDAPS se serverem služby Active Directory LDAP nebo zdrojem identity serveru OpenLDAP, zobrazí se po zadání `ldaps://` v textovém poli Adresa URL tlačítko zvolit certifikát. Sekundární adresa URL není povinná. |
+    | **Zvolit certifikát** | Pokud chcete použít LDAPs se serverem služby Active Directory LDAP nebo zdrojem identity serveru OpenLDAP, po zadání `ldaps://` v textovém poli URL se zobrazí tlačítko zvolit certifikát. Sekundární adresa URL není povinná. |
     | **Uživatelské jméno** | ID uživatele v doméně, který má minimální přístup jen pro čtení k základnímu rozlišujícímu názvu pro uživatele a skupiny. |
     | **Heslo** | Heslo uživatele, který je určen uživatelským jménem. |
 
 3. Po eskalaci oprávnění se přihlaste k privátnímu cloudu vCenter.
 4. Podle pokynů v části [Přidání zdroje identity na vCenter](set-vcenter-identity.md#add-an-identity-source-on-vcenter) použijte hodnoty z předchozího kroku a nastavte Azure Active Directory jako zdroj identity.
 5. Přidat uživatele/skupiny z Azure AD do skupin vCenter, jak je popsáno v tématu, [Přidání členů do skupiny s jednotným přihlašováním vCenter](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
+
+> [!CAUTION]
+> Noví uživatelé musí být přidáni pouze *ke skupině*Cloud-Owner-Group *-Global-cluster-admin-Group*, *Cloud-Global-Storage-admin-Group*, *Cloud-Global-Network-admin* -Group nebo, *Cloud-Global-VM-admin-Group*.  Uživatelé přidaní do skupiny *správců* se automaticky odeberou.  Do skupiny *Administrators* musí být přidáni pouze účty služeb.
+
+## <a name="next-steps"></a>Další kroky
+
+* [Další informace o modelu oprávnění privátního cloudu](learn-private-cloud-permissions.md)

@@ -4,30 +4,30 @@ ms.service: billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: d00af77a2d502cb534a4ab4a0db9231e5e8748b7
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: ad87964216db72cfef447a18d4cd05b8a976491b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "69636449"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476953"
 ---
-| Resource | [Plán spotřeby](../articles/azure-functions/functions-scale.md#consumption-plan) | [Plán Premium](../articles/azure-functions/functions-scale.md#premium-plan) | [Plán App Service](../articles/azure-functions/functions-scale.md#app-service-plan) <sup>1</sup> |
+| Prostředek | [Plán spotřeby](../articles/azure-functions/functions-scale.md#consumption-plan) | [Plán Premium](../articles/azure-functions/functions-scale.md#premium-plan) | [App Service plán](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
 | Horizontální navýšení kapacity | Řízená událostmi | Řízená událostmi | [Ruční nebo automatické škálování](../articles/app-service/manage-scale-up.md) | 
-| Maximální počet instancí | 200 | 20 | 10-20 |
+| Max. instancí | 200 | 20 | 10-20 |
 |Výchozí doba [Trvání vyprší](../articles/azure-functions/functions-scale.md#timeout) (min.) |5 | 30 |30<sup>2</sup> |
 |Maximální [Doba trvání vypršela](../articles/azure-functions/functions-scale.md#timeout) (min.) |10 | Unbounded | neohraničené<sup>3</sup> |
 | Maximální počet odchozích připojení (na instanci) | 600 aktivní (celkem 1200) | Unbounded | Unbounded |
 | Maximální velikost požadavku (MB)<sup>4</sup> | 100 | 100 | 100 |
-| Maximální délka řetězce dotazu<sup>4</sup> | 4096 | 4096 | 4096 |
+| Maximální délka řetězce dotazu<sup>4</sup> | 4 096 | 4 096 | 4 096 |
 | Maximální délka adresy URL žádosti<sup>4</sup> | 8192 | 8192 | 8192 |
 | [ACU](../articles/virtual-machines/windows/acu.md) na instanci | 100 | 210-840 | 100-840 |
-| Maximální velikost paměti (GB na instanci) | 1.5 | 3,5 – 14 | 1,75 – 14 |
+| Maximální velikost paměti (GB na instanci) | 1,5 | 3,5 – 14 | 1,75 – 14 |
 | Aplikace Function App na plán |100 |100 |neohraničené<sup>5</sup> |
 | [Plány služby App Service](../articles/app-service/overview-hosting-plans.md) | 100 na [oblast](https://azure.microsoft.com/global-infrastructure/regions/) |100 na skupinu prostředků |100 na skupinu prostředků |
 | Úložiště<sup>6</sup> |1 GB |250 GB |50-1000 GB |
 | Vlastní domény na aplikaci</a> |500<sup>7</sup> |500 |500 |
-| [Podpora protokolu SSL](../articles/app-service/app-service-web-tutorial-custom-ssl.md) vlastní domény |zahrnuto do nevázaného SNI SSL připojení | neohraničená SNI SSL a jsou zahrnutá 1 IP SSL připojení. |neohraničená SNI SSL a jsou zahrnutá 1 IP SSL připojení. | 
+| [Podpora protokolu SSL](../articles/app-service/configure-ssl-bindings.md) vlastní domény |zahrnuto do nevázaného SNI SSL připojení | neohraničená SNI SSL a jsou zahrnutá 1 IP SSL připojení. |neohraničená SNI SSL a jsou zahrnutá 1 IP SSL připojení. | 
 
 <sup>1</sup> Pokud chcete určit omezení pro různé možnosti plánu App Service, přečtěte si [omezení App Service plánu](../articles/azure-subscription-service-limits.md#app-service-limits).  
 <sup>2</sup> ve výchozím nastavení je časový limit pro modul runtime Functions 1. x v plánu App Service neohraničený.  

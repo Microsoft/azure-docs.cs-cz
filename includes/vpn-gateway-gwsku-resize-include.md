@@ -5,23 +5,23 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/15/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f6fd4039614dbd7c1a2b2c6ba8403502a6420fe3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4842c55b2b1fd23f4d6b7996ccf02e7141504836
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174890"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495780"
 ---
-Pro aktuální SKU (VpnGw1, VpnGw2 a VPNGW3), kterého chcete změnit velikost skladová položka pro upgrade na výkonnější jedna brána lze použít `Resize-AzVirtualNetworkGateway` rutiny Powershellu. Můžete také provést downgrade použití této rutiny velikost SKU brány. Pokud používáte základní bránu SKU, [místo toho použijte tyto pokyny](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md#resize) Změna velikosti brány.
+Pomocí rutiny `Resize-AzVirtualNetworkGateway` PowerShellu můžete upgradovat nebo downgradovat Generation1 nebo Generation2 SKLADOVOU položku (všechny SKU VpnGw lze změnit s výjimkou základních SKU). Pokud používáte SKU základní brány, [použijte místo toho tyto pokyny](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md#resize) ke změně velikosti brány.
 
-Následující příklad PowerShell ukazuje během změny velikosti pro VpnGw2 skladové položky brány.
+Následující příklad prostředí PowerShell zobrazuje SKLADOVOU položku brány, která se mění podle velikosti VpnGw2.
 
 ```azurepowershell-interactive
 $gw = Get-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku VpnGw2
 ```
 
-Můžete taky změnit velikost brány na webu Azure Portal tak, že přejdete **konfigurace** stránce pro vaši bránu virtuální sítě a z rozevíracího seznamu výběru různých SKU.
+Můžete také změnit velikost brány v Azure Portal tak, že na ni kliknete na **konfigurační** stránku brány virtuální sítě a z rozevíracího seznamu vyberete jinou skladovou položku.

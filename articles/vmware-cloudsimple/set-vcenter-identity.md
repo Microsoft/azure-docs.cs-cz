@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d314cc55096f681d1bcf66d33c4c30a4060751e9
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 9d2986acc47087c267193eee43136e030abcc422
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972652"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990321"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Nastavení zdrojů identity vCenter pro používání služby Active Directory
 
@@ -31,6 +31,10 @@ Doménu a řadiče domény služby Active Directory můžete nastavit některým
 V této příručce se dozvíte, jak nastavit doménu a řadiče domény služby Active Directory, které jsou spuštěné místně nebo jako virtuální počítače ve vašich předplatných.  Pokud chcete jako zdroj identity použít Azure AD, přečtěte si téma [použití Azure AD jako zprostředkovatele identity pro vCenter v CloudSimple privátním cloudu](azure-ad.md) , kde najdete podrobné pokyny k nastavení zdroje identity.
 
 Před [přidáním zdroje identity](#add-an-identity-source-on-vcenter)dočasně předávejte [oprávnění vCenter](escalate-private-cloud-privileges.md).
+
+> [!CAUTION]
+> Noví uživatelé musí být přidáni pouze *ke skupině*Cloud-Owner-Group *-Global-cluster-admin-Group*, *Cloud-Global-Storage-admin-Group*, *Cloud-Global-Network-admin* -Group nebo, *Cloud-Global-VM-admin-Group*.  Uživatelé přidaní do skupiny *správců* se automaticky odeberou.  Do skupiny *Administrators* musí být přidáni pouze účty služeb.  
+
 
 ## <a name="identity-source-options"></a>Možnosti zdroje identity
 
@@ -54,9 +58,9 @@ Při nastavování domény služby Active Directory použijte informace v násle
 | **Název domény** | Nezadávejte domény, například example.com. V tomto textovém poli nezadávejte IP adresu. |
 | **Alias domény** | Název domény pro rozhraní NetBIOS. Pokud používáte ověřování pomocí rozhraní SSPI, přidejte název domény služby Active Directory jako alias zdroje identity. |
 | **Základní rozlišující název pro skupiny** | Základní rozlišující název pro skupiny |
-| **Adresa URL primárního serveru** | Server LDAP primárního řadiče domény pro doménu.<br><br>Použijte formát `ldap://hostname:port` nebo. `ldaps://hostname:port` Port je obvykle 389 pro připojení LDAP a 636 pro připojení LDAPs. Pro nasazení služby Active Directory Multi-Domain Controller je port obvykle 3268 pro LDAP a 3269 pro LDAPs.<br><br>Certifikát, který vytváří vztah důvěryhodnosti pro koncový bod LDAPS serveru Active Directory, se vyžaduje při použití `ldaps://` v primární nebo sekundární adrese URL protokolu LDAP. |
+| **Adresa URL primárního serveru** | Server LDAP primárního řadiče domény pro doménu.<br><br>Použijte formát `ldap://hostname:port` nebo `ldaps://hostname:port`. Port je obvykle 389 pro připojení LDAP a 636 pro připojení LDAPs. Pro nasazení služby Active Directory Multi-Domain Controller je port obvykle 3268 pro LDAP a 3269 pro LDAPs.<br><br>Certifikát, který vytváří vztah důvěryhodnosti pro koncový bod LDAPs serveru Active Directory, se vyžaduje při použití `ldaps://` v primární nebo sekundární adrese URL protokolu LDAP. |
 | **Adresa URL sekundárního serveru** | Adresa serveru LDAP sekundárního řadiče domény, který se používá pro převzetí služeb při selhání. |
-| **Zvolit certifikát** | Pokud chcete použít LDAPS se serverem služby Active Directory LDAP nebo zdrojem identity serveru OpenLDAP, zobrazí se po zadání `ldaps://` v textovém poli Adresa URL tlačítko zvolit certifikát. Sekundární adresa URL není povinná. |
+| **Zvolit certifikát** | Pokud chcete použít LDAPs se serverem služby Active Directory LDAP nebo zdrojem identity serveru OpenLDAP, po zadání `ldaps://` v textovém poli URL se zobrazí tlačítko zvolit certifikát. Sekundární adresa URL není povinná. |
 | **Uživatelské jméno** | ID uživatele v doméně, který má minimální přístup jen pro čtení k základnímu rozlišujícímu názvu pro uživatele a skupiny. |
 | **Heslo** | Heslo uživatele, který je určen uživatelským jménem. |
 
@@ -114,7 +118,7 @@ Po navázání síťového připojení použijte postup v části [Přidání m�
 
     ![Jednotné přihlašování](media/OnPremAD02.png)
 
-5. Otevřete kartu **zdroje identit** a kliknutím **+** přidejte nový zdroj identity.
+5. Otevřete kartu **zdroje identit** a kliknutím na **+** přidejte nový zdroj identity.
 
     ![Zdroje identity](media/OnPremAD03.png)
 

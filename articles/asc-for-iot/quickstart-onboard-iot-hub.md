@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2019
 ms.author: mlottner
-ms.openlocfilehash: 45eaa6d4c66c9ec8e25d728fb70f389912a00793
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 67361c402bdbc82d5df01709dc962b59671cb2aa
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928441"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991404"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Rychlý Start: zprovoznění Azure Security Center pro službu IoT v IoT Hub
 
@@ -44,7 +44,7 @@ Postup při povolení zabezpečení na IoT Hub:
 
 1. Otevřete **IoT Hub** v Azure Portal. 
 1. V nabídce **zabezpečení** klikněte na **zabezpečení vašeho řešení IoT**.    
-1. Klikněte na **Uložit**. 
+
 
 Blahopřejeme! Dokončili jste povolování Azure Security Center pro IoT na IoT Hub. 
 

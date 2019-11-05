@@ -3,7 +3,7 @@ title: Pochopení uchovávání dat ve vašem Azure Time Series Insights prostř
 description: Tento článek popisuje dvě nastavení, která řídí uchovávání dat ve vašem Azure Time Series Insightsovém prostředí.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2939e37c891a6ecc0421062493cab2e5d79223b5
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 9dd771d44452ddc36913caf04f3c3a2d15ff1f08
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330901"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990131"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Pochopení uchovávání dat v Azure Time Series Insights
 
@@ -88,9 +88,9 @@ Po obnovení příchozího přenosu dat:
 
 V ovlivněných Event Hubs zvažte úpravu vlastnosti **uchovávání zpráv** , aby se minimalizovala ztráta dat, když dojde k pozastavení vstupu v Time Series Insights.
 
-[@no__t – uchovávání zpráv centra 1Event.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
+[![uchovávání zpráv centra událostí.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
 
-Pokud nejsou u zdroje událostí nakonfigurované žádné vlastnosti (`timeStampPropertyName`), Time Series Insights ve výchozím nastavení časové razítko doručení do centra událostí jako osu X. Pokud je `timeStampPropertyName` nakonfigurovaná tak, aby byla něco jiného, prostředí vyhledá nakonfigurované `timeStampPropertyName` v datovém paketu, když se události analyzují.
+Pokud ve zdroji událostí (`timeStampPropertyName`) nejsou nakonfigurované žádné vlastnosti, Time Series Insights ve výchozím nastavení časové razítko doručení do centra událostí jako osu X. Pokud je `timeStampPropertyName` nakonfigurovaná tak, aby byla něco jiného, prostředí vyhledá nakonfigurovanou `timeStampPropertyName` v datovém paketu, když se události analyzují.
 
 Přečtěte si [, jak škálovat Time Series Insights prostředí](time-series-insights-how-to-scale-your-environment.md) a škálovat prostředí tak, aby vyhovovalo další kapacitě nebo zvýšila délku uchovávání.
 

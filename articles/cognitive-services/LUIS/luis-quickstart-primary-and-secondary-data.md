@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Jednoduchá entita, seznam frází – LUIS'
+title: 'Kurz: jednoduchá entita, seznam frází – LUIS'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu extrahujete pomocí jednoduché entity data z pracovní úlohy, která se naučila z utterance. Za účelem zvýšení přesnosti extrakce přidáte seznam termínů, které jsou pro jednoduchou entitu specifické.
 services: cognitive-services
@@ -9,20 +9,22 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 87e4fe3671f419383cb342fdb7dca55a8d2eb45d
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: a917176cb06e833745996326520341c1f819c5bf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376273"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465399"
 ---
-# <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Kurz: Extrahování názvů pomocí jednoduchých entit a seznamu frází
+# <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Kurz: extrakce názvů pomocí jednoduchých entit a seznamu frází
 
 V tomto kurzu extrahujete strojově naučená data názvu pracovní pozice z promluvy pomocí **jednoduché** entity. Za účelem zvýšení přesnosti extrakce přidáte seznam termínů, které jsou pro jednoduchou entitu specifické.
 
 Jednoduchá entita rozpozná jeden koncept dat obsažený ve slovech nebo frázích.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **V tomto kurzu se naučíte:**
 
@@ -33,7 +35,7 @@ Jednoduchá entita rozpozná jeden koncept dat obsažený ve slovech nebo fráz�
 > * Přidat seznam frází, aby se zvýšila slova signálů
 > * Trénování 
 > * Publikování 
-> * Zjistit záměry a entity z koncového bodu
+> * Získat záměry a entity z koncového bodu
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
@@ -93,7 +95,7 @@ Jakmile označíte entity v ukázkových promluvách, je důležité přidat sez
 
 1. V promluvě `I want to apply for the new accounting job` vyberte `accounting`, zadejte `Job` do horního pole v místní nabídce a pak v této místní nabídce vyberte **Create new entity** (Vytvořit novou entitu). 
 
-    [![Snímek obrazovky služby LUIS se záměrem "ApplyForJob" s vytvořit entitu kroky zvýrazněnou](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "snímek obrazovky služby LUIS se záměrem \"ApplyForJob\" s vytvořit entitu kroky zvýrazněnou")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
+    [![Snímek obrazovky LUIS s záměrem "ApplyForJob" a zvýrazněnými kroky pro vytvoření entity](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "Snímek obrazovky LUIS s záměrem "ApplyForJob" a zvýrazněnými kroky pro vytvoření entity")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
 
 1. V automaticky otevíraném okně ověřte název a typ entity a vyberte **Done** (Hotovo).
 
@@ -101,7 +103,7 @@ Jakmile označíte entity v ukázkových promluvách, je důležité přidat sez
 
 1. Ve zbývajících projevy označte slova související s úlohou entitou **úlohy** , a to tak, že vyberete slovo nebo frázi a potom v místní nabídce vyberete možnost **úloha** . 
 
-    [![Snímek obrazovky LUIS označování entit úlohy zvýrazněný](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "snímek obrazovky LUIS označování entit úlohy zvýrazněný")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
+    [![Obrázek zvýrazněné entity úlohy označování LUIS](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Obrázek zvýrazněné entity úlohy označování LUIS")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
 
 ## <a name="add-more-example-utterances-and-mark-entity"></a>Přidat další příklady projevy a označit entitu
@@ -231,7 +233,7 @@ Otevřete soubor [Jobs-phrase-list. csv](https://github.com/Azure-Samples/cognit
 
 1. Nový seznam frází pojmenujte `JobNames` a zkopírujte seznam ze souboru jobs-phrase-list.csv do textového pole **Values** (Hodnoty).
 
-    [![Snímek obrazovky vytvořit dialogové okno Nový seznam frázi rozbalovací](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "snímek obrazovky vytvořit dialogové okno Nový seznam frázi místní")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
+    [![Snímek obrazovky dialogového okna pro vytvoření nového seznamu frází](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Snímek obrazovky dialogového okna pro vytvoření nového seznamu frází")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
     Pokud chcete přidat další slova do seznamu frází, vyberte znovu **příkaz** , zkontrolujte nové **související hodnoty** a přidejte relevantní. 
 
@@ -239,7 +241,7 @@ Otevřete soubor [Jobs-phrase-list. csv](https://github.com/Azure-Samples/cognit
 
 1. Vyberte **Hotovo** a aktivujte seznam frází.
 
-    [![Snímek obrazovky vytvořit dialogové okno Nový seznam frázi místní s slova v seznamu hodnot frázi](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "snímek obrazovky s novou frázi seznamu dialogové okno Vytvořit místní obsahující slova v seznamu hodnot fráze")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
+    [![Snímek obrazovky dialogového okna pro vytvoření nové fráze dialogová okna s slovy v poli hodnoty seznamu frází](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Snímek obrazovky dialogového okna pro vytvoření nové fráze dialogová okna s slovy v poli hodnoty seznamu frází")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
 1. Spusťte znovu výuku a publikujte aplikaci, abyste mohli používat seznam frází.
 
@@ -294,7 +296,7 @@ Otevřete soubor [Jobs-phrase-list. csv](https://github.com/Azure-Samples/cognit
 * [Testování na portálu LUIS](luis-interactive-test.md)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu aplikace Human Resources používá strojově naučenou jednoduchou entitu k vyhledání názvů pracovních pozic v promluvách. Vzhledem k tomu, že názvy pracovních pozic mohou obsahovat celou škálu slov a frází, potřebovala aplikace seznam frází, pomocí nichž lépe rozpozná slova názvu pracovní pozice. 
 

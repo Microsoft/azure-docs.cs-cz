@@ -6,20 +6,20 @@ manager: nitinme
 description: Dvě tabulky reprezentující Registry kontejnerů, úložiště a názvy imagí pro všechny nabídky služby pro rozpoznávání.
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/06/2019
+ms.date: 10/09/2019
 ms.author: dapine
-ms.openlocfilehash: 181f4acd86dfacb15592ded6f2df3287e3dc13bf
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
-ms.translationtype: MT
+ms.openlocfilehash: c1593cb3dad7ee1370a66747fa3fe47e93c19957
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130145"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499150"
 ---
 ### <a name="container-repositories-and-images"></a>Úložiště kontejnerů a obrázky
 
 Níže uvedené tabulky jsou vyčerpávajícím seznamem dostupných imagí kontejneru nabízených službou Azure Cognitive Services.
 
-#### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>Public "inhradloed" (registr kontejneru `mcr.microsoft.com`:)
+#### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>Public "inhradloed" (Registry kontejneru: `mcr.microsoft.com`)
 
 Microsoft Container Registry hostuje všechny veřejně dostupné "nebránované" kontejnery pro Cognitive Services.
 
@@ -37,9 +37,8 @@ Registry Preview kontejneru hostují všechny veřejně dostupné kontejnery "ga
 | Služba | Kontejner | Název Container Registry/úložiště/image |
 |--|--|--|
 | [Detektor anomálií](../../anomaly-detector/anomaly-detector-container-howto.md) | Detektor anomálií | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector` |
-| [Počítačové zpracování obrazu](../../Computer-vision/computer-vision-how-to-install-containers.md) | Rozpoznávání textu | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text` |
 | [Počítačové zpracování obrazu](../../Computer-vision/computer-vision-how-to-install-containers.md) | Čtení | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
-| [Rozpoznávání tváře](../../face/face-how-to-install-containers.md) | Tvář | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
+| [Plochy](../../face/face-how-to-install-containers.md) | Tvář | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
 | [Nástroj pro rozpoznávání formulářů](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | Rozpoznávání formulářů | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` |
-| [Rozhraní API služby Speech](../../speech-service/speech-container-howto.md) | Převod řeči na text | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` |
-| [Rozhraní API služby Speech](../../speech-service/speech-container-howto.md) | Převod textu na řeč | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech` |
+< < < < < < < HEAD | [Rozhraní API služby Speech](../../speech-service/speech-container-howto.md?tab=stt) | Převod řeči na text | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` | | [Rozhraní API služby Speech](../../speech-service/speech-container-howto.md?tab=cstt) | Custom Speech textu | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text` | | [Rozhraní API služby Speech](../../speech-service/speech-container-howto.md?tab=tts) | Převod textu na řeč | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech` | | [Rozhraní API služby Speech](../../speech-service/speech-container-howto.md?tab=ctts) | Vlastní převod textu na řeč | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech` | ======= | [Rozhraní API služby Speech](../../speech-service/speech-container-howto.md) | Převod řeči na text | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` | | [Rozhraní API služby Speech](../../speech-service/speech-container-howto.md) | Převod textu na řeč | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech` | | [Translator text](../../translator/how-to-install-containers.md) | Translator Text | `containerpreview.azurecr.io/microsoft/cognitive-services-translator-text` |
+>>>>>>> ReFS/remotes/MicrosoftDocs/Master

@@ -8,55 +8,61 @@ ms.topic: include
 ms.date: 05/14/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2bc5602011ed64b11b1b8c96b7e69a8d5ee9bf32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a355307eef9f5ce1f833cfd7924f5efa234a0cd7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133226"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73522545"
 ---
 ## <a name="premium-ssd"></a>Premium SSD
 
-Azure premium SSD poskytovat podporu vysoce výkonných a s nízkou latencí disků pro virtuální počítače (VM) s vstup/výstup (IO)-náročné úlohy. Pokud chcete využít výhod rychlost a výkon disků premium storage, můžete migrovat existující disky virtuálních počítačů na Premium SSD. SSD disky Premium jsou vhodné pro důležité produkční aplikace. Disky Premium SSD jde použít jenom s řadu virtuálních počítačů, které jsou kompatibilní s úložištěm premium.
+Azure Premium SSD poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače a úlohy náročné na vstupně-výstupní operace (v/v). Pokud chcete využít rychlost a výkon disků služby Premium Storage, můžete migrovat stávající disky virtuálních počítačů na Premium SSD. Premium SSD jsou vhodné pro produkční aplikace kritické pro klíčové služby. Prémiová SSD se dá použít jenom u řady virtuálních počítačů, které jsou kompatibilní s Premium Storage.
 
-Další informace o jednotlivých typů virtuálních počítačů a velikosti v Azure pro Windows, včetně toho, jaké velikosti jsou premium, kompatibilní s úložištěm, naleznete v tématu [velikosti virtuálních počítačů s Windows](../articles/virtual-machines/windows/sizes.md). Další informace o jednotlivých typech virtuálních počítačů a velikosti v Azure pro Linux, které velikosti jsou premium, kompatibilní s úložištěm, včetně naleznete v tématu [velikosti virtuálního počítače s Linuxem](../articles/virtual-machines/linux/sizes.md).
+Další informace o typech a velikostech virtuálních počítačů v Azure pro Windows, včetně toho, které velikosti jsou kompatibilní s úložištěm Premium Storage, najdete v tématu [velikosti virtuálních počítačů s Windows](../articles/virtual-machines/windows/sizes.md). Další informace o typech a velikostech virtuálních počítačů v Azure pro Linux, včetně toho, které velikosti jsou kompatibilní s úložištěm Premium Storage, najdete v tématu [velikosti virtuálních počítačů se systémem Linux](../articles/virtual-machines/linux/sizes.md).
 
 ### <a name="disk-size"></a>Velikost disku
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
-Při zřizování disku úložiště úrovně premium, na rozdíl od úložiště úrovně standard, je zaručena kapacita, IOPS a propustnost tohoto disku. Například pokud vytvoříte P50 disku, Azure mu kapacitu 4 095 GB úložiště, 7500 IOPS a propustnost 250 MB/s pro tento disk. Aplikace můžete použít nebo její část kapacitu a výkon. SSD disky Premium jsou navržené k zajištění nízké latence – milisekund a cílit na vstupně-výstupních operací a propustnosti je popsáno v předchozí tabulce 99,9 % času.
+Když zřizujete disk služby Premium Storage na rozdíl od standardního úložiště, zaručujete si kapacitu, IOPS a propustnost tohoto disku. Pokud například vytvoříte P50 disk, Azure zřídí 4 095 GB kapacity úložiště, 7 500 IOPS a propustnost 250 MB/s pro tento disk. Vaše aplikace může využívat celou kapacitu a výkon. SSD úrovně Premium disky jsou navržené tak, aby poskytovaly nízké latence v řádu milisekund a cílové IOPS a propustnost popsané v předchozí tabulce 99,9% času.
+
+## <a name="bursting-preview"></a>Shluking (Preview)
+
+SSD úrovně Premium velikosti menší než P30 nyní nabízí shlukování disku (Preview) a může zvýšit počet IOPS na disk až na 3 500 a jejich šířku pásma až 170 MB/s. Shlukování je automatizované a funguje na základě úvěrového systému. Kredity se automaticky shromažďují v intervalu shlukování, když se provoz na disku nachází pod stanoveným cílem výkonu a kredity se automaticky spotřebovávají při nárůstu provozu po cíli až do maximálního limitu shluku. Maximální limit shluku určuje strop & šířky pásma disku, a to i v případě, že máte k dispozici nárůst kreditů. Shlukování disků poskytuje lepší toleranci proti nepředvídatelným změnám vzorů v/v. Můžete ji nejlépe využít pro spouštění a aplikace disku s operačním systémem s nárazové přenosy.    
+
+Podpora pro rozšíření disků bude ve výchozím nastavení povolená pro nová nasazení použitelných velikostí disků v [oblastech Preview](https://docs.microsoft.com/azure/virtual-machines/linux/disk-bursting#regional-availability) , a to bez nutnosti zásahu uživatele. U stávajících disků s použitelnými velikostmi můžete povolit shlukování pomocí jedné z těchto dvou možností: odpojit a znovu připojit disk nebo zastavit a restartovat připojený virtuální počítač. Pokud je disk připojený k virtuálnímu počítači, který podporuje maximální dobu trvání ve špičce limitu 30 minut, budou se všechny velikosti disků s vyšší úrovní zatížení začínat plným objemem shlukového kreditu. Další informace o tom, jak rozpracovat na discích Azure, najdete v tématu věnovaném [SSD úrovně Premiummu roztržení](../articles/virtual-machines/linux/disk-bursting.md). 
 
 ### <a name="transactions"></a>Transakce
 
-Pro úrovně premium SSD každý vstupně-výstupní operace menší než nebo rovna až 256 KiB propustnosti se považuje za jeden vstupně-výstupní operace. Vstupně-výstupní operace větší než 256 KiB propustnosti se považují za více vstupně-výstupních operací, o velikosti 256 KiB.
+V případě SSD úrovně Premium je každá vstupně-výstupní operace menší nebo rovna 256 KiB propustnosti považována za jednu vstupně-výstupní operaci. Vstupně-výstupní operace větší než 256 KiB propustnosti se považují za více než více vstupně-výstupních operací o velikosti 256 KiB.
 
 ## <a name="standard-ssd"></a>SSD úrovně Standard
 
-SSD disky Azure standard je možnost a nákladově efektivní služba storage optimalizované pro úlohy, které je třeba zajistit konzistentní výkon na nižších úrovních vstupně-výstupních operací. SSD na úrovni Standard nabízí prostředí dobrý základní úrovně pro ty, kteří chtějí přesunout do cloudu, zejména v případě, že dochází k problémům s odchylkou úloh běžících na řešení pevný disk v místním prostředí. Porovnání na standardní pevné disky, standardní jednotky SSD poskytují lepší dostupnosti, konzistence, spolehlivost a latenci. SSD disky Standard jsou vhodné pro webové servery, s nízkou vstupně-výstupních operací aplikační servery, málo používaná podnikových aplikací a vývojové a testovací úlohy. Podobně jako standardní pevné disky jsou k dispozici na všech virtuálních počítačích Azure standardní disky SSD.
+Azure Standard SSD je cenově výhodné možnost úložiště optimalizovaná pro úlohy, které vyžadují konzistentní výkon na nižší úrovni IOPS. SSD úrovně Standard nabízí dobré prostředí vstupní úrovně pro ty, kteří chtějí přejít ke cloudu, zejména v případě, že dochází k problémům s odchylkou úloh běžících na vašich řešeních HDD na pracovišti. Ve srovnání se standardem HDD přináší úroveň Standard SSD lepší dostupnost, konzistenci, spolehlivost a latenci. Standardní SSD jsou vhodné pro webové servery, nízkoúrovňové aplikační servery s nízkými IOPS, lehce používané podnikové aplikace a vývojové a testovací úlohy. Jako standard HDD jsou na všech virtuálních počítačích Azure k dispozici standardní SSD.
 
 ### <a name="disk-size"></a>Velikost disku
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-Standardní disky SSD jsou navržené k poskytování latence v řádu milisekund a IOPS a propustnost až do omezení je popsáno v předchozí tabulce 99 % času. Skutečné IOPS a propustnost může někdy lišit v závislosti na vzory přenosů. Standardní disky SSD zajistí konzistentnější výkon než HDD disky s nižší latencí.
+Standardní SSD jsou navržené tak, aby poskytovaly jednorázové latence milisekund a IOPS a propustnost až do limitů popsaných v předchozí tabulce 99% času. Skutečný počet vstupně-výstupních operací a propustnosti se může lišit v závislosti na vzorech přenosů. Úroveň Standard SSD zajistí jednotnější výkon, než disky HDD s nižší latencí.
 
 ### <a name="transactions"></a>Transakce
 
-Pro standardní jednotky SSD každý vstupně-výstupní operace menší než nebo rovna až 256 KiB propustnosti se považuje za jednu vstupně-výstupní operace. Vstupně-výstupní operace větší než 256 KiB propustnosti se považují za více vstupně-výstupních operací, o velikosti 256 KiB. Tyto transakce ovlivnit fakturaci.
+U standardních SSD se za jednu vstupně-výstupní operaci považuje každá vstupně-výstupní operace menší nebo rovna 256 KiB propustnosti. Vstupně-výstupní operace větší než 256 KiB propustnosti se považují za více než více vstupně-výstupních operací o velikosti 256 KiB. Tyto transakce mají dopad na fakturaci.
 
 ## <a name="standard-hdd"></a>Standard HDD
 
-Azure standardní pevné disky poskytovat podporu spolehlivé, úsporné disků pro virtuální počítače běžící úlohu kterému latence nevadí. Se standardním úložiště jsou data uložená na pevných disků (HDD). Porovnání s jednotkami SSD disky může více výrazně lišit latenci, vstupně-výstupních operací a propustnosti standardní HDD disky. Standardní HDD disky jsou navržené tak poskytovat latence zápisu pod 10 ms a latenci pod 20ms pro většinu operací vstupně-výstupních operací čtení, ale skutečný výkon se může lišit v závislosti na velikost a úlohy vzor vstupně-výstupních operací. Při práci s virtuálními počítači, můžete použít standardní HDD disky, pro scénáře vývoje/testování a méně důležité úlohy. Standardní pevné disky jsou dostupné ve všech oblastech Azure a můžou používat všechny virtuální počítače Azure.
+Azure Standard HDD zajišťuje spolehlivou podporu disků s nízkými náklady pro virtuální počítače, které mají úlohy s necitlivými na latenci. U služby Storage úrovně Standard se data ukládají na jednotky pevného disku (HDD). Latence, IOPS a propustnost HDD úrovně Standard disků se můžou výrazně lišit ve srovnání s disky na bázi SSD. HDD úrovně Standard disky jsou navržené tak, aby poskytovaly latence zápisu v rámci 10ms a latence čtení v 20ms pro většinu vstupně-výstupních operací, ale skutečný výkon se může lišit v závislosti na velikosti vstupně-výstupních operací a způsobu úlohy. Když pracujete s virtuálními počítači, můžete použít standardní disky HDD pro scénáře vývoje a testování a méně důležité úlohy. Standardní HDD jsou dostupné ve všech oblastech Azure a dají se používat se všemi virtuálními počítači Azure.
 
 ### <a name="disk-size"></a>Velikost disku
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
 
 ### <a name="transactions"></a>Transakce
 
-Standardní pevné disky se nepovažuje za každé vstupně-výstupní operace, jako jedna transakce, bez ohledu na velikost vstupně-výstupních operací. Tyto transakce ovlivnit fakturaci.
+U standardních HDD se každá vstupně-výstupní operace považuje za jedinou transakci, a to bez ohledu na velikost I/O. Tyto transakce mají dopad na fakturaci.
 
 ## <a name="billing"></a>Fakturace
 
-Při použití spravovaných disků, platí následující aspekty fakturace:
+Při použití spravovaných disků platí následující doporučení pro fakturaci:
 
 - Typ disku
 - Velikost spravovaného disku
@@ -64,6 +70,6 @@ Při použití spravovaných disků, platí následující aspekty fakturace:
 - Přenosy odchozích dat
 - Počet transakcí
 
-**Spravovaná velikost disku**: spravované disky se účtují na zřízená velikost. Azure maps zřízená velikost (zaokrouhleno) na nejbližší velikost nabízený disku. Podrobnosti o velikosti disků nabízejí najdete v předchozích tabulkách. Každý disk mapuje na nabídku velikost zřízeného disku podporované a odpovídajícím způsobem se účtuje. Například pokud jste zřídili 200 GB SSD na úrovni Standard, mapuje se na nabídky velikost disku E15 (256 GB). Za všechny zajišťovaným diskem se fakturuje po hodinách pomocí cenu za měsíc pro nabídku služby Premium Storage. Například pokud zřízené disk s E10 a odstraní ji po 20 hodin, bude se vám účtovat pro nabídky E10 nebo jeho poměrnou část 20 hodin. To je bez ohledu na velikost skutečných dat zapsaných na disk.
+**Velikost spravovaného disku**: spravované disky se účtují podle zřízené velikosti. Azure namapuje zřízenou velikost (zaokrouhlenou nahoru) na nejbližší nabízenou velikost disku. Podrobnosti o nabízených velikostech disků najdete v předchozích tabulkách. Každý disk se mapuje na podporovanou nabídku velikosti zřízeného disku a účtuje se odpovídajícím způsobem. Pokud jste například zřídili 200 GiB SSD úrovně Standard, namapuje se na nabídku velikost disku E15 (256 GiB). Fakturace za libovolný zřízený disk se účtuje po hodinách pomocí měsíčních cen za nabídku Premium Storage. Pokud jste například zřídili disk E10 a odstranili jste ho po 20 hodinách, bude se vám účtovat částka nabídky E10 na 20 hodin. To je bez ohledu na množství skutečných dat zapsaných na disk.
 
-**Snímky**: Snímky se účtuje podle velikosti použít. Například pokud vytvoříte snímku spravovaného disku s zřízená kapacita 64 GiB a skutečné používaných dat velikosti 10 GB, snímku se mu fakturuje jenom používaných dat velikosti 10 GB.
+**Snímky**: snímky se účtují na základě použité velikosti. Pokud třeba vytvoříte snímek spravovaného disku s zřízenou kapacitou 64 GiB a skutečná velikost využitých dat je 10 GiB, bude se snímek fakturovat jenom za využitou velikost dat 10 GiB.

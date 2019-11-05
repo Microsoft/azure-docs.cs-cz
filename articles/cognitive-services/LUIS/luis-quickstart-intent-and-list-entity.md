@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Přesný text shody – LUIS'
+title: 'Kurz: shoda s přesným textem – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Získejte data, která odpovídají předem definovanému seznamu položek. Každá položka v seznamu může mít synonyma, která také přesně odpovídají.
 services: cognitive-services
@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 25882f2aaa5d32dfb594d5f8fdb9cdc46f2ad958
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9531e86e63fa8d944aa216fddd0c8215b73038a9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307618"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492710"
 ---
-# <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Kurz: Získání přesného textu se shodnými daty z utterance
+# <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Kurz: získání přesného textu se shodnými daty z utterance
 
 V tomto kurzu se seznámíte s tím, jak získat data entity, která odpovídají předdefinovanému seznamu položek. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **V tomto kurzu se naučíte:**
 
@@ -31,7 +33,7 @@ V tomto kurzu se seznámíte s tím, jak získat data entity, která odpovídaj�
 > * Přidání entity seznamu 
 > * Trénování 
 > * Publikování
-> * Zjistit záměry a entity z koncového bodu
+> * Získat záměry a entity z koncového bodu
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
@@ -90,11 +92,11 @@ Primární, _kanonický_název pro každou položku je název oddělení. Přík
 
 |Kanonický název|Synonyma|
 |--|--|
-|Účtárna|účtu<br>accting<br>3456|
+|Účetnictví|účtu<br>accting<br>3456|
 |Operace vývoje|Vývoj a provoz<br>4949|
-|Strojírenství|ENG<br>modulu<br>4567|
+|Inženýrství|ENG<br>modulu<br>4567|
 |Finance|–<br>2020|
-|Informační technologie|it<br>2323|
+|Informační technologie|IT<br>2323|
 |V rámci prodeje|isale<br>prodej<br>1414|
 |Výzkum a vývoj|R & D<br>1234|
 
@@ -104,9 +106,9 @@ Primární, _kanonický_název pro každou položku je název oddělení. Přík
 
 1. V automaticky otevíraném dialogovém okně entity zadejte `Department` jako název entity a **List** (Seznam) jako typ entity. Vyberte **Done** (Hotovo).  
 
-    [![Snímek obrazovky vytváření nové entity automaticky otevíraná okna](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "snímek obrazovky vytváření nové entity automaticky otevíraná okna")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
+    [![Snímek obrazovky s místním dialogovým oknem pro vytváření nových entit](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "Snímek obrazovky s místním dialogovým oknem pro vytváření nových entit")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
 
-1. Na stránce entita oddělení zadejte `Accounting` novou hodnotu.
+1. Na stránce entita oddělení zadejte jako novou hodnotu `Accounting`.
 
 1. V případě synonym přidejte synonyma z předchozí tabulky.
 
@@ -175,7 +177,7 @@ Primární, _kanonický_název pro každou položku je název oddělení. Přík
 * [Testování na portálu LUIS](luis-interactive-test.md)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste vytvořili nový záměr, přidali jste ukázkové promluvy a pak jste vytvořili entitu seznamu určenou k extrakci shodného textu ze záznamů. Po natrénování a publikování aplikace jste dotazem adresovaným koncovému bodu zjistili záměr a vrátili extrahovaná data.
 
 Pokračujte v této aplikaci a [přidejte složenou entitu](luis-tutorial-composite-entity.md).

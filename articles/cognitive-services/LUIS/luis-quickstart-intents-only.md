@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Předpověď záměrů – LUIS'
+title: 'Kurz: předpověď záměrů – LUIS'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu vytvoříte vlastní aplikaci, která předpovídá záměr uživatele. Tato aplikace představuje nejjednodušší typ aplikace LUIS, protože neextrahuje různé datové prvky z textu promluvy, jako jsou e-mailové adresy nebo kalendářní data.
 services: cognitive-services
@@ -11,16 +11,18 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 7139876f64841a877e688ec6faf03597c527d1f2
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 83ecf0767f2b21065c698421e3ad8f07f31d5b16
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375823"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465285"
 ---
-# <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Kurz: Sestavování aplikace LUIS pro určení záměrů uživatelů
+# <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Kurz: Vytvoření aplikace LUIS k určení záměrů uživatelů
 
 V tomto kurzu vytvoříte vlastní aplikaci pro lidské zdroje, která předpovídá záměr uživatele na základě promluvy (textu). 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **V tomto kurzu se naučíte:**
 
@@ -28,7 +30,7 @@ V tomto kurzu vytvoříte vlastní aplikaci pro lidské zdroje, která předpov�
 > * Vytvoření nové aplikace 
 > * Vytvořit záměry
 > * Přidat ukázkové promluvy
-> * Vytrénovat aplikaci
+> * Trénovat aplikaci
 > * Publikování aplikace
 > * Získat záměr z koncového bodu
 
@@ -47,9 +49,9 @@ Tato aplikace má několik záměrů.
 
 |Záměr|Účel|
 |--|--|
-|ApplyForJob|Určete, jestli se uživatel pro úlohu používá.|
-|GetJobInformation|Určete, jestli uživatel hledá informace o úlohách v obecné nebo konkrétní úloze.|
-|Žádné|Určení, jestli uživatel žádá o nějakou aplikaci, nemá odpovídat. Tento záměr, pokud je k dispozici jako součást vytváření aplikace a nelze jej odstranit. |
+|`ApplyForJob`|Určete, jestli se uživatel pro úlohu používá.|
+|`GetJobInformation`|Určete, jestli uživatel hledá informace o úlohách v obecné nebo konkrétní úloze.|
+|`None`|Určení, jestli uživatel žádá o nějakou aplikaci, nemá odpovídat. Tento záměr, pokud je k dispozici jako součást vytváření aplikace a nelze jej odstranit. |
 
 ## <a name="create-a-new-app"></a>Vytvoření nové aplikace
 
@@ -59,7 +61,7 @@ Tato aplikace má několik záměrů.
 
 1. Vyberte **Create new intent** (Vytvořit nový záměr). Zadejte název nového záměru `GetJobInformation`. Předpokládá se, že pokud uživatel potřebuje informace o otevřených úlohách ve společnosti, bude tento záměr předpovězen. 
 
-    ![Snímek obrazovky z Language Understanding (LUIS) dialogové okno záměru nového](media/luis-quickstart-intents-only/create-intent.png "nové záměru dialogové okno snímek obrazovky z Language Understanding (LUIS)")
+    ![Snímek obrazovky s dialogem pro nové záměry Language Understanding (LUIS)](media/luis-quickstart-intents-only/create-intent.png "Snímek obrazovky s dialogem pro nové záměry Language Understanding (LUIS)")
 
 1. Vyberte **Done** (Hotovo).
 
@@ -67,24 +69,24 @@ Tato aplikace má několik záměrů.
 
     | Ukázkové promluvy|
     |--|
-    |Any new jobs posted today? (Nějaké nové nabídky práce?)|
-    |Are there any new positions in the Seattle office? (Nejsou na pobočce v Seattlu nějaké nové pozice?)|
-    |Jsou pro inženýry otevřené nějaké úlohy vzdáleného pracovního procesu nebo zaměstnání?|
-    |Is there any work with databases? (Nabízíte nějakou práci se s databázemi?)|
-    |Hledám spolupracovní situaci v kanceláři Tampa.|
-    |Je k dispozici interně pobočka v síti San Francisco?|
-    |Je pro lidi v rámci školy nějaká pracovní doba?|
-    |Looking for a new situation with responsibilities in accounting (Hledám něco nového v oboru účetnictví).|
-    |Hledání úlohy v New York City pro dvojjazyčné reproduktory.|
-    |Hledáte novou situaci s odpovědností v účetnictví.|
-    |New jobs? (Nějaké nové pracovní pozice?)|
-    |Zobrazit všechny úlohy pro inženýry, kteří byli přidáni za poslední 2 dny.|
-    |Dnešní příspěvky na úlohy?|
-    |Jaké jsou v pobočce v Londýně otevřené pozice pro monitorování účtů?|
-    |What positions are available for Senior Engineers? (Jaké pozice jsou otevřené na úrovni inženýr senior?)|
-    |Where is the job listings (Kde najdu seznam pracovních pozic)|
+    |`Any new jobs posted today?`|
+    |`Are there any new positions in the Seattle office?`|
+    |`Are there any remote worker or telecommute jobs open for engineers?`|
+    |`Is there any work with databases?`|
+    |`I'm looking for a co-working situation in the tampa office.`|
+    |`Is there an internship in the san francisco office?`|
+    |`Is there any part-time work for people in college?`|
+    |`Looking for a new situation with responsibilities in accounting`|
+    |`Looking for a job in new york city for bilingual speakers.`|
+    |`Looking for a new situation with responsibilities in accounting.`|
+    |`New jobs?`|
+    |`Show me all the jobs for engineers that were added in the last 2 days.`|
+    |`Today's job postings?`|
+    |`What accounting positions are open in the london office?`|
+    |`What positions are available for Senior Engineers?`|
+    |`Where is the job listings`|
 
-    [![Snímek obrazovky zadání nového projevy pro MyStore záměr](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "snímek obrazovky zadání nového projevy pro MyStore záměr")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
+    [![Snímek obrazovky s vstupem nového projevyu pro záměr MyStore](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "Snímek obrazovky s vstupem nového projevyu pro záměr MyStore")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
 
     Poskytnutím _ukázkového projevyu_budete školením Luis o tom, jaké druhy projevyy by se měly pro tento záměr odhadnout. 
 
@@ -129,7 +131,7 @@ Tato aplikace má několik záměrů.
     }
     ```
 
-    Parametr QueryString znamená, že zahrnuje **všechny záměry** ve výsledcích dotazu aplikace. `verbose=true` Pole entit je prázdné, protože tato aplikace momentálně nemá žádné entity. 
+    Parametr `verbose=true` QueryString znamená zahrnout **všechny záměry** do výsledků dotazu aplikace. Pole entit je prázdné, protože tato aplikace momentálně nemá žádné entity. 
 
     Výsledek JSON identifikuje záměr s nejvyšším skóre jako vlastnost **`topScoringIntent`** . Všechna skóre jsou v rozmezí 1 až 0, přičemž čím blíže je skóre hodnotě 1, tím je lepší. 
 
@@ -149,29 +151,22 @@ Vraťte se na portál LUIS a vytvořte nový záměr, abyste zjistili, jestli se
 
     | Ukázkové promluvy|
     |--|
-    |Fill out application for Job 123456 (Vyplňte přihlášku pro pozici 123456)|
-    |Here is my c.v. (Tady je můj životopis) for position 654234 (na pozici 654234)|
-    |Tady je moje obnovení pro recepční příspěvek na částečný úvazek.|
-    |Mám v rámci této paperwork použít pro úlohu s uměleckými pracovníky.|
-    |Používám pro školní školní účely v oblasti výzkumu a vývoje v San Diegu|
-    |Žádám se o odeslání životopisu na dočasnou pozici v stravování.|
-    |Odesílám novou Autocar týmu v Columbus.|
-    |I want to apply for the new accounting job (Chci se přihlásit na novou pozici v účetnictví)|
-    |Paperwork v účtování úlohy 456789 účtů|
-    |Job 567890 and my paperwork (Pracovní pozice 567890 a moje doklady)|
-    |Připojí se moje publikace pro učně účetní tulsay.|
-    |Můj paperwork pro pozici svátků|
-    |Odešlete prosím nové úlohy monitorování účtů v Seattlu.|
-    |Submit resume for engineering position (Odeslat životopis pro pozici technického pracovníka)|
-    |This is my c.v. pro post 234123 v Tampa.|
+    |`Fill out application for Job 123456`|
+    |`Here is my c.v. for position 654234`|
+    |`Here is my resume for the part-time receptionist post.`|
+    |`I'm applying for the art desk job with this paperwork.`|
+    |`I'm applying for the summer college internship in Research and Development in San Diego`|
+    |`I'm requesting to submit my resume to the temporary position in the cafeteria.`|
+    |`I'm submitting my resume for the new Autocar team in Columbus, OH`|
+    |`I want to apply for the new accounting job`|
+    |`Job 456789 accounting internship paperwork is here`|
+    |`Job 567890 and my paperwork`|
+    |`My papers for the tulsa accounting internship are attached.`|
+    |`My paperwork for the holiday delivery position`|
+    |`Please send my resume for the new accounting job in seattle`|
+    |`Submit resume for engineering position`|
+    |`This is my c.v. for post 234123 in Tampa.`|
 
-<!--
-
-    [![Screenshot of entering new utterances for ApplyForJob intent](media/luis-quickstart-intents-only/utterance-applyforjob.png "Screenshot of entering new utterances for ApplyForJob intent")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
-
-    The labeled intent is outlined in red because LUIS is currently uncertain the intent is correct. Training the app tells LUIS the utterances are on the correct intent. 
-
--->
 
 ## <a name="train-again"></a>Nové trénování
 

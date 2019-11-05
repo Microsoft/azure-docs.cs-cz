@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vzory – LUIS'
+title: 'Kurz: vzory – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Použití vzorů ke zvýšení záměru a predikce entity pomocí menšího počtu ukázkových promluv. Vzor je k dispozici jako šablona příkladu promluvy, který obsahuje syntaxi identifikace entit a ignorovatelného textu.
 services: cognitive-services
@@ -9,18 +9,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/16/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 69f853b77e3fbab149dbf163ed5cccb08578aa4e
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 4e4f1787db86378eaeff9df196cc061c42d0ab1e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390340"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499009"
 ---
-# <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Kurz: Přidat formáty utterance šablon běžných vzorů
+# <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Kurz: Přidání běžných formátů šablon vzorů utterance
 
 V tomto kurzu budete požívat vzory ke zvýšení záměru a predikce entity pomocí menšího počtu ukázkových promluv. Vzor je k dispozici jako šablona příkladu promluvy, který obsahuje syntaxi identifikace entit a ignorovatelného textu. Vzor je kombinací párování jazykových výrazů a strojového učení.  Šablona příkladu promluvy spolu se záměrem promluvy umožňují LUIS lépe porozumět tomu, jaké promluvy odpovídají určitému záměru. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **V tomto kurzu se naučíte:**
 
@@ -29,7 +31,7 @@ V tomto kurzu budete požívat vzory ke zvýšení záměru a predikce entity po
 > * Vytvořit záměr
 > * Trénování
 > * Publikování
-> * Zjistit záměry a entity z koncového bodu
+> * Získat záměry a entity z koncového bodu
 > * Vytvořit vzor
 > * Ověřit vylepšení predikce vzoru
 > * Označit text jako ignorovatelný a vnořit ho do vzoru
@@ -69,7 +71,7 @@ Použijte k tomu následující postup:
     |Komu se Jana Nováková přímo zodpovídá?|
     |Kdo je nadřízený Jany Novákové?|
 
-    [![Screenshot LUIS přidává nové promluvy k záměru](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "Screenshot LUIS přidává nové promluvy k záměru")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
+    [![Snímek obrazovky s LUIS přidáním nového projevyu do záměru](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "Snímek obrazovky s LUIS přidáním nového projevyu do záměru")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
 
     Nedělejte si starosti, když je entita keyPhrase označená v promluvách záměru místo v entitě zaměstnance. Obě se správně predikují v testovacím podokně a koncovém bodu. 
 
@@ -377,11 +379,11 @@ Příklad šablony projevy, která umožňuje tyto volitelné informace:
 Použití volitelné syntaxe v hranatých závorkách `[]` usnadňuje přidávání volitelného textu do šablony promluvy. Tato syntaxe může být vnořená až na druhou úroveň `[[]]` a obsahovat entity nebo text.
 
 
-**Daná Proč jsou v každé `w` z nich všechna písmena, první písmeno v každé šabloně utterance malá a velká písmena? Nemělo by být volitelné, jestli budou velká nebo malá?** Promluva, kterou klientská aplikace odesílá koncovému bodu dotazu, se převádí na malá písmena. V šabloně promluvy můžete použít jak malá, tak velká písmena. V promluvě koncového bodu také. Porovnání se provádí vždy až po převodu na malá písmena.
+**Otázka: Proč jsou všechna `w` písmena, první písmeno v každé šabloně utterance malými písmeny? Neměla by být volitelně velká nebo malá?** Promluva, kterou klientská aplikace odesílá koncovému bodu dotazu, se převádí na malá písmena. V šabloně promluvy můžete použít jak malá, tak velká písmena. V promluvě koncového bodu také. Porovnání se provádí vždy až po převodu na malá písmena.
 
-**Daná Proč není předdefinovaná část šablony utterance, pokud je 3 předpokládaná hodnota "číslo `3` i datum `March 3`?"** Šablona promluvy podle kontextu použije datum buď doslova jako `March 3`, nebo abstrahovanou jako `in a month`. Datum sice může obsahovat číslo, ale ne každé číslo musí být nutně datum. Používejte vždy takovou entitu, která nejlépe vystihuje typ požadovaný ve výsledcích JSON predikce.  
+**Otázka: Když se 3. březen predikuje jako číslo `3` i jako datum `March 3`, proč nejsou předpřipravená čísla součástí šablony promluvy?** Šablona promluvy podle kontextu použije datum buď doslova jako `March 3`, nebo abstrahovanou jako `in a month`. Datum sice může obsahovat číslo, ale ne každé číslo musí být nutně datum. Používejte vždy takovou entitu, která nejlépe vystihuje typ požadovaný ve výsledcích JSON predikce.  
 
-**Daná Co špatně se říká projevy, jako je `Who will {Employee}['s] manager be on March 3?`například.** Gramaticky rozdílné slovesné časy, jako tady, kde jsou `will` a `be` oddělené, musejí být v samostatných šablonách promluvy. Existující šablona promluvy se s nimi nespáruje. I když se záměr promluvy nezměnil, změnil se pořádek slov v promluvě. Tato změna ovlivní predikci LUIS. K kombinování těchto projevy můžete [Seskupit a nebo](#use-the-or-operator-and-groups) příkaz-časů. 
+**Otázka: Co chabě formulované promluvy, jako třeba `Who will {Employee}['s] manager be on March 3?`.** Gramaticky rozdílné slovesné časy, jako tady, kde jsou `will` a `be` oddělené, musejí být v samostatných šablonách promluvy. Existující šablona promluvy se s nimi nespáruje. I když se záměr promluvy nezměnil, změnil se pořádek slov v promluvě. Tato změna ovlivní predikci LUIS. K kombinování těchto projevy můžete [Seskupit a nebo](#use-the-or-operator-and-groups) příkaz-časů. 
 
 **Pamatujte: nejdřív se najdou entity, pak se teprve spáruje vzor.**
 
@@ -389,7 +391,7 @@ Použití volitelné syntaxe v hranatých závorkách `[]` usnadňuje přidává
 
 1. Na webu LUIS vyberte **Zkompilovat** v horní nabídce, pak vyberte **Vzory** v nabídce vlevo. 
 
-1. Vyhledejte existující šablonu utterance `Who is {Employee}['s] manager[?]`a vyberte tři tečky (***...***) vpravo a pak v místní nabídce vyberte **Upravit** . 
+1. Vyhledejte existující šablonu utterance `Who is {Employee}['s] manager[?]`, vyberte tři tečky (***...***) vpravo a v místní nabídce vyberte **Upravit** . 
 
 1. Změňte šablonu promluvy na `who is {Employee}['s] manager [[on]{datetimeV2}?]`
 
@@ -424,9 +426,9 @@ Ve všech promluvách jsou entity, proto se všechny shodují se stejným vzorem
 
 ## <a name="use-the-or-operator-and-groups"></a>Použití operátoru nebo a skupin
 
-Některé z předchozích šablon projevy jsou velmi blízko. Pomocí **skupiny** `()` a **nebo** `|` syntaxe zmenšete projevy šablony. 
+Některé z předchozích šablon projevy jsou velmi blízko. K omezení projevy šablony použijte syntaxi **group** `()` a **nebo** `|`. 
 
-Následující dva vzory se dají zkombinovat do jednoho vzoru pomocí syntaxe Group `()` a nebo. `|`
+Následující dva vzory se dají zkombinovat do jednoho vzoru pomocí `()` skupiny a syntaxe `|`.
 
 |Záměr|Ukázkové promluvy s volitelným textem a předpřipravenými entitami|
 |--|--|
@@ -437,9 +439,9 @@ Nová šablona utterance bude:
 
 `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`. 
 
-To používá **skupinu** kolem požadovaného příkazu vhodné a volitelnou `in` a `on` s kanálem **nebo** mezi nimi. 
+K tomu se používá **Skupina** kolem požadované operace vhodné a volitelné `in` a `on` mezi nimi kanál **nebo** . 
 
-1. Na stránce **vzory** vyberte filtr **správce organizačního diagramu** . Zužte seznam hledáním `manager`. 
+1. Na stránce **vzory** vyberte filtr **správce organizačního diagramu** . Upřesněte seznam tak, že vyhledáte `manager`. 
 
     ![Hledat ve vzorcích záměru organizačního diagramu pro termín "správce"](./media/luis-tutorial-pattern/search-patterns.png)
 
@@ -465,13 +467,13 @@ To používá **skupinu** kolem požadovaného příkazu vhodné a volitelnou `i
 
 ## <a name="use-the-utterance-beginning-and-ending-anchors"></a>Použití počátečních a koncových kotev utterance
 
-Syntaxe vzoru poskytuje počáteční a koncovou syntaxi kotvy utterance blikajícího kurzoru `^`. Úvodní a koncové kotvy utterance lze použít společně pro cílení na velmi konkrétní a případně literální utterance nebo pro cílové záměry samostatně. 
+Syntaxe vzoru poskytuje počáteční a koncovou syntaxi kotvy utterance blikajícího kurzoru, `^`. Úvodní a koncové kotvy utterance lze použít společně pro cílení na velmi konkrétní a případně literální utterance nebo pro cílové záměry samostatně. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu přidáme dva záměry promluvám, které bylo bez většího množství ukázkových promluv obtížné predikovat s vysokou přesností. Přidání vzorů pomohlo LUIS lépe predikovat záměr s výrazně vyšším skóre. Označení entit a ignorovatelného textu umožnilo LUIS aplikovat vzor na širší rozmanitost promluv.
 

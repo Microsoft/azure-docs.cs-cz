@@ -7,18 +7,18 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/24/2019
+ms.date: 09/30/2019
 ms.author: dapine
-ms.openlocfilehash: 7322d356d972635b81bc1bdd4b329bd3d5ac02df
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 35f5cffdc644370082e229c88d67db33e853c446
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71842580"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499179"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Zabezpečení kontejneru Azure Cognitive Services
 
-Zabezpečení by mělo být primárním fokusem při vývoji aplikací. Důležitosti zabezpečení je metrika pro úspěch. Při navrhování softwarového řešení, které zahrnuje Cognitive Services kontejnery, je důležité pochopit omezení a možnosti, které máte k dispozici. Další informace najdete v tématu věnovaném [zabezpečení Azure][az-security].
+Zabezpečení by mělo být primárním fokusem při vývoji aplikací. Důležitosti zabezpečení je metrika pro úspěch. Při navrhování softwarového řešení, které zahrnuje Cognitive Services kontejnery, je důležité pochopit omezení a možnosti, které máte k dispozici. Další informace o zabezpečení sítě najdete v tématu [Konfigurace virtuálních sítí Azure Cognitive Services][az-security].
 
 > [!IMPORTANT]
 > Ve výchozím nastavení neexistuje *žádné zabezpečení* na Cognitive Services rozhraní API kontejneru. Důvodem je, že nejčastěji se kontejner spouští jako součást pod, která je chráněná proti síťovému mostu zvenčí. Je ale možné povolit ověřování, které funguje stejně jako ověřování používané při přístupu k [cloudovým Cognitive Services][request-authentication].
@@ -51,4 +51,4 @@ Zakáže DPI u zabezpečených kanálů, které kontejnery Cognitive Services vy
 [istio]: https://istio.io/
 [nginx]: https://www.nginx.com
 [request-authentication]: ../../authentication.md
-[az-security]: ../../../security/fundamentals/overview.md
+[az-security]: ../../cognitive-services-virtual-networks.md

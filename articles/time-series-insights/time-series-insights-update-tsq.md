@@ -1,21 +1,21 @@
 ---
 title: Dotazování dat ve verzi Preview pro Azure Time Series Insights | Microsoft Docs
 description: Dotazování dat ve verzi Preview Azure Time Series Insights.
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
-ms.workload: big-data
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b2f89a846747eaf78c60077372b48802506731e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 97265a83a73d45f45a4bd1183df61521f4ca29bf
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553379"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989691"
 ---
 # <a name="data-querying"></a>Dotazování dat
 
@@ -23,19 +23,17 @@ Azure Time Series Insights Preview umožňuje dotazování dat na události a me
 
 V Time Series Insights jsou k dispozici tři primární kategorie rozhraní API:
 
-* **Rozhraní API prostředí**: povolí dotazy samotného prostředí Time Series Insights. Příklady dotazů jsou seznam prostředí, ke kterým má volající přístup k metadatům prostředí a.
-
+* **Rozhraní API prostředí**: Tato rozhraní API povolují dotazy přímo v prostředí Time Series Insights. Příklady dotazů jsou seznam prostředí, ke kterým má volající přístup k metadatům prostředí a.
 * **Rozhraní API Time Series model-Query (TSM-Q)** : povoluje operace vytvoření, čtení, aktualizace a odstranění (CRUD) v metadatech uložených v části prostředí modelu časové řady. Příklady jsou instance, typy a hierarchie.
+* **Rozhraní API pro Time Series Query (TSQ)** : umožňuje načíst data telemetrie nebo událostí, jak jsou zaznamenána ze zdrojového zprostředkovatele, nebo omezením dat pomocí skalárních a agregačních funkcí uložených částí proměnných. Tato rozhraní API mohou provádět operace pro transformaci, kombinování a použití výpočtů pro data časových řad.
 
-* **Rozhraní API pro Time Series Query (TSQ)** : umožňuje načtení dat událostí, která se zaznamenávají ze zprostředkovatele zdroje. Tato rozhraní API mohou provádět operace pro transformaci, kombinování a provádění výpočtů pro data časových řad.
-
-[Jazyk výrazu Time Series (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview-tsx) je výkonná čtvrtá kategorie. Používá modely časových řad k povolení složení pokročilého výpočtu.
+Pro vyjádření výpočtů používá Time Series Insights jazyk výrazů založený na řetězci ve [výrazu Time Series Expression (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview-tsx).
 
 ## <a name="azure-time-series-insights-preview-core-apis"></a>Rozhraní API pro základní Azure Time Series Insights Preview
 
 Podporují se následující základní rozhraní API.
 
-[Přehled dotazu na ![Time Series](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
+[Přehled dotazů na ![časové řady](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
 
 ## <a name="environment-apis"></a>Rozhraní API prostředí
 
@@ -47,36 +45,34 @@ K dispozici jsou následující rozhraní API prostředí:
 
 ## <a name="time-series-model-query-tsm-q-apis"></a>Rozhraní API pro Time Series model – Query (TSM-Q)
 
-K dispozici jsou následující modely časových řad – rozhraní API pro dotazy:
+K dispozici jsou následující modely časových řad – rozhraní API pro dotazy. Většina těchto rozhraní API podporuje operaci dávkového spouštění, aby umožnila dávkové operace CRUD u více entit modelu časové řady:
 
-* [Rozhraní API pro nastavení modelu](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api): povolí možnost získat a opravit na výchozím typu a název modelu prostředí.
+* [Rozhraní API pro nastavení modelu](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api): povolí možnost *získat* a *opravit* na výchozím typu a název modelu prostředí.
 * [API Types](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api): povoluje CRUD na typech časových řad a jejich přidružených proměnných.
 * [Hierarchie rozhraní API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api): povoluje CRUD v hierarchiích časových řad a jejich přidružených cestách k polím.
-* [Rozhraní API instancí](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api): povoluje CRUD v instancích časových řad a jejich přidružených polích instance.
+* [Rozhraní API instancí](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api): povoluje CRUD v instancích časových řad a jejich přidružených polích instance. Rozhraní API instancí navíc podporuje následující operace:
+  * [Hledání](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriesinstances/search): načte částečný seznam přístupů při hledání instancí časových řad na základě atributů instance.
+  * [Navrhnout](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriesinstances/suggest): vyhledá a navrhne částečný seznam přístupů při hledání instancí časových řad na základě atributů instance.
 
 ## <a name="time-series-query-tsq-apis"></a>Rozhraní API pro Time Series Query (TSQ)
 
-K dispozici jsou následující rozhraní API pro dotazování časových řad:
+K dispozici jsou následující rozhraní API pro dotazování časové řady. Tato rozhraní API jsou dostupná pro všechna podporovaná úložiště s více vrstvami v Time Series Insights. Parametry adresy URL dotazu slouží k určení [typu úložiště](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters) , na kterém by se měl dotaz spouštět:
 
-* [Získat rozhraní API pro události](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-events-api): umožňuje dotazování a načítání Time Series Insights dat z událostí tak, jak jsou zaznamenána v Time Series Insights ze zprostředkovatele zdroje.
+* [Získat rozhraní API pro události](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-events-api): umožňuje dotazování a načítání Time Series Insights dat z událostí tak, jak jsou zaznamenána v Time Series Insights ze zprostředkovatele zdroje. Toto rozhraní API umožňuje načtení nezpracovaných událostí pro dané ID časové řady a rozsah hledání. Toto rozhraní API podporuje stránkování, aby bylo možné načíst úplnou datovou sadu pro vybraný vstup. 
 
-* [Získat rozhraní API pro řady](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-series-api): umožňuje dotazování a načítání Time Series Insights dat ze zaznamenaných událostí pomocí dat zaznamenaných na lince. Vrácené hodnoty jsou založeny na proměnných, které byly definovány v modelu nebo zadány jako vložené.
+* [Získat rozhraní API pro řady](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-series-api): umožňuje dotazování a načítání Time Series Insights dat ze zaznamenaných událostí pomocí dat zaznamenaných na lince. Vrácené hodnoty jsou založeny na proměnných, které byly definovány v modelu nebo zadány jako vložené. Toto rozhraní API podporuje stránkování, aby bylo možné načíst úplnou datovou sadu pro vybraný vstup. Toto rozhraní API pomáhá definovat počítané vlastnosti nebo sloupce.
 
     >[!NOTE]
     > Klauzule agregace se ignoruje i v případě, že je zadaná v modelu nebo je zadaná jako vložená.
 
   Rozhraní API pro získání řady vrátí hodnotu časové řady pro každou proměnnou pro každý interval. Hodnota časové řady je formát, který Time Series Insights používá pro výstup JSON z dotazu. Vrácené hodnoty jsou založené na ID časové řady a sadě zadaných proměnných.
 
-* [Rozhraní API pro agregaci řad](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#aggregate-series-api): umožňuje dotazování a načítání dat Time Series Insights z zachycených událostí vzorkováním a agregací zaznamenaných dat.
+* [Rozhraní API pro agregaci řad](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#aggregate-series-api): umožňuje dotazování a načítání dat Time Series Insights z zachycených událostí vzorkováním a agregací zaznamenaných dat. Toto rozhraní API podporuje plynulé spouštění pomocí [tokenů pro pokračování](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#queryresultpage).
 
   Rozhraní API pro agregaci řad vrací hodnotu časové řady pro každou proměnnou pro každý interval. Hodnoty jsou založené na ID časové řady a sadě zadaných proměnných. Rozhraní API pro agregaci řad dosahuje snížení pomocí proměnných uložených v modelu časové řady nebo poskytnutých jako vložené do agregovaných nebo ukázkových dat.
 
-  Podporované agregované typy: `Min`, `Max`, `Sum`, `Count`, `Average`
-
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o službě [Storage a](./time-series-insights-update-storage-ingress.md) příchozím přenosu ve službě Azure Time Series Insights Preview.
-
+- Přečtěte si další informace o [úložišti a](./time-series-insights-update-storage-ingress.md) příchozím přenosu ve službě Azure Time Series Insights Preview.
 - Přečtěte si článek Time Series Insights Preview [Data Modeling](./time-series-insights-update-tsm.md) .
-
-- [Při volbě ID časové řady se objevují osvědčené postupy](./time-series-insights-update-how-to-id.md).
+- Zjistěte [osvědčené postupy pro výběr ID časové řady](./time-series-insights-update-how-to-id.md).
