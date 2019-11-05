@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 76b4f721135c6e34eebdc20268a76e84d86b0637
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 2c153d818136c5d8804dae72004dfaf17fd1bf7a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575681"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494530"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Známé problémy pro cluster Apache Spark v HDInsight
 
@@ -32,7 +32,7 @@ Problém můžete vyřešit pomocí následujícího postupu:
 
         yarn application –list
 
-    Výchozí názvy úloh budou Livy, pokud byly úlohy spuštěny s relací Livy Interactive bez zadání explicitních názvů. Pro relaci Livy spuštěnou v [Jupyter notebook](https://jupyter.org/)začíná `remotesparkmagics_*`název úlohy.
+    Výchozí názvy úloh budou Livy, pokud byly úlohy spuštěny s relací Livy Interactive bez zadání explicitních názvů. Pro relaci Livy spuštěnou v [Jupyter notebook](https://jupyter.org/)začíná název úlohy `remotesparkmagics_*`.
 
 3. Spuštěním následujícího příkazu tyto úlohy ukončete.
 
@@ -81,17 +81,17 @@ V názvech souborů poznámkových bloků Jupyter nepoužívejte jiné znaky ne�
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Při načítání poznámkových bloků větších velikostí došlo k chybě.
 
-Může se zobrazit chyba **`Error loading notebook`** při načíst poznámkovými bloky, které jsou větší velikost.  
+Při načítání poznámkových bloků, které mají větší velikost, se může zobrazit chyba **`Error loading notebook`** .  
 
 **Zmírnění**
 
-Pokud se zobrazí tato chyba, neznamená to, že vaše data jsou poškozená nebo ztracená.  Vaše poznámkové bloky jsou pořád na `/var/lib/jupyter`disku v a k nim můžete přistupovat přes SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Pokud se zobrazí tato chyba, neznamená to, že vaše data jsou poškozená nebo ztracená.  Vaše poznámkové bloky jsou pořád na disku v `/var/lib/jupyter`a k nim můžete přistupovat přes SSH v clusteru. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Po připojení ke clusteru pomocí SSH můžete zkopírovat poznámkové bloky z clusteru do místního počítače (pomocí spojovacího bodu služby nebo WinSCP), aby se zabránilo ztrátě jakýchkoli důležitých dat v poznámkovém bloku. Pak můžete pomocí SSH tunelu do svého hlavnímu uzluu na portu 8001 získat přístup k Jupyter bez průchodu bránou.  Odtud můžete vymazat výstup poznámkového bloku a znovu ho uložit, aby se minimalizovala velikost poznámkového bloku.
 
 Aby nedošlo k této chybě v budoucnu, je nutné dodržovat některé osvědčené postupy:
 
-* Je důležité zachovat malou velikost poznámkového bloku. Veškerý výstup úloh Sparku, který se pošle zpátky do Jupyter, je uložený v poznámkovém bloku.  Osvědčeným postupem je Jupyter obecně, abyste se vyhnuli `.collect()` spouštění ve velkých RDD nebo datasnímcích. místo toho, pokud chcete prohlížet obsah RDD, zvažte spuštění `.take()` nebo `.sample()` , aby váš výstup nezískal příliš velký.
+* Je důležité zachovat malou velikost poznámkového bloku. Veškerý výstup úloh Sparku, který se pošle zpátky do Jupyter, je uložený v poznámkovém bloku.  Osvědčeným postupem je Jupyter obecně, aby nedocházelo ke spouštění `.collect()` ve velkých RDD nebo datarámečcích; místo toho, pokud chcete prohlížet obsah RDD, zvažte spuštění `.take()` nebo `.sample()`, aby váš výstup nezískal příliš velký.
 * Když uložíte Poznámkový blok, zrušte zaškrtnutí všech výstupních buněk, abyste snížili velikost.
 
 ### <a name="notebook-initial-startup-takes-longer-than-expected"></a>Počáteční spuštění poznámkového bloku trvá déle, než bylo očekáváno
@@ -115,15 +115,15 @@ Pokud má cluster Spark dostatek prostředků, při pokusu o vytvoření relace 
 
 2. Restartujte Poznámkový blok, který jste se pokusili spustit. K dispozici je dostatek prostředků, aby bylo možné nyní vytvořit relaci.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Další informace najdete v tématech
 
-* [Přehled Apache Spark ve službě Azure HDInsight](apache-spark-overview.md)
+* [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scénáře
 
-* [Apache Spark s BI: Provádění interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
-* [Apache Spark s Machine Learning: Použití Sparku ve službě HDInsight k analýze teploty budovy pomocí dat TVK](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: Předpověď výsledků kontroly potravin pomocí Sparku v HDInsight](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI.](apache-spark-use-bi-tools.md)
+* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight můžete analyzovat teplotu budovy pomocí dat TVK.](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight předpovídat výsledky kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
 * [Analýza webového protokolu pomocí Apache Spark ve službě HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Vytvoření a spouštění aplikací
