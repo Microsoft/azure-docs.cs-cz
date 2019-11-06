@@ -9,18 +9,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: aa3e3b63bdfda7aa6d875055dee4c69b9840db25
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: e07939bd5f0264df637fda439d96be213a8d28d1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "72167354"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499215"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co je Apache Hive a HiveQL ve službě Azure HDInsight?
 
 [Apache Hive](https://hive.apache.org/) je systém datového skladu pro Apache Hadoop. Podregistr umožňuje sumarizaci dat, dotazování a analýzu dat. Dotazy na podregistr se napíší v HiveQL, což je dotazovací jazyk podobný SQL.
 
-Podregistr umožňuje strukturování struktury na základě nestrukturovaných dat. Po definování struktury můžete použít HiveQL k dotazování dat bez znalosti jazyka Java nebo MapReduce.
+Podregistr umožňuje strukturování struktury na základě strukturovaných dat. Po definování struktury můžete použít HiveQL k dotazování dat bez znalosti jazyka Java nebo MapReduce.
 
 HDInsight nabízí několik typů clusterů, které jsou vyladěné pro konkrétní úlohy. Následující typy clusterů se nejčastěji používají pro dotazy na podregistry:
 
@@ -68,7 +68,7 @@ STORED AS TEXTFILE LOCATION '/example/data/';
 
 Podregistr také podporuje vlastní **serializátor nebo deserializaci (SerDe)** pro složitá nebo nepravidelná strukturovaná data. Další informace najdete v tématu [Jak používat vlastní SERDE JSON s](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/) dokumentem HDInsight.
 
-Další informace o formátech souborů podporovaných podregistru najdete v tématu [Ruční příručka k jazyku (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) .
+Další informace o formátech souborů podporovaných podregistru najdete v tématu [Příručka k jazyku (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
 
 ### <a name="hive-internal-tables-vs-external-tables"></a>Vnitřní tabulky a externí tabulky podregistru
 
@@ -137,9 +137,9 @@ V předchozím příkladu příkazy HiveQL provádějí následující akce:
 
 * `CREATE EXTERNAL TABLE`: Vytvoří novou **externí** tabulku v podregistru. Externí tabulky ukládají pouze definici tabulky v podregistru. Data zůstanou v původním umístění a v původním formátu.
 
-* `ROW FORMAT`: oznamuje podregistru, jak jsou data formátována. V tomto případě jsou pole v každém protokolu oddělená mezerou.
+* `ROW FORMAT`: instruuje podregistr, jak se data naformátují. V tomto případě jsou pole v každém protokolu oddělená mezerou.
 
-* `STORED AS TEXTFILE LOCATION`: říká podregistru, ve kterém jsou data uložená (adresář `example/data`) a který je uložený jako text. Data mohou být v jednom souboru nebo rozložena mezi více souborů v rámci adresáře.
+* `STORED AS TEXTFILE LOCATION`: říká podregistru, ve kterém jsou uložená data (adresář `example/data`) a který je uložený jako text. Data mohou být v jednom souboru nebo rozložena mezi více souborů v rámci adresáře.
 
 * `SELECT`: vybere počet všech řádků, ve kterých sloupec **T4** obsahuje hodnotu **[Chyba]** . Tento příkaz vrátí hodnotu **3** , protože existují tři řádky, které obsahují tuto hodnotu.
 
@@ -171,7 +171,7 @@ Tyto příkazy provádějí následující akce:
 
 * `CREATE TABLE IF NOT EXISTS`: Pokud tabulka neexistuje, vytvořte ji. Vzhledem k tomu, že se klíčové slovo **External** nepoužívá, vytvoří tento příkaz interní tabulku. Tabulka je uložená v datovém skladu podregistru a je plně spravovaná podregistrem.
 
-* `STORED AS ORC`: ukládá data ve formátu optimalizované řádky (ORC). ORC je vysoce optimalizovaný a efektivní formát pro ukládání dat z podregistru.
+* `STORED AS ORC`: ukládá data ve formátu optimalizovaného řádku (ORC). ORC je vysoce optimalizovaný a efektivní formát pro ukládání dat z podregistru.
 
 * `INSERT OVERWRITE ... SELECT`: Vybere řádky z tabulky **log4jLogs** , která obsahuje **[Error]** , a pak data vloží **do tabulky chyb** .
 
