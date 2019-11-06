@@ -9,7 +9,7 @@
     - name: Vytvoření testu služby Internet Analyzer s využitím portálu
       href: internet-analyzer-create-test-portal.md
     - name: Vytvoření testu služby Internet Analyzer s využitím CLI
-      herf: internet-analyzer-cli.md
+      href: internet-analyzer-cli.md
 - name: Návody
   items:
     - name: Vložení klienta

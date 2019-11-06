@@ -42,7 +42,7 @@
     - name: Sestavování aplikací
       items:
         - name: Určení záměrů uživatele
-          href: luis-quickstart-intents-only.md
+          href: tutorial-intents-only.md
         - name: Identifikace běžných uživatelských dat s využitím předem připravených modelů
           href: luis-tutorial-prebuilt-intents-entities.md
         - name: Zjištění mínění z projevů uživatele
@@ -116,6 +116,7 @@
           displayName: roles
         - name: Funkce
           href: luis-concept-feature.md
+          displayName: 'descriptor, phrase list'
     - name: Skóre předpovědi
       href: luis-concept-prediction-score.md
     - name: Osvědčené postupy

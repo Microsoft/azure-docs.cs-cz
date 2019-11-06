@@ -6,6 +6,8 @@
   items:
     - name: Co je služba Speech?
       href: overview.md
+    - name: Podpora jazyků a oblastí
+      href: language-support.md
 - name: Převod řeči na text
   expanded: false
   items:
@@ -38,7 +40,7 @@
         - name: Použití komprimovaných formátů zvukového vstupu
           href: how-to-use-codec-compressed-audio-input-streams.md
         - name: Použití rozpoznávání řeči s kontejnery Docker
-          href: speech-container-howto.md
+          href: speech-container-howto.md?tabs=stt
     - name: Referenční informace
       items:
         - name: Rozhraní API sady Speech SDK
@@ -87,7 +89,7 @@
         - name: Syntéza řeči s využitím rozhraní API pro řeč dlouhého formátu
           href: long-audio-api.md
         - name: Použití syntézy řeči s kontejnery Docker
-          href: speech-container-howto.md
+          href: speech-container-howto.md?tabs=tts
     - name: Referenční informace
       items:
         - name: Speech SDK

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: c8453a2ec00a2fca107f85a23a8af1e6313a70b6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: dabadf3a4175947f09ba20b0e644f1d2b485ee38
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175168"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73590563"
 ---
 ### <a name="sql-servers"></a>SQL Servery
 
@@ -23,4 +23,3 @@ ms.locfileid: "67175168"
 | [Audit nastavení detekce hrozeb na úrovni serveru](../articles/governance/policy/samples/audit-sql-server-threat-detection-setting.md) | Provede audit zásad výstrah zabezpečení databáze SQL, pokud tyto zásady nejsou nastavené na zadaný stav. Zadejte hodnotu, která určí, jestli je detekce hrozeb povolená nebo ne.  |
 | [Auditování nastavení auditování serveru SQL](../articles/governance/policy/samples/sql-server-audit.md) | Provede audit serveru SQL podle toho, jestli jsou povolená nastavení auditování. |
 | [Audit nastavení auditování na úrovni SQL Serveru](../articles/governance/policy/samples/audit-sql-server-audit-setting.md) | Provede audit nastavení auditování SQL Serveru v případě, že tato nastavení nevyhovují zadaným kritériím. Zadejte hodnotu, která určí, jestli má být nastavení auditování povoleno nebo ne. |
-| [Vyžadovat SQL Server verze 12.0](../articles/governance/policy/samples/require-sql-12.md) | Vyžaduje, aby SQL Servery používaly verzi 12.0.  |

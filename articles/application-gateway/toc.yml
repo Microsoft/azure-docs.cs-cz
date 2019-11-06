@@ -69,14 +69,6 @@
           href: application-gateway-ssl-policy-overview.md
         - name: Použití Key Vaultu
           href: key-vault-certs.md
-    - name: WAF
-      items:
-        - name: Brána firewall webových aplikací
-          href: waf-overview.md
-        - name: Konfigurace WAF
-          href: application-gateway-waf-configuration.md
-        - name: Vlastní pravidla
-          href: custom-waf-rules-overview.md
     - name: Příchozí přenos dat pro AKS
       href: ingress-controller-overview.md
     - name: Monitorování stavu
@@ -245,8 +237,6 @@
           href: how-to-troubleshoot-application-gateway-session-affinity-issues.md
         - name: Chyby Chybná brána (502)
           href: application-gateway-troubleshooting-502.md
-        - name: Firewall webových aplikací (WAF)
-          href: web-application-firewall-troubleshoot.md
         - name: Příchozí přenos dat pro AKS
           href: ingress-controller-troubleshoot.md
         - name: Resource Health

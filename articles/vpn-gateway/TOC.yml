@@ -200,8 +200,6 @@
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
     - name: Konfigurace zachytávání paketů
       href: packet-capture.md
-    - name: Konfigurace vlastních selektorů provozu
-      href: custom-traffic-selectors.md
     - name: Řešení potíží
       href: vpn-gateway-troubleshoot.md
       items:

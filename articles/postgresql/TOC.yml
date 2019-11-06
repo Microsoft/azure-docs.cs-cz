@@ -78,6 +78,8 @@
           items:
             - name: Cenové úrovně
               href: concepts-pricing-tiers.md
+            - name: Předplacení záložní kapacity
+              href: concept-reserved-pricing.md
             - name: Omezení
               href: concepts-limits.md
         - name: Zabezpečení a přístup k datům

@@ -218,9 +218,6 @@
             - name: Audit nastavení auditování na úrovni SQL Serveru
               displayName: auditIfNotExists
               href: samples/audit-sql-server-audit-setting.md
-            - name: Vyžadovat SQL Server verze 12.0
-              displayName: 'deny, builtin'
-              href: samples/require-sql-12.md
         - name: Databáze SQL
           items:
             - name: Povolené skladové položky pro databáze SQL
