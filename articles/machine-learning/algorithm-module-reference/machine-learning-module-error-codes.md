@@ -1,6 +1,6 @@
 ---
 title: Řešení chyb modulu
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Řešení potíží s výjimkami modulu v Azure Machine Learning Studio používání kódů chyb
 services: machine-learning
 ms.service: machine-learning
@@ -8,25 +8,25 @@ ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: a1a6817c08223b360c08804e0595f12f2947ea5f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: HT
+ms.date: 10/22/2019
+ms.openlocfilehash: b07b1fc14ac7ac72a30f75a098b4aab35f2de713
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693077"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497736"
 ---
 # <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>Výjimky a kódy chyb pro odkaz na modul & algoritmu
 
-Seznamte se s chybovými zprávami a kódy výjimek, se kterými se můžete setkat pomocí modulů v Azure Machine Learning Studio. 
+Seznamte se s chybovými zprávami a kódy výjimek, se kterými se můžete setkat pomocí modulů v Návrháři Azure Machine Learning (Preview). 
 
-Pokud chcete problém vyřešit, vyhledejte chybu v tomto článku, abyste si přečetli o běžných příčinách. Existují dva způsoby, jak získat úplný text chybové zprávy v nástroji Studio:  
+Pokud chcete problém vyřešit, vyhledejte chybu v tomto článku, abyste si přečetli o běžných příčinách. Existují dva způsoby, jak získat úplný text chybové zprávy v Návrháři:  
  
 - Klikněte na odkaz, **Zobrazte výstupní protokol**, v pravém podokně a posuňte se k dolnímu. V posledních dvou řádcích okna se zobrazí podrobná chybová zpráva.  
   
 - Vyberte modul, který obsahuje chybu, a klikněte na červené X. Zobrazí se pouze relevantní text chyby.  
   
-Pokud text chybové zprávy není užitečný, pošlete nám informace o kontextu a všech požadovaných přidaných nebo změnách. Můžete buď Odeslat zpětnou vazbu k chybovému tématu, nebo navštívit [fórum Azure Machine Learning studia](https://aka.ms/aml-forum-studio) a odeslat dotaz.  
+Pokud text chybové zprávy není užitečný, pošlete nám informace o kontextu a všech požadovaných přidaných nebo změnách odesláním zpětné vazby.
 
 
 ## <a name="error-0001"></a>Chyba 0001  
@@ -163,9 +163,9 @@ Pokud text chybové zprávy není užitečný, pošlete nám informace o kontext
 ## <a name="error-0009"></a>Chyba 0009  
  K výjimce dojde, pokud je název účtu úložiště Azure nebo kontejner zadán nesprávně.  
   
-K této chybě dochází v Azure Machine Learning Studio při zadávání parametrů pro účet úložiště Azure, ale jméno nebo heslo nejde přeložit. Chyby v heslech nebo názvech účtů se můžou vyskytnout z mnoha důvodů:
+K této chybě dochází v Azure Machine Learning designeru při zadávání parametrů pro účet úložiště Azure, ale jméno nebo heslo nejde přeložit. Chyby v heslech nebo názvech účtů se můžou vyskytnout z mnoha důvodů:
  
- + Účet je nesprávného typu. Některé nové typy účtů se nepodporují pro použití s Machine Learning Studio. Podrobnosti najdete v tématu [Import dat](import-data.md) .
+ + Účet je nesprávného typu. Některé nové typy účtů se nepodporují pro použití s nástrojem Machine Learning Designer. Podrobnosti najdete v tématu [Import dat](import-data.md) .
  + Zadali jste nesprávný název účtu.
  + Účet už neexistuje.
  + Heslo účtu úložiště je chybné nebo se změnilo.
@@ -1063,7 +1063,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
   
 **Resolution:**
 
-1. In Azure Machine Learning Studio, right-click the module that has the error, and select **View Log**.
+1. In Azure Machine Learning designer, right-click the module that has the error, and select **View Log**.
 2. Examine the standard error log of the module, which contains the stack trace.
     + Lines beginning with [ModuleOutput] indicate output from R.
     + Messages from R marked as **warnings** typically do not cause the pipeline to fail.
