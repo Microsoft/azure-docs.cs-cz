@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: b92975e3fe73fb1c882bdfc4338fd8e169728e8b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 58eb5abc9a8857b81ada65c96eb7deaaa5cc5aeb
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387638"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622665"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Zkoumání prostředků Azure pomocí služby Resource Graph
 
@@ -40,7 +40,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 ```
 
 > [!NOTE]
-> Rutina Azure PowerShell `Search-AzGraph` ve výchozím nastavení vrátí **PSCustomObject** . Aby výstup vypadal stejně jako výsledek vrácený rozhraním Azure CLI, použije se rutina `ConvertTo-Json`. Výchozí hodnota **hloubky** je _2_. Nastavení na hodnotu _100_ by mělo být převedeno na všechny vrácené úrovně.
+> Rutina `Search-AzGraph` Azure PowerShell ve výchozím nastavení vrací **PSCustomObject** . Aby výstup vypadal stejně jako výsledek vrácený rozhraním Azure CLI, použije se rutina `ConvertTo-Json`. Výchozí hodnota **hloubky** je _2_. Nastavení na hodnotu _100_ by mělo být převedeno na všechny vrácené úrovně.
 
 Výsledky JSON jsou strukturované podobně jako v následujícím příkladu:
 
@@ -308,10 +308,10 @@ az graph query -q="Resources | where type =~ 'Microsoft.Network/publicIPAddresse
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip"
 ```
 
-Pokud chcete zjistit, jak provést tyto kroky v jednom dotazu s operátorem `join`, přečtěte si část [Seznam virtuálních počítačů s jejich síťovým rozhraním a ukázkou veřejné IP adresy](../samples/advanced.md#join-vmpip) .
+Pokud chcete zjistit, jak tento postup provést v jednom dotazu s operátorem `join`, přečtěte si článek [Seznam virtuálních počítačů s jejich síťovým rozhraním a ukázkou veřejné IP adresy](../samples/advanced.md#join-vmpip) .
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [dotazovacím jazyku](query-language.md)
-- Zobrazit jazyk používaný v [počátečních dotazech](../samples/starter.md)
-- Viz rozšířená použití v [rozšířených dotazech](../samples/advanced.md)
+- Přečtěte si další informace o [dotazovacím jazyce](query-language.md).
+- Podívejte se na jazyk používaný v [počátečních dotazech](../samples/starter.md).
+- Viz rozšířená použití v [rozšířených dotazech](../samples/advanced.md).

@@ -1,6 +1,6 @@
 ---
-title: Správa a monitorování úloh význam ve službě Azure SQL Data Warehouse | Dokumentace Microsoftu
-description: Zjistěte, jak spravovat a sledovat žádosti o úroveň důležitosti.
+title: Správa a monitorování důležitosti úloh
+description: Naučte se spravovat a monitorovat důležitost na úrovni požadavků v Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
@@ -10,21 +10,22 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 30afe1805748012b0a137c865c799580f79d31d8
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: ee9acb873c5118733de142045457028c3f4d5f61
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588644"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692707"
 ---
-# <a name="manage-and-monitor-workload-importance-in-azure-sql-data-warehouse"></a>Správa a monitorování úloh význam ve službě Azure SQL Data Warehouse
+# <a name="manage-and-monitor-workload-importance-in-azure-sql-data-warehouse"></a>Správa a monitorování důležitosti úloh v Azure SQL Data Warehouse
 
-Spravovat a sledovat žádosti o úroveň důležitosti ve službě Azure SQL Data Warehouse pomocí zobrazení dynamické správy a zobrazení katalogu.
+Správa a monitorování důležitosti na úrovni požadavku v Azure SQL Data Warehouse pomocí zobrazení zobrazení dynamické správy a katalogu
 
 ## <a name="monitor-importance"></a>Důležitost monitorování
 
-Monitorování význam pomocí nový sloupec význam v [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) zobrazení dynamické správy.
-Níže monitorování dotazu ukazuje čas odeslání a počáteční čas pro dotazy. Zkontrolujte čas odeslání a počáteční čas spolu s význam naleznete v tématu jak k nim plánování význam.
+Sledujte důležitost pomocí sloupce nový důležitost v zobrazení dynamické správy [Sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) .
+Níže uvedený dotaz monitorování ukazuje dobu odeslání a čas spuštění dotazů. Přečtěte si čas odeslání a čas zahájení spolu s důležitostí, abyste viděli, jak důležitost ovlivnila plánování.
 
 ```sql
 SELECT s.login_name, r.status, r.importance, r.submit_time, r.start_time
@@ -34,11 +35,11 @@ SELECT s.login_name, r.status, r.importance, r.submit_time, r.start_time
 ORDER BY r.start_time
 ```
 
-Chcete-li prozkoumat další jak dotazy se plán, použijte zobrazení katalogu.
+Pokud chcete zobrazit další informace o plánování dotazů, použijte zobrazení katalogu.
 
-## <a name="manage-importance-with-catalog-views"></a>Správa význam pomocí zobrazení katalogu
+## <a name="manage-importance-with-catalog-views"></a>Správa důležitosti pomocí zobrazení katalogu
 
-Zobrazení katalogu sys.workload_management_workload_classifiers obsahuje informace o klasifikátorů ve vaší instanci Azure SQL Data Warehouse. Chcete-li vyloučit třídění, které se mapují na prostředek třídy definované v systému spusťte následující kód:
+Zobrazení katalogu sys. workload_management_workload_classifiers obsahuje informace o klasifikátorech ve vaší instanci Azure SQL Data Warehouse. Chcete-li vyloučit systémem definované klasifikátory, které jsou mapovány na třídy prostředků, spusťte následující kód:
 
 ```sql
 SELECT *
@@ -46,7 +47,7 @@ SELECT *
   WHERE classifier_id > 12
 ```
 
-Zobrazení katalogu [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest), obsahuje informace o parametrech vytvoření klasifikátoru použít.  Níže ukazuje dotaz, které ExecReportsClassifier byl vytvořen na ```membername``` parametr pro hodnoty s ExecutiveReports:
+Zobrazení katalogu, [Sys. workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest), obsahuje informace o parametrech použitých při vytváření klasifikátoru.  Následující dotaz ukazuje, že ExecReportsClassifier byl vytvořen v parametru ```membername``` pro hodnoty s ExecutiveReports:
 
 ```sql
 SELECT c.name,cd.classifier_type, classifier_value
@@ -58,8 +59,8 @@ SELECT c.name,cd.classifier_type, classifier_value
 
 ![Výsledky dotazu](./media/sql-data-warehouse-how-to-manage-and-monitor-workload-importance/wlm-query-results.png)
 
-Pokud chcete zjednodušit Poradce při potížích chybnou, doporučujeme že odebrat mapování role třídy prostředků při vytváření úlohy Klasifikátory. Následující kód vrátí existující prostředek třídy členství v rolích. Spusťte pro každou sp_droprolemember ```membername``` vrátilo odpovídajícího třídy prostředků.
-Níže je příklad kontroly existence před vyřazením klasifikátor úlohy:
+Při řešení potíží s chybnou klasifikací doporučujeme, abyste při vytváření klasifikátorů úloh odebrali mapování rolí tříd prostředků. Následující kód vrátí existující členství v roli třídy prostředku. Spusťte sp_droprolemember pro každý ```membername``` vrácenou z odpovídající třídy prostředků.
+Níže je uveden příklad kontroly existence před vyřazením klasifikátoru úloh:
 
 ```sql
 IF EXISTS (SELECT 1 FROM sys.workload_management_workload_classifiers WHERE name = 'ExecReportsClassifier')
@@ -67,9 +68,9 @@ IF EXISTS (SELECT 1 FROM sys.workload_management_workload_classifiers WHERE name
 GO
 ```
 
-## <a name="next-steps"></a>Další postup
-- Další informace o klasifikaci, naleznete v tématu [úloh klasifikace](sql-data-warehouse-workload-classification.md).
-- Další informace o důležitosti, naleznete v tématu [význam pracovního vytížení](sql-data-warehouse-workload-importance.md)
+## <a name="next-steps"></a>Další kroky
+- Další informace o klasifikaci najdete v tématu [klasifikace úloh](sql-data-warehouse-workload-classification.md).
+- Další informace o důležitosti najdete v tématu [důležitost úloh](sql-data-warehouse-workload-importance.md) .
 
 > [!div class="nextstepaction"]
-> [Přejít na důležitosti úlohy konfigurace](sql-data-warehouse-how-to-configure-workload-importance.md)
+> [Přejít na konfigurace důležitosti úlohy](sql-data-warehouse-how-to-configure-workload-importance.md)

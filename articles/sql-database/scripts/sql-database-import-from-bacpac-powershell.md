@@ -1,5 +1,5 @@
 ---
-title: Příklad PowerShellu – Import souboru BACPAC do databáze Azure SQL | Microsoft Docs
+title: Příklad PowerShellu Import souboru BACPAC Azure SQL Database
 description: Ukázkový skript Azure PowerShellu pro import souboru BACPAC do databáze SQL
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/24/2019
-ms.openlocfilehash: 3c90cd19c5da3d98e894105e21b5e20cf6376c21
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1cd7b94ac2717bbfa06d093d13fc201514cdc575
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569947"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691691"
 ---
 # <a name="use-powershell-to-import-a-bacpac-file-into-an-azure-sql-database"></a>Import souboru BACPAC do databáze Azure SQL pomocí PowerShellu
 
@@ -52,7 +52,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport) | Importuje soubor BACPAC a vytvoří na serveru novou databázi. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

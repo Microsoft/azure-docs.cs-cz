@@ -1,74 +1,74 @@
 ---
-title: Kontejnerizace existující aplikace .NET pro Service Fabric mřížky | Dokumentace Microsoftu
-description: Přidává síť na existující aplikace v .NET
+title: Kontejnerizace stávající aplikaci .NET pro Service Fabric sítě | Microsoft Docs
+description: Přidejte Service Fabric podporu orchestrace kontejnerů na mřížku pro projekty ASP.NET a konzolu, které používají úplné rozhraní .NET Framework.
 services: service-fabric-mesh
-keywords: kontejnerizace služby prostředků infrastruktury sítě
+keywords: síť kontejnerizace Service Fabric
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/08/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chakdan
-ms.openlocfilehash: cb4e327e1c8c0a653cb94233f568b4847494c439
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 070d07316c0ff06a45e76936e75cb5345548e78f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60419428"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686292"
 ---
-# <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Kontejnerizace existující aplikace .NET pro Service Fabric mřížky
+# <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Kontejnerizace stávající aplikaci .NET pro Service Fabric sítě
 
-Tento článek ukazuje, jak přidat do existující aplikace .NET služby prostředků infrastruktury sítě podpora Orchestrace kontejnerů.
+V tomto článku se dozvíte, jak přidat Service Fabric podporu orchestrace kontejnerů na mřížku do existující aplikace .NET.
 
-V sadě Visual Studio 2017 můžete přidat kontejnerizace podporu pro projekty ASP.NET a konzoly, které používají úplné rozhraní .NET framework.
+V aplikaci Visual Studio 2017 můžete přidat podporu kontejneru do ASP.NET a konzolových projektů, které používají úplné rozhraní .NET Framework.
 
 > [!NOTE]
-> .NET **core** projekty se momentálně nepodporují.
+> Projekty .NET **Core** nejsou aktuálně podporovány.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-* Ujistěte se, že jste [nastavení vývojového prostředí](service-fabric-mesh-howto-setup-developer-environment-sdk.md). To zahrnuje instalaci modulu runtime Service Fabric, sady SDK, Docker, Visual Studio 2017 a vytváří místní cluster.
+* Ujistěte se, že jste [nastavili vývojové prostředí](service-fabric-mesh-howto-setup-developer-environment-sdk.md). To zahrnuje instalaci modulu runtime Service Fabric, sady SDK, Docker, sady Visual Studio 2017 a vytvoření místního clusteru.
 
-## <a name="open-an-existing-net-app"></a>Otevřete existující aplikaci .NET
+## <a name="open-an-existing-net-app"></a>Otevření existující aplikace .NET
 
-Otevřete aplikaci, ke kterému chcete přidat podporu Orchestrace kontejnerů.
+Otevřete aplikaci, do které chcete přidat podporu orchestrace kontejnerů.
 
-Pokud jste chtěli vyzkoušet příklad, můžete použít [eShop](https://github.com/MikkelHegn/ContainersSFLab) vzorový kód. Zbývající část tohoto článku bude předpokládat, že používáme tento projekt, i když použijete tyto kroky na svůj projekt.
+Pokud byste chtěli vyzkoušet příklad, můžete použít ukázku kódu [eshop](https://github.com/MikkelHegn/ContainersSFLab) . Zbytek tohoto článku bude předpokládat, že používáme tento projekt, i když můžete použít tyto kroky na vlastní projekt.
 
-Získat kopii systému **eShop** projektu:
+Získat kopii projektu **eshop** :
 
 ```git
 git clone https://github.com/MikkelHegn/ContainersSFLab.git
 ```
 
-Jakmile, který byl stažen, v sadě Visual Studio 2017 otevřete **ContainersSFLab\eShopLegacyWebFormsSolution\eShopLegacyWebForms.sln**.
+Po stažení v aplikaci Visual Studio 2017 Open **ContainersSFLab\eShopLegacyWebFormsSolution\eShopLegacyWebForms.sln**.
 
-## <a name="add-container-support"></a>Přidání podpory kontejneru
+## <a name="add-container-support"></a>Přidat podporu kontejneru
  
-Přidání podpory Orchestrace kontejnerů do existujícího projektu ASP.NET nebo konzoly nástroje Service Fabric sítě následujícím způsobem:
+Přidejte podporu orchestrace kontejnerů do existujícího projektu ASP.NET nebo konzole pomocí Service Fabricch nástrojů pro mřížku, jak je znázorněno níže:
 
-V Průzkumníku řešení sady Visual Studio klikněte pravým tlačítkem na název projektu (v tomto příkladu **eShopLegacyWebForms**) a klikněte na tlačítko **přidat** > **podporu Orchestrátoru kontejnerů** .
-**Přidat podporu Orchestrátoru kontejnerů** se zobrazí dialogové okno.
+V Průzkumníku řešení sady Visual Studio klikněte pravým tlačítkem myši na název projektu (v příkladu **eShopLegacyWebForms**) a pak zvolte **Přidat** > **kontejner Orchestrator support**.
+Zobrazí se dialogové okno **Přidat podporu produktu Orchestrator pro kontejner** .
 
-![Visual Studio přidat dialog kontejner nástroje orchestrator](./media/service-fabric-mesh-howto-containerize-vs/add-container-orchestration-support.png)
+![Dialogové okno Přidat kontejner nástroje Orchestrator pro Visual Studio](./media/service-fabric-mesh-howto-containerize-vs/add-container-orchestration-support.png)
 
-Zvolte **sítě pro Service Fabric** z rozevíracího seznamu a potom klikněte na tlačítko **OK**.
+V rozevíracím seznamu vyberte **Service Fabric síť** a pak klikněte na **OK**.
 
-Nástroj potom ověří, zda Docker nainstalovaný, do vašeho projektu přidá soubor Dockerfile a stáhne image dockeru pro váš projekt.  
-Projekt aplikace Service Fabric sítě se přidá do vašeho řešení. Obsahuje vaše síť publikovat profily a konfigurační soubory. Název projektu je stejný jako název vašeho projektu s aplikací zřetězeny do konce, například **eShopLegacyWebFormsApplication**. 
+Nástroj potom ověří, že je Docker nainstalovaný, přidá do projektu souboru Dockerfile a napředá image Docker pro váš projekt.  
+Do vašeho řešení se přidá projekt aplikace Service Fabric mřížka. Obsahuje vaše sítě publikační profil a konfigurační soubory. Název projektu je stejný jako název projektu a "aplikace" zřetězené na konec, například **eShopLegacyWebFormsApplication**. 
 
-V novém projektu sítě uvidíte dvě složky, které byste měli vědět:
-- **Prostředky aplikace** obsahující YAML soubory, které popisují další prostředky sítě, jako je například síť.
-- **Prostředky služby** obsahující service.yaml soubor, který popisuje, jak vaše aplikace by měl spustit po nasazení.
+V novém projektu sítě se zobrazí dvě složky, na které byste měli vědět:
+- **Prostředky aplikací** , které obsahují YAML soubory, které popisují další síťové prostředky, jako je například síť.
+- **Prostředky služby** , které obsahují soubor Service. yaml, který popisuje, jak by měla být aplikace spuštěna po nasazení.
 
-Jakmile podpora Orchestrace kontejnerů se přidá do vaší aplikace, můžete stisknout **F5** ladění aplikací .NET v místním clusteru Service Fabric mřížky. Tady je eShop aplikaci ASP.NET spuštěnou v clusteru Service Fabric sítě: 
+Až se do aplikace přidá podpora orchestrace kontejnerů, můžete stisknutím klávesy **F5** ladit aplikaci .NET v místním clusteru Service Fabric sítě. Tady je aplikace eShop ASP.NET spuštěná v clusteru Service Fabricch sítí: 
 
-![eShop aplikace](./media/service-fabric-mesh-howto-containerize-vs/eshop-running.png)
+![aplikace eShop](./media/service-fabric-mesh-howto-containerize-vs/eshop-running.png)
 
-Aplikaci můžete publikovat do Azure Service Fabric mřížky.
+Teď můžete aplikaci publikovat do Azure Service Fabric sítě.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak publikovat aplikaci Service Fabric sítě: [Kurz – nasazení aplikace Service Fabric mřížky](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+Přečtěte si, jak publikovat aplikaci do Service Fabric sítě: [kurz – nasazení Service Fabric mřížky aplikace](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)

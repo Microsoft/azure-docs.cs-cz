@@ -1,5 +1,5 @@
 ---
-title: Formát ORC v Azure Data Factory | Microsoft Docs
+title: Formát ORC v Azure Data Factory
 description: Toto téma popisuje, jak v Azure Data Factory pracovat s formátem ORC.
 author: linda33wj
 manager: craigg
@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: beff81b7e8d207a2173497d039b915b7614fc30e
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a5125b53d960ddead063435666de5b26ce0bc291
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952274"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73674759"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Formát ORC v Azure Data Factory
 
@@ -71,7 +71,7 @@ V části ***\*zdrojového\**** aktivity kopírování jsou podporovány násled
 | Vlastnost      | Popis                                                  | Požaduje se |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **OrcSource**. | Ano      |
-| storeSettings | Skupina vlastností, jak číst data z úložiště dat. Každý konektor založený na souborech má své vlastní podporované nastavení čtení v části `storeSettings`. **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | Ne       |
+| storeSettings | Skupina vlastností, jak číst data z úložiště dat. Jednotlivé konektory založené na souborech mají ve `storeSettings`své vlastní podporované nastavení pro čtení. **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | Ne       |
 
 ### <a name="orc-as-sink"></a>ORC jako jímka
 
@@ -97,7 +97,7 @@ Pro kopírování běžící v místním prostředí IR s ORC serializací/deser
 
 ![Nastavení velikosti haldy JVM v místním prostředí IR](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
-Příklad: nastavte proměnnou `_JAVA_OPTIONS` s hodnotou `-Xms256m -Xmx16g`. Příznak `Xms` určuje počáteční fond přidělení paměti pro prostředí Java Virtual Machine (JVM), zatímco `Xmx` určuje maximální fond přidělení paměti. To znamená, že JVM se spustí s `Xms` velikostí paměti a bude moci využít maximálně `Xmx` množství paměti. Ve výchozím nastavení ADF používá minimální 64 MB a maximální 1G.
+Příklad: nastavte proměnnou `_JAVA_OPTIONS` s hodnotou `-Xms256m -Xmx16g`. Příznak `Xms` Určuje počáteční fond přidělení paměti pro prostředí Java Virtual Machine (JVM), zatímco `Xmx` určuje maximální fond přidělení paměti. To znamená, že JVM se spustí s `Xms` velikostí paměti a bude moci využít maximálně `Xmx` množství paměti. Ve výchozím nastavení ADF používá minimální 64 MB a maximální 1G.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,5 @@
 ---
-title: Příklad prostředí PowerShell obnovení geografické zálohy – Azure SQL Database | Microsoft Docs
+title: Příklad prostředí PowerShell obnovení geografické zálohy – Azure SQL Database
 description: Azure PowerShell ukázkový skript pro obnovení databáze spravované instance Azure SQL z geograficky redundantní zálohy.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: b6ad93d3b711726edd6891e5f6da2c8eef99d531
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9de8819e82db12cb5625a449e4ea5bf2f028a44d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569720"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691414"
 ---
 # <a name="use-powershell-to-restore-a-managed-instance-database-to-another-geo-region"></a>Použití PowerShellu k obnovení databáze spravované instance do jiné geografické oblasti
 
@@ -75,10 +75,10 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/New-AzResourceGroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [Get-AzSqlInstanceDatabaseGeoBackup](/powershell/module/az.sql/Get-AzSqlInstanceDatabaseGeoBackup) | Vytvoří geograficky redundantní zálohu databáze spravované instance. |
-| [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/Restore-AzSqlInstanceDatabase) | Vytvoří databázi na spravované instanci z geografické zálohy. |
+| [Obnovit – AzSqlInstanceDatabase](/powershell/module/az.sql/Restore-AzSqlInstanceDatabase) | Vytvoří databázi na spravované instanci z geografické zálohy. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o PowerShellu najdete v [dokumentaci k Azure PowerShell](/powershell/azure/overview).
 

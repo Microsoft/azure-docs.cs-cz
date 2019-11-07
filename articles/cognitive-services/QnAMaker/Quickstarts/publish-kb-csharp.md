@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: publikování znalostní báze, REST C# ,-QnA maker'
 titleSuffix: Azure Cognitive Services
-description: Tento C# rychlý Start založený na REST vás provede publikováním znalostní báze, který odešle nejnovější verzi testované znalostní báze do vyhrazeného Azure Search indexu představujícího publikovanou znalostní bázi. Také se přitom vytvoří koncový bod, který je možné volat v aplikaci nebo chatovacím robotu.
+description: Tento C# rychlý Start založený na REST publikuje vaši znalostní bázi a vytvoří koncový bod, který se dá volat ve vaší aplikaci nebo robotovi chatu.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 2b2c2ed43a229d929353767b229f8331b49a0e46
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 8bb1b87e5df92605192a60c49a11f1995449d255
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802904"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721164"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Rychlý start: Publikování znalostní báze ve službě QnA Maker pomocí jazyka C#
 
@@ -25,10 +25,10 @@ Tento rychlý Start založený na REST vás provede programově publikováním z
 Tento rychlý start volá rozhraní API služby QnA Maker:
 * [Publikování](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) –toto rozhraní API nevyžaduje v těle požadavku žádné informace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nejnovější verze sady [**Visual Studio Community Edition**](https://www.visualstudio.com/downloads/).
-* Musíte mít [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst svůj klíč a koncový bod (včetně názvu prostředku), vyberte pro prostředek v Azure Portal **rychlý Start** .
+* Potřebujete [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst svůj klíč a koncový bod (včetně názvu prostředku), vyberte pro prostředek v Azure Portal **rychlý Start** .
 * ID znalostní báze služby QnA Maker, které najdete v adrese URL v parametru kbid řetězce dotazu, jak vidíte níže.
 
     ![ID znalostní báze ve službě QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
@@ -65,7 +65,7 @@ Volání API vrátí v případě úspěšného publikování stav 204, přičem
  
 ## <a name="build-and-run-the-program"></a>Sestavení a spuštění programu
 
-Sestavte a spusťte program. Automaticky pošle požadavek do rozhraní API služby QnA Maker, aby publikoval znalostní bázi, a pak se odpověď vytiskne v okně konzoly.
+Sestavte program a spusťte ho. Automaticky pošle požadavek do rozhraní API služby QnA Maker, aby publikoval znalostní bázi, a pak se odpověď vytiskne v okně konzoly.
 
 Po publikování znalostní báze v ní můžete vyhledávat pomocí dotazů z koncového bodu prostřednictvím klientské aplikace nebo chatovacího robota. 
 

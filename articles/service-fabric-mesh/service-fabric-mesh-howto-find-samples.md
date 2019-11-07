@@ -1,32 +1,32 @@
 ---
-title: Najít ukázky pro Azure Service Fabric mřížky | Dokumentace Microsoftu
-description: Zjistěte, jak různé ukázkové aplikace Service Fabric mřížky.
+title: Vyhledání ukázek pro sítě Azure Service Fabric | Microsoft Docs
+description: Tady je rejstřík dostupných ukázkových aplikací pro Service Fabricovou mřížku. Zdrojový kód v těchto příkladech ukazuje, jak dosáhnout konkrétního scénáře pomocí modelu Service Fabric prostředků.
 services: service-fabric-mesh
 keywords: ''
-author: v-vasuke
-ms.author: v-vasuke
+author: athinanthny
+ms.author: atsenthi
 ms.date: 12/03/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
-manager: chakdan
-ms.openlocfilehash: f3f81ef1b65ba2685c806ad6a1a3e699019ed4da
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+manager: chackdan
+ms.openlocfilehash: a300c06a6a18bf2e986b3736b78957daf3d7efd6
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537917"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718813"
 ---
-# <a name="find-service-fabric-mesh-samples"></a>Najít ukázky pro Service Fabric sítě
+# <a name="find-service-fabric-mesh-samples"></a>Hledání ukázek Service Fabricch mřížek
 
-Tato tabulka popisuje dostupné ukázkové aplikace Service Fabric mřížky. Zdrojový kód v těchto příkladech ukazuje, jak dosáhnout určitého scénáře pomocí modelu prostředků služby Service Fabric.
+Tato tabulka obsahuje přehled dostupných ukázkových aplikací pro Service Fabricovou mřížku. Zdrojový kód v těchto příkladech ukazuje, jak dosáhnout konkrétního scénáře pomocí modelu Service Fabric prostředků.
 
-Další informace o nasazení šablony přímo do Azure, najdete v článku [stránka Githubu ukázkové šablony.](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/README.md)
+Další informace o nasazování šablon přímo do Azure najdete na [stránce ukázkového GitHubu šablony.](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/README.md)
 
 |Ukázková šablona|Popis scénáře|Zdrojový kód|Vývojářské nástroje|
 |------------|--------------------|----------|----------------------|
-| [Aplikace Hello World](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/helloworld) | Statické webové stránky hostované v kontejneru. Pro Linux využívá nginx, pro Windows služby IIS | [Zdrojový kód](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/helloworld) | Žádné požadavky |
-| [Čítač aplikace pro svazky souborů Azure](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/counter/readme.md) | Stav Store tak, že připojí soubory Azure na základě svazku uvnitř kontejneru. <br><br> **Poznámka:** Tato šablona vyžaduje sdílenou soubory Azure k už být zřízeno [pokyny](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share) | [Zdrojový kód](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter) | Visual Studio sítě nástroje |
-| [TodoListApp](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/todolist) | Vytvořte aplikaci s front-endu a back-endová služba, která používá překladu názvů DNS. Použít jako návod [zde](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore) | [Zdrojový kód](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/todolistapp) | Visual Studio sítě nástroje |
-| [Vizuální objekty aplikací](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/visualobjects) | Škálování a upgrade mikroslužeb v rámci aplikace. | [Zdrojový kód](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/visualobjects) |  Visual Studio sítě nástroje |
-| [Hlasovací aplikace](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/voting) | Vytvořte aplikaci s front-endu a back-endová služba, která používá překladu názvů DNS | [Zdrojový kód](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/votingapp) | Visual Studio sítě nástroje pro Windows verze VS Code nebo rozhraní příkazového řádku dotnet lze použít pro Linux verze |
-| [Čítač aplikace Service Fabric Reliable svazků](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/counter/readme.sfreliablevolume.md)| Store stavu tím, že připojení Service Fabric Reliable disku na základě objemu uvnitř kontejneru.| [Zdrojový kód](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter) | Visual Studio sítě nástroje |
+| [Aplikace Hello World](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/helloworld) | Statická webová stránka hostovaná v kontejneru. Pro Linux používá Nginx pro Windows IIS | [Zdrojový kód](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/helloworld) | Žádné požadavky |
+| [Aplikace čítače pro souborové svazky Azure](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/counter/readme.md) | Stav uložte připojením svazku založeného na službě Azure Files do kontejneru. <br><br> **Poznámka:** Tato šablona vyžaduje, aby ve sdílené složce souborů Azure byly už [pokyny](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share) zřízené. | [Zdrojový kód](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter) | Nástroje pro mřížku sady Visual Studio |
+| [TodoListApp](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/todolist) | Vytvořte aplikaci s front-endové a back-end službou, která používá překlad založený na DNS. Slouží jako kurz [zde](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore) | [Zdrojový kód](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/todolistapp) | Nástroje pro mřížku sady Visual Studio |
+| [Aplikace vizuálních objektů](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/visualobjects) | Škálujte a upgradujte mikroslužby v rámci aplikace. | [Zdrojový kód](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/visualobjects) |  Nástroje pro mřížku sady Visual Studio |
+| [Hlasovací aplikace](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/voting) | Vytvoření aplikace s front-endové a back-end službou, která používá rozlišení založené na DNS | [Zdrojový kód](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/votingapp) | Nástroje pro používání sítě sady Visual Studio pro verzi Windows, VS Code nebo dotnet CLI, se dají použít pro verzi systému Linux. |
+| [Aplikace čítače pro Service Fabric spolehlivé svazky](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/templates/counter/readme.sfreliablevolume.md)| Uložte stav tak, že do kontejneru připojíte Service Fabric svazek na bázi spolehlivého disku.| [Zdrojový kód](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter) | Nástroje pro mřížku sady Visual Studio |

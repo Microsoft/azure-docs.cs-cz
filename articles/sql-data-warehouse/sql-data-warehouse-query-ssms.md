@@ -1,5 +1,5 @@
 ---
-title: Připojení k Azure SQL Data Warehouse – SSMS | Microsoft Docs
+title: Připojení přes SSMS
 description: Pomocí SQL Server Management Studio (SSMS) se můžete připojit k Azure SQL Data Warehouse a dotazovat se na ně.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: b96896c0366c6fba2548480b166bdb9cf6ca692c
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d5c903a24ea47cb152555330688dd0bc515c625b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575345"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692595"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>Připojení k SQL Data Warehouse pomocí SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
@@ -36,7 +37,7 @@ Chcete-li použít tento kurz, potřebujete:
 * SQL Server Management Studio (SSMS) nainstalováno. [Nainstalujte si SSMS][Install SSMS] zdarma, pokud ho ještě nemáte.
 * Plně kvalifikovaný název serveru SQL. Ten zjistíte v části [Připojení k SQL Data Warehouse][Connect to SQL Data Warehouse].
 
-## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Připojení k vaší službě SQL Data Warehouse
+## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Připojte se k vašemu SQL Data Warehouse
 1. Otevřete aplikaci SSMS.
 2. Otevřete Průzkumník objektů. Provedete to tak, že vyberete **soubor** > **Připojit Průzkumník objektů**.
    
@@ -53,7 +54,7 @@ Chcete-li použít tento kurz, potřebujete:
    
     ![Prozkoumejte AdventureWorksDW.][3]
 
-## <a name="2-run-a-sample-query"></a>2. Spuštění ukázkového dotazu
+## <a name="2-run-a-sample-query"></a>2. spuštění ukázkového dotazu
 Teď, když jste si vytvořili připojení k databázi, můžete napsat dotaz.
 
 1. Pravým tlačítkem myši klikněte na databázi v Průzkumníku objektů systému SQL Server.
@@ -65,7 +66,7 @@ Teď, když jste si vytvořili připojení k databázi, můžete napsat dotaz.
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Spusťte dotaz. Pokud to chcete provést, `Execute` klikněte nebo použijte následující klávesovou `F5`zkratku:.
+4. Spusťte dotaz. Pokud to chcete provést, klikněte na `Execute` nebo použijte následující zkratku: `F5`.
    
     ![Spuštění dotazu][5]
 5. Podívejte se na výsledky dotazu. V tomto příkladě má tabulka FactInternetSales 60 398 řádků.

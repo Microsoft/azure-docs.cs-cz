@@ -5,74 +5,56 @@ services: networking
 author: skishen525
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 680d4c90078131b44e39e3f2b3d526ca53b34a95
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 089d54a2aae288511a283dfb28b03efa34c33b53
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496759"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715435"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informace o sítích Azure pro síťové služby MSP
 
-Partnerský program pro poskytovatele spravovaných služeb sítě Azure (MSP) umožňuje síťové služby zaměřené na účastníci programu MSP, telcos a integrátory systémů (SIs), aby nabízely cloudové a hybridní síťové služby, které se centrují s portfoliom síťových produktů Azure. orgány.
+[Partnerský program poskytovatele spravovaných služeb sítě Azure (MSP)](https://azure.microsoft.com/blog/enhancing-the-customer-experience-with-the-azure-networking-msp-partner-program/) umožňuje síťové služby zaměřené na účastníci programu MSP, telcos a integrátory systémů (SIs), které nabízejí cloudové a hybridní síťové služby, které se centrují s portfoliom síťových produktů Azure. a služby.
 
 Azure Networking účastníci programu MSP jsou specializovaná sada poskytovatelů spravovaných služeb, které řeší potřeby a problémy podnikového cloudového přístupu napříč všemi aspekty cloudových a hybridních sítí. Spravované síťové služby zahrnují jednu nebo více následujících služeb: architektura sítě, plánování, nasazení, provoz, údržba a optimalizace.
 
 ![MSP][0]
 
-Zákazníci si můžou koupit služby spravované MSP v Azure Marketplace nebo přímo z MSP. Účastníci programu MSP může nasadit a spravovat síťové prostředky Azure v předplatných zákazníků a skupinách prostředků pomocí Azure Lighthouse.
+Zákazníci si můžou koupit služby spravované MSP v Azure Marketplace nebo přímo z MSP. Účastníci programu MSP může nasadit a spravovat síťové prostředky Azure v předplatných zákazníků a skupinách prostředků pomocí [Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/).
 
 ## <a name="msp"></a>Partneři Azure Networking MSP
 
 Odkazy v této části použijte, pokud chcete získat další informace o službách spravovaného cloudu, které nabízejí partneři Azure sítě MSP. Pokud Váš partner cloudových síťových služeb není uveden v níže uvedené části, obraťte se na nás poskytovatele. Můžou nás kontaktovat odesláním e-mailu ManagedVirtualWAN@microsoft.com. 
 
-[Skupina ANS UK](https://www.ans.co.uk/)
-
-[Aryaka Networks sítě](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)
-
-[BT](https://www.globalservices.bt.com/en/aboutus/news-press/bt-named-one-of-the-first-global-managed-service-providers-for-a-new-microsoft-azure-networking-virtual-wan-services/)
-
-[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)
-
-[Data dimenze](https://www.dimensiondata.com/)
-
-[Equinix](https://www.equinix.com/)
-
-[InterCloud](https://intercloud.com/partners/microsoft-azure/)
-
-[IIJ](https://www.iij.ad.jp/biz/cloudex/)
-
-Interxion (https://www.interxion.com/products/interconnection/cloud-connect/support-your-cloud-strategy/
-
-[ixreach](https://www.ixreach.com/)
-
-[KINX](https://www.kinx.net/service/cloud/?lang=en)
-
-[Tekuté telekomunikace](https://www.liquidtelecom.com/products-and-services/microsoft-azure.html)
-
-[Macquarie Telecom](https://macquariecloudservices.com/azure-managed-services/)
-
-[Megaport](https://www.megaport.com/services/microsoft-expressroute/)
-
-[OmniClouds](https://omniclouds.com/services/)
-
-[Cloud Services v jádru]( https://www.oncore.cloud/services/ue-for-expressroute/)
-
-[Orixcom]( https://www.orixcom.com/cloud-solutions/)
-
-[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)
-
-[Tata komunikace](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)
-
-[TCTS](https://www.tatacommunications-ts.com/index.php)
-
-[Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)
-
-[Vandis](https://www.vandis.com/microsoft-azure-practice/)
-
-[Ostražití](https://vigilant.it/manage-cloud-service/)
+| **MSP** | **Služba transformace cloudových sítí** | **Spravované ExpressRoute** | **Spravovaná virtuální síť WAN** | **Spravovaná brána firewall** |**Výpočetní hranice spravované sítě** |
+| ---| ---| ---| ---| ---| ---|
+|[Amdocs](https://www.amdocs.com/)|||||Ano|
+|[Skupina ANS UK](https://www.ans.co.uk/)|Ano|Ano||||
+|[Aryaka Networks sítě](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)|Ano |Ano |Ano | | |
+|[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|Ano|Ano|Ano|||
+|[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|Ano|||||
+|[Data dimenze](https://www.dimensiondata.com/)|Ano|||||
+|[Equinix](https://www.equinix.com/)|Ano|Ano||||
+|[IIJ](https://www.iij.ad.jp/biz/cloudex/)|Ano|Ano||||
+|[Infosys](https://www.infosys.com/services/microsoft-cloud-business/pages/index.aspx)|Ano||||Ano|
+|[InterCloud](https://intercloud.com/partners/microsoft-azure/)|Ano|Ano||||
+|[Interxion](https://www.interxion.com/products/interconnection/cloud-connect/support-your-cloud-strategy/)|Ano|Ano||||
+|[IX Reach](https://www.ixreach.com/services/sdn-cloud-connect/)|Ano|Ano||||
+|[KINX](https://www.kinx.net/service/cloud/?lang=en)|Ano|||||
+|[Tekuté telekomunikace](https://liquidcloud.africa/azure-networking)|Ano|Ano||||
+|[Macquarie Telecom](https://macquariecloudservices.com/azure-managed-services/)|Ano|Ano|Ano|||
+|[Megaport](https://www.megaport.com/services/microsoft-expressroute/)|Ano|Ano||||
+|[OmniClouds](https://omniclouds.com/services/)|Ano|Ano||||
+|[Cloud Services v jádru]( https://www.oncore.cloud/services/ue-for-expressroute/)|Ano|Ano||||
+|[Orixcom]( https://www.orixcom.com/cloud-solutions/)|Ano|Ano||||
+|[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)|Ano|Ano||||
+|[Tata komunikace](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)|Ano|Ano||||
+|[TCTS](https://www.tatacommunications-ts.com/index.php)|Ano|Ano|Ano|||
+|[Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)|Ano||||Ano|
+|[Vandis](https://www.vandis.com/microsoft-azure-practice/)|Ano|Ano|Ano|||
+|[Ostražití](https://vigilant.it/manage-cloud-service/)|Ano|Ano||||
 
 ## <a name="expressroute"></a>Partneři ExpressRoute
 

@@ -1,25 +1,24 @@
 ---
 title: Úvod do přírůstkového indexování (Preview)
 titleSuffix: Azure Cognitive Search
-description: Nakonfigurujte svůj kanál pro obohacení AI tak, aby bylo možné zajistit, aby se vaše data zpracovávala na jakékoli aktualizace dovedností, dovednosti, indexerů nebo zdrojů dat.
+description: Nakonfigurujte svůj kanál pro obohacení AI tak, aby bylo možné zajistit, aby se vaše data zpracovávala na jakékoli aktualizace dovedností, dovednosti, indexerů nebo zdrojů dat. Tato funkce je aktuálně ve verzi Public Preview.
 manager: nitinme
 author: Vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ea3bcfc25040f09b6871d85412ac64061ec2f9e8
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 94ce056185ff6a804521bf583ac4f6ffaa513fb0
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73549114"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715430"
 ---
 # <a name="what-is-incremental-indexing-in-azure-cognitive-search"></a>Co je přírůstkové indexování v Azure Kognitivní hledání?
 
-> [!Note]
-> Přírůstkové indexování je ve verzi Preview a není určené pro použití v produkčním prostředí. Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
->
+> [!IMPORTANT] 
+> Přírůstkové indexování je aktuálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
 
 Přírůstkové indexování je nová funkce služby Azure Kognitivní hledání, která přidává ukládání do mezipaměti a stav do obohaceného obsahu v dovednostiu, což vám umožní řídit zpracování a opětovné zpracování jednotlivých kroků v kanálu rozšíření. To neplatí jenom za tím, že zachovává vaše peněžní investice do zpracování, ale také poskytuje efektivnější systém. Když jsou struktury a obsah uložené v mezipaměti, může indexer určit, které dovednosti se změnily a spustí jenom ty, které se změnily, a také všechny závislé dovednosti. 
 

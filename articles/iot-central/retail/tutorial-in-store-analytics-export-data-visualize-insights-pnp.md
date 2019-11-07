@@ -3,6 +3,7 @@ title: Exportujte data a vizualizujte přehledy v Azure IoT Central | Microsoft 
 description: V tomto kurzu se naučíte exportovat data z IoT Central a vizualizovat přehledy na řídicím panelu Power BI.
 services: iot-central
 ms.service: iot-central
+ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.custom:
 - iot-storeAnalytics-checkout
@@ -10,12 +11,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 10/22/2019
-ms.openlocfilehash: 913a87df47121c18fcd4f83aa8d5a24b4041ce19
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0cf1c6e926b2406d960762a9d597b28a17f6c316
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495131"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615283"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Kurz: Export dat z Azure IoT Central a vizualizace Insights v Power BI
 
@@ -29,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Pomocí Logic Apps můžete odesílat data z centra událostí do datové sady streamování Power BI.
 > * Vytvořte řídicí panel Power BI pro vizualizaci dat v datové sadě streamování.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -41,7 +42,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 Před vytvořením centra událostí a aplikace logiky je potřeba vytvořit skupinu prostředků pro jejich správu. Skupina prostředků by měla být ve stejném umístění jako vaše aplikace IoT Central pro **analýzu v rámci služby Store** . Vytvoření skupiny prostředků:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V levém navigačním panelu vyberte **skupiny prostředků**. Pak vyberte **Přidat**.
 1. V poli **předplatné**vyberte název předplatného Azure, které jste použili k vytvoření aplikace IoT Central.
 1. Jako název **skupiny prostředků** zadejte _Retail-Store-Analysis_*.
@@ -64,7 +65,7 @@ Předtím, než budete moci nakonfigurovat aplikaci maloobchodního monitorován
     * Vyberte stejné **předplatné** , které jste použili k vytvoření aplikace IoT Central.
     * Vyberte skupinu prostředků **Retail-Store-Analysis** .
     * Vyberte stejné umístění, které jste použili pro vaši aplikaci IoT Central.
-    * Vyberte **Create** (Vytvořit). Je možné, že budete muset několik minut počkat, než systém zřídí prostředky.
+    * Vyberte **Vytvořit**. Je možné, že budete muset několik minut počkat, než systém zřídí prostředky.
 1. Na portálu přejděte do skupiny prostředků **Retail-Store-Analysis** . Počkejte na dokončení nasazení. Možná budete muset vybrat možnost **aktualizovat** , aby se aktualizoval stav nasazení. V **oznámeních**můžete taky zjistit stav vytvoření oboru názvů centra událostí.
 1. Ve skupině prostředků **Retail-Store-Analysis** vyberte **obor názvů Event Hubs**. Na portálu se zobrazí domovská stránka **oboru názvů Event Hubs** .
 
@@ -88,7 +89,7 @@ Teď máte centrum událostí, ve kterém můžete nakonfigurovat aplikaci pro *
 1. Vyberte svůj **obor názvů Event Hubs**.
 1. Vyberte centrum událostí **telemetrie úložiště** .
 1. V části **data k exportu** přepněte na **zařízení** a **šablony zařízení** .
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 Export dat může trvat několik minut, než se zahájí odesílání telemetrie do centra událostí. Stav exportu můžete zobrazit na stránce **exporty dat** :
 
@@ -109,7 +110,7 @@ Export dat může trvat několik minut, než se zahájí odesílání telemetrie
 
     | Název hodnoty  | Typ hodnoty |
     | ----------- | ---------- |
-    | Časové razítko   | Datum a čas   |
+    | Časové razítko   | DateTime   |
     | Vlhkost    | Číslo     |
     | Teplota | Číslo     |
 
@@ -132,7 +133,7 @@ Také potřebujete datovou sadu streamování pro telemetrii obsazení:
 
     | Název hodnoty     | Typ hodnoty |
     | -------------- | ---------- |
-    | Časové razítko      | Datum a čas   |
+    | Časové razítko      | DateTime   |
     | Délka fronty 1 | Číslo     |
     | Délka fronty 2 | Číslo     |
     | Doba bydlení 1   | Číslo     |
@@ -167,7 +168,7 @@ Následující kroky ukazují, jak vytvořit aplikaci logiky v Azure Portal:
     * Vyberte stejné **předplatné** , které jste použili k vytvoření aplikace IoT Central.
     * Vyberte skupinu prostředků **Retail-Store-Analysis** .
     * Vyberte stejné umístění, které jste použili pro vaši aplikaci IoT Central.
-    * Vyberte **Create** (Vytvořit). Je možné, že budete muset několik minut počkat, než systém zřídí prostředky.
+    * Vyberte **Vytvořit**. Je možné, že budete muset několik minut počkat, než systém zřídí prostředky.
 1. V Azure Portal přejděte na novou aplikaci logiky.
 1. Na stránce **návrháře Logic Apps** se posuňte dolů a vyberte **prázdná aplikace logiky**.
 1. V **vyhledávacích konektorech a triggerech**zadejte _Event Hubs_.
@@ -475,9 +476,9 @@ Přidejte čtyři dlaždice karet, abyste zobrazili délku fronty a dobu trván�
 | ------- | ------- | ------- | ------- | ------- |
 | Datová sada | Senzor obsazení | Senzor obsazení | Senzor obsazení | Senzor obsazení |
 | Typ vizualizace | Skupinový sloupcový graf | Skupinový sloupcový graf | Měřená | Měřená |
-| Osách    | Časové razítko | Časové razítko | Nevztahuje se | Nevztahuje se |
+| Osách    | Časové razítko | Časové razítko | Není dostupné. | Není dostupné. |
 | Hodnota | Doba bydlení 1 | Doba bydlení 2 | Délka fronty 1 | Délka fronty 2 |
-| Časové okno | 60 minut | 60 minut |  Nevztahuje se | Nevztahuje se |
+| Časové okno | 60 minut | 60 minut |  Není dostupné. | Není dostupné. |
 | Název | Doba obydlí | Doba obydlí | Délka fronty | Délka fronty |
 | Podnadpis | Rezervace 1 | Rezervace 2 | Rezervace 1 | Rezervace 2 |
 

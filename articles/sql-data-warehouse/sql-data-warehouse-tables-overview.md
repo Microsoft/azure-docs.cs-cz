@@ -1,5 +1,5 @@
 ---
-title: Navrhování tabulek – Azure SQL Data Warehouse | Microsoft Docs
+title: Navrhování tabulek
 description: Seznámení s návrhem tabulek v Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 55da4e3dc9c7f1c1f86a649a654ce41ef59ad839
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 9220d3adb31005551b6358034207f1071065b1a7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310107"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692385"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Navrhování tabulek v Azure SQL Data Warehouse
 
@@ -32,7 +33,7 @@ Přečtěte si klíčové koncepty pro navrhování tabulek v Azure SQL Data War
 - **Integrační tabulky** poskytují místo pro integraci nebo přípravu dat. Tabulku pro integraci můžete vytvořit jako normální tabulku, externí tabulku nebo dočasnou tabulku. Můžete například načíst data do pracovní tabulky, provést transformaci dat v pracovním prostředí a pak tato data vložit do provozní tabulky.
 
 ## <a name="schema-and-table-names"></a>Názvy schémat a tabulek
-Schémata jsou dobrým způsobem, jak seskupovat tabulky, a to způsobem, který se používá podobně.  Pokud migrujete více databází z řešení Prem do SQL Data Warehouse, funguje nejlépe pro migraci všech tabulek fakt, Dimension a Integration do jednoho schématu v SQL Data Warehouse. Můžete například uložit všechny tabulky v ukázkovém datovém skladu [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap) v rámci jednoho schématu s názvem WWI. Následující kód vytvoří uživatelsky [definované schéma](/sql/t-sql/statements/create-schema-transact-sql) s názvem WWI.
+Schémata jsou dobrým způsobem, jak seskupovat tabulky, a to způsobem, který se používá podobně.  Pokud migrujete více databází z řešení Prem do SQL Data Warehouse, funguje nejlépe pro migraci všech tabulek fakt, Dimension a Integration do jednoho schématu v SQL Data Warehouse. Můžete například uložit všechny tabulky v ukázkovém datovém skladu [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap) v rámci jednoho schématu s názvem WWI. Následující kód vytvoří [uživatelsky definované schéma](/sql/t-sql/statements/create-schema-transact-sql) s názvem WWI.
 
 ```sql
 CREATE SCHEMA wwi;
@@ -42,8 +43,8 @@ Chcete-li zobrazit uspořádání tabulek v SQL Data Warehouse, můžete použí
 
 | Tabulka WideWorldImportersDW  | Typ tabulky | SQL Data Warehouse |
 |:-----|:-----|:------|:-----|
-| City | Dimenze | wwi.DimCity |
-| Pořadí | Fakt | wwi.FactOrder |
+| Město | Dimenze | WWI. DimCity |
+| Objednání | Fact | WWI. FactOrder |
 
 
 ## <a name="table-persistence"></a>Trvalost tabulek 
@@ -90,9 +91,9 @@ Kategorie tabulka často určuje, která možnost se má zvolit pro distribuci t
 
 | Kategorie tabulky | Možnost Doporučené distribuce |
 |:---------------|:--------------------|
-| Fakt           | Použijte distribuci algoritmem hash s clusterovaným indexem columnstore. Zvýšení výkonu se zvyšuje, když se do stejného distribučního sloupce spojí dvě zatřiďovací tabulky. |
+| Fact           | Použijte distribuci algoritmem hash s clusterovaným indexem columnstore. Zvýšení výkonu se zvyšuje, když se do stejného distribučního sloupce spojí dvě zatřiďovací tabulky. |
 | Dimenze      | Použijte replikovaný pro menší tabulky. Pokud jsou tabulky příliš velké pro uložení na každém výpočetním uzlu, použijte distribuované pomocí algoritmu hash. |
-| Fázování        | Pro pracovní tabulku použijte kruhové dotazování. Zatížení pomocí CTAS je rychlé. Jakmile jsou data v pracovní tabulce, použijte příkaz INSERT... Tuto možnost vyberte, pokud chcete přesunout data do provozních tabulek. |
+| Staging        | Pro pracovní tabulku použijte kruhové dotazování. Zatížení pomocí CTAS je rychlé. Jakmile jsou data v pracovní tabulce, použijte příkaz INSERT... Tuto možnost vyberte, pokud chcete přesunout data do provozních tabulek. |
 
 ## <a name="table-partitions"></a>Oddíly tabulky
 Dělená tabulka ukládá a provádí operace na řádcích tabulky podle rozsahů dat. Například tabulka může být rozdělená podle dne, měsíce nebo roku. Můžete zlepšit výkon dotazů prostřednictvím eliminace oddílu, což omezuje vyhledávání dotazů na data v rámci oddílu. Data můžete také udržovat pomocí přepínání oddílů. Vzhledem k tomu, že jsou data v SQL Data Warehouse již distribuována, může být příliš mnoho oddílů pomalý výkon dotazů. Další informace najdete v tématu [pokyny k dělení](sql-data-warehouse-tables-partition.md).  Při přepínání oddílu do oddílů tabulky, které nejsou prázdné, zvažte použití možnosti TRUNCATE_TARGET v příkazu [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) , pokud mají být stávající data zkrácena. Níže jsou uvedené přepínače kódu v podobě transformovaných denních dat do SalesFact, které Přepisuje všechna existující data. 
@@ -107,7 +108,7 @@ Ve výchozím nastavení SQL Data Warehouse ukládá tabulku jako clusterovaný 
 Seznam funkcí columnstore najdete v tématu [co je nového pro indexy columnstore](/sql/relational-databases/indexes/columnstore-indexes-what-s-new). Pokud chcete zlepšit výkon indexu columnstore, přečtěte si téma [maximalizace kvality skupiny řádků pro indexy columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
 ## <a name="statistics"></a>Statistika
-Optimalizátor dotazů používá při vytváření dotazu statistiku na úrovni sloupce. Pro zlepšení výkonu dotazů je důležité mít statistiku pro jednotlivé sloupce, zejména sloupce používané v dotazech na dotazy. [Vytváření statistik](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic) proběhne automaticky.  Aktualizace statistiky ale neproběhne automaticky. Aktualizuje statistiku po přidání nebo změně významného počtu řádků. Například aktualizujte statistiku po načtení. Další informace najdete v tématu [](sql-data-warehouse-tables-statistics.md)věnovaném statistickým pokynům.
+Optimalizátor dotazů používá při vytváření dotazu statistiku na úrovni sloupce. Pro zlepšení výkonu dotazů je důležité mít statistiku pro jednotlivé sloupce, zejména sloupce používané v dotazech na dotazy. [Vytváření statistik](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic) proběhne automaticky.  Aktualizace statistiky ale neproběhne automaticky. Aktualizuje statistiku po přidání nebo změně významného počtu řádků. Například aktualizujte statistiku po načtení. Další informace najdete v tématu věnovaném [statistickým pokynům](sql-data-warehouse-tables-statistics.md).
 
 ## <a name="primary-key-and-unique-key"></a>Primární klíč a jedinečný klíč
 PRIMÁRNÍ klíč se podporuje jenom v případě, že se používají jenom neclusterované a nevynucované.  JEDINEČNÉ omezení se podporuje jenom s nevynucovaném využitím.  Ověřte [SQL Data Warehouse omezení tabulky](sql-data-warehouse-table-constraints.md).

@@ -1,6 +1,6 @@
 ---
-title: Příklady integrace služby Azure Service Bus do služby Event Grid | Microsoft Docs
-description: Tento článek obsahuje příklady integrace zasílání zpráv služby Service Bus a služby Event Grid.
+title: 'Kurz: Azure Service Bus pro Event Grid příklady integrace'
+description: 'Kurz: Tento článek popisuje příklady Service Bus zasílání zpráv a Event Grid integraci.'
 services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: tutorial
-ms.date: 05/14/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: f31e014cf242675577bedd29a3a79332ede32bf5
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: d3f523bbc0236536734f21870474492a61532ada
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304242"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719021"
 ---
-# <a name="respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Reakce na události Azure Service Bus obdržené prostřednictvím Azure Event Grid pomocí Azure Functions a Azure Logic Apps
+# <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Kurz: reakce na události Azure Service Bus přijatých prostřednictvím Azure Event Grid pomocí Azure Functions a Azure Logic Apps
 V tomto kurzu se naučíte reagovat na události Azure Service Bus přijímané prostřednictvím Azure Event Grid pomocí Azure Functions a Azure Logic Apps. Provedete následující kroky:
  
 - Vytvoření testovací funkce Azure pro ladění a zobrazení počátečního toku událostí z Event Grid.
@@ -35,7 +35,7 @@ Po vytvoření Service Bus, Event Grid, Azure Functions a artefaktů Logic Apps 
 3. Ověřte, že funkce nebo aplikace logiky, které se přihlásily k odběru události, přijaly událost. 
 
 ## <a name="create-a-service-bus-namespace"></a>Vytvoření oboru názvů Service Bus
-Postupujte podle pokynů v tomto kurzu: [Rychlé zprovoznění: Pomocí Azure Portal můžete vytvořit Service Bus téma a odběry tématu](service-bus-quickstart-topics-subscriptions-portal.md) , abyste mohli provádět následující úlohy:
+Postupujte podle pokynů v tomto kurzu: [rychlý Start: pomocí Azure Portal vytvořte Service Bus téma a odběry k tématu](service-bus-quickstart-topics-subscriptions-portal.md) , abyste mohli provádět následující úlohy:
 
 - Vytvořte obor názvů **premium** Service Bus. 
 - Získá připojovací řetězec. 
@@ -280,7 +280,7 @@ Pomocí následujících kroků Připojte aplikaci logiky pomocí Azure Service 
     3. Jako **název prostředku**vyberte obor názvů Service Bus. 
     4. Vyberte **Přidat nový parametr**a vyberte **filtr přípon**. 
     5. Jako **filtr přípon**zadejte název druhého předplatného Service Bus tématu. 
-        ![Návrhář Logic Apps – konfigurace události](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
+        ![Logic Apps Designer – konfigurace](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png) událostí
 6. V návrháři vyberte **+ Nový krok** a proveďte následující kroky:
     1. Vyhledejte **Service Bus**.
     2. V seznamu vyberte **Service Bus** . 
@@ -288,7 +288,7 @@ Pomocí následujících kroků Připojte aplikaci logiky pomocí Azure Service 
     4. Vyberte možnost **získat zprávy z odběru tématu (náhled – zámek)** . 
 
         ![Návrhář Logic Apps – akce získat zprávy](./media/service-bus-to-event-grid-integration-example/service-bus-get-messages-step.png)
-    5. Zadejte **název připojení**. Příklad: **Získejte zprávy z odběru tématu**a vyberte obor názvů Service Bus. 
+    5. Zadejte **název připojení**. Například: **získat zprávy z odběru tématu**a vybrat Service Bus obor názvů. 
 
         ![Logic Apps Designer – výběr oboru názvů Service Bus](./media/service-bus-to-event-grid-integration-example/logic-apps-select-namespace.png) 
     6. Vyberte **RootManageSharedAccessKey**.
@@ -312,7 +312,7 @@ Pomocí následujících kroků Připojte aplikaci logiky pomocí Azure Service 
 
     ![Návrhář Logic Apps – spuštění aplikace logiky](./media/service-bus-to-event-grid-integration-example/logic-app-runs.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o službě [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/).
 * Další informace o službě [Azure Functions](https://docs.microsoft.com/azure/azure-functions/).

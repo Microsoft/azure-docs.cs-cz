@@ -1,5 +1,5 @@
 ---
-title: Rozšířená ochrana před internetovými útoky v programu Microsoft Defender pomocí Azure Security Center
+title: Rozšířená ochrana před internetovými útoky v programu Microsoft Defender – Azure Security Center
 description: Tento dokument představuje integraci mezi Azure Security Center a rozšířenou ochranou před internetovými útoky v programu Microsoft Defender.
 services: security-center
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 6ceed914d1c69ccdfce5d7acb6dcfc1afc9ef868
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 46b9fe5c6a038aa98cf8df64c40bf8ea1747efec
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819891"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663607"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Rozšířená ochrana před internetovými útoky v programu Microsoft Defender pomocí Azure Security Center
 
@@ -70,7 +70,7 @@ Pokud chcete servery připojit k Security Center, klikněte na **Přejít na Azu
 
 ## <a name="enable-microsoft-defender-atp-integration"></a>Povolit integraci ATP v programu Microsoft Defender
 
-Pokud chcete zobrazit, jestli je povolená integrace ochrany ATP v programu Microsoft Defender, vyberte **& Nastavení cenové** **služby Security Center** >  > klikněte na své předplatné.
+Pokud chcete zobrazit, jestli je povolená integrace ochrany ATP v programu Microsoft Defender, vyberte **& cenové nastavení** > **Security Center** > klikněte na své předplatné.
 Tady vidíte aktuálně povolená integrace.
 
   ![Stránka Nastavení detekce hrozeb Azure Security Center s povolenou integrací ATP v programu Microsoft Defender](media/security-center-wdatp/enable-integrations.png)
@@ -95,7 +95,7 @@ Pokud máte proxy nebo bránu firewall, která blokuje anonymní provoz, protož
 
 Vygenerování neškodné výstrahy testu ATP v programu Microsoft Defender:
 
-1. Pro přístup k virtuálnímu počítači s Windows Serverem 2012 R2 nebo k virtuálnímu počítači s Windows serverem 2016 použijte vzdálenou plochu.  Otevřete okno příkazového řádku.
+1. Pro přístup k virtuálnímu počítači s Windows Serverem 2012 R2 nebo k virtuálnímu počítači s Windows serverem 2016 použijte vzdálenou plochu. Otevřete okno příkazového řádku.
 
 2. Na příkazovém řádku zkopírujte a spusťte následující příkaz. Okno příkazového řádku se automaticky zavře.
 
@@ -107,7 +107,7 @@ Vygenerování neškodné výstrahy testu ATP v programu Microsoft Defender:
 
 3. Pokud je příkaz úspěšný, zobrazí se na řídicím panelu Azure Security Center a na portálu Microsoft Defender ATP nové upozornění. Zobrazení této výstrahy může trvat několik minut.
 
-4. Pokud chcete zkontrolovat výstrahu v Security Center, přečtěte si téma **výstrahy zabezpečení** >  **podezřelý příkazový řádek PowerShellu**.
+4. Pokud chcete zobrazit výstrahu v Security Center, přečtěte si téma **výstrahy zabezpečení** > **podezřelý příkazový řádek PowerShellu**.
 
 5. V okně šetření vyberte odkaz pro přechod na portál Microsoft Defender ATP.
 

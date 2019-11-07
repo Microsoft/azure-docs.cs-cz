@@ -1,5 +1,5 @@
 ---
-title: Připojovací řetězce pro Azure SQL Data Warehouse | Microsoft Docs
+title: Připojovací řetězce
 description: Připojovací řetězce pro SQL Data Warehouse
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: afc8dbfa0bc1b1ad37e5f1a0f290c42998ed1e4b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: dc2f03978e219a6fbbf3918bef4c44c072d60610
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68479710"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692875"
 ---
 # <a name="connection-strings-for-azure-sql-data-warehouse"></a>Připojovací řetězce pro Azure SQL Data Warehouse
 K SQL Data Warehouse se můžete připojit pomocí několika různých aplikačních protokolů, jako jsou například, [ADO.NET][ADO.NET], [ODBC][ODBC], [php][PHP] a [JDBC][JDBC]. Níže jsou uvedeny příklady řetězců připojení pro každý protokol.  Můžete také použít Azure Portal k sestavení připojovacího řetězce.  Pokud chcete vytvořit připojovací řetězec pomocí Azure Portal, přejděte v okně databáze v části *základy* klikněte na *Zobrazit databázové připojovací řetězce*.
@@ -45,7 +46,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 > 
 > 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Pokud se chcete začít dotazovat na svůj datový sklad pomocí sady Visual Studio a jiných aplikací, najdete informace v článku [Dotazování pomocí sady Visual Studio][Query with Visual Studio].
 
 <!--Image references-->

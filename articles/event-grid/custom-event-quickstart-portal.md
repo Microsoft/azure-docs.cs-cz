@@ -1,22 +1,22 @@
 ---
-title: Odesílání vlastních událostí na web koncového bodu – Event Grid, Azure portal
-description: Pomocí služby Azure Event Grid a webu Azure portal můžete publikovat vlastní téma a přihlásit k odběru události týkající se daného tématu. Události jsou zpracovávány webové aplikace.
+title: 'Rychlý Start: odesílání vlastních událostí do webového koncového bodu – Event Grid Azure Portal'
+description: 'Rychlý Start: použijte Azure Event Grid a Azure Portal k publikování vlastního tématu a přihlášení k odběru událostí pro toto téma. Události jsou zpracovávány webovou aplikací.'
 services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 03/27/2019
+ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: afb53ed013af6cd1db2f6ff3d25c350aa2b4f1e8
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 398e63ec9a8b9e1b16d8ffcee538351fc6572de9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638563"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720793"
 ---
-# <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Rychlý start: Směrování vlastních událostí na webový koncový bod pomocí Azure Portal a Event Grid
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Rychlý Start: směrování vlastních událostí na webový koncový bod pomocí Azure Portal a Event Grid
 
 Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku vytvoříte pomocí webu Azure Portal vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. Pro zjednodušení tohoto článku však budete události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
@@ -42,7 +42,7 @@ Téma Event Gridu poskytuje uživatelsky definovaný koncový bod, do kterého o
 
     ![Přidat Event Grid – tlačítko tématu](./media/custom-event-quickstart-portal/add-event-grid-topic-button.png)
 4. Na stránce **vytvořit téma** postupujte podle následujících kroků:
-    1. Zadejte jedinečný **název** vlastního tématu. Název tématu musí být jedinečný, protože je reprezentován položkou DNS. Nepoužívejte název zobrazený na obrázku. Místo toho vytvořte vlastní název – musí být dlouhý 3 až 50 znaků a obsahovat jenom hodnoty a – z, A-Z, 0-9, a "-".
+    1. Zadejte jedinečný **název** vlastního tématu. Název tématu musí být jedinečný, protože je reprezentován položkou DNS. Nepoužívejte název zobrazený na obrázku. Místo toho vytvořte vlastní název – musí mít 3-50 znaků a obsahovat pouze hodnoty a-z, A-Z, 0-9 a "-".
     2. Vyberte své **předplatné** Azure.
     3. Vyberte existující skupinu prostředků nebo vyberte **vytvořit novou**a zadejte **název** **skupiny prostředků**.
     4. Vyberte **umístění** tématu Event Grid.
@@ -104,12 +104,12 @@ V prvním příkladu se používá Azure CLI. Načte adresu URL a klíč vlastn�
 1. V Azure Portal vyberte **Cloud Shell**. V levém horním rohu okna Cloud Shell vyberte **bash** . 
 
     ![Cloud Shell – bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)
-1. Spusťte následující příkaz, který získá **koncový bod** pro téma: Po zkopírování a vložení příkazu aktualizujte **název tématu** a **název skupiny prostředků** před spuštěním příkazu. 
+1. Spusťte následující příkaz, který získá **koncový bod** pro téma: po zkopírování a vložení příkazu aktualizujte **název tématu** a **název skupiny prostředků** před spuštěním příkazu. 
 
     ```azurecli
     endpoint=$(az eventgrid topic show --name <topic name> -g <resource group name> --query "endpoint" --output tsv)
     ```
-2. Spusťte následující příkaz, který získá **klíč** pro vlastní téma: Po zkopírování a vložení příkazu aktualizujte **název tématu** a název **skupiny prostředků** před spuštěním příkazu. 
+2. Spusťte následující příkaz, který získá **klíč** pro vlastní téma: po zkopírování a vložení příkazu aktualizujte **název tématu** a název **skupiny prostředků** před spuštěním příkazu. 
 
     ```azurecli
     key=$(az eventgrid topic key list --name <topic name> -g <resource group name> --query "key1" --output tsv)
@@ -128,7 +128,7 @@ V prvním příkladu se používá Azure CLI. Načte adresu URL a klíč vlastn�
 ### <a name="azure-powershell"></a>Azure PowerShell
 V druhém příkladu se k provedení podobných kroků používá PowerShell.
 
-1. V Azure Portal vyberte možnost **Cloud Shell** (případně přejít na https://shell.azure.com/) ). V levém horním rohu okna Cloud Shell vyberte **PowerShell** . Podívejte se na ukázku obrázku okna **Cloud Shell** v části Azure CLI.
+1. V Azure Portal vyberte možnost **Cloud Shell** (případně přejít na https://shell.azure.com/). V levém horním rohu okna Cloud Shell vyberte **PowerShell** . Podívejte se na ukázku obrázku okna **Cloud Shell** v části Azure CLI.
 2. Nastavte následující proměnné. Po zkopírování a vložení každého příkazu aktualizujte **název tématu** a **název skupiny prostředků** před spuštěním příkazu:
 
     ```powershell
@@ -203,7 +203,7 @@ Pokud chcete pokračovat v práci s touto událostí, nevyčišťujte prostředk
 
     Další skupina prostředků, kterou vidíte v imagi, byla vytvořena a používána oknem Cloud Shell. Pokud neplánujete použít okno Cloud Shell později, odstraňte ho. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Když teď víte, jak vytvářet vlastní témata a odběry událostí, zjistěte, s čím vám služba Event Grid ještě může pomoct:
 

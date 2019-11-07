@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 10/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 63ab30c83db692d00e292828b8a8203fa33e7e74
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9b736e897278c4656df83c30388efc812ac6193d
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499824"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607368"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globální přenosová architektura sítě a virtuální síť WAN
 
@@ -38,7 +38,7 @@ Azure Virtual WAN je cloudová síťová služba spravovaná Microsoftem. Všech
 
 Azure Virtual WAN umožňuje globální přenosovou architekturu sítě díky tomu, že umožňuje všudypřítomný připojení mezi globálně distribuovanými sadami cloudových úloh v virtuální sítě, pobočkových lokalitách, SaaS a PaaS aplikacemi a uživateli.
 
-![Azure Virtual WAN](./media/virtual-wan-global-transit-network-architecture/figure2.png)
+![Informace o službě Azure Virtual WAN](./media/virtual-wan-global-transit-network-architecture/figure2.png)
 
 **Obrázek 2: globální tranzitní síť a virtuální síť WAN**
 
@@ -143,4 +143,4 @@ Vytvořte připojení pomocí virtuální sítě WAN a nasaďte Azure Firewall v
 
 * [Připojení typu Site-to-site pomocí virtuální sítě WAN](virtual-wan-site-to-site-portal.md)
 * [Připojení ExpressRoute pomocí virtuální sítě WAN](virtual-wan-expressroute-portal.md)
-* [Azure Firewall Manager pro nasazení nástroje Azure FW v VWAN] (https://go.microsoft.com/fwlink/?linkid=2107683)
+* [Azure Firewall Manager pro nasazení nástroje Azure FW v VWAN](https://go.microsoft.com/fwlink/?linkid=2107683)

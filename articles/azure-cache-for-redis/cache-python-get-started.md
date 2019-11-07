@@ -12,52 +12,47 @@ ms.devlang: python
 ms.topic: quickstart
 ms.tgt_pltfrm: cache
 ms.workload: tbd
-ms.date: 05/11/2018
+ms.date: 11/05/2019
 ms.author: yegu
 ms.custom:
 - mvc
 - seo-python-october2019
-ms.openlocfilehash: 5367896c931bf7c5f52b0874d49ede2fc78614ab
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 8cb5a47e884400f09111c6e40b387deea4fb158e
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72435515"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720331"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Rychlý Start: Vytvoření aplikace v Pythonu, která používá Azure cache pro Redis
 
 V tomto článku zahrňte Azure cache pro Redis do aplikace v Pythonu, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Python 2 nebo 3](https://www.python.org/downloads/)
 
-## <a name="create-an-azure-cache-for-redis-on-azure"></a>Vytvoření mezipaměti Azure pro Redis v Azure
+## <a name="create-an-azure-cache-for-redis-instance"></a>Vytvoření mezipaměti Azure pro instanci Redis
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
 ## <a name="install-redis-py"></a>Instalace redis-py
 
-[Redis-py](https://github.com/andymccurdy/redis-py) je rozhraní Pythonu pro službu Azure cache pro Redis. Pomocí nástroje pro správu balíčků Pythonu *pip* nainstalujte balíček redis-py. 
+[Redis-py](https://github.com/andymccurdy/redis-py) je rozhraní Pythonu pro službu Azure cache pro Redis. K instalaci balíčku *Redis-py* z příkazového řádku použijte nástroj pro balíčky Pythonu ( *PIP*). 
 
-Následující příklad používá *PIP3* pro python3 k instalaci balíčku Redis-py na Windows 10 pomocí příkazového řádku pro vývojáře sady Visual Studio 2019, který běží se zvýšenými oprávněními správce.
-
-```python
-    pip3 install redis
-```
+Následující příklad používá *PIP3* pro Python 3 k instalaci *Redis-py* ve Windows 10 z příkazového řádku správce.
 
 ![Nainstalujte rozhraní Redis-py Python do Azure cache pro Redis.](./media/cache-python-get-started/cache-python-install-redis-py.png)
 
-
 ## <a name="read-and-write-to-the-cache"></a>Čtení z mezipaměti a zápis do mezipaměti
 
-Spusťte Python a otestujte používání mezipaměti z příkazového řádku. Nahraďte `<Your Host Name>` a `<Your Access Key>` hodnotami pro mezipaměť Azure pro Redis. 
+Spusťte Python z příkazového řádku a otestujte mezipaměť pomocí následujícího kódu. Nahraďte `<Your Host Name>` a `<Your Access Key>` hodnotami z vaší instance Azure cache for Redis. Název hostitele má tvar *\<název DNS >. Redis. cache. Windows. NET*.
 
 ```python
 >>> import redis
->>> r = redis.StrictRedis(host='<Your Host Name>.redis.cache.windows.net',
+>>> r = redis.StrictRedis(host='<Your Host Name>',
         port=6380, db=0, password='<Your Access Key>', ssl=True)
 >>> r.set('foo', 'bar')
 True
@@ -66,18 +61,16 @@ b'bar'
 ```
 
 > [!IMPORTANT]
-> Pro Redis verze je 3,0 nebo vyšší, vynutila se ověření certifikátu SSL. ssl_ca_certs musí být explicitně nastavené při připojování k Redis. V případě systému RH Linux se ssl_ca_certs dá najít v modulu certifikátů "/etc/pki/tls/certs/ca-bundle.CRT".
+> V případě Azure cache pro Redis verze 3,0 nebo vyšší se vynutila ověření certifikátu SSL. ssl_ca_certs se musí explicitně nastavit při připojování k Azure cache pro Redis. V případě systému RedHat Linux jsou ssl_ca_certs v modulu certifikátů */etc/pki/tls/certs/ca-bundle.CRT* .
 
-## <a name="create-a-python-script"></a>Vytvoření skriptu Pythonu
+## <a name="create-a-python-sample-app"></a>Vytvoření ukázkové aplikace v Pythonu
 
-Vytvořte nový textový soubor skriptu *PythonApplication1.py*.
-
-Do souboru *PythonApplication1.py* přidejte následující skript a uložte ho. Tento skript otestuje přístup k mezipaměti. Nahraďte `<Your Host Name>` a `<Your Access Key>` hodnotami pro mezipaměť Azure pro Redis. 
+Vytvořte nový textový soubor, přidejte následující skript a uložte ho jako *PythonApplication1.py*. Nahraďte `<Your Host Name>` a `<Your Access Key>` hodnotami z vaší instance Azure cache for Redis. Název hostitele má tvar *\<název DNS >. Redis. cache. Windows. NET*.
 
 ```python
 import redis
 
-myHostname = "<Your Host Name>.redis.cache.windows.net"
+myHostname = "<Your Host Name>"
 myPassword = "<Your Access Key>"
 
 r = redis.StrictRedis(host=myHostname, port=6380,
@@ -98,36 +91,28 @@ for c in result:
     print("id : " + c['id'] + ", addr : " + c['addr'])
 ```
 
-Spusťte skript s Pythonem.
+Spusťte *PythonApplication1.py* pomocí Pythonu. Mělo by se zobrazit výsledek podobný následujícímu příkladu:
 
-![Spuštění skriptu Pythonu pro otestování přístupu k mezipaměti v Azure cache pro Redis](./media/cache-python-get-started/cache-python-completed.png)
-
+![Spustit skript Pythonu pro otestování přístupu k mezipaměti](./media/cache-python-get-started/cache-python-completed.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud budete pokračovat dalším kurzem, můžete prostředky vytvořené v tomto rychlém startu zachovat a znovu je použít.
-
-V opačném případě, pokud jste už s ukázkovou aplikací v tomto rychlém startu skončili, můžete prostředky Azure vytvořené v tomto rychlém startu odstranit, abyste se vyhnuli poplatkům. 
+Pokud jste hotovi s prostředky a skupinami prostředků Azure, které jste vytvořili v tomto rychlém startu, můžete je odstranit, abyste se vyhnuli poplatkům.
 
 > [!IMPORTANT]
-> Odstranění skupiny prostředků je nevratné a skupina prostředků včetně všech v ní obsažených prostředků bude trvale odstraněna. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro hostování této ukázky ve stávající skupině prostředků obsahující prostředky, které chcete zachovat, můžete místo odstranění skupiny prostředků odstranit jednotlivé prostředky z jejich odpovídajících oken.
->
+> Odstranění skupiny prostředků je nevratné a skupina prostředků a všechny prostředky v ní se trvale odstraní. Pokud jste instanci Azure cache for Redis vytvořili ve stávající skupině prostředků, kterou chcete zachovat, můžete odstranit jenom mezipaměť tak, že na stránce s **přehledem** mezipaměti vyberete **Odstranit** . 
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com) a potom vyberte **Skupiny prostředků**.
+Odstranění skupiny prostředků a její Redis Cache pro instanci Azure:
 
-Do textového pole **filtrovat podle názvu...** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. Ve vaší skupině prostředků v seznamu výsledků vyberte **...** a pak **odstraňte skupinu prostředků**.
-
-![Odstranění skupiny prostředků pro rychlý Start pro Azure cache pro Redis](./media/cache-web-app-howto/delete-your-resource-group-for-azure-cache-for-redis.png)
-
-Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Zadejte název vaší skupiny prostředků, který chcete potvrdit, a vyberte **Odstranit**.
-
-Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **skupiny prostředků**.
+1. Do textového pole **filtrovat podle názvu** zadejte název skupiny prostředků, která obsahuje vaši instanci mezipaměti, a pak ji vyberte z výsledků hledání. 
+1. Na stránce skupiny prostředků vyberte **Odstranit skupinu prostředků**.
+1. Zadejte název skupiny prostředků a pak vyberte **Odstranit**.
+   
+   ![Odstranění skupiny prostředků pro Azure cache pro Redis](./media/cache-python-get-started/delete-your-resource-group-for-azure-cache-for-redis.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Vytvořte jednoduchou webovou aplikaci v ASP.NET, která používá Azure cache pro Redis.](./cache-web-app-howto.md)
 
-<!--Image references-->
-[1]: ./media/cache-python-get-started/redis-cache-new-cache-menu.png
-[2]: ./media/cache-python-get-started/redis-cache-cache-create.png

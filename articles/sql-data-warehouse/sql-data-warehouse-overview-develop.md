@@ -1,5 +1,5 @@
 ---
-title: Prostředky pro vývoj datového skladu v Azure | Microsoft Docs
+title: Zdroje informací pro vývoj datového skladu v Azure
 description: Koncepce vývoje, rozhodování o návrhu, doporučení a techniky kódování pro SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a78d78618a4cd9bf8d2aaebbd0c0da13697549bc
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: a6cb7937bdd5dea9eb1a48b2b350db9077431fe0
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479475"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645622"
 ---
 # <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>Rozhodnutí o návrhu a techniky kódování pro SQL Data Warehouse
 Projděte si tyto články o vývoji, abyste lépe pochopili důležité aspekty rozhodování o návrhu, doporučení a kódovací techniky pro SQL Data Warehouse.
@@ -45,7 +45,7 @@ Tyto články zvýrazňují konkrétní techniky kódování, tipy a doporučen�
 * [možnosti pro seskupení][group by options]
 * [přiřazení proměnné][variable assignment]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další referenční informace najdete v tématu [SQL Data Warehouse příkazů T-SQL](sql-data-warehouse-reference-tsql-statements.md).
 
 <!--Image references-->

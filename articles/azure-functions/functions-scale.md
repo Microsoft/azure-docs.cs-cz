@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ce91d53bec3c74a8a55d46fd53bc3cf0ccd7e28a
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: bf713029f26ac7ec0b6c043fb887fa5190083888
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550637"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576062"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions škálování a hostování
 
@@ -47,8 +47,8 @@ Následující tabulka uvádí aktuální úroveň podpory pro tři plány hosto
 
 | | Plán Consumption | Plán Premium | Vyhrazený plán |
 |-|:----------------:|:------------:|:----------------:|
-| Windows | GA | preview | GA |
-| Linux | GA | preview | GA |
+| Windows | GA | GA | GA |
+| Linux | GA | GA | GA |
 
 ## <a name="consumption-plan"></a>Plán Consumption
 
@@ -65,7 +65,7 @@ Aplikace Function App ve stejné oblasti se dají přiřadit ke stejnému plánu
 
 Další informace o odhadu nákladů při spuštění v plánu spotřeby najdete v tématu [porozumění nákladům na plán spotřeby](functions-consumption-costs.md).
 
-## <a name="premium-plan"></a>Plán Premium (Preview)
+## <a name="premium-plan"></a>Plán Premium
 
 Pokud používáte plán Premium, instance Azure Functions hostitele se přidají a odeberou na základě počtu příchozích událostí stejně jako u plánu spotřeby.  Plán Premium podporuje následující funkce:
 

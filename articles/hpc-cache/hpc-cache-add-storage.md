@@ -1,17 +1,17 @@
 ---
-title: Přidání úložiště do mezipaměti HPC Azure (Preview)
+title: Přidání úložiště do mezipaměti prostředí Azure HPC
 description: Jak definovat cíle úložiště, aby mezipaměť prostředí Azure HPC mohla používat místní systém souborů NFS nebo kontejnery objektů blob Azure pro dlouhodobé ukládání souborů
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: dbcc68bacf8a11a7a85d5fad7fb4435fd03c7f93
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: b10692e352007ee2b0fd18543d8ae2ad8f9819dc
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024555"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621469"
 ---
 # <a name="add-storage-targets"></a>Přidání cílů úložiště
 
@@ -74,7 +74,7 @@ Postup přidání rolí RBAC:
 1. V poli **Vybrat** vyhledejte "HPC".  Tento řetězec by měl odpovídat jednomu instančnímu objektu s názvem "poskytovatel prostředků mezipaměti HPC". Kliknutím vyberte objekt zabezpečení.
 
    > [!NOTE]
-   > Pokud hledání "HPC" nefunguje, zkuste místo toho použít řetězec "storagecache". Uživatelům, kteří se k verzi Preview připojili včas, může být nutné použít starší název instančního objektu.
+   > Pokud hledání "HPC" nefunguje, zkuste místo toho použít řetězec "storagecache". Uživatelé, kteří se připojili k verzi Preview (před GA), můžou potřebovat použít starší název instančního objektu.
 
 1. Kliknutím na tlačítko **Uložit** přidejte přiřazení role do účtu úložiště.
 
@@ -134,3 +134,5 @@ Po vytvoření cílů úložiště Vezměte v úvahu jednu z těchto úloh:
 
 * [Připojení mezipaměti HPC Azure](hpc-cache-mount.md)
 * [Přesun dat do služby Azure Blob Storage](hpc-cache-ingest.md)
+
+Pokud potřebujete změnit cíl úložiště, přečtěte si článek [úpravy cílů úložiště](hpc-cache-edit-storage.md) , kde se dozvíte, jak.

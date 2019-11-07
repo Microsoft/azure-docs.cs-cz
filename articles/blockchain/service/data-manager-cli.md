@@ -8,12 +8,12 @@ ms.date: 11/04/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: chroyal
-ms.openlocfilehash: 1e92ae36aee5e62cd05b40bbaa38a226943f0adb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9f408b090db40e5145b424034c39cdba4de14a8f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518018"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605906"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Konfigurace blockchain Data Manager pomocí Azure CLI
 
@@ -27,7 +27,7 @@ Pokud chcete nakonfigurovat instanci Data Manager blockchain, postupujte takto:
 * Přidání aplikace blockchain
 * Spustit instanci
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte nejnovější rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) a přihlaste se pomocí `az login`.
 * Kompletní [rychlé zprovoznění: použití Visual Studio Code pro připojení k síti konsorcia Azure blockchain](connect-vscode.md)
@@ -38,7 +38,7 @@ Pokud chcete nakonfigurovat instanci Data Manager blockchain, postupujte takto:
 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem.
 
-Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/bash](https://shell.azure.com/bash). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/bash](https://shell.azure.com/bash). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
 Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku místně, musíte použít Azure CLI verze 2.0.51 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -83,7 +83,7 @@ Příklad konfigurace JSON pro vytvoření instance blockchain Manageru v oblast
 }
 ```
 
-| Element | Popis |
+| Prvek | Popis |
 |---------|-------------|
 | location | Oblast, kde se má vytvořit prostředek sledovacího procesu |
 | properties | Vlastnosti, které se mají nastavit při vytváření prostředku sledovacího procesu |
@@ -151,7 +151,7 @@ Příklad konfigurace JSON pro vytvoření vstupního prostředku v oblasti *vý
 }
 ```
 
-| Element | Popis |
+| Prvek | Popis |
 |---------|-------------|
 | location | Oblast, kde se má vytvořit vstupní prostředek |
 | inputType | Typ hlavní knihy člena služby Azure blockchain. V současné době se podporuje **ethereem** . |
@@ -223,7 +223,7 @@ Příklad konfigurace JSON pro vytvoření výstupního prostředku v oblasti *v
 }
 ```
 
-| Element | Popis |
+| Prvek | Popis |
 |---------|-------------|
 | location | Oblast, ve které se má vytvořit výstupní prostředek. |
 | OutputType | Typ výstupu. V současné době se podporuje **EventGrid** . |
@@ -258,6 +258,10 @@ az resource create \
 ## <a name="add-blockchain-application"></a>Přidat aplikaci blockchain
 
 Pokud přidáte blockchain aplikaci, blockchain Data Manager dekódování události a stavu vlastnosti aplikace. V opačném případě jsou odesílána pouze nezpracovaná data bloku a nezpracované transakce. Blockchain Data Manager také zjišťuje adresy smluv při nasazení smlouvy. Do instance Data Manager blockchain můžete přidat více aplikací blockchain.
+
+
+> [!IMPORTANT]
+> V současné době nejsou aplikace blockchain, které deklarují [typy polí](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) soliding nebo [mapování typů](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) , plně podporovány. Vlastnosti deklarované jako pole nebo typy mapování nebudou v rámci zpráv *ContractPropertiesMsg* nebo *DecodedContractEventsMsg* dekódovat.
 
 ``` azurecli
 az resource create \
@@ -301,12 +305,12 @@ Příklad konfigurace JSON pro vytvoření prostředku aplikace v oblasti *vých
 }
 ```
 
-| Element | Popis |
+| Prvek | Popis |
 |---------|-------------|
 | location | Oblast, kde se má vytvořit prostředek aplikace |
 | artifactType | Typ aplikace V současné době se podporuje **EthereumSmartContract** . |
 | abiFileUrl | Adresa URL pro soubor JSON pro inteligentní kontrakt Další informace o získání kontraktu ABI a vytvoření adresy URL najdete v tématu [získání kontraktu ABI a bytového kódu](data-manager-portal.md#get-contract-abi-and-bytecode) a [Vytvoření kontraktu ABI a adresy URL bytového kódu](data-manager-portal.md#create-contract-abi-and-bytecode-url). |
-| bytecodeFileUrl | Adresa URL souboru JSON pro kód čipové karty inteligentního kontraktu Další informace o získání bajtového kódu inteligentního kontraktu a vytvoření adresy URL najdete v tématu [získání kontraktu ABI a bytového kódu](data-manager-portal.md#get-contract-abi-and-bytecode) a [Vytvoření kontraktu ABI a adresy URL bytového kódu](data-manager-portal.md#create-contract-abi-and-bytecode-url). |
+| bytecodeFileUrl | Adresa URL souboru JSON pro bajtový identifikátor nasazené inteligentní smlouvy Další informace o získání nasazeného bajtového kódu inteligentního kontraktu a vytvoření adresy URL najdete v tématu [získání kontraktu ABI a bytového kódu](data-manager-portal.md#get-contract-abi-and-bytecode) a [Vytvoření kontraktu ABI a adresy URL bytového kódu](data-manager-portal.md#create-contract-abi-and-bytecode-url). Poznámka: blockchain Data Manager vyžaduje **nasazený bajt**. |
 | queryTargetTypes | Typy publikovaných zpráv. Zadání **ContractProperties** publikuje typ zprávy *ContractPropertiesMsg* . Zadání **ContractEvents** publikuje typ zprávy *DecodedContractEventsMsg* . Poznámka: typy zpráv *RawBlockAndTransactionMsg* a *RawTransactionContractCreationMsg* jsou vždy publikovány. |
 
 Vytvořte aplikaci s názvem *MyApplication* pro *mywatcher* , která sleduje inteligentní kontrakt definovaný řetězcem JSON.
@@ -415,4 +419,7 @@ az resource delete \
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [obslužných rutinách událostí v Azure Event Grid](../../event-grid/event-handlers.md).
+Zkuste vytvořit Průzkumníka zpráv blockchain transakce pomocí blockchain Data Manager a Azure Cosmos DB.
+
+> [!div class="nextstepaction"]
+> [Kurz: použití Data Manager blockchain k odesílání dat do Azure Cosmos DB](data-manager-cosmosdb.md)

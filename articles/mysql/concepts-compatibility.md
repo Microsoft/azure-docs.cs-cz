@@ -1,48 +1,59 @@
 ---
-title: Azure Database for MySQL ovladače a kompatibility nástroje pro správu
-description: Tento článek popisuje ovladače MySQL a nástroje pro správu, které jsou kompatibilní s využitím Azure Database for MySQL.
+title: Kompatibilita Azure Database for MySQL ovladačů a nástrojů pro správu
+description: Tento článek popisuje ovladače a nástroje pro správu MySQL, které jsou kompatibilní s Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 03/19/2019
-ms.openlocfilehash: 05f48145973777052590f8d10e1a2ce1fd22ec7a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 11/06/2019
+ms.openlocfilehash: 916c02c30f6d54aef44459775a7a437fe96a4ff9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60525376"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720142"
 ---
-# <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Ovladače MySQL a nástroje pro správu kompatibilní s využitím Azure Database for MySQL
-Tento článek popisuje ovladačů a nástrojů pro správu, které jsou kompatibilní s využitím Azure Database for MySQL.
+# <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Ovladače a nástroje pro správu MySQL kompatibilní s Azure Database for MySQL
+Tento článek popisuje ovladače a nástroje pro správu, které jsou kompatibilní s Azure Database for MySQL.
 
 ## <a name="mysql-drivers"></a>Ovladače MySQL
-Azure Database for MySQL používá na světě nejoblíbenější community edition databázi MySQL. Proto je kompatibilní s celou řadu programovacích jazyků a ovladače. Cílem je podporovat tři nejnovější verze ovladače MySQL a pokračujte úsilí s tvůrci používající opensourcovou komunitou neustále zlepšit funkčnost a použitelnost ovladače MySQL. Seznam ovladačů, které byly testovány a nenašel se kvůli kompatibilitě s – Azure Database for MySQL 5.6 a 5.7 je uvedený v následující tabulce:
+Azure Database for MySQL používá nejoblíbenější komunitní edici Community databáze MySQL. Proto je kompatibilní s širokou škálou programovacích jazyků a ovladačů. Cílem je podpořit tři nejnovější verze ovladačů MySQL a snahy s autory z komunity Open sources, aby neustále vylepšily funkčnost a použitelnost ovladačů MySQL. V následující tabulce je uveden seznam ovladačů, které byly testovány a zjištěny jako kompatibilní s Azure Database for MySQL 5,6 a 5,7:
 
-| **Ovladač** | **Odkazy** | **Kompatibilní verze** | **Nekompatibilní verze** | **Poznámky** |
-| :-------- | :------------------------ | :----------- | :---------------------- | :--------------------------------------- |
-| PHP | https://secure.php.net/downloads.php | 5.5, 5.6, 7.x | 5.3 | Pro PHP 7.0 připojení pomocí SSL MySQLi přidejte MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT v připojovacím řetězci. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> Sada PDO: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` možnost na hodnotu false.|
-| .NET | [MySqlConnector on GitHub](https://github.com/mysql-net/MySqlConnector) <br> [Instalace balíčku od Nugetu](https://www.nuget.org/packages/MySqlConnector/) | 0.27 a po provedení | 0.26.5 a před | |
-| MySQL Connector/NET | [MySQL Connector/NET](https://github.com/mysql/mysql-connector-net) | 8.0, 7.0, 6.10 |  | Kódování chyb může způsobit selhání v některých systémech Windows UTF8 připojení. |
-| Nodejs |  [MySQLjs na Githubu](https://github.com/mysqljs/mysql/) <br> Instalační balíček z NPM:<br> Spustit `npm install mysql` z NPM | 2.15 | 2.14.1 a před | |
-| PŘEJÍT | https://github.com/go-sql-driver/mysql/releases | 1.3, 1.4 | 1.2 a před | Použití `allowNativePasswords=true` v připojovacím řetězci pro verzi 1.3. Verze 1.4 obsahuje opravu a `allowNativePasswords=true` se už nevyžaduje. |
-| Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3, 2.0, 2.1, 2.2 | 1.2.2 a před | |
-| Java | https://downloads.mariadb.org/connector-java/ | 2.1, 2.0, 1.6 | 1.5.5 a před | |
+| **Programovací jazyk** | **Faktorů** | **Odkazy** | **Kompatibilní verze** | **Nekompatibilní verze** | **Poznámky** |
+| :----------------------- | :--------- | :-------- | :---------------------- | :------------------------ | :-------- |
+| PHP | MySQL, pdo_mysql, mysqlnd | https://secure.php.net/downloads.php | 5,5, 5,6, 7. x | 5,3 | V případě připojení PHP 7,0 k protokolu SSL MySQL přidejte MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT do připojovacího řetězce. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> Množina CHOP: možnost ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` na false.|
+| .NET | Async MySQL Connector pro .NET | https://github.com/mysql-net/MySqlConnector <br> [Instalační balíček z NuGet](https://www.nuget.org/packages/MySqlConnector/) | 0,27 a za | 0.26.5 a před | |
+| .NET | Konektor MySQL/NET | https://github.com/mysql/mysql-connector-net | 8,0, 7,0, 6,10 |  | Chyba kódování může způsobit selhání připojení u některých systémů Windows bez kódování UTF8. |
+| Node.js | mysqljs | https://github.com/mysqljs/mysql/ <br> Instalační balíček z NPM:<br> Spuštění `npm install mysql` z NPM | 2,15 | 2.14.1 a před | |
+| Node.js | uzel – mysql2 | https://github.com/sidorares/node-mysql2 | 1.3.4 + | | |
+| Přejít | Přejít na ovladač MySQL | https://github.com/go-sql-driver/mysql/releases | 1,3, 1,4 | 1,2 a před | V připojovacím řetězci použijte `allowNativePasswords=true` pro verzi 1,3. Verze 1,4 obsahuje opravu a `allowNativePasswords=true` už není potřeba. |
+| Python | Konektor MySQL/Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3, 2,0, 2,1, 2,2, použití 8.0.16 + s MySQL 8,0  | 1.2.2 a před | |
+| Python | PyMySQL | https://pypi.org/project/PyMySQL/ | 0.7.11, 0.8.0, 0.8.1, 0.9.3 + | 0.9.0-0.9.2 (regrese v web2py) | |
+| Java | Konektor MariaDB/J | https://downloads.mariadb.org/connector-java/ | 2,1, 2,0, 1,6 | 1.5.5 a před | | 
+| Java | Konektor MySQL/J | https://github.com/mysql/mysql-connector-j | 5.1.20 +, použití 8.0.17 + s MySQL 8,0 | 5.1.9 a nižší | |
+| C | Konektor MySQL/C (libmysqlclient) | https://dev.mysql.com/doc/refman/5.7/en/c-api-implementations.html | 6.0.2 + | | |
+| C | Konektor MySQL/rozhraní ODBC (MyODBC) | https://github.com/mysql/mysql-connector-odbc | 3.51.29 + | | |
+| C++ | Konektor MySQL/C++ | https://github.com/mysql/mysql-connector-cpp | 1.1.9 + | 1.1.3 a níže | | 
+| C++ | MySQL + +| https://tangentsoft.net/mysql++ | 3.2.3 + | | |
+| Ruby | mysql2 | https://github.com/brianmario/mysql2 | 0.4.10 + | | |
+| R | RMySQL | https://github.com/rstats-db/RMySQL | 0.10.16 + | | |
+| Swift | MySQL – SWIFT | https://github.com/novi/mysql-swift | 0.7.2 + | | |
+| Swift | Vapor/MySQL | https://github.com/vapor/mysql-kit | 2.0.1 + | | |
 
 ## <a name="management-tools"></a>Nástroje pro správu
-Výhodou kompatibility se rozšiřuje do nástrojů pro správu databází i. Svoje stávající nástroje by měla dál pracovat se službou Azure Database for MySQL, tak dlouho, dokud manipulace s databázemi funguje v rámci uživatelských oprávnění. V následující tabulce jsou uvedeny tři běžné nástroje pro správu databází, které byly testovány a nenašel se kvůli kompatibilitě s – Azure Database for MySQL 5.6 a 5.7:
+Výhoda kompatibility se rozšiřuje i na nástroje pro správu databáze. Stávající nástroje by měly nadále fungovat s Azure Database for MySQL, pokud manipulace s databází funguje v rámci omezeného počtu uživatelských oprávnění. Existují tři běžné nástroje pro správu databáze, které byly testovány a shledány jako kompatibilní s Azure Database for MySQL 5,6 a 5,7 jsou uvedeny v následující tabulce:
 
-|                                     | **Aplikace MySQL Workbench 6.x a vyšší** | **Navicat 12** | **Phpmyadmin zobrazuje 4.x a vyšší** |
+|                                     | **MySQL Workbench 6. x a více** | **Navicat 12** | **PHPMyAdmin 4. x a více** |
 | :---------------------------------- | :----------------------------- | :------------- | :-------------------------|
-| Vytvoření, aktualizaci, čtení, zápisu a odstranění | X | X | X |
-| Připojení SSL | X | X | X |
-| Automatické dokončování dotazů SQL | X | X |  |
-| Import a Export dat | X | X | X |
-| Export do několika formátů | X | X | X |
-| Zálohování a obnovení |  | X |  |
-| Zobrazit parametry serveru | X | X | X |
-| Zobrazení připojení klientů | X | X | X |
+| Vytvořit, aktualizovat, číst, zapsat, odstranit | × | × | × |
+| Připojení SSL | × | × | × |
+| Automatické dokončování dotazů SQL | × | × |  |
+| Import a export dat | × | × | × | 
+| Exportovat do více formátů | × | × | × |
+| Zálohování a obnovení |  | × |  |
+| Zobrazit parametry serveru | × | × | × |
+| Zobrazit klientská připojení | × | × | × |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Řešení potíží s připojením ke službě Azure Database for MySQL](howto-troubleshoot-common-connection-issues.md)

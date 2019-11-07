@@ -1,5 +1,5 @@
 ---
-title: Ukázkové skripty Azure PowerShellu pro službu SQL Database | Microsoft Docs
+title: Příklady skriptu Azure PowerShell pro SQL Database
 description: Ukázkové skripty Azure PowerShellu, které vám pomůžou vytvářet a spravovat servery služby Azure SQL Database, elastické fondy, databáze a brány firewall.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 27b4a6f5614b79b2e9d8f3730441d702f2d7cc77
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 17b3d23f90f77a3db68644e76edf340284daa801
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933273"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687650"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Ukázky v Azure PowerShellu pro službu Azure SQL Database
 
@@ -79,6 +79,6 @@ Přečtěte si další informace o [spravované instanci Azure PowerShell rozhra
 
 ---
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 Příklady uvedené na této stránce využívají [rutiny Azure SQL Database](/powershell/module/az.sql/) pro vytváření a správu prostředků Azure SQL. Další rutiny pro spouštění dotazů a provádění mnoha databázových úloh se nachází v modulu [SQLServer](/powershell/module/sqlserver/) . Další informace najdete v tématu [SQL Server PowerShell](/sql/powershell/sql-server-powershell/).

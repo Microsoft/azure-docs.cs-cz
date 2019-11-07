@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 35d850dc6439173c83730375c576855f6920b450
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0cf9a0a13a1c16f5be6d82528849e6e2cc3d466d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475243"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641858"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Kurz: Poskytnutí přístupu k webovému rozhraní API Node.js z desktopové aplikace pomocí Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Udělení oprávnění webovému rozhraní API
 > * Aktualizace ukázky pro použití aplikace
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Proveďte kroky a požadavky v [kurzu: ověřování uživatelů v nativním klientském počítači](active-directory-b2c-tutorials-desktop-app.md).
 

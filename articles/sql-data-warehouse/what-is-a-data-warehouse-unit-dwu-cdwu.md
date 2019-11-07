@@ -1,5 +1,5 @@
 ---
-title: Jednotky datového skladu (DWU, cDWUs) ve službě Azure synapse Analytics (dřív SQL DW) | Microsoft Docs
+title: Jednotky datového skladu (DWU, cDWUs) ve službě Azure synapse Analytics (dřív SQL DW)
 description: Doporučení pro výběr ideálního počtu jednotek datového skladu (DWU, cDWUs) pro optimalizaci ceny a výkonu a změnu počtu jednotek.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,13 +10,13 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-mscustom: sqlfreshmay19
-ms.openlocfilehash: 32e75b78b8a5c304fc65a9c20d16fb85b4f8307b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f3415522a6ae80723500ba2d38867322fdef0dd7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475757"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685338"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Jednotky datového skladu (DWU) a jednotky datového skladu COMPUTE (cDWUs)
 
@@ -120,7 +120,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 ## <a name="change-data-warehouse-units"></a>Změnit jednotky datového skladu
 
-### <a name="azure-portal"></a>Portál Azure
+### <a name="azure-portal"></a>portál Azure
 
 Změna DWU nebo cDWUs:
 
@@ -215,4 +215,4 @@ Když zahájíte operaci škálování, systém nejdřív odchode všechny otev�
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o správě výkonu najdete v tématu [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md) a [omezení pro využití paměti a souběžnosti](memory-and-concurrency-limits.md).
+Další informace o správě výkonu najdete v tématech [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md) a [limity paměti a souběžnosti] paměť-concurrency-Limits.MD).

@@ -1,6 +1,6 @@
 ---
-title: Striim rychlý start s Azure SQL Data Warehouse | Dokumentace Microsoftu
-description: Začněte rychle pomocí Striim a Azure SQL Data Warehouse.
+title: Rychlé spuštění Striim
+description: Striim a Azure SQL Data Warehouse vám umožní rychle začít.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
@@ -10,58 +10,59 @@ ms.subservice: integration
 ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 8ed9936884a648d736942caecade2ac3c2980e67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 65dc0b8fcece4364f3828fee09221612b999df4e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873398"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685346"
 ---
-# <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Striim Azure SQL data Warehouse Marketplace nabízí Instalační příručka
+# <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Průvodce instalací nabídky Striim Azure SQL DW Marketplace
 
-V tomto rychlém startu se předpokládá, že už máte existující instanci služby SQL Data Warehouse.
+V tomto rychlém startu se předpokládá, že už máte již existující instanci SQL Data Warehouse.
 
-Vyhledejte Striim na webu Azure Marketplace a vyberte Striim pro integraci dat do SQL Data Warehouse (Rozfázováno) možnost 
+Vyhledejte v Azure Marketplace Striim a vyberte možnost Striim pro integraci dat do SQL Data Warehouse (dvoufázové). 
 
-![Nainstalujte Striim][install]
+![Nainstalovat Striim][install]
 
-Konfigurace virtuálního počítače Striim pomocí zadané vlastnosti poznamenat Striim clusteru jméno, heslo a heslo správce
+Konfigurace virtuálního počítače s Striim pomocí zadaných vlastností, který označuje název clusteru Striim, heslo a heslo správce
 
 ![Konfigurace Striim][configure]
 
-Po nasazení, klikněte na \<název virtuálního počítače >-masternode na webu Azure Portal, klikněte na připojit a kopírovat přihlášení pomocí místního účtu virtuálního počítače 
+Po nasazení klikněte na \<název virtuálního počítače >-masternode v Azure Portal, klikněte na připojit a zkopírujte přihlašovací údaje pomocí místního účtu VM. 
 
-![Striim připojení k SQL Data Warehouse][connect]
+![Připojení Striim k SQL Data Warehouse][connect]
 
-Stáhněte si sqljdbc42.jar z <https://www.microsoft.com/en-us/download/details.aspx?id=54671> do místního počítače. 
+Stáhněte si sqljdbc42. jar z <https://www.microsoft.com/en-us/download/details.aspx?id=54671> do místního počítače. 
 
-Otevřete okno příkazového řádku a změňte adresáře na které jste stáhli soubor jar JDBC. Spojovací bod služby na soubor jar k vašemu virtuálnímu počítači Striim, získávání adresy a hesla z webu Azure portal
+Otevřete okno příkazového řádku a změňte adresáře na místo, kam jste stáhli JDBC jar. Zascp soubor JAR na virtuální počítač s Striim a získá adresu a heslo z Azure Portal
 
-![Zkopírujte soubor jar k vašemu virtuálnímu počítači][copy-jar]
+![Kopírovat soubor JAR do virtuálního počítače][copy-jar]
 
-Otevřete další okno příkazového řádku nebo pomocí ssh nástroje ssh do Striim clusteru
+Otevření jiného okna příkazového řádku nebo použití nástroje SSH k SSH do clusteru Striim
 
-![Připojte se přes SSH ke clusteru][ssh]
+![SSH do clusteru][ssh]
 
-Spuštěním následujících příkazů do adresáře Striim lib, přesunout soubor .JAR s JDBC a spuštění a zastavení serveru.
+Spusťte následující příkazy pro přesunutí souboru jar JDBC do adresáře lib Striim a spusťte a zastavte Server.
 
-   1. sudo su
-   2. CD TMP
-   3. MV sqljdbc42.jar /opt/striim/lib
-   4. zastavení systemctl striim-node
-   5. zastavení systemctl striim-dbms
-   6. Počáteční systemctl striim-dbms
-   7. Počáteční systemctl striim uzel
+   1. sudo Su
+   2. adresáře/TMP CD
+   3. MV sqljdbc42. jar/opt/striim/lib
+   4. systemctl zastavit striim-Node
+   5. systemctl zastavit striim – DBMS
+   6. systemctl Start striim – DBMS
+   7. systemctl Start striim-Node
 
-![Spustit Striim cluster][start-striim]
+![Spuštění clusteru Striim][start-striim]
 
-Nyní, otevřete svůj oblíbený prohlížeč a přejděte do \<DNS Name >: 9080
+Nyní otevřete oblíbený prohlížeč a přejděte na \<název DNS >: 9080
 
 ![Přejít na přihlašovací obrazovku][navigate]
 
-Přihlaste se pomocí uživatelského jména a hesla nastavit na webu Azure Portal a vyberte upřednostňovaný Průvodce Začínáme, nebo přejděte na stránku aplikace a začít používat přetahování a uživatelské prostředí
+Přihlaste se pomocí uživatelského jména a hesla, které jste nastavili v Azure Portal, vyberte preferovaného průvodce, abyste mohli začít, nebo přejít na stránku aplikace a začněte používat uživatelské rozhraní přetažení.
 
-![Přihlaste se pomocí přihlašovacích údajů serveru][login]
+![Přihlášení pomocí přihlašovacích údajů serveru][login]
 
 
 

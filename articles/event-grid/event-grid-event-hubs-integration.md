@@ -1,42 +1,42 @@
 ---
-title: Odeslat data do datového skladu služby Event Hubs – Event Grid
-description: Popisuje, jak migrovat data do SQL Data Warehouse pomocí Azure Event Grid a Event Hubs. Funkce Azure používá k načtení zachytávací soubor.
+title: 'Kurz: odeslání Event Hubs dat do datového skladu – Event Grid'
+description: 'Kurz: popisuje, jak pomocí Azure Event Grid a Event Hubs migrovat data do SQL Data Warehouse. K načtení digitalizačního souboru používá funkci Azure Functions.'
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 01/13/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 1ae7a18660d2a7324bc5897d6b3952da42b6c4b2
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 6f5bd129b175210cd5b9415a65b8db06d904e24d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603438"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718185"
 ---
-# <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Kurz: Streamování velkých objemů dat do datového skladu
-Azure [služby Event Grid](overview.md) je služba inteligentního směrování událostí, která umožňuje reagovat na upozornění (události) z aplikací a služeb. Může například aktivovat funkci Azure Functions pro zpracování dat služby Event Hubs, která byla zachycena do služby Azure Blob storage nebo Azure Data Lake Storage a migraci dat do jiných úložišť dat. To [ukázka integrace Event Hubs a služby Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) se dozvíte, jak pomocí služby Event Hubs s využitím služby Event Grid můžou hladce migrovat zachycená data Event Hubs ze služby blob storage do SQL Data Warehouse.
+# <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Kurz: streamování velkých objemů dat do datového skladu
+Azure [Event Grid](overview.md) je inteligentní služba Směrování událostí, která umožňuje reagovat na oznámení (události) z aplikací a služeb. Například může aktivovat funkci Azure Functions pro zpracování Event Hubs dat zachycených do úložiště objektů BLOB v Azure nebo v Azure Data Lake Storage a migrovat data do jiných úložišť dat. V tomto [Event Hubs a v ukázce Event Grid Integration](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) se dozvíte, jak používat Event Hubs se Event Grid k bezproblémové migraci zachycených Event Hubs dat z úložiště objektů blob na SQL Data Warehouse.
 
 ![Přehled aplikace](media/event-grid-event-hubs-integration/overview.png)
 
-Tento diagram znázorňuje pracovní postup řešení, které vytváříte v tomto kurzu: 
+Tento diagram znázorňuje pracovní postup řešení, které sestavíte v tomto kurzu: 
 
-1. Data odeslaná do centra událostí Azure je zachycena ve službě Azure blob storage.
-2. Po dokončení sběr dat vygeneruje událost a odeslané do služby Azure event grid. 
-3. Služby event grid předá tato data událostí k aplikaci Azure function app.
-4. Aplikace function app používá adresu URL objektu blob v datech událostí k načtení objektu blob z úložiště. 
-5. Aplikace function app migruje data objektů blob do služby Azure SQL data warehouse. 
+1. Data odesílaná do centra událostí Azure jsou zachycena v úložišti objektů BLOB v Azure.
+2. Po dokončení zachycení dat se vygeneruje událost a pošle se do služby Azure Event Grid. 
+3. Event Grid přepošle tato data události do aplikace funkce Azure.
+4. Aplikace Function App používá k načtení objektu BLOB z úložiště adresu URL objektu BLOB v datech události. 
+5. Aplikace Function App migruje data objektů blob do služby Azure SQL Data Warehouse. 
 
 V tomto článku proveďte následující kroky:
 
 > [!div class="checklist"]
-> * Pomocí šablony Azure Resource Manageru k nasazení infrastruktury: centra událostí, účet úložiště, aplikace function app, SQL data warehouse.
-> * Vytvoření tabulky v datovém skladu.
-> * Přidejte kód do aplikace function app.
-> * K události registrovat. 
-> * Spuštění aplikace, která odesílá data do centra událostí.
-> * Zobrazte migrovaná data v datovém skladu.
+> * Použití šablony Azure Resource Manager k nasazení infrastruktury: centra událostí, účet úložiště, aplikace Function App, SQL Data Warehouse.
+> * Vytvořte tabulku v datovém skladu.
+> * Přidejte kód do aplikace Function App.
+> * Přihlaste se k odběru události. 
+> * Spusťte aplikaci, která odesílá data do centra událostí.
+> * Zobrazení migrovaných dat v datovém skladu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,46 +45,46 @@ V tomto článku proveďte následující kroky:
 K dokončení tohoto kurzu potřebujete:
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* [Visual studio. 2019](https://www.visualstudio.com/vs/) s úlohami pro: vývoj desktopových aplikací .NET, vývoj pro Azure, vývoj pro ASP.NET a web, vývoj v Node.js a vývoj v jazyce Python.
-* Stáhněte si [EventHubsCaptureEventGridDemo ukázkový projekt](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) k vašemu počítači.
+* [Visual studio 2019](https://www.visualstudio.com/vs/) s pracovními postupy pro: vývoj desktopových aplikací pro .NET, vývoj pro Azure, vývoj pro ASP.NET a web, vývoj v Node. js a vývoj v jazyce Python.
+* Stáhněte si [vzorový projekt EventHubsCaptureEventGridDemo](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) do svého počítače.
 
 ## <a name="deploy-the-infrastructure"></a>Nasazení infrastruktury
-V tomto kroku nasadíte požadovanou infrastrukturu s [šablony Resource Manageru](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json). Při nasazování šablony vytvoří následující prostředky:
+V tomto kroku nasadíte požadovanou infrastrukturu pomocí [šablony Správce prostředků](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json). Při nasazení šablony se vytvoří následující prostředky:
 
-* Centrum událostí s povolenou funkci Capture.
+* Centrum událostí s povolenou funkcí Capture
 * Účet úložiště pro zachycené soubory. 
-* Plán služby App service pro hostování aplikace function app
+* Plán služby App Service pro hostování aplikace Function App
 * Aplikace Function App na zpracování události
 * SQL Server na hostování datového skladu
 * SQL Data Warehouse na uložení migrovaných dat
 
-### <a name="launch-azure-cloud-shell-in-azure-portal"></a>Spustit Azure Cloud Shell na webu Azure portal
+### <a name="launch-azure-cloud-shell-in-azure-portal"></a>Spustit Azure Cloud Shell v Azure Portal
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
-2. Vyberte **Cloud Shell** tlačítko v horní části.
+2. V horní části vyberte tlačítko **Cloud Shell** .
 
     ![portál Azure](media/event-grid-event-hubs-integration/azure-portal.png)
-3. Uvidíte, že službě Cloud Shell se otevře v dolní části prohlížeče.
+3. V dolní části prohlížeče se zobrazí Cloud Shell otevřít.
 
     ![Cloud Shell](media/event-grid-event-hubs-integration/launch-cloud-shell.png) 
-4. Ve službě Cloud Shell, pokud se zobrazí možnost výběru mezi **Bash** a **PowerShell**vyberte **Bash**. 
-5. Pokud používáte Cloud Shell poprvé, vytvořit účet úložiště tak, že vyberete **vytvořit úložiště**. Azure Cloud Shell vyžaduje účet Azure storage k ukládání některé soubory. 
+4. Pokud se v Cloud Shell zobrazí možnost výběru mezi **bash** a **PowerShellem**, vyberte **bash**. 
+5. Pokud Cloud Shell používáte poprvé, vytvořte účet úložiště tak, že vyberete **vytvořit úložiště**. Azure Cloud Shell vyžaduje účet úložiště Azure pro ukládání některých souborů. 
 
-    ![Vytvoření úložiště cloud shell](media/event-grid-event-hubs-integration/create-storage-cloud-shell.png)
-6. Počkejte, dokud se inicializuje službě Cloud Shell. 
+    ![Vytvoření úložiště pro Cloud Shell](media/event-grid-event-hubs-integration/create-storage-cloud-shell.png)
+6. Počkejte, dokud se Cloud Shell neinicializuje. 
 
-    ![Vytvoření úložiště cloud shell](media/event-grid-event-hubs-integration/cloud-shell-initialized.png)
+    ![Vytvoření úložiště pro Cloud Shell](media/event-grid-event-hubs-integration/cloud-shell-initialized.png)
 
 
 ### <a name="use-azure-cli"></a>Použití Azure CLI
 
-1. Vytvořte skupinu prostředků Azure, spuštěním následujícího příkazu rozhraní příkazového řádku: 
-    1. Zkopírujte a vložte následující příkaz do okna služby Cloud Shell
+1. Vytvořte skupinu prostředků Azure spuštěním následujícího příkazu CLI: 
+    1. Zkopírujte následující příkaz a vložte ho do okna Cloud Shell
 
         ```azurecli
         az group create -l eastus -n <Name for the resource group>
         ```
-    1. Zadejte název **skupiny prostředků**
+    1. Zadejte název **skupiny prostředků** .
     2. Stiskněte **ENTER**. 
 
         Zde naleznete příklad:
@@ -102,8 +102,8 @@ V tomto kroku nasadíte požadovanou infrastrukturu s [šablony Resource Manager
           "tags": null
         }
         ```
-2. Nasadíte všechny prostředky uvedené v předchozí části (centra událostí, účet úložiště, aplikace functions, SQL data warehouse) spuštěním následujícího příkazu rozhraní příkazového řádku: 
-    1. Zkopírujte a vložte příkaz do okna služby Cloud Shell. Alternativně můžete kopírovat/vložit do editoru podle vašeho výběru, nastavte hodnoty a pak zkopírujte do Cloud Shellu příkaz. 
+2. Spuštěním následujícího příkazu CLI nasaďte všechny prostředky uvedené v předchozí části (centrum událostí, účet úložiště, aplikace functions a SQL Data Warehouse): 
+    1. Zkopírujte příkaz a vložte ho do okna Cloud Shell. Alternativně můžete chtít zkopírovat nebo vložit do editoru podle svého výběru, nastavit hodnoty a potom zkopírovat příkaz do Cloud Shell. 
 
         ```azurecli
         az group deployment create \
@@ -113,70 +113,70 @@ V tomto kroku nasadíte požadovanou infrastrukturu s [šablony Resource Manager
         ```
     2. Zadejte hodnoty pro následující entity:
         1. Název skupiny prostředků, kterou jste vytvořili dříve.
-        2. Název pro obor názvů centra událostí. 
-        3. Název centra událostí. Hodnoty můžete ponechat beze (hubdatamigration).
+        2. Název oboru názvů centra událostí. 
+        3. Název centra událostí Hodnotu můžete ponechat tak, jak je (hubdatamigration).
         4. Název systému SQL Server.
-        5. Název SQL uživatele a heslo. 
-        6. Název pro SQL data warehouse
-        7. Název účtu úložiště. 
-        8. Název aplikace function app. 
-    3.  Stisknutím klávesy **ENTER** do okna služby Cloud Shell a spusťte příkaz. Tento proces může chvíli trvat, protože vytváříte mnoho prostředků. Ve výsledku příkazu Ujistěte se, že nebyly žádné chyby. 
+        5. Jméno uživatele a heslo SQL 
+        6. Název pro SQL Data Warehouse
+        7. Název účtu úložiště 
+        8. Název aplikace Function App 
+    3.  Stisknutím klávesy **ENTER** v okně Cloud Shell spusťte příkaz. Tento proces může chvíli trvat, protože vytváříte spoustu prostředků. V důsledku příkazu se ujistěte, že nedošlo k žádným chybám. 
     
 
-### <a name="use-azure-powershell"></a>Použití Azure Powershell
+### <a name="use-azure-powershell"></a>Použití Azure PowerShellu
 
-1. Ve službě Azure Cloud Shell přejděte do režimu Powershellu. Vyberte šipku dolů v levém horním rohu Azure Cloud Shell a vyberte **Powershellu**.
+1. V Azure Cloud Shell přepněte do režimu PowerShell. V levém horním rohu Azure Cloud Shell vyberte šipku dolů a vyberte **PowerShell**.
 
-    ![Přepnout na prostředí PowerShell](media/event-grid-event-hubs-integration/select-powershell-cloud-shell.png)
+    ![Přepnout do PowerShellu](media/event-grid-event-hubs-integration/select-powershell-cloud-shell.png)
 2. Spuštěním následujícího příkazu vytvořte skupinu prostředků Azure: 
-    1. Zkopírujte a vložte do okna služby Cloud Shell následující příkaz.
+    1. Zkopírujte následující příkaz a vložte ho do okna Cloud Shell.
 
         ```powershell
         New-AzResourceGroup -Name rgDataMigration -Location westcentralus
         ```
     2. Zadejte název **skupiny prostředků**.
     3. Stiskněte klávesu ENTER. 
-3. Nasadíte všechny prostředky uvedené v předchozí části (centra událostí, účet úložiště, aplikace functions, SQL data warehouse) spuštěním následujícího příkazu:
-    1. Zkopírujte a vložte příkaz do okna služby Cloud Shell. Alternativně můžete kopírovat/vložit do editoru podle vašeho výběru, nastavte hodnoty a pak zkopírujte do Cloud Shellu příkaz. 
+3. Spuštěním následujícího příkazu nasaďte všechny prostředky uvedené v předchozí části (centrum událostí, účet úložiště, aplikace Functions, SQL Data Warehouse):
+    1. Zkopírujte příkaz a vložte ho do okna Cloud Shell. Alternativně můžete chtít zkopírovat nebo vložit do editoru podle svého výběru, nastavit hodnoty a potom zkopírovat příkaz do Cloud Shell. 
 
         ```powershell
         New-AzResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
         ```
     2. Zadejte hodnoty pro následující entity:
         1. Název skupiny prostředků, kterou jste vytvořili dříve.
-        2. Název pro obor názvů centra událostí. 
-        3. Název centra událostí. Hodnoty můžete ponechat beze (hubdatamigration).
+        2. Název oboru názvů centra událostí. 
+        3. Název centra událostí Hodnotu můžete ponechat tak, jak je (hubdatamigration).
         4. Název systému SQL Server.
-        5. Název SQL uživatele a heslo. 
-        6. Název pro SQL data warehouse
-        7. Název účtu úložiště. 
-        8. Název aplikace function app. 
-    3.  Stisknutím klávesy **ENTER** do okna služby Cloud Shell a spusťte příkaz. Tento proces může chvíli trvat, protože vytváříte mnoho prostředků. Ve výsledku příkazu Ujistěte se, že nebyly žádné chyby. 
+        5. Jméno uživatele a heslo SQL 
+        6. Název pro SQL Data Warehouse
+        7. Název účtu úložiště 
+        8. Název aplikace Function App 
+    3.  Stisknutím klávesy **ENTER** v okně Cloud Shell spusťte příkaz. Tento proces může chvíli trvat, protože vytváříte spoustu prostředků. V důsledku příkazu se ujistěte, že nedošlo k žádným chybám. 
 
 ### <a name="close-the-cloud-shell"></a>Zavřít Cloud Shell 
-Zavřít cloud shell tak, že vyberete **Cloud Shell** tlačítko na portálu (nebo) **X** tlačítko v pravém horním rohu okna služby Cloud Shell. 
+Kliknutím na tlačítko **Cloud Shell** na portálu (nebo) na tlačítko **X** v pravém horním rohu okna Cloud Shell zavřete Cloud Shell. 
 
-### <a name="verify-that-the-resources-are-created"></a>Ověřte, že se prostředky vytvoří
+### <a name="verify-that-the-resources-are-created"></a>Ověření vytvoření prostředků
 
-1. Na webu Azure Portal, vyberte **skupiny prostředků** v nabídce vlevo. 
-2. Filtrovat seznam skupin prostředků tak, že do vyhledávacího pole zadáte název vaší skupiny prostředků. 
+1. V Azure Portal v nabídce vlevo vyberte **skupiny prostředků** . 
+2. Seznam skupin prostředků vyfiltrujte tak, že do vyhledávacího pole zadáte název vaší skupiny prostředků. 
 3. V seznamu vyberte skupinu prostředků.
 
-    ![Vyberte skupinu prostředků](media/event-grid-event-hubs-integration/select-resource-group.png)
-4. Zkontrolujte, jestli vidíte následující prostředky ve skupině prostředků:
+    ![Výběr skupiny prostředků](media/event-grid-event-hubs-integration/select-resource-group.png)
+4. Ověřte, že se ve skupině prostředků zobrazují tyto prostředky:
 
     ![Prostředky ve skupině prostředků](media/event-grid-event-hubs-integration/resources-in-resource-group.png)
 
 ### <a name="create-a-table-in-sql-data-warehouse"></a>Vytvoření tabulky ve službě SQL Data Warehouse
-Vytvoření tabulky v datovém skladu spuštěním [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) skriptu. Spusťte skript, můžete použít Visual Studio nebo editoru dotazů na portálu. Následující kroky ukazují, jak pomocí editoru dotazů: 
+Vytvořte tabulku v datovém skladu spuštěním skriptu [CreateDataWarehouseTable. SQL](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) . Chcete-li spustit skript, můžete použít aplikaci Visual Studio nebo Editor dotazů na portálu. Následující kroky ukazují, jak používat Editor dotazů: 
 
-1. V seznamu prostředků ve skupině prostředků vyberte služby SQL data warehouse. 
-2. Na stránce SQL data warehouse vyberte **editor dotazů (preview)** v levé nabídce. 
+1. V seznamu prostředků ve skupině prostředků vyberte SQL Data Warehouse. 
+2. Na stránce SQL Data Warehouse v nabídce vlevo vyberte **Editor dotazů (Preview)** . 
 
-    ![SQL data warehouse stránky](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
-2. Zadejte název **uživatele** a **heslo** pro SQL server a vyberte **OK**. 
+    ![Stránka SQL Data Warehouse](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
+2. Zadejte jméno **uživatele** a **heslo** pro systém SQL Server a vyberte **OK**. 
 
-    ![Ověřování přes server SQL](media/event-grid-event-hubs-integration/sql-server-authentication.png)
+    ![Ověřování systému SQL Server](media/event-grid-event-hubs-integration/sql-server-authentication.png)
 4. V okně dotazu zkopírujte a spusťte následující skript SQL: 
 
     ```sql
@@ -191,25 +191,25 @@ Vytvoření tabulky v datovém skladu spuštěním [CreateDataWarehouseTable.sql
     ```
 
     ![Spustit dotaz SQL](media/event-grid-event-hubs-integration/run-sql-query.png)
-5. Nechte tuto kartu nebo okno otevřené, aby mohli ověřit, že data se vytvoří na konci tohoto kurzu. 
+5. Nechejte tuto kartu nebo okno otevřené, abyste mohli ověřit, že se data vytvoří na konci kurzu. 
 
 
 ## <a name="publish-the-azure-functions-app"></a>Publikování aplikace Azure Functions
 
-1. Spusťte sadu Visual Studio.
-2. Otevřít **EventHubsCaptureEventGridDemo.sln** řešení, které jste stáhli ze služby [Githubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) jako součást požadavků.
+1. Spusťte Visual Studio.
+2. Otevřete řešení **EventHubsCaptureEventGridDemo. sln** , které jste stáhli z [GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) jako součást požadavků.
 3. V průzkumníku řešení klikněte pravým tlačítkem na **FunctionEGDWDumper** a vyberte **Publikovat**.
 
    ![Publikování aplikace funkcí](media/event-grid-event-hubs-integration/publish-function-app.png)
-4. Pokud se zobrazí následující obrazovka, vyberte **Start**. 
+4. Pokud se zobrazí následující obrazovka, vyberte **Spustit**. 
 
-   ![Tlačítko Publikovat Start](media/event-grid-event-hubs-integration/start-publish-button.png) 
-5. V **vyberte cíl publikování** stránky, vyberte **vybrat existující** a vyberte možnost **vytvořit profil**. 
+   ![Tlačítko pro spuštění publikování](media/event-grid-event-hubs-integration/start-publish-button.png) 
+5. Na stránce **Vyberte cíl publikování** vyberte možnost **Vybrat existující** a vyberte **vytvořit profil**. 
 
    ![Výběr cíle publikování](media/event-grid-event-hubs-integration/publish-select-existing.png)
-6. Na stránce služby App Service vyberte váš **předplatného Azure**, vyberte **aplikace function app** ve vaší skupině prostředků a vyberte **OK**. 
+6. Na stránce App Service vyberte své **předplatné Azure**, ve skupině prostředků vyberte **aplikace Function App** a vyberte **OK**. 
 
-   ![Stránka služby App Service](media/event-grid-event-hubs-integration/publish-app-service.png) 
+   ![Stránka App Service](media/event-grid-event-hubs-integration/publish-app-service.png) 
 1. Jakmile Visual Studio nakonfiguruje profil, vyberte **Publikovat**.
 
    ![Výběr publikování](media/event-grid-event-hubs-integration/select-publish.png)
@@ -218,55 +218,55 @@ Po publikování funkce můžete začít událost odebírat.
 
 ## <a name="subscribe-to-the-event"></a>Přihlásíte se k odběru události
 
-1. V nové kartě nebo v novém okně webového prohlížeče přejděte [webu Azure portal](https://portal.azure.com).
-2. Na webu Azure Portal, vyberte **skupiny prostředků** v nabídce vlevo. 
-3. Filtrovat seznam skupin prostředků tak, že do vyhledávacího pole zadáte název vaší skupiny prostředků. 
+1. Na nové kartě nebo v novém okně webového prohlížeče přejděte na [Azure Portal](https://portal.azure.com).
+2. V Azure Portal v nabídce vlevo vyberte **skupiny prostředků** . 
+3. Seznam skupin prostředků vyfiltrujte tak, že do vyhledávacího pole zadáte název vaší skupiny prostředků. 
 4. V seznamu vyberte skupinu prostředků.
 
-    ![Vyberte skupinu prostředků](media/event-grid-event-hubs-integration/select-resource-group.png)
-4. V seznamu vyberte plán služby App Service. 
-5. Na stránce plán služby App Service vyberte **aplikace** v levé nabídce a vyberte aplikaci function app. 
+    ![Výběr skupiny prostředků](media/event-grid-event-hubs-integration/select-resource-group.png)
+4. V seznamu vyberte plán App Service. 
+5. Na stránce plán App Service v nabídce vlevo vyberte **aplikace** a vyberte aplikace Function App. 
 
-    ![Vyberte vaši aplikaci functions](media/event-grid-event-hubs-integration/select-function-app-app-service-plan.png)
-6. Rozbalte aplikaci function app, Rozbalit funkce a pak vyberte vaši funkci. 
+    ![Výběr aplikace Functions](media/event-grid-event-hubs-integration/select-function-app-app-service-plan.png)
+6. Rozbalte aplikaci Function App, rozbalte položku funkce a potom vyberte svou funkci. 
 
     ![Výběr funkce Azure](media/event-grid-event-hubs-integration/select-function-add-button.png)
-7. Vyberte **přidat předplatné Event gridu** na panelu nástrojů. 
-8. V **vytvořit odběr služby Event Grid** stránce, proveďte následující akce: 
-    1. V **TÉMA obsahující podrobnosti** části, proveďte následující akce:
+7. Na panelu nástrojů vyberte **přidat Event Grid předplatné** . 
+8. Na stránce **vytvořit Event Grid předplatné** proveďte následující akce: 
+    1. V části **Podrobnosti o tématu** proveďte následující akce:
         1. Vyberte své předplatné Azure.
         2. Vyberte skupinu prostředků Azure.
-        3. Vyberte obor názvů služby Event Hubs.
-    2. V **podrobnosti PŘEDPLATNÉHO událostí** stránky, zadejte název předplatného (třeba: captureEventSub) a vyberte **vytvořit**. 
+        3. Vyberte obor názvů Event Hubs.
+    2. Na stránce **Podrobnosti odběru události** zadejte název předplatného (například: captureEventSub) a vyberte **vytvořit**. 
 
-        ![Vytvořit odběr služby Event Grid](media/event-grid-event-hubs-integration/create-event-subscription.png)
+        ![Vytvoření předplatného Event Grid](media/event-grid-event-hubs-integration/create-event-subscription.png)
 
 ## <a name="run-the-app-to-generate-data"></a>Spuštění aplikace, která generuje data
 Nastavili jste centrum událostí, datový sklad SQL, aplikaci Azure Function App a odběr událostí. Před spuštěním aplikace, která generuje data z centra událostí, je potřeba nakonfigurovat několik hodnot.
 
-1. Na webu Azure Portal přejděte do vaší skupiny prostředků, jako jste to udělali dříve. 
-2. Vyberte obor názvů služby Event Hubs.
-3. V **Event Hubs Namespace** stránce **zásady sdíleného přístupu** v nabídce vlevo.
-4. Vyberte **RootManageSharedAccessKey** v seznamu zásad. 
-5. Vyberte tlačítko kopírování vedle položky **připojovací řetězec – primární klíč** textového pole. 
+1. V Azure Portal přejděte do skupiny prostředků stejně jako dříve. 
+2. Vyberte obor názvů Event Hubs.
+3. Na stránce **Event Hubs obor názvů** vyberte v levé nabídce **zásady sdíleného přístupu** .
+4. V seznamu zásad vyberte **RootManageSharedAccessKey** . 
+5. Vyberte tlačítko Kopírovat vedle textového pole **připojovací řetězec – primární klíč** . 
 
     ![Připojovací řetězec pro obor názvů centra událostí](media/event-grid-event-hubs-integration/get-connection-string.png)
 1. Vraťte se do řešení sady Visual Studio. 
 2. V projektu WindTurbineDataGenerator otevřete **program.cs**.
-5. Nahraďte dvě konstantní hodnoty. Zkopírovanou hodnotu použijte místo **EventHubConnectionString**. Jako název centra událostí použijte **hubdatamigration**. Pokud jste použili jiný název centra událostí, zadejte tento název. 
+5. Nahraďte dvě konstantní hodnoty. Zkopírovanou hodnotu použijte místo **EventHubConnectionString**. Jako název centra událostí použijte **hubdatamigration**. Pokud jste pro centrum událostí použili jiný název, zadejte tento název. 
 
    ```cs
    private const string EventHubConnectionString = "Endpoint=sb://demomigrationnamespace.servicebus.windows.net/...";
    private const string EventHubName = "hubdatamigration";
    ```
 
-6. Sestavte řešení. Spustit **WindTurbineGenerator.exe** aplikace. 
+6. Sestavte řešení. Spusťte aplikaci **WindTurbineGenerator. exe** . 
 7. Po pár minutách zadejte dotaz do tabulky v datovém skladu a zkontrolujte, že obsahuje migrovaná data.
 
     ![Výsledky dotazu](media/event-grid-event-hubs-integration/query-results.png)
 
-### <a name="event-data-generated-by-the-event-hub"></a>Data události vygenerovaná v Centru událostí
-Event Grid distribuuje data události mezi odběratele. Následující příklad zobrazuje data událostí, které jsou generovány, pokud data prostřednictvím centra událostí se zaznamenávají do objektu BLOB. Zejména, Všimněte si, že `fileUrl` vlastnost `data` objektu odkazuje na objekt blob v úložišti. Aplikace function app používá tuto adresu URL k načtení souboru objektu blob s zachycená data.
+### <a name="event-data-generated-by-the-event-hub"></a>Data události generovaná centrem událostí
+Event Grid distribuuje data události mezi odběratele. Následující příklad ukazuje data události vygenerovaná při zachycení datových proudů prostřednictvím centra událostí v objektu BLOB. Zejména Všimněte si, že vlastnost `fileUrl` v objektu `data` odkazuje na objekt BLOB v úložišti. Aplikace Function App používá tuto adresu URL k načtení souboru objektu BLOB se zachycenými daty.
 
 ```json
 [
@@ -292,9 +292,9 @@ Event Grid distribuuje data události mezi odběratele. Následující příklad
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Pokud chcete poznat rozdíly ve službách Azure pro zasílání zpráv, přečtěte si článek [Výběr mezi službami Azure, které doručují zprávy](compare-messaging-services.md).
-* Úvod do Event Gridu najdete v článku [Informace o službě Event Grid](overview.md).
+* Úvod do Event Gridu najdete v článku o [Event Gridu](overview.md).
 * Úvod do služby Event Hubs Capture najdete v článku o [povolení služby Event Hubs Capture na webu Azure Portal](../event-hubs/event-hubs-capture-enable-through-portal.md).
 * Další informace o nastavení a spuštění ukázky najdete v článku s [ukázkou služeb Event Hubs Capture a Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo).

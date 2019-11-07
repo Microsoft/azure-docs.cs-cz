@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 411037dd97350d877aff4e2d094c3408f168f9fd
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 91c5c1480669829bad7f8d89ce360bb806d6c997
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648582"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646852"
 ---
-# <a name="classroom-labs-in-azure-lab-services---frequently-asked-questions-faq"></a>Cvičení v učebně Azure Lab Services – nejčastější dotazy (FAQ)
+# <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Laboratoře učebny v Azure Lab Services – nejčastější dotazy (FAQ)
 Získejte odpovědi na některé nejčastější dotazy týkající se učebn Labs v Azure Lab Services. 
 
 ## <a name="quotas"></a>Kvóty
@@ -40,7 +40,14 @@ Vývojové laboratoře můžou vytvořit testovací virtuální počítače v r�
 
 Například pokud máte blok z/19-10.0.0.0/19, tento rozsah adres bude vyhovovat 8192 IP adres a 16 Labs (8192/512 = 16 Labs). V tomto případě se vytvoření testovacího prostředí v testovacím prostředí 17 nezdařilo.
 
-## <a name="blog-post"></a>Příspěvek blogu
+### <a name="what-port-ranges-should-i-open-on-my-organizations-firewall-setting-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Jaké rozsahy portů mám otevřít v nastavení brány firewall mojí organizace pro připojení k virtuálním počítačům testovacího prostředí přes RDP/SSH?
+
+Porty jsou: 49152 – 65535. Učebna Labs za nástrojem pro vyrovnávání zatížení, takže všechny virtuální počítače v testovacím prostředí mají jednu IP adresu a každý virtuální počítač v testovacím prostředí má jedinečný port. Čísla portů a veřejná IP adresa se můžou změnit při každém opětovném publikování testovacího prostředí.
+
+### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Jaký rozsah veřejných IP adres mám otevřít v nastavení brány firewall moje organizace pro připojení k testovacím virtuálním počítačům přes RDP/SSH?
+Přečtěte si téma [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519), který poskytuje rozsah veřejných IP adres pro datová centra v Azure. Můžete otevřít IP adresy pro oblasti, ve kterých jsou účty testovacího prostředí.
+
+## <a name="blog-post"></a>Příspěvek na blogu
 Přihlaste se k odběru [blogu Azure Lab Services](https://azure.microsoft.com/blog/tag/azure-lab-services/).
 
 ## <a name="update-notifications"></a>Aktualizovat oznámení
@@ -51,6 +58,6 @@ Přihlaste se k odběru [aktualizací testovacích služeb](https://azure.micros
 Pokud tady uvedený dotaz není, sdělte nám, abychom vám pomohli najít odpověď.
 
 - Na konci těchto nejčastějších dotazů si vystavte otázku. 
-- Pokud chcete oslovit širší cílovou skupinu, odešlete dotaz na [fórum Azure Lab Services-Stack Overflow](https://stackoverflow.com/questions/tagged/azure-lab-services). 
-- V případě žádostí o funkce odešlete žádosti a nápady do [Azure Lab Services hlas uživateli](https://feedback.azure.com/forums/320373-lab-services?category_id=352774).
+- Pokud chcete oslovit širší cílovou skupinu, odešlete dotaz na [Azure Lab Services – Stack Overflow Fórum](https://stackoverflow.com/questions/tagged/azure-lab-services). 
+- V případě žádostí o funkce odešlete žádosti a nápady do [Azure Lab Services – uživatelský hlas](https://feedback.azure.com/forums/320373-lab-services?category_id=352774).
 

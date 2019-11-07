@@ -1,5 +1,5 @@
 ---
-title: Transformace dat pomocí Sparku v Azure Data Factory | Microsoft Docs
+title: 'Transformace dat pomocí Sparku v Azure Data Factory '
 description: Tento kurz obsahuje podrobné pokyny pro transformaci dat pomocí aktivity Sparku ve službě Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 7c7b2b75bdf8aa2be0ea9dd2b60453c2480fc1d2
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 06ec56e9e86069bd23a032aa289ea7391db04538
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813434"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683292"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Transformace dat v cloudu pomocí aktivity Sparku ve službě Azure Data Factory
 V tomto kurzu použijete Azure PowerShell k vytvoření kanálu Data Factory, který transformuje data pomocí aktivity Sparku a propojené služby HDInsight na vyžádání. V tomto kurzu provedete následující kroky:
@@ -28,7 +28,7 @@ V tomto kurzu použijete Azure PowerShell k vytvoření kanálu Data Factory, kt
 > * Zahájení spuštění kanálu
 > * Monitorování spuštění kanálu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -66,15 +66,15 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
     ```
 2. Nahraďte **&lt;storageAccountName&gt;** názvem vašeho účtu služby Azure Storage. Pak soubor uložte. 
 3. Ve službě Azure Blob Storage, vytvořte kontejner **adftutorial**, pokud ještě neexistuje. 
-4. Vytvořte složku **spark**.
+4. Vytvořte složku s názvem **spark**.
 5. Ve složce **spark** vytvořte podsložku **script**. 
 6. Do podsložky **script** uložte soubor **WordCount_Spark.py**. 
 
 
 ### <a name="upload-the-input-file"></a>Nahrání vstupního souboru
 1. Vytvořte soubor **minecraftstory.txt** a nějakým textem. Program Sparku spočítá slova v tomto textu. 
-2. Ve složce `spark` vytvořte podsložku `inputfiles`. 
-3. Do podsložky `inputfiles` uložte soubor `minecraftstory.txt`. 
+2. Ve složce `inputfiles` vytvořte podsložku `spark`. 
+3. Do podsložky `minecraftstory.txt` uložte soubor `inputfiles`. 
 
 ## <a name="author-linked-services"></a>Vytvoření propojených služeb
 V této části vytvoříte dvě propojené služby: 
@@ -83,7 +83,7 @@ V této části vytvoříte dvě propojené služby:
 - Propojená služba HDInsight na vyžádání. Azure Data Factory automaticky vytvoří cluster HDInsight, spustí program Sparku a pak odstraní cluster HDInsight, jakmile bude nečinný po předkonfigurovanou dobu. 
 
 ### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
-Pomocí preferovaného editoru vytvořte soubor JSON, zkopírujte do něj následující definici JSON propojené služby Azure Storage a potom tento soubor uložte jako **MyStorageLinkedService.json**.  
+Pomocí preferovaného editoru vytvořte soubor JSON, zkopírujte následující definici JSON propojené služby Azure Storage a potom tento soubor uložte jako **MyStorageLinkedService.json**.  
 
 ```json
 {
@@ -147,7 +147,7 @@ V definici propojené služby aktualizujte hodnoty následujících vlastností:
 ## <a name="author-a-pipeline"></a>Vytvoření kanálu 
 V tomto kroku vytvoříte nový kanál s aktivitou Sparku. Aktivita používá ukázku **word count** (počet slov). Pokud jste to ještě neudělali, stáhněte obsah z tohoto umístění.
 
-Pomocí preferovaného editoru vytvořte soubor JSON, zkopírujte do něj následující definici JSON kanálu a potom tento soubor uložte jako **MySparkOnDemandPipeline.json**. 
+Pomocí preferovaného editoru vytvořte soubor JSON, zkopírujte následující definici JSON kanálu a potom tento soubor uložte jako **MySparkOnDemandPipeline.json**. 
 
 ```json
 {
@@ -192,7 +192,7 @@ Vytvořili jste definice propojené služby a kanálu v souborech JSON. Teď vyt
     $resourceGroupName = "ADFTutorialResourceGroup" 
     ```
 
-    **Název datové továrny. Musí být globálně jedinečný.** 
+    **Název Data Factory Musí být globálně jedinečný.** 
     ```powershell
     $dataFactoryName = "MyDataFactory09102017"
     ```
@@ -201,7 +201,7 @@ Vytvořili jste definice propojené služby a kanálu v souborech JSON. Teď vyt
     ```powershell
     $pipelineName = "MySparkOnDemandPipeline" # Name of the pipeline
     ```
-2. Spusťte **PowerShell**. Nechte prostředí Azure PowerShell otevřené až do konce tohoto kurzu Rychlý start. Pokud ho zavřete a znovu otevřete, bude potřeba tyto příkazy spustit znovu. Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, vyberte oblasti, které vás zajímají na následující stránce, a pak rozbalte položku **Analytics** a vyhledejte **Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+2. Spusťte **PowerShell**. Nechte prostředí Azure PowerShell otevřené až do konce tohoto kurzu Rychlý start. Pokud ho zavřete a znovu otevřete, bude potřeba tyto příkazy spustit znovu. Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
     Spusťte následující příkaz a zadejte uživatelské jméno a heslo, které používáte k přihlášení na web Azure Portal:
         
@@ -218,7 +218,7 @@ Vytvořili jste definice propojené služby a kanálu v souborech JSON. Teď vyt
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
     ```  
-3. Vytvořte skupinu prostředků: ADFTutorialResourceGroup. 
+3. Vytvořte skupinu prostředků ADFTutorialResourceGroup. 
 
     ```powershell
     New-AzResourceGroup -Name $resourceGroupName -Location "East Us" 
@@ -252,7 +252,7 @@ Vytvořili jste definice propojené služby a kanálu v souborech JSON. Teď vyt
     
 ## <a name="start-and-monitor-a-pipeline-run"></a>Spuštění kanálu a jeho monitorování  
 
-1. Zahajte spuštění kanálu. Zaznamená se také ID spuštění kanálu pro budoucí monitorování.
+1. Zahájení spuštění kanálu Zaznamená se také ID spuštění kanálu pro budoucí monitorování.
 
     ```powershell
     $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName  

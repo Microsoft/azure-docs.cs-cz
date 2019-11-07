@@ -1,5 +1,5 @@
 ---
-title: Indexování tabulek v Azure SQL Data Warehouse | Microsoft Azure
+title: Indexování tabulek
 description: Doporučení a příklady pro indexování tabulek v Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,13 +10,13 @@ ms.subservice: development
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: 4d51bd6906a8299a25fe50ca817b1a2b6082ab91
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 079891824bf71caf1ebfa575833de650a55ed5be
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479847"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685453"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>Indexování tabulek v SQL Data Warehouse
 
@@ -24,7 +24,7 @@ Doporučení a příklady pro indexování tabulek v Azure SQL Data Warehouse.
 
 ## <a name="index-types"></a>Typy indexů
 
-SQL Data Warehouse nabízí několik možností indexování včetně [clusterovaných indexů columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview), [clusterovaných indexů a](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)neclusterovaných indexů a možnost bez indexu, [](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)která se také označuje jako halda.  
+SQL Data Warehouse nabízí několik možností indexování včetně [clusterovaných indexů columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview), [clusterovaných indexů a neclusterovaných indexů](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)a možnost bez indexu, která se také označuje jako [halda](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes).  
 
 Chcete-li vytvořit tabulku s indexem, přečtěte si dokumentaci k [Create Table (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) .
 
@@ -154,7 +154,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 
 Jakmile spustíte dotaz, můžete začít se podívat na data a analyzovat výsledky. V této tabulce je vysvětleno, co se má v analýze skupiny řádků Hledat.
 
-| Sloupec | Jak používat tato data |
+| Column | Jak používat tato data |
 | --- | --- |
 | [table_partition_count] |Pokud je tabulka rozdělená na oddíly, může se stát, že budete chtít zobrazit větší počet otevřených skupin řádků. Každý oddíl v distribuci se může teoreticky používat k přidružení otevřené skupiny řádků. Přiložte to do vaší analýzy. Malá tabulka, která byla rozdělená na oddíly, by mohla být optimalizovaná tak, že zcela odebere oddíly, protože by to mohlo zlepšit komprimaci. |
 | [row_count_total] |Celkový počet řádků tabulky Pomocí této hodnoty můžete například vypočítat procento řádků v komprimovaném stavu. |
@@ -206,7 +206,7 @@ Dávkové operace aktualizace a vložení, které přesahují hromadnou prahovou
 
 Malé zátěže, které se flowují do SQL Data Warehouse, se také někdy označují jako trickle zatížení. Typicky představují skoro konstantní datový proud dat zpracovávaných systémem. Vzhledem k tomu, že je tento datový proud blízko nepřetržitě, není objem řádků obzvláště velký. Častěji než data jsou výrazně pod prahovou hodnotou nutnou pro přímé zatížení ve formátu columnstore.
 
-V těchto situacích je často lepší nakládat data jako první v úložišti objektů BLOB v Azure a nechat si je shromáždit před načtením. Tato technika se často označuje jako mikrodávkování.
+V těchto situacích je často lepší nakládat data jako první v úložišti objektů BLOB v Azure a nechat si je shromáždit před načtením. Tato technika se často označuje jako *mikrodávkování*.
 
 ### <a name="too-many-partitions"></a>Příliš mnoho oddílů
 
@@ -216,7 +216,7 @@ Po načtení tabulek s některými daty pomocí následujících kroků identifi
 
 ## <a name="rebuilding-indexes-to-improve-segment-quality"></a>Nové sestavení indexů pro zlepšení kvality segmentu
 
-### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>Krok 1: Identifikovat nebo vytvořit uživatele, který používá správnou třídu prostředků
+### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>Krok 1: identifikace nebo vytvoření uživatele, který používá správnou třídu prostředků
 
 Jedním z rychlých způsobů, jak okamžitě vylepšit kvalitu segmentů, je znovu sestavit index.  SQL vrácený výše uvedeným zobrazením vrátí příkaz ALTER INDEX Rebuild, který lze použít k opětovnému sestavení indexů. Při opětovném sestavování indexů se ujistěte, že přidělíte dostatek paměti relaci, která znovu sestaví index.  Provedete to tak, že zvýšíte třídu prostředků uživatele, který má oprávnění k opětovnému sestavení indexu v této tabulce do doporučeného minima.
 
@@ -226,7 +226,7 @@ Níže je uveden příklad, jak přidělit uživateli více paměti tím, že zv
 EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ```
 
-### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Krok 2: Opětovné sestavení clusterovaných indexů columnstore s vyšším uživatelem třídy prostředků
+### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Krok 2: opětovné sestavení clusterovaných indexů columnstore s vyšším uživatelským třídou prostředků
 
 Přihlaste se jako uživatel z kroku 1 (například LoadUser), který teď používá vyšší třídu prostředků, a spusťte příkazy ALTER INDEX. Ujistěte se, že tento uživatel má oprávnění ALTER pro tabulky, ve kterých je index znovu sestaven. Tyto příklady ukazují, jak znovu sestavit celý index columnstore nebo jak znovu sestavit jeden oddíl. Ve velkých tabulkách je praktické znovu sestavovat indexy v jednom oddílu.
 
@@ -252,9 +252,9 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Nové sestavení indexu v SQL Data Warehouse je operace offline.  Další informace o opětovném sestavení indexů naleznete v části ALTER INDEX Rebuild v tématu Defragmentace indexů [columnstore](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)a v článku [ALTER index](/sql/t-sql/statements/alter-index-transact-sql).
+Nové sestavení indexu v SQL Data Warehouse je operace offline.  Další informace o opětovném sestavení indexů naleznete v části ALTER INDEX Rebuild v tématu [Defragmentace](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)indexů columnstore a v článku [ALTER index](/sql/t-sql/statements/alter-index-transact-sql).
 
-### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Krok 3: Vylepšení kvality clusterovaných segmentů columnstore
+### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Krok 3: ověření kvality segmentu clusterovaného v clusteru
 
 Znovu spusťte dotaz, který identifikoval tabulku s nízkou kvalitou segmentů, a ověřte, že kvalita segmentu je vylepšená.  Pokud se kvalita segmentu nezlepšila, může to být, že řádky v tabulce jsou velmi velké.  Zvažte použití vyšší třídy prostředků nebo DWU při opakovaném sestavování indexů.
 
@@ -285,6 +285,6 @@ ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [
 
 Další podrobnosti o opětovném vytvoření oddílů pomocí CTAS naleznete v tématu [using partitions in SQL Data Warehouse](sql-data-warehouse-tables-partition.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o vývoji tabulek najdete v tématu [vývoj tabulek](sql-data-warehouse-tables-overview.md).

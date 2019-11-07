@@ -1,6 +1,6 @@
 ---
 title: Kurz – konfigurace clusteru ve službě Azure HDInsight pomocí Ansible
-description: Naučte se používat Ansible k vytvoření a změně velikosti Azure HDInsight.
+description: Naučte se používat Ansible ke konfiguraci, změně velikosti a odstranění clusteru Azure HDInsight.
 keywords: Ansible, Azure, DevOps, bash, PlayBook, Apache Hadoop, HDInsight
 ms.topic: tutorial
 ms.service: ansible
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: ad17e6ff4cbf5b583e3a4be410847c1349c9edce
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: ce4723a9dbe952f0112b7e24c3e361fd2f414374
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241956"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614405"
 ---
 # <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>Kurz: konfigurace clusteru ve službě Azure HDInsight pomocí Ansible
 
@@ -30,7 +30,7 @@ ms.locfileid: "72241956"
 > * Změna velikosti clusteru
 > * Odstranění clusteru
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
@@ -144,7 +144,7 @@ Dokončení vytvoření instance může trvat několik minut.
 
 Po vytvoření clusteru je jediným nastavením, které můžete změnit, počet pracovních uzlů. 
 
-PlayBook kód v této části zvýší počet pracovních uzlů tím, že aktualizuje `target_instance_count` v rámci `workernode`.
+PlayBook kód v této části zvyšuje počet pracovních uzlů tím, že aktualizuje `target_instance_count` v rámci `workernode`.
 
 ```yml
 - name: Resize cluster

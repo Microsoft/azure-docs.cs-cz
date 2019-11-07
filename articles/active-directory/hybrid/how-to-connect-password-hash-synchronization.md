@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcc704e7027903a1ede14c787a64c35d6b5fd9c0
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 1d8caafe312c123a9d572e9a5f4c5cf64a05f7ea
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373465"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721036"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí Azure AD Connect synchronizace
 Tento článek poskytuje informace, které potřebujete k synchronizaci uživatelských hesel z místní instance služby Active Directory s instancí cloudové Azure Active Directory (Azure AD).
@@ -32,7 +32,7 @@ Pokud chcete synchronizovat heslo, Azure AD Connect Sync extrahuje hodnotu hash 
 
 Skutečný tok dat procesu synchronizace hodnot hash hesel je podobný synchronizaci uživatelských dat. Hesla jsou ale synchronizovaná častěji než standardní okno synchronizace adresářů pro jiné atributy. Proces synchronizace hodnot hash hesel se spouští každé 2 minuty. Frekvence tohoto procesu se nedá změnit. Při synchronizaci hesla přepíše existující heslo cloudu.
 
-Při prvním povolení funkce synchronizace hodnot hash hesel provádí počáteční synchronizaci hesel všech uživatelů v oboru. Nelze explicitně definovat podmnožinu hesel uživatelů, které chcete synchronizovat.
+Při prvním povolení funkce synchronizace hodnot hash hesel provádí počáteční synchronizaci hesel všech uživatelů v oboru. Nelze explicitně definovat podmnožinu hesel uživatelů, které chcete synchronizovat. Pokud však existuje více konektorů, je možné zakázat synchronizaci hodnot hash hesel pro některé konektory, ale ne jiné pomocí rutiny [set-ADSyncAADPasswordSyncConfiguration](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant) .
 
 Když změníte místní heslo, aktualizované heslo se synchronizuje častěji během několika minut.
 Funkce synchronizace hodnot hash hesel automaticky opakuje neúspěšné pokusy o synchronizaci. Pokud při pokusu o synchronizaci hesla dojde k chybě, do prohlížeče událostí se zaznamená chyba.
@@ -102,15 +102,15 @@ Pokud chcete povolit funkci EnforceCloudPasswordPolicyForPasswordSyncedUsers, sp
 
 `Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers  $true`
 
-Po povolení Azure AD nepřejde ke každému synchronizovanému uživateli, aby z atributu PasswordPolicies odebral hodnotu `DisablePasswordExpiration`. Místo toho je hodnota nastavená na `None` během příštího změny hesla pro každého uživatele při dalším změně hesla v místní službě AD.  
+Po povolení Azure AD nepřejde ke každému synchronizovanému uživateli, aby z atributu PasswordPolicies odebral hodnotu `DisablePasswordExpiration`. Místo toho je hodnota nastavená na `None` při příští synchronizaci hesla pro každého uživatele při dalším změně hesla v místní službě AD.  
 
-Doporučuje se povolit EnforceCloudPasswordPolicyForPasswordSyncedUsers před povolením synchronizace hodnot hash hesel, aby počáteční synchronizace hodnot hash hesel nepřidala hodnotu `DisablePasswordExpiration` do atributu PasswordPolicies pro uživatele.
+Doporučuje se povolit EnforceCloudPasswordPolicyForPasswordSyncedUsers před tím, než povolíte synchronizaci hodnot hash hesel, takže počáteční synchronizace hodnot hash hesel nepřidá hodnotu `DisablePasswordExpiration` do atributu PasswordPolicies pro uživatele.
 
 Výchozí zásady hesel Azure AD vyžadují, aby uživatelé změnili hesla každých 90 dní. Pokud je vaše zásada ve službě AD také 90 dní, obě tyto zásady by se měly shodovat. Pokud ale zásada AD není 90 dní, můžete aktualizovat zásady hesel Azure AD tak, aby odpovídaly pomocí příkazu Set-MsolPasswordPolicy prostředí PowerShell.
 
 Azure AD podporuje pro každou registrovanou doménu samostatné zásady vypršení platnosti hesla.
 
-Upozornění: Pokud jsou v Azure AD synchronizované účty, u kterých je potřeba mít hesla bez vypršení platnosti, musíte explicitně přidat hodnotu `DisablePasswordExpiration` do atributu PasswordPolicies objektu User v Azure AD.  To můžete provést spuštěním následujícího příkazu.
+Upozornění: Pokud jsou v Azure AD synchronizované účty, u kterých je potřeba mít hesla bez vypršení platnosti, musíte explicitně přidat `DisablePasswordExpiration` hodnoty do atributu PasswordPolicies objektu User v Azure AD.  To můžete provést spuštěním následujícího příkazu.
 
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 

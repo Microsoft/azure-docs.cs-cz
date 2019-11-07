@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: memildin
-ms.openlocfilehash: 7e45dffd15cdf2acf15c7d46ed0cf42fc5997a6a
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: c69352b8ff11edfce8bd800a0d3aad4584557572
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244563"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621349"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Detekce hrozeb pro datové služby v Azure Security Center
 
@@ -29,18 +29,18 @@ ms.locfileid: "72244563"
 
 Detekce hrozeb SQL identifikuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití. 
 
-|Výstraha|Description|
+|Výstrahy|Popis|
 |---|---|
 |**Zranitelnost vůči injektáže SQL**|Aplikace vygenerovala v databázi chybný příkaz SQL. To může znamenat možnou zranitelnost vůči útokům prostřednictvím injektáže SQL. Existují dva možné důvody chybného příkazu. Závada v kódu aplikace může být vytvořena v chybném příkazu jazyka SQL. Nebo, kód aplikace nebo uložené procedury neopravily uživatelský vstup při vytváření chybného příkazu SQL, který lze zneužít pro vkládání SQL.|
 |**Potenciální injektáže SQL**|K aktivnímu zneužití došlo v případě, že je zjištěná aplikace zranitelná pomocí injektáže SQL. To znamená, že se útočník pokouší vložit škodlivé příkazy SQL pomocí ohroženého kódu aplikace nebo uložených procedur.|
-|**Přístup z neobvyklého umístění**|Došlo ke změně vzoru přístupu pro SQL Server, kdy se někdo přihlásil k serveru z neobvyklého zeměpisného umístění. V některých případech výstraha detekuje legitimní akci (nová aplikace nebo údržba pro vývojáře). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec nebo externí útočník).|
-|**Přístup z neznámého objektu zabezpečení**|Došlo ke změně vzoru přístupu pro SQL Server. Někdo se k serveru přihlásil pomocí neobvyklého objektu zabezpečení (uživatel). V některých případech výstraha detekuje legitimní akci (nová aplikace nebo údržba pro vývojáře). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec nebo externí útočník).|
-|**Přístup z potenciálně škodlivé aplikace**|Pro přístup k databázi byla použita potenciálně škodlivá aplikace. V některých případech výstraha detekuje testování průniku v akci. V jiných případech výstraha detekuje útok, který využívá běžné nástroje.|
-|**Pověření hrubou silou SQL**|Došlo k neobvyklému vysokému počtu neúspěšných přihlášení s různými přihlašovacími údaji. V některých případech výstraha detekuje testování průniku v akci. V jiných případech výstraha detekuje útok hrubou silou.|
+|**Přístup z neobvyklého umístění**|Došlo ke změně vzoru přístupu pro SQL Server, kdy se někdo přihlásil k serveru z neobvyklého zeměpisného umístění. V některých případech výstraha detekuje legitimní akci (nová aplikace nebo údržba prováděná vývojářem). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec nebo externí útočník).|
+|**Přístup z neznámého objektu zabezpečení**|Došlo ke změně vzoru přístupu pro SQL Server. Někdo se k serveru přihlásil pomocí neobvyklého objektu zabezpečení (uživatel). V některých případech výstraha detekuje legitimní akci (nová aplikace nebo údržba prováděná vývojářem). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec nebo externí útočník).|
+|**Přístup z potenciálně škodlivé aplikace**|Pro přístup k databázi byla použita potenciálně škodlivá aplikace. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok, který využívá běžné nástroje.|
+|**Pověření hrubou silou SQL**|Došlo k neobvyklému vysokému počtu neúspěšných přihlášení s různými přihlašovacími údaji. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok hrubou silou.|
 
 Další informace o výstrahách detekce hrozeb SQL najdete v tématu [Azure SQL Database detekce hrozeb](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview). Konkrétně si přečtěte část výstrahy detekce hrozeb. Podívejte se také na to, [jak Azure Security Center pomáhá odhalit cyberattack](https://azure.microsoft.com/blog/how-azure-security-center-helps-reveal-a-cyberattack/) a zobrazit příklad toho, jak Security Center při zjišťování útoku používali škodlivou detekci aktivit SQL.
 
-## Pamì<a name="azure-storage"></a>
+## Azure Storage<a name="azure-storage"></a>
 
 >[!NOTE]
 > Rozšířená ochrana před internetovými útoky pro úložiště je aktuálně dostupná jenom pro úložiště objektů BLOB.
@@ -51,9 +51,9 @@ Security Center analyzuje diagnostické protokoly žádostí o čtení, zápis a
 
 > [!div class="mx-tableFixed"]
 
-|Výstraha|Description|
+|Výstrahy|Popis|
 |---|---|
-|**Neobvyklá anomálie přístupu k poloze**|Ukázková Analýza provozu v síti zjistila komunikaci neobvyklé odchozího protokol RDP (Remote Desktop Protocol) (RDP), která pochází z prostředku ve vašem nasazení. Tato aktivita se pro toto prostředí považuje za neobvyklou. Může to znamenat, že došlo k ohrožení zabezpečení prostředku a teď se používá k útoku hrubou silou na externí koncový bod RDP. Upozorňujeme, že tento typ aktivity může způsobit, že vaše IP adresa bude označená jako škodlivá externími entitami.|
+|**Neobvyklá anomálie přístupu k poloze**|Ukázková Analýza provozu v síti zjistila komunikaci neobvyklé odchozího protokol RDP (Remote Desktop Protocol) (RDP), která pochází z prostředku ve vašem nasazení. Tato aktivita se pro toto prostředí považuje za neobvyklou. Může to znamenat, že došlo k ohrožení zabezpečení prostředku a teď se používá k útoku hrubou silou na externí koncový bod RDP. Tento typ aktivity může způsobit, že vaše IP adresa bude označená jako škodlivá externími entitami.|
 |**Anomálie přístupu k aplikacím**|Indikuje, že se k tomuto účtu úložiště přistupovala neobvyklá aplikace. Možnou příčinou je, že útočník získal k vašemu účtu úložiště pomocí nové aplikace.|
 |**Anomálie anonymního přístupu**|Indikuje, že došlo ke změně vzoru přístupu k účtu úložiště. K účtu se například přistupuje anonymně (bez ověřování), které se ve srovnání s nedávným vzorem přístupu na tomto účtu neočekávalo. Možnou příčinou je, že útočník zneužije veřejný přístup pro čtení kontejneru, který obsahuje úložiště objektů BLOB.|
 |**Anomálie pro mandát**|Indikuje, že se tento účet úspěšně přistupoval z IP adresy, která se označuje jako aktivní odesílací uzel systému (anonymizace proxy server). Závažnost této výstrahy je považována za použitý typ ověřování (pokud existuje) a zda se jedná o první případ takového přístupu. Možnou příčinou může být útočník, který získal účet úložiště pomocí systému pro práci, nebo legitimního uživatele, který získal účet úložiště pomocí systému.|
@@ -63,6 +63,7 @@ Security Center analyzuje diagnostické protokoly žádostí o čtení, zápis a
 |**Anomálie přístupu k oprávněním**|Indikuje, že oprávnění k přístupu tohoto kontejneru úložiště se změnila neobvyklým způsobem. Možnou příčinou je to, že útočník změnil oprávnění kontejneru pro oslabení stav zabezpečení nebo získání trvalosti.|
 |**Anomálie přístupu ke kontrole**|Označuje, že přístupová oprávnění účtu úložiště byla v porovnání s poslední aktivitou tohoto účtu prověřena neobvyklým způsobem. Možnou příčinou je, že útočník provedl rekognoskace k budoucímu útoku.|
 |**Anomálie průzkumu dat**|Označuje, že objekty blob nebo kontejnery v účtu úložiště jsou v porovnání s poslední aktivitou tohoto účtu vyhodnoceny neobvyklým způsobem. Možnou příčinou je, že útočník provedl rekognoskace k budoucímu útoku.|
+|**Potenciální nahrání malwaru**|Indikuje, že se do účtu úložiště nahrál objekt BLOB obsahující potenciální malware. Možné příčiny můžou zahrnovat úmyslné nahrání malwaru útočníkem nebo neúmyslné nahrání potenciálně škodlivého objektu BLOB oprávněným uživatelem.|
 
 >[!NOTE]
 >Rozšířená ochrana před internetovými útoky pro úložiště není v současnosti dostupná v oblastech cloudu Azure pro státní správu a svrchované oblasti.
@@ -73,7 +74,7 @@ Další informace o výstrahách pro úložiště najdete v tématu [Rozšířen
 
 Následující výstrahy jsou generovány neobvyklými a potenciálně škodlivými pokusy o přístup k účtům Azure Cosmos DB nebo jejich zneužití:
 
-|Výstraha|Description|
+|Výstrahy|Popis|
 |---|---|
 |**Přístup z neobvyklého umístění**|Indikuje, že došlo ke změně vzoru přístupu k účtu Azure Cosmos DB. Někdo k tomuto účtu přistupoval z neznámé IP adresy v porovnání s poslední aktivitou. K účtu byl přidaný útočník nebo oprávněný uživatel k němu přistupoval z nového a neobvyklého zeměpisného umístění. Příkladem druhé z nich je Vzdálená údržba z nové aplikace nebo vývojáře.|
 |**Neobvyklé exfiltrace dat**|Indikuje, že došlo ke změně vzoru extrakce dat z Azure Cosmos DB účtu. Někdo v porovnání s poslední aktivitou extrahovali neobvyklý objem dat. Útočník mohl extrahovat velké množství dat z databáze Azure Cosmos DB (například exfiltrace nebo únik dat nebo neoprávněný přenos dat). Nebo legitimní uživatel nebo aplikace mohl extrahovat neobvyklé množství dat z kontejneru (například pro aktivitu zálohování údržby).|

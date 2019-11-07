@@ -1,22 +1,22 @@
 ---
-title: 'Kurz: Vytvoření webové aplikace Node.js pomocí sady JavaScript SDK ke správě dat SQL API služby Azure Cosmos DB'
+title: 'Kurz: Vytvoření webové aplikace Node.js s využitím sady JavaScript SDK pro správu dat rozhraní SQL API služby Azure Cosmos DB'
 description: Tento kurz k Node. js popisuje, jak pomocí Microsoft Azure Cosmos DB ukládat data a přistupovat k nim z webové aplikace Node. js Express hostované na Web Apps funkce Microsoft Azure App Service.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 08/06/2019
+ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 0f410e06e1f5b9ae3b5319c4ff63f9632a2159dc
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 8390520320566907e8aaef709a085a71e8c8e4d6
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989453"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720827"
 ---
-# <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Kurz: Sestavení webové aplikace Node. js pomocí sady JavaScript SDK pro správu účtu rozhraní SQL API v Azure Cosmos DB 
+# <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Kurz: Vytvoření webové aplikace Node. js pomocí sady JavaScript SDK pro správu účtu rozhraní SQL API v Azure Cosmos DB 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -51,7 +51,7 @@ Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte n
 * Nainstalujte [Git][Git] na místní pracovní stanici.
 
 ## <a name="_Toc395637761"></a>Vytvoření účtu Azure Cosmos DB
-Začněme vytvořením účtu služby Azure Cosmos DB. Pokud již účet máte nebo pokud používáte emulátor Azure Cosmos DB pro tento kurz, můžete přeskočit na [krok 2: Vytvořte novou aplikaci](#_Toc395783178)Node. js.
+Začněme vytvořením účtu služby Azure Cosmos DB. Pokud již účet máte nebo pokud používáte pro účely tohoto kurzu emulátor služby Azure Cosmos DB, můžete přeskočit na [Krok 2: Vytvoření nové aplikace Node.js](#_Toc395783178).
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -93,7 +93,7 @@ Nyní se naučíme, jak vytvořit projekt Basic Hello World Node. js pomocí roz
 
 Soubor **package.json** je jedním ze souborů vytvořených v kořenu projektu. Tento soubor obsahuje seznam dalších modulů, které aplikace Node.js vyžaduje. Až budete tuto aplikaci nasazovat v Azure, tento soubor se použije k vyhodnocení, které moduly se musí v Azure pro podporu vaší aplikace nainstalovat. Pro účely tohoto kurzu nainstalujte další dva balíčky.
 
-1. Nainstalujte modul Azure/Cosmos prostřednictvím npm.  **\@** 
+1. Nainstalujte **\@modul Azure/Cosmos** prostřednictvím npm. 
 
    ```bash
    npm install @azure/cosmos
@@ -103,7 +103,7 @@ Soubor **package.json** je jedním ze souborů vytvořených v kořenu projektu.
 Dokončili jste počáteční nastavení a konfiguraci a teď napíšete kód, který potřebuje aplikace seznamu úkolů ke komunikaci se službou Azure Cosmos DB.
 
 ### <a name="create-the-model"></a>Vytvoření modelu
-1. V kořenovém adresáři adresáře projektu vytvořte nový adresář s názvem Models.  
+1. V kořenovém adresáři adresáře projektu vytvořte nový adresář s názvem **Models**.  
 
 2. V adresáři **models** vytvořte nový soubor s názvem **taskDao.js**. Tento soubor obsahuje kód potřebný k vytvoření databáze a kontejneru. Definuje také metody pro čtení, aktualizaci, vytváření a hledání úloh v Azure Cosmos DB. 
 
@@ -437,7 +437,7 @@ Druhý formulář obsahuje dvě vstupní pole a tlačítko, které umožňuje vy
 
 Teď, když jste sestavili aplikaci, ji můžete spustit místně pomocí následujících kroků:  
 
-1. Pokud chcete aplikaci otestovat na místním počítači, spusťte `npm start` v terminálu, aby se spustila vaše aplikace, a pak [http://localhost:3000](http://localhost:3000) aktualizujte stránku prohlížeče. Stránka by teď měla vypadat jako na následujícím snímku obrazovky:
+1. K otestování aplikace na místním počítači spusťte `npm start` v terminálu a spusťte aplikaci a aktualizujte [http://localhost:3000](http://localhost:3000) stránku prohlížeče. Stránka by teď měla vypadat jako na následujícím snímku obrazovky:
    
     ![Snímek obrazovky aplikace Seznam úkolů v okně prohlížeče](./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Příprava Azure na zotavení po havárii místních počítačů pomocí Azure Site Recovery
+title: Příprava Azure na místní zotavení po havárii pomocí Azure Site Recovery
 description: Zjistěte, jak připravit Azure na zotavení po havárii místních počítačů pomocí Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 32aa2c8f4c97f247bfcff5fc82a3f810b8005591
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1ec668fac087773001ca401eefb5ca8bc10ea2b8
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488565"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620595"
 ---
-# <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Příprava prostředků Azure na zotavení po havárii místních počítačů
+# <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Příprava Azure na místní zotavení po havárii do Azure
 
 Tento článek popisuje, jak připravit prostředky a součásti Azure tak, aby bylo možné nastavit zotavení po havárii místních virtuálních počítačů VMware, virtuálních počítačů Hyper-V nebo fyzických serverů s Windows/Linux do Azure pomocí služby [Azure Site Recovery](site-recovery-overview.md) .
 
@@ -79,7 +79,7 @@ Místní počítače se replikují do Azure Managed disks. Když dojde k převze
 7. V části **umístění**vyberte stejnou oblast, ve které byl vytvořen Recovery Services trezor. V našem kurzu je to **západní Evropa**. Síť musí být ve stejné oblasti jako trezor.
 8. Do pole **Rozsah adres**zadejte rozsah sítě. Používáme **10.1.0.0/24**a nepoužívám podsíť.
 9. Ponecháváme výchozí možnosti základní ochrany DDoS Protection bez koncového bodu služby nebo brány firewall v síti.
-9. Vyberte **Create** (Vytvořit).
+9. Vyberte **Vytvořit**.
 
    ![Vytvoření virtuální sítě](media/tutorial-prepare-azure/create-network.png)
 

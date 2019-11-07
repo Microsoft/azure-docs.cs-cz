@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd0829afca05058892d3a0ceeb50c9955d792dc3
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: d106e803fdef4f054b7e4717ba59a43359d1d68a
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72517061"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720303"
 ---
 # <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Stažení seznamu uživatelů (Preview) na portálu Azure Active Directory
 
@@ -31,8 +31,9 @@ Pokud si chcete stáhnout seznam uživatelů z centra pro správu Azure AD, mus�
 ## <a name="to-download-a-list-of-users"></a>Stažení seznamu uživatelů
 
 1. [Přihlaste se ke svojí organizaci Azure AD](https://aad.portal.azure.com) pomocí účtu správce uživatele v organizaci.
-1. V Azure AD vyberte **uživatelé** > **Stáhnout uživatele**.
-1. Na stránce **Stáhnout uživatele** vyberte možnost **Spustit** , pokud chcete zobrazit soubor CSV s výpisem vlastností profilu uživatele. Pokud dojde k chybám, můžete si stáhnout a zobrazit soubor výsledků na stránce s výsledky hromadné operace. Soubor obsahuje důvod každé chyby.
+2. Přejděte na Azure Active Directory > uživatelé. Pak vyberte uživatele, které chcete zahrnout do stahování, a to tak, že zaškrtnete políčko v levém sloupci vedle každého uživatele. Poznámka: v současné době neexistuje žádný způsob, jak vybrat všechny uživatele k exportu. Každé z nich musí být vybráno jednotlivě.
+3. V Azure AD vyberte **uživatelé** > **Stáhnout uživatele**.
+4. Na stránce **Stáhnout uživatele** vyberte možnost **Spustit** , pokud chcete zobrazit soubor CSV s výpisem vlastností profilu uživatele. Pokud dojde k chybám, můžete si stáhnout a zobrazit soubor výsledků na stránce s výsledky hromadné operace. Soubor obsahuje důvod každé chyby.
 
    ![Vyberte, kde chcete seznam uživatelů, které chcete stáhnout.](./media/users-bulk-download/bulk-download.png)
 
@@ -41,24 +42,24 @@ Pokud si chcete stáhnout seznam uživatelů z centra pro správu Azure AD, mus�
    Budou zahrnuty následující atributy uživatele: 
 
    - userPrincipalName (Hlavní název uživatele)
-   - DisplayName
-   - Příjmení
-   - Modul
-   - GivenName
+   - displayName
+   - příjmení
+   - modul
+   - givenName
    - Objektu
    - userType
-   - JobTitle
+   - jobTitle
    - Ministerstvo
-   - Programu
-   - AccountEnabled
+   - programu
+   - accountEnabled
    - usageLocation
    - streetAddress
    - state
-   - Krajin
+   - krajin
    - physicalDeliveryOfficeName
    - city
    - Ovládacím
-   - TelephoneNumber
+   - telephoneNumber
    - telefon
    - authenticationPhoneNumber
    - authenticationAlternativePhoneNumber

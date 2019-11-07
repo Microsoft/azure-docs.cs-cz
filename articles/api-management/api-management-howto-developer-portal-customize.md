@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 62fb5552d86a802c3ba0213d99be2f91f21025e2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7547db502056304307094541dcfd2474eda999d8
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472124"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620425"
 ---
 # <a name="access-and-customize-developer-portal"></a>Přístup a přizpůsobení portálu pro vývojáře
 
@@ -40,7 +40,7 @@ Další podrobnosti najdete na portálu pro vývojáře v článku [Přehled por
 > Portál pro vývojáře se v tuto chvíli zavádí na API Management služby.
 > Pokud je vaše služba nově vytvořená nebo se jedná o službu vrstvy vývojářů, měli byste už mít nejnovější verzi. V opačném případě může docházet k problémům (například s funkcí publikování). Zavedení funkce bude dokončeno v pondělí 11. listopadu 2019. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
 - Import a publikování instance služby Azure API Management. Další informace najdete v tématu [Import a publikování](import-and-publish.md) .
@@ -125,7 +125,7 @@ Pokud chcete, aby byl váš portál a jeho nejnovější změny dostupné pro n�
 
 ## <a name="visit-the-published-portal"></a>Navštívit publikovaný portál
 
-Po publikování portálu je možné k němu přistupovat na stejné adrese URL jako panel pro správu, například `https://contoso-api.portal.azure-api.net`. Otevřete ji na nové kartě prohlížeče, aby se zobrazila jako externí návštěvník.
+Po publikování portálu je možné k němu přistupovat na stejné adrese URL jako panel pro správu, například `https://contoso-api.developer.azure-api.net`. Zobrazí se v samostatné relaci prohlížeče (režim procházení anonymním/privátní) jako externí návštěvník.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,5 @@
 ---
-title: Příklad rozhraní příkazového řádku – Vytvoření databáze Azure SQL | Microsoft Docs
+title: Příklad rozhraní příkazového řádku – vytvoření databáze SQL Azure
 description: Pomocí tohoto ukázkového skriptu Azure CLI vytvoříte databázi SQL.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: f6051c5c83f43f20e453b5f87aabb1a80d7a0487
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: aa13e5f245a34387eee5fae48c896163cc2f7c4a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569986"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691705"
 ---
 # <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>Použití rozhraní příkazového řádku k vytvoření jedné databáze Azure SQL a konfiguraci pravidla brány firewall
 
@@ -52,7 +52,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [az sql db create](/cli/azure/sql/db#az-sql-db-create) | Vytvoří izolovanou databázi nebo elastický fond. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

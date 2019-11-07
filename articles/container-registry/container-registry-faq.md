@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: cfa8efe0b73811474b1e50a7d2fb1e9abe9045c6
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 88c4b2065576bd5bdcb29a266bd564c60b0e537c
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286509"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622708"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy týkající se Azure Container Registry
 
@@ -111,7 +111,7 @@ Rozšiřování změn pravidel brány firewall trvá nějakou dobu. Po změně n
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>Návody přístup k HTTP API v2 registru Docker?
 
-ACR podporuje HTTP API v2 v registru Docker. K rozhraním API je možné přistupovat `https://<your registry login server>/v2/`. Příklad: `https://mycontainerregistry.azurecr.io/v2/`
+ACR podporuje HTTP API v2 v registru Docker. Rozhraní API jsou k dispozici na adrese `https://<your registry login server>/v2/`. Příklad: `https://mycontainerregistry.azurecr.io/v2/`
 
 ### <a name="how-do-i-delete-all-manifests-that-are-not-referenced-by-any-tag-in-a-repository"></a>Návody odstranit všechny manifesty, na které není odkazováno pomocí žádné značky v úložišti?
 
@@ -197,8 +197,8 @@ Ano, v Azure Container Registry můžete použít důvěryhodné image, protože
 
 V části `~/.docker/trust/tuf/myregistry.azurecr.io/myrepository/metadata`:
 
-* Veřejné klíče a certifikáty všech rolí (s výjimkou rolí delegování) jsou uložené v `root.json`.
-* Veřejné klíče a certifikáty role delegování jsou uloženy v souboru JSON své nadřazené role (například `targets.json` pro roli `targets/releases`).
+* Veřejné klíče a certifikáty všech rolí (s výjimkou rolí delegování) jsou uloženy v `root.json`.
+* Veřejné klíče a certifikáty role delegování jsou uloženy v souboru JSON své nadřazené role (například `targets.json` pro `targets/releases` roli).
 
 Doporučuje se tyto veřejné klíče a certifikáty ověřit po celkovém ověření TUF, které provádí Docker a notář klient.
 
@@ -253,7 +253,7 @@ Karanténa obrázku je teď funkcí Preview ACR. Můžete povolit karanténní r
 
 ## <a name="diagnostics-and-health-checks"></a>Diagnostika a kontroly stavu
 
-- [Ověření stavu pomocí `az acr check-health`](#check-health-with-az-acr-check-health)
+- [Ověřit stav pomocí `az acr check-health`](#check-health-with-az-acr-check-health)
 - [docker pull se nepovedlo s chybou: NET/http: žádost se zrušila během čekání na připojení (Client. Timeout se překročila při očekávaných hlavičkách).](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
 - [nabízení Docker Push je úspěšné, ale docker pull se nezdaří s chybou: Neautorizováno: vyžadováno ověřování](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
 - [Povolit a získat protokoly ladění démona Docker](#enable-and-get-the-debug-logs-of-the-docker-daemon) 
@@ -263,14 +263,14 @@ Karanténa obrázku je teď funkcí Preview ACR. Můžete povolit karanténní r
 - [Proč Azure Portal nepodaří načíst úložiště nebo značky?](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
 - [Návody shromažďovat trasování http ve Windows?](#how-do-i-collect-http-traces-on-windows)
 
-### <a name="check-health-with-az-acr-check-health"></a>Kontrolovat stav pomocí `az acr check-health`
+### <a name="check-health-with-az-acr-check-health"></a>Ověřit stav pomocí `az acr check-health`
 
 Pokud chcete řešit běžné problémy s prostředím a registrací, přečtěte si téma o [kontrole stavu služby Azure Container Registry](container-registry-check-health.md).
 
 ### <a name="docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers"></a>docker pull se nepovedlo s chybou: NET/http: žádost se zrušila během čekání na připojení (Client. Timeout se překročila při očekávaných hlavičkách).
 
  - Pokud je tato chyba přechodným problémem, pak to bude úspěšné.
- - Pokud `docker pull` průběžně selhává, může to být problém s démonem Docker. Problém se může obecně zmírnit restartováním démona Docker. 
+ - Pokud `docker pull` selžou nepřetržitě, může se jednat o problém s démonem Docker. Problém se může obecně zmírnit restartováním démona Docker. 
  - Pokud se tento problém bude i nadále zobrazovat po restartování procesu Docker, může dojít k potížím s připojením k síti v počítači. Pokud chcete zkontrolovat, jestli je obecná síť v počítači v pořádku, spusťte následující příkaz, který otestuje připojení ke koncovému bodu. Minimální verze `az acr`, která obsahuje tento příkaz kontroly připojení, je 2.2.9. Pokud používáte starší verzi, upgradujte rozhraní příkazového řádku Azure.
  
    ```azurecli
@@ -286,7 +286,7 @@ Pokud chcete řešit běžné problémy s prostředím a registrací, přečtět
 
 ### <a name="docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required"></a>Nabízení Docker Push je úspěšné, ale docker pull se nezdaří s chybou: Neautorizováno: vyžadováno ověřování
 
-K této chybě může dojít v případě, že ve výchozím nastavení je ve verzi Red Hat démona Docker povolená možnost `--signature-verification`. Možnosti démona Docker pro Red Hat Enterprise Linux (RHEL) nebo Fedora můžete ověřit spuštěním tohoto příkazu:
+K této chybě může dojít ve verzi Red Hat démona Docker, kde `--signature-verification` je ve výchozím nastavení povolená. Možnosti démona Docker pro Red Hat Enterprise Linux (RHEL) nebo Fedora můžete ověřit spuštěním tohoto příkazu:
 
 ```bash
 grep OPTIONS /etc/sysconfig/docker
@@ -298,7 +298,7 @@ Například Fedora 28 Server má následující možnosti Docker démon:
 OPTIONS='--selinux-enabled --log-driver=journald --live-restore'
 ```
 
-U `--signature-verification=false` chybí, `docker pull` se nezdařila s chybou podobnou této:
+Pokud `--signature-verification=false` chybí, `docker pull` se nezdařila s chybou podobnou této:
 
 ```bash
 Trying to pull repository myregistry.azurecr.io/myimage ...
@@ -306,7 +306,7 @@ unauthorized: authentication required
 ```
 
 Řešení této chyby:
-1. Přidejte možnost `--signature-verification=false` do konfiguračního souboru démona Docker `/etc/sysconfig/docker`. Například:
+1. Přidejte možnost `--signature-verification=false` do konfiguračního souboru démona Docker `/etc/sysconfig/docker`. Příklad:
 
   ```
   OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
@@ -317,7 +317,7 @@ unauthorized: authentication required
   sudo systemctl restart docker.service
   ```
 
-Podrobnosti o `--signature-verification` můžete najít spuštěním `man dockerd`.
+Podrobnosti o `--signature-verification` lze najít spuštěním `man dockerd`.
 
 ### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Povolit a získat protokoly ladění démona Docker  
 
@@ -350,14 +350,14 @@ Podrobnosti najdete v [dokumentaci k Docker](https://docs.docker.com/engine/admi
     docker run --net=host --ipc=host --uts=host --pid=host -it --security-opt=seccomp=unconfined --privileged --rm -v /:/host alpine /bin/sh
     chroot /host
     ```
-    Teď máte přístup ke všem souborům virtuálního počítače se spuštěným `dockerd`. Protokol je `/var/log/docker.log`.
+    Teď máte přístup ke všem souborům virtuálního počítače, na kterém běží `dockerd`. Protokol je na `/var/log/docker.log`.
 
 ### <a name="new-user-permissions-may-not-be-effective-immediately-after-updating"></a>Nová oprávnění uživatele nemůžou být účinná hned po aktualizaci.
 
 Když udělíte novému instančnímu objektu nová oprávnění (nové role), tato změna se nemusí projevit okamžitě. Existují dva možné důvody:
 
 * Azure Active Directory zpoždění přiřazení role Obvykle je rychlá, ale může trvat několik minut, než se zpoždění šíření.
-* Zpoždění oprávnění na serveru tokenu ACR. Může to trvat až 10 minut. Pro zmírnění rizika můžete `docker logout` a pak znovu ověřit se stejným uživatelem za 1 minutu:
+* Zpoždění oprávnění na serveru tokenu ACR. Může to trvat až 10 minut. Pro zmírnění rizika můžete `docker logout` a pak znovu ověřit se stejným uživatelem po 1 minutě:
 
   ```bash
   docker logout myregistry.azurecr.io
@@ -382,8 +382,8 @@ V současné době ACR nepodporuje odstranění domácích replikací uživateli
 
 ### <a name="authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls"></a>Informace o ověřování nejsou uvedené ve správném formátu při přímém REST API volání.
 
-Může dojít k chybě @no__t 0, zejména pomocí nástroje `curl` s možností `-L`, `--location` (pro následné přesměrování).
-Například načtení objektu BLOB pomocí `curl` s možností `-L` a základní ověřování:
+Může dojít k chybě `InvalidAuthenticationInfo`, zejména pomocí nástroje `curl` s možností `-L``--location` (pro následné přesměrování).
+Například načtení objektu BLOB pomocí `curl` s možností `-L` a základním ověřováním:
 
 ```bash
 curl -L -H "Authorization: basic $credential" https://$registry.azurecr.io/v2/$repository/blobs/$digest
@@ -400,7 +400,7 @@ Time:2019-01-01T00:00:00.0000000Z</Message></Error>
 
 Hlavní příčinou je, že některé implementace `curl` následují při přesměrování pomocí hlaviček původní žádosti.
 
-Chcete-li tento problém vyřešit, je nutné provést přesměrování ručně bez hlaviček. Vytiskněte hlavičky odpovědi s možností `-D -` `curl` a potom rozbalte: hlavičku `Location`:
+Chcete-li tento problém vyřešit, je nutné provést přesměrování ručně bez hlaviček. Vytiskněte hlavičky odpovědi s možností `-D -` `curl` a potom rozbalte: záhlaví `Location`:
 
 ```bash
 redirect_url=$(curl -s -D - -H "Authorization: basic $credential" https://$registry.azurecr.io/v2/$repository/blobs/$digest | grep "^Location: " | cut -d " " -f2 | tr -d '\r')
@@ -420,11 +420,11 @@ Prohlížeč nemusí být schopný odeslat žádost o načtení úložišť nebo
 * Blokování služby AD
 * Chyby služby DNS
 
-Obraťte se prosím na správce sítě nebo Zkontrolujte konfiguraci sítě a připojení. Zkuste spustit `az acr check-health -n yourRegistry` pomocí rozhraní příkazového řádku Azure, abyste zkontrolovali, jestli se vaše prostředí dokáže připojit k Container Registry. Kromě toho můžete také vyzkoušet anonymním nebo soukromou relaci v prohlížeči, abyste se vyhnuli zastaralým mezipaměťm nebo souborům cookie v prohlížeči.
+Obraťte se prosím na správce sítě nebo Zkontrolujte konfiguraci sítě a připojení. Zkuste spustit `az acr check-health -n yourRegistry` pomocí rozhraní příkazového řádku Azure CLI a ověřte, jestli se vaše prostředí dokáže připojit k Container Registry. Kromě toho můžete také vyzkoušet anonymním nebo soukromou relaci v prohlížeči, abyste se vyhnuli zastaralým mezipaměťm nebo souborům cookie v prohlížeči.
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Návody shromažďovat trasování http ve Windows?
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
 - Povolit dešifrování HTTPS v Fiddler: <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - Povolit Docker pro použití proxy serveru prostřednictvím uživatelského rozhraní Docker: <https://docs.docker.com/docker-for-windows/#proxies>
@@ -448,6 +448,8 @@ Nakonfigurujte proxy Docker na výstup předchozího příkazu a portu 8888 (nap
 
 - [Návody Batch zruší spuštění?](#how-do-i-batch-cancel-runs)
 - [Návody do příkazu AZ ACR Build zahrnout složku. Git?](#how-do-i-include-the-git-folder-in-az-acr-build-command)
+- [Podporují úlohy GitLab pro aktivační události zdroje?](#does-tasks-support-gitlab-for-source-triggers)
+- [Jakou službu správy úložišť Git podporují úlohy?](#what-git-repository-management-service-does-tasks-support)
 
 ### <a name="how-do-i-batch-cancel-runs"></a>Návody Batch zruší spuštění?
 
@@ -460,13 +462,32 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 ### <a name="how-do-i-include-the-git-folder-in-az-acr-build-command"></a>Návody do příkazu AZ ACR Build zahrnout složku. Git?
 
-Pokud předáte do příkazu `az acr build` místní zdrojovou složku, ve výchozím nastavení se složka `.git` z nahraného balíčku vyloučí. Můžete vytvořit soubor `.dockerignore` s následujícím nastavením. Oznamuje příkazu, aby obnovil všechny soubory ve složce `.git` v nahraném balíčku. 
+Pokud předáte do příkazu `az acr build` místní zdrojovou složku, ve výchozím nastavení se z nahraného balíčku vyloučí složka `.git`. Soubor `.dockerignore` můžete vytvořit pomocí následujícího nastavení. Oznamuje příkazu, aby obnovil všechny soubory v rámci `.git` nahraného balíčku. 
 
-```
+```sh
 !.git/**
 ```
 
 Toto nastavení platí také pro příkaz `az acr run`.
+
+### <a name="does-tasks-support-gitlab-for-source-triggers"></a>Podporují úlohy GitLab pro aktivační události zdroje?
+
+V tuto chvíli nepodporujeme GitLab pro aktivační události zdroje.
+
+### <a name="what-git-repository-management-service-does-tasks-support"></a>Jakou službu správy úložišť Git podporují úlohy?
+
+| Služba Git | Zdrojový kontext | Ruční sestavení | Automatické sestavení prostřednictvím aktivační události potvrzení |
+|---|---|---|---|
+| GitHubu | https://github.com/user/myapp-repo.git#mybranch:myfolder | Ano | Ano |
+| Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | Ano | Ano |
+| GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | Ano | Ne |
+| BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | Ano | Ne |
+
+## <a name="run-error-message-troubleshooting"></a>Řešení potíží s chybovou zprávou
+
+| Chybová zpráva | Průvodce odstraňováním potíží |
+|---|---|
+|Pro virtuální počítač se nenakonfiguroval přístup, proto se nenašly žádné odběry.|K tomu může dojít, pokud v ACR úloze používáte `az login --identity`. Jedná se o přechodnou chybu a nastane, když se přiřazení role spravované identity nerozšíří. Počkejte několik sekund, než se znovu pokusí pracovat.|
 
 ## <a name="cicd-integration"></a>Integrace CI/CD
 

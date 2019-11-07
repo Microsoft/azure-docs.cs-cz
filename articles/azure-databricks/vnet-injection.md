@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: 0bb3221c201e6dd4dd17cca8ef7e3ed3331de228
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 5eded3217e96ccc45951acae004d1424e16cb098
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432659"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605672"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network"></a>Nasazení Azure Databricks ve vaší virtuální síti
 
@@ -61,7 +61,7 @@ Všechny odchozí a příchozí přenosy mezi podsítěmi a rovinou ovládacího
 
 Tato část popisuje, jak vytvořit pracovní prostor Azure Databricks v Azure Portal a nasadit ho do vlastní existující virtuální sítě. Služba Azure Databricks aktualizuje virtuální síť se dvěma novými podsítěmi a skupinami zabezpečení sítě pomocí rozsahů CIDR, které poskytujete, prostřednictvím seznamu povolených přenosů příchozích a odchozích podsítí a nasadí pracovní prostor do aktualizované virtuální sítě.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Musíte mít virtuální síť, do které budete nasazovat Azure Databricks pracovní prostor. Můžete použít existující virtuální síť nebo vytvořit novou, ale virtuální síť musí být ve stejné oblasti jako Azure Databricks pracovní prostor, který chcete vytvořit. Pro virtuální síť je vyžadován rozsah CIDR mezi/16-/24.
 
@@ -119,7 +119,7 @@ Pokud tuto šablonu použijete bez použití šablony skupiny zabezpečení sít
 
 ## <a name="whitelisting-subnet-traffic"></a>Seznam povolených přenosů podsítí
 
-Pokud při vytváření skupin zabezpečení sítě nepoužíváte šablony [Azure Portal](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-portal) nebo [Azure Resource Manager](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) , musíte do svých podsítí ručně zařadit do seznamu povolených následujících přenosů.
+Pokud při vytváření skupin zabezpečení sítě nepoužíváte šablony [Azure Portal](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-portal) nebo [Azure Resource Manager](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) , musíte do svých podsítí ručně zařadit do seznamu povolených následujících přenosů.
 
 |Směr|Protocol (Protokol)|Zdroj|Zdrojový port|Cíl|Cílový port|
 |---------|--------|------|-----------|-----------|----------------|
@@ -135,22 +135,22 @@ Povolený provoz v podsíti pomocí následujících IP adres. Pro SQL (metastor
 
 |Oblast Azure Databricks|Služba|Veřejná IP adresa|
 |-----------------------|-------|---------|
-|USA – východ|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.101.152.95/32 </br></br>40.70.58.221/32|
+|Východ USA|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.101.152.95/32 </br></br>40.70.58.221/32|
 |Východ USA 2|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.101.152.95/32 </br></br>40.70.58.221/32|
 |Středoseverní USA|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.101.152.95/32 </br></br>40.70.58.221/32|
 |Střední USA|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.101.152.95/32 </br></br>40.70.58.221/32|
 |Středojižní USA|Řízení překladu roviny ovládacího prvku </br></br>WebApp|40.83.178.242/32 </br></br>40.118.174.12/32|
 |Západní USA|Řízení překladu roviny ovládacího prvku </br></br>WebApp|40.83.178.242/32 </br></br>40.118.174.12/32|
 |Západní USA 2|Řízení překladu roviny ovládacího prvku </br></br>WebApp|40.83.178.242/32 </br></br>40.118.174.12/32|
-|Kanada – střed|Řízení překladu roviny ovládacího prvku </br></br>WebApp|40.85.223.25/32 </br></br>13.71.184.74/32|
+|Střední Kanada|Řízení překladu roviny ovládacího prvku </br></br>WebApp|40.85.223.25/32 </br></br>13.71.184.74/32|
 |Kanada – východ|Řízení překladu roviny ovládacího prvku </br></br>WebApp|40.85.223.25/32 </br></br>13.71.184.74/32|
-|Velká Británie – západ|Řízení překladu roviny ovládacího prvku </br></br>WebApp|51.140.203.27/32 </br></br>51.140.204.4/32|
-|Velká Británie – jih|Řízení překladu roviny ovládacího prvku </br></br>WebApp|51.140.203.27/32 </br></br>51.140.204.4/32|
+|Spojené království – západ|Řízení překladu roviny ovládacího prvku </br></br>WebApp|51.140.203.27/32 </br></br>51.140.204.4/32|
+|Spojené království – jih|Řízení překladu roviny ovládacího prvku </br></br>WebApp|51.140.203.27/32 </br></br>51.140.204.4/32|
 |Západní Evropa|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.100.0.135/32 </br></br>52.232.19.246/32|
 |Severní Evropa|Řízení překladu roviny ovládacího prvku </br></br>WebApp|23.100.0.135/32 </br></br>52.232.19.246/32|
-|Střední Indie|Řízení překladu roviny ovládacího prvku </br></br>WebApp|104.211.89.81/32 </br></br>104.211.101.14/32|
-|Jižní Indie|Řízení překladu roviny ovládacího prvku </br></br>WebApp|104.211.89.81/32 </br></br>104.211.101.14/32|
-|Západní Indie|Řízení překladu roviny ovládacího prvku </br></br>WebApp|104.211.89.81/32 </br></br>104.211.101.14/32|
+|Střed Indie|Řízení překladu roviny ovládacího prvku </br></br>WebApp|104.211.89.81/32 </br></br>104.211.101.14/32|
+|Indie – jih|Řízení překladu roviny ovládacího prvku </br></br>WebApp|104.211.89.81/32 </br></br>104.211.101.14/32|
+|Indie – západ|Řízení překladu roviny ovládacího prvku </br></br>WebApp|104.211.89.81/32 </br></br>104.211.101.14/32|
 |Jihovýchodní Asie|Řízení překladu roviny ovládacího prvku </br></br>WebApp|52.187.0.85/32 </br></br>52.187.145.107/32|
 |Východní Asie|Řízení překladu roviny ovládacího prvku </br></br>WebApp|52.187.0.85/32 </br></br>52.187.145.107/32|
 |Austrálie – východ|Řízení překladu roviny ovládacího prvku </br></br>WebApp|13.70.105.50/32 </br></br>13.75.218.172/32|

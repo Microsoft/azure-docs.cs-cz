@@ -1,86 +1,87 @@
 ---
-title: Ověřování pro Azure SQL Data Warehouse | Dokumentace Microsoftu
-description: Zjistěte, jak provést ověření do služby Azure SQL Data Warehouse pomocí ověřování Azure Active Directory (AAD) nebo SQL Server.
+title: Ověřování
+description: Naučte se ověřovat Azure SQL Data Warehouse pomocí Azure Active Directory (AAD) nebo SQL Server ověřování.
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: julieMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 04/02/2019
-ms.author: kavithaj
+ms.author: jrasnick
 ms.reviewer: igorstan
-ms.openlocfilehash: a3bed9df5b62ce7f2f3df7046357dc4f2458575c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: fda29e432fbd952261893f3c32a4df7b9990ae66
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61475027"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692930"
 ---
 # <a name="authenticate-to-azure-sql-data-warehouse"></a>Ověřování pro Azure SQL Data Warehouse
-Zjistěte, jak provést ověření do služby Azure SQL Data Warehouse pomocí ověřování Azure Active Directory (AAD) nebo SQL Server.
+Naučte se ověřovat Azure SQL Data Warehouse pomocí Azure Active Directory (AAD) nebo SQL Server ověřování.
 
-Pro připojení k SQL Data Warehouse, musíte předat v zabezpečovací přihlašovací údaje pro účely ověřování. Při navazování připojení, určitá nastavení připojení jsou nakonfigurované jako součást vytváření relaci dotazu.  
+Pokud se chcete připojit k SQL Data Warehouse, musíte předat přihlašovací údaje zabezpečení pro účely ověřování. Po navázání připojení jsou určitá nastavení připojení nakonfigurovaná v rámci vytváření relace dotazů.  
 
-Další informace o zabezpečení a jak povolit připojení ke svému datovému skladu naleznete v tématu [zabezpečit databázi ve službě SQL Data Warehouse][Secure a database in SQL Data Warehouse].
+Další informace o zabezpečení a o tom, jak povolit připojení k datovému skladu, najdete v tématu [zabezpečení databáze v SQL Data Warehouse][Secure a database in SQL Data Warehouse].
 
 ## <a name="sql-authentication"></a>Ověřování pomocí SQL
-Pro připojení k SQL Data Warehouse, je třeba zadat následující informace:
+Chcete-li se připojit k SQL Data Warehouse, je nutné zadat následující informace:
 
-* Plně kvalifikovaný název_serveru
-* Zadejte ověřování SQL
+* Plně kvalifikovaný Server servername
+* Zadat ověřování SQL
 * Uživatelské jméno
 * Heslo
-* (Volitelné) i výchozí databáze
+* Výchozí databáze (volitelné)
 
-Ve výchozím nastavení se připojení připojí k *hlavní* databáze a nikoli uživatelské databázi. Pro připojení k uživatelské databázi, můžete to udělat jedním ze dvou kroků:
+Ve výchozím nastavení se připojení připojuje k *Hlavní* databázi, a ne k uživatelské databázi. Pokud se chcete připojit k uživatelské databázi, můžete se rozhodnout, že provedete jednu z následujících akcí:
 
-* Zadejte výchozí databáze při registraci serveru Průzkumníku objektů SQL serveru v sadě SSDT, aplikace SSMS, nebo v připojovacím řetězci vaší aplikace. Například přidejte parametr počáteční katalog pro připojení k rozhraní ODBC.
-* Zvýrazněte uživatelskou databázi před vytvořením relace v SSDT.
+* Určete výchozí databázi při registraci serveru s Průzkumník objektů systému SQL Server v SSDT, SSMS nebo v připojovacím řetězci aplikace. Například zahrňte parametr vlastnost InitialCatalog pro připojení rozhraní ODBC.
+* Než vytvoříte relaci v SSDT, zvýrazněte uživatelskou databázi.
 
 > [!NOTE]
-> Příkaz jazyka Transact-SQL **použití databáze;** není podporována pro změnu databáze pro připojení. Pokyny k připojení k SQL Data Warehouse s rozšířením SSDT, najdete [dotazování pomocí sady Visual Studio] [ Query with Visual Studio] článku.
+> Příkaz Transact-SQL **Use MyDatabase;** není podporován pro změnu databáze pro připojení. Pokyny k připojení k SQL Data Warehouse pomocí SSDT najdete v článku [dotazování pomocí sady Visual Studio][Query with Visual Studio] .
 > 
 > 
 
 ## <a name="azure-active-directory-aad-authentication"></a>Ověřování Azure Active Directory (AAD)
-[Azure Active Directory] [ What is Azure Active Directory] ověřování je mechanismus pro připojení k Microsoft Azure SQL Data Warehouse s využitím identit v Azure Active Directory (Azure AD). Ověřování Azure Active Directory centrálně spravovat identity uživatelů databáze a další služby Microsoftu v jednom centrálním místě. Centrální správa ID zajišťuje centrální místo pro správu uživatelů SQL Data Warehouse a zjednodušuje správu oprávnění. 
+Ověřování [Azure Active Directory][What is Azure Active Directory] je mechanismus připojení k Microsoft Azure SQL Data Warehouse pomocí identit v Azure Active Directory (Azure AD). S ověřováním Azure Active Directory můžete centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu v jednom centrálním umístění. Správa centrálních ID poskytuje jediné místo pro správu SQL Data Warehouse uživatelů a zjednodušuje správu oprávnění. 
 
 ### <a name="benefits"></a>Výhody
-Azure Active Directory k výhodám patří:
+Mezi výhody Azure Active Directory patří:
 
-* Poskytuje alternativu k ověřování serveru SQL Server.
-* Pomáhá zastavit šíření identit uživatelů více databázových serverů.
-* Umožňuje rotace hesla na jednom místě
-* Spravujte oprávnění k databázi pomocí externí skupiny (AAD).
-* Eliminuje ukládat tím, že integrované ověřování Windows a další formy ověřování podporovaných službou Azure Active Directory.
-* Uživatelé databáze k ověření identity na úrovni databáze s omezením použití.
-* Podporuje ověřování založené na tokenech pro aplikace, připojení k SQL Data Warehouse.
-* Podporuje ověřování službou Multi-Factor Authentication pomocí univerzálního ověřování Active Directory pro různé nástroje, včetně [SQL Server Management Studio](../sql-database/sql-database-ssms-mfa-authentication.md) a [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/azure/sql-data-warehouse/toc.json).
+* Představuje alternativu k ověřování SQL Server.
+* Pomáhá zastavit šíření identit uživatelů napříč databázovými servery.
+* Umožňuje rotaci hesel na jednom místě.
+* Spravujte databázová oprávnění pomocí skupin externích (AAD).
+* Eliminuje ukládání hesel povolením integrovaného ověřování systému Windows a dalších forem ověřování, které podporuje Azure Active Directory.
+* Používá uživatele databáze s omezením k ověřování identit na úrovni databáze.
+* Podporuje ověřování založené na tokenech pro aplikace, které se připojují k SQL Data Warehouse.
+* Podporuje službu Multi-Factor Authentication prostřednictvím univerzálního ověřování služby Active Directory pro různé nástroje, včetně [SQL Server Management Studio](../sql-database/sql-database-ssms-mfa-authentication.md) a [SQL Server datových nástrojů](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/azure/sql-data-warehouse/toc.json).
 
 > [!NOTE]
-> Azure Active Directory je pořád relativně nové a má určitá omezení. Ujistěte se, že Azure Active Directory je vhodné pro vaše prostředí, najdete v článku [funkcí Azure AD a omezení][Azure AD features and limitations], konkrétně další aspekty.
+> Azure Active Directory je stále poměrně nové a má určitá omezení. Aby bylo zajištěno, že pro vaše prostředí je Azure Active Directory vhodné, přečtěte si téma [funkce a omezení služby Azure AD][Azure AD features and limitations], konkrétně Další informace.
 > 
 > 
 
 ### <a name="configuration-steps"></a>Postup konfigurace
-Postupujte podle těchto kroků a nakonfigurujte ověřování Azure Active Directory.
+Pomocí těchto kroků můžete nakonfigurovat ověřování Azure Active Directory.
 
-1. Vytvoření a naplnění služby Azure Active Directory
-2. Volitelné: Přidružení nebo změnit služby active directory, která je teď přidružená k předplatnému Azure
-3. Vytvoření správce Azure Active Directory pro službu Azure SQL Data Warehouse.
+1. Vytvoření a naplnění Azure Active Directory
+2. Volitelné: přidružte nebo změňte službu Active Directory, která je aktuálně přidružená k vašemu předplatnému Azure.
+3. Vytvořte správce Azure Active Directory pro Azure SQL Data Warehouse.
 4. Konfigurace klientských počítačů
-5. Vytvořte uživatele databáze s omezením v databázi namapované na identit Azure AD
-6. Připojení k vašemu datovému skladu pomocí identit Azure AD
+5. Umožňuje vytvořit uživatele databáze s omezením v databázi namapované na identity Azure AD.
+6. Připojení k datovému skladu pomocí identit Azure AD
 
-Uživatelé Azure Active Directory nejsou aktuálně zobrazený v Průzkumníku objektů rozšíření SSDT. Jako alternativní řešení, zobrazení uživatelů v [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx).
+Aktuálně Azure Active Directory uživatelé nejsou zobrazeni v Průzkumník objektů SSDT. Alternativním řešením je zobrazit uživatele v zobrazení [Sys. database_principals](https://msdn.microsoft.com/library/ms187328.aspx).
 
-### <a name="find-the-details"></a>Podrobnosti najdete
-* Postup pro konfiguraci a ověřování pomocí Azure Active Directory jsou téměř shodné pro Azure SQL Database a Azure SQL Data Warehouse. Podrobné kroky v tématu [připojení k SQL Database nebo SQL Data Warehouse pomocí Active Directory ověřování služby Azure](../sql-database/sql-database-aad-authentication.md).
-* Vytvořit vlastní databázové role a přidání uživatelů do rolí. Potom udělte různě odstupňovaná oprávnění k rolím. Další informace najdete v tématu [Začínáme s oprávněními modul databáze](https://msdn.microsoft.com/library/mt667986.aspx).
+### <a name="find-the-details"></a>Najít podrobnosti
+* Kroky pro konfiguraci a použití ověřování Azure Active Directory jsou skoro totožné pro Azure SQL Database a Azure SQL Data Warehouse. Postupujte podle podrobných pokynů v tématu [připojení k SQL Database nebo SQL Data Warehouse pomocí Azure Active Directory ověřování](../sql-database/sql-database-aad-authentication.md).
+* Vytvořte vlastní databázové role a přidejte uživatele k rolím. Pak udělte rolím přesnější oprávnění. Další informace najdete v tématu [Začínáme s oprávněním databázového stroje](https://msdn.microsoft.com/library/mt667986.aspx).
 
-## <a name="next-steps"></a>Další postup
-Pokud chcete začít dotazovat na váš datový sklad pomocí sady Visual Studio a dalších aplikací, přečtěte si téma [dotazování pomocí sady Visual Studio][Query with Visual Studio].
+## <a name="next-steps"></a>Další kroky
+Pokud se chcete začít dotazovat na svůj datový sklad pomocí sady Visual Studio a jiných aplikací, najdete informace v článku [Dotazování pomocí sady Visual Studio][Query with Visual Studio].
 
 <!-- Article references -->
 [Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md

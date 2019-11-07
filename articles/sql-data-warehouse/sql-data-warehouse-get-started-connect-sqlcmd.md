@@ -1,5 +1,5 @@
 ---
-title: Připojení ke službě Azure SQL Data Warehouse pomocí sqlcmd | Dokumentace Microsoftu
+title: Připojení pomocí sqlcmd
 description: Pomocí nástroje příkazového řádku Sqlcmd se můžete připojit k Azure SQL Data Warehouse a dotazovat se na ně.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f3b93660fb9f8f3b0bfdddc37105b9e998ed9eee
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: e4b432e0be0cdded5089965b9d272aa82e31bd36
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479509"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685750"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>Připojení k SQL Data Warehouse pomocí sqlcmd
 > [!div class="op_single_selector"]
@@ -29,17 +30,17 @@ ms.locfileid: "68479509"
 
 Pomocí nástroje příkazového řádku [Sqlcmd][sqlcmd] se můžete připojit k Azure SQL Data Warehouse a dotazovat se na ně.  
 
-## <a name="1-connect"></a>1. Připojit
+## <a name="1-connect"></a>1. připojení
 Chcete-li začít s nástrojem [sqlcmd][sqlcmd], otevřete příkazový řádek a zadejte příkaz **sqlcmd** následovaný připojovacím řetězcem pro vaši databázi SQL Data Warehouse. Připojovací řetězec bude muset mít následující parametry:
 
-* **Server (-S):** Server v názvu`>`serveru `<`formuláře. Database.Windows.NET
-* **Databáze (-d):** Název databáze.
-* **Povolit identifikátory v uvozovkách (-I):** Aby bylo možné se připojit k instanci SQL Data Warehouse, musí být povolené identifikátory v uvozovkách.
+* **Server (-S):** Server v následující podobě: `<`název serveru`>`.database.windows.net
+* **Database (-d):** Název databáze
+* **Enable Quoted Identifiers (-I):** Aby bylo možné se připojit k instanci služby SQL Data Warehouse, musí být povolené identifikátory v uvozovkách.
 
 Chcete-li používat ověřování systému SQL Server, je třeba přidat parametry uživatelského jména a hesla:
 
-* **Uživatel (-U):** Uživatel serveru ve formuláři `<``>`
-* **Heslo (-P):** Heslo přidružené k uživateli
+* **User (-U):** Uživatel serveru v následující podobě: `<`Uživatel`>`
+* **Password (-P):** Heslo přidružené k uživateli
 
 Připojovací řetězec může například vypadat následovně:
 
@@ -62,7 +63,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 > 
 > 
 
-## <a name="2-query"></a>2. Dotaz
+## <a name="2-query"></a>2. dotaz
 Po připojení můžete pro instanci zadávat všechny podporované příkazy jazyka Transact-SQL.  V tomto příkladu jsou dotazy zadávány v interaktivním režimu.
 
 ```sql
@@ -82,7 +83,7 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 "SELECT name FROM sys.tables;" | sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I > .\tables.out
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o možnostech dostupných v Sqlcmd najdete v [dokumentaci k nástroji Sqlcmd][sqlcmd] .
 
 <!--Image references-->

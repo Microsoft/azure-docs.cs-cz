@@ -1,5 +1,5 @@
 ---
-title: Přírůstkové kopírování dat pomocí technologie Change Tracking a Azure Data Factory | Dokumentace Microsoftu
+title: 'Přírůstkové kopírování dat pomocí Change Tracking a Azure Data Factory '
 description: 'V tomto kurzu vytvoříte kanál Azure Data Factory, který přírůstkově kopíruje rozdílová data z několika tabulek v místní databázi SQL Serveru do databáze Azure SQL. '
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: 6a71c83a190bd7e88edd5008edef670b32905add
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c754b5755cbab3720ca0ffebc891ce76ce7aebc5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140803"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683513"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Přírůstkové kopírování dat z Azure SQL Database do Azure Blob Storage s využitím informací sledování změn 
 V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načítá rozdílová data na základě **sledování změn** ve zdrojové databázi Azure SQL do úložiště objektů blob Azure.  
@@ -170,15 +170,15 @@ Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Ins
          
         Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
 4. Jako **verzi** vyberte **V2 (Preview)** .
-5. Vyberte **umístění** pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+5. Vyberte **umístění** pro objekt pro vytváření dat. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 6. Zaškrtněte **Připnout na řídicí panel**.     
-7. Klikněte na možnost **Vytvořit**.      
-8. Na řídicím panelu se zobrazí následující dlaždice se stavem: **Nasazuje se objekt pro vytváření dat**. 
+7. Klikněte na **Vytvořit**.      
+8. Na řídicím panelu vidíte následující dlaždice se statusem: **Nasazování datové továrny**. 
 
     ![nasazování dlaždice datové továrny](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
 9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
    
-   ![Domovská stránka datové továrny](./media/tutorial-incremental-copy-change-tracking-feature-portal/data-factory-home-page.png)
+   ![Domovská stránka objektu pro vytváření dat](./media/tutorial-incremental-copy-change-tracking-feature-portal/data-factory-home-page.png)
 10. Kliknutím na dlaždici **Vytvořit a monitorovat** otevřete na samostatné kartě uživatelské rozhraní služby Azure Data Factory.
 11. Na stránce **Začínáme** přepněte na levém panelu na kartu **Upravit**, jak je znázorněno na následujícím obrázku: 
 
@@ -187,7 +187,7 @@ Nainstalujte nejnovější moduly Azure PowerShellu podle pokynů v tématu [Ins
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 V datové továrně vytvoříte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V této části vytvoříte propojené služby pro účet Azure Storage a databázi Azure SQL. 
 
-### <a name="create-azure-storage-linked-service"></a>Vytvoření propojené služby Azure Storage
+### <a name="create-azure-storage-linked-service"></a>Vytvořte propojenou službu pro Azure Storage
 V tomto kroku s datovou továrnou propojíte svůj účet služby Azure Storage.
 
 1. Klikněte na **Připojení** a pak na **+ Nové**.
@@ -218,7 +218,7 @@ V tomto kroku propojíte databázi Azure SQL s datovou továrnou.
     5. Do pole **Uživatelské jméno** zadejte jméno uživatele. 
     6. Do pole **Heslo** zadejte heslo pro tohoto uživatele. 
     7. Klikněte na **Test připojení** a otestujte připojení.
-    8. Klikněte na **Uložit** a uložte propojenou službu. 
+    8. Kliknutím na **Uložit** propojenou službu uložte. 
     
        ![Nastavení propojené služby Azure SQL Database](./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-sql-database-linked-service-settings.png)
 
@@ -260,7 +260,7 @@ V tomto kroku vytvoříte datovou sadu pro reprezentaci dat, která se kopíruj�
 
     1. Jako **Propojená služba** vyberte **AzureStorageLinkedService**.
     2. Jako část **složka** v **cestě k souboru** zadejte **adftutorial/incchgtracking**.
-    3. **Zadejte\@Concat (' incremental-', Pipeline (). RunId, '. txt ')** pro **soubor** , který je součástí **FilePath**.  
+    3. Zadejte **\@Concat (' incremental-', Pipeline (). RunId, '. txt ')** pro **soubor** , který je součástí **FilePath**.  
 
        ![Datová sada jímky – připojení](./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-connection.png)
 
@@ -322,7 +322,7 @@ Klikněte na **Aktivační událost** na panelu nástrojů pro kanál a pak klik
     ![Spuštění aktivit](./media/tutorial-incremental-copy-change-tracking-feature-portal/activity-runs-full-copy.png)
 
 ### <a name="review-the-results"></a>Kontrola výsledků
-Ve složce `incchgtracking` kontejneru `adftutorial` uvidíte soubor s názvem `incremental-<GUID>.txt`. 
+Ve složce `incremental-<GUID>.txt` kontejneru `incchgtracking` uvidíte soubor s názvem `adftutorial`. 
 
 ![Výstupní soubor pro úplné kopírování](media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-output-file.png)
 
@@ -355,7 +355,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 ## <a name="create-a-pipeline-for-the-delta-copy"></a>Vytvoření kanálu pro rozdílové kopírování
 V tomto kroku vytvoříte kanál s následujícími aktivitami a pravidelně ho budete spouštět. **Aktivity vyhledávání** získají starou a novou hodnoty SYS_CHANGE_VERSION z Azure SQL Database a předají je aktivitě kopírování. **Aktivita kopírování** zkopíruje vložená/aktualizovaná/odstraněná data mezi dvěma hodnotami SYS_CHANGE_VERSION z Azure SQL Database do Azure Blob Storage. **Aktivita uložených procedur** aktualizuje hodnotu SYS_CHANGE_VERSION pro další spuštění kanálu.
 
-1. V uživatelském prostředí služby Data Factory přepněte na kartu **Upravit**. Klikněte na symbol **+ (plus)** v levém podokně a pak klikněte na **Kanál**. 
+1. V uživatelském rozhraní Data Factory přepněte na kartu **Upravit** . v levém podokně klikněte na **+ (plus)** a pak klikněte na **kanál**. 
 
     ![Nabídka Nový kanál](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu-2.png)
 2. Zobrazí se nová karta, na které můžete kanál konfigurovat. Kanál se zobrazí také ve stromovém zobrazení. V okně **Vlastnosti** změňte název kanálu na **IncrementalCopyPipeline**.
@@ -413,7 +413,7 @@ V tomto kroku vytvoříte kanál s následujícími aktivitami a pravidelně ho 
     2. Vyberte **Importovat parametr**. 
     3. V části **Parametry uložené procedury** zadejte následující hodnoty parametrů: 
 
-        | Name | Typ | Value | 
+        | Název | Typ | Hodnota | 
         | ---- | ---- | ----- | 
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
         | TableName | Řetězec | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 
@@ -455,7 +455,7 @@ Tento soubor by měl obsahovat jenom rozdílová data z databáze Azure SQL. Zá
 1,update,10,2,U
 6,new,50,1,I
 ```
-První tři sloupce představují změněná data z data_source_table. Poslední dva sloupce jsou metadata ze systémové tabulky sledování změn. Čtvrtý sloupec je SYS_CHANGE_VERSION pro každý změněný řádek. Pátý sloupec je operace:  U = aktualizace, I = vložení.  Podrobné informace o sledování změn najdete v tématu [CHANGETABLE](/sql/relational-databases/system-functions/changetable-transact-sql). 
+První tři sloupce představují změněná data z data_source_table. Poslední dva sloupce jsou metadata ze systémové tabulky sledování změn. Čtvrtý sloupec je SYS_CHANGE_VERSION pro každý změněný řádek. Pátý řádek představuje operaci: U = aktualizace, I = vložení.  Podrobné informace o sledování změn najdete v tématu [CHANGETABLE](/sql/relational-databases/system-functions/changetable-transact-sql). 
 
 ```
 ==================================================================
@@ -466,7 +466,7 @@ PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 ```
 
     
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přejděte k následujícímu kurzu, kde se dozvíte, jak kopírovat nové a změněné soubory pouze na základě jejich LastModifiedDate:
 
 > [!div class="nextstepaction"]

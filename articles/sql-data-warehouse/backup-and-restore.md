@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse zálohování a obnovení – snímky, geograficky redundantní | Microsoft Docs
+title: Zálohování a obnovení – snímky, geograficky redundantní
 description: Přečtěte si, jak zálohování a obnovení funguje v Azure SQL Data Warehouse. Pomocí záloh datového skladu obnovte datový sklad na bod obnovení v primární oblasti. Použijte geograficky redundantní zálohy k obnovení do jiné geografické oblasti.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 10/21/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 1cf6444b155830326f4876d2d65bcdaa5923fc35
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.custom: seo-lt-2019"
+ms.openlocfilehash: f37ca56f7875dcb6ab254a11b859c3e85f6a1dd0
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72788817"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686145"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Zálohování a obnovení v Azure SQL Data Warehouse
 

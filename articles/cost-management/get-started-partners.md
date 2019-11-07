@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/22/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 6d59964013a2631430ecd7e46d1ce0f6be60a05f
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 611b3e608d9b0de9423c861ec70e9fc2e7ad67d5
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802040"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720755"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Začínáme s Azure Cost Management pro partnery
 
@@ -37,7 +37,7 @@ Tady je příklad, který ukazuje náklady na jednoho zákazníka.
 
 Všechny funkce, které jsou dostupné v Azure Cost Management, jsou dostupné taky s rozhraními REST API. Použijte rozhraní API k automatizaci úloh správy nákladů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Azure Cost Management vyžaduje přístup pro čtení k fakturačnímu účtu nebo předplatnému. Přístup je možné udělit na libovolné úrovni výše než vašich prostředků, od fakturačního účtu nebo skupiny pro správu až po jednotlivé skupiny prostředků, kde spravujete své aplikace. Další informace o povolení a přiřazení přístupu k Azure Cost Management pro fakturační účet najdete v tématu [přiřazení rolí uživatelů a oprávnění](/partner-center/permissions-overview). Role **globálního správce** a **agenta správce** mohou spravovat náklady na fakturační účet.
 
@@ -88,7 +88,7 @@ Partneři můžou pomocí oboru sjednotit faktury. A používají obor k nastave
 - Skupina prostředků
 - Prostředek
 - Služba Azure
-- Měření
+- Měřič
 - ResellerMPNID
 
 ### <a name="customer-scope"></a>Obor zákazníka
@@ -139,7 +139,7 @@ V části **fakturace**klikněte na **předplatná Azure**a potom klikněte na z
 ![Vybrat zákazníka předplatného Azure](./media/get-started-partners/subscriptions-select-customer.png)
 
 Klikněte na **Analýza nákladů** a začněte kontrolovat náklady.
-Analýza nákladů, rozpočty a výstrahy jsou nyní k dispozici pro rozsahy a skupiny prostředků v rámci nákladů na základě sazby.
+Analýza nákladů, rozpočty a výstrahy jsou k dispozici pro obory a rozsahy RBAC u předplatného s průběžnými platbami podle aktuálního využití.
 
 ![Zobrazení analýzy nákladů jako zákazníka ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
 
@@ -147,22 +147,23 @@ Amortizacovaná zobrazení a skutečné náklady na rezervované instance v obor
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Analýza nákladů při analýze nákladů
 
-Partneři můžou prozkoumat a analyzovat náklady na analýzu nákladů napříč zákazníky pro konkrétního zákazníka nebo fakturu. Funkce Filter a Group by vám umožňují analyzovat náklady podle více polí, včetně:
+Partneři můžou prozkoumat a analyzovat náklady na analýzu nákladů napříč zákazníky pro konkrétního zákazníka nebo fakturu.
 
-| **Pole** | **Popis** |
+Následující pole jsou k dispozici v souborech s podrobnostmi o využití a Cost Management rozhraní API. Pomocí funkcí Filter a Group by v analýze nákladů můžete analyzovat náklady podle několika polí. Úplný seznam polí najdete v tématu [cost management datových polí](understand-cost-mgt-data.md#cost-management-data-fields).
+
+| Název pole | Popis |
 | --- | --- |
-| PartnerTenantID | Identifikátor tenanta Azure Active Directory partnera |
-| PartnerName | Název tenanta Azure Active Directory partnera |
-| CustomerTenantID | Identifikátor tenanta Azure Active Directory předplatného zákazníka |
-| CustomerName | Název tenanta Azure Active Directory obsahujícího předplatné zákazníka |
-| ResellerMPNID | MPNID pro prodejce, který je přidružený k předplatnému |
-| subscription ID | Jedinečný identifikátor vygenerovaný společností Microsoft pro předplatné Azure |
-| subscriptionName | Název předplatného Azure |
-| billingProfileID | Identifikátor fakturačního profilu. Seskupuje náklady v rámci faktur v jedné fakturační měně mezi zákazníky.
-| invoiceID | ID faktury na faktuře, kde se konkrétní transakce zobrazí |
-| resourceGroup | Název skupiny prostředků Azure. Používá se ke správě životního cyklu prostředků. |
-| partnerEarnedCreditRate | Zvýhodněná sazba se používá v případě, že je na základě připojení partnera pro správu partnerského serveru k dispozici kredit (PEC). |
-| partnerEarnedCreditApplied | Označuje, zda byl použit partnerský vydaný kredit. |
+| CustomerTenantID | Identifikátor tenanta Azure Active Directory předplatného zákazníka&#39;s. |
+| CustomerName | Název tenanta Azure Active Directory pro předplatné zákazníka&#39;s. |
+| CustomerTenantDomainName | Název domény pro klienta Azure Active Directory předplatného zákazníka&#39;s. |
+| PartnerTenantID | Identifikátor pro tenanta Azure Active Directory&#39;partnera s. |
+| PartnerName | Název partnerského Azure Active Directory tenanta. |
+| ResellerMPNID | MPNID pro prodejce, který je přidružený k předplatnému. |
+| costinUSD | Odhadované ExtendedCost nebo smíšené náklady před zdaněním v USD. |
+| paygCostInBillingCurrency | Zobrazuje náklady, pokud jsou ceny v maloobchodních cenách. Zobrazuje ceny za průběžné platby ve fakturační měně. K dispozici pouze v oborech RBAC. |
+| paygCostInUSD | Zobrazuje náklady, pokud jsou ceny v maloobchodních cenách. Zobrazuje ceny za průběžné platby v USD. K dispozici pouze v oborech RBAC. |
+| partnerEarnedCreditRate | Pokud je na základě přístupu k partnerovi pro správu partnerského serveru k dispozici kredity, je sazba uplatněna. |
+| partnerEarnedCreditApplied | Označuje, zda byl použit partnerský kredit. |
 
 V zobrazení [Analýza nákladů](quick-acm-cost-analysis.md) můžete také [ukládat zobrazení](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) a exportovat data do [souborů CSV a PNG](quick-acm-cost-analysis.md#automation-and-offline-analysis).
 
@@ -203,36 +204,67 @@ Rozhraní API v oboru předplatného můžou být volána partnerem bez ohledu n
 #### <a name="to-get-a-list-of-billing-accounts"></a>Získání seznamu fakturačních účtů
 
 ```
-armclient get "providers/Microsoft.billing/billingAccounts?api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts?api-version=2019-10-01-preview
 ```
 
 #### <a name="to-get-a-list-of-customers"></a>Získání seznamu zákazníků
 
 ```
-armclient get "providers/Microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers?api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers?api-version=2019-10-01-preview
 ```
+
 #### <a name="to-get-a-list-of-subscriptions"></a>Získání seznamu předplatných
 
 ```
-armclient get "/providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/billingSubscriptions?api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions?api-version=2019-10-01-preview
 ```
+
+#### <a name="to-get-a-list-of-invoices-for-a-period-of-time"></a>Získání seznamu faktur po určitou dobu
+
+```
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices?api-version=2019-10-01-preview&periodStartDate={periodStartDate}&periodEndDate={periodEndDate}
+```
+
+Volání rozhraní API vrací pole faktur, které má prvky podobné následujícímu kódu JSON.
+
+```
+    {
+      "id": "/providers/Microsoft.Billing/billingAccounts/{billingAccountID}/billingProfiles/{BillingProfileID}/invoices/{InvoiceID}",
+      "name": "{InvoiceID}",
+      "properties": {
+        "amountDue": {
+          "currency": "USD",
+          "value": x.xx
+        },
+        ...
+    }
+```
+
+Použijte předchozí hodnotu pole vráceného ID a nahraďte ji v následujícím příkladu jako obor pro dotaz na podrobnosti o využití.
+
+```
+GET https://management.azure.com/{id}/providers/Microsoft.Consumption/UsageDetails?api-version=2019-10-01
+```
+
+V příkladu se vrátí záznamy o využití spojené s konkrétní fakturou.
+
 
 #### <a name="to-get-the-policy-for-customers-to-view-costs"></a>Získání zásad pro zákazníky, kteří si chtějí zobrazit náklady
 
 ```
-armclient get "providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/policies/default?api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/policies/default?api-version=2019-10-01-preview
 ```
 
 #### <a name="to-set-the-policy-for-customers-to-view-costs"></a>Nastavení zásad pro zákazníky, kteří budou zobrazovat náklady
 
 ```
-armclient put "providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/policies/default?api-version=2019-10-01-preview" @policy.json
+PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/policies/default?api-version=2019-10-01-preview
 ```
 
 #### <a name="to-get-azure-service-usage-for-a-billing-account"></a>Získání využití služeb Azure pro fakturační účet
 
 ```
-armclient GET /providers/Microsoft.Billing/BillingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/providers/Microsoft.Consumption/usageDetails?api-version=2019-10-01
+GET https://management.azure.com/providers/Microsoft.Billing/BillingAccounts/{billingAccountName}/providers/Microsoft.Consumption/usageDetails?api-version=2019-10-01
 ```
 
 #### <a name="to-download-a-customers-azure-service-usage"></a>Stažení využívání služeb Azure na zákazníka
@@ -240,7 +272,7 @@ armclient GET /providers/Microsoft.Billing/BillingAccounts/XXXXXXXX-XXXX-XXXX-XX
 Následující volání Get je asynchronní operace.
 
 ```
-armclient get providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/providers/Microsoft.Consumption/usageDetails/download?api-version=2019-10-01 -verbose
+GET https://management.azure.com/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/providers/Microsoft.Consumption/usageDetails/download?api-version=2019-10-01 -verbose
 ```
 
 Zavoláním identifikátoru URI `Location` vráceného v odpovědi na kontrolu stavu operace. Po *dokončení*stavu obsahuje vlastnost `downloadUrl` odkaz, který můžete použít ke stažení vygenerované sestavy.
@@ -251,50 +283,40 @@ Zavoláním identifikátoru URI `Location` vráceného v odpovědi na kontrolu s
 Nejprve použijte následující příspěvek.
 
 ```
-armclient post "/providers/Microsoft.Billing/BillingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/billingProfiles/YYYY-YYYY-YYY-YYYY-YYY/pricesheet/default/download?api-version=2019-10-01-preview&format=csv" -verbose
+POST https://management.azure.com/providers/Microsoft.Billing/BillingAccounts/{billingAccountName}/billingProfiles/{billingProfileID}/pricesheet/default/download?api-version=2019-10-01-preview&format=csv" -verbose
 ```
 
-Pak zavolejte hodnotu vlastnosti asynchronní operace. Například:
+Pak zavolejte hodnotu vlastnosti asynchronní operace. Příklad:
 
 ```
-armclient get "providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/billingProfiles/YYYY-YYYY-YYY-YYYY-YYY/pricesheetDownloadOperations/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX?sessiontoken=0:11186&api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileID}/pricesheetDownloadOperations/{operation}?sessiontoken=0:11186&api-version=2019-10-01-preview
 ```
 Předchozí volání Get vrátí odkaz ke stažení obsahující ceník.
 
-#### <a name="to-get-customer-costs-for-the-last-two-months-sorted-by-month"></a>Chcete-li získat náklady na zákazníky za poslední dva měsíce, seřazené podle měsíců
+
+#### <a name="to-get-aggregated-costs"></a>Získání agregovaných nákladů
 
 ```
-armclient post providers/microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQueryCustomer.json
-```
-
-#### <a name="to-get-azure-subscription-costs-for-the-last-two-months-sorted-by-month"></a>Chcete-li získat náklady na předplatné Azure za poslední dva měsíce, seřazené podle měsíců
-
-```
-armclient post providers/microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQuerySubscription.json
-```
-
-#### <a name="to-get-daily-costs-for-the-current-month"></a>Získání denních nákladů na aktuální měsíc
-
-```
-armclient post providers/microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQueryDaily.json
+POST https://management.azure.com/providers/microsoft.billing/billingAccounts/{billingAccountName}/providers/microsoft.costmanagement/query?api-version=2019-10-01
 ```
 
 #### <a name="create-a-budget-for-a-partner"></a>Vytvoření rozpočtu pro partnera
 
 ```
-armclient put providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/providers/Microsoft.CostManagement/budgets/partnerworkshopbudget?api-version=2019-10-01 @budgetCreate.json
+PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/providers/Microsoft.CostManagement/budgets/partnerworkshopbudget?api-version=2019-10-01
 ```
-
 
 #### <a name="create-a-budget-for-a-customer"></a>Vytvoření rozpočtu pro zákazníka
 
 ```
-armclient put providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/providers/Microsoft.Consumption/budgets/test-partner-demo?api-version=2019-10-01 @budgetCreate.json
+PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/providers/Microsoft.Consumption/budgets/{budgetName}?api-version=2019-10-01
 ```
+
 #### <a name="delete-a-budget"></a>Odstranit rozpočet
 
 ```
-armclient delete providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/providers/Microsoft.CostManagement/budgets/partnerworkshopbudget?api-version=2019-10-01
+PUT
+https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/budgets/{budgetName}?api-version=2019-10-01
 ```
 
 

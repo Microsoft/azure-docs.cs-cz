@@ -1,5 +1,5 @@
 ---
-title: Obnovit odstraněnou Azure SQL Data Warehouse | Microsoft Docs
+title: Obnovení odstraněného datového skladu
 description: Návod k obnovení odstraněných Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: anumjs
@@ -10,18 +10,19 @@ ms.subservice: manage
 ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 376a50a79858aee34aa71d172ca5836646a6651d
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.custom: seo-lt-2019
+ms.openlocfilehash: cb09b4808bd6d59d2f70e85d204ab8451d501cee
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68426626"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692606"
 ---
 # <a name="restore-a-deleted-azure-sql-data-warehouse"></a>Obnovení odstraněné Azure SQL Data Warehouse
 
 V tomto článku se naučíte, jak obnovit odstraněné SQL Data Warehouse pomocí Azure Portal a PowerShellu:
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -72,7 +73,7 @@ $RestoredDatabase.status
 
 1. Přihlaste se k webu [Azure Portal][Azure portal].
 2. Přejděte na SQL Server, na kterém jste odstraněné datový sklad hostoval.
-3. V obsahu vyberte ikonu odstraněné **databáze** .
+3. V obsahu vyberte ikonu **odstraněné databáze** .
 
     ![Odstraněné databáze](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-01.png)
 

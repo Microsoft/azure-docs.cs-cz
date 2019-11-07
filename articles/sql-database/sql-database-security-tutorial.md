@@ -1,5 +1,5 @@
 ---
-title: Zabezpečení jedné nebo sdružené databáze v Azure SQL Database | Microsoft Docs
+title: Zabezpečení jedné nebo sdružené databáze v Azure SQL Database
 description: Kurz, který vás seznámí s technikami a funkcemi pro zabezpečení jedné nebo sdružené databáze v Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -10,16 +10,16 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: ba648a2bf563b775c39f11ab8d5c4069c4bf740f
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 44fd49c391f4c6cddf24e3fddd7fa85a0d5ea4f2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231183"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687429"
 ---
-# <a name="tutorial-secure-a-single-or-pooled-database"></a>Kurz: Zabezpečení jedné nebo sdružené databáze
+# <a name="tutorial-secure-a-single-or-pooled-database"></a>Kurz: zabezpečení jedné nebo sdružené databáze
 
-V tomto kurzu se naučíte:
+Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 > - Vytvoření pravidel brány firewall na úrovni serveru a databáze
@@ -48,7 +48,7 @@ K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
 - Server a databáze SQL Azure
-  - Vytváření pomocí [Azure Portal](sql-database-single-database-get-started.md), [CLI](sql-database-cli-samples.md)nebo PowerShellu [](sql-database-powershell-samples.md)
+  - Vytváření pomocí [Azure Portal](sql-database-single-database-get-started.md), [CLI](sql-database-cli-samples.md)nebo [PowerShellu](sql-database-powershell-samples.md)
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -60,7 +60,7 @@ Pro všechny kroky v tomto kurzu se přihlaste k [Azure Portal](https://portal.a
 
 Databáze SQL jsou chráněny branami firewall v Azure. Ve výchozím nastavení se všechna připojení k serveru a databázi odmítnou. Další informace najdete v tématu [Azure SQL Database pravidla brány firewall na úrovni serveru a databáze](sql-database-firewall-configure.md).
 
-Pro nejbezpečnější konfiguraci nastavte možnost **Povolení přístupu ke službám Azure** . Pak vytvořte [REZERVOVANÉ IP adresy (klasické nasazení)](../virtual-network/virtual-networks-reserved-public-ip.md) pro prostředek, který se potřebuje připojit, jako je třeba virtuální počítač Azure nebo cloudová služba, a povolte přístup k IP adrese jenom přes bránu firewall. Pokud používáte model nasazení [Resource Manageru](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) , vyžaduje se pro každý prostředek vyhrazená veřejná IP adresa.
+**Pro nejbezpečnější** konfiguraci nastavte možnost **Povolení přístupu ke službám Azure** . Pak vytvořte [REZERVOVANÉ IP adresy (klasické nasazení)](../virtual-network/virtual-networks-reserved-public-ip.md) pro prostředek, který se potřebuje připojit, jako je třeba virtuální počítač Azure nebo cloudová služba, a povolte přístup k IP adrese jenom přes bránu firewall. Pokud používáte model nasazení [Resource Manageru](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) , vyžaduje se pro každý prostředek vyhrazená veřejná IP adresa.
 
 > [!NOTE]
 > SQL Database komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nemůžete se připojit k serveru Azure SQL Database, pokud správce neotevře port 1433.
@@ -193,7 +193,7 @@ Ověřování Azure Active Directory vyžaduje, aby byli uživatelé databáze v
 > Například role *přispěvatel SQL Server* neuděluje přístup pro připojení k databázi nebo datovému skladu. Toto oprávnění je nutné udělit v rámci databáze pomocí příkazů T-SQL.
 
 > [!IMPORTANT]
-> Speciální znaky, jako `:` je dvojtečka nebo ampersand `&` , nejsou podporovány v uživatelských jménech v `CREATE LOGIN` příkazech T-SQL a `CREATE USER` .
+> Speciální znaky, jako jsou dvojtečky `:` nebo ampersand `&`, nejsou podporovány v uživatelských jménech v příkazech T-SQL `CREATE LOGIN` a `CREATE USER`.
 
 Postup přidání uživatele s ověřováním Azure AD:
 
@@ -201,14 +201,14 @@ Postup přidání uživatele s ověřováním Azure AD:
 
 1. V **Průzkumník objektů**klikněte pravým tlačítkem na databázi a vyberte **Nový dotaz**.
 
-1. V okně dotazu zadejte následující příkaz a změňte `<Azure_AD_principal_name>` hlavní název uživatele Azure AD nebo zobrazovaný název skupiny Azure AD:
+1. V okně dotazu zadejte následující příkaz a změňte `<Azure_AD_principal_name>` na hlavní název uživatele Azure AD nebo zobrazovaný název skupiny Azure AD:
 
    ```sql
    CREATE USER <Azure_AD_principal_name> FROM EXTERNAL PROVIDER;
    ```
 
 > [!NOTE]
-> Uživatelé Azure AD jsou označeni v metadatech databáze s `E (EXTERNAL_USER)` typem a `X (EXTERNAL_GROUPS)` typem pro skupiny. Další informace najdete v tématu [Sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql).
+> Uživatelé Azure AD jsou označeni v metadatech databáze typu `E (EXTERNAL_USER)` a do skupin zadejte `X (EXTERNAL_GROUPS)`. Další informace najdete v tématu [Sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql).
 
 ### <a name="secure-connection-strings"></a>Zabezpečené připojovací řetězce
 
@@ -233,7 +233,7 @@ Postup při kopírování zabezpečeného připojovacího řetězce:
 
 Azure SQL Database poskytuje funkce zabezpečení, které jsou k dispozici pomocí Azure Portal. Tyto funkce jsou dostupné jak pro databázi, tak pro server, s výjimkou maskování dat, která je k dispozici pouze v databázi. Další informace najdete v tématech [pokročilé zabezpečení dat](sql-database-advanced-data-security.md), [auditování](sql-database-auditing.md), [Maskování dynamických dat](sql-database-dynamic-data-masking-get-started.md)a [transparentní šifrování dat](transparent-data-encryption-azure-sql.md).
 
-### <a name="advanced-data-security"></a>Advanced Data Security
+### <a name="advanced-data-security"></a>Pokročilé zabezpečení dat
 
 Funkce Rozšířené zabezpečení dat detekuje potenciální hrozby při jejich výskytu a poskytuje výstrahy zabezpečení pro aktivity neobvyklé. Uživatelé mohou tyto podezřelé události prozkoumat pomocí funkce auditování a určit, zda má událost přístup, porušení nebo zneužití dat v databázi. Uživatelům se taky poskytuje přehled zabezpečení, který obsahuje posouzení ohrožení zabezpečení a nástroj pro zjišťování a zjišťování dat.
 
@@ -334,7 +334,7 @@ Povolení nebo ověření šifrování:
     ![Transparentní šifrování dat](./media/sql-database-security-tutorial/encryption-settings.png)
 
 > [!NOTE]
-> Pokud chcete zobrazit stav šifrování, připojte se k databázi pomocí [SSMS](./sql-database-connect-query-ssms.md) a Dotazujte `encryption_state` sloupec zobrazení [Sys. DM _database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) . Stav `3` označuje, že databáze je zašifrovaná.
+> Pokud chcete zobrazit stav šifrování, připojte se k databázi pomocí [SSMS](./sql-database-connect-query-ssms.md) a proveďte dotaz na sloupec `encryption_state` zobrazení [Sys. DM _database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) . Stav `3` označuje, že databáze je zašifrovaná.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,19 +7,19 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: c67d2cd4e90b2fa61a4d95e89a68c888a6e1fe3f
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 57ab18c8dfffb6994983179f434491b97589ebda
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273639"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693235"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Vytvoření služby privátního propojení pomocí Azure CLI
 V tomto článku se dozvíte, jak vytvořit službu privátního propojení v Azure pomocí rozhraní příkazového řádku Azure CLI.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte použít nejnovější verzi rozhraní příkazového řádku Azure CLI. Pokud chcete najít nainstalovanou verzi, `az --version`spusťte příkaz. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte použít nejnovější verzi rozhraní příkazového řádku Azure CLI. Nainstalovanou verzi zjistíte spuštěním `az --version`. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
 ## <a name="create-a-private-link-service"></a>Vytvoření služby privátního propojení
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -62,7 +62,7 @@ Sonda stavu kontroluje všechny instance virtuálních počítačů a ověřuje,
 
 ### <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 
-Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Pomocí příkazu [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) vytvořte pravidlo nástroje pro vyrovnávání zatížení *myHTTPRule* pro naslouchání na portu 80 ve front-endovém fondu *myFrontEnd* a odesílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres *myBackEndPool*, a to taky na portu 80. 
+Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Pomocí příkazu *az network lb rule create* vytvořte pravidlo nástroje pro vyrovnávání zatížení [myHTTPRule](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) pro naslouchání na portu 80 ve front-endovém fondu *myFrontEnd* a odesílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres *myBackEndPool*, a to taky na portu 80. 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -104,11 +104,11 @@ az network private-link-service create \
 ```
 Po vytvoření si poznamenejte ID služby privátního propojení. Později budete potřebovat, abyste požádali o připojení k této službě.  
  
-V této fázi je vaše služba privátního propojení úspěšně vytvořená a připravená na příjem provozu. Všimněte si, že výše uvedený příklad je pouze ukázka vytvoření služby privátního propojení pomocí Azure CLI.  Nenakonfigurovali jsme back-end fondy nástroje pro vyrovnávání zatížení ani žádné aplikace na back-end fondu, aby naslouchaly provozu. Pokud se chcete podívat na ucelené přenosové toky, doporučujeme vám nakonfigurovat aplikaci za vaším Standard Load Balancer.  
+V této fázi je vaše služba privátního propojení úspěšně vytvořená a připravená na příjem provozu. Všimněte si, že výše uvedený příklad je pouze ukázka vytvoření služby privátního propojení pomocí Azure CLI.  Nenakonfigurovali jsme back-end fondy nástroje pro vyrovnávání zatížení ani žádné aplikace na back-end fondu, aby naslouchaly provozu. Pokud chcete zobrazit komplexní toky přenosů dat, důrazně doporučujeme nakonfigurovat aplikaci za vaším Standard Load Balancer.  
  
 V dalším kroku ukážeme, jak namapovat tuto službu na privátní koncový bod v jiné virtuální síti pomocí Azure CLI. V tomto příkladu je tento příklad omezený na vytvoření privátního koncového bodu a připojení ke službě privátního propojení vytvořené výše pomocí Azure CLI. Kromě toho můžete vytvořit virtuální počítače ve virtuální síti pro odesílání a příjem provozu do privátního koncového bodu.        
  
-## <a name="private-endpoints"></a>Privátní koncové body
+## <a name="private-endpoints"></a>Soukromé koncové body
 
 ### <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě 
 Vytvořte virtuální síť pomocí [AZ Network VNet Create](/cli/azure/network/vnet#az-network-vnet-create). Tento příklad vytvoří virtuální síť s názvem *myPEVNet* ve skupině prostředků s názvem *myResourcegroup*: 
@@ -151,7 +151,7 @@ az network private-endpoint create \
 --connection-name myPEConnectingPLS \
 --location westcentralus 
 ```
-Můžete získat *privátní připojení-Resource-ID* `az network private-link-service show` ve službě privátního propojení. ID bude vypadat takto:   
+Můžete získat *privátní připojení-Resource-ID* s `az network private-link-service show` ve službě privátního propojení. ID bude vypadat takto:   
 /subscriptions/subID/resourceGroups/*ResourceGroupName*/Providers/Microsoft.Network/privateLinkServices/**privatelinkservicename** 
  
 ## <a name="show-private-link-service-connections"></a>Zobrazit připojení služby privátního propojení 

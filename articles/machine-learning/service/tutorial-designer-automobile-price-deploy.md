@@ -9,68 +9,66 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 69fba508eac4b778dcd72371fd1471625ecb8c1a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b5fa1557999ae851bccafbf8ee7c41f0b3614614
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501600"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715898"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Kurz: nasazení modelu strojového učení pomocí návrháře (Preview)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Pokud chcete jiným osobám umožnit používání prediktivního modelu vyvinutého v [rámci jednoho kurzu](tutorial-designer-automobile-price-train-score.md), můžete ho nasadit jako koncový bod v reálném čase. V části 1 jste si vyškole svůj model. Nyní je čas vytvořit nové předpovědi na základě vstupu uživatele. V této části kurzu:
+Můžete nasadit prediktivní model vyvinutý v [rámci jednoho kurzu](tutorial-designer-automobile-price-train-score.md) , který jiným uživatelům umožní tuto možnost použít. V části 1 jste si vyškole svůj model. Nyní je čas vytvořit nové předpovědi na základě vstupu uživatele. V této části kurzu budete:
 
 > [!div class="checklist"]
-> * Nasazení koncového bodu v reálném čase
+> * Vytvoření kanálu odvození v reálném čase
 > * Vytvoření clusteru Inferencing
+> * Nasazení koncového bodu v reálném čase
 > * Testování koncového bodu v reálném čase
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Kompletní [část tohoto kurzu](tutorial-designer-automobile-price-train-score.md) se naučíte, jak v Návrháři naučit a vyhodnocovat model strojového učení.
 
-## <a name="deploy-a-real-time-endpoint"></a>Nasazení koncového bodu v reálném čase
+## <a name="create-a-real-time-inference-pipeline"></a>Vytvoření kanálu odvození v reálném čase
 
-Aby bylo možné svůj kanál nasadit, musíte:
-
-1. Převeďte školicí kanál na kanál pro odvození v reálném čase, který odebere školicí moduly a přidá vstupy a výstupy pro požadavky Inferencing.
-1. Nasaďte kanál odvození.
+Aby bylo možné kanál nasadit, je nutné nejprve převést kanál školení na kanál pro odvození v reálném čase. Tento proces odebere školicí moduly a přidá vstupy a výstupy pro požadavky Inferencing.
 
 ### <a name="create-a-real-time-inference-pipeline"></a>Vytvoření kanálu odvození v reálném čase
 
-1. V horní části plátna kanálu vyberte **vytvořit kanál odvození**  > **kanál pro odvození v reálném čase** .
-
-    Když vyberete **vytvořit kanál odvození**, nastane několik věcí:
-    
-    * Trained model je uložen jako modul **DataSet** v paletě modulu. Můžete ji najít v části **Moje datové sady**.
-    * Moduly, jako je **model výuky** a **rozdělená data**, které se použily pro školení, se odeberou.
-    * Uložený vycvičený model se přidá zpátky do kanálu.
-    * Jsou přidány výstupní moduly **webové služby** a **webové služby** . Tyto moduly identifikují, kam budou data uživatelů zadávat model a kde se vrátí data.
-
-    > [!Note]
-    > **Školicí kanál** se uloží pod novou kartu v horní části plátna kanálu. Může být také nalezen jako publikovaný kanál v návrháři.
-    >
+1. Nad plátnem kanálu vyberte **vytvořit kanál odvození** > **kanál pro odvození v reálném čase** .
 
     Váš kanál by teď měl vypadat takto:  
 
    ![Snímek obrazovky znázorňující očekávanou konfiguraci kanálu po jeho přípravě na nasazení](./media/ui-tutorial-automobile-price-deploy/real-time-inference-pipeline.png)
 
+    Když vyberete **vytvořit kanál odvození**, nastane několik věcí:
+    
+    * Trained model je uložen jako modul **DataSet** v paletě modulu. Můžete ji najít v části **Moje datové sady**.
+    * Odeberou se moduly, jako je **model výuky** a **rozdělená data** .
+    * Uložený vycvičený model se přidá zpátky do kanálu.
+    * Jsou přidány výstupní moduly **webové služby** a **webové služby** . Tyto moduly ukazují, kde budou data uživatelů zadávat model a kde se vrátí data.
+
+    > [!Note]
+    > **Školicí kanál** se uloží pod novou kartu v horní části plátna kanálu. Může být také nalezen jako publikovaný kanál v návrháři.
+    >
+
 1. Vyberte **Spustit** a použijte stejný cíl výpočtů a experiment jste použili v části 1.
 
 1. Vyberte modul určení **skóre modelu** .
 
-1. V podokně Vlastnosti vyberte **výstupy**  > **vizualizaci** , abyste ověřili, že model stále pracuje. Můžete vidět, že se zobrazí původní data spolu s předpovězenou cenou ("popisky s skóre").
+1. V podokně Vlastnosti vyberte **výstupy** > **vizualizaci** , abyste ověřili, že model stále pracuje. Můžete vidět, že se zobrazí původní data spolu s předpovězenou cenou ("popisky s skóre").
 
 1. Vyberte **Nasadit**.
 
-### <a name="create-an-inferencing-cluster"></a>Vytvoření clusteru Inferencing
+## <a name="create-an-inferencing-cluster"></a>Vytvoření clusteru Inferencing
 
-V dialogovém okně, které se zobrazí, můžete v pracovním prostoru vybrat z existujících clusterů Azure Kubernetes Service (AKS) a model nasadit. Pokud nemáte cluster AKS, vytvořte ho pomocí následujících kroků.
+V dialogovém okně, které se zobrazí, můžete vybrat z existujících clusterů Azure Kubernetes Service (AKS) v nasazení modelu do nástroje. Pokud nemáte cluster AKS, vytvořte ho pomocí následujících kroků.
 
-1. V dialogovém okně vyberte **COMPUTE** a přejděte na stránku **COMPUTE** .
+1. V dialogovém okně, které se zobrazí, vyberte **COMPUTE** a přejděte na stránku **COMPUTE** .
 
-1. Na pásu karet navigace vyberte **odvozené clustery**  >  **+ nové**.
+1. Na pásu karet navigace vyberte **odvozené clustery** >  **+ nové**.
 
     ![Snímek obrazovky ukazující, jak přejít k novému podoknu clusteru odvození](./media/ui-tutorial-automobile-price-deploy/new-inference-cluster.png)
 
@@ -80,13 +78,13 @@ V dialogovém okně, které se zobrazí, můžete v pracovním prostoru vybrat z
     
 1. Vyberte **oblast**dostupnou v okolí.
 
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
     > [!Note]
     > Vytvoření nové služby AKS trvá přibližně 15 minut. Stav zřizování můžete kontrolovat na stránce **odvození clusterů** .
     >
 
-### <a name="deploy-the-real-time-endpoint"></a>Nasazení koncového bodu v reálném čase
+## <a name="deploy-the-real-time-endpoint"></a>Nasazení koncového bodu v reálném čase
 
 Až se dokončí zřizování služby AKS, vraťte se do kanálu Inferencing v reálném čase, abyste mohli dokončit nasazení.
 
@@ -104,7 +102,7 @@ Až se dokončí zřizování služby AKS, vraťte se do kanálu Inferencing v r
 
 ## <a name="test-the-real-time-endpoint"></a>Testování koncového bodu v reálném čase
 
-Koncový bod v reálném čase můžete otestovat tak, že přejdete na stránku **koncové body** v navigačním podokně pracovního prostoru na levé straně.
+Po dokončení nasazení můžete otestovat koncový bod v reálném čase tak, že přejdete na stránku **koncové body** .
 
 1. Na stránce **koncové body** vyberte koncový bod, který jste nasadili.
 
@@ -112,9 +110,9 @@ Koncový bod v reálném čase můžete otestovat tak, že přejdete na stránku
 
 1. Vyberte **test**.
 
-1. Zadejte testovací data nebo použijte možnost automatického vyplňování ukázkových dat a vyberte **test**.
+1. Data testování můžete zadat ručně nebo můžete použít možnost automatického vyplňování ukázkových dat a vybrat **test**.
 
-    Požadavek na test se odešle do koncového bodu a výsledky se zobrazí na stránce. I když je pro vstupní data vygenerována hodnota ceny, není použita k vygenerování hodnoty předpovědi.
+    Portál odešle požadavek na test na koncový bod a zobrazí výsledky. I když je pro vstupní data vygenerována hodnota ceny, není použita k vygenerování hodnoty předpovědi.
 
     ![Snímek obrazovky ukazující, jak otestovat koncový bod v reálném čase pomocí popisku s skóre pro zvýrazněnou cenu](./media/ui-tutorial-automobile-price-deploy/test-endpoint.png)
 

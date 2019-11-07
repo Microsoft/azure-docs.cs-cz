@@ -1,5 +1,5 @@
 ---
-title: Použití smyček T-SQL v Azure SQL Data Warehouse | Microsoft Docs
+title: Použití smyček T-SQL
 description: Tipy pro použití smyček T-SQL a nahrazování kurzorů v Azure SQL Data Warehouse pro vývoj řešení.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: e27edcc1383a235fbdb9513066e69e2f680ea2f9
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: b57358e32bda83ef51fe67aa1057411d51773fa6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479625"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685822"
 ---
 # <a name="using-t-sql-loops-in-sql-data-warehouse"></a>Použití smyček T-SQL v SQL Data Warehouse
 Tipy pro použití smyček T-SQL a nahrazování kurzorů v Azure SQL Data Warehouse pro vývoj řešení.
@@ -25,7 +26,7 @@ Tipy pro použití smyček T-SQL a nahrazování kurzorů v Azure SQL Data Wareh
 SQL Data Warehouse podporuje smyčku [while](/sql/t-sql/language-elements/while-transact-sql) pro opakované provádění bloků příkazů. Tato smyčka WHILe pokračuje, dokud jsou zadané podmínky pravdivé nebo dokud kód konkrétně neukončí smyčku pomocí klíčového slova BREAK. Smyčky jsou užitečné pro nahrazování kurzorů definovaných v kódu SQL. Naštěstí jsou téměř všechny kurzory, které jsou napsány v kódu SQL, určeny pro rychlý posun, jen pro čtení. Proto jsou smyčky [WHILe] skvělou alternativou pro nahrazování kurzorů.
 
 ## <a name="replacing-cursors-in-sql-data-warehouse"></a>Nahrazování kurzorů v SQL Data Warehouse
-Před začnete nejprve byste však měli klást následující otázky: "Je možné, že tento kurzor bude přepsán pro použití operací založených na sadě?." V mnoha případech je odpověď ano a často se jedná o nejlepší přístup. Operace založená na sadě často provádí rychlejší zpracování více než iterativního přístupu řádku.
+Předtím, než začnete v hlavě, byste si ale měli položit na následující otázku: "chcete, aby se tento kurzor přepsal pro použití operací založených na nastavení?". V mnoha případech je odpověď ano a často se jedná o nejlepší přístup. Operace založená na sadě často provádí rychlejší zpracování více než iterativního přístupu řádku.
 
 Rychlé dopředné kurzory, které jsou jen pro čtení, se dají snadno nahradit konstrukcí smyčky. Následuje jednoduchý příklad. Tento příklad kódu aktualizuje statistiku pro každou tabulku v databázi. Pomocí iterace v tabulkách ve smyčce se každý příkaz provede v pořadí.
 

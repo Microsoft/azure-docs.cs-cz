@@ -1,7 +1,7 @@
 ---
 title: 'Model vzájemného ověřování: odkaz na modul'
 titleSuffix: Azure Machine Learning service
-description: Naučte se používat model křížového ověřování ve službě Azure Machine Learning ke vzájemné kontrole odhadů parametrů pro klasifikace nebo regresní modely pomocí dělení dat.
+description: Naučte se používat model křížového ověřování ve službě Azure Machine Learning k vzájemnému ověření odhadů parametrů pro klasifikace nebo regresní modely pomocí dělení dat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,108 +9,107 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: a5eea61ee8284010531e80e17bf1110ab470d04c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d83a9b5df7acc9d626613e53369f483367e55a54
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512844"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717236"
 ---
 # <a name="cross-validate-model"></a>Model vzájemného ověřování
 
-Tento článek popisuje, jak používat modul pro **různé ověřování modelu** v Návrháři Azure Machine Learning (Preview). *Křížové ověřování* je důležitou technikou, která se často používá ve službě Machine Learning k vyhodnocení proměnlivosti datové sady a spolehlivosti všech modelů vyškolených pomocí těchto dat.  
+Tento článek popisuje, jak používat modul pro různé ověřování modelu v Návrháři Azure Machine Learning (Preview). *Křížové ověřování* je technika často používaná ve službě Machine Learning k vyhodnocení proměnlivosti datové sady a spolehlivosti všech modelů vyškolených prostřednictvím těchto dat.  
 
-Modul pro **různé ověřování modelu** přijímá jako vstupní datovou sadu s popisem, společně s nevlakovou klasifikací nebo regresní model. Rozdělí datovou sadu na určitý počet podmnožin (*skládání*), sestaví model na každé přeložení a potom vrátí sadu statistik přesnosti pro každé skládání. Porovnáním statistik přesnosti pro všechna skládání můžete interpretovat kvalitu sady dat a pochopit, zda je model náchylný k variacím dat.  
+Modul pro různé ověřování modelu přijímá jako vstupní datovou sadu s popisem, společně s nevlakovou klasifikací nebo regresní model. Rozdělí datovou sadu na určitý počet podmnožin (*skládání*), sestaví model na každé přeložení a potom vrátí sadu statistik přesnosti pro každé skládání. Porovnáním statistik přesnosti pro všechna skládání můžete interpretovat kvalitu sady dat. Pak můžete pochopit, jestli je model náchylný k proměnlivosti dat.  
 
-Křížové ověřování také vrací předpovězené výsledky a pravděpodobnosti pro datovou sadu, abyste mohli posoudit spolehlivost předpovědi.  
+Model vzájemného ověřování také vrací předpovězené výsledky a pravděpodobnosti pro datovou sadu, abyste mohli posoudit spolehlivost předpovědi.  
 
-### <a name="how-cross-validation-works"></a>Jak funguje vzájemné ověřování
+### <a name="how-cross-validation-works"></a>Jak funguje křížové ověřování
 
-1. Vzájemné ověřování náhodně dělí školicí data do několika oddílů, označovaných také jako *skládání*. 
+1. Křížové ověřování náhodně dělí školicí data na skládání. 
 
-    + Pokud jste datovou sadu předtím nevytvořili, algoritmus se standardně přeloží na 10. 
-    + Chcete-li datovou sadu rozdělit na jiný počet přeložení, můžete použít [oddíl a vzorový](partition-and-sample.md) modul a určit, kolik skládání se má použít.  
+   Pokud jste datovou sadu předtím nevytvořili, algoritmus se standardně přeloží na 10. Chcete-li datovou sadu rozdělit na jiný počet přeložení, můžete použít [oddíl a vzorový](partition-and-sample.md) modul a určit, kolik skládání se má použít.  
 
-2.  Modul odloží data přeložená 1, aby se použila k ověření (Tato situace se někdy označuje jako *přeložení*), a používá zbývající skládání k vytvoření výukového modelu. 
+2.  Modul nastavuje data přeložená 1 pro ověření. (To se někdy označuje jako *skládání blokování*.) Modul využívá zbývající skládání ke výukě modelu. 
 
-    Například pokud vytvoříte pět přeložení, modul by během křížového ověřování vygeneroval pět modelů, každý model byl vyučen pomocí 4/5 dat a testován na zbývajících 1/5.  
+    Například pokud vytvoříte pět přeložení, modul generuje během křížového ověřování pět modelů. Modul navlakuje každý model pomocí čtyř pětiny dat. Testuje každý model na zbylé jedné pětině.  
 
-3.  Během testování modelu pro každé skládání se vyhodnocuje více statistik přesnosti. Které statistiky jsou používány, závisí na typu modelu, který vyhodnocujete. Pro vyhodnocení modelů klasifikace vs. regresních modelů se používají různé statistiky.  
+3.  Během testování modelu pro každé přeložení modul vyhodnocuje více statistik přesnosti. Které statistiky modul používá, závisí na typu modelu, který budete vyhodnocovat. Pro vyhodnocení modelů klasifikace vs. regresních modelů se používají různé statistiky.  
 
-4.  Když je proces sestavení a vyhodnocení dokončen pro všechny skládání, **model vzájemného ověřování** vygeneruje sadu metrik výkonu a výsledky skóre pro všechna data. Tyto metriky byste měli zkontrolovat a zjistit, zda některé z nich mají zvláště vysokou nebo nízkou přesnost. 
+4.  Když je proces sestavení a vyhodnocení dokončen pro všechny skládání, model vzájemného ověřování vygeneruje sadu metrik výkonu a výsledky skóre pro všechna data. Projděte si tyto metriky, abyste viděli, zda má jedno přeložení vysokou nebo nízkou přesnost. 
 
-### <a name="advantages-of-cross-validation"></a>Výhody vzájemného ověřování
+### <a name="advantages-of-cross-validation"></a>Výhody křížového ověřování
 
-Jiný a běžný způsob, jak vyhodnotit model, je rozdělit data do školicích a testovacích sad pomocí [rozdělených dat](split-data.md)a pak ověřit model školicích dat. Křížové ověřování však nabízí některé výhody:  
+Různými a běžným způsobem, jak vyhodnocovat model, je rozdělit data do sady školení a testování pomocí [rozdělených dat](split-data.md)a pak ověřit model školicích dat. Ale křížové ověřování nabízí některé výhody:  
 
 -   Křížové ověření používá více testovacích dat.
 
-     Křížové ověřování měří výkon modelu se zadanými parametry ve větším datovém prostoru. To znamená, že křížové ověřování používá celou výukovou datovou sadu pro školení a vyhodnocení, a ne na určitou část. Naproti tomu, pokud ověřujete model pomocí dat generovaných náhodným rozdělením, obvykle vyhodnocujete model pouze 30% nebo méně dostupných dat.  
+    Křížové ověřování měří výkon modelu se zadanými parametry ve větším datovém prostoru. To znamená, že křížové ověřování používá celou výukovou datovou sadu pro školení a vyhodnocení místo části. Naproti tomu, pokud ověřujete model pomocí dat generovaných náhodným rozdělením, obvykle vyhodnocujete model pouze 30 procent nebo méně dostupných dat.  
 
-     Vzhledem k tomu, že vlaky pro křížové ověřování a ověřují model víckrát nad větší datovou sadou, je mnohem více výpočetně náročný a trvá mnohem déle než ověřování při náhodném rozdělení.  
+    Vzhledem k tomu, že vlaky s křížovým ověřováním a ověřují model víckrát nad větší datovou sadou, je mnohem efektivnější výpočetní výkon. Bude trvat mnohem déle než ověřování při náhodném rozdělení.  
 
--   Křížové ověřování vyhodnocuje datovou sadu i model.
+-   Křížové ověřování vyhodnocuje jak datovou sadu, tak i model.
 
-     Křížové ověřování neměří pouhou přesnost modelu, ale také poskytuje určitou představu o tom, jak je datová sada a jak citlivá je model, který může být v datech proměnlivý.  
+    Křížové ověřování nedokáže jednoduše změřit přesnost modelu. Poskytuje vám také informace o tom, jak je základní datovou sadou a jak citlivá model může být variace v datech.  
 
 ## <a name="how-to-use-cross-validate-model"></a>Jak používat model vzájemného ověřování
 
-Spuštění křížového ověřování může trvat dlouhou dobu, pokud je datová sada velká.  Proto můžete použít **model vzájemného ověřování** v počáteční fázi sestavování a testování modelu, pro vyhodnocení správnosti parametrů modelu (za předpokladu, že doba výpočtu je přípustná), a potom můžete vystavit a vyhodnotit svůj model pomocí navázaly se parametry pomocí [modelu vlaku](train-model.md) a [vyhodnotit moduly modelu](evaluate-model.md) .
+Spuštění křížového ověřování může trvat dlouhou dobu, pokud je datová sada velká.  Model vzájemného ověřování proto můžete použít v počáteční fázi vytváření a testování modelu. V této fázi můžete vyhodnotit dobré parametry modelu (za předpokladu, že doba výpočtu je přípustná). Potom můžete model vyhodnotit a vyhodnocovat pomocí navázaných parametrů s [modelem vlaků](train-model.md) a [vyhodnocovat moduly modelů](evaluate-model.md) .
 
-V tomto scénáři provedete a otestujete model pomocí **modelu vzájemného ověřování**.
+V tomto scénáři provedete a otestujete model pomocí modelu vzájemného ověřování.
 
-1. Přidejte do svého kanálu modul **model vzájemného ověřování** . Můžete ji najít v Návrháři Azure Machine Learning v kategorii **hodnocení modelu & vyhodnocení** . 
+1. Přidejte do svého kanálu modul model vzájemného ověřování. Můžete ji najít v Návrháři Azure Machine Learning v kategorii **hodnocení modelu & vyhodnocení** . 
 
-2. Připojte výstup jakéhokoli modelu **klasifikace** nebo **regrese** . 
+2. Připojte výstup jakéhokoli modelu klasifikace nebo regrese. 
 
-    Pokud například používáte pro klasifikaci **Bayes počítač se dvěma třídami** , nakonfigurujte model pomocí parametrů, které chcete, a pak přetáhněte konektor z **nevýukového portu modelu** klasifikátoru na shodný port **křížového ověření. Model**. 
+    Například pokud používáte **dva počítače třídy Bayes Point** pro klasifikaci, nakonfigurujte model pomocí parametrů, které chcete. Pak přetáhněte konektor z **nevýukového portu modelu** klasifikátoru na shodný port modelu křížového ověření. 
 
     > [!TIP] 
-    > Model není nutné vyškolený, protože **model křížového ověřování** automaticky nakládá model jako součást vyhodnocení.  
-3.  V portu **DataSet** **modelu křížového ověřování**připojte všechny datové sady s popiskem.  
+    > Model nemusíte procházet, protože model křížového ověřování ho automaticky nastavil jako součást vyhodnocení.  
+3.  V portu **DataSet** modelu křížového ověřování připojte všechny datové sady s popiskem.  
 
-4.  V podokně **vlastnosti** **modelu vzájemného ověřování**klikněte na možnost **Spustit selektor sloupců** a vyberte jeden sloupec, který obsahuje popisek třídy, nebo předvídatelné hodnoty. 
+4.  V podokně **vlastnosti** modelu vzájemného ověřování vyberte možnost **Spustit selektor sloupců**. Vyberte jeden sloupec, který obsahuje popisek třídy, nebo předvídatelné hodnoty. 
 
-5. Nastavte hodnotu **náhodného parametru počátečního** navýšení, pokud chcete, aby se výsledky křížového ověřování opakovaly po sobě jdoucích spuštění na stejných datech.  
+5. Nastavte hodnotu **náhodného parametru počátečního** navýšení, pokud chcete výsledky křížového ověřování opakovat v rámci souběžných běhů na stejná data.  
 
-6.  Spuštění kanálu
+6. Spuštění kanálu
 
 7. Popis sestav najdete v části s [výsledky](#results) .
 
-    Chcete-li získat kopii modelu pro pozdější použití, klikněte pravým tlačítkem myši na výstup modulu, který obsahuje algoritmus (například na **dva počítače Bayes bodu**), a klikněte na **Uložit jako trained model**.
+    Chcete-li získat kopii modelu pro pozdější použití, klikněte pravým tlačítkem myši na výstup modulu, který obsahuje algoritmus (například **počítač se dvěma třídami Bayes Point**). Pak vyberte **Uložit jako trained model**.
 
 ## <a name="results"></a>Výsledky
 
-Po dokončení všech iterací **model vzájemného ověřování** vytvoří skóre pro celou datovou sadu a také metriky výkonu, které můžete použít k vyhodnocení kvality modelu.
+Po dokončení všech iterací model vzájemného ověřování vytvoří skóre pro celou datovou sadu. Také vytváří metriky výkonu, které můžete použít k vyhodnocení kvality modelu.
 
 ### <a name="scored-results"></a>Výsledky skóre
 
 První výstup modulu poskytuje zdrojová data pro každý řádek spolu s některými předpovězenými hodnotami a souvisejícími pravděpodobnostmi. 
 
-Chcete-li zobrazit tyto výsledky, klikněte pravým tlačítkem myši na modul **modelu křížové validace** , vyberte **skóre výsledků**a klikněte na **vizualizovat**.
+Chcete-li zobrazit tyto výsledky, klikněte pravým tlačítkem na modul modelu křížového ověřování v kanálu. Vyberte **výsledky skóre**a pak vyberte **vizualizovat**.
 
 | Nový název sloupce      | Popis                              |
 | -------------------- | ---------------------------------------- |
-| Popisky s skóre        | Tento sloupec se přidá na konec datové sady a obsahuje předpokládanou hodnotu pro každý řádek. |
-| Pravděpodobnost skóre | Tento sloupec je přidán na konec datové sady a označuje odhadovanou pravděpodobnost hodnoty ve **vyhodnocených popiscích**. |
-| Číslo skládání          | Určuje index přeložení na základě 0, ke kterému byl během křížového ověřování přiřazen každý řádek dat. |
+| Popisky s skóre        | Tento sloupec se přidá na konec datové sady. Obsahuje předpokládanou hodnotu pro každý řádek. |
+| Pravděpodobnost skóre | Tento sloupec se přidá na konec datové sady. Označuje odhadovanou pravděpodobnost hodnoty v **popiscích skóre**. |
+| Číslo skládání          | Určuje index přeložení založený na nule, ke kterému byly při křížovém ověření přiřazeny jednotlivé řádky dat. |
 
  ### <a name="evaluation-results"></a>Výsledky vyhodnocení
 
-Druhá sestava je seskupena podle skládání. Pamatujte, že při provádění **model vzájemného ověřování** náhodně rozdělí data školení na *n* skládání (ve výchozím nastavení 10). V každé iteraci přes datovou sadu používá **model křížového** ověřování jednu přeložení jako datovou sadu ověřování a používá zbývající *n-1* skládání pro výuku modelu. Každý z modelů *n* je testován proti datům ve všech ostatních skládáních.
+Druhá sestava je seskupena podle skládání. Mějte na paměti, že při provádění model vzájemného ověřování náhodně rozdělí data školení na *n* skládání (ve výchozím nastavení 10). V každé iteraci přes datovou sadu používá model vzájemného ověřování jednu skládání jako datovou sadu. Pomocí zbývajících *n-1* skládání vytvoří výuku modelu. Každý z modelů *n* je testován proti datům ve všech ostatních skládáních.
 
 V této sestavě jsou skládání uvedena podle hodnoty indexu ve vzestupném pořadí.  Chcete-li seřadit v jakémkoli jiném sloupci, můžete výsledky Uložit jako datovou sadu.
 
-Chcete-li zobrazit tyto výsledky, klikněte pravým tlačítkem myši na modul **modelu křížové validace** , vyberte možnost **výsledky vyhodnocení podle skládání**a klikněte na **vizualizovat**.
+Chcete-li zobrazit tyto výsledky, klikněte pravým tlačítkem na modul modelu křížového ověřování v kanálu. Vyberte **výsledky vyhodnocení podle skládání**a pak vyberte **vizualizovat**.
 
 
 |Název sloupce| Popis|
 |----|----|
-|Číslo skládání| Identifikátor pro každé skládání. Pokud jste vytvořili 5 přeložení, mělo by být 5 podmnožin dat, očíslované od 0 do 4.
+|Číslo skládání| Identifikátor pro každé skládání. Pokud jste vytvořili pět přeložení, bude se jednat o pět podmnožin dat, očíslované od 0 do 4.
 |Počet příkladů v skládání|Počet řádků přiřazených každému skládání. Měly by být zhruba stejné. |
 
 
-Kromě toho jsou pro každé skládání zahrnuty následující metriky v závislosti na typu modelu, který vyhodnocujete. 
+Modul obsahuje také následující metriky pro každé skládání v závislosti na typu modelu, který vyhodnocujete: 
 
 + **Modely klasifikace**: přesnost, odvolání, F-SKORE, AUC, přesnost  
 
@@ -121,12 +120,12 @@ Kromě toho jsou pro každé skládání zahrnuty následující metriky v závi
 
 + Je osvědčeným postupem normalizovat datové sady předtím, než je použijete pro křížové ověřování. 
 
-+ Vzhledem **k** tomu, že model prochází a ověřuje model víckrát, je mnohem více výpočetně náročný a trvá déle, než kdybyste ověřili model pomocí náhodně rozdělené datové sady. 
++ Model vzájemného ověřování je mnohem více výpočetně náročný a trvá déle, než kdybyste ověřili model pomocí náhodně rozdělené datové sady. Důvodem je, že model vzájemného ověřování navlaky a ověřuje model víckrát.
 
-+ Není nutné rozdělit datovou sadu do školicích a testovacích sad při použití vzájemného ověřování k měření přesnosti modelu. 
++ Není nutné rozdělit datovou sadu do školicích a testovacích sad při použití křížového ověřování pro měření přesnosti modelu. 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro službu Azure Machine Learning. 
 

@@ -1,5 +1,5 @@
 ---
-title: Osvědčené postupy pro SQL Analytics ve službě Azure synapse Analytics (dřív SQL DW) | Microsoft Docs
+title: Osvědčené postupy pro SQL Analytics ve službě Azure synapse Analytics (dřív SQL DW)
 description: Doporučení a osvědčené postupy pro vývoj řešení pro SQL Analytics ve službě Azure synapse Analytics (dřív SQL DW).
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: bafa4088ee413e28ec6adee3df20f253aeebb861
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6a9d7c4ed020f447e9512c7bc2edd0caecf3400d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499837"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646179"
 ---
 # <a name="best-practices-for-sql-analytics-in-azure-synapse-analytics-formerly-sql-dw"></a>Osvědčené postupy pro SQL Analytics ve službě Azure synapse Analytics (dřív SQL DW)
 
@@ -137,7 +137,7 @@ Pokud se všímáte, že se dotazy uživatelů zdají trvat dlouhou dobu, může
 
 Viz také [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md), [Sys. DM _pdw_waits][sys.dm_pdw_waits]
 
-## <a name="other-resources"></a>Další zdroje informací
+## <a name="other-resources"></a>Další materiály
 Přečtěte si také článek [Řešení potíží][Troubleshooting], ve kterém najdete běžné problémy a jejich řešení.
 
 Pokud jste v tomto článku nenašli, co jste hledali, zkuste vyhledat všechny dokumenty Azure synapse pomocí hledání dokumentů na levé straně této stránky.  [Fórum Azure synapse][Azure SQL Data Warehouse MSDN Forum] je místo, kde můžete klást otázky pro ostatní uživatele a skupinu produktů Azure synapse. 

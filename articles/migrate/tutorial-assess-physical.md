@@ -7,14 +7,18 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 1165021ba602b85f47ff53dc14a2992f43be25bf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7574e80101784961448ff3c3b5a49d9e2c2f9807
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521345"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720232"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Vyhodnotit fyzické servery pomocí Azure Migrate: posouzení serveru
+
+> [!NOTE]
+> Pokud tuto funkci na portále Azure Migrate ještě nevidíte, počkejte prosím. Zobrazí se za příští týden.
+ 
 
 V tomto článku se dozvíte, jak pomocí nástroje Azure Migrate: Server Assessment Tool zhodnotit místní fyzické servery.
 
@@ -34,7 +38,7 @@ Tento kurz je druhý v řadě, který ukazuje, jak vyhodnocovat a migrovat fyzic
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Dokončete](tutorial-prepare-physical.md) první kurz v této sérii. Pokud to neuděláte, pokyny v tomto kurzu nebudou fungovat.
 - Tady je seznam toho, co byste měli udělat v prvním kurzu:
@@ -114,7 +118,7 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 
 - Nainstaluje agenty a webovou aplikaci pro zjišťování a hodnocení fyzických serverů.
 - Nainstalujte role Windows, včetně aktivační služby Windows, služby IIS a prostředí PowerShell ISE.
-- Stáhněte a nainstalujte zapisovatelný modul IIS. [Další informace](https://www.microsoft.com/download/details.aspx?id=7435).
+- Stáhněte a nainstalujte zapisovatelný modul IIS. [Další informace](https://www.microsoft.com/download/details.aspx?id=7435)
 - Aktualizuje klíč registru (HKLM) o trvalé podrobnosti nastavení pro Azure Migrate.
 - Vytvoří následující soubory pod cestou:
     - **Konfigurační soubory**:%ProgramData%\Microsoft Azure\Config

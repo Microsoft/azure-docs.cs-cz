@@ -1,32 +1,33 @@
 ---
-title: Zabezpečení na úrovni sloupce – Azure SQL Data Warehouse | Dokumentace Microsoftu
-description: Zabezpečení na úrovni sloupce (CLS) umožňuje řízení přístupu na sloupce tabulky databáze na základě kontextu spuštění uživatele nebo jejich členství ve skupině. Kompatibilní se Specifikací zjednodušuje návrh a psaní kódu zabezpečení v aplikaci. Specifikace CLS umožňuje implementovat omezení na sloupci přístup.
+title: Zabezpečení na úrovni sloupců
+description: Zabezpečení na úrovni sloupce (CLS) umožňuje zákazníkům řídit přístup k sloupcům tabulky databáze na základě kontextu spuštění uživatele nebo jejich členství ve skupinách. Specifikace CLS zjednodušuje návrh a kódování zabezpečení ve vaší aplikaci. Specifikace CLS umožňuje implementovat omezení přístupu k sloupci.
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: julieMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 04/02/2019
-ms.author: kavithaj
+ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
-ms.openlocfilehash: aa91bd586e064239d0e05c754427947963c9ee3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 605dfadaf4cd1686b124b120151e6a88a43f1a68
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61082798"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693082"
 ---
-# <a name="column-level-security"></a>Zabezpečení na úrovni sloupce
-Zabezpečení na úrovni sloupce (CLS) umožňuje řízení přístupu na sloupce tabulky databáze na základě kontextu spuštění uživatele nebo jejich členství ve skupině.
+# <a name="column-level-security"></a>Zabezpečení na úrovni sloupců
+Zabezpečení na úrovni sloupce (CLS) umožňuje zákazníkům řídit přístup k sloupcům tabulky databáze na základě kontextu spuštění uživatele nebo jejich členství ve skupinách.
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
 
-Kompatibilní se Specifikací zjednodušuje návrh a psaní kódu zabezpečení v aplikaci. Specifikace CLS umožňuje implementovat omezení na sloupci přístup chránit citlivá data. Například pro zajištění, aby konkrétní uživatelé mají přístup k jenom určité sloupce tabulky, které jsou relevantní pro jejich oddělení. Logiky přístupu k omezení je umístěn v databázové vrstvě spíše než pryč z dat v jiné aplikační vrstvy. Databáze platí omezení přístupu pokaždé, když dojde k pokusu o tento přístup k datům z libovolné úrovně. Toto omezení je systém zabezpečení spolehlivější a robustní snížením útoku na systém celkové zabezpečení. Kromě toho se specifikací CLS také eliminuje potřebu Úvod do zobrazení k filtrování sloupce pro nastavení omezení přístupu na uživatele.
+Specifikace CLS zjednodušuje návrh a kódování zabezpečení ve vaší aplikaci. Specifikace CLS umožňuje implementovat omezení přístupu k sloupci pro ochranu citlivých dat. Například zajistěte, aby konkrétní uživatelé měli přístup pouze k určitým sloupcům tabulky, které se vztahují k jejich oddělení. Logika omezení přístupu se nachází v databázové vrstvě, nikoli z dat v jiné aplikační vrstvě. Databáze použije omezení přístupu při každém pokusu o přístup k datům z libovolné úrovně. Toto omezení zajišťuje spolehlivější a robustní systém zabezpečení tím, že snižuje plochu celého systému zabezpečení. Kromě toho CLS také eliminuje nutnost zavedení zobrazení pro odfiltrování sloupců pro ukládání omezení přístupu pro uživatele.
 
-Je možné implementovat specifikaci CLS s [udělení](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) příkazu T-SQL. Pomocí tohoto mechanismu ověřování SQL a Azure Active Directory (AAD), jsou podporovány.
+Specifikaci CLS můžete implementovat pomocí příkazu [grant](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) T-SQL. Tento mechanismus podporuje ověřování SQL i Azure Active Directory (AAD).
 
-![specifikace CLS](./media/column-level-security/cls.png)
+![specifikaci](./media/column-level-security/cls.png)
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -46,10 +47,10 @@ GRANT <permission> [ ,...n ] ON
     | Database_user_mapped_to_Windows_Group
 ```
 
-## <a name="example"></a>Příklad:
-Následující příklad ukazuje, jak omezit přístup na sloupec "SSN" "Členství" tabulky "TestUser":
+## <a name="example"></a>Příklad
+Následující příklad ukazuje, jak omezit "TestUser" na přístup k sloupci ' SSN ' v tabulce členství:
 
-Vytvořte tabulku "Členství" SSN sloupec používá k ukládání čísla sociálního pojištění:
+Vytvořte tabulku Membership se sloupcem SSN, která se používá k uložení čísel sociálního pojištění:
 
 ```sql
 CREATE TABLE Membership
@@ -61,13 +62,13 @@ CREATE TABLE Membership
    Email varchar(100) NULL);
 ```
 
-"TestUser" Povolit přístup k všechny sloupce kromě sloupce SSN, obsahující citlivá data:
+Povolí možnost TestUser pro přístup ke všem sloupcům s výjimkou sloupce SSN, který obsahuje citlivá data:
 
 ```sql
 GRANT SELECT ON Membership(MemberID, FirstName, LastName, Phone, Email) TO TestUser;
 ```
 
-Dotazy spouštěné jako "TestUser" selže, pokud obsahují SSN sloupce:
+Dotazy spouštěné jako TestUser selžou, pokud budou zahrnovat sloupec SSN:
 
 ```sql
 SELECT * FROM Membership;
@@ -77,6 +78,6 @@ The SELECT permission was denied on the column 'SSN' of the object 'Membership',
 ```
 
 ## <a name="use-cases"></a>Případy použití
-Některé příklady jak kompatibilní se Specifikací používá ještě dnes:
-- Firma z oboru finančních služeb manažerům jediný účet umožňuje přístup pro čísla sociálního pojištění zákazníka (SSN), telefonní čísla a jiné identifikovatelné osobní údaje (PII).
-- Zdravotní péče zprostředkovatel umožňuje pouze doktorů tak sestry mít přístup k citlivým zdravotnickými záznamy při neumožňuje členové fakturační oddělení zobrazit tato data.
+Některé příklady použití specifikace CLS v současnosti:
+- Společnost DataServices zajišťuje přístup jenom správcům účtů, kteří mají přístup k číslům sociálního pojištění zákazníka (rodné číslo), telefonním číslům a dalším identifikovatelným osobním údajům (PII).
+- Poskytovatel péče o zdravotní péči umožňuje přístup k citlivým lékařským záznamům jenom lékaři a zdravotní sestry, zatímco neumožňuje členům fakturačního oddělení zobrazit tato data.

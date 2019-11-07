@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: ee1168c32cf4d8797b3957340e0acee5605ccc0f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eb7319d665f228c552423a60a3b1529dc9b1143f
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951884"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583217"
 ---
 # <a name="what-are-application-templates"></a>Co jsou šablony aplikací?
 
@@ -32,12 +32,11 @@ Azure IoT Central je nezávislá aplikační platforma pro odvětví. Šablony a
 
 - [Prodejci](../retail/overview-iot-central-retail-pnp.md)
   - Propojená logistika
-  - Centrum digitální distribuce
+  - Digitální distribuční centrum
   - Analýzy v obchodě – monitorování podmínek
   - Analýza v obchodě – rezervace
   - Správa inteligentních inventářů
 - [Konfiguruje](../energy/overview-iot-central-energy.md)
-  - Připojená logistika
   - Monitorování inteligentních měřičů
   - Sledování panelu slunečníku
 - [Schod](../government/overview-iot-central-government.md)

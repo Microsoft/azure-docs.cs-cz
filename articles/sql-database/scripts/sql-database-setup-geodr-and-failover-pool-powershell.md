@@ -1,5 +1,5 @@
 ---
-title: Příklad PowerShellu – Aktivní geografická replikace databáze Azure SQL ve fondu | Microsoft Docs
+title: Příklad PowerShellu – aktivní geografická replikace databáze SQL Azure ve fondu
 description: Azure PowerShell ukázkový skript pro nastavení aktivní geografické replikace pro databázi ve fondu v Azure SQL Database a převzetí služeb při selhání.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 940262c7235b61023adf547ea6ee4db9be1ee28c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3ff5d41c8d37745cbb06dbb98b5ce6e9b6a19ed4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569764"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691479"
 ---
 # <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>Použití PowerShellu ke konfiguraci aktivní geografické replikace pro databázi ve fondu v Azure SQL Database
 

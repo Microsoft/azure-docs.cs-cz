@@ -1,7 +1,7 @@
 ---
 title: Export nebo odstranění dat – Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: Naučte se exportovat nebo odstranit data v Custom Vision Service.
+description: Můžete udržet plnou kontrolu nad daty. Tento článek vysvětluje, jak můžete zobrazit, exportovat nebo odstranit data v Custom Vision Service.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: b885f359d9416fbc5f778b094610260342a75f65
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 82d9f4508db376ebbe69ef772c15fb732391a31d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564223"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718964"
 ---
 # <a name="export-or-delete-user-data-in-custom-vision"></a>Export nebo odstranění uživatelských dat v Custom Vision
 
@@ -25,13 +25,13 @@ Custom Vision shromažďuje data uživatelů za účelem provozu služby, ale z�
 
 Informace o tom, jak exportovat a odstranit data uživatelů v Custom Vision, najdete v následující tabulce.
 
-| Data | Operace exportu | Operace odstranění |
+| Data | Operace exportu | Odstranit operaci |
 | ---- | ---------------- | ---------------- |
 | Informace o účtu (klíče předplatného) | [GetAccountInfo](https://go.microsoft.com/fwlink/?linkid=865446) | Odstranění pomocí Azure Portal (předplatná Azure) Nebo pomocí tlačítka "odstranit váš účet" na stránce nastavení CustomVision.ai (odběry účtu Microsoft) | 
 | Podrobnosti iterace | [Getiterace](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteIteration](https://go.microsoft.com/fwlink/?linkid=865446) |
 | Podrobnosti o výkonu iterace | [GetIterationPerformance](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteIteration](https://go.microsoft.com/fwlink/?linkid=865446) | 
 | Seznam iterací | [Getiterace](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteIteration](https://go.microsoft.com/fwlink/?linkid=865446) |
-| Podrobnosti o projektech a projektech | [](https://go.microsoft.com/fwlink/?linkid=865446) Getproject a [](https://go.microsoft.com/fwlink/?linkid=865446) getprojects | [DeleteProject](https://go.microsoft.com/fwlink/?linkid=865446) | 
+| Podrobnosti o projektech a projektech | [](https://go.microsoft.com/fwlink/?linkid=865446) Getproject a [getprojects](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteProject](https://go.microsoft.com/fwlink/?linkid=865446) | 
 | Značky obrázku | [GetTag](https://go.microsoft.com/fwlink/?linkid=865446) a [GetTags](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteTag](https://go.microsoft.com/fwlink/?linkid=865446) | 
-| Obrázky | [GetTaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (poskytuje identifikátor URI pro stažení obrázku) a [GetUntaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (poskytuje identifikátor URI pro stažení obrázku) | [DeleteImages](https://go.microsoft.com/fwlink/?linkid=865446) | 
+| Image | [GetTaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (poskytuje identifikátor URI pro stažení obrázku) a [GetUntaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (poskytuje identifikátor URI pro stažení obrázku) | [DeleteImages](https://go.microsoft.com/fwlink/?linkid=865446) | 
 | Exportované modely | [GetExports](https://go.microsoft.com/fwlink/?linkid=865446) | Odstraněno při odstraňování účtu |

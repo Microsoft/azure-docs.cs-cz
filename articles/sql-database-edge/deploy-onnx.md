@@ -4,21 +4,22 @@ description: Naučte se, jak vytvořit model, převést ho na ONNX, nasadit ho d
 keywords: nasazení Edge databáze SQL
 services: sql-database-edge
 ms.service: sql-database-edge
+ms.subservice: machine-learning
 ms.topic: conceptual
 author: ronychatterjee
 ms.author: achatter
 ms.reviewer: davidph
 ms.date: 11/04/2019
-ms.openlocfilehash: 2306a63aa46bd8816c742b0a6d076471705c46a6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 37fc04919b844d1edf87be62a587c34de4a8c4d5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514066"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692339"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model-in-sql-database-edge-preview"></a>Nasazení a vytvoření předpovědi s modelem ONNX v SQL Database Edge Preview
 
-V tomto rychlém startu se dozvíte, jak vytvořit model, převést ho na ONNX, nasadit ho do Azure SQL Database Edge Preview a potom spustit nativní předpověď dat pomocí nahraného ONNX modelu.
+V tomto rychlém startu se dozvíte, jak vytvořit model, převést ho na ONNX, nasadit ho do Azure SQL Database Edge Preview a potom spustit nativní předpověď dat pomocí nahraného ONNX modelu. Další informace najdete v tématu [Machine Learning a AI s ONNX v SQL Database Edge Preview](onnx-overview.md).
 
 Tento rychlý Start je založený na **scikit-učení** a používá [datovou sadu Boston](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html).
 

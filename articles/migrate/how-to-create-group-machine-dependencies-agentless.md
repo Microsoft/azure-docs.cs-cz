@@ -6,14 +6,17 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/23/2019
 ms.author: hamusa
-ms.openlocfilehash: d646187627d74810a846d7126562e2e796c5c9f7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e9f9e812d5463f0a503b100780f9b988e43f748d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512805"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720269"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Nastavení Vizualizace závislostí bez agentů pro posouzení
+
+> [!NOTE]
+> Pokud tuto funkci na portále Azure Migrate ještě nevidíte, počkejte prosím. Zobrazí se za příští týden.
 
 Tento článek popisuje, jak nastavit mapování závislostí bez agentů v Azure Migrate: posouzení serveru. Tato funkce je v současnosti k dispozici ve verzi Preview pro počítače VMware zjištěné pomocí zařízení Azure Migrate. 
 
@@ -52,7 +55,7 @@ Vizualizace závislostí bez agentů nevyžaduje, abyste nainstalovali žádné 
 - Ujistěte se, že jste [vytvořili](how-to-add-tool-first-time.md) projekt Azure Migrate.
 - Analýza závislostí bez agentů je aktuálně dostupná jenom pro počítače VMware.
 - Pokud jste již vytvořili projekt, ujistěte se, že jste [přidali](how-to-assess.md) Azure Migrate: nástroj Server Assessment Tool.
-- Ujistěte se, že jste počítače VMware zjistili v Azure Migrate. to můžete provést nastavením zařízení Azure Migrate pro [VMware](how-to-set-up-appliance-vmware.md). Zařízení zjišťuje místní počítače a odesílá data o metadatech a výkonu Azure Migrate: posouzení serveru. [Další informace](migrate-appliance.md).
+- Ujistěte se, že jste počítače VMware zjistili v Azure Migrate. to můžete provést nastavením zařízení Azure Migrate pro [VMware](how-to-set-up-appliance-vmware.md). Zařízení zjišťuje místní počítače a odesílá data o metadatech a výkonu Azure Migrate: posouzení serveru. [Další informace](migrate-appliance.md)
 - Zajistěte, aby byly virtuální počítače VMware podporované pro vizualizaci závislostí bez agentů, jak je shrnuto v následující tabulce.
 
 

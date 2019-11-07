@@ -1,21 +1,22 @@
 ---
-title: Transparentní šifrování dat v datovém skladu SQL (T-SQL) | Dokumentace Microsoftu
-description: Transparentní šifrování dat (TDE) ve službě SQL Data Warehouse (T-SQL)
+title: Transparentní šifrování dat (T-SQL)
+description: Transparentní šifrování dat (TDE) v SQL Data Warehouse (T-SQL)
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: julieMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 04/30/2019
-ms.author: kavithaj
+ms.author: jrasnick
 ms.reviewer: rortloff
-ms.openlocfilehash: 1d62bc5cb080f2167f13bd58e9a8a334b8ae5163
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 98695aa7578e90be9ada2f86640e68b05a9812ed
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65146074"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692741"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>Začínáme s transparentní šifrování dat (TDE)
 > [!div class="op_single_selector"]
@@ -27,38 +28,38 @@ ms.locfileid: "65146074"
 > 
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
-Pokud chcete povolit transparentní šifrování dat (TDE), musíte být správce nebo členem dbmanager role.
+Pokud chcete povolit transparentní šifrování dat (TDE), musíte být správcem nebo členem role dbmanager.
 
 ## <a name="enabling-encryption"></a>Povolení šifrování
-Použijte následující postup povolit transparentní šifrování dat pro SQL Data Warehouse:
+Pomocí těchto kroků povolíte TDE pro SQL Data Warehouse:
 
-1. Připojte se k *hlavní* databáze na serveru, který je hostitelem databáze pomocí přihlášení, který je správcem nebo členem skupiny **dbmanager** role v hlavní databázi
-2. Spusťte následující příkaz k šifrování databáze.
+1. Připojte se k *Hlavní* databázi na serveru, který je hostitelem databáze, pomocí přihlašovacích údajů, které jsou správcem nebo členem role **dbmanager** v hlavní databázi.
+2. Spusťte následující příkaz k zašifrování databáze.
 
 ```sql
 ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ```
 
-## <a name="disabling-encryption"></a>Zakázáním šifrování
-Postupujte podle těchto kroků zakázat transparentní šifrování dat pro SQL Data Warehouse:
+## <a name="disabling-encryption"></a>Zakázání šifrování
+Pomocí těchto kroků zakážete TDE pro SQL Data Warehouse:
 
-1. Připojení k *hlavní* databáze pomocí přihlášení, který je správce nebo člen **dbmanager** role v hlavní databázi
-2. Spusťte následující příkaz k šifrování databáze.
+1. Připojení k *Hlavní* databázi pomocí přihlášení, které je správcem nebo členem role **dbmanager** v hlavní databázi
+2. Spusťte následující příkaz k zašifrování databáze.
 
 ```sql
 ALTER DATABASE [AdventureWorks] SET ENCRYPTION OFF;
 ```
 
 > [!NOTE]
-> Před prováděním změn nastavení transparentní šifrování dat musí obnovit pozastavený SQL Data Warehouse.
+> Před provedením změn v nastavení TDE je třeba obnovit pozastavený SQL Data Warehouse.
 > 
 > 
 
-## <a name="verifying-encryption"></a>Ověření šifrování
+## <a name="verifying-encryption"></a>Ověřování šifrování
 Pokud chcete ověřit stav šifrování pro SQL Data Warehouse, postupujte podle následujících kroků:
 
-1. Připojení k *hlavní* nebo instanci databáze pomocí přihlášení, který je správce nebo člen **dbmanager** role v hlavní databázi
-2. Spusťte následující příkaz k šifrování databáze.
+1. Připojte se k *Hlavní* databázi nebo databázi instance pomocí přihlášení, které je správcem nebo členem role **dbmanager** v hlavní databázi.
+2. Spusťte následující příkaz k zašifrování databáze.
 
 ```sql
 SELECT
@@ -68,11 +69,11 @@ FROM
     sys.databases;
 ```
 
-Výsledkem ```1``` Určuje databázi šifrované ```0``` Určuje databázi bez šifrování.
+Výsledek ```1``` označuje šifrovanou databázi, ```0``` označuje nešifrovanou databázi.
 
-## <a name="encryption-dmvs"></a>Šifrování zobrazení dynamické správy
-* [sys.databases][sys.databases] 
-* [sys.dm_pdw_nodes_database_encryption_keys][sys.dm_pdw_nodes_database_encryption_keys]
+## <a name="encryption-dmvs"></a>Zobrazení dynamické správy šifrování
+* [sys. databases][sys.databases] 
+* [sys. DM _pdw_nodes_database_encryption_keys][sys.dm_pdw_nodes_database_encryption_keys]
 
 <!--Anchors-->
 [Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx

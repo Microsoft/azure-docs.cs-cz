@@ -1,6 +1,6 @@
 ---
-title: Vystavení místní služby WCF REST pro externího klienta pomocí Azure WCF Relay | Microsoft Docs
-description: Vytvoření klienta a aplikace služby pomocí WCF Relay.
+title: 'Kurz: zpřístupnění místní služby WCF REST externímu klientovi pomocí Azure WCF Relay'
+description: 'Kurz: Vytvoření aplikace klienta a služby pomocí WCF Relay.'
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 53dfd236-97f1-4778-b376-be91aa14b842
 ms.service: service-bus-relay
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 4707e56a09c257c9e03e6db070083c81ffde07b6
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: e2dd0448dfed55450a6319936f49831e5d6d77f3
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212897"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718856"
 ---
-# <a name="expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Vystavení místní služby WCF REST pro externího klienta pomocí Azure WCF Relay
+# <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Kurz: zpřístupnění místní služby WCF REST externímu klientovi pomocí Azure WCF Relay
 
 V tomto kurzu se dozvíte, jak vytvořit klientskou aplikaci WCF Relay a službu pomocí Azure Relay. Podobný kurz, který používá [Service Bus zasílání zpráv](../service-bus-messaging/service-bus-messaging-overview.md), najdete v tématu [Začínáme s Service Bus fronty](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
@@ -47,7 +47,7 @@ V tomto kurzu provedete následující úlohy:
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
-* Předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* Předplatné Azure. Pokud ho nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 * [Sada Visual Studio 2015 nebo novější](https://www.visualstudio.com). V příkladech v tomto kurzu se používá Visual Studio 2019.
 * Sada Azure SDK pro .NET Nainstalujte ji ze [stránky pro stažení sady SDK](https://azure.microsoft.com/downloads/).
 
@@ -68,15 +68,15 @@ Kontrakt služby určuje, které operace služba podporuje. Operace jsou metody 
 1. V možnosti **vytvořit nový projekt**zvolte **Konzolová aplikace (.NET Framework)** pro C# a vyberte **Další**.
 1. Pojmenujte projekt *EchoService* a vyberte **vytvořit**.
 
-   ![Vytvoření aplikace konzoly][2]
+   ![Vytvoření konzolové aplikace][2]
 
 1. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**. V okně **Správce balíčků NuGet**vyberte **Procházet**, vyhledejte a vyberte **windowsazure. ServiceBus**. Vyberte **nainstalovat**a přijměte podmínky použití.
 
     ![Balíček Service Bus][3]
 
-   Tento balíček automaticky přidá odkazy na knihovny Service Bus a WCF `System.ServiceModel`. [System.ServiceModel](/dotnet/api/system.servicemodel) je obor názvů, který vám umožňuje programový přístup k základním funkcím WCF. Service Bus používá mnoho objektů a atributů WCF k definování kontraktů služby.
+   Tento balíček automaticky přidá odkazy na knihovny Service Bus a `System.ServiceModel`WCF. [System.ServiceModel](/dotnet/api/system.servicemodel) je obor názvů, který vám umožňuje programový přístup k základním funkcím WCF. Service Bus používá mnoho objektů a atributů WCF k definování kontraktů služby.
 
-1. Do horní části `using` *program.cs*přidejte následující příkazy:
+1. Do horní části *program.cs*přidejte následující příkazy `using`:
 
     ```csharp
     using System.ServiceModel;
@@ -86,10 +86,10 @@ Kontrakt služby určuje, které operace služba podporuje. Operace jsou metody 
 1. Změňte název oboru názvů z výchozího názvu `EchoService` na `Microsoft.ServiceBus.Samples`.
 
    > [!IMPORTANT]
-   > V tomto kurzu se C# používá `Microsoft.ServiceBus.Samples` obor názvů, který je oborem názvů spravovaného typu založeného na kontraktu, který se používá v konfiguračním souboru v části [Konfigurace klienta služby WCF](#configure-the-wcf-client) . Můžete určit libovolný obor názvů, který chcete při sestavování této ukázky použít. Tento kurz ale nebude fungovat, pokud pak v konfiguračním souboru aplikace neupravíte obory názvů kontraktu a služby odpovídajícím způsobem. Obor názvů zadaný v souboru *App. config* musí být stejný jako obor názvů zadaný ve vašich C# souborech.
+   > V tomto kurzu se C# používá obor názvů `Microsoft.ServiceBus.Samples` což je obor názvů spravovaného typu založeného na kontraktu, který se používá v konfiguračním souboru v části [Konfigurace klienta služby WCF](#configure-the-wcf-client) . Můžete určit libovolný obor názvů, který chcete při sestavování této ukázky použít. Tento kurz ale nebude fungovat, pokud pak v konfiguračním souboru aplikace neupravíte obory názvů kontraktu a služby odpovídajícím způsobem. Obor názvů zadaný v souboru *App. config* musí být stejný jako obor názvů zadaný ve vašich C# souborech.
    >
 
-1. Přímo po `Microsoft.ServiceBus.Samples` deklaraci oboru názvů, ale v rámci oboru názvů, definujte nové rozhraní `IEchoContract` s názvem a `ServiceContractAttribute` použijte atribut `https://samples.microsoft.com/ServiceModel/Relay/`na rozhraní s hodnotou oboru názvů. Vložte následující kód za deklaraci oboru názvů:
+1. Přímo po deklaraci oboru názvů `Microsoft.ServiceBus.Samples`, ale v rámci oboru názvů, definujte nové rozhraní s názvem `IEchoContract` a použijte atribut `ServiceContractAttribute` na rozhraní s hodnotou oboru názvů `https://samples.microsoft.com/ServiceModel/Relay/`. Vložte následující kód za deklaraci oboru názvů:
 
     ```csharp
     [ServiceContract(Name = "IEchoContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
@@ -104,7 +104,7 @@ Kontrakt služby určuje, které operace služba podporuje. Operace jsou metody 
    > Obor názvů kontraktu služby obvykle obsahuje schéma pojmenování s informacemi o verzi. Informace o verzi, které jsou v oboru názvů kontraktu služby, službám umožňuje službám izolovat výrazné změny pomocí definice nové služby s novým oborem názvů, která bude vystavená na novém koncovém bodu. Tímto způsobem můžou klienti dál používat původní kontrakt služby, aniž by se museli aktualizovat. Informace o verzi může mít podobu data nebo čísla sestavení. Další informace najdete v článku o [Správa verzí služeb](/dotnet/framework/wcf/service-versioning). Pro účely tohoto kurzu schéma pojmenování oboru názvů kontraktu služby neobsahuje informace o verzi.
    >
 
-1. V rámci `IEchoContract` `OperationContractAttribute` rozhraní deklarujte metodu pro jedinou operaci, kterou kontrakt zpřístupňuje v rozhraní, a použijte atribut pro metodu, kterou chcete zveřejnit jako součást kontraktu veřejné WCF Relay, a to následujícím způsobem: `IEchoContract`
+1. V rozhraní `IEchoContract` deklarujte metodu pro jedinou operaci, kterou `IEchoContract` smlouva zpřístupňuje v rozhraní, a použijte atribut `OperationContractAttribute` pro metodu, kterou chcete zveřejnit jako součást veřejné WCF Relay kontraktu, a to následujícím způsobem. :
 
     ```csharp
     [OperationContract]
@@ -119,7 +119,7 @@ Kontrakt služby určuje, které operace služba podporuje. Operace jsou metody 
 
     Kanál je objekt WCF, kterým si hostitel a klient navzájem posílají informace. Později do kanálu napíšete kód, který bude zobrazovat informace o těchto dvou aplikacích.
 
-1. Vyberte **sestavení** > **sestavení buildu nebo vyberte** CTRL + SHIFT + B a potvrďte přesnost své dosavadní práce.
+1. Vyberte **sestavit** > **Sestavit řešení** nebo vyberte CTRL + SHIFT + B a potvrďte přesnost své dosavadní práce.
 
 ### <a name="example-of-a-wcf-contract"></a>Příklad smlouvy WCF
 
@@ -153,7 +153,7 @@ Když je teď vytvořené rozhraní, můžete ho implementovat.
 
 ## <a name="implement-the-wcf-contract"></a>Implementace kontraktu WCF
 
-Vytvoření služby Azure Relay vyžaduje, abyste nejdřív vytvořili kontrakt pomocí rozhraní. Další informace o vytváření rozhraní najdete v předchozí části. Další postup implementuje rozhraní. Tato úloha zahrnuje vytvoření třídy s názvem `EchoService` , která implementuje uživatelsky definované `IEchoContract` rozhraní. Po implementaci rozhraní je třeba nakonfigurovat rozhraní pomocí konfiguračního souboru *App. config* . Konfigurační soubor obsahuje informace potřebné pro aplikaci. Tyto informace zahrnují název služby, název kontraktu a typ protokolu, který se používá ke komunikaci se službou Relay. Kód použitý pro tyto úlohy je k dispozici v příkladu, který následuje po tomto postupu. Obecnější diskuzi o implementaci kontraktu služby najdete v tématu [implementace kontraktů](/dotnet/framework/wcf/implementing-service-contracts)služeb.
+Vytvoření služby Azure Relay vyžaduje, abyste nejdřív vytvořili kontrakt pomocí rozhraní. Další informace o vytváření rozhraní najdete v předchozí části. Další postup implementuje rozhraní. Tato úloha zahrnuje vytvoření třídy s názvem `EchoService`, která implementuje uživatelsky definované rozhraní `IEchoContract`. Po implementaci rozhraní je třeba nakonfigurovat rozhraní pomocí konfiguračního souboru *App. config* . Konfigurační soubor obsahuje informace potřebné pro aplikaci. Tyto informace zahrnují název služby, název kontraktu a typ protokolu, který se používá ke komunikaci se službou Relay. Kód použitý pro tyto úlohy je k dispozici v příkladu, který následuje po tomto postupu. Obecnější diskuzi o implementaci kontraktu služby najdete v tématu [implementace kontraktů](/dotnet/framework/wcf/implementing-service-contracts)služeb.
 
 1. Vytvořte novou třídu s názvem `EchoService` přímo po definování rozhraní `IEchoContract`. Třída `EchoService` implementuje rozhraní `IEchoContract`.
 
@@ -165,7 +165,7 @@ Vytvoření služby Azure Relay vyžaduje, abyste nejdřív vytvořili kontrakt 
 
     Podobně jako u implementace jiných rozhraní můžete definici implementovat v jiném souboru. V tomto kurzu je ale implementace ve stejném souboru jako definice rozhraní a metoda `Main()`.
 
-1. Na rozhraní `IEchoContract` aplikujte atribut [ServiceBehaviorAttribute](/dotnet/api/system.servicemodel.servicebehaviorattribute). Atribut specifikuje název služby a obor názvů. Když to dokončíte, třída `EchoService` bude vypadat takto:
+1. Na rozhraní [ aplikujte atribut ](/dotnet/api/system.servicemodel.servicebehaviorattribute)ServiceBehaviorAttribute`IEchoContract`. Atribut specifikuje název služby a obor názvů. Když to dokončíte, třída `EchoService` bude vypadat takto:
 
     ```csharp
     [ServiceBehavior(Name = "EchoService", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
@@ -184,7 +184,7 @@ Vytvoření služby Azure Relay vyžaduje, abyste nejdřív vytvořili kontrakt 
     }
     ```
 
-1. Vyberte **sestavit** > sestavení**řešení** nebo vyberte CTRL + SHIFT + B.
+1. Vyberte **sestavit** > **Sestavit řešení** nebo vyberte CTRL + SHIFT + B.
 
 ### <a name="define-the-configuration-for-the-service-host"></a>Definujte konfiguraci pro hostitele služby.
 
@@ -220,7 +220,7 @@ Konfigurační soubor je podobný konfiguračnímu souboru WCF. Obsahuje název 
 
     Koncový bod definuje, kde bude klient hledat hostitelskou aplikaci. Později kurz používá tento krok k vytvoření identifikátoru URI, který plně zpřístupňuje hostitele prostřednictvím Azure Relay. Vazba deklaruje, že používáme protokol TCP jako protokol pro komunikaci se službou Relay.
 
-1. Vyberte **sestavení** > **sestavení buildu nebo vyberte** CTRL + SHIFT + B a potvrďte přesnost své dosavadní práce.
+1. Vyberte **sestavit** > **Sestavit řešení** nebo vyberte CTRL + SHIFT + B a potvrďte přesnost své dosavadní práce.
 
 ### <a name="example-of-implementation-of-a-service-contract"></a>Příklad implementace kontraktu služby
 
@@ -286,7 +286,7 @@ Tento krok popisuje, jak spustit službu Azure Relay.
 
 ### <a name="create-a-base-address-for-the-service"></a>Vytvoření základní adresy pro službu
 
-Po kódu, který jste přidali v předchozí části, vytvořte `Uri` instanci pro základní adresu služby. Toto URI specifikuje schéma Service Bus, obor názvů a cestu rozhraní služby.
+Po kódu, který jste přidali v předchozí části, vytvořte instanci `Uri` pro základní adresu služby. Toto URI specifikuje schéma Service Bus, obor názvů a cestu rozhraní služby.
 
 ```csharp
 Uri address = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "EchoService");
@@ -298,13 +298,13 @@ V tomto kurzu je URI `sb://putServiceNamespaceHere.windows.net/EchoService`.
 
 ### <a name="create-and-configure-the-service-host"></a>Vytvoření a konfigurace hostitele služby
 
-1. Pořád pracujete `Main()`v, nastavte režim připojení na `AutoDetect`.
+1. Pořád pracujete v `Main()`nastavte režim připojení na `AutoDetect`.
 
     ```csharp
     ServiceBusEnvironment.SystemConnectivity.Mode = ConnectivityMode.AutoDetect;
     ```
 
-    Režim připojení popisuje protokol, který služba používá ke komunikaci se službou Relay. buď HTTP, nebo TCP. Když použijete výchozí `AutoDetect`nastavení, služba se pokusí připojit k Azure Relay přes TCP, pokud je k dispozici, a http, pokud není k dispozici protokol TCP. Tento výsledek se liší od protokolu, který služba určuje pro komunikaci klientů. Jeho protokol se určuje podle požité vazby. Služba může například používat vazbu [BasicHttpRelayBinding](/dotnet/api/microsoft.servicebus.basichttprelaybinding) , která určuje, že jeho koncový bod komunikuje s klienty přes protokol HTTP. Tato služba by mohla určit `ConnectivityMode.AutoDetect` , aby služba komunikovala s Azure Relay přes TCP.
+    Režim připojení popisuje protokol, který služba používá ke komunikaci se službou Relay. buď HTTP, nebo TCP. Když použijete výchozí nastavení `AutoDetect`, služba se pokusí připojit k Azure Relay přes protokol TCP, pokud je k dispozici, a HTTP, pokud není k dispozici protokol TCP. Tento výsledek se liší od protokolu, který služba určuje pro komunikaci klientů. Jeho protokol se určuje podle požité vazby. Služba může například používat vazbu [BasicHttpRelayBinding](/dotnet/api/microsoft.servicebus.basichttprelaybinding) , která určuje, že jeho koncový bod komunikuje s klienty přes protokol HTTP. Tato služba může určit `ConnectivityMode.AutoDetect`, aby služba komunikovala s Azure Relay přes protokol TCP.
 
 1. Vytvořte hostitele služby pomocí URI, které jste předtím vytvořili v této části.
 
@@ -312,7 +312,7 @@ V tomto kurzu je URI `sb://putServiceNamespaceHere.windows.net/EchoService`.
     ServiceHost host = new ServiceHost(typeof(EchoService), address);
     ```
 
-    Hostitel služby je objekt WCF, který instancuje službu. Zde předáte typ služby, kterou chcete vytvořit, `EchoService` typ a také adresu, na které chcete službu zveřejnit.
+    Hostitel služby je objekt WCF, který instancuje službu. Tady předáte typ služby, kterou chcete vytvořit, `EchoService` typ a taky adresu, na které chcete službu zveřejnit.
 
 1. V horní části souboru *program.cs* přidejte odkazy na [System. ServiceModel. Description](/dotnet/api/system.servicemodel.description) a [Microsoft. ServiceBus. Description](/dotnet/api/microsoft.servicebus.description).
 
@@ -327,7 +327,7 @@ V tomto kurzu je URI `sb://putServiceNamespaceHere.windows.net/EchoService`.
     IEndpointBehavior serviceRegistrySettings = new ServiceRegistrySettings(DiscoveryType.Public);
     ```
 
-    Tento krok informuje službu Relay o tom, že se vaše aplikace dá najít veřejně, a prozkoumáním informačního kanálu Atom pro váš projekt. Pokud nastavíte `DiscoveryType` na `private`, bude mít klient stále přístup ke službě. Služba se ale při hledání v `Relay` oboru názvů nezobrazí. Místo toho by klient musel předem znát cestu ke koncovému bodu.
+    Tento krok informuje službu Relay o tom, že se vaše aplikace dá najít veřejně, a prozkoumáním informačního kanálu Atom pro váš projekt. Pokud nastavíte `DiscoveryType` na `private`, může klient stále přistupovat ke službě. Služba se ale při hledání `Relay`ého oboru názvů nezobrazí. Místo toho by klient musel předem znát cestu ke koncovému bodu.
 
 1. Použijte pověření služby pro koncové body služby definované v souboru *App. config* :
 
@@ -343,7 +343,7 @@ V tomto kurzu je URI `sb://putServiceNamespaceHere.windows.net/EchoService`.
 
 ### <a name="open-the-service-host"></a>Otevření hostitele služby
 
-1. Ještě v `Main()`nástroji přidejte následující řádek pro otevření služby.
+1. Pořád v `Main()`přidejte následující řádek pro otevření služby.
 
     ```csharp
     host.Open();
@@ -462,13 +462,13 @@ Další úlohou je vytvoření klientské aplikace a definování kontraktu slu�
 
       ![Nainstalovat balíček služby Service Bus][4]
 
-1. Do souboru *program.cs* přidejte příkazproobornázvůSystem.ServiceModel.`using` [](/dotnet/api/system.servicemodel)
+1. Do souboru *program.cs* přidejte příkaz `using` pro obor názvů [System. ServiceModel](/dotnet/api/system.servicemodel) .
 
     ```csharp
     using System.ServiceModel;
     ```
 
-1. Přidejte definici kontraktu služby do oboru názvů, jak je vidět v následujícím příkladu. Tato definice je shodná s definicí použitou v projektu **služby** . Přidejte tento kód na začátek `Microsoft.ServiceBus.Samples` oboru názvů.
+1. Přidejte definici kontraktu služby do oboru názvů, jak je vidět v následujícím příkladu. Tato definice je shodná s definicí použitou v projektu **služby** . Přidejte tento kód v horní části `Microsoft.ServiceBus.Samples` oboru názvů.
 
     ```csharp
     [ServiceContract(Name = "IEchoContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
@@ -520,7 +520,7 @@ V tomto kroku vytvoříte soubor *App. config* pro základní klientskou aplikac
 
 1. V **Průzkumník řešení**v projektu **EchoClient** poklikejte na **App. config** a otevře se soubor v editoru sady Visual Studio.
 1. V elementu `<appSettings>` nahraďte zástupné texty názvem svého oboru názvů a klíčem SAS, který jste zkopírovali v jednom z předchozích kroků.
-1. V rámci `<client>` elementu přidejte element. `system.serviceModel`
+1. V rámci elementu `system.serviceModel` přidejte prvek `<client>`.
 
     ```xml
     <?xmlversion="1.0"encoding="utf-8"?>
@@ -735,7 +735,7 @@ namespace Microsoft.ServiceBus.Samples
 
 1. Vyberte CTRL + SHIFT + B a sestavte řešení. Tato akce vytvoří projekt klienta i projekt služby, který jste vytvořili v předchozích krocích.
 1. Než spustíte klientskou aplikaci, musíte se ujistit, že aplikace služby běží. V **Průzkumník řešení**klikněte pravým tlačítkem na řešení **EchoService** a pak vyberte **vlastnosti**.
-1. Na **stránce vlastnosti**, **běžné vlastnosti** > **po spuštění projektu**a pak zvolte **více projektů po spuštění**. Ujistěte se, že se **EchoService** v seznamu objeví jako první.
+1. Na **stránce vlastností**, **běžné vlastnosti** > **spouštěný projekt**, a pak zvolte **více projektů po spuštění**. Ujistěte se, že se **EchoService** v seznamu objeví jako první.
 1. V poli **Akce** u projektů **EchoService** i **EchoClient** nastavte **Start**.
 
     ![Stránky vlastností projektu][5]

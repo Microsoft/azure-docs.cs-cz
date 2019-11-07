@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 1bbfd2a64de0b42da19d0a978874d564f1755c59
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 2dea1c160b07ac08075dad3a1ca1f6fc753e3481
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387631"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622657"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Doprovodné materiály k omezením požadavků v grafu prostředků Azure
 
@@ -31,7 +31,7 @@ Azure Resource Graph přiděluje číslo kvóty pro každého uživatele na zák
 V každé odpovědi na dotaz přidává Azure Resource Graph dvě hlavičky omezení:
 
 - `x-ms-user-quota-remaining` (int): zbývající kvóta prostředků pro uživatele. Tato hodnota se mapuje na počet dotazů.
-- `x-ms-user-quota-resets-after` (hh: mm: SS): časový interval, po jehož uplynutí se neobnoví spotřeba kvóty uživatele.
+- `x-ms-user-quota-resets-after` (hh: mm: SS): doba trvání, dokud nebude obnovena spotřeba kvóty uživatele.
 
 Pro ilustraci, jak fungují hlavičky, se podívejme na odpověď na dotaz, která má hlavičku a hodnoty `x-ms-user-quota-remaining: 10` a `x-ms-user-quota-resets-after: 00:00:03`.
 
@@ -227,7 +227,7 @@ Vzhledem k tomu, že Azure Resource Graph vrací maximálně 1000 záznamů v je
 
 ## <a name="still-get-throttled"></a>Pořád se omezuje?
 
-Pokud se vám po uplatnění výše uvedených doporučení omezuje omezení, obraťte se na tým na adrese [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com).
+Pokud se vám po uplatnění výše uvedených doporučení omezuje omezení, obraťte se na tým na [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com).
 
 Zadejte tyto podrobnosti:
 
@@ -240,4 +240,4 @@ Zadejte tyto podrobnosti:
 
 - Podívejte se na jazyk používaný v [počátečních dotazech](../samples/starter.md).
 - Viz rozšířená použití v [rozšířených dotazech](../samples/advanced.md).
-- Naučte se [prozkoumat prostředky](explore-resources.md).
+- Přečtěte si další informace o tom, jak [prozkoumat prostředky](explore-resources.md).

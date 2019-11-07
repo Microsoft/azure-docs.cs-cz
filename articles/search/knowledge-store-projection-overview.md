@@ -1,25 +1,24 @@
 ---
 title: Práce s projekcemi ve znalostní bázi Knowledge Store (Preview)
 titleSuffix: Azure Cognitive Search
-description: Uložte obohacená data z kanálu indexování pro rozšíření AI, aby je bylo možné použít ve scénářích jiných než fulltextové vyhledávání.
+description: Uložte obohacená data z kanálu indexování pro rozšíření AI do úložiště znalostí pro použití ve scénářích, které nejsou fulltextovým vyhledáváním. znalostní databáze je aktuálně ve verzi Public Preview.
 manager: nitinme
 author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8e6c285e8917c4224e2007c565d5ac5447b20853
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: bb6af4be232810c1f5d135e459238e2e4f2cd5d8
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790007"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720042"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Práce s projekcemi ve znalostní bázi v Azure Kognitivní hledání
 
-> [!Note]
-> Znalostní databáze je ve verzi Preview a není určená pro produkční použití. Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není dostupná žádná podpora sady .NET SDK.
->
+> [!IMPORTANT] 
+> znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
 
 Azure Kognitivní hledání v rámci indexování umožňuje rozšíření obsahu prostřednictvím integrovaných schopností rozpoznávání a vlastní dovednosti. Obohacení do dokumentů přidávají strukturu a vyhledává se efektivněji. V mnoha instancích jsou obohacené dokumenty užitečné pro jiné scénáře, než je hledání, například pro dolování znalostí.
 

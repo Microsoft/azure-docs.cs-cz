@@ -1,5 +1,5 @@
 ---
-title: Přírůstkové kopírování tabulky pomocí Azure Data Factory | Microsoft Docs
+title: 'Přírůstkové kopírování tabulky pomocí Azure Data Factory '
 description: V tomto kurzu vytvoříte kanál Azure Data Factory, který přírůstkově kopíruje data z databáze Azure SQL do úložiště Azure Blob Storage.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: 3626e68c8cedfdd2d22f47cd92d6e7c4b8b5d180
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: a446574f0a6b2b18959f1a3c3e9a02a0a97e9f6b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806450"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683375"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Přírůstkové načtení dat z databáze Azure SQL do úložiště Azure Blob Storage
 V tomto kurzu vytvoříte službu Azure Data Factory s kanálem, který načítá rozdílová data z tabulky v databázi Azure SQL do úložiště Azure Blob Storage. 
@@ -31,7 +31,7 @@ V tomto kurzu provedete následující kroky:
 > * Vytvoření kanálu
 > * Spuštění kanálu
 > * Monitorování spuštění kanálu 
-> * Zkontrolovat výsledky
+> * Kontrola výsledků
 > * Přidání dalších dat do zdroje
 > * Opětovné spuštění kanálu
 > * Monitorování druhého spuštění kanálu
@@ -149,7 +149,7 @@ END
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-2. V nabídce vlevo vyberte vytvořit**Data Factory** **analýzy** >  **prostředků** > : 
+2. V nabídce vlevo vyberte **vytvořit prostředek** > **Analytics** > **Data Factory**: 
    
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -166,11 +166,11 @@ END
          
         Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
 6. Jako **verzi** vyberte **V2**.
-7. Vyberte **umístění** pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
-8. Klikněte na možnost **Vytvořit**.      
+7. Vyberte **umístění** pro objekt pro vytváření dat. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+8. Klikněte na **Vytvořit**.      
 9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
    
-   ![Domovská stránka datové továrny](./media/doc-common-process/data-factory-home-page.png)
+   ![Domovská stránka objektu pro vytváření dat](./media/doc-common-process/data-factory-home-page.png)
 10. Kliknutím na dlaždici **Vytvořit a monitorovat** otevřete na samostatné kartě uživatelské rozhraní služby Azure Data Factory.
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
@@ -195,9 +195,9 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     1. Jako **Název** zadejte **AzureSqlDatabaseLinkedService**. 
     2. Jako **Název serveru** vyberte váš server SQL Azure.
     3. Z rozevíracího seznamu vyberte **název vaší databáze** . 
-    4. Zadejte**heslo**k **uživatelskému jménu** & . 
+    4. Zadejte své **uživatelské jméno** & **heslo**. 
     5. Pokud chcete otestovat připojení k databázi Azure SQL, klikněte na **Test připojení**.
-    6. Klikněte na tlačítko **Dokončit**.
+    6. Klikněte na **Dokončit**.
     7. Potvrďte, že je pro **propojenou službu**vybraná možnost **AzureSqlDatabaseLinkedService** .
        
         ![Okno Nová propojená služba](./media/tutorial-incremental-copy-portal/azure-sql-linked-service-settings.png)
@@ -269,7 +269,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     1. Jako **název uložené procedury**vyberte **usp_write_watermark**. 
     2. Pokud chcete zadat hodnoty parametrů uložené procedury, klikněte na **Importovat parametr** a zadejte následující hodnoty parametrů: 
 
-        | Name | Typ | Value | 
+        | Název | Typ | Hodnota | 
         | ---- | ---- | ----- | 
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Řetězec | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
@@ -345,7 +345,7 @@ PersonID | Name | LastModifytime
 
 
 ## <a name="trigger-another-pipeline-run"></a>Aktivace dalšího spuštění kanálu
-1. Přepněte na kartu **Upravit**. Pokud kanál není otevřený v návrháři, klikněte na něj ve stromovém zobrazení. 
+1. Přepněte na kartu **Upravit** . Pokud není otevřený v návrháři, klikněte na kanál ve stromovém zobrazení. 
 
 2. Klikněte na tlačítko **Přidat aktivační událost** na panelu nástrojů a pak klikněte na **aktivovat nyní**. 
 
@@ -378,7 +378,7 @@ PersonID | Name | LastModifytime
 
 
      
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste provedli následující kroky: 
 
 > [!div class="checklist"]
@@ -389,7 +389,7 @@ V tomto kurzu jste provedli následující kroky:
 > * Vytvoření kanálu
 > * Spuštění kanálu
 > * Monitorování spuštění kanálu 
-> * Zkontrolovat výsledky
+> * Kontrola výsledků
 > * Přidání dalších dat do zdroje
 > * Opětovné spuštění kanálu
 > * Monitorování druhého spuštění kanálu

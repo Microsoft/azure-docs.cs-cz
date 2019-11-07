@@ -1,6 +1,6 @@
 ---
-title: Čtení zachycených dat z aplikace Python – Azure Event Hubs | Microsoft Docs
-description: Skripty, které používají sadu Azure Python SDK k předvedení funkce Event Hubs Capture.
+title: 'Rychlý Start: čtení zachycených dat z aplikace Python – Azure Event Hubs'
+description: 'Rychlý Start: skripty, které používají sadu Azure Python SDK k předvedení funkce Event Hubs Capture.'
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -11,18 +11,18 @@ ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 10/10/2019
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: 354964e1b66b55dcccd9b5674f011f8c5a38a1c5
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ade4aa79b2de005bfecd7a5882f06cb491ea4e6d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428953"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717839"
 ---
-# <a name="event-hubs-capture-walkthrough-python"></a>Návod k zachycení Event Hubs: Python
+# <a name="quickstart-event-hubs-capture-walkthrough-python"></a>Rychlý Start: návod Event Hubsho zachycení: Python
 
 Capture je funkce služby Azure Event Hubs. Pomocí Capture můžete automaticky doručovat streamovaná data v centru událostí do účtu Azure Blob Storage podle vašeho výběru. Tato funkce usnadňuje dávkové zpracování dat streamování v reálném čase. Tento článek popisuje, jak používat Event Hubs zachytávání pomocí Pythonu. Další informace o Event Hubs Capture najdete v tématu [zachycení událostí prostřednictvím Azure Event Hubs][Overview of Event Hubs Capture].
 
@@ -36,11 +36,11 @@ V tomto návodu:
 > * Odešlete data do centra událostí pomocí skriptu Pythonu.
 > * Čtení a zpracování souborů z Event Hubs zachytávání pomocí jiného skriptu Pythonu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Python 3,4 nebo novější s nainstalovanou a aktualizovanou `pip`.
+- Python 3,4 nebo novější s `pip` nainstalované a aktualizované.
   
-- Předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+- Předplatné Azure. Pokud ho nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
   
 - Obor názvů Active Event Hubs a centrum událostí vytvořené podle pokynů v tématu [rychlý Start: vytvoření centra událostí pomocí Azure Portal](event-hubs-create.md). Poznamenejte si název oboru názvů a centra událostí, které použijete později v tomto návodu. 
   
@@ -54,7 +54,7 @@ V tomto návodu:
 
 Vytvořte účet úložiště a kontejner, který chcete použít pro zachytávání. 
 
-1. Přihlaste se na web [Azure Portal][Azure portal].
+1. Přihlaste se k webu [Azure Portal][Azure portal].
 2. V levém navigačním panelu vyberte **účty úložiště**a na obrazovce **účty úložiště** vyberte **Přidat**.
 3. Na obrazovce vytvoření účtu úložiště vyberte předplatné a skupinu prostředků a zadejte název účtu úložiště. Ostatní výběry můžete ponechat ve výchozím nastavení. Vyberte **zkontrolovat + vytvořit**, zkontrolujte nastavení a pak vyberte **vytvořit**. 
    
@@ -78,7 +78,7 @@ Tento skript pošle do centra událostí 200 událostí. Události jsou jednoduc
 
 1. Otevřete oblíbený editor Pythonu, například [Visual Studio Code][Visual Studio Code].
 2. Vytvořte nový soubor s názvem *sender.py*. 
-3. Vložte následující kód do *sender.py*. Nahraďte vlastní hodnoty pro Event Hubs \<namespace >, \<AccessKeyName >, \<primary klíčovou hodnotou > a \<eventhub >.
+3. Vložte následující kód do *sender.py*. Nahraďte vlastní hodnoty pro obor názvů Event Hubs \<>, \<AccessKeyName >, \<hodnoty primárního klíče > a \<eventhub >.
    
    ```python
    import uuid
@@ -106,7 +106,7 @@ Tento skript pošle do centra událostí 200 událostí. Události jsou jednoduc
 Tento skript přečte zachycené soubory a vytvoří pro každé ze svých zařízení soubor pro zápis dat pouze pro toto zařízení.
 
 1. V editoru Pythonu vytvořte nový soubor s názvem *capturereader.py*. 
-2. Vložte následující kód do *capturereader.py*. Dosaďte uložené hodnoty pro \<storageaccount >, > přístupového klíče účtu @no__t 1storage a \<storagecontainer >.
+2. Vložte následující kód do *capturereader.py*. Dosaďte uložené hodnoty pro \<storageaccount >, \<> přístupového klíče účtu úložiště a \<storagecontainer >.
    
    ```python
    import os
@@ -162,7 +162,7 @@ Tento skript přečte zachycené soubory a vytvoří pro každé ze svých zař�
    pip install avro-python3
    ```
    
-   Pokud máte starší verzi `azure-storage` nebo `azure`, může být nutné použít možnost `--upgrade`.
+   Pokud máte starší verzi `azure-storage` nebo `azure`, možná budete muset použít možnost `--upgrade`.
    
    Možná budete muset spustit i následující příkaz. Spuštění tohoto příkazu není pro většinu systémů nutné. 
    

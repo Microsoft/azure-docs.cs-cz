@@ -1,5 +1,5 @@
 ---
-title: Obnovit existující Azure SQL Data Warehouse | Microsoft Docs
+title: Obnovení stávajícího datového skladu
 description: Návod, jak obnovit existující Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: anumjs
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 7470dd96109823057a174d2ecf097583dcb51898
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: a73658510111df44c522d88ed5eceb7dcfa80d0d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575271"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685530"
 ---
 # <a name="restore-an-existing-azure-sql-data-warehouse"></a>Obnovit existující Azure SQL Data Warehouse
 
@@ -25,7 +26,7 @@ V tomto článku se naučíte obnovit existující SQL Data Warehouse prostředn
 
 **Ověřte svoji kapacitu DTU.** Každý SQL Data Warehouse hostuje SQL Server (například myserver.database.windows.net), který má výchozí kvótu DTU. Ověřte, zda má SQL Server dostatek zbývajících kvót DTU pro obnovenou databázi. Informace o tom, jak vypočítat potřebné DTU nebo požádat o více DTU, najdete v tématu [vyžádání změny kvóty DTU][Request a DTU quota change].
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 1. Nezapomeňte [nainstalovat Azure PowerShell][Install Azure PowerShell].
 2. Máte existující bod obnovení, ze kterého chcete obnovit. Pokud chcete vytvořit nové obnovení, přečtěte si [kurz vytvoření nového bodu obnovení definovaného uživatelem][the tutorial to create a new user-defined restore point].

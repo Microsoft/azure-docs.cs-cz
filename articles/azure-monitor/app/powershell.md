@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/17/2019
-ms.openlocfilehash: 938511069500c551eb526b6c7238546b85d59dce
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 5ae043c356559b2e675f05af3eb7eb61973eb170
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72818941"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621939"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Správa prostředků Application Insights pomocí prostředí PowerShell
 
@@ -235,7 +235,7 @@ Informace o parametrech těchto rutin najdete v [podrobné dokumentaci](https://
 
 ## <a name="set-the-data-retention"></a>Nastavení uchovávání dat 
 
-Pokud chcete získat aktuální uchovávání dat pro váš Application Insights prostředek, můžete použít nástroj OSS [ARMClient](https://github.com/projectkudu/ARMClient).  (Další informace o ARMClient od článků [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) a [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).)  Tady je příklad použití `ARMClient` k získání aktuálního uchování:
+Pokud chcete získat aktuální uchovávání dat pro váš Application Insights prostředek, můžete použít nástroj OSS [ARMClient](https://github.com/projectkudu/ARMClient).  (Další informace o ARMClient od článků [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) a [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).)  Tady je příklad použití `ARMClient`k získání aktuálního uchování:
 
 ```PS
 armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName?api-version=2018-05-01-preview
@@ -250,10 +250,10 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 Chcete-li nastavit uchovávání dat na 365 dní pomocí výše uvedené šablony, spusťte příkaz:
 
 ```PS
-        New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
-               -TemplateFile .\template1.json `
-               -retentionInDays 365 `
-               -appName myApp
+New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
+       -TemplateFile .\template1.json `
+       -retentionInDays 365 `
+       -appName myApp
 ```
 
 Pro změnu uchovávání lze také použít následující skript. Zkopírujte tento skript, aby se uložil jako `Set-ApplicationInsightsRetention.ps1`.
@@ -356,7 +356,7 @@ Cenové tarify pro existující Application Insights prostředek můžete také 
 
 |priceCode|rozhraní|
 |---|---|
-|1\. místo|Za GB (dříve označované jako základní plán)|
+|1|Za GB (dříve označované jako základní plán)|
 |2|Za uzel (dříve název plánu v podniku)|
 
 ## <a name="add-a-metric-alert"></a>Přidat upozornění metriky

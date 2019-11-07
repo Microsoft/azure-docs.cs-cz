@@ -1,5 +1,5 @@
 ---
-title: Konfigurace virtuálního počítače hostitele relace – Azure
+title: Řešení potíží s hostitelem relace virtuálních klientských počítačů s Windows – Azure
 description: Jak vyřešit problémy při konfiguraci virtuálních počítačů hostitele relace virtuálních počítačů s Windows.
 services: virtual-desktop
 author: Heidilohr
@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: a847ba7d782b332d9cae7f83bc1278fea58b8811
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 1470bb049cffce52ae921057bdaece40f3d3161c
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330824"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607393"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfigurace virtuálního počítače hostitele relace
 
 Tento článek použijte k řešení problémů, které máte při konfiguraci virtuálních počítačů hostitele relace virtuálních počítačů (VM) Windows.
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 
 Navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , kde můžete diskutovat o službě Virtual Desktop v systému Windows pomocí produktového týmu a aktivních členů komunity.
 
@@ -80,7 +80,7 @@ Doporučený způsob, jak zřídit virtuální počítače, je pomocí Azure Res
 
 Postupujte podle těchto pokynů a ověřte, zda jsou součásti nainstalovány a zda chcete zkontrolovat chybové zprávy.
 
-1. Zkontrolujte, zda jsou tyto dvě součásti nainstalovány, pomocí **ovládacího panelu**programy  > **programy** > **programy a funkce**. Pokud není nainstalovaný **Agent virtuálního počítače Windows** a **spouštěcí zavaděč agenta virtuálního počítače s Windows** , nejsou nainstalované na virtuálním počítači.
+1. Zkontrolujte, zda jsou tyto dvě součásti nainstalovány, pomocí kontroly v **Ovládacích panelech** ** >  > ** **programy a funkce**. Pokud není nainstalovaný **Agent virtuálního počítače Windows** a **spouštěcí zavaděč agenta virtuálního počítače s Windows** , nejsou nainstalované na virtuálním počítači.
 2. Otevřete **Průzkumníka souborů** a přejděte na **C:\Windows\Temp\scriptlogs.log**. Pokud soubor chybí, znamená to, že v zadaném kontextu zabezpečení nebylo možné spustit prostředí PowerShell DSC, které nainstalovalo tyto dvě součásti.
 3. Pokud je soubor **C:\Windows\Temp\scriptlogs.log** k dispozici, otevřete jej a vyhledejte chybové zprávy.
 
@@ -309,7 +309,7 @@ Pokud se zobrazí některá z těchto zpráv, znamená to, že bitová kopie nem
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>Zakázat nastavení zásad skupiny pro režim licencování vzdálené plochy
 
-Podívejte se na nastavení zásad skupiny tak, že otevřete Editor Zásady skupiny ve virtuálním počítači a přejdete na **Šablony pro správu** > **součásti systému Windows** > **Služba vzdálená plocha** > **hostitel relace vzdálené plochy**@no **licencování**__t-7 @no__t – 9**Nastaví režim licencování vzdálené plochy**. Pokud je nastavení zásad skupiny **povolené**, změňte ho na **disabled (zakázáno**). Pokud je už zakázaná, nechte ji tak, jak je.
+Ověřte nastavení zásad skupiny tak, že otevřete Editor Zásady skupiny ve virtuálním počítači a přejdete na **Šablony pro správu** > **součásti Windows** > **vzdálené plochy** > **hostitel relace vzdálené plochy** > **licencování** > **nastavit režim licencování vzdálené plochy**. Pokud je nastavení zásad skupiny **povolené**, změňte ho na **disabled (zakázáno**). Pokud je už zakázaná, nechte ji tak, jak je.
 
 >[!NOTE]
 >Pokud jste v doméně nastavili zásady skupiny, zakažte toto nastavení u zásad, které cílí na tyto virtuální počítače s Windows 10 Enterprise s více relacemi.

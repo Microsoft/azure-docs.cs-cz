@@ -1,20 +1,17 @@
 ---
 title: Příprava jarní aplikace na nasazení v Azure jaře cloudu | Microsoft Docs
 description: V tomto rychlém startu připravíte pro nasazení aplikaci pružiny Java.
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: tutorial
 ms.date: 10/06/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 98d9f3f656cff84cec8d223ed535255157155bd2
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.author: jeconnoc
+ms.openlocfilehash: 6c3048fd27c3d3d4fdba0841fb4ab21bd10e15fe
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039004"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721250"
 ---
 # <a name="tutorial-prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Kurz: Příprava aplikace na jaře v jazyce Java pro nasazení v jarním cloudu Azure
 
@@ -35,7 +32,7 @@ Jarní spouštěcí verze | Jarní cloudová verze
 2.0. x | Finchley. RELEASE
 2.1. x | Střední verze
 
-Ověřte, že váš soubor `pom.xml` má závislosti na jarním startu a jarním cloudu na základě vaší verze.
+Ověřte, že soubor `pom.xml` má na základě vaší verze závislosti cloudového spouštěcího a jarního cloudu.
 
 ### <a name="version-20"></a>Verze 2,0:
 
@@ -93,27 +90,27 @@ V následující tabulce jsou uvedené správné verze cloudové aplikace pro ja
 
 Jarní spouštěcí verze | Jarní cloudová verze | Verze cloudu pro Azure jaře
 ---|---|---
-2.0. x | Finchley. RELEASE | 2.0.0 – SNÍMEK
-2.1. x | Střední verze | 2.1.0 – SNÍMEK
+2.0. x | Finchley. RELEASE | 2.0. x
+2.1. x | Střední verze | 2.1. x
 
-Zahrňte tento fragment kódu do `pom.xml` se správnou verzí cloudu pro Azure jaře v závislosti:
+Do `pom.xml`zahrňte jeden z fragmentů kódu.  Vyberte fragment kódu, jehož verze odpovídá vašemu vlastním.
 
+### <a name="version-20x"></a>Verze 2.0. x:
 ```xml
-    <repositories>
-        <repository>
-            <id>nexus-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-    
-    <dependency>
+<dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.0-SNAPSHOT</version>
-    </dependency>
+        <version>2.0.0</version>
+</dependency>
+```
+
+### <a name="version-21x"></a>Verze 2.1. x:
+```xml
+<dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
+        <version>2.1.0</version>
+</dependency>
 ```
 
 ## <a name="other-required-dependencies"></a>Další požadované závislosti
@@ -122,7 +119,7 @@ Aby bylo možné povolit integrované funkce Azure jarního cloudu, musí vaše 
 
 ### <a name="service-registry"></a>Registr služby
 
-Pokud chcete použít spravovanou službu Azure Service Registry, zahrňte `spring-cloud-starter-netflix-eureka-client` v `POM.xml`, jak je znázorněno níže.
+Pokud chcete použít spravovanou službu Azure Service Registry, přidejte `spring-cloud-starter-netflix-eureka-client` do `POM.xml`, jak je znázorněno níže.
 
 Koncový bod serveru registru služby se do vaší aplikace automaticky vloží jako proměnné prostředí. Aplikace se budou moct zaregistrovat na serveru registru služby a zjišťovat další závislé mikroslužby.
 
@@ -135,7 +132,7 @@ Koncový bod serveru registru služby se do vaší aplikace automaticky vloží 
 
 ### <a name="distributed-configuration"></a>Distribuovaná konfigurace
 
-Pokud chcete povolit distribuovanou konfiguraci, zahrňte `spring-cloud-config-client` v části závislosti v `pom.xml`.
+Pokud chcete povolit distribuovanou konfiguraci, zahrňte `spring-cloud-config-client` do části závislosti v `pom.xml`.
 
 ```xml
 <dependency>
@@ -149,7 +146,7 @@ Pokud chcete povolit distribuovanou konfiguraci, zahrňte `spring-cloud-config-c
 
 ### <a name="metrics"></a>Metriky
 
-Do souboru pom. xml přidejte `spring-boot-starter-actuator` v části závislosti. Metriky budou pravidelně načítány z koncových bodů JMX a lze je vizuálně vymezit pomocí Azure Portal.
+Zahrnout `spring-boot-starter-actuator` do části závislosti v souboru pom. XML. Metriky budou pravidelně načítány z koncových bodů JMX a lze je vizuálně vymezit pomocí Azure Portal.
 
 ```xml
 <dependency>
@@ -160,7 +157,7 @@ Do souboru pom. xml přidejte `spring-boot-starter-actuator` v části závislos
 
 ### <a name="distributed-tracing"></a>Distribuované trasování
 
-Do části závislosti v souboru pom. xml přidejte `spring-cloud-starter-sleuth` a `spring-cloud-starter-zipkin`, jak je uvedeno níže. Také je potřeba povolit instanci Azure App Insights, aby fungovala s instancí cloudové služby Azure na jaře. Přečtěte si další informace o tom, jak povolit službu App Insights pomocí Azure [jaře cloudu](spring-cloud-tutorial-distributed-tracing.md) .
+Do souboru pom. xml přidejte `spring-cloud-starter-sleuth` a `spring-cloud-starter-zipkin`, jak je uvedeno níže. Také je potřeba povolit instanci Azure App Insights, aby fungovala s instancí cloudové služby Azure na jaře. Přečtěte si další informace o tom, jak povolit službu App Insights pomocí Azure [jaře cloudu](spring-cloud-tutorial-distributed-tracing.md) .
 
 ```xml
 <dependency>

@@ -1,5 +1,5 @@
 ---
-title: Ladění výkonu pomocí Azure SQL Data Warehouse uspořádaný clusterovaný index columnstore | Microsoft Docs
+title: Ladění výkonu pomocí seřazeného clusterovaného indexu columnstore
 description: Doporučení a pokyny, které byste měli znát při použití seřazeného clusterovaného indexu columnstore pro zlepšení výkonu dotazů.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 37d8f17e825daa3a1c160509b1a38f8c70256d1c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 3cc2f140eeed0a4667a01aa8c5ccbad7e4411521
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595370"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686001"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Ladění výkonu pomocí seřazeného clusterovaného indexu columnstore  
 
@@ -43,7 +44,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> V seřazené tabulce Ski je nová data, která jsou výsledkem operací DML nebo načítání dat, automaticky řazena.  Uživatelé mohou znovu sestavit uspořádanou INSTRUKCi pro řazení všech dat v tabulce.  V Azure SQL Data Warehouse je opětovné sestavení indexu columnstore operací offline.  Pro dělenou tabulku je opětovné sestavení provedeno po jednom oddílu.  Data v oddílu, který se má znovu sestavit, jsou "offline" a nejsou k dispozici, dokud není znovu dokončeno opětovné sestavení pro tento oddíl. 
+> V seřazené tabulce Ski se v rámci této dávky seřadí nová data, která jsou výsledkem stejné dávky operací DML nebo načítání dat, ale neexistují žádná globální řazení napříč všemi daty v tabulce.  Uživatelé mohou znovu sestavit uspořádanou INSTRUKCi pro řazení všech dat v tabulce.  V Azure SQL Data Warehouse je opětovné sestavení indexu columnstore operací offline.  Pro dělenou tabulku je opětovné sestavení provedeno po jednom oddílu.  Data v oddílu, který se má znovu sestavit, jsou "offline" a nejsou k dispozici, dokud není znovu dokončeno opětovné sestavení pro tento oddíl. 
 
 ## <a name="query-performance"></a>Výkon dotazů
 
@@ -63,7 +64,7 @@ ORDER (Col_C, Col_B, Col_A)
 
 ```
 
-Výkon dotazů 1 může využít více než jedna z řazené Ski, než ostatní 3 dotazy. 
+Výkon dotazů 1 může využít více než jedna z řazené Ski, než ostatní tři dotazy. 
 
 ```sql
 -- Query #1: 
@@ -100,7 +101,7 @@ Tady je příklad porovnání výkonu dotazů mezi Ski a seřazenou konzulární
 
 Počet překrývajících se segmentů závisí na velikosti dat, která se mají seřadit, dostupné paměti a nastavení maximálního stupně paralelismu (MAXDOP) během vytváření řazené Ski. Níže jsou uvedeny možnosti, jak omezit segment překrývající se při vytváření uspořádané konzulární instrukce.
 
-- Třídu prostředků xlargerc můžete použít na vyšší DWU, abyste umožnili více paměti pro řazení dat před tím, než tvůrce indexů komprimuje data do segmentů.  V segmentu indexu nemůže být fyzické umístění dat změněno.  Neexistují žádné řazení dat v rámci segmentu nebo napříč segmenty.  
+- Třídu prostředků xlargerc můžete použít na vyšší DWU, abyste umožnili více paměti pro řazení dat před tím, než tvůrce indexů komprimuje data do segmentů.  V segmentu indexu nemůže být fyzické umístění dat změněno.  Neexistuje žádné řazení dat v rámci segmentu nebo napříč segmenty.  
 
 - Vytvořte uspořádanou INSTRUKCi s MAXDOP = 1.  Každé vlákno používané pro seřazené vytváření konzulárních instrukcí funguje na podmnožině dat a seřadí je místně.  Neexistuje žádné globální řazení napříč daty seřazenými podle různých vláken.  Použití paralelních vláken může zkrátit čas k vytvoření seřazené instrukce, ale vygeneruje více překrývajících se segmentů než použití jednoho vlákna.  V současné době se možnost MAXDOP podporuje jenom při vytváření seřazené tabulky INSTRUKCí pomocí CREATE TABLE jako příkazu SELECT.  Vytvoření seřazené instrukce prostřednictvím příkazu CREATE INDEX nebo CREATE TABLE nepodporuje možnost MAXDOP. Například:
 
@@ -112,7 +113,7 @@ OPTION (MAXDOP 1);
 - Před jejich nařazením do Azure SQL Data Warehouse tabulek předem Seřaďte data pomocí klíčů řazení.
 
 
-Tady je příklad uspořádané distribuce tabulek Ski, která má nulový segment překrývající se nad doporučeními. Seřazená tabulka Ski je vytvořená v databázi DWU1000c prostřednictvím CTAS z tabulky haldy 20 GB pomocí MAXDOP 1 a xlargerc.  INSTRUKCE je seřazená na sloupec typu BIGINT bez duplicit.  
+Tady je příklad uspořádané distribuce tabulek Ski, která má nulový segment překrývající se nad doporučeními. Seřazená tabulka Ski je vytvořená v databázi DWU1000c prostřednictvím CTAS z tabulky haldy 20 GB s použitím MAXDOP 1 a xlargerc.  INSTRUKCE je seřazená na sloupec typu BIGINT bez duplicit.  
 
 ![Segment_No_Overlapping](media/performance-tuning-ordered-cci/perfect-sorting-example.png)
 

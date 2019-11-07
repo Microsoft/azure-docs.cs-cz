@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
 ms.reviewer: vinigam
-ms.openlocfilehash: ce59b46667f9139157a751d7d7b0205504d71ab0
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 831e75ba2d3f6af62496d437da3d1413dc612594
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695656"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686549"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -61,57 +61,59 @@ Analýza provozu prověřuje protokoly nezpracovaných toků NSG Flow a zachycuj
 
 Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli z následujících podporovaných oblastí:
 
-* Kanada – střed
+* Střední Kanada
 * Středozápadní USA
-* USA – východ
+* Východ USA
 * Východ USA 2
 * Středoseverní USA
 * Středojižní USA
 * Střední USA
-* Západ USA
-* Západ USA 2
+* Západní USA
+* Západní USA 2
 * Francie – střed
 * Západní Evropa
 * Severní Evropa
 * Brazílie – jih
-* Velká Británie – západ
-* Velká Británie – jih
+* Spojené království – západ
+* Spojené království – jih
 * Austrálie – východ
 * Austrálie – jihovýchod
 * Východní Asie
 * Jihovýchodní Asie
-* Korea – střed
-* Indie – střed
+* Jižní Korea – střed
+* Střed Indie
 * Indie – jih
 * Japonsko – východ 
 * Japonsko – západ
-* USA – Virginie
+* USA (Gov) – Virginia
+* Čína – východ 2
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>Podporované oblasti: Log Analytics pracovní prostory
 
 Pracovní prostor Log Analytics musí existovat v následujících oblastech:
-* Kanada – střed
+* Střední Kanada
 * Středozápadní USA
-* USA – východ
+* Východ USA
 * Východ USA 2
 * Středojižní USA
-* Západ USA
-* Západ USA 2
+* Západní USA
+* Západní USA 2
 * Střední USA
 * Francie – střed
 * Severní Evropa
 * Západní Evropa
-* Velká Británie – jih
+* Spojené království – jih
 * Austrálie – východ
 * Austrálie – jihovýchod
 * Východní Asie
 * Jihovýchodní Asie
-* Korea – střed
-* Indie – střed
+* Jižní Korea – střed
+* Střed Indie
 * Japonsko – východ
-* USA – Virginie
+* USA (Gov) – Virginia
+* Čína – východ 2
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="user-access-requirements"></a>Požadavky na přístup uživatelů
 
@@ -119,7 +121,7 @@ Váš účet musí být členem jedné z následujících [předdefinovaných ro
 
 |Model nasazení   | Role                   |
 |---------          |---------               |
-|Správce prostředků   | Vlastník                  |
+|Resource Manager   | Vlastník                  |
 |                   | Přispěvatel            |
 |                   | Čtenář                 |
 |                   | Přispěvatel sítě    |
@@ -190,13 +192,13 @@ Vyberte následující možnosti, jak je znázorněno na obrázku:
 > [!NOTE]
 >Pracovní prostor Log Analytics hostující řešení pro analýzu provozu a skupin zabezpečení sítě nemusí být ve stejné oblasti. Například můžete mít analýzu provozu v pracovním prostoru v oblasti Západní Evropa, zatímco jste si možná skupin zabezpečení sítěi Východní USA a Západní USA. Ve stejném pracovním prostoru se dá nakonfigurovat víc skupin zabezpečení sítě.
 
-8. Vyberte **Save** (Uložit).
+8. Vyberte **Uložit**.
 
     ![Výběr účtu úložiště, Log Analytics pracovního prostoru a povolení Analýza provozu](./media/traffic-analytics/ta-customprocessinginterval.png)
 
 Předchozí kroky opakujte pro všechny ostatní skupin zabezpečení sítě, pro které chcete povolit analýzu provozu pro. Data z protokolů toků se odesílají do pracovního prostoru, takže zajistěte, aby místní zákony a předpisy ve vaší zemi povolovaly ukládání dat v oblasti, ve které pracovní prostor existuje. Pokud jste pro různé skupin zabezpečení sítě nastavili různé intervaly zpracování, budou se data shromažďovat v různých intervalech. Například: můžete povolit interval zpracování 10 minut pro kritické virtuální sítě a 1 hodinu pro Nekritická virtuální sítě.
 
-Analýzu provozu můžete nakonfigurovat taky pomocí rutiny [set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) prostředí PowerShell v Azure PowerShell. Pokud chcete najít nainstalovanou verzi, spusťte `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
+Analýzu provozu můžete nakonfigurovat taky pomocí rutiny [set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) prostředí PowerShell v Azure PowerShell. Nainstalovanou verzi zjistíte spuštěním `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
 
 ## <a name="view-traffic-analytics"></a>Zobrazit analýzu provozu
 

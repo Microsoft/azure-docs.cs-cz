@@ -1,5 +1,5 @@
 ---
-title: Příklad PowerShellu – vytvoření spravované instance v Azure SQL Database | Microsoft Docs
+title: Příklad PowerShellu – vytvoření spravované instance v Azure SQL Database
 description: Azure PowerShell ukázkový skript pro vytvoření spravované instance v Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
-ms.openlocfilehash: 32b3c3b45c627d8dfdb42642228a7f9d9786111e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3e72a2f6754ad8e9c5bcfabe7eeee299468fa8f3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569972"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691638"
 ---
 # <a name="use-powershell-to-create-an-azure-sql-database-managed-instance"></a>Použití PowerShellu k vytvoření spravované instance Azure SQL Database
 
 Tento ukázkový skript PowerShellu vytvoří Azure SQL Database spravovanou instanci v vyhrazené podsíti v rámci nové virtuální sítě. Také nakonfiguruje směrovací tabulku a skupinu zabezpečení sítě pro virtuální síť. Po úspěšném spuštění skriptu je možné k spravované instanci přistupovat z virtuální sítě nebo z místního prostředí. Přečtěte si téma [Konfigurace virtuálního počítače Azure pro připojení k spravované instanci Azure SQL Database](../sql-database-managed-instance-configure-vm.md) a [Konfigurace připojení typu Point-to-site k Azure SQL Database spravované instanci z místního prostředí](../sql-database-managed-instance-configure-p2s.md).
 
 > [!IMPORTANT]
-> Omezení najdete v tématu [podporované oblasti](../sql-database-managed-instance-resource-limits.md#supported-regions) a [podporované typy](../sql-database-managed-instance-resource-limits.md#supported-subscription-types)předplatného.
+> Omezení najdete v tématu [podporované oblasti](../sql-database-managed-instance-resource-limits.md#supported-regions) a [podporované typy předplatného](../sql-database-managed-instance-resource-limits.md#supported-subscription-types).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -61,7 +61,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

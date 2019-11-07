@@ -1,7 +1,7 @@
 ---
 title: Přesunutí omezeného zkušebního projektu do Azure
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak přesunout omezený zkušební projekt do Azure.
+description: Máte v Custom Vision k dispozici omezený zkušební projekt? V tomto článku se dozvíte, jak ho přesunout do Azure pomocí skriptu migrace.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: anroth
-ms.openlocfilehash: 22c3767dfac1e377890f1e01517d18263e694854
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5c583270428a459f500ae0e220592805fd1bf454
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560934"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718908"
 ---
 # <a name="how-to-move-your-limited-trial-project-to-azure"></a>Postup přesunutí vašeho omezeného zkušebního projektu do Azure
 
@@ -23,7 +23,7 @@ Jak Custom Vision Service dokončí přesun do Azure, končí podpora omezených
 
 Podpora zobrazení omezených zkušebních projektů na [webu Custom Vision](https://customvision.ai) skončila 25. března 2019. V tomto dokumentu se teď dozvíte, jak používat rozhraní Custom Vision API s [migrací skriptu Pythonu](https://github.com/Azure-Samples/custom-vision-move-project) na GitHubu) a duplikovat svůj projekt do prostředku Azure.
 
-Další podrobnosti, včetně klíčových termínů v procesu vyřazení omezených zkušebních verzí, najdete v poznámkách k [verzi](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/release-notes#february-25-2019) nebo na e-mailovou komunikaci odeslané vlastníkům omezených zkušebních projektů.
+Další podrobnosti, včetně klíčových termínů v procesu vyřazení omezených zkušebních verzí, najdete v [poznámkách k verzi](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/release-notes#february-25-2019) nebo na e-mailovou komunikaci odeslané vlastníkům omezených zkušebních projektů.
 
 [Skript pro migraci](https://github.com/Azure-Samples/custom-vision-move-project) umožňuje znovu vytvořit projekt stažením a odesláním všech značek, oblastí a obrázků v aktuální iteraci. V novém předplatném vám ponechá nový projekt, který pak můžete vyškolit.
 
@@ -46,7 +46,7 @@ K jednomu prostředku může být přidruženo více projektů. Další podrobno
 
 ## <a name="find-your-limited-trial-project-information"></a>Hledání informací o aplikaci s omezeným počtem zkušebních verzí
 
-Chcete-li přesunout projekt, budete potřebovat _ID projektu_ a _školicí klíč_ pro projekt, který se pokoušíte migrovat. Pokud tyto informace nemáte, přejděte [https://limitedtrial.customvision.ai/projects](https://limitedtrial.customvision.ai/projects) k získání ID a klíče pro každý z vašich projektů. 
+Chcete-li přesunout projekt, budete potřebovat _ID projektu_ a _školicí klíč_ pro projekt, který se pokoušíte migrovat. Pokud tyto informace nemáte, navštivte [https://limitedtrial.customvision.ai/projects](https://limitedtrial.customvision.ai/projects) a Získejte ID a klíč pro každý z vašich projektů. 
 
 ## <a name="use-the-python-sample-code-to-copy-your-project-to-azure"></a>Zkopírování projektu do Azure pomocí ukázkového kódu Pythonu
 
@@ -54,7 +54,7 @@ Postupujte podle [pokynů k ukázkovému kódu](https://github.com/Azure-Samples
 
 Ve výchozím nastavení se všechny omezené zkušební projekty hostují v Střed USA – jih oblasti Azure.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Váš projekt byl nyní přesunut do prostředku Azure. V aplikacích, které jste napsali, budete muset aktualizovat klíče pro školení a předpovědi.
 

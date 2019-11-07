@@ -1,7 +1,7 @@
 ---
 title: Jazyková podpora – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Jazyk znalostní báze má vliv na možnost QnA Maker automaticky extrahovat otázky a odpovědi ze zdrojů a také relevanci výsledků QnA Maker poskytuje reakci na dotazy uživatelů. Seznam jazykové verze, přirozené jazyky, které QnA Maker podporuje ve znalostní bázi. Nemíchejte jazyky ve stejné znalostní bázi.
+description: Seznam jazykové verze, přirozené jazyky, které QnA Maker podporuje ve znalostní bázi. Nemíchejte jazyky ve stejné znalostní bázi.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 09/24/2019
 ms.author: diberry
-ms.openlocfilehash: f4f7fffdde7d103271fa667bbab11c09ebc54825
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 96440bf0e9c26e6f222f3bc94c8fabb0bc8f488d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285858"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720995"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Jazyková podpora pro QnA Maker prostředky a základy znalostní báze
 
@@ -31,7 +31,7 @@ Následující seznam obsahuje jazyky podporované QnA Makerm prostředkem.
 
 |Jazyk|
 |--|
-|Arabština|
+|arabština|
 |Arménština|
 |Bengálština|
 |Baskičtina|
@@ -41,7 +41,7 @@ Následující seznam obsahuje jazyky podporované QnA Makerm prostředkem.
 |Chinese_Traditional|
 |Chorvatština|
 |Čeština|
-|Dánština|
+|dánština|
 |Holandština|
 |Angličtina|
 |Estonština|
@@ -57,7 +57,7 @@ Následující seznam obsahuje jazyky podporované QnA Makerm prostředkem.
 |Islandština|
 |Indonéština|
 |Irština|
-|Italština|
+|italština|
 |Japonština|
 |Kannadština|
 |Korejština|
@@ -65,22 +65,22 @@ Následující seznam obsahuje jazyky podporované QnA Makerm prostředkem.
 |Litevština|
 |Malajalámština|
 |Malajština|
-|Norština|
-|Polština|
+|norština|
+|polština|
 |Portugalština|
 |Paňdžábština|
 |Rumunština|
-|Ruština|
+|ruština|
 |Serbian_Cyrillic|
 |Serbian_Latin|
 |Slovenština|
 |Slovinština|
 |Španělština|
-|Švédština|
+|švédština|
 |Tamilština|
 |Telugština|
 |Thajština|
-|Turečtina|
+|turečtina|
 |Ukrajinština|
 |Urdština|
 |Vietnamština|

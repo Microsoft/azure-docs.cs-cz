@@ -1,6 +1,6 @@
 ---
-title: Rutiny Powershellu pro Azure SQL Data Warehouse
-description: Najdete hlavní rutiny Powershellu pro Azure SQL Data Warehouse, včetně postupu pozastavit a obnovit databázi.
+title: Rutiny prostředí PowerShell
+description: Najděte si hlavní rutiny PowerShellu pro Azure SQL Data Warehouse, včetně toho, jak pozastavit a obnovit databázi.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,21 +10,22 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 095e66c6c5f75a27b1f0231dfe8cabfd4d741d18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: b36a64bb82449ace7acc1de0b3c2bc7c5efebe70
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205181"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685553"
 ---
-# <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>Rutiny prostředí PowerShell a rozhraní REST API pro službu SQL Data Warehouse
-Mnoho úkolů správy SQL Data Warehouse je možné spravovat pomocí rutin Azure Powershellu nebo rozhraní REST API.  Níže je několik příkladů toho, jak používat příkazy Powershellu k automatizaci běžných úkolů ve službě SQL Data Warehouse.  Některé dobré příklady REST, najdete v článku [spravovat škálovatelnost s využitím REST][Manage scalability with REST].
+# <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>Rutiny prostředí PowerShell a rozhraní REST API pro SQL Data Warehouse
+Mnohé úlohy správy SQL Data Warehouse můžete spravovat pomocí rutin Azure PowerShell nebo rozhraní REST API.  Níže uvádíme několik příkladů použití příkazů PowerShellu k automatizaci běžných úloh v SQL Data Warehouse.  Některé dobré příklady REST najdete v článku [Správa škálovatelnosti pomocí REST][Manage scalability with REST].
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="get-started-with-azure-powershell-cmdlets"></a>Začínáme s rutinami Azure Powershellu
+## <a name="get-started-with-azure-powershell-cmdlets"></a>Začínáme s rutinami Azure PowerShell
 1. Otevřete Windows PowerShell.
-2. Na příkazovém řádku Powershellu, spusťte tyto příkazy pro přihlášení k Azure Resource Manageru a vyberte své předplatné.
+2. Spuštěním těchto příkazů na příkazovém řádku PowerShellu se přihlaste k Azure Resource Manager a vyberte své předplatné.
    
     ```powershell
     Connect-AzAccount
@@ -32,13 +33,13 @@ Mnoho úkolů správy SQL Data Warehouse je možné spravovat pomocí rutin Azur
     Select-AzSubscription -SubscriptionName "MySubscription"
     ```
 
-## <a name="pause-sql-data-warehouse-example"></a>Pozastavit SQL Data Warehouse příklad
-Pozastavit databázi s názvem "Database02" hostovaný na serveru s názvem "Server01."  Server je ve skupině prostředků Azure s názvem "ResourceGroup1."
+## <a name="pause-sql-data-warehouse-example"></a>Příklad pozastavení SQL Data Warehouse
+Pozastavení databáze s názvem "Database02", která je hostována na serveru s názvem "Server01".  Server je ve skupině prostředků Azure s názvem "ResourceGroup1".
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
-Varianta, v tomto příkladu pipes načtený objekt [Suspend-AzSqlDatabase][Suspend-AzSqlDatabase].  V důsledku toho je pozastavena databáze. Poslední příkaz zobrazí výsledky.
+Varianta, v tomto příkladu, přeruší načtený objekt na [Suspend-AzSqlDatabase][Suspend-AzSqlDatabase].  V důsledku toho je databáze pozastavena. Poslední příkaz zobrazí výsledky.
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -46,14 +47,14 @@ $resultDatabase = $database | Suspend-AzSqlDatabase
 $resultDatabase
 ```
 
-## <a name="start-sql-data-warehouse-example"></a>Spusťte příklad SQL Data Warehouse
-Operace obnovení databáze s názvem "Database02" hostovaný na serveru s názvem "Server01." Na serveru nachází ve skupině prostředků s názvem "ResourceGroup1."
+## <a name="start-sql-data-warehouse-example"></a>Příklad spuštění SQL Data Warehouse
+Operace obnovení databáze s názvem "Database02", která je hostována na serveru s názvem "Server01". Server je součástí skupiny prostředků s názvem "ResourceGroup1".
 
 ```Powershell
 Resume-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" -DatabaseName "Database02"
 ```
 
-Varianta, tento příklad načte databázi s názvem "Database02" ze serveru s názvem "Server01", která je obsažena ve skupině prostředků s názvem "ResourceGroup1." Pipes načtený objekt [Resume-AzSqlDatabase][Resume-AzSqlDatabase].
+V tomto příkladu se v tomto příkladu načte databáze s názvem "Database02" ze serveru s názvem "Server01", který je součástí skupiny prostředků s názvem "ResourceGroup1". Napředá načtený objekt pro [pokračování – AzSqlDatabase][Resume-AzSqlDatabase].
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -61,31 +62,31 @@ $resultDatabase = $database | Resume-AzSqlDatabase
 ```
 
 > [!NOTE]
-> Poznámka: Pokud server foo.Database.Windows.NET, použijte "foo" jako název_serveru – v rutinách prostředí PowerShell.
+> Všimněte si, že pokud je váš server foo.database.windows.net, použijte v rutinách PowerShellu "foo" jako "servername".
 > 
 > 
 
-## <a name="other-supported-powershell-cmdlets"></a>Ostatní podporované rutin prostředí PowerShell
-Tyto rutiny Powershellu jsou podporovány službou Azure SQL Data Warehouse.
+## <a name="other-supported-powershell-cmdlets"></a>Další podporované rutiny PowerShellu
+Tyto rutiny PowerShellu jsou podporované Azure SQL Data Warehouse.
 
 * [Get-AzSqlDatabase][Get-AzSqlDatabase]
 * [Get-AzSqlDeletedDatabaseBackup][Get-AzSqlDeletedDatabaseBackup]
 * [Get-AzSqlDatabaseRestorePoint][Get-AzSqlDatabaseRestorePoint]
 * [New-AzSqlDatabase][New-AzSqlDatabase]
 * [Remove-AzSqlDatabase][Remove-AzSqlDatabase]
-* [Restore-AzSqlDatabase][Restore-AzSqlDatabase]
-* [Resume-AzSqlDatabase][Resume-AzSqlDatabase]
+* [Obnovit – AzSqlDatabase][Restore-AzSqlDatabase]
+* [Pokračovat – AzSqlDatabase][Resume-AzSqlDatabase]
 * [Select-AzSubscription][Select-AzSubscription]
 * [Set-AzSqlDatabase][Set-AzSqlDatabase]
-* [Suspend-AzSqlDatabase][Suspend-AzSqlDatabase]
+* [Pozastavit – AzSqlDatabase][Suspend-AzSqlDatabase]
 
-## <a name="next-steps"></a>Další postup
-Další příklady prostředí PowerShell najdete v tématu:
+## <a name="next-steps"></a>Další kroky
+Další příklady PowerShellu najdete v tématech:
 
 * [Vytvoření SQL Data Warehouse pomocí prostředí PowerShell][Create a SQL Data Warehouse using PowerShell]
 * [Obnovení databáze][Database restore]
 
-Další úlohy, které je možné automatizovat pomocí Powershellu, najdete v části [rutiny služby Azure SQL Database][Azure SQL Database Cmdlets]. Všimněte si, že ne všechny rutiny služby Azure SQL Database jsou podporovány pro službu Azure SQL Data Warehouse.  Seznam úkolů, které je možné automatizovat pomocí REST, naleznete v tématu [operací pro službu Azure SQL Database][Operations for Azure SQL Database].
+Další úkoly, které je možné automatizovat pomocí prostředí PowerShell, najdete v tématu [rutiny Azure SQL Database][Azure SQL Database Cmdlets]. Všimněte si, že nejsou podporovány všechny rutiny Azure SQL Database pro Azure SQL Data Warehouse.  Seznam úloh, které je možné automatizovat pomocí REST, najdete v tématu [operace pro Azure SQL Database][Operations for Azure SQL Database].
 
 <!--Image references-->
 

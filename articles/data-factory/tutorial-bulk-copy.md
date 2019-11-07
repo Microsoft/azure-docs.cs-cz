@@ -1,5 +1,5 @@
 ---
-title: Hromadné kopírování dat pomocí Azure Data Factory | Dokumentace Microsoftu
+title: 'Hromadné kopírování dat pomocí Azure Data Factory '
 description: Naučte se používat Azure Data Factory a aktivitu kopírování k hromadnému kopírování dat ze zdrojového úložiště dat do cílového úložiště dat.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: b5d0807fb03c8518286a369f50df62f0ec0b23c2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 5d695c7a74945fd68591360864e107aadc826240
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140765"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683677"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Hromadné kopírování několika tabulek pomocí Azure Data Factory
 Tento kurz představuje **kopírování několika tabulek z Azure SQL Database do služby Azure SQL Data Warehouse**. Stejný vzor můžete využít i u dalších scénářů kopírování. Například při kopírování tabulek z SQL Serveru/Oraclu do služby Azure SQL Database/Data Warehouse/Azure Blob nebo při kopírování různých cest ze služby Blob do tabulek Azure SQL Database.
@@ -28,7 +28,7 @@ Tento kurz zahrnuje následující základní kroky:
 > * Vytvoření propojených služeb Azure SQL Database, Azure SQL Data Warehouse a Azure Storage
 > * Vytvoření datových sad Azure SQL Database a Azure SQL Data Warehouse
 > * Vytvoření kanálu pro vyhledání tabulek ke zkopírování a dalšího kanálu pro provedení vlastní operace kopírování 
-> * Spuštění kanálu
+> * Zahájení spuštění kanálu
 > * Monitorování spuštění aktivit a kanálu
 
 Tento kurz používá prostředí Azure PowerShell. Další informace o vytvoření datové továrny pomocí jiných nástrojů nebo sad SDK najdete v tématu [Šablony Rychlý start](quickstart-create-data-factory-dot-net.md). 
@@ -62,7 +62,7 @@ Podle postupu v článku [Vytvoření databáze Azure SQL](../sql-database/sql-d
 
 1. Pokud Azure SQL Data Warehouse nemáte, přečtěte si článek věnovaný [vytvoření služby SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md), kde najdete kroky pro její vytvoření.
 
-2. V SQL Data Warehouse vytvořte odpovídající schémata tabulek. K **migraci schémat** z Azure SQL Database do Azure SQL Data Warehouse můžete využít [nástroj pro migraci](https://www.microsoft.com/download/details.aspx?id=49100). K migraci/kopírování dat v pozdějším kroku můžete použít Azure Data Factory.
+2. V SQL Data Warehouse vytvořte odpovídající schémata tabulek. K [migraci schémat](https://www.microsoft.com/download/details.aspx?id=49100) z Azure SQL Database do Azure SQL Data Warehouse můžete využít **nástroj pro migraci**. K migraci/kopírování dat v pozdějším kroku můžete použít Azure Data Factory.
 
 ## <a name="azure-services-to-access-sql-server"></a>Služby Azure pro přístup k SQL serveru
 
@@ -108,7 +108,7 @@ Pro SQL Database i SQL Data Warehouse povolte službám Azure přístup k SQL se
         ```
 
     * Instance služby Data Factory můžete vytvářet jenom tehdy, když jste přispěvatelem nebo správcem předplatného Azure.
-    * Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, vyberte oblasti, které vás zajímají na následující stránce, a pak rozbalte položku **Analytics** a vyhledejte **Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+    * Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 
@@ -116,7 +116,7 @@ V tomto kurzu vytvoříte tři propojené služby pro zdrojový, objekt blob, ob
 
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>Vytvoření propojené služby Azure SQL Database pro zdroj
 
-1. Ve složce **c:\adfv2tutorialbulkcopy vytvořte** vytvořte soubor JSON s názvem **AzureSqlDatabaseLinkedService. JSON** s následujícím obsahem: (Vytvořte složku ADFv2TutorialBulkCopy, pokud ještě neexistuje.)
+1. Vytvořte soubor JSON s názvem **AzureSqlDatabaseLinkedService.json** ve složce **C:\ADFv2TutorialBulkCopy** s následujícím obsahem. (Pokud složka \ADFv2TutorialBulkCopy ještě neexistuje, vytvořte ji.)
 
     > [!IMPORTANT]
     > Před uložením tohoto souboru položky &lt;servername&gt;, &lt;databasename&gt;, &lt;username&gt;@&lt;servername&gt; a &lt;password&gt; nahraďte odpovídajícími hodnotami pro Azure SQL Database.
@@ -144,7 +144,7 @@ V tomto kurzu vytvoříte tři propojené služby pro zdrojový, objekt blob, ob
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     LinkedServiceName : AzureSqlDatabaseLinkedService
@@ -175,13 +175,13 @@ V tomto kurzu vytvoříte tři propojené služby pro zdrojový, objekt blob, ob
     }
     ```
 
-2. Postup vytvoření propojené služby: **AzureSqlDWLinkedService**spusťte rutinu **set-AzDataFactoryV2LinkedService** .
+2. Pokud chcete vytvořit propojenou službu: **AzureSqlDWLinkedService**, spusťte rutinu **set-AzDataFactoryV2LinkedService** .
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWLinkedService" -File ".\AzureSqlDWLinkedService.json"
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     LinkedServiceName : AzureSqlDWLinkedService
@@ -197,7 +197,7 @@ V tomto kurzu použijete Azure Blob Storage jako dočasné pracovní oblast, aby
 1. Ve složce **C:\ADFv2TutorialBulkCopy** vytvořte soubor JSON s názvem **AzureStorageLinkedService.json** s následujícím obsahem:
 
     > [!IMPORTANT]
-    > Než soubor uložíte, položky &lt;accountName&gt; a &lt;accountKey&gt; nahraďte názvem svého účtu úložiště Azure a jeho klíčem.
+    > Než soubor uložíte, položky &lt;accountName&gt; a &lt;accountKey&gt; nahraďte názvem svého účtu Azure Storage a jeho klíčem.
 
     ```json
     {
@@ -214,13 +214,13 @@ V tomto kurzu použijete Azure Blob Storage jako dočasné pracovní oblast, aby
     }
     ```
 
-2. Postup vytvoření propojené služby: **AzureStorageLinkedService**spusťte rutinu **set-AzDataFactoryV2LinkedService** .
+2. Pokud chcete vytvořit propojenou službu: **AzureStorageLinkedService**, spusťte rutinu **set-AzDataFactoryV2LinkedService** .
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     LinkedServiceName : AzureStorageLinkedService
@@ -253,13 +253,13 @@ V tomto kurzu vytvoříte zdrojovou datovou sadu a datovou sadu jímky, které u
     }
     ```
 
-2. Vytvoření datové sady: **AzureSqlDatabaseDataset**spusťte rutinu **set-AzDataFactoryV2Dataset** .
+2. Chcete-li vytvořit datovou sadu: **AzureSqlDatabaseDataset**, spusťte rutinu **set-AzDataFactoryV2Dataset** .
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseDataset" -File ".\AzureSqlDatabaseDataset.json"
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     DatasetName       : AzureSqlDatabaseDataset
@@ -271,7 +271,7 @@ V tomto kurzu vytvoříte zdrojovou datovou sadu a datovou sadu jímky, které u
 
 ### <a name="create-a-dataset-for-sink-sql-data-warehouse"></a>Vytvoření datové sady pro SQL Data Warehouse jímky
 
-1. Ve složce **c:\adfv2tutorialbulkcopy vytvořte** vytvořte soubor JSON s názvem **AzureSqlDWDataset. JSON** s následujícím obsahem: "TableName" je nastaven jako parametr, později aktivita kopírování, která odkazuje na tuto datovou sadu, předává do datové sady skutečnou hodnotu.
+1. Ve složce **C:\ADFv2TutorialBulkCopy** vytvořte soubor JSON s názvem **AzureSqlDWDataset.json** s následujícím obsahem. TableName se nastavuje jako parametr. Aktivita kopírování, která odkazuje na tuto datovou sadu, později datové sadě předá skutečnou hodnotu.
 
     ```json
     {
@@ -297,13 +297,13 @@ V tomto kurzu vytvoříte zdrojovou datovou sadu a datovou sadu jímky, které u
     }
     ```
 
-2. Vytvoření datové sady: **AzureSqlDWDataset**spusťte rutinu **set-AzDataFactoryV2Dataset** .
+2. Chcete-li vytvořit datovou sadu: **AzureSqlDWDataset**, spusťte rutinu **set-AzDataFactoryV2Dataset** .
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWDataset" -File ".\AzureSqlDWDataset.json"
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     DatasetName       : AzureSqlDWDataset
@@ -389,13 +389,13 @@ Tento kanál jako parametr používá seznam tabulek. Data ze všech tabulek v t
     }
     ```
 
-2. Vytvoření kanálu: **IterateAndCopySQLTables**spusťte rutinu **set-AzDataFactoryV2Pipeline** .
+2. Pokud chcete vytvořit kanál: **IterateAndCopySQLTables**, spusťte rutinu **set-AzDataFactoryV2Pipeline** .
 
     ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IterateAndCopySQLTables" -File ".\IterateAndCopySQLTables.json"
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     PipelineName      : IterateAndCopySQLTables
@@ -465,13 +465,13 @@ Tento kanál provádí dva kroky:
     }
     ```
 
-2. Vytvoření kanálu: **GetTableListAndTriggerCopyData**spusťte rutinu **set-AzDataFactoryV2Pipeline** .
+2. Pokud chcete vytvořit kanál: **GetTableListAndTriggerCopyData**, spusťte rutinu **set-AzDataFactoryV2Pipeline** .
 
     ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "GetTableListAndTriggerCopyData" -File ".\GetTableListAndTriggerCopyData.json"
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     PipelineName      : GetTableListAndTriggerCopyData
@@ -589,7 +589,7 @@ V tomto kurzu jste provedli následující kroky:
 > * Vytvoření propojených služeb Azure SQL Database, Azure SQL Data Warehouse a Azure Storage
 > * Vytvoření datových sad Azure SQL Database a Azure SQL Data Warehouse
 > * Vytvoření kanálu pro vyhledání tabulek ke zkopírování a dalšího kanálu pro provedení vlastní operace kopírování 
-> * Spuštění kanálu
+> * Zahájení spuštění kanálu
 > * Monitorování spuštění aktivit a kanálu
 
 Pokud se chcete dozvědět víc o přírůstkovém kopírování ze zdroje do cíle, přejděte k následujícímu kurzu:

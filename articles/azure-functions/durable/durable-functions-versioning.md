@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 0bac6f9105d505bdfc1492b6966c2352771e73b0
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4b4e82acbd3037c70b87731c0661605041090435
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791298"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614517"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Správa verzí v Durable Functions (Azure Functions)
 
@@ -32,7 +32,7 @@ Předpokládejme například, že máme následující funkci Orchestrator.
 
 ```csharp
 [FunctionName("FooBar")]
-public static Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     bool result = await context.CallActivityAsync<bool>("Foo");
     await context.CallActivityAsync("Bar", result);
@@ -43,16 +43,19 @@ Tato funkce zjednodušený přijímá výsledky **foo** a předává je do **pru
 
 ```csharp
 [FunctionName("FooBar")]
-public static Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     int result = await context.CallActivityAsync<int>("Foo");
     await context.CallActivityAsync("Bar", result);
 }
 ```
 
-Tato změna funguje pro všechny nové instance funkce Orchestrator, ale přerušuje jakékoli služby v letadle. Například je třeba vzít v úvahu případ, kde instance orchestrace volá **foo**, vrátí logickou hodnotu a pak kontrolní body. Pokud je v tuto chvíli nasazená změna podpisu, kontrolní instance selže okamžitě po obnovení a přehraje volání `context.CallActivityAsync<int>("Foo")`. Důvodem je, že výsledek v tabulce historie je `bool`, ale nový kód se pokusí ho deserializovat do `int`.
+> [!NOTE]
+> Předchozí C# příklady jsou určené Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-Toto je pouze jeden z mnoha různých způsobů, kterými změna podpisu může přerušit stávající instance. Obecně platí, že pokud nástroj Orchestrator potřebuje změnit způsob, jakým volá funkci, pak změna bude pravděpodobně problematická.
+Tato změna funguje pro všechny nové instance funkce Orchestrator, ale přerušuje jakékoli služby v letadle. Zvažte například případ, kdy instance orchestrace volá funkci s názvem `Foo`, vrátí logickou hodnotu a pak kontrolní body. Pokud je v tuto chvíli nasazená změna podpisu, kontrolní instance selže okamžitě po obnovení a přehraje volání `context.CallActivityAsync<int>("Foo")`. K této chybě dochází, protože výsledek v tabulce historie je `bool`, ale nový kód se pokusí ho deserializovat do `int`.
+
+Tento příklad je jedním z mnoha různých způsobů, kterými změna podpisu může přerušit existující instance. Obecně platí, že pokud nástroj Orchestrator potřebuje změnit způsob, jakým volá funkci, pak změna bude pravděpodobně problematická.
 
 ### <a name="changing-orchestrator-logic"></a>Změna logiky nástroje Orchestrator
 
@@ -62,7 +65,7 @@ Vezměte v úvahu následující funkci Orchestrator:
 
 ```csharp
 [FunctionName("FooBar")]
-public static Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     bool result = await context.CallActivityAsync<bool>("Foo");
     await context.CallActivityAsync("Bar", result);
@@ -73,7 +76,7 @@ Nyní předpokládejme, že chcete provést zdánlivě Innocent změnu pro přid
 
 ```csharp
 [FunctionName("FooBar")]
-public static Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     bool result = await context.CallActivityAsync<bool>("Foo");
     if (result)
@@ -85,7 +88,10 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 }
 ```
 
-Tato změna přidá nové volání funkce **SendNotification** mezi **foo** a **bar**. Neexistují žádné změny podpisu. K tomuto problému dochází, když existující instance obnoví volání na **bar**. Při opakovaném přehrání, pokud původní volání **foo** vrátilo `true`, pak bude znovu přehrání nástroje Orchestrator volat do **SendNotification** , které není v historii spuštění. V důsledku toho dojde k neúspěšnému rozhraní úlohy s `NonDeterministicOrchestrationException`, protože se mu objevilo volání **SendNotification** , když se očekává, že se zobrazí volání na **panel**. Stejný typ problému může nastat při přidávání jakýchkoli volání do "trvanlivého" rozhraní API, včetně `CreateTimer`, `WaitForExternalEvent`atd.
+> [!NOTE]
+> Předchozí C# příklady jsou určené Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+
+Tato změna přidá nové volání funkce **SendNotification** mezi **foo** a **bar**. Neexistují žádné změny podpisu. K tomuto problému dochází, když existující instance obnoví volání na **bar**. Při opakovaném přehrání, pokud původní volání **foo** vrátilo `true`, pak bude opětovné přehrání nástroje Orchestrator volat do **SendNotification**, které není v historii spuštění. V důsledku toho dojde k neúspěšnému rozhraní úlohy s `NonDeterministicOrchestrationException`, protože se mu objevilo volání **SendNotification** , když se očekává, že se zobrazí volání na **panel**. Stejný typ problému může nastat při přidávání jakýchkoli volání do "trvanlivého" rozhraní API, včetně `CreateTimer`, `WaitForExternalEvent`atd.
 
 ## <a name="mitigation-strategies"></a>Strategie zmírňování
 
@@ -99,11 +105,11 @@ Tady jsou některé strategie pro práci s problémy se správou verzí:
 
 Nejjednodušší způsob, jak zvládnout zásadní změnu, je nechat instance orchestrace v letadlech neúspěšné. Nové instance úspěšně spustily změněný kód.
 
-Bez ohledu na to, jestli se jedná o problém, závisí na důležitosti vašich leteckých instancí. Pokud pracujete v aktivním vývoji a nezáleží na tom, jestli jde o instance v letadle, může to být dostatečné. V kanálu diagnostiky ale budete muset zabývat s výjimkami a chybami. Pokud se chcete těmto akcím vyhnout, zvažte další možnosti správy verzí.
+Bez ohledu na to, jestli je tento druh selhání, záleží na důležitosti vašich leteckých instancí. Pokud pracujete v aktivním vývoji a nezáleží na tom, jestli jde o instance v letadle, může to být dostatečné. V kanálu diagnostiky ale budete muset zabývat s výjimkami a chybami. Pokud se chcete těmto akcím vyhnout, zvažte další možnosti správy verzí.
 
 ### <a name="stop-all-in-flight-instances"></a>Zastavit všechny instance v letadle
 
-Další možností je zastavit všechny letecké instance. To se dá udělat vymazáním obsahu fronty interního **řízení** a pracovní položky a **fronty** . Instance se budou trvale zablokovat tam, kde jsou, ale nebudou mít k disřádek žádnou telemetrii se zprávami o chybách. To je ideální v rychlém vývoji prototypů.
+Další možností je zastavit všechny letecké instance. Zastavení všech instancí může probíhat vymazáním obsahu fronty interního **řízení** a fronty pracovní položky a **fronty** . Instance se budou trvale zablokovat tam, kde jsou, ale nebudou mít v protokolu žádné zprávy o chybách. Tento přístup je ideální v rychlém vývoji prototypů.
 
 > [!WARNING]
 > Podrobnosti o těchto frontách se můžou v průběhu času měnit, takže se na tuto techniku nespoléhá pro produkční úlohy.
@@ -114,7 +120,7 @@ Nejpravděpodobnější způsob, jak zajistit, aby se změny v bezpečném nasaz
 
 * Všechny aktualizace nasaďte jako zcela nové funkce a existující funkce tak budou fungovat tak, jak jsou. To může být obtížné, protože volající nových verzí funkcí se musí aktualizovat stejně jako stejné pokyny.
 * Nasaďte všechny aktualizace jako novou aplikaci Function App s jiným účtem úložiště.
-* Nasaďte novou kopii aplikace Function App se stejným účtem úložiště, ale s aktualizovaným názvem `taskHub`. Toto je doporučený postup.
+* Nasaďte novou kopii aplikace Function App se stejným účtem úložiště, ale s aktualizovaným názvem `taskHub`. Pro souběžná nasazení je doporučena technika.
 
 ### <a name="how-to-change-task-hub-name"></a>Postup změny názvu centra úloh
 
@@ -130,7 +136,7 @@ Centrum úloh lze v souboru *Host. JSON* nakonfigurovat následujícím způsobe
 }
 ```
 
-#### <a name="functions-2x"></a>Functions 2.x
+#### <a name="functions-20"></a>Funkce 2,0
 
 ```json
 {

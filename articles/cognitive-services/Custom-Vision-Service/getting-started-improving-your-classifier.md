@@ -1,7 +1,7 @@
 ---
 title: Zlepšení klasifikátoru – Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak zlepšit kvalitu třídění.
+description: V tomto článku se dozvíte, jak množství, kvalita a různá data mohou zlepšit kvalitu třídění ve službě Custom Vision.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: d71c750185589fd488df70b63fd48e9e674ee3dc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c2858d5f9bca662cbbcd48b2345a7dc2c7ae48b2
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561042"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718548"
 ---
 # <a name="how-to-improve-your-classifier"></a>Jak vylepšit třídění
 
@@ -53,11 +53,11 @@ Nezapomeňte použít obrázky, které jsou v rámci normálního použití odes
 
 Chcete-li tento problém vyřešit, zahrňte celou řadu imagí, abyste měli jistotu, že se třídění může zobecnit správně. Tady je několik způsobů, jak můžete nastavit, aby se vaše školicí sada lépe rozvedla:
 
-* __Pozadí__ Poskytněte obrázky objektu před různými pozadími. Fotografie v přirozených kontextech jsou lepší než fotky před neutrálními pozadí, protože poskytují více informací pro třídění.
+* __Pozadí:__ Poskytněte obrázky objektu před různými pozadími. Fotografie v přirozených kontextech jsou lepší než fotky před neutrálními pozadí, protože poskytují více informací pro třídění.
 
     ![Obrázek ukázek na pozadí](./media/getting-started-improving-your-classifier/background.png)
 
-* __Kvůli__ Poskytněte image se proměnlivým osvětlením (to znamená při použití Flash, vysokou expozici atd.), zejména v případě, že obrázky používané pro předpověď mají jiný osvětlení. Je také užitečné použít obrázky s proměnlivým sytostem, odstínem a jasem.
+* __Osvětlení:__ Poskytněte image se proměnlivým osvětlením (to znamená při použití Flash, vysokou expozici atd.), zejména v případě, že obrázky používané pro předpověď mají jiný osvětlení. Je také užitečné použít obrázky s proměnlivým sytostem, odstínem a jasem.
 
     ![Obrázek ukázek světel](./media/getting-started-improving-your-classifier/lighting.png)
 
@@ -65,11 +65,11 @@ Chcete-li tento problém vyřešit, zahrňte celou řadu imagí, abyste měli ji
 
     ![Obrázek s ukázkami velikosti](./media/getting-started-improving-your-classifier/size.png)
 
-* __Úhel kamery:__ Poskytněte obrázky, které se vyberou v různých úhlech kamery. Případně, pokud se všechny vaše fotky musí pokládat s pevnými fotoaparáty (jako jsou například sledovací kamery), nezapomeňte přiřadit jiný popisek každému často vyskytujícímu objektu, abyste se vyhnuli přeložení&mdash;nesouvisejících objektů (například lampposts). jako klíčová funkce.
+* __Úhel kamery:__ Poskytněte obrázky, které se vyberou v různých úhlech kamery. Případně, pokud se všechny vaše fotky musí pokládat s pevnými fotoaparáty (jako jsou kamery pro sledování), nezapomeňte přiřadit jiný popisek každému často vyskytujícímu objektu, abyste se vyhnuli pře&mdash;interpretovat nesouvisející objekty (například lampposts) jako klíčové funkce.
 
     ![Obrázek ukázek úhlů](./media/getting-started-improving-your-classifier/angle.png)
 
-* __Řez__ Poskytněte obrázky různých stylů stejné třídy (například různé odrůdy stejného ovoce). Pokud však máte objekty drasticky odlišných stylů (například myš Mickey a myš pro reálný výkon), doporučujeme je označit jako samostatné třídy, aby lépe představovaly jejich samostatné funkce.
+* __Styl:__ Poskytněte obrázky různých stylů stejné třídy (například různé odrůdy stejného ovoce). Pokud však máte objekty drasticky odlišných stylů (například myš Mickey a myš pro reálný výkon), doporučujeme je označit jako samostatné třídy, aby lépe představovaly jejich samostatné funkce.
 
     ![Obrázek ukázek stylu](./media/getting-started-improving-your-classifier/style.png)
 
@@ -92,7 +92,7 @@ Když použijete nebo otestujete třídění imagí odesláním imagí do koncov
 
 2. Najeďte ukazatelem myši na obrázek a zobrazí se značky, které třídění vypoví. Obrázky jsou seřazené tak, aby se v horní části zobrazovaly ty, které můžou do klasifikátoru přinášet nejvíc vylepšení. Chcete-li použít jinou metodu řazení, proveďte výběr v oddílu __řazení__ . 
 
-    Chcete-li přidat obrázek do stávajících školicích dat, vyberte obrázek, nastavte správné značky a klikněte na tlačítko __Uložit a zavřít__. Bitová kopie bude odebrána z __předpovědi__ a přidána do sady školicích imagí. Můžete ji zobrazit výběrem karty školicích __imagí__ .
+    Chcete-li přidat obrázek do stávajících školicích dat, vyberte obrázek, nastavte správné značky a klikněte na tlačítko __Uložit a zavřít__. Bitová kopie bude odebrána z __předpovědi__ a přidána do sady školicích imagí. Můžete ji zobrazit výběrem karty __školicích imagí__ .
 
     ![Obrázek stránky označování](./media/getting-started-improving-your-classifier/tag.png)
 
@@ -100,13 +100,13 @@ Když použijete nebo otestujete třídění imagí odesláním imagí do koncov
 
 ## <a name="visually-inspect-predictions"></a>Vizuálně kontrolovat předpovědi
 
-Pokud chcete zkontrolovat předpovědi image, přejděte na kartu __školicích imagí__ , v rozevírací nabídce iterace vyberte  předchozí iterace cvičení a v části **značky** zaškrtněte jednu nebo více značek. Zobrazení by nyní mělo zobrazit červené pole kolem každého obrázku, pro který model nedokázal správně odhadnout danou značku.
+Pokud chcete zkontrolovat předpovědi image, přejděte na kartu __školicích imagí__ , v rozevírací nabídce **iterace** vyberte předchozí iterace cvičení a v části **značky** zaškrtněte jednu nebo více značek. Zobrazení by nyní mělo zobrazit červené pole kolem každého obrázku, pro který model nedokázal správně odhadnout danou značku.
 
 ![Obrázek historie iterace](./media/getting-started-improving-your-classifier/iteration.png)
 
 V některých případech vizuální kontrola může identifikovat vzory, které pak můžete opravit přidáním dalších školicích dat nebo úpravou existujících školicích dat. Například třídění pro jablka vs. vápna může nesprávně označovat všechny zelené jablka jako vápna. Tento problém pak můžete vyřešit přidáním a poskytnutím školicích dat, která obsahují tagované obrázky zelených jablek.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V této příručce jste se seznámili s několika technikami, které vám pomohou zajistit přesnější model klasifikace vlastních imagí. Dále se naučíte, jak testovat image programově jejich odesláním do prediktivního rozhraní API.
 

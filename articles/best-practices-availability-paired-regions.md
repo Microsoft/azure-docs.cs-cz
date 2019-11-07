@@ -7,12 +7,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: raynew
-ms.openlocfilehash: 90111325677e1bdd12a03081ad7513a34f68fd40
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: b71048412f5715fd1b8ef3edf742716916672bd5
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044143"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718745"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Provozní kontinuita a zotavení po havárii (BCDR): spárované oblasti Azure
 
@@ -32,27 +32,27 @@ Obrázek 1 – regionální páry Azure
 | Austrálie |Austrálie – východ |Austrálie – jihovýchod |
 | Austrálie |Austrálie – střed |Austrálie – střed 2 |
 | Brazílie |Brazílie – jih |Středojižní USA |
-| Kanada |Kanada – střed |Kanada – východ |
+| Kanada |Střední Kanada |Kanada – východ |
 | Čína |Čína – sever |Čína – východ|
 | Čína |Čína – sever 2 |Čína – východ 2|
 | Evropa |Severní Evropa (Irsko) |Západní Evropa (Nizozemsko) |
 | Francie |Francie – střed|Francie – jih|
 | Německo |Německo – střed |Německo – severovýchod |
-| Indie |Střední Indie |Jižní Indie |
-| Indie |Západní Indie |Jižní Indie |
+| Indie |Střed Indie |Indie – jih |
+| Indie |Indie – západ |Indie – jih |
 | Japonsko |Japonsko – východ |Japonsko – západ |
-| Korea |Korea – střed |Korea – jih |
-| Severní Amerika |USA – východ |Západní USA |
+| Jižní Korea |Jižní Korea – střed |Jižní Korea – jih |
+| Severní Amerika |Východ USA |Západní USA |
 | Severní Amerika |Východ USA 2 |Střední USA |
 | Severní Amerika |Středoseverní USA |Středojižní USA |
 | Severní Amerika |Západní USA 2 |Středozápadní USA 
-| Jihoafrická republika | Jižní Afrika – sever | Jižní Afrika – západ
-| Spojené království |Velká Británie – západ |Velká Británie – jih |
+| Jižní Afrika | Jižní Afrika – sever | Jižní Afrika – západ
+| Spojené království |Spojené království – západ |Spojené království – jih |
 | Spojené arabské emiráty | Spojené arabské emiráty – sever | Spojené arabské emiráty – střed
-| Ministerstvo obrany USA |Ministerstvo obrany USA – východ |US DoD – střed |
-| US Government |US Gov – Arizona |US Gov – Texas |
-| US Government |USA – Iowa |USA – Virginie |
-| US Government |USA – Virginie |US Gov – Texas |
+| Ministerstvo obrany USA |US DoD – východ |US DoD – střed |
+| US Government |USA (Gov) – Arizona |USA (Gov) – Texas |
+| US Government |US Gov – Iowa |USA (Gov) – Virginia |
+| US Government |USA (Gov) – Virginia |USA (Gov) – Texas |
 
 Tabulka 1 – mapování místních párů Azure
 
@@ -75,7 +75,7 @@ Obrázek 2 – hypotetické oblastní páry Azure
 ## <a name="cross-region-activities"></a>Aktivity mezi oblastmi
 Jak je uvedeno na obrázku 2.
 
-![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure COMPUTE (IaaS)** – musíte předem zřídit ještě dodatečné výpočetní prostředky, abyste zajistili dostupnost prostředků v jiné oblasti během havárie. Další informace najdete v tématu [technické pokyny k odolnosti Azure](resiliency/resiliency-technical-guidance.md).
+![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure COMPUTE (IaaS)** – musíte předem zřídit ještě dodatečné výpočetní prostředky, abyste zajistili dostupnost prostředků v jiné oblasti během havárie. Další informace najdete v tématu [technické pokyny k odolnosti Azure](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md).
 
 ![úložiště](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** – Pokud používáte spravované disky, přečtěte si informace o [zálohování mezi jednotlivými oblastmi](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) Azure Backup a [replikaci virtuálních počítačů](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) z jedné oblasti do druhé s Azure Site Recovery. Pokud používáte účty úložiště, pak je geograficky redundantní úložiště (GRS) nakonfigurované ve výchozím nastavení, když se vytvoří účet Azure Storage. V GRS se vaše data automaticky replikují třikrát v rámci primární oblasti a třikrát se nacházejí v spárované oblasti. Další informace najdete v tématu [Azure Storage možností redundance](storage/common/storage-redundancy.md).
 

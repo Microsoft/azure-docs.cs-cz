@@ -1,26 +1,26 @@
 ---
-title: Odesílání a příjem událostí pomocí jazyka Go - Azure Event Hubs | Dokumentace Microsoftu
-description: Tento článek poskytuje návod pro vytváření aplikací v jazyce Go, která zasílá události ze služby Azure Event Hubs.
+title: 'Rychlý Start: odesílání a příjem událostí pomocí jazyka přejít – Azure Event Hubs'
+description: 'Rychlý Start: Tento článek poskytuje návod pro vytvoření aplikace v cestách, která odesílá události z Azure Event Hubs.'
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: kamalb
 ms.service: event-hubs
 ms.workload: core
-ms.topic: article
+ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 04/15/2019
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: 823ebc985c77785f8b48d12d5919dbbd1b2b1459
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5f52d0ddbf9a66d974732d6d98ca8a5b09cc2d0
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60821693"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720581"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-using-go"></a>Odesílání událostí do nebo přijímat události ze služby Event Hubs pomocí jazyka Go
+# <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>Rychlý Start: odeslání událostí do nebo příjem událostí z Event Hubs pomocí jazyka přejít
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
 
-Tento kurz popisuje, jak psát aplikace, přejděte k odesílání událostí do nebo přijímat události z centra událostí. 
+V tomto kurzu se dozvíte, jak psát aplikace v cestách pro odesílání událostí nebo přijímání událostí z centra událostí. 
 
 > [!NOTE]
 > Tento rychlý start si můžete stáhnout jako ukázku z [GitHubu](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/eventhubs), nahradit řetězce `EventHubConnectionString` a `EventHubName`, hodnotami pro vaše centrum událostí a spustit. Alternativně můžete vytvořit vlastní řešení podle kroků v tomto kurzu.
@@ -29,16 +29,16 @@ Tento kurz popisuje, jak psát aplikace, přejděte k odesílání událostí do
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
-- Přejděte nainstalovaný místně. Postupujte podle [tyto pokyny](https://golang.org/doc/install) v případě potřeby.
+- Místně se nainstaluje. V případě potřeby postupujte podle [těchto pokynů](https://golang.org/doc/install) .
 - Aktivní účet Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet][] před tím, než začnete.
-- **Vytvořit obor názvů služby Event Hubs a centra událostí**. Použití [webu Azure portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centra událostí, postupujte podle pokynů v [v tomto článku](event-hubs-create.md).
+- **Vytvoří obor názvů Event Hubs a centrum událostí**. Použijte [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md).
 
 ## <a name="send-events"></a>Odesílání událostí
-Tato část ukazuje, jak vytvořit aplikaci, přejděte k odesílání událostí do centra událostí. 
+V této části se dozvíte, jak vytvořit aplikaci v cestách pro odesílání událostí do centra událostí. 
 
-### <a name="install-go-package"></a>Nainstalujte balíček Go
+### <a name="install-go-package"></a>Nainstalovat balíček přejít
 
-Získat balíček Go pro Event Hubs s využitím `go get` nebo `dep`. Příklad:
+Získejte balíček přejít pro Event Hubs s `go get` nebo `dep`. Příklad:
 
 ```bash
 go get -u github.com/Azure/azure-event-hubs-go
@@ -50,9 +50,9 @@ dep ensure -add github.com/Azure/azure-event-hubs-go
 dep ensure -add github.com/Azure/azure-amqp-common-go
 ```
 
-### <a name="import-packages-in-your-code-file"></a>Importovat balíčky v souboru s kódem
+### <a name="import-packages-in-your-code-file"></a>Import balíčků do souboru kódu
 
-K importu balíčků Go, použijte následující příklad kódu:
+K importu balíčků přejít použijte následující příklad kódu:
 
 ```go
 import (
@@ -63,7 +63,7 @@ import (
 
 ### <a name="create-service-principal"></a>Vytvoření instančního objektu
 
-Vytvořte nový instanční objekt služby podle pokynů v [vytvoření instančního objektu Azure pomocí příkazového řádku Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli). Zadané přihlašovací údaje uložte ve vašem prostředí s následujícími názvy. Balíčky služby Event Hubs a Azure SDK for Go jsou předem nakonfigurovány pro vyhledání tyto názvy proměnných:
+Vytvořte nový instanční objekt podle pokynů v tématu [Vytvoření instančního objektu Azure pomocí Azure CLI 2,0](/cli/azure/create-an-azure-service-principal-azure-cli). Ve svém prostředí Uložte zadané přihlašovací údaje s následujícími názvy. Azure SDK pro Go i balíčky Event Hubs jsou předem nakonfigurované tak, aby vyhledaly tyto názvy proměnných:
 
 ```bash
 export AZURE_CLIENT_ID=
@@ -72,7 +72,7 @@ export AZURE_TENANT_ID=
 export AZURE_SUBSCRIPTION_ID= 
 ```
 
-Teď vytvořte poskytovatele ověřování pro službu Event Hubs klienta, který používá tyto přihlašovací údaje:
+Nyní vytvořte poskytovatele autorizace pro klienta Event Hubs, který používá tyto přihlašovací údaje:
 
 ```go
 tokenProvider, err := aad.NewJWTProvider(aad.JWTProviderWithEnvironmentVars())
@@ -81,7 +81,7 @@ if err != nil {
 }
 ```
 
-### <a name="create-event-hubs-client"></a>Vytvoření klienta služby Event Hubs
+### <a name="create-event-hubs-client"></a>Vytvořit klienta Event Hubs
 
 Následující kód vytvoří klienta Event Hubs:
 
@@ -96,7 +96,7 @@ if err != nil {
 
 ### <a name="write-code-to-send-messages"></a>Napsání kódu pro odesílání zpráv
 
-V následujícím fragmentu kódu pomocí (1) můžete interaktivně odesílání zpráv z terminálu nebo (2) pro odesílání zpráv v rámci programu:
+V následujícím fragmentu kódu použijte (1) k interaktivnímu posílání zpráv z terminálu nebo (2) k odesílání zpráv v rámci programu:
 
 ```go
 // 1. send messages at the terminal
@@ -115,7 +115,7 @@ hub.Send(ctx, eventhubs.NewEventFromString("hello Azure!"))
 
 ### <a name="extras"></a>Funkce
 
-Získání ID oddílů v Centru událostí:
+Získejte ID oddílů v centru událostí:
 
 ```go
 info, err := hub.GetRuntimeInformation(ctx)
@@ -125,7 +125,7 @@ if err != nil {
 log.Printf("got partition IDs: %s\n", info.PartitionIDs)
 ```
 
-Spusťte aplikaci k odesílání událostí do centra událostí. 
+Spusťte aplikaci, aby odesílala události do centra událostí. 
 
 Blahopřejeme! Nyní jste odeslali zprávy do centra událostí.
 
@@ -133,13 +133,13 @@ Blahopřejeme! Nyní jste odeslali zprávy do centra událostí.
 
 ### <a name="create-a-storage-account-and-container"></a>Vytvoření účtu úložiště a kontejneru
 
-Například zapůjčení na oddíly a kontrolní body stavu události datového proudu jsou sdílené mezi příjemci pomocí kontejneru služby Azure Storage. Můžete vytvořit účet úložiště a kontejner s Go SDK, ale můžete také vytvořit podle pokynů v [účty Azure storage](../storage/common/storage-create-storage-account.md).
+Stav, jako je například zapůjčení oddílů a kontrolních bodů v datovém proudu událostí, je sdílen mezi přijímači pomocí kontejneru Azure Storage. Pomocí sady SDK můžete vytvořit účet úložiště a kontejner, ale můžete ho také vytvořit podle pokynů v [tématu informace o účtech úložiště Azure](../storage/common/storage-create-storage-account.md).
 
-Ukázky pro vytvoření úložiště artefaktů s Go SDK jsou k dispozici v [Go ukázkové úložiště](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/storage) a v ukázce odpovídající do tohoto kurzu.
+Ukázky pro vytváření artefaktů úložiště s využitím sady SDK jsou k dispozici v [úložišti ukázek přejít](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/storage) a v ukázce odpovídající tomuto kurzu.
 
-### <a name="go-packages"></a>Přejděte balíčky
+### <a name="go-packages"></a>Balíčky přejít
 
-Pokud chcete přijímat zprávy, získat Go balíčky pro Event Hubs s využitím `go get` nebo `dep`:
+Chcete-li dostávat zprávy, Získejte balíčky přejít pro Event Hubs s `go get` nebo `dep`:
 
 ```bash
 go get -u github.com/Azure/azure-event-hubs-go/...
@@ -153,9 +153,9 @@ dep ensure -add github.com/Azure/azure-amqp-common-go
 dep ensure -add github.com/Azure/go-autorest
 ```
 
-### <a name="import-packages-in-your-code-file"></a>Importovat balíčky v souboru s kódem
+### <a name="import-packages-in-your-code-file"></a>Import balíčků do souboru kódu
 
-K importu balíčků Go, použijte následující příklad kódu:
+K importu balíčků přejít použijte následující příklad kódu:
 
 ```go
 import (
@@ -169,7 +169,7 @@ import (
 
 ### <a name="create-service-principal"></a>Vytvoření instančního objektu
 
-Vytvořte nový instanční objekt služby podle pokynů v [vytvoření instančního objektu Azure pomocí příkazového řádku Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli). Zadané přihlašovací údaje uložte ve vašem prostředí s následujícími názvy: Obě sady Azure SDK for Go a Event Hubs balíčku je předem nakonfigurované vyhledejte tyto názvy proměnných.
+Vytvořte nový instanční objekt podle pokynů v tématu [Vytvoření instančního objektu Azure pomocí Azure CLI 2,0](/cli/azure/create-an-azure-service-principal-azure-cli). Ve svém prostředí Uložte zadané přihlašovací údaje s následujícími názvy: Azure SDK pro Go i Event Hubs balíčky jsou předem nakonfigurované tak, aby vyhledaly tyto názvy proměnných.
 
 ```bash
 export AZURE_CLIENT_ID=
@@ -178,7 +178,7 @@ export AZURE_TENANT_ID=
 export AZURE_SUBSCRIPTION_ID= 
 ```
 
-Dále vytvořte poskytovatele ověřování pro službu Event Hubs klienta, který používá tyto přihlašovací údaje:
+V dalším kroku vytvořte poskytovatele autorizace pro klienta Event Hubs, který používá tyto přihlašovací údaje:
 
 ```go
 tokenProvider, err := aad.NewJWTProvider(aad.JWTProviderWithEnvironmentVars())
@@ -187,9 +187,9 @@ if err != nil {
 }
 ```
 
-### <a name="get-metadata-struct"></a>Získat metadata – struktura
+### <a name="get-metadata-struct"></a>Získat strukturu metadat
 
-Získáte strukturu s metadata o prostředí Azure pomocí Azure Go SDK. Najít správné koncové body pomocí dalších činností této struktuře.
+Získejte strukturu s metadaty týkajícími se vašeho prostředí Azure pomocí sady Azure cestách SDK. Pozdější operace používají tuto strukturu k nalezení správných koncových bodů.
 
 ```go
 azureEnv, err := azure.EnvironmentFromName("AzurePublicCloud")
@@ -198,9 +198,9 @@ if err != nil {
 }
 ```
 
-### <a name="create-credential-helper"></a>Vytvoření přihlašovacích údajů pomocné rutiny 
+### <a name="create-credential-helper"></a>Vytvořit pomocníka pověření 
 
-Vytvoření přihlašovacích údajů pomocné rutiny, která používá předchozí přihlašovací údaje Azure Active Directory (AAD) k vytvoření pověření sdíleného přístupového podpisu (SAS) pro úložiště. Určuje poslední parametr tohoto konstruktoru pro použít stejné proměnné prostředí jako používané dříve:
+Vytvořte pomocníka přihlašovacích údajů, který používá předchozí přihlašovací údaje pro Azure Active Directory (AAD) k vytvoření přihlašovacích údajů sdíleného přístupového podpisu (SAS) pro úložiště. Poslední parametr říká tomuto konstruktoru, aby používal stejné proměnné prostředí, jako dříve použitý:
 
 ```go
 cred, err := storageLeaser.NewAADSASCredential(
@@ -214,11 +214,11 @@ if err != nil {
 }
 ```
 
-### <a name="create-a-check-pointer-and-a-leaser"></a>Vytvořit kontrolu ukazatel a leaser 
+### <a name="create-a-check-pointer-and-a-leaser"></a>Vytvoření ukazatele pro kontrolu a pronájmu 
 
-Vytvoření **leaser**, je zodpovědný za zapůjčování oddílu na konkrétní příjemce a **zkontrolujte ukazatel**, odpovídají za zápis kontrolní body pro datový proud zpráv tak, aby ostatní příjemce může začít čtení z správný posun.
+Vytvořte **zapůjčenou**osobu odpovědnou za zapůjčení oddílu na konkrétního příjemce a **Kontrolní ukazatel**, který zodpovídá za zápis kontrolních bodů pro datový proud zpráv, aby ostatní příjemci mohli začít číst ze správného posunu.
 
-V současné době jediného **StorageLeaserCheckpointer** je k dispozici, který používá stejný kontejner úložiště pro správu zapůjčení a kontrolní body. Kromě úložiště názvy účtu a kontejneru **StorageLeaserCheckpointer** potřebuje přihlašovací údaje, které vytvořili v předchozím kroku a struktura prostředí Azure správný přístup k kontejneru.
+V současné době je k dispozici jeden **StorageLeaserCheckpointer** , který používá stejný kontejner úložiště ke správě zapůjčení a kontrolních bodů. Kromě účtu úložiště a názvů kontejnerů potřebuje **StorageLeaserCheckpointer** přihlašovací údaje vytvořené v předchozím kroku a strukturu prostředí Azure pro správný přístup ke kontejneru.
 
 ```go
 leaserCheckpointer, err := storageLeaser.NewStorageLeaserCheckpointer(
@@ -231,9 +231,9 @@ if err != nil {
 }
 ```
 
-### <a name="construct-event-processor-host"></a>Vytvoření třídy Event Processor Host
+### <a name="construct-event-processor-host"></a>Sestavit hostitele procesoru událostí
 
-Teď máte části potřebné k sestavení kompletních EventProcessorHost, následujícím způsobem. Stejné **StorageLeaserCheckpointer** slouží jako leaser a vrácení ukazatele, jak je popsáno výše:
+Nyní máte figurky potřebné k vytvoření EventProcessorHost, a to následujícím způsobem. Stejný **StorageLeaserCheckpointer** se používá jako zapůjčení i ukazatel kontroly, jak je popsáno výše:
 
 ```go
 ctx := context.Background()
@@ -250,9 +250,9 @@ if err != nil {
 defer p.Close(context.Background())
 ```
 
-### <a name="create-handler"></a>Vytvoření obslužné rutiny 
+### <a name="create-handler"></a>Vytvořit obslužnou rutinu 
 
-Teď vytvořte obslužnou rutinu a zaregistrovat ji pomocí třídy Event Processor Host. Když je hostitel se spustil, platí to a jakékoli zadané obslužné rutiny pro příchozí zprávy:
+Nyní vytvořte obslužnou rutinu a zaregistrujte ji u hostitele procesoru událostí. Po spuštění hostitele to platí pro všechny ostatní zadané obslužné rutiny pro příchozí zprávy:
 
 ```go
 handler := func(ctx context.Context, event *eventhubs.Event) error {
@@ -269,9 +269,9 @@ if err != nil {
 
 ### <a name="write-code-to-receive-messages"></a>Napsání kódu pro přijímání zpráv
 
-Všechna nastavení, můžete spouštět pomocí třídy Event Processor Host `Start(context)` zajistit jeho trvale pracovat, nebo s `StartNonBlocking(context)` ke spuštění, dokud zprávy jsou k dispozici.
+Díky nastavení všeho můžete spustit hostitele procesoru událostí s `Start(context)`, aby se zachovalo jeho nepřetržité spouštění, nebo aby se `StartNonBlocking(context)` spouštěla jenom tak dlouho, dokud jsou k dispozici zprávy.
 
-V tomto kurzu, spustí se a spustí takto: najdete v ukázce Githubu pro příklad použití `StartNonBlocking`:
+Tento kurz se spustí a spustí se takto: Příklad použití `StartNonBlocking`najdete v ukázce na GitHubu:
 
 ```go
 ctx := context.Background()
@@ -281,11 +281,11 @@ if err != nil {
 }
 ```
 
-## <a name="next-steps"></a>Další postup
-V následujících článcích:
+## <a name="next-steps"></a>Další kroky
+Přečtěte si následující články:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
-- [Funkce a terminologii používané v Azure Event Hubs](event-hubs-features.md)
+- [Funkce a terminologie ve službě Azure Event Hubs](event-hubs-features.md)
 - [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
 
 

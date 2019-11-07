@@ -1,5 +1,5 @@
 ---
-title: Kopírování místních dat pomocí nástroje pro kopírování dat Azure | Microsoft Docs
+title: Kopírování místních dat pomocí nástroje Azure Kopírování dat
 description: Vytvořte datovou továrnu Azure a pak pomocí nástroje pro kopírování dat zkopírujte data z místní databáze SQL Serveru do úložiště objektů blob v Azure.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 04/09/2018
 ms.author: abnarain
-ms.openlocfilehash: cbefc274e4ebb65f61769a7931dbed305acffe2f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 3b9c9371d947b0193f93b8084fbaaf66e3253997
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617526"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683541"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Kopírování dat z místní databáze SQL Serveru do úložiště objektů blob v Azure pomocí nástroje pro kopírování dat
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -107,16 +107,16 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce na levé straně vyberte **+ vytvořit** > **Data Factory** **analýzy** > prostředků. 
+1. V nabídce na levé straně vyberte **+ vytvořit prostředek** > **Analytics** > **Data Factory**. 
   
    ![Vytvoření nové datové továrny](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-1. Na stránce **Nová datová továrna** v části **Název** zadejte **ADFTutorialDataFactory**. 
+1. Do pole **Název** na stránce **Nová datová továrna** zadejte **ADFTutorialDataFactory**. 
 
-   Název datové továrny musí být *globálně jedinečný*. Pokud se u pole s názvem zobrazí následující chybová zpráva, změňte název datové továrny (třeba na váš_název_ADFTutorialDataFactory). Pravidla pro přiřazování názvů artefaktům služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
+   Název datové továrny musí být *globálně jedinečný*. Pokud se u pole s názvem zobrazí následující chybová zpráva, změňte název datové továrny (třeba na váš_název_ADFTutorialDataFactory). Pravidla pro pojmenovávání artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
 
    ![Název nové datové továrny](./media/doc-common-process/name-not-available-error.png)
-1. Vyberte **předplatné** Azure, v rámci kterého chcete datovou továrnu vytvořit. 
+1. Vyberte **předplatné** Azure, v rámci kterého chcete datovou továrnu vytvořit. 
 1. U položky **Skupina prostředků** proveďte jeden z následujících kroků:
   
    - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
@@ -130,7 +130,7 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
 1. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
   
-     ![Domovská stránka datové továrny](./media/doc-common-process/data-factory-home-page.png)
+     ![Domovská stránka objektu pro vytváření dat](./media/doc-common-process/data-factory-home-page.png)
 1. Výběrem dlaždice **Vytvořit a monitorovat** otevřete na samostatné kartě uživatelské rozhraní služby Data Factory. 
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Vytvoření kanálu pomocí nástroje pro kopírování dat
@@ -140,7 +140,7 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
    ![Stránka Začínáme](./media/doc-common-process/get-started-page.png)
 
 1. Na stránce **Vlastnosti** nástroje pro kopírování dat v části **Název úlohy** zadejte **CopyFromOnPremSqlToAzureBlobPipeline**. Pak vyberte **Další**. Nástroj pro kopírování dat vytvoří kanál s názvem, který zadáte do tohoto pole. 
-  ![Název úlohy](./media/tutorial-hybrid-copy-data-tool/properties-page.png)
+  název úlohy ![](./media/tutorial-hybrid-copy-data-tool/properties-page.png)
 
 1. Na stránce **Source data store** (Zdrojové úložiště dat) klikněte na **Create new connection** (Vytvořit nové připojení). 
 
@@ -230,7 +230,7 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
    ![Karta Upravit](./media/tutorial-hybrid-copy-data-tool/edit-tab.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Kanál v této ukázce kopíruje data z místní databáze SQL Serveru do úložiště objektů blob. Naučili jste se tyto postupy: 
 
 > [!div class="checklist"]

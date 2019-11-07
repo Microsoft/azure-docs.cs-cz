@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0f8e605db3d647b5907c8c6741e4e2200bf14c4f
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 56e0f720221f8de531087e8b8d0476688feb2547
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772366"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601486"
 ---
 # <a name="create-and-manage-vlanssubnets-for-your-private-clouds"></a>Vytváření a správa sítí VLAN a podsítí pro privátní cloudy
 
@@ -31,9 +31,13 @@ Otevřete kartu sítě VLAN/podsítě na stránce síť, abyste mohli vytvářet
 5. Zadejte ID sítě VLAN.
 6. Zadejte název podsítě.
 7. Pokud chcete povolit směrování v síti VLAN (podsíti), zadejte rozsah CIDR podsítě. Ujistěte se, že rozsah CIDR se nepřekrývá s žádnou z vašich místních podsítí, podsítí Azure ani podsítí brány.
-8. Klikněte na **Submit** (Odeslat).
+8. Klikněte na **Odeslat**.
 
     ![Vytvořit síť VLAN nebo podsíť](media/create-new-vlan-subnet-details.png)
+
+
+> [!IMPORTANT]
+> K dispozici je kvóta 30 sítí VLAN na jeden privátní cloud. Tato omezení se dají zvýšit [kontaktováním podpory](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="use-vlan-information-to-set-up-a-distributed-port-group-in-vsphere"></a>Nastavení distribuované skupiny portů v vSphere pomocí informací o síti VLAN
 

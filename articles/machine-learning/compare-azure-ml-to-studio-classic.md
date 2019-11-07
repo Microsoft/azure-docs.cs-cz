@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 10/29/2019
-ms.openlocfilehash: dae708a417a1bf8ca4b118f218e353a28e5675c1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: HT
+ms.openlocfilehash: 721f730aa78be39b91f7d8368655dbbd5878903b
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684954"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716692"
 ---
 # <a name="how-azure-machine-learning-differs-from-ml-studio-classic"></a>Způsob, jakým se Azure Machine Learning liší od ML Studio (klasické)
 
@@ -40,7 +40,7 @@ Tady je rychlé porovnání.
 ||Návrhář je ve verzi Preview, Azure Machine Learning je GA.|Všeobecně dostupná (GA) | 
 |Rozhraní přetažení| Ano | Ano|
 |Začátku| Škálování s cílem výpočetního prostředí|Škálování (limit pro školicí data pro 10GB) | 
-|Moduly pro rozhraní|  Mnoho oblíbených modulů|Počtu |
+|Moduly pro rozhraní| [Mnoho oblíbených modulů](algorithm-module-reference/module-reference.md) | Počtu |
 |Školení výpočetních cílů| AML COMPUTE (GPU/CPU)|Proprietární výpočetní cíl, jenom procesor|
 |Inferencing výpočetní cíle| Služba Azure Kubernetes pro odvození v reálném čase <br/>AML COMPUTE pro odvození dávky|Speciální formát webové služby, není přizpůsobitelný | 
 |Kanál ML| Vytváření kanálů <br/> publikovaný kanál <br/> Koncový bod kanálu <br/> [Další informace o kanálu ML](service/concept-ml-pipelines.md)|Nepodporováno | 
@@ -48,7 +48,7 @@ Tady je rychlé porovnání.
 |Model| Standardní formát, různé závisí na úloze školení.|Speciální, nepřenosový formát.| 
 |Automatizované školení modelu|Ještě není v návrháři, ale je to možné prostřednictvím rozhraní a sad SDK.| Ne | 
 
-## <a name="get-started-with-azure-machine-learning-designer"></a>Začínáme s návrhářem Azure Machine Learning
+## <a name="get-started-with-azure-machine-learning"></a>Začínáme se službou Azure Machine Learning
 
 Následující zdroje vám pomůžou začít s Azure Machine Learning
 
@@ -56,12 +56,11 @@ Následující zdroje vám pomůžou začít s Azure Machine Learning
 
 - [Vytvořte svůj první kanál návrháře](service/tutorial-designer-automobile-price-train-score.md) pro předpověď automatických cen.
 
-
 ![Příklad návrháře Azure Machine Learning](service/media/concept-ml-pipelines/designer-drag-and-drop.gif)
 
 ## <a name="next-steps"></a>Další kroky
 
-Kromě možností přetažení v Návrháři má Azure Machine Learning k dispozici další nástroje:  
+Kromě možností přetahování v Návrháři Azure Machine Learning k dispozici další nástroje:  
   + [Použití poznámkových bloků Pythonu k učení & nasazení modelů ML](./service/tutorial-1st-experiment-sdk-setup.md)
   + [Použití R Markdown ke školení & nasazení modelů ML](./service/tutorial-1st-r-experiment.md) 
   + [Použití automatizovaného strojového učení ke studiu & nasazení modelů ML](./service/tutorial-designer-automobile-price-train-score.md) 

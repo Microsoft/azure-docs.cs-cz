@@ -1,25 +1,24 @@
 ---
-title: Vytvoření úložiště znalostí v Azure Portal
+title: Vytvoření úložiště znalostí (Preview) v Azure Portal
 titleSuffix: Azure Cognitive Search
-description: Pomocí Průvodce importem dat vytvoříte úložiště znalostí používané pro zachování obohaceného obsahu. Připojte se ke službě Knowledge Store pro analýzu z jiných aplikací nebo odešlete obohacený obsah do navazujících procesů.
+description: Pomocí Průvodce importem dat vytvoříte úložiště znalostí používané pro zachování obohaceného obsahu. Připojte se ke službě Knowledge Store pro analýzu z jiných aplikací nebo odešlete obohacený obsah do navazujících procesů. Tato funkce je aktuálně ve verzi Public Preview.
 author: lisaleib
 manager: nitinme
 ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 689b5aa0cd8a5fb310925b2c52baeec6860af0d5
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
-ms.translationtype: HT
+ms.openlocfilehash: 56053a942604a6f1cb935e6bddcae85ffc5a9e54
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607078"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720103"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Rychlý Start: vytvoření služby Azure Kognitivní hledání Knowledge Store v Azure Portal
 
-> [!Note]
-> Znalostní báze je ve verzi Preview a neměl by se používat v produkčním prostředí. Tuto funkci poskytuje Azure Portal i [REST API vyhledávání verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není dostupná žádná podpora sady .NET SDK.
->
+> [!IMPORTANT] 
+> znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 Znalostní báze je funkce služby Azure Kognitivní hledání, která uchovává výstup kanálu vnímání dovedností pro následné analýzy nebo zpracování pro příjem dat. 
 

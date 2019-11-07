@@ -1,6 +1,6 @@
 ---
 title: 'Kurz 1: předpověď úvěrového rizika'
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Podrobný kurz, který ukazuje, jak vytvořit řešení prediktivní analýzy pro posuzování úvěrového rizika v klasické verzi Azure Machine Learning Studio. Tento kurz je první částí série kurzů se třemi částmi.  Ukazuje, jak vytvořit pracovní prostor, nahrát data a vytvořit experiment.
 keywords: úvěrové riziko,řešení prediktivní analýzy,posouzení rizika
 author: sdgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: b861fbca1f8b4fd6b313e770b1636674767e406a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 78092bd4ad4da896cd2fd36768f181764335ee85
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492628"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619185"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Kurz 1: předpověď úvěrového rizika – Azure Machine Learning Studio (Classic)
 
@@ -38,7 +38,7 @@ V této části kurzu:
 
 Pak můžete tento experiment použít k [proškolování modelů v části 2](tutorial-part2-credit-risk-train.md) a pak [je nasadit v části 3](tutorial-part3-credit-risk-deploy.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se předpokládá, že jste předtím používali Machine Learning Studio (Classic) alespoň jednou a že máte zkušenosti s koncepty machine learningu. Bere ale v úvahu, že nejste odborníkem ani na jedno.
 
@@ -173,7 +173,7 @@ Dalším krokem v tomto kurzu je vytvoření experimentu v klasické verzi Machi
 
 Můžete zobrazit prvních 100 řádků dat a některé statistické informace pro celou datovou sadu: klikněte na výstupní port datové sady (malý kroužek v dolní části) a vyberte **vizualizovat**.  
 
-Vzhledem k tomu, že datový soubor nepřišel se záhlavími sloupců, nabízí klasická verze studia obecné nadpisy (Sloupec1, col2 *atd.* ). Dobré nadpisy nejsou nezbytné pro vytváření modelu, ale usnadňují práci s daty v experimentu. I když nakonec tento model publikujete ve webové službě, budou hlavičky identifikovat sloupce pro uživatele služby.  
+Vzhledem k tomu, že datový soubor nepřišel se záhlavími sloupců, nabízí klasická verze studia obecné nadpisy (Sloupe, col2 *atd.* ). Dobré nadpisy nejsou nezbytné pro vytváření modelu, ale usnadňují práci s daty v experimentu. I když nakonec tento model publikujete ve webové službě, budou hlavičky identifikovat sloupce pro uživatele služby.  
 
 Záhlaví sloupců můžete přidat pomocí modulu [Upravit metadata][edit-metadata] .
 

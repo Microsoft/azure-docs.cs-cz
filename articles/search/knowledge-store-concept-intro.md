@@ -1,25 +1,24 @@
 ---
 title: Úvod do znalostní báze Knowledge Store (Preview)
 titleSuffix: Azure Cognitive Search
-description: Posílat obohacené dokumenty do služby Azure Storage, kde můžete zobrazit, změnit tvar a využívat obohacené dokumenty v Azure Kognitivní hledání a v jiných aplikacích.
+description: Posílat obohacené dokumenty do služby Azure Storage, kde můžete zobrazit, změnit tvar a využívat obohacené dokumenty v Azure Kognitivní hledání a v jiných aplikacích. Tato funkce je ve verzi Public Preview.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2e6d20a1eca7a6b3281e33d8534ab3456e79ccdf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a1c6f2d869d8d7ad865005ebd319beac56bdbacd
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485077"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720097"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Seznámení s znalostními obchody v Azure Kognitivní hledání
 
-> [!Note]
-> Znalostní databáze je ve verzi Preview a není určená pro produkční použití. Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není dostupná žádná podpora sady .NET SDK.
->
+> [!IMPORTANT] 
+> znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
 
 Znalostní báze je funkce služby Azure Kognitivní hledání, která uchovává výstup [kanálu rozšíření AI](cognitive-search-concept-intro.md) pro pozdější analýzu nebo jiné zpracování dat. *Obohacený dokument* je výstup kanálu vytvořený z obsahu, který byl extrahován, strukturovaný a analyzován pomocí procesů AI. V standardním kanálu AI jsou obohacené dokumenty přechodné, používané jenom při indexování a pak se zahodí. Díky znalostnímu obchodu jsou rozšířené dokumenty zachované. 
 
@@ -52,7 +51,7 @@ Ve výčtu jsou výhody znalostní báze Knowledge Store následující:
 
 Znalostní databáze je součástí [dovednostiu](cognitive-search-working-with-skillsets.md), který je zase součástí [indexeru](search-indexer-overview.md). 
 
-V této verzi Preview můžete vytvořit úložiště znalostí pomocí REST API a `api-version=2019-05-06-Preview` nebo pomocí průvodce **importem dat** na portálu.
+V této verzi Preview můžete vytvořit úložiště znalostí pomocí REST API a `api-version=2019-05-06-Preview`nebo pomocí průvodce **importem dat** na portálu.
 
 ### <a name="json-representation-of-a-knowledge-store"></a>Reprezentace ve znalostní bázi JSON pro úložiště znalostí
 
@@ -147,7 +146,7 @@ Indexery a dovednosti vytvoříte extrahování a obohacení nebo transformaci t
 
 Rozšíření požadovaná pro vytvoření úložiště znalostí (Create dovednosti and CREATE indexer) mají jenom dvě rozhraní API. Jiná rozhraní API se používají tak, jak jsou.
 
-| Objekt | Rozhraní REST API | Popis |
+| Objekt | REST API | Popis |
 |--------|----------|-------------|
 | Zdroj dat | [Vytvoření zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Prostředek identifikující externí zdroj dat Azure, který poskytuje zdrojová data používaná k vytváření obohacených dokumentů.  |
 | dovednosti | [Create dovednosti (API-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Prostředek, který koordinuje používání [integrovaných dovedností](cognitive-search-predefined-skills.md) a [vlastní vnímání zkušeností](cognitive-search-custom-skill-interface.md) , které se v kanálu rozšíření používají během indexování. Dovednosti má definici `knowledgeStore` jako podřízený element. |
@@ -187,5 +186,5 @@ Znalostní báze Knowledge Store nabízí persistenci obohacených dokumentů, k
 Nejjednodušším přístupem k vytváření obohacených dokumentů je průvodce **importem dat** , ale můžete také použít příkaz post a REST API, který je užitečnější, pokud chcete získat přehled o způsobu vytváření a odkazů na objekty.
 
 > [!div class="nextstepaction"]
-> [Vytvoření úložiště znalostí pomocí portálu](knowledge-store-create-portal.md) 
+> [Vytvoření úložiště znalostí pomocí portálu](knowledge-store-create-portal.md)
 > [vytvoření znalostní báze pomocí metody post a rozhraní REST APi](knowledge-store-create-rest.md)

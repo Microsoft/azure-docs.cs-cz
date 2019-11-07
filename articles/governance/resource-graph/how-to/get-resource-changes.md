@@ -1,5 +1,5 @@
 ---
-title: Získat změny prostředků
+title: Získání změn prostředků
 description: Zjistěte, jak najít, kdy byl prostředek změněn, a získejte seznam vlastností, které se změnily.
 services: resource-graph
 author: DCtheGeek
@@ -7,16 +7,16 @@ ms.author: dacoulte
 ms.date: 10/09/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 4858d803b4fccdc6ae4d5a790721bad60d218313
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 44e7bbde40dbd4b79a6ce3735ab5a1ac81421d3b
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274196"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622564"
 ---
-# <a name="get-resource-changes"></a>Získat změny prostředků
+# <a name="get-resource-changes"></a>Získání změn prostředků
 
-Prostředky se v průběhu každodenního použití, změny konfigurace a dokonce opětovného nasazení mění.
+Prostředky se mění v průběhu denního využití, z důvodu změny konfigurace nebo dokonce změny nasazení.
 Změna může pocházet z individuálního nebo automatizovaného procesu. Většina změn je záměrné, ale někdy ne. V posledních 14 dnech historie změn vám Azure Resource Graph umožní:
 
 - Najde, kdy se u vlastnosti Azure Resource Manager zjistily změny.
@@ -44,8 +44,8 @@ Prvním krokem při zobrazení toho, co se změnilo u prostředku, je najít ud�
 
 Koncový bod **resourceChanges** akceptuje v textu požadavku následující parametry:
 
-- **resourceId** \[required @ no__t-2: prostředek Azure pro hledání změn v.
-- **interval** @no__t – 1required @ no__t-2: vlastnost s _počátečním_ a _koncovým_ datem pro kontrolu události změny pomocí **časového pásma Zulu (Z)** .
+- **resourceId** \[požadované\]: prostředek Azure, ve kterém se mají hledat změny.
+- **interval** \[požadovaných\]: vlastnost s _počátečním_ a _koncovým_ datem, kdy se má kontrolovat událost změny pomocí **Zulu časového pásma (Z)** .
 - **fetchPropertyChanges** (volitelné): logická vlastnost, která nastavuje, zda objekt Response obsahuje změny vlastností.
 
 Příklad textu žádosti:
@@ -292,4 +292,4 @@ Pro porovnání výsledků buď použijte vlastnost **changess** v **resourceCha
 
 - Podívejte se na jazyk používaný v [počátečních dotazech](../samples/starter.md).
 - Viz rozšířená použití v [rozšířených dotazech](../samples/advanced.md).
-- Naučte se [prozkoumat prostředky](../concepts/explore-resources.md).
+- Přečtěte si další informace o tom, jak [prozkoumat prostředky](../concepts/explore-resources.md).

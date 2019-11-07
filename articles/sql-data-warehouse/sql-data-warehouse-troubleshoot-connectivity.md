@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s Azure SQL Data Warehouse | Microsoft Docs
-description: Řešení potíží s Azure SQL Data Warehouse.
+title: Řešení potíží s připojením
+description: Řešení potíží s připojením v Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -10,28 +10,29 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: ebdeaf21253e89a9a14e3a56ca7be0f6e8adceb0
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d1139032176b3b44c58471b87cabd10ffeaa3d20
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859226"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692420"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Řešení potíží s připojením
 
 V tomto článku jsou uvedené běžné techniky řešení potíží, které se připojují k vašemu SQL Data Warehouse.
 - [Ověřit dostupnost služby](./sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
-- [Kontrolovat pozastavené operace nebo škálování](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
-- [Kontrolovat nastavení brány firewall](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
-- [Ověřte nastavení služby VNet/Service Endpoint.](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
-- [Vyhledat nejnovější ovladače](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
-- [Ověřte připojovací řetězec](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-connection-string)
-- [Přerušované problémy s připojením](./sql-data-warehouse-troubleshoot-connectivity.md#intermittent-connection-issues)
+- [Zkontrolujte pozastavené operace nebo operace škálování](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
+- [Zkontrolujte nastavení brány firewall](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
+- [Zkontrolujte nastavení virtuální sítě / koncového bodu služby](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
+- [Vyhledejte nejnovější ovladače](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
+- [Zkontrolujte připojovací řetězec](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-connection-string)
+- [Problémy s přerušovaným připojením](./sql-data-warehouse-troubleshoot-connectivity.md#intermittent-connection-issues)
 - [Běžné chybové zprávy](./sql-data-warehouse-troubleshoot-connectivity.md#common-error-messages)
 
 ## <a name="check-service-availability"></a>Ověřit dostupnost služby
 
-Zkontrolujte, zda je služba k dispozici. V Azure Portal přejdete do SQL Data Warehouse, ke kterému se pokoušíte připojit. Na levém panelu obsahu klikněte na diagnostikovat **a řešte problémy**.
+Zkontrolujte, zda je služba k dispozici. V Azure Portal přejdete do SQL Data Warehouse, ke kterému se pokoušíte připojit. Na levém panelu obsahu klikněte na **diagnostikovat a řešte problémy**.
 
 ![Vybrat stav prostředku](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
@@ -41,7 +42,7 @@ Tady se zobrazí stav SQL Data Warehouse. Pokud služba není zobrazená jako **
 
 Pokud se ve stavu prostředku ukáže, že je váš datový sklad pozastaven nebo se mění jeho velikost, postupujte podle pokynů pro obnovení datového skladu.
 
-![Služba pozastavila](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) Další informace o Resource Health najdete tady.
+Služba ![pozastavena](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) Další informace o Resource Health najdete zde.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Kontrolovat pozastavené operace nebo škálování
 
@@ -57,7 +58,7 @@ V opačném případě obraťte se na správce IT a ověřte, že tato údržba 
 
 ## <a name="check-your-firewall-settings"></a>Kontrolovat nastavení brány firewall
 
-SQL Data Warehouse komunikuje přes port 1433.   Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. V takovém případě se k serveru Azure SQL Database nemůžete připojit, dokud vaše IT oddělení neotevře port 1433. Další informace o konfiguracích brány firewall najdete [tady](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules).
+SQL Data Warehouse komunikuje přes port 1433.   Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. V takovém případě se nebudete moct připojit k serveru služby Azure SQL Database, dokud vaše IT oddělení neotevře port 1433. Další informace o konfiguracích brány firewall najdete [tady](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules).
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>Ověřte nastavení služby VNet/Service Endpoint.
 
@@ -84,7 +85,7 @@ Ujistěte se, že používáte nejnovější verze ovladačů.  Při použití
 
 ## <a name="check-your-connection-string"></a>Ověřte připojovací řetězec
 
-Zkontrolujte, jestli jsou správně nastavené připojovací řetězce.  Níže jsou uvedeny některé ukázky.  Další informace o připojovacích řetězcích můžete najít [tady](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings).
+Zkontrolujte, jestli jsou správně nastavené připojovací řetězce.  Níže jsou uvedeny některé ukázky.  Další informace o [připojovacích řetězcích najdete tady](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings).
 
 Připojovací řetězec pro ADO.NET
 
@@ -112,7 +113,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>Přerušované problémy s připojením
 
-Zkontrolujte, jestli u serveru dochází k velkým zátěži s vysokým počtem požadavků zařazených do fronty. Možná budete muset škálovat datový sklad pro další prostředky.
+Zkontrolujte, jestli je server hodně zatížený a existuje na něm vysoký počet požadavků ve frontě. Možná bude nutné vertikálně navýšit kapacitu datového skladu a přidat další prostředky.
 
 ## <a name="common-error-messages"></a>Běžné chybové zprávy
 

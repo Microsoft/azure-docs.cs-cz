@@ -1,5 +1,5 @@
 ---
-title: Připojení k Azure SQL Data Warehouse | Dokumentace Microsoftu
+title: Připojení k Azure SQL Data Warehouse
 description: Připojte se k Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 71f5c8ca56bc188c0664604a78c38a05be3c3b01
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 5a14b99753c9f06f2e0cf32dd8b5c7776cfdad89
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68479738"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685873"
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>Připojení k Azure SQL Data Warehouse
 Připojte se k Azure SQL Data Warehouse.
@@ -23,7 +24,7 @@ Připojte se k Azure SQL Data Warehouse.
 ## <a name="find-your-server-name"></a>Vyhledání názvu serveru
 Název serveru v následujícím příkladu je samplesvr.database.windows.net. Plně kvalifikovaný název serveru zjistíte následujícím způsobem:
 
-1. Přejděte na [Azure Portal][Azure portal].
+1. Přejděte na [portál Azure][Azure portal].
 2. Klikněte na **Datové sklady SQL**.
 3. Klikněte na datový sklad, ke kterému se chcete připojit.
 4. Vyhledejte úplný název serveru.
@@ -61,14 +62,14 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 ## <a name="connection-settings"></a>Nastavení připojení
 SQL Data Warehouse během připojování a vytváření objektů používá několik standardních nastavení. Tato nastavení nelze přepsat a zahrnují:
 
-| Nastavení databáze | Value |
+| Nastavení databáze | Hodnota |
 |:--- |:--- |
-| [ANSI_NULLS][ANSI_NULLS] |ZAPNUTO |
-| [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |ZAPNUTO |
+| [ANSI_NULLS][ANSI_NULLS] |ON |
+| [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |ON |
 | [DATEFORMAT][DATEFORMAT] |mdy |
 | [DATEFIRST][DATEFIRST] |7 |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Informace o připojení a dotazování pomocí sady Visual Studio najdete v oddílu [Dotazování pomocí sady Visual Studio][Query with Visual Studio]. Další informace o možnostech ověřování najdete v oddílu [Ověřování do Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse].
 
 <!--Articles-->

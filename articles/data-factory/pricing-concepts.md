@@ -1,5 +1,5 @@
 ---
-title: Seznámení se Azure Data Factory cenami prostřednictvím příkladů | Microsoft Docs
+title: Seznámení se Azure Data Factory cenami prostřednictvím příkladů
 description: Tento článek vysvětluje a předvádí Azure Data Factory cenový model s podrobnými příklady
 documentationcenter: ''
 author: djpmsft
@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/25/2018
-ms.openlocfilehash: 168d977b9dc0ea6117796cf98a8562f168258d28
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: c42946733ee49ed6acf2c8deadf850208e003339
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387459"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684534"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Seznámení se Data Factory cenami prostřednictvím příkladů
 
@@ -51,10 +51,10 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 **Ceny za celkový scénář: $0,16811**
 
 - Operace Data Factory = **$0,0001**
-  - Čtení/zápis = 10 @ no__t-000001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
-  - Monitorování = 2 @ no__t-0000005 = $0,00001 [1 monitorování = $0,25/50000 = 0,000005]
-- Orchestrace kanálu &amp; spuštění = **$0,168**
-  - Spuštění aktivit = 001 @ no__t-02 = 0,002 [1 spuštění = $1/1000 = 0,001]
+  - Čtení/zápis = 10\*00001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
+  - Monitorování = 2\*000005 = $0,00001 [1 monitorování = $0,25/50000 = 0,000005]
+- Orchestrace kanálu &amp; provádění = **$0,168**
+  - Spuštění aktivit = 001\*2 = 0,002 [1 běh = $1/1000 = 0,001]
   - Aktivity přesunu dat = $0,166 (poměr po 10 minutách doby spuštění. měsíčně za hodinu v Azure Integration Runtime)
 
 ## <a name="copy-data-and-transform-with-azure-databricks-hourly"></a>Kopírování dat a transformace pomocí Azure Databricks každou hodinu
@@ -83,10 +83,10 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 **Ceny za celkový scénář: $0,16916**
 
 - Operace Data Factory = **$0,00012**
-  - Čtení/zápis = 11 @ no__t-000001 = $0,00011 [1 R/W = $0,50/50000 = 0,00001]
-  - Monitorování = 3 @ no__t-0000005 = $0,00001 [1 monitorování = $0,25/50000 = 0,000005]
-- Orchestrace kanálu &amp; spuštění = **$0,16904**
-  - Spuštění aktivit = 001 @ no__t-03 = 0,003 [1 spuštění = $1/1000 = 0,001]
+  - Čtení/zápis = 11\*00001 = $0,00011 [1 R/W = $0,50/50000 = 0,00001]
+  - Monitorování = 3\*000005 = $0,00001 [1 monitorování = $0,25/50000 = 0,000005]
+- Orchestrace kanálu &amp; provádění = **$0,16904**
+  - Spuštění aktivit = 001\*3 = 0,003 [1 běh = $1/1000 = 0,001]
   - Aktivity přesunu dat = $0,166 (poměr po 10 minutách doby spuštění. měsíčně za hodinu v Azure Integration Runtime)
   - Aktivita externího kanálu = $0,000041 (poměr po 10 minutách doby spuštění. $0.00025 za hodinu v Azure Integration Runtime)
 
@@ -118,10 +118,10 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 **Ceny za celkový scénář: $0,17020**
 
 - Operace Data Factory = **$0,00013**
-  - Čtení/zápis = 11 @ no__t-000001 = $0,00011 [1 R/W = $0,50/50000 = 0,00001]
-  - Monitorování = 4 @ no__t-0000005 = $0,00002 [1 monitorování = $0,25/50000 = 0,000005]
-- Orchestrace kanálu &amp; spuštění = **$0,17007**
-  - Spuštění aktivit = 001 @ no__t-04 = 0,004 [1 spuštění = $1/1000 = 0,001]
+  - Čtení/zápis = 11\*00001 = $0,00011 [1 R/W = $0,50/50000 = 0,00001]
+  - Monitorování = 4\*000005 = $0,00002 [1 monitorování = $0,25/50000 = 0,000005]
+- Orchestrace kanálu &amp; provádění = **$0,17007**
+  - Spuštění aktivit = 001\*4 = 0,004 [1 běh = $1/1000 = 0,001]
   - Aktivity přesunu dat = $0,166 (poměr po 10 minutách doby spuštění. měsíčně za hodinu v Azure Integration Runtime)
   - Aktivita kanálu = $0,00003 (poměr 1 minuty doby spuštění. $0.002 za hodinu v Azure Integration Runtime)
   - Aktivita externího kanálu = $0,000041 (poměr po 10 minutách doby spuštění. $0.00025 za hodinu v Azure Integration Runtime)
@@ -153,16 +153,16 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 | Vytvořit kanál | 3 entity pro čtení a zápis (1 pro vytvoření kanálu, 2 pro odkazy na datovou sadu) |
 | Získat kanál | 1 entita pro čtení a zápis |
 | Spustit kanál | 2 spuštění aktivit (1 pro spuštění triggeru, 1 pro spuštění aktivit) |
-| Předpoklady toku dat: doba provádění = 10 min + 10 min. TTL | 10 \* 8 jader obecného výpočtu s hodnotou TTL z 10 |
+| Předpoklady toku dat: doba provádění = 10 min + 10 min. TTL | 10 \* 8 jader obecného COMPUTE s hodnotou TTL z 10 |
 | Předpoklad monitorování kanálu: došlo k pouze 1 spuštění. | 2 pokus o sledování záznamů o spuštění (1 pro spuštění kanálu, 1 pro spuštění aktivity) |
 
 **Ceny za celkový scénář: $0,3011**
 
 - Operace Data Factory = **$0,0001**
-  - Čtení/zápis = 10 @ no__t-000001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
-  - Monitorování = 2 @ no__t-0000005 = $0,00001 [1 monitorování = $0,25/50000 = 0,000005]
-- Orchestrace kanálu &amp; spuštění = **$0,301**
-  - Spuštění aktivit = 001 @ no__t-02 = 0,002 [1 spuštění = $1/1000 = 0,001]
+  - Čtení/zápis = 10\*00001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
+  - Monitorování = 2\*000005 = $0,00001 [1 monitorování = $0,25/50000 = 0,000005]
+- Orchestrace kanálu &amp; provádění = **$0,301**
+  - Spuštění aktivit = 001\*2 = 0,002 [1 běh = $1/1000 = 0,001]
   - Aktivity toku dat = $0,299 poměrná hodnota po dobu 20 minut (10 minut doba provádění + 10 minut TTL). $0.112 za hodinu na Azure Integration Runtime s 8 jádry obecného COMPUTE
 
 ## <a name="next-steps"></a>Další kroky

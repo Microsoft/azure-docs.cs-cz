@@ -1,6 +1,6 @@
 ---
-title: Použití Azure Service Bus témata a předplatných v jazyce Java
-description: Použijte Service Bus témata a předplatná v Azure.
+title: 'Rychlý Start: použití témat Azure Service Bus a předplatných v jazyce Java'
+description: 'Rychlý Start: použijte Service Bus témata a předplatná v Azure.'
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -11,18 +11,18 @@ ms.service: service-bus-messaging
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
-ms.topic: article
-ms.date: 04/15/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: affd62bd7cae0103b7d2510022fc12a66d26c865
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 8a721d929ff89fd644c78296ae54cee757bf9610
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155591"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720002"
 ---
-# <a name="use-service-bus-topics-and-subscriptions-with-java"></a>Použití Service Bus témata a předplatných v jazyce Java
+# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Rychlý Start: použití témat Service Bus a předplatných v jazyce Java
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
@@ -31,7 +31,7 @@ V tomto rychlém startu napíšete kód Java, který odešle zprávy do Azure Se
 ## <a name="prerequisites"></a>Požadavky
 
 1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Postupujte podle kroků v [rychlém startu: Pomocí Azure Portal můžete vytvořit Service Bus téma a odběry tématu](service-bus-quickstart-topics-subscriptions-portal.md) , abyste mohli provádět následující úlohy:
+2. Postupujte podle kroků v [rychlém startu: pomocí Azure Portal vytvořte Service Bus téma a odběry k tématu](service-bus-quickstart-topics-subscriptions-portal.md) , abyste mohli provádět následující úlohy:
     1. Vytvořte **obor názvů**Service Bus.
     2. Získá **připojovací řetězec**.
     3. Vytvořte **téma** v oboru názvů.
@@ -45,11 +45,11 @@ Před vytvořením této ukázky se ujistěte, že máte nainstalovanou [sadu Az
 
 Také je nutné přidat následující jar do cesty sestavení Java:
 
-- gson-2.6.2.jar
-- commons-cli-1.4.jar
-- proton-j-0.21.0.jar
+- gson-2.6.2. jar
+- Commons-CLI-1.4. jar
+- Proton-j-0.21.0. jar
 
-Přidejte třídu s metodou **Main** a přidejte následující `import` příkazy do horní části souboru Java:
+Přidejte třídu s metodou **Main** a přidejte následující příkazy `import` v horní části souboru Java:
 
 ```java
 import com.google.gson.reflect.TypeToken;
@@ -70,7 +70,7 @@ Aktualizujte metodu **Main** tak, aby vytvořila objekt **TopicClient** , a vyvo
 
 > [!NOTE] 
 > - Nahraďte `<NameOfServiceBusNamespace>` názvem vašeho oboru názvů Service Bus. 
-> - Nahraďte `<AccessKey>` přístupovým klíčem pro váš obor názvů.
+> - Místo `<AccessKey>` nahraďte přístupovým klíčem pro váš obor názvů.
 
 ```java
 public class MyServiceBusTopicClient {

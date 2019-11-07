@@ -1,6 +1,6 @@
 ---
 title: 'Kurz 3: nasazení modelu úvěrového rizika'
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Podrobný kurz, který ukazuje, jak vytvořit řešení prediktivní analýzy pro posuzování úvěrového rizika v klasické verzi Azure Machine Learning Studio. Tento kurz je třetí částí série kurzů s třemi částmi. Ukazuje, jak nasadit model jako webovou službu.
 keywords: úvěrové riziko, řešení prediktivní analýzy, posouzení rizik, nasazení, Webová služba
 author: sdgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 34b0e783b3655aba52cc3d40957b63dd3b0e03b9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0f4ee6cfebcb5edb38b1cc7a11b070dab5d2098c
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492517"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619019"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Kurz 3: nasazení modelu úvěrového rizika – Azure Machine Learning Studio (Classic)
 
@@ -40,7 +40,7 @@ V této části kurzu:
 > * Správa webové služby
 > * Nastavení přístupu k webové službě
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Vyplňte [druhou část kurzu](tutorial-part2-credit-risk-train.md).
 

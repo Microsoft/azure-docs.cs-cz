@@ -4,23 +4,26 @@ description: Naučte se definovat uložené procedury, triggery a uživatelsky d
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: bec28874bbd67ece4b29f6975e8c7fdcea457bd5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cdac8321ec4ac7b2e13c5545a2483527118daae3
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092824"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606259"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Postup zápisu uložených procedur, triggerů a uživatelsky definovaných funkcí v Azure Cosmos DB
 
-Azure Cosmos DB poskytuje jazykově integrované spouštění transakčního jazyka JavaScript, které vám umožní zapisovat **uložené procedury**, **triggery**a uživatelsky **definované funkce (UDF)** . Při použití rozhraní SQL API v Azure Cosmos DB můžete definovat uložené procedury, triggery a UDF v jazyce JavaScript. Logiku můžete napsat v JavaScriptu a spustit ji uvnitř databázového stroje. Můžete vytvářet a spouštět triggery, uložené procedury a UDF pomocí [Azure Portal](https://portal.azure.com/), [integrovaného rozhraní Query API jazyka JavaScript v Azure Cosmos DB](javascript-query-api.md) a Cosmos DBch [klientských sad SDK pro rozhraní SQL API](sql-api-dotnet-samples.md). 
+Azure Cosmos DB poskytuje jazykově integrované spouštění transakčního jazyka JavaScript, které vám umožní zapisovat **uložené procedury**, **triggery**a **uživatelsky definované funkce (UDF)** . Při použití rozhraní SQL API v Azure Cosmos DB můžete definovat uložené procedury, triggery a UDF v jazyce JavaScript. Logiku můžete napsat v JavaScriptu a spustit ji uvnitř databázového stroje. Můžete vytvářet a spouštět triggery, uložené procedury a UDF pomocí [Azure Portal](https://portal.azure.com/), [integrovaného rozhraní Query API jazyka JavaScript v Azure Cosmos DB](javascript-query-api.md) a [Cosmos DBch klientských sad SDK pro rozhraní SQL API](sql-api-dotnet-samples.md). 
 
 Chcete-li volat uloženou proceduru, Trigger a uživatelsky definovanou funkci, je nutné ji zaregistrovat. Další informace najdete v tématu [jak pracovat s uloženými procedurami, triggery, uživatelsky definovanými funkcemi v Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md).
 
 > [!NOTE]
 > U dělených kontejnerů při provádění uložené procedury musí být v možnostech žádosti uvedena hodnota klíče oddílu. Uložené procedury jsou vždy vymezeny na klíč oddílu. Položky, které mají jinou hodnotu klíče oddílu, nebudou viditelné pro uloženou proceduru. To se také aplikuje i na triggery.
+
+> [!Tip]
+> Cosmos podporuje nasazování kontejnerů s uloženými procedurami, triggery a uživatelsky definovanými funkcemi. Další informace najdete v tématu [vytvoření kontejneru Azure Cosmos DB s využitím funkce na straně serveru.](manage-sql-with-resource-manager.md#create-sproc)
 
 ## <a id="stored-procedures"></a>Postup zápisu uložených procedur
 
@@ -72,7 +75,7 @@ function createToDoItem(itemToCreate) {
 
 ### <a name="arrays-as-input-parameters-for-stored-procedures"></a>Pole jako vstupní parametry pro uložené procedury 
 
-Při definování uložené procedury v Azure Portal jsou vstupní parametry vždy odeslány jako řetězec do uložené procedury. I v případě, předejte pole řetězců jako vstupní pole je převést na řetězec a odesílat na uložené procedury. Chcete-li tento problém obejít, můžete definovat funkci v rámci uložené procedury k analýze řetězce jako pole. Následující kód ukazuje, jak analyzovat vstupní parametr řetězce jako pole:
+Při definování uložené procedury v Azure Portal jsou vstupní parametry vždy odeslány jako řetězec do uložené procedury. I v případě, že předáte pole řetězců jako vstup, pole je převedeno na řetězec a odesláno do uložené procedury. Chcete-li tento problém obejít, můžete definovat funkci v rámci uložené procedury k analýze řetězce jako pole. Následující kód ukazuje, jak analyzovat vstupní parametr řetězce jako pole:
 
 ```javascript
 function sample(arr) {
@@ -155,7 +158,7 @@ function tradePlayers(playerId1, playerId2) {
 
 ### <a id="bounded-execution"></a>Vázané spuštění v uložených procedurách
 
-Následuje příklad uložené procedury, která hromadně importuje položky do kontejneru Azure Cosmos. Uložená procedura zpracovává ohraničené spouštění kontrolou návratové hodnoty Boolean z `createDocument`a poté používá počet položek vložených do každého vyvolání uložené procedury ke sledování a obnovení průběhu napříč dávkami.
+Následuje příklad uložené procedury, která hromadně importuje položky do kontejneru Azure Cosmos. Uložená procedura zpracovává ohraničené spouštění kontrolou návratové hodnoty Boolean z `createDocument`a poté používá počet položek vložených do každého vyvolání úložné procedury ke sledování a obnovení postupu napříč dávkami.
 
 ```javascript
 function bulkImport(items) {
@@ -235,9 +238,9 @@ function validateToDoItemTimestamp() {
 }
 ```
 
-Předběžné aktivační události nemůže mít žádné vstupní parametry. Objekt Request v triggeru slouží k manipulaci s požadavkem na zprávu s žádostí přidruženou k operaci. V předchozím příkladu se předběžná Trigger spouští při vytváření položky Azure Cosmos a tělo zprávy požadavku obsahuje položku, která se má vytvořit ve formátu JSON.
+Předběžné triggery nemůžou mít žádné vstupní parametry. Objekt Request v triggeru slouží k manipulaci s požadavkem na zprávu s žádostí přidruženou k operaci. V předchozím příkladu se předběžná Trigger spouští při vytváření položky Azure Cosmos a tělo zprávy požadavku obsahuje položku, která se má vytvořit ve formátu JSON.
 
-Pokud jsou triggery registrovány, můžete zadat operace, se kterými může běžet. Tato aktivační událost by měla být vytvořena `TriggerOperation` s `TriggerOperation.Create`hodnotou, což znamená, že pomocí triggeru v operaci nahrazení, jak je znázorněno v následujícím kódu, není povoleno.
+Pokud jsou triggery registrovány, můžete zadat operace, se kterými může běžet. Tato aktivační událost by měla být vytvořena s hodnotou `TriggerOperation` `TriggerOperation.Create`, což znamená, že pomocí triggeru v operaci nahrazení, jak je znázorněno v následujícím kódu, není povoleno.
 
 Příklady, jak registrovat a volat předběžnou aktivační událost, najdete v článcích [před triggerem](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) a [po triggerech](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) . 
 
@@ -314,7 +317,7 @@ function tax(income) {
 
 Příklady, jak registrovat a používat uživatelsky definovanou funkci, najdete [v tématu použití uživatelsky definovaných funkcí v Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md#udfs) článku.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další koncepty a postupy psaní a používání uložených procedur, triggerů a uživatelsky definovaných funkcí v Azure Cosmos DB:
 

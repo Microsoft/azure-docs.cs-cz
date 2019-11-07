@@ -1,21 +1,24 @@
 ---
-title: Vnímání znalostí překladu textu
+title: Vnímání znalostí překladu textu (Preview)
 titleSuffix: Azure Cognitive Search
-description: Vyhodnotí text a pro každý záznam vrátí text přeložený do zadaného cílového jazyka v kanálu rozšíření AI v Azure Kognitivní hledání.
+description: Vyhodnotí text a pro každý záznam vrátí text přeložený do zadaného cílového jazyka v kanálu rozšíření AI v Azure Kognitivní hledání. Tato dovednost je aktuálně ve verzi Public Preview.
 manager: nitinme
 author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c2405fe67b39e016e64efb1b36cc551a00a338fc
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 7c42c9033fac057c12426726a96ae6079f3080da
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791859"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715415"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Vnímání znalostí překladu textu
+
+> [!IMPORTANT] 
+> Tato dovednost je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
 
 Dovednost **překladu textu** vyhodnocuje text a pro každý záznam vrátí text přeložený do zadaného cílového jazyka. Tato dovednost používá [Translator text API v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) dostupné v Cognitive Services.
 
@@ -148,7 +151,7 @@ Pokud zadáte nepodporovaný kód jazyka pro jazyk z nebo do, je vygenerována c
 Pokud je text prázdný, bude se vytvářet upozornění.
 Pokud je text větší než 50 000 znaků, bude přeložen pouze prvních 50 000 znaků a bude vydáno upozornění.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 + [Integrované dovednosti](cognitive-search-predefined-skills.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: helohr
-ms.openlocfilehash: fa61d69ae7aa650b6011696fd45d05ba20d2ac8b
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: dc980d60c1db684a47c38b3b8efceb08dd618838
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338704"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605808"
 ---
 # <a name="connect-with-the-macos-client"></a>Připojení s klientem macOS
 
@@ -25,7 +25,7 @@ K prostředkům virtuálních klientů s Windows můžete přistupovat ze svých
 
 ## <a name="install-the-client"></a>Instalace klienta
 
-Začněte tím, že [si stáhnete](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) a nainstalujete klienta na zařízení MacOS.
+Pokud chcete začít, [Stáhněte si](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) a nainstalujte klienta do zařízení MacOS.
 
 ## <a name="subscribe-to-a-feed"></a>Přihlášení k odběru informačního kanálu
 
@@ -35,7 +35,7 @@ Přihlášení k odběru informačního kanálu:
 
 1. Vyberte **Přidat informační kanál** na hlavní stránce pro připojení ke službě a načtení prostředků.
 2. Zadejte adresu URL informačního kanálu. Může se jednat o adresu URL nebo e-mailovou adresu:
-   - Pokud použijete adresu URL, použijte tu, kterou vám správce poskytl. Obvykle je <https://rdweb.wvd.microsoft.com>adresa URL.
+   - Pokud použijete adresu URL, použijte tu, kterou vám správce poskytl. Adresa URL je obvykle <https://rdweb.wvd.microsoft.com>.
    - Pokud chcete používat e-mail, zadejte svou e-mailovou adresu. To klientovi oznamuje, aby vyhledal adresu URL přidruženou k vaší e-mailové adrese, pokud váš správce nakonfiguroval server tímto způsobem.
 3. Vyberte možnost **přihlásit k odběru**.
 4. Po zobrazení výzvy se přihlaste pomocí svého uživatelského účtu.

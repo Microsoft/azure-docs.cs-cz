@@ -1,6 +1,6 @@
 ---
 title: 'Kurz 2: modely úvěrových rizik pro vlaky'
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Podrobný kurz, který ukazuje, jak vytvořit řešení prediktivní analýzy pro posuzování úvěrového rizika v klasické verzi Azure Machine Learning Studio. Tento kurz je druhou částí série kurzů s třemi částmi. Ukazuje, jak proškolit a vyhodnocovat modely.
 keywords: úvěrové riziko,řešení prediktivní analýzy,posouzení rizika
 author: sdgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: ce3661a75d35ab39b7e8b551cc0b84b57a76e032
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 375fdf9b64afcce2d521008d353949e650f9df5e
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492550"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622082"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Kurz 2: modely úvěrových rizik výukového programu – Azure Machine Learning Studio (Classic)
 
@@ -38,7 +38,7 @@ V této části kurzu:
 
 V [třetí části kurzu](tutorial-part3-credit-risk-deploy.md)nasadíte model jako webovou službu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Vyplňte [první část kurzu](tutorial-part1-credit-risk.md).
 

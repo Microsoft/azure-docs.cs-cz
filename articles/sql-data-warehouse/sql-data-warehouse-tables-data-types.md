@@ -1,5 +1,5 @@
 ---
-title: Definování datových typů – Azure SQL Data Warehouse | Microsoft Docs
+title: Definování datových typů
 description: Doporučení pro definování typů tabulkových dat v Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 61bb977271186699b0a72389e1538573f978c56b
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: a1d88d8fabd5ff32cc1ca5cca4e2a57a86c8dcb3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479370"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692481"
 ---
 # <a name="table-data-types-in-azure-sql-data-warehouse"></a>Typy tabulkových dat v Azure SQL Data Warehouse
 Doporučení pro definování typů tabulkových dat v Azure SQL Data Warehouse. 
@@ -55,8 +56,8 @@ Následující seznam obsahuje datové typy, které SQL Data Warehouse nepodporu
 | [geometrie](/sql/t-sql/spatial-geometry/spatial-types-geometry-transact-sql) |[varbinary](/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
 | [geografické](/sql/t-sql/spatial-geography/spatial-types-geography) |[varbinary](/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
 | [hierarchyid](/sql/t-sql/data-types/hierarchyid-data-type-method-reference) |[nvarchar](/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql)(4000) |
-| [image](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[varbinary](/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
-| [text](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[varchar](/sql/t-sql/data-types/char-and-varchar-transact-sql) |
+| [obrazu](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[varbinary](/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
+| [textové](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[varchar](/sql/t-sql/data-types/char-and-varchar-transact-sql) |
 | [ntext](/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[nvarchar](/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql) |
 | [sql_variant](/sql/t-sql/data-types/sql-variant-transact-sql) |Rozdělí sloupec do několika sloupců se silným typem. |
 | [stolní](/sql/t-sql/data-types/table-transact-sql) |Převod na dočasné tabulky. |
@@ -66,5 +67,5 @@ Následující seznam obsahuje datové typy, které SQL Data Warehouse nepodporu
 | výchozí hodnoty | Výchozí hodnoty podporují pouze literály a konstanty. |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o vývoji tabulek najdete v tématu [Přehled tabulek](sql-data-warehouse-tables-overview.md).

@@ -1,6 +1,6 @@
 ---
-title: Připojení k Azure SQL Data Warehouse – VSTS | Dokumentace Microsoftu
-description: Dotazování SQL Data Warehouse pomocí sady Visual Studio.
+title: Připojení pomocí VSTS
+description: Dotazování Azure SQL Data Warehouse pomocí sady Visual Studio.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e6c3de1714d363eb1481bcea5f470d04125b96b9
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: e2d37b2d71f605077903197d25b5da2803e34ad3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575311"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685573"
 ---
 # <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Připojení k SQL Data Warehouse pomocí sady Visual Studio a SSDT
 > [!div class="op_single_selector"]
@@ -36,7 +37,7 @@ Chcete-li použít tento kurz, potřebujete:
 * SSDT pro Visual Studio. Pokud máte aplikaci Visual Studio, pravděpodobně již databázi máte. Pokyny k instalaci a možnosti najdete v tématu věnovaném [instalaci sady Visual Studio a rozšíření SSDT][Installing Visual Studio and SSDT].
 * Plně kvalifikovaný název serveru SQL. Ten zjistíte v části [Připojení k SQL Data Warehouse][Connect to SQL Data Warehouse].
 
-## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Připojení k vaší službě SQL Data Warehouse
+## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Připojte se k vašemu SQL Data Warehouse
 1. Otevřete Visual Studio 2019.
 2. Otevřete Průzkumník objektů SQL Serveru. Uděláte to tak, že vyberte **Zobrazení** > **Průzkumník objektů systému SQL Server**.
    
@@ -56,7 +57,7 @@ Chcete-li použít tento kurz, potřebujete:
    
     ![Prozkoumejte AdventureWorksDW.][4]
 
-## <a name="2-run-a-sample-query"></a>2. Spuštění ukázkového dotazu
+## <a name="2-run-a-sample-query"></a>2. spuštění ukázkového dotazu
 Teď, když jste si vytvořili připojení k databázi, můžete napsat dotaz.
 
 1. Pravým tlačítkem myši klikněte na databázi v Průzkumníku objektů systému SQL Server.
@@ -75,7 +76,7 @@ Teď, když jste si vytvořili připojení k databázi, můžete napsat dotaz.
    
     ![Výsledky dotazu][7]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Teď, když se můžete připojit a můžete zadávat dotazy, můžete si vyzkoušet [vizualizaci dat pomocí PowerBI][visualizing the data with PowerBI].
 
 Informace o tom, jak nakonfigurovat prostředí pro ověřování služby Azure Active Directory naleznete v části [Ověřování pro SQL Data Warehouse][Authenticate to SQL Data Warehouse].

@@ -1,5 +1,5 @@
 ---
-title: Příklad prostředí PowerShell auditování a rozšířené ochrany před internetovými útoky – Azure SQL Database | Microsoft Docs
+title: Příklad prostředí PowerShell auditování a rozšířené ochrany před internetovými útoky – Azure SQL Database
 description: Azure PowerShell ukázkový skript pro konfiguraci auditování a rozšířené ochrany před internetovými útoky v Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: carlrab, vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: f9ef894f4c4d1d0ad0ab43b538c984f9cf5b2d01
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 1dee8031b00e7d291844790fb86efd4d00075d87
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816686"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691739"
 ---
 # <a name="use-powershell-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>Konfigurace auditování SQL Database a rozšířené ochrany před internetovými útoky pomocí prostředí PowerShell
 
@@ -55,7 +55,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: glenga
 ms.reviewer: azfuncdf
-ms.openlocfilehash: b765e7a03f84211d4a86c4242e9484b3517c95f9
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 238969b320608c08491c3d3e85870d57f41c1589
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933565"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614969"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Vytvoření Durable Functions pomocí Azure Portal
 
@@ -36,7 +36,7 @@ Ve výchozím nastavení aplikace Function App vytvořila používá modul runti
 
 ## <a name="install-the-durable-functions-npm-package-javascript-only"></a>Instalace balíčku odolného funkce NPM (jenom JavaScript)
 
-Pokud vytváříte Durable Functions JavaScriptu, budete muset nainstalovat [ `durable-functions` balíček npm](https://www.npmjs.com/package/durable-functions).
+Pokud vytváříte Durable Functions JavaScriptu, budete muset nainstalovat [balíček`durable-functions` npm](https://www.npmjs.com/package/durable-functions).
 
 1. Vyberte název vaší aplikace Function App a potom **funkce platformy**a pak **Rozšířené nástroje (Kudu)** .
 
@@ -46,19 +46,19 @@ Pokud vytváříte Durable Functions JavaScriptu, budete muset nainstalovat [ `d
 
    ![Konzola ladění Kudu](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
 
-3. Měla by se zobrazit adresářová struktura souboru vaší aplikace Function App. Přejděte do složky `site/wwwroot`. Odtud můžete `package.json` soubor nahrát přetažením a přetažením do okna adresář souborů. Ukázka `package.json` je následující:
+3. Měla by se zobrazit adresářová struktura souboru vaší aplikace Function App. Přejděte do složky `site/wwwroot`. Odtud můžete soubor `package.json` nahrát přetažením do okna adresář souborů. Ukázka `package.json` je následující:
 
     ```json
     {
       "dependencies": {
-        "durable-functions": "^1.1.2"
+        "durable-functions": "^1.3.1"
       }
     }
     ```
 
    ![Kudu nahrát soubor Package. JSON](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
 
-4. Po nahrání spusťte příkaz z konzoly pro vzdálené spuštění Kudu. `npm install` `package.json`
+4. Po nahrání `package.json` spusťte příkaz `npm install` z konzoly pro vzdálené spuštění Kudu.
 
    ![Kudu spustit instalaci npm](./media/durable-functions-create-portal/kudu-npm-install.png)
 
@@ -72,7 +72,7 @@ Pokud vytváříte Durable Functions JavaScriptu, budete muset nainstalovat [ `d
 
     ![Rychlý start služby Functions – výběr dalších šablon](./media/durable-functions-create-portal/add-first-function.png)
 
-1. Do vyhledávacího pole zadejte `durable` a pak zvolte šablonu **Durable Functions http Starter** .
+1. Do vyhledávacího pole zadejte `durable` a pak vyberte šablonu **Durable FUNCTIONS http Starter** .
 
 1. Po zobrazení výzvy vyberte **nainstalovat** , abyste nainstalovali rozšíření Azure DurableTask a všechny závislosti v aplikaci Function App. Rozšíření stačí nainstalovat jenom jednou pro aplikaci Function App. Po úspěšném dokončení instalace vyberte **Pokračovat**.
 
@@ -80,9 +80,9 @@ Pokud vytváříte Durable Functions JavaScriptu, budete muset nainstalovat [ `d
 
 1. Po dokončení instalace pojmenujte novou funkci `HttpStart` a klikněte na **vytvořit**. Vytvořená funkce se používá ke spuštění orchestrace.
 
-1. Vytvořte v aplikaci Function App jinou funkci, tentokrát pomocí šablony **Durable Functions Orchestrator** . Pojmenujte novou funkci `HelloSequence`orchestrace.
+1. Vytvořte v aplikaci Function App jinou funkci, tentokrát pomocí šablony **Durable Functions Orchestrator** . Pojmenujte novou funkci orchestrace `HelloSequence`.
 
-1. Vytvořte třetí funkci s názvem `Hello` pomocí šablony **aktivity Durable Functions** .
+1. Pomocí šablony **aktivity Durable Functions** Vytvořte třetí funkci s názvem `Hello`.
 
 ## <a name="test-the-durable-function-orchestration"></a>Testování orchestrace trvalé funkce
 
@@ -94,7 +94,7 @@ Pokud vytváříte Durable Functions JavaScriptu, budete muset nainstalovat [ `d
     curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
     ```
 
-    V tomto příkladu `{your-function-app-name}` je doménou název vaší aplikace Function App. Zpráva odpovědi obsahuje sadu koncových bodů identifikátoru URI, které lze použít k monitorování a správě spuštění, což vypadá jako v následujícím příkladu:
+    V tomto příkladu je `{your-function-app-name}` doménou, která je názvem vaší aplikace Function App. Zpráva odpovědi obsahuje sadu koncových bodů identifikátoru URI, které lze použít k monitorování a správě spuštění, což vypadá jako v následujícím příkladu:
 
     ```json
     {  
@@ -106,7 +106,7 @@ Pokud vytváříte Durable Functions JavaScriptu, budete muset nainstalovat [ `d
     }
     ```
 
-1. Zavolejte identifikátor URI koncového bodu a uvidíte aktuální stav trvalé funkce, která může vypadat jako v tomto příkladu: `statusQueryGetUri`
+1. Zavolejte `statusQueryGetUri` identifikátor URI koncového bodu a uvidíte aktuální stav trvalé funkce, která může vypadat jako v tomto příkladu:
 
     ```json
         {
@@ -118,7 +118,7 @@ Pokud vytváříte Durable Functions JavaScriptu, budete muset nainstalovat [ `d
         }
     ```
 
-1. Pokračujte v volání `statusQueryGetUri` koncového bodu, dokud se stav nezmění na **dokončeno**a vidíte odpověď jako v následujícím příkladu:
+1. Pokračujte v volání `statusQueryGetUri` koncového bodu, dokud se stav nezmění na **dokončeno**a zobrazí se odpověď jako v následujícím příkladu:
 
     ```json
     {

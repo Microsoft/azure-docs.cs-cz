@@ -1,7 +1,7 @@
 ---
-title: Nastavení přírůstkového indexování obohaceného sledování změn obsahu
+title: Nastavení přírůstkového indexování (Preview) obohaceného sledování změn obsahu
 titleSuffix: Azure Cognitive Search
-description: Povolte sledování změn a zachovejte stav obohaceného obsahu pro řízené zpracování v dovednostii rozpoznávání.
+description: Povolte sledování změn a zachovejte stav obohaceného obsahu pro řízené zpracování v dovednostii rozpoznávání. Tato funkce je aktuálně ve verzi Public Preview.
 author: vkurpad
 manager: eladz
 ms.author: vikurpad
@@ -9,24 +9,21 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ac082d6ecb6624dc0d5bc0ab927ff8b91ebdabce
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 74631ee3167c65e59fbd05f53fe5327d1b532dba
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512181"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719936"
 ---
 # <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>Jak nastavit přírůstkové indexování obohacených dokumentů v Azure Kognitivní hledání
+
+> [!IMPORTANT] 
+> Přírůstkové indexování je aktuálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
 
 V tomto článku se dozvíte, jak přidat stav a ukládání do mezipaměti pro obohacené dokumenty, které se pohybují prostřednictvím kanálu pro rozšíření Azure Kognitivní hledání, abyste mohli přírůstkově indexovat dokumenty z libovolného podporovaného zdroje dat. Ve výchozím nastavení je dovednosti Bezstavová a změna jakékoli části jejího složení vyžaduje úplné spuštění indexeru. V případě přírůstkového indexování může indexer určit, které části kanálu se změnily, znovu použít existující rozšíření pro nezměněné části a revidovat obohacení kroků, které se mění. Obsah uložený v mezipaměti je umístěný v Azure Storage.
 
 Pokud nejste obeznámeni s nastavením indexerů, začněte nástrojem [indexer](search-indexer-overview.md) a potom pokračujte na [dovednosti](cognitive-search-working-with-skillsets.md) a získejte další informace o kanálech pro obohacení. Další informace o klíčových konceptech najdete v tématu [přírůstkové indexování](cognitive-search-incremental-indexing-conceptual.md).
-
-Přírůstkové indexování je nakonfigurované pomocí [rozhraní REST API pro hledání verze = 2019-05 -06-Preview](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations).
-
-> [!NOTE]
-> Tato funkce není ještě na portálu k dispozici a je nutné ji používat programově.
->
 
 ## <a name="modify-an-existing-indexer"></a>Úprava existujícího indexeru
 

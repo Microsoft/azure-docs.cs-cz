@@ -1,21 +1,24 @@
 ---
-title: Dovednost pro vyhledávání rozpoznávání dokumentů extrakce dokumentu
+title: Dovednost pro hledání rozpoznávání dokumentů extrakce (Preview)
 titleSuffix: Azure Cognitive Search
-description: Extrahuje obsah ze souboru v rámci kanálu pro obohacení.
+description: Extrahuje obsah ze souboru v rámci kanálu pro obohacení. Tato dovednost je aktuálně ve verzi Public Preview.
 manager: nitinme
 author: careyjmac
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: chalton
-ms.openlocfilehash: 8656896fe1a113ab143c43b4d1973e4196c5f087
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e4274f1cb2eacaf78ab83bfb9d637d044d2290bd
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512194"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720122"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Rozpoznávání extrakce dokumentů – dovednost
+
+> [!IMPORTANT] 
+> Tato dovednost je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
 
 Dovednost **extrakce dokumentu** extrahuje obsah ze souboru v rámci kanálu pro obohacení. Díky tomu můžete využít krok extrakce dokumentu, ke kterému obvykle dochází před spuštěním dovednosti se soubory, které mohou být generovány jinými dovednostmi.
 
@@ -63,7 +66,7 @@ Tento objekt odkazu na soubor může být vygenerován jedním ze tří způsob�
 
  - Nastavení parametru `allowSkillsetToReadFileData` v definici indexeru na hodnotu "true".  Tím se vytvoří cesta `/document/file_data` objekt reprezentující původní data souborů stažená ze zdroje dat objektu BLOB. Tento parametr se vztahuje pouze na data v úložišti objektů BLOB.
 
- - Nastavení parametru `imageAction` v definici indexeru na jinou hodnotu než `none`.  Tím se vytvoří pole imagí `/document/normalized_images`, které následují podle požadované konvence pro vstup do této dovednosti, pokud je úspěšná (tj. `/document/normalized_images/*`).
+ - Nastavení parametru `imageAction` v definici indexeru na jinou hodnotu než `none`.  Tím se vytvoří pole obrázků, které následují po požadované konvenci pro vstup na tuto dovednost, pokud bylo provedeno jednotlivě (tj. `/document/normalized_images/*`).
 
  - Vlastní dovednost vrátí objekt JSON definovaný přesně tak, jak je uvedeno výše.  Parametr `$type` musí být nastaven na přesně `file` a parametr `data` musí být datovým polem s kódováním Base 64 s kódováním obsahu souboru.
 
@@ -142,7 +145,7 @@ Tento objekt odkazu na soubor může být vygenerován jedním ze tří způsob�
 }
 ```
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 + [Integrované dovednosti](cognitive-search-predefined-skills.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)

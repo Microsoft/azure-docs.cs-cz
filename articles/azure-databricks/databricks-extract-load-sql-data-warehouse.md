@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 39f71e109b0d9d7b3b0375c0ec2c4d1e4a657994
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ceb9e940584ae4c41484fe31ce5cb1832bb3400
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469473"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605703"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Kurz: extrakce, transformace a načtení dat pomocí Azure Databricks
 
@@ -43,7 +43,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 > Tento kurz se nedá provést pomocí **předplatného Azure free zkušební verze**.
 > Pokud máte bezplatný účet, přejděte na svůj profil a změňte si předplatné na **průběžné platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/). Pak [odeberte limit útraty](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)a [požádejte o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) pro vCPU ve vaší oblasti. Když vytváříte pracovní prostor Azure Databricks, můžete vybrat cenovou úroveň **DBU (Premium-14-days)** a poskytnout tak přístup k pracovnímu prostoru zdarma Premium Azure Databricks DBU po dobu 14 dnů.
      
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem, dokončete tyto úkoly:
 
@@ -65,7 +65,7 @@ Než začnete s tímto kurzem, dokončete tyto úkoly:
 
    * Při provádění kroků v části [získat hodnoty pro přihlášení v](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) článku Vložte ID TENANTA, ID aplikace a hodnoty hesla do textového souboru. Budete je potřebovat brzy.
 
-* Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="gather-the-information-that-you-need"></a>Shromážděte informace, které potřebujete.
 
@@ -147,7 +147,7 @@ V této části vytvoříte v pracovním prostoru Azure Databricks Poznámkový 
 
     ![Zadání podrobností pro Poznámkový blok v datacihlách](./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "Zadání podrobností pro Poznámkový blok v datacihlách")
 
-4. Vyberte **Create** (Vytvořit).
+4. Vyberte **Vytvořit**.
 
 5. Následující blok kódu nastaví výchozí přihlašovací údaje instančního objektu pro libovolný účet ADLS Gen 2, ke kterému se přistupoval v relaci Spark. Druhý blok kódu připojí název účtu k nastavení k zadání přihlašovacích údajů pro konkrétní účet ADLS Gen 2.  Zkopírujte a vložte blok kódu do první buňky Azure Databricks poznámkového bloku.
 
@@ -156,7 +156,6 @@ V této části vytvoříte v pracovním prostoru Azure Databricks Poznámkový 
    ```scala
    val appID = "<appID>"
    val password = "<password>"
-   val fileSystemName = "<file-system-name>"
    val tenantID = "<tenant-id>"
 
    spark.conf.set("fs.azure.account.auth.type", "OAuth")
@@ -165,8 +164,6 @@ V této části vytvoříte v pracovním prostoru Azure Databricks Poznámkový 
    spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
-   dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
-   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
    **Konfigurace účtu**
@@ -188,7 +185,7 @@ V této části vytvoříte v pracovním prostoru Azure Databricks Poznámkový 
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-6. V tomto bloku kódu Nahraďte zástupné hodnoty `<app-id>`, `<password>`, `<tenant-id>` a `<storage-account-name>` v tomto bloku kódu hodnotami, které jste shromáždili při dokončování požadavků tohoto kurzu. Nahraďte zástupnou hodnotu `<file-system-name>` libovolným názvem, který chcete systému souborů poskytnout.
+6. V tomto bloku kódu nahraďte `<app-id>`, `<password>`, `<tenant-id>`a `<storage-account-name>` hodnoty zástupných symbolů v tomto bloku kódu hodnotami, které jste shromáždili při dokončování požadavků tohoto kurzu. Nahraďte hodnotu zástupného symbolu `<file-system-name>` jakýmkoli názvem, který chcete systému souborů poskytnout.
 
    * `<app-id>`a `<password>` jsou z aplikace, kterou jste zaregistrovali se službou Active Directory, v rámci vytváření instančního objektu.
 
@@ -346,7 +343,7 @@ Jak už bylo zmíněno dříve, konektor SQL Data Warehouse používá úložiš
    sc.hadoopConfiguration.set(acntInfo, blobAccessKey)
    ```
 
-4. Zadejte hodnoty pro připojení k instanci Azure SQL Data Warehouse. Je nutné, abyste vytvořili datový sklad SQL jako předpoklad. Použijte plně kvalifikovaný název serveru pro **dwServer**. Například, `<servername>.database.windows.net`.
+4. Zadejte hodnoty pro připojení k instanci Azure SQL Data Warehouse. Je nutné, abyste vytvořili datový sklad SQL jako předpoklad. Použijte plně kvalifikovaný název serveru pro **dwServer**. například `<servername>.database.windows.net`.
 
    ```scala
    //SQL Data Warehouse related settings

@@ -1,5 +1,5 @@
 ---
-title: Ladění výkonu s Azure SQL Data Warehouse materializovaná zobrazení | Microsoft Docs
+title: Ladění výkonu pomocí materializovaná zobrazení
 description: Doporučení a důležité informace, které byste měli znát při použití materializovaná zobrazení ke zlepšení výkonu dotazů.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 593841ac95c4c6f17f33a8d35d6b3f83a6db1124
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.custom: seo-lt-2019
+ms.openlocfilehash: c1cfd3b4c365a04c3d4704f37e4ed4177fa74619
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338912"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692983"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Ladění výkonu pomocí materializovaná zobrazení 
 Vyhodnocená zobrazení v Azure SQL Data Warehouse poskytují nízkou metodu údržby pro složité analytické dotazy, aby se zajistil rychlý výkon bez jakýchkoli změn dotazů. Tento článek popisuje obecné pokyny k používání materializovaná zobrazení.
@@ -37,7 +38,7 @@ Většina požadavků na standardní zobrazení se stále vztahuje na materializ
 |Zobrazení definice                 | Uložené v Azure Data Warehouse.              | Uložené v Azure Data Warehouse.    
 |Zobrazit obsah                    | Vygenerováno pokaždé, když je použito zobrazení.   | Předzpracovaná a uložená v Azure Data Warehouse během vytváření zobrazení. Aktualizováno při přidání dat do podkladových tabulek.                                             
 |Aktualizace dat                    | Vždy Aktualizováno                               | Vždy Aktualizováno                          
-|Rychlost načtení dat zobrazení ze složitých dotazů     | pomalé                                         | Rychlá  
+|Rychlost načtení dat zobrazení ze složitých dotazů     | Pomalé                                         | Rychlost  
 |Dodatečné úložiště                   | Ne                                           | Ano                             
 |Syntaxe                          | VYTVOŘIT ZOBRAZENÍ                                  | VYTVOŘIT MATERIALIZOVANÁ ZOBRAZENÍ JAKO VYBRAT           
      

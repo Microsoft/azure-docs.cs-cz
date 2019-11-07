@@ -1,6 +1,6 @@
 ---
 title: Nastavení rozhraní příkazového řádku služby Azure Service Fabric Mesh | Microsoft Docs
-description: Naučte se nastavit rozhraní příkazového řádku služby Azure Service Fabric Mesh.
+description: K nasazení a správě prostředků v místním počítači a v síti Azure Service Fabric je nutná Service Fabric rozhraní příkazového řádku (CLI). Tady je postup, jak ho nastavit.
 services: service-fabric-mesh
 keywords: ''
 author: dkkapur
@@ -9,23 +9,23 @@ ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 46b2a9a0c4d8a1d9e0fa069d512670dffb94fc28
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 5c9733a5fc5aec337a326fe39e78c3e5c0b8ca4f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173767"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686304"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Nastavení rozhraní příkazového řádku služby Service Fabric Mesh
-K nasazení a správě prostředků v místním počítači a v síti Azure Service Fabric je nutná Service Fabric rozhraní příkazového řádku (CLI). 
+K nasazení a správě prostředků v místním počítači a v síti Azure Service Fabric je nutná Service Fabric rozhraní příkazového řádku (CLI). Tady je postup, jak ho nastavit.
 
-Existují tři typy rozhraní příkazového řádku, které lze použít a které jsou shrnuty v následující tabulce. 
+Existují tři typy rozhraní příkazového řádku, které lze použít a které jsou shrnuty v následující tabulce.
 
 | Modul CLI | Cílové prostředí |  Popis | 
 |---|---|---|
 | AZ Mesh | Síť Azure Service Fabric | Primární rozhraní příkazového řádku, které umožňuje nasazovat aplikace a spravovat prostředky v prostředí sítě Azure Service Fabric. 
 | sfctl | Místní clustery | Service Fabric CLI, který umožňuje nasazení a testování prostředků Service Fabric na místních clusterech.  
-| Maven CLI | Místní clustery & síť Azure Service Fabric | Obálka kolem `az mesh` a `sfctl` , která vývojářům v jazyce Java umožňuje používat známé prostředí příkazového řádku pro místní a vývojové prostředí Azure.  
+| Maven CLI | Místní clustery & síť Azure Service Fabric | Obálka kolem `az mesh` a `sfctl`, která vývojářům v jazyce Java umožňuje používat známé prostředí příkazového řádku pro místní a vývojové prostředí Azure.  
 
 Ve verzi Preview je rozhraní příkazového řádku služby Azure Service Fabric Mesh jako rozšíření Azure CLI. Můžete ho nainstalovat do Azure Cloud Shellu nebo do místní instalace Azure CLI. 
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Načíst data do Azure SQL Data Warehouse | Microsoft Docs'
+title: 'Kurz: načtení dat pomocí Azure Portal & SSMS'
 description: Kurz používá Azure Portal a SQL Server Management Studio k načtení datového skladu WideWorldImportersDW z globálního objektu blob Azure do Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,14 +10,15 @@ ms.subservice: load-data
 ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: f81a19631b29954f9bd3da55a4b332e37746152e
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: c59c5ba4e5447d01bb66b9f0ed2edcb948d34d40
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574930"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693063"
 ---
-# <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Kurz: Načíst data do Azure SQL Data Warehouse
+# <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Kurz: Načtení dat do služby Azure SQL Data Warehouse
 
 Tento kurz využívá PolyBase k načtení databáze datového skladu WideWorldImportersDW z úložiště objektů blob v Azure do služby Azure SQL Data Warehouse. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) k:
 
@@ -34,7 +35,7 @@ Tento kurz využívá PolyBase k načtení databáze datového skladu WideWorldI
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 
@@ -44,7 +45,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Vytvořit prázdnou SQL Data Warehouse
 
-Vytvoří se Azure SQL Data Warehouse s definovanou sadou [výpočetních prostředků](memory-and-concurrency-limits.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a na [logickém serveru SQL Azure](../sql-database/sql-database-features.md). 
+Vytvoří se Azure SQL Data Warehouse s definovanou sadou [COMPUTE sources] Memory-Concurrency-limits.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a na [logickém serveru SQL Azure](../sql-database/sql-database-features.md). 
 
 Pomocí těchto kroků můžete vytvořit prázdnou SQL Data Warehouse. 
 
@@ -72,11 +73,11 @@ Pomocí těchto kroků můžete vytvořit prázdnou SQL Data Warehouse.
     | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). | 
     | **Přihlašovací jméno správce serveru** | Libovolné platné jméno | Platná přihlašovací jména najdete v tématu [Identifikátory databází](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers).|
     | **Heslo** | Libovolné platné heslo | Heslo musí mít alespoň osm znaků a musí obsahovat znaky ze tří z následujících kategorií: velká písmena, malá písmena, číslice a jiné než alfanumerické znaky. |
-    | **Location** | Libovolné platné umístění | Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/). |
+    | **Umístění** | Libovolné platné umístění | Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/). |
 
     ![vytvoření databázového serveru](media/load-data-wideworldimportersdw/create-database-server.png)
 
-5. Klikněte na tlačítko **vyberte**.
+5. Klikněte na **Vybrat**.
 
 6. Klikněte na **úroveň výkonu** , abyste určili, jestli je datový sklad Gen1 nebo Gen2, a kolik jednotek datového skladu. 
 
@@ -84,7 +85,7 @@ Pomocí těchto kroků můžete vytvořit prázdnou SQL Data Warehouse.
 
     ![konfigurace výkonu](media/load-data-wideworldimportersdw/configure-performance.png)
 
-8. Klikněte na tlačítko **Použít**.
+8. Klikněte na **Použít**.
 9. Na stránce služby SQL Data Warehouse vyberte **kolaci** pro prázdnou databázi. Pro účely tohoto kurzu použijte výchozí hodnotu. Další informace o kolacích najdete v tématu [Kolace](/sql/t-sql/statements/collations).
 
 11. Po vyplnění formuláře pro SQL Database klikněte na **Vytvořit** a databázi zřiďte. Zřizování trvá několik minut. 
@@ -142,7 +143,7 @@ Na webu Azure Portal získejte plně kvalifikovaný název vašeho serveru SQL. 
 
 V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) naváže připojení k serveru SQL Azure.
 
-1. Spusťte aplikaci SQL Server Management Studio.
+1. Otevřete SQL Server Management Studio.
 
 2. V dialogovém okně **Připojení k serveru** zadejte následující informace:
 

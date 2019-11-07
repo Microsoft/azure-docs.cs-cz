@@ -1,7 +1,7 @@
 ---
 title: Detekce značky – Počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Koncepty související se zjišťováním značky/loga pomocí rozhraní API pro počítačové zpracování obrazu.
+description: Tento článek popisuje specializovaný režim detekce objektů; rozpoznání značky nebo loga pomocí rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: c3a80cbdd166f77681665ee3675c1a71ce3a9bd6
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 117beca1284f28c75c1ac772425423f732b8a236
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967094"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718628"
 ---
 # <a name="detect-popular-brands-in-images"></a>Detekce oblíbených značek na obrázcích
 
@@ -74,7 +74,7 @@ V některých případech značka detektoru zachová jak obrázek loga, tak náz
 
 ## <a name="use-the-api"></a>Použití rozhraní API
 
-Funkce detekce značky je součástí rozhraní API pro [analýzu obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . Toto rozhraní API můžete zavolat prostřednictvím nativní sady SDK nebo prostřednictvím volání REST. Do `Brands` parametru dotazu **visualFeatures** zahrňte. Až získáte úplnou odpověď ve formátu JSON, stačí analyzovat řetězec pro obsah `"brands"` oddílu.
+Funkce detekce značky je součástí rozhraní API pro [analýzu obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . Toto rozhraní API můžete zavolat prostřednictvím nativní sady SDK nebo prostřednictvím volání REST. Do parametru dotazu **visualFeatures** zahrňte `Brands`. Až získáte úplnou odpověď JSON, stačí analyzovat řetězec pro obsah oddílu `"brands"`.
 
-* [Rychlé zprovoznění: Sada Počítačové zpracování obrazu .NET SDK](./quickstarts-sdk/csharp-sdk.md)
-* [Rychlé zprovoznění: Analýza obrázku (REST API)](./quickstarts/csharp-analyze.md)
+* [Rychlý Start: Počítačové zpracování obrazu .NET SDK](./quickstarts-sdk/csharp-sdk.md)
+* [Rychlý Start: analýza obrázku (REST API)](./quickstarts/csharp-analyze.md)

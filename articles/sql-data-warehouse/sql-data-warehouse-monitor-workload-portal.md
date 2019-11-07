@@ -1,5 +1,5 @@
 ---
-title: Monitorování úlohy – Azure Portal | Microsoft Docs
+title: Monitorování úloh – Azure Portal
 description: Monitorování Azure SQL Data Warehouse pomocí Azure Portal
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 176762e0d1c007f924d779a1b77dd52c7ed56e01
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 73d837c34dd5a480cae08a41c89939414899052a
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981491"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645639"
 ---
 # <a name="monitor-workload---azure-portal"></a>Monitorování úloh – Azure Portal
 
@@ -24,13 +24,13 @@ Tento článek popisuje, jak pomocí Azure Portal monitorovat vaše úlohy. Zahr
 ## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-- Azure SQL Data Warehouse: Budeme shromažďovat protokoly pro SQL Data Warehouse. Pokud nemáte zřízenou SQL Data Warehouse, přečtěte si pokyny v tématu [vytvoření SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial).
+- Azure SQL Data Warehouse: budeme shromažďovat protokoly pro SQL Data Warehouse. Pokud nemáte zřízenou SQL Data Warehouse, přečtěte si pokyny v tématu [vytvoření SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial).
 
 ## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru Log Analytics
 
 Přejděte do okna procházení pro Log Analytics pracovní prostory a vytvořte pracovní prostor. 
 
-![Pracovní prostory Log Analytics](media/sql-data-warehouse-monitor/log_analytics_workspaces.png)
+![Pracovní prostory služby Log Analytics](media/sql-data-warehouse-monitor/log_analytics_workspaces.png)
 
 ![Přidat pracovní prostor analýzy](media/sql-data-warehouse-monitor/add_analytics_workspace.png)
 
@@ -61,7 +61,7 @@ Přejděte do pracovního prostoru Log Analytics, kde můžete provádět násle
 
 - Analýza protokolů pomocí dotazů protokolu a ukládání dotazů pro opakované použití
 - Ukládat dotazy pro opakované použití
-- Vytváření výstrah protokolu
+- Vytvoření upozornění protokolu
 - Připnutí výsledků dotazu na řídicí panel
 
 Podrobnosti o možnostech dotazů protokolu najdete v následující [dokumentaci](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language).

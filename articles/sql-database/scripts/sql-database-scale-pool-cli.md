@@ -1,5 +1,5 @@
 ---
-title: Příklad rozhraní příkazového řádku – Škálování elastického fondu SQL – Azure SQL Database | Microsoft Docs
+title: Příklad rozhraní příkazového řádku škáluje elastický fond SQL – Azure SQL Database
 description: Ukázkový skript Azure CLI pro horizontální navýšení kapacity elastického fondu v Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: b378bef296f7cf6546887bcf760a4e14ed66a385
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0494ab163e7fb7e8ea93cf255837bfda2d7b1570
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569825"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691534"
 ---
 # <a name="use-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>Použití CLI k horizontálnímu škálování elastického fondu v Azure SQL Database
 
@@ -53,7 +53,7 @@ Tento skript pomocí následujících příkazů vytvoří skupinu prostředků,
 | [az sql elastic-pools update](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update) | Aktualizuje elastický fond. v tomto příkladu změní přiřazenou eDTU. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

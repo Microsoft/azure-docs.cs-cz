@@ -1,8 +1,6 @@
 ---
 title: Azure Functions sloty nasazení
 description: Naučte se vytvářet a používat nasazovací sloty pomocí Azure Functions
-services: functions
-documentationcenter: na
 author: craigshoemaker
 manager: gwallace
 keywords: funkce Azure Functions
@@ -10,12 +8,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
-ms.openlocfilehash: 50337745b008cdd38dd860a0329e44ee712e7acd
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 23a4870332266ce180c2e94aeb0b5ca24073878b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70085671"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576325"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions sloty nasazení
 
@@ -27,7 +25,7 @@ Následující informace odrážejí, jak jsou funkce ovlivněné odkládacími 
 - Pokud během prohození funguje funkce, pokračuje provádění a následné triggery se směrují do vyměněné instance aplikace.
 
 > [!NOTE]
-> Pro plán spotřeby pro Linux nejsou k dispozici žádné sloty.
+> Pro plán spotřeby pro Linux nejsou aktuálně dostupné sloty.
 
 ## <a name="why-use-slots"></a>Proč používat sloty?
 
@@ -111,8 +109,8 @@ Sloty můžete prohodit přes rozhraní příkazového [řádku](https://docs.mi
 
 1. Přechod do aplikace Function App
 1. Klikněte na název zdrojové patice, kterou chcete prohodit.
-1. Na kartě *Přehled* klikněte na tlačítko **swap** ![Swap Azure Functions slot nasazení ](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
-1. Ověřte nastavení konfigurace zahození a klikněte na **swap** ![Swap Azure Functions slot nasazení ](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
+1. Na kartě *Přehled* klikněte na tlačítko **swap** ![přepnout Azure Functions slot nasazení](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
+1. Ověřte nastavení konfigurace pro zahození a klikněte na **swap** ![swap Azure Functions slot nasazení](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
 
 Operace přepnutí může chvíli trvat.
 
@@ -182,10 +180,10 @@ Existují dvě úrovně podpory pro sloty nasazení:
 | Operační systém/plán hostování           | Úroveň podpory     |
 | ------------------------- | -------------------- |
 | Spotřeba Windows       | Všeobecná dostupnost |
-| Windows Premium (Preview) | Preview              |
+| Windows Premium           | Všeobecná dostupnost  |
 | Vyhrazená pro Windows         | Všeobecná dostupnost |
 | Spotřeba Linux         | Nepodporované          |
-| Linux Premium (Preview)   | Preview              |
+| Linux Premium             | Všeobecná dostupnost  |
 | Vyhrazený pro Linux           | Všeobecná dostupnost |
 
 ## <a name="next-steps"></a>Další kroky

@@ -5,18 +5,21 @@ author: ggailey777
 manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/11/2018
+ms.date: 11/03/2019
 ms.author: glenga
-ms.openlocfilehash: 0080365853e7a9c74d3ba0e5efb06ce5a3af2a21
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 95c6afcb2f7e864da4b9b43235326a17bed785fa
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967098"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614536"
 ---
 # <a name="durable-functions-unit-testing"></a>Testování částí Durable Functions
 
 Testování částí je důležitou součástí moderních postupů vývoje softwaru. Testy jednotek ověřují chování obchodní logiky a chrání před tím, než budou v budoucnu předem zjištěny zásadní změny. Durable Functions může snadno růst složitou složitost, takže zavedení testů jednotek pomůže vyhnout se neprůlomovým změnám. Následující části vysvětlují, jak otestovat testování tří funkcí – klienta orchestrace, nástroje Orchestrator a aktivity.
+
+> [!NOTE]
+> Tento článek poskytuje pokyny pro testování částí Durable Functions aplikací cílících na Durable Functions 1. x. Ještě nebyla aktualizována na účet pro změny, které byly zavedeny v Durable Functions 2. x. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -24,7 +27,7 @@ Příklady v tomto článku vyžadují znalost následujících konceptů a plat
 
 * Testování částí
 
-* Durable Functions
+* Odolná služba Functions
 
 * rozhraní [xUnit](https://xunit.github.io/) -Testing
 
@@ -32,17 +35,17 @@ Příklady v tomto článku vyžadují znalost následujících konceptů a plat
 
 ## <a name="base-classes-for-mocking"></a>Základní třídy pro napodobování
 
-Napodobování se podporuje prostřednictvím tří abstraktních tříd v Durable Functions:
+Napodobování se podporuje prostřednictvím tří abstraktních tříd v Durable Functions 1. x:
 
-* [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html)
+* `DurableOrchestrationClientBase`
 
-* [DurableOrchestrationContextBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContextBase.html)
+* `DurableOrchestrationContextBase`
 
-* [DurableActivityContextBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContextBase.html)
+* `DurableActivityContextBase`
 
-Tyto třídy jsou základní třídy pro [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html), [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html)a [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) , které definují metody klienta, Orchestrator a aktivity pro orchestraci. Modely nastaví očekávané chování pro metody základní třídy, aby test jednotek mohl ověřit obchodní logiku. Pro testování částí obchodní logiky v klientu Orchestration a Orchestrator je k dispozici dva kroky.
+Tyto třídy jsou základní třídy pro `DurableOrchestrationClient`, `DurableOrchestrationContext`a `DurableActivityContext`, které definují metody klienta, Orchestrator a aktivity pro orchestraci. Modely nastaví očekávané chování pro metody základní třídy, aby test jednotek mohl ověřit obchodní logiku. Pro testování částí obchodní logiky v klientu Orchestration a Orchestrator je k dispozici dva kroky.
 
-1. Použijte základní třídy namísto konkrétní implementace při definování podpisů klienta Orchestration a nástroje Orchestrator.
+1. Použijte základní třídy namísto konkrétní implementace při definování signatury funkcí klienta a nástroje Orchestrator.
 2. V testování částí je chování základních tříd a ověření obchodní logiky.
 
 Další podrobnosti najdete v následujících odstavcích pro testování funkcí, které používají vazbu klienta Orchestration a aktivační vazbu nástroje Orchestrator.
@@ -53,16 +56,16 @@ V této části test jednotek ověří logiku následující funkce triggeru HTT
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-Úkol testování částí bude ověřovat hodnotu `Retry-After` hlavičky, kterou jste zadali v datové části odpovědi. Test jednotek tak bude napsaný některé z metod [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html) k zajištění předvídatelného chování.
+Úkol testování částí bude ověřovat hodnotu v hlavičce `Retry-After` poskytnutou v datové části odpovědi. Test jednotek tak bude napsaný některé z `DurableOrchestrationClientBase` metod, aby bylo zajištěno předvídatelné chování.
 
-Nejprve je vyžadován druh základní třídy, [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html). Přípravou může být nová třída, která implementuje [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html). Nicméně použití napodobované architektury, jako je [MOQ](https://github.com/moq/moq4) , zjednodušuje proces:
+Nejprve je vyžadován druh základní třídy, `DurableOrchestrationClientBase`. Přípravou může být nová třída, která implementuje `DurableOrchestrationClientBase`. Nicméně použití napodobované architektury, jako je [MOQ](https://github.com/moq/moq4) , zjednodušuje proces:
 
 ```csharp
     // Mock DurableOrchestrationClientBase
     var durableOrchestrationClientBaseMock = new Mock<DurableOrchestrationClientBase>();
 ```
 
-Pak `StartNewAsync` je metoda napodobná, aby vracela ID známé instance.
+Pak je `StartNewAsync` metoda napodobná, aby vracela ID dobře známé instance.
 
 ```csharp
     // Mock StartNewAsync method
@@ -88,15 +91,14 @@ Další `CreateCheckStatusResponse` je napodobná, aby vždycky vracela prázdno
         });
 ```
 
-`ILogger`je také napodobná:
+`ILogger` je také napodobná:
 
 ```csharp
     // Mock ILogger
     var loggerMock = new Mock<ILogger>();
-
 ```  
 
-Nyní je `Run` metoda volána z testu jednotky:
+Nyní je metoda `Run` volána z testu jednotky:
 
 ```csharp
     // Call Orchestration trigger function
@@ -147,7 +149,7 @@ Pak budou nacházet volání metody aktivity:
     durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "London")).ReturnsAsync("Hello London!");
 ```
 
-V dalším testu jednotky bude volána `HelloSequence.Run` metoda:
+V dalším testu jednotky bude volána metoda `HelloSequence.Run`:
 
 ```csharp
     var result = await HelloSequence.Run(durableOrchestrationContextMock.Object);
@@ -170,15 +172,15 @@ Po zkombinování všech kroků bude test jednotky obsahovat následující kód
 
 Funkce aktivity mohou být testovány jednotky stejným způsobem jako netrvanlivé funkce.
 
-V této části testování částí ověří chování `E1_SayHello` funkce aktivity:
+V této části test jednotek ověří chování funkce `E1_SayHello` aktivity:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-A testy jednotek budou ověřovat formát výstupu. Testy jednotek mohou používat typy parametrů přímo nebo maketně [DurableActivityContextBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContextBase.html) třídy:
+A testy jednotek budou ověřovat formát výstupu. Testy jednotek mohou používat typy parametrů přímo nebo maketa `DurableActivityContextBase` třídy:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceActivityTests.cs)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Další informace o xUnit](https://xunit.github.io/docs/getting-started-dotnet-core)

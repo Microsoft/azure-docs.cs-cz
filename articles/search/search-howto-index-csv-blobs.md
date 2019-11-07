@@ -1,7 +1,7 @@
 ---
-title: Indexování objektů BLOB CSV pomocí indexeru Azure Kognitivní hledání BLOB
+title: Indexování objektů BLOB CSV pomocí režimu analýzy delimitedText (Preview)
 titleSuffix: Azure Cognitive Search
-description: Procházení objektů BLOB ve formátu CSV v Azure Blob Storage pro fulltextové vyhledávání pomocí indexu služby Azure Kognitivní hledání. Indexery automatizují přijímání dat pro vybrané zdroje dat, jako je Azure Blob Storage.
+description: Extrahujte a importujte CSV z úložiště objektů BLOB v Azure pomocí režimu analýzy delimitedText, který je aktuálně ve verzi Public Preview.
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 18d0eb704deba80bf83b5cae0a598f47181700f7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4edeb8d535504c305319aad35637bb1b09f65984
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793785"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719245"
 ---
-# <a name="how-to-index-csv-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Indexování objektů BLOB CSV pomocí indexeru objektů BLOB v Azure Kognitivní hledání 
+# <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Indexování objektů BLOB ve formátu CSV pomocí režimu analýzy delimitedText a indexerů objektů BLOB v Azure Kognitivní hledání 
 
-> [!Note]
-> Režim analýzy delimitedText je ve verzi Preview a není určený pro použití v produkčním prostředí. Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není dostupná žádná podpora sady .NET SDK.
->
+> [!IMPORTANT] 
+> Režim analýzy delimitedText je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není k dispozici žádný portál ani podpora sady .NET SDK.
 
 Služba [Azure kognitivní hledání BLOB](search-howto-indexing-azure-blob-storage.md) ve výchozím nastavení analyzuje objekty BLOB s oddělovači textu jako jeden blok textu. Nicméně s objekty blob obsahujícími data CSV často chcete s každým řádkem v objektu BLOB zacházet jako se samostatným dokumentem. Například s ohledem na následující oddělený text můžete ho chtít analyzovat do dvou dokumentů, z nichž každý obsahuje pole ID, datePublished a Tags: 
 
@@ -28,7 +27,7 @@ Služba [Azure kognitivní hledání BLOB](search-howto-indexing-azure-blob-stor
     1, 2016-01-12, "azure-search,azure,cloud" 
     2, 2016-07-07, "cloud,mobile" 
 
-V tomto článku se dozvíte, jak analyzovat objekty blob ve formátu CSV pomocí Azure Kognitivní hledání BLOB indexerby nastavení režimu analýzy `delimitedText`. 
+V tomto článku se dozvíte, jak analyzovat objekty blob ve formátu CSV pomocí indexeru objektů BLOB v Azure Kognitivní hledání nastavením režimu analýzy `delimitedText`. 
 
 > [!NOTE]
 > Při indexování několika dokumentů hledání z jednoho objektu blob Azure postupujte podle doporučení pro konfiguraci indexeru v indexu [1: n](search-howto-index-one-to-many-blobs.md) .
@@ -47,7 +46,7 @@ Pokud objekty blob neobsahují počáteční řádek záhlaví, hlavičky by se 
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 
 
-Pomocí nastavení konfigurace `delimitedTextDelimiter` můžete přizpůsobit znak oddělovače. Například:
+Pomocí nastavení konfigurace `delimitedTextDelimiter` můžete přizpůsobit znak oddělovače. Příklad:
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
 

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
-ms.date: 05/02/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: d653d1cd719ac59bf6c98bee588c41858052bc61
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 34ff3f9704b9c84a7daddcfd14fb9cd3e990f794
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489868"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716514"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Export nebo odstranění dat pracovního prostoru služby Machine Learning 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -243,17 +243,16 @@ V návrháři, kde jste vytvořili experiment, odstraňte jednotlivé prostředk
 
 1. V seznamu vyberte koncept jednotlivého kanálu, který chcete odstranit.
 
-1. V dolní části vyberte **Odstranit**.
+1. Vyberte **Odstranit**.
 
-## <a name="unregister-data-in-the-designer"></a>Zrušení registrace dat v Návrháři
+### <a name="delete-datasets-in-the-designer"></a>Odstranění datových sad v Návrháři
+
+Pokud chcete v Návrháři odstranit datové sady, pomocí Azure Portal nebo Průzkumník služby Storage přejděte na propojené účty úložiště a odstraňte datové sady. Zrušení registrace datových sad v Návrháři odebere pouze referenční bod v úložišti. 
+
+## <a name="export-data-in-the-designer"></a>Exportovat data v Návrháři
 
 V návrháři, kde jste vytvořili experiment, exportujte data, která jste přidali:
 
 1. Na levé straně vyberte **datové sady**.
 
-
-
     ![Stáhnout data](media/how-to-export-delete-data.md/unregister-dataset.png)
-
-1. V seznamu vyberte jednotlivou datovou sadu a klikněte na zrušit registraci.
-

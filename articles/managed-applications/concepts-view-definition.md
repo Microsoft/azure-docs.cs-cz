@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
-ms.openlocfilehash: f51dbce3c251f4e89483d925ac657aac7eb928d8
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: b23e844cb550a98328951bc6efae3c5039ff73bf
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804076"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607538"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>Zobrazit artefakt definice v Azure Managed Applications
 
@@ -26,7 +26,7 @@ Artefakt definice zobrazení musí mít název **položku galerie. JSON** a umí
 
 ## <a name="view-definition-schema"></a>Zobrazit schéma definice
 
-Soubor **položku galerie. JSON** má pouze jednu vlastnost nejvyšší úrovně `views`, což je pole zobrazení. Každé zobrazení se zobrazí v uživatelském rozhraní spravované aplikace jako samostatná položka nabídky v obsahu. Každé zobrazení má vlastnost `kind`, která nastavuje typ zobrazení. Musí být nastavená na jednu z následujících hodnot: [Přehled](#overview), [metriky](#metrics), [CustomResources](#custom-resources). Další informace najdete v tématu aktuální [schéma JSON pro položku galerie. JSON](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).
+Soubor **položku galerie. JSON** má pouze jednu vlastnost nejvyšší úrovně `views`, což je pole zobrazení. Každé zobrazení se zobrazí v uživatelském rozhraní spravované aplikace jako samostatná položka nabídky v obsahu. Každé zobrazení má vlastnost `kind`, která nastavuje typ zobrazení. Musí být nastavená na jednu z následujících hodnot: [Přehled](#overview), [metriky](#metrics), [CustomResources](#custom-resources)a [přidružení](#associations). Další informace najdete v tématu aktuální [schéma JSON pro položku galerie. JSON](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).
 
 Ukázka JSON pro definici zobrazení:
 
@@ -91,10 +91,18 @@ Ukázka JSON pro definici zobrazení:
                     {"key": "properties.myProperty2", "displayName": "Property 2", "optional": true}
                 ]
             }
+        },
+        {
+            "kind": "Associations",
+            "properties": {
+                "displayName": "Test association resource type",
+                "version": "1.0.0",
+                "targetResourceType": "Microsoft.Compute/virtualMachines",
+                "createUIDefinition": { }
+            }
         }
     ]
 }
-
 ```
 
 ## <a name="overview"></a>Přehled
@@ -160,7 +168,7 @@ Zobrazení metrik umožňuje shromažďovat a agregovat data z prostředků spra
 
 |Vlastnost|Požaduje se|Popis|
 |---------|---------|---------|
-|DisplayName|Ne|Zobrazený nadpis zobrazení|
+|displayName|Ne|Zobrazený nadpis zobrazení|
 |version|Ne|Verze platformy použité k vykreslení zobrazení|
 |spojnic|Ano|Pole grafů stránky metrik.|
 
@@ -168,7 +176,7 @@ Zobrazení metrik umožňuje shromažďovat a agregovat data z prostředků spra
 
 |Vlastnost|Požaduje se|Popis|
 |---------|---------|---------|
-|DisplayName|Ano|Zobrazený Nadpis grafu|
+|displayName|Ano|Zobrazený Nadpis grafu|
 |chartType|Ne|Vizualizace, která se má použít pro tento graf Ve výchozím nastavení používá spojnicový graf. Podporované typy grafů: `Bar, Line, Area, Scatter`.|
 |metriky|Ano|Pole metrik, která se mají vykreslovat v tomto grafu Další informace o metrikách podporovaných v Azure Portal najdete v tématu [podporované metriky s Azure monitor](../azure-monitor/platform/metrics-supported.md)|
 
@@ -220,13 +228,13 @@ V tomto zobrazení můžete provádět operace GET, PUT, DELETE a POST pro vlast
 
 |Vlastnost|Požaduje se|Popis|
 |---------|---------|---------|
-|DisplayName|Ano|Zobrazený nadpis zobrazení Název by měl být **jedinečný** pro každé zobrazení CustomResources ve vaší **položku galerie. JSON**.|
+|displayName|Ano|Zobrazený nadpis zobrazení Název by měl být **jedinečný** pro každé zobrazení CustomResources ve vaší **položku galerie. JSON**.|
 |version|Ne|Verze platformy použité k vykreslení zobrazení|
 |resourceType|Ano|Vlastní typ prostředku. Musí se jednat o **jedinečný** vlastní typ prostředku vašeho vlastního poskytovatele.|
-|Ikona|Ne|Ikona zobrazení Seznam ukázkových ikon je definován ve [schématu JSON](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).|
+|ikona|Ne|Ikona zobrazení Seznam ukázkových ikon je definován ve [schématu JSON](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).|
 |createUIDefinition|Ne|Vytvořte schéma definice uživatelského rozhraní pro příkaz vytvořit vlastní prostředek. Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md) .|
 |příkaz|Ne|Pole dalších tlačítek panelu nástrojů v zobrazení CustomResources, viz [příkazy](#commands).|
-|Sloupcích|Ne|Pole sloupců vlastního prostředku Pokud není definován, zobrazí se ve výchozím nastavení sloupec `name`. Sloupec musí mít `"key"` a `"displayName"`. V poli klíč zadejte klíč vlastnosti, který se má zobrazit v zobrazení. Pokud je vnořený, použijte jako oddělovač tečku, například `"key": "name"` nebo `"key": "properties.property1"`. Do pole Zobrazovaný název zadejte zobrazovaný název vlastnosti, která se má zobrazit v zobrazení. Můžete také zadat vlastnost `"optional"`. Při nastavení na hodnotu true je sloupec v zobrazení ve výchozím nastavení skrytý.|
+|sloupcích|Ne|Pole sloupců vlastního prostředku Pokud není definován, zobrazí se ve výchozím nastavení sloupec `name`. Sloupec musí mít `"key"` a `"displayName"`. V poli klíč zadejte klíč vlastnosti, který se má zobrazit v zobrazení. Pokud je vnořený, použijte jako oddělovač tečku, například `"key": "name"` nebo `"key": "properties.property1"`. Do pole Zobrazovaný název zadejte zobrazovaný název vlastnosti, která se má zobrazit v zobrazení. Můžete také zadat vlastnost `"optional"`. Při nastavení na hodnotu true je sloupec v zobrazení ve výchozím nastavení skrytý.|
 
 ![CustomResources](./media/view-definition/customresources.png)
 
@@ -249,10 +257,37 @@ Příkazy jsou pole dalších tlačítek panelu nástrojů, která se zobrazují
 
 |Vlastnost|Požaduje se|Popis|
 |---------|---------|---------|
-|DisplayName|Ano|Zobrazované jméno příkazového tlačítka|
+|displayName|Ano|Zobrazované jméno příkazového tlačítka|
 |dílčí|Ano|Název akce vlastního zprostředkovatele. Akce musí být definována v **mainTemplate. JSON**.|
-|Ikona|Ne|Ikona příkazového tlačítka Seznam ukázkových ikon je definován ve [schématu JSON](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).|
+|ikona|Ne|Ikona příkazového tlačítka Seznam ukázkových ikon je definován ve [schématu JSON](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).|
 |createUIDefinition|Ne|Vytvořte schéma definice uživatelského rozhraní pro příkaz. Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).|
+
+## <a name="associations"></a>přidružení
+
+`"kind": "Associations"`
+
+Můžete definovat více zobrazení tohoto typu. Toto zobrazení umožňuje propojit existující prostředky se spravovanou aplikací prostřednictvím vlastního poskytovatele, kterého jste definovali v **mainTemplate. JSON**. Úvod k vlastním poskytovatelům najdete v tématu [Přehled vlastních zprostředkovatelů Azure ve verzi Preview](custom-providers-overview.md).
+
+V tomto zobrazení můžete roztáhnout existující prostředky Azure na základě `targetResourceType`. Když se vybere prostředek, vytvoří se žádost o registraci **veřejnému** poskytovateli, který může u prostředku použít vedlejší efekt. 
+
+```json
+{
+    "kind": "Associations",
+    "properties": {
+        "displayName": "Test association resource type",
+        "version": "1.0.0",
+        "targetResourceType": "Microsoft.Compute/virtualMachines",
+        "createUIDefinition": { }
+    }
+}
+```
+
+|Vlastnost|Požaduje se|Popis|
+|---------|---------|---------|
+|displayName|Ano|Zobrazený nadpis zobrazení Název by měl být **jedinečný** pro každé zobrazení přidružení v **položku galerie. JSON**.|
+|version|Ne|Verze platformy použité k vykreslení zobrazení|
+|targetResourceType|Ano|Cílový typ prostředku. Jedná se o typ prostředku, který se zobrazí pro registraci prostředku.|
+|createUIDefinition|Ne|Vytvořte schéma definice uživatelského rozhraní pro příkaz vytvořit prostředek přidružení. Úvod k vytváření definic uživatelského rozhraní najdete v tématu [Začínáme s CreateUiDefinition](create-uidefinition-overview.md) .|
 
 ## <a name="looking-for-help"></a>Hledáte nápovědu
 

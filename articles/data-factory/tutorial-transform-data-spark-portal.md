@@ -1,5 +1,5 @@
 ---
-title: Transformace dat pomocí Sparku v Azure Data Factory | Microsoft Docs
+title: 'Transformace dat pomocí Sparku v Azure Data Factory '
 description: Tento kurz obsahuje podrobné pokyny pro transformaci dat pomocí aktivity Sparku ve službě Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: d13e0b95d57e3063292319961d5e1138f994076e
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: b0df6264eb38cbbacd5f624b634eea5f742adbc7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812283"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683324"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Transformace dat v cloudu pomocí aktivity Sparku ve službě Azure Data Factory
 V tomto kurzu vytvoříte pomocí webu Azure Portal kanál služby Azure Data Factory. Tento kanál transformuje data pomocí aktivity Sparku a propojené služby Azure HDInsight na vyžádáni. 
@@ -77,7 +77,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 
 ### <a name="upload-the-input-file"></a>Nahrání vstupního souboru
-1. Vytvořte soubor s názvem **minecraftstory.txt** a nějakým textem. Program Sparku spočítá slova v tomto textu. 
+1. Vytvořte soubor **minecraftstory.txt** a nějakým textem. Program Sparku spočítá slova v tomto textu. 
 1. Ve složce **spark** vytvořte dílčí složku s názvem **inputfiles**. 
 1. Nahrajte do dílčí složky **inputfiles** soubor **minecraftstory.txt**. 
 
@@ -101,16 +101,16 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
    - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
          
    Některé kroky v tomto rychlém startu vychází z předpokladu, že pro skupinu prostředků použijete název **ADFTutorialResourceGroup**. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
-1. Jako **Verzi** vyberte **V2**.
+1. V poli **Verze** vyberte **V2**.
 1. Jako **Umístění** vyberte umístění datové továrny. 
 
-   Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, vyberte oblasti, které vás zajímají na následující stránce, a pak rozbalte položku **Analytics** a vyhledejte **Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (třeba Azure Storage a Azure SQL Database) a výpočetní prostředí (jako HDInsight) používaná službou Data Factory můžou být v jiných oblastech.
+   Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (třeba Azure Storage a Azure SQL Database) a výpočetní prostředí (jako HDInsight) používaná službou Data Factory můžou být v jiných oblastech.
 
 1. Vyberte **Vytvořit**.
 
 1. Po vytvoření se zobrazí stránka **Datová továrna**. Kliknutím na dlaždici **Vytvořit a monitorovat** spusťte na samostatné kartě aplikaci uživatelského rozhraní služby Data Factory.
 
-    ![Domovská stránka datové továrny s dlaždici Vytvořit a monitorovat](./media/tutorial-transform-data-spark-portal/data-factory-home-page.png)
+    ![Domovská stránka datové továrny s dlaždici Author & Monitor (Vytvořit a sledovat)](./media/tutorial-transform-data-spark-portal/data-factory-home-page.png)
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 V této části vytvoříte tyto dvě propojené služby: 
@@ -212,11 +212,11 @@ Vyberte **Přidat aktivační událost** na panelu nástrojů a pak vyberte **ak
 
 ## <a name="monitor-the-pipeline-run"></a>Monitorování spuštění kanálu
 
-1. Přepněte na kartu **Monitorování**. Ověřte, že se zobrazuje spuštění kanálu. Vytvoření clusteru Spark trvá přibližně 20 minut. 
+1. Přepněte na kartu **monitorování** . Ověřte, že se zobrazí spuštění kanálu. Vytvoření clusteru Spark trvá přibližně 20 minut. 
    
 1. Pravidelně klikejte na **Aktualizovat** a kontrolujte stav spuštění kanálu. 
 
-   ![Karta pro monitorování spuštění kanálu s tlačítkem Aktualizovat](./media/tutorial-transform-data-spark-portal/monitor-tab.png)
+   ![Karta pro sledování spuštění kanálu s tlačítkem Aktualizovat](./media/tutorial-transform-data-spark-portal/monitor-tab.png)
 
 1. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte možnost **Zobrazit spuštění aktivit** ve sloupci **Akce**.
 
@@ -253,7 +253,7 @@ Kanál v této ukázce transformuje data pomocí aktivity Sparku a propojené sl
 Pokud chcete zjistit, jak transformovat data spuštěním skriptu Hivu v clusteru Azure HDInsight ve virtuální síti, přejděte k následujícímu kurzu: 
 
 > [!div class="nextstepaction"]
-> [Kurz: Transformujte data pomocí podregistru v](tutorial-transform-data-hive-virtual-network-portal.md)Azure Virtual Network.
+> [Kurz: Transformace dat pomocí Hivu ve službě Azure Virtual Network](tutorial-transform-data-hive-virtual-network-portal.md)
 
 
 

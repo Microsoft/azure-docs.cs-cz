@@ -4,15 +4,15 @@ description: Obsahuje přehled služby Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 10/22/2019
+ms.date: 11/06/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 1ecd15b36b677e65eadbe4e979925723c9eedd51
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: af9305aafc3a77df9d7c4cffa65f6c61c53ad8a4
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498436"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715388"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Co je nového v Azure Migrate
 
@@ -22,7 +22,12 @@ ms.locfileid: "73498436"
 
 ## <a name="update-november-2019"></a>Aktualizace (listopad 2019)
 
+
+
 Do Azure Migrate bylo přidáno několik nových funkcí:
+
+> [!NOTE]
+> Pokud se tyto funkce na portálu Azure Migrate Portal ještě nezobrazují, počkejte. Budou zobrazeny v průběhu příštího týdne.
 
 - **Posouzení fyzického serveru**. Kromě migrace fyzického serveru, která je už podporovaná, se teď podporuje hodnocení místních fyzických serverů.
 - **Posouzení na základě importu**. Nyní je podporováno posouzení počítačů využívajících metadata a data o výkonu, které jsou k dispozici v souboru CSV.
@@ -30,6 +35,13 @@ Do Azure Migrate bylo přidáno několik nových funkcí:
 - **Vizualizace závislostí bez agentů**: už nemusíte explicitně instalovat agenty pro vizualizaci závislostí. Podporují se teď i agenty i založené na agentech.
 - **Virtuální plocha**: pomocí nástrojů ISV můžete vyhodnotit a migrovat místní infrastrukturu virtuálních klientských počítačů (VDI) na virtuální plochu Windows v Azure.
 - **Webová aplikace**: Azure App Service Pomocník s migrací, která se používá pro hodnocení a migraci webových aplikací, je teď integrovaná do Azure Migrate.
+
+Do Azure Migrate byly přidány nové nástroje pro posouzení a migraci:
+
+- **Rackware**: nabídka migrace do cloudu.
+- **Stěhovací**společnost: posouzení nabídky.
+
+[Přečtěte si další informace](migrate-services-overview.md) o používání nástrojů a nabídek ISV pro posouzení a migraci v Azure Migrate.
 
 ## <a name="release-version-july-2019"></a>Verze vydaných verzí (červenec 2019)
 

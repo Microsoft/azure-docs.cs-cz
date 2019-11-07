@@ -1,5 +1,5 @@
 ---
-title: Detekce hrozeb pro vrstvu služeb Azure v Azure Security Center | Microsoft Docs
+title: Detekce hrozeb ve vrstvě služeb Azure – Azure Security Center
 description: V tomto tématu jsou uvedeny výstrahy ve vrstvě služeb Azure, které jsou k dispozici v Azure Security Center.
 services: security-center
 documentationcenter: na
@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/25/2019
 ms.author: memildin
-ms.openlocfilehash: 9a600b6b45dbef49f600a5e9e913c9d1839eff93
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b82eab9d20966ddd0678c9213bf25a14b5313f58
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202443"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686454"
 ---
 # <a name="threat-detection-for-the-azure-service-layer-in-azure-security-center"></a>Detekce hrozeb pro vrstvu služby Azure v Azure Security Center
 
@@ -66,7 +66,7 @@ Security Center nabízí další vrstvu ochrany pomocí Azure Resource Managerch
 |**Podezřelá relace správy s použitím neaktivního účtu**|Analýza protokolů aktivit předplatného zjistila podezřelé chování. Objekt zabezpečení, který se nepoužívá po dlouhou dobu, nyní provádí akce, které mohou zabezpečit trvalost pro útočníka.|
 |**Podezřelá relace správy s využitím PowerShellu**|Analýza protokolů aktivit předplatného zjistila podezřelé chování. Objekt zabezpečení, který pravidelně nepoužívá PowerShell ke správě prostředí předplatného, teď používá PowerShell a provádí akce, které můžou zabezpečit trvalost pro útočníka.|
 |**Použití pokročilých technik trvalosti Azure**|Analýza protokolů aktivit předplatného zjistila podezřelé chování. Přizpůsobené role byly předány entitám identity legitimized. To může vést k tomu, že útočník získá průniku v prostředí Azure Customer.|
-|**Aktivita z málo časté země**|Došlo k aktivitě z umístění, které nedávno nebo dříve navštívil žádný uživatel v organizaci.<br/>Tato detekce ohledem na minulou umístění aktivit k určení nové a úlohy s řídkým umístění. Modul detekce anomálií ukládá informace o předchozí umístění, které používají uživatelé v organizaci. 
+|**Aktivita z nečasté země**|Došlo k aktivitě z umístění, které nedávno nebo dříve navštívil žádný uživatel v organizaci.<br/>Tato detekce posuzuje umístění minulých aktivit k určení nových a málo častých umístění. Modul pro detekci anomálií ukládá informace o předchozích umístěních používaných uživateli v organizaci. 
 |**Aktivita z anonymních IP adres**|Byla zjištěna aktivita uživatelů z IP adresy, která byla identifikována jako IP adresa anonymního proxy serveru. <br/>Tyto proxy servery používají lidé, kteří chtějí skrýt IP adresu svého zařízení a můžou se používat pro škodlivý záměr. Tato detekce používá algoritmus strojového učení, který zkracuje falešně pozitivní informace, například IP adresy nesprávného označení, které uživatelé v organizaci používají často.|
 |**Zjistila se nemožná cesta.**|Nastaly dvě uživatelské aktivity (v jedné nebo několika relacích), které pocházejí z geograficky vzdálených umístění. K tomu dojde v časovém období kratším, než je čas, kdy by uživatel musel cestovat z prvního umístění do druhé. To znamená, že stejný přihlašovací údaj používá jiný uživatel. <br/>Tato detekce používá algoritmus strojového učení, který ignoruje zjevné falešně pozitivní informace, které přispívají k nemožným podmínkám cestování, jako jsou sítě VPN a lokality pravidelně používané ostatními uživateli v organizaci. Tato detekce má počáteční období učení sedmi dnů, během kterého se učí vzor aktivity nového uživatele.|
 

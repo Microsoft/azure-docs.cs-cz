@@ -6,22 +6,22 @@ keywords: ''
 author: PatAltimore
 ms.author: patricka
 ms.date: 10/14/2019
-ms.topic: tutorial
+ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
 manager: femila
-ms.openlocfilehash: cff1085d14f2f849134b0b6f602e272fbb5bc561
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: bb23d6b9b42e1c51646765255870a14a1b5d39f7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329282"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579939"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Použití konektoru Ethereem blockchain s Azure Logic Apps
 
 Pomocí [konektoru Ethereem blockchain](https://docs.microsoft.com/connectors/blockchainethereum/) s [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) provádět akce inteligentních kontraktů a reagovat na události inteligentních kontraktů. Řekněme například, že chcete vytvořit mikroslužbu založenou na REST, která vrací informace z hlavní knihy blockchain. Pomocí aplikace logiky můžete přijmout požadavky HTTP, které dotazují na informace uložené v blockchain knize.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Dokončete volitelný rychlý úvodní požadavek [: pomocí Visual Studio Code se připojte k síti konsorcia služeb Azure blockchain](connect-vscode.md). Rychlý Start vás provede instalací [sady Azure blockchain Development Kit pro ethereem](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) a nastavením vašeho vývojového prostředí blockchain.
 
@@ -65,7 +65,7 @@ Pokud chcete, aby se aplikace logiky spouštěla po výskytu události Smart Con
     | **Název události** | Vyberte událost inteligentního kontraktu, kterou chcete ověřit. Událost aktivuje aplikaci logiky. |
     | **Interval** a **frekvence** | Vyberte, jak často chcete událost kontrolovat. |
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 K dokončení vaší aplikace logiky můžete přidat nový krok, který provede akci na základě triggeru události Ethereem blockchain. Například odešlete e-mail.
 
@@ -138,7 +138,7 @@ Následující kroky například generují aplikaci Logic mikroslužeb založeno
 
     ![Podokno návrháře Logic Apps s adresou URL POST protokolu HTTP](./media/ethereum-logic-app/post-url.png)
 
-1. K vytvoření požadavku HTTP POST použijte oblé. Text zástupného textu *\<HTTP post URL @ no__t-2* nahraďte adresou URL z předchozího kroku.
+1. K vytvoření požadavku HTTP POST použijte oblé. Nahraďte text zástupného symbolu *\<adresu URL příspěvku HTTP\>* adresou URL z předchozího kroku.
 
     ``` bash
     curl -d "{}" -H "Content-Type: application/json" -X POST "<HTTP POST URL>"
@@ -182,7 +182,7 @@ Adresa koncového bodu RPC služby Azure blockchain se vyžaduje pro připojení
 
 **Použití Azure Portal:**
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejít na člena služby Azure blockchain. Vyberte **uzly transakce** a výchozí odkaz na uzel transakce.
 
     ![Stránka uzly transakce s výběrem (výchozí uzel)](./media/ethereum-logic-app/transaction-nodes.png)
@@ -267,7 +267,7 @@ Pokud jste k sestavení vaší inteligentní smlouvy použili vývojovou sadu ne
 
 **Použití kompilátoru hustota:**
 
-K vygenerování bajtového kódu kontraktu použijte příkaz `solc --bin <smart contract>.sol`.
+K vygenerování bajtového kódu kontraktu použijte `solc --bin <smart contract>.sol` příkazu.
 
 ## <a name="get-the-contract-address"></a>Získat adresu kontraktu
 

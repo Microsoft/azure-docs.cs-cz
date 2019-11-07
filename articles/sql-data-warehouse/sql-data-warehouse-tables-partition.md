@@ -1,5 +1,5 @@
 ---
-title: Vytváření oddílů tabulek v Azure SQL Data Warehouse | Microsoft Docs
+title: Dělení tabulek
 description: Doporučení a příklady použití oddílů tabulky v Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 6791ff2f2a9719a19d2c9abc4ff480435de7bb00
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 7ec313094a9ebc05f966e0c49f44284909ca778f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477094"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685418"
 ---
 # <a name="partitioning-tables-in-sql-data-warehouse"></a>Dělení tabulek v SQL Data Warehouse
 Doporučení a příklady použití oddílů tabulky v Azure SQL Data Warehouse.
@@ -115,7 +116,7 @@ SQL Data Warehouse podporuje rozdělování, slučování a přepínání oddíl
 Chcete-li přepnout oddíly mezi dvěma tabulkami, je nutné zajistit, aby oddíly byly zarovnány na příslušných hranicích a aby definice tabulek odpovídaly. Jelikož omezení CHECK nejsou k dispozici pro vynutit rozsah hodnot v tabulce, zdrojová tabulka musí obsahovat stejné hranice oddílu jako cílová tabulka. Pokud hranice oddílu nejsou stejné, pak přepínač oddílu selže, protože metadata oddílu nebudou synchronizována.
 
 ### <a name="how-to-split-a-partition-that-contains-data"></a>Rozdělení oddílu obsahujícího data
-Nejúčinnější Metoda rozdělení oddílu, který již obsahuje data, je použití `CTAS` příkazu. Pokud je dělená tabulka clusterovaným objektem columnstore, musí být oddíl tabulky prázdný, aby bylo možné ho rozdělit.
+Nejúčinnější Metoda rozdělení oddílu, který již obsahuje data, je použití příkazu `CTAS`. Pokud je dělená tabulka clusterovaným objektem columnstore, musí být oddíl tabulky prázdný, aby bylo možné ho rozdělit.
 
 Následující příklad vytvoří dělenou tabulku columnstore. Vloží do každého oddílu jeden řádek:
 
@@ -147,7 +148,7 @@ INSERT INTO dbo.FactInternetSales
 VALUES (1,20000101,1,1,1,1,1,1);
 ```
 
-Následující dotaz vyhledá počet řádků pomocí `sys.partitions` zobrazení katalogu:
+Následující dotaz vyhledá počet řádků pomocí zobrazení katalogu `sys.partitions`:
 
 ```sql
 SELECT  QUOTENAME(s.[name])+'.'+QUOTENAME(t.[name]) as Table_name
@@ -172,7 +173,7 @@ ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 
 Klauzule MSG 35346, Level 15, state 1, line 44 příkaz ALTER PARTITION se nezdařila, protože oddíl není prázdný. V případě, že index columnstore v tabulce existuje, lze rozdělit pouze prázdné oddíly. Před vyvoláním příkazu ALTER PARTITION zvažte možnost zakázat index columnstore a pak znovu sestavit index columnstore po dokončení příkazu ALTER PARTITION.
 
-Můžete ale použít `CTAS` k vytvoření nové tabulky pro uložení dat.
+Můžete však použít `CTAS` k vytvoření nové tabulky pro uložení dat.
 
 ```sql
 CREATE TABLE dbo.FactInternetSales_20000101
@@ -198,7 +199,7 @@ ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Vše, co je ponecháno, je zarovnání dat na nové hranice oddílu pomocí `CTAS`a poté přepnout data zpět do hlavní tabulky.
+Vše, co je ponecháno, je zarovnání dat do nového oddílu pomocí `CTAS`a pak přepínat data zpět do hlavní tabulky.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_20000101_20010101]
@@ -226,7 +227,7 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 ```
 
 ### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>Načtení nových dat do oddílů, které obsahují data v jednom kroku
-Načítání dat do oddílů pomocí přepínání oddílů je pohodlný způsob, jak vytvořit nová data v tabulce, která nejsou viditelná pro uživatele přepínačem v nových datech.  Může to být náročné na zaneprázdněné systémy, aby se mohla zabývat kolize uzamčení spojeného s přepínáním oddílů.  Chcete-li vymazat stávající data v oddílu, je k `ALTER TABLE` dismailu nutné použít k přepnutí dat.  V nových `ALTER TABLE` datech se pak vyžadoval jiný.  V SQL Data Warehouse `TRUNCATE_TARGET` je možnost podporována `ALTER TABLE` v příkazu.  Pomocí `TRUNCATE_TARGET`příkazupřepíšeexistující datavoddílunovýmidaty.`ALTER TABLE`  Níže je uveden příklad, který `CTAS` používá k vytvoření nové tabulky s existujícími daty, vkládání nových dat a následné přepínání všech dat zpět do cílové tabulky, která Přepisuje stávající data.
+Načítání dat do oddílů pomocí přepínání oddílů je pohodlný způsob, jak vytvořit nová data v tabulce, která nejsou viditelná pro uživatele přepínačem v nových datech.  Může to být náročné na zaneprázdněné systémy, aby se mohla zabývat kolize uzamčení spojeného s přepínáním oddílů.  Chcete-li vymazat stávající data v oddílu, `ALTER TABLE` pro ně nutné použít k přepnutí dat.  Pro přepnutí v nových datech se vyžadoval jiný `ALTER TABLE`.  V SQL Data Warehouse je v příkazu `ALTER TABLE` podporována možnost `TRUNCATE_TARGET`.  Pomocí `TRUNCATE_TARGET` příkaz `ALTER TABLE` přepíše existující data v oddílu novými daty.  Níže je uveden příklad, který pomocí `CTAS` vytvoří novou tabulku s existujícími daty, vloží nová data a pak přepne všechna data zpátky do cílové tabulky a přepíše stávající data.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]
@@ -275,7 +276,7 @@ Chcete-li se vyhnout definici tabulky z **rusting** v systému správy zdrojové
     ;
     ```
 
-1. `SPLIT`tabulka v rámci procesu nasazení:
+1. v rámci procesu nasazení `SPLIT` tabulku:
 
     ```sql
      -- Create a table containing the partition boundaries

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření kanálu datové továrny pomocí portálu Azure Portal | Microsoft Docs
+title: Vytvoření kanálu datové továrny pomocí Azure Portal
 description: Tento kurz obsahuje podrobné pokyny k vytvoření datové továrny s kanálem pomocí portálu Azure Portal. Kanál využívá aktivitu kopírování ke kopírování dat z úložiště Azure Blob Storage do databáze SQL Database.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 9a2ad8070c0406446f53c1bcaa6d341cdca0bb2a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ba348cdd478b1d66d7b7286ba0a54adfd98137e2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140719"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683616"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Kopírování dat z úložiště Azure Blob Storage do databáze SQL Database pomocí služby Azure Data Factory
 V tomto kurzu vytvoříte datovou továrnu pomocí uživatelského rozhraní služby Azure Data Factory. Kanál v této datové továrně kopíruje data z úložiště Azure Blob Storage do databáze SQL Database. Schéma konfigurace v tomto kurzu se vztahuje na kopírování z úložiště dat založeného na souborech do relačního úložiště dat. Seznam úložišť dat, která jsou podporovaná jako zdroje a jímky, najdete v tabulce [podporovaných úložišť dat](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -70,13 +70,13 @@ Teď si připravte úložiště Blob Storage a databázi SQL Database pro tento
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-1. Povolte službám Azure přístup k SQL Serveru. Zkontrolujte, že je nastavení **Povolit přístup ke službám Azure** pro váš SQL Server **ZAPNUTÉ**, aby mohla služba Data Factory na tento SQL Server zapisovat data. Pokud chcete toto nastavení ověřit a zapnout, přejděte na Azure SQL Server > Přehled > nastavení brány firewall serveru > nastavte možnost **Povolit přístup ke službám Azure** na **zapnuto**.
+1. Povolte službám Azure přístup k SQL serveru. Zkontrolujte, že je nastavení **Povolit přístup ke službám Azure** pro váš SQL Server **ZAPNUTÉ**, aby mohla služba Data Factory na tento SQL Server zapisovat data. Pokud chcete toto nastavení ověřit a zapnout, přejděte na Azure SQL Server > Přehled > nastavení brány firewall serveru > nastavte možnost **Povolit přístup ke službám Azure** na **zapnuto**.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
-V tomto kroku vytvoříte datovou továrnu a spustíte uživatelské rozhraní služby Data Factory, ve kterém v této datové továrně vytvoříte kanál. 
+V tomto kroku vytvoříte datovou továrnu a spustíte uživatelské rozhraní služby Data Factory, ve kterém v této datové továrně vytvoříte kanál. 
 
 1. Otevřete **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-2. V nabídce vlevo vyberte vytvořit**Data Factory** **analýzy** >  **prostředků** > : 
+2. V nabídce vlevo vyberte **vytvořit prostředek** > **Analytics** > **Data Factory**: 
   
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -85,7 +85,7 @@ V tomto kroku vytvoříte datovou továrnu a spustíte uživatelské rozhraní
    Název datové továrny Azure musí být *globálně jedinečný*. Pokud se zobrazí chybová zpráva týkající se hodnoty názvu, zadejte jiný název datové továrny. (například yournameADFTutorialDataFactory). Pravidla pro pojmenovávání artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
         
      ![Nová datová továrna](./media/doc-common-process/name-not-available-error.png)
-4. Vyberte **předplatné** Azure, v rámci kterého chcete datovou továrnu vytvořit. 
+4. Vyberte **předplatné** Azure, v rámci kterého chcete datovou továrnu vytvořit. 
 5. U položky **Skupina prostředků** proveďte jeden z následujících kroků:
      
     a. Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
@@ -116,11 +116,11 @@ V tomto kurzu začnete vytvořením kanálu. Potom vytvoříte propojené služ
 
 1. V poli nástroje **aktivity** rozbalte kategorii **přesunout a transformovat** a přetáhněte **kopírování dat** aktivity z panelu nástrojů na plochu návrháře kanálu. Jako **Název** zadejte **CopyFromBlobToSql**.
 
-    ![Zkopírovat aktivitu](./media/tutorial-copy-data-portal/drag-drop-copy-activity.png)
+    ![Aktivita kopírování](./media/tutorial-copy-data-portal/drag-drop-copy-activity.png)
 
 ### <a name="configure-source"></a>Konfigurace zdroje
 
-1. Přejděte na kartu **Zdroj**. Výběrem **+ Nová** vytvořte zdrojovou datovou sadu. 
+1. Pokud chcete vytvořit zdrojovou datovou sadu, přejít na kartu **zdroj** . Vyberte **+ Nová** . 
 
 1. V dialogovém okně **Nová datová sada** vyberte **Azure Blob Storage**a pak vyberte **pokračovat**. Zdrojová data jsou v úložišti Blob Storage, takže jako zdrojovou datovou sadu vyberete **Azure Blob Storage**. 
 
@@ -166,7 +166,7 @@ V tomto kurzu začnete vytvořením kanálu. Potom vytvoříte propojené služ
     
     ![Uložení nové propojené služby](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
 
-1. Automaticky přejde do dialogového okna **nastavit vlastnosti** . V rozevíracím seznamu **Tabulka** vyberte **[dbo].[emp]** . Pak vyberte **Dokončit**.
+1. Automaticky přejde do dialogového okna **nastavit vlastnosti** . V části **Tabulka** vyberte **[dbo].[emp]** . Pak vyberte **Dokončit**.
 
 1. Přejděte na kartu s kanálem a zkontrolujte, že je v rozevíracím seznamu **Datová sada jímky** vybraná sada **OutputSqlDataset**.
 
@@ -197,7 +197,7 @@ V tomto kroku ručně aktivujete kanál, který jste publikovali v minulém krok
 
     ![Monitorování spuštění kanálu](./media/tutorial-copy-data-portal/monitor-pipeline.png)
 
-1. Pokud se chcete podívat na spuštění aktivit, která souvisí se spuštěním kanálu, vyberte odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce**. V tomto příkladu je k dispozici pouze jedna aktivita, takže se v seznamu zobrazí pouze jedna položka. Podrobnosti o operaci kopírování zobrazíte výběrem odkazu **Podrobnosti** (ikona brýlí) ve sloupci **Akce**. Vyberte možnost **spuštění kanálu** v horní části a vraťte se do zobrazení spuštění kanálu. Jestliže chcete zobrazení aktualizovat, vyberte **Aktualizovat**.
+1. Pokud se chcete podívat na spuštění aktivit, která souvisí se spuštěním kanálu, vyberte odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce**. V tomto příkladu je k dispozici pouze jedna aktivita, takže se v seznamu zobrazí pouze jedna položka. Podrobnosti o operaci kopírování zobrazíte výběrem odkazu **Podrobnosti** (ikona brýlí) ve sloupci **Akce**. Vyberte možnost **spuštění kanálu** v horní části a vraťte se do zobrazení spuštění kanálu. Pokud chcete zobrazení aktualizovat, vyberte **Aktualizovat**.
 
     ![Monitorování spuštění aktivit](./media/tutorial-copy-data-portal/view-activity-runs.png)
 
@@ -226,9 +226,9 @@ V tomto kroku vytvoříte pro kanál aktivační událost plánovače. Tato akt
 
     f. Vyberte **Použít**. 
 
-    g. Pro možnost aktivováno vyberte **Ano**. 
+    g. Pro možnost **aktivováno** vyberte **Ano**. 
 
-    h. Vyberte **Další**.
+    h. Vyberte **Next** (Další).
 
     ![Zaškrtávací políčko Aktivováno](./media/tutorial-copy-data-portal/trigger-activiated-next.png)
 
@@ -248,7 +248,7 @@ V tomto kroku vytvoříte pro kanál aktivační událost plánovače. Tato akt
 
 1. Ověřte, že se až do uplynutí zadaného koncového času budou do tabulky **emp** vkládat dva řádky za minutu (pro každé spuštění kanálu). 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti Blob Storage. Naučili jste se tyto postupy: 
 
 > [!div class="checklist"]

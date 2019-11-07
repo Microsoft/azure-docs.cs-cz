@@ -1,22 +1,20 @@
 ---
-title: Plán Premium pro Azure Functions (Preview) | Microsoft Docs
+title: Plán Azure Functions Premium
 description: Podrobnosti a možnosti konfigurace (virtuální síť, bez počátečního startu, neomezené trvání spuštění) pro plán Azure Functions Premium.
-services: functions
 author: jeffhollan
-manager: jeconnoc
-ms.assetid: ''
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 4/11/2019
+ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: ce83d521d5bc986be7bb24ef874f1f0e1051e3ae
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 8cda3ce85e6e7e9d5d7787406eb3b9785c1f7724
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755401"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719034"
 ---
-# <a name="azure-functions-premium-plan-preview"></a>Plán Azure Functions Premium (Preview)
+# <a name="azure-functions-premium-plan"></a>Plán Azure Functions Premium
 
 Plán Azure Functions Premium je možnost hostování pro aplikace Function App. Plán Premium poskytuje funkce, jako je připojení k virtuální síti, žádný studený start a špičkový hardware.  Do stejného plánu Premium se dá nasadit víc aplikací Function App a plán vám umožní nakonfigurovat velikost instance COMPUTE, velikost základního plánu a maximální velikost plánu.  Porovnání plánu Premium a dalších typů plánování a hostování najdete v tématu [možnosti škálování a hostování funkcí](functions-scale.md).
 
@@ -59,7 +57,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 Azure Functions nasazené do plánu Premium využívá [novou integraci virtuální sítě pro webové aplikace](../app-service/web-sites-integrate-with-vnet.md).  Když nakonfigurujete aplikaci, může komunikovat s prostředky ve vaší virtuální síti nebo zabezpečená prostřednictvím koncových bodů služby.  V aplikaci jsou k dispozici také omezení IP pro omezení příchozího provozu.
 
-Při přiřazování podsítě do aplikace Function App v plánu Premium budete potřebovat podsíť s dostatečnými IP adresami pro každou potenciální instanci. I když se maximální počet instancí může ve verzi Preview lišit, potřebujeme blok IP adres s minimálně 100 dostupnými adresami.
+Při přiřazování podsítě do aplikace Function App v plánu Premium budete potřebovat podsíť s dostatečnými IP adresami pro každou potenciální instanci. Vyžadujeme blok IP s minimálně 100 dostupnými adresami.
 
 Další informace najdete v tématu [integrace aplikace Function App s virtuální](functions-create-vnet.md)sítí.
 
@@ -71,11 +69,9 @@ Další výpočetní instance se automaticky přidají do vaší aplikace pomoc�
 
 Azure Functions v plánu spotřeby se pro jedno spuštění omezí na 10 minut.  V plánu Premium je doba běhu standardně 30 minut, aby se zabránilo provádění. Můžete ale [Upravit konfiguraci Host. JSON](./functions-host-json.md#functiontimeout) , abyste to nezajistili pro aplikace Premium Plan.
 
-Ve verzi Preview není doba trvání zaručena po dobu 12 minut a bude mít nejlepší pravděpodobnost, že bude trvat déle než 30 minut, pokud se vaše aplikace škáluje nad rámec minimálního počtu pracovních procesů.
-
 ## <a name="plan-and-sku-settings"></a>Nastavení plánu a SKU
 
-Při vytváření plánu nakonfigurujete dvě nastavení: minimální počet instancí (nebo velikost plánu) a maximální limit shlukování.  Minimální počet instancí plánu Premium je 1 a maximální nárůst v průběhu verze Preview je 20.  Minimální instance jsou rezervované a vždycky spuštěné.
+Při vytváření plánu nakonfigurujete dvě nastavení: minimální počet instancí (nebo velikost plánu) a maximální limit shlukování.  Minimální instance jsou rezervované a vždycky spuštěné.
 
 > [!IMPORTANT]
 > Za každou instanci přidělenou v minimálním počtu instancí se účtuje bez ohledu na to, jestli jsou funkce spuštěné nebo ne.
@@ -94,50 +90,47 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Při vytváření nebo škálování plánu si můžete vybrat mezi třemi velikostmi instancí.  Bude se vám účtovat celkový počet jader a využité paměti za sekundu.  Vaše aplikace se může podle potřeby automaticky škálovat na více instancí.  
 
-|Skladová položka|Jádra|Paměť|Úložiště|
+|Skladová jednotka (SKU)|Jádra|Memory (Paměť)|Storage|
 |--|--|--|--|
-|EP1|1\. místo|3,5 GB|250 GB|
+|EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
 |EP3|4|S frekvencí|250 GB|
 
 ## <a name="regions"></a>Oblasti
 
-Níže jsou uvedené aktuálně podporované oblasti pro verzi Public Preview pro každý operační systém.
+Níže jsou uvedené aktuálně podporované oblasti pro každý operační systém.
 
-|Oblast| Windows | Linux |
+|Region (Oblast)| Windows | Linux |
 |--| -- | -- |
-|Austrálie – střed| ✔ * | |
-|Austrálie – střed 2| ✔ * | |
+|Austrálie – střed| ✔<sup>1</sup> | |
+|Austrálie – střed 2| ✔<sup>1</sup> | |
 |Austrálie – východ| ✔ | |
 |Austrálie – jihovýchod | ✔ | ✔ |
-|Brazílie – jih| ✔ * * |  |
-|Kanada – střed| ✔ |  |
+|Brazílie – jih| ✔<sup>2</sup> |  |
+|Střední Kanada| ✔ |  |
 |Střední USA| ✔ |  |
 |Východní Asie| ✔ |  |
-|USA – východ | ✔ | ✔ |
+|Východ USA | ✔ | ✔ |
 |Východ USA 2| ✔ |  |
 |Francie – střed| ✔ |  |
 |Japonsko – východ| ✔ | ✔ |
 |Japonsko – západ| ✔ | |
-|Korea – střed| ✔ |  |
+|Jižní Korea – střed| ✔ |  |
 |Středoseverní USA| ✔ |  |
 |Severní Evropa| ✔ | ✔ |
 |Středojižní USA| ✔ |  |
-|Jižní Indie | ✔ | |
+|Indie – jih | ✔ | |
 |Jihovýchodní Asie| ✔ | ✔ |
-|Velká Británie – jih| ✔ | |
-|Velká Británie – západ| ✔ |  |
+|Spojené království – jih| ✔ | |
+|Spojené království – západ| ✔ |  |
 |Západní Evropa| ✔ | ✔ |
-|Západní Indie| ✔ |  |
+|Indie – západ| ✔ |  |
 |Západní USA| ✔ | ✔ |
+|Západní USA 2| ✔ |  |
 
-\* maximálního navýšení kapacity omezený na 20 instancí
+<sup>1</sup> Maximální horizontální navýšení kapacity je omezené na 20 instancí.  
+<sup>2</sup> . Maximální horizontální navýšení kapacity je omezeno na 60 instancí.
 
-\* * maximální horizontální navýšení kapacity omezený na 60 instancí
-
-## <a name="known-issues"></a>Známé problémy
-
-Stav známých problémů [veřejné verze Preview můžete sledovat na GitHubu](https://github.com/Azure/Azure-Functions/wiki/Premium-plan-known-issues).
 
 ## <a name="next-steps"></a>Další kroky
 

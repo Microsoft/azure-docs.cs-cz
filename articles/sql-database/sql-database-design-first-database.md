@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: návrh první relační databáze v Azure SQL Database s využitím SSMS | Microsoft Docs'
+title: 'Kurz: návrh první relační databáze v Azure SQL Database pomocí SSMS '
 description: Naučte se navrhovat první relační databázi v jedné databázi v Azure SQL Database pomocí SQL Server Management Studio.
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
-ms.openlocfilehash: 18e7e75b259475b9e360dc3441ed83ccb577e557
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1ea8bcd353311d0e6f666a0086f8f2f3b24b55d2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492022"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690737"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Kurz: návrh relační databáze v jedné databázi v rámci Azure SQL Database pomocí SSMS
 
@@ -35,7 +35,7 @@ Azure SQL Database je relační databáze jako služba (DBaaS) v Microsoft Cloud
 > [!NOTE]
 > Pro účely tohoto kurzu používáme samostatnou databázi. Můžete použít také databázi ve fondu v elastickém fondu nebo databázi instancí ve spravované instanci. Informace o připojení ke spravované instanci najdete v tématu rychlé starty spravovaných instancí: [rychlý Start: konfigurace virtuálního počítače Azure pro připojení k Azure SQL Database spravované instanci](sql-database-managed-instance-configure-vm.md) a [rychlé zprovoznění: Konfigurace připojení typu Point-to-site k Azure SQL Database Spravovaná instance z místního](sql-database-managed-instance-configure-p2s.md)prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro dokončení tohoto kurzu se ujistěte, že jste nainstalovali:
 
@@ -44,7 +44,7 @@ Pro dokončení tohoto kurzu se ujistěte, že jste nainstalovali:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-single-database"></a>Vytvoření prázdné jedné databáze
 
@@ -151,8 +151,8 @@ K navázání připojení k vaší izolované databázi použijte [SQL Server Ma
 
 Vytvořte schéma databáze se čtyřmi tabulkami, které modelují systém správy studentů univerzity, pomocí [Transact-SQL](/sql/t-sql/language-reference):
 
-- Osoba
-- Kurz
+- Person (Osoba)
+- Course (Kurz)
 - Student
 - Prospěch
 

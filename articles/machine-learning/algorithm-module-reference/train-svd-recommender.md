@@ -1,7 +1,7 @@
 ---
 title: 'Doporučení pro výukový SVD: odkaz na modul'
 titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul SVD, který je doporučený pro výuku ve službě Azure Machine Learning, ke školení bayesovského rozhodování doporučení pomocí algoritmu SVD.
+description: Naučte se, jak ve službě Azure Machine Learning použít modul doporučeného učení SVD, abyste mohli bayesovského rozhodování doporučit pomocí algoritmu SVD.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 3b86d77470a4f3d4fe5b005e562a8adae21f8bc7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2019b752ab224abc244e471de3d427a77f7ed93a
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515665"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716905"
 ---
 # <a name="train-svd-recommender"></a>Doporučení pro výuku SVD
 
-Tento článek popisuje, jak v Návrháři Azure Machine Learning použít modul **doporučených postupů pro vlak SVD** (Preview). Tento modul použijte k vytvoření výukového modelu doporučení založeného na algoritmu **SVD** (s jednou hodnotou dekompozice).  
+Tento článek popisuje, jak v Návrháři Azure Machine Learning použít modul doporučených postupů pro vlak SVD (Preview). Tento modul slouží ke školení modelu doporučení založeného na algoritmu dekompozice s jednou hodnotou (SVD).  
 
-Modul **doporučení SVDu pro vlaky** přečte datovou sadu trojí pro hodnocení položek. Vrátí SVD doporučení. Potom můžete pomocí vyškolený model předpovědět hodnocení nebo vygenerovat doporučení pomocí modulu [SVD doporučeného skóre](score-svd-recommender.md) .  
+Modul doporučení SVDu pro vlaky přečte datovou sadu trojí pro hodnocení položek. Vrátí SVD doporučení. Potom můžete pomocí vyškolený model předpovědět hodnocení nebo vygenerovat doporučení pomocí modulu [SVD doporučeného skóre](score-svd-recommender.md) .  
 
 
   
@@ -28,36 +28,27 @@ Modul **doporučení SVDu pro vlaky** přečte datovou sadu trojí pro hodnocen�
 
 Hlavním cílem systému doporučení je doporučit *uživatelům* systému jednu nebo více *položek* . Příkladem položky může být film, restaurace, kniha nebo písně. Uživatel může být osoba, skupina osob nebo jiná entita s preferencemi položek.  
 
-Existují dva hlavní přístupy ke doporučeným systémům. 
+Existují dva hlavní přístupy ke doporučeným systémům: 
 
-+ Prvním je přístup **založený na obsahu** , který využívá funkce pro uživatele a položky. Uživatelé mohou být popsáni pomocí vlastností, jako jsou věk a pohlaví, a položky mohou být popsány pomocí vlastností, jako je autor a výrobce. Typické příklady systémů doporučení založených na obsahu najdete na sociálních sítích Matchmaking. 
-+ Druhý přístup je **filtrování spolupráce**, které používá pouze identifikátory uživatelů a položek a získává implicitní informace o těchto entitách z matice (zhuštěného) matice hodnocení, které jsou dány uživateli k položkám. Můžeme se dozvědět o uživateli z položek, které ohodnotili, a od jiných uživatelů, kteří mají stejné položky.  
++ Přístup **založený na obsahu** využívá funkce pro uživatele i položky. Uživatelé mohou být popsáni pomocí vlastností, jako je například věk a pohlaví. Položky lze popsat pomocí vlastností, jako je autor a výrobce. Typické příklady systémů doporučení založených na obsahu najdete na sociálních sítích Matchmaking. 
++ **Filtrování spolupráce** používá pouze identifikátory uživatelů a položek. Získá implicitní informace o těchto entitách z matice (zhuštěného) matice hodnocení daných uživateli na položky. O uživateli se můžeme dozvědět z položek, které ohodnotili, a od jiných uživatelů, kteří mají stejné položky.  
 
-Doporučení SVD používá identifikátory uživatelů a položek a matice hodnocení, která jsou dána uživateli pro položky. Je to **doporučení pro spolupráci**. 
+Doporučení SVD používá identifikátory uživatelů a položek a matice hodnocení, která jsou dána uživateli pro položky. Je to *doporučení pro spolupráci*. 
 
 Další informace o doporučení SVD najdete v příslušném výzkumném dokumentu: [techniky faktoringu pro doporučované systémy](https://datajobs.com/data-science-repo/Recommender-Systems-[Netflix].pdf).
 
 
 ## <a name="how-to-configure-train-svd-recommender"></a>Postup konfigurace doporučení SVD pro vlak  
 
-+ [Příprava školicích dat](#prepare-data)
-+ [Trénování modelu](#train-the-model)
-
 ### <a name="prepare-data"></a>Příprava dat
 
-Předtím, než se pokusíte použít modul, je nezbytné, aby vaše data byla ve formátu očekávaném modelem doporučení. Je třeba zadat školicí datovou sadu se **třemi uživateli hodnocení položek** .
+Před použitím modulu musí být vstupní data ve formátu, který očekává model doporučení. Je třeba zadat školicí datovou sadu se třemi uživateli hodnocení položek.
 
-#### <a name="required-dataset-of-user-item-ratings"></a>Požadovaná datová sada – hodnocení položek uživatelů
-
-Je důležité, aby vstupní data použitá pro školení obsahovala správný typ dat ve správném formátu: 
-
-+ První sloupec musí obsahovat identifikátory uživatele.
-+ Druhý sloupec musí obsahovat identifikátory položek.
++ První sloupec obsahuje identifikátory uživatelů.
++ Druhý sloupec obsahuje identifikátory položek.
 + Třetí sloupec obsahuje hodnocení páru uživatel-položka. Hodnoty hodnocení musí být číselného typu.  
 
-                                                                                                                                                                                                           
-
-Datová sada **hodnocení restaurace** v Návrháři Azure Machine Learning (klikněte na **uložené datové sady** a pak na **ukázky**) předvádí očekávaný formát:
+Datová sada **hodnocení restaurace** v Návrháři Azure Machine Learning (výběr **uložených datových sad** a pak **ukázek**) předvádí očekávaný formát:
 
 |UserID|placeID|rating|
 |------------|-------------|------------|
@@ -68,21 +59,21 @@ Z této ukázky vidíte, že jeden uživatel má hodnocení dvou různých resta
 
 ### <a name="train-the-model"></a>Trénování modelu
 
-1.  Přidejte do kanálu modul **doporučeného učení SVD** v návrháři a připojte ho k školicím datům.  
+1.  Přidejte do kanálu modul doporučeného učení SVD v návrháři a připojte ho k školicím datům.  
    
-2.  V poli **počet faktorů**zadejte číslo určující počet faktorů, které se mají použít s doporučeným nástrojem.  
+2.  V poli **počet faktorů**určete počet faktorů, které se mají použít u doporučení.  
     
-    Každý faktor měří, kolik uživatele s položkou souvisí. Počet faktorů je také dimenzionální prostor typu latentního faktoru. S počtem zvýšení počtu uživatelů a položek je lepší nastavit větší počet faktorů. Pokud je ale příliš velký počet, může výkon snížit.
+    Každý faktor měří, kolik uživatelů se s položkou týká. Počet faktorů je také dimenzionální prostor typu latentního faktoru. S rostoucím počtem uživatelů a položek je lepší nastavit větší počet faktorů. Pokud je ale příliš velký počet, může dojít k poklesu výkonu.
     
-3.  **Počet iterací algoritmu doporučení**určuje, kolikrát by měl algoritmus zpracovat vstupní data. Čím vyšší je toto číslo, tím přesnější je předpovědi; školení je však pomalejší. Výchozí hodnota je 30.
+3.  **Počet iterací algoritmu doporučení** indikuje, kolikrát by měl algoritmus zpracovat vstupní data. Čím vyšší je toto číslo, tím přesnější je předpovědi. Vyšší číslo však znamená pomalejší školení. Výchozí hodnota je 30.
 
-4.  Do pole **rychlost učení**zadejte číslo mezi 0,0 a 2,0, které definuje velikost kroku při učení.
+4.  Do pole **rychlost učení**zadejte číslo od 0,0 do 2,0, které definuje velikost kroku pro učení.
 
-    Studijní frekvence určuje velikost kroku provedeného v každé iteraci. Pokud je velikost kroku moc velká, můžete optimální řešení vyhodnotit. Pokud je velikost kroku příliš malá, školení trvá déle, než se sblížení dostanou na nejlepší řešení. 
+    Studijní frekvence určuje velikost kroku v každé iteraci. Pokud je velikost kroku moc velká, můžete optimální řešení vyhodnotit. Pokud je velikost kroku příliš malá, školení trvá déle, než vyhledá nejlepší řešení. 
   
 5.  Spuštění kanálu  
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro službu Azure Machine Learning. 

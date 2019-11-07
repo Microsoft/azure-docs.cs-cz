@@ -1,22 +1,22 @@
 ---
-title: Přehled digitálních vláken Azure | Microsoft Docs
-description: Přečtěte si další informace o digitálních prostředcích Azure, řešení Azure IoT pro prostorové analýzy.
+title: Přehled služby Azure Digital Twins | Microsoft Docs
+description: V tomto článku najdete další informace o službě Azure Digital Twins, řešení Azure IoT pro prostorovou inteligenci.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
-ms.date: 09/17/2019
+ms.date: 11/05/2019
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 ms.custom: mvc
-ms.openlocfilehash: 2194afe4784d1b59dc5fd5628e3a9223d13f92be
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 93adf946ac630d2839f761b01a02d02f6ca92b64
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949291"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718235"
 ---
-# <a name="overview-of-azure-digital-twins"></a>Přehled digitálních vláken Azure
+# <a name="overview-of-azure-digital-twins"></a>Přehled služby Azure Digital Twins
 
 Azure Digital Preview je služba Azure IoT, která vytváří komplexní modely fyzického prostředí. Může vytvořit grafy prostorových informací pro modelování vztahů a interakcí mezi lidmi, mezerami a zařízeními.
 
@@ -43,19 +43,19 @@ Následující video se podrobněji podíváte na digitální vlákna Azure.
 
 Digitální vlákna Azure mají následující klíčové funkce.
 
-### <a name="spatial-intelligence-graph"></a>Graf prostorové Intelligence
+### <a name="spatial-intelligence-graph"></a>Graf prostorové inteligence
 
 [*Graf prostorových informací*](./concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph)nebo *prostorový graf*je virtuální reprezentace fyzického prostředí. Můžete ji použít k modelování vztahů mezi lidmi, místy a zařízeními.
 
 Vezměte v úvahu aplikaci inteligentního nástroje, která zahrnuje několik měřičů spotřeby elektřiny připojených přes okolí. Společnost inteligentního nástroje musí přesně monitorovat a předpovědět využití elektřiny a fakturace. Každé zařízení a senzor musí být modelovány s využitím kontextu umístění a zákazníka, kterému se má fakturovat. Graf prostorových informací můžete použít k modelování těchto typů komplexních vztahů.
 
-### <a name="digital-twin-object-models"></a>Digitální typy vláken objektů
+### <a name="digital-twin-object-models"></a>Objektové modely služby Digital Twins
 
 [Digitální objekty s dvojitým datovým modelem](./concepts-objectmodel-spatialgraph.md#digital-twins-object-models) jsou předdefinované protokoly zařízení a data schématu. Zarovnají a zjednodušují vývoj specifické pro doménu vašeho řešení.
 
 Například aplikace pro obsazení místnosti může používat předdefinované typy prostorů, jako jsou areály, budovy, Podlahová plocha a místnost.
 
-### <a name="multiple-and-nested-tenants"></a>Víc a vnoření klienti
+### <a name="multiple-and-nested-tenants"></a>Více tenantů a vnoření tenanti
 
 Můžete vytvářet řešení, která se budou bezpečně škálovat a je možné je znovu použít pro více tenantů. Můžete také vytvořit více tenantů, které jsou k dispozici a používány izolovaně a zabezpečeným způsobem.
 
@@ -79,7 +79,7 @@ Instanci digitálních vláken Azure můžete připojit k mnoha výkonným služ
 
 Příkladem je aplikace pro vytváření inteligentních aplikací pro Office, která používá digitální vlákna Azure k reprezentaci týmů a zařízení umístěných v mnoha podlahách. Zařízení streamují živá data do zřízené digitálního vlákna, Stream Analytics zpracovává Tato data, aby poskytovala užitečné klíčové přehledy. Data jsou uložena v Azure Storage a převedena do formátu sdíleného souboru. Soubor se distribuuje napříč celou organizací pomocí Office 365.
 
-## <a name="solutions-that-benefit-from-azure-digital-twins"></a>Řešení, která využívají výhody digitálních vláken Azure
+## <a name="solutions-that-benefit-from-azure-digital-twins"></a>Řešení, kterým služba Azure Digital Twins přináší výhody
 
 Digitální vlákna Azure je užitečné pro vyjádření fyzického světa a jeho mnoha vztahů. Zjednodušuje modelování IoT, zpracování dat, zpracování událostí a sledování zařízení. V různých oborech zvažte jenom několik následujících scénářů. Využívají k tomu tyto výhody:
 
@@ -91,9 +91,9 @@ Digitální vlákna Azure je užitečné pro vyjádření fyzického světa a je
 
 ## <a name="azure-digital-twins-in-the-context-of-other-iot-services"></a>Digitální vlákna Azure v kontextu jiných služeb IoT
 
-Azure Digital revláken využívá Azure IoT Hub k propojení zařízení IoT a senzorů, které udržují všechno aktuální s fyzickým světem. Následující diagram znázorňuje způsob, jakým se digitální vlákna Azure týkají jiných služeb Azure IoT.
+Azure Digital Twins se pomocí služby Azure IoT Hub připojuje k zařízením a senzorům IoT, které zajišťují stálou synchronizaci s fyzickým světem. Následující diagram znázorňuje způsob, jakým se digitální vlákna Azure týkají jiných služeb Azure IoT.
 
-[@no__t – digitální vlákna 1Azure je služba postavená na Azure IoT Hub](media/overview/azure-digital-twins-in-iot-ecosystem.png)](media/overview/azure-digital-twins-in-iot-ecosystem.png#lightbox)
+[![digitálních vláken Azure je služba postavená na Azure IoT Hub](media/overview/azure-digital-twins-in-iot-ecosystem.png)](media/overview/azure-digital-twins-in-iot-ecosystem.png#lightbox)
 
 Další informace o IoT najdete v tématu [technologie a řešení Azure IoT](../iot-fundamentals/iot-services-and-technologies.md).
 
@@ -107,9 +107,9 @@ Přejít na krátkou ukázku o digitálních Zdvojeních Azure:
 Prohlédněte si úzce v aplikaci pro správu zařízení pomocí digitálních vláken Azure:
 
 >[!div class="nextstepaction"]
->[Kurz: nasazení digitálních vláken Azure a konfigurace prostorového grafu](./tutorial-facilities-setup.md)
+>[Kurz: Nasazení služby Azure Digital Twins a konfigurace prostorového grafu](./tutorial-facilities-setup.md)
 
-Přečtěte si o základních konceptech digitálních vláken Azure:
+Seznamte se se základními koncepty služby Azure Digital Twins:
 
 >[!div class="nextstepaction"]
 >[Seznamte se s digitálními objekty a graf prostorové logiky](./concepts-objectmodel-spatialgraph.md)

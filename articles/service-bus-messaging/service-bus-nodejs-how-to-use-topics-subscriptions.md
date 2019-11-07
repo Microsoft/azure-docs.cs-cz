@@ -1,6 +1,6 @@
 ---
-title: Jak používat Azure Service Bus, témat a odběrů s Node.js | Dokumentace Microsoftu
-description: Zjistěte, jak používat témata a odběry Service Bus v Azure z aplikace Node.js.
+title: 'Rychlý Start: jak používat Azure Service Bus témata a odběry pomocí Node. js'
+description: 'Rychlý Start: Naučte se používat Service Bus témata a odběry v Azure z aplikace Node. js.'
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -11,52 +11,52 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
-ms.topic: article
-ms.date: 04/15/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 3dbec81237edd7cbf51e4812e83da068b9a366e0
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 40543f55dc0cb56f6bc575f926456faf2d0ae5a3
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67540997"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719202"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Postup použití služby Service Bus témata a odběry s využitím Node.js a balíčku azure-sb
-> [!div class="op_multi_selector" title1="Programovací jazyk" title2="Node.js balíčku"]
-> - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
-> - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Rychlý Start: jak používat Service Bus témata a odběry s využitím Node. js a balíčku Azure-Sb
+> [!div class="op_multi_selector" title1="Programovací jazyk" title2="Manageru balíček s Node. js"]
+> - [(Node. js | Azure-SB)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
+> - [(Node. js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
 
-V tomto kurzu se dozvíte, jak vytvářet aplikace Node.js na odesílání zpráv do tématu služby Service Bus a příjem zpráv z odběru služby Service Bus pomocí [azure-sb](https://www.npmjs.com/package/azure-sb) balíčku. Ukázky jsou napsané v jazyce JavaScript a používají na Node.js [modul Azure](https://www.npmjs.com/package/azure) , který interně používá `azure-sb` balíčku.
+V tomto kurzu se naučíte vytvářet aplikace v Node. js pro posílání zpráv do Service Bus tématu a příjem zpráv z Service Bus předplatného pomocí balíčku [Azure-SB](https://www.npmjs.com/package/azure-sb) . Ukázky jsou napsané v JavaScriptu a používají [modul Azure](https://www.npmjs.com/package/azure) Node. js, který interně používá balíček `azure-sb`.
 
-[Azure-sb](https://www.npmjs.com/package/azure-sb) balíček používá [rozhraní API REST pro Service Bus za běhu](/rest/api/servicebus/service-bus-runtime-rest). Získáte rychlejší prostředí pomocí nového [ @azure/service-bus ](https://www.npmjs.com/package/@azure/service-bus) balíček, který používá, tím rychlejší [protokolu AMQP 1.0](service-bus-amqp-overview.md). Další informace o novém balíčku najdete v tématu [jak používat témata a odběry Service Bus s využitím Node.js a @azure/service-bus balíčku](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package), v opačném případě pokračujte ve čtení se dozvíte, jak používat [azure](https://www.npmjs.com/package/azure) balíčku.
+Balíček [Azure-SB](https://www.npmjs.com/package/azure-sb) používá [Service Bus rozhraní REST runtime API](/rest/api/servicebus/service-bus-runtime-rest). Pomocí nového balíčku [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) , který používá rychlejší [Protokol AMQP 1,0](service-bus-amqp-overview.md), můžete získat rychlejší prostředí. Další informace o novém balíčku najdete v tématu [Jak používat Service Bus témata a odběry s Node. js a @azure/service-bus balíčkem](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package). v opačném případě pokračujte ve čtení a zjistěte, jak používat balíček [Azure](https://www.npmjs.com/package/azure) .
 
-Zde popsané scénáře patří:
+Zde uvedené scénáře zahrnují:
 
-- Vytváření témat a odběrů 
-- Vytváření filtrů odběrů 
+- Vytváření témat a předplatných 
+- Vytváření filtrů předplatného 
 - Odesílání zpráv do tématu 
-- Příjem zpráv z odběru
-- Odstranění témat a odběrů 
+- Příjem zpráv z předplatného
+- Odstraňování témat a předplatných 
 
-Další informace o tématech a odběrech najdete v tématu [další kroky](#next-steps) oddílu.
+Další informace o tématech a předplatných najdete v části [Další kroky](#next-steps) .
 
 ## <a name="prerequisites"></a>Požadavky
-- Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete si aktivovat váš [výhody pro předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Postupujte podle kroků v [rychlý start: Pomocí webu Azure portal k vytvoření tématu služby Service Bus a odběrů na téma](service-bus-quickstart-topics-subscriptions-portal.md) k vytvoření služby Service Bus **obor názvů** dostanete **připojovací řetězec**.
+- Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Postupujte podle kroků v [rychlém startu: použijte Azure Portal k vytvoření Service Bus tématu a odběry tématu](service-bus-quickstart-topics-subscriptions-portal.md) k vytvoření **oboru názvů** Service Bus a získání **připojovacího řetězce**.
 
     > [!NOTE]
-    > Vytvoříte **tématu** a **předplatné** do tématu pomocí **Node.js** v tomto rychlém startu. 
+    > V tomto rychlém startu vytvoříte **téma** a **předplatné** k tématu pomocí **Node. js** . 
 
 ## <a name="create-a-nodejs-application"></a>Vytvoření aplikace Node.js
-Vytvoření prázdné aplikace v Node.js. Pokyny týkající se vytvoření aplikace Node.js najdete v tématu [vytvoření a nasazení aplikace Node.js na web Azure], [cloudové služby pro Node.js][Node.js Cloud Service] pomocí Windows Powershellu nebo webu pomocí služby WebMatrix.
+Vytvořte prázdnou aplikaci Node. js. Pokyny k vytvoření aplikace Node. js najdete v tématu [Vytvoření a nasazení aplikace Node. js na web Azure], [cloudovou službu Node. js][Node.js Cloud Service] pomocí Windows PowerShellu nebo web s webmatrixem.
 
-## <a name="configure-your-application-to-use-service-bus"></a>Konfigurace aplikace pro použití služby Service Bus
-Použití služby Service Bus, stáhněte si balíček Node.js Azure. Tento balíček obsahuje sadu knihoven, které komunikují se službami REST pro Service Bus.
+## <a name="configure-your-application-to-use-service-bus"></a>Konfigurace aplikace pro použití Service Bus
+Pokud chcete použít Service Bus, Stáhněte si balíček Azure Node. js. Tento balíček obsahuje sadu knihoven, které komunikují se službou Service Bus REST.
 
-### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Získat balíček pomocí Node Package Manager (NPM)
-1. Otevřete rozhraní příkazového řádku, jako **PowerShell** (Windows), **terminálu** (Mac), nebo **Bash** (Unix).
+### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>K získání balíčku použijte Správce balíčků Node (NPM).
+1. Otevřete rozhraní příkazového řádku, jako je **PowerShell** (Windows), **terminál** (Mac) nebo **bash** (UNIX).
 2. Přejděte do složky, ve které jste vytvořili ukázkovou aplikaci.
-3. Typ **npm nainstalujte azure** v příkazovém okně, které by měl vést následující výstup:
+3. Do příkazového okna zadejte **npm instalování Azure** , které by mělo mít za následek následující výstup:
 
    ```
        azure@0.7.5 node_modules\azure
@@ -71,30 +71,30 @@ Použití služby Service Bus, stáhněte si balíček Node.js Azure. Tento bal�
    ├── xml2js@0.2.7 (sax@0.5.2)
    └── request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
    ```
-3. Můžete ručně spustit **ls** příkazu ověřte, že **uzel\_moduly** složka byla vytvořena. V takové složce najít **azure** balíček, který obsahuje knihovny, budete potřebovat přístup k témat sběrnice Service Bus.
+3. Můžete ručně spustit příkaz **ls** a ověřit tak, že se vytvořila složka **Node\_moduly** . V této složce najděte balíček **Azure** obsahující knihovny, které potřebujete pro přístup k Service Bus tématům.
 
-### <a name="import-the-module"></a>Import modulu
-Pomocí poznámkového bloku nebo jiného textového editoru, přidejte následující k hornímu okraji **server.js** souboru aplikace:
+### <a name="import-the-module"></a>Importovat modul
+Pomocí poznámkového bloku nebo jiného textového editoru přidejte do horní části souboru **Server. js** aplikace následující text:
 
 ```javascript
 var azure = require('azure');
 ```
 
-### <a name="set-up-a-service-bus-connection"></a>Nastavit připojení služby Service Bus
-Modul Azure načte proměnnou prostředí `AZURE_SERVICEBUS_CONNECTION_STRING` pro připojovací řetězec, který jste získali z předchozích kroků, "získání přihlašovacích údajů." Pokud tato proměnná prostředí není nastavená, je nutné zadat informace o účtu, při volání metody `createServiceBusService`.
+### <a name="set-up-a-service-bus-connection"></a>Nastavení Service Busho připojení
+Modul Azure přečte proměnnou prostředí `AZURE_SERVICEBUS_CONNECTION_STRING` pro připojovací řetězec, který jste získali v předchozím kroku, "získání přihlašovacích údajů". Pokud tato proměnná prostředí není nastavena, je nutné zadat informace o účtu při volání `createServiceBusService`.
 
-Příklad nastavení proměnných prostředí pro cloudové služby Azure najdete v tématu [nastavit proměnné prostředí](../container-instances/container-instances-environment-variables.md#azure-cli-example).
+Příklad nastavení proměnných prostředí pro cloudovou službu Azure najdete v tématu [nastavení proměnných prostředí](../container-instances/container-instances-environment-variables.md#azure-cli-example).
 
 
 
 ## <a name="create-a-topic"></a>Vytvoření tématu
-**ServiceBusService** objektu umožňuje pracovat s tématy. Následující kód vytvoří **ServiceBusService** objektu. Přidejte do horní části **server.js** soubor po příkazu k importu modulu azure:
+Objekt **ServiceBusService** vám umožní pracovat s tématy. Následující kód vytvoří objekt **ServiceBusService** . Přidejte ho poblíž horní části souboru **Server. js** po příkazu pro import modulu Azure:
 
 ```javascript
 var serviceBusService = azure.createServiceBusService();
 ```
 
-Při volání `createTopicIfNotExists` na **ServiceBusService** objektu zadaného tématu se vrátí (pokud existuje), nebo vytvořit nové téma se zadaným názvem. Následující kód používá `createTopicIfNotExists` vytvořit nebo připojit k tématu s názvem `MyTopic`:
+Pokud zavoláte `createTopicIfNotExists` objektu **ServiceBusService** , zadané téma se vrátí (pokud existuje), nebo se vytvoří nové téma se zadaným názvem. Následující kód používá `createTopicIfNotExists` k vytvoření nebo připojení k tématu s názvem `MyTopic`:
 
 ```javascript
 serviceBusService.createTopicIfNotExists('MyTopic',function(error){
@@ -105,9 +105,9 @@ serviceBusService.createTopicIfNotExists('MyTopic',function(error){
 });
 ```
 
-`createTopicIfNotExists` Metoda také podporuje další možnosti, které vám umožní přepsat výchozí nastavení téma například time to live zprávy nebo téma maximální velikost. 
+Metoda `createTopicIfNotExists` také podporuje další možnosti, které umožňují přepsat výchozí nastavení tématu, jako je například doba zprávy na hodnotu Live nebo maximální velikost tématu. 
 
-Následující příklad nastaví maximální počet témat velikosti 5 GB s časem TTL délce jedné minuty:
+Následující příklad nastaví maximální velikost tématu na 5 GB s časovým limitem na 1 minutu:
 
 ```javascript
 var topicOptions = {
@@ -123,37 +123,37 @@ serviceBusService.createTopicIfNotExists('MyTopic', topicOptions, function(error
 ```
 
 ### <a name="filters"></a>Filtry
-Volitelné filtrování operace lze použít u operací provedených pomocí **ServiceBusService**. Filtrování operací může zahrnovat protokolování, automatickým opakovaným pokusem o atd. Filtry jsou objekty, které implementují metodu s podpisem:
+Volitelné operace filtrování lze použít na operace prováděné pomocí **ServiceBusService**. Operace filtrování můžou zahrnovat protokolování, automatické opakování atd. Filtry jsou objekty, které implementují metodu s podpisem:
 
 ```javascript
 function handle (requestOptions, next)
 ```
 
-Po provedení předzpracování na možnosti žádosti, volá metodu `next`a předá zpětného volání s následující signaturou:
+Po provedení předběžného zpracování v možnostech žádosti metoda volá `next`a předá zpětné volání s následujícím podpisem:
 
 ```javascript
 function (returnObject, finalCallback, next)
 ```
 
-V tomto zpětném volání a po zpracování `returnObject` (odpovědi z požadavku na server), zpětného volání musí vyvolat další (pokud existuje) Chcete-li pokračovat ve zpracování další filtry, nebo vyvolat `finalCallback` k ukončení volání služby.
+V tomto zpětném volání a po zpracování `returnObject` (odpověď z požadavku na server), zpětné volání musí buď vyvolat Next (pokud existuje) pro pokračování v zpracování jiných filtrů, nebo vyvolat `finalCallback` pro ukončení volání služby.
 
-Sada Azure SDK pro Node.js obsahuje dva filtry, které implementují logiku opakování: **ExponentialRetryPolicyFilter** a **LinearRetryPolicyFilter**. Následující kód vytvoří **ServiceBusService** objekt, který se používá **ExponentialRetryPolicyFilter**:
+Sada Azure SDK pro Node.js obsahuje dva filtry, které implementují logiku opakování: **ExponentialRetryPolicyFilter** a **LinearRetryPolicyFilter**. Následující kód vytvoří objekt **ServiceBusService** , který používá **ExponentialRetryPolicyFilter**:
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
 var serviceBusService = azure.createServiceBusService().withFilter(retryOperations);
 ```
 
-## <a name="create-subscriptions"></a>Vytvořit odběry
-Odběry témat taky jsou vytvořeny pomocí **ServiceBusService** objektu. Odběry mají názvy a můžou mít volitelné filtry, který omezuje sadu doručování zpráv do virtuální fronty odběru.
+## <a name="create-subscriptions"></a>Vytvoření předplatných
+Odběry témat jsou také vytvořeny s objektem **ServiceBusService** . Odběry jsou pojmenovány a mohou mít volitelný filtr, který omezuje sadu zpráv dodaných do virtuální fronty odběru.
 
 > [!NOTE]
-> Ve výchozím nastavení, předplatná jsou trvalé až do obou nebo téma, které jsou přidružené, se odstraní. Pokud vaše aplikace obsahuje logiku pro vytvoření odběru, měli by nejdřív zkontrolovat, pokud existuje odběr s použitím `getSubscription` metody.
+> Ve výchozím nastavení jsou odběry trvalé, dokud je neodstraní ani v tématu, ke kterému jsou přidruženy. Pokud vaše aplikace obsahuje logiku pro vytvoření předplatného, měli byste nejdřív ověřit, jestli předplatné existuje, pomocí metody `getSubscription`.
 >
-> Máte předplatné odstraní automaticky podle nastavení [AutoDeleteOnIdle vlastnost](https://docs.microsoft.com/javascript/api/azure-arm-sb/sbsubscription?view=azure-node-latest#autodeleteonidle).
+> Odběry můžete nechat automaticky odstranit nastavením [vlastnosti AutoDeleteOnIdle](https://docs.microsoft.com/javascript/api/azure-arm-sb/sbsubscription?view=azure-node-latest#autodeleteonidle).
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Vytvoření odběru s výchozím filtrem (MatchAll).
-**MatchAll** filtr je výchozí filtr použitý při přihlášení k odběru. Když použijete filtr **MatchAll**, všechny zprávy publikované do tématu se umístí do virtuální fronty odběru. Následující příklad vytvoří odběr s názvem AllMessages a používá výchozí **MatchAll** filtru.
+Filtr **MatchAll** je výchozí filtr, který se používá při vytváření předplatného. Když použijete filtr **MatchAll**, všechny zprávy publikované do tématu se umístí do virtuální fronty odběru. Následující příklad vytvoří předplatné s názvem AllMessages a použije výchozí filtr **MatchAll** .
 
 ```javascript
 serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
@@ -164,18 +164,18 @@ serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
 ```
 
 ### <a name="create-subscriptions-with-filters"></a>Vytvoření odběru s filtry
-Můžete taky vytvořit filtry, které umožňují že jste do oboru, které zprávy odeslané do tématu měla zobrazit v konkrétním odběru tématu.
+Můžete také vytvořit filtry, které vám umožní určit rozsah zpráv odesílaných do tématu, které se mají zobrazit v rámci konkrétního předplatného tématu.
 
-Nejflexibilnější filtr předplatných je **SqlFilter**, která implementuje podmnožinu SQL92. Filtry SQL pracují s vlastnostmi zpráv publikované do tématu. Další informace o výrazech, které lze použít s filtrem SQL, přečtěte si [SqlFilter.SqlExpression][SqlFilter.SqlExpression] syntaxe.
+Nejpružnější typ filtru podporovaný předplatnými je **SqlFilter**, které implementuje podmnožinu SQL92. Filtry SQL pracují s vlastnostmi zpráv publikované do tématu. Další podrobnosti o výrazech, které lze použít s filtrem SQL, najdete v syntaxi [SqlFilter. syntaxi][SqlFilter.SqlExpression] .
 
-Filtry lze přidat na předplatné s použitím `createRule` metodu **ServiceBusService** objektu. Tato metoda umožňuje přidat nové filtry k existujícímu předplatnému.
+Filtry lze přidat do předplatného pomocí metody `createRule` objektu **ServiceBusService** . Tato metoda umožňuje přidat nové filtry do stávajícího předplatného.
 
 > [!NOTE]
-> Protože výchozí filtr automaticky platí pro všechna nová předplatná, musíte nejdřív odebrat výchozí filtr nebo **MatchAll** přepíše ostatní filtry, můžete zadat. Výchozí pravidla můžete odebrat pomocí `deleteRule` metodu **ServiceBusService** objektu.
+> Vzhledem k tomu, že výchozí filtr je automaticky použit pro všechna nová předplatná, musíte nejprve odebrat výchozí filtr, jinak bude **MatchAll** přepsat všechny další filtry, které můžete zadat. Výchozí pravidlo můžete odebrat pomocí metody `deleteRule` objektu **ServiceBusService** .
 >
 >
 
-Následující příklad vytvoří odběr s názvem `HighMessages` s **SqlFilter** , který vybere jen zprávy, které mají vlastní `messagenumber` vlastnost větší než 3:
+Následující příklad vytvoří odběr s názvem `HighMessages` s **SqlFilter** , který vybere pouze zprávy, které mají vlastní vlastnost `messagenumber` větší než 3:
 
 ```javascript
 serviceBusService.createSubscription('MyTopic', 'HighMessages', function (error){
@@ -210,7 +210,7 @@ var rule={
 }
 ```
 
-Obdobně následující příklad vytvoří odběr s názvem `LowMessages` s **SqlFilter** , který vybere jen zprávy, které mají `messagenumber` vlastnost menší než nebo rovna na 3:
+Podobně následující příklad vytvoří odběr s názvem `LowMessages` s **SqlFilter** , který vybere pouze zprávy, které mají vlastnost `messagenumber` menší nebo rovna 3:
 
 ```javascript
 serviceBusService.createSubscription('MyTopic', 'LowMessages', function (error){
@@ -245,14 +245,14 @@ var rule={
 }
 ```
 
-Když je teď odeslána zpráva `MyTopic`, se doručí do příjemcům `AllMessages` odběru tématu a selektivně příjemcům `HighMessages` a `LowMessages` odběry tématu (v závislosti na obsah zprávy).
+Když se zpráva pošle `MyTopic`, pošle se příjemcům, kteří se přihlásili k odběru `AllMessages` tématu, a dají se selektivně doručovat do přijímačů, kteří se přihlásili k odběru `HighMessages` a `LowMessages` předplatných témat (v závislosti na obsahu zprávy).
 
 ## <a name="how-to-send-messages-to-a-topic"></a>Postup odesílání zpráv do tématu
-Odeslat zprávu do tématu služby Service Bus, vaše aplikace musí používat `sendTopicMessage` metodu **ServiceBusService** objektu.
-Zprávy odeslané do témat Service Bus jsou **BrokeredMessage** objekty.
-**BrokeredMessage** objekty mají sadu standardních vlastností (jako například `Label` a `TimeToLive`), slovník používaný pro udržení vlastních vlastností specifické pro aplikace a tělo s daty řetězec. Aplikace může tělo zprávy nastavit předáním řetězcové hodnoty `sendTopicMessage` a veškeré požadované standardní vlastnosti jsou vyplněn výchozí hodnoty.
+Chcete-li odeslat zprávu do Service Bus téma, musí vaše aplikace používat metodu `sendTopicMessage` objektu **ServiceBusService** .
+Zprávy odeslané do Service Bus témata jsou **BrokeredMessage** objekty.
+Objekty **BrokeredMessage** mají sadu standardních vlastností (například `Label` a `TimeToLive`), slovník, který slouží k uložení vlastních vlastností specifických pro aplikaci a tělo řetězcových dat. Aplikace může nastavit tělo zprávy předáním řetězcové hodnoty `sendTopicMessage` a všechny požadované standardní vlastnosti jsou vyplněny výchozími hodnotami.
 
-Následující příklad ukazuje, jak odeslat pět zkušebních zpráv do `MyTopic`. `messagenumber` Hodnota vlastnosti každé zprávy se liší v iteraci smyčky (Tato vlastnost určuje, které odběry ji přijmou):
+Následující příklad ukazuje, jak odeslat pět testovacích zpráv do `MyTopic`. Hodnota vlastnosti `messagenumber` každé zprávy se liší v iteraci smyčky (Tato vlastnost určuje, které odběry obdrží):
 
 ```javascript
 var message = {
@@ -273,17 +273,17 @@ for (i = 0;i < 5;i++) {
 }
 ```
 
-Témata Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Hlavička, která obsahuje standardní a vlastní vlastnosti aplikace, může mít velikost až 64 KB. Neexistuje žádné omezení na počet zpráv držených v tématu, ale celková velikost zpráv držených v tématu, je omezený. Velikost tématu se definuje při vytvoření, maximální limit je 5 GB.
+Témata Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Hlavička, která obsahuje standardní a vlastní vlastnosti aplikace, může mít velikost až 64 KB. Počet zpráv držených v tématu není nijak omezený, ale celková velikost zpráv držených v tématu je omezena. Velikost tématu se definuje při vytvoření, maximální limit je 5 GB.
 
-## <a name="receive-messages-from-a-subscription"></a>Příjem zpráv z odběru
-Přijme zprávy z odběru pomocí `receiveSubscriptionMessage` metodu **ServiceBusService** objektu. Ve výchozím nastavení zprávy odstraněny z předplatného, jako jsou načteny. Však lze nastavit volitelný parametr `isPeekLock` k **true** číst (Náhled) a uzamčení zprávy bez odstranění z předplatného.
+## <a name="receive-messages-from-a-subscription"></a>Přijímání zpráv z předplatného
+Zprávy jsou přijímány z předplatného pomocí metody `receiveSubscriptionMessage` v objektu **ServiceBusService** . Ve výchozím nastavení se zprávy z předplatného odstraňují při jejich čtení. Můžete ale nastavit volitelný parametr `isPeekLock` na **hodnotu true** pro čtení (prohlížení) a uzamknutí zprávy bez jejich odstranění z předplatného.
 
-Výchozí chování pro čtení a odstranění zprávy jako součást operace receive je nejjednodušší model a funguje nejlépe v situacích, ve kterých aplikace může tolerovat možnost, není zpracování zprávy, když dojde k selhání. Informace o tom toto chování, vezměte v úvahu scénář, ve kterém spotřebitel požadavek na přijetí a poté dojde k chybě před její zpracování. Vzhledem k tomu, že Service Bus označil zprávu jako spotřebovávanou, pak když aplikace znovu spustí a začne znovu přijímat zprávy, byl vynechán zprávu, která se spotřebovala před pádem vynechá.
+Výchozím chováním při čtení a odstraňování zprávy jako součást operace Receive je nejjednodušší model a funguje nejlépe ve scénářích, ve kterých aplikace může tolerovat nezpracovávající zprávu, pokud dojde k selhání. Pro pochopení tohoto chování Vezměte v úvahu situaci, ve které spotřebitel vydá žádost o přijetí, a poté dojde k chybě před jejím zpracováním. Vzhledem k tomu, že Service Bus označila zprávu jako spotřebovaná, pak když se aplikace znovu spustí a začne znovu přijímat zprávy, vynechala zprávu, která byla spotřebována před selháním.
 
-Pokud `isPeekLock` parametr je nastaven na **true**, receive stane dvoufázová operaci, která umožňuje to podporuje aplikace, které nemůžou tolerovat chybějících zpráv. Když Service Bus přijme požadavek, najde zprávu, chcete-li využívají, uzamkne ji ostatní uživatelé z dešifrujete proti a vrátí ji do aplikace.
-Poté, co aplikace zpracovává zprávu (nebo spolehlivě uloží pro pozdější zpracování), dokončení druhé fáze přijetí voláním **deleteMessage** metoda a předá zpráva, kterou chcete odstranit jako parametr. **DeleteMessage** metoda označí zprávu jako spotřebovanou a odstraní ji z odběru.
+Pokud je parametr `isPeekLock` nastaven na **hodnotu true**, obdrží se operace se dvěma fázemi, což umožňuje podporovat aplikace, které nemůžou tolerovat zmeškané zprávy. Když Service Bus obdrží žádost, najde další zprávu, která se má použít, zamkne ji, aby zabránila tomu, aby ji ostatní příjemci přijímala a vrátila ji do aplikace.
+Poté, co aplikace zpracuje zprávu (nebo ji spolehlivě ukládá pro účely budoucího zpracování), dokončí druhou fázi procesu Receive voláním metody **deleteMessage** a předá zprávu, aby ji bylo možné odstranit jako parametr. Metoda **deleteMessage** označí zprávu jako spotřebou a odebere ji z předplatného.
 
-Následující příklad ukazuje, jak lze přijímat zprávy a zpracovaná pomocí `receiveSubscriptionMessage`. V příkladu nejprve obdrží a odstraní zprávu z předplatného "LowMessages" a pak přijme zprávu z předplatného "HighMessages" pomocí `isPeekLock` nastavenou na hodnotu true. Poté odstraní zprávu pomocí `deleteMessage`:
+Následující příklad ukazuje, jak lze přijímat a zpracovávat zprávy pomocí `receiveSubscriptionMessage`. Příklad nejprve přijme a odstraní zprávu z předplatného LowMessages a potom obdrží zprávu z předplatného HighMessages pomocí `isPeekLock` nastavenou na hodnotu true. Pak tuto zprávu odstraní pomocí `deleteMessage`:
 
 ```javascript
 serviceBusService.receiveSubscriptionMessage('MyTopic', 'LowMessages', function(error, receivedMessage){
@@ -307,14 +307,14 @@ serviceBusService.receiveSubscriptionMessage('MyTopic', 'HighMessages', { isPeek
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Zpracování pádů aplikace a nečitelných zpráv
-Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud přijímající aplikace nedokáže zpracovat zprávu z nějakého důvodu, pak může volat `unlockMessage` metodu **ServiceBusService** objektu. Tato metoda způsobí, že Service Bus zprávu odemkne v odběru a zpřístupní ji pro přijetí. V takovém případě stejnou spotřebitelskou aplikací nebo jinou spotřebitelskou aplikací.
+Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud aplikace příjemce z nějakého důvodu nemůže zprávu zpracovat, může volat metodu `unlockMessage` v objektu **ServiceBusService** . Tato metoda způsobí, že Service Bus odemkne zprávu v rámci předplatného a zpřístupní ji pro přijetí znovu. V této instanci buď stejnou spotřebou aplikace, nebo jinou spotřebou aplikace.
 
-Je také vypršení časového limitu zpráva uzamčená v odběru. Pokud se aplikaci nepodaří zprávu zpracovat, než vyprší časový limit zámku (například pokud aplikace spadne), Service Bus zprávu automaticky odemkne a ji zpřístupní k přijetí.
+K uzamčené zprávě v rámci předplatného je také přiřazen časový limit. Pokud aplikace nedokáže zpracovat zprávu před vypršením časového limitu zámku (například v případě, že aplikace selže), Service Bus automaticky odemkne zprávu a zpřístupní ji, aby byla k dispozici.
 
-V případě, že aplikace spadne po zpracování zprávy, ale předtím, než `deleteMessage` metoda je volána, zprávu je víckrát do aplikace při restartování. Toto chování se často nazývá *alespoň jedno zpracování*. To znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích může doručit víckrát. Pokud scénář nemůže tolerovat zpracování, měli byste do vaší aplikace pro zpracování víckrát doručené zprávy přidat logiku. Můžete použít **MessageId** vlastnosti zprávy, která zůstává konstantní pokusu o doručení.
+V případě, že dojde k chybě aplikace po zpracování zprávy, ale před zavoláním metody `deleteMessage`, zpráva je znovu doručena do aplikace při restartu. Toto chování se často nazývá *alespoň po zpracování*. To znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích se může stejná zpráva znovu doručovat. Pokud scénář nemůže tolerovat duplicitní zpracování, pak byste měli do aplikace přidat logiku pro zpracování duplicitního doručování zpráv. Můžete použít vlastnost **MessageID** zprávy, která zůstává v rámci pokusů o doručení konstantní.
 
 ## <a name="delete-topics-and-subscriptions"></a>Odstranění témat a odběrů
-Témata a odběry, které jsou trvalé není-li [autoDeleteOnIdle vlastnost](https://docs.microsoft.com/javascript/api/azure-arm-sb/sbsubscription?view=azure-node-latest#autodeleteonidle) nastavena a musí být explicitně odstranit prostřednictvím [webu Azure portal][Azure portal] nebo prostřednictvím kódu programu.
+Témata a odběry jsou trvalé, pokud není nastavena [vlastnost autoDeleteOnIdle](https://docs.microsoft.com/javascript/api/azure-arm-sb/sbsubscription?view=azure-node-latest#autodeleteonidle) a je nutné ji explicitně odstranit buď pomocí [Azure Portal][Azure portal] nebo programově.
 Následující příklad ukazuje, jak odstranit téma s názvem `MyTopic`:
 
 ```javascript
@@ -325,7 +325,7 @@ serviceBusService.deleteTopic('MyTopic', function (error) {
 });
 ```
 
-Pokud se odstraní téma, odstraní se i všechny odběry registrované k tomuto tématu. Odběry se taky dají odstranit samostatně. Následující příklad ukazuje, jak odstranit odběr s názvem `HighMessages` z `MyTopic` tématu:
+Pokud se odstraní téma, odstraní se i všechny odběry registrované k tomuto tématu. Odběry se taky dají odstranit samostatně. Následující příklad ukazuje, jak odstranit předplatné s názvem `HighMessages` z `MyTopic`ho tématu:
 
 ```javascript
 serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error) {
@@ -336,14 +336,14 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 ```
 
 > [!NOTE]
-> Můžete spravovat prostředky služby Service Bus s [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Exploreru umožňuje uživatelům připojit k oboru názvů služby Service Bus a správě entit pro zasílání zpráv snadno způsobem. Tento nástroj nabízí pokročilé funkce, například funkce importu/exportu nebo možnost otestovat tématu, fronty, předplatná, služby pro přenos přes, notification hubs a centra událostí. 
+> Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 
 
-## <a name="next-steps"></a>Další postup
-Teď, když jste se naučili základy témat sběrnice Service Bus, použijte tyto odkazy na další informace.
+## <a name="next-steps"></a>Další kroky
+Teď, když jste se seznámili se základy Service Bus témata, získáte další informace na následujících odkazech.
 
-* Zobrazit [fronty, témata a odběry][Queues, topics, and subscriptions].
+* Viz [fronty, témata a odběry][Queues, topics, and subscriptions].
 * Reference pro API pro [SqlFilter][SqlFilter].
-* Přejděte [sady Azure SDK for Node][Azure SDK for Node] úložišti na Githubu.
+* Navštivte [Azure SDK pro úložiště uzlů][Azure SDK for Node] na GitHubu.
 
 [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
 [Azure portal]: https://portal.azure.com
@@ -351,6 +351,6 @@ Teď, když jste se naučili základy témat sběrnice Service Bus, použijte ty
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Vytvoření a nasazení aplikace Node.js na web Azure]: ../app-service/app-service-web-get-started-nodejs.md
+[Vytvoření a nasazení aplikace Node. js na web Azure]: ../app-service/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 

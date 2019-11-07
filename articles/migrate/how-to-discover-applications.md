@@ -6,14 +6,17 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/16/2019
 ms.author: snehaa
-ms.openlocfilehash: e09c430204dea490bace029b809f25304be53a9e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 40cb73848bab97ef9030cb0c4f3f17c984a1e0ec
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512714"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715782"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Objevte aplikace pro počítače, role a funkce 
+
+> [!NOTE]
+> Pokud tuto funkci na portále Azure Migrate ještě nevidíte, počkejte prosím. Zobrazí se za příští týden.
 
 Tento článek popisuje, jak zjišťovat aplikace, role a funkce na místních serverech pomocí Azure Migrate: posouzení serveru.
 
@@ -52,7 +55,7 @@ Pokud jste po dokončení zjišťování zadali přihlašovací údaje pro zjiš
 1. V **Azure Migrate-servery** > **Azure Migrate: posouzení serveru**, kliknutím na zobrazený počet otevřete stránku **zjištěné servery** .
 
     > [!NOTE]
-    > V této fázi můžete také volitelně nastavit mapování závislostí pro zjištěné počítače, abyste mohli vizualizovat závislosti mezi počítači, které chcete vyhodnotit. [Další informace](how-to-create-group-machine-dependencies.md).
+    > V této fázi můžete také volitelně nastavit mapování závislostí pro zjištěné počítače, abyste mohli vizualizovat závislosti mezi počítači, které chcete vyhodnotit. [Další informace](how-to-create-group-machine-dependencies.md)
 
 2. V části **zjištěné aplikace**klikněte na zobrazený počet.
 3. V **inventáři aplikací**můžete zkontrolovat zjištěné aplikace, role a funkce.

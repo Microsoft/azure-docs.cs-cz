@@ -1,22 +1,22 @@
 ---
-title: Odesílání událostí služby Blob storage do webového koncového bodu – portál | Dokumentace Microsoftu
-description: Vytvořte účet úložiště objektů blob a přihlaste se k odběru jeho událostí pomocí služby Azure Event Grid a webu Azure Portal. Události odesíláte na Webhooku.
+title: 'Rychlý Start: odeslání událostí služby Blob Storage do webového koncového bodu – portál'
+description: 'Rychlý Start: pomocí Azure Event Grid a Azure Portal vytvořte účet úložiště objektů BLOB a přihlaste se k odběru jeho událostí. Odešle události do Webhooku.'
 services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 07/11/2019
+ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: a11e04a92375f5b52849257124344673301739e5
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 9ecffc25461a909d47329d536d1c19724b3c22ac
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839155"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718068"
 ---
-# <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Rychlý start: Směrování událostí služby Blob storage do webového koncového bodu pomocí webu Azure portal
+# <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Rychlý Start: směrování událostí služby Blob Storage do webového koncového bodu pomocí Azure Portal
 
 Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku pomocí webu Azure Portal vytvoříte účet úložiště objektů blob, přihlásíte se k odběru událostí tohoto úložiště objektů blob a aktivujete událost pro zobrazení výsledku. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. Pro zjednodušení tohoto článku však budete události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
@@ -102,7 +102,7 @@ Událost pro úložiště objektů blob aktivujete nahráním souboru. Soubor ne
 
 1. Přejděte k testovacímu souboru a nahrajte ho.
 
-1. Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Zpráva je uložena ve formátu JSON a obsahuje pole obsahující jeden nebo více událostí. V následujícím příkladu zpráva JSON obsahuje pole obsahující jednu událost. Zobrazte svou webovou aplikaci a všimněte si, že se přijala událost vytvoření objektu blob. 
+1. Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Zpráva je ve formátu JSON a obsahuje pole s jednou nebo více událostmi. V následujícím příkladu zpráva JSON obsahuje pole s jednou událostí. Zobrazte svou webovou aplikaci a všimněte si, že se přijala událost vytvoření objektu blob. 
 
    ```json
    [{
@@ -136,7 +136,7 @@ Pokud chcete pokračovat v práci s touto událostí, nevyčišťujte prostředk
 
 Vyberte skupinu prostředků a pak vyberte **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Když teď víte, jak vytvářet vlastní témata a odběry událostí, zjistěte, s čím vám služba Event Grid ještě může pomoct:
 

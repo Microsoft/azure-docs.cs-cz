@@ -1,7 +1,7 @@
 ---
 title: Ladit parametry modelu
 titleSuffix: Azure Machine Learning service
-description: Naučte se používat modul předparametrů ladění modelu ve službě Azure Machine Learning, aby se pro určení optimálního nastavení parametrů provádělo mazání parametrů v modelu.
+description: Naučte se používat modul předparametrů ladění modelu ve službě Azure Machine Learning k provedení parametru pro mazání parametrů v modelu, aby bylo možné určit optimální nastavení parametrů.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,74 +9,71 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 06adfe66bfe894d7b3c95e3d416da866c7d103b3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fd796297bafeb437b55eca7f38cbd7ae55e19b93
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515652"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716713"
 ---
 # <a name="tune-model-hyperparameters"></a>Ladit parametry modelu
 
-Tento článek popisuje, jak použít modul [ladění modelu ladění](tune-model-hyperparameters.md) v Návrháři Azure Machine Learning (Preview) k určení optimálních parametrů pro daný model strojového učení. Modul sestaví a testuje více modelů pomocí různých kombinací nastavení a porovnává metriky pro všechny modely a získá tak kombinaci nastavení. 
+Tento článek popisuje, jak v Návrháři Azure Machine Learning použít modul předparametrů ladit model (Preview). Cílem je určit optimální parametry pro model strojového učení. Modul vytváří a testuje více modelů pomocí různých kombinací nastavení. Porovnává metriky pro všechny modely a získá kombinace nastavení. 
 
-*Parametr* terms a *parametr* může být matoucí. *Parametry* modelu jsou ty, které jste nastavili v podokně Vlastnosti. V podstatě tento modul provádí překládání *parametrů* v rámci zadaného nastavení parametrů a učí optimální sadu _parametrů_, které se mohou lišit pro každý konkrétní rozhodovací strom, datovou sadu nebo regresi. Proces vyhledávání optimální konfigurace se někdy označuje jako *ladění*. 
+*Parametr* terms a *parametr* může být matoucí. *Parametry* modelu jsou ty, které jste nastavili v podokně Vlastnosti. V podstatě tento modul provádí v rámci zadaného nastavení parametrů *parametr Sweep* . Učí optimální sadu _parametrů_, které se mohou lišit pro každý konkrétní rozhodovací strom, datovou sadu nebo regresi. Proces vyhledávání optimální konfigurace se někdy označuje jako *ladění*. 
 
-Modul podporuje následující metodu pro nalezení optimálního nastavení modelu. 
+Modul podporuje následující metodu pro nalezení optimálního nastavení modelu: *integrovaný vlak a ladění.* V této metodě nakonfigurujete sadu parametrů, které se mají použít. Pak se modul umožní iterovat více kombinacemi. Modul měří přesnost, dokud nenajde "nejlepší" model. U většiny modulů učí se můžete rozhodnout, jaké parametry se mají změnit během procesu školení a které by měly zůstat pevné.
 
-**Integrovaná výuka a ladění**: nakonfigurujete sadu parametrů, které se mají použít, a potom nechte modul iterovat více kombinací a přesnost měření, dokud nenajde "nejlepší" model. U většiny modulů učí se můžete rozhodnout, jaké parametry se mají změnit během procesu školení a které by měly zůstat pevné.
+V závislosti na tom, jak dlouho chcete proces ladění spustit, se můžete rozhodnout, že všechny kombinace vyzkoušíte. Nebo můžete proces zkrátit tak, že vytvoříte mřížku kombinací parametrů a otestujete náhodnou podmnožinu pro mřížku parametrů.
 
-    Depending on how long you want the tuning process to run, you might decide to exhaustively test all combinations, or you could shorten the process by establishing a grid of parameter combinations and testing a randomized subset of the parameter grid.
+Tato metoda generuje školený model, který lze uložit pro opakované použití.  
 
- Tato metoda generuje školený model, který lze uložit pro opakované použití.  
-
-### <a name="related-tasks"></a>Související úlohy
-
-+ Než začnete s laděním, použijte výběr funkcí a určete sloupce nebo proměnné, které mají nejvyšší hodnotu informace.
+> [!TIP] 
+> Můžete provést související úlohu. Než začnete s laděním, použijte výběr funkcí a určete sloupce nebo proměnné, které mají nejvyšší hodnotu informace.
 
 ## <a name="how-to-configure-tune-model-hyperparameters"></a>Jak nakonfigurovat parametry modelu ladění  
 
-Obecně se naučíte, že optimální parametry pro daný model strojového učení vyžadují výrazné vytvoření kanálu.
+Výuka optimálních parametrů pro model strojového učení vyžaduje výrazné použití kanálů.
 
-### <a name="train-a-model-using-a-parameter-sweep"></a>Výuka modelu pomocí úklidu parametrů  
+### <a name="train-a-model-by-using-a-parameter-sweep"></a>Výuka modelu pomocí úklidu parametrů  
 
-Tato část popisuje, jak provést základní úklid parametrů, který navlakuje model pomocí modulu [ladění modelu předparametrů](tune-model-hyperparameters.md) .
+Tato část popisuje, jak provést základní úklid parametrů, který navlakuje model pomocí modulu ladění modelu předparametrů.
 
-1.  Do kanálu v Návrháři přidejte modul [parametry modelu ladění](tune-model-hyperparameters.md) .
+1.  Do kanálu v Návrháři přidejte modul parametry modelu ladění.
 
 2.  Připojit nevlakový model ke vstupu vlevo. 
 
-3. Nastavte možnost **vytvořit režim Trainer** na **rozsah parametrů** a pomocí **Tvůrce rozsahu** určete rozsah hodnot, které se mají použít v Sweep parametru.  
+3. Nastavte možnost **vytvořit režim Trainer** na **rozsah parametrů**. Pomocí **Tvůrce rozsahu** můžete určit rozsah hodnot, které se mají použít v intervalu mazání parametrů.  
 
-    Téměř všechny moduly klasifikace a regrese podporují režim úklidu integrovaných parametrů. Pro ty, kteří nepodporují konfiguraci rozsahu parametrů, lze testovat pouze dostupné hodnoty parametrů.
+    Téměř všechny moduly klasifikace a regrese podporují režim úklidu integrovaných parametrů. Pro ty, kteří nepodporují konfiguraci rozsahu parametrů, můžete testovat pouze dostupné hodnoty parametrů.
 
     Můžete ručně nastavit hodnotu pro jeden nebo více parametrů a potom vymezit zbývající parametry. To může nějaký čas ušetřit.
 
-4.  Přidejte datovou sadu, kterou chcete použít pro školení, a připojte ji ke střednímu vstupu [parametrů modelu ladění](tune-model-hyperparameters.md).  
+4.  Přidejte datovou sadu, kterou chcete použít pro školení, a připojte ji ke střednímu vstupu parametrů modelu ladění.  
 
     Pokud máte označenou datovou sadu, můžete ji připojit ke vstupnímu portu vpravo od sebe (**volitelná datová sada ověření**). To vám umožní měřit přesnost při výuce a ladění.
 
-5.  V podokně **vlastnosti** u [parametrů modelu ladění](tune-model-hyperparameters.md)vyberte hodnotu pro **režim mazání parametrů**. Tato možnost určuje, jak jsou vybrány parametry.
+5.  V podokně **vlastnosti** u parametrů modelu ladění vyberte hodnotu pro **režim mazání parametrů**. Tato možnost určuje, jak jsou vybrány parametry.
 
-    - **Celá mřížka**: Když vyberete tuto možnost, modul se cyklicky přeskočí do mřížky předdefinovaných systémem, aby vyzkoušel různé kombinace a identifikovala nejlepší informace. Tato možnost je užitečná v případech, kdy nevíte, co nejlepší nastavení parametrů může být a chcete vyzkoušet všechny možné kombinace hodnot.
+    - **Celá mřížka**: Když vyberete tuto možnost, modul se cyklicky přeskočí do mřížky předdefinovaných systémem, aby vyzkoušel různé kombinace a identifikovala nejlepší informace. Tato možnost je užitečná v případě, že nevíte, co nejlepší nastavení parametrů může být a chcete vyzkoušet všechny možné kombinace hodnot.
 
-    - **Náhodné čištění**: Když vyberete tuto možnost, modul náhodně vybere hodnoty parametrů v rozsahu definovaném systémem. Je nutné zadat maximální počet spuštění, které má modul spustit. Tato možnost je užitečná v případech, kdy chcete zvýšit výkon modelu pomocí metrik dle vašeho výběru, ale přesto šetřit výpočetní prostředky.
+    - **Náhodné čištění**: Když vyberete tuto možnost, modul náhodně vybere hodnoty parametrů v rozsahu definovaném systémem. Je nutné zadat maximální počet spuštění, které má modul spustit. Tato možnost je užitečná, když chcete zvýšit výkon modelu pomocí metrik dle vašeho výběru, ale přesto šetřit výpočetní prostředky.    
 
-    Pokud zvolíte náhodné shrnutí, můžete zadat **maximální počet spuštění na náhodném**vynechání, což znamená, kolikrát by měl být model vyškolený, pomocí náhodné kombinace hodnot parametrů.
+6.  V případě **sloupce popisek**Otevřete selektor sloupců a vyberte sloupec s jedním popiskem.
 
-6.  U **sloupce popisek**Otevřete selektor sloupců a vyberte sloupec s jedním popiskem.
+7.  Vyberte počet spuštění:
 
-7.  **Maximální počet spuštění na náhodném čištění**: Pokud zvolíte náhodné rozčištění, můžete určit, kolikrát by měl být model vyškolený, pomocí náhodné kombinace hodnot parametrů.
+    1. **Maximální počet spuštění na náhodném čištění**: Pokud zvolíte náhodné rozčištění, můžete určit, kolikrát by měl být model vyškolený, pomocí náhodné kombinace hodnot parametrů.
 
-    **Maximální počet spuštění v náhodné mřížce**: Tato možnost také určuje počet iterací v případě náhodného vzorkování hodnot parametrů, ale hodnoty nejsou vygenerované náhodně ze zadaného rozsahu. místo toho se vytvoří matice se všemi možnými kombinacemi hodnot parametrů a náhodným vzorkováním se vezme v matici. Tato metoda je efektivnější a méně náchylná k regionálnímu převzorkování nebo odvzorkování.
+    2. **Maximální počet spuštění v náhodné mřížce**: Tato možnost také určuje počet iterací v případě náhodného vzorkování hodnot parametrů, ale hodnoty nejsou vygenerované náhodně ze zadaného rozsahu. Namísto toho modul vytvoří matici všech možných kombinací hodnot parametrů. Pak provede náhodný výběr v rámci matice. Tato metoda je efektivnější a méně náchylná k regionálnímu převzorkování nebo odvzorkování.
 
-8.  Vyberte jednu metriku, která se použije při **seřazení** modelů.
+8.  Pro **hodnocení**vyberte jednu metriku, která se má použít pro řazení modelů.
 
-    Když spustíte mazání parametrů, vypočítávají se všechny použitelné metriky pro daný typ modelu a vrátí se do sestavy **výsledků pro Shrnutí** . Pro regresní a klasifikační modely se používají samostatné metriky.
+    Když spustíte parametr Sweep, modul vypočítá všechny použitelné metriky pro daný typ modelu a vrátí je do sestavy výsledků pro **Shrnutí** . Modul používá pro regresní a klasifikační modely samostatné metriky.
 
     Metrika, kterou zvolíte, však Určuje, jak jsou modely seřazeny. Pouze model nejvyšší úrovně, jak je zvolená metrika, je výstupem jako trained model, který se má použít pro bodování.
 
-9.  V případě **náhodného osazení**zadejte číslo, které se má použít při inicializaci mazání parametru. 
+9.  V případě **náhodného osazení**zadejte číslo, které se má použít ke spuštění čištění parametru. 
 
 10. Spuštění kanálu
 
@@ -86,73 +83,77 @@ Po dokončení školení:
 
 + Pokud chcete zobrazit sadu metrik přesnosti pro nejlepší model, klikněte pravým tlačítkem myši na modul, vyberte možnost **výsledky čištění**a pak vyberte **vizualizovat**.
 
-    Všechny metriky přesnosti použitelné pro typ modelu jsou výstup, ale metrika, kterou jste vybrali pro řazení, určuje, který model se považuje za "nejlepší".
+    Výstup obsahuje všechny metriky přesnosti, které platí pro typ modelu, ale metrika, kterou jste vybrali pro řazení, určuje, který model se považuje za "nejlepší".
 
 + Pokud chcete model použít pro bodování v jiných kanálech, aniž byste museli opakovat proces ladění, klikněte pravým tlačítkem na výstup modelu a vyberte **Uložit jako trained model**. 
 
 
 ## <a name="technical-notes"></a>Technické poznámky
 
-Tato část obsahuje podrobné informace o implementaci, tipy a odpovědi na nejčastější dotazy.
+Tato část obsahuje podrobné informace o implementaci a tipy.
 
 ### <a name="how-a-parameter-sweep-works"></a>Jak funguje úklid parametrů
 
-Tato část popisuje, jak funkce mazání parametrů funguje obecně, a jak se možnosti v tomto modulu pracují.
-
-Při nastavování parametru Sweep definujete rozsah hledání, chcete-li použít buď konečný počet parametrů, který je vybrán náhodně, nebo podrobné vyhledávání nad definovaným prostorem parametrů.
+Při nastavování parametru Sweep můžete definovat rozsah hledání. Hledání může používat konečný počet parametrů náhodně. Nebo se může jednat o důkladné vyhledávání v rámci definovaného prostoru parametru.
 
 + **Náhodné čištění**: Tato možnost nastavila model pomocí nastaveného počtu iterací. 
 
-     Zadáte rozsah hodnot, které se mají iterovat, a modul používá náhodně vybranou podmnožinu těchto hodnot.  Hodnoty se volí s náhradou, což znamená, že čísla dříve vybraná náhodně nejsou odebrána z fondu dostupných čísel. Proto možnost výběru libovolné hodnoty zůstane stejná napříč všemi průchody.  
+  Zadáte rozsah hodnot, které se mají iterovat, a modul používá náhodně vybranou podmnožinu těchto hodnot. Hodnoty se volí s náhradou, což znamená, že čísla dříve vybraná náhodně nejsou odebrána z fondu dostupných čísel. Takže možnost výběru jakékoli hodnoty zůstane v rámci všech průchodů stejná.  
 
-+ **Celá mřížka**: možnost použití celé mřížky znamená pouze to, že každá kombinace je testována. Tato možnost se dá považovat za nejdůkladnější, ale vyžaduje to nejvíce času. 
++ **Celá mřížka**: možnost použití celé mřížky znamená, že každá kombinace je testována. Tato možnost je nejdůkladnější, ale vyžaduje nejvíce času. 
 
 ### <a name="controlling-the-length-and-complexity-of-training"></a>Řízení délky a složitosti školení
 
 Iterace nad mnoha kombinacemi nastavení může být časově náročná, takže modul nabízí několik způsobů, jak omezit proces:
 
-+ Omezení počtu iterací použitých k otestování modelu
-+ Omezení prostoru parametrů
++ Omezte počet iterací použitých k otestování modelu.
++ Omezte prostor parametru.
 + Omezte počet iterací i prostor parametru.
 
 Doporučujeme vytvořit kanál s nastavením, abyste zjistili nejúčinnější způsob školení konkrétní datové sady a modelu.
 
 ### <a name="choosing-an-evaluation-metric"></a>Výběr metriky vyhodnocení
 
-Sestava obsahující přesnost pro každý model je prezentována na konci, takže můžete zkontrolovat výsledky metriky. Pro všechny binární klasifikace modelů se používá jednotná sada metrik. pro všechny modely klasifikace s více třídami se používá přesnost a pro regresní modely se používá jiná sada metrik. Během školení ale musíte zvolit **jednu** metriku, která se použije v seřazení modelů generovaných během procesu optimalizace. Může se stát, že se nejlepší metrika liší v závislosti na vašem obchodním problému a na náklady na falešně pozitivní a falešně negativní.
+Na konci testování model prezentuje sestavu, která obsahuje přesnost pro každý model, abyste mohli zkontrolovat výsledky metrik:
+
+- Pro všechny binární klasifikace modelů se používá jednotná sada metrik.
+- Pro všechny modely klasifikace s více třídami se používá přesnost.
+- Pro regresní modely se používá jiná sada metrik. 
+
+Během školení ale musíte zvolit *jednu* metriku, která se použije v seřazení modelů generovaných během procesu optimalizace. Může se stát, že se nejlepší metrika liší v závislosti na vašem obchodním problému a na náklady na falešně pozitivní a falešně negativní.
 
 #### <a name="metrics-used-for-binary-classification"></a>Metriky používané pro binární klasifikaci
 
--   **Přesnost** Poměr skutečných výsledků do celkového počtu případů.  
+-   **Přesnost** je poměr skutečných výsledků do celkového počtu případů.  
 
--   **Přesnost** Poměr skutečných výsledků k pozitivním výsledkům.  
+-   **Přesnost** je poměr skutečných výsledků k pozitivním výsledkům.  
 
--   **Odvolání** Zlomek všech správných výsledků u všech výsledků.  
+-   **Odvolání** je zlomek všech správných výsledků pro všechny výsledky.  
 
--   **Skóre F** Míra, která vyvažuje přesnost a odvolání.  
+-   **F-skore** je míra, která vyvažuje přesnost a odvolání.  
 
--   **AUC** Hodnota, která představuje oblast pod křivkou, pokud jsou na ose x vykresleny falešně pozitivní hodnoty a na ose y jsou zobrazeny kladné hodnoty.  
+-   **AUC** je hodnota, která představuje oblast pod křivkou, pokud jsou na ose x vykresleny falešně pozitivní hodnoty a na ose y jsou zobrazeny kladné hodnoty.  
 
--   **Průměrná ztráta protokolu** Rozdíl mezi dvěma distribucí pravděpodobnosti: hodnota true a ta v modelu.  
+-   **Průměrná ztráta protokolu** je rozdíl mezi dvěma distribucí pravděpodobnosti: hodnota true a ta v modelu.  
 
 #### <a name="metrics-used-for-regression"></a>Metriky používané pro regresi
 
--   **Střední absolutní chyba** vypočítá průměrnou chybu v modelu, kde chyba znamená vzdálenost předpovězené hodnoty od hodnoty true. Často se zkracuje jako **Mae**.  
+-   **Střední absolutní chyba** vypočítá průměr všech chyb v modelu, kde *Chyba* znamená vzdálenost předpovězené hodnoty od hodnoty true. Často se zkracuje jako *Mae*.  
 
--   **Kořen průměrného čtvercového chyb** měří průměr čtverců chyb a pak získá kořen této hodnoty. Často zkráceně jako **RMSE**  
+-   **Kořen průměrného čtvercového chyb** měří průměr čtverců chyb a pak získá kořen této hodnoty. Často se zkracuje jako *RMSE*.  
 
 -   **Relativní absolutní chyba** představuje chybu jako procento hodnoty true.  
 
--   **Relativní kvadratická chyba** normalizuje celkový počet kvadratických chyb tím, že vydělí celkový počet kvadratických hodnot.  
+-   **Relativní kvadratická chyba** normalizuje celkový počet kvadratických chyb tak, že se vydělí celkovými čtvercovými chybami předpokládaných hodnot.  
 
--   **Koeficient určení** Jedno číslo, které určuje, jak dobře data vyhovují modelu. Hodnota One znamená, že model přesně odpovídá datům; hodnota nula znamená, že data jsou náhodná nebo jinak nelze přizpůsobit modelu. Často se označují jako **r<sup>2</sup>** , **r<sup>2</sup>** nebo **r-kvadrát**.  
+-   **Koeficientem stanovitelnosti** je jedno číslo, které určuje, jak dobře data vyhovují modelu. Hodnota One znamená, že model přesně odpovídá datům. Hodnota nula znamená, že data jsou náhodná nebo jinak nelze přizpůsobit modelu. Často se označuje jako *r<sup>2</sup>* , *r<sup>2</sup>* nebo *r-kvadrát*.  
 
-### <a name="modules-that-do-not-support-a-parameter-sweep"></a>Moduly, které nepodporují čištění parametrů
+### <a name="modules-that-dont-support-a-parameter-sweep"></a>Moduly, které nepodporují Sweep parametrů
 
-Téměř všichni učí v Azure Machine Learning podporují křížové ověřování s integrovaným vyčištěním parametrů, které vám umožní vybrat parametry pro kanál s. Pokud se naučíte nastavit rozsah hodnot, můžete ho i nadále používat při křížovém ověřování. V tomto případě je pro oblast oblouku vybraná určitá Rozsah povolených hodnot. 
+Téměř všichni učí v Azure Machine Learning podporují křížové ověřování s integrovaným vyčištěním parametrů, které vám umožní vybrat parametry pro kanál s. Pokud se naučíte nastavit rozsah hodnot, můžete ho i nadále používat při křížovém ověřování. V tomto případě je pro oblast oblouku vybraná Rozsah povolených hodnot. 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning služby. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro službu Azure Machine Learning. 
 

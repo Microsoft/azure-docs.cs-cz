@@ -2,19 +2,19 @@
 title: 'Rychlý Start: vytvoření indexu vyhledávání v Node. js pomocí rozhraní REST API'
 titleSuffix: Azure Cognitive Search
 description: Ukázka Node. js pro Azure Kognitivní hledání, která demonstruje, jak vytvářet, načítat data a dotazovat se z JavaScriptu.
-author: lobrien
+author: HeidiSteen
 manager: nitinme
-ms.author: laobri
+ms.author: heidist
 ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 20a5af5ac7163c182ea01a9a9442d3c99614442d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8b7308b5289ba747dba90716b495ca1ba6afb209
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787432"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719984"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Node. js pomocí rozhraní REST API
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ Vytvořte aplikaci Node. js, která vytvoří, načte a dotazuje index služby A
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto rychlém startu se používají následující služby, nástroje a data.
 
@@ -50,7 +50,7 @@ Volání služby vyžaduje koncový bod adresy URL a přístupový klíč pro ka
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte název vaší vyhledávací služby. Název služby můžete potvrdit zkontrolováním adresy URL koncového bodu. Pokud se `https://mydemo.search.windows.net`adresa URL koncového bodu, bude název služby `mydemo`.
 
-2. V části **nastavení**  > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+2. V části **nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
     Získejte taky klíč dotazu. Osvědčeným postupem je vystavovat požadavky na dotazy s přístupem jen pro čtení.
 
@@ -680,7 +680,7 @@ Spusťte program s `node index.js`. Nyní se dotazy odesílají spolu s předcho
 
 Ukázka používá malé množství dat hotelového data dostačující k předvedení základních informací o vytváření a dotazování indexu služby Azure Kognitivní hledání.
 
-Třída **AzureSearchClient** zapouzdřuje konfiguraci, adresy URL a základní požadavky HTTP pro vyhledávací službu. Soubor **index. js** načte konfigurační data pro službu Azure kognitivní hledání, hotelová data, která se budou načítat pro indexování, a v nich je `run` funkce, objednávky a provede různé operace.
+Třída **AzureSearchClient** zapouzdřuje konfiguraci, adresy URL a základní požadavky HTTP pro vyhledávací službu. Soubor **index. js** načte konfigurační data pro službu Azure kognitivní hledání, hotelová data, která budou odeslána pro indexování, a ve své `run` funkce, objednávky a provede různé operace.
 
 Celkovým chováním funkce `run` je odstranit index Azure Kognitivní hledání, pokud existuje, vytvořit index, přidat nějaká data a provést některé dotazy.  
 

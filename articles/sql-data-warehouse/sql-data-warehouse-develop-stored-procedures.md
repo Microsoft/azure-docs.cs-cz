@@ -1,5 +1,5 @@
 ---
-title: Používání uložených procedur v Azure SQL Data Warehouse | Microsoft Docs
+title: Používání uložených procedur
 description: Tipy pro implementaci uložených procedur v Azure SQL Data Warehouse pro vývoj řešení.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,17 +10,18 @@ ms.subservice: development
 ms.date: 04/02/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2c12a679ed5f0a1574deb34df8c0151e737d2d01
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: e6e1144043cbbbc8124785351e1e56a776b84527
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479587"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692804"
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>Používání uložených procedur v SQL Data Warehouse
 Tipy pro implementaci uložených procedur v Azure SQL Data Warehouse pro vývoj řešení.
 
-## <a name="what-to-expect"></a>Co očekávat
+## <a name="what-to-expect"></a>Co můžete očekávat
 
 SQL Data Warehouse podporuje mnoho funkcí T-SQL, které se používají v SQL Server. Důležitější je, že existují určité funkce škálované na více instancí, které můžete použít k maximalizaci výkonu řešení.
 
@@ -63,9 +64,9 @@ GO
 EXEC prc_nesting
 ```
 
-Všimněte si, SQL Data Warehouse v současné době [nepodporuje@NESTLEVEL@](/sql/t-sql/functions/nestlevel-transact-sql). Je nutné sledovat úroveň vnoření. Je pravděpodobné, že byste překročili osm omezení na úrovni vnoření, ale pokud to uděláte, budete muset znovu pracovat svůj kód, aby odpovídal úrovním vnoření v rámci tohoto limitu.
+Všimněte si, SQL Data Warehouse v současné době nepodporuje [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql). Je nutné sledovat úroveň vnoření. Je pravděpodobné, že byste překročili osm omezení na úrovni vnoření, ale pokud to uděláte, budete muset znovu pracovat svůj kód, aby odpovídal úrovním vnoření v rámci tohoto limitu.
 
-## <a name="insertexecute"></a>VLOŽIT.. SPUSTIT
+## <a name="insertexecute"></a>Vložit.. SPUSTIT
 SQL Data Warehouse neumožňuje využívat sadu výsledků uložené procedury pomocí příkazu INSERT. Existuje však alternativní přístup, který můžete použít. Příklad najdete v článku o [dočasných tabulkách](sql-data-warehouse-tables-temporary.md). 
 
 ## <a name="limitations"></a>Omezení
@@ -79,12 +80,12 @@ Jsou to tyto:
 * Uložené procedury CLR
 * možnost šifrování
 * možnost replikace
-* parametry s hodnotou tabulky
+* Parametry s hodnotou tabulky
 * parametry jen pro čtení
 * výchozí parametry
 * kontexty spuštění
 * Return – příkaz
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další tipy pro vývoj najdete v tématu [Přehled vývoje](sql-data-warehouse-overview-develop.md).
 

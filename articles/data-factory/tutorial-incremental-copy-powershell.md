@@ -1,5 +1,5 @@
 ---
-title: Přírůstkové kopírování tabulky pomocí Azure Data Factory | Microsoft Docs
+title: 'Přírůstkové kopírování tabulky pomocí Azure Data Factory '
 description: V tomto kurzu vytvoříte kanál Azure Data Factory, který přírůstkově kopíruje data z databáze Azure SQL do úložiště Azure Blob Storage.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 604b859bc144331550db9b71e6b216e35fd2d88a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: bb1ddbddfb2e06f394ac2f57b10e18893879b51b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140611"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683343"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Přírůstkové načtení dat z databáze Azure SQL do úložiště Azure Blob Storage
 V tomto kurzu vytvoříte službu Azure Data Factory s kanálem, který načítá rozdílová data z tabulky v databázi Azure SQL do úložiště Azure Blob Storage. 
@@ -189,14 +189,14 @@ Je třeba počítat s následujícím:
     ```
 
 * Pro vytvoření instancí služby Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, členem rolí přispěvatel nebo vlastník nebo správcem předplatného Azure.
-* Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, vyberte oblasti, které vás zajímají na následující stránce, a pak rozbalte položku **Analytics** a vyhledejte **Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (služba Storage, databáze SQL atd.) a výpočetní prostředí (Azure HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+* Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (služba Storage, databáze SQL atd.) a výpočetní prostředí (Azure HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 V datové továrně vytvoříte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V této části vytvoříte propojené služby pro účet úložiště a databázi SQL. 
 
 ### <a name="create-a-storage-linked-service"></a>Vytvoření propojené služby Storage
-1. Ve složce C:\ADF vytvořte soubor JSON s názvem AzureStorageLinkedService.json s následujícím kódem. (Pokud složka ADF ještě neexistuje, vytvořte ji.) Před uložením souboru nahraďte `<accountName>` a `<accountKey>` názvem a klíčem vašeho účtu úložiště.
+1. Ve složce C:\ADF vytvořte soubor JSON s názvem AzureStorageLinkedService.json s následujícím kódem. (Pokud ještě neexistuje, vytvořte si ADF složky.) Než soubor uložíte, nahraďte `<accountName>` a `<accountKey>` název a klíč účtu úložiště.
 
     ```json
     {
@@ -220,7 +220,7 @@ V datové továrně vytvoříte propojené služby, abyste svá úložiště da
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     LinkedServiceName : AzureStorageLinkedService
@@ -230,7 +230,7 @@ V datové továrně vytvoříte propojené služby, abyste svá úložiště da
     ```
 
 ### <a name="create-a-sql-database-linked-service"></a>Vytvoření propojené služby databáze SQL
-1. Ve složce C:\ADF vytvořte soubor JSON s názvem AzureSQLDatabaseLinkedService.json s následujícím kódem. (Pokud složka ADF ještě neexistuje, vytvořte ji.) Než soubor uložíte, položky &lt;server&gt;, &lt;database&gt;, &lt;user id&gt; a &lt;password&gt; nahraďte názvem vašeho serveru, databází, ID uživatele a heslem. 
+1. Ve složce C:\ADF vytvořte soubor JSON s názvem AzureSQLDatabaseLinkedService.json s následujícím kódem. (Pokud ještě neexistuje, vytvořte si ADF složky.) Než soubor uložíte, nahraďte &lt;Server&gt;, &lt;&gt;databáze, &lt;ID uživatele&gt;a &lt;hesla&gt; s názvem vašeho serveru, databáze, ID uživatele a heslem. 
 
     ```json
     {
@@ -254,7 +254,7 @@ V datové továrně vytvoříte propojené služby, abyste svá úložiště da
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     LinkedServiceName : AzureSQLDatabaseLinkedService
@@ -506,7 +506,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
    ``` 
 
-   Tady je ukázkový výstup: 
+   Zde je ukázkový výstup: 
 
    ```json
     PipelineName      : IncrementalCopyPipeline
@@ -529,7 +529,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
  
     ```json
     ResourceGroupName : ADF
@@ -607,7 +607,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     Select * from watermarktable
     ```
     
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
  
     TableName | WatermarkValue
     --------- | --------------
@@ -649,7 +649,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
  
     ```json
     ResourceGroupName : ADF

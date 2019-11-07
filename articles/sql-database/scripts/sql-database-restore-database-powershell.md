@@ -1,5 +1,5 @@
 ---
-title: Příklad PowerShellu – Obnovení databáze Azure SQL ze zálohy | Microsoft Docs
+title: Příklad PowerShellu – obnovení zálohy – Azure SQL Database
 description: Azure PowerShell ukázkový skript pro obnovení databáze Azure SQL, která je starším bodem v čase, z automatického zálohování
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
-ms.openlocfilehash: 8a34e2607a957f9af3756818bce9b2dd77541e85
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: da4236e138bd75237ca10b85dc1586fecd1cece4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569850"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691548"
 ---
 # <a name="use-powershell-to-restore-an-azure-sql-single-database-to-an-earlier-point-in-time"></a>Použití PowerShellu k obnovení izolované databáze SQL Azure do dřívějšího bodu v čase
 
@@ -50,12 +50,12 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří server SQL Database, který hostuje jednu databázi nebo elastický fond. |
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Vytvoří databázi na serveru SQL Database jako samostatnou databázi nebo databázi ve fondu. |
 [Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup) | Získá geograficky redundantní zálohu samostatné nebo sdružené databáze. |
-| [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) | Obnoví databázi SQL samostatně nebo ve fondu. |
+| [Obnovit – AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) | Obnoví databázi SQL samostatně nebo ve fondu. |
 |[Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase) | Odebere samostatnou databázi SQL Azure nebo databázi ve fondu. |
 | [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) | Načte odstraněnou samostatnou databázi nebo databázi ve fondu, kterou můžete obnovit. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

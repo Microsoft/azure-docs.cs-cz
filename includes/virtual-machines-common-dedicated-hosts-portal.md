@@ -9,11 +9,11 @@ ms.date: 07/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 262880997c6b065dc5293a18d9a07c52ac836f37
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68703045"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73590574"
 ---
 > [!IMPORTANT]
 > Vyhrazené hostitele Azure jsou momentálně ve verzi Public Preview.

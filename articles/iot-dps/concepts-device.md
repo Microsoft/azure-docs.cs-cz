@@ -3,17 +3,17 @@ title: Koncepty zařízení v Azure Device Provisioning | Microsoft Docs
 description: Popisuje koncepty zřizování zařízení, které jsou specifické pro zařízení se službou Device Provisioning a IoT Hub
 author: nberdy
 ms.author: nberdy
-ms.date: 04/04/2019
+ms.date: 11/06/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: dc4ffc4965d6a3c05693c7566a2c51538584f372
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 0e3557588281cd392a7a8a1c2654f10e8387dd83
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72897589"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720531"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>IoT Hub Device Provisioning Service koncepty zařízení
 
@@ -51,7 +51,7 @@ ID registrace slouží k jednoznačné identifikaci zařízení ve službě Devi
 
 ## <a name="device-id"></a>ID zařízení
 
-ID zařízení je ID tak, jak se zobrazuje v IoT Hub. V položce registrace může být nastaveno požadované ID zařízení, není však nutné jej nastavit. Pokud v seznamu registrací není požadované ID zařízení, jako ID zařízení se při registraci zařízení použije ID registrace. Přečtěte si další informace o [ID zařízení v IoT Hub](../iot-hub/iot-hub-devguide-identity-registry.md).
+ID zařízení je ID tak, jak se zobrazuje v IoT Hub. V položce registrace může být nastaveno požadované ID zařízení, není však nutné jej nastavit. Nastavení požadovaného ID zařízení se podporuje jenom v jednotlivých registrech. Pokud v seznamu registrací není požadované ID zařízení, jako ID zařízení se při registraci zařízení použije ID registrace. Přečtěte si další informace o [ID zařízení v IoT Hub](../iot-hub/iot-hub-devguide-identity-registry.md).
 
 ## <a name="id-scope"></a>Rozsah ID
 

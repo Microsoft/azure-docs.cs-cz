@@ -1,5 +1,5 @@
 ---
-title: Přiřadit proměnné v Azure SQL Data Warehouse | Microsoft Docs
+title: Přiřadit proměnné
 description: Tipy pro přiřazování proměnných T-SQL v Azure SQL Data Warehouse pro vývoj řešení.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 6c943478f3904aac17a572f012f2b2b69ffa2223
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 1ae5285a8d1cf6fa391c082d0196b213e6b6a9c5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479548"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692757"
 ---
 # <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Přiřazování proměnných v Azure SQL Data Warehouse
 
@@ -23,7 +24,7 @@ Tipy pro přiřazování proměnných T-SQL v Azure SQL Data Warehouse pro vývo
 
 ## <a name="setting-variables-with-declare"></a>Nastavení proměnných pomocí deklarace
 
-Proměnné v SQL Data Warehouse jsou nastaveny pomocí `DECLARE` příkazu `SET` nebo příkazu. Inicializace proměnných pomocí příkazu DECLARE je jedním z nejpružnější způsobů, jak nastavit hodnotu proměnné v SQL Data Warehouse.
+Proměnné v SQL Data Warehouse jsou nastaveny pomocí příkazu `DECLARE` nebo příkazu `SET`. Inicializace proměnných pomocí příkazu DECLARE je jedním z nejpružnější způsobů, jak nastavit hodnotu proměnné v SQL Data Warehouse.
 
 ```sql
 DECLARE @v  int = 0
@@ -38,7 +39,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-Nelze inicializovat a používat proměnnou v rámci stejného příkazu DECLARE. Pro ilustraci tohoto bodu **není povolen následující** příklad, protože @p1 je inicializován i použit ve stejném příkazu Declare. Následující příklad obsahuje chybu.
+Nelze inicializovat a používat proměnnou v rámci stejného příkazu DECLARE. Pro ilustraci tohoto bodu **není povolen následující** příklad, protože @p1 je inicializován a použit ve stejném příkazu Declare. Následující příklad obsahuje chybu.
 
 ```sql
 DECLARE @p1 int = 0
@@ -65,6 +66,6 @@ Současně lze nastavit pouze jednu proměnnou. Jsou však přípustné složen�
 
 Nejde použít UPDATE pro přiřazení proměnné.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další tipy pro vývoj najdete v tématu [Přehled vývoje](sql-data-warehouse-overview-develop.md).

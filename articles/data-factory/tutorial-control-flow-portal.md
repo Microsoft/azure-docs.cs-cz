@@ -1,5 +1,5 @@
 ---
-title: Větvení v kanálu Azure Data Factory | Dokumentace Microsoftu
+title: 'Větvení v kanálu Azure Data Factory '
 description: Zjistěte, jak řídit tok dat v Azure Data Factory prostřednictvím větvení a řetězení aktivit.
 services: data-factory
 documentationcenter: ''
@@ -11,17 +11,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/11/2018
-ms.openlocfilehash: d8e4c17307b35295f37f1f84db912d04ca625b6a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: aada9d02c624785750c3064b7ca31a863d4080c1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140912"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683825"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
 V tomto kurzu vytvoříte kanál služby Data Factory, který prezentuje některé funkce řízení toku. Tento kanál provádí jednoduché kopírování z kontejneru ve službě Azure Blob Storage do jiného kontejneru ve stejném účtu úložiště. Pokud aktivita kopírování proběhne úspěšně, kanál odešle podrobnosti o úspěšném kopírování (jako je například množství zapsaných dat) v e-mailu informujícím o úspěchu. Pokud aktivita kopírování selže, kanál odešle podrobnosti o neúspěšném kopírování (jako je například chybová zpráva) v e-mailu informujícím o selhání. V rámci tohoto kurzu se dozvíte, jak předávat parametry.
 
-Podrobný přehled scénáře: ![Přehled](media/tutorial-control-flow-portal/overview.png)
+Základní schéma tohoto scénáře: ![Přehled](media/tutorial-control-flow-portal/overview.png)
 
 V tomto kurzu provedete následující kroky:
 
@@ -145,15 +145,15 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
          
         Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
 4. Jako **verzi** vyberte **V2**.
-5. Vyberte **umístění** pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+5. Vyberte **umístění** pro objekt pro vytváření dat. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 6. Zaškrtněte **Připnout na řídicí panel**.     
-7. Klikněte na možnost **Vytvořit**.      
-8. Na řídicím panelu se zobrazí následující dlaždice se stavem: **Nasazuje se objekt pro vytváření dat**. 
+7. Klikněte na **Vytvořit**.      
+8. Na řídicím panelu vidíte následující dlaždice se statusem: **Nasazování datové továrny**. 
 
     ![nasazování dlaždice datové továrny](media/tutorial-control-flow-portal/deploying-data-factory.png)
 9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
    
-   ![Domovská stránka datové továrny](./media/tutorial-control-flow-portal/data-factory-home-page.png)
+   ![Domovská stránka objektu pro vytváření dat](./media/tutorial-control-flow-portal/data-factory-home-page.png)
 10. Kliknutím na dlaždici **Vytvořit a monitorovat** otevřete na samostatné kartě uživatelské rozhraní služby Azure Data Factory.
 
 
@@ -308,7 +308,7 @@ V tomto kroku vytvoříte kanál s jednou aktivitou kopírování a dvěma aktiv
     1. Jako hodnotu parametru **sourceBlobContainer** zadejte **adftutorial/dummy/input**. Ujistěte se, že v kontejneru adftutorial neexistuje složka dummy. 
     2. Jako hodnotu parametru **sinkBlobContainer** zadejte **adftutorial/dummy/output**. 
     3. Zadejte **e-mailovou adresu** **příjemce**. 
-    4. Klikněte na tlačítko **Dokončit**.
+    4. Klikněte na **Dokončit**.
 
 ## <a name="monitor-the-failed-pipeline-run"></a>Monitorování neúspěšného spuštění kanálu
 
@@ -325,7 +325,7 @@ V tomto kroku vytvoříte kanál s jednou aktivitou kopírování a dvěma aktiv
 
     ![Chyba spuštění aktivit](./media/tutorial-control-flow-portal/activity-run-error.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste provedli následující kroky: 
 
 > [!div class="checklist"]

@@ -1,18 +1,18 @@
 ---
 title: Automatizace úloh Azure Analysis Services s instančními objekty | Microsoft Docs
-description: Naučte se vytvářet instanční objekty pro automatizaci Azure Analysis Services úloh.
+description: Naučte se, jak vytvořit instanční objekt pro automatizaci Azure Analysis Services úloh správy.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a590590faa422d47306e697a7c90bb635ea8c6e9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5078fcc1ba5c581aca475025b286d0319d6024a6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146357"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572606"
 ---
 # <a name="automation-with-service-principals"></a>Automatizace s využitím instančních objektů
 
@@ -92,9 +92,9 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO a ADOMD 
 
-Při připojování k klientským aplikacím a webovým aplikacím můžou [klientské knihovny AMO a ADOMD](analysis-services-data-providers.md) verze 15.0.2 a rychlejší instalovat balíčky z NuGet podporovat objekty služby v připojovacích řetězcích pomocí následující syntaxe: `app:AppID` a heslo nebo @no__ t-2. 
+Když se připojujete ke klientským aplikacím a webovým aplikacím, verze 15.0.2 [klienta AMO a ADOMD](analysis-services-data-providers.md) verze a vyšší instalovatelný balíček z NuGet podporuje instanční objekty v připojovacích řetězcích pomocí následující syntaxe: `app:AppID` a heslo nebo @no_ _t_2_ .`cert:thumbprint` 
 
-V následujícím příkladu se k provedení operace aktualizace databáze modelu používá `appID` a `password`:
+V následujícím příkladu `appID` a `password` slouží k provedení operace aktualizace databáze modelu:
 
 ```csharp
 string appId = "xxx";

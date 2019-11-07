@@ -1,5 +1,5 @@
 ---
-title: Osvědčené postupy vývoje pro Azure SQL Data Warehouse | Microsoft Docs
+title: Osvědčené postupy vývoje
 description: Doporučení a osvědčené postupy, které byste měli znát, když budete vyvíjet řešení pro službu Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2debe9000cb60d4dea7395181dfb783fe26586f1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 3a75be7eef69acb499222b39bc4f59962462b493
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499846"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685894"
 ---
 # <a name="development-best-practices-for-azure-sql-data-warehouse"></a>Osvědčené postupy vývoje pro Azure SQL Data Warehouse
 Tento článek popisuje doprovodné materiály a osvědčené postupy při vývoji řešení datového skladu. 

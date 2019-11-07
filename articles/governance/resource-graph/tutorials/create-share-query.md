@@ -1,43 +1,43 @@
 ---
-title: Vytvoření a sdílení dotazu v Azure Portal
+title: Vytvoření a sdílení dotazu na webu Azure Portal
 description: V tomto kurzu se naučíte vytvořit dotaz na diagram prostředku a sdílet ho s ostatními v Azure Portal.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: resource-graph
-ms.openlocfilehash: 10f93f34923fb2399a4b2053167576ba004ae467
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: e49cff5a9b9b2c8841b6cc685d4778688c214d26
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821680"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622490"
 ---
-# <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-azure-portal"></a>Kurz: vytvoření a sdílení dotazu na graf Azure Resource v Azure Portal
+# <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Kurz: vytvoření a sdílení dotazu na graf Azure Resource v Azure Portal
 
-Průzkumník prostředků Azure umožňuje ukládat dotazy na prostředky grafu přímo do Azure Portal. Existují dva typy dotazů, _Private_ a _Shared_. _Privátní_ dotaz je uložený v nastaveních Azure Portal, ale _sdílený_ dotaz je prostředek správce prostředků, který se dá spravovat pomocí řízení přístupu na základě role (RBAC) a chráněný pomocí zámků prostředků.
+Průzkumník prostředků Azure vám umožňuje uložit dotazy na zdrojové grafy přímo do Azure Portal. Existují dva typy dotazů: _Private_ a _Shared_. Privátní dotaz je uložený v nastaveních Azure Portal. Vzhledem k tomu, že sdílený dotaz je Správce prostředků prostředek, který je možné spravovat pomocí řízení přístupu na základě role (RBAC) a chráněný pomocí zámků prostředků.
 
-Ukládání dotazů v Azure Portal šetří čas strávený hledáním vašich oblíbených nebo běžně používaných dotazů. Při sdílení dotazů povolíte, aby byl váš tým konzistentní a možné ho opakovat. V tomto kurzu provedete tyto kroky:
+Uložením dotazů v Azure Portal ušetříte čas, který byste jinak strávili hledáním oblíbených nebo běžně používaných dotazů. Když sdílíte dotazy, pomůžete týmu realizovat cíle konzistence a efektivity prostřednictvím opakování.
+
+V tomto kurzu provedete následující úlohy:
 
 > [!div class="checklist"]
-> - Vytvoření a odstranění _privátního_ dotazu
-> - Vytvořit _sdílený_ dotaz
-> - Zjistit _sdílené_ dotazy
-> - Odstranit _sdílený_ dotaz
+> - Vytvoření a odstranění privátního dotazu
+> - Vytvořit sdílený dotaz
+> - Zjistit sdílené dotazy
+> - Odstranit sdílený dotaz
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+K dokončení tohoto kurzu potřebujete předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="create-and-delete-a-private-query"></a>Vytvoření a odstranění privátního dotazu
 
-_Soukromé_ dotazy jsou přístupné nebo viditelné pouze účtu, který je vytváří. Protože se ukládají do nastavení Azure Portal účtu, dají se vytvářet, používat a odstraňovat jenom v rámci Azure Portal. _Privátní_ dotaz není správce prostředků prostředek. Vytvořte nový _privátní_ dotaz pomocí následujících kroků:
+Soukromé dotazy jsou přístupné a viditelné pouze pro účet, který je vytvoří. Protože jsou uložené v nastavení Azure Portal účtu, dají se vytvořit, používat a odstranit pouze v rámci Azure Portal. Privátní dotaz není Správce prostředků prostředek. Chcete-li vytvořit nový privátní dotaz, použijte následující postup:
 
-1. V nabídce portálu vyberte všechny služby nebo použijte pole Azure Search v horní části všech stránek.
-   Vyhledejte a vyberte "Průzkumník grafů prostředků".
+1. V nabídce portálu vyberte **všechny služby** nebo použijte pole Azure Search v horní části všech stránek. Vyhledejte a vyberte **Průzkumník diagramů prostředků**.
 
-1. Na kartě dotaz 1 na stránce Průzkumník Azure Resource Graph zadejte následující dotaz. Informace o tomto dotazu najdete v tématu [virtuální počítače s počtem vzorků podle typu operačního systému](../samples/starter.md#count-virtual-machines-by-os-type).
-   Pokud chcete zobrazit výsledky dotazu v dolním podokně, vyberte **Spustit dotaz** .
+1. Na kartě **dotaz 1** na stránce Průzkumník Azure Resource Graph zadejte následující dotaz:
 
    ```kusto
    Resources
@@ -45,79 +45,94 @@ _Soukromé_ dotazy jsou přístupné nebo viditelné pouze účtu, který je vyt
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 
-1. Vyberte **Uložit** nebo **Uložit jako**, zadejte _název_ jako počet virtuálních počítačů podle OS, ponechte _typ_ jako privátní dotaz a potom v dolní části podokna _Uložit dotaz_ vyberte **Uložit** . Název karty se změní z hodnoty Query 1 na počet virtuálních počítačů podle operačního systému.
+   Výběrem **Spustit dotaz** zobrazíte výsledky dotazu v dolním podokně.
 
-1. Procházejte z Průzkumníka Azure Resource graphu v Azure Portal a pak se do něj vraťte. Uložený dotaz již není zobrazen a karta dotaz 1 byla vrácena.
+   Další informace o tomto dotazu najdete v tématu [ukázky – počet virtuálních počítačů podle typu operačního systému](../samples/starter.md#count-virtual-machines-by-os-type).
 
-1. Vyberte **Otevřít dotaz**. Ověřte, zda je _typ_ "privátní dotaz". Uložený počet virtuálních počítačů podle OS se nyní zobrazí v seznamu _název dotazu_ . Vyberte odkaz na název uloženého dotazu, který se načte na novou kartu s názvem dotazu.
 
-   > [!NOTE]
-   > Když je uložený dotaz otevřený a na kartě se zobrazí jeho _název_, tlačítko **Uložit** ho aktualizuje pomocí všech provedených změn. Chcete-li vytvořit nový uložený dotaz, použijte příkaz **Uložit jako** a postupujte podle kroků, jako by se jednalo o nově uložený dotaz typu Brand.
+1. Vyberte **Uložit** nebo **Uložit jako**, jako název zadejte **počet virtuálních počítačů podle operačního systému** , ponechte typ jako **soukromý dotaz**a potom v dolní části podokna **Uložit dotaz** vyberte **Uložit** . Název karty se změní z **dotazu 1** na **počet virtuálních počítačů podle operačního systému**.
 
-1. Chcete-li odstranit uložený dotaz, vyberte znovu **Otevřít dotaz** a ověřte, zda je _typ_ "privátní dotaz". Na řádku dotazu počet uložených virtuálních počítačů podle OS vyberte ikonu odpadkový koš. Kliknutím na **tlačítko Ano** v potvrzovacím dialogovém okně dokončete odstranění dotazu. Pak zavřete podokno _dotazu_ .
+1. Přesuňte se z Průzkumníka grafu prostředků Azure do Azure Portal a vraťte se k němu. Všimněte si, že uložený dotaz již není zobrazen a karta **dotazu 1** vrátila hodnotu.
+
+1. Vyberte **Otevřít dotaz**. Ujistěte se, že typ je **privátní dotaz**. **Počet uložených virtuálních počítačů podle operačního systému** se nyní zobrazí v seznamu **název dotazu** . Když vyberete odkaz na název uloženého dotazu, načte se na novou kartu s názvem tohoto dotazu.
+
+   > [!NOTE] 
+   >Když je uložený dotaz otevřený a na kartě se zobrazuje jeho název, výběr tlačítka **Uložit** se aktualizuje změnami, které byly provedeny. Pokud chcete vytvořit nový uložený dotaz z tohoto otevřeného dotazu, vyberte **Uložit jako** a pokračujte, jako kdybyste ušetřili nový dotaz značky.
+
+1. Chcete-li odstranit uložený dotaz, vyberte znovu **Otevřít dotaz** a ověřte, zda je pole **typ** nastaveno na možnost **privátní dotaz**. Na řádku uloženého `Count VMs by OS` dotazu vyberte **Odstranit** (ikona odpadkového koše). Kliknutím na **tlačítko Ano** v potvrzovacím dialogovém okně dokončete odstranění dotazu.
+   Pak zavřete podokno **dotazu** .
 
 ## <a name="create-a-shared-query"></a>Vytvořit sdílený dotaz
 
-Na rozdíl od _privátního_ dotazu je _sdílený_ dotaz správce prostředkůým prostředkem. Tato skutečnost znamená, že se dotaz uložil do skupiny prostředků, dá se spravovat a řídit pomocí RBAC a dokonce i chráněný pomocí zámků prostředků. Jako prostředek může zobrazit a používat kdokoli s příslušnými oprávněními. Pomocí následujících kroků vytvořte nový _sdílený_ dotaz:
+Na rozdíl od privátního dotazu je sdílený dotaz Správce prostředkůým prostředkem. Tato skutečnost znamená, že dotaz se uložil do skupiny prostředků, dá se spravovat a řídit pomocí RBAC a může se dokonce chránit pomocí zámků prostředků. Jako prostředek může zobrazit a používat kdokoli, kdo má příslušná oprávnění.
+Chcete-li vytvořit nový sdílený dotaz, postupujte podle následujících kroků:
 
-1. V nabídce portálu vyberte všechny služby nebo použijte pole Azure Search v horní části všech stránek.
-   Vyhledejte a vyberte "Průzkumník grafů prostředků".
+1. V nabídce portálu vyberte **všechny služby**, nebo pomocí pole Azure Search v horní části všech stránek vyhledejte a vyberte **Průzkumník diagramů prostředků**.
 
-1. Na kartě dotaz 1 na stránce Průzkumník Azure Resource Graph zadejte následující dotaz. Informace o tomto dotazu najdete v tématu [virtuální počítače s počtem vzorků podle typu operačního systému](../samples/starter.md#count-virtual-machines-by-os-type).
-   Výběrem **Spustit dotaz** zobrazíte výsledky dotazu v dolním podokně.
+1. Na kartě **dotaz 1** na stránce Průzkumník Azure Resource Graph zadejte následující dotaz:
 
    ```kusto
    Resources
    | where type =~ 'Microsoft.Compute/virtualMachines'
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
+    
+   Výběrem **Spustit dotaz** zobrazíte výsledky dotazu v dolním podokně.
+
+   Další informace o tomto dotazu najdete v tématu [ukázky – počet virtuálních počítačů podle typu operačního systému](../samples/starter.md#count-virtual-machines-by-os-type).
 
 1. Vyberte **Uložit** nebo **Uložit jako**.
 
+   
    ![Uložte nový dotaz pomocí tlačítka Uložit.](../media/create-share-query/save-shared-query-buttons.png)
 
-1. V podokně _Uložit dotaz_ zadejte _název_ jako počet virtuálních počítačů podle OS, změňte _typ_ na Shared Query, nastavte _Popis_ na počet virtuálních počítačů podle typu operačního systému a vyberte _předplatné_ , ve kterém se prostředek dotazu vytvoří. Ponechte zaškrtnuté políčko Publikovat do skupiny prostředků – dotazy na skupinu prostředků a _umístění skupiny prostředků_ nastavte na (US) středozápadní USA. V dolní části podokna _Uložit dotaz_ vyberte **Save (Uložit** ). Název karty se změní z hodnoty Query 1 na počet virtuálních počítačů podle operačního systému. Při prvním použití skupiny prostředků "Resource-Graph-dotazů" bude uložení trvat déle, než se vytvoří skupina prostředků.
+1. V podokně **Uložit dotaz** zadejte **počet virtuálních počítačů podle operačního systému** pro název.
 
+1. Změňte typ na **Shared Query**, nastavte popis na **počet virtuálních počítačů podle typu operačního systému**a nastavte **předplatné** tak, aby určovalo vytvoření prostředku dotazu.
+
+1. Nechejte zaškrtnuté políčko **publikovat do skupiny prostředků dotazy Resource-Graph-** a **umístění skupiny prostředků** nastavené na **(US) středozápadní USA**.
+
+1. V dolní části podokna **Uložit dotaz** vyberte **Save (Uložit** ). Název karty se změní z **dotazu 1** na **počet virtuálních počítačů podle operačního systému**. Při prvním použití skupiny prostředků **dotazování prostředků Resource-Graph** trvá uložení déle, než se očekávalo, protože se vytvořila skupina prostředků.
+   
    ![Uložit nový dotaz jako sdílený dotaz](../media/create-share-query/save-shared-query-window.png)
 
-   > [!NOTE]
-   > V případě potřeby odeberte kontrolu a zadejte název existující skupiny prostředků, do které se uloží sdílený dotaz. Použití výchozí pojmenované skupiny prostředků pro dotazy usnadňuje zjišťování _sdílených_ dotazů. Tím se také zřetelně vylepší účel této skupiny prostředků. Výběr existující skupiny prostředků se ale může provést z důvodů zabezpečení na základě stávajících oprávnění.
+   > [!NOTE] 
+   > Pokud chcete zadat název existující skupiny prostředků, do které se uloží sdílený dotaz, můžete zrušit zaškrtnutí políčka **publikovat do skupiny prostředků dotazy Resource-Query-Query-** Query. Použití výchozí pojmenované skupiny prostředků pro dotazy usnadňuje zjišťování sdílených dotazů. Tím se také poukáže účel této skupiny prostředků. Můžete se ale rozhodnout vybrat existující skupinu prostředků z důvodů zabezpečení na základě stávajících oprávnění.
 
-1. Procházejte z Průzkumníka Azure Resource graphu v Azure Portal a pak se do něj vraťte. Uložený dotaz již není zobrazen a karta dotaz 1 byla vrácena.
+1. Přesuňte se z Průzkumníka grafu prostředků Azure do Azure Portal a vraťte se k němu. Všimněte si, že uložený dotaz již není zobrazen a karta **dotazu 1** vrátila hodnotu.
 
-1. Vyberte **Otevřít dotaz**. Ověřte, že _typ_ je "Shared Query" a kombinace _předplatného_ a _skupiny prostředků_ odpovídá umístění, kam jste dotaz uložili. Uložený počet virtuálních počítačů podle OS se nyní zobrazí v seznamu _název dotazu_ . Vyberte odkaz na název uloženého dotazu, který se načte na novou kartu s názvem dotazu. Jako _sdílený_ dotaz zobrazuje ikonu na kartě vedle názvu, který označuje jako sdílený.
+1. Vyberte **Otevřít dotaz**. Ověřte, že typ je nastavený na **Shared Query** a že kombinace **předplatného** a **skupiny prostředků** odpovídá umístění, kam jste dotaz uložili. Položka s uloženým **počtem virtuálních počítačů podle operačního systému** se teď zobrazí v seznamu **název dotazu** . Vyberte odkaz na název uloženého dotazu, který chcete načíst na novou kartu s názvem tohoto dotazu. Jako sdílený dotaz zobrazuje na kartě vedle názvu ikonu, která označuje, že je sdílená.
 
    ![Zobrazit sdílený dotaz s ikonou](../media/create-share-query/show-saved-shared-query.png)
 
-   > [!NOTE]
-   > Když je uložený dotaz otevřený a na kartě se zobrazí jeho _název_, tlačítko **Uložit** ho aktualizuje pomocí všech provedených změn. Chcete-li vytvořit nový uložený dotaz, použijte příkaz **Uložit jako** a postupujte podle kroků, jako by se jednalo o nově uložený dotaz typu Brand.
+   > [!NOTE] 
+   > Když je uložený dotaz otevřený a na kartě se zobrazuje jeho název, tlačítko **Uložit** ho aktualizuje o všechny změny, které byly provedeny. Pokud chcete vytvořit nový uložený dotaz, vyberte **Uložit jako** a pokračujte, jako kdybyste ušetřili úplně nový dotaz.
 
 ## <a name="discover-shared-queries"></a>Zjistit sdílené dotazy
 
-Jako _sdílený_ dotaz je správce prostředků prostředek, existuje několik způsobů, jak je najít:
+Vzhledem k tomu, že sdílený dotaz je prostředek Správce prostředků, existuje několik způsobů, jak ho najít:
 
-- V Průzkumníku grafu prostředků vyberte **Otevřít dotaz** a nastavte _typ_ na Shared Query.
-- Stránka portálu dotazy na diagram prostředků
-- Skupina prostředků, ve které se uložila
-- S dotazem do grafu prostředků
+- V Průzkumníku grafu prostředků vyberte **Otevřít dotaz** a nastavte typ na **Shared Query**.
+- Na stránce portálu dotazy grafu prostředků.
+- Ze skupiny prostředků, do které byl uložen sdílený dotaz.
+- Pomocí dotazu do grafu prostředků.
 
 ### <a name="view-resource-graph-queries"></a>Zobrazit dotazy na grafy prostředků
 
-V Azure Portal stránka dotazy na diagram prostředků zobrazuje _sdílené_ dotazy, ke kterým má přihlášený účet přístup. Tato stránka umožňuje filtrování podle názvu, předplatného, skupiny prostředků a dalších vlastností dotazu na graf prostředků. Dotazy na grafy prostředků mohou být také označeny, exportovány a odstraněny pomocí tohoto rozhraní.
+Na stránce Azure Portal dotazy na diagram prostředků se zobrazí sdílené dotazy, ke kterým má přihlášený účet přístup. Tato stránka umožňuje filtrování podle názvu, předplatného, skupiny prostředků a dalších vlastností dotazu na graf prostředků. Pomocí tohoto rozhraní můžete také označovat, exportovat a odstranit dotazy na grafy prostředků.
 
-Výběrem jednoho z dotazů otevřete stránku dotaz na graf prostředků. Podobně jako u jiných Správce prostředkůch prostředků nabízí tato stránka interaktivní přehled spolu s protokolem aktivit, řízením přístupu a značkami. Zámek prostředků lze také použít přímo z této stránky.
+Výběrem jednoho z dotazů otevřete stránku dotaz na graf prostředků. Podobně jako u jiných Správce prostředkůch prostředků nabízí tato stránka interaktivní přehled spolu s protokolem aktivit, řízením přístupu a značkami. Zámek prostředku můžete použít také přímo z této stránky.
 
-Přejděte na stránku dotazů grafu prostředků z nabídky portál, a to tak, že vyberete všechny služby, nebo použijete pole Azure Search v horní části všech stránek. Vyhledejte a vyberte "Průzkumník grafů prostředků".
+Přejděte na stránku dotazů grafu prostředků z nabídky portál, a to výběrem možnosti **všechny služby** nebo pomocí pole Azure Search v horní části všech stránek. Vyhledejte a vyberte **Průzkumník diagramů prostředků**.
 
 ### <a name="list-resource-groups-resources"></a>Vypsat prostředky skupin prostředků
 
 Dotaz na graf prostředků je uvedený vedle dalších prostředků, které jsou součástí skupiny prostředků.
-Výběr dotazu grafu prostředku otevře stránku pro daný dotaz. Tlačítko se třemi tečkami nebo kliknutím pravým tlačítkem fungují stejně jako na stránce dotaz na graf prostředků.
+Výběr dotazu grafu prostředku otevře stránku pro daný dotaz. Tři tečky a možnosti místní nabídky (aktivované kliknutím pravým tlačítkem myši) fungují stejně jako na stránce dotazu na graf prostředků.
 
 ### <a name="query-resource-graph"></a>Graf prostředku dotazu
 
-Jako prostředek Správce prostředků se dotazy na grafy prostředků dají najít pomocí dotazu do grafu prostředků.
-Následující omezení dotazu na diagram prostředku podle typu `Microsoft.ResourceGraph/queries`a poté používá `project` k vypsání pouze názvu, času změny a samotného dotazu:
+Dotazy na grafy prostředků můžete najít prostřednictvím dotazu do grafu prostředků. Následující omezení dotazu na diagram prostředku podle typu `Microsoft.ResourceGraph/queries`a poté používá `project` k vypsání pouze názvu, času změny a samotného dotazu:
 
 ```kusto
 Resources
@@ -127,23 +142,23 @@ Resources
 
 ## <a name="delete-a-shared-query"></a>Odstranit sdílený dotaz
 
-Pokud už _sdílený_ dotaz nepotřebujete, odstraňte ho. Odstraněním _sdíleného_ dotazu dojde k odebrání skutečného prostředku správce prostředků. Všechny řídicí panely, se kterými se graf výsledků připnul, se teď zobrazí chybová zpráva. Po zobrazení této chybové zprávy použijte tlačítko **Odebrat z řídicího panelu** k vyčištění řídicího panelu.
+Pokud už sdílený dotaz nepotřebujete, odstraňte ho. Odstraněním sdíleného dotazu odeberete odpovídající prostředek Správce prostředků. Všechny řídicí panely, se kterými se graf výsledků připnul, se teď zobrazí v chybové zprávě. Po zobrazení této chybové zprávy použijte tlačítko **Odebrat z řídicího panelu** k vyčištění řídicího panelu.
 
-_Sdílený_ dotaz lze odstranit z následujících rozhraní:
+Sdílený dotaz můžete odstranit pomocí následujících rozhraní:
 - Stránka dotazů na grafy prostředků
 - Stránka dotazu na graf prostředků
-- Průzkumník grafu prostředků – otevře stránku dotazu
+- **Otevření stránky dotazu** v Průzkumníku grafu prostředků
 - Stránka skupiny prostředků
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Až budete s tímto kurzem hotovi, odstraňte _soukromé_ a _sdílené_ dotazy, které jste vytvořili, pokud je už nechcete.
+Až budete s tímto kurzem hotovi, odstraňte soukromé a sdílené dotazy, které jste vytvořili, pokud je už nechcete.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Spusťte první dotaz pomocí [Azure Portal](../first-query-portal.md)
-- Získejte další informace o [dotazovacím jazyce](../concepts/query-language.md)
-- Naučte se [prozkoumat prostředky](../concepts/explore-resources.md)
-- Zobrazit ukázky [Starter dotazy](../samples/starter.md)
-- Zobrazit ukázky [Pokročilé dotazy](../samples/advanced.md)
-- Váš názor na [UserVoice](https://feedback.azure.com/forums/915958-azure-governance)
+- Spusťte první dotaz pomocí [Azure Portal](../first-query-portal.md).
+- Získejte další informace o [dotazovacím jazyce](../concepts/query-language.md).
+- Přečtěte si další informace o tom, jak [prozkoumat prostředky](../concepts/explore-resources.md).
+- Podívejte se na ukázky [počátečních dotazů](../samples/starter.md).
+- Podívejte se na ukázky [pokročilých dotazů](../samples/advanced.md).
+- Poskytněte zpětnou vazbu na [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).

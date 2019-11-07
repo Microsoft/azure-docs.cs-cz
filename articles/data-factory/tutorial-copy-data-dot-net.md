@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat z Azure Blob Storage do SQL Database | Dokumentace Microsoftu
+title: 'Kopírování dat z Azure Blob Storage do SQL Database '
 description: Tento kurz obsahuje podrobné pokyny pro kopírování dat z Azure Blob Storage do Azure SQL Database.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 49b5b03356790bd45b2ad29897a57b746af1abe1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 96b1e5a9633ee141fd4aa369468a8866d87f27f2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140690"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683654"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopírování dat z objektu blob Azure do Azure SQL Database pomocí Azure Data Factory
 
@@ -41,8 +41,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 * **Účet služby Azure Storage**. Úložiště objektů blob použijete jako **zdrojové** úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md), kde najdete kroky pro jeho vytvoření.
 * **Azure SQL Database**. Tuto databázi použijete jako úložiště dat **jímky**. Pokud Azure SQL Database nemáte, přečtěte si článek věnovaný [vytvoření databáze Azure SQL](../sql-database/sql-database-get-started-portal.md), kde najdete kroky pro její vytvoření.
 * **Visual Studio** 2015 nebo 2017. Názorný postup v tomto článku využívá Visual Studio 2017.
-* **Stáhněte sadu [Azure .NET SDK](https://azure.microsoft.com/downloads/)** a nainstalujte ji.
-* **V Azure Active Directory** vytvořte aplikaci s využitím [těchto pokynů](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Poznamenejte si následující hodnoty, které použijete v dalších krocích: **ID aplikace**, **ověřovací klíč** a **ID tenanta**. Podle pokynů ve stejném článku přiřaďte aplikaci roli **Přispěvatel**.
+* **Stáhněte a nainstalujte sadu [Azure .NET SDK](https://azure.microsoft.com/downloads/)** .
+* **V Azure Active Directory vytvořte aplikaci** s využitím [těchto pokynů](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Poznamenejte si následující hodnoty, které použijete v dalších krocích: **ID aplikace**, **ověřovací klíč** a **ID tenanta**. Podle pokynů ve stejném článku přiřaďte aplikaci roli **Přispěvatel**.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Vytvoření objektu blob a tabulky SQL
 
@@ -119,7 +119,7 @@ Pomocí sady Visual Studio 2015/2017 vytvořte konzolovou aplikaci C# .NET.
     ```
 
     
-2. Do metody **Main** přidejte následující kód, který nastaví proměnné. Zástupné znaky nahraďte vlastními hodnotami. Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, vyberte oblasti, které vás zajímají na následující stránce, a pak rozbalte položku **Analytics** a vyhledejte **Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+2. Do metody **Main** přidejte následující kód, který nastaví proměnné. Zástupné znaky nahraďte vlastními hodnotami. Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
     ```csharp
     // Set variables
@@ -230,10 +230,10 @@ V této části vytvoříte dvě datové sady, jednu pro zdroj a druhou pro jím
 
 Do metody **Main** přidejte následující kód, který vytvoří **datovou sadu objektů blob Azure**. V tématu věnovaném [vlastnostem datových sad objektů blob Azure](connector-azure-blob-storage.md#dataset-properties) se o podporovaných vlastnostech dozvíte víc.
 
-Definujete datovou sadu, která představuje zdroj dat ve službě Azure Blob. Tato datová sada Blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku, a popisuje:
+Nadefinujete datovou sadu, která představuje zdrojová data v objektu blob Azure. Tato datová sada Blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku, a popisuje:
 
-- Umístění objektu blob, ze kterého se má kopírovat: **FolderPath** a **filename**;
-- Formát objektu blob, který označuje, jak analyzovat obsah: **TextFormat** a jeho nastavení (například Oddělovač sloupců).
+- Umístění objektu blob, ze kterého se má kopírovat: **FolderPath** a **FileName**.
+- Formát objektu udávající, jak analyzovat obsah: **TextFormat** a příslušná nastavení (například oddělovač sloupců).
 - Strukturu dat, včetně názvů sloupců a typů dat, které se v tomto případě mapují na tabulku SQL jímky.
 
 ```csharp
@@ -513,7 +513,7 @@ Press any key to exit...
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure. Naučili jste se tyto postupy: 
 

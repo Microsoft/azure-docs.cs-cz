@@ -1,5 +1,5 @@
 ---
-title: Optimalizují se transakce pro Azure SQL Data Warehouse | Microsoft Docs
+title: Optimalizace transakcí
 description: Naučte se, jak optimalizovat výkon transakčního kódu v Azure SQL Data Warehouse a zároveň minimalizovat riziko pro dlouhé vrácení zpět.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2299c526dd63eb8e8772661ee8fae66153fc36c3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: b8b8be9467ade870e57355be91b0de329b0f6217
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479679"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692860"
 ---
 # <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Optimalizace transakcí v Azure SQL Data Warehouse
 Naučte se, jak optimalizovat výkon transakčního kódu v Azure SQL Data Warehouse a zároveň minimalizovat riziko pro dlouhé vrácení zpět.
@@ -42,8 +43,8 @@ Limity bezpečnosti transakce platí pouze pro plně protokolované operace.
 ## <a name="minimally-logged-operations"></a>Minimální protokolované operace
 Následující operace jsou schopné provádět minimální protokolování:
 
-* CREATE TABLE JAKO SELECT ([CTAS](sql-data-warehouse-develop-ctas.md))
-* VLOŽIT.. VYBRALI
+* CREATE TABLE jako SELECT ([CTAS](sql-data-warehouse-develop-ctas.md))
+* Vložit.. VYBRALI
 * CREATE INDEX
 * ZMĚNIT INDEX OPĚTOVNÉHO SESTAVENÍ
 * DROP INDEX
@@ -67,12 +68,12 @@ CTAS a vložit... VYBRAT jsou operace hromadného načtení. Obě jsou však ovl
 
 | Primární index | Scénář načtení | Režim protokolování |
 | --- | --- | --- |
-| Halda |Any |**Poskytuje** |
+| Halda |Všechny |**Poskytuje** |
 | Clusterovaný index |Prázdná cílová tabulka |**Poskytuje** |
 | Clusterovaný index |Načtené řádky se nepřesahují s existujícími stránkami v cíli. |**Poskytuje** |
-| Clusterovaný index |Načtené řádky se překrývají s existujícími stránkami v cíli. |Úplný |
+| Clusterovaný index |Načtené řádky se překrývají s existujícími stránkami v cíli. |Úplná |
 | Clusterovaný index columnstore |Velikost dávky > = 102 400 na distribuci zarovnaná na oddíl |**Poskytuje** |
-| Clusterovaný index columnstore |Velikost dávky < 102 400 na distribuci zarovnaná na oddíl |Úplný |
+| Clusterovaný index columnstore |Velikost dávky < 102 400 na distribuci zarovnaná na oddíl |Úplná |
 
 Je třeba poznamenat, že jakékoli zápisy k aktualizaci sekundárních nebo neclusterovaných indexů budou vždy plně protokolované.
 
@@ -84,7 +85,7 @@ Je třeba poznamenat, že jakékoli zápisy k aktualizaci sekundárních nebo ne
 Načtení dat do neprázdné tabulky s clusterovaným indexem může často obsahovat kombinaci plně protokolovaných a minimálních protokolovaných řádků. Clusterovaný index je vyrovnaný strom (b-Tree) stránek. Pokud stránka, na kterou se zapisuje, již obsahuje řádky z jiné transakce, pak budou tyto zápisy plně protokolovány. Pokud je ale stránka prázdná, pak se zápis na tuto stránku bude považovat za minimální protokol.
 
 ## <a name="optimizing-deletes"></a>Optimalizace odstranění
-ODSTRANĚNÍ je plně zaprotokolovaná operace.  Pokud potřebujete v tabulce nebo oddílu odstranit velké množství dat, často to znamená, že data, která chcete zachovat, je `SELECT` vhodnější, což je možné spustit jako podobuně zaznamenanou operaci.  Pokud chcete data vybrat, vytvořte novou tabulku pomocí [CTAS](sql-data-warehouse-develop-ctas.md).  Po vytvoření pomocí [Přejmenovat](/sql/t-sql/statements/rename-transact-sql) zahodíte starou tabulku s nově vytvořenou tabulkou.
+ODSTRANĚNÍ je plně zaprotokolovaná operace.  Pokud potřebujete v tabulce nebo oddílu odstranit velké množství dat, často je lepší `SELECT` dat, která chcete zachovat, což se dá spustit jako minimální zaprotokolovaná operace.  Pokud chcete data vybrat, vytvořte novou tabulku pomocí [CTAS](sql-data-warehouse-develop-ctas.md).  Po vytvoření pomocí [Přejmenovat](/sql/t-sql/statements/rename-transact-sql) zahodíte starou tabulku s nově vytvořenou tabulkou.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -407,7 +408,7 @@ END
 Azure SQL Data Warehouse vám umožní [pozastavit, obnovit a škálovat](sql-data-warehouse-manage-compute-overview.md) datový sklad na vyžádání. Když pozastavíte nebo zmenšíte svou SQL Data Warehouse, je důležité pochopit, že jakékoliv transakce v letadle jsou okamžitě ukončeny. způsob vrácení všech otevřených transakcí zpět. Pokud vaše úloha vystavila dlouho probíhající a nedokončená úprava dat před operací pozastavit nebo škálování, bude potřeba tuto práci vrátit zpátky. To může mít vliv na dobu potřebnou k pozastavení nebo škálování databáze Azure SQL Data Warehouse. 
 
 > [!IMPORTANT]
-> `UPDATE` A`DELETE` jsou plně protokolované operace, takže tyto operace vrácení zpět/opětovného zpracování mohou trvat výrazně déle než ekvivalentní minimální zaznamenání operací. 
+> `UPDATE` i `DELETE` jsou plně protokolované operace, takže tyto operace vrácení zpět/opětovného zpracování můžou výrazně trvat déle než ekvivalentní minimální zaznamenání operací. 
 > 
 > 
 

@@ -1,5 +1,5 @@
 ---
-title: Třídy prostředků pro správu úloh v Azure SQL Data Warehouse | Microsoft Docs
+title: Třídy prostředků pro správu úloh
 description: Pokyny pro použití tříd prostředků ke správě souběžných a výpočetních prostředků pro dotazy v Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
@@ -7,15 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 10/04/2019
+ms.date: 11/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5ef95faf162a6774e42b7cf258515757fdc9c7eb
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 558a6e3faa207e15000657a17bec99a7b1ac99e4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035080"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685923"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Správa úloh pomocí tříd prostředků v Azure SQL Data Warehouse
 
@@ -35,7 +36,7 @@ Existují dva typy tříd prostředků:
 
 Třídy prostředků používají pro měření spotřeby prostředků sloty souběžnosti.  [Sloty souběžnosti](#concurrency-slots) jsou vysvětleny dále v tomto článku.
 
-- Chcete-li zobrazit využití prostředků pro třídy prostředků, přečtěte si téma [limity paměti a souběžnosti](memory-and-concurrency-limits.md#concurrency-maximums).
+- Chcete-li zobrazit využití prostředků pro třídy prostředků, přečtěte si téma [limity paměti a souběžnosti] paměť-Concurrency-limits.md).
 - Chcete-li upravit třídu prostředků, můžete spustit dotaz pod jiným uživatelem nebo změnit členství ve [třídě prostředku aktuálního uživatele](#change-a-users-resource-class) .
 
 ### <a name="static-resource-classes"></a>Třídy statických prostředků
@@ -66,12 +67,12 @@ Dynamické třídy prostředků jsou implementovány s těmito předem definovan
 
 Přidělení paměti pro jednotlivé třídy prostředků je následující, **bez ohledu na úroveň služby**.  V seznamu jsou uvedeny také minimální souběžné dotazy.  U některých úrovní služeb je možné dosáhnout více než minimální souběžnosti.
 
-| Třída prostředků | Procentuální hodnota paměti | Minimální počet souběžných dotazů |
+| Třída prostředku | Procentuální hodnota paměti | Minimální počet souběžných dotazů |
 |:--------------:|:-----------------:|:----------------------:|
 | smallrc        | 1                | 32                     |
-| mediumrc       | 10pruhový               | 10pruhový                     |
+| mediumrc       | 10 %               | 10                     |
 | largerc        | 22               | 4                      |
-| xlargerc       | 70%               | první                      |
+| xlargerc       | 70 %               | 1                      |
 
 ### <a name="default-resource-class"></a>Výchozí třída prostředků
 
@@ -96,7 +97,7 @@ Tyto operace se řídí třídami prostředků:
 - VYBRAT (při dotazování na tabulky uživatelů)
 - ZMĚNIT INDEX – znovu sestavit nebo reorganizovat
 - ZMĚNIT OPĚTOVNÉ SESTAVENÍ TABULKY
-- VYTVOŘIT INDEX
+- CREATE INDEX
 - VYTVOŘIT CLUSTEROVANÝ INDEX COLUMNSTORE
 - CREATE TABLE JAKO SELECT (CTAS)
 - Načítání dat
@@ -176,7 +177,7 @@ Uživatelé můžou být členy více tříd prostředků. Když uživatel patř
 - Třídy dynamických prostředků mají přednost před třídami statických prostředků. Například pokud je uživatel členem obou mediumrc (Dynamic) i staticrc80 (static), dotazy se spouštějí s mediumrc.
 - Větší třídy prostředků mají přednost před menšími třídami prostředků. Například pokud je uživatel členem služby mediumrc a largerc, dotazy se spouštějí s largerc. Podobně platí, že pokud je uživatel členem obou staticrc20 i statirc80, dotazy se spouštějí s přidělením prostředků staticrc80.
 
-## <a name="recommendations"></a>Doporučit
+## <a name="recommendations"></a>Doporučení
 
 Doporučujeme vytvořit uživatele, který je vyhrazený pro spuštění konkrétního typu dotazu nebo operace načtení. Poskytněte tomuto uživateli trvalou třídu prostředků namísto časté změny třídy prostředků. Statické třídy prostředků poskytují větší celkovou kontrolu nad úlohou, takže před zvážením dynamických tříd prostředků doporučujeme použít statické třídy prostředků.
 
@@ -233,9 +234,9 @@ Tady je účel této uložené procedury:
 Syntaktick  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`
   
-1. @DWU: buď zadejte parametr s hodnotou NULL pro extrakci aktuálního DWU z databáze DW nebo poskytněte jakékoli podporované DWU ve formátu ' DW100c '.
+1. pro extrakci aktuálního DWU z databáze datového skladu nebo zadání všech podporovaných DWU ve formátu DW100c zadejte buď parametr NULL. @DWU:
 2. @SCHEMA_NAME: zadejte název schématu pro tabulku.
-3. @TABLE_NAME: zadejte název tabulky zájmu.
+3. @TABLE_NAME: zadejte název tabulky pro daný zájem.
 
 Příklady spouštění této uložené procedury:
 
@@ -331,7 +332,7 @@ SELECT 'DW100c' AS DWU,4 AS max_queries,4 AS max_slots,1 AS slots_used_
     SELECT 'DW30000c', 128, 1200, 36, 120, 264, 840, 1, 2, 4, 8, 16, 32, 64, 128 
 )
 -- Creating workload mapping to their corresponding slot consumption and default memory grant.
-,map
+,map  
 AS
 (
   SELECT CONVERT(varchar(20), 'SloDWGroupSmall') AS wg_name, slots_used_smallrc AS slots_used FROM alloc WHERE DWU = @DWU
@@ -580,7 +581,7 @@ SELECT  CASE
 GO
 ```
 
-## <a name="next-step"></a>Další krok
+## <a name="next-steps"></a>Další kroky
 
 Další informace o správě uživatelů a zabezpečení databáze najdete v tématu [zabezpečení databáze v SQL Data Warehouse][Secure a database in SQL Data Warehouse]. Další informace o tom, jak můžou větší třídy prostředků zlepšit kvalitu clusterovaných indexů columnstore, najdete v tématu [optimalizace paměti pro kompresi columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 

@@ -1,5 +1,5 @@
 ---
-title: Migrace SQL Server místních uživatelů a skupin Windows do Azure SQL Database spravované instance pomocí syntaxe jazyka T-SQL DDL | Microsoft Docs
+title: Migrace SQL Server místních uživatelů a skupin Windows do Azure SQL Database spravované instance pomocí syntaxe jazyka T-SQL DDL
 description: Informace o tom, jak migrovat SQL Server místních uživatelů a skupin Windows do spravované instance
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
-ms.openlocfilehash: b27c9991fd86334c87806772cbd641dd72aad1f6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 079d684b56625b8327a94a1bfef222cb93572bd3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163968"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686745"
 ---
 # <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>Kurz: migrace SQL Server místních uživatelů a skupin Windows do Azure SQL Database spravované instance pomocí syntaxe jazyka T-SQL DDL
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 > - Ruční migrace uživatelů na MI pomocí příkazu ALTER USER syntax
 > - Testování ověřování pomocí nových mapovaných uživatelů
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu platí následující předpoklady:
 
@@ -214,9 +214,12 @@ Postupujte podle našeho [rychlého startu: obnovení databáze do spravované i
 
 ## <a name="part-4-migrate-users-to-managed-instance"></a>4\. část: Migrace uživatelů do spravované instance
 
+> [!NOTE]
+> Funkce správce Azure AD pro spravovanou instanci po vytvoření se změnila. Další informace najdete v tématu [nové funkce správce Azure AD pro mi](sql-database-aad-authentication-configure.md#new-azure-ad-admin-functionality-for-mi).
+
 Provedením příkazu ALTER USER dokončíte proces migrace na spravované instanci.
 
-1. Přihlaste se ke spravované instanci pomocí účtu správce SQL pro spravovanou instanci. Pak vytvořte přihlašovací jméno Azure AD ve spravované instanci pomocí následující syntaxe. Další informace najdete v tématu [kurz: zabezpečení spravované instance v Azure SQL Database pomocí objektů zabezpečení serveru Azure AD (přihlášení)](sql-database-managed-instance-aad-security-tutorial.md).
+1. Přihlaste se ke svojí spravované instanci pomocí účtu správce Azure AD pro spravovanou instanci. Pak vytvořte přihlašovací jméno Azure AD ve spravované instanci pomocí následující syntaxe. Další informace najdete v tématu [kurz: zabezpečení spravované instance v Azure SQL Database pomocí objektů zabezpečení serveru Azure AD (přihlášení)](sql-database-managed-instance-aad-security-tutorial.md).
 
     ```sql
     use master 

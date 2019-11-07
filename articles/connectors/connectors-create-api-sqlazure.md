@@ -10,13 +10,13 @@ ms.reviewer: klam; LADocs
 manager: carmonm
 ms.topic: conceptual
 tags: connectors
-ms.date: 10/14/2019
-ms.openlocfilehash: 880ae4b661d247889815fc5b9ad08a759fe0aa5b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.date: 11/06/2019
+ms.openlocfilehash: ed30ba305ec990256625052cb92f1b7524c826e2
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161605"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720953"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Automatizace pracovních postupů pro SQL Server nebo Azure SQL Database pomocí Azure Logic Apps
 
@@ -26,7 +26,7 @@ Můžete vytvářet aplikace logiky, které se spouštějí při aktivaci událo
 
 Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý Start: Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Informace o technických informacích, omezeních a známých problémech specifických pro konektor najdete na [stránce s referenčními informacemi pro konektor SQL Server](https://docs.microsoft.com/connectors/sql/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -45,6 +45,9 @@ Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](..
     `Server=tcp:{your-server-name}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
 
 * Než budete moct propojit Logic Apps s místními systémy, jako je SQL Server, musíte [nastavit místní bránu dat](../logic-apps/logic-apps-gateway-install.md). Tímto způsobem můžete bránu vybrat při vytváření připojení SQL pro vaši aplikaci logiky.
+
+  > [!IMPORTANT]
+  > Pokud chcete s tímto konektorem používat ověřování systému Windows, musíte použít místní bránu dat. Tento konektor nepodporuje ověřování Windows pro aplikaci logiky v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
 
 * Aplikace logiky, kde potřebujete přístup k vaší databázi SQL. Chcete-li spustit aplikaci logiky pomocí triggeru SQL, budete potřebovat [prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 

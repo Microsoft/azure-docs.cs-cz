@@ -1,75 +1,72 @@
 ---
-title: Přidat nástroje pro posouzení ve službě Azure Migrate | Dokumentace Microsoftu
-description: Popisuje postup přidání nástroje pro vyhodnocení v centru Azure Migrate.
+title: Přidat nástroje pro posouzení do Azure Migrate | Microsoft Docs
+description: V této části najdete popis postupu přidání nástrojů pro vyhodnocení do centra Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: d176e6276d69cd3465aa4943efa86ea1e6b0736d
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 8d13222ec05fc97fa591ac67d636a1f8c5c88845
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811645"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715867"
 ---
-# <a name="add-assessment-tools"></a>Přidání nástroje pro vyhodnocení
+# <a name="add-assessment-tools"></a>Přidání nástrojů pro vyhodnocení
 
-Tento článek popisuje postup přidání nástroje pro vyhodnocení v [Azure Migrate](migrate-overview.md).
+Tento článek popisuje, jak přidat nástroje pro posouzení do [Azure Migrate](migrate-overview.md).
 
-Azure Migrate nabízí rozbočovač nástroje pro vyhodnocení a migraci do Azure. Zahrnuje nativní nástroje, nástroje poskytované dalšími službami Azure a nabídek softwaru třetích stran výrobce (ISV).
+Azure Migrate poskytuje centrum nástrojů pro posouzení a migraci do Azure. Zahrnuje nástroje Azure Migrate a také další nabídky nástrojů a nezávislých výrobců softwaru (ISV).
 
-Pokud chcete přidat nástroj pro vyhodnocení a ještě nemáte projekt Azure Migrate, použít tento [článku](how-to-add-tool-first-time.md).
+Pokud chcete přidat nástroj pro vyhodnocení a ještě nemáte Azure Migrate projekt, postupujte podle pokynů v tomto [článku](how-to-add-tool-first-time.md).
 
-## <a name="selecting-an-isv-tool"></a>Výběr nástroj pro nezávislé výrobce softwaru
+## <a name="select-a-tool"></a>Výběr nástroje
 
-Pokud se rozhodnete [ISV nástroj](migrate-services-overview.md#isv-integration) pro posouzení, můžete začít získání licence nebo registrace pro bezplatnou zkušební verzi, v souladu se zásadami nezávislý výrobce softwaru. V jednotlivých nástrojích je možné se připojit k Azure Migrate. Postupujte podle pokynů nástroje a dokumentaci pro připojení pracovního prostoru nástroje pomocí služby Azure Migrate. 
+Pokud zvolíte nástroj bez Azure Migrate pro posouzení, Začněte získáním licence nebo registrací bezplatné zkušební verze v souladu se zásadami nástroje. Nástroje mají možnost připojit se k Azure Migrate. Pokud chcete nástroj připojit k Azure Migrate, postupujte podle pokynů a dokumentace. [Přečtěte si další informace](migrate-services-overview.md) o nástrojích.
 
 
-## <a name="select-an-assessment-scenario"></a>Vyberte scénáři posouzení
+## <a name="select-an-assessment-scenario"></a>Výběr scénáře posouzení
 
-1. V projektu Azure Migrate klikněte na tlačítko **přehled**.
-2. Vyberte hodnocení scénáře, který chcete použít:
+1. V projektu Azure Migrate klikněte na **Přehled**.
+2. Vyberte scénář posouzení, který chcete použít:
 
-    - Chcete-li zjistit a posoudit počítače a úlohy pro migraci do Azure, vyberte **posoudit a migrovat servery**.
-    - Chcete-li posoudit místní počítače SQL, vyberte **posoudit a migrovat databáze s**.
-    - Chcete-li posoudit místní webové aplikace, vyberte **vyhodnocení a migrace webových aplikací**.
+    - Pokud chcete zjišťovat a hodnotit počítače a úlohy pro migraci do Azure, vyberte **vyhodnotit a migrovat servery**.
+    - Pro vyhodnocení místních počítačů SQL vyberte možnost **vyhodnotit a migrovat databáze**.
+    - Pokud chcete vyhodnotit místní webové aplikace, vyberte **vyhodnotit a migrovat webové aplikace**.
 
-    ![Scénář hodnocení](./media/how-to-assess/assess-scenario.png)
+    ![Scénář posouzení](./media/how-to-assess/assess-scenario.png)
 
-## <a name="select-a-server-assessment-tool"></a>Vyberte nástroj pro vyhodnocení serveru 
+## <a name="select-a-server-assessment-tool"></a>Výběr nástroje pro vyhodnocení serveru 
 
-1. Klikněte na tlačítko **posoudit a migrovat servery**.
-2. V **Azure Migrate – servery**, pokud jste nepřidali nástroj pro vyhodnocení, v části **posuzovací nástroje**vyberte **kliknutím sem přidáte nástroj pro vyhodnocení**. Pokud jste už přidali nástroje pro vyhodnocení, v **přidat další nástroje pro vyhodnocení**vyberte **změnu**.
+1. Klikněte na možnost **zhodnotit a migrovat servery**.
+2. Pokud jste v **Azure Migrate-servery**nepřidali Nástroj pro posouzení, vyberte v části **Nástroje pro posouzení**možnost **kliknutím sem přidejte Nástroj pro posouzení**. Pokud jste již přidali nástroje pro posouzení, vyberte v **nabídce přidat další nástroje pro posouzení**možnost **změnit**.
 
     > [!NOTE]
-    > Pokud budete muset přejít do jiného projektu, v **Azure Migrate – servery**vedle možnosti **získáte v podrobnostech o různých migrace projektu**, klikněte na tlačítko **kliknutím sem**.
+    > Pokud potřebujete přejít na jiný projekt, klikněte v **Azure Migrate-servery**vedle **Zobrazit podrobnosti o jiném projektu migrace**kliknutím **na tlačítko sem**.
 
-3. V **Azure Migrate**, vyberte nástroj posouzení, které chcete použít.
+3. V **Azure Migrate**vyberte nástroj pro vyhodnocení, který chcete použít.
 
-    
-    ![Nástroje pro vyhodnocení](./media/how-to-assess/assess-tool.png)
-
-    - Pokud používáte Azure Migrate Server Assessment, nastavení a spuštění posouzení zobrazit přímo v projektu Azure Migrate.
-    - Pokud používáte nástroj pro vyhodnocení třetích stran, přejděte na uvedený odkaz pro svůj web a spustit vyhodnocení v souladu s pokyny, které poskytují.
+    - Pokud používáte hodnocení serveru Azure Migrate, můžete nastavit, spustit a zobrazit hodnocení přímo v projektu Azure Migrate.
+    - Pokud používáte jiný nástroj pro vyhodnocení, přejděte na odkaz poskytnutý pro svůj web a spusťte posouzení podle pokynů, které poskytují.
 
 
-## <a name="select-a-database-assessment-tool"></a>Vyberte nástroj pro vyhodnocení databáze
+## <a name="select-a-database-assessment-tool"></a>Výběr nástroje pro vyhodnocení databáze
 
-1. Klikněte na tlačítko **posoudit a migrovat databáze**
-2. V **databází**, klikněte na tlačítko **přidat nástroje**.
-3. V okně Přidat nástroj > **nástroj pro vyhodnocení vyberte**, vyberte nástroj, který chcete použít k vyhodnocení vaší databáze.
+1. Klikněte na **vyhodnotit a migrovat databáze** .
+2. V nabídce **databáze**klikněte na možnost **Přidat nástroje**.
+3. V části přidat nástroj > **Vyberte nástroj pro vyhodnocení**, vyberte nástroj, který chcete použít k vyhodnocení vaší databáze.
 
-## <a name="select-a-web-app-assessment-tool"></a>Vyberte nástroj pro vyhodnocení webové aplikace
+## <a name="select-a-web-app-assessment-tool"></a>Výběr nástroje pro vyhodnocení webové aplikace
 
-1. Klikněte na tlačítko **posoudit a migrovat webových aplikací**.
-2. Použijte odkaz na nástroj pro migraci pro službu Azure App Service. Použijte nástroj pro migraci:
+1. Klikněte na **zhodnotit a migrovat webové aplikace**.
+2. Použijte odkaz na nástroj pro migraci Azure App Service. Nástroj pro migraci použijte k těmto akcím:
 
-    - **Posouzení aplikace online**: Aplikace s online, veřejnou adresu URL můžete vyhodnotit pomocí Azure App Service Pomocníka s migrací.
-    - **.NET/PHP**: Interní aplikace .NET a PHP si můžete stáhnout a použít Pomocníka s migrací.
+    - **Vyhodnotit aplikace online**: můžete vyhodnotit aplikace pomocí veřejné adresy URL online pomocí Pomocník s migrací Azure App Service.
+    - **.NET/php**: pro interní aplikace .NET a PHP můžete stáhnout a spustit Pomocník s migrací.
 
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Vyzkoušejte si posouzení pomocí Azure Migrate Server Assessment pro [Hyper-V](tutorial-prepare-hyper-v.md) nebo [VMware](tutorial-prepare-vmware.md) virtuálních počítačů.
+Vyzkoušejte vyhodnocení pomocí Azure Migrate posouzení serveru pro virtuální počítače [VMware](tutorial-prepare-vmware.md) , [Hyper-V](tutorial-prepare-hyper-v.md)nebo [fyzické servery](tutorial-prepare-physical.md)

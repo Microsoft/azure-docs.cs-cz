@@ -1,5 +1,5 @@
 ---
-title: Příklad PowerShellu – vytvoření jedné databáze v Azure SQL Database | Microsoft Docs
+title: Příklad PowerShellu – vytvoření jedné databáze v Azure SQL Database
 description: Azure PowerShell ukázkový skript pro vytvoření jedné databáze v Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 7aa38f61d74a5418b4c33fef550f70ba4254e00d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1311c14e95e709ef522fe13ce30786ce0d8fb0a1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569998"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691676"
 ---
 # <a name="use-powershell-to-create-a-single-azure-sql-database-and-configure-a-sql-database-server-firewall-rule"></a>Použití PowerShellu k vytvoření jedné databáze SQL Azure a konfiguraci pravidla brány firewall pro SQL Database Server
 
@@ -53,7 +53,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

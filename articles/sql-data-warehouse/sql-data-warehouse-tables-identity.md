@@ -1,5 +1,5 @@
 ---
-title: Použití IDENTITY k vytváření náhradních klíčů – Azure SQL Data Warehouse | Microsoft Docs
+title: Použití IDENTITY k vytváření náhradních klíčů
 description: Doporučení a příklady použití vlastnosti IDENTITY k vytváření náhradních klíčů v tabulkách v Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 4c65bf7cc8edfa246508bb22001aed40c34414f3
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 0ee15b975b5513077b26cceeb80ea3fb8c02456b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515595"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692473"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>Použití IDENTITY k vytváření náhradních klíčů v Azure SQL Data Warehouse
 
@@ -43,7 +44,7 @@ WITH
 ;
 ```
 
-Pak můžete použít `INSERT..SELECT` k naplnění tabulky.
+K naplnění tabulky pak můžete použít `INSERT..SELECT`.
 
 Tato zbývající část této části popisuje drobné odlišnosti implementace, která vám pomůže s jejich úplným pochopením.  
 
@@ -80,9 +81,9 @@ V předchozím příkladu byly vyloženo dva řádky v distribuci 1. První řá
 
 ### <a name="skewed-data"></a>Zkosená data
 
-Rozsah hodnot datového typu se rovnoměrně rozprostře napříč distribucí. Pokud bude distribuovaná tabulka z rozdělených dat vyčerpána, může být rozsah hodnot dostupných pro datový typ předčasně vyčerpán. Například pokud všechna data skončí v rámci jedné distribuce, pak efektivně má tabulka přístup pouze k sixtieth hodnot datového typu. Z tohoto důvodu je vlastnost identity omezená jenom na `INT` `BIGINT` datové typy.
+Rozsah hodnot datového typu se rovnoměrně rozprostře napříč distribucí. Pokud bude distribuovaná tabulka z rozdělených dat vyčerpána, může být rozsah hodnot dostupných pro datový typ předčasně vyčerpán. Například pokud všechna data skončí v rámci jedné distribuce, pak efektivně má tabulka přístup pouze k sixtieth hodnot datového typu. Z tohoto důvodu je vlastnost IDENTITY omezená jenom na `INT` a `BIGINT` jenom datové typy.
 
-### <a name="selectinto"></a>VYBERTE.. USKLADNĚN
+### <a name="selectinto"></a>Vyberte.. USKLADNĚN
 
 Když je sloupec existující IDENTITY vybraný do nové tabulky, zdědí nový sloupec vlastnost IDENTITY, pokud není splněná některá z následujících podmínek:
 
@@ -95,11 +96,11 @@ Pokud je jedna z těchto podmínek pravdivá, je sloupec vytvořen bez hodnoty N
 
 ### <a name="create-table-as-select"></a>CREATE TABLE JAKO VÝBĚR
 
-CREATE TABLE AS SELECT (CTAS) se řídí stejným chováním SQL Server, které je popsané pro možnost vybrat. Uskladněn. V definici `CREATE TABLE` sloupce části příkazu ale nemůžete zadat vlastnost identity. V `SELECT` části CTAS také nemůžete použít funkci identita. K naplnění tabulky je nutné použít `CREATE TABLE` k definování tabulky, `INSERT..SELECT` za kterou se má naplnit.
+CREATE TABLE AS SELECT (CTAS) se řídí stejným chováním SQL Server, které je popsané pro možnost vybrat. Uskladněn. Do definice sloupce `CREATE TABLE` části příkazu však nelze zadat vlastnost IDENTITY. Funkci identita nemůžete použít také v části `SELECT` CTAS. K naplnění tabulky je nutné použít `CREATE TABLE` k definování tabulky, za kterou následuje `INSERT..SELECT` k naplnění.
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Explicitní vkládání hodnot do sloupce IDENTITY
 
-SQL Data Warehouse podporuje `SET IDENTITY_INSERT <your table> ON|OFF` syntaxi. Tuto syntaxi můžete použít k explicitnímu vkládání hodnot do sloupce IDENTITY.
+SQL Data Warehouse podporuje syntaxi `SET IDENTITY_INSERT <your table> ON|OFF`. Tuto syntaxi můžete použít k explicitnímu vkládání hodnot do sloupce IDENTITY.
 
 Řada datových modelů, jako je například použití předdefinovaných záporných hodnot pro určité řádky v jejich dimenzích. Příkladem je řádek-1 nebo "Neznámý člen".
 
@@ -122,7 +123,7 @@ FROM    dbo.T1
 ;
 ```
 
-## <a name="loading-data"></a>Načítají se data
+## <a name="loading-data"></a>Načítání dat
 
 Přítomnost vlastnosti IDENTITY má nějaký vliv na váš kód pro načítání dat. Tato část popisuje několik základních vzorů pro načítání dat do tabulek pomocí IDENTITY.
 
@@ -157,7 +158,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
 > [!NOTE]
-> V tuto chvíli není možné použít `CREATE TABLE AS SELECT` při načítání dat do tabulky se sloupcem identity.
+> V tuto chvíli není možné použít `CREATE TABLE AS SELECT` při načítání dat do tabulky se sloupcem IDENTITY.
 >
 
 Další informace o načítání dat najdete v článku [Návrh extrakce, načítání a transformace (ELT) pro Azure SQL Data Warehouse](design-elt-data-loading.md) a [načítání osvědčených postupů](guidance-for-loading-data.md).
@@ -211,7 +212,7 @@ Sloupec C1 je identita ve všech následujících úlohách.
 
 ### <a name="find-the-highest-allocated-value-for-a-table"></a>Vyhledání nejvyšší přidělené hodnoty pro tabulku
 
-`MAX()` Pomocí funkce určete nejvyšší přidělenou hodnotu pro distribuovanou tabulku:
+Pomocí funkce `MAX()` určete nejvyšší přidělenou hodnotu pro distribuovanou tabulku:
 
 ```sql
 SELECT MAX(C1)
@@ -238,7 +239,7 @@ AND     tb.name = 'T1'
 ;
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Přehled tabulek](/azure/sql-data-warehouse/sql-data-warehouse-tables-overview)
 - [Identita CREATE TABLE (Transact-SQL) (vlastnost)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)

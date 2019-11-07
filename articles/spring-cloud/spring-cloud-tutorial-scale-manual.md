@@ -1,19 +1,17 @@
 ---
 title: 'Kurz: škálování aplikace v Azure jaře cloudu | Microsoft Docs'
 description: V tomto kurzu se naučíte škálovat aplikaci v Azure jaře cloudu na Azure Portal
-services: spring-cloud
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.reviewer: jeconnoc
-ms.author: v-vasuke
-author: v-vasuke
+ms.author: jeconnoc
+author: jpconnock
 ms.date: 10/06/2019
-ms.openlocfilehash: bca88cac45e1ba8117eb4e10141e32d621434b86
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: 31b2322bdf7b7c03ae8974d57ee1b44c2f6137b9
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038906"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607514"
 ---
 # <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>Kurz: škálování aplikace ve jarním cloudu Azure
 
@@ -21,7 +19,7 @@ Tento kurz ukazuje, jak škálovat libovolnou aplikaci mikroslužeb pomocí ří
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu potřebujete:
+Pro absolvování tohoto kurzu potřebujete:
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 * Nasazená instance služby jarní cloudová služba Azure  Začněte podle našeho [rychlého](spring-cloud-quickstart-launch-app-cli.md) startu.
 * V této instanci služby už je vytvořená aspoň jedna aplikace.
@@ -29,7 +27,7 @@ K dokončení tohoto kurzu potřebujete:
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Přejít na stránku škálování v Azure Portal
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 
 1. Přejděte na stránku s **přehledem** jarního cloudu Azure.
 

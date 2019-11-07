@@ -9,24 +9,24 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 10/04/2019
-ms.openlocfilehash: 8b333dbd043ea0a0fe6fb1042e255e7e9c07ade5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c1f4b3d60c0b8af96d851ce54c2aac57c76335a7
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493477"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73633638"
 ---
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí přihlašovacích údajů předplatného Azure. 
 
 1. V levém horním rohu Azure Portal vyberte **+ vytvořit prostředek**.
 
-      ![Vytvoření nového prostředku](media/aml-create-in-portal/portal-create-resource.png)
+      ![Vytvoření nového prostředku](media/aml-create-in-portal/create-workspace.gif)
 
-1. Pomocí panelu hledání vyhledejte **Machine Learning pracovní prostor služby**.
+1. K vyhledání **Machine Learning**použijte panel hledání.
 
-1. Vyberte **Machine Learning pracovní prostor služby**.
+1. Vyberte **Machine Learning**.
 
-1. V podokně **pracovní prostor služby Machine Learning** vyberte **vytvořit** a začněte.
+1. V podokně **Machine Learning** vyberte **vytvořit** a začněte.
 
 1. Zadáním následujících informací nakonfigurujte nový pracovní prostor:
 

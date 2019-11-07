@@ -1,5 +1,5 @@
 ---
-title: Správa výpočetních prostředků v Azure SQL Data Warehouse | Microsoft Docs
+title: Správa výpočetních prostředků
 description: Přečtěte si o možnostech škálování výkonu v Azure SQL Data Warehouse. Horizontální navýšení kapacity úpravou DWU nebo snížení nákladů díky pozastavení datového skladu.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: f0935ccc4c4274bfab0c589ef158d4ea0bef455c
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f93996d834ab805f2228543a833c4ce601042dc4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575321"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692630"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Správa výpočetních prostředků v Azure SQL Data Warehouse
 Přečtěte si o správě výpočetních prostředků v Azure SQL Data Warehouse. Snižte náklady tím, že pozastavíte datový sklad nebo Škálujte datový sklad, abyste splnili nároky na výkon. 
@@ -32,7 +33,7 @@ Chcete-li provést operaci škálování, SQL Data Warehouse nejprve zajistěte,
 
 Následující tabulka ukazuje, jak se mění počet distribucí na výpočetní uzel při změně jednotek datového skladu.  DWU6000 poskytuje 60 výpočetních uzlů a dosahuje mnohem vyššího výkonu dotazů než DWU100. 
 
-| Jednotky datového skladu  | \#Výpočetních uzlů | \#distribucí na uzel |
+| Jednotky datového skladu  | \# výpočetních uzlů | \# distribucí na uzel |
 | ---- | ------------------ | ---------------------------- |
 | 100  | 1                  | 60                           |
 | 200  | 2                  | 30                           |
@@ -40,9 +41,9 @@ Následující tabulka ukazuje, jak se mění počet distribucí na výpočetní
 | 400  | 4                  | 15                           |
 | 500  | 5                  | 12                           |
 | 600  | 6                  | 10                           |
-| 1000 | 10                 | 6                            |
+| 1 000 | 10                 | 6                            |
 | 1200 | 12                 | 5                            |
-| 1500 | 15                 | 4                            |
+| 1 500 | 15                 | 4                            |
 | 2000 | 20                 | 3                            |
 | 3000 | 30                 | 2                            |
 | 6000 | 60                 | 1                            |
@@ -114,5 +115,5 @@ Pokud chcete zjistit stav datového skladu, přečtěte si rychlý Start pro [Po
 Škálování datového skladu vyžaduje oprávnění popsaná v [příkazu ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse).  Pozastavení a obnovení vyžadují oprávnění [přispěvatele databáze SQL](../role-based-access-control/built-in-roles.md#sql-db-contributor) , konkrétně Microsoft. SQL/servery/databáze/akce.
 
 
-## <a name="next-steps"></a>Další postup
-Další aspekty správy výpočetních prostředků [](manage-compute-with-azure-functions.md) je přidělením různých výpočetních prostředků pro jednotlivé dotazy, najdete v příručce Průvodce správou výpočetních prostředků. Další informace najdete v tématu [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md).
+## <a name="next-steps"></a>Další kroky
+Další aspekty správy výpočetních prostředků je přidělením různých výpočetních prostředků pro jednotlivé dotazy, najdete v příručce průvodce [správou výpočetních](manage-compute-with-azure-functions.md) prostředků. Další informace najdete v tématu [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md).

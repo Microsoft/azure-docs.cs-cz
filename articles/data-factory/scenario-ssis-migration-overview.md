@@ -1,5 +1,5 @@
 ---
-title: Migrace místních SSIS úloh do SSIS v Azure Data Factory | Microsoft Docs
+title: Migrace místních SSIS úloh do SSIS v Azure Data Factory
 description: Migrujte místní SSIS úlohy do SSIS v ADF.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: 3bf5ddebd59c95d00d0d3270f0e8e1a2d29b379a
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: e75e6bc78740ffb8aba0faa0ef95f4b13a8c56ef
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968468"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684422"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>Migrace místních SSIS úloh do SSIS v ADF
 
@@ -27,7 +27,7 @@ Když migrujete databázové úlohy z SQL Server místně do služby Azure Datab
 
 Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF) podporuje spouštění balíčků SSIS. Po zřízení Azure-SSIS IR můžete pro nasazení a spouštění balíčků v Azure použít známé nástroje SQL Server, jako je například/SQL (SSDT) serveru Management Studio (SSMS) a nástroje příkazového řádku, jako je například dtinstall/dtutil/DTExec. Další informace najdete v tématu [Přehled služby Azure SSIS Rewind a Shift](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
 
-Tento článek popisuje proces migrace úloh ETL z místního SSIS na SSIS v ADF. Proces migrace se skládá ze dvou fází: **Posouzení** a **migrace**.
+Tento článek popisuje proces migrace úloh ETL z místního SSIS na SSIS v ADF. Proces migrace se skládá ze dvou fází: **posouzení** a **migrace**.
 
 ## <a name="assessment"></a>Posouzení
 

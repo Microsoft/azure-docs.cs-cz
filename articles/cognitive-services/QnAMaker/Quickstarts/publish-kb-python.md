@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: publikování znalostní báze, REST, Pythonu QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Tento rychlý Start založený na REST Python vás provede publikováním znalostní báze, který odešle nejnovější verzi testované znalostní báze do vyhrazeného Azure Search indexu představujícího publikovanou znalostní bázi. Také se přitom vytvoří koncový bod, který je možné volat v aplikaci nebo chatovacím robotu.
+description: Tento rychlý Start založený na REST Python publikuje vaši znalostní bázi a vytvoří koncový bod, který se dá volat ve vaší aplikaci nebo v robotovi pro chat.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 09523bb6c9c8a58f5f7bd102d2ac30ad77f28d1c
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 6ca13f29d2201bd29bda934ed4be169bcddf58de
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840190"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720948"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>Rychlý start: Publikování znalostní báze ve službě QnA Maker pomocí Pythonu
 
@@ -25,10 +25,10 @@ Tento rychlý Start založený na REST vás provede programově publikováním z
 Tento rychlý Start volá QnA Maker rozhraní REST API:
 * [Publikování](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) –toto rozhraní API nevyžaduje v těle požadavku žádné informace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Python 3.7](https://www.python.org/downloads/)
-* Musíte mít [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst svůj klíč a koncový bod (včetně názvu prostředku), vyberte pro prostředek v Azure Portal **rychlý Start** .
+* Potřebujete [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst svůj klíč a koncový bod (včetně názvu prostředku), vyberte pro prostředek v Azure Portal **rychlý Start** .
 * ID znalostní báze služby QnA Maker, které najdete v adrese URL v parametru kbid řetězce dotazu, jak vidíte níže.
 
     ![ID znalostní báze ve službě QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
@@ -42,7 +42,7 @@ Tento rychlý Start volá QnA Maker rozhraní REST API:
 
 Vytvořte soubor s názvem `publish-kb-3x.py`.
 
-## <a name="add-the-required-dependencies"></a>Přidejte požadované závislosti
+## <a name="add-the-required-dependencies"></a>Přidání požadovaných závislostí
 
 Na začátek souboru `publish-kb-3x.py` přidejte následující řádky k přidání potřebných závislostí do projektu:
 

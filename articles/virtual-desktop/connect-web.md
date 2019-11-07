@@ -1,5 +1,5 @@
 ---
-title: Připojení k virtuálnímu počítači s Windows z webového prohlížeče – Azure
+title: Připojení webového klienta pro virtuální počítače s Windows – Azure
 description: Jak se připojit k virtuálnímu počítači s Windows pomocí webového klienta.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: e7fa1d2b21bfde6495a63676bc2aa1faa07e6bc5
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a29081f77587a96dc48930eab359610a42fc0be5
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676756"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605818"
 ---
 # <a name="connect-with-the-web-client"></a>Připojení k webovému klientovi
 
@@ -25,7 +25,7 @@ Webový klient umožňuje přístup k prostředkům virtuálního počítače s 
 
 I když by měl prohlížeč podporující technologii HTML5 fungovat, oficiálně podporujeme následující operační systémy a prohlížeče.
 
-| Prohlížeee           | Podporovaný operační systém                     | Poznámky               |
+| Prohlížeč           | Podporovaný operační systém                     | Poznámky               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          |                     |

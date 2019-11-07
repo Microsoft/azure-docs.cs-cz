@@ -1,6 +1,6 @@
 ---
-title: Ladění výkonu s využitím mezipaměti sady výsledků dotazu | Microsoft Docs
-description: Přehled funkcí
+title: Ladění výkonu s využitím mezipaměti sady výsledků
+description: Přehled funkcí ukládání do mezipaměti sady výsledků pro Azure SQL Data Warehouse
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
-ms.openlocfilehash: 6dd3172dd9098db0cb7ec09e812eec65f717340a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 461320b9c3ed48176fb60fe695704c582edcd552
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163206"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692955"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Ladění výkonu s využitím mezipaměti sady výsledků  
 Pokud je povoleno ukládání sady výsledků do mezipaměti, Azure SQL Data Warehouse automaticky ukládá do mezipaměti výsledky dotazu v uživatelské databázi pro opakované použití.  To umožňuje následným provedením dotazů získat výsledky přímo z trvalé mezipaměti, aby se ještě nevyžadovalo jejich recompute.   Ukládání sady výsledků do mezipaměti vylepšuje výkon dotazů a snižuje využití prostředků v výpočetním prostředí.  Dotazy, které používají sadu výsledků uložených v mezipaměti, nepoužívají žádné přihrádky souběžnosti, a proto se nepočítají proti stávajícím limitům souběžnosti. Z důvodu zabezpečení mají uživatelé přístup k výsledkům uloženým v mezipaměti pouze v případě, že mají stejná oprávnění k přístupu k datům, jako uživatelé, kteří vytvářejí výsledky v mezipaměti.  

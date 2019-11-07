@@ -1,5 +1,5 @@
 ---
-title: Vytvoření agenta elastických úloh Azure SQL Database pomocí PowerShellu | Microsoft Docs
+title: 'Vytvoření agenta elastické úlohy Azure SQL Database pomocí prostředí PowerShell '
 description: Zjistěte, jak vytvořit agenta elastických úloh pomocí PowerShellu.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 0d64bd150a43666679253f8244d80411e25dfdcd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 80f9db2d11c875d9be9bef225c04e3e90f3d0ff8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935046"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692244"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Vytvoření agenta elastických úloh pomocí PowerShellu
 
@@ -29,7 +29,7 @@ V tomto kurzu se seznámíte s kroky potřebnými ke spuštění dotazu napří�
 > * Vytvoření přihlašovacích údajů k úloze, aby úlohy mohly na svých cílech spouštět skripty
 > * Definice cílů (servery, elastické fondy, databáze, mapy horizontálních oddílů), pro které chcete úlohu spustit
 > * Vytvoření přihlašovacích údajů v oboru databáze v cílových databázích, aby se agent mohl připojit a spouštět úlohy
-> * Vytvoří úlohu
+> * Vytvoření úlohy
 > * Přidání kroků do úlohy
 > * Spuštění provádění úlohy
 > * Monitorování úlohy
@@ -70,7 +70,7 @@ Get-Module Az.Sql
 
 K vytvoření agenta elastických úloh se vyžaduje databáze (S0 nebo vyšší), která se použije jako [databáze úloh](sql-database-job-automation-overview.md#job-database). 
 
-*Následující skript vytvoří novou skupinu prostředků, server a databázi, která se použije jako databáze úloh. Následující skript také vytvoří druhý server se dvěma prázdnými databázemi, ve kterých se mají spouštět úlohy.*
+*Skript níže vytvoří novou skupinu prostředků, server a databázi pro použití jako databázi úloh. Následující skript také vytvoří druhý server se dvěma prázdnými databázemi, ve kterých se mají spouštět úlohy.*
 
 Elastické úlohy nemají žádné specifické požadavky na pojmenování, takže můžete použít libovolné zásady vytváření názvů, pokud splňují [požadavky Azure](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
 
@@ -215,7 +215,7 @@ $JobCred = $JobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential
 
 [Cílová skupina](sql-database-job-automation-overview.md#target-group) definuje sadu jedné nebo více databází, pro které se provede určitý krok úlohy. 
 
-Následující fragment kódu vytvoří dvě cílové skupiny: *Server*a *ServerGroupExcludingDb2*. Cílem skupiny *ServerGroup* jsou všechny databáze, které na serveru existují v době spuštění, a cílem skupiny *ServerGroupExcludingDb2* jsou všechny databáze na serveru kromě databáze *TargetDb2*:
+Následující fragment kódu vytvoří dvě cílové skupiny: *ServerGroup* a *ServerGroupExcludingDb2*. Cílem skupiny *ServerGroup* jsou všechny databáze, které na serveru existují v době spuštění, a cílem skupiny *ServerGroupExcludingDb2* jsou všechny databáze na serveru kromě databáze *TargetDb2*:
 
 ```powershell
 Write-Output "Creating test target groups..."
@@ -229,7 +229,7 @@ $ServerGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $TargetServerNa
 $ServerGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $TargetServerName -Database $Db2.DatabaseName -Exclude
 ```
 
-## <a name="create-a-job"></a>Vytvoří úlohu
+## <a name="create-a-job"></a>Vytvoření úlohy
 
 ```powershell
 Write-Output "Creating a new job"
@@ -296,7 +296,7 @@ V následující tabulce jsou uvedené možné stavy provádění úloh:
 |**WaitingForRetry** | Provádění úlohy nedokázalo dokončit svoji akci a čeká na opakování.|
 |**Úspěchu** | Provádění úlohy bylo úspěšně dokončeno.|
 |**SucceededWithSkipped** | Provádění úlohy se úspěšně dokončilo, ale některé z jejích podřízených objektů se přeskočily.|
-|**Se nezdařilo** | Provádění úlohy selhalo a vyčerpalo své opakované pokusy.|
+|**Nepovedlo se** | Provádění úlohy selhalo a vyčerpalo své opakované pokusy.|
 |**Vypršel časový limit** | Vypršel časový limit pro provedení úlohy.|
 |**Zrušil** | Provádění úlohy bylo zrušeno.|
 |**Vynecháno** | Provádění úlohy bylo přeskočeno, protože na stejném cíli již běželo jiné provedení stejného kroku úlohy.|
@@ -324,7 +324,7 @@ Remove-AzResourceGroup -ResourceGroupName $ResourceGroupName
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste spustili skript Transact-SQL pro sadu databází.  Naučili jste se provádět následující úlohy:
 
@@ -333,7 +333,7 @@ V tomto kurzu jste spustili skript Transact-SQL pro sadu databází.  Naučili j
 > * Vytvoření přihlašovacích údajů k úloze, aby úlohy mohly na svých cílech spouštět skripty
 > * Definice cílů (servery, elastické fondy, databáze, mapy horizontálních oddílů), pro které chcete úlohu spustit
 > * Vytvoření přihlašovacích údajů v oboru databáze v cílových databázích, aby se agent mohl připojit a spouštět úlohy
-> * Vytvoří úlohu
+> * Vytvoření úlohy
 > * Přidání kroku do úlohy
 > * Spuštění provádění úlohy
 > * Monitorování úlohy

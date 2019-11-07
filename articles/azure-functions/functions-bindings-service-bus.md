@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: b261594076857b841ba288dfaba8b5b8e9250065
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 64c99c6e7e33be5856e67db0500bf48123cdcf09
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72987934"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614486"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus vazby pro Azure Functions
 
@@ -32,7 +32,7 @@ Vazby Service Bus jsou k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs.
 
 ## <a name="packages---functions-2x"></a>Balíčky – funkce 2. x
 
-Vazby Service Bus jsou k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs. Extensions. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus) , verze 3. x. Zdrojový kód balíčku je v úložišti GitHub [Azure-WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/) .
+Vazby Service Bus jsou k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs. Extensions. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus) , verze 3. x. Zdrojový kód balíčku je v úložišti GitHub [Azure-Functions-ServiceBus-Extension](https://github.com/Azure/azure-functions-servicebus-extension) .
 
 > [!NOTE]
 > Verze 2. x nevytváří téma ani předplatné nakonfigurované v instanci `ServiceBusTrigger`. Verze 2. x je založená na [Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) a nezpracovává správu fronty.
@@ -325,9 +325,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Function. JSON – vlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** | – | Musí být nastavené na "serviceBusTrigger". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
-|**direction** | – | Musí být nastavené na "in". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
-|**Jméno** | – | Název proměnné, která představuje zprávu fronty nebo tématu v kódu funkce. Nastavte na "$return", chcete-li odkazovat na návratovou hodnotu funkce. |
+|**type** | neuvedeno | Musí být nastavené na "serviceBusTrigger". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
+|**direction** | neuvedeno | Musí být nastavené na "in". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
+|**Jméno** | neuvedeno | Název proměnné, která představuje zprávu fronty nebo tématu v kódu funkce. Nastavte na "$return", chcete-li odkazovat na návratovou hodnotu funkce. |
 |**Proměnné QueueName**|**Proměnné QueueName**|Název fronty, která se má monitorovat  Nastavte pouze v případě, že monitorování fronty, nikoli tématu.
 |**téma**|**Téma**|Název tématu, které se má monitorovat Nastavte pouze v případě, že monitorování tématu, nikoli pro frontu.|
 |**subscriptionName**|**SubscriptionName**|Název předplatného, které se má monitorovat Nastavte pouze v případě, že monitorování tématu, nikoli pro frontu.|
@@ -399,7 +399,7 @@ Soubor [Host. JSON](functions-host-json.md#servicebus) obsahuje nastavení, kter
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
 |maxConcurrentCalls|16|Maximální počet souběžných volání zpětného volání, které by mělo iniciovat čerpadlo zpráv. Ve výchozím nastavení aplikace runtime Functions zpracovává více zpráv souběžně. Pokud chcete modul runtime nasměrovat tak, aby zpracovával jenom jednu frontu nebo zprávu o tématu, nastavte `maxConcurrentCalls` na 1. |
-|prefetchCount|–|Výchozí PrefetchCount, které bude používat základní MessageReceiver.|
+|prefetchCount|neuvedeno|Výchozí PrefetchCount, které bude používat základní MessageReceiver.|
 |maxAutoRenewDuration|00:05:00|Maximální doba, během které bude zámek zprávy obnoven automaticky.|
 
 ## <a name="output"></a>Výstup
@@ -473,12 +473,12 @@ public static void Run(TimerInfo myTimer, ILogger log, out string outputSbQueue)
 Zde je C# kód skriptu, který vytváří více zpráv:
 
 ```cs
-public static void Run(TimerInfo myTimer, ILogger log, ICollector<string> outputSbQueue)
+public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<string> outputSbQueue)
 {
     string message = $"Service Bus queue messages created at: {DateTime.Now}";
     log.LogInformation(message); 
-    outputSbQueue.Add("1 " + message);
-    outputSbQueue.Add("2 " + message);
+    await outputSbQueue.AddAsync("1 " + message);
+    await outputSbQueue.AddAsync("2 " + message);
 }
 ```
 
@@ -535,7 +535,7 @@ public String pushToQueue(
  }
 ```
 
- V [běhové knihovně funkcí jazyka Java](/java/api/overview/azure/functions/runtime)použijte v parametrech funkce anotaci `@QueueOutput`, jejichž hodnota by byla zapsána do fronty Service Bus.  Typ parametru by měl být `OutputBinding<T>`, kde T je jakýkoliv nativní typ Java POJO.
+ V [běhové knihovně funkcí jazyka Java](/java/api/overview/azure/functions/runtime)použijte v parametrech funkce anotaci `@QueueOutput`, jejichž hodnota by byla zapsána do fronty Service Bus.  Typ parametru by měl být `OutputBinding<T>`, kde T je jakýkoliv nativní typ Java typu POJO.
 
 Funkce jazyka Java mohou také zapisovat do Service Busho tématu. Následující příklad používá anotaci `@ServiceBusTopicOutput` k popisu konfigurace výstupní vazby. 
 
@@ -692,9 +692,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Function. JSON – vlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** | – | Musí být nastavené na "serviceBus". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
-|**direction** | – | Musí být nastavené na "out". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
-|**Jméno** | – | Název proměnné, která představuje frontu nebo téma v kódu funkce. Nastavte na "$return", chcete-li odkazovat na návratovou hodnotu funkce. |
+|**type** | neuvedeno | Musí být nastavené na "serviceBus". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
+|**direction** | neuvedeno | Musí být nastavené na "out". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
+|**Jméno** | neuvedeno | Název proměnné, která představuje frontu nebo téma v kódu funkce. Nastavte na "$return", chcete-li odkazovat na návratovou hodnotu funkce. |
 |**Proměnné QueueName**|**Proměnné QueueName**|Název fronty  Nastavte pouze v případě, že jsou odesílány zprávy fronty, nikoli téma.
 |**téma**|**Téma**|Název tématu, které se má monitorovat Nastaveno pouze při posílání zpráv témat, nikoli pro frontu.|
 |**vázán**|**Vázán**|Název nastavení aplikace, které obsahuje připojovací řetězec Service Bus, který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyServiceBus", modul runtime Functions vyhledá nastavení aplikace s názvem "AzureWebJobsMyServiceBus". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec Service Bus v nastavení aplikace s názvem "AzureWebJobsServiceBus".<br><br>Pokud chcete získat připojovací řetězec, postupujte podle kroků uvedených v části [získání přihlašovacích údajů pro správu](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string). Připojovací řetězec musí být pro obor názvů Service Bus, který není omezen na konkrétní frontu nebo téma.|
@@ -762,7 +762,7 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
 |maxAutoRenewDuration|00:05:00|Maximální doba, během které bude zámek zprávy obnoven automaticky.|
 |Zobrazovat|true|Zda má Trigger okamžitě označit jako dokončený (automatické dokončování) nebo počkat na dokončení zpracování.|
 |maxConcurrentCalls|16|Maximální počet souběžných volání zpětného volání, které by mělo iniciovat čerpadlo zpráv. Ve výchozím nastavení aplikace runtime Functions zpracovává více zpráv souběžně. Pokud chcete modul runtime nasměrovat tak, aby zpracovával jenom jednu frontu nebo zprávu o tématu, nastavte `maxConcurrentCalls` na 1. |
-|prefetchCount|–|Výchozí PrefetchCount, které bude používat základní MessageReceiver.|
+|prefetchCount|neuvedeno|Výchozí PrefetchCount, které bude používat základní MessageReceiver.|
 
 
 ## <a name="next-steps"></a>Další kroky

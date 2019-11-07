@@ -1,7 +1,7 @@
 ---
 title: Testování a přeučení modelu – Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: Naučte se testovat image a pak ji použít k přeškolování modelu.
+description: V tomto článku se dozvíte, jak otestovat image a pak ji použít k reorganizaci modelu ve službě Custom Vision.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 3f78f0b992581a44b030387f1bd0e37664df4cfd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c6ed8869f6d33609381a42fd22d728e9e5542802
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560913"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721202"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Testování a přeškolování modelu pomocí Custom Vision Service
 
@@ -51,12 +51,12 @@ Pokud chcete použít image odeslanou dříve pro školení, použijte následuj
     > [!TIP]
     > Obrázky jsou seřazené tak, aby v horní části byly obrázky, které mohou přenést největší zisky do třídění. Chcete-li vybrat jiné řazení, použijte oddíl __řazení__ .
 
-    Chcete-li přidat obrázek do školicích dat, vyberte obrázek, vyberte značku a pak vyberte __Uložit a zavřít__. Obrázek se odebere z __předpovědi__ a přidá se do školicích imagí. Můžete ji zobrazit výběrem karty školicích __imagí__ .
+    Chcete-li přidat obrázek do školicích dat, vyberte obrázek, vyberte značku a pak vyberte __Uložit a zavřít__. Obrázek se odebere z __předpovědi__ a přidá se do školicích imagí. Můžete ji zobrazit výběrem karty __školicích imagí__ .
 
     ![Obrázek stránky označování](./media/test-your-model/tag-image.png)
 
 3. Pro přeučení třídění použijte tlačítko __výuka__ .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Vylepšení klasifikátoru](getting-started-improving-your-classifier.md)

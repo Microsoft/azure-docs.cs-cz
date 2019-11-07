@@ -1,5 +1,5 @@
 ---
-title: Doprovodné materiály k návrhu distribuovaných tabulek – Azure SQL Data Warehouse | Microsoft Docs
+title: Doprovodné materiály k návrhu distribuovaných tabulek
 description: Doporučení pro návrh distribuovaných tabulek distribuovaných v Azure SQL Data Warehouse a kruhové dotazování ve třídě
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 4b322415592a7202387cb6776d2c040cda765b27
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f05e732e11fb9cd88d4671528d551c68e448a8d7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479356"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685477"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Pokyny pro návrh distribuovaných tabulek v Azure SQL Data Warehouse
 Doporučení pro návrh distribuovaných tabulek distribuovaných v Azure SQL Data Warehouse a kruhové dotazování ve třídě
@@ -112,8 +113,8 @@ Chcete-li získat správné dotazy na výsledky dotazu, může přesunout data z
 
 Chcete-li snížit pohyb dat, vyberte distribuční sloupec:
 
-- Se používá v `JOIN` `DISTINCT` `GROUP BY` klauzulích`HAVING` , `OVER`,, a. Pokud mají dvě velké tabulky faktů časté spojení, výkon dotazů se vylepšuje při distribuci obou tabulek v jednom ze sloupců spojení.  V případě, že se tabulka v joins nepoužívá, zvažte možnost distribuovat tabulku do sloupce, který je `GROUP BY` v klauzuli často.
-- Se *nepoužívá* v `WHERE` klauzulích. To může zúžit dotaz tak, aby se nespouštěl ve všech distribucích. 
+- Používá se v klauzulích `JOIN`, `GROUP BY`, `DISTINCT`, `OVER`a `HAVING`. Pokud mají dvě velké tabulky faktů časté spojení, výkon dotazů se vylepšuje při distribuci obou tabulek v jednom ze sloupců spojení.  V případě, že se tabulka v joins nepoužívá, zvažte možnost distribuovat tabulku do sloupce, který je často v klauzuli `GROUP BY`.
+- Se *nepoužívá v* klauzulích `WHERE`. To může zúžit dotaz tak, aby se nespouštěl ve všech distribucích. 
 - Není *sloupec* data. Klauzule WHERE často filtrují podle data.  V takovém případě může být veškeré zpracování spuštěno pouze v několika distribucích.
 
 ### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>Co dělat, když žádný ze sloupců není dobrým distribučním sloupcem
@@ -212,7 +213,7 @@ RENAME OBJECT [dbo].[FactInternetSales] TO [FactInternetSales_ProductKey];
 RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Chcete-li vytvořit distribuovanou tabulku, použijte jeden z následujících příkazů:
 

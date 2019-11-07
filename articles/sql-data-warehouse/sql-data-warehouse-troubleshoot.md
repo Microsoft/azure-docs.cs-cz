@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s Azure SQL Data Warehouse | Microsoft Docs
+title: Řešení potíží
 description: Řešení potíží s Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,34 +10,35 @@ ms.subservice: manage
 ms.date: 7/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a6a6fdf6e63bf8c063f8dd6f23ae380e9ce7b98d
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 2aa7926286be277c7ad0aa7054b4bd6fceb8229f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575514"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685398"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Řešení potíží s Azure SQL Data Warehouse
 V tomto článku jsou uvedené běžné otázky týkající se řešení potíží.
 
-## <a name="connecting"></a>Připojování
-| Problém                                                        | Řešení                                                   |
+## <a name="connecting"></a>Připojovaného
+| Problém                                                        | Rozlišení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Přihlášení uživatele "NT AUTHORITY\ANONYMOUS LOGON" se nezdařilo. (Microsoft SQL Server, chyba: 18456) | K této chybě dojde, když se uživatel AAD pokusí připojit k hlavní databázi, ale nemá v hlavní větvi žádného uživatele.  Chcete-li tento problém vyřešit, zadejte SQL Data Warehouse, ke kterým se chcete připojit v době připojení, nebo přidejte uživatele do hlavní databáze.  Další podrobnosti najdete v článku [Přehled zabezpečení][Security overview] . |
-| Objekt zabezpečení serveru "MyUserName" nemůže získat přístup k databázi "Master" v aktuálním kontextu zabezpečení. Výchozí databázi uživatele nelze otevřít. Přihlášení se nezdařilo. Přihlášení uživatele ' MyUserName ' se nezdařilo. (Microsoft SQL Server, chyba: 916) | K této chybě dojde, když se uživatel AAD pokusí připojit k hlavní databázi, ale nemá v hlavní větvi žádného uživatele.  Chcete-li tento problém vyřešit, zadejte SQL Data Warehouse, ke kterým se chcete připojit v době připojení, nebo přidejte uživatele do hlavní databáze.  Další podrobnosti najdete v článku [Přehled zabezpečení][Security overview] . |
+| Přihlášení uživatele NT AUTHORITY\ANONYMOUS LOGON selhalo. (Microsoft SQL Server, chyba: 18456) | K této chybě dojde, když se uživatel AAD pokusí připojit k hlavní databázi, ale nemá v hlavní větvi žádného uživatele.  Pokud chcete tento problém vyřešit, při připojování určete službu SQL Data Warehouse, ke které se chcete připojit, nebo přidejte daného uživatele do hlavní databáze.  Další podrobnosti najdete v článku [Přehled zabezpečení][Security overview] . |
+| Objekt zabezpečení serveru MyUserName nemůže v aktuálním kontextu zabezpečení získat přístup k databázi master. Výchozí databázi uživatele nelze otevřít. Přihlášení se nezdařilo. Nezdařilo se přihlášení pro uživatele myUserName. (Microsoft SQL Server, chyba: 916) | K této chybě dojde, když se uživatel AAD pokusí připojit k hlavní databázi, ale nemá v hlavní větvi žádného uživatele.  Pokud chcete tento problém vyřešit, při připojování určete službu SQL Data Warehouse, ke které se chcete připojit, nebo přidejte daného uživatele do hlavní databáze.  Další podrobnosti najdete v článku [Přehled zabezpečení][Security overview] . |
 | Chyba CTAIP                                                  | K této chybě může dojít, když bylo vytvořeno přihlášení na hlavní databázi systému SQL Server, ale ne v databázi SQL Data Warehouse.  Pokud se zobrazí tato chyba, přečtěte si článek [Přehled zabezpečení][Security overview] .  Tento článek vysvětluje, jak vytvořit přihlašovací údaje a uživatele v hlavní větvi a jak vytvořit uživatele v databázi SQL Data Warehouse. |
-| Blokováno bránou firewall                                          | Databáze Azure SQL se chrání pomocí bran firewall na úrovni serveru a databáze, aby bylo zajištěno, že přístup k databázi bude mít jenom známé IP adresy. Brány firewall jsou ve výchozím nastavení zabezpečené, což znamená, že před připojením musíte explicitně povolit a IP adresu nebo rozsah adres.  Pokud chcete bránu firewall nakonfigurovat pro přístup, postupujte podle pokynů v tématu [Konfigurace přístupu k bráně firewall serveru pro IP adresu vašeho klienta][Configure server firewall access for your client IP] v pokynech k [zřizování][Provisioning instructions]. |
+| Blokováno bránou firewall                                          | Databáze Azure SQL se chrání pomocí bran firewall na úrovni serveru a databáze, aby bylo zajištěno, že přístup k databázi bude mít jenom známé IP adresy. Brány firewall jsou ve výchozím nastavení zabezpečené, což znamená, že před připojením musíte explicitně povolit a IP adresu nebo rozsah adres.  Pokud chcete bránu firewall nakonfigurovat pro přístup, postupujte podle pokynů v tématu [Konfigurace přístupu k bráně firewall serveru pro IP adresu vašeho klienta][Configure server firewall access for your client IP] v [pokynech k zřizování][Provisioning instructions]. |
 | Nejde se připojit pomocí nástroje nebo ovladače.                           | SQL Data Warehouse doporučuje používat [SSMS][SSMS], [SSDT pro Visual Studio][SSDT for Visual Studio]nebo [Sqlcmd][sqlcmd] k dotazování na data. Další informace o ovladačích a připojení k SQL Data Warehouse najdete v tématu [ovladače pro Azure SQL Data Warehouse][Drivers for Azure SQL Data Warehouse] a [připojení k Azure SQL Data Warehouse][Connect to Azure SQL Data Warehouse] článkům. |
 
 ## <a name="tools"></a>Nástroje
-| Problém                                                        | Řešení                                                   |
+| Problém                                                        | Rozlišení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | V Průzkumníkovi objektů Visual studia chybí uživatelé AAD.           | Jedná se o známý problém.  Alternativním řešením je zobrazit uživatele v zobrazení [Sys. database_principals][sys.database_principals].  Další informace o použití Azure Active Directory s SQL Data Warehouse najdete v tématu [ověřování pro Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse] . |
 | Ruční skriptování, použití Průvodce skriptováním nebo připojení prostřednictvím SSMS je pomalé, nereaguje nebo produkuje chyby. | Zajistěte, aby byl uživatel vytvořen v hlavní databázi. V možnostech skriptování se ujistěte také, že je edice stroje nastavená na Microsoft Azure SQL Data Warehouse Edition a typ modulu je "Microsoft Azure SQL Database". |
 | Generování skriptů v SSMS se nezdařilo                               | Vygenerování skriptu pro SQL Data Warehouse se nezdařila, pokud je možnost "vygenerovat skript pro závislé objekty" nastavena na hodnotu "true". Alternativním řešením je, že uživatelé musí ručně přejít na nástroje-> Možnosti-> Průzkumník objektů systému SQL Server – > vygenerovat skript pro závislé možnosti a nastavit na hodnotu NEPRAVDA. |
 
 ## <a name="performance"></a>Výkon
-| Problém                                                        | Řešení                                                   |
+| Problém                                                        | Rozlišení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Řešení potíží s výkonem dotazů                            | Pokud se snažíte řešit problémy konkrétního dotazu, začněte s [učením, jak sledovat vaše dotazy][Learning how to monitor your queries]. |
 | Nekvalitní výkon a plány dotazů často vyplývají z důvodu chybějících statistik. | Nejběžnější příčinou špatného výkonu je nedostatek statistik v tabulkách.  Podrobnosti o tom, jak vytvořit statistiku a proč jsou důležité pro váš výkon, najdete v článku [udržování statistik tabulek][Statistics] . |
@@ -47,16 +48,16 @@ V tomto článku jsou uvedené běžné otázky týkající se řešení potíž
 | Nízký výkon dotazů v důsledku špatné kvality indexu     | Občas se můžou dotazy zpomalit kvůli [špatné kvalitě indexu columnstore][Poor columnstore index quality].  V tomto článku najdete další informace a postup [sestavení indexů pro zlepšení kvality segmentů][Rebuild indexes to improve segment quality]. |
 
 ## <a name="system-management"></a>Správa systému
-| Problém                                                        | Řešení                                                   |
+| Problém                                                        | Rozlišení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Msg 40847: Operaci nelze provést, protože server by překročil povolenou kvótu jednotky databázové transakce 45000. | Buď snižte [DWU][DWU] databáze, kterou se pokoušíte vytvořit, nebo požádejte o [zvýšení kvóty][request a quota increase]. |
+| Msg 40847: operaci nelze provést, protože server by překročil povolenou kvótu jednotky transakce databáze 45000. | Buď snižte [DWU][DWU] databáze, kterou se pokoušíte vytvořit, nebo [požádejte o zvýšení kvóty][request a quota increase]. |
 | Zkoumání využití prostoru                              | Informace o využití prostoru v systému najdete v tématu [velikosti tabulek][Table sizes] . |
 | Pomáhat se správou tabulek                                    | Nápovědu ke správě tabulek najdete v článku [Přehled tabulky][Overview] .  Tento článek také obsahuje odkazy na podrobnější témata, jako jsou [typy dat tabulky][Data types], [distribuce tabulky][Distribute], [indexování tabulky][Index], [dělení tabulky][Partition], [Údržba statistik tabulek][Statistics] a [dočasné tabulky][Temporary]. |
 | Neprobíhá aktualizace indikátoru průběhu transparentního šifrování dat (TDE) v Azure Portal | Stav TDE můžete zobrazit přes [PowerShell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption). |
 
 
 ## <a name="differences-from-sql-database"></a>Rozdíly od SQL Database
-| Problém                                 | Řešení                                                   |
+| Problém                                 | Rozlišení                                                   |
 | :------------------------------------ | :----------------------------------------------------------- |
 | Nepodporované funkce SQL Database     | Viz [nepodporované funkce tabulky][Unsupported table features]. |
 | Nepodporované datové typy SQL Database   | Zobrazit [nepodporované datové typy][Unsupported data types].        |
@@ -65,7 +66,7 @@ V tomto článku jsou uvedené běžné otázky týkající se řešení potíž
 | Omezení uložených procedur          | V tématu [omezení uložených procedur][Stored procedure limitations] můžete pochopit některá omezení uložených procedur. |
 | UDF nepodporují příkazy SELECT | Toto je aktuální omezení našich Udfů.  Podrobnější informace najdete v tématu věnovaném [Vytvoření funkce][CREATE FUNCTION] . |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další nápovědu při hledání řešení problému najdete v tématu Další zdroje, které můžete vyzkoušet.
 
 * [Blogy]

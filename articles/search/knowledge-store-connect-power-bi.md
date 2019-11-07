@@ -1,37 +1,42 @@
 ---
-title: Připojení k znalostnímu obchodu pomocí Power BI
+title: Připojení k znalostnímu obchodu (Preview) pomocí Power BI
 titleSuffix: Azure Cognitive Search
-description: Připojte si Azure Kognitivní hledání Knowledge Store pomocí Power BI pro analýzu a průzkum.
+description: Připojte si Azure Kognitivní hledání Knowledge Store (Preview) s Power BI pro analýzu a průzkum.
 author: lisaleib
 manager: nitinme
 ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 03f28cb40708b7ec77a0a342b5ec1b6faeaa8e3b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7b12f0f14003389d36e2df5bcffe7828c135cf2b
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485153"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715491"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Připojit znalostní bázi Knowledge Store s Power BI
 
-> [!Note]
-> Znalostní báze je ve verzi Preview a neměl by se používat v produkčním prostředí. Tuto funkci poskytuje portál a [REST API pro hledání verze 2019-05-06-Preview](search-api-preview.md) . V tuto chvíli není dostupná žádná podpora sady .NET SDK.
->
+> [!IMPORTANT] 
+> znalostní databáze je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). [REST API verze 2019-05-06-Preview](search-api-preview.md) poskytuje funkce ve verzi Preview. V současné době je omezená podpora portálu a žádná podpora sady .NET SDK.
 
 V tomto článku se dozvíte, jak se připojit k znalostnímu obchodu a prozkoumat ho pomocí Power Query v aplikaci Power BI Desktop. Můžete začít rychleji pracovat se šablonami nebo si vytvořit vlastní řídicí panel úplně od začátku.
 
-## <a name="prerequisites"></a>Předpoklady
++ Postupujte podle kroků v [části vytvoření znalostní báze ve Azure Portal](knowledge-store-create-portal.md) nebo [vytvořte službu Azure kognitivní hledání Knowledge Store pomocí REST](knowledge-store-create-rest.md) a vytvořte ukázkové úložiště Knowledge Store použité v tomto návodu. Také budete potřebovat název účtu služby Azure Storage, který jste použili k vytvoření obchodu Knowledge Store, a jeho přístupová klávesa z Azure Portal.
 
 + [Nainstalovat Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 
-+ Budete potřebovat znalostní bázi s projekcí do služby Azure Table Storage. Také budete potřebovat název účtu Azure Storage, který jste použili k vytvoření obchodu Knowledge Store, a jeho přístupový klíč z Azure Portal.
+## <a name="sample-power-bi-template---azure-portal-only"></a>Ukázka Power BI šablony – pouze Azure Portal
 
-Pokud chcete pracovat s ukázkovým úložištěm Knowledge Store, postupujte podle pokynů pro [Vytvoření úložiště znalostí](knowledge-store-create-portal.md).
+Pokud jste [úložiště Knowledge Store vytvořili pomocí Azure Portal](knowledge-store-create-portal.md), můžete použít [ukázku šablony Azure kognitivní hledání Power BI](https://github.com/Azure-Samples/cognitive-search-templates) k zobrazení a experimentování s Power BI vizualizacemi. Tato šablona je také k dispozici ke stažení při procházení průvodce **importem dat** .
 
-## <a name="create-a-custom-report"></a>Vytvoření vlastní sestavy
+Ukázková šablona provede automaticky kroky nastavení popsané ve zbývající části tohoto článku. Pokud jste však REST API k vytvoření vašeho znalostní báze použili, přeskočte šablonu a pomocí zbývajících částí v tomto článku připojte své znalostní bázi k Power BI. Začněte s [připojením pomocí Power BI](#connect-with-power-bi).
+
+Ukázková šablona obsahuje několik vizualizací, jako je WordCloud a Network navigátor. Některé vizualizace v šabloně, jako je mapa umístění a prohlížeč entit a grafů, nebudou zobrazovat data pro ukázkové úložiště Knowledge Store vytvořená v [části vytvoření znalostní báze v Azure Portal](knowledge-store-create-portal.md). Důvodem je to, že se použila jenom podmnožina rozšíření AI, která je dostupná v průvodci **importem dat** .
+
+![Ukázka šablony Azure Kognitivní hledání Power BI](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Ukázka šablony Power BI")
+
+## <a name="connect-with-power-bi"></a>Propojení s Power BI
 
 1. Spusťte Power BI Desktop a klikněte na **získat data**.
 

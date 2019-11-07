@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3d87ab57a5cf3bcd768a28f7867dac37371570b
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 1ab2180c54f07ff5009e2c57d8522f2eb0b81aad
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200358"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718379"
 ---
 # <a name="authentication-basics"></a>Základy ověřování
 
@@ -37,11 +37,11 @@ Tento článek popisuje mnohé z konceptů ověřování, které budete potřebo
 
 Místo vytváření aplikací, které každý z nich zachovávají vlastní uživatelské jméno a heslo, což má za následek vysokou administrativní zátěž, když potřebujete přidat nebo odebrat uživatele napříč více aplikacemi, můžou aplikace delegovat tuto odpovědnost na centralizovaného zprostředkovatele identity.
 
-Azure Active Directory (Azure AD) je centralizovaný identifikující poskytovatel v cloudu. Delegování ověřování a autorizace do IT umožňuje scénáře, jako jsou zásady podmíněného přístupu, které vyžadují, aby uživatel byl v určitém umístění, použití vícefaktorového ověřování a aby se uživatel mohl přihlásit jednou a pak automaticky přihlášené ke všem webovým aplikacím, které sdílejí stejný centralizovaný adresář. Tato funkce se označuje jako jednotné přihlašování (SSO).
+Azure Active Directory (Azure AD) je centralizovaný poskytovatel identity v cloudu. Delegování ověřování a autorizace do IT umožňuje scénáře, jako jsou zásady podmíněného přístupu, které vyžadují, aby uživatel byl v určitém umístění, použití vícefaktorového ověřování a aby se uživatel mohl přihlásit jednou a pak automaticky přihlášené ke všem webovým aplikacím, které sdílejí stejný centralizovaný adresář. Tato funkce se označuje jako jednotné přihlašování (SSO).
 
 Centralizovaný poskytovatel identity je ještě důležitější pro aplikace, které mají uživatele na celém světě, kteří se nemusí nutně přihlašovat ze sítě v podniku. Azure AD ověřuje uživatele a poskytuje přístupové tokeny. Přístupový token je token zabezpečení, který je vydaný autorizačním serverem. Obsahuje informace o uživateli a aplikaci, pro kterou je token určený, který je možné použít pro přístup k webovým rozhraním API a dalším chráněným prostředkům.
 
-Platforma Microsoft Identity usnadňuje ověřování pro vývojáře aplikací tím, že poskytuje identitu jako službu a podporuje standardní protokoly jako OAuth 2,0 a OpenID Connect a také open-source knihovny pro různé platformy, které vám pomůžou rychle začít vytvářet kódování. Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. Další informace najdete v tématu [vývoj platformy Microsoft Identity Platform](about-microsoft-identity-platform.md).
+Platforma Microsoft Identity usnadňuje ověřování pro vývojáře aplikací tím, že poskytuje identitu jako službu a podporuje standardní protokoly jako OAuth 2,0 a OpenID Connect a také open-source knihovny pro různé platformy, které vám pomůžou rychle začít vytvářet kódování. Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. Další informace najdete v tématu [vývoj platformy Microsoft Identity Platform](about-microsoft-identity-platform.md).
 
 ### <a name="tenants"></a>Tenantů
 
@@ -53,7 +53,7 @@ Azure AD taky poskytuje Azure Active Directory B2C, aby se organizace mohli při
 
 ### <a name="security-tokens"></a>Tokeny zabezpečení
 
-Tokeny zabezpečení obsahují informace o uživatelích a aplikacích. Azure AD používá tokeny založené na JSon (JWTs), které obsahují deklarace identity. Deklarace identity poskytuje kontrolní výrazy o jedné entitě jiné. Aplikace mohou používat deklarace identity pro různé úlohy, jako například:
+Tokeny zabezpečení obsahují informace o uživatelích a aplikacích. Azure AD používá tokeny založené na JSON (JWTs), které obsahují deklarace identity. Deklarace identity poskytuje kontrolní výrazy o jedné entitě jiné. Aplikace mohou používat deklarace identity pro různé úlohy, jako například:
 
 * Ověřování tokenu
 * Identifikace tenanta adresáře předmětu
@@ -83,7 +83,7 @@ Aplikace se můžou přihlašovat sami nebo delegovat přihlášení k poskytova
 Aby mohl poskytovatel identity zjistit, jestli má uživatel přístup ke konkrétní aplikaci, musí být uživatel i aplikace zaregistrované u poskytovatele identity. Při registraci aplikace ve službě Azure AD poskytujete konfiguraci identity pro vaši aplikaci, která umožňuje integraci se službou Azure AD. Registrace aplikace vám taky umožní:
 
 - Přizpůsobte si branding své aplikace v dialogovém okně přihlášení. To je důležité, protože se jedná o první prostředí, které bude mít uživatel s vaší aplikací.
-- Rozhodněte se, jestli chcete uživatelům umožnit, aby se přihlásili jenom v případě, že patří do vaší organizace. Toto je jediná klientská aplikace. Nebo Umožněte uživatelům, aby se přihlásili pomocí pracovního nebo školního účtu. Toto je víceklientské aplikace. Můžete také umožnit osobní účty Microsoft nebo sociální účet z propojených, Google atd.
+- Rozhodněte se, jestli chcete uživatelům umožnit, aby se přihlásili jenom v případě, že patří do vaší organizace. Toto je jediná klientská aplikace. Nebo Umožněte uživatelům, aby se přihlásili pomocí pracovního nebo školního účtu. Toto je víceklientské aplikace. Můžete také umožnit osobní účty Microsoft nebo sociální účet z LinkedInu, Google atd.
 - požádat o oprávnění rozsahu. Můžete například požádat o obor "User. Read", který uděluje oprávnění ke čtení profilu přihlášeného uživatele.
 - Definujte obory definující přístup k webovému rozhraní API. Když aplikace chce získat přístup k vašemu rozhraní API, obvykle bude potřebovat požádat o oprávnění k definovaným oborům.
 - Sdílejte tajný klíč k Azure AD, který prokáže identitu aplikace službě Azure AD.  To je důležité v případě, kdy je aplikace důvěrná klientská aplikace. Důvěrná klientská aplikace je aplikace, která může bezpečně uchovávat přihlašovací údaje. Pro uložení přihlašovacích údajů vyžadují důvěryhodný back-end Server.
@@ -98,8 +98,9 @@ Platforma Microsoft identity:
 * Obsahuje všechna data potřebná k podpoře ověřování za běhu.
 * Obsahuje všechna data pro rozhodování o tom, k jakým prostředkům může aplikace potřebovat přístup, a za jakých okolností by měla být daná žádost splněna.
 * Poskytuje infrastrukturu pro implementaci zřizování aplikací v tenantovi vývojáře aplikace a na jakéhokoli jiného tenanta Azure AD.
+* Zpracovává souhlas uživatele během doby žádosti o tokeny a usnadňuje dynamické zřizování aplikací napříč klienty.
 
-Zpracování souhlasu uživatele během doby žádosti o tokeny a usnadnění dynamického zřizování aplikací napříč klienty je proces vlastníka prostředku, který uděluje oprávnění klientské aplikaci k přístupu k chráněným prostředkům v oblasti konkrétní oprávnění. jménem vlastníka prostředku. Platforma Microsoft identity:
+Souhlas je proces vlastníka prostředku, který uděluje autorizaci pro klientské aplikace pro přístup k chráněným prostředkům v rámci konkrétních oprávnění jménem vlastníka prostředku. Platforma Microsoft identity:
 
 * Umožňuje uživatelům a správcům dynamicky udělovat nebo odepírat souhlas s tím, aby aplikace jejich jménem měla přístup k prostředkům.
 * Umožňuje správcům nakonec rozhodnout, co můžou aplikace provádět a kteří uživatelé můžou konkrétní aplikace používat a jak se přistupuje k prostředkům adresáře.
@@ -142,7 +143,7 @@ Následující sekvenční diagram shrnuje tuto interakci:
 
 Vývojáři webové aplikace mohou určit, zda některé stránky vyžadují ověření. Například v ASP.NET/ASP.NET Core je to provedeno přidáním atributu `[Authorize]` k akcím kontroleru. 
 
-Tento atribut způsobí, že ASP.NET zkontroluje přítomnost souboru cookie relace, který obsahuje identitu uživatele. Pokud soubor cookie přítomen není, ASP.NET přesměruje ověřování na zadaného zprostředkovatele identity. Pokud je poskytovatel identity Azure AD, přesměruje Tato webová aplikace ověřování na https://login.microsoftonline.com, které zobrazí přihlašovací dialog.
+Tento atribut způsobí, že ASP.NET zkontroluje přítomnost souboru cookie relace, který obsahuje identitu uživatele. Pokud soubor cookie přítomen není, ASP.NET přesměruje ověřování na zadaného zprostředkovatele identity. Pokud je poskytovatel identity Azure AD, přesměruje webová aplikace ověřování na https://login.microsoftonline.com, které zobrazí přihlašovací dialog.
 
 ### <a name="how-a-web-app-delegates-sign-in-to-azure-ad-and-obtains-a-token"></a>Způsob, jakým webová aplikace přihlašuje přihlášení ke službě Azure AD a získá token
 
