@@ -1,5 +1,5 @@
 ---
-title: Postupné upgrady aplikací – Azure SQL Database | Microsoft Docs
+title: Postupné upgrady aplikací – Azure SQL Database
 description: Naučte se používat Azure SQL Database geografickou replikaci k podpoře online upgradu vaší cloudové aplikace.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 55b23b8d8e03a79aa0806a68306017f89c747760
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 253a10e75832cf6ee8294405e34fa93b801c1b49
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567771"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689496"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Správa postupného upgradu cloudových aplikací pomocí SQL Database aktivní geografická replikace
 
@@ -31,7 +31,7 @@ Při vyhodnocování možností upgradu Vezměte v úvahu tyto faktory:
 
 ## <a name="upgrade-applications-that-rely-on-database-backups-for-disaster-recovery"></a>Upgradujte aplikace, které spoléhají na zálohování databáze pro zotavení po havárii.
 
-Pokud vaše aplikace spoléhá na automatické zálohování databáze a používá geografickou obnovu pro zotavení po havárii, nasadí se do jedné oblasti Azure. Chcete-li minimalizovat přerušení uživatele, vytvořte v této oblasti přípravné prostředí se všemi komponentami aplikace zapojenými do upgradu. První diagram znázorňuje provozní prostředí před procesem upgradu. Koncový bod `contoso.azurewebsites.net` představuje provozní prostředí webové aplikace. Aby bylo možné vrátit zpět upgrade, je nutné vytvořit přípravné prostředí s plně synchronizovanou kopií databáze. Pomocí těchto kroků vytvořte přípravné prostředí pro upgrade:
+Pokud vaše aplikace spoléhá na automatické zálohování databáze a používá geografickou obnovu pro zotavení po havárii, nasadí se do jedné oblasti Azure. Chcete-li minimalizovat přerušení uživatele, vytvořte v této oblasti přípravné prostředí se všemi komponentami aplikace zapojenými do upgradu. První diagram znázorňuje provozní prostředí před procesem upgradu. `contoso.azurewebsites.net` koncového bodu představuje provozní prostředí webové aplikace. Aby bylo možné vrátit zpět upgrade, je nutné vytvořit přípravné prostředí s plně synchronizovanou kopií databáze. Pomocí těchto kroků vytvořte přípravné prostředí pro upgrade:
 
 1. Vytvořte sekundární databázi ve stejné oblasti Azure. Sledujte sekundární a zjistěte, jestli je proces osazenní dokončený (1).
 2. Vytvořte nové prostředí pro vaši webovou aplikaci a zavolejte ho "fázování". Bude zaregistrována v Azure DNS s adresou URL `contoso-staging.azurewebsites.net` (2).
@@ -79,13 +79,13 @@ Pokud vaše aplikace používá aktivní geografickou replikaci nebo skupiny s a
 * Aplikace zůstane během procesu upgradu v každé době chráněná před závažnými chybami.
 * Geografické redundantní komponenty aplikace jsou upgradovány paralelně s aktivními komponentami.
 
-K dosažení těchto cílů Kromě použití Web Apps prostředí můžete využít výhod Azure Traffic Manager pomocí profilu převzetí služeb při selhání s jedním aktivním koncovým bodem a jedním záložním koncovým bodem. Další diagram znázorňuje provozní prostředí před procesem upgradu. Webové stránky `contoso-1.azurewebsites.net` a `contoso-dr.azurewebsites.net` reprezentují produkční prostředí aplikace s plnou geografickou redundancí. Provozní prostředí obsahuje následující komponenty:
+K dosažení těchto cílů Kromě použití Web Apps prostředí můžete využít výhod Azure Traffic Manager pomocí profilu převzetí služeb při selhání s jedním aktivním koncovým bodem a jedním záložním koncovým bodem. Další diagram znázorňuje provozní prostředí před procesem upgradu. Webové servery `contoso-1.azurewebsites.net` a `contoso-dr.azurewebsites.net` reprezentují provozní prostředí aplikace s plnou geografickou redundancí. Provozní prostředí obsahuje následující komponenty:
 
-* Provozní prostředí webové aplikace `contoso-1.azurewebsites.net` v primární oblasti (1)
+* Provozní prostředí webové aplikace `contoso-1.azurewebsites.net` v primární oblasti (1).
 * Primární databáze v primární oblasti (2)
 * Pohotovostní instance webové aplikace v oblasti zálohování (3)
 * Geograficky replikovaná sekundární databáze v oblasti zálohování (4)
-* Traffic Manager profil výkonu s názvem `contoso-1.azurewebsites.net` online koncový bod a s názvem offline koncový bod`contoso-dr.azurewebsites.net`
+* Traffic Manager profil výkonu s online koncovým bodem nazvaným `contoso-1.azurewebsites.net` a koncovým bodem offline s názvem `contoso-dr.azurewebsites.net`
 
 Aby bylo možné vrátit zpět upgrade, je nutné vytvořit přípravné prostředí s plně synchronizovanou kopií aplikace. Vzhledem k tomu, že je potřeba zajistit, aby se aplikace mohla rychle obnovit v případě, že během procesu upgradu dojde k závažným chybám, musí být pracovní prostředí také geograficky redundantní. Pro vytvoření přípravného prostředí pro upgrade je potřeba provést tyto kroky:
 
@@ -148,10 +148,10 @@ Hlavním kompromisem je to, že vyžaduje dvojí redundanci každé součásti a
 
 Tyto dvě metody upgradu popsané v článku se liší od nákladů na složitost a dolar, ale obě se zaměřují na minimalizaci toho, jak dlouho je uživatel omezený na operace jen pro čtení. Tato doba je přímo definovaná po dobu trvání skriptu upgradu. Nezávisí na velikosti databáze, zvolené úrovni služby, konfiguraci webu nebo jiných faktorech, které nemůžete snadno ovládat. Všechny kroky přípravy jsou oddělené od kroků upgradu a neovlivňují produkční aplikaci. Efektivita skriptu upgradu je klíčovým faktorem, který určuje prostředí uživatele během upgradů. Nejlepším způsobem, jak toto prostředí zlepšit, je zaměřit se na to, co je potřeba k tomu, aby byl skript upgradu co nejefektivnější.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přehled provozní kontinuity a scénáře najdete v tématu [Přehled provozní kontinuity](sql-database-business-continuity.md).
 * Další informace o tom, jak Azure SQL Database aktivní geografickou replikaci, najdete v tématu [Vytvoření čitelných sekundárních databází pomocí aktivní geografické replikace](sql-database-active-geo-replication.md).
-* Další informace o Azure SQL Database skupin automatického převzetí služeb při selhání najdete v tématu použití skupin s automatickým převzetím služeb při selhání [k zajištění transparentního a koordinovaného převzetí služeb](sql-database-auto-failover-group.md)
+* Další informace o Azure SQL Database skupin automatického převzetí služeb při selhání najdete v tématu [použití skupin s automatickým převzetím služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb](sql-database-auto-failover-group.md)
 * Další informace o přípravném prostředí v Azure App Service najdete v tématu [Nastavení přípravných prostředí v Azure App Service](../app-service/deploy-staging-slots.md).
 * Další informace o profilech Azure Traffic Manager najdete v tématu [Správa profilu azure Traffic Manager](../traffic-manager/traffic-manager-manage-profiles.md).

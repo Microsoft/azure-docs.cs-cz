@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database a řízení přístupu k síti datového skladu | Microsoft Docs
+title: Azure SQL Database a řízení přístupu k síti v datovém skladu
 description: Přehled řízení přístupu k síti pro Azure SQL Database a datový sklad pro správu přístupu a konfiguraci jedné nebo sdružené databáze.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: b2c1f01e53cfe41b72e3e079059c66e4e2409012
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: deee668c3597047a5d5f0fd153626916c3fd8517
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703274"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687714"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database a řízení přístupu k síti v datovém skladu
 

@@ -1,17 +1,17 @@
 ---
-title: Transformace odvozeného sloupce v datovém toku mapování Azure Data Factory | Microsoft Docs
+title: Odvozená transformace sloupce v datovém toku mapování Azure Data Factory
 description: Naučte se, jak transformovat data ve velkém měřítku v Azure Data Factory pomocí transformace sloupce s odvozeným datovým tokem.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 60451fa6152590ed0fde51be436c867f39906acf
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 387af25b87fdedff5d15ccb6a03819ad8b020e9a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514812"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676871"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Odvozená transformace sloupce v toku mapování dat
 
@@ -44,9 +44,9 @@ Chcete-li přidat další odvozené sloupce, najeďte myší na existující odv
           ) ~> <deriveTransformationName>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
-Níže uvedený příklad je odvozený sloupec s názvem `CleanData`, který přebírá příchozí datový proud `MoviesYear` a vytvoří dva odvozené sloupce. První odvozený sloupec nahrazuje sloupec `Rating` s hodnotou hodnocení jako typ Integer. Druhý odvozený sloupec je vzor, který se shoduje se všemi sloupci, jejichž název začíná řetězcem "filmy". Pro každý odpovídající sloupec vytvoří sloupec `movie`, který se rovná hodnotě odpovídajícího sloupce s předponou ' movie_ '. 
+Níže uvedený příklad je odvozený sloupec s názvem `CleanData`, který přebírá příchozí datový proud `MoviesYear` a vytvoří dva odvozené sloupce. První odvozený sloupec nahrazuje sloupec `Rating` hodnotou hodnocení jako typ Integer. Druhý odvozený sloupec je vzor, který se shoduje se všemi sloupci, jejichž název začíná řetězcem "filmy". Pro každý odpovídající sloupec vytvoří sloupec `movie`, který se rovná hodnotě odpovídajícího sloupce s předponou ' movie_ '. 
 
 V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 

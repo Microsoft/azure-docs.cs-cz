@@ -1,7 +1,7 @@
 ---
 title: Jednoduchý typ entity – LUIS
 titleSuffix: Azure Cognitive Services
-description: Jednoduchá entita je obecná entita, která popisuje jeden koncept a je získána z kontextu zjištěného počítačem. Vzhledem k tomu, že jednoduché entity jsou obecně názvy, například názvy společností, názvy produktů nebo jiné kategorie názvů, přidejte seznam frází při použití jednoduché entity k posílení signálu používaných názvů.
+description: Jednoduchá Entita popisuje jeden koncept z kontextu zjištěného počítačem. Přidejte seznam frází, když použijete jednoduchou entitu pro zlepšení výsledků.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 2eb3ff847f9bfc162adfb281d2ac1fad6f8c5093
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 27eb4d827c1488b0d051505e62286fd66d6a286b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695133"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671502"
 ---
 # <a name="simple-entity"></a>Jednoduchá entita 
 
@@ -31,7 +31,7 @@ Jednoduchá entita je obecná entita, která popisuje jeden koncept a je získá
 
 `Bob Jones wants 3 meatball pho`
 
-V předchozím utterance je `Bob Jones` označena jako jednoduchá entita `Customer`.
+V předchozím utterance je `Bob Jones` označena jako jednoduchá `Customer` entita.
 
 Data vrácená z koncového bodu zahrnují název entity, zjištěný text z utterance, umístění zjištěného textu a skóre:
 
@@ -51,7 +51,7 @@ Data vrácená z koncového bodu zahrnují název entity, zjištěný text z utt
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
-Toto je JSON, pokud je v řetězci dotazu nastavená hodnota `verbose=false`:
+Toto je JSON, pokud je v řetězci dotazu nastavená `verbose=false`:
 
 ```json
 "entities": {

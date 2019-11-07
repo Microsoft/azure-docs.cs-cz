@@ -1,5 +1,5 @@
 ---
-title: Vytváření/plánování kanálů, řetězení aktivit v Data Factory | Microsoft Docs
+title: Vytváření, plánování kanálů a řetězení aktivit v Data Factory
 description: Naučte se vytvářet datový kanál v Azure Data Factory pro přesun a transformaci dat. Vytvořte pracovní postup založený na datech, který vytvoří připravené k použití informací.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 54d9c875ca0117304dbd686f9a8fa6060b275994
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f93bea240ee3f139c9be84199d116f9f3f231261
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140059"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682726"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Kanály a aktivity v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -92,17 +92,17 @@ Teď se blíže podíváme na to, jak se kanál definuje ve formátu JSON. Obecn
 }
 ```
 
-| Značka | Popis | Požadováno |
+| Značka | Popis | Požaduje se |
 | --- | --- | --- |
-| name |Název kanálu. Určuje název, který představuje akci prováděnou kanálem. <br/><ul><li>Maximální počet znaků: 260</li><li>Musí začínat číslem písmenem nebo podtržítkem (\_).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">",\*"", "%", "&", ":", ""\\</li></ul> |Ano |
+| jméno |Název kanálu. Určuje název, který představuje akci prováděnou kanálem. <br/><ul><li>Maximální počet znaků: 260.</li><li>Musí začínat číslem písmenem nebo podtržítkem (\_).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "\*", "%", "&", ":", "\\"</li></ul> |Ano |
 | description | Určuje text popisující, k čemu se kanál používá. |Ano |
-| aktivity | Část **activities** může obsahovat definici jedné nebo více aktivit. Podrobnosti o elementu JSON aktivit naleznete v další části. | Ano |
-| Spuštění | Počáteční datum a čas pro kanál. Musí být ve [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Například: `2016-10-14T16:32:41Z`. <br/><br/>Je možné zadat místní čas, například čas EST. Tady je příklad: `2016-02-27T06:00:00-05:00`", což je 6 am EST.<br/><br/>Vlastnosti Start a end společně určují aktivní období pro daný kanál. Výstupní řezy se vytvářejí jenom v tomto aktivním období. |Ne<br/><br/>Pokud zadáte hodnotu vlastnosti end, je nutné zadat hodnotu vlastnosti Start.<br/><br/>Časy zahájení a ukončení můžou být pro vytvoření kanálu prázdné. Chcete-li nastavit aktivní období pro spuštění kanálu, je nutné zadat obě hodnoty. Pokud při vytváření kanálu nezadáte počáteční a koncový čas, můžete je pomocí rutiny Set-AzDataFactoryPipelineActivePeriod nastavit později. |
-| end | Koncové datum a čas kanálu. Je-li parametr zadán, musí být ve formátu ISO. Příklad: `2016-10-14T17:32:41Z` <br/><br/>Je možné zadat místní čas, například čas EST. Tady je příklad: `2016-02-27T06:00:00-05:00`, který je 6 am EST.<br/><br/>Pokud chcete kanál spustit po neomezenou dobu, zadejte 9999-09-09 jako hodnotu vlastnosti end. <br/><br/> Kanál je aktivní jenom mezi časem spuštění a časem ukončení. Není prováděna před časem spuštění nebo po ukončení. Pokud je kanál pozastaven, nebude proveden bez ohledu na jeho počáteční a koncový čas. Pro spuštění kanálu by neměl být pozastaven. V tématu [plánování a spouštění](data-factory-scheduling-and-execution.md) můžete pochopit, jak plánování a provádění funguje v Azure Data Factory. |Ne <br/><br/>Pokud zadáte hodnotu vlastnosti Start, je nutné zadat hodnotu vlastnosti end.<br/><br/>Viz poznámky pro vlastnost **Start** . |
+| activities | Část **activities** může obsahovat definici jedné nebo více aktivit. Podrobnosti o elementu JSON aktivit naleznete v další části. | Ano |
+| start | Počáteční datum a čas pro kanál. Musí být ve [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Například: `2016-10-14T16:32:41Z`. <br/><br/>Je možné zadat místní čas, například čas EST. Tady je příklad: `2016-02-27T06:00:00-05:00`", což je 6 AM EST.<br/><br/>Vlastnosti Start a end společně určují aktivní období pro daný kanál. Výstupní řezy se vytvářejí jenom v tomto aktivním období. |Ne<br/><br/>Pokud zadáte hodnotu vlastnosti end, je nutné zadat hodnotu vlastnosti Start.<br/><br/>Časy zahájení a ukončení můžou být pro vytvoření kanálu prázdné. Chcete-li nastavit aktivní období pro spuštění kanálu, je nutné zadat obě hodnoty. Pokud při vytváření kanálu nezadáte počáteční a koncový čas, můžete je pomocí rutiny Set-AzDataFactoryPipelineActivePeriod nastavit později. |
+| účelu | Koncové datum a čas kanálu. Je-li parametr zadán, musí být ve formátu ISO. Příklad: `2016-10-14T17:32:41Z` <br/><br/>Je možné zadat místní čas, například čas EST. Tady je příklad: `2016-02-27T06:00:00-05:00`, což je 6 – EST.<br/><br/>Pokud chcete kanál spustit po neomezenou dobu, zadejte 9999-09-09 jako hodnotu vlastnosti end. <br/><br/> Kanál je aktivní jenom mezi časem spuštění a časem ukončení. Není prováděna před časem spuštění nebo po ukončení. Pokud je kanál pozastaven, nebude proveden bez ohledu na jeho počáteční a koncový čas. Pro spuštění kanálu by neměl být pozastaven. V tématu [plánování a spouštění](data-factory-scheduling-and-execution.md) můžete pochopit, jak plánování a provádění funguje v Azure Data Factory. |Ne <br/><br/>Pokud zadáte hodnotu vlastnosti Start, je nutné zadat hodnotu vlastnosti end.<br/><br/>Viz poznámky pro vlastnost **Start** . |
 | isPaused | Pokud je nastavená hodnota true, kanál se nespustí. Je ve stavu pozastaveno. Výchozí hodnota = false. Tuto vlastnost můžete použít k povolení nebo zakázání kanálu. |Ne |
 | pipelineMode | Metoda pro plánování běhu pro kanál. Povolené hodnoty jsou: naplánované (výchozí), jednorázová.<br/><br/>Možnost naplánované znamená, že se kanál spouští v zadaném časovém intervalu podle jeho aktivního období (počáteční a koncový čas). Jednorázová označuje, že se kanál spouští jenom jednou. Jednorázová kanály se po vytvoření nedají změnit nebo aktualizovat aktuálně. Podrobnosti o nastavení jednorázová najdete v tématu [jednorázová Pipeline](#onetime-pipeline) . |Ne |
-| expirationTime | Doba po vytvoření, pro kterou je [jednorázový kanál](#onetime-pipeline) platný a měl by zůstat zřízen. Pokud nemá žádná aktivní, neúspěšná nebo nedokončená spuštění, kanál se po dosažení doby vypršení platnosti automaticky odstraní. Výchozí hodnota:`"expirationTime": "3.00:00:00"`|Ne |
-| datasets |Seznam datových sad, které budou použity aktivitami, které jsou definovány v kanálu. Tato vlastnost se dá použít k definování datových sad, které jsou specifické pro tento kanál a nejsou definované v rámci objektu pro vytváření dat. Datové sady definované v tomto kanálu můžou použít jenom tento kanál a nedá se sdílet. Podrobnosti najdete v tématu [vymezené datové sady](data-factory-create-datasets.md#scoped-datasets) . |Ne |
+| expirationTime | Doba po vytvoření, pro kterou je [jednorázový kanál](#onetime-pipeline) platný a měl by zůstat zřízen. Pokud nemá žádná aktivní, neúspěšná nebo nedokončená spuštění, kanál se po dosažení doby vypršení platnosti automaticky odstraní. Výchozí hodnota: `"expirationTime": "3.00:00:00"`|Ne |
+| datové sady |Seznam datových sad, které budou použity aktivitami, které jsou definovány v kanálu. Tato vlastnost se dá použít k definování datových sad, které jsou specifické pro tento kanál a nejsou definované v rámci objektu pro vytváření dat. Datové sady definované v tomto kanálu můžou použít jenom tento kanál a nedá se sdílet. Podrobnosti najdete v tématu [vymezené datové sady](data-factory-create-datasets.md#scoped-datasets) . |Ne |
 
 ## <a name="activity-json"></a>Zápis JSON aktivity
 Část **activities** může obsahovat definici jedné nebo více aktivit. Každá aktivita má následující strukturu nejvyšší úrovně:
@@ -130,29 +130,29 @@ Teď se blíže podíváme na to, jak se kanál definuje ve formátu JSON. Obecn
 
 Následující tabulka obsahuje popis vlastností v definici aktivity ve formátu JSON:
 
-| Značka | Popis | Požadováno |
+| Značka | Popis | Požaduje se |
 | --- | --- | --- |
-| name | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou. <br/><ul><li>Maximální počet znaků: 260</li><li>Musí začínat číslem písmenem nebo podtržítkem (\_).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\\"</li></ul> |Ano |
+| jméno | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou. <br/><ul><li>Maximální počet znaků: 260.</li><li>Musí začínat číslem písmenem nebo podtržítkem (\_).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\\"</li></ul> |Ano |
 | description | Text popisující, k čemu aktivita slouží. |Ano |
 | type | Typ aktivity. Různé typy aktivit najdete v částech aktivity [přesunu dat](#data-movement-activities) a [aktivity transformace dat](#data-transformation-activities) . |Ano |
-| inputs |Vstupní tabulky používané aktivitou<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Ano |
-| outputs |Výstupní tabulky používané aktivitou.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |Ano |
+| vztahují |Vstupní tabulky používané aktivitou<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Ano |
+| činnosti |Výstupní tabulky používané aktivitou.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |Ano |
 | linkedServiceName |Název propojené služby používané aktivitou. <br/><br/>Aktivita může vyžadovat zadání propojené služby, která odkazuje na požadované výpočetní prostředí. |Ano pro aktivitu služby HDInsight a Azure Machine Learning aktivitu dávkového vyhodnocování <br/><br/>Ne ve všech ostatních případech |
 | typeProperties |Vlastnosti v části **typeProperties** závisí na typu aktivity. Pokud chcete zobrazit vlastnosti typu určité aktivity, klikněte na odkaz na aktivitu v předchozí části. | Ne |
-| zásada |Zásady, které ovlivňují chování aktivity za běhu. Pokud není zadaný, použijí se výchozí zásady. |Ne |
-| scheduler | vlastnost Scheduler slouží k definování požadovaného plánování aktivity. Jeho podvlastnosti jsou stejné jako ty ve [vlastnosti Availability v datové sadě](data-factory-create-datasets.md#dataset-availability). |Ne |
+| policy |Zásady, které ovlivňují chování aktivity za běhu. Pokud není zadaný, použijí se výchozí zásady. |Ne |
+| Plánovač | vlastnost Scheduler slouží k definování požadovaného plánování aktivity. Jeho podvlastnosti jsou stejné jako ty ve [vlastnosti Availability v datové sadě](data-factory-create-datasets.md#dataset-availability). |Ne |
 
 ### <a name="policies"></a>Zásady
 Zásady ovlivňují chování aktivity za běhu, konkrétně při zpracování řezu tabulky. Podrobnosti jsou uvedeny v následující tabulce.
 
 | Vlastnost | Povolené hodnoty | Výchozí hodnota | Popis |
 | --- | --- | --- | --- |
-| concurrency |Integer <br/><br/>Maximální hodnota: 10 |1 |Počet souběžných spuštění aktivity.<br/><br/>Určuje počet paralelních spuštění aktivit, ke kterým může dojít v různých řezech. Například pokud aktivita potřebuje projít velkou sadou dostupných dat, větší hodnota souběžnosti zrychluje zpracování dat. |
+| Concurrency |Integer <br/><br/>Maximální hodnota: 10 |1 |Počet souběžných spuštění aktivity.<br/><br/>Určuje počet paralelních spuštění aktivit, ke kterým může dojít v různých řezech. Například pokud aktivita potřebuje projít velkou sadou dostupných dat, větší hodnota souběžnosti zrychluje zpracování dat. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Určuje pořadí datových řezů, které jsou zpracovávány.<br/><br/>Například pokud máte 2 řezy (jedna se děje na 16:00 a druhý na 17:00), a obě jsou vyřízeny. Pokud nastavíte executionPriorityOrder na NewestFirst, řez se nejprve zpracuje v 5 odp. Podobně pokud nastavíte executionPriorityORder na OldestFIrst, bude zpracován řez ve 4 PM. |
-| Opakovat |Integer<br/><br/>Maximální hodnota může být 10. |0 |Počet opakovaných pokusů, než se zpracování dat pro řez označí jako selhání. Pokus o spuštění aktivity pro datový řez se opakuje do zadaného počtu opakování. Opakování se provede co nejdříve po selhání. |
-| časový limit |TimeSpan |00:00:00 |Časový limit aktivity Příklad: 00:10:00 (implikuje časový limit 10 minut)<br/><br/>Pokud hodnota není zadaná nebo je 0, časový limit je nekonečný.<br/><br/>Pokud doba zpracování dat v řezu překročí hodnotu časového limitu, je zrušena a systém se pokusí o opakované zpracování. Počet opakování závisí na vlastnosti opakování. Pokud dojde k vypršení časového limitu, je stav nastavený na vypršel časový limit. |
-| delay |TimeSpan |00:00:00 |Určete zpoždění před spuštěním zpracování dat řezu.<br/><br/>Spuštění aktivity pro datový řez se spustí, jakmile je zpoždění po očekávanou dobu provádění.<br/><br/>Příklad: 00:10:00 (implikuje zpoždění po 10 minutách) |
-| longRetry |Integer<br/><br/>Maximální hodnota: 10 |1 |Počet dlouhých pokusů o opakování před neúspěšným provedením řezu<br/><br/>Má pokusy jsou rozmístěny pomocí longRetryInterval. Takže pokud potřebujete zadat čas mezi opakovanými pokusy, použijte má. Pokud jsou zadány parametry Retry a má, každý má pokus obsahuje pokusy o opakování a maximální počet pokusů o opakování * má.<br/><br/>Například pokud máme v zásadách aktivity následující nastavení:<br/>Opakujte 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Předpokládejme, že je možné provést pouze jeden řez (stav čeká na vyřízení) a spuštění aktivity pokaždé neproběhne úspěšně. Zpočátku by se mělo 3 po sobě jdoucích pokusů o spuštění. Po každém pokusu se stav řezu opakuje. Po prvním 3 pokusech se bude stav řezu má.<br/><br/>Po hodinu (tj. hodnotě longRetryInteval) by existovala další sada 3 po sobě jdoucích pokusů o spuštění. Po této operaci se stav řezu nezdařil a nebude proveden pokus o další opakování. Proto byly provedeny celkem 6 pokusů.<br/><br/>Pokud je jakékoli spuštění úspěšné, bude stav řezu připravený a nebude proveden pokus o další opakované pokusy.<br/><br/>Má se můžou použít v situacích, kdy se závislá data dostanou v nedeterministických časech, nebo v celkovém prostředí je vločka, pod kterou se zpracování dat děje. V takových případech s tím, že se opakuje jeden po jiné, to nemusí pomáhat a provádět po uplynutí časového intervalu požadovaného výstupu.<br/><br/>Upozornění: nenastavujte vysoké hodnoty pro má nebo longRetryInterval. Vyšší hodnoty obvykle implikují jiné systémové problémy. |
+| retry |Integer<br/><br/>Maximální hodnota může být 10. |0 |Počet opakovaných pokusů, než se zpracování dat pro řez označí jako selhání. Pokus o spuštění aktivity pro datový řez se opakuje do zadaného počtu opakování. Opakování se provede co nejdříve po selhání. |
+| timeout |TimeSpan |00:00:00 |Časový limit aktivity Příklad: 00:10:00 (implikuje časový limit 10 minut)<br/><br/>Pokud hodnota není zadaná nebo je 0, časový limit je nekonečný.<br/><br/>Pokud doba zpracování dat v řezu překročí hodnotu časového limitu, je zrušena a systém se pokusí o opakované zpracování. Počet opakování závisí na vlastnosti opakování. Pokud dojde k vypršení časového limitu, je stav nastavený na vypršel časový limit. |
+| způsobené |TimeSpan |00:00:00 |Určete zpoždění před spuštěním zpracování dat řezu.<br/><br/>Spuštění aktivity pro datový řez se spustí, jakmile je zpoždění po očekávanou dobu provádění.<br/><br/>Příklad: 00:10:00 (implikuje zpoždění po 10 minutách) |
+| Má |Integer<br/><br/>Maximální hodnota: 10 |1 |Počet dlouhých pokusů o opakování před neúspěšným provedením řezu<br/><br/>Má pokusy jsou rozmístěny pomocí longRetryInterval. Takže pokud potřebujete zadat čas mezi opakovanými pokusy, použijte má. Pokud jsou zadány parametry Retry a má, každý má pokus obsahuje pokusy o opakování a maximální počet pokusů o opakování * má.<br/><br/>Například pokud máme v zásadách aktivity následující nastavení:<br/>Opakovat: 3<br/>Má: 2<br/>longRetryInterval: 01:00:00<br/><br/>Předpokládejme, že je možné provést pouze jeden řez (stav čeká na vyřízení) a spuštění aktivity pokaždé neproběhne úspěšně. Zpočátku by se mělo 3 po sobě jdoucích pokusů o spuštění. Po každém pokusu se stav řezu opakuje. Po prvním 3 pokusech se bude stav řezu má.<br/><br/>Po hodinu (tj. hodnotě longRetryInteval) by existovala další sada 3 po sobě jdoucích pokusů o spuštění. Po této operaci se stav řezu nezdařil a nebude proveden pokus o další opakování. Proto byly provedeny celkem 6 pokusů.<br/><br/>Pokud je jakékoli spuštění úspěšné, bude stav řezu připravený a nebude proveden pokus o další opakované pokusy.<br/><br/>Má se můžou použít v situacích, kdy se závislá data dostanou v nedeterministických časech, nebo v celkovém prostředí je vločka, pod kterou se zpracování dat děje. V takových případech s tím, že se opakuje jeden po jiné, to nemusí pomáhat a provádět po uplynutí časového intervalu požadovaného výstupu.<br/><br/>Upozornění: nenastavujte vysoké hodnoty pro má nebo longRetryInterval. Vyšší hodnoty obvykle implikují jiné systémové problémy. |
 | longRetryInterval |TimeSpan |00:00:00 |Prodleva mezi dlouhými pokusy o opakování |
 
 ## <a name="sample-copy-pipeline"></a>Ukázkový kanál kopírování
@@ -207,7 +207,7 @@ Je třeba počítat s následujícím:
 * Vstup aktivity je nastavený na **InputDataset** a výstup aktivity je nastavený na **OutputDataset**. Informace o definicích datových sad ve formátu JSON najdete v článku [Datové sady](data-factory-create-datasets.md).
 * V části **typeProperties** je jako typ zdroje určen **BlobSource** a jako typ jímky **SqlSink**. V části [aktivity přesunu dat](#data-movement-activities) klikněte na úložiště dat, které chcete použít jako zdroj nebo jímku, abyste se dozvěděli víc o přesouvání dat do a z tohoto úložiště dat.
 
-Úplný návod k vytváření tohoto kanálu najdete v tématu [kurz: Kopírování dat z Blob Storage do SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+Úplný návod k vytváření tohoto kanálu najdete v tématu [kurz: kopírování dat z BLOB Storage do SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="sample-transformation-pipeline"></a>Ukázkový kanál transformace
 V následujícím ukázkovém kanálu je v části **activities** jedna aktivita typu **HDInsightHive**. V této ukázce [aktivita HDInsight Hive](data-factory-hive-activity.md) transformuje data ze služby Azure Blob Storage tak, že v clusteru Azure HDInsight Hadoop spustí soubor skriptu Hive.
@@ -261,11 +261,11 @@ Je třeba počítat s následujícím:
 
 * V části activities je jenom jedna aktivita, jejíž vlastnost **type** má hodnotu **HDInsightHive**.
 * Soubor skriptu Hive **partitionweblogs.hql** je uložený v účtu služby Azure Storage (který určuje služba scriptLinkedService s názvem **AzureStorageLinkedService**) a ve složce **script** v kontejneru **adfgetstarted**.
-* Oddíl slouží k určení nastavení modulu runtime, která jsou předána skriptu podregistr jako hodnoty konfigurace podregistru ( `${hiveconf:partitionedtable}`např `${hiveconf:inputtable}`.). `defines`
+* Část `defines` slouží k určení nastavení modulu runtime, která jsou předána skriptu podregistr jako hodnoty konfigurace podregistru (např. `${hiveconf:inputtable}``${hiveconf:partitionedtable}`).
 
 Část **typeProperties** je u každé aktivity transformace odlišná. Chcete-li získat informace o vlastnostech typu podporovaných pro aktivitu transformace, klikněte na aktivitu transformace v tabulce [aktivity transformace dat](#data-transformation-activities) .
 
-Úplný návod k vytváření tohoto kanálu najdete v tématu [kurz: Sestavte svůj první kanál pro zpracování dat pomocí](data-factory-build-your-first-pipeline.md)clusteru Hadoop.
+Úplný návod k vytváření tohoto kanálu najdete v tématu [kurz: sestavení prvního kanálu pro zpracování dat pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md).
 
 ## <a name="multiple-activities-in-a-pipeline"></a>Více aktivit v kanálu
 Oba předchozí ukázkové kanály obsahovaly jenom jednu aktivitu. Kanál může obsahovat víc než jednu aktivitu.
@@ -276,7 +276,7 @@ Můžete zřetězit dvě aktivity pomocí výstupní datové sady jedné aktivit
 
 ![Řetězení aktivit ve stejném kanálu](./media/data-factory-create-pipelines/chaining-one-pipeline.png)
 
-V této ukázce má kanál dvě aktivity: Activity1 a "Activity2". Activity1 přebírá DataSet1. jako vstup a vytváří výstupní Dataset2. Aktivita přijímá Dataset2 jako vstup a vytváří výstupní Dataset3. Vzhledem k tomu, že výstup Activity1 (Dataset2) je vstupem "Activity2", "Activity2" se spustí až po úspěšném dokončení aktivity a vytvoří řez Dataset2. Pokud se Activity1 z nějakého důvodu nepovede a nevytvoří Dataset2 řez, aktivita 2 se pro tento řez nespustí (například: od 9 do 10 DOP.
+V této ukázce má kanál dvě aktivity: Activity1 a "Activity2". Activity1 přebírá DataSet1. jako vstup a vytváří výstupní Dataset2. Aktivita přijímá Dataset2 jako vstup a vytváří výstupní Dataset3. Vzhledem k tomu, že výstup Activity1 (Dataset2) je vstupem "Activity2", "Activity2" se spustí až po úspěšném dokončení aktivity a vytvoří řez Dataset2. Pokud se Activity1 z nějakého důvodu nepovede a nevytvoří Dataset2 řez, aktivita 2 se pro tento řez nespustí (například 9 AM až 10 DOP.).
 
 Můžete také zřetězit aktivity, které jsou v různých kanálech.
 
@@ -306,7 +306,7 @@ Po vytvoření nebo nasazení kanálu můžete své kanály spravovat a monitoro
 - [Monitorování a Správa kanálů pomocí monitorování a správy aplikací](data-factory-monitor-manage-app.md)
 
 ## <a name="onetime-pipeline"></a>Kanál jednorázová
-Můžete vytvořit a naplánovat pravidelné spouštění kanálu (například každou hodinu nebo každý den) v rámci počátečního a koncového času, který zadáte v definici kanálu. Podrobnosti najdete v tématu plánování aktivit. Můžete také vytvořit kanál, který bude spuštěn pouze jednou. K tomu je třeba nastavit vlastnost **pipelineMode** v definici kanálu na **jednorázová** , jak je znázorněno v následující ukázce JSON. Výchozí hodnota této vlastnosti je plánována.
+Můžete vytvořit a naplánovat pravidelné spouštění kanálu (například každou hodinu nebo každý den) v rámci počátečního a koncového času, který zadáte v definici kanálu. Podrobnosti najdete v tématu plánování aktivit. Můžete také vytvořit kanál, který bude spuštěn pouze jednou. K tomu je třeba nastavit vlastnost **pipelineMode** v definici kanálu na **jednorázová** , jak je znázorněno v následující ukázce JSON. Výchozí hodnota této vlastnosti je **plánována**.
 
 ```json
 {
@@ -344,13 +344,13 @@ Můžete vytvořit a naplánovat pravidelné spouštění kanálu (například k
 }
 ```
 
-Vezměte na vědomí následující:
+Je třeba počítat s následujícím:
 
 * **Počáteční** a **koncový** časy pro kanál nejsou zadány.
 * Je zadaná **dostupnost** vstupních a výstupních datových sad (**frekvence** a **interval**), i když Data Factory nepoužívá hodnoty.
 * Zobrazení diagramu nezobrazuje jednorázové kanály. Toto chování je záměrné.
 * Jednorázové kanály nelze aktualizovat. Můžete naklonovat jednorázový kanál, přejmenovat ho, aktualizovat vlastnosti a nasazovat ho, aby se vytvořil nějaký jiný.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Další informace o datových sadách naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) .
 - Další informace o tom, jak se naplánují a spouštějí kanály, najdete [v tématu plánování a spouštění v Azure Data Factory](data-factory-scheduling-and-execution.md) článku.

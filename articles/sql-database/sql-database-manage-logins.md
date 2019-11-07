@@ -1,5 +1,5 @@
 ---
-title: Přihlašovací údaje Azure SQL | Dokumentace Microsoftu
+title: Přihlášení a uživatelé Azure SQL
 description: Přečtěte si o SQL Database a SQL Data Warehouse správě zabezpečení, konkrétně o správě přístupu k databázi a zabezpečení přihlášení prostřednictvím hlavního účtu na úrovni serveru.
 keywords: zabezpečení databáze SQL,správa zabezpečení databáze,zabezpečení přihlášení,zabezpečení databáze,přístup k databázi
 services: sql-database
@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/26/2019
-ms.openlocfilehash: 9dae1e3864f5f1cf745bfe9b0872f15f61471a1c
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 501df95b80bd651020fa044970f6bc701959a6a5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014504"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689475"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Řízení a udělení přístupu k databázi SQL Database a SQL Data Warehouse
 
@@ -39,7 +39,7 @@ Jako správci fungují dva účty pro správu (**Správce serveru** a **Správce
   Když vytvoříte Azure SQL server, musíte určit **Přihlášení správce serveru**. SQL server vytvoří tento účet v hlavní databázi jako přihlašovací. Tento účet používá pro připojení ověřování SQL Serveru (uživatelské jméno a heslo). Existovat může jenom jeden z těchto účtů.
 
   > [!NOTE]
-  > Pokud chcete resetovat heslo pro správce serveru, přejděte na [Azure Portal](https://portal.azure.com), klikněte na **SQL servery**, vyberte server ze seznamu a potom klikněte na resetovat **heslo**.
+  > Pokud chcete resetovat heslo pro správce serveru, přejděte na [Azure Portal](https://portal.azure.com), klikněte na **SQL servery**, vyberte server ze seznamu a potom klikněte na **resetovat heslo**.
 
 - **Správce Azure Active Directory**
 
@@ -49,10 +49,10 @@ Jako správci fungují dva účty pro správu (**Správce serveru** a **Správce
 
 - Jsou jedinými účty, které se můžou automaticky připojit k jakémukoli SQL Database na serveru. (Pro připojení k uživatelské databázi ostatní účty musí buď být vlastníkem databáze, nebo musí v uživatelské databázi mít uživatelský účet.)
 - Tyto účty přistupují k uživatelským databázím jako uživatel `dbo` a mají pro ně veškerá oprávnění. (Vlastník databáze také k databázi přistupuje jako uživatel `dbo`.) 
-- Nezadávejte `dbo` databázi jako uživatele a mít v hlavní databázi omezená oprávnění. `master` 
-- Nejsou členy standardní role serveru SQL Server `sysadmin` pevné, což není k dispozici ve službě SQL Database.  
+- Nezadávejte `master` databázi jako `dbo`ho uživatele a mít v hlavní databázi omezená oprávnění. 
+- Nejsou **členy standardní** role serveru SQL Server `sysadmin` pevné, což není k dispozici ve službě SQL Database.  
 - Může vytvářet, měnit a odstraňovat databáze, přihlášení, uživatele v hlavní databázi a pravidla brány firewall na úrovni serveru.
-- Může přidat nebo odebrat členy do `dbmanager` rolí a. `loginmanager`
+- Může přidat nebo odebrat členy do rolí `dbmanager` a `loginmanager`.
 - Může zobrazit `sys.sql_logins` systémovou tabulku.
 
 ### <a name="configuring-the-firewall"></a>Konfigurace brány firewall
@@ -83,9 +83,9 @@ Kromě správních rolí na úrovni serveru popsaných v předchozích částech
 
 ### <a name="database-creators"></a>Autoři databází
 
-Jednou z těchto správních rolí je role **dbmanager**. Členové této role mohou vytvářet nové databáze. Pokud chcete použít tuto roli, vytvořte uživatele v databázi `master` a pak ho přidejte do databázové role **dbmanager**. Chcete-li vytvořit databázi, musí být uživatel uživatelem na základě přihlášení SQL Server v `master` databázi nebo uživatel databáze s omezením na základě Azure Active Directory uživatele.
+Jednou z těchto správních rolí je role **dbmanager**. Členové této role mohou vytvářet nové databáze. Pokud chcete použít tuto roli, vytvořte uživatele v databázi `master` a pak ho přidejte do databázové role **dbmanager**. Aby bylo možné vytvořit databázi, musí být uživatel uživatelem založený na SQL Server přihlášení v databázi `master` nebo uživatel databáze s omezením na základě Azure Active Directory uživatele.
 
-1. Pomocí účtu správce se připojte k `master` databázi.
+1. Pomocí účtu správce se připojte k databázi `master`.
 2. Pomocí příkazu [Create Login](https://msdn.microsoft.com/library/ms189751.aspx) Vytvořte přihlašovací údaje pro ověření SQL Server. Ukázka příkazu:
 
    ```sql
@@ -97,7 +97,7 @@ Jednou z těchto správních rolí je role **dbmanager**. Členové této role m
 
    Za účelem zvýšení výkonu se přihlášení (u hlavních účtů na úrovni serveru) dočasně ukládají do mezipaměti na úrovni databáze. Pokud chcete aktualizovat mezipaměť pro ověřování, podívejte se na informace v tématu [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx).
 
-3. V databázi vytvořte uživatele pomocí příkazu [Create User.](https://msdn.microsoft.com/library/ms173463.aspx) `master` Tímto uživatelem může být uživatel databáze s omezením s ověřováním služby Azure Active Directory (pokud jste nakonfigurovali prostředí s ověřováním pomocí služby Azure AD) nebo uživatel databáze s omezením s ověřováním SQL Serveru nebo uživatel s ověřováním SQL Serveru založeným na přihlášení s ověřováním SQL Serveru (vytvořený v předchozím kroku). Ukázky příkazů:
+3. V databázi `master` vytvořte uživatele pomocí příkazu [Create User](https://msdn.microsoft.com/library/ms173463.aspx) . Uživatel může být Azure Active Directory ověřování, které obsahuje uživatele databáze (Pokud jste nakonfigurovali prostředí pro ověřování Azure AD), nebo pokud uživatel s omezením ověřování SQL Server obsahuje uživatele databáze nebo ověřování SQL Server na základě SQL Server přihlášení ověřování (vytvořené v předchozím kroku) Ukázkové příkazy:
 
    ```sql
    CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
@@ -105,7 +105,7 @@ Jednou z těchto správních rolí je role **dbmanager**. Členové této role m
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
-4. Přidejte nového uživatele do role databáze **dbmanager** v `master` části pomocí příkazu [ALTER role](https://msdn.microsoft.com/library/ms189775.aspx) . Ukázky příkazů:
+4. Přidejte nového uživatele do role databáze **dbmanager** v `master` pomocí příkazu [ALTER role](https://msdn.microsoft.com/library/ms189775.aspx) . Ukázky příkazů:
 
    ```sql
    ALTER ROLE dbmanager ADD MEMBER Mary; 
@@ -117,7 +117,7 @@ Jednou z těchto správních rolí je role **dbmanager**. Členové této role m
 
 5. V případě potřeby nakonfigurujte pravidlo brány firewall, aby se nový uživatel mohl připojit. (Na nového uživatele se může vztahovat už existující pravidlo brány firewall.)
 
-Nyní se uživatel může připojit k `master` databázi a může vytvářet nové databáze. Účet použitý k vytvoření databáze se stává vlastníkem databáze.
+Nyní se uživatel může připojit k databázi `master` a může vytvářet nové databáze. Účet použitý k vytvoření databáze se stává vlastníkem databáze.
 
 ### <a name="login-managers"></a>Správci přihlášení
 
@@ -125,7 +125,7 @@ Druhou správní rolí je role správce přihlášení. Členové této role moh
 
 ## <a name="non-administrator-users"></a>Uživatelé bez oprávnění správce
 
-Obecně platí, že účty bez oprávnění správce nepotřebují přístup k hlavní databázi. Uživatele databáze s omezením můžete vytvářet pomocí příkazu [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx). Tímto uživatelem může být uživatel databáze s omezením s ověřováním služby Azure Active Directory (pokud jste nakonfigurovali prostředí s ověřováním pomocí služby Azure AD) nebo uživatel databáze s omezením s ověřováním SQL Serveru nebo uživatel s ověřováním SQL Serveru založeným na přihlášení s ověřováním SQL Serveru (vytvořený v předchozím kroku). Další informace najdete v tématu [Uživatelé databáze s omezením – zajištění přenositelnosti databáze](https://msdn.microsoft.com/library/ff929188.aspx). 
+Obecně platí, že účty bez oprávnění správce nepotřebují přístup k hlavní databázi. Uživatele databáze s omezením můžete vytvářet pomocí příkazu [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx). Uživatel může být Azure Active Directory ověřování, které obsahuje uživatele databáze (Pokud jste nakonfigurovali prostředí pro ověřování Azure AD), nebo pokud uživatel s omezením ověřování SQL Server obsahuje uživatele databáze nebo ověřování SQL Server na základě SQL Server přihlášení ověřování (vytvořené v předchozím kroku) Další informace najdete v části [Uživatelé databáze s omezením – vytvoření přenosné databáze](https://msdn.microsoft.com/library/ff929188.aspx). 
 
 Pokud chcete vytvářet uživatele, připojte se k databázi a spusťte podobné příkazy jako v následujících příkladech:
 
@@ -142,7 +142,7 @@ GRANT ALTER ANY USER TO Mary;
 
 Chcete-li poskytnout dalším uživatelům úplnou kontrolu nad databází, nastavte je jako člen pevné databázové role **db_owner** .
 
-V Azure SQL Database použijte `ALTER ROLE` příkaz.
+V Azure SQL Database použijte příkaz `ALTER ROLE`.
 
 ```sql
 ALTER ROLE db_owner ADD MEMBER Mary;
@@ -189,10 +189,10 @@ Při správě přihlášení a uživatelů ve službě SQL Database mějte na pa
 - Když chcete provádět příkazy **, musíte být připojeni k** hlavní`CREATE/ALTER/DROP DATABASE` databázi.   
 - Databázového uživatele, který odpovídá **správci serveru**, není možné změnit ani vyřadit. 
 - Výchozím jazykem přihlášení **správce serveru** je americká angličtina.
-- Příkazy `CREATE DATABASE` a `DROP DATABASE` mohou provádět jen správci (přihlášení **správce serveru** nebo správce Azure AD) a členové databázové role **dbmanager** v **hlavní** databázi.
+- Příkazy **a** mohou provádět jen správci (přihlášení **správce serveru** nebo správce Azure AD) a členové databázové role **dbmanager** v `CREATE DATABASE`hlavní`DROP DATABASE` databázi.
 - Při provádění příkazů `CREATE/ALTER/DROP LOGIN` musíte být připojení k hlavní databázi. Nedoporučuje se používat přihlášení. Použijte raději databázové uživatele s omezením.
 - Pokud se chcete připojit k uživatelské databázi, musíte v připojovacím řetězci uvést název databáze.
-- Příkazy `CREATE LOGIN`, `ALTER LOGIN` a `DROP LOGIN` mohou provádět jen hlavní přihlášení na úrovni serveru a členové databázové role **loginmanager** v **hlavní** databázi.
+- Příkazy **,**  a **mohou provádět jen hlavní přihlášení na úrovni serveru a členové databázové role**loginmanager`CREATE LOGIN` v `ALTER LOGIN`hlavní`DROP LOGIN` databázi.
 - Při provádění příkazů `CREATE/ALTER/DROP LOGIN` a `CREATE/ALTER/DROP DATABASE` v aplikaci ADO.NET není dovolené používat příkazy s parametry. Další informace viz [Příkazy a parametry](https://msdn.microsoft.com/library/ms254953.aspx).
 - Při provádění příkazů `CREATE/ALTER/DROP DATABASE` a `CREATE/ALTER/DROP LOGIN` musí být každý příkaz jediným příkazem v dávce Transact-SQL. V opačném případě dojde k chybě. Následující příkaz Transact-SQL například zkontroluje, jestli databáze existuje. Pokud existuje, volá příkaz `DROP DATABASE`, který ji odebere. Příkaz `DROP DATABASE` ale není jediným příkazem v dávce, a proto provedení následujícího příkazu Transact-SQL způsobí chybu.
 
@@ -213,10 +213,10 @@ Při správě přihlášení a uživatelů ve službě SQL Database mějte na pa
 - Při provádění příkazu `CREATE USER` s možností `FOR/FROM LOGIN` musí jít o jediný příkaz v dávce Transact-SQL.
 - Při provádění příkazu `ALTER USER` s možností `WITH LOGIN` musí jít o jediný příkaz v dávce Transact-SQL.
 - Pokud chcete použít příkaz `CREATE/ALTER/DROP` pro vytvoření, změnu nebo odstranění uživatele, musíte mít v databázi oprávnění `ALTER ANY USER`.
-- Když se vlastník databázové role pokusí přidat nebo odebrat jiného uživatele databáze k této databázové roli nebo z ní, může dojít k následující chybě: **Uživatel nebo role s názvem v této databázi neexistují.** Chyba je způsobená tím, že vlastník role daného uživatele nevidí. Problém vyřešíte tak, že vlastníkovi role udělíte oprávnění `VIEW DEFINITION` pro daného uživatele. 
+- Pokud se vlastník databázové role pokusí přidat do této role jiného uživatele databáze (nebo ho z ní odebrat), může dojít k následující chybě: **Uživatel nebo role „Jméno“ v této databázi neexistuje.** Chyba je způsobená tím, že vlastník role daného uživatele nevidí. Problém vyřešíte tak, že vlastníkovi role udělíte oprávnění `VIEW DEFINITION` pro daného uživatele. 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o pravidlech brány firewall najdete v tématu [Brána firewall služby Azure SQL Database](sql-database-firewall-configure.md).
 - Přehled všech funkcí zabezpečení služby SQL Database najdete v [přehledu zabezpečení SQL](sql-database-security-overview.md).

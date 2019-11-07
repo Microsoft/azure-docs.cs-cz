@@ -1,5 +1,5 @@
 ---
-title: OLTP v paměti zlepšuje výkon SQL TXN | Microsoft Docs
+title: OLTP v paměti zlepšuje výkon SQL TXN.
 description: Přijmout OLTP v paměti pro zlepšení transakčního výkonu v existující databázi SQL.
 services: sql-database
 ms.service: sql-database
@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
-ms.openlocfilehash: e869b2bba3bd64b58d9063e9445889ef709efdc3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 82b24b51a103d31bf20bbb7a9fc304095be523d5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567950"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689839"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>Pomocí OLTP v paměti můžete zlepšit výkon aplikace v SQL Database
 
 [OLTP v paměti](sql-database-in-memory.md) lze použít ke zlepšení výkonu zpracování transakcí, přijímání dat a přechodných scénářů dat v databázích [úrovně Premium a pro důležité obchodní informace](sql-database-service-tiers-vcore.md) bez zvýšení cenové úrovně. 
 
 > [!NOTE] 
-> Přečtěte si, jak kvorum podvoje [úlohy klíčové databáze při snižování DTU o 70% s SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+> Přečtěte si [, jak kvorum podvoje úlohy klíčové databáze při snižování DTU o 70% s SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
 
 Pomocí těchto kroků můžete v existující databázi přijmout OLTP v paměti.
@@ -40,17 +40,17 @@ SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 
 
 
-## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>Krok 2: Identifikace objektů, které se mají migrovat do OLTP v paměti
+## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>Krok 2: určení objektů, které se mají migrovat do OLTP v paměti
 SSMS zahrnuje sestavu s **přehledem analýzy výkonu transakcí** , kterou můžete spustit pro databázi s aktivním zatížením. Tato sestava identifikuje tabulky a uložené procedury, které jsou kandidáty na migraci do OLTP v paměti.
 
 V SSMS vygenerujte sestavu:
 
 * V **Průzkumník objektů**klikněte pravým tlačítkem myši na uzel databáze.
-* Klikněte na **sestavy** > **standardní** > **Přehled analýzy výkonu transakce**.
+* Klikněte na **sestavy** > **standardní sestavy** > **Přehled analýzy výkonu transakcí**.
 
 Další informace najdete v tématu [určení, zda by měla být tabulka nebo uložená procedura převoditelné do OLTP v paměti](https://msdn.microsoft.com/library/dn205133.aspx).
 
-## <a name="step-3-create-a-comparable-test-database"></a>Krok 3: Vytvoření srovnatelné testovací databáze
+## <a name="step-3-create-a-comparable-test-database"></a>Krok 3: vytvoření srovnatelné testovací databáze
 Předpokládejme, že se v sestavě zobrazuje vaše databáze, která by mohla být převedena na paměťově optimalizovanou tabulku. Doporučujeme, abyste nejprve otestovali, abyste ověřili indikaci testováním.
 
 Potřebujete testovací kopii vaší provozní databáze. Testovací databáze by měla být na stejné úrovni úrovně služeb jako provozní databáze.
@@ -66,7 +66,7 @@ Chcete-li se snadno rozzkoušet, vylepšit testovací databázi následujícím 
         MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = ON;
    ```
 
-## <a name="step-4-migrate-tables"></a>Krok 4: Migrace tabulek
+## <a name="step-4-migrate-tables"></a>Krok 4: migrace tabulek
 Musíte vytvořit a naplnit paměťově optimalizovanou kopii tabulky, kterou chcete testovat. Můžete ho vytvořit pomocí některého z těchto:
 
 * Průvodce užitečnou optimalizací paměti v SSMS.
@@ -93,7 +93,7 @@ Postup použití této možnosti migrace:
 2. Získejte kompletní skript T-SQL pro tabulku a její indexy.
    
    * V SSMS klikněte pravým tlačítkem myši na uzel tabulky.
-   * Klikněte na tlačítko **tabulka skriptů jako** > **vytvořit pro** > **nové okno dotazu**.
+   * Kliknutím na tlačítko **tabulka skriptů jako** > **vytvořit** > **nové okno dotazu**.
 3. V okně skriptu přidejte do příkazu CREATE TABLE příkaz WITH (MEMORY_OPTIMIZED = ON).
 4. Pokud existuje CLUSTEROVANÝ index, změňte ho na neclusterovaný.
 5. Přejmenujte existující tabulku pomocí SP_RENAME.
@@ -106,7 +106,7 @@ INSERT INTO <new_memory_optimized_table>
 ```
 
 
-## <a name="step-5-optional-migrate-stored-procedures"></a>Krok 5 (volitelné): Migrace uložených procedur
+## <a name="step-5-optional-migrate-stored-procedures"></a>Krok 5 (volitelné): migrace uložených procedur
 Funkce v paměti může také upravovat uloženou proceduru pro zlepšení výkonu.
 
 ### <a name="considerations-with-natively-compiled-stored-procedures"></a>Otázky s nativně kompilovanými uloženými procedurami
@@ -150,7 +150,7 @@ Postup migrace je následující:
 4. Přejmenujte starou uloženou proceduru pomocí SP_RENAME. Nebo ho jednoduše přetáhněte.
 5. Spusťte upravený skript T-SQL VYTVOŘENého postupu.
 
-## <a name="step-6-run-your-workload-in-test"></a>Krok 6: Spuštění úlohy v testu
+## <a name="step-6-run-your-workload-in-test"></a>Krok 6: spuštění úlohy v testu
 Spusťte v testovací databázi úlohu, která bude podobná zatížení, které běží ve vaší provozní databázi. To by mělo odhalit nárůst výkonu dosažený využitím funkce v paměti pro tabulky a uložené procedury.
 
 Hlavní atributy úlohy jsou:
@@ -162,7 +162,7 @@ Chcete-li přizpůsobit a spustit úlohu testování, zvažte použití praktick
 
 Chcete-li minimalizovat latenci sítě, spusťte test ve stejné geografické oblasti Azure, kde databáze existuje.
 
-## <a name="step-7-post-implementation-monitoring"></a>Krok 7: Monitorování po implementaci
+## <a name="step-7-post-implementation-monitoring"></a>Krok 7: monitorování po implementaci
 Zvažte monitorování vlivu implementace v paměti v produkčním prostředí:
 
 * [Monitorujte úložiště v paměti](sql-database-in-memory-oltp-monitoring.md).

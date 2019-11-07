@@ -1,5 +1,5 @@
 ---
-title: Skript PowerShellu – transformace dat v cloudu pomocí Data Factory | Microsoft Docs
+title: 'Skript PowerShellu – transformace dat v cloudu pomocí Data Factory '
 description: Tento skript PowerShellu transformuje data v cloudu spuštěním programu Spark v clusteru Azure HDInsight Spark.
 author: djpmsft
 ms.author: daperlov
@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/12/2017
-ms.openlocfilehash: 973efe90ea1da68e4c4e4b0dbbb4c191be18213d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 53f64103819476e4efe918bd7a7be4ee2a1bcca3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140881"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684318"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>Skript PowerShellu – transformace dat v cloudu pomocí Azure Data Factory
 
@@ -55,15 +55,15 @@ Tento ukázkový skript PowerShell vytvoří kanál, který transformuje data v 
     ```
 2. Nahraďte **&lt;storageAccountName&gt;** názvem vašeho účtu služby Azure Storage. Pak soubor uložte. 
 3. Ve službě Azure Blob Storage, vytvořte kontejner **adftutorial**, pokud ještě neexistuje. 
-4. Vytvořte složku **spark**.
+4. Vytvořte složku s názvem **spark**.
 5. Ve složce **spark** vytvořte podsložku **script**. 
 6. Do podsložky **script** uložte soubor **WordCount_Spark.py**. 
 
 
 ### <a name="upload-the-input-file"></a>Nahrání vstupního souboru
 1. Vytvořte soubor **minecraftstory.txt** a nějakým textem. Program Sparku spočítá slova v tomto textu. 
-2. Vytvořte podsložku s `inputfiles` názvem `spark` ve složce kontejneru objektů BLOB. 
-3. Do podsložky `inputfiles` uložte soubor `minecraftstory.txt`. 
+2. Vytvořte podsložku s názvem `inputfiles` ve složce `spark` kontejneru objektů BLOB. 
+3. Do podsložky `minecraftstory.txt` uložte soubor `inputfiles`. 
 
 ## <a name="sample-script"></a>Ukázkový skript
 > [!IMPORTANT]
@@ -94,12 +94,12 @@ Tento skript používá následující příkazy:
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | Vytvoření datové továrny |
 | [Set-AzDataFactoryV2LinkedService](/powershell/module/az.datafactory/set-Azdatafactoryv2linkedservice) | Vytvoří propojenou službu v datové továrně. Propojená služba propojuje úložiště dat nebo výpočetní prostředky s datovou továrnou. |
 | [Set-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/set-Azdatafactoryv2pipeline) | Vytvoří v datové továrně kanál. Kanál obsahuje jednu nebo více aktivit, které provádějí určitou operaci. V tomto kanálu aktivita Spark transformuje data spuštěním programu v clusteru Azure HDInsight Spark. |
-| [Invoke-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/invoke-Azdatafactoryv2pipeline) | Vytvoří běh pro kanál. Jinými slovy, spouští kanál. |
+| [Invoke – AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/invoke-Azdatafactoryv2pipeline) | Vytvoří běh pro kanál. Jinými slovy, spouští kanál. |
 | [Get-AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | Získá podrobnosti o spuštění aktivity (spuštění aktivity) v kanálu. 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 

@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z MariaDB pomocí Azure Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak kopírovat data z MariaDB úložišť dat podporovaných jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
+title: Kopírování dat z MariaDB pomocí Azure Data Factory
+description: Naučte se, jak kopírovat data z MariaDB do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,29 +12,29 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: b58617281094973e2705c34fdd4e4f6ccb2e8d8c
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 853d39545d099f43cd5769eadae974e20c977e53
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090140"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680733"
 ---
 # <a name="copy-data-from-mariadb-using-azure-data-factory"></a>Kopírování dat z MariaDB pomocí Azure Data Factory
 
-Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory ke zkopírování dat z MariaDB. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z MariaDB. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
 
-## <a name="supported-capabilities"></a>Podporované funkce
+## <a name="supported-capabilities"></a>Podporované možnosti
 
 Tento konektor MariaDB je podporován pro následující činnosti:
 
 - [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
 - [Aktivita Lookup](control-flow-lookup-activity.md)
 
-Kopírování dat z MariaDB do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Data z MariaDB můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Poskytuje integrované ovladače chcete umožnit připojení k Azure Data Factory, proto není nutné ručně nainstalovat všechny ovladače používání tohoto konektoru.
+Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, takže nemusíte ručně instalovat žádné ovladače pomocí tohoto konektoru.
 
-Tento konektor v současné době podporuje MariaDB verze 10.0 k 10.2.
+Tento konektor aktuálně podporuje MariaDB verze 10,0 až 10,2.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -44,17 +44,17 @@ Tento konektor v současné době podporuje MariaDB verze 10.0 k 10.2.
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní MariaDB konektoru.
+Následující části obsahují podrobné informace o vlastnostech, které slouží k definování Data Factory entit specifických pro konektor MariaDB.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro MariaDB propojené služby jsou podporovány následující vlastnosti:
+Pro propojenou službu MariaDB jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **MariaDB** | Ano |
-| connectionString | ODBC připojovací řetězec služby pro připojení k MariaDB. <br/>Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. Můžete také do Azure Key Vault umístit heslo a načíst `pwd` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
-| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
+| type | Vlastnost Type musí být nastavená na: **MariaDB** . | Ano |
+| Vlastnosti | Připojovací řetězec ODBC, který se má připojit k MariaDB. <br/>Označte toto pole jako SecureString a bezpečně ho uložte do Data Factory. Můžete také do Azure Key Vault umístit heslo a stáhnout `pwd` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
 
 **Příklad:**
 
@@ -108,9 +108,9 @@ Pro MariaDB propojené služby jsou podporovány následující vlastnosti:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností, které podporuje MariaDB datové sady.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných MariaDB DataSet.
 
-Ke zkopírování dat z MariaDB, nastavte vlastnost typ datové sady na **MariaDBTable**. Neexistuje žádné další vlastnosti specifické pro typ. v tomto typu datové sady.
+Chcete-li kopírovat data z MariaDB, nastavte vlastnost Type datové sady na **MariaDBTable**. V tomto typu datové sady neexistuje žádná další vlastnost specifická pro typ.
 
 **Příklad**
 
@@ -131,16 +131,16 @@ Ke zkopírování dat z MariaDB, nastavte vlastnost typ datové sady na **MariaD
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností, které podporuje MariaDB zdroje.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností podporovaných MariaDB zdrojem.
 
-### <a name="mariadb-as-source"></a>MariaDB jako zdroj
+### <a name="mariadb-as-source"></a>MariaDB as source
 
-Ke zkopírování dat z MariaDB, nastavte typ zdroje v aktivitě kopírování do **MariaDBSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Chcete-li kopírovat data z MariaDB, nastavte typ zdroje v aktivitě kopírování na **MariaDBSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MariaDBSource** | Ano |
-| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MariaDBSource** . | Ano |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
 
@@ -179,5 +179,5 @@ Ke zkopírování dat z MariaDB, nastavte typ zdroje v aktivitě kopírování d
 Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 
-## <a name="next-steps"></a>Další postup
-Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+## <a name="next-steps"></a>Další kroky
+Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

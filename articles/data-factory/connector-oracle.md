@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat z a do Oracle pomocí Azure Data Factory | Microsoft Docs
+title: Kopírování dat z a do Oracle pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z podporovaných úložišť zdrojů do databáze Oracle nebo z Oracle na podporovaná úložiště jímky pomocí Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 24ff711fcd27d59c555a53a910065e19f7298131
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d8cbc7410f2b2bd525148cee9dc5b8ddbb756dff
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931063"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680510"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopírování dat z a do Oracle pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -51,13 +51,13 @@ Konkrétně tento konektor Oracle podporuje:
 > [!Note]
 > Proxy server Oracle se nepodporuje.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)] 
 
 Modul runtime integrace poskytuje integrovaný ovladač Oracle. Proto nemusíte při kopírování dat z a do Oracle ručně instalovat ovladač.
 
-## <a name="get-started"></a>Začít
+## <a name="get-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -121,7 +121,7 @@ Pokud chcete povolit šifrování u připojení Oracle, máte dvě možnosti:
         ```
 
     3.  `truststore` soubor umístěte do místního počítače IR. Soubor umístěte například na C:\MyTrustStoreFile.
-    4.  V Azure Data Factory nakonfigurujte připojovací řetězec Oracle pomocí `EncryptionMethod=1` a odpovídající `TrustStore`/`TrustStorePassword`hodnota. Například, `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;EncryptionMethod=1;TrustStore=C:\\MyTrustStoreFile;TrustStorePassword=<trust_store_password>`.
+    4.  V Azure Data Factory nakonfigurujte připojovací řetězec Oracle pomocí `EncryptionMethod=1` a odpovídající `TrustStore`/`TrustStorePassword`hodnota. například `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;EncryptionMethod=1;TrustStore=C:\\MyTrustStoreFile;TrustStorePassword=<trust_store_password>`.
 
 **Příklad:**
 
@@ -181,8 +181,8 @@ Chcete-li kopírovat data z a do Oracle, nastavte vlastnost typ datové sady na 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type datové sady musí být nastavená na `OracleTable`. | Ano |
-| XSD | Název schématu. |Ne pro zdroj, Ano pro jímku  |
-| Stolní | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
+| schema | Název schématu. |Ne pro zdroj, Ano pro jímku  |
+| stolní | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
 | tableName | Název tabulky nebo zobrazení se schématem. Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a `table`. | Ne pro zdroj, Ano pro jímku |
 
 **Příklad:**
@@ -360,7 +360,7 @@ Při kopírování dat z a do Oracle platí následující mapování. Další i
 | PŘÍZNAKY |Byte []<br/>(podporuje se jenom v Oracle 10g a vyšších verzích) |
 | CHAR |Řetězec |
 | DATOVÝ typ CLOB |Řetězec |
-| DATE (Datum) |Datum a čas |
+| DATE (Datum) |DateTime |
 | Plovák |Decimal, String (if Precision > 28) |
 | ČÍSLA |Decimal, String (if Precision > 28) |
 | DLOUHOU |Řetězec |
@@ -371,7 +371,7 @@ Při kopírování dat z a do Oracle platí následující mapování. Další i
 | NVARCHAR2 |Řetězec |
 | ZÍSKÁNÍ |Byte [] |
 | ROWID |Řetězec |
-| ČASOVÉ razítko |Datum a čas |
+| ČASOVÉ razítko |DateTime |
 | ČASOVÉ RAZÍTKO S MÍSTNÍM ČASOVÝM PÁSMEM |Řetězec |
 | ČASOVÉ RAZÍTKO S ČASOVÝM PÁSMEM |Řetězec |
 | CELÉ ČÍSLO BEZ ZNAMÉNKA |Číslo |

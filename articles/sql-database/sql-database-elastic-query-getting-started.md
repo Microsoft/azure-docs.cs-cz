@@ -1,5 +1,5 @@
 ---
-title: Sestava napříč cloudových databází s horizontálním škálováním (horizontální dělení) | Microsoft Docs
+title: Sestava napříč cloudových databází s horizontálním škálováním (horizontální dělení)
 description: Dotazy databázové databáze pro různé databáze můžete používat k sestavování napříč více databázemi.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
-ms.openlocfilehash: 4e896fae0d8459629c58dfd0bbdfbb32b90b1cac
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 1adc7757edc6d5abc50ed31ea2227711db60fcfe
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264233"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690414"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Sestava napříč cloudových databází s horizontálním škálováním (Preview)
 
@@ -114,7 +114,7 @@ Všimněte si, že dotaz agreguje výsledky ze všech horizontálních oddílů 
 3. Klikněte na **z jiných zdrojů** a klikněte na **z SQL Server**.
 
    ![Import z jiných zdrojů z Excelu][5]
-4. V **Průvodci datovým připojením** zadejte název serveru a přihlašovací údaje. Pak klikněte na **Další**.
+4. V **Průvodci datovým připojením** zadejte název serveru a přihlašovací údaje. Pak klikněte na tlačítko **Další**.
 5. V dialogovém okně **Vyberte databázi**obsahující požadovaná data a vyberte databázi **ElasticDBQuery** .
 6. V zobrazení seznamu vyberte tabulku **zákazníci** a klikněte na **Další**. Pak klikněte na **Dokončit**.
 7. Ve formuláři **importovat data** v části **Vyberte, jakým způsobem chcete zobrazit tato data v sešitu**vyberte **tabulka** a klikněte na tlačítko **OK**.
@@ -123,7 +123,7 @@ Všechny řádky z tabulky **Customers** uložené v různých horizontálních 
 
 Nyní můžete používat výkonné funkce pro vizualizaci dat v Excelu. Připojovací řetězec s názvem vašeho serveru, názvem databáze a přihlašovacími údaji můžete použít k propojení nástrojů pro integraci BI a dat s databází elastického dotazu. Ujistěte se, že je pro nástroj SQL Server podporována jako zdroj dat. Na databázi elastických dotazů a externích tabulkách můžete odkazovat stejně jako na jakékoli jiné SQL Server databáze a SQL Server tabulky, ke kterým se připojíte pomocí nástroje.
 
-### <a name="cost"></a>Ze
+### <a name="cost"></a>Náklady
 Pro použití funkce dotazu Elastic Database se neúčtují žádné další poplatky.
 
 Informace o cenách najdete v článku informace o [cenách SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
@@ -134,7 +134,7 @@ Informace o cenách najdete v článku informace o [cenách SQL Database](https:
 * Kurz pro vertikální dělení najdete v tématu [Začínáme s mezidatabázovým dotazem (vertikální dělení)](sql-database-elastic-query-getting-started-vertical.md).
 * Syntaxe a ukázkové dotazy pro vertikálně dělená data najdete v tématu [dotazování na vertikálně dělená data](sql-database-elastic-query-vertical-partitioning.md) .
 * Syntaxe a ukázkové dotazy pro horizontálně rozdělená data najdete v tématu [dotazování na horizontálně dělená data](sql-database-elastic-query-horizontal-partitioning.md) .
-* V tématu [SP @ no__t-1execute \_remote](https://msdn.microsoft.com/library/mt703714) najdete uloženou proceduru, která provádí příkaz Transact-SQL na jednom vzdáleném Azure SQL Database nebo sadě databází, které v horizontálním schématu dělení slouží jako horizontálních oddílů.
+* V tématu [sp\_execute \_Remote](https://msdn.microsoft.com/library/mt703714) pro uloženou proceduru, která provádí příkaz Transact-SQL na jednom vzdáleném Azure SQL Database nebo sadě databází, která slouží jako horizontálních oddílů ve vodorovném schématu dělení.
 
 
 <!--Image references-->

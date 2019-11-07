@@ -1,6 +1,6 @@
 ---
-title: Přesun dat pomocí aktivity kopírování | Dokumentace Microsoftu
-description: 'Další informace o přesouvání dat ve službě Data Factory kanálů: migrace dat mezi cloudovými úložišti a mezi místním úložištěm a cloudovým úložištěm. Použije aktivitu kopírování.'
+title: Přesun dat pomocí aktivity kopírování
+description: 'Přečtěte si o přesunu dat v Data Factory kanálech: migrace dat mezi cloudových úložišť a mezi místním úložištěm a cloudovým úložištěm. Použijte aktivitu kopírování.'
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,58 +13,58 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: bfb15e717e3cb726aba782d9a9506330d7ea39fe
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 0f7771c55bfdc837921fb731b29e88c970b5d283
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839321"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682648"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Přesun dat pomocí aktivity kopírování
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](data-factory-data-movement-activities.md)
 > * [Verze 2 (aktuální verze)](../copy-activity-overview.md)
 
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [aktivita kopírování ve verzi V2](../copy-activity-overview.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [aktivita kopírování ve verzi v2](../copy-activity-overview.md).
 
 ## <a name="overview"></a>Přehled
-Ve službě Azure Data Factory můžete použít aktivitu kopírování ke kopírování dat mezi místním prostředím a cloudem datových úložišť. Po zkopírování dat, může být dále transformují a analyzují. Aktivitu kopírování, která můžete použít také k publikování, transformace a analýza výsledků pro business intelligence (BI) a využití aplikace.
+V Azure Data Factory můžete použít aktivitu kopírování ke kopírování dat mezi místními a cloudovým úložištěm dat. Po zkopírování dat je lze dále transformovat a analyzovat. Aktivitu kopírování můžete použít také k publikování transformačních a analytických výsledků pro business intelligence (BI) a využití aplikací.
 
-![Pro dané aktivity kopírování](media/data-factory-data-movement-activities/copy-activity.png)
+![Role aktivity kopírování](media/data-factory-data-movement-activities/copy-activity.png)
 
-Aktivitu kopírování, která využívá k tomu zabezpečenou, spolehlivou a škálovatelnou, a [globálně dostupnou službu](#global). Tento článek poskytuje podrobné informace o přesouvání dat ve službě Data Factory a aktivitu kopírování.
+Aktivita kopírování využívá zabezpečenou, spolehlivou, škálovatelnou a [globálně dostupnou službu](#global). Tento článek poskytuje podrobné informace o přesunu dat v Data Factory a aktivitě kopírování.
 
-Nejprve Podíváme se, jak dojde k migraci dat mezi dvěma cloudovými úložišti dat a mezi úložištěm dat v místním a cloudovým úložištěm dat.
+Nejdřív se podívejme, jak probíhá migrace dat mezi dvěma cloudových úložišť dat a mezi místním úložištěm dat a cloudovým úložištěm dat.
 
 > [!NOTE]
-> Obecné informace o aktivitách najdete v tématu [Principy kanály a aktivity](data-factory-create-pipelines.md).
+> Obecné informace o aktivitách najdete v tématu [Principy kanálů a aktivit](data-factory-create-pipelines.md).
 >
 >
 
-### <a name="copy-data-between-two-cloud-data-stores"></a>Kopírovat data mezi dvěma cloudovými úložišti dat
-Když zdroje a jímky úložiště dat v cloudu, aktivita kopírování prochází následující fáze ke kopírování dat ze zdroje do jímky. Služba, kterou využívá aktivitu kopírování:
+### <a name="copy-data-between-two-cloud-data-stores"></a>Kopírování dat mezi dvěma datovými úložišti cloudových dat
+Pokud jsou zdrojová i jímka úložiště dat v cloudu, aktivita kopírování prochází z následujících fází a kopíruje data ze zdroje do jímky. Služba, která využívá aktivitu kopírování:
 
-1. Přečte data ze zdrojového úložiště dat.
-2. Provede serializaci/deserializaci, komprese nebo dekomprese, mapování sloupců a převod typu. Provádí tyto operace konfigurace vstupní datové sady, výstupní datovou sadu a aktivitu kopírování.
-3. Zapíše data do cílového úložiště dat.
+1. Načte data ze zdrojového úložiště dat.
+2. Provádí serializaci/deserializaci, kompresi a dekompresi, mapování sloupců a převod typu. Provádí tyto operace na základě konfigurací vstupní datové sady, výstupní datové sady a aktivity kopírování.
+3. Zapisuje data do cílového úložiště dat.
 
-Služba se automaticky vybere optimální oblasti, kterou chcete provést přesun dat. Tato oblast je obvykle ten nejbližší úložiště dat jímky.
+Služba automaticky zvolí optimální oblast pro pohyb dat. Tato oblast je obvykle ta nejbližší k úložišti dat jímky.
 
-![Kopírování cloud-to-cloud](./media/data-factory-data-movement-activities/cloud-to-cloud.png)
+![Kopie z cloudu do cloudu](./media/data-factory-data-movement-activities/cloud-to-cloud.png)
 
-### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>Kopírování dat mezi úložištěm dat v místním a cloudovým úložištěm dat
-Bezpečně přesun dat mezi úložišti dat v místním a cloudovým úložištěm dat, instalace brány pro správu dat na místním počítači. Brána správy dat je agent, který umožňuje přesun hybridních dat a zpracování. Nainstalujete ho na stejném počítači jako samotné úložiště dat nebo na samostatném počítači, který má přístup k úložišti dat.
+### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>Kopírování dat mezi místním úložištěm dat a cloudovým úložištěm dat
+K bezpečnému přesunu dat mezi místním úložištěm dat a cloudovým úložištěm dat nainstalujte Správa dat bránu na místním počítači. Správa dat brána je agent, který umožňuje přesun a zpracování hybridních dat. Můžete ji nainstalovat na stejný počítač, jako je samotné úložiště dat, nebo na samostatném počítači, který má přístup k úložišti dat.
 
-Brána správy dat v tomto scénáři, provede serializaci/deserializaci, komprese nebo dekomprese, mapování sloupců a převod typu. Není toku dat pomocí služby Azure Data Factory. Brána správy dat místo toho přímo zapisuje data do cílového úložiště.
+V tomto scénáři Správa dat brána provádí serializaci/deserializaci, kompresi/dekompresi, mapování sloupců a převod typu. Data neproudí prostřednictvím služby Azure Data Factory. Místo toho Správa dat brána přímo zapisuje data do cílového úložiště.
 
-![Kopie na místě – na cloud](./media/data-factory-data-movement-activities/onprem-to-cloud.png)
+![Kopírování z místního prostředí do cloudu](./media/data-factory-data-movement-activities/onprem-to-cloud.png)
 
-Zobrazit [přesun dat mezi místním prostředím a cloudem úložišť dat](data-factory-move-data-between-onprem-and-cloud.md) úvod a návod. Zobrazit [brána správy dat](data-factory-data-management-gateway.md) podrobné informace o tomto agentovi.
+Úvod a návod najdete v tématu [přesun dat mezi místními a cloudových úložišť dat](data-factory-move-data-between-onprem-and-cloud.md) . Podrobné informace o tomto agentovi najdete v tématu [Správa dat Gateway](data-factory-data-management-gateway.md) .
 
-Můžete také přesun dat z/do podporované úložišť dat, které jsou hostovány na virtuálních počítačích (VM) Azure IaaS pomocí brány správy dat. Brána správy dat v takovém případě můžete nainstalovat na stejný virtuální počítač, samotného úložiště dat nebo na samostatném virtuálním počítači, který má přístup k úložišti dat.
+Můžete také přesunout data z/do podporovaných úložišť dat hostovaných na virtuálních počítačích Azure s IaaS pomocí brány Správa dat. V takovém případě můžete bránu Správa dat nainstalovat na stejný virtuální počítač, jako je samotné úložiště dat, nebo na samostatném virtuálním počítači, který má přístup k úložišti dat.
 
-## <a name="supported-data-stores-and-formats"></a>Podporované zdroje dat a formáty
+## <a name="supported-data-stores-and-formats"></a>Podporovaná úložiště a formáty dat
 Aktivita kopírování ve službě Data Factory kopíruje data ze zdrojového úložiště dat do úložiště dat jímky. Data Factory podporuje následující typy úložišť dat. Data z libovolného zdroje lze zapsat do libovolné jímky. Kliknutím na úložiště dat se dozvíte, jak kopírovat data z a do daného úložiště.
 
 > [!NOTE] 
@@ -76,40 +76,40 @@ Aktivita kopírování ve službě Data Factory kopíruje data ze zdrojového ú
 > Úložiště dat s * mohou být místní nebo v Azure IaaS a vyžadují nainstalování [Brány správy dat](data-factory-data-management-gateway.md) na místním počítači nebo na počítači Azure IaaS.
 
 ### <a name="supported-file-formats"></a>Podporované formáty souborů
-Můžete použít aktivitu kopírování, která **kopírovat soubory jako-je** mezi dvě souborové úložiště dat, můžete přeskočit [formátovat oddíl](data-factory-create-datasets.md) v definici vstupní a výstupní datové sady. Data se zkopírují efektivně bez serializaci/deserializaci.
+Aktivitu kopírování můžete použít ke **kopírování souborů** mezi dvěma úložišti dat založených na souborech, ale v definicích vstupní i výstupní datové sady můžete přeskočit [oddíl formát](data-factory-create-datasets.md) . Data se zkopírují efektivně bez serializace/deserializace.
 
-Aktivita kopírování také načteme a zapisuje do souborů v určených formátů: **Text JSON, Avro, ORC a Parquet**a kompresní kodek **GZip, Deflate, BZip2 a ZipDeflate** jsou podporovány. Zobrazit [podporované formáty souborů a komprese](data-factory-supported-file-and-compression-formats.md) s podrobnostmi.
+Aktivita kopírování také čte a zapisuje do souborů v určených formátech: **text, JSON, Avro, orc a Parquet**a Kompresní kodek **gzip, Deflate, bzip2 a ZipDeflate** jsou podporovány. Viz [podporované formáty souborů a komprese](data-factory-supported-file-and-compression-formats.md) s podrobnostmi.
 
-Například můžete provést následující aktivity kopírování:
+Můžete například provést následující aktivity kopírování:
 
-* Kopírování dat v místním SQL serveru a ve formátu ORC zápis do Azure Data Lake Store.
-* Zkopírujte soubory ve formátu textu (CSV) v místním systému souborů a zápis do objektu Blob Azure ve formátu Avro.
-* Kopírování souborů ZIP v místním systému souborů a pak dekomprimovat pozemního do Azure Data Lake Store.
-* Kopírování dat z objektů Blob v Azure ve formátu GZip komprimované text (CSV) a zápis do služby Azure SQL Database.
+* Zkopírujte data v místních SQL Server a zapište do Azure Data Lake Store ve formátu ORC.
+* Kopírování souborů ve formátu textu (CSV) z místního systému souborů a zápis do objektu blob Azure ve formátu Avro
+* Zkopírujte soubory zip z místního systému souborů a dekomprimujte je na Azure Data Lake Store.
+* Zkopírujte data ve formátu. komprimovaný text (CSV) z Azure Blob a zapište do Azure SQL Database.
 
-## <a name="global"></a>Přesun globálně dostupné dat
-Azure Data Factory je dostupná jenom v oblastech USA – Západ, USA – východ a Severní Evropa. Ale služba, která využívá aktivitu kopírování, která je dostupná globálně v následujících území a oblastí. Globálně dostupné topologie zajišťuje přesun efektivní dat, které se obvykle vyhýbají segmentů směrování mezi oblastmi. Zobrazit [služby v jednotlivých oblastech](https://azure.microsoft.com/regions/#services) dostupnosti služby Data Factory a přesun dat v oblasti.
+## <a name="global"></a>Celkově dostupný pohyb dat
+Azure Data Factory je k dispozici pouze v oblastech Západní USA, Východní USA a Severní Evropa. Služba, která provádí kopírování, je ale globálně dostupná v následujících oblastech a zeměpisných oblastech. Globálně dostupná topologie zajišťuje efektivní přesun dat, který obvykle brání směrování mezi oblastmi. Dostupnost Data Factory a přesunu dat v oblasti najdete v tématu [služby podle oblasti](https://azure.microsoft.com/regions/#services) .
 
-### <a name="copy-data-between-cloud-data-stores"></a>Kopírování dat mezi cloudovými úložišti dat
-Když jsou zdroje a jímky úložiště dat v cloudu, datová továrna používá nasazení služby v oblasti, která je nejblíže k jímce ve stejné zeměpisné oblasti pro přesun dat. Informace o mapování najdete v této tabulce:
+### <a name="copy-data-between-cloud-data-stores"></a>Kopírování dat mezi úložišti cloudových dat
+Pokud jsou zdrojová i jímka úložiště dat v cloudu, Data Factory používá nasazení služby v oblasti, která je nejblíže jímky ve stejné geografické oblasti pro přesun dat. Informace o mapování najdete v této tabulce:
 
-| Geografie cílové úložiště dat | Oblast cílového úložiště dat. | Oblasti používané pro přesun dat |
+| Zeměpis cílových úložišť dat | Oblast cílového úložiště dat | Oblast, která se používá k přesunu dat |
 |:--- |:--- |:--- |
-| Spojené státy | East US | East US |
-| &nbsp; | Východní USA 2 | Východní USA 2 |
+| Spojené státy | Východ USA | Východ USA |
+| &nbsp; | Východ USA 2 | Východ USA 2 |
 | &nbsp; | Střední USA | Střední USA |
 | &nbsp; | Středoseverní USA | Středoseverní USA |
 | &nbsp; | Středojižní USA | Středojižní USA |
 | &nbsp; | Středozápadní USA | Středozápadní USA |
-| &nbsp; | USA – západ | USA – západ |
-| &nbsp; | USA – západ 2 | USA – západ 2 |
-| Kanada | Kanada – východ | Kanada – střed |
-| &nbsp; | Kanada – střed | Kanada – střed |
+| &nbsp; | Západní USA | Západní USA |
+| &nbsp; | Západní USA 2 | Západní USA 2 |
+| Kanada | Kanada – východ | Střední Kanada |
+| &nbsp; | Střední Kanada | Střední Kanada |
 | Brazílie | Brazílie – jih | Brazílie – jih |
 | Evropa | Severní Evropa | Severní Evropa |
 | &nbsp; | Západní Evropa | Západní Evropa |
-| Spojené království | Spojené království – západ | Velká Británie – jih |
-| &nbsp; | Velká Británie – jih | Velká Británie – jih |
+| Spojené království | Spojené království – západ | Spojené království – jih |
+| &nbsp; | Spojené království – jih | Spojené království – jih |
 | Asie a Tichomoří | Jihovýchodní Asie | Jihovýchodní Asie |
 | &nbsp; | Východní Asie | Jihovýchodní Asie |
 | Austrálie | Austrálie – východ | Austrálie – východ |
@@ -122,29 +122,29 @@ Když jsou zdroje a jímky úložiště dat v cloudu, datová továrna použív�
 | Jižní Korea | Jižní Korea – střed | Jižní Korea – střed |
 | &nbsp; | Jižní Korea – jih | Jižní Korea – střed |
 
-Alternativně můžete explicitně uvedla oblasti služby Data Factory, který se má použít ke kopírování zadáním `executionLocation` vlastnost v aktivitě kopírování `typeProperties`. Podporované hodnoty pro tuto vlastnost výše uvedených v **oblasti použít v případě přesunu dat** sloupce. Všimněte si, že vaše data prochází tuto oblast přenášených během kopírování. Například pro kopírování mezi Azure ukládá v Koreji, můžete zadat `"executionLocation": "Japan East"` trasu přes oblast Japonsko (naleznete v tématu [ukázkový JSON](#by-using-json-scripts) jako odkaz).
+Případně můžete explicitně určit oblast Data Factory služby, která se má použít k provedení kopírování, zadáním vlastnosti `executionLocation` v části aktivita kopírování `typeProperties`. Podporované hodnoty této vlastnosti jsou uvedeny v oblasti výše, která se **používá pro sloupec přesunu dat** . Všimněte si, že data procházejí během kopírování přes tuto oblast. Pokud například chcete kopírovat mezi obchody Azure v Koreji, můžete zadat `"executionLocation": "Japan East"` pro směrování prostřednictvím japonské oblasti (viz [ukázkový kód JSON](#by-using-json-scripts) jako reference).
 
 > [!NOTE]
-> Pokud se oblast cílového úložiště dat není v předchozím seznamu nebo jiným způsobem nezjistitelné, ve výchozím nastavení aktivity kopírování nezdaří, místo přes alternativní oblast, není-li `executionLocation` je zadán. Seznam podporovaných oblastí se bude rozšiřovat v čase.
+> Pokud oblast cílového úložiště dat není v předchozím seznamu nebo nezjistitelná, ve výchozím nastavení se aktivita kopírování nezdařila místo přechodu přes alternativní oblast, pokud není zadaný `executionLocation`. Seznam podporovaných oblastí se rozbalí v průběhu času.
 >
 
-### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>Kopírování dat mezi úložištěm dat v místním a cloudovým úložištěm dat
-Při kopírování dat mezi místním (nebo Azure virtual machines nebo IaaS) a cloudových úložišť, [brána správy dat](data-factory-data-management-gateway.md) provádí přesun dat na místním počítači nebo virtuálním počítači. Není toku dat ve službě v cloudu, pokud nechcete použít [fázovaného kopírování](data-factory-copy-activity-performance.md#staged-copy) funkce. V takovém případě data protékají pracovní úložiště objektů Blob v Azure před zápisem do úložiště dat jímky.
+### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>Kopírování dat mezi místním úložištěm dat a cloudovým úložištěm dat
+Při kopírování dat mezi místními (nebo virtuálními počítači Azure nebo IaaS) a cloudovým úložištěm [Správa dat brána](data-factory-data-management-gateway.md) provádí přesun dat na místním počítači nebo virtuálním počítači. Data netoků služby v cloudu, pokud nepoužijete možnost [dvoufázové kopírování](data-factory-copy-activity-performance.md#staged-copy) . V takovém případě data před zápisem do úložiště dat jímky natéká do pracovního úložiště Azure Blob.
 
 ## <a name="create-a-pipeline-with-copy-activity"></a>Vytvoření kanálu s aktivitou kopírování
-Vytvoření kanálu s aktivitou kopírování několika způsoby:
+Kanál s aktivitou kopírování můžete vytvořit několika způsoby:
 
 ### <a name="by-using-the-copy-wizard"></a>Pomocí Průvodce kopírováním
-Průvodce kopírováním služby Data Factory vám pomůže vytvořit kanál s aktivitou kopírování. Tento kanál umožňuje kopírovat data z podporovaných zdrojů do cílů *aniž byste museli napsat JSON* definice propojené služby, datové sady a kanály. Zobrazit [Průvodce kopírováním služby Data Factory](data-factory-copy-wizard.md) podrobné informace o průvodci.  
+Průvodce kopírováním Data Factory vám pomůže vytvořit kanál s aktivitou kopírování. Tento kanál umožňuje kopírovat data z podporovaných zdrojů do cílových umístění *bez psaní definic JSON* pro propojené služby, datové sady a kanály. Podrobnosti o průvodci najdete v tématu [Průvodce kopírováním Data Factory](data-factory-copy-wizard.md) .  
 
 ### <a name="by-using-json-scripts"></a>Pomocí skriptů JSON
-Data Factory Editor v sadě Visual Studio nebo Azure PowerShell slouží k vytvoření definici JSON kanálu (pomocí aktivity kopírování). Pak můžete nasadit ho k vytvoření kanálu ve službě Data Factory. Zobrazit [kurzu: Použití aktivity kopírování v kanálu Azure Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kurz s podrobnými pokyny.    
+Můžete použít Editor Data Factory v aplikaci Visual Studio nebo Azure PowerShell k vytvoření definice JSON pro kanál (pomocí aktivity kopírování). Pak ho můžete nasadit a vytvořit tak kanál v Data Factory. Podrobný postup najdete [v tématu Kurz: použití aktivity kopírování v kanálu Azure Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .    
 
-Vlastnosti JSON (například název, popis, vstupní a výstupní tabulky a zásady) jsou k dispozici pro všechny typy aktivit. Vlastnosti, které jsou k dispozici v `typeProperties` části aktivity se liší s jednotlivými typu aktivity.
+Vlastnosti JSON (například název, popis, vstupní a výstupní tabulky a zásady) jsou k dispozici pro všechny typy aktivit. Vlastnosti, které jsou k dispozici v části `typeProperties` aktivity, se liší podle typu aktivity.
 
-Pro aktivitu kopírování `typeProperties` oddílu se liší v závislosti na typech zdroje a jímky. Klikněte na zdroj/jímka v [zdroje a jímky podporované](#supported-data-stores-and-formats) části nabízejí informace o vlastnostech typu podporovaných aktivitou kopírování pro toto úložiště dat.
+V případě aktivity kopírování se oddíl `typeProperties` liší v závislosti na typech zdrojů a jímky. Kliknutím na zdroj nebo jímku v části [podporované zdroje a jímky](#supported-data-stores-and-formats) získáte informace o vlastnostech typu, které aktivita kopírování podporuje pro dané úložiště dat.
 
-Tady je ukázková definice JSON:
+Tady je ukázka definice JSON:
 
 ```json
 {
@@ -187,30 +187,30 @@ Tady je ukázková definice JSON:
   }
 }
 ```
-Určuje plán, který je definovaný ve vstupní sadě při spuštění aktivity (například: **denní**, četnosti, jak **den**a jako interval **1**). Aktivita kopíruje data ze vstupní datovou sadu (**zdroj**) na výstupní datovou sadu (**jímky**).
+Plán, který je definován ve výstupní datové sadě, určuje, kdy se aktivita spustí (například **denně**, frekvence jako **den**a interval jako **1**). Aktivita kopíruje data ze vstupní datové sady (**zdroje**) do výstupní datové sady (**jímka**).
 
-Můžete zadat více než jednu vstupní datovou sadu aktivita kopírování. Používají se k ověření závislostí, před spuštěním aktivity. Ale jenom data z datové sady první zkopírován do cílové datové sadě. Další informace najdete v tématu [plánování a provádění](data-factory-scheduling-and-execution.md).  
+Pro aktivitu kopírování lze zadat více než jednu vstupní datovou sadu. Slouží k ověření závislostí před spuštěním aktivity. Pouze data z první datové sady jsou však zkopírována do cílové datové sady. Další informace najdete v tématu [plánování a provádění](data-factory-scheduling-and-execution.md).  
 
 ## <a name="performance-and-tuning"></a>Výkon a ladění
-Zobrazit [Průvodce laděním a výkonem aktivity kopírování](data-factory-copy-activity-performance.md), která popisuje klíčové faktory, které ovlivňují výkon přesun dat (aktivita kopírování) ve službě Azure Data Factory. Také uvádí zjištěnou výkon při interní testování a tento článek popisuje různé způsoby, jak optimalizovat výkon aktivitu kopírování.
+Podívejte se na téma [Průvodce výkonem a optimalizací aktivity kopírování](data-factory-copy-activity-performance.md), který popisuje klíčové faktory ovlivňující výkon přesunu dat (aktivita kopírování) v Azure Data Factory. Také uvádí zjištěný výkon během interního testování a popisuje různé způsoby, jak optimalizovat výkon aktivity kopírování.
 
 ## <a name="fault-tolerance"></a>Odolnost proti chybám
-Ve výchozím nastavení, aktivita kopírování se zastaví kopírování dat a vrátí selhání dojde při nekompatibilní data mezi zdrojem a jímkou; Když explicitně konfigurací můžete přeskočit a protokolování nekompatibilních řádků a pouze kopie byla úspěšná kompatibilní data k vytvoření kopie. Zobrazit [aktivity kopírování odolnost proti chybám](data-factory-copy-activity-fault-tolerance.md) na další podrobnosti.
+Ve výchozím nastavení zastaví aktivita kopírovat kopírování dat a vrátí chybu, když dojde k nekompatibilním datům mezi zdrojem a jímkou. i když se dá explicitně nakonfigurovat tak, aby přeskočil a zaprotokoloval nekompatibilní řádky a kopíruje se jenom taková kompatibilní data, aby kopírování bylo úspěšné. Další podrobnosti najdete v podrobnostech o odolnosti [proti chybám aktivity kopírování](data-factory-copy-activity-fault-tolerance.md) .
 
 ## <a name="security-considerations"></a>Aspekty zabezpečení
-Najdete v článku [aspekty zabezpečení](data-factory-data-movement-security-considerations.md), která popisuje zabezpečení infrastruktury, služby pro přesun dat ve službě Azure Data Factory můžete zabezpečit vaše data.
+Projděte si téma [požadavky na zabezpečení](data-factory-data-movement-security-considerations.md), které popisuje infrastrukturu zabezpečení, kterou služby pro přesun dat v Azure Data Factory používají k zabezpečení vašich dat.
 
 ## <a name="scheduling-and-sequential-copy"></a>Plánování a sekvenční kopírování
-Zobrazit [plánování a provádění](data-factory-scheduling-and-execution.md) podrobné informace o tom, jak funguje plánování a provádění ve službě Data Factory. Je možné spustit více operací kopírování jeden po druhém sekvenční/seřazené způsobem. Zobrazit [kopírovat postupně](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) části.
+Podrobné informace o tom, jak plánování a spouštění fungují v Data Factory, najdete v tématu [plánování a spouštění](data-factory-scheduling-and-execution.md) . Je možné spustit více operací kopírování jeden po druhém sekvenčním a seřazeným způsobem. Viz část [kopírování postupně](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) .
 
-## <a name="type-conversions"></a>Převody typu
-Různých úložišť dat mají různé nativní typ systémy. Aktivita kopírování provádí automatické typ převody z typů zdroje do jímky typy s následující dvoukrokový přístup:
+## <a name="type-conversions"></a>Převody typů
+Různá úložiště dat mají různé systémy nativního typu. Aktivita kopírování provádí automatické převody typů ze zdrojových typů do typů jímky s následujícím dvěma kroky:
 
-1. Převeďte na typ .NET typy nativní zdroje.
-2. Převeďte na typ jímky nativní typ formátu .NET.
+1. Převeďte z nativního zdrojového typu na typ .NET.
+2. Převod z typu .NET na nativní typ jímky.
 
-Mapování ze systému nativní typ na typ .NET pro úložiště dat je v článku příslušné datové úložiště. (Klikněte na odkaz v tabulce úložiště dat podporované). Tato mapování můžete použít k určení odpovídající typy při vytváření tabulek, takže aktivita kopírování provádí převody vpravo.
+Mapování z nativního typu systému na typ .NET pro úložiště dat je v příslušném článku úložiště dat. (Klikněte na odkaz konkrétní v tabulce podporovaná úložiště dat). Tato mapování můžete použít k určení vhodných typů při vytváření tabulek, takže aktivita kopírování provádí správné převody.
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o aktivitě kopírování najdete v tématu [kopírování dat z Azure Blob storage do Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
-* Další informace o přesun dat z do místního úložiště dat do cloudového úložiště dat, naleznete v tématu [přesun dat z místních úložišť dat v cloudu](data-factory-move-data-between-onprem-and-cloud.md).
+* Další informace o aktivitě kopírování najdete v tématu [kopírování dat z úložiště objektů BLOB v Azure do Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+* Další informace o přesouvání dat z místního úložiště dat do cloudového úložiště dat najdete v tématu [přesun dat z místních úložišť do cloudových úložišť dat](data-factory-move-data-between-onprem-and-cloud.md).

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database Nejčastější dotazy k škálování | Microsoft Docs
+title: Azure SQL Database Nejčastější dotazy k škálování
 description: Odpovědi na nejčastější dotazy, které zákazníci žádají o databázi SQL Azure v úrovni služby technologie škálování, která se běžně označuje jako databáze v rámci škálování.
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: ''
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: dimitri-furman
+ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: 379629cfe3c742bd247e02cdf7a891afab08107f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c7960ca4e2dc2e676bc8668981108ce0f8589c0d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496187"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687330"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database Nejčastější dotazy k škálování
 
@@ -39,19 +39,19 @@ Databáze s technologií škálování je databáze SQL Azure v úrovni služby 
 
 Úrovně služeb založené na vCore se liší v závislosti na dostupnosti databáze a typu úložiště, výkonu a maximální velikosti, jak je popsáno v následující tabulce.
 
-| | Typ prostředku | Obecné použití |  Hyperškálování | Pro důležité obchodní informace |
+| | Typ prostředku | Pro obecné účely |  Hyperškálování | Pro důležité obchodní informace |
 |:---:|:---:|:---:|:---:|:---:|
-| **Nejlepší pro** |Všechno|Nabízí možnosti pro vyvážené výpočty a úložiště s vyrovnanou rozpočtem.|Většina obchodních úloh. Automatické škálování úložiště velikosti až 100 TB, rychlé vertikální a horizontální výpočetní škálování a rychlé obnovení databáze.|OLTP aplikace s vysokou mírou transakcí a nízkou latencí v/v. Nabízí nejvyšší odolnost proti chybám a rychlé převzetí služeb při selhání s využitím několika synchronně aktualizovaných replik.|
+| **Nejlepší pro** |Vše|Nabízí možnosti pro vyvážené výpočty a úložiště s vyrovnanou rozpočtem.|Většina obchodních úloh. Automatické škálování úložiště velikosti až 100 TB, rychlé vertikální a horizontální výpočetní škálování a rychlé obnovení databáze.|OLTP aplikace s vysokou mírou transakcí a nízkou latencí v/v. Nabízí nejvyšší odolnost proti chybám a rychlé převzetí služeb při selhání s využitím několika synchronně aktualizovaných replik.|
 |  **Typ prostředku** ||Jedna databáze/elastický fond/spravovaná instance | Izolovaná databáze | Jedna databáze/elastický fond/spravovaná instance |
 | **Velikost výpočetního prostředí**|Jedna databáze/elastický fond * | 1 až 80 virtuální jádra | 1 až 80 virtuální jádra * | 1 až 80 virtuální jádra |
-| |Spravovaná instance | 8, 16, 24, 32, 40, 64, 80 virtuální jádra | Nevztahuje se | 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
-| **Typ úložiště** | Všechno |Premium Remote Storage (na instanci) | Oddělené úložiště s místní mezipamětí SSD (na instanci) | Vysoce rychlé místní SSD úložiště (na instanci) |
+| |Spravovaná instance | 8, 16, 24, 32, 40, 64, 80 virtuální jádra | Není dostupné. | 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
+| **Typ úložiště** | Vše |Premium Remote Storage (na instanci) | Oddělené úložiště s místní mezipamětí SSD (na instanci) | Vysoce rychlé místní SSD úložiště (na instanci) |
 | **Velikost úložiště** | Jedna databáze/elastický fond *| 5 GB – 4 TB | Až 100 TB | 5 GB – 4 TB |
-| | Spravovaná instance  | 32 GB – 8 TB | Nevztahuje se | 32 GB – 4 TB |
+| | Spravovaná instance  | 32 GB – 8 TB | Není dostupné. | 32 GB – 4 TB |
 | **IOPS** | Izolovaná databáze | 500 IOPS na vCore s maximálním počtem vstupně-výstupních operací 7000 | Škálovatelná architektura je Vícevrstvá architektura s ukládáním do mezipaměti na více úrovních. Platnost IOPS bude záviset na zatížení. | 5000 IOPS s 200 000m maximálním IOPS|
-| | Spravovaná instance | Závisí na velikosti souboru | Nevztahuje se | 1375 IOPS/vCore |
-|**Dostupnost**|Všechno|1 replika bez škálování na více instancí, žádná místní mezipaměť | Víc replik, až 4 horizontálního navýšení kapacity, částečná místní mezipaměť | 3 repliky, 1 škálování čtení na více instancí, redundantní HA v zóně, úplné místní úložiště |
-|**Vytvářet**|Všechno|RA-GRS, 7-35 dnů uchování (ve výchozím nastavení 7 dní)| RA-GRS, 7 dní uchovávání, konstantní doba obnovení v čase (PITR) | RA-GRS, 7-35 dnů uchování (ve výchozím nastavení 7 dní) |
+| | Spravovaná instance | Závisí na velikosti souboru | Není dostupné. | 1375 IOPS/vCore |
+|**Dostupnost**|Vše|1 replika bez škálování na více instancí, žádná místní mezipaměť | Víc replik, až 4 horizontálního navýšení kapacity, částečná místní mezipaměť | 3 repliky, 1 škálování čtení na více instancí, redundantní HA v zóně, úplné místní úložiště |
+|**Vytvářet**|Vše|RA-GRS, 7-35 dnů uchování (ve výchozím nastavení 7 dní)| RA-GRS, 7 dní uchovávání, konstantní doba obnovení v čase (PITR) | RA-GRS, 7-35 dnů uchování (ve výchozím nastavení 7 dní) |
 
 \* elastické fondy nejsou v úrovni služby s škálovatelným škálováním podporované.
 
@@ -157,7 +157,7 @@ Transakční protokol s měřítkem je prakticky nekonečný. Nemusíte se stara
 
 ### <a name="does-my-tempdb-scale-as-my-database-grows"></a>Roste můj `tempdb` při zvětšování databáze
 
-Vaše databáze `tempdb` je umístěná v místním úložišti SSD a je nakonfigurovaná na základě výpočetní velikosti, kterou zřídíte. Vaše `tempdb` je optimalizovaná tak, aby poskytovala maximální výkonnostní výhody. velikost `tempdb` nemůžete konfigurovat a je pro vás spravovaná.
+Vaše databáze `tempdb` je umístěná v místním úložišti SSD a je nakonfigurovaná na základě vámi zřízené výpočetní velikosti. Vaše `tempdb` je optimalizovaná tak, aby poskytovala maximální výkonnostní výhody. velikost `tempdb` nemůžete konfigurovat a je pro vás spravovaná.
 
 ### <a name="does-my-database-size-automatically-grow-or-do-i-have-to-manage-the-size-of-data-files"></a>Roste velikost databáze automaticky nebo je nutné spravovat velikost datových souborů
 
@@ -278,7 +278,7 @@ Ano.  Geografické obnovení je plně podporované.
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Můžu nastavit geografickou replikaci s databází s měřítkem
 
-V současnosti ne.
+V tuto chvíli to není možné.
 
 ### <a name="can-i-take-a-hyperscale-database-backup-and-restore-it-to-my-on-premises-server-or-on-sql-server-in-a-vm"></a>Můžu vytvořit zálohu databáze a obnovit ji na místním serveru nebo na SQL Server na VIRTUÁLNÍm počítači.
 

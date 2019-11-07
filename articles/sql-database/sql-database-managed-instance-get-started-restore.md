@@ -1,5 +1,5 @@
 ---
-title: Obnovení zálohy do Azure SQL Database Managed Instance | Microsoft Docs
+title: 'Obnovení zálohy do Azure SQL Database spravované instance '
 description: Zjistěte, jak obnovit zálohu databáze do Azure SQL Database Managed Instance pomocí SSMS.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: c07daf4cf9f355e8eccfe618262dd06b4216106e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: ce112628c94c235b028331db5c37ba2b56458044
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146389"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688044"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Rychlý Start: obnovení databáze do spravované instance
 
@@ -28,7 +28,7 @@ V tomto rychlém startu použijete SQL Server Management Studio (SSMS) k obnoven
 > Další informace o migraci pomocí Azure Database Migration Service (DMS) najdete v tématu [migrace spravované instance pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md).
 > Další informace o různých metodách migrace najdete v tématu [migrace instance SQL Server do Azure SQL Database spravované instance](sql-database-managed-instance-migrate.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento rychlý start:
 

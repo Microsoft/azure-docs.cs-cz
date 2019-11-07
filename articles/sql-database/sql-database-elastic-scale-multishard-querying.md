@@ -1,5 +1,5 @@
 ---
-title: Dotazování databází SQL Azure v horizontálně dělené | Microsoft Docs
+title: Dotazy horizontálně dělené databáze SQL Azure
 description: Spouštějte dotazy napříč horizontálních oddílů pomocí klientské knihovny elastické databáze.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 471af9e1bc699ccaa8bc930ab930d6d40bbdc984
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 108da61323f61b009fbfdedac4cd345c6b87a7be
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568374"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690180"
 ---
 # <a name="multi-shard-querying-using-elastic-database-tools"></a>Dotazování na více horizontálních oddílů pomocí nástrojů elastické databáze
 
@@ -58,7 +58,7 @@ using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards
 }
 ```
 
-Klíčovým rozdílem je konstrukce připojení s více horizontálních oddílů. Kde **SqlConnection** funguje v individuální databázi, **MultiShardConnection** jako vstup převezme ***kolekci horizontálních oddílů*** . Naplní kolekci horizontálních oddílů z mapy horizontálních oddílů. Dotaz se pak spustí na kolekci horizontálních oddílů s využitím **všech** sémantik pro sjednocení k sestavení jednoho celkového výsledku. Volitelně můžete název horizontálních oddílů, ze kterého řádek pochází, přidat do výstupu pomocí vlastnosti **ExecutionOptions** příkazu.
+Klíčovým rozdílem je konstrukce připojení s více horizontálních oddílů. Kde **SqlConnection** funguje v individuální databázi, **MultiShardConnection** jako vstup převezme ***kolekci horizontálních oddílů*** . Naplní kolekci horizontálních oddílů z mapy horizontálních oddílů. Dotaz se pak spustí na kolekci horizontálních oddílů s využitím všech sémantik pro **sjednocení** k sestavení jednoho celkového výsledku. Volitelně můžete název horizontálních oddílů, ze kterého řádek pochází, přidat do výstupu pomocí vlastnosti **ExecutionOptions** příkazu.
 
 Poznamenejte si volání **myShardMap. GetShards ()** . Tato metoda načte všechny horizontálních oddílů z mapy horizontálních oddílů a poskytuje snadný způsob, jak spustit dotaz napříč všemi relevantními databázemi. Kolekce horizontálních oddílů pro dotaz multi-horizontálních oddílů může být dále provedená pomocí dotazu LINQ nad kolekcí vrácenou z volání metody **myShardMap. GetShards ()** . V kombinaci se zásadou částečných výsledků je aktuální schopnost dotazování s více horizontálních oddílůmi navržená tak, aby fungovala dobře až do stovek horizontálních oddílů.
 

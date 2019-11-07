@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat do a z SQL Server pomocí Azure Data Factory | Microsoft Docs
+title: Kopírování dat do a z SQL Server pomocí Azure Data Factory
 description: Přečtěte si, jak přesunout data do a z SQL Server do místní databáze nebo na virtuálním počítači Azure pomocí Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: b87676e773c4b7714a3b5ef21a6be703e0e3761a
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 424007c6bd34c0d582af8cd4df00ce7f5fc7fb0f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001374"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680151"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>Kopírování dat do a z SQL Server pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Azure Data Factory, kterou používáte:"]
@@ -31,7 +31,7 @@ Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Da
 Tento konektor SQL Server se podporuje pro následující činnosti:
 
 - [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
-- [Aktivita vyhledávání](control-flow-lookup-activity.md)
+- [Aktivita Lookup](control-flow-lookup-activity.md)
 - [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
 
 Data z databáze SQL Server můžete kopírovat do libovolného podporovaného úložiště dat jímky. Případně můžete kopírovat data z libovolného podporovaného zdrojového úložiště dat do databáze SQL Server. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje nebo jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
@@ -62,16 +62,16 @@ Následující části obsahují podrobné informace o vlastnostech, které se p
 
 Pro propojenou službu SQL Server jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| – typ | Vlastnost Type musí být nastavená na **SQLServer**. | Ano |
-| připojovací řetězec |Zadejte informace **připojovacího řetězce** potřebné pro připojení k databázi SQL Server pomocí ověřování SQL nebo ověřování systému Windows. Přečtěte si následující ukázky.<br/>Označte toto pole jako **SecureString** a bezpečně ho uložte do Azure Data Factory. Heslo můžete také přidat do Azure Key Vault. Pokud se jedná o ověřování SQL, vyžádejte si z připojovacího řetězce konfiguraci `password`. Další informace najdete v příkladech JSON, které následují po tabulce, a [ukládají přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
-| Jmen |Pokud používáte ověřování systému Windows, zadejte uživatelské jméno. Příklad: **DomainName @ no__t-1username**. |Ne |
-| zadáno |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako **SecureString** a bezpečně ho uložte do Azure Data Factory. Nebo můžete [odkazovat na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Ne |
+| type | Vlastnost Type musí být nastavená na **SQLServer**. | Ano |
+| Vlastnosti |Zadejte informace **připojovacího řetězce** potřebné pro připojení k databázi SQL Server pomocí ověřování SQL nebo ověřování systému Windows. Přečtěte si následující ukázky.<br/>Označte toto pole jako **SecureString** a bezpečně ho uložte do Azure Data Factory. Heslo můžete také přidat do Azure Key Vault. Pokud se jedná o ověřování SQL, vyžádejte si z připojovacího řetězce `password`ou konfiguraci. Další informace najdete v příkladech JSON, které následují po tabulce, a [ukládají přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
+| Jmen |Pokud používáte ověřování systému Windows, zadejte uživatelské jméno. Příkladem je **domainname\\username**. |Ne |
+| heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako **SecureString** a bezpečně ho uložte do Azure Data Factory. Nebo můžete [odkazovat na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Ne |
 | connectVia | Tento [modul runtime integrace](concepts-integration-runtime.md) se používá pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud tento parametr nezadáte, použije se výchozí prostředí Azure Integration runtime. |Ne |
 
 >[!TIP]
->Pokud dojde k chybě s kódem chyby "UserErrorFailedToConnectToSqlServer" a zprávou, jako je "omezení relace pro databázi je XXX a bylo dosaženo," přidejte do připojovacího řetězce `Pooling=false` a zkuste to znovu.
+>Pokud dojde k chybě s kódem chyby "UserErrorFailedToConnectToSqlServer" a zprávou jako "omezení relace pro databázi je XXX a bylo dosaženo," přidejte `Pooling=false` do svého připojovacího řetězce a akci opakujte.
 
 **Příklad 1: použití ověřování SQL**
 
@@ -155,12 +155,12 @@ Pro propojenou službu SQL Server jsou podporovány následující vlastnosti:
 
 Chcete-li kopírovat data z a do databáze SQL Server, jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| – typ | Vlastnost Type datové sady musí být nastavená na **SQLServer**. | Ano |
-| schéma | Název schématu. |Ne pro zdroj, Ano pro jímku  |
-| tabulka | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
-| Tabulky | Název tabulky nebo zobrazení se schématem. Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a `table`. | Ne pro zdroj, Ano pro jímku |
+| type | Vlastnost Type datové sady musí být nastavená na **SQLServer**. | Ano |
+| schema | Název schématu. |Ne pro zdroj, Ano pro jímku  |
+| stolní | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
+| tableName | Název tabulky nebo zobrazení se schématem. Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a `table`. | Ne pro zdroj, Ano pro jímku |
 
 **Příklad**
 
@@ -191,17 +191,17 @@ Chcete-li kopírovat data z a do databáze SQL Server, jsou podporovány násled
 
 Chcete-li kopírovat data z SQL Server, nastavte typ zdroje v aktivitě kopírování na **SqlSource**. V části zdroj aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| – typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **SqlSource**. | Ano |
-| sqlReaderQuery |Pro čtení dat použijte vlastní dotaz SQL. Příklad je `select * from MyTable`. |Ne |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **SqlSource**. | Ano |
+| sqlReaderQuery |Pro čtení dat použijte vlastní dotaz SQL. Příklad: `select * from MyTable`. |Ne |
 | sqlReaderStoredProcedureName |Tato vlastnost je název uložené procedury, která čte data ze zdrojové tabulky. Poslední příkaz SQL musí být příkaz SELECT v uložené proceduře. |Ne |
 | storedProcedureParameters |Tyto parametry jsou pro uloženou proceduru.<br/>Povolené hodnoty jsou páry název-hodnota. Názvy a velikost písmen parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. |Ne |
 
 **Ukazuje na poznámku:**
 
 - Pokud je pro **SqlSource**zadaný **sqlReaderQuery** , aktivita kopírování spustí tento dotaz na zdroj SQL Server, aby se data získala. Uloženou proceduru lze také určit zadáním **sqlReaderStoredProcedureName** a **storedProcedureParameters** , pokud uložená procedura přijímá parametry.
-- Pokud nezadáte buď **sqlReaderQuery** nebo **sqlReaderStoredProcedureName**, budou použity sloupce definované v oddílu Structure pro datovou sadu JSON pro vytvoření dotazu. Dotaz `select column1, column2 from mytable` se spustí proti SQL Server. Pokud definice datové sady nemá "strukturu", všechny sloupce jsou vybrány z tabulky.
+- Pokud nezadáte buď **sqlReaderQuery** nebo **sqlReaderStoredProcedureName**, budou použity sloupce definované v oddílu Structure pro datovou sadu JSON pro vytvoření dotazu. Dotaz `select column1, column2 from mytable` spouští na SQL Server. Pokud definice datové sady nemá "strukturu", všechny sloupce jsou vybrány z tabulky.
 
 **Příklad: použití dotazu SQL**
 
@@ -297,9 +297,9 @@ GO
 
 Chcete-li kopírovat data do SQL Server, nastavte typ jímky v aktivitě kopírování na **SqlSink**. V části jímka aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| – typ | Vlastnost Type jímky aktivity kopírování musí být nastavená na **SqlSink**. | Ano |
+| type | Vlastnost Type jímky aktivity kopírování musí být nastavená na **SqlSink**. | Ano |
 | writeBatchSize |Počet řádků, které mají být vloženy do tabulky SQL *na dávku*.<br/>Povolené hodnoty jsou celá čísla pro počet řádků. Ve výchozím nastavení Azure Data Factory dynamicky určí vhodnou velikost dávky na základě velikosti řádku. |Ne |
 | writeBatchTimeout |Tato vlastnost určuje dobu čekání na dokončení operace dávkového vložení před vypršením časového limitu.<br/>Povolené hodnoty jsou pro časové rozpětí. Příkladem je "00:30:00" po dobu 30 minut. Pokud není zadaná žádná hodnota, použije se jako výchozí časový limit "02:00:00". |Ne |
 | preCopyScript |Tato vlastnost určuje dotaz SQL pro aktivitu kopírování, která se má spustit před zápisem dat do SQL Server. Vyvolá se jenom jednou pro každé spuštění kopírování. Tuto vlastnost můžete použít k vyčištění předem načtených dat. |Ne |
@@ -397,7 +397,7 @@ V příslušných částech najdete informace o tom, jak nakonfigurovat v Azure 
 
 Připojení dat je výchozím chováním tohoto konektoru SQL Server jímky. Azure Data Factory hromadné vložení do tabulky efektivně. Zdroj a jímku můžete v aktivitě kopírování nakonfigurovat odpovídajícím způsobem.
 
-### <a name="upsert-data"></a>Upsert data
+### <a name="upsert-data"></a>Upsert dat
 
 **Možnost 1:** Pokud máte ke kopírování velké množství dat, použijte následující postup k Upsert: 
 
@@ -501,37 +501,37 @@ Při kopírování dat z a do SQL Server se z SQL Server datových typů použí
 | SQL Server datový typ | Azure Data Factory pomocný datový typ |
 |:--- |:--- |
 | bigint |Int64 |
-| binární |Byte [] |
-| bitové |Boolean |
+| Tvaru |Byte [] |
+| 40bitového |Logická hodnota |
 | char |Řetězec, znak [] |
-| Datum |DateTime |
+| date |DateTime |
 | Hodnotu |DateTime |
 | datetime2 |DateTime |
 | DateTimeOffset |DateTimeOffset |
-| Desetinné číslo |Desetinné číslo |
+| Notaci |Notaci |
 | Atribut FILESTREAM (varbinary (max)) |Byte [] |
-| Plovák |Double |
-| obrázek |Byte [] |
-| int |Int32 |
-| papír |Desetinné číslo |
+| Plovák |Klepat |
+| image |Byte [] |
+| int |Uvedena |
+| papír |Notaci |
 | nchar |Řetězec, znak [] |
 | ntext |Řetězec, znak [] |
-| numerické |Desetinné číslo |
+| číselné |Notaci |
 | nvarchar |Řetězec, znak [] |
-| reálná |Single |
+| nemovitostí |Jednoduchá |
 | rowversion |Byte [] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Desetinné číslo |
+| smallmoney |Notaci |
 | sql_variant |Objekt |
 | text |Řetězec, znak [] |
-| čas |TimeSpan |
+| time |TimeSpan |
 | časové razítko |Byte [] |
 | tinyint |Int16 |
-| uniqueidentifier |Hlavních |
+| uniqueidentifier |Guid |
 | varbinary |Byte [] |
 | varchar |Řetězec, znak [] |
-| XML |XML |
+| xml |XML |
 
 >[!NOTE]
 > Pro datové typy, které jsou mapovány na mezihodnotový průběžný typ, aktuálně Azure Data Factory podporuje přesnost až 28. Pokud máte data, která vyžadují přesnost větší než 28, zvažte převod na řetězec v dotazu SQL.
@@ -561,7 +561,7 @@ Pokud se chcete dozvědět víc o vlastnostech, podívejte se na [aktivitu GetMe
 3. Ve stejném okně poklikejte na **TCP/IP** a spustí se okno **vlastností protokolu TCP/IP** .
 4. Přepněte na kartu **IP adresy** . Posuňte se dolů, abyste viděli část **IPAll** . Zapište **port TCP**. Výchozí hodnota je **1433**.
 5. Vytvořte **pravidlo pro bránu Windows Firewall** na počítači, aby se povolil příchozí přenos prostřednictvím tohoto portu. 
-6. **Ověření připojení**: Chcete-li se připojit k SQL Server pomocí plně kvalifikovaného názvu, použijte SQL Server Management Studio z jiného počítače. Příklad je `"<machine>.<domain>.corp.<company>.com,1433"`.
+6. **Ověření připojení**: Chcete-li se připojit k SQL Server pomocí plně kvalifikovaného názvu, použijte SQL Server Management Studio z jiného počítače. Příklad: `"<machine>.<domain>.corp.<company>.com,1433"`.
 
 ## <a name="next-steps"></a>Další kroky
 Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md##supported-data-stores-and-formats).

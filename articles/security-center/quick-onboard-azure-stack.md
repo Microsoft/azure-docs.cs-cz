@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start Azure Security Center – zprovoznění virtuálních počítačů s Azure Stack do Security Center | Microsoft Docs
+title: Připojení virtuálních počítačů Azure Stack k Azure Security Center
 description: V tomto rychlém startu se dozvíte, jak zřídit rozšíření pro virtuální počítače s Azure Monitor, aktualizací a konfigurací na Azure Stack virtuálních počítačích.
 services: security-center
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: fiseraci
-ms.openlocfilehash: 1772fd34a2d79b725b2b5ccaa66adb0b251b7e1d
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: c186dcb2d7d7d423f5c001bdb4d3f3503beebd9c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202850"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686521"
 ---
-# <a name="quickstart--onboard-your-azure-stack-virtual-machines-to-security-center"></a>Rychlý start:  Připojení virtuálních počítačů s Azure Stack k Security Center
+# <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>Rychlý Start: připojení virtuálních počítačů s Azure Stack k Security Center
 Po zaregistrování předplatného Azure můžete povolit Security Center k ochraně virtuálních počítačů běžících na Azure Stack přidáním rozšíření **Azure monitor, aktualizace a konfigurace** virtuálního počítače pro správu konfigurace z Azure Stack Marketplace.
 
 V tomto rychlém startu se dozvíte, jak přidat rozšíření virtuálního počítače pro **Azure monitor, aktualizaci a správu konfigurace** na virtuálním počítači (Linux a Windows se podporují i v případě, že běží) v Azure Stack.
@@ -69,7 +69,7 @@ Nyní musíte přidat rozšíření **Azure monitor, Update a Configuration Mana
 > Pokud nevidíte rozšíření **pro správu Azure monitor, aktualizace a konfigurace** uvedená na webu Marketplace, obraťte se na svého operátora Azure Stack a zpřístupněte ho.
 
 6. V okně **nainstalovat konfiguraci rozšíření** vložte do programu Poznámkový blok **ID pracovního prostoru** a **klíč pracovního prostoru (primární klíč)** , který jste zkopírovali do poznámkového bloku v předchozím postupu.
-7.  Až dokončíte nastavení potřebné konfigurace, klikněte na **OK**.
+7. Až dokončíte nastavení potřebné konfigurace, klikněte na **OK**.
 8. Po dokončení instalace rozšíření se jeho stav zobrazí jako **úspěšné zřizování**. Může trvat až jednu hodinu, než se virtuální počítač objeví na portálu Security Center.
 
 Další informace o instalaci a konfiguraci agenta pro systém Windows najdete v tématu [připojení počítačů se systémem Windows](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard).

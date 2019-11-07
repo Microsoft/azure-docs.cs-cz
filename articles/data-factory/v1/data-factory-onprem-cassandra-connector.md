@@ -1,6 +1,6 @@
 ---
-title: Přesun dat z Cassandry pomocí služby Data Factory | Dokumentace Microsoftu
-description: Další informace o tom, jak přesunout data z místní databáze Cassandra pomocí Azure Data Factory.
+title: Přesun dat z Cassandra pomocí Data Factory
+description: Přečtěte si, jak přesunout data z místní databáze Cassandra pomocí Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,110 +13,110 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5b098aaf2df5e04983aa53563d5e0203f3287b42
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 4edd4d663e02601a97474c5d3a54adaa6b7fd27d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839947"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682452"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Přesun dat z místní databáze Cassandra pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](data-factory-onprem-cassandra-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-cassandra.md)
 
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [Cassandra konektor ve verzi V2](../connector-cassandra.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [konektor Cassandra v v2](../connector-cassandra.md).
 
-Tento článek vysvětluje, jak použít aktivitu kopírování v Azure Data Factory k přesunu dat z místní databáze Cassandra. Je nástavbou [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který nabízí obecný přehled o přesun dat pomocí aktivity kopírování.
+Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Factory přesouvat data z místní databáze Cassandra. Sestavuje se podle článku [aktivity přesunu dat](data-factory-data-movement-activities.md) , který prezentuje obecný přehled přesunu dat s aktivitou kopírování.
 
-Kopírování dat z do místního úložiště dat Cassandra do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako jímky, najdete v článku [podporovanými úložišti dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabulky. Data factory aktuálně podporuje pouze přesouvá data z úložiště dat Cassandra do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do úložiště dat Cassandra.
+Data z místního úložiště dat Cassandra můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která aktivita kopírování podporuje jako jímky, najdete v tabulce [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) . Data Factory aktuálně podporuje jenom přesun dat z úložiště Cassandra data do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do úložiště dat Cassandra.
 
 ## <a name="supported-versions"></a>Podporované verze
-Cassandra konektor podporuje následující verze Cassandra: 2.x a 3.x. Pro aktivitu běžící na modul Integration Runtime, Cassandra 3.x se podporuje od verze 3.7 IR a vyšší.
+Konektor Cassandra podporuje následující verze Cassandra: 2. x a 3. x. V případě aktivity spuštěné v místním prostředí Integration Runtime se Cassandra 3. x podporuje od verze IR 3,7 a vyšší.
 
 ## <a name="prerequisites"></a>Požadavky
-Služba Azure Data Factory se moct připojit k místní databázi Cassandra musíte nainstalovat bránu správy dat ve stejném počítači, který je hostitelem databáze nebo na samostatném počítači, aby se zabránilo soutěží o prostředky s databází. Brána správy dat je komponenta, která se připojuje místních zdrojů dat ke cloudovým službám způsobem, zabezpečení a správě. Zobrazit [brána správy dat](data-factory-data-management-gateway.md) , kde najdete podrobnosti o brána správy dat. Zobrazit [přesun dat z místních do cloudu](data-factory-move-data-between-onprem-and-cloud.md) najdete podrobné pokyny o nastavení brány datového kanálu pro přesun dat.
+Aby se služba Azure Data Factory mohla připojit k místní databázi Cassandra, musíte nainstalovat Správa dat bránu do stejného počítače, který hostuje databázi, nebo na samostatném počítači, abyste se vyhnuli konkurenčním prostředkům s databází. Správa dat Gateway je komponenta, která připojuje místní zdroje dat ke cloudovým službám zabezpečeným a spravovaným způsobem. Podrobnosti o Správa dat bráně najdete v článku o [Správa dat brány](data-factory-data-management-gateway.md) . Podrobné pokyny týkající se nastavení brány a datového kanálu pro přesun dat najdete v článku [o přesunu dat z místního prostředí do cloudu](data-factory-move-data-between-onprem-and-cloud.md) .
 
-Musíte použít bránu pro připojení k databázi Cassandra i v případě, že databáze je hostována v cloudu, například na virtuálním počítači Azure IaaS. Y můžete bránu může mít na stejném virtuálním počítači, který je hostitelem databáze nebo na samostatný virtuální počítač až brána lze připojit k databázi.
+Bránu musíte použít pro připojení k databázi Cassandra, i když je databáze hostovaná v cloudu, například na virtuálním počítači Azure s IaaS. Y můžete mít bránu na stejném virtuálním počítači, který hostuje databázi, nebo na samostatném virtuálním počítači, pokud se brána může připojit k databázi.
 
-Když bránu instalujete, automaticky nainstaluje ovladač Microsoft Cassandra ODBC používá pro připojení k databázi Cassandra. Proto není nutné ručně nainstalovat všechny ovladače na počítači brány a kopírování dat z databáze Cassandra.
+Při instalaci brány se automaticky nainstaluje ovladač Microsoft Cassandra ODBC, který slouží k připojení k databázi Cassandra. Proto nemusíte při kopírování dat z databáze Cassandra ručně instalovat žádný ovladač na počítač brány.
 
 > [!NOTE]
-> Naleznete v tématu [potíží brány](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) tipy k řešení potíží s připojení/bránou související problémy.
+> Tipy k odstraňování potíží souvisejících s připojením nebo bránou najdete v tématu řešení potíží s [bránou](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) .
 
 ## <a name="getting-started"></a>Začínáme
-Vytvoření kanálu s aktivitou kopírování, který přesouvá data z úložiště dat místní Cassandra pomocí různých nástrojů a rozhraní API.
+Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z místního úložiště dat Cassandra pomocí různých nástrojů nebo rozhraní API.
 
-- Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Zobrazit [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním data.
-- Tyto nástroje můžete také použít k vytvoření kanálu: **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**, a **rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+- Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
+- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
-Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky:
+Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
-1. Vytvoření **propojené služby** propojení vstupní a výstupní data ukládá do služby data factory.
-2. Vytvoření **datových sad** k představují vstupní a výstupní data pro operaci kopírování.
-3. Vytvoření **kanálu** s aktivitou kopírování, která přijímá jako vstupní datovou sadu a datovou sadu jako výstup.
+1. Vytvořte **propojené služby** , které propojí vstupní a výstupní úložiště dat s datovou továrnou.
+2. Vytvořte datové **sady** , které reprezentují vstupní a výstupní data pro operaci kopírování.
+3. Vytvořte **kanál** s aktivitou kopírování, která převezme datovou sadu jako vstup a datovou sadu jako výstup.
 
-Při použití Průvodce definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál) se automaticky vytvoří za vás. Při použití nástroje a rozhraní API (s výjimkou rozhraní .NET API), můžete definovat tyto entity služby Data Factory ve formátu JSON. Tady je příklad s definice JSON entit služby Data Factory, které se používají ke kopírování dat z úložiště dat v místním Cassandra najdete v části [příklad JSON: Kopírování dat z Cassandry do objektů Blob v Azure](#json-example-copy-data-from-cassandra-to-azure-blob) části tohoto článku.
+Při použití Průvodce se automaticky vytvoří definice JSON pro tyto Entity Data Factory (propojené služby, datové sady a kanál). Pokud používáte nástroje/rozhraní API (s výjimkou rozhraní .NET API), definujete tyto Data Factory entit pomocí formátu JSON. Ukázku s definicemi JSON pro Entity Data Factory, které se používají ke kopírování dat z místního úložiště dat Cassandra, najdete v části [JSON example: kopírování dat z Cassandra do objektu blob Azure](#json-example-copy-data-from-cassandra-to-azure-blob) v tomto článku.
 
-Následující části obsahují podrobnosti o vlastnostech JSON, které se používají k definování entit služby Data Factory konkrétní do úložiště dat Cassandra:
+Následující části obsahují podrobné informace o vlastnostech JSON, které se používají k definování Data Factory entit specifických pro úložiště dat Cassandra:
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
-Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro Cassandra propojené služby.
+Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu Cassandra.
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| type |Vlastnost type musí být nastavená na: **OnPremisesCassandra** |Ano |
-| host |Jeden nebo více IP adres nebo názvů hostitele serveru Cassandra.<br/><br/>Zadejte seznam IP adres nebo názvů hostitele pro připojení ke všem serverům současně. |Ano |
-| port |Port TCP, který Cassandra server používá k naslouchání pro připojení klientů. |Ne, výchozí hodnota: 9042 |
-| authenticationType |Základní nebo anonymní |Ano |
-| username |Zadejte uživatelské jméno uživatelského účtu. |Ano, pokud typ ověřování je nastavena na Basic. |
-| password |Zadejte heslo pro uživatelský účet. |Ano, pokud typ ověřování je nastavena na Basic. |
+| type |Vlastnost Type musí být nastavená na: **OnPremisesCassandra** . |Ano |
+| Provoz |Jedna nebo víc IP adres nebo názvů hostitelů Cassandra serverů.<br/><br/>Zadejte čárkami oddělený seznam IP adres nebo názvů hostitelů pro připojení ke všem serverům současně. |Ano |
+| port |Port TCP, který server Cassandra používá k naslouchání klientským připojením. |Ne, výchozí hodnota: 9042 |
+| authenticationType |Basic nebo Anonymous |Ano |
+| uživatelské jméno |Zadejte uživatelské jméno pro uživatelský účet. |Ano, pokud je authenticationType nastaveno na Basic. |
+| heslo |Zadejte heslo pro uživatelský účet. |Ano, pokud je authenticationType nastaveno na Basic. |
 | gatewayName |Název brány, který se používá pro připojení k místní databázi Cassandra. |Ano |
-| encryptedCredential |Přihlašovací údaje zašifrované pomocí brány. |Ne |
+| encryptedCredential |Přihlašovací údaje zašifrované bránou |Ne |
 
 >[!NOTE]
->Připojení k Cassandra pomocí protokolu SSL se aktuálně nepodporuje.
+>V současné době se připojení k Cassandra pomocí protokolu SSL nepodporuje.
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [vytváření datových sad](data-factory-create-datasets.md) článku. Oddíly, jako je například struktura, dostupnost a zásad JSON datové sady jsou podobné pro všechny datové sady typy (Azure SQL, Azure blob, tabulky Azure, atd.).
+Úplný seznam sekcí & vlastností dostupných pro definování datových sad naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, jako je například struktura, dostupnost a zásada pro datovou sadu JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure Blob, tabulka Azure atd.).
 
-**TypeProperties** oddílu se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti. TypeProperties části datové sady typu **CassandraTable** má následující vlastnosti
+Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl typeProperties pro sadu dat typu **CassandraTable** má následující vlastnosti.
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| keySpace |Název prostor klíčů nebo schéma databáze Cassandra. |Ano (Pokud **dotazu** pro **CassandraSource** není definován). |
-| tableName |Název tabulky v databázi Cassandra. |Ano (Pokud **dotazu** pro **CassandraSource** není definován). |
+| prostor klíčů |Název prostoru klíčů nebo schématu v databázi Cassandra. |Ano (Pokud není definován **dotaz** pro **CassandraSource** ). |
+| tableName |Název tabulky v databázi Cassandra |Ano (Pokud není definován **dotaz** pro **CassandraSource** ). |
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [vytváření kanálů](data-factory-create-pipelines.md) článku. Vlastnosti, jako je název, popis, vstupní a výstupní tabulky a zásady jsou k dispozici pro všechny typy aktivit.
+Úplný seznam sekcí & vlastností dostupných pro definování aktivit najdete v článku [vytvoření kanálů](data-factory-create-pipelines.md) . Pro všechny typy aktivit jsou k dispozici vlastnosti, jako je název, popis, vstupní a výstupní tabulka a zásada.
 
-Vzhledem k tomu, vlastnosti v části typeProperties aktivity se liší s jednotlivými typu aktivity. Pro aktivitu kopírování se liší v závislosti na typy zdroje a jímky.
+V takovém případě se vlastnosti dostupné v části typeProperties v aktivitě liší podle typu aktivity. U aktivity kopírování se liší v závislosti na typech zdrojů a jímky.
 
-Pokud je zdroj typu **CassandraSource**, v části typeProperties jsou k dispozici následující vlastnosti:
+Pokud je zdroj typu **CassandraSource**, jsou v oddílu typeProperties k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požadováno |
+| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| query |Použijte vlastní dotaz číst data. |SQL-92 nebo dotazu CQL. Zobrazit [CQL odkaz](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Při použití jazyka SQL, zadejte **keyspace name.table název** představující tabulku, kterou dotaz. |Ne (pokud jsou definovány tableName a prostor klíčů pro datovou sadu). |
-| consistencyLevel |Úrovně konzistentnosti Určuje, kolik repliky musí odpovědět na požadavek čtení před vrácením data do klientské aplikace. Cassandra ověří zadaný počet replik pro data splňují požadavek na čtení. |ONE, TWO, THREE, QUORUM, ALL, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE. Zobrazit [konfigurace konzistentnosti dat](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) podrobnosti. |Ne. Výchozí hodnota je 1. |
+| query |Pomocí vlastního dotazu můžete číst data. |Dotaz SQL-92 nebo dotaz CQL Viz [odkaz na CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Při použití dotazu SQL zadejte **název prostoru klíčů. název tabulky** , který bude představovat tabulku, kterou chcete dotazovat. |Ne (Pokud je definováno pole tableName a prostor pro datovou sadu). |
+| consistencyLevel |Úroveň konzistence určuje, kolik replik musí odpovídat žádosti o čtení před vrácením dat do klientské aplikace. Cassandra zkontroluje zadaný počet replik dat, aby splňovaly požadavky na čtení. |JEDNA, DVĚ, TŘI, KVORA, VŠE, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE. Podrobnosti najdete v tématu [Konfigurace konzistence dat](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) . |Ne. Výchozí hodnota je jedna. |
 
-## <a name="json-example-copy-data-from-cassandra-to-azure-blob"></a>Příklad JSON: Kopírování dat z Cassandry do objektů Blob v Azure
-V tomto příkladu obsahuje ukázky JSON definice, které můžete použít k vytvoření kanálu pomocí [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazuje, jak kopírovat data z místní databáze Cassandra do služby Azure Blob Storage. Ale data je možné zkopírovat do libovolné jímky uvedeno [tady](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivit kopírování ve službě Azure Data Factory.
+## <a name="json-example-copy-data-from-cassandra-to-azure-blob"></a>Příklad JSON: kopírování dat z Cassandra do Azure Blob
+Tento příklad poskytuje ukázkové definice JSON, které můžete použít k vytvoření kanálu pomocí sady [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazuje, jak kopírovat data z místní databáze Cassandra do Azure Blob Storage. Data však lze zkopírovat do kterékoli z těchto umyvadel, které jsou [zde](data-factory-data-movement-activities.md#supported-data-stores-and-formats) uvedeny, pomocí aktivity kopírování v Azure Data Factory.
 
 > [!IMPORTANT]
-> Tato ukázka poskytuje fragmenty kódu JSON. Neobsahuje podrobné pokyny pro vytvoření datové továrny. Zobrazit [přesun dat mezi místními umístěními a cloudu](data-factory-move-data-between-onprem-and-cloud.md) najdete podrobné pokyny.
+> Tato ukázka poskytuje fragmenty kódu JSON. Nezahrnuje podrobné pokyny k vytvoření datové továrny. Podrobné pokyny najdete v článku [přesun dat mezi místními umístěními a v cloudu](data-factory-move-data-between-onprem-and-cloud.md) .
 
-Ukázka obsahuje následující entit datové továrny:
+Ukázka má následující Entity Data Factory:
 
-* Propojené služby typu [OnPremisesCassandra](#linked-service-properties).
-* Propojené služby typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-* Vstupní hodnota [datovou sadu](data-factory-create-datasets.md) typu [CassandraTable](#dataset-properties).
-* Výstup [datovou sadu](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-* A [kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [CassandraSource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+* Propojená služba typu [OnPremisesCassandra](#linked-service-properties).
+* Propojená služba typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
+* Vstupní [datová sada](data-factory-create-datasets.md) typu [CassandraTable](#dataset-properties).
+* Výstupní [datová sada](data-factory-create-datasets.md) typu [azureblobu](data-factory-azure-blob-connector.md#dataset-properties).
+* [Kanál](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [CassandraSource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-**Cassandra propojené služby:**
+**Propojená služba Cassandra:**
 
-V tomto příkladu **Cassandra** propojenou službu. Zobrazit [Cassandra propojená služba](#linked-service-properties) části vlastnostech podporovaných tuto propojenou službu.
+Tento příklad používá propojenou službu **Cassandra** . Vlastnosti podporované touto propojenou službou najdete v části [propojená služba Cassandra](#linked-service-properties) .
 
 ```json
 {
@@ -179,11 +179,11 @@ V tomto příkladu **Cassandra** propojenou službu. Zobrazit [Cassandra propoje
 }
 ```
 
-Nastavení **externí** k **true** služby Data Factory informuje, že datová sada je externí do služby data factory a není vytvořen aktivitou ve službě data factory.
+Nastavením možnosti **externí** na **hodnotu true** dojde k informování služby Data Factory, že datová sada je pro objekt pro vytváření dat externá a není vytvořená aktivitou v datové továrně.
 
 **Výstupní datová sada Azure Blob:**
 
-Data se zapisují do nového objektu blob každou hodinu (frekvence: hodina, interval: 1).
+Data se zapisují do nového objektu BLOB každou hodinu (frekvence: hodina, interval: 1).
 
 ```json
 {
@@ -205,11 +205,11 @@ Data se zapisují do nového objektu blob každou hodinu (frekvence: hodina, int
 }
 ```
 
-**Aktivita kopírování v kanálu s Cassandra zdroje a jímky objektu Blob:**
+**Aktivita kopírování v kanálu se zdrojem Cassandra a jímky objektů BLOB:**
 
-Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na použití vstupních a výstupních datových sad a je naplánováno spuštění každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **CassandraSource** a **jímky** je typ nastaven na **BlobSink**.
+Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady a má naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **CassandraSource** a typ **jímky** je nastavený na **BlobSink**.
 
-Zobrazit [vlastnosti typu RelationalSource](#copy-activity-properties) pro seznam vlastností, které jsou podporovány RelationalSource.
+Seznam vlastností podporovaných rozhraním RelationalSource naleznete v tématu [vlastnosti typu RelationalSource](#copy-activity-properties) .
 
 ```json
 {
@@ -259,64 +259,64 @@ Zobrazit [vlastnosti typu RelationalSource](#copy-activity-properties) pro sezna
 }
 ```
 
-### <a name="type-mapping-for-cassandra"></a>Mapování typu pro Cassandra
-| Typ Cassandra | Základní typ .NET |
+### <a name="type-mapping-for-cassandra"></a>Mapování typů pro Cassandra
+| Typ Cassandra | Typ založený na .NET |
 | --- | --- |
-| ASCII |Řetězec |
+| Abecední |Řetězec |
 | BIGINT |Int64 |
-| BLOB |Byte[] |
-| BOOLEAN |Logická hodnota |
-| DECIMAL |Decimal |
-| DOUBLE |Double |
-| FLOAT |Single |
+| PŘÍZNAKY |Byte [] |
+| DATOVÉHO |Logická hodnota |
+| NOTACI |Notaci |
+| KLEPAT |Klepat |
+| Plovák |Jednoduchá |
 | INET |Řetězec |
-| INT |Int32 |
-| TEXT |Řetězec |
-| TIMESTAMP |Datetime |
+| INT |Uvedena |
+| TEXTOVÉ |Řetězec |
+| ČASOVÉ razítko |DateTime |
 | TIMEUUID |Guid |
-| UUID |Guid |
+| IDENTIFIKÁTOR |Guid |
 | VARCHAR |Řetězec |
-| VARINT |Decimal |
+| VARINT |Notaci |
 
 > [!NOTE]
-> Kolekce typů (mapování, sady, seznam, atd.), najdete v tématu [práci s typy kolekcí Cassandra pomocí virtuální tabulky](#work-with-collections-using-virtual-table) oddílu.
+> Pro typy kolekcí (mapování, nastavení, seznam atd.) se podívejte na téma [práce s typy kolekce Cassandra pomocí virtuální tabulky](#work-with-collections-using-virtual-table) .
 >
-> Uživatelem definované typy nejsou podporovány.
+> Uživatelsky definované typy nejsou podporovány.
 >
-> Délka řetězce a binární sloupec délky nemůže být větší než 4000.
+> Délka sloupců binárního sloupce a řetězce sloupce nesmí být větší než 4000.
 >
 >
 
-## <a name="work-with-collections-using-virtual-table"></a>Práce s kolekcí pomocí virtuální tabulky
-Azure Data Factory používá k připojení a zkopírování dat z databáze Cassandra integrované ovladače ODBC. Ovladač pro typy kolekcí, včetně mapy, set a list, renormalizes data do odpovídající virtuální tabulky. Konkrétně Pokud tabulka obsahuje všechny sloupce kolekce, ovladač generuje následující virtuální tabulky:
+## <a name="work-with-collections-using-virtual-table"></a>Práce s kolekcemi pomocí virtuální tabulky
+Azure Data Factory používá integrovaný ovladač ODBC pro připojení a zkopírování dat z databáze Cassandra. U typů kolekcí, včetně map, nastavení a seznamu, ovladač znovu normalizuje data v odpovídajících virtuálních tabulkách. Konkrétně, pokud tabulka obsahuje všechny sloupce kolekce, vygeneruje ovladač následující virtuální tabulky:
 
-* A **základní tabulka**, která obsahuje stejná data jako skutečné tabulky s výjimkou kolekce sloupců. Základní tabulka používá stejný název jako skutečné tabulky, který představuje.
-* A **virtuální tabulky** pro každý sloupec kolekce, která rozšiřuje vnořené data. Virtuální tabulky, které představují kolekce jsou pojmenovány pomocí názvu tabulky skutečných oddělovač "*vt*" a název sloupce.
+* **Základní tabulka**, která obsahuje stejná data jako skutečná tabulka s výjimkou sloupců kolekce. Základní tabulka používá stejný název jako skutečná tabulka, kterou představuje.
+* **Virtuální tabulka** pro každý sloupec kolekce, který rozšiřuje vnořená data. Virtuální tabulky, které představují kolekce, jsou pojmenovány pomocí názvu reálné tabulky, oddělovače "*VT*" a názvu sloupce.
 
-Virtuální tabulky odkazují na data v tabulce skutečné, povolení ovladače pro přístup k Nenormalizovaná data. Příklad naleznete v části Podrobnosti. Dotazování a připojení k virtuální tabulky můžete přístup k obsahu Cassandra kolekcí.
+Virtuální tabulky odkazují na data v reálné tabulce a umožňují tak ovladači přístup k denormalizovaným datům. Podrobnosti najdete v části příklad. K obsahu kolekcí Cassandra můžete přistupovat dotazem a připojením k virtuálním tabulkám.
 
-Můžete použít [Průvodce kopírováním](data-factory-data-movement-activities.md#create-a-pipeline-with-copy-activity) intuitivně zobrazte seznam tabulek v databázi Cassandra včetně virtuální tabulky a zobrazte náhled dat uvnitř. Můžete také vytvořit dotaz v Průvodci kopírováním a ověření k zobrazení výsledku.
+[Průvodce kopírováním](data-factory-data-movement-activities.md#create-a-pipeline-with-copy-activity) můžete použít k intuitivnímu zobrazení seznamu tabulek v databázi Cassandra, včetně virtuálních tabulek, a zobrazení náhledu dat v rámci. Dotaz můžete vytvořit také v průvodci kopírováním a ověřit tak, aby se zobrazil výsledek.
 
 ### <a name="example"></a>Příklad
-Například následující "ExampleTable" je tabulku databáze Cassandra, která obsahuje sloupec celých čísel primární klíč s názvem "pk_int", textového sloupce se pojmenovaná hodnota, seznam sloupců, mapování sloupců a nastavit sloupec (s názvem "StringSet").
+Například následující "Příklad tabulky" je databázová tabulka Cassandra obsahující celočíselný sloupec primárního klíče s názvem "pk_int", textový sloupec s názvem Value, sloupec seznamu, sloupec mapy a sloupec set (s názvem "StringSet").
 
-| pk_int | Value | List | Mapa | StringSet |
+| pk_int | Hodnota | Seznam | Mapa | StringSet |
 | --- | --- | --- | --- | --- |
 | 1 |"Ukázková hodnota 1" |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
 | 3 |"Ukázková hodnota 3" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
 
-Ovladač vygeneruje více virtuální tabulky k reprezentaci této jediné tabulce. Sloupce cizích klíčů v virtuální tabulky odkazovat na sloupce primárních klíčů v tabulce skutečné a označit řádek skutečné tabulky, který odpovídá řádek virtuální tabulky.
+Ovladač by vygeneroval několik virtuálních tabulek, které reprezentují tuto jedinou tabulku. Sloupce cizího klíče ve virtuálních tabulkách odkazují na sloupce primárního klíče v reálné tabulce a označují, na který skutečný řádek tabulky odpovídá řádek virtuální tabulky.
 
-První virtuální tabulky je základní tabulku s názvem "ExampleTable" je uvedeno v následující tabulce. Základní tabulka obsahuje stejná data jako původní tabulky databáze s výjimkou kolekce, které jsou vynechány z této tabulky a rozbalení v jiné virtuální tabulky.
+První virtuální tabulka je základní tabulka s názvem "priklad Table" je uvedena v následující tabulce. Základní tabulka obsahuje stejná data jako původní databázová tabulka s výjimkou kolekcí, které jsou vynechány v této tabulce a rozbaleny v jiných virtuálních tabulkách.
 
-| pk_int | Value |
+| pk_int | Hodnota |
 | --- | --- |
 | 1 |"Ukázková hodnota 1" |
 | 3 |"Ukázková hodnota 3" |
 
-Následující tabulky popisují virtuální tabulky, které znovu normalizovat data ze seznamu, mapy a StringSet sloupců. Sloupce s názvy, které končí řetězcem "_index" nebo "_klíč" označuje pozici velkých dat do původního seznamu nebo mapy. Sloupce s názvy, které končí řetězcem "_value" obsahují rozšířené dat z kolekce.
+V následujících tabulkách jsou uvedeny virtuální tabulky, které znovu normalizují data ze sloupců seznamu, mapy a StringSet. Sloupce s názvy, které končí na "_index" nebo "_Key", označují pozici dat v rámci původního seznamu nebo mapy. Sloupce s názvy, které končí řetězcem "_Value", obsahují rozšířená data z kolekce.
 
-#### <a name="table-exampletablevtlist"></a>Tabulka "ExampleTable_vt_List":
+#### <a name="table-exampletable_vt_list"></a>Tabulka "ExampleTable_vt_List":
 | pk_int | List_index | List_value |
 | --- | --- | --- |
 | 1 |0 |1 |
@@ -327,14 +327,14 @@ Následující tabulky popisují virtuální tabulky, které znovu normalizovat 
 | 3 |2 |102 |
 | 3 |3 |103 |
 
-#### <a name="table-exampletablevtmap"></a>Tabulka "ExampleTable_vt_Map":
+#### <a name="table-exampletable_vt_map"></a>Tabulka "ExampleTable_vt_Map":
 | pk_int | Map_key | Map_value |
 | --- | --- | --- |
 | 1 |S1 |A |
 | 1 |S2 |b |
 | 3 |S1 |t |
 
-#### <a name="table-exampletablevtstringset"></a>Tabulka "ExampleTable_vt_StringSet":
+#### <a name="table-exampletable_vt_stringset"></a>Tabulka "ExampleTable_vt_StringSet":
 | pk_int | StringSet_value |
 | --- | --- |
 | 1 |A |
@@ -343,11 +343,11 @@ Následující tabulky popisují virtuální tabulky, které znovu normalizovat 
 | 3 |A |
 | 3 |E |
 
-## <a name="map-source-to-sink-columns"></a>Mapování zdroje do jímky sloupce
-Další informace o mapování sloupců v datové sadě zdroje do sloupců v datové sadě jímky, najdete v článku [mapování sloupců v datové sadě ve službě Azure Data Factory](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Mapovat zdroj na sloupce jímky
+Další informace o mapování sloupců ve zdrojové datové sadě na sloupce v datové sadě jímky najdete v tématu [mapování sloupců datové sady v Azure Data Factory](data-factory-map-columns.md).
 
-## <a name="repeatable-read-from-relational-sources"></a>Opakovatelné čtení z relačních zdrojů
-Při kopírování dat z relačních dat ukládá, mějte opakovatelnosti aby se zabránilo neúmyslnému výsledků. Ve službě Azure Data Factory můžete znovu spustit řezu ručně. Zásady opakování pro datovou sadu můžete také nakonfigurovat tak, aby určitý řez se znovu spustí, když dojde k chybě. V obou případech se znovu spustí určitý řez, musíte zajistit, že stejná data je pro čtení bez ohledu na to kolikrát spustit určitý řez. Zobrazit [Repeatable z relačních zdrojů](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-read-from-relational-sources"></a>Opakované čtení z relačních zdrojů
+Při kopírování dat z relačních úložišť dat mějte na paměti, že se vyhnete nezamýšleným výsledkům. V Azure Data Factory můžete řez znovu spustit ručně. Můžete také nakonfigurovat zásady opakování pro datovou sadu, aby se řez znovu opakoval, když dojde k selhání. Při opětovném spuštění řezu v obou případech je nutné zajistit, že stejná data budou čtena bez ohledu na to, kolikrát je řez spuštěn. Viz [opakované čtení z relačních zdrojů](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="performance-and-tuning"></a>Výkon a optimalizace
-Zobrazit [výkonem aktivity kopírování & Průvodci optimalizací](data-factory-copy-activity-performance.md) Další informace o klíčových faktorů této ovlivnit výkon přesouvání dat (aktivita kopírování) ve službě Azure Data Factory a různé způsoby, jak optimalizovat.
+Další informace o klíčových faktorech, které mají vliv na výkon přesunu dat (aktivita kopírování) v Azure Data Factory a různých způsobech jejich optimalizace, najdete v tématu [Průvodce optimalizací aktivity kopírování &](data-factory-copy-activity-performance.md) .

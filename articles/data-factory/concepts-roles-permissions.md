@@ -1,5 +1,5 @@
 ---
-title: Role a oprávnění pro Azure Data Factory | Microsoft Docs
+title: Role a oprávnění pro Azure Data Factory
 description: Popisuje role a oprávnění potřebná k vytváření datových továren a práci s podřízenými prostředky.
 ms.date: 11/5/2018
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 9df65322958bffd3182aaa8d734e8b29717d939d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f5b4cbc670a429a84f42be79adb00057656a5483
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142532"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681430"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Role a oprávnění pro Azure Data Factory
 
@@ -46,7 +46,7 @@ Po vytvoření Data Factory možná budete chtít umožnit ostatním uživatelů
 
 Další informace o této roli najdete v tématu [Data Factory role přispěvatele](../role-based-access-control/built-in-roles.md#data-factory-contributor).
 
-### <a name="resource-manager-template-deployment"></a>Nasazení šablony Resource Manageru
+### <a name="resource-manager-template-deployment"></a>Nasazení šablony Správce prostředků
 
 Role **přispěvatel Data Factory** na úrovni skupiny prostředků nebo výše umožňuje uživatelům nasadit správce prostředků šablony. V důsledku toho mohou členové role použít šablony Správce prostředků k nasazení datových továren a jejich podřízených prostředků, včetně datových sad, propojených služeb, kanálů, triggerů a prostředí Integration runtime. Členství v této roli ale neumožňuje uživateli vytvářet další prostředky.
 
@@ -86,9 +86,9 @@ Tady je několik příkladů, které ukazují, co můžete dosáhnout s vlastní
 
 - Umožněte uživateli aktualizovat datovou továrnu z PowerShellu nebo sady SDK, ale ne v Azure Portal.
 
-  Přiřaďte k prostředku datové továrny integrovanou roli přispěvatele pro uživatele. Tato role uživateli umožňuje zobrazit prostředky v Azure Portal, ale uživatel nemá přístup k tlačítkům **publikovat** a **Publikovat všechna** .
+  Přiřaďte k prostředku datové továrny integrovanou roli **přispěvatele** pro uživatele. Tato role uživateli umožňuje zobrazit prostředky v Azure Portal, ale uživatel nemá přístup k tlačítkům **publikovat** a **Publikovat všechna** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o rolích v Azure – [pochopení definic rolí](../role-based-access-control/role-definitions.md)
 

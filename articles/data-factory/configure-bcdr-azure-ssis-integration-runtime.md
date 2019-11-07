@@ -1,6 +1,6 @@
 ---
-title: Konfigurace prostředí Azure-SSIS Integration Runtime pro převzetí služeb při selhání databáze SQL | Dokumentace Microsoftu
-description: Tento článek popisuje, jak nakonfigurovat prostředí Azure-SSIS Integration Runtime s Azure SQL Database pro geografické replikace a převzetí služeb při selhání pro databázi SSISDB
+title: Konfigurace Azure-SSIS Integration Runtime pro převzetí služeb při selhání SQL Database
+description: Tento článek popisuje, jak nakonfigurovat Azure-SSIS Integration Runtime Azure SQL Database geografickou replikaci a převzetí služeb při selhání pro databázi SSISDB.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -13,80 +13,80 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: f0612a688bb1e0fd79325b9a1f9b43731a210d10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e709a25c6c33a1fc80a110435035b1473d92681
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399242"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681393"
 ---
-# <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>Konfigurace prostředí Azure-SSIS Integration Runtime pomocí Azure SQL Database pro geografické replikace a převzetí služeb při selhání
+# <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>Konfigurace Azure-SSIS Integration Runtime s využitím Azure SQL Database geografické replikace a převzetí služeb při selhání
 
-Tento článek popisuje, jak nakonfigurovat prostředí Azure-SSIS Integration Runtime s Azure SQL Database geografickou replikaci pro databázi SSISDB. Když dojde k selhání, můžete zajistit, že Azure-SSIS IR pořád funguje s sekundární databáze.
+Tento článek popisuje, jak nakonfigurovat Azure-SSIS Integration Runtime s Azure SQL Database geografickou replikaci pro databázi SSISDB. Když dojde k převzetí služeb při selhání, můžete zajistit, aby Azure-SSIS IR dál pracoval se sekundární databází.
 
-Další informace o geografické replikace a převzetí služeb při selhání pro službu SQL Database najdete v tématu [přehled: Aktivní geografická replikace a Automatická – převzetí služeb při selhání skupiny](../sql-database/sql-database-geo-replication-overview.md).
+Další informace o geografické replikaci a převzetí služeb při selhání pro SQL Database najdete v tématu [Přehled: Aktivní geografická replikace a skupiny automatického převzetí služeb při selhání](../sql-database/sql-database-geo-replication-overview.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario-1---azure-ssis-ir-is-pointing-to-read-write-listener-endpoint"></a>Scénář 1 - Azure-SSIS IR je přejdete na koncový bod naslouchacího procesu pro čtení i zápis
+## <a name="scenario-1---azure-ssis-ir-is-pointing-to-read-write-listener-endpoint"></a>Scénář 1 – Azure-SSIS IR odkazuje na koncový bod naslouchacího procesu pro čtení a zápis
 
 ### <a name="conditions"></a>Podmínky
 
-Tato část se týká, pokud jsou splněny následující podmínky:
+Tato část platí v případě, že jsou splněné následující podmínky:
 
-- Prostředí Azure-SSIS IR je přejdete na koncový bod naslouchacího procesu pro čtení i zápis skupiny převzetí služeb při selhání.
+- Azure-SSIS IR odkazuje na koncový bod naslouchacího procesu pro čtení i zápis ve skupině převzetí služeb při selhání.
 
-  A
+  ANI
 
-- Serveru služby SQL Database je *není* nakonfigurované pravidlo koncový bod služby virtuální sítě.
+- SQL Database Server *není nakonfigurován s* pravidlem koncového bodu služby virtuální sítě.
 
 ### <a name="solution"></a>Řešení
 
-Pokud dojde k převzetí služeb při selhání, je transparentní pro prostředí Azure-SSIS IR. Prostředí Azure-SSIS IR se automaticky připojí k nové primární skupině převzetí služeb při selhání.
+Pokud dojde k převzetí služeb při selhání, je transparentní pro Azure-SSIS IR. Azure-SSIS IR se automaticky připojí k nové primární skupině převzetí služeb při selhání.
 
-## <a name="scenario-2---azure-ssis-ir-is-pointing-to-primary-server-endpoint"></a>Scénář 2 - Azure-SSIS IR odkazuje na primární server koncového bodu
+## <a name="scenario-2---azure-ssis-ir-is-pointing-to-primary-server-endpoint"></a>Scénář 2 – Azure-SSIS IR odkazuje na koncový bod primárního serveru
 
 ### <a name="conditions"></a>Podmínky
 
-Tato část se týká, když je splněna jedna z následujících podmínek:
+Tato část se vztahuje, pokud je splněna jedna z následujících podmínek:
 
-- Prostředí Azure-SSIS IR odkazuje na primární server koncového bodu skupiny převzetí služeb při selhání. Tento koncový bod se změní, když dojde k převzetí služeb při selhání.
-
-  NEBO
-
-- Server Azure SQL Database má nakonfigurovanou pravidlo koncový bod služby virtuální sítě.
+- Azure-SSIS IR odkazuje na koncový bod primárního serveru skupiny převzetí služeb při selhání. Tento koncový bod se při převzetí služeb při selhání změní.
 
   NEBO
 
-- Databázový server je spravované instanci SQL Database nakonfigurovaná s virtuální sítí.
+- Azure SQL Database Server je nakonfigurován s pravidlem koncového bodu služby virtuální sítě.
+
+  NEBO
+
+- Databázový server je SQL Database spravovaná instance nakonfigurovaná pomocí virtuální sítě.
 
 ### <a name="solution"></a>Řešení
 
-Pokud dojde k převzetí služeb při selhání, musíte udělat následující věci:
+Pokud dojde k převzetí služeb při selhání, musíte provést následující akce:
 
-1. Zastavit prostředí Azure-SSIS IR.
+1. Zastavte Azure-SSIS IR.
 
-2. Změna konfigurace prostředí IR tak, aby odkazovala na nový primární koncový bod a virtuální sítě v nové oblasti.
+2. Překonfigurujte IR tak, aby odkazovala na nový primární koncový bod a na virtuální síť v nové oblasti.
 
 3. Restartujte IR.
 
-Následující části popisují postup podrobněji.
+Následující části popisují tyto kroky podrobněji.
 
 ### <a name="prerequisites"></a>Požadavky
 
-- Ujistěte se, že jste povolili zotavení po havárii pro váš server Azure SQL Database v případě, že má server ve stejnou dobu výpadku. Další informace najdete v tématu [přehled kontinuity obchodních procesů ve službě Azure SQL Database](../sql-database/sql-database-business-continuity.md).
+- Ujistěte se, že jste povolili zotavení po havárii pro Azure SQL Database Server v případě výpadku serveru ve stejnou dobu. Další informace najdete v tématu [Přehled provozní kontinuity pomocí Azure SQL Database](../sql-database/sql-database-business-continuity.md).
 
-- Pokud používáte virtuální sítě v aktuální oblasti, budete muset použít jinou virtuální sítí v nové oblasti pro připojení prostředí Azure-SSIS integration runtime. Další informace najdete v tématu [připojit k prostředí Azure-SSIS integration runtime k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md).
+- Pokud používáte virtuální síť v aktuální oblasti, musíte k připojení prostředí Azure-SSIS Integration runtime použít jinou virtuální síť v nové oblasti. Další informace najdete v tématu [připojení prostředí Azure-SSIS Integration runtime k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md).
 
-- Pokud použijete vlastní nastavení, budete muset připravit jiném identifikátoru URI SAS pro kontejner objektů blob, který ukládá vlastní instalační skript a přidružené soubory, takže ho dál dostupná během výpadků. Další informace najdete v tématu [nakonfigurovat vlastní nastavení v prostředí Azure-SSIS integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
+- Pokud používáte vlastní instalaci, může být nutné připravit jiný identifikátor URI SAS pro kontejner objektů blob, který ukládá vlastní instalační skript a přidružené soubory, takže bude během výpadku nadále přístupný. Další informace najdete v tématu [Konfigurace vlastního nastavení v prostředí Azure-SSIS Integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
 
 ### <a name="steps"></a>Kroky
 
-Použijte následující postup zastavit prostředí Azure-SSIS IR, přepnout prostředí IR do nové oblasti a znovu spustit.
+Postupujte podle těchto kroků a zastavte Azure-SSIS IR, přepněte IR na novou oblast a znovu ji spusťte.
 
-1. Zastavte prostředí IR v oblasti původní.
+1. Zastavte infračervený přenos v původní oblasti.
 
-2. Zavoláním následujícího příkazu v Powershellu aktualizovat prostředí IR s novým nastavením.
+2. Voláním následujícího příkazu v PowerShellu aktualizujte IR s novým nastavením.
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
@@ -97,40 +97,40 @@ Použijte následující postup zastavit prostředí Azure-SSIS IR, přepnout pr
                     -SetupScriptContainerSasUri "new custom setup SAS URI"
     ```
 
-    Další informace o tomto příkazu prostředí PowerShell najdete v tématu [vytvořit prostředí Azure-SSIS integration runtime ve službě Azure Data Factory](create-azure-ssis-integration-runtime.md)
+    Další informace o tomto příkazu PowerShellu najdete [v tématu Vytvoření prostředí Azure-SSIS Integration runtime v tématu Azure Data Factory](create-azure-ssis-integration-runtime.md)
 
-3. Prostředí IR spusťte znovu.
+3. Znovu spusťte IR.
 
-## <a name="scenario-3---attaching-an-existing-ssisdb-ssis-catalog-to-a-new-azure-ssis-ir"></a>Scénář 3 – připojit existující databáze SSISDB (katalogu služby SSIS) do nového prostředí Azure-SSIS IR
+## <a name="scenario-3---attaching-an-existing-ssisdb-ssis-catalog-to-a-new-azure-ssis-ir"></a>Scénář 3 – připojení existujícího katalogu SSISDB (SSIS) k novému Azure-SSIS IR
 
-Dojde havárii ADF nebo Azure-SSIS IR v aktuální oblasti měli udržuje vaše databáze SSISDB práce s nové prostředí Azure-SSIS IR v nové oblasti.
+Když dojde k selhání ADF nebo Azure-SSIS IR v aktuální oblasti, můžete SSISDB pracovat s novým Azure-SSIS IR v nové oblasti.
 
 ### <a name="prerequisites"></a>Požadavky
 
-- Pokud používáte virtuální sítě v aktuální oblasti, budete muset použít jinou virtuální sítí v nové oblasti pro připojení prostředí Azure-SSIS integration runtime. Další informace najdete v tématu [připojit k prostředí Azure-SSIS integration runtime k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md).
+- Pokud používáte virtuální síť v aktuální oblasti, musíte k připojení prostředí Azure-SSIS Integration runtime použít jinou virtuální síť v nové oblasti. Další informace najdete v tématu [připojení prostředí Azure-SSIS Integration runtime k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md).
 
-- Pokud použijete vlastní nastavení, budete muset připravit jiném identifikátoru URI SAS pro kontejner objektů blob, který ukládá vlastní instalační skript a přidružené soubory, takže ho dál dostupná během výpadků. Další informace najdete v tématu [nakonfigurovat vlastní nastavení v prostředí Azure-SSIS integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
+- Pokud používáte vlastní instalaci, může být nutné připravit jiný identifikátor URI SAS pro kontejner objektů blob, který ukládá vlastní instalační skript a přidružené soubory, takže bude během výpadku nadále přístupný. Další informace najdete v tématu [Konfigurace vlastního nastavení v prostředí Azure-SSIS Integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
 
 ### <a name="steps"></a>Kroky
 
-Použijte následující postup zastavit prostředí Azure-SSIS IR, přepnout prostředí IR do nové oblasti a znovu spustit.
+Postupujte podle těchto kroků a zastavte Azure-SSIS IR, přepněte IR na novou oblast a znovu ji spusťte.
 
-1. Spustit uloženou proceduru, aby SSISDB připojené k **\<new_data_factory_name\>** nebo  **\<new_integration_runtime_name\>** .
+1. Spusťte uloženou proceduru, aby se SSISDB připojil k **\<new_data_factory_name\>** nebo **\<new_integration_runtime_name\>** .
    
   ```SQL
     EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
    ```
 
-2. Vytvoření nové datové továrny s názvem **\<new_data_factory_name\>** v nové oblasti. Další informace najdete v tématu Vytvoření datové továrny.
+2. Vytvořte novou datovou továrnu s názvem **\<new_data_factory_name\>** v nové oblasti. Další informace najdete v tématu Vytvoření datové továrny.
 
      ```powershell
      Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
                          -Location "new region"`
                          -Name "<new_data_factory_name>"
      ```
-    Další informace o tomto příkazu prostředí PowerShell najdete v tématu [vytvořte objekt pro vytváření dat Azure pomocí Powershellu](quickstart-create-data-factory-powershell.md)
+    Další informace o tomto příkazu PowerShellu najdete v tématu [Vytvoření datové továrny Azure pomocí PowerShellu](quickstart-create-data-factory-powershell.md) .
 
-3. Vytvořit nové prostředí Azure-SSIS IR s názvem **\<new_integration_runtime_name\>** v nové oblasti pomocí Azure Powershellu.
+3. Pomocí Azure PowerShell vytvořte v nové oblasti novou Azure-SSIS IR s názvem **\<new_integration_runtime_name\>** .
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
@@ -150,16 +150,16 @@ Použijte následující postup zastavit prostředí Azure-SSIS IR, přepnout pr
                                            -CatalogPricingTier $SSISDBPricingTier
     ```
 
-    Další informace o tomto příkazu prostředí PowerShell najdete v tématu [vytvořit prostředí Azure-SSIS integration runtime ve službě Azure Data Factory](create-azure-ssis-integration-runtime.md)
+    Další informace o tomto příkazu PowerShellu najdete [v tématu Vytvoření prostředí Azure-SSIS Integration runtime v tématu Azure Data Factory](create-azure-ssis-integration-runtime.md)
 
-4. Prostředí IR spusťte znovu.
+4. Znovu spusťte IR.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Vezměte v úvahu tyto další možnosti konfigurace pro prostředí Azure-SSIS IR:
+Vezměte v úvahu tyto další možnosti konfigurace Azure-SSIS IR:
 
-- [Konfigurace prostředí Azure-SSIS Integration Runtime pro vysoký výkon](configure-azure-ssis-integration-runtime-performance.md)
+- [Konfigurace Azure-SSIS Integration Runtime pro vysoký výkon](configure-azure-ssis-integration-runtime-performance.md)
 
 - [Přizpůsobení nastavení pro Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md)
 
-- [Zřízení Enterprise Edition pro prostředí Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-enterprise-edition.md)
+- [Zřídit Enterprise Edition pro Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-enterprise-edition.md)

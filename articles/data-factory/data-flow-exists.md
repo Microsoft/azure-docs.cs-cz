@@ -1,5 +1,5 @@
 ---
-title: Existuje transformace v datovém toku mapování Azure Data Factory | Microsoft Docs
+title: V datovém toku mapování Azure Data Factory existuje transformace.
 description: Vyhledat existující řádky pomocí transformace Exists v Azure Data Factory toku dat mapování
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 79bdfc84310686b2648e12d73d783de049e9d2fa
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: a477eba246c4ebcfbd32e92f1fd30c301ea1cc5b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596516"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676737"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>Existuje transformace v toku dat mapování.
 
@@ -52,9 +52,9 @@ Chcete-li vytvořit výraz ve volném formátu, který obsahuje operátory jiné
     ) ~> <existsTransformationName>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
-Níže uvedený příklad je transformace s názvem `checkForChanges`, která přebírá levý Stream `NameNorm2` a `TypeConversions` pravého streamu.  Podmínka EXISTS je výraz `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region`, který vrací hodnotu true, pokud se ve sloupcích `EMPID` a `Region` v každém datovém proudu shodují. Po kontrole existence `negate` je false. Na kartě optimalizace nepovolujeme žádné vysílání, takže `broadcast` má `'none'` Value.
+Níže uvedený příklad je transformace s názvem `checkForChanges`, která přebírá levý Stream `NameNorm2` a `TypeConversions`pravého streamu.  Podmínka EXISTS je výraz `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region`, který vrací hodnotu true, pokud se ve sloupcích `EMPID` a `Region` v každém datovém proudu shodují. Po kontrole existence `negate` je false. Na kartě optimalizace nepovolujeme žádné vysílání, takže `broadcast` má `'none'`Value.
 
 V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 

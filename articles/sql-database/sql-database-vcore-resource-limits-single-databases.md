@@ -1,5 +1,5 @@
 ---
-title: Omezení prostředků Azure SQL Database vCore – jedna databáze | Microsoft Docs
+title: Omezení prostředků Azure SQL Database vCore – jedna databáze
 description: Tato stránka popisuje některé běžné limity vCore prostředků pro izolovanou databázi v Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/04/2019
-ms.openlocfilehash: 55b0b28f3081cfe643645683a9773b4c97b9caef
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b3b55b3542eb0dd8c3c61d7a82c8ce2e9d271113
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495944"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686860"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Omezení prostředků pro izolované databáze pomocí modelu nákupu vCore
 
@@ -44,19 +44,19 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Minimální – maximální velikost paměti (GB)|2.02-3|2.05 – 6|2.10 – 12|2.25-18|3.00-24|
 |Minimální prodleva automatického pozastavení (minuty)|60|60|60|60|60|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
+|Úložiště OLTP v paměti (GB)|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
 |Maximální velikost dat (GB)|512|1024|1024|1024|1536|
 |Maximální velikost protokolu (GB)|154|307|307|307|461|
 |Maximální velikost dat databáze TempDB (GB)|32|64|128|192|256|
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
-|Maximální počet datových IOPS (64 KB)|500|1 000|2000|3000|4000|
+|Maximální počet datových IOPS (64 KB)|500|1000|2000|3000|4000|
 |Maximální rychlost protokolu (MB/s)|2,5|5,6|10|15|20|
 |Maximální počet souběžných pracovních procesů (požadavků)|75|150|300|450|600|
 |Maximální počet souběžných relací|30000|30000|30000|30000|30000|
-|Počet replik|1\. místo|1\. místo|1\. místo|1\. místo|1\. místo|
-|Více AZ|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
-|Škálování čtení na více instancí|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
+|Počet replik|1|1|1|1|1|
+|Více AZ|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
+|Škálování čtení na více instancí|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 ### <a name="gen5-compute-generation-part-2"></a>Generace COMPUTE Gen5 (část 2)
@@ -68,7 +68,7 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Minimální – maximální velikost paměti (GB)|3,75 – 30|4.50 – 36|5,25 – 42|6.00-48|
 |Minimální prodleva automatického pozastavení (minuty)|60|60|60|60|
 |Podpora columnstore|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
+|Úložiště OLTP v paměti (GB)|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
 |Maximální velikost dat (GB)|1536|1536|1536|3072|
 |Maximální velikost protokolu (GB)|461|461|461|922|
 |Maximální velikost dat databáze TempDB (GB)|320|384|448|512|
@@ -78,9 +78,9 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Maximální rychlost protokolu (MB/s)|20|20|20|20|
 |Maximální počet souběžných pracovních procesů (požadavků)|750|900|1050|1200|
 |Maximální počet souběžných relací|30000|30000|30000|30000|
-|Počet replik|1\. místo|1\. místo|1\. místo|1\. místo|
-|Více AZ|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
-|Škálování čtení na více instancí|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
+|Počet replik|1|1|1|1|
+|Více AZ|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
+|Škálování čtení na více instancí|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 
@@ -95,9 +95,9 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Paměť (GB)|10.2|20,4|40,8|81,6|122,4|163,2|204|408|
 |[RBPEX](sql-database-service-tier-hyperscale.md#compute) Hodnota|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
+|Úložiště OLTP v paměti (GB)|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
 |Maximální velikost dat (TB)|100 |100 |100 |100 |100 |100 |100 |100 |
-|Maximální velikost protokolu (TB)|1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |
+|Maximální velikost protokolu (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
 |Maximální velikost dat databáze TempDB (GB)|64|128|256|384|384|384|384|384|
 |Typ úložiště| [Poznámka 1](#notes) |[Poznámka 1](#notes)|[Poznámka 1](#notes) |[Poznámka 1](#notes) |[Poznámka 1](#notes) |[Poznámka 1](#notes) |[Poznámka 1](#notes) | [Poznámka 1](#notes) |
 |Maximální počet datových IOPS (64 KB)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|
@@ -105,7 +105,7 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|800|1600|2400|3200|4000|8000|
 |Maximální počet souběžných relací|30000|30000|30000|30000|30000|30000|30000|30000|
 |Sekundární repliky|0-4|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
-|Více AZ|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
+|Více AZ|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
 |Škálování čtení na více instancí|Ano|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Uchování úložiště záloh|7 dní|7 dní|7 dní|7 dní|7 dní|7 dní|7 dní|7 dní|
 |||
@@ -128,22 +128,22 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Velikost výpočetního prostředí|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generování výpočtů|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|
-|Virtuální jádra|1\. místo|2|3|4|5|6|
+|Virtuální jádra|1|2|3|4|5|6|
 |Paměť (GB)|7|14|21|28|35|42|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
+|Úložiště OLTP v paměti (GB)|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
 |Maximální velikost dat (GB)|1024|1024|1536|1536|1536|3072|
 |Maximální velikost protokolu (GB)|307|307|461|461|461|922|
 |Maximální velikost dat databáze TempDB (GB)|32|64|96|128|160|192|
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
-|Maximální počet datových IOPS (64 KB)|500|1 000|1 500|2000|2500|3000|
+|Maximální počet datových IOPS (64 KB)|500|1000|1 500|2000|2500|3000|
 |Maximální rychlost protokolu (MB/s)|3,75|7,5|11,25|15|18,75|22,5|
-|Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|1 000|1200|
+|Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|1000|1200|
 |Maximální počet souběžných relací|30000|30000|30000|30000|30000|30000|
-|Počet replik|1\. místo|1\. místo|1\. místo|1\. místo|1\. místo|1\. místo|
-|Více AZ|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
-|Škálování čtení na více instancí|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
+|Počet replik|1|1|1|1|1|1|
+|Více AZ|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
+|Škálování čtení na více instancí|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 ### <a name="gen4-compute-generation-part-2"></a>Generace COMPUTE COMPUTE GEN4 – (část 2)
@@ -154,7 +154,7 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Virtuální jádra|7|8|9|10|16|24|
 |Paměť (GB)|49|56|63|70|112|168|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
+|Úložiště OLTP v paměti (GB)|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
 |Maximální velikost dat (GB)|3072|3072|3072|3072|4 096|4 096|
 |Maximální velikost protokolu (GB)|922|922|922|922|1229|1229|
 |Maximální velikost dat databáze TempDB (GB)|224|256|288|320|384|384|
@@ -164,9 +164,9 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Maximální rychlost protokolu (MB/s)|26,25|30|30|30|30|30|
 |Maximální počet souběžných pracovních procesů (požadavků)|1400|1600|1800|2000|3200|4800|
 |Maximální počet souběžných relací|30000|30000|30000|30000|30000|30000|
-|Počet replik|1\. místo|1\. místo|1\. místo|1\. místo|1\. místo|1\. místo|
-|Více AZ|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
-|Škálování čtení na více instancí|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
+|Počet replik|1|1|1|1|1|1|
+|Více AZ|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
+|Škálování čtení na více instancí|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 ## <a name="general-purpose---provisioned-compute---gen5"></a>Pro obecné účely zřízené COMPUTE – Gen5
@@ -179,19 +179,19 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Virtuální jádra|2|4|6|8|10|12|14|
 |Paměť (GB)|10.2|20,4|30,6|40,8|51|61,2|71,4|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
+|Úložiště OLTP v paměti (GB)|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
 |Maximální velikost dat (GB)|1024|1024|1536|1536|1536|3072|3072|
 |Maximální velikost protokolu (GB)|307|307|461|461|461|922|922|
 |Maximální velikost dat databáze TempDB (GB)|64|128|192|256|320|384|384|
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
-|Maximální počet datových IOPS (64 KB)|1 000|2000|3000|4000|5000|6000|7000|
+|Maximální počet datových IOPS (64 KB)|1000|2000|3000|4000|5000|6000|7000|
 |Maximální rychlost protokolu (MB/s)|3,75|7,5|11,25|15|18,75|22,5|26,25|
-|Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|1 000|1200|1400|
+|Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|1000|1200|1400|
 |Maximální počet souběžných relací|30000|30000|30000|30000|30000|30000|30000|
-|Počet replik|1\. místo|1\. místo|1\. místo|1\. místo|1\. místo|1\. místo|1\. místo|
-|Více AZ|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
-|Škálování čtení na více instancí|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
+|Počet replik|1|1|1|1|1|1|1|
+|Více AZ|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
+|Škálování čtení na více instancí|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 ### <a name="gen5-compute-generation-part-2"></a>Generace COMPUTE Gen5 (část 2)
@@ -202,7 +202,7 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Virtuální jádra|16|18|20|24|32|40|80|
 |Paměť (GB)|81,6|91,8|102|122,4|163,2|204|408|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
+|Úložiště OLTP v paměti (GB)|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
 |Maximální velikost dat (GB)|3072|3072|3072|4 096|4 096|4 096|4 096|
 |Maximální velikost protokolu (GB)|922|922|922|1229|1229|1229|1229|
 |Maximální velikost dat databáze TempDB (GB)|384|384|384|384|384|384|384|
@@ -212,9 +212,9 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Maximální rychlost protokolu (MB/s)|30|30|30|30|30|30|30|
 |Maximální počet souběžných pracovních procesů (požadavků)|1600|1800|2000|2400|3200|4000|8000|
 |Maximální počet souběžných relací|30000|30000|30000|30000|30000|30000|30000|
-|Počet replik|1\. místo|1\. místo|1\. místo|1\. místo|1\. místo|1\. místo|1\. místo|
-|Více AZ|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
-|Škálování čtení na více instancí|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|Nevztahuje se|
+|Počet replik|1|1|1|1|1|1|1|
+|Více AZ|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
+|Škálování čtení na více instancí|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|Není dostupné.|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 ## <a name="general-purpose---provisioned-compute---fsv2-series"></a>Pro obecné účely zřízené COMPUTE-Fsv2-Series
@@ -227,7 +227,7 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Virtuální jádra|72|
 |Paměť (GB)|136|
 |Podpora columnstore|Ano|
-|Úložiště OLTP v paměti (GB)|Nevztahuje se|
+|Úložiště OLTP v paměti (GB)|Není dostupné.|
 |Maximální velikost dat (GB)|4 096|
 |Maximální velikost protokolu (GB)|1024|
 |Maximální velikost dat databáze TempDB (GB)|333|
@@ -237,9 +237,9 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Maximální rychlost protokolu (MB/s)|30|
 |Maximální počet souběžných pracovních procesů (Quests)|3600|
 |Maximální počet souběžných relací|30000|
-|Počet replik|1\. místo|
-|Více AZ|Nevztahuje se|
-|Škálování čtení na více instancí|Nevztahuje se|
+|Počet replik|1|
+|Více AZ|Není dostupné.|
+|Škálování čtení na více instancí|Není dostupné.|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|
 
 
@@ -254,10 +254,10 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Velikost výpočetního prostředí|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generování výpočtů|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|
-|Virtuální jádra|1\. místo|2|3|4|5|6|
+|Virtuální jádra|1|2|3|4|5|6|
 |Paměť (GB)|7|14|21|28|35|42|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|1\. místo|2|3|4|5|6|
+|Úložiště OLTP v paměti (GB)|1|2|3|4|5|6|
 |Typ úložiště|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|
 |Maximální velikost dat (GB)|1024|1024|1024|1024|1024|1024|
 |Maximální velikost protokolu (GB)|307|307|307|307|307|307|
@@ -265,8 +265,8 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Latence v/v (přibližná)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|
 |Maximální počet datových IOPS (64 KB)|5000|10000|15 000|20000|25000|30000|
 |Maximální rychlost protokolu (MB/s)|8|16|24|32|40|48|
-|Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|1 000|1200|
-|Maximální počet souběžných přihlášení|200|400|600|800|1 000|1200|
+|Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|1000|1200|
+|Maximální počet souběžných přihlášení|200|400|600|800|1000|1200|
 |Maximální počet souběžných relací|30000|30000|30000|30000|30000|30000|
 |Počet replik|4|4|4|4|4|4|
 |Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|
@@ -281,7 +281,7 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Virtuální jádra|7|8|9|10|16|24|
 |Paměť (GB)|49|56|63|70|112|168|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|7|8|9,5|11|20|36|
+|Úložiště OLTP v paměti (GB)|7|8|9.5|11|20|36|
 |Typ úložiště|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|
 |Maximální velikost dat (GB)|1024|1024|1024|1024|1024|1024|
 |Maximální velikost protokolu (GB)|307|307|307|307|307|307|
@@ -315,8 +315,8 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Latence v/v (přibližná)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|1-2 ms (zápis)<br>1-2 ms (čtení)|
 |Maximální počet datových IOPS (64 KB)|8000|16000|24000|32000|40000|48000|56000|
 |Maximální rychlost protokolu (MB/s)|12|24|36|48|60|72|84|
-|Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|1 000|1200|1400|
-|Maximální počet souběžných přihlášení|200|400|600|800|1 000|1200|1400|
+|Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|1000|1200|1400|
+|Maximální počet souběžných přihlášení|200|400|600|800|1000|1200|1400|
 |Maximální počet souběžných relací|30000|30000|30000|30000|30000|30000|30000|
 |Počet replik|4|4|4|4|4|4|4|
 |Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|Ano|

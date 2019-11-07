@@ -1,5 +1,5 @@
 ---
-title: Použití klientské knihovny elastické databáze s Dapperem | Microsoft Docs
+title: Použití klientské knihovny elastické databáze s Dapperem
 description: Použití klientské knihovny elastické databáze s Dapperem.
 services: sql-database
 ms.service: sql-database
@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 1eafb123014effad9daca89dc1b852367d9cbbf1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3b1fa6ab046845e2fd95e8d4b5611ca2f5d12562
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568263"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690099"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Použití klientské knihovny elastické databáze s Dapperem
 Tento dokument je určen vývojářům, kteří se spoléhají na Dapperem k vytváření aplikací, ale také chtějí využít [elastické databázové nástroje](sql-database-elastic-scale-introduction.md) k vytváření aplikací, které implementují horizontálního dělení pro horizontální navýšení kapacity datové vrstvy.  Tento dokument popisuje změny v aplikacích založených na Dapperem, které jsou nezbytné pro integraci s nástroji elastické databáze. Naše zaměření se zaměřuje na vytváření horizontálních oddílů správy elastické databáze a směrování závislého na datech pomocí Dapperem. 
 
-**Vzorový kód**: [Nástroje elastické databáze pro integraci s Azure SQL Database dapperem](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
+**Vzorový kód**: [nástroje elastické databáze pro integraci Azure SQL Database-dapperem](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
 
 Integrace **dapperem** a **DapperExtensions** s klientskou knihovnou elastické databáze pro Azure SQL Database je snadné. Vaše aplikace mohou používat směrování závislé na datech změnou vytváření a otevírání nových objektů [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) pro použití volání [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) z [klientské knihovny](https://msdn.microsoft.com/library/azure/dn765902.aspx). Tím se změny v aplikaci omezí jenom na místo, kde se vytvářejí a otevřou nová připojení. 
 
@@ -30,7 +30,7 @@ Integrace **dapperem** a **DapperExtensions** s klientskou knihovnou elastické 
 
 Funkce Mapper v Dapperem poskytuje metody rozšíření pro databázová připojení, která zjednodušují odesílání příkazů T-SQL pro spuštění nebo dotazování databáze. Dapperem například usnadňuje mapování mezi objekty .NET a parametry příkazů SQL pro **spuštění** volání nebo pro využití výsledků dotazů SQL do objektů .NET pomocí volání **dotazů** z dapperem. 
 
-Při použití DapperExtensions už nemusíte zadávat SQL příkazy. Metody rozšíření, jako je GetList nebo **INSERT** přes připojení k databázi, vytvářejí příkazy SQL na pozadí.
+Při použití DapperExtensions už nemusíte zadávat SQL příkazy. Metody rozšíření, jako je **GetList** nebo **INSERT** přes připojení k databázi, vytvářejí příkazy SQL na pozadí.
 
 Další výhodou Dapperem a také DapperExtensions je, že aplikace řídí vytvoření připojení k databázi. To pomáhá komunikovat s klientskou knihovnou elastické databáze, která poskytuje připojení databáze na základě mapování shardlety k databázím.
 
@@ -48,9 +48,9 @@ Místo používání tradičního způsobu vytváření připojení pro Dapperem
 ### <a name="requirements-for-dapper-integration"></a>Požadavky na integraci Dapperem
 Při práci s knihovnou klienta elastické databáze a rozhraními API Dapperem chcete zachovat následující vlastnosti:
 
-* **Horizontální**navýšení kapacity: Chceme přidat nebo odebrat databáze z datové vrstvy aplikace horizontálně dělené, jak je to nutné pro požadavky aplikace na kapacitu. 
-* **Konzistence**: Vzhledem k tomu, že se aplikace škáluje pomocí horizontálního dělení, musíte provést směrování závislé na datech. K tomu chceme použít možnosti směrování závislé na datech knihovny. Konkrétně je vhodné zachovat záruky ověřování a konzistence poskytované připojeními, které jsou zprostředkované prostřednictvím Správce map horizontálních oddílů, aby se předešlo poškození nebo špatnému výsledku dotazu. Tím zajistíte, že připojení k danému shardletuu se odmítnou nebo zastaví, pokud (například instance) shardletu je v současné době přesunuta do jiného horizontálních oddílů pomocí rozhraní API pro dělení a slučování.
-* **Mapování objektu**: Chceme zachovat pohodlí mapování poskytovaných Dapperem k překladu mezi třídami v aplikaci a podkladové struktury databáze. 
+* **Horizontální**navýšení kapacity: chceme v případě požadavků na kapacitu aplikace přidat nebo odebrat databáze z datové vrstvy aplikace horizontálně dělené. 
+* **Konzistence**: vzhledem k tomu, že aplikace se škáluje pomocí horizontálního dělení, je nutné provést směrování závislé na datech. K tomu chceme použít možnosti směrování závislé na datech knihovny. Konkrétně je vhodné zachovat záruky ověřování a konzistence poskytované připojeními, které jsou zprostředkované prostřednictvím Správce map horizontálních oddílů, aby se předešlo poškození nebo špatnému výsledku dotazu. Tím zajistíte, že připojení k danému shardletuu se odmítnou nebo zastaví, pokud (například instance) shardletu je v současné době přesunuta do jiného horizontálních oddílů pomocí rozhraní API pro dělení a slučování.
+* **Mapování objektu**: chceme zachovat pohodlí mapování poskytovaných dapperem k překladu mezi třídami v aplikaci a podkladové struktury databáze. 
 
 V následující části najdete pokyny pro tyto požadavky na aplikace založené na **dapperem** a **DapperExtensions**.
 
@@ -136,7 +136,7 @@ A zde je ukázka kódu pro dotaz:
     }
 
 ### <a name="handling-transient-faults"></a>Zpracování přechodných chyb
-Tým Microsoft Patterns & Practices publikoval [přechodný blok aplikace pro zpracování přechodných chyb](https://msdn.microsoft.com/library/hh680934.aspx) , který vývojářům aplikací umožní zmírnit při spuštění v cloudu časté problémy s přechodnými chybami. Další informace najdete v tématu [Perseverance (tajný kód) všech Triumphs: Pomocí bloku](https://msdn.microsoft.com/library/dn440719.aspx)aplikace pro zpracování přechodných chyb.
+Tým Microsoft Patterns & Practices publikoval [přechodný blok aplikace pro zpracování přechodných chyb](https://msdn.microsoft.com/library/hh680934.aspx) , který vývojářům aplikací umožní zmírnit při spuštění v cloudu časté problémy s přechodnými chybami. Další informace najdete v tématu [Perseverance, tajný klíč všech Triumphs: použití bloku přechodné aplikace pro zpracování chyb](https://msdn.microsoft.com/library/dn440719.aspx).
 
 Ukázka kódu spoléhá na přechodovou knihovnu selhání k ochraně proti přechodným chybám. 
 

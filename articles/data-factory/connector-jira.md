@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat z JIRA pomocí Azure Data Factory | Microsoft Docs
+title: Kopírování dat z JIRA pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z JIRA do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: c48533175d21475a1c42eddc9dc6123f8e4050fb
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 277af8c0683897737fd5194aba68cd7be79d7dd7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935555"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680741"
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory"></a>Kopírování dat z JIRA pomocí Azure Data Factory
 
@@ -84,7 +84,7 @@ Chcete-li kopírovat data z JIRA, nastavte vlastnost Type datové sady na **Jira
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type datové sady musí být nastavená na: **JiraObject** . | Ano |
-| tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
+| tableName | Název tabulky | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad**
 

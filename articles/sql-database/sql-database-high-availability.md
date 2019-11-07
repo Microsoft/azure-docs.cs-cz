@@ -1,5 +1,5 @@
 ---
-title: Vysoká dostupnost – Azure SQL Database služba | Microsoft Docs
+title: Vysoká dostupnost – Azure SQL Database služba
 description: Seznamte se s funkcemi a funkcemi pro vysokou dostupnost služby Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 10/14/2019
-ms.openlocfilehash: ab3971b4fb6065701d693debf55242be7b15295e
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: b34590ca275b6e7254af7820fdc1a03655351cea
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965974"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689953"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 
@@ -39,7 +39,7 @@ Tyto úrovně služeb využívají standardní architekturu dostupnosti. Násled
 
 Standardní model dostupnosti obsahuje dvě vrstvy:
 
-- Bezstavová výpočetní vrstva, která spouští proces `sqlservr.exe` a obsahuje pouze přechodná a data uložená v mezipaměti, jako je například TempDB, modelové databáze na připojené SSD a mezipaměť plánu, fond vyrovnávací paměti a fond columnstore v paměti. Tento bezstavový uzel provozuje služba Azure Service Fabric, která inicializuje `sqlservr.exe`, řídí stav uzlu a v případě potřeby provádí převzetí služeb při selhání jiným uzlem.
+- Bezstavová výpočetní vrstva, která spouští proces `sqlservr.exe` a obsahuje pouze přechodná a data uložená v mezipaměti, jako je například TempDB, modelové databáze na připojené SSD a mezipaměť plánu, fond vyrovnávací paměti a fond columnstore v paměti. Tento bezstavový uzel je provozován službou Azure Service Fabric, která inicializuje `sqlservr.exe`, řídí stav uzlu a v případě potřeby provádí převzetí služeb při selhání jiným uzlem.
 - Stavová Datová vrstva s databázovými soubory (. mdf/. ldf), které jsou uložené v úložišti objektů BLOB v Azure. Služba Azure Blob Storage má vestavěnou funkci dostupnosti dat a redundance. Zaručuje, že každý záznam v souboru protokolu nebo na stránce v datovém souboru se zachová i v případě selhání procesu SQL Server.
 
 Pokaždé, když je databázový stroj nebo operační systém upgradovaný, nebo dojde k selhání, Azure Service Fabric přesune bezstavový proces SQL Server na jiný bezstavový výpočetní uzel s dostatečnou volnou kapacitou. Data v úložišti objektů BLOB v Azure nejsou ovlivněná přesunem a soubory dat a protokolů jsou připojené k nově inicializovanému procesu SQL Server. Tento proces garantuje 99,99% dostupnost, ale během přechodu může dojít k výraznému snížení výkonu, protože nová instance SQL Server začíná studenou mezipamětí.
@@ -62,7 +62,7 @@ Architektura vrstvy služeb s více instancemi je popsaná v tématu [Architektu
 
 Model dostupnosti v rámci škálování zahrnuje čtyři vrstvy:
 
-- Bezstavová výpočetní vrstva, která spouští procesy `sqlservr.exe` a obsahuje pouze přechodná a uložená data v mezipaměti, jako například nepokrývání mezipaměti RBPEX cache, TempDB, modelová databáze atd. na připojené SSD a v mezipaměti plánů, fond vyrovnávacích pamětí a fond columnstore v paměti. Tato Bezstavová vrstva zahrnuje primární repliku COMPUTE a volitelně také počet sekundárních výpočetních replik, které můžou sloužit jako cíle převzetí služeb při selhání.
+- Bezstavová výpočetní vrstva, která spouští procesy `sqlservr.exe` a obsahuje pouze přechodná data a data uložená v mezipaměti, například nepokrývání mezipaměti RBPEX cache, TempDB, modelová databáze atd. na připojené SSD a v mezipaměti plánů, fondu vyrovnávacích pamětí a fondu columnstore. Tato Bezstavová vrstva zahrnuje primární repliku COMPUTE a volitelně také počet sekundárních výpočetních replik, které můžou sloužit jako cíle převzetí služeb při selhání.
 - Bezstavová vrstva úložiště vytvořená stránkami serverů. Tato vrstva je distribuovaný modul úložiště pro `sqlservr.exe` procesy běžící na výpočetních replikách. Každý server stránky obsahuje jenom přechodná data a data uložená v mezipaměti, jako je třeba pokrytí RBPEX cache na připojené SSD a datových stránek uložených v paměti. Každý server stránky má spárovaný stránkovací Server v konfiguraci aktivní-aktivní, aby poskytoval vyrovnávání zatížení, redundanci a vysokou dostupnost.
 - Vrstva úložiště protokolu stavových transakcí vytvořená výpočetním uzlem, na kterém běží proces služby protokolování, zóna pro vykládku protokolu transakcí a dlouhodobé ukládání transakčního protokolu. Cílová zóna a dlouhodobé úložiště používají Azure Storage, což poskytuje dostupnost a [redundanci](https://docs.microsoft.com/azure/storage/common/storage-redundancy) transakčního protokolu, což zajišťuje odolnost dat pro potvrzené transakce.
 - Stavová vrstva úložiště dat s databázovými soubory (. mdf/. NDF), které jsou uložené v Azure Storage a jsou aktualizovány pomocí stránkových serverů. Tato vrstva používá funkce pro dostupnost a [redundanci](https://docs.microsoft.com/azure/storage/common/storage-redundancy) dat Azure Storage. Zaručuje, že každá stránka v datovém souboru se zachová i v případě, že procesy v jiných vrstvách selže nebo dojde k selhání výpočetních uzlů.

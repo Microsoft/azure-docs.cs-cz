@@ -1,6 +1,6 @@
 ---
-title: Vyčištění databáze SSISDB protokoly s Elastickými úlohami databáze Azure | Dokumentace Microsoftu
-description: Tento článek popisuje, jak vyčistit SSISDB protokoly prostřednictvím úlohy elastické databáze Azure pro spuštění uložené procedury, která existuje pro tento účel
+title: 'Vyčištění protokolů SSISDB pomocí úloh služby Azure Elastic Database '
+description: Tento článek popisuje, jak pomocí úlohy elastické databáze Azure vyčistit protokoly SSISDB a aktivovat uloženou proceduru, která pro tento účel existuje.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,30 +12,30 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 1afc40bd601c06def57ae59797d31a5edf4095bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0697addb14894855f554c1d82f59f3798e63d03b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61345548"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73674744"
 ---
-# <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Vyčištění databáze SSISDB protokoly s Elastickými úlohami databáze Azure
+# <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Vyčištění protokolů SSISDB pomocí úloh služby Azure Elastic Database
 
-Tento článek popisuje, jak pomocí úlohy Elastic Database pro Azure můžete aktivovat uložené procedury, která vyčistí protokoly pro databázi katalogu služby SQL Server Integration Services `SSISDB`.
+Tento článek popisuje, jak pomocí úloh služby Azure Elastic Database aktivovat uloženou proceduru, která vyčistí protokoly pro databázi katalogu služba SSIS (SQL Server Integration Services) `SSISDB`.
 
-Úlohy elastic Database je služba Azure, se kterou snadno automatizovat a spouštět úlohy proti databázi nebo skupině databází. Můžete naplánovat, spuštění a monitorování těchto úloh pomocí webu Azure portal, příkazů jazyka Transact-SQL, Powershellu nebo rozhraní REST API. Elastické úlohy databáze použijte k aktivaci uloženou proceduru pro čištění protokolu jednorázově nebo podle plánu. Můžete zvolit interval plánu podle využití prostředků databáze SSISDB, aby se zabránilo načítání velkých databází.
+Elastic Database úlohy jsou služba Azure, která usnadňuje automatizaci a spouštění úloh v databázi nebo skupině databází. Tyto úlohy můžete naplánovat, spustit a monitorovat pomocí rozhraní Azure Portal, Transact-SQL, PowerShellu nebo rozhraní REST API. Pomocí úlohy Elastic Database můžete aktivovat uloženou proceduru pro vyčištění protokolu v jednom čase nebo podle plánu. Můžete zvolit interval plánování založený na využití prostředků SSISDB, abyste zabránili vysokému zatížení databáze.
 
-Další informace najdete v tématu [spravovat skupiny databází s úlohy Elastic Database](../sql-database/elastic-jobs-overview.md).
+Další informace najdete v tématu [Správa skupin databází pomocí úloh elastic Database](../sql-database/elastic-jobs-overview.md).
 
-Následující části popisují, jak spustit uloženou proceduru `[internal].[cleanup_server_retention_window_exclusive]`, které odebere SSISDB protokoly, které jsou mimo časový interval uchovávání informací nastavených správcem.
+Následující části popisují, jak aktivovat uloženou proceduru `[internal].[cleanup_server_retention_window_exclusive]`, která odebere protokoly SSISDB mimo okno uchování nastavené správcem.
 
-## <a name="clean-up-logs-with-power-shell"></a>Vyčištění protokolů pomocí prostředí PowerShell
+## <a name="clean-up-logs-with-power-shell"></a>Vyčištění protokolů pomocí Power shellu
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-Následující ukázkové skripty Powershellu vytvoření nové elastické úlohy spustit uloženou proceduru pro čištění protokolu databáze SSISDB. Další informace najdete v tématu [vytvořit agenta Elastických úloh s použitím prostředí PowerShell](../sql-database/elastic-jobs-powershell.md).
+Následující ukázkové skripty PowerShellu vytvoří novou elastickou úlohu, která aktivuje uloženou proceduru pro vyčištění protokolu SSISDB. Další informace najdete v tématu [Vytvoření agenta elastické úlohy pomocí prostředí PowerShell](../sql-database/elastic-jobs-powershell.md).
 
-### <a name="create-parameters"></a>Parametry vytvoření
+### <a name="create-parameters"></a>Vytvoření parametrů
 
 ``` powershell
 # Parameters needed to create the Job Database
@@ -65,7 +65,7 @@ $IntervalCount = $(Read-Host "Please enter the detailed interval value in the gi
 $StartTime = (Get-Date)
 ```
 
-### <a name="trigger-the-cleanup-stored-procedure"></a>Aktivovat čištění uložené procedury
+### <a name="trigger-the-cleanup-stored-procedure"></a>Aktivovat uloženou proceduru Cleanup
 
 ```powershell
 # Install the latest PackageManagement powershell package which PowershellGet v1.6.5 is dependent on
@@ -157,13 +157,13 @@ Write-Output "Start the execution schedule of the stored procedure for SSISDB lo
 $Job | Set-AzureRmSqlElasticJob -IntervalType $IntervalType -IntervalCount $IntervalCount -StartTime $StartTime -Enable
 ```
 
-## <a name="clean-up-logs-with-transact-sql"></a>Vyčištění protokolů pomocí příkazů jazyka Transact-SQL
+## <a name="clean-up-logs-with-transact-sql"></a>Vyčištění protokolů pomocí jazyka Transact-SQL
 
-Následující ukázkové skripty jazyka Transact-SQL vytvořit nové elastické úlohy pro spuštění uložené procedury pro čištění protokolu databáze SSISDB. Další informace najdete v tématu [použití příkazů jazyka Transact-SQL (T-SQL) k vytvoření a správa Elastických úloh databáze](../sql-database/elastic-jobs-tsql.md).
+Následující ukázkové skripty Transact-SQL vytvoří novou elastickou úlohu, která aktivuje uloženou proceduru pro vyčištění protokolu SSISDB. Další informace naleznete v tématu [použití jazyka Transact-SQL (T-SQL) k vytváření a správě úloh elastic Database](../sql-database/elastic-jobs-tsql.md).
 
-1. Vytvořte nebo určete prázdný S0 nebo vyšší Azure SQL Database, aby mohli databáze SSISDBCleanup úloh. Pak vytvořte Agent Elastických úloh v [webu Azure portal](https://ms.portal.azure.com/#create/Microsoft.SQLElasticJobAgent).
+1. Vytvořte nebo Identifikujte prázdné S0 nebo vyšší Azure SQL Database bude databáze úloh SSISDBCleanup. Pak vytvořte v [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.SQLElasticJobAgent)agenta elastické úlohy.
 
-2. V databázi úlohy vytvoření přihlašovacích údajů pro úlohy čištění protokolu databáze SSISDB. Tyto přihlašovací údaje slouží k připojení k databázi SSISDB protokoly vyčistit.
+2. V databázi úloh vytvořte pověření pro úlohu Vyčištění protokolu SSISDB. Tato pověření slouží k připojení k databázi SSISDB k vyčištění protokolů.
 
     ```sql
     -- Connect to the job database specified when creating the job agent
@@ -174,7 +174,7 @@ Následující ukázkové skripty jazyka Transact-SQL vytvořit nové elastické
     CREATE DATABASE SCOPED CREDENTIAL SSISDBLogCleanupCred WITH IDENTITY = 'SSISDBLogCleanupUser', SECRET = '<EnterStrongPasswordHere>'; 
     ```
 
-3. Definujte cílovou skupinu, která obsahuje databázi SSISDB, pro kterou chcete spustit čištění uložené procedury.
+3. Definujte cílovou skupinu, která zahrnuje databázi SSISDB, pro kterou chcete spustit uloženou proceduru čištění.
 
     ```sql
     -- Connect to the job database 
@@ -191,7 +191,7 @@ Následující ukázkové skripty jazyka Transact-SQL vytvořit nové elastické
     SELECT * FROM jobs.target_groups WHERE target_group_name = 'SSISDBTargetGroup';
     SELECT * FROM jobs.target_group_members WHERE target_group_name = 'SSISDBTargetGroup';
     ```
-4. Udělení příslušných oprávnění pro databázi SSISDB. Katalog SSISDB musí mít správná oprávnění pro uloženou proceduru úspěšně spustit čištění protokolu databáze SSISDB. Podrobné pokyny najdete v tématu [Správa přihlašování](../sql-database/sql-database-manage-logins.md).
+4. Udělte pro databázi SSISDB příslušná oprávnění. Katalog SSISDB musí mít správná oprávnění pro uloženou proceduru, aby bylo možné úspěšně spustit Vyčištění protokolu SSISDB. Podrobné pokyny najdete v tématu [Správa přihlášení](../sql-database/sql-database-manage-logins.md).
 
     ```sql
     -- Connect to the master database in the target server including SSISDB 
@@ -201,7 +201,7 @@ Následující ukázkové skripty jazyka Transact-SQL vytvořit nové elastické
     CREATE USER SSISDBLogCleanupUser FROM LOGIN SSISDBLogCleanupUser;
     GRANT EXECUTE ON internal.cleanup_server_retention_window_exclusive TO SSISDBLogCleanupUser
     ```
-5. Vytvoření úlohy a přidat krok úlohy k vyvolání spuštění uložené procedury pro čištění protokolu databáze SSISDB.
+5. Vytvořte úlohu a přidejte krok úlohy, který aktivuje spuštění uložené procedury pro vyčištění protokolu SSISDB.
 
     ```sql
     --Connect to the job database 
@@ -214,9 +214,9 @@ Následující ukázkové skripty jazyka Transact-SQL vytvořit nové elastické
     @credential_name='SSISDBLogCleanupCred',
     @target_group_name='SSISDBTargetGroup'
     ```
-6. Než budete pokračovat, ujistěte se, že interval uchovávání dat je nastavená správná. Databáze SSISDB protokoly mimo časový interval se odstraní a nejde obnovit.
+6. Než budete pokračovat, ujistěte se, že je okno uchovávání správně nastaveno. Protokoly SSISDB mimo okno jsou odstraněny a nelze je obnovit.
 
-   Poté můžete spouštět úlohy okamžitě začít čištění protokolu databáze SSISDB.
+   Pak můžete spustit úlohu hned a zahájit SSISDB protokolu.
 
     ```sql
     --Connect to the job database 
@@ -228,7 +228,7 @@ Následující ukázkové skripty jazyka Transact-SQL vytvořit nové elastické
     select @je
     select * from jobs.job_executions where job_execution_id = @je
     ```
-7. Volitelně můžete naplánovat spuštění úlohy k odebrání databáze SSISDB protokoly mimo časový interval uchovávání informací podle plánu. Podobně jako příkaz použijte k aktualizaci parametry úlohy.
+7. Volitelně můžete naplánovat spuštění úloh, aby se z časového intervalu odebraly protokoly SSISDB mimo interval uchovávání informací. Použijte podobný příkaz k aktualizaci parametrů úlohy.
 
     ```sql
     --Connect to the job database 
@@ -241,15 +241,15 @@ Následující ukázkové skripty jazyka Transact-SQL vytvořit nové elastické
     @schedule_end_time='<EnterProperEndTimeForSchedule>'
     ```
 
-## <a name="monitor-the-cleanup-job-in-the-azure-portal"></a>Monitorování úlohy čištění na webu Azure Portal
+## <a name="monitor-the-cleanup-job-in-the-azure-portal"></a>Monitorování úlohy čištění v Azure Portal
 
-Můžete monitorovat provádění úlohy čištění na webu Azure Portal. Pro každé spuštění zobrazit stav, čas spuštění a čas ukončení úlohy.
+Provádění úlohy čištění můžete monitorovat v Azure Portal. Pro každé spuštění se zobrazí stav, čas spuštění a čas ukončení úlohy.
 
-![Monitorování úlohy čištění na webu Azure Portal](media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/monitor-cleanup-job-portal.png)
+![Monitorování úlohy čištění v Azure Portal](media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/monitor-cleanup-job-portal.png)
 
-## <a name="monitor-the-cleanup-job-with-transact-sql"></a>Monitorování úlohy čištění pomocí příkazů jazyka Transact-SQL
+## <a name="monitor-the-cleanup-job-with-transact-sql"></a>Monitorování úlohy čištění pomocí jazyka Transact-SQL
 
-Příkazů jazyka Transact-SQL můžete použít také k zobrazení historie spuštění úlohy čištění.
+Můžete také použít Transact-SQL k zobrazení historie spouštění úlohy čištění.
 
 ```sql
 --Connect to the job database 
@@ -262,10 +262,10 @@ SELECT * FROM jobs.job_executions WHERE is_active = 1
 ORDER BY start_time DESC
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Monitorování a správa úlohy týkající se Azure-SSIS Integration Runtime najdete v následujících článcích. Prostředí Azure-SSIS IR je modul runtime pro balíčky služby SSIS, které jsou uloženy do databáze SSISDB ve službě Azure SQL Database.
+Úlohy správy a monitorování související s Azure-SSIS Integration Runtime najdete v následujících článcích. Azure-SSIS IR je běhový modul pro balíčky SSIS uložené v SSISDB v Azure SQL Database.
 
 -   [Změna konfigurace modulu Azure-SSIS Integration Runtime](manage-azure-ssis-integration-runtime.md)
 
--   [Monitorování prostředí Azure-SSIS integration runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime).
+-   [Monitorujte prostředí Azure-SSIS Integration runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime).

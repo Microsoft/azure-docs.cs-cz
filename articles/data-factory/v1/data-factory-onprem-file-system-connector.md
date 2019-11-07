@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat do a ze systému souborů pomocí Azure Data Factory | Microsoft Docs
+title: Kopírování dat do a ze systému souborů pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data do a z místního systému souborů pomocí Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: eea0b930ab26e3f4d816fed69ccf8e987e6d33c7
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 32649b1e13b49979af3ad5042054e1ee8917227a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881348"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682457"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Kopírování dat do a z místního systému souborů pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -53,14 +53,14 @@ Pokud chcete použít sdílenou složku se systémem Linux, nainstalujte na serv
 ## <a name="getting-started"></a>Začínáme
 Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data do nebo ze systému souborů pomocí různých nástrojů/rozhraní API.
 
-Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Viz [kurz: Vytvoření kanálu pomocí průvodce](data-factory-copy-data-wizard-tutorial.md) kopírováním pro rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat.
+Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 
-K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Šablona Azure Resource Manager**, rozhraní **.NET API**a **REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
 1. Vytvořte **datovou továrnu**. Datová továrna může obsahovat jeden nebo více kanálů.
-2. Vytvořte **propojené služby** , které propojí vstupní a výstupní úložiště dat s datovou továrnou. Pokud jsou kopírování dat z Azure blob storage na systém souborů na místě, například vytvoříte dvě propojené služby k propojení vaší místní systém souborů a účet úložiště Azure pro vytváření dat. Vlastnosti propojené služby, které jsou specifické pro místní systém souborů, najdete v části [vlastnosti propojených služeb](#linked-service-properties) .
+2. Vytvořte **propojené služby** , které propojí vstupní a výstupní úložiště dat s datovou továrnou. Pokud například kopírujete data z úložiště objektů BLOB v Azure do místního systému souborů, vytvoříte dvě propojené služby, které propojí místní systém souborů a účet Azure Storage s datovou továrnou. Vlastnosti propojené služby, které jsou specifické pro místní systém souborů, najdete v části [vlastnosti propojených služeb](#linked-service-properties) .
 3. Vytvořte datové **sady** , které reprezentují vstupní a výstupní data pro operaci kopírování. V příkladu uvedeném v posledním kroku vytvoříte datovou sadu pro určení kontejneru objektů BLOB a složky, která obsahuje vstupní data. A vytvoříte další datovou sadu pro určení složky a názvu souboru (volitelné) v systému souborů. Vlastnosti datové sady, které jsou specifické pro místní systém souborů, najdete v části [Vlastnosti datové sady](#dataset-properties) .
 4. Vytvořte **kanál** s aktivitou kopírování, která převezme datovou sadu jako vstup a datovou sadu jako výstup. V předchozím příkladu použijete jako jímku aktivity kopírování BlobSource jako zdroj a FileSystemSink. Podobně pokud kopírujete z místního systému souborů do služby Azure Blob Storage, v aktivitě kopírování použijete FileSystemSource a BlobSink. Vlastnosti aktivity kopírování, které jsou specifické pro místní systém souborů, najdete v části [vlastnosti aktivity kopírování](#copy-activity-properties) . Podrobnosti o tom, jak používat úložiště dat jako zdroj nebo jímku, získáte kliknutím na odkaz v předchozí části úložiště dat.
 
@@ -74,23 +74,23 @@ Místní systém souborů můžete propojit s objektem pro vytváření dat Azur
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | type |Ujistěte se, že vlastnost Type je nastavená na **OnPremisesFileServer**. |Ano |
-| host |Určuje kořenová cesta ke složce, která chcete kopírovat. Pro speciální znaky v řetězci použijte řídicí znak ' \ '. Zobrazit [ukázka propojené služby a datové sady definice](#sample-linked-service-and-dataset-definitions) příklady. |Ano |
-| userid |Zadejte ID uživatele, který má přístup k serveru. |Ne (Pokud zvolíte encryptedCredential) |
-| password |Zadejte heslo pro uživatele (ID uživatele). |Ne (Pokud zvolíte encryptedCredential |
+| Provoz |Určuje kořenovou cestu ke složce, kterou chcete zkopírovat. Pro speciální znaky v řetězci použijte řídicí znak ' \ '. Příklady najdete v tématu [Ukázka propojené služby a definice datových sad](#sample-linked-service-and-dataset-definitions) . |Ano |
+| UserID |Zadejte ID uživatele, který má přístup k serveru. |Ne (Pokud zvolíte encryptedCredential) |
+| heslo |Zadejte heslo uživatele (UserID). |Ne (Pokud zvolíte encryptedCredential |
 | encryptedCredential |Zadání šifrovaných přihlašovacích údajů, které můžete získat spuštěním rutiny New-AzDataFactoryEncryptValue. |Ne (Pokud se rozhodnete zadat ID uživatele a heslo jako prostý text) |
 | gatewayName |Určuje název brány, kterou Data Factory použít pro připojení k místnímu souborovému serveru. |Ano |
 
 
-### <a name="sample-linked-service-and-dataset-definitions"></a>Ukázkové propojené služby a definicích datových sad
+### <a name="sample-linked-service-and-dataset-definitions"></a>Ukázka propojené služby a definic datových sad
 | Scénář | Hostitel v definici propojené služby | folderPath v definici datové sady |
 | --- | --- | --- |
-| Místní složka na počítači Správa dat brány: <br/><br/>Příklady: D:\\\* nebo D:\folder\subfolder\\\* |D:\\ \\ (pro Správa dat Gateway 2,0 a novější verze) <br/><br/> localhost (pro starší verze než Správa dat brána 2,0) |. nebo podsložeksložky\\(pro Správa dat bránu 2,0 a novější verze)\\ \\ \\ <br/><br/>D:\\ \\ nebo d:\\podsložkasložky\\(\\pro verzi brány nižší než 2,0)\\ |
-| Vzdálené sdílené složky: <br/><br/>Příklady: \\ \\myserver\\sdílet\\ \* nebo \\ \\myserver\\sdílet\\složky\\podsložky\\\* |\\\\\\\\\\MyServer\\sdílená složka |. nebo podsložeksložky\\\\ \\ \\ |
+| Místní složka na počítači Správa dat brány: <br/><br/>Příklady: D:\\\* nebo D:\folder\subfolder\\\* |D:\\\\ (pro Správa dat bránu 2,0 a novější verze) <br/><br/> localhost (pro starší verze než Správa dat brána 2,0) |.\\\\ nebo složky\\\\podsložce (pro Správa dat brány 2,0 a novější verze) <br/><br/>D:\\\\ nebo D:\\složka \\\\podsložky (pro verzi brány nižší 2,0)\\ |
+| Vzdálená sdílená složka: <br/><br/>Příklady: \\\\MyServer\\sdílení\\\* nebo \\\\MyServer\\sdílení\\složky\\podsložek\\\* |\\\\\\\\MyServer\\\\sdílení |.\\\\ nebo složky\\\\podsložce |
 
 >[!NOTE]
->Při vytváření prostřednictvím uživatelského rozhraní, není nutné zadat dvojité zpětné lomítko (`\\`) k uvození stejným způsobem jako prostřednictvím formátu JSON, zadejte jedno zpětné lomítko.
+>Při vytváření pomocí uživatelského rozhraní nemusíte zadávat dvojité zpětné lomítko (`\\`) k řídicím panelům, jako je například pomocí JSON, zadejte jednoduché zpětné lomítko.
 
-### <a name="example-using-username-and-password-in-plain-text"></a>Příklad: Použití uživatelského jména a hesla v prostém textu
+### <a name="example-using-username-and-password-in-plain-text"></a>Příklad: použití uživatelského jména a hesla v prostém textu
 
 ```JSON
 {
@@ -107,7 +107,7 @@ Místní systém souborů můžete propojit s objektem pro vytváření dat Azur
 }
 ```
 
-### <a name="example-using-encryptedcredential"></a>Příklad: Použití encryptedcredential
+### <a name="example-using-encryptedcredential"></a>Příklad: použití encryptedcredential
 
 ```JSON
 {
@@ -128,14 +128,14 @@ Místní systém souborů můžete propojit s objektem pro vytváření dat Azur
 
 Oddíl typeProperties se liší pro každý typ datové sady. Poskytuje informace, jako je umístění a formát dat v úložišti dat. Oddíl typeProperties pro datovou sadu typu **Shared** má následující vlastnosti:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| folderPath |Určuje podcestu ke složce. Použijte řídicí znak\' pro speciální znaky v řetězci. Filtr zástupných znaků není podporován. Zobrazit [ukázka propojené služby a datové sady definice](#sample-linked-service-and-dataset-definitions) příklady.<br/><br/>Tuto vlastnost můžete kombinovat s **partitionBy** a mít tak cesty ke složkám na základě data a času začátku a konce řezu. |Ano |
-| fileName |Pokud chcete, aby tabulka odkazovala na konkrétní soubor ve složce, zadejte název souboru do **FolderPath** . Pokud pro tuto vlastnost nezadáte žádnou hodnotu, odkazuje tabulka na všechny soubory ve složce.<br/><br/>Pokud není zadán **název souboru** pro výstupní datovou sadu a **preserveHierarchy** není zadán v jímky aktivity, název generovaného souboru je v následujícím formátu: <br/><br/>`Data.<Guid>.txt`Případě Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Ne |
+| folderPath |Určuje podcestu ke složce. Pro speciální znaky v řetězci použijte řídicí znak '\'. Filtr zástupných znaků se nepodporuje. Příklady najdete v tématu [Ukázka propojené služby a definice datových sad](#sample-linked-service-and-dataset-definitions) .<br/><br/>Tuto vlastnost můžete kombinovat s **partitionBy** a mít tak cesty ke složkám na základě data a času začátku a konce řezu. |Ano |
+| fileName |Pokud chcete, aby tabulka odkazovala na konkrétní soubor ve složce, zadejte název souboru do **FolderPath** . Pokud pro tuto vlastnost nezadáte žádnou hodnotu, odkazuje tabulka na všechny soubory ve složce.<br/><br/>Pokud není zadán **název souboru** pro výstupní datovou sadu a **preserveHierarchy** není zadán v jímky aktivity, název generovaného souboru je v následujícím formátu: <br/><br/>`Data.<Guid>.txt` (příklad: data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt) |Ne |
 | fileFilter |Určete filtr, který se použije k výběru podmnožiny souborů v folderPath, nikoli všech souborů. <br/><br/>Povolené hodnoty jsou: `*` (více znaků) a `?` (jeden znak).<br/><br/>Příklad 1: "FileFilter": "*. log"<br/>Příklad 2: "FileFilter": 2014-1-?. txt<br/><br/>Všimněte si, že tento filtr souborů je použitelný pro sadu vstupních souborů Shared. |Ne |
 | partitionedBy |Pomocí partitionedBy můžete zadat dynamický folderPath/fileName pro data časových řad. Příkladem je folderPath parametrizované pro každou hodinu dat. |Ne |
-| format | Podporovány jsou následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
-| compression | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **Gzip**, **Deflate**, **bzip2**a **ZipDeflate**. Podporované úrovně jsou: **Optimální** a **nejrychlejší**. zobrazení [souborů a kompresních formátů v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| formátovat | Podporovány jsou následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. V části formát nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v částech [Formát textu](data-factory-supported-file-and-compression-formats.md#text-format), [formát JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Formát ORC](data-factory-supported-file-and-compression-formats.md#orc-format)a formátování [Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Pokud chcete **Kopírovat soubory** mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát v definicích vstupní i výstupní datové sady. |Ne |
+| komprese | Zadejte typ a úroveň komprese dat. Podporované typy jsou: **gzip**, **Deflate**, **bzip2**a **ZipDeflate**. Podporované úrovně: **optimální** a **nejrychlejší**. zobrazení [souborů a kompresních formátů v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
 
 > [!NOTE]
 > Nemůžete současně použít fileName a FileFilter.
@@ -180,27 +180,27 @@ U aktivity kopírování se liší v závislosti na typech zdrojů a jímky. Pok
 
 **FileSystemSource** podporuje následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požadováno |
+| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| recursive |Určuje, jestli se data číst rekurzivně z podsložky nebo pouze z určené složky. |True, false (výchozí) |Ne |
+| zahrnout |Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. |True, false (výchozí) |Ne |
 
 **FileSystemSink** podporuje následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požadováno |
+| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| copyBehavior |Definuje chování kopírování, pokud je zdroj BlobSource nebo FileSystem. |**PreserveHierarchy:** Zachová hierarchii souborů v cílové složce. To znamená, že relativní cesta ke zdrojovému souboru ke zdrojové složce je stejná jako relativní cesta cílového souboru k cílové složce.<br/><br/>**FlattenHierarchy:** Všechny soubory ze zdrojové složky se vytvoří v první úrovni cílové složky. Cílové soubory se vytvoří s automaticky generovaným názvem.<br/><br/>**MergeFiles** Sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadaný název souboru nebo název objektu blob, Název sloučeného souboru je zadaný název. V opačném případě se jedná o automaticky generovaný název souboru. |Ne |
+| copyBehavior |Definuje chování kopírování, pokud je zdroj BlobSource nebo FileSystem. |**PreserveHierarchy:** Zachová hierarchii souborů v cílové složce. To znamená, že relativní cesta ke zdrojovému souboru ke zdrojové složce je stejná jako relativní cesta cílového souboru k cílové složce.<br/><br/>**FlattenHierarchy:** Všechny soubory ze zdrojové složky se vytvoří v první úrovni cílové složky. Cílové soubory se vytvoří s automaticky generovaným názvem.<br/><br/>**MergeFiles:** Sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadaný název souboru nebo název objektu blob, Název sloučeného souboru je zadaný název. V opačném případě se jedná o automaticky generovaný název souboru. |Ne |
 
-### <a name="recursive-and-copybehavior-examples"></a>rekurzivní a copyBehavior příklady
+### <a name="recursive-and-copybehavior-examples"></a>Příklady rekurzivních a copyBehavior
 Tato část popisuje výsledné chování operace kopírování pro různé kombinace hodnot pro rekurzivní a copyBehavior vlastnosti.
 
 | rekurzivní hodnota | hodnota copyBehavior | Výsledné chování |
 | --- | --- | --- |
-| true |preserveHierarchy |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří se stejnou strukturou jako zdroj:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
-| true |flattenHierarchy |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>cílový Složku1 je vytvořen s následující strukturou: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automaticky generovaný název File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File5 |
-| true (pravda) |mergeFiles |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>cílový Složku1 je vytvořen s následující strukturou: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Obsah soubor1 + soubor2 + file3 + file4 + soubor 5 se sloučí do jednoho souboru s automaticky generovaným názvem souboru. |
-| false |preserveHierarchy |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří s následující strukturou:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
-| false |flattenHierarchy |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří s následující strukturou:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automaticky generovaný název File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File2<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
-| false |mergeFiles |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří s následující strukturou:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Obsah soubor1 + soubor2 se sloučí do jednoho souboru s automaticky generovaným názvem souboru.<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automaticky vygenerovaný název pro Soubor1<br/><br/>Není Subfolder1 s soubor3 File4 a File5 neexistoval. |
+| true (pravda) |preserveHierarchy |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří se stejnou strukturou jako zdroj:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
+| true (pravda) |flattenHierarchy |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílový Složku1 je vytvořen s následující strukturou: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název pro Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro File5 |
+| true (pravda) |mergeFiles |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílový Složku1 je vytvořen s následující strukturou: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor1 + soubor2 + file3 + file4 + obsah souboru 5 se sloučí do jednoho souboru s automaticky generovaným názvem souboru. |
+| false (nepravda) |preserveHierarchy |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří s následující strukturou:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/><br/>Subfolder1 s file3, file4 a File5 se nezvednuty. |
+| false (nepravda) |flattenHierarchy |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří s následující strukturou:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název pro Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaného názvu pro soubor2<br/><br/>Subfolder1 s file3, file4 a File5 se nezvednuty. |
+| false (nepravda) |mergeFiles |Pro zdrojovou složku Složku1 s následující strukturou,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Soubor1<br/>&nbsp;&nbsp;&nbsp;&nbsp;soubor2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cílová složka Složku1 se vytvoří s následující strukturou:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;se obsah soubor1 + soubor2 sloučí do jednoho souboru s automaticky generovaným názvem souboru.<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název pro Soubor1<br/><br/>Subfolder1 s file3, file4 a File5 se nezvednuty. |
 
 ## <a name="supported-file-and-compression-formats"></a>Podporované formáty souborů a komprese
 Podrobnosti najdete v článku o [formátech souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md) .
@@ -208,7 +208,7 @@ Podrobnosti najdete v článku o [formátech souborů a komprese v Azure Data Fa
 ## <a name="json-examples-for-copying-data-to-and-from-file-system"></a>Příklady JSON pro kopírování dat do a ze systému souborů
 V následujících příkladech jsou uvedeny ukázkové definice JSON, které můžete použít k vytvoření kanálu pomocí sady [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazují, jak kopírovat data z místního systému souborů a do úložiště objektů BLOB v Azure. Data však můžete kopírovat *přímo* z libovolného zdroje do kterékoli z jímky uvedených v části [podporované zdroje a jímky](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování v Azure Data Factory.
 
-### <a name="example-copy-data-from-an-on-premises-file-system-to-azure-blob-storage"></a>Příklad: Kopírování dat z místního systému souborů do Azure Blob Storage
+### <a name="example-copy-data-from-an-on-premises-file-system-to-azure-blob-storage"></a>Příklad: kopírování dat z místního systému souborů do Azure Blob Storage
 V této ukázce se dozvíte, jak kopírovat data z místního systému souborů do úložiště objektů BLOB v Azure. Ukázka má následující Data Factory entit:
 
 * Propojená služba typu [OnPremisesFileServer](#linked-service-properties).
@@ -258,7 +258,7 @@ Místo vlastností **UserID** a **Password** doporučujeme použít vlastnost **
 
 Data se při každé hodinu vybírají z nového souboru. Vlastnosti folderPath a fileName jsou určeny na základě počátečního času řezu.
 
-Nastavení `"external": "true"` INFORMS Data Factory, že datová sada je externí pro objekt pro vytváření dat a není vytvořená aktivitou v datové továrně.
+Nastavení `"external": "true"` informují Data Factory, že datová sada je externí pro objekt pro vytváření dat a není vytvořená aktivitou v datové továrně.
 
 ```JSON
 {
@@ -430,7 +430,7 @@ Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby pou�
 }
 ```
 
-### <a name="example-copy-data-from-azure-sql-database-to-an-on-premises-file-system"></a>Příklad: Kopírování dat z Azure SQL Database do místního systému souborů
+### <a name="example-copy-data-from-azure-sql-database-to-an-on-premises-file-system"></a>Příklad: kopírování dat z Azure SQL Database do místního systému souborů
 Následující příklad ukazuje:
 
 * Propojená služba typu [AzureSqlDatabase.](data-factory-azure-sql-connector.md#linked-service-properties)
@@ -478,7 +478,7 @@ Namísto použití vlastností **UserID** a **Password** doporučujeme použít 
 
 Ukázka předpokládá, že jste v Azure SQL vytvořili tabulku "MyTable" a obsahuje sloupec s názvem "timestampcolumn" pro data časových řad.
 
-Nastavení ``“external”: ”true”`` INFORMS Data Factory, že datová sada je externí pro objekt pro vytváření dat a není vytvořená aktivitou v datové továrně.
+Nastavení ``“external”: ”true”`` informují Data Factory, že datová sada je externí pro objekt pro vytváření dat a není vytvořená aktivitou v datové továrně.
 
 ```JSON
 {

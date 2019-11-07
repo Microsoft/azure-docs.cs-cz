@@ -1,5 +1,5 @@
 ---
-title: Horizontální navýšení kapacity pomocí Azure SQL Database | Microsoft Docs
+title: Horizontální navýšení kapacity s Azure SQL Database
 description: Vývojáři SaaS (software jako služba) můžou snadno vytvářet elastické a škálovatelné databáze v cloudu pomocí těchto nástrojů.
 services: sql-database
 ms.service: sql-database
@@ -11,20 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e5ae56b2050243831f10863bbb4184a9e89f5911
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 56556576dffd4e022f919af89459d92e48c6c895
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568402"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690243"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Horizontální navýšení kapacity s Azure SQL Database
-Pomocí nástrojů **elastic Database** můžete snadno ŠKÁLOVAT databáze SQL Azure. Pomocí těchto nástrojů a funkcí můžete vytvářet řešení pro transakční úlohy a zejména aplikace SaaS (software jako služba), které jsou k disAzure SQL Database. Funkce Elastic Database se skládají z:
+Pomocí nástrojů **elastic Database** můžete snadno ŠKÁLOVAT databáze SQL Azure. Pomocí těchto nástrojů a funkcí můžete vytvářet řešení pro transakční úlohy a zejména aplikace SaaS (software jako služba), které jsou k **disAzure SQL Database** . Funkce Elastic Database se skládají z:
 
-* [Klientská knihovna elastic Database](sql-database-elastic-database-client-library.md): Klientská knihovna je funkce, která umožňuje vytvářet a udržovat databáze horizontálně dělené.  Přečtěte si téma Začínáme [s nástroji pro elastic Database](sql-database-elastic-scale-get-started.md).
+* [Elastic Database Klientská knihovna](sql-database-elastic-database-client-library.md): Klientská knihovna je funkce, která umožňuje vytvářet a udržovat databáze horizontálně dělené.  Přečtěte si téma Začínáme [s nástroji pro elastic Database](sql-database-elastic-scale-get-started.md).
 * [Elastic Database Nástroj pro dělení a slučování](sql-database-elastic-scale-overview-split-and-merge.md): přesouvá data mezi databázemi horizontálně dělené. Tento nástroj je užitečný pro přesun dat z víceklientské databáze do databáze s jedním tenanta (nebo naopak). Viz [kurz k nástroji pro dělení a slučování elastické databáze](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
-* [Úlohy elastické databáze](elastic-jobs-overview.md): Použijte úlohy pro správu velkého počtu databází Azure SQL. Pomocí úloh můžete snadno provádět operace správy, jako jsou změny schématu, Správa přihlašovacích údajů, aktualizace referenčních dat, shromažďování dat výkonu nebo shromažďování telemetrie klienta (zákazníka).
-* [Elastic Database dotaz](sql-database-elastic-query-overview.md) (Preview): Umožňuje spustit dotaz Transact-SQL, který zahrnuje více databází. To umožňuje připojení k nástrojům pro vytváření sestav, jako je Excel, Power BI, Tableau atd.
+* [Úlohy elastické databáze](elastic-jobs-overview.md): použijte úlohy pro správu velkého počtu databází Azure SQL. Pomocí úloh můžete snadno provádět operace správy, jako jsou změny schématu, Správa přihlašovacích údajů, aktualizace referenčních dat, shromažďování dat výkonu nebo shromažďování telemetrie klienta (zákazníka).
+* [Elastic Database dotaz](sql-database-elastic-query-overview.md) (Preview): umožňuje spustit dotaz Transact-SQL, který zahrnuje více databází. To umožňuje připojení k nástrojům pro vytváření sestav, jako je Excel, Power BI, Tableau atd.
 * [Elastické transakce](sql-database-elastic-transactions-overview.md): Tato funkce umožňuje spouštět transakce, které přesahují několik databází v Azure SQL Database. Transakce elastické databáze jsou k dispozici pro aplikace .NET s využitím rozhraní ADO .NET a jsou integrovány se známým programovacím prostředím pomocí [tříd System. Transaction](https://msdn.microsoft.com/library/system.transactions.aspx).
 
 Následující obrázek ukazuje architekturu, která obsahuje **funkce elastic Database** ve vztahu ke kolekci databází.
@@ -85,7 +85,7 @@ Jiné scénáře začlení více tenantů do databází, nikoli jejich izolován
 ### <a name="move-data-from-multiple-to-single-tenancy-databases"></a>Přesun dat z několika do databází s jednou tenantů
 Při vytváření aplikace v SaaS je typický zákazníkům nabízet zkušební verzi softwaru pro potenciální zákazníky. V tomto případě je cenově výhodnější používat pro data víceklientské databáze. Pokud se ale potenciální zákazník stal zákazníkem, je databáze jednoho tenanta lepší, protože poskytuje lepší výkon. Pokud zákazník vytvořil během zkušebního období data, přesuňte data z více tenantů do nové databáze s jedním klientem pomocí [Nástroje pro dělení](sql-database-elastic-scale-overview-split-and-merge.md) na více tenantů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Ukázkovou aplikaci, která demonstruje knihovnu klienta, najdete v tématu Začínáme [s nástroji pro elastic Database](sql-database-elastic-scale-get-started.md).
 
 Pokud chcete převést existující databáze na používání nástrojů, přečtěte si téma [migrace existujících databází pro horizontální](sql-database-elastic-convert-to-use-elastic-tools.md)navýšení kapacity.

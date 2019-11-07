@@ -1,5 +1,5 @@
 ---
-title: Vytvoření virtuální sítě pro Azure SQL Database spravovanou instanci | Microsoft Docs
+title: Vytvoření virtuální sítě pro Azure SQL Database spravovanou instanci
 description: Tento článek popisuje, jak vytvořit virtuální síť, ve které můžete nasadit Azure SQL Database spravovanou instanci.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
-ms.openlocfilehash: 2fd4055f1a2ec7b5b29d1a303f1c9ac3260f4cca
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: ae18671000a2bfd3bedef7805ba5db964fe0cf95
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70958483"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688165"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Vytvoření virtuální sítě pro Azure SQL Database spravovanou instanci
 
@@ -58,7 +58,7 @@ Nejjednodušší způsob, jak vytvořit a nakonfigurovat virtuální síť, je p
 
    Můžete změnit názvy virtuální sítě a podsítí a upravit rozsahy IP adres přidružené k síťovým prostředkům. Po výběru tlačítka **koupit** se v tomto formuláři vytvoří a nakonfiguruje vaše prostředí. Pokud nepotřebujete dvě podsítě, můžete odstranit výchozí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přehled najdete v tématu [co je spravovaná instance?](sql-database-managed-instance.md).
 - Přečtěte si o [architektuře připojení ve spravované instanci](sql-database-managed-instance-connectivity-architecture.md).

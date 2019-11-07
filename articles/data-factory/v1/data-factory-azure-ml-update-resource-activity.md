@@ -1,5 +1,5 @@
 ---
-title: Aktualizace modelů Machine Learning pomocí Azure Data Factory | Microsoft Docs
+title: Aktualizace modelů Machine Learning pomocí Azure Data Factory
 description: Popisuje, jak vytvořit vytváření prediktivních kanálů pomocí Azure Data Factory a Azure Machine Learning
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: a980f269c8b88618ffa3311c05310a88ade379ed
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 190a4e704b002a4d6d4876d048c693a5fffe0114
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140462"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683125"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Aktualizace modelů Azure Machine Learning pomocí aktivity aktualizovat prostředek
 
@@ -36,7 +36,7 @@ ms.locfileid: "70140462"
 > [!NOTE]
 > Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [aktualizace modelů strojového učení v Data Factory](../update-machine-learning-models.md).
 
-Tento článek doplňuje hlavní článek o integraci Azure Data Factory Azure Machine Learning: [Vytváření prediktivních kanálů pomocí Azure Machine Learning a Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md) Pokud jste to ještě neudělali, přečtěte si hlavní článek před čtením tohoto článku. 
+Tento článek doplňuje hlavní článek o integraci Azure Data Factory Azure Machine Learning: [vytváření prediktivních kanálů pomocí Azure Machine Learning a Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md). Pokud jste to ještě neudělali, přečtěte si hlavní článek před čtením tohoto článku. 
 
 ## <a name="overview"></a>Přehled
 Prediktivní modely v experimentech s hodnocením Azure ML v průběhu času musí být převlakované pomocí nových vstupních datových sad. Až budete s rekurzem hotovi, chcete aktualizovat webovou službu bodování pomocí předaného modelu ML. Typický postup, jak povolit přeškolení a aktualizace modelů Azure ML prostřednictvím webových služeb, jsou tyto:
@@ -58,7 +58,7 @@ Následující obrázek znázorňuje vztah mezi školicími a vyhodnocovacími k
 **Webovou službu bodování** můžete vyvolat pomocí **aktivity prostředku aktualizace služby Azure ml** a aktualizovat webovou službu pomocí nově vyučeného modelu. V následujících příkladech jsou uvedeny definice propojených služeb: 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>Webová služba bodování je klasický Web Service.
-Pokud webová služba bodování je **klasický web**, vytvořte druhý nevýchozí **a aktualizovatelný koncový bod** pomocí Azure Portal. Postup najdete v článku [Vytvoření koncových bodů](../../machine-learning/machine-learning-create-endpoint.md) . Po vytvoření nevýchozího koncového bodu s možností aktualizace proveďte následující kroky:
+Pokud webová služba bodování je **klasický web**, vytvořte druhý **nevýchozí a aktualizovatelný koncový bod** pomocí Azure Portal. Postup najdete v článku [Vytvoření koncových bodů](../../machine-learning/machine-learning-create-endpoint.md) . Po vytvoření nevýchozího koncového bodu s možností aktualizace proveďte následující kroky:
 
 * Kliknutím na **DÁVKOVÉ spuštění** Získejte hodnotu identifikátoru URI pro vlastnost **mlEndpoint** JSON.
 * Kliknutím na odkaz **aktualizovat prostředek** získáte hodnotu identifikátoru URI pro vlastnost **updateResourceEndpoint** JSON. Klíč rozhraní API se nachází na samotné stránce koncového bodu (v pravém dolním rohu).

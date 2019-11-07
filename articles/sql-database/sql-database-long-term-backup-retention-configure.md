@@ -1,5 +1,5 @@
 ---
-title: Správa Azure SQL Database dlouhodobého uchovávání záloh | Microsoft Docs
+title: 'Správa Azure SQL Database dlouhodobého uchovávání záloh '
 description: Naučte se ukládat automatizované zálohy do úložiště SQL Azure a pak je obnovit.
 services: sql-database
 ms.service: sql-database
@@ -12,16 +12,16 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 08/21/2019
-ms.openlocfilehash: b90e364442e46269fc949ef4aecd9a756cff5595
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 32eb021ecd584e0b1b734abb236f383a32b79131
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904623"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689545"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Správa Azure SQL Database dlouhodobého uchovávání záloh
 
-V Azure SQL Database můžete nakonfigurovat jednu nebo sdruženou databázi s dlouhodobou zásadou [uchovávání záloh](sql-database-long-term-retention.md) (LTR) a automaticky tak uchovávat zálohy databáze v samostatných kontejnerech úložiště Azure Blob po dobu až 10 let. Pak můžete databázi pomocí těchto záloh obnovit pomocí Azure Portal nebo PowerShellu.
+V Azure SQL Database můžete nakonfigurovat jednu nebo sdruženou databázi s [dlouhodobou zásadou uchovávání záloh](sql-database-long-term-retention.md) (LTR) a automaticky tak uchovávat zálohy databáze v samostatných kontejnerech úložiště Azure Blob po dobu až 10 let. Pak můžete databázi pomocí těchto záloh obnovit pomocí Azure Portal nebo PowerShellu.
 
 > [!IMPORTANT]
 > [Azure SQL Database Managed instance](sql-database-managed-instance.md) v současné době nepodporuje dlouhodobé uchovávání záloh.
@@ -99,13 +99,13 @@ V případě funkce **Remove-AzSqlDatabaseLongTermRetentionBackup**budete muset 
 - Role vlastníka předplatného nebo
 - Vlastní role s následujícím oprávněním:
 
-   Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete
+   Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/DELETE
 
 
 > [!NOTE]
 > Role Přispěvatel SQL Server nemá oprávnění odstraňovat zálohy LTR.
 
-Oprávnění RBAC se mohla udělit buď v rámci předplatného, nebo v oboru *skupiny prostředků* . Pro přístup k zálohám LTR, které patří k vyřazenému serveru, ale musí být oprávnění uděleno v oboru předplatného daného serveru.
+Oprávnění RBAC se mohla udělit buď v rámci *předplatného* , nebo v oboru *skupiny prostředků* . Pro přístup k zálohám LTR, které patří k vyřazenému serveru, ale musí být oprávnění uděleno v oboru *předplatného* daného serveru.
 
 
 ### <a name="create-an-ltr-policy"></a>Vytvoření zásady LTR
@@ -210,7 +210,7 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 > [!NOTE]
 > Odtud se můžete připojit k obnovené databázi pomocí SQL Server Management Studio a provést potřebné úkoly, jako je například extrakce dat z obnovené databáze pro zkopírování do existující databáze nebo odstranění existující databáze a přejmenování obnovené databáze k názvu existující databáze. Viz [Obnovení bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o automatických zálohách generovaných službou najdete u popisu [automatických záloh](sql-database-automated-backups.md).
 - Další informace o dlouhodobém uchovávání záloh najdete v části [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md)

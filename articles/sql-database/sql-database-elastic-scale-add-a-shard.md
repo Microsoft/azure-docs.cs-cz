@@ -1,5 +1,5 @@
 ---
-title: Přidání horizontálních oddílů pomocí nástrojů elastické databáze | Microsoft Docs
+title: Přidání horizontálních oddílů pomocí nástrojů elastické databáze
 description: Jak používat rozhraní API pro elastické škálování k přidávání nových horizontálních oddílů do horizontálních oddílů sady.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 679c1bea640644cd46c436ec04278558f610ceda
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3243c8dfcfa83129f57bcd3ea7969fb4f8b07156
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568515"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690354"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Přidání horizontálních oddílů pomocí nástrojů Elastic Database
 
@@ -78,6 +78,6 @@ upd.Shard = shard2;
 sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd));
 ```
 
-**Důležité**informace:  Tuto techniku použijte pouze v případě, že jste si jisti, že rozsah aktualizovaných mapování je prázdný.  Předchozí metody nekontrolují data pro rozsah, který se přesouvá, takže je nejlepší zahrnout do kódu kontroly.  Pokud řádky existují v převáděném rozsahu, skutečná distribuce dat se neshoduje s aktualizovanou mapou horizontálních oddílů. K provedení této operace použijte [Nástroj pro dělení a slučování](sql-database-elastic-scale-overview-split-and-merge.md) , a to místo v těchto případech.  
+**Důležité**: tuto techniku použijte pouze v případě, že jste si jisti, že rozsah aktualizovaných mapování je prázdný.  Předchozí metody nekontrolují data pro rozsah, který se přesouvá, takže je nejlepší zahrnout do kódu kontroly.  Pokud řádky existují v převáděném rozsahu, skutečná distribuce dat se neshoduje s aktualizovanou mapou horizontálních oddílů. K provedení této operace použijte [Nástroj pro dělení a slučování](sql-database-elastic-scale-overview-split-and-merge.md) , a to místo v těchto případech.  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

@@ -1,5 +1,5 @@
 ---
-title: Propojené služby v Azure Data Factory | Microsoft Docs
+title: Propojené služby v Azure Data Factory
 description: Přečtěte si o propojených službách v Data Factory. Propojené služby propojí výpočetní a datové úložiště s datovou továrnou.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 80e9cee0d973dc8575e9645c537b6b69fbeef700
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9dd81484d8afab66fcb76f8fccdea348ef6a34c4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137124"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681488"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Propojené služby v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -30,11 +30,11 @@ Pokud s Data Factory začínáte, přečtěte si téma [Úvod do Azure Data Fact
 ## <a name="overview"></a>Přehled
 Objekt pro vytváření dat může mít jeden nebo víc kanálů. **Kanál** je logické seskupení **aktivit** , které dohromady provádějí úlohu. Aktivity v kanálu definují akce, které se mají provést s vašimi daty. Aktivitu kopírování můžete například použít ke kopírování dat z místního SQL Server do úložiště objektů BLOB v Azure. Pak můžete použít aktivitu podregistru, která spouští skript podregistru v clusteru Azure HDInsight ke zpracování dat z úložiště objektů blob za účelem vytvoření výstupních dat. Nakonec můžete použít druhou aktivitu kopírování ke zkopírování výstupních dat do Azure SQL Data Warehouse, nad tím, která řešení pro vytváření sestav business intelligence (BI) jsou sestavená. Další informace o kanálech a aktivitách najdete v tématu [kanály a aktivity](concepts-pipelines-activities.md) v Azure Data Factory.
 
-Nyní je **datovou sadou** pojmenované zobrazení dat, která jednoduše odkazují na data, která chcete ve svých aktivitách použít jako vstupy a výstupy.
+Nyní je **datovou sadou** pojmenované zobrazení dat, která jednoduše odkazují na data, která chcete ve svých **aktivitách** použít jako vstupy a výstupy.
 
-Před vytvořením datové sady je nutné vytvořit propojenou **službu** , která propojí úložiště dat s datovou továrnou. Propojené služby jsou velmi podobné připojovacím řetězcům, které definují informace o připojení, které služba Data Factory potřebuje pro připojení k externím prostředkům. Zamyslete se nad tímto způsobem; datová sada představuje strukturu dat v propojených úložištích dat a propojená služba definuje připojení ke zdroji dat. Například propojená služba Azure Storage propojuje účet úložiště s datovou továrnou. Datová sada objektů BLOB v Azure představuje kontejner objektů BLOB a složku v rámci tohoto účtu úložiště Azure, která obsahuje vstupní objekty blob, které se mají zpracovat.
+Před vytvořením datové sady je nutné vytvořit **propojenou službu** , která propojí úložiště dat s datovou továrnou. Propojené služby jsou velmi podobné připojovacím řetězcům, které definují informace o připojení, které služba Data Factory potřebuje pro připojení k externím prostředkům. Zamyslete se nad tímto způsobem; datová sada představuje strukturu dat v propojených úložištích dat a propojená služba definuje připojení ke zdroji dat. Například propojená služba Azure Storage propojuje účet úložiště s datovou továrnou. Datová sada objektů BLOB v Azure představuje kontejner objektů BLOB a složku v rámci tohoto účtu úložiště Azure, která obsahuje vstupní objekty blob, které se mají zpracovat.
 
-Tady je ukázkový scénář. Pokud chcete kopírovat data z úložiště objektů blob do databáze SQL, vytvoříte dvě propojené služby: Azure Storage a Azure SQL Database. Pak vytvořte dvě datové sady: Datová sada objektu blob Azure (která odkazuje na propojenou službu Azure Storage) a datovou sadu tabulky Azure SQL (která odkazuje na propojenou službu Azure SQL Database). Azure Storage a Azure SQL Database propojené služby obsahují připojovací řetězce, které Data Factory používá za běhu, aby se připojily k vašemu Azure Storage a Azure SQL Database. Datová sada Azure Blob určuje kontejner objektů BLOB a složku objektů blob, které obsahují vstupní objekty BLOB v úložišti objektů BLOB. Datová sada tabulky SQL Azure Určuje tabulku SQL ve vaší databázi SQL, do které se zkopírují data.
+Tady je ukázkový scénář. Pokud chcete kopírovat data z úložiště objektů blob do databáze SQL, vytvoříte dvě propojené služby: Azure Storage a Azure SQL Database. Pak vytvořte dvě datové sady: datovou sadu Azure Blob (která odkazuje na propojenou službu Azure Storage) a datovou sadu tabulky Azure SQL (která odkazuje na propojenou službu Azure SQL Database). Azure Storage a Azure SQL Database propojené služby obsahují připojovací řetězce, které Data Factory používá za běhu, aby se připojily k vašemu Azure Storage a Azure SQL Database. Datová sada Azure Blob určuje kontejner objektů BLOB a složku objektů blob, které obsahují vstupní objekty BLOB v úložišti objektů BLOB. Datová sada tabulky SQL Azure Určuje tabulku SQL ve vaší databázi SQL, do které se zkopírují data.
 
 Následující diagram znázorňuje vztahy mezi kanálem, aktivitou, datovou sadou a propojenou službou v Data Factory:
 
@@ -61,12 +61,12 @@ Propojená služba v Data Factory je definována ve formátu JSON následující
 
 Následující tabulka obsahuje popis vlastností ve výše uvedeném formátu JSON:
 
-Vlastnost | Popis | Požadováno |
+Vlastnost | Popis | Požaduje se |
 -------- | ----------- | -------- |
-name | Název propojené služby. Viz [pravidla pro Pojmenovávání Azure Data Factory](naming-rules.md). |  Ano |
-type | Typ propojené služby. Příklad: AzureStorage (úložiště dat) nebo AzureBatch (COMPUTE). Podívejte se na popis pro typeProperties. | Ano |
+jméno | Název propojené služby. Viz [pravidla pro Pojmenovávání Azure Data Factory](naming-rules.md). |  Ano |
+type | Typ propojené služby. Například: AzureStorage (úložiště dat) nebo AzureBatch (COMPUTE). Podívejte se na popis pro typeProperties. | Ano |
 typeProperties | Vlastnosti typu jsou pro každé úložiště dat nebo výpočetní prostředky odlišné. <br/><br/> Podporované typy úložiště dat a jejich vlastnosti typu najdete v tabulce [Typ datové sady](concepts-datasets-linked-services.md#dataset-type) v tomto článku. Přejděte do článku konektor úložiště dat, kde se dozvíte o vlastnostech typu specifických pro úložiště dat. <br/><br/> Podporované typy výpočtů a jejich vlastnosti typu najdete v tématu [propojené služby COMPUTE](compute-linked-services.md). | Ano |
-connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne
+connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne
 
 ## <a name="linked-service-example"></a>Příklad propojené služby
 Následující propojená služba je Azure Storage propojená služba. Všimněte si, že typ je nastaven na AzureStorage. Mezi vlastnosti typu propojené služby Azure Storage patří připojovací řetězec. Služba Data Factory používá tento připojovací řetězec pro připojení k úložišti dat za běhu.
@@ -98,7 +98,7 @@ Propojené služby můžete vytvořit pomocí jednoho z těchto nástrojů nebo 
 Seznam dat, která podporuje Data Factory, najdete v článku [Přehled konektoru](copy-activity-overview.md#supported-data-stores-and-formats) . Kliknutím na úložiště dat získáte informace o podporovaných vlastnostech připojení.
 
 ## <a name="compute-linked-services"></a>Propojené služby Compute
-Referenční [výpočetní prostředí](compute-linked-services.md) jsou podporovaná pro podrobnosti o různých výpočetních prostředích, ke kterým se můžete připojit z vaší datové továrny i s různými konfiguracemi.
+Referenční [výpočetní prostředí jsou podporovaná](compute-linked-services.md) pro podrobnosti o různých výpočetních prostředích, ke kterým se můžete připojit z vaší datové továrny i s různými konfiguracemi.
 
 ## <a name="next-steps"></a>Další kroky
 Podrobné pokyny k vytváření kanálů a datových sad pomocí jednoho z těchto nástrojů nebo sad SDK najdete v následujícím kurzu.
