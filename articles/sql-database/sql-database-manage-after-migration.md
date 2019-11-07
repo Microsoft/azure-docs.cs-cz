@@ -1,5 +1,5 @@
 ---
-title: Správa databází s jednou a fondem po migraci – Azure SQL Database | Microsoft Docs
+title: Správa databází s jednou a fondem po migraci – Azure SQL Database
 description: Naučte se spravovat databázi po migraci na Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 36e48e86ed3cf7138f7ff5efe89d08c07df87f25
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d92b4b99e6ae6a7a07174e59d7cf3c9766c0eabf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028254"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689535"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nový DBA v cloudu – Správa databází s jedním a fondem v Azure SQL Database
 
@@ -32,7 +32,7 @@ Tento článek popisuje některé základní charakteristiky Azure SQL Database 
 - Provozní kontinuita a zotavení po havárii (BCDR)
 - Zabezpečení a dodržování předpisů
 - Inteligentní monitorování a údržba databáze
-- Pohyb dat
+- Přesuny dat
 
 > [!NOTE]
 > Tento článek se týká následujících možností nasazení v Azure SQL Database: samostatné databáze a elastické fondy. Neplatí pro možnost nasazení Managed instance v SQL Database.
@@ -64,10 +64,10 @@ Provozní kontinuita a možnosti zotavení po havárii umožňují v případě 
 
 Nevytváříte zálohy v Azure SQL DB, což znamená, že nemusíte být. SQL Database automaticky zálohuje databáze za vás, takže už se nemusíte starat o plánování, vytváření a správu záloh. Tato platforma má každý týden úplnou zálohu, rozdílové zálohování každých pět minut a zálohování protokolu každých 5 minut, aby se zajistilo, že zotavení po havárii bude efektivní a že se data budou minimální. První úplná záloha se stane hned po vytvoření databáze. Tyto zálohy jsou k dispozici po určitou dobu s názvem "doba uchování" a liší se podle zvolené úrovně služeb. SQL Database poskytuje možnost obnovení do libovolného bodu v čase v rámci této doby uchování pomocí funkce [Obnovení bodu v čase (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore).
 
-|Úroveň služby|Doba uchování ve dnech|
+|Úroveň služeb|Doba uchování ve dnech|
 |---|:---:|
-|Úroveň Basic|7|
-|Úroveň Standard|35|
+|Basic|7|
+|Standard|35|
 |Premium|35|
 |||
 
@@ -198,7 +198,7 @@ V TDE existuje dvě klíčová hierarchie – data v jednotlivých uživatelský
 
 Ve výchozím nastavení je hlavní klíč pro transparentní šifrování dat spravovaný službou SQL Database pro usnadnění práce. Pokud by vaše organizace měla za hlavní klíč kontrolu, je k dispozici možnost použít Azure Key Vault] (SQL-Database-Always-Encrypted-Azure-Key-vault.md) jako úložiště klíčů. Pomocí Azure Key Vault vaše organizace předpokládá kontrolu nad správou klíčů, otočením a řízením oprávnění. [Rotace nebo přepínání typu hlavního klíče TDE](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql-key-rotation) je rychlé, protože klíč DEK ho znovu zašifruje. V organizacích, které mají oddělení rolí mezi zabezpečením a správou dat, může správce zabezpečení zřídit klíčový materiál pro hlavní klíč TDE ve službě Azure Key Vault a zadat Azure Key Vault identifikátoru klíče pro správce databáze, který se má použít pro šifrování v klidovém umístění na serveru. Key Vault je navržený tak, že Microsoft nevidí ani neextrahuje žádné šifrovací klíče. Získáte také centralizovanou správu klíčů pro vaši organizaci.
 
-#### <a name="always-encrypted"></a>Always Encrypted
+#### <a name="always-encrypted"></a>Funkce Always Encrypted
 
 V Always Encrypted existuje také [dvě klíčová hierarchie](/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted) – sloupec citlivých dat je zašifrovaný šifrovacím klíčem AES 256-Column (cek), který je zase zašifrovaný pomocí hlavního klíče sloupce (CMK). Ovladače klienta, které jsou k dispozici pro Always Encrypted, nemají žádná omezení délky CMKs. Šifrovaná hodnota CEK je uložena v databázi a CMK je uložena v úložišti důvěryhodných klíčů, jako je například úložiště certifikátů systému Windows, Azure Key Vault nebo modul hardwarového zabezpečení.
 
@@ -260,7 +260,7 @@ Tuto analýzu můžete zobrazit také v části poradce.
 
 V SQL Database můžete využít inteligentní přehledy platformy, abyste mohli monitorovat výkon a odpovídajícím způsobem ho optimalizovat. Využití výkonu a prostředků v SQL Database můžete monitorovat pomocí následujících metod:
 
-#### <a name="azure-portal"></a>Portál Azure
+#### <a name="azure-portal"></a>portál Azure
 
 Azure Portal zobrazuje využití databáze tak, že se vybere databáze a klikne na graf v podokně Přehled. Graf můžete upravit tak, aby zobrazoval více metrik, včetně procenta využití procesoru, procenta DTU, procentuální hodnoty v/v, procentu relací a procenta velikosti databáze.
 
@@ -274,11 +274,11 @@ Z tohoto grafu můžete také nakonfigurovat výstrahy podle prostředku. Tyto v
 
 Můžete zadat dotaz na zobrazení dynamické správy [Sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) , které vrátí historii statistik spotřeby prostředků za poslední hodinu a zobrazení katalogu System Catalog [Sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) , které vrátí historii za posledních 14 dní.
 
-#### <a name="query-performance-insight"></a>Přehled o výkonu dotazů
+#### <a name="query-performance-insight"></a>Query Performance Insight
 
 [Query Performance Insight](sql-database-query-performance.md) vám umožní zobrazit historii nejdůležitějších dotazů využívajících prostředky a dlouhotrvajících dotazů pro konkrétní databázi. Můžete rychle identifikovat hlavní dotazy podle využití prostředků, doby trvání a četnosti provádění. Můžete sledovat dotazy a detekovat regresi. Tato funkce vyžaduje, aby [úložiště dotazů](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) bylo povolené a aktivní pro databázi.
 
-![Přehled o výkonu dotazů](./media/sql-database-manage-after-migration/query-performance-insight.png)
+![Query Performance Insight](./media/sql-database-manage-after-migration/query-performance-insight.png)
 
 #### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure SQL Analytics (Preview) v protokolech Azure Monitor
 

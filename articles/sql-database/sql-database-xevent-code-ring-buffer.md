@@ -1,5 +1,5 @@
 ---
-title: Kód vyrovnávací paměti XEvent Ring pro SQL Database | Microsoft Docs
+title: Kód vyrovnávací paměti XEvent Ring pro SQL Database
 description: Poskytuje ukázku kódu Transact-SQL, který je v Azure SQL Database snadný a rychlý při použití cíle kruhové vyrovnávací paměti.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: f1ec9cd3a4256597ade409fb3e04d44171277554
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8fd04cac394f05a9db18e84117a8647c1a17ba30
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566152"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686809"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Cílový kód cyklické vyrovnávací paměti pro rozšířené události v SQL Database
 
@@ -56,8 +56,8 @@ Toto téma představuje ukázku kódu Transact-SQL, který:
 
 S velmi drobnými úpravami se dá spustit následující ukázka kódu Ring bufferu buď Azure SQL Database, nebo Microsoft SQL Server. Rozdíl je přítomnost uzlu ' _database ' v názvu některých zobrazení dynamické správy (zobrazení dynamické správy), který je použit v klauzuli FROM v kroku 5. Příklad:
 
-* sys.dm_xe<strong>_database</strong>_session_targets
-* sys.dm_xe_session_targets
+* sys. DM _xe<strong>_database</strong>_session_targets
+* sys. DM _xe_session_targets
 
 &nbsp;
 
@@ -222,7 +222,7 @@ Pokud chcete zobrazit výsledky, klikneme na buňku pod záhlavím sloupce **tar
 
 Potom v podokně výsledků jsme klikli na buňku pod záhlavím sloupce **target_data_XML**. Tím kliknete na tlačítko vytvořit další kartu soubor v SSMS. exe, ve kterém se obsah buňky výsledku zobrazil jako XML.
 
-Výstup je zobrazen v následujícím bloku. Vypadá to dlouhou dobu, ale je to pouze dva  **\<prvky > události** .
+Výstup je zobrazen v následujícím bloku. Vypadá to dlouhou dobu, ale je to pouze dva prvky **\<události >** .
 
 &nbsp;
 
@@ -347,7 +347,7 @@ Primárním tématem pro rozšířené události v Azure SQL Database je:
 
 Další témata s ukázkami kódu pro rozšířené události jsou k dispozici na následujících odkazech. Je však nutné rutinu, která je v ukázce, kontrolovat, zda Microsoft SQL Server a Azure SQL Database. Pak se můžete rozhodnout, zda ke spuštění ukázky potřebujete drobné změny.
 
-* Ukázka kódu pro Azure SQL Database: [Cílový kód souboru události pro rozšířené události v SQL Database](sql-database-xevent-code-event-file.md)
+* Ukázka kódu pro Azure SQL Database: [kód cílového souboru události pro rozšířené události v SQL Database](sql-database-xevent-code-event-file.md)
 
 <!--
 ('lock_acquired' event.)

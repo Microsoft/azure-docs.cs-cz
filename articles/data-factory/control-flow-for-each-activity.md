@@ -1,5 +1,5 @@
 ---
-title: Aktivita ForEach v Azure Data Factory | Microsoft Docs
+title: Aktivita ForEach v Azure Data Factory
 description: U každé aktivity definuje tok řízení opakování ve vašem kanálu. Používá se pro iteraci v kolekci a provádění zadaných aktivit.
 services: data-factory
 documentationcenter: ''
@@ -11,18 +11,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: 319f4e722184ce840d43b8f23e61711851a6d4a0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: b8f95f22553a3b4639b1aba6576ce844116ae20b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142468"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679882"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Aktivita ForEach v Azure Data Factory
 Aktivita ForEach definuje tok řízení opakování ve vašem kanálu. Tato aktivita se používá k opakování v kolekci a spouští zadané aktivity ve smyčce. Implementace smyčky této aktivity se podobá struktuře smyčky Foreach v programovacích jazycích.
 
 ## <a name="syntax"></a>Syntaxe
-Vlastnosti jsou popsány dále v tomto článku. Vlastnost Items je kolekce a každá položka v kolekci je odkazována pomocí příkazu `@item()` , jak je znázorněno v následující syntaxi:  
+Vlastnosti jsou popsány dále v tomto článku. Vlastnost Items je kolekce a každá položka v kolekci je odkazována pomocí `@item()`, jak je znázorněno v následující syntaxi:  
 
 ```json
 {  
@@ -68,23 +68,23 @@ Vlastnosti jsou popsány dále v tomto článku. Vlastnost Items je kolekce a ka
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požadováno
+Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-name | Název aktivity for-each. | Řetězec | Ano
+jméno | Název aktivity for-each. | Řetězec | Ano
 type | Musí být nastaven na **foreach** | Řetězec | Ano
--Sekvenční | Určuje, zda má být smyčka provedena sekvenčně nebo paralelně.  Maximálně 20 iterací smyčky je možné spustit najednou paralelně. Například pokud máte aktivitu ForEach na iteraci s aktivitou kopírování s 10 různými datovými sadami zdroje a jímky s možností -sekvenčním nastavením na hodnotu false, všechny kopie se spustí najednou. Výchozí hodnota je false. <br/><br/> Pokud je "" "-sekvenční" nastaveno na hodnotu false, ujistěte se, že existuje správná konfigurace pro spouštění více spustitelných souborů. V opačném případě by tato vlastnost měla být použita s opatrností, aby nedocházelo ke konfliktům při zápisu. Další informace najdete v části [paralelní spuštění](#parallel-execution) . | Logická hodnota | Ne. Výchozí hodnota je false.
+-Sekvenční | Určuje, zda má být smyčka provedena sekvenčně nebo paralelně.  Maximálně 20 iterací smyčky je možné spustit najednou paralelně. Například pokud máte aktivitu ForEach na iteraci s aktivitou kopírování s 10 různými datovými sadami zdroje a jímky s možností- **sekvenčním** nastavením na hodnotu false, všechny kopie se spustí najednou. Výchozí hodnota je false. <br/><br/> Pokud je "" "-sekvenční" nastaveno na hodnotu false, ujistěte se, že existuje správná konfigurace pro spouštění více spustitelných souborů. V opačném případě by tato vlastnost měla být použita s opatrností, aby nedocházelo ke konfliktům při zápisu. Další informace najdete v části [paralelní spuštění](#parallel-execution) . | Logická hodnota | Ne. Výchozí hodnota je false.
 batchCount | Počet dávek, který se má použít k řízení počtu paralelního spuštění (Pokud je vlastnost-sekvenční nastavená na hodnotu false). | Celé číslo (maximum 50) | Ne. Výchozí hodnota je 20.
-Položky | Výraz, který vrací pole JSON, které se má iterovat. | Výraz (který vrací pole JSON) | Ano
+Items | Výraz, který vrací pole JSON, které se má iterovat. | Výraz (který vrací pole JSON) | Ano
 Aktivity | Aktivity, které mají být provedeny. | Seznam aktivit | Ano
 
 ## <a name="parallel-execution"></a>Paralelní provádění
 Pokud je vlastnost- **sekvenční** nastavená na hodnotu false, aktivita se prochází paralelně s maximálně 20 souběžnými iteracemi. Toto nastavení by se mělo používat opatrně. Pokud souběžné iterace zapisují do stejné složky, ale do různých souborů, je tento přístup v pořádku. Pokud souběžné iterace zapisuje současně do stejného souboru, tento přístup pravděpodobně způsobí chybu. 
 
 ## <a name="iteration-expression-language"></a>Jazyk výrazu iterace
-V aktivitě ForEach zadejte pole, které se má iterovat pro **položky**vlastností. Použijte `@item()` k iterování v rámci jednoho výčtu v aktivitě foreach. Například pokud je **položka** pole: [1, 2, 3], `@item()` vrátí 1 v první iteraci, 2 v druhé iteraci a 3 ve třetí iteraci.
+V aktivitě ForEach zadejte pole, které se má iterovat pro **položky**vlastností. Použijte `@item()` k iterování v rámci jednoho výčtu v aktivitě ForEach. Například pokud je **položka** pole: [1, 2, 3], `@item()` vrátí 1 v první iteraci, 2 v druhé iteraci a 3 ve třetí iteraci.
 
 ## <a name="iterating-over-a-single-activity"></a>Iterace v rámci jedné aktivity
-**Případě** Kopírování ze stejného zdrojového souboru v objektu blob Azure do více cílových souborů v objektu blob Azure.
+**Scénář:** Kopírování ze stejného zdrojového souboru v objektu blob Azure do více cílových souborů v objektu blob Azure.
 
 ### <a name="pipeline-definition"></a>Definice kanálu
 
@@ -236,7 +236,7 @@ Je možné iterovat více aktivit (například aktivity kopírování a webu) v 
 ```
 
 ### <a name="example"></a>Příklad
-**Případě** Iterujte přes InnerPipeline v rámci aktivity ForEach s aktivitou spustit kanál. Kopie vnitřního kanálu se parametrizovanými definicemi schématu.
+**Scénář:** Iterujte přes InnerPipeline v rámci aktivity ForEach s aktivitou spustit kanál. Kopie vnitřního kanálu se parametrizovanými definicemi schématu.
 
 #### <a name="master-pipeline-definition"></a>Definice hlavního kanálu
 
@@ -475,7 +475,7 @@ Je možné iterovat více aktivit (například aktivity kopírování a webu) v 
 
 Chcete-li agregovat výstupy aktivity __foreach__ , použijte _proměnné_ a aktivitu _připojit proměnnou_ .
 
-Nejdřív deklarujte `array` _proměnnou_ v kanálu. Pak v každé smyčce __foreach__ zavolejte aktivitu _připojit proměnnou_ . Následně můžete z pole načíst agregaci.
+Nejprve deklarujte `array` _proměnnou_ v kanálu. Pak v každé smyčce __foreach__ zavolejte aktivitu _připojit proměnnou_ . Následně můžete z pole načíst agregaci.
 
 ## <a name="limitations-and-workarounds"></a>Omezení a alternativní řešení
 
@@ -484,10 +484,10 @@ Tady jsou některá omezení aktivity ForEach a navrhovaná řešení.
 | Omezení | Alternativní řešení |
 |---|---|
 | Nelze vnořit smyčku ForEach do jiné smyčky ForEach (nebo do smyčky do). | Navrhněte kanál se dvěma úrovněmi, kde vnější kanál s vnější smyčkou ForEach prochází přes vnitřní kanál s vnořenou smyčkou. |
-| Aktivita foreach má maximálně `batchCount` 50 pro paralelní zpracování a maximálně 100 000 položek. | Navrhněte kanál se dvěma úrovněmi, kde vnější kanál s aktivitou ForEach prochází přes vnitřní kanál. |
+| Aktivita ForEach má maximální `batchCount` 50 pro paralelní zpracování a maximálně 100 000 položek. | Navrhněte kanál se dvěma úrovněmi, kde vnější kanál s aktivitou ForEach prochází přes vnitřní kanál. |
 | | |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Podívejte se na další aktivity toku řízení podporované Data Factory: 
 
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)

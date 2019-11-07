@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vytvoření klasifikátoru úloh – T-SQL | Microsoft Docs'
+title: 'Rychlý Start: vytvoření klasifikátoru úloh – T-SQL '
 description: Použijte T-SQL k vytvoření klasifikátoru úloh s vysokou důležitostí.
 services: sql-data-warehouse
 author: ronortloff
@@ -10,14 +10,14 @@ ms.subservice: workload-management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: ea2e0a3bb55d16c0b413b114fca9da7f95f5c053
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 1375605b6dab385b53af9212023767003e686e60
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574860"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646294"
 ---
-# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Rychlý start: Vytvoření klasifikátoru úloh pomocí T-SQL
+# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Rychlý Start: vytvoření klasifikátoru úloh pomocí T-SQL
 
 V tomto rychlém startu budete rychle vytvářet třídění úloh s vysokou důležitostí pro generálního ředitele vaší organizace. Tento klasifikátor pracovního vytížení umožní, aby dotazy generální ŘEDITELe měly přednost před jinými dotazy s nižší důležitostí ve frontě.
 
@@ -34,11 +34,11 @@ V tomto rychlém startu se předpokládá, že již máte SQL Data Warehouse a �
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlásit se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-login-for-theceo"></a>Vytvoření přihlašovacích údajů pro TheCEO
 
-Vytvořte přihlašovací jméno SQL Server ověřování v `master` databázi pomocí příkazu [Create Login](/sql/t-sql/statements/create-login-transact-sql) for ' TheCEO '.
+Vytvořte přihlašovací jméno SQL Server ověřování v databázi `master` pomocí příkazu [Create Login](/sql/t-sql/statements/create-login-transact-sql) for ' TheCEO '.
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'TheCEO')
@@ -105,7 +105,7 @@ Pomocí těchto kroků vyčistěte prostředky.
 
 5. Pokud chcete odebrat skupinu prostředků, vyberte **myResourceGroup**a pak vyberte **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Nyní jste vytvořili klasifikátor úloh. Spusťte několik dotazů jako TheCEO, abyste viděli, jak fungují. V tématu [Sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) můžete zobrazit dotazy a přiřazené důležitost.
 - Další informace o správě úloh Azure SQL Data Warehouse najdete v tématu [důležitost úloh](sql-data-warehouse-workload-importance.md) a [klasifikace úloh](sql-data-warehouse-workload-classification.md).

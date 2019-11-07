@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Vytvoření aplikace překladu pomocí WPF, C# -Translator text API'
+title: 'Kurz: Vytvoření aplikace pro překlad pomocí WPF, C# -Translator text API'
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu vytvoříte aplikaci Windows Presentation Foundation (WPF), která používá rozhraní API pro rozpoznávání textu, rozpoznávání jazyka a kontrolu pravopisu s použitím jednoho klíče předplatného. Toto cvičení vám ukáže, jak používat funkce z Translator Text API a rozhraní API Bingu pro kontrolu pravopisu.
+description: V tomto kurzu vytvoříte aplikaci WPF, která provede překlad textu, rozpoznávání jazyka a kontrolu pravopisu s použitím jediného klíče předplatného.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 286b75166e6216513afc46e5779b8a2f969aeaf6
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 6f8196c276b4f8ef5c8a49f6f83f59f9f505a6be
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858909"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647706"
 ---
-# <a name="tutorial-create-a-translation-app-with-wpf"></a>Kurz: Vytvoření aplikace překladu pomocí WPF
+# <a name="tutorial-create-a-translation-app-with-wpf"></a>Kurz: Vytvoření aplikace pro překlad pomocí WPF
 
 V tomto kurzu sestavíte aplikaci [Windows Presentation Foundation (WPF)](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2019) , která používá Azure Cognitive Services pro překlad textu, rozpoznávání jazyka a kontrolu pravopisu s použitím jediného klíče předplatného. Konkrétně vaše aplikace bude volat rozhraní API z Translator Text a [Kontrola pravopisu Bingu](https://azure.microsoft.com/services/cognitive-services/spell-check/).
 
@@ -59,14 +59,14 @@ Než budeme pokračovat, budete potřebovat následující:
 
 První věc, kterou je potřeba udělat, je nastavit náš projekt v sadě Visual Studio.
 
-1. Otevřít Visual Studio. Vyberte **vytvořit nový projekt**.
+1. Otevřete sadu Visual Studio. Vyberte **vytvořit nový projekt**.
 1. V nástroji **vytvořit nový projekt**vyhledejte a vyberte **aplikace WPF (.NET Framework)** . Můžete vybrat možnost C# z **jazyka** pro zúžení možností.
 1. Vyberte **Další**a potom název projektu `MSTranslatorTextDemo`.
 1. Nastavte verzi Frameworku na **.NET Framework 4.7.2** nebo novější a vyberte **vytvořit**.
-   ![Zadejte název a verzi rozhraní v aplikaci Visual Studio.](media/name-wpf-project-visual-studio.png)
+   ![zadejte název a verzi rozhraní v aplikaci Visual Studio](media/name-wpf-project-visual-studio.png)
 
-Projekt byl vytvořen. Všimněte si, že jsou otevřené dvě karty: `MainWindow.xaml` a. `MainWindow.xaml.cs` V celém tomto kurzu přidáme kód do těchto dvou souborů. Pro uživatelské rozhraní `MainWindow.xaml` aplikace se upraví. Pro naše volání `MainWindow.xaml.cs` Translator text a kontrola pravopisu Bingu Upravme.
-   ![Kontrola prostředí](media/blank-wpf-project.png)
+Projekt byl vytvořen. Všimněte si, že jsou otevřené dvě karty: `MainWindow.xaml` a `MainWindow.xaml.cs`. V celém tomto kurzu přidáme kód do těchto dvou souborů. `MainWindow.xaml` pro uživatelské rozhraní aplikace Upravme. `MainWindow.xaml.cs` pro naše volání Translator Text a Kontrola pravopisu Bingu Upravme.
+   ![Zkontrolujte své prostředí](media/blank-wpf-project.png)
 
 V další části budeme do našeho projektu přidávat sestavení a balíček NuGet pro další funkce, jako je například analýza JSON.
 
@@ -80,16 +80,16 @@ Pojďme do našeho projektu přidat sestavení k serializaci a deserializaci obj
 
 1. Vyhledejte svůj projekt v Průzkumník řešení sady Visual Studio. Klikněte pravým tlačítkem na projekt a pak vyberte **přidat > odkaz**, který otevře **Správce odkazů**.
 1. Na kartě **sestavení** jsou uvedena všechna .NET Framework sestavení, která jsou k dispozici pro referenci. K vyhledání odkazů použijte panel hledání v pravém horním rohu.
-   ![Přidat odkazy na sestavení](media/add-assemblies-2019.png)
+   ![přidat odkazy na sestavení](media/add-assemblies-2019.png)
 1. Vyberte následující odkazy pro váš projekt:
    * [System. Runtime. Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
-   * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
+   * [System. Web](https://docs.microsoft.com/dotnet/api/system.web)
    * System.Web.Extensions
    * [System.Windows](https://docs.microsoft.com/dotnet/api/system.windows)
 1. Po přidání těchto odkazů do projektu můžete kliknutím na tlačítko **OK** zavřít **Správce odkazů**.
 
 > [!NOTE]
-> Pokud se chcete dozvědět více o odkazech na sestavení, přečtěte si téma [How to: Přidejte nebo odeberte odkaz pomocí správce](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019)odkazů.
+> Pokud se chcete dozvědět více o odkazech na sestavení, přečtěte si téma [Postup: Přidání nebo odebrání odkazu pomocí Správce odkazů](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019).
 
 ### <a name="install-newtonsoftjson"></a>Nainstalovat NewtonSoft. JSON
 
@@ -114,7 +114,7 @@ Pojďme se podívat na to, co vytváříme.
 
 Uživatelské rozhraní zahrnuje tyto komponenty:
 
-| Name | Typ | Popis |
+| Name (Název) | Typ | Popis |
 |------|------|-------------|
 | `FromLanguageComboBox` | Polích | Zobrazí seznam jazyků, které Microsoft Translator podporuje pro překlad textu. Uživatel vybere jazyk, ze kterého překládá. |
 | `ToLanguageComboBox` | Polích | Zobrazí stejný seznam jazyků jako `FromComboBox`, ale používá se k výběru jazyka, do kterého se uživatel překládá. |
@@ -173,18 +173,18 @@ To je, váš formulář je připravený. Nyní napíšeme kód pro použití př
 
 ## <a name="create-your-app"></a>Vytvoření aplikace
 
-`MainWindow.xaml.cs`obsahuje kód, který řídí naši aplikaci. V následujících částech se přidá kód pro naplnění našich rozevíracích nabídek a volání několik rozhraní API vystaveného Translator Text a Kontrola pravopisu Bingu.
+`MainWindow.xaml.cs` obsahuje kód, který řídí naši aplikaci. V následujících částech se přidá kód pro naplnění našich rozevíracích nabídek a volání několik rozhraní API vystaveného Translator Text a Kontrola pravopisu Bingu.
 
-* Při spuštění a `MainWindow` vytvoření instance `Languages` programu je volána metoda Translator text API pro načtení a naplnění rozevíracích seznamu pro výběr jazyka. K tomu dojde jednou na začátku každé relace.
+* Když se program spustí a `MainWindow` se vytvoří instance, zavolá se metoda `Languages` Translator Text API, která načte a naplní naše rozevírací seznam pro výběr jazyka. K tomu dojde jednou na začátku každé relace.
 * Po kliknutí na tlačítko **přeložit** se načtou výběr jazyka a text, kontrola pravopisu se u vstupu provede a pro uživatele se zobrazí překlad a zjištěný jazyk.
-  * Metoda Translator text API je volána k překladu `TextToTranslate`textu. `Translate` Toto volání zahrnuje `to` také jazyky a `from` vybrané pomocí rozevíracích nabídek.
-  * Metoda Translator text API je volána k určení `TextToTranslate`jazyka textu. `Detect`
-  * Kontrola pravopisu Bingu slouží k ověřování `TextToTranslate` a úpravám chybných pravopisů.
+  * Metoda `Translate` Translator Text API je volána k převodu textu z `TextToTranslate`. Toto volání zahrnuje také jazyky `to` a `from` vybraných pomocí rozevíracích nabídek.
+  * Metoda `Detect` Translator Text API je volána k určení jazyka textu `TextToTranslate`.
+  * Kontrola pravopisu Bingu slouží k ověřování `TextToTranslate` a úpravě chybných pravopisů.
 
-Všechny projekty jsou zapouzdřeny ve `MainWindow : Window` třídě. Pojďme začít přidáním kódu pro nastavení klíče předplatného, deklarovat koncové body pro Translator Text a Kontrola pravopisu Bingu a inicializovat aplikaci.
+Všechny projekty jsou zapouzdřeny ve třídě `MainWindow : Window`. Pojďme začít přidáním kódu pro nastavení klíče předplatného, deklarovat koncové body pro Translator Text a Kontrola pravopisu Bingu a inicializovat aplikaci.
 
 1. V aplikaci Visual Studio vyberte kartu pro `MainWindow.xaml.cs`.
-1. Předem vyplněné `using` příkazy nahraďte následujícím.  
+1. Předem vyplněné příkazy `using` nahraďte následujícím.  
    ```csharp
    using System;
    using System.Windows;
@@ -196,7 +196,7 @@ Všechny projekty jsou zapouzdřeny ve `MainWindow : Window` třídě. Pojďme z
    using System.Text;
    using Newtonsoft.Json;
    ```
-1. `MainWindow : Window` Vyhledejte třídu a nahraďte ji tímto kódem:
+1. Vyhledejte třídu `MainWindow : Window` a nahraďte ji tímto kódem:
    ```csharp
    {
        // This sample uses the Cognitive Services subscription key for all services. To learn more about
@@ -250,14 +250,14 @@ Všechny projekty jsou zapouzdřeny ve `MainWindow : Window` třídě. Pojďme z
 
 V tomto bloku kódu jsme deklarovali dvě členské proměnné, které obsahují informace o dostupných jazycích pro překlad:
 
-| Proměnná | type | Popis |
+| Proměnná | Typ | Popis |
 |----------|------|-------------|
-|`languageCodes` | pole řetězců |Uchovává kódy jazyků. Služba Translator používá k identifikaci jazyků krátké kódy, například `en` pro angličtinu. |
+|`languageCodes` | Pole řetězců |Uchovává kódy jazyků. Služba Translator používá k identifikaci jazyků krátké kódy, například `en` pro angličtinu. |
 |`languageCodesAndTitles` | Seřazený slovník | Mapuje popisné názvy z uživatelského rozhraní na krátké kódy používané v rozhraní API. Používá abecední řazení, velká a malá písmena se nerozlišují. |
 
-V rámci tohoto `MainWindow` konstruktoru jsme přidali zpracování chyb s `HandleExceptions`. Při zpracování této chyby je zajištěno, že je k dispozici výstraha, pokud není zpracována výjimka. Pak se spustí Kontrola, aby se ověřilo, že zadaný klíč předplatného má délku 32 znaků. Pokud je klíč menší než 32 znaků, je vyvolána chyba.
+V rámci konstruktoru `MainWindow` jsme přidali zpracování chyb s `HandleExceptions`. Při zpracování této chyby je zajištěno, že je k dispozici výstraha, pokud není zpracována výjimka. Pak se spustí Kontrola, aby se ověřilo, že zadaný klíč předplatného má délku 32 znaků. Pokud je klíč menší než 32 znaků, je vyvolána chyba.
 
-Pokud existují klíče, které mají alespoň správnou délku, `InitializeComponent()` volání získá uživatelské rozhraní tak, že vyhledá, načte a vytvoří instanci popisu XAML hlavního okna aplikace.
+Pokud existují klíče, které mají alespoň správnou délku, volání `InitializeComponent()` Získá uživatelské rozhraní tak, že vyhledá, načte a vytvoří instanci popisu XAML v hlavním okně aplikace.
 
 Nakonec jsme přidali kód pro volání metod pro načtení jazyků pro překlad a naplnění rozevíracích nabídek pro uživatelské rozhraní naší aplikace. Nedělejte si starosti, až brzy obdržíme kód za těmito hovory.
 
@@ -289,7 +289,7 @@ Než budeme pokračovat, Pojďme se podívat na ukázkový výstup pro volání 
 }
 ```
 
-Z tohoto výstupu můžete extrahovat kód jazyka a `name` konkrétní jazyk. Naše aplikace používá NewtonSoft. JSON k deserializaci objektu JSON ([`JsonConvert.DeserializeObject`](https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConvert_DeserializeObject__1.htm)).
+Z tohoto výstupu můžete extrahovat kód jazyka a `name` konkrétního jazyka. Naše aplikace používá NewtonSoft. JSON k deserializaci objektu JSON ([`JsonConvert.DeserializeObject`](https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConvert_DeserializeObject__1.htm)).
 
 Vyzvednutím místa, kde jsme v poslední části opustili, můžeme přidat metodu, která pro naši aplikaci získá podporované jazyky.
 
@@ -322,16 +322,16 @@ Vyzvednutím místa, kde jsme v poslední části opustili, můžeme přidat met
    // In the following sections, we'll add code below this.
    ```
 
-Metoda vytvoří požadavek HTTP GET a `scope=translation` použije parametr řetězce dotazu k omezení rozsahu požadavku na podporované jazyky pro překlad. `GetLanguagesForTranslate()` Přidá se hlavička `Accept-Language` s hodnotou `en`, aby se podporované jazyky vrátily v angličtině.
+Metoda `GetLanguagesForTranslate()` vytvoří požadavek HTTP GET a k omezení rozsahu požadavku na podporované jazyky pro překlad používá parametr řetězce dotazu `scope=translation`. Přidá se hlavička `Accept-Language` s hodnotou `en`, aby se podporované jazyky vrátily v angličtině.
 
-Odpověď JSON se analyzuje a převede do slovníku. Pak jsou kódy jazyků přidány do `languageCodes` členské proměnné. Páry klíč-hodnota, které obsahují kódy jazyků a popisné názvy jazyků, se zkompletují a přidají do členské proměnné `languageCodesAndTitles`. Rozevírací nabídky ve formuláři zobrazují popisné názvy, ale kódy jsou potřeba k vyžádání překladu.
+Odpověď JSON se analyzuje a převede do slovníku. Pak jsou kódy jazyků přidány do členské proměnné `languageCodes`. Páry klíč-hodnota, které obsahují kódy jazyků a popisné názvy jazyků, se zkompletují a přidají do členské proměnné `languageCodesAndTitles`. Rozevírací nabídky ve formuláři zobrazují popisné názvy, ale kódy jsou potřeba k vyžádání překladu.
 
 ## <a name="populate-language-drop-down-menus"></a>Naplnit rozevírací nabídky jazyk
 
-Uživatelské rozhraní je definováno pomocí jazyka XAML, takže nemusíte nic dělat, abyste ho nastavili více `InitializeComponent()`než volání. Jedna z věcí, kterou je potřeba udělat, je přidání popisných názvů jazyků do rozevíracích nabídek **přeložit z** a **převést na** rozevírací nabídky. `PopulateLanguageMenus()` Metoda přidá názvy.
+Uživatelské rozhraní je definováno pomocí jazyka XAML, takže nemusíte nic dělat, abyste ho nastavili více než volání `InitializeComponent()`. Jedna z věcí, kterou je potřeba udělat, je přidání popisných názvů jazyků do rozevíracích nabídek **přeložit z** a **převést na** rozevírací nabídky. Metoda `PopulateLanguageMenus()` přidá názvy.
 
 1. V aplikaci Visual Studio otevřete kartu pro `MainWindow.xaml.cs`.
-2. Přidejte tento kód do projektu pod `GetLanguagesForTranslate()` metodu:
+2. Přidejte tento kód do projektu pod `GetLanguagesForTranslate()` metodou:
    ```csharp
    private void PopulateLanguageMenus()
    {
@@ -353,19 +353,19 @@ Uživatelské rozhraní je definováno pomocí jazyka XAML, takže nemusíte nic
    // In the following sections, we'll add code below this.
    ```
 
-Tato metoda provede iteraci ve `languageCodesAndTitles` slovníku a přidá každý klíč do obou nabídek. Po naplnění nabídek jsou výchozí hodnoty z a do jazyků nastavené na **detekovat** a v **angličtině** .
+Tato metoda projde ve slovníku `languageCodesAndTitles` a přidá každý klíč do obou nabídek. Po naplnění nabídek jsou výchozí hodnoty z a do jazyků nastavené na **detekovat** a v **angličtině** .
 
 > [!TIP]
 > Pokud by se nevybraly výchozí hodnoty pro nabídky, mohlo by se stát, že uživatel klikne na **Translate** (Přeložit), aniž by napřed zvolil zdrojový a cílový jazyk. Výchozí hodnoty eliminují nutnost zabývat se tímto problémem.
 
-Nyní, `MainWindow` které bylo inicializováno a uživatelské rozhraní vytvořeno, nebude tento kód spuštěn, dokud není kliknuto na tlačítko **přeložit** .
+Nyní po inicializaci `MainWindow` a vytvoření uživatelského rozhraní nebude tento kód spuštěn, dokud není kliknuto na tlačítko **přeložit** .
 
 ## <a name="detect-language-of-source-text"></a>Zjistit jazyk zdrojového textu
 
 Nyní vytvoříme metodu pro detekci jazyka zdrojového textu (text zadaný do naší textové oblasti) pomocí Translator Text API. Hodnota vrácená tímto požadavkem bude později použita v naší žádosti o překlad.
 
 1. V aplikaci Visual Studio otevřete kartu pro `MainWindow.xaml.cs`.
-2. Přidejte tento kód do projektu pod `PopulateLanguageMenus()` metodu:
+2. Přidejte tento kód do projektu pod `PopulateLanguageMenus()` metodou:
    ```csharp
    // ***** DETECT LANGUAGE OF TEXT TO BE TRANSLATED
    private string DetectLanguage(string text)
@@ -412,7 +412,7 @@ Nyní vytvoříme metodu pro detekci jazyka zdrojového textu (text zadaný do n
    // In the following sections, we'll add code below this.
    ```
 
-Tato metoda vytvoří požadavek HTTP `POST` na prostředek detekce. Přebírá jeden argument, `text`který je předán společně jako tělo žádosti. Později po vytvoření naší žádosti o překlad bude text zadaný do našeho uživatelského rozhraní předán této metodě pro detekci jazyka.
+Tato metoda vytvoří požadavek HTTP `POST` do prostředku detekce. Přebírá jeden argument, `text`, který se předává společně jako tělo žádosti. Později po vytvoření naší žádosti o překlad bude text zadaný do našeho uživatelského rozhraní předán této metodě pro detekci jazyka.
 
 Tato metoda navíc vyhodnocuje skóre spolehlivosti odpovědi. Pokud je skóre větší než `0.5`, zobrazí se zjištěný jazyk v našem uživatelském rozhraní.
 
@@ -421,7 +421,7 @@ Tato metoda navíc vyhodnocuje skóre spolehlivosti odpovědi. Pokud je skóre v
 Nyní vytvoříme metodu pro kontrolu pravopisu našeho zdrojového textu pomocí rozhraní API Bingu pro kontrolu pravopisu. Kontrola pravopisu zajišťuje, že budeme vracet přesné překlady z Translator Text API. Jakékoli opravy zdrojového textu jsou při kliknutí na tlačítko **přeložit** předány společně v rámci naší žádosti o překlad.
 
 1. V aplikaci Visual Studio otevřete kartu pro `MainWindow.xaml.cs`.
-2. Přidejte tento kód do projektu pod `DetectLanguage()` metodu:
+2. Přidejte tento kód do projektu pod `DetectLanguage()` metodou:
 
 ```csharp
 // ***** CORRECT SPELLING OF TEXT TO BE TRANSLATED
@@ -485,7 +485,7 @@ private string CorrectSpelling(string text)
 Poslední věc, kterou je potřeba udělat, je vytvořit metodu, která se vyvolá při kliknutí na tlačítko **přeložit** v našem uživatelském rozhraní.
 
 1. V aplikaci Visual Studio otevřete kartu pro `MainWindow.xaml.cs`.
-1. Přidejte tento kód do projektu pod `CorrectSpelling()` metodou a uložte:  
+1. Přidejte tento kód do projektu pod metodu `CorrectSpelling()` a uložte:  
    ```csharp
    // ***** PERFORM TRANSLATION ON BUTTON CLICK
    private async void TranslateButton_Click(object sender, EventArgs e)
@@ -559,13 +559,13 @@ Poslední věc, kterou je potřeba udělat, je vytvořit metodu, která se vyvol
    }
    ```
 
-Prvním krokem je získání jazyků "od" a "do" a textu, který uživatel zadal do našeho formuláře. Pokud je zdrojový jazyk nastaven na **rozpoznat**, `DetectLanguage()` je volána k určení jazyka zdrojového textu. Text může být v jazyce, který nepodporuje rozhraní API pro překladatele. V takovém případě se zobrazí zpráva s informací o uživateli a vrátí se bez překladu textu.
+Prvním krokem je získání jazyků "od" a "do" a textu, který uživatel zadal do našeho formuláře. Pokud je zdrojový jazyk nastaven na **rozpoznat**, je volána `DetectLanguage()` k určení jazyka zdrojového textu. Text může být v jazyce, který nepodporuje rozhraní API pro překladatele. V takovém případě se zobrazí zpráva s informací o uživateli a vrátí se bez překladu textu.
 
 Pokud je zdrojovým jazykem angličtina (nezáleží na tom, jestli zadaná nebo rozpoznaná), zkontrolujte pravopis textu pomocí metody `CorrectSpelling()` a proveďte případné opravy. Opravený text se přidá zpátky do textové oblasti tak, že uživatel uvidí, že byla provedena oprava.
 
 Kód pro překlad textu by měl vypadat dobře: Sestavte identifikátor URI, vytvořte žádost, odešlete ji a analyzujte odpověď. Pole JSON může obsahovat více než jeden objekt pro překlad, ale naše aplikace ale vyžaduje jenom jednu.
 
-Po úspěšné žádosti `TranslatedTextLabel.Content` je nahrazena `translation`, která aktualizuje uživatelské rozhraní pro zobrazení přeloženého textu.
+Po úspěšné žádosti se `TranslatedTextLabel.Content` nahradí `translation`, které aktualizuje uživatelské rozhraní pro zobrazení přeloženého textu.
 
 ## <a name="run-your-wpf-app"></a>Spuštění aplikace WPF
 
@@ -577,7 +577,7 @@ Zdrojový kód pro tento projekt je k dispozici na GitHubu.
 
 * [Prozkoumat zdrojový kód](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp-Tutorial)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Referenční informace k rozhraní Microsoft Translator Text API](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: a7d65d975d43a63a38863721273debab46115045
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 9e41ca2e7c6d789b3d18fa98c4845118fa6538ef
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389711"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622556"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Rychlý Start: spuštění prvního dotazu na diagram prostředku pomocí Azure PowerShell
 
@@ -19,7 +19,7 @@ Prvním krokem k použití služby Azure Resource Graph je zkontrolovat, že je 
 
 Na konci tohoto procesu budete mít za sebou přidání modulu k vybrané instalaci Azure PowerShellu a spuštění prvního dotazu na službu Resource Graph.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="add-the-resource-graph-module"></a>Přidat modul k Resource Graph
 
@@ -87,7 +87,7 @@ Když se modul Azure PowerShell přidal do vašeho vybraného prostředí, můž
 Pokud se konečný dotaz spustí několikrát, za předpokladu, že se ve vašem prostředí nic nemění, budou vrácené výsledky konzistentní a podle očekávání – seřazené podle vlastnosti **Name**, ale stále s omezením na prvních pět výsledků.
 
 > [!NOTE]
-> Pokud dotaz nevrátí výsledky z předplatného, ke kterému už máte přístup, a pak si všimněte, že rutina `Search-AzGraph` je standardně předplatná ve výchozím kontextu. Pokud chcete zobrazit seznam ID předplatných, které jsou součástí výchozího kontextu, spusťte tuto `(Get-AzContext).Account.ExtendedProperties.Subscriptions` Pokud chcete hledat ve všech předplatných, ke kterým máte přístup, jedna může nastavit rutinu PSDefaultParameterValues pro `Search-AzGraph` spuštěním `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`.
+> Pokud dotaz nevrátí výsledky z předplatného, ke kterému už máte přístup, a pak si všimněte, že `Search-AzGraph` rutina se standardně předplatná ve výchozím kontextu. Pokud chcete zobrazit seznam ID předplatných, které jsou součástí výchozího kontextu, spusťte tento `(Get-AzContext).Account.ExtendedProperties.Subscriptions`, pokud chcete hledat ve všech předplatných, ke kterým máte přístup, a to tak, že nakonfigurujete rutinu PSDefaultParameterValues for `Search-AzGraph` spuštěním `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
    
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -106,9 +106,10 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 
 ## <a name="next-steps"></a>Další kroky
 
-- Získejte další informace o [dotazovacím jazyce](./concepts/query-language.md)
-- Naučte se [prozkoumat prostředky](./concepts/explore-resources.md)
-- Spusťte svůj první dotaz prostřednictvím [Azure CLI](first-query-azurecli.md)
-- Zobrazit ukázky [Starter dotazy](./samples/starter.md)
-- Zobrazit ukázky [Pokročilé dotazy](./samples/advanced.md)
-- Váš názor na [UserVoice](https://feedback.azure.com/forums/915958-azure-governance)
+- Získejte další informace o [dotazovacím jazyce](./concepts/query-language.md).
+- Přečtěte si další informace o tom, jak [prozkoumat prostředky](./concepts/explore-resources.md).
+- Spusťte první dotaz pomocí [Azure Portal](first-query-portal.md).
+- Spusťte první dotaz pomocí [Azure CLI](first-query-azurecli.md).
+- Podívejte se na ukázky [počátečních dotazů](./samples/starter.md).
+- Podívejte se na ukázky [pokročilých dotazů](./samples/advanced.md).
+- Poskytněte zpětnou vazbu na [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).

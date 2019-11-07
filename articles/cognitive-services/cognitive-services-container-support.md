@@ -8,18 +8,18 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 10/14/2019
+ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 926c2c0bbe4fdd24a6a8271b2e01ababcacf77d5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 958acd042acba2a8c6c38ad1e6bac614db509da8
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499167"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604456"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Podpora kontejnerů v Azure Cognitive Services
 
-Podpora kontejnerů v Azure Cognitive Services umožňuje vývojářům používat stejná bohatá rozhraní API, která jsou k dispozici v Azure, a nabízí flexibilitu v tom, kde nasadit a hostovat služby, které jsou dodávány s [kontejnery Docker](https://www.docker.com/what-container). Podpora kontejnerů je v současnosti k dispozici ve verzi Preview pro podmnožinu Cognitive Services Azure, včetně částí:
+Podpora kontejnerů v Azure Cognitive Services umožňuje vývojářům používat stejná bohatá rozhraní API, která jsou k dispozici v Azure, a nabízí flexibilitu v tom, kde nasadit a hostovat služby, které jsou dodávány s [kontejnery Docker](https://www.docker.com/what-container). Podpora kontejnerů je aktuálně k dispozici pro podmnožinu Azure Cognitive Services, včetně částí:
 
 > [!div class="checklist"]
 > * [Detektor anomálií][ad-containers]
@@ -70,7 +70,7 @@ Kontejnery Azure Cognitive Services poskytují následující sadu kontejnerů D
 
 Kromě toho jsou některé kontejnery podporovány v Cognitive Services klíče prostředků [**nabídky vše v jednom**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) . Můžete vytvořit jeden Cognitive Services prostředek All-in-One a použít stejný fakturační klíč v rámci podporovaných služeb pro následující služby:
 
-* Computer Vision
+* Počítačové zpracování obrazu
 * Tvář
 * LUIS
 * Analýza textu
@@ -90,7 +90,7 @@ Kontejnery Azure Cognitive Services jsou veřejně dostupné prostřednictvím v
 
 [!INCLUDE [Container repositories and images](containers/includes/cognitive-services-container-images.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete používat kontejnery Cognitive Services Azure, musíte splnit následující předpoklady:
 
@@ -132,13 +132,9 @@ Instalace a zkoumání funkcí poskytovaných kontejnery v Azure Cognitive Servi
 [fr-containers]: form-recognizer/form-recognizer-container-howto.md
 [lu-containers]: luis/luis-container-howto.md
 [sp-containers]: speech-service/speech-container-howto.md
-<<<<<<< HEAD
 [sp-containers-stt]: speech-service/speech-container-howto.md?tabs=stt
 [sp-containers-cstt]: speech-service/speech-container-howto.md?tabs=cstt
 [sp-containers-tts]: speech-service/speech-container-howto.md?tabs=tts
 [sp-containers-ctts]: speech-service/speech-container-howto.md?tabs=ctts
 [ta-containers]: text-analytics/how-tos/text-analytics-how-to-install-containers.md
-=======
-[ta-containers]: text-analytics/how-tos/text-analytics-how-to-install-containers.md
 [tt-containers]: translator/how-to-install-containers.md
->>>>>>> ReFS/remotes/MicrosoftDocs/Master

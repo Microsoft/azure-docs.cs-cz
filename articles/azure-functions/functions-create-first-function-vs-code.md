@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 06/25/2019
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 52f682f7c7f06056be122b33d27592a55a01be94
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: fbde3c939a23e4023c0403c27433717a11762b08
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70744078"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622057"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Vytvoření první funkce pomocí Visual Studio Code
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak použít [rozšíření Azure Functions pro Vi
 
 ![Kód služby Azure Functions v projektu sady Visual Studio](./media/functions-create-first-function-vs-code/functions-vscode-intro.png)
 
-Rozšíření aktuálně podporuje C#funkce, JavaScript, Java a Python. Kroky v tomto článku a článku, které následují, podporují pouze JavaScript C# a funkce. Informace o tom, jak používat Visual Studio Code k vytváření a publikování funkcí Pythonu, najdete v tématu [nasazení Pythonu pro Azure Functions](https://code.visualstudio.com/docs/python/tutorial-azure-functions). Další informace o použití Visual Studio Code k vytváření a publikování funkcí PowerShellu najdete v tématu [Vytvoření první funkce PowerShellu v Azure](functions-create-first-function-powershell.md). 
+Rozšíření aktuálně podporuje C#funkce, JavaScript, Java a Python. Kroky v tomto článku a článku, které následují, podporují pouze JavaScript C# a funkce. Informace o tom, jak používat Visual Studio Code k vytváření a publikování funkcí Pythonu, najdete v tématu [Vytvoření a nasazení Azure Functions bez serveru v Pythonu s Visual Studio Code](/azure/python/tutorial-vs-code-serverless-python-01). Další informace o použití Visual Studio Code k vytváření a publikování funkcí PowerShellu najdete v tématu [Vytvoření první funkce PowerShellu v Azure](functions-create-first-function-powershell.md). 
 
 Rozšíření je v současné době ve verzi Preview. Další informace najdete na stránce rozšíření [Rozšíření Azure Functions pro Visual Studio Code].
 
@@ -43,9 +43,9 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
     | Jazyk | Požadavek |
     | -------- | --------- |
     | **C#** | [C#klapk](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)  |
-    | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> | 
+    | **JavaScript** | <sup>*</sup> [Node. js](https://nodejs.org/) | 
  
-    <sup>*</sup>Aktivní LTS a verze LTS údržby (Doporučené 8.11.1 a 10.14.1).
+    <sup>*</sup> Aktivní LTS a verze LTS údržby (Doporučené 8.11.1 a 10.14.1).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -63,7 +63,7 @@ Po ověření správného fungování funkce na místním počítači je na čas
 
 ## <a name="run-the-function-in-azure"></a>Spuštění funkce v Azure
 
-1. Zkopírujte adresu URL triggeru HTTP z panelu **Výstup**. Tato adresa URL zahrnuje klíč funkce, který je předán `code` parametru dotazu. Stejně jako dříve nezapomeňte k této adrese URL připojit řetězec dotazu `?name=<yourname>` a provést požadavek.
+1. Zkopírujte adresu URL triggeru HTTP z panelu **Výstup**. Tato adresa URL zahrnuje klíč funkce, který je předán parametru `code` dotazu. Stejně jako dříve nezapomeňte k této adrese URL připojit řetězec dotazu `?name=<yourname>` a provést požadavek.
 
     Adresa URL, která volá funkci aktivovanou protokolem HTTP, by měla být v následujícím formátu:
 

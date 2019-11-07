@@ -1,35 +1,38 @@
 ---
-title: Přehled uživatelských účtů v Azure Active Directory B2C | Microsoft Docs
-description: Přečtěte si o uživatelských účtech v Azure Active Directory B2C.
+title: Přehled uživatelských účtů v Azure Active Directory B2C
+description: Přečtěte si o typech uživatelských účtů, které se dají použít v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 11/05/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0ef4bca3a2b08271b3623a346df6613b5ad16995
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: a627b0eebc3aa4a19b0670f899d3032d8df58da4
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063139"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620460"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Přehled uživatelských účtů v Azure Active Directory B2C
 
-V Azure Active Directory B2C (Azure AD B2C) můžete použít různé typy účtů. Azure Active Directory, Azure Active Directory B2B a Azure Active Directory B2C sdílení v typech uživatelských účtů, které se dají použít.
+V Azure Active Directory B2C (Azure AD B2C) existuje několik typů účtů, které lze vytvořit. Azure Active Directory, služba Active Directory B2B a Active Directory B2C sdílet v typech uživatelských účtů, které se dají použít.
 
 K dispozici jsou tyto typy účtů:
 
 - **Pracovní účet** – pracovní účet má přístup k prostředkům v tenantovi a s rolí správce může spravovat klienty.
 - **Účet Guest** – účet hosta může být jenom účet Microsoft nebo uživatel Azure Active Directory, který se dá použít pro přístup k aplikacím nebo správě tenantů.
-- Uživatelský **účet** – účet příjemce se vytvoří tak, že prochází tok uživatelů registrace v aplikaci Azure AD B2C nebo pomocí Graph API Azure AD a používá ho uživatelé aplikací registrovaných Azure AD B2C.
+- **Účet příjemce** – účet příjemce se používá uživatelem aplikací, které jste zaregistrovali v Azure AD B2C. Uživatelské účty je možné vytvořit pomocí:
+  - Uživatel prochází uživatelským tokem registrace v aplikaci Azure AD B2C.
+  - Používání Graph API Azure AD
+  - Použití webu Azure Portal
 
 ## <a name="work-account"></a>Pracovní účet
 
-Pracovní účet se vytvoří stejným způsobem pro všechny klienty založené na Azure AD. K vytvoření pracovního účtu můžete použít informace v [rychlém startu: Přidejte nové uživatele do Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md). Pracovní účet se vytvoří pomocí volby **Nový uživatel** v Azure Portal.
+Pracovní účet se vytvoří stejným způsobem pro všechny klienty založené na Azure AD. Chcete-li vytvořit pracovní účet, můžete použít informace v [rychlém startu: přidání nových uživatelů do Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md). Pracovní účet se vytvoří pomocí volby **Nový uživatel** v Azure Portal.
 
 Když přidáte nový pracovní účet, je nutné vzít v úvahu následující nastavení konfigurace:
 
@@ -63,17 +66,17 @@ K resetování hesla uživatele můžete použít následující informace:
 - [Azure Portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
-## <a name="guest-user"></a>Uživatel typu host
+## <a name="guest-user"></a>Uživatel typu Host
 
 Externí uživatele můžete pozvat do svého tenanta jako uživatel typu Host. Typický scénář pro pozvání uživatele typu Host ke klientovi Azure AD B2C je sdílet odpovědnosti správy. Příklad použití účtu hosta najdete v tématu [vlastnosti Azure Active Directory uživatele spolupráce B2B](../active-directory/b2b/user-properties.md).
 
-Při pozvání uživatele typu Host k vašemu tenantovi zadáte e-mailovou adresu příjemce a zprávu popisující pozvánku. Odkaz na pozvánku přijímá uživatele na stránce s oznámením o souhlasu, kde je vybrané tlačítko Začínáme a kontrola oprávnění je přijatá. Pokud Doručená pošta není připojená k e-mailové adrese, může uživatel přejít na stránku s souhlasem na stránce Microsoftu pomocí pozvaných přihlašovacích údajů. Uživatel pak nuceně uplatňuje pozvánku stejným způsobem jako při kliknutí na odkaz v e-mailu. Například: `https://myapps.microsoft.com/B2CTENANTNAME`.
+Při pozvání uživatele typu Host k vašemu tenantovi zadáte e-mailovou adresu příjemce a zprávu popisující pozvánku. Odkaz na pozvánku přijímá uživatele na stránce s oznámením o souhlasu, kde je **vybrané tlačítko Začínáme** a kontrola oprávnění je přijatá. Pokud Doručená pošta není připojená k e-mailové adrese, může uživatel přejít na stránku s souhlasem na stránce Microsoftu pomocí pozvaných přihlašovacích údajů. Uživatel pak nuceně uplatňuje pozvánku stejným způsobem jako při kliknutí na odkaz v e-mailu. Například: `https://myapps.microsoft.com/B2CTENANTNAME`.
 
 K pozvání uživatele typu Host můžete použít taky [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-beta) .
 
 ## <a name="consumer-user"></a>Uživatel příjemce
 
-Uživatel se může přihlásit k aplikacím zabezpečeným pomocí Azure AD B2C, ale nemůže získat přístup k prostředkům Azure, jako je Azure Portal.  Uživatel s uživatelským účtem může používat místní účet nebo federované účty, jako je Facebook nebo Twitter. Účet příjemce se vytvoří pomocí [uživatelského toku registrace nebo přihlašování](../active-directory-b2c/active-directory-b2c-reference-policies.md).
+Uživatel se může přihlásit k aplikacím zabezpečeným pomocí Azure AD B2C, ale nemůže získat přístup k prostředkům Azure, jako je Azure Portal. Uživatel s uživatelským účtem může používat místní účet nebo federované účty, jako je Facebook nebo Twitter. Účet příjemce se vytvoří pomocí [uživatelského toku registrace nebo přihlašování](../active-directory-b2c/active-directory-b2c-reference-policies.md), pomocí Graph API služby Azure AD nebo pomocí Azure Portal.
 
 Data, která se shromažďují při vytváření uživatelského účtu uživatele, můžete zadat pomocí vlastních uživatelských atributů. Další informace najdete v tématu [definování vlastních atributů v Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md).
 

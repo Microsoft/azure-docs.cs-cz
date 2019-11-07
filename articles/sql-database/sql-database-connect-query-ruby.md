@@ -1,5 +1,5 @@
 ---
-title: Použití Ruby k dotazování služby Azure SQL Database | Dokumentace Microsoftu
+title: Použití Ruby k dotazování Azure SQL Database
 description: Toto téma vám ukáže, jak pomocí Ruby vytvořit program, který se připojí ke službě Azure SQL Database a bude ji dotazovat s použitím příkazů jazyka Transact-SQL.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 5b47ddc2d865108e03b3c649536bfaa700e4a59d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ecfdfa8930858eb02e993688a3ea1a78d2d7fe5f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569110"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690903"
 ---
 # <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>Rychlý start: Použití Ruby k dotazování databáze Azure SQL
 
@@ -30,7 +30,7 @@ K dokončení tohoto rychlého startu potřebujete následující požadavky:
 
   || Izolovaná databáze | Spravovaná instance |
   |:--- |:--- |:---|
-  | Create| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
+  | Vytváření| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
   || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
@@ -46,15 +46,15 @@ K dokončení tohoto rychlého startu potřebujete následující požadavky:
   
   - **MacOS**: Nainstalujte homebrew, rbenv a Ruby-Build, Ruby, FreeTDS a TinyTDS. V tématu [vytváření aplikací Ruby pomocí SQL Server v MacOS](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/)najdete postup 1,2, 1,3, 1,4, 1,5 a 2,1.
   
-  - **Ubuntu**: Nainstalujte požadavky na Ruby, rbenv a Ruby-Build, Ruby, FreeTDS a TinyTDS. V tématu [vytváření aplikací Ruby pomocí SQL Server v Ubuntu](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/)najdete postup 1,2, 1,3, 1,4, 1,5 a 2,1.
+  - **Ubuntu**: požadavky na instalaci pro Ruby, rbenv a Ruby-Build, Ruby, FreeTDS a TinyTDS. V tématu [vytváření aplikací Ruby pomocí SQL Server v Ubuntu](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/)najdete postup 1,2, 1,3, 1,4, 1,5 a 2,1.
   
-  - **Windows:** Nainstalujte Ruby, Ruby DevKit a TinyTDS. Viz [Konfigurace vývojového prostředí pro vývoj v Ruby](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development).
+  - **Windows**: Nainstalujte Ruby, Ruby DevKit a TinyTDS. Viz [Konfigurace vývojového prostředí pro vývoj v Ruby](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development).
 
 ## <a name="get-sql-server-connection-information"></a>Získat informace o připojení k SQL serveru
 
 Získejte informace o připojení, které potřebujete pro připojení ke službě Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
 
@@ -99,7 +99,7 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
    
 1. Ověřte, že jsou vraceny první 20 řádků kategorie/produktu z vaší databáze. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Navrhněte svou první databázi SQL Azure](sql-database-design-first-database.md).
 - [Úložiště GitHub pro TinyTDS](https://github.com/rails-sqlserver/tiny_tds).
 - [Oznamte problémy nebo položte otázky týkající se TinyTDS](https://github.com/rails-sqlserver/tiny_tds/issues).

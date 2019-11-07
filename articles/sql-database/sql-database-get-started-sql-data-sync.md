@@ -1,5 +1,5 @@
 ---
-title: Nastavení služby Azure Synchronizace dat SQL | Microsoft Docs
+title: Nastavení synchronizace dat SQL v Azure
 description: V tomto kurzu se dozvíte, jak nastavit Azure Synchronizace dat SQL
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 37b8f64360e871236be7a8623460bbe75bd1d8b5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 082721ef1436d0b6668016aca29870016038af86
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568160"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689989"
 ---
-# <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Kurz: Nastavení Synchronizace dat SQL mezi Azure SQL Database a SQL Server místním prostředím
+# <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Kurz: nastavení Synchronizace dat SQL mezi Azure SQL Database a SQL Server místním prostředím
 
 V tomto kurzu se naučíte, jak nastavit Azure Synchronizace dat SQL vytvořením skupiny synchronizace, která obsahuje Azure SQL Database i instance SQL Server. Skupina synchronizace je nastavena na vlastní konfiguraci a synchronizuje podle nastaveného plánu.
 
@@ -52,7 +52,7 @@ Příklady prostředí PowerShell týkající se konfigurace Synchronizace dat S
    | ------------------------------ | ------------------------------------------------- |
    | **Název skupiny synchronizace** | Zadejte název nové skupiny synchronizace. Tento název se liší od názvu samotné databáze. |
    | **Synchronizovat databázi metadat** | Vyberte Vytvoření databáze (doporučeno) nebo pro použití existující databáze.<br/><br/>Zvolíte-li možnost **Nová databáze**, vyberte možnost **vytvořit novou databázi.** Pak na stránce **SQL Database** zadejte název a nakonfigurujte novou databázi a vyberte **OK**.<br/><br/>Pokud zvolíte možnost **použít existující databázi**, vyberte databázi ze seznamu. |
-   | **Automatická synchronizace** | Vyberte **zapnuto** nebo **vypnuto**.<br/><br/>Pokud se rozhodnete **, zadejte**číslo a v části **četnost synchronizací** vyberte **sekundy**, **minuty**, **hodiny**nebo **dny** . |
+   | **Automatická synchronizace** | Vyberte **zapnuto** nebo **vypnuto**.<br/><br/>Pokud **se rozhodnete, zadejte**číslo a v části **četnost synchronizací** vyberte **sekundy**, **minuty**, **hodiny**nebo **dny** . |
    | **Řešení konfliktů** | Vyberte možnost **Win hub** nebo **Member Win**.<br/><br/>**Výher centra** znamená, že když dojde ke konfliktům, data v databázi centra přepíší konfliktní data v členské databázi.<br/><br/>**Člen výher** znamená, že když dojde ke konfliktům, data v členské databázi přepíší konfliktní data v databázi centra. |
 
    > [!NOTE]
@@ -80,7 +80,7 @@ V části **databáze členů** můžete volitelně přidat Azure SQL Database d
   | ----------------------------- | ------------------------------------------------- |
   | **Název člena synchronizace** | Zadejte název nového člena synchronizace. Tento název se liší od samotného názvu databáze. |
   | **Předplatné** | Vyberte přidružené předplatné Azure pro účely fakturace. |
-  | **Azure SQL Server** | Vyberte existující server SQL Database. |
+  | **SQL Server Azure** | Vyberte existující server SQL Database. |
   | **Azure SQL Database** | Vyberte existující databázi SQL. |
   | **Pokyny pro synchronizaci** | Vyberte **obousměrnou synchronizaci**, **do centra**nebo **z centra**. |
   | **Uživatelské jméno** a **heslo** | Zadejte existující pověření pro server SQL Database, na kterém je umístěna členský databáze. Nezadávejte *nové* přihlašovací údaje v této části. |
@@ -221,9 +221,9 @@ Po exportu databáze jako souboru *. BacPac* a importu souboru pro vytvoření d
 
 **Kde najdu informace o agentovi klienta?**
 
-Nejčastější dotazy týkající se klientského agenta najdete v tématu [Nejčastější](sql-database-data-sync-agent.md#agent-faq)dotazy k agentům.
+Nejčastější dotazy týkající se klientského agenta najdete v tématu Nejčastější dotazy k [agentům](sql-database-data-sync-agent.md#agent-faq).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Blahopřejeme. Vytvořili jste skupinu synchronizace, která zahrnuje instanci SQL Database a databázi SQL Server.
 

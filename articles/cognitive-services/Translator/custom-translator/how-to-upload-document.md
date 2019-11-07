@@ -1,7 +1,7 @@
 ---
 title: Jak nahrát dokument – vlastní Překladatel
 titleSuffix: Azure Cognitive Services
-description: Pomocí funkce nahrávání dokumentu můžete pro vaše školení nahrát paralelní dokument. Paralelní dokumenty jsou páry dokumentů, kde jeden je převod druhé. Jeden dokument ve dvojici obsahuje ve zdrojovém jazyce věty a druhý dokument obsahuje tyto věty přeložené do cílového jazyka.
+description: Funkce nahrání dokumentu nahrává paralelní dokumenty (dva dokumenty, kde jeden je počátek a druhý je překlad) do služby.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,18 +9,18 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f2bd6103c27d455265ee967554fb27513f78a472
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b2a249a40d8c782d54a12df43d33655f3409753c
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595644"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647385"
 ---
 # <a name="upload-a-document"></a>Nahrání dokumentu
 
 Ve [vlastním překladateli](https://portal.customtranslator.azure.ai)můžete nahrávat paralelní dokumenty pro výuku vašich modelů překladu. [Paralelní dokumenty](what-are-parallel-documents.md) jsou páry dokumentů, kde jedna je překlad druhé. Jeden dokument ve dvojici obsahuje ve zdrojovém jazyce věty a druhý dokument obsahuje tyto věty přeložené do cílového jazyka.
 
-Před nahráním dokumentů si přečtěte téma [formáty dokumentů a pokyny](document-formats-naming-convention.md) k konvenci pojmenování a ujistěte se, že je ve vašem vlastním překladateli podporován formát souboru.
+Před nahráním dokumentů si přečtěte téma [formáty dokumentů a pokyny k konvenci pojmenování a](document-formats-naming-convention.md) Ujistěte se, že je ve vašem vlastním překladateli podporován formát souboru.
 
 ## <a name="how-to-upload-document"></a>Jak nahrát dokument?
 
@@ -37,27 +37,27 @@ V portálu pro [vlastní překladatele](https://portal.customtranslator.azure.ai
 
     a.  Typ dokumentu:
 
-    -  Trénování: Tyto dokumenty se budou používat pro školicí sadu.
-    -  Ladění Tyto dokumenty se budou používat pro optimalizaci sady.
-    -  Zkouší Tyto dokumenty budou použity pro testování sady.
-    -  Slovník frází: Tyto dokumenty budou použity pro slovník frází.
-    -  Slovník vět: Tyto dokumenty se použijí pro slovník vět.
+    -  Školení: tyto dokumenty se budou používat pro školicí sadu.
+    -  Ladění: tyto dokumenty budou použity pro optimalizaci sady.
+    -  Testování: tyto dokumenty budou použity pro testování sady.
+    -  Slovník frází: tyto dokumenty se použijí pro slovník frází.
+    -  Slovník vět: tyto dokumenty se použijí pro slovník vět.
 
     b.  Dvojice jazyků
 
-    c.  Přepsat dokument, pokud existuje: Zaškrtněte toto políčko, pokud chcete přepsat všechny existující dokumenty se stejným názvem.
+    c.  Přepsat dokument, pokud existuje: zaškrtněte toto políčko, pokud chcete přepsat všechny existující dokumenty se stejným názvem.
 
     d.  Vyplňte příslušné části pro paralelní data nebo kombinovaná data.
 
     -  Paralelní data:
-        -  Zdrojový soubor: Vyberte zdrojový soubor jazyka z místního počítače.
-        -  Cílový soubor: Z místního počítače vyberte cílový jazykový soubor.
-        -  Název dokumentu: Používá se pouze v případě, že odesíláte paralelní soubory.
+        -  Zdrojový soubor: ze svého místního počítače vyberte zdrojový soubor jazyka.
+        -  Cílový soubor: Vyberte cílový jazykový soubor z místního počítače.
+        -  Název dokumentu: používá se pouze v případě, že odesíláte paralelní soubory.
 
     - Data kombinovaného:
-        -  Soubor se seznamem: Vyberte soubor se seznamem ze svého místního počítače. Soubor se seznamem obsahuje oba věty zdrojového i cílového jazyka. [Zásady vytváření názvů](document-formats-naming-convention.md) jsou důležité pro soubory se seznamem.
+        -  Soubor se seznamem: ze svého místního počítače vyberte soubor se seznamem. Soubor se seznamem obsahuje oba věty zdrojového i cílového jazyka. [Zásady vytváření názvů](document-formats-naming-convention.md) jsou důležité pro soubory se seznamem.
 
-    e.  Klikněte na tlačítko Odeslat
+    e.  Klikněte na nahrát.
 
     ![Nahrát dialog dokumentu](media/how-to/how-to-upload-dialog.png)
 
@@ -84,7 +84,7 @@ Na stránce Historie nahrávání můžete zobrazit historii všech odesílání
 
 3. Klikněte na libovolný záznam historie nahrávání. Na stránce Podrobnosti o historii odeslání můžete zobrazit soubory odeslané v rámci nahrávání, odeslat stav souboru, jazyk souboru a chybové zprávy (Pokud se v nahrávání vyskytne nějaká chyba).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Na [stránce s podrobnostmi o dokumentu](how-to-view-document-details.md) si můžete prohlédnout seznam extrahovaných vět.
 - [Postup výuky modelu](how-to-train-model.md).

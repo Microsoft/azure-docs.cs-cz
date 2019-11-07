@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 531f6d86d57be550d0a1147e131d93ae6e298406
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 942c565c885d59a14d64e7ec06beee0354e7c4ca
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474755"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641624"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Zabezpečení rozhraní API služby Azure API Management pomocí Azure AD B2C
 
 Přečtěte si, jak omezit přístup k rozhraní API Azure API Management (APIM) na klienty, kteří jsou ověření pomocí Azure Active Directory B2C (Azure AD B2C). Podle kroků v tomto článku vytvořte a otestujte příchozí zásady v APIM, které omezují přístup jenom na ty požadavky, které zahrnují platný přístupový token vydaný Azure AD B2C.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete pokračovat v krocích v tomto článku, budete potřebovat následující prostředky:
 
@@ -35,11 +35,11 @@ Než budete pokračovat v krocích v tomto článku, budete potřebovat následu
 
 Když Zabezpečete rozhraní API v Azure API Management s Azure AD B2C, potřebujete pro [příchozí zásadu](../api-management/api-management-howto-policies.md) , kterou vytvoříte v APIM, několik hodnot. Nejdřív si poznamenejte ID aplikace, kterou jste dříve vytvořili ve svém tenantovi Azure AD B2C. Pokud používáte aplikaci, kterou jste vytvořili v části požadavky, použijte ID aplikace pro *webbapp1*.
 
-K získání ID aplikace můžete použít aktuální prostředí **aplikací** nebo naše nové prostředí Unified **Registrace aplikací (Preview)** . [Přečtěte si další informace o prostředí verze Preview](http://aka.ms/b2cappregintro).
+K získání ID aplikace můžete použít aktuální prostředí **aplikací** nebo naše nové prostředí Unified **Registrace aplikací (Preview)** . [Další informace o novém prostředí](https://aka.ms/b2cappregintro).
 
 #### <a name="applicationstabapplications"></a>[Aplikace](#tab/applications/)
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. V části **Spravovat**vyberte **aplikace**.
@@ -47,7 +47,7 @@ K získání ID aplikace můžete použít aktuální prostředí **aplikací** 
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací (Preview)** a pak vyberte kartu **vlastněné aplikace** .
@@ -73,7 +73,7 @@ Dále Získejte dobře známou adresu URL konfigurace pro některý z vašich Az
 
     Tuto hodnotu použijete v další části při konfiguraci rozhraní API v Azure API Management.
 
-Teď byste měli mít zaznamenané dvě adresy URL pro použití v další části: OpenID Connected a adresa URL koncového bodu konfigurace a identifikátor URI vystavitele. Například:
+Teď byste měli mít zaznamenané dvě adresy URL pro použití v další části: OpenID Connected a adresa URL koncového bodu konfigurace a identifikátor URI vystavitele. Příklad:
 
 ```
 https://yourb2ctenant.b2clogin.com/yourb2ctenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_signupsignin1
@@ -154,7 +154,7 @@ Klientská aplikace (v tomto případě), která volá publikované rozhraní AP
 
 Po nahrání přístupového tokenu a klíče předplatného APIM jste teď připraveni otestovat, jestli jste správně nakonfigurovali zabezpečený přístup k rozhraní API.
 
-1. Vytvoří novou `GET` žádost v [příspěvku](https://www.getpostman.com/). V poli Adresa URL požadavku Zadejte koncový bod seznamu mluvčího rozhraní API, které jste publikovali jako jeden z požadovaných součástí. Například:
+1. Vytvoří novou `GET` žádost v [příspěvku](https://www.getpostman.com/). V poli Adresa URL požadavku Zadejte koncový bod seznamu mluvčího rozhraní API, které jste publikovali jako jeden z požadovaných součástí. Příklad:
 
     `https://contosoapim.azure-api.net/conference/speakers`
 

@@ -1,5 +1,5 @@
 ---
-title: Transformace spojení v datovém toku mapování Azure Data Factory | Microsoft Docs
+title: Transformace spojení v Azure Data Factory toku dat mapování
 description: Kombinování dat ze dvou zdrojů dat pomocí transformace spojení v Azure Data Factory toku dat mapování
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 78de9f2bedfc36add567053e1de47e8893bfaf3c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4680804017a9b08248bb41ff999c6ba6371e99c8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597036"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675914"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Transformace spojení v toku dat mapování
 
@@ -32,7 +32,7 @@ Levé vnější spojení vrátí všechny řádky z levého proudu a odpovídaj�
 
 ### <a name="right-outer"></a>Pravé vnější
 
-Levé vnější spojení vrátí všechny řádky z pravého proudu a odpovídající záznamy z levého streamu. Pokud řádek ze pravého datového proudu neodpovídá, výstupní sloupce z pravého datového proudu jsou nastaveny na hodnotu NULL. Výstupem budou řádky vrácené vnitřním spojením a nespárované řádky z pravého datového proudu.
+Pravé vnější spojení vrátí všechny řádky z pravého proudu a odpovídajících záznamů z levého datového proudu. Pokud řádek ze pravého datového proudu neodpovídá, výstupní sloupce z levého datového proudu jsou nastaveny na hodnotu NULL. Výstupem budou řádky vrácené vnitřním spojením a nespárované řádky z pravého datového proudu.
 
 ### <a name="full-outer"></a>Úplné vnější
 
@@ -83,7 +83,7 @@ Při testování transformací spojení s náhledem dat v režimu ladění použ
 
 ### <a name="inner-join-example"></a>Příklad vnitřního spojení
 
-Níže uvedený příklad je transformační transformace s názvem `JoinMatchedData`, která přebírá levý Stream `TripData` a `TripFare` pravého streamu.  Podmínka spojení je výraz `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}`, který vrací hodnotu true, pokud se sloupce `hack_license`, `medallion`, `vendor_id` a `pickup_datetime` v každém datovém proudu shodují. @No__t_0 je `'inner'`. Povolujeme vysílání pouze v levém datovém proudu, takže `broadcast` má `'left'` hodnoty.
+Níže uvedený příklad je transformační transformace s názvem `JoinMatchedData`, která přebírá levý Stream `TripData` a `TripFare`pravého streamu.  Podmínka spojení je výraz `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}`, který vrací hodnotu true, pokud se sloupce `hack_license`, `medallion`, `vendor_id`a `pickup_datetime` v každém datovém proudu shodují. `joinType` je `'inner'`. Povolujeme vysílání pouze v levém datovém proudu, takže `broadcast` má `'left'`hodnoty.
 
 V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 
@@ -105,7 +105,7 @@ TripData, TripFare
 
 ### <a name="cross-join-example"></a>Příklad vzájemného spojení
 
-Níže uvedený příklad je transformační transformace s názvem `CartesianProduct`, která přebírá levý Stream `TripData` a `TripFare` pravého streamu. Tato transformace přebírá dva proudy a vrací kartézském produkt jejich řádků. Podmínka spojení je `true()`, protože výstupem je plný kartézském produkt. @No__t_0 v `cross`. Povolujeme vysílání pouze v levém datovém proudu, takže `broadcast` má `'left'` hodnoty.
+Níže uvedený příklad je transformační transformace s názvem `CartesianProduct`, která přebírá levý Stream `TripData` a `TripFare`pravého streamu. Tato transformace přebírá dva proudy a vrací kartézském produkt jejich řádků. Podmínka spojení je `true()`, protože výstupem je plný kartézském produkt. `joinType` v `cross`. Povolujeme vysílání pouze v levém datovém proudu, takže `broadcast` má `'left'`hodnoty.
 
 V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 

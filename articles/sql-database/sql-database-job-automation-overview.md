@@ -1,5 +1,5 @@
 ---
-title: Automatizace úloh Azure SQL | Microsoft Docs
+title: Automatizace úloh Azure SQL
 description: Použití automatizace úloh ke spouštění skriptů jazyka Transact-SQL (T-SQL) v rámci jedné nebo více databází SQL Azure
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/25/2019
-ms.openlocfilehash: 432580017cec548b7ecd7cf766aa8f5cdb2253cc
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: bbef299271618dc672daea17249f29866e75c430
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113601"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689669"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatizace úloh správy pomocí databázových úloh
 
@@ -50,10 +50,10 @@ Je potřeba si vymezit několik rozdílů mezi agentem SQL (dostupnými místně
 
 |  |Elastické úlohy  |Agent SQL |
 |---------|---------|---------|
-|Scope     |  Libovolný počet databází Azure SQL nebo datových skladů ve stejném cloudu Azure jako agent úloh. Cíle můžou být v různých SQL Databasech serverech, předplatných a/nebo oblastech. <br><br>Cílové skupiny se můžou skládat z jednotlivých databází nebo datových skladů nebo ze všech databází na serveru, ve fondu nebo v mapě horizontálních oddílů (dynamicky se zjišťují za běhu úlohy). | Všechny jednotlivé databáze ve stejné instanci SQL Server jako Agent SQL. |
+|Rozsah     |  Libovolný počet databází Azure SQL nebo datových skladů ve stejném cloudu Azure jako agent úloh. Cíle můžou být v různých SQL Databasech serverech, předplatných a/nebo oblastech. <br><br>Cílové skupiny se můžou skládat z jednotlivých databází nebo datových skladů nebo ze všech databází na serveru, ve fondu nebo v mapě horizontálních oddílů (dynamicky se zjišťují za běhu úlohy). | Všechny jednotlivé databáze ve stejné instanci SQL Server jako Agent SQL. |
 |Podporovaná rozhraní API a nástroje     |  Portál, PowerShell, T-SQL, Azure Resource Manager      |   T-SQL, SQL Server Management Studio (SSMS)     |
 
-## <a name="sql-agent-jobs"></a>SQL Agent Jobs
+## <a name="sql-agent-jobs"></a>Úlohy agenta SQL
 
 Úlohy agenta SQL jsou zadané řady skriptů T-SQL pro vaši databázi. Použijte úlohy k definování úlohy správy, kterou je možné spustit jednou nebo vícekrát a monitorovat pro úspěch nebo neúspěch.
 Úlohu můžete spustit na jednom místním serveru nebo na několika vzdálených serverech. Úlohy agenta SQL jsou interní součástí databázového stroje, který je spuštěn v rámci služby Managed instance.
@@ -96,7 +96,7 @@ Plán může definovat následující podmínky pro čas spuštění úlohy:
 
 Úlohy agenta SQL vám umožňují dostávat oznámení, když se úloha úspěšně dokončí nebo dojde k chybě. Oznámení můžete přijímat prostřednictvím e-mailu.
 
-Nejdřív je potřeba nastavit e-mailový účet, který se použije k odeslání e-mailových oznámení a přiřadit účet k e-mailovému profilu s `AzureManagedInstance_dbmail_profile`názvem, jak je znázorněno v následující ukázce:
+Nejdřív byste museli nastavit e-mailový účet, který se použije k odeslání e-mailových oznámení a přiřadit účet k e-mailovému profilu s názvem `AzureManagedInstance_dbmail_profile`, jak je znázorněno v následující ukázce:
 
 ```sql
 -- Create a Database Mail account
@@ -212,7 +212,7 @@ Při vytváření agenta úloh se v *databázi úloh* vytvoří schéma, tabulky
 
 |Název role  |Oprávnění ke schématu jobs  |Oprávnění ke schématu jobs_internal  |
 |---------|---------|---------|
-|**jobs_reader**     |    SELECT     |    Žádný     |
+|**jobs_reader**     |    SELECT     |    Žádné     |
 
 > [!IMPORTANT]
 > Jako správce databáze zvažte před udělením přístupu k *databázi úloh* všechny bezpečnostní důsledky. Uživatel se zlými úmysly s oprávněními k vytváření nebo úpravě úloh by mohl vytvořit nebo upravit úlohu, která se pomocí uložených přihlašovacích údajů připojí k databázi pod jeho kontrolou a uživatel se zlými úmysly by tak mohl zjistit přihlašovací heslo.
@@ -263,9 +263,9 @@ Každý krok úlohy určuje skript T-SQL, který se má spustit, jednu nebo něk
 
 Výstupy kroků úloh pro každou cílovou databázi se podrobně zaznamenávají a výstup skriptu je možné zachytávat do určené tabulky. Můžete určit databázi, do které se budou ukládat všechna data vrácená z úlohy.
 
-#### <a name="job-history"></a>Historie úlohy
+#### <a name="job-history"></a>Historie úloh
 
-Historie spouštění úloh se ukládá do *databáze úloh*. Úloha vyčištění systému vyprázdní historii spouštění starší než 45 dnů. Pokud chcete odebrat historii mladší než 45 dnů, zavolejte v *databázi úloh* uloženou proceduru **sp_purge_history**.
+Historie spouštění úloh se ukládá do *databáze úloh*. Úloha vyčištění systému vyprázdní historii spouštění starší než 45 dnů. Pokud chcete odebrat historii mladší než 45 dnů, zavolejte v **databázi úloh** uloženou proceduru *sp_purge_history*.
 
 ### <a name="agent-performance-capacity-and-limitations"></a>Výkon, kapacita a omezení agenta
 
@@ -279,7 +279,7 @@ V současné době je verze Preview omezená na 100 souběžných úloh.
 
 Pokud chcete zajistit, aby při spouštění úloh pro databáze v elastickém fondu SQL nedocházelo k přetížení prostředků, můžete pro úlohy nakonfigurovat omezení počtu databází, pro které se můžou najednou spouštět.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Co je Agent SQL Server](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) 
 - [Jak vytvářet a spravovat elastické úlohy](elastic-jobs-overview.md) 

@@ -1,5 +1,5 @@
 ---
-title: Výpočetní prostředí podporovaná aplikací Azure Data Factory | Microsoft Docs
+title: Výpočetní prostředí podporovaná nástrojem Azure Data Factory
 description: Přečtěte si o výpočetních prostředích, která můžete použít v Azure Data Factorych kanálech (například Azure HDInsight) k transformaci nebo zpracování dat.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: fd874776e5be94831322bce839a502ebc43e1958
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 59e31f0c280687dfd2a79b3a40d8474c82b794d4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73481196"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681576"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Výpočetní prostředí podporovaná nástrojem Azure Data Factory
 V tomto článku se dozvíte o různých výpočetních prostředích, která můžete použít ke zpracování nebo transformaci dat. Poskytuje taky podrobnosti o různých konfiguracích (na vyžádání a přineste si vlastní) podporované Data Factory při konfiguraci propojených služeb, které propojuje tato výpočetní prostředí s objektem pro vytváření dat Azure.
@@ -55,7 +55,7 @@ Všimněte si následujících **důležitých** bodů pro propojenou službu HD
 > [!IMPORTANT]
 > Zřizování clusteru Azure HDInsight na vyžádání obvykle trvá **20 minut** nebo déle.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 Následující JSON definuje propojenou službu HDInsight na vyžádání v systému Linux. Služba Data Factory pro zpracování požadované aktivity automaticky vytvoří cluster HDInsight se **systémem Linux** . 
 
 ```json
@@ -258,7 +258,7 @@ Tento typ konfigurace se podporuje pro následující výpočetní prostředí:
 ## <a name="azure-hdinsight-linked-service"></a>Propojená služba Azure HDInsight
 Můžete vytvořit propojenou službu Azure HDInsight a zaregistrovat si vlastní cluster HDInsight s Data Factory.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 ```json
 {
@@ -316,7 +316,7 @@ Pokud Azure Batch službu nepoužíváte, přečtěte si následující články
 * Rutina [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) pro vytvoření účtu Azure Batch (nebo) [Azure Portal](../batch/batch-account-create-portal.md) k vytvoření účtu Azure Batch pomocí Azure Portal. Podrobné pokyny k používání rutiny najdete v článku [použití PowerShellu ke správě Azure Batch účtu](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) .
 * Rutina [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) pro vytvoření fondu Azure Batch.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 ```json
 {
@@ -359,7 +359,7 @@ Pokud Azure Batch službu nepoužíváte, přečtěte si následující články
 ## <a name="azure-machine-learning-studio-linked-service"></a>Propojená služba Azure Machine Learning Studio
 Vytvoříte propojenou službu Azure Machine Learning Studio k registraci koncového bodu Machine Learning dávkového vyhodnocování do objektu pro vytváření dat.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 ```json
 {
@@ -399,7 +399,7 @@ Vytvoříte propojenou službu Azure Machine Learning pro připojení pracovníh
 > [!NOTE]
 > V současné době je pro propojenou službu Azure Machine Learning podporována pouze ověřování instančního objektu.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 ```json
 {
@@ -440,7 +440,7 @@ Vytvoříte propojenou službu Azure Machine Learning pro připojení pracovníh
 ## <a name="azure-data-lake-analytics-linked-service"></a>Propojená služba Azure Data Lake Analytics
 Vytvoříte propojenou službu **Azure Data Lake Analytics** pro propojení Azure Data Lake Analytics výpočetní služby s objektem pro vytváření dat Azure. Aktivita Data Lake Analytics U-SQL v kanálu odkazuje na tuto propojenou službu. 
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 ```json
 {

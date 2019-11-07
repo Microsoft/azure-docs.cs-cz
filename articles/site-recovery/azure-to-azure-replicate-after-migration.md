@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: ff35c5e23c5d8a448d62a3eeb8d15ba8d5a531e4
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 081e1db4df0d77fa600e132a5585172d44f1196a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814533"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663027"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Nastavení zotavení po havárii virtuálních počítačů Azure po migraci do Azure 
 
@@ -29,7 +29,7 @@ Před nastavením zotavení po havárii se ujistěte, že se migrace dokončila 
 
 Každý virtuální počítač Azure musí mít nainstalovaný [Agent virtuálního počítače Azure](../virtual-machines/extensions/agent-windows.md) . Pokud chcete replikovat virtuální počítače Azure, Site Recovery do agenta nainstaluje rozšíření.
 
-- Pokud na počítači běží verze 9.7.0.0 nebo novější služby Site Recovery mobility, agent virtuálního počítače Azure se automaticky nainstaluje ve službě mobility na virtuální počítače s Windows. V dřívějších verzích služby mobility je potřeba agenta nainstalovat automaticky.
+- Pokud na počítači běží verze 9.7.0.0 nebo novější služby Site Recovery mobility, agent virtuálního počítače Azure se automaticky nainstaluje ve službě mobility na virtuální počítače s Windows. V dřívějších verzích služby mobility je potřeba agenta nainstalovat ručně.
 - Pro virtuální počítače se systémem Linux je nutné ručně nainstalovat agenta virtuálního počítače Azure. Agenta virtuálního počítače Azure je potřeba nainstalovat jenom v případě, že je služba mobility nainstalovaná na migrovaném počítači v 9.6 nebo starší verzi.
 
 
@@ -81,7 +81,7 @@ Nainstalujte agenta [virtuálního počítače Azure Linux](../virtual-machines/
         ```
 2. Před konfigurací replikace restartujte virtuální počítač.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Přečtěte si téma řešení potíží](site-recovery-extension-troubleshoot.md) s rozšířením Site Recovery na AGENTOVI virtuálního počítače Azure.
 [Rychlá replikace](azure-to-azure-quickstart.md) virtuálního počítače Azure do sekundární oblasti.

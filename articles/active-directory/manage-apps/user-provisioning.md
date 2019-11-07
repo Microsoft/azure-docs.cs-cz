@@ -15,16 +15,16 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ff6d9e33e15aa04adfa03705172166492f87e30
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ef2ce1ce7a754868a1adc2e78b4c0a83fc84f071
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330030"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641449"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatizace zřizování a rušení uživatelů pro aplikace SaaS pomocí Azure Active Directory
 
-Azure Active Directory (Azure AD) umožňuje automatizovat vytváření, údržbu a odebírání identit uživatelů v cloudových aplikacích ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), jako jsou Dropbox, Salesforce, ServiceNow a další. To se označuje jako automatizované zřizování uživatelů pro aplikace SaaS.
+Azure Active Directory (Azure AD) umožňuje automatizovat vytváření, údržbu a odebírání identit uživatelů v cloudových SaaS aplikacích, jako jsou [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)a další. To se označuje jako automatizované zřizování uživatelů pro aplikace SaaS.
 
 > [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
 
@@ -56,11 +56,14 @@ Mezi běžné motivace pro použití této funkce patří:
 
 **Služba zřizování Azure AD** zřídí uživatele k SaaS aplikací a dalších systémů připojením k koncovým bodům rozhraní API pro správu uživatelů poskytovanými jednotlivými dodavateli aplikací. Tyto koncové body rozhraní API správy uživatelů umožňují službě Azure AD programově vytvářet, aktualizovat a odebírat uživatele. Pro vybrané aplikace může služba zřizování také vytvářet, aktualizovat a odebírat další objekty související s identitou, jako jsou například skupiny a role.
 
-@no__t 0Azure AD Provisioning Service @ no__t-1*Obrázek 1: služba zřizování Azure AD*
+![služby Azure AD Provisioning](./media/user-provisioning/provisioning0.PNG)
+*Obrázek 1: služba zřizování Azure AD*
 
-![Outbound pracovní postup zřizování uživatelů @ no__t-1*Obrázek 2: "odchozí" pracovní postup zřizování uživatelů z Azure AD do oblíbených aplikací SaaS*
+![pracovní postup odchozího zřizování uživatelů](./media/user-provisioning/provisioning1.PNG)
+*Obrázek 2: "odchozí" pracovní postup zřizování uživatelů z Azure AD do oblíbených aplikací SaaS*
 
-![Inbound pracovní postup zřizování uživatelů @ no__t-1*Obrázek 3: "příchozí" pracovní postup zřizování uživatelů z oblíbených aplikací HCM (Human investice Management) do Azure Active Directory a Windows Server Active Directory*
+pracovní postup ![příchozího zřizování uživatelů](./media/user-provisioning/provisioning2.PNG)
+*Obrázek 3: "příchozí" pracovní postup zřizování uživatelů z oblíbených aplikací HCM pro správu lidského kapitálu do Azure Active Directory a Windows Server Active Directory*
 
 ## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Jaké aplikace a systémy je možné používat s automatickým zřizováním uživatelů Azure AD?
 
@@ -87,11 +90,7 @@ Pomocí portálu Azure Active Directory můžete nakonfigurovat službu zřizov�
 
 1. Otevřete **[portál Azure Active Directory](https://aad.portal.azure.com)** .
 1. V levém podokně vyberte **podnikové aplikace** . Zobrazí se seznam všech nakonfigurovaných aplikací.
-1. Pro přidání aplikace vyberte **+ Nová aplikace** . V závislosti na scénáři přidejte jednu z následujících možností:
-
-   - Možnost **Přidat vlastní aplikaci** podporuje SCIM integrace s vlastním vývojem.
-   - Všechny aplikace v části **Přidat z galerie**@no__t – 1**vybrané aplikace** podporují Automatické zřizování. Další informace najdete v [seznamu kurzů aplikací pro zřizování uživatelů](../saas-apps/tutorial-list.md) .
-
+1. Pro přidání aplikace vyberte **+ Nová aplikace** . 
 1. Zadejte všechny podrobnosti a vyberte **Přidat**. Nová aplikace se přidá do seznamu podnikových aplikací a otevře se na obrazovce správy aplikací.
 1. Vyberte **zřizování** pro správu nastavení zřizování uživatelských účtů pro aplikaci.
 
@@ -193,7 +192,7 @@ Pokyny k řešení potíží s automatickým zřizováním uživatelů najdete v
 
 > [!VIDEO https://www.youtube.com/embed/MAy8s5WSe3A]
 
-Příklad podrobného plánu nasazení pro odchozí zřizování uživatelů do aplikace najdete v [Průvodci nasazením identity pro zřizování uživatelů](https://aka.ms/userprovisioningdeploymentplan).
+Příklad podrobného plánu nasazení pro odchozí zřizování uživatelů do aplikace najdete v [Průvodci nasazením identity pro zřizování uživatelů](https://aka.ms/deploymentplans/userprovisioning).
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

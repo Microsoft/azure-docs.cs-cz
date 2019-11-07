@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Sestavení aplikace v baňce pro překládání, syntetizování a analýzu Translator Text API textu'
+title: 'Kurz: sestavení aplikace v baňce pro překlad, syntetizování a analýzu Translator Text API textu'
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu vytvoříte webovou aplikaci založenou na baňce, která používá Azure Cognitive Services k překladu textu, analýze mínění a syntetizování přeloženého textu na řeč. Náš fokus je na trasách kódu Pythonu a na cestách, které tuto aplikaci umožňují. Nebudeme strávit spoustu času na JavaScriptu, který řídí aplikaci, ale poskytneme všechny soubory, které můžete zkontrolovat.
+description: V tomto kurzu vytvoříte webovou aplikaci založenou na baňce pro překlad textu, analýze mínění a syntetizování přeloženého textu na řeč.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 8d85db0e9aa9da48713ca0c119a12160cc99dbff
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 7b9f1cfeb6ebcbc693135d83ad167092e16f478d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671847"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647335"
 ---
-# <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Kurz: Sestavení aplikace v baňce pomocí Azure Cognitive Services
+# <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Kurz: sestavení aplikace v baňce pomocí Azure Cognitive Services
 
 V tomto kurzu vytvoříte webovou aplikaci v baňce, která používá Azure Cognitive Services k překladu textu, analýze mínění a syntetizování přeloženého textu na řeč. Náš fokus je na trasách kódu Pythonu, které tuto aplikaci umožňují, ale budeme vám pomůžou s HTML a JavaScriptem, který aplikaci nasadí. Pokud narazíte na nějaké problémy, dejte nám vědět pomocí tlačítka pro odeslání názoru níže.
 
@@ -103,10 +103,10 @@ Pojďme vytvořit virtuální prostředí pro naši aplikaci v baňce pomocí `v
 
 2. Příkazy pro aktivaci virtuálního prostředí se budou lišit v závislosti na vaší platformě nebo prostředí:   
 
-   | Platforma | Prostředí | Příkaz |
+   | Platforma | Shell | Příkaz |
    |----------|-------|---------|
    | macOS/Linux | bash/zsh | `source venv/bin/activate` |
-   | Windows | Bash | `source venv/Scripts/activate` |
+   | Windows | bash | `source venv/Scripts/activate` |
    | | Příkazový řádek | `venv\Scripts\activate.bat` |
    | | PowerShell | `venv\Scripts\Activate.ps1` |
 
@@ -128,7 +128,7 @@ Požadavky jsou oblíbený modul, který se používá k odesílání požadavk�
    ```
 
 > [!NOTE]
-> Pokud se chcete dozvědět víc o žádostech, přečtěte si téma [Requests: HTTP pro lidi @ no__t-0.
+> Pokud se chcete dozvědět víc o požadavcích, přečtěte si téma [požadavky: http pro lidi](http://docs.python-requests.org/en/master/).
 
 ### <a name="install-and-configure-flask"></a>Instalace a konfigurace baňky
 
@@ -144,9 +144,9 @@ Dál musíme nainstalovat baňce. Baňka zpracovává směrování pro naši web
    ```
    Verze by měla být vytištěna na terminálu. Cokoli jiného znamená, že se něco pokazilo.
 
-2. Pokud chcete spustit aplikaci v baňce, můžete použít příkaz baňky nebo přepínač-m v Pythonu s baňkou. Před tím, než budete moct udělat, musíte říct, s jakou aplikací pracuje, pomocí exportu proměnné prostředí `FLASK_APP`:
+2. Pokud chcete spustit aplikaci v baňce, můžete použít příkaz baňky nebo přepínač-m v Pythonu s baňkou. Než to budete moct udělat, musíte říct terminálu, se kterým má aplikace spolupracovat, a to tak, že exportuje proměnnou prostředí `FLASK_APP`:
 
-   **macOS/Linux**:
+   **MacOS/Linux**:
    ```
    export FLASK_APP=app.py
    ```
@@ -162,7 +162,7 @@ V této části se chystáte vytvořit aplikaci Barebones, která vrátí soubor
 
 ### <a name="what-is-a-flask-route"></a>Co je to postup v baňce?
 
-Pojďme si vymluvit o[trasách](http://flask.pocoo.org/docs/1.0/api/#flask.Flask.route). Směrování se používá k vytvoření vazby adresy URL ke konkrétní funkci. V baňce se k registraci funkcí na konkrétní adresy URL používá dekoratéry trasy. Například když uživatel přejde do kořenového adresáře (`/`) naší webové aplikace, vykreslí se `index.html`.  
+Pojďme si vymluvit o[trasách](http://flask.pocoo.org/docs/1.0/api/#flask.Flask.route). Směrování se používá k vytvoření vazby adresy URL ke konkrétní funkci. V baňce se k registraci funkcí na konkrétní adresy URL používá dekoratéry trasy. Například když uživatel přejde do kořenového adresáře (`/`) naší webové aplikace, `index.html` se vykreslí.  
 
 ```python
 @app.route('/')
@@ -178,7 +178,7 @@ def about():
     return render_template('about.html')
 ```
 
-Tento kód zajišťuje, že když uživatel přejde na @no__t 0, soubor `about.html` se vykreslí.
+Tento kód zajišťuje, že když uživatel přejde na `http://your-web-app.com/about`, že se soubor `about.html` vykreslí.
 
 I když tyto ukázky ilustrují, jak vykreslovat stránky HTML pro uživatele, trasy lze také použít k volání rozhraní API při stisknutí tlačítka nebo provedení libovolného počtu akcí, aniž byste museli opustit domovskou stránku. Tato akce se zobrazí v akci, když vytvoříte trasy pro syntézu překladu, mínění a řeči.
 
@@ -197,7 +197,7 @@ I když tyto ukázky ilustrují, jak vykreslovat stránky HTML pro uživatele, t
        return render_template('index.html')
    ```
 
-   Tento blok kódu instruuje aplikaci, aby zobrazila `index.html` vždy, když uživatel přejde do kořenového adresáře vaší webové aplikace (`/`).
+   Tento blok kódu instruuje aplikaci, aby zobrazila `index.html` pokaždé, když uživatel přejde do kořenového adresáře vaší webové aplikace (`/`).
 
 2. Nyní vytvoříme front-end pro naši webovou aplikaci. V adresáři `templates` vytvořte soubor s názvem `index.html`. Pak tento kód zkopírujte do `templates/index.html`.
 
@@ -252,9 +252,9 @@ Teď, když máte představu o tom, jak funguje jednoduchá aplikace v baňce, p
 
 ### <a name="call-the-translator-text-api"></a>Volání Translator Text API
 
-První věc, kterou je třeba provést, je napsat funkci pro volání Translator Text API. Tato funkce provede dva argumenty: `text_input` a `language_output`. Tato funkce se volá vždycky, když uživatel stiskne tlačítko přeložit ve vaší aplikaci. Textová oblast v HTML se pošle jako `text_input` a hodnota výběru jazyka v HTML se pošle jako `language_output`.
+První věc, kterou je třeba provést, je napsat funkci pro volání Translator Text API. Tato funkce bude mít dva argumenty: `text_input` a `language_output`. Tato funkce se volá vždycky, když uživatel stiskne tlačítko přeložit ve vaší aplikaci. Textová oblast v HTML se odešle jako `text_input`a hodnota výběru jazyka v HTML se pošle jako `language_output`.
 
-1. Pojďme začít vytvořením souboru s názvem `translate.py` v kořenu vašeho pracovního adresáře.
+1. Pojďme začít vytvořením souboru s názvem `translate.py` v kořenovém adresáři vašeho pracovního adresáře.
 2. Dále přidejte tento kód do `translate.py`. Tato funkce přijímá dva argumenty: `text_input` a `language_output`.
    ```python
    import os, requests, uuid, json
@@ -292,11 +292,11 @@ První věc, kterou je třeba provést, je napsat funkci pro volání Translator
 
 ### <a name="add-a-route-to-apppy"></a>Přidat trasu k `app.py`
 
-V dalším kroku budete muset v aplikaci v baňce vytvořit trasu, která volá `translate.py`. Tato trasa bude volána pokaždé, když uživatel stiskne tlačítko přeložit ve vaší aplikaci.
+V dalším kroku budete muset vytvořit trasu v aplikaci v baňce, která volá `translate.py`. Tato trasa bude volána pokaždé, když uživatel stiskne tlačítko přeložit ve vaší aplikaci.
 
-V rámci této aplikace bude vaše trasa přijímat požadavky `POST`. Důvodem je, že funkce očekává převod textu a výstupní jazyk pro překlad.
+V rámci této aplikace bude vaše trasa přijímat žádosti `POST`. Důvodem je, že funkce očekává převod textu a výstupní jazyk pro překlad.
 
-Baňka poskytuje pomocné funkce, které vám pomůžou analyzovat a spravovat jednotlivé požadavky. V poskytnutém kódu `get_json()` vrátí data z požadavku `POST` jako JSON. Po použití `data['text']` a `data['to']` jsou textové a výstupní hodnoty jazyka předány funkci `get_translation()`, která je k dispozici v `translate.py`. Posledním krokem je vrátit odpověď jako JSON, protože je potřeba zobrazit tato data ve vaší webové aplikaci.
+Baňka poskytuje pomocné funkce, které vám pomůžou analyzovat a spravovat jednotlivé požadavky. V poskytnutém kódu `get_json()` vrátí data z `POST` požadavku jako JSON. Pomocí `data['text']` a `data['to']`jsou textové a výstupní hodnoty jazyka předány do funkce `get_translation()` dostupné ze `translate.py`. Posledním krokem je vrátit odpověď jako JSON, protože je potřeba zobrazit tato data ve vaší webové aplikaci.
 
 V následujících částech se tento proces opakuje při vytváření tras pro analýzu mínění a syntézu řeči.
 
@@ -319,7 +319,7 @@ V následujících částech se tento proces opakuje při vytváření tras pro 
        return jsonify(response)
    ```
 
-### <a name="update-indexhtml"></a>@No__t aktualizace – 0
+### <a name="update-indexhtml"></a>Aktualizovat `index.html`
 
 Teď, když máte funkci pro překlad textu a trasu do vaší aplikace, která ji volá, je dalším krokem zahájení vytváření HTML pro vaši aplikaci. Následující kód HTML má několik věcí:
 
@@ -412,14 +412,14 @@ Dalším krokem je psaní JavaScriptu. Toto je most mezi cestou HTML a baňkou.
 
 ### <a name="create-mainjs"></a>Vytvořit `main.js`  
 
-Soubor `main.js` je most mezi cestou HTML a baňkou. Vaše aplikace bude používat kombinaci jQuery, AJAX a XMLHttpRequest pro vykreslování obsahu a provedení požadavků `POST` na trasy na baňky.
+`main.js` soubor je most mezi cestou HTML a baňkou. Vaše aplikace bude používat kombinaci jQuery, AJAX a XMLHttpRequest k vykreslování obsahu a k tomu `POST` požadavky na vaše trasy v baňce.
 
 V níže uvedeném kódu se k vytvoření požadavku na svou trasu na baňce používá obsah z HTML. Konkrétně je obsah textové oblasti a selektor jazyka přiřazen k proměnným a pak je předána spolu v žádosti o `translate-text`.
 
 Kód pak provede iteraci odpovědí a aktualizuje HTML pomocí překladu, zjištěného jazyka a skóre spolehlivosti.
 
-1. V rámci integrovaného vývojového prostředí vytvořte v adresáři `static/scripts` soubor s názvem `main.js`.
-2. Kopírovat tento kód do `static/scripts/main.js`:
+1. V rámci integrovaného vývojového prostředí vytvořte soubor s názvem `main.js` v adresáři `static/scripts`.
+2. Zkopírovat tento kód do `static/scripts/main.js`:
    ```javascript
    //Initiate jQuery on load.
    $(function() {
@@ -485,9 +485,9 @@ V této části se chystáte několik věcí:
 
 ### <a name="call-the-text-analytics-api"></a>Volání rozhraní Text Analytics API
 
-Pojďme napsat funkci, která volá rozhraní API pro analýzu textu. Tato funkce bude mít čtyři argumenty: `input_text`, `input_language`, `output_text` a `output_language`. Tato funkce se volá vždycky, když uživatel stiskne v aplikaci tlačítko pro analýzu spuštění mínění. Data poskytnutá uživatelem z oblasti textu a výběr jazyka a také zjištěný jazyk a překlad překladu jsou k dispozici u jednotlivých požadavků. Objekt Response obsahuje skóre mínění pro zdroj a překlad. V následujících částech budete psát nějaký JavaScript, abyste mohli analyzovat odpověď a použít ji ve vaší aplikaci. Prozatím se podíváme na volání rozhraní API pro analýzu textu.
+Pojďme napsat funkci, která volá rozhraní API pro analýzu textu. Tato funkce bude mít čtyři argumenty: `input_text`, `input_language`, `output_text`a `output_language`. Tato funkce se volá vždycky, když uživatel stiskne v aplikaci tlačítko pro analýzu spuštění mínění. Data poskytnutá uživatelem z oblasti textu a výběr jazyka a také zjištěný jazyk a překlad překladu jsou k dispozici u jednotlivých požadavků. Objekt Response obsahuje skóre mínění pro zdroj a překlad. V následujících částech budete psát nějaký JavaScript, abyste mohli analyzovat odpověď a použít ji ve vaší aplikaci. Prozatím se podíváme na volání rozhraní API pro analýzu textu.
 
-1. Vytvoříme soubor s názvem `sentiment.py` v kořenu vašeho pracovního adresáře.
+1. Pojďme vytvořit soubor s názvem `sentiment.py` v kořenovém adresáři vašeho pracovního adresáře.
 2. Dále přidejte tento kód do `sentiment.py`.
    ```python
    import os, requests, uuid, json
@@ -534,7 +534,7 @@ Pojďme napsat funkci, která volá rozhraní API pro analýzu textu. Tato funkc
 
 ### <a name="add-a-route-to-apppy"></a>Přidat trasu k `app.py`
 
-Pojďme v aplikaci v baňce vytvořit trasu, která volá `sentiment.py`. Tato trasa bude volána pokaždé, když uživatel stiskne tlačítko pro analýzu spuštění mínění ve vaší aplikaci. Podobně jako u trasy k překladu Tato trasa přijímá požadavky `POST`, protože funkce očekává argumenty.
+Pojďme v aplikaci v baňce vytvořit trasu, která volá `sentiment.py`. Tato trasa bude volána pokaždé, když uživatel stiskne tlačítko pro analýzu spuštění mínění ve vaší aplikaci. Podobně jako u trasy k překladu Tato trasa přijímá `POST` požadavky, protože funkce očekává argumenty.
 
 1. Otevřete `app.py` a vyhledejte příkaz Import na začátku `app.py` a aktualizujte ho:
 
@@ -556,7 +556,7 @@ Pojďme v aplikaci v baňce vytvořit trasu, která volá `sentiment.py`. Tato t
        return jsonify(response)
    ```
 
-### <a name="update-indexhtml"></a>@No__t aktualizace – 0
+### <a name="update-indexhtml"></a>Aktualizovat `index.html`
 
 Teď, když máte funkci pro spuštění analýzy mínění a trasu do vaší aplikace, která ji volá, je dalším krokem spuštění psaní HTML pro vaši aplikaci. Následující kód HTML má několik věcí:
 
@@ -581,15 +581,15 @@ Teď, když máte funkci pro spuštění analýzy mínění a trasu do vaší ap
    </div>
    ```
 
-### <a name="update-mainjs"></a>@No__t aktualizace – 0
+### <a name="update-mainjs"></a>Aktualizovat `main.js`
 
-V níže uvedeném kódu se k vytvoření požadavku na svou trasu na baňce používá obsah z HTML. Konkrétně je obsah textové oblasti a selektor jazyka přiřazen k proměnným a pak je předána spolu s požadavkem na trasu `sentiment-analysis`.
+V níže uvedeném kódu se k vytvoření požadavku na svou trasu na baňce používá obsah z HTML. Konkrétně je obsah textové oblasti a selektor jazyka přiřazen k proměnným a pak je předána spolu s požadavkem `sentiment-analysis` trasy.
 
 Kód pak projde odpověďmi a aktualizuje kód HTML pomocí mínění skóre.
 
-1. V rámci integrovaného vývojového prostředí vytvořte v adresáři `static` soubor s názvem `main.js`.
+1. V rámci integrovaného vývojového prostředí vytvořte soubor s názvem `main.js` v adresáři `static`.
 
-2. Kopírovat tento kód do `static/scripts/main.js`:
+2. Zkopírovat tento kód do `static/scripts/main.js`:
    ```javascript
    //Run sentinment analysis on input and translation.
    $("#sentiment-analysis").on("click", function(e) {
@@ -669,9 +669,9 @@ V této části se chystáte několik věcí:
 
 ### <a name="call-the-text-to-speech-api"></a>Volání rozhraní API pro převod textu na mluvené slovo
 
-Pojďme napsat funkci pro převod textu na řeč. Tato funkce provede dva argumenty: `input_text` a `voice_font`. Tato funkce se volá vždycky, když uživatel stiskne v aplikaci tlačítko převést text na řeč. `input_text` je výstup překladu vrácený voláním k převodu textu, `voice_font` je hodnota z výběru hlasového písma v HTML.
+Pojďme napsat funkci pro převod textu na řeč. Tato funkce bude mít dva argumenty: `input_text` a `voice_font`. Tato funkce se volá vždycky, když uživatel stiskne v aplikaci tlačítko převést text na řeč. `input_text` je výstup překladu vrácený voláním k překladu textu, `voice_font` je hodnota z selektor hlasového písma v HTML.
 
-1. Vytvoříme soubor s názvem `synthesize.py` v kořenu vašeho pracovního adresáře.
+1. Pojďme vytvořit soubor s názvem `synthesize.py` v kořenovém adresáři vašeho pracovního adresáře.
 
 2. Dále přidejte tento kód do `synthesize.py`.
    ```Python
@@ -728,7 +728,7 @@ Pojďme napsat funkci pro převod textu na řeč. Tato funkce provede dva argume
 
 ### <a name="add-a-route-to-apppy"></a>Přidat trasu k `app.py`
 
-Pojďme v aplikaci v baňce vytvořit trasu, která volá `synthesize.py`. Tato trasa bude volána pokaždé, když uživatel stiskne tlačítko převést text na řeč v aplikaci. Podobně jako u tras pro překlad a analýzu mínění bude tato trasa přijímat požadavky `POST`, protože funkce očekává dva argumenty: text, který se má syntetizovat, a písmo hlasu pro přehrávání.
+Pojďme v aplikaci v baňce vytvořit trasu, která volá `synthesize.py`. Tato trasa bude volána pokaždé, když uživatel stiskne tlačítko převést text na řeč v aplikaci. Podobně jako trasy pro překlad a analýzu mínění Tato trasa přijímá žádosti o `POST`, protože funkce očekává dva argumenty: text, který se má syntetizovat, a písmo hlasu pro přehrávání.
 
 1. Otevřete `app.py` a vyhledejte příkaz Import na začátku `app.py` a aktualizujte ho:
 
@@ -751,7 +751,7 @@ Pojďme v aplikaci v baňce vytvořit trasu, která volá `synthesize.py`. Tato 
        return audio_response
    ```
 
-### <a name="update-indexhtml"></a>@No__t aktualizace – 0
+### <a name="update-indexhtml"></a>Aktualizovat `index.html`
 
 Teď, když máte funkci pro převod textu na řeč a trasu v aplikaci, abyste ji mohli zavolat, je dalším krokem spuštění psaní HTML pro vaši aplikaci. Následující kód HTML má několik věcí:
 
@@ -834,14 +834,14 @@ Teď, když máte funkci pro převod textu na řeč a trasu v aplikaci, abyste j
 
 5. Nezapomeňte svou práci uložit.
 
-### <a name="update-mainjs"></a>@No__t aktualizace – 0
+### <a name="update-mainjs"></a>Aktualizovat `main.js`
 
-V níže uvedeném kódu se k vytvoření požadavku na svou trasu na baňce používá obsah z HTML. Konkrétně je překlad a písmo hlasu přiřazen proměnným a pak předány spolu v požadavku do trasy `text-to-speech`.
+V níže uvedeném kódu se k vytvoření požadavku na svou trasu na baňce používá obsah z HTML. Konkrétně je překlad a písmo hlasu přiřazen proměnným a pak předány do požadavku `text-to-speech` trasy.
 
 Kód pak projde odpověďmi a aktualizuje kód HTML pomocí mínění skóre.
 
-1. V rámci integrovaného vývojového prostředí vytvořte v adresáři `static` soubor s názvem `main.js`.
-2. Kopírovat tento kód do `static/scripts/main.js`:
+1. V rámci integrovaného vývojového prostředí vytvořte soubor s názvem `main.js` v adresáři `static`.
+2. Zkopírovat tento kód do `static/scripts/main.js`:
    ```javascript
    // Convert text-to-speech
    $("#text-to-speech").on("click", function(e) {
@@ -873,7 +873,7 @@ Kód pak projde odpověďmi a aktualizuje kód HTML pomocí mínění skóre.
    });
    // Code for automatic language selection goes here.
    ```
-3. Už jste téměř hotovi. Poslední věc, kterou se chystáte udělat, je přidat nějaký kód `main.js` pro automatické výběr hlasového písma na základě jazyka vybraného pro překlad. Přidejte tento blok kódu do `main.js`:
+3. Už jste téměř hotovi. Poslední věc, kterou se chystáte udělat, je přidání kódu, který `main.js` k automatickému výběru hlasového písma na základě jazyka vybraného pro překlad. Přidejte tento blok kódu do `main.js`:
    ```javascript
    // Automatic voice font selection based on translation output.
    $('select[id="select-language"]').change(function(e) {

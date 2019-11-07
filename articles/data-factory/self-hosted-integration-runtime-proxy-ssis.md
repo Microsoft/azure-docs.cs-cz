@@ -1,5 +1,5 @@
 ---
-title: Konfigurace místního prostředí Integration runtime jako proxy pro SSIS v Azure Data Factory | Microsoft Docs
+title: Konfigurace místního prostředí Integration runtime jako proxy serveru pro SSIS v Azure Data Factory
 description: Přečtěte si, jak nakonfigurovat Integration Runtime v místním prostředí jako proxy pro Azure-SSIS Integration Runtime.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 2ade270011ad5c1e1e5f5940ca305687e52bba86
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 178628db11b95fbd345e94111ebf15809da3fc35
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200299"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684295"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>Konfigurace místního prostředí IR jako proxy pro Azure-SSIS IR v ADF
 Tento článek popisuje, jak spouštět balíčky služba SSIS (SQL Server Integration Services) (SSIS) v Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF) s místním prostředím IR nakonfigurovaným jako proxy.  Tato funkce umožňuje přístup k datům místně bez [připojení Azure-SSIS IR k virtuální síti](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).  To je užitečné v případě, že vaše podniková síť má příliš složitou zásadu konfigurace/omezující zásady, která umožňuje vložit do ní Azure-SSIS IR.
@@ -40,7 +40,7 @@ Nakonec budete muset stáhnout a nainstalovat nejnovější verzi prostředí IR
 Vytvořte propojenou službu Azure Blob Storage v rámci stejného ADF, kde jste nastavili Azure-SSIS IR, pokud jste to ještě neudělali, podle článku [jak vytvořit propojenou službu ADF](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service) .  Ověřte prosím následující:
 - Pro **úložiště dat** je vybraná možnost **Azure Blob Storage** .
 - **AutoResolveIntegrationRuntime** je vybraný pro **připojení prostřednictvím prostředí Integration runtime** .
-- Pro **metodu ověřování** je vybraný buď klíčový**objekt** **SAS identifikátoru URI**/ **klíče**/účtu.
+- Pro **metodu ověřování** je vybraný buď **klíč účtu**/**identifikátor URI SAS**/**instanční objekt** .
 
 ![Příprava propojené služby Azure Blob Storage pro přípravu](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -59,7 +59,7 @@ Když navrhujete nové balíčky obsahující úlohy toku dat se zdroji souborů
 ![Povolit vlastnost ConnectByProxy](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
 Tuto vlastnost můžete také povolit při spouštění existujících balíčků, aniž byste je museli ručně změnit o jednu.  K dispozici jsou dvě možnosti:
-- Otevřete, znovu sestavíte a znovu nasaďte projekt obsahující tyto balíčky s nejnovějším SSDT, který se má spustit na vašem Azure-SSIS IR: Vlastnost může být povolena nastavením **hodnoty true** pro příslušné Správce připojení, který se zobrazí na kartě **Správci připojení** v místním okně spustit balíček při spuštění balíčků z SSMS.
+- Otevřete, znovu sestavíte a znovu nasadíte projekt obsahující tyto balíčky s nejnovějším SSDT pro spuštění na vašem Azure-SSIS IR: vlastnost se dá povolit tak, že ji nastavíte na **true** pro příslušné Správce připojení, které se zobrazí v **připojení. Karta manažeři** v automaticky otevíraném okně pro spuštění balíčku při spouštění balíčků z SSMS.
 
   ![Povolit ConnectByProxy Vlastnost2](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
 
@@ -67,16 +67,16 @@ Tuto vlastnost můžete také povolit při spouštění existujících balíčk�
   
   ![Povolit ConnectByProxy property3](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
-- Opětovné nasazení projektu obsahujícího tyto balíčky ke spuštění v SSIS IR: Vlastnost se pak dá povolit tak `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`, že poskytne cestu k vlastnosti a nastaví ji na **true** jako přepsání vlastnosti na kartě **Upřesnit** v automaticky otevíraném okně spustit balíček při spouštění balíčků z SSMS.
+- Opětovné nasazení projektu obsahujícího tyto balíčky ke spuštění v SSIS IR: vlastnost se pak může povolit zadáním cesty vlastností, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`a nastavením na **hodnotu true** jako přepsání vlastnosti na kartě **Upřesnit** v místním okně spustit balíček. při spouštění balíčků z SSMS.
 
   ![Povolit ConnectByProxy property4](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
 
-  Vlastnost může být také povolena tím, že poskytuje `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`cestu k její vlastnosti a nastaví ji na **hodnotu true** jako přepsání vlastnosti na kartě **přepsání vlastností** [aktivity SSIS Package](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) při spouštění balíčků v kanálech ADF.
+  Vlastnost může být také povolena tím, že poskytuje cestu k vlastnostem, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`a nastavení na **hodnotu true** jako přepsání vlastnosti na kartě **přepsání vlastností** [aktivity balíčku](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) Overrides při spuštění balíčků v kanálech ADF.
   
   ![Povolit ConnectByProxy property5](media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png)
 
 ## <a name="debug-the-first-and-second-staging-tasks"></a>Ladění první a druhé pracovní úlohy
-V místním prostředí IR můžete najít protokoly modulu runtime ve `C:\ProgramData\SSISTelemetry` složce a protokoly spuštění první pracovní úlohy ve `C:\ProgramData\SSISTelemetry\ExecutionLog` složce.  Protokoly spouštění druhých pracovních úkolů najdete v SSISDB nebo zadaných cestách protokolování, v závislosti na tom, jestli vaše balíčky ukládáte do SSISDB nebo souborů/sdílených složek/souborů Azure (v uvedeném pořadí).  Jedinečné identifikátory první pracovní úlohy můžete také najít v protokolech spouštění druhé pracovní úlohy, např. 
+V místním prostředí IR můžete najít protokoly modulu runtime ve složce `C:\ProgramData\SSISTelemetry` a protokoly spouštění pro první pracovní úkoly v `C:\ProgramData\SSISTelemetry\ExecutionLog` složce.  Protokoly spouštění druhých pracovních úkolů najdete v SSISDB nebo zadaných cestách protokolování, v závislosti na tom, jestli vaše balíčky ukládáte do SSISDB nebo souborů/sdílených složek/souborů Azure (v uvedeném pořadí).  Jedinečné identifikátory první pracovní úlohy můžete také najít v protokolech spouštění druhé pracovní úlohy, např. 
 
 ![Jedinečné ID první pracovní úlohy](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
@@ -88,7 +88,7 @@ Druhý pracovní úkol, který běží na vašem Azure-SSIS IR, se nebude účto
 ## <a name="current-limitations"></a>Aktuální omezení
 
 - V současné době jsou podporovány pouze správci připojení souborů OLEDB a plochý soubor a zdroje OLEDB/ploché soubory. 
-- V současné době jsou podporovány pouze propojené služby Azure Blob Storage nakonfigurované s **klíčem**/účtu**SAS identifikátoru**/**zabezpečení** SAS.
+- V současné době jsou podporovány pouze propojené služby Azure Blob Storage nakonfigurované s **klíčem účtu**/**identifikátor URI SAS**/ověřování **instančního objektu** .
 - V současné době je podporována pouze místní prostředí IR zřízené v rámci stejného ADF, kde je zajištěna vaše Azure-SSIS IR.
 - Použití parametrů nebo proměnných SSIS ve vlastnostech zdrojů OLEDB/plochých souborů a správců připojení se nepodporuje.
 

@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 856f00b17a5ee994f8864c5d46ce4d796d68d367
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: df2f22f91cbed17035485d25369965d3284dbaf7
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497002"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622394"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Nasazení modelů pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ Pracovní postup je podobný bez ohledu na [to, kam model nasazujete](#target) :
 
 Další informace o konceptech, které jsou součástí pracovního postupu nasazení, najdete v tématu [Správa, nasazení a monitorování modelů pomocí Azure Machine Learning](concept-model-management-and-deployment.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -254,7 +254,7 @@ Tyto typy jsou aktuálně podporovány:
 * `pyspark`
 * Standardní objekt Pythonu
 
-Chcete-li použít generování schématu, zahrňte balíček `inference-schema` do souboru prostředí conda.
+Chcete-li použít generování schématu, zahrňte balíček `inference-schema` do souboru prostředí conda. Další informace o tomto balíčku najdete v tématu [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema).
 
 ##### <a name="example-dependencies-file"></a>Příklad souboru závislostí
 
@@ -608,9 +608,9 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 
 Další informace najdete v dokumentaci [AZ ml model Deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) .
 
-### <a id="notebookvm"></a>Webová služba COMPUTE instance (vývoj/testování)
+### <a id="notebookvm"></a>Webová služba poznámkového bloku (vývoj/testování)
 
-Přečtěte si téma [nasazení modelu pro Azure Machine Learning výpočetní instance](how-to-deploy-local-container-notebook-vm.md).
+Další informace najdete v tématu [nasazení modelu do virtuálního počítače poznámkového bloku Azure Machine Learning](how-to-deploy-local-container-notebook-vm.md).
 
 ### <a id="aci"></a>Azure Container Instances (vývoj/testování)
 
@@ -885,7 +885,7 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-Po vytvoření balíčku můžete použít `package.pull()` k vyžádání image do místního prostředí Docker. Výstup tohoto příkazu zobrazí název obrázku. Například: 
+Po vytvoření balíčku můžete použít `package.pull()` k vyžádání image do místního prostředí Docker. Výstup tohoto příkazu zobrazí název obrázku. Příklad: 
 
 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 
@@ -999,10 +999,12 @@ K odstranění registrovaného modelu použijte `model.delete()`.
 Další informace najdete v dokumentaci pro [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) a [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
 ## <a name="preview-no-code-model-deployment"></a>Tisk Nasazení modelu bez kódu
+
 Nasazení modelu bez kódu je momentálně ve verzi Preview a podporuje následující architektury strojového učení:
 
 ### <a name="tensorflow-savedmodel-format"></a>Formát Tensorflow SavedModel
-```
+
+```python
 from azureml.core import Model
 
 model = Model.register(workspace=ws,
@@ -1017,10 +1019,12 @@ service = Model.deploy(ws, service_name, [model])
 ```
 
 ### <a name="onnx-models"></a>Modely ONNX
+
 Registrace a nasazení modelu ONNX se podporuje pro libovolný graf odvození ONNX. Kroky předběžného zpracování a postprocess se v tuto chvíli nepodporují.
 
 Tady je příklad, jak zaregistrovat a nasadit model ONNX MNIST ručně zapsaných:
-```
+
+```python
 from azureml.core import Model
 
 model = Model.register(workspace=ws,
@@ -1033,11 +1037,14 @@ model = Model.register(workspace=ws,
 service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
+
 ### <a name="scikit-learn-models"></a>Modely Scikit – informace
+
 Pro všechny integrované typy modelů scikit-učí není podporováno žádné nasazení modelu kódu.
 
 Tady je příklad, jak zaregistrovat a nasadit model skriptu sklearn bez dalšího kódu:
-```
+
+```python
 from azureml.core import Model
 from azureml.core.resource_configuration import ResourceConfiguration
 
@@ -1055,7 +1062,8 @@ service = Model.deploy(ws, service_name, [model])
 ```
 
 Poznámka: tyto závislosti jsou zahrnuté v předem sestaveném kontejneru odvození skriptu sklearn:
-```
+
+```yaml
     - azureml-defaults
     - inference-schema[numpy-support]
     - scikit-learn
@@ -1063,6 +1071,7 @@ Poznámka: tyto závislosti jsou zahrnuté v předem sestaveném kontejneru odvo
 ```
 
 ## <a name="next-steps"></a>Další kroky
+
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
 * [Řešení potíží s nasazením](how-to-troubleshoot-deployment.md)
 * [Zabezpečené Azure Machine Learning webové služby pomocí protokolu SSL](how-to-secure-web-service.md)

@@ -1,5 +1,5 @@
 ---
-title: Podporované formáty souborů v Azure Data Factory | Microsoft Docs
+title: Podporované formáty souborů v Azure Data Factory
 description: Toto téma popisuje formáty souborů a kompresní kódy, které jsou podporovány konektory na bázi souborů v Azure Data Factory.
 author: linda33wj
 manager: craigg
@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 00d8fb69abb6ce74a36ff017f3f356cb86114d99
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d0183e991a3cbc0481aff44b5b0f03eaa9d43103
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72930917"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683971"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Podporované formáty souborů a kompresní kodeky v Azure Data Factory
 
@@ -74,7 +74,7 @@ V následující definici JSON pro datovou sadu jsou zadány některé voliteln�
 },
 ```
 
-Pokud chcete místo `quoteChar` použít `escapeChar`, nahraďte řádek s `quoteChar` touto hodnotou escapeChar:
+Pokud chcete místo `escapeChar` použít `quoteChar`, nahraďte řádek s `quoteChar` touto hodnotou escapeChar:
 
 ```json
 "escapeChar": "$",
@@ -235,7 +235,7 @@ a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu a přito
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | PC | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 1/13/2017 11:24:37 AM |
 
-Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A to konkrétně:
+Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A konkrétně:
 
 - Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Další informace najdete v tématu [mapování sloupců zdrojové datové sady na cílové sloupce datové sady](copy-activity-schema-and-type-mapping.md).
 - `jsonPathDefinition` určuje cestu JSON pro jednotlivé sloupce a udává, odkud se mají extrahovat data. Chcete-li kopírovat data z pole, můžete použít `array[x].property` k extrakci hodnoty dané vlastnosti z objektu `xth` nebo můžete použít `array[*].property` k vyhledání hodnoty z libovolného objektu, který tuto vlastnost obsahuje.
@@ -310,7 +310,7 @@ a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu a přito
 | 01 | 20170122 | P3 | 231 | `[{"sanmateo":"No 1"}]` |
 
 
-Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A to konkrétně:
+Vstupní datová sada typu **JsonFormat** je definovaná následujícím způsobem (částečná definice obsahující jenom relevantní části). A konkrétně:
 
 - Oddíl `structure` definuje vlastní názvy sloupců a odpovídající datový typ při převodu do tabulkového formátu. Pokud mapování sloupců není potřeba, je tento oddíl **nepovinný**. Další informace najdete v tématu [mapování sloupců zdrojové datové sady na cílové sloupce datové sady](copy-activity-schema-and-type-mapping.md).
 - `jsonNodeReference` označuje, že se má iterovat a extrahovat data z objektů se stejným vzorem v rámci **pole** `orderlines`.
@@ -365,7 +365,7 @@ Pokud máte v SQL Database následující tabulku:
 
 | ID | order_date | order_price | order_by |
 | --- | --- | --- | --- |
-| 1\. místo | 20170119 | 2000 | David |
+| 1 | 20170119 | 2000 | David |
 | 2 | 20170120 | 3500 | Patrick |
 | 3 | 20170121 | 4000 | Jason |
 
@@ -446,13 +446,13 @@ Pro kopírování běžící v místním prostředí IR s Parquet serializací/d
 
 ![Nastavení velikosti haldy JVM v místním prostředí IR](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
-Příklad: nastavte proměnnou `_JAVA_OPTIONS` s hodnotou `-Xms256m -Xmx16g`. Příznak `Xms` určuje počáteční fond přidělení paměti pro prostředí Java Virtual Machine (JVM), zatímco `Xmx` určuje maximální fond přidělení paměti. To znamená, že JVM se spustí s `Xms` velikostí paměti a bude moci využít maximálně `Xmx` množství paměti. Ve výchozím nastavení ADF používá minimální 64 MB a maximální 1G.
+Příklad: nastavte proměnnou `_JAVA_OPTIONS` s hodnotou `-Xms256m -Xmx16g`. Příznak `Xms` Určuje počáteční fond přidělení paměti pro prostředí Java Virtual Machine (JVM), zatímco `Xmx` určuje maximální fond přidělení paměti. To znamená, že JVM se spustí s `Xms` velikostí paměti a bude moci využít maximálně `Xmx` množství paměti. Ve výchozím nastavení ADF používá minimální 64 MB a maximální 1G.
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Mapování datových typů pro soubory Parquet
 
 | Typ dat interim Data Factory | Parquet primitivní typ | Původní typ Parquet (deserializace) | Parquet – původní typ (serializace) |
 |:--- |:--- |:--- |:--- |
-| Logická hodnota | Logická hodnota | Nevztahuje se | Nevztahuje se |
+| Logická hodnota | Logická hodnota | Není dostupné. | Není dostupné. |
 | SByte | Uvedena | Int8 | Int8 |
 | Bytové | Uvedena | UInt8 | Int16 |
 | Int16 | Uvedena | Int16 | Int16 |
@@ -461,17 +461,17 @@ Příklad: nastavte proměnnou `_JAVA_OPTIONS` s hodnotou `-Xms256m -Xmx16g`. P�
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
 | UInt64 | Int64/binární | UInt64 | Notaci |
-| Jednoduchá | Plovák | Nevztahuje se | Nevztahuje se |
-| Klepat | Klepat | Nevztahuje se | Nevztahuje se |
+| Jednoduchá | Plovák | Není dostupné. | Není dostupné. |
+| Klepat | Klepat | Není dostupné. | Není dostupné. |
 | Notaci | Tvaru | Notaci | Notaci |
 | Řetězec | Tvaru | UTF | UTF |
-| Datum a čas | Int96 | Nevztahuje se | Nevztahuje se |
-| TimeSpan | Int96 | Nevztahuje se | Nevztahuje se |
-| DateTimeOffset | Int96 | Nevztahuje se | Nevztahuje se |
-| ByteArray | Tvaru | Nevztahuje se | Nevztahuje se |
+| DateTime | Int96 | Není dostupné. | Není dostupné. |
+| TimeSpan | Int96 | Není dostupné. | Není dostupné. |
+| DateTimeOffset | Int96 | Není dostupné. | Není dostupné. |
+| ByteArray | Tvaru | Není dostupné. | Není dostupné. |
 | Guid | Tvaru | UTF | UTF |
 | char | Tvaru | UTF | UTF |
-| CharArray | Nepodporováno | Nevztahuje se | Nevztahuje se |
+| CharArray | Nepodporuje se | Není dostupné. | Není dostupné. |
 
 ## <a name="orc-format"></a>Formát ORC
 
@@ -518,7 +518,7 @@ Pro kopírování běžící v místním prostředí IR s ORC serializací/deser
 | Klepat | Klepat |
 | Notaci | Notaci |
 | Řetězec | Řetězec |
-| Datum a čas | Časové razítko |
+| DateTime | Časové razítko |
 | DateTimeOffset | Časové razítko |
 | TimeSpan | Časové razítko |
 | ByteArray | Tvaru |

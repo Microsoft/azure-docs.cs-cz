@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s brána správy dat | Dokumentace Microsoftu
-description: Poskytuje tipy, jak řešit problémy spojené s brána správy dat.
+title: Řešení potíží s Správa dat bránou
+description: Poskytuje tipy pro řešení potíží souvisejících s Správa dat bránou.
 services: data-factory
 author: nabhishek
 manager: craigg
@@ -12,276 +12,276 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 0559d89bd691323a95713d518df05e58283cef39
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 34930061189c11c9cea9c2cd0feb2ede9aade74d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61252321"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682324"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Řešení potíží při použití Brány pro správu dat
-Tento článek obsahuje informace o odstraňování potíží s pomocí brány správy dat.
+Tento článek poskytuje informace o řešení potíží s používáním Správa dat brány.
 
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [v místním prostředí integration runtime ve službě Data Factory](../create-self-hosted-integration-runtime.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [Integration runtime v místním prostředí v Data Factory](../create-self-hosted-integration-runtime.md).
 
-Zobrazit [brána správy dat](data-factory-data-management-gateway.md) podrobné informace o bráně. Zobrazit [přesun dat mezi místním prostředím a cloudem](data-factory-move-data-between-onprem-and-cloud.md) článku návod pro přesun dat z databáze v místním SQL serveru do Microsoft Azure Blob storage s použitím brány.
+Podrobné informace o bráně najdete v článku o [bráně Správa dat](data-factory-data-management-gateway.md) . Návod k přesunutí dat z místní databáze SQL Server do úložiště Microsoft Azure BLOB pomocí brány najdete v článku [přesunutí dat mezi místním prostředím a cloudem](data-factory-move-data-between-onprem-and-cloud.md) .
 
-## <a name="failed-to-install-or-register-gateway"></a>Nepovedlo se nainstalovat nebo registrace brány
-### <a name="1-problem"></a>1. Problém
-Se zobrazí tato chybová zpráva při instalaci a registraci brány, konkrétně při stahování instalační soubor brány.
+## <a name="failed-to-install-or-register-gateway"></a>Nepovedlo se nainstalovat nebo zaregistrovat bránu.
+### <a name="1-problem"></a>1. problém
+Tato chybová zpráva se zobrazí při instalaci a registraci brány, konkrétně při stahování instalačního souboru brány.
 
 `Unable to connect to the remote server". Please check your local settings (Error Code: 10003).`
 
 #### <a name="cause"></a>Příčina
-Na počítači, na které se pokoušíte nainstalovat bránu se nepodařilo stažení nejnovějšího instalačního souboru brány ze služby Stažení softwaru kvůli problému v síti.
+Počítači, na který se pokoušíte nainstalovat bránu, se nepovedlo stáhnout nejnovější instalační soubor brány z webu Download Center kvůli problému v síti.
 
 #### <a name="resolution"></a>Řešení
-Zkontrolujte nastavení proxy serveru brány firewall chcete zobrazit, zda nastavení blokování síťové připojení mezi počítačem [centra stahování](https://download.microsoft.com/)a aktualizujte nastavení odpovídajícím způsobem.
+Zkontrolujte nastavení proxy server brány firewall, abyste viděli, jestli nastavení zablokovalo síťové připojení z počítače ke [službě Stažení softwaru](https://download.microsoft.com/), a aktualizujte nastavení odpovídajícím způsobem.
 
-Alternativně můžete stáhnout instalační soubor pro nejnovější brány z [centra stahování](https://www.microsoft.com/download/details.aspx?id=39717) na jiných počítačích, které můžou přistupovat k webu download center. Pak můžete zkopírovat soubor Instalační služby systému k hostitelskému počítači brány a spustit ji ručně nainstalovat a aktualizovat bránu.
+Případně můžete stáhnout instalační soubor pro nejnovější bránu z [webu Download Center](https://www.microsoft.com/download/details.aspx?id=39717) na dalších počítačích, které mají přístup ke službě Stažení softwaru. Potom můžete zkopírovat instalační soubor do hostitelského počítače brány a spustit ho ručně a nainstalovat a aktualizovat bránu.
 
-### <a name="2-problem"></a>2. Problém
-Pokud se pokoušíte bránu nainstalovat po kliknutí se zobrazí tato chyba **přímo na tento počítač nainstalovat** na webu Azure Portal.
+### <a name="2-problem"></a>2. problém
+Tato chyba se zobrazí při pokusu o instalaci brány kliknutím na **instalovat přímo na tomto počítači** v Azure Portal.
 
 `Error:  Abort installing a new gateway on this computer because this computer has an existing installed gateway and a computer without any installed gateway is required for installing a new gateway.`  
 
 #### <a name="cause"></a>Příčina
-Brána je již nainstalován na počítači.
+Brána je už na tomto počítači nainstalovaná.
 
 #### <a name="resolution"></a>Řešení
-Odinstalovat stávající brány na počítači a klikněte na tlačítko **přímo na tento počítač nainstalovat** znovu propojit.
+Odinstalujte existující bránu na počítači a znovu klikněte na odkaz **instalovat přímo na tento počítač** .
 
-### <a name="3-problem"></a>3. Problém
-Tato chyba může zobrazit při registraci nové brány.
+### <a name="3-problem"></a>3. problém
+Tato chyba se může zobrazit při registraci nové brány.
 
 `Error: The gateway has encountered an error during registration.`
 
 #### <a name="cause"></a>Příčina
-Může se zobrazit tato zpráva pro jednu z následujících důvodů:
+Tato zpráva se může zobrazit z jednoho z následujících důvodů:
 
 * Formát klíče brány je neplatný.
-* Platnost klíče brány byla zrušena.
-* Brána klíč byl obnoven z portálu.  
+* Platnost klíče brány se zrušila.
+* Klíč brány se znovu vygeneroval z portálu.  
 
 #### <a name="resolution"></a>Řešení
-Ověřte, zda používáte správný brány klíč z portálu. V případě potřeby znovu vygenerujte klíč a pomocí klíče ji zaregistrovat ve.
+Ověřte, jestli používáte správný klíč brány z portálu. V případě potřeby znovu vygenerujte klíč a pomocí klíče Zaregistrujte bránu.
 
-### <a name="4-problem"></a>4. Problém
-Zobrazí se pravděpodobně následující chybová zpráva při registraci brány.
+### <a name="4-problem"></a>4. problém
+Při registraci brány se může zobrazit následující chybová zpráva.
 
 `Error: The content or format of the gateway key "{gatewayKey}" is invalid, please go to azure portal to create one new gateway or regenerate the gateway key.`
 
 
 
-![Obsah nebo formát klíče je neplatný](media/data-factory-troubleshoot-gateway-issues/invalid-format-gateway-key.png)
+![Obsah nebo formát klíče je neplatný.](media/data-factory-troubleshoot-gateway-issues/invalid-format-gateway-key.png)
 
 #### <a name="cause"></a>Příčina
-Obsah nebo formát vstupní brána klíče je nesprávné. Jedním z důvodů může být, že jste si zkopírovali pouze část klíče z portálu nebo používáte neplatný klíč.
+Obsah nebo Formát vstupního klíče brány nejsou správné. Jedním z důvodů může být, že jste zkopírovali jenom část klíče z portálu nebo nepoužíváte Neplatný klíč.
 
 #### <a name="resolution"></a>Řešení
-Vygenerujte klíč brány na portálu a pomocí tlačítka pro kopírování zkopírujte celý klíč. Následně jej vložte do tohoto okna k registraci brány.
+Na portálu vygenerujte klíč brány a pomocí tlačítka Kopírovat zkopírujte celý klíč. Pak ho vložte do tohoto okna a zaregistrujte bránu.
 
-### <a name="5-problem"></a>5. Problém
-Zobrazí se pravděpodobně následující chybová zpráva při registraci brány.
+### <a name="5-problem"></a>5. problém
+Při registraci brány se může zobrazit následující chybová zpráva.
 
 `Error: The gateway key is invalid or empty. Specify a valid gateway key from the portal.`
 
-![Brána klíč je neplatný nebo prázdný](media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png)
+![Klíč brány je neplatný nebo prázdný.](media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png)
 
 #### <a name="cause"></a>Příčina
-Byly znovu vygenerovány klíč brány nebo byl odstraněn brány na webu Azure Portal. Je také může dojít, pokud instalační program brány správy dat není nejnovější.
+Klíč brány se znovu vygeneroval nebo se brána v Azure Portal odstranila. K tomu může dojít také v případě, že instalace brány Správa dat není nejnovější.
 
 #### <a name="resolution"></a>Řešení
-Zaškrtněte, pokud instalační program brány správy dat je na nejnovější verzi, můžete nejnovější verzi naleznete na webu společnosti Microsoft [centra stahování](https://go.microsoft.com/fwlink/p/?LinkId=271260).
+Ověřte, jestli je instalační program brány Správa dat nejnovější verzi. nejnovější verzi najdete na webu Microsoft [Download Center](https://go.microsoft.com/fwlink/p/?LinkId=271260).
 
-Pokud je aktuální / nejnovější nastavení a brány stále existuje na portálu, znovu vygenerovat klíč brány na webu Azure Portal a pomocí tlačítka pro kopírování zkopírujte celý klíč a vložte ho v tomto okně registrace brány. V opačném případě znovu vytvořte bránu a začít od začátku.
+Pokud je instalační program aktuální nebo nejnovější a na portálu stále existuje brána, znovu vygenerujte klíč brány v Azure Portal a pomocí tlačítka Kopírovat zkopírujte celý klíč a pak ho vložte do tohoto okna, abyste mohli bránu zaregistrovat. V opačném případě znovu vytvořte bránu a začněte znovu.
 
-### <a name="6-problem"></a>6. Problém
-Zobrazí se pravděpodobně následující chybová zpráva při registraci brány.
+### <a name="6-problem"></a>6. problém
+Při registraci brány se může zobrazit následující chybová zpráva.
 
 `Error: Gateway has been online for a while, then shows “Gateway is not registered” with the status “Gateway key is invalid”`
 
-![Brána klíč je neplatný nebo prázdný](media/data-factory-troubleshoot-gateway-issues/gateway-not-registered-key-invalid.png)
+![Klíč brány je neplatný nebo prázdný.](media/data-factory-troubleshoot-gateway-issues/gateway-not-registered-key-invalid.png)
 
 #### <a name="cause"></a>Příčina
-K této chybě může dojít, protože brána byla odstraněna nebo přidružené bráně klíč byl obnoven.
+K této chybě může dojít, protože brána byla odstraněna nebo byl znovu vygenerován příslušný klíč brány.
 
 #### <a name="resolution"></a>Řešení
-Pokud brána byla odstraněna, znovu vytvořte bránu z portálu, klikněte na tlačítko **zaregistrovat**, zkopírujte klíč z portálu, vložte ho a zkuste registraci brány.
+Pokud byla brána odstraněna, znovu ji vytvořte z portálu, klikněte na **zaregistrovat**, zkopírujte klíč z portálu, vložte ho a zkuste zaregistrovat bránu.
 
-Pokud brána stále existuje, ale jeho klíč byl obnoven, použijte nový klíč k registraci brány. Pokud nemáte klíč, znovu vygenerujte klíč znovu z portálu.
+Pokud brána stále existuje, ale její klíč se znovu vygeneroval, zaregistrujte bránu pomocí nového klíče. Pokud klíč nemáte, znovu vygenerujte klíč z portálu.
 
-### <a name="7-problem"></a>7. Problém
-Při registraci brány, možná muset zadat cestu a heslo pro certifikát.
+### <a name="7-problem"></a>7. problém
+Když zaregistrujete bránu, možná budete muset zadat cestu a heslo pro certifikát.
 
-![Zadejte certifikát](media/data-factory-troubleshoot-gateway-issues/specify-certificate.png)
+![Zadat certifikát](media/data-factory-troubleshoot-gateway-issues/specify-certificate.png)
 
 #### <a name="cause"></a>Příčina
-Brána je zaregistrován na jiných počítačích než. Při počáteční registraci brány byla přidružena brány šifrovací certifikát. Certifikát můžete se svým generovaných brány nebo uživatel zadal.  Tento certifikát se používá k šifrování přihlašovacích údajů úložiště dat (propojené služby).  
+Brána byla zaregistrována na jiných počítačích před. Během prvotní registrace brány byl k bráně přidružen šifrovací certifikát. Certifikát může být buď vygenerovaný automaticky bránou, nebo poskytnutý uživatelem.  Tento certifikát slouží k šifrování přihlašovacích údajů úložiště dat (propojených služeb).  
 
 ![Export certifikátu](media/data-factory-troubleshoot-gateway-issues/export-certificate.png)
 
-Při obnovení brány na jiný hostitelský počítač, Průvodce registrací vyzve k zadání tohoto certifikátu dešifrovat přihlašovací údaje dříve zašifrována s tímto certifikátem.  Bez tohoto certifikátu není možné dešifrovat přihlašovací údaje, pomocí nové brány a následné kopie aktivity spuštění přidružené k této nové brány se nezdaří.  
+Při obnovení brány na jiném hostitelském počítači Průvodce registrací vyžádá tento certifikát k dešifrování přihlašovacích údajů dříve šifrovaných pomocí tohoto certifikátu.  Bez tohoto certifikátu se přihlašovací údaje nedají dešifrovat novou bránou a následné provádění aktivit kopírování přidružené k této nové bráně selže.  
 
 #### <a name="resolution"></a>Řešení
-Pokud jste exportovali certifikát přihlašovacích údajů z původní počítač brány s použitím **exportovat** tlačítko **nastavení** kartu v Data Management Gateway Configuration Manager, použijte certifikát Tady.
+Pokud jste vyexportovali certifikát přihlašovacích údajů z původního počítače brány pomocí tlačítka **exportovat** na kartě **nastavení** v Správa dat Configuration Manager brány, použijte zde certifikát.
 
-Při obnovování brány nelze přeskočit tuto fázi. Pokud chybí certifikát, musíte bránu odstranit z portálu a znovu vytvořit novou bránu.  Kromě toho aktualizujte všechny propojené služby, které se vztahují k bráně nutnosti opětovného zadávání přihlašovacích údajů.
+Tuto fázi nelze přeskočit při obnovování brány. Pokud certifikát chybí, musíte bránu odstranit z portálu a znovu vytvořit novou bránu.  Kromě toho aktualizujte všechny propojené služby, které souvisí s bránou, tak, že znovu zadáte své přihlašovací údaje.
 
-### <a name="8-problem"></a>8. Problém
-Zobrazí se pravděpodobně následující chybová zpráva.
+### <a name="8-problem"></a>8. problém
+Může se zobrazit následující chybová zpráva.
 
 `Error: The remote server returned an error: (407) Proxy Authentication Required.`
 
 #### <a name="cause"></a>Příčina
-K této chybě dochází, když vaše brána je v prostředí, které vyžaduje proxy server HTTP pro přístup k internetovým prostředkům nebo váš proxy server ověřování heslo se změnilo, ale není příslušným způsobem aktualizuje v bráně.
+K této chybě dochází, pokud je brána v prostředí, které vyžaduje proxy server HTTP pro přístup k prostředkům Internetu, nebo se změní heslo pro ověřování proxy serveru, ale ve vaší bráně není odpovídajícím způsobem aktualizován.
 
 #### <a name="resolution"></a>Řešení
-Postupujte podle pokynů v části aspekty Proxy serveru tohoto článku a konfigurace nastavení proxy serveru pomocí Data Management Gateway Configuration Manager.
+Postupujte podle pokynů v části věnované hledisku proxy serveru v tomto článku a nakonfigurujte nastavení proxy pomocí Správa dat brány Configuration Manager.
 
-## <a name="gateway-is-online-with-limited-functionality"></a>Brána je online s omezenou funkčností
-### <a name="1-problem"></a>1. Problém
-Zobrazí stav brány jako online s omezenou funkčností.
+## <a name="gateway-is-online-with-limited-functionality"></a>Brána je online s omezenými funkcemi
+### <a name="1-problem"></a>1. problém
+Zobrazuje se stav brány jako online s omezenými funkcemi.
 
 #### <a name="cause"></a>Příčina
-Zobrazí stav brány jako online s omezenou funkčností pro jednu z následujících důvodů:
+Stav brány se zobrazí jako online s omezenými funkcemi z jednoho z následujících důvodů:
 
-* Brána se nemůže připojit ke cloudové službě Azure Service Bus.
-* Cloudová služba nemůže připojit k bráně prostřednictvím služby Service Bus.
+* Brána se nemůže ke cloudové službě připojit prostřednictvím Azure Service Bus.
+* Cloudová služba se nemůže připojit k bráně prostřednictvím Service Bus.
 
-Když brána je online s omezenou funkčností, nemusí být možné použít Průvodce kopírováním služby Data Factory k vytvoření kanálů dat pro kopírování dat do nebo z místních úložišť dat. Jako alternativní řešení můžete použít Editor služby Data Factory na portálu, Visual Studio nebo Azure Powershellu.
+Pokud je brána online s omezenými funkcemi, možná nebudete moci použít Průvodce kopírováním Data Factory k vytváření datových kanálů pro kopírování dat do nebo z místních úložišť dat. Jako alternativní řešení můžete použít Data Factory Editor na portálu, v aplikaci Visual Studio nebo v Azure PowerShell.
 
 #### <a name="resolution"></a>Řešení
-Řešení tohoto problému (online s omezenou funkčností) je založena na, jestli se brána nemůže připojit k cloudové službě nebo jiným způsobem. Následující části obsahují tato řešení.
+Řešení tohoto problému (online s omezenými funkcemi) je založené na tom, jestli se brána nemůže připojit ke cloudové službě, nebo jiným způsobem. Následující části obsahují tato řešení.
 
-### <a name="2-problem"></a>2. Problém
-Zobrazí následující chyba.
+### <a name="2-problem"></a>2. problém
+Zobrazí se následující chyba.
 
 `Error: Gateway cannot connect to cloud service through service bus`
 
-![Brána se nemůže připojit k cloudové službě](media/data-factory-troubleshoot-gateway-issues/gateway-cannot-connect-to-cloud-service.png)
+![Brána se nemůže připojit ke cloudové službě.](media/data-factory-troubleshoot-gateway-issues/gateway-cannot-connect-to-cloud-service.png)
 
 #### <a name="cause"></a>Příčina
-Brána se nemůže připojit ke cloudové službě prostřednictvím služby Service Bus.
+Brána se nemůže ke cloudové službě připojit prostřednictvím Service Bus.
 
 #### <a name="resolution"></a>Řešení
-Následujícím postupem získejte bránu zpět do režimu online:
+Použijte následující postup, chcete-li bránu opět přejít do režimu online:
 
-1. Odchozí pravidla na počítači brány a podnikové brány firewall povolit IP adresy. IP adresy můžete najít v protokolu událostí Windows (ID == 401): Byl proveden pokus o přístup k soketu tak její přístupová oprávnění XX připojení zakázáno. XX. XX. XX:9350.
-1. Konfigurace nastavení proxy serveru na bráně. Najdete v části aspekty Proxy serveru podrobnosti.
-1. Povolte Odchozí porty firewallu Windows na počítači brány a podnikové brány firewall 9350-9354 a 5671. Najdete v části porty a brány firewall pro podrobnosti. Tento krok je volitelný, ale doporučujeme ho pro posouzení výkonu.
+1. Povolí odchozí pravidla IP adres na počítači brány a v podnikové bráně firewall. IP adresy můžete najít z protokolu událostí systému Windows (ID = = 401): byl proveden pokus o přístup k soketu způsobem zakázanému jeho přístupovými oprávněními XX. CZK. CZK. XX: 9350.
+1. Nakonfigurujte nastavení proxy serveru v bráně. Podrobnosti najdete v části věnované hledisku proxy serveru.
+1. Povolte Odchozí porty 5671 a 9350-9354 na bráně Windows Firewall na počítači brány a v podnikové bráně firewall. Podrobnosti najdete v části porty a brána firewall. Tento krok je nepovinný, ale doporučujeme zvážit jeho výkon.
 
-### <a name="3-problem"></a>3. Problém
-Zobrazí následující chyba.
+### <a name="3-problem"></a>3. problém
+Zobrazí se následující chyba.
 
 `Error: Cloud service cannot connect to gateway through service bus.`
 
 #### <a name="cause"></a>Příčina
-Přechodné chybě připojení k síti.
+Přechodná Chyba připojení k síti
 
 #### <a name="resolution"></a>Řešení
-Následujícím postupem získejte bránu zpět do režimu online:
+Použijte následující postup, chcete-li bránu opět přejít do režimu online:
 
-1. Počkejte několik minut, připojení se automaticky obnoví při chyba je pryč.
+1. Počkejte pár minut, připojení se automaticky obnoví, až bude chyba pryč.
 1. Pokud chyba přetrvává, restartujte službu brány.
 
-## <a name="failed-to-author-linked-service"></a>Nepovedlo se vytvořit propojené služby
+## <a name="failed-to-author-linked-service"></a>Nepovedlo se vytvořit propojenou službu.
 ### <a name="problem"></a>Problém
-Při pokusu o použijte Správce přihlašovacích údajů portálu a zadejte přihlašovací údaje pro nové propojené služby, nebo aktualizujte přihlašovací údaje pro existující propojenou službu, může se zobrazit tato chyba.
+Tato chyba se může zobrazit při pokusu o použití Správce přihlašovacích údajů na portálu k zadání přihlašovacích údajů pro novou propojenou službu nebo k aktualizaci přihlašovacích údajů pro existující propojenou službu.
 
 `Error: The data store '<Server>/<Database>' cannot be reached. Check connection settings for the data source.`
 
-Když se zobrazí tato chyba, na stránce nastavení Data Management Gateway Configuration Manageru může vypadat jako na následujícím snímku obrazovky.
+Když se zobrazí tato chyba, stránka nastavení Configuration Manager Správa dat brány by mohla vypadat jako na následujícím snímku obrazovky.
 
-![Databáze je nedostupné.](media/data-factory-troubleshoot-gateway-issues/database-cannot-be-reached.png)
+![Databáze není dostupná.](media/data-factory-troubleshoot-gateway-issues/database-cannot-be-reached.png)
 
 #### <a name="cause"></a>Příčina
-Certifikát SSL je může ztratit na počítači brány. Počítači brány nelze načíst aktuálně certifikát, který se používá pro šifrování SSL. Také může zobrazit chybovou zprávu do protokolu událostí, která se podobá následující zprávě.
+Je možné, že se na počítači brány ztratil certifikát SSL. Počítač brány nemůže načíst certifikát, který je aktuálně používán pro šifrování SSL. Může se zobrazit také chybová zpráva v protokolu událostí, která je podobná následující zprávě.
 
  `Unable to get the gateway settings from cloud service. Check the gateway key and the network connection. (Certificate with thumbprint cannot be loaded.)`
 
 #### <a name="resolution"></a>Řešení
-Postupujte podle těchto kroků problém vyřešit:
+Problém můžete vyřešit pomocí těchto kroků:
 
-1. Spusťte Správce konfigurace služby Data Management Gateway.
+1. Spusťte Správa dat Configuration Manager brány.
 2. Přepněte na kartu **Nastavení**.  
-3. Klikněte na tlačítko **změnit** tlačítko a změňte certifikát SSL.
+3. Chcete-li změnit certifikát SSL, klikněte na tlačítko **změnit** .
 
    ![Tlačítko změnit certifikát](media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png)
-4. Vyberte nový certifikát jako certifikát SSL. Můžete použít libovolný certifikát SSL, který je generován jste nebo jakékoli organizaci.
+4. Vyberte nový certifikát jako certifikát SSL. Můžete použít jakýkoli certifikát SSL, který vygenerujete vy nebo libovolnou organizaci.
 
-   ![Zadejte certifikát](media/data-factory-troubleshoot-gateway-issues/specify-http-end-point.png)
+   ![Zadat certifikát](media/data-factory-troubleshoot-gateway-issues/specify-http-end-point.png)
 
-## <a name="copy-activity-fails"></a>Aktivita kopírování selže
+## <a name="copy-activity-fails"></a>Aktivita kopírování se nezdařila
 ### <a name="problem"></a>Problém
-Můžete si všimnout následujícího selhání "UserErrorFailedToConnectToSqlserver" po nastavení kanálu na portálu.
+Po nastavení kanálu na portálu si můžete všimnout následujícího selhání UserErrorFailedToConnectToSqlserver.
 
 `Error: Copy activity encountered a user error: ErrorCode=UserErrorFailedToConnectToSqlServer,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Cannot connect to SQL Server`
 
 #### <a name="cause"></a>Příčina
-K tomu může dojít z různých důvodů a omezení rizik se liší odpovídajícím způsobem.
+K tomu může dojít z různých důvodů a zmírnění omezení se podle potřeby mění.
 
 #### <a name="resolution"></a>Řešení
-Povolte odchozí připojení TCP přes port TCP/1433 na Brána pro správu dat na straně klienta před připojováním k databázi SQL.
+Před připojením k databázi SQL povolte odchozí připojení TCP přes port TCP/1433 na straně klienta Správa dat brány.
 
-Pokud cílová databáze Azure SQL database, zkontrolujte nastavení systému SQL Server brány firewall pro Azure i.
+Pokud je cílovou databází Azure SQL Database, ověřte také SQL Server nastavení brány firewall pro Azure.
 
-Následující část k otestování připojení k úložišti dat místní.
+Pokud chcete otestovat připojení k místnímu úložišti dat, přečtěte si následující část.
 
 ## <a name="data-store-connection-or-driver-related-errors"></a>Připojení úložiště dat nebo chyby související s ovladačem
-Pokud se zobrazí data uložit připojení nebo chyby související s ovladačem, proveďte následující kroky:
+Pokud se zobrazí chyby související s připojením nebo ovladačem úložiště dat, proveďte následující kroky:
 
-1. Spusťte Správce konfigurace brány pro správu dat na počítači brány.
-2. Přepněte **diagnostiky** kartu.
-3. V **Test připojení**, přidejte skupiny hodnoty brány.
-4. Klikněte na tlačítko **Test** zobrazíte, pokud se můžete připojit k místnímu zdroji dat z počítače brány s použitím informací o připojení a přihlašovací údaje. Pokud se testovací připojení nepodaří ani po instalaci ovladače, restartujte bránu, aby se získaly nejnovější změny.
+1. Spusťte Správa dat Configuration Manager brány na počítači brány.
+2. Přepněte na kartu **Diagnostika** .
+3. V části **Test připojení**přidejte hodnoty skupiny brány.
+4. Kliknutím na **test** zjistíte, jestli se můžete připojit k místnímu zdroji dat z počítače brány pomocí informací o připojení a přihlašovacích údajů. Pokud se testovací připojení nepodaří ani po instalaci ovladače, restartujte bránu, aby se získaly nejnovější změny.
 
-![Test připojení v karta Diagnostika](media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png)
+![Test připojení na kartě Diagnostika](media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png)
 
 ## <a name="gateway-logs"></a>Protokoly brány
-### <a name="send-gateway-logs-to-microsoft"></a>Poslat Microsoftu protokoly brány
-Až budete kontaktovat Microsoft Support pomoc při řešení potíží bránu, může se zobrazit výzva k sdílet protokoly brány. Verze brány můžete sdílet protokoly požadované brány s dvě kliknutí na tlačítko v Data Management Gateway Configuration Manager.    
+### <a name="send-gateway-logs-to-microsoft"></a>Posílání protokolů brány Microsoftu
+Když kontaktujete podpora Microsoftu a získáte pomoc s řešením problémů s bránou, může se zobrazit výzva, abyste nasdíleli protokoly brány. S vydáním brány můžete sdílet požadované protokoly brány pomocí dvou kliknutí na tlačítko v Správa dat brány Configuration Manager.    
 
-1. Přepněte **diagnostiky** kartu v Data Management Gateway Configuration Manager.
+1. V Configuration Manager Správa dat brány přepněte na kartu **Diagnostika** .
 
-    ![Karta Diagnostika brány správy dat](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-diagnostics-tab.png)
-2. Klikněte na tlačítko **odeslat protokoly** zobrazíte následující dialogové okno.
+    ![Karta diagnostiky Správa dat brány](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-diagnostics-tab.png)
+2. Kliknutím na **Odeslat protokoly** zobrazíte následující dialogové okno.
 
-    ![Data Management Gateway odesílání protokolů](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-dialog.png)
-3. (Volitelné) Klikněte na tlačítko **zobrazit protokoly** Zkontrolujte protokoly v události prohlížeč.
-4. (Volitelné) Klikněte na tlačítko **ochrany osobních údajů** ke kontrole prohlášení společnosti Microsoft webové služby.
-5. Až budete spokojení s co se chystáte nahrát, klikněte na tlačítko **odeslat protokoly** skutečně odeslat protokoly z posledních sedmi dnů společnosti Microsoft pro řešení potíží. Stav operace Odeslat protokoly byste měli vidět, jak je znázorněno na následujícím snímku obrazovky.
+    ![Protokoly odeslání protokolů Správa dat brány](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-dialog.png)
+3. Volitelné Kliknutím na **Zobrazit protokoly** Zkontrolujte protokoly v prohlížeči událostí.
+4. Volitelné Kliknutím na **Ochrana osobních údajů** zkontrolujte prohlášení o zásadách ochrany osobních údajů v Microsoft Web Services.
+5. Až budete spokojeni s tím, co se chystáte nahrát, klikněte na **Odeslat protokoly** a ve skutečnosti odešlete protokoly za posledních 7 dní do Microsoftu pro řešení potíží. Měl by se zobrazit stav operace Odeslat protokoly, jak je znázorněno na následujícím snímku obrazovky.
 
-    ![Stav data Management Gateway odesílání protokolů.](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
+    ![Stav odesílání protokolů služby Správa dat Gateway](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
 6. Po dokončení operace se zobrazí dialogové okno, jak je znázorněno na následujícím snímku obrazovky.
 
-    ![Stav data Management Gateway odesílání protokolů.](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-result.png)
-7. Uložit **ID sestavy** a sdílet ho s Microsoft Support. ID sestavy slouží k vyhledání protokoly brány, které jste nahráli k řešení potíží.  ID sestavy se také uloží v události prohlížeč.  Můžete najít zobrazením ID události "25" a zkontrolovat datum a čas.
+    ![Stav odesílání protokolů služby Správa dat Gateway](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-result.png)
+7. Uložte **ID sestavy** a nasdílejte ji pomocí podpora Microsoftu. ID sestavy slouží k vyhledání protokolů brány, které jste odeslali pro řešení potíží.  ID sestavy je také Uloženo v prohlížeči událostí.  Najdete ho tak, že začnete s ID události "25" a zkontrolujete datum a čas.
 
-    ![Data Management Gateway odesílání protokolů ID sestavy](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-report-id.png)    
+    ![ID sestavy pro odeslání protokolů služby Správa dat Gateway](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-report-id.png)    
 
-### <a name="archive-gateway-logs-on-gateway-host-machine"></a>Archiv brány protokolů na hostitelském počítači brány
-Existují některé scénáře, ve kterém máte problémy brány a protokoly brány nemohou sdílet přímo:
+### <a name="archive-gateway-logs-on-gateway-host-machine"></a>Archivovat protokoly brány na hostitelském počítači brány
+Existují některé scénáře, kdy máte problémy s bránou a nemůžete přímo sdílet protokoly brány:
 
-* Ručně nainstalovat bránu a registraci brány.
-* Došlo k pokusu o registraci brány se znovu vygenerovalo klíčem v Data Management Gateway Configuration Manager.
-* Pokusu o odeslání protokolů a nemůže být připojený hostitel služby brány.
+* Bránu nainstalujete ručně a zaregistrujete bránu.
+* Zkusíte zaregistrovat bránu pomocí znovu vygenerovaného klíče v Správa dat brány Configuration Manager.
+* Pokusíte se odeslat protokoly a službu hostitel brány nejde připojit.
 
-Pro tyto případy můžete uložit protokoly brány jako soubor zip a ji sdílet, když požádáte podporu Microsoftu. Například pokud se zobrazí chybová zpráva při registraci brány, jako je znázorněno na následujícím snímku obrazovky.   
+V těchto scénářích můžete protokoly brány ukládat jako soubor zip a sdílet je, když se obrátíte na podporu Microsoftu. Například pokud se při registraci brány zobrazí chyba, jak je znázorněno na následujícím snímku obrazovky.   
 
-![Chyba registrace brány správy dat](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-registration-error.png)
+![Chyba registrace Správa dat brány](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-registration-error.png)
 
-Klikněte na tlačítko **archivovat protokoly brány** propojit archivace a uložení protokolů a potom sdílet soubor zip s podporou Microsoftu.
+Kliknutím na odkaz **Archivovat protokoly brány** můžete archivovat a ukládat protokoly a potom tento soubor zip sdílet s podporou Microsoftu.
 
-![Protokoly archivu brány správy dat](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-archive-logs.png)
+![Protokoly archivu Správa dat brány](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-archive-logs.png)
 
-### <a name="locate-gateway-logs"></a>Vyhledejte protokoly brány
-Informace protokolu podrobné brány najdete v protokolu událostí Windows.
+### <a name="locate-gateway-logs"></a>Vyhledání protokolů brány
+Podrobné informace protokolu brány najdete v protokolech událostí systému Windows.
 
 1. Spusťte Windows **Prohlížeč událostí**.
-2. Vyhledejte v protokolech **protokoly aplikací a služeb** > **brána správy dat** složky.
+2. Vyhledejte protokoly v **protokolech aplikací a služeb** > složce **Správa dat brány** .
 
-   Pokud řešíte problémy související s brány, hledejte události úrovně chyby v události prohlížeč.
+   Když řešíte problémy související s bránou, hledejte události na úrovni chyb v prohlížeči událostí.
 
-![Brána správy dat protokolů v prohlížeči událostí](media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png)
+![Protokoly Správa dat brány v prohlížeči událostí](media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png)

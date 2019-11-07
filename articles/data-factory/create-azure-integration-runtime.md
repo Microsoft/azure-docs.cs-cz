@@ -1,6 +1,6 @@
 ---
-title: Vytvoření prostředí Azure integration runtime ve službě Azure Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit prostředí Azure integration runtime ve službě Azure Data Factory, který slouží ke kopírování dat a odeslání aktivit transformace.
+title: Vytvoření prostředí Azure Integration runtime v Azure Data Factory
+description: Naučte se vytvářet prostředí Azure Integration runtime v Azure Data Factory, které se používá ke kopírování dat a odesílání transformačních aktivit.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -11,38 +11,38 @@ ms.date: 01/15/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 4b166ded3dcef4a89951eb81f7f1b321f89a0e67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 898290f70777ca442bb8885d83064231c5486a7c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66153399"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73677261"
 ---
-# <a name="how-to-create-and-configure-azure-integration-runtime"></a>Vytvoření a konfigurace prostředí Azure Integration Runtime
-Integration Runtime (IR) je výpočetní infrastruktura, službou Azure Data Factory používá k poskytování možnosti integrace dat v různých síťových prostředích. Další informace o prostředí IR najdete v tématu [prostředí Integration runtime](concepts-integration-runtime.md).
+# <a name="how-to-create-and-configure-azure-integration-runtime"></a>Jak vytvořit a nakonfigurovat Azure Integration Runtime
+Integration Runtime (IR) je výpočetní infrastruktura, kterou používá Azure Data Factory k tomu, aby poskytovala možnosti integrace dat napříč různými síťovými prostředími. Další informace o technologii IR naleznete v tématu [Integration runtime](concepts-integration-runtime.md).
 
-Prostředí IR v Azure nabízí plně spravovanou výpočetní nativně provádět pohyb a rozesílání dat aktivity transformace dat do výpočetních služeb, jako je HDInsight. Je hostován v prostředí Azure a podporuje připojení k prostředkům ve veřejné síti prostředí s veřejně přístupnými koncovými body.
+Azure IR poskytuje plně spravované výpočetní prostředky k nativně provádění přesunu dat a odesílání aktivit transformace dat do výpočetních služeb, jako je HDInsight. Hostuje se v prostředí Azure a podporuje připojení k prostředkům ve veřejném síťovém prostředí s veřejnými dostupnými koncovými body.
 
-Toto téma představuje, jak můžete vytvořit a nakonfigurovat prostředí Azure Integration Runtime. 
+Tento dokument popisuje, jak můžete vytvořit a nakonfigurovat Azure Integration Runtime. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="default-azure-ir"></a>Výchozí prostředí IR v Azure
-Každá datová Továrna má ve výchozím nastavení prostředí Azure IR v back-endu, který podporuje operace na cloudové úložiště dat a výpočetním službám ve veřejné síti. Umístění tohoto prostředí Azure IR je automaticky vyřešit. Pokud **connectVia** není zadána vlastnost v definici propojené služby, výchozí prostředí Azure IR se používá. Potřebujete jenom explicitně vytvořit prostředí Azure IR, když chcete explicitně definovat umístění prostředí IR, nebo pokud byste chtěli prakticky skupině spuštění aktivity v různých IRs pro účely správy. 
+## <a name="default-azure-ir"></a>Výchozí Azure IR
+Ve výchozím nastavení má každá datová továrna Azure IR v back-endu, která podporuje operace v cloudových úložištích dat a výpočetní služby ve veřejné síti. Umístění tohoto Azure IR je automaticky vyřešeno. Pokud v definici propojené služby není zadaná vlastnost **connectVia** , použije se výchozí Azure IR. Musíte explicitně vytvořit Azure IR, když chcete explicitně definovat umístění IR, nebo pokud chcete pro účely správy prakticky seskupit provádění aktivit na jiném finančním úřadu. 
 
-## <a name="create-azure-ir"></a>Vytvoření prostředí IR v Azure
-Prostředí Integration Runtime je možné vytvořit **Set-AzDataFactoryV2IntegrationRuntime** rutiny Powershellu. Pokud chcete vytvořit prostředí Azure IR, zadejte název, umístění a typ příkazu. Tady je ukázka příkazu k vytvoření prostředí Azure IR nastavena na "V oblasti západní Evropa" umístění:
+## <a name="create-azure-ir"></a>Vytvořit Azure IR
+Integration Runtime lze vytvořit pomocí rutiny prostředí PowerShell **set-AzDataFactoryV2IntegrationRuntime** . Chcete-li vytvořit Azure IR, zadejte název, umístění a typ příkazu. Tady je ukázkový příkaz pro vytvoření Azure IR s umístěním nastaveným na "Západní Evropa":
 
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -Name "MySampleAzureIR" -ResourceGroupName "ADFV2SampleRG" -Type Managed -Location "West Europe"
 ```  
-Pro prostředí Azure IR typ musí být nastavený **spravované**. Není nutné zadat podrobnosti výpočetní prostředky, protože to je plně spravovaná Elasticky v cloudu. Zadejte výpočetní podrobnosti, jako je velikost uzlu a uzel počítat, když chcete vytvořit prostředí Azure-SSIS IR. Další informace najdete v tématu [vytvořit a nakonfigurovat prostředí Azure-SSIS IR](create-azure-ssis-integration-runtime.md).
+Pro Azure IR musí být typ nastavený na **spravované**. Nemusíte zadávat podrobné informace o výpočetním prostředí, protože je plně spravovaná elastická v cloudu. Určete výpočetní údaje, jako je velikost uzlu a počet uzlů, když chcete vytvořit Azure-SSIS IR. Další informace najdete v tématu [Vytvoření a konfigurace Azure-SSIS IR](create-azure-ssis-integration-runtime.md).
 
-Můžete nakonfigurovat stávající prostředí Azure IR do jeho umístění pomocí rutiny Set-AzDataFactoryV2IntegrationRuntime Powershellu. Další informace o umístění prostředí Azure IR najdete v tématu [Úvod do prostředí integration runtime](concepts-integration-runtime.md).
+Existující Azure IR můžete nakonfigurovat tak, aby změnila umístění pomocí rutiny Set-AzDataFactoryV2IntegrationRuntime prostředí PowerShell. Další informace o umístění Azure IR najdete v tématu [Úvod do prostředí Integration runtime](concepts-integration-runtime.md).
 
-## <a name="use-azure-ir"></a>Použití prostředí IR v Azure
+## <a name="use-azure-ir"></a>Použít Azure IR
 
-Po vytvoření prostředí Azure IR, můžete na něj mohli odkazovat v definici propojené služby. Níže je příklad použití prostředí Azure Integration Runtime vytvořili výše z propojená služba Azure Storage:  
+Po vytvoření Azure IR můžete na něj odkazovat v definici propojené služby. Níže je ukázka, jak můžete odkazovat na Azure Integration Runtime vytvořené výše z propojené služby Azure Storage:  
 
 ```json
 {
@@ -64,9 +64,9 @@ Po vytvoření prostředí Azure IR, můžete na něj mohli odkazovat v definici
 
 ```
 
-## <a name="next-steps"></a>Další postup
-O tom, jak vytvořit další typy prostředí integration runtime naleznete v následujících článcích:
+## <a name="next-steps"></a>Další kroky
+V následujících článcích najdete informace o tom, jak vytvořit další typy prostředí Integration Runtime:
 
 - [Vytvoření prostředí Integration Runtime v místním prostředí](create-self-hosted-integration-runtime.md)
-- [Vytvoření prostředí Azure-SSIS integration runtime](create-azure-ssis-integration-runtime.md)
+- [Vytvoření prostředí Azure-SSIS Integration runtime](create-azure-ssis-integration-runtime.md)
  

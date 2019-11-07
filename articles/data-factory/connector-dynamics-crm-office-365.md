@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat z a do Dynamics CRM nebo Dynamics 365 (Common Data Service) pomocí Azure Data Factory | Microsoft Docs
+title: Kopírování dat z a do Dynamics CRM nebo Dynamics 365 (Common Data Service) pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z Microsoft Dynamics CRM nebo Microsoft Dynamics 365 (Common Data Service) do podporovaných úložišť dat jímky, nebo z podporovaných zdrojových úložišť dat do Dynamics CRM nebo Dynamics 365 pomocí aktivity kopírování v kanálu služby Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 3ad9ac3f0a3106b4562217a9c444b58423374318
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c9adcf72eeec82fd4b8f1805fca1f284c0b953b7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931113"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680979"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 (Common Data Service) nebo Dynamics CRM pomocí Azure Data Factory
 
@@ -60,7 +60,7 @@ Tento konektor Dynamics je postaven nad [nástroji Dynamics XRM](https://docs.mi
 >[!TIP]
 >Pokud chcete kopírovat data z **dynamics 365 finance a operací**, můžete použít [konektor Dynamics AX](connector-dynamics-ax.md).
 
-## <a name="get-started"></a>Začít
+## <a name="get-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 

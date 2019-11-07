@@ -4,7 +4,7 @@ description: Tento článek poskytuje přehled o provozním zabezpečení Azure.
 services: security
 documentationcenter: na
 author: unifycloud
-manager: barbkess
+manager: rkarlin
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2018
+ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 52d74983458a2c6a4de27ec91bc23a8dd9bee387
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: c5ab994ce7b4e3d195ec3a4c83094974c5767e66
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899820"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643773"
 ---
 # <a name="azure-operational-security-overview"></a>Přehled služby Azure Operational Security
 
-[Provozní zabezpečení Azure](/azure/security/fundamentals/operational-security) odkazuje na služby, ovládací prvky a funkce, které jsou k dispozici uživatelům pro ochranu svých dat, aplikací a dalších prostředků v Microsoft Azure. Je to architektura, která zahrnuje znalostní báze získané prostřednictvím nejrůznějších funkcí, které jsou jedinečné pro společnost Microsoft. Mezi tyto možnosti patří Microsoft SDL (Security Development Lifecycle), Microsoft Security Response Center a důkladné povědomí o kyberbezpečnosti hrozbách.
+[Provozní zabezpečení Azure](/azure/security/fundamentals/operational-security) odkazuje na služby, ovládací prvky a funkce, které jsou k dispozici uživatelům pro ochranu svých dat, aplikací a dalších prostředků v Microsoft Azure. Je to architektura, která zahrnuje znalostní báze získané prostřednictvím nejrůznějších funkcí, které jsou jedinečné pro společnost Microsoft. Mezi tyto možnosti patří Microsoft Security Development Lifecycle (SDL), program Microsoft Security Response Center a důkladné povědomí o kyberbezpečnosti hrozbách.
 
 ## <a name="azure-management-services"></a>Služby správy Azure
 
@@ -34,19 +34,19 @@ Provozní tým IT je zodpovědný za správu infrastruktury Datacenter, aplikac�
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
-[Azure monitor](/azure/azure-monitor/overview) shromažďuje data ze spravovaných zdrojů do centrálních úložišť dat. Tato data můžou zahrnovat události, data o výkonu nebo vlastní data poskytovaná prostřednictvím rozhraní API. Po shromáždění dat je k dispozici pro výstrahy, analýzu a export. 
+[Azure monitor](/azure/azure-monitor/overview) shromažďuje data ze spravovaných zdrojů do centrálních úložišť dat. Tato data můžou zahrnovat události, data o výkonu nebo vlastní data poskytovaná prostřednictvím rozhraní API. Po shromáždění dat je k dispozici pro výstrahy, analýzu a export.
 
 Můžete konsolidovat data z nejrůznějších zdrojů a kombinovat data ze služeb Azure s existujícím místním prostředím. Protokoly Azure Monitor také jednoznačně oddělují shromažďování dat z akce provedené u těchto dat, takže všechny akce jsou k dispozici pro všechny druhy dat.
 
-### <a name="automation"></a>Automation
+### <a name="automation"></a>Automatizace
 
 [Azure Automation](/azure/automation/automation-intro) poskytuje možnost automatizace ručních, dlouhotrvajících a často opakovaných úloh, které se běžně provádějí v cloudovém a podnikovém prostředí. Šetří čas a zvyšuje spolehlivost administrativních úloh. V pravidelných intervalech také plánuje automatické provádění těchto úkolů. Procesy můžete automatizovat pomocí runbooků nebo automatizovat správu konfigurace pomocí konfigurace požadovaného stavu.
 
-### <a name="backup"></a>Zálohovat
+### <a name="backup"></a>Zálohování
 
-[Azure Backup](/azure/backup/backup-introduction-to-azure-backup) je služba založená na Azure, kterou můžete použít k zálohování (nebo ochraně) a obnovení dat v Microsoft Cloud. Azure Backup nahradí vaše stávající místní nebo jiné řešení zálohování cloudovým řešením, které je spolehlivé, bezpečné a nákladově konkurenční. 
+[Azure Backup](/azure/backup/backup-introduction-to-azure-backup) je služba založená na Azure, kterou můžete použít k zálohování (nebo ochraně) a obnovení dat v Microsoft Cloud. Azure Backup nahradí vaše stávající místní nebo jiné řešení zálohování cloudovým řešením, které je spolehlivé, bezpečné a nákladově konkurenční.
 
-Azure Backup nabízí komponenty, které stáhnete a nasadíte na příslušném počítači nebo serveru nebo v cloudu. Nasazená komponenta nebo agent závisí na tom, co chcete chránit. Všechny součásti Azure Backup (bez ohledu na to, jestli chráníte data v místním nebo cloudovém prostředí) se dají použít k zálohování dat do trezoru Azure Recovery Services v Azure. 
+Azure Backup nabízí komponenty, které stáhnete a nasadíte na příslušném počítači nebo serveru nebo v cloudu. Nasazená komponenta nebo agent závisí na tom, co chcete chránit. Všechny součásti Azure Backup (bez ohledu na to, jestli chráníte data v místním nebo cloudovém prostředí) se dají použít k zálohování dat do trezoru Azure Recovery Services v Azure.
 
 Další informace najdete v [tabulce Azure Backup komponenty](/azure/backup/backup-introduction-to-azure-backup#which-backup-agent-should-i-use).
 
@@ -89,7 +89,7 @@ Díky Azure Active Directory mají všechny aplikace publikované pro vaše part
 
 Security Center používá [Access Control na základě rolí (RBAC)](/azure/role-based-access-control/role-assignments-portal). RBAC poskytuje [předdefinované role](../../role-based-access-control/built-in-roles.md) , které je možné přiřadit uživatelům, skupinám a službám v Azure.
 
-Security Center posuzuje konfiguraci vašich prostředků identifikovat problémy se zabezpečením a ohrožení zabezpečení. V Security Center se zobrazí informace týkající se prostředku pouze v případě, že máte přiřazenou roli vlastník, přispěvatel nebo čtenář pro předplatné nebo skupinu prostředků, do které prostředek patří.
+Security Center posuzuje konfiguraci vašich prostředků pro identifikaci problémů a ohrožení zabezpečení. V Security Center se zobrazí informace týkající se prostředku pouze v případě, že máte přiřazenou roli vlastník, přispěvatel nebo čtenář pro předplatné nebo skupinu prostředků, do které prostředek patří.
 
 >[!Note]
 >Další informace o rolích a povolených akcích v Security Center najdete v tématu [oprávnění v Azure Security Center](/azure/security-center/security-center-permissions).
@@ -102,7 +102,7 @@ Problémy s výkonem ve vaší cloudové aplikaci můžou ovlivnit vaši firmu. 
 
 [Azure monitor](/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) je základní nástroj pro monitorování služeb spuštěných v Azure. Poskytuje data na úrovni infrastruktury týkající se propustnosti služby a okolního prostředí. Pokud spravujete své aplikace v Azure a rozhodujete, jestli chcete škálovat prostředky směrem nahoru nebo dolů, Azure Monitor je místo, kde se má začít.
 
-K získání podrobných přehledů o vaší aplikaci můžete použít taky data monitorování. Tato znalostní báze vám může pomoci zvýšit výkon a udržovatelnost aplikace nebo automatizovat akce, které by jinak vyžadovaly ruční zásah. 
+K získání podrobných přehledů o vaší aplikaci můžete použít taky data monitorování. Tato znalostní báze vám může pomoci zvýšit výkon a udržovatelnost aplikace nebo automatizovat akce, které by jinak vyžadovaly ruční zásah.
 
 Azure Monitor obsahuje následující součásti.
 
@@ -112,7 +112,7 @@ Azure Monitor obsahuje následující součásti.
 
 ### <a name="azure-diagnostic-logs"></a>Diagnostické protokoly Azure
 
-[Diagnostické protokoly Azure](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) jsou vydávány prostředkem a poskytují bohatou a častou data o provozu daného prostředku. Obsah tyto protokoly se liší podle typu prostředku.
+[Diagnostické protokoly Azure](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) jsou vydávány prostředkem a poskytují bohatou a častou data o provozu daného prostředku. Obsah těchto protokolů se liší podle typu prostředku.
 
 Protokoly událostí systému Windows jsou jednou z kategorií diagnostických protokolů pro virtuální počítače. Protokoly objektů blob, tabulek a front jsou kategoriemi diagnostických protokolů pro účty úložiště.
 
@@ -122,7 +122,7 @@ Diagnostické protokoly se liší od [protokolu aktivit](/azure/monitoring-and-d
 
 Azure Monitor poskytuje telemetrii, která vám poskytne přehled o výkonu a stavu vašich úloh v Azure. Nejdůležitější typ dat telemetrie Azure jsou [metriky](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) (označované taky jako čítače výkonu) vydávané většinou prostředků Azure. Azure Monitor poskytuje několik způsobů, jak nakonfigurovat a využívat tyto metriky pro monitorování a řešení potíží.
 
-### <a name="azure-diagnostics"></a>Azure Diagnostics
+### <a name="azure-diagnostics"></a>Diagnostika Azure
 
 Azure Diagnostics povoluje shromažďování diagnostických dat v nasazené aplikaci. Diagnostické rozšíření můžete použít z různých zdrojů. Aktuálně se podporuje [role cloudových služeb Azure](/azure/vs-azure-tools-configure-roles-for-cloud-service), [virtuální počítače Azure](/azure/vs-azure-tools-configure-roles-for-cloud-service) se systémem Microsoft Windows a [Azure Service Fabric](/azure/monitoring-and-diagnostics/azure-diagnostics).
 
@@ -140,27 +140,29 @@ Network Watcher zjednodušuje monitorování a diagnostiku vaší sítě Azure. 
 
 Network Watcher v současné době má následující možnosti:
 
-- [Topologie](/azure/network-watcher/network-watcher-topology-overview): Poskytuje přehled o různých propojeních a přidruženích mezi síťovými prostředky ve skupině prostředků.
-- [Zachytávání paketů proměnných](/azure/network-watcher/network-watcher-packet-capture-overview): Zachycuje data paketů na virtuálním počítači a z něj. Rozšířené možnosti filtrování a jemně vyladěné ovládací prvky, jako je možnost nastavit omezení času a velikosti, poskytují všestrannost. Data paketů se můžou ukládat do úložiště objektů BLOB nebo na místní disk ve formátu. Cap.
-- [Ověření toku protokolu IP](/azure/network-watcher/network-watcher-ip-flow-verify-overview): Kontroluje, jestli je paket povolený nebo zakázaný na základě parametrů paketu o hodnotě 5 řazené kolekce členů (cílová IP adresa, zdrojová IP adresa, cílový port, zdrojový port a protokol). Pokud skupina zabezpečení zamítne paket, vrátí se pravidlo a skupina, které paket zamítly.
-- [Další segment směrování](/azure/network-watcher/network-watcher-next-hop-overview): Určuje další segment směrování pro pakety směrované do síťových prostředků Azure, abyste mohli diagnostikovat všechny nesprávně nakonfigurované trasy definované uživatelem.
+- [Topologie](/azure/network-watcher/network-watcher-topology-overview): poskytuje přehled o různých propojeních a přidruženích mezi síťovými prostředky ve skupině prostředků.
+- [Zachytávání paketů proměnných](/azure/network-watcher/network-watcher-packet-capture-overview): zachycuje data paketů na virtuálním počítači a z něj. Rozšířené možnosti filtrování a jemně vyladěné ovládací prvky, jako je možnost nastavit omezení času a velikosti, poskytují všestrannost. Data paketů se můžou ukládat do úložiště objektů BLOB nebo na místní disk ve formátu. Cap.
+- [Ověření toku protokolu IP](/azure/network-watcher/network-watcher-ip-flow-verify-overview): kontroluje, jestli je paket povolený nebo zakázaný na základě parametrů paketu o hodnotě 5 řazené kolekce členů (cílová IP adresa, zdrojová adresa IP, cílový port, zdrojový port a protokol). Pokud skupina zabezpečení zamítne paket, vrátí se pravidlo a skupina, které paket zamítly.
+- [Další směrování](/azure/network-watcher/network-watcher-next-hop-overview): Určuje další segment směrování pro pakety směrované do síťových prostředků Azure, abyste mohli diagnostikovat všechny nesprávně nakonfigurované trasy definované uživatelem.
 - [Zobrazení skupiny zabezpečení](/azure/network-watcher/network-watcher-security-group-view-overview): Získá platná a použitá pravidla zabezpečení, která jsou použita na virtuálním počítači.
-- [Protokoly toku NSG pro skupiny zabezpečení sítě](/azure/network-watcher/network-watcher-nsg-flow-logging-overview): Umožňuje zachytit protokoly související s provozem, který je povolený nebo zakázaný pravidly zabezpečení ve skupině. Tok je definovaný pomocí informací o 5-řazené kolekci členů: zdrojová IP adresa, cílová IP adresa, zdrojový port, cílový port a protokol.
-- [Řešení potíží s bránou virtuální sítě a připojením](/azure/network-watcher/network-watcher-troubleshoot-manage-rest): Nabízí možnost odstraňovat brány a připojení virtuální sítě.
-- [Omezení pro odběr sítě](/azure/network-watcher/network-watcher-monitoring-overview): Umožňuje zobrazit využití síťových prostředků proti limitům.
-- [Diagnostické protokoly](/azure/network-watcher/network-watcher-monitoring-overview): Poskytuje jedno podokno pro povolení nebo zakázání diagnostických protokolů pro síťové prostředky ve skupině prostředků.
+- [Protokoly toku NSG pro skupiny zabezpečení sítě](/azure/network-watcher/network-watcher-nsg-flow-logging-overview): umožňuje zachytit protokoly související s provozem, který je povolený nebo zakázaný pravidly zabezpečení ve skupině. Tok je definovaný pomocí informací o 5-řazené kolekci členů: zdrojová IP adresa, cílová IP adresa, zdrojový port, cílový port a protokol.
+- [Řešení potíží s bránou virtuální sítě a připojením](/azure/network-watcher/network-watcher-troubleshoot-manage-rest): poskytuje možnost odstraňovat brány a připojení virtuální sítě.
+- [Omezení pro předplatné sítě](/azure/network-watcher/network-watcher-monitoring-overview): umožňuje zobrazit využití síťových prostředků proti limitům.
+- [Diagnostické protokoly](/azure/network-watcher/network-watcher-monitoring-overview): poskytuje jedno podokno pro povolení nebo zakázání diagnostických protokolů pro síťové prostředky ve skupině prostředků.
 
 Další informace najdete v tématu [konfigurace Network Watcher](/azure/network-watcher/network-watcher-create).
 
 ## <a name="cloud-service-provider-access-transparency"></a>Transparentnost přístupu poskytovatele cloudové služby
 
-[Customer Lockbox pro Microsoft Azure](https://azure.microsoft.com/blog/approve-audit-support-access-requests-to-vms-using-customer-lockbox-for-azure/) je služba integrovaná do Azure Portal, která poskytuje explicitní řízení ve vzácných instancích, když podpora Microsoftu inženýr může potřebovat přístup k vašim datům za účelem vyřešení problému. Existuje hodně instancí, jako je například ladění problému se vzdáleným přístupem, kde podpora Microsoftu inženýr vyžaduje zvýšená oprávnění k vyřešení tohoto problému. V takových případech technici Microsoftu využívají službu pro přístup za běhu, která poskytuje omezenou časovou autorizaci s přístupem omezeným na službu.  
+[Customer Lockbox pro Microsoft Azure](customer-lockbox-overview.md) je služba integrovaná do Azure Portal, která poskytuje explicitní řízení ve vzácných instancích, když podpora Microsoftu inženýr může potřebovat přístup k vašim datům za účelem vyřešení problému.
+Existuje hodně instancí, jako je například ladění problému se vzdáleným přístupem, kde podpora Microsoftu inženýr vyžaduje zvýšená oprávnění k vyřešení tohoto problému. V takových případech technici Microsoftu využívají službu pro přístup za běhu, která poskytuje omezenou časovou autorizaci s přístupem omezeným na službu.  
 I když společnost Microsoft vždycky získala souhlas zákazníka s přístupem, Customer Lockbox nyní poskytuje možnost kontrolovat a schvalovat nebo odmítat takové žádosti z webu Azure Portal. Pracovníkům podpory Microsoftu nebude udělen přístup, dokud žádost neschválíte.
 
 ## <a name="standardized-and-compliant-deployments"></a>Standardizovaná a vyhovující nasazení
 
 [Plány Azure](/azure/governance/blueprints/overview) umožňují cloudové architekty a skupiny centrálních informačních technologií definovat opakující se sadu prostředků Azure, které implementují a vyhovují standardům, vzorům a požadavkům organizace.  
-Díky tomu mohou týmy DevOps rychle sestavovat a vytvářet nová prostředí a důvěřovat tomu, že jsou sestavují s infrastrukturou, která udržuje dodržování předpisů organizace. Modrotisky poskytují deklarativní způsob pro orchestraci nasazení různých šablon prostředků a dalších artefaktů, jako jsou: 
+Díky tomu mohou týmy DevOps rychle sestavovat a vytvářet nová prostředí a důvěřovat tomu, že jsou sestavují s infrastrukturou, která udržuje dodržování předpisů organizace.
+Modrotisky poskytují deklarativní způsob pro orchestraci nasazení různých šablon prostředků a dalších artefaktů, jako jsou:
 
 - Přiřazení rolí
 - Přiřazení zásad
@@ -183,12 +185,12 @@ Vyspělí DevOps lékaři přijímají několik z následujících postupů. Tyt
 - [Průběžné doručování](https://www.visualstudio.com/learn/what-is-continuous-delivery/) softwarových řešení do produkčních a testovacích prostředí pomáhá organizacím rychle opravovat chyby a reagovat na neustále se měnící obchodní požadavky.
 - [Monitorování](https://www.visualstudio.com/learn/what-is-monitoring/) spuštěných aplikací – včetně produkčních prostředí pro stav aplikací a zákaznického využití – pomáhá organizacím vytvořit hypotézu a rychle ověřit nebo prokázat strategie.  Bohatá data jsou zachycena a ukládána v různých formátech protokolování.
 - [Infrastruktura jako kód (IAC)](https://www.visualstudio.com/learn/what-is-infrastructure-as-code/) je postup, který umožňuje automatizaci a ověřování vytváření a rozboru sítí a virtuálních počítačů při poskytování zabezpečených a stabilních hostujících platforem aplikací.
-- [](https://www.visualstudio.com/learn/what-are-microservices/) Architektura mikroslužeb se používá k izolaci případů podnikového použití do malých opakovaně použitelných služeb.  Tato architektura umožňuje škálovatelnost a efektivitu.
+- Architektura [mikroslužeb](https://www.visualstudio.com/learn/what-are-microservices/) se používá k izolaci případů podnikového použití do malých opakovaně použitelných služeb.  Tato architektura umožňuje škálovatelnost a efektivitu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o řešení Security and Audit najdete v následujících článcích:
 
-- [Zabezpečení a dodržování předpisů](https://www.microsoft.com/cloud-platform/security-and-compliance)
+- [Zabezpečení a dodržování předpisů](https://azure.microsoft.com/overview/trusted-cloud/)
 - [Azure Security Center](/azure/security-center/security-center-intro)
 - [Azure Monitor](/azure/azure-monitor/overview)

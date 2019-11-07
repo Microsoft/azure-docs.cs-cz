@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Horizontální navýšení kapacity ve Azure SQL Data Warehouse-T-SQL | Microsoft Docs'
+title: 'Rychlý Start: škálování výpočetní technologie – T-SQL '
 description: Pomocí T-SQL a aplikace SSMS (SQL Server Management Studio) můžete škálovat výpočetní prostředky ve službě Azure SQL Data Warehouse. Kapacitu výpočetních prostředků můžete horizontálně navýšit, abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
 services: sql-data-warehouse
 author: Antvgski
@@ -10,20 +10,21 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 9a2a11c2263500970e2f4294dd5d3711a57be349
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 6729552262d7bea619948ddba406418b80cf69dc
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574577"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685938"
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>Rychlý start: Škálování výpočetních prostředků v Azure SQL Data Warehouse pomocí T-SQL
+# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>Rychlý start: Škálování kapacity výpočetních prostředků ve službě Azure SQL Data Warehouse pomocí T-SQL
 
-Pomocí T-SQL a aplikace SSMS (SQL Server Management Studio) můžete škálovat výpočetní prostředky ve službě Azure SQL Data Warehouse. Kapacitu výpočetních prostředků můžete [horizontálně navýšit](sql-data-warehouse-manage-compute-overview.md), abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů. 
+Pomocí T-SQL a aplikace SSMS (SQL Server Management Studio) můžete škálovat výpočetní prostředky ve službě Azure SQL Data Warehouse. Můžete [horizontálně navýšit kapacitu výpočetních prostředků](sql-data-warehouse-manage-compute-overview.md), abyste získali lepší výkon, nebo ji snížit a dosáhnout tak nižších nákladů. 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
  
@@ -35,7 +36,7 @@ Pomocí postupu v článku [Rychlý start: Vytvoření a připojení – portál
 
 V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) naváže připojení k serveru SQL Azure.
 
-1. Spusťte aplikaci SQL Server Management Studio.
+1. Otevřete SQL Server Management Studio.
 
 2. V dialogovém okně **Připojení k serveru** zadejte následující informace:
 
@@ -43,7 +44,7 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
    | ------------ | ------------------ | ------------------------------------------------- | 
    | Typ serveru | Databázový stroj | Tato hodnota se vyžaduje. |
    | Název serveru | Plně kvalifikovaný název serveru | Tady je příklad: **mynewserver-20171113.database.windows.net**. |
-   | Ověřování | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
+   | Ověření | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
    | Přihlásit | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
    | Heslo | Heslo pro účet správce serveru | Jedná se o heslo, které jste zadali při vytváření serveru. |
 
@@ -83,7 +84,7 @@ Pokud se chcete podívat na aktuální jednotky svého datového skladu, postupu
 
 
 ## <a name="scale-compute"></a>Škálování výpočetního výkonu
-Ve službě SQL Data Warehouse můžete upravit počet jednotek datového skladu a zvýšit nebo snížit tak množství výpočetních prostředků. Podle postupu v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) jste vytvořili **mySampleDataWarehouse** a inicializovali ho se 400 jednotkami datového skladu. V následujícím postupu upravíte jednotky datového skladu pro **mySampleDataWarehouse**.
+Ve službě SQL Data Warehouse můžete upravit počet jednotek datového skladu a tím zvýšit nebo snížit množství výpočetních prostředků. Podle postupu v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) jste vytvořili **mySampleDataWarehouse** a inicializovali ho se 400 jednotkami datového skladu. V následujícím postupu upravíte jednotky datového skladu pro **mySampleDataWarehouse**.
 
 Změna jednotek datového skladu:
 
@@ -146,7 +147,7 @@ AND
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Teď už víte, jak škálovat výpočetní prostředky pro datový sklad. Další informace o službě Azure SQL Data Warehouse najdete v kurzu načítání dat.
 
 > [!div class="nextstepaction"]

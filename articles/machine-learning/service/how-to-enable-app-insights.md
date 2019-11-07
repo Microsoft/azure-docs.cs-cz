@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 10/11/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9da057683f3da41f077b309db79271a10738b59d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c02c502dc2ab85a6ae1c602c53723e9b5a758250
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490014"
+ms.locfileid: "73576745"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Monitorování a shromažďování dat z koncových bodů webové služby ML
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ V tomto článku se dozvíte, jak shromažďovat data z a monitorovat modely nas
 [Přečtěte si další informace o Azure Application Insights](../../azure-monitor/app/app-insights-overview.md). 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
@@ -60,7 +60,7 @@ V Azure Portal můžete povolit a zakázat službu Azure Application Insights.
 
 1. V dolní části obrazovky vyberte **aktualizovat** , aby se změny projevily. 
 
-### <a name="disable"></a>Zákaz
+### <a name="disable"></a>Zakázat
 1. V [Azure Portal](https://portal.azure.com)otevřete pracovní prostor.
 1. Vyberte **nasazení**, vyberte službu a pak vyberte **Upravit**.
 
@@ -112,39 +112,6 @@ Pokud chcete zakázat službu Azure Application Insights, použijte následujíc
 ## replace <service_name> with the name of the web service
 <service_name>.update(enable_app_insights=False)
 ```
-    
-## <a name="use-studio-to-configure"></a>Použití studia ke konfiguraci
-
-Můžete povolit nebo zakázat Application Insights v Azure Machine Learning Studiu.
-
-1. V aplikaci [Azure Machine Learning Studio](https://ml.azure.com)otevřete pracovní prostor.
-
-1. Na kartě **nasazení** vyberte službu, u které chcete povolit Application Insights.
-
-   [![seznam služeb na kartě nasazení](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
-
-3. Vyberte **Upravit**.
-
-   [![– tlačítko pro úpravy](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-4. V části **Upřesnit nastavení**zaškrtněte políčko **Povolit diagnostiku AppInsights** .
-
-   [![zaškrtnuté políčko pro povolení diagnostiky](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
-
-1. V dolní části obrazovky vyberte **aktualizovat** , aby se změny projevily. 
-
-### <a name="disable"></a>Zákaz
-1. V aplikaci [Azure Machine Learning Studio](https://ml.azure.com)otevřete pracovní prostor.
-1. Vyberte **nasazení**, vyberte službu a vyberte **Upravit**.
-
-   [![použít tlačítko Upravit](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-1. V části **Upřesnit nastavení**zrušte zaškrtnutí políčka **Povolit diagnostiku AppInsights** . 
-
-   [zaškrtnutí políčka ![pro povolení diagnostiky nezaškrtnuté.](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
-
-1. V dolní části obrazovky vyberte **aktualizovat** , aby se změny projevily. 
- 
 
 ## <a name="evaluate-data"></a>Vyhodnotit data
 Data vaší služby se ukládají do účtu Azure Application Insights v rámci stejné skupiny prostředků jako Azure Machine Learning.

@@ -1,7 +1,7 @@
 ---
-title: Co je pracovní prostor a projekt? – Vlastní Translator
+title: Co je pracovní prostor a projekt? – Vlastní Překladatel
 titleSuffix: Azure Cognitive Services
-description: Pracovní prostor je pracovní oblast pro vytváření a vytváření vlastního systému překladu. Pracovní prostor může obsahovat více projektů, modelů a dokumentů. Projekt je obálka pro model, dokumenty a testy. Každý projekt automaticky obsahuje všechny dokumenty, které jsou odeslány do daného pracovního prostoru, které mají správnou dvojici jazyků.
+description: Tento článek vysvětluje rozdíly mezi pracovním prostorem a projektem a také kategorie a popisky projektu pro vlastní službu Translator.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 23db27ba7b51b0f5a312498dbcb1d0f2741245bb
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d2f7903fa85c645357e46a753d1cb043e0893254
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595344"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647317"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Co je vlastní pracovní prostor překladatele?
 
@@ -41,10 +41,10 @@ Vlastní Překladatel umožňuje přiřadit k projektu popisek projektu. Popisek
 
 Popisek projektu je použit jako součást KódKategorie. Pokud je popisek projektu ponechán Nenastaveno na stejné hodnotě v rámci projektů, projekty se stejnou kategorií a *různými* jazykovými páry budou sdílet stejnou hodnotu KódKategorie. Tato metoda je výhodná, protože vám nebo vašemu zákazníkovi umožňuje přepínat mezi jazyky při použití rozhraní API pro překladatele textu, aniž byste se museli starat o KódKategorie, který je jedinečný pro každý projekt.
 
-Pokud se například chtělo povolit překlady v produkční doméně z angličtiny do francouzštiny a ze francouzštiny do angličtiny, vytvoří jsem dva projekty: jeden pro angličtinu –\> francouzština a druhý pro francouzštinu –\> angličtina. Zadám stejnou kategorii (technologie) pro obojí a ponechání popisku projektu prázdné. CategoryID pro oba projekty by odpovídaly, takže se můžu dotázat na rozhraní API pro angličtinu i francouzštinu, aniž byste museli upravovat své KódKategorie.
+Pokud bych například chtěl povolit překlady v produkční doméně z angličtiny do francouzštiny a ze francouzštiny do angličtiny, vytvoří jsem dva projekty: jeden pro angličtinu –\> francouzštinu a druhý pro francouzštinu –\> angličtinu. Zadám stejnou kategorii (technologie) pro obojí a ponechání popisku projektu prázdné. CategoryID pro oba projekty by odpovídaly, takže se můžu dotázat na rozhraní API pro angličtinu i francouzštinu, aniž byste museli upravovat své KódKategorie.
 
 Pokud jste poskytovatel jazykové služby a chcete sloužit více zákazníkům s různými modely, které si zachovávají stejnou dvojici kategorií a jazyků, pak se pomocí popisku projektu rozliší mezi zákazníky.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o [školení a modelu](training-and-model.md) , abyste věděli, jak efektivně sestavit model překladu.

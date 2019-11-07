@@ -12,19 +12,19 @@ ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: iainfou
 ms.openlocfilehash: 06b0fa1979f18981ec5cf78dc9a9dbad8b196394
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 11/05/2019
 ms.locfileid: "71258052"
 ---
-# <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>Známé problémy: Výstrahy protokol Secure LDAP v Azure Active Directory Domain Services
+# <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>Známé problémy: výstrahy protokol Secure LDAP v Azure Active Directory Domain Services
 
 Aplikace a služby, které používají protokol LDAP (Lightweight Directory Access Protocol) ke komunikaci s Azure Active Directory Domain Services (Azure služba AD DS), je možné [nakonfigurovat tak, aby používaly zabezpečený protokol LDAP](tutorial-configure-ldaps.md). Aby zabezpečený protokol LDAP správně fungoval, musí být otevřený vhodný certifikát a požadované síťové porty.
 
 Tento článek vám pomůže pochopit a vyřešit běžné výstrahy pomocí zabezpečeného přístupu LDAP v Azure služba AD DS.
 
-## <a name="aadds101-secure-ldap-network-configuration"></a>AADDS101: Konfigurace protokol Secure LDAP sítě
+## <a name="aadds101-secure-ldap-network-configuration"></a>AADDS101: konfigurace sítě protokol Secure LDAP
 
 ### <a name="alert-message"></a>Zpráva výstrahy
 
@@ -48,7 +48,7 @@ Stav spravované domény Azure služba AD DS se automaticky aktualizuje během d
 > [!TIP]
 > Nejedná se o jediné pravidlo, které vyžaduje, aby Azure služba AD DS běžely hladce. 636 Další informace najdete v tématu [skupiny zabezpečení sítě Azure služba AD DS a požadované porty](network-considerations.md#network-security-groups-and-required-ports).
 
-## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502: Protokol Secure LDAP vypršení platnosti certifikátu
+## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502: vyprší platnost certifikátu protokol Secure LDAP
 
 ### <a name="alert-message"></a>Zpráva výstrahy
 

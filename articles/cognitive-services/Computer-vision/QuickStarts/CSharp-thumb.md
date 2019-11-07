@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: vygenerování miniatur – RESTC#'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí rozhraní API pro počítačové zpracování obrazu C#.
+description: V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a C#.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,35 +11,35 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 889ce093e09a7e7d0fa3e81f3a819139ee225800
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 36bb5a2cab4b40b8810726f3d26a280eb6e23859
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176886"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647640"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-c"></a>Rychlý Start: vygenerujte miniaturu pomocí Počítačové zpracování obrazu REST API aC#
 
-V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí REST API Počítačové zpracování obrazu. Pomocí metody [získat miniaturu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) můžete vygenerovat miniaturu obrázku. Zadejte výšku a šířku, která se může lišit od poměru stran vstupní bitové kopie. Počítačové zpracování obrazu používá inteligentní ořezávání k inteligentně identifikaci oblasti zájmu a generování souřadnic oříznutí na základě této oblasti.
+V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí rozhraní REST API počítačového zpracování obrazu. Miniaturu obrázku můžete vygenerovat pomocí metody [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb). Zadáte výšku a šířku, které se mohou od poměru stran vstupního obrázku lišit. Počítačové zpracování obrazu používá inteligentní ořezávání k inteligentně identifikaci oblasti zájmu a generování souřadnic oříznutí na základě této oblasti.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) nebo novější.
-- Pro Počítačové zpracování obrazu musíte mít klíč předplatného. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a `COMPUTER_VISION_ENDPOINT` v uvedeném pořadí.
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a `COMPUTER_VISION_ENDPOINT`v uvedeném pořadí.
 
 ## <a name="create-and-run-the-sample-application"></a>Vytvoření a spuštění ukázkové aplikace
 
-Chcete-li vytvořit ukázku v aplikaci Visual Studio, proveďte následující kroky:
+Když chcete vytvořit ukázku v sadě Visual Studio, postupujte takto:
 
-1. Vytvořte nové řešení sady Visual Studio v aplikaci Visual Studio pomocí šablony aplikace C# Visual Console.
-1. Nainstalujte balíček NuGet Newtonsoft. JSON.
-    1. V nabídce klikněte na **nástroje**, vyberte **Správce balíčků NuGet**a pak **spravujte balíčky NuGet pro řešení**.
-    1. Klikněte na kartu **Procházet** a do **vyhledávacího** pole zadejte "Newtonsoft. JSON".
-    1. Po zobrazení vyberte **Newtonsoft. JSON** a potom klikněte na zaškrtávací políčko vedle názvu projektu a **nainstalujte**.
+1. Vytvořte v sadě Visual Studio nové řešení pomocí šablony pro konzolovou aplikaci Visual C#.
+1. Nainstalujte balíček NuGet Newtonsoft.Json.
+    1. V nabídce klikněte na **Nástroje** vyberte **Správce balíčků NuGet** a potom **Spravovat balíčky NuGet pro řešení**.
+    1. Klikněte na kartu **Procházet** a do pole **Hledat** zadejte Newtonsoft.Json.
+    1. Když se zobrazí, vyberte **Newtonsoft.Json**. Pak klikněte na zaškrtávací políčko vedle názvu vašeho projektu a na **Nainstalovat**.
 1. Spusťte program.
-1. Na příkazovém řádku zadejte cestu k místní imagi.
+1. Do příkazového řádku zadejte cestu k místnímu obrázku.
 
 ```csharp
 using Newtonsoft.Json.Linq;
@@ -59,7 +59,7 @@ namespace CSHttpClientSample
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
         
         // the GenerateThumbnail method endpoint
-        const string uriBase = endpoint + "vision/v2.1/generateThumbnail";
+        static string uriBase = endpoint + "vision/v2.1/generateThumbnail";
 
         static void Main()
         {
@@ -179,11 +179,11 @@ namespace CSHttpClientSample
 }
 ```
 
-## <a name="examine-the-response"></a>Projděte si odpověď.
+## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Úspěšná odpověď se vrátí jako binární data, která představují data obrázku pro miniaturu. Pokud je požadavek úspěšný, Miniatura se uloží do stejné složky jako místní image s použitím původního názvu s příponou "_thumb". Pokud požadavek neuspěje, odpověď obsahuje kód chyby a zprávu, která vám pomůže zjistit, co se nepovedlo.
+Úspěšná odpověď se vrátí jako binární data, která představují data miniatury obrázku. Pokud je požadavek úspěšný, uloží se miniatura do stejné složky jako místní obrázek, přičemž se použije původní název s příponou _thumb. Pokud požadavek selže, bude odpověď obsahovat chybový kód a zprávu, která vám pomůže určit, co se nepovedlo.
 
-Ukázková aplikace zobrazuje úspěšnou odpověď v okně konzoly, podobně jako v následujícím příkladu:
+Ukázková aplikace zobrazí úspěšnou odpověď v okně konzoly, podobně jako v následujícím příkladu:
 
 ```console
 Response:
@@ -206,7 +206,7 @@ StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.Stre
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte základní aplikaci pro Windows, která používá Počítačové zpracování obrazu k provedení optického rozpoznávání znaků (OCR); vytvořit miniatury s inteligentním oříznutím; Navíc ke zjištění, kategorizaci, označení a popisu vizuálních funkcí, včetně obličeje, v obrázku. Pokud chcete rychle experimentovat s rozhraními API Počítačové zpracování obrazu, zkuste [otevřít konzolu pro testování rozhraní API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Prozkoumejte základní aplikaci Windows, která používá počítačové zpracování obrazu k optickému rozpoznávání znaků (OCR), vytvořte chytře ořezané miniatury a rozpoznávejte, kategorizujte, označujte a popisujte vizuální vlastnosti na obrázku včetně obličejů. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
-> [Kurz pro&#35; rozhraní API pro počítačové zpracování obrazu C](../Tutorials/CSharpTutorial.md)
+> [Kurz – rozhraní API pro počítačové zpracování obrazu s C&#35;](../Tutorials/CSharpTutorial.md)

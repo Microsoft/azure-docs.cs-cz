@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: b50a21f9c1a4bae7ced8afd9a49c33cc936983ac
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0136b101de870ce669e89e67679719e233343330
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389735"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622588"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Azure CLI
 
@@ -19,7 +19,7 @@ Prvním krokem k použití služby Azure Resource Graph je zkontrolovat, že je 
 
 Na konci tohoto procesu budete mít za sebou přidání rozšíření k vybrané instalaci Azure CLI a spuštění prvního dotazu na službu Resource Graph.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="add-the-resource-graph-extension"></a>Přidat rozšíření Resource Graph
 
@@ -90,9 +90,10 @@ az extension remove -n resource-graph
 
 ## <a name="next-steps"></a>Další kroky
 
-- Získejte další informace o [dotazovacím jazyce](./concepts/query-language.md)
-- Naučte se [prozkoumat prostředky](./concepts/explore-resources.md)
-- Spusťte svůj první dotaz prostřednictvím [Azure PowerShell](first-query-powershell.md)
-- Zobrazit ukázky [Starter dotazy](./samples/starter.md)
-- Zobrazit ukázky [Pokročilé dotazy](./samples/advanced.md)
-- Váš názor na [UserVoice](https://feedback.azure.com/forums/915958-azure-governance)
+- Získejte další informace o [dotazovacím jazyce](./concepts/query-language.md).
+- Přečtěte si další informace o tom, jak [prozkoumat prostředky](./concepts/explore-resources.md).
+- Spusťte první dotaz pomocí [Azure Portal](first-query-portal.md).
+- Spusťte první dotaz pomocí [Azure PowerShell](first-query-powershell.md).
+- Podívejte se na ukázky [počátečních dotazů](./samples/starter.md).
+- Podívejte se na ukázky [pokročilých dotazů](./samples/advanced.md).
+- Poskytněte zpětnou vazbu na [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).

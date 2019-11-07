@@ -1,5 +1,5 @@
 ---
-title: Vysoce výkonná platforma pro odvození více platforem pomocí ONNX
+title: 'ONNX: vysoce výkonná platforma pro odvozování více platforem'
 titleSuffix: Azure Machine Learning
 description: Naučte se používat Open neuronové Network Exchange (ONNX), které vám pomůžou optimalizovat odvození modelu Machine Learning.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: dc4a5984f42e87aa42c6873bb1ee63d66744e633
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: c94d36065b27b0afcaeb214b8a86e5e2a09df14b
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053588"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73648023"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX a Azure Machine Learning: vytváření a zrychlení modelů ML
 

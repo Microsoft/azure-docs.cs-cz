@@ -1,5 +1,5 @@
 ---
-title: Podrobnosti o SQL Database zotavení po havárii | Microsoft Docs
+title: SQL Database cvičení zotavení po havárii
 description: Přečtěte si Rady a osvědčené postupy pro použití Azure SQL Database k provádění postupů zotavení po havárii.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: 2923ae8b9b25932ae214cfa45780dffb8780dd39
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bf337b1312abc59048649aabe3e4f895d07a8d51
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568843"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690616"
 ---
 # <a name="performing-disaster-recovery-drill"></a>Přechod na další postup zotavení po havárii
 
@@ -25,7 +25,7 @@ Doporučuje se pravidelně provádět ověřování připravenosti aplikací pro
 Postup zotavení po havárii se skládá z těchto kroků:
 
 * Simulace výpadku datové vrstvy
-* Obnovování
+* Obnovení
 * Ověřit platnost po obnovení integrity aplikace
 
 V závislosti na tom, jak jste [aplikaci navrhli pro zajištění kontinuity podnikových prostředí](sql-database-business-continuity.md), se může pracovní postup, který se má spustit, lišit. Tento článek popisuje osvědčené postupy pro provedení postupu zotavení po havárii v souvislosti s Azure SQL Database.
@@ -43,7 +43,7 @@ Chcete-li simulovat výpadek, můžete zdrojovou databázi přejmenovat. Tato zm
 * Proveďte geografickou obnovu databáze na jiný server, jak je popsáno [zde](sql-database-disaster-recovery.md).
 * Změňte konfiguraci aplikace tak, aby se připojila k obnovené databázi, a po dokončení obnovení použijte průvodce [konfigurací databáze po obnovení](sql-database-disaster-recovery.md) .
 
-### <a name="validation"></a>Ověřování
+### <a name="validation"></a>Ověření
 
 Dokončete přechod kontrolou integrity aplikace po obnovení (včetně připojovacích řetězců, přihlášení, základního testování funkčnosti nebo jiných ověření části standardních signoffs postupů aplikace).
 
@@ -61,7 +61,7 @@ Pro simulaci výpadku můžete zakázat webovou aplikaci nebo virtuální počí
 * Spusťte [plánované převzetí služeb](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) při selhání ve skupině převzetí služeb při selhání ze sekundárního serveru.
 * Dokončete obnovení podle průvodce [konfigurací databáze po obnovení](sql-database-disaster-recovery.md) .
 
-### <a name="validation"></a>Ověřování
+### <a name="validation"></a>Ověření
 
 Dokončete přechod kontrolou integrity aplikace po obnovení (včetně možnosti připojení, základního testování funkčnosti nebo dalších ověření potřebných pro signoffsí podrobností).
 

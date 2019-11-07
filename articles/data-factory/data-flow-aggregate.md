@@ -1,5 +1,5 @@
 ---
-title: Agregovaná transformace v datovém toku mapování Azure Data Factory | Microsoft Docs
+title: Agregovaná transformace v Azure Data Factory toku dat mapování
 description: Naučte se, jak agregovat data ve velkém měřítku v Azure Data Factory s mapováním agregované transformace toku dat.
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: add548a184440c408b8b74e131f2249b4f616ddc
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 3f21367c36ae31aa2115c109933a581bef464baf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514825"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676914"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Agregovaná transformace v toku mapování dat 
 
@@ -42,7 +42,7 @@ Každý agregační výraz musí obsahovat alespoň jednu agregační funkci.
 
 Agregované transformace jsou podobné dotazům na agregační výběr SQL. Sloupce, které nejsou zahrnuté v klauzuli Group by ani agregační funkce, nepřecházejí do výstupu agregační transformace. Pokud chcete zahrnout další sloupce do agregovaného výstupu, proveďte jednu z následujících metod:
 
-* Použijte agregační funkci, například `last()` nebo `first()` k zahrnutí tohoto dalšího sloupce.
+* Pro zahrnutí tohoto dalšího sloupce použijte agregační funkci, jako je `last()` nebo `first()`.
 * Znovu připojte sloupce k výstupnímu datovému proudu pomocí [vzoru pro vlastní spojení](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/).
 
 ## <a name="data-flow-script"></a>Skript toku dat
@@ -66,9 +66,9 @@ Agregované transformace jsou podobné dotazům na agregační výběr SQL. Slou
           ) ~> <aggregateTransformationName>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
-Následující příklad přijímá příchozí datový proud `MoviesYear` a seskupuje řádky podle sloupce `year`. Transformace vytvoří agregovaný sloupec `avgrating`, který se vyhodnotí jako průměr sloupce `Rating`. Tato agregovaná transformace se nazývá `AvgComedyRatingsByYear`.
+Následující příklad přijímá příchozí datový proud `MoviesYear` a seskupuje řádky podle `year`sloupců. Transformace vytvoří agregovaný sloupec `avgrating`, který se vyhodnotí jako průměr `Rating`sloupců. Tato agregovaná transformace je pojmenována `AvgComedyRatingsByYear`.
 
 V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 

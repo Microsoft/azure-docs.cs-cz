@@ -1,5 +1,5 @@
 ---
-title: Řešení rozdílů v T-SQL – migrace Azure SQL Database | Microsoft Docs
+title: Řešení rozdílů v T-SQL – migrace Azure SQL Database
 description: Příkazy jazyka Transact-SQL, které služba Azure SQL Database plně nepodporuje
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: fbc4628ff3d3d7d90f7ec2c47c87f7afa3e9cd43
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: edb978e27621cbc0df66ab32ba7472629c3f8bd1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028830"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686931"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Řešení rozdílů v jazyce Transact-SQL během migrace na SQL Database
 
@@ -57,7 +57,7 @@ Kromě příkazů jazyka Transact-SQL, které souvisejí s nepodporovanými funk
 - Funkce: `fn_get_sql`, `fn_virtualfilestats`, `fn_virtualservernodes`
 - Hardware: syntaxe související s nastavením serveru souvisejícího s hardwarem: například paměť, pracovní vlákna, spřažení procesoru, příznaky trasování. Místo toho používejte úrovně služeb a výpočetní velikosti.
 - `KILL STATS JOB`
-- `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE` a názvy čtyř částí
+- názvy `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE`a čtyř částí
 - .NET Framework: Integrace modulu CLR s SQL Server
 - Sémantické vyhledávání
 - Přihlašovací údaje serveru: místo toho použijte [přihlašovací údaje v oboru databáze](https://msdn.microsoft.com/library/mt270260.aspx) .
@@ -78,11 +78,11 @@ Kromě příkazů jazyka Transact-SQL, které souvisejí s nepodporovanými funk
 
 ## <a name="full-transact-sql-reference"></a>Kompletní reference k jazyku Transact-SQL
 
-Další informace o gramatikě, použití a příkladech jazyka Transact-SQL najdete v tématu [Referenční dokumentace jazyka Transact-SQL (databázový stroj)](https://msdn.microsoft.com/library/bb510741.aspx) In SQL Server Books Online.
+Další informace o gramatikě, použití a příkladech jazyka Transact-SQL najdete v tématu [Referenční dokumentace jazyka Transact-SQL (databázový stroj)](https://msdn.microsoft.com/library/bb510741.aspx) v SQL Server Books Online.
 
 ### <a name="about-the-applies-to-tags"></a>Informace o značkách „Platí pro“
 
-Odkaz v jazyce Transact-SQL zahrnuje články týkající se SQL Server verzí 2008 pro stávající. Pod názvem článku je panel ikon, seznam čtyř SQL Server platforem a jejich použitelnost. Například skupiny dostupnosti byly zavedeny v SQL Serveru 2012.  [Skupina Create availability](https://msdn.microsoft.com/library/ff878399.aspx) article označuje, že se příkaz vztahuje na **SQL Server (počínaje 2012)** . Příkaz neplatí pro SQL Server 2008, SQL Server 2008 R2, Azure SQL Database, Azure SQL Data Warehouse ani pro Parallel Data Warehouse.
+Odkaz v jazyce Transact-SQL zahrnuje články týkající se SQL Server verzí 2008 pro stávající. Pod názvem článku je panel ikon, seznam čtyř SQL Server platforem a jejich použitelnost. Například skupiny dostupnosti byly zavedeny v SQL Serveru 2012. Článek [vytvořit skupinu dostupnosti](https://msdn.microsoft.com/library/ff878399.aspx) označuje, že se příkaz vztahuje na **SQL Server (počínaje 2012)** . Příkaz neplatí pro SQL Server 2008, SQL Server 2008 R2, Azure SQL Database, Azure SQL Data Warehouse ani pro Parallel Data Warehouse.
 
 V některých případech je možné v produktu použít obecný předmět článku, ale existují drobné rozdíly mezi produkty. Rozdíly jsou podle potřeby uvedeny v různých umístěních v článku. V některých případech je možné v produktu použít obecný předmět článku, ale existují drobné rozdíly mezi produkty. Rozdíly jsou podle potřeby uvedeny v různých umístěních v článku. Například článek vytvořit aktivační událost je k dispozici v SQL Database. Ale možnost **všechny servery** pro aktivační události na úrovni serveru označuje, že triggery na úrovni serveru nejde v SQL Database použít. Místo toho použijte triggery na úrovni databáze.
 

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 9701aa5d924e82d26ad373f8c94d0391a4dc6ba2
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 6310e13508c1c789c410f1954a2ac0dbf480a2b8
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800158"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622508"
 ---
 # <a name="advanced-resource-graph-queries"></a>Pokročilé dotazy na Resource Graph
 
@@ -104,7 +104,7 @@ Search-AzGraph -Query "Resources | where type=~ 'microsoft.compute/virtualmachin
 
 ## <a name="a-nameremove-column-remove-columns-from-results"></a><a name="remove-column" />odstranit sloupce z výsledků
 
-Následující dotaz používá `summarize` k výpočtu prostředků podle předplatného, `join` pro jeho kombinaci s podrobnostmi o předplatném z tabulky _ResourceContainers_ , a pak `project-away` pro odebrání některých sloupců.
+Následující dotaz používá `summarize` k počítání prostředků podle předplatného, `join` pro jejich kombinaci s podrobnostmi o předplatném z tabulky _ResourceContainers_ , a pak `project-away` k odebrání některých sloupců.
 
 ```kusto
 Resources
@@ -208,7 +208,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 
 ## <a name="a-namemvexpand-cosmosdb-list-cosmos-db-with-specific-write-locations"></a>Seznam <a name="mvexpand-cosmosdb" />Cosmos DB s konkrétními umístěními pro zápis
 
-Následující dotaz omezuje Cosmos DB prostředků, používá `mv-expand` pro rozšíření kontejneru objektů a dat pro **Vlastnosti. writeLocations, nastavení**konkrétního projektu a omezení výsledků do **vlastností. writeLocations. Location** . odpovídá buď Východní USA, nebo Západní USA.
+Následující dotaz omezuje Cosmos DB prostředků, používá `mv-expand` k rozšíření kontejneru objektů a dat pro **Vlastnosti. writeLocations**, následnému projektu a omezení výsledků do **vlastností. writeLocations. Location** . odpovídá buď Východní USA, nebo Západní USA.
 
 ```kusto
 Resources
@@ -242,7 +242,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.documentdb/databasea
 
 ## <a name="a-namejoin-key-vault-with-subscription-name"></a><a name="join" />Trezor klíčů s názvem předplatného
 
-Následující dotaz ukazuje komplexní použití `join`. Dotaz omezí propojenou tabulku na předplatná a s `project`, aby zahrnovala pouze původní pole _SubscriptionId_ a pole _Name_ bylo přejmenováno na _jméno_. Při přejmenování pole se zabrání `join` přidání jako _název1_ , protože pole již v _prostředcích_existuje. Původní tabulka je filtrována pomocí `where` a následující `project` zahrnuje sloupce z obou tabulek. Výsledkem dotazu je jeden Trezor klíčů, který zobrazuje typ, název trezoru klíčů a název předplatného, ve kterém je.
+Následující dotaz ukazuje komplexní použití `join`. Dotaz omezí propojenou tabulku na předplatná a `project` tak, aby zahrnoval pouze původní pole _SubscriptionId_ a pole _název_ bylo přejmenováno na _podnázev_. Při přejmenování pole se vyhnete `join` přidání jako _název1_ , protože pole už v _prostředcích_existuje. Původní tabulka je filtrována pomocí `where` a následující `project` zahrnuje sloupce z obou tabulek. Výsledkem dotazu je jeden Trezor klíčů, který zobrazuje typ, název trezoru klíčů a název předplatného, ve kterém je.
 
 ```kusto
 Resources
@@ -274,7 +274,7 @@ Search-AzGraph -Query "Resources | join (ResourceContainers | where type=='micro
 
 ## <a name="a-namejoin-sql-list-sql-databases-and-their-elastic-pools"></a><a name="join-sql" />vypsat databáze SQL a jejich elastické fondy
 
-Následující dotaz používá **leftouter** `join` k spojování SQL Database prostředků a jejich souvisejících elastických fondů, pokud existují.
+Následující dotaz používá `join` **LeftOuter** k spojování prostředků SQL Database a jejich souvisejících elastických fondů, pokud existují.
 
 ```kusto
 Resources
@@ -310,7 +310,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.sql/servers/database
 
 ## <a name="a-namejoin-vmpip-list-virtual-machines-with-their-network-interface-and-public-ip"></a><a name="join-vmpip" />vypsat virtuální počítače s jejich síťovým rozhraním a veřejnou IP adresou
 
-Tento dotaz používá dva **LeftOuter** příkazy `join` k spojování virtuálních počítačů, jejich souvisejících síťových rozhraní a všech veřejných IP adres souvisejících s těmito síťovými rozhraními.
+Tento dotaz používá ke spojování virtuálních počítačů, jejich souvisejících síťových rozhraní a všech veřejných IP adres souvisejících s těmito síťovými rozhraními dva **leftouter** `join` příkazy.
 
 ```kusto
 Resources
@@ -340,7 +340,7 @@ on publicIpId
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
-azure graph query -q "Resources | where type =~ 'microsoft.compute/virtualmachines' | extend nics=array_length(properties.networkProfile.networkInterfaces) | mvexpand nic=properties.networkProfile.networkInterfaces | where nics == 1 or nic.properties.primary =~ 'true' or isempty(nic) | project vmId = id, vmName = name, vmSize=tostring(properties.hardwareProfile.vmSize), nicId = tostring(nic.id) | join kind=leftouter ( Resources | where type =~ 'microsoft.network/networkinterfaces' | extend ipConfigsCount=array_length(properties.ipConfigurations) | mvexpand ipconfig=properties.ipConfigurations | where ipConfigsCount == 1 or ipconfig.properties.primary =~ 'true' | project nicId = id, publicIpId = tostring(ipconfig.properties.publicIPAddress.id)) on nicId | project-away nicId1 | summarize by vmId, vmName, vmSize, nicId, publicIpId | join kind=leftouter ( Resources | where type =~ 'microsoft.network/publicipaddresses' | project publicIpId = id, publicIpAddress = properties.ipAddress) on publicIpId | project-away publicIpId1"
+az graph query -q "Resources | where type =~ 'microsoft.compute/virtualmachines' | extend nics=array_length(properties.networkProfile.networkInterfaces) | mvexpand nic=properties.networkProfile.networkInterfaces | where nics == 1 or nic.properties.primary =~ 'true' or isempty(nic) | project vmId = id, vmName = name, vmSize=tostring(properties.hardwareProfile.vmSize), nicId = tostring(nic.id) | join kind=leftouter ( Resources | where type =~ 'microsoft.network/networkinterfaces' | extend ipConfigsCount=array_length(properties.ipConfigurations) | mvexpand ipconfig=properties.ipConfigurations | where ipConfigsCount == 1 or ipconfig.properties.primary =~ 'true' | project nicId = id, publicIpId = tostring(ipconfig.properties.publicIPAddress.id)) on nicId | project-away nicId1 | summarize by vmId, vmName, vmSize, nicId, publicIpId | join kind=leftouter ( Resources | where type =~ 'microsoft.network/publicipaddresses' | project publicIpId = id, publicIpAddress = properties.ipAddress) on publicIpId | project-away publicIpId1"
 ```
 
 # <a name="azure-powershelltabazure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
@@ -441,6 +441,6 @@ Search-AzGraph -Query "limit 1" -Include DisplayNames
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit ukázky [Starter dotazy](starter.md)
-- Další informace o [dotazovacím jazyku](../concepts/query-language.md)
-- Naučte se [prozkoumat prostředky](../concepts/explore-resources.md)
+- Podívejte se na ukázky [počátečních dotazů](starter.md).
+- Přečtěte si další informace o [dotazovacím jazyce](../concepts/query-language.md).
+- Přečtěte si další informace o tom, jak [prozkoumat prostředky](../concepts/explore-resources.md).

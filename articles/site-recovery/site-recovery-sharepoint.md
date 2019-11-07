@@ -1,5 +1,5 @@
 ---
-title: Nastavení zotavení po havárii pro vícevrstvou aplikaci SharePoint pomocí Azure Site Recovery | Microsoft Docs
+title: Zotavení po havárii pro vícevrstvou aplikaci SharePoint pomocí Azure Site Recovery
 description: Tento článek popisuje, jak nastavit zotavení po havárii pro vícevrstvou aplikaci SharePoint pomocí možností Azure Site Recovery.
 author: sujayt
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: e9b688d54049c21da3276a20e27dcc9ad3d4ceca
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: cc72cb4134e6492478805421e448df26a8dc4554
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231471"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622416"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Nastavení zotavení po havárii pro vícevrstvou aplikaci SharePoint pro zotavení po havárii pomocí Azure Site Recovery
 
@@ -146,9 +146,9 @@ Nejčastěji používané Azure Site Recovery skripty můžete nasadit do svého
 
 2. Přidejte skript akce post pro připojení nástroje pro vyrovnávání zatížení ve virtuálních počítačích převzetí služeb při selhání webové vrstvy (skupina 2). Použijte skript ASR-AddSingleLoadBalancer, který je publikovaný ve vzorových skriptech. Ujistěte se, že dodržujete pokyny ve skriptu a patřičně proveďte požadované změny ve skriptu.
 
-    ![Add-LB-Script-Step-1](./media/site-recovery-sharepoint/add-lb-script-step1.png)
+    ![Add-9,1-Script-Step-1](./media/site-recovery-sharepoint/add-lb-script-step1.png)
 
-    ![Add-LB-Script-Step-2](./media/site-recovery-sharepoint/add-lb-script-step2.png)
+    ![Add-9,1-Script-Step-2](./media/site-recovery-sharepoint/add-lb-script-step2.png)
 
 3. Přidejte ruční krok, který aktualizuje záznamy DNS tak, aby odkazovaly na novou farmu v Azure.
 

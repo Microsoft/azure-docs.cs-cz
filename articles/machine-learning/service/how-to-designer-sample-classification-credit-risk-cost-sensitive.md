@@ -1,5 +1,5 @@
 ---
-title: 'Příklad návrháře #4: klasifikace pro předpověď úvěrového rizika (citlivá na náklady)'
+title: 'Návrhář: předpověď úvěrového rizika (citlivé na náklady)'
 titleSuffix: Azure Machine Learning
 description: V tomto článku se dozvíte, jak vytvořit komplexní kanál strojového učení pomocí návrháře (Preview). Naučíte se, jak implementovat vlastní skripty v Pythonu a porovnat více modelů a vybrat nejlepší možnost.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 92f8acf56d79cd641222fc897bd2c9dba4ed0940
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7af0ee31c7d7e5dae4a38db7f6c74ff3e5f964bb
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515548"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647993"
 ---
 # <a name="sample-4---classification-with-custom-python-script-predict-credit-risk"></a>Ukázka 4 – klasifikace s vlastním skriptem Pythonu: předpověď úvěrového rizika
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -28,7 +28,7 @@ Zde je dokončený graf pro tento kanál:
 
 [![Graf kanálu](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 

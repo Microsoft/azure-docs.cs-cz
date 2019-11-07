@@ -1,7 +1,7 @@
 ---
-title: Postup migrace projektu na rozhraní 3,0 API
+title: Postup aktualizace projektu na rozhraní 3,0 API
 titleSuffix: Azure Cognitive Services
-description: Naučte se migrovat Custom Vision projekty z předchozí verze rozhraní API na rozhraní 3,0 API.
+description: Naučte se aktualizovat Custom Vision projekty z předchozí verze rozhraní API na rozhraní 3,0 API.
 services: cognitive-services
 author: areddish
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: areddish
-ms.openlocfilehash: 353fc0a2d8396def17b8e23d9a1c685c755349c5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c134f30b124113a23df0e73cd1bbc8209e335183
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560889"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647506"
 ---
-# <a name="migrate-to-the-30-api"></a>Migrace na rozhraní 3,0 API
+# <a name="update-to-the-30-api"></a>Aktualizace rozhraní 3,0 API
 
 Custom Vision nyní dosáhla obecné dostupnosti a prošla aktualizací rozhraní API.
 Tato aktualizace zahrnuje několik nových funkcí a důležité je několik podstatných změn:
@@ -26,7 +26,7 @@ Tato aktualizace zahrnuje několik nových funkcí a důležité je několik pod
 * Možnost exportu Vision AI Developer Kit (VAIDK) vyžaduje, aby projekt vytvořil konkrétní způsob.
 * Výchozí iterace se odebraly namísto publikování nebo zrušení publikování pojmenované iterace.
 
-V této příručce se dozvíte, jak aktualizovat projekty tak, aby fungovaly s novou verzí rozhraní API. Úplný seznam změn najdete v poznámkách k [verzi](release-notes.md) .
+V této příručce se dozvíte, jak aktualizovat projekty tak, aby fungovaly s novou verzí rozhraní API. Úplný seznam změn najdete v [poznámkách k verzi](release-notes.md) .
 
 ## <a name="use-the-updated-prediction-api"></a>Použití aktualizované předpovědi rozhraní API
 
@@ -53,14 +53,7 @@ Jakmile je iterace vyškolená, můžete ji zpřístupnit pro předpověď pomoc
 
 Jakmile je vaše iterace publikovaná, aplikace je může použít k předpovědi zadáním názvu ve svém prediktivním volání rozhraní API. K vytvoření iterace pro předpověď volání použijte rozhraní **[UnpublishIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b81a)** API.
 
-## <a name="additional-export-options"></a>Další možnosti exportu
-
-S rozhraními API 3,0 zveřejňujeme dva další cíle exportu: Architektura ARM a sada Vision AI Developer Kit.
-
-* Pokud chcete použít ARM, stačí vybrat kompaktní doménu a pak jako možnosti exportu zvolit souboru Dockerfile a pak ARM.
-* V sadě Vision AI dev Kit se musí projekt vytvořit s obecnou __(kompaktní)__ doménou a zároveň zadat VAIDK v argumentu cílové exportní platformy.
-
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Referenční dokumentace k rozhraní API pro školení (REST)](https://go.microsoft.com/fwlink/?linkid=865446)
 * [Referenční dokumentace k prediktivním rozhraním API (REST)](https://go.microsoft.com/fwlink/?linkid=865445)

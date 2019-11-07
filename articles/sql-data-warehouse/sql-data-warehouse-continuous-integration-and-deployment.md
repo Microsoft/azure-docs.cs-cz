@@ -1,5 +1,5 @@
 ---
-title: Průběžná integrace a nasazování | Microsoft Docs
+title: Průběžná integrace a nasazování
 description: DevOps prostředí databáze podnikové třídy pro SQL Data Warehouse s integrovanou podporou pro průběžnou integraci a nasazování pomocí Azure Pipelines.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 7afb616fffaf01b1efa4f5d5a4af9dddd9683781
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: fd03072f4e69fac43874e822ebb06063436ef72c
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70143146"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646133"
 ---
 # <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>Průběžná integrace a nasazování pro Azure SQL Data Warehouse
 

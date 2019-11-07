@@ -4,23 +4,23 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: e427a7b80b28f1cc70a02890152f9f2247a8bcd2
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 4bd890adcaa4982c52366faed0f2975729290360
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "68360287"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612031"
 ---
 V následující tabulce jsou uvedené limity, které se vztahují na prostředky Azure IoT Hub Device Provisioning Service.
 
-| Resource | Omezení |
+| Prostředek | škálování |
 | --- | --- |
 | Maximální počet služeb Device Provisioning na předplatné Azure | 10 |
 | Maximální počet zápisů | 1 000 000 |
 | Maximální počet registrací | 1 000 000 |
 | Maximální počet skupin zápisu | 100 |
 | Maximální počet certifikačních autorit | 25 |
-| Maximální počet propojených Center IoT Hub | 10 |
+| Maximální počet propojených Center IoT Hub | 50 |
 | Maximální velikost zprávy | 96 KB|
 
 

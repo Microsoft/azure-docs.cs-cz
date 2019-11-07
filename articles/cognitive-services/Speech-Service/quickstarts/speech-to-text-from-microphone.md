@@ -1,22 +1,22 @@
 ---
 title: 'Rychlý Start: rozpoznávání řeči pomocí služby mikrofon-Speech'
 titleSuffix: Azure Cognitive Services
-description: Bude doplněno
+description: V tomto rychlém startu použijete sadu Speech SDK k interaktivnímu rozpoznávání řeči ze zvukových dat zachycených z mikrofonu.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 11/04/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: e30c4e7e89fd13484bf5d727cb90d278a2532431
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: aed3a5c01cf1a059b4abe9674f780906f15106f6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503511"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682003"
 ---
 # <a name="quickstart-recognize-speech-from-a-microphone"></a>Rychlý Start: rozpoznávání řeči z mikrofonu
 

@@ -1,5 +1,5 @@
 ---
-title: Integrace správy zdrojového kódu | Microsoft Docs
+title: Integrace správy zdrojového kódu
 description: DevOps prostředí databáze podnikové třídy pro SQL Data Warehouse s integrací nativní správy zdrojového kódu pomocí Azure Repos (Git a GitHub).
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 10a10882efe05ef9e6bb86e54fcfcf8c5d73d225
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 82d366b3f807e21e3531da00da78520fed90bc66
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70098750"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645261"
 ---
 # <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Integrace správy zdrojového kódu pro Azure SQL Data Warehouse
 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte, jak integrovat projekt databáze SSDT (SQL Server Da
 
    ![Spravovat připojení](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Spravovat připojení")
 
-   ![Připojení](media/sql-data-warehouse-source-control-integration/3-connect.png "Propojení")
+   ![Připojení](media/sql-data-warehouse-source-control-integration/3-connect.png "Připojení")
 
 3. Naklonujte úložiště Azure úložiště z vašeho projektu na místní počítač.
 

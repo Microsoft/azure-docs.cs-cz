@@ -1,6 +1,6 @@
 ---
-title: Identita spravované služby Data Factory | Dokumentace Microsoftu
-description: Další informace o spravovaných identit pro službu Azure Data Factory.
+title: Spravovaná identita pro Data Factory
+description: Přečtěte si o spravované identitě pro Azure Data Factory.
 services: data-factory
 author: linda33wj
 manager: craigg
@@ -11,52 +11,52 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 3c1bb38eb12ce77d172257706cd458cebda4bd8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 437d1e13bfb0831bb3ece26f761cef4f5e2e0c6f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66153434"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676991"
 ---
 # <a name="managed-identity-for-data-factory"></a>Spravovaná identita pro Data Factory
 
-Tento článek vám pomůže pochopit, co je spravovaná identita pro objekt pro vytváření dat (dříve označované jako Identity spravované služby nebo MSI) a jak to funguje.
+Tento článek vám pomůže pochopit, co je spravovaná identita pro Data Factory (dřív označovaná jako Identita spravované služby/MSI) a jak funguje.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Přehled
 
-Při vytváření datové továrny, je možné vytvořit spravovanou identitu spolu s vytvoření objektu factory. Spravovaná identita je spravovaná aplikace zaregistrované k Azure Active Directory a představuje této konkrétní datové továrně.
+Při vytváření datové továrny je možné vytvořit spravovanou identitu společně s vytvářením továrny. Spravovaná identita je spravovaná aplikace registrovaná v adresáři Azure Activity a představuje tuto specifickou datovou továrnu.
 
-Spravovaná identita služby Data Factory výhody následujících funkcí:
+Spravovaná identita pro Data Factory přináší následující funkce:
 
-- [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md), v takovém případě data factory spravovaná identita se používá pro ověřování služby Azure Key Vault.
-- Konektorů, včetně [úložiště objektů Blob v Azure](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure SQL Database](connector-azure-sql-database.md), a [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md).
-- [Webová aktivita](control-flow-web-activity.md).
+- [Ukládat přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md). v takovém případě se pro ověřování Azure Key Vault používá spravovaná identita Data Factory.
+- Konektory, včetně služby [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure SQL Database](connector-azure-sql-database.md)a [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md).
+- [Webové aktivity](control-flow-web-activity.md).
 
 ## <a name="generate-managed-identity"></a>Generovat spravovanou identitu
 
-Spravovaná identita služby Data Factory generováno následujícím způsobem:
+Spravovaná identita pro Data Factory je generována takto:
 
-- Při vytváření služby data factory prostřednictvím **webu Azure portal nebo Powershellu**spravované identity vždy vytvoří automaticky.
-- Při vytváření služby data factory prostřednictvím **SDK**spravované identity vytvoří pouze v případě, že zadáte "Identity = nové FactoryIdentity()" v objektu factory pro vytváření. Viz příklad v [.NET rychlý start – vytvoření datové továrny](quickstart-create-data-factory-dot-net.md#create-a-data-factory).
-- Při vytváření služby data factory prostřednictvím **rozhraní REST API**spravované identity vytvoří pouze v případě, že zadáte část "identity" v textu požadavku. Viz příklad v [REST rychlý start – vytvoření objektu pro vytváření dat](quickstart-create-data-factory-rest-api.md#create-a-data-factory).
+- Při vytváření datové továrny prostřednictvím **Azure Portal nebo PowerShellu**se spravovaná identita vždycky automaticky vytvoří.
+- Při vytváření datové továrny prostřednictvím **sady SDK**se spravovaná identita vytvoří jenom v případě, že při vytváření objektu factory zadáte identity = New FactoryIdentity (). Viz příklad v tématu [rychlý Start .NET – vytvoření datové továrny](quickstart-create-data-factory-dot-net.md#create-a-data-factory).
+- Při vytváření datové továrny prostřednictvím **REST API**se spravovaná identita vytvoří jenom v případě, že v textu žádosti zadáte část identita. Viz příklad v [rychlém startu REST – vytvořit datovou továrnu](quickstart-create-data-factory-rest-api.md#create-a-data-factory).
 
-Pokud nenajdete své datové továrny nemá spravovanou identitu spojené následující [načíst spravovanou identitu](#retrieve-managed-identity) instrukce, můžete explicitně vygenerovat ji prostřednictvím kódu programu aktualizuje objekt pro vytváření dat s identita iniciátora:
+Pokud zjistíte, že objekt pro vytváření dat nemá přidruženu spravovanou identitu po [načtení spravované instrukce identity](#retrieve-managed-identity) , můžete ji explicitně vygenerovat tak, že programově aktualizujete datovou továrnu pomocí iniciátoru identity.
 
-- [Generovat spravovanou identitu pomocí Powershellu](#generate-managed-identity-using-powershell)
-- [Generovat spravovanou identitu pomocí rozhraní REST API](#generate-managed-identity-using-rest-api)
-- [Generovat spravovanou identitu pomocí šablony Azure Resource Manageru](#generate-managed-identity-using-an-azure-resource-manager-template)
-- [Generovat spravovanou identitu pomocí sady SDK](#generate-managed-identity-using-sdk)
+- [Generování spravované identity pomocí PowerShellu](#generate-managed-identity-using-powershell)
+- [Generování spravované identity pomocí REST API](#generate-managed-identity-using-rest-api)
+- [Generování spravované identity pomocí šablony Azure Resource Manager](#generate-managed-identity-using-an-azure-resource-manager-template)
+- [Generování spravované identity pomocí sady SDK](#generate-managed-identity-using-sdk)
 
 >[!NOTE]
->- Spravovaná identita nemůže být upraven. Aktualizují se data factory, která už máte spravovaná identita nebude mít žádný vliv, spravovanou identitu, zůstane beze změny.
->- Při aktualizaci služby data factory, který už máte spravované identity bez zadání parametru "identity" v objektu factory nebo bez udání oddíl "identity" v textu požadavku REST, obdržíte chybu.
->- Když odstraníte datovou továrnu, přidružené spravovanou identitu se odstraní společně.
+>- Spravovanou identitu nejde upravit. Aktualizace datové továrny, která už má spravovanou identitu, nebude mít žádný dopad, spravovaná identita zůstane beze změny.
+>- Pokud aktualizujete datovou továrnu, která už má spravovanou identitu bez zadání parametru identity v objektu factory, nebo bez zadání části Identita v textu žádosti REST, zobrazí se chyba.
+>- Při odstranění objektu pro vytváření dat bude přidružená spravovaná identita odstraněna společně.
 
-### <a name="generate-managed-identity-using-powershell"></a>Generovat spravovanou identitu pomocí Powershellu
+### <a name="generate-managed-identity-using-powershell"></a>Generování spravované identity pomocí PowerShellu
 
-Volání **Set-AzDataFactoryV2** příkaz znovu, pak naleznete v tématu "Identity" polí generovaných nově:
+Znovu spusťte příkaz **set-AzDataFactoryV2** , zobrazí se nově vygenerovaná pole identity:
 
 ```powershell
 PS C:\WINDOWS\system32> Set-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName> -Location <region>
@@ -70,15 +70,15 @@ Identity          : Microsoft.Azure.Management.DataFactory.Models.FactoryIdentit
 ProvisioningState : Succeeded
 ```
 
-### <a name="generate-managed-identity-using-rest-api"></a>Generovat spravovanou identitu pomocí rozhraní REST API
+### <a name="generate-managed-identity-using-rest-api"></a>Generování spravované identity pomocí REST API
 
-Zavolat následující rozhraní API s oddílem "identity" v textu požadavku:
+V textu žádosti volejte pod rozhraním API část identita:
 
 ```
 PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2018-06-01
 ```
 
-**Text žádosti**: přidání "identity": {"type": "SystemAssigned"}.
+**Text žádosti**: přidejte "identity": {"Type": "SystemAssigned"}.
 
 ```json
 {
@@ -91,7 +91,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-**Odpověď**: spravovaná identita je automaticky vytvořen a odpovídajícím způsobem naplní oddíl "identity".
+**Odpověď**: spravovaná identita se vytvoří automaticky a v části Identita se odpovídajícím způsobem naplní.
 
 ```json
 {
@@ -114,9 +114,9 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-### <a name="generate-managed-identity-using-an-azure-resource-manager-template"></a>Generovat spravovanou identitu pomocí šablony Azure Resource Manageru
+### <a name="generate-managed-identity-using-an-azure-resource-manager-template"></a>Generování spravované identity pomocí šablony Azure Resource Manager
 
-**Šablona**: přidání "identity": {"type": "SystemAssigned"}.
+**Šablona**: přidejte "identity": {"Type": "SystemAssigned"}.
 
 ```json
 {
@@ -134,9 +134,9 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-### <a name="generate-managed-identity-using-sdk"></a>Generovat spravovanou identitu pomocí sady SDK
+### <a name="generate-managed-identity-using-sdk"></a>Generování spravované identity pomocí sady SDK
 
-Volání funkce create_or_update objekt pro vytváření dat s identitou = nové FactoryIdentity(). Ukázkový kód pomocí rozhraní .NET:
+Zavolejte funkci create_or_updatea objektu pro vytváření dat s identitou = New FactoryIdentity (). Ukázkový kód pomocí .NET:
 
 ```csharp
 Factory dataFactory = new Factory
@@ -147,26 +147,26 @@ Factory dataFactory = new Factory
 client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
 ```
 
-## <a name="retrieve-managed-identity"></a>Načíst spravovaná identita
+## <a name="retrieve-managed-identity"></a>Načtení spravované identity
 
-Můžete načíst spravovaná identita z webu Azure portal nebo prostřednictvím kódu programu. V následujících částech se dozvíte některé ukázky.
+Spravovanou identitu můžete načíst z Azure Portal nebo programově. V následujících částech jsou uvedeny některé ukázky.
 
 >[!TIP]
-> Pokud nevidíte spravovanou identitu [generovat spravovanou identitu](#generate-managed-identity) aktualizací svým objektem pro vytváření.
+> Pokud nevidíte spravovanou identitu, [vygenerujte spravovanou identitu](#generate-managed-identity) aktualizací vaší továrny.
 
-### <a name="retrieve-managed-identity-using-azure-portal"></a>Načíst spravovanou identitu pomocí webu Azure portal
+### <a name="retrieve-managed-identity-using-azure-portal"></a>Načtení spravované identity pomocí Azure Portal
 
-Můžete najít informace o spravovaných identit z webu Azure portal -> datové továrny -> vlastnosti:
+Informace o spravované identitě můžete najít z Azure Portal-> vašich datových továrn – vlastnosti >:
 
-- Spravované Identity ID objektu
-- Tenant spravované Identity
-- **Spravované ID aplikace Identity** > zkopírujte tuto hodnotu
+- ID spravovaného objektu identity
+- Tenant spravované identity
+- **ID aplikace spravované Identity** > tuto hodnotu zkopírovat
 
-![Načíst spravovaná identita](media/data-factory-service-identity/retrieve-service-identity-portal.png)
+![Načtení spravované identity](media/data-factory-service-identity/retrieve-service-identity-portal.png)
 
-### <a name="retrieve-managed-identity-using-powershell"></a>Načíst spravovanou identitu pomocí Powershellu
+### <a name="retrieve-managed-identity-using-powershell"></a>Načtení spravované identity pomocí PowerShellu
 
-Spravovaná identita ID instančního objektu a ID tenanta bude vrácen, pokud dostanete konkrétní datové továrny následujícím způsobem:
+ID objektu spravované identity a ID tenanta se vrátí, když získáte konkrétní objekt pro vytváření dat následujícím způsobem:
 
 ```powershell
 PS C:\WINDOWS\system32> (Get-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
@@ -176,7 +176,7 @@ PrincipalId                          TenantId
 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc 72f988bf-XXXX-XXXX-XXXX-2d7cd011db47
 ```
 
-Zkopírujte ID instančního objektu a potom spusťte následující příkaz Azure Active Directory s ID objektu zabezpečení jako parametr zobrazíte **ApplicationId**, který použijete k udělení přístupu:
+Zkopírujte ID objektu zabezpečení a potom spusťte příkaz Azure Active Directory s ID objektu zabezpečení jako parametr, který získá identifikátor **ApplicationId**, který použijete pro udělení přístupu:
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzADServicePrincipal -ObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -188,10 +188,10 @@ Id                    : 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
 Type                  : ServicePrincipal
 ```
 
-## <a name="next-steps"></a>Další postup
-Naleznete v následujících tématech, které zavést, kdy a jak se identita spravované služby data factory používat:
+## <a name="next-steps"></a>Další kroky
+Přečtěte si následující témata, které zavádějí, kdy a jak používat spravovanou identitu Data Factory:
 
-- [Store přihlašovacích údajů ve službě Azure Key Vault](store-credentials-in-key-vault.md)
-- [Kopírování dat z/do Azure Data Lake Store pomocí spravované identity pro ověřování prostředků Azure](connector-azure-data-lake-store.md)
+- [Ukládat přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md)
+- [Kopírování dat z/do Azure Data Lake Store používáním spravovaných identit pro ověřování prostředků Azure](connector-azure-data-lake-store.md)
 
-Zobrazit [spravovaných identit pro prostředky Azure – přehled](/azure/active-directory/managed-identities-azure-resources/overview) pro další informace o spravovaných identit pro prostředky Azure, které objekt pro vytváření dat se identita spravované je založena na. 
+V tématu [Přehled spravovaných identit pro prostředky Azure](/azure/active-directory/managed-identities-azure-resources/overview) najdete další informace o spravovaných identitách pro prostředky Azure, na kterých je založena identita spravované datovou továrnou. 

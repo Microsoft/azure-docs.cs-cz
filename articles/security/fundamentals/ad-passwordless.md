@@ -2,19 +2,19 @@
 title: Porozumění celému světě bez hesel s Azure Active Directory | Microsoft Docs
 description: Tato příručka pomáhá CEOs, ředitelé informačních technologií, CISO, vedoucím architektům identity, podnikovým architektům a organizacím pro rozhodování o tom, kdo zodpovídá za výběr metody ověřování bez hesla pro svou Azure Active Directory implementaci.
 keywords: bez hesla, azuread
-author: martincoetzer
-ms.author: martinco
+author: TerryLanfear
+ms.author: terrylan
 ms.date: 07/09/2019
 ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: d1c69cd1cf9990fc77a24e18d87690210453cf75
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: a24195dcf8f384db8d78d39ac7100e487f6c9272
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091958"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621286"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>World bez hesel s Azure Active Directory
 
@@ -123,7 +123,7 @@ Aplikace Microsoft Authenticator umožňuje uživatelům ověřit svoji identitu
 
 Požadavky na použití aplikace Microsoft Authenticator k přihlášení neheslem do služby Azure AD zahrnuje následující:
 
-* Koncoví uživatelé mají povolený Azure Multi-Factor Authentication.
+* Koncoví uživatelé jsou povoleni pro Azure Multi-Factor Authentication
 
 * Doporučuje se, aby si uživatelé zaregistrovali svoje zařízení pomocí Microsoft Intune nebo řešení správy mobilních zařízení (MDM) od jiného výrobce, aby se usnadnilo nasazení aplikace.
 
@@ -150,7 +150,7 @@ Vzhledem k tomu, že většina uživatelů je zvykla používat k ověřování 
 
 Aby bylo možné aplikaci Microsoft Authenticator použít jako řešení bez hesla pro přihlášení k účtu služby Azure AD, musí být kroky provedeny správcem i koncovými uživateli.
 
-Nejdřív bude správce muset [Povolit používání aplikace jako přihlašovací údaje](../../active-directory/authentication/howto-authentication-passwordless-phone.md) v Tenantovi pomocí Windows PowerShellu. Správce bude taky muset povolit koncovým uživatelům ověřování Azure Multi-Factor Authentication (Azure MFA) a nakonfigurovat Microsoft Authenticator aplikaci jako jednu z [metod ověřování](../../active-directory/authentication/howto-mfa-mfasettings.md#verification-methods).
+Nejdřív bude správce muset [Povolit používání aplikace jako přihlašovací údaje](../../active-directory/authentication/howto-authentication-passwordless-phone.md) v Tenantovi pomocí Windows PowerShellu. Správce bude taky muset povolit koncové uživatele pro Azure Multi-Factor Authentication (Azure MFA) a nakonfigurovat Microsoft Authenticator aplikaci jako jednu z [metod ověřování](../../active-directory/authentication/howto-mfa-mfasettings.md#verification-methods).
 
 Koncoví uživatelé budou muset [Stáhnout a nainstalovat](../../active-directory/user-help/user-help-auth-app-download-install.md) aplikaci Microsoft Authenticator a [nastavit účet](../../active-directory/user-help/security-info-setup-auth-app.md) tak, aby používal aplikaci Microsoft Authenticator jako jednu z metod ověřování.
 
@@ -184,7 +184,7 @@ Ověřování bez hesla pomocí Microsoft Authenticator odpovídá stejnému zá
 
 #### <a name="user-manages-their-passwordless-sign-in-with-microsoft-authenticator-credentials"></a>Uživatel spravuje přihlášení bez hesla pomocí Microsoft Authenticator přihlašovacích údajů.
 
-Díky [kombinované registraci](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)se uživatelé můžou zaregistrovat a získat výhody ověřování Azure Multi-Factor Authentication a samoobslužného resetování hesla. Uživatelé registrují a spravují tato nastavení tak, že přejde na [stránku Můj profil](https://aka.ms/mysecurityinfo). Kromě povolení SSPR podporuje kombinovaná registrace více metod ověřování a akcí.
+Díky [kombinované registraci](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)se uživatelé můžou zaregistrovat a získat výhody služby Azure Multi-Factor Authentication i samoobslužného resetování hesla. Uživatelé registrují a spravují tato nastavení tak, že přejde na [stránku Můj profil](https://aka.ms/mysecurityinfo). Kromě povolení SSPR podporuje kombinovaná registrace více metod ověřování a akcí.
 
 ## <a name="fido2-security-keys"></a>FIDO2 klíče zabezpečení
 
@@ -228,7 +228,7 @@ Doporučujeme také, aby každá organizace vytvořila protokol pro uživatele a
 
 Správci sice můžou [ručně zřizovat klíče](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless) a distribuovat je koncovým uživatelům, takže zřizování a povolování poskytovatele přihlašovacích údajů FIDO2 na zamykací obrazovce Windows 10 budou podporované prostřednictvím [Intune](https://docs.microsoft.com/intune/windows-enrollment-methods). Správci budou taky muset použít [Azure Portal](https://portal.azure.com/) k povolení zařízení hardwarových tokenů jako metody ověřování pomocí hesla.
 
-Nasazování klíčů zabezpečení FIDO2 také vyžaduje, aby uživatelé zaregistrovali své klíče pomocí [kombinované registrace](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md). Při kombinované registraci se uživatelé registrují jednou a získají výhody pro Azure Multi-Factor Authentication i pro resetování hesla jednotného přihlašování (SSPR).
+Nasazování klíčů zabezpečení FIDO2 také vyžaduje, aby uživatelé zaregistrovali své klíče pomocí [kombinované registrace](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md). Při kombinované registraci se uživatelé registrují jednou a získají výhody pro Azure Multi-Factor Authentication i resetování hesla jednotného přihlašování (SSPR).
 
 Kromě výběru hardwarového tokenu jako výchozí metody Multi-Factor Authentication doporučujeme také vybrat další možnost ověření.
 
@@ -238,7 +238,7 @@ Kromě výběru hardwarového tokenu jako výchozí metody Multi-Factor Authenti
 
 * Telefonní hovor
 
-* Zpráva SMS
+* Textová zpráva
 
 #### <a name="user-using-fido2-security-key-for-sign-in"></a>Uživatel používající FIDO2 bezpečnostní klíč pro přihlášení
 
@@ -249,7 +249,7 @@ FIDO2 poskytuje abstrakci mezi systémem, který se používá jako ověřovatel
 Klíče zabezpečení FIDO2 poskytují zabezpečené ověřování, nezávisle na tom, jaký je faktor formuláře. Bezpečnostní klíč držitele uchovává přihlašovací údaje a měl by být chráněn pomocí dalšího druhého faktoru, jako je otisk prstu (integrovaný do klíče zabezpečení), nebo PIN kódu, který se má zadat v přihlašování Windows. Partneři Microsoftu pracují na nejrůznějších faktorech formy bezpečnostního klíče. Mezi příklady patří klíče zabezpečení USB a čipové karty s povoleným NFC.
 
 > [!NOTE]
-> Bezpečnostní klíč musí implementovat určité funkce a rozšíření od protokolu FIDO2 CTAP, aby byl [kompatibilní](https://aka.ms/fido2securitykeys)s Microsoftem. Společnost Microsoft testovala Tato řešení kvůli kompatibilitě s Windows 10 a Azure Active Directory.
+> Bezpečnostní klíč musí implementovat určité funkce a rozšíření od protokolu FIDO2 CTAP, aby byl [kompatibilní s Microsoftem](https://aka.ms/fido2securitykeys). Společnost Microsoft testovala Tato řešení kvůli kompatibilitě s Windows 10 a Azure Active Directory.
 
 ![FIDO2 proces přihlášení](./media/ad-passwordless/azure-ad-pwdless-image9.png)
 
@@ -340,7 +340,7 @@ V posledních několika letech pokračovala společnost Microsoft na jejich záv
 
 Zavedení moderních technologií Multi-Factor Authentication, jako je biometrika a kryptografie veřejného klíče v široce přístupných zařízeních, je jedním z nejdůležitějších kroků, které mohou smysluplně snížit riziko totožnosti společnosti. Bez hesla je dlouhodobý přístup k zabezpečenému ověřování a stále se vyvíjí. S ohledem na nově vznikající požadavky si organizace můžou připravit plán na zahájení přechodu na technologie bez hesla.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přehled toho, [co je](../../active-directory/authentication/concept-authentication-passwordless.md) nejenom pro hesla?
 * [Jak ve službě Azure AD povolit nepoužívatelné hesla](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless)

@@ -1,5 +1,5 @@
 ---
-title: Filtrovat transformaci v Azure Data Factory toku dat mapování | Microsoft Docs
+title: Filtrovat transformaci v Azure Data Factory tok dat mapování
 description: Odfiltrování řádků pomocí transformace filtru v Azure Data Factory toku dat mapování
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: a4dd53f37a8a963d05a3ad9c49769528e945f6a1
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 77587d007d9bfcdc1461201f676c79880bd89d6b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527367"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676175"
 ---
 # <a name="filter-transformation-in-mapping-data-flow"></a>Filtrovat transformaci v toku dat mapování
 
@@ -35,9 +35,9 @@ Pomocí Tvůrce výrazů toku dat zadejte výraz pro podmínku filtru. Chcete-li
     ) ~> <filterTransformationName>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
-V následujícím příkladu je podmíněná transformace rozdělení s názvem `FilterBefore1960`, která přebírá příchozí Stream `CleanData`. Podmínka filtru je `year <= 1960` výrazu.
+V následujícím příkladu je podmíněná transformace rozdělení s názvem `FilterBefore1960`, která přebírá příchozí Stream `CleanData`. Podmínka filtru je `year <= 1960`výrazu.
 
 V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 

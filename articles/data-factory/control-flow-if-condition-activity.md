@@ -1,5 +1,5 @@
 ---
-title: Aktivita podmínky v Azure Data Factory | Microsoft Docs
+title: Aktivita podmínky v Azure Data Factory
 description: Aktivita podmínka if umožňuje řídit tok zpracování na základě podmínky.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: fc6318b5033ff1297f917ab95b28f8ed9285e930
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 562e84b4fe51603ae32884057578541f5536ebd4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142487"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679851"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Aktivita podmínky v Azure Data Factory
 Aktivita podmínky If funguje stejně jako příkaz if v programovacích jazycích. Vyhodnotí sadu aktivit, když se podmínka vyhodnotí jako `true`, a jinou sadu aktivit, když se podmínka vyhodnotí jako `false`. 
@@ -63,13 +63,13 @@ Aktivita podmínky If funguje stejně jako příkaz if v programovacích jazycí
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požadováno
+Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-name | Název aktivity if-Condition | Řetězec | Ano
+jméno | Název aktivity if-Condition | Řetězec | Ano
 type | Musí být nastavené na **IfCondition** | Řetězec | Ano
-expression | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Výraz s typem výsledku Boolean | Ano
-ifTrueActivities | Sada aktivit, které se spustí, když se výraz vyhodnotí `true`jako. | Array | Ano
-ifFalseActivities | Sada aktivit, které se spustí, když se výraz vyhodnotí `false`jako. | Array | Ano
+vyjádření | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Výraz s typem výsledku Boolean | Ano
+ifTrueActivities | Sada aktivit, které se spustí, když se výraz vyhodnotí jako `true`. | Pole | Ano
+ifFalseActivities | Sada aktivit, které se spustí, když se výraz vyhodnotí jako `false`. | Pole | Ano
 
 ## <a name="example"></a>Příklad
 Kanál v tomto příkladu kopíruje data ze vstupní složky do výstupní složky. Výstupní složka je určena hodnotou parametru kanálu: routeSelection. Pokud je hodnota routeSelection true, data se zkopírují do outputPath1. A pokud je hodnota routeSelection false, data se zkopírují do outputPath2. 

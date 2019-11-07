@@ -1,5 +1,5 @@
 ---
-title: Monitorování výkonu Azure SQL Database s využitím zobrazení dynamické správy | Microsoft Docs
+title: Monitorování výkonu Azure SQL Database pomocí zobrazení dynamické správy
 description: Naučte se detekovat a diagnostikovat běžné problémy s výkonem pomocí zobrazení dynamické správy k monitorování Microsoft Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: a630ceb1748f38dc169a4ebabcbb4e021de4273c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: c7eed3fc8e9d0328a3e793e1ff4b3652ab86e2bc
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881558"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687750"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Monitorování Azure SQL Database výkonu pomocí zobrazení dynamické správy
 
@@ -108,7 +108,7 @@ Při identifikaci potíží s výkonem v/v jsou hlavní typy čekání spojené 
 
 - `PAGEIOLATCH_*`
 
-  Pro datový soubor v/v – `PAGEIOLATCH_SH`problémy `PAGEIOLATCH_EX`( `PAGEIOLATCH_UP`včetně,,).  Pokud má název typu čekání v **/** v, odkazuje na vstupně-výstupní problém. Pokud v poli pro čekání na stránku neexistují žádné **vstupně-výstupní operace** , odkazuje na jiný typ problému (například obsah databáze tempdb).
+  Pro vstupně-výstupní operace s datovými soubory (včetně `PAGEIOLATCH_SH`, `PAGEIOLATCH_EX``PAGEIOLATCH_UP`).  Pokud má název typu čekání v **/** v, odkazuje na vstupně-výstupní problém. Pokud v poli pro čekání na stránku neexistují žádné **vstupně-výstupní operace** , odkazuje na jiný typ problému (například obsah databáze tempdb).
 
 - `WRITE_LOG`
 
@@ -116,7 +116,7 @@ Při identifikaci potíží s výkonem v/v jsou hlavní typy čekání spojené 
 
 ### <a name="if-the-io-issue-is-occurring-right-now"></a>Pokud k problému v/v dojde hned teď
 
-K zobrazení`wait_time`apoužijte [_exec_requests sys. DM](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) nebo [Sys. DM _os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) `wait_type` .
+K zobrazení `wait_type` a `wait_time`použijte [Sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) nebo [Sys. DM _os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) .
 
 #### <a name="identify-data-and-log-io-usage"></a>Identifikace dat a využití v/v protokolu
 
@@ -130,8 +130,8 @@ ORDER BY end_time DESC;
 
 Pokud bylo dosaženo limitu v/v, máte dvě možnosti:
 
-- Možnost 1: Upgrade výpočetní velikosti nebo úrovně služby
-- Možnost 2: Identifikujte a optimalizujte dotazy náročné na v/v.
+- Možnost 1: upgrade výpočetní velikosti nebo úrovně služby
+- Možnost 2: identifikujte a optimalizujte dotazy náročné na v/v.
 
 #### <a name="view-buffer-related-io-using-the-query-store"></a>Zobrazení vstupně-výstupních operací souvisejících s vyrovnávací pamětí pomocí úložiště dotazů
 
@@ -158,7 +158,7 @@ GO
 
 #### <a name="view-total-log-io-for-writelog-waits"></a>Zobrazit celkový protokol v/v pro WRITELOG čekání
 
-Pokud je `WRITELOG`typ čekání, použijte následující dotaz k zobrazení celkového protokolu v/v v příkazu:
+Pokud je typ čekání `WRITELOG`, použijte následující dotaz k zobrazení celkového protokolu v/v – příkaz:
 
 ```sql
 -- Top transaction log consumers
@@ -235,11 +235,11 @@ ORDER BY total_log_bytes_used DESC;
 GO
 ```
 
-## <a name="identify-tempdb-performance-issues"></a>Identifikace `tempdb` problémů s výkonem
+## <a name="identify-tempdb-performance-issues"></a>Identifikace problémů s výkonem `tempdb`
 
-Při identifikaci problémů s výkonem v/v jsou `tempdb` `PAGELATCH_*` hlavní typy čekání přidružené k problémům ( `PAGEIOLATCH_*`ne). Čekání ale `PAGELATCH_*` vždy znamená, `tempdb` že máte spory.  Tato čekací hodnota také může znamenat, že máte k dispozici obsah stránky dat od uživatele, protože souběžné požadavky cílí na stejnou datovou stránku. K dalšímu potvrzení `tempdb` sporu použijte [Sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) a potvrďte, že hodnota `2:x:y` wait_resource začíná na, kde 2 `tempdb` je ID databáze, `x` je ID souboru a `y` je ID stránky.  
+Při identifikaci problémů s výkonem v/v jsou v horních typech čekání spojených s `tempdb` problémy `PAGELATCH_*` (ne `PAGEIOLATCH_*`). `PAGELATCH_*` čekání ale vždy znamená, že máte `tempdb` spor.  Tato čekací hodnota také může znamenat, že máte k dispozici obsah stránky dat od uživatele, protože souběžné požadavky cílí na stejnou datovou stránku. K další kontrole `tempdb` kolizí použijte [Sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) a potvrďte tak, že hodnota wait_resource začíná na `2:x:y` kde 2 je `tempdb` ID databáze, `x` je ID souboru a `y` je ID stránky.  
 
-Pro kolize databáze tempdb je běžnou metodou snížit nebo znovu napsat kód aplikace, který závisí na `tempdb`.  Mezi `tempdb` běžné oblasti využití patří:
+Pro kolize databáze tempdb je běžnou metodou snížit nebo znovu napsat kód aplikace, který závisí na `tempdb`.  Mezi běžné `tempdb` oblasti využití patří:
 
 - Dočasné tabulky
 - Proměnné tabulky
@@ -332,11 +332,11 @@ ORDER BY start_time ASC;
 
 ## <a name="identify-memory-grant-wait-performance-issues"></a>Identifikace problémů s výkonem při čekání na přidělení paměti
 
-Pokud je `RESOURCE_SEMAHPORE` váš typ čekání na maximum a nemáte problém s vysokým využitím procesoru, může se stát, že máte problém s přidělením paměti.
+Pokud je váš typ čekání na maximum `RESOURCE_SEMAHPORE` a nemáte problém s vysokým využitím procesoru, může se stát, že máte k dispozici čekající problémy s přidělením paměti.
 
-### <a name="determine-if-a-resource_semahpore-wait-is-a-top-wait"></a>Určení, zda `RESOURCE_SEMAHPORE` je čekání hlavní chvilkou
+### <a name="determine-if-a-resource_semahpore-wait-is-a-top-wait"></a>Určení, zda `RESOURCE_SEMAHPORE` čeká na hlavní čekání
 
-Pomocí následujícího dotazu určete, jestli `RESOURCE_SEMAHPORE` je čekání hlavní chvilkou.
+Pomocí následujícího dotazu určete, jestli `RESOURCE_SEMAHPORE` čekat na hlavní čekání.
 
 ```sql
 SELECT wait_type,
@@ -509,10 +509,10 @@ Využití prostředků můžete monitorovat pomocí [SQL Database Query Performa
 
 Můžete také monitorovat využití pomocí těchto dvou zobrazení:
 
-- [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)
-- [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
+- [sys. DM _db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)
+- [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
-### <a name="sysdm_db_resource_stats"></a>sys.dm_db_resource_stats
+### <a name="sysdm_db_resource_stats"></a>sys. DM _db_resource_stats
 
 V každé databázi SQL Database můžete použít zobrazení [Sys. DM _db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) . Zobrazení **Sys. DM _db_resource_stats** ukazuje poslední data o využití prostředků vzhledem k úrovni služby. Průměrné procentuální hodnoty pro procesor, data v/v, zápisy protokolů a paměť se zaznamenávají každých 15 sekund a uchovávají se po dobu 1 hodiny.
 
@@ -533,7 +533,7 @@ FROM sys.dm_db_resource_stats;
 
 Další dotazy najdete v příkladech v [tabulce sys. DM _db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx).
 
-### <a name="sysresource_stats"></a>sys.resource_stats
+### <a name="sysresource_stats"></a>sys. resource_stats
 
 Zobrazení [Sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) v **hlavní** databázi obsahuje další informace, které vám pomůžou monitorovat výkon SQL Database na konkrétní úrovni služby a výpočetní velikosti. Data se shromažďují každých 5 minut a uchovávají se po dobu přibližně 14 dnů. Toto zobrazení je užitečné pro dlouhodobé historické analýzy způsobu, jakým vaše databáze SQL používá prostředky.
 
@@ -573,7 +573,7 @@ Následující příklad ukazuje různé způsoby, jak můžete pomocí zobrazen
     ORDER BY start_time DESC;
     ```
 
-2. Chcete-li vyhodnotit, jak dobře vaše zatížení vyhovuje výpočetní velikosti, je nutné přejít k podrobnostem o všech aspektech metriky prostředků: PROCESOR, čtení, zápisy, počet pracovních procesů a počet relací. Tady je upravený dotaz pomocí **Sys. resource_stats** , který oznamuje průměrnou a maximální hodnotu těchto metrik prostředků:
+2. Aby bylo možné vyhodnotit, jak dobře vaše zatížení vyhovuje výpočetní velikosti, je nutné přejít k podrobnostem o všech aspektech metriky prostředků: CPU, čtení, zápisy, počet pracovních procesů a počet relací. Tady je upravený dotaz pomocí **Sys. resource_stats** , který oznamuje průměrnou a maximální hodnotu těchto metrik prostředků:
 
     ```sql
     SELECT
@@ -612,7 +612,7 @@ Následující příklad ukazuje různé způsoby, jak můžete pomocí zobrazen
 
    | Průměrné procento využití procesoru | Maximální procento využití procesoru |
    | --- | --- |
-   | 24.5 |100.00 |
+   | 24,5 |100,00 |
 
     Průměrná doba využití procesoru je čtvrtina limitu výpočetní velikosti, která by odpovídala i výpočetní velikosti databáze. Ale maximální hodnota udává, že databáze dosáhne limitu výpočetní velikosti. Potřebujete přejít na další vyšší výpočetní velikost? Podívejte se, kolikrát vaše zatížení dosáhlo 100 procent, a pak ho porovnejte s cílem úlohy vaší databáze.
 
@@ -732,6 +732,6 @@ Neefektivní plán dotazů taky může zvýšit spotřebu procesoru. Následují
     ORDER BY highest_cpu_queries.total_worker_time DESC;
     ```
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 [Úvod do SQL Database](sql-database-technical-overview.md)

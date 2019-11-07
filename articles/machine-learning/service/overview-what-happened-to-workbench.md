@@ -1,7 +1,7 @@
 ---
-title: Co se stalo s Machine Learning Workbench?
+title: Co se stalo s aplikací Workbench?
 titleSuffix: Azure Machine Learning
-description: Přečtěte si o tom, co se stalo s aplikací Machine Learning Workbench, co se změnilo v Azure Machine Learning a jaká je časová osa podpory.
+description: Přečtěte si o tom, co je možné bez aplikace Workbench a jak se používá časová osa podpory.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
-ms.date: 05/14/2019
+ms.date: 11/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c98da50d0c50a7fdb94f579444f3c09c1096d18
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 835024f7c8d77d67a2f6321df658c2f5c2007e62
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476406"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647103"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Co se stalo s aplikací Azure Machine Learning Workbench?
 
@@ -64,17 +64,11 @@ Historie spuštění se teď nazývají **experimenty**. Můžete shromáždit e
 
 Spusťte školení modelů a sledování historií spuštění pomocí nových rozhraní příkazového řádku a sady SDK. Postup najdete v tématu [výuka modelů pomocí Azure Machine Learning](tutorial-train-models-with-aml.md).
 
-## <a name="can-i-still-prep-data"></a>Můžu dál připravovat data?
-
-Již existující soubory pro přípravu dat nejsou přenosné na nejnovější verzi, protože už Machine Learning Workbench ještě nemáte. Můžete ale stále připravit jakoukoli datovou sadu pro modelování.
-
-S datovými sadami libovolné velikosti můžete použít [balíček pro přípravu dat pro Azure Machine Learning](https://aka.ms/data-prep-sdk) k rychlé přípravě dat před modelováním pomocí psaní kódu Pythonu.
-
 ## <a name="will-projects-persist"></a>Vydrží mi moje projekty?
 
 Neztratíte žádný kód ani práci. Ve starší verzi jsou projekty cloudové entity s místním adresářem. V nejnovější verzi se místní adresáře připojovat k Azure Machine Learningmu pracovnímu prostoru pomocí místního konfiguračního souboru. Podívejte se na [diagram nejnovější architektury](concept-azure-machine-learning-architecture.md).
 
-Většina obsahu projektu již byla na vašem místním počítači. Takže stačí vytvořit konfigurační soubor v tomto adresáři a odkázat ho na něj v kódu, abyste se připojili k vašemu pracovnímu prostoru. Chcete-li pokračovat v používání místního adresáře, který obsahuje soubory a skripty, zadejte název adresáře v příkazu ["experiment. Submit"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) nebo pomocí příkazu rozhraní příkazového řádku `az ml project attach`.  Například:
+Většina obsahu projektu již byla na vašem místním počítači. Takže stačí vytvořit konfigurační soubor v tomto adresáři a odkázat ho na něj v kódu, abyste se připojili k vašemu pracovnímu prostoru. Chcete-li pokračovat v používání místního adresáře, který obsahuje soubory a skripty, zadejte název adresáře v příkazu ["experiment. Submit"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) nebo pomocí příkazu rozhraní příkazového řádku `az ml project attach`.  Příklad:
 ```python
 run = exp.submit(source_directory=script_folder,
                  script='train.py', run_config=run_config_system_managed)
@@ -97,22 +91,6 @@ V nejnovější verzi se modely nasazují jako webové služby na Azure Containe
 Další informace najdete v těchto článcích:
 + [Kde a jak nasadit modely](how-to-deploy-and-where.md)
 + [Kurz: nasazení modelů pomocí Azure Machine Learning](tutorial-deploy-models-with-aml.md)
-
-## <a name="what-about-the-old-sdk-and-cli"></a>Co je to stará sada SDK a rozhraní příkazového řádku?
-
-Podívejte se na předchozí [časovou osu](#timeline). Doporučujeme začít vytvářet nové experimenty a modely pomocí nejnovější sady SDK nebo rozhraní příkazového řádku.
-
-Pomocí nové sady Python SDK v nejnovější verzi můžete pracovat s Azure Machine Learning v jakémkoli prostředí Pythonu. Přečtěte si, jak nainstalovat nejnovější sadu <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>. Můžete také použít aktualizované [rozšíření Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) s bohatou sadou `az ml` příkazů pro interakci se službou v jakémkoli prostředí příkazového řádku, včetně Azure Cloud Shell.
-
-## <a name="what-about-visual-studio-code-tools-for-ai"></a>Co Visual Studio Code Tools for AI?
-
-V této nejnovější verzi bylo rozšíření přejmenováno na Azure Machine Learning pro Visual Studio Code a bylo rozšířeno a vylepšeno pro práci s předchozími novými funkcemi.
-
-[![Azure Machine Learning Visual Studio Code](./media/overview-what-happened-to-workbench/vscode.png)](./media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
-
-## <a name="what-about-domain-packages"></a>Co se stane s doménovými balíčky?
-
-Balíčky domény pro počítačové zpracování obrazu, Text Analytics a prognózy se nedají použít s nejnovější verzí Azure Machine Learning. Můžete však stále vytvářet a vyvíjet modely pro počítačové zpracování obrazu, text a prognózy pomocí nejnovější <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">sady SDK</a>pro Azure Machine Learning Python.
 
 ## <a name="next-steps"></a>Další kroky
 

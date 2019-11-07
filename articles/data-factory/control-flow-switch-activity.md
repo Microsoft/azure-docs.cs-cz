@@ -1,5 +1,5 @@
 ---
-title: Přepnout aktivitu v Azure Data Factory | Microsoft Docs
+title: Přepnout aktivitu v Azure Data Factory
 description: Aktivita Switch umožňuje řídit tok zpracování na základě podmínky.
 services: data-factory
 author: djpmsft
@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 3f60965ad54fb94e7f69b69c161b482f0b953c5a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 582e0c6b9f6a51f97e8d4990634ceac61c6d9f23
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293953"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679406"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Přepnout aktivitu v Azure Data Factory
 
@@ -65,11 +65,11 @@ Aktivita Switch nabízí stejné funkce jako příkaz switch v programovacích j
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požadováno
+Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-name | Název aktivity Switch | String | Ano
-– typ | Musí být nastavené na *Switch**. | String | Ano
-výraz | Výraz, který se musí vyhodnotit jako řetězcová hodnota | Výraz s výsledným typem String | Ano
+jméno | Název aktivity Switch | Řetězec | Ano
+type | Musí být nastavené na *Switch** | Řetězec | Ano
+vyjádření | Výraz, který se musí vyhodnotit jako řetězcová hodnota | Výraz s výsledným typem String | Ano
 věcech | Sada případů, které obsahují hodnotu a sadu aktivit, které mají být provedeny, když hodnota odpovídá vyhodnocení výrazu. Musí obsahovat alespoň jeden případ. Maximální velikost je 25 případů. | Pole objektů Case | Ano
 defaultActivities | Sada aktivit, které se spustí, když se nesplní vyhodnocení výrazu. | Pole aktivit | Ano
 
@@ -334,9 +334,9 @@ $result.Error -join "`r`n"
 
 Podívejte se na další aktivity toku řízení podporované Data Factory: 
 
-- [Aktivita podmínky if](control-flow-if-condition-activity.md)
+- [Aktivita podmínky If](control-flow-if-condition-activity.md)
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
 - [Pro každou aktivitu](control-flow-for-each-activity.md)
-- [Aktivita získání metadat](control-flow-get-metadata-activity.md)
+- [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
 - [Aktivita vyhledávání](control-flow-lookup-activity.md)
 - [Aktivita webu](control-flow-web-activity.md)

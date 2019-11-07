@@ -1,5 +1,5 @@
 ---
-title: Použití Azure Data Factory k přírůstkové kopírování nových souborů pouze na základě názvu souboru s oddíly | Microsoft Docs
+title: Použití Azure Data Factory k přírůstkové kopírování nových souborů pouze na základě názvu souboru s oddíly
 description: Vytvořte datovou továrnu Azure a pak použijte nástroj Kopírování dat pro přírůstkové načtení nových souborů jenom na základě názvu souboru s oddíly.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: 8081d7112d67e3bb4e72c6f6e88d765a159e047f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 273aaaa2ac51f75edfad6da03d6720f58b7c3c47
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933915"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683444"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Přírůstkové kopírování nových souborů na základě času názvu souboru rozděleného do oddílů pomocí nástroje Kopírování dat
 
@@ -36,8 +36,8 @@ V tomto kurzu budete provádět následující kroky:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* **Účet úložiště Azure**: Jako _zdroj_ dat a úložiště dat _jímky_ použijte úložiště objektů BLOB. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
+* **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* **Účet úložiště Azure**: jako _zdroj_ dat a úložiště dat _jímky_ použijte úložiště objektů BLOB. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
 
 ### <a name="create-two-containers-in-blob-storage"></a>Vytvoření dvou kontejnerů v úložišti objektů BLOB
 
@@ -83,7 +83,7 @@ Provedením těchto kroků Připravte úložiště objektů BLOB pro tento kurz.
     ![Dlaždice Nasazování datové továrny](media/tutorial-copy-data-tool/deploying-data-factory.png)
 10. Po vytvoření se zobrazí domovská stránka **Datová továrna**.
    
-    ![Domovská stránka datové továrny](./media/doc-common-process/data-factory-home-page.png)
+    ![Domovská stránka objektu pro vytváření dat](./media/doc-common-process/data-factory-home-page.png)
 11. Pokud chcete na samostatné kartě otevřít uživatelské rozhraní služby Azure Data Factory, vyberte dlaždici **Vytvořit a monitorovat**. 
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Vytvoření kanálu pomocí nástroje pro kopírování dat
@@ -102,7 +102,7 @@ Provedením těchto kroků Připravte úložiště objektů BLOB pro tento kurz.
     
     d. V části **opakování**zadejte **1 hodina (e)** . 
     
-    e. Vyberte **Další**. 
+    e. Vyberte **Next** (Další). 
     
     Uživatelské rozhraní služby Data Factory vytvoří kanál se zadaným názvem úlohy. 
 
@@ -126,7 +126,7 @@ Provedením těchto kroků Připravte úložiště objektů BLOB pro tento kurz.
    ![Stránka Zdrojové úložiště dat](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page-select-linkedservice.png)
 4. Na stránce **Zvolte vstupní soubor nebo složku** proveďte následující kroky:
     
-    a. Procházejte a vyberte **zdrojový** kontejner a pak vybertevybrat.
+    a. Procházejte a vyberte **zdrojový** kontejner a pak vyberte **Vybrat.**
     
     ![Zvolte vstupní soubor nebo složku](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-input-file-folder.png)
     
@@ -165,7 +165,7 @@ Provedením těchto kroků Připravte úložiště objektů BLOB pro tento kurz.
     ![Stránka souhrnu](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/summary-page.png)
     
 9. Na stránce **Nasazení** vyberte **Monitorovat** a začněte monitorovat kanál (úlohu).
-    ![Stránka nasazení](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/deployment-page.png)
+    Stránka nasazení ![](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/deployment-page.png)
     
 10. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**.  Musíte počkat na spuštění kanálu, když se aktivuje automaticky (přibližně po jedné hodině).  Když se spustí, sloupec **Actions (akce** ) obsahuje odkazy na zobrazení podrobností o spuštění aktivit a opětovné spuštění kanálu. Vyberte **aktualizovat** a aktualizujte seznam a vyberte odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce** . 
 
@@ -196,12 +196,12 @@ Provedením těchto kroků Připravte úložiště objektů BLOB pro tento kurz.
     
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs7.png) 
     
-    Stejný postup můžete také ověřit pomocí Průzkumník služby Azure Storage (https://storageexplorer.com/) k prohledání souborů v **cílovém** kontejneru).
+    Stejný postup můžete také ověřit pomocí Průzkumník služby Azure Storage (https://storageexplorer.com/) pro skenování souborů v **cílovém** kontejneru
     
     ![Monitorování spuštění kanálu](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs8.png)
 
     
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Pokud se chcete dozvědět víc o transformaci dat pomocí clusteru Spark v Azure, přejděte k následujícímu kurzu:
 
 > [!div class="nextstepaction"]

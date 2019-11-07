@@ -1,5 +1,5 @@
 ---
-title: Migrace certifikátu TDE do spravované instance Azure SQL Database | Microsoft Docs
+title: 'Migrace TDE certifikátů – Azure SQL Database spravované instance '
 description: Migruje certifikát chránící šifrovací klíč databáze databáze s transparentním šifrováním dat na Azure SQL Database spravovanou instanci.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 ms.date: 04/25/2019
-ms.openlocfilehash: 6f9c1cefafdf6f7f33db3c5143e6b97b328fe699
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4d931a927888cb96116043a72006ac77cfa7dded
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567420"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688068"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Migrace certifikátu chráněné databáze TDE do Azure SQL Database Managed instance
 
@@ -141,7 +141,7 @@ Pokud je certifikát v úložišti certifikátů místního počítače systému
 
 Certifikát je nyní k dispozici pro zadanou spravovanou instanci a bude v ní možné obnovit zálohu databáze chráněné transparentním šifrováním dat.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste zjistili, jak migrovat certifikát chránící šifrovací klíč databáze pomocí transparentní šifrování dat, z místního prostředí nebo IaaS SQL Server do Azure SQL Database spravované instance.
 

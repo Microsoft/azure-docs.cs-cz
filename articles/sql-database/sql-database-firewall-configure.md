@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database a Azure SQL Data Warehouse pravidla brány firewall protokolu IP | Microsoft Docs
+title: Azure SQL Database a Azure SQL Data Warehouse pravidla brány firewall protokolu IP
 description: Nakonfigurujte pravidla brány firewall protokolu IP na úrovni serveru pro databázi SQL nebo bránu SQL Data Warehouse firewall. Spravujte přístup a nakonfigurujte pravidla brány firewall protokolu IP na úrovni databáze pro jednu nebo sdruženou databázi.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: e3e65a6deadfbcad563a6b64c0a9f48182cdd571
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 52566dbc60c3c2fd532891ab4f7d3461f9d77557
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686469"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690044"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database a Azure SQL Data Warehouse pravidla brány firewall protokolu IP
 
@@ -128,11 +128,11 @@ Pokud chcete v Azure Portal nastavit pravidlo brány firewall na úrovni serveru
 
 1. Pokud chcete na stránce Přehled databáze nastavit pravidlo brány firewall protokolu IP na úrovni serveru, vyberte na panelu nástrojů možnost **nastavit bránu firewall serveru** , jak ukazuje následující obrázek. Otevře se stránka **Nastavení brány firewall** pro server služby SQL Database.
 
-      ![pravidlo brány firewall protokolu IP serveru](./media/sql-database-get-started-portal/server-firewall-rule.png)
+      ![Pravidlo brány firewall protokolu IP serveru](./media/sql-database-get-started-portal/server-firewall-rule.png)
 
 2. Na panelu nástrojů vyberte **Přidat IP adresu klienta** , abyste mohli přidat IP adresu počítače, který používáte, a pak vyberte **Uložit**. Vytvoří se pravidlo brány firewall protokolu IP na úrovni serveru pro vaši aktuální IP adresu.
 
-      ![nastavení pravidla brány firewall protokolu IP na úrovni serveru](./media/sql-database-get-started-portal/server-firewall-rule-set.png)
+      ![Nastavení pravidla brány firewall protokolu IP na úrovni serveru](./media/sql-database-get-started-portal/server-firewall-rule-set.png)
 
 #### <a name="from-the-server-overview-page"></a>Na stránce Přehled serveru
 
@@ -218,7 +218,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 ### <a name="use-a-rest-api-to-manage-server-level-ip-firewall-rules"></a>Použití REST API ke správě pravidel brány firewall protokolu IP na úrovni serveru
 
-| API | Úroveň | Popis |
+| Rozhraní API | Úroveň | Popis |
 | --- | --- | --- |
 | [Vypsat pravidla brány firewall](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |Server |Zobrazí aktuální pravidla brány firewall protokolu IP na úrovni serveru. |
 | [Vytvořit nebo aktualizovat pravidla brány firewall](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |Server |Vytvoří nebo aktualizuje pravidla brány firewall protokolu IP na úrovni serveru. |

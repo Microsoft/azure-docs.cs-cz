@@ -1,5 +1,5 @@
 ---
-title: Automatizace replikace změn schématu v Azure Synchronizace dat SQL | Microsoft Docs
+title: Automatizace replikace změn schématu v Azure Synchronizace dat SQL
 description: Naučte se automatizovat replikaci změn schématu v Azure Synchronizace dat SQL.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 11/14/2018
-ms.openlocfilehash: b1c3f49808a59576f02178dee1107b4019e34b5e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 01cc82a2ada1f4ac8f26b223b7168b2cca157793
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566255"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686877"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Automatizace replikace změn schématu v Azure Synchronizace dat SQL
 
@@ -88,7 +88,7 @@ Můžete také přidat další aktivační události pro replikaci jiných typů
 
 ### <a name="create-a-trigger-on-other-endpoints-to-apply-schema-changes-during-insertion"></a>Vytvořit Trigger na jiných koncových bodech pro použití změn schématu během vložení
 
-Tato aktivační událost spustí příkaz změny schématu při synchronizaci do jiných koncových bodů. Tuto aktivační událost je nutné vytvořit ve všech koncových bodech s výjimkou toho, kde jsou provedeny změny schématu (tj. v databázi, kde je v `AlterTableDDLTrigger` předchozím kroku vytvořen TRIGGER DDL).
+Tato aktivační událost spustí příkaz změny schématu při synchronizaci do jiných koncových bodů. Tuto aktivační událost je nutné vytvořit ve všech koncových bodech s výjimkou toho, kde jsou provedeny změny schématu (tj. v databázi, ve které je aktivační událost DDL `AlterTableDDLTrigger` vytvořena v předchozím kroku).
 
 ```sql
 CREATE TRIGGER SchemaChangesTrigger
@@ -161,7 +161,7 @@ Po dokončení replikace změn schématu do všech koncových bodů je také nut
 
 1.  Aktualizuje schéma databáze.
 
-1.  Pokud nové a staré datové typy nejsou plně kompatibilní – například pokud změníte z `int` typu na synchronizaci, může se stát, že se dokončí kroky pro `bigint` Vytvoření aktivačních událostí. Po opakovaném pokusu synchronizace proběhne úspěšně.
+1.  Pokud nové a staré datové typy nejsou plně kompatibilní – například pokud změníte z `int` na `bigint`, může dojít k selhání synchronizace před dokončením kroků, které vytvořily triggery. Po opakovaném pokusu synchronizace proběhne úspěšně.
 
 #### <a name="rename-columns-or-tables"></a>Přejmenování sloupců nebo tabulek
 
@@ -217,17 +217,17 @@ Chcete-li vyčistit záznamy v tabulce sledování změn schématu, použijte p�
 
 -   Nepoužívejte zkrátit k vyčištění dat v tabulce sledování změn schématu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Synchronizaci dat SQL:
 
 -   Přehled – [synchronizace dat napříč několika cloudy a místními databázemi pomocí Azure synchronizace dat SQL](sql-database-sync-data.md)
 -   Nastavení synchronizace dat
-    - Na portálu – [kurz: Nastavení Synchronizace dat SQL pro synchronizaci dat mezi Azure SQL Database a SQL Server místním prostředí](sql-database-get-started-sql-data-sync.md)
+    - Na portálu – [kurz: nastavení synchronizace dat SQL pro synchronizaci dat mezi Azure SQL Database a SQL Server místním](sql-database-get-started-sql-data-sync.md) prostředím
     - S využitím PowerShellu
-        -  [Synchronizace mezi několika databázemi SQL Azure pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [Synchronizace mezi několika databázemi Azure SQL pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)
--   Agent – synchronizace dat [Data synchronizovat Agent pro synchronizaci dat Azure SQL](sql-database-data-sync-agent.md)
+-   Agent synchronizace dat – [Agent synchronizace dat pro Azure synchronizace dat SQL](sql-database-data-sync-agent.md)
 -   Osvědčené postupy – [osvědčené postupy pro Azure synchronizace dat SQL](sql-database-best-practices-data-sync.md)
 -   Monitorování – [monitorování synchronizace dat SQL pomocí protokolů Azure monitor](sql-database-sync-monitor-oms.md)
 -   Řešení potíží – [řešení potíží s Azure synchronizace dat SQL](sql-database-troubleshoot-data-sync.md)

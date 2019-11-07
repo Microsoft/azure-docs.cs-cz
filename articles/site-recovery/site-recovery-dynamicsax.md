@@ -1,45 +1,45 @@
 ---
-title: Nastavení zotavení po havárii pro vícevrstvé aplikace Dynamics AX nasazení s využitím Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek popisuje, jak nastavit zotavení po havárii pro prostředí Dynamics AX díky Azure Site Recovery
+title: Zotavení po havárii pro nasazení ve více vrstvách Dynamics AX s Azure Site Recovery | Microsoft Docs
+description: Tento článek popisuje, jak nastavit zotavení po havárii pro Dynamics AX pomocí Azure Site Recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: b97bf56c23dfa96acf7cb5af5ac28b4270de117d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b8aaff3a3418177f92c3b54fb3bb3e99f93810e
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61281435"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620743"
 ---
-# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Nastavení zotavení po havárii pro vícevrstvé aplikace Dynamics AX   
+# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Nastavení zotavení po havárii pro aplikaci s více vrstvami Dynamics AX   
 
 
 
 
- Dynamics AX je jedním z nejoblíbenějších řešení ERP pro podniky standardizovat procesy v lokalitách, Správa prostředků a zjednodušit dodržování předpisů. Protože aplikace je zásadní pro organizace, v případě havárie, by aplikace měla být zprovoznění minimální včas.
+ Dynamics AX je jedním z nejoblíbenějších řešení ERP používaných podniky ke standardizaci procesů napříč umístěními, správě prostředků a zjednodušení dodržování předpisů. Vzhledem k tomu, že aplikace je pro organizaci kritická, v případě havárie by měla být aplikace spuštěná v minimálním čase.
 
-V současné době Dynamics AX neposkytuje každé havárie out-of-the-box funkcím pro obnovení. Dynamics AX se skládá z mnoha součásti serveru, jako je například Server objekt aplikace Windows, Azure Active Directory, Azure SQL Database, SharePoint Server a služby Reporting Services. Ke správě po havárii obnovení všechny tyto komponenty ručně není pouze nákladná, ale také náchylné k chybám.
+V dnešní době neposkytuje Dynamics AX žádné možnosti zotavení po havárii. Dynamics AX se skládá z mnoha součástí serveru, jako je třeba aplikační server Windows, Azure Active Directory, Azure SQL Database, SharePoint Server a služba Reporting Services. Chcete-li spravovat zotavení po havárii každé z těchto komponent ručně, není pouze nákladné, ale také náchylné k chybám.
 
-Tento článek vysvětluje, jak vytvořit řešení zotavení po havárii pro vaši aplikaci Dynamics AX pomocí [Azure Site Recovery](site-recovery-overview.md). Obsahuje také testovací plánované/neplánované převzetí služeb při selhání použít plán obnovení jedním kliknutím, podporované konfigurace a požadavky.
+Tento článek vysvětluje, jak můžete vytvořit řešení zotavení po havárii pro aplikaci Dynamics AX pomocí [Azure Site Recovery](site-recovery-overview.md). Zahrnuje také plánované a neplánované testovací převzetí služeb při selhání pomocí plánu obnovení jedním kliknutím, podporovaných konfigurací a požadavků.
 
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Implementace zotavení po havárii pro aplikace Dynamics AX pomocí Site Recovery se vyžaduje následující požadavky:
+Implementace zotavení po havárii pro aplikaci Dynamics AX pomocí Site Recovery vyžaduje následující předpoklady:
 
-• Nastavení v místním nasazení Dynamics AX.
+• Nastavte místní nasazení Dynamics AX.
 
-• Vytvoříte trezor Site Recovery v předplatném Azure.
+• Vytvoření trezoru Site Recovery v předplatném Azure.
 
-• Azure svůj záložní web, je-li spustit nástroj pro vyhodnocení připravenosti na virtuální počítač Azure na virtuálních počítačích. Musí být kompatibilní se službou Azure Virtual Machines a služby Site Recovery services.
+• Pokud je Azure vaším webem pro obnovení, spusťte na virtuálních počítačích Nástroj pro vyhodnocení připravenosti na virtuální počítače Azure. Musí být kompatibilní se službami Azure Virtual Machines a Site Recovery.
 
 ## <a name="site-recovery-support"></a>Podpora Site Recovery
 
-Pro účely vytváření tohoto článku, můžeme použít virtuální počítače VMware s Dynamics AX 2012 R3 na Windows Server 2012 R2 Enterprise. Protože replikace služby site recovery je nezávislý na aplikace, Očekáváme, že doporučení uvedená tady pro uložení v následujících scénářích.
+Pro účely vytvoření tohoto článku jsme používali virtuální počítače VMware s Dynamics AX 2012 R3 v systému Windows Server 2012 R2 Enterprise. Vzhledem k tomu, že replikace služby Site Recovery je nezávislá aplikace, očekáváme, že zde uvedená doporučení najdete v následujících scénářích.
 
 ### <a name="source-and-target"></a>Zdroj a cíl
 
@@ -49,65 +49,65 @@ Pro účely vytváření tohoto článku, můžeme použít virtuální počíta
 **VMware** | Ano | Ano
 **Fyzický server** | Ano | Ano
 
-## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>Povolit aplikaci Dynamics AX zotavení po havárii s využitím Site Recovery
-### <a name="protect-your-dynamics-ax-application"></a>Ochrana aplikací Dynamics AX
-Chcete-li aplikace dokončena a replikace a obnovení, musí být chráněny každou komponentu aplikace Dynamics AX.
+## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>Povolení zotavení po havárii aplikace Dynamics AX pomocí Site Recovery
+### <a name="protect-your-dynamics-ax-application"></a>Ochrana aplikace Dynamics AX
+Aby bylo možné povolit úplnou replikaci a obnovení aplikací, musí být všechny součásti aplikace Dynamics AX chráněny.
 
-### <a name="1-set-up-active-directory-and-dns-replication"></a>1. Nastavení replikace služby Active Directory a DNS
+### <a name="1-set-up-active-directory-and-dns-replication"></a>1. nastavení replikace Active Directory a DNS
 
-Služby Active Directory je vyžadován v lokalitě pro obnovení po havárii pro aplikace Dynamics AX do funkce. Doporučujeme následující dvě možnosti, které jsou založeny na složitosti zákazníka v místním prostředí.
+Služba Active Directory je požadována na webu pro zotavení po havárii, aby mohla aplikace Dynamics AX fungovat. Na základě složitosti místního prostředí zákazníka doporučujeme následující dvě možnosti.
 
 **Možnost 1**
 
-Zákazník má malý počet aplikací a jeden řadič domény pro celý místní lokality a plány na převzetí služeb při selhání celé lokality společně. Doporučujeme použít replikace Site Recovery replikovat počítače řadiče domény do sekundární lokality (k dispozici pro scénáře site-to-site a site do Azure).
+Zákazník má malý počet aplikací a jeden řadič domény pro celou místní lokalitu a plánuje převzetí služeb při selhání celé lokality dohromady. Pomocí Site Recovery replikace doporučujeme replikovat počítač řadiče domény do sekundární lokality (platí pro scénáře site-to-site a Site-to-Azure).
 
 **Možnost 2**
 
-Zákazník má velký počet aplikací a běží v doménové struktuře služby Active Directory a plány na převzetí služeb při selhání několik aplikací najednou. Doporučujeme, abyste nastavili další řadič domény v lokalitě pro obnovení po havárii (sekundární lokality nebo v Azure).
+Zákazník má velký počet aplikací a provozuje doménovou strukturu služby Active Directory a plánuje převzetí služeb při selhání několika aplikacemi najednou. Doporučujeme nastavit další řadič domény v lokalitě pro obnovení po havárii (sekundární lokalita nebo v Azure).
 
- Další informace najdete v tématu [zpřístupnit řadiče domény v lokalitě zotavení po havárii](site-recovery-active-directory.md). Pro zbývající část tohoto dokumentu předpokládáme, že řadič domény je k dispozici v lokalitě pro obnovení po havárii.
+ Další informace najdete v tématu [nastavení řadiče domény k dispozici na webu pro zotavení po havárii](site-recovery-active-directory.md). Ve zbývající části tohoto dokumentu předpokládáme, že řadič domény je k dispozici na webu pro zotavení po havárii.
 
-### <a name="2-set-up-sql-server-replication"></a>2. Nastavení replikace systému SQL Server
-Technické pokyny pro doporučená volba pro ochranu na úrovni SQL, najdete v části [aplikace s využitím SQL serveru a Azure Site Recovery replikovat](site-recovery-sql.md).
+### <a name="2-set-up-sql-server-replication"></a>2. nastavení replikace SQL Server
+Technické pokyny týkající se Doporučené možnosti ochrany úrovně SQL najdete v tématu věnovaném [replikaci aplikací pomocí SQL Server a Azure Site Recovery](site-recovery-sql.md).
 
-### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3. Povolení ochrany pro klientské aplikace Dynamics AX a virtuální počítače serveru aplikace objektu
-Provedení položky konfigurace Site Recovery na tom, jestli jsou virtuální počítače nasazené na základě [Hyper-V](site-recovery-hyper-v-site-to-azure.md) nebo [VMware](site-recovery-vmware-to-azure.md).
+### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3. povolení ochrany pro virtuální počítače klienta Dynamics AX a server aplikačního objektu aplikace
+Proveďte relevantní konfiguraci Site Recovery na základě toho, jestli jsou virtuální počítače nasazené na [Hyper-V](site-recovery-hyper-v-site-to-azure.md) nebo [VMware](site-recovery-vmware-to-azure.md).
 
 > [!TIP]
-> Doporučujeme, abyste nakonfigurovali konzistentních při chybě frekvence až 15 minut.
+> Doporučujeme nakonfigurovat frekvenci konzistentní vzhledem k selháním na 15 minut.
 >
 
-Z následujícího snímku se zobrazuje stav ochrany virtuálních počítačů součást Dynamics ve scénáři VMware Ochrana serveru do Azure.
+Následující snímek znázorňuje stav ochrany virtuálních počítačů Dynamics-Component ve scénáři ochrany mezi lokalitami VMware a Azure.
 
 ![Chráněné položky](./media/site-recovery-dynamics-ax/protecteditems.png)
 
-### <a name="4-configure-networking"></a>4. Konfigurace sítí
-**Konfigurace výpočetního virtuálního počítače a nastavení sítě**
+### <a name="4-configure-networking"></a>4. konfigurace sítě
+**Konfigurace výpočetních a síťových nastavení virtuálních počítačů**
 
-Klient Dynamics AX a virtuální počítače serveru objekt aplikace konfigurace nastavení sítě v Site Recovery, tak, aby sítě virtuálních počítačů získat připojené k síti pro obnovení po havárii správné po převzetí služeb při selhání. Ujistěte se, že síť pro obnovení po havárii pro jednotlivé úrovně služeb je možné je směrovat na úrovni SQL.
+Pro virtuální počítače klienta a aplikačního objektu aplikace Dynamics AX nakonfigurujte nastavení sítě v Site Recovery tak, aby se sítě virtuálních počítačů po převzetí služeb při selhání připojily ke správné síti pro obnovení po havárii. Ujistěte se, že síť pro obnovení po havárii pro tyto vrstvy je směrovatelný do vrstvy SQL.
 
-Virtuální počítač v replikované položky, které chcete nakonfigurovat nastavení sítě, můžete vybrat, jak je znázorněno na následujícím snímku:
+Můžete vybrat virtuální počítač v replikovaných položkách a nakonfigurovat tak nastavení sítě, jak je znázorněno na následujícím snímku:
 
-* Pro servery aplikační objekt Server vyberte skupinu dostupnosti správné.
+* Pro servery aplikačního serveru vyberte správnou skupinu dostupnosti.
 
-* Pokud používáte statické IP adresy, zadejte IP adresu, která má virtuální počítač trvat, než se **cílová IP adresa** textového pole.
+* Pokud používáte statickou IP adresu, zadejte IP adresu, kterou má virtuální počítač převzít, do textového pole **cílová IP adresa** .
 
     ![Nastavení sítě](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
 
 
-### <a name="5-create-a-recovery-plan"></a>5. Vytvoření plánu obnovení
+### <a name="5-create-a-recovery-plan"></a>5. vytvoření plánu obnovení
 
-Ve službě Site Recovery k automatizaci procesu převzetí služeb při selhání můžete vytvořit plán obnovení. Přidáte vrstvu aplikace a webové vrstvy v plánu obnovení. Uspořádat do různých skupin tak, aby front-endu ukončí před na úrovni aplikace.
+Můžete vytvořit plán obnovení v Site Recovery pro automatizaci procesu převzetí služeb při selhání. Přidejte vrstvu aplikace a webovou vrstvu do plánu obnovení. Sestavujte je v různých skupinách, aby se front-end ukončil před vrstvou aplikace.
 
-1. Vyberte trezor služby Site Recovery ve vašem předplatném a vyberte **plány obnovení** dlaždici.
+1. Ve svém předplatném vyberte trezor Site Recovery a vyberte dlaždici **plány obnovení** .
 
-2. Vyberte **+ plánu obnovení**a zadejte název.
+2. Vyberte **+ plán obnovení**a zadejte název.
 
-3. Vyberte **zdroj** a **cílové**. Cílem může být Azure nebo sekundární lokality. Pokud si zvolíte Azure, musíte zadat model nasazení.
+3. Vyberte **zdroj** a **cíl**. Cílem může být Azure nebo sekundární lokalita. Pokud zvolíte Azure, musíte zadat model nasazení.
 
     ![Vytvoření plánu obnovení](./media/site-recovery-dynamics-ax/recoveryplancreation1.png)
 
-4. Vyberte aplikační Server objektu a klientské virtuální počítače v plánu obnovení a vyberte ✓.
+4. Vyberte aplikační objektový server a klientské virtuální počítače pro plán obnovení a pak vyberte ✓.
 
     ![Vybrat položky](./media/site-recovery-dynamics-ax/selectvms.png)
 
@@ -115,73 +115,73 @@ Ve službě Site Recovery k automatizaci procesu převzetí služeb při selhán
 
     ![Podrobnosti o plánu obnovení](./media/site-recovery-dynamics-ax/recoveryplan.png)
 
-Plán obnovení pro aplikaci Dynamics AX můžete přizpůsobit tak, že přidáte následující kroky. Předchozí snímek ukazuje plán úplné obnovení poté, co přidáte všechny kroky.
+Můžete přizpůsobit plán obnovení pro aplikaci Dynamics AX přidáním následujících kroků. Po přidání všech kroků se v předchozím snímku zobrazuje kompletní plán obnovení.
 
 
-* **Postup převzetí služeb při selhání systému SQL Server**: Informace o postupu obnovení konkrétní k systému SQL server najdete v tématu [replikace aplikace s využitím SQL serveru a Azure Site Recovery](site-recovery-sql.md).
+* **SQL Server kroky při převzetí služeb při selhání**: informace o krocích obnovení specifických pro SQL Server najdete v tématu [aplikace replikace s SQL Server a Azure Site Recovery](site-recovery-sql.md).
 
-* **Skupiny převzetí služeb při selhání 1**: Převzetí služeb při selhání virtuálních počítačů serveru objektu aplikace.
-Ujistěte se, že je vybraný bod obnovení co nejblíže k databázi PIT, ale ne před ho.
+* **Převzetí služeb při selhání skupiny 1**: převzít služby virtuálních počítačů aplikačního objektového serveru
+Ujistěte se, že vybraný bod obnovení je co nejblíže k databázi PIT, ale ne před ním.
 
-* **skript**: Přidat nástroj pro vyrovnávání zatížení (pouze E-A).
-Přidáte skript (přes Azure Automation) po skupiny virtuálních počítačů serveru objekt aplikace se zobrazí na ni přidat nástroj pro vyrovnávání zatížení. Skript můžete použít k provedení této úlohy. Další informace najdete v tématu [přidání nástroje pro vyrovnávání zatížení, zotavení po havárii vícevrstvé aplikace](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/).
+* **Skript**: přidejte Nástroj pro vyrovnávání zatížení (jenom E-A).
+Po přidání nástroje pro vyrovnávání zatížení do něj přidejte skript (prostřednictvím Azure Automation), aby se přidala skupina virtuálních počítačů aplikačního serveru. K provedení této úlohy můžete použít skript. Další informace najdete v tématu [Postup přidání nástroje pro vyrovnávání zatížení pro zotavení po havárii s více vrstvami aplikací](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/).
 
-* **Skupiny převzetí služeb při selhání 2**: Převzetí služeb při selhání Dynamics AX klientské virtuální počítače. Převzetí služeb při selhání virtuální počítače webové vrstvy jako součást plánu obnovení.
+* **Převzetí služeb při selhání – skupina 2**: převzetí služeb při selhání virtuálních počítačů klienta Dynamics AX Virtuální počítače webové vrstvy převezmete za součást plánu obnovení.
 
 
-### <a name="perform-a-test-failover"></a>Provést testovací převzetí služeb
+### <a name="perform-a-test-failover"></a>Provedení testovacího převzetí služeb při selhání
 
-Další informace týkající se služby Active Directory během testovacího převzetí služeb při selhání najdete v článku doprovodná příručka "Řešení zotavení po havárii služby Active Directory".
+Další informace specifické pro službu Active Directory během testovacího převzetí služeb při selhání najdete v doprovodné příručce řešení pro zotavení po havárii služby Active Directory.
 
-Další informace specifické pro systém SQL server během testovacího převzetí služeb při selhání najdete v tématu [aplikace s využitím SQL serveru a Azure Site Recovery replikovat](site-recovery-sql.md).
+Další informace týkající se SQL serveru během testovacího převzetí služeb při selhání najdete v tématu věnovaném [replikaci aplikací pomocí SQL Server a Azure Site Recovery](site-recovery-sql.md).
 
-1. Přejděte na web Azure Portal a vyberte váš trezor Site Recovery.
+1. Přejít na Azure Portal a vyberte svůj trezor Site Recovery.
 
-2. Vyberte plán obnovení, které jsou vytvořené pro Dynamics AX.
+2. Vyberte plán obnovení vytvořený pro aplikaci Dynamics AX.
 
 3. Vyberte **Testovací převzetí služeb při selhání**.
 
-4. Vyberte virtuální síť, chcete-li spustit proces testovacího převzetí služeb při selhání.
+4. Vyberte virtuální síť a spusťte proces testovacího převzetí služeb při selhání.
 
-5. Poté, co je sekundární prostředí, můžete provádět vaše ověření.
+5. Po ukončení sekundárního prostředí můžete provádět své ověření.
 
-6. Po dokončení ověření vyberte **dokončení ověření** a vyčistit testovací převzetí služeb při selhání prostředí.
+6. Po dokončení ověření vyberte **ověřování dokončeno** a prostředí testovacího převzetí služeb při selhání se vyčistí.
 
-Další informace o provádění testovací převzetí služeb při selhání najdete v tématu [testovací převzetí služeb při selhání do Azure v Site Recovery](site-recovery-test-failover-to-azure.md).
+Další informace o provádění testovacího převzetí služeb při selhání najdete v tématu [Test převzetí služeb při selhání do Azure v Site Recovery](site-recovery-test-failover-to-azure.md).
 
-### <a name="perform-a-failover"></a>Převzetí služeb
+### <a name="perform-a-failover"></a>Provedení převzetí služeb při selhání
 
-1. Přejděte na web Azure Portal a vyberte váš trezor Site Recovery.
+1. Přejít na Azure Portal a vyberte svůj trezor Site Recovery.
 
-2. Vyberte plán obnovení, které jsou vytvořené pro Dynamics AX.
+2. Vyberte plán obnovení vytvořený pro aplikaci Dynamics AX.
 
-3. Vyberte **převzetí služeb při selhání**a vyberte **převzetí služeb při selhání**.
+3. Vyberte **převzetí služeb při selhání**a vyberte **převzít**.
 
-4. Vyberte cílovou síť a vyberte **✓** zahájíte proces převzetí služeb při selhání.
+4. Vyberte cílovou síť a vyberte **✓** pro spuštění procesu převzetí služeb při selhání.
 
-Další informace převzetí služeb při selhání, naleznete v tématu [převzetí služeb při selhání v Site Recovery](site-recovery-failover.md).
+Další informace o převzetí služeb při selhání najdete [v tématu převzetí služeb při selhání v Site Recovery](site-recovery-failover.md).
 
 ### <a name="perform-a-failback"></a>Navrácení služeb po obnovení
 
-Požadavky na konkrétní k systému SQL Server během navrácení služeb po obnovení najdete v [aplikace s využitím SQL serveru a Azure Site Recovery replikovat](site-recovery-sql.md).
+Informace specifické pro SQL Server během navrácení služeb po obnovení najdete v tématu věnovaném [replikaci aplikací pomocí SQL Server a Azure Site Recovery](site-recovery-sql.md).
 
-1. Přejděte na web Azure Portal a vyberte váš trezor Site Recovery.
+1. Přejít na Azure Portal a vyberte svůj trezor Site Recovery.
 
-2. Vyberte plán obnovení, které jsou vytvořené pro Dynamics AX.
+2. Vyberte plán obnovení vytvořený pro aplikaci Dynamics AX.
 
-3. Vyberte **převzetí služeb při selhání**a vyberte **převzetí služeb při selhání**.
+3. Vyberte **převzetí služeb při selhání**a vyberte **převzít**.
 
-4. Vyberte **změnit směr**.
+4. Vyberte možnost **změnit směr**.
 
-5. Vyberte odpovídající možnosti: synchronizace dat a vytvoření virtuálního počítače.
+5. Vyberte vhodné možnosti: synchronizace dat a vytváření virtuálních počítačů.
 
-6. Vyberte **✓** zahájíte proces navrácení služeb po obnovení.
+6. Vyberte **✓** a spusťte proces navrácení služeb po obnovení.
 
 
-Další informace o provádění navrácení služeb po obnovení najdete v tématu [navrácení služeb po obnovení virtuálních počítačů VMware z Azure do místního](site-recovery-failback-azure-to-vmware.md).
+Další informace o navrácení služeb po obnovení najdete v tématu [navrácení služeb po obnovení VMware z Azure do místního](site-recovery-failback-azure-to-vmware.md)prostředí.
 
 ## <a name="summary"></a>Souhrn
-Pomocí Site Recovery můžete vytvořit kompletní automatizované zotavení po havárii pro vaši aplikaci Dynamics AX. V případě přerušení můžete zahájit převzetí služeb při selhání během několika sekund z libovolného místa a získat aplikaci zprovoznit během několika minut.
+Pomocí Site Recovery můžete pro aplikaci Dynamics AX vytvořit úplný automatizovaný plán zotavení po havárii. V případě přerušení můžete převzít služby při selhání v řádu sekund odkudkoli a spustit aplikaci v řádu minut.
 
-## <a name="next-steps"></a>Další postup
-Další informace o ochraně firemních procesů s využitím Site Recovery najdete v tématu [jaké úlohy mohu ochránit?](site-recovery-workload.md).
+## <a name="next-steps"></a>Další kroky
+Další informace o ochraně podnikových úloh pomocí Site Recovery najdete v tématu [Jaké úlohy je možné chránit?](site-recovery-workload.md).

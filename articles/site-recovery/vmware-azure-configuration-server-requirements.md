@@ -1,5 +1,5 @@
 ---
-title: Požadavky na konfigurační server pro zotavení po havárii VMware do Azure s Azure Site Recovery | Microsoft Docs
+title: Zotavení po havárii VMware – požadavky na konfigurační server v Azure Site Recovery
 description: Tento článek popisuje podporu a požadavky při nasazování konfiguračního serveru pro zotavení po havárii VMware do Azure pomocí Azure Site Recovery
 author: rayne-wiselman
 manager: carmonm
@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: article
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: d83b99ea540d6232f4c0786d3a743f97332e1c9f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 0b0942b517c8dc83c048bd1203a58d9861515dfb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792319"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663047"
 ---
 # <a name="configuration-server-requirements-for-vmware-disaster-recovery-to-azure"></a>Požadavky na konfigurační server pro zotavení po havárii VMware do Azure
 

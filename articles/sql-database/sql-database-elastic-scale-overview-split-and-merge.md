@@ -1,5 +1,5 @@
 ---
-title: Přesun dat mezi cloudové databáze s horizontálním navýšení kapacity | Microsoft Docs
+title: Přesun dat mezi cloudovými databázemi s horizontálním navýšením kapacity
 description: Vysvětluje, jak manipulovat s horizontálních oddílů a přesouvat data prostřednictvím samoobslužné služby pomocí rozhraní API elastické databáze.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 841794dcbb41249ea25f615524150df4bd257b45
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9b2203b7fb9e168b251eda16a9505ae2004b0460
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568394"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690187"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Přesun dat mezi cloudovými databázemi s horizontálním navýšením kapacity
 
@@ -26,9 +26,9 @@ Nástroj pro dělení a slučování se spouští jako webová služba Azure. Sp
 
 ![Přehled][1]
 
-## <a name="download"></a>Ke stažení
+## <a name="download"></a>Stáhnout
 
-[Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
+[Microsoft. Azure. SqlDatabase. ElasticScale. Service. SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
 ## <a name="documentation"></a>Dokumentace
 
@@ -98,7 +98,7 @@ Nástroj pro dělení a slučování se spouští jako webová služba Azure. Sp
 
     Další tabulky mohou být k dispozici buď na zdroji, nebo v cíli operace rozdělení a sloučení. Služba dělení a slučování ignoruje tyto tabulky pro jakékoli operace přesunu nebo kopírování dat. Upozorňujeme však, že tyto operace mohou v případě omezení narušovat.
 
-    Informace o referenčních tabulkách vs. horizontálně dělené jsou poskytovány `SchemaInfo` rozhraními API na mapě horizontálních oddílů. Následující příklad ilustruje použití těchto rozhraní API na daném objektu Správce map horizontálních oddílů:
+    Informace o referenčních tabulkách vs. horizontálně dělené jsou poskytovány rozhraními API `SchemaInfo` na mapě horizontálních oddílů. Následující příklad ilustruje použití těchto rozhraní API na daném objektu Správce map horizontálních oddílů:
 
     ```csharp
     // Create the schema annotations
@@ -115,7 +115,7 @@ Nástroj pro dělení a slučování se spouští jako webová služba Azure. Sp
     smm.GetSchemaInfoCollection().Add(Configuration.ShardMapName, schemaInfo);
     ```
 
-    Tabulky "region" a "země" jsou definovány jako referenční tabulky a budou zkopírovány pomocí operací rozdělit/sloučit/přesunout. "Customer" a "Orders" jsou definovány jako tabulky horizontálně dělené. `C_CUSTKEY`a `O_CUSTKEY` slouží jako horizontálního dělení klíč.
+    Tabulky "region" a "země" jsou definovány jako referenční tabulky a budou zkopírovány pomocí operací rozdělit/sloučit/přesunout. "Customer" a "Orders" jsou definovány jako tabulky horizontálně dělené. `C_CUSTKEY` a `O_CUSTKEY` slouží jako horizontálního dělení klíč.
 
 - **Referenční integrita**
 
@@ -209,7 +209,7 @@ Služba rozdělení a sloučení poskytuje tabulku **stavem žádosti** v datab�
 
   Hodnota XML, která poskytuje podrobnější sestavu průběhu. Zpráva o průběhu se pravidelně aktualizuje, protože sady řádků se zkopírují ze zdroje do cíle. V případě selhání nebo výjimek obsahuje tento sloupec také podrobnější informace o selhání.
 
-### <a name="azure-diagnostics"></a>Azure Diagnostics
+### <a name="azure-diagnostics"></a>Diagnostika Azure
 
 Služba dělení a slučování používá pro monitorování a diagnostiku Azure Diagnostics založenou na sadě Azure SDK 2,5. Konfiguraci diagnostiky můžete řídit, jak je vysvětleno zde: [Povolení diagnostiky v Azure Cloud Services a Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). Balíček ke stažení obsahuje dvě konfigurace diagnostiky – jeden pro webovou roli a jeden pro roli pracovního procesu. Obsahuje definice pro protokolování čítačů výkonu, protokolů služby IIS, protokolů událostí systému Windows a protokolů událostí aplikací pro dělené sloučení.
 
@@ -237,13 +237,13 @@ Další informace o tom, jak nakonfigurovat a nasadit nastavení diagnostiky, na
 
 ## <a name="retrieve-diagnostics"></a>Načíst diagnostiku
 
-K diagnostice můžete snadno přistupovat ze sady Visual Studio Průzkumník serveru v části Azure stromu Průzkumník serveru. Otevřete instanci sady Visual Studio a v řádku nabídek klikněte na tlačítko Zobrazit a Průzkumník serveru. Kliknutím na ikonu Azure se připojíte k vašemu předplatnému Azure. Pak přejděte do tabulky Azure-> úložiště- `<your storage account>` >-> Tables – > WADLogsTable. Další informace najdete v tématu [Průzkumník serveru](https://msdn.microsoft.com/library/x603htbk.aspx).
+K diagnostice můžete snadno přistupovat ze sady Visual Studio Průzkumník serveru v části Azure stromu Průzkumník serveru. Otevřete instanci sady Visual Studio a v řádku nabídek klikněte na tlačítko Zobrazit a Průzkumník serveru. Kliknutím na ikonu Azure se připojíte k vašemu předplatnému Azure. Pak přejděte do Azure-> Storage-> Tables `<your storage account>`-> Tables-> WADLogsTable. Další informace najdete v tématu [Průzkumník serveru](https://msdn.microsoft.com/library/x603htbk.aspx).
 
 ![WADLogsTable][2]
 
 WADLogsTable zvýrazněný na obrázku výše obsahuje podrobné události z aplikačního protokolu služby dělené sloučení. Všimněte si, že výchozí konfigurace staženého balíčku je zaměřená na produkční nasazení. Proto je interval, ve kterém jsou protokoly a čítače z instancí služby načítány, velký (5 minut). V případě testování a vývoje snižte interval úpravou nastavení diagnostiky webu nebo role pracovního procesu podle vašich potřeb. Klikněte pravým tlačítkem na roli v Průzkumník serveru sady Visual Studio (viz výše) a upravte dobu přenosu v dialogovém okně pro nastavení konfigurace diagnostiky:
 
-![Konfiguraci][3]
+![Konfigurace][3]
 
 ## <a name="performance"></a>Výkon
 
@@ -266,7 +266,7 @@ Nemusíte zřizovat novou databázi metadat pro rozdělení a sloučení pro upg
 
 - Definujte testovacího tenanta a vyzkoušejte své nejdůležitější operace rozdělení, sloučení nebo přesunutí s testovacím klientem napříč několika horizontálních oddílů. Zajistěte, aby byla v mapě horizontálních oddílů správně definovaná všechna metadata a aby operace neporušila omezení nebo cizí klíče.
 - Udržujte velikost testovacích dat tenanta nad maximální velikostí dat vašeho největšího tenanta, abyste se ujistili, že se nesetkáte s problémy souvisejícími s velikostí dat. To vám pomůže vyhodnotit horní mez v době, kdy je potřeba přesunout jednoho tenanta kolem.
-- Ujistěte se, že vaše schéma umožňuje odstranění. Služba rozdělení a sloučení vyžaduje možnost odebrání dat ze zdrojového horizontálních oddílů, jakmile se data úspěšně zkopírují do cíle. Například triggery **Delete** můžou zabránit službě ve odstranění dat na zdroji a můžou způsobit selhání operací.
+- Ujistěte se, že vaše schéma umožňuje odstranění. Služba rozdělení a sloučení vyžaduje možnost odebrání dat ze zdrojového horizontálních oddílů, jakmile se data úspěšně zkopírují do cíle. Například **triggery Delete** můžou zabránit službě ve odstranění dat na zdroji a můžou způsobit selhání operací.
 - Klíč horizontálního dělení by měl být počátečním sloupcem v definici primárního klíče nebo jedinečného indexu. Který zajišťuje nejlepší výkon pro dotazy na rozdělené nebo slučovací ověřování a pro skutečné operace přesunu a odstranění dat, které vždy pracují s rozsahy horizontálního děleních klíčů.
 - Společné umístění službu pro dělení a slučování v oblasti a datovém centru, kde jsou umístěny vaše databáze.
 

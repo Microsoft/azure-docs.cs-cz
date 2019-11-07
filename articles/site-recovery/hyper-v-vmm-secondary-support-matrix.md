@@ -1,18 +1,18 @@
 ---
-title: Matice podpory pro zotavení po havárii virtuálních počítačů Hyper-V v cloudech VMM do sekundární lokality s Azure Site Recovery
+title: Podpora zotavení po havárii technologie Hyper-V do sekundární lokality VMM pomocí Azure Site Recovery
 description: Shrnuje podporu replikace virtuálních počítačů Hyper-V v cloudech VMM do sekundární lokality s Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 46d6cba1d702773639420a3bc5ac74b9c16ce706
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7711ebaaddccd68d4322c1d3ebdd049a57bc709b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933816"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686165"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Hyper-V do sekundární lokality
 
@@ -67,13 +67,13 @@ Virtuální počítač hosta – Windows/Linux – statická IP adresa | Ano
 Virtuální počítač hosta – více síťových karet | Ano
 
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 ### <a name="host-storage"></a>Úložiště hostitele
 
 **Úložiště (hostitel)** | **Podporuje se**
 --- | --- 
-NFS | Nevztahuje se
+NFS | Není dostupné.
 SMB 3.0 |  Ano
 SÍŤ SAN (ISCSI) | Ano
 Multipath (multi-Path) | Ano
@@ -82,15 +82,15 @@ Multipath (multi-Path) | Ano
 
 **Konfigurace** | **Podporuje se**
 --- | --- | 
-FORMÁTU |  Nevztahuje se
+FORMÁTU |  Není dostupné.
 VHD/VHDX | Ano (až 16 disků)
 Virtuální počítač 2. generace | Ano
 Disk sdíleného clusteru | Ne
 Zašifrovaný disk | Ne
-UEFI| Nevztahuje se
+UEFI| Není dostupné.
 NFS | Ne
 SMB 3.0 | Ne
-RDM | Nevztahuje se
+RDM | Není dostupné.
 Disk > 1 TB | Ano
 Svazek se zakládaným diskem > 1 TB<br/><br/> LVM | Ano
 Prostory úložiště | Ano

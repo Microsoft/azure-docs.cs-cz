@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: overview
 ms.service: resource-graph
-ms.openlocfilehash: c113719d304aa4ed9c13df1fe0264d22aacb5002
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 41663ec04e194bcc4380f46f1e5cc5a6867e53fc
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499140"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622534"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Přehled služby Azure Resource Graph
 
@@ -25,7 +25,7 @@ Azure Resource Graph je služba v Azure, která je navržená tak, aby rozšíř
 V této dokumentaci si podrobně projdete jednotlivé funkce.
 
 > [!NOTE]
-> Azure Resource Graph – pravomoci Azure Portal vyhledávací panel, nové možnosti procházet všechny prostředky a [historie změn](../policy/how-to/determine-non-compliance.md#change-history-preview) Azure Policy 
+> Azure Resource Graph – pravomoci Azure Portal vyhledávací panel, nové možnosti procházet všechny prostředky a [historie změn](../policy/how-to/determine-non-compliance.md#change-history-preview) Azure Policy
 > _vizuální rozdíl_. Je navržena tak, aby zákazníkům pomohla spravovat rozsáhlá prostředí.
 
 [!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
@@ -92,7 +92,7 @@ Graf prostředků podporuje rozhraní příkazového řádku Azure CLI, Azure Po
 
 ## <a name="next-steps"></a>Další kroky
 
-- Spusťte první dotaz v [Azure Portal](first-query-portal.md).
+- Spusťte první dotaz pomocí [Azure Portal](first-query-portal.md).
 - Spusťte první dotaz pomocí [Azure CLI](first-query-azurecli.md).
 - Spusťte první dotaz pomocí [Azure PowerShell](first-query-powershell.md).
 - Získejte další informace o [dotazovacím jazyce](./concepts/query-language.md).

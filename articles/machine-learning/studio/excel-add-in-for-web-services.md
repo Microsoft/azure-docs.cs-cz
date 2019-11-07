@@ -1,6 +1,6 @@
 ---
 title: Doplněk Excelu pro webové služby
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Jak používat Azure Machine Learning webové služby přímo v aplikaci Excel bez psaní kódu.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 18e7e2c2c57bd44cb974e5de668045d6322bc4ce
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ff3e8933b839a2b70e23e91afe8ffde156906e33
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492984"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619370"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Doplněk Excelu pro webové služby Azure Machine Learning Studio (Classic)
 Aplikace Excel usnadňuje volání webových služeb přímo bez nutnosti psát jakýkoli kód.
@@ -74,7 +74,7 @@ Získejte klíč rozhraní API pro webovou službu. Kde tuto akci provedete, zá
 5. Klikněte na **Přidat webovou službu**.
 6. Vložte adresu URL do textového pole excelový doplněk s názvem **URL**.
 7. Vložte rozhraní API/primární klíč do textového pole s popiskem **klíč rozhraní API**.
-8. Klikněte na tlačítko **Přidat**.
+8. Klikněte na **Přidat**.
    
     ![Adresa URL a klíč rozhraní API pro klasickou webovou službu.](./media/excel-add-in-for-web-services/image6.png)
 9. Chcete-li použít webovou službu, postupujte podle pokynů v části "postup použití existující webové služby".
