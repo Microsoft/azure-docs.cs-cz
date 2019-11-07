@@ -57,6 +57,8 @@
       href: data-manager-portal.md
     - name: Konfigurace Data Manageru – CLI
       href: data-manager-cli.md
+    - name: Publikování dat do Cosmos DB
+      href: data-manager-cosmosdb.md
 - name: Zdroje a prostředky
   items:
     - name: Blockchainové rozhraní REST API

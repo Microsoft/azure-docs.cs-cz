@@ -7,10 +7,14 @@
 - name: Šablony Rychlý start
   expanded: true
   items:
-    - name: Vytvoření zařízení pomocí modelu funkcí zařízení
+    - name: Vytvoření zařízení – Windows
       href: quickstart-create-pnp-device.md
-    - name: Připojení zařízení ke službě IoT Hub
+    - name: Vytvoření zařízení – Linux
+      href: quickstart-create-pnp-device-linux.md
+    - name: Připojení zařízení ke službě IoT Hub – Windows
       href: quickstart-connect-pnp-device.md
+    - name: Připojení zařízení ke službě IoT Hub – Linux
+      href: quickstart-connect-pnp-device-linux.md
     - name: Připojení zařízení ke službě IoT Central
       href: ../iot-central/core/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: Připojení k zařízení ve vašem řešení

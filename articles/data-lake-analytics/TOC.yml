@@ -121,11 +121,17 @@
     - name: Vysvětlení Apache Sparku pro vývojáře v U-SQL
       items:
         - name: Vysvětlení Apache Sparku pro vývojáře v U-SQL
-          href: data-lake-analytics-understand-spark-for-usql-developers.md
+          href: understand-spark-for-usql-developers.md
         - name: Vysvětlení datových formátů Apache Sparku
-          href: data-lake-analytics-understand-spark-data-formats.md
+          href: understand-spark-data-formats.md
         - name: Vysvětlení koncepce kódu Apache Sparku
-          href: data-lake-analytics-understand-spark-code-concepts.md
+          href: understand-spark-code-concepts.md
+    - name: Řešení potíží s úlohami U-SQL
+      items:
+        - name: Řešení potíží se selháními modulu runtime U-SQL
+          href: runtime-troubleshoot.md
+        - name: Řešení potíží s upgradem .NET
+          href: dotnet-upgrade-troubleshoot.md
 - name: Referenční informace
   items:
     - name: Azure PowerShell

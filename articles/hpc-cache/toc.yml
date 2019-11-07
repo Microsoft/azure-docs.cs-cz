@@ -30,6 +30,8 @@
                   href: hpc-cache-ingest-msrsync.md
                 - name: Naplnění mezipaměti s využitím ruční kopie souborů
                   href: hpc-cache-ingest-manual.md
+        - name: Úprava cílů úložiště
+          href: hpc-cache-edit-storage.md
     - name: Připojení k mezipaměti
       href: hpc-cache-mount.md
     - name: Správa mezipaměti

@@ -345,6 +345,8 @@
           maintainContext: true
         - name: Spouštěcí program pro Deployment Center
           href: deployment-center-launcher.md
+        - name: Akce GitHubu pro Kubernetes
+          href: ../aks/kubernetes-action.md
     - name: Řešení potíží
       items:
         - name: Běžné problémy

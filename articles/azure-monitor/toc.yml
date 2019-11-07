@@ -295,7 +295,7 @@
                 - name: Výjimky
                   href: app/asp-net-exceptions.md
                 - name: Trasování protokolů
-                  href: app/java-trace-logs.md
+                  href: app/asp-net-trace-logs.md
                 - name: Unixové metriky
                   href: app/java-collectd.md
                 - name: Závislosti
@@ -318,6 +318,8 @@
                   href: app/opencensus-python.md
                 - name: Závislosti
                   href: app/opencensus-python-dependency.md
+                - name: Žádosti
+                  href: app/opencensus-python-request.md
             - name: Webové stránky
               items:
                 - name: JavaScript na straně klienta
@@ -593,26 +595,39 @@
         - name: Protokoly prostředků
           items:
             - name: Přehled
+              displayname: Resource logs
               href: platform/resource-logs-overview.md
             - name: Shromažďování v protokolech Azure Monitoru
+              displayname: Resource logs
               href: platform/resource-logs-collect-workspace.md
             - name: Archivace do úložiště
+              displayname: Resource logs
               href: platform/resource-logs-collect-storage.md
             - name: Streamování do Event Hubs
+              displayname: Resource logs
               href: platform/resource-logs-stream-event-hubs.md
         - name: Protokol aktivit
           items:
             - name: Přehled
+              displayname: Activity log
               href: platform/activity-logs-overview.md
+            - name: Shromažďování s nastavením diagnostiky
+              displayname: Activity log
+              href: platform/diagnostic-settings-subscription.md
             - name: Zobrazení a načtení
+              displayname: Activity log
               href: platform/activity-log-view.md
             - name: Shromažďování a analýza
+              displayname: Activity log
               href: platform/activity-log-collect.md
             - name: Shromažďování napříč tenanty
+              displayname: Activity log
               href: platform/activity-log-collect-tenants.md
             - name: Export
+              displayname: Activity log
               href: platform/activity-log-export.md
             - name: Schéma
+              displayname: Activity log
               href: platform/activity-log-schema.md
         - name: Nastavení diagnostiky
           items:
@@ -621,6 +636,7 @@
             - name: Vytvoření nastavení diagnostiky s využitím šablon Resource Manageru
               href: platform/diagnostic-settings-template.md
             - name: Změna formátu úložiště objektů blob
+              displayname: Diagnostic settings
               href: platform/resource-logs-blob-format.md
         - name: Streamování dat do Event Hubs
           href: platform/stream-monitoring-data-event-hubs.md

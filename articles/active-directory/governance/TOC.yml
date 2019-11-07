@@ -84,6 +84,14 @@
               href: entitlement-management-request-access.md
     - name: Kontroly přístupu
       items:
+        - name: Přístupové balíčky
+          items:
+            - name: Vytvoření kontroly přístupu
+              href: entitlement-management-access-reviews-create.md
+            - name: Kontrola přístupu
+              href: entitlement-management-access-reviews-review-access.md
+            - name: Kontrola přístupu pro vás
+              href: entitlement-management-access-reviews-self-review.md
         - name: Skupiny a aplikace
           items:
             - name: Vytvoření kontroly přístupu

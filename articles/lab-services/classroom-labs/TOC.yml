@@ -52,6 +52,8 @@
       items:
         - name: Vytváření a správa testovacích prostředí v učebnách
           href: how-to-manage-classroom-labs.md
+        - name: Použití řídicího panelu
+          href: use-dashboard.md
         - name: 'Nastavení, přizpůsobení a publikování šablon'
           href: how-to-create-manage-template.md
         - name: Nastavení a správa fondu virtuálních počítačů
@@ -80,6 +82,8 @@
   items:
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/labservices/'
+    - name: Modul PowerShellu Az.LabServices (Preview)
+      href: reference-powershell-module.md
 - name: Zdroje a prostředky
   items:
     - name: Aktualizace Azure

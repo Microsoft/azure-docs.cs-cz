@@ -42,8 +42,9 @@
       items:
         - name: Globální síť Microsoftu
           href: microsoft-global-network.md
-        - name: Test latence sítě virtuálních počítačů
-          href: virtual-network-test-latency.md
+          items:
+            - name: Latence sítě v Azure
+              href: azure-network-latency.md
         - name: Virtuální sítě
           href: ../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Vyrovnávání zatížení sítě

@@ -195,6 +195,8 @@
           href: search-blob-storage-integration.md
         - name: Nastavení indexeru objektů blob
           href: search-howto-indexing-azure-blob-storage.md
+        - name: Nastavení indexeru Azure Data Lake Storage Gen2
+          href: search-howto-index-azure-data-lake-storage.md
         - name: 'Indexování objektů blob 1:N'
           href: search-howto-index-one-to-many-blobs.md
         - name: Indexování objektů blob CSV

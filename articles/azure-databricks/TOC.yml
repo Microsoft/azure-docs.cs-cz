@@ -260,7 +260,7 @@
             - name: Databáze Cosmos
               href: /azure/databricks/data/data-sources/azure/cosmosdb-connector
               maintainContext: true
-            - name: SQL Data Warehouse
+            - name: Azure SQL Data Warehouse
               href: /azure/databricks/data/data-sources/azure/sql-data-warehouse
               maintainContext: true
             - name: Binární soubory
@@ -272,7 +272,7 @@
             - name: Couchbase
               href: /azure/databricks/data/data-sources/couchbase
               maintainContext: true
-            - name: Elastické vyhledávání
+            - name: ElasticSearch
               href: /azure/databricks/data/data-sources/elasticsearch
               maintainContext: true
             - name: Image
@@ -708,14 +708,17 @@
             - name: Příklad rozhodovacího stromu
               href: /azure/databricks/applications/machine-learning/mllib/decision-trees
               maintainContext: true
-            - name: Kanály MLib a strukturované streamování
+            - name: Kanály MLlib a strukturované streamování
               href: /azure/databricks/applications/machine-learning/mllib/mllib-pipelines-and-stuctured-streaming
               maintainContext: true
-            - name: Příklad MLib pro pokročilé
+            - name: Příklad MLlib pro pokročilé
               href: /azure/databricks/applications/machine-learning/mllib/advanced-mllib
               maintainContext: true
         - name: Automatizované strojové učení
           items:
+            - name: Přehled automatizovaného strojového učení
+              href: /azure/databricks/applications/machine-learning/automl/index
+              maintainContext: true
             - name: Hyperopt
               items:
                 - name: Přehled Hyperoptu
@@ -730,8 +733,16 @@
                 - name: Modelové vyhledávání s využitím distribuovaného Hyperoptu
                   href: /azure/databricks/applications/machine-learning/automl/hyperopt/hyperopt-model-selection
                   maintainContext: true
-            - name: MLib a automatizované sledování MLflow
+            - name: MLlib a automatizované sledování MLflow
               href: /azure/databricks/applications/machine-learning/automl/mllib-mlflow-integration
+              maintainContext: true
+        - name: Export a import modelů ML
+          items:
+            - name: Přehled exportu a importu
+              href: /azure/databricks/applications/machine-learning/model-export-import/index
+              maintainContext: true
+            - name: Export modelu ML MLeap
+              href: /azure/databricks/applications/machine-learning/model-export-import/mleap-model-export
               maintainContext: true
         - name: Integrace strojové učení třetích stran
           href: /azure/databricks/applications/machine-learning/third-party/index
@@ -826,33 +837,39 @@
         - name: Přehled MLflow
           href: /azure/databricks/applications/mlflow/index
           maintainContext: true
-        - name: Začínáme s MLflow
-          href: /azure/databricks/applications/mlflow/quick-start
-          maintainContext: true
-        - name: Začínáme s Javou a Scalou v MLflow
-          href: /azure/databricks/applications/mlflow/quick-start-java-scala
-          maintainContext: true
-        - name: Začínáme s Pythonem v MLflow
-          href: /azure/databricks/applications/mlflow/quick-start-python
-          maintainContext: true
-        - name: Začínáme s R v MLflow
-          href: /azure/databricks/applications/mlflow/quick-start-r
-          maintainContext: true
+        - name: Začínáme
+          items:
+            - name: Začínáme s MLflow
+              href: /azure/databricks/applications/mlflow/quick-start
+              maintainContext: true
+            - name: Začínáme s Javou a Scalou v MLflow
+              href: /azure/databricks/applications/mlflow/  quick-start-java-scala
+              maintainContext: true
+            - name: Začínáme s Pythonem v MLflow
+              href: /azure/databricks/applications/mlflow/  quick-start-python
+              maintainContext: true
+            - name: Začínáme s R v MLflow
+              href: /azure/databricks/applications/mlflow/quick-start-r
+              maintainContext: true
         - name: Sledování tréninkových spuštění strojového učení
-          href: /azure/databricks/applications/mlflow/tracking
-          maintainContext: true
-        - name: Příklady sledování MLflow
-          href: /azure/databricks/applications/mlflow/tracking-examples
-          maintainContext: true
-        - name: Externí přístup ke sledování
-          href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
-          maintainContext: true
+          items:
+            - name: Přehled sledování
+              href: /azure/databricks/applications/mlflow/tracking
+              maintainContext: true
+            - name: Příklady sledování MLflow
+              href: /azure/databricks/applications/mlflow/  tracking-examples
+              maintainContext: true
+            - name: Externí přístup ke sledování
+              href: /azure/databricks/applications/mlflow/  access-hosted-tracking-server
+              maintainContext: true
         - name: 'Ukládání, nahrávání a nasazování modelů'
-          href: /azure/databricks/applications/mlflow/models
-          maintainContext: true
-        - name: Příklady modelu MLflow
-          href: /azure/databricks/applications/mlflow/model-examples
-          maintainContext: true
+          items:
+            - name: 'Přehled ukládání, nahrávání a nasazování'
+              href: /azure/databricks/applications/mlflow/models
+              maintainContext: true
+            - name: Příklady modelu MLflow
+              href: /azure/databricks/applications/mlflow/  model-examples
+              maintainContext: true
         - name: Opakování spuštění s projekty MLflow
           href: /azure/databricks/applications/mlflow/projects
           maintainContext: true
@@ -880,9 +897,6 @@
         - name: Přehled služby Genomics
           href: /azure/databricks/applications/genomics/index
           maintainContext: true
-        - name: Přehled ETL pro Genomics
-          href: /azure/databricks/applications/genomics/etl/index
-          maintainContext: true
         - name: Sekundární analýza
           items:
             - name: Přehled sekundární analýzy
@@ -908,6 +922,9 @@
               maintainContext: true
         - name: ETL
           items:
+            - name: Přehled ETL pro Genomics
+              href: /azure/databricks/applications/genomics/etl/index
+              maintainContext: true
             - name: V/V variant s využitím Apache Spark SQL
               href: /azure/databricks/applications/genomics/etl/variant-data
               maintainContext: true
@@ -1211,10 +1228,7 @@
               maintainContext: true
             - name: Neúspěšná detekce kódování v JSON
               href: /azure/databricks/kb/data-sources/json-unicode
-              maintainContext: true
-            - name: Možnost dotazů JDBC nefunguje pro Oracle Database
-              href: /azure/databricks/kb/data-sources/query-option-not-work-oracle
-              maintainContext: true
+              maintainContext: true j
         - name: DBFS
           items:
             - name: Nejde číst objekty uložené v kořeni DBFS
@@ -1293,6 +1307,9 @@
               maintainContext: true
             - name: Úloha se nezdařila – MaxResultSize
               href: /azure/databricks/kb/jobs/job-fails-maxresultsize-exception
+              maintainContext: true
+            - name: Zajištění idempotence
+              href: /azure/databricks/kb/jobs/jobs-idempotency
               maintainContext: true
         - name: Knihovny
           items:

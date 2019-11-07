@@ -7,17 +7,21 @@
 - name: Šablony Rychlý start
   expanded: true
   items:
-    - name: Nastavení a načtení tajného kódu – rozhraní příkazového řádku
+    - name: Rozhraní příkazového řádku
       href: quick-create-cli.md
-    - name: Nastavení a načtení tajného kódu – PowerShell
+    - name: PowerShell
       href: quick-create-powershell.md
-    - name: Nastavení a načtení tajného kódu – portál
+    - name: Portál
       href: quick-create-portal.md
-    - name: Nastavení a načtení tajného kódu – .NET
+    - name: Python
+      href: quick-create-python.md
+    - name: .NET (SDK v4)
       href: quick-create-net.md
-    - name: Nastavení a načtení tajného kódu – Node.js
+    - name: .NET (SDK v3)
+      href: quick-create-net-v3.md
+    - name: Node.js
       href: quick-create-node.md
-    - name: Nastavení a načtení tajného kódu – šablona
+    - name: Šablona Azure Resource Manageru
       displayName: 'resource manager, resource manager template, arm'
       href: quick-create-template.md
 - name: Kurzy

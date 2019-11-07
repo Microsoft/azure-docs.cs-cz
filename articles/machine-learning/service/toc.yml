@@ -84,9 +84,6 @@
     - name: Automatizované strojové učení
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
-    - name: Instance služby Compute
-      displayName: 'resource, dsvm, Data Science Virtual Machine'
-      href: concept-compute-instance.md
     - name: Cílový výpočetní objekt
       displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
       href: concept-compute-target.md
@@ -115,6 +112,8 @@
     - name: Hloubkové učení
       displayName: 'deep learning vs machine learning, deep learning, vs, versus'
       href: concept-deep-learning-vs-machine-learning.md
+    - name: Integrace Event Gridu
+      href: concept-event-grid-integration.md
     - name: Integrace Gitu
       displayName: git github gitlab
       href: concept-train-model-git-integration.md
@@ -163,6 +162,12 @@
         - name: Správa verzí a sledování datových sad
           displayName: 'data, data set'
           href: how-to-version-track-datasets.md
+        - name: Označení dat popisky
+          displayName: 'data, dataset, labeling'
+          href: how-to-create-labeling-projects.md
+        - name: Označení obrázků
+          displayName: 'data, dataset, labeling'
+          href: how-to-label-images.md
     - name: Trénování modelů
       items:
         - name: Použití designeru
@@ -227,11 +232,14 @@
         - name: Použití automatizovaného strojového učení (Python)
           displayName: SDK automl
           href: how-to-configure-auto-train.md
-        - name: Použití automatizovaného strojového učení (cílová stránka pracovního prostoru)
+        - name: Použití automatizovaného strojového učení (rozhraní)
           href: how-to-create-portal-experiments.md
         - name: Použití vzdálených cílových výpočetních prostředí
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
+        - name: Definování úloh ML
+          displayName: 'machine learning, task type'
+          href: how-to-define-task-type.md
         - name: Automatické trénování modelu prognóz
           displayName: time series
           href: how-to-auto-train-forecast.md
@@ -270,7 +278,7 @@
         - name: Azure App Service
           displayName: web app
           href: how-to-deploy-app-service.md
-        - name: Instance služby Compute
+        - name: Virtuální počítače poznámkového bloku
           href: how-to-deploy-local-container-notebook-vm.md
         - name: Použití vlastní image Dockeru
           href: how-to-deploy-custom-docker-image.md
@@ -317,6 +325,9 @@
     - name: Export a odstranění dat
       displayName: GDPR
       href: how-to-export-delete-data.md
+    - name: Vytváření pracovních postupů řízených událostmi
+      displayName: event grid
+      href: how-to-use-event-grid.md
 - name: Referenční informace
   items:
     - name: ML SDK (Python)
@@ -328,6 +339,8 @@
     - name: Machine Learning CLI
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/azureml/'
     - name: Monitorování odkazů na data
       href: monitor-resource-reference.md
     - name: Reference YAML ke kanálu strojového učení

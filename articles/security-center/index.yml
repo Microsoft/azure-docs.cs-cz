@@ -12,12 +12,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: 48140c014492383fd4c714669b070df1fa6214e6
-  ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+  ms.openlocfilehash: 8174498a5cc94eca0883102c95b543630cd37fdf
+  ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73521155"
+  ms.lasthandoff: 11/05/2019
+  ms.locfileid: "73607506"
 landingContent:
 - title: Informace o službě Security Center
   linkLists:
@@ -27,6 +27,22 @@ landingContent:
       url: security-center-intro.md
     - text: Které verze serverů systému Windows a Linux se podporují?
       url: security-center-os-coverage.md
+- title: Zajištění aktuálnosti
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Ochrana vašich kontejnerů
+      url: container-security.md
+    - text: Přidání dynamických balíčků pro dodržování předpisů
+      url: update-regulatory-compliance-packages.md
+    - text: Integrace s řešením Windows Admin Center
+      url: windows-admin-center-integration.md
+    - text: Automatizace odpovědí na upozornění a doporučení
+      url: workflow-automation.md
+    - text: Export doporučení a výstrah zabezpečení
+      url: continuous-export.md
+    - text: Nastavení služby Advanced Threat Protection pro Azure Key Vault
+      url: advanced-threat-protection-key-vault.md
 - title: Začínáme
   linkLists:
   - linkListType: get-started

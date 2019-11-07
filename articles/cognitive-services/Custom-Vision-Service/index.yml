@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentace ke Custom Vision
-summary: Custom Vision je služba Cognitive Services, která umožňuje vytvářet, nasazovat a vylepšovat vaše vlastní klasifikátory obrázků. Třídění obrázků je služba AI, která obrázkům v závislosti na jejich vizuálních vlastnostech dává popisky (které reprezentují třídy).
+summary: Custom Vision umožňuje vytvářet, nasazovat a vylepšovat vaše vlastní klasifikátory obrázků. Třídění obrázků je služba AI, která obrázkům v závislosti na jejich vizuálních vlastnostech dává popisky (které reprezentují třídy).
 metadata:
   title: Dokumentace ke Custom Vision – rychlá zprovoznění, kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
-  description: Custom Vision je služba Cognitive Services, která umožňuje vytvářet, nasazovat a vylepšovat vaše vlastní klasifikátory obrázků. Třídění obrázků je služba AI, která obrázkům v závislosti na jejich vizuálních vlastnostech dává popisky (které reprezentují třídy).
+  description: Custom Vision umožňuje vytvářet, nasazovat a vylepšovat vaše vlastní klasifikátory obrázků. Třídění obrázků je služba AI, která obrázkům v závislosti na jejich vizuálních vlastnostech dává popisky (které reprezentují třídy).
   services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: custom-vision
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 21e4c324b947cb863614f50bb2ee0bfe09246372
-  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.openlocfilehash: 2ef22176b64638dc43a4a45096cf072a7c79931e
+  ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/25/2019
-  ms.locfileid: "72931640"
+  ms.lasthandoff: 11/06/2019
+  ms.locfileid: "73647579"
 landingContent:
 - title: Informace o Custom Vision
   linkLists:
@@ -80,7 +80,7 @@ landingContent:
       url: test-your-model.md
     - text: Vylepšení modelu
       url: getting-started-improving-your-classifier.md
-    - text: Použití navrhovaných značek
+    - text: Použití nástroje Smart Labeler
       url: suggested-tags.md
 - title: Export modelů
   linkLists:

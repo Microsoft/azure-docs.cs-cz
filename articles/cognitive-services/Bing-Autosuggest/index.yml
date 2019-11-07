@@ -1,91 +1,69 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace k Automatickým návrhům Bingu
+summary: Rozhraní API pro automatické návrhy Bingu umožňuje posílat do Bingu částečné vyhledávací dotazy a získat seznam návrhů na základě záměru uživatele a minulých hledání. Voláním tohoto rozhraní API můžete vyhledávací pole a rozevírací seznamy ve vaší aplikaci naplnit návrhy podle toho, jak uživatelé zadávají text.
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
-  title: 'Dokumentace k Automatickým návrhům Bingu – kurzy, rychlá zprovoznění, reference k rozhraní API'
+  title: Dokumentace k Automatickým návrhům Bingu – kurzy, rychlá zprovoznění, reference k rozhraní API
   titleSuffix: Azure Cognitive Services
-  description: 'Naučte se používat rozhraní API pro automatické návrhy Bingu k získání navržených dotazů na základě dílčího dotazu. Kurzy vám ukážou, jak vytvářet aplikace, které tuto službu používají.'
+  description: Naučte se používat rozhraní API pro automatické návrhy Bingu k získání navržených dotazů na základě dílčího dotazu. Kurzy vám ukážou, jak vytvářet aplikace, které tuto službu používají.
   services: cognitive-services
   author: aahill
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-autosuggest
   ms.topic: landing-page
-  ms.date: 07/25/2019
+  ms.date: 10/28/2019
   ms.author: aahi
-abstract:
-  description: 'Rozhraní API pro automatické návrhy Bingu umožňuje odeslat do Bingu částečný dotaz a získat zpátky seznam navrhovaných dotazů, které při hledání použili ostatní uživatelé.  Když například uživatel zadává jednotlivé znaky hledaného termínu, můžete zavolat toto rozhraní API a rozevírací seznam vyhledávacího pole se naplní návrhy. Naučte se používat rozhraní API pro automatické návrhy prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/bing-autosuggest/get-suggested-search-terms
-            html: <p>Další informace o rozhraní API pro automatické návrhy Bingu</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Co je rozhraní API pro automatické návrhy Bingu?
-          - href: /azure/cognitive-services/bing-autosuggest/concepts/get-suggestions
-            html: <p>Další informace o získání návrhů hledání v reálném čase</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Získání návrhů z rozhraní API pro automatické návrhy Bingu
-          - href: /azure/cognitive-services/bing-autosuggest/language-support
-            html: '<p>Zjistěte, které jazyky toto rozhraní API podporuje.</p>'
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Podporované jazyky
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: 'Začněte využívat rozhraní API pro automatické návrhy Bingu. Zadejte dotaz a prohlédněte si příslušnou odpověď JSON:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/logo_csharp.svg
-            href: quickstarts/csharp
-            text: 'C&#35;'
-          - image:
-              src: media/index/logo_java.svg
-            href: quickstarts/java
-            text: Java
-          - image:
-              src: media/index/logo_nodejs.svg
-            href: quickstarts/nodejs
-            text: Node.js
-          - image:
-              src: media/index/logo_php.svg
-            href: quickstarts/php
-            text: PHP
-          - image:
-              src: media/index/logo_python.svg
-            href: quickstarts/python
-            text: Python
-          - image:
-              src: media/index/logo_ruby.svg
-            href: quickstarts/ruby
-            text: Ruby
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Naučte se vyvíjet aplikace s využitím rozhraní API pro automatické návrhy Bingu:'
-      - type: paragraph
-        text: <a href="tutorials/autosuggest.md">Jednostránková webová aplikace</a>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Rozhraní API
-            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference">Rozhraní API pro automatické návrhy Bingu v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference">Rozhraní API pro automatické návrhy Bingu v5</p>'
-          - title: Sady SDK
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet">.NET</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-java-stable">Java</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: Rozhraní příkazového řádku
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'
+  ms.openlocfilehash: b0618f5bd0ed9deb1241dd3ff752a49686ca9073
+  ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 11/07/2019
+  ms.locfileid: "73746136"
+landingContent:
+- title: Informace o rozhraní API pro automatické návrhy Bingu
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je rozhraní API pro automatické návrhy Bingu?
+      url: get-suggested-search-terms.md
+    - text: Porovnání rozhraní API pro vyhledávání Bingu
+      url: ../bing-web-search/bing-api-comparison.md
+- title: Získání navrhovaných hledaných termínů
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Pomocí C#
+      url: quickstarts/csharp.md
+    - text: Pomocí Pythonu
+      url: quickstarts/python.md
+    - text: Pomocí Javy
+      url: quickstarts/java.md
+    - text: Pomocí Node.js
+      url: quickstarts/nodejs.md
+  - linkListType: tutorial
+    links:
+    - text: Sestavení jednostránkové webové aplikace
+      url: tutorials/autosuggest.md
+  - linkListType: how-to-guide
+    links:
+    - text: Použití navrhovaných pojmů
+      url: concepts/get-suggestions.md
+    - text: Odesílání žádostí rozhraní API
+      url: concepts/sending-requests.md
+- title: Referenční informace
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Rozhraní REST API pro automatické návrhy v7
+      url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference
+    - text: Rozhraní REST API pro automatické návrhy v5
+      url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v5-reference
+    - text: .NET SDK
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet
+    - text: Java SDK
+      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-java-stable
+    - text: Go SDK
+      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest
+    - text: Node.js SDK
+      url: https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-autosuggest/?view=azure-node-latest

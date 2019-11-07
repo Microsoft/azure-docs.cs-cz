@@ -1,10 +1,10 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace k Vlastnímu vyhledávání Bingu
+summary: Naučte se využívat rozhraní API a portál Vlastní vyhledávání Bingu k vytváření vlastních vyhledávacích prostředí.
 metadata:
-  title: 'Dokumentace k rozhraní API pro Vlastní vyhledávání Bingu – kurzy, rychlá zprovoznění, reference k rozhraní API'
+  title: Dokumentace k rozhraní API pro Vlastní vyhledávání Bingu – kurzy, rychlá zprovoznění, reference k rozhraní API
   titleSuffix: Azure Cognitive Services
-  description: Naučte se využívat rozhraní API a portál Vlastní vyhledávání Bingu k vytváření vlastních vyhledávacích prostředí.
+  description: Využijte rozhraní API pro vlastní vyhledávání Bingu k vytvoření instance vyhledávání témat, která vás zajímají. Zadejte domény a webové stránky, které se mají prohledat, a upravte hodnocení vyhledaných položek tak, aby plně odpovídalo vašemu vyhledávacímu prostředí.
   services: cognitive-services
   author: aahill
   manager: nitinme
@@ -12,72 +12,94 @@ metadata:
   ms.service: cognitive-services
   ms.subservice: bing-custom-search
   ms.topic: landing-page
-  ms.date: 07/25/2019
+  ms.date: 10/31/2019
   ms.author: aahill
-abstract:
-  description: 'Využijte rozhraní API pro vlastní vyhledávání Bingu k vytvoření instance vyhledávání témat, která vás zajímají. Zadejte domény a webové stránky, které se mají prohledat, a upravte hodnocení vyhledaných položek tak, aby plně odpovídalo vašemu vyhledávacímu prostředí.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/bing-custom-search/overview
-            html: <p>Přečtěte si o rozhraní API pro vlastní vyhledávání Bingu.</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Co je rozhraní API pro vlastní vyhledávání Bingu?
-          - href: /azure/cognitive-services/bing-custom-search/quick-start
-            html: '<p>Zjistěte, jak přizpůsobit vaše vyhledávací prostředí pro vytvoření vlastního zobrazení webu.</p>'
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Vytvoření instance vlastního vyhledávání Bingu
-          - href: /azure/cognitive-services/bing-custom-search/hosted-ui
-            html: '<p>Zjistěte, jak snadno integrovat hostované uživatelské rozhraní do webových stránek a webových aplikací.</p>'
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Konfigurace prostředí hostovaného uživatelského rozhraní
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: 'Prohledání vlastního zobrazení webu s využitím:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/logo_Csharp.svg
-            href: sdk-csharp-quick-start
-            text: 'C&#35;'
-          - image:
-              src: media/logo_java.svg
-            href: call-endpoint-java
-            text: Java
-          - image:
-              src: media/logo_nodejs.svg
-            href: call-endpoint-nodejs
-            text: Node.js
-          - image:
-              src: media/logo_python.svg
-            href: call-endpoint-python
-            text: Python
-  - title: Podrobný kurz
-    items:
-      - type: paragraph
-        text: 'Naučte se vyvíjet aplikace s využitím rozhraní API pro vlastní vyhledávání Bingu:'
-      - type: paragraph
-        text: <a href="tutorials/custom-search-web-page">Vytvoření webové stránky pro vlastní vyhledávání</a>
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Rozhraní API
-            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference">Vlastní rozhraní API pro vyhledávání v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-autosuggest-api-v7-reference">Vlastní rozhraní API pro automatické návrhy v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference">Vlastní rozhraní API pro vyhledávání obrázků v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference">Vlastní rozhraní API pro vyhledávání videí v7</a></p>'
-          - title: Sady SDK
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable">Java – vlastní vyhledávání</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomimagesearch?view=azure-java-stable">Java – vlastní vyhledávání obrázků</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-customsearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customsearch">Go – vlastní vyhledávání</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customimagesearch">Go – vlastní vyhledávání obrázků</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: Rozhraní příkazového řádku
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'
+  ms.openlocfilehash: fc2435fabc73ad344461b04a339135e22d173191
+  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73580112"
+landingContent:
+- title: Informace o rozhraní API pro vlastní vyhledávání Bingu
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je rozhraní API pro vlastní vyhledávání Bingu?
+      url: overview.md
+    - text: Porovnání aplikací Vyhledávání Bingu
+      url: ../bing-web-search/bing-api-comparison.md
+- title: Integrace vlastního zobrazení webu
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurace instance vlastního vyhledávání
+      url: define-your-custom-view.md
+    - text: Získání výsledků hledání obrázků
+      url: get-images-from-instance.md
+    - text: Získání výsledků vyhledávání videí
+      url: get-videos-from-instance.md
+    - text: Volání instance vlastního vyhledávání
+      url: search-your-custom-view.md
+    - text: Stránkování výsledků hledání
+      url: ../bing-web-search/paging-search-results.md
+    - text: Zpracování zvýrazňování nalezených položek
+      url: ../bing-web-search/hit-highlighting.md
+    - text: Konfigurace a integrace hostovaného uživatelského rozhraní
+      url: hosted-ui.md
+    - text: Definování vlastních automatických návrhů
+      url: define-custom-suggestions.md
+    - text: Sdílení instance vlastního vyhledávání
+      url: share-your-custom-search.md
+- title: Referenční informace k sadě SDK
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet
+    - text: Python
+      url: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python
+    - text: Go – vlastní vyhledávání
+      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customsearch
+    - text: Go – vlastní image
+      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customimagesearch
+    - text: Java – vlastní vyhledávání
+      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable
+    - text: Java – vlastní vyhledávání obrázků
+      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomimagesearch?view=azure-java-stable
+    - text: Node.js
+      url: https://docs.microsoft.com/javascript/api/azure-cognitiveservices-customsearch?view=azure-node-latest
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure CLI
+      url: /cli/azure/cognitiveservices#az-cognitiveservices-list
+- title: Získání výsledků vlastního vyhledávání z webu
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Vytvoření instance vlastního vyhledávání
+      url: quick-start.md
+  - linkListType: quickstart
+    links:
+    - text: Pomocí C#
+      url: sdk-csharp-quick-start.md
+    - text: Pomocí Pythonu
+      url: sdk-python-quickstart.md
+    - text: Pomocí Javy
+      url: sdk-java-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření webové stránky pro vlastní vyhledávání
+      url: tutorials/custom-search-web-page.md
+- title: Reference k rozhraní REST API
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Vlastní rozhraní REST API pro vyhledávání v7
+      url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference
+    - text: Vlastní rozhraní REST API pro automatické návrhy v7
+      url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-autosuggest-api-v7-reference
+    - text: Vlastní rozhraní REST API pro vyhledávání obrázků v7
+      url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference
+    - text: Vlastní rozhraní REST API pro vyhledávání videí v7
+      url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference

@@ -34,6 +34,8 @@
       href: vpn-over-expressroute.md
     - name: Připojení brány virtuální sítě k Virtual WAN
       href: connect-virtual-network-gateway-vwan.md
+    - name: Konfigurace globálních partnerských vztahů virtuálních sítí
+      href: global-peering-vnet.md
     - name: Konfigurace vlastních zásad IPsec
       href: virtual-wan-custom-ipsec-portal.md
     - name: Konfigurace certifikátů pro uživatelské sítě VPN

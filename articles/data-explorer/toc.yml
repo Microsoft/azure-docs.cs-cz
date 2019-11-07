@@ -88,10 +88,6 @@
           href: ingest-data-logstash.md
         - name: Kopírování dat s využitím Azure Data Factory
           href: data-factory-load-data.md
-    - name: Nasazení
-      items:
-        - name: Úloha DevOps
-          href: devops.md
     - name: Dotazování dat
       items:
         - name: Zápis dotazů
@@ -136,6 +132,8 @@
           href: tableau.md
         - name: Sisense
           href: sisense.md
+        - name: Redash
+          href: redash.md
     - name: Spravovat
       items:
         - name: Cluster
@@ -166,6 +164,10 @@
               href: delete-data.md
             - name: Řešení duplicitních dat
               href: dealing-with-duplicates.md
+    - name: Nasazení
+      items:
+        - name: Nasazení clusteru do virtuální sítě
+          href: vnet-deployment.md
     - name: Monitorování
       items:
         - name: Použití diagnostických protokolů k monitorování příjmu dat
@@ -186,6 +188,8 @@
           href: connect-from-databricks.md
         - name: Analýza dat v aplikacích Jupyter Notebook a Kqlmagic
           href: kqlmagic.md
+        - name: Azure Pipelines
+          href: devops.md
     - name: Řešení potíží
       items:
         - name: Vytvoření clusteru
@@ -220,9 +224,13 @@
           href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto'
     - name: Zpětná vazba k produktu
       href: 'https://aka.ms/adefeedback'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/data-explorer/'
-    - name: Kalkulátor nákladů
-      href: 'https://aka.ms/adecostestimator'
+    - name: Ceny a fakturace
+      items:
+        - name: Stránka s cenami
+          href: 'https://azure.microsoft.com/pricing/details/data-explorer/'
+        - name: Kalkulátor nákladů
+          href: 'https://aka.ms/adecostestimator'
+        - name: Rezervovaná kapacita
+          href: pricing-reserved-capacity.md
     - name: Aktualizace služeb
       href: 'https://azure.microsoft.com/updates/?product=data-explorer'

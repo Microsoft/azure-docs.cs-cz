@@ -8,6 +8,8 @@
   items:
     - name: Vytvoření služby – portál
       href: quickstart-create-data-migration-service-portal.md
+    - name: Vytvoření služby v hybridním režimu – portál
+      href: quickstart-create-data-migration-service-hybrid-portal.md
 - name: Kurzy
   items:
     - name: Offline migrace SQL Serveru do izolované databáze Azure SQL DB

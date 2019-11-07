@@ -2,7 +2,6 @@
   href: index.yml
 - name: Architektura a návrh
   href: overview.md
-  expanded: false
   items:
     - name: Sdílená odpovědnost v cloudu
       href: shared-responsibility.md
@@ -23,6 +22,7 @@
       href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Technické možnosti zabezpečení
       href: technical-capabilities.md
+  expanded: false
 - name: Zabezpečení a šifrování dat
   href: encryption-overview.md
   items:
@@ -128,19 +128,6 @@
         - name: Zabezpečení vzdálené správy
           href: management.md
         - name: Integrace protokolů Azure
-          items:
-            - name: Úvod
-              href: azure-log-integration-overview.md
-            - name: Začínáme
-              href: azure-log-integration-get-started.md
-            - name: Integrace protokolů auditu Azure AD
-              displayName: active directory
-              href: azure-log-integration-ad.md
-            - name: Integrace protokolů ze služby Key Vault
-              displayName: keyvault
-              href: azure-log-integration-keyvault-eventhub.md
-            - name: Nejčastější dotazy
-              href: azure-log-integration-faq.md
     - name: Provozní zabezpečení
       href: operational-overview.md
       items:

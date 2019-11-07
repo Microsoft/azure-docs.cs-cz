@@ -518,6 +518,8 @@
           href: data-movement-security-considerations.md
         - name: Uložení přihlašovacích údajů v Azure Key Vault
           href: store-credentials-in-key-vault.md
+        - name: Použití tajných kódů služby Azure Key Vault v aktivitách kanálu
+          href: how-to-use-azure-key-vault-secrets-pipeline-activities.md
         - name: Šifrování přihlašovacích údajů pro místní prostředí Integration Runtime
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: Spravovaná identita pro Data Factory

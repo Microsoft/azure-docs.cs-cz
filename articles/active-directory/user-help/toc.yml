@@ -54,18 +54,22 @@
       href: user-help-auth-app-backup-recovery.md
     - name: Nejčastější dotazy
       href: user-help-auth-app-faq.md
-- name: Nápověda k portálu Můj profil (Preview)
+- name: Nápověda k portálu Můj účet
   items:
     - name: Přehled
-      href: myprofile-portal-overview.md
+      href: my-account-portal-overview.md
     - name: Správa bezpečnostních údajů
       href: user-help-security-info-overview.md
-    - name: Správa organizací
-      href: myprofile-portal-organizations-page.md
     - name: Správa připojených zařízení
-      href: myprofile-portal-devices-page.md
+      href: my-account-portal-devices-page.md
+    - name: Změna hesla
+      href: my-account-change-password-page.md
+    - name: Správa organizací
+      href: my-account-portal-organizations-page.md
     - name: Zobrazení informací souvisejících s ochranou osobních údajů
-      href: myprofile-portal-privacy-page.md
+      href: my-account-portal-privacy-page.md
+    - name: Zobrazení nedávné přihlašovací aktivity
+      href: my-account-portal-sign-ins-page.md
 - name: Nápověda k bezpečnostním údajům (Preview)
   items:
     - name: Přehled

@@ -26,15 +26,31 @@
         - name: Vývoj s využitím objektů blob
           items:
             - name: .NET
-              href: storage-quickstart-blobs-dotnet.md
+              items:
+                - name: .NET (v12 SDK)
+                  href: storage-quickstart-blobs-dotnet.md
+                - name: .NET (v11 SDK)
+                  href: storage-quickstart-blobs-dotnet-legacy.md
             - name: Java
-              href: storage-quickstart-blobs-java.md
+              items:
+                - name: Java (v12 SDK)
+                  href: storage-quickstart-blobs-java.md
+                - name: Java (v8 SDK)
+                  href: storage-quickstart-blobs-java-legacy.md
             - name: Python
-              href: storage-quickstart-blobs-python.md
-            - name: Javascript (Node.js)
-              href: storage-quickstart-blobs-nodejs-v10.md
-            - name: Javascript (prohlížeč)
-              href: storage-quickstart-blobs-javascript-client-libraries-v10.md
+              items:
+                - name: Python (v12 SDK)
+                  href: storage-quickstart-blobs-python.md
+                - name: Python (v2.1 SDK)
+                  href: storage-quickstart-blobs-python-legacy.md
+            - name: JavaScript
+              items:
+                - name: JavaScript (v12 SDK pro Node.js)
+                  href: storage-quickstart-blobs-nodejs.md
+                - name: JavaScript (v10 SDK pro Node.js)
+                  href: storage-quickstart-blobs-nodejs-v10.md
+                - name: JavaScript (v10 SDK pro prohlížeč)
+                  href: storage-quickstart-blobs-javascript-client-libraries-v10.md
             - name: Přejít
               href: storage-quickstart-blobs-go.md
             - name: PHP
@@ -147,7 +163,7 @@
               href: storage-blob-performance-tiers.md
             - name: Správa životního cyklu úložiště objektů blob v Azure
               href: storage-lifecycle-management-concepts.md
-        - name: Výkon a škálování
+        - name: 'Optimalizace výkonu, škálování a nákladů'
           items:
             - name: Škálovatelnost a cíle výkonnosti
               href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -155,8 +171,16 @@
               href: storage-performance-checklist.md
             - name: Latence v úložišti objektů blob
               href: storage-blobs-latency.md
+            - name: Rezervovaná kapacita služby Azure Storage
+              href: storage-blob-reserved-capacity.md
         - name: Souběžnost
           href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Hledání a vysvětlení dat objektů blob
+          items:
+            - name: Použití AI k pochopení dat objektů blob
+              href: ../../search/search-blob-ai-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Fulltextové vyhledávání pro data objektů blob
+              href: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Migrace dat
           items:
             - name: Porovnání řešení přenosu dat
@@ -384,9 +408,9 @@
               href: storage-xamarin-blob-storage.md
             - name: Předchozí verze sady SDK
               items:
-                - name: Javascript (Node.js) (Storage SDK v2)
-                  href: storage-quickstart-blobs-nodejs.md
-                - name: Javascript (prohlížeč) (Storage SDK v2)
+                - name: JavaScript (Node.js) (Storage SDK v2)
+                  href: storage-quickstart-blobs-nodejs-legacy.md
+                - name: JavaScript (prohlížeč) (Storage SDK v2)
                   href: storage-quickstart-blobs-javascript-client-libraries.md
         - name: Správa objektů blob
           items:
@@ -600,7 +624,7 @@
         - name: Zpracování velkých objemů dat
           href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Integrace se službami Azure
-          href: ../blobs/data-lake-store-integrate-with-azure-services.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          href: ../blobs/data-lake-storage-integrate-with-azure-services.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Ovladač systému souborů Azure Blob pro Hadoop
           href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Identifikátor URI systému souborů Azure Blob

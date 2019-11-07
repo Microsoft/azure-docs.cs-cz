@@ -502,6 +502,8 @@
           href: sql-database-elastic-pool-failover-group-tutorial.md
         - name: Konfigurace zabezpečení
           href: sql-database-security-tutorial.md
+        - name: Streamování dat s využitím služby Stream Analytics
+          href: sql-database-stream-analytics.md
     - name: Koncepty
       items:
         - name: Prostředky izolované databáze

@@ -31,6 +31,8 @@
       href: publish-marketplace-app.md
     - name: Vytvoření spravované aplikace s využitím vlastního zprostředkovatele
       href: tutorial-create-managed-app-with-custom-provider.md
+    - name: Onboarding prostředků s vlastními poskytovateli
+      href: tutorial-custom-providers-resource-onboarding.md
 - name: Ukázky
   items:
     - name: Rozhraní příkazového řádku Azure
@@ -45,6 +47,10 @@
       href: custom-providers-overview.md
     - name: Zobrazení definičních artefaktů
       href: concepts-view-definition.md
+    - name: Artefakt definice role
+      href: concepts-custom-role-definition.md
+    - name: Onboarding prostředků
+      href: concepts-custom-providers-resourceonboarding.md
 - name: Návody
   items:
     - name: Vlastní poskytovatelé

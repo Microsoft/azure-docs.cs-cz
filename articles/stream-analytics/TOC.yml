@@ -97,6 +97,8 @@
           href: stream-analytics-power-bi-dashboard.md
         - name: Zastavení nebo odstranění úlohy
           href: stream-analytics-clean-up-your-job.md
+        - name: Kopírování nebo zálohování úlohy
+          href: copy-job.md
         - name: Párování úloh z důvodů spolehlivosti
           href: stream-analytics-job-reliability.md
         - name: Ověřování pomocí spravované identity – výstup ADLS Gen 1
