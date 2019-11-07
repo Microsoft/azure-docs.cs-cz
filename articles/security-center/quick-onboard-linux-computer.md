@@ -1,5 +1,5 @@
 ---
-title: Rychlý start Azure Security Center – Připojení počítačů s Linuxem ke službě Security Center | Microsoft Docs
+title: Zprovoznění počítačů se systémem Linux do Azure Security Center | Microsoft Docs
 description: V tomto rychlém startu se dozvíte, jak připojit počítače s Linuxem ke službě Security Center.
 services: security-center
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: memildin
-ms.openlocfilehash: 82ce466f12acef529b5e45e5dd94c64b94be0f7e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 9f49b858a23d0a1f58505d9f9971a31e8c9167e9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202888"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73664499"
 ---
-# <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Rychlý start: Zprovoznění počítačů se systémem Linux pro Azure Security Center
+# <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Rychlý start: Připojení počítačů s Linuxem ke službě Azure Security Center
 Po připojení předplatných Azure můžete povolit Security Center pro prostředky Linux spuštěné mimo Azure, například místně nebo v jiných cloudech, zřízením agenta. Agent se nazývá Microsoft Monitoring Agent (MMA), ale je také označován jako agent OMS.
 
 V tomto rychlém startu se dozvíte, jak nainstalovat agenta na počítač se systémem Linux.
@@ -39,7 +39,7 @@ Než začnete s tímto rychlým startem, musíte mít službu Security Center na
    ![Přehled služby Security Center][2]
 
 3. V hlavní nabídce služby Security Center vyberte **Začínáme**.
-4. Vyberte kartu **Začínáme**. ![Začínáme][3]
+4. Vyberte kartu **Začínáme** . ![Začínáme][3]
 
 5. V části **Přidat počítače umístěné mimo Azure** klikněte na **Konfigurovat**. Zobrazí se seznam vašich pracovních prostorů Log Analytics. Seznam obsahuje i výchozí pracovní prostor, který pro vás vytvořila služba Security Center při povolení automatického zřizování, pokud existuje. Vyberte tento nebo jiný pracovní prostor, který chcete použít.
 
@@ -56,7 +56,7 @@ Než začnete s tímto rychlým startem, musíte mít službu Security Center na
 
    ![Instalace agenta][5]
 
-Protokoly pro agenta najdete na adrese: */var/opt/Microsoft/omsagent/\<v pracovním prostoru ID >/log/*
+Protokoly pro agenta najdete na adrese: */var/opt/microsoft/omsagent/\<pracovní prostor id >/log/*
 
   ![Protokoly agenta][6]
 
@@ -68,7 +68,7 @@ Teď můžete na jednom místě monitorovat své virtuální počítače Azure i
 
   ![icon1](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Počítač umístěný mimo Azure
 
-  ![icon2](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
+  ![icon2](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Virtuální počítač Azure
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud už ho nepotřebujete, můžete agenta z počítače s Linuxem odebrat.

@@ -1,26 +1,25 @@
 ---
-title: Seznámení se službou Blob Storage – úložiště objektů v Azure
-description: Do Azure Blob Storage můžete ukládat velké objemy dat nestrukturovaných objektových dat, jako jsou textová nebo binární data. Úložiště objektů BLOB v Azure Data Lake Storage Gen2 také podporuje pro analýzy velkých objemů dat.
+title: Úložiště objektů BLOB (Object) – Azure Storage
+description: Do Azure Blob Storage můžete ukládat velké objemy dat nestrukturovaných objektových dat, jako jsou textová nebo binární data. BLOB Storage také podporuje Azure Data Lake Storage Gen2 pro analýzu velkých objemů dat.
 services: storage
-author: WenJason
+author: tamram
 ms.service: storage
 ms.topic: overview
-origin.date: 11/19/2018
-ms.date: 04/22/2019
-ms.author: v-jay
+ms.date: 11/04/2019
+ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 35a428c2ae706d7838778c7590e5378ab5df40f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8f9c1b1762c4e6028d935e03a630dfc0ca4ee4b9
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60708497"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615750"
 ---
 # <a name="what-is-azure-blob-storage"></a>Co je Azure Blob Storage? 
 
 [!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Úvod do služby Azure Blob storage](storage-blobs-introduction.md)
-- [Úvod do služby Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)
+- [Seznámení se službou Azure Blob Storage](storage-blobs-introduction.md)
+- [Úvod do Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)

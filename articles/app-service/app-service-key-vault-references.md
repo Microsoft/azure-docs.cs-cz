@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 49bf7984efe74edd2a19909509e0c6b9564fc2e9
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: e42fa7f48b5e6475604570a95f2ffc034b43b8f7
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274427"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604617"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Použití Key Vault odkazů pro App Service a Azure Functions
 
@@ -36,28 +36,30 @@ Aby bylo možné číst tajné kódy z Key Vault, je nutné vytvořit trezor a u
    > [!NOTE] 
    > Odkazy na Key Vault aktuálně podporují pouze spravované identity přiřazené systémem. Uživatelsky přiřazené identity nelze použít.
 
-1. Vytvořte [zásadu přístupu v Key Vault](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) pro identitu aplikace, kterou jste vytvořili dříve. Povolit pro tuto zásadu oprávnění tajného klíče "získat". Nekonfigurujte nastavení "autorizované aplikace" nebo `applicationId`, protože to není kompatibilní se spravovanou identitou.
+1. Vytvořte [zásadu přístupu v Key Vault](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) pro identitu aplikace, kterou jste vytvořili dříve. Povolit pro tuto zásadu oprávnění tajného klíče "získat". Nekonfigurujte nastavení "autorizované aplikace" ani `applicationId`, protože to není kompatibilní se spravovanou identitou.
 
     > [!NOTE]
     > Odkazy na Key Vault nejsou v současné době schopné přeložit tajné klíče uložené v trezoru klíčů s [omezeními sítě](../key-vault/key-vault-overview-vnet-service-endpoints.md).
 
 ## <a name="reference-syntax"></a>Referenční syntaxe
 
-Odkaz na Key Vault má formát `@Microsoft.KeyVault({referenceString})`, kde `{referenceString}` se nahrazuje jednou z následujících možností:
+Odkaz na Key Vault má `@Microsoft.KeyVault({referenceString})`formuláře, kde `{referenceString}` nahrazuje jedna z následujících možností:
 
 > [!div class="mx-tdBreakAll"]
 > | Řetězec odkazu                                                            | Popis                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri =_SecretUri_                                                       | **SecretUri** by měl být úplný identifikátor URI datové roviny tajného klíče v Key Vault, včetně verze, například https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931.  |
+> | SecretUri =_SecretUri_                                                       | **SecretUri** by měl být úplný identifikátor URI datové roviny tajného klíče v Key Vault, včetně verze, například https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | Trezor =_trezor_; Tajné heslo =_tajné heslo_ Verzetajnéhoklíče =_verzetajnéhoklíče_ | Název **trezoru** by měl být název vašeho prostředku Key Vault. Název **tajného** kódu by měl být název cílového tajného klíče. **Verzetajnéhoklíče** by měla být verze tajného klíče, který se má použít. |
 
-> [!NOTE] 
-> Aktuálně jsou požadovány verze. Při střídání tajných kódů bude nutné aktualizovat verzi v konfiguraci aplikace.
-
-Například kompletní odkaz by vypadal jako následující:
+Například kompletní odkaz s verzí by vypadal takto:
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
+```
+Kompletní reference bez verze by vypadala takto:
+
+```
+@Microsoft.KeyVault(SecretUri=https://<MYKEYVAULT>.vault.azure.net/secrets/eShopStorageAccountCS/)
 ```
 
 Jinou
@@ -76,7 +78,7 @@ Chcete-li použít odkaz Key Vault pro nastavení aplikace, nastavte odkaz jako 
 > [!TIP]
 > Většina nastavení aplikací pomocí Key Vault odkazů by měla být označená jako nastavení slotu, protože pro každé prostředí byste měli mít oddělené trezory.
 
-### <a name="azure-resource-manager-deployment"></a>Nasazení Azure Resource Manager
+### <a name="azure-resource-manager-deployment"></a>Nasazení podle modelu Azure Resource Manager
 
 Při automatizaci nasazení prostředků prostřednictvím šablon Azure Resource Manager může být nutné pořadí závislostí v určitém pořadí, aby tato funkce fungovala. Všimněte si, že budete muset definovat nastavení aplikace jako vlastní prostředek, místo použití vlastnosti `siteConfig` v definici webu. Je to proto, že lokalita musí být definovaná jako první, aby se k ní vytvořila identita přiřazená systémem a mohla by se používat v zásadách přístupu.
 
@@ -184,11 +186,11 @@ Příklad psuedo-Template pro aplikaci Function App může vypadat takto:
 ```
 
 > [!NOTE] 
-> V tomto příkladu je nasazení správy zdrojů závislé na nastavení aplikace. To je obvykle nebezpečné chování, protože se aktualizace nastavení aplikace chová asynchronně. Protože však obsahujeme nastavení aplikace `WEBSITE_ENABLE_SYNC_UPDATE_SITE`, aktualizace je synchronní. To znamená, že nasazení správy zdrojů bude zahájeno až po úplné aktualizaci nastavení aplikace.
+> V tomto příkladu je nasazení správy zdrojů závislé na nastavení aplikace. To je obvykle nebezpečné chování, protože se aktualizace nastavení aplikace chová asynchronně. Protože však jsme zahrnuli nastavení aplikace `WEBSITE_ENABLE_SYNC_UPDATE_SITE`, aktualizace je synchronní. To znamená, že nasazení správy zdrojů bude zahájeno až po úplné aktualizaci nastavení aplikace.
 
 ## <a name="troubleshooting-key-vault-references"></a>Řešení potíží s Key Vaultmi odkazy
 
-Pokud odkaz není správně přeložen, použije se místo toho referenční hodnota. To znamená, že pro nastavení aplikace by se vytvořila proměnná prostředí, jejíž hodnota má syntaxi `@Microsoft.KeyVault(...)`. To může způsobit, že aplikace vyvolá chyby, protože očekávala tajný kód určité struktury.
+Pokud odkaz není správně přeložen, použije se místo toho referenční hodnota. To znamená, že pro nastavení aplikace by se vytvořila proměnná prostředí, jejíž hodnota má `@Microsoft.KeyVault(...)` syntaxi. To může způsobit, že aplikace vyvolá chyby, protože očekávala tajný kód určité struktury.
 
 Nejčastěji to je způsobeno neznámým nastavením [zásad přístupu Key Vault](#granting-your-app-access-to-key-vault). Může to ale také být způsobeno tím, že už existující tajný kód nebo Chyba syntaxe samotného odkazu.
 

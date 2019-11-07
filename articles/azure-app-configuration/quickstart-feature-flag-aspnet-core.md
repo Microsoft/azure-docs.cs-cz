@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: c4faa29e092c7cbb550bca1daa87ce369bf03a14
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 1a3d917775f6ba5b0b7f62d19de2b970a8b36838
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73099529"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571224"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace ASP.NET Core
 
@@ -27,7 +27,7 @@ V tomto rychlém startu zařadíte do webové aplikace ASP.NET Core službu Azur
 
 Knihovny pro správu funkcí .NET Core přesahují rámec s kompletní podporou příznaků funkcí. Tyto knihovny jsou postaveny na systému konfigurace .NET Core. Bez problémů se integrují s konfigurací aplikací prostřednictvím poskytovatele konfigurace .NET Core.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [.NET Core SDK](https://dotnet.microsoft.com/download).
@@ -36,7 +36,7 @@ Knihovny pro správu funkcí .NET Core přesahují rámec s kompletní podporou 
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **správce funkcí** >  **+ Přidat** a přidejte následující příznaky funkcí:
+6. Vyberte **správce funkcí** >  **+ Přidat** k přidání následujících příznaků funkcí:
 
     | Klíč | Stav |
     |---|---|
@@ -59,7 +59,7 @@ K vytvoření nového projektu webové aplikace ASP.NET Core MVC použijete [roz
 Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microsoft.com/aspnet/core/security/app-secrets) . Nástroj Správce tajných klíčů ukládá citlivá data pro vývojovou práci mimo strom projektu. Tento přístup pomáhá zabránit náhodnému sdílení tajných kódů aplikace ve zdrojovém kódu.
 
 1. Otevřete soubor *. csproj* .
-1. Přidejte prvek `UserSecretsId`, jak je znázorněno v následujícím příkladu, a nahraďte jeho hodnotu vlastním, což je obvykle identifikátor GUID:
+1. Přidejte `UserSecretsId` element, jak je znázorněno v následujícím příkladu, a nahraďte jeho hodnotu vlastním, což obvykle je identifikátor GUID:
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -81,7 +81,7 @@ Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microso
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
-1. Přidejte odkaz na `Microsoft.Azure.AppConfiguration.AspNetCore` a balíčky NuGet `Microsoft.FeatureManagement.AspNetCore` spuštěním následujících příkazů:
+1. Přidejte odkaz na `Microsoft.Azure.AppConfiguration.AspNetCore` a `Microsoft.FeatureManagement.AspNetCore` balíčky NuGet spuštěním následujících příkazů:
 
     ```
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
@@ -114,7 +114,7 @@ Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microso
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-1. Aktualizujte metodu `CreateWebHostBuilder` pro použití konfigurace aplikace voláním metody `config.AddAzureAppConfiguration()`.
+1. Aktualizujte metodu `CreateWebHostBuilder`, aby používala konfiguraci aplikace, voláním metody `config.AddAzureAppConfiguration()`.
     
     > [!IMPORTANT]
     > `CreateHostBuilder` nahrazuje `CreateWebHostBuilder` v .NET Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
@@ -127,7 +127,10 @@ Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microso
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
-                config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
+                config.AddAzureAppConfiguration(options => {
+                    options.Connect(settings["ConnectionStrings:AppConfig"])
+                            .UseFeatureFlags();
+                });
             })
             .UseStartup<Startup>();
     ```
@@ -141,7 +144,8 @@ Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microso
         webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
         {
             var settings = config.Build();
-            config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
+            config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"])
+                .UseFeatureFlags();
         })
         .UseStartup<Startup>());
     ```
@@ -162,7 +166,7 @@ Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microso
     }
     ```
 
-1. Aktualizujte metodu `Configure`, aby se přidal middleware, aby bylo možné aktualizovat hodnoty příznaků funkcí v opakovaných intervalech, zatímco ASP.NET Core webová aplikace nadále přijímá požadavky.
+1. Aktualizujte metodu `Configure`, aby se přidal middleware, aby se hodnoty příznaku funkce aktualizovaly v opakovaných intervalech, zatímco ASP.NET Core webová aplikace dál přijímala požadavky.
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -272,11 +276,11 @@ Přidejte do projektu [Nástroj Správce tajných klíčů](https://docs.microso
     dotnet run
     ```
 
-1. Otevřete okno prohlížeče a vyberte `https://localhost:5001`, což je výchozí adresa URL pro webovou aplikaci hostovanou místně.
+1. Otevřete okno prohlížeče a pro webovou aplikaci hostovanou místně použijte `https://localhost:5001`, což je výchozí adresa URL.
 
     ![Spuštění aplikace pro rychlý Start – místní](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlásit se na [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **správce funkcí**a změňte stav **beta** klíče na **zapnuto**:
 

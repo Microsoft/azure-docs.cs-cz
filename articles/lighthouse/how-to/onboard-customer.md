@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 10/29/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 95bcf863e53572160f389d66d94900cf82c71819
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: MT
+ms.openlocfilehash: a96093c71658f53e372cbccb72b96da3ae4e593b
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177097"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615487"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Nasazení zákazníků do správy delegovaných prostředků Azure
 
@@ -66,12 +66,9 @@ az account show
 
 ## <a name="define-roles-and-permissions"></a>Definování rolí a oprávnění
 
-Jako poskytovatel služeb můžete chtít použít několik nabídek s jedním zákazníkem a vyžadovat pro různé obory jiný přístup.
+Jako poskytovatel služeb můžete chtít pro jednoho zákazníka provést několik úloh, které vyžadují různý přístup pro různé obory. Můžete definovat tolik autorizací, kolik potřebujete k přiřazení [předdefinovaných rolí řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) uživatelům ve vašem tenantovi.
 
-Pro usnadnění správy doporučujeme použít pro každou roli skupiny uživatelů Azure AD, což umožňuje přidat nebo odebrat jednotlivé uživatele do skupiny místo přiřazování oprávnění přímo tomuto uživateli. Také je možné přiřadit role k instančnímu objektu. Nezapomeňte postupovat podle principu minimálního oprávnění, aby uživatelé měli jenom oprávnění potřebná k dokončení své úlohy, což pomáhá snižovat pravděpodobnost neúmyslného výskytu chyb. Další informace najdete v tématu [Doporučené postupy zabezpečení](../concepts/recommended-security-practices.md).
-
-> [!NOTE]
-> Přiřazení rolí musí používat [předdefinované role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)řízení přístupu na základě role (RBAC). Všechny předdefinované role se v současné době podporují se správou delegovaných prostředků Azure s výjimkou vlastník a všech vestavěných rolí s oprávněním [Dataactions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) . Integrovaná role správce přístupu uživatele je podporována pro omezené použití, jak je popsáno níže. Vlastní role a [role správců pro klasický odběr](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) se také nepodporují.
+Pro usnadnění správy doporučujeme použít pro každou roli skupiny uživatelů Azure AD, což umožňuje přidat nebo odebrat jednotlivé uživatele do skupiny místo přiřazování oprávnění přímo tomuto uživateli. Také je možné přiřadit role k instančnímu objektu. Nezapomeňte postupovat podle principu minimálního oprávnění, aby uživatelé měli jenom oprávnění potřebná k dokončení své úlohy. Doporučení a informace o podporovaných rolích najdete [v tématu Klienti, uživatelé a role ve scénářích Azure Lighthouse](../concepts/tenants-users-roles.md).
 
 Aby bylo možné definovat autorizaci, budete muset znát hodnoty ID pro každého uživatele, skupinu uživatelů nebo instanční objekt, ke kterému chcete udělit přístup. Také budete potřebovat ID definice role pro každou předdefinovanou roli, kterou chcete přiřadit. Pokud je ještě nemáte, můžete je načíst jedním z následujících způsobů.
 
@@ -128,10 +125,10 @@ K zaregistrování předplatného zákazníka použijte příslušnou šablonu A
 
 |**K zaregistrování**  |**Použít tuto šablonu Azure Resource Manager**  |**A upravit tento soubor parametrů** |
 |---------|---------|---------|
-|Předplatné   |[delegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
-|Skupina prostředků   |[rgDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
-|Několik skupin prostředků v rámci předplatného   |[multipleRgDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
-|Předplatné (při použití nabídky publikované do Azure Marketplace)   |[marketplaceDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
+|Předplatné   |[delegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
+|Skupina prostředků   |[rgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
+|Několik skupin prostředků v rámci předplatného   |[multipleRgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
+|Předplatné (při použití nabídky publikované do Azure Marketplace)   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
 > Proces, který je zde popsán, vyžaduje samostatné nasazení pro každé připojení k odběru. Pokud se připojujete k několika skupinám prostředků v rámci různých předplatných, vyžadují se i samostatná nasazení. Připojování více skupin prostředků v rámci jednoho předplatného se ale dá udělat v jednom nasazení.

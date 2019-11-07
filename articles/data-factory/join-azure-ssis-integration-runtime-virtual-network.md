@@ -1,5 +1,5 @@
 ---
-title: Připojení prostředí Azure-SSIS Integration runtime k virtuální síti | Microsoft Docs
+title: Připojení prostředí Azure-SSIS Integration runtime k virtuální síti
 description: Naučte se připojit prostředí Azure-SSIS Integration runtime k virtuální síti Azure.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 065f69cc98f05fcb19648f190a7dba4b43da1a9a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: d36900a1ce05eaf022637a6ef6b866fe0d190b17
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326618"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672737"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Připojení prostředí Azure-SSIS Integration runtime k virtuální síti
 Při použití služba SSIS (SQL Server Integration Services) (SSIS) v Azure Data Factory byste se měli připojit k Azure-SSIS Integration runtime (IR) k virtuální síti Azure v následujících scénářích: 
@@ -62,7 +62,7 @@ Následující části obsahují další podrobnosti.
 
 Nastavte si virtuální síť tak, aby splňovala tyto požadavky: 
 
--   Ujistěte se, že `Microsoft.Batch` je registrovaný poskytovatel v rámci předplatného podsítě virtuální sítě, která hostuje Azure-SSIS IR. Pokud používáte klasickou virtuální síť, připojte se taky `MicrosoftAzureBatch` k roli Přispěvatel klasických virtuálních počítačů pro tuto virtuální síť. 
+-   Ujistěte se, že `Microsoft.Batch` je registrovaný poskytovatel v rámci předplatného podsítě virtuální sítě, která hostuje Azure-SSIS IR. Pokud používáte klasickou virtuální síť, připojte se taky `MicrosoftAzureBatch` k roli Přispěvatel klasického virtuálního počítače pro tuto virtuální síť. 
 
 -   Ujistěte se, že máte požadovaná oprávnění. Další informace najdete v tématu [Nastavení oprávnění](#perms).
 
@@ -88,7 +88,7 @@ Uživatel, který vytváří Azure-SSIS IR, musí mít následující oprávněn
 
 - Pokud se připojujete k SSIS IR k virtuální síti Azure Resource Manager, máte dvě možnosti:
 
-  - Použijte integrovanou roli Přispěvatel sítě. Tato role se dodává s oprávněním _Microsoft. Network/\*_ , které má mnohem větší rozsah, než je nutné.
+  - Použijte integrovanou roli Přispěvatel sítě. Tato role se dodává s oprávněním _Microsoft. Network/\*_ , která má mnohem větší rozsah, než je nutné.
 
   - Vytvořte vlastní roli, která bude obsahovat pouze nezbytná oprávnění _Microsoft. Network/virtualNetworks/\*/JOIN/Action_ . 
 
@@ -139,7 +139,7 @@ Můžete použít trasu 0.0.0.0/0 s typem dalšího segmentu směrování jako *
 
 Pokud máte obavy o ztrátu možnosti kontroly odchozího internetového provozu z této podsítě, můžete definovat konkrétní udr pro směrování provozu pouze mezi Azure Batch služby správy a Azure-SSIS IR s typem dalšího segmentu směrování jako **Internet**.
 
-Pokud se například Azure-SSIS IR nachází na `UK South`, měli byste získat seznam rozsahů IP adres služby `BatchNodeManagement.UKSouth` z [odkazu ke stažení](https://www.microsoft.com/en-us/download/details.aspx?id=56519) nebo prostřednictvím [rozhraní API pro zjišťování značek](https://aka.ms/discoveryapi)služby. Pak použijte následující udr trasy rozsahu IP adres s typem dalšího segmentu směrování jako **Internet**.
+Pokud se například Azure-SSIS IR nachází v `UK South`, měli byste získat seznam rozsahů IP adres služby `BatchNodeManagement.UKSouth` z [odkazu ke stažení](https://www.microsoft.com/en-us/download/details.aspx?id=56519) nebo prostřednictvím [rozhraní API pro zjišťování značek](https://aka.ms/discoveryapi)služby. Pak použijte následující udr trasy rozsahu IP adres s typem dalšího segmentu směrování jako **Internet**.
 
 ![Nastavení UDR Azure Batch](media/join-azure-ssis-integration-runtime-virtual-network/azurebatch-udr-settings.png)
 
@@ -187,7 +187,7 @@ Použijte portál ke konfiguraci Azure Resource Manager virtuální sítě před
 
 1. Spusťte Microsoft Edge nebo Google Chrome. V současné době pouze tyto webové prohlížeče podporují rozhraní Data Factory. 
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
 1. Vyberte **Další služby**. Vyfiltrujte a vyberte **virtuální sítě**. 
 
@@ -216,7 +216,7 @@ Než se pokusíte připojit k Azure-SSIS IR, použijte portál ke konfiguraci kl
 
 1. Spusťte Microsoft Edge nebo Google Chrome. V současné době pouze tyto webové prohlížeče podporují rozhraní Data Factory. 
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
 1. Vyberte **Další služby**. Vyfiltrujte a vyberte **virtuální sítě (klasické)** . 
 
@@ -276,7 +276,7 @@ Po nakonfigurování Azure Resource Manager virtuální sítě nebo klasické vi
 
 1. Vyberte datovou továrnu pomocí Azure-SSIS IR v seznamu. Zobrazí se Domovská stránka pro datovou továrnu. Vyberte dlaždici **autora & nasazení** . Na samostatné kartě se zobrazí uživatelské rozhraní Data Factory. 
 
-   ![Domovská stránka datové továrny](media/join-azure-ssis-integration-runtime-virtual-network/data-factory-home-page.png)
+   ![Domovská stránka objektu pro vytváření dat](media/join-azure-ssis-integration-runtime-virtual-network/data-factory-home-page.png)
 
 1. V uživatelském rozhraní Data Factory přepněte na kartu **Upravit** , vyberte **připojení**a přepněte na kartu **prostředí Integration runtime** . 
 
@@ -393,7 +393,7 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 ```
 
 ### <a name="configure-the-azure-ssis-ir"></a>Nakonfigurovat Azure-SSIS IR
-Pokud chcete nakonfigurovat Azure-SSIS IR pro připojení k virtuální síti, spusťte příkaz `Set-AzDataFactoryV2IntegrationRuntime`: 
+Pokud chcete nakonfigurovat Azure-SSIS IR připojení k virtuální síti, spusťte příkaz `Set-AzDataFactoryV2IntegrationRuntime`: 
 
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `

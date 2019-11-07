@@ -1,5 +1,5 @@
 ---
-title: Transformace dat pomocí aktivity streamování Hadoop – Azure | Microsoft Docs
+title: Transformace dat pomocí aktivity streamování Hadoop – Azure
 description: Přečtěte si, jak můžete pomocí aktivity streamování Hadoop v Azure Data Factory transformovat data spuštěním programů pro streamování Hadoop na vyžádání nebo vlastním clusterem HDInsight.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: fd9512f4ede8d9b8b1a8fd69b7120303fe6a0ad5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c56961b28750f3ba6450c26c897c1ef6c54b3ed8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139549"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73667507"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity streamování Hadoop v Azure Data Factory
 > [!div class="op_single_selector" title1="Aktivity transformace"]
@@ -41,7 +41,7 @@ Aktivitu HDInsightStreamingActivity můžete použít k vyvolání úlohy stream
 Aktivita streamování HDInsight v [kanálu](data-factory-create-pipelines.md) Data Factory spouští programy pro streamování Hadoop na [vašem](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) clusteru HDInsight založeném na systému Windows/Linux nebo [na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) . Tento článek se sestavuje na článku [aktivity transformace dat](data-factory-data-transformation-activities.md) , který představuje obecný přehled transformace dat a podporovaných transformačních aktivit.
 
 > [!NOTE] 
-> Pokud s Azure Data Factory začínáte, přečtěte si [Úvod do Azure Data Factory](data-factory-introduction.md) a udělejte si kurz: Před čtením tohoto článku Sestavte [první datový kanál](data-factory-build-your-first-pipeline.md) . 
+> Pokud se Azure Data Factory teprve začínáte, přečtěte si [Úvod do Azure Data Factory](data-factory-introduction.md) a udělejte si kurz: [Vytvoření prvního datového kanálu](data-factory-build-your-first-pipeline.md) před přečtením tohoto článku. 
 
 ## <a name="json-sample"></a>Ukázka JSON
 Cluster HDInsight se automaticky vyplní pomocí ukázkových programů (WC. exe a Cat. exe) a dat (DaVinci. txt). Ve výchozím nastavení je název kontejneru, který je používán clusterem HDInsight, názvem samotného clusteru. Pokud je název clusteru například myhdicluster, je název přidruženého kontejneru objektů BLOB myhdicluster. 
@@ -106,7 +106,7 @@ Je třeba počítat s následujícím:
 10. Vlastnost **GetDebugInfo –** je volitelný element. Pokud je nastavená chyba, protokoly se stáhnou pouze při selhání. Pokud je nastavené na vždycky, protokoly se stáhnou vždycky bez ohledu na stav spuštění.
 
 > [!NOTE]
-> Jak je znázorněno v příkladu, zadáváte výstupní datovou sadu pro aktivitu streamování Hadoop pro vlastnost výstupy. Tato datová sada je pouze fiktivní datová sada, která je požadována pro řízení plánu kanálu. Pro aktivitu pro vlastnost Inputs není nutné zadávat žádnou vstupní datovou sadu .  
+> Jak je znázorněno v příkladu, zadáváte výstupní datovou sadu pro aktivitu streamování Hadoop pro vlastnost **výstupy** . Tato datová sada je pouze fiktivní datová sada, která je požadována pro řízení plánu kanálu. Pro aktivitu **pro vlastnost** Inputs není nutné zadávat žádnou vstupní datovou sadu.  
 > 
 > 
 

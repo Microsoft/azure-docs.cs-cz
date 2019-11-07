@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: bd9b9edde0f4c5e3bea6e31342298f2df5a2b5fe
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 782c860ca50c1ef12eda1ec33f29c5103b396349
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241867"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73665292"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Co je služba ML Services ve službě Azure HDInsight
 
@@ -23,7 +23,7 @@ Služba ML Services v HDInsight poskytuje nejnovější funkce pro analýzy zalo
 
 Hraniční uzel clusteru poskytuje vhodné místo pro připojení ke clusteru a spouštění skriptů jazyka R. Pomocí hraničního uzlu máte možnost spouštět paralelní distribuované funkce nástroje pro horizontální navýšení kapacity napříč jádry serveru hraničního uzlu. Můžete je také spouštět v uzlech clusteru pomocí mapy Hadoop pro škálování zmenšení nebo Apache Spark výpočetních kontextů.
 
-Modely nebo předpovědi, které vyplývají z analýzy, se dají stáhnout pro místní použití. Můžou být taky v Azure fungující jinde, zejména prostřednictvím [webové služby](../../machine-learning/studio/publish-a-machine-learning-web-service.md) [Azure Machine Learning Studio (Classic)](https://studio.azureml.net) .
+Modely nebo předpovědi, které vyplývají z analýzy, se dají stáhnout pro místní použití. Můžou být taky v Azure fungující jinde, zejména prostřednictvím [webové služby](../../machine-learning/studio/deploy-a-machine-learning-web-service.md) [Azure Machine Learning Studio (Classic)](https://studio.azureml.net) .
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>Začínáme se službami ML v HDInsight
 

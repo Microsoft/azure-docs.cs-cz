@@ -1,6 +1,7 @@
 ---
-title: Kódování v cloudu s využitím Media Services – Azure | Dokumentace Microsoftu
-description: Toto téma popisuje proces kódování při použití služby Azure Media Services
+title: Kódování videa a zvuku pomocí Media Services
+titleSuffix: Azure Media Services
+description: Přečtěte si o kódování videa a zvuku pomocí Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,35 +13,35 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: e1fc58db8f933ae122801f492fbbafdb905c7dda
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: d3de307b1dadf302004fa9fd02c8cf23e36b3046
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910409"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73574284"
 ---
-# <a name="encoding-with-media-services"></a>Kódování pomocí Media Services
+# <a name="encoding-video-and-audio-with-media-services"></a>Kódování videa a zvuku pomocí Media Services
 
-Termín kódování v Media Services se vztahuje na proces převodu souborů obsahujících digitální video nebo zvuk z jednoho standardního formátu na jiný, s účelem (a) zmenšování velikosti souborů a/nebo (b), která vytváří formát kompatibilní s Široká škála zařízení a aplikací. Tento proces je také označován jako komprese videa nebo překódování. Další diskuzi o konceptech najdete v tématu [komprese dat](https://en.wikipedia.org/wiki/Data_compression) a [co je kódování a překódování](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) .
+Termín kódování v Media Services se vztahuje na proces převodu souborů obsahujících digitální video nebo zvuk z jednoho standardního formátu na jiný, s účelem (a) zmenšování velikosti souborů a/nebo (b), která vytváří formát kompatibilní s Široká škála zařízení a aplikací Tento proces je také označován jako komprese videa nebo překódování. Další diskuzi o konceptech najdete v tématu [komprese dat](https://en.wikipedia.org/wiki/Data_compression) a [co je kódování a překódování](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) .
 
-Videa se většinou doručují do zařízení a aplikací pomocí [postupného stahování](https://en.wikipedia.org/wiki/Progressive_download) nebo [streamování s adaptivní přenosovou rychlostí](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming). 
+Videa se většinou doručují do zařízení a aplikací pomocí [postupného stahování](https://en.wikipedia.org/wiki/Progressive_download) nebo [streamování s adaptivní přenosovou rychlostí](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming).
 
-* Pro doručování progresivním stažením můžete použít Azure Media Services k převodu digitálního mediálního souboru (Mezzanine) na soubor [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) , který obsahuje video kódované pomocí kodeku [H. 264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) a zvuk, který byl kódovaný pomocí [AAC. ](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)kodek. Tento soubor MP4 se zapisuje do Assetu v účtu úložiště. Můžete použít rozhraní API Azure Storage nebo sady SDK (například [úložiště REST API](../../storage/common/storage-rest-api-auth.md) nebo [sadu .NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) a stáhnout soubor přímo. Pokud jste vytvořili výstupní Asset s konkrétním názvem kontejneru v úložišti, použijte toto umístění. V opačném případě můžete použít Media Services k [vypsání adres URL kontejneru assetů](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
-* Aby bylo možné připravit obsah pro doručování streamování s adaptivní přenosovou rychlostí, musí být soubor Mezzanine kódovaný s více přenosovými rychlostmi (vysoká až nízká). Aby bylo zajištěno řádné snížení kvality, protože přenosová rychlost je nižší, proto je rozlišení videa. Výsledkem je, že se jako kódovací žebřík používá tabulka rozlišení a přenosové rychlosti (viz [automaticky generovaná žebřík s adaptivní přenosovou rychlostí](autogen-bitrate-ladder.md)). Můžete použít Media Services ke kódování souborů Mezzanine s více přenosovými rychlostmi – v takovém případě získáte sadu souborů MP4 a související konfigurační soubory streamování, které se zapisují do Assetu v účtu úložiště. Pak můžete použít funkci [dynamického balení](dynamic-packaging-overview.md) v Media Services k doručování videa prostřednictvím protokolů streamování, jako jsou [MPEG-spojovníky](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) a [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming). To vyžaduje, abyste vytvořili [Lokátor streamování](streaming-locators-concept.md) a vytvořili adresy URL streamování odpovídající podporovaným protokolům, které je pak možné přesměrovat na zařízení nebo aplikace na základě jejich schopností.
+* Pro doručování progresivním stažením můžete použít Azure Media Services k převodu digitálního mediálního souboru (Mezzanine) na soubor [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) , který obsahuje video kódované pomocí kodeku [H. 264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) a zvuk, který je kódovaný pomocí [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) . kodek. Tento soubor MP4 se zapisuje do Assetu v účtu úložiště. Můžete použít rozhraní API Azure Storage nebo sady SDK (například [úložiště REST API](../../storage/common/storage-rest-api-auth.md) nebo [sadu .NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) a stáhnout soubor přímo. Pokud jste vytvořili výstupní Asset s konkrétním názvem kontejneru v úložišti, použijte toto umístění. V opačném případě můžete použít Media Services k [vypsání adres URL kontejneru assetů](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
+* Aby bylo možné připravit obsah pro doručování streamování s adaptivní přenosovou rychlostí, musí být soubor Mezzanine kódovaný s více přenosovými rychlostmi (vysoká až nízká). Aby se zajistil řádný přechod kvality, rozlišení videa se sníží, protože se sníží rychlost. Výsledkem je, že se jako kódovací žebřík používá tabulka rozlišení a přenosové rychlosti (viz [automaticky generovaná žebřík s adaptivní přenosovou rychlostí](autogen-bitrate-ladder.md)). Můžete použít Media Services ke kódování souborů Mezzanine s více přenosovými rychlostmi. V takovém případě získáte sadu souborů MP4 a přidružených konfiguračních souborů streamování zapsaných do Assetu v účtu úložiště. Pak můžete použít funkci [dynamického balení](dynamic-packaging-overview.md) v Media Services k doručování videa prostřednictvím protokolů streamování, jako jsou [MPEG-spojovníky](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) a [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming). To vyžaduje, abyste vytvořili [Lokátor streamování](streaming-locators-concept.md) a vytvořili adresy URL streamování odpovídající podporovaným protokolům, které se pak dají přesměrovat na zařízení nebo aplikace na základě jejich schopností.
 
 Následující diagram znázorňuje pracovní postup pro kódování na vyžádání s dynamickým balením.
 
-![Dynamické balení](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
+![Pracovní postup pro kódování na vyžádání s dynamickým balením](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
-Toto téma poskytuje pokyny o tom, jak zakódovat svůj obsah pomocí služby Media Services v3.
+V tomto tématu najdete pokyny k zakódování obsahu pomocí Media Services V3.
 
 ## <a name="transforms-and-jobs"></a>Transformace a úlohy
 
-Pro kódování pomocí Media Services V3 potřebujete vytvořit [transformaci](https://docs.microsoft.com/rest/api/media/transforms) a [úlohu](https://docs.microsoft.com/rest/api/media/jobs). Transformace definuje recept pro vaše nastavení a výstupy kódování; úloha je instancí receptury. Další informace najdete v tématu [transformuje a úlohy](transforms-jobs-concept.md)
+Pro kódování pomocí Media Services V3 potřebujete vytvořit [transformaci](https://docs.microsoft.com/rest/api/media/transforms) a [úlohu](https://docs.microsoft.com/rest/api/media/jobs). Transformace definuje recept pro vaše nastavení a výstupy kódování; úloha je instancí receptury. Další informace najdete v tématu [Transformace a úlohy](transforms-jobs-concept.md).
 
-Kódování pomocí Media Services, použijete přednastavení kodér zjistit, jak by se měly zpracovat vstupními multimediálními soubory. Můžete například zadat rozlišení a/nebo počet zvukové kanály, které chcete v kódovaném obsahu. 
+Při kódování pomocí Media Services použijte předvolby k informování kodéru, jak mají být zpracovány vstupní mediální soubory. Můžete například určit rozlišení videa nebo počet zvukových kanálů, které chcete v zakódovaném obsahu.
 
-Můžete začít rychle s jedním z doporučených předdefinované předvolby založená na osvědčených postupech oboru nebo můžete vytvářet vlastní přednastavení cílit na konkrétní scénář nebo zařízení požadavky. Další informace najdete v tématu [kódovat s vlastní transformace](customize-encoder-presets-how-to.md). 
+Můžete rychle začít s jedním z doporučených předplatných, které jsou založené na osvědčených postupech, nebo si můžete zvolit vytvoření vlastní předvolby, která bude cílit na konkrétní scénář nebo požadavky na zařízení. Další informace naleznete v tématu [kódování s vlastní transformací](customize-encoder-presets-how-to.md).
 
 Od ledna 2019 se při kódování s Media Encoder Standard k vytvoření souborů MP4 vytvoří nový soubor. MPI a přidá se do výstupního prostředku. Tento soubor MPI má za cíl zlepšit výkon pro [dynamické balení](dynamic-packaging-overview.md) a streamování.
 
@@ -49,7 +50,7 @@ Od ledna 2019 se při kódování s Media Encoder Standard k vytvoření soubor�
 
 ### <a name="creating-job-input-from-an-https-url"></a>Vytváření vstupu úlohy z adresy URL HTTPS
 
-Když odešlete úlohy pro zpracování videí, je nutné sdělit Media Services, kde najít vstupní video. Jednou z možností je určit adresu URL HTTPS jako vstup úlohy. V současné době Media Services V3 nepodporuje kódování bloků přenosu prostřednictvím adres URL protokolu HTTPS. 
+Když odešlete úlohy pro zpracování videí, je nutné sdělit Media Services, kde najít vstupní video. Jednou z možností je určit adresu URL HTTPS jako vstup úlohy. V současné době Media Services V3 nepodporuje kódování bloků přenosu prostřednictvím adres URL protokolu HTTPS.
 
 #### <a name="examples"></a>Příklady
 
@@ -60,7 +61,7 @@ Když odešlete úlohy pro zpracování videí, je nutné sdělit Media Services
 
 ### <a name="creating-job-input-from-a-local-file"></a>Vytváření vstupu úlohy z místního souboru
 
-Vstupní video se může ukládat jako Asset služby Media Service. v takovém případě vytvoříte vstupní Asset založený na souboru (uložený místně nebo v úložišti objektů BLOB v Azure). 
+Vstupní video se může ukládat jako Asset služby Media Service. v takovém případě vytvoříte vstupní Asset založený na souboru (uložený místně nebo v úložišti objektů BLOB v Azure).
 
 #### <a name="examples"></a>Příklady
 
@@ -68,7 +69,7 @@ Vstupní video se může ukládat jako Asset služby Media Service. v takovém p
 
 ### <a name="creating-job-input-with-subclipping"></a>Vytváření vstupu úlohy pomocí dílčího výstřižku
 
-Při kódování videa můžete určit, že se má zdrojový soubor také oříznout nebo vystřihnout a vytvořit výstup, který má pouze požadovanou část vstupního videa. Tato funkce funguje s libovolnou [transformací](https://docs.microsoft.com/rest/api/media/transforms) , která je sestavená buď pomocí přednastavení [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) , nebo z [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) předvoleb. 
+Při kódování videa můžete určit, že se má zdrojový soubor také oříznout nebo vystřihnout a vytvořit výstup, který má pouze požadovanou část vstupního videa. Tato funkce funguje s libovolnou [transformací](https://docs.microsoft.com/rest/api/media/transforms) , která je sestavená buď pomocí [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) nebo předvoleb [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) .
 
 Můžete zadat, chcete-li vytvořit [úlohu](https://docs.microsoft.com/rest/api/media/jobs/create) s jedním klipem na vyžádání nebo v živém archivu (zaznamenaná událost). Vstup úlohy může být Asset nebo adresa URL protokolu HTTPS.
 
@@ -82,44 +83,44 @@ Viz příklady:
 * [Vytvoření dílčího klipu videa s využitím .NET](subclip-video-dotnet-howto.md)
 * [Vytvoření dílčího klipu videa s REST](subclip-video-rest-howto.md)
 
-## <a name="built-in-presets"></a>Předdefinované předvolby
+## <a name="built-in-presets"></a>Vestavěná přednastavení
 
-Služba Media Services momentálně podporuje následující předdefinované kódovací předvolby:  
+Media Services podporuje následující předdefinované předvolby kódování:  
 
 ### <a name="builtinstandardencoderpreset"></a>BuiltInStandardEncoderPreset
 
-[BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) se používá k nastavení integrované předvolby pro kódování vstupního videa pomocí kodéru Standard. 
+[BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) se používá k nastavení integrované předvolby pro kódování vstupního videa pomocí kodéru Standard.
 
-Tyto předvolby se aktuálně podporují:
+V současné době jsou podporovány následující předvolby:
 
-- **EncoderNamedPreset.AACGoodQualityAudio** -vytvoří jeden soubor MP4 obsahující pouze stereo zvuk kódovaný v 192 kb/s.
-- **EncoderNamedPreset.AdaptiveStreaming** (doporučeno). Další informace najdete v tématu [automatické generování přenosových](autogen-bitrate-ladder.md).
-- **EncoderNamedPreset. ContentAwareEncodingExperimental** – zpřístupňuje experimentální přednastavení pro kódování zohledňující obsah. Vzhledem k jakémukoli vstupnímu obsahu se služba pokusí automaticky určit optimální počet vrstev, odpovídající přenosovou rychlost a nastavení rozlišení pro doručování pomocí adaptivního streamování. Základní algoritmy se budou dál vyvíjet v průběhu času. Výstup bude obsahovat soubory MP4 se zakládaným videem a zvukem. Další informace najdete v tématu [experimentální přednastavení pro kódování zohledňující obsah](cae-experimental.md).
-- **EncoderNamedPreset.H264MultipleBitrate1080p** -vytvoří sadu 8 soubory MP4 zarovnaný GOP od 6000 kb/s až 400 kb/s a stereo AAC zvuku. Rozlišení začíná 1080p a platí až 360 p.
-- **EncoderNamedPreset.H264MultipleBitrate720p** -vytvoří sadu 6 soubory MP4 zarovnaný GOP od 3400 kb/s až 400 kb/s a stereo AAC zvuku. Rozlišení začíná 720p a platí až 360 p.
-- **EncoderNamedPreset.H264MultipleBitrateSD** -vytvoří sadu 5 soubory MP4 zarovnaný GOP od 1600 kb/s až 400 kb/s a stereo AAC zvuku. Rozlišení začíná 480p a platí až 360 p.
-- **EncoderNamedPreset. H264SingleBitrate1080p** – vytvoří soubor MP4, kde je video zakódováno pomocí kodeku H. 264 v 6750 kbps a výšce obrázku 1080 pixelů a stereofonní zvuk je kódovaný pomocí kodeku AAC-LC při 64 kB/s.
-- **EncoderNamedPreset. H264SingleBitrate720p** – vytvoří soubor MP4, kde je video zakódováno pomocí kodeku H. 264 v 4500 kbps a výšce obrázku 720 pixelů a stereofonní zvuk je kódovaný pomocí kodeku AAC-LC při 64 kB/s.
-- **EncoderNamedPreset. H264SingleBitrateSD** – vytvoří soubor MP4, kde je video zakódováno pomocí kodeku H. 264 v 2200 kbps a výšce obrázku 480 pixelů a stereofonní zvuk je kódovaný pomocí kodeku AAC-LC při 64 kB/s.
+- **EncoderNamedPreset. AACGoodQualityAudio**: vytvoří jeden soubor MP4 obsahující pouze stereofonní zvuk kódovaný v 192 KB/s.
+- **EncoderNamedPreset. AdaptiveStreaming** (doporučeno): Další informace najdete v tématu [Automatické generování žebříku přenosové rychlosti](autogen-bitrate-ladder.md).
+- **EncoderNamedPreset. ContentAwareEncodingExperimental**: zpřístupňuje experimentální přednastavení pro kódování zohledňující obsah. Vzhledem k jakémukoli vstupnímu obsahu se služba pokusí automaticky určit optimální počet vrstev a odpovídající rychlost a nastavení rozlišení pro doručování pomocí adaptivního streamování. Základní algoritmy se budou dál vyvíjet v průběhu času. Výstup bude obsahovat soubory MP4 se zakládaným videem a zvukem. Další informace najdete v tématu [experimentální přednastavení pro kódování zohledňující obsah](cae-experimental.md).
+- **EncoderNamedPreset. H264MultipleBitrate1080p**: vytvoří sadu osmi souborů MP4 zarovnaných na skupinu GOP, od 6000 do 400 KB/s a stereofonního zvuku AAC. Řešení začíná v 1080p a přejde do 360p.
+- **EncoderNamedPreset. H264MultipleBitrate720p**: vytvoří sadu šesti souborů MP4 zarovnaných na skupinu GOP, od 3400 do 400 KB/s a stereofonního zvuku AAC. Řešení začíná ve formátu 720p a přejde do 360p.
+- **EncoderNamedPreset. H264MultipleBitrateSD**: vytvoří sadu pěti souborů MP4 zarovnaných na skupinu GOP, od 1600 do 400 KB/s a stereofonního zvuku AAC. Řešení začíná na 480p a přejde do 360p.
+- **EncoderNamedPreset. H264SingleBitrate1080p**: vytvoří soubor MP4, kde video je zakódováno pomocí kodeku H. 264 v 6750 kbps a výšce obrázku 1080 pixelů a stereofonní zvuk je kódovaný pomocí kodeku AAC-LC při 64 kB/s.
+- **EncoderNamedPreset. H264SingleBitrate720p**: vytvoří soubor MP4, kde video je zakódováno pomocí kodeku H. 264 v 4500 kbps a výšce obrázku 720 pixelů a stereofonní zvuk je kódovaný pomocí kodeku AAC-LC při 64 kB/s.
+- **EncoderNamedPreset. H264SingleBitrateSD**: vytvoří soubor MP4, kde video je zakódováno pomocí kodeku H. 264 v 2200 kbps a výšce obrázku 480 pixelů a stereofonní zvuk je kódovaný pomocí kodeku AAC-LC při 64 kB/s.
 
 Pokud chcete zobrazit seznam nejaktuálnějších nastavení, přečtěte si téma [integrované předvolby, které se použijí pro kódování videí](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
 
-Pokud chcete zjistit, jak se přednastavení používají, podívejte se na [nahrávání, kódování a streamování souborů](stream-files-tutorial-with-api.md).
+Pokud chcete zjistit, jak se používají předvolby, přečtěte si téma [nahrávání, kódování a streamování souborů](stream-files-tutorial-with-api.md).
 
 ### <a name="standardencoderpreset"></a>StandardEncoderPreset
 
-[StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) popisuje nastavení, která se použijí při kódování vstupního videa pomocí kodéru Standard. Použijte přednastavení při přizpůsobování přednastavení transformace. 
+[StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) popisuje nastavení, která se použijí při kódování vstupního videa pomocí kodéru Standard. Tuto předvolbu použijte při přizpůsobení přednastavení transformace.
 
 #### <a name="considerations"></a>Požadavky
 
 Při vytváření vlastních přednastavení platí následující požadavky:
 
-- Všechny hodnoty pro výšku a šířku v obsahu AVC musí být násobkem 4.
+- Všechny hodnoty pro výšku a šířku v obsahu AVC musí být násobkem čtyř.
 - V Azure Media Services V3 jsou všechny přenosové rychlosti kódování v bitech za sekundu. To se liší od přednastavení s našimi rozhraními API v2, která jako jednotku používala kilobity za sekundu. Pokud je například přenosová rychlost v v2 zadaná jako 128 (kilobit/s), ve verzi V3 by se nastavila na 128000 (bity za sekundu).
 
 ### <a name="customizing-presets"></a>Přizpůsobení předvoleb
 
-Služba Media Services plně podporuje všechny hodnoty v předvolbách pro splnění potřeb kódování a požadavky na přizpůsobení. Příklady, které ukazují, jak přizpůsobit předvolby kodéru, najdete v tématech:
+Media Services plně podporuje přizpůsobení všech hodnot v předvolbách, aby splňovaly vaše specifické požadavky na kódování a požadavky. Příklady, které ukazují, jak přizpůsobit předvolby kodéru, najdete v následujícím seznamu:
 
 #### <a name="examples"></a>Příklady
 
@@ -141,7 +142,7 @@ Podívejte se na článek o [komunitě Azure Media Services](media-services-comm
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nahrávání, kódování a streamování pomocí služby Media Services](stream-files-tutorial-with-api.md)
-* [Kódování z adresy URL HTTPS pomocí integrovaných přednastavení](job-input-from-http-how-to.md)
-* [Kódování místního souboru pomocí vestavěných přednastavení](job-input-from-local-file-how-to.md)
-* [Sestavení vlastního přednastavení pro cílení na konkrétní scénář nebo požadavky na zařízení](customize-encoder-presets-how-to.md)
+* [Nahrávání, kódování a streamování pomocí Media Services](stream-files-tutorial-with-api.md).
+* [Kódování z adresy URL protokolu HTTPS pomocí integrovaných přednastavení](job-input-from-http-how-to.md).
+* [Kódování místního souboru pomocí vestavěných přednastavení](job-input-from-local-file-how-to.md).
+* [Vytvořte vlastní předvolbu, která bude cílit na konkrétní scénář nebo požadavky na zařízení](customize-encoder-presets-how-to.md).

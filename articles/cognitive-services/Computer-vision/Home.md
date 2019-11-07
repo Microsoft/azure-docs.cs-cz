@@ -1,5 +1,5 @@
 ---
-title: Co je rozhraní API pro počítačové zpracování obrazu? -Počítačové zpracování obrazu
+title: Co je počítačové zpracování obrazu? -Počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
 description: Služba počítačového zpracování obrazu umožňuje vývojářům používat pokročilé algoritmy, které zpracovávají obrázky a vrací informace.
 services: cognitive-services
@@ -8,21 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 10/01/2019
+ms.date: 11/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: db62f003f7eb8dd272305b86712cf1d721797114
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: a34fdb24573df3287b72991454963c67e9689b9f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719543"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604541"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
-Služba Počítačové zpracování obrazu v Azure poskytuje vývojářům přístup k pokročilým algoritmům, které zpracovávají obrázky a vracejí informace. Když chcete analyzovat obrázek, můžete ho nahrát nebo zadat jeho adresu URL. Algoritmy pro zpracování obrázků mohou analyzovat obsah několika různými způsoby, v závislosti na vizuálních funkcích, které vás zajímají. Počítačové zpracování obrazu například může určit, zda obrázek obsahuje obsah pro dospělé, nebo může najít všechny lidské obličeje v obrázku.
+Služba Počítačové zpracování obrazu v Azure poskytuje vývojářům přístup k pokročilým algoritmům, které zpracovávají obrázky a vracejí informace v závislosti na vizuálních funkcích, které vás zajímají. Počítačové zpracování obrazu například může určit, zda obrázek obsahuje obsah pro dospělé, nebo může najít všechny lidské obličeje v obrázku.
 
-Počítačové zpracování obrazu můžete v aplikaci použít buď pomocí nativní sady SDK, nebo vyvoláním REST API přímo. Tato stránka obsahuje širokou škálu toho, co můžete s Počítačové zpracování obrazu provádět.
+V aplikaci můžete použít Počítačové zpracování obrazu prostřednictvím nativní sady SDK nebo vyvoláním REST API přímo. Tato stránka obsahuje širokou škálu toho, co můžete s Počítačové zpracování obrazu provádět.
+
+## <a name="computer-vision-for-digital-asset-management"></a>Počítačové zpracování obrazu pro správu digitálních prostředků
+
+Počítačové zpracování obrazu může výkon mnoha scénářů správy digitálních prostředků (přehradit). Přehradní je obchodní proces organizace, ukládání a načítání multimediálních prostředků a správu digitálních práv a oprávnění. Společnost může například chtít seskupit a identifikovat obrázky na základě viditelných log, plošek, objektů, barev a tak dále. Nebo můžete chtít automaticky [vygenerovat titulky pro obrázky](./Tutorials/storage-lab-tutorial.md) a připojit klíčová slova, aby je bylo možné prohledávat. Pro přehradní řešení all-in-One pomocí Cognitive Services, Azure Search a inteligentního vytváření sestav si přečtěte [příručku akcelerátoru řešení Knowledge dolování](https://github.com/Azure-Samples/azure-search-knowledge-mining) v GitHubu. Další příklady přehrad naleznete v tématu [počítačové zpracování obrazu – úložiště šablon řešení](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates) .
 
 ## <a name="analyze-images-for-insight"></a>Analýza imagí pro přehled
 
@@ -47,8 +51,6 @@ Můžete analyzovat obrázky, abyste zjistili a poskytovali přehled o jejich vi
 Pomocí [rozhraní počítačové zpracování obrazu Read API](concept-recognizing-text.md#read-api) můžete extrahovat vytištěné a ručně psaný text z obrázků do datového proudu znaků, který je strojově čitelný. Rozhraní API pro čtení používá naše nejnovější modely a pracuje s textem na nejrůznějších površích a na pozadí, jako jsou například příjmy, plakáty, obchodní karty, dopisy a tabule. V současné době je v současnosti jediným podporovaným jazykem angličtina.
 
 Můžete také použít rozhraní API [optického rozpoznávání znaků (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) k extrakci vytištěného textu v několika jazycích. V případě potřeby optické rozpoznávání znaků opraví natočení rozpoznaného textu a poskytuje souřadnice rámce každého slova. Optické rozpoznávání znaků podporuje 25 jazyků a automaticky detekuje jazyk rozpoznaného textu.
-
-
 
 ## <a name="moderate-content-in-images"></a>Střední obsah v obrázcích
 

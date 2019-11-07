@@ -1,5 +1,5 @@
 ---
-title: Vytváření aktivačních událostí pro bubnový interval v Azure Data Factory | Microsoft Docs
+title: Vytváření aktivačních událostí pro bubny v Azure Data Factory
 description: Naučte se, jak vytvořit Trigger v Azure Data Factory, který spouští kanál v bubnovém okně.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 940b3010713f2f32b2c4d9880c425b1e88820729
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: f9e31b8f0fce1af8408b80afb1049dae8c8ecf1c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374510"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73673711"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Vytvoření triggeru, který spouští kanál v bubnovém okně
 Tento článek popisuje kroky pro vytvoření, spuštění a monitorování aktivační události bubnového okna. Obecné informace o aktivačních událostech a podporovaných typech najdete v tématu [spuštění kanálu a triggery](concepts-pipeline-execution-triggers.md).
@@ -95,11 +95,11 @@ Následující tabulka poskytuje podrobný přehled hlavních elementů JSON, kt
 | Element JSON | Popis | Typ | Povolené hodnoty | Požaduje se |
 |:--- |:--- |:--- |:--- |:--- |
 | **type** | Typ triggeru Typ je pevná hodnota "TumblingWindowTrigger". | Řetězec | "TumblingWindowTrigger" | Ano |
-| **runtimeState** | Aktuální stav doby spuštění triggeru.<br/>**Poznámka**: Tento element je \<readOnly >. | Řetězec | "Spuštěno, zastaveno", "zakázáno" | Ano |
+| **runtimeState** | Aktuální stav doby spuštění triggeru.<br/>**Poznámka**: Tento element je \<jen pro čtení >. | Řetězec | "Spuštěno, zastaveno", "zakázáno" | Ano |
 | **frequency** | Řetězec, který představuje jednotku frekvence (minuty nebo hodiny), ve které se aktivační událost opakuje. Pokud jsou hodnoty data **čas_spuštění** lépe podrobnější než hodnota **frekvence** , jsou při výpočtu hranic okna zvážena data **StartTime** . Pokud má například hodnota **frekvence** hodinu a hodnota **StartTime** je 2017-09-01T10:10:10z, první okno je (2017-09-01T10:10:10z, 2017-09-01T11:10:10z). | Řetězec | "Minute", "hodina"  | Ano |
 | **interval** | Kladné celé číslo označující interval pro hodnotu **frequency**, která určuje, jak často se má aktivační událost spouštět. Pokud má například **interval** hodnotu 3 a **frekvence** je "hodina", aktivační událost se opakuje každé 3 hodiny. <br/>**Poznámka**: minimální interval okna je 15 minut. | Integer | Kladné celé číslo. | Ano |
-| **startTime**| První výskyt, který může být v minulosti. První interval triggeru je (**čas_spuštění**, **čas_spuštění** + **interval**). | Datum a čas | Hodnota DateTime | Ano |
-| **endTime**| Poslední výskyt, který může být v minulosti. | Datum a čas | Hodnota DateTime | Ano |
+| **startTime**| První výskyt, který může být v minulosti. První interval triggeru je (**čas_spuštění**, **čas_spuštění** + **interval**). | DateTime | Hodnota DateTime | Ano |
+| **endTime**| Poslední výskyt, který může být v minulosti. | DateTime | Hodnota DateTime | Ano |
 | **způsobené** | Doba, po kterou se má zpozdit začátek zpracování dat okna. Spuštění kanálu se spustí po očekávaném čase spuštění a **prodlevě**. **Prodleva** definuje, jak dlouho bude aktivační událost před aktivací nového běhu čekat po uplynutí doby platnosti. **Zpoždění** nezmění okno **čas_spuštění**. Například hodnota **zpoždění** 00:10:00 implikuje zpoždění 10 minut. | Časový interval<br/>(hh: mm: SS)  | Hodnota TimeSpan, kde výchozí hodnota je 00:00:00. | Ne |
 | **maxConcurrency** | Počet souběžných spuštění triggerů, které jsou aktivovány pro Windows, která jsou připravena. Například pro zálohování na celou hodinu běží u včerejších výsledků v 24 oknech. Pokud **maxConcurrency** = 10, aktivační události se aktivují jenom pro prvních 10 oken (00:00-01:00-09:00-10:00). Po dokončení prvních 10 aktivovaných spuštění kanálu se triggery spustí pro následující 10 Windows (10:00-11:00-19:00-20:00). Pokud budete pokračovat v tomto příkladu **maxConcurrency** = 10, pokud je k dispozici 10 Windows, je k dispozici 10 celkových spuštění kanálu. Pokud je k dispozici pouze 1 okno, je k dispozici pouze 1 spuštění kanálu. | Integer | Celé číslo od 1 do 50. | Ano |
 | **retryPolicy: počet** | Počet opakování před spuštěním kanálu je označený jako "neúspěšné".  | Integer | Celé číslo, kde výchozí hodnota je 0 (žádné opakování). | Ne |

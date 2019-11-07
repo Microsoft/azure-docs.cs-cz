@@ -8,12 +8,12 @@ ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: d843e288297db656cca6e2a07f2e1f3322ebfa89
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 99863f68c20a2f95dfc744e13a977bf3ccbbf639
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299651"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580432"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Úvod do Azure Data Lake Storage Gen2
 
@@ -43,7 +43,7 @@ V minulosti se cloudové analýzy musely napadnout v oblasti výkonu, správy a 
 
 -   **Cenově výhodné**: Data Lake Storage Gen2 nabízí cenovou kapacitu úložiště a transakce. Vzhledem k tomu, že se v průběhu svého kompletního životního cyklu data mění, účtují se náklady na minimum prostřednictvím integrovaných funkcí, jako je [životní cyklus služby Azure Blob Storage](storage-lifecycle-management-concepts.md).
 
--   **Optimalizovaný ovladač**: ovladač ABFS je [optimalizován speciálně](data-lake-storage-abfs-driver.md) pro analýzu velkých objemů dat. Odpovídající rozhraní REST API se procházejí prostřednictvím koncového bodu `dfs.core.windows.net`.
+-   **Optimalizovaný ovladač**: ovladač ABFS je [optimalizován speciálně](data-lake-storage-abfs-driver.md) pro analýzu velkých objemů dat. Odpovídající rozhraní REST API se docházejí z `dfs.core.windows.net`koncového bodu.
 
 ### <a name="scalability"></a>Škálovatelnost
 
@@ -83,13 +83,13 @@ Data Lake Storage Gen2 podporuje několik Open Source platforem. Tyto platformy 
 
 ## <a name="supported-azure-services"></a>Podporované služby Azure
 
-Data Lake Storage Gen2 podporuje několik služeb Azure, které můžete použít k ingestování dat, provádění analýz a vytváření vizuální reprezentace. Seznam podporovaných služeb Azure najdete v tématu věnovaném [integraci Azure Data Lake Storage se službami Azure](data-lake-store-integrate-with-azure-services.md).
+Data Lake Storage Gen2 podporuje několik služeb Azure, které můžete použít k ingestování dat, provádění analýz a vytváření vizuální reprezentace. Seznam podporovaných služeb Azure najdete v tématu věnovaném [integraci Azure Data Lake Storage se službami Azure](data-lake-storage-integrate-with-azure-services.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 Následující články popisují některé z hlavních konceptů Data Lake Storage Gen2 a podrobné informace o tom, jak ukládat, přistupovat, spravovat a získávat poznatky z vašich dat:
 
 - [Hierarchický obor názvů](data-lake-storage-namespace.md)
-- [vytvořit účet úložiště](data-lake-storage-quickstart-create-account.md)
+- [Vytvoření účtu úložiště](data-lake-storage-quickstart-create-account.md)
 - [Přístup k více protokolům na Azure Data Lake Storage](data-lake-storage-multi-protocol-access.md)
-- [Integrace Azure Data Lake Storage se službami Azure](data-lake-store-integrate-with-azure-services.md);
+- [Integrace Azure Data Lake Storage se službami Azure](data-lake-storage-integrate-with-azure-services.md);

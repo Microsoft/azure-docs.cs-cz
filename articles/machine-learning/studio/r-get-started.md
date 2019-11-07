@@ -1,6 +1,6 @@
 ---
 title: Začínáme s R
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Tento kurz programování v R vám umožní začít používat jazyk R s Azure Machine Learning Studio (Classic) k vytvoření řešení prognózování.
 services: machine-learning
 ms.service: machine-learning
@@ -10,18 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 1d3bc64291f58c5dd77531141c31490451cc8ea2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1a9fd7f6041961ee0f9f33e9e319d321050709f4
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496835"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619170"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio-classic"></a>Začínáme s programovacím jazykem R v Azure Machine Learning Studio (Classic)
 
 <!-- Stephen F Elston, Ph.D. -->
 
-## <a name="introduction"></a>Představení
+## <a name="introduction"></a>Úvod
 
 Tento kurz vám pomůže začít s rozšířením Azure Machine Learning Studio (Classic) pomocí programovacího jazyka R. Pomocí tohoto kurzu pro programování v R můžete vytvořit, otestovat a spustit kód R v rámci studia (Classic). Při práci v kurzu vytvoříte kompletní řešení předpovědi pomocí jazyka R v klasické verzi studia.  
 

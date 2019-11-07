@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
-ms.openlocfilehash: b41241d3f0223e7c96dce4a9e98262b403cb0660
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7c7011991deb632110264233ea0e7aeabe793fbb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495066"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670472"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Tahák k automatizovanému datovému kanálu pro predikce služby Azure Machine Learning
 **Tahák list s automatickým datovým kanálem Microsoft Azure Machine Learning** vám pomůže procházet technologii, kterou můžete použít k získání dat do Machine Learning webové služby, kde ji můžete vyhodnotit pomocí modelu prediktivní analýzy.
@@ -36,6 +36,6 @@ Stáhněte si tahák list sem:  **[Microsoft Azure Machine Learning automaticky 
 
 ## <a name="more-help-with-machine-learning-studio"></a>Další nápověda k nástroji Machine Learning Studio
 * Přehled Microsoft Azure Machine Learning najdete v tématu [Úvod do strojového učení v Microsoft Azure](../studio/what-is-machine-learning.md).
-* Vysvětlení, jak nasadit webovou službu bodování, najdete v tématu [nasazení webové](../studio/publish-a-machine-learning-web-service.md)služby vyhodnocování Azure Machine Learning.
+* Vysvětlení, jak nasadit webovou službu bodování, najdete v tématu [nasazení webové](../studio/deploy-a-machine-learning-web-service.md)služby vyhodnocování Azure Machine Learning.
 * Diskuzi o tom, jak používat webovou službu bodování, najdete v tématu [How to spotřebovává Azure Machine Learning Web Service](../studio/consume-web-services.md).
 

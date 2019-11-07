@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec1ea8bac35906969f051a70c44bd6f0685dc942
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ed93eff6c137e125c2bc1707de441dc9971d6f3f
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489431"
+ms.locfileid: "73584467"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Sestavujte modely scikit s využitím škálování pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,10 +26,10 @@ V ukázkových skriptech v tomto článku se používají ke klasifikaci imagí 
 
 Bez ohledu na to, jestli provedete výukový model Machine Learning scikit z provozu nebo do cloudu převedete existující model, můžete použít Azure Machine Learning k horizontálnímu navýšení kapacity Open-Source školicích úloh pomocí elastických výpočetních prostředků pro Cloud. Pomocí Azure Machine Learning můžete sestavovat, nasazovat, používat verzi a monitorovat modely produkčního prostředí.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Spusťte tento kód v jednom z těchto prostředí:
- - Azure Machine Learning výpočetní instance – nepotřebujete žádné soubory ke stažení nebo instalaci
+ - Virtuální počítač s poznámkovým blokem Azure Machine Learning – nemusíte stahovat nebo instalovat
 
     - Dokončete [kurz: instalační prostředí a pracovní prostor](tutorial-1st-experiment-sdk-setup.md) pro vytvoření vyhrazeného serveru poznámkového bloku předem načteného se sadou SDK a s ukázkovým úložištěm.
     - Ve složce školení ukázek na serveru pro Poznámkový blok Najděte dokončený a rozbalený Poznámkový blok tak, že přejdete na tento adresář: **How-to->-azureml ml-framework > scikit-učení > školení >** složka.

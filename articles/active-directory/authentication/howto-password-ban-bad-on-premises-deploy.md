@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e2328bcd2b2d9fe957df82c46730091ffdf9366
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 695bd461ae7e979c0a803cd2d6cb450003a6bcee
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474284"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603003"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Nasazení ochrany hesel Azure AD
 
@@ -32,7 +32,7 @@ V rámci fáze auditu mnoho organizací zjistí, že:
 * Uživatelé často používají nezabezpečená hesla.
 * Potřebují uživatele informovat o nadcházející změně v vynucování zabezpečení, o možných dopadech na ně a o tom, jak zvolit bezpečnější hesla.
 
-Je taky možné, že se silnější ověřování hesla bude týkat stávající automatizace nasazení řadiče domény služby Active Directory. Doporučujeme, abyste při vyhodnocení období auditů nedocházelo k navýšení aspoň jedné povýšení řadiče domény a k jednomu řadiči domény, aby bylo možné tyto problémy předem odhalit.  Další informace:
+Je taky možné, že se silnější ověřování hesla bude týkat stávající automatizace nasazení řadiče domény služby Active Directory. Doporučujeme, abyste při vyhodnocení období auditů nedocházelo k navýšení aspoň jedné povýšení řadiče domény a k jednomu řadiči domény, aby bylo možné tyto problémy předem odhalit.  Další informace naleznete v tématu:
 
 * [Nástroj Ntdsutil. exe nemůže nastavit slabý stav hesla režimu opravy adresářových služeb.](howto-password-ban-bad-on-premises-troubleshoot.md##ntdsutilexe-fails-to-set-a-weak-dsrm-password)
 * [Povýšení repliky řadiče domény se nepovedlo kvůli slabému heslu režimu opravy adresářových služeb.](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
@@ -135,7 +135,7 @@ Pro ochranu heslem Azure AD existují dvě požadované instalační programy. J
 
      Tato rutina vyžaduje pro vašeho tenanta Azure přihlašovací údaje globálního správce. V kořenové doméně doménové struktury budete také potřebovat místní oprávnění správce domény služby Active Directory. Po úspěšném provedení tohoto příkazu u proxy služby bude další vyvolání úspěšné, ale budou zbytečné.
 
-      Rutina `Register-AzureADPasswordProtectionProxy` podporuje následující tři režimy ověřování.
+      Rutina `Register-AzureADPasswordProtectionProxy` podporuje následující tři režimy ověřování. První dva režimy podporují Azure Multi-Factor Authentication ale třetí režim ne. Další podrobnosti najdete níže v komentářích.
 
      * Režim interaktivního ověřování:
 
@@ -179,7 +179,7 @@ Pro ochranu heslem Azure AD existují dvě požadované instalační programy. J
 1. Zaregistrujte doménovou strukturu.
    * Místní doménovou strukturu služby Active Directory musíte inicializovat pomocí nezbytných přihlašovacích údajů ke komunikaci s Azure pomocí rutiny `Register-AzureADPasswordProtectionForest` PowerShellu. Rutina vyžaduje pro vašeho tenanta Azure přihlašovací údaje globálního správce. Vyžaduje taky místní oprávnění podnikového Správce služby Active Directory. Tento krok se spouští jednou pro každou doménovou strukturu.
 
-      Rutina `Register-AzureADPasswordProtectionForest` podporuje následující tři režimy ověřování.
+      Rutina `Register-AzureADPasswordProtectionForest` podporuje následující tři režimy ověřování. První dva režimy podporují Azure Multi-Factor Authentication ale třetí režim ne. Další podrobnosti najdete níže v komentářích.
 
      * Režim interaktivního ověřování:
 
@@ -302,7 +302,7 @@ Pro ochranu heslem Azure AD existují dvě požadované instalační programy. J
 
    Službu agenta DC můžete nainstalovat na počítač, který ještě není řadičem domény. V takovém případě se služba spustí a spustí, ale zůstane neaktivní, dokud nebude počítač povýšen na řadič domény.
 
-   Instalaci softwaru můžete automatizovat pomocí standardních postupů MSI. Například:
+   Instalaci softwaru můžete automatizovat pomocí standardních postupů MSI. Příklad:
 
    `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`
 

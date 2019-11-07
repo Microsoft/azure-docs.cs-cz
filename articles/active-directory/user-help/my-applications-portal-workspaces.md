@@ -13,12 +13,12 @@ ms.date: 10/30/2019
 ms.author: lizross
 ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3c9e047db48e12f6ce797c034a6b40084542c8e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 38fe0b0ff3bcb38133444819200254a684f08d44
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73178092"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573792"
 ---
 # <a name="access-and-use-workspaces-on-the-my-apps-preview-portal"></a>Přístup k pracovním prostorům a jejich používání na portálu moje aplikace (Preview)
 
@@ -49,8 +49,8 @@ Po uspořádání aplikací do různých kategorií na portálu **Moje aplikace*
 
 ## <a name="related-articles"></a>Související články
 
-- [Aktualizujte informace o profilu a účtu](myprofile-portal-overview.md). Pokyny, jak aktualizovat osobní údaje, které se zobrazí na portálu **můj profil** (Preview).
+- [Aktualizujte informace o profilu a účtu](my-account-portal-overview.md). Pokyny, jak aktualizovat osobní údaje, které se zobrazí na portálu **můj profil** (Preview).
 
-- [Spravujte své organizace](myprofile-portal-organizations-page.md). Pokyny, jak zobrazit a spravovat informace týkající se vaší organizace, najdete na stránce **organizace** na portálu **můj profil** .
+- [Spravujte své organizace](my-account-portal-organizations-page.md). Pokyny, jak zobrazit a spravovat informace týkající se vaší organizace, najdete na stránce **organizace** na portálu **můj profil** .
 
-- [Spravujte připojená zařízení](myprofile-portal-devices-page.md). Pokyny, jak spravovat zařízení, ke kterým jste se připojili pomocí svého pracovního nebo školního účtu, najdete na stránce **zařízení** na portálu **můj profil** .
+- [Spravujte připojená zařízení](my-account-portal-devices-page.md). Pokyny, jak spravovat zařízení, ke kterým jste se připojili pomocí svého pracovního nebo školního účtu, najdete na stránce **zařízení** na portálu **můj profil** .

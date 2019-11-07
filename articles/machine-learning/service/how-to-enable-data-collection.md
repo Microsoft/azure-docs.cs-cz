@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 845d271c60762177ea88912f2100f3b47aedde46
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ca091a1bbf56e2d2850a464d0109020b06483d0
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489983"
+ms.locfileid: "73576698"
 ---
 # <a name="collect-data-for-models-in-production"></a>Shromažďování dat pro modely v produkčním prostředí
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -55,7 +55,7 @@ Cesta k výstupním datům v objektu BLOB se řídí touto syntaxí:
 >[!Note]
 > Ve verzích sady SDK před `0.1.0a16` `designation` argument byl pojmenován `identifier`. Pokud byl váš kód vyvinutý pomocí starší verze, budete ho muset aktualizovat odpovídajícím způsobem.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
@@ -120,11 +120,11 @@ Pokud již máte v souboru **prostředí** a v **souboru bodování**nainstalova
 
 1. Otevřete pracovní prostor.
 
-1. Přejít na **nasazení** -> **Vyberte službu** -> **Upravit**.
+1. Přejít na **nasazení** -> **Vybrat službu** -> **Upravit**.
 
    ![Upravit službu](media/how-to-enable-data-collection/EditService.PNG)
 
-1. V **rozšířeném nastavení**zrušte výběr možnosti **Povolit shromažďování dat modelu**. 
+1. V **upřesňujících nastaveních**vyberte **Povolit shromažďování dat modelu**. 
 
     [![shromažďování dat kontroly](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
 
@@ -141,7 +141,7 @@ Shromažďování dat můžete kdykoli zastavit. K zakázání shromažďování
 
   1. Otevřete pracovní prostor.
 
-  1. Přejít na **nasazení** -> **Vyberte službu** -> **Upravit**.
+  1. Přejít na **nasazení** -> **Vybrat službu** -> **Upravit**.
 
      [![– možnost úprav](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 

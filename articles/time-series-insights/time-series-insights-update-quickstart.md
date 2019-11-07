@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 10/24/2019
-ms.openlocfilehash: da0c4d6cd4b923033761a275e93c5a4d8a184647
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 25d6d1aa1cf7db0f448ec22ed7b5c84d840af3f5
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991059"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579650"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Rychlý Start: Prozkoumejte ukázkové prostředí Azure Time Series Insights Preview
 
@@ -30,7 +30,7 @@ V tomto rychlém startu se dozvíte, jak pomocí Time Series Insights najít už
 
 ## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>Prozkoumat Průzkumníka Time Series Insights v ukázkovém prostředí
 
-Průzkumník Preview Time Series Insights ukazuje historická data a hlavní příčiny analýzy. Jak začít:
+Průzkumník Preview Time Series Insights ukazuje historická data a analýzu původní příčiny. Jak začít:
 
 1. Přejít do [ukázkového prostředí farmy společnosti Contoso Wind](https://insights.timeseries.azure.com/preview/samples)  
 
@@ -71,22 +71,22 @@ Průzkumník Preview Time Series Insights ukazuje historická data a hlavní př
 
       [![hledání historických vzorů](media/v2-update-quickstart/quickstart-five.png)](media/v2-update-quickstart/quickstart-five.png#lightbox)
 
-Díky Time Series Insights a telemetrii senzorů jsme zjistili, že v historických datech jsme skryli dlouhodobě a problematický trend. Díky těmto novým přehledům můžeme:
+Pomocí Time Series Insights a telemetrie senzorů jsme zjistili, že v historických datech jsme skryli dlouhodobě trend. Díky těmto novým přehledům můžeme:
 
 * Vysvětlete, co se skutečně stalo.
 * Opravte problém.
-* Dejte špičkové systémy oznámení výstrah.
+* Umístěte lepší systémy oznámení o výstrahách.
 
 ## <a name="root-cause-analysis"></a>Analýza původní příčiny
 
-1. Některé scénáře vyžadují propracované analýzy k odhalení drobných pokrytí dat. Vyberte Windmill **W6** na datum **6/25**.
+1. Některé scénáře vyžadují propracované analýzy, které odhalí pokrytí dat. Vyberte Windmill **W6** na datum **6/25**.
 
     1. Změňte rozsah zobrazení na **6/1/17 20:00:00.00 na 7/1/17 20:00:00.00 (UTC)** .
     1. Vyberte **Contoso rostlina 1** > **W6** > **bezpečnostní systém** > **VoltageActuatorSwitchWarning**.
 
        [![změnit rozsah zobrazení a vybrat možnost W6](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)
 
-1. Upozornění indikuje problém s napětím výstupu generátorem. Celkový výstup tohoto generátoru je v současné době funkční v rámci normálního parametru. Zvýšením našeho intervalu se objeví další vzor. K určitému odkládacímu umístění je zřejmé.
+1. Upozornění indikuje problém s napětím ze generátoru. Celkový výstup tohoto generátoru je v rámci běžných parametrů v aktuálním intervalu. Zvýšením našeho intervalu se zobrazí další vzor. Odkládací adresář je zřejmý.
 
     1. Odeberte senzor **VoltageActuatorSwitchWarning** .
     1. Vyberte **generátor System** > **ActivePower**.
@@ -117,9 +117,9 @@ Díky Time Series Insights a telemetrii senzorů jsme zjistili, že v historick�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Teď, když jste dokončili kurz, vyčistěte prostředky, které jste vytvořili:
+Teď, když jste dokončili rychlý Start, vyčistěte prostředky, které jste vytvořili:
 
-1. V nabídce vlevo v [Azure Portal](https://portal.azure.com)vyberte **všechny prostředky**a vyhledejte svoji Azure Time Series Insights skupinu prostředků.
+1. V nabídce vlevo v [Azure Portal](https://portal.azure.com)vyberte **všechny prostředky**a najděte svoji Azure Time Series Insights skupinu prostředků.
 1. Odstraňte celou skupinu prostředků (a všechny prostředky v ní obsažené) tak, že vyberete možnost **Odstranit** nebo odebrat jednotlivé prostředky zvlášť.
 
 ## <a name="next-steps"></a>Další kroky
@@ -129,7 +129,7 @@ Jste připraveni vytvořit vlastní prostředí Time Series Insights Preview. Za
 > [!div class="nextstepaction"]
 > [Plánování prostředí pro Time Series Insights Preview](time-series-insights-update-plan.md)
 
-Naučte se procházet ukázku a její funkce:
+Naučte se používat ukázku a její funkce:
 
 > [!div class="nextstepaction"]
 > [Průzkumník Preview Time Series Insights](time-series-insights-update-explorer.md)

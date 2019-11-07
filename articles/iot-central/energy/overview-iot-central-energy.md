@@ -8,14 +8,14 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: aaf591bcc75521cb83d8c74f5220d37f77f1f349
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 8c7d2481fe3ef361386bacc652d87744c1c790bb
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027657"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581504"
 ---
-# <a name="build-energy-solutions-with-iot-central"></a>Sestavujte energetická řešení pomocí IoT Central 
+# <a name="build-energy-solutions-with-iot-central"></a>Sestavování řešení pro energetiku s využitím služby IoT Central 
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
@@ -40,8 +40,8 @@ Funkce klíče aplikace:
 
 Po nasazení aplikace se na řídicím panelu zobrazí Simulovaná data měřiče, jak je znázorněno na následujícím obrázku. Tato šablona je ukázková aplikace, kterou můžete snadno zvětšit a přizpůsobit pro konkrétní případy použití.
 
-[!div class="mx-imgBorder"]
-](media/overview-iot-central-energy/smart-meter-app-dashboard.png) řídicí panel aplikace ![Smart měřiče
+> [!div class="mx-imgBorder"]
+> ](media/overview-iot-central-energy/smart-meter-app-dashboard.png) řídicí panel aplikace ![Smart měřiče
 
 
 ## <a name="what-is-the-solar-panel-monitoring-application"></a>Co je aplikace pro monitorování panelu slunečního pří?
