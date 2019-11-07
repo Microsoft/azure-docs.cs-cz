@@ -1,5 +1,5 @@
 ---
-title: Správa více databází SQL s elastickými fondy – Azure | Microsoft Docs
+title: Správa více databází SQL s elastickými fondy – Azure
 description: Spravujte a škálujte více databází SQL – stovky a tisíce – pomocí elastických fondů. Jedna cena za prostředky, které můžete distribuovat tam, kde je to potřeba.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 0b0a6bec7916c056c187ed9e588dd3ac8fea8d84
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 68bb68b47ca240d6c20153af3ed4b0eb42475282
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876411"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690452"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastické fondy vám pomůžou se správou a škálováním více databází Azure SQL.
 
@@ -101,7 +101,7 @@ Všimněte si, tento příklad nebere v úvahu využití ostatních databází v
 
 Velký rozdíl mezi maximálním a průměrným využitím databáze ukazuje na delší doby nízkého využití a krátká období vysokého využití. Tento vzor využití je ideální pro sdílení prostředků mezi databázemi. Použití fondu pro databázi byste měli zvážit, pokud je její využití ve špičce přibližně 1,5krát větší než průměrné využití.
 
-**Příklad nákupního modelu na základě DTU**: Databáze S3, která ve špičce využívá 100 DTU a průměrně využívá 67 DTU nebo méně, je vhodným kandidátem pro sdílení jednotek eDTU ve fondu. Databáze S1, která ve špičce využívá 20 DTU a průměrně využívá 13 DTU nebo méně, je vhodným kandidátem pro fond.
+**Příklad nákupního modelu založený na DTU**: databáze S3, která je ve špičce 100 DTU a v průměru používá 67 DTU nebo méně, je vhodným kandidátem na sdílení eDTU ve fondu. Databáze S1, která ve špičce využívá 20 DTU a průměrně využívá 13 DTU nebo méně, je vhodným kandidátem pro fond.
 
 ## <a name="how-do-i-choose-the-correct-pool-size"></a>Návody zvolit správnou velikost fondu.
 
@@ -110,17 +110,17 @@ Nejlepší velikost pro fond závisí na agregovaných zdrojích potřebných pr
 - Maximální počet prostředků využívaných všemi databázemi ve fondu (buď maximálně DTU nebo maximální virtuální jádra, v závislosti na zvoleném modelu resourceing).
 - Maximální počet bajtů úložiště využitých všemi databázemi ve fondu
 
-Dostupné úrovně služeb pro každý model prostředků najdete v tématu [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) nebo v nákupním [modelu založeném na Vcore](sql-database-service-tiers-vcore.md).
+Dostupné úrovně služeb pro každý model prostředků najdete v tématu [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) nebo v [nákupním modelu založeném na Vcore](sql-database-service-tiers-vcore.md).
 
 V případech, kdy nejde používat nástroje, vám při odhadování, jestli je fond cenově výhodnější než izolované databáze, pomůže následující postup:
 
 1. Odhadované eDTU nebo virtuální jádra, které jsou potřeba pro fond, následujícím způsobem:
 
-   Pro nákupní model založený na DTU: MAX(<*celkový počet databází* X *průměrné využití DTU na databázi*>,<br>  
+   Pro nákupní model založený na DTU: MAX (<*Celkový počet databáze* X *průměrné využití DTU na databázi*>,<br>  
    <*počet databází se souběžnou špičkou* X *využití DTU ve špičce na databázi*)
 
-   Pro nákupní model založený na vCore: MAX (<*Celkový počet databáze* X *průměr využití vCore na databázi*>,<br>  
-   <*Počet současně se špičkou databáze* X *Vcore využití ve špičce na databázi*)
+   Pro nákupní model založený na vCore: MAX (<*Celkový počet databáze* X *průměrného využití vCore na DB*>,<br>  
+   <*číslo současné špičky* *využití Vcore ve špičce databáze na databázi*)
 
 2. Odhadněte potřebnou velikost úložiště pro fond (sečtěte počet bajtů potřebných pro všechny databáze ve fondu). Potom určete velikost fondu v jednotkách eDTU, která toto úložiště poskytuje.
 3. V případě nákupního modelu založeného na DTU Vezměte v úvahu větší z odhadů eDTU z kroku 1 a krok 2. U nákupního modelu založeného na vCore proveďte odhad vCore z kroku 1.

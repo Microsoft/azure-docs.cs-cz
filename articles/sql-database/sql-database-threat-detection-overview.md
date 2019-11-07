@@ -1,5 +1,5 @@
 ---
-title: Rozšířená ochrana před internetovými útoky – Azure SQL Database | Microsoft Docs
+title: Rozšířená ochrana před internetovými útoky – Azure SQL Database
 description: Rozšířená ochrana před internetovými útoky detekuje neobvyklé databázové aktivity, které indikují potenciální bezpečnostní hrozby v Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: monhaber
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 03/31/2019
-ms.openlocfilehash: de802d17f57077e2b4df195e04f35cbf9665f6b3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fca68fbc1ee30b1df100255e463eca2fc895980b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566354"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686971"
 ---
-# <a name="advanced-threat-protection-for-azure-sql-database"></a>Rozšířená ochrana před internetovými útoky pro Azure SQL Database
+# <a name="advanced-threat-protection-for-azure-sql-database"></a>Advanced Threat Protection pro Azure SQL Database
 
 Rozšířená ochrana před internetovými útoky pro [Azure SQL Database](sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
 
@@ -33,7 +33,7 @@ Rozšířená ochrana před internetovými útoky je součástí nabídky [Rozš
 
 V případě úplného šetření doporučujeme povolit [SQL Database auditování](sql-database-auditing.md), které zapisuje databázové události do protokolu auditu ve vašem účtu služby Azure Storage.  
 
-## <a name="advanced-threat-protection-alerts"></a>Výstrahy Advanced Threat Protection
+## <a name="advanced-threat-protection-alerts"></a>Výstrahy rozšířené ochrany před internetovými útoky
 
 Rozšířená ochrana před internetovými útoky pro Azure SQL Database detekuje aktivity neobvyklé indikující neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití a může aktivovat následující výstrahy:
 
@@ -41,12 +41,12 @@ Rozšířená ochrana před internetovými útoky pro Azure SQL Database detekuj
 
   - Chyba v kódu aplikace, která způsobí sestavení chybného příkazu jazyka SQL
   - Kód aplikace ani uložené procedury neupravují uživatelský vstup při sestavování chybného příkazu SQL, který může být zneužit pro injektáž SQL.
-- **Potenciální INJEKTÁŽE SQL**: Tato výstraha se aktivuje, když dojde k aktivnímu zneužití zjištěné chyby zabezpečení identifikované aplikace při vkládání SQL. Znamená to, že se útočník pokouší vložit škodlivé příkazy SQL s použitím zranitelného kódu aplikace nebo uložených procedur.
-- **Přístup z neobvyklého umístění**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k serveru SQL, když se někdo přihlásil k SQL serveru z neobvyklého geografického umístění. V některých případech výstraha detekuje legitimní akci (nová aplikace nebo údržba prováděná vývojářem). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník).
-- **Přístup z neobvyklého datového centra Azure**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k serveru SQL Server, kde se někdo přihlásil k SQL serveru z neobvyklého datového centra Azure, které bylo na tomto serveru vidět během posledního období. V některých případech výstraha rozpozná legitimní akci (nová aplikace v Azure, Power BI, editor dotazů SQL v Azure). V jiných případech výstraha detekuje škodlivou akci prováděnou z prostředku/služby Azure (bývalý zaměstnanec, externí útočník).
-- **Přístup z neznámého objektu zabezpečení**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k serveru SQL, když se někdo přihlásil k serveru SQL pomocí neobvyklého objektu zabezpečení (uživatel SQL). V některých případech výstraha detekuje legitimní akci (nová aplikace, údržba prováděná vývojářem). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník).
-- **Přístup z potenciálně škodlivé aplikace**: Tato výstraha se aktivuje, když se pro přístup k databázi používá potenciálně škodlivá aplikace. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok pomocí běžných nástrojů útoku.
-- **Pověření hrubou silou SQL**: Tato výstraha se aktivuje, když dojde k neobvyklému vysokému počtu neúspěšných přihlášení s různými přihlašovacími údaji. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok hrubou silou.
+- **Potenciální útok prostřednictvím injektáže SQL:** Tato výstraha se aktivuje v případě výskytu aktivního zneužití zranitelnosti identifikované aplikace v důsledku injektáže SQL. Znamená to, že se útočník pokouší vložit škodlivé příkazy SQL s použitím zranitelného kódu aplikace nebo uložených procedur.
+- **Přístup z neobvyklého umístění:** Tato výstraha se aktivuje, pokud dojde ke změně vzoru přístupu k serveru SQL, když se někdo k serveru SQL přihlásil z neobvyklé geografické lokality. V některých případech výstraha detekuje legitimní akci (nová aplikace nebo údržba prováděná vývojářem). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník).
+- **Přístup z neobvyklého datového centra Azure:** Tato výstraha se aktivuje, pokud dojde ke změně vzoru přístupu k serveru SQL, když se někdo k serveru SQL nedávno přihlásil z neobvyklého datového centra Azure. V některých případech výstraha rozpozná legitimní akci (nová aplikace v Azure, Power BI, editor dotazů SQL v Azure). V jiných případech výstraha detekuje škodlivou akci prováděnou z prostředku/služby Azure (bývalý zaměstnanec, externí útočník).
+- **Přístup z neznámého objektu zabezpečení:** Tato výstraha se aktivuje, pokud dojde ke změně vzoru přístupu k serveru SQL, když se někdo k serveru SQL přihlásil s použitím neobvyklého objektu zabezpečení (uživatel SQL). V některých případech výstraha detekuje legitimní akci (nová aplikace, údržba prováděná vývojářem). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník).
+- **Přístup z potenciálně škodlivé aplikace:** Tato výstraha se aktivuje, pokud je pro přístup k databázi použita potenciálně škodlivá aplikace. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok pomocí běžných nástrojů útoku.
+- **Útok hrubou silou na přihlašovací údaje SQL:** Tato výstraha se aktivuje, pokud byly zaznamenán neobvykle vysoký počet neúspěšných přihlášení s různými přihlašovacími údaji. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok hrubou silou.
 
 ## <a name="explore-anomalous-database-activities-upon-detection-of-a-suspicious-event"></a>Prozkoumejte aktivity databáze neobvyklé při detekci podezřelé události
 
@@ -74,7 +74,7 @@ Kliknutím na **Rozšířená výstraha ochrany před internetovými útoky** sp
 
    ![Rozšířená ochrana před internetovými útoky alert2](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si víc o [Rozšířené ochraně před internetovými útoky v databázích s jednou a ve fondu](sql-database-threat-detection.md).
 - Přečtěte si víc o [Rozšířené ochraně před internetovými útoky ve spravované instanci](sql-database-managed-instance-threat-detection.md).

@@ -1,5 +1,5 @@
 ---
-title: Veřejné koncové body zabezpečené spravované instance – Azure SQL Database spravovanou instanci | Microsoft Docs
+title: Veřejné koncové body zabezpečené spravované instance – Azure SQL Database spravovaná instance
 description: Bezpečné použití veřejných koncových bodů v Azure se spravovanou instancí
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/08/2019
-ms.openlocfilehash: c7f57a636e95bb137dd4285b8f9ce8343b27d2a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3d97eb16ee2a8b3203b187dca7b2a17974473098
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567375"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687945"
 ---
 # <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>Bezpečné použití spravované instance Azure SQL Database s veřejnými koncovými body
 
@@ -43,7 +43,7 @@ Následující diagram znázorňuje Doporučené konfigurace zabezpečení:
 
 ![Konfigurace zabezpečení pro uzamykání příchozího a odchozího připojení](media/sql-database-managed-instance-public-endpoint-securely/managed-instance-vnet.png)
 
-Spravovaná instance má vyhrazenou [adresu veřejného koncového bodu](sql-database-managed-instance-find-management-endpoint-ip-address.md). V případě odchozí brány firewall na straně klienta a v pravidlech skupiny zabezpečení sítě nastavte tuto IP adresu veřejného koncového bodu tak, aby se omezilo odchozí připojení.
+Spravovaná instance má [vyhrazenou adresu veřejného koncového bodu](sql-database-managed-instance-find-management-endpoint-ip-address.md). V případě odchozí brány firewall na straně klienta a v pravidlech skupiny zabezpečení sítě nastavte tuto IP adresu veřejného koncového bodu tak, aby se omezilo odchozí připojení.
 
 Aby se zajistilo, že provoz do spravované instance pochází z důvěryhodných zdrojů, doporučujeme připojit se ze zdrojů s dobře známými IP adresami. Pomocí skupiny zabezpečení sítě omezte přístup ke veřejnému koncovému bodu spravované instance na portu 3342.
 
@@ -51,6 +51,6 @@ Když klienti potřebují iniciovat připojení z místní sítě, ujistěte se,
 
 Pokud se připojení spouští z Azure, doporučujeme, aby provoz pocházejí ze známé přiřazené [virtuální IP adresy](../virtual-network/virtual-networks-reserved-public-ip.md) (například virtuální počítač). Chcete-li zjednodušit správu virtuálních IP adres (VIP), je vhodné použít [předpony veřejných IP adres](../virtual-network/public-ip-address-prefix.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Zjistěte, jak nakonfigurovat veřejný koncový bod pro správu instancí: [Konfigurace veřejného koncového bodu](sql-database-managed-instance-public-endpoint-configure.md)
+- Informace o tom, jak nakonfigurovat veřejný koncový bod pro správu instancí: [Konfigurace veřejného koncového bodu](sql-database-managed-instance-public-endpoint-configure.md)

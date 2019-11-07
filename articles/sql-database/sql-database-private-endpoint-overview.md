@@ -1,5 +1,5 @@
 ---
-title: Privátní odkaz pro Azure SQL Database a datový sklad | Microsoft Docs
+title: Privátní odkaz pro Azure SQL Database a datový sklad
 description: Přehled funkce privátního koncového bodu
 author: rohitnayakmsft
 ms.author: rohitna
@@ -7,12 +7,12 @@ ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
-ms.openlocfilehash: 3adcccde89823f865535c9e1350ac4c3e541eef6
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: a056c4beeeb05886d4b4ed492a05d1963372b366
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "71066259"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687605"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Privátní odkaz pro Azure SQL Database a datový sklad (Preview)
 
@@ -60,16 +60,16 @@ Po vytvoření privátního koncového bodu (PE) správcem sítě může správc
 
     - (1) v levém podokně vyberte připojení privátního koncového bodu.
     - (2) zobrazuje seznam všech připojení privátního koncového bodu (PECs).
-    - (3) vytvořil se odpovídající privátní koncový bod (PE) ![Screenshot všech PECs @ no__t-1.
+    - (3) bylo vytvořeno odpovídající privátní koncový bod (PE) ![snímku všech PECs][3]
 
 1. Vyberte jednotlivé řadiče PEC ze seznamu tím, že je vyberete.
-@no__t – 0Screenshot vybrala PEC @ no__t-1.
+![vybraný snímek][6] PEC
 
 1. Správce SQL se může rozhodnout pro schválení nebo zamítnutí serveru PEC a volitelně také přidat krátkou odpověď na text.
-@no__t – 0Screenshot schválení typu PEC @ no__t-1
+![snímku][4] pro schvalování PEC
 
 1. Po schválení nebo odmítnutí bude seznam odpovídat příslušnému stavu spolu s textem odpovědi.
-@no__t – 0Screenshot všech PECs po schválení @ no__t-1
+![snímek obrazovky všech PECs po schválení][5]
 
 ## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Případy použití privátního odkazu pro Azure SQL Database 
 
@@ -128,7 +128,7 @@ Výstup ukazuje, že Psping může testovat privátní IP adresu přidruženou k
 
 ### <a name="check-connectivity-using-nmap"></a>Ověření připojení pomocí nmap
 
-Nmap (mapovač sítě) je bezplatný a open source nástroj, který se používá pro zjišťování sítě a auditování zabezpečení. Další informace a odkaz ke stažení najdete na stránce @no__t – 0. Tento nástroj můžete použít k zajištění toho, aby privátní koncový bod naslouchal připojení na portu 1433.
+Nmap (mapovač sítě) je bezplatný a open source nástroj, který se používá pro zjišťování sítě a auditování zabezpečení. Další informace a odkaz ke stažení najdete na https://nmap.org. Tento nástroj můžete použít k zajištění toho, aby privátní koncový bod naslouchal připojení na portu 1433.
 
 Spusťte Nmap následujícím způsobem zadáním rozsahu adres podsítě, která je hostitelem privátního koncového bodu.
 

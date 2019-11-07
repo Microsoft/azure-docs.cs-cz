@@ -1,5 +1,5 @@
 ---
-title: Aktualizace modelů strojového učení pomocí Azure Data Factory | Microsoft Docs
+title: Aktualizace modelů strojového učení pomocí Azure Data Factory
 description: Popisuje, jak vytvořit vytváření prediktivních kanálů pomocí Azure Data Factory a strojového učení.
 services: data-factory
 documentationcenter: ''
@@ -11,22 +11,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 56d0ce6668c1077b99c980c2bc5b16998a3a41c1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 3313c9c362a9b82cf7ed8db63479aaa5cf0c777e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140531"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683237"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Aktualizace modelů Azure Machine Learning pomocí aktivity aktualizovat prostředek
-Tento článek doplňuje hlavní článek o integraci Azure Data Factory Azure Machine Learning: [Vytváření prediktivních kanálů pomocí Azure Machine Learning a Azure Data Factory](transform-data-using-machine-learning.md) Pokud jste to ještě neudělali, přečtěte si hlavní článek před čtením tohoto článku.
+Tento článek doplňuje hlavní článek o integraci Azure Data Factory Azure Machine Learning: [vytváření prediktivních kanálů pomocí Azure Machine Learning a Azure Data Factory](transform-data-using-machine-learning.md). Pokud jste to ještě neudělali, přečtěte si hlavní článek před čtením tohoto článku.
 
 ## <a name="overview"></a>Přehled
-V rámci procesu zprovozňování Azure Machine Learning modelů je váš model vyškolený a uložený. Pak použijete ho k vytvoření prediktivní webové služby. Webová služba může být potom používán webové stránky, řídicí panely a mobilních aplikací.
+V rámci procesu zprovozňování Azure Machine Learning modelů je váš model vyškolený a uložený. Pak ho použijete k vytvoření prediktivní webové služby. Webovou službu je pak možné spotřebovat na webech, řídicích panelech a mobilních aplikacích.
 
-Obvykle nejsou statické modely, které vytvoříte pomocí služby Machine Learning. K dispozici nová data nebo když příjemce rozhraní API má svá vlastní data musí být retrained modelu. Podrobnosti o tom, jak můžete přeškolit model v Azure Machine Learning, najdete v tématu [přeučení Machine Learningho modelu](../machine-learning/machine-learning-retrain-machine-learning-model.md) .
+Modely, které vytvoříte pomocí Machine Learning, nejsou obvykle statické. Jakmile budou nová data k dispozici nebo když spotřebitel rozhraní API má svá vlastní data, model musí být znovu provlakované. Podrobnosti o tom, jak můžete přeškolit model v Azure Machine Learning, najdete v tématu [přeučení Machine Learningho modelu](../machine-learning/machine-learning-retrain-machine-learning-model.md) .
 
-Přeškolení dochází často. S aktivitou spuštění služby Batch a aktualizací aktivity prostředku můžete zprovoznění Azure Machine Learning model přeškolení a aktualizovat prediktivní webovou službu pomocí Data Factory.
+Rekurze se může vyskytnout často. S aktivitou spuštění služby Batch a aktualizací aktivity prostředku můžete zprovoznění Azure Machine Learning model přeškolení a aktualizovat prediktivní webovou službu pomocí Data Factory.
 
 Následující obrázek znázorňuje vztah mezi školicími a prediktivními webovými službami.
 
@@ -56,9 +56,9 @@ Následující fragment kódu JSON definuje aktivitu spuštění Azure Machine L
 }
 ```
 
-| Vlastnost                      | Popis                              | Požadováno |
+| Vlastnost                      | Popis                              | Požaduje se |
 | :---------------------------- | :--------------------------------------- | :------- |
-| name                          | Název aktivity v kanálu     | Ano      |
+| jméno                          | Název aktivity v kanálu     | Ano      |
 | description                   | Text popisující, co aktivita dělá.  | Ne       |
 | type                          | U Azure Machine Learning aktivita aktualizace prostředku je typ aktivity **povinná**. | Ano      |
 | linkedServiceName             | Azure Machine Learning propojená služba, která obsahuje vlastnost updateResourceEndpoint. | Ano      |
@@ -92,7 +92,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 
 Můžete získat hodnoty pro držitele v adrese URL při dotazování webové služby na [portálu Azure Machine Learning Web Services](https://services.azureml.net/).
 
-Nový typ koncového bodu prostředku aktualizace vyžaduje ověření objektu služby. Pokud chcete použít ověřování instančního objektu, zaregistrujte entitu aplikace ve službě Azure Active Directory (Azure AD) a udělte jí roli **Přispěvatel** nebo **vlastník** předplatného nebo skupiny prostředků, do které patří webová služba. Přečtěte si téma [Vytvoření instančního objektu a přiřazení oprávnění ke správě prostředků Azure](../active-directory/develop/howto-create-service-principal-portal.md). Poznamenejte si následující hodnoty, které slouží k definování propojené služby:
+Nový typ koncového bodu prostředku aktualizace vyžaduje ověření objektu služby. Pokud chcete použít ověřování instančního objektu, zaregistrujte entitu aplikace ve službě Azure Active Directory (Azure AD) a udělte jí roli **Přispěvatel** nebo **vlastník** předplatného nebo skupiny prostředků, do které patří webová služba. Přečtěte si téma [Vytvoření instančního objektu a přiřazení oprávnění ke správě prostředků Azure](../active-directory/develop/howto-create-service-principal-portal.md). Poznamenejte si následující hodnoty, které použijete k definování propojené služby:
 
 - ID aplikace
 - Klíč aplikace
@@ -127,7 +127,7 @@ Tady je ukázka definice propojené služby:
 Další podrobnosti najdete v následujícím scénáři. Obsahuje příklad pro přeškolení a aktualizaci Azure Machine Learningch modelů studia z kanálu Azure Data Factory.
 
 
-## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Ukázka: Přeškolení a aktualizace Azure Machine Learningho modelu
+## <a name="sample-retraining-and-updating-an-azure-machine-learning-model"></a>Ukázka: přeškolení a aktualizace Azure Machine Learningho modelu
 
 V této části najdete ukázkový kanál, který používá **aktivitu spuštění Azure Machine Learning studia dávky** k přeškolování modelu. Kanál také používá **aktivitu prostředku Azure Machine Learning Studio Update** k aktualizaci modelu ve webové službě bodování. Oddíl také poskytuje fragmenty JSON pro všechny propojené služby, datové sady a kanály v příkladu.
 
@@ -266,7 +266,7 @@ Kanál má dvě aktivity: **AzureMLBatchExecution** a **povinná**. Aktivita spu
     }
 }
 ```
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Podívejte se na následující články, které vysvětlují, jak transformovat data jinými způsoby:
 
 * [Aktivita U-SQL](transform-data-using-data-lake-analytics.md)

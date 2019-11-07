@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: eae1ac9c4e4b5a5a8927aa45e898c6f1c47a052d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 19045b54b97fdb69f9fdab3d17066faa5dbcc435
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497281"
+ms.locfileid: "73580716"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace vývojového prostředí pro Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,10 +27,10 @@ Následující tabulka uvádí každé vývojové prostředí popsané v tomto �
 
 | Prostředí | IT | Nevýhody |
 | --- | --- | --- |
-| [Cloudová Azure Machine Learning výpočetní instance](#compute-instance) | Nejjednodušší způsob, jak začít. Celá sada SDK je už ve vašem VIRTUÁLNÍm počítači pracovního prostoru nainstalovaná a kurzy poznámkových bloků jsou předem naklonované a připravené ke spuštění. | Nedostatečná kontrola nad vývojovým prostředím a závislostmi. Dodatečné náklady vzniklé pro virtuální počítač Linux (virtuální počítač se dá zastavit, pokud se nepoužívá), aby se předešlo poplatkům. Podívejte se na [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
+| [Cloudový virtuální počítač s Azure Machine Learning poznámkového bloku](#notebookvm) | Nejjednodušší způsob, jak začít. Celá sada SDK je už ve vašem VIRTUÁLNÍm počítači pracovního prostoru nainstalovaná a kurzy poznámkových bloků jsou předem naklonované a připravené ke spuštění. | Nedostatečná kontrola nad vývojovým prostředím a závislostmi. Dodatečné náklady vzniklé pro virtuální počítač Linux (virtuální počítač se dá zastavit, pokud se nepoužívá), aby se předešlo poplatkům. [Podrobné informace o cenách](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) |
 | [Místní prostředí](#local) | Úplná kontrola nad vývojovým prostředím a závislostmi. Spusťte s libovolným nástrojem sestavení, prostředím nebo IDE dle vašeho výběru. | Začne trvat déle. Musí být nainstalované potřebné balíčky sady SDK a prostředí, pokud ho ještě nemáte, musí být nainstalované i v případě, že ho ještě nemáte. |
-| [Azure Databricks](#aml-databricks) | Ideální pro spouštění vysoce škálovatelných pracovních postupů strojového učení na škálovatelné Apache Spark platformě. | Přehnaně důkladné se na experimentální strojové učení nebo experimenty s menším rozsahem a pracovní postupy. Dodatečné náklady vzniklé za Azure Databricks. Podívejte se na [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/databricks/). |
-| [Data Science Virtual Machine (DSVM)](#dsvm) | Podobně jako u cloudové výpočetní instance (Python a SDK jsou předem nainstalované), ale mají předem nainstalované i další oblíbené datové vědy a nástroje pro strojové učení. Snadné škálování a kombinování s dalšími vlastními nástroji a pracovními postupy. | V porovnání s cloudovou výpočetní instancí je pomalejší prostředí Začínáme. |
+| [Azure Databricks](#aml-databricks) | Ideální pro spouštění vysoce škálovatelných pracovních postupů strojového učení na škálovatelné Apache Spark platformě. | Přehnaně důkladné se na experimentální strojové učení nebo experimenty s menším rozsahem a pracovní postupy. Dodatečné náklady vzniklé za Azure Databricks. [Podrobné informace o cenách](https://azure.microsoft.com/pricing/details/databricks/) |
+| [Data Science Virtual Machine (DSVM)](#dsvm) | Podobně jako u cloudového poznámkového bloku (Python a SDK jsou předem nainstalované), ale mají předinstalované i další oblíbené datové vědy a nástroje pro strojové učení. Snadné škálování a kombinování s dalšími vlastními nástroji a pracovními postupy. | V porovnání s cloudovým VIRTUÁLNÍm počítačem poznámkového bloku se pomaleji Začínáme. |
 
 
 Tento článek také nabízí další tipy k používání následujících nástrojů:
@@ -39,9 +39,9 @@ Tento článek také nabízí další tipy k používání následujících nás
 
 * [Visual Studio Code](#vscode): Používáte-li Visual Studio Code, zahrnuje [rozšíření Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) rozsáhlou jazykovou podporu Pythonu a také funkce, které umožňují pracovat s Azure Machine Learning mnohem pohodlnější a produktivní.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, přečtěte si téma [vytvoření Azure Machine Learningho pracovního prostoru](how-to-manage-workspace.md). Pracovní prostor je vše, co potřebujete, abyste mohli začít s vlastním [cloudovým notebookem](#compute-instance), [DSVM](#dsvm)nebo [Azure Databricks](#aml-databricks).
+Pracovní prostor služby Azure Machine Learning. Pokud chcete vytvořit pracovní prostor, přečtěte si téma [vytvoření Azure Machine Learningho pracovního prostoru](how-to-manage-workspace.md). Pracovní prostor je vše, co potřebujete, abyste mohli začít s vlastním [cloudovým notebookem](#notebookvm), [DSVM](#dsvm)nebo [Azure Databricks](#aml-databricks).
 
 Pokud chcete nainstalovat prostředí SDK pro svůj [místní počítač](#local), [Jupyter Notebook Server](#jupyter) nebo [Visual Studio Code](#vscode) budete také potřebovat:
 
@@ -54,20 +54,16 @@ Pokud chcete nainstalovat prostředí SDK pro svůj [místní počítač](#local
 
 - V systému Windows potřebujete příkazový řádek nebo Anacondaový dotaz (instalovaný Anaconda a Miniconda).
 
-## <a id="compute-instance"></a>Vaše vlastní cloudová instance COMPUTE
+## <a id="notebookvm"></a>Vlastní virtuální počítač s notebookem na bázi cloudu
 
-Instance služby Azure Machine Learning [COMPUTE](concept-compute-instance.md) je zabezpečená cloudová pracovní stanice Azure, která poskytuje odborníky na data pomocí serveru Jupyter notebook, JupyterLab a plně připraveného prostředí ml.
+Virtuální počítač s Azure Machine Learning Poznámkový blok je zabezpečená cloudová pracovní stanice Azure, která poskytuje odborníky na data pomocí serveru Jupyter notebook, JupyterLab a plně připraveného prostředí ML.
 
-> [!NOTE]
-> Výpočetní instance jsou k dispozici pouze pro pracovní prostory s oblastí **střed USA – sever** nebo **Velká Británie – jih**.
->Pokud je váš pracovní prostor v jakékoli jiné oblasti, můžete místo toho vytvořit a použít [virtuální počítač s poznámkovým blokem](concept-compute-instance.md#notebookvm) .
+Virtuální počítač poznámkového bloku je:
 
 Pro výpočetní instanci není nic k instalaci ani konfiguraci.  Vytvořte si ji kdykoli v pracovním prostoru Azure Machine Learning. Zadejte jenom název a zadejte typ virtuálního počítače Azure. Vyzkoušejte si to hned v tomto [kurzu: nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
 
 
-Přečtěte si další informace o [výpočetních instancích](concept-compute-instance.md).
-
-Pokud chcete zastavit náklady na výpočetní výkon, [zastavte výpočetní instanci](tutorial-1st-experiment-sdk-train.md#clean-up-resources).
+Pokud chcete ukončit poplatky za výpočetní prostředky, [zastavte virtuální počítač poznámkového bloku](tutorial-1st-experiment-sdk-train.md#clean-up-resources).
 
 ## <a id="dsvm"></a>Data Science Virtual Machine
 
@@ -196,7 +192,7 @@ Pokud používáte místní počítač (který může být také vzdáleným vir
 
 1. Nainstalujte další balíčky pro experimentování ve službě Machine Learning.
 
-    Použijte některý z následujících příkazů a *> \<new balíčku* nahraďte balíčkem, který chcete nainstalovat. Instalace balíčků prostřednictvím `conda install` vyžaduje, aby byl balíček součástí současných kanálů (nové kanály je možné přidat do cloudu Anaconda).
+    Použijte některý z následujících příkazů a nahraďte *\<novou > balíčku* s balíčkem, který chcete nainstalovat. Instalace balíčků prostřednictvím `conda install` vyžaduje, aby byl balíček součástí současných kanálů (nové kanály je možné přidat do cloudu Anaconda).
 
     ```shell
     conda install <new package>
@@ -311,7 +307,7 @@ Po spuštění clusteru [vytvořte knihovnu](https://docs.databricks.com/user-gu
 
 1. Zvolit **jenom jednu** možnost (žádná jiná instalace sady SDK není podporovaná)
 
-   |Sada SDK&nbsp;balíčku&nbsp;Extras|Zdroj|PyPi &nbsp;Name &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
+   |Sada SDK&nbsp;balíčku&nbsp;Extras|Zdroj|PyPi&nbsp;název&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |Pro datacihly| Nahrát vejce Pythonu nebo PyPI | AzureML-SDK [datacihly]|
    |Pro datacihly – with-<br> Automatické možnosti ML| Nahrát vejce Pythonu nebo PyPI | AzureML-SDK [automl]|
@@ -373,7 +369,7 @@ Konfigurační soubor můžete vytvořit třemi způsoby:
 
 * **Stažení souboru**: v [Azure Portal](https://ms.portal.azure.com)v části **Přehled** pracovního prostoru vyberte **Stáhnout soubor config. JSON** .
 
-     ![Portál Azure](./media/how-to-configure-environment/configure.png)
+     ![portál Azure](./media/how-to-configure-environment/configure.png)
 
 * **Vytvořte soubor programově**: v následujícím fragmentu kódu se připojíte k pracovnímu prostoru ZADÁNÍm ID předplatného, skupiny prostředků a názvu pracovního prostoru. Pak uloží konfiguraci pracovního prostoru do souboru:
 

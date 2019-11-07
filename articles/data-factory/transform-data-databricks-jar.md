@@ -1,5 +1,5 @@
 ---
-title: Transformace dat pomocí JAR pro datacihly – Azure | Microsoft Docs
+title: Transformace dat pomocí JAR pro datacihly – Azure
 description: Naučte se zpracovávat nebo transformovat data spuštěním JAR pro datacihly.
 services: data-factory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.date: 03/15/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 924367c6bb85b64bafbcb8feb546eeb490e07a34
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 982f00b5de9fd3e84233e5fe3b68e22fa6f7fe2a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812794"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683952"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Transformujte data spuštěním aktivity jar v Azure Databricks
 
-Aktivita Azure Databricks jar v [kanálu Data Factory](concepts-pipelines-activities.md) spouští Sparkovou sklenici v clusteru Azure Databricks. Tento článek se sestavuje na článku  [aktivity transformace dat](transform-data.md), který představuje obecný přehled transformace dat a podporovaných transformačních aktivit. Azure Databricks je spravovaná platforma pro spouštění Apache Spark.
+Aktivita Azure Databricks jar v [kanálu Data Factory](concepts-pipelines-activities.md) spouští Sparkovou sklenici v clusteru Azure Databricks. Tento článek navazuje na [aktivity transformace dat](transform-data.md) článku, který představuje obecný přehled transformace dat a podporovaných transformačních aktivit. Azure Databricks je spravovaná platforma pro spouštění Apache Spark.
 
 Jedenáctiminutové představení a ukázku této funkce najdete v tomto videu:
 
@@ -56,12 +56,12 @@ Tady je ukázka definice JSON aktivity JAR pro datacihly:
 
 Následující tabulka obsahuje popis vlastností JSON použitých v definici JSON:
 
-|Vlastnost|Popis|Požadováno|
+|Vlastnost|Popis|Požaduje se|
 |:--|---|:-:|
-|name|Název aktivity v kanálu.|Ano|
+|jméno|Název aktivity v kanálu.|Ano|
 |description|Text popisující, co aktivita dělá.|Ne|
 |type|U aktivity JAR pro datacihly je typ aktivity DatabricksSparkJar.|Ano|
-|linkedServiceName|Název propojené služby datacihly, na které běží aktivita jar Další informace o této propojené službě najdete v článku věnovaném [propojeným službám](compute-linked-services.md) Compute.|Ano|
+|linkedServiceName|Název propojené služby datacihly, na které běží aktivita jar Pokud se o této propojené službě chcete dozvědět víc, přečtěte si článek článku [služby COMPUTE](compute-linked-services.md) .|Ano|
 |mainClassName|Úplný název třídy obsahující metodu Main, která má být provedena. Tato třída musí být obsažena v JAR poskytnutém jako knihovna.|Ano|
 |parameters|Parametry, které budou předány metodě Main.  Toto je pole řetězců.|Ne|
 |Knihovna|Seznam knihoven, které se mají nainstalovat na cluster, který spustí úlohu. Může to být pole < řetězec, objekt >|Ano (aspoň jeden obsahující metodu mainClassName)|

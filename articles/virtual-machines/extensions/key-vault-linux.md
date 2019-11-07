@@ -7,12 +7,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 09/23/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 60d5b8197e142306a51922ce0e042ed2463457d6
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 5991d3d2197822b239b946de66f020dd258f835a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301227"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584385"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault rozšíření virtuálního počítače pro Linux
 
@@ -29,7 +29,7 @@ Rozšíření virtuálních počítačů Key Vault podporuje tyto distribuce sys
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního počítače. Rozšíření nevyžaduje chráněná nastavení – veškerá jeho nastavení jsou považována za informace bez dopadu na zabezpečení. Přípona vyžaduje seznam monitorovaných tajných kódů, četnost dotazování a cílové úložiště certifikátů. Určen  
+Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního počítače. Rozšíření nevyžaduje chráněná nastavení – veškerá jeho nastavení jsou považována za informace bez dopadu na zabezpečení. Přípona vyžaduje seznam monitorovaných tajných kódů, četnost dotazování a cílové úložiště certifikátů. Konkrétně:  
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -59,32 +59,32 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 ```
 
 > [!NOTE]
-> Vaše sledované adresy URL certifikátů by měly mít formát `https://myVaultName.vault.azure.net/secrets/myCertName`.
+> Vaše sledované adresy URL certifikátů by měly být ve formátu `https://myVaultName.vault.azure.net/secrets/myCertName`.
 > 
-> Důvodem je to, že cesta `/secrets` vrátí úplný certifikát, včetně privátního klíče, a cesta `/certificates` ne. Další informace o certifikátech najdete tady: [Key Vault certifikátů](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates) .
+> Důvodem je to, že cesta `/secrets` vrátí úplný certifikát, včetně privátního klíče, a `/certificates` cestu ne. Další informace o certifikátech najdete tady: [Key Vault certifikátů](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates) .
 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name | Hodnota/příklad | Datový typ |
+| Name (Název) | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
-| apiVersion | 2019-07-01 | Datum |
-| Microsoft | Microsoft. Azure. webtrezor. EDP | odkazy řetězců |
-| – typ | KeyVaultForLinux | odkazy řetězců |
+| apiVersion | 2019-07-01 | date |
+| Microsoft | Microsoft. Azure. webtrezor. EDP | řetězec |
+| type | KeyVaultForLinux | řetězec |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | int |
-| certificateStoreName | SLOŽKÁCH | odkazy řetězců |
-| linkOnRenewal | false | Logická hodnota |
-| certificateStoreLocation  | LocalMachine | odkazy řetězců |
-| requiredInitialSync | true | Logická hodnota |
+| pollingIntervalInS | 3600 | řetězec |
+| certificateStoreName | MY | řetězec |
+| linkOnRenewal | false (nepravda) | Boolean |
+| certificateStoreLocation  | LocalMachine | řetězec |
+| requiredInitialSync | true (pravda) | Boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | pole řetězců
 
 
-## <a name="template-deployment"></a>Template deployment
+## <a name="template-deployment"></a>Nasazení šablon
 
 Rozšíření virtuálních počítačů Azure je možné nasadit pomocí šablon Azure Resource Manager. Šablony jsou ideální při nasazení jednoho nebo více virtuálních počítačů, které vyžadují aktualizaci po nasazení certifikátů. Toto rozšíření se dá nasadit na jednotlivé virtuální počítače nebo sady škálování virtuálních počítačů. Schéma a konfigurace jsou společné pro oba typy šablon. 
 
-Konfigurace JSON pro rozšíření virtuálního počítače musí být vnořená v rámci fragmentu prostředků virtuálního počítače šablony, konkrétně objekt `"resources": []` pro šablonu virtuálního počítače a v případě sady škálování virtuálního počítače v objektu `"virtualMachineProfile":"extensionProfile":{"extensions" :[]`.
+Konfigurace JSON pro rozšíření virtuálního počítače musí být vnořená v rámci fragmentu prostředků virtuálního počítače šablony, konkrétně `"resources": []` objekt pro šablonu virtuálního počítače a v případě sady škálování virtuálního počítače v objektu `"virtualMachineProfile":"extensionProfile":{"extensions" :[]`.
 
 ```json
     {
@@ -201,7 +201,7 @@ Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure
 Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```
 
-## <a name="azure-cli"></a>Rozhraní příkazového řádku Azure
+## <a name="azure-cli"></a>Azure CLI
 ```azurecli
  az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
 ```

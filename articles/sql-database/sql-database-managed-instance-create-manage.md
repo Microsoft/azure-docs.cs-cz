@@ -1,5 +1,5 @@
 ---
-title: Reference rozhraní API pro správu pro Azure SQL Database spravovanou instanci | Microsoft Docs
+title: Reference rozhraní API pro správu pro Azure SQL Database spravovanou instanci
 description: Seznamte se s vytvářením a správou spravovaných instancí Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,22 +11,22 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 6bbba3910315be39d9fca81b95083f32ebd60e64
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bdc17dd11269bafa271f69ec001f8dcad484b7b8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567607"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688190"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Reference spravovaného rozhraní API pro Azure SQL Database spravované instance
 
 Spravované instance Azure SQL Database můžete vytvořit a spravovat pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku Azure CLI, REST API a jazyka Transact-SQL. V tomto článku můžete najít přehled funkcí a rozhraní API, které můžete použít k vytvoření a konfiguraci spravované instance.
 
-## <a name="azure-portal-create-a-managed-instance"></a>Azure Portal: Vytvoření spravované instance
+## <a name="azure-portal-create-a-managed-instance"></a>Azure Portal: vytvoření spravované instance
 
-Rychlý Start ukazuje, jak vytvořit spravovanou instanci Azure SQL Database, najdete v tématu [rychlý Start: Vytvořte Azure SQL Database spravovanou instanci](sql-database-managed-instance-get-started.md).
+Rychlý Start ukazuje, jak vytvořit spravovanou instanci Azure SQL Database, najdete v tématu [rychlý Start: vytvoření Azure SQL Database spravované instance](sql-database-managed-instance-get-started.md).
 
-## <a name="powershell-create-and-manage-managed-instances"></a>PowerShell: Vytváření a Správa spravovaných instancí
+## <a name="powershell-create-and-manage-managed-instances"></a>PowerShell: vytváření a Správa spravovaných instancí
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -35,9 +35,9 @@ Rychlý Start ukazuje, jak vytvořit spravovanou instanci Azure SQL Database, na
 Pokud chcete vytvořit a spravovat spravované instance pomocí Azure PowerShell, použijte následující rutiny PowerShellu. Pokud potřebujete nainstalovat nebo upgradovat PowerShell, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!TIP]
-> Ukázkové skripty PowerShellu najdete v [tématu rychlý Start skript: Pomocí knihovny](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/)PowerShellu vytvořte SPRAVOVANOU instanci Azure SQL.
+> Ukázkové skripty PowerShellu najdete v tématu [rychlý Start skriptu: vytvoření spravované instance Azure SQL pomocí knihovny prostředí PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/).
 
-| Rutiny | Popis |
+| Rutina | Popis |
 | --- | --- |
 |[New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)|Vytvoří spravovanou instanci Azure SQL Database. |
 |[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|Vrátí informace o spravované instanci Azure SQL.|
@@ -46,16 +46,16 @@ Pokud chcete vytvořit a spravovat spravované instance pomocí Azure PowerShell
 |[New-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstancedatabase)|Vytvoří databázi spravované instance Azure SQL Database.|
 |[Get-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabase)|Vrátí informace o databázi Azure SQL Managed instance.|
 |[Remove-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabase)|Odebere databázi instance spravované databáze SQL Azure.|
-|[Restore-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase)|Obnoví databázi instance spravované databáze SQL Azure.|
+|[Obnovit – AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase)|Obnoví databázi instance spravované databáze SQL Azure.|
 
-## <a name="azure-cli-create-and-manage-managed-instances"></a>Azure CLI: Vytváření a Správa spravovaných instancí
+## <a name="azure-cli-create-and-manage-managed-instances"></a>Azure CLI: vytvoření a Správa spravovaných instancí
 
 Pokud chcete vytvořit a spravovat spravované instance pomocí [Azure CLI](/cli/azure), použijte následující příkazy [Azure CLI SQL Managed instance](/cli/azure/sql/mi) . Rozhraní příkazového řádku můžete spustit v prohlížeči pomocí [Cloud Shellu](/azure/cloud-shell/overview) nebo [nainstalovat](/cli/azure/install-azure-cli) v systémech macOS, Linux nebo Windows.
 
 > [!TIP]
 > Rychlý Start Azure CLI najdete v tématu [práce se službou SQL Managed instance pomocí Azure CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).
 
-| Rutiny | Popis |
+| Rutina | Popis |
 | --- | --- |
 |[AZ SQL mi Create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) |Vytvoří spravovanou instanci.|
 |[AZ SQL mi list](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-list)|Zobrazí seznam dostupných spravovaných instancí.|
@@ -67,12 +67,12 @@ Pokud chcete vytvořit a spravovat spravované instance pomocí [Azure CLI](/cli
 |[AZ SQL MIDB Restore](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|Obnovení spravované databáze|
 |[AZ SQL MIDB DELETE](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-delete)|Odebere spravovanou databázi.|
 
-## <a name="transact-sql-create-and-manage-instance-databases"></a>Transact-SQL: Vytváření a Správa databází instancí
+## <a name="transact-sql-create-and-manage-instance-databases"></a>Transact-SQL: vytváření a Správa databází instancí
 
 Chcete-li vytvořit a spravovat databázi instancí po vytvoření spravované instance, použijte následující příkazy T-SQL. Tyto příkazy můžete vydat pomocí Azure Portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio) [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is). [Visual Studio Code](https://code.visualstudio.com/docs)nebo jakýkoli jiný program, který se může připojit k serveru Azure SQL Database a předat příkazy jazyka Transact-SQL.
 
 > [!TIP]
-> Pro rychlé starty, které ukazují, že musíte nakonfigurovat a připojit se ke spravované instanci pomocí SQL Server Management Studio v systému [Microsoft Windows, přečtěte si rychlý Start: Konfigurace virtuálního počítače Azure pro připojení k spravované instanci](sql-database-managed-instance-configure-vm.md) Azure SQL Database a [rychlé spuštění: Nakonfigurujte připojení typu Point-to-site k Azure SQL Database spravované instanci z místního](sql-database-managed-instance-configure-p2s.md)prostředí.
+> Pro rychlé starty, které ukazují, že musíte nakonfigurovat a připojit se ke spravované instanci pomocí SQL Server Management Studio v systému Microsoft Windows, přečtěte si téma [rychlý Start: konfigurace virtuálního počítače Azure pro připojení k spravované instanci Azure SQL Database](sql-database-managed-instance-configure-vm.md) a [rychlé zprovoznění: Nakonfigurujte připojení typu Point-to-site k Azure SQL Database spravované instanci z místního prostředí](sql-database-managed-instance-configure-p2s.md).
 > [!IMPORTANT]
 > Pomocí jazyka Transact-SQL nemůžete vytvořit nebo odstranit spravovanou instanci.
 
@@ -81,7 +81,7 @@ Chcete-li vytvořit a spravovat databázi instancí po vytvoření spravované i
 |[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|Vytvoří novou databázi spravované instance. Aby bylo možné vytvořit novou databázi, je nutné, abyste byli připojeni k hlavní databázi.|
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |Upraví databázi spravované instance Azure SQL.|
 
-## <a name="rest-api-create-and-manage-managed-instances"></a>REST API: Vytváření a Správa spravovaných instancí
+## <a name="rest-api-create-and-manage-managed-instances"></a>REST API: vytváření a Správa spravovaných instancí
 
 Chcete-li vytvořit a spravovat spravované instance, použijte tyto požadavky REST API.
 

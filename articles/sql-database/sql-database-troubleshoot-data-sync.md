@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s Azure Synchronizace dat SQL | Microsoft Docs
+title: 'Řešení potíží s Azure Synchronizace dat SQL '
 description: Naučte se řešit běžné problémy s Azure Synchronizace dat SQL.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: f1345c7de3ef56473b8ebd16cea20cfe76f0380e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 31cf2693ba33461f38ea6361bf2ca8b688f177ff
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566272"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686899"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Řešení potíží s Synchronizace dat SQL
 
@@ -39,7 +39,7 @@ Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několi
 
 - [Zobrazuje se významné snížení výkonu.](#sync-perf)
 
-- [Zobrazí se tato zpráva: "Nelze vložit hodnotu null do sloupce sloupce \<>. Sloupec nepovoluje hodnoty null. Co to znamená a jak ho můžu opravit?](#sync-nulls)
+- [Zobrazí se tato zpráva: "do sloupce \<sloupce > nelze vložit hodnotu NULL. Sloupec nepovoluje hodnoty null. Co to znamená a jak ho můžu opravit?](#sync-nulls)
 
 - [Jak zpracovává cyklické odkazy v synchronizaci dat? To znamená, že když jsou stejná data synchronizovaná ve více skupinách synchronizace a mění se v důsledku změny?](#sync-circ)
 
@@ -104,7 +104,7 @@ Výkon se výrazně snižuje, což může být bod, ve kterém nemůžete ani ot
 
 - **Řešení**. Nejlepším řešením je prevence. Ujistěte se, že ve skupinách synchronizace nemáte cyklické odkazy. Každý řádek, který je synchronizovaný jednou skupinou synchronizace, nejde synchronizovat s jinou skupinou synchronizace.
 
-### <a name="sync-nulls"></a>Zobrazí se tato zpráva: "Nelze vložit hodnotu null do sloupce sloupce \<>. Sloupec nepovoluje hodnoty null. Co to znamená a jak ho můžu opravit? 
+### <a name="sync-nulls"></a>Zobrazí se tato zpráva: "do sloupce \<sloupce > nelze vložit hodnotu NULL. Sloupec nepovoluje hodnoty null. Co to znamená a jak ho můžu opravit? 
 Tato chybová zpráva znamená, že došlo k jedné ze dvou následujících problémů:
 -  Tabulka neobsahuje primární klíč. Chcete-li tento problém vyřešit, přidejte primární klíč ke všem tabulkám, které synchronizujete.
 -  V příkazu CREATE INDEX je klauzule WHERE. Synchronizace dat nezpracovává tuto podmínku. Chcete-li tento problém vyřešit, odeberte klauzuli WHERE nebo ručně proveďte změny ve všech databázích. 
@@ -138,7 +138,7 @@ Informace o řešení problémů s agentem klienta najdete v tématu řešení p
 
 - **Příčina**: Pokud je potřeba odstranit soubory zbylé, může se zobrazit zpráva nedostatek místa na disku. To může být způsobeno antivirovým softwarem nebo soubory, které jsou otevřeny při pokusu o odstranění operací.
 
-- **Řešení**. Ručně odstraňte soubory synchronizace, které jsou ve složce% Temp% (`del \*sync\* /s`). Pak odstraňte podadresáře ve složce% Temp%.
+- **Řešení**. Ručně odstraňte soubory synchronizace ve složce% Temp% (`del \*sync\* /s`). Pak odstraňte podadresáře ve složce% Temp%.
 
 > [!IMPORTANT]
 > V průběhu synchronizace neodstraňujte žádné soubory.
@@ -193,19 +193,19 @@ Pokus o odstranění skupiny synchronizace se nezdaří. Při odstranění skupi
 
 - **Řešení**. Udělte uživatelskému účtu přihlašovací údaje přihlášení jako služby:
 
-  1. V nabídce **Start** > **ovládacích panelů** >  >  > **nástroje**pro správu místní zásady zabezpečení Rights Management uživatel místní zásady zabezpečení. > 
+  1. V nabídce **Start** > **Control Panel** > **Nástroje pro správu** > **místní zásady zabezpečení** ** >  > ** Rights Management **uživatele**.
   1. Vyberte možnost **Přihlásit se jako služba**.
   1. V dialogovém okně **vlastnosti** přidejte uživatelský účet.
-  1. Vyberte **použít**a pak vyberte **OK**.
+  1. Vyberte **Apply** (Použít) a pak vyberte **OK**.
   1. Zavřete všechna okna.
 
 ### <a name="setup-date"></a>Databáze má stav "zastaralé".
 
-- **Příčina**: Synchronizace dat SQL odebere databáze, které byly od služby offline po dobu 45 dnů nebo více (počítány od doby, kdy byla databáze přepnuta do režimu offline). Pokud je databáze po dobu 45 dnů nebo déle v režimu offline a pak se vrátí zpět do režimu online **, je její**stav neaktuální.
+- **Příčina**: Synchronizace dat SQL odebere databáze, které byly od služby offline po dobu 45 dnů nebo více (počítány od doby, kdy byla databáze přepnuta do režimu offline). Pokud je databáze po dobu 45 dnů nebo déle v režimu offline a pak se vrátí zpět do režimu online **, je její stav neaktuální.**
 
 - **Řešení**. Neaktuálnímu stavu **se** můžete vyhnout tak, že zajistíte, aby žádná databáze nepřešla do režimu offline po dobu 45 dnů nebo déle.
 
-  Je **-** li stav databáze zastaralá:
+  Je-li stav databáze **zastaralá**:
 
   1. Z synchronizační skupiny odeberte databázi, která má neaktuální **stav.**
   1. Přidejte databázi zpět do skupiny synchronizace.
@@ -217,9 +217,9 @@ Pokus o odstranění skupiny synchronizace se nezdaří. Při odstranění skupi
 
 - **Příčina**: Pokud se některé změny nepodaří použít po celou dobu uchování 45 dní, může se stát, že se skupina synchronizace zastaralá.
 
-- **Řešení**. Abyste se vyhnuli zastaralému stavu pro skupinu synchronizace, Projděte si výsledky úloh synchronizace v prohlížeči historie v pravidelných intervalech. Prozkoumejte a vyřešte všechny změny, které se nezdařily.
+- **Řešení**. Abyste se vyhnuli **zastaralému** stavu pro skupinu synchronizace, Projděte si výsledky úloh synchronizace v prohlížeči historie v pravidelných intervalech. Prozkoumejte a vyřešte všechny změny, které se nezdařily.
 
-  Pokud je stav skupiny synchronizace neaktuální, odstraňte skupinu synchronizace a pak ji znovu vytvořte.
+  Pokud je stav skupiny synchronizace **neaktuální**, odstraňte skupinu synchronizace a pak ji znovu vytvořte.
 
 ### <a name="setup-delete2"></a>Skupinu synchronizace nejde odstranit do tří minut od odinstalace nebo zastavení agenta.
 
@@ -238,16 +238,16 @@ Nemůžete odstranit skupinu synchronizace během tří minut od odinstalace neb
 
 Pokud ze zálohy obnovíte ztracenou nebo poškozenou databázi, může dojít k nekonvergenci dat v synchronizačních skupinách, do kterých databáze patří.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o Synchronizace dat SQL najdete v tématech:
 
 -   Přehled – [synchronizace dat napříč několika cloudy a místními databázemi pomocí Azure synchronizace dat SQL](sql-database-sync-data.md)
 -   Nastavení synchronizace dat
-    - Na portálu – [kurz: Nastavení Synchronizace dat SQL pro synchronizaci dat mezi Azure SQL Database a SQL Server místním prostředí](sql-database-get-started-sql-data-sync.md)
+    - Na portálu – [kurz: nastavení synchronizace dat SQL pro synchronizaci dat mezi Azure SQL Database a SQL Server místním](sql-database-get-started-sql-data-sync.md) prostředím
     - S využitím PowerShellu
-        -  [Synchronizace mezi několika databázemi SQL Azure pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [Synchronizace mezi několika databázemi Azure SQL pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)
--   Agent – synchronizace dat [Data synchronizovat Agent pro synchronizaci dat Azure SQL](sql-database-data-sync-agent.md)
+-   Agent synchronizace dat – [Agent synchronizace dat pro Azure synchronizace dat SQL](sql-database-data-sync-agent.md)
 -   Osvědčené postupy – [osvědčené postupy pro Azure synchronizace dat SQL](sql-database-best-practices-data-sync.md)
 -   Monitorování – [monitorování synchronizace dat SQL pomocí protokolů Azure monitor](sql-database-sync-monitor-oms.md)
 -   Aktualizace schématu synchronizace

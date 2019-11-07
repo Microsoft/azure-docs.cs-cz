@@ -1,5 +1,5 @@
 ---
-title: Přehled konektoru Azure Data Factory | Microsoft Docs
+title: Přehled konektoru Azure Data Factory
 description: Seznamte se s podporovanými konektory v Data Factory.
 services: data-factory
 author: linda33wj
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 8/26/2019
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 14efe4d71ef11f0a4d32266368f0eefa167dff4b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 386372b73940c4917305d89f2e4d16759797bb87
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129884"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680468"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Přehled konektoru Azure Data Factory
 

@@ -1,5 +1,5 @@
 ---
-title: Migrace existujících databází pro horizontální navýšení kapacity | Microsoft Docs
+title: Migrace existujících databází pro horizontální navýšení kapacity
 description: Převod databází horizontálně dělené na použití nástrojů elastické databáze vytvořením správce map horizontálních oddílů
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 2d6d5c51cb381c089633ba010a1d64c8486ddcd8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b88c56872408a7ffe127a4e96d2313301d44c892
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568733"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690529"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Migrace existujících databází pro horizontální navýšení kapacity
 Pomocí nástrojů Azure SQL Database Database Tools (například [klientské knihovny elastic Database](sql-database-elastic-database-client-library.md)) můžete snadno spravovat vaše stávající databáze horizontálně dělené s více instancemi. Nejprve převeďte existující sadu databází na použití [správce map horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md). 
@@ -97,10 +97,10 @@ Aby bylo možné použít tento vzor mapování, musí být hodnoty ID tenanta s
     -RangeShardMapName 'RangeShardMap' 
     -ShardMapManager $ShardMapManager 
 
-### <a name="option-3-list-mappings-on-an-individual-database"></a>Možnost 3: Seznam mapování pro jednotlivé databáze
+### <a name="option-3-list-mappings-on-an-individual-database"></a>Možnost 3: mapování seznamu pro jednotlivé databáze
 Nastavení tohoto modelu také vyžaduje vytvoření mapy seznamu, jak je znázorněno v kroku 2, Option 1.
 
-## <a name="step-3-prepare-individual-shards"></a>Krok 3: Příprava jednotlivých horizontálních oddílů
+## <a name="step-3-prepare-individual-shards"></a>Krok 3: příprava jednotlivých horizontálních oddílů
 Přidejte jednotlivé horizontálních oddílů (databáze) do správce map horizontálních oddílů. Tím se připraví jednotlivé databáze pro ukládání informací o mapování. Tuto metodu spusťte na každém horizontálních oddílů.
 
     Add-Shard 
@@ -110,7 +110,7 @@ Přidejte jednotlivé horizontálních oddílů (databáze) do správce map hori
     # The $ShardMap is the shard map created in step 2.
 
 
-## <a name="step-4-add-mappings"></a>Krok 4: Přidat mapování
+## <a name="step-4-add-mappings"></a>Krok 4: přidání mapování
 Přidání mapování závisí na druhu mapy horizontálních oddílů, kterou jste vytvořili. Pokud jste vytvořili mapu seznamu, přidejte mapování seznamu. Pokud jste vytvořili mapu rozsahu, přidejte mapování rozsahů.
 
 ### <a name="option-1-map-the-data-for-a-list-mapping"></a>Možnost 1: mapování dat pro mapování seznamu
@@ -150,10 +150,10 @@ Informace o existujících horizontálních oddílů a mapováních, která jsou
 ## <a name="summary"></a>Souhrn
 Po dokončení instalace můžete začít používat klientskou knihovnu Elastic Database. Můžete také použít [Směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md) a [dotaz multi-horizontálních oddílů](sql-database-elastic-scale-multishard-querying.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Získejte skripty PowerShellu ze [skriptů Azure SQL DB-elastic Database Tools](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
 
-Nástroje jsou také na GitHubu: [Azure a elastické – DB-Tools](https://github.com/Azure/elastic-db-tools).
+Nástroje jsou také na GitHubu: [Azure nebo elastické databáze-Tools](https://github.com/Azure/elastic-db-tools).
 
 Pomocí nástroje pro dělení k přesunu dat do nebo z modelu více tenantů na jeden model tenanta. Viz [Nástroj rozdělit sloučení](sql-database-elastic-scale-get-started.md).
 
