@@ -1,5 +1,5 @@
 ---
-title: Programové sledování v Azure Data Factory | Microsoft Docs
+title: Programové sledování v Azure Data Factory
 description: Naučte se monitorovat kanál v datové továrně pomocí různých sad SDK (Software Development Kit).
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/16/2018
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 5c1f64282f1e0b1f225bcad0935c4c9b9a0f96b4
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f9e85a2660ffe1088a9897e9936b6fd0360f87d5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141041"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684595"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programové sledování v Azure Data Factory
 Tento článek popisuje, jak monitorovat kanál v datové továrně pomocí různých sad SDK (Software Development Kit). 
@@ -25,7 +25,7 @@ Tento článek popisuje, jak monitorovat kanál v datové továrně pomocí růz
 
 ## <a name="data-range"></a>Rozsah dat
 
-Data Factory ukládá pouze data spuštění kanálu po dobu 45 dnů. Při dotazování programově na data týkající se data Factory běhu kanálu – například pomocí příkazu `Get-AzDataFactoryV2PipelineRun` PowerShellu nejsou k dispozici žádná maximální data pro volitelné `LastUpdatedAfter` a `LastUpdatedBefore` parametry. Pokud se ale dotaz na data za minulý rok nevrátí, například dotaz nevrátí chybu, ale vrátí jenom data spuštění kanálu za posledních 45 dní.
+Data Factory ukládá pouze data spuštění kanálu po dobu 45 dnů. Při dotazování programově na data týkající se Data Factory běhu kanálu – například pomocí příkazového `Get-AzDataFactoryV2PipelineRun` PowerShellu – nejsou k dispozici žádná maximální data pro volitelné `LastUpdatedAfter` a `LastUpdatedBefore` parametry. Pokud se ale dotaz na data za minulý rok nevrátí, například dotaz nevrátí chybu, ale vrátí jenom data spuštění kanálu za posledních 45 dní.
 
 Pokud chcete zachovat data běhu kanálu po dobu více než 45 dnů, nastavte své vlastní diagnostické protokolování pomocí [Azure monitor](monitor-using-azure-monitor.md).
 
@@ -150,8 +150,8 @@ Kompletní dokumentaci k sadě Python SDK najdete v tématu Referenční informa
     $result.Error -join "`r`n"
     ```
 
-Úplnou dokumentaci k rutinám PowerShellu najdete v tématu [Data Factory powershellové reference](/powershell/module/az.datafactory)k rutinám.
+Úplnou dokumentaci k rutinám PowerShellu najdete v tématu [Data Factory powershellové Reference k rutinám](/powershell/module/az.datafactory).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tématu [monitorování kanálů pomocí Azure monitor](monitor-using-azure-monitor.md) článku se dozvíte, jak pomocí Azure monitor monitorovat Data Factory kanály. 
 

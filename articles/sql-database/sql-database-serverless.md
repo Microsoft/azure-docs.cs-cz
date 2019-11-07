@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database bez serveru | Microsoft Docs
+title: Azure SQL Database – bezserverová úroveň
 description: Tento článek popisuje novou výpočetní úroveň bez serveru a porovnává ji se stávající zřízenou výpočetní vrstvou.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 11/04/2019
-ms.openlocfilehash: e8629baa3487795349844229b26d80321c1316ee
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fcd79182e046d94f9e67acecebd5cf6a45f2706f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496251"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687387"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database – bezserverová úroveň
 
@@ -67,7 +67,7 @@ Následující tabulka shrnuje rozdíly mezi výpočetní a zřízenou výpočet
 |:---|:---|:---|
 |**Vzor využití databáze**| Občasné, nepředvídatelné využití s nižším průměrem využití výpočetních prostředků v průběhu času. |  Efektivnější vzorce použití s vyšším průměrem využití výpočetních prostředků v průběhu času nebo více databází pomocí elastických fondů.|
 | **Úsilí řízení výkonu** |Malým|Výkonnější|
-|**Škálování na výpočetní výkon**|Automaticky|Manual|
+|**Škálování na výpočetní výkon**|Automaticky|Ruční|
 |**Výpočetní rychlost odezvy**|Nižší po neaktivních obdobích|Projev|
 |**Členitost fakturace**|Za sekundu|Za hodinu|
 
@@ -126,7 +126,7 @@ Automatické obnovení se aktivuje, pokud platí kterákoli z následujících p
 
 |Funkce|Aktivační událost autoresume|
 |---|---|
-|Ověřování a autorizace|Přihlášení|
+|Ověřování a autorizace|Přihlásit|
 |Detekce hrozeb|Povolení nebo zakázání nastavení detekce hrozeb na úrovni databáze nebo serveru.<br>Úprava nastavení detekce hrozeb na úrovni databáze nebo serveru.|
 |Zjišťování a klasifikace dat|Přidávání, úpravy, odstraňování nebo zobrazování popisků citlivosti|
 |Auditování|Zobrazení záznamů auditu.<br>Probíhá aktualizace nebo zobrazení zásad auditování.|
@@ -155,17 +155,17 @@ Vytvoření nové databáze nebo přesunutí existující databáze do výpočet
 
 1. Zadejte název cíle služby. Cíl služby stanoví úroveň služby, generování hardwaru a maximální virtuální jádra. V následující tabulce jsou uvedeny možnosti cíle služby:
 
-   |Název cíle služby|Úroveň služby|Generování hardwaru|Maximální počet virtuální jádra|
+   |Název cíle služby|Úroveň služeb|Generování hardwaru|Maximální počet virtuální jádra|
    |---|---|---|---|
-   |GP_S_Gen5_1|Obecné použití|Gen5|1\. místo|
-   |GP_S_Gen5_2|Obecné použití|Gen5|2|
-   |GP_S_Gen5_4|Obecné použití|Gen5|4|
-   |GP_S_Gen5_6|Obecné použití|Gen5|6|
-   |GP_S_Gen5_8|Obecné použití|Gen5|8|
-   |GP_S_Gen5_10|Obecné použití|Gen5|10|
-   |GP_S_Gen5_12|Obecné použití|Gen5|12|
-   |GP_S_Gen5_14|Obecné použití|Gen5|14|
-   |GP_S_Gen5_16|Obecné použití|Gen5|16|
+   |GP_S_Gen5_1|Pro obecné účely|Gen5|1|
+   |GP_S_Gen5_2|Pro obecné účely|Gen5|2|
+   |GP_S_Gen5_4|Pro obecné účely|Gen5|4|
+   |GP_S_Gen5_6|Pro obecné účely|Gen5|6|
+   |GP_S_Gen5_8|Pro obecné účely|Gen5|8|
+   |GP_S_Gen5_10|Pro obecné účely|Gen5|10|
+   |GP_S_Gen5_12|Pro obecné účely|Gen5|12|
+   |GP_S_Gen5_14|Pro obecné účely|Gen5|14|
+   |GP_S_Gen5_16|Pro obecné účely|Gen5|16|
 
 2. Volitelně můžete zadat minimální virtuální jádra a prodlevu při pauze pro změnu jejich výchozích hodnot. V následující tabulce jsou uvedeny dostupné hodnoty pro tyto parametry.
 
@@ -174,8 +174,6 @@ Vytvoření nové databáze nebo přesunutí existující databáze do výpočet
    |Minimální virtuální jádra|Závisí na maximální virtuální jádra konfiguraci – viz [omezení prostředků](sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5).|0,5 virtuální jádra|
    |Prodleva při autopauze|Minimálně: 60 minut (1 hodina)<br>Maximum: 10080 minut (7 dní)<br>Zvýšení: 60 minut<br>Zakázat automatického pozastavení:-1|60 minut|
 
-> [!NOTE]
-> Použití jazyka T-SQL k přesunu existující databáze do bez serveru nebo změna její velikosti se momentálně nepodporuje, ale můžete ji provádět pomocí Azure Portal nebo PowerShellu.
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>Vytvořit novou databázi na výpočetní úrovni bez serveru 
 
@@ -183,7 +181,7 @@ Vytvoření nové databáze nebo přesunutí existující databáze do výpočet
 
 Informace najdete [v tématu rychlý Start: vytvoření izolované databáze v Azure SQL Database pomocí Azure Portal](sql-database-single-database-get-started.md).
 
-#### <a name="use-powershell"></a>Použití PowerShellu
+#### <a name="use-powershell"></a>Použití prostředí PowerShell
 
 Následující příklad vytvoří novou databázi na výpočetní úrovni bez serveru.  V tomto příkladu je explicitně určen minimální prodleva virtuální jádra, Max virtuální jádra a interval pro autopauzu.
 
@@ -200,9 +198,20 @@ New-AzSqlDatabase `
   -AutoPauseDelayInMinutes 720
 ```
 
+#### <a name="use-transact-sql-t-sql"></a>Použití jazyka Transact-SQL (T-SQL)
+
+Následující příklad vytvoří novou databázi na výpočetní úrovni bez serveru.
+
+```sql
+CREATE DATABASE testdb
+( EDITION = 'GeneralPurpose', SERVICE_OBJECTIVE = 'GP_S_Gen5_1' ) ;
+```
+
+Podrobnosti najdete v tématu [Vytvoření databáze](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).  
+
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Přesunout databázi ze zřízené výpočetní vrstvy do výpočetní vrstvy bez serveru
 
-#### <a name="use-powershell"></a>Použití PowerShellu
+#### <a name="use-powershell"></a>Použití prostředí PowerShell
 
 Následující příklad přesune databázi ze zřízené výpočetní vrstvy do výpočetní vrstvy bez serveru. V tomto příkladu je explicitně určen minimální prodleva virtuální jádra, Max virtuální jádra a interval pro autopauzu.
 
@@ -219,6 +228,17 @@ Set-AzSqlDatabase `
   -AutoPauseDelayInMinutes 1440
 ```
 
+#### <a name="use-transact-sql-t-sql"></a>Použití jazyka Transact-SQL (T-SQL)
+
+Následující příklad přesune databázi ze zřízené výpočetní vrstvy do výpočetní vrstvy bez serveru. 
+
+```sql
+ALTER DATABASE testdb 
+MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
+```
+
+Podrobnosti najdete v tématu [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current).
+
 ### <a name="move-database-from-serverless-compute-tier-into-provisioned-compute-tier"></a>Přesun databáze z výpočetní vrstvy bez serveru do zřízené výpočetní vrstvy
 
 Databáze bez serveru se dá přesunout do zřízené výpočetní vrstvy stejným způsobem jako přesun zřízené výpočetní databáze do výpočetní vrstvy bez serveru.
@@ -227,23 +247,23 @@ Databáze bez serveru se dá přesunout do zřízené výpočetní vrstvy stejn�
 
 ### <a name="maximum-vcores"></a>Maximální počet virtuálních jader
 
-#### <a name="use-powershell"></a>Použití PowerShellu
+#### <a name="use-powershell"></a>Použití prostředí PowerShell
 
 Změna maximálního virtuální jádra se provádí pomocí příkazu [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) v PowerShellu s použitím argumentu `MaxVcore`.
 
 ### <a name="minimum-vcores"></a>Minimální počet virtuálních jader
 
-#### <a name="use-powershell"></a>Použití PowerShellu
+#### <a name="use-powershell"></a>Použití prostředí PowerShell
 
-Úprava minimálního virtuální jádra se provádí pomocí příkazu [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) v PowerShellu s použitím argumentu `MinVcore`.
+Úprava minimálního virtuální jádra se provádí pomocí příkazu [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) v PowerShellu pomocí argumentu `MinVcore`.
 
 ### <a name="autopause-delay"></a>Prodleva při autopauze
 
-#### <a name="use-powershell"></a>Použití PowerShellu
+#### <a name="use-powershell"></a>Použití prostředí PowerShell
 
 Úprava prodlevy automatického pozastavení se provádí pomocí příkazu [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) v prostředí PowerShell s použitím argumentu `AutoPauseDelayInMinutes`.
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 ### <a name="resources-used-and-billed"></a>Využité a fakturované prostředky
 
@@ -290,7 +310,7 @@ Get-AzSqlDatabase `
 
 Omezení prostředků najdete v tématu [výpočetní vrstva bez serveru](sql-database-vCore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5).
 
-## <a name="billing"></a>Vyúčtování
+## <a name="billing"></a>Fakturace
 
 Cena za výpočetní náklady je maximální využití procesoru a využité paměti každou sekundu. Pokud je množství využitého procesoru a využité paměti menší než minimální velikost zřízená za každou, účtuje se zřízené množství. Aby bylo možné porovnat procesor s pamětí pro účely fakturace, je paměť normalizována na jednotky virtuální jádra tím, že převýší množství paměti v GB o 3 GB na vCore.
 
@@ -317,12 +337,16 @@ Ve výše uvedeném příkladu je vypočítaná faktura za výpočetní výkon n
 |Časový interval|Virtuální jádra použité za sekundu|Využité GB za sekundu|Dimenze COMPUTE se fakturuje.|vCore sekund se účtují v časovém intervalu.|
 |---|---|---|---|---|
 |0:00-1:00|4|9|Virtuální jádra použito|4 virtuální jádra × 3600 sekund = 14400 vCore sekund|
-|1:00-2:00|1\. místo|12|Využitá paměť|12 GB × 1/3 × 3600 sekund = 14400 vCore sekund|
+|1:00-2:00|1|12|Využitá paměť|12 GB × 1/3 × 3600 sekund = 14400 vCore sekund|
 |2:00-8:00|0|0|Minimální zřízená paměť|3 GB × 1/3 × 21600 sekund = 21600 vCore sekund|
 |8:00-24:00|0|0|Při pozastavení se neúčtují žádné výpočetní prostředky.|0 vCore sekund|
 |Celkový počet vCore sekund fakturovaných za 24 hodin||||50400 vCore sekund|
 
 Předpokládejme, že cena za výpočetní jednotku je $0.000073/vCore/sekunda.  Pak se za toto 24hodinové období účtuje produkt ceny za výpočetní jednotku a vCore sekundy: $0.000073/vCore/Second × 50400 vCore sekund = $3,68
+
+### <a name="azure-hybrid-benefit-and-reserved-capacity"></a>Zvýhodněné hybridní využití Azure a Rezervovaná kapacita
+
+Zvýhodněné hybridní využití Azure (AHB) a slevy za rezervované kapacity se nevztahují na výpočetní úroveň bez serveru.
 
 ## <a name="available-regions"></a>Dostupné oblasti
 

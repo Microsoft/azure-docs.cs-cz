@@ -1,5 +1,5 @@
 ---
-title: Spouštět služba SSIS (SQL Server Integration Services) (SSIS) balíčky s dtexec nástrojem povoleným pro Azure | Microsoft Docs
+title: Spouštění balíčků služba SSIS (SQL Server Integration Services) (SSIS) pomocí nástroje DTExec s povoleným Azure
 description: Naučte se spouštět balíčky služba SSIS (SQL Server Integration Services) (SSIS) s dtexec nástrojem povoleným pro Azure.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 472792351b8b7ab96e055bacd64141840ce7a630
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 9ab308d0e2145a0d0b40e8b37c8c5be07b55dac6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596950"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73673555"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>Spouštění balíčků služba SSIS (SQL Server Integration Services) pomocí nástroje DTExec s povoleným Azure
 Tento článek popisuje nástroj příkazového řádku dtexec (AzureDTExec) s podporou Azure. Používá se ke spouštění balíčků služba SSIS (SQL Server Integration Services) (SSIS) na Azure-SSIS Integration Runtime (IR) v Azure Data Factory.
@@ -30,11 +30,11 @@ AzureDTExec spustí vaše balíčky jako aktivity balíčku SSIS ve Data Factory
 
 AzureDTExec je možné nakonfigurovat prostřednictvím SSMS tak, aby používala aplikaci Azure Active Directory (Azure AD), která generuje kanály ve vaší datové továrně. Dá se taky nakonfigurovat tak, aby měl přístup k systémům souborů, sdíleným složkám nebo souborům Azure, do kterých ukládáte balíčky. V závislosti na hodnotách, které udělíte pro své možnosti volání, AzureDTExec vygeneruje a spustí jedinečný Data Factory kanál s aktivitou balíčku Execute SSIS. Vyvolání AzureDTExec se stejnými hodnotami pro příslušné možnosti znovu spustí existující kanál.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Chcete-li použít AzureDTExec, Stáhněte a nainstalujte nejnovější verzi nástroje SSMS, která je verze 18,3 nebo novější. Stáhněte si ho z [tohoto webu](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
 
 ## <a name="configure-the-azuredtexec-utility"></a>Konfigurace nástroje AzureDTExec
-Instalace SSMS na místním počítači nainstaluje taky AzureDTExec. Pokud chcete nakonfigurovat jeho nastavení, spusťte SSMS pomocí možnosti **Spustit jako správce** . Pak vyberte **nástroje**  > **migrovat do Azure**  > **nakonfigurujte dtexec s povoleným Azure**.
+Instalace SSMS na místním počítači nainstaluje taky AzureDTExec. Pokud chcete nakonfigurovat jeho nastavení, spusťte SSMS pomocí možnosti **Spustit jako správce** . Pak vyberte **nástroje** > **migrovat do Azure** > **nakonfigurujte dtexec s povoleným Azure**.
 
 ![Konfigurace nabídky dtexec s povoleným Azure](media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-menu.png)
 
@@ -68,7 +68,7 @@ Aby nedocházelo k zobrazování citlivých hodnot zapsaných v souboru *AzureDT
 ## <a name="invoke-the-azuredtexec-utility"></a>Vyvolat nástroj AzureDTExec
 AzureDTExec můžete vyvolat na příkazovém řádku a zadat relevantní hodnoty pro konkrétní možnosti ve scénáři použití.
 
-Nástroj se instaluje na `{SSMS Folder}\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn`. Můžete přidat cestu k proměnné prostředí PATH, aby ji bylo možné vyvolat odkudkoli.
+Nástroj je nainstalován na `{SSMS Folder}\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn`. Můžete přidat cestu k proměnné prostředí PATH, aby ji bylo možné vyvolat odkudkoli.
 
 ```dos
 > cd "C:\Program Files (x86)\Microsoft SQL Server Management Studio 18\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn"
@@ -86,7 +86,7 @@ Vyvolání AzureDTExec nabízí podobné možnosti jako vyvolání DTExec. Dalš
 - **/Conf [igFile]** : Určuje konfigurační soubor, ze kterého mají být extrahovány hodnoty. Pomocí této možnosti můžete nastavit konfiguraci za běhu pro balíček, který se liší od toho, který je zadaný v době návrhu. Můžete uložit různá nastavení do konfiguračního souboru XML a pak je načíst před spuštěním balíčku. Další informace najdete v tématu [konfigurace balíčků SSIS](https://docs.microsoft.com/sql/integration-services/packages/package-configurations?view=sql-server-2017). Pokud chcete zadat hodnotu pro tuto možnost, použijte cestu UNC pro konfigurační soubor v systému souborů, sdílenou složku nebo soubory Azure s jeho rozšířením dtsConfig. Pokud zadaná cesta UNC obsahuje mezery, vložte kolem celé cesty uvozovky.
 - **/Conn [ection]** : Určuje připojovací řetězce pro existující Správce připojení ve vašem balíčku. Pomocí této možnosti můžete nastavit připojovací řetězce pro modul runtime pro existující Správce připojení v balíčku, které se liší od těch, které jsou určeny v době návrhu. Zadejte hodnotu pro tuto možnost následujícím způsobem: `connection_manager_name_or_id;connection_string [[;connection_manager_name_or_id;connection_string]...]`.
 - **/Set**: přepíše konfiguraci parametru, proměnné, vlastnosti, kontejneru, zprostředkovatele protokolů, enumerátoru foreach nebo připojení v balíčku. Tuto možnost lze zadat vícekrát. Zadejte hodnotu pro tuto možnost následujícím způsobem: `property_path;value`. Například `\package.variables[counter].Value;1` Přepisuje hodnotu `counter` proměnnou jako 1. Průvodce **konfigurací balíčku** můžete použít k vyhledání, zkopírování a vložení hodnoty `property_path` pro položky v balíčku, jejichž hodnota má být popsána. Další informace najdete v tématu [Průvodce konfigurací balíčku](https://docs.microsoft.com/sql/integration-services/package-configuration-wizard-ui-reference?view=sql-server-2014).
-- **/De [crypt]** : nastaví dešifrovací heslo balíčku, který je nakonfigurovaný s úrovní ochrany **EncryptAllWithPassword** /**EncryptSensitiveWithPassword** .
+- **/De [crypt]** : nastaví dešifrovací heslo balíčku, který je nakonfigurovaný s úrovní ochrany **EncryptAllWithPassword**/**EncryptSensitiveWithPassword** .
 
 > [!NOTE]
 > Volání AzureDTExec s novými hodnotami pro své možnosti generuje nový kanál s výjimkou možnosti **/de [pt]** .

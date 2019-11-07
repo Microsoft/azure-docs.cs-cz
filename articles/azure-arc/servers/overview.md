@@ -10,12 +10,12 @@ keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu,
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 0178f27c39c065399208e7fc5afe7352ba4f8e30
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 57dbfa0c2063c2059955294ccc1337bb76b72614
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501999"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606090"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>Co je Azure ARC pro servery
 
@@ -34,7 +34,7 @@ Počítače budou mít stav **připojeno** nebo **Odpojeno** v závislosti na to
 
 V Public Preview podporujeme:
 
-- Windows Server 2012 R2 a vyšší
+- Windows Server 2012 R2 a novější
 - Ubuntu 16,04 a 18,04
 
 Verze Public Preview je navržená pro účely vyhodnocení a neměla by se používat ke správě kritických produkčních prostředků.
@@ -83,9 +83,9 @@ Informace o tom, jak nakonfigurovat agenta pro používání proxy serveru, najd
 
 ## <a name="register-the-required-resource-providers"></a>Registrovat požadované poskytovatele prostředků
 
-Po schválení registrace příznakem funkce je nutné zaregistrovat požadované poskytovatele prostředků.
+Aby bylo možné použít ARC Azure pro servery, musíte zaregistrovat požadované poskytovatele prostředků.
 
-* **Microsoft. HybridCompute**
+* **Microsoft.HybridCompute**
 * **Microsoft. GuestConfiguration**
 
 Poskytovatele prostředků můžete zaregistrovat pomocí následujících příkazů:

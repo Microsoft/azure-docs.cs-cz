@@ -1,5 +1,5 @@
 ---
-title: Pokyny k ladění výkonu Azure SQL Database | Microsoft Docs
+title: Pokyny k ladění výkonu Azure SQL Database
 description: Přečtěte si o použití doporučení k ručnímu vyladění výkonu Azure SQL Database dotazů.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 4ea5d6c734659d36822f62237a42a8fbe332c996
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 971b35838f370f31d6e2d2da06dfdbced2fafb02
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567115"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687670"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>Ruční ladění výkonu dotazů v Azure SQL Database
 
@@ -25,7 +25,7 @@ Jakmile zjistíte problémy s výkonem, na které jste se SQL Database, Tento č
 - Optimalizujte svou aplikaci a použijte některé osvědčené postupy, které můžou zlepšit výkon.
 - Vyladění databáze tak, že změníte indexy a dotazy pro efektivnější práci s daty.
 
-V tomto článku se předpokládá, že už jste pracovali pomocí [doporučení Azure SQL Database Database Advisoru](sql-database-advisor.md) , a Azure SQL Database doporučení pro [Automatické ladění](sql-database-automatic-tuning.md). Také předpokládá, že jste si přečetli [Přehled monitorování a optimalizace](sql-database-monitor-tune-overview.md) a související články týkající se řešení potíží s výkonem. V tomto článku se navíc předpokládá, že nemáte prostředky procesoru, a s tím spojené problémy s výkonem, které se dají vyřešit zvýšením velikosti výpočetní kapacity nebo úrovně služby, aby bylo možné získat více prostředků do vaší databáze.
+V tomto článku se předpokládá, že už jste pracovali pomocí [doporučení Azure SQL Database Database Advisoru](sql-database-advisor.md) , a Azure SQL Database [doporučení pro automatické ladění](sql-database-automatic-tuning.md). Také předpokládá, že jste si přečetli [Přehled monitorování a optimalizace](sql-database-monitor-tune-overview.md) a související články týkající se řešení potíží s výkonem. V tomto článku se navíc předpokládá, že nemáte prostředky procesoru, a s tím spojené problémy s výkonem, které se dají vyřešit zvýšením velikosti výpočetní kapacity nebo úrovně služby, aby bylo možné získat více prostředků do vaší databáze.
 
 ## <a name="tune-your-application"></a>Optimalizace aplikace
 
@@ -206,11 +206,11 @@ Každá část tohoto příkladu se pokusí spustit parametrizovaný příkaz IN
 
 Vzhledem k tomu, že jsme provedli postup s použitím hodnoty 1, byl výsledný plán optimální pro hodnotu 1, ale byl pro všechny ostatní hodnoty v tabulce tento. Výsledek pravděpodobně není to, co byste chtěli, pokud byste si museli každý plán vybrat náhodně, protože plán pomaleji a využívá více prostředků.
 
-Pokud spustíte test s `SET STATISTICS IO` nastavením na `ON`, funguje logická kontrola v tomto příkladu na pozadí. Vidíte, že plán obsahuje 1 148 čtení (což je neefektivní, pokud průměrná velikost písmen vrátí pouze jeden řádek):
+Pokud spustíte test s `SET STATISTICS IO` nastavenou na `ON`, bude logická kontrola v tomto příkladu fungovat na pozadí. Vidíte, že plán obsahuje 1 148 čtení (což je neefektivní, pokud průměrná velikost písmen vrátí pouze jeden řádek):
 
 ![Vyladění dotazu pomocí logického prohledávání](./media/sql-database-performance-guidance/query_tuning_2.png)
 
-Druhá část příkladu používá pomocný parametr dotazu k oznámení, aby Optimalizátor používal konkrétní hodnotu během procesu kompilace. V takovém případě vynutí Procesor dotazů ignorovat hodnotu, která je předána jako parametr, a místo toho předpokládat `UNKNOWN`. To odkazuje na hodnotu, která má průměrnou frekvenci v tabulce (ignoruje se zešikmení). Výsledný plán je plán založený na hledání, který je rychlejší a používá méně prostředků v průměru, než je plán v části 1 tohoto příkladu:
+Druhá část příkladu používá pomocný parametr dotazu k oznámení, aby Optimalizátor používal konkrétní hodnotu během procesu kompilace. V takovém případě vynutí Procesor dotazů ignorovat hodnotu, která je předána jako parametr, a místo toho, aby předpokládala `UNKNOWN`. To odkazuje na hodnotu, která má průměrnou frekvenci v tabulce (ignoruje se zešikmení). Výsledný plán je plán založený na hledání, který je rychlejší a používá méně prostředků v průměru, než je plán v části 1 tohoto příkladu:
 
 ![Vyladění dotazů pomocí pomocného parametru dotazu](./media/sql-database-performance-guidance/query_tuning_3.png)
 
@@ -230,7 +230,7 @@ ORDER BY start_time DESC
 
 Můžete zkontrolovat **Sys. resource_stats** a zjistit, zda prostředek pro test používá více nebo méně prostředků než jiný test. Když porovnáte data, oddělte časování testů tak, aby se v zobrazení **Sys. resource_stats** nezobrazily v jednom okně s pěti minutami. Cílem tohoto cvičení je minimalizovat celkový objem využitých prostředků, a ne minimalizovat prostředky ve špičce. Obecně optimalizuje část kódu pro latenci také snižuje spotřebu prostředků. Ujistěte se, že jsou změny, které provedete v aplikaci, nezbytné a že změny nemají negativní vliv na uživatelské prostředí pro někoho, kdo může v aplikaci použít pomocný parametr dotazu.
 
-Pokud má úloha sadu opakujících se dotazů, často má smysl zachytit a ověřit optimální možnosti plánu, protože jednotkou je minimální jednotka velikosti prostředků, která je vyžadována pro hostování databáze. Po ověření si občas prověříte plány, které vám pomohou zajistit, že nebudou omezené. Další informace o pokynech [pro dotazy najdete v jazyce Transact-SQL](https://msdn.microsoft.com/library/ms181714.aspx).
+Pokud má úloha sadu opakujících se dotazů, často má smysl zachytit a ověřit optimální možnosti plánu, protože jednotkou je minimální jednotka velikosti prostředků, která je vyžadována pro hostování databáze. Po ověření si občas prověříte plány, které vám pomohou zajistit, že nebudou omezené. Další informace o [pokynech pro dotazy najdete v jazyce Transact-SQL](https://msdn.microsoft.com/library/ms181714.aspx).
 
 ### <a name="cross-database-sharding"></a>Horizontálního dělení mezi databázemi
 
@@ -259,7 +259,7 @@ Některé aplikace jsou náročné na zápis. V některých případech můžete
 
 Některé databázové aplikace mají zatížení náročné na čtení. Ukládání vrstev do mezipaměti může snížit zatížení databáze a může potenciálně snížit výpočetní velikost potřebnou k podpoře databáze pomocí Azure SQL Database. Pokud máte v [Azure cache pro Redis](https://azure.microsoft.com/services/cache/)úlohy pro čtení, můžete data přečíst jednou (nebo případně jednou na stroji na úrovni aplikace v závislosti na tom, jak je nakonfigurované), a pak tato data uložit mimo vaši databázi SQL. To je způsob, jak snížit zatížení databáze (CPU a čtení v/v), ale má vliv na konzistenci transakcí, protože data čtená z mezipaměti nemusí být synchronizovaná s daty v databázi. I když v mnoha aplikacích je určitá úroveň nekonzistence přijatelná, to pro všechny úlohy není pravdivé. Před implementací strategie ukládání do mezipaměti na úrovni aplikace byste měli plně pochopit všechny požadavky na aplikace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o úrovních služeb založených na DTU najdete v tématu [nákupní model založený na DTU](sql-database-service-tiers-dtu.md).
 - Další informace o úrovních služeb založených na vCore najdete v tématu [nákupní model založený na Vcore](sql-database-service-tiers-vcore.md).

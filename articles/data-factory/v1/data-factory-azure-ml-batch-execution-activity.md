@@ -1,5 +1,5 @@
 ---
-title: Vytváření prediktivních datových kanálů pomocí Azure Data Factory | Microsoft Docs
+title: Vytváření prediktivních datových kanálů pomocí Azure Data Factory
 description: Popisuje, jak vytvořit vytváření prediktivních kanálů pomocí Azure Data Factory a Azure Machine Learning
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: e7c48c1d91ae08be29531f4a99ea75ab7a928f34
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: eba5df587d6bd6dda6083314cfb94836c6669393
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140485"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683145"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Vytváření prediktivních kanálů pomocí Azure Machine Learning a Azure Data Factory
 
@@ -49,7 +49,7 @@ Data Factory je cloudová služba pro integraci dat, která orchestruje a automa
 
 Služba Data Factory umožňuje vytvářet datové kanály, které přesouvají a transformují data, a následně tyto kanály spouštět podle zadaného plánu (každou hodinu, denně, týdně atd.). Poskytuje také bohaté vizualizace pro zobrazení rodokmenu a závislostí mezi vašimi datovými kanály a monitorování všech datových kanálů z jednoho jednotného zobrazení pro jednodušší identifikaci problémů a nastavení výstrah monitorování.
 
-Přečtěte si [Úvod do Azure Data Factory](data-factory-introduction.md) a sestavte [své první](data-factory-build-your-first-pipeline.md) články o kanálu, abyste mohli rychle začít používat službu Azure Data Factory.
+Přečtěte si [Úvod do Azure Data Factory](data-factory-introduction.md) a [Sestavte své první](data-factory-build-your-first-pipeline.md) články o kanálu, abyste mohli rychle začít používat službu Azure Data Factory.
 
 ### <a name="data-factory-and-machine-learning-together"></a>Data Factory a Machine Learning dohromady
 Azure Data Factory vám umožní snadno vytvářet kanály, které používají publikovanou webovou službu [Azure Machine Learning][azure-machine-learning] pro prediktivní analýzy. Pomocí **aktivity dávkového spuštění** v kanálu Azure Data Factory můžete vyvolat webovou službu Azure Machine Learning Studio, abyste předpovědi data ve službě Batch. Podrobnosti najdete v části vyvolání webové služby Azure Machine Learning Studio pomocí části aktivita spuštění dávky.
@@ -74,13 +74,13 @@ Azure Data Factory slouží k orchestraci přesunu a zpracování dat a následn
 
       ![Identifikátor URI dávky](./media/data-factory-azure-ml-batch-execution-activity/batch-uri.png)
 
-### <a name="scenario-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Scénář: Experimenty využívající vstupy a výstupy webové služby, které odkazují na data v Azure Blob Storage
+### <a name="scenario-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Scénář: experimenty s využitím vstupů a výstupů webové služby, které odkazují na data v Azure Blob Storage
 V tomto scénáři používá webová služba Azure Machine Learning předpovědi data ze souboru v úložišti objektů BLOB v Azure a ukládá výsledky předpovědi do úložiště objektů BLOB. Následující JSON definuje Data Factory kanál s aktivitou AzureMLBatchExecution. Aktivita má datovou sadu **DecisionTreeInputBlob** jako vstup a **DecisionTreeResultBlob** jako výstup. **DecisionTreeInputBlob** je předán jako vstup do webové služby pomocí vlastnosti **webServiceInput** JSON. **DecisionTreeResultBlob** se předává jako výstup do webové služby pomocí vlastnosti **webServiceOutputs** JSON.
 
 > [!IMPORTANT]
 > Pokud webová služba používá více vstupů, použijte namísto použití **webServiceInput**vlastnost **webServiceInputs** . Viz část [Webová služba vyžaduje více vstupů](#web-service-requires-multiple-inputs) pro příklad použití vlastnosti webServiceInputs.
 >
-> Datové sady, na které odkazují vlastnosti **webServiceInput**/**webServiceInputs** a **webServiceOutputs** (v **typeProperties**), musí být zahrnuté i do **vstupů** a **výstupů**aktivit.
+> Datové sady, na které odkazují vlastnosti **webServiceInput**/**webServiceInputs** a **webServiceOutputs** (v **typeProperties**), musí být zahrnuté i v **vstupech** a **výstupech**aktivity.
 >
 > Ve vašem experimentu Azure Machine Learning Studio mají vstupní a výstupní porty webové služby a globální parametry výchozí názvy ("input1", "input2"), které můžete přizpůsobit. Názvy, které použijete pro nastavení webServiceInputs, webServiceOutputs a globalParameters, se musí přesně shodovat s názvy v experimentech. Chcete-li ověřit očekávané mapování, můžete zobrazit datovou část s ukázkovým požadavkem na stránce s nápovědu pro spuštění dávky pro váš koncový bod služby Azure Machine Learning Studio.
 >
@@ -192,7 +192,7 @@ Před přechodem do tohoto příkladu doporučujeme projít si [sestavení prvn�
     }
     ```
 
-    Pokud soubor CSV neobsahuje řádek záhlaví, může se zobrazit následující chyba: **Chyba v aktivitě: Při čtení řetězce došlo k chybě. Neočekávaný token: Metodě StartObject. Cesta ' ', řádek 1, pozice 1**.
+    Pokud soubor CSV neobsahuje řádek záhlaví, může se zobrazit následující chyba: **Chyba v aktivitě: Chyba při čtení řetězce. Neočekávaný token: metodě StartObject. Cesta ' ', řádek 1, pozice 1**.
 3. Vytvořte **výstupní** Azure Data Factory **datovou sadu**. Tento příklad používá dělení k vytvoření jedinečné výstupní cesty pro každé spuštění řezu. Bez dělení by aktivita mohla soubor přepsat.
 
     ```JSON
@@ -301,15 +301,15 @@ Před přechodem do tohoto příkladu doporučujeme projít si [sestavení prvn�
       }
       ```
 
-      **Počáteční** i **koncové** hodnoty data a času musí být ve [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Příklad: 2014-10-14T16:32:41Z. **Koncový** čas je nepovinný. Pokud nezadáte hodnotu vlastnosti **End** , vypočítá se jako "**Start + 48 hodiny".** Pokud chcete kanál spouštět bez omezení, zadejte vlastnosti **end** hodnotu **9999-09-09**. Podrobné informace o vlastnostech JSON najdete v tématu [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referenční příručka skriptování JSON).
+      **Počáteční** i **koncové** hodnoty data a času musí být ve [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Například: 2014-10-14T16:32:41Z. **Koncový** čas je nepovinný. Pokud nezadáte hodnotu vlastnosti **End** , vypočítá se jako "**Start + 48 hodiny".** Pokud chcete kanál spouštět bez omezení, zadejte vlastnosti **end** hodnotu **9999-09-09**. Podrobné informace o vlastnostech JSON najdete v tématu [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referenční příručka skriptování JSON).
 
       > [!NOTE]
       > Zadání vstupu pro aktivitu AzureMLBatchExecution je volitelné.
       >
       >
 
-### <a name="scenario-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Scénář: Experimenty pomocí modulů pro čtení a zápis, které odkazují na data v různých úložištích
-Dalším běžným scénářem při vytváření experimentů Azure Machine Learning studia je použití modulů pro čtení a zápis. Modul čtečky se používá k načtení dat do experimentu a modul zapisovače ukládá data z experimentů. Podrobnosti o modulech čtenářů a zapisovači [](https://msdn.microsoft.com/library/azure/dn905997.aspx) najdete v tématu témata čtenářů a [zapisovače](https://msdn.microsoft.com/library/azure/dn905984.aspx) v knihovně MSDN.
+### <a name="scenario-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Scénář: experimenty pomocí modulů pro čtení a zápis, které odkazují na data v různých úložištích
+Dalším běžným scénářem při vytváření experimentů Azure Machine Learning studia je použití modulů pro čtení a zápis. Modul čtečky se používá k načtení dat do experimentu a modul zapisovače ukládá data z experimentů. Podrobnosti o modulech čtenářů a zapisovači najdete v tématu témata [čtenářů](https://msdn.microsoft.com/library/azure/dn905997.aspx) a [zapisovače](https://msdn.microsoft.com/library/azure/dn905984.aspx) v knihovně MSDN.
 
 Při použití modulů pro čtení a zápis je vhodné použít parametr webové služby pro každou vlastnost těchto modulů pro čtení a zápis. Tyto webové parametry umožňují konfigurovat hodnoty za běhu. Můžete například vytvořit experiment s modulem čtenář, který používá Azure SQL Database: XXX.database.windows.net. Po nasazení webové služby budete chtít povolit uživatelům webové služby zadání další SQL Server Azure s názvem YYY.database.windows.net. Tuto hodnotu můžete nakonfigurovat pomocí parametru webové služby.
 
@@ -347,7 +347,7 @@ V rámci předávání hodnot pro parametry webové služby můžete také použ
 ### <a name="using-a-reader-module-to-read-data-from-multiple-files-in-azure-blob"></a>Použití modulu čtenáře ke čtení dat z více souborů v objektu blob Azure
 Kanály velkých objemů dat s aktivitami, jako je například prase a podregistr, mohou způsobit jeden nebo více výstupních souborů bez rozšíření. Když například zadáte externí tabulku podregistru, data pro tabulku externího podregistru můžete uložit do Azure Blob Storage s následujícím názvem 000000_0. Modul čtečky můžete použít ve experimentu ke čtení více souborů a jejich použití pro předpovědi.
 
-Při použití modulu čtenář ve Azure Machine Learning experimentu můžete jako vstup zadat objekt blob Azure. Soubory v úložišti objektů BLOB v Azure můžou být výstupní soubory (příklad: 000000_0), které jsou vyráběny pomocí prasete a skriptu pro podregistr, který běží v HDInsight. Modul čtečky umožňuje číst soubory (bez rozšíření) konfigurací **cesty ke kontejneru, adresáři nebo objektu BLOB**. **Cesta ke kontejneru** odkazuje na kontejner a **adresář nebo objekt BLOB** odkazuje na složku, která obsahuje soubory, jak je znázorněno na následujícím obrázku. Hvězdička, která je \*,) **Určuje, že všechny soubory v kontejneru/složce (tj. data/aggregateddata/Year = 2014/month-6/\*)** jsou čteny jako součást experimentu.
+Při použití modulu čtenář ve Azure Machine Learning experimentu můžete jako vstup zadat objekt blob Azure. Soubory v úložišti objektů BLOB v Azure můžou být výstupní soubory (například: 000000_0), které jsou vyráběny pomocí nástroje pro vepřové soubory a skripty v HDInsight spuštěné v HDInsight. Modul čtečky umožňuje číst soubory (bez rozšíření) konfigurací **cesty ke kontejneru, adresáři nebo objektu BLOB**. **Cesta ke kontejneru** odkazuje na kontejner a **adresář nebo objekt BLOB** odkazuje na složku, která obsahuje soubory, jak je znázorněno na následujícím obrázku. Hvězdička, která je \*) **, určuje, že všechny soubory v kontejneru/složce (tj. data/aggregateddata/Year = 2014/month-6/\*)** jsou čteny jako součást experimentu.
 
 ![Vlastnosti objektu BLOB v Azure](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 
@@ -404,8 +404,8 @@ Při použití modulu čtenář ve Azure Machine Learning experimentu můžete j
 
 Ve výše uvedeném příkladu JSON:
 
-* Nasazená Azure Machine Learning webová služba používá ke čtení a zápisu dat z/do Azure SQL Database modul pro čtení a modul pro zápis. Tato webová služba zpřístupňuje následující čtyři parametry:  Název databázového serveru, název databáze, název uživatelského účtu serveru a heslo uživatelského účtu serveru.
-* **Počáteční** i **koncové** hodnoty data a času musí být ve [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Příklad: 2014-10-14T16:32:41Z. **Koncový** čas je nepovinný. Pokud nezadáte hodnotu vlastnosti **End** , vypočítá se jako "**Start + 48 hodiny".** Pokud chcete kanál spouštět bez omezení, zadejte vlastnosti **end** hodnotu **9999-09-09**. Podrobné informace o vlastnostech JSON najdete v tématu [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referenční příručka skriptování JSON).
+* Nasazená Azure Machine Learning webová služba používá ke čtení a zápisu dat z/do Azure SQL Database modul pro čtení a modul pro zápis. Tato webová služba zpřístupňuje následující čtyři parametry: název databázového serveru, název databáze, název uživatelského účtu serveru a heslo uživatelského účtu serveru.
+* **Počáteční** i **koncové** hodnoty data a času musí být ve [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Například: 2014-10-14T16:32:41Z. **Koncový** čas je nepovinný. Pokud nezadáte hodnotu vlastnosti **End** , vypočítá se jako "**Start + 48 hodiny".** Pokud chcete kanál spouštět bez omezení, zadejte vlastnosti **end** hodnotu **9999-09-09**. Podrobné informace o vlastnostech JSON najdete v tématu [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referenční příručka skriptování JSON).
 
 ### <a name="other-scenarios"></a>Další scénáře
 #### <a name="web-service-requires-multiple-inputs"></a>Webová služba vyžaduje více vstupů.
@@ -550,7 +550,7 @@ Až budete s přeškolením hotovi, aktualizujte webovou službu bodování (pre
 ### <a name="reader-and-writer-modules"></a>Moduly pro čtení a zápis
 Běžným scénářem použití parametrů webové služby je použití čteček a zapisovače Azure SQL. Modul čtečky se používá k načtení dat do experimentu ze služeb pro správu dat mimo Azure Machine Learning Studio. Modul zapisovače ukládá data z experimentů do služeb správy dat mimo Azure Machine Learning Studio.
 
-Podrobnosti o službě Azure Blob/službě Azure SQL Reader a zapisovači [](https://msdn.microsoft.com/library/azure/dn905997.aspx) najdete v tématech ke čtenářům a [zapisovači](https://msdn.microsoft.com/library/azure/dn905984.aspx) v knihovně MSDN. Příklad v předchozím oddílu používá čtečku objektů blob Azure a zapisovač objektů BLOB v Azure. Tato část se zabývá používáním služby Azure SQL Reader a služby Azure SQL Writer.
+Podrobnosti o službě Azure Blob/službě Azure SQL Reader a zapisovači najdete v tématech ke [čtenářům](https://msdn.microsoft.com/library/azure/dn905997.aspx) a [zapisovači](https://msdn.microsoft.com/library/azure/dn905984.aspx) v knihovně MSDN. Příklad v předchozím oddílu používá čtečku objektů blob Azure a zapisovač objektů BLOB v Azure. Tato část se zabývá používáním služby Azure SQL Reader a služby Azure SQL Writer.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 **Otázka:** Mám několik souborů generovaných kanály velkých objemů dat. Můžu aktivitu AzureMLBatchExecution použít pro práci na všech souborech?
@@ -628,7 +628,7 @@ V rámci předávání hodnot pro parametry webové služby můžete také použ
 >
 
 ## <a name="see-also"></a>Viz také
-* [Příspěvek na blogu Azure: Začínáme s Azure Data Factory a Azure Machine Learning](https://azure.microsoft.com/blog/getting-started-with-azure-data-factory-and-azure-machine-learning-4/)
+* [Blogový příspěvek Azure: Začínáme s Azure Data Factory a Azure Machine Learning](https://azure.microsoft.com/blog/getting-started-with-azure-data-factory-and-azure-machine-learning-4/)
 
 [adf-build-1st-pipeline]: data-factory-build-your-first-pipeline.md
 

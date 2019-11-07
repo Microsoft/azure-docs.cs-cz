@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database auditování spravované instance | Microsoft Docs
+title: Azure SQL Database auditování spravované instance
 description: Naučte se, jak začít s Azure SQL Database auditování spravované instance pomocí T-SQL.
 services: sql-database
 ms.service: sql-database
@@ -13,12 +13,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 04/08/2019
-ms.openlocfilehash: 23e3a15ac26cdf0950ee31fddad2af4a3b7414c2
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 915d804cd3ae67848b4b9aa2f50fb5f1b4f1f092
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025389"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689421"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Začínáme s Azure SQL Database auditování spravované instance
 
@@ -31,7 +31,7 @@ Auditování [spravované instance](sql-database-managed-instance.md) sleduje ud
 
 V následující části je popsána konfigurace auditování na spravované instanci.
 
-1. Přejděte na [Azure Portal](https://portal.azure.com).
+1. Přejděte na [portál Azure](https://portal.azure.com).
 1. Vytvořte **kontejner** Azure Storage, ve kterém jsou uložené protokoly auditu.
 
    1. Přejděte do Azure Storage, kam chcete ukládat protokoly auditu.

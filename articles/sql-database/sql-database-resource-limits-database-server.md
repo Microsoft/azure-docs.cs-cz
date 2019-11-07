@@ -1,5 +1,5 @@
 ---
-title: Omezení prostředků serveru Azure SQL Database | Microsoft Docs
+title: Omezení prostředků serveru Azure SQL Database
 description: Tento článek poskytuje přehled omezení prostředků Azure SQL Database serveru pro izolované databáze a elastické fondy. Poskytuje také informace o tom, co se stane, když dojde k dosažení nebo překročení těchto omezení prostředků.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 04/18/2019
-ms.openlocfilehash: 175f694cbe46f871349136c9ce91888b6de48d21
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b358e69df1df579e91a9098c120c7e6b4e3f2ead
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566859"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687499"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>SQL Database omezení prostředků pro Azure SQL Database Server
 
@@ -27,12 +27,12 @@ Tento článek poskytuje přehled SQL Databasech omezení prostředků pro SQL D
 
 ## <a name="maximum-resource-limits"></a>Maximum omezení prostředků
 
-| Resource | Omezení |
+| Prostředek | Omezení |
 | :--- | :--- |
 | Databáze na server | 5000 |
 | Výchozí počet serverů na předplatné v libovolné oblasti | 20 |
 | Maximální počet serverů na předplatné v libovolné oblasti | 200 |  
-| Kvóta DTU/eDTU na server | 54,000 |  
+| Kvóta DTU/eDTU na server | 54 000 |  
 | vCore kvóta na server/instanci | 540 |
 | Maximální počet fondů na server | Omezeno počtem DTU nebo virtuální jádra. Pokud je například každý fond 1000 DTU, může server podporovat fondy 54.|
 |||
@@ -104,7 +104,7 @@ Pokud se setkáte s limitem přenosové rychlosti, která brání požadovanou �
 - Pokud jsou data načítána do přechodného režimu, tj. přípravná data v procesu ETL, lze je načíst do tempdb (což je minimální protokolně). 
 - V případě analytických scénářů se načtěte do clusterované tabulky columnstore. Tím se sníží požadovaná rychlost protokolu z důvodu komprimace. Tato technika zvýší využití procesoru a vztahuje se pouze na datové sady, které využívají clusterované indexy columnstore. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Informace o obecných omezeních Azure najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-subscription-service-limits.md).
 - Informace o DTU a eDTU najdete v tématu [DTU a eDTU](sql-database-purchase-models.md#dtu-based-purchasing-model).

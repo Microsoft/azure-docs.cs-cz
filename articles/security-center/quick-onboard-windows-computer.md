@@ -1,5 +1,5 @@
 ---
-title: Rychlý start Azure Security Center – Připojení počítačů s Windows ke službě Security Center | Microsoft Docs
+title: Připojení počítačů s Windows k Azure Security Center
 description: V tomto rychlém startu se dozvíte, jak zřídit agenta Microsoft Monitoring Agent na počítači s Windows.
 services: security-center
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 46fffc40b315109c348247ac09f02f9bb8dbb3b7
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 417d8379d019a9ef0da41638cba4a1f9cb7b8bc2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202793"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686497"
 ---
-# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Rychlý start: Připojení počítačů s Windows k Azure Security Center
+# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Rychlý start: Připojení počítačů s Windows ke službě Azure Security Center
 Po připojení předplatných Azure můžete zřízením agenta Microsoft Monitoring Agent povolit službu Security Center pro prostředky spuštěné mimo Azure, například v místním prostředí nebo jiných cloudech.
 
 V tomto rychlém startu se dozvíte, jak nainstalovat agenta Microsoft Monitoring Agent na počítač s Windows.
@@ -64,7 +64,7 @@ Teď je potřeba stažený soubor nainstalovat na cílový počítač.
 4. Na stránce **Cílová složka** změňte nebo ponechte výchozí instalační složku a pak vyberte **Další**.
 5. Na stránce **Možnosti instalace agenta** zvolte připojení agenta k Azure Log Analytics a pak vyberte **Další**.
 6. Na stránce **Azure Log Analytics** vložte **ID pracovního prostoru** a **Klíč pracovního prostoru (Primární klíč)** , které jste zkopírovali do Poznámkového bloku v rámci předchozího postupu.
-7. Pokud se má počítač hlásit do pracovního prostoru služby Log Analytics v cloudu Azure Government, vyberte z rozevíracího seznamu **Cloud Azure** možnost **Azure US Government**.  Pokud počítač potřebuje komunikovat se službou Log Analytics přes proxy server, vyberte **Upřesnit** a zadejte adresu URL a číslo portu proxy serveru.
+7. Pokud se má počítač hlásit do pracovního prostoru služby Log Analytics v cloudu Azure Government, vyberte z rozevíracího seznamu **Cloud Azure** možnost **Azure US Government**. Pokud počítač potřebuje komunikovat se službou Log Analytics přes proxy server, vyberte **Upřesnit** a zadejte adresu URL a číslo portu proxy serveru.
 8. Jakmile dokončíte zadávání nezbytných nastavení konfigurace, vyberte **Další**.
 
    ![Instalace agenta][5]
@@ -84,7 +84,7 @@ V okně **Compute** se zobrazují dva typy ikon:
 
 ![icon1](./media/quick-onboard-windows-computer/security-center-monitoring-icon1.png) Počítač umístěný mimo Azure
 
-![icon2](./media/quick-onboard-windows-computer/security-center-monitoring-icon2.png) Azure VM
+![icon2](./media/quick-onboard-windows-computer/security-center-monitoring-icon2.png) Virtuální počítač Azure
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud už ho nepotřebujete, můžete agenta z počítače s Windows odebrat.

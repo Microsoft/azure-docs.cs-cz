@@ -2,19 +2,19 @@
 title: Rychlý Start – vytvoření objektu BLOB v Azure Storage pomocí JavaScriptu a HTML v prohlížeči
 description: Naučte se nahrávat, vypisovat a odstraňovat objekty BLOB pomocí JavaScriptu na stránce HTML.
 services: storage
-author: KarlErickson
+author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
-ms.author: karler
+ms.author: mhopkins
 ms.date: 08/29/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: de21791e1ae11554f7a57c17c3935c0993bea1f9
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 3eb6f68a443e29a7d4c7b4dedad38783f838dee5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025363"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686682"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -22,7 +22,7 @@ ms.locfileid: "73025363"
 
 V tomto rychlém startu se naučíte používat [sadu Azure Storage SDK v10 za účelem pro JavaScript – knihovny objektů BLOB](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob#readme) pro správu objektů BLOB z kódu JavaScriptu, který běží zcela v prohlížeči. Níže použitý přístup ukazuje, jak používat požadovaná bezpečnostní opatření pro zajištění chráněného přístupu k účtu úložiště objektů blob.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 

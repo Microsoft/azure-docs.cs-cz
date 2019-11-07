@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z Sparkem s využitím Azure Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak kopírovat data ze Spark do úložišť dat podporovaných jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
+title: Kopírování dat ze Sparku pomocí Azure Data Factory
+description: Naučte se, jak kopírovat data ze Sparku do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,27 +12,27 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 3556c3f2cc56c85bf256f7a352a1a74ad06735d8
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: c155f72d2c95f47b450207ae4b6a8d9a79f61030
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089349"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680167"
 ---
-# <a name="copy-data-from-spark-using-azure-data-factory"></a>Kopírování dat z aplikace Spark pomocí Azure Data Factory 
+# <a name="copy-data-from-spark-using-azure-data-factory"></a>Kopírování dat ze Sparku pomocí Azure Data Factory 
 
-Tento článek ukazuje, jak použije aktivitu kopírování ke kopírování dat z aplikace Spark ve službě Azure Data Factory. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z Sparku. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
 
-## <a name="supported-capabilities"></a>Podporované funkce
+## <a name="supported-capabilities"></a>Podporované možnosti
 
 Tento konektor Spark se podporuje pro následující činnosti:
 
 - [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
 - [Aktivita Lookup](control-flow-lookup-activity.md)
 
-Kopírování dat z Spark do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Data z Sparku můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Poskytuje integrované ovladače chcete umožnit připojení k Azure Data Factory, proto není nutné ručně nainstalovat všechny ovladače používání tohoto konektoru.
+Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, takže nemusíte ručně instalovat žádné ovladače pomocí tohoto konektoru.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,29 +42,29 @@ Poskytuje integrované ovladače chcete umožnit připojení k Azure Data Factor
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní konektor Spark.
+Následující části obsahují podrobné informace o vlastnostech, které slouží k definování Data Factory entit specifických pro konektor Spark.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro Spark, propojené služby jsou podporovány následující vlastnosti:
+Pro propojenou službu Spark jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **Spark** | Ano |
-| host | IP adresa nebo název hostitele serveru Spark  | Ano |
-| port | Port TCP, Spark server se používá k naslouchání pro připojení klientů. Pokud se připojíte k Azure HDInsights, zadejte port 443. | Ano |
-| serverType | Typ serveru Spark. <br/>Povolené hodnoty jsou: **SharkServer**, **SharkServer2**, **SparkThriftServer** | Ne |
-| thriftTransportProtocol | Protokol přenos, který se má použít ve vrstvě Thrift. <br/>Povolené hodnoty jsou: **Binární**, **SASL**, **http** | Ne |
-| authenticationType | Metodu ověřování pro přístup k serveru Spark. <br/>Povolené hodnoty jsou: **Anonymous**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ano |
-| username | Uživatelské jméno, který používáte pro přístup k serveru Spark.  | Ne |
-| password | Heslo, odpovídající uživatel. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
-| httpPath | Částečné adresa URL odpovídající serveru Spark.  | Ne |
-| enableSsl | Určuje, zda jsou šifrované připojení k serveru pomocí SSL. Výchozí hodnota je false.  | Ne |
-| trustedCertPath | Úplná cesta soubor .pem obsahující certifikáty důvěryhodné CA pro ověření serveru, při připojení přes protokol SSL. Tuto vlastnost lze nastavit pouze při použití protokolu SSL v místním prostředí IR. Výchozí hodnota je soubor cacerts.pem součástí IR.  | Ne |
-| useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační Autority ze systémového úložiště důvěryhodnosti nebo ze zadaného souboru PEM. Výchozí hodnota je false.  | Ne |
-| allowHostNameCNMismatch | Určuje, jestli se vyžaduje název certifikátu SSL vydaný certifikační Autority tak, aby odpovídaly názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je false.  | Ne |
-| allowSelfSignedServerCert | Určuje, jestli se má povolit certifikáty podepsané svým držitelem ze serveru. Výchozí hodnota je false.  | Ne |
-| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
+| type | Vlastnost Type musí být nastavená na: **Spark** . | Ano |
+| Provoz | IP adresa nebo název hostitele Spark serveru  | Ano |
+| port | Port TCP, který server Spark používá k naslouchání klientským připojením. Pokud se připojíte k Azure HDInsights, zadejte port jako 443. | Ano |
+| serverType | Typ Spark serveru. <br/>Povolené hodnoty jsou: **SharkServer**, **SharkServer2**, **SparkThriftServer** | Ne |
+| thriftTransportProtocol | Transportní protokol, který se má použít ve vrstvě Thrift. <br/>Povolené hodnoty jsou: **Binary**, **SASL**, **http** . | Ne |
+| authenticationType | Metoda ověřování pro přístup k serveru Spark <br/>Povolené hodnoty jsou: **anonymní**, **username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ano |
+| uživatelské jméno | Uživatelské jméno, které používáte pro přístup k Spark serveru.  | Ne |
+| heslo | Heslo odpovídající uživateli Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| httpPath | Částečná adresa URL odpovídající serveru Spark.  | Ne |
+| enableSsl | Určuje, zda jsou připojení k serveru šifrována pomocí protokolu SSL. Výchozí hodnota je false (NEPRAVDA).  | Ne |
+| trustedCertPath | Úplná cesta k souboru. pem, který obsahuje certifikáty důvěryhodné certifikační autority pro ověření serveru při připojení přes protokol SSL. Tuto vlastnost lze nastavit pouze při použití protokolu SSL v místním prostředí IR. Výchozí hodnota je soubor cacerts. pem nainstalovaný s IR.  | Ne |
+| useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační autority z úložiště důvěryhodnosti systému nebo ze zadaného souboru PEM. Výchozí hodnota je false (NEPRAVDA).  | Ne |
+| allowHostNameCNMismatch | Určuje, jestli se má při připojování přes protokol SSL vyžadovat, aby název certifikátu SSL vydaný certifikační autoritou odpovídal názvu hostitele serveru. Výchozí hodnota je false (NEPRAVDA).  | Ne |
+| allowSelfSignedServerCert | Určuje, jestli se mají na serveru udělit certifikáty podepsané svým držitelem. Výchozí hodnota je false (NEPRAVDA).  | Ne |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
 
 **Příklad:**
 
@@ -89,16 +89,16 @@ Pro Spark, propojené služby jsou podporovány následující vlastnosti:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností podporovaných datovou sadu Spark.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných datovou sadou Spark.
 
-Pro kopírování dat z aplikace Spark, nastavte vlastnost typ datové sady na **SparkObject**. Podporovány jsou následující vlastnosti:
+Chcete-li kopírovat data z Sparku, nastavte vlastnost Type datové sady na **SparkObject**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **SparkObject** | Ano |
+| type | Vlastnost Type datové sady musí být nastavená na: **SparkObject** . | Ano |
 | schema | Název schématu. |Ne (když je zadán zdroj aktivity "query")  |
-| table | Název tabulky. |Ne (když je zadán zdroj aktivity "query")  |
-| tableName | Název tabulky se schématem Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro `schema` nové `table` zatížení použijte a. | Ne (když je zadán zdroj aktivity "query") |
+| stolní | Název tabulky |Ne (když je zadán zdroj aktivity "query")  |
+| tableName | Název tabulky se schématem Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové zatížení použijte `schema` a `table`. | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad**
 
@@ -119,16 +119,16 @@ Pro kopírování dat z aplikace Spark, nastavte vlastnost typ datové sady na *
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností podporovaných zdrojem Spark.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností podporovaných zdrojem Spark.
 
-### <a name="spark-as-source"></a>Jako zdroj ve sparku
+### <a name="spark-as-source"></a>Spark as source
 
-Pro kopírování dat z aplikace Spark, nastavte typ zdroje v aktivitě kopírování do **SparkSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Chcete-li kopírovat data ze Sparku, nastavte typ zdroje v aktivitě kopírování na **SparkSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **SparkSource** | Ano |
-| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **SparkSource** . | Ano |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
 
@@ -166,5 +166,5 @@ Pro kopírování dat z aplikace Spark, nastavte typ zdroje v aktivitě kopírov
 
 Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>Další postup
-Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+## <a name="next-steps"></a>Další kroky
+Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

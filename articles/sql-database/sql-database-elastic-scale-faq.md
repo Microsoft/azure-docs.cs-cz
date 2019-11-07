@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Elastické škálování – Nejčastější dotazy | Microsoft Docs
+title: Azure SQL Elastické škálování – Nejčastější dotazy
 description: Nejčastější dotazy týkající se Azure SQL Database elastického škálování.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 2b101aebd048b94ac95e1dba0f6504446d6d6803
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8ef99d6d752f1e9474fccea6c00b51b61ae1304b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568435"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690255"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Nejčastější dotazy k nástrojům elastické databáze (FAQ)
 

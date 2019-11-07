@@ -1,7 +1,7 @@
 ---
 title: Aktivní a neaktivní události – Přizpůsobte si
 titleSuffix: Azure Cognitive Services
-description: ''
+description: Tento článek popisuje použití aktivních a neaktivních událostí, nastavení učení a zásad učení v rámci služby přizpůsobeného nástroji.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,51 +10,50 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: 321f12fef44cae43caf53d78b2908e68f9edd0a8
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 1641a1020193395d7d2ddb9c4893bd7bc89cdcd0
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043905"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681858"
 ---
 # <a name="active-and-inactive-events"></a>Aktivní a neaktivní události
 
-Když vaše aplikace volá rozhraní API pro řazení, dostanete akci, kterou by měla aplikace zobrazit v poli rewardActionId.  Od tohoto okamžiku bude přizpůsobovat, že bude volání bez záměna u stejného ID události. Skóre odměňování se použije ke školení modelu, který se použije pro budoucí volání pořadí. Pokud se pro ID události žádné volání bez jakýchkoli odměňování, použije se defaul. Výchozí ceny jsou zřízené na webu Azure Portal.
+Když vaše aplikace volá rozhraní API pro řazení, dostanete akci, kterou by měla aplikace zobrazit v poli **rewardActionId** .  Od tohoto okamžiku přizpůsobené očekává volání odměna, které má stejné ID události. Skóre odměňování se použije ke školení modelu pro budoucí volání pořadí. Pokud se pro ID události nepřijme žádné volání, použije se výchozí měna. Výchozí ceny jsou nastaveny v Azure Portal.
 
-V některých případech může aplikace vyžadovat, aby před tím, než ví, že se výsledek použije nebo zobrazí uživateli, vyvolala hodnost. K tomu může dojít v situacích, kdy se například stránka vykreslení propagovaného obsahu přepíše pomocí marketingové kampaně. Pokud se výsledek volání pořadí nikdy nepoužil a uživatel ho nikdy nezískal, je to nesprávný postup pro jeho vyučování bez jakýchkoli jakýchkoli odměna, nula nebo jinak.
-K tomu obvykle dochází v těchto případech:
+V některých scénářích může aplikace před tím, než bude vědět, zda bude výsledek použit nebo zobrazen uživateli, volat funkci Rank. K tomu může dojít v situacích, kdy například vykreslování stránky propagovaného obsahu přepíše marketingová kampaň. Pokud výsledek volání řazení nebyl nikdy použit a uživatel ho nikdy neviděl, neodešlete odpovídající volání odměna.
 
-* Možná budete předem vykreslovat některé uživatelské rozhraní, které uživatel může nebo nemusí zobrazit. 
-* Vaše aplikace může provádět prediktivní přizpůsobení, ve kterém se zadávají volání pořadí s méně kontextem v reálném čase a jejich výstup může nebo nemusí být aplikací používán. 
+K těmto scénářům obvykle dochází v následujících případech:
 
-V těchto případech je vhodným způsobem použití přizpůsobování volání řazení, které vyžaduje, aby událost byla _neaktivní_. Přizpůsobování neočekává pro tuto událost žádnou odměnu a nepoužije výchozí odměnu. Pokud aplikace používá informace ze volání pořadí, později v obchodní logice je třeba _aktivovat_ událost. Od okamžiku, kdy je událost aktivní, přizpůsobené aplikace pro událost očekává nebo použije výchozí odměnu, pokud není k dispozici explicitní volání rozhraní API pro odměnu.
+* Předvedete si předvykreslování uživatelského rozhraní, které uživatel může nebo nemusí zobrazit. 
+* Vaše aplikace provádí prediktivní přizpůsobení, ve kterém se provádí volání pořadí s malým kontextem v reálném čase a aplikace může nebo nemusí používat výstup. 
 
-## <a name="get-inactive-events"></a>Získat neaktivní události
+V těchto případech použijte přizpůsobení pro volání pořadí, které vyžaduje, aby událost byla _neaktivní_. Přizpůsobování neočekává pro tuto událost odměňování a nepoužije výchozí odměnu. Pokud aplikace používá informace z volání pořadí, použijte později v obchodní logice, stačí událost _aktivovat_ . Jakmile je událost aktivní, přizpůsobování očekává nějakou odměnu události. Pokud neprovede žádné explicitní volání rozhraní API pro odměnu, přizpůsobuje se výchozí odměna.
 
-Chcete-li zakázat školení pro událost, zavolejte pořadí s `learningEnabled = False`.
+## <a name="inactive-events"></a>Neaktivní události
 
-Výuka k neaktivní události se implicitně aktivuje, pokud odešlete nějakou odměnu pro ID události, nebo pro tento ID události zavoláte rozhraní API `activate`.
+Chcete-li zakázat školení pro událost, zakažte pořadí volání pomocí `learningEnabled = False`. V případě neaktivní události se učení implicitně aktivuje, pokud odešlete nějakou příležitost pro ID události nebo zavoláte rozhraní API pro `activate` pro daný ID události.
 
 ## <a name="learning-settings"></a>Nastavení učení
 
-Nastavení učení určuje konkrétní *parametry* pro školení modelů. Dva modely stejných dat, které jsou vyškolené v různých nastaveních výuky, se budou lišit.
+Nastavení učení určuje základní *parametry* školení modelů. Dva modely stejných dat, která jsou učená v různých nastaveních výuky, se liší.
 
 ### <a name="import-and-export-learning-policies"></a>Zásady učení pro import a export
 
-Soubory zásad učení můžete importovat a exportovat z Azure Portal. To vám umožňuje uložit existující zásady, otestovat je, nahradit je a archivovat je v rámci správy zdrojového kódu jako artefakty pro budoucí referenci a audit.
+Soubory zásad učení můžete importovat a exportovat z Azure Portal. Tuto metodu použijte, chcete-li uložit existující zásady, otestovat je, nahradit je a archivovat je v rámci správy zdrojového kódu jako artefakty pro budoucí referenci a audit.
 
-### <a name="learning-policy-settings"></a>Nastavení zásad učení
+### <a name="understand-learning-policy-settings"></a>Principy nastavení zásad učení
 
-Nastavení v **zásadách Učení** není určeno ke změně. Nastavení můžete změnit jenom v případě, že rozumíte tomu, jak přizpůsobené přizpůsobování ovlivňují. Změna nastavení bez těchto znalostí způsobí vedlejší účinky, včetně neověřování modelů přizpůsobeného pro přizpůsobování.
+Nastavení v zásadách učení není určené ke změně. Nastavení změňte pouze v případě, že rozumíte tomu, jak ovlivňují přizpůsobování. Bez tohoto vědomí byste mohli způsobovat problémy, včetně neověřování modelů přizpůsobeného pro přizpůsobování.
 
-### <a name="comparing-effectiveness-of-learning-policies"></a>Porovnání efektivity studijních zásad
+### <a name="compare-learning-policies"></a>Porovnání zásad učení
 
-Můžete porovnat, jak by se různé zásady učení prováděly proti minulým datům v protokolech pro přizpůsobování pomocí [offline vyhodnocení](concepts-offline-evaluation.md).
+Můžete porovnat, jak různé zásady učení provádějí data z minulých protokolů v protokolech přizpůsobených pomocí [offline vyhodnocení](concepts-offline-evaluation.md).
 
-[Nahrajte vlastní vzdělávací zásady](how-to-offline-evaluation.md) pro porovnání s aktuálními zásadami učení.
+[Nahrajte vlastní zásady učení](how-to-offline-evaluation.md) a porovnejte je s aktuálními zásadami učení.
 
-### <a name="discovery-of-optimized-learning-policies"></a>Zjišťování zásad optimalizovaného učení
+### <a name="optimize-learning-policies"></a>Optimalizace výukových zásad
 
-Přizpůsobení může při [vyhodnocování offline](how-to-offline-evaluation.md)vytvořit lépe optimalizované výukové zásady. Lépe optimalizované studijní zásady, které mají lepší přínos při offline testování, budou při použití online v přizpůsobeném procesu poskytovat lepší výsledky.
+Přizpůsobený objekt může vytvořit optimalizované vzdělávací zásady při [offline testování](how-to-offline-evaluation.md). Optimalizované vzdělávací zásady, které mají lepší přínos při vyhodnocování offline, budou poskytovat lepší výsledky při použití online v přizpůsobeném nástroji.
 
-Po vytvoření optimalizovaných zásad učení ji můžete použít přímo na přizpůsobení, aby se okamžitě nahradila aktuální zásada, nebo ji můžete uložit pro další vyhodnocení a rozhodnout se, jestli ji později zrušíte, uložte nebo použijete.
+Když optimalizujete zásady učení, můžete ji použít přímo na přizpůsobení tak, aby okamžitě nahradila aktuální zásady. Nebo můžete optimalizovanou zásadu Uložit pro další vyhodnocení a později se rozhodnout, jestli ji zahodíte, uložíte nebo použijete.

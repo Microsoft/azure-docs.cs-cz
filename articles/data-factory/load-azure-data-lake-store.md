@@ -1,6 +1,6 @@
 ---
-title: Načtení dat do Azure Data Lake Storage Gen1 pomocí služby Azure Data Factory | Dokumentace Microsoftu
-description: Použití Azure Data Factory pro kopírování dat do Azure Data Lake Storage Gen1
+title: Načtení dat do Azure Data Lake Storage Gen1 pomocí Azure Data Factory
+description: Použití Azure Data Factory ke kopírování dat do Azure Data Lake Storage Gen1
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,140 +11,140 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 522b9743af28dedb2aec5682a1ae95b9d52ad2d9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b8e5841e6869bd6f19b07bf71434de809cdcb74f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60548424"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672721"
 ---
-# <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Načtení dat do Azure Data Lake Storage Gen1 pomocí služby Azure Data Factory
+# <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Načtení dat do Azure Data Lake Storage Gen1 pomocí Azure Data Factory
 
-[Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) (dříve označované jako Azure Data Lake Store) je podnikové úrovni hyperškálovatelné úložiště pro analytické úlohy s velkými objemy dat. Gen1 úložiště data Lake umožňuje zaznamenávat data libovolné velikosti, typu a rychlosti příjmu. Data jsou zachyceny na jednom místě pro provozní a zjišťovací analýzy.
+[Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) (dříve označované jako Azure Data Lake Store) je úložiště škálovatelné v podnikové síti pro analytické úlohy s velkými objemy dat. Data Lake Storage Gen1 umožňuje zaznamenávat data libovolné velikosti, typu a rychlosti přijímání. Data jsou zachycena na jednom místě pro provozní a průzkumné analýzy.
 
-Azure Data Factory je služba pro integraci plně spravovaný cloudový datový. Služby můžete použít k naplnění lake s daty ze stávajícího systému a ušetřit čas při vytváření vlastních analytických řešení.
+Azure Data Factory je plně spravovaná cloudová služba pro integraci dat. Službu můžete použít k naplnění dat ze stávajícího systému na data a ušetřit čas při vytváření analytických řešení.
 
-Azure Data Factory nabízí následující výhody pro načítání dat do služby Data Lake Storage Gen1:
+Azure Data Factory nabízí následující výhody pro načítání dat do Data Lake Storage Gen1:
 
-* **Snadné nastavení**: Intuitivní Průvodce kroku 5 se žádné skripty povinné.
-* **Podpora podrobná data store**: Integrovanou podporu pro bohatou sadu místní a cloudové datové úložiště. Podrobný seznam najdete v tabulce [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
-* **Zabezpečení a dodržování**: Data se přenáší prostřednictvím protokolu HTTPS nebo ExpressRoute. Přítomnost globální služba zajišťuje, že vaše data nikdy neopustí hranice zeměpisné.
-* **Vysoký výkon**: Až 1 GB/s dat načítání rychlost do Data Lake Storage Gen1. Podrobnosti najdete v tématu [výkonu aktivity kopírování](copy-activity-performance.md).
+* **Snadné nastavení**: intuitivní průvodce 5 kroky bez nutnosti skriptování.
+* **Bohatá Podpora úložiště dat**: Integrovaná podpora pro bohatou sadu místních a cloudových úložišť dat. Podrobný seznam najdete v tabulce [podporovaných úložišť dat](copy-activity-overview.md#supported-data-stores-and-formats).
+* **Zabezpečení a dodržování předpisů**: data se přenáší přes protokol HTTPS nebo ExpressRoute. Přítomnost globální služby zajišťuje, že vaše data nikdy neopustí zeměpisnou hranici.
+* **Vysoký výkon**: rychlost načítání dat až 1 GB/s do data Lake Storage Gen1. Podrobnosti najdete v tématu o [výkonu aktivity kopírování](copy-activity-performance.md).
 
-Tento článek ukazuje, jak použít nástroje pro kopírování dat objekt pro vytváření dat do _načíst data z Amazonu S3 do Data Lake Storage Gen1_. Můžete použít podobným způsobem kopírovat data z jiných typů úložišť dat.
+V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování dat _načíst data ze služby Amazon S3 do data Lake Storage Gen1_. Můžete postupovat podle podobných kroků a kopírovat data z jiných typů úložišť dat.
 
 > [!NOTE]
-> Další informace najdete v tématu [kopírování dat pomocí Azure Data Factory do nebo z Data Lake Storage Gen1](connector-azure-data-lake-store.md).
+> Další informace najdete v tématu [kopírování dat do nebo z Data Lake Storage Gen1 pomocí Azure Data Factory](connector-azure-data-lake-store.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* Účet data Lake Storage Gen1: Pokud nemáte účet Data Lake Storage Gen1, postupujte podle pokynů v [vytvoření účtu Data Lake Storage Gen1](../data-lake-store/data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account).
-* Amazon S3: Tento článek popisuje, jak kopírovat data z Amazonu S3. Podle podobných kroků, můžete použít dalšími datovými úložišti.
+* Účet Data Lake Storage Gen1: Pokud nemáte účet Data Lake Storage Gen1, přečtěte si pokyny v tématu [Vytvoření účtu Data Lake Storage Gen1](../data-lake-store/data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account).
+* Amazon S3: v tomto článku se dozvíte, jak kopírovat data z Amazon S3. Pomocí podobných kroků můžete použít další úložiště dat.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce vlevo vyberte **vytvořit prostředek** > **Analytics** > **služby Data Factory**:
+1. V nabídce vlevo vyberte **vytvořit prostředek** > **Analytics** > **Data Factory**:
    
    ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
-2. V **nová datová továrna** zadejte hodnoty pro pole, která jsou zobrazena na následujícím obrázku: 
+2. Na stránce **Nová datová továrna** zadejte hodnoty pro pole, která jsou zobrazena na následujícím obrázku: 
       
    ![Stránka Nová datová továrna](./media/load-data-into-azure-data-lake-store//new-azure-data-factory.png)
  
-    * **Název**: Zadejte globálně jedinečný název pro službu Azure data factory. Pokud se zobrazí chyba "název objektu pro vytváření dat \"LoadADLSG1Demo\" není k dispozici," Zadejte jiný název datové továrny. Můžete například použít název  _**vaše_jméno**_ **ADFTutorialDataFactory**. Zkuste znovu vytvořit datovou továrnu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
-    * **Předplatné**: Vyberte své předplatné Azure, ve kterém chcete datovou továrnu vytvořit. 
-    * **Skupina prostředků**: Z rozevíracího seznamu vyberte existující skupinu prostředků, nebo **vytvořit nový** možnost a zadejte název skupiny prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
-    * **Verze**: Vyberte **V2**.
-    * **Umístění**: Vyberte umístění datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat, které jsou používané datovou továrnou můžou být v jiných umístěních a oblastech. Úložiště těchto dat patří Azure Data Lake Storage Gen1, Azure Storage, Azure SQL Database a tak dále.
+    * **Název**: zadejte globálně jedinečný název pro objekt pro vytváření dat Azure. Pokud se zobrazí chyba "název objektu pro vytváření dat \"LoadADLSG1Demo\" není k dispozici," zadejte jiný název pro objekt pro vytváření dat. Můžete například použít název _**Your**_ **ADFTutorialDataFactory**. Zkuste vytvořit datovou továrnu znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
+    * **Předplatné**: vyberte předplatné Azure, ve kterém chcete vytvořit datovou továrnu. 
+    * **Skupina prostředků**: v rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte možnost **vytvořit novou** a zadejte název skupiny prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
+    * **Verze**: vyberte **v2**.
+    * **Umístění**: vyberte umístění pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat, která služba Data Factory používá, můžou být v jiných umístěních a oblastech. Mezi Tato úložiště dat patří Azure Data Lake Storage Gen1, Azure Storage, Azure SQL Database a tak dále.
 
 3. Vyberte **Vytvořit**.
-4. Po vytvoření se, přejděte do služby data factory. Zobrazí **služby Data Factory** domovskou stránku, jak je znázorněno na následujícím obrázku: 
+4. Až se vytváření dokončí, přejdete do vaší datové továrny. Zobrazí se Domovská stránka **Data Factory** , jak je znázorněno na následujícím obrázku: 
    
-   ![Domovská stránka datové továrny](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)
+   ![Domovská stránka objektu pro vytváření dat](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)
 
-   Vyberte **vytvořit a monitorovat** dlaždice aplikace pro integraci dat v na samostatné kartě.
+   Kliknutím na dlaždici **Author & monitor** můžete spustit aplikaci pro integraci dat na samostatné kartě.
 
-## <a name="load-data-into-data-lake-storage-gen1"></a>Načtení dat do Data Lake Storage Gen1
+## <a name="load-data-into-data-lake-storage-gen1"></a>Načíst data do Data Lake Storage Gen1
 
-1. V **Začínáme** stránky, vyberte **kopírování dat** dlaždice nástroje pro kopírování dat: 
+1. Na stránce **Začínáme** vyberte dlaždici **kopírování dat** pro spuštění nástroje kopírování dat: 
 
    ![Dlaždice nástroje pro kopírování dat](./media/load-data-into-azure-data-lake-store/copy-data-tool-tile.png)
-2. V **vlastnosti** určete, **CopyFromAmazonS3ToADLS** pro **název úkolu** pole a vyberte **Další**:
+2. Na stránce **vlastnosti** zadejte **CopyFromAmazonS3ToADLS** pro pole **název úlohy** a vyberte **Další**:
 
     ![Stránka Vlastnosti](./media/load-data-into-azure-data-lake-store/copy-data-tool-properties-page.png)
-3. V **zdrojového úložiště dat** klikněte na **+ vytvořit nové připojení**:
+3. Na stránce **zdrojové úložiště dat** klikněte na **+ vytvořit nové připojení**:
 
     ![Stránka Zdrojové úložiště dat](./media/load-data-into-azure-data-lake-store/source-data-store-page.png)
     
-    Vyberte **Amazon S3**a vyberte **pokračovat**
+    Vyberte **Amazon S3**a vyberte **pokračovat** .
     
-    ![Stránka zdrojové úložiště dat s3](./media/load-data-into-azure-data-lake-store/source-data-store-page-s3.png)
+    ![Stránka S3 zdrojového úložiště dat](./media/load-data-into-azure-data-lake-store/source-data-store-page-s3.png)
     
-4. V **připojení zadejte Amazon S3** stránce, proveďte následující kroky: 
-   1. Zadejte **Access Key ID** hodnotu.
-   2. Zadejte **tajný přístupový klíč** hodnotu.
+4. Na stránce **zadání připojení k Amazon S3** proveďte následující kroky: 
+   1. Zadejte hodnotu **ID přístupového klíče** .
+   2. Zadejte hodnotu **tajného přístupového klíče** .
    3. Vyberte **Finish** (Dokončit).
    
-      ![Zadání účtu Amazon S3](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
+      ![Zadat účet Amazon S3](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
-   4. Zobrazí se nové připojení. Vyberte **Další**.
+   4. Zobrazí se nové připojení. Vyberte **Next** (Další).
    
-   ![Zadání účtu Amazon S3](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
+   ![Zadat účet Amazon S3](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
    
-5. V **zvolte vstupní soubor nebo složku** stránce, přejděte do složky a souboru, který chcete zkopírovat. Vyberte složky nebo souboru, vyberte **zvolit**a pak vyberte **Další**:
+5. Na stránce **zvolit vstupní soubor nebo složku** přejděte do složky a souboru, který chcete zkopírovat. Vyberte složku nebo soubor, vyberte **zvolit**a pak vybrat **Další**:
 
     ![Zvolte vstupní soubor nebo složku](./media/load-data-into-azure-data-lake-store/choose-input-folder.png)
 
-6. Zvolte chování kopírování tak, že vyberete **kopírovat soubory rekurzivně** a **binární kopie** (kopírování souborů jako-je) možnosti. Vyberte **Další**:
+6. Zvolte chování kopírování, a to tak, že vyberete možnosti **Kopírovat soubory rekurzivně** a **binární kopírování** (kopírování souborů jako je). Vyberte **Další**:
 
-    ![Zadejte výstupní složka](./media/load-data-into-azure-data-lake-store/specify-binary-copy.png)
+    ![Zadat výstupní složku](./media/load-data-into-azure-data-lake-store/specify-binary-copy.png)
     
-7. V **cílového úložiště dat** klikněte na **+ vytvořit nové připojení**a pak vyberte **Azure Data Lake Storage Gen1**a vyberte **pokračovat**:
+7. Na stránce **cílové úložiště dat** klikněte na **+ vytvořit nové připojení**a pak vyberte **Azure Data Lake Storage Gen1**a **pokračovat**:
 
     ![Stránka Cílové úložiště dat](./media/load-data-into-azure-data-lake-store/destination-data-storage-page.png)
 
-8. V **Nová propojená služba (Azure Data Lake Storage Gen1)** stránce, proveďte následující kroky: 
+8. Na stránce **Nová propojená služba (Azure Data Lake Storage Gen1)** proveďte následující kroky: 
 
-   1. Vyberte svůj účet Data Lake Storage Gen1 **název účtu Data Lake Store**.
-   2. Zadejte **Tenanta**a klepnutím na tlačítko Dokončit.
-   3. Vyberte **Další**.
+   1. Jako **název účtu Data Lake Store**vyberte svůj účet Data Lake Storage Gen1.
+   2. Zadejte **tenanta**a vyberte Dokončit.
+   3. Vyberte **Next** (Další).
    
    > [!IMPORTANT]
-   > V tomto názorném postupu použijete k ověření svého účtu Data Lake Storage Gen1 spravovanou identitu pro prostředky Azure. Je potřeba udělit příslušná oprávnění v Data Lake Storage Gen1 MSI pomocí následujícího [tyto pokyny](connector-azure-data-lake-store.md#managed-identity).
+   > V tomto návodu použijete spravovanou identitu pro prostředky Azure k ověření účtu Data Lake Storage Gen1. Nezapomeňte mu udělit správná oprávnění v Data Lake Storage Gen1 pomocí následujících [pokynů](connector-azure-data-lake-store.md#managed-identity).
    
-   ![Zadejte účet Data Lake Storage Gen1](./media/load-data-into-azure-data-lake-store/specify-adls.png)
-9. V **zvolte výstupní soubor nebo složku** zadejte **copyfroms3** jako název složky výstupu a vyberte **Další**: 
+   ![Zadat Data Lake Storage Gen1 účet](./media/load-data-into-azure-data-lake-store/specify-adls.png)
+9. Na stránce **zvolte výstupní soubor nebo složku** zadejte **copyfroms3** jako název výstupní složky a vyberte **Další**: 
 
-    ![Zadejte výstupní složka](./media/load-data-into-azure-data-lake-store/specify-adls-path.png)
+    ![Zadat výstupní složku](./media/load-data-into-azure-data-lake-store/specify-adls-path.png)
 
-10. V **nastavení** stránce **Další**:
+10. Na stránce **Nastavení** vyberte **Další**:
 
     ![Stránka Nastavení](./media/load-data-into-azure-data-lake-store/copy-settings.png)
-11. V **Souhrn** stránky, zkontrolujte nastavení a vyberte **Další**:
+11. Na stránce **Souhrn** zkontrolujte nastavení a vyberte **Další**:
 
     ![Stránka souhrnu](./media/load-data-into-azure-data-lake-store/copy-summary.png)
-12. V **stránku nasazení**vyberte **monitorování** a začněte monitorovat kanál (úlohu):
+12. Na **stránce nasazení**vyberte **monitorovat** a Sledujte kanál (úkol):
 
     ![Stránka Nasazení](./media/load-data-into-azure-data-lake-store/deployment-page.png)
-13. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**. **Akce** sloupec obsahuje odkazy, chcete-li zobrazit podrobnosti o spuštění aktivit a opětovné spuštění kanálu:
+13. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**. Sloupec **Actions (akce** ) obsahuje odkazy na zobrazení podrobností o spuštění aktivit a opětovné spuštění kanálu:
 
     ![Monitorování spuštění kanálu](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
-14. Pokud chcete zobrazit spuštění aktivit, které jsou spojeny se spuštěním kanálu, vyberte **zobrazit spuštění aktivit** odkaz v **akce** sloupce. Kanál obsahuje pouze jednu aktivitu (aktivita kopírování), takže se zobrazí pouze jedna položka. Pokud chcete přepnout zpět na zobrazení spuštění kanálu, vyberte **kanály** odkazu v horní části. Seznam můžete aktualizovat výběrem možnosti **Aktualizovat**. 
+14. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce** . Kanál obsahuje pouze jednu aktivitu (aktivita kopírování), takže se zobrazí pouze jedna položka. Pokud chcete přejít zpátky k zobrazení spuštění kanálu, vyberte odkaz **kanály** v horní části. Seznam můžete aktualizovat kliknutím na **Aktualizovat**. 
 
     ![Monitorování spuštění aktivit](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 
-15. Pokud chcete monitorovat spuštění podrobnosti o každé aktivitě kopírování, vyberte **podrobnosti** odkaz v části **akce** v aktivitě zobrazení monitorování. Podobně jako objem dat zkopírovanou ze zdroje do jímky, propustnost dat, provádění kroků s určitou dobu a použít konfigurace, můžete sledovat informace:
+15. Chcete-li monitorovat podrobnosti o spuštění každé aktivity kopírování, vyberte odkaz **Podrobnosti** v části **Akce** v zobrazení monitorování aktivit. Můžete monitorovat podrobnosti, jako je objem dat zkopírovaných ze zdroje, do jímky, propustnosti dat, kroky provádění s odpovídající dobou trvání a používané konfigurace:
 
-    ![Podrobnosti o spuštění aktivit monitorování](./media/load-data-into-azure-data-lake-store/monitor-activity-run-details.png)
+    ![Podrobnosti o spuštění aktivity monitorování](./media/load-data-into-azure-data-lake-store/monitor-activity-run-details.png)
 
-16. Ověřte, že se data kopírují do svého účtu Data Lake Storage Gen1: 
+16. Ověřte, že se data zkopírují do účtu Data Lake Storage Gen1: 
 
-    ![Ověření výstupu Gen1 úložiště Data Lake](./media/load-data-into-azure-data-lake-store/adls-copy-result.png)
+    ![Ověřit výstup Data Lake Storage Gen1](./media/load-data-into-azure-data-lake-store/adls-copy-result.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Přejděte k další informace o podpoře Gen1 úložiště Data Lake v následujícím článku: 
+V následujícím článku se dozvíte o podpoře Data Lake Storage Gen1: 
 
 > [!div class="nextstepaction"]
->[Konektor služby Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
+>[Konektor Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)

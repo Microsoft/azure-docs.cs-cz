@@ -1,5 +1,5 @@
 ---
-title: Konfigurace spravované instance P2S-Azure SQL Database | Microsoft Docs
+title: 'Konfigurace spravované instance P2S-Azure SQL Database '
 description: Připojte se k Azure SQL Database spravované instanci pomocí SQL Server Management Studio pomocí připojení typu Point-to-Site z místního klientského počítače.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 3ba5190050d45385ad17a87f6dce88ffd601e83d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3b3a0ce28c4a936e185ac5f07ba3810c93f4c866
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567689"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689413"
 ---
-# <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Rychlý start: Konfigurace připojení typu Point-to-site k Azure SQL Database spravované instanci z místního prostředí
+# <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Rychlý Start: Konfigurace připojení typu Point-to-site k Azure SQL Database spravované instanci z místního prostředí
 
 Tento rychlý Start ukazuje, jak se připojit k Azure SQL Database spravované instanci pomocí [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) z místního klientského počítače přes připojení typu Point-to-site. Informace o připojení typu Point-to-site najdete v tématu [informace o síti VPN typu Point-to-](../vpn-gateway/point-to-site-about.md) site.
 
@@ -54,7 +54,7 @@ Tento rychlý start:
      Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/attachVPNGateway.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters, $scriptUrlBase
      ```
 
-3. Vložte skript do okna PowerShellu a zadejte požadované parametry. Hodnoty pro `<subscriptionId>` `<resourceGroup>`, a `<virtualNetworkName>` by měly odpovídat těm, které jste použili v rychlém startu [Vytvoření spravované instance](sql-database-managed-instance-get-started.md) . Hodnota pro `<certificateNamePrefix>` může být zvoleným řetězcem.
+3. Vložte skript do okna PowerShellu a zadejte požadované parametry. Hodnoty pro `<subscriptionId>`, `<resourceGroup>`a `<virtualNetworkName>` by měly odpovídat těm, které jste použili v rychlém startu [Vytvoření spravované instance](sql-database-managed-instance-get-started.md) . Hodnota pro `<certificateNamePrefix>` může být zvoleným řetězcem.
 
 4. Spusťte skript prostředí PowerShell.
 
@@ -92,11 +92,11 @@ Tento rychlý start:
 
     ![Připojení VPN](./media/sql-database-managed-instance-configure-p2s/vpn-connection-succeeded.png)  
 
-## <a name="use-ssms-to-connect-to-the-managed-instance"></a>Použití SSMS k připojení k Managed Instance
+## <a name="use-ssms-to-connect-to-the-managed-instance"></a>Připojení ke spravované instanci pomocí SSMS
 
 1. Na místním klientském počítači otevřete SQL Server Management Studio (SSMS).
-2. V **připojit k serveru** dialogového okna zadejte plně kvalifikovaný **název hostitele** pro Managed Instance v **název serveru** pole.
-3. Vyberte **ověřování systému SQL Server**, zadejte své uživatelské jméno a heslo a pak vyberte **připojit**.
+2. V dialogovém okně **připojit k serveru** zadejte do pole **název serveru** plně kvalifikovaný **název hostitele** vaší spravované instance.
+3. Vyberte **SQL Server ověřování**, zadejte svoje uživatelské jméno a heslo a pak vyberte **připojit**.
 
     ![Připojení přes SSMS](./media/sql-database-managed-instance-configure-vm/ssms-connect.png)  
 

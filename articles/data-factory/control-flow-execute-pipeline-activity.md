@@ -1,5 +1,5 @@
 ---
-title: Spustit aktivitu kanálu v Azure Data Factory | Microsoft Docs
+title: Spustit aktivitu kanálu v Azure Data Factory
 description: Zjistěte, jak můžete pomocí aktivity spustit kanál vyvolat jeden Data Factory kanál z jiného kanálu Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 1611f740f6b55ecf9f15ecd234d63b5e95baeba1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 093050952ed826a540c35b2b73acd107fafc45ab
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141710"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679920"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Spustit aktivitu kanálu v Azure Data Factory
 Aktivita spustit kanál umožňuje Data Factory kanálu vyvolat jiný kanál.
@@ -59,18 +59,18 @@ Aktivita spustit kanál umožňuje Data Factory kanálu vyvolat jiný kanál.
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požadováno
+Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-name | Název aktivity spustit kanál | Řetězec | Ano
+jméno | Název aktivity spustit kanál | Řetězec | Ano
 type | Musí být nastavené na: **ExecutePipeline**. | Řetězec | Ano
-kanál | Odkaz na kanál na závislý kanál, který tento kanál vyvolá Objekt odkazu na kanál má dva vlastnosti: **odkaz** a **typ**. Vlastnost FileReference Určuje název kanálu odkazu. Vlastnost Type musí být nastavená na PipelineReference. | PipelineReference | Ano
+Kanálu | Odkaz na kanál na závislý kanál, který tento kanál vyvolá Objekt odkazu na kanál má dva vlastnosti: **odkaz** a **typ**. Vlastnost FileReference Určuje název kanálu odkazu. Vlastnost Type musí být nastavená na PipelineReference. | PipelineReference | Ano
 parameters | Parametry, které se mají předat vyvolanému kanálu | Objekt JSON, který mapuje názvy parametrů na hodnoty argumentu | Ne
 waitOnCompletion | Definuje, zda provádění aktivit čeká na dokončení zpracování závislého kanálu. Výchozí hodnota je false. | Logická hodnota | Ne
 
 ## <a name="sample"></a>Ukázka
 Tento scénář má dva kanály:
 
-- **Hlavní kanál** – tento kanál má jednu aktivitu spuštění kanálu, která volá vyvolaný kanál. Hlavní kanál používá dva parametry: `masterSourceBlobContainer`,. `masterSinkBlobContainer`
+- **Hlavní kanál** – tento kanál má jednu aktivitu spuštění kanálu, která volá vyvolaný kanál. Hlavní kanál používá dva parametry: `masterSourceBlobContainer`, `masterSinkBlobContainer`.
 - **Vyvolaný kanál** – tento kanál má jednu aktivitu kopírování, která kopíruje data ze zdroje objektů blob Azure do jímky objektů BLOB v Azure. Vyvolaný kanál používá dva parametry: `sourceBlobContainer`, `sinkBlobContainer`.
 
 ### <a name="master-pipeline-definition"></a>Definice hlavního kanálu

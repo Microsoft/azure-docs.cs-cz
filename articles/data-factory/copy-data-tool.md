@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory nástrojů Kopírování dat | Microsoft Docs
+title: Nástroj Kopírování dat Azure Data Factory
 description: Poskytuje informace o nástroji Kopírování dat v uživatelském rozhraní Azure Data Factory
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
-ms.openlocfilehash: 144a991eb911fa6a337b6711515bd5760456fc10
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: b5c93213199cac399487f949a3a8cb04c2d9addb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996390"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678321"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Nástroj Kopírování dat v Azure Data Factory
 Nástroj Azure Data Factory Kopírování dat usnadňuje a optimalizuje proces ingestování dat do data Lake, což je obvykle první krok v rámci kompletního scénáře integrace dat.  Šetří čas, zejména při prvním použití Azure Data Factory k ingestování dat ze zdroje dat. Mezi výhody použití tohoto nástroje patří:
@@ -91,7 +91,7 @@ Předpokládejme, že máte vstupní složky v následujícím formátu:
 
 Klikněte na tlačítko **Procházet** pro **soubor nebo složku**, vyhledejte jednu z těchto složek (například 2016-> 03-> 01-> 02) a klikněte na **zvolit**. V textovém poli by se měla zobrazit 2016/03/01/02. 
 
-Pak nahraďte **2016** řetězcem { **year}** , **03** a **{month}** , **01** s **{Day}** a **02** astiskněte klávesu **TAB** . Měli byste vidět rozevírací seznamy a vybrat formát pro tyto čtyři proměnné:
+Pak nahraďte **2016** **řetězcem**{ **year}** , **03** a **{month}** , **01** s **{Day}** a **02** a stiskněte klávesu **TAB** . Měli byste vidět rozevírací seznamy a vybrat formát pro tyto čtyři proměnné:
 
 ![Filtrovat soubor nebo složku](./media/copy-data-tool/filter-file-or-folder.png)
 
@@ -105,7 +105,7 @@ Jednorázová operace kopírování umožňuje přesun dat ze zdroje do cíle po
 ![Možnosti plánování](./media/copy-data-tool/scheduling-options.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Vyzkoušejte tyto kurzy, které používají nástroj Kopírování dat:
 
 - [Rychlý Start: vytvoření datové továrny pomocí nástroje Kopírování dat](quickstart-create-data-factory-copy-data-tool.md)

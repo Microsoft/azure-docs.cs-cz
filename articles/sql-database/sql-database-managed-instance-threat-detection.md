@@ -1,5 +1,5 @@
 ---
-title: Konfigurace rozšířené ochrany před internetovými útoky – Azure SQL Database spravované instance | Microsoft Docs
+title: Konfigurace rozšířené ochrany před internetovými útoky – Azure SQL Database spravované instance
 description: Rozšířená ochrana před internetovými útoky detekuje neobvyklé databázové aktivity, které indikují potenciální ohrožení zabezpečení databáze ve spravované instanci.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: eb6d8229e85e54a6a3fc8591dc4688a73773fd8b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 8e419031c34a693bac7ab9f9825c24576e80ba14
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816579"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687877"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-database-managed-instance"></a>Konfigurace rozšířené ochrany před internetovými útoky v Azure SQL Database Managed instance
 
@@ -28,10 +28,10 @@ Můžete dostávat oznámení o zjištěných hrozbách prostřednictvím [e-mai
 
 ## <a name="set-up-advanced-threat-protection-in-the-azure-portal"></a>Nastavení rozšířené ochrany před internetovými útoky v Azure Portal
 
-1. Spusťte Azure Portal v [https://portal.azure.com](https://portal.azure.com).
+1. [https://portal.azure.com](https://portal.azure.com)spusťte Azure Portal.
 2. Přejděte na stránku konfigurace spravované instance, kterou chcete chránit. Na stránce **Nastavení** vyberte **Upřesnit zabezpečení dat**.
 3. Na stránce Konfigurace rozšířeného zabezpečení dat
-   - Zapněte pokročilé zabezpečení dat.
+   - Zapněte **Pokročilé** zabezpečení dat.
    - Nakonfigurujte **seznam e-mailů** , které budou dostávat výstrahy zabezpečení při detekci neobvykléch databázových aktivit.
    - Vyberte **účet úložiště Azure** , ve kterém se ukládají záznamy auditu neobvyklé Threat.
    - Vyberte **typy rozšířené ochrany před hrozbami** , které byste chtěli nakonfigurovat. Přečtěte si další informace o [výstrahách rozšířené ochrany před hrozbami](sql-database-threat-detection-overview.md).

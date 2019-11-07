@@ -1,5 +1,5 @@
 ---
-title: Dokud aktivita v Azure Data Factory | Microsoft Docs
+title: Dokud aktivita v Azure Data Factory
 description: Aktivita dokud aktivita ve smyčce provede sadu aktivit, dokud se podmínka spojená s aktivitou nevyhodnotí jako true nebo dokud nevyprší časový limit.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 80eebf0813b6403d5e1e8ff510003f7f0f57c821
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ab24b4f3a819e2b44c68d052c355f10219eb1dc4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142452"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679360"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Dokud aktivita v Azure Data Factory
 Aktivita dokud neposkytuje stejné funkce jako do struktury smyčky do, které poskytuje v programovacích jazycích. Provádí ve smyčce sadu aktivit, dokud se podmínka přidružená k aktivitě nevyhodnotí jako pravdivá. Ve službě Data Factory můžete pro aktivitu Until určit hodnotu časového limitu. 
@@ -51,13 +51,13 @@ Aktivita dokud neposkytuje stejné funkce jako do struktury smyčky do, které p
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požadováno
+Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-name | `Until` Název aktivity | Řetězec | Ano
-type | Musí být nastavenéna do. | Řetězec | Ano
-expression | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Vyjádření.  | Ano
-časový limit | Vyprší časový interval smyčky po zadaném čase. | Řetezce. `d.hh:mm:ss`ani `hh:mm:ss`. Výchozí hodnota je 7 dní. Maximální hodnota je: 90 dní. | Ne
-Aktivity | Sada aktivit, které jsou provedeny, dokud je výraz vyhodnocen `true`jako. | Pole aktivit. |  Ano
+jméno | Název aktivity `Until` | Řetězec | Ano
+type | Musí být nastavené **na do**. | Řetězec | Ano
+vyjádření | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Vyjádření.  | Ano
+timeout | Vyprší časový interval smyčky po zadaném čase. | řetezce. `hh:mm:ss``d.hh:mm:ss` (nebo). Výchozí hodnota je 7 dní. Maximální hodnota je: 90 dní. | Ne
+Aktivity | Sada aktivit, které jsou provedeny, dokud je výraz vyhodnocen jako `true`. | Pole aktivit. |  Ano
 
 ## <a name="example-1"></a>Příklad 1
 
@@ -65,7 +65,7 @@ Aktivity | Sada aktivit, které jsou provedeny, dokud je výraz vyhodnocen `true
 > Tato část poskytuje definice JSON a ukázkové příkazy PowerShellu pro spuštění kanálu. Návod s podrobnými pokyny k vytvoření Data Factory kanálu pomocí definic Azure PowerShell a JSON najdete v tématu [kurz: vytvoření datové továrny pomocí Azure PowerShell](quickstart-create-data-factory-powershell.md).
 
 ### <a name="pipeline-with-until-activity"></a>Kanál s až do aktivity
-V tomto příkladu má kanál dvě aktivity: **Do** a **počkejte**. Aktivita čekání počká po určenou dobu před spuštěním aktivity webu ve smyčce. Další informace o výrazech a funkcích v Data Factory naleznete v tématu [Expression Language and Functions](control-flow-expression-language-functions.md). 
+V tomto příkladu má kanál dvě aktivity: **do** a **Wait**. Aktivita čekání počká po určenou dobu před spuštěním aktivity webu ve smyčce. Další informace o výrazech a funkcích v Data Factory naleznete v tématu [Expression Language and Functions](control-flow-expression-language-functions.md). 
 
 ```json
 {

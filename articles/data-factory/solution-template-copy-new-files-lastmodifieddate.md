@@ -1,5 +1,5 @@
 ---
-title: Kopírování nových a změněných souborů pomocí LastModifiedDate s Azure Data Factory | Microsoft Docs
+title: Kopírování nových a změněných souborů pomocí LastModifiedDate s Azure Data Factory
 description: Naučte se používat šablonu řešení ke kopírování nových a změněných souborů pomocí LastModifiedDate s Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 3/8/2019
-ms.openlocfilehash: a2a8f0478d1ae4fb19cb911b02572145ff59839b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: aaa7114113d5f0330d2dc7d656b0d91963931512
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030071"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684231"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Kopírování nových a změněných souborů pomocí LastModifiedDate s Azure Data Factory
 
@@ -88,8 +88,8 @@ Tato šablona nejprve vybere nové a změněné soubory pouze pomocí atributů 
 11. Zadejte hodnotu pro **parametry spuštění aktivační události** následujícím způsobem a vyberte **Dokončit**.
     - **FolderPath_Source** =  **/source/** .  Můžete nahradit složkou ve zdrojovém úložišti dat.
     - **FolderPath_Destination** =  **/Destination/** .  Můžete nahradit složkou v cílovém úložišti dat.
-    - **LastModified_From** =   **\@trigger (). Outputs. windowStartTime**.  Jedná se o systémovou proměnnou od triggeru, která určuje čas, kdy se kanál aktivoval při posledním spuštění.
-    - **LastModified_To** =  **\@trigger (). Outputs. windowEndTime**.  Jedná se o systémovou proměnnou z triggeru určující čas, kdy se kanál aktivuje.
+    - **LastModified_From** =   **\@Trigger (). Outputs. windowStartTime**.  Jedná se o systémovou proměnnou od triggeru, která určuje čas, kdy se kanál aktivoval při posledním spuštění.
+    - **LastModified_To** =  **\@Trigger (). Outputs. windowEndTime**.  Jedná se o systémovou proměnnou z triggeru určující čas, kdy se kanál aktivuje.
     
     ![Vstupní parametry](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     

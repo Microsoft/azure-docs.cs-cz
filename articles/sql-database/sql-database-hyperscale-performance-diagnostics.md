@@ -1,5 +1,5 @@
 ---
-title: Diagnostika výkonu Azure SQL Database v úrovni služby pro škálování na více úrovní | Microsoft Docs
+title: Azure SQL Database – Diagnostika výkonu na úrovni služby s škálovatelným škálováním
 description: Tento článek popisuje, jak řešit problémy s výkonem s výkonným škálováním v Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: fa8b02cf5ee6f24bcc77aae057f41842da721981
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b8acdbc63098ae99355e8874f7c1585759e5fb7f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521137"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689861"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>Diagnostika řešení potíží s výkonem s škálovatelným škálováním SQL
 
@@ -58,7 +58,7 @@ Několik zobrazení dynamické správy a rozšířených událostí obsahuje slo
     - scan_stopped
     - query_store_begin_persist_runtime_stat
     - dotaz – store_execution_runtime_info
-- ActualPageServerReads/ActualPageServerReadAheads se přidají do XML plánu dotazů pro skutečné plány. Například:
+- ActualPageServerReads/ActualPageServerReadAheads se přidají do XML plánu dotazů pro skutečné plány. Příklad:
 
 `<RunTimeCountersPerThread Thread="8" ActualRows="90466461" ActualRowsRead="90466461" Batches="0" ActualEndOfScans="1" ActualExecutions="1" ActualExecutionMode="Row" ActualElapsedms="133645" ActualCPUms="85105" ActualScans="1" ActualLogicalReads="6032256" ActualPhysicalReads="0" ActualPageServerReads="0" ActualReadAheads="6027814" ActualPageServerReadAheads="5687297" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobPageServerReads="0" ActualLobReadAheads="0" ActualLobPageServerReadAheads="0" />`
 
@@ -99,7 +99,7 @@ Poměr operací čtení provedených v RBPEX a agregovaných čtení provedenýc
 - Na primární výpočetní prostředky se za zápis protokolu používá file_id 2 v sys. DM _io_virtual_file_stats. Zápis do protokolu primárního COMPUTE je zápis do zóny pro odpočívadlo protokolu.
 - Záznamy protokolu nejsou u sekundární repliky na potvrzení zabezpečení posíleny. V škálování je protokol aplikován službou xlog na vzdálené repliky. Vzhledem k tomu, že zápisy protokolů se ve skutečnosti nevyskytují na sekundárních replikách, je jakékoli monitorování v/v protokolu na sekundárních replikách pouze pro účely sledování.
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 - Pro omezení prostředků vCore pro izolovanou databázi s jedním škálováním najdete v tématu [limity Vcore úrovně služby škálování na úrovni služeb](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5) .
 - Azure SQL Database ladění výkonu najdete v tématu [výkon dotazů v Azure SQL Database](sql-database-performance-guidance.md)

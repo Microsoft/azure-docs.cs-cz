@@ -1,5 +1,5 @@
 ---
-title: Vyřazení úrovně služby Azure SQL Database Premium RS | Microsoft Docs
+title: Vyřazení úrovně služby Azure SQL Database Premium RS
 description: Úroveň služby Premium RS se vyřadí a podpora se ukončí – viz možnosti migrace.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/07/2019
-ms.openlocfilehash: d2637618ea9e2a0a0d0369eddce01fae073be221
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 688fd3fdefb54fc25d5236277c85dd4262df5f34
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566629"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687239"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Služba Azure SQL Database Premium RS úrovně služeb (Preview) je vyřazená – možnosti migrace
 
@@ -50,7 +50,7 @@ Pro úlohy Premium RS náročné na výpočetní výkon doporučujeme migrovat n
 |**Pokud aktuálně jste zapnuti...**|**Migrace na srovnatelný vCore...**|**Migrace na srovnatelnou bázi DTU...**|
 |---|---|---|
 |Premium RS 1|Pro obecné účely 1 vCore (COMPUTE GEN4 –)|Standard 3|
-|Premium RS 2|Pro obecné účely 2 virtuální jádra (COMPUTE GEN4 –)|Standard 4|
+|Premium RS 2|Pro obecné účely 2 virtuální jádra (COMPUTE GEN4 –)|4\. úrovně Standard|
 |Premium RS 4|Pro obecné účely 4 virtuální jádra (COMPUTE GEN4 –)|Standard 6|
 |Premium RS 6|Pro obecné účely 6 virtuální jádra (COMPUTE GEN4 –)|Standard 7|
 
@@ -59,7 +59,7 @@ Pro úlohy Premium RS náročné na výpočetní výkon doporučujeme migrovat n
 |**Pokud aktuálně jste zapnuti...**|**Migrace na srovnatelný vCore...**|**Migrace na srovnatelnou bázi DTU...**|
 |---|---|---|
 |Premium RS ve fondu 125 DTU|Pro obecné účely 1 vCore (COMPUTE GEN4 –)|Standardní fond 100 eDTU|
-|Premium RS pool 250 DTU|Pro obecné účely 2 virtuální jádra (COMPUTE GEN4 –)|Standardní fond 250 eDTU|
+|Premium RS ve fondu 250 DTU|Pro obecné účely 2 virtuální jádra (COMPUTE GEN4 –)|Standardní fond 250 eDTU|
 |Premium RS ve fondu 500 DTU|Pro obecné účely 4 virtuální jádra (COMPUTE GEN4 –)|Standardní fond 500 eDTU|
 |Premium RS ve fondu 1000 DTU|Pro obecné účely 8 virtuální jádra (COMPUTE GEN4 –)|Standardní fond 1000 eDTU|
 
@@ -77,13 +77,13 @@ Pro optimální kombinaci výkonu a nákladů doporučujeme migrovat jednotlivé
 |**Pokud aktuálně jste zapnuti...**|**Migrace na srovnatelný vCore...**|**Migrace na srovnatelnou bázi DTU...**|
 |---|---|---|
 |Premium RS ve fondu 125 DTU|Pro důležité obchodní informace 2 virtuální jádra (COMPUTE GEN4 –)|Fond Premium 125 eDTU|
-|Premium RS pool 250 DTU|Pro důležité obchodní informace 2 virtuální jádra (COMPUTE GEN4 –)|Fond Premium 250 eDTU|
+|Premium RS ve fondu 250 DTU|Pro důležité obchodní informace 2 virtuální jádra (COMPUTE GEN4 –)|Fond Premium 250 eDTU|
 |Premium RS ve fondu 500 DTU|Pro důležité obchodní informace 4 virtuální jádra (COMPUTE GEN4 –)|Fond Premium 500 eDTU|
 |Premium RS ve fondu 1000 DTU|Pro důležité obchodní informace 8 virtuální jádra (COMPUTE GEN4 –)|Fond Premium 1000 eDTU|
 
 ## <a name="take-advantage-of-our-new-offers"></a>Využijte naše nové nabídky
 
-Naše úrovně služeb v rámci nákupního modelu založeného na vCore mají nárok na speciální nabídky, které vám můžou ušetřit až 80% oproti licenční ceně. Využijte licence SQL Server Standard nebo Enterprise Edition s aktivním Software Assurance a Ušetřete až 55% oproti licencím, které jsou v [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/)k dispozici. Zvýhodněné hybridní využití můžete kombinovat s Azure SQL Databasemi cenami za [rezervované kapacity](sql-database-reserved-capacity.md) a ušetřit až 80%, když se potvrdíte dopředu na jeden nebo tři roky.  Aktivujte si obě výhody ještě dnes z Azure Portal.
+Naše úrovně služeb v rámci nákupního modelu založeného na vCore mají nárok na speciální nabídky, které vám můžou ušetřit až 80% oproti licenční ceně. Využijte licence SQL Server Standard nebo Enterprise Edition s aktivním Software Assurance a Ušetřete až 55% oproti licencím, které jsou v [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/)k dispozici. Zvýhodněné hybridní využití můžete kombinovat s [Azure SQL Databasemi cenami za rezervované kapacity](sql-database-reserved-capacity.md) a ušetřit až 80%, když se potvrdíte dopředu na jeden nebo tři roky.  Aktivujte si obě výhody ještě dnes z Azure Portal.
 
 Pokud máte nějaké dotazy nebo obavy týkající se této změny nebo potřebujete pomoc s migrací, obraťte se na [Společnost Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
@@ -97,7 +97,7 @@ Migrace databáze z Premium RS úrovně služby na úroveň služby ve službě 
 
 Do databáze s výpočetní velikostí založenou na DTU nebo vCore se dá zkopírovat jakákoli Premium RS databáze s výpočetní velikostí založenou na DTU nebo bez omezení nebo speciálního pořadí, pokud cílová výpočetní velikost podporuje maximální velikost databáze zdrojové databáze. Kopie databáze vytvoří snímek dat pro počáteční čas operace kopírování a neprovádí synchronizaci dat mezi zdrojem a cílem.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Podrobnosti o specifických velikostech výpočtů a možnostech velikosti úložiště, které jsou dostupné pro izolovanou databázi, najdete v tématu [SQL Database omezení prostředků na základě Vcore pro jednotlivé](sql-database-vcore-resource-limits-single-databases.md) databáze.
 - Podrobnosti o specifických velikostech výpočtů a možnostech velikosti úložiště dostupných pro elastické fondy najdete v tématu [SQL Database omezení prostředků na základě Vcore pro elastické fondy](sql-database-vcore-resource-limits-elastic-pools.md).

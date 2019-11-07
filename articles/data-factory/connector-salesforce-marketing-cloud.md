@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat z marketingového cloudu Salesforce pomocí Azure Data Factory | Microsoft Docs
+title: Kopírování dat z marketingového cloudu Salesforce pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z marketingového cloudu Salesforce do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 93d875fa67e9954268cec26f7413b6a4a4131f9c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d66341507b9237e4d41c31997fd59b8a038cb433
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931029"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680363"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>Kopírování dat z marketingového cloudu Salesforce pomocí Azure Data Factory
 
@@ -87,7 +87,7 @@ Pokud chcete kopírovat data z marketingového cloudu Salesforce, nastavte vlast
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type datové sady musí být nastavená na: **SalesforceMarketingCloudObject** . | Ano |
-| tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
+| tableName | Název tabulky | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad**
 

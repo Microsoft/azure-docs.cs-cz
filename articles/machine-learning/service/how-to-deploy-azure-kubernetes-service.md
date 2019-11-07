@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 10/25/2019
-ms.openlocfilehash: 45d76328f4a5de4a5cf26b0a126825c1b0a906c7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/06/2019
+ms.openlocfilehash: 9055223d1e4ed056ad606533219925972b623f86
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496946"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682080"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Nasazení modelu do clusteru služby Azure Kubernetes
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Při nasazování do služby Azure Kubernetes nasadíte do clusteru AKS, který 
 > [!IMPORTANT]
 > Proces vytvoření nebo přílohy je jednorázovým úkolem. Jakmile je cluster AKS připojený k pracovnímu prostoru, můžete ho použít pro nasazení. Cluster AKS můžete odpojit nebo odstranit, pokud ho už nepotřebujete. Jakmile Detatched nebo odstraníte, nebudete už moct nasadit do clusteru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -47,8 +47,8 @@ Při nasazování do služby Azure Kubernetes nasadíte do clusteru AKS, který 
 
 - Fragmenty kódu __Pythonu__ v tomto článku předpokládají, že jsou nastavené následující proměnné:
 
-    * `ws` – nastaveno na váš pracovní prostor.
-    * `model` – nastaveno na registrovaný model.
+    * `ws` – nastavte na svůj pracovní prostor.
+    * `model` – nastavte na registrovaný model.
     * `inference_config` – nastaveno na odvození konfigurace modelu.
 
     Další informace o nastavení těchto proměnných najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
@@ -122,12 +122,16 @@ Pokud už máte cluster AKS ve svém předplatném Azure a je nižší než verz
 >
 > Pokud chcete svůj cluster AKS zabezpečit pomocí Virtual Network Azure, musíte nejdřív vytvořit virtuální síť. Další informace najdete v tématu [zabezpečené experimenty a odvozování pomocí Azure Virtual Network](how-to-enable-virtual-network.md#aksvnet).
 
+Když k pracovnímu prostoru připojíte cluster AKS, můžete definovat, jak budete cluster používat, nastavením parametru `cluster_purpose`.
+
+Pokud nenastavíte parametr `cluster_purpose` nebo nastavíte `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`, cluster musí mít k dispozici alespoň 12 virtuálních procesorů.
+
+Pokud `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`nastavíte, cluster nemusí mít 12 virtuálních procesorů. Pro vývoj a testování doporučujeme aspoň 2 virtuální procesory. Cluster, který je nakonfigurovaný pro vývoj a testování, ale není vhodný pro provoz na úrovni produkčního prostředí a může prodloužit dobu odvození. Clustery pro vývoj a testování také nezaručují odolnost proti chybám.
+
 > [!WARNING]
-> Když k pracovnímu prostoru připojíte cluster AKS, můžete definovat, jak budete cluster používat, nastavením parametru `cluster_purpose`.
+> Nevytvářejte více souběžných příloh ke stejnému AKS clusteru z vašeho pracovního prostoru. Například připojení jednoho clusteru AKS k pracovnímu prostoru pomocí dvou různých názvů. Každá nová příloha zruší předchozí existující přílohy.
 >
-> Pokud nenastavíte parametr `cluster_purpose` nebo nastavíte `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`, cluster musí mít k dispozici alespoň 12 virtuálních procesorů.
->
-> Pokud `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`nastavíte, cluster nemusí mít 12 virtuálních procesorů. Pro vývoj a testování doporučujeme aspoň 2 virtuální procesory. Cluster, který je nakonfigurovaný pro vývoj a testování, ale není vhodný pro provoz na úrovni produkčního prostředí a může prodloužit dobu odvození. Clustery pro vývoj a testování také nezaručují odolnost proti chybám.
+> Pokud chcete cluster AKS znovu připojit, například změnit nastavení SSL nebo jiné konfigurace clusteru, je nutné nejprve odebrat existující přílohu pomocí [AksCompute. detach ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--).
 
 Další informace o vytvoření clusteru AKS pomocí Azure CLI nebo portálu najdete v následujících článcích:
 
@@ -211,7 +215,7 @@ Další informace o třídách, metodách a parametrech použitých v tomto př�
 
 ### <a name="using-the-cli"></a>Použití rozhraní příkazového řádku
 
-Chcete-li nasadit pomocí rozhraní příkazového řádku, použijte následující příkaz. Nahraďte `myaks` názvem cíle COMPUTE AKS. Nahraďte `mymodel:1` názvem a verzí registrovaného modelu. Nahraďte `myservice` názvem, který tuto službu poskytne:
+Chcete-li nasadit pomocí rozhraní příkazového řádku, použijte následující příkaz. Nahraďte `myaks` názvem výpočetního cíle AKS. Nahraďte `mymodel:1` názvem a verzí registrovaného modelu. Místo `myservice` nahraďte názvem, který tuto službu poskytne:
 
 ```azurecli-interactive
 az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json

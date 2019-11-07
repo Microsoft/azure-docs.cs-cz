@@ -1,6 +1,6 @@
 ---
-title: Hromadné kopírování z databáze pomocí ovládacího prvku tabulky s Azure Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak zkopírovat hromadných dat z databáze pomocí tabulku externího ovládacího prvku k uložení seznamu oddílů zdrojové tabulky pomocí Azure Data Factory pomocí šablony řešení.
+title: Hromadné kopírování z databáze pomocí řídicí tabulky s Azure Data Factory
+description: Naučte se používat šablonu řešení ke kopírování hromadných dat z databáze pomocí externí tabulky ovládacích prvků k uložení seznamu oddílů zdrojových tabulek pomocí Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -13,38 +13,38 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/14/2018
-ms.openlocfilehash: c4224693642e8c9f76deedc0c8ad8586e122cc23
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b651721e9b833c02e4789c79ff5ad0b49ce31343
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60635343"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684272"
 ---
-# <a name="bulk-copy-from-a-database-with-a-control-table"></a>Hromadné kopírování z databáze s tabulkou ovládacího prvku
+# <a name="bulk-copy-from-a-database-with-a-control-table"></a>Hromadné kopírování z databáze pomocí řídicí tabulky
 
-Ke zkopírování dat z datového skladu na serveru Oracle, Netezza, Teradata nebo SQL Server do Azure SQL Data Warehouse, je nutné načíst obrovské objemy dat z více tabulek. Data se obvykle mají k rozdělení na oddíly v každé tabulce, aby mohl načíst řádky s více vlákny paralelně z jedné tabulky. Tento článek popisuje šablonu pro použití v těchto scénářích.
+Chcete-li kopírovat data z datového skladu v Oracle serveru, Netezza, Teradata nebo SQL Server Azure SQL Data Warehouse, je nutné načíst obrovský objem dat z více tabulek. Data musí být obvykle rozdělená do oddílů v každé tabulce, takže můžete načíst řádky s více vlákny paralelně z jedné tabulky. Tento článek popisuje šablonu, která se má použít v těchto scénářích.
 
- >! Poznámka: Pokud chcete ke zkopírování dat z malém počtu tabulek s poměrně málo početnému datový svazek do služby SQL Data Warehouse, je výhodnější používat [nástroj pro kopírování dat Azure Data Factory](copy-data-tool.md). Šablony, který je popsaný v tomto článku je vyšší, než budete potřebovat pro tento scénář.
+ >! Poznámka: Pokud chcete kopírovat data z malého počtu tabulek s relativně malým objemem dat do SQL Data Warehouse, je efektivnější použít [nástroj Azure Data Factory kopírování dat](copy-data-tool.md). Šablona popsaná v tomto článku je více, než kolik jich v tomto scénáři potřebujete.
 
-## <a name="about-this-solution-template"></a>O tato šablona řešení
+## <a name="about-this-solution-template"></a>O této šabloně řešení
 
-Tato šablona načte seznam zdrojových oddílů databáze zkopírovat z externího ovládacího prvku tabulky. Pak Iteruje přes každého oddílu ve zdrojové databázi a zkopíruje data do cíle.
+Tato šablona načte seznam oddílů zdrojové databáze pro kopírování z externí tabulky ovládacích prvků. Pak provede iteraci na všech oddílech zdrojové databáze a zkopíruje data do cílového umístění.
 
-Šablona obsahuje tři činnosti:
-- **Vyhledávání** načte seznam objektů že oddíly databáze z externího ovládacího prvku tabulky.
-- **ForEach** získá seznam oddílů z aktivity vyhledávání a iteruje jednotlivé oddíly do aktivity kopírování.
-- **Kopírování** zkopíruje každý oddíl ze zdrojového úložiště databáze do cílového úložiště.
+Šablona obsahuje tři aktivity:
+- Při **vyhledávání** se načte seznam, ve kterém se zajišťují oddíly databáze z externí tabulky ovládacích prvků.
+- **Foreach** získá seznam oddílů z aktivity vyhledávání a projde každý oddíl aktivitou kopírování.
+- **Kopírovat** zkopíruje všechny oddíly ze zdrojového úložiště databáze do cílového úložiště.
 
-Šablona definuje pěti parametrů:
-- *Control_Table_Name* externího ovládacího prvku tabulka, která ukládá seznam oddílů pro zdrojovou databázi.
-- *Control_Table_Schema_PartitionID* je název název sloupce v tabulce externího ovládacího prvku, který ukládá každé ID oddílu. Ujistěte se, že ID oddílu je jedinečný pro každý oddíl ve zdrojové databázi.
-- *Control_Table_Schema_SourceTableName* je externího ovládacího prvku tabulky, která ukládá názvy jednotlivých tabulek ze zdrojové databáze.
-- *Control_Table_Schema_FilterQuery* je název sloupce v tabulce externího ovládacího prvku, která ukládá dotaz filter na získat data z každého oddílu ve zdrojové databázi. Například, pokud je rozdělená na oddíly data podle roku, dotaz, který je uložen v jednotlivých řádcích může být podobně jako "vybrat * ze zdroje dat kde LastModifytime > =" 2015-01-01 00:00:00 "a LastModifytime < ="2015-12-31 23:59:59.999'' '.
-- *Data_Destination_Folder_Path* je cesta kde se data kopírují do cílového úložiště. Tento parametr je viditelné pouze pokud je cíl, který zvolíte souborové úložiště. Pokud se rozhodnete SQL Data Warehouse jako cílové úložiště, není tento parametr povinný. Ale názvy tabulek a schématu ve službě SQL Data Warehouse, musí být stejné jako ty, které ve zdrojové databázi.
+Šablona definuje pět parametrů:
+- *Control_Table_Name* je vaše externí tabulka ovládacích prvků, která ukládá seznam oddílů pro zdrojovou databázi.
+- *Control_Table_Schema_PartitionID* je název sloupce v tabulce externích ovládacích prvků, ve kterém jsou uložena ID jednotlivých oddílů. Ujistěte se, že je ID oddílu jedinečné pro každý oddíl ve zdrojové databázi.
+- *Control_Table_Schema_SourceTableName* je vaše externí řídicí tabulka, která ukládá názvy jednotlivých tabulek ze zdrojové databáze.
+- *Control_Table_Schema_FilterQuery* je název sloupce v tabulce externích ovládacích prvků, ve kterém je uložený dotaz filtru, který získá data z každého oddílu zdrojové databáze. Pokud jste například děleni data po rocích, dotaz uložený v každém řádku může být podobný příkazu SELECT * FROM DataSource, kde LastModifytime > = ' ' 2015-01-01 00:00:00 ' ' a LastModifytime < = ' ' 2015-12-31 23:59:59.999 ' '.
+- *Data_Destination_Folder_Path* je cesta, kam se zkopírují data do cílového úložiště. Tento parametr je zobrazen pouze v případě, že zvolený cíl je úložiště založené na souborech. Pokud zvolíte SQL Data Warehouse jako cílové úložiště, tento parametr není povinný. Názvy tabulek a schématu v SQL Data Warehouse musí být stejné jako ty ve zdrojové databázi.
 
-## <a name="how-to-use-this-solution-template"></a>Jak použít tuto šablonu řešení
+## <a name="how-to-use-this-solution-template"></a>Jak používat tuto šablonu řešení
 
-1. Vytvoření ovládacího prvku tabulky v SQL Server nebo Azure SQL Database k uložení seznamu zdrojové databáze oddílů pro hromadné kopírování. V následujícím příkladu existují pěti oddílů ve zdrojové databázi. Tři oddíly jsou pro *datasource_table*, a dva jsou určené pro *tabulky project_table*. Sloupec *LastModifytime* se používá k rozdělení dat v tabulce *datasource_table* ze zdrojové databáze. Dotaz, který slouží k načtení první oddíl je "vybrat * z datasource_table kde LastModifytime > =" 2015-01-01 00:00:00 "a LastModifytime < ="2015-12-31 23:59:59.999'' '. Podobně jako dotaz můžete číst data z jiných oddílů.
+1. Umožňuje vytvořit v SQL Server nebo Azure SQL Database tabulku ovládacího prvku pro uložení seznamu oddílů zdrojové databáze pro hromadnou kopii. V následujícím příkladu je ve zdrojové databázi pět oddílů. Tři oddíly jsou pro *datasource_table*a dva jsou pro *project_table*. Sloupec *LastModifytime* se používá k vytvoření oddílů dat v tabulce *datasource_table* ze zdrojové databáze. Dotaz, který se používá ke čtení prvního oddílu, je SELECT * FROM datasource_table, kde LastModifytime > = ' ' 2015-01-01 00:00:00 ' ' a LastModifytime < = ' ' 2015-12-31 23:59:59.999 ' '. Podobný dotaz můžete použít ke čtení dat z jiných oddílů.
 
      ```sql
             Create table ControlTableForTemplate
@@ -64,38 +64,38 @@ Tato šablona načte seznam zdrojových oddílů databáze zkopírovat z extern�
             (5, 'project_table','select * from project_table where ID >= 1000 and ID < 2000');
     ```
 
-2. Přejděte **hromadné kopírování z databáze** šablony. Vytvoření **nový** připojení k tabulce externího ovládacího prvku, který jste vytvořili v kroku 1.
+2. Přejít na šablonu **databáze hromadného kopírování** . Vytvořte **nové** připojení k tabulce externích ovládacích prvků, kterou jste vytvořili v kroku 1.
 
-    ![Vytvořit nové připojení k tabulce ovládacího prvku](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable2.png)
+    ![Vytvoří nové připojení k řídicí tabulce.](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable2.png)
 
-3. Vytvoření **nový** připojení, která se kopírování dat ze zdrojové databáze.
+3. Vytvořte **nové** připojení ke zdrojové databázi, ze které kopírujete data.
 
-     ![Vytvoření nového připojení ke zdrojové databázi](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
+     ![Vytvoří nové připojení ke zdrojové databázi.](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
     
-4. Vytvoření **nový** připojení k datům cílového úložiště, že kopírujete data, která mají.
+4. Vytvořte **nové** připojení k cílovému úložišti dat, do kterého kopírujete data.
 
-    ![Vytvořit nové připojení do cílového úložiště](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
+    ![Vytvoří nové připojení k cílovému úložišti.](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
 
-5. Vyberte **pomocí této šablony**.
+5. Vyberte **použít tuto šablonu**.
 
-    ![Pomocí této šablony](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable5.png)
+    ![Použít tuto šablonu](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable5.png)
     
 6. Zobrazí se kanál, jak je znázorněno v následujícím příkladu:
 
-    ![Zkontrolujte kanálu](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
+    ![Kontrola kanálu](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
 
-7. Vyberte **ladění**, zadejte **parametry**a pak vyberte **Dokončit**.
+7. Vyberte **ladit**, zadejte **parametry**a pak vyberte **Dokončit**.
 
-    ![Klikněte na ** ladění **](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png)
+    ![Klikněte na * * ladit * *.](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png)
 
-8. Zobrazí se výsledky, které jsou podobné jako v následujícím příkladu:
+8. Zobrazí se výsledky podobné následujícímu příkladu:
 
-    ![Zkontrolujte výsledky](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
+    ![Kontrola výsledku](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. (Volitelné) Pokud jste zvolili SQL Data Warehouse jako cíle dat, musíte zadat připojení k úložišti objektů Blob v Azure pro fázování, podle potřeby pomocí Polybase služby SQL Data Warehouse. Ujistěte se, že se vytvořil už kontejneru v úložišti objektů Blob.
+9. Volitelné Pokud jste jako cíl dat zvolili SQL Data Warehouse, musíte pro přípravu zadat připojení ke službě Azure Blob Storage, jak to vyžaduje SQL Data Warehouse základ. Ujistěte se, že kontejner ve službě BLOB Storage již byl vytvořen.
     
-    ![Nastavení funkce Polybase](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
+    ![Základní nastavení](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Úvod do Azure Data Factory](introduction.md)
+- [Seznámení se službou Azure Data Factory](introduction.md)

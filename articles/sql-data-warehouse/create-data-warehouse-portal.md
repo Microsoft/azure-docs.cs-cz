@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vytvoření a dotazování Azure SQL Data Warehouse-Azure Portal | Microsoft Docs'
+title: 'Rychlý Start: vytvoření a dotazování datového skladu – Azure Portal'
 description: Vytvoření a dotazování datového skladu pomocí Azure SQL Data Warehouse v Azure Portal.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,15 +10,15 @@ ms.subservice: development
 ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: sqlfreshmay19
-ms.openlocfilehash: 83475af3cfdd83e718243d80b84599d53716a5d5
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 5acd9688f5029c2a62243254f06160b9907797dd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375838"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686216"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Rychlý start: Vytvoření a dotazování Azure SQL Data Warehouse v Azure Portal
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Rychlý Start: vytvoření a dotazování Azure SQL Data Warehouse v Azure Portal
 
 Rychlé vytvoření a dotazování Azure SQL Data Warehouse pomocí Azure Portal.
 
@@ -27,17 +27,17 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 > [!NOTE]
 > Vytvoření služby SQL Data Warehouse může znamenat, že se vám začne fakturovat nová služba. Další informace najdete v tématu [SQL Data Warehouse – ceny](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlásit se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-data-warehouse"></a>Vytvoření datového skladu
 
-Vytvoří se Azure SQL Data Warehouse s definovanou sadou [výpočetních prostředků](memory-and-concurrency-limits.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a na [logickém serveru SQL Azure](../sql-database/sql-database-logical-servers.md). 
+Vytvoří se Azure SQL Data Warehouse s definovanou sadou [výpočetních prostředků](memory-concurrency-limits.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a na [logickém serveru SQL Azure](../sql-database/sql-database-logical-servers.md). 
 
 Pomocí těchto kroků vytvořte SQL Data Warehouse obsahující ukázková data AdventureWorksDW. 
 
@@ -67,12 +67,12 @@ Pomocí těchto kroků vytvořte SQL Data Warehouse obsahující ukázková data
     | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). |
     | **Přihlašovací jméno správce serveru** | Libovolné platné jméno | Platná přihlašovací jména najdete v tématu [Identifikátory databází](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers).|
     | **Heslo** | Libovolné platné heslo | Heslo musí mít alespoň osm znaků a musí obsahovat znaky ze tří z následujících kategorií: velká písmena, malá písmena, číslice a jiné než alfanumerické znaky. |
-    | **Location** | Libovolné platné umístění | Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/). |
+    | **Umístění** | Libovolné platné umístění | Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/). |
     ||||
 
     ![vytvoření databázového serveru](media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
 
-5. Klikněte na tlačítko **vyberte**.
+5. Klikněte na **Vybrat**.
 
 6. Kliknutím na **úroveň výkonu** určete konfiguraci výkonu pro datový sklad.
 
@@ -80,7 +80,7 @@ Pomocí těchto kroků vytvořte SQL Data Warehouse obsahující ukázková data
 
     ![konfigurace výkonu](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
-8. Klikněte na tlačítko **Použít**.
+8. Klikněte na **Použít**.
 
 9. Teď, když jste dokončili formulář SQL Data Warehouse, klikněte na **vytvořit** a zřiďte databázi. Zřizování trvá několik minut.
 
@@ -126,7 +126,7 @@ Pomocí této IP adresy se teď můžete připojit k serveru SQL a jeho datovým
 
 Na webu Azure Portal získejte plně kvalifikovaný název vašeho serveru SQL. Tento plně kvalifikovaný název použijete později při připojování k serveru.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
 2. V nabídce na levé straně vyberte **SQL Data Warehouse** a klikněte na svůj datový sklad na stránce **SQL Data Warehouse** .
 3. V podokně **Základy** na stránce webu Azure Portal pro vaši databázi vyhledejte a potom zkopírujte **Název serveru**. V tomto příkladu je plně kvalifikovaný název mynewserver-20180430.database.windows.net.
 
@@ -136,7 +136,7 @@ Na webu Azure Portal získejte plně kvalifikovaný název vašeho serveru SQL. 
 
 V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) naváže připojení k serveru SQL Azure.
 
-1. Spusťte aplikaci SQL Server Management Studio.
+1. Otevřete SQL Server Management Studio.
 
 2. V dialogovém okně **Připojení k serveru** zadejte následující informace:
 
@@ -144,8 +144,8 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
    | :------ | :-------------- | :---------- |
    | Typ serveru | Databázový stroj | Tato hodnota se vyžaduje. |
    | Název serveru | Plně kvalifikovaný název serveru | Tady je příklad: **MyNewServer-20180430.Database.Windows.NET**. |
-   | Ověřování | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
-   | Přihlásit se | Účet správce serveru | Účet, který jste zadali při vytváření serveru. |
+   | Ověření | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
+   | Přihlásit | Účet správce serveru | Účet, který jste zadali při vytváření serveru. |
    | Heslo | Heslo pro účet správce serveru | Heslo, které jste zadali při vytváření serveru. |
    ||||
 

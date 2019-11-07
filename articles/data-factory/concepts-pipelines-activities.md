@@ -1,5 +1,5 @@
 ---
-title: Kanály a aktivity v Azure Data Factory | Dokumentace Microsoftu
+title: Kanály a aktivity v Azure Data Factory
 description: Seznamte se s kanály a aktivitami v Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: cb776b28a8c06784a2aa41e42429a3f183254138
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: bed81633b27d5d0f89cb7e3d7a6e0975de4b6772
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984224"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681462"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Kanály a aktivity v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -53,7 +53,7 @@ Aktivita transformace dat | Výpočetní prostředí
 [MapReduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
 [Streamování Hadoop](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
-[Machine Learning aktivity: Dávkové zpracování a aktualizace prostředku](transform-data-using-machine-learning.md) | Azure VM
+[Aktivity Machine Learning: Dávkové spouštění a Aktualizace prostředku](transform-data-using-machine-learning.md) | Virtuální počítač Azure
 [Uložená procedura](transform-data-using-stored-procedure.md) | Azure SQL, Azure SQL Data Warehouse nebo SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [Vlastní kód](transform-data-using-dotnet-custom-activity.md) | Azure Batch
@@ -95,15 +95,15 @@ Tady je způsob definice kanálu ve formátu JSON:
 }
 ```
 
-Značka | Popis | type | Požadováno
+Značka | Popis | Typ | Požaduje se
 --- | ----------- | ---- | --------
-name | Název kanálu. Určuje název, který představuje akci prováděnou kanálem. <br/><ul><li>Maximální počet znaků: 140</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (\_).</li><li>Nejsou povolené tyto znaky: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“.</li></ul> | String | Ano
-description | Určuje text popisující, k čemu se kanál používá. | String | Ne
-activities | Část **activities** může obsahovat definici jedné nebo více aktivit. Podrobnosti o elementu activities formátu JSON najdete v části [Zápis JSON aktivity](#activity-json). | Array | Ano
-parameters | Část **parameters** může obsahovat definici jednoho nebo více parametrů v kanálu, aby byl kanál flexibilní pro opakované použití. | List | Ne
+jméno | Název kanálu. Určuje název, který představuje akci prováděnou kanálem. <br/><ul><li>Maximální počet znaků: 140.</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (\_).</li><li>Nejsou povolené tyto znaky: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“.</li></ul> | Řetězec | Ano
+description | Určuje text popisující, k čemu se kanál používá. | Řetězec | Ne
+activities | Část **activities** může obsahovat definici jedné nebo více aktivit. Podrobnosti o elementu activities formátu JSON najdete v části [Zápis JSON aktivity](#activity-json). | Pole | Ano
+parameters | Část **parameters** může obsahovat definici jednoho nebo více parametrů v kanálu, aby byl kanál flexibilní pro opakované použití. | Seznam | Ne
 
 ## <a name="activity-json"></a>Zápis JSON aktivity
-Část **activities** může obsahovat definici jedné nebo více aktivit. Existují dva hlavní typy aktivit: Aktivity provádění a řízení.
+Část **activities** může obsahovat definici jedné nebo více aktivit. Existují dva hlavní typy aktivit: aktivity spuštění a aktivity řízení.
 
 ### <a name="execution-activities"></a>Aktivity spuštění
 Aktivity spuštění zahrnují aktivity [přesunu dat](#data-movement-activities) a [transformace dat](#data-transformation-activities). Mají následující strukturu nejvyšší úrovně:
@@ -128,17 +128,17 @@ Aktivity spuštění zahrnují aktivity [přesunu dat](#data-movement-activities
 
 Následující tabulka obsahuje popis vlastností v definici aktivity ve formátu JSON:
 
-Značka | Popis | Požadováno
+Značka | Popis | Požaduje se
 --- | ----------- | ---------
-name | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou. <br/><ul><li>Maximální počet znaků: 55</li><li>Musí začínat číslem písmenem nebo podtržítkem (\_).</li><li>Nejsou povolené tyto znaky: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“. | Ano</li></ul>
+jméno | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou. <br/><ul><li>Maximální počet znaků: 55.</li><li>Musí začínat číslem písmenem nebo podtržítkem (\_).</li><li>Nejsou povolené tyto znaky: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“. | Ano</li></ul>
 description | Text popisující, k čemu aktivita slouží. | Ano
 type | Typ aktivity. Informace o různých typech aktivit najdete v částech [Aktivity přesunu dat](#data-movement-activities), [Aktivity transformace dat](#data-transformation-activities) a [Aktivity řízení](#control-activities). | Ano
 linkedServiceName | Název propojené služby používané aktivitou.<br/><br/>Aktivita může vyžadovat zadání propojené služby, která odkazuje na požadované výpočetní prostředí. | Ano v případě aktivity HDInsight, dávkové hodnoticí aktivity služby Azure Machine Learning a aktivita uložené procedury <br/><br/>Ne ve všech ostatních případech
 typeProperties | Vlastnosti v části typeProperties závisí na příslušném typu aktivity. Pokud chcete zobrazit vlastnosti typu určité aktivity, klikněte na odkaz na aktivitu v předchozí části. | Ne
-zásada | Zásady, které ovlivňují chování aktivity za běhu. Tato vlastnost zahrnuje chování při vypršení časového limitu a opakovaných pokusech. Pokud není zadaná, použijí se výchozí hodnoty. Další informace najdete v části [Zásada aktivity](#activity-policy). | Ne
+policy | Zásady, které ovlivňují chování aktivity za běhu. Tato vlastnost zahrnuje chování při vypršení časového limitu a opakovaných pokusech. Pokud není zadaná, použijí se výchozí hodnoty. Další informace najdete v části [Zásada aktivity](#activity-policy). | Ne
 dependsOn | Tato vlastnost slouží k určení závislostí aktivity a toho, jak následující aktivity závisejí na předchozích aktivitách. Další informace najdete v části [Závislost aktivit](#activity-dependency). | Ne
 
-### <a name="activity-policy"></a>Zásady aktivity
+### <a name="activity-policy"></a>Zásada aktivity
 Zásady ovlivňují chování aktivity za běhu a nabízejí možnosti konfigurace. Zásady aktivit jsou dostupné jenom pro aktivity spuštění.
 
 ### <a name="activity-policy-json-definition"></a>Definice zásady aktivity ve formátu JSON
@@ -169,9 +169,9 @@ Zásady ovlivňují chování aktivity za běhu a nabízejí možnosti konfigura
 }
 ```
 
-Název JSON | Popis | Povolené hodnoty | Požadováno
+Název JSON | Popis | Povolené hodnoty | Požaduje se
 --------- | ----------- | -------------- | --------
-časový limit | Určuje časový limit pro spuštění aktivity. | Timespan | Ne. Výchozí hodnota časového limitu je 7 dní.
+timeout | Určuje časový limit pro spuštění aktivity. | Časový interval | Ne. Výchozí hodnota časového limitu je 7 dní.
 retry | Maximální počet opakovaných pokusů. | Integer | Ne. Výchozí hodnota je 0.
 retryIntervalInSeconds | Prodleva mezi pokusy o opakování v sekundách. | Integer | Ne. Výchozí hodnota je 30 sekund.
 secureOutput | Při nastavení vlastnosti na true se výstup aktivity považuje za bezpečný, tzn. že se nezaznamená do monitorování. | Logická hodnota | Ne. Výchozí hodnota je false.
@@ -193,9 +193,9 @@ Aktivity řízení mají následující strukturu nejvyšší úrovně:
 }
 ```
 
-Značka | Popis | Požadováno
+Značka | Popis | Požaduje se
 --- | ----------- | --------
-name | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou.<br/><ul><li>Maximální počet znaků: 55</li><li>Musí začínat číslem písmenem nebo podtržítkem (\_).</li><li>Nejsou povolené tyto znaky: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“. | Ano</li><ul>
+jméno | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou.<br/><ul><li>Maximální počet znaků: 55.</li><li>Musí začínat číslem písmenem nebo podtržítkem (\_).</li><li>Nejsou povolené tyto znaky: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“. | Ano</li><ul>
 description | Text popisující, k čemu aktivita slouží. | Ano
 type | Typ aktivity. Informace o různých typech aktivit najdete v částech [Aktivity přesunu dat](#data-movement-activities), [Aktivity transformace dat](#data-transformation-activities) a [Aktivity řízení](#control-activities). | Ano
 typeProperties | Vlastnosti v části typeProperties závisí na příslušném typu aktivity. Pokud chcete zobrazit vlastnosti typu určité aktivity, klikněte na odkaz na aktivitu v předchozí části. | Ne
@@ -204,16 +204,16 @@ dependsOn | Tato vlastnost slouží k určení závislostí aktivity a toho, jak
 ### <a name="activity-dependency"></a>Závislost aktivit
 Závislost aktivit určuje, jak následující aktivity závisejí na předchozích aktivitách, a stanovuje podmínku určující, jestli se má pokračovat provedením další úlohy. Aktivita může záviset na jedné nebo více předchozích aktivitách s různými podmínkami závislosti.
 
-Mezi různé podmínky závislosti patří: Úspěch, selhalo, bylo vynecháno, dokončeno.
+Existují různé podmínky závislosti: Úspěch, Chyba, Vynecháno, Dokončeno.
 
 Pokud má například kanál scénář aktivita A -> aktivita B, mohou nastat různé scénáře:
 
-- Aktivita B má podmínku závislosti na aktivitě As úspěchem: Aktivita B se spustí jenom v případě, že má aktivita A konečný stav úspěch.
-- Aktivita B má podmínku závislosti na aktivitě A **selhala**: Aktivita B se spustí jenom v případě, že má aktivita A konečný stav selhání.
-- Aktivita B má podmínku závislosti na aktivitě As dokončeným: Aktivita B se spustí v případě, že má aktivita A konečný stav úspěch nebo neúspěch.
-- Aktivita B má podmínku závislosti na aktivitě As vynecháním: Aktivita B se spustí, pokud má aktivita A konečný stav přeskočeno. Stav Přeskočeno nastává ve scénáři aktivita X -> aktivita Y -> aktivita Z, kde se každá aktivita spustí jenom v případě, že úspěšně proběhnou předchozí aktivity. Pokud v aktivitě X dojde k chybě, má aktivita Y stav „Vynecháno“, protože se nikdy neprovede. Stejně tak je ve stavu „Vynecháno“ i aktivita Z.
+- Aktivita B má podmínku závislosti na aktivitě A s hodnotou **Úspěch**: aktivita B se spustí jenom v případě, že má aktivita A konečný stav Úspěch.
+- Aktivita B má podmínku závislosti na aktivitě A s hodnotou **Chyba**: aktivita B se spustí jenom v případě, že má aktivita A konečný stav Chyba.
+- Aktivita B má podmínku závislosti na aktivitě A s hodnotou **Dokončeno**: aktivita B se spustí v případě, že má aktivita A konečný stav Dokončeno.
+- Aktivita B má podmínku závislosti na aktivitě A s hodnotou **Vynecháno**: aktivita B se spustí v případě, že má aktivita A konečný stav Vynecháno. Stav Přeskočeno nastává ve scénáři aktivita X -> aktivita Y -> aktivita Z, kde se každá aktivita spustí jenom v případě, že úspěšně proběhnou předchozí aktivity. Pokud v aktivitě X dojde k chybě, má aktivita Y stav „Vynecháno“, protože se nikdy neprovede. Stejně tak je ve stavu „Vynecháno“ i aktivita Z.
 
-#### <a name="example-activity-2-depends-on-the-activity-1-succeeding"></a>Příklad: Aktivita 2 závisí na úspěšném dokončení aktivity 1.
+#### <a name="example-activity-2-depends-on-the-activity-1-succeeding"></a>Příklad: Aktivita 2 závisí na předchozí aktivitě 1.
 
 ```json
 {
@@ -390,7 +390,7 @@ Například předpokládejme, že máte aktivační událost plánovače „Trig
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V následujících kurzech najdete podrobné pokyny pro vytváření kanálů s aktivitami:
 
 - [Vytvoření kanálu s aktivitou kopírování](quickstart-create-data-factory-powershell.md)

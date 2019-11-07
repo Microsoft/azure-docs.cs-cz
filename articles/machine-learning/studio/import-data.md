@@ -1,6 +1,6 @@
 ---
-title: Importovat data z různých zdrojů dat
-titleSuffix: Azure Machine Learning Studio (classic)
+title: Import trénovacích dat
+titleSuffix: ML Studio (classic) Azure
 description: Jak importovat data do Azure Machine Learning Studio (Classic) z různých zdrojů dat. Zjistěte, jaké datové typy a datové formáty jsou podporovány.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: 6e84f5c8cab6323234b81126ad3e8b1299e10171
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 453efc1129ad9ef2a8b68a571c98e3f5620a671f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492891"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684786"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Import školicích dat do Azure Machine Learning Studio (Classic) z různých zdrojů dat
 
@@ -68,7 +68,7 @@ Klasické verze studia rozpoznávají následující typy dat:
 * Integer
 * Klepat
 * Logická hodnota
-* Datum a čas
+* DateTime
 * TimeSpan
 
 Studio používá k předávání dat mezi moduly interní datový typ nazvaný ***Tabulka dat*** . Data můžete explicitně převést do formátu tabulky dat pomocí modulu [převést na datovou sadu][convert-to-dataset] .

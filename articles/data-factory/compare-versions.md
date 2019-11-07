@@ -1,5 +1,5 @@
 ---
-title: Porovnání služby Azure Data Factory s verzí 1 služby Data Factory | Microsoft Docs
+title: Porovnání služby Azure Data Factory s verzí 1 služby Data Factory
 description: Tento článek porovnává Azure Data Factory s verzí 1 služby Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: 4cdb517e644d55504bfdafbd3bacdfd4bfa0b36c
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: cab4f156aa1fb2fa4d3b122377be1b28337f15a9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479298"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681597"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Porovnání služby Azure Data Factory s verzí 1 služby Data Factory
 Tento článek porovnává Data Factory s verzí 1 služby Data Factory. Se službou Data Factory se můžete seznámit v článku [Úvod do Azure Data Factory](introduction.md). S verzí 1 této služby se můžete seznámit v článku [Úvod do Azure Data Factory](v1/data-factory-introduction.md). 
@@ -67,7 +67,7 @@ Kanály se můžou aktivovat na vyžádání (na základě události, tj. odesl�
 [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md) umožňuje kanálu služby Data Factory volat jiný kanál.
 
 ### <a name="delta-flows"></a>Toky rozdílů
-Nejdůležitějším případem použití ve vzorech ETL je „rozdílové načtení“, kdy se načítají jen data, která se změnila od poslední iterace kanálu. Nové možnosti v aktuální verzi, jako jsou [aktivita vyhledávání](control-flow-lookup-activity.md), flexibilní plánování a tok řízení, přirozeným způsobem podporují tento případ použití. Kurz s podrobnými pokyny najdete v [kurzu: Přírůstková](tutorial-incremental-copy-powershell.md)kopie.
+Nejdůležitějším případem použití ve vzorech ETL je „rozdílové načtení“, kdy se načítají jen data, která se změnila od poslední iterace kanálu. Nové možnosti v aktuální verzi, jako jsou [aktivita vyhledávání](control-flow-lookup-activity.md), flexibilní plánování a tok řízení, přirozeným způsobem podporují tento případ použití. Kurz s podrobnými pokyny najdete tady: [Tutorial: Incremental copy](tutorial-incremental-copy-powershell.md) (Kurz: Vytváření přírůstkových kopií).
 
 ### <a name="other-control-flow-activities"></a>Další aktivity toku řízení
 V dalším textu najdete popis několika dalších aktivit toku řízení podporovaných v aktuální verzi služby Data Factory. 
@@ -116,13 +116,13 @@ Další informace najdete v článku, který se věnuje [rozdílu mezi vlastní 
 ## <a name="sdks"></a>Sady SDK
  Aktuální verze služby Data Factory poskytuje širší nabídku sad SDK, které je možné využít k vytváření, správě a monitorování kanálů.
 
-- **SADA .NET SDK**: Sada .NET SDK je aktualizována v aktuální verzi.
+- **.NET SDK**: Sada .NET SDK je v aktuální verzi aktualizovaná.
 
-- **PowerShell**: Rutiny PowerShellu se aktualizují v aktuální verzi. Rutiny pro aktuální verzi mají v názvu **mají datafactoryv2** , například: Get-AzDataFactoryV2. 
+- **PowerShell**: Rutiny PowerShellu jsou v aktuální verzi aktualizované. Rutiny pro aktuální verzi mají **mají datafactoryv2** v názvu, například: Get-AzDataFactoryV2. 
 
-- **Python SDK**: Tato sada SDK je v aktuální verzi novinkou.
+- **Python SDK**: Tato sada SDK je v aktuální verzi nová.
 
-- **REST API**: REST API se aktualizuje v aktuální verzi. 
+- **REST API**: Rozhraní REST API je v aktuální verzi aktualizované. 
 
 Sady SDK aktualizované v aktuální verzi nejsou zpětně kompatibilní s klienty verze 1. 
 
@@ -130,10 +130,10 @@ Sady SDK aktualizované v aktuální verzi nejsou zpětně kompatibilní s klien
 
 | &nbsp; | V2 | V1 |
 | ------ | -- | -- | 
-| portál Azure | [Ano](quickstart-create-data-factory-portal.md) | Ne |
+| Portál Azure | [Ano](quickstart-create-data-factory-portal.md) | Ne |
 | Azure PowerShell | [Ano](quickstart-create-data-factory-powershell.md) | [Ano](data-factory-build-your-first-pipeline-using-powershell.md) |
 | .NET SDK | [Ano](quickstart-create-data-factory-dot-net.md) | [Ano](data-factory-build-your-first-pipeline-using-vs.md) |
-| REST API | [Ano](quickstart-create-data-factory-rest-api.md) | [Ano](data-factory-build-your-first-pipeline-using-rest-api.md) |
+| Rozhraní REST API | [Ano](quickstart-create-data-factory-rest-api.md) | [Ano](data-factory-build-your-first-pipeline-using-rest-api.md) |
 | Python SDK | [Ano](quickstart-create-data-factory-python.md) | Ne |
 | Šablona Resource Manageru | [Ano](quickstart-create-data-factory-resource-manager-template.md) | [Ano](data-factory-build-your-first-pipeline-using-arm.md) | 
 
@@ -145,5 +145,5 @@ K vytváření a správě prostředků aktuální verze služby Data Factory je 
 V aktuální verzi můžete k monitorování datových továren použít také [Azure Monitor](monitor-using-azure-monitor.md). Nové rutiny PowerShellu podporují monitorování prostředí [Integration Runtime](monitor-integration-runtime.md). Verze 1 i 2 podporují vizuální monitorování prostřednictvím monitorovací aplikace, kterou můžete spustit z webu Azure Portal.
 
 
-## <a name="next-steps"></a>Další postup
-Naučte se vytvořit datovou továrnu podle podrobných pokynů v následujících rychlých startech: [PowerShell](quickstart-create-data-factory-powershell.md), [.NET](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md), [REST API](quickstart-create-data-factory-rest-api.md). 
+## <a name="next-steps"></a>Další kroky
+Návod na vytvoření datové továrny najdete v podrobných pokynech v následujících úvodních příručkách: [PowerShell](quickstart-create-data-factory-powershell.md), [.NET](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md), [REST API](quickstart-create-data-factory-rest-api.md). 

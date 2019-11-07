@@ -1,11 +1,11 @@
 ---
-title: Předání ověřovacích tokenů do služby Azure Media Services | Dokumentace Microsoftu
-description: Zjistěte, jak odeslat ověřovací tokeny z klienta ke službě Azure Media Services doručení klíče
+title: Předat ověřovací tokeny do Azure Media Services | Microsoft Docs
+description: Přečtěte si, jak odesílat ověřovací tokeny z klienta do služby pro doručování klíčů Azure Media Services
 services: media-services
-keywords: Ochrana obsahu, DRM, ověřování pomocí tokenu
+keywords: Ochrana obsahu, DRM, ověřování tokenů
 documentationcenter: ''
-author: dbgeorge
-manager: jasonsue
+author: Juliako
+manager: femila
 editor: ''
 ms.assetid: 7c3b35d9-1269-4c83-8c91-490ae65b0817
 ms.service: media-services
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
-ms.author: dwgeo
-ms.openlocfilehash: 71925a1ee67956df45901950b2a59fa4c1b458a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.openlocfilehash: 15d4cbc372f5d5ec0d323170189329152ed436e3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463221"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684936"
 ---
-# <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Zjistěte, jak klienti předání tokenů ve službě Azure Media Services doručení klíče
-Zákazníci se často ptají, jak přehrávač můžete předat tokeny ke službě Azure Media Services doručení klíče pro ověření, přehrávače můžete získat klíč. Služba Media Services podporuje jednoduchý webový token (SWT) a formátů JSON Web Token (JWT). Ověření tokenu se použije na libovolný typ klíče, bez ohledu na to, jestli používat standard common encryption nebo Obálka šifrování Advanced Encryption (Standard AES) v systému.
+# <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Přečtěte si, jak klienti přecházejí tokeny službě doručování klíčů Azure Media Services
+Zákazníci se často dotazují, jak může hráč předat tokeny službě doručování klíčů Azure Media Services k ověření, aby tento klíč mohl získat hráč. Media Services podporuje formáty jednoduchých webových tokenů (SWT) a JSON Web Token (JWT). Ověřování tokenu se aplikuje na libovolný typ klíče bez ohledu na to, jestli v systému používáte společné šifrování nebo šifrování obálek s standard AES (Advanced Encryption Standard) (AES).
 
- V závislosti na player a platformy, na kterou cílíte můžete předat token s přehrávače následujícími způsoby:
+ V závislosti na přehrávači a platformě, na kterou cílíte, můžete token předat pomocí přehrávače následujícími způsoby:
 
-- Prostřednictvím protokolu HTTP autorizační hlavičky.
+- Prostřednictvím hlavičky autorizace protokolu HTTP.
     > [!NOTE]
-    > Předpona "Nosiče" očekává podle specifikace OAuth 2.0. Ukázka player se konfigurace tokenu je hostované na Azure Media Player [ukázkové stránky](https://ampdemo.azureedge.net/). Chcete-li nastavit zdroj videa, zvolte **AES (tokenů JWT)** nebo **AES (SWT Token)** . Token, který se předá prostřednictvím autorizační hlavičky.
+    > Na základě specifikací OAuth 2,0 se očekává prefix "nosič". Ukázkový přehrávač s konfigurací tokenu je hostovaný na [stránce Azure Media Player demo](https://ampdemo.azureedge.net/). Zdroj videa nastavíte tak, že vyberete **AES (token JWT)** nebo **AES (SWT token)** . Token se předává přes autorizační hlavičku.
 
-- Prostřednictvím přidání adresy URL parametr pomocí dotazu "token = tokenvalue."  
+- Prostřednictvím přidání parametru dotazu URL s parametrem token = tokenvalue.  
     > [!NOTE]
-    > Předpona "Nosiče" není očekáván. Vzhledem k tomu, že token, který se odesílá prostřednictvím adresy URL, budete muset obraně řetězec tokenu. Tady je C# ukázkový kód, který ukazuje, jak to udělat:
+    > Předpona "nosiče" není očekávána. Vzhledem k tomu, že se token odesílá prostřednictvím adresy URL, je nutné obraně řetězec tokenu. Zde je C# ukázkový kód, který ukazuje, jak to provést:
 
     ```csharp
     string armoredAuthToken = System.Web.HttpUtility.UrlEncode(authToken);
@@ -41,8 +41,8 @@ Zákazníci se často ptají, jak přehrávač můžete předat tokeny ke služb
     Uri keyDeliveryUrlWithTokenParameter = new Uri(uriWithTokenParameter);
     ```
 
-- Prostřednictvím CustomData pole.
-Tato možnost se používá pro získání licence PlayReady jenom přes pole CustomData výzvy získání licence PlayReady. V takovém případě musí být token uvnitř dokumentu XML, podle postupu popsaného tady:
+- Prostřednictvím pole CustomData.
+Tato možnost se používá jenom pro získání licence PlayReady, a to prostřednictvím pole CustomData výzvy pro získání licence PlayReady. V takovém případě musí být token uvnitř dokumentu XML, jak je popsáno zde:
 
     ```xml
     <?xml version="1.0"?>
@@ -50,10 +50,10 @@ Tato možnost se používá pro získání licence PlayReady jenom přes pole Cu
         <Token></Token> 
     </CustomData>
     ```
-    Vložte ověřovací token do prvku Token.
+    Do elementu tokenu vložte svůj ověřovací token.
 
-- Prostřednictvím alternativní stop HTTP Live Streaming (HLS). Pokud je nutné nakonfigurovat ověřování pomocí tokenu pro AES + HLS přehrávání na iOS/Safari, není k dispozici způsob, jak můžete odeslat přímo v tokenu. Další informace o tom, jak alternativní seznam stop, chcete-li povolit tento scénář, najdete v tomto [blogový příspěvek](https://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
+- Pomocí alternativního seznamu testů HTTP Live Streaming (HLS). Pokud potřebujete nakonfigurovat ověřování pomocí tokenu pro AES + HLS přehrávání v iOS/Safari, neexistuje způsob, jakým můžete přímo odeslat token. Další informace o tom, jak alternativní seznam testů povolit pro tento scénář, najdete v tomto [blogovém příspěvku](https://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

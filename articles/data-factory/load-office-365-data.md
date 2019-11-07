@@ -1,5 +1,5 @@
 ---
-title: Načtení dat ze sady Office 365 pomocí Azure Data Factory | Microsoft Docs
+title: Načtení dat ze sady Office 365 pomocí Azure Data Factory
 description: Použití Azure Data Factory ke kopírování dat z Office 365
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: da3d407b39ef00154b717b54213a3b40d2d110bb
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0c938caef81063409d3c8d6632cd7e8df99f1ea1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754537"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672623"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Načtení dat ze sady Office 365 pomocí Azure Data Factory
 
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak pomocí Data Factory _načíst data z Office 3
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce vlevo vyberte **vytvořit prostředek** > **Analýza** > **Data Factory**: 
+1. V nabídce vlevo vyberte **vytvořit prostředek** > **Analytics** > **Data Factory**: 
    
    ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -38,10 +38,10 @@ V tomto článku se dozvíte, jak pomocí Data Factory _načíst data z Office 3
     * **Verze**: vyberte **v2**.
     * **Umístění**: vyberte umístění pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat, která služba Data Factory používá, můžou být v jiných umístěních a oblastech. Mezi Tato úložiště dat patří Azure Data Lake Store, Azure Storage, Azure SQL Database a tak dále.
 
-3. Vyberte **Create** (Vytvořit).
+3. Vyberte **Vytvořit**.
 4. Až se vytváření dokončí, přejdete do vaší datové továrny. Zobrazí se Domovská stránka **Data Factory** , jak je znázorněno na následujícím obrázku:
    
-   ![Domovská stránka datové továrny](./media/load-office-365-data/data-factory-home-page.png)
+   ![Domovská stránka objektu pro vytváření dat](./media/load-office-365-data/data-factory-home-page.png)
 
 5. Kliknutím na dlaždici **Author & monitor** můžete spustit aplikaci pro integraci dat na samostatné kartě.
 
@@ -77,7 +77,7 @@ V tomto článku se dozvíte, jak pomocí Data Factory _načíst data z Office 3
 
     ![Konfigurační tabulka sady Office 365](./media/load-office-365-data/edit-dataset.png)
 
-8. Teď se vraťte na**kartu zdrojová**  >  **kanálu** a pokračujte v konfiguraci dalších vlastností pro extrakci dat Office 365.  Uživatelský rozsah a filtr oboru uživatele jsou volitelné predikáty, které můžete definovat k omezení dat, která chcete vyjmout z Office 365. Postup při konfiguraci těchto nastavení najdete v části [Vlastnosti datové sady Office 365](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties) .
+8. Teď se vraťte na **kartu zdrojová** > **kanálu** a pokračujte v konfiguraci dalších vlastností pro extrakci dat Office 365.  Uživatelský rozsah a filtr oboru uživatele jsou volitelné predikáty, které můžete definovat k omezení dat, která chcete vyjmout z Office 365. Postup při konfiguraci těchto nastavení najdete v části [Vlastnosti datové sady Office 365](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties) .
 
 9. Je nutné zvolit jeden z filtrů data a zadat počáteční a koncové hodnoty času.
 
@@ -131,7 +131,7 @@ Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu,
 Pokud se jedná o data pro tento kontext poprvé (kombinace toho, ke které tabulce dat se přistupuje, který cílový účet představuje data, která jsou načítána do a která identita uživatele vytváří požadavek na přístup k datům), zobrazí se aktivita kopírování. stav **probíhá**, a až kliknete na odkaz Podrobnosti v části akce, zobrazí se stav jako **RequesetingConsent**.  Člen skupiny schvalovatelů přístupu k datům musí schválit žádost v Privileged Access Management předtím, než může pokračovat v extrakci dat.
 
 _Stav jako žádost o souhlas:_ 
- ![Activity podrobnosti o spuštění – souhlas s požadavkem ](./media/load-office-365-data/activity-details-request-consent.png) 
+![podrobnosti spuštění aktivity – souhlas s požadavkem](./media/load-office-365-data/activity-details-request-consent.png) 
 
 _Stav při extrakci dat:_
 

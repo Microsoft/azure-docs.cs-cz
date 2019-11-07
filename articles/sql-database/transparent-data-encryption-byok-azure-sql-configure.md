@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell a rozhraní příkazového řádku: povolení SQL TDE – pomocí Azure Key Vault-Přineste si vlastní klíč – Azure SQL Database | Microsoft Docs'
+title: 'PowerShell a rozhraní příkazového řádku: povolení SQL TDE – pomocí Azure Key Vault-Přineste si vlastní klíč – Azure SQL Database '
 description: Naučte se konfigurovat Azure SQL Database a datový sklad, abyste mohli začít používat transparentní šifrování dat (TDE) pro šifrování v klidovém formátu pomocí PowerShellu nebo rozhraní příkazového řádku.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: beeb5fa4f979ac457db8a779dd8f8f2e94ef87f5
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 232f38b239090356ae3ad1a70b522188f6ab6a4f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163848"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686755"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell a rozhraní příkazového řádku: povolení transparentní šifrování dat s klíčem spravovaným zákazníkem z Azure Key Vault
 

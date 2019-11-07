@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat z Dynamics AX pomocí Azure Data Factory | Microsoft Docs
+title: Kopírování dat z Dynamics AX pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z Dynamics AX do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 02080388cdc6e408164de1eff208d19e4b5da60f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 07edc284c29ca209ee20e5de390e8126993f4ce3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935665"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681020"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>Kopírování dat z Dynamics AX pomocí Azure Data Factory
 
@@ -37,13 +37,13 @@ Konkrétně tento konektor Dynamics AX podporuje kopírování dat z Dynamics AX
 >[!TIP]
 >Pomocí tohoto konektoru můžete také kopírovat data z **Dynamics 365 finance a operace**. Podívejte se na podporu a [metodu ověřování](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/services-home-page#authentication) [OData](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/odata) Dynamics 365.
 
-## <a name="get-started"></a>Začít
+## <a name="get-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 Následující části obsahují podrobné informace o vlastnostech, které můžete použít k definování Data Factory entit, které jsou specifické pro konektor Dynamics AX.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li použít ověřování instančního objektu, postupujte takto:
 

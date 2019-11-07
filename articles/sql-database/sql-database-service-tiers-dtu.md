@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database úrovní služeb – nákupní model založený na DTU | Microsoft Docs
+title: 'Azure SQL Database úrovní služeb – model nákupu na základě DTU '
 description: Přečtěte si o úrovních služeb v nákupním modelu založeném na DTU pro databáze typu Single a Pool pro zajištění výpočtů a velikosti úložiště.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: e735d8832912f5b512b7cfe015ca47efbe641da7
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 43f4f9e0d1e5f33dde32e5274dddf9d17776db21
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72000425"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687303"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Úrovně služeb v modelu nákupu založeném na DTU
 
@@ -31,16 +31,16 @@ ms.locfileid: "72000425"
 
 Výběr úrovně služeb závisí hlavně na požadavcích na provozní kontinuitu, úložiště a výkon.
 
-||Základní|Standardní|Nárok|
+||Basic|Standard|Premium|
 | :-- | --: |--:| --:|
 |Cílové zatížení|Vývoj a produkce|Vývoj a produkce|Vývoj a produkce|
-|Smlouva SLA pro dobu provozu|99,99%|99,99%|99,99%|
+|Smlouva SLA o provozuschopnosti|99,99 %|99,99 %|99,99 %|
 |Maximální uchovávání záloh|7 dní|35 dní|35 dní|
-|Procesor|Slab|Nízká, střední, vysoká|Střední, vysoká|
+|Procesor|Nízká|Nízká, střední, vysoká|Střední, vysoká|
 |Propustnost vstupně-výstupních operací (přibližná) |1-5 IOPS na DTU| 1-5 IOPS na DTU | 25 IOPS na DTU|
 |Latence v/v (přibližná)|5 ms (čtení), 10 ms (zápis)|5 ms (čtení), 10 ms (zápis)|2 ms (čtení a zápis)|
-|Indexování columnstore |Není k dispozici|S3 a vyšší|Podporováno|
-|OLTP v paměti|Není k dispozici|Není k dispozici|Podporováno|
+|Indexování columnstore |Není dostupné.|S3 a vyšší|Podporuje se|
+|OLTP v paměti|Není dostupné.|Není dostupné.|Podporuje se|
 |||||
 
 > [!NOTE]
@@ -50,9 +50,9 @@ Výběr úrovně služeb závisí hlavně na požadavcích na provozní kontinui
 
 Velikosti výpočetních hodnot se vyjadřují v souvislosti s jednotkami DTU (Database Transaction units) pro izolované databáze a jednotkami elastické databázové transakce (eDTU) pro elastické fondy. Další informace o DTU a eDTU najdete v tématu [nákupní model založený na DTU](sql-database-purchase-models.md#dtu-based-purchasing-model)?
 
-||Základní|Standardní|Nárok|
+||Basic|Standard|Premium|
 | :-- | --: | --: | --: |
-| Maximální velikost úložiště | 2 GB | 1 TB | 4 TB  |
+| Maximální velikost úložiště | 2 GB | 1 TB | 4 TB  |
 | Maximální DTU | 5 | 3000 | 4000 | 
 |||||
 
@@ -61,9 +61,9 @@ Velikosti výpočetních hodnot se vyjadřují v souvislosti s jednotkami DTU (D
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Omezení eDTU elastického fondu, úložiště a databáze ve fondu
 
-| | **Základy** | **Standardní** | **Nárok** |
+| | **Basic** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
-| Maximální velikost úložiště na databázi  | 2 GB | 1 TB | 1 TB |
+| Maximální velikost úložiště na databázi  | 2 GB | 1 TB | 1 TB |
 | Maximální velikost úložiště na fond | 156 GB | 4 TB | 4 TB |
 | Maximální počet eDTU na databázi | 5 | 3000 | 4000 |
 | Maximální počet eDTU na fond | 1600 | 3000 | 4000 |
@@ -71,7 +71,7 @@ Velikosti výpočetních hodnot se vyjadřují v souvislosti s jednotkami DTU (D
 |||||
 
 > [!IMPORTANT]
-> Ve všech oblastech je aktuálně k dispozici více než 1 TB úložiště na úrovni Premium s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, Středozápadní USA, US DoD oblasti a státní správy USA – střed. V těchto oblastech je maximální velikost úložiště na úrovni Premium omezená na 1 TB.  Další informace najdete v tématu [aktuální omezení P11-P15](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
+> Ve všech oblastech je aktuálně k dispozici více než 1 TB úložiště na úrovni Premium s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, Středozápadní USA, US DoD oblasti a státní správy USA – střed. V těchto oblastech je úložiště na úrovni Premium omezeno na 1 TB.  Další informace najdete v tématu [aktuální omezení P11-P15](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
 > [!IMPORTANT]
 > Za určitých okolností může být nutné zmenšit databázi a uvolnit nevyužité místo. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](sql-database-file-space-management.md).
 
@@ -112,7 +112,7 @@ Zatížení se skládá z devíti typů transakcí, jak je znázorněno v násle
 | Aktualizace těžkých |Update hlavně není v paměti; čtení i zápis |
 | Vložit Lite |ZADAT v paměti; čtení i zápis |
 | Vložit těžký |ZADAT hlavně není v paměti; čtení i zápis |
-| Odstranit |DSTRANIT kombinace v paměti a nikoli v paměti; čtení i zápis |
+| Odstranění |DSTRANIT kombinace v paměti a nikoli v paměti; čtení i zápis |
 | Vysoký procesor |VYBRALI v paměti; poměrně silné zatížení procesoru; jen pro čtení |
 
 ### <a name="workload-mix"></a>Kombinace úloh
@@ -122,14 +122,14 @@ Transakce se vyberou náhodně z vážené distribuce s následující celkovou 
 | Typ transakce | % Kombinace |
 | --- | --- |
 | Přečíst Lite |35 |
-| Přečíst médium |20o |
+| Přečíst médium |20 |
 | Čtení těžkých |5 |
-| Aktualizace Lite |20o |
+| Aktualizace Lite |20 |
 | Aktualizace těžkých |3 |
 | Vložit Lite |3 |
-| Vložit těžký |odst |
-| Odstranit |odst |
-| Vysoký procesor |10pruhový |
+| Vložit těžký |2 |
+| Odstranění |2 |
+| Vysoký procesor |10 |
 
 ### <a name="users-and-pacing"></a>Uživatelé a stimulace
 
@@ -164,9 +164,9 @@ Klíčové metriky v srovnávacím testu jsou propustnost a doba odezvy.
 
 | Třída služby | Míra propustnosti | Doba odezvy – požadavek |
 | --- | --- | --- |
-| Nárok |Transakcí za sekundu |95. percentil v 0,5 sekundách |
-| Standardní |Transakcí za minutu |90. percentil v 1,0 sekundách |
-| Základní |Transakcí za hodinu |80th percentil v 2,0 sekundách |
+| Premium |Transakce za sekundu |95. percentil v 0,5 sekundách |
+| Standard |Transakce za minutu |90. percentil v 1,0 sekundách |
+| Basic |Transakce za hodinu |80th percentil v 2,0 sekundách |
 
 ## <a name="next-steps"></a>Další kroky
 

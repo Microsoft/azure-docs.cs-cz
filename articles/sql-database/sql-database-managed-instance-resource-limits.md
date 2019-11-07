@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database omezení prostředků – spravovaná instance | Microsoft Docs
+title: Azure SQL Database – omezení prostředků – spravovaná instance
 description: Tento článek poskytuje přehled Azure SQL Databasech omezení prostředků pro spravované instance.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 10/02/2019
-ms.openlocfilehash: 17ffc07bb5632b1b56b7bff1e843e5955d396089
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 723704b6b81aacf086ff42b02c32259d0e2f1c6d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372202"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687910"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled Azure SQL Database omezení prostředků spravované instance
 
@@ -65,7 +65,7 @@ Managed instance má dvě úrovně služeb: [pro obecné účely](sql-database-s
 
 | **Funkce** | **Pro obecné účely** | **Pro důležité obchodní informace** |
 | --- | --- | --- |
-| Počet virtuální jádra @ no__t-0 | COMPUTE GEN4 –: 8, 16, 24<br/>Gen5:4, 8, 16, 24, 32, 40, 64, 80 | COMPUTE GEN4 –: 8, 16, 24 <br/> Gen5:4, 8, 16, 24, 32, 40, 64, 80 <br/>@no__t – 0Same počet virtuální jádra je vyhrazen pro dotazy jen pro čtení. |
+| Počet virtuální jádra\* | COMPUTE GEN4 –: 8, 16, 24<br/>Gen5:4, 8, 16, 24, 32, 40, 64, 80 | COMPUTE GEN4 –: 8, 16, 24 <br/> Gen5:4, 8, 16, 24, 32, 40, 64, 80 <br/>\*stejný počet virtuální jádra je vyhrazen pro dotazy jen pro čtení. |
 | Maximální velikost paměti | COMPUTE GEN4 –: 56 GB-168 GB (7GB/vCore)<br/>Gen5:20,4 GB-408 GB (5.1 GB/vCore)<br/>Přidejte další virtuální jádra, abyste získali více paměti. | COMPUTE GEN4 –: 56 GB-168 GB (7GB/vCore)<br/>Gen5:20,4 GB-408 GB (5.1 GB/vCore) pro dotazy pro čtení i zápis<br/>+ dalších 20,4 GB až 408 GB (5.1 GB/vCore) pro dotazy jen pro čtení.<br/>Přidejte další virtuální jádra, abyste získali více paměti. |
 | Maximální velikost úložiště instancí (rezervované) | – 2 TB pro 4 virtuální jádra (jenom Gen5)<br/>– 8 TB pro jiné velikosti | COMPUTE GEN4 –: 1 TB <br/> Gen5 <br/>-1 TB pro 4, 8, 16 virtuální jádra<br/>– 2 TB pro 24 virtuální jádra<br/>-4 TB pro 32, 40, 64, 80 virtuální jádra |
 | Maximální velikost databáze | Až v aktuálně dostupné velikosti instance (max. 2 TB až 8 TB v závislosti na počtu virtuální jádra). | Až v aktuálně dostupné velikosti instance (max. 1 TB-4 TB v závislosti na počtu virtuální jádra). |
@@ -78,7 +78,7 @@ Managed instance má dvě úrovně služeb: [pro obecné účely](sql-database-s
 | Limit propustnosti zápisu protokolu (na instanci) | 3 MB/s na vCore<br/>Max. 22 MB/s | 4 MB/s na vCore<br/>Maximální 48 MB/s |
 | Propustnost dat (přibližná) | 100 – 250 MB/s na jeden soubor<br/>\*[zvětšete velikost souboru, abyste získali lepší vstupně-výstupní operace](#file-io-characteristics-in-general-purpose-tier) . | Neomezeno. |
 | Latence v/v úložiště (přibližná) | 5-10 MS | 1-2 MS |
-| OLTP v paměti | Nepodporováno | K dispozici, [velikost závisí na počtu Vcore](#in-memory-oltp-available-space) |
+| OLTP v paměti | Nepodporuje se | K dispozici, [velikost závisí na počtu Vcore](#in-memory-oltp-available-space) |
 | Maximální počet relací | 30000 | 30000 |
 | [Repliky jen pro čtení](sql-database-read-scale-out.md) | 0 | 1 (zahrnuto do ceny) |
 
@@ -142,9 +142,9 @@ Následující tabulka ukazuje **výchozí regionální omezení** pro podporova
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional a MSDN Platforms|2|32|
 
-@no__t – 0 při plánování nasazení je třeba vzít v úvahu, že úroveň služby Pro důležité obchodní informace (BC) vyžaduje čtyři (4) více vCore kapacity než úroveň služby Pro obecné účely (GP). Příklad: 1 GP vCore = 1 vCore jednotka a 1 BC vCore = 4 jednotky vCore. Abyste zjednodušili analýzu spotřeby proti výchozím omezením, Shrňte jednotky vCore ve všech podsítích v oblasti, ve které se nasazují spravované instance, a porovnejte výsledky s omezeními jednotky instance pro typ předplatného. **Maximální počet Vcore jednotek** se vztahuje na každé předplatné v oblasti. Pro jednotlivé podsítě neplatí žádné omezení s tím rozdílem, že součet všech virtuální jádra nasazených napříč více podsítěmi musí být nižší nebo roven **maximálnímu počtu Vcore jednotek**.
+Při plánování nasazení \* vzít v úvahu, že úroveň služby Pro důležité obchodní informace (BC) vyžaduje čtyři (4) větší kapacitu vCore než úroveň služby Pro obecné účely (GP). Příklad: 1 GP vCore = 1 vCore jednotka a 1 BC vCore = 4 jednotky vCore. Abyste zjednodušili analýzu spotřeby proti výchozím omezením, Shrňte jednotky vCore ve všech podsítích v oblasti, ve které se nasazují spravované instance, a porovnejte výsledky s omezeními jednotky instance pro typ předplatného. **Maximální počet Vcore jednotek** se vztahuje na každé předplatné v oblasti. Pro jednotlivé podsítě neplatí žádné omezení s tím rozdílem, že součet všech virtuální jádra nasazených napříč více podsítěmi musí být nižší nebo roven **maximálnímu počtu Vcore jednotek**.
 
-\* @ no__t-1 větší podsíť a omezení vCore jsou k dispozici v následujících oblastech: Austrálie – východ, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Západní Evropa, Západní USA 2.
+\*\* větší podsíť a omezení vCore jsou k dispozici v následujících oblastech: Austrálie – východ, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Západní Evropa, Západní USA 2.
 
 ## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Získání větší kvóty pro spravovanou instanci SQL
 
@@ -178,7 +178,7 @@ Postup pro zahájení procesu získání větší kvóty:
 
 5. Klikněte na **Další**.
 6. Na kartě kontaktní informace u nové žádosti o podporu zadejte upřednostňovanou metodu kontaktu (e-mail nebo telefon) a kontaktní údaje.
-7. Klikněte na **Vytvořit**.
+7. Klikněte na možnost **Vytvořit**.
 
 ## <a name="next-steps"></a>Další kroky
 

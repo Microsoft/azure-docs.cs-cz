@@ -1,5 +1,5 @@
 ---
-title: Kód souboru události XEvent pro SQL Database | Microsoft Docs
+title: Kód souboru události XEvent pro SQL Database
 description: Poskytuje prostředí PowerShell a Transact-SQL pro ukázku kódu, který ukazuje cíl souboru události v rozšířené události na Azure SQL Database. Azure Storage je požadovaná součást tohoto scénáře.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 03/12/2019
-ms.openlocfilehash: f0994f92444da338b18447eb1b248c74df9aa2d2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ea5c90433a4d2928e5fb88df149631c80df9dacf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566110"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686831"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Cílový kód souboru události pro rozšířené události v SQL Database
 
@@ -53,7 +53,7 @@ V tomto tématu se zobrazuje příklad dvoufázové fáze kódu:
   
   * Moduly poskytují příkazy, jako je například- **New-AzStorageAccount**.
 
-## <a name="phase-1-powershell-code-for-azure-storage-container"></a>Fáze 1: Kód PowerShellu pro kontejner Azure Storage
+## <a name="phase-1-powershell-code-for-azure-storage-container"></a>Fáze 1: kód PowerShellu pro kontejner Azure Storage
 
 Toto prostředí PowerShell je fáze 1 ukázky kódu ve dvou fázích.
 
@@ -233,14 +233,14 @@ Now shift to the Transact-SQL portion of the two-part code sample!';
 
 Poznamenejte si několik pojmenovaných hodnot, které skript PowerShellu vytiskne, když skončí. Tyto hodnoty je nutné upravit do skriptu Transact-SQL, který následuje jako fáze 2.
 
-## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>Fáze 2: Kód Transact-SQL, který používá Azure Storage kontejner
+## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>Fáze 2: kód Transact-SQL, který používá kontejner Azure Storage
 
 * Ve fázi 1 této ukázky kódu jste spustili skript prostředí PowerShell pro vytvoření kontejneru Azure Storage.
 * V dalším kroku 2 musí následující skript Transact-SQL použít kontejner.
 
 Skript začíná příkazy pro vyčištění po možném předchozím spuštění a je rerunnable.
 
-Skript prostředí PowerShell vytiskl po ukončení několik pojmenovaných hodnot. Chcete-li použít tyto hodnoty, je nutné upravit skript Transact-SQL. Vyhledá body **úprav ve skriptu** Transact-SQL.
+Skript prostředí PowerShell vytiskl po ukončení několik pojmenovaných hodnot. Chcete-li použít tyto hodnoty, je nutné upravit skript Transact-SQL. Vyhledá **body úprav ve skriptu** Transact-SQL.
 
 1. Otevřete SQL Server Management Studio (SSMS. exe).
 2. Připojte se k databázi Azure SQL Database.
@@ -463,9 +463,9 @@ GO
 
 ## <a name="output"></a>Výstup
 
-Až se skript Transact-SQL dokončí, klikněte na buňku pod záhlavím sloupce **event_data_XML** . Zobrazí se jeden  **\<element > události** , který ukazuje jeden příkaz Update.
+Až se skript Transact-SQL dokončí, klikněte na buňku pod záhlavím sloupce **event_data_XML** . Je zobrazen jeden prvek **> události\<** , který ukazuje jeden příkaz Update.
 
-Tady je jeden  **\<element Event >** , který se vygeneroval během testování:
+Tady je jeden **\<událost >** elementu, který se vygeneroval během testování:
 
 
 ```xml
@@ -510,7 +510,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 Předchozí skript Transact-SQL použil následující systémovou funkci ke čtení event_file:
 
-* [sys.fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
+* [sys. fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
 
 Vysvětlení pokročilých možností zobrazení dat z rozšířených událostí je k dispozici na adrese:
 
@@ -534,8 +534,8 @@ Další informace o účtech a kontejnerech ve službě Azure Storage najdete v 
 * [Jak používat úložiště objektů BLOB z .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 * [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://msdn.microsoft.com/library/azure/dd135715.aspx)
 * [Práce s kořenovým kontejnerem](https://msdn.microsoft.com/library/azure/ee395424.aspx)
-* [Lekce 1: Vytvoření uložené zásady přístupu a sdíleného přístupového podpisu na kontejneru Azure](https://msdn.microsoft.com/library/dn466430.aspx)
-  * [Lekce 2: Vytvoření přihlašovacích údajů pro SQL Server pomocí sdíleného přístupového podpisu](https://msdn.microsoft.com/library/dn466435.aspx)
+* [Lekce 1: Vytvoření zásad uloženého přístupu a sdíleného přístupového podpisu na kontejneru Azure](https://msdn.microsoft.com/library/dn466430.aspx)
+  * [Lekce 2: vytvoření přihlašovacích údajů pro SQL Server pomocí sdíleného přístupového podpisu](https://msdn.microsoft.com/library/dn466435.aspx)
 * [Rozšířené události pro Microsoft SQL Server](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
 
 <!--

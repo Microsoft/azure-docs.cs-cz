@@ -1,5 +1,5 @@
 ---
-title: Datové sady v Azure Data Factory | Microsoft Docs
+title: Datové sady v Azure Data Factory
 description: Seznamte se s datovými sadami v Data Factory. Datové sady reprezentují vstupní a výstupní data.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: c4daa5989013ba8d5c5a7136fe0878fae64f0357
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 74c35d5de74fbf8ecc04cfec336bfeb4a8e669fd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030562"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681533"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datové sady v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -115,7 +115,7 @@ Vlastnost | Popis | Požaduje se |
 -------- | ----------- | -------- |
 jméno | Název datové sady Viz [pravidla pro Pojmenovávání Azure Data Factory](naming-rules.md). |  Ano |
 type | Typ datové sady Zadejte jeden z typů, které podporuje Data Factory (například: Azureblobu, AzureSqlTable). <br/><br/>Podrobnosti najdete v tématu [typy datových sad](#dataset-type). | Ano |
-XSD | Schéma datové sady Podrobnosti najdete v tématu [datové sady kompatibilní s datovým proudem](#dataset-type). | Ne |
+schema | Schéma datové sady Podrobnosti najdete v tématu [datové sady kompatibilní s datovým proudem](#dataset-type). | Ne |
 typeProperties | Vlastnosti typu se u každého typu liší (například: Azure Blob, tabulka SQL Azure). Podrobnosti o podporovaných typech a jejich vlastnostech naleznete v tématu [Typ datové sady](#dataset-type). | Ano |
 
 
@@ -181,10 +181,10 @@ Vlastnost | Popis | Požaduje se
 -------- | ----------- | --------
 jméno | Název sloupce | Ano
 type | Datový typ sloupce Data Factory podporuje následující dočasné datové typy jako povolené hodnoty: **Int16, Int32, Int64, Single, Double, Decimal, Byte [], Boolean, String, GUID, DateTime, DateTimeOffset a TimeSpan** . | Ne
-jazykových | . Jazyková verze založená na síti, která se má použít, pokud je typ typu .NET: `Datetime` nebo `Datetimeoffset`. Výchozí formát je `en-us`. | Ne
+jazykových | . Jazyková verze založená na síti, která se má použít, pokud je typem typ .NET: `Datetime` nebo `Datetimeoffset`. Výchozí formát je `en-us`. | Ne
 formátovat | Řetězec formátu, který se má použít, pokud je typem typ .NET: `Datetime` nebo `Datetimeoffset`. Informace o formátování hodnoty DateTime naleznete v tématu [Vlastní řetězce formátu data a času](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Ne
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 V následujícím příkladu Předpokládejme, že zdrojová data objektů BLOB jsou ve formátu CSV a obsahují tři sloupce: UserID, Name a LastLoginDate. Jsou typu Int64, String a DateTime s vlastním formátem DateTime pomocí zkrácených francouzských názvů pro den v týdnu.
 
 Určete strukturu datové sady objektů BLOB následovně a s definicemi typů pro sloupce:
@@ -198,7 +198,7 @@ Určete strukturu datové sady objektů BLOB následovně a s definicemi typů p
 ]
 ```
 
-### <a name="guidance"></a>Pokyny
+### <a name="guidance"></a>Doprovodné materiály
 
 Následující pokyny vám pomohou pochopit, kdy zahrnout informace o struktuře a co zahrnout do části **Struktura** . Další informace o tom, jak Data Factory mapuje zdrojová data do jímky a kdy specifikovat informace o struktuře ze [schématu a mapování typů](copy-activity-schema-and-type-mapping.md).
 

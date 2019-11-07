@@ -1,6 +1,6 @@
 ---
-title: Transformace dat pomocí Databricks v Azure Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak transformovat data pomocí poznámkového bloku Databricks v Azure Data Factory pomocí šablony řešení.
+title: Transformace dat pomocí datacihlů v Azure Data Factory
+description: Naučte se používat šablonu řešení k transformaci dat pomocí poznámkového bloku datacihly v Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: nabhishek
@@ -12,40 +12,40 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 562ce675acc43002ce468d60f8a8c412410be86c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 471c1d9610fa346b0eac44c73fe02f4510bd2889
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60395227"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684249"
 ---
-# <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>Transformace dat pomocí Databricks v Azure Data Factory
+# <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>Transformace dat pomocí datacihlů v Azure Data Factory
 
-V tomto kurzu vytvoříte začátku do konce profilace obsahující **vyhledávání**, **kopírování**, a **poznámkového bloku Databricks** aktivity ve službě Data Factory.
+V tomto kurzu vytvoříte kompletní kanál obsahující aktivity **hledání**, **kopírování**a **poznámkového bloku datacihly** v Data Factory.
 
--   **Vyhledávání** nebo aktivita GetMetadata slouží k zajištění zdrojová datová sada je připravená pro příjem dat využití, než aktivujete úlohu kopírování a analýzy.
+-   Aktivita **Lookup** nebo GetMetadata se používá k zajištění, že zdrojová datová sada je připravená na využití pro příjem dat, než se aktivuje úloha kopírování a analýzy.
 
--   **Aktivita kopírování** zkopíruje zdrojový soubor / datovou sadu, která úložiště jímky. Úložiště jímky připojený jako DBFS do poznámkového bloku Databricks tak, aby datové sady mohou být přímo využívány službou Spark.
+-   **Aktivita kopírování** zkopíruje zdrojový soubor nebo datovou sadu do úložiště jímky. Úložiště jímky je v poznámkovém bloku datacihly připojené jako DBFS, aby bylo možné datovou sadu přímo spotřebovat Sparkem.
 
--   **Aktivity poznámkového bloku Databricks** aktivuje poznámkového bloku Databricks, který transformuje datovou sadu a přidá jej do složky zpracovaných / SQL data Warehouse.
+-   **Aktivita poznámkového bloku datacihly** spustí Poznámkový blok datacihly, který transformuje datovou sadu a přidá ji do zpracované složky/SQL DW.
 
-Pro zjednodušení Tato šablona nevytvoří šablony naplánovanou aktivační událost. Můžete přidat, který v případě potřeby.
+Chcete-li tuto šablonu ponechat jednoduchou, šablona nevytvoří plánovanou aktivační událost. V případě potřeby je můžete přidat.
 
 ![1](media/solution-template-Databricks-notebook/Databricks-tutorial-image01.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
-1.  Vytvoření **účtu úložiště objektů blob** kontejner s názvem `sinkdata` má být použit jako **jímky**. Poznamenejte **název účtu úložiště**, **název kontejneru**, a **přístupový klíč**, protože se na ně odkazuje později v šabloně.
+1.  Vytvořte **účet Blob Storage** a kontejner s názvem `sinkdata`, který se použije jako **jímka**. Poznamenejte si **název účtu úložiště**, **název kontejneru**a **přístupový klíč**, protože se na ně odkazuje později v šabloně.
 
-2.  Zkontrolujte, že máte **pracovního prostoru Azure Databricks** nebo vytvořte novou.
+2.  Ujistěte se, že máte **pracovní prostor Azure Databricks** nebo vytvořte nový.
 
-1.  **Import poznámkového bloku pro ETL**. Import níže transformace Poznámkový blok jupyter pracovního prostoru Databricks. (Nemusí být ve stejném umístění, jak je uvedeno níže, ale mějte na paměti cestu, která jste vybrali pro později.) Import poznámkového bloku z následující adresy URL tak, že zadáte tuto adresu URL do pole Adresa URL: `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`. Vyberte **Import**.
+1.  **Importujte Poznámkový blok pro ETL**. Níže uvedený transformační Poznámkový blok importujte do pracovního prostoru datacihly. (Nemusí být ve stejném umístění jako níže, ale zapamatujte si cestu, kterou si zvolíte později.) Naimportujte Poznámkový blok z následující adresy URL zadáním této adresy URL do pole Adresa URL: `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`. Vyberte **importovat**.
 
     ![2](media/solution-template-Databricks-notebook/Databricks-tutorial-image02.png)
 
     ![3](media/solution-template-Databricks-notebook/Databricks-tutorial-image03.png)  
 
-1.  Teď můžeme aktualizovat **transformace** Poznámkový blok s vaší **informace o připojení úložiště** (název a přístupový klíč). Přejděte na **příkaz 5** v importované Poznámkový blok výše, nahraďte ho hodnotou následující fragment kódu po nahrazení zvýrazněné hodnoty. Ujistěte se o stejný účet úložiště vytvořili tento účet a obsahuje `sinkdata` kontejneru.
+1.  Teď aktualizujeme Poznámkový **blok s** vašimi **informacemi o připojení úložiště** (název a přístupový klíč). V importovaném poznámkovém bloku přejít na **příkaz 5** a po nahrazení zvýrazněných hodnot ho nahraďte následujícím fragmentem kódu. Zajistěte, aby byl tento účet stejný účet úložiště, který jste vytvořili dříve, a obsahuje kontejner `sinkdata`.
 
     ```python
     # Supply storageName and accessKey values  
@@ -69,88 +69,88 @@ Pro zjednodušení Tato šablona nevytvoří šablony naplánovanou aktivační 
       print e \# Otherwise print the whole stack trace.  
     ```
 
-1.  Generování **Databricks přístupový token** pro službu Data Factory pro přístup k Databricks. **Uložit přístupový token** pro pozdější použití při vytváření Databricks propojenou službu, která vypadá podobně jako "dapi32db32cbb4w6eee18b7d87e45exxxxxx.
+1.  Vygenerujte **přístupový token datacihly** pro Data Factory pro přístup k datacihlům. **Uložte přístupový token** pro pozdější použití při vytváření propojené služby datacihly, který vypadá nějak takto: "dapi32db32cbb4w6eee18b7d87e45exxxxxx".
 
     ![4](media/solution-template-Databricks-notebook/Databricks-tutorial-image04.png)
 
     ![5](media/solution-template-Databricks-notebook/Databricks-tutorial-image05.png)
 
-## <a name="create-linked-services-and-datasets"></a>Vytvoření propojené služby a datové sady
+## <a name="create-linked-services-and-datasets"></a>Vytvoření propojených služeb a datových sad
 
-1.  Vytvořit nový **propojené služby** v uživatelském rozhraní Data Factory na webu *připojení propojených služeb + nová*
+1.  V uživatelském rozhraní Data Factory vytvořte nové **propojené služby** tak, že přejdete na *připojení propojené služby + nové* .
 
-    1.  **Zdroj** – pro přístup k datům. Můžete použít veřejné službě blob storage, který obsahuje zdrojové soubory pro tuto ukázku.
+    1.  **Zdroj** – pro přístup ke zdrojovým datům. Pro tuto ukázku můžete použít veřejné úložiště objektů blob, které obsahuje zdrojové soubory.
 
-        Vyberte **úložiště objektů Blob**, použijte níže **identifikátor URI SAS** pro připojení k úložišti zdroje (přístup jen pro čtení).
+        Vyberte **BLOB Storage**pro připojení ke zdrojovému úložišti použijte níže uvedený **identifikátor URI SAS** (přístup jen pro čtení).
 
         `https://storagewithdata.blob.core.windows.net/?sv=2017-11-09&ss=b&srt=sco&sp=rl&se=2019-12-31T21:40:53Z&st=2018-10-24T13:40:53Z&spr=https&sig=K8nRio7c4xMLnUV0wWVAmqr5H4P3JDwBaG9HCevI7kU%3D`
 
         ![6](media/solution-template-Databricks-notebook/Databricks-tutorial-image06.png)
 
-    1.  **Jímka** – pro kopírování dat do aplikace.
+    1.  **Jímka** – pro kopírování dat do.
 
-        Vyberte úložiště vytvořený v předpokladu 1, v jímky propojené služby.
+        V propojené službě jímky vyberte úložiště vytvořené v požadavku 1.
 
         ![7](media/solution-template-Databricks-notebook/Databricks-tutorial-image07.png)
 
-    1.  **Databricks** – pro připojení ke clusteru Databricks
+    1.  **Datacihly** – pro připojení ke clusteru datacihly
 
-        Vytvoření propojené služby Databricks pomocí přístupového klíče vygenerované v 2.c požadovaných součástí. Pokud máte *interaktivní clusteru*, můžete vybrat, který. (V tomto příkladu *nového clusteru úloh* možnost.)
+        Vytvořte propojenou službu datacihly pomocí přístupového klíče vygenerovaného v požadavku 2. c. Máte-li *interaktivní cluster*, můžete jej vybrat. (V tomto příkladu se používá možnost *nový cluster úloh* .)
 
         ![8](media/solution-template-Databricks-notebook/Databricks-tutorial-image08.png)
 
-2.  Vytvoření **datové sady**
+2.  Vytvoření **datových sad**
 
-    1.  Vytvoření **"sourceAvailability_Dataset"** ke kontrole, pokud se zdrojová data nejsou k dispozici
+    1.  Vytvořte **sourceAvailability_Dataset** a ověřte, jestli jsou zdrojová data dostupná.
 
     ![9](media/solution-template-Databricks-notebook/Databricks-tutorial-image09.png)
 
-    1.  **Zdrojová datová sada –** kopírovat zdroje dat (pomocí binární kopie)
+    1.  **Zdrojová datová sada –** pro kopírování zdrojových dat (pomocí binární kopie)
 
     ![10](media/solution-template-Databricks-notebook/Databricks-tutorial-image10.png)
 
-    1.  **Datová sada jímky** – pro kopírování do dřezu a cílové umístění
+    1.  **Datová sada jímky** – pro kopírování do jímky/cílového umístění
 
-        1.  Propojená služba – vyberte vytvořený v 1.b sinkBlob_LS
+        1.  Propojená služba – vyberte ' sinkBlob_LS ' vytvořený v 1. b
 
-        2.  Cesta k souboru - ' sinkdata/staged_sink.
+        2.  Cesta k souboru – sinkdata/staged_sink
 
         ![11](media/solution-template-Databricks-notebook/Databricks-tutorial-image11.png)
 
-## <a name="create-activities"></a>Vytvoření aktivity
+## <a name="create-activities"></a>Vytváření aktivit
 
-1.  Vytvořit aktivitu vyhledávání "**dostupnost příznak**" provádět kontrola dostupnosti zdroj (můžete použít vyhledávání nebo GetMetadata). Vyberte vytvořený v 2.a sourceAvailability_Dataset.
+1.  Vytvořit aktivitu vyhledávání –**příznak dostupnosti**pro provedení kontroly dostupnosti zdroje (lze použít vyhledávání nebo GetMetadata). Vyberte ' sourceAvailability_Dataset ' vytvořený ve 2. a.
 
     ![12](media/solution-template-Databricks-notebook/Databricks-tutorial-image12.png)
 
-1.  Vytvořte aktivitu kopírování "**soubor blob**" Kopírovat datovou sadu ze zdroje do jímky. Data v tomto případě je binární soubor. Odkaz následující snímky obrazovky pro konfigurace zdroje a jímky v aktivitě kopírování.
+1.  Vytvořte aktivitu kopírování**File-to-BLOB**pro kopírování datové sady ze zdroje do jímky. V tomto případě jsou data binární soubor. Odkaz na následující snímky obrazovky pro konfiguraci zdrojového kódu a jímky v aktivitě kopírování
 
     ![13](media/solution-template-Databricks-notebook/Databricks-tutorial-image13.png)
 
     ![14](media/solution-template-Databricks-notebook/Databricks-tutorial-image14.png)
 
-1.  Definování **parametry kanálu**
+1.  Definovat **parametry kanálu**
 
     ![15](media/solution-template-Databricks-notebook/Databricks-tutorial-image15.png)
 
-1.  Vytvoření **aktivity Databricks**
+1.  Vytvoření **aktivity datacihly**
 
-    Vyberte propojenou službu vytvořili v předchozím kroku.
+    Vyberte propojenou službu vytvořenou v předchozím kroku.
 
     ![16](media/solution-template-Databricks-notebook/Databricks-tutorial-image16.png)
 
-    Konfigurace **nastavení**. Vytvoření **základní parametry** jak je znázorněno na snímku obrazovky a vytvořit parametry předávané do poznámkového bloku Databricks ze služby Data Factory. Procházet a **vyberte** **cestu k poznámkovému bloku správné** nahrané v **požadavků požadavek 2**.
+    Nakonfigurujte **Nastavení**. Vytvořte **základní parametry** , jak je znázorněno na snímku obrazovky a vytvořte parametry, které mají být předány do poznámkového bloku datacihly z Data Factory. Vyhledejte a **Vyberte** **správnou cestu poznámkového bloku** nahranou v **požadovaném umístění 2**.
 
     ![17](media/solution-template-Databricks-notebook/Databricks-tutorial-image17.png)
 
-1.  **Spuštění kanálu**. Odkaz na protokoly Databricks najdete podrobnější protokoly Spark.
+1.  **Spusťte kanál**. Podrobnější protokoly Spark najdete v protokolech pro odkazy na datacihly.
 
     ![18](media/solution-template-Databricks-notebook/Databricks-tutorial-image18.png)
 
-    Můžete si taky ověřit datový soubor pomocí Průzkumníka služby storage. (Pro korelaci s spuštění kanálu služby Data Factory, v tomto příkladu přidá ID spuštění ze služby data factory do výstupní složky kanálu. Tímto způsobem můžete sledovat, vrátit soubory vygenerované prostřednictvím jednotlivých spuštění.)
+    Datový soubor můžete také ověřit pomocí Průzkumníka služby Storage. (Pro korelaci s Data Factory spuštění kanálu tento příklad připojí ID spuštění kanálu z objektu pro vytváření dat do výstupní složky. Tímto způsobem můžete sledovat zpět soubory generované při každém spuštění.)
 
 ![19](media/solution-template-Databricks-notebook/Databricks-tutorial-image19.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Úvod do Azure Data Factory](introduction.md)
+- [Seznámení se službou Azure Data Factory](introduction.md)

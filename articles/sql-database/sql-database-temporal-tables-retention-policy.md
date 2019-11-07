@@ -1,5 +1,5 @@
 ---
-title: Správa historických dat v dočasných tabulkách pomocí zásad uchovávání informací | Microsoft Docs
+title: Správa historických dat v dočasnách tabulkách pomocí zásad uchovávání informací
 description: Naučte se používat dočasné zásady uchovávání informací, abyste zachovali historické údaje pod vaším ovládacím prvkem.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: 72022510676548fad79031d4334a2c95571fc16d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2568f3be96604856d5353f7f5f94926162880bfd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566384"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686994"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Správa historických dat v dočasnách tabulkách pomocí zásad uchovávání informací
 
@@ -73,7 +73,7 @@ CREATE TABLE dbo.WebsiteUserInfo
  );
 ```
 
-Azure SQL Database vám umožní určit dobu uchování pomocí různých časových jednotek: DNY, týdny, měsíce a roky. Pokud je vynecháno HISTORY_RETENTION_PERIOD, předpokládá se nekonečné uchovávání. Nekonečná klíčová slova můžete také použít explicitně.
+Azure SQL Database vám umožní určit dobu uchování pomocí různých časových jednotek: dnů, týdnů, měsíců a roků. Pokud je vynecháno HISTORY_RETENTION_PERIOD, předpokládá se nekonečné uchovávání. Nekonečná klíčová slova můžete také použít explicitně.
 
 V některých scénářích můžete chtít po vytvoření tabulky nakonfigurovat uchování nebo změnit dříve nakonfigurovanou hodnotu. V takovém případě použijte příkaz ALTER TABLE:
 
@@ -116,11 +116,11 @@ Vynikající komprese dat a efektivní vyčištění v rámci uchovávání info
 
 Úloha čištění pro tabulky s clusterovaným indexem rowstore vyžaduje, aby index začínal sloupcem odpovídajícím konci období SYSTEM_TIME. Pokud tento index neexistuje, nemůžete nakonfigurovat omezenou dobu uchování:
 
-*Pro dočasnou tabulku temporalstagetestdb. dbo. <br> WebsiteUserInfo se systémovou správou verzí se nepovedlo vytvořit zprávu č. 13765, úroveň 16, nastavení stavu 1 </br> , protože tabulka historie má nekonečnou dobu uchování. temporalstagetestdb. dbo. WebsiteUserInfoHistory neobsahuje požadovaný clusterovaný index. Zvažte vytvoření clusterovaného indexu columnstore nebo B-Tree začínajícího sloupcem, který odpovídá konci SYSTEM_TIME období, v tabulce historie.*
+*Zpráva 13765, úroveň 16, stav 1 <br></br> nastavení omezeného období uchování pro dočasnou tabulku temporalstagetestdb. dbo. WebsiteUserInfo se systémovou správou verzí selhala, protože tabulka historie temporalstagetestdb. dbo. WebsiteUserInfoHistory není. obsahuje požadovaný clusterovaný index. Zvažte vytvoření clusterovaného indexu columnstore nebo B-Tree začínajícího sloupcem, který odpovídá konci SYSTEM_TIME období, v tabulce historie.*
 
 Je důležité si všimnout, že výchozí tabulka historie vytvořená Azure SQL Database již obsahuje clusterovaný index, který je v souladu se zásadami uchovávání informací. Pokud se pokusíte tento index odstranit v tabulce s omezenou dobou uchovávání, operace se nezdařila s následující chybou:
 
-*Msg 13766, Level 16, state 1 <br> </br> nemůže vyřadit clusterovaný index ' WebsiteUserInfoHistory. IX_WebsiteUserInfoHistory ', protože je používán pro automatické čištění starých dat. Pokud potřebujete tento index odstranit, zvažte nastavení HISTORY_RETENTION_PERIOD na nekonečné v odpovídající dočasné tabulce se systémovou správou verzí.*
+*Msg 13766, úroveň 16, stav 1 <br></br> nelze vyřadit clusterovaný index ' WebsiteUserInfoHistory. IX_WebsiteUserInfoHistory ', protože je používán pro automatické čištění starých dat. Pokud potřebujete tento index odstranit, zvažte nastavení HISTORY_RETENTION_PERIOD na nekonečné v odpovídající dočasné tabulce se systémovou správou verzí.*
 
 Čištění v clusterovaných indexech columnstore funguje optimálně, pokud jsou historické řádky vloženy ve vzestupném pořadí (seřazené podle sloupce konec období), což je vždy případ, kdy je tabulka historie vyplněna výhradně mechanismem SYSTEM_VERSIONIOING. Pokud se řádky v tabulce historie neúčtují podle sloupce konec období (což může být případ, že jste migrovali existující historická data), měli byste znovu vytvořit clusterovaný index columnstore na rowstore indexu B-Tree, který je správně uspořádaný, abyste dosáhli optimálního předepsané.
 
@@ -144,7 +144,7 @@ CREATE NONCLUSTERED INDEX IX_WebHistNCI ON WebsiteUserInfoHistory ([UserName])
 
 Pokus o provedení výše uvedeného příkazu se nezdaří s následující chybou:
 
-*Msg 13772, Level 16, state 1 <br> </br> nemůže vytvořit neclusterovaný index pro dočasnou tabulku historie ' WebsiteUserInfoHistory ', protože má omezené období uchování a definovaný clusterovaný index columnstore.*
+*Msg 13772, Level 16, state 1 <br></br> nemůže vytvořit neclusterovaný index pro dočasnou tabulku historie ' WebsiteUserInfoHistory ', protože má omezené období uchování a definovaný clusterovaný index columnstore.*
 
 ## <a name="querying-tables-with-retention-policy"></a>Dotazování tabulek pomocí zásad uchovávání informací
 
@@ -168,7 +168,7 @@ Nespoléhat se na obchodní logiku při čtení tabulky historie po dobu uchová
 
 ## <a name="point-in-time-restore-considerations"></a>Předpoklady pro obnovení bodu v čase
 
-Při vytváření nové databáze obnovením [existující databáze k určitému bodu v čase](sql-database-recovery-using-backups.md)bude dočasné uchovávání zakázáno na úrovni databáze. (příznak**is_temporal_history_retention_enabled** je nastavený na vypnuto). Tato funkce umožňuje kontrolovat všechny historické řádky při obnovení, aniž byste se museli zabývat tím, že se zastaralými řádky odeberou předtím, než se jim zobrazí dotaz. Můžete ji použít ke *kontrole historických dat nad rámec nakonfigurované doby uchovávání*.
+Při vytváření nové databáze [obnovením existující databáze k určitému bodu v čase](sql-database-recovery-using-backups.md)bude dočasné uchovávání zakázáno na úrovni databáze. (příznak**is_temporal_history_retention_enabled** je nastavený na vypnuto). Tato funkce umožňuje kontrolovat všechny historické řádky při obnovení, aniž byste se museli zabývat tím, že se zastaralými řádky odeberou předtím, než se jim zobrazí dotaz. Můžete ji použít ke *kontrole historických dat nad rámec nakonfigurované doby uchovávání*.
 
 Řekněme, že dočasná tabulka má určenou dobu uchování v měsíci. Pokud byla vaše databáze vytvořena na úrovni služby Premium, budete moci vytvořit kopii databáze se stavem databáze až 35 dní zpět v minulosti. To vám umožní analyzovat historické řádky, které jsou až 65 dnů staré, a to tak, že se dotazují přímo na tabulku historie.
 
@@ -179,7 +179,7 @@ ALTER DATABASE <myDB>
 SET TEMPORAL_HISTORY_RETENTION  ON
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud se chcete dozvědět, jak používat dočasné tabulky v aplikacích, podívejte [se na Začínáme s dočasnými tabulkami v Azure SQL Database](sql-database-temporal-tables.md).
 

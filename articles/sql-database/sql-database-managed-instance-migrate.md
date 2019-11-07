@@ -1,5 +1,5 @@
 ---
-title: Migrovat databázi z instance SQL Server do Azure SQL Database spravované instance | Microsoft Docs
+title: Migrace databáze z instance SQL Server do instance spravované Azure SQL Database
 description: Přečtěte si, jak migrovat databázi z instance SQL Server do Azure SQL Database spravované instance.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: f877306170b45d65a52a4c76afd7f064e83f240a
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 228b22d9d283fe8c23cbf7a82036b7f3782cbf25
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937297"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688007"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migrace instance SQL Server do Azure SQL Database spravované instance
 
@@ -27,7 +27,7 @@ V tomto článku se dozvíte o metodách migrace instance verze SQL Server 2005 
 
 V případě vysoké úrovně proces migrace databáze vypadá takto:
 
-![Proces migrace](./media/sql-database-managed-instance-migration/migration-process.png)
+![proces migrace](./media/sql-database-managed-instance-migration/migration-process.png)
 
 - [Vyhodnoťte kompatibilitu spravované instance](#assess-managed-instance-compatibility) , kde byste měli zajistit, že neexistují žádné blokující problémy, které by mohly bránit migraci.
   - Tento krok zahrnuje také vytváření [standardních hodnot výkonu](#create-performance-baseline) k určení využití prostředků ve zdrojové SQL Server instanci. Tento krok je nutný, pokud chcete v nasazení spravovat správnou velikost spravované instance a ověřit, že po migraci nebudou ovlivněny funkční.
@@ -45,7 +45,7 @@ Nejdřív Zjistěte, jestli je spravovaná instance kompatibilní s požadavky n
 
 Použijte [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) k detekci potenciálních problémů s kompatibilitou, které mají vliv na funkčnost databáze v Azure SQL Database. DMA zatím nepodporuje spravovanou instanci jako cíl migrace, ale doporučuje se spustit posouzení proti Azure SQL Database a pečlivě zkontrolovat seznam hlášených problémů s kompatibilitou funkcí a problémy s kompatibilitou v dokumentaci k produktu. Podívejte se na téma [Azure SQL Database funkce](sql-database-features.md) ke kontrole. byly zjištěny blokující problémy, které nejsou blokovány ve spravované instanci, protože většina potíží blokujících brání migraci Azure SQL Database byla odebrána se spravovanou instancí. Například funkce, jako jsou databázové dotazy, mezidatabázové transakce v rámci stejné instance, odkazovaný server na jiné zdroje SQL, CLR, globální dočasné tabulky, zobrazení na úrovni instance, Service Broker a podobně, jsou k dispozici ve spravovaných instancích.
 
-Pokud se u možnosti nasazení Managed instance neodstraní některé hlášené problémy, možná budete muset vzít v úvahu alternativní možnost, například [SQL Server na virtuálních počítačích Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Následuje několik příkladů:
+Pokud se u možnosti nasazení Managed instance neodstraní některé hlášené problémy, možná budete muset vzít v úvahu alternativní možnost, například [SQL Server na virtuálních počítačích Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Zde je několik příkladů:
 
 - Pokud vyžadujete přímý přístup k operačnímu systému nebo systému souborů, například k instalaci jiných agentů nebo vlastních agentů na stejný virtuální počítač s SQL Server.
 - Pokud máte striktní závislost na funkcích, které stále nejsou podporované, jako jsou FileStream/soubor, základ a transakce mezi instancemi.
@@ -176,12 +176,12 @@ Výsledek porovnání výkonu může být následující:
 
 Proveďte změnu parametrů nebo upgradujte úrovně služeb tak, aby se sblíženy s optimální konfigurací, dokud nezískáte výkon úloh, který vyhovuje vašim potřebám.
 
-### <a name="monitor-performance"></a>Sledování výkonu
+### <a name="monitor-performance"></a>Monitorování výkonu
 
 Managed instance poskytuje mnoho pokročilých nástrojů pro monitorování a odstraňování potíží a je vhodné je použít k monitorování výkonu vaší instance. Některé parametry, které by bylo potřeba monitorovat, jsou:
 - Využití procesoru u instance k určení určuje počet virtuální jádra, které jste zřídili, správnou shodu pro vaše zatížení.
 - Očekávané životního cyklu stránky na spravované instanci, abyste zjistili [, že potřebujete další paměť](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444).
-- Vyčkejte, jako je například `INSTANCE_LOG_GOVERNOR` nebo `PAGEIOLATCH`, které vám pomohou při vstupně-výstupních operacích s úložištěm, zejména na úrovni Pro obecné účely, kde možná budete muset předem přidělit soubory, abyste získali lepší vstupně-výstupní operace.
+- Vyčkejte, jako je `INSTANCE_LOG_GOVERNOR` nebo `PAGEIOLATCH`, které vám pomohou při vstupně-výstupních operacích s úložištěm, zejména na úrovni Pro obecné účely, kde možná budete muset předem přidělit soubory, abyste získali lepší vstupně-výstupní operace.
 
 ## <a name="leverage-advanced-paas-features"></a>Využití pokročilých funkcí PaaS
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Data Factory: nejčastější dotazy | Microsoft Docs'
+title: 'Azure Data Factory: nejčastější dotazy '
 description: Získejte odpovědi na nejčastější dotazy týkající se Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -9,20 +9,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 7ebcf865ad23e75b2aa9070fe14fc3ee8f1397c7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2da12bbc760ff06ad0737ed9d48e12ea81260655
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73481138"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73674728"
 ---
 # <a name="azure-data-factory-faq"></a>Nejčastější dotazy k Azure Data Factory
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Data Factory.  
 
 ## <a name="what-is-azure-data-factory"></a>Co je služba Azure Data Factory? 
-Data Factory je plně spravovaná cloudová služba pro integraci dat, která automatizuje přesun a transformaci dat. Podobně jako továrna, která spouští vybavení pro transformaci surovin na dokončené zboží, Azure Data Factory orchestruje existující služby, které shromažďují nezpracované údaje a transformují je na informace připravené k použití. 
+Data Factory je plně spravovaná cloudová služba ETL Integration data, která automatizuje přesun a transformaci dat. Podobně jako továrna, která spouští vybavení pro transformaci surovin na dokončené zboží, Azure Data Factory orchestruje existující služby, které shromažďují nezpracované údaje a transformují je na informace připravené k použití. 
 
-Pomocí Azure Data Factory můžete vytvářet pracovní postupy řízené daty k přesouvání dat mezi místními a cloudovým úložištěm dat. A můžete zpracovávat a transformovat data pomocí výpočetních služeb, jako je Azure HDInsight, Azure Data Lake Analytics a prostředí Integration runtime služba SSIS (SQL Server Integration Services) (SSIS). 
+Pomocí Azure Data Factory můžete vytvářet pracovní postupy řízené daty k přesouvání dat mezi místními a cloudovým úložištěm dat. A můžete zpracovávat a transformovat data pomocí toků dat. ADF také podporuje externí výpočetní moduly pro ručně kódované transformace pomocí výpočetních služeb, jako je Azure HDInsight, Azure Databricks a prostředí Integration runtime služba SSIS (SQL Server Integration Services) (SSIS). 
 
 Pomocí Data Factory můžete zpracování dat provádět buď v cloudové službě založené na Azure, nebo ve vlastním prostředí pro vlastní hostování, jako je například SSIS, SQL Server nebo Oracle. Po vytvoření kanálu, který provede akci, kterou potřebujete, můžete naplánovat jeho pravidelné spuštění (každou hodinu, každý den nebo každý týden), plánování časových oken nebo aktivovat kanál z výskytu události. Další informace najdete v tématu [Úvod do Azure Data Factory](introduction.md).
 
@@ -72,7 +72,7 @@ Pokud chcete přesunout úlohy SSIS, můžete vytvořit Data Factory a zřídit 
 ### <a name="sdks"></a>Sady SDK
 Pokud jste pokročilý uživatel a hledáte programové rozhraní, Data Factory poskytuje bohatou sadu sad SDK, které můžete použít k vytváření, správě a monitorování kanálů pomocí vašeho oblíbeného integrovaného vývojového prostředí (IDE). Podpora jazyků zahrnuje .NET, PowerShell, Python a REST.
 
-### <a name="monitoring"></a>Sledování
+### <a name="monitoring"></a>Monitorování
 Můžete monitorovat datové továrny prostřednictvím PowerShellu, sady SDK nebo nástrojů pro monitorování vizuálů v uživatelském rozhraní prohlížeče. Efektivním a efektivním způsobem můžete monitorovat a spravovat vlastní toky na vyžádání, na základě triggeru a hodiny. Zrušit stávající úlohy, Projděte si přehled o selháních, přejděte k podrobnostem a Získejte podrobné chybové zprávy a Nalaďte problémy, a to vše z jednoho podokna skla bez kontextu přepínání nebo navigace mezi obrazovkami. 
 
 ### <a name="new-features-for-ssis-in-data-factory"></a>Nové funkce pro SSIS v Data Factory
@@ -109,6 +109,9 @@ Předplatné Azure může obsahovat jednu nebo více instancí služby Azure Dat
 ### <a name="pipelines"></a>Kanály
 Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál je logické seskupení aktivit, které provádí pracovní jednotku. Aktivity v kanálu společně provádí úlohy. Kanál může například obsahovat skupinu aktivit, které ingestují data z objektu blob Azure a pak spustí dotaz na podregistr v clusteru HDInsight, aby data mohla rozdělit. Výhodou je, že pomocí kanálu můžete spravovat aktivity jako sadu, aniž byste museli spravovat jednotlivé aktivity jednotlivě. Můžete zřetězit aktivity v kanálu, abyste je mohli postupně provozovat, nebo je můžete provozovat samostatně, paralelně.
 
+### <a name="data-flows"></a>Toky dat
+Toky dat jsou objekty, které sestavíte vizuálně v Data Factory které transformují data ve velkém měřítku na back-endové služby Spark. Nemusíte porozumět programování nebo interním seznámení s Sparkem. Stačí navrhnout svůj záměr transformace dat pomocí grafů (mapování) nebo tabulek (tahání).
+
 ### <a name="activities"></a>Aktivity
 Aktivity představují krok zpracování v rámci kanálu. Aktivitu kopírování můžete například použít ke kopírování dat z jednoho úložiště dat do jiného úložiště dat. Podobně můžete použít aktivitu podregistru, která spustí dotaz na podregistr v clusteru Azure HDInsight, aby transformoval nebo analyzoval vaše data. Data Factory podporuje tři typy aktivit: aktivity přesunu dat, aktivity transformace dat a aktivity řízení.
 
@@ -123,7 +126,7 @@ Propojené služby mají dva účely v Data Factory:
 - Představuje *úložiště dat* , které zahrnuje, ale není omezené na místní instanci SQL Server, instanci databáze Oracle, sdílenou složku nebo účet úložiště objektů BLOB v Azure. Seznam podporovaných úložišť dat najdete [v tématu aktivita kopírování v Azure Data Factory](copy-activity-overview.md).
 - Představují *výpočetní prostředek*, který může hostovat provádění aktivity. Například aktivita podregistru HDInsight běží v clusteru HDInsight Hadoop. Seznam aktivit transformace a podporovaných výpočetních prostředí najdete v tématu [transformace dat v Azure Data Factory](transform-data.md).
 
-### <a name="triggers"></a>Aktivační události
+### <a name="triggers"></a>Triggery
 Triggery reprezentují jednotky zpracování, které určují, kdy se spustí spuštění kanálu. Pro různé typy událostí existují různé typy aktivačních událostí. 
 
 ### <a name="pipeline-runs"></a>Spuštění kanálu
@@ -168,13 +171,13 @@ Ano, parametry jsou první třídou, koncept nejvyšší úrovně v Data Factory
 Ano. Můžete definovat výchozí hodnoty pro parametry v kanálech. 
 
 ### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>Může aktivita v kanálu spotřebovat argumenty, které se předávají do spuštění kanálu? 
-Ano. Každá aktivita v kanálu může spotřebovat hodnotu parametru, která je předána kanálu a spuštěna s konstrukcí `@parameter`. 
+Ano. Každá aktivita v kanálu může spotřebovat hodnotu parametru, která je předána kanálu a spouštěna pomocí `@parameter` konstrukce. 
 
 ### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>Je možné vlastnost výstup aktivity spotřebovat v jiné aktivitě? 
-Ano. Výstup aktivity lze spotřebovat v následné aktivitě s konstrukcí `@activity`.
+Ano. Výstup aktivity lze spotřebovat v následné aktivitě pomocí `@activity` konstrukce.
  
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Návody řádně zpracovat hodnoty null ve výstupu aktivity? 
-Můžete použít konstrukci `@coalesce` ve výrazech k řádnému zpracování hodnot null. 
+Můžete použít `@coalesce` konstrukce ve výrazech k řádnému zpracování hodnot null. 
 
 ## <a name="mapping-data-flows"></a>Toky dat mapování
 
@@ -199,16 +202,16 @@ Místní prostředí IR je konstrukce kanálu ADF, kterou můžete použít s ak
 Tok dat tahání se v tuto chvíli podporuje v datových továrnách vytvořených v následujících oblastech:
 
 * Austrálie – východ
-* Kanada – střed
-* Střední Indie
+* Střední Kanada
+* Střed Indie
 * Střední USA
-* USA – východ
+* Východ USA
 * Východ USA 2
 * Japonsko – východ
 * Severní Evropa
 * Jihovýchodní Asie
 * Středojižní USA
-* Velká Británie – jih
+* Spojené království – jih
 * Středozápadní USA
 * Západní Evropa
 * Západní USA

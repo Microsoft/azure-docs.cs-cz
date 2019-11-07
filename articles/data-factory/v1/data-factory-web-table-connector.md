@@ -1,6 +1,6 @@
 ---
-title: Přesun dat z tabulky Web pomocí Azure Data Factory | Dokumentace Microsoftu
-description: Další informace o tom, jak přesunout data z tabulky na webové stránce pomocí Azure Data Factory.
+title: Přesunout data z webové tabulky pomocí Azure Data Factory
+description: Přečtěte si, jak přesunout data z tabulky na webové stránce pomocí Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,31 +13,31 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5b84e49bac35ef8fc9a6c8c7ca90bfd6048dc1c4
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 957b47244744f161ad9cc8019a411e2e59c29418
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839594"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682304"
 ---
-# <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Přesun dat z tabulky webovému zdroji pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
+# <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Přesunutí dat ze zdroje webové tabulky pomocí Azure Data Factory
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](data-factory-web-table-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-web-table.md)
 
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [webový konektor tabulky ve verzi V2](../connector-web-table.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [Web Table Connector v v2](../connector-web-table.md).
 
-Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory pro přesun dat z tabulky na webové stránce do úložiště dat jímky podporované. Tento článek vychází [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který nabízí obecný přehled o přesun dat pomocí aktivity kopírování a seznam úložišť dat podporovaných jako zdroje a jímky.
+Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory přesouvat data z tabulky na webové stránce do podporovaného úložiště dat jímky. Tento článek se týká článku [aktivity přesunu dat](data-factory-data-movement-activities.md) , který představuje obecný přehled přesunu dat s aktivitou kopírování a seznam úložišť dat podporovaných jako zdroje a jímky.
 
-Služby data factory v současné době podporuje pouze přesouvá data z tabulky webové do jiných úložišť dat, ale není přesouvá data z jiných dat ukládá do cílové tabulky Web.
+Data Factory aktuálně podporuje pouze přesun dat z webové tabulky do jiných úložišť dat, ale nepřesouvá data z jiných úložišť dat do cílové webové tabulky.
 
 > [!IMPORTANT]
-> Tento konektor Web aktuálně podporuje pouze extrahování obsahu tabulky ze stránky HTML. Pro načtení dat z koncového bodu HTTP/s, použijte [konektor HTTP](data-factory-http-connector.md) místo.
+> Tento webový konektor aktuálně podporuje pouze extrakci obsahu tabulky ze stránky HTML. K načtení dat z koncového bodu HTTP/s použijte místo toho [konektor http](data-factory-http-connector.md) .
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete použít tento konektor Web table, budete muset nastavit modul Integration Runtime (označuje se také jako brána pro správu dat) a nakonfigurovat `gatewayName` vlastnost v jímce propojenou službu. Například pro kopírování z Webová tabulka do úložiště objektů Blob v Azure, nakonfigurujte propojenou službu Azure Storage jako následující:
+Chcete-li použít tento konektor webové tabulky, je třeba nastavit Integration Runtime v místním prostředí (neboli Správa dat bráně) a nakonfigurovat vlastnost `gatewayName` v propojené službě jímky. Pokud například chcete kopírovat z webové tabulky do úložiště objektů BLOB v Azure, nakonfigurujte Azure Storage propojenou službu následujícím způsobem:
 
 ```json
 {
@@ -53,31 +53,31 @@ Pokud chcete použít tento konektor Web table, budete muset nastavit modul Inte
 ```
 
 ## <a name="getting-started"></a>Začínáme
-Vytvoření kanálu s aktivitou kopírování, který přesouvá data z úložiště dat místní Cassandra pomocí různých nástrojů a rozhraní API. 
+Můžete vytvořit kanál s aktivitou kopírování, která přesouvá data z místního úložiště dat Cassandra pomocí různých nástrojů nebo rozhraní API. 
 
-- Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Zobrazit [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním data. 
-- Tyto nástroje můžete také použít k vytvoření kanálu: **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**, a **rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
+- Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) . 
+- K vytvoření kanálu můžete také použít následující nástroje: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) . 
 
-Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky:
+Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
-1. Vytvoření **propojené služby** propojení vstupní a výstupní data ukládá do služby data factory.
-2. Vytvoření **datových sad** k představují vstupní a výstupní data pro operaci kopírování. 
-3. Vytvoření **kanálu** s aktivitou kopírování, která přijímá jako vstupní datovou sadu a datovou sadu jako výstup. 
+1. Vytvořte **propojené služby** , které propojí vstupní a výstupní úložiště dat s datovou továrnou.
+2. Vytvořte datové **sady** , které reprezentují vstupní a výstupní data pro operaci kopírování. 
+3. Vytvořte **kanál** s aktivitou kopírování, která převezme datovou sadu jako vstup a datovou sadu jako výstup. 
 
-Při použití Průvodce definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál) se automaticky vytvoří za vás. Při použití nástroje a rozhraní API (s výjimkou rozhraní .NET API), můžete definovat tyto entity služby Data Factory ve formátu JSON.  Tady je příklad s definice JSON entit služby Data Factory, které se používají ke kopírování dat z tabulky web, naleznete v tématu [příklad JSON: Kopírování dat z tabulky Web do objektů Blob v Azure](#json-example-copy-data-from-web-table-to-azure-blob) části tohoto článku. 
+Při použití Průvodce se automaticky vytvoří definice JSON pro tyto Entity Data Factory (propojené služby, datové sady a kanál). Pokud používáte nástroje/rozhraní API (s výjimkou rozhraní .NET API), definujete tyto Data Factory entit pomocí formátu JSON.  Ukázku s definicemi JSON pro Data Factory entity, které se používají ke kopírování dat z webové tabulky, najdete v části [JSON example: kopírování dat z webové tabulky do objektu blob Azure](#json-example-copy-data-from-web-table-to-azure-blob) v tomto článku. 
 
-Následující části obsahují podrobnosti o vlastnostech JSON, které se používají k definování entit služby Data Factory konkrétní Webová tabulka:
+Následující části obsahují podrobné informace o vlastnostech JSON, které se používají k definování Data Factory entit specifických pro webovou tabulku:
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
-Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro webové propojené služby.
+Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu webu.
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| type |Vlastnost type musí být nastavená na: **Web** |Ano |
-| url |Adresa URL k webovému zdroji |Ano |
-| authenticationType |Anonymní. |Ano |
+| type |Vlastnost Type musí být nastavená na: **Web** . |Ano |
+| URL |Adresa URL webového zdroje |Ano |
+| authenticationType |Anonymous. |Ano |
 
-### <a name="using-anonymous-authentication"></a>Anonymní ověřování
+### <a name="using-anonymous-authentication"></a>Použití anonymního ověřování
 
 ```json
 {
@@ -95,15 +95,15 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 ```
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [vytváření datových sad](data-factory-create-datasets.md) článku. Oddíly, jako je například struktura, dostupnost a zásad JSON datové sady jsou podobné pro všechny datové sady typy (Azure SQL, Azure blob, tabulky Azure, atd.).
+Úplný seznam sekcí & vlastností dostupných pro definování datových sad naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, jako je například struktura, dostupnost a zásada pro datovou sadu JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure Blob, tabulka Azure atd.).
 
-**TypeProperties** oddílu se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti. TypeProperties části datové sady typu **WebTable** má následující vlastnosti
+Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl typeProperties pro datovou sadu typu **webtable** má následující vlastnosti.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type |Typ datové sady. musí být nastaveno na **WebTable** |Ano |
-| path |Relativní adresa URL k prostředku, který obsahuje tabulku. |Ne. Když není zadána cesta, použije se pouze adresu URL, které jsou určené v definici propojené služby. |
-| index |Index tabulky ve zdroji. Zobrazit [Get index tabulky na stránce HTML](#get-index-of-a-table-in-an-html-page) najdete kroky pro získání indexu tabulky na stránce HTML. |Ano |
+| type |Typ datové sady musí být nastavené na **Webtable** . |Ano |
+| dílčí |Relativní adresa URL k prostředku, který obsahuje tabulku. |Ne. Pokud cesta není zadaná, použije se jenom adresa URL zadaná v definici propojené služby. |
+| indexovacím |Index tabulky v prostředku Postup pro získání indexu tabulky na stránce HTML najdete v části [získání indexu tabulky v oddílu stránky HTML](#get-index-of-a-table-in-an-html-page) . |Ano |
 
 **Příklad:**
 
@@ -127,27 +127,27 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 ```
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [vytváření kanálů](data-factory-create-pipelines.md) článku. Vlastnosti, jako je název, popis, vstupní a výstupní tabulky a zásady jsou k dispozici pro všechny typy aktivit.
+Úplný seznam sekcí & vlastností dostupných pro definování aktivit najdete v článku [vytvoření kanálů](data-factory-create-pipelines.md) . Pro všechny typy aktivit jsou k dispozici vlastnosti, jako je název, popis, vstupní a výstupní tabulka a zásada.
 
-Vzhledem k tomu, vlastnosti v části typeProperties aktivity se liší s jednotlivými typu aktivity. Pro aktivitu kopírování se liší v závislosti na typy zdroje a jímky.
+V takovém případě se vlastnosti dostupné v části typeProperties v aktivitě liší podle typu aktivity. U aktivity kopírování se liší v závislosti na typech zdrojů a jímky.
 
-Pokud v současné době zdroje v aktivitě kopírování je typu **WebSource**, jsou podporovány žádné další vlastnosti.
+V současné době platí, že pokud je zdroj v aktivitě kopírování typu **websource**, nejsou podporovány žádné další vlastnosti.
 
 
-## <a name="json-example-copy-data-from-web-table-to-azure-blob"></a>Příklad JSON: Kopírování dat z tabulky Web do objektů Blob v Azure
+## <a name="json-example-copy-data-from-web-table-to-azure-blob"></a>Příklad JSON: kopírování dat z webové tabulky do Azure Blob
 Následující příklad ukazuje:
 
-1. Propojené služby typu [webové](#linked-service-properties).
-2. Propojené služby typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Vstupní hodnota [datovou sadu](data-factory-create-datasets.md) typu [WebTable](#dataset-properties).
-4. Výstup [datovou sadu](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. A [kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [WebSource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+1. Propojená služba typu [Web](#linked-service-properties).
+2. Propojená služba typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
+3. Vstupní [datová sada](data-factory-create-datasets.md) typu [webtable](#dataset-properties).
+4. Výstupní [datová sada](data-factory-create-datasets.md) typu [azureblobu](data-factory-azure-blob-connector.md#dataset-properties).
+5. [Kanál](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [websource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Ukázce kopíruje data z Webová tabulka do objektu blob Azure každou hodinu. Vlastnostech JSON použitých v tyto ukázky jsou popsány v části podle ukázky.
+Ukázka kopíruje data z webové tabulky do objektu blob Azure každou hodinu. Vlastnosti JSON použité v těchto ukázkách jsou popsány v oddílech následujících po ukázkách.
 
-Následující příklad ukazuje, jak kopírovat data z tabulky Web do objektu blob Azure. Ale data se dají zkopírovat přímo do libovolné jímky uvádí [aktivity přesunu dat](data-factory-data-movement-activities.md) článku pomocí aktivity kopírování ve službě Azure Data Factory.
+Následující příklad ukazuje, jak kopírovat data z webové tabulky do objektu blob Azure. Data se ale dají zkopírovat přímo do kterékoli z umyvadel uvedených v článku [aktivity přesunu dat](data-factory-data-movement-activities.md) pomocí aktivity kopírování v Azure Data Factory.
 
-**Webové propojené služby** tento příklad používá webové propojené služby s anonymní ověřování. Zobrazit [webové propojené služby](#linked-service-properties) oddílu pro různé typy ověřování můžete použít.
+**Webová propojená služba** V tomto příkladu se používá webová propojená služba s anonymním ověřováním. Různé typy ověřování, které můžete použít, najdete v části [Webová propojená služba](#linked-service-properties) .
 
 ```json
 {
@@ -179,10 +179,10 @@ Následující příklad ukazuje, jak kopírovat data z tabulky Web do objektu b
 }
 ```
 
-**Vstupní datová sada WebTable** nastavení **externí** k **true** služby Data Factory informuje, že datová sada je externí do služby data factory a není vytvořen aktivitou ve službě data factory.
+**Vstupní datová sada Webtable** Nastavením možnosti **externí** na **hodnotu true** dojde k informování služby Data Factory, že datová sada je pro objekt pro vytváření dat externá a není vytvořená aktivitou v datové továrně.
 
 > [!NOTE]
-> Zobrazit [Get index tabulky na stránce HTML](#get-index-of-a-table-in-an-html-page) najdete kroky pro získání indexu tabulky na stránce HTML.  
+> Postup pro získání indexu tabulky na stránce HTML najdete v části [získání indexu tabulky v oddílu stránky HTML](#get-index-of-a-table-in-an-html-page) .  
 >
 >
 
@@ -208,7 +208,7 @@ Následující příklad ukazuje, jak kopírovat data z tabulky Web do objektu b
 
 **Výstupní datová sada Azure Blob**
 
-Data se zapisují do nového objektu blob každou hodinu (frekvence: hodina, interval: 1).
+Data se zapisují do nového objektu BLOB každou hodinu (frekvence: hodina, interval: 1).
 
 ```json
 {
@@ -234,9 +234,9 @@ Data se zapisují do nového objektu blob každou hodinu (frekvence: hodina, int
 
 **Kanál s aktivitou kopírování**
 
-Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na použití vstupních a výstupních datových sad a je naplánováno spuštění každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **WebSource** a **jímky** je typ nastaven na **BlobSink**.
+Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady a má naplánované spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **websource** a typ **jímky** je nastavený na **BlobSink**.
 
-Zobrazit vlastnosti typu WebSource seznamu vlastností podporuje WebSource.
+Seznam vlastností, které podporuje websource, najdete v tématu vlastnosti typu websource.
 
 ```json
 {  
@@ -285,32 +285,32 @@ Zobrazit vlastnosti typu WebSource seznamu vlastností podporuje WebSource.
 ```
 
 ## <a name="get-index-of-a-table-in-an-html-page"></a>Získat index tabulky na stránce HTML
-1. Spuštění **Excelu 2016** a přejděte **Data** kartu.  
-2. Klikněte na tlačítko **nový dotaz** na panelu nástrojů, přejděte na **z jiných zdrojů** a klikněte na tlačítko **z webu**.
+1. Spusťte **Excel 2016** a přepněte na kartu **data** .  
+2. Na panelu nástrojů klikněte na **Nový dotaz** , přejděte na **z jiných zdrojů** a klikněte na **z webu**.
 
-    ![Nabídky Power Query](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
-3. V **z webu** dialogového okna zadejte **URL** použijete v propojené službě JSON (například: https://en.wikipedia.org/wiki/) spolu s cestu, zadali byste pro datovou sadu (například: AFI % 27s_100_Years... 100_Movies) a klikněte na tlačítko **OK**.
+    ![Nabídka Power Query](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
+3. V dialogovém okně **z webu** zadejte **adresu URL** , kterou použijete v kódu JSON propojené služby (například: https://en.wikipedia.org/wiki/) společně s cestou, kterou zadáte pro datovou sadu (například: AFI% 27s_100_Years... 100_Movies) a klikněte na **OK**.
 
-    ![V dialogovém okně Web](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
+    ![Z dialogového okna Web](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 
-    Adresa URL používaná v tomto příkladu: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
-4. Pokud se zobrazí **přístup k webovému obsahu** dialogového okna, vyberte vpravo **adresy URL**, **ověřování**a klikněte na tlačítko **připojit**.
+    Adresa URL použitá v tomto příkladu: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
+4. Pokud se zobrazí dialogové okno **přístup k webovému obsahu** , vyberte správnou **adresu URL**, **ověřování**a klikněte na **připojit**.
 
-   ![Přístup k dialogové okno webového obsahu](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
-5. Klikněte na tlačítko **tabulky** položky ve stromovém zobrazení na Zobrazit obsah z tabulky a pak klikněte na tlačítko **upravit** tlačítko dole.  
+   ![Přístup k webovému obsahu – dialogové okno](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
+5. Kliknutím na položku **tabulky** ve stromovém zobrazení zobrazíte obsah z tabulky a potom v dolní části kliknete na tlačítko **Upravit** .  
 
-   ![Dialogové okno Navigátor](./media/data-factory-web-table-connector/Navigator-DialogBox.png)
-6. V **editoru dotazů** okna, klikněte na tlačítko **rozšířený Editor** tlačítko na panelu nástrojů.
+   ![Dialog navigátor](./media/data-factory-web-table-connector/Navigator-DialogBox.png)
+6. V okně **Editor dotazů** klikněte na panelu nástrojů na tlačítko **Rozšířený editor** .
 
-    ![Tlačítko Upřesnit editoru](./media/data-factory-web-table-connector/QueryEditor-AdvancedEditorButton.png)
-7. V dialogovém okně Upřesnit se číslo vedle "Zdroj" index.
+    ![Rozšířený editor – tlačítko](./media/data-factory-web-table-connector/QueryEditor-AdvancedEditorButton.png)
+7. V dialogovém okně Rozšířený editor je číslo vedle možnosti "zdroj" index.
 
-    ![Rozšířený Editor - indexu](./media/data-factory-web-table-connector/AdvancedEditor-Index.png)
+    ![Rozšířený editor – index](./media/data-factory-web-table-connector/AdvancedEditor-Index.png)
 
-Pokud používáte Excel 2013, použijte [Microsoft Power Query pro Excel](https://www.microsoft.com/download/details.aspx?id=39379) získat index. Zobrazit [připojit k webové stránce](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) , kde najdete podrobnosti. Kroky jsou podobné, pokud používáte [Microsoft Power BI desktopu](https://powerbi.microsoft.com/desktop/).
+Pokud používáte Excel 2013, použijte k získání indexu [Microsoft Power Query pro Excel](https://www.microsoft.com/download/details.aspx?id=39379) . Podrobnosti najdete v článku [připojení k webové stránce](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) . Postup je podobný, pokud používáte [Microsoft Power BI pro Desktop](https://powerbi.microsoft.com/desktop/).
 
 > [!NOTE]
-> Pokud chcete namapovat sloupce ze zdrojové datové sady na sloupce z datové sady jímky, najdete v článku [mapování sloupců v datové sadě ve službě Azure Data Factory](data-factory-map-columns.md).
+> Chcete-li mapovat sloupce ze zdrojové datové sady na sloupce z datové sady jímky, přečtěte si téma [mapování sloupců datové sady v Azure Data Factory](data-factory-map-columns.md).
 
 ## <a name="performance-and-tuning"></a>Výkon a optimalizace
-Zobrazit [výkonem aktivity kopírování & Průvodci optimalizací](data-factory-copy-activity-performance.md) Další informace o klíčových faktorů této ovlivnit výkon přesouvání dat (aktivita kopírování) ve službě Azure Data Factory a různé způsoby, jak optimalizovat.
+Další informace o klíčových faktorech, které mají vliv na výkon přesunu dat (aktivita kopírování) v Azure Data Factory a různých způsobech jejich optimalizace, najdete v tématu [Průvodce optimalizací aktivity kopírování &](data-factory-copy-activity-performance.md) .

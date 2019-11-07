@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat ze zdroje HTTP pomocí Azure Data Factory | Microsoft Docs
+title: Kopírování dat ze zdroje HTTP pomocí Azure Data Factory
 description: Naučte se kopírovat data z cloudového nebo místního zdroje HTTP na podporovaná úložiště dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 7c3a657ff80f05a7f6bc3273edd85ebe4bddc65d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 125841697a8ad7d34441dfca3a4c079ef59e5f96
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935586"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680821"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopírování dat z koncového bodu HTTP pomocí Azure Data Factory
 
@@ -51,11 +51,11 @@ Tento konektor HTTP můžete použít k těmto akcím:
 > [!TIP]
 > Chcete-li otestovat požadavek HTTP na načtení dat před konfigurací konektoru HTTP v Data Factory, přečtěte si informace o specifikaci rozhraní API pro požadavky na hlavičku a tělo. K ověření můžete použít nástroje, jako je například nástroj pro odeslání nebo webový prohlížeč.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Začít
+## <a name="get-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 

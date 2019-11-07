@@ -1,5 +1,5 @@
 ---
-title: Aktivita webu v Azure Data Factory | Microsoft Docs
+title: Aktivita webu v Azure Data Factory
 description: Naučte se, jak můžete použít aktivitu webu, jednu z aktivit toku ovládacích prvků, které podporuje Data Factory, k vyvolání koncového bodu REST z kanálu.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 73770e559af8a999c17fff5ea1aa6ee53ac17e83
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 5929d4edac53b2be87e168b527034c5a473f154f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141589"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678175"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Aktivita webu v Azure Data Factory
 Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu služby Data Factory. Můžete předávat datové sady a propojené služby, které má aktivita používat a ke kterým má mít přístup.
@@ -63,34 +63,34 @@ Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu s
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požadováno
+Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-name | Název aktivity webu | Řetězec | Ano
+jméno | Název aktivity webu | Řetězec | Ano
 type | Musí být nastavená na **aktivitu webactivity**. | Řetězec | Ano
-– metoda | Metoda rozhraní REST API pro cílový koncový bod | Řetezce. <br/><br/>Podporované typy: "GET", "POST", "PUT" | Ano
+method | Metoda rozhraní REST API pro cílový koncový bod | řetezce. <br/><br/>Podporované typy: "GET", "POST", "PUT" | Ano
 url | Cílový koncový bod a cesta | Řetězec (nebo výraz s hodnotou resultType řetězce). Pokud tato aktivita neobdrží odpověď od koncového bodu, bude časový limit 1 minuty s chybou. | Ano
-záhlaví | Hlavičky, které se odesílají do žádosti Například pro nastavení jazyka a typu na žádost: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ano, hlavička Content-Type je povinná. `"headers":{ "Content-Type":"application/json"}`
-hlavní část | Představuje datovou část, která je odeslána do koncového bodu.  | Řetězec (nebo výraz s hodnotou resultType řetězce). <br/><br/>Podívejte se na schéma datové části požadavku v části [schéma datové části požadavku](#request-payload-schema) . | Vyžadováno pro metody POST/PUT.
-Ověřování | Metoda ověřování používaná pro volání koncového bodu. Podporované typy jsou "Basic" nebo ClientCertificate ". Další informace najdete v části [ověřování](#authentication) . Pokud není vyžadováno ověření, vylučte tuto vlastnost. | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ne
-datasets | Seznam datových sad předaných do koncového bodu. | Pole odkazů na datovou sadu Může být prázdné pole. | Ano
-linkedServices | Seznam propojených služeb předaných koncovému bodu | Pole odkazů na propojené služby Může být prázdné pole. | Ano
+Záhlaví | Hlavičky, které se odesílají do žádosti Například pro nastavení jazyka a typu na žádost: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ano, hlavička Content-Type je povinná. `"headers":{ "Content-Type":"application/json"}`
+těles | Představuje datovou část, která je odeslána do koncového bodu.  | Řetězec (nebo výraz s hodnotou resultType řetězce). <br/><br/>Podívejte se na schéma datové části požadavku v části [schéma datové části požadavku](#request-payload-schema) . | Vyžadováno pro metody POST/PUT.
+ověřování | Metoda ověřování používaná pro volání koncového bodu. Podporované typy jsou "Basic" nebo ClientCertificate ". Další informace najdete v části [ověřování](#authentication) . Pokud není vyžadováno ověření, vylučte tuto vlastnost. | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ne
+datové sady | Seznam datových sad předaných do koncového bodu. | Pole odkazů na datovou sadu Může být prázdné pole. | Ano
+LinkedServices | Seznam propojených služeb předaných koncovému bodu | Pole odkazů na propojené služby Může být prázdné pole. | Ano
 
 > [!NOTE]
 > Koncové body REST, které vyvolává webová aktivita, musí vracet odpověď typu JSON. Pokud tato aktivita neobdrží odpověď od koncového bodu, bude časový limit 1 minuty s chybou.
 
 V následující tabulce jsou uvedeny požadavky na obsah JSON:
 
-| Typ hodnoty | Text požadavku | Text odpovědi |
+| Typ hodnoty | Text požadavku | Tělo odpovědi |
 |---|---|---|
-|Objekt JSON | Podporováno | Podporováno |
-|Pole JSON | Podporováno <br/>(V současné době pole JSON nefungují v důsledku chyby. Probíhá oprava.) | Nepodporovaný |
-| Hodnota JSON | Podporováno | Nepodporovaný |
-| Typ jiný než JSON | Nepodporovaný | Nepodporovaný |
+|Objekt JSON | Podporuje se | Podporuje se |
+|Pole JSON | Podporuje se <br/>(V současné době pole JSON nefungují v důsledku chyby. Probíhá oprava.) | Nepodporované |
+| Hodnota JSON | Podporuje se | Nepodporované |
+| Typ jiný než JSON | Nepodporované | Nepodporované |
 ||||
 
 ## <a name="authentication"></a>Ověřování
 
-### <a name="none"></a>Žádné
+### <a name="none"></a>Žádný
 Pokud není vyžadováno ověřování, nezahrnujte vlastnost "ověřování".
 
 ### <a name="basic"></a>Basic
@@ -104,7 +104,7 @@ Zadejte uživatelské jméno a heslo, které chcete použít se základním ově
 }
 ```
 
-### <a name="client-certificate"></a>Klientský certifikát
+### <a name="client-certificate"></a>Certifikát klienta
 Zadejte obsah souboru PFX a hesla zakódovaného ve formátu base64.
 
 ```json
@@ -243,7 +243,7 @@ public HttpResponseMessage Execute(JObject payload)
 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Podívejte se na další aktivity toku řízení podporované Data Factory:
 
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)

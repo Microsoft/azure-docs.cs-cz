@@ -1,5 +1,5 @@
 ---
-title: Práce s daty JSON v Azure SQL Database | Microsoft Docs
+title: Práce s daty JSON v Azure SQL Database
 description: Azure SQL Database umožňuje analyzovat, dotazovat a formátovat data v zápisu JavaScript Object Notation (JSON).
 services: sql-database
 ms.service: sql-database
@@ -11,19 +11,19 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 01/15/2019
-ms.openlocfilehash: 3a09fba3f01eec6c712bad67ef10b8b5c55fb33e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2fe760e3792b5540b18946fd9dbcc5d571b50ee9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567841"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689657"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Začínáme s funkcemi JSON v Azure SQL Database
 Azure SQL Database umožňuje analyzovat a dotazovat data reprezentovaná ve formátu JavaScript Object Notation [(JSON)](https://www.json.org/) a exportovat relační data jako text JSON. V Azure SQL Database jsou k dispozici následující scénáře JSON:
-- [Formátování relačních dat ve formátu JSON](#formatting-relational-data-in-json-format) pomocí `FOR JSON` klauzule.
+- [Formátování relačních dat ve formátu JSON](#formatting-relational-data-in-json-format) pomocí klauzule `FOR JSON`.
 - [Práce s daty JSON](#working-with-json-data)
 - [Dotazování na data JSON](#querying-json-data) pomocí skalárních funkcí JSON.
-- [Transformuje JSON na tabulkový formát](#transforming-json-into-tabular-format) pomocí `OPENJSON` funkce.
+- [Transformuje JSON na tabulkový formát](#transforming-json-into-tabular-format) pomocí funkce `OPENJSON`.
 
 ## <a name="formatting-relational-data-in-json-format"></a>Formátování relačních dat ve formátu JSON
 Máte-li webovou službu, která přebírá data z databázové vrstvy a poskytuje odpověď ve formátu JSON, nebo knihovny JavaScript na straně klienta, které přijímají data formátovaná jako JSON, můžete obsah databáze naformátovat jako JSON přímo v dotazu SQL. Již nemusíte psát kód aplikace, který formátuje výsledky z Azure SQL Database jako JSON, nebo zahrnovat některé knihovny serializace JSON pro převod výsledků tabulkových dotazů a pak serializovat objekty ve formátu JSON. Místo toho můžete použít klauzuli FOR JSON pro formátování výsledků dotazu SQL jako JSON v Azure SQL Database a použít ho přímo v aplikaci.
@@ -71,7 +71,7 @@ Výstup tohoto dotazu vypadá takto:
 
 V tomto příkladu jsme vrátili jeden objekt JSON místo pole zadáním možnosti [WITHOUT_ARRAY_WRAPPER](https://msdn.microsoft.com/library/mt631354.aspx) . Tuto možnost můžete použít, pokud víte, že vracíte jeden objekt jako výsledek dotazu.
 
-Hlavní hodnotou klauzule FOR JSON je, že umožňuje vracet složitá hierarchická data z databáze formátovaná jako vnořené objekty JSON nebo pole. Následující příklad ukazuje, jak zahrnout řádky z `Orders` tabulky, které patří `Customer` do vnořeného pole `Orders`jako:
+Hlavní hodnotou klauzule FOR JSON je, že umožňuje vracet složitá hierarchická data z databáze formátovaná jako vnořené objekty JSON nebo pole. Následující příklad ukazuje, jak zahrnout řádky z `Orders` tabulky, které patří do `Customer` jako vnořené pole `Orders`:
 
 ```
 select CustomerName as Name, PhoneNumber as Phone, FaxNumber as Fax,
@@ -166,7 +166,7 @@ OPENJSON je funkce hodnot tabulky, která analyzuje text JSON, vyhledává pole 
 
 V příkladu výše můžeme určit, kde se má najít pole JSON, které by se mělo otevřít (v $. Cesta objednávek), které sloupce by měly být vráceny jako výsledek a kde najít hodnoty JSON, které budou vráceny jako buňky.
 
-Pole JSON v @orders proměnné můžeme transformovat do sady řádků, analyzovat tuto sadu výsledků nebo vkládat řádky do standardní tabulky:
+Pole JSON můžete v proměnné @orders transformovat do sady řádků, analyzovat tuto sadu výsledků nebo vkládat řádky do standardní tabulky:
 
 ```
 CREATE PROCEDURE InsertOrders(@orders nvarchar(max))
@@ -186,7 +186,7 @@ END
 ```
 Kolekce objednávek naformátovaných jako pole JSON a poskytované jako parametr pro uloženou proceduru lze analyzovat a vložit do tabulky Orders.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Informace o tom, jak do své aplikace integrovat JSON, najdete v těchto zdrojích:
 
 * [Blog na TechNetu](https://blogs.technet.microsoft.com/dataplatforminsider/20../../json-in-sql-server-2016-part-1-of-4/)

@@ -1,5 +1,5 @@
 ---
-title: Vizuálně monitorujte datové továrny Azure | Microsoft Docs
+title: Vizuální monitorování datových továren Azure
 description: Naučte se vizuálně monitorovat datové továrny Azure.
 services: data-factory
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: f7c27bde3806684045bc43f8ff99eefb14c8d04a
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7b79fd9c87e97e624cce567b57c1c65fefcc151e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029138"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684639"
 ---
-# <a name="visually-monitor-azure-data-factories"></a>Vizuálně monitorujte datové továrny Azure.
+# <a name="visually-monitor-azure-data-factories"></a>Vizuální monitorování datových továren Azure
 Azure Data Factory je cloudová služba pro integraci dat. Můžete ho použít k vytvoření pracovních postupů řízených daty v cloudu pro orchestraci a automatizaci přesunu dat a transformaci dat. Pomocí Azure Data Factory můžete:
 
 - Vytvářet a plánovat pracovní postupy řízené daty (označované jako kanály), které dokáží ingestovat data z různorodých zdrojů dat.
@@ -45,9 +45,9 @@ V zobrazení seznamu se zobrazí všechny spuštěné kanály pro Data Factory k
 | Název kanálu | Název kanálu |
 | Akce | Jedna akce dostupná pro zobrazení spuštění aktivit |
 | Spustit spuštění | Počáteční datum a čas pro spuštění kanálu (MM/DD/RRRR, HH: MM: SS dop./odp.) |
-| Délka | Doba trvání běhu (HH: MM: SS) |
+| Doba trvání | Doba trvání běhu (HH: MM: SS) |
 | Aktivoval | Manuální aktivační událost nebo naplánovaná aktivační událost |
-| Stav | **Došlo k chybě**, **úspěšné**nebo **probíhající** |
+| Status | **Došlo k chybě**, **úspěšné**nebo **probíhající** |
 | Parametry | Parametry pro spuštění kanálu (páry název/hodnota) |
 | Chyba | Chyba spuštění kanálu (pokud existuje) |
 | ID běhu | ID spuštění kanálu |
@@ -62,8 +62,8 @@ V zobrazení seznamu se zobrazí spuštění aktivit, která odpovídají každ�
 | Název aktivity | Název aktivity uvnitř kanálu |
 | Typ aktivity | Typ aktivity, například **copy**, **HDInsightSpark**nebo **HDInsightHive** |
 | Spustit spuštění | Počáteční datum a čas pro spuštění aktivit (MM/DD/RRRR, HH: MM: SS dop./odp.) |
-| Délka | Doba trvání běhu (HH: MM: SS) |
-| Stav | **Došlo k chybě**, **úspěšné**nebo **probíhající** |
+| Doba trvání | Doba trvání běhu (HH: MM: SS) |
+| Status | **Došlo k chybě**, **úspěšné**nebo **probíhající** |
 | Vstup | Pole JSON, které popisuje vstupy aktivity |
 | Výstup | Pole JSON, které popisuje výstupy aktivity |
 | Chyba | Chyba spuštění aktivity (pokud existuje) |
@@ -161,7 +161,7 @@ Vyberte ikonu **zpětné vazby** a poskytněte nám zpětnou vazbu k různým fu
 
 ## <a name="alerts"></a>Výstrahy
 
-Upozornění na podporované metriky můžete vyvolávat v Data Factory. Pokud chcete začít, vyberte **monitorovat**výstrahy  >  **& metriky** na stránce monitorování Data Factory.
+Upozornění na podporované metriky můžete vyvolávat v Data Factory. Začněte tím, že vyberete **Monitor** > **výstrahy & metrik** na stránce monitorování Data Factory.
 
 ![Stránka monitorování objektu pro vytváření dat](media/monitor-visually/alerts01.png)
 

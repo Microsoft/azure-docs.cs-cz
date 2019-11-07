@@ -1,6 +1,6 @@
 ---
-title: Opakovatelné kopírování ve službě Azure Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak se vyhnout duplicity, i když je více než jednou spustit určitý řez, který kopíruje data.
+title: Opakující se kopírování v Azure Data Factory
+description: Zjistěte, jak se vyhnout duplicitám, i když je řez, který kopíruje data, spuštěn více než jednou.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,22 +13,22 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 20c916275acd6bb79675c592711b17b277c9fc78
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e4264bb198a0c167e33f35958079b0523303d29d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60605200"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682381"
 ---
-# <a name="repeatable-copy-in-azure-data-factory"></a>Opakovatelné kopírování ve službě Azure Data Factory
+# <a name="repeatable-copy-in-azure-data-factory"></a>Opakující se kopírování v Azure Data Factory
 
-## <a name="repeatable-read-from-relational-sources"></a>Opakovatelné čtení z relačních zdrojů
-Při kopírování dat z relačních dat ukládá, mějte opakovatelnosti aby se zabránilo neúmyslnému výsledků. Ve službě Azure Data Factory můžete znovu spustit řezu ručně. Zásady opakování pro datovou sadu můžete také nakonfigurovat tak, aby určitý řez se znovu spustí, když dojde k chybě. V obou případech se znovu spustí určitý řez, musíte zajistit, že stejná data je pro čtení bez ohledu na to kolikrát spustit určitý řez.  
+## <a name="repeatable-read-from-relational-sources"></a>Opakované čtení z relačních zdrojů
+Při kopírování dat z relačních úložišť dat mějte na paměti, že se vyhnete nezamýšleným výsledkům. V Azure Data Factory můžete řez znovu spustit ručně. Můžete také nakonfigurovat zásady opakování pro datovou sadu, aby se řez znovu opakoval, když dojde k selhání. Při opětovném spuštění řezu v obou případech je nutné zajistit, že stejná data budou čtena bez ohledu na to, kolikrát je řez spuštěn.  
  
 > [!NOTE]
-> Následující ukázky jsou pro Azure SQL, ale platí pro jakékoli úložiště dat, který podporuje obdélníkové datové sady. Možná budete muset upravit **typ** zdroje a **dotazu** vlastnosti (například: dotaz namísto sqlReaderQuery) data ukládat.   
+> Následující ukázky jsou pro Azure SQL, ale platí pro všechna úložiště dat, která podporují obdélníkové datové sady. Pro úložiště dat možná budete muset upravit **typ** zdroje a vlastnost **dotazu** (například: Query místo sqlReaderQuery).   
 
-Obvykle při čtení z relačního úložiště, budete chtít číst pouze data odpovídající této řez. Způsob, jak tomu by pomocí WindowStart a WindowEnd systémové proměnné k dispozici ve službě Azure Data Factory. Přečtěte si informace o proměnných a funkcí ve službě Azure Data Factory tady v [Azure Data Factory – funkce a systémové proměnné](data-factory-functions-variables.md) článku. Příklad: 
+Obvykle při čtení z relačních úložišť chcete číst pouze data, která odpovídají danému řezu. K tomu je potřeba použít systémové proměnné WindowStart a WindowEnd, které jsou k dispozici v Azure Data Factory. Další informace o proměnných a funkcích v Azure Data Factory najdete v článku [Azure Data Factory funkce a systémové proměnné](data-factory-functions-variables.md) . Příklad: 
 
 ```json
 "source": {
@@ -36,9 +36,9 @@ Obvykle při čtení z relačního úložiště, budete chtít číst pouze data
     "sqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd HH:mm\\' AND timestampcolumn < \\'{1:yyyy-MM-dd HH:mm\\'', WindowStart, WindowEnd)"
 },
 ```
-Tento dotaz načítá data, která spadá do rozsahu řez doba trvání (WindowStart -> WindowEnd) z tabulky MyTable. Znovu spustit tento řezu by také vždy ujistěte se, že je pro čtení na stejná data. 
+Tento dotaz čte data, která spadají do rozsahu trvání řezu (WindowStart-> WindowEnd) z tabulky MyTable. Po opětovném spuštění tohoto řezu se taky vždycky zabezpečí čtení stejných dat. 
 
-V jiných případech může chtít přečíst celou tabulku a může definovat sqlReaderQuery následujícím způsobem:
+V jiných případech si možná budete chtít přečíst celou tabulku a můžete definovat sqlReaderQuery následujícím způsobem:
 
 ```json
 "source": 
@@ -48,10 +48,10 @@ V jiných případech může chtít přečíst celou tabulku a může definovat 
 },
 ```
 
-## <a name="repeatable-write-to-sqlsink"></a>Opakovatelné zápis SqlSink
-Při kopírování dat do **Azure SQL nebo SQL Server** z jiných úložišť dat, budete muset opakovatelnosti mějte na paměti, aby se zabránilo neúmyslnému výsledků. 
+## <a name="repeatable-write-to-sqlsink"></a>Opakovat zápis do SqlSink
+Když kopírujete data do **Azure SQL/SQL Server** z jiných úložišť dat, je potřeba mít na paměti, abyste se vyhnuli nezamýšleným výsledkům. 
 
-Při kopírování dat do služby Azure SQL nebo SQL Server Database, aktivita kopírování připojí data do tabulky jímky ve výchozím nastavení. Řekněme, se kopírování dat ze souboru CSV (hodnoty oddělené čárkami) obsahující dva záznamy v databázi Azure SQL nebo SQL serveru v následující tabulce. Při spuštění řezu dva záznamy se zkopírují do tabulky SQL. 
+Když kopírujete data do databáze Azure SQL nebo SQL Server, aktivita kopírování ve výchozím nastavení připojí data do tabulky jímky. Řekněme, že kopírujete data ze souboru CSV (hodnoty oddělené čárkami), který obsahuje dva záznamy do následující tabulky v databázi SQL Azure/SQL Server. Po spuštění řezu se tyto dva záznamy zkopírují do tabulky SQL. 
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -60,7 +60,7 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    2            2015-05-01 00:00:00
 ```
 
-Předpokládejme, že byly nalezeny chyby ve zdrojovém souboru a aktualizované množství trubky snížit z 2 až 4. Pokud znovu spustíte datový řez za toto období ručně, najdete dva nové záznamy připojenou k databázi Azure SQL nebo SQL Server. Tento příklad předpokládá, že žádný sloupec v tabulce má omezení primárního klíče.
+Předpokládejme, že ve zdrojovém souboru byly zjištěny chyby a aktualizované množství z trubky z 2 na 4. Pokud ručně znovu spustíte datový řez pro dané období, najdete dva nové záznamy připojené k databázi Azure SQL/SQL Server. V tomto příkladu se předpokládá, že žádný ze sloupců v tabulce nemá omezení primárního klíče.
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -71,10 +71,10 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-Chcete-li toto chování vyhnout, musíte zadat UPSERT sémantiku pomocí jedné z následujících dvou mechanismů:
+Chcete-li se tomuto chování vyhnout, je nutné určit sémantiku UPSERT pomocí jednoho z následujících dvou mechanismů:
 
 ### <a name="mechanism-1-using-sqlwritercleanupscript"></a>Mechanismus 1: použití sqlWriterCleanupScript
-Můžete použít **sqlWriterCleanupScript** vlastnost vyčistit data z tabulky jímky před vložením dat při spuštění řezu. 
+Vlastnost **sqlWriterCleanupScript** můžete použít k vyčištění dat z tabulky jímky před vložením dat při spuštění řezu. 
 
 ```json
 "sink":  
@@ -84,7 +84,7 @@ Můžete použít **sqlWriterCleanupScript** vlastnost vyčistit data z tabulky 
 }
 ```
 
-Při spuštění určitý řez, je nejprve spustit skript pro vyčištění odstranit data, která odpovídá řez z tabulky SQL. Aktivita kopírování dat poté vloží do tabulky SQL. Pokud řez znovu spustit, množství se aktualizuje podle potřeby.
+Při spuštění řezu se nejprve spustí čisticí skript, který odstraní data, která odpovídají řezu v tabulce SQL. Aktivita kopírování pak vloží data do tabulky SQL. V případě opětovného spuštění řezu se množství aktualizuje podle potřeby.
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -93,7 +93,7 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-Předpokládejme, že záznam pro plochý podložku Odebereme z původní sdílený svazek clusteru. Potom znovu spustit řez byste mohli vytvořit následující výsledek: 
+Předpokládejme, že se záznam plochého mycího pračky odebírá z původního sdíleného svazku clusteru. Pak řez znovu spustí následující výsledek: 
 
 ```
 ID    Product        Quantity    ModifiedDate
@@ -101,17 +101,17 @@ ID    Product        Quantity    ModifiedDate
 7     Down Tube    4            2015-05-01 00:00:00
 ```
 
-Aktivita kopírování spustili skript pro vyčištění odstranit odpovídajících dat pro tento řez. Potom jej číst vstup ze souboru csv (což je obsaženy jenom jednomu záznamu) a vloženy do tabulky. 
+Aktivita kopírování spustila skript vyčištění, který odstraní odpovídající data pro daný řez. Pak Přečtěte vstup ze sdíleného svazku clusteru (který pak obsahuje jenom jeden záznam) a vloží ho do tabulky. 
 
 ### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>Mechanismus 2: použití sliceIdentifierColumnName
 > [!IMPORTANT]
-> V současné době sliceIdentifierColumnName není podporována pro službu Azure SQL Data Warehouse. 
+> SliceIdentifierColumnName se v současné době nepodporuje pro Azure SQL Data Warehouse. 
 
-Druhý mechanismus opakovatelnosti dosáhnout spočívá v použití vyhrazené sloupec (sliceIdentifierColumnName) v cílové tabulce. V tomto sloupci se použije službou Azure Data Factory k zajištění, že zdroj a cíl zůstat synchronizováni. Tento přístup funguje, když je flexibilitu při změně nebo definování schématu cílové tabulky SQL. 
+Druhým mechanismem, který se má dosáhnout opakovatelnosti, je vytvoření vyhrazeného sloupce (sliceIdentifierColumnName) v cílové tabulce. Tento sloupec Azure Data Factory použít k tomu, aby bylo zajištěno, že zůstane synchronizován zdroj a cíl. Tento přístup funguje v případě, že dojde k flexibilitě při změně nebo definování schématu cílové tabulky SQL. 
 
-Tento sloupec se službou Azure Data Factory používá pro účely opakovatelnost a v procesu služby Azure Data Factory neprovede žádné změny schématu tabulky. Způsob, jak pomocí tohoto postupu:
+Tento sloupec se používá Azure Data Factory pro účely opakovatelnosti a v procesu Azure Data Factory neprovede žádné změny schématu v tabulce. Způsob použití tohoto přístupu:
 
-1. Definovat sloupec typu **binární soubor (32)** v cílové tabulce SQL. Měla by existovat bez omezení na tomto sloupci. V tomto příkladu pojmenujeme v tomto sloupci jako AdfSliceIdentifier.
+1. Definujte sloupec typu **Binary (32)** v cílové tabulce SQL. Pro tento sloupec by neměla existovat žádná omezení. Pojďme tento sloupec pojmenovat jako AdfSliceIdentifier pro tento příklad.
 
 
     Zdrojová tabulka:
@@ -133,7 +133,7 @@ Tento sloupec se službou Azure Data Factory používá pro účely opakovatelno
     )
     ```
 
-1. Použije v aktivitě kopírování následujícím způsobem:
+1. Použijte ji v aktivitě kopírování následujícím způsobem:
    
     ```json
     "sink":  
@@ -144,12 +144,12 @@ Tento sloupec se službou Azure Data Factory používá pro účely opakovatelno
     }
     ```
 
-Azure Data Factory naplní v tomto sloupci podle jeho potřeba zajistit, že zdroj a cíl zůstat synchronizováni. Mimo tento kontext by neměl použít hodnoty daného sloupce. 
+Azure Data Factory naplní tento sloupec podle potřeby, aby se zajistila synchronizace zdroje a cíle. Hodnoty tohoto sloupce by se neměly používat mimo tento kontext. 
 
-Podobně jako mechanismus 1, aktivita kopírování automaticky vyčistí data pro danou řezu cílové tabulky SQL. Potom vkládá data ze zdroje do do cílové tabulky. 
+Podobně jako mechanismus – aktivita kopírování automaticky vyčistí data pro daný řez z cílové tabulky SQL. Pak vloží data ze zdroje do cílové tabulky. 
 
-## <a name="next-steps"></a>Další postup
-Kontrola konektoru následující články, které kompletní příklady JSON: 
+## <a name="next-steps"></a>Další kroky
+Přečtěte si následující články konektoru, které jsou kompletními příklady JSON: 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)
 - [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md)

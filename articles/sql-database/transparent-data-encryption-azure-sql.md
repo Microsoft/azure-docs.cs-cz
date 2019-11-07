@@ -1,5 +1,5 @@
 ---
-title: Transparentní šifrování dat pro Azure SQL Database a datový sklad | Microsoft Docs
+title: 'Transparentní šifrování dat pro Azure SQL Database a datový sklad '
 description: Přehled transparentního šifrování dat pro SQL Database a datový sklad. Tento dokument popisuje své výhody a možnosti konfigurace, mezi které patří transparentní šifrování dat spravované službou a Bring Your Own Key.
 services: sql-database
 ms.service: sql-database
@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-ms.date: 08/27/2019
-ms.openlocfilehash: b63a8c9defdf154f35a847f29182b49ff94ff3a6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 11/01/2019
+ms.openlocfilehash: ff712f956278a2a54584c0b0346f8f1147add189
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933210"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686800"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparentní šifrování dat pro SQL Database a datový sklad
 
@@ -42,10 +42,10 @@ Microsoft také bez problémů přesouvá a spravuje klíče podle potřeby pro 
 
 ## <a name="customer-managed-transparent-data-encryption---bring-your-own-key"></a>Transparentní šifrování dat spravované zákazníkem – Bring Your Own Key
 
-[TDE s použitím klíčů spravovaných zákazníkem v Azure Key Vault](transparent-data-encryption-byok-azure-sql.md) umožňuje šifrování šifrovacího klíče databáze (klíč DEK) pomocí asymetrického klíče spravovaného zákazníkem, který se nazývá TDE Protector.  To se také obecně označuje jako podpora Bring Your Own Key (BYOK) pro transparentní šifrování dat. Ve scénáři BYOK se ochrana TDE ukládá do cloudového [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)ve vlastnictví a spravovaném zákazníkem, což je cloudový externí systém správy klíčů Azure. Ochranu TDE můžete [vygenerovat pomocí trezoru klíčů nebo přenést do trezoru klíčů](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys) z místního zařízení HSM. TDE klíč DEK, který je uložen na spouštěcí stránce databáze, je zašifrován a dešifrován modulem ochrany TDE, který je uložen v Azure Key Vault a nikdy neopouští Trezor klíčů.  SQL Database musí mít udělená oprávnění trezoru klíčů vlastněné zákazníkem k dešifrování a šifrování klíč dek. Pokud jsou oprávnění logického serveru SQL k trezoru klíčů odvolána, databáze nebude přístupná a všechna data budou zašifrována. Pro Azure SQL Database ochrana TDE je nastavená na úrovni logického SQL serveru a děděna všemi databázemi přidruženými k tomuto serveru. Pro [spravovanou instanci Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-howto-managed-instance) (funkce BYOK ve verzi Preview) se ochrana TDE nastaví na úrovni instance a zděděná všemi *šifrovanými* databázemi v této instanci. Pojem *Server* v celém tomto dokumentu odkazuje na server i na instanci, pokud není uvedeno jinak.
+[TDE s použitím klíčů spravovaných zákazníkem v Azure Key Vault](transparent-data-encryption-byok-azure-sql.md) umožňuje šifrování šifrovacího klíče databáze (klíč DEK) pomocí asymetrického klíče spravovaného zákazníkem, který se nazývá TDE Protector.  To se také obecně označuje jako podpora Bring Your Own Key (BYOK) pro transparentní šifrování dat. Ve scénáři BYOK se ochrana TDE ukládá do cloudového [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)ve vlastnictví a spravovaném zákazníkem, což je cloudový externí systém správy klíčů Azure. Ochranu TDE můžete [vygenerovat pomocí trezoru klíčů nebo přenést do trezoru klíčů](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys) z místního zařízení HSM. TDE klíč DEK, který je uložen na spouštěcí stránce databáze, je zašifrován a dešifrován modulem ochrany TDE, který je uložen v Azure Key Vault a nikdy neopouští Trezor klíčů.  SQL Database musí mít udělená oprávnění trezoru klíčů vlastněné zákazníkem k dešifrování a šifrování klíč dek. Pokud jsou oprávnění logického serveru SQL k trezoru klíčů odvolána, databáze nebude přístupná a všechna data budou zašifrována. Pro Azure SQL Database ochrana TDE je nastavená na úrovni logického SQL serveru a děděna všemi databázemi přidruženými k tomuto serveru. U [spravované instance Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-howto-managed-instance)je ochrana TDE nastavena na úrovni instance a zděděna všemi *šifrovanými* databázemi v této instanci. Pojem *Server* v celém tomto dokumentu odkazuje na server i na instanci, pokud není uvedeno jinak.
 
 Pomocí TDE s integrací Azure Key Vault můžou uživatelé řídit úlohy správy klíčů, včetně střídání klíčů, oprávnění trezoru klíčů, záloh klíčů a povolit auditování nebo vytváření sestav pro všechny TDE ochrany pomocí funkcí Azure Key Vault. Key Vault poskytuje správu pomocí centrálních klíčů, využívá důkladně monitorované moduly hardwarového zabezpečení (HSM) a umožňuje oddělení povinností mezi správou klíčů a dat, které pomůžou splnit dodržování zásad zabezpečení.
-Další informace o transparentním šifrování dat s Azure Key Vault integrací (podpora Bring Your Own Key) pro Azure SQL Database, Managed instance SQL (funkce BYOK ve verzi Preview) a datovém skladu najdete v tématu [transparentní šifrování dat s využitím Azure Key Vault integrace](transparent-data-encryption-byok-azure-sql.md).
+Další informace o transparentním šifrování dat s Azure Key Vault integrací (podpora Bring Your Own Key) pro Azure SQL Database, spravované instance SQL a datové sklady najdete v tématu [transparentní šifrování dat s Azure Key Vault integrací](transparent-data-encryption-byok-azure-sql.md).
 
 Pokud chcete začít používat transparentní šifrování dat s Azure Key Vault integrací (podpora Bring Your Own Key), přečtěte si téma návod, jak [zapnout transparentní šifrování dat pomocí vlastního klíče z Key Vault pomocí prostředí PowerShell](transparent-data-encryption-byok-azure-sql-configure.md).
 

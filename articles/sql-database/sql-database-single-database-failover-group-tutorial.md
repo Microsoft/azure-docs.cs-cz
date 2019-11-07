@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Přidání jedné databáze Azure SQL Database do skupiny převzetí služeb při selhání | Microsoft Docs'
+title: 'Kurz: Přidání samostatné databáze Azure SQL Database do skupiny převzetí služeb při selhání '
 description: Přidejte do skupiny převzetí služeb při selhání jednu databázi Azure SQL Database pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.
 services: sql-database
 ms.service: sql-database
@@ -11,23 +11,23 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 106351487980d2f76e9122bc7423114e65593b15
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 022faa04db6f9699d5d80918087c62c69b0fb5fe
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933254"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687279"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Kurz: Přidání samostatné databáze Azure SQL Database do skupiny převzetí služeb při selhání
 
-Nakonfiguruje skupinu převzetí služeb při selhání pro Azure SQL Database izolovanou databázi a testovací převzetí služeb při selhání pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.  V tomto kurzu se naučíte, jak:
+Nakonfiguruje skupinu převzetí služeb při selhání pro Azure SQL Database izolovanou databázi a testovací převzetí služeb při selhání pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.  V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > - Vytvořte Azure SQL Database izolovanou databázi.
 > - Vytvořte [skupinu převzetí služeb při selhání](sql-database-auto-failover-group.md) pro jednu databázi mezi dvěma logickými servery SQL.
 > - Testovací převzetí služeb při selhání.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující: 

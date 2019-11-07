@@ -1,5 +1,5 @@
 ---
-title: Upozornění migrace provozu brány na Azure SQL Database | Microsoft Docs
+title: Upozornění migrace provozu brány na Azure SQL Database
 description: Článek obsahuje oznámení uživatelům o migraci IP adres Azure SQL Database bran
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: a2064e0012abea237c1b4c0c6f7e35119c1aeff5
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 37c6c8e0f26d0281c3f6e76cb891fe14eb2ef04e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686808"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690008"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database migrace provozu na novější brány
 
@@ -27,9 +27,9 @@ Zákazníci budou upozorňováni e-mailem a v Azure Portal předem o jakékoli z
 
 První kolo migrace provozu na novější brány se plánuje na **14. října 2019** v následujících oblastech:
 - Brazílie – jih
-- Západ USA
+- Západní USA
 - Západní Evropa
-- USA – východ
+- Východ USA
 - Střední USA
 - Jihovýchodní Asie
 - Středojižní USA

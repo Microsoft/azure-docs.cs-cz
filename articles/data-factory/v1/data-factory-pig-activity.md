@@ -1,5 +1,5 @@
 ---
-title: Transformuje data pomocí aktivity prasete v Azure Data Factory | Microsoft Docs
+title: Transformace dat pomocí aktivity prasete v Azure Data Factory
 description: Zjistěte, jak můžete pomocí aktivity prasete v datové továrně Azure spouštět skripty prasete na vyžádání nebo vlastním clusteru HDInsight.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 72f532c277096a20387ab1b4922def2cd35a9afb
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a6861a22f853bb0b48eb7c9832adb251bc3467ca
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139126"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682396"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity prasete v Azure Data Factory
 > [!div class="op_single_selector" title1="Aktivity transformace"]
@@ -39,7 +39,7 @@ ms.locfileid: "70139126"
 Aktivita prasete v HDInsight v [kanálu](data-factory-create-pipelines.md) Data Factory spouští dotazy na prasaty na [vašem](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) clusteru HDInsight založeném na systému Windows/Linux nebo [na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) . Tento článek se sestavuje na článku [aktivity transformace dat](data-factory-data-transformation-activities.md) , který představuje obecný přehled transformace dat a podporovaných transformačních aktivit.
 
 > [!NOTE] 
-> Pokud s Azure Data Factory začínáte, přečtěte si [Úvod do Azure Data Factory](data-factory-introduction.md) a udělejte si kurz: Před čtením tohoto článku Sestavte [první datový kanál](data-factory-build-your-first-pipeline.md) . 
+> Pokud se Azure Data Factory teprve začínáte, přečtěte si [Úvod do Azure Data Factory](data-factory-introduction.md) a udělejte si kurz: [Vytvoření prvního datového kanálu](data-factory-build-your-first-pipeline.md) před přečtením tohoto článku. 
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -80,19 +80,19 @@ Aktivita prasete v HDInsight v [kanálu](data-factory-create-pipelines.md) Data 
 }
 ```
 
-## <a name="syntax-details"></a>Podrobnosti o syntaxi
+## <a name="syntax-details"></a>Podrobnosti syntaxe
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| name |Název aktivity |Ano |
+| jméno |Název aktivity |Ano |
 | description |Text popisující, k čemu se aktivita používá |Ne |
 | type |HDinsightPig |Ano |
-| inputs |Jeden nebo více vstupů spotřebovaných aktivitou prasete |Ne |
-| outputs |Jeden nebo více výstupů vyprodukovaných aktivitou prasete |Ano |
+| vztahují |Jeden nebo více vstupů spotřebovaných aktivitou prasete |Ne |
+| činnosti |Jeden nebo více výstupů vyprodukovaných aktivitou prasete |Ano |
 | linkedServiceName |Odkaz na cluster HDInsight registrovaný jako propojená služba v Data Factory |Ano |
-| script |Zadat vložený skript prasete |Ne |
+| . |Zadat vložený skript prasete |Ne |
 | scriptPath |Uložte skript prasete do úložiště objektů BLOB v Azure a zadejte cestu k souboru. Použijte vlastnost Script nebo scriptPath. Nelze použít současně. V názvu souboru se rozlišují malá a velká písmena. |Ne |
-| defines |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu pro vepřové prostředí. |Ne |
+| definuje |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu pro vepřové prostředí. |Ne |
 
 ## <a name="example"></a>Příklad
 Podívejme se na příklad analýzy herních protokolů, u kterých chcete zjistit čas strávený hráči, které hrají hry spuštěné vaší společností.

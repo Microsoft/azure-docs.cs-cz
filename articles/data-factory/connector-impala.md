@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat z Impala pomocí Azure Data Factory | Microsoft Docs
+title: Kopírování dat z Impala pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z Impala do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu služby Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 54f46c09cfab64d53e8f5f503ca46004289f18c2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4fa43246278c33755f6a8a5b62f914689e6e9b40
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935570"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680789"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory"></a>Kopírování dat z Impala pomocí Azure Data Factory
 
@@ -34,11 +34,11 @@ Data z Impala můžete kopírovat do libovolného podporovaného úložiště da
 
 Data Factory poskytuje integrovaný ovladač, který umožňuje připojení. Proto nemusíte ručně instalovat ovladač pro použití tohoto konektoru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Začít
+## <a name="get-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -97,9 +97,9 @@ Chcete-li kopírovat data z Impala, nastavte vlastnost Type datové sady na **Im
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type datové sady musí být nastavená na: **ImpalaObject** . | Ano |
-| XSD | Název schématu. |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
-| Stolní | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
-| tableName | Název tabulky se schématem Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové zatížení použijte `schema` a `table`. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
+| schema | Název schématu. |Ne (když je zadán zdroj aktivity "query")  |
+| stolní | Název tabulky |Ne (když je zadán zdroj aktivity "query")  |
+| tableName | Název tabulky se schématem Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové zatížení použijte `schema` a `table`. | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad**
 

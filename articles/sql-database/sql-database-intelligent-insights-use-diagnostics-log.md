@@ -1,5 +1,5 @@
 ---
-title: Protokol diagnostiky výkonu Intelligent Insights – Azure SQL Database | Microsoft Docs
+title: Protokol diagnostiky výkonu Intelligent Insights – Azure SQL Database
 description: Intelligent Insights poskytuje diagnostický protokol pro problémy s výkonem Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: c25d37a4d1695ab94cc0667a13e36e4da640e12a
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 86381f5670f09b5e6a215793dc1ea4eab7ecbb8e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262151"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689696"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Použijte protokol Intelligent Insights Azure SQL Database Performance Diagnostics
 
@@ -80,7 +80,7 @@ V závislosti na zjištěném potížích s výkonem se odpovídajícím způsob
 | Dosažení limitů prostředků | <li>Ovlivněné prostředky</li><li>Hodnoty hash dotazů</li><li>Procento využití prostředků</li> |
 | Zvýšení zatížení | <li>Počet dotazů, jejichž spuštění bylo zvýšeno</li><li>Dotazování na hodnoty hash dotazů s největším přínosem zvýšení zatížení</li> |
 | Tlak paměti | <li>Úředník paměti</li> |
-| Uzamykání | <li>Ovlivněné hodnoty hash dotazů</li><li>Blokování hodnot hash dotazů</li> |
+| Zamknut | <li>Ovlivněné hodnoty hash dotazů</li><li>Blokování hodnot hash dotazů</li> |
 | Zvýšená MAXDOP | <li>Hodnoty hash dotazů</li><li>CXP čekací doba</li><li>Čekací časy</li> |
 | PAGELATCH spory | <li>Dotazování hodnot hash dotazů způsobujících spory</li> |
 | Chybějící index | <li>Hodnoty hash dotazů</li> |
@@ -99,7 +99,7 @@ Vlastnost dopad (dopad) popisuje, kolik zjištěného chování přispělo k pro
 
 ### <a name="impacted-queries"></a>Ovlivněné dotazy
 
-V další části protokolu Intelligent Insights najdete informace o konkrétních dotazech, které byly ovlivněny zjištěnými problémy s výkonem. Tyto informace jsou zveřejněné jako pole objektů vložených do vlastnosti impact_s. Vlastnost dopad se skládá z entit a metrik. Entity odkazují na konkrétní dotaz (typ: Dotaz). Hodnota hash jedinečného dotazu je uzavřená pod vlastností hodnota (Value). Každý z těchto dotazů je navíc následován metrikou a hodnotou, která indikuje zjištěný problém s výkonem.
+V další části protokolu Intelligent Insights najdete informace o konkrétních dotazech, které byly ovlivněny zjištěnými problémy s výkonem. Tyto informace jsou zveřejněné jako pole objektů vložených do vlastnosti impact_s. Vlastnost dopad se skládá z entit a metrik. Entity odkazují na konkrétní dotaz (typ: dotaz). Hodnota hash jedinečného dotazu je uzavřená pod vlastností hodnota (Value). Každý z těchto dotazů je navíc následován metrikou a hodnotou, která indikuje zjištěný problém s výkonem.
 
 V následujícím příkladu protokolu bylo zjištěno, že dotaz s algoritmem hash 0x9102EXZ4 má vyšší dobu trvání spuštění (metrika: DurationIncreaseSeconds). Hodnota 110 sekund znamená, že spuštění tohoto konkrétního dotazu trvalo 110 sekund déle. Vzhledem k tomu, že je možné zjistit více dotazů, může tento konkrétní oddíl protokolu zahrnovat více položek dotazu.
 

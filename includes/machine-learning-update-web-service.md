@@ -2,16 +2,16 @@
 author: larryfr
 ms.service: machine-learning
 ms.topic: include
-ms.date: 07/26/2019
+ms.date: 11/06/2019
 ms.author: larryfr
-ms.openlocfilehash: 11cc93e0eb11d0422fae4fbbbf0a549df067daca
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 694d7e6afbf7bd4b219d52254159dcf2e02f8769
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390658"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682085"
 ---
-K aktualizaci webové služby použijte `update` metodu. Webovou službu můžete aktualizovat tak, aby používala nový model, nový vstupní skript nebo nové závislosti, které lze zadat v konfiguraci odvození. Další informace najdete v dokumentaci ke službě [WebService. Update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-).
+Chcete-li aktualizovat webovou službu, použijte metodu `update`. Webovou službu můžete aktualizovat tak, aby používala nový model, nový vstupní skript nebo nové závislosti, které lze zadat v konfiguraci odvození. Další informace najdete v dokumentaci ke službě [WebService. Update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-).
 
 > [!IMPORTANT]
 > Když vytváříte novou verzi modelu, je nutné ručně aktualizovat každou službu, kterou chcete použít.
@@ -61,6 +61,6 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 > [!TIP]
 > V tomto příkladu se k předání informací o modelu z příkazu k registraci do příkazu Update používá dokument JSON.
 >
-> Chcete-li aktualizovat službu tak, aby používala nový skriptovací skript nebo prostředí, vytvořte [konfigurační soubor odvození](/azure/machine-learning/service/reference-azure-machine-learning-cli#inference-configuration-schema) a zadejte jej `ic` s parametrem.
+> Chcete-li aktualizovat službu tak, aby používala nový skriptovací skript nebo prostředí, vytvořte [konfigurační soubor odvození](/azure/machine-learning/service/reference-azure-machine-learning-cli#inference-configuration-schema) a zadejte jej pomocí parametru `ic`.
 
 Další informace najdete v dokumentaci [AZ ml Service Update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-update) .

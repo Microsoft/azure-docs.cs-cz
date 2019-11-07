@@ -1,21 +1,21 @@
 ---
 title: 'Rychlý Start: vytvoření klíče LUIS'
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu se naučíte rychle vytvořit aplikaci LUIS.
+description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci LUIS a získat klíč.
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 11/04/2019
 ms.author: wolfma
-ms.openlocfilehash: 95becb2574a45536610aef87f8045b3dad5a5003
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ee2b25958feac2387779d9e60734a6600b60a2e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504078"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682068"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>Rychlý Start: získání klíče koncového bodu LUIS
 
@@ -54,7 +54,7 @@ Na stránce **klíče a nastavení koncového bodu** :
    * V části **název předplatného**vyberte předplatné Azure, které obsahuje prostředek Luis, který chcete použít.
    * V části **klíč**vyberte prostředek Luis, který chcete s aplikací používat.
 
-   Nové předplatné se za chvíli zobrazí v tabulce v dolní části stránky. 
+   Nové předplatné se za chvíli zobrazí v tabulce v dolní části stránky.
 
 1. Vyberte ikonu vedle klíče a zkopírujte ji do schránky. (Můžete použít kterýkoli z klíčů.)
 
