@@ -1,5 +1,5 @@
 ---
-title: Příklad PowerShellu – monitorování a škálování elastického fondu – Azure SQL Database | Microsoft Docs
+title: Příklad PowerShellu – monitorování a škálování elastického fondu – Azure SQL Database
 description: Azure PowerShell ukázkový skript pro monitorování a škálování elastického fondu v Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 4d096600e57d3ca94a7c32547bd546bfdbeb9487
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6ab361b67741f2b96f593d04dafbabe355fc9121
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569931"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691620"
 ---
 # <a name="use-powershell-to-monitor-and-scale-an-elastic-pool-in-azure-sql-database"></a>Použití PowerShellu k monitorování a škálování elastického fondu v Azure SQL Database
 
@@ -57,7 +57,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

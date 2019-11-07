@@ -1,6 +1,6 @@
 ---
-title: Konfigurace vlastního kontejneru – Azure App Service | Dokumentace Microsoftu
-description: Další informace o konfiguraci aplikací v Node.js v Azure App Service
+title: Konfigurace vlastního kontejneru – Azure App Service | Microsoft Docs
+description: Naučte se konfigurovat aplikace v Node. js pro práci v Azure App Service
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -13,22 +13,22 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 02231f86d4ceddd6cde53fd242c2c91158d744a9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 7290e2b09c316a97bfb88744307e185aef72852a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480751"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73668982"
 ---
-# <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Konfigurace vlastního kontejneru Linuxu pro službu Azure App Service
+# <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Konfigurace vlastního kontejneru Linux pro Azure App Service
 
-V tomto článku se dozvíte, jak nakonfigurovat vlastní kontejner Linux ke spuštění ve službě Azure App Service.
+V tomto článku se dozvíte, jak nakonfigurovat vlastní kontejner pro Linux ke spuštění na Azure App Service.
 
-Tato příručka obsahuje klíčové koncepty a pokyny, jak kontejnerizace Linuxové aplikace ve službě App Service. Pokud jste nikdy použili službu Azure App Service, postupujte [vlastní kontejner rychlý Start](quickstart-docker-go.md) a [kurzu](tutorial-custom-docker-image.md) první. K dispozici je také [rychlý úvod k aplikacím vícekontejnerová](quickstart-multi-container.md) a [kurzu](tutorial-multi-container-app.md).
+Tato příručka poskytuje klíčové koncepty a pokyny pro kontejnerování aplikací pro Linux v App Service. Pokud jste nikdy Azure App Service nepoužili, postupujte jako první v prvním [rychlém startu vlastního kontejneru](quickstart-docker-go.md) a [kurzu](tutorial-custom-docker-image.md) . K dispozici je také rychlý Start a [kurz](tutorial-multi-container-app.md) [aplikace pro více kontejnerů](quickstart-multi-container.md) .
 
-## <a name="configure-port-number"></a>Konfigurovat číslo portu
+## <a name="configure-port-number"></a>Konfigurace čísla portu
 
-Webový server do své vlastní image může používat jiný port než 80. Azure můžete sdělit port, který používá vlastní kontejner pomocí `WEBSITES_PORT` nastavení aplikace. Stránka GitHubu pro [ukázku Pythonu v tomto kurzu](https://github.com/Azure-Samples/docker-django-webapp-linux) ukazuje, že je potřeba nastavit `WEBSITES_PORT` na _8000_. Můžete ho nastavit spuštěním [ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) příkazu ve službě Cloud Shell. Příklad:
+Webový server ve vlastní imagi může používat jiný port než 80. Azure o portu, který používá vlastní kontejner, sdělíte pomocí nastavení aplikace `WEBSITES_PORT`. Stránka GitHubu pro [ukázku Pythonu v tomto kurzu](https://github.com/Azure-Samples/docker-django-webapp-linux) ukazuje, že je potřeba nastavit `WEBSITES_PORT` na _8000_. Můžete ji nastavit spuštěním příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) v Cloud Shell. Příklad:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_PORT=8000
@@ -36,46 +36,46 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="configure-environment-variables"></a>Konfigurace proměnných prostředí
 
-Vlastní kontejner může použít proměnné prostředí, které musí být poskytnuto externě. Můžete předat je do spuštěním [ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) příkazu ve službě Cloud Shell. Příklad:
+Vlastní kontejner může používat proměnné prostředí, které je třeba zadat externě. Můžete je předat spuštěním příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) v Cloud Shell. Příklad:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WORDPRESS_DB_HOST="myownserver.mysql.database.azure.com"
 ```
 
-Tato metoda se dá použít pro jeden kontejner aplikace nebo vícekontejnerové aplikace, kde jsou proměnné prostředí určené v i *docker-compose.yml* souboru.
+Tato metoda funguje jak pro aplikace s jedním kontejnerem, tak pro aplikace s více kontejnery, kde jsou proměnné prostředí určeny v souboru *Docker-Compose. yml* .
 
-## <a name="use-persistent-shared-storage"></a>Použití trvalé sdílené úložiště
+## <a name="use-persistent-shared-storage"></a>Použití trvalého sdíleného úložiště
 
-Můžete použít */home* adresáře v systému souborů vaší aplikace pro uchovávání souborů napříč restartování a sdílet je napříč instancemi. `/home` Ve vaší aplikaci je k dispozici v kontejneru aplikace pro přístup k trvalému ukládání.
+Pomocí adresáře */Home* v systému souborů vaší aplikace můžete uchovávat soubory mezi restarty a sdílet je mezi instancemi. K dispozici je `/home` vaší aplikace, aby mohla vaše aplikace kontejneru přistupovat k trvalému úložišti.
 
-Když trvalého úložiště je zakázaný a pak zapíše do `/home` adresáře nejsou trvalé napříč restartování aplikace nebo víc instancí. Jedinou výjimkou je `/home/LogFiles` adresáře, který se používá k ukládání protokolů Dockeru a kontejnerech. Pokud je povolená trvalého úložiště, všechny operace zápisu do `/home` adresáře jsou trvalé a je možný přes všechny instance horizontálním navýšením kapacity aplikace.
+Pokud je trvalé úložiště zakázané, pak se zápisy do adresáře `/home` neukládají mezi restarty aplikace nebo mezi několika instancemi. Jedinou výjimkou je adresář `/home/LogFiles`, který se používá k ukládání protokolů Docker a kontejner. Když je povolené trvalé úložiště, všechny zápisy do adresáře `/home` jsou trvalé a můžou k němu mít pøístup všechny instance aplikace s možností horizontálního rozšíření kapacity.
 
-Ve výchozím nastavení, je trvalé úložiště *povolené* a toto nastavení není vystaveno v nastavení aplikace. Chcete-li zakázat, nastavte `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení aplikace spuštěním [ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) příkazu ve službě Cloud Shell. Příklad:
+Ve výchozím nastavení je trvalé úložiště *povolené* a nastavení se v nastavení aplikace nezveřejňuje. Pokud ho chcete zakázat, nastavte `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení aplikace spuštěním příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) v Cloud Shell. Příklad:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
 ```
 
 > [!NOTE]
-> Můžete také [nakonfigurujte trvalého úložiště](how-to-serve-content-from-azure-storage.md).
+> Můžete také [nakonfigurovat vlastní trvalé úložiště](how-to-serve-content-from-azure-storage.md).
 
 ## <a name="enable-ssh"></a>Povolit SSH
 
-SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. Aby vlastní kontejner podporovala protokol SSH je třeba přidat ji do souboru Dockerfile, samotného.
+SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. Aby mohl vlastní kontejner podporovat SSH, musíte ho přidat do samotného souboru dockerfileu.
 
 > [!TIP]
-> Všechny předdefinované kontejnery Linuxu ve svých úložištích image přidali pokyny pro SSH. Můžete procházet, postupujte podle následujících pokynů s [Node.js 10.14 úložiště](https://github.com/Azure-App-Service/node/blob/master/10.14) zobrazíte, jak je povoleno existuje.
+> Všechny integrované kontejnery Linux přidaly instrukce SSH do úložišť imagí. Pomocí následujících pokynů můžete v [úložišti Node. js 10,14](https://github.com/Azure-App-Service/node/blob/master/10.14) zjistit, jak je tato funkce povolená.
 
-- Použití [spustit](https://docs.docker.com/engine/reference/builder/#run) pokyny, jak nainstalovat SSH server a nastavte heslo pro kořenový účet na `"Docker!"`. Například pro image podle [Alpine Linux](https://hub.docker.com/_/alpine), budete potřebovat následující příkazy:
+- Použijte instrukci [Run](https://docs.docker.com/engine/reference/builder/#run) k instalaci serveru SSH a nastavte heslo pro kořenový účet na `"Docker!"`. Například pro Image založenou na systému [Alpine Linux](https://hub.docker.com/_/alpine)budete potřebovat následující příkazy:
 
     ```Dockerfile
     RUN apk add openssh \
          && echo "root:Docker!" | chpasswd 
     ```
 
-    Tato konfigurace nepovoluje externí připojení ke kontejneru. SSH je k dispozici pouze prostřednictvím `https://<app-name>.scm.azurewebsites.net` a ověření pomocí přihlašovacích údajů pro publikování.
+    Tato konfigurace neumožňuje externí připojení ke kontejneru. SSH je k dispozici pouze prostřednictvím `https://<app-name>.scm.azurewebsites.net` a ověřena s přihlašovacími údaji pro publikování.
 
-- Přidat [tohoto souboru sshd_config](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config) do úložiště imagí a použití [kopírování](https://docs.docker.com/engine/reference/builder/#copy) pokyny, jak zkopírovat soubor, který má */etc/ssh/* adresáře. Další informace o *sshd_config* soubory, naleznete v tématu [OpenBSD dokumentaci](https://man.openbsd.org/sshd_config).
+- Přidejte [Tento soubor sshd_config](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config) do úložiště imagí a pomocí instrukce [copy](https://docs.docker.com/engine/reference/builder/#copy) zkopírujte soubor do adresáře */etc/ssh/* . Další informace o souborech *sshd_config* najdete v [dokumentaci k OpenBSD](https://man.openbsd.org/sshd_config).
 
     ```Dockerfile
     COPY sshd_config /etc/ssh/
@@ -86,41 +86,41 @@ SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. Aby vlastn�
     > - `Ciphers` musí obsahovat alespoň jednu položku v tomto seznamu: `aes128-cbc,3des-cbc,aes256-cbc`.
     > - `MACs` musí obsahovat alespoň jednu položku v tomto seznamu: `hmac-sha1,hmac-sha1-96`.
 
-- Použití [vystavit](https://docs.docker.com/engine/reference/builder/#expose) pokyny, jak otevřít port 2222 v kontejneru. I když je známé kořenové heslo, port 2222 není přístupný z Internetu. Je dostupná jenom pomocí kontejnery v rámci síťového mostu privátní virtuální síť.
+- K otevření portu 2222 v kontejneru použijte instrukci [vystavení](https://docs.docker.com/engine/reference/builder/#expose) . I když je známé heslo ke kořenovému adresáři, není port 2222 přístupný z Internetu. Je přístupná pouze kontejnery v rámci mostu sítě privátní virtuální sítě.
 
     ```Dockerfile
     EXPOSE 80 2222
     ```
 
-- Ve skriptu spuštění kontejneru spusťte SSH server.
+- V spouštěcím skriptu pro svůj kontejner spusťte server SSH.
 
     ```bash
     /usr/sbin/sshd
     ```
 
-    Příklad najdete v tématu jak výchozí [Node.js 10.14 kontejneru](https://github.com/Azure-App-Service/node/blob/master/10.14/startup/init_container.sh) spuštění serveru SSH.
+    Příklad naleznete v tématu Jak výchozí [kontejner Node. js 10,14](https://github.com/Azure-App-Service/node/blob/master/10.14/startup/init_container.sh) SPUSTÍ Server SSH.
 
 ## <a name="access-diagnostic-logs"></a>Přístup k diagnostickým protokolům
 
 [!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
-## <a name="configure-multi-container-apps"></a>Konfigurace aplikací pro více kontejnerů
+## <a name="configure-multi-container-apps"></a>Konfigurace aplikací s více kontejnery
 
-- [Použití trvalé úložiště v Docker Compose](#use-persistent-storage-in-docker-compose)
+- [Použít trvalé úložiště v Docker Compose](#use-persistent-storage-in-docker-compose)
 - [Omezení verze Preview](#preview-limitations)
-- [Možnosti docker Compose](#docker-compose-options)
+- [Možnosti Docker Compose](#docker-compose-options)
 
-### <a name="use-persistent-storage-in-docker-compose"></a>Použití trvalé úložiště v Docker Compose
+### <a name="use-persistent-storage-in-docker-compose"></a>Použít trvalé úložiště v Docker Compose
 
-Vícekontejnerová aplikace, jako je WordPress potřebujete trvalé úložiště fungovat správně. Ho Pokud chcete povolit, konfiguraci Docker Compose musí odkazovat na umístění úložiště *mimo* vašeho kontejneru. Umístění úložiště uvnitř kontejneru nechcete zachovat změny nad rámec restartování aplikace.
+Aplikace s více kontejnery, jako je WordPress, potřebují pro správné fungování trvalé úložiště. Pokud ho chcete povolit, vaše konfigurace Docker Compose musí odkazovat na umístění úložiště *mimo* váš kontejner. Umístění úložiště ve vašem kontejneru neukládají změny po restartování aplikace.
 
-Povolit trvalé úložiště tak, že nastavíte `WEBSITES_ENABLE_APP_SERVICE_STORAGE` aplikace nastavení, pomocí [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) příkazu ve službě Cloud Shell.
+Nastavení aplikace `WEBSITES_ENABLE_APP_SERVICE_STORAGE` pomocí příkazu [AZ WebApp config appSettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) v Cloud Shell povolte trvalé úložiště.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
 ```
 
-Ve vaší *docker-compose.yml* souborů, mapování `volumes` umožňuje `${WEBAPP_STORAGE_HOME}`. 
+V souboru *Docker-Compose. yml* namapujte možnost `volumes` na `${WEBAPP_STORAGE_HOME}`. 
 
 `WEBAPP_STORAGE_HOME` je proměnná prostředí ve službě App Service, která je namapovaná na trvalé úložiště vaší aplikace. Příklad:
 
@@ -135,14 +135,14 @@ wordpress:
 
 ### <a name="preview-limitations"></a>Omezení verze Preview
 
-Více kontejnerů je aktuálně ve verzi preview. Nejsou podporovány následující funkce služby App Service:
+Vícenásobný kontejner je aktuálně ve verzi Preview. Následující funkce App Service platformy nejsou podporovány:
 
-- Ověřování / autorizace
+- Ověřování/autorizace
 - Spravované identity
 
-### <a name="docker-compose-options"></a>Možnosti docker Compose
+### <a name="docker-compose-options"></a>Možnosti Docker Compose
 
-Následující seznamy shrnují podporované a nepodporované možnosti Docker Compose konfigurace:
+Následující seznamy obsahují podporované a nepodporované možnosti konfigurace Docker Compose:
 
 #### <a name="supported-options"></a>Podporované možnosti
 
@@ -164,12 +164,16 @@ Následující seznamy shrnují podporované a nepodporované možnosti Docker C
 - jiné porty než 80 a 8080 (ignorováno)
 
 > [!NOTE]
-> Jakékoli možnosti, které nejsou výslovně uvádějí, jsou ignorovány ve verzi Public Preview.
+> Všechny další možnosti, které nejsou explicitně vyvolány, jsou v Public Preview ignorovány.
 
-## <a name="next-steps"></a>Další postup
+## <a name="configure-vnet-integration"></a>Konfigurace integrace virtuální sítě
+
+Použití vlastního kontejneru s integrací virtuální sítě může vyžadovat další konfiguraci kontejneru. Viz [integrace aplikace s Virtual Network Azure](../web-sites-integrate-with-vnet.md).
+
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: Nasazení z kontejneru soukromého úložiště](tutorial-custom-docker-image.md)
+> [Kurz: nasazení z privátního úložiště kontejnerů](tutorial-custom-docker-image.md)
 
 > [!div class="nextstepaction"]
-> [Kurz: Wordpressu vícekontejnerové aplikace](tutorial-multi-container-app.md)
+> [Kurz: aplikace pro více kontejnerů WordPress](tutorial-multi-container-app.md)

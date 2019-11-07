@@ -1,26 +1,24 @@
 ---
 title: Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem v Azure Key Vault (Preview)
 titleSuffix: Azure Cognitive Search
-description: Doplňte šifrování na straně serveru přes indexy a mapy synonym v Azure Kognitivní hledání prostřednictvím klíčů, které vytvoříte a spravujete v Azure Key Vault.
+description: Doplňte šifrování na straně serveru přes indexy a mapy synonym v Azure Kognitivní hledání prostřednictvím klíčů, které vytvoříte a spravujete v Azure Key Vault. Tato funkce je aktuálně ve verzi Public Preview.
 manager: nitinme
 author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 94c9d94edb9a9ca3f6117bd43ab9cefe1dad52a3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1521abfa327c69648b38f02d1d6313baa369f304
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794360"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721747"
 ---
 # <a name="content-encryption-of-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Šifrování obsahu Azure Kognitivní hledání pomocí klíčů spravovaných zákazníkem v Azure Key Vault
 
-> [!Note]
-> Šifrování pomocí klíčů spravovaných zákazníkem je ve verzi Preview a není určené pro produkční použití. Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) . Můžete také použít sadu .NET SDK verze 8,0-Preview.
->
-> Tato funkce není dostupná pro bezplatné služby. Je nutné použít fakturovatelný vyhledávací službu vytvořenou v nebo po 2019-01-01. V tuto chvíli není dostupná žádná podpora portálu.
+> [!IMPORTANT] 
+> Podpora šifrování v klidovém umístění je momentálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Tato funkce poskytuje [REST API verze 2019-05-06-Preview](search-api-preview.md) a [.net SDK verze 8,0-Preview](search-dotnet-sdk-migration-version-9.md) . V tuto chvíli není dostupná žádná podpora portálu.
 
 Ve výchozím nastavení používá Azure Kognitivní hledání šifrování obsahu uživatele v klidovém stavu pomocí [klíčů spravovaných službou](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models). Výchozí šifrování můžete doplnit pomocí dalších vrstev šifrování s použitím klíčů, které vytvoříte a spravujete v Azure Key Vault. Tento článek vás provede jednotlivými kroky.
 
@@ -30,7 +28,7 @@ Ve výchozím nastavení používá Azure Kognitivní hledání šifrování obs
 
 Můžete použít různé klíče z různých trezorů klíčů. To znamená, že jedna vyhledávací služba může hostovat několik šifrovaných indexes\synonym map, z nichž každý zašifrovaný potenciálně používá jiný klíč spravovaný zákazníkem spolu s indexes\synonym mapami, které nejsou šifrované pomocí klíčů spravovaných zákazníkem. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto příkladu se používají následující služby. 
 

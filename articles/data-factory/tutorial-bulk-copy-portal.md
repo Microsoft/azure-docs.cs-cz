@@ -1,5 +1,5 @@
 ---
-title: Hromadné kopírování dat pomocí Azure Data Factory | Dokumentace Microsoftu
+title: 'Hromadné kopírování dat pomocí Azure Data Factory '
 description: Naučte se používat Azure Data Factory a aktivitu kopírování k hromadnému kopírování dat ze zdrojového úložiště dat do cílového úložiště dat.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: d7f97eec4e0dc6e88d89e845e086b9e5242caa7b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 9feb9be5e76f91ab55ec1b3e60eb79ab5e246f4f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616516"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683736"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Hromadné kopírování několika tabulek pomocí Azure Data Factory
 Tento kurz představuje **kopírování několika tabulek z Azure SQL Database do služby Azure SQL Data Warehouse**. Stejný vzor můžete využít i u dalších scénářů kopírování. Například při kopírování tabulek z SQL Serveru/Oraclu do služby Azure SQL Database/Data Warehouse/Azure Blob nebo při kopírování různých cest ze služby Blob do tabulek Azure SQL Database.
@@ -32,7 +32,7 @@ Tento kurz zahrnuje následující základní kroky:
 > * Vytvoření propojených služeb Azure SQL Database, Azure SQL Data Warehouse a Azure Storage
 > * Vytvoření datových sad Azure SQL Database a Azure SQL Data Warehouse
 > * Vytvoření kanálu pro vyhledání tabulek ke zkopírování a dalšího kanálu pro provedení vlastní operace kopírování 
-> * Spuštění kanálu
+> * Zahájení spuštění kanálu
 > * Monitorování spuštění aktivit a kanálu
 
 Tento kurz používá Azure Portal. Další informace o vytvoření datové továrny pomocí jiných nástrojů nebo sad SDK najdete v tématu [Šablony Rychlý start](quickstart-create-data-factory-dot-net.md). 
@@ -62,17 +62,17 @@ Podle postupu v článku [Vytvoření databáze Azure SQL](../sql-database/sql-d
 
 1. Pokud Azure SQL Data Warehouse nemáte, přečtěte si článek věnovaný [vytvoření služby SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md), kde najdete kroky pro její vytvoření.
 
-1. V SQL Data Warehouse vytvořte odpovídající schémata tabulek. K **migraci schémat** z Azure SQL Database do Azure SQL Data Warehouse můžete využít [nástroj pro migraci](https://www.microsoft.com/download/details.aspx?id=49100). K migraci/kopírování dat v pozdějším kroku můžete použít Azure Data Factory.
+1. V SQL Data Warehouse vytvořte odpovídající schémata tabulek. K [migraci schémat](https://www.microsoft.com/download/details.aspx?id=49100) z Azure SQL Database do Azure SQL Data Warehouse můžete využít **nástroj pro migraci**. K migraci/kopírování dat v pozdějším kroku můžete použít Azure Data Factory.
 
 ## <a name="azure-services-to-access-sql-server"></a>Služby Azure pro přístup k SQL serveru
 
 Pro SQL Database i SQL Data Warehouse povolte službám Azure přístup k SQL serveru. Ujistěte se, že nastavení **Povolit přístup ke službám Azure** je pro SQL server Azure **zapnuté**. Toto nastavení umožňuje službě Data Factory načítat data z Azure SQL Database a zapisovat data do Azure SQL Data Warehouse. 
 
-Pokud chcete toto nastavení ověřit a zapnout, přejděte na Azure SQL Server > zabezpečení > firewall a virtuální sítě > nastavte **možnost povolit přístup ke službám Azure** na zapnuto.
+Pokud chcete toto nastavení ověřit a zapnout, přejděte na Azure SQL Server > zabezpečení > firewall a virtuální sítě > nastavte **možnost povolit přístup ke službám Azure** na **zapnuto**.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. V nabídce vlevo vyberte vytvořit **Data Factory** **analýzy** > **prostředků** > : ![Data Factory výběru v podokně "nové"](./media/doc-common-process/new-azure-data-factory-menu.png)
+1. V nabídce vlevo vyberte **vytvořit prostředek** > **Analytics** > **Data Factory**: ![Data Factory výběru v podokně nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 1. Na stránce **Nová datová továrna** jako **název**zadejte **ADFTutorialBulkCopyDF** . 
  
@@ -87,12 +87,12 @@ Pokud chcete toto nastavení ověřit a zapnout, přejděte na Azure SQL Server 
          
      Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
 1. Jako **verzi** vyberte **V2**.
-1. Vyberte **umístění** pro datovou továrnu. Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, vyberte oblasti, které vás zajímají na následující stránce, a pak rozbalte položku **Analytics** a vyhledejte **Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
-1. Klikněte na možnost **Vytvořit**.
+1. Vyberte **umístění** pro objekt pro vytváření dat. Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+1. Klikněte na **Vytvořit**.
 1. Po vytvoření se zobrazí stránka **Datová továrna**.
    
 1. Kliknutím na dlaždici **Vytvořit a monitorovat** otevřete na samostatné kartě aplikaci uživatelského rozhraní služby Data Factory.
-1. Na stránce Začínáme přepněte na levém panelu na kartu **Autor** , jak je znázorněno na následujícím obrázku:  
+1. **Na stránce Začínáme** přepněte na levém panelu na kartu **Autor** , jak je znázorněno na následujícím obrázku:  
 
      ![Stránka Začínáme](./media/doc-common-process/get-started-page-author-button.png)
 
@@ -189,12 +189,12 @@ V tomto kurzu nejsou zdrojová a cílová tabulka SQL pevně zakódované v defi
 
     a. U **Tabulky** zaškrtněte možnost **Upravit**, klikněte do pole pro zadání názvu tabulky a pak pod ním klikněte na odkaz **Přidat dynamický obsah**. 
 
-    b. Na stránce **Přidat dynamický obsah** klikněte v části **parametry** `@dataset().DWTableName`na **DWTAbleName** , který automaticky vyplní textové pole výrazu Top a pak klikněte na **Dokončit**. Vlastnost **tableName** datové sady je nastavená na hodnotu předávanou jako argument parametru **DWTableName**. Aktivita ForEach iteruje seznam tabulek a jednu po druhé je předává aktivitě kopírování. 
+    b. Na stránce **Přidat dynamický obsah** klikněte v části **parametry**na **DWTAbleName** , čímž se automaticky doplní textové pole Top Expression `@dataset().DWTableName`a pak klikněte na **Dokončit**. Vlastnost **tableName** datové sady je nastavená na hodnotu předávanou jako argument parametru **DWTableName**. Aktivita ForEach iteruje seznam tabulek a jednu po druhé je předává aktivitě kopírování. 
 
     ![Tvůrce parametru datové sady](./media/tutorial-bulk-copy-portal/dataset-parameter-builder.png)
  
 ## <a name="create-pipelines"></a>Vytvoření kanálů
-V tomto kurzu vytvoříte dva kanály: **IterateAndCopySQLTables** a **GetTableListAndTriggerCopyData**. 
+V tomto kurzy vytvoříte dva kanály: **IterateAndCopySQLTables** a **GetTableListAndTriggerCopyData**. 
 
 Kanál **GetTableListAndTriggerCopyData** provádí dvě akce:
 
@@ -224,7 +224,7 @@ Kanál **IterateAndCopySQLTables** jako parametr používá seznam tabulek. Data
 
     b. Přepněte na kartu **Nastavení** , klikněte na vstupní pole pro **položky**a pak klikněte na odkaz **Přidat dynamický obsah** níže. 
 
-    c. Na stránce **Přidat dynamický obsah** sbalte oddíly **systémové proměnné** a **funkce** klikněte na **tableList** v části **parametry** `@pipeline().parameter.tableList`. tím se automaticky naplní textové pole horního výrazu. Pak klikněte na **Dokončit**. 
+    c. Na stránce **Přidat dynamický obsah** sbalte oddíly **systémové proměnné** a **funkce** klikněte na **tableList** v části **parametry**, které automaticky naplní textové pole horního výrazu jako `@pipeline().parameter.tableList`. Pak klikněte na **Dokončit**. 
 
     ![Tvůrce parametru ForEach](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
     
@@ -248,7 +248,7 @@ Kanál **IterateAndCopySQLTables** jako parametr používá seznam tabulek. Data
 1. Přepněte na kartu **Jímka** a proveďte následující kroky: 
 
     1. Jako **Datová sada jímky** vyberte **AzureSqlDWDataset**.
-    1. Klikněte na vstupní pole pro hodnotu parametru DWTableName-> vyberte níže **Přidat dynamický obsah** a jako skript zadejte `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` výraz-> vyberte **Dokončit**.
+    1. Klikněte na vstupní pole pro hodnotu parametru DWTableName-> vyberte níže **Přidat dynamický obsah** , jako skript zadejte `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` Expression,-> vyberte **Dokončit**.
     1. Zaškrtněte políčko pro **Povolení základny**. 
     1. Vymažte možnost **Použít výchozí typ**. 
     1. Klikněte na vstupní pole **Skript před kopírováním**, vyberte dole **Přidat dynamický obsah**, zadejte následující výraz jako skript a vyberte **Dokončit**. 
@@ -316,7 +316,7 @@ Přejděte na kanál **GetTableListAndTriggerCopyData**, klikněte na **Přidat 
 
 ## <a name="monitor-the-pipeline-run"></a>Monitorování spuštění kanálu
 
-1. Přepněte na kartu **Monitorování**. Klikejte na **Aktualizovat**, dokud se nezobrazí spuštění obou kanálů ve vašem řešení. Pokračujte v aktualizacích seznamu, dokud se nezobrazí stav **Úspěch**. 
+1. Přepněte na kartu **monitorování** . klikněte na **aktualizovat** , dokud se nezobrazí spuštění obou kanálů ve vašem řešení. Pokračujte v aktualizacích seznamu, dokud se nezobrazí stav **Úspěch**. 
 
 1. Pokud chcete zobrazit spuštění aktivit související s kanálem **GetTableListAndTriggerCopyData** , klikněte na první odkaz v odkazu akce tohoto kanálu. Pro toto spuštění kanálu by se měla zobrazit dvě spuštění aktivit. 
 
@@ -387,7 +387,7 @@ V tomto kurzu jste provedli následující kroky:
 > * Vytvoření propojených služeb Azure SQL Database, Azure SQL Data Warehouse a Azure Storage
 > * Vytvoření datových sad Azure SQL Database a Azure SQL Data Warehouse
 > * Vytvoření kanálu pro vyhledání tabulek ke zkopírování a dalšího kanálu pro provedení vlastní operace kopírování 
-> * Spuštění kanálu
+> * Zahájení spuštění kanálu
 > * Monitorování spuštění aktivit a kanálu
 
 Pokud se chcete dozvědět víc o přírůstkovém kopírování ze zdroje do cíle, přejděte k následujícímu kurzu:

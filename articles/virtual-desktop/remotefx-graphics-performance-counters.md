@@ -1,5 +1,5 @@
 ---
-title: Diagnostika problémů s výkonem grafiky na vzdálené ploše – Azure
+title: Diagnostika problémů s výkonem grafiky Vzdálená plocha – Azure
 description: Tento článek popisuje, jak pomocí čítačů grafiky RemoteFX v relacích protokolu vzdálené plochy diagnostikovat problémy s výkonem grafiky na virtuálním počítači s Windows.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
-ms.openlocfilehash: b6a78fbf2fcb12962b42537965deea6c7912315d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: c41a433ee19969546e1db2aa583c72ed166b7ebf
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676533"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607461"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Diagnostika problémů s výkonem grafiky na vzdálené ploše
 
@@ -34,7 +34,7 @@ K identifikaci čítačů výkonu grafiky budete potřebovat název vzdálené r
 
 Po určení názvu vzdálené relace postupujte podle těchto pokynů a Shromážděte čítače výkonu grafiky RemoteFX pro vzdálenou relaci.
 
-1. Vyberte **Start** > **nástroje pro správu** > **Performance Monitor**.
+1. Vyberte **Start** > **nástroje pro správu** > **sledování výkonu**.
 2. V dialogovém okně **sledování výkonu** rozbalte položku **Nástroje pro monitorování**, vyberte **sledování výkonu**a pak vyberte **Přidat**.
 3. V dialogovém okně **Přidat čítače** rozbalte v seznamu **Dostupné čítače** oddíl grafiky RemoteFX.
 4. Vyberte čítače, které chcete monitorovat.
@@ -77,7 +77,7 @@ Vzhledem k tomu, že protokol RDP podporuje průměrnou dobu kódování 33 MS, 
 
 Pomocí čítače kvality snímků Diagnostikujte problémy s kvalitou snímků. Tento čítač vyjadřuje kvalitu výstupního rámce jako procento kvality zdrojového rámce. Ztráta kvality může být způsobena funkcí RemoteFX nebo může být podstatná zdroji grafiky. Pokud RemoteFX způsobil ztrátu kvality, může se jednat o nedostatek síťových prostředků nebo prostředků serveru pro odeslání obsahu s vyšší věrností.
 
-## <a name="mitigation"></a>Zmírnění
+## <a name="mitigation"></a>Omezení rizik
 
 Pokud jsou příčinou kritických prostředků prostředky serveru, zkuste zvýšit výkon jedním z následujících přístupů:
 

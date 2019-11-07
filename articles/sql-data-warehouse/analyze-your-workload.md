@@ -1,6 +1,6 @@
 ---
-title: Analýza úloh ve službě Azure SQL Data Warehouse | Dokumentace Microsoftu
-description: Techniky pro stanovení priority dotazů pro vaše úlohy ve službě Azure SQL Data Warehouse analýzu.
+title: Analýza úloh
+description: Techniky analýzy stanovení priorit dotazů pro vaše úlohy v Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
@@ -10,24 +10,25 @@ ms.subservice: workload-management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 54652ba573fb2ec2d064b7a85ad5728b73e71db3
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 14e53c1ebe63fac0f7c8e29f66ee5aa0cb3b9526
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588753"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693110"
 ---
-# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analýza úloh ve službě Azure SQL Data Warehouse
+# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analýza úloh v Azure SQL Data Warehouse
 
-Techniky pro analýzu vašich úloh ve službě Azure SQL Data Warehouse.
+Techniky analýzy úloh v Azure SQL Data Warehouse.
 
 ## <a name="resource-classes"></a>Třídy prostředků
 
-SQL Data Warehouse poskytuje třídy prostředků přiřadit systémové prostředky pro dotazy.  Další informace o třídách prostředků najdete v části [prostředků třídy a Správa úloh](resource-classes-for-workload-management.md).  Dotazy počká, pokud třída prostředků přiřazen dotaz potřebuje víc prostředků, než jsou aktuálně k dispozici.
+SQL Data Warehouse poskytuje třídy prostředků pro přiřazení systémových prostředků dotazům.  Další informace o třídách prostředků naleznete v tématu [třídy prostředků & Správa úloh](resource-classes-for-workload-management.md).  Dotazy budou čekat, pokud Třída prostředků přiřazená k dotazu potřebuje více prostředků, než je aktuálně k dispozici.
 
-## <a name="queued-query-detection-and-other-dmvs"></a>Zjišťování ve frontě dotazů a dalších zobrazení dynamické správy
+## <a name="queued-query-detection-and-other-dmvs"></a>Detekce dotazu ve frontě a další zobrazení dynamické správy
 
-Můžete použít `sys.dm_pdw_exec_requests` a identifikovat dotazy, které čekají na přiřazení ve frontě souběžnosti. Čekání pro sloty souběžnosti dotazy jsou ve stavu **pozastaveno**.
+Pomocí `sys.dm_pdw_exec_requests` DMV můžete identifikovat dotazy, které čekají ve frontě souběžnosti. Dotazy, které čekají na pozici souběžnosti, mají stav **pozastaveno**.
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID
@@ -40,7 +41,7 @@ FROM    sys.dm_pdw_exec_requests r
 ;
 ```
 
-Role pro správu úloh lze zobrazit pomocí `sys.database_principals`.
+Role správy úloh je možné zobrazit pomocí `sys.database_principals`.
 
 ```sql
 SELECT  ro.[name]           AS [db_role_name]
@@ -50,7 +51,7 @@ AND     ro.[is_fixed_role]  = 0
 ;
 ```
 
-Následující dotaz ukazuje, jaké role je přiřazená každému uživateli.
+Následující dotaz ukazuje, ke které roli má každý uživatel přiřazený.
 
 ```sql
 SELECT  r.name AS role_principal_name
@@ -64,12 +65,12 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 
 SQL Data Warehouse má následující typy čekání:
 
-* **LocalQueriesConcurrencyResourceType**: Dotazy, které se nacházejí mimo rámec slotu souběžnosti. Dotazy na zobrazení dynamické správy a systémové funkce, jako například `SELECT @@VERSION` jsou příklady místní dotazů.
-* **UserConcurrencyResourceType**: Dotazy, které se nacházejí uvnitř rozhraní concurrency slot. Dotazy na tabulky s koncovým uživatelem představují příklady, které byste použili tento typ prostředku.
-* **DmsConcurrencyResourceType**: Výsledkem operace přesunu dat čeká.
-* **BackupConcurrencyResourceType**: Tato čekací označuje, že databázi je právě zálohován. Maximální hodnota pro tento typ prostředku je 1. Pokud více záloh je požadována ve stejnou dobu, jiné fronty. Obecně doporučujeme minimální čas mezi po sobě jdoucích snímků 10 minut. 
+* **LocalQueriesConcurrencyResourceType**: dotazy, které sedí mimo rámec rozhraní pro sloty Concurrency. Příklady místních dotazů jsou dotazy DMV a systémové funkce, jako je například `SELECT @@VERSION`.
+* **UserConcurrencyResourceType**: dotazy, které sedí v rámci rozhraní slotu pro souběžnost. Dotazy na tabulky koncového uživatele reprezentují příklady, které by používaly tento typ prostředku.
+* **DmsConcurrencyResourceType**: čeká v důsledku operací přesunu dat.
+* **BackupConcurrencyResourceType**: Tento počkat indikuje, že se databáze zálohuje. Maximální hodnota pro tento typ prostředku je 1. Pokud je v jednom okamžiku požadováno více záloh, fronta ostatní. Obecně doporučujeme minimální dobu mezi po sobě jdoucí snímky po dobu 10 minut. 
 
-`sys.dm_pdw_waits` Zobrazení dynamické správy je možné zobrazit žádost čeká na prostředky.
+`sys.dm_pdw_waits` DMV lze použít k zobrazení prostředků, na které požadavek čeká.
 
 ```sql
 SELECT  w.[wait_id]
@@ -106,7 +107,7 @@ WHERE    w.[session_id] <> SESSION_ID()
 ;
 ```
 
-`sys.dm_pdw_resource_waits` Zobrazení dynamické správy obsahuje informace o čekání pro daný dotaz. Zdroj čekat časových dobu čekání na prostředky, které mají být poskytnuty. Signál čekací doba je čas potřebný pro základní SQL servery, které chcete naplánovat dotaz na CPU.
+`sys.dm_pdw_resource_waits` DMV zobrazuje informace o čekání pro daný dotaz. Doba čekání prostředku měří čas na zadání prostředků. Doba čekání signálu je doba potřebná k tomu, aby základní SQL servery naplánovaly dotaz na procesor.
 
 ```sql
 SELECT  [session_id]
@@ -125,7 +126,7 @@ WHERE    [session_id] <> SESSION_ID()
 ;
 ```
 
-Můžete také použít `sys.dm_pdw_resource_waits` DMV vypočítat počet slotů souběžnosti byl udělen.
+Můžete také použít `sys.dm_pdw_resource_waits` DMV vypočítat, kolik slotů souběžnosti bylo uděleno.
 
 ```sql
 SELECT  SUM([concurrency_slots_used]) as total_granted_slots
@@ -136,7 +137,7 @@ AND     [session_id]     <> session_id()
 ;
 ```
 
-`sys.dm_pdw_wait_stats` Zobrazení dynamické správy lze použít k analýze historických trendů čeká.
+`sys.dm_pdw_wait_stats` DMV lze použít pro historické analýzy trendů čekání.
 
 ```sql
 SELECT   w.[pdw_node_id]
@@ -150,6 +151,6 @@ FROM    sys.dm_pdw_wait_stats w
 ;
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o správě uživatelů a zabezpečení najdete v tématu [zabezpečit databázi ve službě SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md). Další informace o tom, jak větší třídy prostředků může zlepšit kvalitu indexu columnstore clusteru, najdete v části [nové sestavení indexů ke zlepšení kvality segmentů](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Další informace o správě uživatelů a zabezpečení databáze najdete v tématu [zabezpečení databáze v SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md). Další informace o tom, jak můžou větší třídy prostředků zlepšit kvalitu clusterovaných indexů columnstore, najdete v tématu [sestavení indexů pro zlepšení kvality segmentů](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).

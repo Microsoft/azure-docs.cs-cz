@@ -1,24 +1,24 @@
 ---
 title: Ukázky Azure Analysis Services kódu, projektu a databáze | Microsoft Docs
-description: Seznamte se s ukázkami kódu, projektu a databáze pro Azure Analysis Services.
+description: Tento článek popisuje zdroje informací o ukázkách kódu, projektu a databáze pro Azure Analysis Services.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 17ce7de58afcf9ef2090371b897ff1bbbef824e3
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 743061c1e32d9ca86e90733dbfd66575d2085dbc
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146303"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572309"
 ---
 # <a name="azure-analysis-services-samples"></a>Ukázky Azure Analysis Services
 
 Následující ukázkové materiály vám pomůžou naučit se a testovat Analysis Services pro vaše prostředí.
 
-## <a name="code-samples"></a>Ukázky kódu
+## <a name="code-samples"></a>Ukázky kódů
 
 [Analysis Services](https://github.com/Microsoft/Analysis-Services) úložiště na GitHubu obsahuje otevřené ukázky zdrojového kódu a komunitní projekty. 
 

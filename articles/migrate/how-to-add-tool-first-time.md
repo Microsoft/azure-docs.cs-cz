@@ -4,19 +4,19 @@ description: Popisuje, jak vytvořit projekt Azure Migrate a přidat nástroj pr
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/09/2019
+ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: bd119956ced79b73b0376fe4530c9eafaf870238
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: a4e66175b20552e632702cb2ba46d0ae6c0956d4
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934164"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720242"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>První přidání nástroje pro vyhodnocení/migraci
 
 Tento článek popisuje, jak poprvé přidat nástroj pro vyhodnocení nebo migraci do projektu [Azure Migrate](migrate-overview.md) .  
-Azure Migrate poskytuje centrální centrum pro sledování zjišťování, hodnocení a migrace vašich místních aplikací a úloh a virtuálních a veřejných cloudových virtuálních počítačů do Azure. Centrum poskytuje Azure Migrate nástroje pro posuzování a migraci a také [nabídky](migrate-services-overview.md#isv-integration) výrobců nezávislých výrobců softwaru (ISV). 
+Azure Migrate poskytuje centrální centrum pro sledování zjišťování, hodnocení a migrace vašich místních aplikací a úloh a virtuálních a veřejných cloudových virtuálních počítačů do Azure. Centrum poskytuje Azure Migrate nástroje pro posuzování a migraci a také další [nabídky](migrate-services-overview.md#isv-integration) nástrojů a nezávislí výrobci softwaru (ISV). 
 
 ## <a name="create-a-project-and-add-a-tool"></a>Vytvoření projektu a přidání nástroje
 
@@ -50,7 +50,7 @@ Nastavte nový projekt Azure Migrate v rámci předplatného Azure a přidejte n
     Japonsko  | Japonsko – východ nebo Japonsko – západ
     Spojené království | Velká Británie – jih nebo Velká Británie – západ
     Spojené státy | Střed USA nebo Západní USA 2
-    Kanada | Kanada – střed
+    Kanada | Střední Kanada
     Indie  | Indie – střed nebo Indie – jih
     Austrálie | Austrálie – jihovýchod
 
@@ -66,8 +66,8 @@ Nastavte nový projekt Azure Migrate v rámci předplatného Azure a přidejte n
     > [!NOTE]
     > Při vytváření projektu je nutné přidat alespoň jeden nástroj pro vyhodnocení nebo migraci.
 
-5. V **nástroji vybrat nástroj pro posouzení**přidejte Nástroj pro posouzení. Pokud nástroj pro posouzení nepotřebujete, vyberte **Přeskočit přidat nástroj pro posouzení na** > **Další**. 
-2. V **nástroji vybrat nástroj pro migraci**přidejte Nástroj pro migraci podle potřeby. Pokud nepotřebujete Nástroj pro migraci hned teď, vyberte **Přeskočit přidat nástroj pro migraci pro teď** > **Další**.
+5. V **nástroji vybrat nástroj pro posouzení**přidejte Nástroj pro posouzení. Pokud nástroj pro posouzení nepotřebujete, vyberte **Přeskočit přidat nástroj pro posouzení** > **Další**. 
+2. V **nástroji vybrat nástroj pro migraci**přidejte Nástroj pro migraci podle potřeby. Pokud teď Nástroj pro migraci nepotřebujete, vyberte pro teď > **Další** **Přeskočit přidat nástroj pro migraci** .
 3. V části **Revize + přidat nástroje**zkontrolujte nastavení a klikněte na **Přidat nástroje**.
 
 Po vytvoření projektu můžete vybrat další nástroje pro posouzení a migraci serverů a úloh, databází a webových aplikací.
@@ -81,6 +81,6 @@ V některých případech může být nutné vytvořit další Azure Migrate pro
 3. V **Nastavení**vyberte **kliknutím sem vytvoříte nový projekt**.
 4. Vytvořte nový projekt a přidejte nový nástroj, jak je popsáno v předchozím postupu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si, jak přidat další nástroje pro [posouzení](how-to-assess.md) a [migraci](how-to-migrate.md) . 

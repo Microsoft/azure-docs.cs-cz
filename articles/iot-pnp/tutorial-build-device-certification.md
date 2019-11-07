@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 524bc3b2650ad7b435cba6b6b9d4084ffa5cf96c
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: e4dd5215812f0fd1a43afe0923601417bc8e6916
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932683"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569637"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Sestavení zařízení IoT technologie Plug and Play ve verzi Preview, které je připravené k certifikaci
 
@@ -35,7 +35,7 @@ Pro absolvování tohoto kurzu potřebujete:
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - Sady [nástrojů Azure IoT pro rozšíření vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Extension Pack
 
-Také budete potřebovat zařízení IoT technologie Plug and Play, které vytvoříte v [rychlém startu: Použijte model schopností zařízení k vytvoření zařízení](quickstart-create-pnp-device.md).
+Budete také potřebovat zařízení IoT technologie Plug and Play, které vytvoříte v [rychlém startu: k vytvoření zařízení použijte model schopností zařízení](quickstart-create-pnp-device.md).
 
 ## <a name="store-a-capability-model-and-interfaces"></a>Uložení modelu a rozhraní schopností
 
@@ -58,9 +58,9 @@ K předání procesu certifikace musíte do svého modelu schopností zahrnout a
 ```
 
 > [!NOTE]
-> Pokud jste dokončili [rychlý Start: Použijte model schopností zařízení k vytvoření zařízení](quickstart-create-pnp-device.md). v modelu už jste zahrnuli rozhraní **informací o zařízení** .
+> Pokud jste dokončili [rychlý Start: k vytvoření zařízení použít model schopností zařízení](quickstart-create-pnp-device.md), už jste do svého modelu zahrnuli rozhraní **informací o zařízení** .
 
-Chcete-li do modelu zařízení zahrnout **informace o rozhraní informací o zařízení** , přidejte ID rozhraní `implements` do vlastnosti modelu schopností:
+Chcete-li do modelu zařízení zahrnout **informace o rozhraní informací o zařízení** , přidejte ID rozhraní do vlastnosti `implements` modelu schopností:
 
 ```json
 {
@@ -111,26 +111,17 @@ Aby zařízení bylo možné certifikovat, musí povolit zřizování prostředn
 
 1. Jako jazyk vyberte **ANSI C** .
 
-1. Jako typ projektu vyberte **cmake projekt** .
-
 1. Jako metodu připojení vyberte možnost **přes DPS (služba Device Provisioning Service)** .
+
+1. V závislosti na operačním systému zařízení vyberte v projektu Windows nebo **v sadě CMAK** projekt **cmake v systému** Linux jako šablonu projektu.
 
 1. VS Code otevře nové okno s generovanými zástupnými soubory kódu zařízení.
 
-1. Otevřete `main.c`, vyplňte **dpsIdScope**, **sasKey**a **registrationId** , které jste připravili. Tyto informace můžete získat z certifikačního portálu. Další informace najdete v tématu [připojení a testování zařízení IoT technologie Plug and Play](tutorial-certification-test.md#connect-and-discover-interfaces).
+1. Po sestavení kódu zadejte přihlašovací údaje k DPS (**obor ID DPS**, **symetrický klíč DPS**, **ID zařízení**) jako parametry pro aplikaci. Pokud chcete získat přihlašovací údaje z certifikačního portálu, přečtěte si téma [připojení a testování zařízení IoT technologie Plug and Play](tutorial-certification-test.md#connect-and-discover-interfaces).
 
-    ```c
-    // TODO: Specify DPS scope ID if you intend on using DPS / IoT Central.
-    static const char *dpsIdScope = "[DPS Id Scope]";
-    
-    // TODO: Specify symmetric keys if you intend on using DPS / IoT Central and symmetric key based auth.
-    static const char *sasKey = "[DPS symmetric key]";
-    
-    // TODO: specify your device registration ID
-    static const char *registrationId = "[device registration Id]";
+    ```cmd/sh
+    .\your_pnp_app.exe [DPS ID Scope] [DPS symmetric key] [device ID]
     ```
-
-1. Uložte soubor.
 
 ### <a name="implement-standard-interfaces"></a>Implementovat standardní rozhraní
 

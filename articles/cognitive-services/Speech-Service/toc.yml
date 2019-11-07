@@ -65,6 +65,10 @@
               href: rest-speech-to-text.md
             - name: Rozhraní REST API pro dávkový přepis
               href: batch-transcription.md
+    - name: Zdroje a prostředky
+      items:
+        - name: Nejčastější dotazy k převodu řeči na text
+          href: faq-stt.md
 - name: Převod textu na řeč
   exanded: false
   items:
@@ -112,6 +116,10 @@
           items:
             - name: Rozhraní REST API pro převod textu na řeč
               href: rest-text-to-speech.md
+    - name: Zdroje a prostředky
+      items:
+        - name: Nejčastější dotazy k převodu textu na řeč
+          href: faq-text-to-speech.md
 - name: Rozpoznávání záměru
   exanded: false
   items:
@@ -182,6 +190,10 @@
               href: 'https://aka.ms/csspeech/pythonref'
             - name: "Poznámky k\_verzi"
               href: releasenotes.md
+    - name: Zdroje a prostředky
+      items:
+        - name: Nejčastější dotazy k překladu řeči
+          href: 'https://www.microsoft.com/translator/faq.aspx'
 - name: Přepis konverzace
   expanded: false
   items:
@@ -254,7 +266,7 @@
       items:
         - name: Hlasová podpora robota s využitím sady Speech SDK
           href: tutorial-voice-enable-your-bot-speech-sdk.md
-    - name: Referenční informace
+    - name: Zdroje a prostředky
       items:
         - name: Nejčastější dotazy k hlasovým asistentům
           href: faq-voice-assistants.md
@@ -368,6 +380,8 @@
           href: scenario-availability.md
     - name: Šablony Rychlý start
       items:
+        - name: Vytvoření projektu
+          href: quickstarts/create-project.md
         - name: 'Nastavení sady Speech SDK s využitím C#'
           href: quickstarts/setup-platform.md?pivots=programming-language-csharp
         - name: Nastavení sady Speech SDK s využitím C++

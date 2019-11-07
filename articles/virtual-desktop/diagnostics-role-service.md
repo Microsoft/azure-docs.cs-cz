@@ -1,20 +1,20 @@
 ---
-title: Identifikace problémů s funkcí diagnostiky virtuálních počítačů v systému Windows – Azure
-description: Popisuje funkci diagnostiky virtuálních klientských počítačů systému Windows a její použití.
+title: Problémy s diagnostikou virtuálních počítačů s Windows – Azure
+description: Jak používat funkci diagnostiky virtuálních klientských počítačů Windows k diagnostice problémů.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 5401260921aee5fc54b50c1222188a6b244a0c5a
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 0e04b075259ed1d003df4a03686d46b1adf694d3
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840132"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606865"
 ---
-# <a name="identify-and-diagnose-issues"></a>Identifikace a Diagnostika problémů
+# <a name="identify-and-diagnose-issues"></a>Identifikace a diagnostika problémů
 
 Virtuální plocha Windows nabízí diagnostické funkce, které správci umožňují identifikovat problémy přes jedno rozhraní. Role virtuálních klientů Windows protokolují diagnostické aktivity pokaždé, když uživatel komunikuje se systémem. Každý protokol obsahuje relevantní informace, jako jsou například role virtuálních klientských počítačů s Windows, které jsou součástí transakce, chybové zprávy, informace o tenantovi a informace o uživateli. Diagnostické aktivity jsou vytvářeny pomocí akcí koncového uživatele i správy a lze je rozdělit do tří hlavních intervalů:
 
@@ -143,7 +143,7 @@ V následující tabulce jsou uvedeny běžné chyby, ke kterým můžou správc
 |Číselný kód|Kód chyby|Navrhované řešení|
 |---|---|---|
 |3|UnauthorizedAccess|Uživatel, který se pokusil spustit rutinu prostředí PowerShell pro správu, nemá oprávnění k tomu, aby to provedl nebo nedokázal zadat své uživatelské jméno.|
-|1000|TenantNotFound|Název tenanta, který jste zadali, se neshoduje s žádnými stávajícími klienty. Zkontrolujte název tenanta pro překlepy a zkuste to znovu.|
+|1 000|TenantNotFound|Název tenanta, který jste zadali, se neshoduje s žádnými stávajícími klienty. Zkontrolujte název tenanta pro překlepy a zkuste to znovu.|
 |1006|TenantCannotBeRemovedHasSessionHostPools|Tenanta nemůžete odstranit, pokud obsahuje objekty. Nejprve odstraňte fondy hostitelů relací a potom akci opakujte.|
 |2000|HostPoolNotFound|Název fondu hostitelů, který jste zadali, se neshoduje s žádnými existujícími fondy hostitelů. Přečtěte si název fondu hostitelů pro překlepy a zkuste to znovu.|
 |2005|HostPoolCannotBeRemovedHasApplicationGroups|Fond hostitelů nemůžete odstranit, pokud obsahuje objekty. Odeberte nejprve všechny skupiny aplikací ve fondu hostitelů.|
@@ -168,10 +168,10 @@ V následující tabulce jsou uvedeny běžné chyby, ke kterým můžou správc
 |-2146233088|ConnectionFailedClientDisconnect|Pokud se tato chyba zobrazí často, ujistěte se, že je počítač uživatele připojený k síti.|
 |-2146233088|ConnectionFailedNoHealthyRdshAvailable|Relace, ke které se hostitelský uživatel pokusil připojit, není v pořádku. Ladit virtuální počítač.|
 |-2146233088|ConnectionFailedUserNotAuthorized|Uživatel nemá oprávnění pro přístup k publikované aplikaci nebo k ploše. Tato chyba se může zobrazit po odebrání publikovaných prostředků správcem. Požádejte uživatele, aby tento informační kanál aktualizoval v aplikaci Vzdálená plocha.|
-|odst|FileNotFound|Aplikace, ke které se uživatel pokusil získat přístup, je buď nesprávně nainstalovaná, nebo nastavená na nesprávnou cestu.|
+|2|FileNotFound|Aplikace, ke které se uživatel pokusil získat přístup, je buď nesprávně nainstalovaná, nebo nastavená na nesprávnou cestu.|
 |3|InvalidCredentials|Uživatelské jméno nebo heslo, které uživatel zadal, neodpovídá žádnému z existujících uživatelských jmen a hesel. Zkontrolujte přihlašovací údaje pro překlepy a zkuste to znovu.|
 |8|ConnectionBroken|Spojení mezi klientem a bránou nebo serverem bylo vyřazeno. Není nutná žádná akce, pokud dojde k neočekávanému chování.|
-|čtrnáct|UnexpectedNetworkDisconnect|Připojení k síti bylo vyřazeno. Požádejte uživatele, aby se připojil znovu.|
+|14|UnexpectedNetworkDisconnect|Připojení k síti bylo vyřazeno. Požádejte uživatele, aby se připojil znovu.|
 |24|ReverseConnectFailed|Hostitelský virtuální počítač nemá žádný přímý dohled, který by Brána VP. Zajistěte, aby se IP adresa brány mohla přeložit.|
 
 ## <a name="next-steps"></a>Další kroky

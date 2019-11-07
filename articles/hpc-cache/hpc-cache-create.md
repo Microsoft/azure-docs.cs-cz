@@ -1,19 +1,19 @@
 ---
-title: Vytvoření mezipaměti prostředí Azure HPC (verze Preview)
+title: Vytvoření mezipaměti prostředí Azure HPC
 description: Vytvoření instance mezipaměti prostředí Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: tutorial
-ms.date: 10/01/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 7052b88a24ff5353656a71a7bfb044922ae1415c
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 1b9d2d3c46aab2096dd9208e0bea7f7776c0e429
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709983"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582706"
 ---
-# <a name="create-an-azure-hpc-cache-preview"></a>Vytvoření mezipaměti prostředí Azure HPC (verze Preview)
+# <a name="create-an-azure-hpc-cache"></a>Vytvoření mezipaměti prostředí Azure HPC
 
 K vytvoření mezipaměti použijte Azure Portal.
 
@@ -23,7 +23,7 @@ K vytvoření mezipaměti použijte Azure Portal.
 
 ![snímek stránky s podrobnostmi projektu v Azure Portal](media/hpc-cache-create-basics.png)
 
-V části **Project Details (podrobnosti projektu**) vyberte předplatné a skupinu prostředků, které budou hostovat mezipaměť. Ujistěte se, že je předplatné v seznamu [přístupu Preview](hpc-cache-prereqs.md#azure-subscription) .
+V části **Project Details (podrobnosti projektu**) vyberte předplatné a skupinu prostředků, které budou hostovat mezipaměť. Ujistěte se, že je odběr v seznamu [přístupu](hpc-cache-prereqs.md#azure-subscription) .
 
 V části **Podrobnosti o službě**nastavte název mezipaměti a tyto ostatní atributy:
 

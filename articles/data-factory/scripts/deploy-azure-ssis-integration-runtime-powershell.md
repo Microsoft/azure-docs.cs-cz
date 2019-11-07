@@ -1,6 +1,6 @@
 ---
-title: Prostředí PowerShell skriptu – nasazení prostředí Azure-SSIS integration runtime | Dokumentace Microsoftu
-description: Tento skript Powershellu vytvoří prostředí Azure-SSIS integration runtime, který může spouštět balíčky SSIS v cloudu.
+title: PowerShellový skript – nasazení prostředí Azure-SSIS Integration runtime
+description: Tento skript PowerShellu vytvoří prostředí Azure-SSIS Integration runtime, které může spouštět balíčky SSIS v cloudu.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,16 +10,16 @@ ms.date: 09/12/2017
 author: swinarko
 ms.author: sawinark
 manager: craigg
-ms.openlocfilehash: a2d53ddb9f55942cd6ad396d42cc926f20c2d396
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: beba0a8d01d7d10910716f03602116fe7673ffc8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66166355"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684372"
 ---
-# <a name="powershell-script---deploy-azure-ssis-integration-runtime"></a>Prostředí PowerShell skriptu – nasazení prostředí Azure-SSIS integration runtime
+# <a name="powershell-script---deploy-azure-ssis-integration-runtime"></a>PowerShellový skript – nasazení prostředí Azure-SSIS Integration runtime
 
-Tento ukázkový skript Powershellu vytvoří prostředí Azure-SSIS integration runtime, který může spouštění balíčků služby SSIS v Azure.  
+Tento ukázkový skript PowerShellu vytvoří prostředí Azure-SSIS Integration runtime, které umožňuje spouštět balíčky SSIS v Azure.  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -31,12 +31,12 @@ Tento ukázkový skript Powershellu vytvoří prostředí Azure-SSIS integration
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Po spuštění ukázkového skriptu můžete k odebrání skupiny prostředků a všechny prostředky, které s ním spojená následující příkaz:
+Po spuštění ukázkového skriptu můžete pomocí následujícího příkazu odebrat skupinu prostředků a všechny k ní přidružené prostředky:
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 ```
-Chcete-li odebrat objekt pro vytváření dat ze skupiny prostředků, spusťte následující příkaz: 
+Pokud chcete datovou továrnu ze skupiny prostředků odebrat, spusťte následující příkaz: 
 
 ```powershell
 Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
@@ -50,14 +50,14 @@ Tento skript používá následující příkazy:
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | Vytvoření datové továrny |
-| [Set-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/set-Azdatafactoryv2integrationruntime) | Vytvoří prostředí Azure-SSIS integration runtime, který může spouštět balíčky SSIS v cloudu |
-| [Start-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/start-Azdatafactoryv2integrationruntime) | Spuštění prostředí Azure-SSIS integration runtime. |
-| [Get-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/get-Azdatafactoryv2integrationruntime) | Získá informace o Azure-SSIS integration runtime. |
+| [Set-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/set-Azdatafactoryv2integrationruntime) | Vytvoří prostředí Azure-SSIS Integration runtime, které může spouštět balíčky SSIS v cloudu. |
+| [Spustit – AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/start-Azdatafactoryv2integrationruntime) | Spustí prostředí Azure-SSIS Integration runtime. |
+| [Get-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/get-Azdatafactoryv2integrationruntime) | Načte informace o prostředí Azure-SSIS Integration runtime. |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 
-Další ukázkové skripty Azure Powershellu objekt pro vytváření dat najdete v [ukázky Azure Powershellu objekt pro vytváření dat](../samples-powershell.md).
+Další Azure Data Factory ukázkových skriptech PowerShellu najdete v [ukázkách Azure Data Factory PowerShellu](../samples-powershell.md).

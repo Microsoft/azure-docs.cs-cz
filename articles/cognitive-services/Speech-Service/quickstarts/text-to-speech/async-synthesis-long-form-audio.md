@@ -8,26 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/26/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 52e9fd986973c15d30790b981a5c2ccd1e6974d6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2c1e6ef84a472ccec5116b12e18ad80c92b68960
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507690"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681887"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Rychlý Start: asynchronní Shrnutí pro dlouhý formát zvuku v Pythonu (Preview)
 
 V tomto rychlém startu použijete dlouhé zvukové rozhraní API k asynchronnímu převodu textu na řeč a načtete zvukový výstup z identifikátoru URI, který poskytuje služba. Tato REST API je ideální pro poskytovatele obsahu, kteří potřebují převést textové soubory o více než 10 000 znaků nebo 50 odstavcích na syntetizované řeč. Další informace najdete v tématu [dlouhé zvukové rozhraní API](../../long-audio-api.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K tomuto rychlému startu potřebujete:
 
 * Python 2.7. x nebo 3. x.
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download)nebo váš oblíbený textový editor.
-* Předplatné Azure a klíč předplatného služby Speech. [Vytvořte účet](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
+* Předplatné Azure a klíč předplatného služby Speech. [Vytvořte účet Azure](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account) a [vytvořte prostředek pro rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) , abyste získali klíč. Při vytváření prostředku řeči se ujistěte, že je cenová úroveň nastavená na **S0**a umístění je nastavené na [podporovanou oblast](../../regions.md#standard-and-neural-voices).
 
 ## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
 
@@ -47,7 +47,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 ```
 
 > [!NOTE]
-> Pokud jste tyto moduly ještě nikdy nepoužili, budete je muset před spuštěním programu nainstalovat. Tyto balíčky nainstalujete spuštěním příkazu `pip install requests`.
+> Pokud jste tyto moduly ještě nikdy nepoužili, budete je muset před spuštěním programu nainstalovat. Tyto balíčky nainstalujete spuštěním příkazu `pip install requests urllib3`.
 
 Tyto moduly se používají k analýze argumentů, sestavení požadavku HTTP a volání dlouhého REST APIho textu na řeč.
 
