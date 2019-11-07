@@ -1,39 +1,74 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentace k IoT Plug and Play Preview
+summary: IoT Plug and Play Preview vám umožní definovat model zařízení, který umožňuje cloudovým řešením automaticky pochopit vaše zařízení a začít s ním spolupracovat, a to vše bez psaní jakéhokoli kódu zařízení.
 metadata:
-  title: 'Dokumentace k IoT Plug and Play Preview – kurzy, reference k rozhraní API | Microsoft Docs'
-  description: 'Naučte se používat technologii IoT Plug and Play s pomocí výukových kurzů, odkazů na rozhraní API, videí a další dokumentace.'
-  author: dominicbetts
-  manager: philmea
-  ms.service: iot-pnp
+  title: Dokumentace k IoT Plug and Play Preview
+  description: IoT Plug and Play Preview vám umožní definovat model zařízení, který umožňuje cloudovým řešením automaticky pochopit vaše zařízení a začít s ním spolupracovat, a to vše bez psaní jakéhokoli kódu zařízení.
   services: iot-pnp
+  ms.service: iot-pnp
   ms.topic: landing-page
-  ms.date: 07/23/2019
+  author: dominicbetts
   ms.author: dobett
-abstract:
-  description: 'Zjistěte, jak IoT Plug and Play Preview využít k definování modelu zařízení, který umožňuje cloudovým řešením automaticky pochopit vaše zařízení a začít s ním spolupracovat, a to vše bez psaní jakéhokoli kódu zařízení. Kurzy, reference k rozhraní API, videa a další dokumentace vám pomůžou propojit zařízení ke cloudovým řešením, jako jsou Azure IoT Central nebo partnerské aplikace.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video-thumb-pnp-introduction.png
-      width: 250
-    title: 'Seznámení s technologií IoT Plug and Play (11:54)'
-    href: 'https://channel9.msdn.com/Shows/Internet-of-Things-Show/Introduction-to-IoT-Plug-and-Play/player'
-    width: 250
-sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: Další informace o <a href="quickstart-create-pnp-device">vytvoření zařízení pomocí modelu funkcí zařízení</a>
-      - type: paragraph
-        text: Další informace o postupu při <a href="quickstart-connect-pnp-device-solution">připojení zařízení k vašemu řešení</a>.
-  - title: Podrobné kurzy
-    items:
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-pnp-visual-studio-code">Vytvoření zařízení s využitím editoru Visual Studio Code</a>
-          - html: <a href="tutorial-build-device-certification">Sestavení zařízení připraveného k certifikaci</a>
-          - html: <a href="tutorial-certification-test">Certifikace vašeho zařízení</a>
+  manager: philmea
+  ms.date: 10/31/2019
+  ms.openlocfilehash: 442b9c5028ef899329912fa9d21ce780437d7970
+  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73570182"
+landingContent:
+- title: Informace o IoT Plug and Play
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je IoT Plug and Play?
+      url: overview-iot-plug-and-play.md
+  - linkListType: video
+    links:
+    - text: Seznámení s technologií IoT Plug and Play
+      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Introduction-to-IoT-Plug-and-Play/player
+- title: Vývoj zařízení
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Připojení ukázkového zařízení ke službě IoT Hub
+      url: quickstart-connect-pnp-device.md
+    - text: Připojení ukázkového zařízení ke službě IoT Central
+      url: ../iot-central/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Vytvoření zařízení pomocí modelu funkcí zařízení
+      url: quickstart-create-pnp-device.md
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření a otestování modelu funkcí zařízení s využitím editoru Visual Studio Code
+      url: tutorial-pnp-visual-studio-code.md
+    - text: Sestavení zařízení připraveného k certifikaci
+      url: tutorial-build-device-certification.md
+    - text: Certifikace vašeho zařízení
+      url: tutorial-certification-test.md
+  - linkListType: how-to-guide
+    links:
+    - text: Použití Azure IoT Tools pro Visual Studio Code
+      url: howto-develop-with-vs-vscode.md
+    - text: Nasazení do portálu Azure Certified for IoT
+      url: howto-onboard-portal.md
+  - linkListType: concept
+    links:
+    - text: Běžná rozhraní
+      url: concepts-common-interfaces.md
+- title: Vytváření řešení
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Interakce se zařízením, které je připojené k vašemu řešení
+      url: quickstart-connect-pnp-device-solution.md
+  - linkListType: concept
+    links:
+    - text: Zjišťování modelů
+      url: concepts-model-discovery.md
+    - text: Běžná rozhraní
+      url: concepts-common-interfaces.md
+  - linkListType: how-to-guide
+    links:
+    - text: Připojení k zařízením z vašeho řešení
+      url: howto-develop-solution.md

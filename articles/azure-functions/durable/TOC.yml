@@ -81,8 +81,8 @@
       href: durable-functions-bindings.md
     - name: HTTP API
       href: durable-functions-http-api.md
-    - name: Rozhraní API rozšíření Durable
-      href: /dotnet/api/microsoft.azure.webjobs.extensions.durabletask?view=azure-dotnet-preview
+    - name: .NET API
+      href: /dotnet/api/microsoft.azure.webjobs.extensions.durabletask?view=azure-dotnet
 - name: Návody
   items:
     - name: Vývoj

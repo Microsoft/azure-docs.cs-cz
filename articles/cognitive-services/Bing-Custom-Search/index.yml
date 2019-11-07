@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/31/2019
   ms.author: aahill
-  ms.openlocfilehash: fc2435fabc73ad344461b04a339135e22d173191
-  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.openlocfilehash: 5555aca9308b9854b7189b483e996792c24852c5
+  ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73580112"
+  ms.lasthandoff: 11/07/2019
+  ms.locfileid: "73746062"
 landingContent:
 - title: Informace o rozhraní API pro vlastní vyhledávání Bingu
   linkLists:
@@ -68,7 +68,7 @@ landingContent:
     - text: Java – vlastní vyhledávání obrázků
       url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomimagesearch?view=azure-java-stable
     - text: Node.js
-      url: https://docs.microsoft.com/javascript/api/azure-cognitiveservices-customsearch?view=azure-node-latest
+      url: https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customsearch/?view=azure-node-latest
     - text: Azure PowerShell
       url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure CLI

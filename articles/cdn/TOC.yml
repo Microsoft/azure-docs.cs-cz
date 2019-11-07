@@ -26,6 +26,8 @@
       href: cdn-custom-ssl.md
     - name: Nastavení pravidel ukládání
       href: cdn-caching-rules-tutorial.md
+    - name: Vynucení HTTPS s využitím stroje pravidel Standard
+      href: cdn-standard-rules-engine.md
 - name: Ukázky
   items:
     - name: Ukázky kódů
@@ -134,6 +136,13 @@
           href: cdn-troubleshoot-allowed-ca.md
 - name: Referenční informace
   items:
+    - name: Reference ke stroji pravidel Standard od Microsoftu
+      href: cdn-standard-rules-engine-reference.md
+      items:
+        - name: Podmínky shody stroje pravidel Standard
+          href: cdn-standard-rules-engine-match-conditions.md
+        - name: Akce stroje pravidel Standard
+          href: cdn-standard-rules-engine-actions.md
     - name: Referenční informace ke stroji pravidel Verizon Premium
       href: cdn-verizon-premium-rules-engine-reference.md
       items:

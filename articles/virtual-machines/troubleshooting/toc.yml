@@ -174,7 +174,7 @@
 - name: Chyby spouštění
   href: boot-error-troubleshoot.md
   items:
-    - name: Chyba při spouštění virtuálního počítače Azure
+    - name: Grub Rescue
       href: troubleshoot-vm-boot-error.md
     - name: Diagnostika spouštění
       href: boot-diagnostics.md

@@ -204,22 +204,20 @@
       href: /cli/azure/storage
     - name: .NET
       items:
-        - name: 'Objekty blob, fronty a soubory'
-          href: /dotnet/api/overview/azure/storage/client
+        - name: Fronty (verze 11.x)
+          href: /dotnet/api/microsoft.azure.storage.queue
         - name: Poskytovatel prostředků úložiště
           href: /dotnet/api/overview/azure/storage/management
     - name: Java
       items:
-        - name: 'Objekty blob, fronty a soubory (verze 12. x – Preview)'
-          href: 'https://azure.github.io/azure-sdk-for-java/track2reports/index.html'
-        - name: 'Objekty blob, fronty a soubory (verze 8)'
-          href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
+        - name: Fronty (verze 8.x)
+          href: /java/api/com.microsoft.azure.storage.queue
         - name: Poskytovatel prostředků úložiště
           href: /java/api/overview/azure/storage/management
-    - name: Node.js
-      href: /javascript/api/overview/azure/storage
-    - name: Python
-      href: /python/api/overview/azure/storage
+    - name: JavaScript (verze 10.x)
+      href: /javascript/api/@azure/storage-queue
+    - name: Python (verze 2.x)
+      href: /python/api/azure-storage-queue/?view=azure-python
     - name: REST
       items:
         - name: 'Objekty blob, tabulky, fronty a soubory'

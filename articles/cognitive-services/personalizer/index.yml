@@ -12,12 +12,12 @@ metadata:
   title: Dokumentace ke službě Personalizace
   titleSuffix: Azure Cognitive Services
   description: Azure Personalizace je cloudová služba rozhraní API umožňující zvolit nejvhodnější prostředí, které se má zobrazovat vašim uživatelům, a učit se z jejich chování v reálném čase.
-  ms.openlocfilehash: f3ba5f5eef7885896d774fd8aab35784cfb6465e
-  ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+  ms.openlocfilehash: 19736d881400a311964920f5669a0e9423891f9e
+  ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/04/2019
-  ms.locfileid: "71950044"
+  ms.lasthandoff: 11/05/2019
+  ms.locfileid: "73604201"
 landingContent:
 - title: Informace o službě Personalizace
   linkLists:
@@ -97,7 +97,7 @@ landingContent:
       url: concepts-exploration.md
     - text: Funkce, akce a kontext
       url: concepts-features.md
-    - text: Aktivní učení
+    - text: Aktivní a neaktivní události
       url: concept-active-learning.md
     - text: Odměny
       url: concept-rewards.md
@@ -107,7 +107,7 @@ landingContent:
     links:
     - text: Vylepšení smyčky s využitím offline vyhodnocení
       url: concepts-offline-evaluation.md
-    - text: Aktivní učení
+    - text: Aktivní a neaktivní události
       url: concept-active-learning.md
     - text: Škálovatelnost a výkon
       url: concepts-scalability-performance.md

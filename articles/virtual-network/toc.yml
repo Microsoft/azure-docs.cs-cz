@@ -39,6 +39,8 @@
       href: security-overview.md
     - name: Směrování
       href: virtual-networks-udr-overview.md
+    - name: Značky služeb
+      href: service-tags-overview.md
     - name: Koncové body služby
       href: virtual-network-service-endpoints-overview.md
     - name: Zásady koncového bodu služby
@@ -65,6 +67,8 @@
       href: ipv6-public-ip-address-prefix.md
     - name: Ochrana před útoky DDoS
       href: ddos-protection-overview.md
+    - name: Rozšíření podsítě
+      href: subnet-extension.md
     - name: Interoperabilita možností připojení back-endu
       items:
         - name: Úvod a nastavení testu
@@ -297,6 +301,8 @@
           href: diagnose-network-routing-problem.md
         - name: Testování propustnosti
           href: virtual-network-bandwidth-testing.md
+        - name: Test latence sítě virtuálních počítačů
+          href: virtual-network-test-latency.md
         - name: Nelze odstranit virtuální sítě
           href: virtual-network-troubleshoot-cannot-delete-vnet.md
         - name: Problémy s propojením virtuálních počítačů
