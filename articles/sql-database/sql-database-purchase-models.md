@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database nákup modelů | Microsoft Docs
+title: 'Azure SQL Database nákup modelů '
 description: Přečtěte si informace o nákupních modelech, které jsou k dispozici pro Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: ab291ab60a5e72b5c61552bc54c10e303c1df1a9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 48537ec4c62410565d32350b1e3a11bbc7a2ca6e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492488"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687555"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Volba mezi vCore a nákupními modely DTU
 
@@ -55,7 +55,7 @@ Náklady na úložiště zálohování jsou stejné jako u důležitých podniko
 
 Popis způsobu definování kapacity a výpočtu nákladů na výpočetní úrovni serveru najdete v tématu [SQL Database bez serveru](sql-database-serverless.md).
 
-## <a name="storage-costs"></a>Náklady na úložiště
+## <a name="storage-costs"></a>Cena za uložení
 
 Různé typy úložiště se účtují jinak. Pro úložiště dat se vám budou účtovat zřízené úložiště založené na maximální velikosti databáze nebo fondu, který vyberete. Náklady se nezmění, pokud je maximální hodnota nesnížíte nebo nezvýšíte. Úložiště zálohování je přidruženo k automatizovaným zálohám vaší instance a dynamicky se přiřazuje. Zvýšení doby uchovávání záloh zvyšuje velikost úložiště zálohování spotřebovaného vaší instancí.
 
@@ -102,7 +102,7 @@ Prostředky používané úlohou nemají vliv na prostředky, které jsou k disp
 
 ![ohraničovací rámeček](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-DTU jsou nejužitečnější pro porozumění relativním prostředkům, které jsou přiděleny pro databáze SQL Azure v různých velikostech výpočtů a úrovních služby. Například:
+DTU jsou nejužitečnější pro porozumění relativním prostředkům, které jsou přiděleny pro databáze SQL Azure v různých velikostech výpočtů a úrovních služby. Příklad:
 
 - Zdvojnásobuje se DTU zvýšením velikosti databáze, která je rovna zdvojnásobení sady prostředků, které jsou k dispozici pro danou databázi.
 - P11 databáze úrovně Premium Service s 1750 DTU poskytuje výpočetní výkon 350x větší než základní databáze úrovně služeb s 5 DTU.  

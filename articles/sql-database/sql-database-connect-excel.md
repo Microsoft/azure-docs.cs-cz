@@ -1,5 +1,5 @@
 ---
-title: Připojení Excelu k izolované databázi v Azure SQL Database | Microsoft Docs
+title: Připojení Excelu k jedné databázi v Azure SQL Database
 description: Naučte se připojit Microsoft Excel k izolované databázi ve službě Azure SQL Database. Naimportujte si data do Excelu, kde můžete data dále zkoumat a vytvářet z nich sestavy.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: joseidz
 ms.author: craigg
 ms.reviewer: ''
 ms.date: 02/12/2019
-ms.openlocfilehash: 8711d8f7ebc00b2d0fa51ff9f420293e96766d1c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 603aa52aefc4c4d1200d433f7f73f6070849c8f7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569349"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691031"
 ---
 # <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Připojení Excelu k izolované databázi ve službě Azure SQL Database a vytvoření sestavy
 
@@ -33,7 +33,7 @@ Budete také potřebovat Excel. V tomto článku používáme [Microsoft Excel 2
 1. Když budete chtít Excel připojit k databázi SQL, otevřete ho a vytvořte nový sešit nebo otevřete existující excelový sešit.
 2. V řádku nabídek v horní části stránky vyberte kartu **data** , vyberte **získat data**, vyberte z Azure a pak vyberte **z Azure SQL Database**. 
 
-   ![Vybrat zdroj dat: Připojení Excelu k SQL Database.](./media/sql-database-connect-excel/excel_data_source.png)
+   ![Výběr zdroje dat: Připojení Excelu k databázi SQL](./media/sql-database-connect-excel/excel_data_source.png)
 
    Otevře se Průvodce datovým připojením.
 3. V dialogovém okně **Připojit k databázovému serveru** zadejte **název serveru** SQL Database, ke kterému se chcete připojit, v následující podobě: <*název_serveru*> **. database.windows.net**. Například **msftestserver.Database.Windows.NET**. V případě potřeby zadejte název vaší databáze. Výběrem **OK** otevřete okno přihlašovací údaje. 
@@ -67,7 +67,7 @@ Teď, když jste navázali připojení, máte k dispozici několik různých mo�
 
 > [!TIP]
 > Pokud chcete k databázi připojit jiné excelové sešity a listy, vyberte kartu **data** a vyberte **Poslední zdroje** . otevře se dialogové okno **Poslední zdroje** . Odtud ze seznamu vyberte připojení, které jste vytvořili, a pak klikněte na **otevřít**.
-> ![Dialogové okno poslední zdroje](media/sql-database-connect-excel/recent-connections.png)
+> Dialogové okno ![poslední zdroje](media/sql-database-connect-excel/recent-connections.png)
 
 ## <a name="create-a-permanent-connection-using-odc-file"></a>Vytvoření trvalého připojení pomocí souboru ODC
 
@@ -79,10 +79,10 @@ Chcete-li uložit podrobnosti o připojení trvale, můžete vytvořit soubor. o
 
       ![Nové připojení – dialogové okno](media/sql-database-connect-excel/new-connection.png)
 
-2. V **Průvodci datovým připojením**zadejte název serveru a přihlašovací údaje pro SQL Database. Vyberte **Další**. 
+2. V **Průvodci datovým připojením**zadejte název serveru a přihlašovací údaje pro SQL Database. Vyberte **Next** (Další). 
    1. Z rozevíracího seznamu vyberte databázi, která obsahuje vaše data. 
    2. Vyberte tabulku nebo zobrazení, na které vás zajímáte. Zvolili jsme vGetAllCategories.
-   3. Vyberte **Další**. 
+   3. Vyberte **Next** (Další). 
 
       ![Průvodce datovým připojením](media/sql-database-connect-excel/data-connection-wizard.png) 
 
@@ -92,13 +92,13 @@ Chcete-li uložit podrobnosti o připojení trvale, můžete vytvořit soubor. o
 
 4. Vyberte, jak chcete importovat data. Zvolili jsme vytvoření kontingenční tabulky. Vlastnosti připojení můžete změnit také tak, že vyberete **vlastnosti**. Až budete připraveni, vyberte **OK** . Pokud jste se nerozhodli Uložit heslo se souborem, budete vyzváni k zadání přihlašovacích údajů. 
 
-    ![Importovat data](media/sql-database-connect-excel/import-data2.png)
+    ![Import dat](media/sql-database-connect-excel/import-data2.png)
 
 5. Rozbalením karty **data** a vybráním **existujících připojení**ověřte, zda bylo nové připojení uloženo. 
 
     ![Existující připojení](media/sql-database-connect-excel/existing-connection.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Zjistěte, jak se [připojit k SQL Database přes SQL Server Management Studio](sql-database-connect-query-ssms.md) a provádět pokročilé dotazy a analýzy.
 * Další informace o výhodách [elastických fondů](sql-database-elastic-pool.md).

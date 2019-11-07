@@ -1,6 +1,6 @@
 ---
-title: Transformace dat pomocí aktivita Hadoop Pig ve službě Azure Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak můžete pomocí aktivita Pig ve službě Azure data factory ke spouštění skriptů Pig na vyžádání/svůj vlastní clusteru služby HDInsight.
+title: Transformace dat pomocí aktivity systému Hadoop pro vepřové použití v Azure Data Factory
+description: Zjistěte, jak můžete pomocí aktivity prasete v datové továrně Azure spouštět skripty prasete na vyžádání nebo vlastním clusteru HDInsight.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -11,21 +11,21 @@ ms.date: 01/16/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 914bc37552a80886df16ed69fba4e31b3f22ac22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85478c128e2a61ed6a3f4da5cacdcb425038c639
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61399518"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683832"
 ---
-# <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivita Hadoop Pig ve službě Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
+# <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity systému Hadoop pro vepřové použití v Azure Data Factory
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-pig-activity.md)
 > * [Aktuální verze](transform-data-using-hadoop-pig.md)
 
-Aktivita HDInsight Pig ve službě Data Factory [kanálu](concepts-pipelines-activities.md) Pig dotazy se spustí na [vlastní](compute-linked-services.md#azure-hdinsight-linked-service) nebo [na vyžádání](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) clusteru HDInsight. Tento článek vychází [aktivity transformace dat](transform-data.md) článek, který nabízí obecný přehled o transformaci dat a aktivity podporované transformace.
+Aktivita prasete v HDInsight v [kanálu](concepts-pipelines-activities.md) Data Factory spouští dotazy na prasaty na [vašem](compute-linked-services.md#azure-hdinsight-linked-service) clusteru HDInsight nebo [na vyžádání](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) . Tento článek se sestavuje na článku [aktivity transformace dat](transform-data.md) , který představuje obecný přehled transformace dat a podporovaných transformačních aktivit.
 
-Pokud do služby Azure Data Factory začínáte, přečtěte si [Úvod do služby Azure Data Factory](introduction.md) a proveďte [kurz: transformace dat](tutorial-transform-data-spark-powershell.md) před čtením tohoto článku. 
+Pokud Azure Data Factory teprve začínáte, přečtěte si [Úvod do Azure Data Factory](introduction.md) a udělejte si [kurz: transformace dat](tutorial-transform-data-spark-powershell.md) před čtením tohoto článku. 
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -54,28 +54,28 @@ Pokud do služby Azure Data Factory začínáte, přečtěte si [Úvod do služb
     }   
 }
 ```
-## <a name="syntax-details"></a>Podrobnosti o syntaxi
+## <a name="syntax-details"></a>Podrobnosti syntaxe
 
 | Vlastnost            | Popis                              | Požaduje se |
 | ------------------- | ---------------------------------------- | -------- |
-| name                | Název aktivity                     | Ano      |
-| description         | Text popisující, k čemu aktivita slouží | Ne       |
-| type                | Pro aktivitu Hive typ aktivity je HDinsightPig | Ano      |
-| linkedServiceName   | Odkaz na clusteru HDInsight zaregistrovaný jako propojenou službu ve službě Data Factory. Další informace o tuto propojenou službu, najdete v článku [propojené služby Compute](compute-linked-services.md) článku. | Ano      |
-| scriptLinkedService | Odkaz na propojená služba Azure Storage se využívá k uložení skript Pig, který se spustí. Pokud nezadáte tuto propojenou službu, použije se propojená služba Azure Storage, definované v propojené službě HDInsight. | Ne       |
-| scriptPath          | Zadejte cestu k souboru skriptu ve službě Azure Storage odkazuje scriptLinkedService. Název souboru je velká a malá písmena. | Ne       |
-| getDebugInfo        | Určuje, kdy se zkopírují soubory protokolů do služby Azure Storage používaný v clusteru HDInsight (a) zadaný ve scriptLinkedService. Povolené hodnoty: NONE, vždy, nebo selhání. Výchozí hodnota: Žádné | Ne       |
-| argumenty           | Určuje pole argumentů pro úlohy Hadoopu. Argumenty jsou předány jako argumenty příkazového řádku pro každý úkol. | Ne       |
-| defines             | Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skript Pig. | Ne       |
+| jméno                | Název aktivity                     | Ano      |
+| description         | Text popisující, k čemu se aktivita používá | Ne       |
+| type                | V případě aktivity podregistru je typ aktivity HDinsightPig. | Ano      |
+| linkedServiceName   | Odkaz na cluster HDInsight registrovaný jako propojená služba v Data Factory. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Ano      |
+| scriptLinkedService | Odkaz na propojenou službu Azure Storage, která se používá k uložení skriptu prasete, který se má spustit. Pokud tuto propojenou službu nezadáte, použije se propojená služba Azure Storage definovaná v propojené službě HDInsight. | Ne       |
+| scriptPath          | Zadejte cestu k souboru skriptu uloženému v Azure Storage, na kterou odkazuje scriptLinkedService. V názvu souboru se rozlišují malá a velká písmena. | Ne       |
+| GetDebugInfo –        | Určuje, kdy se soubory protokolu zkopírují do Azure Storage používaného clusterem HDInsight (nebo) zadaným pomocí scriptLinkedService. Povolené hodnoty: žádné, vždy nebo chyba. Výchozí hodnota: žádné. | Ne       |
+| Náhodné           | Určuje pole argumentů pro úlohu Hadoop. Argumenty jsou předány jako argumenty příkazového řádku pro každý úkol. | Ne       |
+| definuje             | Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu pro vepřové prostředí. | Ne       |
 
-## <a name="next-steps"></a>Další postup
-Viz následující články, které vysvětlují, jak transformovat data dalšími způsoby: 
+## <a name="next-steps"></a>Další kroky
+Podívejte se na následující články, které vysvětlují, jak transformovat data jinými způsoby: 
 
 * [Aktivita U-SQL](transform-data-using-data-lake-analytics.md)
-* [Aktivita hivu](transform-data-using-hadoop-hive.md)
+* [Aktivita v podregistru](transform-data-using-hadoop-hive.md)
 * [Aktivita MapReduce](transform-data-using-hadoop-map-reduce.md)
 * [Aktivita streamování Hadoop](transform-data-using-hadoop-streaming.md)
-* [Aktivita Spark](transform-data-using-spark.md)
+* [Aktivita Sparku](transform-data-using-spark.md)
 * [Vlastní aktivita .NET](transform-data-using-dotnet-custom-activity.md)
-* [Aktivita provedení dávky služby Learning počítače](transform-data-using-machine-learning.md)
-* [Aktivita uložená procedura](transform-data-using-stored-procedure.md)
+* [Aktivita spuštění Machine Learning dávky](transform-data-using-machine-learning.md)
+* [Aktivita uložené procedury](transform-data-using-stored-procedure.md)

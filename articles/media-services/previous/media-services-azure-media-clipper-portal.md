@@ -1,45 +1,45 @@
 ---
-title: Pomocí Azure Media Clipperem na portálu | Dokumentace Microsoftu
-description: Vytvářet pomocí Azure Media Clipperem z webu Azure Portal
+title: Použití Azure Media Clipperu na portálu | Microsoft Docs
+description: Vytváření klipů pomocí Azure Media Clipperu z webu Azure Portal
 services: media-services
-keywords: Galerie, dílčí klip, kódování, médií
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+keywords: Clip; dílčí klip; Encoding; Media
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 8c88caefb0909da55de87116a23fa520c1679cc2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec43fa469547dcd6481c0c6781c438f42ab4e2bd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465817"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684990"
 ---
-# <a name="create-clips-with-azure-media-clipper-in-the-portal"></a>Vytvářet s Azure Media Clipperem na portálu  
+# <a name="create-clips-with-azure-media-clipper-in-the-portal"></a>Vytváření klipů pomocí Azure Media Clipperu na portálu  
 
-Azure Media Clipperem na portálu můžete vytvářet z prostředků v rámci účtů media services. Abyste mohli začít, přejděte do účtu media services na portálu. V dalším kroku vyberte **dílčí klip** kartu.
+Pomocí Azure Media Clipperu na portálu můžete vytvářet klipy z assetů v účtech Media Services. Začněte tím, že na portálu přejdete na svůj účet Media Services. Potom vyberte kartu dílčí **klip** .
 
-Na **dílčí klip** kartu, budete moct začít vytváření klipy. Na portálu Clipperem načte soubory MP4 s jednou přenosovou rychlostí rychlostmi, soubory MP4 s více přenosovými rychlostmi a pořadů, které jsou publikovány s platnou Lokátor streamování. Nepublikovaných prostředky nejsou načtené.
+Na kartě dílčí **klip** budete moci začít sestavovat klipy. V portálu Clipper načítá rychlostmi s jednou přenosovou rychlostí, rychlostmi s více přenosovými rychlostmi a živými archivy, které jsou publikovány pomocí platného lokátoru streamování. Nepublikované prostředky nejsou načteny.
 
-Clipperem je aktuálně ve verzi public preview. Pro přístup k Clipperem na webu Azure Portal, přejděte na tuto [stránky ve verzi public preview](https://portal.azure.com/?feature.subclipper=true).
+Clipper je momentálně ve verzi Public Preview. Chcete-li získat přístup k Clipperu v Azure Portal, přejděte na [stránku Tato verze Public Preview](https://portal.azure.com/?feature.subclipper=true).
 
-Následující obrázek ukazuje Clipperem cílové stránky v účtu media services: ![Azure Media Clipperem na webu Azure portal](media/media-services-azure-media-clipper-portal/media-services-azure-media-clipper-portal.png)
+Následující obrázek znázorňuje cílovou stránku Clipperu v účtu Media Services: ![Azure Media Clipper v Azure Portal](media/media-services-azure-media-clipper-portal/media-services-azure-media-clipper-portal.png)
 
 ## <a name="producing-clips"></a>Vytváření klipů
-Chcete-li vytvořit klipu, přetažením prostředek na rozhraní galerie. Pokud označit a časy jsou známé, můžete je zadat ručně do rozhraní. Jinak, přehrávání prostředku nebo ho přetáhněte ukazatel pozice vyhledat požadovanou značku v a čas. Pokud není k dispozici čas značky nebo konce, klip začne od začátku nebo dál konci vstupní asset, v uvedeném pořadí.
+Chcete-li vytvořit klip, přetáhněte Asset do rozhraní Clip. Pokud jsou známy časy označení, můžete je ručně zadat do rozhraní. V opačném případě přehrává Asset nebo přetáhněte přehrávací hlavu, aby bylo možné najít požadovanou značku a čas označení. Pokud není zadán čas nebo označení příznaku, klip začne od začátku nebo pokračuje na konec vstupního prostředku v uvedeném pořadí.
 
-Přecházení pomocí rámce přesnost/GOP-přesnost, použijte tlačítko rámce – vpřed/GOP vpřed nebo rámec zpětně/GOP-zpět. Pro oříznutí proti více prostředků, přetáhněte a umístěte více prostředků do Galerie rozhraní z panel výběru prostředku. Můžete vybrat a změnit pořadí prostředky v rozhraní do požadovaného pořadí. Panel výběru asset poskytuje doba trvání assetu, typ a překlad metadat pro každý prostředek. Při zřetězení více prostředků najednou, vezměte v úvahu zdroj rozlišení každého vstupního souboru. Pokud se rozlišení zdroje liší, je nižší rozlišení vstup upscaled podle řešení nejvyšší asset řešení. Ve verzi preview výstup úlohy oříznutí, vyberte tlačítko Náhled a klip přehrává z vybrané značky časy.
+Chcete-li přejít s přesností na snímek a přesností na skupinu GOP, použijte tlačítka Frame-dopředné/skupinu GOP-dopředně nebo v rámečku – zpět a skupinu GOP. Pro oříznutí proti více prostředkům přetáhněte více prostředků do rozhraní Clip z panelu Výběr assetu. V rozhraní můžete vybrat a změnit pořadí prostředků v požadovaném pořadí. Panel výběr assetu poskytuje metadata o trvání prostředku, typ a metadata řešení pro každý Asset. Při zřetězení několika prostředků zvažte rozlišení zdroje každého vstupního souboru. Pokud se rozlišení zdrojového řešení liší, znamená to, že je nižší rozlišení, aby splňovalo řešení nejvyššího prostředku řešení. Pokud chcete zobrazit náhled výstupu úlohy oříznutí, vyberte tlačítko Náhled a klip se přehraje z vybraného času označení.
 
-## <a name="producing-dynamic-manifest-filters"></a>Vytváření filtry dynamických manifestů
-[Filtry dynamických manifestů](https://azure.microsoft.com/blog/dynamic-manifest/) popisují sadu pravidel na základě manifestu atributů a časová osa asset. Tato pravidla určují, jak koncový bod streamování zpracovává výstup stop (manifest). Tento filtr je možné změnit, které segmenty jsou streamování pro přehrávání. Filtry vytvářených Clipperem jsou místní filtry a jsou specifická pro zdrojový prostředek. Na rozdíl od vykreslené klipy filtry nejsou nové materiály a nevyžadují žádné kódování úloh k vytvoření. Je možné rychle vytvořit prostřednictvím [sady .NET SDK](https://docs.microsoft.com/azure/media-services/media-services-dotnet-dynamic-manifest) nebo [rozhraní REST API](https://docs.microsoft.com/azure/media-services/media-services-rest-dynamic-manifest), je však pouze GOP přesné. Prostředky kódování pro vysílání datového proudu obvykle mají velikost GOP dvou sekund.
+## <a name="producing-dynamic-manifest-filters"></a>Vytváření dynamických filtrů manifestu
+[Dynamické filtry manifestů](https://azure.microsoft.com/blog/dynamic-manifest/) popisují sadu pravidel založených na atributech manifestu a časové ose prostředků. Tato pravidla určují, jak koncový bod streamování zpracovává výstupní seznam stop (manifest). Pomocí filtru můžete změnit, které segmenty se streamuje pro přehrávání. Filtry vytvořené v Clipperu jsou místní filtry a jsou specifické pro zdrojový prostředek. Na rozdíl od vykreslených klipů nejsou filtry nové prostředky a nevyžadují, aby se vytvořila úloha kódování. Dají se rychle vytvořit prostřednictvím [sady .NET SDK](https://docs.microsoft.com/azure/media-services/media-services-dotnet-dynamic-manifest) nebo [REST API](https://docs.microsoft.com/azure/media-services/media-services-rest-dynamic-manifest), ale jsou jenom přesná skupinu GOP. Prostředky kódované pro streamování mají typicky skupinu GOPou velikost 2 sekundy.
 
-Chcete-li vytvořit filtr dynamických manifestů, přejděte na **prostředky** kartě a vyberte požadovaný prostředek. Vyberte **dílčí klip** tlačítko v horní nabídce. Vyberte filtr dynamických manifestů výstřižek režim z nabídky upřesňující nastavení. Můžete pak opakujte stejný postup k vytvoření vykreslené Galerie pro vytvoření filtru. Filtry je možné vytvořit pouze z jednoho prostředku.
+Chcete-li vytvořit dynamický filtr manifestu, přejděte na kartu **assets (prostředky** ) a vyberte požadovaný prostředek. Vyberte tlačítko **podklipu** pro horní nabídku. V nabídce Upřesnit nastavení vyberte možnost dynamický filtr manifestu jako režim vystřihování. Pak můžete postupovat podle stejného procesu a vytvořit vygenerovaný klip pro vytvoření filtru. Filtry je možné vytvářet pouze z jediného assetu.
 
-Následující obrázek ukazuje Clipperem v dynamickém režimu manifestu filtr na webu Azure Portal: ![Azure Media Clipperem v dynamickém režimu manifestu filtr na webu Azure portal](media/media-services-azure-media-clipper-portal/media-services-azure-media-clipper-filter.PNG)
+Následující obrázek ilustruje Clipper v režimu dynamického filtru manifestu v Azure Portal: ![Azure Media Clipper v režimu dynamického filtru manifestu v Azure Portal](media/media-services-azure-media-clipper-portal/media-services-azure-media-clipper-filter.PNG)
 
 ## <a name="submitting-clipping-jobs"></a>Odesílání úloh oříznutí
-Po dokončení vytváření klip, vyberte tlačítka pro odeslání úlohy pro zahájení odpovídající úloha výstřižek dynamického volání manifestu.
+Po dokončení sestavování klipu vyberte tlačítko Odeslat úlohu pro zahájení příslušné úlohy oříznutí nebo dynamického volání manifestu.
 
-## <a name="next-steps"></a>Další postup
-Abyste mohli začít používat Azure Media Clipperem, přečtěte si [Začínáme](media-services-azure-media-clipper-getting-started.md) , kde najdete podrobnosti o tom, jak nasadit widgetu.
+## <a name="next-steps"></a>Další kroky
+Pokud chcete začít používat Azure Media Clipper, přečtěte si článek [Začínáme](media-services-azure-media-clipper-getting-started.md) , kde najdete podrobnosti o tom, jak tento widget nasadit.

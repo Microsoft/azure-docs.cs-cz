@@ -1,5 +1,5 @@
 ---
-title: Omezení funkcí Azure SQL Database | Microsoft Docs
+title: Omezení funkcí Azure SQL Database
 description: Azure SQL Database omezení funkcí zlepšuje zabezpečení databáze tím, že omezují funkce v databázi, které můžou útočníci zneužít k získání přístupu k informacím v nich.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 03/22/2019
-ms.openlocfilehash: f2fd6cb73428c69fbb27cb93377f851a4e06221d
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: e9518065b2240d72698ed75f2fa8a7aed343b7bf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959136"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690066"
 ---
 # <a name="azure-sql-database-feature-restrictions"></a>Omezení funkcí Azure SQL Database
 
@@ -34,12 +34,12 @@ Je možné omezit následující funkce:
 
 | Funkce          | Popis |
 |------------------|-------------|
-| N'ErrorMessages' | V případě omezení se všechna uživatelská data v této chybové zprávě budou maskovat. Zobrazit [omezení funkce chybové zprávy](#error-messages-feature-restriction) |
+| N'ErrorMessages' | V případě omezení se všechna uživatelská data v této chybové zprávě budou maskovat. Zobrazit [omezení funkcí chybové zprávy](#error-messages-feature-restriction) |
 | N'Waitfor'       | V případě omezení se příkaz vrátí hned bez zpoždění. Viz [omezení funkcí příkazu WAITFOR](#waitfor-feature-restriction) |
 
-Hodnota `object_class` může být buď `N'User'` nebo `N'Role'` k označení, zda `object_name` se jedná o uživatelské jméno nebo název role v databázi.
+Hodnota `object_class` může být buď `N'User'` nebo `N'Role'` k označení, zda `object_name` je uživatelské jméno nebo název role v databázi.
 
-Následující příklad způsobí, že jsou všechny chybové zprávy pro `MyUser` uživatele maskovány:
+Následující příklad způsobí, že jsou všechny chybové zprávy pro uživatele `MyUser` maskovány:
 
 ```sql
 EXEC sp_add_feature_restriction N'ErrorMessages', N'User', N'MyUser'
@@ -47,7 +47,7 @@ EXEC sp_add_feature_restriction N'ErrorMessages', N'User', N'MyUser'
 
 ## <a name="disabling-feature-restrictions"></a>Zákaz omezení funkcí
 
-Zakázání omezení funkcí se provádí pomocí `sp_drop_feature_restriction` uložené procedury následujícím způsobem:
+Omezení funkcí se provádí pomocí `sp_drop_feature_restriction` uložené procedury následujícím způsobem:
 
 ```sql
 EXEC sp_drop_feature_restriction <feature>, <object_class>, <object_name>
@@ -61,13 +61,13 @@ EXEC sp_drop_feature_restriction N'ErrorMessages', N'User', N'MyUser'
 
 ## <a name="viewing-feature-restrictions"></a>Zobrazení omezení funkcí
 
-`sys.sql_feature_restrictions` Zobrazení prezentuje všechna aktuálně definovaná omezení funkcí v databázi. Má následující sloupce:
+Zobrazení `sys.sql_feature_restrictions` prezentuje všechna aktuálně definovaná omezení funkcí v databázi. Má následující sloupce:
 
-| Název sloupce | Datový typ | Popis |
+| Název sloupce | Data type | Popis |
 |-------------|-----------|-------------|
-| třída       | nvarchar (128) | Třída objektu, na kterou se vztahuje omezení |
-| object      | nvarchar(256) | Název objektu, na který se vztahuje omezení |
-| funkce     | nvarchar (128) | Funkce, která je omezená |
+| Deník       | nvarchar (128) | Třída objektu, na kterou se vztahuje omezení |
+| objekt      | nvarchar (256) | Název objektu, na který se vztahuje omezení |
+| Zapnut     | nvarchar (128) | Funkce, která je omezená |
 
 ## <a name="feature-restrictions"></a>Omezení funkcí
 
@@ -87,7 +87,7 @@ Který spustí následující databázový dotaz:
 SELECT Name FROM EMPLOYEES WHERE Id=$EmpId
 ```
 
-Pokud je hodnota předaná jako `id` parametr žádosti webové aplikace zkopírována, aby nahradila $EmpID v databázovém dotazu, mohl by útočník provést následující požadavek:
+Pokud je hodnota předaná jako parametr `id` do žádosti webové aplikace zkopírována, aby se v databázovém dotazu nahradila $EmpId, útočník by mohl provést následující požadavek:
 
 ```html
 http://www.contoso.com/employee.php?id=1 AND CAST(DB_NAME() AS INT)=0
@@ -125,7 +125,7 @@ Arithmetic overflow error for data type ******, value = ******.
 
 ### <a name="waitfor-feature-restriction"></a>WAITFOR – omezení funkcí
 
-Nevidomé injektáže SQL je v případě, že aplikace neposkytuje útočník s výsledky vloženého SQL nebo s chybovou zprávou, ale útočník může odvodit informace z databáze vytvořením podmíněného dotazu, ve kterém jsou dvě podmíněné větve proveďte jinou dobu, než se spustí. Porovnáním doby odezvy může útočník vědět, která větev byla provedena, a tím se dozví informace o systému. Nejjednodušší varianta tohoto útoku `WAITFOR` používá příkaz k zavedení zpoždění.
+Nevidomé injektáže SQL je v případě, že aplikace neposkytuje útočník s výsledky vloženého SQL nebo s chybovou zprávou, ale útočník může odvodit informace z databáze vytvořením podmíněného dotazu, ve kterém jsou dvě podmíněné větve proveďte jinou dobu, než se spustí. Porovnáním doby odezvy může útočník vědět, která větev byla provedena, a tím se dozví informace o systému. Nejjednodušší varianta tohoto útoku používá příkaz `WAITFOR` k zavedení zpoždění.
 
 Vezměte v úvahu webovou aplikaci, která má požadavek ve formě:
 
@@ -133,7 +133,7 @@ Vezměte v úvahu webovou aplikaci, která má požadavek ve formě:
 http://www.contoso.com/employee.php?id=1
 ```
 
-který spustí následující databázový dotaz:
+Který spustí následující databázový dotaz:
 
 ```sql
 SELECT Name FROM EMPLOYEES WHERE Id=$EmpId
@@ -145,4 +145,4 @@ Pokud je hodnota předaná jako parametr ID do požadavků webové aplikace zkop
 http://www.contoso.com/employee.php?id=1; IF SYSTEM_USER='sa' WAITFOR DELAY '00:00:05'
 ```
 
-A dotaz by v případě `sa` použití účtu trvat dalších 5 sekund. Pokud `WAITFOR` je omezení funkcí v databázi zakázané `WAITFOR` , příkaz se ignoruje a při tomto útoku nedojde k úniku informací.
+A dotaz by během používání účtu `sa` trvat dalších 5 sekund. Pokud je v databázi zakázané omezení funkce `WAITFOR`, příkaz `WAITFOR` se ignoruje a při tomto útoku nebude nevráceno žádné informace.

@@ -1,5 +1,5 @@
 ---
-title: Řešení problémů s mapou horizontálních oddílů pomocí Recovery Manager | Microsoft Docs
+title: Řešení problémů s mapou horizontálních oddílů pomocí Recovery Manager
 description: Použití třídy RecoveryManager k řešení problémů s mapami horizontálních oddílů
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: cbc4985f032c228db7a9ddf719390bbf2d0166b9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5920f0a3f08d83b1300956ca830b3b9b827fa5e2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568698"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690481"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Oprava problémů s mapováním horizontálních oddílů pomocí třídy RecoveryManager
 
@@ -36,13 +36,13 @@ V prostředí databáze horizontálně dělené je jeden tenant na databázi a m
 
 Z následujících důvodů se může stát, že se nesynchronizují LSM a GSM.
 
-1. Odstranění horizontálních oddílů, jehož rozsah je považován za již nepoužitý, nebo přejmenování horizontálních oddílů. Výsledkem odstranění horizontálních oddílů je osamocené **mapování horizontálních oddílů**. Podobně přejmenovaná databáze může způsobit oddělené mapování horizontálních oddílů. V závislosti na záměru změny může být nutné odebrat horizontálních oddílů nebo umístění horizontálních oddílů musí být aktualizováno. Informace o obnovení odstraněné databáze najdete v tématu [Obnovení odstraněné databáze](sql-database-recovery-using-backups.md).
+1. Odstranění horizontálních oddílů, jehož rozsah je považován za již nepoužitý, nebo přejmenování horizontálních oddílů. Výsledkem odstranění horizontálních oddílů je **osamocené mapování horizontálních oddílů**. Podobně přejmenovaná databáze může způsobit oddělené mapování horizontálních oddílů. V závislosti na záměru změny může být nutné odebrat horizontálních oddílů nebo umístění horizontálních oddílů musí být aktualizováno. Informace o obnovení odstraněné databáze najdete v tématu [Obnovení odstraněné databáze](sql-database-recovery-using-backups.md).
 2. Dojde k události geografické převzetí služeb při selhání. Chcete-li pokračovat, je třeba aktualizovat název serveru a název databáze správce mapy horizontálních oddílů v aplikaci a poté aktualizovat podrobnosti mapování horizontálních oddílů pro všechny horizontálních oddílů v mapě horizontálních oddílů. Pokud dojde k geografickému převzetí služeb při selhání, musí být tato logika obnovení automatizovaná v rámci pracovního postupu převzetí služeb při selhání. Automatizace akcí obnovení umožňuje bezproblémovou správu pro geograficky dostupné databáze a vyhnout se ručním lidským akcím. Další informace o možnostech obnovení databáze v případě výpadku datového centra najdete v tématu [provozní kontinuita](sql-database-business-continuity.md) a [zotavení po havárii](sql-database-disaster-recovery.md).
 3. Horizontálních oddílů nebo databáze ShardMapManager se obnovily do dřívějšího bodu v čase. Informace o obnovení bodu v čase pomocí zálohování najdete v tématu [obnovení pomocí záloh](sql-database-recovery-using-backups.md).
 
 Další informace o Azure SQL Database Elastic Databasech nástrojích, geografickou replikaci a obnovení najdete v následujících tématech:
 
-* [Přehled Provozní kontinuita v cloudu a zotavení po havárii databáze pomocí SQL Database](sql-database-business-continuity.md)
+* [Přehled: provozní kontinuita v cloudu a zotavení po havárii databáze pomocí SQL Database](sql-database-business-continuity.md)
 * [Začínáme s nástroji elastické databáze](sql-database-elastic-scale-get-started.md)  
 * [Správa ShardMap](sql-database-elastic-scale-shard-map-management.md)
 

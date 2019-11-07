@@ -1,6 +1,6 @@
 ---
-title: Správa pracovního prostoru Machine Learning Studio (Classic)
-titleSuffix: Azure Machine Learning Studio (classic)
+title: Správa pracovních prostorů
+titleSuffix: ML Studio (classic) Azure
 description: Správa přístupu k pracovním prostorům Azure Machine Learning Studio (Classic) a nasazení a správa webových služeb rozhraní API Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
-ms.openlocfilehash: f514079379143e001d72c0e6618c88e2fbb283b8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0ec619e765dde39f6d4c24cdadaab8bff4729f79
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489232"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684755"
 ---
 # <a name="manage-an-azure-machine-learning-studio-classic-workspace"></a>Správa pracovního prostoru Azure Machine Learning Studio (Classic)
 
@@ -28,7 +28,7 @@ V Azure Portal můžete spravovat pracovní prostory Machine Learning Studio (Cl
 
 
 
-## <a name="use-the-azure-portal"></a>Použití portálu Azure
+## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
 Správa pracovního prostoru studia (Classic) v Azure Portal:
 

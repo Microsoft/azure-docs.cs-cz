@@ -1,5 +1,5 @@
 ---
-title: Vytváření škálovatelných cloudových databází | Microsoft Docs
+title: Vytváření škálovatelných cloudových databází
 description: Vytváření škálovatelných databázových aplikací .NET pomocí klientské knihovny elastické databáze
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/25/2018
-ms.openlocfilehash: 24b7f769be3f4db3c36412e162b5cda40e3ca959
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0b5b3c924a644c065327db36a6a8d64b4a552d40
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568710"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690496"
 ---
 # <a name="building-scalable-cloud-databases"></a>Vytváření škálovatelných cloudových databází
 
@@ -50,16 +50,16 @@ Ke stažení:
 
 Horizontální navýšení kapacity aplikací pomocí *horizontálního dělení* představují výzvy pro vývojáře i správce. Klientská knihovna zjednodušuje úlohy správy tím, že poskytuje nástroje, které umožňují vývojářům i správcům spravovat databáze s horizontálním škálováním kapacity. V typickém příkladu je pro správu k dispozici mnoho databází, označovaných jako "horizontálních oddílů". Zákazníci jsou společně umístěni ve stejné databázi a jedna databáze je určena pro každého zákazníka (schéma s jedním tenantům). Knihovna klienta zahrnuje tyto funkce:
 
-- **Správa map horizontálních oddílů**: Vytvoří se speciální databáze nazývaná "správce map horizontálních oddílů". Správa map horizontálních oddílů je schopnost aplikace spravovat metadata o své horizontálních oddílů. Vývojáři mohou tuto funkci používat k registraci databází jako horizontálních oddílů, popisují mapování jednotlivých klíčů horizontálního dělení nebo rozsahů klíčů pro tyto databáze a spravovat tato metadata jako počet a složení databází, které se rozvíjejí, aby odrážely změny kapacity. Bez klientské knihovny elastické databáze byste při implementaci horizontálního dělení museli strávit spoustu času při psaní kódu správy. Podrobnosti najdete v tématu [Správa map horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md).
+- **Správa map horizontálních oddílů**: je vytvořena speciální databáze nazývaná "horizontálních oddílů Map Manager". Správa map horizontálních oddílů je schopnost aplikace spravovat metadata o své horizontálních oddílů. Vývojáři mohou tuto funkci používat k registraci databází jako horizontálních oddílů, popisují mapování jednotlivých klíčů horizontálního dělení nebo rozsahů klíčů pro tyto databáze a spravovat tato metadata jako počet a složení databází, které se rozvíjejí, aby odrážely změny kapacity. Bez klientské knihovny elastické databáze byste při implementaci horizontálního dělení museli strávit spoustu času při psaní kódu správy. Podrobnosti najdete v tématu [Správa map horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md).
 
 - **Směrování závislé na datech**: Představte si, že žádost přichází do aplikace. Na základě hodnoty horizontálního dělení klíče požadavku musí aplikace určit správnou databázi na základě hodnoty klíče. Pak otevře připojení k databázi pro zpracování žádosti. Směrování závislé na datech poskytuje možnost otevřít připojení s jedním jednoduchým voláním do mapy horizontálních oddílů aplikace. Směrování závislé na datech bylo další oblastí kódu infrastruktury, která je teď pokrytá funkcemi v klientské knihovně elastické databáze. Podrobnosti najdete v tématu [Směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md).
-- **Dotazy multi-horizontálních oddílů (MSQ)** : Dotazování multi-horizontálních oddílů funguje, když požadavek zahrnuje několik (nebo všechny) horizontálních oddílů. Dotaz s více horizontálních oddílůmi spouští stejný kód T-SQL ve všech horizontálních oddílů nebo sadě horizontálních oddílů. Výsledky z zúčastněných horizontálních oddílů se sloučí do celkové sady výsledků pomocí SJEDNOCENí všech sémantik. Funkce, která je vystavena prostřednictvím klientské knihovny, zpracovává mnoho úloh, včetně správy připojení, správy vláken, zpracování chyb a průběžného zpracování výsledků. MSQ se může dotazovat až na stovky horizontálních oddílů. Podrobnosti najdete v tématu [dotazování multi-horizontálních oddílů](sql-database-elastic-scale-multishard-querying.md).
+- **Multi-horizontálních oddílů dotazy (MSQ)** : dotazování multi-horizontálních oddílů funguje, když požadavek zahrnuje několik (nebo vše) horizontálních oddílů. Dotaz s více horizontálních oddílůmi spouští stejný kód T-SQL ve všech horizontálních oddílů nebo sadě horizontálních oddílů. Výsledky z zúčastněných horizontálních oddílů se sloučí do celkové sady výsledků pomocí SJEDNOCENí všech sémantik. Funkce, která je vystavena prostřednictvím klientské knihovny, zpracovává mnoho úloh, včetně správy připojení, správy vláken, zpracování chyb a průběžného zpracování výsledků. MSQ se může dotazovat až na stovky horizontálních oddílů. Podrobnosti najdete v tématu [dotazování multi-horizontálních oddílů](sql-database-elastic-scale-multishard-querying.md).
 
 Obecně platí, že zákazníci, kteří používají elastické databázové nástroje, můžou při odesílání horizontálních oddílů místních operací na rozdíl mezi horizontálních oddílů operacemi, které mají svou vlastní sémantiku, očekávat plnou funkčnost T-SQL.
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Knihovna klienta Elastic Database ([Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22), [.NET](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)) – ke **stažení** knihovny.
 

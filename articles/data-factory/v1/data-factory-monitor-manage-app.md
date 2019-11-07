@@ -1,5 +1,5 @@
 ---
-title: Monitorování a Správa datových kanálů – Azure | Microsoft Docs
+title: Monitorování a Správa datových kanálů – Azure
 description: Naučte se používat aplikaci pro monitorování a správu k monitorování a správě datových továrn a kanálů Azure.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 052ea99f0489458269adf4dca2c6713535933638
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139580"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666929"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Monitorování a Správa kanálů Azure Data Factory pomocí aplikace pro monitorování a správu
 > [!div class="op_single_selector"]
@@ -108,7 +108,7 @@ Kliknutím na možnost **Otevřít kanál** zobrazíte všechny aktivity v kaná
 
 ![Nabídka Otevřít kanál](./media/data-factory-monitor-manage-app/OpenPipelineMenu.png)
 
-V otevřeném Zobrazení kanálu uvidíte všechny aktivity v kanálu. V tomto příkladu je k dispozici pouze jedna aktivita: Aktivita kopírování. 
+V otevřeném Zobrazení kanálu uvidíte všechny aktivity v kanálu. V tomto příkladu je k dispozici pouze jedna aktivita: aktivita kopírování. 
 
 ![Otevřený kanál](./media/data-factory-monitor-manage-app/OpenedPipeline.png)
 
@@ -126,7 +126,7 @@ V pravém podokně se přepněte na kartu **Průzkumník okna aktivity** a zobra
 
 ![Průzkumník okna aktivity](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
 
-V části s pokusy se zobrazí také **vyřešené proměnné** pro každý pokus o spuštění aktivity.
+V části s **pokusy** se zobrazí také **vyřešené proměnné** pro každý pokus o spuštění aktivity.
 
 ![Vyřešené proměnné](./media/data-factory-monitor-manage-app/ResolvedVariables.PNG)
 
@@ -144,7 +144,7 @@ V místní nabídce okna aktivity a v Průzkumníkovi oken aktivit můžete pře
 
 ![Šipky vlevo a vpravo v Průzkumníkovi okna aktivity](./media/data-factory-monitor-manage-app/ActivityWindowExplorerLeftRightArrows.png)
 
-V dolní části zobrazení diagramu se zobrazí tato tlačítka: Přiblížit, oddálit, přiblížit podle potřeby, přiblížení 100%, rozložení zámku. Tlačítko **Uzamknout rozložení** zabraňuje nechtěnému přesunu tabulek a kanálů v zobrazení diagramu. Ve výchozím nastavení je zapnutý. Můžete ji vypnout a přesunout entity kolem diagramu. Když ho vypnete, můžete k automatickému umístění tabulek a kanálů použít poslední tlačítko. Můžete také přiblížit nebo oddálit pomocí kolečka myši.
+V dolní části zobrazení diagramu se zobrazí tato tlačítka: přiblížit, oddálit, přiblížit podle potřeby, zvětšit 100%, zamknout rozložení. Tlačítko **Uzamknout rozložení** zabraňuje nechtěnému přesunu tabulek a kanálů v zobrazení diagramu. Ve výchozím nastavení je zapnutý. Můžete ji vypnout a přesunout entity kolem diagramu. Když ho vypnete, můžete k automatickému umístění tabulek a kanálů použít poslední tlačítko. Můžete také přiblížit nebo oddálit pomocí kolečka myši.
 
 ![Příkazy lupy zobrazení diagramu](./media/data-factory-monitor-manage-app/DiagramViewZoomCommands.png)
 
@@ -159,7 +159,7 @@ Okna aktivit můžou být v jednom z následujících stavů:
 
 <table>
 <tr>
-    <th align="left">Stav</th><th align="left">SubStatus</th><th align="left">Popis</th>
+    <th align="left">Status</th><th align="left">SubStatus</th><th align="left">Popis</th>
 </tr>
 <tr>
     <td rowspan="8">Čekání</td><td>ScheduleTime</td><td>Čas nepřijde o spuštění okna aktivity.</td>
@@ -180,14 +180,14 @@ Okna aktivit můžou být v jednom z následujících stavů:
 <td>Retry</td><td>Probíhá pokus o opakované spuštění aktivity.</td>
 </tr>
 <tr>
-<td>Ověřování</td><td>Ověřování ještě nebylo zahájeno.</td>
+<td>Ověření</td><td>Ověřování ještě nebylo zahájeno.</td>
 </tr>
 <tr>
 <td>ValidationRetry</td><td>Ověřování čeká na opakování.</td>
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Probíhá zpracování</td><td>Ověřování platnosti</td><td>Probíhá ověřování.</td>
+<td rowspan="2">InProgress</td><td>Opětovné</td><td>Probíhá ověřování.</td>
 </tr>
 <td>-</td>
 <td>Zpracovává se okno aktivity.</td>
@@ -199,18 +199,18 @@ Okna aktivit můžou být v jednom z následujících stavů:
 <td>Zrušeno</td><td>Činnost okna byla zrušena uživatelem.</td>
 </tr>
 <tr>
-<td>Ověřování</td><td>Ověření se nezdařilo.</td>
+<td>Ověření</td><td>Ověření se nezdařilo.</td>
 </tr>
 <tr>
 <td>-</td><td>Nepodařilo se vygenerovat nebo ověřit okno aktivity.</td>
 </tr>
-<td>Připraven</td><td>-</td><td>Okno aktivity je připravené na spotřebu.</td>
+<td>Připraveno</td><td>-</td><td>Okno aktivity je připravené na spotřebu.</td>
 </tr>
 <tr>
 <td>Přeskočeno</td><td>-</td><td>Okno aktivity nebylo zpracováno.</td>
 </tr>
 <tr>
-<td>Žádné</td><td>-</td><td>Okno aktivity použité pro existenci jiného stavu, ale bylo resetováno.</td>
+<td>Žádný</td><td>-</td><td>Okno aktivity použité pro existenci jiného stavu, ale bylo resetováno.</td>
 </tr>
 </table>
 
@@ -222,10 +222,10 @@ Když v seznamu kliknete na okno aktivity, zobrazí se vám podrobnosti v **Prů
 ### <a name="refresh-activity-windows"></a>Aktualizovat okna aktivity
 Podrobnosti se neaktualizují automaticky, proto pomocí tlačítka Aktualizovat (druhé tlačítko) na panelu příkazů ručně aktualizujte seznam oken aktivit.  
 
-### <a name="properties-window"></a>Vlastnosti – okno
+### <a name="properties-window"></a>okno Vlastnosti
 Okno Vlastnosti je v pravém krajním podokně aplikace pro monitorování a správu.
 
-![Vlastnosti – okno](./media/data-factory-monitor-manage-app/PropertiesWindow.png)
+![okno Vlastnosti](./media/data-factory-monitor-manage-app/PropertiesWindow.png)
 
 Zobrazuje vlastnosti položky, kterou jste vybrali v seznamu Průzkumník prostředků (stromové zobrazení), zobrazení diagramu nebo okna aktivit.
 
@@ -266,11 +266,11 @@ Na panelu příkazů změňte nastavení **čas spuštění** a čas **ukončen�
 >
 >
 
-V **seznamu okna aktivit**klikněte na název sloupce (například: Stav).
+V **seznamu okna aktivit**klikněte na název sloupce (například: stav).
 
 ![Nabídka sloupce seznamu oken aktivity](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 
-Můžete provádět následující akce:
+Můžete provést následující akce:
 
 * Řazení ve vzestupném pořadí.
 * Seřadit v sestupném pořadí.
@@ -286,10 +286,10 @@ Pomocí stejného překryvného okna můžete filtry vymazat. Chcete-li vymazat 
 
 ## <a name="perform-batch-actions"></a>Provést akce dávky
 ### <a name="rerun-selected-activity-windows"></a>Znovu spustit vybraná okna aktivity
-Vyberte okno aktivity, klikněte na šipku dolů u prvního tlačítka panelu příkazů a vyberte **znovu** / spustit**znovu s možností nadřazený v kanálu**. Když vyberete možnost **znovu spustit s nadřazeným kanálem v kanálu, znovu** se spustí také všechna okna s nadřazenými aktivitami.
-    ![Znovu spustit okno aktivity](./media/data-factory-monitor-manage-app/ReRunSlice.png)
+Vyberte okno aktivity, klikněte na šipku dolů u prvního tlačítka panelu příkazů a vyberte možnost **znovu spustit** / **znovu s možností inproud v kanálu**. Když vyberete možnost **znovu spustit s nadřazeným kanálem v kanálu, znovu** se spustí také všechna okna s nadřazenými aktivitami.
+    ![znovu spustit okno aktivity](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
-V seznamu můžete také vybrat několik oken aktivit a znovu je spustit. Můžete chtít filtrovat okna aktivit na základě stavu (například: **Neúspěšné**) -a pak znovu spusťte okna nezdařené aktivity po opravě problému, který způsobí selhání okna aktivity. Podrobnosti o oknech aktivity filtrování v seznamu najdete v následující části.  
+V seznamu můžete také vybrat několik oken aktivit a znovu je spustit. Můžete chtít filtrovat okna aktivit na základě stavu (například **selhání**) – a pak znovu spustit okna nezdařené aktivity po opravě problému, který způsobí selhání okna aktivity. Podrobnosti o oknech aktivity filtrování v seznamu najdete v následující části.  
 
 ### <a name="pauseresume-multiple-pipelines"></a>Pozastavení/obnovení více kanálů
 Můžete vybrat dva nebo více kanálů pomocí klávesy CTRL. K pozastavení nebo obnovení můžete použít tlačítka panelu příkazů (zvýrazněná v červeném obdélníku na následujícím obrázku).

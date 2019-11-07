@@ -1,5 +1,5 @@
 ---
-title: Vítá vás aplikace wingtips-Azure SQL Database | Microsoft Docs
+title: 'Vítá vás aplikace wingtips – Azure SQL Database '
 description: Přečtěte si o modelech databázové architektury a o ukázkové aplikaci wingtips SaaS pro Azure SQL Database v cloudovém prostředí.
 keywords: kurz k sql database
 services: sql-database
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 01/25/2019
-ms.openlocfilehash: ca534d3ffcfd1d4caeb9cf755934a846fafae26e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6b8cb9bed2f5fdd0b246e73c84731081d0f2e41e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570110"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691818"
 ---
 # <a name="the-wingtip-tickets-saas-application"></a>Aplikace SaaS lístky Wingtip
 
@@ -51,7 +51,7 @@ Tento vzor také umožňuje *hybridní* model, ve kterém je možné optimalizov
 
 Přečtěte si [kurzy][docs-tutorials-for-wingtip-mt] a kód na GitHubu [. ../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt].
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 #### <a name="conceptual-descriptions"></a>Koncepční popisy
 

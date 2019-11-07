@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 08/15/2019
+ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e9d262380a8e0769b1191673a7e00eed770f7ab2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 387ba970aed68a5f4e682f932a362d3b04b35b8d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497075"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671458"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využití modelu Azure Machine Learning nasazeného jako webové služby
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -48,7 +48,7 @@ Třída [AzureML. Core. WebService](https://docs.microsoft.com/python/api/azurem
 
 Existují tři způsoby, jak načíst tyto informace pro nasazené webové služby:
 
-* Při nasazení modelu se vrátí objekt `Webservice` s informacemi o této službě:
+* Při nasazení modelu se vrátí objekt `Webservice` s informacemi o službě:
 
     ```python
     service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
@@ -65,7 +65,7 @@ Existují tři způsoby, jak načíst tyto informace pro nasazené webové služ
     print(services[0].swagger_uri)
     ```
 
-* Pokud znáte název nasazené služby, můžete vytvořit novou instanci `Webservice` a jako parametry zadejte název pracovního prostoru a služby. Nový objekt obsahuje informace o nasazené službě.
+* Pokud znáte název nasazené služby, můžete vytvořit novou instanci `Webservice`a jako parametry zadejte název pracovního prostoru a služby. Nový objekt obsahuje informace o nasazené službě.
 
     ```python
     service = Webservice(workspace=ws, name='myservice')

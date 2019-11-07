@@ -1,5 +1,5 @@
 ---
-title: Transformace dat pomocí toku dat mapování v Azure Data Factory | Microsoft Docs
+title: Transformace dat pomocí toku dat mapování v Azure Data Factory
 description: V tomto kurzu najdete podrobné pokyny pro použití Azure Data Factory k transformaci dat pomocí toku dat s mapováním.
 author: djpmsft
 ms.author: daperlov
@@ -7,12 +7,12 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 5b618798c74393f3e7d89cfc69c67ba831356ce4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 886e6e659dee2a898167054c5d76bc3977f27e11
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72385559"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683642"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Transformace dat pomocí mapování toků dat
 
@@ -29,7 +29,7 @@ V tomto kurzu provedete následující kroky:
 > * Testovací spuštění kanálu
 > * Monitorování aktivity toku dat
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet služby Azure Storage**. ADLS Storage použijete jako *zdrojová* úložiště a úložiště dat *jímky* . Pokud účet úložiště nemáte, přečtěte si téma [Vytvoření účtu služby Azure Storage](../storage/common/storage-quickstart-create-account.md), kde najdete postup jeho vytvoření.
 
@@ -40,7 +40,7 @@ Soubor, který v tomto kurzu transformuje, je MoviesDB. csv, který najdete [tad
 V tomto kroku vytvoříte datovou továrnu a otevřete Data Factory UX pro vytvoření kanálu v datové továrně. 
 
 1. Otevřete **Microsoft Edge** nebo **Google Chrome**. V současné době je Data Factory uživatelské rozhraní podporováno pouze ve webových prohlížečích Microsoft Edge a Google Chrome.
-2. V nabídce vlevo vyberte **vytvořit prostředek** > **Analýza** > **Data Factory**: 
+2. V nabídce vlevo vyberte **vytvořit prostředek** > **Analytics** > **Data Factory**: 
   
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -49,7 +49,7 @@ V tomto kroku vytvoříte datovou továrnu a otevřete Data Factory UX pro vytvo
    Název datové továrny Azure musí být *globálně jedinečný*. Pokud se zobrazí chybová zpráva týkající se hodnoty názvu, zadejte jiný název datové továrny. (například yournameADFTutorialDataFactory). Pravidla pro pojmenovávání artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
         
      ![Nová datová továrna](./media/doc-common-process/name-not-available-error.png)
-4. Vyberte **předplatné** Azure, v rámci kterého chcete datovou továrnu vytvořit. 
+4. Vyberte **předplatné** Azure, v rámci kterého chcete datovou továrnu vytvořit. 
 5. U položky **Skupina prostředků** proveďte jeden z následujících kroků:
      
     a. Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
@@ -59,7 +59,7 @@ V tomto kroku vytvoříte datovou továrnu a otevřete Data Factory UX pro vytvo
     Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md). 
 6. Jako **Verzi** vyberte **V2**.
 7. V části **Umístění** vyberte umístění datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (například Azure Storage a SQL Database) a výpočetní prostředí (například Azure HDInsight) používané datovou továrnou mohou být v jiných oblastech.
-8. Vyberte **Create** (Vytvořit). 
+8. Vyberte **Vytvořit**. 
 9. Po dokončení vytváření se zobrazí oznámení v centru oznámení. Vyberte **Přejít k prostředku** a přejděte na stránku Datová továrna.
 10. Vyberte **Vytvořit a monitorovat**. Na samostatné kartě se spustí uživatelské rozhraní služby Data Factory.
 
@@ -115,26 +115,26 @@ Po vytvoření toku dat se automaticky pošle na plátno toku dat. V tomto kroku
     ![Plátno toku dat](media/tutorial-data-flow/dataflow5.png)
 1. Pojmenujte transformaci filtru **FilterYears**. Kliknutím na pole výrazu vedle **filtru** otevřete Tvůrce výrazů. Tady zadáte podmínku filtrování. 
     
-    ![Filtrovat](media/tutorial-data-flow/filter1.png)
+    ![Filtr](media/tutorial-data-flow/filter1.png)
 1. Tvůrce výrazů toku dat umožňuje interaktivně vytvářet výrazy pro použití v různých transformacích. Výrazy mohou zahrnovat předdefinované funkce, sloupce ze vstupního schématu a uživatelsky definované parametry. Další informace o tom, jak sestavit výrazy, najdete v tématu [Tvůrce výrazů toku dat](concepts-data-flow-expression-builder.md).
     
-    V tomto kurzu chcete filtrovat filmy komedie žánrů, které se nacházely mezi roky 1910 a 2000. Protože rok je aktuálně řetězec, je nutné jej převést na celé číslo pomocí funkce ```toInteger()```. Použijte operátory větší než nebo rovno (> =) a menší než nebo rovno (< =) pro porovnání s hodnotami literálového roku 1910 a 200-. Sjednotte tyto výrazy spolu s operátorem and (& &). Výraz se vychází takto:
+    V tomto kurzu chcete filtrovat filmy komedie žánrů, které se nacházely mezi roky 1910 a 2000. Jelikož je rok v současnosti řetězec, je nutné jej převést na celé číslo pomocí funkce ```toInteger()```. Použijte operátory větší než nebo rovno (> =) a menší než nebo rovno (< =) pro porovnání s hodnotami literálového roku 1910 a 200-. Sjednotte tyto výrazy spolu s operátorem and (& &). Výraz se vychází takto:
 
     ```toInteger(year) >= 1910 && toInteger(year) <= 2000```
 
-    Chcete-li zjistit, které filmy jsou tyto, můžete pomocí funkce ```rlike()``` vyhledat vzor "komedie" ve žánrech sloupce. Sjednotí výraz rlike s porovnáním roků pro získání:
+    Chcete-li zjistit, které filmy jsou tyto, můžete použít funkci ```rlike()``` a vyhledat vzor "komedie" ve sloupcích žánrů. Sjednotí výraz rlike s porovnáním roků pro získání:
 
     ```toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')```
 
     Pokud máte aktivní cluster ladění, můžete svoji logiku ověřit kliknutím na **aktualizovat** , aby se zobrazil výstup výrazu v porovnání s použitými vstupy. Existuje více než jedna správná odpověď na to, jak tuto logiku můžete dosáhnout pomocí jazyka výrazů toku dat.
     
-    ![Filtrovat](media/tutorial-data-flow/filter2.png)
+    ![Filtr](media/tutorial-data-flow/filter2.png)
 
     Až budete s vaším výrazem hotovi, klikněte na **Uložit a dokončit** .
 
 1. Načte **Náhled dat** , aby se ověřilo, že filtr funguje správně.
     
-    ![Filtrovat](media/tutorial-data-flow/filter3.png)
+    ![Filtr](media/tutorial-data-flow/filter3.png)
 1. Další transformace, kterou přidáte, je **agregovaná** transformace v rámci **modifikátoru schématu**.
     
     ![Agregace](media/tutorial-data-flow/agg1.png)
@@ -144,7 +144,7 @@ Po vytvoření toku dat se automaticky pošle na plátno toku dat. V tomto kroku
 1. Přejít na kartu **agregace** . V levém textovém poli pojmenujte agregovaný sloupec **AverageComedyRating**. Klikněte na pravé pole výrazu a zadejte agregační výraz pomocí Tvůrce výrazů.
     
     ![Agregace](media/tutorial-data-flow/agg3.png)
-1. Chcete-li získat průměr **hodnocení**sloupce, použijte agregační funkci ```avg()```. Protože **hodnocení** je řetězec a ```avg()``` přebírá numerické vstupy, je nutné hodnotu převést na číslo prostřednictvím funkce ```toInteger()```. Výraz vypadá takto:
+1. Chcete-li získat průměr **hodnocení**sloupce, použijte agregační funkci ```avg()```. Když je **hodnocení** řetězec a ```avg()``` přebírá numerické vstupy, je nutné hodnotu převést na číslo prostřednictvím funkce ```toInteger()```. Výraz vypadá takto:
 
     ```avg(toInteger(Rating))```
     
@@ -184,10 +184,10 @@ Kanál můžete ladit před jeho publikováním. V tomto kroku budete aktivovat 
     ![Kanál](media/tutorial-data-flow/pipeline2.png)
 1. V podokně monitorování můžete zobrazit počet řádků a čas strávený v každém kroku transformace.
     
-    ![Sledování](media/tutorial-data-flow/pipeline3.png)
+    ![Monitorování](media/tutorial-data-flow/pipeline3.png)
 1. Kliknutím na transformaci získáte podrobné informace o sloupcích a vytváření oddílů dat.
     
-    ![Sledování](media/tutorial-data-flow/pipeline4.png)
+    ![Monitorování](media/tutorial-data-flow/pipeline4.png)
 
 Pokud jste postupovali podle tohoto kurzu správně, měli byste do složky jímky zapsat 83 řádků a 2 sloupce. Správnost dat můžete ověřit kontrolou úložiště objektů BLOB.
 

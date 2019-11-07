@@ -1,6 +1,6 @@
 ---
 title: Příprava modelu pro nasazení
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Jak připravit vyškolený model pro nasazení jako webovou službu převodem výukového experimentu Machine Learning Studio (Classic) na prediktivní experiment.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: caaed83417ac1eaadc407fb12dc8bb360aae45ec
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e24393783dac0f918009f3138f31bdda98bbd22e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493273"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684854"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio-classic"></a>Postup přípravy modelu pro nasazení v Azure Machine Learning Studio (Classic)
 
@@ -115,7 +115,7 @@ Teď, když je prediktivní experiment dostatečně připravený, můžete ho na
 
 Další informace o dokončeném procesu nasazení najdete v tématu [nasazení webové služby Azure Machine Learning][deploy] .
 
-[deploy]: publish-a-machine-learning-web-service.md
+[deploy]: deploy-a-machine-learning-web-service.md
 
 <!-- Module References -->
 [clean-missing-data]: https://msdn.microsoft.com/library/azure/d2c5ca2f-7323-41a3-9b7e-da917c99f0c4/

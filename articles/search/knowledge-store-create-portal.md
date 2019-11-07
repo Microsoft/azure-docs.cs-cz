@@ -8,12 +8,12 @@ ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 16dd63e22182dedb4af97c2ef6238e6628778467
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: MT
+ms.openlocfilehash: 689b5aa0cd8a5fb310925b2c52baeec6860af0d5
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485169"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607078"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Rychlý Start: vytvoření služby Azure Kognitivní hledání Knowledge Store v Azure Portal
 
@@ -87,7 +87,7 @@ V tomto kroku průvodce vytvoříte dovednosti s obohacením vnímání dovednos
 1. Rozbalte položku **připojit Cognitive Services**. Ve výchozím nastavení je vybrané **bezplatné (omezená rozšíření)** . Tento prostředek můžete použít, protože počet záznamů v HotelReviews-Free. CSV je 19 a tento bezplatný prostředek umožňuje až 20 transakcí za den.
 1. Rozbalte možnost **Přidat dovednosti rozpoznávání**.
 1. Do **dovednosti název**zadejte `hotel-reviews-ss`.
-1. V **poli zdrojová data**zadejte **reviews_text*.
+1. V **poli zdrojová data**zadejte **reviews_text**.
 1. Pro **úroveň podrobností obohacení**vyberte **stránky (5000 znaků bloků dat)** .
 1. Vyberte tyto dovednosti v rozpoznávání:
     + **Extrakce klíčových frází**

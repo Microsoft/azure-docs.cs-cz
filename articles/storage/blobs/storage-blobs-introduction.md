@@ -1,19 +1,19 @@
 ---
-title: Seznámení se službou Blob Storage – úložiště objektů v Azure
+title: Seznámení s úložištěm objektů BLOB (Object) – Azure Storage
 description: Do Azure Blob Storage můžete ukládat velké objemy dat nestrukturovaných objektových dat, jako jsou textová nebo binární data. Služba Azure Blob Storage je vysoce škálovatelná a dostupná. Klienti mají k datům objektů ve službě Blob Storage přístup z PowerShellu nebo Azure CLI, programově prostřednictvím klientských knihoven Azure Storage nebo přes REST.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: overview
-ms.date: 05/24/2019
+ms.date: 11/04/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b54f69edfebca2786ec996b1ca71cea933179b58
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 51f72011b89656d8f56e996d4654a2714f2f482b
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69641033"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615603"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Seznámení se službou Azure Blob Storage
 
@@ -43,12 +43,12 @@ http://mystorageaccount.blob.core.windows.net
 
 Informace o vytvoření účtu úložiště najdete v tématu [Vytvoření účtu úložiště](../common/storage-quickstart-create-account.md). Další informace o účtech úložiště najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-### <a name="containers"></a>Containers
+### <a name="containers"></a>Kontejnery
 
 Kontejner uspořádá sadu objektů blob, podobně jako adresář v systému souborů. Účet úložiště může zahrnovat neomezený počet kontejnerů a v každém kontejneru může být neomezený počet objektů blob. 
 
   > [!NOTE]
-  > Názvy kontejnerů musí obsahovat jenom malá písmena. Další informace o pojmenování kontejnerů najdete v tématu pojmenování [kontejnerů, objektů BLOB a metadat a odkazování](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)na ně.
+  > Názvy kontejnerů musí obsahovat jenom malá písmena. Další informace o pojmenování kontejnerů najdete v tématu [pojmenování kontejnerů, objektů BLOB a metadat a odkazování](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)na ně.
 
 ### <a name="blobs"></a>Objekty blob
  
@@ -71,7 +71,7 @@ Pro migraci stávajících dat do úložiště objektů BLOB existuje několik �
 - Služba **Azure Data box** je k dispozici pro přenos místních dat do úložiště objektů blob, pokud velké datové sady nebo omezení sítě odesílají data prostřednictvím nereálného datového spojení. V závislosti na velikosti dat můžete od Microsoftu požádat o [Azure Data box disk](../../databox/data-box-disk-overview.md), [Azure Data box](../../databox/data-box-overview.md)nebo [Azure Data box Heavy](../../databox/data-box-heavy-overview.md) zařízení. Data pak můžete zkopírovat do těchto zařízení a odeslat je zpátky do Microsoftu, aby se nahráli do úložiště objektů BLOB.
 - **Služba Azure import/export** nabízí způsob, jak importovat nebo exportovat velké objemy dat do a z účtu úložiště pomocí pevných disků, které zadáte. Další informace najdete v tématu [použití služby Microsoft Azure import/export k přenosu dat do úložiště objektů BLOB](../common/storage-import-export-service.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření účtu úložiště](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Azure Storage škálovatelnost a výkonnostní cíle](../common/storage-scalability-targets.md)

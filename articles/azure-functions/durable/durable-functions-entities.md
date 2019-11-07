@@ -7,22 +7,22 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: overview
-ms.date: 08/31/2019
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: e3a83730e47686e9d4757f057d2e8da4629fdd7a
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 1a9ad16d6ecd7e75848ca1ea56e6238ee3b29c2d
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312139"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614950"
 ---
-# <a name="entity-functions-preview"></a>Funkce entit (Preview)
+# <a name="entity-functions"></a>Funkce entit
 
 Funkce entit definují operace pro čtení a aktualizaci malých částí stavu, označovaných jako *odolné entity*. Podobně jako funkce nástroje Orchestrator jsou funkce entit funkce se speciálním typem triggeru, *triggerem entity*. Na rozdíl od funkcí Orchestrator nástroj entity Functions spravuje stav entity explicitně, spíše než implicitně představující stav prostřednictvím toku řízení.
 Entity poskytují prostředky pro horizontální navýšení kapacity aplikací tím, že distribuují práci napříč mnoha entitami, každý s mírným stavem.
 
 > [!NOTE]
-> Funkce entit a související funkce jsou dostupné jenom v Durable Functions 2,0 a novějších. Funkce entit jsou momentálně ve verzi Public Preview.
+> Funkce entit a související funkce jsou dostupné jenom v Durable Functions 2,0 a novějších.
 
 ## <a name="general-concepts"></a>Obecné koncepty
 
@@ -36,7 +36,7 @@ K entitám se dostanete pomocí jedinečného identifikátoru *ID entity*. ID en
 * **Název entity**: název, který identifikuje typ entity (například "čítač"). Tento název se musí shodovat s názvem funkce entity, která implementuje entitu. Nerozlišuje se případ.
 * **Klíč entity**: řetězec, který jedinečně identifikuje entitu mezi všemi ostatními entitami stejného názvu (například GUID).
 
-Například funkce entita *čítače* může být použita k udržení skóre v online hře. Každá instance hry bude mít jedinečné ID entity, například `@Counter@Game1`, `@Counter@Game2` atd. Všechny operace, které cílí na konkrétní entitu, vyžadují zadání ID entity jako parametru.
+Například funkce entita *čítače* může být použita k udržení skóre v online hře. Každá instance hry bude mít jedinečné ID entity, například `@Counter@Game1`, `@Counter@Game2`atd. Všechny operace, které cílí na konkrétní entitu, vyžadují zadání ID entity jako parametru.
 
 ### <a name="entity-operations"></a>Operace s entitami ###
 
@@ -58,9 +58,9 @@ V současnosti nabízíme dvě různá rozhraní API pro definování entit.
 
 **Syntaxe založená na třídě** , kde jsou entity a operace reprezentovány třídami a metodami. Tato syntaxe vytváří snadněji čitelný kód a umožňuje, aby operace byly vyvolány způsobem bezpečným pro typ. Syntaxe založená na třídě je pouze tenká vrstva nad syntaxí založenou na funkci, takže obě varianty lze ve stejné aplikaci použít zaměnitelné.
 
-### <a name="example-function-based-syntax"></a>Příklad: syntaxe založená na funkcích
+### <a name="example-function-based-syntax---c"></a>Příklad: syntaxe založená na funkcích –C#
 
-Následující kód je příkladem jednoduché entity *čítače* implementované jako trvalá funkce. Tato funkce definuje tři operace, `add`, `reset` a `get`, z nichž každý pracuje na celočíselném stavu.
+Následující kód je příkladem jednoduché entity *čítače* implementované jako trvalá funkce. Tato funkce definuje tři operace, `add`, `reset`a `get`, z nichž každá funguje v celočíselném stavu.
 
 ```csharp
 [FunctionName("Counter")]
@@ -83,9 +83,9 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 
 Další informace o syntaxi založené na funkcích a způsobu jejich použití naleznete v tématu [syntaxe založená na funkcích](durable-functions-dotnet-entities.md#function-based-syntax).
 
-### <a name="example-class-based-syntax"></a>Příklad: syntaxe založená na třídě
+### <a name="example-class-based-syntax---c"></a>Příklad: syntaxe založená na třídě-C#
 
-Následující příklad je ekvivalentní implementace entity `Counter` pomocí tříd a metod.
+Následující příklad je ekvivalentní implementace `Counter` entity pomocí tříd a metod.
 
 ```csharp
 [JsonObject(MemberSerialization.OptIn)]
@@ -109,6 +109,45 @@ public class Counter
 Stav této entity je objekt typu `Counter`, který obsahuje pole, které ukládá aktuální hodnotu čítače. Chcete-li zachovat tento objekt v úložišti, je serializován a rekonstruován knihovnou [JSON.NET](https://www.newtonsoft.com/json) . 
 
 Další informace o syntaxi založené na třídě a způsobu jejich použití naleznete v tématu [definování tříd entit](durable-functions-dotnet-entities.md#defining-entity-classes).
+
+### <a name="example-javascript-entity"></a>Příklad: entita JavaScript
+
+Trvalé entity jsou k dispozici v JavaScriptu počínaje verzí **1.3.0** balíčku `durable-functions` npm. Následující kód je entita *čítače* implementovaná jako trvalá funkce napsaná v JavaScriptu.
+
+**Function. JSON**
+```json
+{
+  "bindings": [
+    {
+      "name": "context",
+      "type": "entityTrigger",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+**index. js**
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.entity(function(context) {
+    const currentValue = context.df.getState(() => 0);
+    switch (context.df.operationName) {
+        case "add":
+            const amount = context.df.getInput();
+            context.df.setState(currentValue + amount);
+            break;
+        case "reset":
+            context.df.setState(0);
+            break;
+        case "get":
+            context.df.return(currentValue);
+            break;
+    }
+});
+```
 
 ## <a name="accessing-entities"></a>Přístup k entitám
 
@@ -145,6 +184,16 @@ public static Task Run(
 }
 ```
 
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    const entityId = new df.EntityId("Counter", "myCounter");
+    await context.df.signalEntity(entityId, "add", 1);
+};
+```
+
 Termínový *signál* znamená, že volání rozhraní API entity je jednosměrné a asynchronní. Pro *funkci klienta* není možné zjistit, kdy entita tuto operaci zpracovala. Funkce klienta navíc nemůže sledovat žádné hodnoty výsledků ani výjimky. 
 
 ### <a name="example-client-reads-an-entity-state"></a>Příklad: klient přečte stav entity.
@@ -163,6 +212,16 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    const entityId = new df.EntityId("Counter", "myCounter");
+    return context.df.readEntityState(entityId);
+};
+```
+
 Dotazy na stav entity se odesílají do trvalého úložiště sledování a vracejí poslední *trvalý* stav entity. Tento stav je vždy stav "potvrzený", to znamená, že se během provádění operace nikdy dokončí dočasný přechodný stav. Je ale možné, že je tento stav zastaralý ve srovnání se stavem v paměti entity. Pouze orchestrace mohou číst stav v paměti entity, jak je popsáno v následující části.
 
 ### <a name="example-orchestration-signals-and-calls-an-entity"></a>Příklad: signály Orchestrace a volání entity
@@ -176,7 +235,7 @@ public static async Task Run(
 {
     var entityId = new EntityId(nameof(Counter), "myCounter");
 
-   // Two-way call to the entity which returns a value - awaits the response
+    // Two-way call to the entity which returns a value - awaits the response
     int currentValue = await context.CallEntityAsync<int>(entityId, "Get");
     if (currentValue < 10)
     {
@@ -184,6 +243,21 @@ public static async Task Run(
         context.SignalEntity(entityId, "Add", 1);
     }
 }
+```
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context){
+    const entityId = new df.EntityId("Counter", "myCounter");
+
+    // Two-way call to the entity which returns a value - awaits the response
+    currentValue = yield context.df.callEntity(entityId, "get");
+    if (currentValue < 10) {
+        // One-way signal to the entity which updates the value - does not await a response
+        yield context.df.signalEntity(entityId, "add", 1);
+    }
+});
 ```
 
 Pouze orchestrace jsou schopny volat entity a získat odpověď, což může být buď návratová hodnota, nebo výjimka. Klientské funkce využívající [vazbu klienta](durable-functions-bindings.md#entity-client) mohou *signalizovat* pouze entity.
@@ -198,87 +272,38 @@ Například můžeme upravit výše uvedený příklad entity čítače, aby moh
 
 ```csharp
    case "add":
+        var currentValue = ctx.GetState<int>();
         var amount = ctx.GetInput<int>();
         if (currentValue < 100 && currentValue + amount >= 100)
         {
             ctx.SignalEntity(new EntityId("MonitorEntity", ""), "milestone-reached", ctx.EntityKey);
         }
-        currentValue += amount;
+
+        ctx.SetState(currentValue + amount);
         break;
 ```
 
-Následující fragment kódu ukazuje, jak začlenit vloženou službu do vaší třídy entit.
-
-```csharp
-public class HttpEntity
-{
-    private readonly HttpClient client;
-
-    public HttpEntity(IHttpClientFactory factory)
-    {
-        this.client = factory.CreateClient();
-    }
-
-    public async Task<int> GetAsync(string url)
-    {
-        using (var response = await this.client.GetAsync(url))
-        {
-            return (int)response.StatusCode;
+```javascript
+    case "add":
+        const amount = context.df.getInput();
+        if (currentValue < 100 && currentValue + amount >= 100) {
+            const entityId = new df.EntityId("MonitorEntity", "");
+            context.df.signalEntity(entityId, "milestone-reached", context.df.instanceId);
         }
-    }
-
-    // The function entry point must be declared static
-    [FunctionName(nameof(HttpEntity))]
-    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
-        => ctx.DispatchAsync<HttpEntity>();
-}
+        context.df.setState(currentValue + amount);
+        break;
 ```
-
-> [!NOTE]
-> Na rozdíl od při použití injektáže konstruktoru v běžném Azure Functions .NET *musí* být metoda vstupního bodu služby Functions pro entity založené na třídě deklarována `static`. Deklarace vstupního bodu nestatické funkce může způsobit konflikty mezi normálním inicializátorem objektu Azure Functions a inicializátorem objektu trvalé entity.
-
-### <a name="bindings-in-entity-classes-net"></a>Vazby v třídách entit (.NET)
-
-Na rozdíl od regulárních funkcí nemají metody třídy entit přímý přístup k vstupní a výstupní vazbě. Místo toho musí být vazba dat zachycena v deklaraci funkce vstupního bodu a poté předána metodě `DispatchAsync<T>`. Všechny objekty předané do `DispatchAsync<T>` budou automaticky předány do konstruktoru třídy entity jako argument.
-
-Následující příklad ukazuje, jak lze zpřístupnit odkaz `CloudBlobContainer` ze [vstupní vazby objektu BLOB](../functions-bindings-storage-blob.md#input) na entitu založenou na třídě.
-
-```csharp
-public class BlobBackedEntity
-{
-    private readonly CloudBlobContainer container;
-
-    public BlobBackedEntity(CloudBlobContainer container)
-    {
-        this.container = container;
-    }
-
-    // ... entity methods can use this.container in their implementations ...
-    
-    [FunctionName(nameof(BlobBackedEntity))]
-    public static Task Run(
-        [EntityTrigger] IDurableEntityContext context,
-        [Blob("my-container", FileAccess.Read)] CloudBlobContainer container)
-    {
-        // passing the binding object as a parameter makes it available to the
-        // entity class constructor
-        return context.DispatchAsync<BlobBackedEntity>(container);
-    }
-}
-```
-
-Další informace o vazbách v Azure Functions naleznete v dokumentaci k [aktivačním událostem Azure functions a vazebm](../functions-triggers-bindings.md) .
 
 ## <a name="entity-coordination"></a>Koordinace entit
 
 Může nastat situace, kdy potřebujete koordinovat operace mezi několika entitami. Například v bankovní aplikaci můžete mít entity, které představují jednotlivé bankovní účty. Při převádění finančních prostředků z jednoho účtu na jiný je potřeba zajistit, aby měl _zdrojový_ účet dostatečné prostředky a aby se aktualizace _zdrojového_ i _cílového_ účtu prováděly nevhodným způsobem.
 
-### <a name="example-transfer-funds"></a>Příklad: přenosové prostředky
+### <a name="example-transfer-funds-c"></a>Příklad: převodní prostředky (C#)
 
 Následující příklad kódu přenáší prostředky mezi dvěma entitami _účtu_ pomocí funkce Orchestrator. Koordinace aktualizací entit vyžaduje použití metody `LockAsync` k vytvoření _kritické části_ v orchestraci:
 
 > [!NOTE]
-> Pro zjednodušení tento příklad znovu používá dříve definovanou entitu `Counter`. V reálné aplikaci je ale lepší místo toho definovat podrobnější entitu `BankAccount`.
+> Pro zjednodušení tento příklad znovu používá dříve definovanou entitu `Counter`. V reálné aplikaci je ale lepší místo toho definovat podrobnější `BankAccount` entitu.
 
 ```csharp
 // This is a method called by an orchestrator function
@@ -320,16 +345,16 @@ public static async Task<bool> TransferFundsAsync(
 }
 ```
 
-V rozhraní .NET `LockAsync` vrátí `IDisposable`, které po vyřazení ukončí oddíl kritické. Tento @no__t výsledek lze použít společně s blokem `using` pro získání syntaktické reprezentace důležité části.
+V rozhraní .NET `LockAsync` vrátí `IDisposable`, který po vyřazení ukončí oddíl kritické. Tento `IDisposable` výsledek lze použít společně s blokem `using` pro získání syntaktické reprezentace důležité části.
 
-V předchozím příkladu funkce Orchestrator přenesla prostředky ze _zdrojové_ entity na _cílovou_ entitu. Metoda `LockAsync` uzamkl entity _zdrojového_ i _cílového_ účtu. Toto zamykání zajišťuje, že žádný jiný klient by nemohl zadat dotaz nebo změnit stav obou účtů, dokud logika orchestrace neukončila _kritickou část_ na konci příkazu `using`. To účinně zabránilo tomu, aby bylo možné přečerpání ze _zdrojového_ účtu.
+V předchozím příkladu funkce Orchestrator přenesla prostředky ze _zdrojové_ entity na _cílovou_ entitu. Metoda `LockAsync` uzamkl entity _zdrojového_ i _cílového_ účtu. Toto uzamykání zajišťuje, že žádný jiný klient by nemohl zadat dotaz nebo změnit stav obou účtů, dokud logika orchestrace neukončila _kritickou část_ na konci `using`ho příkazu. Toto chování brání v tom, aby bylo možné přečerpání ze _zdrojového_ účtu.
 
 > [!NOTE] 
 > Když orchestrace skončí (obvykle nebo s chybou), všechny kritické oddíly v průběhu jsou implicitně ukončeny a všechny zámky jsou uvolněny.
 
 ### <a name="critical-section-behavior"></a>Kritické chování oddílu
 
-Metoda `LockAsync` vytvoří _kritickou část_ v orchestraci. Tyto _kritické oddíly_ zabraňují jiným orchestraci v provádění překrývajících se změn v zadané sadě entit. Rozhraní API `LockAsync` interně odesílá do entit operace "Lock" a vrátí, když obdrží zprávu s odpovědí "zámek" z každé z těchto stejných entit. *Zámky* i *odemknutí* jsou integrované operace podporované všemi entitami.
+Metoda `LockAsync` vytvoří _kritickou část_ v orchestraci. Tyto _kritické oddíly_ zabraňují jiným orchestraci v provádění překrývajících se změn v zadané sadě entit. Interně rozhraní `LockAsync` API pošle operace "Lock" do entit a vrátí, když obdrží zprávu s odpovědí "zámek" z každé z těchto stejných entit. *Zámky* i *odemknutí* jsou integrované operace podporované všemi entitami.
 
 V entitě, která je v uzamčeném stavu, nejsou povoleny žádné operace od jiných klientů. Toto chování zajistí, že entita může současně uzamknout pouze jedna instance orchestrace. Pokud se volající pokusí vyvolat operaci u entity, když je uzamčena orchestrací, tato operace bude umístěna do *fronty čekajících operací*. Dokud orchestrace podniku neuvolní zámek, nebudou zpracovány žádné probíhající operace.
 
@@ -354,7 +379,7 @@ Jakékoli porušení těchto pravidel způsobí chybu za běhu (například `Loc
 
 ## <a name="comparison-with-virtual-actors"></a>Porovnání s virtuálními aktéry
 
-Mnohé z funkcí trvalé entity nechte inspirovat [model actor](https://en.wikipedia.org/wiki/Actor_model). Pokud jste již obeznámeni s nástrojem Actors, můžete pochopit mnoho konceptů popsaných v tomto článku. Trvalé entity jsou obzvláště podobné [virtuálním aktérům](https://research.microsoft.com/projects/orleans/)nebo *zrnam*, jak je oblíbená v rámci [projektu Orleans](http://dotnet.github.io/orleans/). Například:
+Mnohé z funkcí trvalé entity nechte inspirovat [model actor](https://en.wikipedia.org/wiki/Actor_model). Pokud jste již obeznámeni s nástrojem Actors, můžete pochopit mnoho konceptů popsaných v tomto článku. Trvalé entity jsou obzvláště podobné [virtuálním aktérům](https://research.microsoft.com/projects/orleans/)nebo *zrnam*, jak je oblíbená v rámci [projektu Orleans](http://dotnet.github.io/orleans/). Příklad:
 
 * Trvalé entity jsou adresovatelné prostřednictvím *ID entity*.
 * Trvalé operace s entitami se v jednom okamžiku spouštějí po jednom, aby se zabránilo konfliktům časování.

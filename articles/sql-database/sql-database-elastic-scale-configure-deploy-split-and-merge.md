@@ -1,5 +1,5 @@
 ---
-title: Nasazení služby dělení a slučování | Microsoft Docs
+title: Nasazení služby dělení a slučování
 description: K přesouvání dat mezi databázemi horizontálně dělené slouží také rozdělené sloučení.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: a8c50f492c28bf1e009d15d6332e939959190a49
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 009fb4be61aad5c700c7520764e9414ed9422721
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568499"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690316"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Nasazení služby dělení a slučování pro přesun dat mezi databázemi horizontálně dělené
 
@@ -33,7 +33,7 @@ Nástroj pro dělení a slučování umožňuje přesouvat data mezi databázemi
 Soubory jsou umístěny v adresáři s názvem **Microsoft. Azure. SqlDatabase. ElasticScale. Service. SplitMerge. x. x. xxx. x** , kde *x. x. xxx. x* odráží číslo verze. V podadresáři **content\splitmerge\service** vyhledejte soubory služby pro dělení a sloučení PowerShellu (a požadované klientské knihovny DLL) v podadresáři **content\splitmerge\powershell** .
 
 ## <a name="prerequisites"></a>Požadavky
-1. Vytvořte databázi Azure SQL DB, která bude použita jako databáze stavu rozdělení a sloučení. Přejděte na [Azure Portal](https://portal.azure.com). Vytvoří nový **SQL Database**. Zadejte název databáze a vytvořte nového správce a heslo. Nezapomeňte si název a heslo zaznamenat pro pozdější použití.
+1. Vytvořte databázi Azure SQL DB, která bude použita jako databáze stavu rozdělení a sloučení. Přejděte na [portál Azure](https://portal.azure.com). Vytvoří nový **SQL Database**. Zadejte název databáze a vytvořte nového správce a heslo. Nezapomeňte si název a heslo zaznamenat pro pozdější použití.
 2. Ujistěte se, že váš server Azure SQL DB umožňuje, aby se k němu připojovaly služby Azure. Na portálu v **nastavení brány firewall**ověřte, že nastavení **povolený přístup ke službám Azure** je nastavené na **zapnuto**. Klikněte na ikonu Uložit.
 3. Vytvořte účet Azure Storage pro výstup diagnostiky.
 4. Vytvořte cloudovou službu Azure pro vaši službu pro dělení a slučování.
@@ -45,7 +45,7 @@ Soubory jsou umístěny v adresáři s názvem **Microsoft. Azure. SqlDatabase. 
 3. Vytvořte novou databázi nebo vyberte existující databázi, která bude sloužit jako stavová databáze pro operace dělení a slučování a načte připojovací řetězec této databáze. 
    
    > [!IMPORTANT]
-   > V tuto chvíli musí databáze stavu používat kolaci s latinkou (SQL\_latin1\_General\_CP1\_CI\_as). Další informace najdete v tématu [název řazení Windows (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx).
+   > V tuto chvíli musí databáze stavu používat kolaci s latinkou (SQL\_latin1\_obecné\_CP1\_CI\_AS). Další informace najdete v tématu [název řazení Windows (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx).
    >
 
    V případě služby Azure SQL DB je připojovací řetězec typicky ve tvaru:
@@ -89,7 +89,7 @@ Spusťte následující příkaz ze stejného okna, ve kterém bylo provedeno Ma
 6. Klikněte na **Dokončit** a pak na **OK**.
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>Nahrání souboru PFX do cloudové služby
-1. Přejděte na [Azure Portal](https://portal.azure.com).
+1. Přejděte na [portál Azure](https://portal.azure.com).
 2. Vyberte **Cloud Services**.
 3. Vyberte cloudovou službu, kterou jste vytvořili výše pro službu dělení a sloučení.
 4. V horní nabídce klikněte na **certifikáty** .
@@ -142,7 +142,7 @@ Pokud se vaše role pracovního procesu nepodaří přejít do režimu online, a
    ```
 
 * Zajistěte, aby název serveru nezačínal na **https://** .
-* Ujistěte se, že váš server Azure SQL DB umožňuje, aby se k němu připojovaly služby Azure. Chcete-li to provést, otevřete databázi na portálu a ověřte, že **povolit přístup ke službám Azure** nastavená na **na**.
+* Ujistěte se, že váš server Azure SQL DB umožňuje, aby se k němu připojovaly služby Azure. Pokud to chcete provést, otevřete databázi na portálu a ujistěte se, že nastavení **Povolit přístup ke službám Azure** je nastaveno na * * zapnuto * * * *.
 
 ## <a name="test-the-service-deployment"></a>Testování nasazení služby
 ### <a name="connect-with-a-web-browser"></a>Připojení pomocí webového prohlížeče
@@ -165,7 +165,7 @@ K dispozici jsou tyto soubory skriptu:
        <th>Kroky</th>
      </tr>
      <tr>
-       <th rowspan="5">SetupSampleSplitMergeEnvironment.ps1</th>
+       <th rowspan="5">SetupSampleSplitMergeEnvironment. ps1</th>
        <td>1.    Vytvoří databázi správce mapy horizontálních oddílů.</td>
      </tr>
      <tr>
@@ -187,7 +187,7 @@ K dispozici jsou tyto soubory skriptu:
        <th>Kroky</th>
      </tr>
    <tr>
-       <th rowspan="4">ExecuteSampleSplitMerge.ps1 </th>
+       <th rowspan="4">ExecuteSampleSplitMerge. ps1 </th>
        <td>1.    Odešle požadavek na rozdělení na webový front-end Service, který rozdělí polovinu dat z prvního horizontálních oddílů do druhé horizontálních oddílů.</td>
      </tr>
      <tr>

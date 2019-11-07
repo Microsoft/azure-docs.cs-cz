@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup: Zálohování virtuálních počítačů Azure pomocí REST API'
+title: 'Azure Backup: zálohování virtuálních počítačů Azure pomocí REST API'
 description: Správa zálohovacích operací zálohování virtuálních počítačů Azure pomocí REST API
 ms.reviewer: pullabhk
 author: dcurwin
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 701972c32f3e80682e2a20d04b02bcd555532e08
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 837401256aa264a527e2323b055713f4bd8e8d1c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954979"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671689"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Zálohování virtuálního počítače Azure pomocí Azure Backup přes REST API
 
@@ -35,22 +35,22 @@ Nejdřív by měl být trezor schopný identifikovat virtuální počítač Azur
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
 ```
 
-Identifikátor URI příspěvku má `{subscriptionId}`, `{vaultName}`, `{vaultresourceGroupName}`, `{fabricName}` parametry. `{fabricName}` Je "Azure". Jak je v našem příkladu `{vaultName}` , je "testVault" `{vaultresourceGroupName}` a je "testVaultRG". Všechny požadované parametry jsou uvedeny v identifikátoru URI, takže nemusíte mít samostatný text požadavku.
+Identifikátor URI příspěvku má `{subscriptionId}`, `{vaultName}`, `{vaultresourceGroupName}`parametrů `{fabricName}`. `{fabricName}` je "Azure". Jak je znázorněno v našem příkladu, `{vaultName}` je "testVault" a `{vaultresourceGroupName}` je "testVaultRG". Všechny požadované parametry jsou uvedeny v identifikátoru URI, takže nemusíte mít samostatný text požadavku.
 
 ```http
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01
 ```
 
-#### <a name="responses"></a>Odpovědi
+#### <a name="responses"></a>Odezvy
 
 Operace Refresh je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Name  |Typ  |Popis  |
+|Name (Název)  |Typ  |Popis  |
 |---------|---------|---------|
 |204 bez obsahu     |         |  OK bez vráceného obsahu      |
-|202 přijato     |         |     Přijato    |
+|202 přijato     |         |     Přijata    |
 
 ##### <a name="example-responses"></a>Příklady odpovědí
 
@@ -98,7 +98,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="selecting-the-relevant-azure-vm"></a>Výběr relevantního virtuálního počítače Azure
 
- Můžete potvrdit, že se ukládá do mezipaměti výpisem [všech chráněných položek](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) v rámci předplatného a vyhledat požadovaný virtuální počítač v odpovědi. [Odezva této operace](#example-responses-1) také poskytuje informace o tom, jak Recovery Services identifikuje virtuální počítač.  Až budete s vzorem obeznámeni, můžete tento krok přeskočit a přímo přejít na [Povolení ochrany](#enabling-protection-for-the-azure-vm).
+ Můžete potvrdit, že se ukládá do mezipaměti [výpisem všech chráněných položek](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) v rámci předplatného a vyhledat požadovaný virtuální počítač v odpovědi. [Odezva této operace](#example-responses-1) také poskytuje informace o tom, jak Recovery Services identifikuje virtuální počítač.  Až budete s vzorem obeznámeni, můžete tento krok přeskočit a přímo přejít na [Povolení ochrany](#enabling-protection-for-the-azure-vm).
 
 Tato operace je operace *Get* .
 
@@ -110,7 +110,7 @@ Identifikátor URI *Get* má všechny požadované parametry. Není potřeba ž�
 
 ##### <a name="responses-1"></a>Požadavků
 
-|Name  |Typ  |Popis  |
+|Name (Název)  |Typ  |Popis  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
@@ -155,11 +155,11 @@ X-Powered-By: ASP.NET
 > [!TIP]
 > Počet hodnot v odpovědi *Get* je omezený na 200 pro ' Page '. K získání adresy URL pro další sadu odpovědí použijte pole ' nextLink '.
 
-Odpověď obsahuje seznam všech nechráněných virtuálních počítačů Azure a každý z nich `{value}` obsahuje všechny informace, které služba Azure Recovery vyžaduje ke konfiguraci zálohování. Pokud chcete nakonfigurovat zálohování, poznamenejte `{name}` si pole `{virtualMachineId}` a pole v `{properties}` části. Sestavte dvě proměnné z těchto hodnot polí, jak je uvedeno níže.
+Odpověď obsahuje seznam všech nechráněných virtuálních počítačů Azure a každý `{value}` obsahuje všechny informace, které služba Azure Recovery vyžaduje ke konfiguraci zálohování. Pokud chcete nakonfigurovat zálohování, poznamenejte si pole `{name}` a `{virtualMachineId}` pole v části `{properties}`. Sestavte dvě proměnné z těchto hodnot polí, jak je uvedeno níže.
 
-- ContainerName = "iaasvmcontainer;" +`{name}`
-- protectedItemName = "VM;" +`{name}`
-- `{virtualMachineId}`se používá později v [textu žádosti](#example-request-body) .
+- ContainerName = "iaasvmcontainer;" a`{name}`
+- protectedItemName = "VM;" a `{name}`
+- `{virtualMachineId}` se používá později v [textu žádosti](#example-request-body) .
 
 V příkladu jsou výše uvedené hodnoty přeloženy na:
 
@@ -176,17 +176,17 @@ Povolení ochrany je asynchronní operace *Put* , která vytvoří chráněnou p
 https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2016-12-01
 ```
 
-`{containerName}` A`{protectedItemName}` jsou sestaveny výše. `{fabricName}` Je "Azure". V našem příkladu se to týká:
+`{containerName}` a `{protectedItemName}` jsou sestavené výše. `{fabricName}` je "Azure". V našem příkladu se to týká:
 
 ```http
-PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2016-12-01
+PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2019-05-13
 ```
 
 #### <a name="create-the-request-body"></a>Vytvoření textu žádosti
 
 Chcete-li vytvořit chráněnou položku, níže jsou uvedené součásti textu žádosti.
 
-|Name  |Typ  |Popis  |
+|Name (Název)  |Typ  |Popis  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |Vlastnosti prostředku ProtectedItem         |
 
@@ -206,18 +206,18 @@ Následující text požadavku definuje vlastnosti vyžadované k vytvoření ch
 }
 ```
 
-Je výše zmíněná [odpověď na seznam položek](#example-responses-1), které jsou v seznamu. `{virtualMachineId}` `{sourceResourceId}`
+`{sourceResourceId}` je `{virtualMachineId}` zmíněná výše z odpovědi na [seznam chráněných položek](#example-responses-1).
 
-#### <a name="responses"></a>Odpovědi
+#### <a name="responses"></a>Odezvy
 
 Vytvoření chráněné položky je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Name  |Typ  |Popis  |
+|Name (Název)  |Typ  |Popis  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
-|202 přijato     |         |     Přijato    |
+|202 přijato     |         |     Přijata    |
 
 ##### <a name="example-responses"></a>Příklady odpovědí
 
@@ -227,7 +227,7 @@ Jakmile odešlete žádost o *vložení* pro vytvoření nebo aktualizaci chrán
 HTTP/1.1 202 Accepted
 Pragma: no-cache
 Retry-After: 60
-Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2016-12-01
+Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2019-05-13
 X-Content-Type-Options: nosniff
 x-ms-request-id: db785be0-bb20-4598-bc9f-70c9428b170b
 x-ms-client-request-id: e1f94eef-9b2d-45c4-85b8-151e12b07d03; e1f94eef-9b2d-45c4-85b8-151e12b07d03
@@ -237,7 +237,7 @@ x-ms-correlation-request-id: db785be0-bb20-4598-bc9f-70c9428b170b
 x-ms-routing-request-id: SOUTHINDIA:20180521T073907Z:db785be0-bb20-4598-bc9f-70c9428b170b
 Cache-Control: no-cache
 Date: Mon, 21 May 2018 07:39:06 GMT
-Location: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2016-12-01
+Location: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2019-05-13
 X-Powered-By: ASP.NET
 ```
 
@@ -290,17 +290,17 @@ Aktivace zálohování na vyžádání je operace *post* .
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/backup?api-version=2016-12-01
 ```
 
-A jsou sestaveny [výše.](#responses-1) `{protectedItemName}` `{containerName}` `{fabricName}` Je "Azure". V našem příkladu se to týká:
+`{containerName}` a `{protectedItemName}` jsou sestavené [výše](#responses-1). `{fabricName}` je "Azure". V našem příkladu se to týká:
 
 ```http
-POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM/backup?api-version=2016-12-01
+POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM/backup?api-version=2019-05-13
 ```
 
 ### <a name="create-the-request-body"></a>Vytvoření textu žádosti
 
 Chcete-li aktivovat zálohování na vyžádání, níže jsou uvedené součásti textu žádosti.
 
-|Name  |Typ  |Popis  |
+|Name (Název)  |Typ  |Popis  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |Vlastnosti BackupRequestResource         |
 
@@ -319,15 +319,15 @@ Následující text žádosti definuje vlastnosti vyžadované k aktivaci záloh
 }
 ```
 
-### <a name="responses"></a>Odpovědi
+### <a name="responses"></a>Odezvy
 
 Aktivace zálohování na vyžádání je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Name  |Typ  |Popis  |
+|Name (Název)  |Typ  |Popis  |
 |---------|---------|---------|
-|202 přijato     |         |     Přijato    |
+|202 přijato     |         |     Přijata    |
 
 ##### <a name="example-responses-3"></a>Příklady odpovědí
 
@@ -337,7 +337,7 @@ Jakmile odešlete požadavek *post* pro zálohování na vyžádání, počáte�
 HTTP/1.1 202 Accepted
 Pragma: no-cache
 Retry-After: 60
-Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testVaultRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/b8daecaa-f8f5-44ed-9f18-491a9e9ba01f?api-version=2016-12-01
+Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testVaultRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/b8daecaa-f8f5-44ed-9f18-491a9e9ba01f?api-version=2019-05-13
 X-Content-Type-Options: nosniff
 x-ms-request-id: 7885ca75-c7c6-43fb-a38c-c0cc437d8810
 x-ms-client-request-id: 7df8e874-1d66-4f81-8e91-da2fe054811d; 7df8e874-1d66-4f81-8e91-da2fe054811d
@@ -354,7 +354,7 @@ X-Powered-By: ASP.NET
 Pak Sledujte výslednou operaci pomocí záhlaví umístění nebo hlavičky Azure-AsyncOperation s jednoduchým příkazem *Get* .
 
 ```http
-GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2016-12-01
+GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2019-05-13
 ```
 
 Po dokončení operace vrátí 200 (OK) ID výsledné úlohy zálohování v těle odpovědi.
@@ -393,7 +393,7 @@ Vzhledem k tomu, že úloha zálohování je dlouhodobě spuštěná operace, je
 
 ### <a name="changing-the-policy-of-protection"></a>Změna zásad ochrany
 
-Pokud chcete změnit zásadu, se kterou je virtuální počítač chráněný, můžete použít stejný formát jako [Povolení ochrany](#enabling-protection-for-the-azure-vm). V [textu žádosti](#example-request-body) jenom zadejte nové ID zásady a odešlete žádost. Příklad: Pokud chcete změnit zásady testVM z ' DefaultPolicy ' na ' ProdPolicy ', zadejte v textu žádosti ID ' ProdPolicy '.
+Pokud chcete změnit zásadu, se kterou je virtuální počítač chráněný, můžete použít stejný formát jako [Povolení ochrany](#enabling-protection-for-the-azure-vm). V [textu žádosti](#example-request-body) jenom zadejte nové ID zásady a odešlete žádost. Příklad: Chcete-li změnit zásadu testVM z ' DefaultPolicy ' na ' ProdPolicy ', zadejte v textu žádosti ID ' ProdPolicy '.
 
 ```http
 {
@@ -430,27 +430,27 @@ Chcete-li odebrat ochranu na chráněném virtuálním počítači a odstranit t
 Zastavení ochrany a odstranění dat je operace *odstranění* .
 
 ```http
-DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2016-12-01
+DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13
 ```
 
-A jsou sestaveny [výše.](#responses-1) `{protectedItemName}` `{containerName}` `{fabricName}`je "Azure". V našem příkladu se to týká:
+`{containerName}` a `{protectedItemName}` jsou sestavené [výše](#responses-1). `{fabricName}` je "Azure". V našem příkladu se to týká:
 
 ```http
-DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2016-12-01
+DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2019-05-13
 ```
 
 ### <a name="responses-2"></a>Požadavků
 
 *Odstranění* ochrany je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
 
-Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 204 (obsah).
+Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a až 204 (obsah) po dokončení této operace.
 
-|Name  |Typ  |Popis  |
+|Name (Název)  |Typ  |Popis  |
 |---------|---------|---------|
 |204. obsah     |         |  Obsah       |
-|202 přijato     |         |     Přijato    |
+|202 přijato     |         |     Přijata    |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Obnovte data ze zálohy virtuálního počítače Azure](backup-azure-arm-userestapi-restoreazurevms.md).
 

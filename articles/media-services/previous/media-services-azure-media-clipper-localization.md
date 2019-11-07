@@ -1,44 +1,44 @@
 ---
-title: Konfigurace Azure Media Clipperem lokalizace | Dokumentace Microsoftu
-description: Další informace o Azure Media Clipperem podporované jazyky a podporu lokalizace
+title: Konfigurace lokalizace Azure Media Clipperu | Microsoft Docs
+description: Přečtěte si o podporovaných jazycích a podpoře lokalizace Azure Media Clipperu
 services: media-services
-keywords: Galerie, dílčí klip, kódování, médií
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+keywords: Clip; dílčí klip; Encoding; Media
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 41fd483a0b78619db6d018cf4b2ab7933a7c3031
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 96ffdfe5e6b3e913bd5596dd624e35afcaecfabe
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465792"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685032"
 ---
 # <a name="configure-localization"></a>Konfigurace lokalizace 
 
-Azure Media Clipperem je k dispozici v jazycích 18. Nastavení jazyka widgetů, je nutné definovat `language` parametr během inicializace. Předat řetězec požadovaný jazyk kódu z následujícího seznamu:
-- Čínština (zjednodušená): zh-hans
-- Čínština (tradiční): zh-hant
+Azure Media Clipper je k dispozici v 18 jazycích. Chcete-li nastavit jazyk widgetu, je nutné při inicializaci definovat parametr `language`. Předejte řetězec kódu požadovaného jazyka z následujícího seznamu:
+- Čínština (zjednodušená): zh-Hans
+- Čínština (tradiční): zh-Hant
 - Čeština: cs
-- Nizozemští, Flemish: nl
+- Holandština, Flemish: nl
 - Angličtina: cs
-- Francouzština: fr
-- Němčina: Německo
+- Francouzština: FR
+- Němčina: de
 - Maďarština: hu
-- Italština: ji
-- Japonština: Japonsko
-- Korejština: ko
+- Italština:
+- Japonština: ja
+- Korejština: Ko
 - Polština: pl
 - Portugalština (Brazílie): pt-br
-- Portugalština (Portugalsko): pt-pt
+- Portugalština (Portugalsko): pt-PT
 - Ruština: ru
-- Španělština: es
+- Španělština: ES
 - Švédština: sv
-- Turečtina: tr
+- Turečtina: TR
 
-Nastavit vlastní slovník nebo rozšířit výchozí slovník jazyka, je nutné definovat `languages` nebo `extraLanguages` parametr, v uvedeném pořadí. Předat do vlastního slovníku v následujícím formátu JSON:
+Chcete-li nastavit vlastní slovník jazyka nebo zvětšit výchozí slovník jazyka, je nutné definovat parametr `languages` nebo `extraLanguages`, v uvedeném pořadí. Předejte vlastní slovník pomocí následujícího formátu JSON:
 
 ```javascript
 {
@@ -139,8 +139,8 @@ Například následující příklad definuje lokalizované anglické řetězce:
 }
 ```
 
-## <a name="next-steps"></a>Další postup
-Informace o tom další kroky pro konfiguraci Azure Media Clipperem:
-- [Načítání prostředků do Azure Media Clipperu](media-services-azure-media-clipper-load-assets.md)
+## <a name="next-steps"></a>Další kroky
+Podívejte se na další kroky pro konfiguraci Azure Media Clipperu:
+- [Načítají se prostředky do Azure Media Clipperu.](media-services-azure-media-clipper-load-assets.md)
 - [Konfigurace vlastních klávesových zkratek](media-services-azure-media-clipper-keyboard-shortcuts.md)
-- [Odesílání úloh oříznutí z Clipperem](media-services-azure-media-clipper-submit-job.md)
+- [Odesílají se ořezové úlohy z Clipperu.](media-services-azure-media-clipper-submit-job.md)

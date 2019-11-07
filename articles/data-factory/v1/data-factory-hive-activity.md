@@ -1,5 +1,5 @@
 ---
-title: Transformace dat pomocí aktivity podregistru – Azure | Microsoft Docs
+title: Transformace dat pomocí aktivity podregistru – Azure
 description: Přečtěte si, jak můžete použít aktivitu podregistru v Azure Data Factory ke spouštění dotazů na podregistr na vyžádání nebo vlastní cluster HDInsight.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 8a7e6748f450ae398a05097ac6b192d074f5f1f7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f159f672c999d7877ef89cd78d23c4a608ccf1ab
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139536"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666995"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Transformuje data pomocí aktivity podregistru v Azure Data Factory 
 > [!div class="op_single_selector" title1="Aktivity transformace"]
@@ -38,7 +38,7 @@ ms.locfileid: "70139536"
 Aktivita podregistru HDInsight v Data Factoryovém [kanálu](data-factory-create-pipelines.md) spouští dotazy na podregistry ve [vašem](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) clusteru HDInsight založeném na systému Windows/Linux nebo [na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) . Tento článek se sestavuje na článku [aktivity transformace dat](data-factory-data-transformation-activities.md) , který představuje obecný přehled transformace dat a podporovaných transformačních aktivit.
 
 > [!NOTE] 
-> Pokud s Azure Data Factory začínáte, přečtěte si [Úvod do Azure Data Factory](data-factory-introduction.md) a udělejte si kurz: Před čtením tohoto článku Sestavte [první datový kanál](data-factory-build-your-first-pipeline.md) . 
+> Pokud se Azure Data Factory teprve začínáte, přečtěte si [Úvod do Azure Data Factory](data-factory-introduction.md) a udělejte si kurz: [Vytvoření prvního datového kanálu](data-factory-build-your-first-pipeline.md) před přečtením tohoto článku. 
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -71,23 +71,23 @@ Aktivita podregistru HDInsight v Data Factoryovém [kanálu](data-factory-create
     }
 }
 ```
-## <a name="syntax-details"></a>Podrobnosti o syntaxi
-| Vlastnost | Popis | Požadováno |
+## <a name="syntax-details"></a>Podrobnosti syntaxe
+| Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| name |Název aktivity |Ano |
+| jméno |Název aktivity |Ano |
 | description |Text popisující, k čemu se aktivita používá |Ne |
 | type |HDinsightHive |Ano |
-| inputs |Vstupy spotřebované aktivitou podregistru |Ne |
-| outputs |Výstupy vytvářené aktivitou podregistru |Ano |
+| vztahují |Vstupy spotřebované aktivitou podregistru |Ne |
+| činnosti |Výstupy vytvářené aktivitou podregistru |Ano |
 | linkedServiceName |Odkaz na cluster HDInsight registrovaný jako propojená služba v Data Factory |Ano |
-| script |Zadat vložený skript podregistru |Ne |
+| . |Zadat vložený skript podregistru |Ne |
 | scriptPath |Uložte skript podregistru do úložiště objektů BLOB v Azure a zadejte cestu k souboru. Použijte vlastnost Script nebo scriptPath. Nelze použít současně. V názvu souboru se rozlišují malá a velká písmena. |Ne |
-| defines |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu pro podregistr pomocí příkazu ' hiveconf '. |Ne |
+| definuje |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu pro podregistr pomocí příkazu ' hiveconf '. |Ne |
 
 ## <a name="example"></a>Příklad
 Podívejme se na příklad analýzy herních protokolů, u kterých chcete zjistit čas strávený uživateli, kteří hry zahájili při hraní her, které vaše společnost spustila. 
 
-Následující protokol je ukázkový protokol hry, který je oddělen čárkou (`,`) a obsahuje následující pole – ProfileID, SessionStart, Duration, SrcIPAddress a Gametype.
+Následující protokol je ukázkový protokol hry, který je oddělen čárkou (`,`) a obsahuje následující pole – ProfileID, SessionStart, Duration, SrcIPAddress a GameType.
 
 ```
 1809,2014-05-04 12:04:25.3470000,14,221.117.223.75,CaptureFlag

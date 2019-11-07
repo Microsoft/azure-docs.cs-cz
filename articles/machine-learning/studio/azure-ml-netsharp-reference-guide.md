@@ -1,6 +1,6 @@
 ---
-title: 'Vytváření vlastních sítí neuronové pomocí sítě #'
-titleSuffix: Azure Machine Learning Studio (classic)
+title: 'NET # vlastní neuronové sítě'
+titleSuffix: ML Studio (classic) Azure
 description: 'Průvodce syntaxí pro jazyk specifikace NET # neuronové Networks Naučte se vytvářet vlastní neuronové síťové modely v Azure Machine Learning Studio (Classic).'
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 7e7ad51622c3d3c8254755fb1ad24a047d48a58b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0c413bbc3c3b0bd4b1a6e6d6ff40dc1061bbc834
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493358"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684837"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Příručka k jazyku .NET # neuronové Network Specification pro Azure Machine Learning Studio (Classic)
 
@@ -89,17 +89,17 @@ Například následující příkaz definuje konstantu `x`:
 
 `Const X = 28;`
 
-Pro definování dvou nebo více konstant současně vložte názvy identifikátorů a hodnot do složených závorek a oddělte je pomocí středníků. Například:
+Pro definování dvou nebo více konstant současně vložte názvy identifikátorů a hodnot do složených závorek a oddělte je pomocí středníků. Příklad:
 
 `Const { X = 28; Y = 4; }`
 
-Pravá strana každého výrazu přiřazení může být celé číslo, reálné číslo, logická hodnota (true nebo false) nebo matematický výraz. Například:
+Pravá strana každého výrazu přiřazení může být celé číslo, reálné číslo, logická hodnota (true nebo false) nebo matematický výraz. Příklad:
 
 `Const { X = 17 * 2; Y = true; }`
 
 ## <a name="layer-declaration"></a>Deklarace vrstvy
 
-Deklarace vrstvy je povinná. Definuje velikost a zdroj vrstvy, včetně jejích sad připojení a atributů. Příkaz deklarace začíná názvem vrstvy (vstup, skrytý nebo výstup) následovaný rozměry vrstvy (řazené kolekce členů s kladnými celými čísly). Například:
+Deklarace vrstvy je povinná. Definuje velikost a zdroj vrstvy, včetně jejích sad připojení a atributů. Příkaz deklarace začíná názvem vrstvy (vstup, skrytý nebo výstup) následovaný rozměry vrstvy (řazené kolekce členů s kladnými celými čísly). Příklad:
 
 ```Net#
 input Data auto;

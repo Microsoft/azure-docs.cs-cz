@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: SQL Database Maskování dynamických dat | Microsoft Docs'
+title: 'Azure Portal: SQL Database Maskování dynamických dat '
 description: Jak začít s SQL Database dynamické maskování dat v Azure Portal
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 ms.date: 03/04/2018
-ms.openlocfilehash: 1400a21c3fee51bb26a3271546a7553a3429b42d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d92f77c56221d7c79ed30a6ca67d31d1b3f7f703
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568788"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690577"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Začínáme s SQL Database dynamické maskování dat s využitím Azure Portal
 
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak implementovat [dynamické maskování dat](sql
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-the-azure-portal"></a>Nastavení dynamického maskování dat pro vaši databázi pomocí Azure Portal
 
-1. Spusťte Azure Portal v [https://portal.azure.com](https://portal.azure.com).
+1. [https://portal.azure.com](https://portal.azure.com)spusťte Azure Portal.
 2. Přejděte na stránku nastavení databáze, která obsahuje citlivá data, která chcete maskovat.
 3. Klikněte na dlaždici **Maskování dynamických dat** , která spustí stránku konfigurace **dynamického maskování dat** .
 

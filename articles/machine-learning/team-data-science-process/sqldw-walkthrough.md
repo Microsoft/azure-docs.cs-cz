@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc70e2e6475620bfb8842fc740772e326f8ee8d0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 76afafb59de762776b7d2614e383320b7d8f79e4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480337"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669408"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Vědecké zpracování týmových dat v akci: použití SQL Data Warehouse
 V tomto kurzu Vás provedeme vytvořením a nasazením modelu strojového učení pomocí SQL Data Warehouse (SQL DW) pro veřejně dostupnou datovou sadu ( [NYC taxislužby TRIPS](https://www.andresmh.com/nyctaxitrips/) ). Model binární klasifikace vychází z předpokladu, zda je pro cestu placen nebo nikoliv, a jsou zde také popsány modely pro klasifikaci více tříd a regresi, které předpovídá rozdělení pro placené částky Tip.
@@ -431,7 +431,7 @@ Tento příklad vypočítá distribuci rozsahů tipů v daném časovém období
 
 | tip_class | tip_freq |
 | --- | --- |
-| 1\. místo |82230915 |
+| 1 |82230915 |
 | 2 |6198803 |
 | 3 |1932223 |
 | 0 |82264625 |
@@ -535,7 +535,7 @@ Tady je příklad volání této funkce pro generování funkcí v dotazu SQL:
 
 |  | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
 | --- | --- | --- | --- | --- | --- |
-| 1\. místo |40,731804 |-74,001083 |40,736622 |-73,988953 |.7169601222 |
+| 1 |40,731804 |-74,001083 |40,736622 |-73,988953 |.7169601222 |
 | 2 |40,715794 |-74, 010635 |40,725338 |-74,00399 |.7448343721 |
 | 3 |40,761456 |-73,999886 |40,766544 |-73,988228 |0.7037227967 |
 
@@ -851,7 +851,7 @@ Příklad binární klasifikace experimentu, který čte data přímo z SQL Data
 >
 
 ## <a name="mldeploy"></a>Nasazení modelů v Azure Machine Learning
-Když je model připravený, můžete ho snadno nasadit jako webovou službu přímo z experimentu. Další informace o nasazení webových služeb Azure ML najdete v tématu [nasazení webové služby Azure Machine Learning](../studio/publish-a-machine-learning-web-service.md).
+Když je model připravený, můžete ho snadno nasadit jako webovou službu přímo z experimentu. Další informace o nasazení webových služeb Azure ML najdete v tématu [nasazení webové služby Azure Machine Learning](../studio/deploy-a-machine-learning-web-service.md).
 
 K nasazení nové webové služby potřebujete:
 

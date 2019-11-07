@@ -11,12 +11,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 10/17/2019
-ms.openlocfilehash: 327bc40e5989cc3bca148f415113de32b19a7022
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 325278ee0222070ce7c02c1d72961f0431284677
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500131"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670543"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Co je Machine Learning Studio (Classic)?
 
@@ -107,7 +107,7 @@ Modul může obsahovat sadu parametrů, pomocí kterých je možné konfigurovat
 Další informace o tom, jak se dá využít rozsáhlá knihovna algoritmů strojového učení, najdete v tématu [Jak zvolit algoritmy pro Microsoft Azure Machine Learning Studio (Classic)](algorithm-choice.md).
 
 ## <a name="deploying-a-predictive-analytics-web-service"></a>Nasazení webové služby prediktivní analýzy
-Jakmile je model prediktivní analýzy připravený, můžete ho nasadit jako webovou službu přímo z Machine Learning Studio (Classic). Další informace o tomto procesu najdete v tématu [nasazení webové služby Azure Machine Learning](publish-a-machine-learning-web-service.md).
+Jakmile je model prediktivní analýzy připravený, můžete ho nasadit jako webovou službu přímo z Machine Learning Studio (Classic). Další informace o tomto procesu najdete v tématu [nasazení webové služby Azure Machine Learning](deploy-a-machine-learning-web-service.md).
 
 ## <a name="next-steps"></a>Další kroky
 Seznamte se se základy prediktivní analýzy a strojového učení s využitím [podrobných rychlých](create-experiment.md) a [sestavování ukázek](sample-experiments.md).

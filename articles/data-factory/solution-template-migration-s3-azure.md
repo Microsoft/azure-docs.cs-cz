@@ -1,5 +1,5 @@
 ---
-title: Migrace dat ze služby Amazon S3 do Azure Data Lake Storage Gen2 s využitím Azure Data Factory | Microsoft Docs
+title: Migrace dat ze služby Amazon S3 do Azure Data Lake Storage Gen2 s využitím Azure Data Factory
 description: Naučte se používat šablonu řešení k migraci dat ze služby Amazon S3 pomocí tabulky externích ovládacích prvků k uložení seznamu oddílů v AWS S3 pomocí Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/07/2019
-ms.openlocfilehash: e4567d79b70fc18622e4a5e927031e9849b96e99
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: a8591762bf4e8eccd5e1b7d67538674feed720b9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092284"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684194"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Migrace dat ze služby Amazon S3 do Azure Data Lake Storage Gen2
 
@@ -73,7 +73,7 @@ Tato šablona (*název šablony: kopírovat rozdílová data z AWS S3 do Azure D
 
     > [!NOTE]
     > Název tabulky je s3_partition_control_table.
-    > Schéma řídicí tabulky je PartitionPrefix a SuccessOrFailure, kde PartitionPrefix je nastavení předpony ve S3, aby vyfiltroval složky a soubory v Amazon S3 podle názvu a SuccessOrFailure je stav kopírování jednotlivých oddílů: 0 znamená, že se tento oddíl nezkopíroval do Azure a 1 znamená, že se tento oddíl zkopíroval do Azure úspěšně.
+    > Schéma řídicí tabulky je PartitionPrefix a SuccessOrFailure, kde PartitionPrefix je nastavení předpony ve S3, aby vyfiltroval složky a soubory v Amazon S3 podle názvu a SuccessOrFailure je stav kopírování jednotlivých oddílů: 0 znamená, že tento oddíl má nebylo zkopírováno do Azure a 1 znamená, že tento oddíl byl úspěšně zkopírován do Azure.
     > V řídicí tabulce je definováno 5 oddílů a výchozí stav kopírování jednotlivých oddílů je 0.
 
     ```sql
@@ -109,7 +109,7 @@ Tato šablona (*název šablony: kopírovat rozdílová data z AWS S3 do Azure D
 
 3. Pokud chcete Azure Data Lake Storage Gen2 šablonu, přejdete na **migrace historických dat z AWS S3** . Zadejte připojení do tabulky externích ovládacích prvků, AWS S3 jako úložiště zdrojů dat a Azure Data Lake Storage Gen2 jako cílové úložiště. Mějte na paměti, že externí řídicí tabulka a uložená procedura odkazují na stejné připojení.
 
-    ![Vytvořit nové propojení](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
+    ![Vytvoření nového připojení](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
 
 4. Vyberte **použít tuto šablonu**.
 
@@ -172,7 +172,7 @@ Tato šablona (*název šablony: kopírovat rozdílová data z AWS S3 do Azure D
 
 3. Pokud chcete Azure Data Lake Storage Gen2 šablonu, přejdete do části **kopírování rozdílových dat z AWS S3** . Zadejte připojení do tabulky externích ovládacích prvků, AWS S3 jako úložiště zdrojů dat a Azure Data Lake Storage Gen2 jako cílové úložiště. Mějte na paměti, že externí řídicí tabulka a uložená procedura odkazují na stejné připojení.
 
-    ![Vytvořit nové propojení](media/solution-template-migration-s3-azure/delta-migration-s3-azure1.png)
+    ![Vytvoření nového připojení](media/solution-template-migration-s3-azure/delta-migration-s3-azure1.png)
 
 4. Vyberte **použít tuto šablonu**.
 
@@ -194,7 +194,7 @@ Tato šablona (*název šablony: kopírovat rozdílová data z AWS S3 do Azure D
 
     ![Kontrola výsledku](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
     
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Kopírování souborů z více kontejnerů](solution-template-copy-files-multiple-containers.md)
 - [Přesunout soubory](solution-template-move-files.md)

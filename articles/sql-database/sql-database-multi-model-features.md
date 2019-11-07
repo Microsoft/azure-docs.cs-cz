@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database možností více modelů | Microsoft Docs
+title: Azure SQL Database možností pro více modelů
 description: Azure SQL Database vám umožní pracovat s více datovými modely ve stejné databázi.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: e319daf322d688828c7d05d78dacd2359273223f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7156b9923c9cb98ae3dde143c98eb32a6eb11a9c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567121"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687724"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Možnosti pro více modelů Azure SQL Database
 
@@ -34,7 +34,7 @@ Měli byste zvážit použití možností více modelů Azure SQL Database v ná
 ## <a name="overview"></a>Přehled
 
 Azure SQL poskytuje následující funkce pro více modelů:
-- [Funkce grafu](#graph-features) umožňují znázornit vaše data jako sadu uzlů a hran a používat standardní dotazy Transact-SQL rozšířené s operátorem grafu `MATCH` pro dotazování dat grafu.
+- [Funkce grafu](#graph-features) umožňují znázornit vaše data jako sadu uzlů a hran a používat standardní dotazy Transact-SQL, které jsou rozšířeny pomocí grafu `MATCH` operátoru pro dotazování na data grafu.
 - [Funkce JSON](#json-features) umožňují VKLÁDAT dokumenty JSON do tabulek, transformovat relační data do dokumentů JSON a naopak. Můžete použít standardní jazyk Transact-SQL rozšířený s funkcemi JSON pro analýzu dokumentů a pomocí neclusterovaných indexů, indexů columnstore nebo paměťově optimalizovaných tabulek pro optimalizaci vašich dotazů.
 - [Prostorové funkce](#spatial-features) umožňují ukládat geografická a geografická data, indexovat je pomocí prostorových indexů a načítat data pomocí prostorových dotazů.
 - [Funkce XML](#xml-features) umožňují ukládat a indexovat data XML ve vaší databázi a používat nativní operace XQuery/XPath pro práci s daty XML. Azure SQL Database má specializovaný integrovaný dotazovací modul XML, který zpracovává data XML.
@@ -132,14 +132,14 @@ CREATE TABLE Collection (
 )
 ```
 
-Tuto strukturu klíč-hodnota můžete přizpůsobit tak, aby vyhovovala vašim potřebám bez jakýchkoli omezení. Jako příklad může být hodnota dokumentu XML namísto `nvarchar(max)` typu, pokud je hodnota dokument JSON, můžete vložit `CHECK` omezení, které ověří platnost obsahu JSON. V dalších sloupcích můžete zadat libovolný počet hodnot, které se vztahují k jednomu klíči, Přidat vypočítané sloupce a indexy pro zjednodušení a optimalizaci přístupu k datům, definovat tabulku jako paměť/optimalizované tabulky pouze pro zajištění lepšího výkonu atd.
+Tuto strukturu klíč-hodnota můžete přizpůsobit tak, aby vyhovovala vašim potřebám bez jakýchkoli omezení. Jako příklad může být hodnota dokumentu XML namísto `nvarchar(max)` typu, pokud je hodnota dokument JSON, můžete zadat `CHECK` omezení, které ověřuje platnost obsahu JSON. V dalších sloupcích můžete zadat libovolný počet hodnot, které se vztahují k jednomu klíči, Přidat vypočítané sloupce a indexy pro zjednodušení a optimalizaci přístupu k datům, definovat tabulku jako paměť/optimalizované tabulky pouze pro zajištění lepšího výkonu atd.
 
 Podívejte se, [jak BWin používá OLTP v paměti k dosažení nedřívějšího výkonu a škálování](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/) pro řešení ASP.NET pro ukládání do mezipaměti, které dosáhlo 1.200.000 dávek za sekundu, jako příklad, jak se relační model dá efektivně použít jako párové řešení klíč-hodnota v. praktick.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Možnosti více modelů v databázích SQL Azure jsou také základními funkcemi SQL Server databázového stroje, které jsou sdíleny mezi Azure SQL Database a SQL Server. Další informace o těchto funkcích najdete na stránce dokumentace k relačním databázím SQL:
 
 * [Zpracování grafu](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview)
-* [JSON data](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server)
+* [Data JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server)
 * [Prostorová podpora](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server)
 * [Data XML](https://docs.microsoft.com/sql/relational-databases/xml/xml-data-sql-server)

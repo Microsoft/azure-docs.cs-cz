@@ -1,5 +1,5 @@
 ---
-title: Začínáme s dočasnými tabulkami v Azure SQL Database | Microsoft Docs
+title: Začínáme s dočasnými tabulkami v Azure SQL Database
 description: Naučte se, jak začít používat dočasné tabulky v Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: 39c19661a71a8b466aa6ff25be9e895189dfbfb3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 44a5589357301f979bb094579626e1c02e582846
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566360"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686982"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Začínáme s dočasnými tabulkami v Azure SQL Database
 
@@ -30,9 +30,9 @@ Databázový model pro tento scénář je velmi jednoduchý – metrika aktivity
 
 ![Schéma](./media/sql-database-temporal-tables/AzureTemporal1.png)
 
-Naštěstí nemusíte do vaší aplikace nadávat žádné úsilí, abyste zachovali informace o této aktivitě. Díky dočasným tabulkám je tento proces automatizovaný – poskytuje plnou flexibilitu při návrhu webů a další čas na analýzu dat, která je samotná. Jedinou věcí, kterou musíte udělat, je zajistit, aby byla tabulka **WebSiteInfo** nakonfigurovaná jako dočasná [systémovou správou verzí](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_0). Přesné kroky k využití dočasných tabulek v tomto scénáři jsou popsány níže.
+Naštěstí nemusíte do vaší aplikace nadávat žádné úsilí, abyste zachovali informace o této aktivitě. Díky dočasným tabulkám je tento proces automatizovaný – poskytuje plnou flexibilitu při návrhu webů a další čas na analýzu dat, která je samotná. Jedinou věcí, kterou musíte udělat, je zajistit, aby byla tabulka **WebSiteInfo** nakonfigurovaná jako [dočasná systémovou správou verzí](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_0). Přesné kroky k využití dočasných tabulek v tomto scénáři jsou popsány níže.
 
-## <a name="step-1-configure-tables-as-temporal"></a>Krok 1: Konfigurovat tabulky jako dočasné
+## <a name="step-1-configure-tables-as-temporal"></a>Krok 1: Konfigurace tabulek jako dočasné
 V závislosti na tom, jestli spouštíte nový vývoj nebo upgradujete stávající aplikaci, vytvoříte dočasné tabulky nebo upravíte stávající, a to přidáním dočasných atributů. V obecném případě může být váš scénář kombinací těchto dvou možností. Tuto akci proveďte pomocí [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) (SSMS), [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) (SSDT) nebo jakéhokoli jiného vývojového nástroje Transact-SQL.
 
 > [!IMPORTANT]
@@ -105,7 +105,7 @@ ON dbo.WebsiteUserInfoHistory
 WITH (DROP_EXISTING = ON); 
 ```
 
-## <a name="step-2-run-your-workload-regularly"></a>Krok 2: Pravidelné spouštění úloh
+## <a name="step-2-run-your-workload-regularly"></a>Krok 2: pravidelně spouštějte vaše úlohy
 Hlavní výhodou dočasných tabulek je, že nemusíte měnit ani upravovat svůj web jakýmkoli způsobem, abyste mohli provádět sledování změn. Po vytvoření dočasné tabulky transparentně uchovávají předchozí verze řádků pokaždé, když provedete úpravy dat. 
 
 Aby bylo možné využít automatické sledování změn pro tento konkrétní scénář, můžeme jenom aktualizovat sloupec **PagesVisited** pokaždé, když uživatel ukončí svou relaci na webu:
@@ -119,7 +119,7 @@ Je důležité si všimnout, že aktualizační dotaz nemusí znát přesný ča
 
 ![TemporalArchitecture](./media/sql-database-temporal-tables/AzureTemporal5.png)
 
-## <a name="step-3-perform-historical-data-analysis"></a>Krok 3: Provádění historických analýz dat
+## <a name="step-3-perform-historical-data-analysis"></a>Krok 3: provedení historických analýz dat
 Teď, když je zapnutá časová verze systému, je historická analýza dat jenom jedním dotazem. V tomto článku budeme poskytovat několik příkladů, které řeší běžné scénáře analýzy – Pokud se chcete dozvědět víc, prozkoumejte různé možnosti zavedené s klauzulí [for SYSTEM_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3) .
 
 Pokud chcete zobrazit prvních 10 uživatelů seřazených podle počtu navštívených webových stránek před hodinou, spusťte tento dotaz:

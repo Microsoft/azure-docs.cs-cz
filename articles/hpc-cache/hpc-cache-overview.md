@@ -1,19 +1,19 @@
 ---
-title: Přehled Azure HPC cache Preview
+title: Přehled mezipaměti HPC Azure
 description: Popisuje řešení Azure HPC cache, což je přístupové akcelerátory pro přístup k souborům pro vysoce výkonné výpočetní prostředí.
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 09/24/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: bfbbcd2d7d1bb44e260bedda54ca38ed6860ea67
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 2a008d22de5df8d091e868153205697b4bb343ee
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254480"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582133"
 ---
-# <a name="what-is-azure-hpc-cache-preview"></a>Co je mezipaměť prostředí Azure HPC? Tisk
+# <a name="what-is-azure-hpc-cache"></a>Co je Azure HPC Cache?
 
 Azure HPC ukládá přístup k vašim datům pro úlohy využívající vysoce výkonné výpočetní prostředí (HPC). Díky ukládání do mezipaměti souborů v Azure přináší mezipaměť HPC Azure škálovatelnost cloud computingu do vašeho existujícího pracovního postupu. Tato služba se dá použít i pro pracovní postupy, ve kterých se vaše data ukládají přes odkazy sítě WAN, jako třeba v prostředí místního síťového úložiště (NAS) místního datacentra.
 
@@ -33,7 +33,7 @@ Mezipaměť prostředí Azure HPC se dá přidat do široké škály pracovních
 
 V případě médií a zábavy může mezipaměť prostředí Azure HPC zrychlit přístup k datům pro projekty vykreslování kritické pro čas. Pracovní postupy vykreslování VFX často vyžadují poslední minuty zpracování velkým počtem výpočetních uzlů. Data pro tyto pracovní postupy se většinou nacházejí v místním prostředí NAS. Mezipaměť HPC Azure může ukládat do mezipaměti tato data souborů v cloudu, aby se snížila latence a vylepšila se flexibilita při vykreslování na vyžádání.
 
-### <a name="life-sciences"></a>Vědy o života
+### <a name="life-sciences"></a>Lékařské technologie
 
 Mnohé pracovní postupy pro biologickou škálu můžou využívat ukládání souborů do mezipaměti se škálováním na více instancí.
 
@@ -41,26 +41,30 @@ Výzkumný ústav, který chce přenést své pracovní postupy analýzy genomik
 
 Mezipaměť prostředí Azure HPC je také možné využít ke zvýšení efektivity v úlohách, jako je sekundární analýza, farmakologická simulace nebo analýza obrázků řízených AI.
 
-### <a name="financial-services-analytics"></a>Analýzy finančních služeb
+### <a name="financial-services-analytics"></a>Analýza finančních služeb
 
 Nasazení mezipaměti HPC Azure vám může pomoci zrychlit kvantitativní výpočty analýz, úlohy analýzy rizik a Monte Carlo simulace, které společnosti poskytují lepší přehled o strategických rozhodnutích.
 
-## <a name="region-availability"></a>Dostupnost oblasti
+## <a name="region-availability"></a>Regionální dostupnost
 
 Mezipaměť prostředí Azure HPC je dostupná v těchto oblastech Azure:
 
 * Východní USA
-* Východní USA 2
+* Východ USA 2
 * Severní Evropa
 * Západní Evropa
 * Jihovýchodní Asie
+* Sydney
 * Západní USA 2
+* Jižní Korea – střed
 
 Nejnovější informace o dostupnosti najdete na [stránce produktu Azure HPC cache](https://azure.microsoft.com/services/hpc-cache) .
 
-## <a name="preview-availability"></a>Dostupnost verze Preview
+## <a name="service-availability"></a>Dostupnost služeb
 
-Služba Azure HPC cache ve verzi Public Preview je omezená, aby se zajistila kvalita služeb. Vyžádejte si přístup vyplněním [tohoto formuláře](https://aka.ms/onboard-hpc-cache). Po přidání předplatného do seznamu přístupu můžete vytvořit mezipaměť testů.
+Musíte požádat o přístup pro každé předplatné, které budete používat s mezipamětí Azure HPC. Toto omezení pomáhá zajistit kvalitu služby v počátečních měsících všeobecné dostupnosti.
+
+Vyžádejte si přístup vyplněním [tohoto formuláře](https://aka.ms/onboard-hpc-cache). Po přidání předplatného do seznamu přístupu můžete vytvořit mezipaměti.
 
 ## <a name="next-steps"></a>Další kroky
 

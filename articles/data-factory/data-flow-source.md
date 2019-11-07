@@ -1,17 +1,17 @@
 ---
-title: Transformace zdroje v toku dat mapování – Azure Data Factory | Microsoft Docs
+title: Transformace zdroje v toku dat mapování – Azure Data Factory
 description: Přečtěte si, jak nastavit transformaci zdroje v toku dat mapování.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: fb11b785cecbd021c0b894754e31d226edfe72f2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5889d96057d4b028e8716e407819d17938f58b3c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73519311"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675950"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Transformace zdroje pro tok dat mapování 
 
@@ -76,11 +76,11 @@ Příklady zástupných znaků:
 * ```?``` nahrazuje jeden znak.
 * ```[]``` odpovídá jednomu nebo více znakům v závorkách.
 
-* ```/data/sales/**/*.csv``` načte všechny soubory CSV pod/data/Sales
-* ```/data/sales/20??/**``` načte všechny soubory ve dvacátém století.
+* ```/data/sales/**/*.csv``` získá všechny soubory CSV pod/data/Sales
+* ```/data/sales/20??/**``` získá všechny soubory ve dvacátém století.
 * ```/data/sales/2004/*/12/[XY]1?.csv``` získá všechny soubory CSV v 2004 v prosinci začínající znakem X nebo Y a číslem se dvěma číslicemi.
 
-**Kořenová cesta oddílu:** Pokud máte ve zdroji souborů dělené složky s formátem ```key=value``` (například Year = 2019), můžete přiřadit nejvyšší úroveň stromu složek oddílu k názvu sloupce v datovém proudu toku dat.
+**Kořenová cesta oddílu:** Pokud jste ve zdroji souborů nastavili dělené složky s formátem ```key=value``` (například Year = 2019), můžete přiřadit nejvyšší úroveň stromu složek oddílu k názvu sloupce v datovém proudu toku dat.
 
 Nejdřív nastavte zástupný znak tak, aby zahrnoval všechny cesty, které jsou rozdělené do oddílů, a soubory listů, které chcete číst.
 
@@ -127,7 +127,7 @@ Všechna nastavení zdroje lze zadat jako výrazy pomocí [jazyka výrazů trans
 
 Pokud je váš zdroj v SQL Database nebo SQL Data Warehouse, na kartě **Možnosti zdroje** jsou k dispozici další nastavení specifická pro SQL. 
 
-**Vstup:** Vyberte, jestli se má zdroj nasměrovat na tabulku (ekvivalent ```Select * from <table-name>```), nebo zadejte vlastní dotaz SQL.
+**Vstup:** Vyberte, zda chcete nasměrovat zdroj v tabulce (ekvivalent ```Select * from <table-name>```), nebo zadejte vlastní dotaz SQL.
 
 **Dotaz**: Pokud ve vstupním poli vyberete možnost dotaz, zadejte pro zdroj dotaz SQL. Toto nastavení potlačí všechny tabulky, které jste vybrali v datové sadě. Klauzule **ORDER by** nejsou tady podporované, ale můžete nastavit úplný příkaz SELECT FROM. Můžete také použít uživatelsky definované funkce tabulky. **SELECT * FROM udfGetData ()** je UDF v SQL, který vrací tabulku. Tento dotaz vytvoří zdrojovou tabulku, kterou můžete použít v toku dat. Použití dotazů je také skvělým způsobem, jak omezit řádky pro testování nebo pro vyhledávání. Příklad: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
 

@@ -1,5 +1,5 @@
 ---
-title: Použití protokolů Azure Monitor s SQL Database víceklientské aplikace | Microsoft Docs
+title: Použití protokolů Azure Monitor s SQL Database víceklientské aplikace
 description: Nastavení a použití protokolů Azure Monitor s víceklientské aplikací Azure SQL Database SaaS
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 01/25/2019
-ms.openlocfilehash: 6b9b2239cfdf0f214ed2f2b179978fe2828d1be3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d7b568424d5e33c19efc9d9d9c21d0023459b6c7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570513"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692150"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-sql-database-saas-app"></a>Nastavení a použití protokolů Azure Monitor s víceklientské aplikací SQL Database SaaS
 
@@ -24,7 +24,7 @@ V tomto kurzu nastavíte a použijete [protokoly Azure monitor](/azure/log-analy
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-V tomto kurzu se naučíte:
+Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 > * Nainstalujte a nakonfigurujte protokoly Azure Monitor.
@@ -47,7 +47,7 @@ Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.
 
 ### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>Vytváření diagnostických dat výkonu díky simulaci úloh ve vašich klientech 
 
-1. V prostředí PowerShell ISE otevřete *.. WingtipTicketsSaaS-MultiTenantDb – hlavní\\výukové\\moduly pro sledování výkonu\\a správu demo-PerformanceMonitoringAndManagement. ps1. \\* Nechejte tento skript otevřený, protože během tohoto kurzu budete chtít spustit několik scénářů generování zátěže.
+1. V prostředí PowerShell ISE otevřete *..\\WingtipTicketsSaaS-MultiTenantDb-master\\výukové moduly\\sledování výkonu a správa\\demo-PerformanceMonitoringAndManagement. ps1*. Nechejte tento skript otevřený, protože během tohoto kurzu budete chtít spustit několik scénářů generování zátěže.
 1. Pokud jste to ještě neudělali, zřiďte dávku tenantů, aby byl kontext monitorování zajímavější. Tento proces trvá několik minut.
 
    a. Nastavte **$DemoScenario = 1**a _zřiďte dávku tenantů_.
@@ -68,7 +68,7 @@ V úložišti GitHubu [WingtipTicketsSaaS-DbPerTenant](https://github.com/Micros
 
 Azure Monitor je samostatná služba, kterou je třeba nakonfigurovat. Protokoly Azure Monitor shromažďují data protokolů, telemetrie a metriky v pracovním prostoru Log Analytics. Stejně jako u jiných prostředků v Azure je třeba vytvořit pracovní prostor Log Analytics. Pracovní prostor není nutné vytvořit ve stejné skupině prostředků jako aplikace, které monitoruje. V takovém případě to často dává co nejužitečnější. V případě aplikace Wingtip Tickets použijte jednu skupinu prostředků, abyste se ujistili, že se pracovní prostor odstraní s aplikací.
 
-1. V prostředí PowerShell ISE otevřete *.. \\\\\\\\WingtipTicketsSaaS-MultiTenantDb – hlavní výukové moduly pro sledování a správu výkonu Log Analytics demo-LogAnalytics. ps1. \\*
+1. V prostředí PowerShell ISE otevřete *..\\WingtipTicketsSaaS-MultiTenantDb-master\\výukové moduly\\sledování výkonu a správa\\Log Analytics\\demo-LogAnalytics. ps1*.
 1. Pokud chcete skript spustit, stiskněte klávesu F5.
 
 Nyní můžete otevřít protokoly Azure Monitor v Azure Portal. Shromažďování telemetrie v pracovním prostoru Log Analytics a jejich viditelnost trvá několik minut. Čím déle necháte systém shromažďování diagnostických dat, tím zajímavější je prostředí. 
@@ -82,7 +82,7 @@ V tomto cvičení otevřete Log Analytics pracovní prostor v Azure Portal a pod
 
    ![Otevřít Log Analytics pracovní prostor](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
 
-1. Vyberte pracovní prostor s názvem _wtploganalytics&lt;-&gt;User_.
+1. Vyberte pracovní prostor s názvem _wtploganalytics-&lt;user&gt;_ .
 
 1. Výběrem **přehledu** otevřete řešení log analytics v Azure Portal.
 

@@ -1,5 +1,5 @@
 ---
-title: SQL Database zotavení po havárii | Microsoft Docs
+title: SQL Database zotavení po havárii
 description: Naučte se, jak obnovit databázi z místního výpadku nebo neúspěchu pomocí Azure SQL Database aktivní geografické replikace a možností geografického obnovení.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/21/2019
-ms.openlocfilehash: 95814805d0bcb2532c09f4f68c6b8d97c3b8c6a5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bc4968541c29e3bf18eb4caca2abe648d17342a4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568822"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690596"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Obnovení Azure SQL Database nebo převzetí služeb při selhání sekundárním
 
@@ -67,7 +67,7 @@ K získání nejnovějšího geograficky replikovaného bodu obnovení použijte
 
 ## <a name="wait-for-service-recovery"></a>Počkat na obnovení služby
 
-Azure Teams funguje usilovně k tomu, aby co nejrychleji obnovil dostupnost služby, ale v závislosti na hlavní příčině může trvat hodiny nebo dny.  Pokud vaše aplikace může tolerovat významné výpadky, můžete jednoduše počkat na dokončení obnovení. V takovém případě není nutná žádná akce s vaší částí. Aktuální stav služby můžete zobrazit na našem řídicím [panelu Azure Service Health](https://azure.microsoft.com/status/). Po obnovení této oblasti se obnoví dostupnost vaší aplikace.
+Azure Teams funguje usilovně k tomu, aby co nejrychleji obnovil dostupnost služby, ale v závislosti na hlavní příčině může trvat hodiny nebo dny.  Pokud vaše aplikace může tolerovat významné výpadky, můžete jednoduše počkat na dokončení obnovení. V takovém případě není nutná žádná akce s vaší částí. Aktuální stav služby můžete zobrazit na našem [řídicím panelu Azure Service Health](https://azure.microsoft.com/status/). Po obnovení této oblasti se obnoví dostupnost vaší aplikace.
 
 ## <a name="fail-over-to-geo-replicated-secondary-server-in-the-failover-group"></a>Převzetí služeb při selhání geograficky replikovaným sekundárním serverem ve skupině převzetí služeb při selhání
 
@@ -89,7 +89,7 @@ Pokud výpadek vaší aplikace nevede k obchodním zodpovědnostem, můžete pou
 
 Pokud k zotavení z výpadku používáte geografické obnovení, musíte zajistit, aby připojení k novým databázím bylo správně nakonfigurováno, aby bylo možné obnovit normální funkci aplikace. Toto je kontrolní seznam úkolů pro přípravu obnovené databáze.
 
-### <a name="update-connection-strings"></a>Aktualizovat připojovací řetězce
+### <a name="update-connection-strings"></a>Aktualizace připojovacích řetězců
 
 Vzhledem k tomu, že se obnovená databáze nachází na jiném serveru, musíte aktualizovat připojovací řetězec aplikace tak, aby odkazoval na tento server.
 
@@ -97,7 +97,7 @@ Další informace o změně připojovacích řetězců najdete v příslušném 
 
 ### <a name="configure-firewall-rules"></a>Konfigurace pravidel brány firewall
 
-Je nutné zajistit, aby pravidla brány firewall nakonfigurovaná na serveru a v databázi odpovídala nastavením nakonfigurovaným na primárním serveru a primární databázi. Další informace najdete v tématu [jak: Nakonfigurujte nastavení brány firewall (Azure SQL Database](sql-database-configure-firewall-settings.md)).
+Je nutné zajistit, aby pravidla brány firewall nakonfigurovaná na serveru a v databázi odpovídala nastavením nakonfigurovaným na primárním serveru a primární databázi. Další informace najdete v tématu [Postup: Konfigurace nastavení brány firewall (Azure SQL Database)](sql-database-configure-firewall-settings.md).
 
 ### <a name="configure-logins-and-database-users"></a>Konfigurace přihlašovacích údajů a uživatelů databáze
 
@@ -110,7 +110,7 @@ Musíte zajistit, aby všechny přihlašovací údaje, které vaše aplikace pou
 
 Musíte zajistit, aby byla stávající nastavení pravidla upozornění aktualizována tak, aby se namapovala na obnovenou databázi a na jiný server.
 
-Další informace o pravidlech upozornění databáze najdete v tématu [příjem oznámení](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) o výstrahách a [sledování Service Health](../monitoring-and-diagnostics/insights-service-health.md).
+Další informace o pravidlech upozornění databáze najdete v tématu [příjem oznámení o výstrahách](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) a [sledování Service Health](../monitoring-and-diagnostics/insights-service-health.md).
 
 ### <a name="enable-auditing"></a>Povolit auditování
 

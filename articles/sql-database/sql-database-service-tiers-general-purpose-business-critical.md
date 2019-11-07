@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database – obecný účel a důležité pro podnikání | Microsoft Docs
+title: 'Azure SQL Database – obecný účel a důležité pro podnikání '
 description: Článek popisuje úrovně služeb pro obecné účely a důležité pro firmy v rámci nákupního modelu založeného na vCore.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 10/01/2019
-ms.openlocfilehash: a971b428da72028bcabd874e848d53bc2392a0f6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c6af083c4b3d16fa695da0ccc968c90b5480b6c4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496112"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687269"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL Database úrovní služeb
 
@@ -32,28 +32,28 @@ Tento článek pojednává o rozdílech, které se týkají porovnání úrovní
 
 Následující tabulka popisuje klíčové rozdíly mezi úrovněmi služeb pro nejnovější generaci (Gen5). Všimněte si, že vlastnosti vrstvy služeb se můžou lišit v Izolovaná databáze a spravované instanci.
 
-| | Typ prostředku | Obecné použití |  Hyperškálování | Pro důležité obchodní informace |
+| | Typ prostředku | Pro obecné účely |  Hyperškálování | Pro důležité obchodní informace |
 |:---:|:---:|:---:|:---:|:---:|
 | **Nejlepší pro** | |  Nabízí možnosti pro vyvážené výpočty a úložiště s vyrovnanou rozpočtem. | Většina obchodních úloh. Automatické škálování velikosti úložiště až na 100 TB, škálování kapalinových vertikálních a horizontálních výpočetních škálování a rychlé obnovení databáze. | OLTP aplikace s vysokou mírou transakcí a nízkou latencí v/v. Nabízí nejvyšší odolnost proti chybám a rychlé převzetí služeb při selhání s využitím několika synchronně aktualizovaných replik.|
 |  **K dispozici v typu prostředku:** ||Jedna databáze/elastický fond/spravovaná instance | Izolovaná databáze | Jedna databáze/elastický fond/spravovaná instance |
 | **Velikost výpočetního prostředí**|Izolovaná databáze/elastický fond | 1 až 80 virtuální jádra | 1 až 80 virtuální jádra | 1 až 80 virtuální jádra |
-| | Spravovaná instance | 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra | Nevztahuje se | 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
-| | Fondy spravovaných instancí | 2, 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra | Nevztahuje se | Nevztahuje se |
-| **Typ úložiště** | Všechno | Premium Remote Storage (na instanci) | Oddělené úložiště s místní mezipamětí SSD (na instanci) | Vysoce rychlé místní SSD úložiště (na instanci) |
+| | Spravovaná instance | 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra | Není dostupné. | 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
+| | Fondy spravovaných instancí | 2, 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra | Není dostupné. | Není dostupné. |
+| **Typ úložiště** | Vše | Premium Remote Storage (na instanci) | Oddělené úložiště s místní mezipamětí SSD (na instanci) | Vysoce rychlé místní SSD úložiště (na instanci) |
 | **Velikost databáze** | Izolovaná databáze/elastický fond | 5 GB – 4 TB | Až 100 TB | 5 GB – 4 TB |
-| | Spravovaná instance  | 32 GB – 8 TB | Nevztahuje se | 32 GB – 4 TB |
+| | Spravovaná instance  | 32 GB – 8 TB | Není dostupné. | 32 GB – 4 TB |
 | **Velikost úložiště** | Izolovaná databáze/elastický fond | 5 GB – 4 TB | Až 100 TB | 5 GB – 4 TB |
-| | Spravovaná instance  | 32 GB – 8 TB | Nevztahuje se | 32 GB – 4 TB |
+| | Spravovaná instance  | 32 GB – 8 TB | Není dostupné. | 32 GB – 4 TB |
 | **Velikost databáze TempDB** | Izolovaná databáze/elastický fond | [32 GB na vCore](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4) | [32 GB na vCore](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5) | [32 GB na vCore](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) |
-| | Spravovaná instance  | [24 GB na vCore](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | Nevztahuje se | Až 4 TB – [omezeno velikostí úložiště](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
+| | Spravovaná instance  | [24 GB na vCore](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | Není dostupné. | Až 4 TB – [omezeno velikostí úložiště](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
 | **Propustnost zápisu protokolu** | Izolovaná databáze | [1,875 MB/s na vCore (max. 30 MB/s)](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4) | 100 MB/s | [6 MB/s na vCore (max. 96 MB/s)](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) |
-| | Spravovaná instance | [3 MB/s na vCore (max. 22 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | Nevztahuje se | [4 MB/s na Vcore (max. 48 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
-|**Dostupnost**|Všechno| 99,99 % |  [99,95% s jednou sekundární replikou, 99,99% s více replikami](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99,99 % <br/> [99,995% s redundantní jedinou databází zóny](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
-|**Vytvářet**|Všechno|RA-GRS, 7-35 dní (ve výchozím nastavení 7 dnů)| RA-GRS, 7 dní, časový interval pro obnovení v čase konstanty (PITR) | RA-GRS, 7-35 dní (ve výchozím nastavení 7 dnů) |
-|**OLTP v paměti** | | Nevztahuje se | Nevztahuje se | Dostupné |
+| | Spravovaná instance | [3 MB/s na vCore (max. 22 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | Není dostupné. | [4 MB/s na Vcore (max. 48 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
+|**Dostupnost**|Vše| 99,99 % |  [99,95% s jednou sekundární replikou, 99,99% s více replikami](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99,99 % <br/> [99,995% s redundantní jedinou databází zóny](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
+|**Vytvářet**|Vše|RA-GRS, 7-35 dní (ve výchozím nastavení 7 dnů)| RA-GRS, 7 dní, časový interval pro obnovení v čase konstanty (PITR) | RA-GRS, 7-35 dní (ve výchozím nastavení 7 dnů) |
+|**OLTP v paměti** | | Není dostupné. | Není dostupné. | K dispozici. |
 |**Repliky jen pro čtení**| | 0  | 0 - 4 | 1 (integrovaná, zahrnutá v ceně) |
 |**Ceny a fakturace** | Izolovaná databáze | účtují se [Vcore, rezervované úložiště a úložiště záloh](https://azure.microsoft.com/pricing/details/sql-database/single/) . <br/>IOPS se neúčtuje. | účtují se [Vcore pro každou repliku a využité úložiště](https://azure.microsoft.com/pricing/details/sql-database/single/) . <br/>IOPS se ještě neúčtuje. | účtují se [Vcore, rezervované úložiště a úložiště záloh](https://azure.microsoft.com/pricing/details/sql-database/single/) . <br/>IOPS se neúčtuje. |
-|| Managed Instance | účtuje se [Vcore a rezervované úložiště](https://azure.microsoft.com/pricing/details/sql-database/managed/) . <br/>IOPS se neúčtuje.<br/>Úložiště zálohování se ještě neúčtuje. | Nevztahuje se | účtuje se [Vcore a rezervované úložiště](https://azure.microsoft.com/pricing/details/sql-database/managed/) . <br/>IOPS se neúčtuje.<br/>Úložiště zálohování se ještě neúčtuje. | 
+|| MI | účtuje se [Vcore a rezervované úložiště](https://azure.microsoft.com/pricing/details/sql-database/managed/) . <br/>IOPS se neúčtuje.<br/>Úložiště zálohování se ještě neúčtuje. | Není dostupné. | účtuje se [Vcore a rezervované úložiště](https://azure.microsoft.com/pricing/details/sql-database/managed/) . <br/>IOPS se neúčtuje.<br/>Úložiště zálohování se ještě neúčtuje. | 
 |**Modely slev**| | [Rezervované instance](sql-database-reserved-capacity.md)<br/>[Zvýhodněné hybridní využití Azure](sql-database-azure-hybrid-benefit.md) (není k dispozici v předplatných pro vývoj a testování)<br/>Předplatné [Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) a průběžné [platby podle](https://azure.microsoft.com/offers/ms-azr-0023p/) aktuálního využití pro vývoj/testování| [Zvýhodněné hybridní využití Azure](sql-database-azure-hybrid-benefit.md) (není k dispozici v předplatných pro vývoj a testování)<br/>Předplatné [Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) a průběžné [platby podle](https://azure.microsoft.com/offers/ms-azr-0023p/) aktuálního využití pro vývoj/testování| [Rezervované instance](sql-database-reserved-capacity.md)<br/>[Zvýhodněné hybridní využití Azure](sql-database-azure-hybrid-benefit.md) (není k dispozici v předplatných pro vývoj a testování)<br/>Předplatné [Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/) a průběžné [platby podle](https://azure.microsoft.com/offers/ms-azr-0023p/) aktuálního využití pro vývoj/testování|
 
 Další informace najdete v podrobných rozdílech mezi úrovněmi služby v izolovaných [databázích (Vcore)](sql-database-vcore-resource-limits-single-databases.md), [fondech s izolovanými databázemi (Vcore)](sql-database-dtu-resource-limits-single-databases.md), izolovanými databázemi [(DTU)](sql-database-dtu-resource-limits-single-databases.md), fondy izolovaných [databází (DTU)](sql-database-dtu-resource-limits-single-databases.md)a [spravovanou instancí](sql-database-managed-instance-resource-limits.md) . stránky.
@@ -72,8 +72,8 @@ Následující faktory ovlivňují velikost úložiště používaného pro data
 - Můžete vybrat libovolnou velikost databáze mezi 10 GB a podporovaným maximem.
   - Pro úložiště v úrovních služby Standard nebo pro obecné účely zvyšte nebo zmenšete velikost v přírůstcích po 10 GB.
   - V případě úložiště v úrovních služeb Premium nebo pro důležité obchodní hodnoty zvyšte nebo zmenšete velikost v 250 až GB.
-- Na úrovni služby pro obecné účely `tempdb` používá připojenou jednotku SSD a náklady na úložiště jsou zahrnuté v ceně vCore.
-- V úrovni služby důležité pro podniky `tempdb` sdílet připojené jednotky SSD se soubory MDF a LDF a náklady na úložiště `tempdb` jsou zahrnuté v ceně vCore.
+- V úrovni služby pro obecné účely `tempdb` používá připojenou jednotku SSD a náklady na úložiště jsou zahrnuté v ceně vCore.
+- V podnikové úrovni služby `tempdb` sdílet připojené jednotky SSD se soubory MDF a LDF a náklady na úložiště `tempdb` jsou zahrnuté v ceně vCore.
 
 > [!IMPORTANT]
 > Účtuje se vám celkové přidělené úložiště pro soubory MDF a LDF.

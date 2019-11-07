@@ -1,5 +1,5 @@
 ---
-title: Architektura připojení pro spravovanou instanci v Azure SQL Database | Microsoft Docs
+title: Architektura připojení pro spravovanou instanci v Azure SQL Database
 description: Přečtěte si o Azure SQL Database komunikaci spravované instance a architektuře připojení a také o tom, jak komponenty směrují provoz do spravované instance.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: 7e32cb302322f7a80154a3f2a246d7d4f1743c09
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 881f116988ae0c9a6a33c8454cd1e4012580bfab
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249370"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688199"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Architektura připojení pro spravovanou instanci v Azure SQL Database
 
@@ -66,7 +66,7 @@ Pojďme se na architekturu připojení pro spravované instance pořizovat hlub�
 
 ![Architektura připojení virtuálního clusteru](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-Klienti se připojují ke spravované instanci pomocí názvu hostitele s formulářem `<mi_name>.<dns_zone>.database.windows.net`. Tento název hostitele se překládá na privátní IP adresu, i když je zaregistrovaný ve veřejné zóně DNS (Domain Name System) a je veřejně přeložitelný. @No__t-0 se automaticky vygeneruje při vytváření clusteru. Pokud je nově vytvořený cluster hostitelem sekundární spravované instance, sdílí své ID zóny s primárním clusterem. Další informace najdete v tématu [použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets).
+Klienti se připojují ke spravované instanci pomocí názvu hostitele, který má `<mi_name>.<dns_zone>.database.windows.net`formuláře. Tento název hostitele se překládá na privátní IP adresu, i když je zaregistrovaný ve veřejné zóně DNS (Domain Name System) a je veřejně přeložitelný. `zone-id` se při vytváření clusteru automaticky vygeneruje. Pokud je nově vytvořený cluster hostitelem sekundární spravované instance, sdílí své ID zóny s primárním clusterem. Další informace najdete v tématu [použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets).
 
 Tato privátní IP adresa patří do interního nástroje pro vyrovnávání zatížení spravované instance. Nástroj pro vyrovnávání zatížení směruje provoz do brány spravované instance. Vzhledem k tomu, že je možné spustit více spravovaných instancí v rámci stejného clusteru, brána používá název hostitele spravované instance pro přesměrování provozu do správné služby SQL Engine.
 
@@ -98,7 +98,7 @@ Nasaďte spravovanou instanci ve vyhrazené podsíti uvnitř virtuální sítě.
 
 | Name (Název)       |Port                        |Protocol (Protokol)|Zdroj           |Cíl|Akce|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|správu  |9000, 9003, 1438, 1440, 1452|TCP     |Všechny              |PODSÍŤ MI  |Povolit |
+|správa  |9000, 9003, 1438, 1440, 1452|TCP     |Všechny              |PODSÍŤ MI  |Povolit |
 |mi_subnet   |Všechny                         |Všechny     |PODSÍŤ MI        |PODSÍŤ MI  |Povolit |
 |health_probe|Všechny                         |Všechny     |AzureLoadBalancer|PODSÍŤ MI  |Povolit |
 
@@ -106,13 +106,13 @@ Nasaďte spravovanou instanci ve vyhrazené podsíti uvnitř virtuální sítě.
 
 | Name (Název)       |Port          |Protocol (Protokol)|Zdroj           |Cíl|Akce|
 |------------|--------------|--------|-----------------|-----------|------|
-|správu  |443, 12000    |TCP     |PODSÍŤ MI        |AzureCloud |Povolit |
+|správa  |443, 12000    |TCP     |PODSÍŤ MI        |AzureCloud |Povolit |
 |mi_subnet   |Všechny           |Všechny     |PODSÍŤ MI        |PODSÍŤ MI  |Povolit |
 
 > [!IMPORTANT]
-> Zajistěte, aby existovalo pouze jedno příchozí pravidlo pro porty 9000, 9003, 1438, 1440, 1452 a jedno odchozí pravidlo pro porty 80, 443, 12000. Zřizování spravovaných instancí prostřednictvím Azure Resource Manager nasazení se nezdaří, pokud jsou příchozí a odchozí pravidla konfigurovaná samostatně pro každý port. Pokud jsou tyto porty v samostatných pravidlech, nasazení se nezdaří s kódem chyby `VnetSubnetConflictWithIntendedPolicy`.
+> Zajistěte, aby existovalo pouze jedno příchozí pravidlo pro porty 9000, 9003, 1438, 1440, 1452 a jedno odchozí pravidlo pro porty 80, 443, 12000. Zřizování spravovaných instancí prostřednictvím Azure Resource Manager nasazení se nezdaří, pokud jsou příchozí a odchozí pravidla konfigurovaná samostatně pro každý port. Pokud jsou tyto porty v samostatných pravidlech, nasazení se nezdaří s kódem chyby `VnetSubnetConflictWithIntendedPolicy`
 
-\* MI odkazuje na rozsah IP adres podsítě ve formátu 10. x. x. x. x/y. Tyto informace můžete najít v Azure Portal ve vlastnostech podsítě.
+PODSÍŤ \* MI odkazuje na rozsah IP adres podsítě ve formátu 10. x. x. x. x/y. Tyto informace můžete najít v Azure Portal ve vlastnostech podsítě.
 
 > [!IMPORTANT]
 > I když požadovaná příchozí pravidla zabezpečení umožňují provoz z _libovolného_ zdroje na portech 9000, 9003, 1438, 1440 a 1452, jsou tyto porty chráněny integrovanou bránou firewall. Další informace najdete v tématu [určení adresy koncového bodu správy](sql-database-managed-instance-find-management-endpoint-ip-address.md).
@@ -240,7 +240,7 @@ Uživatel s konfigurací podsítě s podporou služeb má úplnou kontrolu nad p
 Nasaďte spravovanou instanci ve vyhrazené podsíti uvnitř virtuální sítě. Podsíť musí mít tyto vlastnosti:
 
 - **Vyhrazená podsíť:** Podsíť spravované instance nemůže obsahovat žádnou jinou cloudovou službu, která je k ní přidružená, a nemůže to být podsíť brány. Podsíť nemůže obsahovat žádný prostředek, ale spravovanou instanci a nelze později přidat další typy prostředků v podsíti.
-- **Delegování podsítě:** Podsíť spravované instance musí být delegovaná na poskytovatele prostředků `Microsoft.Sql/managedInstances`.
+- **Delegování podsítě:** Podsíť spravované instance musí být delegovaná na `Microsoft.Sql/managedInstances` poskytovatele prostředků.
 - **Skupina zabezpečení sítě (NSG):** NSG musí být přidružený k podsíti spravované instance. Pomocí NSG můžete řídit přístup ke koncovému bodu dat spravované instance pomocí filtrování provozu na portech 1433 a porty 11000-11999, pokud je spravovaná instance nakonfigurovaná pro připojení přesměrování. Služba bude automaticky přidávat [pravidla](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) nutná k umožnění nepřerušovaného toku provozu správy.
 - **Tabulka uživatelsky definované trasy (udr):** Tabulka UDR musí být přidružena k podsíti spravované instance. Do směrovací tabulky můžete přidat položky, které budou směrovat provoz s místními rozsahy privátních IP adres jako cíl prostřednictvím brány virtuální sítě nebo zařízení virtuální sítě (síťové virtuální zařízení). Služba automaticky přidá [položky](#user-defined-routes-with-service-aided-subnet-configuration) , které jsou potřeba k tomu, aby bylo možné tok provozu správy bez přerušení.
 - **Koncové body služby:** Koncové body služby se daly použít ke konfiguraci pravidel virtuální sítě na účtech úložiště, které udržují protokoly zálohování a auditu.
@@ -253,7 +253,7 @@ Nasaďte spravovanou instanci ve vyhrazené podsíti uvnitř virtuální sítě.
 
 | Name (Název)       |Port                        |Protocol (Protokol)|Zdroj           |Cíl|Akce|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|správu  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |PODSÍŤ MI  |Povolit |
+|správa  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |PODSÍŤ MI  |Povolit |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |PODSÍŤ MI  |Povolit |
 |            |9000, 9003                  |TCP     |65.55.188.0/24, 167.220.0.0/16, 131.107.0.0/16|PODSÍŤ MI  |Povolit |
 |mi_subnet   |Všechny                         |Všechny     |PODSÍŤ MI        |PODSÍŤ MI  |Povolit |
@@ -263,7 +263,7 @@ Nasaďte spravovanou instanci ve vyhrazené podsíti uvnitř virtuální sítě.
 
 | Name (Název)       |Port          |Protocol (Protokol)|Zdroj           |Cíl|Akce|
 |------------|--------------|--------|-----------------|-----------|------|
-|správu  |443, 12000    |TCP     |PODSÍŤ MI        |AzureCloud |Povolit |
+|správa  |443, 12000    |TCP     |PODSÍŤ MI        |AzureCloud |Povolit |
 |mi_subnet   |Všechny           |Všechny     |PODSÍŤ MI        |PODSÍŤ MI  |Povolit |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>Uživatelem definované trasy s konfigurací podsítě s podporou služby 
@@ -425,7 +425,7 @@ Nasaďte spravovanou instanci ve vyhrazené podsíti uvnitř virtuální sítě.
 |mi-216-220-208-20-nexthop-Internet|216.220.208.0/20|Internet|
 ||||
 
-\* MI odkazuje na rozsah IP adres podsítě ve formátu 10. x. x. x. x/y. Tyto informace můžete najít v Azure Portal ve vlastnostech podsítě.
+PODSÍŤ \* MI odkazuje na rozsah IP adres podsítě ve formátu 10. x. x. x. x/y. Tyto informace můžete najít v Azure Portal ve vlastnostech podsítě.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -436,4 +436,4 @@ Nasaďte spravovanou instanci ve vyhrazené podsíti uvnitř virtuální sítě.
   - Z [Azure Portal](sql-database-managed-instance-get-started.md).
   - Pomocí [prostředí PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md).
   - Pomocí [šablony Azure Resource Manager](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/).
-  - Pomocí [šablony Azure Resource Manager (s použitím JumpBox, včetně SSMS)](https://azure.microsoft.com/en-us/resources/templates/201-sqlmi-new-vnet-w-jumpbox/). 
+  - Pomocí [šablony Azure Resource Manager (s použitím JumpBox, včetně SSMS)](https://azure.microsoft.com/resources/templates/201-sqlmi-new-vnet-w-jumpbox/). 

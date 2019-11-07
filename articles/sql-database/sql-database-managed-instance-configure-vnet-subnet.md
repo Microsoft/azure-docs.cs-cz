@@ -1,5 +1,5 @@
 ---
-title: Konfigurace existující virtuální sítě pro Azure SQL Database spravovanou instanci | Microsoft Docs
+title: Konfigurace existující virtuální sítě pro Azure SQL Database spravovanou instanci
 description: Tento článek popisuje, jak nakonfigurovat existující virtuální síť a podsíť, kde můžete nasadit Azure SQL Database spravovanou instanci.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 01/15/2019
-ms.openlocfilehash: 509a08705d87e8f789e26ebbcec295a31f99f416
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0f6ababa9d25798f4b150c322d48d4c7af04a511
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567634"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689380"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Konfigurace existující virtuální sítě pro Azure SQL Database spravovanou instanci
 
@@ -52,11 +52,11 @@ Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/prepar
 
 Skript připraví podsíť ve třech krocích:
 
-1. Oproti Ověřuje vybranou virtuální síť a podsíť pro požadavky na síť spravované instance.
-2. Potvrdit Zobrazuje uživatele sadu změn, které je třeba provést pro přípravu podsítě pro nasazení spravované instance. Také si vyžádá souhlas.
-3. Systém Správně nakonfiguruje virtuální síť a podsíť.
+1. Ověřit: ověřuje vybranou virtuální síť a podsíť pro požadavky na síť spravované instance.
+2. Potvrdit: zobrazuje uživatele sady změn, které je třeba provést pro přípravu podsítě pro nasazení spravované instance. Také si vyžádá souhlas.
+3. Příprava: správně nakonfiguruje virtuální síť a podsíť.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přehled najdete v tématu [co je spravovaná instance?](sql-database-managed-instance.md).
 - Kurz, ve kterém se dozvíte, jak vytvořit virtuální síť, vytvořit spravovanou instanci a obnovit databázi ze zálohy databáze, najdete v tématu [Vytvoření spravované instance Azure SQL Database](sql-database-managed-instance-get-started.md).

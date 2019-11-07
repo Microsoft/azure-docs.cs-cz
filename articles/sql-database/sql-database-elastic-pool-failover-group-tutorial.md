@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Přidání elastického fondu Azure SQL Database do skupiny převzetí služeb při selhání | Microsoft Docs'
+title: 'Kurz: Přidání elastického fondu Azure SQL Database do skupiny převzetí služeb při selhání '
 description: Přidejte Azure SQL Database elastický fond do skupiny převzetí služeb při selhání pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: 838bdd2aeba18ebeaa964cb329939931419c588c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 980740c4417d1085d7c367b172005b10ce828e0e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933399"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690495"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Kurz: Přidání elastického fondu Azure SQL Database do skupiny převzetí služeb při selhání
 
-Nakonfiguruje skupinu převzetí služeb při selhání pro elastický fond Azure SQL Database a testovací převzetí služeb při selhání pomocí Azure Portal.  V tomto kurzu se naučíte, jak:
+Nakonfiguruje skupinu převzetí služeb při selhání pro elastický fond Azure SQL Database a testovací převzetí služeb při selhání pomocí Azure Portal.  V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > - Vytvořte Azure SQL Database izolovanou databázi.
@@ -28,7 +28,7 @@ Nakonfiguruje skupinu převzetí služeb při selhání pro elastický fond Azur
 > - Vytvořte [skupinu převzetí služeb při selhání](sql-database-auto-failover-group.md) pro dva elastické fondy mezi dvěma logickými servery SQL.
 > - Testovací převzetí služeb při selhání.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující: 
 

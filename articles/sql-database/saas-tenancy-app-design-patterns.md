@@ -1,5 +1,5 @@
 ---
-title: SaaS vzory pro více tenantů – Azure SQL Database | Microsoft Docs
+title: 'SaaS vzory pro více tenantů – Azure SQL Database '
 description: Přečtěte si o požadavcích a vzorech architektury Common data Database pro víceklientské aplikace SaaS (software jako služba), které běží v cloudovém prostředí Azure.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 8cbf0e45ac368f0d2dd1678984bd14392452e63a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ecbcf2cdfea2714e46d0c9cff4066befabddeeb8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570195"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691922"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Modely tenantů SaaS Database pro více tenantů
 
@@ -32,23 +32,23 @@ Při návratu k placenému pronajmutí každý tenant získá přístup k kompon
 
 Pojem *model tenantů* odkazuje na uspořádání uložených dat v klientech:
 
-- *Jediná architektura:* &nbsp; Každá databáze uchovává data pouze z jednoho tenanta.
-- *Víceklientská architektura:* &nbsp; Každá databáze uchovává data z několika samostatných klientů (s mechanismy ochrany osobních údajů).
+- *Jedna z tenantů:* &nbsp; každá databáze uchovává data jenom z jednoho tenanta.
+- Víceklientská architektura *:* &nbsp; každá databáze uchovává data z několika samostatných klientů (s mechanismy ochrany ochrany osobních údajů).
 - K dispozici jsou také modely hybridních tenantů.
 
 ## <a name="b-how-to-choose-the-appropriate-tenancy-model"></a>B. Jak zvolit vhodný model architektury
 
 Obecně platí, že model architektury nemá vliv na funkci aplikace, ale může to mít vliv na jiné aspekty celkového řešení.  Následující kritéria slouží k vyhodnocení každého modelu:
 
-- **Škálovatelnost**
+- **Škálovatelnost:**
     - Počet tenantů.
     - Úložiště pro každého tenanta.
     - Úložiště je agregované.
     - Úlohy.
 
-- **Izolace tenanta:** &nbsp; Izolace a výkon dat (bez ohledu na to, jestli zatížení jednoho tenanta má vliv na ostatní).
+- **Izolace tenanta:** &nbsp; izolaci a výkonu dat (ať už jeden z úloh tenanta má vliv na ostatní).
 
-- **Náklady na tenanta:** &nbsp; Náklady na databázi.
+- **Náklady na tenanta:** &nbsp; náklady na databázi.
 
 - **Složitost vývoje:**
     - Změny schématu.
@@ -60,7 +60,7 @@ Obecně platí, že model architektury nemá vliv na funkci aplikace, ale může
     - Obnovuje se tenant.
     - Zotavení po havárii.
 
-- **Přizpůsobitelnost**&nbsp; Snadná Podpora přizpůsobení schématu, která jsou specifická pro konkrétního tenanta nebo pro třídu tenanta.
+- Přizpůsobení **:** &nbsp; usnadnit podporu přizpůsobení schématu, která je specifická pro konkrétního tenanta nebo pro třídu tenanta.
 
 Diskuze tenantů se zaměřuje na *datovou* vrstvu.  Ale vezměte v úvahu okamžik *aplikační* vrstvy.  Aplikační vrstva je považována za entitu monolitické.  Pokud rozdělíte aplikaci na mnoho malých komponent, může se změnit zvolený model architektury.  Můžete nakládat s některými komponentami, které se týkají i architektury i technologie úložiště nebo používané platformy.
 
@@ -113,7 +113,7 @@ Mezi další funkce pro správu, které je vhodné škálovat, patří následuj
 - Šifrování na disku.
 - Telemetrie výkonu.
 
-#### <a name="automation"></a>Automation
+#### <a name="automation"></a>Automatizace
 
 Operace správy se dají skriptovat a nabízet prostřednictvím modelu [DevOps][http-visual-studio-devops-485m] .  Operace může být dokonce i automatizovaná a zveřejněná v aplikaci.
 
@@ -125,9 +125,9 @@ Dalším dostupným vzorem je uložení mnoha tenantů do víceklientské datab�
 
 #### <a name="tenant-isolation-is-sacrificed"></a>Izolace tenanta je usmrcena.
 
-*Údajů*&nbsp; Víceklientské databáze nutně zabere izolaci klientů.  Data více tenantů jsou uložena společně v jedné databázi.  Během vývoje zajistěte, aby dotazy nikdy nezveřejnily data z více než jednoho tenanta.  SQL Database podporuje [zabezpečení na úrovni řádků][docu-sql-svr-db-row-level-security-947w], které může vyhovět tomu, že data vrácená z dotazu mají rozsah pro jednoho tenanta.
+*Data:* &nbsp; databáze s více klienty nutně zabere izolaci klientů.  Data více tenantů jsou uložena společně v jedné databázi.  Během vývoje zajistěte, aby dotazy nikdy nezveřejnily data z více než jednoho tenanta.  SQL Database podporuje [zabezpečení na úrovni řádků][docu-sql-svr-db-row-level-security-947w], které může vyhovět tomu, že data vrácená z dotazu mají rozsah pro jednoho tenanta.
 
-*Zpracováván*&nbsp; Víceklientské databáze sdílí výpočetní prostředky a prostředky úložiště ve všech svých klientech.  Tuto databázi je možné monitorovat, aby se zajistilo jejich přijetí.  Systém Azure ale nemá žádný vestavěný způsob, jak tyto prostředky monitorovat nebo spravovat pomocí individuálního tenanta.  Proto má víceklientské databáze zvýšené riziko, že dojde k dosažení sousedů s vysokou zátěží, přičemž zatížení jednoho přečinného tenanta má vliv na výkon jiných tenantů ve stejné databázi.  Další monitorování na úrovni aplikace by mohlo monitorovat výkon na úrovni tenanta.
+*Zpracování:* &nbsp; více tenantů databáze sdílí výpočetní a úložné prostředky ve všech svých klientech.  Tuto databázi je možné monitorovat, aby se zajistilo jejich přijetí.  Systém Azure ale nemá žádný vestavěný způsob, jak tyto prostředky monitorovat nebo spravovat pomocí individuálního tenanta.  Proto má víceklientské databáze zvýšené riziko, že dojde k dosažení sousedů s vysokou zátěží, přičemž zatížení jednoho přečinného tenanta má vliv na výkon jiných tenantů ve stejné databázi.  Další monitorování na úrovni aplikace by mohlo monitorovat výkon na úrovni tenanta.
 
 #### <a name="lower-cost"></a>Nižší náklady
 
@@ -135,13 +135,13 @@ Obecně platí, že databáze s více klienty mají nejnižší náklady na tena
 
 V následující části jsou popsány dvě varianty modelu databáze s více klienty, přičemž model horizontálně dělené multi-tenant je nejpružnější a škálovatelný.
 
-## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>F. Aplikace pro více tenantů s jedinou databází s více klienty
+## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>FJ. Aplikace pro více tenantů s jedinou databází s více klienty
 
 Nejjednodušší model víceklientské databáze používá jedinou databázi pro hostování dat pro všechny klienty.  Po přidání dalších tenantů se databáze škáluje s větším úložištěm a výpočetními prostředky.  Toto horizontální navýšení kapacity může být nezbytné, i když je vždy limit maximálního měřítka.  Nicméně dlouho před dosažením tohoto limitu se databáze bude nepraktický spravovat.
 
 Operace správy, které jsou zaměřené na jednotlivé klienty, jsou složitější pro implementaci ve více tenantů databázích.  A ve velkém měřítku tyto operace se mohou stát nepřijatelně pomalu.  Jedním z příkladů je obnovení dat k určitému bodu v čase pouze pro jednoho tenanta.
 
-## <a name="g-multi-tenant-app-with-sharded-multi-tenant-databases"></a>G. Víceklientská aplikace s horizontálně dělené databázemi s více klienty
+## <a name="g-multi-tenant-app-with-sharded-multi-tenant-databases"></a>věcn. Víceklientská aplikace s horizontálně dělené databázemi s více klienty
 
 Většina aplikací SaaS přistupuje pouze k datům v jednom klientovi.  Tento vzor přístupu umožňuje distribuci dat tenanta napříč více databázemi nebo horizontálních oddílů, kde všechna data pro každého tenanta jsou obsažená v jednom horizontálních oddílů.  V kombinaci se vzorem víceklientské databáze umožňuje model horizontálně dělené skoro neomezené škálování.
 
@@ -165,7 +165,7 @@ V závislosti na použitém přístupu k horizontálního dělení můžou být 
 
 Databáze horizontálně dělené s více klienty lze umístit do elastických fondů.  Obecně platí, že je velký počet databází s jednou tenantů ve fondu, což je cenově výhodné, protože má mnoho tenantů v několika databázích s více klienty.  Víceklientské databáze jsou výhodné, pokud existuje velký počet relativně neaktivních klientů.
 
-## <a name="h-hybrid-sharded-multi-tenant-database-model"></a>H. Model hybridního víceklientské databáze horizontálně dělené
+## <a name="h-hybrid-sharded-multi-tenant-database-model"></a>y. Model hybridního víceklientské databáze horizontálně dělené
 
 V hybridním modelu mají všechny databáze ve svém schématu identifikátor tenanta.  Databáze jsou schopné uložit více než jednoho tenanta a databáze mohou být horizontálně dělené.  Takže ve smyslu schématu jsou to všechny víceklientské databáze.  V praxi některé z těchto databází ještě obsahují jenom jednoho tenanta.  Bez ohledu na to, že počet klientů uložených v dané databázi nemá žádný vliv na schéma databáze.
 
@@ -185,8 +185,8 @@ Následující tabulka shrnuje rozdíly mezi hlavními modely tenantů.
 
 | Měření | Samostatná aplikace | Databáze – na tenanta | Horizontálně dělené více tenantů |
 | :---------- | :------------- | :------------------ | :------------------- |
-| Měřítko | Střední<br />1 – 100 | Velmi vysoké<br />1 – 100, tisících | Unlimited<br />1 – 1, 000, tisících |
-| Izolace tenanta | Velmi vysoké | Vysoká | Slab s výjimkou jednoho tenanta (který je samostatně v MT DB). |
+| Měřítko | Střednědobé používání<br />1 – 100 | Velmi vysoké<br />1 – 100, tisících | Unlimited<br />1 – 1, 000, tisících |
+| Izolace tenanta | Velmi vysoké | Vysoký | Slab s výjimkou jednoho tenanta (který je samostatně v MT DB). |
 | Náklady na databázi na tenanta | Maximální má velikost pro špičky. | Slab používané fondy. | Nejnižší pro malé klienty v MT databáze. |
 | Sledování a Správa výkonu | Jenom pro tenanta | Agregovaná + pro každého tenanta | Souhrnné i když je jeden tenant jenom pro jednoduchou. |
 | Složitost vývoje | Nízká | Nízká | Úrovně kvůli horizontálního dělení. |

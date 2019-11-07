@@ -1,6 +1,6 @@
 ---
-title: Monitorování stavu SQL Database pomocí Azure Resource Health | Dokumentace Microsoftu
-description: Pomocí Azure Resource Health umožňuje monitorovat stav SQL Database, pomáhá diagnostikovat a získáním podpory v případě, že problém Azure ovlivňuje vaše prostředky SQL.
+title: Monitorování stavu SQL Database pomocí Azure Resource Health
+description: Pomocí Azure Resource Health můžete monitorovat stav SQL Database, pomůže vám diagnostikovat a získat podporu v případě, že problém Azure ovlivňuje vaše prostředky SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
@@ -11,71 +11,71 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 02/26/2019
-ms.openlocfilehash: 1c2720d61c7b4ea918a3d0c1ff7f41984ea42c69
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 10ce2da8ae8bcd8a12f0972d437a84a37a8390b9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566907"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687505"
 ---
-# <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>Řešení potíží s připojením pro službu Azure SQL Database pomocí Resource Health
+# <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>Řešení potíží s připojením pro Azure SQL Database pomocí Resource Health
 
 ## <a name="overview"></a>Přehled
 
-[Služba Resource Health](../service-health/resource-health-overview.md#get-started) pro SQL Database pomáhá při diagnostice a získání podpory v případě, že problém Azure ovlivňuje vaše prostředky SQL. Informuje o aktuálním a dřívějším stavu prostředků a pomáhá zmírnit problémy. Resource Health poskytuje technickou podporu, když potřebujete pomoc při potížích se službami Azure.
+[Resource Health](../service-health/resource-health-overview.md#get-started) pro SQL Database vám pomůže s diagnostikou a získáním podpory v případě, že problém Azure ovlivňuje vaše prostředky SQL. Informuje o aktuálním a dřívějším stavu prostředků a pomáhá zmírnit problémy. Resource Health poskytuje technickou podporu, když potřebujete pomoc při potížích se službami Azure.
 
 ![Přehled](./media/sql-database-resource-health/sql-resource-health-overview.jpg)
 
 ## <a name="health-checks"></a>Kontroly stavu
 
-Služba Resource Health Určuje stav prostředek SQL tím, že kontroluje úspěšné a neúspěšné přihlášení k prostředku. Stav prostředků pro prostředek databáze SQL v současné době zkontroluje pouze neúspěšná přihlášení z důvodu chyby systému a není chyba uživatele. Stav Resource Health je aktualizován každé 1-2 minuty.
+Resource Health určuje stav prostředku SQL tím, že prozkoumá úspěch a neúspěch přihlášení k prostředku. V současné době Resource Health pro váš prostředek SQL DB kontroluje pouze selhání přihlášení z důvodu chyby systému a nejedná se o chybu uživatele. Stav Resource Health se aktualizuje každých 1-2 minut.
 
-## <a name="health-states"></a>Stavy
+## <a name="health-states"></a>Stav
 
 ### <a name="available"></a>K dispozici.
 
-Stav **dostupné** znamená, že Resource Health nezjistila selhání přihlášení z důvodu chyby systému pro váš prostředek SQL.
+Stav **k dispozici** znamená, že Resource Health nezjistila selhání přihlášení kvůli chybám systému v prostředku SQL.
 
 ![K dispozici.](./media/sql-database-resource-health/sql-resource-health-available.jpg)
 
-### <a name="degraded"></a>Sníženo
+### <a name="degraded"></a>Snížený výkon
 
-Stav **Degradovaný** znamená, že služba Resource Health zjistila většinu úspěšných přihlášení, ale také několik selhání. Toto jsou pravděpodobně přechodné přihlášení chyby. Pokud chcete snížit dopad problémům způsobeným přihlášení přechodné chyby, implementujte [Logika opakování](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) ve vašem kódu.
+Stav **Degradovaný** znamená, že služba Resource Health zjistila většinu úspěšných přihlášení, ale také několik selhání. Jedná se o nejpravděpodobnější chyby při přechodných přihlášeních. Chcete-li snížit dopad problémů s připojením způsobených přechodnými chybami přihlášení, implementujte prosím v kódu [logiku opakování](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) .
 
-![Sníženo](./media/sql-database-resource-health/sql-resource-health-degraded.jpg)
+![Snížený výkon](./media/sql-database-resource-health/sql-resource-health-degraded.jpg)
 
-### <a name="unavailable"></a>Není dostupný
+### <a name="unavailable"></a>Neaktivní
 
-Stav **není k dispozici** znamená, že Resource Health zjistila pokusů o přihlášení konzistentní vzhledem k aplikacím na prostředek SQL. Pokud váš prostředek zůstane v tomto stavu delší dobu, kontaktujte prosím podporu.
+Stav **nedostupný** znamená, že Resource Health zjistila konzistentní selhání přihlášení k vašemu prostředku SQL. Pokud prostředek zůstane v tomto stavu delší dobu, obraťte se prosím na podporu.
 
-![Není dostupný](./media/sql-database-resource-health/sql-resource-health-unavailable.jpg)
+![Neaktivní](./media/sql-database-resource-health/sql-resource-health-unavailable.jpg)
 
-### <a name="unknown"></a>Neznámé
+### <a name="unknown"></a>Není známo
 
-Stav **neznámý** označuje, že Resource Health neobdržel informace o tomto zdroji pro více než 10 minut. Přestože tento stav není úplným a rozhodujícím údaj o stavu prostředku, je důležitý datový bod v procesu odstraňování potíží. Pokud prostředek běží podle očekávání, stav prostředku se změní na dostupný za pár minut. Pokud dojde k problémům s prostředkem, neznámý stav může naznačovat, že událost platformy ovlivňuje prostředku.
+Stav **Neznámý** znamená, že Resource Health nedostaly informace o tomto prostředku po dobu více než 10 minut. I když tento stav není konečným náznakem stavu prostředku, jedná se o důležitý datový bod v procesu řešení potíží. Pokud je prostředek spuštěný podle očekávání, stav prostředku se změní na k dispozici po několika minutách. Pokud máte problémy s prostředkem, neznámý stav může navrhnout, aby daný prostředek ovlivnila událost na platformě.
 
-![Neznámé](./media/sql-database-resource-health/sql-resource-health-unknown.jpg)
+![Není známo](./media/sql-database-resource-health/sql-resource-health-unknown.jpg)
 
 ## <a name="historical-information"></a>Historické informace
 
-Dostanete až 14 dní historie stavu v části historie stavu Resource Health. V části, bude obsahovat také z důvodu výpadek (Pokud je k dispozici) pro výpadky hlášených Resource Health. Azure v současné době ukazuje výpadek pro prostředek databáze SQL ve dvouminutových intervalech. Skutečná délka výpadku je pravděpodobně méně než minuty – průměrná je 8s.
+V části Historie stavu Resource Health můžete přistupovat až ke 14 dnům historie stavu. Oddíl bude obsahovat také důvod výpadku (Pokud je k dispozici) pro výpadky hlášené Resource Health. V současné době Azure ukazuje výpadky vašeho prostředku databáze SQL ve dvouminutových intervalech. Ve skutečnosti výpadky pravděpodobně netrvaly ani minutu – průměr je 8 s.
 
-### <a name="downtime-reasons"></a>Z důvodů výpadek
+### <a name="downtime-reasons"></a>Důvody výpadku
 
-Když vaši službu SQL Database dojde k výpadku, provedení analýzy určit důvod. Pokud je k dispozici, v části historie stavu Resource Health hlásí z důvodu výpadek. Důvody výpadků se obvykle publikují 30 minut po události.
+Když se SQL Database výpadky, provede se analýza, která určí důvod. V případě, že je k dispozici, je důvod výpadku uveden v části Historie stavu Resource Health. Důvody výpadků se obvykle publikují 30 minut po události.
 
 #### <a name="planned-maintenance"></a>Plánovaná údržba
 
-Infrastruktura Azure pravidelně provede plánovanou údržbu – upgrade hardwarové nebo softwarové komponenty v datovém centru. Zatímco databáze při údržbě, SQL může ukončit některé existující připojení a odmítnout nové značky. Neúspěšná přihlášení během plánované údržby jsou nejčastěji přechodné a [Logika opakování](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) pomáhá snižovat dopad. Pokud budete nadále dochází k chybám přihlášení, kontaktujte prosím podporu.
+Infrastruktura Azure pravidelně provádí plánovanou údržbu – upgrade hardwarových nebo softwarových součástí v datacentru. I když probíhá údržba databáze, SQL může ukončit některá existující připojení a odmítat nové. Neúspěšné přihlášení, ke kterým došlo během plánované údržby, je obvykle přechodný a [logika opakování](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) pomáhá snižovat dopad. Pokud budete pokračovat v práci s chybami přihlášení, obraťte se prosím na podporu.
 
 #### <a name="reconfiguration"></a>Rekonfigurace
 
-Rekonfigurací se považují za přechodné podmínky. proto se očekává, že čas od času. Tyto události mohou být spouštěny zavádění vyrovnávání nebo softwaru a hardwaru. Všechny klientské produkční aplikace, která se připojuje k databázi cloudu by měly implementovat robustní připojení [Logika opakování](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors), protože by zmírnit tyto situace a by měly obecně průhledného chyby pro koncového uživatele.
+Rekonfigurace se považují za přechodné podmínky a očekává se čas od času. Tyto události se můžou aktivovat vyrovnáváním zatížení nebo selháním softwaru nebo hardwaru. Všechny klientské aplikace, které se připojují ke cloudové databázi, by měly implementovat robustní [logiku opakování](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)připojení, protože by to mohlo přispět k zmírnění těchto situací a měla by obecně být chybně transparentní pro koncového uživatele.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o [Logika opakování pro přechodné chyby](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)
+- Další informace o [logice opakování pro přechodné chyby](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)
 - [Oprava, diagnostika a prevence chyb připojení SQL](./sql-database-connectivity-issues.md)
-- Další informace o [konfigurace výstrah Resource Health](../service-health/resource-health-alert-arm-template-guide.md)
-- Získejte přehled o [Resource Health](../service-health/resource-health-overview.md)
-- [Služba Resource Health – nejčastější dotazy](../service-health/resource-health-faq.md)
+- Další informace o [konfiguraci výstrah Resource Health](../service-health/resource-health-alert-arm-template-guide.md)
+- Získání přehledu o [Resource Health](../service-health/resource-health-overview.md)
+- [Nejčastější dotazy k Resource Health](../service-health/resource-health-faq.md)

@@ -1,5 +1,5 @@
 ---
-title: Exportujte jednu nebo sdruženou databázi SQL Azure do souboru BACPAC | Microsoft Docs
+title: Export jedné nebo sdružené databáze SQL Azure do souboru BACPAC
 description: Exportujte databázi SQL Azure do souboru BACPAC pomocí Azure Portal
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 9b4770f565f256d444ab6a6f06bb369b8417eb18
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f3f6071d42d77ffa07dd27080b1bc18d7bbc6952
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568259"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690067"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Export databáze SQL Azure do souboru BACPAC
 
@@ -42,7 +42,7 @@ Pokud potřebujete exportovat databázi k archivaci nebo přesunout na jinou pla
 Export BACPAC databáze ze [spravované instance](sql-database-managed-instance.md) pomocí Azure PowerShell není aktuálně podporován. Místo toho použijte SQL Server Management Studio nebo SQLPackage.
 
 > [!NOTE]
-> Počítače zpracovávající požadavky na Import a export odeslané prostřednictvím Azure Portal nebo PowerShellu musí ukládat soubor BACPAC a také dočasné soubory generované rozhraním Application Framework (DacFX) na datové vrstvě. Požadované místo na disku se výrazně liší mezi databázemi se stejnou velikostí a může vyžadovat místo na disku až třikrát velikosti databáze. Počítače, na kterých běží požadavek import/export, mají 450GB místo na místním disku. V důsledku toho se může stát, že některé požadavky selžou `There is not enough space on the disk`s chybou. V takovém případě je alternativním řešením spustit SqlPackage. exe na počítači s dostatečným místem na místním disku. K tomu, abyste se vyhnuli tomuto problému, doporučujeme používat [SqlPackage](#export-to-a-bacpac-file-using-the-sqlpackage-utility) k importu a exportu databází větších než 150 GB.
+> Počítače zpracovávající požadavky na Import a export odeslané prostřednictvím Azure Portal nebo PowerShellu musí ukládat soubor BACPAC a také dočasné soubory generované rozhraním Application Framework (DacFX) na datové vrstvě. Požadované místo na disku se výrazně liší mezi databázemi se stejnou velikostí a může vyžadovat místo na disku až třikrát velikosti databáze. Počítače, na kterých běží požadavek import/export, mají 450GB místo na místním disku. V důsledku toho se může stát, že některé požadavky selžou s chybou `There is not enough space on the disk`. V takovém případě je alternativním řešením spustit SqlPackage. exe na počítači s dostatečným místem na místním disku. K tomu, abyste se vyhnuli tomuto problému, doporučujeme používat [SqlPackage](#export-to-a-bacpac-file-using-the-sqlpackage-utility) k importu a exportu databází větších než 150 GB.
 
 1. Pokud chcete exportovat databázi pomocí [Azure Portal](https://portal.azure.com), otevřete stránku pro vaši databázi a na panelu nástrojů klikněte na **exportovat** .
 
@@ -52,7 +52,7 @@ Export BACPAC databáze ze [spravované instance](sql-database-managed-instance.
 
     ![Export databáze](./media/sql-database-export/database-export2.png)
 
-3. Klikněte na **OK**.
+3. Klikněte na tlačítko **OK**.
 
 4. Chcete-li monitorovat průběh operace exportu, otevřete stránku serveru SQL Database obsahujícího exportovanou databázi. V části **Nastavení** klikněte na možnost **Import/export historie**.
 
@@ -87,7 +87,7 @@ $exportRequest = New-AzSqlDatabaseExport -ResourceGroupName $ResourceGroupName -
   -AdministratorLogin $creds.UserName -AdministratorLoginPassword $creds.Password
 ```
 
-Pokud chcete zjistit stav žádosti o export, použijte rutinu [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) . Okamžité spuštění, jakmile požadavek obvykle vrátí **stav: Probíhá zpracování**. Když se zobrazí **stav: Export** byl úspěšně dokončen.
+Pokud chcete zjistit stav žádosti o export, použijte rutinu [Get-AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) . Spuštění hned poté, co požadavek obvykle vrátí **stav: probíhá zpracování**. Po zobrazení **stavu:** export byl dokončen.
 
 ```powershell
 $exportStatus = Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink
@@ -102,7 +102,7 @@ while ($exportStatus.Status -eq "InProgress")
 $exportStatus
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o dlouhodobém uchovávání záloh izolovaných databází a databází ve fondu jako alternativu k exportu databáze pro účely archivace najdete v tématu [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md). Úlohy agenta SQL můžete použít k plánování [záloh databáze pouze kopírování](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) jako alternativu dlouhodobého uchovávání záloh.
 - Příspěvek na blogu zákaznického poradního týmu SQL Serveru o migraci pomocí souborů BACPAC najdete v tématu popisujícím [migraci z SQL Serveru do služby SQL Database pomocí souborů BACPAC](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
@@ -110,4 +110,4 @@ $exportStatus
 - Další informace o exportu BACPAC z databáze SQL Server najdete v tématu [Export aplikace na datové vrstvě](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) .
 - Další informace o použití služby migrace dat k migraci databáze najdete v tématu [migrace SQL Server pro Azure SQL Database offline pomocí DMS](../dms/tutorial-sql-server-to-azure-sql.md).
 - Pokud exportujete z SQL Server jako předehru pro migraci do Azure SQL Database, přečtěte si téma [migrace databáze SQL Server do Azure SQL Database](sql-database-single-database-migrate.md).
-- Informace o správě a sdílení klíčů k úložišti a sdílené přístupové podpisy bezpečně, najdete v [Průvodci zabezpečením Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-security-guide).
+- Informace o tom, jak bezpečně spravovat a sdílet klíče úložiště a signatury sdíleného přístupu, najdete v tématu [Azure Storage Průvodce zabezpečením](https://docs.microsoft.com/azure/storage/common/storage-security-guide).

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Resource Manager: Vytvoření jedné databáze – Azure SQL Database | Microsoft Docs'
+title: 'Azure Resource Manager: vytvoření jedné databáze – Azure SQL Database '
 description: Pomocí šablony Azure Resource Manager vytvořte v Azure SQL Database jednu databázi.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
 ms.date: 06/28/2019
-ms.openlocfilehash: f3e9bb0e9a2c4c58a205798441ddc2208019e7d2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3c46dbe5cac4407eda8b4198613eda1c1742ed35
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566567"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687204"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Rychlý start: Vytvoření jedné databáze v Azure SQL Database pomocí šablony Azure Resource Manager
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Rychlý Start: vytvoření jedné databáze v Azure SQL Database pomocí šablony Azure Resource Manager
 
 Vytvoření [jedné databáze](sql-database-single-database.md) je nejrychlejší a nejjednodušší možnost nasazení pro vytvoření databáze v Azure SQL Database. V tomto rychlém startu se dozvíte, jak vytvořit jedinou databázi pomocí šablony Azure Resource Manager. Další informace najdete v [dokumentaci Azure Resource Manager](/azure/azure-resource-manager/).
 
@@ -28,7 +28,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 Jedna databáze má definovanou sadu výpočetních, paměťových, vstupně-výstupních prostředků a prostředků úložiště pomocí jednoho ze dvou [nákupních modelů](sql-database-purchase-models.md). Když vytvoříte izolovanou databázi, nadefinujete taky [SQL Database Server](sql-database-servers.md) , který budete spravovat a umístit do [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) v zadané oblasti.
 
-Následující soubor JSON je šablona použitá v tomto článku. Šablona je uložena na [GitHubu](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/SQLServerAndDatabase/azuredeploy.json). Další ukázky šablon Azure SQL Database najdete v šablonách [rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sql&pageNumber=1&sort=Popular).
+Následující soubor JSON je šablona použitá v tomto článku. Šablona je uložena na [GitHubu](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/SQLServerAndDatabase/azuredeploy.json). Další ukázky šablon Azure SQL Database najdete v [šablonách rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sql&pageNumber=1&sort=Popular).
 
 [!code-json[create-azure-sql-database-server-and-database](~/resourcemanager-templates/SQLServerAndDatabase/azuredeploy.json)]
 
@@ -73,7 +73,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Read-Host -Prompt "Press [ENTER] to continue ..."
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Vytvořte pravidlo brány firewall na úrovni serveru pro připojení k izolované databázi z místních nebo vzdálených nástrojů. Další informace najdete v tématu [Vytvoření pravidla brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md).
 - Po vytvoření pravidla brány firewall na úrovni serveru se [připojte a Dotazujte](sql-database-connect-query.md) databázi pomocí několika různých nástrojů a jazyků.

@@ -1,6 +1,6 @@
 ---
 title: Interpretace výsledků modelu
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Jak zvolit optimální sadu parametrů pro algoritmus pomocí a vizualizace výstupů modelu skóre.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 07f446daafea8b866083933bb414b0f5ef04bb4d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cdeded35e1afb9313f2dd2c5842aef511ea0dd61
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492910"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621670"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Interpretace výsledků modelu v Azure Machine Learning Studio (Classic)
 Toto téma vysvětluje, jak vizualizovat a interpretovat výsledky předpovědi v Azure Machine Learning Studio (Classic). Po vyškolení modelu a provedení předpovědi nad ním ("skóre modelu") potřebujete pochopit a interpretovat výsledek předpovědi.

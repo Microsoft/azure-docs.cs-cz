@@ -1,6 +1,6 @@
 ---
-title: Mapování sloupců v datové sadě ve službě Azure Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak mapovat sloupce zdrojového do cílového sloupce.
+title: Mapování sloupců datové sady v Azure Data Factory
+description: Přečtěte si, jak namapovat zdrojové sloupce na cílové sloupce.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,35 +12,35 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1b009ac2ca42e9804b88989b55b2e73524732550
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 80ba7dc48da7cb5c43aae209c4e76c54948b8f88
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60238109"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666792"
 ---
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>Mapování sloupců zdrojové datové sady na cílové sloupce datové sady
 > [!NOTE]
 > Tento článek platí pro Data Factory verze 1. 
 
-Mapování sloupce lze použít k určení, jak se sloupce zadané v "struktura" mapování tabulky zdroje na sloupce zadané v "struktura" tabulky jímky. **ColumnMapping** vlastnost je k dispozici v **typeProperties** části aktivity kopírování.
+Mapování sloupce lze použít k určení způsobu, jakým jsou sloupce zadané v "struktuře" zdrojové tabulky namapovány na sloupce zadané v "struktuře" tabulky jímky. Vlastnost **columnMapping** je k dispozici v části **typeProperties** aktivity kopírování.
 
-Mapování sloupců podporuje následující scénáře:
+Mapování sloupce podporuje následující scénáře:
 
-* Všechny sloupce ve struktuře datové sady zdroje se mapují na všechny sloupce ve struktuře datové sady jímky.
-* Podmnožinu sloupců ve struktuře datové sady zdroje je namapována na všechny sloupce ve struktuře datové sady jímky.
+* Všechny sloupce ve struktuře zdrojové datové sady jsou namapovány na všechny sloupce ve struktuře datové sady jímky.
+* Podmnožina sloupců ve struktuře zdrojové datové sady je namapována na všechny sloupce ve struktuře datové sady jímky.
 
-Následují chybových podmínek, za následek výjimku:
+Následující jsou chybové stavy, jejichž výsledkem je výjimka:
 
-* Méně sloupců nebo více sloupců v "struktura" tabulky jímky než zadán v mapování.
-* Duplicitní mapování.
-* Výsledek dotazu SQL nemá název sloupce, který je zadán v mapování.
+* Buď méně sloupců, nebo více sloupců v "struktuře" tabulky jímky, než je uvedeno v mapování.
+* Duplicitní mapování
+* Výsledek dotazu SQL neobsahuje název sloupce, který je uveden v mapování.
 
 > [!NOTE]
-> Následující ukázky jsou pro Azure SQL a objektů Blob v Azure, ale platí pro jakékoli úložiště dat, který podporuje obdélníkové datové sady. Upravte datovou sadu a definice propojené služby v příkladech tak, aby odkazoval na data ve zdroji dat relevantní.
+> Následující ukázky jsou pro Azure SQL a Azure Blob, ale platí pro jakékoliv úložiště dat, které podporuje hranaté datové sady. Upravte definice datové sady a propojené služby v příkladech tak, aby odkazovaly na data v příslušném zdroji dat.
 
-## <a name="sample-1--column-mapping-from-azure-sql-to-azure-blob"></a>Příklad 1 – sloupec mapování z Azure SQL do objektu blob Azure
-V tomto příkladu vstupní tabulka má strukturu a odkazuje na tabulku SQL ve službě Azure SQL database.
+## <a name="sample-1--column-mapping-from-azure-sql-to-azure-blob"></a>Ukázka 1 – mapování sloupce z Azure SQL na Azure Blob
+V této ukázce má vstupní tabulka strukturu a odkazuje na tabulku SQL ve službě Azure SQL Database.
 
 ```json
 {
@@ -73,7 +73,7 @@ V tomto příkladu vstupní tabulka má strukturu a odkazuje na tabulku SQL ve s
 }
 ```
 
-V této ukázce výstupní tabulce obsahuje strukturu a odkazuje na objekt blob ve službě Azure blob storage.
+V této ukázce má výstupní tabulka strukturu a odkazuje na objekt BLOB v úložišti objektů BLOB v Azure.
 
 ```json
 {
@@ -106,7 +106,7 @@ V této ukázce výstupní tabulce obsahuje strukturu a odkazuje na objekt blob 
 }
 ```
 
-Následující kód JSON určuje aktivitu kopírování v kanálu. Sloupce z namapované na sloupce v jímky zdroje (**columnMappings**) s použitím **Translator** vlastnost.
+Následující JSON definuje aktivitu kopírování v kanálu. Sloupce ze zdroje mapované na sloupce v jímky (**ColumnMappings**) pomocí vlastnosti **Translator** .
 
 ```json
 {
@@ -138,10 +138,10 @@ Následující kód JSON určuje aktivitu kopírování v kanálu. Sloupce z nam
 ```
 **Tok mapování sloupců:**
 
-![Tok mapování sloupce](./media/data-factory-map-columns/column-mapping-flow.png)
+![Tok mapování sloupců](./media/data-factory-map-columns/column-mapping-flow.png)
 
-## <a name="sample-2--column-mapping-with-sql-query-from-azure-sql-to-azure-blob"></a>Příklad 2 – sloupec mapování pomocí dotazu SQL z Azure SQL do objektu blob Azure
-V této ukázce se používá jazyka SQL namísto stačí zadat název tabulky a názvů sloupců v oddílu "struktura" extrahovat data z Azure SQL. 
+## <a name="sample-2--column-mapping-with-sql-query-from-azure-sql-to-azure-blob"></a>Ukázka 2 – mapování sloupce s dotazem SQL z Azure SQL do Azure Blob
+V této ukázce se k extrakci dat ze služby Azure SQL používá dotaz SQL místo pouhého zadání názvu tabulky a názvů sloupců v části Structure. 
 
 ```json
 {
@@ -173,13 +173,13 @@ V této ukázce se používá jazyka SQL namísto stačí zadat název tabulky a
         }
 }
 ```
-Výsledky dotazu se v tomto případě nejprve mapují na sloupce zadané v "struktura" zdroje. V dalším kroku mapování sloupce ze zdroje "struktura" na sloupce Sink "struktura" pomocí pravidel specifikovaných v columnMappings.  Předpokládejme, že dotaz vrací 5 sloupců, než procesory zadané v "struktura" zdroje další dva sloupce.
+V tomto případě jsou výsledky dotazu nejprve namapovány na sloupce zadané v "struktuře" zdroje. V dalším kroku jsou sloupce ze zdrojové struktury mapovány na sloupce v jímky "Structure" s pravidly určenými v parametrech columnMappings.  Předpokládejme, že dotaz vrátí 5 sloupců, dva další sloupce než ty, které jsou zadány v "struktuře" zdroje.
 
-**Tok mapování sloupce**
+**Tok mapování sloupců**
 
-![Mapování sloupce flow-2](./media/data-factory-map-columns/column-mapping-flow-2.png)
+![Tok mapování sloupců – 2](./media/data-factory-map-columns/column-mapping-flow-2.png)
 
-## <a name="next-steps"></a>Další postup
-Kurz týkající se použití aktivity kopírování najdete v článku: 
+## <a name="next-steps"></a>Další kroky
+Návod k používání aktivity kopírování najdete v článku. 
 
-- [Kopírování dat z úložiště objektů Blob do služby SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Kopírovat data z Blob Storage do SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)

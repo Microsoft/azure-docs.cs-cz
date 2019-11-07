@@ -1,5 +1,5 @@
 ---
-title: Transformace dat pomocí poznámkového bloku datacihly – Azure | Microsoft Docs
+title: Transformace dat pomocí poznámkového bloku datacihly – Azure
 description: Naučte se zpracovávat nebo transformovat data spuštěním poznámkového bloku datacihly.
 services: data-factory
 documentationcenter: ''
@@ -12,16 +12,16 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 23166a4a0110629674db6ccc9d225118264b3c15
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 685a7863af74bf90c819453b41078b48ab6d2045
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233060"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683931"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Transformujte data spuštěním poznámkového bloku datacihly.
 
-Aktivita poznámkového bloku Azure Databricks v [kanálu Data Factory](concepts-pipelines-activities.md) spustí v pracovním prostoru Azure Databricks Poznámkový blok datacihly. Tento článek se sestavuje na článku  [aktivity transformace dat](transform-data.md), který představuje obecný přehled transformace dat a podporovaných transformačních aktivit. Azure Databricks je spravovaná platforma pro spouštění Apache Spark.
+Aktivita poznámkového bloku Azure Databricks v [kanálu Data Factory](concepts-pipelines-activities.md) spustí v pracovním prostoru Azure Databricks Poznámkový blok datacihly. Tento článek navazuje na [aktivity transformace dat](transform-data.md) článku, který představuje obecný přehled transformace dat a podporovaných transformačních aktivit. Azure Databricks je spravovaná platforma pro spouštění Apache Spark.
 
 ## <a name="databricks-notebook-activity-definition"></a>Definice aktivity poznámkového bloku datacihly
 
@@ -57,15 +57,15 @@ Tady je ukázka definice JSON aktivity poznámkového bloku datacihly:
 
 Následující tabulka obsahuje popis vlastností JSON použitých v definici JSON:
 
-|Vlastnost|Popis|Požadováno|
+|Vlastnost|Popis|Požaduje se|
 |---|---|---|
-|name|Název aktivity v kanálu.|Ano|
+|jméno|Název aktivity v kanálu.|Ano|
 |description|Text popisující, co aktivita dělá.|Ne|
 |type|V případě aktivity poznámkového bloku datacihly je typ aktivity DatabricksNotebook.|Ano|
-|linkedServiceName|Název propojené služby datacihly, na které se Poznámkový blok datacihly spouští. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám](compute-linked-services.md) Compute.|Ano|
+|linkedServiceName|Název propojené služby datacihly, na které se Poznámkový blok datacihly spouští. Pokud se o této propojené službě chcete dozvědět víc, přečtěte si článek článku [služby COMPUTE](compute-linked-services.md) .|Ano|
 |notebookPath|Absolutní cesta poznámkového bloku, který má být spuštěn v pracovním prostoru datacihly. Tato cesta musí začínat lomítkem.|Ano|
-|baseParameters|Pole párů klíč-hodnota. Základní parametry lze použít pro každý běh aktivity. Pokud Poznámkový blok převezme parametr, který není zadaný, použije se výchozí hodnota z poznámkového bloku. Přečtěte si další informace o parametrech v poznámkových [blocích](https://docs.databricks.com/api/latest/jobs.html#jobsparampair)datacihly.|Ne|
-|Knihovna|Seznam knihoven, které se mají nainstalovat na cluster, který spustí úlohu. Může to být pole typu \<String a Object >.|Ne|
+|baseParameters|Pole párů klíč-hodnota. Základní parametry lze použít pro každý běh aktivity. Pokud Poznámkový blok převezme parametr, který není zadaný, použije se výchozí hodnota z poznámkového bloku. Přečtěte si další informace o parametrech v [poznámkových blocích datacihly](https://docs.databricks.com/api/latest/jobs.html#jobsparampair).|Ne|
+|Knihovna|Seznam knihoven, které se mají nainstalovat na cluster, který spustí úlohu. Může to být pole \<řetězec, > objektů.|Ne|
 
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Podporované knihovny pro aktivity datacihly
@@ -110,7 +110,7 @@ Ve výše uvedené definici aktivity datacihly zadáte tyto typy knihoven: *jar*
 
 ```
 
-Další podrobnosti najdete v [dokumentaci](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) k datacihlám pro typy knihoven.
+Další podrobnosti najdete v dokumentaci k [datacihlám](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) pro typy knihoven.
 
 ## <a name="passing-parameters-between-notebooks-and-data-factory"></a>Předávání parametrů mezi poznámkovými bloky a Data Factory
 
@@ -131,7 +131,7 @@ V některých případech je možné, že budete potřebovat předávat určité
 
 Chcete-li získat cestu dBFS knihovny přidané pomocí uživatelského rozhraní, můžete použít rozhraní příkazového [řádku datacihly (instalace)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
 
-Knihovny jar jsou obvykle uloženy v dBFS:/úložiště/jar při používání uživatelského rozhraní. Seznamte se všemi prostřednictvím rozhraní příkazového řádku: datacihly *FS LS dBFS:/úložiště/jar*.
+Knihovny jar jsou obvykle uloženy v dBFS:/úložiště/jar při používání uživatelského rozhraní. Seznamte se všemi prostřednictvím rozhraní příkazového řádku: *datacihly FS LS dBFS:/úložiště/jar*.
 
 
 

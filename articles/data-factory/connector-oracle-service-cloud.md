@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z Oraclu služby v cloudu pomocí Azure Data Factory (Preview) | Dokumentace Microsoftu
-description: Informace o kopírování dat z cloudové služby Oracle do úložišť dat podporovaných jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
+title: Kopírování dat z cloudu služby Oracle pomocí Azure Data Factory (Preview)
+description: Naučte se, jak kopírovat data z cloudu služby Oracle do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,50 +12,50 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: a50f2d9bc50b235b2b7375b90288e72609f36eff
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 2b2d41d7ef2c42fea90555d2b24f6d055712bfc5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089897"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680530"
 ---
-# <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>Kopírování dat z Oraclu služby v cloudu pomocí Azure Data Factory (Preview)
+# <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>Kopírování dat z cloudu služby Oracle pomocí Azure Data Factory (Preview)
 
-Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory ke zkopírování dat z cloudové služby Oracle. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z cloudu služby Oracle. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
 
 > [!IMPORTANT]
-> Tento konektor je aktuálně ve verzi preview. Můžete vyzkoušet a poskytnout zpětnou vazbu. Pokud do svého řešení chcete zavést závislost na konektorech ve verzi Preview, kontaktujte [podporu Azure](https://azure.microsoft.com/support/).
+> Tento konektor je momentálně ve verzi Preview. Můžete si to vyzkoušet a poskytnout zpětnou vazbu. Pokud do svého řešení chcete zavést závislost na konektorech ve verzi Preview, kontaktujte [podporu Azure](https://azure.microsoft.com/support/).
 
-## <a name="supported-capabilities"></a>Podporované funkce
+## <a name="supported-capabilities"></a>Podporované možnosti
 
 Tento cloudový konektor služby Oracle je podporovaný pro následující činnosti:
 
 - [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
 - [Aktivita Lookup](control-flow-lookup-activity.md)
 
-Kopírování dat z cloudové služby Oracle do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Data z cloudu služby Oracle můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Poskytuje integrované ovladače chcete umožnit připojení k Azure Data Factory, proto není nutné ručně nainstalovat všechny ovladače používání tohoto konektoru.
+Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, takže nemusíte ručně instalovat žádné ovladače pomocí tohoto konektoru.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní konektor Oracle cloudové služby.
+Následující části obsahují podrobné informace o vlastnostech, které se používají k definování Data Factory entit specifických pro cloudový konektor služby Oracle.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro cloudové služby Oracle propojené služby jsou podporovány následující vlastnosti:
+Pro propojenou službu Cloud Service Cloud se podporují následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **OracleServiceCloud** | Ano |
-| host | Adresa URL instance cloudové služby Oracle.  | Ano |
-| username | Uživatelské jméno, který používáte pro přístup k serveru Oracle cloudové služby.  | Ano |
-| password | Heslo odpovídající uživatelské jméno, které jste zadali v klíči uživatelské jméno. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat si z něj při kopírování dat získat z přihlašovacích údajů možnost z přihlašovacích údajů [v Key Vault Store](store-credentials-in-key-vault.md). | Ano |
-| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovat pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
-| useHostVerification | Určuje, jestli se vyžaduje název hostitele v certifikátu serveru tak, aby odpovídaly názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
-| usePeerVerification | Určuje, jestli se má ověřit identitu serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
+| type | Vlastnost Type musí být nastavená na: **OracleServiceCloud** . | Ano |
+| Provoz | Adresa URL cloudové instance služby Oracle  | Ano |
+| uživatelské jméno | Uživatelské jméno, které používáte pro přístup k cloudovým serveru služby Oracle.  | Ano |
+| heslo | Heslo odpovídající uživatelskému jménu, které jste zadali v klíči username. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat si z něj při kopírování dat získat z přihlašovacích údajů možnost z [přihlašovacích údajů v Key Vault Store](store-credentials-in-key-vault.md). | Ano |
+| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnota je true (pravda).  | Ne |
+| useHostVerification | Určuje, jestli se má při připojování přes SSL vyžadovat, aby název hostitele v certifikátu serveru odpovídal názvu hostitele serveru. Výchozí hodnota je true (pravda).  | Ne |
+| usePeerVerification | Určuje, jestli se má při připojování přes SSL ověřit identita serveru. Výchozí hodnota je true (pravda).  | Ne |
 
 **Příklad:**
 
@@ -82,14 +82,14 @@ Pro cloudové služby Oracle propojené služby jsou podporovány následující
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností, které podporuje Cloudová služba Oracle datové sady.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností, které podporuje cloudová sada služeb Oracle.
 
-Ke zkopírování dat z cloudové služby Oracle, nastavte vlastnost typ datové sady na **OracleServiceCloudObject**. Podporovány jsou následující vlastnosti:
+Pokud chcete kopírovat data z cloudu služby Oracle, nastavte vlastnost Type datové sady na **OracleServiceCloudObject**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **OracleServiceCloudObject** | Ano |
-| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "query") |
+| type | Vlastnost Type datové sady musí být nastavená na: **OracleServiceCloudObject** . | Ano |
+| tableName | Název tabulky | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad**
 
@@ -111,16 +111,16 @@ Ke zkopírování dat z cloudové služby Oracle, nastavte vlastnost typ datové
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností podporovaných zdrojem Oracle cloudové služby.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností, které podporuje cloudový zdroj Oracle Service.
 
-### <a name="oracle-service-cloud-as-source"></a>Oracle cloudové služby jako zdroj
+### <a name="oracle-service-cloud-as-source"></a>Cloud služby Oracle jako zdroj
 
-Ke zkopírování dat z cloudové služby Oracle, nastavte typ zdroje v aktivitě kopírování do **OracleServiceCloudSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Pokud chcete kopírovat data ze služby Oracle Service Cloud, nastavte typ zdroje v aktivitě kopírování na **OracleServiceCloudSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **OracleServiceCloudSource** | Ano |
-| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **OracleServiceCloudSource** . | Ano |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
 
@@ -159,5 +159,5 @@ Ke zkopírování dat z cloudové služby Oracle, nastavte typ zdroje v aktivit�
 Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 
-## <a name="next-steps"></a>Další postup
-Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+## <a name="next-steps"></a>Další kroky
+Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

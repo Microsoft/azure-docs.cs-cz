@@ -1,5 +1,5 @@
 ---
-title: Služba Azure SQL Database – Přehled modelu vCore | Microsoft Docs
+title: 'Služba Azure SQL Database – Přehled modelu vCore '
 description: Model nákupu vCore vám umožňuje nezávisle škálovat výpočetní prostředky a prostředky úložiště, odpovídat místnímu výkonu a optimalizovat ceny.
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/04/2019
-ms.openlocfilehash: 2bbdd565a861004014ca4161856bba83ec0be511
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4795e709e1f43ebd952e37e36e2dc81a428dd539
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496070"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687247"
 ---
 # <a name="vcore-model-overview"></a>Přehled modelu vCore
 
@@ -25,18 +25,18 @@ Model Virtual Core (vCore) poskytuje několik výhod:
 - Cenové slevy pro [zvýhodněné hybridní využití Azure (AHB)](sql-database-azure-hybrid-benefit.md) a [REZERVOVANOU instanci (ri)](sql-database-reserved-capacity.md).
 - Větší transparentnost v podrobnostech o hardwaru, které vysílaly výpočetní výkon; usnadňuje plánování migrací z místních nasazení.
 
-## <a name="service-tiers"></a>Úrovně služeb
+## <a name="service-tiers"></a>Úrovně služby
 
 Mezi možnosti vrstvy služeb v modelu vCore patří Pro obecné účely, Pro důležité obchodní informace a měřítko. Vrstva služeb obecně definuje architekturu úložiště, omezení místa a vstupně-výstupních operací a možnosti provozní kontinuity související s dostupností a zotavením po havárii.
 
 ||**Obecné účely**|**Důležité pro podnikání**|**Hyperškálovatelný**|
 |---|---|---|---|
 |Nejvhodnější pro|Většina obchodních úloh. Nabízí uživatelsky orientované, vyvážené a škálovatelné možnosti výpočtů a úložiště. |Nabízí podnikovým aplikacím nejvyšší odolnost proti chybám pomocí několika izolovaných replik a poskytuje nejvyšší výkon vstupně-výstupních operací na jednu repliku databáze.|Většina obchodních úloh s vysokou škálovatelností úložiště a požadavky na škálování pro čtení.  Nabízí vyšší odolnost proti chybám tím, že umožňuje konfiguraci více než jedné repliky izolované databáze. |
-|Úložiště|Používá vzdálené úložiště.<br/>Izolovaná **databáze a elastický fond zřízený COMPUTE**:<br/>5 GB – 4 TB<br/>**Výpočetní**prostředí bez serveru:<br/>5 GB – 3 TB<br/>**Spravovaná instance**: 32 GB až 8 TB |Používá místní úložiště SSD.<br/>Izolovaná **databáze a elastický fond zřízený COMPUTE**:<br/>5 GB – 8 TB<br/>**Spravovaná instance**:<br/>32 GB AŽ 4 TB |Flexibilní autogrow úložiště podle potřeby. Podporuje až 100 TB úložiště. Používá místní úložiště SSD pro místní mezipaměť fondu vyrovnávací paměti a místní úložiště dat. Používá vzdálené úložiště Azure jako konečné dlouhodobé úložiště dat. |
+|Storage|Používá vzdálené úložiště.<br/>Izolovaná **databáze a elastický fond zřízený COMPUTE**:<br/>5 GB – 4 TB<br/>**Výpočetní**prostředí bez serveru:<br/>5 GB – 3 TB<br/>**Spravovaná instance**: 32 GB až 8 TB |Používá místní úložiště SSD.<br/>Izolovaná **databáze a elastický fond zřízený COMPUTE**:<br/>5 GB – 8 TB<br/>**Spravovaná instance**:<br/>32 GB AŽ 4 TB |Flexibilní autogrow úložiště podle potřeby. Podporuje až 100 TB úložiště. Používá místní úložiště SSD pro místní mezipaměť fondu vyrovnávací paměti a místní úložiště dat. Používá vzdálené úložiště Azure jako konečné dlouhodobé úložiště dat. |
 |Propustnost vstupně-výstupních operací (přibližná)|Izolovaná **databáze a elastický fond**: 500 vstupně-výstupních operací na vCore až 40000 maximálních IOPS.<br/>**Spravovaná instance**: závisí na [velikosti souboru](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 vstupně-výstupních operací na vCore až 320 000 maximální IOPS|Škálovatelná architektura je Vícevrstvá architektura s ukládáním do mezipaměti na více úrovních. Platnost IOPs bude záviset na zatížení.|
 |Dostupnost|1 replika, žádné repliky na úrovni čtení|3 repliky, 1 [replika pro čtení a škálování](sql-database-read-scale-out.md)<br/>zóna – redundantní vysoká dostupnost (HA)|1 replika pro čtení i zápis a 0-4 replik v režimu [čtení a škálování](sql-database-read-scale-out.md)|
 |Zálohování|[Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dní (ve výchozím nastavení 7 dnů)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dní (ve výchozím nastavení 7 dnů)|Zálohování na základě snímků ve vzdáleném úložišti Azure. Obnoví použití těchto snímků pro rychlé obnovení. Zálohy jsou okamžité a neovlivňují výkon vstupně-výstupních operací ve výpočetním prostředí. Obnovení je rychlé a nejedná se o datovou operaci (trvá to jen v minutách).|
-|V paměti|Nepodporováno|Podporováno|Nepodporováno|
+|V paměti|Nepodporuje se|Podporuje se|Nepodporuje se|
 |||
 
 
@@ -95,7 +95,7 @@ Pokud chcete povolit hardware řady M-Series pro předplatné a oblast, je nutn�
 ### <a name="compute-and-memory-specifications"></a>Specifikace výpočtů a paměti
 
 
-|Generování hardwaru  |Služby Compute  |Paměť  |
+|Generování hardwaru  |Compute  |Memory (Paměť)  |
 |:---------|:---------|:---------|
 |COMPUTE GEN4 –     |– Procesory Intel E5-2673 V3 (Haswell) 2,4 GHz<br>-Zřídit až 24 virtuální jádra (1 vCore = 1 fyzický jádro)  |– 7 GB na vCore<br>– Zřídit až 168 GB|
 |Gen5     |**Zřízené výpočetní prostředky**<br>– Procesory Intel E5-2673 v4 (Broadwell) 2,3 GHz<br>-Zřídit až 80 virtuální jádra (1 vCore = 1 Hyper-thread)<br><br>**Výpočetní prostředí bez serveru**<br>– Procesory Intel E5-2673 v4 (Broadwell) 2,3 GHz<br>– Automatické škálování až na 16 virtuální jádra (1 vCore = 1 Hyper-thread)|**Zřízené výpočetní prostředky**<br>-5,1 GB na vCore<br>– Zřídit až 408 GB<br><br>**Výpočetní prostředí bez serveru**<br>– Automatické škálování až na 24 GB na vCore<br>– Automatické škálování až do 48 GB max.|

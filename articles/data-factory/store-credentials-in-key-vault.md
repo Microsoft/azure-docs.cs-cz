@@ -1,5 +1,5 @@
 ---
-title: Ukládat přihlašovací údaje v Azure Key Vault | Microsoft Docs
+title: Uložení přihlašovacích údajů v Azure Key Vault
 description: Naučte se ukládat přihlašovací údaje pro úložiště dat používaná v trezoru klíčů Azure, který Azure Data Factory může automaticky načíst za běhu.
 services: data-factory
 author: linda33wj
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 3f46c54edff2bc765e75742848f83d30e7aa7c09
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 1e2458fa125ee4d223ef46001534fb7ae72b805e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003395"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684005"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Ukládat přihlašovací údaje v Azure Key Vault
 
@@ -44,11 +44,11 @@ Pro Azure Key Vault propojenou službu jsou podporovány následující vlastnos
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type musí být nastavená na: **AzureKeyVault**. | Ano |
-| baseUrl | Zadejte adresu URL Azure Key Vault. | Ano |
+| BaseUrl | Zadejte adresu URL Azure Key Vault. | Ano |
 
 **Používání uživatelského rozhraní pro vytváření:**
 
-Klikněte na **připojení** -> **propojené služby** ->  **+ New** -> vyhledejte "Azure Key Vault":
+Klikněte na **připojení** -> **propojených služeb** ->  **+ + nové** > Hledat "Azure Key Vault":
 
 ![Hledat integrace](media/store-credentials-in-key-vault/search-akv.png)
 
@@ -76,10 +76,10 @@ Následující vlastnosti jsou podporované při konfiguraci pole v propojené s
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost Type pole musí být nastavena na: **AzureKeyVaultSecret**. | Ano |
-| SecretName | Název tajného klíče v Azure Key Vault. | Ano |
-| secretVersion | Verze tajného kódu v Azure Key Vault.<br/>Pokud tento parametr nezadáte, vždy používá nejnovější verzi tajného kódu.<br/>Je-li tento parametr zadán, bude se podávat do dané verze.| Ne |
-| store | Odkazuje na Azure Key Vault propojená služba, kterou použijete k uložení přihlašovacích údajů. | Ano |
+| type | Vlastnost Type pole musí být nastavená na: **AzureKeyVaultSecret**. | Ano |
+| secretName | Název tajného klíče v Azure Key Vault. | Ano |
+| Verzetajnéhoklíče | Verze tajného kódu v Azure Key Vault.<br/>Pokud tento parametr nezadáte, vždy používá nejnovější verzi tajného kódu.<br/>Je-li tento parametr zadán, bude se podávat do dané verze.| Ne |
+| uchovávat | Odkazuje na Azure Key Vault propojená služba, kterou použijete k uložení přihlašovacích údajů. | Ano |
 
 **Používání uživatelského rozhraní pro vytváření:**
 
@@ -115,5 +115,5 @@ Vyberte možnost **Azure Key Vault** pro tajná pole při vytváření připojen
 }
 ```
 
-## <a name="next-steps"></a>Další postup
-Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+## <a name="next-steps"></a>Další kroky
+Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

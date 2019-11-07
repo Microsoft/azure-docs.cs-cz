@@ -1,5 +1,5 @@
 ---
-title: Fondy instancí Azure SQL Database (Preview) | Microsoft Docs
+title: Fondy instancí Azure SQL Database (Preview)
 description: Tento článek popisuje Azure SQL Database fondy instancí (Preview).
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 34e779f04f59b23733c6fbfa3450931fccb442b1
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 7d8c316d5c78cfe09bcf134b5a5c513e1c007d74
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70294253"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689767"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Co jsou fondy SQL Database instancí (Preview)?
 
 Fondy instancí jsou novým prostředkem v Azure SQL Database, který poskytuje pohodlný a cenově výhodný způsob migrace menších instancí SQL do cloudu ve velkém měřítku.
 
-Fondy instancí vám umožňují předem zřídit výpočetní prostředky podle vašich celkových požadavků na migraci. Pak můžete nasadit několik jednotlivých spravovaných instancí až do předem zřízené výpočetní úrovně. Pokud například předzřídíte 8 virtuální jádra, můžete nasadit dvě 2 vCore a jednu 4 instance vCore a následně migrovat databáze do těchto instancí. Před tím, než jsou fondy instancí k dispozici, je při migraci do cloudu často nutné konsolidovat menší a méně úlohy náročné na výpočetní výkon. Nutnost migrace skupin databází na velkou instanci obvykle vyžaduje pečlivé plánování kapacity a zásady správného řízení prostředků, další požadavky na zabezpečení a další práci při konsolidaci dat na úrovni instance.
+Fondy instancí umožňují předem zřídit výpočetní prostředky podle vašich celkových požadavků na migraci. Následně můžete nasadit několik jednotlivých spravovaných instancí až do předem zřízené výpočetní úrovně. Pokud například předzřídíte 8 virtuální jádra, můžete nasadit dvě 2 vCore a jednu 4 instance vCore a následně migrovat databáze do těchto instancí. Před tím, než jsou fondy instancí k dispozici, je při migraci do cloudu často nutné konsolidovat menší a méně úlohy náročné na výpočetní výkon. Nutnost migrace skupin databází na velkou instanci obvykle vyžaduje pečlivé plánování kapacity a zásady správného řízení prostředků, další požadavky na zabezpečení a další práci při konsolidaci dat na úrovni instance.
 
 Fondy instancí navíc podporují nativní integraci virtuální sítě, takže můžete ve stejné podsíti nasadit více fondů instancí a více instancí s několika samostatnými instancemi.
 
@@ -31,7 +31,7 @@ Fondy instancí navíc podporují nativní integraci virtuální sítě, takže 
 
 Fondy instancí poskytují následující výhody:
 
-1. Možnost hostovat 2 instance vCore *Pouze pro instance ve fondech instancí. \**
+1. Možnost hostovat 2 instance vCore *\*jenom pro instance ve fondech instancí*.
 2. Předvídatelný a rychlý čas nasazení instance (až 5 minut).
 3. Minimální přidělení IP adresy.
 
@@ -59,7 +59,7 @@ Následující seznam poskytuje hlavní případy použití, ve kterých by se m
 
 ## <a name="architecture-of-instance-pools"></a>Architektura fondů instancí
 
-Fondy instancí mají podobnou architekturu s běžnými spravovanými instancemi (*jedné instance*). Aby se podporovaly [nasazení v rámci virtuálních sítí Azure (virtuální sítě)](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) a poskytovaly izolaci a zabezpečení pro zákazníky, využívají fondy instancí také [virtuální clustery](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture). Virtuální clustery reprezentují vyhrazenou sadu izolovaných virtuálních počítačů nasazených v podsíti virtuální sítě zákazníka.
+Fondy instancí mají podobnou architekturu s běžnými spravovanými instancemi (*jedné instance*). Pro podporu [nasazení v rámci virtuálních sítí Azure (virtuální sítě)](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) a pro zajištění izolace a zabezpečení pro zákazníky využívají fondy instancí také [virtuální clustery](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture). Virtuální clustery reprezentují vyhrazenou sadu izolovaných virtuálních počítačů nasazených v podsíti virtuální sítě zákazníka.
 
 Hlavním rozdílem mezi těmito dvěma modely nasazení je, že fondy instancí povolují nasazení více SQL Server procesů ve stejném uzlu virtuálního počítače, který je prostředkem, který se řídí pomocí [objektů úloh systému Windows](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects), zatímco jednotlivé instance jsou vždy samostatné. uzel virtuálního počítače.
 
@@ -71,7 +71,7 @@ Každý fond instancí vytvoří pod sebou samostatný virtuální cluster. Inst
 
 ## <a name="instance-pools-resource-limitations"></a>Omezení prostředků fondů instancí
 
-Existuje několik omezení prostředků týkajících se fondů instancí a instancí v rámci fondů:
+Na fondy instancí a instance v rámci fondů se vztahuje několik omezení prostředků:
 
 - Fondy instancí jsou k dispozici pouze na Gen5 hardwaru.
 - Instance v rámci fondu mají vyhrazené PROCESORy a paměť RAM, takže agregovaný počet virtuální jádra napříč všemi instancemi musí být menší nebo roven počtu virtuální jádra přidělených fondu.
@@ -136,8 +136,8 @@ vCore cena za fond se účtuje bez ohledu na to, kolik instancí se v daném fon
 
 Pro cenu za výpočetní výkon (měřenou v virtuální jádra) jsou k dispozici dvě cenové možnosti:
 
-  1. *Zahrnutá licence*: Použijte stávající licence SQL Server se Software Assurance.
-  2. *Zvýhodněné hybridní využití Azure*: Snížená cena, která zahrnuje Zvýhodněné hybridní využití Azure SQL Server. Zákazníci se můžou k této ceně přihlédnout pomocí svých stávajících licencí SQL Server se Software Assurance. Informace o způsobilosti a dalších podrobnostech najdete v tématu [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
+  1. *Zahrnutá licence*: použijte existující licence SQL Server se Software Assurance.
+  2. *Zvýhodněné hybridní využití Azure*: snížená cena, která zahrnuje zvýhodněné hybridní využití Azure SQL Server. Zákazníci se můžou k této ceně přihlédnout pomocí svých stávajících licencí SQL Server se Software Assurance. Informace o způsobilosti a dalších podrobnostech najdete v tématu [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 Nastavení různých cenových možností není možné pro jednotlivé instance ve fondu. Všechny instance v nadřazeném fondu musí být buď v ceně zahrnuté v licenci, nebo v Zvýhodněné hybridní využití Azure ceně. Licenční model fondu se dá po vytvoření fondu změnit.
 
@@ -148,7 +148,7 @@ Pokud vytváříte fondy instancí u [předplatných, která mají nárok na zv�
 
 Úplné podrobnosti o cenách fondu instancí najdete v části *fondy instancí* na [stránce s cenami spravované instance](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Chcete-li začít s fondy instancí, přečtěte si téma [Průvodce vytvořením fondů instancí SQL Database](sql-database-instance-pools-how-to.md).
 - Další informace o tom, jak vytvořit první spravovanou instanci, najdete v tématu [Průvodce rychlým startem](sql-database-managed-instance-get-started.md).

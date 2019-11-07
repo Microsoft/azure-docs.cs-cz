@@ -1,6 +1,6 @@
 ---
-title: Správa dat z Azure AI Gallery
-titleSuffix: Azure Machine Learning Studio (classic)
+title: Správa dat Azure AI Gallery
+titleSuffix: ML Studio (classic) Azure
 description: Data uživatelů v produktu můžete exportovat a odstranit z Azure AI Gallery pomocí rozhraní API katalogu Galerie rozhraní nebo AI. V tomto článku se dozvíte, jak.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: f0b0bd4b01056769d38179597e477ecb164fa9ab
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b99fa6ae740de4e9c87061b201f2104d6d025e6c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493542"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684891"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Umožňuje zobrazit a odstranit data uživatelů v produktu z Azure AI Gallery
 
@@ -84,7 +84,7 @@ Chcete-li zobrazit publikované entity, přejděte na následující adresu URL,
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'
 
-Například:
+Příklad:
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA'
 

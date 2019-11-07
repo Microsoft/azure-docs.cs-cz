@@ -1,5 +1,5 @@
 ---
-title: Vyvolání programů Spark z Azure Data Factory | Microsoft Docs
+title: Vyvolání programů Spark z Azure Data Factory
 description: Naučte se volat programy Spark z Azure Data Factory pomocí aktivity MapReduce.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 08aa1303aeaa0a80f0825f45e037109b98e9771e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: d5f5da4811a9551f687fed6ab317bb3d33041622
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135340"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666183"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Vyvolání programů Spark z Azure Data Factory kanálů
 
@@ -42,7 +42,7 @@ Aktivita Spark je jednou z [aktivit transformace dat](data-factory-data-transfor
 > - Aktivita Spark nepodporuje clustery HDInsight Spark, které používají Azure Data Lake Store jako primární úložiště.
 > - Aktivita Spark podporuje pouze existující clustery HDInsight Spark. Nepodporuje propojenou službu HDInsight na vyžádání.
 
-## <a name="walkthrough-create-a-pipeline-with-a-spark-activity"></a>Průvodce: Vytvoření kanálu s aktivitou Sparku
+## <a name="walkthrough-create-a-pipeline-with-a-spark-activity"></a>Návod: vytvoření kanálu s aktivitou Spark
 Tady jsou typické kroky k vytvoření kanálu datové továrny s aktivitou Sparku: 
 
 * Vytvoření datové továrny
@@ -56,7 +56,7 @@ Tady jsou typické kroky k vytvoření kanálu datové továrny s aktivitou Spar
 
 1. Vytvořte cluster Spark v HDInsight podle pokynů v kurzu [Vytvoření clusteru Spark ve službě HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Přidružte k tomuto clusteru účet úložiště, který jste vytvořili v kroku 1.
 
-1. Stáhněte si a zkontrolujte soubor skriptu Pythonu **test.py** umístěný [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py)na adrese.
+1. Stáhněte a zkontrolujte soubor skriptu Pythonu **test.py** umístěný na adrese [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py).
 
 1. Nahrajte **test.py** do složky **pyFiles** v kontejneru **adfspark** v úložišti objektů BLOB. Vytvořte kontejner a složku, pokud neexistují.
 
@@ -70,7 +70,7 @@ Pokud chcete vytvořit datovou továrnu, postupujte následovně:
 1. V okně **Nová datová továrna** v části **název**zadejte **SparkDF**.
 
    > [!IMPORTANT]
-   > Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chyba název objektu pro vytváření dat SparkDF není k dispozici, změňte název datové továrny. Použijte například yournameSparkDFdate a vytvořte datovou továrnu znovu. Další informace o pravidlech pojmenování najdete [v tématu Data Factory: Pravidla](data-factory-naming-rules.md)pojmenování.
+   > Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chyba název objektu pro vytváření dat SparkDF není k dispozici, změňte název datové továrny. Použijte například yournameSparkDFdate a vytvořte datovou továrnu znovu. Další informace o pravidlech pojmenování najdete v tématu [Data Factory: Pravidla pojmenování](data-factory-naming-rules.md).
 
 1. V části **Předplatné** vyberte předplatné Azure, ve kterém chcete datovou továrnu vytvořit.
 
@@ -99,7 +99,7 @@ V tomto kroku s datovou továrnou propojíte svůj účet úložiště. Datová 
 
 1. Vyberte **Nové úložiště dat** a zvolte **Azure Storage**.
 
-   ![Nové datové úložiště](./media/data-factory-spark/new-data-store-azure-storage-menu.png)
+   ![Nové úložiště dat](./media/data-factory-spark/new-data-store-azure-storage-menu.png)
 
 1. V editoru se zobrazí skript JSON, který použijete k vytvoření propojené služby úložiště.
 
@@ -112,7 +112,7 @@ V tomto kroku s datovou továrnou propojíte svůj účet úložiště. Datová 
 #### <a name="create-an-hdinsight-linked-service"></a>Vytvoření propojené služby HDInsight
 V tomto kroku vytvoříte propojenou službu HDInsight, která propojí cluster HDInsight Spark s datovou továrnou. Cluster HDInsight se používá ke spuštění programu Spark určeného v aktivitě Spark kanálu v této ukázce. 
 
-1. V editoru Data Factory vyberte **Další** > **nový výpočetní** > **cluster HDInsight**.
+1. V editoru Data Factory vyberte **další** > **Nový COMPUTE** > **cluster HDInsight**.
 
     ![Vytvoření propojené služby HDInsight](media/data-factory-spark/new-hdinsight-linked-service.png)
 
@@ -224,7 +224,7 @@ V tomto kroku vytvoříte kanál s aktivitou HDInsightSpark. V současnosti urč
     d. Vlastnost **GetDebugInfo –** je nastavena na hodnotu **vždy**, což znamená, že soubory protokolu jsou vždy generovány (úspěch nebo neúspěch).
 
     > [!IMPORTANT]
-    > Pokud neřešíte problém, doporučujeme, abyste tuto `Always` vlastnost nestavili v produkčním prostředí.
+    > Pokud neřešíte problém, doporučujeme, abyste tuto vlastnost nestavili na `Always` v produkčním prostředí.
 
     e. Oddíl **výstupy** obsahuje jednu výstupní datovou sadu. Výstupní datovou sadu musíte zadat i v případě, že program Spark nevyprodukuje žádný výstup. Výstupní datová sada nařídí plán pro kanál (každou hodinu, každý den). 
 
@@ -249,7 +249,7 @@ V tomto kroku vytvoříte kanál s aktivitou HDInsightSpark. V současnosti urč
 
 1. Spusťte Jupyter Notebook pro cluster HDInsight Spark tak, že na [Tento web](https://CLUSTERNAME.azurehdinsight.net/jupyter)přejdeme. Můžete také otevřít řídicí panel clusteru pro cluster HDInsight Spark a pak spustit Jupyter Notebook.
 
-1. Vyberte **Nový** > **PySpark** a spusťte nový Poznámkový blok.
+1. Vyberte **nový** > **PySpark** a spusťte nový Poznámkový blok.
 
     ![Nový Poznámkový blok Jupyter](media/data-factory-spark/jupyter-new-book.png)
 
@@ -268,7 +268,7 @@ V tomto kroku vytvoříte kanál s aktivitou HDInsightSpark. V současnosti urč
 Podrobné pokyny najdete v části [spuštění dotazu Spark SQL](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
 
 ### <a name="troubleshooting"></a>Řešení potíží
-Vzhledem k tomu, že GetDebugInfo – nastavíte na **vždycky**, ve složce pyFiles v kontejneru objektů BLOB se zobrazí podsložka protokolu. Další informace najdete v souboru protokolu ve složce protokolu. Tento soubor protokolu je zvláště užitečný, když dojde k chybě. V produkčním prostředí můžete nastavit, aby nedošlo k **chybě**.
+Vzhledem k tomu, že GetDebugInfo – nastavíte na **vždycky**, ve složce pyFiles v kontejneru objektů BLOB se zobrazí podsložka protokolu. Další informace najdete v souboru protokolu ve složce protokolu. Tento soubor protokolu je zvláště užitečný, když dojde k chybě. V produkčním prostředí můžete nastavit, aby **nedošlo k chybě**.
 
 Pro další řešení potíží proveďte následující kroky:
 
@@ -324,18 +324,18 @@ Tady je ukázková definice JSON kanálu s aktivitou Spark:
 
 Následující tabulka obsahuje popis vlastností JSON použitých v definici JSON.
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 | -------- | ----------- | -------- |
-| name | Název aktivity v kanálu. | Ano |
+| jméno | Název aktivity v kanálu. | Ano |
 | description | Text, který popisuje, co aktivita dělá. | Ne |
 | type | Tato vlastnost musí být nastavená na HDInsightSpark. | Ano |
 | linkedServiceName | Název propojené služby HDInsight, na které běží program Spark | Ano |
 | rootPath | Kontejner objektů BLOB a složka obsahující soubor Spark. V názvu souboru se rozlišují malá a velká písmena. | Ano |
 | entryFilePath | Relativní cesta ke kořenové složce kódu nebo balíčku Spark | Ano |
-| NázevTřídy | Hlavní třída Java/Spark aplikace | Ne |
-| náhodné | Seznam argumentů příkazového řádku pro program Spark. | Ne |
+| className | Hlavní třída Java/Spark aplikace | Ne |
+| Náhodné | Seznam argumentů příkazového řádku pro program Spark. | Ne |
 | proxyUser | Uživatelský účet, který se má zosobnit pro spuštění programu Spark. | Ne |
-| sparkConfig | Zadejte hodnoty vlastností konfigurace Sparku, které jsou [uvedené v konfiguraci Sparku: Vlastnosti](https://spark.apache.org/docs/latest/configuration.html#available-properties)aplikace | Ne |
+| sparkConfig | Zadejte hodnoty vlastností konfigurace Sparku, které jsou uvedené v části [Konfigurace Sparku: vlastnosti aplikace](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Ne |
 | GetDebugInfo – | Určuje, kdy se soubory protokolu Spark zkopírují do úložiště používaného clusterem HDInsight (nebo) určeného pomocí sparkJobLinkedService. Povolené hodnoty jsou None, Always nebo Failure. Výchozí hodnota je None (žádné). | Ne |
 | sparkJobLinkedService | Propojená služba úložiště, která obsahuje soubor úlohy Spark, závislosti a protokoly. Pokud nezadáte hodnotu pro tuto vlastnost, použije se úložiště přidružené ke clusteru HDInsight. | Ne |
 
@@ -344,15 +344,15 @@ Aktivita Spark nepodporuje vložený skript jako aktivity vepřového a podregis
 
 V úložišti objektů blob, na který odkazuje propojená služba HDInsight, vytvořte následující strukturu složek. Pak nahrajte závislé soubory do příslušných podsložek v kořenové složce reprezentované **entryFilePath**. Například nahrajte soubory Pythonu do podsložky pyFiles a soubory jar do podsložky jar kořenové složky. V době běhu Služba Data Factory očekává v úložišti objektů BLOB následující strukturu složek: 
 
-| `Path` | Popis | Požadováno | type |
+| Cesta | Popis | Požaduje se | Typ |
 | ---- | ----------- | -------- | ---- |
-| . | Kořenová cesta úlohy Spark v propojené službě úložiště | Ano | Folder |
-| &lt;definováno uživatelem&gt; | Cesta, která odkazuje na vstupní soubor úlohy Spark. | Ano | File |
-| ./jars | Všechny soubory v této složce se nahrají a umístí do cesty tříd Java clusteru. | Ne | Folder |
-| ./pyFiles | Všechny soubory v této složce se nahrají a umístí do PYTHONPATH clusteru. | Ne | Folder |
-| ./files | Všechny soubory v této složce se nahrají a umístí do pracovního adresáře prováděcího modulu. | Ne | Folder |
-| ./archives | Všechny soubory v této složce jsou nekomprimovány. | Ne | Folder |
-| ./logs | Složka, ve které jsou uloženy protokoly z clusteru Spark.| Ne | Folder |
+| . | Kořenová cesta úlohy Spark v propojené službě úložiště | Ano | Složka |
+| &lt;uživatelsky definované &gt; | Cesta, která odkazuje na vstupní soubor úlohy Spark. | Ano | File |
+| ./jars | Všechny soubory v této složce se nahrají a umístí do cesty tříd Java clusteru. | Ne | Složka |
+| ./pyFiles | Všechny soubory v této složce se nahrají a umístí do PYTHONPATH clusteru. | Ne | Složka |
+| ./files | Všechny soubory v této složce se nahrají a umístí do pracovního adresáře prováděcího modulu. | Ne | Složka |
+| ./archives | Všechny soubory v této složce jsou nekomprimovány. | Ne | Složka |
+| ./logs | Složka, ve které jsou uloženy protokoly z clusteru Spark.| Ne | Složka |
 
 Tady je příklad úložiště, které obsahuje dva soubory úloh Spark v úložišti objektů blob, na které odkazuje propojená služba HDInsight:
 

@@ -1,5 +1,5 @@
 ---
-title: Horizontální navýšení kapacity databáze SQL Azure | Microsoft Docs
+title: Horizontální navýšení kapacity databáze SQL Azure
 description: Jak používat knihovnu klienta elastické databáze ShardMapManager
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 3e7e2294938179da83fb5ad03db177c1142ad096
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d704e22dcd9ce4442ed16ae901c9c447fc025ebd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568344"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690165"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Horizontální navýšení kapacity databází pomocí Správce map horizontálních oddílů
 
@@ -53,12 +53,12 @@ Elastické škálování podporuje následující typy jako horizontálního dě
 
 | .NET | Java |
 | --- | --- |
-| integer |integer |
-| long |long |
-| guid |Uuid |
-| Byte  |Byte |
-| datetime | timestamp |
-| TimeSpan | duration|
+| celé číslo |celé číslo |
+| Dlouhou |Dlouhou |
+| Hlavních |Uuid |
+| Byte []  |Byte [] |
+| datetime | časové razítko |
+| TimeSpan | úkolu|
 | DateTimeOffset |offsetdatetime |
 
 ### <a name="list-and-range-shard-maps"></a>Seznam a rozsah horizontálních oddílů Maps
@@ -75,7 +75,7 @@ Mapy horizontálních oddílů lze vytvořit pomocí **seznamů jednotlivých ho
 | 3 |Database_B |
 | 4 |Database_C |
 | 6 |Database_B |
-| ... |... |
+| Tlačítka ... |Tlačítka ... |
 
 ### <a name="range-shard-maps"></a>Horizontálních oddílů mapy rozsahu
 
@@ -85,11 +85,11 @@ Například **[0, 100)** zahrnuje všechna celá čísla větší než nebo rovn
 
 | Klíč | Umístění horizontálních oddílů |
 | --- | --- |
-| [1,50) |Database_A |
-| [50,100) |Database_B |
-| [100,200) |Database_C |
-| [400,600) |Database_C |
-| ... |... |
+| [1, 50) |Database_A |
+| [50 100) |Database_B |
+| [100 200) |Database_C |
+| [400 600) |Database_C |
+| Tlačítka ... |Tlačítka ... |
 
 Každá z výše uvedených tabulek je koncepční příklad objektu **ShardMap** . Každý řádek je zjednodušeným příkladem jednotlivých **PointMapping** (pro mapu seznamu horizontálních oddílů) nebo **RangeMapping** (pro objekt Range horizontálních oddílů map).
 
@@ -97,15 +97,15 @@ Každá z výše uvedených tabulek je koncepční příklad objektu **ShardMap*
 
 V klientské knihovně je správce map horizontálních oddílů kolekcí map horizontálních oddílů. Data spravovaná instancí **ShardMapManager** se uchovávají na třech místech:
 
-1. **Mapa Global horizontálních oddílů (GSM)** : Určíte databázi, která bude sloužit jako úložiště pro všechna mapování horizontálních oddílů a mapování. Speciální tabulky a uložené procedury jsou automaticky vytvořeny pro správu informací. Většinou je to malá databáze a lehce se k němu používá a neměla by se používat pro jiné potřeby aplikace. Tabulky jsou ve speciálním schématu s názvem **__ShardManagement**.
-2. **Místní Mapa horizontálních oddílů (LSM)** : Každá databáze, kterou zadáte jako horizontálních oddílů, se upraví tak, aby obsahovala několik malých tabulek a speciální uložené procedury, které obsahují a spravují informace o mapě horizontálních oddílů, které jsou specifické pro tento horizontálních oddílů. Tyto informace jsou redundantní s informacemi v systému GSM a umožňují aplikaci ověřovat horizontálních oddílů informace map uložených v mezipaměti bez nutnosti jakéhokoli zatížení pro GSM. aplikace používá LSM k určení, zda je mapování v mezipaměti stále platné. Tabulky, které odpovídají LSM na jednotlivých horizontálních oddílů, jsou také ve schématu **__ShardManagement**.
-3. **Mezipaměť aplikace**: Každá instance aplikace přistupující k objektu **ShardMapManager** udržuje místní mezipaměť v paměti svých mapování. Ukládá informace o směrování, které byly nedávno načteny.
+1. **Globální mapa horizontálních oddílů (GSM)** : určíte databázi, která bude sloužit jako úložiště pro všechna mapování horizontálních oddílů a mapování. Speciální tabulky a uložené procedury jsou automaticky vytvořeny pro správu informací. Většinou je to malá databáze a lehce se k němu používá a neměla by se používat pro jiné potřeby aplikace. Tabulky jsou ve speciálním schématu s názvem **__ShardManagement**.
+2. **Místní Mapa horizontálních oddílů (LSM)** : Každá databáze, kterou určíte jako horizontálních oddílů, se upraví tak, aby obsahovala několik malých tabulek, a speciální uložené procedury, které obsahují a spravují informace o mapě horizontálních oddílů, které jsou specifické pro daný horizontálních oddílů. Tyto informace jsou redundantní s informacemi v systému GSM a umožňují aplikaci ověřovat horizontálních oddílů informace map uložených v mezipaměti bez nutnosti jakéhokoli zatížení pro GSM. aplikace používá LSM k určení, zda je mapování v mezipaměti stále platné. Tabulky, které odpovídají LSM na jednotlivých horizontálních oddílů, jsou také ve schématu **__ShardManagement**.
+3. **Mezipaměť aplikace**: každá instance aplikace přistupující k objektu **ShardMapManager** udržuje místní mezipaměť v paměti svých mapování. Ukládá informace o směrování, které byly nedávno načteny.
 
 ## <a name="constructing-a-shardmapmanager"></a>Sestavování ShardMapManager
 
 Objekt **ShardMapManager** je vytvořen pomocí vzoru factory ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory)). Metoda **ShardMapManagerFactory. GetSqlShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)) přebírá přihlašovací údaje (včetně názvu serveru a názvu databáze, který uchovává software GSM) ve formě **ConnectionString** a vrací instanci  **ShardMapManager**.  
 
-**Poznámka:** **ShardMapManager** by mělo být vytvořena instance pouze jednou pro každou doménu aplikace v rámci inicializačního kódu aplikace. Vytvoření dalších instancí ShardMapManager ve stejné doméně aplikace má za následek větší využití paměti a procesoru v aplikaci. **ShardMapManager** může obsahovat libovolný počet map horizontálních oddílů. I když může být jedna mapa horizontálních oddílů dostačující pro mnoho aplikací, existují situace, kdy se různé sady databází používají pro různé schéma nebo pro jedinečné účely. v takovém případě může být vhodnější více map horizontálních oddílů.
+**Všimněte si prosím:** **ShardMapManager** by mělo být vytvořena instance pouze jednou pro každou doménu aplikace v rámci inicializačního kódu aplikace. Vytvoření dalších instancí ShardMapManager ve stejné doméně aplikace má za následek větší využití paměti a procesoru v aplikaci. **ShardMapManager** může obsahovat libovolný počet map horizontálních oddílů. I když může být jedna mapa horizontálních oddílů dostačující pro mnoho aplikací, existují situace, kdy se různé sady databází používají pro různé schéma nebo pro jedinečné účely. v takovém případě může být vhodnější více map horizontálních oddílů.
 
 V tomto kódu se aplikace pokusí otevřít existující **ShardMapManager** s TryGetSqlShardMapManager (metodou[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.trygetsqlshardmapmanager), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) . Pokud objekty představující globální **ShardMapManager** (GSM) ještě v databázi neexistují, klientské knihovny je vytvoří pomocí metody CreateSqlShardMapManager ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.createsqlshardmapmanager), [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)).
 
@@ -157,7 +157,7 @@ Pro verzi rozhraní .NET můžete použít PowerShell k vytvoření nového spr�
 
 ## <a name="get-a-rangeshardmap-or-listshardmap"></a>Získat RangeShardMap nebo ListShardMap
 
-Po vytvoření správce mapy horizontálních oddílů můžete získat RangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) nebo ListShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap) [, .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) pomocí TryGetRangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap)), TryGetListShardMap ([Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap), [. NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap)) nebo metodou GetShardMap ([Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap)).
+Po vytvoření správce mapy horizontálních oddílů můžete získat RangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) nebo ListShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap) [, .NET) pomocí](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)TryGetRangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap)), TryGetListShardMap ([Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap), [. NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap)) nebo metodou GetShardMap ([Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap)).
 
 ```Java
 // Creates a new Range Shard Map with the specified name, or gets the Range Shard Map if it already exists.
@@ -236,7 +236,7 @@ Mapu horizontálních oddílů lze změnit různými způsoby. Všechny následu
 
 Tyto metody společně fungují jako stavební bloky dostupné pro úpravu celkové distribuce dat ve vašem prostředí databáze horizontálně dělené.  
 
-* Chcete-li přidat nebo odebrat horizontálních oddílů: použijte **CreateShard** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)) a **DeleteShard** ([Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.deleteshard) [, .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.deleteshard)) třídy shardmap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap)).
+* Chcete-li přidat nebo odebrat horizontálních oddílů: použijte **CreateShard** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)) a **DeleteShard** ([Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.deleteshard), .NET) třídy shardmap[(Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap) [).](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.deleteshard)
   
     Server a databáze představující cílový horizontálních oddílů musí pro provedení těchto operací již existovat. Tyto metody nemají žádný vliv na samotné databáze, a to pouze na metadata v mapě horizontálních oddílů.
 * Chcete-li vytvořit nebo odebrat body nebo rozsahy, které jsou namapovány na horizontálních oddílů: použijte **CreateRangeMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.NET](https://docs.microsoft.com/previous-versions/azure/dn841993(v=azure.100))), **DeleteMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.deletemapping), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) třídy RangeShardMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)), a **CreatePointMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap.createpointmapping), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) třídy ListShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)).
@@ -244,7 +244,7 @@ Tyto metody společně fungují jako stavební bloky dostupné pro úpravu celko
     Ke stejnému horizontálních oddílů může být mapováno mnoho různých bodů nebo rozsahů. Tyto metody ovlivňují pouze metadata – neovlivňují žádná data, která již mohou být přítomna v horizontálních oddílů. Pokud je potřeba data z databáze odebrat, aby byla konzistentní s operacemi **DeleteMapping** , provedete tyto operace samostatně, ale ve spojení s použitím těchto metod.  
 * Chcete-li rozdělit stávající rozsahy na dvě nebo sloučit sousední rozsahy do jedné: použijte **SplitMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.splitmapping), [.NET](https://msdn.microsoft.com/library/azure/dn824205.aspx)) a **MergeMappings** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.mergemappings), [.NET](https://msdn.microsoft.com/library/azure/dn824201.aspx)).  
   
-    Všimněte si, že operace rozdělení a sloučení **nemění horizontálních oddílů, na které jsou mapované hodnoty klíče**. Rozdělení rozdělí stávající rozsah na dvě části, ale obě jsou namapovány na stejný horizontálních oddílů. Sloučení funguje na dvou sousedních rozsazích, které jsou již namapovány na stejný horizontálních oddílů, jejich sloučení do jednoho rozsahu.  Přesun body nebo rozsahy, sami mezi horizontálních oddílů musí být koordinované pomocí **UpdateMapping** ve spojení s vlastní přesun dat.  Můžete použít službu **rozdělit/sloučit** , která je součástí nástrojů elastické databáze k koordinaci změn mapy horizontálních oddílů s přesunem dat, když je potřeba přesun.
+    Všimněte si, že operace rozdělení a sloučení **nemění horizontálních oddílů, na které jsou mapované hodnoty klíče**. Rozdělení rozdělí stávající rozsah na dvě části, ale obě jsou namapovány na stejný horizontálních oddílů. Sloučení funguje na dvou sousedních rozsazích, které jsou již namapovány na stejný horizontálních oddílů, jejich sloučení do jednoho rozsahu.  Pohyb bodů nebo rozsahů mezi horizontálních oddílů je potřeba koordinovat pomocí **UpdateMapping** ve spojení s skutečným pohybem dat.  Můžete použít službu **rozdělit/sloučit** , která je součástí nástrojů elastické databáze k koordinaci změn mapy horizontálních oddílů s přesunem dat, když je potřeba přesun.
 * Chcete-li znovu namapovat (nebo přesunout) jednotlivé body nebo rozsahy na různé horizontálních oddílů: použijte **UpdateMapping** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.updatemapping), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)).  
   
     Vzhledem k tomu, že může být nutné přesunout data z jednoho horizontálních oddílů do druhé, aby bylo možné je v souladu s operacemi **UpdateMapping** , je třeba provést toto přesun odděleně, ale ve spojení s použitím těchto metod.

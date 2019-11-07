@@ -1,5 +1,5 @@
 ---
-title: Ukázka Azure SQL Database v paměti | Microsoft Docs
+title: Ukázka Azure SQL Database v paměti
 description: Vyzkoušejte Azure SQL Database technologie v paměti pomocí ukázky OLTP a columnstore.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: e3e819fc90e8900219ebc7809adb293369084a72
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 8526236afdb0a312879cb3c1635a7fd85985278f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828215"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689822"
 ---
 # <a name="in-memory-sample"></a>Ukázka v paměti
 
@@ -24,7 +24,7 @@ Technologie v paměti v Azure SQL Database umožňují zvýšit výkon aplikace 
 
 V tomto článku se zobrazí dvě ukázky, které ilustrují použití OLTP v paměti a také indexy columnstore v Azure SQL Database.
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématu:
 - [Přehled OLTP v paměti a scénáře použití](https://msdn.microsoft.com/library/mt774593.aspx) (zahrnuje odkazy na případové studie zákazníků a informace o tom, jak začít)
 - [Dokumentace k OLTP v paměti](https://msdn.microsoft.com/library/dn133186.aspx)
 - [Průvodce indexy columnstore](https://msdn.microsoft.com/library/gg492088.aspx)
@@ -179,7 +179,7 @@ V ideálním případě byste měli v úmyslu spustit OSTRESS. exe na virtuáln�
 
 Na virtuálním počítači nebo na jakémkoli zvoleném hostiteli nainstalujte nástroje RML (replay Markup Language). Mezi tyto nástroje patří OSTRESS. exe.
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématu:
 - Diskuze OSTRESS. exe v [ukázkové databázi pro OLTP v paměti](https://msdn.microsoft.com/library/mt465764.aspx).
 - [Ukázková databáze pro OLTP v paměti](https://msdn.microsoft.com/library/mt465764.aspx)
 - [Blog pro instalaci OSTRESS. exe](https://blogs.msdn.com/b/psssql/archive/20../../cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx).
@@ -201,7 +201,7 @@ whereas for SQL 2016+
 ### <a name="run-the-_inmem-stress-workload-first"></a>Nejdřív spusťte úlohu *_inmem* zátěže.
 
 
-Pomocí okna příkazového řádku *RML cmd* můžete spustit náš příkazový řádek OSTRESS. exe. Parametry příkazového řádku Direct `ostress` do:
+Pomocí okna příkazového řádku *RML cmd* můžete spustit náš příkazový řádek OSTRESS. exe. Parametry příkazového řádku `ostress` přímo:
 
 - Spouštějte připojení 100 souběžně (-N100).
 - U každého připojení spusťte skript T-SQL 50 časy (-R50).
@@ -256,7 +256,7 @@ Až budete mít výsledek z *_inmem* spuštění, proveďte následující kroky
 
 #### <a name="expected-comparison-results"></a>Očekávané výsledky porovnání
 
-Naše testy v paměti ukázaly, že výkon u této zjednodušený úlohy byl během **devíti dob** vylepšený, a `ostress` spuštěná na virtuálním počítači Azure ve stejné oblasti Azure jako databáze.
+Naše testy v paměti ukázaly, že výkon u této zjednodušený úlohy byl během **devíti dob** vylepšený a `ostress` běží na virtuálním počítači Azure ve stejné oblasti Azure jako databáze.
 
 <a id="install_analytics_manuallink" name="install_analytics_manuallink"></a>
 
@@ -309,7 +309,7 @@ Existuje [několik typů dotazů T-SQL, které můžete spustit,](https://raw.gi
 - `FROM FactResellerSalesXL_CCI a`
 
 
-Clusterovaný index columnstore je v tabulce FactResellerSalesXL @ no__t-0CCI.
+Clusterovaný index columnstore je v tabulce FactResellerSalesXL\_Ski.
 
 Následující výpis skriptu T-SQL vytiskne statistiku pro vstupně-výstupní operace a čas pro dotaz každé tabulky.
 
@@ -405,7 +405,7 @@ V databázi s cenovou úrovní P2 můžete očekávat přibližně devět časů
 
 - Podívejte se [na téma běžné vzorce úloh a důležité informace k migraci](https://msdn.microsoft.com/library/dn673538.aspx) (které popisují vzorce úloh, které OLTP v paměti často přináší výrazné zvýšení výkonu).
 
-#### <a name="application-design"></a>Návrh aplikace
+#### <a name="application-design"></a>Návrh aplikací
 
 - [OLTP v paměti (optimalizace v paměti)](https://msdn.microsoft.com/library/dn133186.aspx)
 
@@ -417,4 +417,4 @@ V databázi s cenovou úrovní P2 můžete očekávat přibližně devět časů
 
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 
-- [Nástroje pro SQL Server data (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)
+- [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)

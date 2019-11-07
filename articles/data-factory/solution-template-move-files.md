@@ -1,5 +1,5 @@
 ---
-title: Přesunutí souborů mezi souborové úložiště pomocí Azure Data Factory | Microsoft Docs
+title: Přesunutí souborů mezi úložištěm založeném na souborech pomocí Azure Data Factory
 description: Naučte se používat šablonu řešení k přesouvání souborů mezi úložištěm založeném na souborech pomocí Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/12/2019
-ms.openlocfilehash: 9eb82a23aac5a98a521976118c1e859d0be253d0
-ms.sourcegitcommit: 1b7b0e1c915f586a906c33d7315a5dc7050a2f34
+ms.openlocfilehash: f6f83917e84a880fb86b5f592c4d51b03462753d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67881240"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684176"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Přesunout soubory pomocí Azure Data Factory
 
-Tento článek popisuje šablonu řešení, kterou můžete použít k přesunutí souborů z jedné složky do jiné mezi úložišti na základě souborů. Jeden ze běžných scénářů použití této šablony: Soubory se trvale vynechává do cílové složky vašeho zdrojového úložiště. Když vytvoříte aktivační událost plánovače, kanál ADF může pravidelně přesouvat soubory ze zdroje do cílového úložiště.  Způsob, jakým kanál ADF dosáhne "přesunutí souborů", získává soubory z cílové složky, kopíruje každou z nich do jiné složky v cílovém úložišti a pak odstraní stejné soubory z cílové složky ve zdrojovém úložišti.
+Tento článek popisuje šablonu řešení, kterou můžete použít k přesunutí souborů z jedné složky do jiné mezi úložišti na základě souborů. Jeden ze běžných scénářů použití této šablony: soubory se v úložišti zdrojového úložiště trvale přecházejí do cílové složky. Když vytvoříte aktivační událost plánovače, kanál ADF může pravidelně přesouvat soubory ze zdroje do cílového úložiště.  Způsob, jakým kanál ADF dosáhne "přesunutí souborů", získává soubory z cílové složky, kopíruje každou z nich do jiné složky v cílovém úložišti a pak odstraní stejné soubory z cílové složky ve zdrojovém úložišti.
 
 > [!NOTE]
 > Uvědomte si, že tato šablona je navržená tak, aby místo přesouvání složek přesunula soubory.  Pokud chcete přesunout složku tím, že změníte datovou sadu tak, aby obsahovala pouze cestu ke složce, a potom pomocí aktivity kopírování a odstranění odkazuje na stejnou datovou sadu, která představuje složku, je nutné mít velmi opatrní. Je to proto, že je nutné zajistit, aby do složky mezi operacemi kopírování a odstraňování nedocházelo nové soubory. Pokud se ve složce v okamžiku, kdy vaše aktivita kopírování právě dokončila úloha kopírování, přirazily nové soubory, ale aktivita odstranění nebyla postará, je možné, že aktivita odstranění odstraní tento nový doručený soubor, který se nezkopíroval do destinati. Tím se ještě odstraní celá složka.

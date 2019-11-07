@@ -7,12 +7,12 @@ ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 11/04/2019
-ms.openlocfilehash: b8633bd91abc1f336870158f54d75829ed5cf6a0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fd5697f9c325dc4ad866c333ce1b20e008ebfa24
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496590"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606153"
 ---
 # <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>Co jsou otevřené datové sady Azure a jak je můžete použít?
 
@@ -25,7 +25,7 @@ Datové sady zahrnují data z veřejných domén pro počasí, sčítání, svá
 ## <a name="curated-prepared-datasets"></a>Zpracované, připravené datové sady
 Spravované otevřené veřejné datové sady v Azure Open DataSets jsou optimalizované pro využití v pracovních postupech služby Machine Learning. 
 
-Odborníci přes data často tráví většinu času, který čistí a připravují data pro pokročilé analýzy. Otevřené datové sady se zkopírují do cloudu Azure a předzpracované za účelem úspory času. V pravidelných intervalech jsou data načítána ze zdrojů, jako je třeba připojení FTP k národním oceán a NOAA (), analyzování do strukturovaného formátu a jejich rozšíření podle potřeby s funkcemi, jako je například PSČ nebo umístění nejbližší povětrnostní stanice.
+Odborníci přes data často tráví většinu času, který čistí a připravují data pro pokročilé analýzy. Otevřené datové sady se zkopírují do cloudu Azure a předzpracované za účelem úspory času. V pravidelných intervalech jsou data načítána ze zdrojů, například prostřednictvím připojení FTP k národním oceán a správě atmosféry (NOAA). V dalším kroku se data analyzují do strukturovaného formátu a pak se rozšiřují podle potřeby s funkcemi, jako je například PSČ nebo umístění nejbližších povětrnostních stanic.
 
 Datové sady jsou spoluhostovány s cloudovým výpočetním prostředím v Azure, což usnadňuje přístup a manipulaci.  
 
@@ -33,14 +33,14 @@ Následují příklady datových sad, které jsou k dispozici.
 
 ### <a name="weather-data"></a>Data o počasí
  
-|Datová sada         | Notebooks     | Popis                                    |
+|Datová sada         | Poznámkové bloky     | Popis                                    |
 |----------------|---------------|------------------------------------------------|
 |[NOAA Integrated Surface data (ISD)](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/) | [Azure Notebooks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/?tab=data-access#AzureNotebooks) <br> [Azure Databricks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/?tab=data-access#AzureDatabricks) | Celosvětově hodinově povětrnostní data z NOAA s nejlepším pokrytím v Severní Amerika, Evropě, Austrálii a částech Asie. Aktualizováno denně. |
 |[Systém NOAA Global prognóze (GFS)](https://azure.microsoft.com/services/open-datasets/catalog/noaa-global-forecast-system/) | [Azure Notebooks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-global-forecast-system/?tab=data-access#AzureNotebooks) <br> [Azure Databricks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-global-forecast-system/?tab=data-access#AzureDatabricks) | data předpovědi z NOAAu z 15. dne v USA Aktualizováno denně. |
 
 ### <a name="calendar-data"></a>Data kalendáře
 
-|Datová sada         | Notebooks     | Popis                                    |
+|Datová sada         | Poznámkové bloky     | Popis                                    |
 |----------------|---------------|------------------------------------------------|
 |[Veřejné svátky](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/) | [Azure Notebooks](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/?tab=data-access#AzureNotebooks) <br> [Azure Databricks](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/?tab=data-access#AzureDatabricks) | Celosvětové veřejné svátky, které zahrnují 41 zemí nebo oblastí od 1970 do 2099. Zahrnuje zemi a to, jestli má většina lidí placené volno. |
 
@@ -57,5 +57,5 @@ Pokud nemůžete najít požadovaná data, pošlete nám e-mail s [žádostí o 
 
 ## <a name="next-steps"></a>Další kroky
 * [Ukázkový Poznámkový blok](samples.md)
-* [Kurz: regrese modelování pomocí NY taxislužby dat](tutorial-opendatasets-automl.md)
+* [Kurz: regrese modelování pomocí NY taxislužby dat](/azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [Python SDK pro otevřené datové sady](/python/api/azureml-opendatasets/?view=azure-ml-py)

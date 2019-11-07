@@ -1,5 +1,5 @@
 ---
-title: Kurz pro více tenantů SaaS – Azure SQL Database | Microsoft Docs
+title: Kurz pro více tenantů SaaS – Azure SQL Database
 description: Zřizování a katalog nových tenantů pomocí samostatného modelu aplikace
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/24/2018
-ms.openlocfilehash: f9087ff33bccb54497ec8d781a47469553683d65
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: de1007aac3988f2ea78b9d1b7b1de19b862f196a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570269"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691948"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Zřízení a zařazení nových tenantů pomocí aplikace na SaaS vzor pro každého tenanta
 
@@ -57,7 +57,7 @@ Každý tenant vyžaduje novou skupinu prostředků Azure, která se musí vytvo
 
 ## <a name="tutorial"></a>Kurz
 
-V tomto kurzu se naučíte:
+Co se v tomto kurzu naučíte:
 
 * Zřízení katalogu
 * Registrace ukázkových databází tenantů, které jste nasadili dříve v katalogu
@@ -71,7 +71,7 @@ Na konci tohoto kurzu máte sadu samostatných klientských aplikací s každou 
 
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků: 
 
-* Prostředí Azure PowerShell je nainstalované. Podrobnosti najdete v článku [Začínáme s prostředím Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Je nainstalované prostředí Azure PowerShell. Podrobnosti najdete v článku [Začínáme s prostředím Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 * Nasadí se tři ukázkové klientské aplikace. Pokud chcete tyto aplikace nasadit za méně než pět minut, přečtěte si téma [nasazení a prozkoumání samostatného vzoru aplikace SaaS lístky](saas-standaloneapp-get-started-deploy.md).
 
 ## <a name="provision-the-catalog"></a>Zřízení katalogu
@@ -81,10 +81,10 @@ V této úloze se dozvíte, jak zřídit katalog používaný k registraci všec
 * **Zřízení databáze katalogu** pomocí šablony Azure Resource Management. Databáze je inicializovaná importem souboru BacPac.  
 * **Zaregistrujte ukázkové klientské aplikace** , které jste nasadili dříve.  Každý tenant je zaregistrován pomocí klíče vytvořeného z hodnoty hash názvu tenanta.  Název tenanta je také uložen v tabulce rozšíření v katalogu.
 
-1. V PowerShellu ISE otevřete *. ..\Learning Modules\UserConfig.PSM* a aktualizujte  **\<hodnotu\> uživatele** na hodnotu, kterou jste použili při nasazování tří ukázkových aplikací.  **Uložte soubor**.  
+1. V PowerShellu ISE otevřete *. ..\Learning Modules\UserConfig.PSM* a aktualizujte hodnotu **\>\<uživatele** na hodnotu, kterou jste použili při nasazování tří ukázkových aplikací.  **Uložte soubor**.  
 1. V PowerShellu ISE otevřete *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* a nastavte **$Scenario = 1**. Nasaďte katalog tenanta a zaregistrujte předem definované klienty.
 
-1. Přidejte zarážku tak, že umístíte kurzor na libovolné místo na řádku, `& $PSScriptRoot\New-Catalog.ps1`který říká, a pak stiskněte **F9**.
+1. Přidejte zarážku tak, že umístíte kurzor na libovolné místo na řádku, který říká, `& $PSScriptRoot\New-Catalog.ps1`a pak stiskněte **F9**.
 
     ![Nastavení zarážky pro trasování](media/saas-standaloneapp-provision-and-catalog/breakpoint.png)
 
@@ -97,14 +97,14 @@ Po dokončení skriptu bude katalog existovat a budou zaregistrováni všichni u
 
 Teď se podívejte na prostředky, které jste vytvořili.
 
-1. Otevřete [Azure Portal](https://portal.azure.com/) a procházejte skupinami prostředků.  Otevřete skupinu prostředků **Wingtip-SA-Catalog\<-\> User** a poznamenejte si Server katalogu a databázi.
-1. Otevřete databázi na portálu a v nabídce na levé straně vyberte *Průzkumník dat* .  Klikněte na příkaz Login (přihlášení) a zadejte heslo **=\@P ssword1**.
+1. Otevřete [Azure Portal](https://portal.azure.com/) a procházejte skupinami prostředků.  Otevřete skupinu prostředků " **Wingtip-SA-Catalog-\<user\>** a poznamenejte si Server katalogu a databázi.
+1. Otevřete databázi na portálu a v nabídce na levé straně vyberte *Průzkumník dat* .  Klikněte na příkaz pro přihlášení a zadejte heslo = **P\@ssword1**.
 
 
 1. Prozkoumejte schéma databáze *tenantcatalog* .  
-   * Objekty ve `__ShardManagement` schématu jsou k dispozici v klientské knihovně elastic Database.
-   * `Tenants` Tabulka a`TenantsExtended` zobrazení jsou rozšíření přidaná v ukázce, která demonstrují způsob rozšíření katalogu, aby bylo možné poskytnout další hodnotu.
-1. Spusťte dotaz, `SELECT * FROM dbo.TenantsExtended`.          
+   * Objekty ve schématu `__ShardManagement` jsou všechny poskytovány Elastic Database klientské knihovny.
+   * `Tenants` tabulka a zobrazení `TenantsExtended` jsou rozšíření přidaná v ukázce, která demonstrují způsob rozšíření katalogu, aby bylo možné poskytnout další hodnotu.
+1. Spusťte dotaz `SELECT * FROM dbo.TenantsExtended`.          
 
    ![Průzkumník dat](media/saas-standaloneapp-provision-and-catalog/data-explorer-tenantsextended.png)
 
@@ -124,7 +124,7 @@ V této úloze se dozvíte, jak zřídit jednu klientskou aplikaci. Vaším úko
 
 1. V PowerShellu ISE otevřete *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* a nastavte **$Scenario = 2**. Nasazení katalogu tenanta a registrace předem definovaných tenantů
 
-1. Vložte zarážku do skriptu tak, že umístíte kurzor na libovolné místo na řádku 49, `& $PSScriptRoot\New-TenantApp.ps1`který uvádí, a pak stiskněte **F9**.
+1. Vložte zarážku do skriptu tak, že umístíte kurzor na libovolné místo na řádku 49, který uvádí, `& $PSScriptRoot\New-TenantApp.ps1`a potom stiskněte **F9**.
 1. Spusťte skript stisknutím klávesy **F5**. 
 1.  Po zastavení spuštění skriptu na zarážce stiskněte klávesu **F11** ke kroku do skriptu New-Catalog. ps1.
 1.  Sledujte provádění skriptu pomocí možností nabídky ladění, F10 a F11, abyste mohli přenášet nebo nazývat na volané funkce.
@@ -146,7 +146,7 @@ Po dokončení průzkumu ukázky odstraňte všechny skupiny prostředků, kter�
 
 - Další informace o aplikacích pro více tenantů SaaS Database najdete v tématu [vzory návrhu pro víceklientské aplikace SaaS](saas-tenancy-app-design-patterns.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se dozvěděli:
 

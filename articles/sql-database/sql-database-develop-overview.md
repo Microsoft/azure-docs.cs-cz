@@ -1,5 +1,5 @@
 ---
-title: Přehled vývoje databázových aplikací služby SQL Database | Dokumentace Microsoftu
+title: Přehled vývoje databázových aplikací služby SQL Database
 description: Další informace o dostupných knihovnách připojení a osvědčených postupech pro aplikace, které se připojují ke službě SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 02/07/2019
-ms.openlocfilehash: 42fc73b5557fba91cc132a0abe8561f0a72bbb64
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 58f823aad157657de5445b1010a405af01c70171
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568859"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690639"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL Database – přehled vývoje aplikací
 
 V tomto článku se seznámíte se základními předpoklady, které by měl mít vývojář na zřeteli při zapisování kódu pro připojení ke službě Azure SQL Database. Tento článek se týká všech modelů nasazení Azure SQL Database (jedna databáze, elastické fondy, spravovaná instance).
 
 > [!TIP]
-> Pokud potřebujete nastavit Azure SQL Database, přečtěte [](sql-database-single-database-quickstart-guide.md) si příručky Začínáme s izolovanými databázemi a [spravovanými instancemi](sql-database-managed-instance-quickstart-guide.md) .
+> Pokud potřebujete nastavit Azure SQL Database, přečtěte si příručky Začínáme s izolovanými [databázemi](sql-database-single-database-quickstart-guide.md) a [spravovanými instancemi](sql-database-managed-instance-quickstart-guide.md) .
 >
 
 ## <a name="language-and-platform"></a>Jazyk a platforma
@@ -54,8 +54,8 @@ Další informace o přípravě na plánované události údržby ve službě Az
 
 ## <a name="network-considerations"></a>Síťové požadavky
 
-- Na počítači, který hostuje klientský program, zajistěte, aby brána firewall umožňovala odchozí komunikaci TCP na portu 1433.  Další informace: [Nakonfigurujte bránu Azure SQL Database firewall](sql-database-configure-firewall-settings.md).
-- Pokud se klientský program připojí k SQL Database v době, kdy klient běží na virtuálním počítači Azure, musíte na VIRTUÁLNÍm počítači otevřít určité rozsahy portů. Další informace: [Porty přesahující 1433 pro ADO.NET 4,5 a SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
+- Na počítači, který hostuje klientský program, zajistěte, aby brána firewall umožňovala odchozí komunikaci TCP na portu 1433.  Další informace: [Konfigurace brány Azure SQL Database firewall](sql-database-configure-firewall-settings.md).
+- Pokud se klientský program připojí k SQL Database v době, kdy klient běží na virtuálním počítači Azure, musíte na VIRTUÁLNÍm počítači otevřít určité rozsahy portů. Další informace: [porty přesahující 1433 pro ADO.NET 4,5 a SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
 - Klientská připojení k Azure SQL Database někdy obcházejí proxy a komunikují přímo s databází. Na významu nabývají jiné porty než 1433. Další informace najdete v [Azure SQL Database architektury připojení](sql-database-connectivity-architecture.md) a [porty nad 1433 pro ADO.NET 4,5 a SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
 - Konfigurace sítě pro spravovanou instanci najdete v tématu [Konfigurace sítě pro spravované instance](sql-database-howto-managed-instance.md#network-configuration).
 

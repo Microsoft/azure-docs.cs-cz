@@ -1,5 +1,5 @@
 ---
-title: Pokyny pro SQL Database víceklientské aplikace – příklad – Wingtip SaaS | Microsoft Docs
+title: 'Pokyny pro SQL Database víceklientské aplikace – příklad – Wingtip SaaS '
 description: Obsahuje kroky a pokyny k instalaci a spuštění ukázkové aplikace s více klienty, která používá Azure SQL Database, jako příklad SaaS lístky Wingtip.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 6c14fd69521be85dbda5ec4ceda991dfdff54ae0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9258e1e8219300c47e77ea8164e54edd5855bb39
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570071"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691803"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Obecné pokyny pro práci s ukázkami lístků Wingtip SaaS Apps
 
@@ -32,12 +32,12 @@ Obsah spustitelného souboru (skripty, knihovny DLL) může systém Windows zabl
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
 2. Klikněte na **klonovat nebo stáhnout**.
 3. Klikněte na **Stáhnout ZIP** a uložte soubor.
-4. Klikněte pravým tlačítkem na soubor zip a vyberte **vlastnosti**. Název souboru zip bude odpovídat názvu úložiště. dodatečné. _WingtipTicketsSaaS-DbPerTenant-master.zip_)
-5. Na kartě **Obecné** vyberte odblokovat.
-6. Klikněte na **OK**.
+4. Klikněte pravým tlačítkem na soubor zip a vyberte **vlastnosti**. Název souboru zip bude odpovídat názvu úložiště. dodatečné. _WingtipTicketsSaaS-DbPerTenant-Master. zip_)
+5. Na kartě **Obecné** vyberte **odblokovat**.
+6. Klikněte na tlačítko **OK**.
 7. Extrahujte soubory.
 
-Skripty jsou umístěny v *.. Složka\\výukových modulů* .
+Skripty jsou umístěné ve složce *..\\Learning modules* .
 
 
 ## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>Práce se skripty PowerShellu pro lístky Wingtip
@@ -48,7 +48,7 @@ Pokud chcete získat z ukázky co nejvíc, musíte se podrobně do zadaných skr
 
 Upravte soubor **userconfig. psm1** o skupinu prostředků a hodnotu uživatele, kterou jste nastavili během nasazování:
 
-1. Otevřete *POWERSHELL ISE* a Load... Výukové\\moduly*userconfig. psm1* \\ 
+1. Otevřete *POWERSHELL ISE* a Load...\\výukové moduly\\*userconfig. psm1* 
 2. Aktualizujte *ResourceGroupName* a *název* o konkrétní hodnoty pro vaše nasazení (jenom na řádcích 10 a 11).
 3. Uložte změny.
 
@@ -78,31 +78,31 @@ K připojení a procházení aplikačních serverů a databází použijte [SQL 
 
 Nasazení má zpočátku klienty a katalog SQL Database servery, ke kterým se připojuje. Pojmenování serverů závisí na vzoru architektury databáze (podrobnosti najdete níže). 
 
-   - **Samostatná aplikace:** servery pro každého tenanta (např. *contosoconcerthall-&lt;User&gt;*  Server) a *Catalog-SA-&lt;User&gt;*
-   - **Databáze na tenanta:** *tenants1-DPT –&lt;uživatel&gt;*  a *katalog – DPT –&lt;uživatelské&gt;*  servery
-   - **Víceklientské databáze:** *tenants1-MT-&lt;User&gt;*  and *Catalog-MT-&lt;User&gt;*  Servers
+   - **Samostatná aplikace:** servery pro každého tenanta (např. *contosoconcerthall-&lt;user&gt;* Server) a *Catalog-SA-&lt;User&gt;*
+   - **Databáze na tenanta:** *tenants1-DPT-&lt;User&gt;* and *Catalog-DPT&lt;-User&gt;* Servers
+   - **Víceklientské databáze:** *tenants1-MT-&lt;User&gt;* and *Catalog-MT-&lt;User&gt;* Servers
 
 Aby bylo zajištěno úspěšné ukázkové připojení, všechny servery mají [pravidlo brány firewall](sql-database-firewall-configure.md) , které povoluje všechny IP adresy prostřednictvím.
 
 
 1. Otevřete *SSMS* a připojte se k tenantovi. Název serveru závisí na vzoru architektury databáze, který jste vybrali (podrobnosti najdete níže):
-    - **Samostatná aplikace:** servery jednotlivých tenantů (např. *contosoconcerthall-&lt;User&gt;.database.windows.net*) 
+    - **Samostatná aplikace:** servery jednotlivých tenantů (např. *contosoconcerthall&lt;User&gt;. Database.Windows.NET*) 
     - **Databáze na tenanta:** *tenants1-DPT-&lt;User&gt;. Database.Windows.NET*
     - **Víceklientské databáze:** *tenants1-MT-&lt;User&gt;. Database.Windows.NET* 
 2. Klikněte na **Připojit** > **Databázový stroj...** :
 
    ![katalogový server](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. Ukázkové přihlašovací údaje: Login = *Developer*, Password = *P\@ssword1*
+3. Ukázková pověření: login = *Developer*, Password = *P\@ssword1*
 
     Následující obrázek ukazuje přihlášení k *databázi pro každý model klienta* . 
-    ![připojení](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
+    ](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png) připojení ![
     
    
 
 4. Opakujte kroky 2-3 a připojte se k serveru katalogu (dole najdete konkrétní názvy serverů na základě vybraného vzoru databáze).
     - **Samostatná aplikace:** *Catalog-SA-&lt;User&gt;. Database.Windows.NET*
-    - **Databáze na tenanta:** *Catalog – DPT –&lt;User&gt;. Database.Windows.NET*
+    - **Databáze na tenanta:** *Catalog-DPT-&lt;User&gt;. Database.Windows.NET*
     - **Víceklientské databáze:** *Catalog-MT-&lt;User&gt;. Database.Windows.NET*
 
 
@@ -114,7 +114,7 @@ Následující obrázek ukazuje, jak se přihlašujete ke vzorům *databáze pro
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - [Nasazení samostatné aplikace SaaS lístky Wingtip Tickets](saas-standaloneapp-get-started-deploy.md)
 - [Nasazení databáze Wingtip Tickets SaaS Database na klientské aplikace](saas-dbpertenant-get-started-deploy.md)
 - [Nasazení aplikace SaaS multi-tenant Database pro víceklientské lístky Wingtip](saas-multitenantdb-get-started-deploy.md)

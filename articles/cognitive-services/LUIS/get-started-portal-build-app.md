@@ -1,26 +1,25 @@
 ---
 title: 'Rychlý Start: vytvoření nové aplikace na portálu LUIS'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu vytvoříte novou aplikaci na portálu LUIS. Vytvoření základních částí aplikace, záměrů a entit. Otestujte aplikaci zadáním ukázkového uživatele utterance na interaktivním panelu testů, který získá předpokládaný záměr. Sestavování aplikace je zdarma. nevyžaduje předplatné Azure.
+description: V tomto rychlém startu vytvoříte základní části aplikace, záměry a entity a otestujete je pomocí Sample utterance na portálu LUIS.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/04/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 6888c53122e649d6a0e91f8ece30101f051c08e8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 087b3a61902c533648b5d6e1b4b763f88ee5d794
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488789"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669684"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rychlý Start: vytvoření nové aplikace na portálu LUIS
 
-
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 V tomto rychlém startu vytvoříte novou aplikaci na [portálu Luis](https://www.luis.ai). Nejdřív vytvoříte základní části aplikace, **záměrů**a **entit**. Pak otestujete aplikaci zadáním ukázkového uživatele utterance na interaktivním panelu testů, který získá předpokládaný záměr.
 
@@ -32,16 +31,16 @@ Sestavování aplikace je bezplatné a nevyžaduje předplatné Azure. Až budet
 
 1. Na panelu nástrojů kontextu vyberte **+ vytvořit** .
 
-   [![vytvoření nové aplikace na portálu LUIS](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
+   [![vytvoření nové aplikace na portálu LUIS](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
 
 1. V automaticky otevíraném okně nakonfigurujte aplikaci s následujícím nastavením a potom vyberte **Hotovo**.
 
    |Název nastavení| Hodnota | Účel|
    |--|--|--|
-   |Name (Název)|`myEnglishApp`|Jedinečný název aplikace LUIS<br>Požadovanou|
-   |Jazyková verze|**Angličtina**|Jazyk projevy od uživatelů, **en-US**<br>Požadovanou|
-   |Popis|`App made with LUIS Portal`|Popis aplikace<br>Volitelné|
-   | | | |
+   |Name (Název)|`myEnglishApp`|Jedinečný název aplikace LUIS<br>požadovanou|
+   |Jazyková verze|**Angličtina**|Jazyk projevy od uživatelů, **en-US**<br>požadovanou|
+   |Popis (volitelné)|`App made with LUIS Portal`|Popis aplikace<br>Volitelné|
+   |Prostředek předpovědi (volitelné) |-  |Nevybírejte. LUIS vám nabízí počáteční klíč, který můžete zdarma použít pro vytváření a 1 000 požadavků na koncový bod předpovědi. |
 
    ![Zadat nové nastavení aplikace](./media/get-started-portal-build-app/create-new-app-settings.png)
 
@@ -61,13 +60,11 @@ Dvě různé _záměry_ aplikace jsou v souladu s následujícími záměry:
 
 Chcete-li vytvořit záměry, proveďte následující kroky:
 
-1. Po vytvoření aplikace se nacházíte na stránce **záměry** v části **sestavení** . Vyberte **Create new intent** (Vytvořit nový záměr).
+1. Po vytvoření aplikace se nacházíte na stránce **záměry** v části **sestavení** . Vyberte **Vytvořit**.
 
-   [![výběr tlačítka vytvořit nový záměr](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
+   [Pokud chcete vytvořit nový záměr, ![vybrat vytvořit.](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
 1. Zadejte název záměru `FindForm`a potom vyberte **Hotovo**.
-
-   ![Zadejte název záměru pro FindForm.](./media/get-started-portal-build-app/create-new-intent-dialog.png)
 
 ## <a name="add-an-example-utterance"></a>Přidat příklad utterance
 
@@ -113,13 +110,16 @@ Chcete-li vrátit číslo formuláře v odpovědi předpovědi modulu runtime, m
 
 1. V nabídce vlevo vyberte **entity** .
 
-1. Na stránce **entity** vyberte **vytvořit novou entitu** .
+1. Na stránce **entity** vyberte **vytvořit** .
 
-1. Zadejte název `Human Resources Form Number`, vyberte typ entity **Regex** a zadejte regulární výraz `hrf-[0-9]{6}`. Tato položka odpovídá literálovým znakům, `hrf-`a umožňuje přesně 6 číslic.
+1. Zadejte název `Human Resources Form Number`, vyberte typ entity **Regex** a pak vyberte **Další**.
 
-   ![Zadejte informace o entitě pro entitu regulárního výrazu.](./media/get-started-portal-build-app/create-regular-expression-entity.png)
+   ![Vytvořit entitu regulárního výrazu](./media/get-started-portal-build-app/create-regular-expression-entity.png)
 
-1. Vyberte **Done** (Hotovo).
+1. Zadejte výraz regulárního výrazu (**Regex**), `hrf-[0-9]{6}`. Tato položka odpovídá literálovým znakům, `hrf-`a umožňuje přesně 6 číslic, a pak vyberte **vytvořit**.
+
+   ![Zadejte regulární výraz pro entitu](./media/get-started-portal-build-app/create-regular-expression-entity-with-expression.png)
+
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Přidat příklad projevy k záměru None
 
@@ -137,11 +137,11 @@ Příklad projevy záměru **none** by měl být mimo vaši doménu klientské a
    |Order a pizza for me (Objednej mi pizzu)|
    |Penguins in the ocean (Tučňáci v oceánech)|
 
-   V případě této aplikace pro lidské zdroje jsou tyto příklady projevy mimo doménu. Pokud vaše doména lidských zdrojů zahrnuje zvířata, jídlo nebo oceánu, měli byste pro záměr **none** použít jiný příklad projevy.
+   V případě této aplikace jsou tyto příklady projevy mimo doménu. Pokud vaše doména zahrnuje zvířata, jídlo nebo oceánu, měli byste pro záměr **none** použít jiný příklad projevy.
 
 ## <a name="train-the-app"></a>Trénování aplikace
 
-V nabídce v pravém horním rohu vyberte možnost **vlak** , aby se projevily změny modelu a modelu entity v aktuální verzi aplikace.
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>Podívejte se na entitu regulární výraz v příkladu projevy
 
@@ -168,8 +168,6 @@ Pomocí interaktivního **testovacího** podokna na portálu Luis ověřte, že 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Až budete s tímto rychlým startem hotovi a nepřesouváte se k dalšímu rychlému startu, vyberte **Moje aplikace** z horní navigační nabídky. Pak ze seznamu vyberte levé políčko aplikace a na panelu nástrojů kontext vyberte tlačítko **Odstranit** nad seznamem.
-
-[![odstranit aplikaci ze seznamu Moje aplikace](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
 ## <a name="next-steps"></a>Další kroky
 

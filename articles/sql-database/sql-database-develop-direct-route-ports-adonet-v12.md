@@ -1,5 +1,5 @@
 ---
-title: Porty přesahující 1433 pro SQL Database | Microsoft Docs
+title: Porty přesahující 1433 pro SQL Database
 description: Připojení klientů z ADO.NET do Azure SQL Database mohou obejít proxy server a pracovat přímo s databází pomocí jiných než 1433 portů.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 04/03/2019
-ms.openlocfilehash: a39cfd1981041c807a91a08c198378d238f0846e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 38ab3b6b0c64ad17311d15fd12e7625e8aa728ce
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568914"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690682"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Porty přesahující 1433 pro ADO.NET 4,5
 
@@ -30,11 +30,11 @@ Toto téma popisuje chování Azure SQL Database připojení pro klienty, kteř�
 
 Pro připojení k Azure SQL Database je potřeba nejdřív položit dotaz, jestli se Váš klientský program spouští *mimo* hranice cloudu Azure nebo *uvnitř* něj. Dílčí části projednávají dva běžné scénáře.
 
-### <a name="outside-client-runs-on-your-desktop-computer"></a>*Nenachází* Klient běží na stolním počítači.
+### <a name="outside-client-runs-on-your-desktop-computer"></a>*Mimo:* Klient běží na stolním počítači.
 
 Port 1433 je jediným portem, který musí být otevřený na stolním počítači, který je hostitelem klientské aplikace SQL Database.
 
-### <a name="inside-client-runs-on-azure"></a>*Uvozovk* Klient běží na Azure.
+### <a name="inside-client-runs-on-azure"></a>*Uvnitř:* Klient běží na Azure.
 
 Když se váš klient spouští v rámci hranice cloudu Azure, používá k interakci s SQL Database serverem *přímou trasu* . Po navázání připojení nezahrnuje další interakce mezi klientem a databází žádnou bránu Azure SQL Database.
 
@@ -78,11 +78,11 @@ Tato část vysvětluje monikery, které odkazují na verze produktu. Obsahuje t
 
 * Microsoft® ODBC Driver 17 pro SQL Server® – Windows, Linux & macOS https://www.microsoft.com/download/details.aspx?id=56567
 
-* Připojení k Azure SQL Database V12 prostřednictvím přesměrování https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
+* Připojení k Azure SQL Database V12 prostřednictvím https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362 přesměrování
 
 * [Seznam verzí protokolu TDS](https://www.freetds.org/userguide/tdshistory.htm)
 * [Přehled vývoje SQL Database](sql-database-develop-overview.md)
 * [Azure SQL Database firewall](sql-database-firewall-configure.md)
-* [Postup: Konfigurace nastavení brány firewall pro službu SQL Database](sql-database-configure-firewall-settings.md)
+* [Postupy: Konfigurace nastavení brány firewall na SQL Database](sql-database-configure-firewall-settings.md)
 
 

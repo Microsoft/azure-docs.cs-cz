@@ -1,6 +1,6 @@
 ---
-title: Přeučení a nasazení webové služby
-titleSuffix: Azure Machine Learning Studio (classic)
+title: Přeškolení pro webovou službu
+titleSuffix: ML Studio (classic) Azure
 description: Naučte se aktualizovat webovou službu tak, aby používala nově vyškolený model strojového učení v Azure Machine Learning Studio (Classic).
 services: machine-learning
 ms.service: machine-learning
@@ -10,18 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 55b054ffe55430ea106c72cdd91fdfba3a457cf5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e35ab4b3a45edd5a1172bc3a07d7c31abd2135f7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482987"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684766"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Přeučení a nasazení modelu strojového učení
 
 Rekurze je jedním ze způsobů, jak zajistit, aby modely strojového učení byly přesné a založené na nejdůležitějších dostupných datech. Tento článek ukazuje, jak převádět a nasazovat model strojového učení jako novou webovou službu v nástroji Studio (Classic). Pokud chcete přeškolit klasickou webovou službu, Projděte si [článek s postupem.](retrain-classic-web-service.md)
 
-V tomto článku se předpokládá, že už máte nasazenou prediktivní webovou službu. Pokud ještě nemáte prediktivní webovou službu, [Přečtěte si, jak sem nasadit webovou službu studia (Classic).](publish-a-machine-learning-web-service.md)
+V tomto článku se předpokládá, že už máte nasazenou prediktivní webovou službu. Pokud ještě nemáte prediktivní webovou službu, [Přečtěte si, jak sem nasadit webovou službu studia (Classic).](deploy-a-machine-learning-web-service.md)
 
 Pomocí těchto kroků můžete znovu naučit a nasazovat novou webovou službu Machine Learning:
 

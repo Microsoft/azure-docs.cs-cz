@@ -11,16 +11,18 @@ ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: glenga
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: b47e828f3b8d760594cb04ba40ceaa7248050c52
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 1a1586124a1cfb05f2b7c4e9c3b0070170447b96
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933479"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614571"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Vytvoření první trvalé funkce v JavaScriptu
 
 *Durable Functions* je rozšíření [Azure Functions](../functions-overview.md) , které umožňuje psát stavové funkce v prostředí bez serveru. Toto rozšíření za vás spravuje stav, kontrolní body a restartování.
+
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 V tomto článku se naučíte, jak používat rozšíření Visual Studio Code Azure Functions k místnímu vytvoření a otestování trvalé funkce "Hello World".  Tato funkce provede orchestraci a zřetězení volání dalších funkcí. Kód funkce potom publikujete do Azure.
 
@@ -46,7 +48,7 @@ K provedení kroků v tomto kurzu je potřeba:
 
 ## <a name="install-the-durable-functions-npm-package"></a>Instalace balíčku Durable Functions npm
 
-1. Nainstalujte balíček `npm install durable-functions` npm spuštěním v kořenovém adresáři aplikace Function App. `durable-functions`
+1. Nainstalujte balíček `durable-functions` npm spuštěním `npm install durable-functions` v kořenovém adresáři aplikace Function App.
 
 ## <a name="creating-your-functions"></a>Vytváření funkcí
 
@@ -56,7 +58,7 @@ Nyní vytvoříme tři funkce, které potřebujete, abyste mohli začít s Durab
 
 Nejdřív vytvořte funkci aktivovanou protokolem HTTP, která spustí orchestraci trvalé funkce.
 
-1. Z *Azure: Funkce*klikněte na ikonu **vytvořit funkci** .
+1. V *Azure: funkce*klikněte na ikonu **vytvořit funkci** .
 
     ![Vytvoření funkce](./media/quickstart-js-vscode/create-function.png)
 
@@ -74,7 +76,7 @@ Nyní jsme vytvořili vstupní bod do naší trvalé funkce. Pojďme přidat Orc
 
 Nyní vytvoříme nástroj Orchestrator pro koordinaci funkcí aktivity.
 
-1. Z *Azure: Funkce*klikněte na ikonu **vytvořit funkci** .
+1. V *Azure: funkce*klikněte na ikonu **vytvořit funkci** .
 
     ![Vytvoření funkce](./media/quickstart-js-vscode/create-function.png)
 
@@ -88,7 +90,7 @@ Přidali jsme nástroj Orchestrator pro koordinaci funkcí aktivity. Pojďme te�
 
 Nyní vytvoříme funkci aktivity, která bude ve skutečnosti provádět práci řešení.
 
-1. Z *Azure: Funkce*klikněte na ikonu **vytvořit funkci** .
+1. V *Azure: funkce*klikněte na ikonu **vytvořit funkci** .
 
     ![Vytvoření funkce](./media/quickstart-js-vscode/create-function.png)
 
@@ -102,14 +104,14 @@ Nyní jsme přidali všechny komponenty potřebné ke spuštění Orchestrace a 
 
 Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na místním počítači pro vývoj. K instalaci těchto nástrojů budete vyzváni při prvním spuštění funkce z Visual Studio Code.
 
-1. Na počítači s Windows spusťte emulátor Azure Storage a ujistěte se, že vlastnost **AzureWebJobsStorage** souboru *Local. Settings. JSON* je nastavená na `UseDevelopmentStorage=true`.
+1. Na počítači se systémem Windows spusťte emulátor Azure Storage a ujistěte se, že vlastnost **AzureWebJobsStorage** souboru *Local. Settings. JSON* je nastavena na hodnotu `UseDevelopmentStorage=true`.
 
-    U emulátoru úložiště 5,8 zkontrolujte, jestli je vlastnost **AzureWebJobsSecretStorageType** souboru Local. Settings. JSON nastavená `files`na. V počítači se systémem Mac nebo Linux musíte nastavit vlastnost **AzureWebJobsStorage** na připojovací řetězec existujícího účtu úložiště Azure. Účet úložiště můžete vytvořit později v tomto článku.
+    U emulátoru úložiště 5,8 se ujistěte, že vlastnost **AzureWebJobsSecretStorageType** souboru Local. Settings. JSON je nastavená na `files`. V počítači se systémem Mac nebo Linux musíte nastavit vlastnost **AzureWebJobsStorage** na připojovací řetězec existujícího účtu úložiště Azure. Účet úložiště můžete vytvořit později v tomto článku.
 
 2. Pokud chcete funkci otestovat, nastavte zarážku v kódu funkce a stiskněte klávesu F5, abyste spustili projekt aplikace funkcí. Výstup z nástrojů Tools se zobrazí na panelu **Terminál**. Pokud Durable Functions používáte poprvé, nainstalují se rozšíření Durable Functions a sestavení může trvat několik sekund.
 
     > [!NOTE]
-    > Durable Functions JavaScriptu vyžadují verzi **1.7.0** nebo novější rozšíření **Microsoft. Azure. WebJobs. Extensions. DurableTask** . Spusťte následující příkaz z kořenové složky vaší aplikace Azure Functions pro instalaci rozšíření Durable Functions`func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0`
+    > Durable Functions JavaScriptu vyžadují verzi **1.7.0** nebo novější rozšíření **Microsoft. Azure. WebJobs. Extensions. DurableTask** . Spusťte následující příkaz z kořenové složky vaší aplikace Azure Functions pro instalaci rozšíření Durable Functions `func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0`
 
 3. Na panelu **Terminál** zkopírujte adresu URL koncového bodu vaší funkce aktivované protokolem HTTP.
 

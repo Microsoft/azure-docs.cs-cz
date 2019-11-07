@@ -1,6 +1,5 @@
 ---
-title: Spouštění skriptů strojového učení v Pythonu
-titleSuffix: Azure Machine Learning Studio (classic)
+title: Spouštění skriptů Pythonu
 description: Naučte se používat modul spouštěného skriptu Pythonu pro použití kódu Pythonu v Machine Learning Studio (klasických) experimentech a webových službách.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +9,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 1be367191ab042611f45d1f773df0d499400c500
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dea8fd7971f0572350306ea11ee1f9d897438d11
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493003"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684874"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Spouštění skriptů strojového učení v jazyce Python v Azure Machine Learning Studio (Classic)
 

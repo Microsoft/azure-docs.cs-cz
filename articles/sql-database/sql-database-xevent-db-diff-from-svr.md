@@ -1,5 +1,5 @@
 ---
-title: Rozšířené události v SQL Database | Microsoft Docs
+title: Rozšířené události v SQL Database
 description: Popisuje rozšířené události (XEvents) v Azure SQL Database a způsob, jakým se relace událostí mírně liší od relací událostí v Microsoft SQL Server.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: f9af487e2eb35e7dc94e1b70945d5c03ffdde2ba
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 64cfcd9451416a6eb35301268b285bd00cf0cad4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566069"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686776"
 ---
 # <a name="extended-events-in-sql-database"></a>Rozšířené události v SQL Database
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -31,7 +31,7 @@ Toto téma vysvětluje, jak se v porovnání s rozšířenými událostmi v Micr
 
 Další informace o rozšířených událostech pro Azure SQL Database a Microsoft SQL Server jsou k dispozici na adrese:
 
-- [Rychlé zprovoznění: Rozšířené události v SQL Server](https://msdn.microsoft.com/library/mt733217.aspx)
+- [Rychlé zprovoznění: rozšířené události v SQL Server](https://msdn.microsoft.com/library/mt733217.aspx)
 - [Rozšířené události](https://msdn.microsoft.com/library/bb630282.aspx)
 
 ## <a name="prerequisites"></a>Požadavky
@@ -58,7 +58,7 @@ Související témata poskytují dva ukázky kódu:
 
 - [Cílový kód cyklické vyrovnávací paměti pro rozšířené události v SQL Database](sql-database-xevent-code-ring-buffer.md)
     - Krátký jednoduchý skript Transact-SQL.
-    - V tématu vzor kódu jsme zdůrazněni, že po dokončení práce s cílem kruhové vyrovnávací paměti byste měli uvolnit své prostředky spuštěním příkazu ALTER-drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;` . Později můžete přidat další instanci kruhové vyrovnávací paměti pomocí `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...`.
+    - V tématu vzor kódu jsme zdůrazněni, že po dokončení práce s cílem kruhové vyrovnávací paměti byste měli uvolnit své prostředky spuštěním příkazu ALTER-drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;`. Později můžete přidat další instanci kruhové vyrovnávací paměti pomocí `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...`.
 
 
 - [Cílový kód souboru události pro rozšířené události v SQL Database](sql-database-xevent-code-event-file.md)
@@ -83,13 +83,13 @@ Funkce Rozšířené události je podporována v několika [zobrazeních katalog
 
 | Název<br/>zobrazení katalogu | Popis |
 |:--- |:--- |
-| **sys.database_event_session_actions** |Vrátí řádek pro každou akci každé události relace události. |
-| **sys.database_event_session_events** |Vrátí řádek pro každou událost v relaci události. |
-| **sys.database_event_session_fields** |Vrátí řádek pro každý sloupec s vlastním nastavením, který byl explicitně nastaven pro události a cíle. |
-| **sys.database_event_session_targets** |Vrátí řádek pro každý cíl události pro relaci události. |
-| **sys.database_event_sessions** |Vrátí řádek pro každou relaci události v databázi SQL Database. |
+| **sys. database_event_session_actions** |Vrátí řádek pro každou akci každé události relace události. |
+| **sys. database_event_session_events** |Vrátí řádek pro každou událost v relaci události. |
+| **sys. database_event_session_fields** |Vrátí řádek pro každý sloupec s vlastním nastavením, který byl explicitně nastaven pro události a cíle. |
+| **sys. database_event_session_targets** |Vrátí řádek pro každý cíl události pro relaci události. |
+| **sys. database_event_sessions** |Vrátí řádek pro každou relaci události v databázi SQL Database. |
 
-V Microsoft SQL Server podobné pohledy v katalogu mají názvy, které obsahují *.\_ Server* místo *. Database\_* . Vzor názvu je jako **Sys. server_event_%** .
+V Microsoft SQL Server podobné pohledy v katalogu mají názvy, které obsahují *. Server\_* namísto *\_. Database* . Vzor názvu je jako **Sys. server_event_%** .
 
 ## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>Nová zobrazení dynamické správy [(zobrazení dynamické správy)](https://msdn.microsoft.com/library/ms188754.aspx)
 
@@ -97,23 +97,23 @@ Azure SQL Database má [zobrazení dynamické správy (zobrazení dynamické spr
 
 | Název DMV | Popis |
 |:--- |:--- |
-| **sys.dm_xe_database_session_event_actions** |Vrátí informace o akcích relace události. |
-| **sys.dm_xe_database_session_events** |Vrátí informace o událostech relace. |
-| **sys.dm_xe_database_session_object_columns** |Zobrazuje konfigurační hodnoty pro objekty, které jsou vázány na relaci. |
-| **sys.dm_xe_database_session_targets** |Vrátí informace o cílech relace. |
-| **sys.dm_xe_database_sessions** |Vrátí řádek pro každou relaci události, která je vymezena na aktuální databázi. |
+| **sys. DM _xe_database_session_event_actions** |Vrátí informace o akcích relace události. |
+| **sys. DM _xe_database_session_events** |Vrátí informace o událostech relace. |
+| **sys. DM _xe_database_session_object_columns** |Zobrazuje konfigurační hodnoty pro objekty, které jsou vázány na relaci. |
+| **sys. DM _xe_database_session_targets** |Vrátí informace o cílech relace. |
+| **sys. DM _xe_database_sessions** |Vrátí řádek pro každou relaci události, která je vymezena na aktuální databázi. |
 
-V Microsoft SQL Server jsou podobná zobrazení katalogu pojmenována bez  *\_databázové* části názvu, například:
+V Microsoft SQL Server jsou podobná zobrazení katalogu pojmenována bez\_část názvu *databáze* , například:
 
-- **Sys. DM _xe_sessions**místo názvu<br/>**sys.dm_xe_database_sessions**.
+- **Sys. DM _xe_sessions**místo názvu<br/>**Sys. DM _xe_database_sessions**.
 
 ### <a name="dmvs-common-to-both"></a>Zobrazení dynamické správy společné pro obojí
 Pro rozšířené události jsou k dispozici další zobrazení dynamické správy, které jsou společné pro Azure SQL Database i Microsoft SQL Server:
 
-- **sys.dm_xe_map_values**
-- **sys.dm_xe_object_columns**
-- **sys.dm_xe_objects**
-- **sys.dm_xe_packages**
+- **sys. DM _xe_map_values**
+- **sys. DM _xe_object_columns**
+- **sys. DM _xe_objects**
+- **sys. DM _xe_packages**
 
   <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets"></a>
 
@@ -171,7 +171,7 @@ Token SAS, který vygenerujete pro kontejner Azure Storage, musí pro oprávněn
 
 - Čtení
 - Zápis
-- List
+- Seznam
 
 ## <a name="performance-considerations"></a>Otázky výkonu
 
@@ -180,7 +180,7 @@ Existují situace, kdy náročné použití rozšířených událostí může na
 Pokud se zobrazí chybová zpráva oznamující, že byla vynutila maximální velikost paměti, můžete provést následující kroky:
 
 - Spusťte méně souběžných relací událostí.
-- Pomocí příkazů **Create** a **ALTER** pro relace událostí Snižte velikost paměti, kterou zadáte v klauzuli **Max\_Memory** .
+- Pomocí příkazů **Create** a **ALTER** pro relace událostí Snižte velikost paměti, kterou zadáte v klauzuli **Max\_paměti** .
 
 ### <a name="network-latency"></a>Latence sítě
 
@@ -195,7 +195,7 @@ Cílem **souboru událostí** může být latence sítě nebo selhání při trv
 - [Použití Azure PowerShell s Azure Storage](../storage/common/storage-powershell-guide-full.md) – poskytuje komplexní informace o PowerShellu a službě Azure Storage.
 - [Jak používat úložiště objektů BLOB z .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 - [CREATE CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/ms189522.aspx)
-- [CREATE EVENT SESSION (Transact-SQL)](https://msdn.microsoft.com/library/bb677289.aspx)
+- [Vytvoření relace události (Transact-SQL)](https://msdn.microsoft.com/library/bb677289.aspx)
 - [Blogové příspěvky Jonathana Kehayias o rozšířených událostech v Microsoft SQL Server](https://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 
 

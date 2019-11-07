@@ -1,6 +1,6 @@
 ---
-title: Úvod do Data Factory, služby pro integraci dat | Dokumentace Microsoftu
-description: 'Přečtěte si, co Azure Data Factory: Cloudová služba pro integraci dat, která orchestruje a automatizuje přesun a transformaci dat.'
+title: Úvod do Data Factory, služba pro integraci dat
+description: Dozvíte se, že Data Factory je cloudová služba pro integraci dat, která orchestruje a automatizuje přesouvání a transformaci dat.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,14 +12,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 2e508839cd343820a36cc715ebde0f47c2ac4ab1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 30578f204ff05443de82015627d67d3d4d357dce
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139508"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666802"
 ---
-# <a name="introduction-to-azure-data-factory"></a>Úvod do služby Azure Data Factory 
+# <a name="introduction-to-azure-data-factory"></a>Úvod do Azure Data Factory 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](data-factory-introduction.md)
 > * [Verze 2 (aktuální verze)](../introduction.md)
@@ -90,12 +90,12 @@ Aktivita kopírování ve službě Data Factory kopíruje data ze zdrojového ú
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 
-Další informace najdete v tématu [Transformace dat pomocí aktivity kopírování](data-factory-data-movement-activities.md).
+Další informace najdete v tématu [Přesun dat pomocí aktivity kopírování](data-factory-data-movement-activities.md).
 
 ### <a name="data-transformation-activities"></a>Aktivity transformace dat
 [!INCLUDE [data-factory-transformation-activities](../../../includes/data-factory-transformation-activities.md)]
 
-Další informace najdete v tématu [Transformace dat pomocí aktivity kopírování](data-factory-data-transformation-activities.md).
+Další informace najdete v tématu [Přesun dat pomocí aktivity kopírování](data-factory-data-transformation-activities.md).
 
 ### <a name="custom-net-activities"></a>Vlastní aktivity .NET
 Vlastní aktivitu .NET vytvořte v případě, že potřebujete přesunout data do nebo z úložiště dat, které aktivita kopírování nepodporuje, nebo potřebujete transformovat data pomocí vlastní logiky. Podrobnosti o vytvoření a používání vlastní aktivity najdete v tématu [Použití vlastních aktivit v kanálu služby Azure Data Factory](data-factory-use-custom-activities.md).
@@ -112,13 +112,13 @@ Například propojená služba Azure Storage určuje připojovací řetězec pro
 
 Propojené služby slouží ve službě Data Factory ke dvěma účelům:
 
-* Představují *úložiště dat*, k nimž mimo jiné patří například místní databáze SQL Serveru, databáze Oracle, sdílená složka nebo účet úložiště objektů blob v Azure. Seznam podporovaných úložišť dat najdete v oddílu [Aktivity přesunu dat](#data-movement-activities).
+* Představují *úložiště dat*, k nimž mimo jiné patří například místní databáze SQL Serveru, databáze Oracle, sdílená složka nebo účet úložiště objektů blob Azure. Seznam podporovaných úložišť dat najdete v oddílu [Aktivity přesunu dat](#data-movement-activities).
 
 * Představují *výpočetní prostředek*, který může hostovat provádění aktivity. Například aktivita HDInsightHive se spouští na clusteru HDInsight Hadoop. Seznam podporovaných výpočetních prostředí najdete v části [Aktivity transformace dat](#data-transformation-activities).
 
 ### <a name="relationship-between-data-factory-entities"></a>Vztah mezi entitami služby Data Factory
 
-![Znázorňuje Data Factory, služba pro integraci dat v cloudu – klíčové koncepty](./media/data-factory-introduction/data-integration-service-key-concepts.png)
+![Diagram: Data Factory, služba pro integraci dat v cloudu – klíčové koncepty](./media/data-factory-introduction/data-integration-service-key-concepts.png)
 
 ## <a name="supported-regions"></a>Podporované oblasti
 V současné době můžete vytvářet datové továrny v oblastech Západní USA, Východní USA a Severní Evropa. Datová továrna nicméně může přistupovat k úložištím dat a výpočetním službám v jiných oblastech Azure za účelem přesouvání dat mezi úložišti dat nebo zpracování dat pomocí výpočetních služeb.
@@ -135,7 +135,7 @@ Datové kanály ve službě Azure Data Factory můžete vytvořit pomocí někte
 - Visual Studio
 - PowerShell
 - .NET API
-- REST API
+- Rozhraní REST API
 - Šablona Azure Resource Manageru
 
 Pokud chcete zjistit, jak sestavit datové továrny s datovými kanály, postupujte podle podrobných pokynů v následujících kurzech:

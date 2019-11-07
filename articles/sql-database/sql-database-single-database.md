@@ -1,5 +1,5 @@
 ---
-title: Co je Azure SQL Database samostatná databáze | Microsoft Docs
+title: Co je jediná databáze Azure SQL Database
 description: Další informace o izolovaných databázích v Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: 2f55ad795cc76d59581b25ca60a1c89e7db96b04
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: add0288cb87fd41c8c6ebae982c999db2ea07d0f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496009"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687133"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Co je jediná databáze v Azure SQL Database
 

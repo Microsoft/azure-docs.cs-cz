@@ -1,26 +1,26 @@
 ---
-title: Konfigurace nastavení klávesnice systému Azure Media Clipperem | Dokumentace Microsoftu
-description: Postup pro nastavení konfigurovatelné klávesové zkratky pro Azure Media Clipperem
+title: Konfigurace nastavení klávesnice Azure Media Clipperu | Microsoft Docs
+description: Postup nastavení konfigurovatelných klávesových zkratek pro Azure Media Clipper
 services: media-services
-keywords: Galerie, dílčí klip, kódování, médií
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+keywords: Clip; dílčí klip; Encoding; Media
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 2eb32b8ec265a4afa2581374c1f07ac06958a576
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 013ca640d30baceeb41e9cb38fab69020b3c50dd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61466102"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685067"
 ---
-# <a name="configure-azure-media-clipper-keyboard-shortcuts"></a>Konfigurace Azure Media Clipperem klávesových zkratek 
+# <a name="configure-azure-media-clipper-keyboard-shortcuts"></a>Konfigurace klávesových zkratek Azure Media Clipperu 
 
-Azure Media Clipperem podporuje přizpůsobení výchozí klávesové zkratky tím, že poskytuje volitelný `keymap` parametr JSON.
+Azure Media Clipper podporuje přizpůsobení výchozích klávesových zkratek zadáním volitelného parametru `keymap` JSON.
 
-Podle následující ukázky JSON ukazuje výchozí klávesové zkratky. Tato nastavení můžete přizpůsobit změnou pole klíčů a předání v parametrech při inicializaci Clipperem.
+Následující vzorový kód JSON znázorňuje výchozí klávesové zkratky. Tato nastavení můžete přizpůsobit tak, že změníte klíčová pole a předáte parametr při inicializaci aplikace Clipper.
 
 ```json
 {

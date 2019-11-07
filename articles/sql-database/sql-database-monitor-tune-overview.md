@@ -1,5 +1,5 @@
 ---
-title: Optimalizace monitorování a výkonu – Azure SQL Database | Microsoft Docs
+title: Optimalizace monitorování a výkonu – Azure SQL Database
 description: Tipy pro ladění výkonu v Azure SQL Database prostřednictvím vyhodnocení a vylepšení.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 5df9df1474489d7f1b1fb4e1089143cca63a3e42
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: c11112963ec82a0e53df156048495e7b5141bcb7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71935607"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687763"
 ---
-# <a name="monitoring-and-performance-tuning"></a>Sledování a optimalizace výkonu
+# <a name="monitoring-and-performance-tuning"></a>Sledování a ladění výkonu
 
 Azure SQL Database poskytuje nástroje a metody, pomocí kterých můžete snadno sledovat využití, přidávat nebo odebírat prostředky (například procesor, paměť nebo vstupně-výstupní operace), řešit potenciální problémy a dávat doporučení pro zlepšení výkonu databáze. Funkce v Azure SQL Database můžou automaticky opravovat problémy v databázích. 
 
@@ -40,7 +40,7 @@ Pokud chcete monitorovat výkon databáze SQL v Azure, Začněte monitorováním
 
 Služba Azure SQL Database zahrnuje nástroje a prostředky, které vám pomůžou při řešení problémů s výkonem a jejich řešení. Můžete identifikovat příležitosti pro zlepšení a optimalizaci výkonu dotazů bez změny prostředků, a to kontrolou [doporučení pro ladění výkonu](sql-database-advisor.md). 
 
-Chybějící indexy a špatně optimalizované dotazy jsou běžné důvody pro nízký výkon databáze. Pro zlepšení výkonu úlohy můžete použít doporučení pro ladění. Můžete také nechat Azure SQL Database [automaticky optimalizovat výkon dotazů](sql-database-automatic-tuning.md) , a to použitím všech identifikovaných doporučení. Pak ověřte, zda doporučení zlepšila výkon databáze.
+Častým důvodem toho, že databáze je pomalá, jsou chybějící indexy a nedostatečně optimalizované dotazy. Pro zlepšení výkonu úlohy můžete použít doporučení pro ladění. Můžete také nechat Azure SQL Database [automaticky optimalizovat výkon dotazů](sql-database-automatic-tuning.md) , a to použitím všech identifikovaných doporučení. Pak ověřte, zda doporučení zlepšila výkon databáze.
 
 > [!NOTE]
 > Indexování je k dispozici pouze v izolovaných databázích a elastických fondech. Indexování není k dispozici ve spravované instanci.
@@ -72,7 +72,7 @@ Problémy související se spouštěním můžou způsobovat tyto příčiny:
 
 Problémy související s čekáním můžou způsobovat tyto příčiny:
 - **Blokování**: jeden dotaz může uchovávat zámek objektů v databázi, zatímco se jiné snaží získat přístup ke stejným objektům. Blokování dotazů můžete identifikovat pomocí nástrojů pro zobrazení dynamické správy nebo monitorování.
-- **Vstupně-výstupní problémy**: dotazy můžou čekat na zápis stránek do dat nebo souborů protokolu. V takovém případě se podívejte @no__t na DMV-0, `WRITE_LOG` nebo do statistiky čekání na `PAGEIOLATCH_*`.
+- **Vstupně-výstupní problémy**: dotazy můžou čekat na zápis stránek do dat nebo souborů protokolu. V takovém případě se podívejte `INSTANCE_LOG_RATE_GOVERNOR`na DMV, `WRITE_LOG`nebo `PAGEIOLATCH_*` Statistika čekání v.
 - **Problémy**s databází tempdb: Pokud úloha používá dočasné tabulky nebo v plánech dochází k únikům databází tempdb, dotazy mohou mít problémy s propustností databáze tempdb. 
 - **Problémy související s pamětí**: Pokud úloha nemá dostatek paměti, může dojít k poklesu životnosti stránky očekávané a dotazy můžou dostat méně paměti, než potřebují. V některých případech integrované inteligentní funkce v nástroji pro optimalizaci dotazů vyřeší problémy související s pamětí.
  

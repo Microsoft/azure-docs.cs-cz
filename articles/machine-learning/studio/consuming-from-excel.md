@@ -1,6 +1,6 @@
 ---
 title: Využívání webové služby v Excelu
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Azure Machine Learning Studio (Classic) usnadňuje volání webových služeb přímo z Excelu bez nutnosti psát jakýkoli kód.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: afa6430a76650b08f979687e2a1e5c7b53c89180
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: aa1e457cf401e74ffb8a7a02b5eba5f4c4f0c334
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493247"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621845"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>Spotřebovávání webové služby Azure Machine Learning Studio (Classic) z Excelu
 

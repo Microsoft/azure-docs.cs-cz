@@ -1,5 +1,5 @@
 ---
-title: Vytvořit závislosti triggerů bubnového okna v Azure Data Factory | Microsoft Docs
+title: Vytvořit závislosti triggerů bubnového okna v Azure Data Factory
 description: Naučte se vytvořit závislost na triggeru bubnového okna v Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: daperlov
-ms.openlocfilehash: 24a1a5d132990db2aa10b7860774eecafb4b4edb
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 3780a50429b95c402459866b7e3c87e8a91207d3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "73520507"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683700"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Vytvoření závislosti aktivační události pro přeskakující okno
 
@@ -80,7 +80,7 @@ Následující tabulka uvádí seznam atributů potřebných k definování záv
 |---|---|---|---|
 | type  | V tomto rozevíracím seznamu se zobrazí všechny existující triggery bubnového okna. Vyberte aktivační událost, u které se má provést závislost.  | TumblingWindowTriggerDependencyReference nebo SelfDependencyTumblingWindowTriggerReference | Ano |
 | polohy | Posun triggeru závislosti. Zadejte hodnotu ve formátu časového rozsahu a jsou povoleny záporné i kladné posuny. Tato vlastnost je povinná, pokud je Trigger závislý sám na sobě a ve všech ostatních případech je nepovinný. Samostatná závislost by měla být vždy záporný posun. Pokud není zadána žádná hodnota, bude okno stejné jako Trigger sám. | Časový interval<br/>(hh: mm: SS) | Samostatná závislost: Ano<br/>Jiné: ne |
-| Hodnota | Velikost bubnového okna závislosti Zadejte kladnou hodnotu TimeSpan. Tato vlastnost je nepovinná. | Časový interval<br/>(hh: mm: SS) | Ne  |
+| hodnota | Velikost bubnového okna závislosti Zadejte kladnou hodnotu TimeSpan. Tato vlastnost je nepovinná. | Časový interval<br/>(hh: mm: SS) | Ne  |
 
 > [!NOTE]
 > Aktivační událost bubnového okna může záviset na maximálním počtu dvou dalších triggerů.

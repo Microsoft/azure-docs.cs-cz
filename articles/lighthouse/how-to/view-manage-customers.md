@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 10/23/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: f6c98a67394db8028901f3f1f8e799af4c7a8c5f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d68ac0a1b6a66482a85f7ab79840099a34c731c2
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898909"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615542"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Zobrazení a Správa zákazníků a delegovaných prostředků
 
@@ -30,6 +30,9 @@ Mějte na paměti, že horní část stránky **Customers** zobrazuje jenom info
 Pokud chcete zobrazit podrobnosti o zákaznících, vyberte na levé straně stránky **Customers** možnost **zákazníci** .
 
 Pro každého zákazníka uvidíte jméno zákazníka, ID zákazníka (ID tenanta) a nabídku přidruženou ke službě Engagement. Ve sloupci **delegování** se zobrazí počet delegovaných předplatných nebo počet delegovaných skupin prostředků.
+
+> [!IMPORTANT]
+> Aby bylo možné zobrazit delegování, uživatelé musí mít v procesu připojování udělenou roli [Čtenář](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) (nebo jinou předdefinovanou roli, která zahrnuje přístup ke čtenářům).
 
 Filtry v horní části stránky umožňují řadit a seskupovat informace o zákaznících nebo filtrovat podle konkrétních zákazníků, nabídek nebo klíčových slov.
 

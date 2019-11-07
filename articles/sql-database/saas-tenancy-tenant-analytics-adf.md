@@ -1,5 +1,5 @@
 ---
-title: Spouštění analytických dotazů pro databáze tenantů pomocí Azure SQL Data Warehouse | Microsoft Docs
+title: 'Spouštění analytických dotazů pro databáze tenantů pomocí Azure SQL Data Warehouse '
 description: Analytické dotazy pro více tenantů využívají data extrahovaná z Azure SQL Database, SQL Data Warehouse, Azure Data Factory nebo Power BI.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: MightyPen, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: b22a9cf8c79530fd931cbe944ef5bfc876a02243
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f4a89029d7ed90f1a2406dcf0f8046a1c651353f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570143"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691873"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Prozkoumejte SaaS Analytics pomocí Azure SQL Database, SQL Data Warehouse, Data Factory a Power BI
 
@@ -26,7 +26,7 @@ V tomto kurzu provedete kompletní scénář analýzy. Tento scénář předvád
 2.  **Optimalizujte extrahovaná data** pro zpracování analýz.
 3.  Pomocí nástrojů **Business Intelligence** můžete vykreslit užitečné poznatky, které vám můžou pomoct při rozhodování. 
 
-V tomto kurzu se naučíte:
+Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 > - Vytvořte úložiště analýzy tenanta pro načtení.
@@ -62,7 +62,7 @@ Nakonec se dotazují tabulky schématu hvězdičky. Výsledky dotazu jsou vizuá
 
 V tomto kurzu najdete základní příklady přehledů, které se dají mohli z dat lístků Wingtip. Porozumět, jak každý z míst používá službu, může způsobit, že dodavatel Wingtip tickete bude přemýšlet o různých plánech služeb cílených na více nebo méně aktivních míst, například. 
 
-## <a name="setup"></a>Instalace
+## <a name="setup"></a>Nastavení
 
 ### <a name="prerequisites"></a>Požadavky
 
@@ -71,37 +71,37 @@ V tomto kurzu najdete základní příklady přehledů, které se dají mohli z 
 
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
 - Nasadí se aplikace Wingtip Tickets SaaS Database na tenanta. K nasazení během méně než pěti minut si přečtěte téma [nasazení a prozkoumání aplikace Wingtip SaaS](saas-dbpertenant-get-started-deploy.md).
-- Z GitHubu se stáhnou skripty SaaS Database na tenanta a [zdrojový kód](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/) aplikace. Viz pokyny ke stažení. Před extrakcí obsahu nezapomeňte *soubor zip* odblokovat.
+- Z GitHubu se stáhnou skripty SaaS Database na tenanta a [zdrojový kód](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/) aplikace. Viz pokyny ke stažení. Před extrakcí obsahu nezapomeňte *soubor zip odblokovat* .
 - Power BI Desktop je nainstalována. [Stáhněte si Power BI Desktop](https://powerbi.microsoft.com/downloads/).
 - Dávky dalších tenantů se zřídily v [**kurzu zřízení tenantů**](saas-dbpertenant-provision-and-catalog.md).
 
 ### <a name="create-data-for-the-demo"></a>Vytvoření dat pro ukázku
 
-V tomto kurzu se seznámíte s analýzou údajů o prodeji lístků. V tomto kroku vygenerujete data lístku pro všechny klienty. V pozdějším kroku jsou tato data extrahována k analýze. _Ujistěte se, že jste zřídili dávku tenantů_ . (jak je popsáno výše), abyste měli k dispozici dostatek dat pro vystavení rozsahu různých způsobů nákupu lístků.
+V tomto kurzu se seznámíte s analýzou údajů o prodeji lístků. V tomto kroku vygenerujete data lístku pro všechny klienty. V pozdějším kroku jsou tato data extrahována k analýze. Ujistěte se, že _jste zřídili dávku tenantů_ (jak je popsáno výše), abyste měli dostatek dat k vystavení rozsahu různých způsobů nákupu lístků.
 
 1. V PowerShellu ISE otevřete *. ..\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1*a nastavte následující hodnotu:
-    - $DemoScenario = **1** lístky nákupu pro události se všemi místy
+    - **$DemoScenario** = **1** lístky nákupu pro události na všech místě
 2. Stisknutím klávesy **F5** spusťte skript a vytvořte historii nákupů lístků pro všechny místo. Pomocí 20 tenantů vygeneruje skript desítky tisíc lístků a může trvat 10 minut nebo i déle.
 
 ### <a name="deploy-sql-data-warehouse-data-factory-and-blob-storage"></a>Nasazení SQL Data Warehouse, Data Factory a Blob Storage 
-V aplikaci Wingtip Tickets jsou transakční data tenantů distribuována přes mnoho databází. Azure Data Factory (ADF) se používá k organizování extrakce, načítání a transformace (ELT) těchto dat do datového skladu. K načtení dat do SQL Data Warehouse nejúčinnějším způsobem zabalí data do zprostředkujících souborů objektů BLOB a [](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) potom pomocí základu načte data do datového skladu.   
+V aplikaci Wingtip Tickets jsou transakční data tenantů distribuována přes mnoho databází. Azure Data Factory (ADF) se používá k organizování extrakce, načítání a transformace (ELT) těchto dat do datového skladu. K načtení dat do SQL Data Warehouse nejúčinnějším způsobem zabalí data do zprostředkujících souborů objektů BLOB a potom pomocí [základu](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading) načte data do datového skladu.   
 
-V tomto kroku nasadíte další prostředky, které jste použili v tomto kurzu: SQL Data Warehouse s názvem _tenantanalytics_, Azure Data Factory s názvem _dbtodwload\>–\<uživatel_a účet úložiště Azure s názvem _. Uživatel\<wingtipstaging\>_ Účet úložiště se používá k dočasnému blokování extrahovaných datových souborů jako objektů BLOB předtím, než se načtou do datového skladu. Tento krok také nasadí schéma datového skladu a definuje kanály ADF, které orchestrují proces ELT.
+V tomto kroku nasadíte další prostředky, které jste použili v tomto kurzu: SQL Data Warehouse s názvem _tenantanalytics_, Azure Data Factory s názvem _dbtodwload-\<User\>_ a účtem úložiště Azure s názvem _wingtipstaging\<\>uživatele_ . Účet úložiště se používá k dočasnému blokování extrahovaných datových souborů jako objektů BLOB předtím, než se načtou do datového skladu. Tento krok také nasadí schéma datového skladu a definuje kanály ADF, které orchestrují proces ELT.
 1. V prostředí PowerShell ISE otevřete soubor *. ..\Learning Modules\Operational Analytics\Tenant Analytics DW\Demo-TenantAnalyticsDW.ps1* a nastavte:
-    - $DemoScenario = **2** nasazení datového skladu Analytics klienta, úložiště objektů BLOB a objektu pro vytváření dat 
+    - **$DemoScenario** = **2** – nasazení datového skladu Analytics tenanta, úložiště objektů BLOB a objektu pro vytváření dat 
 1. Stisknutím klávesy **F5** Spusťte ukázkový skript a nasaďte prostředky Azure. 
 
 Nyní zkontrolujte prostředky Azure, které jste nasadili:
 #### <a name="tenant-databases-and-analytics-store"></a>Databáze tenantů a úložiště analýz
-Pomocí [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) se připojte k **tenants1-DPT-&lt;User&gt;**  a **Catalog-DPT-&lt;User&gt;**  Servers. &lt;Nahraďte&gt; uživatele hodnotou použitou při nasazení aplikace. Použijte Login = *Developer* a Password = *P\@ssword1*. Další pokyny najdete v [úvodním kurzu](saas-dbpertenant-wingtip-app-overview.md) .
+Pomocí [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) se připojte k **tenants1-DPT-&lt;User&gt;** and **Catalog-DPT-&lt;User&gt;** Servers. Nahraďte &lt;uživatelem&gt; hodnotou použitou při nasazení aplikace. Použijte Login = *Developer* a Password = *P\@ssword1*. Další pokyny najdete v [úvodním kurzu](saas-dbpertenant-wingtip-app-overview.md) .
 
 ![Připojení k SQL Database serveru z SSMS](media/saas-tenancy-tenant-analytics/ssmsSignIn.JPG)
 
 V Průzkumník objektů:
 
-1. Rozbalte *tenants1-DPT&lt;-User&gt;*  Server.
+1. Rozbalte položku *tenants1-DPT-&lt;user&gt;* Server.
 1. Rozbalte uzel databáze a zobrazte seznam databází tenantů.
-1. Rozbalte *Catalog-DPT&lt;-User&gt;*  Server.
+1. Rozbalte položku *Catalog-DPT-&lt;user&gt;* Server.
 1. Ověřte, že se zobrazuje úložiště analýzy obsahující následující objekty:
     1. Tabulky **raw_Tickets**, **raw_Customers**, **raw_Events** a **raw_Venues** uchovávají nezpracovaná extrahovaná data z databází tenantů.
     1. Tabulky se schématy hvězdiček jsou **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**a **dim_Dates**.
@@ -110,22 +110,22 @@ V Průzkumník objektů:
 ![DWtables](media/saas-tenancy-tenant-analytics/DWtables.JPG)
 
 #### <a name="blob-storage"></a>Blob Storage
-1. Na webu [Azure Portal](https://ms.portal.azure.com)přejděte do skupiny prostředků, kterou jste použili pro nasazení aplikace. Ověřte, že byl přidán účet úložiště s názvem **wingtipstaging\<User\>**  .
+1. Na webu [Azure Portal](https://ms.portal.azure.com)přejděte do skupiny prostředků, kterou jste použili pro nasazení aplikace. Ověřte, že se přidal účet úložiště s názvem **wingtipstaging\<user\>** .
 
    ![DWtables](media/saas-tenancy-tenant-analytics/adf-staging-storage.PNG)
 
-1. Kliknutím na účet úložiště **uživatele\<\> wingtipstaging** Prozkoumejte objekty, které jsou k dispozici.
+1. Klikněte na **wingtipstaging\<uživatelský** účet úložiště\>a prozkoumejte objekty, které jsou k dispozici.
 1. Kliknout na dlaždici **objekty blob**
 1. Klikněte na kontejner **ConfigFile**
 1. Ověřte, že **ConfigFile** obsahuje soubor JSON s názvem **TableConfig. JSON**. Tento soubor obsahuje názvy zdrojových a cílových tabulek, názvy sloupců a název sloupce sledování.
 
 #### <a name="azure-data-factory-adf"></a>Azure Data Factory (ADF)
-Na webu [Azure Portal](https://ms.portal.azure.com) ve skupině prostředků ověřte, že se přidal Azure Data Factory s názvem _dbtodwload\<-\> User_ . 
+Na webu [Azure Portal](https://ms.portal.azure.com) ve skupině prostředků ověřte, že se přidala Azure Data Factory s názvem _dbtodwload-\<User\>_ . 
 
  ![adf_portal](media/saas-tenancy-tenant-analytics/adf-data-factory-portal.png)
 
 V této části se seznámíte s vytvořenou datovou továrnou. Pomocí následujících kroků spusťte datovou továrnu:
-1. Na portálu klikněte na objekt pro vytváření dat s názvem **dbtodwload\<-\>User**.
+1. Na portálu klikněte na objekt pro vytváření dat s názvem **dbtodwload-\<user\>** .
 2. Kliknutím na dlaždici **vytvořit & monitorování** spustíte návrháře Data Factory na samostatné kartě. 
 
 ## <a name="extract-load-and-transform-data"></a>Extrakce, načítání a transformace dat
@@ -173,7 +173,7 @@ Pomocí následujících kroků spusťte kompletní kanál pro extrakci, načten
  
 ### <a name="monitor-the-pipeline-run"></a>Monitorování spuštění kanálu
 1. V uživatelském rozhraní ADF přepněte v nabídce na levé straně na kartu **monitorování** .
-1. Klikněte na **aktualizovat** až do úspěšného stavukanálu SQLDBToDW.
+1. Klikněte na **aktualizovat** až do **úspěšného**stavu kanálu SQLDBToDW.
   ![adf_monitoring](media/saas-tenancy-tenant-analytics/adf_monitoring.JPG)
 1. Připojte se k datovému skladu pomocí SSMS a vytvořte dotaz na tabulky se schématem hvězdiček, abyste ověřili, že data byla načtena v těchto tabulkách.
 
@@ -188,9 +188,9 @@ Data ve schématu hvězdičky poskytují všechna data o prodeji lístků potře
 Pomocí následujících kroků se připojte k Power BI a importujte zobrazení, která jste vytvořili dříve:
 
 1. Spusťte Power BI Desktop.
-2. Na pásu karet domů vyberte **získat data**a pak klikněte na **Další...** v nabídce.
+2. Na pásu karet domů vyberte **získat data**a pak klikněte na **Další...** z nabídky.
 3. V okně **získat data** vyberte **Azure SQL Database**.
-4. V okně přihlášení k databázi zadejte název vašeho serveru (**Catalog-DPT-&lt;&gt;User. Database.Windows.NET**). Vyberte možnost **importovat** do **režimu připojení dat**a pak klikněte na tlačítko **OK**. 
+4. V okně přihlášení k databázi zadejte název vašeho serveru (**Catalog-DPT-&lt;User&gt;. Database.Windows.NET**). Vyberte možnost **importovat** do **režimu připojení dat**a pak klikněte na tlačítko **OK**. 
 
     ![přihlášení k Power BI](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
@@ -241,12 +241,12 @@ Vyberte následující možnosti vizualizace k vykreslení procentuálních lís
 Výše uvedený diagram znázorňuje, že i když většina míst prodává více než 80% svých lístků, některé z nich jsou působit potíže, aby vyplnily více než polovinu jejich sedadel. Pokud chcete vybrat maximální nebo minimální procento lístků, které se prodávají pro každé místo, začněte s hodnotami.
 
 ## <a name="embedding-analytics-in-your-apps"></a>Vkládání analýz do vašich aplikací 
-Tento kurz se zaměřuje na analýzy mezi klienty, které slouží ke zlepšení porozumění jejich klientům od dodavatele softwaru. Analýzy také poskytují informace o klientech, které jim pomůžou efektivněji spravovat jejich podnikání. 
+Tento kurz se zaměřuje na analýzy mezi klienty, které slouží ke zlepšení porozumění jejich klientům od dodavatele softwaru. Analýzy také poskytují informace o _klientech_, které jim pomůžou efektivněji spravovat jejich podnikání. 
 
 V příkladu lístků Wingtip jste dříve zjistili, že prodej lístku by měl být v úmyslu podřídit předvídatelné vzory. Tento přehled se dá využít k tomu, aby se zvýšila situace, kdy se podíváme na místo. Možná máte příležitost využít techniky strojového učení k předpovědi prodeje lístků pro události. Účinky cenové změny by mohly být také modelovány, aby bylo možné odhadnout dopad nabídky slev. Power BI Embedded mohl být integrován do aplikace pro správu událostí, aby bylo možné vizualizovat předpokládaný prodej, včetně dopadu slev na celkový počet prodaných míst a tržby na události s nízkým prodejem. Pomocí Power BI Embedded můžete dokonce integrovat slevu na ceny za lístky přímo v prostředí vizualizace.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

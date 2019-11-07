@@ -1,34 +1,40 @@
 ---
 title: 'Rychlý Start: spuštění aplikace s využitím Maven – jarního cloudu Azure'
 description: Spuštění ukázkové aplikace pomocí Maven
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 10/05/2019
-ms.author: v-vasuke
-ms.openlocfilehash: ce07d43a289cf527664b120dd832cf832fb2b05e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.author: jeconnoc
+ms.openlocfilehash: 440dac3ff26c838458f91e453e2c62fc0953d4f6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161411"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686183"
 ---
-# <a name="quickstart-launch-an-azure-spring-cloud-app-by-using-the-maven-plug-in"></a>Rychlý Start: spuštění aplikace pro jarní Cloud z Azure pomocí modulu plug-in Maven
+# <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Rychlý Start: spuštění aplikace pro jarní Cloud z Azure pomocí modulu plug-in Maven
 
-S modulem plug-in Azure jaře Cloud Maven můžete snadno vytvářet a aktualizovat aplikace služby jarní cloudové služby Azure. Když nasadíte konfiguraci, můžete nasadit aplikace do své stávající služby pro jarní cloudy Azure. V tomto článku můžete tuto funkci předvést pomocí ukázkové aplikace s názvem PiggyMetrics.
+Pomocí modulu plug-in Azure jaře Cloud Maven můžete snadno vytvářet a aktualizovat svoje aplikace v cloudu Azure pro jaře. Když nasadíte konfiguraci, můžete nasadit aplikace do své stávající služby pro jarní cloudy Azure. V tomto článku můžete tuto funkci předvést pomocí ukázkové aplikace s názvem PiggyMetrics.
+
+Po tomto rychlém startu se dozvíte, jak:
+
+> [!div class="checklist"]
+> * Zřízení instance služby
+> * Nastavení konfiguračního serveru pro instanci
+> * Naklonování a vytváření aplikací mikroslužeb v místním prostředí
+> * Nasazení jednotlivých mikroslužeb
+> * Přiřazení veřejného koncového bodu pro vaši aplikaci
 
 >[!Note]
-> Než začnete s tímto rychlým startem, ujistěte se, že vaše předplatné Azure má přístup k jarnímu cloudu Azure. Jako služba ve verzi Preview vás zve na nás, abychom mohli přidat vaše předplatné do seznamu povolených adres. Pokud chcete prozkoumat možnosti Azure jarního cloudu, vyplňte a odešlete [formulář zájmu Azure jaře Cloud (Private Preview)](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u). I když je ve verzi Preview Azure jaře Cloud, nabízí Microsoft omezená podpora bez smlouvy SLA.  Další informace o podpoře v rámci verzí Preview najdete v těchto [nejčastějších dotazech k podpoře](https://azure.microsoft.com/support/faq/).
+> > Jarní cloud Azure se teď nabízí jako verze Public Preview. Nabídky veřejné verze Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.  Další informace o podpoře v rámci verzí Preview najdete v souboru [support Request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
 
 >[!TIP]
 > Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít ke spuštění příkazů v tomto článku. Má předinstalované běžné nástroje Azure, včetně nejnovějších verzí Gitu, sady Java Development Kit (JDK), Maven a Azure CLI. Pokud jste přihlášeni ke svému předplatnému Azure, spusťte [Azure Cloud Shell](https://shell.azure.com). Další informace najdete v tématu [přehled Azure Cloud Shell](../cloud-shell/overview.md).
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
-1. [Nainstalovat Git](https://git-scm.com/).
+1. [Nainstalovat Git](https://git-scm.com/)
 2. [Nainstalujte JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable).
 3. [Nainstalujte Maven 3,0 nebo novější](https://maven.apache.org/download.cgi).
 4. [Nainstalujte Azure CLI verze 2.0.67 nebo novější](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
@@ -39,32 +45,39 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 Nainstalujte rozšíření Azure jaře Cloud pro Azure CLI pomocí následujícího příkazu:
 
 ```Azure CLI
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+az extension add --name spring-cloud
 ```
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Zřízení instance služby na Azure Portal
 
-1. Ve webovém prohlížeči otevřete [Azure Portal](https://portal.azure.com)a přihlaste se ke svému účtu.
+1. Ve webovém prohlížeči otevřete [Tento odkaz na jarní cloud Azure v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform)a přihlaste se ke svému účtu.
 
-1. Vyhledejte a potom vyberte **Azure jaře Cloud**. 
-1. Na stránce Přehled vyberte **vytvořit**a pak postupujte takto:  
+1. Na stránce **Přehled** vyberte **vytvořit** a otevřete tak dialogové okno vytvoření.
 
-    a. Do pole **název služby** zadejte název vaší instance služby. Název musí být dlouhý 4 až 32 znaků a může obsahovat jenom malá písmena, číslice a spojovníky. První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.  
+1. Zadejte **Podrobnosti projektu** pro ukázkovou aplikaci následujícím způsobem:
 
-    b. V rozevíracím seznamu **předplatné** vyberte předplatné, které chcete pro tento prostředek fakturovat. Zajistěte, aby bylo toto předplatné přidané do seznamu povolených pro Azure jaře Cloud.  
+    1. Vyberte **předplatné** , ke kterému se bude aplikace přidružit.
+    1. Vyberte nebo vytvořte skupinu prostředků pro aplikaci. Doporučujeme vytvořit novou skupinu prostředků.  Následující příklad ukazuje novou skupinu prostředků s názvem `myspringservice`.
+    1. Zadejte název pro novou jarní cloudovou službu Azure.  Název musí být dlouhý 4 až 32 znaků a může obsahovat jenom malá písmena, číslice a spojovníky. První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.  Služba v následujícím příkladu má název `contosospringcloud`.
+    1. Z poskytnutých možností vyberte umístění pro vaši aplikaci.  V tomto příkladu vybereme `East US`.
+    1. Vyberte **zkontrolovat + vytvořit** a podívejte se na Shrnutí nové služby.  Pokud vše vypadá správně, vyberte **vytvořit**.
 
-    c. V poli **Skupina prostředků** vytvořte novou skupinu prostředků. Osvědčeným postupem je vytvoření skupin prostředků pro nové prostředky.  
+    > [!div class="mx-imgBorder"]
+    > ![vyberte možnost zkontrolovat + vytvořit](media/maven-qs-review-create.jpg)
 
-    d. V rozevíracím seznamu **umístění** vyberte umístění pro instanci služby. Aktuálně podporovaná umístění zahrnují Východní USA, Západní USA 2, Západní Evropa a jihovýchodní Asie.
-    
-Nasazení služby trvá asi 5 minut. Po nasazení služby se zobrazí stránka s **přehledem** instance služby.
+Nasazení služby trvá asi 5 minut. Po nasazení služby vyberte **Přejít na prostředek** a zobrazí se stránka **Přehled** pro instanci služby.
 
 ## <a name="set-up-your-configuration-server"></a>Nastavení konfiguračního serveru
 
 1. Na stránce **Přehled** služby vyberte možnost **konfigurační server**.
 1. V části **výchozí úložiště** nastavte **URI** na **https://github.com/Azure-Samples/piggymetrics** , nastavte **jmenovku** na **config**a pak klikněte na **použít** , aby se změny uložily.
 
+    > [!div class="mx-imgBorder"]
+    > ![definovat a použít konfigurační nastavení](media/maven-qs-apply-config.jpg)
+
 ## <a name="clone-and-build-the-sample-application-repository"></a>Klonování a sestavení ukázkového úložiště aplikace
+
+1. Spusťte [Azure Cloud Shell](https://shell.azure.com).
 
 1. Naklonujte úložiště Git spuštěním následujícího příkazu:
 
@@ -75,37 +88,19 @@ Nasazení služby trvá asi 5 minut. Po nasazení služby se zobrazí stránka s
 1. Změňte adresář a sestavte projekt spuštěním následujícího příkazu:
 
     ```azurecli
-    cd PiggyMetrics
+    cd piggymetrics
     mvn clean package -DskipTests
     ```
 
-## <a name="generate-and-deploy-the-azure-spring-cloud-configuration"></a>Generování a nasazení konfigurace jarního cloudu Azure
+## <a name="generate-configurations-and-deploy-to-the-azure-spring-cloud"></a>Generování konfigurací a nasazení do jarního cloudu Azure
 
-1. Pokud chcete povolit, aby Maven spolupracovaly se službou Azure Pramenitého cloudu, přidejte do souboru *pom. XML* nebo *Settings. XML* následující kód.
-
-    ```xml
-    <pluginRepositories>
-      <pluginRepository>
-        <id>maven.snapshots</id>
-        <name>Maven Central Snapshot Repository</name>
-        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        <releases>
-          <enabled>false</enabled>
-        </releases>
-        <snapshots>
-          <enabled>true</enabled>
-        </snapshots>
-      </pluginRepository>
-    </pluginRepositories>
-    ```
-
-1. Spuštěním následujícího příkazu vygenerujte konfiguraci:
+1. Generujte konfigurace spuštěním následujícího příkazu v kořenové složce PiggyMetrics obsahující nadřazený POM:
 
     ```azurecli
-    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:0.1.0-SNAPSHOT:config
+    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.0.0:config
     ```
 
-    a. Vyberte moduly `gateway`, `auth-service` a `account-service`.
+    a. Vyberte moduly `gateway`,`auth-service`a `account-service`.
 
     b. Vyberte své předplatné a cluster jarních cloudových služeb Azure.
 
@@ -113,17 +108,18 @@ Nasazení služby trvá asi 5 minut. Po nasazení služby se zobrazí stránka s
     
     d. Potvrďte konfiguraci.
 
-1. Nasaďte aplikace pomocí následujícího příkazu:
+1. POM nyní obsahuje závislosti a konfigurace modulu plug-in. Nasaďte aplikace pomocí následujícího příkazu:
 
    ```azurecli
-   mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:0.1.0-SNAPSHOT:deploy
+   mvn azure-spring-cloud:deploy
    ```
 
-1. K PiggyMetrics můžete přistupovat pomocí adresy URL, která je k dispozici ve výstupu z předchozího příkazu.
+1. Po dokončení nasazení můžete k PiggyMetrics přistupovat pomocí adresy URL, která je k dispozici ve výstupu z předchozího příkazu.
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste nasadili jarní cloudovou aplikaci z úložiště Maven. Další informace o jarním cloudu Azure najdete v kurzu o přípravě aplikace na nasazení.
 
 > [!div class="nextstepaction"]
-> [Příprava aplikace pro jarní cloudy Azure pro nasazení](spring-cloud-tutorial-prepare-app-deployment.md)
+> [Příprava vaší aplikace v cloudovém prostředí Azure pro nasazení](spring-cloud-tutorial-prepare-app-deployment.md)
+> další [informace o modulech plug-in Maven pro Azure](https://github.com/microsoft/azure-maven-plugin)

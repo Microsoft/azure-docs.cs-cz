@@ -1,6 +1,6 @@
 ---
-title: Opětovné natrénování a nasazení klasické webové služby
-titleSuffix: Azure Machine Learning Studio (classic)
+title: Přeučení klasické webové služby
+titleSuffix: ML Studio (classic) Azure
 description: Naučte se, jak přeškolit model a aktualizovat klasickou webovou službu tak, aby používala nově vyškolený model v Azure Machine Learning Studio (Classic).
 services: machine-learning
 ms.service: machine-learning
@@ -10,18 +10,18 @@ author: peterclu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: 477e099bb759e09402a245b693d95f3b3980699e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 17d15de3df73592c3ce410535235559c8c6fb584
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480204"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670522"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Přeučení a nasazení webové služby klasického studia (Classic)
 
 Přeškolení modelů strojového učení je jedním ze způsobů, jak zajistit, aby byly přesné a na základě nejdůležitějších dostupných dat. V tomto článku se dozvíte, jak přeškolit webovou službu klasického studia (Classic). Návod, jak přeškolit novou webovou službu studia (Classic), najdete v [tomto článku s postupem.](retrain-machine-learning-model.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že už máte experiment s přeškolením i prediktivní experiment. Tyto kroky jsou vysvětleny v tématu [přeučení a nasazení modelu strojového učení.](/azure/machine-learning/studio/retrain-machine-learning-model) Místo toho, abyste model strojového učení nasadili jako novou webovou službu, můžete prediktivní experiment nasadit jako klasickou webovou službu.
      
@@ -46,7 +46,7 @@ Můžete přidat koncové body bodování pomocí ukázkového kódu, který je 
 
 1. V Machine Learning Studio (Classic) v levém navigačním sloupci klikněte na webové služby.
 1. V dolní části řídicího panelu webové služby klikněte na možnost **Spravovat koncové body verze Preview**.
-1. Klikněte na tlačítko **Přidat**.
+1. Klikněte na **Přidat**.
 1. Zadejte název a popis nového koncového bodu. Vyberte úroveň protokolování a jestli jsou povolená ukázková data. Další informace o protokolování najdete v tématu [Povolení protokolování pro Machine Learning webové služby](web-services-logging.md).
 
 ## <a name="update-the-added-endpoints-trained-model"></a>Aktualizace proučeného modelu přidaného koncového bodu
@@ -131,7 +131,7 @@ Následující vzorový kód ukazuje, jak pomocí adresy URL *BaseLocation*, *Re
 
 Hodnota parametru *Name* v *prostředcích* by měla odpovídat názvu prostředku uloženého výukového modelu v prediktivním experimentu. Získání názvu prostředku:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V nabídce vlevo klikněte na **Machine Learning**.
 1. V části název klikněte na pracovní prostor a pak klikněte na **webové služby**.
 1. Pod položkou Název klikněte na položku **model sčítání [prediktivní EXP.]** .
