@@ -1,70 +1,70 @@
 ---
-title: Nejčastější dotazy k službě Azure SignalR
-description: Nejčastější dotazy k službě Azure SignalR.
+title: Nejčastější dotazy ke službě Azure Signal
+description: Nejčastější dotazy týkající se služby Azure Signal.
 author: sffamily
 ms.service: signalr
 ms.topic: overview
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: e9e41ffa335aa95b139a5d5658424c1c5915b569
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 771124d0b8ca15bf72501fdeff8c31d0a43050b8
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64914964"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73578675"
 ---
-# <a name="azure-signalr-service-faq"></a>Nejčastější dotazy k službě Azure SignalR
+# <a name="azure-signalr-service-faq"></a>Nejčastější dotazy ke službě Azure Signal
 
-## <a name="is-azure-signalr-service-ready-for-production-use"></a>Služby Azure SignalR je připravena pro použití v produkčním prostředí?
+## <a name="is-azure-signalr-service-ready-for-production-use"></a>Je služba signálu Azure připravená na použití v produkčním prostředí?
 
 Ano.
-Naše oznámení všeobecné dostupnosti najdete v části [teď všeobecně dostupné služby Azure SignalR](https://azure.microsoft.com/blog/azure-signalr-service-now-generally-available/). 
+Informace o obecné dostupnosti najdete v tématu [Služba Azure Signal Service je teď všeobecně dostupná](https://azure.microsoft.com/blog/azure-signalr-service-now-generally-available/). 
 
-[Funkce SignalR technologie ASP.NET Core](https://docs.microsoft.com/aspnet/core/signalr/introduction) jsou plně podporovány.
+[Signál ASP.NET Core](https://docs.microsoft.com/aspnet/core/signalr/introduction) je plně podporovaný.
 
-Podpora pro funkce SignalR technologie ASP.NET je stále v *ve verzi public preview*. Tady je [příklad kódu](https://github.com/aspnet/AzureSignalR-samples/tree/master/aspnet-samples/ChatRoom).
+Podpora ASP.NET signalizace je stále ve *verzi Public Preview*. Zde je [příklad kódu](https://github.com/aspnet/AzureSignalR-samples/tree/master/aspnet-samples/ChatRoom).
 
-## <a name="the-client-connection-closes-with-the-error-message-no-server-available-what-does-it-mean"></a>Připojení klienta zavře s chybovou zprávou "K dispozici žádný server". Co znamená?
+## <a name="the-client-connection-closes-with-the-error-message-no-server-available-what-does-it-mean"></a>Připojení klienta se zavře s chybovou zprávou "žádný server není k dispozici". Co to znamená?
 
-K této chybě dochází pouze v případě, že klienti jsou odesílání zpráv do služby SignalR.
+K této chybě dochází pouze v případě, že klienti odesílají zprávy do služby Signal.
 
-Pokud nemáte žádné aplikační server a použijte pouze API REST pro funkci SignalR Service, toto chování je **záměrné**.
-Architektura bez serveru, připojení klientů jsou v **NASLOUCHÁNÍ** režimu a bude odeslat všechny zprávy pro služby SignalR.
-Další informace o [rozhraní REST API](./signalr-quickstart-rest-api.md).
+Pokud nemáte žádný aplikační server a používáte jenom REST API služby Signal, toto chování je **záměrné**.
+V architektuře bez serveru jsou připojení klienta v režimu **naslouchání** a neodesílají žádné zprávy do služby signalizace.
+Přečtěte si další informace o [REST API](./signalr-quickstart-rest-api.md).
 
-Pokud máte aplikační servery, tato chybová zpráva znamená, že žádné aplikační server je připojený k vaší instanci služby SignalR.
+Pokud máte aplikační servery, tato chybová zpráva znamená, že k vaší instanci služby signalizace není připojen žádný aplikační server.
 
 Možné příčiny:
-- Žádný server aplikace je propojená s služby SignalR. V protokolech aplikace serveru chyb připojení je to možné. Tento případ není obvyklé v nastavení vysoké dostupnosti s více než jeden aplikační servery.
-- Existují problémy s připojením s instancí služby SignalR. Tento problém je přechodná a se automaticky obnoví.
-Pokud bude přetrvávat pro více než jednu hodinu [otevřete problém na Githubu](https://github.com/Azure/azure-signalr/issues/new) nebo [v Azure vytvořit žádost o podporu](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
+- Služba signalizace není připojená k aplikačnímu serveru. V protokolech aplikačního serveru vyhledejte možné chyby připojení. Tento případ je vzácná v nastavení vysoké dostupnosti s více než jedním aplikačním serverem.
+- Existují problémy s připojením k instancím služby signalizace. Tento problém je přechodný a automaticky se obnoví.
+Pokud bude trvat déle než hodinu, [otevřete problém na GitHubu](https://github.com/Azure/azure-signalr/issues/new) nebo [vytvořte žádost o podporu v Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
 
-## <a name="when-there-are-multiple-application-servers-are-client-messages-sent-to-all-servers-or-just-one-of-them"></a>Po několika aplikačních serverů se odesílají zprávy klienta pro všechny servery, nebo jenom jeden z nich?
+## <a name="when-there-are-multiple-application-servers-are-client-messages-sent-to-all-servers-or-just-one-of-them"></a>Pokud je k dispozici více aplikačních serverů, jsou klientské zprávy odesílány na všechny servery nebo pouze na jednu z nich?
 
-Je mapování 1: 1 mezi klienta a aplikačního serveru. Zprávy od jednoho klienta byly odesílány vždy na stejném aplikačním serveru.
+Mezi klientem a aplikačním serverem je mapování 1:1. Zprávy od jednoho klienta jsou vždy odesílány na stejný aplikační server.
 
-Mapování mezi klienta a aplikačního serveru se zachová, dokud odpojení klienta nebo aplikace serveru.
+Mapování mezi klientem a aplikačním serverem bude zachováno až do odpojení klienta nebo aplikačního serveru.
 
-## <a name="if-one-of-my-application-servers-is-down-how-can-i-find-it-and-get-notified"></a>Pokud jeden ze serverů Moje aplikace je mimo provoz, jak ji najít a získat oznámení?
+## <a name="if-one-of-my-application-servers-is-down-how-can-i-find-it-and-get-notified"></a>Jak je některý z mých aplikačních serverů mimo provoz, jak ho můžu najít a dostávat oznámení?
 
-Služby SignalR monitoruje prezenční signály aplikačních serverů.
-Pokud nejsou pro zadaný časový úsek prezenčních signálů, aplikační server je považován za offline. Všechna připojení klientů, které jsou namapované na tento server aplikace budou odpojeny.
+Služba Signal monitoruje prezenční signály z aplikačních serverů.
+Pokud prezenční signály nejsou v zadaném časovém intervalu přijaty, aplikační server se považuje za offline. Všechna připojení klienta namapovaná na tento aplikační server budou odpojena.
 
-## <a name="why-does-my-custom-iuseridprovider-throw-exception-when-switching-from-aspnet-core-signalr--sdk-to-azure-signalr-service-sdk"></a>Proč moje vlastní `IUserIdProvider` vyvolat výjimku při přechodu ze sady SDK SignalR technologie ASP.NET Core pro sadu SDK služby Azure SignalR?
+## <a name="why-does-my-custom-iuseridprovider-throw-exception-when-switching-from-aspnet-core-signalr--sdk-to-azure-signalr-service-sdk"></a>Proč můj vlastní `IUserIdProvider` při přepínání ze sady SDK pro ASP.NET Core Signal na sadu SDK služby Azure Signaler vyvolal výjimku?
 
-Parametr `HubConnectionContext context` se liší mezi sadou SDK SignalR technologie ASP.NET Core a sady SDK služby Azure SignalR při `IUserIdProvider` je volána.
+Parametr `HubConnectionContext context` se v sadě SDK pro ASP.NET Core signalizace a v případě, že se volá `IUserIdProvider`, liší.
 
-V knihovně SignalR technologie ASP.NET Core `HubConnectionContext context` kontext z fyzické připojení platnou hodnotou pro všechny vlastnosti.
+V ASP.NET Core Signaler `HubConnectionContext context` je kontextem z fyzického připojení klienta s platnými hodnotami pro všechny vlastnosti.
 
-V sadě SDK služby Azure SignalR `HubConnectionContext context` kontext z připojení logické klienta. Fyzické připojení je připojen k instanci služby SignalR, proto jsou k dispozici pouze omezený počet vlastností.
+V sadě SDK služby signalizace Azure je `HubConnectionContext context` kontextem z logického připojení klienta. Fyzické připojení klienta je připojeno k instanci služby signalizace, proto je k dispozici pouze omezený počet vlastností.
 
-Prozatím pouze `HubConnectionContext.GetHttpContext()` a `HubConnectionContext.User` jsou k dispozici pro přístup.
-Můžete zkontrolovat zdrojový kód [tady](https://github.com/Azure/azure-signalr/blob/kevinzha/faq/src/Microsoft.Azure.SignalR/ServiceHubConnectionContext.cs).
+Pro přístup je teď k dispozici jenom `HubConnectionContext.GetHttpContext()` a `HubConnectionContext.User`.
+Zdrojový kód si můžete prohlédnout [tady](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR/HubHost/ServiceHubConnectionContext.cs).
 
-## <a name="can-i-configure-the-transports-available-in-signalr-service-as-configuring-it-on-server-side-with-aspnet-core-signalr-for-example-disable-websocket-transport"></a>Můžete nakonfigurovat přenosy ve službě SignalR k dispozici jako konfigurace na straně serveru s knihovnou SignalR technologie ASP.NET Core? Například zakázat přenos pomocí protokolu WebSocket?
+## <a name="can-i-configure-the-transports-available-in-signalr-service-as-configuring-it-on-server-side-with-aspnet-core-signalr-for-example-disable-websocket-transport"></a>Můžu ve službě Signal Service nakonfigurovat transporty, jako je konfigurace na straně serveru pomocí služby ASP.NET Core Signal? Například zakažte přenos pomocí protokolu WebSocket?
 
 Ne.
 
-Službě Azure SignalR poskytuje všechny tři přenosy, které ve výchozím nastavení podporuje funkce SignalR technologie ASP.NET Core. Se nedá konfigurovat. Připojení a přenosy pro všechna připojení klientů bude zpracovávat služby SignalR.
+Služba signalizace Azure poskytuje všechny tři přenosy, které ASP.NET Core signál podporuje ve výchozím nastavení. Nedá se konfigurovat. Služba signalizace zpracuje připojení a přenosy pro všechna připojení klientů.
 
-Můžete nakonfigurovat přenosy na straně klienta, jak je uvedeno [tady](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1#configure-allowed-transports).
+Můžete nakonfigurovat přenosy na straně klienta, jak je popsáno [zde](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1#configure-allowed-transports).

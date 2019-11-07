@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: 12c08a95cd43f9f988c98711141b1b1f879e8b3a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 53a190a611af42f0eaca8d4348d1d066d3d4f9e4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489386"
+ms.locfileid: "73584403"
 ---
 # <a name="train-with-datasets-preview-in-azure-machine-learning"></a>Výuka pomocí datových sad (Preview) v Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ V tomto článku se dozvíte dva způsoby, jak využívat [Azure Machine Learnin
 
 Azure Machine Learning datové sady poskytují bezproblémovou integraci s Azure Machine Learning školicími produkty, jako jsou [ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py), [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) a [Hyperdrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K vytváření a školení s datovými sadami potřebujete:
 
@@ -104,7 +104,7 @@ experiment_run.wait_for_completion(show_output=True)
 
 Pokud chcete, aby byly datové soubory k dispozici na výpočetním cíli pro školení, použijte [datovou sadu](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) souborů pro připojení nebo stažení souborů, na které odkazuje.
 
-Když připojíte systém souborů, připojíte tento systém souborů k adresáři (přípojný bod) a zpřístupníte ho v cílovém výpočetním prostředí. Připojení je okamžité, protože soubory jsou načítány pouze v době zpracování. Připojení se podporuje a doporučuje pro výpočetní služby založené na systému Linux, včetně Azure Machine Learning výpočetních, virtuálních počítačů a HDInsight. Pro výpočetní služby, které nejsou založené na systému Linux, se podporuje pouze stahování.  
+Když připojíte systém souborů, připojíte tento systém souborů k adresáři (přípojný bod) a zpřístupníte ho v cílovém výpočetním prostředí. Připojení je okamžité, protože soubory jsou načítány pouze v době zpracování. Připojení se podporuje a doporučuje pro výpočetní služby založené na systému Linux, včetně Azure Machine Learning výpočetních, virtuálních počítačů a HDInsight. Pro výpočetní výkon, který není založený na Linux, se podporuje jenom stahování.  
 
 >[!WARNING]
 > Pokud velikost dat překročí limit úložiště cílového výpočetní služby, stahování se nezdaří.

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: b17b7088276aca6d7d8ed8f2d1cb554479b4de2b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 391cddbbd1b69fb7cb5422adbaea2f3378e273bf
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507635"
+ms.locfileid: "73580164"
 ---
 # <a name="long-audio-api-preview"></a>Dlouhé zvukové rozhraní API (Preview)
 
@@ -26,7 +26,7 @@ Další výhody pro dlouhé zvukové rozhraní API:
 * Syntetizované rozpoznávání řeči vrácené službou používá hlasy neuronové, které zajišťují zvukové výstupy s vysokou přesností.
 * Vzhledem k tomu, že se odpovědi v reálném čase nepodporují, není nutné nasazovat hlasový koncový bod.
 
-## <a name="workflow"></a>Pracovní postupy
+## <a name="workflow"></a>Pracovní postup
 
 Při použití rozhraní API dlouhého zvuku se obvykle odesílá textový soubor nebo soubory, které se mají syntetizovat, dotaz na jeho stav, a pokud je stav úspěšný, můžete si stáhnout zvukový výstup.
 
@@ -63,7 +63,7 @@ Rozhraní API pro dlouhé zvukové rozhraní podporuje následující formáty z
 * Audio-24khz-96kbitrate-mono-MP3
 * Audio-24khz-160kbitrate-mono-MP3
 
-## <a name="quickstarts"></a>Rychlé starty
+## <a name="quickstarts"></a>Šablony Rychlý start
 
 Nabízíme rychlé starty, které vám pomůžou úspěšně spouštět rozhraní API pro dlouhé zvukové zařízení. Tato tabulka obsahuje seznam dlouhých rychlých startů rozhraní API pro přenos v jazyce.
 
@@ -75,7 +75,3 @@ Vzorový kód pro dlouhé zvukové rozhraní API je k dispozici na GitHubu.
 * [Vzorový kód: Python](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/Python)
 * [Vzorový kód:C#](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/CSharp)
 * [Vzorový kód: Java](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/)
-
-## <a name="see-also"></a>Další informace najdete v tématech
-
-* [Reference k rozhraní API pro dlouhé zvukové rozhraní](https://aka.ms/long-audio-ref)

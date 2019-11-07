@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Klientská knihovna pro vytváření Language Understanding (LUIS) pro Python'
+title: 'Rychlý Start: Language Understanding (LUIS) vytváření klientské knihovny pro Python'
 titleSuffix: Azure Cognitive Services
-description: Začněte s klientskou knihovnou Language Understanding (LUIS) pro Python. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.  Language Understanding (LUIS) vám umožňuje použít vlastní informace o strojovém učení na konverzaci uživatele, text přirozeného jazyka a předpovědět celkový význam a vyžádat si relevantní a podrobné informace.
+description: Začněte s klientskou knihovnou LUIS pro Python. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 08/07/2019
 ms.author: diberry
-ms.openlocfilehash: f8149372e0a96cda81ef38558ee0bcf87eb53bb3
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 1b586af569a9406d7fe9fa3d05c198f62f32744f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258769"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672002"
 ---
-# <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>Rychlý start: Klientská knihovna pro vytváření Language Understanding (LUIS) pro Python
+# <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>Rychlý Start: Language Understanding (LUIS) vytváření klientské knihovny pro Python
 
 Začínáme s klientskou knihovnou pro vytváření Language Understanding (LUIS) pro Python. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.  Language Understanding (LUIS) vám umožňuje použít vlastní informace o strojovém učení na konverzaci uživatele, text přirozeného jazyka a předpovědět celkový význam a vyžádat si relevantní a podrobné informace. 
 
@@ -28,18 +28,18 @@ Pomocí klientské knihovny pro vytváření Language Understanding (LUIS) pro P
 * Přidejte funkce, jako je například seznam frází.
 * Výuka a publikování aplikace
 
-[](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | [Ukázky](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py) knihovny dokumentace k vytváření balíčků[zdrojového kódu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | v knihovně[(PyPi)](https://pypi.org/project/azure-cognitiveservices-language-luis/) | 
+[Referenční dokumentace](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | [vytváření obsahu (PyPi)](https://pypi.org/project/azure-cognitiveservices-language-luis/) | [ukázky](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Účet portálu Language Understanding (LUIS): [Vytvořte si ho zdarma](https://www.luis.ai).
-* [Python 3.x](https://www.python.org/)
+* [Python 3. x](https://www.python.org/)
 
 ## <a name="setting-up"></a>Nastavení
 
 ### <a name="get-your-language-understanding-luis-starter-key"></a>Získání spouštěcího klíče pro Language Understanding (LUIS)
 
-Získejte [počáteční klíč](luis-how-to-azure-subscription.md#starter-key)a [Vytvořte proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč s názvem `LUIS_AUTHORING_KEY` a proměnnou prostředí pro oblast klíče. `LUIS_REGION`
+Získejte [počáteční klíč](luis-how-to-azure-subscription.md#starter-key)a [Vytvořte proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč s názvem `LUIS_AUTHORING_KEY` a proměnnou prostředí pro oblast klíče, `LUIS_REGION`.
 
 ### <a name="install-the-python-library-for-luis"></a>Instalace knihovny Pythonu pro LUIS
 
@@ -91,7 +91,7 @@ Vytvořte objekt [CognitiveServicesCredentials](https://docs.microsoft.com/pytho
 
 [!code-python[Create LUIS client object](~/cognitive-services-quickstart-code/python/LUIS/application_quickstart.py?name=Client)]
 
-## <a name="create-a-luis-app"></a>Vytvoření aplikace LUIS
+## <a name="create-a-luis-app"></a>Vytvoření aplikace v LUIS
 
 1. Vytvořte aplikaci LUIS, která bude obsahovat pracovní záměry modelu NLP (přirozený jazyk Processing), entity a příklad projevy. 
 
@@ -111,7 +111,7 @@ Použijte [model. Přidejte metodu _intent](https://docs.microsoft.com/python/ap
 
 I když se entity nevyžadují, najdete je ve většině aplikací. Entita extrahuje informace z utterance uživatele, která je nutná k zaúmyslnému záměru uživatele. Existuje několik typů [předem sestavených](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-prebuilt-app-id--version-id--prebuilt-extractor-names--custom-headers-none--raw-false----operation-config-) a vlastních entit, z nichž každý má vlastní modely DTO (Data Transformation Object).  Mezi běžné předem připravené entity, které se mají přidat do vaší aplikace, patří [číslo](luis-reference-prebuilt-number.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md), [geographyV2](luis-reference-prebuilt-geographyv2.md)a [Ordinal](luis-reference-prebuilt-ordinal.md). 
 
-Tato metoda **add_entities** vytvořila `Location` jednoduchou entitu se `Class` dvěma rolemi, jednoduchou entitou `Flight` , složenou entitou a přidává několik předem sestavených entit.
+Tato metoda **add_entities** vytvořila jednoduchou entitu `Location` se dvěma rolemi, `Class` jednoduchou entitou, `Flight` složenou entitou a přidává několik předem sestavených entit.
 
 Je důležité, abyste věděli, že entity nejsou označené záměrem. Mohou a obvykle se vztahují na mnoho záměrů. Pouze ukázkový uživatel projevy je označen pro konkrétní, jednotlivý záměr.
 
@@ -147,7 +147,7 @@ Publikujte aplikaci LUIS pomocí metody [App. Publish](https://docs.microsoft.co
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Spusťte aplikaci pomocí `python` příkazu v souboru rychlého startu.
+Spusťte aplikaci pomocí příkazu `python` v souboru rychlého startu.
 
 ```console
 python quickstart-file.py
@@ -160,7 +160,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 * [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#clean-up-resources)
 * [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli#clean-up-resources) 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 >[Vytvoření aplikace v LUIS k určení záměrů uživatelů](luis-quickstart-intents-only.md)

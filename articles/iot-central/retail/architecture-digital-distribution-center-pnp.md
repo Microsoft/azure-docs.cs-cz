@@ -4,14 +4,15 @@ description: Architektura šablony aplikace digitálního distribučního centra
 author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
+ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 1ce0896d3b9fd60190625b49d0e4580a2038e638
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 2ab79cccaafeb1b48100285a5fd495340b545278
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027376"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615340"
 ---
 # <a name="architecture-of-iot-central-digital-distribution-center-application-template"></a>Architektura šablony aplikace IoT Central digital Distribution Center
 

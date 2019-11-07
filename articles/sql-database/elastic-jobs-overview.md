@@ -1,5 +1,5 @@
 ---
-title: Úlohy Azure SQL Elastic Database (Preview) | Microsoft Docs
+title: Úlohy Azure SQL Elastic Database (Preview)
 description: Konfigurace úloh Elastic Database (Preview) pro spouštění skriptů jazyka Transact-SQL (T-SQL) v rámci jedné nebo více databází SQL Azure
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 3a0aa6e28ea4c40d5cad5ba99edec344c7979acf
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 2afe7d5c9667002c97d354cd1e94f292c6302558
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935082"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685308"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Vytváření, konfigurace a Správa elastických úloh
 
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak vytvářet, konfigurovat a spravovat elastick�
 
 ## <a name="create-run-and-manage-jobs"></a>Vytváření, spouštění a správa úloh
 
-1. Pomocí [PowerShellu](elastic-jobs-powershell.md#create-job-credentials-so-that-jobs-can-execute-scripts-on-its-targets) nebo [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution) vytvořte přihlašovací údaje pro spouštění úloh v *databázi úloh*.
+1. Pomocí *PowerShellu* nebo [T-SQL](elastic-jobs-powershell.md#create-job-credentials-so-that-jobs-can-execute-scripts-on-its-targets) vytvořte přihlašovací údaje pro spouštění úloh v [databázi úloh](elastic-jobs-tsql.md#create-a-credential-for-job-execution).
 2. Pomocí [PowerShellu](elastic-jobs-powershell.md#define-the-target-databases-you-want-to-run-the-job-against) nebo [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers) definujte cílovou skupinu (databáze, pro které chcete úlohu spouštět).
 3. V každé databázi, ve které se bude úloha spouštět, vytvořte přihlašovací údaje agenta úloh [(do každé databáze ve skupině přidejte příslušného uživatele nebo roli)](sql-database-control-access.md). Příklad najdete v [kurzu pro PowerShell](elastic-jobs-powershell.md#create-job-credentials-so-that-jobs-can-execute-scripts-on-its-targets).
 4. Pomocí [PowerShellu](elastic-jobs-powershell.md#create-a-job) nebo [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) vytvořte úlohu.
@@ -75,7 +75,7 @@ V současné době je verze Preview omezená na 100 souběžných úloh.
 
 Pokud chcete zajistit, aby při spouštění úloh pro databáze v elastickém fondu SQL nedocházelo k přetížení prostředků, můžete pro úlohy nakonfigurovat omezení počtu databází, pro které se můžou najednou spouštět.
 
-Nastavte počet souběžných databází, na kterých úloha běží, nastavením `sp_add_jobstep` `@max_parallelism` parametru uložené procedury v T-SQL nebo `Add-AzSqlElasticJobStep -MaxParallelism` v PowerShellu.
+Nastavte počet souběžných databází, na kterých je úloha spuštěna, nastavením parametru `@max_parallelism` `sp_add_jobstep` uložené procedury v T-SQL nebo `Add-AzSqlElasticJobStep -MaxParallelism` v prostředí PowerShell.
 
 ## <a name="best-practices-for-creating-jobs"></a>Osvědčené postupy pro vytváření úloh
 
@@ -95,7 +95,7 @@ Skript se také musí být schopný úspěšně provést. Dosáhne toho tím, ž
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Vytváření a správa elastických úloh s využitím PowerShellu](elastic-jobs-powershell.md)
 - [Vytváření a správa elastických úloh pomocí Transact-SQL (T-SQL)](elastic-jobs-tsql.md)

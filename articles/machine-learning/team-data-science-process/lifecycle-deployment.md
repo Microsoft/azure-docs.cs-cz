@@ -1,6 +1,6 @@
 ---
-title: Fáze nasazení životní cyklus vědeckého zpracování týmových dat
-description: Cíle, úkoly a úkoly pro fázi nasazení vašich projektů datové vědy
+title: Fáze nasazení životního cyklu procesu vědeckého zpracování dat týmu
+description: Cíle, úkoly a dodávky pro fázi nasazení projektů pro vědu pro data
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,64 +11,64 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 00710183828892c81d3ea887e4394237288eb6bb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 156f2e95913dffd88de0b4669b13a5af5fc9605c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303532"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684684"
 ---
-# <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Fáze nasazení životní cyklus vědeckého zpracování týmových dat
+# <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Fáze nasazení životního cyklu procesu vědeckého zpracování dat týmu
 
-Tento článek popisuje cíle, úkoly a úkoly spojené s nasazením nástroje zpracování týmových dat vědy (TDSP). Tento proces zajišťuje doporučené životní cyklus, který vám pomůže strukturovat vaše projekty pro datové vědy. Životní cyklus popisuje hlavní fáze, které jsou projekty obvykle spouštěny, často opakované:
+Tento článek popisuje cíle, úlohy a dodávky spojené s nasazením vědeckého procesu týmového zpracování dat (TDSP). Tento proces poskytuje doporučený životní cyklus, který můžete použít ke strukturování projektů pro vědu. Životní cyklus popisuje hlavní fáze, které se obvykle spouštějí projekty, často iterativní:
 
-   1. **Principy podniku**
-   2. **Získávání a pochopení dat**
-   3. **Modelování**
+   1. **Obchodní porozumění**
+   2. **Získávání a porozumění dat**
+   3. **Situací**
    4. **Nasazení**
-   5. **Schválení zákazníkem**
+   5. **Přijetí zákazníkovi**
 
-Zde je vizuální znázornění životního cyklu TDSP: 
+Tady je vizuální znázornění životního cyklu TDSP: 
 
 ![Životní cyklus TDSP](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
 ## <a name="goal"></a>Cíl
-Modely s datovým kanálem nasazení do produkčního prostředí nebo prostředí podobném produkci pro přijetí konečného uživatele. 
+Nasaďte modely s datovým kanálem do produkčního nebo produkčního prostředí pro konečné přijetí uživateli. 
 
-## <a name="how-to-do-it"></a>Jak na to
-Hlavního úkolu zákazníky a vyřešené v této fázi:
+## <a name="how-to-do-it"></a>Jak to provést
+Hlavní úkol řešený v této fázi:
 
-**Zprovoznění modelu**: Nasazení modelu a kanál do produkčního prostředí nebo prostředí podobném produkci za využití aplikace.
+**Zprovoznění model**: nasazení modelu a kanálu do výrobního nebo produkčního prostředí pro spotřebu aplikací.
 
 ### <a name="operationalize-a-model"></a>Zprovoznění modelu
-Až budete mít sadu modely, které dobře fungují, můžete je pro jiné aplikace při využívání provozu. V závislosti na obchodních požadavcích předpovědi probíhají v reálném čase nebo na základě služby batch. Pokud chcete nasadit modely, umístěte je otevřené rozhraní API. Rozhraní umožňuje modelu snadno využít v různých aplikacích, jako například:
+Až budete mít k dispozici sadu modelů, které budou dobře fungovat, můžete je zprovozněníovat pro jiné aplikace, které chcete spotřebovat. V závislosti na podnikových požadavcích se předpovědi provádí buď v reálném čase, nebo na základě dávky. Chcete-li nasadit modely, vystavte je pomocí rozhraní API Open. Rozhraní umožňuje, aby byl model snadno spotřebovaný z různých aplikací, jako například:
 
-   * Online websites
+   * Online weby
    * Tabulky 
    * Řídicí panely
    * Obchodní aplikace 
-   * Back endovým aplikacím 
+   * Back-endové aplikace 
 
-Příklady operacionalizace modelu pomocí webové služby Azure Machine Learning, najdete v článku [nasazení webové služby Azure Machine Learning](../studio/publish-a-machine-learning-web-service.md). Je osvědčeným postupem je vytvoření telemetrie a monitorování do produkčního prostředí modelu a datový kanál, který nasadíte. Tento postup pomáhá se stavem systému následné hlášení a řešení potíží.  
+Příklady provozování modelů pomocí Azure Machine Learning webové služby najdete v tématu [nasazení webové služby Azure Machine Learning](../studio/deploy-a-machine-learning-web-service.md). Osvědčeným postupem je sestavit telemetrii a monitorování do produkčního modelu a datového kanálu, který nasadíte. Tento postup pomáhá s následným vytvářením zpráv o stavu systému a odstraňování potíží.  
 
 ## <a name="artifacts"></a>Artefakty
 
-* Řídicí panel stav, který zobrazuje metriky systému stavu a klíč
-* Poslední modelování sestavu s podrobnostmi o nasazení
-* Architektura dokumentu konečné řešení
+* Řídicí panel stavu, který zobrazuje stav systému a klíčové metriky
+* Finální sestava modelování s podrobnostmi o nasazení
+* Konečný dokument architektury řešení
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Tady jsou odkazy na každý krok v životním cyklu TDSP:
+Tady jsou odkazy na jednotlivé kroky v životním cyklu TDSP:
 
-   1. [Principy podniku](lifecycle-business-understanding.md)
-   2. [Získávání a pochopení dat](lifecycle-data.md)
-   3. [Modelování](lifecycle-modeling.md)
+   1. [Obchodní porozumění](lifecycle-business-understanding.md)
+   2. [Získávání a porozumění dat](lifecycle-data.md)
+   3. [Situací](lifecycle-modeling.md)
    4. [Nasazení](lifecycle-deployment.md)
-   5. [Schválení zákazníkem](lifecycle-acceptance.md)
+   5. [Přijetí zákazníkovi](lifecycle-acceptance.md)
 
-Poskytujeme úplného začátku do konce návody, které ukazují všechny kroky v procesu pro konkrétní scénáře. [Příklad návody](walkthroughs.md) článek obsahuje seznam scénářů s odkazy a popisy miniatur. Názorné postupy ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací. 
+Poskytujeme kompletní podrobné návody, které znázorňují všechny kroky v procesu pro konkrétní scénáře. Článek [příklad návodů](walkthroughs.md) obsahuje seznam scénářů s odkazy a popisy miniatur. Návody ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu a vytvořit tak inteligentní aplikaci. 
 
-Příklady toho, jak provést kroky v TDSPs, které používají Azure Machine Learning Studio najdete v tématu [TDSP pomocí služby Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Příklady, jak provést kroky v TDSPs, které používají Azure Machine Learning Studio, naleznete v tématu [použití TDSP s Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).

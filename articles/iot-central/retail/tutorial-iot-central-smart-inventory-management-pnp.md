@@ -4,14 +4,15 @@ description: Kurz šablony aplikace pro správu inteligentního inventáře pro 
 author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
+ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 7c8b2379ccb7562a79077df026a7083831e5415b
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 8360db3e31899dc7ca0a2b502d0036358f0858d6
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027265"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615234"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Kurz: nasazení a procházení šablonou aplikace pro správu inteligentního inventáře
 
@@ -23,7 +24,7 @@ V tomto kurzu se naučíte,
 * vytvořit aplikaci pro správu inteligentních zásob 
 * Procházení aplikací 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * K nasazení této aplikace nejsou nutné žádné konkrétní požadavky.
 * Doporučuje se použít předplatné Azure, ale můžete to zkusit i bez něj.
 

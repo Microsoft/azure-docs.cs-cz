@@ -1,6 +1,6 @@
 ---
 title: Galerie Azure AI
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Sdílení a zjišťování prostředků analýzy a další informace v Azure AI Gallery. Přečtěte si od ostatních a udělejte své vlastní příspěvky komunitě.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 445ea2fa299e32d0ceae7b3eee9bbf0a82dd75af
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3f02c7377242dc031cd2d21d2b57bbd5f839eec3
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492935"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619146"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Sdílení a zjišťování prostředků v Azure AI Gallery
 
@@ -121,7 +121,7 @@ Jakékoli z následujících informací můžete pro svůj experiment změnit p�
 * Název experimentu
 * Shrnutí nebo popis
 * Značky
-* Obrázek
+* Image
 * Nastavení viditelnosti (**Veřejná** nebo **nerozevírací**)
 
 Můžete také odstranit experiment z galerie.
@@ -158,7 +158,7 @@ Psaním **kurzu** v galerii, který vysvětluje koncepty strojového učení neb
    > [!TIP]
    > Pokud chcete zajistit, aby vaše dokumentace vypadala správně ještě před tím, než veřejně vydáte, můžete experimentu publikovat jako **neuvedený**. Později můžete nastavení viditelnosti na stránce s podrobnostmi experimentu změnit na **veřejné** . Všimněte si, že po nastavení experimentu jako **veřejné** ho nelze později změnit na **neuvedený seznam**.
 
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 Váš příspěvek je teď v Azure AI Gallery. Vaše příspěvky jsou uvedené na stránce vašeho účtu na kartě **položky** .
 

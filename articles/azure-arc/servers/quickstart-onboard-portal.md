@@ -10,24 +10,24 @@ keywords: Azure Automation, DSC, PowerShell, konfigurace požadovaného stavu, S
 ms.date: 08/25/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: b014f6015b3e13a603cf3893062bd0463eb110ee
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ae7c8545286baebc83077276e356cd2e41f0dc3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501985"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73668682"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---portal"></a>Rychlý Start: připojení počítačů k Azure pomocí ARC Azure pro servery – portál
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Přečtěte si téma Podporované klienty a požadovaná konfigurace sítě v článku [Přehled služby Azure ARC pro servery](overview.md).
 
 ## <a name="generate-the-agent-install-script-using-the-azure-portal"></a>Vygenerujte skript pro instalaci agenta pomocí Azure Portal
 
-1. Spuštění [https://aka.ms/hybridmachineportal ] [aka_hybridmachineportal]
+1. Spustit [https://aka.ms/hybridmachineportal](https://aka.ms/hybridmachineportal)
 1. Klikněte na **+ Přidat** .
 1. Postupujte podle pokynů průvodce k dokončení
 1. Poslední stránka obsahuje skript, který můžete zkopírovat (nebo stáhnout).
@@ -64,6 +64,29 @@ Pokud chcete odpojit počítač od Arc Azure pro servery, musíte provést dva k
 
 1. Vyberte počítač na [portálu](https://aka.ms/hybridmachineportal), klikněte na tlačítko se třemi tečkami (`...`) a vyberte **Odstranit**.
 1. Odinstalujte agenta z počítače.
+
+   V systému Windows můžete k odinstalaci agenta použít ovládací panel aplikace & funkce.
+  
+  ![Aplikace & funkce](./media/quickstart-onboard/apps-and-features.png)
+
+   Pokud chcete odinstalaci skriptovat, můžete použít následující příklad, který načte **PackageId** a odinstaluje agenta pomocí `msiexec /X`.
+
+   Podívejte se do klíče registru `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall` a vyhledejte **PackageId**. Pak můžete agenta odinstalovat pomocí `msiexec`.
+
+   Následující příklad ukazuje odinstalaci agenta.
+
+   ```powershell
+   Get-ChildItem -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall | `
+   Get-ItemProperty | `
+   Where-Object {$_.DisplayName -eq "Azure Connected Machine Agent"} | `
+   ForEach-Object {MsiExec.exe /Quiet /X "$($_.PsChildName)"}
+   ```
+
+   V systému Linux spusťte následující příkaz k odinstalaci agenta.
+
+   ```bash
+   sudo apt purge hybridagent
+   ```
 
 ## <a name="next-steps"></a>Další kroky
 

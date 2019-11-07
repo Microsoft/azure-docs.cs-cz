@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Klientská knihovna pro vytváření Language Understanding (LUIS) pro .NET'
+title: 'Rychlý Start: Language Understanding (LUIS) vytváření klientské knihovny pro .NET'
 titleSuffix: Azure Cognitive Services
-description: Začněte s klientskou knihovnou Language Understanding (LUIS) pro .NET. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.  Language Understanding (LUIS) vám umožňuje použít vlastní informace o strojovém učení na konverzaci uživatele, text přirozeného jazyka a předpovědět celkový význam a vyžádat si relevantní a podrobné informace.
+description: Začněte s klientskou knihovnou LUIS pro .NET. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,25 +10,25 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: d7668f49df1caca6b4261424b0d2c025a640d572
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 6af076f585e7fc9afe870acada744ead2d2e9118
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258770"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672093"
 ---
-# <a name="quickstart-language-understanding-luis-authoring-client-library-for-net"></a>Rychlý start: Klientská knihovna pro vytváření Language Understanding (LUIS) pro .NET
+# <a name="quickstart-language-understanding-luis-authoring-client-library-for-net"></a>Rychlý Start: Language Understanding (LUIS) vytváření klientské knihovny pro .NET
 
 Začněte s klientskou knihovnou pro vytváření Language Understanding (LUIS) pro .NET. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.  Language Understanding (LUIS) vám umožňuje použít vlastní informace o strojovém učení na konverzaci uživatele, text přirozeného jazyka a předpovědět celkový význam a vyžádat si relevantní a podrobné informace. 
 
 Pomocí klientské knihovny pro vytváření Language Understanding (LUIS) pro .NET:
 
-* Vytvoření nové aplikace
+* Vytvoření aplikace
 * Přidání záměrů, entit a příkladu projevy
 * Přidání funkcí, jako je seznam frází
 * Výuka a publikování aplikace
 
-[Ukázky knihovny dokumentace dokumentace ke](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet) | zdrojovému balíčku pro vytváření[zdrojových kódů](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Authoring) | [ C# ](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/LUIS/LUIS.cs) [(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)  | 
+[Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet) | ukázek [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Authoring) | [Authoring Package (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/) | [ C# ukázky](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/LUIS/LUIS.cs)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,7 +45,7 @@ Získejte [počáteční klíč](luis-how-to-azure-subscription.md#starter-key)a
 
 Vytvořte novou aplikaci .NET Core v upřednostňovaném editoru nebo integrovaném vývojovém prostředí (IDE). 
 
-1. V okně konzoly (například cmd, PowerShell nebo bash) vytvořte pomocí příkazu dotnet `new` novou konzolovou aplikaci s názvem. `language-understanding-quickstart` Tento příkaz vytvoří jednoduchý projekt "Hello World" C# s jedním zdrojovým souborem: `Program.cs`. 
+1. V okně konzoly (například cmd, PowerShell nebo bash) použijte příkaz dotnet `new` k vytvoření nové konzolové aplikace s názvem `language-understanding-quickstart`. Tento příkaz vytvoří jednoduchý projekt "Hello World" C# s jedním zdrojovým souborem: `Program.cs`. 
 
     ```console
     dotnet new console -n language-understanding-quickstart
@@ -109,18 +109,18 @@ Tyto fragmenty kódu ukazují, jak provést následující akce pomocí klientsk
 
 ## <a name="add-the-dependencies"></a>Přidat závislosti
 
-V adresáři projektu otevřete soubor **program.cs** v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Nahraďte existující `using` kód následujícími `using` direktivami:
+V adresáři projektu otevřete soubor **program.cs** v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Nahraďte existující kód `using` následujícími direktivami `using`:
 
 [!code-csharp[Using statements](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=Dependencies)]
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-1. Vytvořte proměnné pro správu vlastního klíče, který se načte z proměnné prostředí s `COGNITIVESERVICES_AUTHORING_KEY`názvem. Pokud jste po spuštění aplikace vytvořili proměnnou prostředí, bude nutné editor, rozhraní IDE nebo prostředí, které je spuštěno, zavřít a znovu načíst pro přístup k proměnné. Metody budou vytvořeny později.
+1. Vytvořte proměnné pro správu vlastního klíče, který se načte z proměnné prostředí s názvem `COGNITIVESERVICES_AUTHORING_KEY`. Pokud jste po spuštění aplikace vytvořili proměnnou prostředí, bude nutné editor, rozhraní IDE nebo prostředí, které je spuštěno, zavřít a znovu načíst pro přístup k proměnné. Metody budou vytvořeny později.
 
 1. Vytvořte proměnné pro uchování vaší oblasti vytváření a koncového bodu. Oblast vašeho klíčového obsahu závisí na tom, kde vytváříte. [Tři oblasti vytváření obsahu](luis-reference-regions.md) jsou:
 
-    * Austrálie`australiaeast`
-    * Evropským`westeurope`
+    * Austrálie – `australiaeast`
+    * Evropa – `westeurope`
     * USA a jiné oblasti – `westus` (výchozí)
     
     [!code-csharp[Authorization to resource key](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=Variables)]
@@ -129,7 +129,7 @@ V adresáři projektu otevřete soubor **program.cs** v preferovaném editoru ne
 
     [!code-csharp[Create LUIS client object](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=AuthoringCreateClient)]
 
-## <a name="create-a-luis-app"></a>Vytvoření aplikace LUIS
+## <a name="create-a-luis-app"></a>Vytvoření aplikace v LUIS
 
 1. Vytvořte aplikaci LUIS, která bude obsahovat pracovní záměry modelu NLP (přirozený jazyk Processing), entity a příklad projevy. 
 
@@ -150,11 +150,11 @@ Vytvořte [ModelCreateObject](https://docs.microsoft.com/dotnet/api/microsoft.az
 
 I když se entity nevyžadují, najdete je ve většině aplikací. Entita extrahuje informace z utterance uživatele, která je nutná k zaúmyslnému záměru uživatele. Existuje několik typů [předem sestavených](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.modelextensions.addprebuiltasync?view=azure-dotnet) a vlastních entit, z nichž každý má vlastní modely DTO (Data Transformation Object).  Mezi běžné předem připravené entity, které se mají přidat do vaší aplikace, patří [číslo](luis-reference-prebuilt-number.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md), [geographyV2](luis-reference-prebuilt-geographyv2.md)a [Ordinal](luis-reference-prebuilt-ordinal.md). 
 
-Tato metoda **AddEntities** vytvořila `Location` jednoduchou entitu se `Class` dvěma rolemi, jednoduchou entitou `Flight` , složenou entitou a přidává několik předem sestavených entit.
+Tato metoda **AddEntities** vytvořila jednoduchou entitu `Location` se dvěma rolemi, `Class` jednoduchou entitou, `Flight` složenou entitou a přidává několik předem sestavených entit.
 
 Je důležité, abyste věděli, že entity nejsou označené záměrem. Mohou a obvykle se vztahují na mnoho záměrů. Pouze ukázkový uživatel projevy je označen pro konkrétní, jednotlivý záměr.
 
-Metody vytváření entit jsou součástí třídy [modelu](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.modelextensions?view=azure-dotnet) . Každý typ entity má svůj vlastní model objektu pro transformaci dat (DTO), obvykle který `model` obsahuje slovo v oboru názvů [Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models?view=azure-dotnet) . 
+Metody vytváření entit jsou součástí třídy [modelu](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.modelextensions?view=azure-dotnet) . Každý typ entity má svůj vlastní model objektu pro transformaci dat (DTO), obvykle obsahující slovo `model` v oboru názvů [Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models?view=azure-dotnet) . 
 
 [!code-csharp[Create entities](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=AuthoringAddEntities)]
 
@@ -198,7 +198,7 @@ dotnet run
 
 Pokud chcete vyčistit, můžete aplikaci LUIS odstranit. Odstranění aplikace se provádí pomocí metody [Apps. DeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.appsextensions.deleteasync?view=azure-dotnet) . Aplikaci můžete také odstranit z [portálu Luis](https://www.luis.ai). 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 >[Použití sady .NET SDK k dotazování koncového bodu předpovědi](sdk-csharp-quickstart-query-prediction-endpoint.md)

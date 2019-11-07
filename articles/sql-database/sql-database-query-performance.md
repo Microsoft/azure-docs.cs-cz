@@ -1,5 +1,5 @@
 ---
-title: Query Performance Insight pro Azure SQL Database | Microsoft Docs
+title: Query Performance Insight pro Azure SQL Database
 description: Dotaz na sledování výkonu identifikuje pro databázi SQL Azure nejvíc dotazů náročných na procesor.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/03/2019
-ms.openlocfilehash: 659022f625604fe31c2ce47978d1132b20b7ffc8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: eb6827669829dc7aeeb6758a07218a29955b3682
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567026"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687596"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Query Performance Insight pro Azure SQL Database
 
@@ -44,24 +44,24 @@ Query Performance Insight vyžaduje, aby [úložiště dotazů](https://msdn.mic
 
 K použití Query Performance Insight potřebujete následující oprávnění [řízení přístupu na základě rolí](../role-based-access-control/overview.md) :
 
-* Aby bylo možné zobrazit nejlepší dotazy a grafy náročné na prostředky, je nutné, aby byl **Čtenář**, **vlastník**, **Přispěvatel**, **Přispěvatel databáze SQL**nebo **SQL Server** oprávnění přispěvatele.
-* K zobrazení textu dotazu jsou nutná oprávnění **vlastník**, **Přispěvatel**, **Přispěvatel databáze SQL**nebo **SQL Server** oprávnění přispěvatele.
+* Aby bylo možné zobrazit nejlepší dotazy a grafy náročné na prostředky, je nutné, aby byl **Čtenář**, **vlastník**, **Přispěvatel**, **Přispěvatel databáze SQL**nebo **SQL Server oprávnění přispěvatele** .
+* K zobrazení textu dotazu jsou nutná oprávnění **vlastník**, **Přispěvatel**, **Přispěvatel databáze SQL**nebo **SQL Server oprávnění přispěvatele** .
 
 ## <a name="use-query-performance-insight"></a>Použití nástroje Query Performance Insight
 
 Query Performance Insight lze snadno použít:
 
 1. Otevřete [Azure Portal](https://portal.azure.com/) a vyhledejte databázi, kterou chcete prošetřit.
-2. V nabídce na levé straně otevřete **inteligentní** > **Query Performance Insight**výkonu.
+2. V nabídce na levé straně otevřete inteligentní > **výkon** **Query Performance Insight**.
   
    ![Query Performance Insight v nabídce](./media/sql-database-query-performance/tile.png)
 
 3. Na první kartě si Projděte seznam nejčastějších dotazů, které jsou náročné na prostředky.
 4. Vyberte jednotlivý dotaz, ve kterém chcete zobrazit jeho podrobnosti.
-5. Otevřete **inteligentní** > **doporučení** výkonu výkonu a ověřte, jestli jsou k dispozici nějaká doporučení pro výkon. Další informace o předdefinovaných doporučeních výkonu najdete v tématu [SQL Database Advisor](sql-database-advisor.md).
+5. Otevřete **inteligentní výkon** > **doporučení týkající se výkonu** a zjistěte, jestli jsou k dispozici nějaká doporučení pro výkon. Další informace o předdefinovaných doporučeních výkonu najdete v tématu [SQL Database Advisor](sql-database-advisor.md).
 6. Pro změnu pozorovaného intervalu použijte posuvníky nebo ikony lupy.
 
-   ![Řídicí panel výkonu](./media/sql-database-query-performance/performance.png)
+   ![řídicí panel výkonu](./media/sql-database-query-performance/performance.png)
 
 > [!NOTE]
 > Aby SQL Database vykreslila informace v Query Performance Insight, úložiště dotazů musí zachytit několik hodin dat. Pokud databáze nemá žádnou aktivitu nebo pokud nebylo úložiště dotazů v určitém období aktivní, grafy budou prázdné, pokud Query Performance Insight zobrazí tento časový rozsah. Úložiště dotazů můžete kdykoli povolit, pokud není spuštěno. Další informace najdete v tématu [osvědčené postupy s úložištěm dotazů](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store).
@@ -236,14 +236,14 @@ Druhý případ nastane, pokud není úložiště dotazů povolené, nebo nejsou
 
 Existují dva typy zásad uchovávání informací:
 
-* **Na základě velikosti**: Pokud je tato zásada nastavená na hodnotu **automaticky**, vyčistí se data automaticky, pokud je dosaženo maximální velikosti.
-* **Na základě času**: Ve výchozím nastavení je tato zásada nastavená na 30 dní. Pokud dojde místo na úložišti dotazů, odstraní se informace o dotazu starší než 30 dní.
+* **Na základě velikosti**: Pokud je tato zásada nastavená na hodnotu **automaticky**, vyčistí data automaticky při dosažení maximální velikosti.
+* **Čas na základě**: ve výchozím nastavení je tato zásada nastavená na 30 dní. Pokud dojde místo na úložišti dotazů, odstraní se informace o dotazu starší než 30 dní.
 
 Zásady zachytávání můžete nastavit na:
 
-* **Vše**: Úložiště dotazů zachycuje všechny dotazy.
-* **Automaticky**: Úložiště dotazů ignoruje nečasté dotazy a dotazy s nevýznamnou kompilací a dobou trvání spuštění. Prahové hodnoty pro počet spuštění, dobu trvání kompilace a dobu běhu jsou interně určeny. Toto je výchozí možnost.
-* **Žádný**: Úložiště dotazů zastaví zachytávání nových dotazů, ale statistiky za běhu pro už zachycené dotazy se shromažďují stále.
+* **Vše**: úložiště dotazů zachycuje všechny dotazy.
+* **Automatické**: úložiště dotazů ignoruje nečasté dotazy a dotazy s nevýznamnou kompilací a dobou trvání spuštění. Prahové hodnoty pro počet spuštění, dobu trvání kompilace a dobu běhu jsou interně určeny. Toto je výchozí možnost.
+* **Žádné**: úložiště dotazů zastaví zachytávání nových dotazů, ale statistiky za běhu pro už zachycené dotazy se shromažďují stále.
 
 Doporučujeme nastavit všechny zásady na **Automatické** a zásady čištění na 30 dní, a to spuštěním následujících příkazů z [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) nebo Azure Portal. (Nahraďte `YourDB` názvem databáze.)
 
@@ -278,7 +278,7 @@ Použití těchto nastavení způsobí, že úložiště dotazů shromáždí te
 
 Query Performance Insight vám pomůže pochopit dopad úloh na dotazy a informace o tom, jak souvisí s spotřebou databázových prostředků. S touto funkcí se dozvíte o hlavních dotazech v databázi a získáte dotazy, které se mají optimalizovat, než se stanou problémem.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * V případě doporučení pro výkon databáze vyberte v okně Query Performance Insight navigační okno [doporučení](sql-database-advisor.md) .
 

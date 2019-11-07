@@ -1,5 +1,5 @@
 ---
-title: Průvodce postupy pro fondy instancí Azure SQL Database (Preview) | Microsoft Docs
+title: Průvodce postupy pro fondy instancí Azure SQL Database (Preview)
 description: Tento článek popisuje, jak vytvořit a spravovat fondy instancí Azure SQL Database (Preview).
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 5862a54c92de7395ce42865ae32d453e926048d8
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 461de4da35905ed860fb2ed9d2c655b55b777683
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70294266"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689730"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Průvodce postupy pro Azure SQL Database fondy instancí (Preview)
 
@@ -28,7 +28,7 @@ V následující tabulce jsou uvedeny dostupné operace týkající se fondů in
 
 |Příkaz|portál Azure|PowerShell|
 |:---|:---|:---|
-|Vytvořit fond instancí|Ne|Ano|
+|Vytvoření fondu instancí|Ne|Ano|
 |Aktualizovat fond instancí (omezený počet vlastností)|Ne |Ano |
 |Zkontroluje využití fondu instancí a vlastnosti.|Ne|Ano |
 |Odstranit fond instancí|Ne|Ano|
@@ -41,7 +41,7 @@ V následující tabulce jsou uvedeny dostupné operace týkající se fondů in
 
 Dostupné [Příkazy prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.sql/)
 
-|Rutiny |Popis |
+|Rutina |Popis |
 |:---|:---|
 |[New-AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | Vytvoří fond instancí Azure SQL Database. |
 |[Get-AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | Vrátí informace o fondu instancí Azure SQL. |
@@ -261,7 +261,7 @@ Přesunutí stávajících databází:
 Pokud existuje více databází, opakujte tento postup pro každou databázi.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Seznam funkcí a porovnání najdete v tématu věnovaném [běžným funkcím SQL](sql-database-features.md).
 - Další informace o konfiguraci virtuální sítě najdete v tématu [Konfigurace virtuální sítě VNet spravované instance](sql-database-managed-instance-connectivity-architecture.md).

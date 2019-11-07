@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 246bd7935bf5aaaae569e589e4efa0ea7d39c90a
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: d5ac23da7b4460211100f1140c24f6ed28ab3e39
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821222"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584342"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Rychlý start: Vytvoření prvního automatizovaného pracovního postupu pomocí Azure Logic Apps – Azure Portal
 
@@ -24,7 +24,7 @@ V tomto rychlém startu se seznámíte se sestavením prvního automatizovaného
 
 ![Ukázkový pracovní postup aplikace logiky vysoké úrovně](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
 
-Abyste mohli postupovat podle tohoto rychlého startu, potřebujete e-mailový účet od poskytovatele podporovaného v Logic Apps, jako je Office 365 Outlook, Outlook.com nebo Gmail. Pokud máte jiného poskytovatele, [tady se podívejte na seznam konektorů](https://docs.microsoft.com/connectors/). Tato aplikace logiky používá účet Office 365 Outlook. Pokud použijete jiný e-mailový účet, celkový postup bude stejný, ale vaše uživatelské rozhraní se může mírně lišit.
+Abyste mohli postupovat podle tohoto rychlého startu, potřebujete e-mailový účet od poskytovatele, který podporuje Azure Logic Apps, jako je například Office 365 Outlook, Outlook.com nebo Gmail. Pokud máte jiného poskytovatele, [tady se podívejte na seznam konektorů](https://docs.microsoft.com/connectors/). Tato aplikace logiky používá účet Office 365 Outlook. Pokud použijete jiný e-mailový účet, celkový postup bude stejný, ale vaše uživatelské rozhraní se může mírně lišit.
 
 Zároveň pokud ještě nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -42,7 +42,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašo
 
    ![Přidat novou aplikaci logiky](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
 
-1. V části **Vytvořit aplikaci logiky** zadejte podrobnosti o vaší aplikaci logiky, jak je vidět zde. Až budete hotovi, vyberte **vytvořit**.
+1. V podokně aplikace logiky zadejte podrobnosti o vaší aplikaci logiky, jak je znázorněno níže. Až budete hotovi, vyberte **vytvořit**.
 
    ![Zadání podrobností pro novou aplikaci logiky](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
@@ -51,11 +51,11 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašo
    | **Název** | <*Logic-App-name*> | Název aplikace logiky, který může obsahovat jenom písmena, číslice, spojovníky (`-`), podtržítka (`_`), kulaté závorky (`(`, `)`) a tečky (`.`). Tento příklad používá "moji-First-Logic-App". |
    | **Předplatné** | <*název_předplatného_Azure*> | Název vašeho předplatného Azure |
    | **Skupina prostředků** | <*Azure-Resource-Group-name*> | Název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) , která slouží k uspořádání souvisejících prostředků. V tomto příkladu se používá "My-First-LA-RG". |
-   | **Umístění** | <*Azure-region*> | Oblast, kam se mají ukládat informace o aplikaci logiky V tomto příkladu se používá "Západní USA". |
+   | **Umístění** | <*Azure – oblast*> | Oblast, kam se mají ukládat informace o aplikaci logiky V tomto příkladu se používá "Západní USA". |
    | **Log Analytics** | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. |
    ||||
 
-1. Jakmile Azure nasadí vaši aplikaci, vyberte na panelu nástrojů Azure **oznámení** > **Přejít k prostředku** pro vaši nasazenou aplikaci logiky.
+1. Až Azure nasadí vaši aplikaci, vyberte na panelu nástrojů Azure možnost **oznámení** > pro vaši nasazenou aplikaci logiky **Přejít na prostředek** .
 
    ![Přejít na nově vytvořený prostředek aplikace logiky](./media/quickstart-create-first-logic-app-workflow/go-to-new-logic-app-resource.png)
 
@@ -65,15 +65,15 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašo
 
    ![Vybrat prázdnou šablonu pro aplikaci logiky](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
 
-Dále přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts), který se aktivuje, když se v informačním kanálu RSS objeví nová položka. Každá aplikace logiky se musí spouštět triggerem, který se aktivuje při určité události nebo splnění určité podmínky. Pokaždé, když se trigger aktivuje, vytvoří modul Logic Apps instanci aplikace logiky pro spuštění vašeho pracovního postupu.
+Dále přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts), který se aktivuje, když se v informačním kanálu RSS objeví nová položka. Každá aplikace logiky se musí spouštět triggerem, který se aktivuje při určité události nebo splnění určité podmínky. Pokaždé, když se Trigger aktivuje, modul Azure Logic Apps vytvoří instanci aplikace logiky, která spustí a spustí váš pracovní postup.
 
 <a name="add-rss-trigger"></a>
 
 ## <a name="check-rss-feed-with-a-trigger"></a>Kontrola informačního kanálu RSS pomocí triggeru
 
-1. V návrháři aplikace logiky pod vyhledávacím polem vyberte **vše**.
+1. V **Návrháři aplikace logiky**pod vyhledávacím polem vyberte **vše**.
 
-1. Do vyhledávacího pole zadejte `rss`. V seznamu triggery vyberte tuto aktivační událost: **když se publikuje položka informačního kanálu** .
+1. Do vyhledávacího pole zadejte `rss`. V seznamu triggery vyberte tuto aktivační událost: **při publikování položky informačního kanálu**.
 
    ![Vyberte, kdy se má aktivovat položka informačního kanálu.](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
@@ -100,7 +100,7 @@ Vaše aplikace logiky je teď v provozu, ale kromě kontroly informačního kan�
 
 ## <a name="send-email-with-an-action"></a>Odeslání e-mailu pomocí akce
 
-Nyní přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts), která odešle e-mail, když se v informačním kanálu RSS objeví nová položka.
+Teď přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts) , která odešle e-mail, když se v informačním kanálu RSS objeví nová položka.
 
 1. Pod položkou aktivační událost **při publikování položky informačního kanálu** vyberte **Nový krok**.
 
@@ -121,7 +121,7 @@ Nyní přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts),
 
 1. V akci **Odeslat e-mail** určete data, která má e-mail zahrnovat.
 
-   1. Do pole **Komu** zadejte e-mailovou adresu příjemce. Pro účely testování můžete použít svou vlastní e-mailovou adresu.
+   1. Do pole **Komu** zadejte e-mailovou adresu příjemce. Pro účely testování můžete použít svou e-mailovou adresu.
 
       Prozatím ignorujte seznam **Přidat dynamický obsah**, který se zobrazí. Tento seznam se zobrazí po kliknutí do některých textových polí a zobrazí všechny dostupné parametry z předchozího kroku, které můžete do svého pracovního postupu zahrnout jako vstupy.
 
@@ -162,7 +162,7 @@ Například tady je ukázka e-mailu, který tato aplikace logiky odešle.
 
 ![Ukázka e-mailu odeslaného při zobrazení nové položky informačního kanálu RSS](./media/quickstart-create-first-logic-app-workflow/monitor-rss-feed-email.png)
 
-Technicky vzato, když trigger zkontroluje informační kanál RSS a najde nové položky, aktivuje se a modul Logic Apps vytvoří instanci pracovního postupu vaší aplikace logiky, která provede akce v tomto pracovním postupu. Pokud trigger nenajde nové položky, neaktivuje se a přeskočí vytvoření instance pracovního postupu.
+Technicky, když aktivační událost zkontroluje informační kanál RSS a najde nové položky, Trigger se aktivuje a modul Azure Logic Apps vytvoří instanci pracovního postupu aplikace logiky, která spouští akce v pracovním postupu. Pokud trigger nenajde nové položky, neaktivuje se a přeskočí vytvoření instance pracovního postupu.
 
 Gratulujeme, právě jste úspěšně vytvořili a spustili svou první aplikaci logiky pomocí Azure Portal.
 

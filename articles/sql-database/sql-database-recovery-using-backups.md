@@ -1,5 +1,5 @@
 ---
-title: Obnovení databáze SQL Azure ze zálohy | Microsoft Docs
+title: Obnovení databáze SQL Azure ze zálohy
 description: Přečtěte si o obnovení k bodu v čase, které vám umožní vrátit databázi SQL Azure do 35 dnů.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: b858776d8309be94a0dd64f994a9e34e589d3c49
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 799926eeb6a508ea04b879231625cf321e95d043
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750461"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687536"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>Obnovení databáze SQL Azure pomocí automatických záloh databáze
 
@@ -60,7 +60,7 @@ Neexistuje integrovaná metoda pro obnovení celého serveru. Příklad toho, ja
 > [!IMPORTANT]
 > Chcete-li provést obnovení pomocí automatizovaných záloh, musíte být členem role Přispěvatel SQL Server v předplatném nebo se jednat o vlastníka předplatného. Další informace naleznete v části [RBAC: předdefinované role](../role-based-access-control/built-in-roles.md). Obnovení můžete provést pomocí Azure Portal, PowerShellu nebo REST API. Nemůžete použít jazyk Transact-SQL.
 
-## <a name="point-in-time-restore"></a>Obnovení k určitému časovému okamžiku
+## <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
 
 K dřívějšímu bodu v čase můžete pomocí Azure Portal, [PowerShellu](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)nebo [REST API](https://docs.microsoft.com/rest/api/sql/databases)obnovit samostatnou databázi ve fondu nebo instanci. Požadavek může pro obnovenou databázi zadat libovolnou úroveň služby nebo výpočetní velikost. Ujistěte se, že na serveru, na který obnovujete databázi, máte dostatečné prostředky. Po dokončení obnovení vytvoří novou databázi na stejném serveru jako původní databázi. Obnovená databáze se účtuje za normálních sazeb na základě její úrovně služeb a výpočetní velikosti. Dokud se obnovení databáze nedokončí, neúčtují se vám žádné poplatky.
 
@@ -145,7 +145,7 @@ Z Azure Portal vytvoříte novou databázi jedné nebo spravované instance a vy
 
 Pokud chcete geograficky obnovit jednu databázi SQL z Azure Portal v oblasti a na zvoleném serveru, postupujte takto:
 
-1. Z **řídicího panelu**vyberte **přidat**  > **vytvořit SQL Database**. Na kartě **základy** zadejte požadované informace.
+1. Z **řídicího panelu**vyberte **přidat** > **vytvořit SQL Database**. Na kartě **základy** zadejte požadované informace.
 2. Vyberte **Další nastavení**.
 3. Pro možnost **použít existující data**vyberte **zálohování**.
 4. V části **zálohování**vyberte zálohu ze seznamu dostupných záloh geografického obnovení.
@@ -218,11 +218,11 @@ Chcete-li obnovit databázi spravované instance, přečtěte si téma [Restore-
   | [Get-AzSqlInstanceDatabase](/powershell/module/az.sql/get-azsqlinstancedatabase) | Načte databázi instance. |
   | [Obnovit – AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase) |Obnoví databázi instance. |
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 
 Postup obnovení jedné nebo sdružené databáze pomocí REST API:
 
-| API | Popis |
+| Rozhraní API | Popis |
 | --- | --- |
 | [REST (createMode = obnovení)](https://docs.microsoft.com/rest/api/sql/databases) |Obnoví databázi. |
 | [Získat stav databáze pro vytvoření nebo aktualizaci](https://docs.microsoft.com/rest/api/sql/operations) |Vrátí stav během operace obnovení. |

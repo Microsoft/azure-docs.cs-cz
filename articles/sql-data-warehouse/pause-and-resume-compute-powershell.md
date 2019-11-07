@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Pozastavení a obnovení výpočtů v Azure SQL Data Warehouse – PowerShell | Microsoft Docs'
+title: 'Rychlý Start: pozastavení & obnovení výpočetní prostředí – PowerShell '
 description: Pomocí PowerShellu můžete pozastavit výpočetní prostředí v Azure SQL Data Warehouse a ušetřit tak náklady. Až budete připraveni k používání datového skladu, obnovte výpočetní prostředky.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,26 +10,27 @@ ms.subservice: manage
 ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: da9c3d42919bba6ce04fc54bafc2fb5d245379f5
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 2ad83e51a11e08373f2132e861ec1c8f3ac20458
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306088"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686009"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-azure-powershell"></a>Rychlý start: Pozastavení a obnovení výpočtů v Azure SQL Data Warehouse s využitím Azure PowerShell
+# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-azure-powershell"></a>Rychlý Start: pozastavení a obnovení výpočtů ve Azure SQL Data Warehouse s využitím Azure PowerShell
 
 Pomocí PowerShellu můžete pozastavit výpočetní prostředí v Azure SQL Data Warehouse a ušetřit tak náklady. Až budete připraveni k používání datového skladu, [obnovte výpočetní](sql-data-warehouse-manage-compute-overview.md) prostředky.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 V tomto rychlém startu se předpokládá, že už máte SQL Data Warehouse, které můžete pozastavit a obnovit. Pokud ho potřebujete vytvořit, můžete vytvořit datový sklad s názvem **mySampleDataWarehouse**pomocí [Vytvoření a připojení – portál](create-data-warehouse-portal.md) .
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
 Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) a postupujte podle pokynů na obrazovce.
 
@@ -55,8 +56,8 @@ Vyhledejte název databáze, název serveru a skupinu prostředků pro datový s
 
 Informace o umístění vašeho datového skladu vyhledáte pomocí následujících kroků.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Na webu Azure Portal klikněte vlevo na **Databáze SQL**.
+1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
+2. Na levé stránce webu Azure Portal klikněte na **Databáze SQL**.
 3. Na stránce **Databáze SQL** vyberte **mySampleDataWarehouse**. Otevře se datový sklad.
 
     ![Název serveru a skupina prostředků](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
@@ -134,7 +135,7 @@ Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 5. Pokud chcete odebrat skupinu prostředků, klikněte na **myResourceGroup** a pak klikněte na **Odstranit skupinu prostředků**.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Nyní jste pozastavili a obnovili výpočetní výkon pro datový sklad. Další informace o službě Azure SQL Data Warehouse najdete v kurzu načítání dat.
 

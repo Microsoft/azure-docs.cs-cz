@@ -8,27 +8,25 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0d848027d6c754df371b4d87cf01c5b2fdbc8c02
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 7fb436ef8d915898bc8f36dd10766e71f63e4a59
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820736"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73575570"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Nastavení Azure Monitor pro aplikaci v Pythonu (Preview)
 
 Azure Monitor podporuje distribuované trasování, shromažďování metrik a protokolování aplikací Pythonu prostřednictvím integrace s [OpenCensus](https://opencensus.io). Tento článek vás provede procesem nastavení OpenCensus pro Python a odeslání dat monitorování do Azure Monitor.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 - Instalace Pythonu Tento článek používá [Python 3.7.0](https://www.python.org/downloads/), i když starší verze budou nejspíš fungovat s menšími změnami.
 
-
-
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Vytvoření prostředku Application Insights v Azure Monitor
 
@@ -44,9 +42,9 @@ Nejdřív je potřeba vytvořit prostředek Application Insights v Azure Monitor
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název, který identifikuje aplikaci, kterou sledujete |
    | **Skupina prostředků**     | myResourceGroup      | Název nové skupiny prostředků pro hostování Application Insightsch dat |
-   | **Umístění** | USA – východ | Umístění poblíž vaší oblasti nebo poblíž místa, kde je vaše aplikace hostována |
+   | **Umístění** | Východ USA | Umístění poblíž vaší oblasti nebo poblíž místa, kde je vaše aplikace hostována |
 
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 ## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Instrumentace se sadou OpenCensus Python SDK pro Azure Monitor
 
@@ -55,6 +53,8 @@ Instalace OpenCensus Azure Monitor vývozců:
 ```console
 python -m pip install opencensus-ext-azure
 ```
+
+Úplný seznam balíčků a integrací najdete v tématu [OpenCensus Packages](https://docs.microsoft.com/azure/azure-monitor/app/nuget#common-packages-for-python-using-opencensus).
 
 > [!NOTE]
 > Příkaz `python -m pip install opencensus-ext-azure` předpokládá, že máte nastavenou sadu proměnných `PATH` prostředí pro instalaci Pythonu. Pokud jste tuto proměnnou nenakonfigurovali, musíte zadat úplnou cestu k adresáři, kde se nachází spustitelný soubor Pythonu. Výsledkem je příkaz podobný tomuto: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure`.
@@ -127,6 +127,10 @@ Sada SDK používá tři Azure Monitor vývozců k posílání různých typů t
     ```
 
 4. Když teď spouštíte skript Pythonu, měli byste být pořád vyzváni k zadání hodnot, ale v prostředí se tiskne jenom hodnota. Vytvořený `SpanData` bude odeslán do Azure Monitor. Data emitovaného rozsahu můžete najít v části `dependencies`.
+
+5. Informace o vzorkování v OpenCensus se podíváme na [vzorkování v OpenCensus](https://docs.microsoft.com/azure/azure-monitor/app/sampling#configuring-fixed-rate-sampling-in-opencensus-python).
+
+6. Podrobnosti o korelaci telemetrie v datech trasování najdete v [korelaci telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)OpenCensus.
 
 ### <a name="metrics"></a>Metriky
 
@@ -229,7 +233,7 @@ Sada SDK používá tři Azure Monitor vývozců k posílání různých typů t
         main()
     ```
 
-4. Exportér pošle data metriky Azure Monitor v pevném intervalu. Výchozí hodnota je každých 15 sekund. Sledujeme jednu metriku, takže tato data metriky s libovolným hodnotou a časovým razítkem, které obsahuje, se budou posílat každý interval. Data najdete v části `customMetrics`.
+4. Exportér pošle data metriky Azure Monitor v pevném intervalu. Výchozí hodnota je každých 15 sekund. Sledujeme jednu metriku, takže tato data metriky s libovolným hodnotou a časovým razítkem, které obsahuje, se budou posílat každý interval. Data můžete najít v části `customMetrics`.
 
 ### <a name="logs"></a>Protokoly
 
@@ -290,7 +294,9 @@ Sada SDK používá tři Azure Monitor vývozců k posílání různých typů t
         main()
     ```
 
-4. Exportér odešle data protokolu do Azure Monitor. Data najdete v části `traces`.
+4. Exportér odešle data protokolu do Azure Monitor. Data můžete najít v části `traces`.
+
+5. Podrobnosti o tom, jak rozšířit protokoly pomocí dat kontextu trasování, najdete v tématu OpenCensus Python [logs Integration](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation).
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>Zahájení monitorování na webu Azure Portal
 
@@ -325,14 +331,14 @@ Data telemetrie, která byla odeslána z vaší aplikace, můžete zobrazit pros
 V seznamu pod položkou **aktivní**:
 
 - U telemetrie odeslaných pomocí Azure Monitorho vývozce trasování se příchozí žádosti zobrazí v části `requests`. Odchozí nebo vnitroprocesové požadavky se zobrazují v části `dependencies`.
-- V případě telemetrie odeslaných pomocí Azure Monitorů pro export metrik se v části `customMetrics` zobrazí metriky.
+- V případě telemetrie odeslaných pomocí Azure Monitorů pro export metrik se v části `customMetrics`zobrazí metriky.
 - U telemetrie odesílaných pomocí Azure Monitorch protokolů se zobrazí protokoly v části `traces`. Výjimky se zobrazí v části `exceptions`.
 
 Podrobnější informace o používání dotazů a protokolů najdete [v tématu protokoly v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs).
 
 ## <a name="learn-more-about-opencensus-for-python"></a>Další informace o OpenCensus pro Python
 
-* [OpenCensus Python na GitHubu](https://github.com/census-instrumentation/opencensus-python)
+* [OpenCensus Python on GitHub](https://github.com/census-instrumentation/opencensus-python)
 * [Uživatelských](https://github.com/census-instrumentation/opencensus-python/blob/master/README.rst#customization)
 * [Integrace na baňce](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-flask)
 * [Integrace Django](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-django)

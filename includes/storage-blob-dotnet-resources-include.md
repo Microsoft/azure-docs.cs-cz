@@ -9,11 +9,11 @@ ms.date: 07/11/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: d72915cc8a96dd2593f640045da71d4569efa60c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69011958"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73590531"
 ---
 ## <a name="resources-for-development-with-net"></a>Prostředky pro vývoj s využitím .NET
 
@@ -25,7 +25,7 @@ Odkazy níže poskytují užitečné prostředky pro vývojáře pomocí Azure S
 - [Zdrojový kód knihovny](https://github.com/Azure/azure-storage-net/tree/master/Common)
 - [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
 
-### <a name="blob-storage-apis"></a>Úložiště objektů BLOB rozhraní API
+### <a name="blob-storage-apis"></a>Rozhraní API pro úložiště objektů BLOB
 
 - [Referenční dokumentace k rozhraní API](/dotnet/api/overview/azure/storage/client)
 - [Zdrojový kód knihovny](https://github.com/Azure/azure-storage-net/tree/master/Blob)

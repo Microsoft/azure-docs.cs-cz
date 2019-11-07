@@ -1,5 +1,5 @@
 ---
-title: Co je Windows Virtual Desktop?  – Azure
+title: Co je Windows Virtual Desktop? – Azure
 description: Přehled virtuálního klienta Windows
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: e1ae0501e2a558967b7d53229dc629e035c5e067
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 058cf516fd8d10cef1e1c93e5493f8c19bdc679d
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597906"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607485"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop? 
 
@@ -64,7 +64,7 @@ K dispozici je několik věcí, které potřebujete k nastavení virtuální plo
 
 Plánujeme přidat podporu pro následující operačních systémech, takže se ujistěte, že máte [příslušné licence](https://azure.microsoft.com/pricing/details/virtual-desktop/) pro uživatele na základě plochy a aplikací, které plánujete nasadit:
 
-|OS|Požadovaná licence|
+|Operační systém|Požadovaná licence|
 |---|---|
 |Windows 10 Enterprise s více relacemi nebo Windows 10 Enterprise|Microsoft 365 E3, E5, a3, A5, F1, Business<br>Windows E3, E5, a3, A5|
 |Windows 7 Enterprise |Microsoft 365 E3, E5, a3, A5, F1, Business<br>Windows E3, E5, a3, A5|
@@ -134,7 +134,7 @@ Dostupné možnosti automatizace a nasazení závisí na tom, který operační 
 |Více relací Windows 10, verze 1809|Ano|Ano|Ne|Ne|Automaticky|
 |Windows 10 Enterprise, verze 1903|Ano|Ano|Ano|Ano|Automaticky|
 |Windows 10 Enterprise, verze 1809|Ano|Ano|Ne|Ne|Automaticky|
-|Windows 7 Enterprise|Ano|Ano|Ne|Ne|Manual|
+|Windows 7 Enterprise|Ano|Ano|Ne|Ne|Ruční|
 |Windows Server 2019|Ano|Ano|Ne|Ne|Automaticky|
 |Windows Server 2016|Ano|Ano|Ano|Ano|Automaticky|
 |Windows Server 2012 R2|Ano|Ano|Ne|Ne|Automaticky|

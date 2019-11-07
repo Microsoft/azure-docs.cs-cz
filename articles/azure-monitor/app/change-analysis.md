@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: 3805d7b39c25bcb213a1d4f110161dcd00eb3630
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: dc572d29b4e6d95525959becad0ed8069735e33c
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678250"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605987"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Použití analýzy změn aplikace (Preview) v Azure Monitor
 
@@ -37,7 +37,7 @@ V současné době se analýza změn integruje do **diagnostiky a řešení prob
 
 Pomocí [Azure Resource graphu](https://docs.microsoft.com/azure/governance/resource-graph/overview)vám analýza změn poskytuje historický záznam o tom, jak se prostředky Azure, které hostují vaši aplikaci, v průběhu času změnily. Změna analýz může například rozpoznat změny v pravidlech konfigurace protokolu IP, spravovaných identit a nastavení SSL. Takže pokud je do webové aplikace přidána značka, změny se projeví v analýze. Tyto informace jsou k dispozici, pokud je poskytovatel prostředků `Microsoft.ChangeAnalysis` v předplatném Azure povolený.
 
-### <a name="changes-in-web-app-deployment-and-configuration"></a>Změny v nasazení a konfiguraci webové aplikace
+### <a name="changes-in-web-app-deployment-and-configuration-in-guest-changes"></a>Změny v nasazení a konfiguraci webové aplikace (změny v hostu)
 
 Změna analýz zachytí stav nasazení a konfigurace aplikace každé 4 hodiny. Může zjistit například změny v proměnných prostředí aplikace. Nástroj počítá rozdíly a prezentuje, co se změnilo. Na rozdíl od Správce prostředků změn nemusí být informace o změně nasazení kódu v nástroji k dispozici okamžitě. Chcete-li zobrazit nejnovější změny v rámci analýzy změn, vyberte **nyní možnost Prohledat změny**.
 
@@ -51,10 +51,32 @@ V současné době jsou podporovány následující závislosti:
 - Azure Storage
 - Azure SQL
 
+## <a name="viewing-changes-for-all-resources-in-azure"></a>Zobrazení změn pro všechny prostředky v Azure
+V Azure Monitor je k dispozici samostatné okno pro analýzu změn pro zobrazení všech změn se zdroji informací o prostředcích a přehledech.
+
+Pokud chcete spustit okno, na panelu hledání na Azure Portal vyhledejte analýzu změn.
+
+![Snímek obrazovky s vyhledáváním analýzy změn v Azure Portal](./media/change-analysis/search-change-analysis.png)
+
+Vyberte skupinu prostředků a prostředky, abyste mohli začít zobrazovat změny.
+
+![Snímek obrazovky okna pro změnu analýzy v Azure Portal](./media/change-analysis/change-analysis-standalone-blade.png)
+
+Můžete si prohlédnout přehledy a související prostředky, které hostují vaši aplikaci. Toto zobrazení je určené pro vývojáře zaměřené na aplikace, aby mohl řešit problémy.
+
+Aktuálně podporované prostředky zahrnují:
+- Virtuální počítače
+- Sada škálování virtuálních počítačů
+- Síťové prostředky Azure
+- Webová aplikace se změnami sledování souborů a proměnných prostředí v hostovi
+
+U jakékoli zpětné vazby použijte tlačítko Odeslat zpětnou vazbu v okně nebo changeanalysisteam@microsoft.come-mailu. 
+
+![Snímek obrazovky s tlačítkem zpětné vazby v okně pro změnu analýzy](./media/change-analysis/change-analysis-feedback.png)
 
 ## <a name="change-analysis-for-the-web-apps-feature"></a>Změna analýzy pro funkci Web Apps
 
-V Azure Monitor je analýza změn v současnosti integrovaná v rámci samoobslužné **diagnostiky a řešení problémů** . K tomuto prostředí se dostanete ze stránky **Přehled** vaší aplikace App Service.
+V Azure Monitor je analýza změn integrovaná i v prostředí pro samoobslužnou **diagnostiku a řešení problémů** . K tomuto prostředí se dostanete ze stránky **Přehled** vaší aplikace App Service.
 
 ![Snímek obrazovky s tlačítkem "Přehled" a "diagnostikovat a řešit problémy"](./media/change-analysis/change-analysis.png)
 
@@ -77,7 +99,7 @@ V Azure Monitor je analýza změn v současnosti integrovaná v rámci samoobslu
     ![Snímek obrazovky s uživatelským rozhraním povolit analýzu změn](./media/change-analysis/change-analysis-on.png)
 
 
-1. Chcete-li získat přístup k analýze změn, vyberte možnost **Diagnostika a řešení problémů**  > **dostupnosti a výkonu**  > **selhání aplikace**. Zobrazí se graf, který shrnuje typ změn v průběhu času spolu s podrobnostmi o těchto změnách:
+1. Chcete-li získat přístup k analýze změn, vyberte možnost **Diagnostika a řešení problémů** > **dostupnosti a výkonu** > **selhání aplikace**. Zobrazí se graf, který shrnuje typ změn v průběhu času spolu s podrobnostmi o těchto změnách:
 
      ![Snímek obrazovky se zobrazením rozdílů změn](./media/change-analysis/change-view.png)
 

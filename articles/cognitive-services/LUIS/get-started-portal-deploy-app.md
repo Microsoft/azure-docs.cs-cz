@@ -1,26 +1,25 @@
 ---
 title: 'Rychlý Start: nasazení aplikace pomocí portálu LUIS'
 titleSuffix: Azure Cognitive Services
-description: Naučte se, jak nasadit aplikaci LUIS do koncového bodu předpovědi poté, co je aplikace připravená na vrácení utterance předpovědi do klientské aplikace, jako je například robot pro chat. V tomto rychlém startu se dozvíte, jak nasadit aplikaci tím, že vytvoříte prostředek koncového bodu předpovědi, přiřadíte ho k aplikaci, poškolením aplikace a publikujete aplikaci.
+description: V tomto rychlém startu se dozvíte, jak nasadit aplikaci vytvořením prostředku koncového bodu předpovědi, přiřazení prostředku, školení a publikování aplikace.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 10/17/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: ecae5c7db02436fe34fec19989f174504fd1e03a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 279ec4e8a6d9a9d473cc511b4ec690391cdbd634
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488714"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669426"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Rychlý Start: nasazení aplikace na portálu LUIS
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
-
+[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 Když je vaše aplikace LUIS připravená na vrácení utterance předpovědi do klientské aplikace (například robota chatu), musíte aplikaci nasadit do koncového bodu předpovědi.
 
@@ -35,22 +34,23 @@ V tomto rychlém startu se naučíte nasadit aplikaci. Vytvoříte prostředek k
 
 V Azure Portal vytvoříte prostředek koncového bodu předpovědi. Tento prostředek by se měl používat jenom pro dotazy předpovědi koncových bodů. Nepoužívejte tento prostředek k vytváření změn v aplikaci.
 
-1. Přihlaste se k webu [Azure Portal](https://ms.portal.azure.com/).
-
-1. V levém horním panelu vyberte symbol zelený **+** . Vyhledejte `Cognitive Services` na webu Marketplace a vyberte ji.
+1. Přihlaste se a vytvořte prostředek v [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne).
 
 1. Nakonfigurujte předplatné s následujícím nastavením:
 
    |Nastavení|Hodnota|Účel|
    |--|--|--|
-   |Name (Název)|`my-cognitive-service-resource`|Název prostředku Azure. Tento název budete potřebovat při přiřazení prostředku k aplikaci na portálu LUIS.|
+   |Name (Název)|`my-luis-resource`|Název prostředku Azure. Tento název budete potřebovat při přiřazení prostředku k aplikaci na portálu LUIS.|
    |Předplatné|Vaše předplatné|Vyberte jedno z předplatných přidružených k vašemu účtu.|
-   |Umístění|**Západní USA**|Oblast Azure pro tento prostředek.|
-   |Cenová úroveň|**S0**|Výchozí cenová úroveň pro tento prostředek.|
-   |Skupina prostředků|`my-cognitive-service-resource-group`|Vytvořte novou skupinu prostředků pro všechny prostředky služby vnímání. Až budete s prostředky hotovi, můžete odstranit skupinu prostředků, abyste mohli vyčistit své předplatné. |
+   |Skupina prostředků|`my-resource-group`|Vytvořte novou skupinu prostředků pro všechny prostředky služby vnímání. Až budete s prostředky hotovi, můžete odstranit skupinu prostředků, abyste mohli vyčistit své předplatné. |
+   |Umístění pro vytváření obsahu|**Západní USA**|Oblast Azure pro vytváření obsahu.|
+   |Vytváření cenové úrovně|**F0**|Výchozí cenová úroveň pro vytváření obsahu.|
+   |Umístění modulu runtime|**Západní USA**|Oblast Azure pro předpověď dotazů na koncový bod.|
+   |Cenová úroveň za běhu|**S0**|Tato cenová úroveň poskytuje weby s vysokým provozem.|
    | | | |
 
-   ![Volba rozhraní API Azure](./media/get-started-portal-deploy-app/create-cognitive-services-resource.png)
+
+   ![Volba rozhraní API Azure](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
 
 1. Vyberte **vytvořit** a vytvořte prostředek Azure.
 
@@ -66,31 +66,27 @@ Pokaždé, když vytvoříte nový prostředek pro LUIS, je potřeba přiřadit 
 
 1. Chcete-li přidat LUIS, vyberte **Přidat prostředek předpovědi**.
 
-    <!-- TBD: get screenshot-->
+    ![Pokud chcete přidat prostředek předpovědi LUIS, vyberte Přidat prostředek předpovědi.](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
 
 1. Vyberte svého tenanta, předplatné a název prostředku. Vyberte **přiřadit prostředek**.
 
    ![Přiřazení prostředku k aplikaci](./media/get-started-portal-deploy-app/assign-resource.png)
 
-1. Vyhledejte nový řádek v tabulce a zkopírujte adresu URL koncového bodu. Je správně vytvořen tak, aby `HTTP GET` požadavek na koncový bod rozhraní API LUIS pro předpověď.
+1. Při přidávání klíčového obsahu do aplikace proveďte stejný postup.
 
-## <a name="train-and-publish-the-app"></a>Trénování a publikování aplikace
+1. Vyhledejte nový řádek v tabulce pro nový prostředek předpovědi a zkopírujte adresu URL koncového bodu. Je správně vytvořen tak, aby `HTTP GET` požadavek na koncový bod rozhraní API LUIS pro předpověď.
 
-Jakmile budete připraveni na jeho testování, prohlaste si aplikaci. Publikujte aplikaci, pokud chcete, aby byla aktuálně proučená verze dostupná pro klientské aplikace z modulu runtime koncového bodu předpovědi dotazů.
+## <a name="train-the-app"></a>Trénování aplikace
 
-1. Pokud se aplikace nepoužívá, vyberte v nabídce vpravo nahoře možnost **vlak** .
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-1. V horní nabídce vyberte **publikovat** . Vyberte produkční slot a publikujte.
+## <a name="publish-the-app-to-the-prediction-endpoint"></a>Publikování aplikace do koncového bodu předpovědi
 
-1. Po zobrazení oznamovacího panelu se publikování dokončí.
-
-1. Na stránce Spravovat **prostředky Azure** oddílu Najděte seznam přiřazených prostředků a odpovídajících adres URL koncových bodů.
-
-1. Zkopírujte ukázkový dotaz do okna prohlížeče a přidejte své uživatelské utterance jako parametr `query`.
+[!INCLUDE [LUIS How to Train steps](includes/howto-publish.md)]
 
 ## <a name="prediction-endpoint-request"></a>Požadavek koncového bodu předpovědi
 
-`query=` na konci adresy URL je krátká pro **dotaz** a je místo, kde se k žádosti Get připojí utterance uživatele. Po `query=`zadejte stejný utterance uživatele, který jste použili na konci předchozího rychlého startu:
+`query=` na konci adresy URL je místo, kde se uživateli připojí utterance k žádosti o získání. Po `query=`zadejte stejný utterance uživatele, který jste použili na konci předchozího rychlého startu:
 
 ```Is there a form named hrf-234098```
 
@@ -138,15 +134,13 @@ V prohlížeči se zobrazí odpověď:
 }
 ```
 
-Chcete-li zobrazit stejnou úroveň informací v podokně test, je nutné aplikaci publikovat. Po publikování aplikace vyberte v podokně test možnost **Porovnat s publikováním** . Pokud chcete zobrazit stejný kód JSON jako předchozí krok, použijte **zobrazení zobrazit JSON** v publikovaném podokně test. Tímto způsobem můžete porovnat aktuální aplikaci, na které pracujete, s aplikací, která je publikovaná do koncového bodu.
+Chcete-li zobrazit stejnou úroveň informací v podokně test, je nutné aplikaci publikovat. Po publikování aplikace vyberte v podokně test možnost **Porovnat s publikováním** . Pokud chcete zobrazit stejný kód JSON jako předchozí krok, použijte **zobrazení zobrazit JSON** v publikovaném podokně test. Tímto způsobem můžete porovnat změny aktuální aplikace, na které pracujete, s aplikací, která je publikovaná do koncového bodu.
 
 [![porovnat aktuálně upravované a publikované verze aplikace](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Až budete s tímto rychlým startem hotovi, vyberte **Moje aplikace** z horní navigační nabídky. V seznamu vyberte zaškrtávací políčko aplikace a pak na panelu nástrojů kontextu nad seznamem vyberte **Odstranit** .
-
-[![odstranit aplikaci ze seznamu Moje aplikace](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
 ## <a name="next-steps"></a>Další kroky
 

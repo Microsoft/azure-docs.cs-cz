@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1985c596b9f4b9b78b0055bfe1eab9888c30e201
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9e3915a2f55680fc2e24ac63d5e7170ada026c2e
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489731"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615172"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Vytváření a Správa pracovních prostorů Azure Machine Learning v Azure Portal
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,13 +30,13 @@ K vytvoření pracovního prostoru potřebujete předplatné Azure. Pokud ješt�
 
 1. V levém horním rohu Azure Portal vyberte **+ vytvořit prostředek**.
 
-      ![Vytvoření nového prostředku](../../../includes/media/aml-create-in-portal/portal-create-resource.png)
+      ![Vytvoření nového prostředku](../../../includes/media/aml-create-in-portal/create-workspace.gif)
 
-1. Pomocí panelu hledání vyhledejte **Machine Learning pracovní prostor služby**.
+1. K vyhledání **Machine Learning**použijte panel hledání.
 
-1. Vyberte **Machine Learning pracovní prostor služby**.
+1. Vyberte **Machine Learning**.
 
-1. V podokně **pracovní prostor služby Machine Learning** vyberte **vytvořit** a začněte.
+1. V podokně **Machine Learning** vyberte **vytvořit** a začněte.
 
 1. Zadáním následujících informací nakonfigurujte nový pracovní prostor:
 
@@ -89,18 +89,15 @@ Pracovní prostor můžete upgradovat ze sady Basic Edition na Enterprise Editio
 
 ## <a name="view"></a>Najít pracovní prostor
 
-1. V levém horním rohu portálu vyberte **všechny služby**.
+1. Do pole nejvyšší hledání zadejte **Machine Learning**.  
 
-1. Do pole Filtr **všech služeb** zadejte **Machine Learning**.  
+1. Vyberte **Machine Learning**.
 
-1. Vyberte **Azure Machine Learning**.
-
-   ![Vyhledat Azure Machine Learning pracovní prostor](media/how-to-manage-workspace/all-services.png)
+   ![Vyhledat Azure Machine Learning pracovní prostor](media/how-to-manage-workspace/find-workspaces.png)
 
 1. Prohlédněte si seznam pracovních prostorů, které se našly. Můžete filtrovat podle předplatného, skupin prostředků a umístění.  
 
 1. Vyberte pracovní prostor, ve kterém chcete zobrazit jeho vlastnosti.
-   vlastnosti ![pracovního prostoru](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
 
 ## <a name="delete-a-workspace"></a>Odstranění pracovního prostoru
 

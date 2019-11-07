@@ -1,6 +1,6 @@
 ---
 title: Spotřebovat webovou službu
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Po nasazení služby Machine Learning z Azure Machine Learning Studio (Classic) je možné webovou službu RESTFul spotřebovat buď jako službu požadavků a odpovědí v reálném čase, nebo jako na službu spuštění služby Batch.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: a5f73e9814adeb44c2838a1fd3bd9c9fd34d4de5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b955b274f3e96eab7e6075b0e966117c2871bbf8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493308"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671423"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>Jak využívat webovou službu Azure Machine Learning Studio (Classic)
 
@@ -24,7 +24,7 @@ Po nasazení prediktivního modelu Azure Machine Learning Studio (Classic) jako 
 Další informace o tom, jak vytvořit a nasadit webovou službu Machine Learning pomocí Machine Learning Studio (Classic), najdete tady:
 
 * Kurz o tom, jak vytvořit experiment v Machine Learning Studio (Classic), najdete v tématu [Vytvoření prvního experimentu](create-experiment.md).
-* Podrobnosti o tom, jak nasadit webovou službu, najdete v tématu [nasazení webové služby Machine Learning](publish-a-machine-learning-web-service.md).
+* Podrobnosti o tom, jak nasadit webovou službu, najdete v tématu [nasazení webové služby Machine Learning](deploy-a-machine-learning-web-service.md).
 * Další informace o Machine Learning obecně najdete v [centru dokumentace Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/).
 
 
@@ -32,12 +32,12 @@ Další informace o tom, jak vytvořit a nasadit webovou službu Machine Learnin
 ## <a name="overview"></a>Přehled
 U Azure Machine Learning webové služby komunikuje externí aplikace s modelem bodování Machine Learning pracovního postupu v reálném čase. Volání webové služby Machine Learning vrátí výsledky předpovědi do externí aplikace. Chcete-li provést volání webové služby Machine Learning, předejte klíč rozhraní API, který je vytvořen při nasazení předpovědi. Webová služba Machine Learning je založena na REST, na základě oblíbené architektury pro projekty webového programování.
 
-TNelze načíst Classic verze Azure Machine Learning Studio má dva typy služeb:
+Klasická verze Azure Machine Learning Studio má dva typy služeb:
 
 * Služba Request-response (RR) – nízká latence, vysoce škálovatelná služba, která poskytuje rozhraní pro bezstavové modely vytvořené a nasazené z Machine Learning Studio (Classic).
 * Služba batch execution (BES) – asynchronní služba, která vyrovnává dávku datových záznamů.
 
-Další informace o Machine Learning webových služeb najdete v tématu [nasazení webové služby Machine Learning](publish-a-machine-learning-web-service.md).
+Další informace o Machine Learning webových služeb najdete v tématu [nasazení webové služby Machine Learning](deploy-a-machine-learning-web-service.md).
 
 ## <a name="get-an-authorization-key"></a>Získat autorizační klíč
 Při nasazení experimentu se vygenerují klíče rozhraní API pro webovou službu. Klíče můžete načíst z několika míst.

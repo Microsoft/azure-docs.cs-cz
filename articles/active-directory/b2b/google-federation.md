@@ -5,31 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 11/1/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b26679542753d5fb429c33e4220c23a3937c5cb
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 68acf32660fe36ddd4c2982b818ce21adde7ddab
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430435"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603599"
 ---
-# <a name="add-google-as-an-identity-provider-for-b2b-guest-users-preview"></a>Přidat Google jako zprostředkovatele identity pro uživatele typu Host B2B (Preview)
+# <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Přidat Google jako zprostředkovatele identity pro uživatele typu Host B2B
 
-|     |
-| --- |
-| Google Federation je funkce Azure Active Directory veřejné verze Preview. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+Nastavením federace s Google můžete pozvaným uživatelům přihlašovat se ke sdíleným aplikacím a prostředkům pomocí vlastních účtů Gmail, aniž byste museli vytvářet účty Microsoft (účty spravované služby). 
 
-Nastavením federace s Google můžete pozvaným uživatelům přihlašovat se ke sdíleným aplikacím a prostředkům s vlastními účty Gmail, aniž byste museli vytvářet účty Microsoft (účty spravované služby) nebo účty Azure AD. Google Federation je navržený speciálně pro uživatele gmail. K federovatí s doménami G Suite místo toho použijte [funkci Direct Federation](direct-federation.md) .
 > [!NOTE]
-> Uživatelé typu Host Google se musí přihlásit pomocí odkazu, který zahrnuje kontext tenanta (například `https://myapps.microsoft.com/?tenantid=<tenant id>` nebo `https://portal.azure.com/<tenant id>` nebo v případě ověřené domény, `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Přímé odkazy na aplikace a prostředky fungují i tak dlouho, dokud budou zahrnovat kontext tenanta. Uživatelé typu Host se aktuálně nemohou přihlašovat pomocí koncových bodů, které nemají kontext tenanta. Například použití `https://myapps.microsoft.com`, `https://portal.azure.com` nebo společného koncového bodu týmů způsobí chybu.
- 
+> Google Federation je navržený speciálně pro uživatele gmail. K federovatí s doménami G Suite použijte [funkci Direct Federation](direct-federation.md).
+
 ## <a name="what-is-the-experience-for-the-google-user"></a>Jaké jsou možnosti pro uživatele Google?
 Když odešlete pozvánku uživateli Google Gmail, měl by uživatel typu Host přistupovat ke sdíleným aplikacím nebo prostředkům pomocí odkazu, který zahrnuje kontext tenanta. Jejich možnosti se liší v závislosti na tom, jestli jsou už přihlášení k Google:
   - Pokud uživatel typu Host není přihlášený k Google, zobrazí se výzva k přihlášení do Google.
@@ -39,9 +35,22 @@ Pokud uživatel typu Host uvidí chybu "záhlaví je příliš dlouhá", může 
 
 ![Snímek obrazovky zobrazující přihlašovací stránku Google](media/google-federation/google-sign-in.png)
 
+## <a name="limitations"></a>Omezení
+
+Týmy plně podporují uživatele typu Host Google na všech zařízeních. Uživatelé Google se můžou přihlásit ke týmům ze společného koncového bodu, jako je `https://teams.microsoft.com`.
+
+Společné koncové body jiných aplikací možná nepodporují uživatele Google. Uživatelé typu Host Google se musí přihlásit pomocí odkazu, který obsahuje informace o vašem tenantovi. Následují příklady:
+  * `https://myapps.microsoft.com/?tenantid=<your tenant id>`
+  * `https://portal.azure.com/<your tenant id>`
+  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
+
+   Pokud se uživatelé Google Guest pokusí použít odkaz, jako je `https://myapps.microsoft.com` nebo `https://portal.azure.com`, zobrazí se mu chyba.
+
+Uživatelům Google hosta můžete také poskytnout přímý odkaz na aplikaci nebo prostředek, pokud tento odkaz obsahuje vaše informace o tenantovi, například `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`. 
+
 ## <a name="step-1-configure-a-google-developer-project"></a>Krok 1: konfigurace projektu pro vývojáře Google
 Nejdřív vytvořte nový projekt v konzole pro vývojáře Google, abyste získali ID klienta a tajný klíč klienta, které můžete později přidat do Azure AD. 
-1. Přejít na rozhraní Google API na https://console.developers.google.com a přihlásit se pomocí svého účtu Google. Doporučujeme použít sdílený týmový účet Google.
+1. V https://console.developers.google.commůžete přejít na rozhraní Google API a přihlásit se pomocí svého účtu Google. Doporučujeme použít sdílený týmový účet Google.
 2. Vytvořit nový projekt: na řídicím panelu vyberte **vytvořit projekt**a pak vyberte **vytvořit**. Na stránce Nový projekt zadejte **název projektu**a pak vyberte **vytvořit**.
    
    ![Snímek obrazovky s novou stránkou projektu pro Google](media/google-federation/google-new-project.png)
@@ -58,7 +67,7 @@ Nejdřív vytvořte nový projekt v konzole pro vývojáře Google, abyste získ
 
    ![Snímek obrazovky se sekcí autorizovaných domén](media/google-federation/google-oauth-authorized-domains.png)
 
-6. Vyberte **Save** (Uložit).
+6. Vyberte **Uložit**.
 
 7. Vyberte kartu **přihlašovací údaje** . V nabídce **vytvořit pověření** vyberte **ID klienta OAuth**.
 
@@ -66,14 +75,14 @@ Nejdřív vytvořte nový projekt v konzole pro vývojáře Google, abyste získ
 
 8. V části **Typ aplikace**zvolte **Webová aplikace**a v části **autorizované identifikátory URI pro přesměrování**zadejte následující identifikátory URI:
    - `https://login.microsoftonline.com` 
-   - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(kde `<directory id>` je vaše ID adresáře)
+   - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(kde `<directory id>` je ID vašeho adresáře)
    
      > [!NOTE]
-     > ID adresáře zjistíte tak, že přejdete na https://portal.azure.com a v části **Azure Active Directory**zvolíte **vlastnosti** a zkopírujete **ID adresáře**.
+     > ID adresáře zjistíte tak, že přejdete na https://portal.azure.coma v části **Azure Active Directory**zvolíte **vlastnosti** a zkopírujete **ID adresáře**.
 
    ![Snímek obrazovky s povoleným oddílem identifikátorů URI pro přesměrování](media/google-federation/google-create-oauth-client-id.png)
 
-9. Vyberte **Create** (Vytvořit). Zkopírujte ID klienta a tajný klíč klienta, které budete používat při přidávání zprostředkovatele identity na portálu Azure AD.
+9. Vyberte **Vytvořit**. Zkopírujte ID klienta a tajný klíč klienta, které budete používat při přidávání zprostředkovatele identity na portálu Azure AD.
 
    ![Snímek obrazovky zobrazující ID klienta OAuth a tajný klíč klienta](media/google-federation/google-auth-client-id-secret.png)
 
@@ -81,10 +90,10 @@ Nejdřív vytvořte nový projekt v konzole pro vývojáře Google, abyste získ
 Teď nastavíte ID klienta Google a tajný kód klienta, a to tak, že ho zadáte na portálu Azure AD nebo pomocí PowerShellu. Ujistěte se, že jste otestovali konfiguraci Google Federation, a to tak, že na adresu Gmail pozvánku vyzkoušíte a zkusíte uplatnit pozvání k vašemu pozvanému účtu Google. 
 
 #### <a name="to-configure-google-federation-in-the-azure-ad-portal"></a>Konfigurace Google Federation na portálu Azure AD 
-1. Přejděte na [Azure Portal](https://portal.azure.com). V levém podokně vyberte **Azure Active Directory**. 
+1. Přejděte na [portál Azure](https://portal.azure.com). V levém podokně vyberte **Azure Active Directory**. 
 2. Vyberte **vztahy organizace**.
 3. Vyberte **Zprostředkovatelé identity**a pak klikněte na tlačítko **Google** .
-4. Zadejte název. Pak zadejte ID klienta a tajný klíč klienta, které jste získali dříve. Vyberte **Save** (Uložit). 
+4. Zadejte název. Pak zadejte ID klienta a tajný klíč klienta, které jste získali dříve. Vyberte **Uložit**. 
 
    ![Snímek obrazovky se stránkou přidat poskytovatele identity Google](media/google-federation/google-identity-provider.png)
 
@@ -103,7 +112,7 @@ Teď nastavíte ID klienta Google a tajný kód klienta, a to tak, že ho zadát
 Můžete odstranit nastavení Google Federation. Pokud to uděláte, uživatelé typu Host Google, kteří už tuto pozvánku nastavili, se nebudou moct přihlásit, ale můžete jim dát přístup k prostředkům tak, že je odstraníte z adresáře a znovu je zvete. 
  
 ### <a name="to-delete-google-federation-in-the-azure-ad-portal"></a>Pokud chcete odstranit Google Federation na portálu Azure AD: 
-1. Přejděte na [Azure Portal](https://portal.azure.com). V levém podokně vyberte **Azure Active Directory**. 
+1. Přejděte na [portál Azure](https://portal.azure.com). V levém podokně vyberte **Azure Active Directory**. 
 2. Vyberte **vztahy organizace**.
 3. Vyberte **Zprostředkovatelé identity**.
 4. Na řádku **Google** vyberte kontextovou nabídku ( **...** ) a pak vyberte **Odstranit**. 

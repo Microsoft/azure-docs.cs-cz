@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9bb6bba26fd97a0219f183ffcc67e3e34e3973c8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 42a824863766b5d4d91d9eaa3dad1012f5019f63
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489468"
+ms.locfileid: "73584497"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Proveďte výuku a zaregistrujte model klasifikace Keras pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,11 +29,11 @@ Bez ohledu na to, jestli vyvíjíte model Keras z provozu nebo přenášíte exi
 
 Informace o rozdílech mezi strojovým učením a obsáhlým učením najdete v [koncepčním článku](concept-deep-learning-vs-machine-learning.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Spusťte tento kód v jednom z těchto prostředí:
 
- - Azure Machine Learning výpočetní instance – nepotřebujete žádné soubory ke stažení nebo instalaci
+ - Virtuální počítač s poznámkovým blokem Azure Machine Learning – nemusíte stahovat nebo instalovat
 
      - Dokončete [kurz: instalační prostředí a pracovní prostor](tutorial-1st-experiment-sdk-setup.md) pro vytvoření vyhrazeného serveru poznámkového bloku předem načteného se sadou SDK a s ukázkovým úložištěm.
     - Ve složce Samples na serveru poznámkového bloku najděte dokončený a rozbalený Poznámkový blok tak, že přejdete na tento adresář: **postupy-použití-azureml > školení – with-learning > výuka-keras** .
@@ -84,7 +84,7 @@ exp = Experiment(workspace=ws, name='keras-mnist')
 <a name="data-upload"></a>
 ### <a name="create-a-file-dataset"></a>Vytvoření datové sady souborů
 
-Objekt `FileDataset` odkazuje na jeden nebo více souborů v úložišti dat pracovního prostoru nebo veřejné adresy URL. Soubory mohou být libovolného formátu a třída poskytuje možnost stahovat nebo připojovat soubory do výpočtů. Vytvořením `FileDataset` vytvoříte odkaz na umístění zdroje dat. Pokud jste v sadě dat použili jakékoli transformace, budou uloženy i v datové sadě. Data zůstanou ve svém stávajícím umístění, takže se neúčtují žádné dodatečné náklady na úložiště. Další informace najdete [v průvodci `Dataset`](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets) .
+Objekt `FileDataset` odkazuje na jeden nebo více souborů v úložišti dat pracovního prostoru nebo veřejné adresy URL. Soubory mohou být libovolného formátu a třída poskytuje možnost stahovat nebo připojovat soubory do výpočtů. Vytvořením `FileDataset`vytvoříte odkaz na umístění zdroje dat. Pokud jste v sadě dat použili jakékoli transformace, budou uloženy i v datové sadě. Data zůstanou ve svém stávajícím umístění, takže se neúčtují žádné dodatečné náklady na úložiště. Další informace najdete [v příručce k](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets) `Dataset`mu balíčku.
 
 ```python
 from azureml.core.dataset import Dataset
@@ -98,7 +98,7 @@ web_paths = [
 dataset = Dataset.File.from_files(path=web_paths)
 ```
 
-Pomocí metody `register()` zaregistrujete datovou sadu do svého pracovního prostoru, aby bylo možné je sdílet s ostatními uživateli, znovu použít v různých experimentech a v rámci školicího skriptu, na který se odkazuje podle názvu.
+Pomocí metody `register()` zaregistrujete datovou sadu do svého pracovního prostoru, aby bylo možné je sdílet s ostatními uživateli, znovu použít v různých experimentech a v rámci školicího skriptu označovaného jako název.
 
 ```python
 dataset = dataset.register(workspace=ws,
@@ -142,7 +142,7 @@ dataset = Dataset.get_by_name(ws, 'mnist dataset')
 dataset.to_path()
 ```
 
-TensorFlow Estimator je implementován prostřednictvím obecné třídy [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) , kterou lze použít k podpoře libovolného rozhraní. Kromě toho vytvořte slovník `script_params`, který obsahuje nastavení parametrů DNN. Další informace o školicích modelech pomocí obecného Estimator najdete v tématu [výuka modelů s Azure Machine Learning pomocí Estimator](how-to-train-ml-models.md) .
+TensorFlow Estimator je implementován prostřednictvím obecné [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) třídy, kterou lze použít k podpoře libovolného rozhraní. Kromě toho vytvořte slovník `script_params`, který obsahuje nastavení parametrů DNN. Další informace o školicích modelech pomocí obecného Estimator najdete v tématu [výuka modelů s Azure Machine Learning pomocí Estimator](how-to-train-ml-models.md) .
 
 ```python
 from azureml.train.dnn import TensorFlow

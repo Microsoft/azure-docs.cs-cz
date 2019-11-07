@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66102a92ce279b594d61c8b2d484c89a8532057a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 50af82e79e7ba8b979ab28a1b3f608ec7e41bfb2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172003"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603433"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Povolit přihlašování k neheslovým klíčům zabezpečení (Preview)
 
@@ -50,7 +50,7 @@ Funkce registrace pro metody ověřování nevyužívající hesla jsou závisl�
 
 ### <a name="enable-fido2-security-key-method"></a>Povolit metodu klíče zabezpečení FIDO2
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejděte na **Azure Active Directory** > **zabezpečení** > **metody ověřování** > **zásady ověřování (Preview)** .
 1. V části **klíč zabezpečení FIDO2**metody vyberte následující možnosti:
    1. **Povolit** – Ano nebo ne
@@ -95,7 +95,7 @@ Ve verzi Public Preview není k dispozici zřízení a zrušení zřizování sp
 
 ### <a name="upn-changes"></a>Změny UPN
 
-Pracujeme na podpoře funkce, která umožňuje změnu UPN na hybridních připojených zařízeních Azure AD a na zařízeních připojených k Azure AD. Pokud se změní hlavní název uživatele (UPN), nemůžete už upravovat bezpečnostní klíče FIDO2, aby se změna projevila. Řešením je resetování zařízení a uživatel se musí znovu zaregistrovat.
+Pokud se změní hlavní název uživatele (UPN), nemůžete už upravovat bezpečnostní klíče FIDO2, aby se změna projevila. Řešením je resetování zařízení a uživatel musí znovu zaregistrovat své bezpečnostní klíče FIDO2.
 
 ## <a name="next-steps"></a>Další kroky
 

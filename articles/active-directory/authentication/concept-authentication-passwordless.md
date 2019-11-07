@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e17a99a522c6ab960c2ccd0cc2729076c54ed07f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 8c8bfa5fc31ce8500d1ed339ba28afeed21e25a0
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73151844"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603509"
 ---
 # <a name="passwordless-authentication-options"></a>Možnosti ověřování s heslem
 
@@ -52,7 +52,7 @@ Přepíná telefon s iOS nebo Androidem do silných přihlašovacích údajů be
 
 Klíče zabezpečení FIDO2 jsou nenáročné metody ověřování bez hesla založené na standardech, které mohou být v libovolném formuláři. Rychlá identita online (FIDO) je otevřený standard pro ověřování neheslem. Umožňuje uživatelům a organizacím využít standard pro přihlášení ke svým prostředkům bez uživatelského jména nebo hesla pomocí externího bezpečnostního klíče nebo klíče platformy integrovaného do zařízení.
 
-Ve verzi Public Preview můžou zaměstnanci použít bezpečnostní klíče pro přihlášení ke svým zařízením s Windows 10 připojeným k Azure AD nebo k hybridnímu připojení Azure AD a získat jednotné přihlášení ke svým cloudovým a místním prostředkům. Můžou se také přihlásit k podporovaným prohlížečům.
+Ve verzi Public Preview můžou zaměstnanci použít bezpečnostní klíče pro přihlášení ke svým zařízením s Windows 10 připojeným k Azure AD a získat jednotné přihlašování ke svým cloudovým a místním prostředkům. Můžou se také přihlásit k podporovaným prohlížečům.
 
 ![Přihlaste se k Microsoft Edge pomocí bezpečnostního klíče.](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -62,14 +62,14 @@ Bezpečnostní klíč **musí** implementovat následující funkce a rozšíře
 
 | # | Vztah důvěryhodnosti funkcí nebo rozšíření | Proč je tato funkce nebo rozšíření nutná? |
 | --- | --- | --- |
-| 1\. místo | Rezidentní klíč | Tato funkce umožňuje přenos bezpečnostního klíče, kde se ukládají přihlašovací údaje na klíč zabezpečení. |
+| 1 | Rezidentní klíč | Tato funkce umožňuje přenos bezpečnostního klíče, kde se ukládají přihlašovací údaje na klíč zabezpečení. |
 | 2 | Kód PIN klienta | Tato funkce umožňuje chránit vaše přihlašovací údaje pomocí druhého faktoru a vztahuje se na klíče zabezpečení, které nemají uživatelské rozhraní. |
-| 3 | HMAC – tajný klíč | Toto rozšíření zajišťuje, že se můžete přihlásit k zařízení, když je v režimu online nebo v letadle. |
+| 3 | hmac-secret | Toto rozšíření zajišťuje, že se můžete přihlásit k zařízení, když je v režimu online nebo v letadle. |
 | 4 | Více účtů na RP | Tato funkce zajišťuje, že můžete použít stejný bezpečnostní klíč v rámci více služeb, jako je například účet Microsoft a Azure Active Directory. |
 
 Následující poskytovatelé nabízejí bezpečnostní klíče FIDO2 různých faktorů, u kterých je známo, že jsou kompatibilní s prostředím bez hesla. Společnost Microsoft doporučuje zákazníkům vyhodnotit vlastnosti zabezpečení těchto klíčů kontaktováním dodavatele i FIDO Alliance.
 
-| Poskytovatel | Kontaktovat |
+| Poskytovatel | Kontakt |
 | --- | --- |
 | Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |

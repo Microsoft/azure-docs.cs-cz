@@ -1,5 +1,5 @@
 ---
-title: Postup přesunutí prostředků Azure SQL Database do jiné oblasti | Microsoft Docs
+title: Postup přesunutí prostředků Azure SQL Database do jiné oblasti
 description: Naučte se, jak přesunout Azure SQL Database, elastický fond Azure SQL nebo spravovanou instanci SQL Azure do jiné oblasti.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 2158d4120445de4c62461fb89555a1b73bc1e2b4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9e7cd6cb338de1d029d38ef08693a7b52f7cf15c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567171"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687776"
 ---
 # <a name="how-to-move-azure-sql-resources-to-another-region"></a>Jak přesunout prostředky SQL Azure do jiné oblasti
 
@@ -63,23 +63,23 @@ Tento článek poskytuje obecný pracovní postup pro přesun prostředků do ji
 
 1. Vytvořte [skupinu převzetí služeb při selhání](sql-database-single-database-failover-group-tutorial.md#2---create-the-failover-group) mezi logickým serverem zdroje na logický Server cíle.  
 1. Přidejte databáze, které chcete přesunout do skupiny převzetí služeb při selhání. 
-    - Replikace všech přidaných databází se iniciuje automaticky. Další informace najdete v tématu [osvědčené postupy pro používání skupin převzetí služeb při selhání s](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools)izolovanými databázemi. 
+    - Replikace všech přidaných databází se iniciuje automaticky. Další informace najdete v tématu [osvědčené postupy pro používání skupin převzetí služeb při selhání s izolovanými databázemi](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). 
  
 ### <a name="monitor-the-preparation-process"></a>Monitorování procesu přípravy
 
 Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState**: 
-   - **ReplicationState = 2** (CATCH_UP) znamená, že databáze je synchronizovaná a je možné ji bezpečně převzít při selhání. 
-   - **ReplicationState = 0** (OSAZENí) znamená, že databáze ještě není dosazený a pokus o převzetí služeb při selhání se nezdaří. 
+   - **ReplicationState = 2** (CATCH_UP) znamená, že je databáze synchronizována a lze ji bezpečně převzít. 
+   - **ReplicationState = 0** (osazení) znamená, že databáze ještě není dosazený, a pokus o převzetí služeb při selhání se nezdaří. 
 
 ### <a name="test-synchronization"></a>Synchronizace testů
 
-Jakmile je `2`ReplicationState, připojte se ke každé databázi nebo podmnožinu databází pomocí sekundárního `<fog-name>.secondary.database.windows.net` koncového bodu a proveďte jakékoli dotazy k databázím, abyste zajistili připojení, správnou konfiguraci zabezpečení a data. umístění. 
+Jakmile je **ReplicationState** `2`, připojte se ke každé databázi nebo podmnožinu databází pomocí sekundárního koncového bodu `<fog-name>.secondary.database.windows.net` a proveďte jakékoli dotazy proti databázím, abyste zajistili dostupnost připojení, správnou konfiguraci zabezpečení a replikaci dat. 
 
 ### <a name="initiate-the-move"></a>Zahájit přesun
 
-1. Připojte se k cílovému serveru pomocí sekundárního `<fog-name>.secondary.database.windows.net`koncového bodu.
+1. Připojte se k cílovému serveru pomocí sekundárního koncového bodu `<fog-name>.secondary.database.windows.net`.
 1. Pomocí [přepínače-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) přepněte sekundární spravovanou instanci na primární s úplnou synchronizací. Tato operace proběhne úspěšně, nebo se vrátí zpět. 
-1. Ověřte, že se příkaz úspěšně dokončil pomocí `nslook up <fog-name>.secondary.database.windows.net` příkazu, aby se ověřilo, že záznam DNS CNAME odkazuje na IP adresu cílové oblasti. Pokud příkaz switch selže, záznam CNAME se nebude aktualizovat. 
+1. Ověřte, že se příkaz úspěšně dokončil pomocí `nslook up <fog-name>.secondary.database.windows.net`, aby se ověřilo, že záznam DNS CNAME odkazuje na IP adresu cílové oblasti. Pokud příkaz switch selže, záznam CNAME se nebude aktualizovat. 
 
 ### <a name="remove-the-source-databases"></a>Odebrat zdrojové databáze
 
@@ -120,18 +120,18 @@ Až se přesun dokončí, odeberte prostředky ve zdrojové oblasti, abyste se v
 ### <a name="monitor-the-preparation-process"></a>Monitorování procesu přípravy
 
 Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState**: 
-   - **ReplicationState = 2** (CATCH_UP) znamená, že databáze je synchronizovaná a je možné ji bezpečně převzít při selhání. 
-   - **ReplicationState = 0** (OSAZENí) znamená, že databáze ještě není dosazený a pokus o převzetí služeb při selhání se nezdaří. 
+   - **ReplicationState = 2** (CATCH_UP) znamená, že je databáze synchronizována a lze ji bezpečně převzít. 
+   - **ReplicationState = 0** (osazení) znamená, že databáze ještě není dosazený, a pokus o převzetí služeb při selhání se nezdaří. 
 
 ### <a name="test-synchronization"></a>Synchronizace testů
  
-Jakmile je `2`ReplicationState, připojte se ke každé databázi nebo podmnožinu databází pomocí sekundárního `<fog-name>.secondary.database.windows.net` koncového bodu a proveďte jakékoli dotazy k databázím, abyste zajistili připojení, správnou konfiguraci zabezpečení a data. umístění. 
+Jakmile je **ReplicationState** `2`, připojte se ke každé databázi nebo podmnožinu databází pomocí sekundárního koncového bodu `<fog-name>.secondary.database.windows.net` a proveďte jakékoli dotazy proti databázím, abyste zajistili dostupnost připojení, správnou konfiguraci zabezpečení a replikaci dat. 
 
 ### <a name="initiate-the-move"></a>Zahájit přesun
  
-1. Připojte se k cílovému serveru pomocí sekundárního `<fog-name>.secondary.database.windows.net`koncového bodu.
+1. Připojte se k cílovému serveru pomocí sekundárního koncového bodu `<fog-name>.secondary.database.windows.net`.
 1. Pomocí [přepínače-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) přepněte sekundární spravovanou instanci na primární s úplnou synchronizací. Tato operace proběhne úspěšně, nebo se vrátí zpět. 
-1. Ověřte, že se příkaz úspěšně dokončil pomocí `nslook up <fog-name>.secondary.database.windows.net` příkazu, aby se ověřilo, že záznam DNS CNAME odkazuje na IP adresu cílové oblasti. Pokud příkaz switch selže, záznam CNAME se nebude aktualizovat. 
+1. Ověřte, že se příkaz úspěšně dokončil pomocí `nslook up <fog-name>.secondary.database.windows.net`, aby se ověřilo, že záznam DNS CNAME odkazuje na IP adresu cílové oblasti. Pokud příkaz switch selže, záznam CNAME se nebude aktualizovat. 
 
 ### <a name="remove-the-source-elastic-pools"></a>Odebrat zdrojové elastické fondy
  
@@ -167,18 +167,18 @@ Vytvořte skupinu převzetí služeb při selhání mezi jednotlivými zdrojový
 ### <a name="monitor-the-preparation-process"></a>Monitorování procesu přípravy
 
 Můžete pravidelně volat [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup?view=azps-2.3.2) a monitorovat replikaci vašich databází ze zdroje do cíle. Výstupní objekt `Get-AzSqlDatabaseFailoverGroup` obsahuje vlastnost pro **ReplicationState**: 
-   - **ReplicationState = 2** (CATCH_UP) znamená, že databáze je synchronizovaná a je možné ji bezpečně převzít při selhání. 
-   - **ReplicationState = 0** (OSAZENí) znamená, že databáze ještě není dosazený a pokus o převzetí služeb při selhání se nezdaří. 
+   - **ReplicationState = 2** (CATCH_UP) znamená, že je databáze synchronizována a lze ji bezpečně převzít. 
+   - **ReplicationState = 0** (osazení) znamená, že databáze ještě není dosazený, a pokus o převzetí služeb při selhání se nezdaří. 
 
 ### <a name="test-synchronization"></a>Synchronizace testů
 
-Jakmile je `2`ReplicationState, připojte se ke každé databázi nebo podmnožinu databází pomocí sekundárního `<fog-name>.secondary.database.windows.net` koncového bodu a proveďte jakékoli dotazy k databázím, abyste zajistili připojení, správnou konfiguraci zabezpečení a data. umístění. 
+Jakmile je **ReplicationState** `2`, připojte se ke každé databázi nebo podmnožinu databází pomocí sekundárního koncového bodu `<fog-name>.secondary.database.windows.net` a proveďte jakékoli dotazy proti databázím, abyste zajistili dostupnost připojení, správnou konfiguraci zabezpečení a replikaci dat. 
 
 ### <a name="initiate-the-move"></a>Zahájit přesun 
 
-1. Připojte se k cílovému serveru pomocí sekundárního `<fog-name>.secondary.database.windows.net`koncového bodu.
+1. Připojte se k cílovému serveru pomocí sekundárního koncového bodu `<fog-name>.secondary.database.windows.net`.
 1. Pomocí [přepínače-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup?view=azps-2.3.2) přepněte sekundární spravovanou instanci na primární s úplnou synchronizací. Tato operace proběhne úspěšně, nebo se vrátí zpět. 
-1. Ověřte, že se příkaz úspěšně dokončil pomocí `nslook up <fog-name>.secondary.database.windows.net` příkazu, aby se ověřilo, že záznam DNS CNAME odkazuje na IP adresu cílové oblasti. Pokud příkaz switch selže, záznam CNAME se nebude aktualizovat. 
+1. Ověřte, že se příkaz úspěšně dokončil pomocí `nslook up <fog-name>.secondary.database.windows.net`, aby se ověřilo, že záznam DNS CNAME odkazuje na IP adresu cílové oblasti. Pokud příkaz switch selže, záznam CNAME se nebude aktualizovat. 
 
 ### <a name="remove-the-source-managed-instances"></a>Odebrat zdrojové spravované instance
 Až se přesun dokončí, odeberte prostředky ve zdrojové oblasti, abyste se vyhnuli zbytečným poplatkům. 
@@ -187,7 +187,7 @@ Až se přesun dokončí, odeberte prostředky ve zdrojové oblasti, abyste se v
 1. Odstraňte zdrojovou spravovanou instanci pomocí [Remove-AzSqlInstance](/powershell/module/az.sql/remove-azsqlinstance). 
 1. Odeberte všechny další prostředky ve skupině prostředků, jako je třeba virtuální cluster, virtuální síť a skupina zabezpečení. 
 
-## <a name="next-steps"></a>Další postup 
+## <a name="next-steps"></a>Další kroky 
 
 Po migraci Azure SQL Database [Spravovat](sql-database-manage-after-migration.md) . 
 

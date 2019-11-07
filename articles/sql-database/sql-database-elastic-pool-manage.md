@@ -1,5 +1,5 @@
 ---
-title: Správa elastických fondů – Azure SQL Database | Microsoft Docs
+title: Správa elastických fondů – Azure SQL Database
 description: Vytvářejte a spravujte elastické fondy Azure SQL.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: ca00326d5704d3dd26027d90a3e48bfc52ec5653
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: ad8f076c65c852f338e380f1ad8fca4e5dcb79ba
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744444"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690460"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Správa elastických fondů v Azure SQL Database
 
@@ -48,7 +48,7 @@ Pokud chcete vytvořit a spravovat SQL Database elastické fondy a databáze ve 
 > Ukázkové skripty PowerShellu najdete v tématech [vytváření elastických fondů a přesun databází mezi fondy a ven z fondu pomocí prostředí PowerShell](scripts/sql-database-move-database-between-pools-powershell.md) a [použití PowerShellu k monitorování a škálování elastického fondu SQL v Azure SQL Database](scripts/sql-database-monitor-and-scale-pool-powershell.md).
 >
 
-| Rutiny | Popis |
+| Rutina | Popis |
 | --- | --- |
 |[New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool)|Vytvoří elastický fond.|
 |[Get-AzSqlElasticPool](/powershell/module/az.sql/get-azsqlelasticpool)|Získá elastické fondy a jejich hodnoty vlastností.|
@@ -71,7 +71,7 @@ Pokud chcete vytvořit a spravovat SQL Database elastické fondy pomocí [Azure 
 > Ukázkové skripty Azure CLI najdete v tématu [použití CLI k přesunutí databáze SQL Azure v elastickém fondu SQL](scripts/sql-database-move-database-between-pools-cli.md) a použití rozhraní příkazového [řádku Azure pro škálování elastického fondu SQL v Azure SQL Database](scripts/sql-database-scale-pool-cli.md).
 >
 
-| Rutiny | Popis |
+| Rutina | Popis |
 | --- | --- |
 |[AZ SQL elastický fond Create](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create)|Vytvoří elastický fond.|
 |[AZ SQL elastický seznam fondů](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list)|Vrátí seznam elastických fondů na serveru.|
@@ -94,7 +94,7 @@ Chcete-li vytvořit a přesunout databáze v rámci stávajících elastických 
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Přesun databáze do, z nebo mezi elastickými fondy.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Odstraní databázi.|
 |[sys. elastic_pool_resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|Vrátí statistiku využití prostředků pro všechny elastické fondy na serveru SQL Database. Pro každý elastický fond je k dispozici jeden řádek pro každé 15 sekundové okno pro vytváření sestav (čtyři řádky za minutu). To zahrnuje využití procesoru, vstupně-výstupních operací, protokolu, spotřeby úložiště a souběžného využívání požadavků a relací všemi databázemi ve fondu.|
-|[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Vrátí edici (úroveň služby), cíl služby (cenovou úroveň) a název elastického fondu, pokud existuje, pro databázi SQL Azure nebo Azure SQL Data Warehouse. Pokud se přihlásíte k hlavní databázi na serveru Azure SQL Database, vrátí informace na všech databázích. Pro Azure SQL Data Warehouse musíte být připojeni k hlavní databázi.|
+|[sys. database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Vrátí edici (úroveň služby), cíl služby (cenovou úroveň) a název elastického fondu, pokud existuje, pro databázi SQL Azure nebo Azure SQL Data Warehouse. Pokud se přihlásíte k hlavní databázi na serveru Azure SQL Database, vrátí informace na všech databázích. Pro Azure SQL Data Warehouse musíte být připojeni k hlavní databázi.|
 
 ## <a name="rest-api-manage-elastic-pools-and-pooled-databases"></a>REST API: Správa elastických fondů a databází ve fondu
 
@@ -115,7 +115,7 @@ Pokud chcete vytvořit a spravovat SQL Database elastické fondy a databáze ve 
 |[Databáze – seznam podle serveru](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|Vrátí seznam databází na serveru.|
 |[Databáze – aktualizace](https://docs.microsoft.com/rest/api/sql/databases/update)|Aktualizuje existující databázi.|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Další informace o návrhových schématech aplikací SaaS využívajících elastické fondy najdete v tématu [Návrhová schémata pro víceklientské aplikace SaaS využívající službu Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 * Kurz SaaS použití elastických fondů najdete v tématu [Úvod do aplikace Wingtip SaaS](sql-database-wtp-overview.md).

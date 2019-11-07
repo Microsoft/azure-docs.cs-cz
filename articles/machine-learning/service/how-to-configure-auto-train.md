@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4d050385bb76817c8aeada1bef4c4697a1f58d09
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c70226ef58ed60a7be556b88366953796ed6fff1
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497277"
+ms.locfileid: "73580569"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace automatizovaných experimentů ML v Pythonu
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +39,7 @@ Pokud dáváte přednost žádnému způsobu použití kódu, můžete [v Azure 
 
 ## <a name="select-your-experiment-type"></a>Vyberte typ experimentu.
 
-Než začnete experimentovat, měli byste určit druh problému strojového učení, který řešíte. Automatizované Machine Learning podporuje typy úloh klasifikace, regrese a prognózy.
+Než začnete experimentovat, měli byste určit druh problému strojového učení, který řešíte. Automatizované Machine Learning podporuje typy úloh klasifikace, regrese a prognózy. Přečtěte si další informace o [typech úloh](how-to-define-task-type.md).
 
 Automatizované Machine Learning podporuje během procesu automatizace a optimalizace následující algoritmy. Jako uživatel není nutné zadávat algoritmus.
 
@@ -57,10 +57,10 @@ Classification | Nevýhody | Prognózování časových řad
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
 [Třídění DNN](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
 [DNN lineární třídění](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Lineární regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[Lineární regresor](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|[Rychlé lineární regresor](https://docs.microsoft.com/en-us/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Automatické ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[Stochastickéhoový přechod klesá (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|[Online gradient regresor klesání](https://docs.microsoft.com/en-us/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
-|[Průměrný Perceptron klasifikátor](https://docs.microsoft.com/en-us/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||ForecastTCN
-|[Lineární třídění SVM](https://docs.microsoft.com/en-us/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)||
+[Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|[Rychlé lineární regresor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Automatické ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[Stochastickéhoový přechod klesá (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|[Online gradient regresor klesání](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
+|[Průměrný Perceptron klasifikátor](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||ForecastTCN
+|[Lineární třídění SVM](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)||
 
 K určení typu experimentu použijte parametr `task` v konstruktoru `AutoMLConfig`.
 
@@ -108,7 +108,7 @@ Pro vzdálená spuštění musí být školicí data dostupná ze vzdáleného v
 * snadné přenos dat ze statických souborů nebo zdrojů URL do vašeho pracovního prostoru
 * zpřístupnění dat pro školicí skripty při spuštění na cloudových výpočetních prostředcích
 
-Příklad použití [](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target) třídy `Dataset` k připojení dat k cíli služby Compute.
+Příklad použití třídy `Dataset` k připojení dat k cíli výpočetního prostředí naleznete v tématu [How to](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target) .
 
 ## <a name="train-and-validation-data"></a>Data o školeních a ověřováních
 
@@ -171,7 +171,7 @@ Možné příklady:
         n_cross_validations=5)
     ```
 
-Tři různé hodnoty parametrů `task` (třetí typ úlohy je `forecasting` a používá stejný fond algoritmů jako úlohy `regression`) určuje seznam modelů, které se mají použít. Pomocí parametrů `whitelist` nebo `blacklist` můžete dále upravit iterace s dostupnými modely, které chcete zahrnout nebo vyloučit. Seznam podporovaných modelů lze nalézt ve [třídě SupportedModels](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py).
+Existují tři různé hodnoty parametrů `task` (třetí typ úlohy je `forecasting`a používá stejný fond algoritmů jako `regression` úkoly). určuje seznam modelů, které se mají použít. Pomocí parametrů `whitelist` nebo `blacklist` můžete dále upravit iterace s dostupnými modely, které chcete zahrnout nebo vyloučit. Seznam podporovaných modelů lze nalézt ve [třídě SupportedModels](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py).
 
 ### <a name="primary-metric"></a>Primární metrika
 Primární metrika určuje metriku, která se má použít během školení modelu pro optimalizaci. Dostupné metriky můžete vybrat podle typu úlohy, kterou zvolíte, a v následující tabulce jsou uvedeny platné primární metriky pro každý typ úkolu.
@@ -190,7 +190,7 @@ Přečtěte si o konkrétních definicích těchto informací v seznámení s [a
 
 U každého automatizovaného experimentu strojového učení se vaše data [automaticky škálují a normalizují](concept-automated-ml.md#preprocess) tak, aby pomohly *určité* algoritmy, které jsou citlivé na funkce, které jsou v různých měřítkech.  Můžete ale také povolit další předzpracování/featurization, například chybějící hodnoty imputac, Encoding a transformes. [Přečtěte si další informace o tom, co je zahrnuté featurization](how-to-create-portal-experiments.md#preprocess).
 
-Pokud chcete povolit tuto featurization, zadejte pro [třídu `AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)`"preprocess": True`.
+Chcete-li povolit tuto featurization, zadejte `"preprocess": True` pro [třídu`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
 > [!NOTE]
 > Automatické kroky před zpracováním strojového učení (normalizace funkcí, zpracování chybějících dat, převod textu na číselnou atd.) se stanou součástí základního modelu. Při použití modelu pro předpovědi se na vstupní data automaticky aplikují stejné kroky před zpracováním během školení.
@@ -239,7 +239,7 @@ Modely kompletu jsou ve výchozím nastavení povolené a zobrazují se jako pos
 
 Existuje více výchozích argumentů, které lze zadat jako `kwargs` v objektu `AutoMLConfig` pro změnu výchozího chování kompletování zásobníku.
 
-* `stack_meta_learner_type`: meta-učí je model vyškolený na výstupu jednotlivých heterogenní modelů. Výchozí meta-učí se `LogisticRegression` pro úlohy klasifikace (nebo `LogisticRegressionCV`, pokud je povoleno křížové ověřování) a `ElasticNet` pro úlohy regrese/předpovědi (nebo `ElasticNetCV`, pokud je povoleno křížové ověřování). Tento parametr může být jeden z následujících řetězců: `LogisticRegression`, `LogisticRegressionCV`, `LightGBMClassifier`, `ElasticNet`, `ElasticNetCV`, `LightGBMRegressor` nebo `LinearRegression`.
+* `stack_meta_learner_type`: meta-učí je model vyškolený na výstupu jednotlivých heterogenní modelů. Výchozí meta-učí se `LogisticRegression` pro úlohy klasifikace (nebo `LogisticRegressionCV`, pokud je povoleno křížové ověřování) a `ElasticNet` pro úlohy regrese/předpovědi (nebo `ElasticNetCV`, pokud je povoleno křížové ověřování). Tento parametr může být jeden z následujících řetězců: `LogisticRegression`, `LogisticRegressionCV`, `LightGBMClassifier`, `ElasticNet`, `ElasticNetCV`, `LightGBMRegressor`nebo `LinearRegression`.
 * `stack_meta_learner_train_percentage`: určuje podíl sady školení (při výběru typu výuky a ověření školení), který se má rezervovat pro školení meta-učení. Výchozí hodnota je `0.2`.
 * `stack_meta_learner_kwargs`: volitelné parametry, které mají být předána inicializátoru meta-učení. Tyto parametry a typy parametrů zrcadlí hodnoty z odpovídajícího konstruktoru modelu a jsou předávány do konstruktoru modelu.
 
@@ -286,7 +286,7 @@ automl_classifier = AutoMLConfig(
 
 ## <a name="run-experiment"></a>Spustit experiment
 
-Pro automatizované ML vytvoříte objekt `Experiment`, který je pojmenovaný objekt v `Workspace`, který se používá ke spouštění experimentů.
+Pro automatizované ML vytvoříte objekt `Experiment`, který je pojmenovaný objekt v `Workspace` použit ke spouštění experimentů.
 
 ```python
 from azureml.core.experiment import Experiment
@@ -300,7 +300,7 @@ project_folder = './sample_projects/automl-classification'
 experiment = Experiment(ws, experiment_name)
 ```
 
-Odešlete experiment pro spuštění a vygenerování modelu. Předejte `AutoMLConfig` do metody `submit` pro vytvoření modelu.
+Odešlete experiment pro spuštění a vygenerování modelu. Předáním `AutoMLConfig` metodě `submit` vygenerujte model.
 
 ```python
 run = experiment.submit(automl_config, show_output=True)
@@ -341,7 +341,7 @@ Podívejte se na seznam předzpracovaných a [automatizovaných funkcí](concept
 Vezměte v úvahu tento příklad:
 + K dispozici jsou 4 vstupní funkce: A (číselná), B (číselná), C (číselná), D (DateTime).
 + Číselná funkce C je vyřazena, protože se jedná o sloupec ID se všemi jedinečnými hodnotami.
-+ Numerické funkce a a B chybějící hodnoty, a proto jsou ve významu imputované.
++ Numerické funkce a a B chybějící hodnoty a jsou proto imputované středníky.
 + Funkce DateTime D je natrénuje na 11 různých funkcí navržených pro analýzu.
 
 Tato 2 rozhraní API použijte v prvním kroku namontovaného modelu, abyste lépe pochopili víc.  Podívejte se na [Tento ukázkový Poznámkový blok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
@@ -434,7 +434,7 @@ featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of
 
 ### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>Škálování/normalizace a algoritmy pomocí hodnot parametrů:
 
-Chcete-li pochopit hodnoty škálování/normalizace a algoritmů a parametrů pro kanál, použijte fitted_model. Steps. [Další informace o škálování/normalizaci](concept-automated-ml.md#preprocess). Tady je ukázkový výstup:
+Chcete-li pochopit hodnoty škálování/normalizace a algoritmů a parametrů pro kanál, použijte fitted_model. Steps. [Další informace o škálování/normalizaci](concept-automated-ml.md#preprocess). Zde je ukázkový výstup:
 
 ```
 [('RobustScaler', RobustScaler(copy=True, quantile_range=[10, 90], with_centering=True, with_scaling=True)), ('LogisticRegression', LogisticRegression(C=0.18420699693267145, class_weight='balanced', dual=False, fit_intercept=True, intercept_scaling=1, max_iter=100, multi_class='multinomial', n_jobs=1, penalty='l2', random_state=None, solver='newton-cg', tol=0.0001, verbose=0, warm_start=False))
