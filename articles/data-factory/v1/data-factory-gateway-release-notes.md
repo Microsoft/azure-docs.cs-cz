@@ -1,6 +1,6 @@
 ---
-title: Poznámky k verzi pro bránu správy dat | Dokumentace Microsoftu
-description: Brána pro správu dat, text poznámky k verzi
+title: Poznámky k verzi pro Bránu pro správu dat
+description: Zpráva k vydání verze služby Správa dat Gateway tory
 services: data-factory
 author: nabhishek
 manager: craigg
@@ -12,126 +12,126 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 865bfdae199bca7ebee888be527db239d34511d1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bb89ed08b05f9a8f271ceee400bc609881e7048d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486460"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682574"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Poznámky k verzi pro Bránu pro správu dat
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [v místním prostředí integration runtime ve V2](../create-self-hosted-integration-runtime.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [Integration runtime v místním prostředí v v2](../create-self-hosted-integration-runtime.md).
 
-Jedním z problémů pro integraci dat moderních je k přesunu dat do a z místní do cloudu. Objekt pro vytváření dat díky integraci se Brána pro správu dat, což je místní umožňuje přesun hybridních dat můžete nainstalovat agenta.
+Jedním z problémů pro moderní integraci dat je přesun dat do cloudu a z místního prostředí do cloudu. Data Factory provádí tuto integraci s Správa dat bránou, což je agent, který můžete nainstalovat místně a umožnit tak přesun hybridních dat.
 
-Naleznete v následujících článcích pro podrobné informace o bráně pro správu dat a způsobu jeho použití:
+Podrobné informace o Správa dat bráně a způsobu jejich použití najdete v následujících článcích:
 
 *  [Brána správy dat](data-factory-data-management-gateway.md)
-*  [Přesun dat mezi místním a cloudovým pomocí Azure Data Factory](data-factory-move-data-between-onprem-and-cloud.md)
+*  [Přesun dat mezi místním prostředím a cloudem pomocí Azure Data Factory](data-factory-move-data-between-onprem-and-cloud.md)
 
 
 ## <a name="current-version"></a>AKTUÁLNÍ VERZE 
-Udržujeme žádné další poznámky k verzi tady. Získat nejnovější poznámky k verzi [zde](https://go.microsoft.com/fwlink/?linkid=853077)
+Poznámky k verzi tady neuchováváme. [Sem](https://go.microsoft.com/fwlink/?linkid=853077) získáte nejnovější poznámky k verzi.
 
 
 
 
 ## <a name="earlier-versions"></a>Starší verze
 ## <a name="21063477"></a>2.10.6347.7
-### <a name="enhancements-"></a>Vylepšení-
-- Můžete přidat položky DNS do seznamu povolených IP adres služby Service bus, nikoli na seznam povolených všechny Azure IP adresy z brány firewall (v případě potřeby). Příslušné položky DNS najdete na webu Azure portal ("Vytvořit a nasadit" -> Data Factory -> "Brány" -> "serviceUrls" (ve formátu JSON)
-- HDFS konektor teď podporuje veřejného certifikátu podepsaného svým držitelem tím, že umožňuje přeskočit ověřování SSL.
-- Opraveno: Problém s brána offline během aktualizace (z důvodu posun hodin)
+### <a name="enhancements-"></a>Prvky
+- Do seznamu povolených IP adres služby Azure můžete přidat položky DNS (Pokud je potřeba). Odpovídající položku DNS najdete na Azure Portal (Data Factory-> ' Author a deploy '-> ' – > "serviceUrls" (ve formátu JSON)
+- Služba HDFS Connector teď podporuje veřejný certifikát podepsaný svým držitelem, protože umožňuje přeskočit ověřování SSL.
+- Opraveno: problém s bránou v režimu offline během aktualizace (kvůli posunu hodin)
 
 
 ## <a name="2963132"></a>2.9.6313.2
-### <a name="enhancements-"></a>Vylepšení-
--   Můžete přidat záznamy DNS na seznam povolených služby Service Bus, spíše než přidávání na seznam povolených všechny Azure IP adresy z brány firewall (v případě potřeby). Další podrobnosti tady.
--   Můžete teď kopírování dat z jednoho bloku blob až 4,75 TB, což je maximální podporovanou velikost objektu blob bloku. (dřívější omezení se 195 GB).
--   Opraveno: Nedostatek paměti problém při rozbalování několik malých souborů při aktivitě kopírování.
--   Opraveno: Index je mimo rozsah problém při kopírování z Document DB na místní SQL serveru s funkcí idempotence.
--   Opraveno: Skript pro vyčištění SQL nefunguje s místním SQL serverem z Průvodce kopírováním.
--   Opraveno: Název sloupce s mezerou na konci nefunguje v aktivitě kopírování.
+### <a name="enhancements-"></a>Prvky
+-   Do seznamu povolených adres můžete přidat položky DNS Service Bus místo toho, aby se všechny IP adresy Azure v bráně firewall (v případě potřeby) nepřidaly. Další podrobnosti najdete tady.
+-   Nyní můžete kopírovat data do nebo z jednoho objektu blob bloku až do 4,75 TB, což je maximální podporovaná velikost objektu blob bloku. (předchozí omezení bylo 195 GB).
+-   Opraveno: nedostatek paměti při rozzipováváí několika malých souborů během aktivity kopírování.
+-   Opraveno: index je mimo rozsah problému při kopírování z databáze dokumentů do místní SQL Server s funkcí idempotence.
+-   Opraveno: skript SQL Cleanup nefunguje s místními SQL Server z Průvodce kopírováním.
+-   Opraveno: název sloupce s mezerou na konci nefunguje v aktivitě kopírování.
 
 ## <a name="28662833"></a>2.8.66283.3
-### <a name="enhancements-"></a>Vylepšení-
-- Opraveno: Problém s nebylo nalezeno pověření. při restartování počítače brány.
-- Opraveno: Problém s registrací během brány obnovení ze záložního souboru.
+### <a name="enhancements-"></a>Prvky
+- Opraveno: problém s chybějícími přihlašovacími údaji při restartování počítače brány.
+- Opraveno: problém s registrací při obnovení brány pomocí záložního souboru.
 
 
 ## <a name="2762401"></a>2.7.6240.1
-### <a name="enhancements-"></a>Vylepšení-
-- Opraveno: Nesprávný čtení desetinné hodnoty null z Oraclu jako zdroj.
+### <a name="enhancements-"></a>Prvky
+- Opraveno: nesprávný čtení desítkové hodnoty null od Oracle jako zdroje.
 
 ## <a name="2661922"></a>2.6.6192.2
 ### <a name="whats-new"></a>Co je nového
-- Zákazníci můžou poskytnout zpětnou vazbu na bráně registrace prostředí.
-- Podpora nový formát komprese: ZIP (Deflate)
+- Zákazníci můžou poskytnout zpětnou vazbu na možnosti registrace brány.
+- Podpora nového formátu komprese: ZIP (uprostřed)
 
-### <a name="enhancements-"></a>Vylepšení-
-- Vylepšení výkonu pro Oracle jímky, HDFS zdroje.
-- Oprava chyby pro bránu automaticky aktualizovat, paralelní zpracování kapacitu brány.
+### <a name="enhancements-"></a>Prvky
+- Vylepšení výkonu pro jímku Oracle, zdroj HDFS.
+- Oprava chyby pro automatickou aktualizaci brány, kapacitu paralelního zpracování brány.
 
 
 ## <a name="2561641"></a>2.5.6164.1
-### <a name="enhancements"></a>Vylepšení
-- Vylepšené a výkonnější brány registrace prostředí – teď můžete sledovat průběh během procesu registrace brány, které urychluje odezvu registraci prostředí.
-- Zlepšení bránu obnovit proces - je stále možné obnovit brány i v případě, že nemáte záložního souboru brány s touto aktualizací. Bude nutné resetovat přihlašovací údaje propojené služby na portálu.
+### <a name="enhancements"></a>Prvky
+- Vylepšené a robustnější prostředí pro registraci bran – nyní můžete sledovat stav průběhu během procesu registrace brány. díky tomu bude registrace rychlejší.
+- Vylepšení procesu obnovení brány – můžete i nadále obnovit bránu i v případě, že nemáte záložní soubor brány s touto aktualizací. To by vyžadovalo resetovat přihlašovací údaje propojených služeb na portálu.
 - Oprava chyby.
 
 ## <a name="2461511"></a>2.4.6151.1
 
 ### <a name="whats-new"></a>Co je nového
 
-- Nyní můžete ukládat přihlašovací údaje zdroje dat místně. Přihlašovací údaje jsou šifrované. Pověření ke zdroji dat je možné obnovit a obnovit pomocí záložní soubor, který je možné exportovat z existující bránu, všechny místní.
+- Přihlašovací údaje zdroje dat teď můžete ukládat lokálně. Přihlašovací údaje jsou šifrované. Přihlašovací údaje ke zdroji dat se dají obnovit a obnovit pomocí záložního souboru, který se dá exportovat ze stávající brány, a to všechno místně.
 
-### <a name="enhancements-"></a>Vylepšení-
+### <a name="enhancements-"></a>Prvky
 
-- Vylepšené a výkonnější brány způsobu registrace.
-- Podpora automatického zjišťování quotechar současně konfigurace formátu textu v Průvodce kopírováním a zlepšovat přesnost detekce celkový formát.
+- Vylepšené a robustnější možnosti registrace brány.
+- Podpora automatického zjišťování konfigurace QuoteChar současně pro textový formát v průvodci kopírováním a zlepšení celkové přesnosti detekce formátu.
 
 ## <a name="2361002"></a>2.3.6100.2
 
-- Podpora firstRowAsHeader a SkipLineCount Automatická detekce v Průvodci kopírováním pro textových souborů v místním systému souborů a HDFS.
-- Vylepšení stability síťové připojení mezi bránou a Service Bus
+- Podpora automatického zjišťování firstRowAsHeader a SkipLineCount v průvodci kopírováním pro textové soubory v místním systému souborů a HDFS.
+- Vylepšení stability síťového připojení mezi bránou a Service Bus
 - Několik oprav chyb
 
 
 ## <a name="2260721"></a>2.2.6072.1
 
-*  Podporuje nastavení proxy serveru HTTP pro bránu pomocí Správce konfigurace brány. Pokud nakonfigurované, objektů Blob v Azure, Azure Data Lake, tabulky Azure a Documentdb se přistupuje prostřednictvím proxy serveru HTTP.
-*  Záhlaví podporuje zpracování TextFormat při kopírování dat z/do objektů Blob v Azure, Azure Data Lake Store, v místním systému souborů a místní HDFS.
-*  Podporuje kopírování dat z doplňovací objekt Blob a objekty Blob stránky spolu s již podporovaných objektů Blob bloku.
-*  Zavádí nový stav brány **Online (s omezením)** , což znamená, že hlavní funkce brány funguje s výjimkou interaktivní operace podporu pro Průvodce kopírováním.
-*  Zvyšuje odolnost registrace brány pomocí registračního klíče.
+*  Podporuje nastavení proxy serveru HTTP pro bránu pomocí Configuration Manager brány. Pokud se nakonfigurují, Azure Blob, tabulka Azure, Azure Data Lake a dokument DB se přistupují prostřednictvím proxy serveru HTTP.
+*  Podporuje zpracování hlaviček pro TextFormat při kopírování dat z/do objektů BLOB v Azure, Azure Data Lake Store, místního systému souborů a místního HDFS.
+*  Podporuje kopírování dat z připojeného objektu BLOB a objektu blob stránky společně s již podporovaným objektem blob bloku.
+*  Zavádí nový stav brány v **režimu online (s omezením)** , což znamená, že hlavní funkce brány funguje s výjimkou podpory interaktivních operací pro Průvodce kopírováním.
+*  Vylepšuje odolnost registrace brány pomocí registračního klíče.
 
 ## <a name="216040"></a>2.1.6040.
 
-*  Ovladač DB2 je součástí instalačního balíčku brány nyní. Nemusíte ho instalovat samostatně.
-*  Ovladač DB2 teď podporuje z/OS a DB2 pro mi (AS / 400) společně s už podporované platformy (Linux, Unix a Windows).
-*  Podporuje používání služby Azure Cosmos DB jako zdroj nebo cíl pro místní úložiště dat
-*  Podporuje kopírování dat z/do horké nebo studené úložiště spolu se účet úložiště pro obecné účely již podporuje objektů blob.
-*  Umožňuje připojení k místnímu SQL serveru přes bránu s oprávněními pro vzdálené přihlášení.  
+*  Ovladač DB2 je teď součástí instalačního balíčku brány. Nemusíte ho instalovat samostatně.
+*  Ovladač DB2 teď podporuje z/OS a DB2 pro i (jako/400) i s již podporovanými platformami (Linux, UNIX a Windows).
+*  Podporuje použití Azure Cosmos DB jako zdroje nebo cíle místních úložišť dat.
+*  Podporuje kopírování dat z/do studeného a horkého úložiště objektů BLOB spolu s již podporovaným účtem úložiště pro obecné účely.
+*  Umožňuje připojení k místním SQL Server prostřednictvím brány s přihlašovacími oprávněními vzdáleného přihlášení.  
 
 ## <a name="2060131"></a>2.0.6013.1
 
-*  Můžete vybrat jazykovou verzi brány používané při ruční instalaci.
+*  Můžete vybrat jazyk nebo jazykovou verzi, které brána používá během ruční instalace.
 
-*  Pokud brána nebude fungovat podle očekávání, můžete odeslat protokoly brány z posledních sedmi dnů společnosti Microsoft pro usnadnění Poradce při potížích pro problém. Pokud brána není připojená ke cloudové službě, můžete uložit a archivovat protokoly brány.  
+*  Pokud brána nefunguje podle očekávání, můžete se rozhodnout odeslat protokoly brány za posledních sedm dní společnosti Microsoft, aby se usnadnilo řešení problému. Pokud brána není připojená ke cloudové službě, můžete se rozhodnout ukládat a archivovat protokoly brány.  
 
-*  Vylepšení uživatelského rozhraní pro správce konfigurace brány:
+*  Vylepšení uživatelského rozhraní pro Správce konfigurace brány:
 
-    *  Zkontrolujte stav brány na kartě Domů viditelnější.
+    *  Zviditelnit stav brány na kartě Domů.
 
-    *  Ovládací prvky přeorganizovaným a jednodušší.
+    *  Přeorganizováné a zjednodušené ovládací prvky.
 
-    *  Může kopírovat data z úložiště pomocí [nástroj pro kopírování bez použití kódu](data-factory-copy-data-wizard-tutorial.md). Zobrazit [připravené kopírování](data-factory-copy-activity-performance.md#staged-copy) obecné podrobnosti o této funkci.
-*  Brána správy dat pro příchozí přenos dat přímo z databáze SQL serveru v místním můžete do Azure Machine Learning.
+    *  Data z úložiště můžete kopírovat pomocí [Nástroje pro kopírování bez kódu](data-factory-copy-data-wizard-tutorial.md). Podrobné informace o této funkci najdete obecně v části [připravené kopírování](data-factory-copy-activity-performance.md#staged-copy) .
+*  Bránu Správa dat můžete použít pro příchozí data přímo z místní databáze SQL Server do Azure Machine Learning.
 
-*  Vylepšení výkonu
+*  Zlepšení výkonu
 
-    * Zlepšení výkonu na zobrazení schématu/Preview pro SQL Server v nástroj pro kopírování bez použití kódu.
+    * Zvyšte výkon zobrazení schématu nebo verze Preview proti SQL Server v nástroji pro kopírování bez kódu.
 
 ## <a name="11259531"></a>1.12.5953.1
 
@@ -139,120 +139,120 @@ Udržujeme žádné další poznámky k verzi tady. Získat nejnovější pozná
 
 ## <a name="11159181"></a>1.11.5918.1
 
-*  Maximální velikost protokolu událostí brány se zvýšil z 1 MB na 40 MB.
+*  Maximální velikost protokolu událostí brány se zvýšila z 1 MB na 40 MB.
 
-*  V případě, že během automatické aktualizace brány je zapotřebí restartování, zobrazí se dialogové okno upozornění. Je možné restartovat hned potom nebo novější.
+*  Zobrazí se dialogové okno s upozorněním v případě, že během automatické aktualizace brány budete potřebovat restartování. Můžete zvolit, že se má restartovat hned a později.
 
-*  Automatické aktualizace nezdaří, instalační program brány zopakuje pokus o automatické aktualizace třikrát na maximum.
+*  V případě, že se automatické aktualizace nezdařily, instalační program brány se automaticky aktualizuje třikrát.
 
-*  Vylepšení výkonu
+*  Zlepšení výkonu
 
-    * Zvýšení výkonu pro načítání velkých tabulek z místního serveru ve scénáři kopie bez použití kódu.
+    * Zvyšte výkon pro načítání velkých tabulek z místního serveru ve scénáři kopírování bez kódu.
 
 *  Opravy chyb
 
 ## <a name="11058921"></a>1.10.5892.1
 
-*  Vylepšení výkonu
+*  Zlepšení výkonu
 
 *  Opravy chyb
 
 ## <a name="1958652"></a>1.9.5865.2
 
-*  Nula funkce Automatické aktualizace dotykové ovládání
-*  Novou ikonu na hlavním panelu s indikátory stavu brány
-*  Možnost "Aktualizace nyní" z klienta
-*  Možnost nastavit čas plánované aktualizace
-*  Skript prostředí PowerShell pro přepínání automatické aktualizace zapnuto/vypnuto
+*  Možnost Automatické aktualizace nulového dotykového ovládání
+*  Ikona nového zásobníku s indikátory stavu brány
+*  Možnost "aktualizovat hned" z klienta
+*  Možnost nastavit čas plánu aktualizace
+*  PowerShellový skript pro automatické aktualizace automatických aktualizací
 *  Podpora formátu JSON  
-*  Vylepšení výkonu
+*  Zlepšení výkonu
 *  Opravy chyb
 
 ## <a name="1858221"></a>1.8.5822.1
 
-*  Vylepšení prostředí pro řešení potíží
-*  Vylepšení výkonu
+*  Zlepšení prostředí pro odstraňování potíží
+*  Zlepšení výkonu
 *  Opravy chyb
 
 ### <a name="1757951"></a>1.7.5795.1
 
-*  Vylepšení výkonu
+*  Zlepšení výkonu
 *  Opravy chyb
 
 ### <a name="1757641"></a>1.7.5764.1
 
-*  Vylepšení výkonu
+*  Zlepšení výkonu
 *  Opravy chyb
 
 ### <a name="1657351"></a>1.6.5735.1
 
-*  Podpora místních HDFS zdroj/jímka
-*  Vylepšení výkonu
+*  Podpora místního zdroje/jímky HDFS
+*  Zlepšení výkonu
 *  Opravy chyb
 
 ### <a name="1656961"></a>1.6.5696.1
 
-*  Vylepšení výkonu
+*  Zlepšení výkonu
 *  Opravy chyb
 
 ### <a name="1656761"></a>1.6.5676.1
 
-*  Podpora diagnostické nástroje v Configuration Manageru
-*  Podpora sloupců tabulky pro tabulkové zdroje dat pro Azure Data Factory
-*  Podpora pro vytváření dat Azure SQL data Warehouse
-*  Podpora Reclusive v BlobSource a v tuto chvíli uzamyká pro službu Azure Data Factory
-*  Podpora CopyBehavior – MergeFiles, PreserveHierarchy a FlattenHierarchy BlobSink a FileSink binárních kopií pro službu Azure Data Factory
-*  Podpora vytváření sestav průběhu pro Azure Data Factory aktivity kopírování
-*  Ověření připojení zdroje dat podporu pro Azure Data Factory
+*  Podpora diagnostických nástrojů na Configuration Manager
+*  Podpora sloupců tabulek pro tabelární zdroje dat pro Azure Data Factory
+*  Podpora datového skladu SQL DW pro Azure Data Factory
+*  Podpora Reclusive v BlobSource a zdroji dat pro Azure Data Factory
+*  Podpora CopyBehavior – MergeFiles, PreserveHierarchy a FlattenHierarchy v BlobSink a jímka souborů s binární kopií pro Azure Data Factory
+*  Podpora průběhu kopírování sestav aktivit pro Azure Data Factory
+*  Podpora ověření připojení ke zdroji dat pro Azure Data Factory
 *  Opravy chyb
 
 ### <a name="1656721"></a>1.6.5672.1
 
-*  Název tabulky podporu pro zdroje dat ODBC pro Azure Data Factory
-*  Vylepšení výkonu
+*  Podpora názvu tabulky pro zdroj dat ODBC pro Azure Data Factory
+*  Zlepšení výkonu
 *  Opravy chyb
 
 ### <a name="1656581"></a>1.6.5658.1
 
-*  Pomocný soubor jímky pro službu Azure Data Factory
-*  Podpora pro Azure Data Factory zachování hierarchie v binární kopie
-*  Podpora služby Azure Data Factory idempotence aktivity kopírování
+*  Podpora jímky souborů pro Azure Data Factory
+*  Podpora zachování hierarchie v binární kopii pro Azure Data Factory
+*  Podpora aktivity kopírování Idempotence pro Azure Data Factory
 *  Opravy chyb
 
 ### <a name="1656401"></a>1.6.5640.1
 
-*  Podpora 3 Další zdroje dat pro Azure Data Factory (rozhraní ODBC, OData, HDFS)
-*  Podpora znak uvozovky v analyzátoru csv pro Azure Data Factory
-*  Podpory komprese (BZip2)
+*  Podpora 3 dalších zdrojů dat pro Azure Data Factory (ODBC, OData, HDFS)
+*  Podpora znaku citace v analyzátoru sdílených svazků clusteru pro Azure Data Factory
+*  Podpora komprese (BZip2)
 *  Opravy chyb
 
 ### <a name="1556121"></a>1.5.5612.1
 
-*  Podpora pěti relační databáze pro službu Azure Data Factory (MySQL, PostgreSQL, DB2, Teradata a Sybase)
-*  Podpory komprese (Gzip a Deflate)
-*  Vylepšení výkonu
+*  Podpora pěti relačních databází pro Azure Data Factory (MySQL, PostgreSQL, DB2, Teradata a Sybase)
+*  Podpora komprese (gzip a Deflate)
+*  Zlepšení výkonu
 *  Opravy chyb
 
 ### <a name="1455491"></a>1.4.5549.1
 
-*  Přidat podporu pro zdroje dat Oracle pro Azure Data Factory
-*  Vylepšení výkonu
+*  Přidání podpory zdroje dat Oracle pro Azure Data Factory
+*  Zlepšení výkonu
 *  Opravy chyb
 
 ### <a name="1454921"></a>1.4.5492.1
 
-*  Sjednocené binární soubor, který podporuje služby Microsoft Azure Data Factory a Office 365 Power BI
-*  Upřesnění zpracování uživatelského rozhraní konfigurace a registrace
-*  Azure Data Factory – Azure příchozí a odchozí podporu pro zdroj dat SQL serveru
+*  Sjednocený binární soubor, který podporuje Microsoft Azure služby Data Factory a sady Office 365 Power BI
+*  Upřesnění uživatelského rozhraní konfigurace a procesu registrace
+*  Azure Data Factory – podpora Azure pro příchozí a odchozí přenosy pro SQL Server zdroj dat
 
 ### <a name="1253031"></a>1.2.5303.1
 
-*  Oprava potíží časový limit pro podporu další připojení zdrojů dat časově náročné.
+*  Oprava potíží s časovým limitem pro podporu více časově náročných připojení ke zdroji dat.
 
 ### <a name="1155268"></a>1.1.5526.8
 
-*  Během instalace vyžaduje rozhraní .NET Framework 4.5.1 jako předpoklad.
+*  Vyžaduje .NET Framework 4.5.1 jako součást při instalaci.
 
 ### <a name="1051442"></a>1.0.5144.2
 
-*  Žádné změny, které ovlivňují scénáře služby Azure Data Factory.
+*  Žádné změny, které by ovlivnily Azure Data Factory scénáře.

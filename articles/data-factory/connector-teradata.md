@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat z Teradata Vantage pomocí Azure Data Factory | Microsoft Docs
+title: Kopírování dat z Teradata Vantage pomocí Azure Data Factory
 description: Konektor Teradata služby Data Factory umožňuje kopírovat data z Teradata Vantage do úložišť dat, která aplikace Data Factory podporuje jako jímky.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 923e248ff7b793d5187faeabdbf073ca90d9efc2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4074c50aa17bf804696060134e37055a18bd0137
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72930970"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680094"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Kopírování dat z Teradata Vantage pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -46,7 +46,7 @@ Konkrétně tento konektor Teradata podporuje:
 >
 > Po vydání místního prostředí Integration runtime v 3.18 Azure Data Factory upgradován konektor Teradata. Všechna existující zatížení, která používají předchozí konektor Teradata, jsou stále podporována. Pro nové úlohy je ale vhodné použít nový. Všimněte si, že nová cesta vyžaduje jinou sadu propojených služeb, datových sad a zdrojů kopírování. Podrobnosti o konfiguraci najdete v příslušných oddílech.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -154,8 +154,8 @@ Chcete-li kopírovat data z Teradata, jsou podporovány následující vlastnost
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type datové sady musí být nastavená na `TeradataTable`. | Ano |
-| databáze | Název instance Teradata. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
-| Stolní | Název tabulky v instanci Teradata. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
+| databáze | Název instance Teradata. | Ne (když je zadán zdroj aktivity "query") |
+| stolní | Název tabulky v instanci Teradata. | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad:**
 
@@ -307,7 +307,7 @@ Při kopírování dat z Teradata platí následující mapování. Další info
 | ByteInt |Int16 |
 | char |Řetězec |
 | Datový typ CLOB |Řetězec |
-| Datum |Datum a čas |
+| Datum |DateTime |
 | Notaci |Notaci |
 | Klepat |Klepat |
 | Objekty |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |
@@ -334,8 +334,8 @@ Při kopírování dat z Teradata platí následující mapování. Další info
 | SmallInt |Int16 |
 | Time |TimeSpan |
 | Čas s časovým pásmem |TimeSpan |
-| Časové razítko |Datum a čas |
-| Časové razítko s časovým pásmem |Datum a čas |
+| Časové razítko |DateTime |
+| Časové razítko s časovým pásmem |DateTime |
 | VarByte |Byte [] |
 | VarChar |Řetězec |
 | VarGraphic |Nepodporuje se. Použije explicitní přetypování ve zdrojovém dotazu. |

@@ -1,5 +1,5 @@
 ---
-title: Požadavky na zabezpečení při přesunu dat v Azure Data Factory | Microsoft Docs
+title: Otázky zabezpečení při přesunu dat v Azure Data Factory
 description: Přečtěte si informace o zabezpečení přesunu dat v Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b425db761375c705d3c810002234a937bac46d78
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 7f18505e02c5d65d21e93759eb5da480c20e2eb3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610162"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682628"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – požadavky na zabezpečení při přesunu dat
 
@@ -115,7 +115,7 @@ V současné době Správa dat brána používá jeden **certifikát**. Tento ce
 | Verze brány (během vytváření) | Uložené přihlašovací údaje | Šifrování/zabezpečení přihlašovacích údajů | 
 | --------------------------------- | ------------------ | --------- |  
 | < = 2.3. xxxx. x | V cloudu | Šifrování pomocí certifikátu (liší se od verze používané aplikací Správce přihlašovacích údajů) | 
-| > = 2.4.xxxx.x | Místní | Zabezpečené přes DPAPI | 
+| > = 2.4. xxxx. x | Místní | Zabezpečené přes DPAPI | 
   
 
 ### <a name="encryption-in-transit"></a>Šifrování při přenosu
@@ -127,11 +127,11 @@ Virtuální síť je logická reprezentace vaší sítě v cloudu. Můžete při
 
 Následující tabulka shrnuje doporučení konfigurace sítě a brány na základě různých kombinací zdrojového a cílového umístění pro pohyb hybridních dat.
 
-| Source | Cíl | Konfigurace sítě | Nastavení brány |
+| Zdroj | Cíl | Konfigurace sítě | Nastavení brány |
 | ------ | ----------- | --------------------- | ------------- | 
-| Místní | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | IPSec VPN (Point-to-site nebo site-to-site) | Bránu můžete nainstalovat buď místně, nebo na virtuální počítač Azure (VM) ve virtuální síti. | 
-| Místní | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | ExpressRoute (soukromý partnerský vztah) | Bránu můžete nainstalovat buď místně, nebo na virtuálním počítači Azure ve virtuální síti. | 
-| Místní | Služby založené na Azure s veřejným koncovým bodem | ExpressRoute (veřejný partnerský vztah) | Brána musí být nainstalovaná místně. | 
+| Lokálně | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | IPSec VPN (Point-to-site nebo site-to-site) | Bránu můžete nainstalovat buď místně, nebo na virtuální počítač Azure (VM) ve virtuální síti. | 
+| Lokálně | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | ExpressRoute (soukromý partnerský vztah) | Bránu můžete nainstalovat buď místně, nebo na virtuálním počítači Azure ve virtuální síti. | 
+| Lokálně | Služby založené na Azure s veřejným koncovým bodem | ExpressRoute (veřejný partnerský vztah) | Brána musí být nainstalovaná místně. | 
 
 Následující obrázky ukazují použití Správa dat brány pro přesun dat mezi místní databází a službami Azure pomocí Express Route a IPSec VPN (s Virtual Network):
 
@@ -146,7 +146,7 @@ Následující obrázky ukazují použití Správa dat brány pro přesun dat me
 ### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>Konfigurace brány firewall a seznam povolených IP adres brány
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Požadavky na bránu firewall pro místní nebo privátní síť  
-V podniku je podniková **Brána firewall** provozována v centrálním směrovači organizace. A **Brána Windows Firewall** běží jako démon na místním počítači, na kterém je brána nainstalovaná. 
+V podniku je **podniková brána firewall** provozována v centrálním směrovači organizace. A **Brána Windows Firewall** běží jako démon na místním počítači, na kterém je brána nainstalovaná. 
 
 Následující tabulka obsahuje požadavky na **Odchozí porty** a domény pro **podnikovou bránu firewall**.
 
@@ -161,7 +161,7 @@ Následující tabulka obsahuje požadavky na **Odchozí porty** a domény pro *
 > [!NOTE] 
 > Možná budete muset spravovat porty/seznam povolených domén na úrovni brány firewall společnosti podle požadavků příslušných zdrojů dat. Tato tabulka používá jako příklad pouze Azure SQL Database, Azure SQL Data Warehouse Azure Data Lake Store.   
 
-Následující tabulka uvádí požadavky na **porty** pro bránu **Windows Firewall**.
+Následující tabulka uvádí požadavky na **porty** pro **bránu Windows Firewall**.
 
 | Příchozí porty | Popis | 
 | ------------- | ----------- | 
@@ -182,16 +182,16 @@ Následující cloudové úložiště dat vyžaduje seznam povolených IP adres 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-**Daná** Je možné bránu sdílet napříč různými datovými továrnami?
-**Zodpovědět** Tuto funkci zatím nepodporujeme. Aktivně na ní pracujeme.
+**Otázka:** Je možné bránu sdílet napříč různými datovými továrnami?
+**Odpověď:** Tuto funkci zatím nepodporujeme. Aktivně na ní pracujeme.
 
-**Daná** Jaké jsou požadavky na porty, které brána funguje?
-**Zodpovědět** Brána umožňuje připojení založená na protokolu HTTP k otevření Internetu. Aby brána mohla toto připojení vytvořit, musí se pro bránu otevřít **Odchozí porty 443 a 80** . Pro aplikaci Správce přihlašovacích údajů otevřete **příchozí Port 8050** jenom na úrovni počítače (ne na úrovni brány firewall pro firmy). Je-li jako zdroj/cíl použit Azure SQL Database nebo Azure SQL Data Warehouse, bude nutné také otevřít port **1433** . Další informace najdete v části [Konfigurace brány firewall a seznam povolených IP adres](#firewall-configurations-and-whitelisting-ip-address-of gateway) . 
+**Otázka:** Jaké jsou požadavky na porty, které brána funguje?
+**Odpověď:** Brána umožňuje připojení založená na protokolu HTTP k otevření Internetu. Aby brána mohla toto připojení vytvořit, musí se pro bránu otevřít **Odchozí porty 443 a 80** . Pro aplikaci Správce přihlašovacích údajů otevřete **příchozí Port 8050** jenom na úrovni počítače (ne na úrovni brány firewall pro firmy). Je-li jako zdroj/cíl použit Azure SQL Database nebo Azure SQL Data Warehouse, bude nutné také otevřít port **1433** . Další informace najdete v části [Konfigurace brány firewall a seznam povolených IP adres](#firewall-configurations-and-whitelisting-ip-address-of gateway) . 
 
-**Daná** Jaké jsou požadavky na certifikáty pro bránu?
-**Zodpovědět** Aktuální brána vyžaduje certifikát, který aplikace Správce přihlašovacích údajů používá pro bezpečné nastavení přihlašovacích údajů úložiště dat. Tento certifikát je certifikát podepsaný svým držitelem vytvořeného a nakonfigurovaného nastavením brány. Místo toho můžete použít vlastní certifikát TLS/SSL. Další informace najdete v části [aplikace Správce přihlašovacích údajů](#click-once-credentials-manager-app) . 
+**Otázka:** Jaké jsou požadavky na certifikáty pro bránu?
+**Odpověď:** Aktuální brána vyžaduje certifikát, který aplikace Správce přihlašovacích údajů používá pro bezpečné nastavení přihlašovacích údajů úložiště dat. Tento certifikát je certifikát podepsaný svým držitelem vytvořeného a nakonfigurovaného nastavením brány. Místo toho můžete použít vlastní certifikát TLS/SSL. Další informace najdete v části [aplikace Správce přihlašovacích údajů](#click-once-credentials-manager-app) . 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Informace o výkonu aktivity kopírování najdete v tématu [Průvodce laděním a výkonem aktivity kopírování](data-factory-copy-activity-performance.md).
 
  
