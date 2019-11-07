@@ -1,5 +1,5 @@
 ---
-title: Monitorovat úložiště XTP v paměti | Microsoft Docs
+title: Monitorování úložiště XTP v paměti
 description: Odhadnout a monitorovat využití úložiště XTP v paměti, kapacity; vyřešit chybu s kapacitou 41823
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 1c5a57f634c01cc42934a98decd8f392334dede6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d67a6d151f65252faab40f8f7289fe9e884eff17
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567984"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689808"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>Monitorování úložiště OLTP v paměti
 
@@ -36,7 +36,7 @@ Odhad požadavků na paměť pro paměťově optimalizovanou tabulku funguje ste
 Využití úložiště v paměti můžete monitorovat jako procentuální hodnotu limitu úložiště pro vaši výpočetní velikost v [Azure Portal](https://portal.azure.com/): 
 
 1. V okně databáze vyhledejte pole využití prostředků a klikněte na Upravit.
-2. Vyberte metriku `In-Memory OLTP Storage percentage`.
+2. Vyberte `In-Memory OLTP Storage percentage`metriky.
 3. Pokud chcete přidat výstrahu, kliknutím na pole využití prostředků otevřete okno metrika a pak klikněte na Přidat výstrahu.
 
 Nebo použijte následující dotaz k zobrazení využití úložiště v paměti:

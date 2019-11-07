@@ -1,6 +1,6 @@
 ---
 title: Místní SQL Server
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Použijte data z místní databáze SQL Server k provádění pokročilých analýz s využitím klasické verze Azure Machine Learning Studio.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 78b50ac5f0c39a38815b01ab7510d17eda941425
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7f525a2a81d6cda52b363d1fb808327c9d3c1fb1
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492546"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622084"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>Analýza pomocí Azure Machine Learning Studio (Classic) pomocí místní databáze SQL Server
 

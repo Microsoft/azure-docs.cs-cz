@@ -1,6 +1,6 @@
 ---
 title: Úlohy služby Azure Batch
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Přehled služby Azure Batch Services pro úlohy Machine Learning Studio (Classic). Zpracování fondu Batch umožňuje vytvořit fondy, na kterých můžete odesílat dávkové úlohy.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio (classic) | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: 1de7ad10a54c34595f69a543843097cee1377067
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a0e829f61117df25f8643301a0acdadeafd7c267
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493041"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684815"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-classic-jobs"></a>Služba Azure Batch pro úlohy Azure Machine Learning Studio (Classic)
 
@@ -43,7 +43,7 @@ Fondy vytvoříte voláním operace vytvořit fond na adrese URL služby fondu, 
 
 Můžete použít libovolnou novou Správce prostředků webovou službu, ale mějte na paměti, že fakturace za úlohy se účtují na základě fakturačního plánu přidruženého k této službě. Možná budete chtít vytvořit webovou službu a nový plán fakturace specificky pro spuštění úloh fondu Batch.
 
-Další informace o vytváření webových služeb najdete v tématu [nasazení webové služby Azure Machine Learning](publish-a-machine-learning-web-service.md).
+Další informace o vytváření webových služeb najdete v tématu [nasazení webové služby Azure Machine Learning](deploy-a-machine-learning-web-service.md).
 
 Po vytvoření fondu odešlete úlohu BES pomocí adresy URL žádostí Batch pro webovou službu. Můžete se rozhodnout odeslat ho do fondu nebo do klasického dávkového zpracování. Chcete-li odeslat úlohu do zpracování fondu Batch, přidejte následující parametr do textu žádosti o odeslání úlohy:
 
@@ -111,4 +111,4 @@ Doporučujeme, abyste provedli dotaz na stav úlohy a určili, kdy se úlohy dok
 
 | **Použít zpracování fondu Batch, když**    | **V případě použití klasického dávkového zpracování**  |
 |---|---|
-|Musíte spustit velký počet úloh.<br>nebo<br/>Musíte mít jistotu, že se úlohy spustí hned.<br/>nebo<br/>Potřebujete zaručenou propustnost. Například je třeba v daném časovém rámci spustit několik úloh a chtít škálovat výpočetní prostředky tak, aby vyhovovaly vašim potřebám.    | Spouštíte jenom pár úloh.<br/>And<br/> Nepotřebujete spouštět úlohy hned. |
+|Musíte spustit velký počet úloh.<br>Nebo<br/>Musíte mít jistotu, že se úlohy spustí hned.<br/>Nebo<br/>Potřebujete zaručenou propustnost. Například je třeba v daném časovém rámci spustit několik úloh a chtít škálovat výpočetní prostředky tak, aby vyhovovaly vašim potřebám.    | Spouštíte jenom pár úloh.<br/>And<br/> Nepotřebujete spouštět úlohy hned. |

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 10/30/2019
+ms.date: 11/05/2019
 ms.author: victorh
-ms.openlocfilehash: 3e19a2a45dde8a951e0ae3a4bd3c8d019609a5e1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: df649eab1f0e2946078f8efd3cdd6ab68c3b7938
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502377"
+ms.locfileid: "73580188"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Co je verze Preview Azure Firewall Manageru?
 
@@ -20,7 +20,7 @@ ms.locfileid: "73502377"
 
 Verze Preview služby Azure Firewall Manager je služba pro správu zabezpečení, která poskytuje centrální zásady zabezpečení a správu směrování pro hraniční zabezpečení na základě cloudu. Funguje s [Azure Virtual WAN hub](../virtual-wan/virtual-wan-about.md#resources), což je prostředek spravovaný Microsoftem, který umožňuje snadno vytvářet architektury hub a paprsků. Pokud jsou zásady zabezpečení a směrování přidruženy k takovému centru, označuje se jako *[zabezpečené virtuální rozbočovač](secured-virtual-hub.md)* . 
 
-![firewall – správce](media/overview/firewall-manager-conceptual.png)
+![firewall – správce](media/overview/firewallmanagerv3.png)
 
 ## <a name="azure-firewall-manager-preview-features"></a>Funkce Preview nástroje Azure Firewall Manager
 

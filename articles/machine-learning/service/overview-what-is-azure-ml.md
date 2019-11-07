@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: f0f9a2e59e0e231c956e9f1c36bb6a54bcbaca24
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 9399353cb676ef4525e81229cf3920fd9d7e3aaf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476307"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684919"
 ---
 # <a name="what-is-azure-machine-learning"></a>Co je Azure Machine Learning?
 
@@ -73,7 +73,7 @@ V případě školení a nasazení s nízkým kódem a nasazením, zkuste:
 
   Další informace [najdete v článku Přehled návrháře Azure Machine Learning](concept-designer.md). 
 
-  ![Příklad návrháře Azure Machine Learning](/media/concept-ml-pipelines/visual-design-surface.gif)
+  ![Příklad návrháře Azure Machine Learning](media/concept-ml-pipelines/designer-drag-and-drop.gif)
 
 + **Uživatelské rozhraní automatizovaného strojového učení**
 

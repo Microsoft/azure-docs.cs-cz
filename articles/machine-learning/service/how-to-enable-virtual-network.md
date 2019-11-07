@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/25/2019
-ms.openlocfilehash: 1f2380748c4feea6321bd8df1c29bd599f19b089
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2559a3cbd786c737b316a860e9c75434c6c719a4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489905"
+ms.locfileid: "73576578"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpečení experimentů s Azure ML a odvození úloh v rámci Azure Virtual Network
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Tento článek také poskytuje podrobné informace o *pokročilých nastaveních
 > [!WARNING]
 > Microsoft nepodporuje používání návrháře Azure Machine Learning ani automatizovaného strojového učení (od studia) s prostředky v rámci virtuální sítě.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + [Pracovní prostor](how-to-manage-workspace.md)Azure Machine Learning.
 
@@ -46,7 +46,7 @@ Tento článek také poskytuje podrobné informace o *pokročilých nastaveních
 
 Pokud chcete použít účet úložiště Azure pro pracovní prostor ve virtuální síti, udělejte toto:
 
-1. Vytvořte výpočetní prostředek (například Machine Learning výpočetní instance nebo cluster) za virtuální sítí nebo připojte výpočetní prostředek k pracovnímu prostoru (například cluster HDInsight, virtuální počítač nebo cluster služby Azure Kubernetes). Výpočetní prostředek může být pro experimentování nebo nasazení modelu.
+1. Vytvořte výpočetní prostředek (například cluster Machine Learning) za virtuální sítí nebo připojte výpočetní prostředek k pracovnímu prostoru (například cluster HDInsight, virtuální počítač nebo cluster služby Azure Kubernetes). Výpočetní prostředek může být pro experimentování nebo nasazení modelu.
 
    Další informace najdete v částech [použití výpočetní služby Machine Learning](#amlcompute), [použití virtuálního počítače nebo clusteru HDInsight](#vmorhdi)a [používání služeb Azure Kubernetes](#aksvnet) v tomto článku.
 
@@ -63,7 +63,7 @@ Pokud chcete použít účet úložiště Azure pro pracovní prostor ve virtuá
     - V části __virtuální sítě__vyberte odkaz __Přidat existující virtuální síť__ . Tato akce přidá virtuální síť, ve které se nachází vaše výpočetní výkon (viz krok 1).
 
         > [!IMPORTANT]
-        > Účet úložiště musí být ve stejné virtuální síti jako výpočetní instance nebo clustery používané pro školení nebo odvození.
+        > Účet úložiště musí být ve stejné virtuální síti jako virtuální počítače poznámkového bloku nebo clustery používané pro školení nebo odvození.
 
     - Zaškrtněte políčko __pro přístup k tomuto účtu úložiště udělit důvěryhodné služby Microsoftu__ .
 
@@ -73,12 +73,6 @@ Pokud chcete použít účet úložiště Azure pro pracovní prostor ve virtuá
     > Pokud chcete povolit přístup k účtu úložiště, přejděte na téma __brány firewall a virtuální sítě__ pro účet úložiště *z webového prohlížeče ve vývojovém klientovi*. Pak pomocí zaškrtávacího políčka __Přidat IP adresu klienta__ přidejte IP adresu klienta do __rozsahu adres__. Můžete také použít pole __Rozsah adres__ k ručnímu zadání IP adresy vývojového prostředí. Po přidání IP adresy pro klienta bude mít přístup k účtu úložiště pomocí sady SDK.
 
    [![podokně brány firewall a virtuální sítě v Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
-
-1. Při __spouštění experimentů__se v kódu experimentování změní konfigurace spuštění tak, aby používala úložiště objektů BLOB v Azure:
-
-    ```python
-    run_config.source_directory_data_store = "workspaceblobstore"
-    ```
 
 > [!IMPORTANT]
 > Do virtuální sítě můžete umístit _výchozí účet úložiště_ pro Azure Machine Learning nebo _jiné než výchozí účty úložiště_ .
@@ -114,20 +108,16 @@ Pokud chcete používat Azure Machine Learning možnosti experimentování s Azu
 
 ## <a name="use-a-machine-learning-compute"></a>Použít Výpočetní prostředky služby Machine Learning
 
-> [!NOTE]
-> Výpočetní instance jsou k dispozici pouze pro pracovní prostory s oblastí **střed USA – sever** nebo **Velká Británie – jih**.
-> Jednu z těchto oblastí použijte k vytvoření výpočetní instance, kterou je možné přidat do virtuální sítě.
-
-Chcete-li použít výpočetní instanci nebo výpočetní cluster Azure Machine Learning ve virtuální síti, musí být splněny následující požadavky na síť:
+Pokud chcete použít virtuální počítač nebo výpočetní cluster pro Azure Machine Learning Poznámkový blok ve virtuální síti, musí být splněné následující požadavky na síť:
 
 > [!div class="checklist"]
 > * Virtuální síť musí být ve stejném předplatném a oblasti jako pracovní prostor Azure Machine Learning.
-> * Podsíť zadaná pro výpočetní instanci nebo cluster musí mít k dispozici dostatek nepřiřazených IP adres pro přizpůsobení počtu cílových virtuálních počítačů. Pokud podsíť nemá dostatek nepřiřazených IP adres, výpočetní cluster se částečně přidělí.
+> * Podsíť zadaná pro výpočetní cluster musí mít k dispozici dostatek nepřiřazených IP adres, aby bylo možné přizpůsobit počet cílových virtuálních počítačů. Pokud podsíť nemá dostatek nepřiřazených IP adres, výpočetní cluster se částečně přidělí.
 > * Zkontrolujte, jestli zásady zabezpečení nebo zámky v předplatném virtuální sítě nebo skupině prostředků omezují oprávnění ke správě virtuální sítě. Pokud máte v úmyslu zabezpečit virtuální síť omezením provozu, nechte některé porty pro výpočetní službu otevřené. Další informace najdete v části [požadované porty](#mlcports) .
-> * Pokud hodláte do jedné virtuální sítě umístit víc výpočetních instancí nebo clusterů, možná budete muset požádat o zvýšení kvóty pro jeden nebo víc vašich prostředků.
-> * Pokud jsou účty Azure Storage v pracovním prostoru zabezpečeny i ve virtuální síti, musí být ve stejné virtuální síti jako Azure Machine Learning výpočetní instance nebo cluster.
+> * Pokud hodláte do jedné virtuální sítě umístit víc výpočetních clusterů, možná budete muset požádat o zvýšení kvóty pro jeden nebo víc vašich prostředků.
+> * Pokud jsou účty Azure Storage v pracovním prostoru zabezpečeny i ve virtuální síti, musí být ve stejné virtuální síti jako Azure Machine Learning Compute Cluster.
 
-Instance Machine Learning COMPUTE nebo cluster automaticky přiděluje další síťové prostředky ve skupině prostředků, která obsahuje virtuální síť. Pro každou výpočetní instanci nebo cluster přiděluje služba následující prostředky:
+Výpočetní cluster Machine Learning automaticky přiděluje další síťové prostředky ve skupině prostředků, která obsahuje virtuální síť. Pro každý výpočetní cluster přiděluje služba následující prostředky:
 
 * Jedna skupina zabezpečení sítě
 * Jedna veřejná IP adresa

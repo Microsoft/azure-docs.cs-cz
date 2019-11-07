@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database Managed instance – určení velikosti virtuální sítě/podsítě | Microsoft Docs
+title: Azure SQL Database Managed instance určují velikost virtuální sítě nebo podsítě.
 description: Toto téma popisuje, jak vypočítat velikost podsítě, do které se nasadí Azure SQL Database spravované instance.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 02/22/2019
-ms.openlocfilehash: 167e243b1fe4ea5ba9403ac3ca1fcea42f02f59a
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: fb0d79a82553349d5dad547a2d78a460301cbd6d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273557"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688115"
 ---
 # <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>Určení velikosti podsítě virtuální sítě pro Azure SQL Database spravovanou instanci
 
@@ -39,7 +39,7 @@ Pokud plánujete nasadit více spravovaných instancí v rámci podsítě a pot�
 - Každá instance Pro obecné účely potřebuje dvě adresy.
 - Každá instance Pro důležité obchodní informace potřebuje čtyři adresy.
 
-**Příklad**: Plánujete mít tři Pro obecné účely a dvě Pro důležité obchodní informace spravované instance. To znamená, že potřebujete 5 + 3 × 2 + 2 × 4 = 19 IP adres. Jelikož jsou rozsahy IP adres definovány v mocnině 2, potřebujete rozsah IP adres 32 (2 ^ 5) IP adres. Proto je nutné rezervovat podsíť s maskou podsítě/27.
+**Příklad**: plánujete mít tři pro obecné účely a dvě pro důležité obchodní informace spravované instance. To znamená, že potřebujete 5 + 3 × 2 + 2 × 4 = 19 IP adres. Jelikož jsou rozsahy IP adres definovány v mocnině 2, potřebujete rozsah IP adres 32 (2 ^ 5) IP adres. Proto je nutné rezervovat podsíť s maskou podsítě/27.
 
 > [!IMPORTANT]
 > Výše zobrazené kalkulace se zastaralá s dalšími vylepšeními.

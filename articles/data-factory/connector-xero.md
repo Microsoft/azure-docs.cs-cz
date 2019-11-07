@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat z Xero pomocí Azure Data Factory | Microsoft Docs
+title: Kopírování dat z Xero pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z Xero do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 59b9ecb7af53468dc18cf47d2e0510a48d07f925
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d52e536170c649cbc84b6c6dce92afb76ffe3125
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72930957"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680011"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Kopírování dat z Xero pomocí Azure Data Factory
 
@@ -98,7 +98,7 @@ Chcete-li kopírovat data z Xero, nastavte vlastnost Type datové sady na **Xero
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type datové sady musí být nastavená na: **XeroObject** . | Ano |
-| tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
+| tableName | Název tabulky | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad**
 

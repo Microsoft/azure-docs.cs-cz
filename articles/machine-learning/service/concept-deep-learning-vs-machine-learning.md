@@ -1,6 +1,6 @@
 ---
 title: Obsáhlý Learning a strojové učení
-titleSuffix: Azure Machine Learning
+titleSuffix: Azure
 description: Seznamte se s tím, jak obsáhlý Learning souvisí se strojovým učením a umělou logikou. Obsáhlý Learning se používá ve scénářích, jako je odhalování podvodů, rozpoznávání hlasových &, rozpoznávání obličeje, analýza mínění a prognózování časových řad.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 11/04/2019
-ms.openlocfilehash: cc98e620194c5bf67d2efa12d61af44d5527bafc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ed9f933e790aa70b257e27fa2bbbc04f6a2e077
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497495"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647999"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Obsáhlý Learning a strojové učení
 

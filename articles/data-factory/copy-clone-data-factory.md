@@ -1,5 +1,5 @@
 ---
-title: Kopírování nebo klonování datové továrny v Azure Data Factory | Microsoft Docs
+title: Kopírování nebo klonování datové továrny v Azure Data Factory
 description: Naučte se kopírovat nebo klonovat datovou továrnu v Azure Data Factory
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: 6e23cc583c9b403619ad2e47f2085ef7c0149bd2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: bafe70655f05b5dda32f51393591f82b4b5625f1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142369"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678133"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Kopírování nebo klonování datové továrny v Azure Data Factory
 
@@ -46,6 +46,6 @@ Tady jsou některé okolnosti, za kterých může být užitečné zkopírovat n
 
 1. Z bezpečnostních důvodů vygenerovaná Správce prostředků šablona neobsahuje žádné tajné informace, jako jsou hesla pro propojené služby. V důsledku toho je nutné zadat tato hesla jako parametry nasazení. Pokud zadání parametrů není žádoucí, musíte získat připojovací řetězce a hesla propojených služeb od Azure Key Vault.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si pokyny k vytvoření datové továrny v Azure Portal v části [Vytvoření datové továrny pomocí uživatelského rozhraní Azure Data Factory](quickstart-create-data-factory-portal.md).

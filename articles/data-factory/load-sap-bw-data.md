@@ -1,6 +1,6 @@
 ---
-title: Načtení dat ze SAP Business Warehouse s využitím Azure Data Factory | Dokumentace Microsoftu
-description: Použití Azure Data Factory pro kopírování dat z SAP Business Warehouse (BW)
+title: Načtení dat z SAP Business Warehouse pomocí Azure Data Factory
+description: Použití Azure Data Factory ke kopírování dat z SAP Business Warehouse (ČERNOBÍLý)
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,168 +11,168 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: jingwang
-ms.openlocfilehash: 3c846ab3e81e7ab8a4948aa4ed96cfa75e8eb3f4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0c96ecff27a57b3277e7c8105766059b739d11af
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449685"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672650"
 ---
-# <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Kopírování dat z řešení SAP Business Warehouse s využitím Azure Data Factory
+# <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Kopírování dat z SAP Business Warehouse pomocí Azure Data Factory
 
-Tento článek ukazuje, jak pomocí Azure Data Factory ke zkopírování dat z SAP Business Warehouse (BW) prostřednictvím Open centra do Azure Data Lake Storage Gen2. Podobný proces můžete použít ke zkopírování dat do jiných [podporovaná úložiště dat jímky](copy-activity-overview.md#supported-data-stores-and-formats).
+V tomto článku se dozvíte, jak pomocí Azure Data Factory kopírovat data z SAP Business Warehouse (ČERNOBÍLý) prostřednictvím otevřeného centra pro Azure Data Lake Storage Gen2. Podobný proces můžete použít ke kopírování dat do jiných [podporovaných úložišť dat jímky](copy-activity-overview.md#supported-data-stores-and-formats).
 
 > [!TIP]
-> Obecné informace o kopírování dat z SAP BW, včetně integrace SAP BW Open centra a rozdílové extrakce toku, najdete v části [kopírování dat z řešení SAP Business Warehouse prostřednictvím Open centra pomocí služby Azure Data Factory](connector-sap-business-warehouse-open-hub.md).
+> Obecné informace o kopírování dat z SAP BW, včetně SAP BW otevřené integrace centra a postupu extrakce Delta, najdete v tématu [kopírování dat ze SAP Business Warehouse přes Open hub pomocí Azure Data Factory](connector-sap-business-warehouse-open-hub.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- **Azure Data Factory**: Pokud ho nemáte, postupujte podle kroků pro [vytvoření datové továrny](quickstart-create-data-factory-portal.md#create-a-data-factory).
+- **Azure Data Factory**: Pokud ho ještě nemáte, postupujte podle pokynů k [Vytvoření datové továrny](quickstart-create-data-factory-portal.md#create-a-data-factory).
 
-- **SAP BW Open Centrum cílový (OHD) s typem cílového "Databázové tabulky"** : Vytvoření OHD zkontrolujte, jestli je vaše OHD správně nakonfigurovaný pro integraci služby Data Factory najdete v článku [konfigurace SAP BW otevřít Centrum cílový](#sap-bw-open-hub-destination-configurations) části tohoto článku.
+- **SAP BW OHD (cílové umístění centra) s cílovým typem "databázová tabulka"** : Pokud chcete vytvořit OHD nebo ověřit, že je váš OHD správně nakonfigurovaný pro Data Factory integraci, přečtěte si část [SAP BW otevřít cílovou konfiguraci centra](#sap-bw-open-hub-destination-configurations) v tomto článku.
 
 - **SAP BW uživatel potřebuje následující oprávnění**:
 
-  - Autorizace pro vzdálená volání funkcí (RFC) a SAP BW.
-  - Oprávnění k "Spustit" aktivitu **S_SDSAUTH** objekt autorizací.
+  - Autorizace pro volání funkce Remote Functions (RFC) a SAP BW.
+  - Oprávnění k aktivitě "Execute" objektu autorizace **S_SDSAUTH** .
 
-- **A [v místním prostředí integration runtime (IR)](concepts-integration-runtime.md#self-hosted-integration-runtime) s konektorem SAP .NET 3.0**. Postupujte podle těchto kroků instalace:
+- **Místní [prostředí Integration runtime (IR)](concepts-integration-runtime.md#self-hosted-integration-runtime) s konektorem SAP .NET Connector 3,0**. Postupujte podle těchto kroků instalace:
 
-  1. Instalace a registrace místního prostředí integration runtime, verze 3,13 nebo novější. (Tento proces je popsán dále v tomto článku).
+  1. Nainstalujte a zaregistrujte místní prostředí Integration runtime, verze 3,13 nebo novější. (Tento postup je popsán dále v tomto článku.)
 
-  2. Stáhněte si [64-bit konektoru SAP pro rozhraní Microsoft .NET 3.0](https://support.sap.com/en/product/connectors/msnet.html) z webu SAP a nainstalujte ho na stejném počítači jako v místním prostředí IR. Během instalace, ujistěte se, že jste vybrali **nainstalovat sestavení do GAC** v **pokynů k instalaci** dialogové okno, jak ukazuje následující obrázek:
+  2. Stáhněte si z webu SAP [konektor 64-bit SAP pro Microsoft .net 3,0](https://support.sap.com/en/product/connectors/msnet.html) a nainstalujte ho do stejného počítače jako prostředí IR v místním prostředí. Během instalace se ujistěte, že jste v dialogovém okně **volitelné instalační kroky** vybrali možnost **instalovat sestavení do mezipaměti GAC** , jak ukazuje následující obrázek:
 
-     ![Nastavení dialogové okno konektoru SAP .NET](media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
+     ![Dialogové okno nastavení konektoru SAP .NET](media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
 
-## <a name="do-a-full-copy-from-sap-bw-open-hub"></a>Proveďte úplné kopie z SAP BW Open centra
+## <a name="do-a-full-copy-from-sap-bw-open-hub"></a>Provedení úplné kopie z SAP BW otevřeném centru
 
-Na webu Azure Portal přejděte do služby data factory. Vyberte **vytvořit a monitorovat** otevřete na samostatné kartě uživatelské rozhraní služby Data Factory.
+V Azure Portal přejdete do své datové továrny. Vyberte **vytvořit & monitorování** a otevřete tak Data Factory uživatelské rozhraní na samostatné kartě.
 
-1. Na **pusťme se do práce** stránce **kopírování dat** otevřete nástroj pro kopírování dat.
+1. Na stránce **Začínáme** vyberte **kopírování dat** pro otevření nástroje kopírování dat.
 
-2. Na **vlastnosti** určete, **název úkolu**a pak vyberte **Další**.
+2. Na stránce **vlastnosti** zadejte **název úlohy**a pak vyberte **Další**.
 
-3. Na **zdrojového úložiště dat** stránce **+ vytvořit nové připojení**. Vyberte **SAP BW Open centra** z Galerie konektoru a pak vyberte **pokračovat**. Filtrovat konektory, můžete zadat **SAP** do vyhledávacího pole.
+3. Na stránce **zdrojové úložiště dat** vyberte **+ vytvořit nové připojení**. Vyberte **SAP BW otevřít rozbočovač** z Galerie konektorů a pak vyberte **pokračovat**. Chcete-li filtrovat konektory, můžete do vyhledávacího pole zadat **SAP** .
 
-4. Na **připojení zadejte SAP BW Open rozbočovače** stránce, postupujte podle těchto kroků a vytvořte nové připojení.
+4. Na stránce **zadat SAP BW otevřít připojení centra** postupujte podle těchto kroků a vytvořte nové připojení.
 
-   ![Vytvoření stránky otevřete Centrum SAP BW propojená služba](media/load-sap-bw-data/create-sap-bw-open-hub-linked-service.png)
+   ![Vytvořit SAP BW otevřít stránku propojených služeb na střed](media/load-sap-bw-data/create-sap-bw-open-hub-linked-service.png)
 
-   1. Z **připojit prostřednictvím prostředí integration runtime** vyberte existující v místním prostředí IR. Nebo můžete vytvořit jednu, pokud ještě nemáte.
+   1. V seznamu **připojit prostřednictvím prostředí Integration runtime** vyberte existující prostředí IR v místním prostředí. Nebo ho můžete vytvořit, pokud ho ještě nemáte.
 
-      Chcete-li vytvořit nové prostředí IR v místním prostředí, vyberte **+ nová**a pak vyberte **v místním prostředí**. Zadejte **název**a pak vyberte **Další**. Vyberte **Expresní instalace** nainstalovat na počítač ani postupovat podle pokynů **ruční instalaci** kroky, které jsou k dispozici.
+      Pokud chcete vytvořit nový prostředí IR v místním prostředí, vyberte **+ Nový**a pak vyberte v místním **prostředí.** Zadejte **název**a potom vyberte **Další**. Vyberte **expresní instalaci** , kterou chcete nainstalovat na aktuální počítač, nebo postupujte podle uvedených kroků **Ruční instalace** .
 
-      Jak je uvedeno v [požadavky](#prerequisites), ujistěte se, že máte pro Microsoft .NET 3.0 nainstalovaný na stejném počítači, kde je spuštěná místní prostředí IR konektoru SAP.
+      Jak je uvedeno v části [požadavky](#prerequisites), ujistěte se, že máte konektor SAP pro Microsoft .NET 3,0 nainstalovaný na stejném počítači, na kterém běží prostředí IR pro místní hostování.
 
-   2. Vyplňte SAP BW **název serveru**, **číslo systému**, **ID klienta** **jazyk** (Pokud jiný než **EN**) , **Uživatelské jméno**, a **heslo**.
+   2. Zadejte **název SAP BW serveru**, **číslo systému**, **ID klienta,** **jazyk** (Pokud je jiný než **EN**), **uživatelské jméno**a **heslo**.
 
-   3. Vyberte **Test připojení** ověřte nastavení a potom vyberte **Dokončit**.
+   3. Vyberte **Test připojení** , aby se ověřilo nastavení, a pak vyberte **Dokončit**.
 
-   4. Vytvoření nového připojení. Vyberte **Další**.
+   4. Vytvoří se nové připojení. Vyberte **Next** (Další).
 
-5. Na **vyberte Otevřít Centrum cíle** stránky, vyhledejte otevřít centra cílů, které jsou k dispozici v SAP BW. Vyberte OHD kopírování dat z, a potom vyberte **Další**.
+5. Na stránce **Vyberte umístění centra** , která jsou k dispozici ve vašem SAP BW, přejděte na otevřená umístění centra. Vyberte OHD, ze kterých se mají kopírovat data, a pak vyberte **Další**.
 
-   ![Vyberte SAP BW Open centra cílové tabulky](media/load-sap-bw-data/select-sap-bw-open-hub-table.png)
+   ![Vybrat SAP BW otevřít cílovou tabulku centra](media/load-sap-bw-data/select-sap-bw-open-hub-table.png)
 
-6. Zadejte filtr, pokud budete potřebovat. Pokud vaše OHD obsahuje pouze data od spuštění procesu (DTP) jeden přenos dat s ID jedné žádosti, nebo si jisti, že dokončení vaší DTP a vy chcete zkopírovat data, zrušte **vyloučení posledního požadavku** zaškrtávací políčko.
+6. Určete filtr, pokud ho potřebujete. Pokud vaše OHD obsahuje jenom data z jednoho procesu přenosu dat (DTP) s jediným ID žádosti, nebo jste si jisti, že je váš DTP dokončený a že chcete data zkopírovat, zrušte zaškrtnutí políčka **vyloučit poslední požadavek** .
 
-   Další informace o těchto nastaveních [konfigurace SAP BW otevřít Centrum cílový](#sap-bw-open-hub-destination-configurations) části tohoto článku. Vyberte **ověřit** znovu zkontrolovat, jaká data bude vrácen. Pak vyberte **Další**.
+   Další informace o těchto nastaveních najdete v části [SAP BW otevřít cílové konfigurace centra](#sap-bw-open-hub-destination-configurations) v tomto článku. Výběrem možnosti **ověřit** dvakrát zkontrolujete, jaká data budou vrácena. Pak vyberte **Další**.
 
-   ![Otevřete Centrum SAP BW filtru](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
+   ![Nakonfigurovat SAP BW otevřít filtr centra](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
 
-7. Na **cílového úložiště dat** stránce **+ vytvořit nové připojení** > **Azure Data Lake Storage Gen2**  >   **Pokračovat**.
+7. Na stránce **cílové úložiště dat** vyberte **+ vytvořit nové připojení** > **Azure Data Lake Storage Gen2** > **pokračovat**.
 
-8. Na **připojení zadejte Azure Data Lake Storage** stránce, postupujte podle těchto kroků a vytvořte připojení.
+8. Na stránce **zadejte Azure Data Lake Storage připojení** postupujte podle těchto kroků a vytvořte připojení.
 
    ![Vytvoření stránky propojené služby ADLS Gen2](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
 
-   1. Vyberte svůj účet Data Lake Storage Gen2 umožňující z **název** rozevíracího seznamu.
-   2. Vyberte **Dokončit** k vytvoření připojení. Pak vyberte **Další**.
+   1. V rozevíracím seznamu **název** vyberte účet s podporou Data Lake Storage Gen2.
+   2. Vyberte **Dokončit** a vytvořte připojení. Pak vyberte **Další**.
 
-9. Na **zvolte výstupní soubor nebo složku** zadejte **copyfromopenhub** jako název složky výstupu. Pak vyberte **Další**.
+9. Na stránce **zvolit výstupní soubor nebo složku** zadejte **copyfromopenhub** jako název výstupní složky. Pak vyberte **Další**.
 
-   ![Vyberte stránku výstupní složka](media/load-sap-bw-data/choose-output-folder.png)
+   ![Vybrat stránku výstupní složky](media/load-sap-bw-data/choose-output-folder.png)
 
-10. Na **nastavení formátu souboru** stránce **Další** použít výchozí nastavení.
+10. Na stránce **Nastavení formátu souboru** vyberte možnost **Další** a použijte výchozí nastavení.
 
-    ![Určení stránky formátu jímky](media/load-sap-bw-data/specify-sink-format.png)
+    ![Zadat stránku formátu jímky](media/load-sap-bw-data/specify-sink-format.png)
 
-11. Na **nastavení** stránce, rozbalte **nastavení výkonu**. Zadejte hodnotu pro **stupeň paralelismu kopírování** například 5 pro načtení ze SAP BW paralelně. Pak vyberte **Další**.
+11. Na stránce **Nastavení** rozbalte položku **Nastavení výkonu**. Zadejte hodnotu pro **úroveň kopírování paralelismus** , jako je například 5 pro načtení z SAP BW paralelně. Pak vyberte **Další**.
 
-    ![Konfigurace nastavení kopírování](media/load-sap-bw-data/configure-copy-settings.png)
+    ![Konfigurovat nastavení kopírování](media/load-sap-bw-data/configure-copy-settings.png)
 
-12. Na **Souhrn** stránky, zkontrolujte nastavení. Pak vyberte **Další**.
+12. Na stránce **Souhrn** zkontrolujte nastavení. Pak vyberte **Další**.
 
-13. Na **nasazení** stránce **monitorování** a začněte monitorovat kanál.
+13. Na stránce **nasazení** vyberte **monitorovat** a monitorujte kanál.
 
     ![Stránka Nasazení](media/load-sap-bw-data/deployment.png)
 
-14. Všimněte si, **monitorování** automaticky vybraná karta na levé straně stránky. **Akce** sloupec obsahuje odkazy, chcete-li zobrazit podrobnosti o spuštění aktivit a spustit kanál znovu.
+14. Všimněte si, že se automaticky vybere karta **monitorování** na levé straně stránky. Sloupec **Actions (akce** ) obsahuje odkazy na zobrazení podrobností o spuštění aktivit a opětovném spuštění kanálu.
 
     ![Zobrazení monitorování kanálu](media/load-sap-bw-data/pipeline-monitoring.png)
 
-15. Pokud chcete zobrazit spuštění aktivit, které jsou spojeny se spuštěním kanálu, vyberte **zobrazit spuštění aktivit** v **akce** sloupce. Kanál obsahuje pouze jednu aktivitu (aktivita kopírování), takže se zobrazí pouze jedna položka. Pokud chcete přepnout zpět na zobrazení spuštění kanálu, vyberte **kanály** odkazu v horní části. Seznam můžete aktualizovat výběrem možnosti **Aktualizovat**.
+15. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte **Zobrazit spuštění aktivit** ve sloupci **Akce** . Kanál obsahuje pouze jednu aktivitu (aktivita kopírování), takže se zobrazí pouze jedna položka. Pokud chcete přejít zpátky k zobrazení spuštění kanálu, vyberte odkaz **kanály** v horní části. Seznam můžete aktualizovat kliknutím na **Aktualizovat**.
 
-    ![Monitorování aktivit obrazovky](media/load-sap-bw-data/activity-monitoring.png)
+    ![Obrazovka monitorování aktivity](media/load-sap-bw-data/activity-monitoring.png)
 
-16. Pokud chcete monitorovat spuštění podrobnosti o každé aktivitě kopírování, vyberte **podrobnosti** odkaz, což je ikona brýlí níže **akce** v zobrazení monitorování aktivit. Dostupné podrobnosti zahrnují objem dat zkopírovanou ze zdroje do jímky, propustnost dat, provádění kroků a dobu trvání a konfigurace použité.
+16. Chcete-li monitorovat podrobnosti o spuštění každé aktivity kopírování, vyberte odkaz **Podrobnosti** , což je ikona brýlí pod **akcemi** v zobrazení monitorování aktivity. Dostupné podrobnosti zahrnují datový svazek zkopírovaný ze zdroje do jímky, propustnosti dat, postup provedení a dobu trvání a použité konfigurace.
 
-    ![Podrobnosti monitorování aktivit](media/load-sap-bw-data/activity-monitoring-details.png)
+    ![Podrobnosti monitorování aktivity](media/load-sap-bw-data/activity-monitoring-details.png)
 
-17. Chcete-li zobrazit **maximální ID žádosti**, přejděte zpět na zobrazení a vyberte monitorování aktivit **výstup** pod **akce**.
+17. Chcete-li zobrazit **maximální ID žádosti**, vraťte se zpět do zobrazení monitorování aktivit a vyberte **výstup** v části **Akce**.
 
     ![Obrazovka výstup aktivity](media/load-sap-bw-data/activity-output.png)
 
-    ![Zobrazení podrobností o výstup aktivity](media/load-sap-bw-data/activity-output-details.png)
+    ![Zobrazení podrobností výstupu aktivity](media/load-sap-bw-data/activity-output-details.png)
 
-## <a name="incremental-copy-from-sap-bw-open-hub"></a>Přírůstkové kopírování z SAP BW Open centra
+## <a name="incremental-copy-from-sap-bw-open-hub"></a>Přírůstková kopie z SAP BW otevřeném centru
 
 > [!TIP]
-> Zobrazit [SAP BW Open centra konektorem delta extrakce](connector-sap-business-warehouse-open-hub.md#delta-extraction-flow) se dozvíte, jak konektor SAP BW Open Hub ve službě Data Factory kopíruje Přírůstková data z SAP BW. Tento článek může taky vám pomůžou pochopit základní konektor configuration.
+> Další informace o tom, jak SAP BW Open hub Connector v Data Factory kopíruje přírůstková data z SAP BW, najdete v tématu [SAP BW Open hub Connector – průběh extrakce](connector-sap-business-warehouse-open-hub.md#delta-extraction-flow) . Tento článek vám může také porozumět základní konfiguraci konektoru.
 
-Teď můžeme pokračovat v konfiguraci přírůstkového kopírování z SAP BW Open centra.
+Teď budeme pokračovat v konfiguraci přírůstkové kopie z SAP BW otevřeném centru.
 
-Přírůstkové kopírování používá mechanismus "meze", který je založen na **ID požadavku**. Toto ID není automaticky vygenerován v SAP BW otevřít Centrum cílový DTP. Následující diagram znázorňuje tento pracovní postup:
+Přírůstkové kopírování používá mechanismus vysoké meze, který je založen na **ID žádosti**. Toto ID se automaticky vygeneruje v SAP BW otevřeném cíli centra DTP. Tento pracovní postup znázorňuje následující diagram:
 
-![Přírůstkové kopírování pracovního postupu vývojového diagramu](media/load-sap-bw-data/incremental-copy-workflow.png)
+![Diagram toku pracovního postupu přírůstkového kopírování](media/load-sap-bw-data/incremental-copy-workflow.png)
 
-V datové továrně **pusťme se do práce** stránce **vytvořit kanál ze šablony** použít předdefinované šablony.
+Na stránce **Začínáme** pro datovou továrnu vyberte **vytvořit kanál ze šablony** , aby se použila předdefinovaná šablona.
 
-1. Vyhledejte **SAP BW** najděte a vyberte **přírůstkové kopírování ze SAP BW do Azure Data Lake Storage Gen2** šablony. Tato šablona zkopíruje data do Azure Data Lake Storage Gen2. Podobně jako pracovní postup můžete použít ke zkopírování do jiných typů jímky.
+1. Vyhledejte **SAP BW** , kde můžete najít a vybrat **přírůstkovou kopii z SAP BW na šablonu Azure Data Lake Storage Gen2** . Tato šablona kopíruje data do Azure Data Lake Storage Gen2. Podobný pracovní postup můžete použít ke kopírování na jiné typy jímky.
 
-2. Na hlavní stránce šablony vyberte nebo vytvořte následující tři připojení a pak vyberte **pomocí této šablony** v pravém dolním rohu okna.
+2. Na hlavní stránce šablony vyberte nebo vytvořte následující tři připojení a pak vyberte **použít tuto šablonu** v pravém dolním rohu okna.
 
-   - **Azure Blob storage**: V tomto názorném postupu používáme Azure Blob storage k ukládání meze, která je *max zkopírovat ID požadavku*.
-   - **SAP BW Open Hub**: Toto je zdroje ke zkopírování dat z. Přečtěte si k předchozímu návodu celou Kopírovat pro podrobnou konfiguraci.
-   - **Azure Data Lake Storage Gen2**: Toto je jímky kopírování dat do. Přečtěte si k předchozímu návodu celou Kopírovat pro podrobnou konfiguraci.
+   - **Azure Blob Storage**: v tomto návodu používáme úložiště objektů BLOB v Azure k uložení horní meze, což je *maximální kopírovaný identifikátor žádosti*.
+   - **SAP BW otevřené centrum**: Jedná se o zdroj, ze kterého se mají kopírovat data. Podrobnou konfiguraci najdete v předchozím podrobném návodu k úplnému kopírování.
+   - **Azure Data Lake Storage Gen2**: Toto je jímka, do které se mají kopírovat data. Podrobnou konfiguraci najdete v předchozím podrobném návodu k úplnému kopírování.
 
-   ![Přírůstkové kopírování ze šablony SAP BW](media/load-sap-bw-data/incremental-copy-from-sap-bw-template.png)
+   ![Přírůstková kopírování ze šablony SAP BW](media/load-sap-bw-data/incremental-copy-from-sap-bw-template.png)
 
-3. Tato šablona vytvoří kanál s následujícími aktivitami tři a je mezi nimi vlastně zřetězené v případě úspěchu: *Vyhledávání*, *kopírování dat*, a *webové*.
+3. Tato šablona vygeneruje kanál s následujícími třemi aktivitami a provede jejich zřetězení při úspěchu: *vyhledávání*, *kopírování dat*a *webu*.
 
-   Přejděte do kanálu **parametry** kartu. Zobrazí všechny konfigurace, které je potřeba zadat.
+   Přejít na kartu **parametry** kanálu. Zobrazí se všechny konfigurace, které je třeba zadat.
 
-   ![Přírůstkové kopírování z konfigurace SAP BW](media/load-sap-bw-data/incremental-copy-from-sap-bw-pipeline-config.png)
+   ![Přírůstková kopie z konfigurace SAP BW](media/load-sap-bw-data/incremental-copy-from-sap-bw-pipeline-config.png)
 
-   - **SAPOpenHubDestinationName**: Zadejte název tabulky otevřete Centrum pro kopírování dat z.
+   - **SAPOpenHubDestinationName**: zadejte název otevřené tabulky centra pro kopírování dat.
 
-   - **ADLSGen2SinkPath**: Zadejte cílovou cestu, Azure Data Lake Storage Gen2 zkopírovat data do. Pokud cesta neexistuje, aktivita kopírování objektu pro vytváření dat vytváří cestu během provádění.
+   - **ADLSGen2SinkPath**: zadejte cílovou Azure Data Lake Storage Gen2 cestu pro kopírování dat. Pokud cesta neexistuje, aktivita Data Factory kopírování vytvoří během provádění cestu.
 
-   - **HighWatermarkBlobPath**: Zadejte cestu pro ukládání hodnoty horní meze, jako například `container/path`.
+   - **HighWatermarkBlobPath**: zadejte cestu k uložení hodnoty horní meze, například `container/path`.
 
-   - **HighWatermarkBlobName**: Zadejte název objektu blob pro ukládání hodnoty horní meze, jako například `requestIdCache.txt`. V úložišti objektů Blob, přejděte na odpovídající cesta HighWatermarkBlobPath + HighWatermarkBlobName, jako například *container/path/requestIdCache.txt*. Vytvoření objektu blob s obsahem 0.
+   - **HighWatermarkBlobName**: zadejte název objektu blob, do kterého se uloží hodnota horní meze, například `requestIdCache.txt`. V části úložiště objektů blob, přejít na odpovídající cestu HighWatermarkBlobPath + HighWatermarkBlobName, jako je například *Container/cesta/requestIdCache. txt*. Vytvoří objekt BLOB s obsahem 0.
 
       ![Obsah objektu BLOB](media/load-sap-bw-data/blob.png)
 
-   - **LogicAppURL**: V této šabloně používáme WebActivity volání Azure Logic Apps se nastavit hodnotu meze v úložišti objektů Blob. Nebo můžete použít Azure SQL Database a uložit. Aktualizujte hodnotu pomocí aktivity uložených procedur.
+   - **LogicAppURL**: v této šabloně používáme funkci webactivity k volání Azure Logic Apps k nastavení hodnoty horní meze v úložišti objektů BLOB. Případně můžete použít Azure SQL Database k uložení. K aktualizaci hodnoty použijte aktivitu uložené procedury.
 
-      Nejprve musíte vytvořit aplikaci logiky, jak ukazuje následující obrázek. Nakonec vložte **adresa URL operace HTTP POST**.
+      Nejprve musíte vytvořit aplikaci logiky, jak ukazuje následující obrázek. Pak vložte **adresu URL post protokolu HTTP**.
 
-      ![Konfigurace aplikací logiky](media/load-sap-bw-data/logic-app-config.png)
+      ![Konfigurace aplikace logiky](media/load-sap-bw-data/logic-app-config.png)
 
-      1. Přejděte na web Azure Portal. Vyberte nový **Logic Apps** služby. Vyberte **+ prázdná aplikace logiky** přejdete na **návrhář pro Logic Apps**.
+      1. Přejděte na web Azure Portal. Vyberte novou **Logic Apps** službu. Vyberte **+ prázdná aplikace logiky** , abyste přešli na **Logic Apps Designer**.
 
-      2. Vytvořit aktivační událost s **přijetí požadavku HTTP při**. Určení těla požadavku protokolu HTTP následujícím způsobem:
+      2. Vytvoří Trigger, **když se přijme požadavek HTTP**. Text požadavku HTTP určete následujícím způsobem:
 
          ```json
          {
@@ -185,90 +185,90 @@ V datové továrně **pusťme se do práce** stránce **vytvořit kanál ze šab
          }
          ```
 
-      3. Přidat **vytvořit objekt blob** akce. Pro **cesta ke složce** a **název objektu Blob**, použijte stejné hodnoty, které jste dříve nakonfigurovali v **HighWatermarkBlobPath** a **HighWatermarkBlobName**.
+      3. Přidejte akci **vytvořit objekt BLOB** . Pro **cestu ke složce** a **název objektu BLOB**použijte stejné hodnoty, které jste nakonfigurovali dříve v **HighWatermarkBlobPath** a **HighWatermarkBlobName**.
 
-      4. Vyberte **Uložit**. Potom zkopírujte hodnotu **adresa URL operace HTTP POST** pro použití v kanálech Data Factory.
+      4. Vyberte **Uložit**. Pak zkopírujte hodnotu **http post URL** , která se použije v kanálu Data Factory.
 
-4. Po zadání parametrů kanálu služby Data Factory, vyberte **ladění** > **Dokončit** chcete vyvolat běh k ověření konfigurace. Nebo vyberte **Publikovat vše** publikovat změny a pak vyberte **aktivační událost** provést spuštění.
+4. Po zadání parametrů kanálu Data Factory vyberte možnost **ladění** > **Dokončit** , aby se spustila spuštění pro ověření konfigurace. Případně můžete kliknutím na **publikovat vše** publikovat změny a pak vybrat **aktivační událost** pro spuštění.
 
-## <a name="sap-bw-open-hub-destination-configurations"></a>SAP BW otevřít Centrum cílový konfigurace
+## <a name="sap-bw-open-hub-destination-configurations"></a>SAP BW otevřít cílové konfigurace centra
 
-Tato část představuje konfigurace na straně SAP BW pro použití konektoru SAP BW Open centra ve službě Data Factory pro kopírování dat.
+V této části se seznámíte s konfigurací SAP BW straně pro použití konektoru SAP BW Open hub v Data Factory ke kopírování dat.
 
 ### <a name="configure-delta-extraction-in-sap-bw"></a>Konfigurace extrakce rozdílů v SAP BW
 
-Pokud potřebujete historické kopie a přírůstkového kopírování nebo pouze přírůstkové kopie, nakonfigurujte extrakce rozdílů v SAP BW.
+Pokud potřebujete jak historické kopírování, tak přírůstkové kopírování, nebo jenom přírůstkové kopírování, nakonfigurujte extrakci Delta v SAP BW.
 
-1. Vytvořte cílový otevřete Centrum. Můžete vytvořit OHD v RSA1 transakce SAP, tím se automaticky vytvoří požadované transformaci a přenos dat procesu. Použijte následující nastavení:
+1. Vytvořte umístění otevřeného centra. OHD můžete vytvořit v RSA1 transakce SAP, který automaticky vytvoří požadovanou transformaci a proces přenosu dat. Použijte následující nastavení:
 
-   - **ObjectType**: Můžete použít libovolný typ objektu. Tady používáme **InfoCube** jako příklad.
-   - **Cílový typ**: Vyberte **tabulky databáze**.
-   - **Klíče tabulky**: Vyberte **technické klíč**.
-   - **Extrakce**: Vyberte **zachovat Data a záznamy vložit do tabulky**.
+   - **ObjectType**: můžete použít libovolný typ objektu. Tady jako příklad používáme **InfoCube** .
+   - **Cílový typ**: vyberte **Databázová tabulka**.
+   - **Klíč tabulky**: vyberte **technický klíč**.
+   - **Extrakce**: vyberte **zachovat data a vložte záznamy do tabulky**.
 
-   ![SAP BW OHD delta extrakce dialogové okno vytvořit](media/load-sap-bw-data/create-sap-bw-ohd-delta.png)
+   ![Dialogová okna pro extrakci rozdílových SAP BW OHD](media/load-sap-bw-data/create-sap-bw-ohd-delta.png)
 
-   ![SAP BW OHD delta2 extrakce dialogové okno vytvořit](media/load-sap-bw-data/create-sap-bw-ohd-delta2.png)
+   ![Dialogové okno vytvořit SAP BW OHD Delta2 pro extrakci](media/load-sap-bw-data/create-sap-bw-ohd-delta2.png)
 
-   Může zvýšit počet paralelních spuštění SAP pracovní procesy pro DTP:
+   Můžete zvýšit počet paralelně spuštěných pracovních procesů SAP pro DTP:
 
-   ![create-sap-bw-ohd-delta3](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
+   ![vytvoření-SAP-šířky-OHD-delta3](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
 
-2. Naplánujte DTP v procesu řetězců.
+2. Naplánujte DTP v řetězcích procesu.
 
-   Rozdílové hodnoty DTP datovou krychli funguje jenom v případě potřeby řádků nebyly komprimovány. Ujistěte se, že BW komprese datové krychle není spuštěna před DTP do tabulky otevřete Centrum. Nejjednodušší způsob je integrovat vaše existující proces řetězy DTP. V následujícím příkladu je vložen DTP (Chcete-li OHD) do řetězce procesu mezi *upravit* (souhrnného) a *sbalit* kroky (komprese datové krychle).
+   Rozdílová DTP pro datovou krychli funguje pouze v případě, že nejsou potřebné řádky komprimovány. Ujistěte se, že komprese datové krychle není spuštěná před DTP k otevřené tabulce hub. Nejjednodušší způsob, jak to provést, je integrovat DTP do stávajících zřetězení procesů. V následujícím příkladu je DTP (do OHD) vložen do řetězce procesu mezi kroky *Úpravy* (souhrn souhrnu) a *sbalení* (komprese datové krychle).
 
-   ![Vytvoření SAP BW procesu řetězu vývojový diagram](media/load-sap-bw-data/create-sap-bw-process-chain.png)
+   ![Vytvořit diagram toku SAP BW procesu zpracování](media/load-sap-bw-data/create-sap-bw-process-chain.png)
 
 ### <a name="configure-full-extraction-in-sap-bw"></a>Konfigurace úplné extrakce v SAP BW
 
-Kromě delta extrakce může být vhodné úplné extrakce stejné InfoProvider SAP BW. To obvykle platí v případě, že chcete provést úplné kopie, ale ne přírůstkové, nebo chcete provést [nové synchronizace delta extrakce](#resync-delta-extraction).
+Kromě extrakce rozdílů můžete chtít mít úplnou extrakci stejného SAP BW InfoProvider. To se obvykle používá v případě, že chcete provést úplné kopírování, ale ne přírůstkové, nebo chcete [extrakci Delta znovu synchronizovat](#resync-delta-extraction).
 
-Pro stejnou OHD nemůže mít více než jeden DTP. Proto je nutné vytvořit další OHD před delta extrakce.
+Pro stejný OHD nemůžete mít více než jeden DTP. Takže je třeba vytvořit další OHD před extrakcí Delta.
 
-![Vytvoření SAP BW OHD úplné](media/load-sap-bw-data/create-sap-bw-ohd-full.png)
+![Vytvořit úplnou SAP BW OHD](media/load-sap-bw-data/create-sap-bw-ohd-full.png)
 
-Úplné načtení OHD zvolte různé možnosti než pro extrakci rozdílů:
+Pro úplný OHD zatížení vyberte jiné možnosti než pro extrakci rozdílů:
 
-- V OHD: Nastavte **extrakce** umožňuje **Data odstranit a vložit záznamy**. V opačném případě budou extrahována data v mnoha případech při opakování DTP v řetězci BW procesu.
+- V OHD: Nastavte možnost **extrakce** k **odstranění dat a vložení záznamů**. V opačném případě budou data extrahována mnohokrát při opakování DTP v nestupném procesu.
 
-- V DTP: Nastavte **režimu extrakce** k **úplné**. Musíte změníte automaticky vytvořený DTP z **rozdílové** k **úplné** okamžitě po OHD, jak ukazuje tento obrázek:
+- V DTP: nastavte **režim extrakce** na **Full**. Je nutné změnit automaticky vytvořené DTP z **rozdílové** na hodnotu **Full** hned po vytvoření OHD, jak ukazuje tento obrázek:
 
-   ![Vytvoření SAP BW OHD nakonfigurované pro extrakci "Úplné" dialogové okno](media/load-sap-bw-data/create-sap-bw-ohd-full2.png)
+   ![Dialog vytvořit SAP BW OHD nakonfigurovaný pro "úplnou" extrakci](media/load-sap-bw-data/create-sap-bw-ohd-full2.png)
 
-- V konektoru BW Open centra služby Data Factory: Vypnout **vyloučení posledního požadavku**. V opačném případě nic se budou extrahovat.
+- V neData Factoryovém konektoru s otevřeným rozbočovačem: vypnout **vyloučení posledního požadavku**. V opačném případě se nic neextrahuje.
 
-Obvykle spustíte úplné DTP ručně. Nebo můžete vytvořit řetězec proces pro úplné DTP. Je to obvykle samostatné řetězec, který je nezávislý na vaší stávající řetězy procesu. V obou případech *Ujistěte se, že je DTP dokončena před zahájením extrakce pomocí služby Data Factory kopie*. V opačném případě budou zkopírovány pouze částečná data.
+Obvykle se celý DTP spouští ručně. Nebo můžete vytvořit řetězec procesu pro úplné DTP. Obvykle je to samostatný řetězec, který je nezávislý na vašich existujících řetězcích procesů. V obou případech se *ujistěte, že je DTP dokončený, než začnete s extrakcí pomocí Data Factory kopie*. V opačném případě se zkopírují jenom částečná data.
 
-### <a name="run-delta-extraction-the-first-time"></a>Extrakce delta při prvním spuštění
+### <a name="run-delta-extraction-the-first-time"></a>Při prvním spuštění extrakce rozdílů
 
-Technicky je první extrakci delta *úplné extrakce*. Ve výchozím nastavení vyloučí konektoru SAP BW Open centra poslední žádosti při kopíruje data. Pro první delta extrakce aktivita kopírování objektu pro vytváření dat extrahují žádná data dokud následné DTP generuje rozdílová data v tabulce s ID samostatnou žádost. Existují dva způsoby, jak se vyhnout této situaci:
+První extrakce Delta je technicky *kompletní extrakce*. Ve výchozím nastavení vyloučí konektor SAP BW Open hub poslední požadavek při kopírování dat. Pro první extrakci rozdílů neextrahují žádná data Data Factory aktivity kopírování, dokud následná DTP negeneruje rozdílová data v tabulce s ID samostatného požadavku. Neexistují dva způsoby, jak se vyhnout tomuto scénáři:
 
-- Vypnout **vyloučení posledního požadavku** možnost pro první extrakci delta. Ujistěte se, že první delta DTP dokončení před zahájením extrakce delta poprvé.
--  Pomocí postupu pro resynchronizaci delta extrakce, jak je popsáno v další části.
+- Vypněte možnost **vyloučit poslední požadavek** pro první extrakci rozdílů. Ujistěte se, že první rozdílová DTP je dokončená před prvním spuštěním extrakce Delta.
+-  Použijte postup pro opětovné synchronizaci extrakce Delta, jak je popsáno v následující části.
 
-### <a name="resync-delta-extraction"></a>Nové synchronizace delta extrakce
+### <a name="resync-delta-extraction"></a>Opětovná synchronizace Delta pro extrakci
 
-Následující scénáře změnu dat v datové krychle SAP BW, ale nejsou považovány za položkou delta DTP:
+Následující scénáře mění data v SAP BW datové krychle, ale nepovažují se za rozdílové DTP:
 
-- SAP BW selektivní mazání (řádky s použitím libovolné podmínky filtru)
-- SAP BW žádosti o odstranění (chybný počet požadavků)
+- SAP BW selektivního odstranění (řádků pomocí libovolné podmínky filtru)
+- Odstranění žádosti o SAP BW (chybné požadavky)
 
-Otevřít Centrum cílový SAP není cíl s daty regulovanými Tržiště dat (ve všech balíčků podpora SAP BW od 2015). Data můžete odstranit tak, z datové krychle beze změny dat v OHD. Potom musí znovu synchronizovat data z datové krychle pomocí služby Data Factory:
+Cílové umístění centra pro SAP není cílem dat řízených datovými tržiště (ve všech SAP BW podporujících balíčky od 2015). Takže můžete data z datové krychle odstranit, aniž byste museli měnit data v OHD. Pak je nutné znovu synchronizovat data datové krychle s Data Factory:
 
-1. Spustíte úplné extrakce ve službě Data Factory (s použitím úplné DTP v SAP).
-2. Odstraňte všechny řádky v tabulce otevřete Centrum pro rozdílové DTP.
-3. Nastavit stav delta DTP k **počet získaných**.
+1. Spusťte úplnou extrakci v Data Factory (pomocí úplného DTPu v SAP).
+2. Odstraní všechny řádky v otevřené tabulce hub pro rozdílový DTP.
+3. Nastavte stav rozdílového DTP, který se **načte**.
 
-Po této, všechny následné delta DTPs a extrakce rozdílová Data Factory fungovat podle očekávání.
+Po tomto případě budou všechna další rozdílová DTPs a Data Factory rozdílové extrakce fungovat podle očekávání.
 
-Nastavit stav delta DTP k **počet získaných**, následující možnost můžete ručně spustit rozdílový DTP:
+Chcete-li nastavit stav rozdílového **DTP, můžete**použít následující možnost k ručnímu spuštění rozdílového DTP:
 
     *No Data Transfer; Delta Status in Source: Fetched*
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o podpoře konektoru SAP BW Open Hub:
+Další informace o podpoře SAP BW Open hub Connector:
 
 > [!div class="nextstepaction"]
->[Konektor SAP Business Warehouse otevřete Centrum](connector-sap-business-warehouse-open-hub.md)
+>[Konektor Open hub pro SAP Business Warehouse](connector-sap-business-warehouse-open-hub.md)

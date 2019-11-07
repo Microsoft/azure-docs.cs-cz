@@ -1,6 +1,6 @@
 ---
 title: Vědecké zpracování dat pro začátečníky
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Data vědy pro začátečníky nabízí základní koncepty v pěti krátkých videích, od 5 otázek pro datové vědy. Z Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 1163d2faab48893fae992240feb0c56ef99324fe
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b2a91f3df3bab6a2ba10090719d0e614b9d652a3
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493103"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621764"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Vědecké zkoumání dat pro začátečníky – Video 1: 5 otázek, na které odpovídá vědecké zkoumání dat
 Získejte rychlý Úvod k datovému vědy z *oblasti datové vědy pro začátečníky* v pěti krátkých videích od horního odborníka na data. Tato videa jsou základní, ale užitečná, ať už se zajímáte o práci s daty nebo pracujete s odborníky na data.
@@ -66,7 +66,7 @@ Tato rodina algoritmů se nazývá klasifikace se dvěma třídami.
 
 Je vhodný pro všechny otázky, které mají jenom dvě možné odpovědi.
 
-Například:
+Příklad:
 
 * Netire se toto selhání za dalších 1 000 mil: Ano nebo ne?
 * Který přináší větší zákazníky: $5 kupón nebo 25% sleva?

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ee1d282506b537ed29592ca9008c88a53220d7d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 8a2d22c4a7a8b95f5a200518a3c46fc33f55c66a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554836"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569849"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak pro uživatele vyžadovat dvoustupňové ověřování
 
@@ -41,7 +41,7 @@ Povoleno pomocí Azure AD Identity Protection – tato metoda používá zásady
 
 Uživatelské účty v Azure Multi-Factor Authentication mají následující tři různé stavy:
 
-| Stav | Popis | Neprohlížečové aplikace ovlivněny | Ovlivněné aplikace v prohlížeči | Moderní ověřování ovlivněno |
+| Status | Popis | Neprohlížečové aplikace ovlivněny | Ovlivněné aplikace v prohlížeči | Moderní ověřování ovlivněno |
 |:---:|:---:|:---:|:--:|:--:|
 | Zakázáno |Výchozí stav nového uživatele, který není zaregistrovaný v Azure MFA. |Ne |Ne |Ne |
 | Povoleno |Uživatel je zaregistrovaný v Azure MFA, ale není zaregistrovaný. Obdrží výzvu k registraci při příštím přihlášení. |Ne.  Budou dál fungovat, dokud se proces registrace nedokončí. | Ano. Po vypršení platnosti relace se vyžaduje registrace Azure MFA.| Ano. Po vypršení platnosti přístupového tokenu se vyžaduje registrace Azure MFA. |
@@ -56,20 +56,20 @@ Všichni uživatelé začínají *zakázáni*. Když zaregistrujete uživatele v
 Pro přístup ke stránce, kde můžete zobrazit a spravovat stavy uživatelů, použijte následující postup:
 
 1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
-2. Přejít na **Azure Active Directory**  > **uživatelé a skupiny**  > **všech uživatelích**.
+2. Přejít na **Azure Active Directory** > **uživatelé a skupiny** > **všech uživatelích**.
 3. Vyberte **Multi-Factor Authentication**.
-   ![Select Multi-Factor Authentication ](./media/howto-mfa-userstates/selectmfa.png)
+   ![vybrat Multi-Factor Authentication](./media/howto-mfa-userstates/selectmfa.png)
 4. Otevře se nová stránka, která zobrazuje stav uživatele.
-   stav uživatele ![multi-Factor Authentication – snímek obrazovky ](./media/howto-mfa-userstates/userstate1.png)
+   stav uživatele ![Multi-Factor Authentication – snímek obrazovky](./media/howto-mfa-userstates/userstate1.png)
 
 ### <a name="change-the-status-for-a-user"></a>Změna stavu uživatele
 
 1. Pomocí předchozích kroků se dostanete na stránku Azure Multi-Factor Authentication **Users** .
 2. Vyhledejte uživatele, kterého chcete povolit pro Azure MFA. Možná budete muset změnit zobrazení v horní části.
-   ![Select uživateli změnit stav na kartě Uživatelé ](./media/howto-mfa-userstates/enable1.png)
+   ![na kartě Uživatelé vyberte uživatele, kterého chcete změnit stav,](./media/howto-mfa-userstates/enable1.png)
 3. Zaškrtněte políčko vedle jeho názvu.
 4. Na pravé straně v části **rychlé kroky**vyberte **Povolit** nebo **Zakázat**.
-   ![Enable vybraného uživatele kliknutím na Povolit v nabídce rychlé kroky ](./media/howto-mfa-userstates/user1.png)
+   ![povolit vybraného uživatele kliknutím na Povolit v nabídce rychlé kroky](./media/howto-mfa-userstates/user1.png)
 
    > [!TIP]
    > *Povolení* uživatelé se automaticky přepínají, aby se *vynutili* při registraci pro Azure MFA. Neměňte ručně stav uživatele na *vynutilo*.
@@ -78,7 +78,7 @@ Pro přístup ke stránce, kde můžete zobrazit a spravovat stavy uživatelů, 
 
 Jakmile povolíte uživatele, upozorněte je e-mailem. Sdělte jim, že se budou požádáni, aby se zaregistrovali při příštím přihlášení. Pokud vaše organizace používá neprohlížečové aplikace, které nepodporují moderní ověřování, musí také vytvářet hesla aplikací. Můžete také přidat odkaz na [Průvodce koncovými uživateli Azure MFA](../user-help/multi-factor-authentication-end-user.md) , který jim pomůže začít.
 
-### <a name="use-powershell"></a>Použití PowerShellu
+### <a name="use-powershell"></a>Použití prostředí PowerShell
 
 Pokud chcete změnit stav uživatele pomocí [Azure AD PowerShellu](/powershell/azure/overview), změňte `$st.State`. Existují tři možné stavy:
 
@@ -173,6 +173,9 @@ function Set-MfaState {
 # Disable MFA for all users
 Get-MsolUser -All | Set-MfaState -State Disabled
 ```
+
+> [!NOTE]
+> V nedávné době jsme změnili chování a skript PowerShellu. Dříve byl skript uložen mimo metody MFA, zakázal MFA a obnovil metody. Už to není nutné, když výchozí chování pro Disable nevymaže tyto metody.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,5 +1,5 @@
 ---
-title: Návrh řešení pro zotavení po havárii – Azure SQL Database | Microsoft Docs
+title: Návrh řešení pro zotavení po havárii – Azure SQL Database
 description: Pomocí správného vzoru pro převzetí služeb při selhání se dozvíte, jak navrhnout cloudové řešení pro zotavení po havárii.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: ccdd2443254da065a15911f567577672492ddb4f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 535397dcf32a617038ab4bef4ec7aa227f4563b1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568882"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690650"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Strategie zotavení po havárii pro aplikace používající SQL Database elastické fondy
 
@@ -105,7 +105,7 @@ Když Azure obnoví primární oblast *po* obnovení aplikace v oblasti zotaven�
 > [!NOTE]
 > Operace převzetí služeb při selhání je asynchronní. K minimalizaci doby obnovení je důležité, abyste v dávkách s nejméně 20 databázemi spustili příkaz převzetí služeb při selhání databáze klienta.
 
-Klíčovou **výhodou** této strategie je, že poskytuje nejvyšší smlouvu SLA pro placené zákazníky. Také zaručuje, že nové zkušební verze budou odblokovány, jakmile bude vytvořen nový fond pro zotavení po havárii. V **důsledku** toho, že tato instalace zvyšuje celkové náklady na databáze tenantů, se za cenu sekundárního fondu Dr vyplatí pro placené zákazníky. Navíc platí, že pokud má sekundární fond jinou velikost, platíte zákazníkům po převzetí služeb při selhání nižší výkon, dokud se nedokončí upgrade fondu v oblasti zotavení po havárii.
+Klíčovou **výhodou** této strategie je, že poskytuje nejvyšší smlouvu SLA pro placené zákazníky. Také zaručuje, že nové zkušební verze budou odblokovány, jakmile bude vytvořen nový fond pro zotavení po havárii. V důsledku toho, že tato instalace zvyšuje celkové náklady na databáze tenantů **, se za** cenu sekundárního fondu Dr vyplatí pro placené zákazníky. Navíc platí, že pokud má sekundární fond jinou velikost, platíte zákazníkům po převzetí služeb při selhání nižší výkon, dokud se nedokončí upgrade fondu v oblasti zotavení po havárii.
 
 ## <a name="scenario-3-geographically-distributed-application-with-tiered-service"></a>Scénář 3. Geograficky distribuovaná aplikace s vrstvenou službou
 

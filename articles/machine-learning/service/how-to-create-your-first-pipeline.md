@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 373713cc92379236385024beff201d16fbbfd4b5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a092647f9772aafdf610ee9a5ba85ded17d50def
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497042"
+ms.locfileid: "73577709"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,15 +33,11 @@ Kanály ML používají vzdálené výpočetní cíle pro výpočet a úložišt
 
 Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Vytvořte [pracovní prostor Azure Machine Learning](how-to-manage-workspace.md) pro uložení všech prostředků kanálu.
 
-* [Nakonfigurujte vývojové prostředí](how-to-configure-environment.md) pro instalaci Azure Machine Learning sady SDK nebo použijte [výpočetní instanci Azure Machine Learning](concept-compute-instance.md) s již nainstalovanou sadou SDK.
-
-> [!NOTE]
-> Výpočetní instance jsou k dispozici pouze pro pracovní prostory s oblastí **střed USA – sever** nebo **Velká Británie – jih**.
->Pokud je váš pracovní prostor v jakékoli jiné oblasti, můžete místo toho vytvořit a použít [virtuální počítač s poznámkovým blokem](concept-compute-instance.md#notebookvm) . 
+* [Nakonfigurujte vývojové prostředí](how-to-configure-environment.md) pro instalaci Azure Machine Learning sady SDK nebo použijte [virtuální počítač s Azure Machine Learningm poznámkovým blokem](concept-azure-machine-learning-architecture.md#compute-instance) , který už je nainstalovaný s SDK.
 
 Začněte připojením pracovního prostoru:
 
@@ -330,7 +326,7 @@ Další informace najdete v tématu věnovaném [balíčku Azure-Pipeline-Steps]
 Když kanál odešlete, Azure Machine Learning zkontroluje závislosti pro jednotlivé kroky a nahraje snímek zadaného zdrojového adresáře. Pokud není zadán žádný zdrojový adresář, je odeslán aktuální místní adresář. Snímek je také uložen jako součást experimentu v pracovním prostoru.
 
 > [!IMPORTANT]
-> Chcete-li zabránit zahrnutí souborů do snímku, vytvořte soubor [. gitignore](https://git-scm.com/docs/gitignore) nebo `.amlignore` v adresáři a přidejte do něj soubory. Soubor `.amlignore` používá stejnou syntaxi a vzory jako soubor [. gitignore](https://git-scm.com/docs/gitignore) . Pokud oba soubory existují, má soubor `.amlignore` přednost.
+> Chcete-li zabránit zahrnutí souborů do snímku, vytvořte soubor [. gitignore](https://git-scm.com/docs/gitignore) nebo `.amlignore` v adresáři a přidejte do něj soubory. `.amlignore` soubor používá stejnou syntaxi a vzory jako soubor [. gitignore](https://git-scm.com/docs/gitignore) . Pokud oba soubory existují, má `.amlignore` soubor přednost.
 >
 > Další informace najdete v tématu [snímky](concept-azure-machine-learning-architecture.md#snapshots).
 

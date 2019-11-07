@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/29/2019
+ms.date: 11/04/2019
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d48aa3ead28ab0b0a22478a0c4183995483058a
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: c6e0c697f9ab9796feade9b4d5c2a64794f3980b
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70983507"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612801"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Sestavy zřizování na portálu Azure Active Directory (Preview)
 
@@ -30,7 +30,7 @@ Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) s
 
 - **Aktivita** 
     - **Přihlášení** – informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
-    - **Protokoly auditu**  - [protokoly auditu](concept-audit-logs.md) poskytují informace o činnosti systému týkající se správy uživatelů a skupin, spravovaných aplikací a aktivit adresáře.
+    - **Protokoly auditu** - [protokoly auditu](concept-audit-logs.md) poskytují informace o činnosti systému týkající se správy uživatelů a skupin, spravovaných aplikací a aktivit adresáře.
     - **Zřizování protokolů** – poskytněte systémové aktivity o uživatelích, skupinách a rolích, které zřídí služba zřizování Azure AD. 
 
 - **Zabezpečení** 
@@ -39,7 +39,7 @@ Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) s
 
 Toto téma vám poskytne přehled o zřizovacích sestavách.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 * Uživatelé v rolích správce zabezpečení, čtenář zabezpečení, čtenář sestav, Správce aplikací a role správce cloudové aplikace
@@ -85,7 +85,7 @@ To umožňuje zobrazit další pole, nebo odebrat pole, která jsou už zobrazen
 
 Chcete-li získat podrobnější informace, vyberte položku v zobrazení seznamu.
 
-![Podrobné informace](./media/concept-provisioning-logs/steps.png "Filtrovat")
+![Podrobné informace](./media/concept-provisioning-logs/steps.png "Filtr")
 
 
 ## <a name="filter-provisioning-activities"></a>Filtrovat aktivity zřizování
@@ -96,11 +96,11 @@ Chcete-li zúžit uvedená data na úroveň, která vám vyhovuje, můžete data
 - Akce
 - Zdrojový systém
 - Cílový systém
-- Stav
+- Status
 - Datum
 
 
-![Filtrovací](./media/concept-provisioning-logs/filter.png "Filtrovat")
+![Filtrovací](./media/concept-provisioning-logs/filter.png "Filtr")
 
 Filtr **identit** umožňuje zadat název nebo identitu, o které se zajímáte. Tato identita by mohla být uživatel, skupina, role nebo jiný objekt. Můžete hledat podle názvu nebo ID objektu. ID se liší podle scénáře. Například při zřizování objektu ze služby Azure AD do SalesForce je ID zdroje ID objektu uživatele ve službě Azure AD, zatímco TargetID je ID uživatele v Salesforce. Při zřizování z Workday do služby Active Directory je zdrojem ID ID zaměstnance pracovního procesu Workday. Všimněte si, že jméno uživatele nemusí být vždy k dispozici ve sloupci identita. Vždy bude existovat jedno ID. 
 
@@ -110,18 +110,18 @@ Filtr **cílový systém** vám umožní určit, kam se identita získává. Nap
 
 Filtr **stavu** umožňuje vybrat:
 
-- Všechno
+- Vše
 - Úspěch
 - Selhání
 - Přeskočeno
 
 Filtr **akcí** umožňuje filtrovat:
 
-- Vytváření 
-- Aktualizovat
-- Odstranit
-- Zákaz
-- Jiné
+- Vytvoření 
+- Aktualizace
+- Odstranění
+- Zakázat
+- Ostatní
 
 Filtr **Datum** umožňuje definovat časový rámec pro vracená data.  
 Možné hodnoty:
@@ -176,7 +176,7 @@ Karta **kroky** popisuje kroky podniknuté při zřizování objektu. Zřizován
 
 
 
-![Filtrovací](./media/concept-provisioning-logs/steps.png "Filtrovat")
+![Filtrovací](./media/concept-provisioning-logs/steps.png "Filtr")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Řešení potíží a doporučení
@@ -205,6 +205,29 @@ Karta **Souhrn** poskytuje přehled o tom, co se stalo, a identifikátory pro ob
 - Služba Log Analytics momentálně není podporovaná.
 
 - Když přistupujete k protokolům zřizování z kontextu aplikace, nefiltrují automaticky události na konkrétní aplikaci podle způsobu, jakým protokoly auditují.
+
+## <a name="error-codes"></a>Kódy chyb
+
+Pomocí následující tabulky můžete lépe pochopit, jak vyřešit chyby, které můžete najít v protokolech zřizování. U všech chybových kódů, které chybí, poskytněte zpětnou vazbu pomocí odkazu v dolní části této stránky. 
+
+|Kód chyby|Popis|
+|---|---|
+|Konflikt, EntryConflict|Opravte konfliktní hodnoty atributů buď v rámci služby Azure AD, nebo v aplikaci, nebo zkontrolujte shodnou konfiguraci atributu, pokud by byl konfliktní uživatelský účet shodný a převzatý z něj. Další informace o konfiguraci atributů odpovídajícího atributu najdete v následující [dokumentaci](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) .|
+|TooManyRequests|Cílová aplikace odmítla tento pokus o aktualizaci uživatele, protože je přetížena a přijímá příliš mnoho požadavků. Žádná akce není k dispozici. Tento pokus bude automaticky vyřazen. Společnost Microsoft si také oznámila tento problém.|
+|Nenalezeno |Cílová aplikace vrátila neočekávanou chybu. Může se jednat o problém se službou cílové aplikace, který brání v práci. Tento pokus bude automaticky vyřazen za 40 minut.|
+|InsufficientRights, MethodNotAllowed, NotPermitted, Neautorizováno| Služba Azure AD se dokázala ověřit u cílové aplikace, ale nemá autorizaci k provedení této aktualizace. Projděte si pokyny, které poskytuje cílová aplikace, a také [kurz](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)příslušné aplikace.|
+|UnprocessableEntity|Cílová aplikace vrátila neočekávanou odpověď. Konfigurace cílové aplikace nemusí být správná nebo může dojít k potížím se službou cílové aplikace, která brání jejímu fungování.|
+|WebExceptionProtocolError |Při připojování k cílové aplikaci došlo k chybě protokolu HTTP. Žádná akce není k dispozici. Tento pokus bude automaticky vyřazen za 40 minut.|
+|InvalidAnchor|Uživatel, který byl dříve vytvořen nebo spárován službou zřizování, již neexistuje. Zkontrolujte, jestli uživatel existuje. Pokud chcete vynutit přesouhlasení všech uživatelů, použijte k [restartování úlohy](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)MS Graph API. Všimněte si, že restartování zřizování spustí počáteční cyklus, který může nějakou dobu trvat. Odstraní také mezipaměť, kterou služba zřizování používá k provozu, což znamená, že všechny uživatele a skupiny v tenantovi budou muset být vyhodnoceny znovu a určité události zřizování by mohly být vyhozeny.|
+|NotImplemented | Cílová aplikace vrátila neočekávanou odpověď. Konfigurace aplikace nemusí být správná nebo může být problém služby s cílovou aplikací, což brání v práci. Projděte si pokyny, které poskytuje cílová aplikace, a také [kurz](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)příslušné aplikace. |
+|MandatoryFieldsMissing, MissingValues |Uživatele nelze vytvořit, protože chybí požadované hodnoty. Opravte chybějící hodnoty atributů ve zdrojovém záznamu, nebo zkontrolujte shodnou konfiguraci atributu, abyste zajistili, že požadovaná pole nebudou vynechána. [Přečtěte si další informace](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) o konfiguraci atributů, které se shodují.|
+|SchemaAttributeNotFound |Operaci nelze provést, protože byl zadán atribut, který v cílové aplikaci neexistuje. Přečtěte si [dokumentaci](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) k přizpůsobení atributů a ujistěte se, že je konfigurace správná.|
+|InternalError |Došlo k vnitřní chybě služby ve službě Azure AD Provisioning. Žádná akce není k dispozici. Tento pokus se automaticky zopakuje za 40 minut.|
+|InvalidDomain |Operaci nelze provést, protože hodnota atributu obsahuje neplatný název domény. Aktualizujte název domény na uživateli nebo ho přidejte do seznamu povolených aplikací v cílové aplikaci. |
+|prodlev |Operaci nelze dokončit, protože odpověď trvala příliš dlouho. Žádná akce není k dispozici. Tento pokus se automaticky zopakuje za 40 minut.|
+|LicenseLimitExceeded|V cílové aplikaci nelze vytvořit uživatele, protože pro tohoto uživatele nejsou k dispozici žádné licence. Buď si zajistěte další licence pro cílovou aplikaci, nebo zkontrolujte přiřazení uživatelů a konfiguraci mapování atributů, abyste se ujistili, že správným uživatelům jsou přiřazeny správné atributy.|
+|DuplicateTargetEntries  |Operaci nelze dokončit, protože v cílové aplikaci bylo nalezeno více než jeden uživatel s nakonfigurovanými shodnými atributy. Buď odeberte duplicitního uživatele z cílové aplikace, nebo znovu nakonfigurujte mapování atributů, jak je popsáno [zde](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).|
+|DuplicateSourceEntries | Operaci nelze dokončit, protože byl nalezen více než jeden uživatel s nakonfigurovanými shodnými atributy. Odeberte duplicitního uživatele nebo znovu nakonfigurujte mapování atributů, jak je popsáno [zde](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).|
 
 ## <a name="next-steps"></a>Další kroky
 

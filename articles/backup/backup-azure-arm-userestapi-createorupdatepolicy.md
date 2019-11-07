@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup: Vytvoření zásad zálohování pomocí REST API'
+title: 'Azure Backup: vytváření zásad zálohování pomocí REST API'
 description: Správa zásad zálohování (plánování a uchovávání) pomocí REST API
 ms.reviewer: pullabhk
 author: dcurwin
@@ -10,28 +10,28 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: dacurwin
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 8b812ea053cb8e9da7cd3ef021ab6b74196d36ca
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 50cc327c69529e420837571fdd60c1b2a1364b10
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954965"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670142"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Vytvoření zásad služby Azure Recovery Services Backup pomocí REST API
 
-Postup vytvoření zásady zálohování pro trezor služby Azure Recovery Services je popsaný v [dokumentu REST API zásad](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate). Tento dokument můžeme použít jako referenci k vytvoření zásady pro zálohování virtuálních počítačů Azure.
+Postup vytvoření zásady zálohování pro trezor služby Azure Recovery Services je popsaný v [dokumentu REST API zásad](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate). Tento dokument můžeme použít jako referenci k vytvoření zásady pro zálohování virtuálních počítačů Azure.
 
 ## <a name="backup-policy-essentials"></a>Základy zásad zálohování
 
 - Zásady zálohování se vytvoří pro každý trezor.
 - Zásady zálohování se dají vytvořit pro zálohování následujících úloh.
-  - Azure VM
+  - Virtuální počítač Azure
   - SQL na virtuálním počítači Azure
   - Sdílená složka Azure
 - Zásady je možné přiřadit k mnoha prostředkům. Zásady zálohování virtuálních počítačů Azure je možné použít k ochraně mnoha virtuálních počítačů Azure.
 - Zásada se skládá ze dvou součástí
-  - CXL Kdy se má provést zálohování
-  - Toalet Jak dlouho se mají uchovávat jednotlivé zálohy.
+  - Plán: kdy se má provést zálohování
+  - Uchovávání informací: pro dobu, po kterou by se měly uchovávat zálohy.
 - Plán lze definovat jako "denní" nebo "týdně" s konkrétním časovým bodem.
 - Uchovávání informací lze definovat pro "denní", "týdenní", "měsíční", "roční" body zálohování.
 - "týdenní" odkazuje na zálohu v určitý den v týdnu, "měsíční" znamená zálohování v určitý den v měsíci a "roční" odkazuje na zálohu v určitý den v roce.
@@ -41,21 +41,21 @@ Postup vytvoření zásady zálohování pro trezor služby Azure Recovery Servi
 Pokud chcete vytvořit nebo aktualizovat zásady Azure Backup, použijte následující operaci *vložení* .
 
 ```http
-PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}?api-version=2016-12-01
+PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}?api-version=2019-05-13
 ```
 
-`{policyName}` A`{vaultName}` jsou k dispozici v identifikátoru URI. Další informace jsou k dispozici v textu žádosti.
+`{policyName}` a `{vaultName}` jsou k dispozici v identifikátoru URI. Další informace jsou k dispozici v textu žádosti.
 
 ## <a name="create-the-request-body"></a>Vytvoření textu žádosti
 
 Pokud například chcete vytvořit zásadu pro zálohování virtuálního počítače Azure, níže jsou uvedené součásti textu žádosti.
 
-|Name  |Požadováno  |Typ  |Popis  |
+|Name (Název)  |Požaduje se  |Typ  |Popis  |
 |---------|---------|---------|---------|
-|properties     |   Pravda      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | Vlastnosti ProtectionPolicyResource        |
-|značky     |         | Object        |  Značky prostředků       |
+|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#azureiaasvmprotectionpolicy)      | Vlastnosti ProtectionPolicyResource        |
+|značek     |         | Objekt        |  Značky prostředků       |
 
-Úplný seznam definic v těle žádosti najdete v [dokumentu zásady zálohování REST API](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate).
+Úplný seznam definic v těle žádosti najdete v [dokumentu zásady zálohování REST API](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate).
 
 ### <a name="example-request-body"></a>Příklad textu žádosti
 
@@ -152,16 +152,16 @@ Zásada uvádí:
 > [!IMPORTANT]
 > Formáty času pro plán a uchování podporují pouze datum a čas. Nepodporují pouze formát času.
 
-## <a name="responses"></a>Odpovědi
+## <a name="responses"></a>Odezvy
 
 Vytvoření nebo aktualizace zásad zálohování je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
 
-Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
+Při vytvoření jiné operace vrátí dvě odpovědi: 202 (přijato) a po dokončení této operace pak 200 (OK).
 
-|Name  |Typ  |Popis  |
+|Name (Název)  |Typ  |Popis  |
 |---------|---------|---------|
-|200 OK     |    [PolicyResource ochrany](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
-|202 přijato     |         |     Přijato    |
+|200 OK     |    [PolicyResource ochrany](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#protectionpolicyresource)     |  OK       |
+|202 přijato     |         |     Přijata    |
 
 ### <a name="example-responses"></a>Příklady odpovědí
 
@@ -181,14 +181,14 @@ x-ms-correlation-request-id: db785be0-bb20-4598-bc9f-70c9428b170b
 x-ms-routing-request-id: SOUTHINDIA:20180521T073907Z:db785be0-bb20-4598-bc9f-70c9428b170b
 Cache-Control: no-cache
 Date: Mon, 21 May 2018 07:39:06 GMT
-Location: https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2016-06-01
+Location: https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2019-05-13
 X-Powered-By: ASP.NET
 ```
 
 Pak Sledujte výslednou operaci pomocí záhlaví umístění nebo hlavičky Azure-AsyncOperation s jednoduchým příkazem *Get* .
 
 ```http
-GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2016-06-01
+GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2019-05-13
 ```
 
 Po dokončení operace vrátí 200 (OK) k obsahu zásad v těle odpovědi.
@@ -281,7 +281,7 @@ Po dokončení operace vrátí 200 (OK) k obsahu zásad v těle odpovědi.
 
 Pokud se pro ochranu položky už používá zásada, bude mít jakákoli aktualizace v zásadě za následek [úpravu ochrany](backup-azure-arm-userestapi-backupazurevms.md#changing-the-policy-of-protection) všech těchto přidružených položek.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Povolte ochranu pro nechráněný virtuální počítač Azure](backup-azure-arm-userestapi-backupazurevms.md).
 

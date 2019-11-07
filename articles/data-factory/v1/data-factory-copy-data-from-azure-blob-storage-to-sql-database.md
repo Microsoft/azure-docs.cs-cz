@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z Blob Storage do SQL Database – Azure | Dokumentace Microsoftu
-description: V tomto kurzu se dozvíte, jak použít aktivitu kopírování v kanálu Azure Data Factory pro kopírování dat z úložiště objektů Blob do služby SQL database.
+title: Kopírování dat z Blob Storage do SQL Database – Azure
+description: V tomto kurzu se dozvíte, jak pomocí aktivity kopírování v kanálu Azure Data Factory kopírovat data z úložiště objektů blob do služby SQL Database.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -14,79 +14,79 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ad114ce3a40e11048d01c6768811089c43cdf1db
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 5a254979e345ae07bef5c8e79006bd0aaa0bf7df
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839393"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682800"
 ---
-# <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Kurz: Kopírování dat z úložiště objektů Blob do služby SQL Database pomocí služby Data Factory
+# <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Kurz: kopírování dat z Blob Storage pro SQL Database pomocí Data Factory
 > [!div class="op_single_selector"]
 > * [Přehled a požadavky](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-> * [Šablona Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * [Šablona Azure Resource Manageru](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
 > Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi této služby, podívejte se na [kurz o aktivitě kopírování](../quickstart-create-data-factory-dot-net.md). 
 
-V tomto kurzu vytvoříte datovou továrnu s kanálu pro kopírování dat z úložiště objektů Blob do služby SQL database.
+V tomto kurzu vytvoříte datovou továrnu s kanálem, který kopíruje data z úložiště objektů blob do služby SQL Database.
 
 Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Používá globálně dostupnou službu, která může kopírovat data mezi různými úložišti dat zabezpečeným, spolehlivým a škálovatelným způsobem. Podrobnosti o aktivitě kopírování najdete v článku [Aktivity přesunu dat](data-factory-data-movement-activities.md).  
 
 > [!NOTE]
-> Podrobný přehled o službě Data Factory najdete v článku [Úvod do služby Azure Data Factory](data-factory-introduction.md) článku.
+> Podrobný přehled služby Data Factory najdete v článku [Úvod do Azure Data Factory](data-factory-introduction.md) .
 >
 >
 
-## <a name="prerequisites-for-the-tutorial"></a>Předpoklady pro kurz
+## <a name="prerequisites-for-the-tutorial"></a>Předpoklady pro tento kurz
 Je nutné, abyste před zahájením tohoto kurzu splňovali následující požadavky:
 
-* **Předplatné Azure**.  Pokud nemáte předplatné, můžete si během několika minut bezplatně vytvořit zkušební účet. Zobrazit [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/) , kde najdete podrobnosti.
-* **Účet úložiště Azure**. Použijete jako úložiště objektů blob **zdroj** úložiště dat v tomto kurzu. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md), kde najdete kroky pro jeho vytvoření.
-* **Azure SQL Database**. Použití služby Azure SQL database jako **cílové** úložiště dat v tomto kurzu. Pokud nemáte Azure SQL database, můžete použít v tomto kurzu, najdete v tématu [jak vytvořit a nakonfigurovat službu Azure SQL Database](../../sql-database/sql-database-get-started.md) k jejímu vytvoření.
-* **SQL Server 2012 nebo 2014 nebo Visual Studio 2013**. Použijete SQL Server Management Studio nebo Visual Studio k vytvoření ukázkové databáze a zobrazíte Výsledná data v databázi.  
+* **Předplatné Azure**.  Pokud nemáte předplatné, můžete si během několika minut bezplatně vytvořit zkušební účet. Podrobnosti najdete v článku [bezplatná zkušební verze](https://azure.microsoft.com/pricing/free-trial/) .
+* **Účet Azure Storage**. V tomto kurzu použijete úložiště objektů BLOB jako **zdrojové** úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md), kde najdete kroky pro jeho vytvoření.
+* **Azure SQL Database**. V tomto kurzu použijete databázi Azure SQL jako **cílové** úložiště dat. Pokud nemáte databázi SQL Azure, kterou můžete použít v tomto kurzu, přečtěte si téma [jak vytvořit a nakonfigurovat Azure SQL Database](../../sql-database/sql-database-get-started.md) , abyste ho mohli vytvořit.
+* **SQL Server 2012/2014 nebo Visual Studio 2013**. Pomocí SQL Server Management Studio nebo sady Visual Studio můžete vytvořit ukázkovou databázi a zobrazit výsledná data v databázi.  
 
-## <a name="collect-blob-storage-account-name-and-key"></a>Shromažďovat název účtu služby blob storage a klíč
-Budete potřebovat název účtu a klíč svého účtu Azure storage provedete v tomto kurzu. Poznamenejte si **název účtu** a **klíč účtu** pro svůj účet úložiště Azure.
+## <a name="collect-blob-storage-account-name-and-key"></a>Shromáždit název a klíč účtu úložiště objektů BLOB
+K provedení tohoto kurzu potřebujete název účtu a klíč účtu účtu úložiště Azure. Poznamenejte si **název účtu** a **klíč účtu** pro svůj účet úložiště Azure.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Klikněte na tlačítko **všechny služby** v levé nabídce a vyberte **účty úložiště**.
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+2. V levé nabídce klikněte na **všechny služby** a vyberte **účty úložiště**.
 
-    ![Procházet – účty úložiště](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png)
-3. V **účty úložiště** okno, vyberte **účtu služby Azure storage** , kterou chcete použít v tomto kurzu.
-4. Vyberte **přístupové klíče** odkaz pod **nastavení**.
-5. Klikněte na **kopírování** (image) tlačítko vedle **název účtu úložiště** textové pole a uložení a vložte ho někam (například: do textového souboru).
-6. Opakujte předchozí krok pro kopírování nebo poznamenejte **key1**.
+    ![Procházení – účty úložiště](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png)
+3. V okně **účty úložiště** vyberte **účet úložiště Azure** , který chcete v tomto kurzu použít.
+4. V části **Nastavení**vyberte **přístupové klíče** .
+5. Klikněte na tlačítko **Kopírovat** (obrázek) vedle pole **název účtu úložiště** a uložte ho nebo vložte jinam (například: v textovém souboru).
+6. Opakujte předchozí krok a zkopírujte nebo Poznamenejte si **klíč1**.
 
     ![Přístupový klíč k úložišti](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/storage-access-key.png)
-7. Zavřete všechna okna kliknutím **X**.
+7. Zavřete všechna okna kliknutím na **X**.
 
-## <a name="collect-sql-server-database-user-names"></a>Shromažďování systému SQL server, databáze, uživatelská jména
-Budete potřebovat názvy serveru Azure SQL, databáze a uživatele v tomto kurzu. Poznamenejte si názvy **server**, **databáze**, a **uživatele** pro vaši databázi Azure SQL.
+## <a name="collect-sql-server-database-user-names"></a>Shromažďování SQL serveru, databáze, uživatelských jmen
+K provedení tohoto kurzu potřebujete názvy Azure SQL serveru, databáze a uživatele. Poznamenejte si názvy **serverů**, **databází**a **uživatelů** pro vaši databázi SQL Azure.
 
-1. V **webu Azure portal**, klikněte na tlačítko **všechny služby** na levé straně a vyberte **databází SQL**.
-2. V **okno databáze SQL**, vyberte **databáze** , kterou chcete použít v tomto kurzu. Poznamenejte si **název_databáze**.  
-3. V **SQL database** okna, klikněte na tlačítko **vlastnosti** pod **nastavení**.
+1. V **Azure Portal**klikněte na **všechny služby** na levé straně a vyberte **databáze SQL**.
+2. V okně **databáze SQL**vyberte **databázi** , kterou chcete v tomto kurzu použít. Poznamenejte si **název databáze**.  
+3. V okně **databáze SQL** klikněte v části **Nastavení**na **vlastnosti** .
 4. Poznamenejte si hodnoty pro **název serveru** a **přihlašovací jméno správce serveru**.
-5. Zavřete všechna okna kliknutím **X**.
+5. Zavřete všechna okna kliknutím na **X**.
 
-## <a name="allow-azure-services-to-access-sql-server"></a>Povolit službám Azure přístup k systému SQL server
-Ujistěte se, že **povolit přístup ke službám Azure** nastavení obrácené **ON** pro váš server Azure SQL tak, aby služba Data Factory můžete přístup k vašemu serveru Azure SQL. Pokud chcete toto nastavení ověřit a zapnout, proveďte následující kroky:
+## <a name="allow-azure-services-to-access-sql-server"></a>Povolení přístupu služeb Azure k SQL serveru
+Ujistěte se, že nastavení **Povolit přístup ke službám Azure** **je pro server SQL Azure zapnuté** , aby služba Data Factory mohla získat přístup k vašemu serveru SQL Azure. Pokud chcete toto nastavení ověřit a zapnout, proveďte následující kroky:
 
-1. Klikněte na tlačítko **všechny služby** na levé straně a klikněte na straně **SQL servery**.
+1. Na levé straně klikněte na **všechny služby** centra a pak klikněte na **servery SQL**.
 2. Vyberte svůj server a v části **NASTAVENÍ** klikněte na **Brána firewall**.
 3. V okně **Nastavení brány firewall** klikněte na **ZAPNUTO** u možnosti **Povolit přístup ke službám Azure**.
-4. Zavřete všechna okna kliknutím **X**.
+4. Zavřete všechna okna kliknutím na **X**.
 
-## <a name="prepare-blob-storage-and-sql-database"></a>Připravili Blob Storage a SQL Database
-Teď připravte úložiště objektů blob v Azure a Azure SQL database pro tento kurz provedením následující kroků:  
+## <a name="prepare-blob-storage-and-sql-database"></a>Příprava Blob Storage a SQL Database
+Teď Připravte službu Azure Blob Storage a Azure SQL Database pro tento kurz provedením následujících kroků:  
 
-1. Spusťte Poznámkový blok. Zkopírujte následující text a uložte ho jako **emp.txt** k **C:\ADFGetStarted** složky na pevném disku.
+1. Spusťte Poznámkový blok. Zkopírujte následující text a uložte ho jako **EMP. txt** do složky **C:\ADFGetStarted** na pevném disku.
 
     ```
     John, Doe
@@ -108,21 +108,21 @@ Teď připravte úložiště objektů blob v Azure a Azure SQL database pro tent
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-    **Pokud máte SQL Server 2012/2014 v počítači nainstalovanou:** postupujte podle pokynů v [Správa Azure SQL Database pomocí aplikace SQL Server Management Studio](../../sql-database/sql-database-manage-azure-ssms.md) pro připojení k serveru Azure SQL a spusťte skript SQL. 
+    **Pokud máte na počítači nainstalovanou SQL Server 2012/2014:** postupujte podle pokynů ke [správě Azure SQL Database pomocí SQL Server Management Studio](../../sql-database/sql-database-manage-azure-ssms.md) pro připojení k vašemu serveru SQL Azure a spusťte skript SQL. 
 
     Pokud klient nemá povolený přístup ke službě Azure SQL Server, budete muset nakonfigurovat bránu firewall pro Azure SQL Server tak, aby povolovala přístup z vašeho počítače (IP adresa). Postup konfigurace brány firewall pro server SQL Azure najdete v [tomto článku](../../sql-database/sql-database-configure-firewall-settings.md).
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
-Dokončili jste požadavky. Můžete vytvářet datové továrny pomocí jedné z následujících způsobů. Klikněte na jednu z možností v rozevíracím seznamu v horní části nebo získat prostřednictvím následujících odkazů k provedení tohoto kurzu.     
+Dokončili jste požadavky. Datovou továrnu můžete vytvořit pomocí některého z následujících způsobů. Klikněte na jednu z možností v rozevíracím seznamu v horní části nebo na následující odkazy a proveďte tento kurz.     
 
 * [Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md)
 * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-* [Šablona Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+* [Šablona Azure Resource Manageru](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
-> Datový kanál v tomto kurzu kopíruje data ze zdrojového úložiště dat do cílového úložiště dat. Neprovádí transformaci vstupních dat, aby vytvořil výstupní data. Kurz předvádějící způsoby transformace dat pomocí Azure Data Factory najdete v tématu [kurzu: Vytvoření prvního kanálu, který umožňuje transformovat data pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md).
+> Datový kanál v tomto kurzu kopíruje data ze zdrojového úložiště dat do cílového úložiště dat. Neprovádí transformaci vstupních dat, aby vytvořil výstupní data. Kurz předvádějící způsoby transformace dat pomocí Azure Data Factory najdete v tématu popisujícím [kurz vytvoření prvního kanálu, který umožňuje transformovat data pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md).
 > 
 > Dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením výstupní datové sady jedné aktivity jako vstupní datové sady druhé aktivity. Podrobné informace najdete v tématu s popisem [plánování a provádění ve službě Data Factory](data-factory-scheduling-and-execution.md). 

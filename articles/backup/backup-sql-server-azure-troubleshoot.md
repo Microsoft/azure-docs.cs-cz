@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: c456dfec72f98dc4ae06f1d7d5d9fb461182d579
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: e4683547a7c305da3d3a3bc7a7d6a50f21ad46f2
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018987"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614400"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Řešení potíží se zálohováním databáze SQL Server pomocí Azure Backup
 
@@ -21,7 +21,7 @@ Tento článek poskytuje informace o řešení potíží pro SQL Server databáz
 
 Další informace o procesu zálohování a omezeních najdete v tématu [informace o SQL Server Backup ve virtuálních počítačích Azure](backup-azure-sql-database.md#feature-consideration-and-limitations).
 
-## <a name="sql-server-permissions"></a>Oprávnění SQL Serveru
+## <a name="sql-server-permissions"></a>SQL Server oprávnění
 
 Pokud chcete nakonfigurovat ochranu pro SQL Server databázi na virtuálním počítači, musíte na tomto virtuálním počítači nainstalovat rozšíření **AzureBackupWindowsWorkload** . Pokud se zobrazí chyba **UserErrorSQLNoSysadminMembership**, znamená to, že vaše instance SQL Server nemá požadovaná oprávnění k zálohování. Pokud chcete tuto chybu opravit, postupujte podle kroků v části [Nastavení oprávnění virtuálních počítačů](backup-azure-sql-database.md#set-vm-permissions).
 
@@ -29,10 +29,9 @@ Pokud chcete nakonfigurovat ochranu pro SQL Server databázi na virtuálním po�
 
 ### <a name="backup-type-unsupported"></a>Typ zálohování se nepodporuje.
 
-| severity | Popis | Možné příčiny | Doporučená akce |
+| Severity | Popis | Možné příčiny | Doporučená akce |
 |---|---|---|---|
 | Upozornění | Aktuální nastavení této databáze nepodporují určité typy zálohování přítomné v přidružených zásadách. | <li>V hlavní databázi lze provést pouze úplnou operaci zálohování databáze. Není možné použít rozdílovou zálohu ani zálohování protokolu transakcí. </li> <li>Žádná databáze v jednoduchém modelu obnovení nepovoluje zálohování protokolů transakcí.</li> | Upravte nastavení databáze tak, aby všechny typy zálohování v těchto zásadách byly podporovány. Nebo můžete změnit aktuální zásady tak, aby zahrnovaly jenom podporované typy zálohování. V opačném případě se nepodporované typy zálohování při plánovaném Zálohování přeskočí, jinak se úloha zálohování neprovede pro zálohování ad hoc.
-
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 
@@ -45,7 +44,7 @@ Pokud chcete nakonfigurovat ochranu pro SQL Server databázi na virtuálním po�
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Databáze SQL neexistuje. | Databáze byla buď odstraněna, nebo přejmenována. | Ověřte, zda byla databáze omylem odstraněna nebo přejmenována.<br/><br/> Pokud se databáze nedopatřením odstranila, pokud chcete pokračovat v zálohování, obnovte databázi do původního umístění.<br/><br/> Pokud jste databázi odstranili a nepotřebujete budoucí zálohy, pak v Recovery Services trezoru vyberte **Zastavit zálohování** pomocí uchovávání zálohovaných **dat** nebo **odstranění zálohovaných dat**. Další informace najdete v tématu [Správa a sledování zálohovaných SQL Server databází](manage-monitor-sql-database-backup.md).
+| Databáze SQL neexistuje. | Databáze byla buď odstraněna, nebo přejmenována. | Ověřte, zda byla databáze omylem odstraněna nebo přejmenována.<br/><br/> Pokud se databáze nedopatřením odstranila, pokud chcete pokračovat v zálohování, obnovte databázi do původního umístění.<br/><br/> Pokud jste databázi odstranili a nepotřebujete budoucí zálohy, pak v Recovery Services trezoru vyberte **Zastavit zálohování** pomocí **uchovávání** zálohovaných dat nebo **odstranění zálohovaných dat**. Další informace najdete v tématu [Správa a sledování zálohovaných SQL Server databází](manage-monitor-sql-database-backup.md).
 
 ### <a name="usererrorsqllsnvalidationfailure"></a>UserErrorSQLLSNValidationFailure
 
@@ -81,9 +80,9 @@ Pokud chcete nakonfigurovat ochranu pro SQL Server databázi na virtuálním po�
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Obnovení selhalo, protože databázi nejde nastavit offline. | I když provádíte obnovení, musí být cílová databáze přepnuta do režimu offline. Azure Backup nemůže převést tato data do režimu offline. | Pomocí dalších podrobností v nabídce Azure Portal chyby můžete zúžit hlavní příčiny. Další informace najdete v dokumentaci k [SQL Server](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms). |
+| Obnovení selhalo, protože databázi nejde nastavit offline. | I když provádíte obnovení, musí být cílová databáze přepnuta do režimu offline. Azure Backup nemůže převést tato data do režimu offline. | Pomocí dalších podrobností v nabídce Azure Portal chyby můžete zúžit hlavní příčiny. Další informace najdete v [dokumentaci k SQL Serveru](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms). |
 
-###  <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
+### <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
@@ -93,8 +92,7 @@ Pokud chcete nakonfigurovat ochranu pro SQL Server databázi na virtuálním po�
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Záloha protokolů použitá k obnovení obsahuje hromadně protokolované změny. Podle pokynů pro SQL ji nejde použít k zastavení v libovolném bodu v čase. | Když je databáze v režimu hromadného obnovení, data mezi hromadně protokolovanými transakcemi a další transakce protokolu se nedají obnovit. | Vyberte jiný bod v čase pro obnovení. [Další informace](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105)).
-
+| Záloha protokolů použitá k obnovení obsahuje hromadně protokolované změny. Podle pokynů pro SQL ji nejde použít k zastavení v libovolném bodu v čase. | Když je databáze v režimu hromadného obnovení, data mezi hromadně protokolovanými transakcemi a další transakce protokolu se nedají obnovit. | Vyberte jiný bod v čase pro obnovení. [Další informace](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105))
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -118,7 +116,7 @@ Pokud chcete nakonfigurovat ochranu pro SQL Server databázi na virtuálním po�
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Záměr automatické ochrany byl buď odebrán, nebo již není platný. | Pokud povolíte automatickou ochranu na instanci SQL Server, nakonfigurujte úlohy **zálohování** spuštěné pro všechny databáze v této instanci. Pokud při spuštění úloh zakážete automatickou ochranu, probíhající úlohy se zruší s tímto kódem chyby. | Znovu povolte automatickou ochranu, aby bylo možné lépe chránit všechny zbývající databáze. |
+| Záměr automatické ochrany byl buď odebrán, nebo již není platný. | Pokud povolíte automatickou ochranu na instanci SQL Server, nakonfigurujte úlohy **zálohování** spuštěné pro všechny databáze v této instanci. Pokud při spuštění úloh zakážete automatickou ochranu, **probíhající úlohy se** zruší s tímto kódem chyby. | Znovu povolte automatickou ochranu, aby bylo možné lépe chránit všechny zbývající databáze. |
 
 ### <a name="clouddosabsolutelimitreached"></a>CloudDosAbsoluteLimitReached
 
@@ -130,15 +128,14 @@ Operace je blokovaná, protože jste dosáhli limitu počtu operací povolených
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-Operace je zablokovaná, protože trezor dosáhl maximálního limitu pro tyto operace povolené v rozmezí 24 hodin. | Pokud jste dosáhli maximálního povoleného limitu operace v rozmezí 24 hodin, bude tato chyba. Tato chyba se obvykle dodává v případě operací v rámci škálování, jako je například změna zásad nebo Automatická ochrana. Na rozdíl od v případě CloudDosAbsoluteLimitReached není možné tento stav vyřešit, ale ve skutečnosti Azure Backup služba bude operace opakovat interně pro všechny příslušné položky.<br> Příklad: Pokud máte k zásadám chráněný velký počet zdrojů dat a pokusíte se ji změnit, spustí se pro každou chráněnou položku konfigurace úloh ochrany a někdy se může vysáhnout maximální povolený limit pro tyto operace za den.| Služba Azure Backup bude tuto operaci automaticky opakovat po 24 hodinách. 
-
+Operace je zablokovaná, protože trezor dosáhl maximálního limitu pro tyto operace povolené v rozmezí 24 hodin. | Pokud jste dosáhli maximálního povoleného limitu operace v rozmezí 24 hodin, bude tato chyba. K této chybě obvykle dochází v případě, že dojde k operacím v měřítku, jako je například změna zásad nebo Automatická ochrana. Na rozdíl od v případě CloudDosAbsoluteLimitReached není možné tento stav vyřešit, ale ve skutečnosti Azure Backup služba bude operace opakovat interně pro všechny příslušné položky.<br> Příklad: Pokud máte k zásadám chráněný velký počet zdrojů dat a pokusíte se ji změnit, spustí se pro každou chráněnou položku konfigurace úloh ochrany a někdy se může vysáhnout maximální povolený limit pro tyto operace za den.| Služba Azure Backup bude tuto operaci automaticky opakovat po 24 hodinách.
 
 ## <a name="re-registration-failures"></a>Selhání opětovné registrace
 
 Než zahájíte operaci opětovného zápisu, proveďte kontrolu jednoho nebo více následujících příznaků:
 
-* Všechny operace (například zálohování, obnovení a konfigurace zálohování) selžou na virtuálním počítači s jedním z následujících kódů chyb: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**.
-* Stavová oblast **zálohování** pro zálohovanou položku se zobrazujejako nedostupná. Vyloučí všechny ostatní příčiny, které by mohly mít za následek stejný stav:
+* Všechny operace (například zálohování, obnovení a konfigurace zálohování) selžou na virtuálním počítači s jedním z následujících kódů chyb: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent** , **WorkloadExtensionDidntDequeueMsg**.
+* **Stavová oblast zálohování** pro zálohovanou položku se zobrazuje jako **nedostupná**. Vyloučí všechny ostatní příčiny, které by mohly mít za následek stejný stav:
 
   * Nedostatečná oprávnění k provádění operací souvisejících se zálohováním virtuálního počítače  
   * Vypnutí virtuálního počítače, takže zálohy nejdou uskutečnit.
@@ -150,14 +147,14 @@ Než zahájíte operaci opětovného zápisu, proveďte kontrolu jednoho nebo v�
 
 K těmto potížím může dojít z některého z následujících důvodů:
 
-* Rozšíření bylo na portálu odstraněno nebo odinstalováno. 
-* Rozšíření bylo z **ovládacích panelů** na virtuálním počítači odinstalováno při odinstalaci **nebo změně programu**.
+* Rozšíření bylo na portálu odstraněno nebo odinstalováno.
+* Rozšíření bylo z **ovládacích panelů** na virtuálním počítači odinstalováno při **odinstalaci nebo změně programu**.
 * Virtuální počítač se znovu obnovil v čase prostřednictvím místního obnovení disku.
 * Po delší dobu byl virtuální počítač vypnutý, takže platnost konfigurace rozšíření na něm vypršela.
 * Virtuální počítač se odstranil a vytvořil se jiný virtuální počítač se stejným názvem a ve stejné skupině prostředků jako odstraněný virtuální počítač.
 * Jeden z uzlů skupiny dostupnosti neobdržel úplnou konfiguraci zálohování. K tomu může dojít, když je skupina dostupnosti zaregistrovaná do trezoru nebo když se přidá nový uzel.
 
-V předchozích scénářích doporučujeme, abyste na virtuálním počítači aktivovali operaci opětovného zápisu. Teď je tato možnost dostupná jenom přes PowerShell.
+V předchozích scénářích doporučujeme, abyste na virtuálním počítači aktivovali operaci opětovného zápisu. Pokyny k provedení této úlohy v PowerShellu najdete [tady](https://docs.microsoft.com/azure/backup/backup-azure-sql-automation#enable-backup) .
 
 ## <a name="size-limit-for-files"></a>Omezení velikosti souborů
 
@@ -185,9 +182,10 @@ Pokud velikost řetězce obsahu překračuje 20 000 bajtů, soubory databáze bu
 
 ### <a name="override-the-default-target-restore-file-path"></a>Přepsat výchozí cílovou cestu k souboru pro obnovení
 
-Cílovou cestu k souboru obnovení můžete během operace obnovení přepsat umístěním souboru JSON, který obsahuje mapování souboru databáze na cílovou cestu pro obnovení. Vytvořte soubor a umístěte ho do umístění *C:\Program Files\Azure úlohy Backup\bin\plugins\SQL.* `database_name.json`
+Cílovou cestu k souboru obnovení můžete během operace obnovení přepsat umístěním souboru JSON, který obsahuje mapování souboru databáze na cílovou cestu pro obnovení. Vytvořte soubor `database_name.json` a umístěte ho do umístění *C:\Program Files\Azure úlohy Backup\bin\plugins\SQL*.
 
 Obsah souboru by měl být v tomto formátu:
+
 ```json
 [
   {
@@ -228,9 +226,8 @@ SELECT mf.name AS LogicalName FROM sys.master_files mf
                 WHERE db.name = N'<Database Name>'"
   ```
 
-
 Tento soubor by měl být umístěn před aktivací operace obnovení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure Backup pro virtuální počítače s SQL Server (Public Preview) najdete v tématu [Azure Backup pro virtuální počítače SQL](../virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md#azbackup).

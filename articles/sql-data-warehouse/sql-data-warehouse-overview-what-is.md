@@ -1,5 +1,5 @@
 ---
-title: Co je Azure synapse Analytics (dřív SQL DW)? | Microsoft Docs
+title: Co je Azure synapse Analytics (dřív SQL DW)?
 description: Azure synapse Analytics (dřív SQL DW) je bezlimitní analytická služba, která přináší dohromady podnikové datové sklady a analýzu velkých objemů dat.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d10ea99e2dc8513a9cfebec782535f9e3185a3b9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 07bf3070e42af8a03ce1fd7ea4445fc76557e8a3
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496299"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645515"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Co je Azure synapse Analytics (dřív SQL DW)?
 

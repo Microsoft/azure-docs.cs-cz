@@ -1,5 +1,5 @@
 ---
-title: Aktivita toku dat v Azure Data Factory | Microsoft Docs
+title: Aktivita toku dat v Azure Data Factory
 description: Jak spouštět toky dat z kanálu služby Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 10/07/2019
-ms.openlocfilehash: cbfa1acac34187263f8c4203e41bbe61d7e4c745
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5623907346ee3882ad53a27695336ba4bc449db8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030509"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679946"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Aktivita toku dat v Azure Data Factory
 
@@ -56,7 +56,7 @@ integrationRuntime | Výpočetní prostředí, na kterém se tok dat spouští |
 Příprava. linkedService | Pokud používáte zdroj dat nebo jímku SQL DW, účet úložiště, který se používá pro základní fázování | LinkedServiceReference | Pouze v případě, že tok dat čte nebo zapisuje do SQL datového skladu
 Příprava. folderPath | Pokud používáte zdroj dat nebo jímku SQL DW, cesta ke složce v účtu BLOB Storage se používá pro základní fázování. | Řetězec | Pouze v případě, že tok dat čte nebo zapisuje do SQL datového skladu
 
-![Spuštění](media/data-flow/activity-data-flow.png "toku dat spuštění") toku dat
+![Spustit tok dat](media/data-flow/activity-data-flow.png "Spustit tok dat")
 
 ### <a name="data-flow-integration-runtime"></a>Prostředí Integration runtime toku dat
 
@@ -64,7 +64,7 @@ Vyberte, který Integration Runtime se má použít pro spuštění aktivity tok
 
 V případě spuštění kanálu je cluster clusterem úloh, který trvá několik minut, než se spustí spuštění. Pokud není zadána hodnota TTL, je při každém spuštění kanálu vyžadován tento čas spuštění. Zadáte-li hodnotu TTL, zůstane aktivní fond clusterů aktivní po dobu zadanou po posledním spuštění, což bude mít za následek kratší dobu spouštění. Například pokud máte hodnotu TTL 60 minut a za každou hodinu spustíte tok dat, fond clusterů zůstane aktivní. Další informace najdete v tématu [prostředí Azure Integration runtime](concepts-integration-runtime.md).
 
-![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration runtime")
+![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
 
 > [!NOTE]
 > Výběr Integration Runtime v aktivitě toku dat se vztahuje pouze na *aktivované spouštění* vašeho kanálu. Ladění kanálu pomocí datových toků běží v clusteru zadaném v relaci ladění.
@@ -79,19 +79,19 @@ Pokud používáte Azure SQL Data Warehouse jako jímku nebo zdroj, musíte zvol
 
 Pokud datový tok používá parametrizované datové sady, nastavte hodnoty parametrů na kartě **Nastavení** .
 
-![Spustit parametry toku dat](media/data-flow/params.png "")
+![Spustit parametry toku dat](media/data-flow/params.png "Parametry")
 
 ### <a name="parameterized-data-flows"></a>Parametrizované toky dat
 
 Pokud je tok dat parametrizovaný, nastavte dynamické hodnoty parametrů toku dat na kartě **parametry** . K přiřazení hodnot parametrů Dynamic nebo Literal můžete použít jazyk výrazu kanálu ADF (jenom pro řetězcové typy) nebo jazyk výrazu toku dat. Další informace najdete v tématu [parametry toku dat](parameters-data-flow.md).
 
-(media/data-flow/parameter-example.png "Příklad") spuštění ukázkového parametru ![toku dat]
+![Příklad spuštění parametru toku dat](media/data-flow/parameter-example.png "Příklad parametru")
 
 ## <a name="pipeline-debug-of-data-flow-activity"></a>Ladění kanálu aktivity toku dat
 
 Chcete-li spustit ladicí kanál spuštěný s aktivitou toku dat, je nutné přepnout na režim ladění toku dat prostřednictvím posuvníku **ladění toku dat** na horním panelu. Režim ladění umožňuje spustit tok dat proti aktivnímu clusteru Spark. Další informace naleznete v tématu [režim ladění](concepts-data-flow-debug-mode.md).
 
-Tlačítko ![ladit tlačítko ladit](media/data-flow/debugbutton.png "")
+![Tlačítko ladit](media/data-flow/debugbutton.png "Tlačítko ladit")
 
 Ladicí kanál běží na aktivním ladicím clusteru, nikoli v prostředí Integration runtime zadaném v nastavení aktivity toku dat. Můžete zvolit prostředí ladění COMPUTE při spuštění režimu ladění.
 

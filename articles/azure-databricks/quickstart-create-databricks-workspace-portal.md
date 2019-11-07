@@ -10,24 +10,24 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: f7f8c94504eef1023939ed41aa6124baef354e39
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 16de2054864a42d978d149353a89d65e8de7d155
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "72791586"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605686"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Rychlý start: Spuštění úlohy Spark job v Azure Databricks pomocí portálu Azure
 
 V tomto rychlém startu použijete Azure Portal k vytvoření pracovního prostoru Azure Databricks s Apache Sparkm clusterem. Spouštíte úlohu v clusteru a použijete vlastní grafy k vytváření sestav v reálném čase z dat o zabezpečení Boston.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlásit se na [Azure Portal](https://portal.azure.com).
 
 > [!Note]
 > Tento kurz se nedá provést pomocí **předplatného Azure free zkušební verze**.
@@ -56,7 +56,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
     |**Cenová úroveň**     |  Vyberte si mezi **standardem**, **Premium**nebo **zkušební verzí**. Další informace o těchto úrovních najdete na [stránce s cenami za Databricks](https://azure.microsoft.com/pricing/details/databricks/).       |
     |**Virtual Network**     |  Vyberte, pokud chcete nasadit Azure Databricks pracovní prostor ve vašem vlastním Virtual Network (VNet). Další informace najdete v tématu [nasazení Azure Databricks ve službě Azure Virtual Network (vkládání virtuální sítě)](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject).        |
 
-    Vyberte **Create** (Vytvořit).
+    Vyberte **Vytvořit**.
 
 4. Vytvoření pracovního prostoru trvá několik minut. Při vytváření pracovního prostoru můžete zobrazit stav nasazení v části **oznámení**.
 
@@ -85,7 +85,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
     
      Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
 
-Další informace o vytváření clusterů najdete v tématu [Vytvoření clusteru Spark v Azure Databricks](https://docs.azuredatabricks.net/user-guide/clusters/create.html).
+Další informace o vytváření clusterů najdete v tématu [Vytvoření clusteru Spark v Azure Databricks](/azure/databricks/clusters/create).
 
 ## <a name="run-a-spark-sql-job"></a>Spuštění úlohy Spark SQL
 
@@ -99,7 +99,7 @@ Pomocí následujících kroků vytvořte v datacihlách Poznámkový blok, nako
 
     ![Vytvoření poznámkového bloku v datacihlech](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "Vytvoření poznámkového bloku v datacihlech")
 
-    Vyberte **Create** (Vytvořit).
+    Vyberte **Vytvořit**.
 
 3. V tomto kroku vytvoříte datový rámec Spark dataframe s daty o zabezpečení Boston z [Azure Open DataSets](https://azure.microsoft.com/services/open-datasets/catalog/boston-safety-data/#AzureDatabricks)a použijete SQL k dotazování dat.
 
@@ -164,7 +164,7 @@ Pokud cluster neukončíte ručně, zastaví se automaticky a za předpokladu, �
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste v Azure Databricks vytvořili cluster Spark a spustili jste úlohu Sparku s využitím dat z Azure Open DataSet. Můžete si také projít článek [Zdroje dat Spark](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) a zjistit, jak do Azure Databricks importovat data z jiných zdrojů dat. V dalším článku se dozvíte, jak pomocí Azure Databricks provést operaci ETL (extrakce, transformace a načítání dat).
+V tomto článku jste v Azure Databricks vytvořili cluster Spark a spustili jste úlohu Sparku s využitím dat z Azure Open DataSet. Můžete si také projít článek [Zdroje dat Spark](/azure/databricks/data/data-sources/index.html) a zjistit, jak do Azure Databricks importovat data z jiných zdrojů dat. V dalším článku se dozvíte, jak pomocí Azure Databricks provést operaci ETL (extrakce, transformace a načítání dat).
 
 > [!div class="nextstepaction"]
 >[Extrakce, transformace a načítání dat pomocí Azure Databricks](databricks-extract-load-sql-data-warehouse.md)

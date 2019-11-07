@@ -17,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49dc3b0542e3f5e24c556ed78c20b16c3a6f1796
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: a8cc02831fa00a3974da1b74b07daf581f50dd22
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803703"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569615"
 ---
 # <a name="protected-web-api-code-configuration"></a>Chráněné webové rozhraní API: Konfigurace kódu
 
@@ -124,9 +124,11 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
     // Instead of using the default validation (validating against a single tenant,
     // as we do in line-of-business apps),
     // we inject our own multitenant validation logic (which even accepts both v1 and v2 tokens).
-    options.TokenValidationParameters.IssuerValidator = AadIssuerValidator.ValidateAadIssuer;
+    options.TokenValidationParameters.IssuerValidator = AadIssuerValidator.GetIssuerValidator(options.Authority).Validate;;
 });
 ```
+
+Tento fragment kódu se extrahuje z přírůstkového kurzu ASP.NET Core webového rozhraní API v [Microsoft. identity. Web/WebApiServiceCollectionExtensions. cs # L50-L63](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/154282843da2fc2958fad151e2a11e521e358d42/Microsoft.Identity.Web/WebApiServiceCollectionExtensions.cs#L50-L63). Metoda `AddProtectedWebApi`, která je mnohem více, je volána z Startup.cs
 
 ## <a name="token-validation"></a>Ověření tokenu
 

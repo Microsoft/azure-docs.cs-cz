@@ -10,14 +10,14 @@ ms.topic: overview
 ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: a917a823d47d6a072cf5a3ee5d636b432913df9a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 0b85d6fbe8e66b94bad372ccb29e5489dd81587b
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299445"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614783"
 ---
-# <a name="what-are-durable-functions"></a>Co jsou Durable Functions?
+# <a name="what-are-durable-functions"></a>Co je Durable Functions?
 
 *Durable Functions* je rozšíření [Azure Functions](../functions-overview.md) , které umožňuje psát stavové funkce v prostředí COMPUTE bez serveru. Toto rozšíření umožňuje definovat stavové pracovní postupy napsáním funkcí a stavových entit nástroje [*Orchestrator*](durable-functions-orchestrations.md) napsáním [*funkcí*](durable-functions-entities.md) jazyka pomocí programovacího modelu Azure Functions. Na pozadí spravuje rozšíření stav, kontrolní body a restarty pro vás, což vám umožní soustředit se na obchodní logiku.
 
@@ -44,7 +44,7 @@ Primární případ použití pro Durable Functions zjednodušuje komplexní po�
 * [Lidská interakce](#human)
 * [Agregovan](#aggregator)
 
-### <a name="chaining"></a>#1 vzoru: Řetězení funkcí
+### <a name="chaining"></a>Vzor #1: řetězení funkcí
 
 Ve vzoru zřetězení funkcí se posloupnost funkcí provádí v určitém pořadí. V tomto modelu je výstup jedné funkce aplikován na vstup jiné funkce.
 
@@ -57,7 +57,7 @@ Můžete použít Durable Functions k implementaci vzor řetězení funkcí stru
 ```csharp
 [FunctionName("Chaining")]
 public static async Task<object> Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     try
     {
@@ -73,7 +73,7 @@ public static async Task<object> Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
+#### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -86,14 +86,14 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-`F1`V tomto příkladu hodnoty `F2` `F3`,, a `F4` jsou názvy dalších funkcí v aplikaci Function App. Tok řízení lze implementovat pomocí normálních imperativních konstrukcí kódování. Kód se spustí shora dolů. Kód může zahrnovat stávající sémantiku toku řízení jazyka, jako jsou podmínky a smyčky. `try` Do blokůmůžete`finally` zahrnout logiku zpracování chyb. / `catch` /
+V tomto příkladu jsou hodnoty `F1`, `F2`, `F3`a `F4` názvy dalších funkcí v aplikaci Function App. Tok řízení lze implementovat pomocí normálních imperativních konstrukcí kódování. Kód se spustí shora dolů. Kód může zahrnovat stávající sémantiku toku řízení jazyka, jako jsou podmínky a smyčky. Můžete zahrnout logiku zpracování chyb v `try`/`catch`bloky /`finally`.
 
-Můžete použít `context` parametr [DurableOrchestrationContext] \(.NET\) a `context.df` Object (JavaScript) k vyvolání dalších funkcí podle názvu, průchodu Parameters a návratového výstupu funkce. Pokaždé, když kód `await` voláC#() `yield` nebo (JavaScript), Durable Functions Framework kontrolní body průběh aktuální instance funkce. Pokud se proces nebo virtuální počítač recykluje v průběhu provádění, instance funkce pokračuje z předchozího `await` nebo `yield` volání. Další informace najdete v další části #2 vzorových informací: Ventilátor nebo ventilátor v.
+Můžete použít parametr `context` [IDurableOrchestrationContext] \(.NET\) a objekt `context.df` (JavaScript) k vyvolání dalších funkcí podle názvu, průchodu Parameters a návratového výstupu funkce. Pokaždé, když kód volá `await`C#() nebo `yield` (JavaScript), Durable Functions Framework vystaví průběh aktuální instance funkce. Pokud se proces nebo virtuální počítač recykluje v průběhu provádění, instance funkce pokračuje z předchozí `await` nebo `yield` volání. Další informace najdete v další části vzor #2: ventilátor nebo ventilátor v.
 
 > [!NOTE]
-> Objekt v JavaScriptu představuje celý [kontext funkce](../functions-reference-node.md#context-object), nikoli jenom parametr [DurableOrchestrationContext]. `context`
+> Objekt `context` v JavaScriptu představuje celý [kontext funkce](../functions-reference-node.md#context-object), nikoli jenom parametr [IDurableOrchestrationContext].
 
-### <a name="fan-in-out"></a>#2 vzoru: Ventilátor nebo ventilátor v
+### <a name="fan-in-out"></a>Vzor #2: ventilátor nebo ventilátor v
 
 Ve vzorku se v ventilátoru nebo ventilátoru spouští více funkcí paralelně a pak čekají na dokončení všech funkcí. U výsledků, které se vrátí z funkcí, se často provádí některá agregační práce.
 
@@ -108,7 +108,7 @@ Rozšíření Durable Functions zpracovává tento vzor s poměrně jednoduchým
 ```csharp
 [FunctionName("FanOutFanIn")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     var parallelTasks = new List<Task<int>>();
 
@@ -128,7 +128,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
+#### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -150,14 +150,14 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Práce s ventilátorem je distribuována do více instancí `F2` funkce. Práce je sledována pomocí dynamického seznamu úkolů. Rozhraní .NET `Task.WhenAll` API nebo JavaScript `context.df.Task.all` API se zavolá, aby se čekalo na dokončení všech volaných funkcí. Výstupy `F3` funkcí pak jsou agregovány z dynamického seznamu úkolů a předány funkci. `F2`
+Práce s ventilátorem je distribuována do více instancí funkce `F2`. Práce je sledována pomocí dynamického seznamu úkolů. Rozhraní .NET `Task.WhenAll` API nebo JavaScript `context.df.Task.all` API se zavolá, aby se čekalo na dokončení všech volaných funkcí. Pak jsou výstupy funkce `F2` agregované z dynamického seznamu úkolů a předány do funkce `F3`.
 
-Automatické vytváření kontrolních bodů, ke kterým dochází `await` při `yield` volání `Task.WhenAll` `context.df.Task.all` nebo, zajistí, že potenciální funkce pro zhroucení nebo restartování počítače nevyžadují restartování již dokončené úlohy.
+Automatické vytváření kontrolních bodů, ke kterým dochází při `await` nebo `yield` volání `Task.WhenAll` nebo `context.df.Task.all`, zajišťuje, že potenciální funkce pro zhroucení nebo restartování nevyžadují restartování již dokončené úlohy.
 
 > [!NOTE]
 > Ve výjimečných případech je možné, že dojde k chybě v okně po dokončení funkce aktivity, ale před tím, než se její dokončení uloží do historie orchestrace. Pokud k tomu dojde, funkce Activity by se po obnovení procesu znovu spouštěla od začátku.
 
-### <a name="async-http"></a>#3 vzoru: Asynchronní rozhraní HTTP API
+### <a name="async-http"></a>Vzor #3: asynchronní rozhraní HTTP API
 
 Vzor asynchronního protokolu HTTP API řeší problém koordinace stavu dlouhotrvajících operací s externími klienty. Běžný způsob implementace tohoto modelu je, že koncový bod HTTP spustí dlouhotrvající akci. Pak přesměrujte klienta na koncový bod stavu, který se klient dotazuje, když se operace dokončí.
 
@@ -196,7 +196,7 @@ Rozšíření Durable Functions zpřístupňuje Vestavěná rozhraní API HTTP, 
 
 Další informace najdete v článku [funkce protokolu HTTP](durable-functions-http-features.md) , který vysvětluje, jak můžete vystavit asynchronní a dlouhotrvající procesy přes protokol HTTP pomocí rozšíření Durable Functions.
 
-### <a name="monitoring"></a>#4 vzoru: Monitorování
+### <a name="monitoring"></a>Vzor #4: monitorování
 
 Model monitorování odkazuje na flexibilní a opakovaný proces v pracovním postupu. Příkladem je cyklické dotazování, dokud nebudou splněny určité podmínky. Pomocí pravidelné [aktivační procedury časovače](../functions-bindings-timer.md) můžete vyřešit základní scénář, například úlohu pravidelného čištění, ale jeho interval je statický a Správa životnosti instance je složitá. Pomocí Durable Functions můžete vytvářet flexibilní intervaly opakování, spravovat životnost úloh a vytvářet více procesů monitorování z jedné orchestrace.
 
@@ -204,7 +204,7 @@ Příkladem vzoru monitorování je vrácení dřívějšího scénáře asynchr
 
 ![Diagram modelu monitoru](./media/durable-functions-concepts/monitor.png)
 
-V několika řádcích kódu můžete pomocí Durable Functions vytvořit více monitorů, které sledují libovolné koncové body. Monitory mohou ukončit provádění, pokud je splněna podmínka, nebo může [DurableOrchestrationClient](durable-functions-instance-management.md) ukončit monitorování. Můžete změnit `wait` interval monitorování na základě konkrétní podmínky (například exponenciální omezení rychlosti.) 
+V několika řádcích kódu můžete pomocí Durable Functions vytvořit více monitorů, které sledují libovolné koncové body. Monitory mohou ukončit provádění, pokud je splněna podmínka, nebo `IDurableOrchestrationClient` může ukončit monitory. Interval `wait` monitoru můžete změnit na základě konkrétní podmínky (například exponenciální omezení rychlosti). 
 
 Následující kód implementuje základní monitor:
 
@@ -213,7 +213,7 @@ Následující kód implementuje základní monitor:
 ```csharp
 [FunctionName("MonitorJobStatus")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     int jobId = context.GetInput<int>();
     int pollingInterval = GetPollingInterval();
@@ -238,7 +238,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
+#### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -266,9 +266,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Po přijetí žádosti se pro ID úlohy vytvoří nová instance Orchestration. Instance se dotazuje na stav, dokud není splněna podmínka a dojde k ukončení smyčky. Interval cyklického dotazování řídí trvalý časovač. Pak je možné provést více práce, nebo orchestrace může skončit. Když rozhraní `context.df.currentUtcDateTime` `expiryTime` (.NET) nebo (JavaScript) překračuje hodnotu, monitor skončí. `context.CurrentUtcDateTime`
+Po přijetí žádosti se pro ID úlohy vytvoří nová instance Orchestration. Instance se dotazuje na stav, dokud není splněna podmínka a dojde k ukončení smyčky. Interval cyklického dotazování řídí trvalý časovač. Pak je možné provést více práce, nebo orchestrace může skončit. Pokud `context.CurrentUtcDateTime` (.NET) nebo `context.df.currentUtcDateTime` (JavaScript) překračuje hodnotu `expiryTime`, monitor skončí.
 
-### <a name="human"></a>#5 vzoru: Lidská interakce
+### <a name="human"></a>Vzor #5: interakce člověka
 
 Řada automatizovaných procesů zahrnuje nějaký druh lidské interakce. Zapojení lidí do automatizovaného procesu je obtížné, protože lidé nejsou jako vysoce dostupné a reagují jako cloudové služby. Automatizovaný proces může pro tuto interakci umožňovat pomocí časových limitů a logiky kompenzace.
 
@@ -285,7 +285,7 @@ Tyto příklady vytvoří proces schvalování, který předvádí vzor lidské 
 ```csharp
 [FunctionName("ApprovalWorkflow")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     await context.CallActivityAsync("RequestApproval", null);
     using (var timeoutCts = new CancellationTokenSource())
@@ -307,7 +307,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
+#### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -329,15 +329,15 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Chcete-li vytvořit trvalý časovač, `context.CreateTimer` volejte (.NET) `context.df.createTimer` nebo (JavaScript). Oznámení přijímá `context.WaitForExternalEvent` (.NET) nebo `context.df.waitForExternalEvent` (JavaScript). Pak (.NET) nebo `context.df.Task.any` (JavaScript) se zavolá, aby se rozhodlo, jestli se má eskalovat (časový limit nastane jako první), nebo jestli se má schválit schválení (schválení se přijme před časovým limitem). `Task.WhenAny`
+Chcete-li vytvořit trvalý časovač, volejte `context.CreateTimer` (.NET) nebo `context.df.createTimer` (JavaScript). Oznámení obdrží `context.WaitForExternalEvent` (.NET) nebo `context.df.waitForExternalEvent` (JavaScript). Pak se zavolá `Task.WhenAny` (.NET) nebo `context.df.Task.any` (JavaScript), aby se rozhodlo, jestli se má eskalovat (časový limit nastane jako první), nebo jestli se má schválit schválení (schválení se přijme před vypršením časového limitu).
 
-Externí klient může doručovat oznámení události do čekající funkce Orchestrator pomocí [integrovaných rozhraní HTTP API](durable-functions-http-api.md#raise-event) nebo pomocí rozhraní API [DurableOrchestrationClient. RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_) z jiné funkce:
+Externí klient může předat oznámení události do čekající funkce Orchestrator pomocí [integrovaných rozhraní HTTP API](durable-functions-http-api.md#raise-event) nebo pomocí metody `RaiseEventAsync` (.NET) nebo `raiseEvent` (JavaScript) z jiné funkce:
 
 ```csharp
 [FunctionName("RaiseEventToOrchestration")]
 public static async Task Run(
     [HttpTrigger] string instanceId,
-    [OrchestrationClient] DurableOrchestrationClient client)
+    [DurableClient] IDurableOrchestrationClient client)
 {
     bool isApproved = true;
     await client.RaiseEventAsync(instanceId, "ApprovalEvent", isApproved);
@@ -358,7 +358,7 @@ module.exports = async function (context) {
 curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/ApprovalEvent -H "Content-Type: application/json"
 ```
 
-### <a name="aggregator"></a>#6 vzoru: Agregátor (Preview)
+### <a name="aggregator"></a>Vzor #6: agregátor
 
 Šestým vzorem je informace o agregaci dat událostí v časovém intervalu až na jednu, adresovatelnou *entitu*. V tomto modelu mohou být shromážděná data z více zdrojů, mohou být dodávána v dávkách nebo mohou být rozmístěna za dlouhou dobu. Agregátor může potřebovat provést akci s daty události při jejich doručení a externí klienti budou potřebovat dotaz na agregovaná data.
 
@@ -366,33 +366,50 @@ curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{ins
 
 Důvodem, proč se pokusit o implementaci tohoto modelu s normálními a bezstavovým funkcemi, je, že řízení souběžnosti se stává obrovským problémem. Nemusíte si dělat starosti s více vlákny, které mění stejná data současně, musíte se také starat o to, že agregátor běží jenom na jednom virtuálním počítači.
 
-Pomocí [funkce trvalé entity](durable-functions-preview.md#entity-functions)může jeden implementovat tento vzor snadno jako jednu funkci.
+Můžete použít [trvalé entity](durable-functions-entities.md) k jednoduché implementaci tohoto modelu jako jediné funkce.
 
 ```csharp
 [FunctionName("Counter")]
 public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 {
     int currentValue = ctx.GetState<int>();
-
     switch (ctx.OperationName.ToLowerInvariant())
     {
         case "add":
             int amount = ctx.GetInput<int>();
-            currentValue += amount;
+            ctx.SetState(currentValue + amount);
             break;
         case "reset":
-            currentValue = 0;
+            ctx.SetState(0);
             break;
         case "get":
             ctx.Return(currentValue);
             break;
     }
-
-    ctx.SetState(currentValue);
 }
 ```
 
-Odolné entity lze také modelovat jako třídy .NET. Tento model může být užitečný, pokud je seznam operací pevný a bude velký. Následující příklad je ekvivalentní implementace `Counter` entity pomocí tříd a metod .NET.
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.entity(function(context) {
+    const currentValue = context.df.getState(() => 0);
+    switch (context.df.operationName) {
+        case "add":
+            const amount = context.df.getInput();
+            context.df.setState(currentValue + amount);
+            break;
+        case "reset":
+            context.df.setState(0);
+            break;
+        case "get":
+            context.df.return(currentValue);
+            break;
+    }
+});
+```
+
+Odolné entity lze také modelovat jako třídy v rozhraní .NET. Tento model může být užitečný, pokud je seznam operací pevný a bude velký. Následující příklad je ekvivalentní implementace `Counter` entity pomocí tříd a metod .NET.
 
 ```csharp
 public class Counter
@@ -418,7 +435,7 @@ Klienti mohou zařadit *operace* do fronty (označované také jako "signalizace
 [FunctionName("EventHubTriggerCSharp")]
 public static async Task Run(
     [EventHubTrigger("device-sensor-events")] EventData eventData,
-    [OrchestrationClient] IDurableOrchestrationClient entityClient)
+    [DurableClient] IDurableOrchestrationClient entityClient)
 {
     var metricType = (string)eventData.Properties["metric"];
     var delta = BitConverter.ToInt32(eventData.Body, eventData.Body.Offset);
@@ -429,10 +446,21 @@ public static async Task Run(
 }
 ```
 
-Dynamicky generované proxy servery jsou také k dispozici pro signalizaci entit v typově bezpečném způsobu. Kromě signalizace se klienti můžou také dotazovat na stav funkce entity pomocí [typově bezpečných metod](durable-functions-bindings.md#entity-client-usage) na vazbu klienta Orchestration.
-
 > [!NOTE]
-> Funkce entit jsou aktuálně k dispozici pouze v rozhraní .NET jako součást [Durable Functions 2,0 Preview](durable-functions-preview.md).
+> Dynamicky generované proxy servery jsou také k dispozici v rozhraní .NET pro signalizaci entit v typově bezpečném způsobu. Kromě signalizace se klienti můžou také dotazovat na stav funkce entity pomocí [typově bezpečných metod](durable-functions-bindings.md#entity-client-usage) na vazbu klienta Orchestration.
+
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    const entityId = new df.EntityId("Counter", "myCounter");
+    await context.df.signalEntity(entityId, "add", 1);
+};
+```
+
+Funkce entit jsou k dispozici v [Durable Functions 2,0](durable-functions-versions.md) a vyšších.
 
 ## <a name="the-technology"></a>Technologie
 
@@ -442,9 +470,9 @@ Na pozadí je rozšíření Durable Functions postaveno nad [trvalým prostřed�
 
 Za účelem zajištění spolehlivých a dlouhotrvajících záruk spouštění mají funkce nástroje Orchestrator sadu pravidel pro kódování, která musí být dodržena. Další informace naleznete v článku o [omezeních kódu funkce nástroje Orchestrator](durable-functions-code-constraints.md) .
 
-## <a name="billing"></a>Fakturace
+## <a name="billing"></a>Vyúčtování
 
-Durable Functions se účtují stejně jako Azure Functions. Další informace najdete v tématu [ceny Azure Functions](https://azure.microsoft.com/pricing/details/functions/). Při provádění funkcí Orchestrator v plánu Azure Functions [spotřeby](../functions-scale.md#consumption-plan)existují některá nastavení fakturace, o kterých je potřeba vědět. Další informace o tomto chování najdete v článku o [fakturaci Durable Functions](durable-functions-billing.md) .
+Durable Functions se účtují stejně jako Azure Functions. Další informace najdete v tématu [Azure Functions ceny](https://azure.microsoft.com/pricing/details/functions/). Při provádění funkcí Orchestrator v plánu Azure Functions [spotřeby](../functions-scale.md#consumption-plan)existují některá nastavení fakturace, o kterých je potřeba vědět. Další informace o tomto chování najdete v článku o [fakturaci Durable Functions](durable-functions-billing.md) .
 
 ## <a name="jump-right-in"></a>Skok přímo v
 
@@ -455,7 +483,7 @@ Můžete začít s Durable Functions za 10 minut, a to provedením jednoho z tě
 
 V obou rychlých startech můžete místně vytvořit a otestovat funkci "Hello World". Kód funkce potom publikujete do Azure. Funkce, kterou vytváříte, orchestruje a řetězí volání dalších funkcí.
 
-## <a name="learn-more"></a>Víc se uč
+## <a name="learn-more"></a>Další informace
 
 Následující video zvýrazní výhody Durable Functions:
 

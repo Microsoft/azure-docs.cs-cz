@@ -1,5 +1,5 @@
 ---
-title: Úspora nákladů pro Azure SQL Database virtuální jádra | Microsoft Docs
+title: Úspora nákladů pro Azure SQL Database virtuální jádra
 description: Naučte se koupit Azure SQL Database rezervovanou kapacitu, abyste ušetřili náklady na výpočetní výkon.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 08/29/2019
-ms.openlocfilehash: 5ab5481a89f7bb9c74133487b01879b00b7def32
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 70e274d765b409d4024155f8553ba92200598394
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806593"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687523"
 ---
 # <a name="save-costs-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Úspora nákladů za SQL Database výpočetních prostředků s využitím Azure SQL Database rezervované kapacity
 
@@ -25,10 +25,10 @@ ms.locfileid: "70806593"
 
 Nemusíte přiřazovat rezervaci konkrétním SQL Database instancí (izolované databáze, elastické fondy nebo spravované instance). Tato výhoda automaticky získá odpovídající instance SQL Database, které jsou již spuštěny nebo nově nasazeny. Když zakoupíte rezervaci, zavedete se k využití výpočetních nákladů po dobu jednoho nebo tří let. Jakmile si koupíte rezervaci SQL Database, poplatky za výpočetní prostředky, které se shodují s atributy rezervace, už nebudou účtovány podle tarifů průběžných plateb. Rezervace nepokrývá software, sítě ani poplatky za úložiště spojené s instancí SQL Database. Na konci rezervovaného období vyprší platnost fakturačního přínosu a databáze SQL se účtují podle ceny za průběžné platby. Rezervace se neobnoví automaticky. Informace o cenách najdete v [nabídce SQL Database rezervované kapacity](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 
-V [Azure Portal](https://portal.azure.com)si můžete koupit Azure SQL Database rezervovanou kapacitu. Platíte za rezervaci [předem nebo s měsíčními platbami](../billing/billing-monthly-payments-reservations.md). Zakoupení SQL Database rezervované kapacity:
+V [Azure Portal](https://portal.azure.com)si můžete koupit Azure SQL Database rezervovanou kapacitu. Za rezervaci se platí [předem nebo prostřednictvím měsíčních plateb](../billing/billing-monthly-payments-reservations.md). Zakoupení SQL Database rezervované kapacity:
 
 - Musíte být v roli vlastníka alespoň u jednoho podnikového nebo individuálního předplatného s tarify průběžných plateb.
-- U podnikových předplatných se musí na [portálu EA](https://ea.azure.com)povolit možnost **Přidat rezervované instance** . Nebo, pokud je toto nastavení zakázané, musíte být správce EA v předplatném.
+- U předplatných se smlouvou Enterprise musí být na webu **EA Portal** povolená možnost [Přidat rezervované instance](https://ea.azure.com). Nebo, pokud je toto nastavení zakázané, musíte být správce EA v předplatném.
 - V případě programu Cloud Solution Provider (CSP) mohou SQL Database rezervované kapacity koupit pouze agenti správce nebo prodejní agenti.
 
 Podrobnosti o tom, jak se zákazníkům z podnikových zákazníků a průběžné platby účtují poplatky za nákupy rezervací, najdete v tématu [vysvětlení využití rezervace Azure pro vaši podnikovou registraci](../billing/billing-understand-reserved-instance-usage-ea.md) a [pochopení využití rezervace Azure pro vaše průběžné platby. předplatné](../billing/billing-understand-reserved-instance-usage.md).
@@ -42,30 +42,30 @@ Předpokládejme například, že máte spuštěný jeden z obecných účelů, 
 ## <a name="buy-sql-database-reserved-capacity"></a>Koupit SQL Database rezervovanou kapacitu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte **všechny** > **rezervace**služeb.
+2. Vyberte **Všechny služby** > **Rezervace**.
 3. Vyberte **Přidat** a potom v podokně rezervace nákupních oblastí vyberte **SQL Database** , abyste si nakoupili novou rezervaci pro SQL Database.
 4. Vyplňte požadovaná pole. Stávající nebo nové izolované databáze, elastické fondy nebo spravované instance, které odpovídají atributům, které vyberete, mají nárok na získání rezervované slevy kapacity. Skutečný počet instancí SQL Database, které získají slevu, závisí na zvoleném rozsahu a množství.
-    ![Snímek obrazovky před odesláním SQL Database nákupu rezervované kapacity](./media/sql-database-reserved-vcores/sql-reserved-vcores-purchase.png)
+    ![snímku obrazovky před odesláním SQL Database nákupu rezervovaných kapacit](./media/sql-database-reserved-vcores/sql-reserved-vcores-purchase.png)
 
 V následující tabulce jsou popsána povinná pole.
 
 | Pole      | Popis|
 |------------|--------------|
-|Subscription|Předplatné použité pro platbu SQL Database rezervované rezervace kapacity. Platební metodou předplatného se účtují náklady na front-end pro rezervaci rezervované kapacity SQL Database. Typ předplatného musí být smlouva Enterprise (čísla nabídek: MS-AZR-0017P nebo MS-AZR-0148P) nebo konkrétní smlouva s cenami průběžných plateb (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. U jednotlivých předplatných s průběžnými platbami se poplatky účtují na základě platební karty nebo platby na faktuře v předplatném.|
-|Scope       |Obor rezervace vCore může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete: <br/><br/>V rámci vašeho fakturačního kontextu se pro SQL Database instance, které běží v jakýchkoli předplatných, používá **sleva za rezervaci**Vcore. U podnikových zákazníků je sdíleným oborem registrace a zahrnuje všechna předplatná v rámci registrace. Pro zákazníky s průběžnými platbami se sdíleným oborem jsou všechna předplatná s průběžnými platbami vytvořená správcem účtu.<br/><br/>Pro SQL Database instance v tomto předplatném se použije **sleva za rezervované**Vcore. <br/><br/>**Jedna skupina prostředků**, použije se sleva rezervace pro SQL Database instance ve vybraném předplatném a v rámci daného předplatného.|
-|Oblast      |Oblast Azure, která je pokrytá rezervací rezervované kapacity SQL Database.|
+|Předplatné|Předplatné použité pro platbu SQL Database rezervované rezervace kapacity. Platební metodou předplatného se účtují náklady na front-end pro rezervaci rezervované kapacity SQL Database. Typ předplatného musí být smlouva Enterprise (číslo nabídky: MS-AZR-0017P nebo MS-AZR-0148P) nebo samostatná smlouva s cenami s průběžnými platbami (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. U jednotlivých předplatných s průběžnými platbami se poplatky účtují na základě platební karty nebo platby na faktuře v předplatném.|
+|Rozsah       |Obor rezervace vCore může zahrnovat jedno nebo víc předplatných (sdílený rozsah). Pokud vyberete: <br/><br/>V rámci vašeho fakturačního kontextu se pro SQL Database instance, které běží v jakýchkoli předplatných, používá **sleva za rezervaci**Vcore. U podnikových zákazníků je sdíleným oborem registrace a zahrnuje všechna předplatná v rámci registrace. U zákazníků s průběžnými platbami jsou v rozsahu Sdílený všechna předplatná s průběžnými platbami vytvořená správcem účtu.<br/><br/>Pro SQL Database instance v tomto předplatném se použije **sleva za rezervované**Vcore. <br/><br/>**Jedna skupina prostředků**, použije se sleva rezervace pro SQL Database instance ve vybraném předplatném a v rámci daného předplatného.|
+|Region (Oblast)      |Oblast Azure, která je pokrytá rezervací rezervované kapacity SQL Database.|
 |Typ nasazení|Typ prostředku SQL, pro který chcete zakoupit rezervaci.|
 |Úroveň výkonu|Úroveň služby pro instance SQL Database.
-|Termín        |Jeden rok nebo tři roky.|
+|Označení        |Jeden rok nebo tři roky.|
 |Množství    |Množství výpočetních prostředků, které se zakoupí v rámci rezervace rezervované kapacity SQL Database. Množství je počet virtuální jádra ve vybrané oblasti Azure a úroveň výkonu, které jsou rezervované, a obdrží fakturační slevu. Pokud například používáte nebo plánujete spouštět instance SQL Database s celkovou výpočetní kapacitou Gen5 16 virtuální jádra v oblasti Východní USA, pak zadáte množství na 16, aby se pro všechny instance maximalizovala výhoda. |
 
 1. Přečtěte si náklady na rezervaci rezervované kapacity SQL Database v části **náklady** .
 1. Vyberte **Koupit**.
 1. Pokud chcete zobrazit stav nákupu, vyberte **Zobrazit tuto rezervaci** .
 
-## <a name="cancel-exchange-or-refund-reservations"></a>Rezervace zrušení, výměna nebo refundace
+## <a name="cancel-exchange-or-refund-reservations"></a>Zrušení, výměna nebo refundace rezervací
 
-Rezervace můžete zrušit, vyměnit nebo vrátit refundaci s určitými omezeními. Další informace najdete v tématu věnovaném [výměnám samoobslužných služeb a refundacím pro Azure reservations](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+Rezervace je možné s určitými omezeními zrušit, vyměnit nebo refundovat. Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="vcore-size-flexibility"></a>flexibilita velikosti vCore
 
@@ -75,21 +75,21 @@ flexibilita velikosti vCore vám pomůže škálovat směrem nahoru nebo dolů v
 
 Nemůžete rezervovat databáze SQL založené na DTU (Basic, Standard nebo Premium).
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 
-Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Sleva rezervovaného vCore se automaticky aplikuje na počet instancí SQL Database, které odpovídají SQL Database rezervovaných rezervací kapacity a atributů. Rozsah rezervované rezervace kapacity SQL Database můžete aktualizovat prostřednictvím [Azure Portal](https://portal.azure.com), PowerShellu, CLI nebo přes rozhraní API.
 
 Informace o tom, jak spravovat rezervaci rezervované kapacity SQL Database, najdete v tématu [správa SQL Database rezervované kapacity](../billing/billing-manage-reserved-vm-instance.md).
 
-Další informace o Azure Reservations najdete v následujících článcích:
+Další informace o rezervacích Azure najdete v následujících článcích:
 
-- [Co jsou Azure Reservations?](../billing/billing-save-compute-costs-reservations.md)
+- [Co jsou rezervace Azure?](../billing/billing-save-compute-costs-reservations.md)
 - [Správa rezervací Azure](../billing/billing-manage-reserved-vm-instance.md)
-- [Pochopení Azure Reservations slevy](../billing/billing-understand-reservation-charges.md)
+- [Vysvětlení slev za rezervace Azure](../billing/billing-understand-reservation-charges.md)
 - [Vysvětlení využití rezervací u předplatného s průběžnými platbami](../billing/billing-understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervací u smlouvy Enterprise](../billing/billing-understand-reserved-instance-usage-ea.md)
-- [Azure Reservations v programu partner Center pro Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)
+- [Rezervace Azure v programu Partner Center Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)

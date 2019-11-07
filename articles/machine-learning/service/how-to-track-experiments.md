@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2d8bf44f5e5e7a3f8c328a47480599f9dd18b845
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d8a2c456c725a3170bc940bf17dec6b0c4ad2c3e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489520"
+ms.locfileid: "73584529"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Monitorování běhů a metriky Azure ML
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,6 +26,9 @@ Vylepšete proces vytváření modelů sledováním experimentů a monitorován�
 
 > [!NOTE]
 > Azure Machine Learning může také protokolovat informace z jiných zdrojů během školení, jako je automatické spuštění strojového učení nebo kontejner Docker, který spouští školicí úlohu. Tyto protokoly nejsou dokumentovány. Pokud narazíte na problémy a kontaktujte podporu Microsoftu, můžou při řešení potíží používat tyto protokoly.
+
+> [!TIP]
+> Informace v tomto dokumentu jsou primárně určené pro odborníky přes data a vývojáře, kteří chtějí monitorovat proces školení modelu. Pokud jste správcem a chcete monitorovat využití prostředků a události z Azure Machine Learningu, jako jsou kvóty, dokončené školicí běhy nebo dokončená nasazení modelu, přečtěte si téma [monitorování Azure Machine Learning](monitor-azure-machine-learning.md).
 
 ## <a name="available-metrics-to-track"></a>Dostupné metriky ke sledování
 

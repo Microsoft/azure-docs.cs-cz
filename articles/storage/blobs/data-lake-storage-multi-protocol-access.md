@@ -1,44 +1,32 @@
 ---
-title: Přístup k více protokolům na Azure Data Lake Storage (Preview) | Microsoft Docs
+title: Přístup k více protokolům na Azure Data Lake Storage | Microsoft Docs
 description: Používejte rozhraní API objektů BLOB a aplikace, které používají rozhraní API objektů BLOB s Azure Data Lake Storage Gen2.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 11/01/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 6e3b368d1f5615c34a49b155d288d3c37c28bc26
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f3e852d178a6720f8d567f4ecb042f0b83bcd56c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933137"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583149"
 ---
-# <a name="multi-protocol-access-on-azure-data-lake-storage-preview"></a>Přístup k více protokolům na Azure Data Lake Storage (verze Preview)
+# <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Přístup k více protokolům na Azure Data Lake Storage
 
-Rozhraní API objektů BLOB teď pracují s účty, které mají hierarchický obor názvů. Tím se odemkne celý ekosystém nástrojů, aplikací a služeb a také všechny funkce služby Blob Storage pro účty, které mají hierarchický obor názvů.
+Rozhraní API objektů BLOB teď pracují s účty, které mají hierarchický obor názvů. Tím se odemkne ekosystém nástrojů, aplikací a služeb a také několik funkcí BLOB Storage pro účty, které mají hierarchický obor názvů.
 
 Až do poslední doby, možná budete muset zachovat samostatná řešení úložiště pro úložiště objektů a analýzu. To je proto, že Azure Data Lake Storage Gen2 mít omezené podpory ekosystémů. Měl by taky mít omezený přístup k Blob service funkcím, jako je protokolování diagnostiky. Fragmentované řešení úložiště je obtížné udržovat, protože k provádění různých scénářů je potřeba přesunout data mezi účty. Už to nemusíte dělat.
 
-> [!NOTE]
-> Přístup k více protokolům na Data Lake Storage je ve verzi Public Preview a je dostupný ve všech oblastech. Nemusíte se registrovat ve verzi Public Preview, protože je automaticky dostupná pro všechny účty, které mají hierarchický obor názvů. Chcete-li zkontrolovat omezení, přečtěte si článek [známé problémy](data-lake-storage-known-issues.md) .
-
-## <a name="use-the-entire-ecosystem-of-applications-tools-and-services"></a>Používání celého ekosystému aplikací, nástrojů a služeb
-
-Při přístupu k více protokolům na Data Lake Storage můžete pracovat se všemi Vašimi daty pomocí celého ekosystému nástrojů, aplikací a služeb. Patří sem služby Azure, jako jsou [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction), [IOT hub](https://docs.microsoft.com/azure/iot-hub/), [Power BI](https://docs.microsoft.com/power-bi/desktop-data-sources)a spousta dalších. Úplný seznam najdete v tématu věnovaném [integraci Azure Data Lake Storage se službami Azure](data-lake-store-integrate-with-azure-services.md).
-
-To zahrnuje i nástroje a aplikace třetích stran. Můžete je nasměrovat na účty, které mají hierarchický obor názvů, aniž byste je museli upravovat. Tyto aplikace fungují *tak, jak jsou* , i když volají rozhraní API objektů blob, protože rozhraní API objektů BLOB teď můžou pracovat s daty v účtech, které mají hierarchický obor názvů.
-
-> [!NOTE]
-> Chcete-li zkontrolovat omezení, přečtěte si článek [známé problémy](data-lake-storage-known-issues.md) .
-
-## <a name="use-all-blob-storage-features"></a>Používání všech funkcí služby Blob Storage
+Při přístupu k více protokolům na Data Lake Storage můžete pracovat s daty pomocí ekosystému nástrojů, aplikací a služeb. To zahrnuje i nástroje a aplikace třetích stran. Můžete je nasměrovat na účty, které mají hierarchický obor názvů, aniž byste je museli upravovat. Tyto aplikace fungují *tak, jak jsou* , i když volají rozhraní API objektů blob, protože rozhraní API objektů BLOB teď můžou pracovat s daty v účtech, které mají hierarchický obor názvů.
 
 Funkce služby Blob Storage, jako je [protokolování diagnostiky](../common/storage-analytics-logging.md), [úrovně přístupu](storage-blob-storage-tiers.md)a [zásady správy životního cyklu úložiště objektů BLOB](storage-lifecycle-management-concepts.md) , teď fungují s účty, které mají hierarchický obor názvů. Proto můžete v účtech BLOB Storage povolit hierarchické obory názvů bez ztráty přístupu k těmto důležitým funkcím. 
 
 > [!NOTE]
-> Chcete-li zkontrolovat omezení, přečtěte si článek [známé problémy](data-lake-storage-known-issues.md) .
+> Přístup k více protokolům na Data Lake Storage je všeobecně dostupný a je k dispozici ve všech oblastech. Některé služby Azure nebo funkce úložiště objektů blob, které jsou povolené přístupem přes protokol, zůstávají ve verzi Preview. Další informace najdete v tabulkách v jednotlivých částech tohoto článku. 
 
 ## <a name="how-multi-protocol-access-on-data-lake-storage-works"></a>Jak funguje přístup k více protokolům v Data Lake Storage
 
@@ -47,6 +35,55 @@ Rozhraní API objektů BLOB a rozhraní API pro Data Lake Storage Gen2 můžou p
 ![Přístup k více protokolům na Data Lake Storage koncepční](./media/data-lake-storage-interop/interop-concept.png) 
 
 Stávající nástroje a aplikace, které využívají rozhraní BLOB API, získají tyto výhody automaticky. Vývojáři je nebudou muset upravovat. Data Lake Storage Gen2 konzistentně používá adresáře a seznamy ACL na úrovni souborů bez ohledu na protokol, který nástroje a aplikace používají pro přístup k datům. 
+
+## <a name="blob-storage-feature-support"></a>Podpora funkcí úložiště objektů BLOB
+
+Přístup k více protokolům na Data Lake Storage umožňuje používat více funkcí úložiště BLOB ve vašich Data Lake Storage. Tato tabulka obsahuje seznam funkcí, které jsou povolené přístupem přes protokol s více protokoly na Data Lake Storage. 
+
+Položky, které se zobrazují v této tabulce, se v průběhu času změní, protože podpora funkcí BLOB Storage se dál rozšiřuje. 
+
+> [!NOTE]
+> I když je přístup k více protokolům na Data Lake Storage všeobecně dostupný, podpora některých z těchto funkcí zůstává ve verzi Preview. 
+
+|Funkce BLOB Storage | Úroveň podpory |
+|---|---|
+|[Studená úroveň přístupu](storage-blob-storage-tiers.md)|Všeobecně dostupné|
+|Sady SDK objektů BLOB |Všeobecně dostupné|
+|[PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |Všeobecně dostupné|
+|[Rozhraní příkazového řádku](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |Všeobecně dostupné|
+|[Diagnostické protokoly](../common/storage-analytics-logging.md)| Preview|
+|[Zásady správy životního cyklu](storage-lifecycle-management-concepts.md)| Preview|
+|[Oznámení prostřednictvím Azure Event Grid](data-lake-storage-events.md)|Preview|
+|[Archivní úroveň přístupu](storage-blob-storage-tiers.md)| Preview|
+|[blobfuse](storage-how-to-mount-container-linux.md)|Zatím nepodporováno|
+|[Neměnné úložiště](storage-blob-immutable-storage.md)|Zatím nepodporováno|
+|[Snímky](storage-blob-snapshots.md)|Zatím nepodporováno|
+|[Obnovitelné odstranění](storage-blob-soft-delete.md)|Zatím nepodporováno|
+|[Statické weby](storage-blob-static-website.md)|Zatím nepodporováno|
+
+Další informace o obecných známých problémech a omezeních Azure Data Lake Storage Gen2 najdete v tématu [známé problémy](data-lake-storage-known-issues.md).
+
+## <a name="azure-ecosystem-support"></a>Podpora ekosystému Azure
+
+Přístup s více protokoly na Data Lake Storage taky umožňuje připojit k Data Lake Storage další služby Azure. Tato tabulka uvádí služby, které jsou povolené přístupem s více protokoly na Data Lake Storage. 
+
+Stejně jako v seznamu podporovaných funkcí BLOB Storage se položky, které se zobrazují v této tabulce, mění v čase, protože se podpora služeb Azure dál rozšiřuje. 
+
+> [!NOTE]
+> I když je přístup k více protokolům na Data Lake Storage všeobecně dostupný, podpora některých z těchto služeb zůstane ve verzi Preview. 
+
+|Služba Azure | Úroveň podpory |
+|---|---|
+|[Azure Data Box](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|Všeobecně dostupné|
+|[Azure Event Hubs Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|Všeobecně dostupné|
+|[Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal)|Všeobecně dostupné|
+|[IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|Všeobecně dostupné|
+|[Logic Apps](https://azure.microsoft.com/services/logic-apps/)|Všeobecně dostupné|
+|[Azure Search](https://docs.microsoft.com/azure/search/search-blob-storage-integration)|Preview|
+
+Úplný seznam podpory Azure ekosystému pro Data Lake Storage Gen2 najdete v tématu věnovaném [integraci Azure Data Lake Storage se službami Azure](data-lake-storage-integrate-with-azure-services.md).
+
+Další informace o obecných známých problémech a omezeních Azure Data Lake Storage Gen2 najdete v tématu [známé problémy](data-lake-storage-known-issues.md).
 
 ## <a name="next-steps"></a>Další kroky
 

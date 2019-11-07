@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8a2752302e5f6c3428139a0faa30ce347fc21f2
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 71aa999809ba3d3e32d38162dfaba869d9716031
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174920"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73602707"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Vytvoření nového balíčku pro přístup ve správě nároků Azure AD
 
@@ -57,14 +57,14 @@ Tady je postup vysoké úrovně pro vytvoření nového přístupového balíčk
 
 **Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Klikněte na **Azure Active Directory** a pak na zásady **správného řízení identity**.
 
 1. V nabídce vlevo klikněte na možnost **přístup k balíčkům**.
 
 1. Klikněte na **nový balíček pro přístup**.
-
+   
     ![Správa nároků v Azure Portal](./media/entitlement-management-shared/access-packages-list.png)
 
 ## <a name="basics"></a>Základy

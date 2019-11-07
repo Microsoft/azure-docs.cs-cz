@@ -1,18 +1,18 @@
 ---
 title: Co je služba Azure Analysis Services | Dokumentace Microsoftu
-description: Získejte celkový přehled o službě Analysis Services v Azure.
+description: Přečtěte si o Azure Analysis Services plně spravovaná platforma jako služba (PaaS), která poskytuje modely dat na podnikové úrovni v cloudu.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/16/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2c7cd377929d1dd6d2e6ed8831597695ae02d21c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: eb69028a3b5ea232fbafe8286c3067a22f06d455
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146240"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572815"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 
@@ -24,7 +24,7 @@ Azure Analysis Services je plně spravovaná platforma jako služba (PaaS), kter
 
 **Video:** Podívejte se na video s [přehledem služby Azure Analysis Services](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) a zjistěte, jak služba Azure Analysis Services zapadá do celkových možností BI od Microsoftu.
 
-## <a name="get-up-and-running-quickly"></a>Řešení velmi rychle zprovozníte
+## <a name="get-up-and-running-quickly"></a>Rychlé zprovoznění
 
 Na webu Azure Portal můžete [vytvořit server](analysis-services-create-server.md) během několika minut. A pomocí PowerShellu a [šablon](../azure-resource-manager/resource-manager-create-first-template.md) Azure Resource Manageru můžete vytvářet servery s využitím deklarativní šablony. S jedinou šablonou můžete nasadit prostředky serveru společně s dalšími komponentami Azure, jako jsou účty úložiště nebo služba Azure Functions. 
 
@@ -81,7 +81,7 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 |---------|---------|:---------:|
 |Brazílie – jih     |    B1, B2, S0, S1, S2, S4, D1     |     1\. místo    |
 |Kanada – střed    |     B1, B2, S0, S1, S2, S4, D1    |     1\. místo    |
-|USA – východ     |     B1, B2, S0, S1, S2, S4, D1    |    1\. místo     |
+|Východní USA     |     B1, B2, S0, S1, S2, S4, D1    |    1\. místo     |
 |Východ USA 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
 |Východ USA 2     |     S8, S9, S8v2, S9v2   |    1\. místo    |
 |Středoseverní USA     |     B1, B2, S0, S1, S2, S4, D1     |    1\. místo     |
@@ -112,9 +112,9 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 |Austrálie – jihovýchod     | B1, B2, S0, S1, S2, S4, D1       |    1\. místo     |
 |Japonsko – východ     |   B1, B2, S0, S1, S2, S4, D1       |    1\. místo     |
 |Jihovýchodní Asie     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1\. místo      |
-|Západní Indie     |    B1, B2, S0, S1, S2, S4, D1     |    1\. místo     |
+|Indie – západ     |    B1, B2, S0, S1, S2, S4, D1     |    1\. místo     |
 
-## <a name="scale-to-your-needs"></a>Škálujte podle svých potřeb
+## <a name="scale-to-your-needs"></a>Škálování podle vašich potřeb
 
 ### <a name="scale-updown-pause-and-resume"></a>Vertikální navýšení/snížení kapacity, pozastavení a obnovení
 
@@ -134,7 +134,7 @@ Celková cena závisí na několika faktorech, například na zvolené oblasti, 
 
 ## <a name="built-on-sql-server-analysis-services"></a>Vytvořeno na základě SQL Server Analysis Services
 
-Služba Azure Analysis Services je kompatibilní s mnoha skvělými funkcemi, které už jsou ve službě SQL Server Analysis Services Enterprise Edition. Azure Analysis Services podporuje tabulkové modely na [úrovni kompatibility](analysis-services-compat-level.md) 1200 nebo vyšší. Tabulkové modely jsou relační konstrukce modelování (model, tabulky, sloupce) vyjádřené v definicích objektů tabulkových metadat v jazyce TMSL (Tabular Model Scripting Language) a kódu tabulkového objektového modelu (TOM). Všechny podporované \* jsou oddíly, perspektivy, zabezpečení na úrovni řádku, obousměrné relace a překlady. V Azure Analysis Services *se* nepodporují multidimenzionální modely a doplněk PowerPivot pro SharePoint.
+Služba Azure Analysis Services je kompatibilní s mnoha skvělými funkcemi, které už jsou ve službě SQL Server Analysis Services Enterprise Edition. Azure Analysis Services podporuje tabulkové modely na [úrovni kompatibility](analysis-services-compat-level.md) 1200 nebo vyšší. Tabulkové modely jsou relační konstrukce modelování (model, tabulky, sloupce) vyjádřené v definicích objektů tabulkových metadat v jazyce TMSL (Tabular Model Scripting Language) a kódu tabulkového objektového modelu (TOM). Všechny podporované\*jsou oddíly, perspektivy, zabezpečení na úrovni řádku, obousměrné relace a překlady. V Azure Analysis Services *se* nepodporují multidimenzionální modely a doplněk PowerPivot pro SharePoint.
 
 Podporují se tabulkové modely v režimu DirectQuery i režimu v paměti. Tabulkové modely režimu v paměti (výchozí) podporují více zdrojů dat. Vzhledem k tomu, že data modelu jsou v režimu v paměti hodně komprimovaná a uložená v mezipaměti, poskytuje tento model nejrychlejší odezvu na dotazy ve velkých objemech dat. Poskytuje také největší flexibilitu pro složité datové sady a dotazy. Vytváření oddílů umožňuje přírůstkové načítání, zvyšuje paralelizaci a snižuje využití paměti. Podporují se i další pokročilé funkce modelování dat, jako jsou počítané tabulky a všechny funkce DAX. Modely v paměti se musí aktualizovat (zpracovávat) za účelem aktualizace dat v mezipaměti ze zdrojů dat. Díky podpoře služeb Azure Service Principal, bezobslužné operace aktualizace s využitím PowerShellu, možnosti, TMSL a REST nabízí flexibilitu při zajištění aktuálnosti dat modelu v aktuálním stavu. 
 
@@ -189,7 +189,7 @@ Tabulkové modely na úrovni kompatibility 1400 podporují zabezpečení na úro
 
 Instanční objekty jsou prostředky aplikací služby Azure Active Directory, které vytvoříte v tenantovi za účelem provedení bezobslužných operací na úrovni prostředků a služeb. Instanční objekty se používají společně se službou Azure Automation, bezobslužným režimem PowerShellu, vlastními klientskými aplikacemi a webovými aplikacemi pro automatizaci běžných úloh, jako je aktualizace dat, vertikální navýšení a snížení kapacity a pozastavení a obnovení. Oprávnění se instančním objektům přiřazují prostřednictvím členství v roli. Pokud se chcete dozvědět více, podívejte se na článek o [automatizaci s využitím instančních objektů](analysis-services-service-principal.md).
 
-### <a name="azure-governance"></a>Zásady správného řízení Azure
+### <a name="azure-governance"></a>Zásady správného řízení služby Azure
 
 Služba Azure Analysis Services se řídí [podmínkami služeb Microsoft Online Services](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) a [prohlášením o zásadách ochrany osobních údajů společnosti Microsoft](https://privacy.microsoft.com/privacystatement).
 Pokud se o službě Azure Security chcete dozvědět víc, podívejte se na [Microsoft Trust Center](https://www.microsoft.com/trustcenter).

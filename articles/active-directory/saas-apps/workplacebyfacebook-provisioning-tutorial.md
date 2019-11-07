@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f040ff4c8e59f764676aa6fdd9460ec94641684a
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 7ee091d1c8f0f477354f6bb422d041278ec5668e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881795"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73574255"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracoviště na Facebooku pro Automatické zřizování uživatelů
 
@@ -34,11 +34,11 @@ Pokud chcete nakonfigurovat integraci Azure AD s pracovištěm na Facebooku, bud
 - Pracoviště s povoleným jednorázovým přihlášením na Facebooku
 
 > [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
+> K otestování kroků v tomto kurzu nedoporučujeme používat produkční prostředí.
 
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
+K otestování kroků v tomto kurzu byste měli postupovat podle těchto doporučení:
 
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Nepoužívejte své provozní prostředí, pokud není nutné.
 - Pokud nemáte zkušební prostředí Azure AD, můžete [si ho stáhnout](https://azure.microsoft.com/pricing/free-trial/)na měsíc zdarma.
 
 ## <a name="assigning-users-to-workplace-by-facebook"></a>Přiřazení uživatelů k pracovišti pomocí Facebooku
@@ -68,7 +68,7 @@ Cílem této části je pořídit, jak na Facebooku povolit zřizování uživat
 
 Azure AD podporuje možnost automaticky synchronizovat podrobnosti účtu přiřazených uživatelů na pracovišti pomocí Facebooku. Tato automatická synchronizace umožňuje pracovní ploše na Facebooku získat data, která potřebuje k autorizaci uživatelů pro přístup, předtím, než se pokusí o přihlášení poprvé. Také odzřídí uživatele z pracoviště na Facebooku, když se v Azure AD odvolá přístup.
 
-1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace** .
+1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory** > **Enterprise Apps** > **všechny aplikace** .
 
 2. Pokud jste už nakonfigurovali pracoviště na Facebooku pro jednotné přihlašování, vyhledejte vaši instanci pracoviště pomocí Facebooku pomocí vyhledávacího pole. V opačném případě vyberte v galerii aplikací možnost **Přidat** a vyhledat **pracovní plochu na Facebooku** . Vyberte možnost pracovní plocha z výsledků hledání z Facebooku a přidejte ji do seznamu aplikací.
 
@@ -76,9 +76,9 @@ Azure AD podporuje možnost automaticky synchronizovat podrobnosti účtu přiř
 
 4. Nastavte **režim zřizování** na **automaticky**. 
 
-    ![zřizování](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
+    ![Zřizování](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
-5. V části **přihlašovací údaje správce** zadejte přístupový token z pracoviště správcem Facebooku a nastavte hodnotu adresy URL tenanta na `https://www.facebook.com/scim/v1/` . Podívejte se na tyto [pokyny](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps) k vytvoření přístupového tokenu pro práci na pracovišti. 
+5. V části **přihlašovací údaje správce** zadejte přístupový token z pracoviště správcem Facebooku a nastavte hodnotu adresy URL klienta na `https://www.facebook.com/scim/v1/`. Podívejte se na tyto [pokyny](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps) k vytvoření přístupového tokenu pro práci na pracovišti. 
 
 6. V Azure Portal klikněte na **Test připojení** a ujistěte se, že se Azure AD může připojit k vašemu pracovišti pomocí aplikace Facebook. Pokud se připojení nepovede, ujistěte se, že váš pracovní prostor na Facebooku má oprávnění správce týmu.
 
@@ -88,18 +88,18 @@ Azure AD podporuje možnost automaticky synchronizovat podrobnosti účtu přiř
 
 9. V části mapování vyberte možnost **synchronizovat Azure Active Directory uživatelů na pracovišti pomocí Facebooku.**
 
-10. V části **mapování atributů** zkontrolujte atributy uživatelů, které jsou synchronizované z Azure AD, do pracoviště pomocí Facebooku. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů na pracovišti pomocí Facebooku pro operace aktualizace. Vyberte tlačítko Uložit potvrďte změny.
+10. V části **mapování atributů** zkontrolujte atributy uživatelů, které jsou synchronizované z Azure AD, do pracoviště pomocí Facebooku. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů na pracovišti pomocí Facebooku pro operace aktualizace. Kliknutím na tlačítko Uložit potvrďte změny.
 
 11. Pokud chcete povolit službu zřizování Azure AD pro pracovní plochu na Facebooku, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
 12. Klikněte na **Uložit.**
 
-Další informace o tom, jak nakonfigurovat automatické zřizování, najdete v tématu.[https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers)
+Další informace o tom, jak nakonfigurovat automatické zřizování, najdete v tématu [https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers)
 
 Nyní můžete vytvořit testovací účet. Počkejte až 20 minut, než ověříte, že je účet synchronizovaný na pracovišti pomocí Facebooku.
 
 > [!NOTE]
-> Úzce spolupracujeme s pracovištěm na Facebooku, abychom zajistili, že aplikace Azure AD je schválená a splňuje nové pokyny.   
+> Úzce spolupracujeme s pracovištěm na Facebooku, abychom zajistili, že aplikace Azure AD je schválená a splňuje nové pokyny. Pracoviště po dnech na Facebooku je 16. prosince a očekáváme, že tyto termíny vyhoví. Zákazníci v této době neočekávají žádné práce. Od 28. února 2020 budou zákazníci muset přejít na novou integraci. Tady budeme publikovat, jakmile bude k dispozici cesta pro migraci.    
 
 ## <a name="additional-resources"></a>Další zdroje
 

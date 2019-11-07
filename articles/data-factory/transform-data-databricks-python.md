@@ -1,5 +1,5 @@
 ---
-title: Transformace dat pomocí datacihlů Python – Azure | Microsoft Docs
+title: Transformace dat pomocí datacihlů Python – Azure
 description: Naučte se zpracovávat nebo transformovat data spuštěním Pythonu datacihly.
 services: data-factory
 documentationcenter: ''
@@ -12,16 +12,16 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: maghan
 manager: craigg
-ms.openlocfilehash: 02c4644c4440c3a00a21ef22674bcc0d00902ac2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 47654e8183dab120376f94df63d7664ead5dd580
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140790"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683948"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Transformujte data spuštěním aktivity Pythonu v Azure Databricks
 
-Aktivita Azure Databricks Pythonu v [kanálu Data Factory](concepts-pipelines-activities.md) spustí v clusteru Azure Databricks soubor Pythonu. Tento článek se sestavuje na článku  [aktivity transformace dat](transform-data.md), který představuje obecný přehled transformace dat a podporovaných transformačních aktivit. Azure Databricks je spravovaná platforma pro spouštění Apache Spark.
+Aktivita Azure Databricks Pythonu v [kanálu Data Factory](concepts-pipelines-activities.md) spustí v clusteru Azure Databricks soubor Pythonu. Tento článek navazuje na [aktivity transformace dat](transform-data.md) článku, který představuje obecný přehled transformace dat a podporovaných transformačních aktivit. Azure Databricks je spravovaná platforma pro spouštění Apache Spark.
 
 Jedenáctiminutové představení a ukázku této funkce najdete v tomto videu:
 
@@ -62,12 +62,12 @@ Tady je ukázková definice JSON aktivity datacihly v Pythonu:
 
 Následující tabulka obsahuje popis vlastností JSON použitých v definici JSON:
 
-|Vlastnost|Popis|Požadováno|
+|Vlastnost|Popis|Požaduje se|
 |---|---|---|
-|name|Název aktivity v kanálu.|Ano|
+|jméno|Název aktivity v kanálu.|Ano|
 |description|Text popisující, co aktivita dělá.|Ne|
 |type|Pro aktivitu Python datacihly je typ aktivity DatabricksSparkPython.|Ano|
-|linkedServiceName|Název propojené služby datacihly, na které běží aktivita Pythonu Další informace o této propojené službě najdete v článku věnovaném [propojeným službám](compute-linked-services.md) Compute.|Ano|
+|linkedServiceName|Název propojené služby datacihly, na které běží aktivita Pythonu Pokud se o této propojené službě chcete dozvědět víc, přečtěte si článek článku [služby COMPUTE](compute-linked-services.md) .|Ano|
 |pythonFile|Identifikátor URI souboru Pythonu, který má být spuštěn. Jsou podporovány pouze DBFS cesty.|Ano|
 |parameters|Parametry příkazového řádku, které budou předány souboru Python. Toto je pole řetězců.|Ne|
 |Knihovna|Seznam knihoven, které se mají nainstalovat na cluster, který spustí úlohu. Může to být pole < řetězec, objekt >|Ne|
@@ -108,7 +108,7 @@ Ve výše uvedené definici aktivity datacihly zadáte tyto typy knihoven: *jar*
 
 ```
 
-Další podrobnosti najdete v [dokumentaci](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) k datacihlám pro typy knihoven.
+Další podrobnosti najdete v [dokumentaci k datacihlám](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) pro typy knihoven.
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>Postup nahrání knihovny v datacihlách
 
@@ -116,7 +116,7 @@ Další podrobnosti najdete v [dokumentaci](https://docs.azuredatabricks.net/api
 
 Chcete-li získat cestu dBFS knihovny přidané pomocí uživatelského rozhraní, můžete použít rozhraní příkazového [řádku datacihly (instalace)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
 
-Knihovny jar jsou obvykle uloženy v dBFS:/úložiště/jar při používání uživatelského rozhraní. Můžete zobrazit seznam všech prostřednictvím rozhraní příkazového řádku: datacihly *FS LS dBFS:/úložiště/jar* 
+Knihovny jar jsou obvykle uloženy v dBFS:/úložiště/jar při používání uživatelského rozhraní. Můžete zobrazit seznam všech prostřednictvím rozhraní příkazového řádku: *datacihly FS LS dBFS:/úložiště/jar* 
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: Průvodce výkonem a škálovatelností aktivity kopírování v Azure Data Factory | Microsoft Docs
+title: Průvodce výkonem a škálovatelností aktivity kopírování v Azure Data Factory
 description: Přečtěte si o klíčových faktorech, které ovlivňují výkon přesunu dat v Azure Data Factory při použití aktivity kopírování.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: ba08bbdca059b3e14281a3c26827d07f7b196d1c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 701eaad8d36b352e946ae8d74204876b41ecb53d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72930947"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678272"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Průvodce škálovatelností a výkonem aktivity kopírování
 > [!div class="op_single_selector" title1="Vyberte verzi Azure Data Factory, kterou používáte:"]
@@ -183,7 +183,7 @@ Pro každou spuštění aktivity kopírování Azure Data Factory určuje počet
 | Kopírování dat mezi úložišti na základě souborů |Závisí na velikosti souborů a na počtu DIUs používaných ke kopírování dat mezi dvěma úložišti dat cloudu nebo na fyzické konfiguraci počítače prostředí Integration runtime v místním prostředí. |
 | Kopírování z relačního úložiště dat s povolenou možností oddílu (včetně [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [tabulky SAP](connector-sap-table.md#sap-table-as-source)a [otevřeného centra SAP](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source))|4 |
 | Kopírování dat z libovolného zdrojového úložiště do Azure Table Storage |4 |
-| Všechny ostatní scénáře kopírování |1\. místo |
+| Všechny ostatní scénáře kopírování |1 |
 
 > [!TIP]
 > Když kopírujete data mezi úložišti na základě souborů, výchozí chování obvykle poskytuje nejlepší propustnost. Výchozí chování je automaticky určováno na základě vzoru zdrojového souboru.
@@ -223,7 +223,7 @@ Pro řízení zatížení počítačů, které hostují vaše úložiště dat n
 
 Když kopírujete data ze zdrojového úložiště dat do úložiště dat jímky, můžete použít úložiště objektů BLOB jako dočasné pracovní úložiště. Příprava je užitečná hlavně v následujících případech:
 
-- **Chcete ingestovat data z různých úložišť dat do SQL Data Warehouse prostřednictvím základny.** SQL Data Warehouse používá základ jako mechanismus vysoké propustnosti k načtení velkého množství dat do SQL Data Warehouse. Zdrojová data musí být ve službě BLOB Storage nebo Azure Data Lake Store a musí splňovat další kritéria. Při načítání dat z jiného úložiště dat než do úložiště objektů BLOB nebo z Azure Data Lake Store můžete aktivovat kopírování dat přes dočasné pracovní úložiště objektů BLOB. V takovém případě Azure Data Factory provádí požadované transformace dat, aby se zajistilo, že splňuje požadavky základny. Pak používá základnu k načtení dat do SQL Data Warehouse efektivně. Další informace najdete v tématu [použití základny k načtení dat do Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse).
+- **Chcete ingestovat data z různých úložišť dat do SQL Data Warehouse prostřednictvím základny.** SQL Data Warehouse používá základ jako mechanismus vysoké propustnosti k načtení velkého množství dat do SQL Data Warehouse. Zdrojová data musí být ve službě BLOB Storage nebo Azure Data Lake Store a musí splňovat další kritéria. Při načítání dat z jiného úložiště dat než do úložiště objektů BLOB nebo z Azure Data Lake Store můžete aktivovat kopírování dat přes dočasné pracovní úložiště objektů BLOB. V takovém případě Azure Data Factory provádí požadované transformace dat, aby se zajistilo, že splňuje požadavky základny. Pak používá základnu k načtení dat do SQL Data Warehouse efektivně. Další informace najdete v tématu [Načítání dat do služby Azure SQL Data Warehouse pomocí PolyBase](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse).
 - **V některých případech trvá i v průběhu provádění hybridního přesunu dat (tedy kopírování z místního úložiště dat do cloudového úložiště dat) prostřednictvím pomalého síťového připojení.** Za účelem zvýšení výkonu můžete pomocí připravené kopie komprimovat data v místním prostředí, aby při přesunu dat do pracovního úložiště dat v cloudu trvalo méně času. Pak můžete data v pracovním úložišti dekomprimovat ještě předtím, než se načtou do cílového úložiště dat.
 - **Nechcete v bráně firewall otevírat jiné porty než port 80 a port 443 kvůli podnikovým zásadám IT.** Pokud například kopírujete data z místního úložiště dat do jímky Azure SQL Database nebo jímky Azure SQL Data Warehouse, je třeba aktivovat odchozí komunikaci TCP na portu 1433 pro bránu Windows Firewall i firemní bránu firewall. V tomto scénáři může připravené kopírování využít výhod místního prostředí Integration runtime k prvnímu kopírování dat do pracovní instance úložiště objektů BLOB přes protokol HTTP nebo HTTPS na portu 443. Pak může data načíst do SQL Database nebo SQL Data Warehouse z přípravy úložiště objektů BLOB. V tomto toku nemusíte povolit port 1433.
 
@@ -244,8 +244,8 @@ Nakonfigurujte nastavení **enableStaging** v aktivitě kopírování, abyste ur
 | Vlastnost | Popis | Výchozí hodnota | Požaduje se |
 | --- | --- | --- | --- |
 | enableStaging |Určete, zda chcete kopírovat data prostřednictvím dočasného přípravného úložiště. |False |Ne |
-| linkedServiceName |Zadejte název propojené služby [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) , která odkazuje na instanci úložiště, kterou používáte jako dočasné pracovní úložiště. <br/><br/> Úložiště se sdíleným přístupovým podpisem nelze použít k načtení dat do SQL Data Warehouse prostřednictvím základny. Můžete ho použít ve všech ostatních scénářích. |Nevztahuje se |Ano, pokud je **enableStaging** nastavené na true |
-| dílčí |Zadejte cestu k úložišti objektů blob, kterou chcete, aby obsahovala zpracovaná data. Pokud cestu nezadáte, služba vytvoří kontejner, do kterého budou ukládat dočasná data. <br/><br/> Zadejte cestu pouze v případě, že používáte úložiště se sdíleným přístupovým podpisem, nebo pokud chcete, aby byla dočasná data v určitém umístění. |Nevztahuje se |Ne |
+| linkedServiceName |Zadejte název propojené služby [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) , která odkazuje na instanci úložiště, kterou používáte jako dočasné pracovní úložiště. <br/><br/> Úložiště se sdíleným přístupovým podpisem nelze použít k načtení dat do SQL Data Warehouse prostřednictvím základny. Můžete ho použít ve všech ostatních scénářích. |Není dostupné. |Ano, pokud je **enableStaging** nastavené na true |
+| dílčí |Zadejte cestu k úložišti objektů blob, kterou chcete, aby obsahovala zpracovaná data. Pokud cestu nezadáte, služba vytvoří kontejner, do kterého budou ukládat dočasná data. <br/><br/> Zadejte cestu pouze v případě, že používáte úložiště se sdíleným přístupovým podpisem, nebo pokud chcete, aby byla dočasná data v určitém umístění. |Není dostupné. |Ne |
 | Hodnotou EnableCompression |Určuje, zda mají být data před kopírováním do cíle komprimována. Toto nastavení snižuje objem přenášených dat. |False |Ne |
 
 >[!NOTE]

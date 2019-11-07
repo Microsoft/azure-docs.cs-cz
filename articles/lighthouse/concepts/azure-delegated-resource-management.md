@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.date: 07/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 8cc75fde348d070a19d1987d1403c63e8e6d2278
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: c2aa393f04a8db470dd8b739c0ed003477df0221
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286634"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615413"
 ---
 # <a name="azure-delegated-resource-management"></a>Správa delegovaných prostředků Azure
 
@@ -23,7 +23,7 @@ Správa delegovaných prostředků Azure je jednou z klíčových součástí Az
 Správa delegovaných prostředků v Azure umožňuje logickou projekci prostředků z jednoho tenanta do jiného tenanta. To umožňuje autorizovaným uživatelům v jednom Azure Active Directory (Azure AD) provádět operace správy v různých klientech Azure AD, které patří svým zákazníkům. Poskytovatelé služeb se můžou přihlásit ke svému vlastnímu tenantovi Azure AD a mít autorizaci pro práci v delegovaných zákaznických předplatných a skupinách prostředků. To jim umožní provádět operace správy jménem svých zákazníků, aniž by se museli přihlašovat ke každému klientovi v jednotlivých zákaznících.
 
 > [!NOTE]
-> Správu delegovaných prostředků Azure je možné použít i v rámci podniku, který má více tenantů Azure AD vlastní pro zjednodušení správy mezi klienty.
+> Správu delegovaných prostředků Azure je možné použít i [v rámci podniku, který má více tenantů Azure AD vlastní](enterprise.md) pro zjednodušení správy mezi klienty.
 
 Se správou delegovaných prostředků Azure můžou autorizovaní uživatelé pracovat přímo v kontextu zákaznického předplatného, aniž by museli mít účet v tenantovi daného zákazníka nebo je spoluvlastníkem tenanta zákazníka. Můžou si taky [Zobrazit a spravovat všechna delegovaná předplatná zákazníka na stránce noví **moji zákazníci** ](../how-to/view-manage-customers.md) v Azure Portal.
 

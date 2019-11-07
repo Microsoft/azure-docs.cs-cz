@@ -1,21 +1,21 @@
 ---
-title: Microsoft Azure Data Box Disk – přehled | Microsoft Docs
-description: Tento článek popisuje službu Azure Data Box Disk, což je cloudové řešení, které umožňuje přenášet velké objemy dat do Azure.
+title: Funkce zabezpečení Microsoft Azure Data Box Disk | Microsoft Docs v datech
+description: Popisuje funkce zabezpečení implementované pro Azure Data Box Disk cloudové řešení, které umožňuje přenášet velké objemy dat do Azure.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: overview
-ms.date: 01/09/2019
+ms.topic: conceptual
+ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: afb344418f843e54c3172c17d28bde7055e101b4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5db65ab6f1c96ff816252ecaba2170adf358001c
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60327915"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606561"
 ---
-# <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk zabezpečení a ochranu dat.
+# <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk zabezpečení a ochrana dat
 
 Tento článek popisuje bezpečnostní funkce Azure Data Box Disku, které pomáhají chránit všechny komponenty řešení Data Box i uložená data. 
 
@@ -90,7 +90,7 @@ Azure Data Box Disk shromažďuje a zobrazuje osobní údaje v následujících 
 Další informace najdete v Zásadách ochrany osobních údajů společnosti Microsoft v [Centru zabezpečení](https://www.microsoft.com/trustcenter).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Projděte si [požadavky služby Data Box Disk](data-box-disk-system-requirements.md).
 - Seznamte se s [omezeními služby Data Box Disk](data-box-disk-limits.md).

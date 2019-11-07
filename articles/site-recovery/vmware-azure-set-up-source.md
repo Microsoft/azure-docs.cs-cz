@@ -1,5 +1,5 @@
 ---
-title: Nastavte zdrojové prostředí pro replikaci z VMware do Azure pomocí Azure Site Recovery | Microsoft Docs
+title: Nastavení zdrojů pro zotavení po havárii VMware do Azure pomocí Azure Site Recovery
 description: Tento článek popisuje, jak nastavit místní prostředí pro replikaci virtuálních počítačů VMware do Azure pomocí Azure Site Recovery.
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -8,18 +8,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: bf1ff4dfba105b6c90ab949217453e1db82d109d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ff01aed92669acb193ff149ea9298550134f42a3
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791777"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622214"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>Nastavení zdrojového prostředí pro replikaci z VMware do Azure
 
 Tento článek popisuje, jak nastavit zdrojové místní prostředí pro replikaci virtuálních počítačů VMware do Azure. Tento článek obsahuje kroky pro výběr scénáře replikace, nastavení místního počítače jako konfiguračního serveru Site Recovery a automatické zjišťování místních virtuálních počítačů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Článek předpokládá, že jste již:
 

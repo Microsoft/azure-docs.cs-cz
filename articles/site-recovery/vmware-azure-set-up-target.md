@@ -1,5 +1,5 @@
 ---
-title: Připravit cílové prostředí pro replikaci VMware do Azure | Dokumentace Microsoftu
+title: Příprava cíle replikace virtuálních počítačů VMware v Azure Site Recovery
 description: Tento článek popisuje, jak připravit cílové prostředí Azure pro replikaci virtuálních počítačů VMware do Azure.
 services: site-recovery
 author: mayurigupta13
@@ -8,37 +8,37 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/03/2019
 ms.author: mayg
-ms.openlocfilehash: e75d4b1701944e206fcf6ded2dcb6d1e1fbc77cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c721234f2e1d806d51d31f3466e441bf8360f6b8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723779"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693167"
 ---
-# <a name="prepare-the-target-environment-for-disaster-recovery-of-vmware-vms-or-physical-servers-to-azure"></a>Připravit cílové prostředí pro zotavení po havárii virtuálních počítačů VMware nebo fyzických serverů do Azure
+# <a name="prepare-the-target-environment-for-disaster-recovery-of-vmware-vms-or-physical-servers-to-azure"></a>Příprava cílového prostředí na zotavení po havárii virtuálních počítačů VMware nebo fyzických serverů do Azure
 
-Tento článek popisuje, jak připravit cílové prostředí Azure ke spuštění replikace virtuálních počítačů VMware nebo fyzických serverů do Azure.
+Tento článek popisuje, jak připravit cílové prostředí Azure na zahájení replikace virtuálních počítačů VMware nebo fyzických serverů do Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek předpokládá:
-- Vytvoříte trezor služby Recovery Services na [webu Azure portal](https://portal.azure.com "webu Azure portal") chránit zdrojové počítače
-- Máte nastavený v místním prostředí replikace zdroje [virtuálních počítačů VMware](vmware-azure-set-up-source.md) nebo [fyzických serverů](physical-azure-set-up-source.md) do Azure.
+Článek předpokládá:
+- Vytvořili jste trezor Recovery Services v [Azure Portal](https://portal.azure.com "portál Azure") k ochraně vašich zdrojových počítačů
+- Nastavili jste místní prostředí pro replikaci zdrojových [virtuálních počítačů VMware](vmware-azure-set-up-source.md) nebo [fyzických serverů](physical-azure-set-up-source.md) do Azure.
 
 ## <a name="prepare-target"></a>Připravit cíl
 
-Po dokončení **krok 1: Vyberte cíl ochrany** a **krok 2: Příprava zdrojového**, budete přesměrováni na **krok 3: Cíl**
+Po dokončení **kroku 1: Vyberte cíl ochrany** a **Krok 2: připravit zdroj**. provedete to **krokem 3: Target**
 
 ![Připravit cíl](./media/vmware-azure-set-up-target/prepare-target-vmware-to-azure.png)
 
-1. **Předplatné:** Z rozevírací nabídky vyberte předplatné, které chcete replikovat virtuální počítače nebo fyzické servery do.
-2. **Model nasazení:** Vyberte model nasazení (Classic nebo Resource Manager)
+1. **Předplatné:** V rozevírací nabídce vyberte předplatné, do kterého chcete replikovat virtuální počítače nebo fyzické servery.
+2. **Model nasazení:** Vyberte model nasazení (Classic nebo Správce prostředků).
 
-Na základě zvolené nasazení modelu, k zajištění, že máte alespoň jedné virtuální sítě v cílovém předplatném replikace a převzetí služeb při selhání virtuálního počítače nebo fyzického serveru do spuštění ověřování.
+Na základě zvoleného modelu nasazení se spustí ověřování, aby se zajistilo, že máte v cílovém předplatném alespoň jednu virtuální síť pro replikaci a převzetí služeb při selhání virtuálního počítače nebo fyzického serveru na.
 
-Po ověření úspěšně dokončit, klikněte na tlačítko OK přejdete k dalšímu kroku.
+Po úspěšném ověření se kliknutím na tlačítko OK přejděte k dalšímu kroku.
 
-Pokud nemáte virtuální síť, můžete vytvořit kliknutím **+ síť** tlačítko v horní části stránky.
+Pokud nemáte virtuální síť, můžete ji vytvořit kliknutím na tlačítko **+ síť** v horní části stránky.
 
-## <a name="next-steps"></a>Další postup
-[Konfigurace nastavení replikace](vmware-azure-set-up-replication.md).
+## <a name="next-steps"></a>Další kroky
+[Nakonfigurujte nastavení replikace](vmware-azure-set-up-replication.md).

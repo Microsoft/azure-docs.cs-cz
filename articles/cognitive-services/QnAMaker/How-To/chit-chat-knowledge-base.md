@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 11/04/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 15253e67283d1ad53bb1d4c018987dceaafac6c8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 418324ea0d50cb2f8ff4a30018a31e7807d52eac
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486750"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73602583"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Přidání funkce CHITEST – chat do znalostní báze
 
@@ -29,7 +29,7 @@ Níže jsou uvedeny některé příklady různých osobních druhů. Můžete zo
 U uživatelských dotazů na `When is your birthday?`má každá osobnost ve stylu odpověď:
 
 <!-- added quotes so acrolinx doesn't score these sentences -->
-|Osobní|Příklad:|
+|Osobní|Příklad|
 |--|--|
 |Professional|Stáří neplatí pro mě.|
 |Vhodná|Nejedná se opravdu o stáří.|
@@ -45,15 +45,15 @@ CHITEST – datové sady chatu jsou podporovány v následujících jazycích:
 
 |Jazyk|
 |--|
-|Čínština, `zh-cn`|
-|Angličtina, `en-us`|
-|Francouzština, `fr-fr`|
-|Německo, `de-de`|
-|Italština, `it-it`|
-|Japonština, `ja-jp`|
-|Korejština, `ko-kr`|
-|Portugalština, `pr-br`|
-|Španělština, `es-es`|
+|Čínština|
+|Angličtina|
+|Francouzština|
+|Německo|
+|italština|
+|Japonština|
+|Korejština|
+|Portugalština|
+|Španělština|
 
 
 ## <a name="add-chit-chat-during-kb-creation"></a>Přidání funkce CHITEST-chat během vytváření KB
@@ -86,6 +86,6 @@ Vyberte své znalostní báze a přejděte na stránku **Nastavení** . Konkrét
 > [!div class="nextstepaction"]
 > [Import znalostní báze](../Tutorials/migrate-knowledge-base.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech 
+## <a name="see-also"></a>Viz také 
 
 [Přehled služby QnA Maker](../Overview/overview.md)

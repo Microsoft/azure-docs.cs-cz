@@ -1,6 +1,6 @@
 ---
 title: Analýza změn zákazníků
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Případová studie vývoje integrovaného modelu pro analýzu a vyhodnocování změn zákazníků pomocí Azure Machine Learning Studio (Classic).
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 168ab29b3d7397505543c169add03fb0d768f54b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 063b745bbf1c5e8453e0f6abe3cefdc76a60b5f9
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493371"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619741"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>Analýza změn zákazníků pomocí Azure Machine Learning Studio (Classic)
 ## <a name="overview"></a>Přehled
@@ -178,7 +178,7 @@ Následující tabulka shrnuje výkon algoritmů:
 
 *Tabulka 1. Obecný výkon (přesnost) algoritmů*
 
-| LR | BT | ASIE A TICHOMOŘÍ | SVM |
+| LR | BT | AP | SVM |
 | --- | --- | --- | --- |
 | Průměrný model |Nejlepší model |Neprovádí se |Průměrný model |
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
 ms.date: 06/28/2019
-ms.openlocfilehash: a45548d3698d28a0189be4f46c26e418da8c91ef
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 272dbbbc335574456feebfb85e4c5eafd544f8d6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489631"
+ms.locfileid: "73574297"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Vizualizace běhů experimentů a metrik pomocí TensorBoard a Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,13 +28,16 @@ Způsob spuštění TensorBoard s Azure Machine Learning experimenty závisí na
 
 + V případě experimentů, které nemají nativně výstupní TensorBoardelné soubory, jako např. například Scikit-učí nebo Azure Machine Learning experimenty, exportujte historie spuštění jako protokoly TensorBoard a spusťte TensorBoard z [`export_to_tensorboard()` tohoto](#export) souboru. 
 
-## <a name="prerequisites"></a>Předpoklady
+> [!TIP]
+> Informace v tomto dokumentu jsou primárně určené pro odborníky přes data a vývojáře, kteří chtějí monitorovat proces školení modelu. Pokud jste správcem a chcete monitorovat využití prostředků a události z Azure Machine Learningu, jako jsou kvóty, dokončené školicí běhy nebo dokončená nasazení modelu, přečtěte si téma [monitorování Azure Machine Learning](monitor-azure-machine-learning.md).
+
+## <a name="prerequisites"></a>Požadavky
 
 * Chcete-li spustit TensorBoard a zobrazit historie spuštění experimentů, vaše experimenty musí mít dříve povolené protokolování, aby bylo možné sledovat jeho metriky a výkon.  
 
-* Kód v tomto postupu lze spustit v jednom z následujících prostředí: 
+* Kód v tomto dokumentu může běžet v jednom z následujících prostředí: 
 
-    * Azure Machine Learning výpočetní instance – nepotřebujete žádné soubory ke stažení nebo instalaci
+    * Virtuální počítač s poznámkovým blokem Azure Machine Learning – nemusíte stahovat nebo instalovat
 
         * Dokončete [kurz: instalační prostředí a pracovní prostor](tutorial-1st-experiment-sdk-setup.md) pro vytvoření vyhrazeného serveru poznámkového bloku předem načteného se sadou SDK a s ukázkovým úložištěm.
 
@@ -216,7 +219,7 @@ data = {
 
 ### <a name="run-experiment-and-log-metrics"></a>Spouštění metrik experimentů a protokolů
 
-Pro tento kód se naučíme model lineární regrese a metriky klíčů protokolu, koeficient alfa, `alpha` a střední hodnota chyby, `mse`v historii spuštění.
+Pro tento kód se používá lineární regresní model a metriky klíčů protokolu, koeficient alfa, `alpha`a střední hodnota chyby, `mse`v historii spuštění.
 
 ```Python
 from tqdm import tqdm

@@ -4,14 +4,15 @@ description: Architektura šablony správy inteligentního inventáře IoT pro I
 author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
+ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 9176b0e182e59470b84ef9b1c9d4a2e16a27e2b4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d0bf023be9c34f449c40ff74ba9e68ea5e197e2e
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957472"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615368"
 ---
 # <a name="architecture-of-iot-central-smart-inventory-management-application-template"></a>Architektura šablony aplikace IoT Central správy inteligentního inventáře
 

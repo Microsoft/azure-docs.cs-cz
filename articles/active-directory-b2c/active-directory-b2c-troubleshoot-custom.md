@@ -1,74 +1,75 @@
 ---
-title: Application Insights a řešení potíží se zásadami vlastní v Azure Active Directory B2C | Dokumentace Microsoftu
-description: jak k nastavení Application Insights pro sledování spuštění vlastních zásad.
+title: Řešení potíží s vlastními zásadami pomocí Application Insights-Azure Active Directory B2C
+description: Jak nastavit Application Insights pro trasování provádění vašich vlastních zásad.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/04/2017
+ms.date: 11/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: df5d710792d8c47e491f5b06d88f4050e8eb4a01
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8bf26791ca6489c12e4f9538d56ae0f0f66cc8c
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508071"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73602021"
 ---
-# <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C: Shromažďování protokolů
+# <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Shromažďovat protokoly Azure Active Directory B2C pomocí Application Insights
 
-Tento článek popisuje kroky pro shromažďování protokolů z Azure AD B2C, takže můžete diagnostikovat problémy s vlastními zásadami.
+Tento článek popisuje kroky pro shromažďování protokolů z Active Directory B2C (Azure AD B2C), abyste mohli diagnostikovat problémy s vlastními zásadami. Application Insights poskytuje způsob, jak diagnostikovat výjimky a vizualizovat problémy s výkonem aplikací. Azure AD B2C obsahuje funkci pro posílání dat Application Insights.
 
->[!NOTE]
->V současné době jsou navrženy protokoly podrobné aktivit je zde popsáno, **pouze** na podporu při vývoji vlastních zásad. Nepoužívejte režimu pro vývoj v produkčním prostředí.  Protokoly shromažďovat všechny deklarace identity posílané do a z zprostředkovatelé identity během vývoje.  Je-li použít v produkčním prostředí, vývojář zodpovědnost za identifikovatelné osobní údaje (soukromě údaje) shromážděné v protokolu App Insights, které vlastní.  Tyto podrobné protokoly jsou shromážděna, pouze když zásady se přikládá **VÝVOJOVÝ režim**.
+Podrobné protokoly aktivit popsané tady by měly být povolené **jenom** během vývoje vlastních zásad.
 
+> [!WARNING]
+> Nepovolujte režim vývoje v produkčním prostředí. Protokoly shromažďují všechny deklarace identity odeslané do a od zprostředkovatelů identity. Jako vývojář se předpokládá zodpovědnost za jakékoli osobní údaje shromážděné v protokolech Application Insights. Tyto podrobné protokoly se shromažďují jenom v případě, že zásady jsou umístěné v **režimu pro vývojáře**.
 
-## <a name="use-application-insights"></a>Pomocí služby Application Insights
+## <a name="set-up-application-insights"></a>Nastavit Application Insights
 
-Azure AD B2C podporuje funkce pro odesílání dat do služby Application Insights.  Application Insights umožňuje diagnostikovat výjimky a vizualizovat problémy s výkonem aplikací.
+Pokud ho ještě nemáte, vytvořte v předplatném instanci Application Insights.
 
-### <a name="setup-application-insights"></a>Nastavení Application Insights
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vaše předplatné Azure (ne váš Azure AD B2C adresář).
+1. V navigační nabídce vlevo vyberte **vytvořit prostředek** .
+1. Vyhledejte a vyberte **Application Insights**a pak vyberte **vytvořit**.
+1. Vyplňte formulář, vyberte **zkontrolovat + vytvořit**a pak vyberte **vytvořit**.
+1. Po dokončení nasazení vyberte **Přejít k prostředku**.
+1. V nabídce **Konfigurovat** v Application Insights vyberte **vlastnosti**.
+1. Poznamenejte si **klíč instrumentace** pro použití v pozdějším kroku.
 
-1. Přejděte na [Azure Portal](https://portal.azure.com). Ujistěte se, že máte v tenantovi vašeho předplatného Azure (ne vašeho tenanta Azure AD B2C).
-1. Klikněte na tlačítko **+ nová** v navigační nabídce vlevo.
-1. Vyhledejte a vyberte **Application Insights**, pak klikněte na tlačítko **vytvořit**.
-1. Vyplňte formulář a klikněte na tlačítko **vytvořit**. Vyberte **Obecné** pro **typ aplikace**.
-1. Po vytvoření prostředku, otevřete prostředek Application Insights.
-1. Najít **vlastnosti** v levé nabídce a klepněte na něj.
-1. Kopírovat **Instrumentační klíč** a uložte jej pro další části.
+## <a name="configure-the-custom-policy"></a>Konfigurace vlastních zásad
 
-### <a name="set-up-the-custom-policy"></a>Nastavení vlastních zásad
-
-1. Otevřete soubor RP (například SignUpOrSignin.xml).
-1. Přidání následujících atributů pro `<TrustFrameworkPolicy>` element:
+1. Otevřete soubor předávající strany (RP), například *SignUpOrSignin. XML*.
+1. Do prvku `<TrustFrameworkPolicy>` přidejte následující atributy:
 
    ```XML
    DeploymentMode="Development"
    UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
    ```
 
-1. Pokud již neexistuje, přidejte podřízený uzel `<UserJourneyBehaviors>` k `<RelyingParty>` uzlu. Musí být umístěné bezprostředně po `<DefaultUserJourney ReferenceId="UserJourney Id from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />`
-2. Přidejte následující uzel jako podřízený objekt `<UserJourneyBehaviors>` elementu. Nezapomeňte nahradit `{Your Application Insights Key}` s **Instrumentační klíč** , který jste získali z Application Insights v předchozí části.
+1. Pokud ještě neexistuje, přidejte `<UserJourneyBehaviors>` podřízený uzel do uzlu `<RelyingParty>`. Musí se nacházet hned po `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />`.
+1. Přidejte následující uzel jako podřízený prvek `<UserJourneyBehaviors>`. Nezapomeňte nahradit `{Your Application Insights Key}` **klíč instrumentace** Application Insights, který jste si poznamenali dříve.
 
-   ```XML
-   <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
-   ```
+    ```XML
+    <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
+    ```
 
-   * `DeveloperMode="true"` říká ApplicationInsights ohledně urychlení jejich zpracování telemetrická data prostřednictvím kanálu zpracování kvalitní pro vývoj, ale omezené na velké objemy.
-   * `ClientEnabled="true"` odešle skript na straně klienta ApplicationInsights pro sledování chyb zobrazení a na straně klienta stránky (nejsou potřeba).
-   * `ServerEnabled="true"` odešle existující UserJourneyRecorder JSON jako vlastní událost do Application Insights.
-   Ukázka:
+    * `DeveloperMode="true"` informuje ApplicationInsights o urychlení telemetrie prostřednictvím kanálu zpracování. Vhodné pro vývoj, ale omezení na vysoké objemy.
+    * `ClientEnabled="true"` odesílá ApplicationInsights skript na straně klienta pro sledování zobrazení stránky a chyby na straně klienta. Můžete je zobrazit v tabulce **browserTimings** na portálu Application Insights. Nastavením `ClientEnabled= "true"`přidáte do skriptu stránky Application Insights a obdržíte časování načtení stránky a volání AJAX, počty, podrobnosti výjimek prohlížeče a selhání AJAX a počty uživatelů a relací. Toto pole je **volitelné**a ve výchozím nastavení je nastavené na `false`.
+    * `ServerEnabled="true"` odešle existující JSON UserJourneyRecorder jako vlastní událost pro Application Insights.
 
-   ```XML
-   <TrustFrameworkPolicy
-    ...
-    TenantId="fabrikamb2c.onmicrosoft.com"
-    PolicyId="SignUpOrSignInWithAAD"
-    DeploymentMode="Development"
-    UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
-   >
+    Příklad:
+
+    ```XML
+    <TrustFrameworkPolicy
+      ...
+      TenantId="fabrikamb2c.onmicrosoft.com"
+      PolicyId="SignUpOrSignInWithAAD"
+      DeploymentMode="Development"
+      UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
+    >
     ...
     <RelyingParty>
       <DefaultUserJourney ReferenceId="UserJourney ID from your extensions policy, or equivalent (for example: SignUpOrSigninWithAzureAD)" />
@@ -76,42 +77,36 @@ Azure AD B2C podporuje funkce pro odesílání dat do služby Application Insigh
         <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
       </UserJourneyBehaviors>
       ...
-   </TrustFrameworkPolicy>
-   ```
+    </TrustFrameworkPolicy>
+    ```
 
-3. Nahrajte zásady.
+1. Nahrajte zásadu.
 
-### <a name="see-the-logs-in-application-insights"></a>Zobrazit protokoly ve službě Application Insights
+## <a name="see-the-logs-in-application-insights"></a>Podívejte se na protokoly v Application Insights
 
->[!NOTE]
-> Zde je krátké zpoždění (méně než pět minut), než uvidíte nové protokoly ve službě Application Insights.
+Předtím, než budete moci zobrazit nové protokoly v Application Insights, existuje krátké zpoždění, obvykle méně než pět minut.
 
-1. Otevřete prostředek Application Insights, které jste vytvořili [webu Azure portal](https://portal.azure.com).
-1. V **přehled** nabídky, klikněte na **Analytics**.
-1. Otevření nové záložky ve službě Application Insights.
-1. Tady je seznam dotazů, můžete si zobrazit protokoly
+1. Otevřete prostředek Application Insights, který jste vytvořili v [Azure Portal](https://portal.azure.com).
+1. V nabídce **Přehled** vyberte **Analytics**.
+1. Otevřete novou kartu v Application Insights.
+
+Tady je seznam dotazů, které můžete použít k zobrazení protokolů:
 
 | Dotaz | Popis |
 |---------------------|--------------------|
-trasování | Zobrazit všechny protokoly vytvořené službou Azure AD B2C |
-trasování \| kde časové razítko > ago(1d) | Zobrazit všechny protokoly vytvořené službou Azure AD B2C pro poslední den
+`traces` | Zobrazit všechny protokoly vygenerované Azure AD B2C |
+`traces | where timestamp > ago(1d)` | Zobrazit všechny protokoly vygenerované Azure AD B2C za poslední den
 
-Položky mohou být dlouhé.  Export do souboru CSV pro podívat podrobněji.
+Položky mohou být dlouhé. Pro lepší vzhled exportujte do sdíleného svazku clusteru.
 
-Další informace o nástroji pro analýzu [tady](https://docs.microsoft.com/azure/application-insights/app-insights-analytics).
-
->[!NOTE]
->Společenství vyvinula prohlížeč cesty uživatele, což vývojářům umožňuje identity.  Není podporovaný společností Microsoft a k dispozici výhradně jako-je.  Načte z vaší instance služby Application Insights a poskytuje cestu události strukturované zobrazení uživatele.  Získat zdrojový kód a nasaďte ji ve své vlastní řešení.
-
-Verze prohlížeče, který načítá události z Application Insights je umístěná [zde](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/wingtipgamesb2c/src/WingTipUserJourneyPlayerWebApplication)
-
->[!NOTE]
->V současné době jsou navrženy protokoly podrobné aktivit je zde popsáno, **pouze** na podporu při vývoji vlastních zásad. Nepoužívejte režimu pro vývoj v produkčním prostředí.  Protokoly shromažďovat všechny deklarace identity posílané do a z zprostředkovatelé identity během vývoje.  Je-li použít v produkčním prostředí, vývojář zodpovědnost za identifikovatelné osobní údaje (soukromě údaje) shromážděné v protokolu App Insights, které vlastní.  Tyto podrobné protokoly jsou shromážděna, pouze když zásady se přikládá **VÝVOJOVÝ režim**.
-
-[Úložiště GitHub pro nepodporované vlastní zásady ukázky a související nástroje](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies)
-
-
+Další informace o dotazování najdete v tématu [Přehled dotazů protokolu v Azure monitor](../azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Zkoumání dat ve službě Application Insights vám pomohou pochopit, jak vyskytne architekturu rozhraní identit funguje základní B2C k zajištění svou vlastní identitu.
+Komunita vyvinula uživatele prohlížeče cest, aby usnadnila vývojářům identity. Čte z vaší instance Application Insights a poskytuje dobře strukturovaný pohled na události cest uživatelů. Získáte zdrojový kód a nasadíte ho ve svém vlastním řešení.
+
+Microsoft nepodporuje přehrávač pro cestu uživatelů a je k dispozici výhradně tak, jak je.
+
+Verzi prohlížeče, která čte události z Application Insights na GitHubu, najdete tady:
+
+[Azure-Samples/Active-Directory-B2C-Advanced-policies](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/wingtipgamesb2c/src/WingTipUserJourneyPlayerWebApplication)

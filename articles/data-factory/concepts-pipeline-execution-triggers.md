@@ -1,5 +1,5 @@
 ---
-title: Spouštění kanálů a aktivační události v Azure Data Factory | Dokumentace Microsoftu
+title: Spouštění kanálů a aktivační události v Azure Data Factory
 description: Tento článek obsahuje informace o tom, jak spustit kanál v Azure Data Factory, a to buď na vyžádání, nebo pomocí aktivační události.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: adc7b65b4e079c55b9400b06603625971efc3ea3
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 20a5a9c5513c165cd5add2e97f019a741dfd0b03
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177672"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681475"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Spouštění kanálů a aktivační události v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -79,10 +79,10 @@ V definici JSON přijímá kanál dva parametry: **sourceBlobContainer** a **sin
 Kanál můžete ručně spustit některým z následujících způsobů:
 - .NET SDK
 - Modul Azure PowerShellu
-- Rozhraní REST API
+- REST API
 - Python SDK
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 Následující ukázkový příkaz ukazuje ruční spuštění kanálu pomocí rozhraní REST API:
 
 ```
@@ -276,13 +276,13 @@ Následující tabulka obsahuje přehled hlavních elementů schématu souvisej�
 
 ### <a name="schema-defaults-limits-and-examples"></a>Výchozí hodnoty, omezení a příklady schématu
 
-| Vlastnost JSON | Typ | Požaduje se | Výchozí hodnota | Platné hodnoty | Příklad: |
+| Vlastnost JSON | Typ | Požaduje se | Výchozí hodnota | Platné hodnoty | Příklad |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | string | Ano | Žádné | Data a časy podle normy ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | object | Ano | Žádné | Objekt opakování | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | číslo | Ne | 1\. místo | 1 až 1 000 | `"interval":10` |
-| **endTime** | string | Ano | Žádné | Hodnota data a času představující čas v budoucnosti | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **schedule** | object | Ne | Žádné | Objekt plánu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **startTime** | řetězec | Ano | Žádný | Data a časy podle normy ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **recurrence** | objekt | Ano | Žádný | Objekt opakování | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **interval** | číslo | Ne | 1 | 1 až 1 000 | `"interval":10` |
+| **endTime** | řetězec | Ano | Žádný | Hodnota data a času představující čas v budoucnosti | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **schedule** | objekt | Ne | Žádný | Objekt plánu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>Vlastnost startTime
 Následující tabulka ukazuje, jakým způsobem vlastnost **startTime** ovládá spouštění aktivační události:
@@ -333,7 +333,7 @@ Tato část obsahuje příklady plánů opakování. Zaměřuje se na objekt **s
 
 V příkladech se předpokládá, že vlastnost **interval** má hodnotu 1 a vlastnost **frequency** má správnou hodnotu s ohledem na definici plánu. Například není možné, aby vlastnost **frequency** měla hodnotu „day“ a zároveň objekt **schedule** obsahoval úpravu atributu **monthDays**. Tyto typy omezení jsou popsané v tabulce v předchozí části.
 
-| Příklad: | Popis |
+| Příklad | Popis |
 |:--- |:--- |
 | `{"hours":[5]}` | Spuštění každý den v 5:00. |
 | `{"minutes":[15], "hours":[5]}` | Spuštění každý den v 5:15. |

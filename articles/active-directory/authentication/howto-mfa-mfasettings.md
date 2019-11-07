@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfca7ef1dabb8c6021c9df2e3174d3e208a839b5
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 29ea89af780df72b97fef553cf79b84c4b28da05
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042095"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569879"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurace nastavení služby Azure Multi-Factor Authentication
 
@@ -84,7 +84,7 @@ Nakonfigurujte funkci _Upozornění na podvod_ , aby vaši uživatelé mohli nah
 1. Přihlaste se na webu [Azure Portal](https://portal.azure.com) jako správce.
 2. Vyhledejte **Azure Active Directory** výstrahu > **MFA** > **podvodům**.
 3. Nastavte nastavení **povoleno uživatelům odeslat výstrahy na podvod** do **zapnuto**.
-4. Vyberte **Save** (Uložit).
+4. Vyberte **Uložit**.
 
 ### <a name="configuration-options"></a>Možnosti konfigurace
 
@@ -97,7 +97,7 @@ Nakonfigurujte funkci _Upozornění na podvod_ , aby vaši uživatelé mohli nah
 
 ### <a name="view-fraud-reports"></a>Zobrazení sestav podvodů
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **Azure Active Directory** > **přihlášení**. Sestava podvodů je teď součástí standardní sestavy přihlášení ke službě Azure AD.
 
 ## <a name="notifications"></a>Oznámení
@@ -192,7 +192,7 @@ Funkce _jednorázového_ přihlášení umožňuje uživateli ověřování jedn
 
 ### <a name="view-the-one-time-bypass-report"></a>Zobrazit sestavu jednorázového přihlášení
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Přejděte na **Azure Active Directory** > **MFA** > **jednorázové přihlášení**.
 
 ## <a name="caching-rules"></a>Pravidla ukládání do mezipaměti
@@ -275,7 +275,7 @@ Azure AD podporuje federaci nebo jednotné přihlašování (SSO) s místním Wi
 
 Ve výchozím nastavení uživatelé nemůžou vytvářet hesla aplikací. Musí být povolená funkce hesla aplikací. Chcete-li uživatelům umožnit vytváření hesel aplikací, použijte následující postup:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Na levé straně vyberte **Azure Active Directory** > **Uživatelé**.
 3. Vyberte **Multi-Factor Authentication**.
 4. V části Multi-Factor Authentication vyberte **nastavení služby**.
@@ -298,7 +298,7 @@ Pokud vaše organizace nasadí rozšíření serveru NPS za účelem poskytován
 
 | Typ tenanta Azure AD | Možnosti funkcí důvěryhodných IP adres |
 |:--- |:--- |
-| Spravované |**Konkrétní rozsah IP adres**: Správci URČUJÍ rozsah IP adres, které můžou obejít dvoustupňové ověřování pro uživatele, kteří se přihlásí z intranetu společnosti.|
+| Spravované |**Konkrétní rozsah IP adres**: Správci URČUJÍ rozsah IP adres, které můžou obejít dvoustupňové ověřování pro uživatele, kteří se přihlásí z intranetu společnosti. Lze nakonfigurovat maximálně 50 důvěryhodných rozsahů IP adres.|
 | Federované |**Všichni federované uživatelé**: všichni federované uživatelé, kteří se přihlásí v rámci organizace, můžou obejít dvoustupňové ověřování. Uživatel obejít ověřování pomocí deklarace identity, která je vydaná Active Directory Federation Services (AD FS) (AD FS).<br/>**Konkrétní rozsah IP adres**: Správci URČUJÍ rozsah IP adres, které můžou obejít dvoustupňové ověřování pro uživatele, kteří se přihlásí z intranetu společnosti. |
 
 Obejití důvěryhodných IP adres funguje pouze uvnitř intranetu společnosti. Pokud vyberete možnost **všechny federované uživatele** a uživatel se přihlásí mimo intranet společnosti, musí se uživatel ověřit pomocí dvoustupňového ověřování. Proces je stejný i v případě, že uživatel prezentuje AD FS deklarací identity. 
@@ -315,17 +315,17 @@ Bez ohledu na to, jestli je povolená funkce důvěryhodných IP adres, se pro t
 
 ### <a name="enable-named-locations-by-using-conditional-access"></a>Povolit pojmenovaná umístění pomocí podmíněného přístupu
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Na levé straně vyberte **Azure Active Directory** > **zabezpečení** > **podmíněný přístup** > **pojmenované umístění**.
 3. Vyberte **nové umístění**.
 4. Zadejte název umístění.
 5. Vyberte **Označit jako důvěryhodné umístění**.
 6. Zadejte rozsah IP adres v zápisu CIDR jako **192.168.1.1/24**.
-7. Vyberte **Create** (Vytvořit).
+7. Vyberte **Vytvořit**.
 
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>Povolení funkce důvěryhodných IP adres pomocí podmíněného přístupu
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Na levé straně vyberte **Azure Active Directory** > **zabezpečení** >  **podmíněný přístup** > **pojmenované umístění**.
 3. Vyberte **Konfigurovat důvěryhodné IP adresy MFA**.
 4. Na stránce **nastavení služby** v části **důvěryhodné IP adresy**vyberte některou z následujících dvou možností:
@@ -339,11 +339,11 @@ Bez ohledu na to, jestli je povolená funkce důvěryhodných IP adres, se pro t
       * Pro jednu IP adresu použijte Notation, jako je **xxx.xxx.xxx.xxx/32**.
       * Zadejte až 50 rozsahů IP adres. Uživatelé, kteří se přihlásí z těchto IP adres, obcházejí dvoustupňové ověřování.
 
-5. Vyberte **Save** (Uložit).
+5. Vyberte **Uložit**.
 
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>Povolení funkce důvěryhodných IP adres pomocí nastavení služby
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Na levé straně vyberte **Azure Active Directory** > **Uživatelé**.
 3. Vyberte **Multi-Factor Authentication**.
 4. V části Multi-Factor Authentication vyberte **nastavení služby**.
@@ -358,7 +358,7 @@ Bez ohledu na to, jestli je povolená funkce důvěryhodných IP adres, se pro t
       * Pro jednu IP adresu použijte Notation, jako je **xxx.xxx.xxx.xxx/32**.
       * Zadejte až 50 rozsahů IP adres. Uživatelé, kteří se přihlásí z těchto IP adres, obcházejí dvoustupňové ověřování.
 
-6. Vyberte **Save** (Uložit).
+6. Vyberte **Uložit**.
 
 ## <a name="verification-methods"></a>Metody ověřování
 
@@ -375,7 +375,7 @@ Když uživatelé zaregistrují své účty pro Azure Multi-Factor Authenticatio
 
 ### <a name="enable-and-disable-verification-methods"></a>Povolit a zakázat metody ověřování
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Na levé straně vyberte **Azure Active Directory** > **Uživatelé**.
 3. Vyberte **Multi-Factor Authentication**.
 4. V části Multi-Factor Authentication vyberte **nastavení služby**.
@@ -411,13 +411,13 @@ Tato funkce snižuje počet ověřování ve webových aplikacích, které se ob
 
 ### <a name="enable-remember-multi-factor-authentication"></a>Povolit zapamatovat Multi-Factor Authentication
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Na levé straně vyberte **Azure Active Directory** > **Uživatelé**.
 3. Vyberte **Multi-Factor Authentication**.
 4. V části Multi-Factor Authentication vyberte **nastavení služby**.
 5. Na stránce **nastavení služby** **Spravovat zapamatování vícefaktorového ověřování**vyberte možnost **dovolit uživatelům pamatovat si vícefaktorové ověřování na zařízeních, která důvěřují** .
 6. Nastavte počet dní, po který mají důvěryhodná zařízení obejít dvoustupňové ověřování. Výchozí hodnota je 14 dní.
-7. Vyberte **Save** (Uložit).
+7. Vyberte **Uložit**.
 
 ### <a name="mark-a-device-as-trusted"></a>Označení zařízení jako důvěryhodného
 

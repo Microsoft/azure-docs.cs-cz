@@ -1,7 +1,7 @@
 ---
-title: Co je BLEU skóre? – Vlastní Translator
+title: Co je BLEU skóre? – Vlastní Překladatel
 titleSuffix: Azure Cognitive Services
-description: BLEU je měření rozdílů mezi automatickým překladem a jedním nebo více uživatelsky vytvořenými překlady odkazů stejné zdrojové věty. BLEU algoritmus porovnává po sobě jdoucí fráze automatického překladu se po sobě jdoucích frázích, které najde v překladu referencí, a vypočítává počet shod, které se váže.
+description: BLEU je měření rozdílů mezi strojovým překladem a uživatelsky vytvořenými překlady odkazů stejné zdrojové věty.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: swmachan
-ms.openlocfilehash: 1993819ad227d7e9aa5ef899045e00447a6740b8
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 85c4ee27a828a05c64ca6cbf84bff438535328be
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595414"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647358"
 ---
 # <a name="what-is-a-bleu-score"></a>Co je BLEU skóre?
 

@@ -1,6 +1,6 @@
 ---
-title: Připojení ukázkového kódu zařízení pro IoT technologie Plug and Play Preview IoT Hub | Microsoft Docs
-description: Sestavujte a spouštějte ukázkový kód zařízení technologie Plug and Play IoT Preview, který se připojuje ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
+title: Připojení ukázkového kódu zařízení pro IoT technologie Plug and Play Preview IoT Hub (Windows) | Microsoft Docs
+description: Sestavujte a spouštějte ukázkový kód zařízení ve Windows ve verzi Preview technologie Plug and Play, který se připojuje ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
 author: ChrisGMsft
 ms.author: chrisgre
 ms.date: 08/02/2019
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 4802c120f4722796fcad4ea99f25adad368451fd
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 2dd5d197851b0090ac1af7bbde5a1ad1b951c785
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806535"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569910"
 ---
-# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub"></a>Rychlý start: Připojit ukázkovou aplikaci IoT technologie Plug and Play ve verzi Preview pro IoT Hub
+# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-windows-to-iot-hub"></a>Rychlý Start: připojení ukázkové aplikace IoT technologie Plug and Play ve verzi Preview, která běží na Windows pro IoT Hub
 
 V tomto rychlém startu se dozvíte, jak vytvořit ukázkovou aplikaci IoT technologie Plug and Play zařízení, jak ji připojit ke službě IoT Hub, a pomocí nástroje Azure IoT Explorer zobrazit informace, které odesílá do centra. Ukázková aplikace je napsaná v jazyce C a je obsažená v sadě SDK pro zařízení Azure IoT pro jazyk C. Vývojář řešení může pomocí nástroje Azure IoT Explorer pochopit možnosti zařízení technologie Plug and Play IoT, aniž by musel zobrazovat žádný kód zařízení.
 
@@ -23,7 +23,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit ukázkovou aplikaci IoT techn
 
 K dokončení tohoto rychlého startu je potřeba na svůj místní počítač nainstalovat následující software:
 
-* [Visual Studio (komunita, Professional nebo Enterprise)](https://visualstudio.microsoft.com/downloads/) – nezapomeňte při instalaci sady Visual Studio zahrnout komponentu **Správce balíčků NuGet** a **vývoj C++ desktopových** aplikací.
+* [Nástroje pro sestavení pro sadu Visual Studio](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) pomocí  **C++ nástrojů sestavení** a úloh **komponent správce balíčků NuGet** . Nebo pokud už máte [Visual Studio (Community, Professional nebo Enterprise)](https://visualstudio.microsoft.com/downloads/) 2019, 2017 nebo 2015 se stejnými úlohami.
 * [Git](https://git-scm.com/download/)
 * [Cmake](https://cmake.org/download/).
 
@@ -82,7 +82,7 @@ Buďte připravení na to, že může trvat i několik minut, než se tato opera
 
 Vytvořená aplikace simuluje zařízení, které se připojuje ke službě IoT Hub. Aplikace odesílá telemetrie a vlastnosti a přijímá příkazy.
 
-1. `cmake` V kořenové složce sady SDK pro zařízení vytvořte podadresář a přejděte do této složky:
+1. V kořenové složce sady SDK pro zařízení vytvořte podadresář `cmake` a přejděte do této složky:
 
     ```cmd\sh
     cd <root folder>\azure-iot-sdk-c
@@ -147,4 +147,4 @@ Aplikace zařízení spouští odesílání dat do IoT Hub.
 V tomto rychlém startu jste se naučili připojit zařízení IoT technologie Plug and Play ke službě IoT Hub. Další informace o tom, jak vytvořit řešení, které komunikuje s technologie Plug and Play vašich zařízení IoT, najdete tady:
 
 > [!div class="nextstepaction"]
-> [Postup: Připojení a interakce se zařízením IoT technologie Plug and Play Preview](howto-develop-solution.md)
+> [Postupy: připojení a interakce se zařízením IoT technologie Plug and Play Preview](howto-develop-solution.md)

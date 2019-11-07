@@ -1,6 +1,6 @@
 ---
-title: Urychlení sítí pomocí zotavení po havárii virtuálních počítačů Azure | Dokumentace Microsoftu
-description: Popisuje, jak povolit Akcelerovanými síťovými službami službou Azure Site Recovery pro zotavení po havárii virtuálních počítačů Azure
+title: Povolení akcelerované sítě pro zotavení po havárii virtuálního počítače Azure pomocí Azure Site Recovery
+description: Popisuje, jak povolit akcelerované síťové služby s Azure Site Recovery pro zotavení po havárii virtuálního počítače Azure.
 services: site-recovery
 documentationcenter: ''
 author: mayurigupta13
@@ -9,83 +9,83 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: c7edc7979636ced8697aa5ad724f9c6600d840bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 27691d8fab3e7c8ccd60351dc0be83898ff984ed
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60772459"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622432"
 ---
-# <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>Akcelerované síťové služby s zotavení po havárii virtuálních počítačů Azure
+# <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>Urychlené používání sítě pomocí zotavení po havárii virtuálních počítačů Azure
 
-Akcelerované síťové služby umožňuje virtualizaci (rozhraní SR-IOV) k virtuálnímu počítači, výrazně zlepšit sítě. Tato cesta výkonné obchází hostitele z datapath, snížení latence, zpoždění a využití procesoru pro použití s nejnáročnějších úloh sítě na podporované typy virtuálních počítačů. Následující obrázek znázorňuje komunikace mezi dvěma virtuálními počítači a nemusíte akcelerované síťové služby:
+Akcelerované síťové služby umožňují virtuálnímu počítači pomocí rozhraní SR-IOV (single-root I/O Virtualization), což výrazně zlepšuje výkon sítě. Tato cesta s vysokým výkonem obchází hostitele z DataPath, snižuje latenci, kolísání a využití CPU a používá se u nejnáročnějších síťových úloh na podporovaných typech virtuálních počítačů. Následující obrázek znázorňuje komunikaci mezi dvěma virtuálními počítači s a bez urychlení sítě:
 
 ![Porovnání](./media/azure-vm-disaster-recovery-with-accelerated-networking/accelerated-networking-benefit.png)
 
-Azure Site Recovery umožňuje využívat výhod Accelerated Networking pro Azure virtual machines, které při selhání do jiné oblasti Azure. Tento článek popisuje, jak můžete zajistit Akcelerovanými síťovými službami pro virtuální počítače Azure pomocí služby Azure Site Recovery replikovat.
+Azure Site Recovery vám umožní využívat výhody akcelerované sítě pro virtuální počítače Azure, u kterých došlo k převzetí služeb při selhání do jiné oblasti Azure. Tento článek popisuje, jak můžete povolit akcelerované síťové služby pro virtuální počítače Azure replikované pomocí Azure Site Recovery.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že rozumíte:
--   Virtuální počítač Azure [architektura replikace](azure-to-azure-architecture.md)
+-   [Architektura replikace](azure-to-azure-architecture.md) virtuálních počítačů Azure
 -   [Nastavení replikace](azure-to-azure-tutorial-enable-replication.md) pro virtuální počítače Azure
--   [Převzetí služeb při selhání](azure-to-azure-tutorial-failover-failback.md) virtuálních počítačů Azure
+-   [Převzetí služeb při selhání](azure-to-azure-tutorial-failover-failback.md) Virtuální počítače Azure
 
-## <a name="accelerated-networking-with-windows-vms"></a>Akcelerované síťové služby s virtuálními počítači Windows
+## <a name="accelerated-networking-with-windows-vms"></a>Urychlení sítě s virtuálními počítači s Windows
 
-Azure Site Recovery podporuje, povolení Akcelerovanými síťovými službami pro replikované virtuální počítače pouze v případě, že zdrojový virtuální počítač má Akcelerovanými síťovými službami povolena. Pokud zdrojový virtuální počítač nemá akcelerované síťové povolena, se dozvíte, jak povolit Accelerated Networking pro Windows virtuálních počítačů [tady](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms).
+Azure Site Recovery podporuje povolování akcelerovaných sítí pro replikované virtuální počítače pouze v případě, že má zdrojový virtuální počítač aktivované akcelerované síťové služby. Pokud váš zdrojový virtuální počítač nemá povolené urychlené síťové služby, můžete [zjistit, jak](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms)povolit akcelerované sítě pro virtuální počítače s Windows.
 
 ### <a name="supported-operating-systems"></a>Podporované operační systémy
-Připravených v galerii Azure jsou podporovány následující distribuce:
+Z Galerie Azure se podporují následující distribuce:
 * **Windows Server 2016 Datacenter**
 * **Windows Server 2012 R2 Datacenter**
 
 ### <a name="supported-vm-instances"></a>Podporované instance virtuálních počítačů
-Akcelerované síťové služby se podporuje na nejvíce obecné účely a velikostí optimalizovaných pro výpočetní instance s 2 nebo více virtuálních procesorů.  Tyto podporované řady jsou: D/DSv2 a F/Fs
+Akcelerované sítě se podporují na většině účelových a výpočetních instancí optimalizovaných pro výpočty s 2 nebo více vCPU.  Tyto podporované řady: D/DSv2 a F/FS
 
-U instancí, které podporují hyperthreadingem Akcelerovanými síťovými službami se podporuje na instancích virtuálních počítačů s 4 nebo více virtuálních procesorů. Podporované řady jsou: D/DSv3, E nebo ESv3, Fsv2 a Ms a Mms
+Na instancích, které podporují multithreading, se zrychluje síť pro instance virtuálních počítačů se 4 nebo více vCPU. Podporované řady: D/DSv3, E/ESv3, Fsv2 a MS/MMS
 
 Další informace o instancích virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů s Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-## <a name="accelerated-networking-with-linux-vms"></a>Akcelerované síťové služby s Linuxovými virtuálními počítači
+## <a name="accelerated-networking-with-linux-vms"></a>Urychlení sítě pomocí virtuálních počítačů se systémem Linux
 
-Azure Site Recovery podporuje, povolení Akcelerovanými síťovými službami pro replikované virtuální počítače pouze v případě, že zdrojový virtuální počítač má Akcelerovanými síťovými službami povolena. Pokud zdrojový virtuální počítač nemá akcelerované síťové povolena, se dozvíte, jak povolit Akcelerovanými síťovými službami pro virtuální počítače s Linuxem [tady](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
+Azure Site Recovery podporuje povolování akcelerovaných sítí pro replikované virtuální počítače pouze v případě, že má zdrojový virtuální počítač aktivované akcelerované síťové služby. Pokud váš zdrojový virtuální počítač nemá povolené urychlené síťové služby, můžete zjistit, jak povolit akcelerované sítě pro [virtuální počítače se](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms)systémem Linux.
 
 ### <a name="supported-operating-systems"></a>Podporované operační systémy
-Připravených v galerii Azure jsou podporovány následující distribuce:
-* **Ubuntu 16.04**
+Z Galerie Azure se podporují následující distribuce:
+* **Ubuntu 16,04**
 * **SLES 12 SP3**
-* **RHEL 7.4**
+* **RHEL 7,4**
 * **CentOS 7.4**
 * **CoreOS Linux**
-* **Debian "Stretch" s zpětné jádra**
-* **Oracle Linux 7.4**
+* **Debian "roztažení" s jádrem pro porty**
+* **Oracle Linux 7,4**
 
 ### <a name="supported-vm-instances"></a>Podporované instance virtuálních počítačů
-Akcelerované síťové služby se podporuje na nejvíce obecné účely a velikostí optimalizovaných pro výpočetní instance s 2 nebo více virtuálních procesorů.  Tyto podporované řady jsou: D/DSv2 a F/Fs
+Akcelerované sítě se podporují na většině účelových a výpočetních instancí optimalizovaných pro výpočty s 2 nebo více vCPU.  Tyto podporované řady: D/DSv2 a F/FS
 
-U instancí, které podporují hyperthreadingem Akcelerovanými síťovými službami se podporuje na instancích virtuálních počítačů s 4 nebo více virtuálních procesorů. Podporované řady jsou: D/DSv3 E/ESv3, Fsv2 a Ms a Mms.
+Na instancích, které podporují multithreading, se zrychluje síť pro instance virtuálních počítačů se 4 nebo více vCPU. Podporované řady jsou: D/DSv3, E/ESv3, Fsv2 a MS/MMS.
 
-Další informace o instancích virtuálních počítačů najdete v tématu [velikosti virtuálního počítače s Linuxem](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Další informace o instancích virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů se systémem Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-## <a name="enabling-accelerated-networking-for-replicated-vms"></a>Povoluje se pro replikované virtuální počítače s Akcelerovanými síťovými službami
+## <a name="enabling-accelerated-networking-for-replicated-vms"></a>Povolení akcelerovaných síťových služeb pro replikované virtuální počítače
 
-Pokud jste [povolit replikaci](azure-to-azure-tutorial-enable-replication.md) pro virtuální počítače Azure, Site Recovery automaticky zjistí, jestli síťová rozhraní virtuálního počítače mají Akcelerovanými síťovými službami povolena. Pokud Akcelerovanými síťovými službami je už povolená, Site Recovery automaticky nakonfigurují Akcelerovanými síťovými službami v síťovém rozhraní replikovaného virtuálního počítače.
+Pokud [povolíte replikaci](azure-to-azure-tutorial-enable-replication.md) pro virtuální počítače Azure, Site Recovery automaticky zjistí, jestli jsou v síťových rozhraních virtuálních počítačů povolené urychlení sítě. Pokud je již urychlené síťové služby povoleno, Site Recovery bude automaticky konfigurovat urychlené síťové rozhraní replikovaného virtuálního počítače.
 
-V části se dá ověřit stav Akcelerovanými síťovými službami **síťová rozhraní** část **výpočty a síť** nastavení replikovaný virtuální počítač.
+Stav akcelerované sítě se dá ověřit v části **Síťová rozhraní** v nastavení **výpočty a síť** pro replikovaný virtuální počítač.
 
-![Akcelerované síťové nastavení](./media/azure-vm-disaster-recovery-with-accelerated-networking/compute-network-accelerated-networking.png)
+![Nastavení akcelerované sítě](./media/azure-vm-disaster-recovery-with-accelerated-networking/compute-network-accelerated-networking.png)
 
-Pokud jste povolili Akcelerovanými síťovými službami na zdrojovém virtuálním počítači po povolení replikace, můžete povolit Akcelerovanými síťovými službami pro rozhraní sítí replikovaného virtuálního počítače následujícím procesem:
-1. Otevřít **výpočty a síť** nastavení replikovaný virtuální počítač
-2. Klikněte na název síťového rozhraní v části **síťová rozhraní** oddílu
-3. Vyberte **povoleno** z rozevíracího seznamu pro Akcelerovanými síťovými službami v rámci **cílové** sloupec
+Pokud jste na zdrojovém virtuálním počítači povolili akcelerované sítě po povolení replikace, můžete pro síťová rozhraní replikovaných virtuálních počítačů povolit akcelerované síťové rozhraní následujícím postupem:
+1. Otevřete nastavení **výpočty a síť** pro replikovaný virtuální počítač.
+2. V části **Síťová rozhraní** klikněte na název síťového rozhraní.
+3. V rozevíracím seznamu vyberte možnost **povoleno** pro akcelerované síťové služby v rámci **cílového** sloupce.
 
 ![Povolit akcelerované síťové služby](./media/azure-vm-disaster-recovery-with-accelerated-networking/network-interface-accelerated-networking-enabled.png)
 
-Výše uvedené procesu byste měli dodržet také existující replikované virtuální počítače, které dříve neměla Akcelerovanými síťovými službami povolí automaticky službou Site Recovery.
+U stávajících replikovaných virtuálních počítačů, u kterých se předtím nepoužívaly urychlené síťové sítě, by se měly provést i výše uvedené procesy Site Recovery.
 
-## <a name="next-steps"></a>Další postup
-- Další informace o [výhody Akcelerovanými síťovými službami](../virtual-network/create-vm-accelerated-networking-powershell.md#benefits).
-- Další informace o omezení a omezení akcelerované síťové služby pro [Windows virtual machines](../virtual-network/create-vm-accelerated-networking-powershell.md#limitations-and-constraints) a [virtuální počítače s Linuxem](../virtual-network/create-vm-accelerated-networking-cli.md#limitations-and-constraints).
-- Další informace o [plány obnovení](site-recovery-create-recovery-plans.md) automatizovat převzetí služeb při selhání aplikace.
+## <a name="next-steps"></a>Další kroky
+- Přečtěte si další informace o [výhodách akcelerovaných síťových](../virtual-network/create-vm-accelerated-networking-powershell.md#benefits)služeb.
+- Přečtěte si další informace o omezeních a omezeních akcelerované sítě pro [virtuální počítače s Windows](../virtual-network/create-vm-accelerated-networking-powershell.md#limitations-and-constraints) a [virtuální počítače](../virtual-network/create-vm-accelerated-networking-cli.md#limitations-and-constraints)se systémem Linux.
+- Další informace o [plánech obnovení](site-recovery-create-recovery-plans.md) pro automatizaci převzetí služeb při selhání aplikace.
