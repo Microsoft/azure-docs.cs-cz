@@ -1,5 +1,5 @@
 ---
-title: Osvědčené postupy pro Azure Synchronizace dat SQL | Microsoft Docs
+title: 'Osvědčené postupy pro Azure Synchronizace dat SQL '
 description: Seznamte se s osvědčenými postupy pro konfiguraci a provozování Azure Synchronizace dat SQL.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 01962770c011a0107abd4e035c25d6c0d45fa0a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 728ac8ab42573e1cab30eaf12dd38a6d33b97aac
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569379"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691080"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Osvědčené postupy pro synchronizaci dat SQL 
 
@@ -39,7 +39,7 @@ Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několi
 
 ### <a name="database-accounts-with-least-required-privileges"></a>Účty databáze s minimálními požadovanými oprávněními
 
--   **Pro nastavení synchronizace**. Vytvořit nebo Alter Table; Příkaz ALTER Database; Vytvořit proceduru; Vybrat / Alter schématu; Vytvořte uživatelsky definovaný typ.
+-   **Pro nastavení synchronizace**. Vytvořit nebo změnit tabulku; ALTER DATABASE; Vytvořit proceduru; Vybrat/změnit schéma; Vytvořte uživatelsky definovaný typ.
 
 -   **Pro průběžnou synchronizaci**. Výběr/vložení/aktualizace/odstranění u tabulek, které jsou vybrány pro synchronizaci a pro synchronizaci metadat a sledovacích tabulek; Oprávnění EXECUTE pro uložené procedury vytvořené službou; Oprávnění EXECUTE pro uživatelsky definované typy tabulek.
 
@@ -50,13 +50,13 @@ Azure SQL Database podporuje pouze jednu sadu přihlašovacích údajů. K prove
 -   Změňte přihlašovací údaje pro různé fáze (například *credentials1* pro nastavení a *credentials2* pro průběžné).  
 -   Změňte oprávnění přihlašovacích údajů (to znamená změnit oprávnění po nastavení synchronizace).
 
-## <a name="setup"></a>Instalace
+## <a name="setup"></a>Nastavení
 
 ### <a name="database-considerations-and-constraints"></a>Hlediska databáze a omezení
 
 #### <a name="sql-database-instance-size"></a>Velikost instance SQL Database
 
-Při vytváření nové instance SQL Database nastavte maximální velikost tak, aby byla vždy větší než databáze, kterou nasazujete. Pokud nenastavíte maximální velikost na větší než nasazenou databázi, synchronizace se nezdařila. I když synchronizace dat SQL nenabízí Automatický růst, můžete spuštěním `ALTER DATABASE` příkazu zvětšit velikost databáze po jejím vytvoření. Ujistěte se, že zůstanete v rámci omezení velikosti instance SQL Database.
+Při vytváření nové instance SQL Database nastavte maximální velikost tak, aby byla vždy větší než databáze, kterou nasazujete. Pokud nenastavíte maximální velikost na větší než nasazenou databázi, synchronizace se nezdařila. I když Synchronizace dat SQL nenabízí Automatický růst, můžete spuštěním příkazu `ALTER DATABASE` zvětšit velikost databáze po jejím vytvoření. Ujistěte se, že zůstanete v rámci omezení velikosti instance SQL Database.
 
 > [!IMPORTANT]
 > Synchronizace dat SQL ukládá další metadata s každou databází. Ujistěte se, že při výpočtu potřebného místa budete mít k těmto metadatům účet. Množství přidaných režijních nákladů se vztahuje k šířce tabulek (například úzká tabulka vyžaduje větší režii) a množství provozu.
@@ -116,7 +116,7 @@ Aby se minimalizovala latence, udržujte databázi centra blízkou největší k
 
 Použijte předchozí pokyny ke komplexním konfiguracím skupin synchronizace, jako jsou ty, které jsou kombinací podnikových scénářů a scénářů cloudu do cloudu.
 
-## <a name="sync"></a>Synchronizovat
+## <a name="sync"></a>Sync
 
 ### <a name="avoid-a-slow-and-costly-initial-synchronization"></a>Vyhněte se pomalé a nákladné počáteční synchronizaci
 
@@ -166,11 +166,11 @@ Pravidelně monitorujte skupinu synchronizace a stav databáze prostřednictvím
 
 ### <a name="avoid-out-of-date-databases-and-sync-groups"></a>Vyhněte se neaktuálním databázím a skupinám synchronizace
 
-Skupina synchronizace nebo databáze ve skupině synchronizace může být zastaralá. Když je stav skupiny synchronizace neaktuální, přestane fungovat. Je **-** li stav databáze zastaralá, může dojít ke ztrátě dat. Doporučujeme vyhnout se tomuto scénáři místo toho, abyste se museli pokoušet o zotavení z něj.
+Skupina synchronizace nebo databáze ve skupině synchronizace může být zastaralá. Když je stav skupiny synchronizace **neaktuální**, přestane fungovat. Je-li stav databáze **zastaralá**, může dojít ke ztrátě dat. Doporučujeme vyhnout se tomuto scénáři místo toho, abyste se museli pokoušet o zotavení z něj.
 
 #### <a name="avoid-out-of-date-databases"></a>Vyhněte se zastaralým databázím
 
-Stav databáze je nastaven na neaktuální , pokud byl offline až 45 dní nebo déle. Abyste se vyhnuli zastaralému stavu v databázi, zajistěte, aby žádná z databází nebyla v režimu 45 dní nebo déle offline.
+Stav databáze je nastaven na **neaktuální** , pokud byl offline až 45 dní nebo déle. Abyste se vyhnuli **zastaralému** stavu v databázi, zajistěte, aby žádná z databází nebyla v režimu 45 dní nebo déle offline.
 
 #### <a name="avoid-out-of-date-sync-groups"></a>Vyhněte se neaktuálním skupinám synchronizace
 
@@ -198,7 +198,7 @@ V některých případech může zrušení registrace databáze u agenta klienta
 1. Skupina synchronizace A byla vytvořena pomocí instance SQL Database a místní databáze SQL Server, která je přidružena k místnímu agentovi 1.
 2. Stejná místní databáze je zaregistrovaná u místního agenta 2 (Tento agent není přidružený k žádné skupině synchronizace).
 3. Zrušení registrace místní databáze z místního agenta 2 odebere sledování a meta tabulky pro skupinu synchronizace a pro místní databázi.
-4. Skupina synchronizace A operace se nezdaří, došlo k této chybě: "Aktuální operaci nelze dokončit, protože databáze není zřízená pro synchronizaci, nebo nemáte oprávnění k tabulkám konfigurace synchronizace."
+4. Skupina synchronizace A operace se nezdaří, s touto chybou: "aktuální operace nemohla být dokončena, protože databáze není zřízená pro synchronizaci nebo nemáte oprávnění k tabulkám konfigurace synchronizace."
 
 #### <a name="solution"></a>Řešení
 
@@ -218,16 +218,16 @@ Místo toho nejprve odeberte databázi ze skupiny synchronizace. Pak nasaďte zm
 
 Pokud se pokusíte odebrat databázi a pak upravit skupinu synchronizace, aniž byste nejdřív nasadili jednu ze změn, jedna nebo jiná operace se nezdaří. Rozhraní portálu může být nekonzistentní. Pokud k tomu dojde, aktualizujte stránku, aby obnovila správný stav.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o Synchronizace dat SQL najdete v tématech:
 
 -   Přehled – [synchronizace dat napříč několika cloudy a místními databázemi pomocí Azure synchronizace dat SQL](sql-database-sync-data.md)
 -   Nastavení synchronizace dat
-    - Na portálu – [kurz: Nastavení Synchronizace dat SQL pro synchronizaci dat mezi Azure SQL Database a SQL Server místním prostředí](sql-database-get-started-sql-data-sync.md)
+    - Na portálu – [kurz: nastavení synchronizace dat SQL pro synchronizaci dat mezi Azure SQL Database a SQL Server místním](sql-database-get-started-sql-data-sync.md) prostředím
     - S využitím PowerShellu
-        -  [Synchronizace mezi několika databázemi SQL Azure pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [Synchronizace mezi několika databázemi Azure SQL pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)
--   Agent – synchronizace dat [Data synchronizovat Agent pro synchronizaci dat Azure SQL](sql-database-data-sync-agent.md)
+-   Agent synchronizace dat – [Agent synchronizace dat pro Azure synchronizace dat SQL](sql-database-data-sync-agent.md)
 -   Monitorování – [monitorování synchronizace dat SQL pomocí protokolů Azure monitor](sql-database-sync-monitor-oms.md)
 -   Řešení potíží – [řešení potíží s Azure synchronizace dat SQL](sql-database-troubleshoot-data-sync.md)
 -   Aktualizace schématu synchronizace

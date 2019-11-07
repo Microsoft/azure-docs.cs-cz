@@ -1,5 +1,5 @@
 ---
-title: Průvodce automatickým laděním e-mailových oznámení – Azure SQL Database | Microsoft Docs
+title: Průvodce automatickým laděním e-mailových oznámení – Azure SQL Database
 description: Povolí e-mailová oznámení pro Azure SQL Database automatické ladění dotazů.
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: df9390c00c34fce82de8cc17efb5cc3bce2e4e3d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e1478ab6abc9705a67f2d47bc076d3c2fe54ccd4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569448"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691147"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-mailová oznámení pro automatické ladění
 
 Doporučení pro ladění SQL Database vygeneruje Azure SQL Database [Automatické ladění](sql-database-automatic-tuning.md). Toto řešení nepřetržitě monitoruje a analyzuje úlohy SQL Database, které poskytují přizpůsobená doporučení pro ladění pro každou jednotlivou databázi, která souvisí s vytvářením indexu, odstraňováním indexu a optimalizací plánů provádění dotazů.
 
-Doporučení pro automatické ladění SQL Database můžete zobrazit v [Azure Portal](sql-database-advisor-portal.md), načíst pomocí [REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) volání nebo pomocí příkazů [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) a PowerShellu [](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) . Tento článek je založený na použití skriptu PowerShellu k načtení doporučení pro automatické vyladění.
+Doporučení pro automatické ladění SQL Database můžete zobrazit v [Azure Portal](sql-database-advisor-portal.md), načíst pomocí [REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) volání nebo pomocí příkazů [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) a [PowerShellu](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) . Tento článek je založený na použití skriptu PowerShellu k načtení doporučení pro automatické vyladění.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -81,7 +81,7 @@ Pomocí těchto kroků načtete skript prostředí PowerShell do vytvořeného R
 - V podokně**Upravit powershellový Runbook**vyberte v části strom nabídky možnost**Runbooky**a rozbalte zobrazení, dokud se nezobrazí název Runbooku (v tomto příkladu "**AutomaticTuningEmailAutomation**"). Vyberte tuto sadu Runbook.
 - Na prvním řádku "upravit PowerShellový Runbook" (počínaje číslem 1) zkopírujte a vložte následující kód skriptu PowerShellu. Tento skript PowerShellu se poskytuje tak, jak je, abyste mohli začít. Upravte skript tak, aby vyhovoval vašim potřebám.
 
-V hlavičce zadaného skriptu PowerShellu je potřeba nahradit `<SUBSCRIPTION_ID_WITH_DATABASES>` ID vašeho předplatného Azure. Informace o tom, jak načíst ID předplatného Azure, najdete v tématu [Získání identifikátoru GUID předplatného Azure](https://blogs.msdn.microsoft.com/mschray/20../../getting-your-azure-subscription-guid-new-portal/).
+V hlavičce zadaného skriptu PowerShellu je potřeba nahradit `<SUBSCRIPTION_ID_WITH_DATABASES>` vaším ID předplatného Azure. Informace o tom, jak načíst ID předplatného Azure, najdete v tématu [Získání identifikátoru GUID předplatného Azure](https://blogs.msdn.microsoft.com/mschray/20../../getting-your-azure-subscription-guid-new-portal/).
 
 V případě několika předplatných je můžete přidat do vlastnosti "$subscriptions" v hlavičce skriptu jako čárkou.
 
@@ -204,7 +204,7 @@ Dalším krokem je přidání tří úloh (vytvoření, načtení výstupu a ode
 
    - Vyberte **+ Nový krok**a potom v podokně tok opakování**přidejte akci**.
    - Do vyhledávacího pole zadejte "**Automation**" a z výsledků hledání vyberte**Azure Automation – vytvořit úlohu**.
-   - V podokně vytvořit úlohu nakonfigurujte vlastnosti úlohy. V případě této konfigurace budete potřebovat podrobnosti o ID předplatného Azure, skupině prostředků a účtu Automation, který **jste předtím** nahráli v **podokně účtu Automation**. Další informace o možnostech dostupných v této části najdete v tématu [Azure Automation-Create Job](https://docs.microsoft.com/connectors/azureautomation/#create-job).
+   - V podokně vytvořit úlohu nakonfigurujte vlastnosti úlohy. V případě této konfigurace budete potřebovat podrobnosti o ID předplatného Azure, skupině prostředků a účtu Automation, který **jste předtím nahráli** v **podokně účtu Automation**. Další informace o možnostech dostupných v této části najdete v tématu [Azure Automation-Create Job](https://docs.microsoft.com/connectors/azureautomation/#create-job).
    - Vytvoření této akce dokončíte kliknutím na**Uložit tok**.
 
 2. Vytvořit akci, která načte výstup z spouštěného skriptu PowerShellu

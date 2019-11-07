@@ -1,5 +1,5 @@
 ---
-title: Použít certifikát SSL v kódu aplikace – Azure App Service | Microsoft Docs
+title: Použít certifikát SSL v kódu-Azure App Service | Microsoft Docs
 description: Naučte se používat klientské certifikáty pro připojení ke vzdáleným prostředkům, které je vyžadují.
 services: app-service
 documentationcenter: ''
@@ -10,26 +10,26 @@ ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/16/2019
+ms.date: 11/04/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 1f042f72f82d2198472fe81670c697c0c4b28321
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 93dfe784d45cd9cd93d22c5e8c3275c563f7f88b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513689"
+ms.locfileid: "73572078"
 ---
-# <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>Použijte certifikát SSL v kódu aplikace v Azure App Service
+# <a name="use-an-ssl-certificate-in-your-code-in-azure-app-service"></a>Použijte certifikát SSL v kódu v Azure App Service
 
-Váš kód aplikace App Service může fungovat jako klient a přistupuje k externí službě, která vyžaduje ověření certifikátu. Tato příručka ukazuje, jak použít veřejné nebo privátní certifikáty ve vašem kódu aplikace.
+V kódu aplikace můžete získat přístup k [veřejným nebo soukromým certifikátům, které přidáte do App Service](configure-ssl-certificate.md). Kód vaší aplikace může fungovat jako klient a přistupovat k externí službě, která vyžaduje ověření certifikátu, nebo může být potřeba provádět kryptografické úlohy. Tato příručka ukazuje, jak použít veřejné nebo privátní certifikáty ve vašem kódu aplikace.
 
-Tento přístup k používání certifikátů v kódu využívá funkci SSL v App Service, která vyžaduje, aby vaše aplikace byla v úrovni **Basic** nebo vyšší. Případně můžete [soubor certifikátu zahrnout do úložiště aplikace](#load-certificate-from-file), ale nejedná se o doporučený postup pro privátní certifikáty.
+Tento přístup k používání certifikátů v kódu využívá funkci SSL v App Service, která vyžaduje, aby vaše aplikace byla v úrovni **Basic** nebo vyšší. Pokud je vaše aplikace na úrovni **Free** nebo **Shared** , můžete do [úložiště aplikace zahrnout soubor certifikátu](#load-certificate-from-file).
 
 Když necháte App Service spravovat certifikáty SSL, můžete spravovat certifikáty a kód aplikace samostatně a chránit citlivá data.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Postup při použití tohoto průvodce:
 
@@ -46,9 +46,9 @@ Vyhledejte certifikát, který chcete použít, a zkopírujte jeho kryptografick
 
 ![Kopírování kryptografického otisku certifikátu](./media/configure-ssl-certificate/create-free-cert-finished.png)
 
-## <a name="load-the-certificate"></a>Načtení certifikátu
+## <a name="make-the-certificate-accessible"></a>Zpřístupněte certifikát jako přístupný.
 
-Pokud chcete použít certifikát v kódu aplikace, přidejte jeho kryptografický otisk do nastavení aplikace `WEBSITE_LOAD_CERTIFICATES` spuštěním následujícího příkazu v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>:
+Pokud chcete získat přístup k certifikátu v kódu aplikace, přidejte jeho kryptografický otisk do nastavení aplikace `WEBSITE_LOAD_CERTIFICATES` spuštěním následujícího příkazu v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_CERTIFICATES=<comma-separated-certificate-thumbprints>
@@ -56,15 +56,14 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 Pro zpřístupnění všech certifikátů nastavte hodnotu na `*`.
 
-> [!NOTE]
-> Toto nastavení umístí zadané certifikáty do aktuálního úložiště [User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) pro většinu cenových úrovní, ale v **izolované** úrovni (tj. aplikace běží v [App Service Environment](environment/intro.md)) umístí certifikáty do [místních Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) . uchovávat.
->
+## <a name="load-certificate-in-windows-apps"></a>Načtení certifikátu v aplikacích pro Windows
 
-Nakonfigurované certifikáty jsou teď připravené k použití ve vašem kódu.
+Nastavení aplikace `WEBSITE_LOAD_CERTIFICATES` zpřístupňuje zadané certifikáty pro aplikaci hostovanou v systému Windows v úložišti certifikátů Windows a umístění závisí na [cenové úrovni](overview-hosting-plans.md):
 
-## <a name="load-the-certificate-in-code"></a>Načíst certifikát v kódu
+- **Izolovaná** vrstva – [místní Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) 
+- Všechny ostatní úrovně – v [aktuální User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores).
 
-Jakmile je certifikát přístupný, získáte k němu C# přístup pomocí kryptografického otisku certifikátu. Následující kód načte certifikát s kryptografickým otiskem `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`.
+V C# kódu získáte přístup k certifikátu pomocí kryptografického otisku certifikátu. Následující kód načte certifikát s kryptografickým otiskem `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`.
 
 ```csharp
 using System;
@@ -89,32 +88,76 @@ certStore.Close();
 ...
 ```
 
-<a name="file"></a>
-## <a name="load-certificate-from-file"></a>Načíst certifikát ze souboru
+V kódu Java získáte přístup k certifikátu z úložiště "Windows-MY" pomocí pole běžný název subjektu (viz [certifikát veřejného klíče](https://en.wikipedia.org/wiki/Public_key_certificate)). Následující kód ukazuje, jak načíst certifikát privátního klíče:
 
-Pokud potřebujete načíst soubor certifikátu z adresáře aplikace, je vhodnější ho nahrát pomocí [FTPS](deploy-ftp.md) namísto [Gitu](deploy-local-git.md), například. Měli byste chránit citlivá data, jako je soukromý certifikát, ze správy zdrojového kódu.
+```java
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import java.security.KeyStore;
+import java.security.cert.Certificate;
+import java.security.PrivateKey;
 
-I když soubor načítáte přímo do kódu .NET, knihovna stále ověřuje, zda je aktuální profil uživatele načten. Chcete-li načíst aktuální profil uživatele, nastavte nastavení aplikace `WEBSITE_LOAD_USER_PROFILE` pomocí následujícího příkazu v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>.
+...
+KeyStore ks = KeyStore.getInstance("Windows-MY");
+ks.load(null, null); 
+Certificate cert = ks.getCertificate("<subject-cn>");
+PrivateKey privKey = (PrivateKey) ks.getKey("<subject-cn>", ("<password>").toCharArray());
 
-```azurecli-interactive
-az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
+// Use the certificate and key
+...
 ```
 
-Po nastavení tohoto nastavení následující C# příklad načte certifikát s názvem `mycert.pfx` z adresáře `certs` úložiště vaší aplikace.
+Jazyky, které nepodporují nebo neposkytují nedostatečnou podporu úložiště certifikátů Windows, najdete v tématu [načtení certifikátu ze souboru](#load-certificate-from-file).
+
+## <a name="load-certificate-in-linux-apps"></a>Načíst certifikát v aplikacích pro Linux
+
+Nastavení aplikace `WEBSITE_LOAD_CERTIFICATES` zpřístupňuje zadané certifikáty pro hostované aplikace Linux (včetně vlastních kontejnerových aplikací) jako soubory. Soubory se nacházejí v následujících adresářích:
+
+- Privátní certifikáty – `/var/ssl/private` (soubory `.p12`)
+- Veřejné certifikáty – `/var/ssl/certs` (soubory `.der`)
+
+Názvy souborů certifikátů jsou kryptografické otisky certifikátů. Následující C# kód ukazuje, jak načíst veřejný certifikát v aplikaci pro Linux.
 
 ```csharp
 using System;
 using System.Security.Cryptography.X509Certificates;
 
 ...
-// Replace the parameter with "~/<relative-path-to-cert-file>".
-string certPath = Server.MapPath("~/certs/mycert.pfx");
+var bytes = System.IO.File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
+var cert = new X509Certificate2(bytes);
 
-X509Certificate2 cert = GetCertificate(certPath, signatureBlob.Thumbprint);
-...
+// Use the loaded certificate
 ```
 
-## <a name="more-resources"></a>Další zdroje
+Pokud chcete zjistit, jak načíst certifikát SSL ze souboru v Node. js, PHP, Pythonu, Java nebo Ruby, přečtěte si dokumentaci k příslušnému jazyku nebo webové platformě.
+
+## <a name="load-certificate-from-file"></a>Načíst certifikát ze souboru
+
+Pokud potřebujete načíst soubor certifikátu, který nahrajete ručně, je vhodnější nahrát certifikát pomocí [FTPS](deploy-ftp.md) místo [Gitu](deploy-local-git.md), například. Měli byste chránit citlivá data, jako je soukromý certifikát, ze správy zdrojového kódu.
+
+> [!NOTE]
+> ASP.NET a ASP.NET Core ve Windows musí mít přístup k úložišti certifikátů, i když načtete certifikát ze souboru. Pokud chcete načíst soubor certifikátu v aplikaci Windows .NET, načtěte aktuální profil uživatele pomocí následujícího příkazu v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>:
+>
+> ```azurecli-interactive
+> az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
+> ```
+
+Následující C# příklad načte veřejný certifikát z relativní cesty ve vaší aplikaci:
+
+```csharp
+using System;
+using System.Security.Cryptography.X509Certificates;
+
+...
+var bytes = System.IO.File.ReadAllBytes("~/<relative-path-to-cert-file>");
+var cert = new X509Certificate2(bytes);
+
+// Use the loaded certificate
+```
+
+Pokud chcete zjistit, jak načíst certifikát SSL ze souboru v Node. js, PHP, Pythonu, Java nebo Ruby, přečtěte si dokumentaci k příslušnému jazyku nebo webové platformě.
+
+## <a name="more-resources"></a>Další zdroje informací
 
 * [Zabezpečení vlastního názvu DNS pomocí vazby SSL](configure-ssl-bindings.md)
 * [Vynucení HTTPS](configure-ssl-bindings.md#enforce-https)

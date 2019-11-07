@@ -1,5 +1,5 @@
 ---
-title: Kopírování databáze SQL Azure | Microsoft Docs
+title: Kopírování databáze SQL Azure
 description: Vytvořte reakční konzistentní kopii existující databáze SQL Azure na stejném nebo jiném serveru.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 09/04/2019
-ms.openlocfilehash: de56e66046bb61ac31c1842ae6ce7a9c6720760d
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d49896d8088ae1352cb2785d061cde6c8647cb89
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934206"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690798"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Kopírování reakční konzistentní kopie databáze SQL Azure
 
@@ -33,7 +33,7 @@ Kopie databáze je snímek zdrojové databáze v době žádosti o zkopírován�
 
 Když zkopírujete databázi do stejného serveru SQL Database, můžete použít stejné přihlašovací údaje i v obou databázích. Objekt zabezpečení, který použijete ke kopírování databáze, se bude vlastníkem databáze v nové databázi. Všichni uživatelé databáze, jejich oprávnění a identifikátory zabezpečení (SID) se zkopírují do kopie databáze.  
 
-Při kopírování databáze na jiný SQL Database Server se objekt zabezpečení na novém serveru bude vlastníkem databáze v nové databázi. Pokud používáte [uživatele databáze](sql-database-manage-logins.md) s omezením pro přístup k datům, ujistěte se, že primární i sekundární databáze mají vždy stejné přihlašovací údaje uživatele, takže po dokončení kopie můžete k ní hned přistupovat pomocí stejných přihlašovacích údajů. 
+Při kopírování databáze na jiný SQL Database Server se objekt zabezpečení na novém serveru bude vlastníkem databáze v nové databázi. Pokud používáte [uživatele databáze s omezením](sql-database-manage-logins.md) pro přístup k datům, ujistěte se, že primární i sekundární databáze mají vždy stejné přihlašovací údaje uživatele, takže po dokončení kopie můžete k ní hned přistupovat pomocí stejných přihlašovacích údajů. 
 
 Pokud používáte [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), můžete úplně eliminovat nutnost spravovat přihlašovací údaje v kopii. Když ale kopírujete databázi na nový server, přístup na základě přihlašovacích údajů nemusí fungovat, protože přihlášení na novém serveru neexistují. Další informace o správě přihlášení po zkopírování databáze na jiný SQL Database Server najdete v tématu [Správa zabezpečení služby Azure SQL Database po zotavení po havárii](sql-database-geo-replication-security-config.md). 
 
@@ -72,8 +72,8 @@ Chcete-li vytvořit kopii databáze, budete muset být v následujících rolíc
 - SQL Server role přispěvatele nebo
 - Vlastní role ve zdrojové a cílové databázi s následujícím oprávněním:
 
-   Microsoft.Sql/servers/databases/read   
-   Microsoft.Sql/servers/databases/write   
+   Microsoft. SQL/servery/databáze/číst   
+   Microsoft. SQL/servery/databáze/zápis   
 
 Pokud chcete kopii databáze zrušit, budete muset být v následujících rolích.
 
@@ -81,21 +81,21 @@ Pokud chcete kopii databáze zrušit, budete muset být v následujících rolí
 - SQL Server role přispěvatele nebo
 - Vlastní role ve zdrojové a cílové databázi s následujícím oprávněním:
 
-   Microsoft.Sql/servers/databases/read   
-   Microsoft.Sql/servers/databases/write   
+   Microsoft. SQL/servery/databáze/číst   
+   Microsoft. SQL/servery/databáze/zápis   
    
 Pokud chcete spravovat kopii databáze pomocí Azure Portal, budete potřebovat taky následující oprávnění:
 
-&nbsp;&nbsp; Microsoft.Resources/Subscriptions/&nbsp; Resources/Read   
-&nbsp;&nbsp; Microsoft.Resources/Subscriptions/&nbsp; Resources/Write   
-&nbsp;&nbsp; Microsoft.Resources&nbsp; /nasazení/čtení   
-&nbsp;&nbsp; Microsoft.Resources&nbsp; /nasazení/zápis   
-&nbsp;&nbsp; Microsoft.Resources/Deployments&nbsp; /operationstatuses/Read    
+&nbsp; &nbsp; &nbsp; Microsoft. Resources/Subscriptions/Resources/Read   
+&nbsp; &nbsp; &nbsp; Microsoft. Resources/Subscriptions/Resources/Write   
+&nbsp; &nbsp; &nbsp; Microsoft. Resources/nasazení/číst   
+&nbsp; &nbsp; &nbsp; Microsoft. Resources/Deployments/Write   
+&nbsp; &nbsp; &nbsp; Microsoft. Resources/Deployments/operationstatuses/Read    
 
 Pokud chcete zobrazit operace v rámci nasazení ve skupině prostředků na portálu, operace napříč více zprostředkovateli prostředků, včetně operací SQL, budete potřebovat tyto další role RBAC: 
 
-&nbsp;&nbsp; Microsoft.Resources/Subscriptions/ResourceGroups/&nbsp; nasazení/operace/čtení   
-&nbsp;&nbsp; Microsoft.Resources/Subscriptions/ResourceGroups/Deployments&nbsp; /operationstatuses/Read
+&nbsp; &nbsp; &nbsp; Microsoft. Resources/Subscriptions/ResourceGroups/nasazení/operace/čtení   
+&nbsp; &nbsp; &nbsp; Microsoft. Resources/Subscriptions/ResourceGroups/Deployments/operationstatuses/Read
 
 
 
@@ -157,7 +157,7 @@ Všichni uživatelé v nové databázi si uchovávají oprávnění, která měl
 
 Další informace o správě uživatelů a přihlášení po zkopírování databáze na jiný SQL Database Server najdete v tématu [Správa zabezpečení služby Azure SQL Database po zotavení po havárii](sql-database-geo-replication-security-config.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Informace o přihlášeních najdete v tématech [Správa přihlášení](sql-database-manage-logins.md) a [Správa zabezpečení služby Azure SQL Database po zotavení po havárii](sql-database-geo-replication-security-config.md).
 * Informace o exportu databáze najdete v tématu [Export databáze do BacPac](sql-database-export.md).

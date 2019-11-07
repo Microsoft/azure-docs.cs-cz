@@ -1,5 +1,5 @@
 ---
-title: Ověřování Azure Active Directory – Azure SQL | Microsoft Docs
+title: Ověřování Azure Active Directory – Azure SQL
 description: Přečtěte si, jak používat Azure Active Directory pro ověřování pomocí SQL Database, spravované instance a SQL Data Warehouse
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: 848cfc96a7da4e69ff77d16a42226a983153ac63
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4516f75d80345312a6ca3b6dac3e5156d7e239e8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897006"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691366"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Pro ověřování pomocí SQL použít Azure Active Directory ověřování
 
@@ -44,7 +44,7 @@ Díky ověřování Azure AD můžete na jednom místě centrálně spravovat id
 Kroky konfigurace obsahují následující postupy pro konfiguraci a použití ověřování Azure Active Directory.
 
 1. Vytvoření a naplnění služby Azure AD.
-2. Volitelné: Přidružte nebo změňte službu Active Directory, která je aktuálně přidružená k vašemu předplatnému Azure.
+2. Volitelné: přidružte nebo změňte službu Active Directory, která je aktuálně přidružená k vašemu předplatnému Azure.
 3. Vytvořte správce Azure Active Directory pro Azure SQL Database Server, spravovanou instanci nebo [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
 4. Nakonfigurujte klientské počítače.
 5. Vytvořte uživatele databáze s omezením ve vaší databázi namapované na identity Azure AD.
@@ -71,7 +71,7 @@ Při použití ověřování Azure AD jsou k dispozici dva účty správců pro 
 
 ## <a name="permissions"></a>Oprávnění
 
-Chcete-li vytvořit nové uživatele, musíte mít `ALTER ANY USER` v databázi oprávnění. `ALTER ANY USER` Oprávnění lze udělit libovolnému uživateli databáze. Oprávnění je také uchováváno pomocí účtů správců serveru a uživatelů databáze `CONTROL ON DATABASE` s oprávněním nebo `ALTER ON DATABASE` pro `db_owner` tuto databázi a členy databázové role. `ALTER ANY USER`
+Chcete-li vytvořit nové uživatele, musíte mít v databázi oprávnění `ALTER ANY USER`. Oprávnění `ALTER ANY USER` lze udělit libovolnému uživateli databáze. Oprávnění `ALTER ANY USER` jsou také uložena v účtech správců serveru a uživatelé databáze s oprávněním `CONTROL ON DATABASE` nebo `ALTER ON DATABASE` pro tuto databázi a členy role databáze `db_owner`.
 
 Chcete-li vytvořit uživatele databáze s omezením v Azure SQL Database, spravované instanci nebo SQL Data Warehouse, je nutné se připojit k databázi nebo instanci pomocí identity Azure AD. Chcete-li vytvořit prvního uživatele databáze s omezením, je nutné se připojit k databázi pomocí správce Azure AD (který je vlastníkem databáze). To je znázorněno v [konfiguraci a správě Azure Active Directory ověřování pomocí SQL Database nebo SQL Data Warehouse](sql-database-aad-authentication-configure.md). Jakékoli ověřování Azure AD je možné pouze v případě, že byl vytvořen správce Azure AD pro Azure SQL Database nebo SQL Data Warehouse Server. Pokud byl správce Azure Active Directory odebraný ze serveru, stávající uživatelé Azure Active Directory dříve vytvořeni dříve v SQL Server se již nebudou moci připojit k databázi pomocí příslušných přihlašovacích údajů Azure Active Directory.
 
@@ -79,16 +79,16 @@ Chcete-li vytvořit uživatele databáze s omezením v Azure SQL Database, sprav
 
 - V Azure SQL serveru nebo SQL Data Warehouse můžou být zřízené následující členové Azure AD:
 
-  - Nativní členové: Člen vytvořený v Azure AD ve spravované doméně nebo v doméně zákazníka. Další informace najdete v tématu [Přidání vlastního názvu domény do Azure AD](../active-directory/active-directory-domains-add-azure-portal.md).
-  - Členové federované domény: Člen vytvořený v Azure AD se federované doménou. Další informace najdete v tématu [Microsoft Azure nyní podporuje federaci s Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/).
+  - Nativní členové: člen vytvořený v Azure AD ve spravované doméně nebo v doméně zákazníka. Další informace najdete v tématu [Přidání vlastního názvu domény do Azure AD](../active-directory/active-directory-domains-add-azure-portal.md).
+  - Členové federované domény: člen vytvořený v Azure AD se federované doménou. Další informace najdete v tématu [Microsoft Azure nyní podporuje federaci s Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/).
   - Importované členy z jiných členů služby Azure AD, kteří jsou nativní nebo federované domény.
   - Skupiny služby Active Directory se vytvořily jako skupiny zabezpečení.
 
-- Uživatelé Azure AD, kteří jsou součástí skupiny, která má `db_owner` roli serveru, nemůžou použít syntaxi pro **[Vytvoření databáze](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)** s rozsahem na Azure SQL Database a Azure SQL Data Warehouse. Zobrazí se následující chyba:
+- Uživatelé Azure AD, kteří jsou součástí skupiny, která má `db_owner` role serveru, nemůže použít syntaxi **[přihlašovacích údajů CREATE DATABASE s rozsahem](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)** Azure SQL Database a Azure SQL Data Warehouse. Zobrazí se následující chyba:
 
     `SQL Error [2760] [S0001]: The specified schema name 'user@mydomain.com' either does not exist or you do not have permission to use it.`
 
-    Udělte roli přímo individuálnímu uživateli služby Azure AD, aby se zmírnil problém s rozsahem pro **Vytvoření databáze s oborem přihlašovacích údajů.** `db_owner`
+    Udělte roli `db_owner` přímo individuálnímu uživateli služby Azure AD, aby se zmírnil problém s **rozsahem vytváření databázových údajů** .
 
 - Tyto systémové funkce vrací hodnoty NULL při spuštění v rámci objektů zabezpečení Azure AD:
 
@@ -101,8 +101,8 @@ Chcete-li vytvořit uživatele databáze s omezením v Azure SQL Database, sprav
 ### <a name="managed-instances"></a>Spravované instance
 
 - Objekty zabezpečení serveru Azure AD (přihlášení) a uživatelé se podporují jako funkce verze Preview pro [spravované instance](sql-database-managed-instance.md).
-- Nastavení objektů zabezpečení serveru Azure AD (přihlášení) mapovaných na skupinu Azure AD, protože vlastník databáze není ve spravovaných [instancích](sql-database-managed-instance.md)podporován.
-    - Toto rozšíření znamená, že když se skupina přidá jako součást `dbcreator` role serveru, uživatelé z této skupiny se můžou připojit ke spravované instanci a vytvářet nové databáze, ale nebudou mít přístup k databázi. Je to proto, že nový vlastník databáze je SA, nikoli uživatel Azure AD. Tento problém se neprojeví, pokud se jednotlivé uživatele přidají `dbcreator` do role serveru.
+- Nastavení objektů zabezpečení serveru Azure AD (přihlášení) mapovaných na skupinu Azure AD, protože vlastník databáze není ve [spravovaných instancích](sql-database-managed-instance.md)podporován.
+    - Toto rozšíření znamená, že když se skupina přidá jako součást role serveru `dbcreator`, uživatelé z této skupiny se můžou připojit ke spravované instanci a vytvářet nové databáze, ale nebudou mít přístup k databázi. Je to proto, že nový vlastník databáze je SA, nikoli uživatel Azure AD. Tento problém nemanifestuje, pokud je jednotlivý uživatel přidán do role serveru `dbcreator`.
 - Provádění úloh správy a úloh SQL agentů je podporováno pro objekty zabezpečení serveru Azure AD (přihlášení).
 - Operace zálohování a obnovení databáze můžou provádět objekty zabezpečení serveru Azure AD (přihlášení).
 - Je podporováno auditování všech příkazů souvisejících s objekty zabezpečení serveru Azure AD (přihlášeními) a událostmi ověřování.
@@ -132,7 +132,7 @@ Následující metody ověřování jsou podporovány pro objekty zabezpečení 
 
 - Pro zlepšení spravovatelnosti doporučujeme zřídit vyhrazenou skupinu Azure AD jako správce.   
 - Pro Azure SQL Database Server nebo Azure SQL Data Warehouse můžete kdykoli nakonfigurovat pouze jednoho správce Azure AD (uživatele nebo skupinu).
-  - Přidání objektů zabezpečení serveru Azure AD (přihlášení) pro spravované instance (**Public Preview**) umožňuje vytvořit více objektů zabezpečení serveru Azure AD (přihlášení), které je možné do `sysadmin` role přidat.
+  - Přidání objektů zabezpečení serveru Azure AD (přihlášení) pro spravované instance (**Public Preview**) umožňuje vytvořit více objektů zabezpečení serveru Azure AD (přihlášení), které je možné přidat do role `sysadmin`.
 - Pouze správce Azure AD pro SQL Server se může zpočátku připojit k serveru Azure SQL Database, spravované instanci nebo Azure SQL Data Warehouse pomocí účtu Azure Active Directory. Správce služby Active Directory může nakonfigurovat další uživatele databáze služby Azure AD.   
 - Doporučujeme nastavit časový limit připojení na 30 sekund.   
 - SQL Server 2016 Management Studio a SQL Server Data Tools for Visual Studio 2015 (verze 14.0.60311.1 Duben 2016 nebo novější) podporují Azure Active Directory ověřování. (Ověřování Azure AD podporuje **.NET Framework Zprostředkovatel dat pro SQLServer**; minimálně verze .NET Framework 4,6). Proto nejnovější verze těchto nástrojů a aplikací na datové vrstvě (DAC a. BACPAC) může používat ověřování Azure AD.   

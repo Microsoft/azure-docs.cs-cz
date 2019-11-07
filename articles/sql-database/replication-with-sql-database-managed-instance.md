@@ -1,5 +1,5 @@
 ---
-title: Konfigurace replikace v databázi spravované instance Azure SQL Database | Microsoft Docs
+title: 'Konfigurace replikace v databázi spravované instance Azure SQL Database '
 description: Přečtěte si o konfiguraci transakční replikace v databázi spravované instance Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: b940be1d1b68e4e2a41e3f8353cb54fdb51bb886
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 21275ce7716ffc394c1e7445c3f6836f09b44c87
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338742"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692166"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurace replikace v databázi spravované instance Azure SQL Database
 
@@ -41,7 +41,7 @@ Konfigurace spravované instance tak, aby fungovala jako Vydavatel nebo distribu
 - Zda je spravovaná instance vydavatele ve stejné virtuální síti jako distributor a předplatitel, nebo je mezi virtuálními sítěmi všech tří entit vytvořeno [partnerský vztah](../virtual-network/tutorial-connect-virtual-networks-powershell.md) virtuální sítě. 
 - Při připojování mezi účastníky replikace se používá ověřování SQL.
 - Sdílená složka účtu Azure Storage pro pracovní adresář replikace.
-- Port 445 (odchozí TCP) je otevřen v pravidlech zabezpečení NSG pro spravované instance pro přístup ke sdílené složce Azure.  Pokud se zobrazí chyba "připojení k Azure Storage \<storage název účtu > s chybou operačního systému 53", budete muset přidat odchozí pravidlo do NSG příslušné podsítě spravované instance SQL.
+- Port 445 (odchozí TCP) je otevřen v pravidlech zabezpečení NSG pro spravované instance pro přístup ke sdílené složce Azure.  Pokud narazíte na chybu "připojení k Azure Storage \<název účtu úložiště > s chybou operačního systému 53", budete muset přidat odchozí pravidlo do NSG příslušné podsítě spravované instance SQL.
 
 
  > [!NOTE]
@@ -86,7 +86,7 @@ Zkopírujte přístupové klíče úložiště ve formátu: `DefaultEndpointsPro
 
 ## <a name="4---create-a-publisher-database"></a>4\. vytvoření databáze vydavatele
 
-Připojte se ke svojí spravované instanci `sql-mi-pub` pomocí SQL Server Management Studio a spusťte následující kód jazyka Transact-SQL (T-SQL) pro vytvoření databáze vydavatele:
+Připojte se k vaší `sql-mi-pub` spravované instanci pomocí SQL Server Management Studio a spusťte následující kód jazyka Transact-SQL (T-SQL) pro vytvoření databáze vydavatele:
 
 ```sql
 USE [master]
@@ -120,7 +120,7 @@ GO
 
 ## <a name="5---create-a-subscriber-database"></a>5\. vytvoření databáze odběratele
 
-Připojte se ke svojí spravované instanci `sql-mi-sub` pomocí SQL Server Management Studio a spusťte následující kód T-SQL k vytvoření prázdné databáze odběratele:
+Připojte se k vaší `sql-mi-sub` spravované instanci pomocí SQL Server Management Studio a spusťte následující kód T-SQL k vytvoření prázdné databáze odběratele:
 
 ```sql
 USE [master]
@@ -141,7 +141,7 @@ GO
 
 ## <a name="6---configure-distribution"></a>6\. konfigurace distribuce
 
-Připojte se ke svojí spravované instanci `sql-mi-pub` pomocí SQL Server Management Studio a spusťte následující kód T-SQL pro konfiguraci distribuční databáze. 
+Připojte se k vaší `sql-mi-pub` spravované instanci pomocí SQL Server Management Studio a spusťte následující kód T-SQL ke konfiguraci distribuční databáze. 
 
 ```sql
 USE [master]
@@ -154,7 +154,7 @@ GO
 
 ## <a name="7---configure-publisher-to-use-distributor"></a>7\. konfigurace vydavatele pro použití distributora 
 
-Na spravované instanci vydavatele `sql-mi-pub` změňte provedení dotazu na režim [Sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) a spuštěním následujícího kódu Zaregistrujte nového distributora s vaším vydavatelem. 
+Na spravované instanci vydavatele `sql-mi-pub`změňte provádění dotazů na režim [Sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) a spusťte následující kód, který zaregistruje nového distributora s vaším vydavatelem. 
 
 ```sql
 :setvar username loginUsedToAccessSourceManagedInstance
@@ -322,7 +322,7 @@ EXEC sp_dropdistributor @no_checks = 1
 GO
 ```
 
-Prostředky Azure můžete vyčistit [odstraněním prostředků spravované instance ze skupiny prostředků](../azure-resource-manager/manage-resources-portal.md#delete-resources) a následným odstraněním skupiny prostředků `SQLMI-Repl`. 
+Prostředky Azure můžete vyčistit [odstraněním prostředků spravované instance ze skupiny prostředků](../azure-resource-manager/manage-resources-portal.md#delete-resources) a následným odstraněním `SQLMI-Repl`skupiny prostředků. 
 
    
 ## <a name="see-also"></a>Viz také

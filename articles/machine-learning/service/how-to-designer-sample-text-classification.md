@@ -1,7 +1,7 @@
 ---
-title: 'Příklad návrháře #7: zařazení recenzí knihy'
+title: Návrhář&#58; klasifikuje recenze knih
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak vytvořit model strojového učení klasifikovat recenze knih do různých kategorií.
+description: Sestavte model strojového učení klasifikovat recenze knih do různých kategorií.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 6f9a2327953177f29ba7a1f5948d24c7df428c09
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 949ddc847a6011d460f2a3685008d12e64868767
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515444"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647130"
 ---
 # <a name="sample-7---text-classification-predict-company-category"></a>Ukázka 7 – klasifikace textu: předpověď kategorie společnosti 
 

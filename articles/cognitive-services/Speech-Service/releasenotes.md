@@ -11,14 +11,38 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: 353e0478172ed03cde848d8c5127d2ee41724963
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b40df5878d08b222d145531bfdad1e30b2fe989d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73481242"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647404"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
+
+## <a name="speech-sdk-180-2019-november-release"></a>Sada Speech SDK 1.8.0:2019 – listopadová verze
+
+**Nové funkce**
+*   Přidali jsme rozhraní API FromHost (), které vám umožní snadnou práci s Prem kontejnery a cloudy v svrchovaném provozu.
+*   Přidání automatického zdrojového Rozpoznávání jazyka pro rozpoznávání řeči (v jazyce Java C++a)
+*   Přidání objektu SourceLanguageConfig pro rozpoznávání řeči, pomocí kterého se určí očekávané zdrojové jazyky (v jazycích C++Java a)
+*   Přidání podpory KeywordRecognizer do Windows (UWP), Androidu a iOS prostřednictvím balíčků NuGet a Unity
+*   Bylo přidáno rozhraní API vzdálené konverzace Java, které umožní přepis konverzace v asynchronních dávkách.
+
+**Průlomové změny**
+*   Funkce konverzace Transcriber přesunuté do oboru názvů Microsoft. Cognitiveservices Account. Speech. přepis.
+*   Součást metod konverzace Transcriber je přesunuta do nové třídy konverzace.
+*   Vyřazena podpora pro 32-bit (ARMv7 a x86) iOS 
+
+**Opravy chyb**
+*   Oprava pro chybu, pokud se používá místní KeywordRecognizer bez platného klíče předplatného služby Speech Service
+
+**Ukázky**
+*   Ukázka Xamarin pro KeywordRecognizer
+*   Ukázka Unity pro KeywordRecognizer
+*   C++a ukázky Java pro automatické zdrojové Rozpoznávání jazyka.
+
+
 ## <a name="speech-sdk-170-2019-september-release"></a>Sada Speech SDK 1.7.0:2019 – září verze
 
 **Nové funkce**
@@ -37,7 +61,6 @@ ms.locfileid: "73481242"
 *   Opravený problém s identifikátory UUID není jedinečný v některých vlastnostech připojení.
 *   Opravili jsme několik upozornění na specifikátory hodnoty null v vazbách SWIFT (může vyžadovat malé změny kódu).
 *   Opravili jsme chybu, která způsobila, že připojení protokolu WebSocket se v zatížení sítě nekorektně zavřou.
-*   iOS: Vyřazená Podpora architektury arm7s
 *   Opravili jsme problém v Androidu, který někdy má za následek duplicitní ID dojmu, které používá DialogServiceConnector.
 *   Vylepšení stability připojení v rámci vícenásobných interakcí a hlášení selhání (prostřednictvím zrušených událostí), když k nim dojde v DialogServiceConnector
 *   DialogServiceConnector relace začne nyní správně poskytovat události, včetně při volání ListenOnceAsync () během aktivního StartKeywordRecognitionAsync ().

@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 134ca92671a41eb53201101a3622215466a60c09
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: a921d6110fd0294012e2e59542ba2c82d63ffcde
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065098"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73642082"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účet Microsoft s využitím Azure Active Directory B2C
 
 ## <a name="create-a-microsoft-account-application"></a>Vytvoření aplikace účet Microsoft
 
-Pokud chcete použít účet Microsoft jako [poskytovatele identity](active-directory-b2c-reference-oidc.md) v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci v TENANTOVI Azure AD. Tenant Azure AD není stejný jako váš tenant Azure AD B2C. Pokud ještě nemáte účet Microsoft, můžete si ho získat na adrese [https://www.live.com/](https://www.live.com/).
+Pokud chcete použít účet Microsoft jako [poskytovatele identity](active-directory-b2c-reference-oidc.md) v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci v TENANTOVI Azure AD. Tenant Azure AD není stejný jako váš tenant Azure AD B2C. Pokud ještě nemáte účet Microsoft, můžete si ho získat na [https://www.live.com/](https://www.live.com/).
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
@@ -30,8 +30,8 @@ Pokud chcete použít účet Microsoft jako [poskytovatele identity](active-dire
 1. Zadejte **název** vaší aplikace. Například *MSAapp1*.
 1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft (např. Skype, Xbox, Outlook.com)** . Tato možnost cílí na nejširší sadu identit Microsoftu.
 
-   Další informace o různých výběrech typu účtu najdete v tématu [rychlý Start: Zaregistrujte aplikaci s platformou](../active-directory/develop/quickstart-register-app.md)Microsoft identity.
-1. V části **identifikátor URI přesměrování (volitelné)** vyberte **Web** a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` do textového pole zadejte. Nahraďte `your-tenant-name` názvem vašeho tenanta Azure AD B2C.
+   Další informace o různých výběrech typu účtu najdete v tématu [rychlý Start: registrace aplikace s platformou Microsoft Identity](../active-directory/develop/quickstart-register-app.md).
+1. V části **identifikátor URI přesměrování (volitelné)** vyberte **Web** a do textového pole zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Nahraďte `your-tenant-name` názvem tenanta Azure AD B2C.
 1. Vybrat **registraci**
 1. Poznamenejte si **ID aplikace (klienta)** zobrazené na stránce Přehled aplikace. Budete ho potřebovat při konfiguraci poskytovatele identity v další části.
 1. Vybrat **certifikáty & tajných** kódů

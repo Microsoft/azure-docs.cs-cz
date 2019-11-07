@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e6e4c0018f11e216afd5a8c295fc336036885e68
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 577dc6d4344cd6d7a38c4d538218c9dd89e883aa
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468942"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643638"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: nejčastější dotazy (FAQ)
 
@@ -35,9 +35,9 @@ Azure AD B2C nelze použít k ověřování uživatelů pro systém Microsoft Of
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Co jsou místní účty v Azure AD B2C? Jak se liší od pracovních nebo školních účtů ve službě Azure AD?
 
-V tenantovi Azure AD uživatelé patřící do přihlášení tenanta pomocí e-mailové adresy formuláře `<xyz>@<tenant domain>`. `<tenant domain>` je jedna z ověřených domén v tenantovi nebo počáteční `<...>.onmicrosoft.com` doména. Tento typ účtu je pracovní nebo školní účet.
+V tenantovi Azure AD uživatelé patřící do přihlášení klienta pomocí e-mailové adresy formuláře `<xyz>@<tenant domain>`. `<tenant domain>` je jedna z ověřených domén v tenantovi nebo počáteční `<...>.onmicrosoft.com` doména. Tento typ účtu je pracovní nebo školní účet.
 
-Ve Azure AD B2C tenantovi většina aplikací chce, aby se uživatel přihlásil pomocí libovolné e-mailové adresy (například joe@comcast.net, bob@gmail.com, sarah@contoso.com nebo jim@live.com). Tento typ účtu je místní účet. Také podporujeme libovolná uživatelská jména jako místní účty (například Jana, Bob, Sarah nebo jim). Při konfiguraci zprostředkovatelů identity pro Azure AD B2C v Azure Portal můžete zvolit jeden z těchto dvou místních typů účtů. Ve vašem tenantovi Azure AD B2C vyberte **Zprostředkovatelé identity**, vyberte **místní účet**a pak vyberte **uživatelské jméno**.
+V tenantovi Azure AD B2C se většina aplikací chce přihlašovat pomocí libovolné e-mailové adresy (například joe@comcast.net, bob@gmail.com, sarah@contoso.comnebo jim@live.com). Tento typ účtu je místní účet. Také podporujeme libovolná uživatelská jména jako místní účty (například Jana, Bob, Sarah nebo jim). Při konfiguraci zprostředkovatelů identity pro Azure AD B2C v Azure Portal můžete zvolit jeden z těchto dvou místních typů účtů. Ve vašem tenantovi Azure AD B2C vyberte **Zprostředkovatelé identity**, vyberte **místní účet**a pak vyberte **uživatelské jméno**.
 
 Uživatelské účty pro aplikace se musí vždy vytvořit prostřednictvím uživatelského toku registrace, registrace nebo přihlašování uživatelů nebo pomocí Graph API Azure AD. Uživatelské účty vytvořené v Azure Portal se používají jenom pro správu tenanta.
 
@@ -132,7 +132,7 @@ Momentálně ne. Tato funkce je v našem plánu. Ověření domény na kartě **
 
 Chcete-li odstranit svého tenanta Azure AD B2C, postupujte podle těchto kroků.
 
-Můžete použít aktuální prostředí **aplikací** nebo naše nové sjednocené **Registrace aplikací (ve verzi Preview)** . [Přečtěte si další informace o prostředí verze Preview](http://aka.ms/b2cappregintro).
+Můžete použít aktuální prostředí **aplikací** nebo naše nové sjednocené **Registrace aplikací (ve verzi Preview)** . [Další informace o novém prostředí](https://aka.ms/b2cappregintro).
 
 #### <a name="applicationstabapplications"></a>[Aplikace](#tab/applications/)
 

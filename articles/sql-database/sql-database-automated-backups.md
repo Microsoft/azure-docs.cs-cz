@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database automatické, geograficky redundantní zálohy | Microsoft Docs
+title: Azure SQL Database automatické, geograficky redundantní zálohy
 description: SQL Database automaticky vytvoří zálohování místní databáze každých několik minut a používá geograficky redundantní úložiště s přístupem pro čtení z Azure pro geografickou redundanci.
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: a43783110f625dd5faef13c83228a2659155ead0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5dd2cb8d266fcb2a17c50a2213509b968894737e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492234"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691172"
 ---
 # <a name="automated-backups"></a>Automatizované zálohy
 
@@ -81,7 +81,7 @@ Podobně jako PITR, zálohy LTR jsou geograficky redundantní a chráněné [Azu
 
 Další informace najdete v tématu [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md).
 
-## <a name="storage-costs"></a>Náklady na úložiště
+## <a name="storage-costs"></a>Cena za uložení
 U izolovaných databází a spravovaných instancí se minimální velikost záložního úložiště rovná 100% velikosti databáze poskytuje bez dalších poplatků. V případě elastických fondů se minimální hodnota úložiště zálohy rovná 100% přiděleného úložiště dat pro fond, a to bez dalších poplatků. Využití úložiště zálohování nad tuto mez bude zpoplatněno v jednotkách GB/měsíc. Tato další spotřeba bude záviset na zatížení a velikosti jednotlivých databází.
 
 Další informace o cenách za úložiště najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/sql-database/single/) . 
@@ -142,7 +142,7 @@ Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup
 
 ### <a name="change-pitr-retention-period-using-rest-api"></a>Změna doby uchování PITR pomocí REST API
 
-#### <a name="sample-request"></a>Ukázková žádost
+#### <a name="sample-request"></a>Ukázkový požadavek
 
 ```http
 PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview

@@ -1,6 +1,7 @@
 ---
 title: Poznámky k verzi – Custom Vision Service
 titleSuffix: Azure Cognitive Services
+description: Získejte nejnovější informace o nových vydáních týmu Custom Vision.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -9,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 79f3f2a5545b8cdcee86e52f35bd22a31e93d387
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b9606c63ec7b53fb0b69918c21bdd9206f34c555
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564091"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647564"
 ---
 # <a name="custom-vision-service-release-notes"></a>Poznámky k verzi Custom Vision Service
 
@@ -107,7 +108,7 @@ Opravy chyb, včetně exportu ONNX se speciálními znaky.
 
 ## <a name="december-19-2017"></a>19. prosince 2017
 
-- Přidání možnosti exportu na Android (TensorFlow) navíc k dříve vydané možnosti exportu na iOS (CoreML). To umožňuje exportovat natrénovaný kompaktní model pro offline spouštění v aplikaci.
+- Exportovat do Androidu (TensorFlow) přidané kromě dříve vydaných exportů do iOS (CoreML.) To umožňuje exportovat vyškolený kompaktní model, který se má spustit offline v aplikaci.
 - Přidání kompaktních domén Retail (Maloobchod) a Landmark (Památka) umožňujících export modelů pro tyto domény.
 - Vydání [rozhraní API pro trénování verze 1.2](https://southcentralus.dev.cognitive.microsoft.com/docs/services/f2d62aa3b93843d79e948fe87fa89554/operations/5a3044ee08fa5e06b890f11f) a [rozhraní API pro predikce verze 1.1](https://southcentralus.dev.cognitive.microsoft.com/docs/services/57982f59b5964e36841e22dfbfe78fc1/operations/5a3044f608fa5e06b890f164). Aktualizovaná rozhraní API podporují export modelů a novou operaci predikce, která neukládá obrázky do složky Predictions. V rozhraní API pro trénování se také zavedly dávkové operace.
 - Vylepšení uživatelského rozhraní, včetně možnosti zobrazit, která doména se použila k trénování iterace.

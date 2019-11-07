@@ -1,5 +1,5 @@
 ---
-title: Udělení přístupu Azure SQL Database a SQL Data Warehouse | Microsoft Docs
+title: Udělení přístupu Azure SQL Database a SQL Data Warehouse
 description: Přečtěte si, jak udělit přístup k Microsoft Azure SQL Database a SQL Data Warehouse.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 05/08/2019
-ms.openlocfilehash: 1292dbf43b5246fe3da95ead4d5d9113b4bc84f9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c115cd7e4d531bfdc7ddbacd4f6eff2a892ea3c3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569034"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690747"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Řízení přístupu Azure SQL Database a SQL Data Warehouse
 
@@ -50,7 +50,7 @@ Uživatelské účty je možné vytvořit v hlavní databázi a udělit jim opr�
 
 Doporučený postup je, aby aplikace k ověření používala vyhrazený účet – omezíte tak počet oprávnění udělených aplikaci a snížíte riziko škodlivých aktivit v případě ohrožení kódu aplikace útoky v podobě injektáže SQL. Doporučený postup je vytvořit [uživatele databáze s omezením](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable), který umožňuje ověřit aplikaci přímo v databázi. 
 
-## <a name="authorization"></a>Authorization
+## <a name="authorization"></a>Autorizace
 
 Autorizace určuje, co může uživatel provádět ve službě Azure SQL Database. Tyto možnosti jsou dané [členstvím v databázových rolích](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles) a [oprávněními k databázi na úrovni objektů](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) vašeho účtu. Doporučený postup je udělit uživatelům co nejmenší možná oprávnění. Účet správce serveru, který používáte k připojení, je členem skupiny db_owner. Tato skupina může s databází provádět všechny operace. Tento účet uložte kvůli nasazení upgradovaných schémat a dalším možnostem správy. Použijte účet „ApplicationUser“, který má omezenější oprávnění a umožňuje připojit se z aplikace k databázi s nejnižšími oprávněními, jaké aplikace potřebuje. Další informace najdete v tématu [Správa přihlašování](sql-database-manage-logins.md).
 
@@ -63,7 +63,7 @@ Měli byste se seznámit s následujícími funkcemi, které jde použít k omez
 - K omezení rizika ohrožení citlivých dat můžete použít [maskování dat](sql-database-dynamic-data-masking-get-started.md).
 - K omezení akcí, které je možné s databází provádět, můžete použít [uložené procedury](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přehled funkcí zabezpečení služby SQL Database najdete v [přehledu zabezpečení SQL](sql-database-security-overview.md).
 - Další informace o pravidlech brány firewall najdete v tématu [pravidla brány firewall](sql-database-firewall-configure.md).

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření funkce aktivované protokolem HTTP v Azure
+title: Vytvoření funkce Python aktivované protokolem HTTP v Azure
 description: Naučte se, jak vytvořit první funkci Pythonu v Azure pomocí Azure Functions Core Tools a Azure CLI.
 author: ggailey777
 ms.author: glenga
@@ -9,20 +9,20 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: gwallace
-ms.openlocfilehash: f2602e5a13f83090291656e7062c74c245bc6568
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 791348088d909785b36934c3b9a2ae00fc0acbb7
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693349"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622037"
 ---
-# <a name="create-an-http-triggered-function-in-azure"></a>Vytvoření funkce aktivované protokolem HTTP v Azure
+# <a name="create-an-http-triggered-python-function-in-azure"></a>Vytvoření funkce Python aktivované protokolem HTTP v Azure
 
 V tomto článku se dozvíte, jak pomocí nástrojů příkazového řádku vytvořit projekt v Pythonu, který běží v Azure Functions. Můžete také vytvořit funkci, která se aktivuje požadavkem HTTP. Nakonec publikujete projekt tak, aby běžel jako [funkce bez serveru](functions-scale.md#consumption-plan) v Azure.
 
 Tento článek je první ze dvou rychlých startů Pythonu pro Azure Functions. Po dokončení tohoto rychlého startu můžete do své funkce [Přidat výstupní vazbu Azure Storage fronty](functions-add-output-binding-storage-queue-python.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, musíte:
 
@@ -105,7 +105,7 @@ Tyto příkazy vytvoří podsložku s názvem _HttpTrigger_. Obsahuje následuj�
 
     Každá vazba vyžaduje směr, typ a jedinečný název. Aktivační událost HTTP má vstupní vazbu typu [`httpTrigger`](functions-bindings-http-webhook.md#trigger) a výstupní vazba typu [`http`](functions-bindings-http-webhook.md#output).
 
-* *\_ \_init \_ \_. py*: soubor skriptu, který je funkcí AKTIVOVANÝmi protokolem HTTP. Všimněte si, že tento skript má výchozí `main()`. Data protokolu HTTP z aktivační události přecházejí do funkce pomocí `req` s názvem `binding parameter`. @No__t_0, která je definována v Function. JSON, je instancí [třídy Azure. Functions. HttpRequest](/python/api/azure-functions/azure.functions.httprequest). 
+* *\_\_init\_\_. py*: soubor skriptu, který je funkcí AKTIVOVANÝmi protokolem HTTP. Všimněte si, že tento skript má výchozí `main()`. Data protokolu HTTP z aktivační události přecházejí do funkce pomocí `req` s názvem `binding parameter`. `req`, která je definována v Function. JSON, je instancí [třídy Azure. Functions. HttpRequest](/python/api/azure-functions/azure.functions.httprequest). 
 
     Návratový objekt definovaný jako `$return` v *Function. JSON*je instancí [třídy Azure. Functions. HttpResponse](/python/api/azure-functions/azure.functions.httpresponse). Další informace najdete v tématu [Azure Functions triggerů http a vazeb](functions-bindings-http-webhook.md).
 

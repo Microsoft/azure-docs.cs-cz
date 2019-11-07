@@ -1,5 +1,5 @@
 ---
-title: Nasazení aplikace horizontálně dělené multi-tenant Database SaaS, která používá Azure SQL Database | Microsoft Docs
+title: 'Nasazení aplikace horizontálně dělené multi-tenant Database SaaS, která používá Azure SQL Database '
 description: Nasaďte a prozkoumejte aplikace horizontálně dělené Wingtip Tickets SaaS multi-tenant Database, která ukazuje vzory SaaS pomocí Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, stein
 ms.date: 10/16/2018
-ms.openlocfilehash: 2ddb1fe40507da5caa218f73284a1095035df951
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: aa61c9af2e8fbfbe1caeaffb6231afe5b8be6f3c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570370"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692047"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Nasazení a zkoumání horizontálně dělené aplikace pro více tenantů
 
@@ -57,8 +57,8 @@ Předpokladem dokončení tohoto kurzu je splnění následujících požadavků
 ### <a name="plan-the-names"></a>Plánování názvů
 
 V krocích v této části zadáte hodnotu *uživatele* , která se používá k zajištění globálně jedinečného názvu prostředků a názvu *skupiny prostředků* , která obsahuje všechny prostředky vytvořené nasazením aplikace. Pro osobu s názvem *Ann Finley*doporučujeme:
-- *Uživatel:* **AF1** *(Jejich iniciály a číslice.   Pokud aplikaci nasadíte podruhé, použijte jinou hodnotu (třeba AF2).)*
-- *Skupina prostředků:* **Wingtip-MT-AF1** *(Wingtip-MT označuje, že se jedná o horizontálně dělené aplikaci pro více tenantů. Připojení uživatelského jména AF1 koreluje s názvem skupiny prostředků s názvy prostředků, které obsahuje.)*
+- *Uživatel:* **AF1**  *(jejich iniciály a číslice. Pokud aplikaci nasadíte podruhé, použijte jinou hodnotu (třeba AF2).)*
+- *Skupina prostředků:* **Wingtip-MT-AF1** *(Wingtip-MT označuje, že se jedná o víceklientské aplikace horizontálně dělené. připojení uživatelského jména AF1 koreluje název skupiny prostředků s názvy prostředků, které obsahuje.)*
 
 Vyberte si své názvy a napište je. 
 
@@ -99,17 +99,17 @@ Při nasazení aplikace si Stáhněte zdrojový kód aplikace a skripty pro spr�
 2. Klikněte na **klonovat nebo stáhnout**.
 3. Klikněte na **Stáhnout ZIP** a uložte soubor.
 4. Klikněte pravým tlačítkem na soubor **WingtipTicketsSaaS-MultiTenantDb-Master. zip** a vyberte **vlastnosti**.
-5. Na kartě **Obecné** vyberte Odblokovat a klikněte na **použít**.
-6. Klikněte na **OK**.
+5. Na kartě **Obecné** vyberte **odblokovat**a klikněte na **použít**.
+6. Klikněte na tlačítko **OK**.
 7. Extrahujte soubory.
 
-Skripty jsou umístěny v *.. WingtipTicketsSaaS-MultiTenantDb – hlavní\\složka výukových modulů\\ \\*
+Skripty se nacházejí v *\\výukových modulech..\\WingtipTicketsSaaS-MultiTenantDb-master\\* složce.
 
 ## <a name="update-the-configuration-file-for-this-deployment"></a>Aktualizovat konfigurační soubor pro toto nasazení
 
 Před spuštěním všech skriptů nastavte *skupinu prostředků* a *uživatelské* hodnoty v **userconfig. psm1**. Nastavte tyto proměnné na stejné hodnoty, které jste nastavili během nasazování.
 
-1. Otevřít... Výukové\\moduly*userconfig. psm1* ve *ISE PowerShellu.* \\
+1. Otevřete...\\výukové moduly\\*userconfig. psm1* ve *ISE PowerShellu*.
 2. Aktualizujte *ResourceGroupName* a *název* o konkrétní hodnoty pro vaše nasazení (jenom na řádcích 10 a 11).
 3. Uložte změny.
 
@@ -124,19 +124,19 @@ Každé místo získá přizpůsobenou webovou aplikaci pro výpis svých událo
 Webová stránka centrálního **centra událostí** obsahuje seznam odkazů na klienty v rámci konkrétního nasazení. Pomocí následujících kroků můžete vyzkoušet webovou stránku **centra událostí** a jednotlivé webové aplikace:
 
 1. Otevřete **centrum událostí** ve webovém prohlížeči:
-   - http://events.wingtip-mt.&lt ; User&gt;. trafficmanager.NET &nbsp; *( &lt; nahraďte&gt; uživatele hodnotou uživatele vašeho nasazení.)*
+   - http://events.wingtip-mt.&lt; User&gt;. trafficmanager.net &nbsp; *(nahraďte &lt;user&gt; hodnotou uživatele vašeho nasazení.)*
 
      ![centrum akcí](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
 2. V **Centru akcí** klikněte na **Fabrikam Jazz Club**.
 
-   ![Duration](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
+   ![Akce](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
 Aby bylo možné řídit distribuci příchozích požadavků, používá aplikace Wingtip [Traffic Manager Azure](../traffic-manager/traffic-manager-overview.md). Stránka události pro každého tenanta zahrnuje název tenanta v adrese URL. Každá adresa URL obsahuje také konkrétní hodnotu uživatele. Každá adresa URL dodržuje zobrazený formát pomocí následujících kroků:
 
-- http://events.wingtip-mt.&lt ;user&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt; User&gt;. trafficmanager.net/*fabrikamjazzclub*
 
 1. Aplikace události analyzuje název tenanta z adresy URL. Název tenanta je *fabrikamjazzclub* v předchozím příkladu URL.
 2. Aplikace potom vyhodnotí název tenanta vytvořením klíče pro přístup ke katalogu pomocí [správy mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md).
@@ -154,7 +154,7 @@ V produkčním prostředí obvykle vytvoříte záznam DNS CNAME k [nasměrován
 
 Teď, když je aplikace nasazená, Pojďme ji dát do práce! Skript prostředí PowerShell *demo-LoadGenerator* spustí úlohu spuštěnou pro každého tenanta. Reálné zatížení mnoha aplikací SaaS je obvykle občas a nepředvídatelné. Pro simulaci tohoto typu zatížení generátor vytvoří zatížení distribuované napříč všemi klienty. Zatížení zahrnuje náhodné shluky u každého tenanta, ke kterým dochází v náhodných intervalech. Spuštění vzorku zatížení trvá několik minut, takže je před monitorováním zatížení vhodné nechat generátor běžet aspoň tři nebo čtyři minuty.
 
-1. V *prostředí POWERSHELL ISE*otevřete... Výukové\\modulynástroje\\skript*demo-LoadGenerator. ps1.* \\
+1. V *prostředí POWERSHELL ISE*otevřete\\výukové moduly\\nástroje\\skriptu *demo-LoadGenerator. ps1* .
 2. Stisknutím **F5** spusťte skript s generátorem zatížení (zatím nechejte nastavené výchozí hodnoty parametrů).
 
 Skript *demo-LoadGenerator. ps1* otevře jinou relaci PowerShellu, ve které se spustí generátor zatížení. Generátor zatížení běží v této relaci jako úloha na popředí, která vyvolá úlohy generování zatížení na pozadí, jednu pro každého tenanta.
@@ -169,7 +169,7 @@ Můžete chtít restartovat relaci generátoru zatížení, aby bylo možné pou
 
 Počáteční nasazení zahrnuje tři ukázkové klienty v databázi *Tenants1* . Pojďme vytvořit jiného tenanta a sledovat jeho účinky na nasazené aplikaci. V tomto kroku vytvoříte nového tenanta stisknutím jednoho klávesy:
 
-1. Otevřít... \\\\Výukové moduly zřídí a Catalog*demo-ProvisionTenants. ps1* v *prostředí PowerShell ISE.* \\
+1. Otevřete...\\výukové moduly\\zřízení a katalogu\\*demo-ProvisionTenants. ps1* v *prostředí PowerShell ISE*.
 2. Stisknutím klávesy **F5** (ne **F8**) spusťte skript (ponechte výchozí hodnoty nyní).
 
    > [!NOTE]
@@ -192,7 +192,7 @@ Do databází s více klienty můžete umístit zákazníky s bezplatnou zkušeb
 
 V dalším kroku zřídíme dalšího tenanta, tentokrát ve své vlastní databázi:
 
-1. V... \\\\Výukové moduly zřídí a Catalog demo-ProvisionTenants. ps1, upravují $TenantName pro Salix Salsa, $VenueType na roztancoval a $Scenario \\ **2**.
+1. V...\\výukové moduly\\zřizování a katalogu *\\demo-ProvisionTenants. ps1*, upravte *$TenantName* na **Salix Salsa**, *$VenueType* na **roztancoval** a *$Scenario* na **2**.
 
 2. Stisknutím klávesy **F5** spusťte skript znovu.
     - Tím **F5** stisknete tlačítko zřídit nového tenanta v samostatné databázi. Databáze a tenant jsou zaregistrované v katalogu. Pak se prohlížeč otevře na stránce události v tenantovi.
@@ -209,9 +209,9 @@ Teď se podíváme na některé nasazené prostředky:
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do seznamu skupin prostředků. Otevřete skupinu prostředků, kterou jste vytvořili při nasazení aplikace.
 
-   ![skupiny prostředků](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
+   ![skupina prostředků](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
 
-2. Klikněte na **katalog –&lt;MT&gt; User** Server. Server katalogu obsahuje dvě databáze s názvem *tenantcatalog* a *basetenantdb*. Databáze *basetenantdb* je prázdná databáze šablon. Kopíruje se, aby se vytvořila nová databáze tenanta, ať už se používá pro mnoho tenantů, nebo jenom pro jednoho tenanta.
+2. Klikněte na **Catalog-mt&lt;user&gt;** Server. Server katalogu obsahuje dvě databáze s názvem *tenantcatalog* a *basetenantdb*. Databáze *basetenantdb* je prázdná databáze šablon. Kopíruje se, aby se vytvořila nová databáze tenanta, ať už se používá pro mnoho tenantů, nebo jenom pro jednoho tenanta.
 
    ![katalogový server](./media/saas-multitenantdb-get-started-deploy/catalog-server.png)
 
@@ -225,13 +225,13 @@ Teď se podíváme na některé nasazené prostředky:
 
 Pokud byl generátor zatížení spuštěn po dobu několika minut, je k dispozici dostatek telemetrie, aby bylo možné se podívat na možnosti monitorování databáze integrované do Azure Portal.
 
-1. Přejděte na **&lt;uživatelský&gt; Server tenants1-MT** a kliknutím na **tenants1** Zobrazte využití prostředků pro databázi, která obsahuje čtyři klienty. Každý tenant podléhá velkému zatížení od generátoru zatížení:
+1. Přejděte na **tenants1-mt&lt;uživatele&gt;** serveru a kliknutím na **tenants1** Zobrazte využití prostředků pro databázi, která obsahuje čtyři klienty. Každý tenant podléhá velkému zatížení od generátoru zatížení:
 
    ![monitorovat tenants1](./media/saas-multitenantdb-get-started-deploy/monitor-tenants1.png)
 
    Graf využití DTU popisuje, jak může databáze s více klienty podporovat nepředvídatelné zatížení napříč mnoha klienty. V tomto případě generátor zatížení aplikuje občasné zatížení zhruba 30 DTU na každého tenanta. Toto zatížení je rovno 60% využití databáze DTU 50. Špičky, které překračují 60%, jsou výsledkem navýšení zatížení na více než jednoho klienta ve stejnou dobu.
 
-2. Přejděte na **&lt;uživatelský&gt; Server tenants1-MT** a klikněte na databázi **salixsalsa** . Můžete zobrazit využití prostředků v této databázi, která obsahují jenom jednoho tenanta.
+2. Přejděte na server **user&gt;tenants1-mt&lt;** a klikněte na databázi **salixsalsa** . Můžete zobrazit využití prostředků v této databázi, která obsahují jenom jednoho tenanta.
 
    ![databáze salixsalsa](./media/saas-multitenantdb-get-started-deploy/monitor-salix.png)
 

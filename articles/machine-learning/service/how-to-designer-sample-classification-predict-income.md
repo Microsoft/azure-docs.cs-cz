@@ -1,5 +1,5 @@
 ---
-title: 'Příklad návrháře #3: klasifikace pro předpověď úvěrového rizika'
+title: 'Návrhář: klasifikace, předpověď výnosů'
 titleSuffix: Azure Machine Learning
 description: Naučte se vytvářet třídění strojového učení bez psaní jediného řádku kódu pomocí návrháře (Preview).
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 2709c2e0da154a8530175144070ad560c8921b85
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 383cbc11955598505730a4613c50536afac75f95
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515535"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647967"
 ---
 # <a name="sample-3---classification-with-feature-selection-income-prediction"></a>Ukázka 3 – klasifikace s výběrem funkcí: předpověď příjmů
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -28,7 +28,7 @@ Toto je konečný Graf kanálu pro tuto ukázku:
 
 ![Graf kanálu](media/how-to-ui-sample-classification-predict-income/overall-graph.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 

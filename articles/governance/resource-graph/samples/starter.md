@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: c2a8c60502aeb75173371d40475b5d2875417791
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 7eef353f45d0387a45fbf8180bc49cae7975dfa9
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808635"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622506"
 ---
 # <a name="starter-resource-graph-queries"></a>Úvodní dotazy na Resource Graph
 
@@ -72,7 +72,7 @@ Search-AzGraph -Query "Resources | summarize count()"
 
 ## <a name="a-namecount-keyvaults-count-key-vault-resources"></a>Počet prostředků trezoru klíčů <a name="count-keyvaults" />
 
-Tento dotaz používá `count` namísto `summarize` k výpočtu počtu vrácených záznamů. V počtu jsou zahrnuté jenom trezory klíčů.
+Tento dotaz používá `count` místo `summarize` k určení počtu vrácených záznamů. V počtu jsou zahrnuté jenom trezory klíčů.
 
 ```kusto
 Resources
@@ -378,7 +378,7 @@ Search-AzGraph -Query "Resources | where tags.environment=~'internal' | project 
 
 ---
 
-Pokud chcete vrátit také značky prostředku a jejich hodnoty, přidejte ke klíčovému slovu `project` vlastnost **tags** (Značky).
+Pokud chcete vrátit také značky prostředku a jejich hodnoty, přidejte ke klíčovému slovu **vlastnost**tags`project` (Značky).
 
 ```kusto
 Resources
@@ -534,6 +534,6 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.network/networksecur
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [dotazovacím jazyku](../concepts/query-language.md)
-- Naučte se [prozkoumat prostředky](../concepts/explore-resources.md)
-- Zobrazit ukázky [Pokročilé dotazy](advanced.md)
+- Přečtěte si další informace o [dotazovacím jazyce](../concepts/query-language.md).
+- Přečtěte si další informace o tom, jak [prozkoumat prostředky](../concepts/explore-resources.md).
+- Podívejte se na ukázky [pokročilých dotazů](advanced.md).

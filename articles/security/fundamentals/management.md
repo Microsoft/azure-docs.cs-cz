@@ -1,10 +1,10 @@
 ---
 title: Zlepšení zabezpečení vzdálené správy v Azure | Dokumentace Microsoftu
-description: Tento článek popisuje kroky pro zlepšení zabezpečení vzdálené správy při správě prostředí Microsoft Azure včetně cloudových služeb, služby Virtual Machines a vlastních aplikací.
+description: Tento článek popisuje kroky pro zlepšení zabezpečení vzdálené správy při správě Microsoft Azure prostředí, včetně cloudových služeb, virtuálních počítačů a vlastních aplikací.
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: 2431feba-3364-4a63-8e66-858926061dd3
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: 5efd82a2cb0652f6dd2aab621c578ff90aca0111
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 45efaadf7d15fff290165fe831c45c0bc063db53
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927852"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643799"
 ---
 # <a name="security-management-in-azure"></a>Správa zabezpečení v Azure
 Předplatitelé služby Azure mohou svoje cloudová prostředí spravovat z více zařízení. Můžou k tomu využívat pracovní stanice, počítače vývojářů a dokonce i privilegovaná zařízení koncových uživatelů, která mají oprávnění ke konkrétním úlohám. V některých případech se funkce správy provádějí prostřednictvím webových konzol, například [portálu Azure](https://azure.microsoft.com/features/azure-portal/). V ostatních případech můžou existovat přímá připojení k Azure z místních systémů prostřednictvím virtuálních privátních sítí (VPN), terminálových služeb, protokolů klientských aplikací nebo (v kódu) rozhraní API pro správu služby Azure (SMAPI). Kromě toho můžou být koncové body klienta buď připojené k doménám nebo izolované a nespravované, jako například tablety nebo smartphony.
@@ -224,7 +224,6 @@ Používání konfigurace posílené pracovní stanice ke správě cloudových s
 ## <a name="next-steps"></a>Další kroky
 Následující prostředky vám poskytnou další obecné informace o Azure a souvisejících službách Microsoftu jako doplnění ke konkrétním položkám, na které odkazujeme v tomto dokumentu:
 
-* [Zabezpečení privilegovaného přístupu](https://technet.microsoft.com/library/mt631194.aspx) – technické podrobnosti o navrhování a vytváření zabezpečených pracovních stanic pro správu v prostředí Azure
+* [Zabezpečení privilegovaného přístupu](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access) – technické podrobnosti o navrhování a vytváření zabezpečených pracovních stanic pro správu v prostředí Azure
 * [Centrum zabezpečení Microsoft](https://microsoft.com/en-us/trustcenter/cloudservices/azure) – další informace o možnostech platformy Azure, které chrání prostředky infrastruktury Azure, a úlohách, které běží na Azure
-* [Středisko Microsoft Security Response Center](https://technet.microsoft.com/security/dn440717.aspx) – místo pro nahlášení chyby zabezpečení včetně problémů s Azure, popřípadě použijte e-mail [secure@microsoft.com](mailto:secure@microsoft.com)
-* [Blog o bezpečnosti Azure](https://blogs.msdn.com/b/azuresecurity/) – nejnovější informace o zabezpečení Azure
+* [Středisko Microsoft Security Response Center](https://www.microsoft.com/msrc) – místo pro nahlášení chyby zabezpečení včetně problémů s Azure, popřípadě použijte e-mail [secure@microsoft.com](mailto:secure@microsoft.com)

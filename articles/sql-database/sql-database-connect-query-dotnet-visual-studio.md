@@ -1,5 +1,5 @@
 ---
-title: Použití sady Visual Studio s .NET C# a dotazování Azure SQL Database | Microsoft Docs
+title: Použití sady Visual Studio s .NET C# a k dotazování Azure SQL Database
 description: Pomocí sady Visual Studio můžete vytvořit C# aplikaci, která se připojí k Azure SQL Database a provede dotaz pomocí příkazů jazyka Transact-SQL.
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 3ed11d2b1628cecc0696e4c37135cfc7d2190de5
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 42b7f553d88e130e0958bd38e4e5ff308b74e81f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597927"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690973"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Rychlý Start: použití .NET C# a v aplikaci Visual Studio pro připojení k databázi SQL Azure a dotazování na ně
 
 V tomto rychlém startu se dozvíte, jak C# používat [rozhraní .NET Framework](https://www.microsoft.com/net/) a kód v aplikaci Visual Studio k dotazování databáze SQL Azure pomocí příkazů jazyka Transact-SQL.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu je potřeba:
 
@@ -48,7 +48,7 @@ K dokončení tohoto rychlého startu je potřeba:
 
 Získejte informace o připojení, které potřebujete pro připojení ke službě Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
 
@@ -56,13 +56,13 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
 
 ## <a name="create-code-to-query-the-sql-database"></a>Vytvoření kódu pro dotazování databáze SQL
 
-1. V aplikaci Visual Studio vyberte **soubor**  > **Nový**  > **projekt**. 
+1. V aplikaci Visual Studio vyberte **soubor** > **Nový** > **projekt**. 
    
 1. V dialogovém okně **Nový projekt** vyberte **Visual C#** a pak vyberte **Konzolová aplikace (.NET Framework)** .
    
 1. Jako název projektu zadejte *sqltest* a pak vyberte **OK**. Vytvoří se nový projekt. 
    
-1. Vyberte **projekt**  > **Spravovat balíčky NuGet**. 
+1. Vyberte **projekt** > **Spravovat balíčky NuGet**. 
    
 1. Ve **Správci balíčků NuGet**vyberte kartu **Procházet** a pak vyhledejte a vyberte **System. data. SqlClient**.
    
@@ -72,7 +72,7 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
    
 1. Po dokončení instalace můžete zavřít **Správce balíčků NuGet**. 
    
-1. V editoru kódu nahraďte obsah **program.cs** následujícím kódem. Nahraďte své hodnoty pro `<server>`, `<username>`, `<password>` a `<database>`.
+1. V editoru kódu nahraďte obsah **program.cs** následujícím kódem. Nahraďte své hodnoty pro `<server>`, `<username>`, `<password>`a `<database>`.
    
    >[!IMPORTANT]
    >Kód v tomto příkladu používá ukázková data AdventureWorksLT, která můžete zvolit jako zdroj při vytváření databáze. Pokud má vaše databáze jiná data, použijte tabulky z vlastní databáze v dotazu SELECT. 
@@ -133,7 +133,7 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-1. Chcete-li spustit aplikaci, vyberte možnost **ladění**  > **Spustit ladění**nebo vyberte možnost **Spustit** na panelu nástrojů nebo stiskněte klávesu **F5**.
+1. Chcete-li spustit aplikaci, vyberte možnost **ladění** > **Spustit ladění**nebo vyberte možnost **Spustit** na panelu nástrojů nebo stiskněte klávesu **F5**.
 1. Ověřte, že se vrátí prvních 20 řádků/produktů z vaší databáze, a pak okno aplikace zavřete.
 
 ## <a name="next-steps"></a>Další kroky

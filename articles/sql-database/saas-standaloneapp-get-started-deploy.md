@@ -1,5 +1,5 @@
 ---
-title: Kurz SaaS pro jednoho tenanta – Azure SQL Database | Microsoft Docs
+title: Kurz SaaS pro jednoho tenanta – Azure SQL Database
 description: Nasaďte a prozkoumejte samostatnou aplikaci SaaS s jedním tenantů, která používá Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 11/07/2018
-ms.openlocfilehash: 2e6b18e53358cad1bfe89e8c0ae7fbacec24d179
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: df9c3913851055f1bb477264cf5a7486f79b56b0
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570209"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691963"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Nasazení a prozkoumání samostatné aplikace pro jednoho tenanta, která používá Azure SQL Database
 
@@ -43,11 +43,11 @@ Budou vydány další kurzy. Umožní vám prozkoumat řadu scénářů správy 
 Nasazení aplikace pro tři poskytnuté klienty:
 
 1. Kliknutím na každé modré tlačítko **nasadit do Azure** otevřete šablonu nasazení v [Azure Portal](https://portal.azure.com). Každá šablona vyžaduje dvě hodnoty parametrů; název nové skupiny prostředků a uživatelské jméno, které toto nasazení odlišuje od ostatních nasazení aplikace. Další krok poskytuje podrobnosti o nastavení těchto hodnot.<br><br>
-    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>Kohalace **společnosti Contoso** &nbsp;
+    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Contoso – Kohala**
 <br><br>
-    <a href="https://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>&nbsp; **Dogwood Dojo**
+    <a href="https://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Dogwood Dojo**
 <br><br>
-    <a href="https://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>**Fabrikam jazz – klub** &nbsp;
+    <a href="https://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Fabrikam nápadný klub**
 
 2. Zadejte požadované hodnoty parametrů pro každé nasazení.
 
@@ -55,7 +55,7 @@ Nasazení aplikace pro tři poskytnuté klienty:
     > Některá ověřování a brány firewall serveru jsou pro demonstrační účely záměrně nezabezpečené. **Vytvořte novou skupinu prostředků** pro každé nasazení aplikace.  Nepoužívejte existující skupinu prostředků. Nepoužívejte tuto aplikaci ani žádné prostředky, které vytvoří, pro produkční prostředí. Odstraňte všechny skupiny prostředků, až skončíte s aplikacemi, aby se zastavily související fakturace.
 
     Doporučuje se v názvech prostředků používat jenom malá písmena, číslice a spojovníky.
-    * V poli **Skupina prostředků**vyberte vytvořit novou a zadejte pro skupinu prostředků malý název. doporučeným vzorem je **Společnost\>Wingtip\> -SA-\<-\<** pomístit jako uživatel.  \<Vpolinázevmístanahraďtemísto\>názvem místa žádné mezery. Pro \<položku\>uživatel nahraďte hodnotu uživatele níže.  V tomto vzoru můžou být názvy skupin prostředků *Wingtip-SA-contosoconcerthall-AF1*, *Wingtip-SA-dogwooddojo-AF1*, *Wingtip-SA-fabrikamjazzclub-AF1*.
+    * V poli **Skupina prostředků**vyberte vytvořit novou a zadejte pro skupinu prostředků malý název. **Wingtip-SA-\<\>-\<** je doporučeným vzorem uživatel\>.  Pro \<název\>, nahraďte název místa bez mezer. Pro \<\>uživatele nahraďte hodnotu uživatele níže.  V tomto vzoru můžou být názvy skupin prostředků *Wingtip-SA-contosoconcerthall-AF1*, *Wingtip-SA-dogwooddojo-AF1*, *Wingtip-SA-fabrikamjazzclub-AF1*.
     * Z rozevíracího seznamu vyberte **umístění** .
 
     * Pro **uživatele** – doporučujeme krátkou hodnotu uživatele, jako je například vaše iniciály a číslice: například *AF1*.
@@ -75,16 +75,16 @@ Aplikace prezentuje místa, která hostují události.  Místo jsou klienty apli
 
 1. Otevřete stránku události pro každého ze tří tenantů na samostatných záložkách prohlížeče:
 
-   - http://events.contosoconcerthall.&lt;user&gt;.trafficmanager.net
-   - http://events.dogwooddojo.&lt;user&gt;.trafficmanager.net
-   - http://events.fabrikamjazzclub.&lt;user&gt;.trafficmanager.net
+   - http://events.contosoconcerthall.&lt; User&gt;. trafficmanager.net
+   - http://events.dogwooddojo.&lt; User&gt;. trafficmanager.net
+   - http://events.fabrikamjazzclub.&lt; User&gt;. trafficmanager.net
 
-     (V každé adrese URL &lt;nahraďte&gt; uživatele hodnotou uživatele vašeho nasazení.)
+     (V každé adrese URL nahraďte &lt;uživatelem&gt; hodnotou uživatele vašeho nasazení.)
 
-   ![Duration](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
+   ![Akce](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
 Aby bylo možné řídit distribuci příchozích požadavků, aplikace používá [*Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md). Každá instance aplikace konkrétního tenanta obsahuje název tenanta jako součást názvu domény v adrese URL. Všechny adresy URL tenanta obsahují konkrétní hodnotu **uživatele** . Adresy URL následují po následujícím formátu:
-- http://events.&lt; promístit&lt;. &gt; User&gt;. trafficmanager.NET
+- http://events.&lt;&gt;.&lt;uživatel&gt;. trafficmanager.net
 
 **Umístění** databáze každého tenanta je zahrnuté v nastavení aplikace odpovídající nasazené aplikace.
 
@@ -97,7 +97,7 @@ Pojďme se podívat na některé z nasazených prostředků:
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do seznamu skupin prostředků.
 2. Měli byste vidět tři skupiny prostředků tenanta.
-3. Otevřete skupinu prostředků **Wingtip-SA-Fabrikam&lt;-&gt; User** , která obsahuje prostředky pro nasazení klubu společnosti Fabrikam Jazz.  **Fabrikamjazzclub-&lt;User&gt;**  Server obsahuje databázi **fabrikamjazzclub** .
+3. Otevřete skupinu prostředků služby **Wingtip-SA-Fabrikam-&lt;user&gt;** , která obsahuje prostředky pro nasazení klubu společnosti Fabrikam Jazz.  **&lt;fabrikamjazzclub uživatel&gt;** Server obsahuje databázi **fabrikamjazzclub** .
 
 Každá databáze tenanta je *samostatná* databáze 50 DTU.
 
@@ -116,7 +116,7 @@ Každá databáze tenanta je *samostatná* databáze 50 DTU.
 
 Po dokončení používání ukázky odstraňte všechny skupiny prostředků, které jste vytvořili, abyste zastavili související fakturaci.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se dozvěděli:
 

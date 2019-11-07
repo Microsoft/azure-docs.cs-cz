@@ -1,26 +1,23 @@
 ---
-title: Spuštění aplikace pro jarní Cloud v Azure pomocí Azure Portal
+title: 'Rychlý Start: spuštění aplikace ve jarním cloudu Azure pomocí Azure Portal'
 description: Nasaďte ukázkovou aplikaci do jarního cloudu Azure pomocí Azure Portal.
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 10/04/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 87826b4c898f67873c2ec8188b934abd467c8a5b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
-ms.translationtype: MT
+ms.date: 11/4/2019
+ms.author: jeconnoc
+ms.openlocfilehash: ab2950ed85d2409cd81ea562ec977c0eee2f6bab
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162809"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693130"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Rychlý Start: spuštění aplikace ve jarním cloudu Azure pomocí Azure Portal
 
 Jarní cloud Azure umožňuje snadné spouštění aplikací mikroslužeb založených na jarních cloudech v Azure.
 
-V tomto rychlém startu se dozvíte, jak nasadit existující jarní cloudovou aplikaci do Azure. [Tady je odkaz](https://github.com/Azure-Samples/PiggyMetrics) na ukázkový kód aplikace použitý v tomto kurzu. Jakmile budete hotovi, bude poskytnutá ukázková aplikace dostupná online a bude připravená ji spravovat prostřednictvím Azure Portal.
+V tomto rychlém startu se dozvíte, jak nasadit existující jarní cloudovou aplikaci do Azure.  Vzorový kód aplikace použitý v tomto kurzu najdete v našem [úložišti ukázek GitHubu](https://github.com/Azure-Samples/PiggyMetrics). Jakmile budete hotovi, bude poskytnutá ukázková aplikace dostupná online a bude připravená ji spravovat prostřednictvím Azure Portal.
 
 Po tomto rychlém startu se dozvíte, jak:
 
@@ -31,10 +28,10 @@ Po tomto rychlém startu se dozvíte, jak:
 > * Nasazení jednotlivých mikroslužeb
 > * Přiřazení veřejného koncového bodu vaší aplikaci
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 >[!Note]
-> Před zahájením tohoto rychlého startu se ujistěte, že vaše předplatné Azure má přístup k jarnímu cloudu Azure.  Jako služba ve verzi Preview požádáme zákazníky, aby se na nás dostali, abychom mohli přidat vaše předplatné do našeho seznamu povolených.  Pokud chcete prozkoumat možnosti Azure jarního cloudu, vyplňte a odešlete [formulář zájmu Azure jaře Cloud (Private Preview)](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u). I když je ve verzi Preview Azure jaře Cloud, nabízí Microsoft omezená podpora bez smlouvy SLA.  Další informace o podpoře v rámci verzí Preview najdete v těchto [nejčastějších dotazech k podpoře](https://azure.microsoft.com/support/faq/).
+> Jarní cloud Azure se teď nabízí jako verze Public Preview. Nabídky veřejné verze Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.  Další informace o podpoře v rámci verzí Preview najdete v souboru [support Request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
 
 >[!TIP]
 > Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku.  Má předinstalované běžné nástroje Azure, včetně nejnovějších verzí Git, JDK, Maven a Azure CLI. Pokud jste přihlášeni ke svému předplatnému Azure, spusťte [Azure Cloud Shell](https://shell.azure.com) z Shell.Azure.com.  Další informace o Azure Cloud Shell najdete v [naší dokumentaci](../cloud-shell/overview.md) .
@@ -52,14 +49,12 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 Pomocí následujícího příkazu nainstalujte rozšíření Azure jaře Cloud pro rozhraní příkazového řádku Azure.
 
 ```Azure CLI
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+az extension add --name spring-cloud
 ```
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Zřízení instance služby na Azure Portal
 
-1. Ve webovém prohlížeči otevřete [Tento odkaz na jarní cloud Azure v Azure Portal](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=AppPlatformExtension#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home/searchQuery/Azure%20Spring%20Cloud).
-
-    ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/goto-portal.png)
+1. Ve webovém prohlížeči otevřete [Tento odkaz na jarní cloud Azure v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform).
 
 1. Pokud chcete přejít na stránku Přehled, vyberte **Azure jaře Cloud** . Začněte tím, že vyberete tlačítko **vytvořit** .
 
@@ -77,26 +72,28 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
 
 1. V části **výchozí úložiště** nastavte možnost **URI** na https\://GitHub.com/Azure-Samples/piggymetrics, nastavte **popisek** na "config" a pak změny uložte kliknutím na **použít** .
 
-    ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+    ![Snímek obrazovky s portálem ASC](media/spring-cloud-tutorial-config-server/portal-config-server.png)
 
 ## <a name="build-and-deploy-microservice-applications"></a>Sestavování a nasazování aplikací mikroslužeb
 
-1. Otevřete okno příkazového řádku a spusťte následující příkaz, který naklonuje úložiště ukázkové aplikace do místního počítače.
+1. Otevřete [Azure cloudshellu](https://shell.azure.com) a naklonujte úložiště ukázkové aplikace do místního počítače.  V tomto příkladu vytvoříme před klonováním aplikace dočasný adresář s názvem `source-code`.
 
-    ```cli
+    ```azurecli
+    mkdir source-code
+    cd source-code
     git clone https://github.com/Azure-Samples/piggymetrics
     ```
 
-1. Sestavte projekt spuštěním příkazu níže.
+1. Sestavte Klonovaný balíček.
 
-    ```cli
-    cd PiggyMetrics
+    ```azurecli
+    cd piggymetrics
     mvn clean package -DskipTests
     ```
 
 1. Přihlaste se ke službě Azure CLI a nastavte své aktivní předplatné.
 
-    ```cli
+    ```azurecli
     # Login to Azure CLI
     az login
 
@@ -121,9 +118,9 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
     az spring-cloud app deploy -n gateway --jar-path ./gateway/target/gateway.jar
     ```
 
-1. Podle stejného vzoru vytvořte aplikace `account-service` a `auth-service` a nasaďte jejich soubory JAR.
+1. Podle stejného vzoru vytvořte `account-service` a `auth-service` aplikace a nasaďte jejich soubory JAR.
 
-    ```cli
+    ```azurecli
     az spring-cloud app create -n account-service
     az spring-cloud app deploy -n account-service --jar-path ./account-service/target/account-service.jar
     az spring-cloud app create -n auth-service
@@ -135,8 +132,10 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
 ## <a name="assign-a-public-endpoint-to-gateway"></a>Přiřazení veřejného koncového bodu k bráně
 
 1. Otevřete kartu **aplikace** v nabídce na levé straně.
-2. Vyberte aplikaci `gateway`, aby se zobrazila stránka s **přehledem** .
-3. Vyberte **přiřadit doménu** a přiřaďte k bráně veřejný koncový bod. Může to pár minut trvat.
+
+1. Vyberte aplikaci `gateway`, aby se zobrazila stránka s **přehledem** .
+
+1. Vyberte **přiřadit doménu** a přiřaďte k bráně veřejný koncový bod. Může to pár minut trvat.
 
     ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 

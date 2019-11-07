@@ -1,5 +1,5 @@
 ---
-title: Příklad Azure SQL Database víceklientské aplikace – SaaS Wingtip | Microsoft Docs
+title: Příklad Azure SQL Database víceklientské aplikace – SaaS Wingtip
 description: Naučte se používat ukázkovou víceklientské aplikaci, která používá Azure SQL Database, příklad Wingtip SaaS
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 16f4bb946af4720a327a8755c6bf9187f3b71ba6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1a4931a24802290e0e7e207f32528a1192fd880f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570343"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692060"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Úvod do víceklientské aplikace SaaS, která používá model databáze na tenanta s SQL Database
 
@@ -52,7 +52,7 @@ Po nasazení aplikace si Prozkoumejte následující kurzy, které se sestavují
 |[Spustit analýzu pro extrahovaná data tenanta](saas-tenancy-tenant-analytics.md) | Extrahujte data tenanta do analytické databáze nebo datového skladu pro offline analytické dotazy. |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Obecné pokyny a tipy pro nasazení a používání aplikace SaaS lístky Wingtip Tickets](saas-tenancy-wingtip-app-guidance-tips.md)
 - [Nasazení aplikace Wingtip SaaS](saas-dbpertenant-get-started-deploy.md)

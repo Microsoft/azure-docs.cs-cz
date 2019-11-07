@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: Dotazování služby Azure SQL Database s využitím editoru dotazů | Dokumentace Microsoftu'
+title: 'Azure Portal: dotaz Azure SQL Database pomocí Editoru dotazů '
 description: Zjistěte, jak se připojit k SQL Database na webu Azure Portal pomocí editoru dotazů SQL. Potom spustíte příkazy jazyka Transact-SQL (T-SQL) k dotazování a úpravě dat.
 keywords: connect to sql database,azure portal, portal, query editor
 services: sql-database
@@ -12,18 +12,18 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 10/24/2019
-ms.openlocfilehash: 433f2a190cf24a7e59dcd1d5a5aba0d3aa4e8588
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 75882b13341c7fc373de141ba12f8806cb106906
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492184"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690924"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Rychlý Start: použití Editoru dotazů SQL Azure Portal k připojení a dotazování dat
 
 Editor dotazů SQL je Azure Portal Nástroj pro prohlížeč, který poskytuje snadný způsob, jak spouštět dotazy SQL na Azure SQL Database nebo Azure SQL Data Warehouse. V tomto rychlém startu použijete Editor dotazů pro připojení k databázi SQL a potom spustíte příkazy jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -42,7 +42,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 ## <a name="sign-in-the-azure-portal"></a>Přihlášení Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+Přihlásit se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="connect-using-sql-authentication"></a>Připojení pomocí ověřování SQL
 

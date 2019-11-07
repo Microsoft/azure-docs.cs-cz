@@ -1,5 +1,5 @@
 ---
-title: Sledování výkonu horizontálně dělené Azure SQL Database v SaaS aplikaci s více klienty | Microsoft Docs
+title: Sledování výkonu horizontálně dělené Azure SQL Database v SaaS aplikaci s více klienty
 description: Monitorování a Správa výkonu horizontálně dělené Azure SQL Database v SaaS aplikaci s více klienty
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 50fab6afe837ad409f05dbb0f3a8a44d089a894e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 03487c7e0e5fd08b6c93f81b733ab5ec1afb5605
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570329"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692037"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Monitorování a Správa výkonu horizontálně dělené Azure SQL Database v SaaS aplikaci s více klienty
 
@@ -24,7 +24,7 @@ V tomto kurzu se prozkoumá několik klíčových scénářů správy výkonu po
 
 Aplikace Wingtip Tickets SaaS s více klienty používá datový model horizontálně dělené pro více tenantů, kde jsou data místa (tenanta) distribuována podle ID tenanta napříč potenciálně více databázemi. Stejně jako u většiny aplikací SaaS je předpokládaný vzorek úloh tenanta nepředvídatelný a sporadický. Jinými slovy to znamená, že prodej lístků může probíhat kdykoli. Chcete-li využít výhod tohoto typického vzoru použití databáze, je možné databáze škálovat nahoru a dolů, aby se optimalizoval náklady na řešení. U tohoto typu vzoru je důležité monitorovat využití prostředků databáze, aby bylo zajištěno, že zatížení budou poměrně vyvážená napříč potenciálně více databázemi. Také je potřeba zajistit, aby jednotlivé databáze měly dostatečné prostředky a nemusely zajišťovat omezení [DTU](sql-database-purchase-models.md#dtu-based-purchasing-model) . V tomto kurzu se seznámíte s možnostmi pro monitorování a správu databází a o tom, jak provést nápravné akce v reakci na kolísání zatížení.
 
-V tomto kurzu se naučíte:
+Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 > 
@@ -44,8 +44,8 @@ Správa výkonu databáze sestává z kompilování a analýz dat výkonu a nás
 
 ### <a name="performance-management-strategies"></a>Strategie výkonu aplikací
 
-* Abyste se vyhnuli nutnosti ručního monitorování výkonu, je nejúčinnější **nastavit výstrahy, které**se aktivují, když se databáze nevyskytují v normálním rozsahu.
-* Aby bylo možné reagovat na krátkodobé kolísání výpočetní velikosti databáze, **úroveň DTU se dá škálovat nahoru nebo dolů**. Pokud dochází k této výkyvy na pravidelném nebo předvídatelném základu, může se naplánování **velikosti databáze naplánovat na automatické výskyty**. Pokud například víte, že je úloha malého rozsahu, třeba přes noc nebo o víkendech, můžete vertikálně snížit kapacitu.
+* Abyste se vyhnuli nutnosti ručního monitorování výkonu, je nejúčinnější **nastavit výstrahy, které se aktivují, když se databáze nevyskytují v normálním rozsahu**.
+* Aby bylo možné reagovat na krátkodobé kolísání výpočetní velikosti databáze, **úroveň DTU se dá škálovat nahoru nebo dolů**. Pokud dochází k této výkyvy na pravidelném nebo předvídatelném základu, **může se naplánování velikosti databáze naplánovat na automatické výskyty**. Pokud například víte, že je úloha malého rozsahu, třeba přes noc nebo o víkendech, můžete vertikálně snížit kapacitu.
 * Aby bylo možné reagovat na dlouhodobé výkyvy nebo změny v klientech, **mohou být jednotliví klienti přesunuti do jiné databáze**.
 * Aby bylo možné reagovat na krátkodobé zvýšení zatížení *jednotlivých* klientů, **můžete jednotlivé klienty vyřadit z databáze a přiřadit individuální výpočetní velikost**. Po snížení zatížení se může klient vrátit do databáze s více klienty. Pokud je to předem známo, můžou se klienti přesunout do sálu, aby se zajistilo, že databáze bude mít vždy potřebné prostředky a aby se zabránilo dopadu na ostatní klienty v víceklientské databázi. Pokud je tento požadavek předvídatelný, například v místě, kde se předpokládá navýšení prodeje lístků na oblíbenou akci, je možné toto chování správy začlenit do aplikace.
 
@@ -63,7 +63,7 @@ Aby bylo dobré pochopit, jak funguje sledování a Správa výkonu, je nutné, 
 
 Pokud jste v předchozím kurzu již zřídili dávku tenantů, přejděte k části [simulace využití ve všech databázích tenantů](#simulate-usage-on-all-tenant-databases) .
 
-1. V **prostředí POWERSHELL ISE**otevřete... Výukové\\moduly pro sledování a\\správu výkonu*demo-PerformanceMonitoringAndManagement. ps1.* \\ Tento skript nechte otevřený, protože během tohoto kurzu budete spouštět několik scénářů.
+1. V **prostředí POWERSHELL ISE**otevřete...\\výukové moduly\\sledování výkonu a Správa\\*demo-PerformanceMonitoringAndManagement. ps1*. Tento skript nechte otevřený, protože během tohoto kurzu budete spouštět několik scénářů.
 1. Nastavte **$DemoScenario** = **1**, _Zřízení dávky tenantů_
 1. Stisknutím klávesy **F5** spusťte skript.
 
@@ -84,7 +84,7 @@ Je k dispozici skript *demo-PerformanceMonitoringAndManagement. ps1* , který si
 
 Generátor zatížení použije *syntetické* zatížení jenom pro CPU na každé databázi tenantů. Generátor spustí úlohu pro každou databázi tenantů, která pravidelně volá uloženou proceduru generující zatížení. Úrovně zatížení (v DTU), doba trvání a intervaly jsou v rámci všech databází různé a simulují nepředvídatelné aktivity tenanta.
 
-1. V **prostředí POWERSHELL ISE**otevřete... Výukové\\moduly pro sledování a\\správu výkonu*demo-PerformanceMonitoringAndManagement. ps1.* \\ Tento skript nechte otevřený, protože během tohoto kurzu budete spouštět několik scénářů.
+1. V **prostředí POWERSHELL ISE**otevřete...\\výukové moduly\\sledování výkonu a Správa\\*demo-PerformanceMonitoringAndManagement. ps1*. Tento skript nechte otevřený, protože během tohoto kurzu budete spouštět několik scénářů.
 1. Nastavit **$DemoScenario** = **2**, _Generovat normální zatížení intenzity_
 1. Stisknutím klávesy **F5** použijte zatížení pro všechny klienty.
 
@@ -97,7 +97,7 @@ SaaS App Database je víceklientské SaaS aplikace a reálné zatížení aplika
 
 Pokud chcete monitorovat využití prostředků, které jsou výsledkem aplikovaného zatížení, otevřete portál pro víceklientské databáze **tenants1**, která obsahuje klienty:
 
-1. Otevřete [Azure Portal](https://portal.azure.com) a přejděte na server *tenants1-&lt;MT-User.&gt;*
+1. Otevřete [Azure Portal](https://portal.azure.com) a přejděte na server *tenants1-mt-&lt;&gt;uživatele* .
 1. Přejděte dolů a vyhledejte databáze a klikněte na **tenants1**. Tato databáze horizontálně dělené s více klienty obsahuje všechny dosud vytvořené klienty.
 
 ![databázový graf](./media/saas-multitenantdb-performance-monitoring/multitenantdb.png)
@@ -106,9 +106,9 @@ Sledujte graf **DTU** .
 
 ## <a name="set-performance-alerts-on-the-database"></a>Nastavení upozornění na výkon databáze
 
-Nastavte upozornění na databázi, která aktivuje \>75% využití následujícím způsobem:
+Nastavte výstrahu pro databázi, která aktivuje \>75% využitím níže uvedených kroků:
 
-1. V [Azure Portal](https://portal.azure.com)otevřete databázi *tenants1* (na *tenants1-MT-&lt;User&gt;*  serveru).
+1. V [Azure Portal](https://portal.azure.com)otevřete databázi *tenants1* (na *&gt;serveru TENANTS1-MT-&lt;User* ).
 1. Klikněte na **Pravidla výstrah** a potom na **+ Přidat výstrahu**:
 
    ![přidání výstrahy](media/saas-multitenantdb-performance-monitoring/add-alert.png)
@@ -133,7 +133,7 @@ Pokud se úroveň zatížení zvětšuje v databázi na bod, který navyšuje da
 
 Můžete simulovat zaneprázdněnou databázi zvýšením zatížení vytvořeného generátorem. Způsob, jakým se klienti rozrůstá častěji a za delší dobu, zvyšují zatížení víceklientské databáze, aniž by bylo potřeba měnit požadavky jednotlivých tenantů. Vertikální navýšení kapacity databáze se snadno provádí na portálu nebo v PowerShellu. Při tomto cvičení se používá portál.
 
-1. Nastavte *$DemoScenario* = **3**, _vygenerujte zatížení s delším a častými nárůsty na databázi_ , abyste zvýšili intenzitu agregovaného zatížení databáze beze změny maximálního zatížení, které vyžaduje každý tenant.
+1. Nastavte *$DemoScenario* = **3**, _vygenerujte zatížení s delším a častými nárůsty na databázi_ , abyste zvýšili intenzitu agregovaného zatížení databáze beze změny vrcholu zatížení, které vyžaduje každý tenant.
 1. Stisknutím klávesy **F5** použijte zatížení u všech databází tenantů.
 1. V Azure Portal přejdete do databáze **tenants1** .
 
@@ -143,7 +143,7 @@ Sledujte vyšší využití DTU databáze v horním grafu. Nové načtení nové
 1. Upravte nastavení **DTU** na **100**. 
 1. Kliknutím na **použít** odešlete žádost o škálování databáze.
 
-Vraťte se zpět na **tenants1** > **Přehled** a zobrazte grafy monitorování. Sledujte účinek poskytnutí databáze více prostředky (i když s malým počtem klientů a náhodným zatížením se to už nesnadno lehce nepamatuje, dokud to nebudete mít nějakou dobu běžet). Při prohlížení grafů Pamatujte na to, že 100% v horním grafu nyní představuje 100 DTU, zatímco v dolním 100 grafu je% stále 50 DTU.
+Vraťte se zpět do **tenants1** > **Přehled** a zobrazte grafy monitorování. Sledujte účinek poskytnutí databáze více prostředky (i když s malým počtem klientů a náhodným zatížením se to už nesnadno lehce nepamatuje, dokud to nebudete mít nějakou dobu běžet). Při prohlížení grafů Pamatujte na to, že 100% v horním grafu nyní představuje 100 DTU, zatímco v dolním 100 grafu je% stále 50 DTU.
 
 Databáze je v průběhu procesu online a plně dostupná. Kód aplikace by měl být vždy zapsán, aby bylo možné znovu vyřadit připojení, a pak se znovu připojí k databázi.
 
@@ -153,9 +153,9 @@ Model horizontálně dělené multi-tenant vám umožňuje zvolit, jestli se má
 
 Pokud jste již zřídili nového tenanta ve vlastní databázi, přeskočte několik dalších kroků.
 
-1. V **prostředí POWERSHELL ISE**otevřete... Výukové\\modulyProvisionTenants\\*demo-ProvisionTenants. ps1.* \\ 
+1. V **PowerShellu ISE**otevřete...\\výukové moduly\\ProvisionTenants\\*demo-ProvisionTenants. ps1*. 
 1. Modify **$TenantName = "Salix Salsa"** a **$VenueType = "roztancoval"**
-1. Nastavení **$Scenario** = **2** _zřízení tenanta v nové databázi s jedním tenantovi_
+1. Nastavení **$Scenario** = **2**, _zřízení tenanta v nové databázi s jedním tenantovi_
 1. Stisknutím klávesy **F5** spusťte skript.
 
 Skript zřídí tohoto tenanta v samostatné databázi, zaregistruje databázi a tenanta do katalogu a pak otevře stránku události tenanta v prohlížeči. Aktualizujte stránku centra událostí a zobrazí se jako místo "Salix Salsa".
@@ -166,12 +166,12 @@ Pokud má jeden tenant v rámci víceklientské databáze trvalé zatížení, m
 
 Toto cvičení simuluje účinek Salix Salsa s vysokým zatížením, když lístky jdou na prodej pro oblíbenou událost.
 
-1. Otevřete... Skript demo-PerformanceMonitoringAndManagement *. ps1* \\
+1. Otevřete skript...\\*demo-PerformanceMonitoringAndManagement. ps1* .
 1. Nastavte **$DemoScenario = 5**, _vygenerujte normální zatížení plus vysoké zatížení v jednom tenantovi (přibližně 90 DTU)._
 1. Set **$SingleTenantName = Salix Salsa**
 1. Skript proveďte pomocí **F5**.
 
-Přejděte na portál a přejděte k**přehledu** **salixsalsa** > a zobrazte grafy monitorování. 
+Přejděte na portál a přejděte na **salixsalsa** > **Přehled** a zobrazte grafy monitorování. 
 
 ## <a name="other-performance-management-patterns"></a>Další vzory správy výkonu
 
@@ -183,9 +183,9 @@ Vzhledem k tomu, že škálování je úkol, který se snadno vyvolal prostředn
 
 Kde agregované využití tenanta se řídí předvídatelnými vzorci použití, můžete použít Azure Automation ke škálování databáze směrem nahoru a dolů podle plánu. Můžete například škálovat databázi dolů po 18:00 a znovu před 6:00 v pracovních dnech, když víte, že se nachází v požadavcích na prostředek pro zrušení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu se naučíte:
+Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 > * Simulace využití v databázi s více klienty horizontálně dělené spuštěním zadaného generátoru zatížení

@@ -1,5 +1,5 @@
 ---
-title: Zotavení po havárii pro aplikace SaaS s využitím Azure SQL Database geografické replikace | Microsoft Docs
+title: Zotavení po havárii pro aplikace SaaS, které používají Azure SQL Database geografickou replikaci
 description: Naučte se používat Azure SQL Database geografické repliky k obnovení SaaS aplikace pro více tenantů v případě výpadku.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: bebbb3d053db37a9716230dfbb14372696dd4936
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f6f8ed39de36ce38b0bc4b879980a054bf480d0e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570528"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692238"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Zotavení po havárii pro víceklientské aplikace SaaS s využitím geografické replikace databáze
 
@@ -51,7 +51,7 @@ Plán DR na základě geografické replikace se skládá ze tří různých čá
 
 Všechny části musí být pečlivě zváženy, zejména pokud pracujete se škálováním. Plán musí dosáhnout několika cílů:
 
-* Instalace
+* Nastavení
     * Vytvořte a udržujte prostředí zrcadlového obrazu v oblasti obnovení. Vytvoření elastických fondů a replikace všech databází v tomto prostředí pro obnovení rezervuje kapacitu v oblasti obnovení. Údržba tohoto prostředí zahrnuje replikaci nových databází tenanta, když jsou zřízené.  
 * Obnovení
     * Pokud se pro minimalizaci každodenních nákladů používá prostředí pro obnovení s horizontálním škálováním na víc systémů, musí se fondy a databáze škálovat až po získání plné provozní kapacity v oblasti obnovení.
@@ -67,7 +67,7 @@ V tomto kurzu se tyto výzvy řeší pomocí funkcí Azure SQL Database a platfo
 
 * [Azure Resource Manager šablony](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template), aby bylo možné co nejrychleji rezervovat veškerou potřebnou kapacitu. Šablony Azure Resource Manager slouží ke zřízení zrcadlové image produkčních serverů a elastických fondů v oblasti obnovení.
 * [Geografická replikace](sql-database-geo-replication-overview.md)pro vytváření asynchronně replikovaných sekundárních souborů jen pro čtení pro všechny databáze. Během výpadku převezmete služby při selhání do replik v oblasti obnovení.  Po vyřešení výpadku dojde k navrácení služeb po obnovení do databází v původní oblasti bez ztráty dat.
-* [](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) Operace asynchronního převzetí služeb při selhání se odesílají v pořadí podle priority tenanta, aby se minimalizovala doba selhání pro velký počet databází.
+* Operace [asynchronního](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) převzetí služeb při selhání se odesílají v pořadí podle priority tenanta, aby se minimalizovala doba selhání pro velký počet databází.
 * [Funkce obnovení pro správu horizontálních oddílů](sql-database-elastic-database-recovery-manager.md), které mění položky databáze v katalogu během obnovování a vracení. Tyto funkce umožňují aplikaci připojovat se k databázím tenantů bez ohledu na umístění bez nutnosti opětovné konfigurace aplikace.
 * [Aliasy DNS serveru SQL](dns-alias-overview.md)umožňují bezproblémové zřizování nových tenantů bez ohledu na to, ve které oblasti aplikace pracuje. Aliasy DNS slouží také k tomu, aby se proces synchronizace katalogu mohl připojit k aktivnímu katalogu bez ohledu na jeho umístění.
 
@@ -89,10 +89,10 @@ Později v kroku samostatného navrácení služeb při selhání převezmete da
 ## <a name="review-the-healthy-state-of-the-application"></a>Zkontrolujte dobrý stav aplikace.
 
 Než začnete s procesem obnovení, zkontrolujte normální dobrý stav aplikace.
-1. Ve webovém prohlížeči otevřete centrum událostí Wingtip http://events.wingtip-dpt.&lt lístky (; User&gt;. trafficmanager.NET – nahraďte &lt; uživatele&gt; hodnotou uživatele vašeho nasazení).
+1. Ve webovém prohlížeči otevřete centrum událostí Wingtip Tickets (http://events.wingtip-dpt.&lt; User&gt;. trafficmanager.net – nahraďte &lt;uživatele&gt; hodnotou uživatele vašeho nasazení).
     * Posuňte se do dolní části stránky a Všimněte si názvu a umístění serveru katalogu v zápatí. Umístění je oblast, ve které jste nasadili aplikaci.
-    *TIP: Najeďte myší umístění zvětšíte zobrazení.* 
-     ![Události v pořádku stav rozbočovače v původní oblast](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
+    *Tip: Pokud chcete zobrazení zvětšit, najeďte myší na jeho umístění.* stav v pořádku
+    ![události centra událostí v původní oblasti](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. Klikněte na tenanta contoso hala a otevřete jeho stránku události.
     * V zápatí si všimněte názvu tenanta serveru. Umístění bude stejné jako umístění serveru katalogu.
@@ -107,13 +107,13 @@ V této úloze spustíte proces, který synchronizuje konfiguraci serverů, elas
 > [!IMPORTANT]
 > Pro jednoduchost se v těchto kurzech implementují proces synchronizace a další dlouhodobé procesy obnovení a repatriace jako místní úlohy PowerShellu nebo relace spouštěné v rámci přihlášení uživatele klienta. Tokeny ověřování vydané po přihlášení vyprší po několika hodinách a úlohy se pak nezdaří. V produkčním scénáři by dlouhotrvající procesy měly být implementovány jako spolehlivé služby Azure v nějakém typu, a to za provozu v instančním objektu. Další informace najdete v tématu [použití Azure PowerShell k vytvoření instančního objektu s certifikátem](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal).
 
-1. V _prostředí POWERSHELL ISE_otevřete soubor Modules\UserConfig.psm1. ..\Learning. `<resourcegroup>` Nahraďte `<user>` a na řádcích 10 a 11 hodnotou použitou při nasazení aplikace.  Uložte soubor.
+1. V _prostředí POWERSHELL ISE_otevřete soubor Modules\UserConfig.psm1. ..\Learning. Nahraďte `<resourcegroup>` a `<user>` na řádcích 10 a 11 hodnotou použitou při nasazení aplikace.  Uložte soubor.
 
 2. V *prostředí POWERSHELL ISE*otevřete skript. ..\Learning Modules\Business kontinuita a nastavování Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 po havárii a nastavte:
     * **$DemoScenario = 1**, spustí úlohu na pozadí, která synchronizuje Server tenanta a informace o konfiguraci fondu do katalogu.
 
 3. Stisknutím klávesy **F5** spusťte skript synchronizace. Otevře se nová relace PowerShellu pro synchronizaci konfigurace prostředků tenanta.
-![Proces synchronizace](media/saas-dbpertenant-dr-geo-replication/sync-process.png)
+proces synchronizace ![](media/saas-dbpertenant-dr-geo-replication/sync-process.png)
 
 Nechte okno PowerShellu spuštěné na pozadí a pokračujte ve zbývající části tohoto kurzu. 
 
@@ -131,7 +131,7 @@ V této úloze spustíte proces, který nasadí duplicitní instanci aplikace a 
     * **$DemoScenario = 2**, vytvořit prostředí pro obnovení zrcadlové image a replikovat databáze katalogu a tenantů
 
 2. Stisknutím klávesy **F5** spusťte skript. Otevře se nová relace PowerShellu, ve které se vytvoří repliky.
-![Proces synchronizace](media/saas-dbpertenant-dr-geo-replication/replication-process.png)  
+proces synchronizace ![](media/saas-dbpertenant-dr-geo-replication/replication-process.png)  
 
 ## <a name="review-the-normal-application-state"></a>Kontrola normálního stavu aplikace
 
@@ -141,7 +141,7 @@ V tuto chvíli běží aplikace normálně v původní oblasti a teď je chrán�
 
 2. Prozkoumejte prostředky ve skupině prostředků pro obnovení.  
 
-3. Na serveru _tenants1-DPT-&lt;&gt;User-Recovery_ klikněte na databázi contoso.  Na levé straně klikněte na geografickou replikaci. 
+3. Klikněte na databázi Contoso ve službě _tenants1-DPT-&lt;user&gt;-Recovery_ Server.  Na levé straně klikněte na geografickou replikaci. 
 
     ![Contoso – geografická replikace – odkaz na replikaci](media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication.png) 
 
@@ -185,10 +185,10 @@ Nyní si představte, že v oblasti, ve které je aplikace nasazená, existuje v
 
 2. Stisknutím klávesy **F5** spusťte skript.  
     * Skript se otevře v novém okně PowerShellu a potom spustí řadu úloh PowerShellu, které běží paralelně. Tyto úlohy převezmou databáze tenantů v oblasti obnovení.
-    * Oblast obnovení je spárovaná _oblast_ přidružená k oblasti Azure, ve které jste aplikaci nasadili. Další informace najdete v tématu [spárované oblasti Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
+    * Oblast obnovení je _spárovaná oblast_ přidružená k oblasti Azure, ve které jste aplikaci nasadili. Další informace najdete v tématu [spárované oblasti Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
 
 3. Monitorujte stav procesu obnovení v okně PowerShellu.
-    ![proces převzetí služeb při selhání](media/saas-dbpertenant-dr-geo-replication/failover-process.png)
+    ![procesu převzetí služeb při selhání](media/saas-dbpertenant-dr-geo-replication/failover-process.png)
 
 > [!Note]
 > Pokud chcete prozkoumat kód pro úlohy obnovení, zkontrolujte skripty PowerShellu ve složce. ..\Learning Modules\Business kontinuita a zotavení po havárii Recovery\DR-FailoverToReplica\RecoveryJobs.
@@ -206,7 +206,7 @@ I když je koncový bod aplikace v Traffic Manager zakázán, aplikace není k d
  
      ![Centrum událostí offline](media/saas-dbpertenant-dr-geo-replication/events-hub-offlinemode.png) 
 
-   * Pokud otevřete stránku události offline klienta přímo, zobrazí se oznámení "tenant offline". Pokud je například contoso v režimu offline, zkuste otevřít http://events.wingtip-dpt.&lt. uživatel&gt;. trafficmanager.NET/contosoconcerthall ![ contoso offline stránku](media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
+   * Pokud otevřete stránku události offline klienta přímo, zobrazí se oznámení "tenant offline". Pokud je například contoso v režimu offline, zkuste otevřít http://events.wingtip-dpt.&lt; User&gt;. trafficmanager.net/contosoconcerthall ![stránka contoso offline](media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
 
 ### <a name="provision-a-new-tenant-in-the-recovery-region"></a>Zřízení nového tenanta v oblasti obnovení
 I před převzetím služeb při selhání všemi stávajícími databázemi tenantů můžete zřídit nové klienty v oblasti obnovení.  
@@ -217,7 +217,7 @@ I před převzetím služeb při selhání všemi stávajícími databázemi ten
 2. Stiskněte klávesu **F5** ke spuštění skriptu a zřízení nového tenanta. 
 
 3. Stránka události Hawthorn hala se otevře v prohlížeči, když se dokončí. Všimněte si z zápatí, že databáze Hawthorn hala je zřízena v oblasti obnovení.
-    ![Stránka událostí Hawthorn hala](media/saas-dbpertenant-dr-geo-replication/hawthornhallevents.png) 
+    ![stránku události v Hawthorn místnosti](media/saas-dbpertenant-dr-geo-replication/hawthornhallevents.png) 
 
 4. V prohlížeči aktualizujte stránku centra událostí Wingtip lístky, aby se zobrazila zahrnutá Hawthorn hala. 
     * Pokud jste zřídili Hawthorn místnosti bez čekání na obnovení ostatních tenantů, můžou být ostatní klienti stále offline.
@@ -237,14 +237,14 @@ Po dokončení procesu obnovení jsou aplikace a všichni klienti plně funkčn�
 3. Otevřete skupinu prostředků obnovení a Všimněte si následujících položek:
    * Verze pro obnovení katalogu a serverů tenants1 s příponou _obnovení_ .  Všechny obnovené databáze katalogu a klientů na těchto serverech mají všechny názvy používané v původní oblasti.
 
-   * SQL Server _tenants2-DPT&lt;-&gt;User-Recovery_ .  Tento server se používá ke zřízení nových tenantů během výpadku.
-   * App Service s názvem _events&lt;-DPT-recoveryregion&gt;-&lt;User & gt_;, což je instance obnovení aplikace události. 
+   * _Tenants2-DPT-&lt;uživatel&gt;obnovení_ systému SQL Server.  Tento server se používá ke zřízení nových tenantů během výpadku.
+   * App Service s názvem _events-DPT-&lt;recoveryregion&gt;-&lt;uživatel & gt_;, což je instance obnovení aplikace události. 
 
      ![Prostředky služby Azure Recovery](media/saas-dbpertenant-dr-geo-replication/resources-in-recovery-region.png) 
     
-4. Otevřete SQL Server _tenants2-DPT&lt;-&gt;User-Recovery_ .  Všimněte si, že obsahuje databázi _hawthornhall_ a elastický fond _Pool1_.  Databáze _hawthornhall_ je nakonfigurovaná jako elastická databáze v elastickém fondu _Pool1_ .
+4. Otevřete _tenants2-DPT-&lt;user&gt;-Recovery_ serveru SQL Server.  Všimněte si, že obsahuje databázi _hawthornhall_ a elastický fond _Pool1_.  Databáze _hawthornhall_ je nakonfigurovaná jako elastická databáze v elastickém fondu _Pool1_ .
 
-5. Přejděte zpátky do skupiny prostředků a v _tenants1-DPT-&lt;&gt;User-Recovery_ Server klikněte na databázi contoso. Na levé straně klikněte na geografickou replikaci.
+5. Přejděte zpět do skupiny prostředků a klikněte na databázi Contoso na úrovni _intenants1-DPT-&lt;user&gt;-Recovery_ Server. Na levé straně klikněte na geografickou replikaci.
     
     ![Databáze Contoso po převzetí služeb při selhání](media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication-after-failover.png)
 
@@ -255,7 +255,7 @@ V této úloze aktualizujete jednu z databází tenantů.
 2. V *ISE PowerShellu*ve skriptu ..\Learning pro zajištění kontinuity a havárie Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 nastavte následující hodnotu:
     * **$DemoScenario = 5** Odstranění události z tenanta v oblasti obnovení
 3. Stisknutím klávesy **F5** spusťte skript.
-4. Aktualizujte stránku s událostmi ve službě http://events.wingtip-dpt.&lt contoso na&gt; úrovni: User. &lt; trafficmanager.NET/contosoconcerthall&gt; – nahraďte uživatele hodnotou uživatele vašeho nasazení a Všimněte si, že poslední událost byla odstraněna.
+4. Aktualizujte stránku s událostmi služby trafficmanager.NET/contosoconcerthall společnosti Contoso (http://events.wingtip-dpt.&lt; User&gt;. – nahraďte &lt;uživatele&gt; hodnotou uživatele vašeho nasazení) a Všimněte si, že poslední událost byla odstraněna.
 
 ## <a name="repatriate-the-application-to-its-original-production-region"></a>Vrácení aplikace do původní produkční oblasti
 
@@ -286,13 +286,13 @@ Nyní si představte, že se výpadek vyřeší a spustí se skript pro vrácen�
 3.  Pak zahajte proces navracení, nastavte:
     * **$DemoScenario = 6**, převrácení aplikace do původní oblasti
     * Stisknutím klávesy **F5** spusťte skript pro obnovení v novém okně prostředí PowerShell.  Repatrianí bude trvat několik minut a může se monitorovat v okně PowerShellu.
-    ![Proces vrácení](media/saas-dbpertenant-dr-geo-replication/repatriation-process.png)
+    proces vrácení ![](media/saas-dbpertenant-dr-geo-replication/repatriation-process.png)
 
-4. Když je skript spuštěný, aktualizujte stránku centra událostí (http://events.wingtip-dpt.&lt ; User&gt;. trafficmanager.NET).
+4. Když je skript spuštěný, aktualizujte stránku centra událostí (http://events.wingtip-dpt.&lt; uživatel&gt;. trafficmanager.net).
     * Všimněte si, že všichni klienti jsou online a přístupné v celém rámci tohoto procesu.
 
 5. Až se repatriace dokončí, aktualizujte centrum událostí a otevřete stránku události pro Hawthorn hala. Všimněte si, že tato databáze byla předaná do původní oblasti.
-    ![Centrum událostí se repatriaí](media/saas-dbpertenant-dr-geo-replication/events-hub-repatriated.png)
+    ](media/saas-dbpertenant-dr-geo-replication/events-hub-repatriated.png) ![centrum událostí bylo převracení.
 
 
 ## <a name="designing-the-application-to-ensure-app-and-database-are-colocated"></a>Návrh aplikace, aby se zajistilo, že se aplikace a databáze společně nacházejí 

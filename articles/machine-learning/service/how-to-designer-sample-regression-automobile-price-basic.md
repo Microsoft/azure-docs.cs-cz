@@ -1,5 +1,5 @@
 ---
-title: 'Příklad návrháře #1: regrese pro předpověď ceny'
+title: 'Návrhář: předpověď ceny (regrese)'
 titleSuffix: Azure Machine Learning
 description: Naučte se vytvářet model strojového učení pro předpověď ceny automobilu bez nutnosti psát jediný řádek kódu.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 14b9f5fd1459ebd3341218a4ada14b16ddb4853f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0cdf2d0b632368a5a5bc24e092783c979f7c26bc
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515470"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647157"
 ---
 # <a name="sample-1---regression-predict-price"></a>Ukázka 1 – regrese: předpověď ceny
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -35,7 +35,7 @@ Tady je poslední dokončený Graf kanálu. Tento článek představuje racioná
 
 ![Graf kanálu](media/how-to-ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: Použít doporučení pro výkon – Azure SQL Database | Microsoft Docs
+title: Použití doporučení pro výkon – Azure SQL Database
 description: Pomocí Azure Portal můžete najít doporučení pro výkon, která mohou optimalizovat výkon Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: b6bcb2650cd11ed97b6e81fda6aaafe7fca61202
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 24a590a80e768bba2e9b102bdf200e0cd96858f8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569587"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691290"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Najít a použít doporučení pro výkon
 
-Pomocí Azure Portal můžete najít doporučení k výkonu, která mohou optimalizovat výkon vašeho Azure SQL Database nebo opravit nějaký problém identifikovaný v rámci vašeho zatížení. Stránka s doporučením pro **výkon** v Azure Portal vám umožní najít nejdůležitější doporučení na základě jejich potenciálního dopadu. 
+Pomocí Azure Portal můžete najít doporučení k výkonu, která mohou optimalizovat výkon vašeho Azure SQL Database nebo opravit nějaký problém identifikovaný v rámci vašeho zatížení. Stránka s **doporučením pro výkon** v Azure Portal vám umožní najít nejdůležitější doporučení na základě jejich potenciálního dopadu. 
 
 ## <a name="viewing-recommendations"></a>Zobrazení doporučení
 
@@ -29,7 +29,7 @@ Chcete-li zobrazit a použít doporučení týkající se výkonu, budete potře
 K nalezení doporučení výkonu Azure Portal použijte následující postup:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Přejít na **všechny služby** > **databáze SQL**a vyberte svou databázi.
+2. Pro **všechny služby** > **databáze SQL**a vyberte svou databázi.
 3. Přejděte do **doporučení ke zvýšení výkonu** a zobrazte dostupná doporučení pro vybranou databázi.
 
 Doporučení týkající se výkonu se zobrazují v tabulce podobné tomu na následujícím obrázku:
@@ -40,13 +40,13 @@ Doporučení jsou seřazená podle jejich potenciálního dopadu na výkon do n�
 
 | Dopad | Popis |
 |:--- |:--- |
-| Vysoká |Doporučení s vysokým dopadem by měla poskytovat nejvýznamnější dopad na výkon. |
-| Střední |Doporučení středně velkých dopadů by měla zlepšit výkon, ale ne podstatně. |
+| Vysoký |Doporučení s vysokým dopadem by měla poskytovat nejvýznamnější dopad na výkon. |
+| Střednědobé používání |Doporučení středně velkých dopadů by měla zlepšit výkon, ale ne podstatně. |
 | Nízká |Doporučení pro nízký dopad by měla poskytovat lepší výkon než bez, ale vylepšení nemusí být významná. |
 
 
 > [!NOTE]
-> Azure SQL Database musí sledovat aktivity alespoň za den, aby bylo možné určit některá doporučení. Azure SQL Database lze snadněji optimalizovat pro konzistentní vzory dotazů, než umožňuje náhodné rozspottych nárůstů aktivity. Pokud doporučení nejsou aktuálně k dispozici, zobrazí stránka s doporučením pro **výkon** zprávu s vysvětlením, proč.
+> Azure SQL Database musí sledovat aktivity alespoň za den, aby bylo možné určit některá doporučení. Azure SQL Database lze snadněji optimalizovat pro konzistentní vzory dotazů, než umožňuje náhodné rozspottych nárůstů aktivity. Pokud doporučení nejsou aktuálně k dispozici, zobrazí stránka s **doporučením pro výkon** zprávu s vysvětlením, proč.
 > 
 
 Můžete si také prohlédnout stav historických operací. Pokud chcete zobrazit další informace, vyberte doporučení nebo stav.
@@ -81,11 +81,11 @@ Vybrané doporučení se aplikuje na databázi.
 Pokud seznam doporučení obsahuje položky, které chcete ze seznamu odebrat, můžete toto doporučení zrušit:
 
 1. Kliknutím na doporučení v seznamu **doporučení** otevřete podrobnosti.
-2. Na stránce **Podrobnosti** klikněte na zahodit.
+2. Na stránce **Podrobnosti** klikněte na **Zahodit** .
 
 V případě potřeby můžete zahozené položky přidat zpátky do seznamu **doporučení** :
 
-1. Na stránce **doporučení** klikněte na **Zobrazit**zahozené.
+1. Na stránce **doporučení** klikněte na **Zobrazit zahozené**.
 2. Výběrem zahozené položky ze seznamu zobrazíte její podrobnosti.
 3. Volitelně můžete kliknutím na **Zrušit zrušení** přidat index zpátky do hlavního seznamu **doporučení**.
 
@@ -127,15 +127,15 @@ Doporučení, která jsou ve stavu **čekání**, **ověřování**nebo **úspě
 
 Použití doporučení nemusí okamžitě probíhat. Portál poskytuje podrobné informace o stavu doporučení. Níže jsou možné stavy, ve kterých může být index:
 
-| Stav | Popis |
+| Status | Popis |
 |:--- |:--- |
 | Čekající na vyřízení |Příkaz Apply doporučení byl přijat a je naplánován ke spuštění. |
-| Provádění |Doporučení se používá. |
-| Ověřování platnosti |Doporučení se úspěšně nastavilo a služba měří výhody. |
+| Zpracovávan |Doporučení se používá. |
+| Opětovné |Doporučení se úspěšně nastavilo a služba měří výhody. |
 | Úspěch |Doporučení se úspěšně použilo a byly měřeny výhody. |
-| Chyba |Při zavádění doporučení se stala chyba. Může to být přechodný problém nebo pravděpodobně Změna schématu tabulky a skript již není platný. |
-| Probíhá vrácení |Doporučení bylo použito, ale bylo považováno za nevýkonné a automaticky se vrátí. |
-| Vráceno |Doporučení bylo vráceno. |
+| Chyba |Během procesu použití doporučení došlo k chybě. Může to být přechodný problém nebo pravděpodobně Změna schématu tabulky a skript již není platný. |
+| Vrací |Doporučení bylo použito, ale bylo považováno za nevýkonné a automaticky se vrátí. |
+| Vrátit |Doporučení bylo vráceno. |
 
 Kliknutím na místní doporučení ze seznamu zobrazíte další informace:
 
@@ -150,7 +150,7 @@ Pokud jste použili doporučení k výkonu k použití doporučení (což znamen
 ![Doporučené indexy](./media/sql-database-advisor-portal/details.png)
 
 ## <a name="monitoring-performance-impact-of-index-recommendations"></a>Monitorování dopadu na výkon doporučení indexu
-Po úspěšné implementaci doporučení (v současné době platí pouze pro operace s indexem a parametrizovat dotazy), můžete kliknout na **dotaz** na přehledy na stránce s podrobnostmi o doporučeních a otevřít [dotaz – Přehled výkonu](sql-database-query-performance.md) a zobrazit dopad nejdůležitějších dotazů na výkon.
+Po úspěšné implementaci doporučení (v současné době platí pouze pro operace s indexem a parametrizovat dotazy), můžete kliknout na **dotaz na přehledy** na stránce s podrobnostmi o doporučeních a otevřít [dotaz – Přehled výkonu](sql-database-query-performance.md) a zobrazit dopad nejdůležitějších dotazů na výkon.
 
 ![Sledovat dopad na výkon](./media/sql-database-advisor-portal/query-insights.png)
 

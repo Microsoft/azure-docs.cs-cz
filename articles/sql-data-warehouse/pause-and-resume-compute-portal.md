@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Pozastavení a obnovení výpočtů v Azure SQL Data Warehouse-Azure Portal | Microsoft Docs'
+title: 'Rychlý Start: pozastavení & obnovení COMPUTE – Azure Portal '
 description: Pomocí Azure Portal můžete pozastavit výpočty v Azure SQL Data Warehouse a ušetřit tak náklady. Až budete připraveni k používání datového skladu, obnovte výpočetní prostředky.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,14 +10,15 @@ ms.subservice: manage
 ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 46fb1fc6455cd35d8bb1eaf0a1b7ee499f5c1caf
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 14f66f71948f75a723c9fdbed7490d54c2c3e2b2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574882"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692994"
 ---
-# <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Rychlý start: Pozastavení a obnovení výpočetní služby Azure SQL Data Warehouse v Azure Portal
+# <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Rychlý Start: pozastavení a obnovení výpočetní služby Azure SQL Data Warehouse v Azure Portal
 
 Pomocí Azure Portal můžete pozastavit výpočty v Azure SQL Data Warehouse a ušetřit tak náklady. Až budete připraveni k používání datového skladu, [obnovte výpočetní](sql-data-warehouse-manage-compute-overview.md) prostředky.
 
@@ -25,9 +26,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlásit se na [Azure Portal](https://portal.azure.com/).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pomocí [Vytvoření a připojení – portál](create-data-warehouse-portal.md) vytvořte datový sklad s názvem **mySampleDataWarehouse**. 
 
@@ -37,7 +38,7 @@ Pokud chcete ušetřit náklady, můžete pozastavit a obnovit výpočetní pros
 
 Chcete-li pozastavit SQL Data Warehouse, postupujte podle následujících kroků.
 
-1. Na webu Azure Portal klikněte vlevo na **Databáze SQL**.
+1. Na levé stránce webu Azure Portal klikněte na **Databáze SQL**.
 2. Na stránce **Databáze SQL** vyberte **mySampleDataWarehouse**. Tím se otevře datový sklad. 
 3. Na stránce **mySampleDataWarehouse** je **stav** oznámení **online**.
 
@@ -47,9 +48,9 @@ Chcete-li pozastavit SQL Data Warehouse, postupujte podle následujících krok�
 5. V případě, že chcete pokračovat, se zobrazí dotaz s potvrzením. Klikněte na **Ano**.
 6. Chvíli počkejte a pak si všimněte, že se **stav** **pozastavuje**.
 
-    ![Pozastavování](media/pause-and-resume-compute-portal/pausing.png)
+    ![Pozastavení](media/pause-and-resume-compute-portal/pausing.png)
 
-7. Po dokončení operace pozastavení je stav pozastaveno a přepínač je **spuštěn**.
+7. Po dokončení operace pozastavení je stav **pozastaveno** a přepínač je **spuštěn**.
 8. Výpočetní prostředky pro datový sklad jsou teď offline. Za výpočetní výkon se vám nebude účtovat, dokud službu neobnovíte.
 
     ![COMPUTE offline](media/pause-and-resume-compute-portal/compute-offline.png)
@@ -59,7 +60,7 @@ Chcete-li pozastavit SQL Data Warehouse, postupujte podle následujících krok�
 
 Pomocí následujících kroků obnovíte SQL Data Warehouse.
 
-1. Na webu Azure Portal klikněte vlevo na **Databáze SQL**.
+1. Na levé stránce webu Azure Portal klikněte na **Databáze SQL**.
 2. Na stránce **Databáze SQL** vyberte **mySampleDataWarehouse**. Tím se otevře datový sklad. 
 3. Na stránce **mySampleDataWarehouse** je **stav** upozornění **pozastaven**.
 
@@ -67,9 +68,9 @@ Pomocí následujících kroků obnovíte SQL Data Warehouse.
 
 4. Chcete-li obnovit datový sklad, klikněte na tlačítko **Start**. 
 5. Zobrazí se dotaz s dotazem, zda chcete spustit. Klikněte na **Ano**.
-6. Všimněte si, žese **stav** obnovuje.
+6. Všimněte si, že se **stav** **obnovuje**.
 
-    ![Obnovování](media/pause-and-resume-compute-portal/resuming.png)
+    ![Obnovení](media/pause-and-resume-compute-portal/resuming.png)
 
 7. Když je datový sklad znovu online, je stav **online** a přepínač je **pozastaven**.
 8. Výpočetní prostředky pro datový sklad jsou teď online a službu můžete používat. Poplatky za výpočetní prostředky se obnovily.
@@ -98,7 +99,7 @@ Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 4. Pokud chcete odebrat skupinu prostředků, klikněte na **myResourceGroup** a pak klikněte na **Odstranit skupinu prostředků**.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Nyní jste pozastavili a obnovili výpočetní výkon pro datový sklad. Další informace o službě Azure SQL Data Warehouse najdete v kurzu načítání dat.
 

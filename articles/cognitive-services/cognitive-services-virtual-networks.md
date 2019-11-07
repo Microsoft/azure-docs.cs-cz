@@ -1,5 +1,5 @@
 ---
-title: Služby Virtual Networks
+title: Virtuální sítě
 titleSuffix: Azure Cognitive Services
 description: Nakonfigurujte vícevrstvé zabezpečení sítě pro prostředky Cognitive Services.
 services: cognitive-services
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 36e0742101203764a731dd2007d239593a500bfa
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1ae3caa2d1f90bbbae1070d95d676eb206a361a0
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507921"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647355"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurace virtuálních sítí Azure Cognitive Services
 
@@ -24,7 +24,7 @@ Aplikace, která přistupuje k prostředku Cognitive Services, když jsou platn�
 
 > [!IMPORTANT]
 > Když zapnete pravidla brány firewall pro účet Cognitive Services, ve výchozím nastavení se zablokuje příchozí požadavky na data. Aby bylo možné podávat požadavky, je nutné splnit jednu z následujících podmínek:
-> * Požadavek by měl pocházet ze služby provozované v rámci Azure Virtual Network (VNet) na seznamu povolených podsítí cílového Cognitive Services účtu.
+> * Požadavek by měl pocházet ze služby provozované v rámci Azure Virtual Network (VNet) na seznamu povolených podsítí cílového Cognitive Services účtu. Koncový bod v žádostech pocházejících z virtuální sítě je potřeba nastavit jako [vlastní subdoménu](cognitive-services-custom-subdomains.md) účtu Cognitive Services.
 > * Nebo požadavek by měl pocházet z povoleného seznamu IP adres.
 >
 > Blokované požadavky zahrnují ty z jiných služeb Azure, od Azure Portal, ze služeb protokolování a metriky atd.

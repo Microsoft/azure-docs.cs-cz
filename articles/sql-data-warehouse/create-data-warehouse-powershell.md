@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vytvoření Azure SQL Data Warehouse – Azure PowerShell | Microsoft Docs'
+title: 'Rychlý Start: Vytvoření skladu – Azure PowerShell'
 description: Rychle vytvořte SQL Database logický Server, pravidlo brány firewall na úrovni serveru a datový sklad s Azure PowerShell.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,14 +10,15 @@ ms.subservice: development
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f5ee4227b0aeb53be4512dafc91f814468b50c12
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: cfc427b11944cb81d8bc3d12d13668d53be698b7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574899"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693097"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Rychlý start: Vytvoření a dotazování Azure SQL Data Warehouse pomocí Azure PowerShell
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Rychlý Start: vytvoření a dotazování Azure SQL Data Warehouse pomocí Azure PowerShell
 
 Azure SQL Data Warehouse pomocí Azure PowerShell rychle vytvořit.
 
@@ -79,7 +80,7 @@ New-AzResourceGroup -Name $resourcegroupname -Location $location
 ```
 ## <a name="create-a-logical-server"></a>Vytvoření logického serveru
 
-Pomocí příkazu [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) vytvořte [logický Server Azure SQL](../sql-database/sql-database-logical-servers.md) . Logický server obsahuje soubor databází spravovaných jako skupina. Následující příklad vytvoří ve skupině prostředků náhodně pojmenovaný Server s uživatelem s oprávněními správce s názvem `ServerAdmin` a `ChangeYourAdminPassword1`heslem. Podle potřeby tyto předdefinované hodnoty nahraďte.
+Pomocí příkazu [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) vytvořte [logický Server Azure SQL](../sql-database/sql-database-logical-servers.md) . Logický server obsahuje soubor databází spravovaných jako skupina. Následující příklad vytvoří ve skupině prostředků náhodně pojmenovaný Server s uživatelem s právy pro správu s názvem `ServerAdmin` a heslem `ChangeYourAdminPassword1`. Podle potřeby tyto předdefinované hodnoty nahraďte.
 
 ```powershell
 New-AzSqlServer -ResourceGroupName $resourcegroupname `
@@ -119,16 +120,16 @@ New-AzSqlDatabase `
 
 Požadované parametry jsou:
 
-* **RequestedServiceObjectiveName**: Množství [jednotek datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md) , které požadujete. Zvýšením této hodnoty se zvýší náklady na výpočetní výkon. Seznam podporovaných hodnot naleznete v tématu limity pro [paměť a souběžnost](memory-and-concurrency-limits.md).
-* **DatabaseName**: Název SQL Data Warehouse, který vytváříte.
-* **Název_serveru**: Název serveru, který používáte pro vytváření.
+* **RequestedServiceObjectiveName**: množství [jednotek datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md) , které požadujete. Zvýšením této hodnoty se zvýší náklady na výpočetní výkon. Seznam podporovaných hodnot naleznete v tématu [limity paměti a souběžnosti] paměť-Concurrency-limits.md).
+* **DatabaseName**: název SQL Data Warehouse, který vytváříte.
+* **Název_serveru**: název serveru, který používáte pro vytváření.
 * **ResourceGroupName**: Skupina prostředků, kterou používáte. K vyhledání dostupných skupin prostředků v rámci vašeho předplatného použijte rutinu Get-AzureResource.
-* **Edice**: Aby bylo možné vytvořit SQL Data Warehouse, musí být "DataWarehouse".
+* **Edition:** Aby bylo možné vytvořit SQL Data Warehouse, je nutné nastavit edici DataWarehouse.
 
 Volitelné parametry jsou:
 
-- **Kolace**: Výchozí kolace není-li zadána, je SQL_Latin1_General_CP1_CI_AS. V databázi nelze změnit kolaci.
-- **MaxSizeBytes**: Výchozí maximální velikost databáze je 240TB. Maximální velikost rowstore data. Pro sloupcová data existuje neomezené úložiště.
+- **CollationName:** Pokud není uvedeno, je výchozí kolace SQL_Latin1_General_CP1_CI_AS. V databázi nelze změnit kolaci.
+- **MaxSizeBytes**: výchozí maximální velikost databáze je 240TB. Maximální velikost rowstore data. Pro sloupcová data existuje neomezené úložiště.
 
 Další informace o možnostech parametru naleznete v tématu [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase).
 
@@ -145,7 +146,7 @@ Další kurzy Rychlý start v této kolekci vycházejí z tohoto rychlého start
 Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Nyní jste vytvořili datový sklad, vytvořili jste pravidlo brány firewall připojené k vašemu datovému skladu a spustili několik dotazů. Další informace o službě Azure SQL Data Warehouse najdete v kurzu načítání dat.
 > [!div class="nextstepaction"]

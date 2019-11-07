@@ -1,5 +1,5 @@
 ---
-title: Zřízení v SaaS více tenantů Azure | Microsoft Docs
+title: Zřízení v SaaS víceklientské architektuře Azure
 description: Naučte se zřizovat a zařadit nové klienty do Azure SQL Database aplikace SaaS multi-tenant.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 ms.date: 09/24/2018
-ms.openlocfilehash: 3e8e0c69c93c992f31c515c2033a9ae57d2ee3e0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f829c0d734838de42a82343876cefa007dcca04d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570309"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692009"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Zřízení a zakatalogu nových tenantů v aplikaci SaaS s využitím Azure SQL Database horizontálně dělené pro více tenantů
 
@@ -126,7 +126,7 @@ V tomto kurzu se naučíte:
 
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
 
-- Prostředí Azure PowerShell je nainstalované. Podrobnosti najdete v článku [Začínáme s prostředím Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+- Je nainstalované prostředí Azure PowerShell. Podrobnosti najdete v článku [Začínáme s prostředím Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 - Nasadí se aplikace SaaS pro víceklientské klienty. Nasazení za méně než pět minut najdete v tématu [nasazení a prozkoumání SaaS aplikace pro více tenantů](saas-multitenantdb-get-started-deploy.md) .
 
@@ -142,25 +142,25 @@ V této části se zobrazí seznam hlavních akcí pro zřizování, které prov
 
 Níže jsou uvedené klíčové prvky pracovního postupu zřizování, který provedete následujícím postupem:
 
-- **Vypočítat nový klíč tenanta**: K vytvoření klíče tenanta z jeho jména se používá funkce hash.
-- **Ověřte, zda klíč tenanta již existuje**: Je zkontrolován katalog, aby bylo zajištěno, že klíč ještě není zaregistrovaný.
-- **Inicializovat tenanta ve výchozí databázi tenanta**: Databáze tenanta se aktualizuje, aby se přidaly nové informace o tenantovi.  
-- **Registrovat tenanta v katalogu**: Mapování mezi novým klíčem tenanta a stávající databází tenants1 se přidá do katalogu. 
-- **Přidejte název tenanta do tabulky přípon katalogu**: Název místa se přidá do tabulky tenantů v katalogu.  V tomto dodatku se dozvíte, jak se dá databáze katalogu rozšířit, aby podporovala další data specifická pro danou aplikaci.
-- **Otevřít stránku události pro nového tenanta**: V prohlížeči se otevře stránka události *Bushwillow Blues* .
+- **Vypočítat nový klíč tenanta**: funkce hash se používá k vytvoření klíče tenanta z názvu tenanta.
+- **Zkontrolujte, jestli klíč tenanta už existuje**: katalog se zkontroluje, aby se zajistilo, že klíč ještě není zaregistrovaný.
+- **Inicializace tenanta ve výchozí databázi tenanta**: databáze tenanta se aktualizuje, aby se přidaly nové informace o tenantovi.  
+- **Registrovat tenanta v katalogu**: mapování mezi novým klíčem tenanta a stávající databází tenants1 se přidá do katalogu. 
+- **Přidejte název tenanta do tabulky přípon katalogu**: název místa se přidá do tabulky tenantů v katalogu.  V tomto dodatku se dozvíte, jak se dá databáze katalogu rozšířit, aby podporovala další data specifická pro danou aplikaci.
+- **Otevřít stránku události pro nového tenanta**: stránka události *Blues Bushwillow* se otevře v prohlížeči.
 
-   ![události](media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
+   ![stránka events](media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
 
 #### <a name="debugger-steps"></a>Kroky ladicího programu
 
 Chcete-li pochopit, jak aplikace Wingtip implementuje nové zřizování tenanta ve sdílené databázi, přidejte zarážku a krok do pracovního postupu:
 
-1. V *prostředí POWERSHELL ISE*otevřete... Výukové\\modulyProvisionTenants\\*demo-ProvisionTenants. ps1* a nastavte následující parametry: \\
-   - $TenantName = **Bushwillow Blues**, název nového místa.
-   - $VenueType = **Blues**, jeden z předdefinovaných typů místa: blues, ClassicalMusic, roztancoval, jazz, Judo, motorracing, Multipurpose, Opera, rockmusic, fotbal (malá písmena, bez mezer).
-   - $DemoScenario = **1**, pokud chcete zřídit tenanta ve sdílené databázi s ostatními klienty.
+1. V *PowerShellu ISE*otevřete...\\výukové moduly\\ProvisionTenants\\*demo-ProvisionTenants. ps1* a nastavte následující parametry:
+   - **$TenantName** = **Bushwillow Blues**, název nového místa.
+   - **$VenueType** = **Blues**, jeden z předdefinovaných typů místa: blues, ClassicalMusic, roztancoval, jazz, Judo, motorracing, Multipurpose, Opera, rockmusic, fotbal (malá písmena, bez mezer).
+   - **$DemoScenario** = **1**můžete zřídit tenanta ve sdílené databázi s ostatními klienty.
 
-2. Přidejte zarážku vložením kurzoru kdekoli na řádku 38, na řádku, který uvádí: *New-tenant*a potom stiskněte **F9**.
+2. Přidejte zarážku tak, že umístíte kurzor kamkoli na řádek 38, řádek, který uvádí: *New-tenant*, a pak stiskněte **F9**.
 
    ![přerušení](media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
 
@@ -168,7 +168,7 @@ Chcete-li pochopit, jak aplikace Wingtip implementuje nové zřizování tenanta
 
 4. Po zastavení spuštění skriptu na zarážce stiskněte klávesu **F11** pro krok do kódu.
 
-   ![ladit](media/saas-multitenantdb-provision-and-catalog/debug.png)
+   ![Ladí](media/saas-multitenantdb-provision-and-catalog/debug.png)
 
 5. Sledujte provádění skriptu pomocí možností nabídky **ladění** , **F10** a **F11**, abyste mohli přenášet nebo nazývat na volané funkce.
 
@@ -180,27 +180,27 @@ Další informace o ladění skriptů PowerShellu najdete v tématu [o práci se
 
 Níže jsou uvedené klíčové prvky pracovního postupu, který jste procházeli během trasování skriptu:
 
-- **Vypočítat nový klíč tenanta**: K vytvoření klíče tenanta z jeho jména se používá funkce hash.
-- **Ověřte, zda klíč tenanta již existuje**: Je zkontrolován katalog, aby bylo zajištěno, že klíč ještě není zaregistrovaný.
-- **Vytvořte novou databázi tenanta**: Databáze je vytvořena zkopírováním databáze *basetenantdb* pomocí šablony Správce prostředků.  Název nové databáze je založen na názvu tenanta.
+- **Vypočítat nový klíč tenanta**: funkce hash se používá k vytvoření klíče tenanta z názvu tenanta.
+- **Zkontrolujte, jestli klíč tenanta už existuje**: katalog se zkontroluje, aby se zajistilo, že klíč ještě není zaregistrovaný.
+- **Vytvoření nové databáze tenanta**: databáze je vytvořena zkopírováním databáze *basetenantdb* pomocí šablony Správce prostředků.  Název nové databáze je založen na názvu tenanta.
 - **Přidat databázi do katalogu**: Nová databáze tenanta je registrovaná jako horizontálních oddílů v katalogu.
-- **Inicializovat tenanta ve výchozí databázi tenanta**: Databáze tenanta se aktualizuje, aby se přidaly nové informace o tenantovi.  
-- **Registrovat tenanta v katalogu**: Mapování mezi novým klíčem tenanta a databází *sequoiasoccer* se přidá do katalogu.
-- **Do katalogu se přidá název tenanta**: Název místa se přidá do tabulky rozšíření tenantů v katalogu.
-- **Otevřít stránku události pro nového tenanta**: Stránka události *Sequoia fotbalu* se otevře v prohlížeči.
+- **Inicializace tenanta ve výchozí databázi tenanta**: databáze tenanta se aktualizuje, aby se přidaly nové informace o tenantovi.  
+- **Registrovat tenanta v katalogu**: mapování mezi novým klíčem tenanta a databází *sequoiasoccer* se přidá do katalogu.
+- **Do katalogu se přidá název tenanta**: místo, do kterého se přidá název místa, se přidá do tabulky rozšíření tenantů v katalogu.
+- **Otevřít stránku události pro nového tenanta**: stránka události *Sequoia fotbal* se otevře v prohlížeči.
 
-   ![události](media/saas-multitenantdb-provision-and-catalog/sequoiasoccer.png)
+   ![stránka events](media/saas-multitenantdb-provision-and-catalog/sequoiasoccer.png)
 
 #### <a name="debugger-steps"></a>Kroky ladicího programu
 
 Nyní projdete procesem skriptu při vytváření tenanta ve vlastní databázi:
 
-1. Pořád v... Výukové\\modulyProvisionTenants\\*demo-ProvisionTenants. ps1* nastavte následující parametry: \\
-   - $TenantName = **Sequoia fotbal**, název nového místa.
-   - $VenueType = **fotbalový**, jeden z předdefinovaných typů místa: blues, ClassicalMusic, roztancoval, jazz, Judo, motorracing, Multipurpose, Opera, rockmusic, fotbalový (malý případ, bez mezer).
-   - $DemoScenario = **2**, pokud chcete zřídit tenanta do své vlastní databáze.
+1. Pořád v...\\výukové moduly\\ProvisionTenants\\*demo-ProvisionTenants. ps1* nastavte následující parametry:
+   - **$TenantName** = **Sequoia fotbal**, název nového místa.
+   - **$VenueType** = **fotbal**, jeden z předdefinovaných typů místa: blues, ClassicalMusic, roztancoval, jazz, Judo, motorracing, Multipurpose, Opera, rockmusic, fotbal (malý případ, bez mezer).
+   - **$DemoScenario** = **2**můžete zřídit tenanta do své vlastní databáze.
 
-2. Přidejte novou zarážku tak, že umístíte kurzor kamkoli na řádek 57, řádek, který uvádí:  *& &nbsp;$PSScriptRoot \new-tenantanddatabase '* , a stiskněte **F9**.
+2. Přidejte novou zarážku tak, že umístíte kurzor kamkoli na řádek 57, řádek, který uvádí: *&&nbsp;$PSScriptRoot \new-tenantanddatabase*a stiskněte klávesu **F9**.
 
    ![přerušení](media/saas-multitenantdb-provision-and-catalog/breakpoint2.png)
 
@@ -212,14 +212,14 @@ Nyní projdete procesem skriptu při vytváření tenanta ve vlastní databázi:
 
 Toto cvičení zřídí dávku o 17 klientech. Než začnete používat jiné kurzy pro lístky Wingtip, doporučujeme zřídit tuto dávku tenantů, aby bylo možné pracovat s více databázemi.
 
-1. V *prostředí POWERSHELL ISE*otevřete... \\Výukové\\modulyProvisionTenants\\*demo-ProvisionTenants. ps1* a změňte parametr *$DemoScenario* na 4:
-   - $DemoScenario = **4**pro zřízení dávky tenantů do sdílené databáze.
+1. V *PowerShellu ISE*otevřete...\\výukové moduly\\ProvisionTenants\\*demo-ProvisionTenants. ps1* a změňte parametr *$DemoScenario* na 4:
+   - **$DemoScenario** = **4**můžete zřídit dávku tenantů do sdílené databáze.
 
 2. Stiskněte **F5** a spusťte skript.
 
 ### <a name="verify-the-deployed-set-of-tenants"></a>Ověření nasazené sady tenantů 
 
-V této fázi máte kombinaci klientů nasazených do sdílené databáze a klientů nasazených do jejich vlastních databází. Azure Portal lze použít ke kontrole databází, které byly vytvořeny. V [Azure Portal](https://portal.azure.com)otevřete Server **tenants1-\<MT-User\>**  tak, že přejdete na seznam serverů SQL.  Seznam **databází SQL** by měl zahrnovat sdílenou databázi **tenants1** a databáze pro klienty, kteří jsou ve své vlastní databázi:
+V této fázi máte kombinaci klientů nasazených do sdílené databáze a klientů nasazených do jejich vlastních databází. Azure Portal lze použít ke kontrole databází, které byly vytvořeny. V [Azure Portal](https://portal.azure.com)otevřete **tenants1-MT-\<uživatel\>** Server, a to tak, že přejdete na seznam serverů SQL.  Seznam **databází SQL** by měl zahrnovat sdílenou databázi **tenants1** a databáze pro klienty, kteří jsou ve své vlastní databázi:
 
    ![seznam databází](media/saas-multitenantdb-provision-and-catalog/Databases.png)
 
@@ -227,7 +227,7 @@ I když Azure Portal zobrazuje databáze tenantů, neumožňuje zobrazit klienty
 
 #### <a name="using-wingtip-tickets-events-hub-page"></a>Použití stránky centra událostí Wingtip lístky
 
-Otevřete stránku centra událostí v prohlížeči (http: Events. Wingtip-Mt.\<User\>. trafficmanager.NET).  
+Otevřete stránku centra událostí v prohlížeči (http: Events. Wingtip-Mt.\<USER\>. trafficmanager.net)  
 
 #### <a name="using-catalog-database"></a>Používání databáze katalogu
 
@@ -236,7 +236,7 @@ Otevřete stránku centra událostí v prohlížeči (http: Events. Wingtip-Mt.\
 - Název tenanta je uložený v tabulce tenantů.
 - Název databáze je uložený v tabulkách pro správu horizontálních oddílů.
 
-1. V SQL Server Management Studio (SSMS) se připojte k serveru tenantů v **katalogu – Mt.\<User\>. Database.Windows.NET**s přihlašovacími údaji = **Developer**a Password = **P ssword1\@**
+1. V SQL Server Management Studio (SSMS) se připojte k serveru tenantů v **katalogu – Mt.\<USER\>. Database.Windows.NET**s přihlašovacími údaji = **Developer**a Password = **P\@ssword1**
 
     ![Dialogové okno připojení SSMS](media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 
@@ -267,7 +267,7 @@ Tento typ automatizované služby může být jednoduchý nebo složitý. Automa
 - [Ladění skriptů v integrovaném skriptovacím prostředí (ISE) v prostředí Windows PowerShell](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

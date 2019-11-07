@@ -1,5 +1,5 @@
 ---
-title: Spouštění dotazů vytváření sestav napříč více databázemi SQL Azure | Microsoft Docs
+title: Spouštění dotazů vytváření sestav napříč více databázemi SQL Azure
 description: Generování sestav mezi klienty pomocí distribuovaných dotazů.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewers: billgib,ayolubek
 ms.date: 01/25/2019
-ms.openlocfilehash: fa8dbbbb09fbdc14049e168afe6eb4810ccc8254
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f9af2af7893bd908988ee45476ce14a56f9768a9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570233"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691901"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Generování sestav mezi klienty pomocí distribuovaných dotazů
 
@@ -58,7 +58,7 @@ V úložišti GitHubu [WingtipTicketsSaaS-DbPerTenant](https://github.com/Micros
 
 Pokud chcete spouštět dotazy pro zajímavější datovou sadu, vytvořte pomocí generátoru lístků data o prodeji lístku.
 
-1. V *prostředí POWERSHELL ISE*otevřete... \\\\ Výukové moduly Operational Analytics\\pro vytváření sestav ad demo-AdhocReporting. ps1 a nastavte následující hodnotu: \\
+1. V *prostředí POWERSHELL ISE*otevřete\\výukové moduly\\provozní analýzy\\vytváření sestav ad hoc\\skriptu *demo-AdhocReporting. ps1* a nastavte následující hodnotu:
    * **$DemoScenario** = 1, **vykoupit lístky pro události na všech místě**.
 2. Stisknutím klávesy **F5** spusťte skript a vygenerujte prodej lístku. Po spuštění skriptu pokračujte postupem v tomto kurzu. Data lístku se dotazují v části *Run ad hoc distribuované dotazy* , takže počkejte, než se generátor lístků dokončí.
 
@@ -68,7 +68,7 @@ V rámci aplikace Wingtip Tickets SaaS Database na tenanta je každému klientov
 
 Chcete-li tento model simulovat, je do databáze klienta přidaná sada zobrazení typu globální, která projektuje ID tenanta do každé tabulky, na kterou se dotazuje globálně. Například zobrazení *VenueEvents* přidá vypočítané *VenueId* k sloupcům, které jsou z tabulky *events* propočítány. Podobně zobrazení *VenueTicketPurchases* a *VenueTickets* přidávají vypočítaný sloupec *VenueId* , který je propočítán z příslušných tabulek. Tyto pohledy používá elastický dotaz k paralelizovat dotazů a jejich vložení do příslušné vzdálené databáze tenanta, když je přítomen sloupec *VenueId* . To významně snižuje množství vrácených dat a vede k výraznému nárůstu výkonu mnoha dotazů. Tato globální zobrazení byla předem vytvořena ve všech databázích tenanta.
 
-1. Otevřete SSMS a [Připojte se k serveru tenants1&lt;-&gt; User](saas-tenancy-wingtip-app-guidance-tips.md#explore-database-schema-and-execute-sql-queries-using-ssms).
+1. Otevřete SSMS a [Připojte se k uživatelskému&gt; serveru tenants1-&lt;](saas-tenancy-wingtip-app-guidance-tips.md#explore-database-schema-and-execute-sql-queries-using-ssms).
 1. Rozbalte **databáze**, klikněte pravým tlačítkem na _Contosoconcerthall_a vyberte **Nový dotaz**.
 1. Spuštěním následujících dotazů Prozkoumejte rozdíl mezi tabulkami s jedním klientem a globálním zobrazením:
 
@@ -90,12 +90,12 @@ V těchto zobrazeních je *VenueId* vypočítán jako hodnota hash názvu místa
 
 Kontrola *definice zobrazení míst* :
 
-1. V **Průzkumník objektů**rozbalte**zobrazení** **contosoconcerthall** > :
+1. V **Průzkumník objektů**rozbalte **contosoconcerthall** > **zobrazení**:
 
-   ![views](media/saas-tenancy-cross-tenant-reporting/views.png)
+   ![Náhled](media/saas-tenancy-cross-tenant-reporting/views.png)
 
 2. Klikněte pravým tlačítkem na **dbo. Místo**.
-3. Vybrat **zobrazení skriptu jako** > **vytvořit pro** > **nové okno editoru dotazů**
+3. Vyberte **zobrazení skriptu jako** > **vytvořit, aby se** > **nové okno editoru dotazů** .
 
 Pokud chcete zjistit, jak přidat *VenueId*, proveďte skript kteréhokoli *z ostatních zobrazení* místa.
 
@@ -103,7 +103,7 @@ Pokud chcete zjistit, jak přidat *VenueId*, proveďte skript kteréhokoli *z os
 
 Toto cvičení nasadí databázi _adhocreporting_ . Toto je hlavní databáze, která obsahuje schéma používané pro dotazování napříč všemi databázemi tenanta. Databáze je nasazená na stávající Server katalogu, což je server, který se používá pro všechny databáze související se správou v ukázkové aplikaci.
 
-1. v *prostředí POWERSHELL ISE*otevřete... \\\\Výukovémoduly provozní analýzy AD\\hoc vytváření sestav*demo-AdhocReporting. ps1.* \\ 
+1. v *PowerShellu ISE*otevřete...\\výukové moduly\\provozní analýzy\\vytváření sestav ad hoc\\*demo-AdhocReporting. ps1*. 
 
 1. Nastavte **$DemoScenario = 2**, _Nasaďte databázi ad hoc Reporting_.
 
@@ -149,7 +149,7 @@ Po kontrole plánu spuštění najeďte na ikony plánu a vyhledejte podrobnosti
 
 Je důležité si uvědomit, že nastavení **distribuce = horizontálně dělené (VenueId)** , když je definovaný externí zdroj dat, zlepšuje výkon pro mnoho scénářů. Vzhledem k tomu, že se každý *VenueId* mapuje na jednotlivou databázi, je filtrování snadné provést vzdáleně a vrátí pouze potřebná data.
 
-1. Otevřít... \\\\Výukovémoduly provozní analýzy AD\\hoc vytváření sestav*demo-AdhocReportingQueries. SQL* v SSMS. \\
+1. Otevřete...\\výukové moduly\\provozní analýzy\\vytváření sestav ad hoc\\*demo-AdhocReportingQueries. SQL* v SSMS.
 2. Ujistěte se, že jste připojení k databázi **adhocreporting** .
 3. Vyberte nabídku **dotazu** a klikněte na **Zahrnout skutečný plán spuštění** .
 4. Zvýrazněte, *která místa jsou aktuálně registrována?* dotaz a stiskněte klávesu **F5**.
@@ -175,7 +175,7 @@ Je důležité si uvědomit, že nastavení **distribuce = horizontálně dělen
    ![query](media/saas-tenancy-cross-tenant-reporting/query3-plan.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

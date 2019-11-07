@@ -8,14 +8,14 @@ ms.custom: include file
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
-ms.date: 10/23/2019
+ms.date: 11/05/2019
 ms.author: diberry
-ms.openlocfilehash: f833ded4467da1f129b1ea7f858ae8bdd9c2048e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b65bf177d98d5b0bcbaf9e9eaf06707b43ed7032
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495351"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647466"
 ---
 Abyste mohli přijmout předpověď služby LUIS v chatbotu nebo jiné klientské aplikaci, musíte aplikaci publikovat do koncového bodu. 
 
@@ -31,4 +31,4 @@ Abyste mohli přijmout předpověď služby LUIS v chatbotu nebo jiné klientsk�
 
     ![Publikování LUIS do koncového bodu](../media/howto-publish/publish-endpoint-success.png)
 
-4. Vyberte odkaz **endpoints** (koncové body) v zeleném stavovém řádku, abyste se dostali na stránku **Keys and endpoints** (Klíče a koncové body). Adresy URL koncových bodů jsou uvedené dole.
+4. Vyberte odkaz **přístup k adresám URL koncových bodů** v oznámení, abyste přešli na stránku **prostředků Azure** . Adresa URL koncového bodu je uvedena jako **vzorový dotaz**.

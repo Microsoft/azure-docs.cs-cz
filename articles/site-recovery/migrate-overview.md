@@ -1,19 +1,19 @@
 ---
-title: Migrace místních počítačů a virtuálních počítačů Azure Azure Site Recovery
-description: Tento článek popisuje, jak migrovat místní a virtuální počítače Azure IaaS do Azure pomocí služby Azure Site Recovery.
+title: Migrace serverů a virtuálních počítačů do Azure pomocí Azure Site Recovery
+description: Popisuje, jak migrovat místní a virtuální počítače Azure IaaS do Azure pomocí služby Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: c043950de9565f96d52c848f96efac80385f2321
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8e256aac16bb8c2d2f1eca494981458f71cc2e4d
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814482"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620619"
 ---
 # <a name="about-migration"></a>Informace o migraci
 
@@ -21,12 +21,12 @@ Přečtěte si tento článek, kde najdete rychlý přehled toho, jak služba [A
 
 Můžete provést migraci pomocí Site Recovery:
 
-- **Migrace z místního prostředí do Azure**: Migrujte místní virtuální počítače Hyper-V, virtuální počítače VMware a fyzické servery do Azure. Po dokončení migrace budou úlohy spouštěné na místních počítačích běžet na virtuálních počítačích Azure. 
-- **Migrace v rámci Azure**: Migrujte virtuální počítače Azure mezi oblastmi Azure. 
-- **Migrace AWS**: Migrujte instance Windows AWS do virtuálních počítačů Azure IaaS. 
+- **Migrace z místního prostředí do Azure**: migrace místních virtuálních počítačů Hyper-V, virtuálních počítačů VMware a fyzických serverů do Azure. Po dokončení migrace budou úlohy spouštěné na místních počítačích běžet na virtuálních počítačích Azure. 
+- **Migrovat v rámci Azure:** Migrují se virtuální počítače Azure mezi oblastmi Azure. 
+- **Migrovat AWS:** Migrují se instance Windows AWS do virtuálních počítačů Azure IaaS. 
 
 > [!NOTE]
-> Teď můžete migrovat z místního prostředí do Azure pomocí služby Azure Migrate. [Další informace](../migrate/migrate-overview.md).
+> Teď můžete migrovat z místního prostředí do Azure pomocí služby Azure Migrate. [Další informace](../migrate/migrate-overview.md)
 
 ## <a name="what-do-we-mean-by-migration"></a>Co myslíme pojmem migrace?
 
@@ -44,7 +44,7 @@ Kromě používání Site Recovery pro zotavení po havárii místních a virtu�
 **Migrace mezi oblastmi Azure** | Virtuální počítače Azure můžete migrovat z jedné oblasti Azure do jiné. Po dokončení migrace můžete nakonfigurovat zotavení po havárii pro virtuální počítače Azure hned v sekundární oblasti, do které jste migrovali.
 **Migrace AWS do Azure** | Můžete migrovat instance AWS do virtuálních počítačů Azure. Site Recovery považuje instance AWS za fyzické servery pro účely migrace. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Migrace místních počítačů do Azure](migrate-tutorial-on-premises-azure.md)
 - [Migrace virtuálních počítačů z jedné oblasti Azure do jiné](azure-to-azure-tutorial-migrate.md)

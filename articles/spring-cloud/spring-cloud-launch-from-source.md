@@ -3,15 +3,15 @@ title: 'Rychlý Start: spuštění vaší jarní cloudové aplikace ze zdrojové
 description: Naučte se, jak spustit cloudovou aplikaci Azure pro jaře přímo ze zdrojového kódu.
 author: jpconnock
 ms.service: spring-cloud
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 573baa242c06868326568a82bc358e136f1ece2c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: MT
+ms.openlocfilehash: 524fa18dfd4c47e699ba6b9d5d7a98bbbaaf5c72
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177971"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646774"
 ---
 # <a name="launch-your-spring-cloud-application-from-source-code"></a>Spustit svou jarní cloudovou aplikaci ze zdrojového kódu
 
@@ -28,10 +28,10 @@ Po tomto rychlém startu se dozvíte, jak:
 > * Nasazení jednotlivých mikroslužeb
 > * Přiřazení veřejného koncového bodu vaší aplikaci
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 >[!Note]
-> Před zahájením tohoto rychlého startu se ujistěte, že vaše předplatné Azure má přístup k jarnímu cloudu Azure.  Jako služba ve verzi Preview se na nás zeptáme, abychom vám mohli přidat vaše předplatné do seznamu povolených adres.  Pokud chcete prozkoumat možnosti Azure jarního cloudu, [vyplňte prosím tento formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u).  I když je ve verzi Preview Azure jaře Cloud, nabízí Microsoft omezená podpora bez smlouvy SLA.  Další informace o podpoře v rámci verzí Preview najdete v těchto [nejčastějších dotazech k podpoře](https://azure.microsoft.com/support/faq/).
+> Jarní cloud Azure se teď nabízí jako verze Public Preview. Nabídky veřejné verze Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.  Další informace o podpoře v rámci verzí Preview najdete v souboru [support Request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
 
 Než začnete, ujistěte se, že vaše předplatné Azure má požadované závislosti:
 
@@ -49,7 +49,7 @@ Než začnete, ujistěte se, že vaše předplatné Azure má požadované závi
 Pomocí následujícího příkazu nainstalujte rozšíření Azure jaře Cloud pro rozhraní příkazového řádku Azure.
 
 ```Azure CLI
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+az extension add --name spring-cloud
 ```
 
 ## <a name="provision-a-service-instance-using-the-azure-cli"></a>Zřízení instance služby pomocí Azure CLI
@@ -110,7 +110,7 @@ az spring-cloud app deployment create --app <app-name> -n <deployment-name> --ja
 Azure jaře Cloud používá [kpack](https://github.com/pivotal/kpack) k sestavení projektu.  Pomocí Azure CLI můžete nahrát svůj zdrojový kód, sestavit projekt pomocí kpack a nasadit ho do cílové aplikace.
 
 > [!WARNING]
-> Projekt musí vytvořit pouze jeden soubor JAR s položkou `main-class` v `MANIFEST.MF` v `target` (pro nasazení Maven nebo `build/libs` (pro Gradle nasazení).  Více souborů JAR s položkami `main-class` způsobí selhání nasazení.
+> Projekt musí vytvořit pouze jeden soubor JAR s položkou `main-class` v `MANIFEST.MF` v `target` (pro nasazení Maven nebo `build/libs` (pro Gradle nasazení).  Více souborů JAR s `main-class`mi položkami způsobí selhání nasazení.
 
 Pro projekty Maven/Gradle s jedním modulem:
 

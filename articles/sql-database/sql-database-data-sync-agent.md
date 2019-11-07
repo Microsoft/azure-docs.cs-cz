@@ -1,5 +1,5 @@
 ---
-title: Agent synchronizace dat pro Azure Synchronizace dat SQL | Microsoft Docs
+title: Agent synchronizace dat pro Azure Synchronizace dat SQL
 description: Přečtěte si, jak nainstalovat a spustit agenta synchronizace dat pro Azure Synchronizace dat SQL k synchronizaci dat s místními SQL Server databázemi.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 13a59a9b536a25897d7c545b6fb466c1192cb545
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 097c8547093a13f73f1ae5facdc0f7e6c75c071d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177710"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690786"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Agent synchronizace dat pro Azure Synchronizace dat SQL
 
@@ -37,7 +37,7 @@ K tiché instalaci agenta synchronizace dat z příkazového řádku zadejte př
 
 - Pokud zadáte `LocalSystem` jako hodnotu **SERVICEACCOUNT**, použijte ověřování SQL Server, když nakonfigurujete agenta pro připojení k místnímu SQL Server.
 
-- Pokud jako hodnotu **SERVICEACCOUNT**zadáte účet uživatele domény nebo místní uživatelský účet, musíte zadat také heslo s argumentem **SERVICEPASSWORD** . Například, `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`.
+- Pokud jako hodnotu **SERVICEACCOUNT**zadáte účet uživatele domény nebo místní uživatelský účet, musíte zadat také heslo s argumentem **SERVICEPASSWORD** . například `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`.
 
 ```cmd
 msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn
@@ -231,7 +231,7 @@ Z příkazového řádku můžete spustit následující příkazy agenta synchr
 SqlDataSyncAgentCommand.exe -action pingsyncservice
 ```
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action "pingsyncservice"
@@ -245,7 +245,7 @@ SqlDataSyncAgentCommand.exe -action "pingsyncservice"
 SqlDataSyncAgentCommand.exe -action displayregistereddatabases
 ```
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action "displayregistereddatabases"
@@ -259,7 +259,7 @@ SqlDataSyncAgentCommand.exe -action "displayregistereddatabases"
 Usage: SqlDataSyncAgentCommand.exe -action submitagentkey -agentkey [agent key]  -username [user name] -password [password]
 ```
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action submitagentkey -agentkey [agent key generated from portal, PowerShell, or API] -username [user name to sync metadata database] -password [user name to sync metadata database]
@@ -292,7 +292,7 @@ Když použijete tento příkaz k zrušení registrace databáze, odklade datab�
 SqlDataSyncAgentCommand.exe -action unregisterdatabase -servername [on-premisesdatabase server name] -databasename [on-premisesdatabase name]
 ```
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 ```cmd
 SqlDataSyncAgentCommand.exe -action "unregisterdatabase" -serverName localhost -databaseName testdb

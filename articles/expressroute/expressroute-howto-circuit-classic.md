@@ -1,33 +1,31 @@
 ---
 title: 'Úprava okruhu ExpressRoute: PowerShell: Azure Classic | Microsoft Docs'
-description: Tento článek vás provede kroky ke kontrole stavu, aktualizace nebo odstranění a zrušení zřízení modelu okruhů ExpressRoute modelu nasazení classic.
+description: Tento článek vás provede kroky pro kontrolu stavu, aktualizaci nebo odstranění a zrušení zřízení okruhu modelu nasazení ExpressRoute Classic.
 services: expressroute
-author: ganesr
+author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: ganesr
-ms.reviewer: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 7468338e7bc39128564e71831abe61bb1714ff72
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.date: 11/05/2019
+ms.author: cherylmc
+ms.openlocfilehash: 9f1c05b85fac6dd0168d9c2b2944326800e90493
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849250"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643669"
 ---
-# <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Úprava okruhu ExpressRoute pomocí prostředí PowerShell (classic)
+# <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Úprava okruhu ExpressRoute pomocí prostředí PowerShell (Classic)
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [Šablona Azure Resource Manager](expressroute-howto-circuit-resource-manager-template.md)
-> * [Video – Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
+> * [Šablona Azure Resource Manageru](expressroute-howto-circuit-resource-manager-template.md)
+> * [Video – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (Classic)](expressroute-howto-circuit-classic.md)
 >
 
-Tento článek vás provede kroky ke kontrole stavu, aktualizace nebo odstranění a zrušení zřízení modelu okruhů ExpressRoute modelu nasazení classic. Tento článek se týká modelu nasazení Classic.
+Tento článek vás provede kroky pro kontrolu stavu, aktualizaci nebo odstranění a zrušení zřízení okruhu modelu nasazení ExpressRoute Classic. Tento článek se týká modelu nasazení Classic.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -35,47 +33,26 @@ Tento článek vás provede kroky ke kontrole stavu, aktualizace nebo odstraněn
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
+## <a name="before-you-begin"></a>Než začnete
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Nainstalujte nejnovější verze modulů Azure Service Management (SM) PowerShell a modulu ExpressRoute. Nemůžete použít prostředí Azure Cloudshellu ke spouštění modulů SM.
 
-## <a name="before-you-begin"></a>Před zahájením
-
-Nainstalujte nejnovější verze modulů Azure Service Management Powershellu a modul ExpressRoute.  Při použití v následujícím příkladu, mějte na paměti, že číslo verze (v tomto příkladu 5.1.1) se změní vydané novější verze rutin.
-
-```powershell
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
-```
-
-Pokud potřebujete další informace o Azure Powershellu, přečtěte si [Začínáme s rutinami Azure Powershellu](/powershell/azure/overview) podrobné pokyny o tom, jak nakonfigurovat počítač pomocí modulů Azure Powershellu.
-
-Přihlásit se ke svému účtu Azure, použijte následující příklad:
-
-1. Otevřete konzolu PowerShellu se zvýšenými oprávněními a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
+1. Pomocí pokynů v článku [Instalace modulu správy služeb](/powershell/azure/servicemanagement/install-azure-ps) nainstalujte modul Azure Service Management. Pokud máte modul AZ nebo RM nainstalovaný už, nezapomeňte použít-AllowClobber.
+2. Naimportujte nainstalované moduly. Když použijete následující příklad, upravte cestu tak, aby odrážela umístění nainstalovaných modulů PowerShellu.
 
    ```powershell
-   Connect-AzAccount
+   Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.3.0\Azure.psd1'
+   Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.3.0\ExpressRoute\ExpressRoute.psd1'
    ```
-2. Zkontrolujte předplatná pro příslušný účet.
-
-   ```powershell
-   Get-AzSubscription
-   ```
-3. Máte-li více předplatných, vyberte předplatné, které chcete použít.
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-4. V dalším kroku použijte následující rutinu k vašemu předplatnému Azure přidat do prostředí PowerShell pro model nasazení classic.
+3. Pokud se chcete přihlásit ke svému účtu Azure, otevřete konzolu PowerShellu se zvýšenými právy a připojte se ke svému účtu. Použijte následující příklad, který vám umožní připojit se pomocí modulu pro správu služeb:
 
    ```powershell
    Add-AzureAccount
    ```
 
-## <a name="get-the-status-of-a-circuit"></a>Získat stav okruhu
+## <a name="get-the-status-of-a-circuit"></a>Získání stavu okruhu
 
-Tyto informace kdykoli můžete načíst pomocí `Get-AzureCircuit` rutiny. Volání bez parametrů jsou uvedeny všechny okruhy.
+Tyto informace můžete získat kdykoli pomocí rutiny `Get-AzureCircuit`. Volání bez parametrů vypíše všechny okruhy.
 
 ```powershell
 Get-AzureDedicatedCircuit
@@ -99,7 +76,7 @@ Sku                              : Standard
 Status                           : Enabled
 ```
 
-Informace o konkrétní okruh ExpressRoute můžete získat pomocí předání klíče služby jako parametr volání.
+Informace o konkrétním okruhu ExpressRoute můžete získat předáním klíče služby jako parametru volání.
 
 ```powershell
 Get-AzureDedicatedCircuit -ServiceKey "*********************************"
@@ -114,7 +91,7 @@ Sku                              : Standard
 Status                           : Enabled
 ```
 
-Podrobný popis všech parametrů získáte spuštěním následujícího příkladu:
+Podrobné popisy všech parametrů získáte spuštěním následujícího příkladu:
 
 ```powershell
 get-help get-azurededicatedcircuit -detailed
@@ -122,20 +99,20 @@ get-help get-azurededicatedcircuit -detailed
 
 ## <a name="modify-a-circuit"></a>Úprava okruhu
 
-Můžete upravit některé vlastnosti okruhu ExpressRoute bez dopadu na připojení.
+Můžete upravit některé vlastnosti okruhu ExpressRoute, aniž by to mělo vliv na připojení.
 
-Můžete provádět následující úlohy došlo k výpadku:
+Můžete provádět následující úlohy bez výpadku:
 
-* Povolit nebo zakázat doplněk ExpressRoute premium pro váš okruh ExpressRoute.
-* Zvětšete šířku pásma váš okruh ExpressRoute zadaný na portu je k dispozici kapacita. Šířku pásma okruhu downgradu není podporován.
-* Změňte plán monitorování míry využití měření podle objemu dat na neomezená Data. Změna plánu měření z neomezená Data na měření podle objemu dat se nepodporuje.
-* Můžete povolit nebo zakázat *povolit klasické operace*.
+* Povolí nebo zakáže doplněk ExpressRoute Premium pro okruh ExpressRoute.
+* Zvyšte šířku pásma okruhu ExpressRoute, pokud je na portu k dispozici dostatek kapacity. Downgrade šířky pásma okruhu není podporována.
+* Změňte plán měření z měřených dat na neomezená data. Změna plánu měření z neomezených dat na měřená data není podporována.
+* Můžete povolit nebo zakázat *operace klasických operací*.
 
-Odkazovat [ExpressRoute – nejčastější dotazy](expressroute-faqs.md) Další informace o omezení a omezení.
+Další informace o omezeních a omezeních najdete v tématu [ExpressRoute – Nejčastější dotazy](expressroute-faqs.md) .
 
-### <a name="enable-the-expressroute-premium-add-on"></a>Povolit doplněk ExpressRoute premium
+### <a name="enable-the-expressroute-premium-add-on"></a>Povolit doplněk ExpressRoute Premium
 
-Doplněk ExpressRoute premium pro existující okruh můžete povolit pomocí následující rutiny Powershellu:
+Doplněk ExpressRoute Premium pro stávající okruh můžete povolit pomocí následující rutiny PowerShellu:
 
 ```powershell
 Set-AzureDedicatedCircuitProperties -ServiceKey "*********************************" -Sku Premium
@@ -150,24 +127,24 @@ Sku                              : Premium
 Status                           : Enabled
 ```
 
-Váš okruh teď budou mít funkce doplněk ExpressRoute premium povolené. Co nejdříve po úspěšném spuštění příkazu začne fakturace pro funkci doplněk premium.
+Váš okruh teď bude mít povolené funkce doplňku ExpressRoute Premium. Jakmile se příkaz úspěšně spustí, zahájí se fakturace pro funkci doplňku Premium.
 
-### <a name="disable-the-expressroute-premium-add-on"></a>Zakázat doplněk ExpressRoute premium
+### <a name="disable-the-expressroute-premium-add-on"></a>Zakázat doplněk ExpressRoute Premium
 
 > [!IMPORTANT]
-> Tato operace může selhat, pokud používáte prostředky, které jsou větší než co je povolený pro standardní okruh.
+> Tato operace může selhat, pokud používáte prostředky, které jsou větší, než je povoleno pro standardní okruh.
 >
 >
 
 #### <a name="considerations"></a>Požadavky
 
-* Ujistěte se, že počet virtuálních sítí propojených s okruhem je menší než 10 předtím, než spustíte downgrade z úrovně premium na standard. Pokud to neuděláte, vaši žádost o aktualizaci se nezdaří a bude se vám účtovat sazby za úrovně premium.
-* Je nutné zrušit všechny virtuální sítě v dalších geopolitických oblastí. Pokud ne, vaši žádost o aktualizaci se nezdaří a bude se vám účtovat sazby za úrovně premium.
-* Směrovací tabulky musí být menší než 4 000 tras pro soukromý partnerský vztah. Pokud se velikost vašeho směrovací tabulku je větší než 4 000 tras, relace protokolu BGP zahodí a nebude možné opětovně povolena dokud počet předpon inzerovaných klesne pod 4000.
+* Před přechodem na úroveň Premium na Standard se ujistěte, že je počet virtuálních sítí propojených s okruhem menší než 10. Pokud to neuděláte, žádost o aktualizaci se nezdařila a účtují se poplatky za prémii.
+* Je nutné odpojit všechny virtuální sítě v jiných geopolitických oblastech. Pokud to neuděláte, vaše žádost o aktualizaci se nezdařila a účtují se poplatky za prémii.
+* Směrovací tabulka musí mít méně než 4 000 tras pro privátní partnerské vztahy. Pokud je velikost směrovací tabulky větší než 4 000 tras, relace protokolu BGP se uvolní a nebude znovu povolena, dokud počet inzerovaných předpon nepřekročí hodnotu 4 000.
 
-#### <a name="to-disable-the-premium-add-on"></a>Chcete-li zakázat doplněk premium
+#### <a name="to-disable-the-premium-add-on"></a>Zakázání doplňku Premium
 
-Doplněk ExpressRoute premium pro existující okruh můžete zakázat pomocí následující rutiny Powershellu:
+Doplněk ExpressRoute Premium pro stávající okruh můžete zakázat pomocí následující rutiny PowerShellu:
 
 ```powershell
 
@@ -183,20 +160,20 @@ Sku                              : Standard
 Status                           : Enabled
 ```
 
-### <a name="update-the-expressroute-circuit-bandwidth"></a>Aktualizace šířku pásma okruhu ExpressRoute
+### <a name="update-the-expressroute-circuit-bandwidth"></a>Aktualizace šířky pásma okruhu ExpressRoute
 
-Zkontrolujte, [ExpressRoute – nejčastější dotazy](expressroute-faqs.md) pro podporované možnosti šířky pásma pro vašeho poskytovatele. Můžete si vybrat libovolné velikosti, která je větší než velikost stávajících okruhů tak dlouho, dokud umožňuje fyzického portu (na kterém je vytvořený váš okruh).
+Přečtěte si [Nejčastější dotazy k ExpressRoute](expressroute-faqs.md) pro podporované možnosti šířky pásma pro vašeho poskytovatele. Můžete vybrat libovolnou velikost, která je větší než velikost stávajícího okruhu, pokud je fyzický port (na kterém je vytvořen okruh) povoleno.
 
 > [!IMPORTANT]
-> Bude pravděpodobně nutné znovu vytvořit okruh ExpressRoute, pokud je nedostatečné kapacity na existující port. Pokud v tomto umístění není k dispozici žádné další kapacitu, nemůže upgradovat okruh.
+> Je možné, že bude nutné znovu vytvořit okruh ExpressRoute, pokud na stávajícím portu není dostatečná kapacita. Pokud v daném umístění není k dispozici žádná další kapacita, nemůžete upgradovat okruh.
 >
-> Nejde snížit šířku pásma okruhu ExpressRoute bez přerušení. Downgrade šířky pásma je potřeba zrušit zřízení okruhu ExpressRoute a pak znova nezajistíte nového okruhu ExpressRoute.
+> Nemůžete snížit šířku pásma okruhu ExpressRoute bez přerušení. Downgrading Bandwidth vyžaduje, abyste zrušili zřízení okruhu ExpressRoute a pak znovu zřídili nový okruh ExpressRoute.
 >
 >
 
 #### <a name="resize-a-circuit"></a>Změna velikosti okruhu
 
-Až se rozhodnete, jaké velikosti budete potřebovat, můžete změnit velikost váš okruh následující příkaz:
+Až se rozhodnete, jakou velikost potřebujete, můžete změnit velikost okruhu pomocí následujícího příkazu:
 
 ```powershell
 Set-AzureDedicatedCircuitProperties -ServiceKey ********************************* -Bandwidth 1000
@@ -211,9 +188,9 @@ Sku                              : Standard
 Status                           : Enabled
 ```
 
-Jakmile váš okruh má byla velikost na straně Microsoftu, obraťte se na svého poskytovatele připojení aktualizovat konfiguraci na své straně tak, aby odpovídaly tuto změnu. Fakturace začíná v parametru aktualizované šířky pásma od této chvíle.
+Jakmile se váš okruh naplní na straně Microsoftu, musíte se obrátit na svého poskytovatele připojení a aktualizovat konfigurace na jejich straně tak, aby odpovídaly této změně. Fakturace začíná u aktualizované možnosti šířky pásma od tohoto okamžiku.
 
-Pokud se zobrazí chybová zpráva při zvýšení šířky pásma okruhu, to znamená, že existuje na fyzický port, ve kterém je vytvořený váš existující okruh zůstane bez dostatečnou šířku pásma. Musíte odstranit tento okruh a vytvořit nový okruh velikosti, které potřebujete.
+Pokud se při zvýšení šířky pásma okruhu zobrazí následující chyba, znamená to, že na fyzickém portu, na kterém je vytvořený stávající okruh, není dost dostupné šířky pásma. Je nutné odstranit tento okruh a vytvořit nový okruh velikosti, kterou potřebujete.
 
 ```powershell
 Set-AzureDedicatedCircuitProperties : InvalidOperation : Insufficient bandwidth available to perform this circuit
@@ -229,13 +206,13 @@ At line:1 char:1
 
 ### <a name="considerations"></a>Požadavky
 
-* Je nutné zrušit všechny virtuální sítě z okruhu ExpressRoute k úspěšnému provedení této operace. Zkontrolujte, zda máte žádné virtuální sítě, které jsou propojeny k okruhu, pokud se tato operace se nezdaří.
-* Pokud je stav zřizování poskytovatele služeb okruh ExpressRoute **zřizování** nebo **zřízená** , musíte pracovat se svým poskytovatelem služeb zrušit zřízení okruhu na své straně. Pokračujeme v rezervovat prostředky a účtovat až do dokončení zrušení zřízení okruhu a informuje nás poskytovatelem služeb.
-* Pokud poskytovatel služeb okruh zruší (poskytovatel služeb Stav zřizování je nastavena na **nezřízeno**), pak můžete odstranit okruh. Tím se zastaví účtování okruhu.
+* Aby tato operace proběhla úspěšně, je nutné odpojit všechny virtuální sítě od okruhu ExpressRoute. Zkontrolujte, zda máte žádné virtuální sítě, které jsou propojeny se okruhem, pokud tato operace není úspěšná.
+* Pokud je stav zřizování poskytovatele služby okruhu ExpressRoute **zřizování** nebo **zřízené** , musíte s vaším poskytovatelem služeb spolupracovat a zrušit zřízení okruhu na jejich straně. I nadále vyhradíme prostředky a účtujeme vám, dokud poskytovatel služeb nedokončí zrušení zřízení okruhu a pošle nám upozornění.
+* Pokud poskytovatel služby zrušil zřízení okruhu (stav zřizování poskytovatele služeb je nastavený na **není**zřízený), můžete okruh odstranit. Tím se zastaví účtování okruhu.
 
 #### <a name="delete-a-circuit"></a>Odstranit okruh
 
-Váš okruh ExpressRoute můžete odstranit spuštěním následujícího příkazu:
+Okruh ExpressRoute můžete odstranit spuštěním následujícího příkazu:
 
 ```powershell
 Remove-AzureDedicatedCircuit -ServiceKey "*********************************"

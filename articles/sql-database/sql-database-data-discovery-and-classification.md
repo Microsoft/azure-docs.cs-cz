@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database a SQL Data Warehouse & klasifikace pro zjišťování dat | Microsoft Docs
+title: Klasifikace & Azure SQL Database a SQL Data Warehouse Discovery Data
 description: Klasifikace & Azure SQL Database a zjišťování dat
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: b85793223e23aa3d668d6f86494da3ee78c43e91
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 9bcb8ce69a65892109702f0f0a409310945b6781
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009990"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690772"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Klasifikace & Azure SQL Database a SQL Data Warehouse Discovery Data
 
-Klasifikace & Discovery dat poskytuje pokročilé funkce integrované do **Azure SQL Database pro zjišťování**, **klasifikaci** & a označování**ochrany** citlivých dat ve vašich databázích.
+Klasifikace & Discovery dat poskytuje pokročilé funkce, **které jsou integrované do Azure SQL Database pro zjišťování**, **klasifikaci**a **označování** & **ochrany** citlivých dat ve vašich databázích.
 
 Vyhledávání a klasifikace vašich citlivých dat (podniková, finanční, zdravotní péče, identifikovatelné osobní údaje) a podobně.) mohou hrát pivotovou roli ve vaší organizaci stature Information Protection. Může sloužit jako infrastruktura pro:
 
@@ -75,7 +75,7 @@ Po definování zásad pro všechny klienty můžete pokračovat v klasifikaci j
 
 ## <a name="classify-your-sql-database"></a>Klasifikace SQL Database
 
-1. Přejděte na [Azure Portal](https://portal.azure.com).
+1. Přejděte na [portál Azure](https://portal.azure.com).
 
 2. V záhlaví zabezpečení v podokně Azure SQL Database přejděte na **Rozšířené zabezpečení dat** . Kliknutím povolíte rozšířené zabezpečení dat a potom kliknete na kartu **klasifikace & zjišťování dat** .
 
@@ -87,13 +87,13 @@ Po definování zásad pro všechny klienty můžete pokračovat v klasifikaci j
 
 4. Chcete-li stáhnout sestavu ve formátu aplikace Excel, klikněte v horní nabídce okna na možnost **exportovat** .
 
-   ![Exportovat do Excelu](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
+   ![Exportovat do aplikace Excel](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
 
 5. <a id="step-5"></a>Chcete-li začít klasifikovat vaše data, klikněte na **kartu klasifikace** v horní části okna.
 
     ![Klasifikace dat](./media/sql-data-discovery-and-classification/4_data_classification_classification_tab_click.png)
 
-6. Klasifikační modul vyhledá v databázi sloupce obsahující potenciálně citlivá data a poskytne seznam doporučených **klasifikací sloupců**. Postup zobrazení a použití doporučení klasifikace:
+6. Klasifikační modul vyhledá v databázi sloupce obsahující potenciálně citlivá data a poskytne seznam **doporučených klasifikací sloupců**. Postup zobrazení a použití doporučení klasifikace:
 
    - Pokud chcete zobrazit seznam doporučených klasifikací sloupců, klikněte na panelu doporučení v dolní části okna:
 
@@ -119,7 +119,7 @@ Po definování zásad pro všechny klienty můžete pokračovat v klasifikaci j
 
 8. Pokud chcete dokončit klasifikaci a trvale označit (označit) sloupce databáze s novými metadaty klasifikace, klikněte v horní nabídce okna na **Uložit** .
 
-   ![Uložit](./media/sql-data-discovery-and-classification/10_data_classification_save.png)
+   ![Uložení](./media/sql-data-discovery-and-classification/10_data_classification_save.png)
 
 ## <a id="subheading-3"></a>Auditování přístupu k citlivým datům
 
@@ -134,8 +134,8 @@ Pomocí T-SQL můžete přidat nebo odebrat klasifikace sloupců a načíst vše
 > [!NOTE]
 > Pokud ke správě popisků používáte T-SQL, neexistuje žádné ověření, že v zásadách organizace Information Protection existují popisky přidané do sloupce (sada popisků, které se zobrazují v doporučeních na portálu). Proto je možné to ověřit.
 
-- Přidat nebo aktualizovat klasifikaci jednoho nebo více sloupců: [PŘIDAT KLASIFIKACI CITLIVOSTI](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-- Odeberte klasifikaci z jednoho nebo více sloupců: [KLASIFIKACE CITLIVOSTI PŘETAŽENÍ](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+- Přidat nebo aktualizovat klasifikaci jednoho nebo více sloupců: [Přidání klasifikace citlivosti](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+- Odeberte klasifikaci z jednoho nebo více sloupců: [klasifikace citlivosti přetažení](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Zobrazit všechny klasifikace v databázi: [Sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 ### <a name="manage-classifications-using-rest-apis"></a>Správa klasifikací pomocí rozhraní REST API
@@ -144,8 +144,8 @@ Pomocí rozhraní REST API můžete také programově spravovat klasifikace. Pub
 
 - [Vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) – vytvoří nebo aktualizuje popisek citlivosti daného sloupce.
 - [Odstranit](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) – odstraní popisek citlivosti daného sloupce.
-- [Zakázat doporučení](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/disablerecommendation) – zakáže doporučení citlivosti na daném sloupci.
-- [Povolit doporučení](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/enablerecommendation) – povolí u daného sloupce doporučení citlivosti (ve výchozím nastavení jsou u všech sloupců povolené doporučení).
+- [Zakázat doporučení](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation) – zakáže doporučení citlivosti na daném sloupci.
+- [Povolit doporučení](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation) – povolí u daného sloupce doporučení citlivosti (ve výchozím nastavení jsou u všech sloupců povolené doporučení).
 - [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) – získá popisek citlivosti daného sloupce.
 - [List Current by Database](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) – získá aktuální popisky citlivosti dané databáze.
 
@@ -171,9 +171,9 @@ K získání všech doporučených sloupců v databázi SQL Azure a spravované 
 
 ## <a name="permissions"></a>Oprávnění
 
-Následující předdefinované role mohou číst klasifikaci dat služby Azure SQL Database: `Owner`, `Reader`, `Contributor` `SQL Security Manager` `User Access Administrator`a.
+Následující předdefinované role mohou číst klasifikaci dat služby Azure SQL Database: `Owner`, `Reader`, `Contributor`, `SQL Security Manager` a `User Access Administrator`.
 
-Následující předdefinované role mohou změnit klasifikaci dat služby Azure SQL Database: `Owner`, `Contributor`, `SQL Security Manager`.
+Následující předdefinované role mohou změnit klasifikaci dat služby Azure SQL Database: `Owner`, `Contributor``SQL Security Manager`.
 
 Další informace o [RBAC pro prostředky Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)
 

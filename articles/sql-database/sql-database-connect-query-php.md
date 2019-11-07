@@ -1,5 +1,5 @@
 ---
-title: Použití PHP k dotazování služby Azure SQL Database | Microsoft Docs
+title: Použití PHP k dotazování služby Azure SQL Database
 description: Jak pomocí PHP vytvořit program, který se připojí ke službě Azure SQL Database a provede dotaz pomocí příkazů T-SQL.
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 02/12/2019
-ms.openlocfilehash: a7da65438ffd7db6c43cf2ede7cc52378af056f1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c1c576becc0390a2cb0dfb083755be4e7c772c59
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569224"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690935"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Rychlý start: Použití PHP k dotazování databáze Azure SQL
 
@@ -29,7 +29,7 @@ K dokončení této ukázky se ujistěte, že máte následující požadavky:
 
   || Izolovaná databáze | Spravovaná instance |
   |:--- |:--- |:---|
-  | Create| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
+  | Vytváření| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
   || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
@@ -53,7 +53,7 @@ K dokončení této ukázky se ujistěte, že máte následující požadavky:
 
 Získejte informace o připojení, které potřebujete pro připojení ke službě Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
 
@@ -102,10 +102,10 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Návrh první databáze SQL Azure](sql-database-design-first-database.md)
+- [Návrh první databáze Azure SQL](sql-database-design-first-database.md)
 
 - [Ovladače Microsoft PHP pro SQL Server](https://github.com/Microsoft/msphpsql/)
 
 - [Hlášení problémů nebo kladení dotazů](https://github.com/Microsoft/msphpsql/issues)
 
-- [Příklad logiky opakování: Odolné připojení k SQL pomocí PHP](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)
+- [Příklad logiky opakování: odolné připojení k SQL pomocí PHP](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)

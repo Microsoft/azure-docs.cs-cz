@@ -1,5 +1,5 @@
 ---
-title: 'Příklad návrháře #3: regrese na ceny a porovnávání algoritmů'
+title: 'Návrhář: předpověď cen aut (regrese)'
 titleSuffix: Azure Machine Learning
 description: V tomto článku se dozvíte, jak vytvořit složitý kanál strojového učení bez nutnosti psát jediný řádek kódu pomocí návrháře (Preview). Naučte se, jak vytvořit a porovnat více regresních modelů a předpovídat cenu automobilu na základě technických funkcí.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 4fb2e4c5c96c0c4c1b4d8ef14de65e470d545638
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d73f6d67afff13696de78d026ff65228fd68fb28
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515431"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647956"
 ---
 # <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>Ukázka 2 – regrese: předpověď cen a porovnávání algoritmů
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -28,7 +28,7 @@ Zde je dokončený graf pro tento kanál:
 
 [![Graf kanálu](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 

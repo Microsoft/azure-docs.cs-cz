@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database – automatické ladění | Microsoft Docs
+title: Azure SQL Database – automatické ladění
 description: Azure SQL Database analyzuje dotaz SQL a automaticky se přizpůsobí uživatelskému zatížení.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/06/2019
-ms.openlocfilehash: b6c2885f0919752f7ede7f5a15121be2f8a953ca
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: bfac5a0eba68469d912efd02699624e1335e40e5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162319"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691107"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatické ladění v Azure SQL Database
 
@@ -31,7 +31,7 @@ Azure SQL Database automatické ladění může být jednou z nejdůležitějš�
 - Automatizované ladění výkonu databází SQL Azure
 - Automatizované ověřování nárůstů výkonu
 - Automatické vrácení zpět a automatické opravy
-- Historie optimalizace
+- Historie ladění
 - Optimalizace akce T-SQL skriptů pro ruční nasazení
 - Monitorování výkonu proaktivní úlohy
 - Možnosti horizontálního navýšení kapacity na stovkách tisíc databází
@@ -69,7 +69,7 @@ K dispozici jsou možnosti automatického ladění Azure SQL Database:
 | :----------------------------- | ----- | ----- |
 | **Vytvořit index** – identifikuje indexy, které mohou zlepšit výkon úloh, vytváří indexy a automaticky ověřuje, zda se zvýšil výkon dotazů. | Ano | Ne | 
 | **Drop index** – identifikuje redundantní a duplicitní indexy denně, s výjimkou jedinečných indexů a indexů, které se nepoužily dlouhou dobu (> 90 dnů). Upozorňujeme, že tato možnost není kompatibilní s aplikacemi, které používají přepínání oddílů a parametry indexu. Vyřazování nepoužívaných indexů se u úrovní služeb Premium a Pro důležité obchodní informace nepodporuje. | Ano | Ne |
-| **Vynutit poslední dobrý plán** (automatický opravný plán) – identifikuje dotazy SQL pomocí plánu spuštění, který je pomalejší než předchozí plán, a dotazy pomocí posledního známého funkčního plánu místo naplánovaného plánu. | Ano | Ano |
+| **Vynutit poslední dobrý dobrý plán** (automatický opravný plán) – IDENTIFIKUJE dotazy SQL pomocí plánu spuštění, který je pomalejší než předchozí plán, a dotazuje se pomocí posledního známého funkčního plánu místo navráceného plánu. | Ano | Ano |
 
 Automatické ladění identifikuje **vytváření indexů**, **drop index**a **vynutí poslední dobrá** doporučení pro plánování, která mohou optimalizovat výkon databáze a jejich zobrazení v [Azure Portal](sql-database-advisor-portal.md)a zpřístupňuje je prostřednictvím [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) a [. REST API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning). Další informace o tom, jak vynutit poslední dobrý plán a nakonfigurovat možnosti automatického ladění prostřednictvím T-SQL, najdete v tématu [Automatické ladění zavádí automatické opravy plánu](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/).
 

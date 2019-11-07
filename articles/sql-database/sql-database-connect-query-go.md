@@ -1,5 +1,5 @@
 ---
-title: Použití jazyka Go k dotazování služby Azure SQL Database | Dokumentace Microsoftu
+title: Použijte přejít na dotaz Azure SQL Database
 description: Vytvořte pomocí jazyka Go program, který se připojí ke službě Azure SQL Database, a dotazujte a upravujte data s použitím příkazů jazyka Transact-SQL.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: David-Engel
 ms.author: craigg
 ms.reviewer: MightyPen
 ms.date: 02/12/2019
-ms.openlocfilehash: baa43a93ff0c1e814478bdc195b2fd525d4dbbf3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 510f5e0fe62043d592306d2d689174c0d87e129d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569254"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690954"
 ---
-# <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Rychlý start: Použití golang k dotazování databáze SQL Azure
+# <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Rychlý Start: použití golang k dotazování databáze SQL Azure
 
 V tomto rychlém startu použijete programovací jazyk [golang](https://godoc.org/github.com/denisenkom/go-mssqldb) pro připojení k databázi SQL Azure. Potom spustíte příkazy jazyka Transact-SQL k dotazování a úpravě dat. [Golang](https://golang.org/) je open source programovací jazyk, který usnadňuje sestavování jednoduchého, spolehlivého a efektivního softwaru.  
 
@@ -30,7 +30,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
   || Izolovaná databáze | Spravovaná instance |
   |:--- |:--- |:---|
-  | Create| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
+  | Vytváření| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
   || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
@@ -45,14 +45,14 @@ Pro absolvování tohoto kurzu potřebujete:
 - Golang a související software pro nainstalovaný operační systém:
 
   - **MacOS**: Nainstalujte homebrew a golang. Viz [krok 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
-  - **Ubuntu**:  Nainstalujte golang. Viz [krok 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
-  - **Windows:** Nainstalujte golang. Viz [krok 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/).
+  - **Ubuntu**: Nainstalujte golang. Viz [krok 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
+  - **Windows**: Nainstalujte golang. Viz [krok 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/).
 
 ## <a name="get-sql-server-connection-information"></a>Získat informace o připojení k SQL serveru
 
 Získejte informace o připojení, které potřebujete pro připojení ke službě Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
 
@@ -99,7 +99,7 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
    GO
    ```
 
-2. Slouží `sqlcmd` k připojení k databázi a spuštění nově vytvořeného skriptu SQL. Hodnoty pro server, databázi, uživatelské jméno a heslo nahraďte příslušnými hodnotami.
+2. Pomocí `sqlcmd` se připojte k databázi a spusťte nově vytvořený skript SQL. Hodnoty pro server, databázi, uživatelské jméno a heslo nahraďte příslušnými hodnotami.
 
    ```bash
    sqlcmd -S <your_server>.database.windows.net -U <your_username> -P <your_password> -d <your_database> -i ./CreateTestData.sql
@@ -311,7 +311,7 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
    go run sample.go
    ```
 
-2. Ověření výstupu.
+2. Ověřte výstup.
 
    ```text
    Connected!
@@ -325,9 +325,9 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
    Deleted 1 row(s) successfully.
    ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Návrh první databáze SQL Azure](sql-database-design-first-database.md)
+- [Návrh první databáze Azure SQL](sql-database-design-first-database.md)
 - [Ovladač golang pro Microsoft SQL Server](https://github.com/denisenkom/go-mssqldb)
 - [Hlášení problémů nebo kladení dotazů](https://github.com/denisenkom/go-mssqldb/issues)
 

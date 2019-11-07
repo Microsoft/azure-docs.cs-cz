@@ -1,5 +1,5 @@
 ---
-title: Začínáme s auditováním Azure SQL Database | Microsoft Docs
+title: Začínáme s auditováním Azure SQL Database
 description: Pomocí auditování Azure SQL Database můžete sledovat události databáze v protokolu auditu.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 1171a3b6d38fe04a4213513e934be258d79a1aa0
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 9a154e677a7308553bbef16837efae39006d3dae
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045189"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691193"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 
@@ -72,7 +72,7 @@ Zásady auditu je možné definovat pro určitou databázi nebo jako výchozí z
 
 V následující části je popsána konfigurace auditování pomocí Azure Portal.
 
-1. Přejděte na [Azure Portal](https://portal.azure.com).
+1. Přejděte na [portál Azure](https://portal.azure.com).
 2. V záhlaví zabezpečení v podokně SQL Database/Server přejděte na **audit** .
 
     <a id="auditing-screenshot"></a>Navigační podokno ![][1]

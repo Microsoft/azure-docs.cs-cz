@@ -1,5 +1,5 @@
 ---
-title: Alias DNS pro Azure SQL Database | Microsoft Docs
+title: Alias DNS pro Azure SQL Database
 description: Vaše aplikace se můžou připojit k aliasu pro název vašeho serveru Azure SQL Database. Mezitím můžete změnit SQL Database alias na kdykoli, abyste usnadnili testování a tak dále.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: 5d37b41fa7b51871f9ce1b21c62de1f9ab7f3b82
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: c3681e882fea3e8e36472c8e540db0255cd654bb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058565"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692279"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Alias DNS pro Azure SQL Database
 
@@ -59,7 +59,7 @@ Následující vlastnosti se vztahují na všechny aliasy DNS pro váš SQL Data
 - *Vyžaduje se server:* Alias DNS nelze vytvořit, pokud neodkazuje přesně na jeden server a server již musí existovat. Aktualizovaný alias musí vždy odkazovat přesně na jeden existující server.
   - Když vyřadíte SQL Database Server, systém Azure také zruší všechny aliasy DNS, které na server odkazují.
 - *Není svázána s žádnou oblastí:* Aliasy DNS nejsou svázané s oblastí. Jakékoli aliasy DNS je možné aktualizovat, aby odkazovaly na Azure SQL Database Server, který se nachází v libovolné geografické oblasti.
-  - Když ale aktualizujete alias tak, aby odkazoval na jiný server, musí oba servery existovat ve stejném předplatném Azure.
+  - Když ale aktualizujete alias tak, aby odkazoval na jiný server, musí oba servery existovat ve stejném *předplatném*Azure.
 - *Oprávnění:* Aby uživatel mohl spravovat alias DNS, musí mít oprávnění *přispěvatele serveru* nebo vyšší. Další informace najdete v tématu [Začínáme s Access Control na základě rolí v Azure Portal](../role-based-access-control/overview.md).
 
 ## <a name="manage-your-dns-aliases"></a>Správa aliasů DNS
@@ -92,9 +92,9 @@ Příklad kódu rutin PowerShellu, který se používá ke správě aliasů DNS,
 
 Rutiny používané v tomto příkladu kódu jsou následující:
 
-- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): Vytvoří nový alias DNS v systému Azure SQL Database služby. Alias odkazuje na Azure SQL Database Server 1.
-- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Získá a vypíše všechny aliasy DNS, které jsou přiřazené k serveru SQL DB Server 1.
-- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): Upraví název serveru, na který je nakonfigurován odkaz, ze serveru 1 na server SQL DB Server 2.
+- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): vytvoří nový alias DNS v systému služby Azure SQL Database. Alias odkazuje na Azure SQL Database Server 1.
+- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Získejte a vypíše všechny aliasy DNS, které jsou přiřazené k serveru SQL DB Server 1.
+- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): upraví název serveru, na který je alias nakonfigurovaný, ze serveru 1 na SQL DB Server 2.
 - [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Odeberte alias DNS ze serveru SQL DB Server 2 pomocí názvu aliasu.
 
 ## <a name="limitations-during-preview"></a>Omezení ve verzi Preview
@@ -112,6 +112,6 @@ V současné době má alias DNS tato omezení:
 
 - [Přehled provozní kontinuity s Azure SQL Database](sql-database-business-continuity.md), včetně zotavení po havárii.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [PowerShell pro Azure SQL Database aliasu DNS](dns-alias-powershell.md)

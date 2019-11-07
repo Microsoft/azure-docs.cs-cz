@@ -1,5 +1,5 @@
 ---
-title: 'Příklad návrháře #6: klasifikace pro předpověď zpoždění letů'
+title: 'Návrhář: klasifikace, předpověď zpoždění letů'
 titleSuffix: Azure Machine Learning
 description: V tomto článku se dozvíte, jak vytvořit model strojového učení pro předpověď zpoždění letu pomocí návrháře přetahování a vlastního kódu R.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 4b21ebffe8959809acc71fc09aff7e58873e10b8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 10b3b78b4878eeddf2f786fda90ab9709e4bd2b4
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515522"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647195"
 ---
 # <a name="sample-6---classification-predict-flight-delays-using-r"></a>Ukázka 6 – klasifikace: předpověď zpoždění letu pomocí R
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -26,7 +26,7 @@ Toto je konečný Graf kanálu pro tuto ukázku:
 
 [![Graf kanálu](media/how-to-ui-sample-classification-predict-flight-delay/pipeline-graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
@@ -58,7 +58,7 @@ Datová sada obvykle vyžaduje před analýzou některé předběžné zpracová
 
 Sloupce **přepravce**, **OriginAirportID**a **DestAirportID** se ukládají jako celá čísla. Jsou však kategorií atributy, a to pomocí modulu **Upravit metadata** a převeďte je na kategorií.
 
-![Upravit metadata](media/how-to-ui-sample-classification-predict-flight-delay/edit-metadata.png)
+![edit-metadata](media/how-to-ui-sample-classification-predict-flight-delay/edit-metadata.png)
 
 Pak použijte modul **Výběr sloupců** v datové sadě k vyloučení ze sloupců datové sady, které jsou potenciálními nevrácenými cíli: **DepDelay**, **DepDel15**, **ArrDelay**, **Canceled**, **year**. 
 
@@ -108,7 +108,7 @@ kanál po spuštění kanálu můžete zobrazit výstup z modulu **skóre modelu
 
 Nakonec můžete testovat kvalitu výsledků, přidat modul **vyhodnocení modelu** na plátno kanálu a propojit levý vstupní port s výstupem modulu určení skóre modelu. Spusťte kanál a zobrazte výstup modulu **vyhodnocení modelu** tak, že kliknete na výstupní port a vyberete **vizualizovat**.
 
-## <a name="evaluate"></a>Vyhodnocení
+## <a name="evaluate"></a>Vyhodnotit
 Model logistické regrese má v sadě testů AUC 0,631.
 
  ![Vyhodnocení](media/how-to-ui-sample-classification-predict-flight-delay/evaluate.png)

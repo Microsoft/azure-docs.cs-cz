@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: SQL Database geografická replikace | Microsoft Docs'
+title: 'Azure Portal: SQL Database geografickou replikaci '
 description: Konfigurace geografické replikace pro jednu nebo sdruženou databázi v Azure SQL Database pomocí Azure Portal a zahájení převzetí služeb při selhání
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 049122b97a26e63188142dd5494927c2ae71d852
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 2a9d627cb2b51d0d7d0b07052f18a8dbe1dc2f19
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103232"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691331"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurace aktivní geografické replikace pro Azure SQL Database v Azure Portal a zahájení převzetí služeb při selhání
 
@@ -28,7 +28,7 @@ Informace o skupinách automatického převzetí služeb při selhání s datab�
 
 Pokud chcete nakonfigurovat aktivní geografickou replikaci pomocí Azure Portal, budete potřebovat následující prostředek:
 
-* Databáze SQL Azure: Primární databáze, kterou chcete replikovat do jiné geografické oblasti.
+* Azure SQL Database: primární databáze, kterou chcete replikovat do jiné geografické oblasti.
 
 > [!Note]
 > Při použití Azure Portal můžete vytvořit pouze sekundární databázi v rámci stejného předplatného jako primární. Pokud je nutné, aby byla sekundární databáze v jiném předplatném, použijte příkaz [Create database REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) nebo [ALTER DATABASE API jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql).
@@ -46,7 +46,7 @@ Po vytvoření a osazení sekundární databáze se data začnou replikovat z pr
 > Pokud Partnerská databáze již existuje (například v důsledku ukončení předchozího vztahu geografické replikace), příkaz se nezdařil.
 
 1. V [Azure Portal](https://portal.azure.com)přejděte k databázi, kterou chcete nastavit pro geografickou replikaci.
-2. Na stránce databáze SQL vyberte geografickou **replikaci**a potom vyberte oblast pro vytvoření sekundární databáze. Můžete vybrat libovolnou jinou oblast, než je oblast hostující primární databázi, ale doporučujeme použít spárovánou [oblast](../best-practices-availability-paired-regions.md).
+2. Na stránce databáze SQL vyberte **geografickou replikaci**a potom vyberte oblast pro vytvoření sekundární databáze. Můžete vybrat libovolnou jinou oblast, než je oblast hostující primární databázi, ale doporučujeme použít [spárovánou oblast](../best-practices-availability-paired-regions.md).
 
     ![Konfigurace geografické replikace](./media/sql-database-geo-replication-portal/configure-geo-replication.png)
 3. Vyberte nebo nakonfigurujte server a cenovou úroveň pro sekundární databázi.
@@ -66,10 +66,10 @@ Po vytvoření a osazení sekundární databáze se data začnou replikovat z pr
 Sekundární databázi lze přepnout tak, aby se stala primární.  
 
 1. V [Azure Portal](https://portal.azure.com)přejděte k primární databázi v rámci partnerství geografické replikace.
-2. V okně SQL Database vyberte **všechna nastavení** > **geografické replikace**.
+2. V okně SQL Database vyberte **všechna nastavení** > **geografickou replikaci**.
 3. V seznamu **sekundární** databáze vyberte databázi, která se má stát novou primární, a klikněte na **převzetí služeb při selhání**.
 
-    ![převzetí služeb při selhání](./media/sql-database-geo-replication-failover-portal/secondaries.png)
+    ![Převzetí služeb](./media/sql-database-geo-replication-failover-portal/secondaries.png)
 4. Kliknutím na **Ano** zahájíte převzetí služeb při selhání.
 
 Příkaz okamžitě přepne sekundární databázi do primární role. Tento proces normálně by měl být dokončen do 30 sec nebo méně.
@@ -84,7 +84,7 @@ Probíhá krátká doba, během které jsou obě databáze nedostupné (v pořad
 Tato operace trvale ukončí replikaci do sekundární databáze a změní roli sekundární databáze na standardní databázi pro čtení a zápis. Pokud je připojení k sekundární databázi přerušeno, příkaz se zdaří, ale sekundární se nestane pro čtení a zápis až po obnovení připojení.  
 
 1. V [Azure Portal](https://portal.azure.com)přejděte k primární databázi v rámci partnerství geografické replikace.
-2. Na stránce databáze SQL vyberte geografickou **replikaci**.
+2. Na stránce databáze SQL vyberte **geografickou replikaci**.
 3. V seznamu **sekundárních** umístění vyberte databázi, kterou chcete odebrat, ze partnerství geografické replikace.
 4. Klikněte na **zastavit replikaci**.
 

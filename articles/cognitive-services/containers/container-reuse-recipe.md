@@ -1,7 +1,7 @@
 ---
 title: Recepty pro kontejnery Docker
 titleSuffix: Azure Cognitive Services
-description: Pomocí těchto receptů kontejnerů můžete vytvářet Cognitive Services kontejnery, které se dají znovu použít. Kontejnery lze vytvořit s některými nebo všemi nastaveními konfigurace, aby při spuštění kontejneru nebyly nutné. Jakmile budete mít tuto novou vrstvu kontejneru (s nastaveními) a otestujete ji místně, můžete kontejner Uložit do registru kontejneru. Když se kontejner spustí, bude potřebovat jenom ta nastavení, která se v kontejneru aktuálně neukládají.
+description: Naučte se vytvářet, testovat a ukládat kontejnery s některými nebo všemi konfiguračními nastaveními pro nasazení a opakované použití.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: a8162f96051a73b9f6e6a6fe3ece020e0a94f08f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: dbe2e288309b6682041bf3db9fe3d39455359806
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70068827"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647285"
 ---
 # <a name="create-containers-for-reuse"></a>Vytváření kontejnerů pro opakované použití
 
@@ -25,33 +25,33 @@ Jakmile budete mít tuto novou vrstvu kontejneru (s nastaveními) a otestujete j
 
 ## <a name="docker-run-syntax"></a>Syntaxe příkazu Docker
 
-Všechny `docker run` příklady v tomto dokumentu předpokládají konzolu Windows se znakem pro `^` pokračování řádku. Pro vlastní použití Vezměte v úvahu následující:
+Jakékoli příklady `docker run` v tomto dokumentu předpokládají konzolu Windows s znakem pro pokračování `^` řádku. Pro vlastní použití Vezměte v úvahu následující:
 
-* Pořadí argumentů nezmění, pokud máte velmi zkušenosti s kontejnery dockeru.
+* Neměňte pořadí argumentů, pokud neznáte kontejnery Docker.
 * Pokud používáte jiný operační systém než Windows nebo jinou konzolu než konzolu Windows, použijte správnou konzolu/terminál, syntaxi složky pro připojení a znak pro pokračování řádku pro konzolu a systém.  Vzhledem k tomu, že kontejner Cognitive Services je operačním systémem Linux, cílový připojení používá syntaxi složky ve stylu systému Linux.
-* `docker run`příklady používají adresář mimo `c:` jednotku, aby nedocházelo ke konfliktům oprávnění ve Windows. Pokud je potřeba použít konkrétní adresář jako vstupní adresář, budete muset udělit dockeru služby oprávnění.
+* `docker run` příklady používají adresář mimo `c:` jednotku, aby nedocházelo ke konfliktům oprávnění ve Windows. Pokud potřebujete použít konkrétní adresář jako vstupní adresář, bude pravděpodobně nutné udělit oprávnění služby Docker.
 
 ## <a name="store-no-configuration-settings-in-image"></a>Uložení nastavení konfigurace v imagi
 
-Ukázkové `docker run` příkazy pro každou službu neukládají do kontejneru žádná nastavení konfigurace. Při spuštění kontejneru z konzoly nebo služby registru musí být tato nastavení konfigurace předána. Kontejner privátního registru poskytuje prostor pro konfiguraci, ve kterém můžete tato nastavení předat.
+Příklady `docker run` příkazů pro každou službu neukládají do kontejneru žádná nastavení konfigurace. Při spuštění kontejneru z konzoly nebo služby registru musí být tato nastavení konfigurace předána. Kontejner privátního registru poskytuje prostor pro konfiguraci, ve kterém můžete tato nastavení předat.
 
 ## <a name="reuse-recipe-store-all-configuration-settings-with-container"></a>Znovu použít recept: uložit všechna nastavení konfigurace s kontejnerem
 
-Chcete-li uložit všechna nastavení konfigurace, vytvořte `Dockerfile` pomocí těchto nastavení.
+Pokud chcete uložit všechna nastavení konfigurace, vytvořte `Dockerfile` s těmito nastaveními.
 
 Problémy s tímto přístupem:
 
 * Nový kontejner má samostatný název a značku z původního kontejneru.
 * Chcete-li změnit tato nastavení, budete muset změnit hodnoty souboru Dockerfile, znovu sestavit image a znovu publikovat do registru.
 * Pokud někdo získá přístup k vašemu registru kontejneru nebo vašemu místnímu hostiteli, může spustit kontejner a použít koncové body Cognitive Services.
-* Pokud vaše služba rozpoznávání nevyžaduje vstupní připojení, nepřidávejte `COPY` řádky do souboru Dockerfile.
+* Pokud vaše služba rozpoznávání nevyžaduje vstupní připojení, nepřidávejte do souboru Dockerfile řádky `COPY`.
 
 Vytvořte souboru Dockerfile, nahlaste se z existujícího kontejneru Cognitive Services, který chcete použít, a pak pomocí příkazů Docker v souboru Dockerfile nastavte nebo získejte informace, které kontejner potřebuje.
 
 Tento příklad:
 
-* Nastaví koncový bod `{BILLING_ENDPOINT}` fakturace z klíče prostředí hostitele pomocí `ENV`.
-* Nastaví klíč `{ENDPOINT_KEY}` rozhraní API pro fakturaci z klíče prostředí hostitele pomocí env.
+* Nastaví koncový bod fakturace `{BILLING_ENDPOINT}` z klíče prostředí hostitele pomocí `ENV`.
+* Nastaví klíčového rozhraní API pro fakturaci `{ENDPOINT_KEY}` z klíče prostředí hostitele pomocí ENV.
 
 ### <a name="reuse-recipe-store-billing-settings-with-container"></a>Použít recept: Uložit nastavení fakturace s kontejnerem
 
@@ -72,7 +72,7 @@ Tento příklad ukazuje, jak použít Language Understanding, a to uložením fa
 
 * Zkopíruje soubor modelu Language Understanding (LUIS) ze systému souborů hostitele pomocí `COPY`.
 * Kontejner LUIS podporuje více než jeden model. Pokud jsou všechny modely uloženy ve stejné složce, budete potřebovat jeden `COPY` příkaz.
-* Spusťte soubor Docker z relativního nadřazeného objektu vstupního adresáře modelu. V následujícím příkladu spusťte `docker build` příkazy a `docker run` z relativního nadřazeného prvku `/input`. První `/input` příkaz`COPY` v příkazu je adresář hostitelského počítače. Druhým `/input` je adresář kontejneru.
+* Spusťte soubor Docker z relativního nadřazeného objektu vstupního adresáře modelu. V následujícím příkladu spusťte `docker build` a `docker run` příkazy z relativního nadřazeného prvku `/input`. První `/input` příkazu `COPY` je adresář hostitelského počítače. Druhým `/input` je adresář kontejneru.
 
 ```Dockerfile
 FROM <container-registry>/<cognitive-service-container-name>:<tag>
@@ -102,13 +102,13 @@ docker run --rm <your-image-name>
 
 Použijte následující postup, chcete-li použít souboru Dockerfile a umístit novou bitovou kopii do privátního registru kontejneru.  
 
-1. `Dockerfile` Vytvořte s textem z opakovaného použití návodu. `Dockerfile` Přípona nemá.
+1. Vytvořte `Dockerfile` s textem z opakovaného použití receptu. `Dockerfile` nemá příponu.
 
 1. Nahraďte všechny hodnoty v lomených závorkách vlastními hodnotami.
 
-1. Sestavte soubor do bitové kopie v příkazovém řádku nebo terminálu pomocí následujícího příkazu. Hodnoty v lomených závorkách `<>`nahraďte vlastním názvem a označením kontejneru.  
+1. Sestavte soubor do bitové kopie v příkazovém řádku nebo terminálu pomocí následujícího příkazu. Hodnoty v lomených závorkách nahraďte `<>`s vlastním názvem a označením kontejneru.  
 
-    Možnost značky je způsob `-t`, jak přidat informace o tom, co jste u kontejneru změnili. Například název `modified-LUIS` kontejneru označuje, že byl původní kontejner vrstven. Název `with-billing-and-model` značky indikuje, jak byl upraven kontejner Language Understanding (Luis).
+    Možnost značky, `-t`, je způsob, jak přidat informace o tom, co jste u kontejneru změnili. Například název kontejneru `modified-LUIS` označuje, že byl původní kontejner vrstven. Název značky `with-billing-and-model` označuje, jak byl upraven kontejner Language Understanding (LUIS).
 
     ```Bash
     docker build -t <your-new-container-name>:<your-new-tag-name> .
@@ -122,7 +122,7 @@ Použijte následující postup, chcete-li použít souboru Dockerfile a umísti
 
 1. Přihlaste se ke svému privátnímu registru pomocí Azure CLI z konzoly.
 
-    Hodnoty v lomených závorkách `<my-registry>`nahraďte vlastním názvem registru.  
+    Hodnoty v lomených závorkách nahraďte `<my-registry>`s vlastním názvem registru.  
 
     ```azurecli
     az acr login --name <my-registry>
@@ -134,13 +134,13 @@ Použijte následující postup, chcete-li použít souboru Dockerfile a umísti
     docker login <my-registry>.azurecr.io
     ```
 
-1. Označte kontejner pomocí privátního umístění registru. Hodnoty v lomených závorkách `<my-registry>`nahraďte vlastním názvem registru. 
+1. Označte kontejner pomocí privátního umístění registru. Hodnoty v lomených závorkách nahraďte `<my-registry>`s vlastním názvem registru. 
 
     ```Bash
     docker tag <your-new-container-name>:<your-new-tag-name> <my-registry>.azurecr.io/<your-new-container-name-in-registry>:<your-new-tag-name>
     ```
 
-    Pokud nepoužijete název značky, `latest` bude předpokládaná.
+    Pokud nepoužijete název značky, bude `latest` předpokládaná.
 
 1. Nahrajte nový obrázek do svého privátního registru kontejnerů. Při zobrazení soukromého registru kontejnerů bude název kontejneru, který se používá v následujícím příkazu rozhraní příkazového řádku, název úložiště.
 
@@ -148,7 +148,7 @@ Použijte následující postup, chcete-li použít souboru Dockerfile a umísti
     docker push <my-registry>.azurecr.io/<your-new-container-name-in-registry>:<your-new-tag-name>
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Vytvoření a použití instance kontejneru Azure](azure-container-instance-recipe.md)

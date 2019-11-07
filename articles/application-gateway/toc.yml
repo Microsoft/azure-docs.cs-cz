@@ -17,8 +17,6 @@
       href: quick-create-cli.md
 - name: Kurzy
   items:
-    - name: Povolení firewallu webových aplikací
-      href: application-gateway-web-application-firewall-portal.md
     - name: Zabezpečení pomocí protokolu SSL
       href: create-ssl-portal.md
     - name: Hostování několika webů
@@ -127,12 +125,6 @@
           items:
             - name: Konfigurace zásad SSL
               href: application-gateway-configure-ssl-policy-powershell.md
-    - name: Konfigurace Firewallu webových aplikací
-      items:
-        - name: Azure PowerShell
-          href: tutorial-restrict-web-traffic-powershell.md
-        - name: Azure CLI
-          href: tutorial-restrict-web-traffic-cli.md
     - name: Příchozí přenos dat pro AKS
       items:
         - name: Nastavení s využitím stávající služby Application Gateway

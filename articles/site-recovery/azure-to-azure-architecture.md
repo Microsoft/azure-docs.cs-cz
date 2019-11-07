@@ -1,19 +1,19 @@
 ---
-title: Architektura replikace z Azure do Azure v Azure Site Recovery | Microsoft Docs
-description: Tento článek poskytuje přehled komponent a architektury, které se používají při nastavování zotavení po havárii mezi oblastmi Azure pro virtuální počítače Azure pomocí služby Azure Site Recovery.
+title: Architektura zotavení po havárii z Azure do Azure v Azure Site Recovery
+description: Přehled architektury používané při nastavování zotavení po havárii mezi oblastmi Azure pro virtuální počítače Azure pomocí služby Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: d415f303976ae454cb99f07e8d6e15e338e24d7d
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: e83c14e5ce337e8a3c4c119acc2397b98afd5b56
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231465"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621111"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii Azure do Azure
 
@@ -97,13 +97,13 @@ Následující tabulka vysvětluje různé typy konzistence.
 
 ### <a name="crash-consistent"></a>Konzistentní vzhledem k selháním
 
-**Popis** | **Podrobnosti** | **Doporučení**
+**Popis** | **Podrobnosti** | **Základě**
 --- | --- | ---
 Snímek konzistentní se selháním zachycuje data, která byla na disku při pořízení snímku. Neobsahuje žádné množství paměti.<br/><br/> Obsahuje ekvivalent dat na disku, která by byla k dispozici v případě, že došlo k chybě virtuálního počítače nebo napájecí kabel byl získán ze serveru v okamžiku, kdy se snímek povedl.<br/><br/> Konzistentní se selháním nezaručuje konzistenci dat pro operační systém nebo pro aplikace na virtuálním počítači. | Ve výchozím nastavení vytvoří Site Recovery body obnovení konzistentní vzhledem k chybě každých pět minut. Toto nastavení nelze změnit.<br/><br/>  | V současné době se většina aplikací může obnovovat i z bodů konzistentních vzhledem k selháním.<br/><br/> Body obnovení konzistentní vzhledem k havárii jsou obvykle dostačující pro replikaci operačních systémů a aplikace, jako jsou servery DHCP a tiskové servery.
 
 ### <a name="app-consistent"></a>Konzistentní vzhledem k aplikacím
 
-**Popis** | **Podrobnosti** | **Doporučení**
+**Popis** | **Podrobnosti** | **Základě**
 --- | --- | ---
 Body obnovení konzistentní vzhledem k aplikacím se vytvářejí z snímků konzistentních vzhledem k aplikacím.<br/><br/> Snímek konzistentní vzhledem k aplikacím obsahuje všechny informace v snímku konzistentním s chybou a také všechna data v paměti a probíhajících transakcích. | Snímky konzistentní vzhledem k aplikacím používají služba Stínová kopie svazku (VSS):<br/><br/>   1) když se spustí snímek, služba VSS provede na svazku operaci kopírování na zápis (KRÁVy).<br/><br/>   2) před provedením KRÁVy vytvoří služba Stínová kopie svazku každou aplikaci v počítači, kterou potřebuje k vyprázdnit data rezidentní paměti na disk.<br/><br/>   3) služba VSS pak umožní aplikaci pro zálohování nebo zotavení po havárii (v tomto případě Site Recovery) ke čtení dat snímku a pokračování. | Snímky konzistentní vzhledem k aplikacím jsou pořízeny podle četnosti, kterou zadáte. Tato frekvence by měla být vždy menší než nastavení pro zachování bodů obnovení. Pokud například zachováte body obnovení s použitím výchozího nastavení 24 hodin, měli byste nastavit četnost na méně než 24 hodin.<br/><br/>Jsou složitější a jejich dokončení trvá déle než snímky konzistentní se selháním.<br/><br/> Mají vliv na výkon aplikací spuštěných na virtuálním počítači, který je povolen pro replikaci. 
 
@@ -145,16 +145,16 @@ Podrobnosti o požadavcích na připojení k síti najdete v [dokumentu White pa
 
 **Pravidlo** |  **Podrobnosti** | **Značka služby**
 --- | --- | --- 
-Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají účtům úložiště ve zdrojové oblasti. | Pamì. \<název oblasti >.
-Povolení odchozího HTTPS: port 443 | Povolí rozsahy, které odpovídají Azure Active Directory (Azure AD).<br/><br/> Pokud se adresy Azure AD přidávají v budoucnu, potřebujete vytvořit nová pravidla skupiny zabezpečení sítě (NSG).  | AzureActiveDirectory
+Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají účtům úložiště ve zdrojové oblasti. | Pamì.\<název oblasti >.
+Povolení odchozího HTTPS: port 443 | Povolí rozsahy, které odpovídají Azure Active Directory (Azure AD).<br/><br/> Pokud se adresy Azure AD přidávají v budoucnu, potřebujete vytvořit nová pravidla skupiny zabezpečení sítě (NSG).  | Azureactivedirectory selhala
 Povolení odchozího HTTPS: port 443 | Povolí přístup k [Site Recovery koncovým bodům](https://aka.ms/site-recovery-public-ips) , které odpovídají cílovému umístění. 
 
 #### <a name="target-region-rules"></a>Pravidla cílové oblasti
 
 **Pravidlo** |  **Podrobnosti** | **Značka služby**
 --- | --- | --- 
-Povolení odchozího HTTPS: port 443 | Povolte rozsahy, které odpovídají účtům úložiště v cílové oblasti. | Pamì. \<název oblasti >.
-Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají službě Azure AD.<br/><br/> Pokud se v budoucnu přidají adresy Azure AD, musíte vytvořit nová pravidla NSG.  | AzureActiveDirectory
+Povolení odchozího HTTPS: port 443 | Povolte rozsahy, které odpovídají účtům úložiště v cílové oblasti. | Pamì.\<název oblasti >.
+Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají službě Azure AD.<br/><br/> Pokud se v budoucnu přidají adresy Azure AD, musíte vytvořit nová pravidla NSG.  | Azureactivedirectory selhala
 Povolení odchozího HTTPS: port 443 | Povolí přístup k [Site Recovery koncovým bodům](https://aka.ms/site-recovery-public-ips) , které odpovídají zdrojovému umístění. 
 
 
@@ -186,6 +186,6 @@ Když zahájíte převzetí služeb při selhání, vytvoří se virtuální po�
 
 ![Proces převzetí služeb při selhání](./media/concepts-azure-to-azure-architecture/failover.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Rychlá replikace](azure-to-azure-quickstart.md) virtuálního počítače Azure do sekundární oblasti.

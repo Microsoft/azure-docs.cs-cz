@@ -1,5 +1,5 @@
 ---
-title: Spouštění analytických dotazů pro databáze SQL Azure | Microsoft Docs
+title: 'Spouštění analytických dotazů pro databáze SQL Azure '
 description: Analytické dotazy pro více tenantů využívají data extrahovaná z více Azure SQL Database databází v aplikaci s více klienty.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 ms.date: 09/19/2018
-ms.openlocfilehash: b36911d274a3afb3582d60ea7e85b5afd5f52ece
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2044e72697526a1c757fa13aeffb85260a9b821e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570283"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692002"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Analýza mezi klienty pomocí extrahovaných dat – více tenantů aplikace
  
@@ -26,7 +26,7 @@ V tomto kurzu si projdete kompletní scénář analýzy pro víceklientské impl
 2.  **Optimalizujte extrahovaná data** pro zpracování analýz.
 3.  Pomocí nástrojů **Business Intelligence** můžete vykreslit užitečné poznatky, které vám můžou pomoct při rozhodování. 
 
-V tomto kurzu se naučíte:
+Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 > - Vytvořte úložiště analýzy tenanta, do kterého se budou data extrahovat.
@@ -63,14 +63,14 @@ Nakonec se dotazují tabulky schématu hvězdičky. Výsledky dotazu se zobrazuj
 
 Porozumění, jak konzistentně každý tenant používá službu, nabízí možnost vytvářet plány služeb pro potřeby podle svých potřeb. V tomto kurzu najdete základní příklady přehledů, které je možné mohli z dat tenanta.
 
-## <a name="setup"></a>Instalace
+## <a name="setup"></a>Nastavení
 
 ### <a name="prerequisites"></a>Požadavky
 
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
 
 - Je nasazená databázová aplikace Wingtip Tickets SaaS s více klienty. Nasazení za méně než pět minut najdete v tématu [nasazení a prozkoumání SaaS aplikace pro více tenantů](saas-multitenantdb-get-started-deploy.md) .
-- Skripty a [zdrojový kód](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB) aplikace Wingtip SaaS se stáhnou z GitHubu. Před extrakcí obsahu nezapomeňte *soubor zip* odblokovat. Projděte si [Obecné pokyny](saas-tenancy-wingtip-app-guidance-tips.md) ke stažení a odblokování skriptů Wingtip Tickets SaaS.
+- Skripty a [zdrojový kód](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB) aplikace Wingtip SaaS se stáhnou z GitHubu. Před extrakcí obsahu nezapomeňte *soubor zip odblokovat* . Projděte si [Obecné pokyny](saas-tenancy-wingtip-app-guidance-tips.md) ke stažení a odblokování skriptů Wingtip Tickets SaaS.
 - Power BI Desktop je nainstalována. [Stáhnout Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 - Dávky dalších tenantů se zřídily v [**kurzu zřízení tenantů**](saas-multitenantdb-provision-and-catalog.md).
 - Byl vytvořen Agent úlohy a databáze agenta úloh. Projděte si příslušné kroky v [**kurzu Správa schématu**](saas-multitenantdb-schema-management.md#create-a-job-agent-database-and-new-job-agent).
@@ -80,7 +80,7 @@ Předpokladem dokončení tohoto kurzu je splnění následujících požadavků
 V tomto kurzu se analyzují data o prodeji lístku. V aktuálním kroku vygenerujete data lístku pro všechny klienty.  Později jsou tato data extrahována k analýze. Ujistěte se, že *máte zřízenou dávku tenantů, jak je popsáno výše, abyste měli smysluplnější objem dat*. Dostatečně velké množství dat může vystavovat rozsah různých způsobů nákupu lístků.
 
 1. V **PowerShellu ISE**otevřete *. ..\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1*a nastavte následující hodnotu:
-    - $DemoScenario = **1** lístky nákupu pro události se všemi místy
+    - **$DemoScenario** = **1** lístky nákupu pro události na všech místě
 2. Stisknutím klávesy **F5** spusťte skript a v každém z nich vytvořte historii nákupů lístků pro každou událost.  Skript se spustí několik minut, než se vygeneruje desítky tisíců lístků.
 
 ### <a name="deploy-the-analytics-store"></a>Nasazení úložiště analýzy
@@ -93,15 +93,15 @@ V následujících krocích nasadíte úložiště analýzy, které se nazývá 
     - Pokud chcete používat SQL Database s columnstore, nastavte **$DemoScenario** = **3** .  
 3. Stisknutím klávesy **F5** Spusťte ukázkový skript (který volá skript *Deploy-TenantAnalytics\<xx >. ps1* ), který vytvoří úložiště analýzy tenanta. 
 
-Teď, když jste nasadili aplikaci a nastavili ji s zajímavými daty tenanta, použijte [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) k připojení **tenants1\> -MT-\<User** a **Catalog-MT-\<User\>.** servery využívající přihlašovací údaje = *Developer*, Password *=\@P ssword1*.
+Teď, když jste nasadili aplikaci a nastavili ji s zajímavými daty klienta, použijte [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) pro připojení **\<tenants1 uživatele\>** a **katalogu-MT-\<uživatelů\>** pomocí Login = *Developer*, Password = *P\@ssword1*.
 
 ![architectureOverView](media/saas-multitenantdb-tenant-analytics/ssmsSignIn.png)
 
 V Průzkumník objektů proveďte následující kroky:
 
-1. Rozbalte server *tenants1-MT-\<User\>*  .
+1. Rozbalte položku *tenants1-MT-\<User\>* Server.
 2. Rozbalte uzel databáze a podívejte se na *tenants1* Database obsahující několik tenantů.
-3. Rozbalte *katalog-MT\<-User\>*  Server.
+3. Rozbalte *katalog-MT-\<User\>* Server.
 4. Ověřte, že se zobrazuje úložiště analýzy a databáze jobaccount.
 
 Rozbalením uzlu analytického úložiště se podívejte na následující položky databáze Průzkumník objektů SSMS:
@@ -118,23 +118,23 @@ Rozbalením uzlu analytického úložiště se podívejte na následující polo
 
 Než budete pokračovat, ujistěte se, že jste nasadili účet úlohy a databázi jobaccount. V další sadě kroků se elastické úlohy používají k extrakci dat z databáze tenantů horizontálně dělené a k uložení dat do úložiště analýz. Pak druhá úloha Skartuje data a ukládá je do tabulek ve schématu hvězdičky. Tyto dvě úlohy se spouštějí ve dvou různých cílových skupinách, konkrétně ve skupině **tenantů** a službě **Analytics**. Úloha extrakce se spustí na Tenantovi tenanta, která obsahuje všechny databáze tenantů. Úloha skartace se spouští ve službě Analytics, která obsahuje jenom úložiště analýz. Vytvořte cílové skupiny pomocí následujících kroků:
 
-1. V SSMS se připojte k databázi **jobaccount** v katalogu – MT-\<User.\>
+1. V SSMS se připojte k databázi **jobaccount** v katalogu – mt-\<User\>.
 2. V SSMS otevřete *. ..\Learning Modules\Operational Analytics\Tenant Analytics \ TargetGroups. SQL* 
-3. Upravte proměnnou v horní části skriptu a nahraďte `<User>` ji hodnotou uživatele, která se používá při nasazení aplikace SaaS multi-tenant Database aplikace Wingtip lístky. @User
+3. Upravte @User proměnnou v horní části skriptu a nahraďte `<User>` hodnotou uživatele, která se používá při nasazení aplikace SaaS multi-tenant Database aplikace Wingtip lístky.
 4. Stisknutím klávesy **F5** spusťte skript, který vytvoří dvě cílové skupiny.
 
 ### <a name="extract-raw-data-from-all-tenants"></a>Extrahovat nezpracovaná data ze všech tenantů
 
-Transakce se můžou u lístků *a zákaznických* dat vyskytnout častěji než pro data *událostí a* místa. Proto zvažte, že se data lístků a zákazníků odbalí samostatně a častěji než extrahují data událostí a míst. V této části definujete a naplánujete dvě samostatné úlohy:
+Transakce se můžou u *lístků a zákaznických* dat vyskytnout častěji než pro data *událostí a* místa. Proto zvažte, že se data lístků a zákazníků odbalí samostatně a častěji než extrahují data událostí a míst. V této části definujete a naplánujete dvě samostatné úlohy:
 
 - Extrahujte data lístku a zákazníka.
 - Rozbalte událost a data místa.
 
 Každá úloha extrahuje svá data a odešle je do úložiště analýz. V rámci samostatné úlohy se extrahovaná data Skartuje do schématu Analytics hvězda.
 
-1. V SSMS se připojte k databázi **jobaccount** v katalogu – MT-\<User\> Server.
+1. V SSMS se připojte k databázi **jobaccount** v katalogu – mt-\<User\> Server.
 2. V SSMS otevřete *. ..\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.SQL*.
-3. Upravte @User v horní části skriptu a nahraďte `<User>` uživatelským jménem, které jste použili při nasazení aplikace SaaS multi-tenant Database aplikace Wingtip lístky. 
+3. V horní části skriptu upravte @User a `<User>` nahraďte uživatelským jménem, které jste použili při nasazení aplikace SaaS multi-tenant Database. 
 4. Stisknutím klávesy **F5** spusťte skript, který vytvoří a spustí úlohu, která extrahuje údaje o lístkech a zákaznících z každé databáze tenanta. Úloha uloží data do úložiště analýz.
 5. Dotaz na tabulku TicketsRawData v databázi tenantanalytics, aby se zajistilo, že se tabulka vyplní informacemi z lístků ze všech tenantů.
 
@@ -152,7 +152,7 @@ Dalším krokem je skartovat extrahovaná nezpracovaná data do sady tabulek, kt
 
 V této části kurzu definujete a spustíte úlohu, která sloučí extrahovaná nezpracovaná data s daty v tabulkách se schématy hvězdiček. Po dokončení úlohy sloučení se nezpracovaná data odstraní a opustí tabulky připravené k vyplnění další úlohou extrakce dat tenanta.
 
-1. V SSMS se připojte k databázi **jobaccount** v katalogu – MT-\<User.\>
+1. V SSMS se připojte k databázi **jobaccount** v katalogu – mt-\<User\>.
 2. V SSMS otevřete *. ..\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.SQL*.
 3. Stisknutím klávesy **F5** spusťte skript pro definování úlohy, která volá uloženou proceduru sp_ShredRawExtractedData v úložišti analýz.
 4. Umožněte, aby úloha běžela dostatečně dlouho.
@@ -169,9 +169,9 @@ Data v tabulce hvězdiček-Schema poskytují všechna data o prodeji lístků po
 Pomocí následujících kroků se připojte k Power BI a importujte zobrazení, která jste vytvořili dříve:
 
 1. Spusťte Power BI Desktop.
-2. Na pásu karet domů vyberte **získat data**a pak klikněte na **Další...** v nabídce.
+2. Na pásu karet domů vyberte **získat data**a pak klikněte na **Další...** z nabídky.
 3. V okně **získat data** vyberte Azure SQL Database.
-4. V okně přihlášení k databázi zadejte název vašeho serveru (Catalog-MT-\<User\>. Database.Windows.NET). Vyberte možnost **importovat** do **režimu připojení dat**a pak klikněte na tlačítko OK. 
+4. V okně přihlášení k databázi zadejte název vašeho serveru (Catalog-MT-\<User\>. database.windows.net). Vyberte možnost **importovat** do **režimu připojení dat**a pak klikněte na tlačítko OK. 
 
     ![powerBISignIn](media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
@@ -225,7 +225,7 @@ Dříve jste prohloubi analýzu za účelem zjištění, že prodej lístku by m
 
 Proznamenali jste trendy v datech tenanta z aplikace SaaS multi-tenant Database aplikace Wingtip lístky. Můžete vzájemně porozumět jiným způsobům, jak může aplikace informovat o obchodních rozhodnutích pro dodavatele aplikací SaaS. Dodavatelé můžou lépe přirozumět potřebám svých klientů. Snad v tomto kurzu jste si vystavili nástroje potřebné k provádění analýz v datech tenantů, které vašim firmám umožní rozhodování na základě dat.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

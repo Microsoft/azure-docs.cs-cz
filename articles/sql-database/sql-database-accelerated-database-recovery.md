@@ -1,5 +1,5 @@
 ---
-title: Urychlené obnovení databáze – Azure SQL Database | Microsoft Docs
+title: Urychlené obnovení databáze – Azure SQL Database
 description: Azure SQL Database má novou funkci, která poskytuje rychlé a konzistentní obnovení databáze, okamžité vrácení transakce a agresivní zkracování protokolů pro izolované databáze a databáze ve fondu v Azure SQL Database a databáze ve službě Azure SQL data. Skladu.
 ms.service: sql-database
 ms.subservice: high-availability
@@ -10,12 +10,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: d516dc51a25cbef92ff9fa22012773507b528a99
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e66b3e6563d796cc7b59e82233bd1b22bc906c6e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569623"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691353"
 ---
 # <a name="accelerated-database-recovery"></a>Urychlené obnovení databáze
 
@@ -95,7 +95,7 @@ Mezi čtyři klíčové součásti pravidla automatického nasazení patří:
 
 - **Trvalé úložiště verzí (PVS)**
 
-  Trvalé úložiště verzí je nový mechanismus SQL Database Engine pro zachování verzí řádků vygenerovaných v samotné databázi místo z tradičního `tempdb` úložiště verzí. PVS umožňuje izolaci prostředků a také zlepšuje dostupnost čitelných sekundárních.
+  Trvalé úložiště verzí je nový mechanismus služby SQL Database, který slouží k uchování verzí řádků vygenerovaných v samotné databázi místo tradičního úložiště `tempdb` verzí. PVS umožňuje izolaci prostředků a také zlepšuje dostupnost čitelných sekundárních.
 
 - **Logické vrácení**
 

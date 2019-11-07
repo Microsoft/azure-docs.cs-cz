@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7c52adfb919586fc590ef60215592a5b5c1c1cb3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3fd97e33c88e7767e1d9b230792aea675a744f27
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476131"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619787"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Známé problémy a řešení potíží Azure Machine Learning
 
@@ -76,7 +76,7 @@ Pokud zjistíte `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died 
 
 ## <a name="fpgas"></a>FPGA
 
-Modely v FPGA nebudete moct nasadit, dokud si nebudete požádáni a neschválili kvótu FPGA. Pokud chcete požádat o přístup, vyplňte formulář žádosti o kvótu: https://aka.ms/aml-real-time-ai.
+Modely v FPGA nebudete moct nasadit, dokud si nebudete požádáni a neschválili kvótu FPGA. Chcete-li požádat o přístup, vyplňte formulář žádosti o kvótu: https://aka.ms/aml-real-time-ai
 
 ## <a name="automated-machine-learning"></a>Automatizované strojové učení
 
@@ -88,9 +88,19 @@ Binární klasifikační grafy (přesnost-odvolání, ROC, křivka získání at
 
 ## <a name="datasets-and-data-preparation"></a>Datové sady a Příprava dat
 
+Jedná se o známé problémy pro Azure Machine Learning datové sady.
+
 ### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>Nepodařilo se přečíst soubor Parquet z HTTP nebo ADLS Gen 2.
 
-Došlo k známému problému v rámci sady 1.1.25 služby AzureML pro přípravu dat, který způsobuje selhání při vytváření datové sady, a to čtením souborů Parquet z protokolu HTTP nebo ADLS Gen 2. Pokud chcete tento problém vyřešit, upgradujte prosím na verzi vyšší než 1.1.26, nebo downgradujte na verzi nižší než 1.1.24.
+Došlo k známému problému v rámci sady 1.1.25 služby AzureML pro přípravu dat, který způsobuje selhání při vytváření datové sady, a to čtením souborů Parquet z protokolu HTTP nebo ADLS Gen 2. `Cannot seek once reading started.`se nezdaří. Pokud chcete tento problém vyřešit, upgradujte prosím `azureml-dataprep` na verzi vyšší než 1.1.26, nebo downgradujte na verzi nižší než 1.1.24.
+
+```python
+pip install --upgrade azureml-dataprep
+```
+
+### <a name="typeerror-mount-got-an-unexpected-keyword-argument-invocation_id"></a>TypeError: příkaz Mount () získal neočekávaný argument klíčové slovo invocation_id.
+
+K této chybě dochází, pokud máte nekompatibilní verzi mezi `azureml-core` a `azureml-dataprep`. Pokud se zobrazí tato chyba, upgradujte balíček `azureml-dataprep` na novější verzi (větší než nebo se rovná 1.1.29).
 
 ```python
 pip install --upgrade azureml-dataprep
@@ -102,7 +112,7 @@ Datacihly a Azure Machine Learning problémy.
 
 ### <a name="failure-when-installing-packages"></a>Chyba při instalaci balíčků
 
-Instalace sady Azure Machine Learning SDK se v Azure Databricks při instalaci dalších balíčků nezdařila. Některé balíčky, například `psutil`, mohou způsobit konflikty. Aby nedocházelo k chybám při instalaci, nainstalujte balíčky zmrazením verze knihovny. Tento problém se vztahuje k datacihlům a nikoli k sadě Azure Machine Learning SDK. Tento problém se může vyskytnout i u jiných knihoven. Příklad:
+Instalace sady Azure Machine Learning SDK se v Azure Databricks při instalaci dalších balíčků nezdařila. Některé balíčky, například `psutil`, můžou způsobit konflikty. Aby nedocházelo k chybám při instalaci, nainstalujte balíčky zmrazením verze knihovny. Tento problém se vztahuje k datacihlům a nikoli k sadě Azure Machine Learning SDK. Tento problém se může vyskytnout i u jiných knihoven. Příklad:
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
@@ -146,17 +156,10 @@ Pokud tyto kroky problém nevyřeší, zkuste restartovat cluster.
 Pokud se při čtení dat v clusteru Azure Databricks zobrazí chyba `FailToSendFeather`, přečtěte si následující řešení:
 
 * Upgradovat balíček `azureml-sdk[automl]` na nejnovější verzi.
-* Přidejte `azure-dataprep` verze 1.1.8 nebo vyšší.
+* Přidejte `azureml-dataprep` verze 1.1.8 nebo novější.
 * Přidejte `pyarrow` verze 0,11 nebo vyšší.
 
-
-## <a name="datasets"></a>Datové sady
-
-Jedná se o známé problémy pro Azure Machine Learning datové sady.
-
-+ **Nepovedlo se přečíst soubory Parquet na Azure Data Lake Storage Gen2** Čtení souborů Parquet z úložiště dat Azure Data Lake Storage Gen2 nefunguje, pokud máte `azureml-dataprep==1.1.25` nainstalované. `Cannot seek once reading started.`se nezdaří. Pokud se zobrazí tato chyba, můžete buď nainstalovat `azureml-dataprep<=1.1.24` nebo nainstalovat `azureml-dataprep>=1.1.26`.
-
-## <a name="azure-portal"></a>Portál Azure
+## <a name="azure-portal"></a>portál Azure
 
 Pokud přejdete přímo k pracovnímu prostoru z odkazu pro sdílení ze sady SDK nebo portálu, nebudete moci zobrazit stránku normální přehled s informacemi o předplatném v rozšíření. Nebudete také moci přepnout do jiného pracovního prostoru. Pokud potřebujete zobrazit jiný pracovní prostor, alternativní řešení je přejít přímo na [Azure Machine Learning Studio](https://ml.azure.com) a vyhledat název pracovního prostoru.
 
@@ -193,13 +196,13 @@ Například se zobrazí chyba, pokud se pokusíte vytvořit nebo připojit výpo
 
 ## <a name="overloaded-azurefile-storage"></a>Přetížené úložiště AzureFile
 
-Pokud se zobrazí chyba `Unable to upload project files to working directory in AzureFile because the storage is overloaded`, použijte následující alternativní řešení.
+Pokud se zobrazí chybová `Unable to upload project files to working directory in AzureFile because the storage is overloaded`, použijte následující alternativní řešení.
 
 Pokud používáte sdílenou složku pro jiné úlohy, jako je třeba přenos dat, doporučuje se použít objekty blob, aby bylo možné používat pro odeslání spuštění sdílení souborů. Úlohy můžete rozdělit také mezi dva různé pracovní prostory.
 
 ## <a name="webservices-in-azure-kubernetes-service-failures"></a>Služby WebServices ve službě Azure Kubernetes – chyby 
 
-Mnoho selhání webové služby ve službě Azure Kubernetes se dá ladit připojením ke clusteru pomocí `kubectl`. `kubeconfig.json` pro cluster služby Azure Kubernetes můžete získat spuštěním
+Mnoho selhání webové služby ve službě Azure Kubernetes se dá ladit tak, že se připojí ke clusteru pomocí `kubectl`. `kubeconfig.json` pro cluster služby Azure Kubernetes můžete získat spuštěním
 
 ```bash
 az aks get-credentials -g <rg> -n <aks cluster name>
@@ -233,7 +236,7 @@ compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceNa
 compute_target.wait_for_completion(show_output=True)
 ```
 
-Pokud už certifikát SSL a soukromý klíč nepoužíváte nebo certifikát vygenerovaný Azure Machine Learning, můžete načíst soubory před odpojením clusteru, a to tak, že se připojíte ke clusteru pomocí `kubectl` a načtete tajný klíč `azuremlfessl`.
+Pokud už certifikát SSL a soukromý klíč nepoužíváte nebo certifikát vygenerovaný Azure Machine Learning, můžete načíst soubory před odpojením clusteru, a to tak, že se připojíte ke clusteru pomocí `kubectl` a načtete tajný `azuremlfessl`.
 
 ```bash
 kubectl get secret/azuremlfessl -o yaml
@@ -262,3 +265,23 @@ Tato výjimka by se měla nacházet z vašich školicích skriptů. Můžete si 
 
 ### <a name="horovod-is-shutdown"></a>Horovod je vypnutý.
 Ve většině případů tato výjimka znamená, že došlo k základní výjimce v jednom z procesů, které způsobily vypnutí horovod. Každé pořadí v úloze MPI získá vlastní vyhrazený soubor protokolu v Azure ML. Tyto protokoly jsou pojmenovány `70_driver_logs`. V případě distribuovaného školení jsou názvy protokolů `_rank` s příponou, aby bylo snazší odlišit protokoly. Pokud chcete najít přesnou chybu, která způsobila vypnutí horovod, Projděte všechny soubory protokolů a hledejte `Traceback` na konci souborů driver_log. Jeden z těchto souborů vám poskytne vlastní podkladovou výjimku. 
+
+## <a name="labeling-projects-issues"></a>Problémy s označováním projektů
+
+Známé problémy s označováním projektů.
+
+### <a name="only-datasets-created-on-blob-datastores-can-be-used"></a>Můžou se použít jenom datové sady vytvořené pro úložiště dat objektu BLOB.
+
+Toto je známé omezení aktuální verze. 
+
+### <a name="after-creation-the-project-shows-initializing-for-a-long-time"></a>Po vytvoření se v projektu zobrazí "inicializace" po dlouhou dobu.
+
+Aktualizujte stránku ručně. Inicializace by měla pokračovat zhruba o 20 databody za sekundu. Nedostatečná možnost AutoRefresh je známý problém. 
+
+### <a name="bounding-box-cannot-be-drawn-all-the-way-to-right-edge-of-image"></a>Ohraničující rámeček se nedá vykreslit celým způsobem pro pravou hranu obrázku. 
+
+Zkuste změnit velikost okna prohlížeče. Zkoumáme, abychom zjistili příčinu tohoto chování. 
+
+### <a name="when-reviewing-images-newly-labeled-images-are-not-shown"></a>Při kontrole imagí se nezobrazují nově označené obrázky.
+
+Chcete-li načíst všechny označené obrázky, klikněte na tlačítko **první** . **První** tlačítko se vrátí zpět na začátek seznamu, ale načte všechna označená data.

@@ -1,5 +1,5 @@
 ---
-title: Spouštění dotazů na generování sestav ad hoc napříč více databázemi SQL Azure | Microsoft Docs
+title: Spouštění dotazů na generování sestav ad hoc napříč více databázemi SQL Azure
 description: Spuštění dotazů na generování sestav ad hoc napříč několika databázemi SQL v příkladu aplikace s více klienty.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
 ms.date: 10/30/2018
-ms.openlocfilehash: 0a6b45db3c8b4071b591ca2b5fc604b986598c0c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3d345e222dac98a63400dd2661ce92674f2534f6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570351"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692080"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Spouštění analytických dotazů ad hoc napříč několika databázemi SQL Azure
 
@@ -58,7 +58,7 @@ V úložišti GitHubu [WingtipTicketsSaaS-MultitenantDB](https://github.com/micr
 
 Pokud chcete spouštět dotazy pro zajímavější datovou sadu, vytvořte pomocí generátoru lístků data o prodeji lístku.
 
-1. V *prostředí POWERSHELL ISE*otevřete... \\\\ Výukové moduly Operational Analytics\\pro vytváření sestav ad demo-AdhocReporting. ps1 a nastavte následující hodnoty: \\
+1. V *prostředí POWERSHELL ISE*otevřete\\výukové moduly\\provozní analýzy\\vytváření sestav ad hoc\\skriptu *demo-AdhocReporting. ps1* a nastavte následující hodnoty:
    * **$DemoScenario** = 1, **vykoupit lístky pro události na všech místě**.
 2. Stisknutím klávesy **F5** spusťte skript a vygenerujte prodej lístku. Po spuštění skriptu pokračujte postupem v tomto kurzu. Data lístku se dotazují v části *Run ad hoc distribuované dotazy* , takže počkejte, než se generátor lístků dokončí.
 
@@ -72,7 +72,7 @@ Pro dosažení tohoto modelu všechny tabulky tenantů obsahují sloupec *VenueI
 
 Toto cvičení nasadí databázi *adhocreporting* . Toto je hlavní databáze, která obsahuje schéma používané pro dotazování napříč všemi databázemi tenanta. Databáze je nasazená na stávající Server katalogu, což je server, který se používá pro všechny databáze související se správou v ukázkové aplikaci.
 
-1. Otevřít... \\\\\\ Výukové moduly provozní analýzy ad hoc vytváření sestav demo-AdhocReporting. ps1 ve ISE PowerShellu a nastavte následující hodnoty: \\
+1. Otevřete...\\výukové moduly\\provozní analýzy\\vytváření sestav ad hoc\\*demo-AdhocReporting. ps1* v *ISE PowerShellu* a nastavte následující hodnoty:
    * **$DemoScenario** = 2, **nasadit databázi ad hoc Analytics**.
 
 2. Stisknutím klávesy **F5** spusťte skript a vytvořte databázi *adhocreporting* .
@@ -91,7 +91,7 @@ Tento cvičení přidá schéma (externí definice zdroje dat a externí tabulky
 
     ![vytvoření přihlašovacích údajů](media/saas-multitenantdb-adhoc-reporting/create-credential.png)
 
-   Když použijete databázi katalogu jako externí zdroj dat, budou se dotazy distribuovat do všech databází zaregistrovaných v katalogu při spuštění dotazu. Vzhledem k tomu, že názvy serverů jsou pro každé nasazení odlišné, tento inicializační skript Získá umístění databáze katalogu načtením aktuálního serveru (@servername@), ve kterém se skript spustí.
+   Když použijete databázi katalogu jako externí zdroj dat, budou se dotazy distribuovat do všech databází zaregistrovaných v katalogu při spuštění dotazu. Vzhledem k tomu, že názvy serverů jsou pro každé nasazení odlišné, tento inicializační skript Získá umístění databáze katalogu načtením aktuálního serveru (@@servername), ve kterém se skript spustí.
 
     ![vytvořit externí zdroj dat](media/saas-multitenantdb-adhoc-reporting/create-external-data-source.png)
 
@@ -115,7 +115,7 @@ Teď, když je nastavená databáze *adhocreporting* , pokračujte a spusťte n�
 
 Po kontrole plánu spuštění najeďte na ikony plánu a vyhledejte podrobnosti. 
 
-1. V *SSMS*otevřete... \\\\Výukovémoduly provozní analýzy AD\\hoc vytváření sestav*demo-AdhocReportingQueries. SQL.* \\
+1. V *SSMS*otevřete...\\výukové moduly\\provozní analýzy\\vytváření sestav ad hoc\\*demo-AdhocReportingQueries. SQL*.
 2. Ujistěte se, že jste připojení k databázi **adhocreporting** .
 3. Vyberte nabídku **dotazu** a klikněte na **Zahrnout skutečný plán spuštění** .
 4. Zvýrazněte, *která místa jsou aktuálně registrována?* dotaz a stiskněte klávesu **F5**.
@@ -141,7 +141,7 @@ Po kontrole plánu spuštění najeďte na ikony plánu a vyhledejte podrobnosti
    ![query](media/saas-multitenantdb-adhoc-reporting/query3-plan.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

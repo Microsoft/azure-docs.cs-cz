@@ -1,5 +1,5 @@
 ---
-title: Architektura připojení Azure SQL Database a SQL Data Warehouse | Microsoft Docs
+title: Architektura připojení Azure SQL Database a SQL Data Warehouse
 description: Tento dokument popisuje architekturu připojení Azure SQL pro databázová připojení z Azure nebo mimo Azure.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: f26eb44dd407e379d0bf3291eb890d2e451c919e
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: d414276e081407af8ea21ebcbd96909d34455a22
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72807918"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690864"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura připojení Azure SQL
 
@@ -68,7 +68,7 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Austrálie – východ       | 13.75.149.87, 40.79.161.1 |
 | Austrálie – jihovýchod | 191.239.192.109, 13.73.109.251 |
 | Brazílie – jih         | 104.41.11.5, 191.233.200.14 |
-| Kanada – střed       | 40.85.224.249      |
+| Střední Kanada       | 40.85.224.249      |
 | Kanada – východ          | 40.86.226.166      |
 | Střední USA           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 | 
 | Čína – východ           | 139.219.130.35     |
@@ -76,7 +76,7 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Čína – sever          | 139.219.15.17      |
 | Čína – sever 2        | 40.73.50.0         |
 | Východní Asie            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
-| USA – východ              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
+| Východ USA              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
 | Východ USA 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 | 
 | Francie – střed       | 40.79.137.0, 40.79.129.1 |
 | Německo – střed      | 51.4.144.100       |
@@ -86,8 +86,8 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Indie – západ           | 104.211.160.80     |
 | Japonsko – východ           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 | 
 | Japonsko – západ           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 | 
-| Korea – střed        | 52.231.32.42       |
-| Korea – jih          | 52.231.200.86      |
+| Jižní Korea – střed        | 52.231.32.42       |
+| Jižní Korea – jih          | 52.231.200.86      |
 | Středoseverní USA     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | Severní Evropa         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
 | Jižní Afrika – sever   | 102.133.152.0      |
@@ -96,8 +96,8 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Jihovýchodní Asie      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
 | Spojené arabské emiráty – střed          | 20.37.72.64        |
 | Spojené arabské emiráty – sever            | 65.52.248.0        |
-| Velká Británie – jih             | 51.140.184.11      |
-| Velká Británie – západ              | 51.141.8.11        |
+| Spojené království – jih             | 51.140.184.11      |
+| Spojené království – západ              | 51.141.8.11        |
 | Středozápadní USA      | 13.78.145.25       |
 | Západní Evropa          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
 | Západní USA              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |

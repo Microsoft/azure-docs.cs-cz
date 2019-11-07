@@ -1,5 +1,5 @@
 ---
-title: Povolit automatické ladění pro Azure SQL Database | Microsoft Docs
+title: Povolit automatické ladění pro Azure SQL Database
 description: Automatické ladění můžete v Azure SQL Database povolit snadno.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: c9339b5c7c35378fb85daeae19a6daa01d54f350
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 52e3dd01446a6292c3404f14bd8ebfb32aa00dd6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809643"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691129"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Povolení automatického ladění pro monitorování dotazů a zlepšení výkonu úloh
 
@@ -34,7 +34,7 @@ Automatické ladění lze povolit na serveru nebo na úrovni databáze prostřed
 
 Na úrovni serveru můžete zvolit dědění konfigurace automatického ladění z "výchozí hodnoty Azure" nebo Nedědit konfiguraci. Výchozí hodnoty Azure jsou FORCE_LAST_GOOD_PLAN, CREATE_INDEX je zapnuté a DROP_INDEX je zakázané.
 
-### <a name="azure-portal"></a>Portál Azure
+### <a name="azure-portal"></a>portál Azure
 
 Pokud chcete povolit automatické ladění Azure SQL Database logického **serveru**, přejděte na server v Azure Portal a pak v nabídce vyberte **Automatické ladění** .
 
@@ -48,7 +48,7 @@ Vyberte možnosti automatického ladění, které chcete povolit, a vyberte **po
 
 Možnosti automatického ladění na serveru se aplikují na všechny databáze na tomto serveru. Ve výchozím nastavení dědí všechny databáze konfiguraci ze svého nadřazeného serveru, ale dá se přepsat a zadat pro každou databázi samostatně.
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 
 Další informace o použití REST API k povolení automatického ladění na serveru najdete v tématu [SQL Server aktualizace automatického ladění a získání metod http](https://docs.microsoft.com/rest/api/sql/serverautomatictuning).
 
@@ -60,7 +60,7 @@ Azure SQL Database vám umožní individuálně zadat konfiguraci automatického
 > Obecně se doporučuje spravovat konfiguraci automatického ladění na **úrovni serveru** , aby bylo možné v každé databázi automaticky použít stejné nastavení konfigurace. Automatické ladění můžete nakonfigurovat v individuální databázi jenom v případě, že potřebujete, aby tato databáze měla různá nastavení, než ostatní dědí nastavení ze stejného serveru.
 >
 
-### <a name="azure-portal"></a>Portál Azure
+### <a name="azure-portal"></a>portál Azure
 
 Pokud chcete povolit automatické ladění pro izolovanou **databázi**, přejděte do databáze v Azure Portal a vyberte **Automatické ladění**.
 
