@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 9fbe4f34bb27d2de662f11dbdd047356ff3d3941
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4fe405d4027535eb6b0211f7a3f997194b8819aa
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497365"
+ms.locfileid: "73580748"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Co je Azure Machine Learning pracovní prostor?
 
@@ -32,7 +32,7 @@ Taxonomie pracovního prostoru je znázorněna v následujícím diagramu:
 
 Diagram znázorňuje následující komponenty pracovního prostoru:
 
-+ Pracovní prostor může obsahovat [Azure Machine Learning výpočetních instancí](concept-compute-instance.md), cloudových prostředků nakonfigurovaných pomocí prostředí Pythonu, které je nezbytné ke spuštění Azure Machine Learning.
++ Pracovní prostor může obsahovat Azure Machine Learning virtuální počítače s poznámkovým blokem, cloudové prostředky nakonfigurované pomocí prostředí Pythonu, které je nutné ke Azure Machine Learning spuštění
 + [Role uživatelů](how-to-assign-roles.md) umožňují sdílet pracovní prostor s ostatními uživateli, týmy nebo projekty.
 + [Cíle výpočetní](concept-azure-machine-learning-architecture.md#compute-targets) služby se používají ke spouštění experimentů.
 + Při vytváření pracovního prostoru jsou pro vás také vytvořeny [přidružené prostředky](#resources) .
@@ -75,11 +75,8 @@ Můžete také provádět následující úlohy správy pracovního prostoru:
 | Správa přístupu k pracovnímu prostoru    | **&check;**   || |  **&check;**    |
 | Upgrade na Enterprise Edition    | **&check;** |  | |     |
 | Vytváření a Správa výpočetních prostředků    |   | **&check;** | **&check;** |  **&check;**   |
-| Vytvoření výpočetní instance | **&check;**  | **&check;** | **&check;** |     |
+| Vytvoření virtuálního počítače s poznámkovým blokem |   | **&check;** | |     |
 
-> [!NOTE]
-> Výpočetní instance jsou k dispozici pouze pro pracovní prostory s oblastí **střed USA – sever** nebo **Velká Británie – jih**.
->Pokud je váš pracovní prostor v jakékoli jiné oblasti, můžete místo toho vytvořit a použít [virtuální počítač s poznámkovým blokem](concept-compute-instance.md#notebookvm) .
 
 ## <a name='create-workspace'></a>Vytvořit pracovní prostor
 
@@ -101,7 +98,7 @@ Existuje několik způsobů, jak vytvořit pracovní prostor:
 Když vytvoříte nový pracovní prostor, automaticky se vytvoří několik prostředků Azure, které pracovní prostor používá:
 
 + [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): registruje kontejnery Docker, které používáte během školení a při nasazení modelu. Pro minimalizaci nákladů je ACR **opožděně načteno** , dokud se nevytvoří image nasazení.
-+ [Azure Storage účet](https://azure.microsoft.com/services/storage/): slouží jako výchozí úložiště dat pro pracovní prostor.  Jupyter poznámkové bloky používané s vaší Azure Machine Learning výpočetní instance jsou také uloženy.
++ [Azure Storage účet](https://azure.microsoft.com/services/storage/): slouží jako výchozí úložiště dat pro pracovní prostor.  Poznámkové bloky Jupyter, které se používají spolu s vaším VIRTUÁLNÍm počítačem s Azure Machine Learning notebookem, se ukládají také.
 + [Azure Application Insights](https://azure.microsoft.com/services/application-insights/): ukládá informace o monitorování vašich modelů.
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): ukládá tajné kódy používané výpočetními cíli a dalšími citlivými informacemi, které pracovní prostor potřebuje.
 

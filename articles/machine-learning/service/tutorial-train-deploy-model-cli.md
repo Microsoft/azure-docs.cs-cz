@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 3f619caf7e2713e1c9251550b06c8bdefba5936f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1854599956755716955a6e691c3266ac54ddafd9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493382"
+ms.locfileid: "73581555"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Kurz: výuka a nasazení modelu z rozhraní příkazového řádku
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Přečtěte si, jak provést následující akce:
 > * Nasazení modelu jako webové služby
 > * Data skóre pomocí webové služby
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
@@ -183,7 +183,7 @@ Tento příkaz vytvoří soubor `.azureml/config.json`, který obsahuje informac
 
 ## <a name="create-the-compute-target-for-training"></a>Vytvoření cíle výpočetní služby pro školení
 
-V tomto příkladu se pro výuku modelu používá výpočetní cluster Azure Machine Learning. Chcete-li vytvořit nový výpočetní cluster, použijte následující příkaz:
+V tomto příkladu se pro výuku modelu používá virtuální počítač s poznámkovým blokem Azure Machine Learning. Pokud chcete vytvořit nový virtuální počítač s poznámkovým blokem, použijte následující příkaz:
 
 ```azurecli-interactive
 az ml computetarget create amlcompute -n cpu --max-nodes 4 --vm-size Standard_D2_V2
@@ -239,7 +239,7 @@ Tento text se zaznamená do protokolu ze školicího skriptu (`train-sklearn.py`
 
 Pokud provedete `train-sklearn.py`, všimnete si, že při ukládání vycvičených modelů do souboru používá také hodnotu alfa. V tomto případě si vlaky nahlásí několik modelů. Ten, který má nejvyšší hodnotu alfa, by měl být ten nejlepší. Jak vidíte výstup výše, a kód, model s Alpha 0,95 byl uložen jako `./outputs/ridge_0.95.pkl`
 
-Model byl uložen do adresáře `./outputs` v cíli výpočetní služby, kde byl vyškolený. V tomto případě Azure Machine Learning výpočetní instance v cloudu Azure. Proces školení automaticky nahraje obsah adresáře `./outputs` z cíle výpočetního prostředí, kde k vašemu pracovnímu prostoru Azure Machine Learning přichází školení. Je uložen jako součást experimentu (`myexperiment` v tomto příkladu).
+Model byl uložen do adresáře `./outputs` v cíli výpočetní služby, kde byl vyškolený. V tomto případě se jedná o virtuální počítač s Azure Machine Learning notebookem v cloudu Azure. Proces školení automaticky nahraje obsah adresáře `./outputs` z cíle výpočetního prostředí, kde k vašemu pracovnímu prostoru Azure Machine Learning přichází školení. Je uložen jako součást experimentu (`myexperiment` v tomto příkladu).
 
 ## <a name="register-the-model"></a>Registrace modelu
 

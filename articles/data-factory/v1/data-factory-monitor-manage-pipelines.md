@@ -1,5 +1,5 @@
 ---
-title: Monitorování a Správa kanálů pomocí Azure Portal a PowerShellu | Microsoft Docs
+title: Monitorování a Správa kanálů pomocí Azure Portal a PowerShellu
 description: Naučte se, jak pomocí Azure Portal a Azure PowerShell monitorovat a spravovat datové továrny Azure a kanály, které jste vytvořili.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 8e8215d9737087cf1a5632dc8514c12988ff999f
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 44aadecfa80524345932c03abb51e8ebd040a902
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139660"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666966"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorování a Správa kanálů Azure Data Factory pomocí Azure Portal a PowerShellu
 > [!div class="op_single_selector"]
@@ -87,7 +87,7 @@ Dvojitým kliknutím na **OutputBlobTable** v **diagramu**můžete zobrazit vše
 
 <table>
 <tr>
-    <th align="left">State</th><th align="left">Dílčí stav</th><th align="left">Popis</th>
+    <th align="left">Stav</th><th align="left">Podstav</th><th align="left">Popis</th>
 </tr>
 <tr>
     <td rowspan="8">Čekání</td><td>ScheduleTime</td><td>Čas nepřijde, aby se řez spouštěl.</td>
@@ -108,14 +108,14 @@ Dvojitým kliknutím na **OutputBlobTable** v **diagramu**můžete zobrazit vše
 <td>Retry</td><td>Probíhá opakování provádění aktivity.</td>
 </tr>
 <tr>
-<td>Ověřování</td><td>Ověřování ještě nebylo zahájeno.</td>
+<td>Ověření</td><td>Ověřování ještě nebylo zahájeno.</td>
 </tr>
 <tr>
 <td>ValidationRetry</td><td>Ověřování čeká na opakování.</td>
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Probíhá zpracování</td><td>Ověřování platnosti</td><td>Probíhá ověřování.</td>
+<td rowspan="2">InProgress</td><td>Opětovné</td><td>Probíhá ověřování.</td>
 </tr>
 <td>-</td>
 <td>Řez se zpracovává.</td>
@@ -127,18 +127,18 @@ Dvojitým kliknutím na **OutputBlobTable** v **diagramu**můžete zobrazit vše
 <td>Zrušeno</td><td>Řez byl zrušen akcí uživatele.</td>
 </tr>
 <tr>
-<td>Ověřování</td><td>Ověření se nezdařilo.</td>
+<td>Ověření</td><td>Ověření se nezdařilo.</td>
 </tr>
 <tr>
 <td>-</td><td>Řez se nepovedlo vygenerovat nebo ověřit.</td>
 </tr>
-<td>Připraven</td><td>-</td><td>Řez je připravený na spotřebu.</td>
+<td>Připraveno</td><td>-</td><td>Řez je připravený na spotřebu.</td>
 </tr>
 <tr>
-<td>Přeskočeno</td><td>Žádné</td><td>Řez se nezpracovává.</td>
+<td>Přeskočeno</td><td>Žádný</td><td>Řez se nezpracovává.</td>
 </tr>
 <tr>
-<td>Žádné</td><td>-</td><td>Řez použitý k existenci s jiným stavem, ale byl obnoven.</td>
+<td>Žádný</td><td>-</td><td>Řez použitý k existenci s jiným stavem, ale byl obnoven.</td>
 </tr>
 </table>
 
@@ -152,7 +152,7 @@ Pokud byl řez proveden několikrát, zobrazí se v seznamu **spuštění aktivi
 
 ![Podrobnosti o spuštění aktivit](./media/data-factory-monitor-manage-pipelines/activity-run-details.png)
 
-Pokud řez není ve stavu **připraveno** , můžete vidět, které z nadřazených řezů nejsou připravené a které blokují aktuální řez ze spouštění v seznamu nadřazených **řezů, které nejsou připravené** . Tato funkce je užitečná v případě, že je váš řez ve stavu **čekání** a vy chcete pochopit nadřazené závislosti, na kterých řez čeká.
+Pokud řez není ve stavu **připraveno** , můžete vidět, které z nadřazených řezů nejsou připravené a které blokují aktuální řez ze spouštění v seznamu **nadřazených řezů, které nejsou připravené** . Tato funkce je užitečná v případě, že je váš řez ve stavu **čekání** a vy chcete pochopit nadřazené závislosti, na kterých řez čeká.
 
 ![Nadřazené řezy, které nejsou připravené](./media/data-factory-monitor-manage-pipelines/upstream-slices-not-ready.png)
 
@@ -161,11 +161,11 @@ Když nasadíte datovou továrnu a kanály mají platné aktivní období, datov
 
 ![Stavový diagram](./media/data-factory-monitor-manage-pipelines/state-diagram.png)
 
-Tok přechodu stavu datové sady ve službě Data Factory je následující: Čekání – > probíhající/probíhající (ověřování) – > připraveno nebo neúspěšné.
+Tok přechodu stavu datové sady ve službě Data Factory je následující: čekání-> probíhající/probíhající (ověřování) – > připraveno nebo selhalo.
 
-Řez začíná ve stavu **čekání** a čeká na splnění předběžných podmínek, než se spustí. Pak se aktivita začne spouštět a řez přejde do stavu probíhá. Spuštění aktivity může být úspěšné nebo neúspěšné. Řez je na základě výsledku provedení označený jako **připravený** nebo neúspěšný.
+Řez začíná ve stavu **čekání** a čeká na splnění předběžných podmínek, než se spustí. Pak se aktivita začne spouštět a řez přejde **do stavu probíhá** . Spuštění aktivity může být úspěšné nebo neúspěšné. Řez je na základě výsledku provedení označený jako **připravený** nebo **neúspěšný**.
 
-Řez můžete obnovit tak, aby se zpátky ze stavu připraveno nebo nezdařilo do **čekání** . Můžete také označit stav řezu k přeskočení, což zabrání aktivitě v provádění a nezpracovávání řezu.
+Řez můžete obnovit tak, aby se zpátky ze stavu **připraveno** nebo **nezdařilo** do **čekání** . Můžete také označit stav řezu k **přeskočení**, což zabrání aktivitě v provádění a nezpracovávání řezu.
 
 ## <a name="pause-and-resume-pipelines"></a>Pozastavení a obnovení kanálů
 Své kanály můžete spravovat pomocí Azure PowerShell. Můžete například pozastavit a obnovit kanály spuštěním rutin Azure PowerShell. 
@@ -205,7 +205,7 @@ Azure Data Factory poskytuje bohatě funkční možnosti pro ladění a odstraň
 Pokud se spuštění aktivity v kanálu nezdaří, datová sada vytvořená kanálem je v chybovém stavu kvůli selhání. Chyby v Azure Data Factory můžete ladit a řešit pomocí následujících metod.
 
 #### <a name="use-the-azure-portal-to-debug-an-error"></a>Použití Azure Portal k ladění chyby
-1. V okně **tabulka** klikněte na řez problému, u kterého je **stav** nastavený na neúspěšné.
+1. V okně **tabulka** klikněte na řez problému, u kterého je **stav** nastavený na **neúspěšné**.
 
    ![Okno tabulky s průřezem problému](./media/data-factory-monitor-manage-pipelines/table-blade-with-error.png)
 2. V okně **datový řez** klikněte na spuštěnou aktivitu, která se nezdařila.

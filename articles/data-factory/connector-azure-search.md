@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat do indexu vyhledávání pomocí Azure Data Factory | Microsoft Docs
+title: Kopírování dat do indexu vyhledávání pomocí Azure Data Factory
 description: Přečtěte si, jak vložit nebo zkopírovat data do indexu Azure Search pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 703dcb5fee0c31328eee91c9673e62653d7aa698
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: f4e9e9f66d9bf1fecd4565d5eb469703e7a83d0d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286337"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681186"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Kopírování dat do indexu Azure Search pomocí Azure Data Factory
 
@@ -176,8 +176,8 @@ Následující tabulka určuje, zda je podporován datový typ Azure Search.
 | Klepat | Ano |
 | Logická hodnota | Ano |
 | DataTimeOffset | Ano |
-| Pole řetězců | N |
-| GeographyPoint | N |
+| Pole řetězců | Ne |
+| GeographyPoint | Ne |
 
 V současné době nejsou podporovány jiné datové typy, například ComplexType. Úplný seznam Azure Search podporovaných datových typech najdete v tématu [podporované datové typy (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types).
 

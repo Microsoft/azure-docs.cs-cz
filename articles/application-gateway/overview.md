@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 5/31/2019
+ms.date: 11/05/2019
 ms.author: victorh
-ms.openlocfilehash: b30b96e6ae931e0df41b60e16f04127e82a068ad
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a51276cd54a88c5e566afef0d06673f14b5862cf
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469745"
+ms.locfileid: "73572037"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co je Azure Application Gateway?
 
@@ -45,13 +45,13 @@ Nasazení Application Gateway nebo WAF v rámci SKU Standard_v2 nebo WAF_v2 mů�
 
 Virtuální IP adresa služby Application Gateway v Standard_v2 nebo WAF_v2 SKU podporuje výhradně statický typ VIP. Tím se zajistí, že se virtuální IP adresa přidružená k aplikační bráně nemění ani po dobu života Application Gateway.
 
-## <a name="web-application-firewall"></a>Firewall webových aplikací
+## <a name="web-application-firewall"></a>Brána firewall webových aplikací
 
-Firewall webových aplikací (WAF) je funkce služby Application Gateway poskytující centralizovanou ochranu webových aplikací před běžným zneužitím a ohrožením zabezpečení. WAF je založená na pravidlech z [OWASP (Open Web Application Security Project) základních sad pravidel](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1 (jenom WAF_v2), 3,0 a 2.2.9. 
+Firewall webových aplikací (WAF) je služba, která poskytuje centralizovanou ochranu webových aplikací před běžným zneužitím a ohrožením zabezpečení. WAF je založená na pravidlech z [OWASP (Open Web Application Security Project) základních sad pravidel](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1 (jenom WAF_v2), 3,0 a 2.2.9. 
 
 Webové aplikace se čím dál častěji stávají cílem škodlivých útoků, které zneužívají běžně známé chyby zabezpečení. Mezi tyto běžné typy zneužití patří mimo jiné například útoky prostřednictvím injektáže SQL nebo skriptování mezi weby. Předcházet takovým útokům v kódu aplikace může být náročné a může vyžadovat pečlivou údržbu, opravy a monitorování mnoha vrstev topologie aplikace. Centralizovaný firewall webových aplikací značně zjednodušuje správu zabezpečení a nabízí správcům lepší ochranu aplikací před hrozbami neoprávněného vniknutí. Řešení Firewall webových aplikací (WAF) může také rychleji reagovat na ohrožení zabezpečení, protože opravuje známé chyby zabezpečení v centrálním umístění, namísto zabezpečování jednotlivých webových aplikací. Stávající aplikační brány je možné jednoduše převést na aplikační brány doplněné webovým aplikačním firewallem.
 
-Další informace najdete v tématu věnovaném [firewallu webových aplikací (WAF) v Application Gateway](https://docs.microsoft.com/azure/application-gateway/waf-overview).
+Další informace najdete v tématu [co je firewall webových aplikací Azure?](../web-application-firewall/overview.md).
 
 ## <a name="ingress-controller-for-aks"></a>Kontroler příchozího přenosu dat pro AKS
 AGIC () umožňuje používat Application Gateway jako příchozí přenosy pro cluster [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) . Application Gateway 
@@ -138,7 +138,7 @@ Application Gateway Standard a SKU WAF se momentálně nabízí ve třech veliko
 
 Následující tabulka ukazuje průměrnou propustnost výkonu pro jednotlivé instance služby Application Gateway V1 s povoleným snižováním zatížení SSL:
 
-| Průměrná velikost odpovědi back-endu stránky | Malé | Střední | Velké |
+| Průměrná velikost odpovědi back-endu stránky | Krátkodobé používání | Střednědobé používání | Dlouhodobé používání |
 | --- | --- | --- | --- |
 | 6 KB |7,5 Mb/s |13 Mb/s |50 Mb/s |
 | 100 KB |35 Mb/s |100 Mb/s |200 Mb/s |

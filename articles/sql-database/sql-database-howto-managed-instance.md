@@ -1,5 +1,5 @@
 ---
-title: Postup konfigurace spravované instance Azure SQL Database | Microsoft Docs
+title: Postup konfigurace Azure SQL Database spravované instance
 description: Naučte se konfigurovat a spravovat Azure SQL Database spravovanou instanci.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
-ms.openlocfilehash: b8c05ab05630e92e64a4885d5e6cdc6f5471dff2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 22bad381a59a74237a5539cd4294a08797c017b1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568057"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689921"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Použití spravované instance v Azure SQL Database
 
@@ -46,4 +46,4 @@ V tomto článku najdete různé příručky, skripty a vysvětlení, které vá
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si [](sql-database-howto-single-database.md) Další informace o průvodcích s jednotlivými databázemi.
+- Přečtěte si další informace o [průvodcích s jednotlivými databázemi](sql-database-howto-single-database.md) .

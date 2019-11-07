@@ -1,5 +1,5 @@
 ---
-title: Iterativní vývoj a ladění v Azure Data Factory | Microsoft Docs
+title: Iterativní vývoj a ladění v Azure Data Factory
 description: Naučte se vyvíjet a ladit kanály Data Factory v Azure Portal iterativním způsobem.
 ms.date: 09/26/2018
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: a1c4bf55fbb8242293fc0e30bbe16a6884b901cb
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 38e51e33ef487da8879132eb1ce9cf1e63a814e4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178617"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672833"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iterativní vývoj a ladění pomocí Azure Data Factory
 
@@ -58,7 +58,7 @@ Pokud máte aktivní relace ladění toku dat, tyto relace se zobrazí v dolní 
 
 ## <a name="monitoring-debug-runs"></a>Monitorování běhů ladění
 
-Testovací běhy iniciované funkcí **ladění** nejsou k dispozici v seznamu na kartě **monitorování** . Na kartě **monitorování** můžete zobrazit jenom běhy aktivovanéaktivačními událostmi triggeru, plánovaného nebo **bubnového okna** . Poslední testovací běh iniciované funkcí **ladění** můžete zobrazit v okně **výstup** plátna kanálu.
+Testovací běhy iniciované funkcí **ladění** nejsou k dispozici v seznamu na kartě **monitorování** . Na kartě **monitorování** můžete zobrazit jenom běhy aktivované aktivačními **událostmi**triggeru, **plánovaného**nebo **bubnového okna** . Poslední testovací běh iniciované funkcí **ladění** můžete zobrazit v okně **výstup** plátna kanálu.
 
 ## <a name="setting-breakpoints-for-debugging"></a>Nastavení zarážek pro ladění
 

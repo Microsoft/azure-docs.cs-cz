@@ -1,7 +1,7 @@
 ---
 title: Vytvoření modelu tenanta (Preview) – služba Speech
 titleSuffix: Azure Cognitive Services
-description: Automaticky vygenerujte vlastní model řeči, který využívá data Office 365 k zajištění optimálního rozpoznávání řeči pro konkrétní podnikové výrazy, které jsou bezpečné a kompatibilní.
+description: Automaticky vygenerujte model tenanta (Custom Speech s daty sady Office 365), který využívá data sady Office 365 k zajištění optimálního rozpoznávání řeči pro podnikové výrazy, které jsou bezpečné a kompatibilní.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: 85b9291ee24c024ebc8ce81ddba46d04f7744081
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: c8a2855ce9cd320be3aea8b3b4a05f3b3eb39976
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502657"
+ms.locfileid: "73578219"
 ---
 # <a name="create-a-tenant-model-preview"></a>Vytvoření modelu tenanta (Preview)
 
-Model tenanta je služba pro zákazníky Office 365 Enterprise, která automaticky generuje vlastní model rozpoznávání řeči z Office 365 dat vaší organizace. Model, který je vytvořen, je optimalizován pro technické výrazy, názvy žargonu a lidí, a to vše bezpečným a kompatibilním způsobem.
+Model tenanta (Custom Speech s daty Office 365) je služba pro zákazníky Office 365 Enterprise, která automaticky generuje vlastní model rozpoznávání řeči z Office 365ch dat vaší organizace. Model, který je vytvořen, je optimalizován pro technické výrazy, názvy žargonu a lidí, a to vše bezpečným a kompatibilním způsobem.
 
 > [!IMPORTANT]
-> Pokud se vaše organizace zaregistruje s modelem tenanta, služba řeči může získat přístup k jazykovém modelu vaší organizace, který je generovaný prostředky Office 365, jako jsou e-maily a dokumenty. Správce Office 365 ve vaší organizaci může zapnout nebo vypnout používání jazykových modelů v rámci organizace pomocí portálu pro správu sady Office 365.
+> Pokud se vaše organizace zaregistruje s modelem tenanta, Služba rozpoznávání řeči může získat přístup k jazykovém modelu vaší organizace, který je vygenerovaný z e-mailů a dokumentů veřejných skupin Office 365, které může vidět kdokoli ve vaší organizaci. Správce Office 365 ve vaší organizaci může zapnout nebo vypnout používání jazykových modelů v rámci organizace pomocí portálu pro správu sady Office 365.
 
 V tomto kurzu se naučíte:
 
@@ -33,8 +33,6 @@ V tomto kurzu se naučíte:
 > * Nasazení modelu tenanta
 > * Použití modelu tenanta se sadou Speech SDK
 
-![Diagram modelu tenanta](media/tenant-language-model/tenant-language-model-diagram.png)
-
 ## <a name="enroll-using-the-microsoft-365-admin-center"></a>Registrace pomocí centra pro správu Microsoft 365
 
 Než budete moct nasadit model tenanta, nejdřív se musí zaregistrovat pomocí centra pro správu Microsoft 365. Tuto úlohu může dokončit jenom správce Microsoft 365.
@@ -42,11 +40,11 @@ Než budete moct nasadit model tenanta, nejdřív se musí zaregistrovat pomocí
 1. Přihlaste se k [centru pro správu Microsoft 365](https://admin.microsoft.com ).
 2. Na levém panelu vyberte **Nastavení** a pak **aplikace**.
 
-   ![Diagram modelu tenanta](media/tenant-language-model/tenant-language-model-enrollment.png)
+   ![Registrace modelu tenanta](media/tenant-language-model/tenant-language-model-enrollment.png)
 
 3. Vyhledejte a vyberte **Azure Speech Services**.
 
-   ![Diagram modelu tenanta](media/tenant-language-model/tenant-language-model-enrollment-2.png)
+   ![Registrace modelu tenanta 2](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
 4. Klikněte na zaškrtávací políčko a uložte.
 
@@ -63,7 +61,7 @@ Aby bylo možné používat model tenanta se sadou Speech SDK, budete potřebova
 5. Pokud chcete vytvořit prostředek, postupujte podle pokynů na obrazovce. Zjisti:
    * **Umístění** je nastaveno na hodnotu **eastus** nebo **westus**.
    * **Cenová úroveň** je nastavená na **S0**.
-6. Klikněte na **Vytvořit**.
+6. Klikněte na možnost **Vytvořit**.
 7. Po několika minutách se prostředek vytvoří. Klíč předplatného je k dispozici v části **Přehled** pro váš prostředek.
 
 ## <a name="create-a-model"></a>Vytvoření modelu
@@ -77,9 +75,10 @@ Až správce povolí model tenanta pro vaši organizaci, můžete vytvořit jazy
 
 3. V tomto okamžiku se zobrazí zpráva s informacemi o tom, jestli jste oprávněni vytvořit model tenanta.
    > [!NOTE]
-   > Zákazníci Office 365 Enterprise v Severní Amerika mají nárok na vytvoření modelu tenanta (anglicky). Pokud jste zákazníkem Customer Lockbox (CLB) nebo klíč zákazníka (CK), tato funkce není k dispozici. Pokud chcete zjistit, jestli jste zákazník Key Customer Lockbox nebo zákazníkem, postupujte podle těchto pokynů:
+   > Zákazníci Office 365 Enterprise v Severní Amerika mají nárok na vytvoření modelu tenanta (anglicky). Pokud se jedná o Customer Lockbox (CLB), klíč zákazníka (CK) nebo zákazníka Office 365, tato funkce není k dispozici. Pokud chcete zjistit, jestli jste zákazník Key Customer Lockbox nebo zákazníkem, postupujte podle těchto pokynů:
    > * [Customer Lockbox](https://docs.microsoft.com/office365/securitycompliance/controlling-your-data-using-customer-key#FastTrack)
    > * [Klíč zákazníka](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests)
+   > * [Vládní organizace pro Office 365](https://www.microsoft.com/microsoft-365/government)
 
 4. V dalším kroku vyberte možnost přihlásit **se**. Po přípravě modelu tenanta vám obdržíte e-mail s pokyny.
 

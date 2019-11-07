@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: e41a037e657a8d2b484a3fcb62eb3bc03f53682d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 62210bf480d09ce2a256a44b7554ac53aa06eb0c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507085"
+ms.locfileid: "73579707"
 ---
 # <a name="custom-commands-preview"></a>Vlastní příkazy (Preview)
 
 [Hlasové asistenti](voice-assistants.md) naslouchají uživatelům a probírají akci v reakci, často se domluví zpět. Používají [Převod řeči na text](speech-to-text.md) k přepisovat řeči uživatele a pak provádějí akci s použitím přirozeného jazyka pro porozumění textu. Tato akce často zahrnuje mluvený výstup z pomocníka generovaného [převodem textu na řeč](text-to-speech.md). Zařízení se připojují k asistentům pomocí objektu `DialogServiceConnector` sady Speech SDK.
 
-**Vlastní příkazy (Preview)** jsou zjednodušené řešení pro vytváření hlasového asistenta. Poskytuje jednotné prostředí pro vytváření, automatický hostující model a relativně nižší složitost oproti dalším možnostem vytváření pomocníka, jako je [přímý line Speech](direct-line-speech.md). Toto zjednodušení ale přináší omezení flexibility. Vlastní příkazy (Preview) jsou proto nejvhodnější pro dokončování úkolů nebo pro scénáře příkazů a řízení.
+**Vlastní příkazy (Preview)** jsou zjednodušené řešení pro vytváření hlasového asistenta. Poskytuje jednotné prostředí pro vytváření, automatický hostující model a relativně nižší složitost oproti dalším možnostem vytváření pomocníka, jako je [přímý line Speech](direct-line-speech.md). Toto zjednodušení ale přináší omezení flexibility. Vlastní příkazy (Preview) jsou proto nejvhodnější pro dokončování úkolů nebo pro scénáře příkazů a řízení. Je obzvláště vhodná pro Internet věcí (IoT) a bezobslužná zařízení.
 
 Pro komplexní interakci s konverzací a integraci s dalšími řešeními, jako je [řešení Virtual Assistant a podniková šablona](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) , doporučujeme používat přímý hlasový vstup.
 

@@ -1,5 +1,5 @@
 ---
-title: Správa zdrojového kódu v Azure Data Factory | Microsoft Docs
+title: Správa zdrojového kódu v Azure Data Factory
 description: Informace o tom, jak nakonfigurovat správu zdrojového kódu v Azure Data Factory
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: f3d443eed43cc1e131cd3dc47407ce2dfb023ce8
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 46c983fcf863c6948c6107b2213879c65396ed39
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326382"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684044"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Správa zdrojového kódu v Azure Data Factory
 
@@ -75,10 +75,10 @@ Podokno konfigurace zobrazuje následující Azure Repos nastavení úložiště
 |:--- |:--- |:--- |
 | **Typ úložiště** | Typ úložiště kódu Azure Repos.<br/> | Azure DevOps Git nebo GitHub |
 | **Azure Active Directory** | Název vašeho tenanta Azure AD. | `<your tenant name>` |
-| **Azure Repos organizace** | Název vaší Azure Repos organizace Název vaší Azure Repos organizace můžete najít na `https://{organization name}.visualstudio.com`. K vašemu [Azure Repos organizaci](https://www.visualstudio.com/team-services/git/) se můžete přihlásit, abyste měli přístup k profilu sady Visual Studio a viděli vaše úložiště a projekty. | `<your organization name>` |
-| **Názevprojektu** | Název projektu Azure Repos. Název projektu Azure Repos můžete najít na `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
+| **Azure Repos organizace** | Název vaší Azure Repos organizace Název vaší Azure Repos organizace můžete najít `https://{organization name}.visualstudio.com`. K vašemu [Azure Repos organizaci](https://www.visualstudio.com/team-services/git/) se můžete přihlásit, abyste měli přístup k profilu sady Visual Studio a viděli vaše úložiště a projekty. | `<your organization name>` |
+| **Názevprojektu** | Název projektu Azure Repos. Název projektu Azure Repos můžete najít `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
 | **Úložiště** | Váš Azure Repos název úložiště kódu. Azure Repos projekty obsahují úložiště Git pro správu zdrojového kódu při zvětšování projektu. Můžete vytvořit nové úložiště nebo použít existující úložiště, které už je v projektu. | `<your Azure Repos code repository name>` |
-| **Větev pro spolupráci** | Vaše větev Azure Repos spolupráci, která se používá k publikování. Ve výchozím nastavení má `master`. Toto nastavení změňte pro případ, že chcete publikovat prostředky z jiné větve. | `<your collaboration branch name>` |
+| **Větev pro spolupráci** | Vaše větev Azure Repos spolupráci, která se používá k publikování. Ve výchozím nastavení se jedná o `master`. Toto nastavení změňte pro případ, že chcete publikovat prostředky z jiné větve. | `<your collaboration branch name>` |
 | **Kořenová složka** | Kořenová složka ve větvi Azure Repos spolupráci. | `<your root folder name>` |
 | **Importovat stávající prostředky Data Factory do úložiště** | Určuje, jestli se mají importovat stávající prostředky služby Data Factory z **plátna pro vytváření** uživatelského rozhraní, do úložiště Git Azure Repos. Zaškrtněte políčko pro import prostředků datové továrny do přidruženého úložiště Git ve formátu JSON. Tato akce exportuje jednotlivé prostředky jednotlivě (tj. propojené služby a datové sady jsou exportovány do samostatných JSON). Pokud toto políčko není zaškrtnuté, existující prostředky se neimportují. | Vybráno (výchozí) |
 | **Vytvořit větev pro import prostředku** | Určuje, do které větve se importují prostředky služby Data Factory (kanály, datové sady, propojené služby atd.). Prostředky můžete importovat do jedné z následujících větví: a. Spolupráci b. Vytvořte novou c. Použít existující |  |
@@ -106,7 +106,7 @@ Další informace o připojení Azure Repos ke službě Active Directory vaší 
 
 ## <a name="author-with-github-integration"></a>Vytváření s integrací GitHubu
 
-Vytváření vizuálů pomocí integrace GitHubu podporuje správu zdrojového kódu a spolupráci pro práci na kanálech služby Data Factory. Datovou továrnu můžete přidružit k úložišti účtů GitHub pro správu zdrojového kódu, spolupráci, správu verzí. Jeden účet GitHub může mít několik úložišť, ale úložiště GitHubu je možné přidružit pouze k jednomu objektu pro vytváření dat. Pokud nemáte účet GitHub nebo úložiště, postupujte podle [těchto pokynů](https://github.com/join) To vytvořte své prostředky.
+Vytváření vizuálů pomocí integrace GitHubu podporuje správu zdrojového kódu a spolupráci pro práci na kanálech služby Data Factory. Datovou továrnu můžete přidružit k úložišti účtů GitHub pro správu zdrojového kódu, spolupráci, správu verzí. Jeden účet GitHub může mít několik úložišť, ale úložiště GitHubu je možné přidružit pouze k jednomu objektu pro vytváření dat. Pokud nemáte účet GitHub nebo úložiště, postupujte podle [těchto pokynů](https://github.com/join) vytvořte prostředky.
 
 Integrace GitHubu s Data Factory podporuje veřejné GitHub (tj. [https://github.com](https://github.com)) i GitHub Enterprise. Pokud máte oprávnění ke čtení a zápisu do úložiště v GitHubu, můžete použít veřejné i soukromé úložiště GitHub s Data Factory.
 
@@ -143,7 +143,7 @@ V podokně Konfigurace se zobrazí následující nastavení úložiště GitHub
 | **Typ úložiště** | Typ úložiště kódu Azure Repos. | GitHubu |
 | **Použití GitHubu Enterprise** | Zaškrtávací políčko pro výběr GitHubu Enterprise | nevybráno (výchozí) |
 | **Adresa URL GitHubu Enterprise** | Kořenová adresa URL webu GitHub Enterprise Například: https://github.mydomain.com. Požadováno jenom v případě, že je vybraná **možnost použít GitHub Enterprise** | `<your GitHub enterprise url>` |                                                           
-| **Účet GitHub** | Název vašeho účtu GitHubu. Tento název najdete v protokolu https: \//GitHub. com/{název účtu}/{repository}. Když přejdete na tuto stránku, zobrazí se výzva k zadání přihlašovacích údajů GitHubu OAuth do svého účtu GitHubu. | `<your GitHub account name>` |
+| **Účet GitHub** | Název vašeho účtu GitHubu. Tento název najdete v protokolu https:\//GitHub.com/{account Name}/{repository Name}. Když přejdete na tuto stránku, zobrazí se výzva k zadání přihlašovacích údajů GitHubu OAuth do svého účtu GitHubu. | `<your GitHub account name>` |
 | **Název úložiště**  | Název vašeho úložiště kódu GitHubu Účty GitHubu obsahují úložiště Git pro správu zdrojového kódu. Můžete vytvořit nové úložiště nebo použít existující úložiště, které už máte ve svém účtu. | `<your repository name>` |
 | **Větev pro spolupráci** | Vaše větev pro spolupráci GitHubu, která se používá k publikování. Ve výchozím nastavení se jedná o hlavní server. Toto nastavení změňte pro případ, že chcete publikovat prostředky z jiné větve. | `<your collaboration branch>` |
 | **Kořenová složka** | Kořenová složka ve větvi spolupráce na GitHubu. |`<your root folder name>` |
@@ -176,17 +176,17 @@ Systémy správy verzí (označované také jako _Správa zdrojového_kódu) umo
 
 ### <a name="creating-feature-branches"></a>Vytváření větví funkcí
 
-Každé Azure Repos úložiště Git, které je přidružené k datové továrně, má větev pro spolupráci. (`master` je výchozí větev pro spolupráci). Uživatelé můžou také vytvářet větve funkcí kliknutím na **+ Nová větev** v rozevíracím seznamu větev. Jakmile se zobrazí podokno nová větev, zadejte název vaší větve funkce.
+Každé Azure Repos úložiště Git, které je přidružené k datové továrně, má větev pro spolupráci. (`master` je výchozí branou pro spolupráci). Uživatelé můžou také vytvářet větve funkcí kliknutím na **+ Nová větev** v rozevíracím seznamu větev. Jakmile se zobrazí podokno nová větev, zadejte název vaší větve funkce.
 
 ![Vytvořit novou větev](media/author-visually/new-branch.png)
 
-Až budete připraveni sloučit změny z větve funkcí do vaší větve pro spolupráci, klikněte na rozevírací seznam větev a vyberte **vytvořit žádost o získání dat**. Tato akce vás provede Azure Repos Git, kde můžete vyvolávat žádosti o přijetí změn, provádět revize kódu a sloučit změny ve větvi pro spolupráci. (výchozí hodnota je `master`). Do služby Data Factory se povoluje pouze publikování z vaší větve pro spolupráci. 
+Až budete připraveni sloučit změny z větve funkcí do vaší větve pro spolupráci, klikněte na rozevírací seznam větev a vyberte **vytvořit žádost o získání dat**. Tato akce vás provede Azure Repos Git, kde můžete vyvolávat žádosti o přijetí změn, provádět revize kódu a sloučit změny ve větvi pro spolupráci. (výchozí nastavení je`master`). Do služby Data Factory se povoluje pouze publikování z vaší větve pro spolupráci. 
 
 ![Vytvořit novou žádost o získání dat](media/author-visually/create-pull-request.png)
 
 ### <a name="configure-publishing-settings"></a>Konfigurovat nastavení publikování
 
-Postup konfigurace větve publikovat – to znamená, že větev, ve které Správce prostředků šablony jsou uloženy – přidejte soubor `publish_config.json` do kořenové složky ve větvi pro spolupráci. Data Factory přečte tento soubor, vyhledá pole `publishBranch` a vytvoří novou větev (Pokud ještě neexistuje) s poskytnutou hodnotou. Pak uloží všechny šablony Správce prostředků do zadaného umístění. Například:
+Postup konfigurace větve publikovat – to znamená, že větev, ve které Správce prostředků šablony jsou uloženy – přidejte `publish_config.json` soubor do kořenové složky ve větvi pro spolupráci. Data Factory přečte tento soubor, vyhledá pole `publishBranch`a vytvoří novou větev (Pokud ještě neexistuje) s poskytnutou hodnotou. Pak uloží všechny šablony Správce prostředků do zadaného umístění. Příklad:
 
 ```json
 {
@@ -197,11 +197,11 @@ Postup konfigurace větve publikovat – to znamená, že větev, ve které Spr�
 Když zadáte novou větev publikování, Data Factory neodstraní předchozí větev publikování. Pokud chcete vzdálené publikování předchozí větve, odstraňte ji ručně.
 
 > [!NOTE]
-> Data Factory při načtení objektu pro vytváření načte soubor `publish_config.json`. Pokud už máte v portálu načtenou továrnu, aktualizujte prohlížeč, aby se změny projevily.
+> Data Factory přečte soubor `publish_config.json` pouze při načtení objektu pro vytváření. Pokud už máte v portálu načtenou továrnu, aktualizujte prohlížeč, aby se změny projevily.
 
 ### <a name="publish-code-changes"></a>Publikování změn kódu
 
-Poté, co jste sloučili změny do větve spolupráce (výchozí nastavení je `master`), klikněte na **publikovat** a ručně publikujte změny kódu v hlavní větvi do služby Data Factory.
+Po sloučení změn do větve pro spolupráci (`master` výchozí nastavení) klikněte na **publikovat** , aby se změny kódu v hlavní větvi publikovaly ručně do služby Data Factory.
 
 ![Publikování změn ve službě Data Factory](media/author-visually/publish-changes.png)
 
@@ -251,7 +251,7 @@ Pokud větev publikování není synchronizovaná s hlavní větví a obsahuje z
 1. Odstranit všechny prostředky z vaší větve pro spolupráci
 1. Vytvoření žádosti o přijetí změn, která sloučí změny do větve pro spolupráci 
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 Vyberte **zpětnou vazbu** pro komentář k funkcím nebo upozorněte společnost Microsoft na problémy s nástrojem:
 
 ![Váš názor](media/author-visually/provide-feedback.png)

@@ -13,12 +13,12 @@ ms.date: 10/30/2019
 ms.author: lizross
 ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d2adb5552a417331ea315b0ed265e35f48ec660
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 3d5e154fb34d66b505989131f091fbac29458c92
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73178106"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573820"
 ---
 # <a name="what-is-the-my-apps-preview-portal"></a>Co je to portál moje aplikace (Preview)?
 
@@ -41,8 +41,8 @@ Podrobné informace a pokyny, co je k dispozici na portálu **Moje aplikace** , 
 
 ## <a name="related-articles"></a>Související články
 
-- [Aktualizujte informace o profilu a účtu](myprofile-portal-overview.md). Pokyny, jak aktualizovat osobní údaje, které se zobrazí na portálu **můj profil** (Preview).
+- [Aktualizujte informace o profilu a účtu](my-account-portal-overview.md). Pokyny, jak aktualizovat osobní údaje, které se zobrazí na portálu **můj profil** (Preview).
 
-- [Spravujte své organizace](myprofile-portal-organizations-page.md). Pokyny, jak zobrazit a spravovat informace týkající se vaší organizace, najdete na stránce **organizace** na portálu **můj profil** .
+- [Spravujte své organizace](my-account-portal-organizations-page.md). Pokyny, jak zobrazit a spravovat informace týkající se vaší organizace, najdete na stránce **organizace** na portálu **můj profil** .
 
-- [Spravujte připojená zařízení](myprofile-portal-devices-page.md). Pokyny, jak spravovat zařízení, ke kterým jste se připojili pomocí svého pracovního nebo školního účtu, najdete na stránce **zařízení** na portálu **můj profil** .
+- [Spravujte připojená zařízení](my-account-portal-devices-page.md). Pokyny, jak spravovat zařízení, ke kterým jste se připojili pomocí svého pracovního nebo školního účtu, najdete na stránce **zařízení** na portálu **můj profil** .

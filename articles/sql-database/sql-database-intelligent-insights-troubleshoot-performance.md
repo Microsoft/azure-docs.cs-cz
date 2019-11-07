@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s výkonem Azure SQL Database Intelligent Insights | Microsoft Docs
+title: Řešení potíží s výkonem Azure SQL Database s využitím Intelligent Insights
 description: Intelligent Insights pomáhá řešit problémy s výkonem Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,19 +11,19 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: f884b39db92f44f7cff938e0ac4b9c2e22dc36cb
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: fef1ed386dbf3acccc09b9bba743b6b33492da0e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262193"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689714"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Řešení potíží s výkonem Azure SQL Database s využitím Intelligent Insights
 
 Tato stránka poskytuje informace o potížích s výkonem Azure SQL Database a spravované instance zjištěné prostřednictvím protokolu [Intelligent Insights](sql-database-intelligent-insights.md) databáze pro diagnostiku výkonu. Telemetrii protokolů diagnostiky se dá streamovat do [Azure monitor protokolů](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)nebo řešení třetí strany pro vlastní funkce upozorňování a vytváření sestav DevOps.
 
 > [!NOTE]
-> Rychlý SQL Database průvodce řešením potíží s výkonem pomocí Intelligent Insights najdete v tématu doporučený vývojový diagram [postupu řešení potíží](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) v tomto dokumentu.
+> Rychlý SQL Database průvodce řešením potíží s výkonem pomocí Intelligent Insights najdete v tématu [doporučený vývojový diagram postupu řešení potíží](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) v tomto dokumentu.
 >
 
 ## <a name="detectable-database-performance-patterns"></a>Zjistitelné vzorce výkonu databáze
@@ -108,9 +108,9 @@ Můžete optimalizovat nebo odebrat dotazy týkající se úředníků s nejvyš
 
 Můžete také snížit zatížení tím, že ho optimalizujete nebo distribuujete přes více databází. Nebo můžete distribuovat úlohy mezi více databázemi. Pokud tato řešení nejsou možná, zvažte zvýšení cenové úrovně předplatného služby SQL Database, aby se zvýšila velikost paměťových prostředků, které jsou k dispozici pro databázi.
 
-Další návrhy k odstraňování potíží najdete [v tématu paměť uděluje Meditation: Záhadnými SQL Server příjemce paměti s mnoha názvy](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
+Další návrhy pro řešení potíží najdete v tématu [paměť udělující Meditation: příjemce záhadnými SQL Server paměti s mnoha názvy](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
 
-## <a name="locking"></a>Uzamykání
+## <a name="locking"></a>Zamknut
 
 ### <a name="what-is-happening"></a>Co se děje
 
@@ -226,7 +226,7 @@ Tento zjistitelný vzor výkonu indikuje stav výkonu databáze, ve kterém exis
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Diagnostické protokoly mají výstupy podrobností o kolize obsahu tempDB. Tyto informace můžete použít jako výchozí bod pro řešení potíží. Existují dva věci, kterými můžete zmírnit tento druh sporu a zvýšit propustnost celkového zatížení: Dočasné tabulky můžete přestat používat. Můžete také použít paměťově optimalizované tabulky. 
+Diagnostické protokoly mají výstupy podrobností o kolize obsahu tempDB. Tyto informace můžete použít jako výchozí bod pro řešení potíží. Existují dvě věci, které můžete využít k zmírnění tohoto typu sporů a zvýšení propustnosti celkové zátěže: dočasné tabulky můžete přestat používat. Můžete také použít paměťově optimalizované tabulky. 
 
 Další informace najdete v tématu [Úvod do paměťově optimalizovaných tabulek](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables). 
 
@@ -254,7 +254,7 @@ Tento zjistitelný vzor výkonu označuje podmínku, ve které SQL Database vyu�
 
 SQL Database určuje plán spouštění dotazů s nejnižšími náklady na provedení dotazu. Jak se mění typ dotazů a úloh, někdy stávající plány již nejsou efektivní nebo možná SQL Database nevedly k dobrému posouzení. V důsledku opravy se dají plány spouštění dotazů ručně vynutit.
 
-Tento zjistitelný vzor výkonu kombinuje tři různé případy regrese: nový plán regrese, regresní regrese a stávající plány změnily zatížení. Konkrétní typ regresní regrese, ke kterému došlo, je k dispozici ve vlastnosti details v diagnostickém protokolu.
+Tento zjistitelný vzor výkonu kombinuje tři různé případy regrese: nový plán regrese, regresní regrese a stávající plány změnily zatížení. Konkrétní typ regresní regrese, ke kterému došlo, je k dispozici ve vlastnosti *Details* v diagnostickém protokolu.
 
 Podmínka nová regresní regrese odkazuje na stav, ve kterém SQL Database spustí spuštění nového plánu provádění dotazů, který není tak efektivní jako původní plán. Podmínka regrese starého plánu odkazuje na stav, když SQL Database přepne z použití nového a efektivnějšího plánu na starý plán, který není tak efektivní jako nový plán. Stávající plány změnily regresní úlohy, které se týkají stavu, ve kterém se stará a nové plány průběžně střídavě vztahují k tomuto zůstatmu plánu.
 
@@ -320,7 +320,7 @@ Pokud jste snížili vaši cenovou úroveň, a proto DTU k dispozici pro SQL Dat
 
 Přejděte na Azure SQL Analytics, abyste měli přístup Intelligent Insights přes Azure Portal. Pokuste se najít výstrahu příchozího výkonu a vyberte ji. Určete, co se děje na stránce detekce. Sledujte poskytnutou analýzu původní příčiny problému, text dotazu, trendy času dotazů a vývoj incidentů. Pokuste se problém vyřešit pomocí Intelligent Insights doporučení pro zmírnění potíží s výkonem. 
 
-[![Řešení potíží s tokem grafu](./media/sql-database-intelligent-insights/intelligent-insights-troubleshooting-flowchart.png)](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/intelligent-insight/Troubleshoot%20Azure%20SQL%20Database%20performance%20issues%20using%20Intelligent%20Insight.pdf)
+[![vývojový diagram řešení potíží](./media/sql-database-intelligent-insights/intelligent-insights-troubleshooting-flowchart.png)](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/intelligent-insight/Troubleshoot%20Azure%20SQL%20Database%20performance%20issues%20using%20Intelligent%20Insight.pdf)
 
 > [!TIP]
 > Vyberte vývojový diagram, ve kterém chcete stáhnout verzi PDF.

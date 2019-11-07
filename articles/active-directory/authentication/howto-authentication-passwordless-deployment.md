@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5aab9d8c2b7993598c602ae6b730baff06d807e1
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 9b6f07e1dd8e9252d2b6e00b85a47ba2e19f8bd8
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73151629"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603458"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Dokončení nasazení ověřování pomocí hesla
 
@@ -67,7 +67,7 @@ Metody ověřování s neheslem od Microsoftu umožňují různé scénáře. Po
 
 **Registrace zařízení** : Pokud chcete používat ověřovací aplikaci pro ověřování bez hesla, musí být zařízení zaregistrované v TENANTOVI Azure AD a nemůže být sdíleným zařízením. Zařízení se dá zaregistrovat jenom v jednom tenantovi. Tento limit znamená, že pro přihlášení telefonem pomocí ověřovací aplikace se podporuje jenom jeden pracovní nebo školní účet.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Organizace musí před zahájením nasazení s neplatným heslem splňovat následující požadavky.
 
@@ -110,15 +110,6 @@ Povolení přihlášení Windows 10 pomocí klíčů zabezpečení FIDO2 vyžadu
    - Pokud není nasazení Intune možné, musí správci nasadit balíček do každého počítače, aby se povolily funkce poskytovatele přihlašovacích údajů. Instalaci balíčku lze provést pomocí jedné z následujících možností:
       - Zásady skupiny nebo System Center Configuration Manager (SCCM)
       - Místní instalace na počítači s Windows 10
-- [Povolení poskytovatele pověření pomocí Zásady skupiny](howto-authentication-passwordless-security-key-windows.md#enable-with-group-policy)
-   - Podporuje se jenom pro zařízení připojená k hybridní službě Azure AD.
-
-#### <a name="enable-on-premises-integration"></a>Povolit místní integraci
-
-Pokud chcete povolit přístup k místním prostředkům, postupujte podle kroků v článku [Povolení přihlašování k místním prostředkům (Preview) pomocí klíče zabezpečení s nezabezpečenými hesly](howto-authentication-passwordless-security-key-on-premises.md) .
-
-> [!IMPORTANT]
-> Tyto kroky je potřeba provést taky pro všechna zařízení připojená k hybridní službě Azure AD, která využívají klíče zabezpečení FIDO2 pro přihlášení Windows 10.
 
 ### <a name="register-security-keys"></a>Registrovat klíče zabezpečení
 
@@ -163,7 +154,7 @@ Vaše sdělení koncovým uživatelům budou muset zahrnovat:
 - [Registrace v aplikaci Microsoft Authenticator](howto-authentication-passwordless-phone.md)
 - [Přihlášení pomocí telefonu](../user-help/user-help-auth-app-sign-in.md)
 
-Společnost Microsoft poskytuje [šablony](https://aka.ms/mfatemplates)komunikace MFA, [šablony komunikace](https://www.microsoft.com/download/details.aspx?id=56768)samoobslužného resetování hesla (SSPR) a [dokumentaci pro koncové uživatele](../user-help/security-info-setup-signin.md) , které vám pomůžou s konceptem komunikace. Můžete odeslat uživatele [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) k registraci přímo tak, že vyberete odkazy na informace o zabezpečení na této stránce.
+Společnost Microsoft poskytuje [šablony](https://aka.ms/mfatemplates)komunikace MFA, [šablony komunikace](https://www.microsoft.com/download/details.aspx?id=56768)samoobslužného resetování hesla (SSPR) a [dokumentaci pro koncové uživatele](../user-help/security-info-setup-signin.md) , které vám pomůžou s konceptem komunikace. Uživatelům můžete odeslat [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) k registraci přímo tak, že vyberete odkazy na informace o zabezpečení na této stránce.
 
 ### <a name="testing-passwordless"></a>Testování bezheslem
 
@@ -285,7 +276,7 @@ Postupujte podle kroků v článku a [Povolte přihlášení klíče zabezpečen
 | **Chybová zpráva**: zjistili jsme, že tento prohlížeč nebo operační systém nepodporuje klíče zabezpečení FIDO2. | FIDO2á zařízení zabezpečení bez hesla se dají registrovat jenom v podporovaných prohlížečích (Microsoft Edge, Firefox verze 67) ve Windows 10 verze 1809 nebo novější. |
 | **Chybová zpráva**: vaše firemní zásady vyžadují, abyste se přihlásili pomocí jiné metody. | V tenantovi nemusíte mít povolené klíče zabezpečení. |
 | Uživatel nemůže spravovat můj klíč zabezpečení ve Windows 10 verze 1809. | Verze 1809 vyžaduje, abyste používali software pro správu klíčů zabezpečení, který poskytuje dodavatel FIDO2 Key. Pro podporu se obraťte na dodavatele. |
-| Myslím, že můj klíč zabezpečení FIDO2 může být vadný – jak ho můžu otestovat | Přejděte na [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/), zadejte přihlašovací údaje k testovacímu účtu, připojte se k podezřelému bezpečnostnímu klíči, klikněte na tlačítko "+" v pravém horním rohu obrazovky, klikněte na tlačítko vytvořit a Projděte si proces vytváření. Pokud se tento scénář nepovede, může být zařízení vadné. |
+| Myslím, že můj klíč zabezpečení FIDO2 může být vadný – jak ho můžu otestovat | Přejděte na [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/), zadejte přihlašovací údaje k testovacímu účtu, zapojte podezřelý bezpečnostní klíč, klikněte na tlačítko "+" v pravém horním rohu obrazovky, klikněte na tlačítko vytvořit a Projděte si proces vytváření. Pokud se tento scénář nepovede, může být zařízení vadné. |
 
 ## <a name="next-steps"></a>Další kroky
 

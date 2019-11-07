@@ -1,24 +1,24 @@
 ---
-title: Rychlý start – konfigurace brány firewall pro server služby Analysis Services v Azure | Microsoft Docs
-description: Přečtěte si, jak v Azure nakonfigurovat firewall pro instanci serveru služby Analysis Services.
+title: Rychlý Start – konfigurace brány firewall serveru Azure Analysis Services | Microsoft Docs
+description: Tento rychlý Start vám pomůže nakonfigurovat bránu firewall pro Azure Analysis Services Server pomocí Azure Portal.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 07/02/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c3c8de80f90fe203029b38171502e3d4a9b9dd46
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 8a1f774aae071a561bdda2d8c349861d640cb287
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298526"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572475"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Rychlý start: Konfigurace brány firewall serveru – portál
 
 V tomto rychlém startu se dozvíte, jak nakonfigurovat firewall pro server služby Azure Analysis Services. Důležitou součástí zabezpečení serveru a jeho dat je zapnutí brány firewall a konfigurace rozsahů IP adres pro počítače, které mají přístup k serveru.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Server služby Analysis Services v předplatném. Další informace najdete v článku [Rychlý start: Vytvoření serveru – portál](analysis-services-create-server.md) nebo v článku [Rychlý start: Vytvoření serveru – PowerShell](analysis-services-create-powershell.md).
 - Jeden nebo více rozsahů IP adres pro klientské počítače (pokud jsou potřeba).

@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: 536f3ab506dcbe2b8997f2c1870f25244b6c070f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: eddfddc994482bcb6e60604703e7f306fee9c32b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489682"
+ms.locfileid: "73574330"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Detekce posunu dat (Preview) na modelech nasazených do služby Azure Kubernetes Service (AKS)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -43,7 +43,7 @@ Pomocí Azure Machine Learning můžete sledovat vstupy modelu nasazeného na AK
 
 Pomocí Azure Machine Learning jsou data unášená pomocí datových sad nebo nasazení. Chcete-li monitorovat pro posun dat, je určena datová sada, která je obvykle datovou sadou pro model. Druhá datová sada – obvykle modelují vstupní data shromážděná z nasazení – jsou testována proti základní datové sadě. Obě datové sady jsou profilované a vstupní služba pro sledování datového posunu dat. Model strojového učení je vyškolen k detekci rozdílů mezi dvěma datovými sadami. Výkon modelu se převede na koeficient posunu, který měří velikost posunu mezi dvěma datovými sadami. Pomocí [Interpretace modelu](how-to-machine-learning-interpretability.md)jsou vypočítány funkce, které přispívají k součiniteli posunu. Z profilu datové sady jsou sledovány statistické informace o jednotlivých funkcích. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ho ještě nemáte, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
@@ -161,14 +161,13 @@ datadrift.disable_schedule()
 
 Konfigurace detektoru pro přenos dat se dá zobrazit v části **modely** na kartě **Podrobnosti** ve vašem pracovním prostoru na [Azure Machine Learning Studiu](https://ml.azure.com).
 
-![Posun dat Azure Machine Learning studia](media/how-to-monitor-data-drift/drift-config.png)
+[Posun dat ![Azure Machine Learning Studio](media/how-to-monitor-data-drift/drift-config.png)](media/how-to-monitor-data-drift/drift-config-expanded.png)
 
 ## <a name="view-results-in-your-azure-machine-learning-studio"></a>Zobrazení výsledků v Azure Machine Learning Studiu
 
 Pokud chcete zobrazit výsledky v pracovním prostoru v [Azure Machine Learning Studiu](https://ml.azure.com), přejděte na stránku modelu. Na kartě Podrobnosti modelu se zobrazí konfigurace posunování dat. Teď je dostupná karta pro **Posun dat** , která vizualizuje metriky posunu dat. 
 
 [Posun dat ![Azure Machine Learning Studio](media/how-to-monitor-data-drift/drift-ui.png)](media/how-to-monitor-data-drift/drift-ui-expanded.png)
-
 
 ## <a name="receiving-drift-alerts"></a>Přijímání upozornění na posun
 

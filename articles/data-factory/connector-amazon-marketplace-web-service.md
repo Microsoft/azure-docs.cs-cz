@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat z webové služby Amazon Marketplace pomocí Azure Data Factory | Microsoft Docs
+title: Kopírování dat z webové služby Amazon Marketplace pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z webové služby Amazon Marketplace do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: jingwang
-ms.openlocfilehash: cddb8eaf546760ad9d983c429424144ff131de11
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 8613b52ff8d04b578342a34fe24d6e9e12a8a98c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931197"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681415"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Kopírování dat z webové služby Amazon Marketplace pomocí Azure Data Factory
 
@@ -91,7 +91,7 @@ Pokud chcete kopírovat data z webové služby Amazon Marketplace, nastavte vlas
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type datové sady musí být nastavená na: **AmazonMWSObject** . | Ano |
-| tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
+| tableName | Název tabulky | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad**
 

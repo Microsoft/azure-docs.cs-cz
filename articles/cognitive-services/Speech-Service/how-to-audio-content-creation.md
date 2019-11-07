@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/26/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 8e3a76abe840a70ba7410855cde1d82ec96c28eb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6ec98d1f7956ef1460909f62384a931400b596c4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506953"
+ms.locfileid: "73579634"
 ---
 # <a name="audio-content-creation"></a>Vytvoření zvukového obsahu
 
@@ -43,7 +43,7 @@ Tento diagram znázorňuje kroky potřebné k vyladění a exportu přizpůsoben
 
 Pomocí těchto kroků vytvořte prostředek pro rozpoznávání řeči a připojte ho ke službě Speech Studio.
 
-1. Podle těchto pokynů si můžete [zaregistrovat účet Azure a vytvořit prostředek pro rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Ujistěte se, že vaše cenová úroveň je nastavená na **S0**. Pokud používáte některý z hlasů neuronové, ujistěte se, že jste vytvořili prostředek v [podporované oblasti](regions.md#standard-and-neural-voices).
+1. Podle těchto pokynů si můžete [zaregistrovat účet Azure](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account) a [vytvořit prostředek pro rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Ujistěte se, že vaše cenová úroveň je nastavená na **S0**. Pokud používáte některý z hlasů neuronové, ujistěte se, že jste vytvořili prostředek v [podporované oblasti](regions.md#standard-and-neural-voices).
 2. Přihlaste se k [vytváření zvukového obsahu](https://aka.ms/audiocontentcreation).
 3. Vyberte existující projekt nebo klikněte na **vytvořit nový**.
 4. Předplatné můžete kdykoli upravit pomocí možnosti **Nastavení** , která se nachází v horním navigačním panelu.
@@ -104,7 +104,7 @@ Po kontrole zvukového výstupu a splnění jeho optimalizace a úprav můžete 
 | buď | RIFF-16khz-16bitový-mono-PCM | RIFF-24khz-16bitový-mono-PCM |
 | MP3 | Audio-16khz-128kbitrate-mono-MP3 | Audio-24khz-160kbitrate-mono-MP3 |
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 * [Rozhraní API pro dlouhé zvukové zařízení](https://aka.ms/long-audio-api)
 

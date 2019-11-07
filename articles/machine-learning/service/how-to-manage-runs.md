@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 525fc8beafbdbe15435c59697d136ae06c91c135
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 32b477a108649abd3faedd70d1a3b54b31089b9a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489702"
+ms.locfileid: "73574310"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Spuštění, monitorování a zrušení školicích běhů v Pythonu
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,7 @@ Tento článek ukazuje příklady následujících úloh:
 * Vytvoření podřízených spuštění.
 * Označení a hledání spuštění.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat následující položky:
 
@@ -86,7 +86,7 @@ Pro spuštění experimentu použijte následující postup:
     az ml folder attach -w myworkspace -g myresourcegroup
     ```
 
-    Tento příkaz vytvoří podadresář `.azureml`, který obsahuje příklady souborů prostředí RunConfig a conda. Obsahuje taky soubor `config.json`, který se používá ke komunikaci s pracovním prostorem Azure Machine Learning.
+    Tento příkaz vytvoří podadresář `.azureml`, který obsahuje příklady souborů prostředí RunConfig a conda. Obsahuje taky `config.json` soubor, který se používá ke komunikaci s pracovním prostorem Azure Machine Learning.
 
     Další informace najdete v tématu [AZ ml složka připojit](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
 
@@ -121,14 +121,14 @@ Chcete-li získat ID spuštění, dobu provádění a další podrobnosti o spu�
 print(notebook_run.get_details())
 ```
 
-Po úspěšném dokončení běhu použijte metodu [`complete()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-) k označení jako dokončenou.
+Po úspěšném spuštění použijte metodu [`complete()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-) a označte ji jako dokončenou.
 
 ```python
 notebook_run.complete()
 print(notebook_run.get_status())
 ```
 
-Pokud použijete vzor návrhu `with...as` Pythonu, spustí se při nedostatku rozsahu automaticky sám sebe jako dokončené. Nemusíte ručně označit rutinu Run jako dokončenou.
+Pokud používáte model návrhu `with...as` Pythonu, spustí se při nedostatku rozsahu, který se po skončení běhu automaticky označí jako dokončené. Nemusíte ručně označit rutinu Run jako dokončenou.
 
 ```python
 with exp.start_logging() as notebook_run:
@@ -140,7 +140,7 @@ print(notebook_run.get_status())
 
 ### <a name="using-the-cli"></a>Použití rozhraní příkazového řádku
 
-1. Chcete-li zobrazit seznam spuštění experimentu, použijte následující příkaz. Nahraďte `experiment` názvem vašeho experimentu:
+1. Chcete-li zobrazit seznam spuštění experimentu, použijte následující příkaz. Nahraďte `experiment` názvem experimentu:
 
     ```azurecli-interactive
     az ml run list --experiment-name experiment
@@ -150,7 +150,7 @@ print(notebook_run.get_status())
 
     Další informace najdete v tématu [AZ ml experiment list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/experiment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list).
 
-2. Chcete-li zobrazit informace o konkrétním spuštění, použijte následující příkaz. Nahraďte `runid` číslem ID běhu:
+2. Chcete-li zobrazit informace o konkrétním spuštění, použijte následující příkaz. Nahraďte `runid` IDENTIFIKÁTORem běhu:
 
     ```azurecli-interactive
     az ml run show -r runid
@@ -246,7 +246,7 @@ child_run.parent.id
 
 ### <a name="query-child-runs"></a>Dotaz na podřízená spuštění
 
-Chcete-li zadat dotaz na podřízená spuštění konkrétního nadřazeného objektu, použijte metodu [`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) . Argument ``recursive = True`` umožňuje dotazovat se na vnořenou stromovou strukturu podřízených objektů a podřízené.
+Chcete-li zadat dotaz na podřízená spuštění konkrétního nadřazeného objektu, použijte metodu [`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) . Argument ``recursive = True`` slouží k dotazování vnořené stromové struktury podřízených a podřízené.
 
 ```python
 print(parent_run.get_children())
@@ -267,7 +267,7 @@ local_script_run.add_properties({"author":"azureml-user"})
 print(local_script_run.get_properties())
 ```
 
-Vlastnosti jsou neměnné, takže vytvoří trvalý záznam pro účely auditování. Následující příklad kódu má za následek chybu, protože jsme již do předchozího kódu přidali `"azureml-user"` jako hodnotu vlastnosti `"author"`:
+Vlastnosti jsou neměnné, takže vytvoří trvalý záznam pro účely auditování. Následující příklad kódu má za následek chybu, protože jsme již přidali `"azureml-user"` jako hodnotu vlastnosti `"author"` v předchozím kódu:
 
 ```Python
 try:
@@ -276,7 +276,7 @@ except Exception as e:
     print(e)
 ```
 
-Na rozdíl od vlastností jsou značky proměnlivé. Chcete-li přidat prohledávatelné a smysluplné informace pro uživatele experimentu, použijte metodu [`tag()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#tag-key--value-none-) .
+Na rozdíl od vlastností jsou značky proměnlivé. K přidání prohledávatelných a smysluplných informací pro uživatele experimentu použijte metodu [`tag()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#tag-key--value-none-) .
 
 ```Python
 local_script_run.tag("quality", "great run")
@@ -286,7 +286,7 @@ local_script_run.tag("quality", "fantastic run")
 print(local_script_run.get_tags())
 ```
 
-Můžete také přidat jednoduché řetězcové značky. Když se tyto značky objeví ve slovníku značek jako klíče, mají hodnotu `None`.
+Můžete také přidat jednoduché řetězcové značky. Když se tyto značky zobrazí ve slovníku značek jako klíče, mají hodnotu `None`.
 
 ```Python
 local_script_run.tag("worth another look")
@@ -343,3 +343,4 @@ Následující poznámkové bloky ukazují koncepty v tomto článku:
 ## <a name="next-steps"></a>Další kroky
 
 * Informace o tom, jak zaznamenat metriky pro vaše experimenty, najdete v tématu [metriky protokolu během školicích běhů](how-to-track-experiments.md).
+* Informace o tom, jak monitorovat prostředky a protokoly z Azure Machine Learning, najdete v tématu [monitorování Azure Machine Learning](monitor-azure-machine-learning.md).

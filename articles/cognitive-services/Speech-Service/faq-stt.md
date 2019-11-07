@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: 1f934bc5627331cc92ad3f497f1f7e4e0e5526cd
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 3b957181015cba06eb361272ca1004ba3e7a7008
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595337"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579687"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Časté otázky týkající se řeči na text
 
@@ -175,6 +175,18 @@ Odpověď **: závisí**na tom, jak se liší slovní a slovní fráze používa
 **Otázka: mohu nahrát jenom seznam slov?**
 
 Odpověď: nahráním seznamu slov budou do slovníku přidána slova, ale nezpůsobí systém, jak jsou slova obvykle používána. Poskytnutím úplných nebo částečných projevy (vět nebo frází věcí, které uživatelé nejspíš říkají), se může jazykový model naučit nová slova a jejich použití. Vlastní jazykový model je dobrý, nejen pro přidávání nových slov do systému, ale také pro úpravu pravděpodobnosti známých slov pro vaši aplikaci. Poskytování úplných projevy pomáhá lépe se seznámit se systémem. 
+
+## <a name="tenant-model-custom-speech-with-office-365-data"></a>Model tenanta (Custom Speech s daty sady Office 365)
+
+**Otázka: Jaké informace jsou součástí modelu tenanta a jak se vytvoří?**
+
+**A:** Model tenanta se sestavuje pomocí e-mailů a dokumentů [veřejných skupin](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) , které může kdokoli ve vaší organizaci vidět. 
+ 
+**Otázka: Jaké prostředí pro rozpoznávání řeči vylepšuje model tenanta?**
+
+**A:** Když je model tenanta povolený, vytvořený a publikovaný, používá se ke zlepšení rozpoznávání pro všechny podnikové aplikace vytvořené pomocí služby Speech. Tím se také předají token AAD uživatele, který indikuje členství v podniku. 
+ 
+Prostředí pro rozpoznávání řeči, která jsou integrovaná do Office 365, jako je například popis diktování a aplikace PowerPoint, se při vytváření modelu tenanta pro aplikace služby Speech nemění.
 
 ## <a name="next-steps"></a>Další kroky
 

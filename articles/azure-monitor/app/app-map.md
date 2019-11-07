@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 49efad50b988da263a715c1aba9d53ad4b4a7121
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 65a257cc4613fb9e4dece09a2544de2e78779ab4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678388"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73577066"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: třídění distribuovaných aplikací
 
@@ -180,13 +180,22 @@ appInsights.defaultClient.addTelemetryProcessor(envelope => {
 
 ### <a name="java"></a>Java
 
+Počínaje Application Insights Java SDK 2.5.0 můžete zadat název cloudové role přidáním `<RoleName>` do souboru `ApplicationInsights.xml`, např.
+
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+   <RoleName>** Your role name **</RoleName>
+   ...
+</ApplicationInsights>
+```
+
 Pokud používáte jarní spouštění s Application Insightsm Starter Boot Starter, jediná požadovaná změna je nastavení vlastního názvu aplikace v souboru Application. Properties.
 
 `spring.application.name=<name-of-app>`
 
 Jaře Boot Starter automaticky přiřadí název cloudové role k hodnotě, kterou zadáte do vlastnosti spring.application.name.
-
-Další informace o korelaci Java a o tom, jak nakonfigurovat název cloudové role pro aplikace, které nejsou SpringBoot, jsou v této [části](https://docs.microsoft.com/azure/application-insights/application-insights-correlation#role-name) u korelace.
 
 ### <a name="clientbrowser-side-javascript"></a>JavaScript na straně klienta nebo prohlížeče
 
@@ -205,7 +214,7 @@ Vzhledem k tomu, jak si představit **název cloudové role**, může být užit
 
 ![Snímek obrazovky s mapou aplikace](media/app-map/cloud-rolename.png)
 
-V mapě aplikace nad každým názvem v zelených polích jsou hodnoty názvu cloudové role pro různé aspekty této konkrétní distribuované aplikace. Takže pro tuto aplikaci se tyto role skládají z: `Authentication`, `acmefrontend`, `Inventory Management` a `Payment Processing Worker Role`. 
+V mapě aplikace nad každým názvem v zelených polích jsou hodnoty názvu cloudové role pro různé aspekty této konkrétní distribuované aplikace. Takže pro tuto aplikaci se tyto role skládají z: `Authentication`, `acmefrontend`, `Inventory Management`a `Payment Processing Worker Role`. 
 
 V případě této aplikace všechny názvy cloudových rolí také představují jiný jedinečný Application Insights prostředek s vlastními klíči instrumentace. Vzhledem k tomu, že vlastník této aplikace má přístup ke každému z těchto čtyř různorodých Application Insightsch prostředků, může mapa aplikace spojovat mapu základních vztahů.
 

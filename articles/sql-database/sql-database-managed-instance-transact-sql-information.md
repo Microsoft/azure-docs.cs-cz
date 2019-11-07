@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Databasech rozdílů v jazyce T-SQL spravované instance | Microsoft Docs
+title: Rozdíly v jazyce T-SQL spravované instance Azure SQL Database
 description: Tento článek popisuje rozdíly v T-SQL mezi spravovanou instancí v Azure SQL Database a SQL Server
 services: sql-database
 ms.service: sql-database
@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
-ms.date: 08/12/2019
+ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: b7ace716f920304eff3ddcfa3fab887f780cec0e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 5efa52da0005d0b98820c648dfe7c8489bc39076
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372323"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687859"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Rozdíly v jazyce T-SQL spravované instance, omezení a známé problémy
 
@@ -42,41 +42,41 @@ Tato stránka také vysvětluje [dočasné známé problémy](#Issues) , které 
 
 [Vysoká dostupnost](sql-database-high-availability.md) je integrována do spravované instance a nemůže být řízena uživateli. Následující příkazy nejsou podporovány:
 
-- [VYTVOŘIT KONCOVÝ BOD... PRO DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql)
-- [VYTVOŘIT SKUPINU DOSTUPNOSTI](https://docs.microsoft.com/sql/t-sql/statements/create-availability-group-transact-sql)
-- [ZMĚNIT SKUPINU DOSTUPNOSTI](https://docs.microsoft.com/sql/t-sql/statements/alter-availability-group-transact-sql)
-- [ODPOJIT SKUPINU DOSTUPNOSTI](https://docs.microsoft.com/sql/t-sql/statements/drop-availability-group-transact-sql)
-- Klauzule [set hadr](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-hadr) příkazu [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql)
+- [VYTVOŘIT KONCOVÝ BOD... PRO DATABASE_MIRRORING](/sql/t-sql/statements/create-endpoint-transact-sql)
+- [VYTVOŘIT SKUPINU DOSTUPNOSTI](/sql/t-sql/statements/create-availability-group-transact-sql)
+- [ZMĚNIT SKUPINU DOSTUPNOSTI](/sql/t-sql/statements/alter-availability-group-transact-sql)
+- [ODPOJIT SKUPINU DOSTUPNOSTI](/sql/t-sql/statements/drop-availability-group-transact-sql)
+- Klauzule [set hadr](/sql/t-sql/statements/alter-database-transact-sql-set-hadr) příkazu [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql)
 
-### <a name="backup"></a>Backup
+### <a name="backup"></a>Zálohování
 
 Spravované instance mají automatické zálohování, takže uživatelé můžou vytvářet úplné zálohy databáze `COPY_ONLY`. Zálohy rozdílů, protokolů a snímků souborů se nepodporují.
 
 - Se spravovanou instancí můžete zálohovat databázi instance pouze do účtu služby Azure Blob Storage:
   - Podporuje se jenom `BACKUP TO URL`.
-  - `FILE`, `TAPE` a zálohovací zařízení nejsou podporována.
-- Většina obecných možností `WITH` je podporovaná.
+  - `FILE`, `TAPE`a zálohovací zařízení nejsou podporována.
+- Většina možností obecných `WITH` je podporovaná.
   - `COPY_ONLY` je povinný.
   - `FILE_SNAPSHOT` se nepodporuje.
-  - Možnosti pásky: `REWIND`, `NOREWIND`, `UNLOAD` a `NOUNLOAD` se nepodporují.
-  - Možnosti specifické pro protokol: `NORECOVERY`, `STANDBY` a `NO_TRUNCATE` nejsou podporovány.
+  - Možnosti pásky: `REWIND`, `NOREWIND`, `UNLOAD`a `NOUNLOAD` nejsou podporovány.
+  - Možnosti specifické pro protokol: `NORECOVERY`, `STANDBY`a `NO_TRUNCATE` nejsou podporovány.
 
 Určitá 
 
 - Se spravovanou instancí můžete zálohovat databázi instance do zálohy s až 32 proužky, které jsou pro databáze až 4 TB v případě, že se používá zálohování zálohy, v případě, že je použita komprese záloh.
-- V databázi, která je zašifrovaná pomocí transparentní šifrování dat TDE (Service-Managed), nejde provést `BACKUP DATABASE ... WITH COPY_ONLY`. TDE spravované službou vynutí šifrování záloh pomocí interního TDE klíče. Klíč nelze exportovat, takže nelze obnovit zálohu. Použijte automatické zálohování a obnovení k bodu v čase nebo použijte místo toho [TDE spravované zákazníkem (BYOK)](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) . Šifrování můžete také zakázat v databázi.
+- Nemůžete spouštět `BACKUP DATABASE ... WITH COPY_ONLY` v databázi, která je zašifrovaná pomocí transparentní šifrování dat TDE (spravováno službou). TDE spravované službou vynutí šifrování záloh pomocí interního TDE klíče. Klíč nelze exportovat, takže nelze obnovit zálohu. Použijte automatické zálohování a obnovení k bodu v čase nebo použijte místo toho [TDE spravované zákazníkem (BYOK)](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key) . Šifrování můžete také zakázat v databázi.
 - Maximální velikost záložního proužku pomocí příkazu `BACKUP` ve spravované instanci je 195 GB, což je maximální velikost objektu BLOB. Zvyšte počet pruhů v příkazu Backup, abyste snížili velikost jednotlivých pruhů a zůstali v rámci tohoto limitu.
 
     > [!TIP]
     > Pokud chcete toto omezení obejít, můžete při zálohování databáze z libovolného SQL Server v místním prostředí nebo ve virtuálním počítači:
     >
-    > - Zálohování do `DISK` místo zálohování do `URL`.
+    > - Zálohování na `DISK` místo zálohování do `URL`.
     > - Nahrajte záložní soubory do úložiště objektů BLOB.
     > - Obnovit do spravované instance.
     >
-    > Příkaz `Restore` ve spravované instanci podporuje větší velikosti objektů BLOB v záložních souborech, protože pro ukládání souborů zálohy se používá jiný typ objektu BLOB.
+    > Příkaz `Restore` ve spravované instanci podporuje větší velikost objektů BLOB v záložních souborech, protože pro ukládání souborů zálohy se používá jiný typ objektu BLOB.
 
-Informace o zálohování pomocí T-SQL najdete v tématu [zálohování](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql).
+Informace o zálohování pomocí T-SQL najdete v tématu [zálohování](/sql/t-sql/statements/backup-transact-sql).
 
 ## <a name="security"></a>Zabezpečení
 
@@ -92,25 +92,25 @@ Auditování XEvent ve spravované instanci podporuje cíle služby Azure Blob S
 
 Hlavní rozdíly v syntaxi `CREATE AUDIT` pro auditování do úložiště objektů BLOB v Azure jsou:
 
-- K dispozici je nová syntaxe `TO URL`, kterou můžete použít k zadání adresy URL kontejneru úložiště objektů BLOB v Azure, kde jsou umístěné soubory `.xel`.
+- K dispozici je nová syntaxe `TO URL`, kterou můžete použít k zadání adresy URL kontejneru úložiště objektů BLOB v Azure, kde jsou umístěné `.xel` soubory.
 - Syntaxe `TO FILE` není podporována, protože spravovaná instance nemůže přistupovat ke sdíleným složkám souborů systému Windows.
 
-Další informace: 
+Další informace naleznete v tématu: 
 
-- [VYTVOŘIT AUDIT SERVERU](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql) 
-- [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
-- [Auditování](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
+- [VYTVOŘIT AUDIT SERVERU](/sql/t-sql/statements/create-server-audit-transact-sql) 
+- [ALTER SERVER AUDIT](/sql/t-sql/statements/alter-server-audit-transact-sql)
+- [Auditování](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
 
 ### <a name="certificates"></a>Certifikáty
 
 Spravovaná instance nemůže přistupovat ke sdíleným složkám souborů a složkám systému Windows, proto platí následující omezení:
 
-- Soubor `CREATE FROM` @ no__t-1 @ no__t-2 není pro certifikáty podporován.
-- Certifikát `CREATE` @ no__t-1 @ no__t-2 z `FILE` @ no__t-4 @ no__t-5 není podporován. Soubory privátních klíčů nelze použít. 
+- `CREATE FROM`/`BACKUP TO` soubor není pro certifikáty podporován.
+- `CREATE`/`BACKUP` certifikát z `FILE`/`ASSEMBLY` není podporován. Soubory privátních klíčů nelze použít. 
 
-Viz [Vytvoření certifikátu](https://docs.microsoft.com/sql/t-sql/statements/create-certificate-transact-sql) a [záložního certifikátu](https://docs.microsoft.com/sql/t-sql/statements/backup-certificate-transact-sql). 
+Viz [Vytvoření certifikátu](/sql/t-sql/statements/create-certificate-transact-sql) a [záložního certifikátu](/sql/t-sql/statements/backup-certificate-transact-sql). 
  
-**Alternativní řešení**: místo vytváření zálohy certifikátu a obnovení zálohy [Získejte binární obsah certifikátu a privátní klíč, uložte ho jako soubor. SQL a vytvořte ho z binárního souboru](https://docs.microsoft.com/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
+**Alternativní řešení**: místo vytváření zálohy certifikátu a obnovení zálohy [Získejte binární obsah certifikátu a privátní klíč, uložte ho jako soubor. SQL a vytvořte ho z binárního souboru](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
 
 ```sql
 CREATE CERTIFICATE  
@@ -122,23 +122,23 @@ WITH PRIVATE KEY (<private_key_options>)
 
 Jsou podporovány pouze identity Azure Key Vault a `SHARED ACCESS SIGNATURE`. Uživatelé systému Windows nejsou podporováni.
 
-Viz [Vytvoření přihlašovacích údajů](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql) a [Změna přihlašovacích údajů](https://docs.microsoft.com/sql/t-sql/statements/alter-credential-transact-sql).
+Viz [Vytvoření přihlašovacích údajů](/sql/t-sql/statements/create-credential-transact-sql) a [Změna přihlašovacích údajů](/sql/t-sql/statements/alter-credential-transact-sql).
 
 ### <a name="cryptographic-providers"></a>Zprostředkovatelé kryptografických služeb
 
 Spravovaná instance nemá přístup k souborům, takže nejde vytvořit zprostředkovatele kryptografických služeb:
 
-- `CREATE CRYPTOGRAPHIC PROVIDER` se nepodporuje. Viz [vytvořit zprostředkovatele kryptografických služeb](https://docs.microsoft.com/sql/t-sql/statements/create-cryptographic-provider-transact-sql).
-- `ALTER CRYPTOGRAPHIC PROVIDER` se nepodporuje. Přečtěte si téma [Změna zprostředkovatele kryptografických služeb](https://docs.microsoft.com/sql/t-sql/statements/alter-cryptographic-provider-transact-sql).
+- `CREATE CRYPTOGRAPHIC PROVIDER` se nepodporuje. Viz [vytvořit zprostředkovatele kryptografických služeb](/sql/t-sql/statements/create-cryptographic-provider-transact-sql).
+- `ALTER CRYPTOGRAPHIC PROVIDER` se nepodporuje. Přečtěte si téma [Změna zprostředkovatele kryptografických služeb](/sql/t-sql/statements/alter-cryptographic-provider-transact-sql).
 
 ### <a name="logins-and-users"></a>Přihlášení a uživatelé
 
-- Jsou podporována přihlášení SQL vytvořená pomocí `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY` a `FROM SID`. Viz [Vytvoření přihlašovacích](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql)údajů.
-- Jsou podporovány základní objekty (přihlašovací údaje) serveru služby Azure Active Directory (Azure AD) vytvořené pomocí syntaxe pro [Vytvoření přihlášení](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) nebo [Vytvoření uživatele z přihlášení [přihlášení Azure AD]](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) (verze Public Preview). Tato přihlášení jsou vytvořena na úrovni serveru.
+- Jsou podporována přihlášení SQL vytvořená pomocí `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY`a `FROM SID`. Viz [Vytvoření přihlašovacích](/sql/t-sql/statements/create-login-transact-sql)údajů.
+- Jsou podporovány základní objekty (přihlašovací údaje) serveru služby Azure Active Directory (Azure AD) vytvořené pomocí syntaxe [Vytvoření přihlášení](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) nebo [Vytvoření uživatele z přihlášení [přihlášení Azure AD]](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) . Tato přihlášení jsou vytvořena na úrovni serveru.
 
     Spravovaná instance podporuje objekty zabezpečení databáze Azure AD se syntaxí `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`. Tato funkce se označuje taky jako uživatelé databáze s omezením Azure AD.
 
-- Přihlášení Windows vytvořená pomocí syntaxe `CREATE LOGIN ... FROM WINDOWS` se nepodporují. Používejte Azure Active Directory přihlašovacích údajů a uživatelů.
+- Přihlášení Windows vytvořená pomocí syntaxe `CREATE LOGIN ... FROM WINDOWS` nejsou podporovaná. Používejte Azure Active Directory přihlašovacích údajů a uživatelů.
 - Uživatel Azure AD, který vytvořil instanci, má [neomezená oprávnění správce](sql-database-manage-logins.md#unrestricted-administrative-accounts).
 - Uživatele na úrovni databáze služby Azure AD, kteří nejsou správci, se dají vytvořit pomocí syntaxe `CREATE USER ... FROM EXTERNAL PROVIDER`. Viz [vytvořit uživatele... OD externího poskytovatele](sql-database-manage-logins.md#non-administrator-users).
 - Objekty zabezpečení serveru Azure AD (přihlášení) podporují jenom funkce SQL v rámci jedné spravované instance. Funkce, které vyžadují interakci mezi instancemi, bez ohledu na to, jestli jsou ve stejném tenantovi Azure AD nebo v různých klientech, se pro uživatele Azure AD nepodporují. Příklady takových funkcí:
@@ -149,25 +149,21 @@ Spravovaná instance nemá přístup k souborům, takže nejde vytvořit zprost�
 - Nastavení přihlašovacích údajů Azure AD namapované na skupinu Azure AD, protože vlastník databáze není podporovaný.
 - Je podporováno zosobnění objektů zabezpečení na úrovni serveru Azure AD pomocí jiných objektů zabezpečení Azure AD, jako je například klauzule [Execute as](/sql/t-sql/statements/execute-as-transact-sql) . Spustit jako omezení jsou:
 
-  - Příkaz Spustit jako uživatel není podporován pro uživatele Azure AD, pokud se název liší od přihlašovacího jména. Příkladem je, když se uživatel vytvoří pomocí syntaxe CREATE USER [myAadUser] od přihlášení [john@contoso.com] a při pokusu o zosobnění došlo k pokusu prostřednictvím EXEC jako USER = _myAadUser_. Když vytváříte uživatele z objektu zabezpečení serveru Azure AD (přihlášení), zadejte **uživatelské** jméno jako stejné Login_name od **přihlášení**.
+  - Příkaz Spustit jako uživatel není podporován pro uživatele Azure AD, pokud se název liší od přihlašovacího jména. Příkladem je, když se uživatel vytvoří pomocí syntaxe vytvořit uživatele [myAadUser] od přihlášení [john@contoso.com] a při pokusu o zosobnění se jako uživatel = _myAadUser_pokusí o zosobnění. Když vytváříte uživatele z objektu zabezpečení serveru Azure AD (přihlášení), zadejte **uživatelské** jméno jako stejné Login_name od **přihlášení**.
   - Jenom objekty zabezpečení na úrovni SQL Server (přihlášení), které jsou součástí role `sysadmin`, můžou spouštět následující operace, které cílí na objekty zabezpečení Azure AD:
 
     - SPUSTIT JAKO UŽIVATEL
     - SPUSTIT JAKO PŘIHLAŠOVACÍ ÚDAJE
 
-- Omezení veřejné verze Preview pro objekty zabezpečení serveru Azure AD (přihlášení):
+- Pro uživatele Azure AD ve spravované instanci se podporuje export a import databáze pomocí souborů BacPac buď [SSMS v 18.4 nebo novější](/sql/ssms/download-sql-server-management-studio-ssms), nebo [SQLPackage. exe](/sql/tools/sqlpackage-download).
+  - Následující konfigurace jsou podporovány pomocí souboru databáze BacPac: 
+    - Exportujte/Importujte databázi mezi různými spravovanými instancemi v rámci stejné domény služby Azure AD.
+    - Exportujte databázi ze spravované instance a importujte ji do SQL Database v rámci stejné domény služby Azure AD. 
+    - Exportujte databázi z SQL Database a importujte ji do spravované instance ve stejné doméně Azure AD.
+    - Exportujte databázi ze spravované instance a importujte ji do SQL Server (verze 2012 nebo novější).
+      - V této konfiguraci jsou všichni uživatelé Azure AD vytvořeni jako objekty SQL Database (uživatelé) bez přihlášení. Typ uživatelů je uveden jako SQL (viditelné jako SQL_USER v sys. database_principals). Jejich oprávnění a role zůstávají v SQL Server metadatech databáze a lze je použít pro zosobnění. Nedají se ale použít k přístupu k SQL Server a k jejich přihlášení pomocí svých přihlašovacích údajů.
 
-  - Omezení správce služby Active Directory pro spravovanou instanci:
-
-    - Správce Azure AD, který se používá k nastavení spravované instance, se nedá použít k vytvoření objektu zabezpečení serveru Azure AD (přihlášení) v rámci spravované instance. První objekt zabezpečení serveru Azure AD (přihlášení) musíte vytvořit pomocí účtu SQL Server, který je rolí `sysadmin`. Toto dočasné omezení se odebere po zpřístupnění objektů zabezpečení serveru Azure AD (přihlášení) všeobecně dostupných. Pokud se pokusíte vytvořit přihlášení pomocí účtu správce Azure AD, zobrazí se tato chyba: `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
-      - V současné době musí být první přihlášení služby Azure AD vytvořené v hlavní databázi vytvořeno standardním účtem SQL Server (mimo Azure AD), který je rolí `sysadmin` pomocí [Vytvoření přihlašovacích](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) údajů z externího poskytovatele. Po obecné dostupnosti se toto omezení odebere. Pak můžete vytvořit počáteční přihlášení k Azure AD pomocí Správce služby Active Directory pro spravovanou instanci.
-    - DacFx (export/import) používané s SQL Server Management Studio nebo SqlPackage se pro přihlášení k Azure AD nepodporují. Toto omezení se odebere po zpřístupnění objektů zabezpečení serveru Azure AD (přihlášení) všeobecně dostupných.
-    - Použití objektů zabezpečení serveru Azure AD (přihlášení) s SQL Server Management Studio:
-
-      - Skriptování přihlašovacích údajů Azure AD, které používají jakékoli ověřené přihlášení, se nepodporuje.
-      - IntelliSense nerozpozná příkaz CREATE LOGIN z externího poskytovatele a zobrazí červené podtržení.
-
-- Pouze hlavní přihlášení na úrovni serveru, které je vytvořeno procesem zřizování spravované instance, členové rolí serveru, například `securityadmin` nebo `sysadmin` nebo jiná přihlášení s oprávněním změnit libovolné přihlašovací údaje na úrovni serveru, mohou vytvářet objekty zabezpečení serveru Azure AD. (přihlášení) v hlavní databázi pro spravovanou instanci.
+- Pouze hlavní přihlášení na úrovni serveru, které je vytvořeno procesem zřizování spravované instance, členové rolí serveru, například `securityadmin` nebo `sysadmin`, nebo jiná přihlášení s oprávněními změnit libovolné přihlašovací oprávnění na úrovni serveru můžou vytvořit server Azure AD. objekty zabezpečení (přihlášení) v hlavní databázi pro spravovanou instanci.
 - Pokud je přihlášení objektem zabezpečení SQL, můžou pomocí příkazu CREATE vytvořit přihlašovací údaje pro účet Azure AD jenom přihlášení, která jsou součástí role `sysadmin`.
 - Přihlášení Azure AD musí být členem služby Azure AD v rámci stejného adresáře, který se používá pro Azure SQL Database spravovanou instanci.
 - Objekty zabezpečení serveru Azure AD (přihlášení) se zobrazují v Průzkumník objektů počínaje verzí SQL Server Management Studio 18,0 Preview 5.
@@ -183,21 +179,21 @@ Spravovaná instance nemá přístup k souborům, takže nejde vytvořit zprost�
 
 ### <a name="service-key-and-service-master-key"></a>Klíč služby a hlavní klíč služby
 
-- [Záloha hlavního klíče](https://docs.microsoft.com/sql/t-sql/statements/backup-master-key-transact-sql) není podporována (spravováno službou SQL Database).
-- [Obnovení hlavního klíče](https://docs.microsoft.com/sql/t-sql/statements/restore-master-key-transact-sql) se nepodporuje (spravuje služba SQL Database).
-- [Záloha hlavního klíče služby](https://docs.microsoft.com/sql/t-sql/statements/backup-service-master-key-transact-sql) není podporovaná (spravovaná službou SQL Database).
-- [Obnovení hlavního klíče služby](https://docs.microsoft.com/sql/t-sql/statements/restore-service-master-key-transact-sql) se nepodporuje (spravuje služba SQL Database).
+- [Záloha hlavního klíče](/sql/t-sql/statements/backup-master-key-transact-sql) není podporována (spravováno službou SQL Database).
+- [Obnovení hlavního klíče](/sql/t-sql/statements/restore-master-key-transact-sql) se nepodporuje (spravuje služba SQL Database).
+- [Záloha hlavního klíče služby](/sql/t-sql/statements/backup-service-master-key-transact-sql) není podporovaná (spravovaná službou SQL Database).
+- [Obnovení hlavního klíče služby](/sql/t-sql/statements/restore-service-master-key-transact-sql) se nepodporuje (spravuje služba SQL Database).
 
 ## <a name="configuration"></a>Konfigurace
 
 ### <a name="buffer-pool-extension"></a>Rozšíření fondu vyrovnávací paměti
 
-- [Rozšíření fondu vyrovnávací paměti](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) se nepodporuje.
-- `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` se nepodporuje. Viz [ALTER Server Configuration](https://docs.microsoft.com/sql/t-sql/statements/alter-server-configuration-transact-sql).
+- [Rozšíření fondu vyrovnávací paměti](/sql/database-engine/configure-windows/buffer-pool-extension) se nepodporuje.
+- `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` se nepodporuje. Viz [ALTER Server Configuration](/sql/t-sql/statements/alter-server-configuration-transact-sql).
 
 ### <a name="collation"></a>Velké
 
-Výchozí kolace instance je `SQL_Latin1_General_CP1_CI_AS` a lze ji zadat jako parametr vytvoření. Viz [kolace](https://docs.microsoft.com/sql/t-sql/statements/collations).
+Výchozí kolace instance je `SQL_Latin1_General_CP1_CI_AS` a lze ji zadat jako parametr vytvoření. Viz [kolace](/sql/t-sql/statements/collations).
 
 ### <a name="compatibility-levels"></a>Úrovně kompatibility
 
@@ -205,7 +201,7 @@ Výchozí kolace instance je `SQL_Latin1_General_CP1_CI_AS` a lze ji zadat jako 
 - Úrovně kompatibility nižší než 100 nejsou podporovány.
 - Výchozí úroveň kompatibility pro nové databáze je 140. V případě obnovených databází zůstane úroveň kompatibility beze změny, pokud byla 100 a vyšší.
 
-Viz část [ALTER DATABASE Compatibility Level](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level).
+Viz část [ALTER DATABASE Compatibility Level](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level).
 
 ### <a name="database-mirroring"></a>Zrcadlení databáze
 
@@ -214,36 +210,36 @@ Zrcadlení databáze se nepodporuje.
 - možnosti `ALTER DATABASE SET PARTNER` a `SET WITNESS` nejsou podporovány.
 - `CREATE ENDPOINT … FOR DATABASE_MIRRORING` se nepodporuje.
 
-Další informace najdete v tématu věnovaném [příkazu ALTER DATABASE set partner a nastavení určujícího disku](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-database-mirroring) a [Vytvoření koncového bodu... PRO DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql).
+Další informace najdete v tématu věnovaném [příkazu ALTER DATABASE set partner a nastavení určujícího disku](/sql/t-sql/statements/alter-database-transact-sql-database-mirroring) a [Vytvoření koncového bodu... PRO DATABASE_MIRRORING](/sql/t-sql/statements/create-endpoint-transact-sql).
 
 ### <a name="database-options"></a>Možnosti databáze
 
 - Více souborů protokolu není podporováno.
 - Objekty v paměti nejsou podporovány v Pro obecné účely úrovni služby. 
 - Počet 280 souborů na instanci Pro obecné účely, což implikuje maximálně 280 souborů na databázi. Do tohoto limitu se počítají data i soubory protokolů v Pro obecné účely vrstvě. [Úroveň pro důležité obchodní informace podporuje 32 767 souborů na databázi](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
-- Databáze nemůže obsahovat skupiny souborů, které obsahují data FILESTREAM. Obnovení se nezdařilo, pokud. bak obsahuje data `FILESTREAM`. 
+- Databáze nemůže obsahovat skupiny souborů, které obsahují data FILESTREAM. Obnovení se nepovede, pokud. bak obsahuje `FILESTREAM` data. 
 - Každý soubor je umístěný v úložišti objektů BLOB v Azure. Vstupně-výstupní operace a propustnost na soubor závisí na velikosti každého jednotlivého souboru.
 
 #### <a name="create-database-statement"></a>Příkaz CREATE DATABASE
 
-U `CREATE DATABASE` platí následující omezení:
+Následující omezení platí pro `CREATE DATABASE`:
 
 - Soubory a skupiny souborů nelze definovat. 
 - Možnost `CONTAINMENT` není podporována. 
-- možnosti `WITH` nejsou podporovány. 
+- možnosti `WITH` nejsou podporované. 
    > [!TIP]
-   > Alternativním řešením je použití `ALTER DATABASE` po `CREATE DATABASE` k nastavení možností databáze pro přidání souborů nebo nastavení zahrnutí. 
+   > Alternativním řešením je použít `ALTER DATABASE` po `CREATE DATABASE` k nastavení možností databáze k přidávání souborů nebo k nastavení zahrnutí. 
 
 - Možnost `FOR ATTACH` není podporována.
 - Možnost `AS SNAPSHOT OF` není podporována.
 
-Další informace najdete v tématu [Vytvoření databáze](https://docs.microsoft.com/sql/t-sql/statements/create-database-sql-server-transact-sql).
+Další informace najdete v tématu [Vytvoření databáze](/sql/t-sql/statements/create-database-sql-server-transact-sql).
 
 #### <a name="alter-database-statement"></a>ALTER DATABASE – příkaz
 
 Některé vlastnosti souboru nejde nastavit nebo změnit:
 
-- V příkazu `ALTER DATABASE ADD FILE (FILENAME='path')` T-SQL nelze zadat cestu k souboru. Odebere ze skriptu `FILENAME`, protože spravované instance automaticky umístí soubory. 
+- V příkazu `ALTER DATABASE ADD FILE (FILENAME='path')` T-SQL nelze zadat cestu k souboru. Odstraňte ze skriptu `FILENAME`, protože soubory automaticky umístí spravovaná instance. 
 - Název souboru se nedá změnit pomocí příkazu `ALTER DATABASE`.
 
 Ve výchozím nastavení jsou nastaveny následující možnosti a nelze je změnit:
@@ -274,7 +270,7 @@ Následující možnosti nelze upravit:
 - `SINGLE_USER`
 - `WITNESS`
 
-Další informace najdete v tématu [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
+Další informace najdete v tématu [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 
 ### <a name="sql-server-agent"></a>Agent SQL Server
 
@@ -308,18 +304,18 @@ Následující funkce agenta SQL momentálně nejsou podporované:
 - Povolení nebo zakázání agenta
 - Výstrahy
 
-Informace o agentovi SQL Server najdete v tématu [agent SQL Server](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
+Informace o agentovi SQL Server najdete v tématu [agent SQL Server](/sql/ssms/agent/sql-server-agent).
 
 ### <a name="tables"></a>Tabulky
 
 Následující typy tabulek nejsou podporovány:
 
-- [SOUBOREM](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server)
-- [OBJEKTU FILETABLE](https://docs.microsoft.com/sql/relational-databases/blob/filetables-sql-server)
-- [Externí tabulka](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) (základ)
-- [MEMORY_OPTIMIZED](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables) (Nepodporováno pouze v pro obecné účely vrstvě)
+- [SOUBOREM](/sql/relational-databases/blob/filestream-sql-server)
+- [OBJEKTU FILETABLE](/sql/relational-databases/blob/filetables-sql-server)
+- [Externí tabulka](/sql/t-sql/statements/create-external-table-transact-sql) (základ)
+- [MEMORY_OPTIMIZED](/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables) (Nepodporováno pouze v pro obecné účely vrstvě)
 
-Informace o tom, jak vytvářet a měnit tabulky, najdete v tématu [Create Table](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) a [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).
+Informace o tom, jak vytvářet a měnit tabulky, najdete v tématu [Create Table](/sql/t-sql/statements/create-table-transact-sql) a [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql).
 
 ## <a name="functionalities"></a>Funkce
 
@@ -327,29 +323,29 @@ Informace o tom, jak vytvářet a měnit tabulky, najdete v tématu [Create Tabl
 
 Spravovaná instance nemůže přistupovat ke sdíleným složkám souborů a složkám Windows, takže soubory musí být naimportované z úložiště objektů BLOB v Azure:
 
-- Při importu souborů z úložiště objektů BLOB v Azure je potřeba v příkazu `BULK INSERT` `DATASOURCE`. Viz [Bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql).
-- `DATASOURCE` se při čtení obsahu souboru z úložiště objektů BLOB v Azure vyžaduje ve funkci `OPENROWSET`. Viz [OpenRowset](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
-- `OPENROWSET` se dá použít ke čtení dat z jiných samostatných databází SQL Azure, spravovaných instancí nebo instancí SQL Server. Jiné zdroje, například databáze Oracle nebo excelové soubory, nejsou podporovány.
+- `DATASOURCE` se při importu souborů z úložiště objektů BLOB v Azure vyžaduje v příkazu `BULK INSERT`. Viz [Bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql).
+- Při čtení obsahu souboru z úložiště objektů BLOB v Azure se ve funkci `OPENROWSET` vyžaduje `DATASOURCE`. Viz [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql).
+- `OPENROWSET` lze použít ke čtení dat z jiných samostatných databází Azure SQL, spravovaných instancí nebo instancí SQL Server. Jiné zdroje, například databáze Oracle nebo excelové soubory, nejsou podporovány.
 
 ### <a name="clr"></a>CLR
 
 Spravovaná instance nemůže přistupovat ke sdíleným složkám souborů a složkám systému Windows, proto platí následující omezení:
 
-- Podporuje se jenom `CREATE ASSEMBLY FROM BINARY`. Viz [Vytvoření ASSEM BLY z binárního souboru](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql). 
-- `CREATE ASSEMBLY FROM FILE` se nepodporuje. Viz [vytvořit sestavení ze souboru](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
-- @no__t – 0 nemůže odkazovat na soubory. Viz [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
+- Podporuje se jenom `CREATE ASSEMBLY FROM BINARY`. Viz [Vytvoření ASSEM BLY z binárního souboru](/sql/t-sql/statements/create-assembly-transact-sql). 
+- `CREATE ASSEMBLY FROM FILE` se nepodporuje. Viz [vytvořit sestavení ze souboru](/sql/t-sql/statements/create-assembly-transact-sql).
+- `ALTER ASSEMBLY` nemůže odkazovat na soubory. Viz [ALTER ASSEMBLY](/sql/t-sql/statements/alter-assembly-transact-sql).
 
 ### <a name="database-mail-db_mail"></a>Databázová pošta (db_mail)
- - `sp_send_dbmail` nelze odeslat přílohy pomocí parametru @file_attachments. Tento postup nemá přístup k místnímu systému souborů a externím sdíleným složkám nebo k Azure Blob Storage.
- - Přečtěte si o známých problémech týkajících se parametrů `@query` a ověřování.
+ - `sp_send_dbmail` nemůže odeslat přílohy pomocí parametru @file_attachments. Tento postup nemá přístup k místnímu systému souborů a externím sdíleným složkám nebo k Azure Blob Storage.
+ - Podívejte se na známé problémy související s `@query` parametrem a ověřováním.
  
 ### <a name="dbcc"></a>NÁSTROJI
 
 Neuvedené příkazy DBCC, které jsou povolené v SQL Server nejsou ve spravovaných instancích podporované.
 
-- Podporován je pouze omezený počet globálních příznaků trasování. @No__t na úrovni relace – 0 se nepodporuje. Viz [příznaky trasování](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
-- [DBCC TRACEOFF kterým](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) a [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) fungují s omezeným počtem globálních příznaků Trace-Flags.
-- [Příkaz DBCC CHECKDB](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) s možnostmi REPAIR_ALLOW_DATA_LOSS, REPAIR_FAST a REPAIR_REBUILD nelze použít, protože databázi nelze nastavit v režimu `SINGLE_USER` – viz téma [ALTER DATABASE rozdíl](#alter-database-statement). Potenciální poškození databáze zpracovává tým podpory Azure. Pokud všímáte poškození databáze, které by mělo být opraveno, obraťte se na podporu Azure.
+- Podporován je pouze omezený počet globálních příznaků trasování. `Trace flags` na úrovni relace nejsou podporovány. Viz [příznaky trasování](/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
+- [DBCC TRACEOFF kterým](/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) a [DBCC TRACEON](/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) fungují s omezeným počtem globálních příznaků Trace-Flags.
+- [Příkaz DBCC CHECKDB](/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) s možnostmi REPAIR_ALLOW_DATA_LOSS, REPAIR_FAST a REPAIR_REBUILD nelze použít, protože databázi nelze nastavit v režimu `SINGLE_USER` – viz téma [ALTER DATABASE rozdíl](#alter-database-statement). Potenciální poškození databáze zpracovává tým podpory Azure. Pokud všímáte poškození databáze, které by mělo být opraveno, obraťte se na podporu Azure.
 
 ### <a name="distributed-transactions"></a>Distribuované transakce
 
@@ -359,19 +355,19 @@ MSDTC a [elastické transakce](sql-database-elastic-transactions-overview.md) ak
 
 Některé cíle specifické pro systém Windows pro rozšířené události (XEvents) nejsou podporovány:
 
-- Cíl `etw_classic_sync` není podporován. Ukládejte soubory `.xel` v úložišti objektů BLOB v Azure. Viz [cíl etw_classic_sync](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target).
-- Cíl `event_file` není podporován. Ukládejte soubory `.xel` v úložišti objektů BLOB v Azure. Viz [cíl event_file](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
+- Cíl `etw_classic_sync` není podporován. Ukládejte `.xel` soubory v úložišti objektů BLOB v Azure. Viz [cíl etw_classic_sync](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target).
+- Cíl `event_file` není podporován. Ukládejte `.xel` soubory v úložišti objektů BLOB v Azure. Viz [cíl event_file](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
 
 ### <a name="external-libraries"></a>Externí knihovny
 
-V-Database R a Pythonu se zatím nepodporují externí knihovny. Viz [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services).
+V-Database R a Pythonu se zatím nepodporují externí knihovny. Viz [SQL Server Machine Learning Services](/sql/advanced-analytics/r/sql-server-r-services).
 
 ### <a name="filestream-and-filetable"></a>FileStream a FileTable
 
 - Data FILESTREAM nejsou podporována.
-- Databáze nemůže obsahovat skupiny souborů s daty `FILESTREAM`.
+- Databáze nemůže obsahovat skupiny souborů s `FILESTREAM`mi daty.
 - `FILETABLE` se nepodporuje.
-- Tabulky nemohou mít `FILESTREAM` typů.
+- Tabulky nemohou mít `FILESTREAM` typy.
 - Následující funkce nejsou podporovány:
   - `GetPathLocator()`
   - `GET_FILESTREAM_TRANSACTION_CONTEXT()`
@@ -379,11 +375,11 @@ V-Database R a Pythonu se zatím nepodporují externí knihovny. Viz [SQL Server
   - `GetFileNamespacePat)`
   - `FileTableRootPath()`
 
-Další informace najdete v tématu [tabulky](https://docs.microsoft.com/sql/relational-databases/blob/filetables-sql-server) [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) a soubory.
+Další informace najdete v tématu [tabulky](/sql/relational-databases/blob/filetables-sql-server) [FileStream](/sql/relational-databases/blob/filestream-sql-server) a soubory.
 
 ### <a name="full-text-semantic-search"></a>Fulltextové vyhledávání na základě textu
 
-[Sémantické vyhledávání](https://docs.microsoft.com/sql/relational-databases/search/semantic-search-sql-server) není podporováno.
+[Sémantické vyhledávání](/sql/relational-databases/search/semantic-search-sql-server) není podporováno.
 
 ### <a name="linked-servers"></a>Propojené servery
 
@@ -391,19 +387,19 @@ Propojené servery ve spravovaných instancích podporují omezený počet cíl�
 
 - Podporované cíle jsou spravované instance, samostatné databáze a instance SQL Server. 
 - Propojené servery nepodporují distribuované transakce s možností zápisu (MS DTC).
-- Nepodporované cíle jsou soubory, Analysis Services a další RDBMS. Zkuste použít nativní Import CSV z Azure Blob Storage s využitím `BULK INSERT` nebo `OPENROWSET` jako alternativu pro import souborů.
+- Nepodporované cíle jsou soubory, Analysis Services a další RDBMS. Zkuste použít nativní Import CSV z Azure Blob Storage jako alternativu pro import souborů pomocí `BULK INSERT` nebo `OPENROWSET`.
 
-Operations
+Provoz
 
 - Transakce zápisu mezi instancemi nejsou podporované.
-- `sp_dropserver` se podporuje pro vyřazení propojeného serveru. Viz [sp_dropserver](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
-- Funkci `OPENROWSET` lze použít ke spouštění dotazů pouze v instancích SQL Server. Můžou být spravované, místní nebo virtuální počítače. Viz [OpenRowset](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
-- Funkci `OPENDATASOURCE` lze použít ke spouštění dotazů pouze v instancích SQL Server. Můžou být spravované, místní nebo virtuální počítače. Jako zprostředkovatel se podporují jenom hodnoty `SQLNCLI`, `SQLNCLI11` a `SQLOLEDB`. Příklad: `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Viz [OpenDataSource](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql).
-- Propojené servery nelze použít ke čtení souborů (Excel, CSV) ze sdílených síťových složek. Zkuste použít [Bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) nebo [OpenRowset](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) , které čtou soubory CSV z Azure Blob Storage. Sledovat tyto žádosti o [položku zpětné vazby spravované instance](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|
+- `sp_dropserver` se podporuje pro vyřazování propojeného serveru. Viz [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
+- Funkci `OPENROWSET` lze použít ke spouštění dotazů pouze v instancích SQL Server. Můžou být spravované, místní nebo virtuální počítače. Viz [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql).
+- Funkci `OPENDATASOURCE` lze použít ke spouštění dotazů pouze v instancích SQL Server. Můžou být spravované, místní nebo virtuální počítače. Jako poskytovatel se podporují jenom hodnoty `SQLNCLI`, `SQLNCLI11`a `SQLOLEDB`. Příklad: `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Viz [OpenDataSource](/sql/t-sql/functions/opendatasource-transact-sql).
+- Propojené servery nelze použít ke čtení souborů (Excel, CSV) ze sdílených síťových složek. Zkuste použít [Bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) nebo [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) , které čtou soubory CSV z Azure Blob Storage. Sledujte tyto žádosti o [položku zpětné vazby spravované instance](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|
 
 ### <a name="polybase"></a>PolyBase
 
-Externí tabulky, které odkazují na soubory v HDFS nebo Azure Blob Storage, se nepodporují. Informace o bázi základů naleznete v části [základ](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide).
+Externí tabulky, které odkazují na soubory v HDFS nebo Azure Blob Storage, se nepodporují. Informace o bázi základů naleznete v části [základ](/sql/relational-databases/polybase/polybase-guide).
 
 ### <a name="replication"></a>Replikace
 
@@ -458,31 +454,31 @@ Pokud je replikace povolená v databázi ve [skupině převzetí služeb při se
   - `RESTORE LOG ONLY`
   - `RESTORE REWINDONLY ONLY`
 - Zdroj: 
-  - `FROM URL` (Azure Blob Storage) je jedinou podporovanou možností.
-  - `FROM DISK` @ no__t-1 @ no__t-2/zálohovací zařízení není podporováno.
+  - jedinou podporovanou možností je `FROM URL` (Azure Blob Storage).
+  - zařízení `FROM DISK`/`TAPE`/Backup se nepodporuje.
   - Zálohovací sklady nejsou podporované.
-- možnosti `WITH` nejsou podporovány, například No `DIFFERENTIAL` nebo `STATS`.
-- `ASYNC RESTORE`: obnovení pokračuje i v případě, že dojde k přerušení připojení klienta. Pokud je připojení zrušeno, můžete zjistit stav operace obnovení v zobrazení `sys.dm_operation_status` a vytvořit a odstranit databázi. Viz [Sys. DM _operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
+- možnosti `WITH` nejsou podporované, například bez `DIFFERENTIAL` nebo `STATS`.
+- `ASYNC RESTORE`: obnovení pokračuje i v případě, že dojde k přerušení připojení klienta. Pokud je připojení vyřazeno, můžete v zobrazení `sys.dm_operation_status` zjistit stav operace obnovení a pro databázi pro vytvoření a odstranění. Viz [Sys. DM _operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
 
 Následující možnosti databáze jsou nastaveny nebo přepsány a nelze je změnit později: 
 
-- `NEW_BROKER`, pokud není zprostředkovatel v souboru. bak povolen. 
-- `ENABLE_BROKER`, pokud není zprostředkovatel v souboru. bak povolen. 
-- `AUTO_CLOSE=OFF`, pokud má databáze v souboru. bak `AUTO_CLOSE=ON`. 
-- `RECOVERY FULL`, pokud databáze v souboru. bak má režim obnovení `SIMPLE` nebo `BULK_LOGGED`.
+- `NEW_BROKER`, pokud není zprostředkovatel povolený v souboru. bak. 
+- `ENABLE_BROKER`, pokud není zprostředkovatel povolený v souboru. bak. 
+- `AUTO_CLOSE=OFF`, zda má `AUTO_CLOSE=ON`databáze v souboru. bak. 
+- `RECOVERY FULL`, zda má databáze v souboru. bak `SIMPLE` nebo `BULK_LOGGED` režimu obnovení.
 - Skupina souborů optimalizované pro paměť se přidá a zavolá XTP, pokud nebyla v souboru source. bak. 
 - Stávající paměťově optimalizovaná skupina souborů se přejmenuje na XTP. 
 - možnosti `SINGLE_USER` a `RESTRICTED_USER` jsou převedeny na `MULTI_USER`.
 
 Určitá 
 
-- Zálohování poškozených databází může být obnoveno v závislosti na typu poškození, ale automatizované zálohování nebude provedeno, dokud nebude poškození opraveno. Ujistěte se, že na zdrojové instanci spustíte `DBCC CHECKDB` a použijte Backup `WITH CHECKSUM`, aby se předešlo tomuto problému.
-- Obnovení souboru `.BAK` databáze, která obsahuje jakákoli omezení popsaná v tomto dokumentu (například objekty `FILESTREAM` nebo `FILETABLE`) nelze obnovit ve spravované instanci.
-- soubory `.BAK`, které obsahují více zálohovacích skladů, nelze obnovit. 
-- soubory `.BAK`, které obsahují více souborů protokolu, nelze obnovit.
+- Zálohování poškozených databází může být obnoveno v závislosti na typu poškození, ale automatizované zálohování nebude provedeno, dokud nebude poškození opraveno. Ujistěte se, že ve zdrojové instanci spustíte `DBCC CHECKDB` a používáte `WITH CHECKSUM` zálohování, aby se předešlo tomuto problému.
+- Obnovení souboru `.BAK` databáze, která obsahuje jakákoli omezení popsaná v tomto dokumentu (například `FILESTREAM` nebo `FILETABLE` objektů), nelze obnovit ve spravované instanci.
+- `.BAK` soubory, které obsahují víc zálohovacích skladů, se nedají obnovit. 
+- `.BAK` soubory, které obsahují více souborů protokolu, nelze obnovit.
 - Zálohy obsahující databáze větší než 8 TB, aktivní objekty OLTP v paměti nebo počet souborů, které by překročily 280 souborů na instanci, nelze obnovit v instanci Pro obecné účely. 
 - Zálohy, které obsahují databáze větší než 4 TB nebo objekty OLTP v paměti s celkovou velikostí větší, než je velikost popsaná v části [omezení prostředků](sql-database-managed-instance-resource-limits.md) , nelze obnovit v instanci pro důležité obchodní informace.
-Informace o příkazech Restore naleznete v tématu [Restore restatements](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
+Informace o příkazech Restore naleznete v tématu [Restore restatements](/sql/t-sql/statements/restore-statements-transact-sql).
 
  > [!IMPORTANT]
  > Stejné omezení platí pro předdefinovanou operaci obnovení k bodu v čase. Například Pro obecné účely databáze větší než 4 TB nemůže být v instanci Pro důležité obchodní informace obnovena. Pro důležité obchodní informace databáze s OLTP soubory v paměti nebo více než 280 souborů nelze v Pro obecné účely instanci obnovit.
@@ -491,35 +487,35 @@ Informace o příkazech Restore naleznete v tématu [Restore restatements](https
 
 Služba Service Broker mezi instancemi není podporována:
 
-- `sys.routes`: jako požadavek musíte vybrat adresu z sys. Routes. Adresa musí být místní v každé trase. Viz [Sys. Routes](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
-- `CREATE ROUTE`: nelze použít `CREATE ROUTE` s `ADDRESS` jinou než `LOCAL`. Viz [vytvoření trasy](https://docs.microsoft.com/sql/t-sql/statements/create-route-transact-sql).
-- `ALTER ROUTE`: nelze použít `ALTER ROUTE` s `ADDRESS` jinou než `LOCAL`. Viz [ALTER Route](https://docs.microsoft.com/sql/t-sql/statements/alter-route-transact-sql). 
+- `sys.routes`: jako požadavek musíte vybrat adresu z sys. Routes. Adresa musí být místní v každé trase. Viz [Sys. Routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
+- `CREATE ROUTE`: nelze použít `CREATE ROUTE` s `ADDRESS` jinou než `LOCAL`. Viz [vytvoření trasy](/sql/t-sql/statements/create-route-transact-sql).
+- `ALTER ROUTE`: nelze použít `ALTER ROUTE` s `ADDRESS` jinou než `LOCAL`. Viz [ALTER Route](/sql/t-sql/statements/alter-route-transact-sql). 
 
 ### <a name="stored-procedures-functions-and-triggers"></a>Uložené procedury, funkce a triggery
 
-- `NATIVE_COMPILATION` není podporován v Pro obecné účely vrstvě.
-- Následující možnosti [sp_configure](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-configure-transact-sql) nejsou podporované: 
+- `NATIVE_COMPILATION` se v úrovni Pro obecné účely nepodporuje.
+- Následující možnosti [sp_configure](/sql/relational-databases/system-stored-procedures/sp-configure-transact-sql) nejsou podporované: 
   - `allow polybase export`
   - `allow updates`
   - `filestream_access_level`
   - `remote data archive`
   - `remote proc trans`
-- `sp_execute_external_scripts` se nepodporuje. Viz [sp_execute_external_scripts](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).
-- `xp_cmdshell` se nepodporuje. Viz [xp_cmdshell](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
-- `Extended stored procedures` se nepodporuje, což zahrnuje `sp_addextendedproc` @ no__t-2and `sp_dropextendedproc`. Viz [rozšířené uložené procedury](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
-- `sp_attach_db`, `sp_attach_single_file_db` a `sp_detach_db` nejsou podporovány. Viz [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)a [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
+- `sp_execute_external_scripts` se nepodporuje. Viz [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).
+- `xp_cmdshell` se nepodporuje. Viz [xp_cmdshell](/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
+- `Extended stored procedures` nejsou podporované, což zahrnuje `sp_addextendedproc` a `sp_dropextendedproc`. Viz [rozšířené uložené procedury](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
+- `sp_attach_db`, `sp_attach_single_file_db`a `sp_detach_db` nejsou podporovány. Viz [sp_attach_db](/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)a [sp_detach_db](/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 
 ### <a name="system-functions-and-variables"></a>Systémové funkce a proměnné
 
 Následující proměnné, funkce a zobrazení vrací různé výsledky:
 
-- `SERVERPROPERTY('EngineEdition')` vrátí hodnotu 8. Tato vlastnost jednoznačně identifikuje spravovanou instanci. Viz [ServerProperty](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
-- `SERVERPROPERTY('InstanceName')` vrátí hodnotu NULL, protože koncept instance, která existuje pro SQL Server, se nevztahuje na spravovanou instanci. Viz [SERVERPROPERTY (' InstanceName ')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
-- `@@SERVERNAME` vrátí úplný název DNS "připojitelné", například my-managed-instance.wcus17662feb9ce98.database.windows.net. Viz [@ @SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql). 
-- `SYS.SERVERS` vrátí úplný název DNS "připojitelné", například `myinstance.domain.database.windows.net` pro vlastnosti "Name" a "data_source". Viz [Sys. SERVERY](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
-- `@@SERVICENAME` vrátí hodnotu NULL, protože koncept služby, která existuje pro SQL Server, se nevztahuje na spravovanou instanci. Viz [@ @SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).
-- @no__t – 0 se podporuje. Vrátí hodnotu NULL, pokud se přihlášení Azure AD nenachází v tabulce sys. syslogins. Viz [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql). 
-- `SUSER_SID` se nepodporuje. Vrátí se nesprávná data, což je dočasný známý problém. Viz [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql). 
+- `SERVERPROPERTY('EngineEdition')` vrátí hodnotu 8. Tato vlastnost jednoznačně identifikuje spravovanou instanci. Viz [ServerProperty](/sql/t-sql/functions/serverproperty-transact-sql).
+- `SERVERPROPERTY('InstanceName')` vrátí hodnotu NULL, protože koncept instance, která existuje pro SQL Server, se nevztahuje na spravovanou instanci. Viz [SERVERPROPERTY (' InstanceName ')](/sql/t-sql/functions/serverproperty-transact-sql).
+- `@@SERVERNAME` vrátí úplný název DNS "připojitelné", například my-managed-instance.wcus17662feb9ce98.database.windows.net. Viz [@@SERVERNAME](/sql/t-sql/functions/servername-transact-sql). 
+- `SYS.SERVERS` vrátí úplný název DNS "" připojitelné ", například `myinstance.domain.database.windows.net` pro vlastnosti" Name "a" data_source ". Viz [Sys. SERVERY](/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
+- `@@SERVICENAME` vrátí hodnotu NULL, protože koncept služby, která existuje pro SQL Server, se nevztahuje na spravovanou instanci. Viz [@@SERVICENAME](/sql/t-sql/functions/servicename-transact-sql).
+- `SUSER_ID` se podporuje. Vrátí hodnotu NULL, pokud se přihlášení Azure AD nenachází v tabulce sys. syslogins. Viz [SUSER_ID](/sql/t-sql/functions/suser-id-transact-sql). 
+- `SUSER_SID` se nepodporuje. Vrátí se nesprávná data, což je dočasný známý problém. Viz [SUSER_SID](/sql/t-sql/functions/suser-sid-transact-sql). 
 
 ## <a name="Environment"></a>Omezení prostředí
 
@@ -537,11 +533,11 @@ Následující proměnné, funkce a zobrazení vrací různé výsledky:
 
 ### <a name="tempdb"></a>DATABÁZE
 
-Maximální velikost souboru `tempdb` nemůže být větší než 24 GB na jádro na úrovni Pro obecné účely. Maximální velikost `tempdb` na Pro důležité obchodní informace úrovni je omezená velikostí úložiště instance. velikost souboru protokolu `Tempdb` je omezena na 120 GB na Pro obecné účely úrovni. Některé dotazy mohou vracet chybu, pokud vyžadují více než 24 GB na jádro v `tempdb`, nebo pokud vydávají více než 120 GB dat protokolu.
+Maximální velikost souboru `tempdb` nemůže být větší než 24 GB na jádro na úrovni Pro obecné účely. Maximální velikost `tempdb` na Pro důležité obchodní informace úrovni je omezená velikostí úložiště instance. velikost souboru protokolu `Tempdb` v Pro obecné účely úrovni omezena na 120 GB. Některé dotazy mohou vracet chybu, pokud vyžadují více než 24 GB na jádro v `tempdb` nebo pokud vydávají více než 120 GB dat protokolu.
 
 ### <a name="error-logs"></a>Protokoly chyb
 
-Spravovaná instance umísťuje podrobné informace v protokolech chyb. K dispozici je mnoho interních systémových událostí, které jsou zaznamenány v protokolu chyb. Pomocí vlastního postupu si můžete přečíst protokoly chyb, které odfiltrují některé nedůležité položky. Další informace najdete v tématu [spravovaná instance – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) nebo [rozšíření Managed instance (preview)](https://docs.microsoft.com/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) pro Azure Data Studio.
+Spravovaná instance umísťuje podrobné informace v protokolech chyb. K dispozici je mnoho interních systémových událostí, které jsou zaznamenány v protokolu chyb. Pomocí vlastního postupu si můžete přečíst protokoly chyb, které odfiltrují některé nedůležité položky. Další informace najdete v tématu [spravovaná instance – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) nebo [rozšíření Managed instance (preview)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) pro Azure Data Studio.
 
 ## <a name="Issues"></a>Známé problémy
 
@@ -549,15 +545,15 @@ Spravovaná instance umísťuje podrobné informace v protokolech chyb. K dispoz
 
 **Datum:** Říjen 2019
 
-Služba Pro důležité obchodní informace Service – úroveň v některých případech nebude správně používat [maximální limity paměti pro paměťově optimalizované objekty](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space) . Spravovaná instance může úloh povolit používání více paměti pro operace OLTP v paměti, což může mít vliv na dostupnost a stabilitu instance. OLTP dotazy v paměti, které dosáhnou limitu, nemusí selhat immediatelly. Tento problém bude brzy vyřešen. Dotazy, které používají více paměti OLTP v paměti, selžou dříve, pokud dosáhnou [omezení](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space).
+Služba Pro důležité obchodní informace Service – úroveň v některých případech nebude správně používat [maximální limity paměti pro paměťově optimalizované objekty](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space) . Spravovaná instance může povolit zatížení pro využití více paměti pro OLTP operace v paměti, což může mít vliv na dostupnost a stabilitu instance. Dotazy OLTP v paměti, které dosáhnou limitu, nemusí okamžitě selhat. Tento problém bude brzy vyřešen. Dotazy, které používají více paměti OLTP v paměti, selžou dříve, pokud dosáhnou [omezení](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space).
 
-**Alternativní řešení:** [sledujte využití úložiště v paměti OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitoring) pomocí [SQL Server Management Studio](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) a ujistěte se, že zatížení nepoužívá více než dostupnou paměť. Zvyšte limit paměti, který závisí na počtu virtuální jádra, nebo Optimalizujte úlohy tak, aby používaly méně paměti.
+**Alternativní řešení:** [sledujte využití úložiště v paměti OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitoring) pomocí [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) a ujistěte se, že zatížení nepoužívá více než dostupnou paměť. Zvyšte limit paměti, který závisí na počtu virtuální jádra, nebo Optimalizujte úlohy tak, aby používaly méně paměti.
 
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Při pokusu o odebrání neprázdného souboru se vrátila chybná chyba.
 
 **Datum:** Říjen 2019
 
-SQL Server/spravovaná instance [nedovoluje uživateli vyřadit neprázdný soubor](https://docs.microsoft.com/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). Pokud se pokusíte odebrat neprázdný datový soubor pomocí příkazu `ALTER DATABASE REMOVE FILE`, chyba `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` se okamžitě nevrátí. Spravovaná instance bude pokračovat v pokusu o vyřazení souboru a operace se po 30min s `Internal server error` nezdaří.
+SQL Server/spravovaná instance [nedovoluje uživateli vyřadit neprázdný soubor](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). Pokud se pokusíte odebrat neprázdný datový soubor pomocí příkazu `ALTER DATABASE REMOVE FILE`, `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` chyba se okamžitě nevrátí. Spravovaná instance bude pokračovat v pokusu o vyřazení souboru a operace se po 30min s `Internal server error`nezdaří.
 
 **Alternativní řešení**: Odeberte obsah souboru pomocí příkazu `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)`. Pokud se jedná o jediný soubor ve skupině souborů, musíte před zmenšením souboru odstranit data z tabulky nebo oddílu přidruženého k této skupině souborů a případně tato data načíst do jiné tabulky nebo oddílu.
 
@@ -565,7 +561,7 @@ SQL Server/spravovaná instance [nedovoluje uživateli vyřadit neprázdný soub
 
 **Datum:** SEP 2019
 
-Probíhající operace `RESTORE`, proces migrace dat a integrované obnovení k časovému okamžiku zablokuje aktualizaci úrovně služby nebo změny velikosti existující instance a vytváření nových instancí až do dokončení procesu obnovení. Proces obnovení zablokuje tyto operace ve spravovaných instancích a fondech instancí ve stejné podsíti, kde je spuštěn proces obnovení. Instance v fondech instancí nejsou ovlivněny. Operace vytvoření nebo změny vrstvy služeb nebudou úspěšné ani po vypršení časového limitu – budou pokračovat až po dokončení nebo zrušení procesu obnovení.
+Probíhající příkaz `RESTORE`, proces migrace dat a integrované obnovení k časovému okamžiku zablokuje aktualizaci úrovně služby nebo změny velikosti existující instance a vytváření nových instancí až do dokončení procesu obnovení. Proces obnovení zablokuje tyto operace ve spravovaných instancích a fondech instancí ve stejné podsíti, kde je spuštěn proces obnovení. Instance v fondech instancí nejsou ovlivněny. Operace vytvoření nebo změny vrstvy služeb nebudou úspěšné ani po vypršení časového limitu – budou pokračovat až po dokončení nebo zrušení procesu obnovení.
 
 **Alternativní řešení**: Počkejte, než se dokončí proces obnovení, nebo zrušte proces obnovení, pokud má operace vytvoření nebo aktualizace vrstvy služby vyšší prioritu.
 
@@ -574,24 +570,24 @@ Probíhající operace `RESTORE`, proces migrace dat a integrované obnovení k 
 **Datum:** SEP 2019
 
 příkaz `RESTORE` a integrované obnovení k určitému bodu v čase neprovádí některé kontroly nessecary obnovené databáze:
-- Příkaz **DBCC CHECKDB** -  @ no__t-2 neprovede pro obnovenou databázi `DBCC CHECKDB`. Pokud je původní databáze poškozená nebo dojde k poškození záložního souboru při jeho kopírování do úložiště objektů BLOB v Azure, automatické zálohování se nespustí a podpora Azure se obrátí na zákazníka. 
+- Příkaz **DBCC CHECKDB** - `RESTORE` v obnovené databázi neprovede `DBCC CHECKDB`. Pokud je původní databáze poškozená nebo dojde k poškození záložního souboru při jeho kopírování do úložiště objektů BLOB v Azure, automatické zálohování se nespustí a podpora Azure se obrátí na zákazníka. 
 - Nekontroluje se integrovaný proces obnovení k bodu v čase, protože instance automatizovaného zálohování z Pro důležité obchodní informace obsahuje [objekty OLTP v paměti](sql-database-in-memory.md#in-memory-oltp). 
 
-**Alternativní řešení**: před provedením zálohování se ujistěte, že provádíte `DBCC CHECKDB` na zdrojové databázi a použijete možnost `WITH CHECKSUM` v rámci zálohování, aby se předešlo potenciálním poškozením, která by mohla být obnovena na spravované instanci. Ujistěte se, že zdrojová databáze neobsahuje [objekty OLTP v paměti](sql-database-in-memory.md#in-memory-oltp) , pokud ji obnovujete na pro obecné účelyovou vrstvu.
+**Alternativní řešení**: před provedením zálohování se ujistěte, že ve zdrojové databázi spouštíte `DBCC CHECKDB` a použijete `WITH CHECKSUM` možnost zálohování, aby se předešlo potenciálním poškozením, která by se mohla na spravované instanci obnovit. Ujistěte se, že zdrojová databáze neobsahuje [objekty OLTP v paměti](sql-database-in-memory.md#in-memory-oltp) , pokud ji obnovujete na pro obecné účelyovou vrstvu.
 
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Po převzetí služeb při selhání může být potřeba změnit správce prostředků u Pro důležité obchodní informace úrovně služeb
 
 **Datum:** SEP 2019
 
-Funkce [Správce prostředků](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) , která umožňuje omezit prostředky přiřazené k úloze uživatele, může po převzetí služeb při selhání nebo na základě uživatelem iniciované změny úrovně služby (například změna maximálního počtu Vcore nebo maximální instance) nesprávně klasifikovat některé uživatelské úlohy. velikost úložiště).
+Funkce [Správce prostředků](/sql/relational-databases/resource-governor/resource-governor) , která umožňuje omezit prostředky přiřazené k úloze uživatele, může po převzetí služeb při selhání nebo na základě uživatelem iniciované změny úrovně služby (například změna maximálního počtu Vcore nebo maximální instance) nesprávně klasifikovat některé uživatelské úlohy. velikost úložiště).
 
-**Alternativní řešení**: Spusťte `ALTER RESOURCE GOVERNOR RECONFIGURE` pravidelně nebo jako součást úlohy agenta SQL, která SPUSTÍ úlohu SQL při spuštění instance, pokud používáte [Správce zdrojů](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor).
+**Alternativní řešení**: spouštějte `ALTER RESOURCE GOVERNOR RECONFIGURE` pravidelně nebo jako součást úlohy agenta SQL, která SPUSTÍ úlohu SQL, když se instance spouští, pokud používáte [Správce zdrojů](/sql/relational-databases/resource-governor/resource-governor).
 
 ### <a name="cannot-authenticate-to-external-mail-servers-using-secure-connection-ssl"></a>Nejde ověřit u externích poštovních serverů pomocí zabezpečeného připojení (SSL).
 
 **Datum:** Srpna 2019
 
-Databázový e-mail, který je [nakonfigurovaný pomocí zabezpečeného připojení (SSL)](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-database-mail) , se nemůže ověřit na některých e-mailových serverech mimo Azure. Jedná se o problém s konfigurací zabezpečení, který bude brzy vyřešen.
+Databázový e-mail, který je [nakonfigurovaný pomocí zabezpečeného připojení (SSL)](/sql/relational-databases/database-mail/configure-database-mail) , se nemůže ověřit na některých e-mailových serverech mimo Azure. Jedná se o problém s konfigurací zabezpečení, který bude brzy vyřešen.
 
 **Alternativní řešení:** Dočasné odebrání zabezpečeného připojení (SSL) z Konfigurace databázového e-mailu, dokud se problém nevyřeší. 
 
@@ -599,23 +595,23 @@ Databázový e-mail, který je [nakonfigurovaný pomocí zabezpečeného připoj
 
 **Datum:** Srpna 2019
 
-Dialogy Service Broker mezi databázemi ukončí doručování zpráv do služeb v jiných databázích po provedení operace změny úrovně služby. Zprávy nejsou **ztraceny** a je možné je najít ve frontě odesílatelů. Jakákoli změna velikosti úložiště virtuální jádra nebo instance ve spravované instanci způsobí, že se hodnota `service_broke_guid` v zobrazení [Sys. databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) změní pro všechny databáze. Jakékoli `DIALOG` vytvořené pomocí příkazu [Begin dialog](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) , který odkazuje na zprostředkovatele služby v jiných databázích, přestanou doručování zpráv cílové službě.
+Dialogy Service Broker mezi databázemi ukončí doručování zpráv do služeb v jiných databázích po provedení operace změny úrovně služby. Zprávy nejsou **ztraceny** a je možné je najít ve frontě odesílatelů. Jakákoli změna velikosti úložiště virtuální jádra nebo instance ve spravované instanci způsobí, že se pro všechny databáze změní `service_broke_guid` hodnota v zobrazení [Sys. databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) . Jakékoli `DIALOG` vytvořené pomocí příkazu [Begin dialog](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) , který odkazuje na zprostředkovatele služby v jiné databázi, zastaví doručování zpráv cílové službě.
 
 **Alternativní řešení:** Před aktualizací úrovně služby zastavte všechny aktivity, které používají konverzaci mezi Service Brokermi databázemi, a potom je znovu inicializujte. Pokud jsou zbývající zprávy nedoručené po změně úrovně služeb, přečtěte si zprávy ze zdrojové fronty a znovu je odešlete do cílové fronty.
 
-### <a name="impersonification-of-aad-login-types-is-not-supported"></a>Impersonification typů přihlášení AAD se nepodporuje.
+### <a name="impersonification-of-azure-ad-login-types-is-not-supported"></a>Impersonification typů přihlášení Azure AD se nepodporuje.
 
 **Datum:** Červenec 2019
 
-Zosobnění pomocí `EXECUTE AS USER` nebo `EXECUTE AS LOGIN` z následujících objektů zabezpečení AAD není podporované:
+Zosobnění pomocí `EXECUTE AS USER` nebo `EXECUTE AS LOGIN` následujících objektů zabezpečení AAD není podporované:
 -   Uživatelé AAD s aliasem V tomto případě se vrátí následující chyba `15517`.
-- Přihlášení AAD a uživatelé na základě aplikací AAD nebo instančních objektů. V tomto případě se vrátí následující chyby `15517` a `15406`.
+- Přihlášení AAD a uživatelé na základě aplikací AAD nebo instančních objektů. V tomto případě jsou v tomto případě `15517` a `15406`vráceny následující chyby.
 
-### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>parametr @query není v sp_send_db_mail podporován.
+### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>parametr @query není v sp_send_db_mail podporovaný.
 
 **Datum:** Duben 2019
 
-Parametr `@query` v proceduře [sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) nefunguje.
+Parametr `@query` v proceduře [sp_send_db_mail](/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) nefunguje.
 
 ### <a name="transactional-replication-must-be-reconfigured-after-geo-failover"></a>Po geografickém převzetí služeb při selhání je potřeba znovu nakonfigurovat transakční replikaci.
 
@@ -623,13 +619,11 @@ Parametr `@query` v proceduře [sp_send_db_mail](https://docs.microsoft.com/sql/
 
 Pokud je transakční replikace povolená v databázi ve skupině automatického převzetí služeb při selhání, musí správce spravované instance vyčistit všechny publikace na staré primární primární databázi a po převzetí služeb při selhání do jiné oblasti je znovu nakonfigurovat na nové primární úrovni. Další podrobnosti najdete v tématu [replikace](#replication) .
 
-### <a name="aad-logins-and-users-are-not-supported-in-tools"></a>Přihlášení AAD a uživatelé nejsou v nástrojích podporované.
+### <a name="aad-logins-and-users-are-not-supported-in-ssdt"></a>Přihlášení AAD a uživatelé nejsou v SSDT podporované.
 
-**Datum:** Leden 2019
+**Datum:** Listopadu 2019
 
-Nástroje SQL Server Management Studio a SQL Server Data Tools plně nepodporují přihlášení a uživatele Azure Active Directory.
-- Používání objektů zabezpečení serveru Azure AD (přihlášení) a uživatelů (Public Preview) s nástroji SQL Server Data Tools aktuálně není podporováno.
-- V SQL Server Management Studio se nepodporuje skriptování pro objekty zabezpečení serveru Azure AD (přihlášení) a uživatele (ve verzi Public Preview).
+Nástroje SQL Server Data Tools plně nepodporují přihlášení a uživatele Azure Active Directory.
 
 ### <a name="temporary-database-is-used-during-restore-operation"></a>Během operace obnovení se používá dočasná databáze.
 
@@ -639,11 +633,11 @@ Když se databáze na spravované instanci obnovuje, služba obnovení nejprve v
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>Struktura a obsah TEMPDB se znovu vytvoří.
 
-Databáze `tempdb` je vždy rozdělena do 12 datových souborů a struktura souborů nemůže být změněna. Maximální velikost na soubor nelze změnit a nelze přidat nové soubory do `tempdb`. `Tempdb` se vždycky znovu vytvoří jako prázdná databáze při spuštění nebo převzetí služeb při selhání a jakékoli změny provedené v `tempdb` se nezachovají.
+Databáze `tempdb` je vždy rozdělena do 12 datových souborů a struktura souborů nemůže být změněna. Maximální velikost na soubor nelze změnit a nelze přidat nové soubory do `tempdb`. `Tempdb` je vždy znovu vytvořen jako prázdná databáze při spuštění nebo převzetí služeb při selhání a jakékoli změny provedené v `tempdb` nebudou zachovány.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Překročení úložného prostoru s malými databázovými soubory
 
-příkazy `CREATE DATABASE`, `ALTER DATABASE ADD FILE` a `RESTORE DATABASE` pravděpodobně selžou, protože instance může dosáhnout limitu Azure Storage.
+příkazy `CREATE DATABASE`, `ALTER DATABASE ADD FILE`a `RESTORE DATABASE` mohou selhat, protože instance může dosáhnout limitu Azure Storage.
 
 Každá Pro obecné účely spravovaná instance má až 35 TB úložiště rezervovaného pro místo na disku Azure Premium. Každý databázový soubor je umístěn na samostatném fyzickém disku. Velikosti disků můžou být 128 GB, 256 GB, 512 GB, 1 TB nebo 4 TB. Nevyužité místo na disku se neúčtuje, ale celkový součet velikostí disků Azure Premium nesmí překročit 35 TB. V některých případech může spravovaná instance, která nepotřebuje 8 TB celkem, překročit 35 TB Azure na velikost úložiště kvůli vnitřní fragmentaci.
 
@@ -656,7 +650,7 @@ Tento příklad ilustruje, že za určitých okolností, v důsledku konkrétní
 
 V tomto příkladu existující databáze fungují i nadále a můžou růst bez jakýchkoli potíží, pokud se nepřidá nové soubory. Nové databáze nelze vytvořit ani obnovit, protože není dostatek místa pro nové diskové jednotky, ani v případě, že celková velikost všech databází nedosáhne limitu velikosti instance. Chyba, která se vrátí v tomto případě, není jasná.
 
-[Počet zbývajících souborů můžete identifikovat](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) pomocí systémových zobrazení. Pokud dosáhnete tohoto limitu, zkuste [vyprázdnit a odstranit některé menší soubory pomocí příkazu DBCC SHRINKFILE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) nebo přepněte na [pro důležité obchodní informaceovou vrstvu, která nemá toto omezení](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
+[Počet zbývajících souborů můžete identifikovat](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) pomocí systémových zobrazení. Pokud dosáhnete tohoto limitu, zkuste [vyprázdnit a odstranit některé menší soubory pomocí příkazu DBCC SHRINKFILE](/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) nebo přepněte na [pro důležité obchodní informaceovou vrstvu, která nemá toto omezení](/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
 
 ### <a name="guid-values-shown-instead-of-database-names"></a>Hodnoty GUID, které se zobrazují místo názvů databází
 
@@ -668,7 +662,7 @@ Protokoly chyb, které jsou k dispozici ve spravované instanci, nejsou trvale u
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>Obor transakce ve dvou databázích v rámci stejné instance není podporovaný.
 
-Třída `TransactionScope` v rozhraní .NET nefunguje, pokud se dva dotazy odesílají do dvou databází v rámci stejné instance v rámci stejného oboru transakce:
+Třída `TransactionScope` v rozhraní .NET nefunguje, pokud jsou dva dotazy odesílány do dvou databází v rámci stejné instance v rámci stejného oboru transakce:
 
 ```csharp
 using (var scope = new TransactionScope())
@@ -695,7 +689,7 @@ using (var scope = new TransactionScope())
 
 I když tento kód funguje s daty v rámci stejné instance, vyžaduje MSDTC.
 
-**Alternativní řešení:** Použijte [SqlConnection. ChangeDatabase (String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) pro použití jiné databáze v kontextu připojení namísto použití dvou připojení.
+**Alternativní řešení:** Použijte [SqlConnection. ChangeDatabase (String)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) pro použití jiné databáze v kontextu připojení namísto použití dvou připojení.
 
 ### <a name="clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address"></a>Moduly CLR a propojené servery někdy nemůžou odkazovat na místní IP adresu.
 

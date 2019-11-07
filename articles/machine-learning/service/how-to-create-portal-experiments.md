@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 05bae18d35eafc47eddc7c1450eb06af5bbe5562
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e1bb84c142fb24086cf6c11a7b1070bdd29ae3f2
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497183"
+ms.locfileid: "73581276"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Vytvářejte, Zkoumejte a nasaďte automatizované experimenty strojového učení pomocí Azure Machine Learning studia
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -25,13 +25,13 @@ ms.locfileid: "73497183"
 
  Pokud dáváte přednost více prostředím založeným na kódu, můžete [v Pythonu nakonfigurovat i automatizované experimenty strojového učení](how-to-configure-auto-train.md) s [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * Azure Machine Learning pracovní prostor s typem edice **Enterprise**. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).  Pokud chcete upgradovat stávající pracovní prostor na edici Enterprise, přečtěte si téma [upgrade na Enterprise Edition](how-to-manage-workspace.md#upgrade).
 
-## <a name="get-started"></a>Začít
+## <a name="get-started"></a>Začínáme
 
 1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com). 
 
@@ -68,11 +68,11 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
         ----|----
         Formát souboru| Definuje rozložení a typ dat uložených v souboru.
         Oddělovač| Jeden nebo více znaků pro určení hranice mezi oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech.
-        Encoding| Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.
+        Kódování| Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.
         Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).
         Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.
     
-        Vyberte **Další**.
+        Vyberte **Next** (Další).
 
     1. Formulář **schématu** se inteligentně vyplní na základě výběrů ve formuláři **nastavení a náhled** . Tady můžete nakonfigurovat datový typ pro každý sloupec, zkontrolovat názvy sloupců a vybrat, které sloupce nechcete pro svůj experiment **Zahrnout** . 
             
@@ -80,7 +80,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 
     1. Formulář **potvrdit podrobnosti** je souhrn informací, které byly dříve vyplněny ve formulářích **základní informace** a **nastavení a náhled** . Máte také možnost profilovat datovou sadu pomocí výpočetní služby s povoleným profilací. Přečtěte si další informace o [profilování dat](#profile).
 
-        Vyberte **Další**.
+        Vyberte **Next** (Další).
 1. Jakmile se zobrazí, vyberte nově vytvořenou datovou sadu. Můžete si také zobrazit náhled datové sady a vzorových statistik. 
 
 1. Ve formuláři **Konfigurace spuštění** zadejte jedinečný název experimentu.
@@ -97,14 +97,14 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
     Velikost virtuálního počítače| Vyberte velikost virtuálního počítače pro výpočetní výkon.
     Minimální/maximální počet uzlů (v rozšířených nastaveních)| Chcete-li profilovat data, je nutné zadat 1 nebo více uzlů. Zadejte maximální počet uzlů pro výpočetní výkon. Výchozí hodnota je 6 uzlů pro AML Compute.
     
-    Vyberte **Create** (Vytvořit). Vytváření nových výpočetních prostředků může trvat několik minut.
+    Vyberte **Vytvořit**. Vytváření nových výpočetních prostředků může trvat několik minut.
 
     >[!NOTE]
     > Váš název COMPUTE určí, jestli je *povolená možnost profilace*, kterou vybíráte nebo vytváříte. (Další podrobnosti najdete v části [profilace dat](#profile) .)
 
-    Vyberte **Další**.
+    Vyberte **Next** (Další).
 
-1. Ve formuláři **typ úlohy a nastavení** vyberte typ úkolu: klasifikace, regrese nebo prognózování. 
+1. Ve formuláři **typ úlohy a nastavení** vyberte typ úkolu: klasifikace, regrese nebo prognózování. Další informace najdete v tématu [Definování typů úloh](how-to-define-task-type.md) .
 
     1. V případě klasifikace můžete také povolit obsáhlý Learning, který se používá pro text featurizations.
 
@@ -140,7 +140,7 @@ Profil| Vložená vizualizace na základě typu odvozeného. Například řetěz
 Distribuce typu| Počet vložené hodnoty typů v rámci sloupce. Hodnoty null jsou jejich vlastní typ, takže tato vizualizace je užitečná pro zjištění lichých nebo chybějících hodnot.
 Typ|Odvozený typ sloupce. Možné hodnoty jsou: řetězce, logické hodnoty, kalendářní data a desetinná místa.
 Minimum| Minimální hodnota sloupce Pro funkce, jejichž typ nemá základní řazení (např. logické hodnoty), se zobrazí prázdné položky.
-Max.| Maximální hodnota sloupce 
+Maximum| Maximální hodnota sloupce 
 Počet| Celkový počet chybějících a nechybějících položek ve sloupci
 Počet nechybějících| Počet položek ve sloupci, které nebyly nalezeny. Prázdné řetězce a chyby jsou považovány za hodnoty, takže nebudou přispívat k "nechybějícímu počtu".
 Quantiles| Přibližné hodnoty na jednotlivých Quantile, které poskytují smysl distribuce dat.
@@ -205,12 +205,17 @@ Automatizované ML vám pomůže s nasazením modelu bez psaní kódu:
 
     Pole| Hodnota
     ----|----
-    Název nasazení| Zadejte jedinečný název pro vaše nasazení.
-    Popis nasazení| Zadejte popis, který bude lépe identifikovat, pro které nasazení probíhá.
-    Skript bodování| Vygeneruje nebo nahraje vlastní soubor bodování. [Přečtěte si další informace o skriptu bodování](how-to-deploy-and-where.md#script).
-    Skript prostředí| Vygeneruje nebo nahraje vlastní soubor prostředí.
+    Name (Název)| Zadejte jedinečný název pro vaše nasazení.
+    Popis| Zadejte popis, který bude lépe identifikovat, pro které nasazení probíhá.
+    Typ výpočtu| Vyberte typ koncového bodu, který chcete nasadit: *Azure Kubernetes Service (AKS)* nebo *Azure Container instance (ACI)* .
+    Name (Název)| *Platí jenom pro AKS:* Vyberte název clusteru AKS, do kterého chcete nasadit.
+    Povolení ověřování | Tuto možnost vyberte, pokud chcete povolení ověřování na základě tokenu nebo klíče.
+    Použití vlastních prostředků nasazení| Tuto funkci povolte, pokud chcete nahrát vlastní skript bodování a soubor prostředí. [Přečtěte si další informace o skriptech bodování](how-to-deploy-and-where.md#script).
+
     >[!Important]
     > Názvy souborů musí být pod 32 znaků a musí začínat a končit alfanumerickými znaky. Může obsahovat pomlčky, podtržítka, tečky a alfanumerické znaky mezi. Mezery nejsou povoleny.
+
+    Nabídka *Upřesnit* nabízí výchozí funkce pro nasazení, jako je nastavení shromažďování dat a využití prostředků. Pokud si přejete přepsat tato výchozí nastavení, udělejte to v této nabídce.
 
 1. Vyberte **Nasadit**. Dokončení nasazení může trvat přibližně 20 minut.
 

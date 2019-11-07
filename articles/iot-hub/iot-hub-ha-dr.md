@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: philmea
-ms.openlocfilehash: f1944e06989844528a55c89f82c3db3b3a28dca1
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 533a199f75baa5a27ed06698f22d4d046be45507
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876901"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607880"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub vysoká dostupnost a zotavení po havárii
 
@@ -45,7 +45,7 @@ Možnosti obnovení dostupné zákazníkům v takové situaci představují [př
 
 Obě tyto možnosti převzetí služeb při selhání nabízejí následující cíle bodů obnovení (RPO):
 
-| Datový typ | Cíle bodu obnovení (RPO) |
+| Data type | Cíle bodu obnovení (RPO) |
 | --- | --- |
 | Registr identit |0-5 min. ztráta dat |
 | Data vlákna zařízení |0-5 min. ztráta dat |
@@ -62,7 +62,7 @@ Až se operace převzetí služeb při selhání pro Centrum IoT dokončí, oče
 > [!CAUTION]
 > - Název a koncový bod, který je kompatibilní s centrem událostí, se po převzetí služeb při selhání změní na koncový bod IoT Hub integrovaných událostí. Při přijímání zpráv telemetrie z integrovaného koncového bodu pomocí klienta centra událostí nebo hostitele procesoru událostí byste měli připojení vytvořit [pomocí připojovacího řetězce služby IoT Hub](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) . Tím zajistíte, že vaše back-endové aplikace budou dál fungovat, aniž by bylo nutné ruční zásah po převzetí služeb při selhání. Pokud použijete název a koncový bod kompatibilní s centrem událostí ve vaší back-endové aplikaci přímo, budete muset znovu nakonfigurovat aplikaci tak, že po převzetí služeb při selhání znovu nakonfigurujete [nový název a koncový bod kompatibilní](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) s centrem událostí, aby bylo možné pokračovat v operacích.
 >
-> - Při směrování do úložiště objektů BLOB doporučujeme zařadit objekty BLOB a potom je v nich vyřadit, aby se zajistilo, že všechny kontejnery budou čteny bez jakýchkoli předpokladů oddílu. Rozsah oddílu se může během převzetí služeb při selhání nebo ručního převzetí služeb při selhání iniciovat společnosti Microsoft změnit. Informace o tom, jak vytvořit výčet seznamu objektů blob, najdete v tématu [směrování do úložiště objektů BLOB](iot-hub-devguide-messages-d2c.md#azure-blob-storage).
+> - Při směrování do úložiště doporučujeme, abyste zavedli kontejner úložiště a pak na ně prováděli iteraci, aby se zajistilo, že všechny kontejnery budou čteny bez jakýchkoli předpokladů oddílu. Rozsah oddílu se může během převzetí služeb při selhání nebo ručního převzetí služeb při selhání iniciovat společnosti Microsoft změnit. Informace o tom, jak vytvořit výčet seznamu objektů blob, najdete v tématu [směrování do služby Azure Storage](iot-hub-devguide-messages-d2c.md#azure-storage).
 
 ## <a name="microsoft-initiated-failover"></a>Převzetí služeb při selhání iniciované Microsoftem
 
@@ -113,9 +113,9 @@ Aby bylo možné implementovat model regionálního převzetí služeb při selh
    > [!NOTE]
    > Služba IoT Hub není podporovaným typem koncového bodu v Azure Traffic Manager. Doporučením je integrovat navrhovanou službu concierge do Azure Traffic Manageru tím, že implementuje rozhraní API sondy stavu koncového bodu.
 
-* **Replikace registru identit**: Aby bylo možné použít sekundární centrum IoT, musí obsahovat všechny identity zařízení, které se můžou k řešení připojit. Řešení by mělo uchovávat geograficky replikované zálohy identit zařízení a odeslat je do sekundárního služby IoT Hub předtím, než přepnete aktivní koncový bod pro daná zařízení. V tomto kontextu je užitečná funkce exportu identity zařízení IoT Hub. Další informace najdete v tématu [IoT Hub příručka pro vývojáře – registr identit](iot-hub-devguide-identity-registry.md).
+* **Replikace registru identit**: aby bylo možné použít, sekundární centrum IoT musí obsahovat všechny identity zařízení, které se mohou připojit k řešení. Řešení by mělo uchovávat geograficky replikované zálohy identit zařízení a odeslat je do sekundárního služby IoT Hub předtím, než přepnete aktivní koncový bod pro daná zařízení. V tomto kontextu je užitečná funkce exportu identity zařízení IoT Hub. Další informace najdete v tématu [IoT Hub příručka pro vývojáře – registr identit](iot-hub-devguide-identity-registry.md).
 
-* **Slučuje se logika**: Jakmile bude primární oblast opět k dispozici, všechny stavy a data, které byly vytvořeny v sekundární lokalitě, musí být migrovány zpět do primární oblasti. Tato data a data se většinou vztahují k identitám zařízení a metadatům aplikací, které je potřeba sloučit s primárním centrem IoT a dalšími obchody pro konkrétní aplikace v primární oblasti. 
+* **Sloučení logiky**: když bude primární region opět k dispozici, všechny stavy a data, které byly vytvořeny v sekundární lokalitě, musí být migrovány zpět do primární oblasti. Tato data a data se většinou vztahují k identitám zařízení a metadatům aplikací, které je potřeba sloučit s primárním centrem IoT a dalšími obchody pro konkrétní aplikace v primární oblasti. 
 
 Pro zjednodušení tohoto kroku byste měli použít operace idempotentní. Operace idempotentní minimalizují vedlejší účinky z konečné souvislé distribuce událostí a z duplicitních nebo neseřazených doručení událostí. Kromě toho by měla být logika aplikace navržena tak, aby tolerována potenciální nekonzistence nebo mírně neaktuálního stavu. K této situaci může dojít v důsledku dodatečné doby potřebné k tomu, aby systém mohl na základě cílů bodu obnovení (RPO) provést zacelení.
 
@@ -123,14 +123,14 @@ Pro zjednodušení tohoto kroku byste měli použít operace idempotentní. Oper
 
 Tady je souhrn možností HA/DR prezentovaných v tomto článku, které se dají použít jako rámec Reference k výběru správné možnosti, která funguje pro vaše řešení.
 
-| Možnost HA/DR | RTO | Cíl bodu obnovení (RPO) | Vyžaduje ruční zásah? | Složitost implementace | Dodatečný dopad na náklady|
+| Možnost HA/DR | RTO | OBNOVENÍ | Vyžaduje ruční zásah? | Složitost implementace | Dodatečný dopad na náklady|
 | --- | --- | --- | --- | --- | --- |
-| Převzetí služeb při selhání iniciované Microsoftem |2-26 hodin|Odkaz na tabulku RPO výše|Ne|Žádné|Žádné|
-| Ruční převzetí služeb při selhání |10 minut – 2 hodiny|Odkaz na tabulku RPO výše|Ano|Velmi nízká. Tuto operaci musíte aktivovat jenom z portálu.|Žádné|
-| HA mezi oblastmi |< 1 min.|Závisí na četnosti replikace vlastního řešení HA.|Ne|Vysoká|> 1x náklady 1 centra IoT|
+| Převzetí služeb při selhání iniciované Microsoftem |2-26 hodin|Odkaz na tabulku RPO výše|Ne|Žádný|Žádný|
+| Ruční převzetí služeb při selhání |10 minut – 2 hodiny|Odkaz na tabulku RPO výše|Ano|Velmi nízká. Tuto operaci musíte aktivovat jenom z portálu.|Žádný|
+| HA mezi oblastmi |< 1 min.|Závisí na četnosti replikace vlastního řešení HA.|Ne|Vysoký|> 1x náklady 1 centra IoT|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Co je Azure IoT Hub?](about-iot-hub.md)
 * [Začínáme se službou IoT Hub (rychlý Start)](quickstart-send-telemetry-dotnet.md)
-* [Kurz: Provedení ručního převzetí služeb při selhání pro Centrum IoT](tutorial-manual-failover.md)
+* [Kurz: provedení ručního převzetí služeb při selhání pro Centrum IoT](tutorial-manual-failover.md)

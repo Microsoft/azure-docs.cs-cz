@@ -1,5 +1,5 @@
 ---
-title: Jak nakonfigurovat Azure SQL Database – Single | Microsoft Docs
+title: Postup konfigurace Azure SQL Database-Single
 description: Informace o tom, jak nakonfigurovat a spravovat Azure SQL Database-Single Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 02/08/2019
-ms.openlocfilehash: 2117a811f977230dd9c9eecf6ea09b9b7deda3be
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 45e25641092fae36cd58a59400cea025f74cbc1f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568040"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689901"
 ---
 # <a name="how-to-use-a-single-database-in-azure-sql-database"></a>Jak používat izolovanou databázi v Azure SQL Database
 
@@ -72,5 +72,5 @@ V této části najdete různé příručky, skripty a vysvětlení, které vám
 - [Použijte Entity Framework](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) k dotazování horizontálně dělené dat.
 - [Použijte dapperem Framework](sql-database-elastic-scale-working-with-dapper.md) pro dotazování dat horizontálně dělené.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o [průvodcích pro spravovanou instanci](sql-database-howto-managed-instance.md)

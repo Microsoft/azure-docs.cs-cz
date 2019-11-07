@@ -8,12 +8,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 4f1b8b116cf2a8411a90946dd5801dd1e541323c
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: bcdc6633980ec3684217c8c19b4799befe2af3a3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063955"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576854"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -33,9 +33,9 @@ Můžete sestavit zobrazení distribuované logické operace pomocí `operation_
 
 V prostředí mikroslužeb můžou trasování z komponent přejít na jiné položky úložiště. Každá součást může mít vlastní klíč instrumentace v Application Insights. Pro získání telemetrie pro logickou operaci Application Insights UX dotazuje data z každé položky úložiště. Pokud je počet položek úložiště obrovský, budete potřebovat nápovědu, kde můžete hledat další. Datový model Application Insights definuje dvě pole pro vyřešení tohoto problému: `request.source` a `dependency.target`. První pole identifikuje komponentu, která iniciovala požadavek závislosti, a druhý identifikuje, která komponenta vrátila odpověď na volání závislostí.
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 
-Podíváme se na příklad aplikace s názvem ceny akcií, která zobrazuje aktuální cenu na trhu na populaci pomocí externího rozhraní API s názvem `Stock`. Aplikace burzovních cen má stránku s názvem `Stock page`, kterou klientský webový prohlížeč otevře pomocí `GET /Home/Stock`. Aplikace se dotazuje rozhraní `Stock` API pomocí `GET /api/stock/value` volání HTTP.
+Podíváme se na příklad aplikace s názvem ceny akcií, která zobrazuje aktuální cenu na trhu na populaci pomocí externího rozhraní API s názvem `Stock`. Aplikace burzovních cen má stránku s názvem `Stock page`, kterou klientský webový prohlížeč otevře pomocí `GET /Home/Stock`. Aplikace se dotazuje rozhraní `Stock` API pomocí `GET /api/stock/value`volání HTTP.
 
 Výslednou telemetrii můžete analyzovat spuštěním dotazu:
 
@@ -90,8 +90,8 @@ Pokud spouštíte starší verzi sady SDK, doporučujeme ji aktualizovat nebo po
 Tato funkce je k dispozici v `Microsoft.ApplicationInsights.Web` a `Microsoft.ApplicationInsights.DependencyCollector` balíčky počínaje verzí 2.8.0-Beta1.
 Ve výchozím nastavení je zakázaný. Pokud ho chcete povolit, změňte `ApplicationInsights.config`:
 
-- V části `RequestTrackingTelemetryModule` přidejte prvek `EnableW3CHeadersExtraction` s hodnotou nastavenou na `true`.
-- V části `DependencyTrackingTelemetryModule` přidejte prvek `EnableW3CHeadersInjection` s hodnotou nastavenou na `true`.
+- V části `RequestTrackingTelemetryModule`přidejte prvek `EnableW3CHeadersExtraction` s hodnotou nastavenou na `true`.
+- V části `DependencyTrackingTelemetryModule`přidejte prvek `EnableW3CHeadersInjection` s hodnotou nastavenou na `true`.
 - Přidat `W3COperationCorrelationTelemetryInitializer` pod `TelemetryInitializers` podobně jako 
 
 ```xml
@@ -248,10 +248,10 @@ Tím se na místním počítači spustí ukázková `flask` aplikace, která nas
 ```
 curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01" localhost:8080
 ```
-Při prohlížení [formátu hlavičky kontextu trasování](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)se odvozují tyto informace: `version`: `00` 
- `trace-id`: `4bf92f3577b34da6a3ce929d0e0e4736` 
- `parent-id/span-id`: `00f067aa0ba902b7` 
- 0: 1
+Při prohlížení [formátu hlavičky kontextu trasování](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)se odvozují tyto informace: `version`: `00`
+`trace-id`: `4bf92f3577b34da6a3ce929d0e0e4736`
+`parent-id/span-id`: `00f067aa0ba902b7`
+`trace-flags`: `01`
 
 Pokud se podíváme na záznam žádosti, který byl odeslán do Azure Monitor, uvidíme pole vyplněná informacemi v hlavičce trasování. Tato data najdete v části protokoly (Analytics) v prostředku Azure Monitor Application Insights.
 
@@ -263,7 +263,7 @@ Pole `operation_ParentId` je ve formátu `<trace-id>.<parent-id>`, kde `trace-id
 
 ### <a name="logs-correlation"></a>Korelace protokolů
 
-OpenCensus Python umožňuje korelaci protokolů obohacením záznamů protokolu s ID trasování, rozpětím ID a vzorkovacím příznakem. To se provádí instalací [integrace protokolování](https://pypi.org/project/opencensus-ext-logging/)OpenCensus. Do `LogRecord`s Pythonu se přidají následující atributy: `traceId`, `spanId` a `traceSampled`. Všimněte si, že se to projeví jenom u protokolovacích nástrojů vytvořených po integraci.
+OpenCensus Python umožňuje korelaci protokolů obohacením záznamů protokolu s ID trasování, rozpětím ID a vzorkovacím příznakem. To se provádí instalací [integrace protokolování](https://pypi.org/project/opencensus-ext-logging/)OpenCensus. Do Python `LogRecord`s se přidají následující atributy: `traceId`, `spanId` a `traceSampled`. Všimněte si, že se to projeví jenom u protokolovacích nástrojů vytvořených po integraci.
 Níže je uvedená ukázková aplikace, která to demonstruje.
 
 ```python
@@ -308,7 +308,7 @@ Tyto metody ale nepovolily automatickou podporu distribuovaného trasování. `D
 
 ASP.NET Core 2,0 podporuje extrakci hlaviček protokolu HTTP a spuštění nové aktivity.
 
-`System.Net.Http.HttpClient` počínaje verzí 4.1.0 podporuje automatické vkládání hlaviček protokolu HTTP korelace a sledování volání HTTP jako aktivity.
+`System.Net.Http.HttpClient`počínaje verzí 4.1.0 podporuje automatické vkládání hlaviček protokolu HTTP korelace a sledování volání HTTP jako aktivity.
 
 Pro klasický ASP.NET je k dispozici nový modul HTTP, [Microsoft. ASPNET. TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/). Tento modul implementuje korelaci telemetrie pomocí `DiagnosticSource`. Spustí aktivitu na základě hlaviček příchozích požadavků. Také koreluje telemetrie z různých fází zpracování požadavků, a to i v případě, že se každá fáze zpracování Internetová informační služba (IIS) spouští v jiném spravovaném vlákně.
 
@@ -334,25 +334,22 @@ Pro korelaci telemetrie v aplikaci asynchronního spouštění pomocí pružiny 
 
 V některých případech můžete chtít přizpůsobit způsob, jakým se názvy komponent zobrazují v [mapě aplikace](../../azure-monitor/app/app-map.md). K tomu můžete ručně nastavit `cloud_RoleName` pomocí jedné z následujících akcí:
 
+- Počínaje Application Insights Java SDK 2.5.0 můžete zadat název cloudové role přidáním `<RoleName>` do souboru `ApplicationInsights.xml`, např.
+
+  ```XML
+  <?xml version="1.0" encoding="utf-8"?>
+  <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+     <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+     <RoleName>** Your role name **</RoleName>
+     ...
+  </ApplicationInsights>
+  ```
+
 - Pokud používáte jarní spouštění s Application Insightsm Starter Boot Starter, jediná požadovaná změna je nastavení vlastního názvu aplikace v souboru Application. Properties.
 
   `spring.application.name=<name-of-app>`
 
   Jaře Boot Starter automaticky přiřadí `cloudRoleName` k hodnotě, kterou zadáte pro vlastnost `spring.application.name`.
-
-- Pokud používáte `WebRequestTrackingFilter`, `WebAppNameContextInitializer` automaticky nastaví název aplikace. Do konfiguračního souboru (ApplicationInsights. XML) přidejte následující:
-
-  ```XML
-  <ContextInitializers>
-    <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebAppNameContextInitializer" />
-  </ContextInitializers>
-  ```
-
-- Pokud používáte třídu kontextu cloudu:
-
-  ```Java
-  telemetryClient.getContext().getCloud().setRole("My Component Name");
-  ```
 
 ## <a name="next-steps"></a>Další kroky
 

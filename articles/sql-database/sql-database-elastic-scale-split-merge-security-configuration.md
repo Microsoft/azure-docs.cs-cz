@@ -1,5 +1,5 @@
 ---
-title: Konfigurace zabezpečení dělení a slučování | Microsoft Docs
+title: Konfigurace zabezpečení dělení a slučování
 description: Nastavte certifikáty x409 pro šifrování pomocí služby dělení a sloučení pro elastické škálování.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: ada794807f980854c203b56874e452713ecef6ea
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 98d645fc76010d96bc016a63b4882979f3489698
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568356"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690140"
 ---
 # <a name="split-merge-security-configuration"></a>Konfigurace zabezpečení dělení a slučování
 
@@ -37,8 +37,8 @@ Pokud tyto možnosti nejsou k dispozici, můžete vygenerovat **certifikáty pod
 
 ## <a name="tools-to-generate-certificates"></a>Nástroje pro generování certifikátů
 
-* [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
-* [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
+* [Makecert. exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
+* [Pvk2Pfx. exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>Spuštění nástrojů
 
@@ -47,7 +47,7 @@ Pokud tyto možnosti nejsou k dispozici, můžete vygenerovat **certifikáty pod
     Pokud je nainstalován, přejít na:
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* Získat WDK z [Windows 8.1: Stažení sad a nástrojů](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* Získat WDK z [Windows 8.1: stažení sad a nástrojů](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>Konfigurace certifikátu SSL
 
@@ -120,7 +120,7 @@ Výchozí konfigurace odepírá přístup ke koncovému bodu HTTP. Toto je dopor
 Výchozí konfigurace umožňuje přístup ke koncovému bodu HTTPS. Toto nastavení může být omezeno.
 
 ### <a name="changing-the-configuration"></a>Změna konfigurace
-Skupina pravidel řízení přístupu, která platí pro a koncový bod, se konfiguruje v  **\<části > EndpointAcls** v **konfiguračním souboru služby**.
+Skupina pravidel řízení přístupu, která platí pro a koncový bod, se konfiguruje v části **\<EndpointAcls >** v **konfiguračním souboru služby**.
 
 ```xml
 <EndpointAcls>
@@ -129,7 +129,7 @@ Skupina pravidel řízení přístupu, která platí pro a koncový bod, se konf
 </EndpointAcls>
 ```
 
-Pravidla ve skupině řízení přístupu jsou konfigurována v \<části AccessControl Name = "" > konfiguračního souboru služby. 
+Pravidla ve skupině řízení přístupu se konfigurují v \<AccessControl název = "" > konfiguračního souboru služby. 
 
 Formátování je vysvětleno v části Access Control sítě seznam v dokumentaci.
 Pokud třeba chcete, aby se pro přístup ke koncovému bodu HTTPS 100.100.0.0 jenom IP adresy v rozsahu, který bude 100.100.255.255, budou tato pravidla vypadat takto:
@@ -422,8 +422,8 @@ Postupujte následovně:
 3. Vyberte **certifikáty**.
 4. Klikněte na **Přidat**.
 5. Vyberte umístění úložiště certifikátů.
-6. Klikněte na tlačítko **Dokončit**.
-7. Klikněte na **OK**.
+6. Klikněte na **Dokončit**.
+7. Klikněte na tlačítko **OK**.
 8. Rozbalte položku **certifikáty**.
 9. Rozbalte uzel úložiště certifikátů.
 10. Rozbalte uzel podřízený certifikát.
@@ -442,8 +442,8 @@ V **Průvodci exportem certifikátu**:
 8. Klikněte na **Další**.
 9. Zadejte nebo vyhledejte název souboru, kam se má certifikát Uložit (použijte. Přípona PFX).
 10. Klikněte na **Další**.
-11. Klikněte na tlačítko **Dokončit**.
-12. Klikněte na **OK**.
+11. Klikněte na **Dokončit**.
+12. Klikněte na tlačítko **OK**.
 
 ## <a name="import-certificate"></a>Importovat certifikát
 V Průvodci importem certifikátu:
@@ -460,12 +460,12 @@ V Průvodci importem certifikátu:
 5. Vyberte "umístit" certifikáty v následujícím úložišti
 6. Klikněte na **Browse** (Procházet).
 7. Vyberte požadované úložiště.
-8. Klikněte na tlačítko **Dokončit**.
+8. Klikněte na **Dokončit**.
    
    * Pokud se zvolilo úložiště Důvěryhodné kořenové certifikační autority, klikněte na **Ano**.
 9. Ve všech dialogových oknech klikněte na **OK** .
 
-## <a name="upload-certificate"></a>Nahrát certifikát
+## <a name="upload-certificate"></a>Nahrání certifikátu
 Na webu [Azure Portal](https://portal.azure.com/)
 
 1. Vyberte **Cloud Services**.

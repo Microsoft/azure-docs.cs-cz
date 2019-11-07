@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: 249afcaad85d9031e0972d4fcfc185b5ff890f65
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 197bd14c425d80a814f370a2050c085b1eef143d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390349"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579021"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Nasazení prostředků pomocí šablon Resource Manageru a portálu Azure Portal
 
@@ -85,11 +85,11 @@ Pokud chcete spustit nasazení, ale ne použít žádnou z šablon na webu Marke
 
    ![Hledání v nasazení šablony](./media/resource-group-template-deploy-portal/search-template.png)
 
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 1. Zobrazí se několik možností pro vytvoření šablony:
 
     - Vytvoření **vlastní šablony v editoru**: Vytvořte šablonu pomocí editoru šablon portálu.  Editor je schopný přidat schéma šablony prostředků.
-    - **Běžné šablony**: Existují čtyři společné šablony pro vytvoření virtuálního počítače se systémem Linux, virtuálního počítače s Windows, webové aplikace a databáze SQL Azure.
+    - **Běžné šablony**: Existují čtyři běžné šablony pro vytvoření virtuálního počítače se systémem Linux, virtuálního počítače s Windows, webové aplikace a databáze SQL Azure.
     - **Načtení šablony pro rychlý Start GitHubu**: použijte existující [šablony pro rychlý Start](https://azure.microsoft.com/resources/templates/).
 
    ![Možnosti zobrazení](./media/resource-group-template-deploy-portal/see-options.png)
@@ -113,7 +113,7 @@ Pokud chcete spustit nasazení, ale ne použít žádnou z šablon na webu Marke
     "storageAccountName": "[concat('azstore', uniquestring(resourceGroup().id))]"
     ```
 
-1. Vyberte **Save** (Uložit). Nyní se zobrazí rozhraní nasazení šablony portálu. Všimněte si dvou parametrů, které jste definovali v šabloně.
+1. Vyberte **Uložit**. Nyní se zobrazí rozhraní nasazení šablony portálu. Všimněte si dvou parametrů, které jste definovali v šabloně.
 1. Zadejte nebo vyberte hodnoty vlastností:
 
     - **Předplatné:** Vyberte předplatné Azure.

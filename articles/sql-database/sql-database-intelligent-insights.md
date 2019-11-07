@@ -1,5 +1,5 @@
 ---
-title: Monitorování výkonu databáze pomocí Intelligent Insights-Azure SQL Database | Microsoft Docs
+title: Monitorování výkonu databáze pomocí Intelligent Insights-Azure SQL Database
 description: Azure SQL Database Intelligent Insights pomocí integrovaných inteligentních funkcí průběžně monitoruje využití databáze prostřednictvím umělých inteligentních funkcí a detekuje rušivé události, které způsobují špatný výkon.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 70498c5f4c824681ee59b7232e9409235d7f6a93
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c073b535271ba8f9f11e17ba5203b13e257e211b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262163"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689676"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Intelligent Insights používání AI k monitorování a řešení potíží s výkonem databáze
 
@@ -50,12 +50,12 @@ Identifikované SQL Database snížení výkonu se zaznamenávají do diagnostic
 
 | Vlastnost             | Podrobnosti              |
 | :------------------- | ------------------- |
-| informace o databázi | Metadata o databázi, na které se zjistil přehled, jako je například identifikátor URI prostředku. |
+| Informace o databázi | Metadata o databázi, na které se zjistil přehled, jako je například identifikátor URI prostředku. |
 | Zjištěný časový rozsah | Počáteční a koncový čas období zjištěného přehledu |
 | Ovlivněné metriky | Metriky, které způsobily vygenerování přehledu: <ul><li>Zvýšení doby trvání dotazu [sekundy].</li><li>Nadměrné čekání [sekundy].</li><li>Žádosti s časovým limitem [procenta].</li><li>Chybné požadavky [procento].</li></ul>|
 | Hodnota dopadu | Hodnota měřené metriky. |
 | Ovlivněné dotazy a chybové kódy | Hodnota hash dotazu nebo kód chyby. Můžete je použít ke snadnému koreluji s ovlivněnými dotazy. K dispozici jsou metriky, které se skládají z zvýšení doby trvání dotazu, doba čekání, počty časových limitů nebo chybové kódy. |
-| Nalezení | Detekce zjištěná v databázi během doby události. K dispozici jsou 15 vzory detekce. Další informace najdete v tématu [řešení potíží s výkonem databáze pomocí Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md). |
+| Detekce | Detekce zjištěná v databázi během doby události. K dispozici jsou 15 vzory detekce. Další informace najdete v tématu [řešení potíží s výkonem databáze pomocí Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md). |
 | Analýza původní příčiny | Analýza příčiny problému zjištěného v uživatelsky čitelném formátu Některé přehledy můžou obsahovat doporučení na zlepšení výkonu, pokud je to možné. |
 |||
 
@@ -83,7 +83,7 @@ Další informace o tom, jak povolit protokolování Intelligent Insights a nako
 Azure SQL Analytics řešení poskytuje grafické uživatelské rozhraní, funkce vytváření sestav a upozorňování na výkon databáze spolu s daty protokolu Intelligent Insights diagnostiky.
 
 > [!TIP]
-> Rychlé zahájení práce: Nejjednodušší způsob, jak se při použití Intelligent Insights použít, je jeho použití společně s Azure SQL Analytics, která poskytuje grafické uživatelské rozhraní pro problémy s výkonem databáze. Přidejte Azure SQL Analytics řešení z Marketplace, vytvořte v tomto řešení pracovní prostor a pak pro každou databázi, kterou chcete povolit Intelligent Insights, nakonfigurujte streamování protokolu "SQLInsights" v okně nastavení diagnostiky databáze na pracovní prostor Azure SQL Analytics.
+> Rychlé zprovoznění: Nejjednodušší způsob, jak se při používání Intelligent Insights využít, je jeho použití společně s Azure SQL Analytics, která poskytuje grafické uživatelské rozhraní pro problémy s výkonem databáze. Přidejte Azure SQL Analytics řešení z Marketplace, vytvořte v tomto řešení pracovní prostor a pak pro každou databázi, kterou chcete povolit Intelligent Insights, nakonfigurujte streamování protokolu "SQLInsights" v okně nastavení diagnostiky databáze na pracovní prostor Azure SQL Analytics.
 >
 
 Představte si, že Azure SQL Analytics přidat do vašeho řídicího panelu Azure Portal z webu Marketplace a vytvořit pracovní prostor, přečtěte si téma [konfigurace Azure SQL Analytics](../azure-monitor/insights/azure-sql.md#configuration)
@@ -92,7 +92,7 @@ Pokud chcete použít Intelligent Insights s Azure SQL Analytics, nakonfigurujte
 
 Následující příklad ukazuje Intelligent Insights zobrazení prostřednictvím Azure SQL Analytics:
 
-![Intelligent Insights sestavy](./media/sql-database-intelligent-insights/intelligent-insights-azure-sql-analytics.png)
+![Sestava Intelligent Insights](./media/sql-database-intelligent-insights/intelligent-insights-azure-sql-analytics.png)
 
 ### <a name="set-up-with-event-hubs"></a>Nastavení pomocí Event Hubs
 

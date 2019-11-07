@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 09/23/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 43c4b363f223c61bac3d3f7dbd272519a0cd014d
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 7c730ad3f14cc26cd1251b497ef2d146fe99e448
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899048"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584357"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault rozšíření virtuálního počítače pro Windows
 
@@ -28,7 +28,7 @@ Rozšíření VM Key Vault podporuje následující verze systému Windows:
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního počítače. Přípona nevyžaduje chráněná nastavení – veškerá jeho nastavení se považují za veřejné informace. Přípona vyžaduje seznam monitorovaných certifikátů, četnost dotazování a cílové úložiště certifikátů. Zejména:  
+Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního počítače. Přípona nevyžaduje chráněná nastavení – veškerá jeho nastavení se považují za veřejné informace. Přípona vyžaduje seznam monitorovaných certifikátů, četnost dotazování a cílové úložiště certifikátů. Konkrétně:  
 
 ```json
     {
@@ -59,23 +59,23 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 ```
 
 > [!NOTE]
-> Vaše sledované adresy URL certifikátů by měly mít formát `https://myVaultName.vault.azure.net/secrets/myCertName`.
+> Vaše sledované adresy URL certifikátů by měly být ve formátu `https://myVaultName.vault.azure.net/secrets/myCertName`.
 > 
-> Důvodem je to, že cesta `/secrets` vrátí úplný certifikát, včetně privátního klíče, a cesta `/certificates` ne. Další informace o certifikátech najdete tady: [Key Vault certifikátů](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates) .
+> Důvodem je to, že cesta `/secrets` vrátí úplný certifikát, včetně privátního klíče, a `/certificates` cestu ne. Další informace o certifikátech najdete tady: [Key Vault certifikátů](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates) .
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
 | Name (Název) | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| Microsoft | Microsoft. Azure. webtrezor. EDP | string |
-| type | KeyVaultForWindows | string |
+| Microsoft | Microsoft. Azure. webtrezor. EDP | řetězec |
+| type | KeyVaultForWindows | řetězec |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | int |
-| certificateStoreName | MY | string |
-| linkOnRenewal | false | Boolean |
-| certificateStoreLocation  | LocalMachine | string |
-| requiredInitialSync | true | Boolean |
+| pollingIntervalInS | 3600 | řetězec |
+| certificateStoreName | MY | řetězec |
+| linkOnRenewal | false (nepravda) | Boolean |
+| certificateStoreLocation  | LocalMachine | řetězec |
+| requiredInitialSync | true (pravda) | Boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | pole řetězců
 
 

@@ -1,5 +1,5 @@
 ---
-title: Rychlý start – Vytvoření virtuálního počítače s Windows na webu Azure Portal | Microsoft Docs
+title: Rychlý Start – vytvoření virtuálního počítače s Windows v Azure Portal
 description: V tomto rychlém startu zjistíte, jak pomocí webu Azure Portal vytvořit virtuální počítač s Windows
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -7,24 +7,23 @@ author: cynthn
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/02/2019
+ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 60f74de308938ee155cf61f3360f73d92feaa67c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 002d374f5be606688121ef4a3952383567c43e85
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102493"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685237"
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Windows na portálu Azure
+# <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Windows na webu Azure Portal
 
-Virtuální počítače Azure je možné vytvářet na webu Azure Portal. Tato metoda poskytuje uživatelské rozhraní v prohlížeči, pomocí kterého můžete vytvářet virtuální počítače a jejich související prostředky. V tomto rychlém startu se dozvíte, jak pomocí webu Azure Portal nasadit do Azure virtuální počítač s Windows Serverem 2016. Pak se k virtuálnímu počítači připojíte přes protokol RDP a nainstalujete na něj webový server služby IIS, abyste virtuální počítač viděli v akci.
+Virtuální počítače Azure je možné vytvářet na webu Azure Portal. Tato metoda poskytuje uživatelské rozhraní v prohlížeči, pomocí kterého můžete vytvářet virtuální počítače a jejich související prostředky. V tomto rychlém startu se dozvíte, jak použít Azure Portal k nasazení virtuálního počítače v Azure se systémem Windows Server 2019. Pak se k virtuálnímu počítači připojíte přes protokol RDP a nainstalujete na něj webový server služby IIS, abyste virtuální počítač viděli v akci.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -34,40 +33,39 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
-1. V levém horním rohu webu Azure Portal zvolte **Vytvořit prostředek**.
-
-1. Na **nové** stránce v části **Oblíbené**vyberte **Windows Server 2016 Datacenter**.
-
+1. Do vyhledávacího pole zadejte **virtuální počítače** .
+1. V části **služby**vyberte **virtuální počítače**.
+1. Na stránce **virtuální počítače** vyberte **Přidat**. 
 1. Přesvědčte se, že je na kartě **Základy** v části **Podrobnosti o projektu** vybrané správné předplatné a pak ve Skupině prostředků vyberte **Vytvořit nový**. Jako název zadejte *myResourceGroup* . 
 
     ![Vytvoření nové skupiny prostředků pro virtuální počítač](./media/quick-create-portal/project-details.png)
 
-1. V části **Podrobnosti o instancích** jako **Název virtuálního počítače** zadejte *myVM* a u možnosti **Umístění** zvolte *USA – východ*. Zbytek ponechte ve výchozím nastavení.
+1. V **části Podrobnosti o instanci**zadejte *MyVM* pro **název virtuálního počítače** a zvolte *východní USA* pro vaši **oblast**a pak zvolte *Windows Server 2019 Datacenter* pro **bitovou kopii**. Zbytek ponechte ve výchozím nastavení.
 
-    ![Část podrobností o instancích](./media/quick-create-portal/instance-details.png)
+    ![Část podrobnosti o instancích](./media/quick-create-portal/instance-details.png)
 
 1. V **Účtu správce** zadejte uživatelské jméno, například *azureuser*, a heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
     ![Zadejte uživatelské jméno a heslo.](./media/quick-create-portal/administrator-account.png)
 
-1. V části **Pravidla portů pro příchozí spojení** vyberte **Povolit vybrané porty** a pak z rozevíracího seznamu vyberte **RDP (3389)** a **HTTP**.
+1. V části **pravidla portů pro příchozí spojení**zvolte **Povolit vybrané porty** a v rozevíracím seznamu vyberte **RDP (3389)** a **http (80)** .
 
     ![Otevřené porty pro protokoly RDP a HTTP](./media/quick-create-portal/inbound-port-rules.png)
 
-1. Zbytek ponechte ve výchozím nastavení a pak v dolní části stránky vyberte tlačítko **Zkontrolovat a vytvořit**.
+1. Zbytek ponechte ve výchozím nastavení a potom v dolní části stránky vyberte tlačítko **Zkontrolovat a vytvořit**.
 
-    ![Zkontrolujte a vytvořte](./media/quick-create-portal/review-create.png)
+    ![Zkontrolovat a vytvořit](./media/quick-create-portal/review-create.png)
 
 
 ## <a name="connect-to-virtual-machine"></a>Připojení k virtuálnímu počítači
 
 Vytvořte připojení ke vzdálené ploše virtuálního počítače. Tyto pokyny popisují připojení k virtuálnímu počítači z počítače z Windows. Na počítači Mac budete potřebovat klienta protokolu RDP, jako je například tento [Klient vzdálené plochy](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12) na Mac App Storu.
 
-1. Na stránce vlastností virtuálního počítače klikněte na tlačítko **Připojit**. 
+1. Klikněte na tlačítko **připojit** na stránce Přehled pro váš virtuální počítač. 
 
     ![Připojení k virtuálnímu počítači Azure z portálu](./media/quick-create-portal/portal-quick-start-9.png)
     
-2. Na stránce **Připojení k virtuálnímu počítači** ponechte výchozí výběr možností pro připojení podle názvu DNS přes port 3389 a klikněte na **Stáhnout soubor RDP**.
+2. Na stránce **připojit k virtuálnímu počítači** ponechte výchozí možnosti připojit pomocí IP adresy, přes port 3389 a klikněte na **Stáhnout soubor RDP**.
 
 2. Otevřete stažený soubor RDP a po zobrazení výzvy klikněte na **Připojit**. 
 
@@ -88,15 +86,17 @@ Jakmile budete hotovi, ukončete připojení RDP k virtuálnímu počítači.
 
 ## <a name="view-the-iis-welcome-page"></a>Zobrazení úvodní stránky služby IIS
 
-Na portálu vyberte virtuální počítač a v přehledu virtuálního počítače klikněte na tlačítko **Kopírování kliknutím** napravo od IP adresy, abyste ji mohli zkopírovat a vložit na kartu prohlížeče. Otevře se výchozí úvodní stránka služby IIS, která by měla vypadat takto:
+Na portálu vyberte virtuální počítač a v přehledu virtuálního počítače pomocí tlačítka pro **kopírování na** pravé straně IP adresy ho zkopírujte a vložte na kartu prohlížeče. Otevře se výchozí uvítací stránka služby IIS, která by měla vypadat takto:
 
 ![Výchozí web služby IIS](./media/quick-create-powershell/default-iis-website.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete odstranit skupinu prostředků, virtuální počítač a všechny související prostředky. Vyberte skupinu prostředků pro virtuální počítač a pak vyberte **Odstranit**. Potvrďte název skupiny prostředků, abyste dokončili odstraňování prostředků.
+Pokud už je nepotřebujete, můžete odstranit skupinu prostředků, virtuální počítač a všechny související prostředky. 
 
-## <a name="next-steps"></a>Další postup
+Vyberte skupinu prostředků pro virtuální počítač a pak vyberte **Odstranit**. Potvrďte název skupiny prostředků, abyste dokončili odstraňování prostředků.
+
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste nasadili jednoduchý virtuální počítač, otevřeli jste síťový port pro webový provoz a nainstalovali jste základní webový server. Další informace o virtuálních počítačích Azure najdete v kurzu pro virtuální počítače s Windows.
 

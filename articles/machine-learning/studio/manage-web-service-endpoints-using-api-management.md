@@ -1,6 +1,6 @@
 ---
 title: Správa webových služeb pomocí API Management
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Příručka ukazující, jak spravovat webové služby AzureML pomocí API Management. Pomocí definování uživatelského přístupu, omezování využívání a monitorování řídicího panelu Spravujte své koncové body REST API.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 60f890912874cfda993ae45f84fa3d1c04503d00
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 227a7205788194cc507dcd9dab7e5cad57abc7f9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489260"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671577"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Správa webových služeb Azure Machine Learning Studio (Classic) pomocí API Management
 ## <a name="overview"></a>Přehled
@@ -24,26 +24,26 @@ V této příručce se dozvíte, jak rychle začít používat API Management ke
 ## <a name="what-is-azure-api-management"></a>Co je Azure API Management?
 Azure API Management je služba Azure, která umožňuje spravovat koncové body REST API definováním uživatelského přístupu, omezování využívání a monitorování řídicího panelu. Další podrobnosti najdete na [webu Azure API Management](https://azure.microsoft.com/services/api-management/) . Informace o tom, jak začít s Azure API Management, najdete v [příručce pro import a publikování](/azure/api-management/import-and-publish). Tato druhá příručka, na které je založena tato příručka, zahrnuje další témata, včetně konfigurace oznámení, cen vrstev, zpracování odpovědí, ověřování uživatelů, vytváření produktů, předplatných vývojářů a řídicích panelů využití.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 K dokončení této příručky potřebujete:
 
 * Účet Azure.
 * Účet AzureML.
-* Pracovní prostor, služba a api_key experimentu AzureML nasazeného jako webová služba. Podrobnosti o tom, jak vytvořit experiment AzureML, najdete v tématu [rychlý Start studia](create-experiment.md). Informace o tom, jak nasadit experiment (klasický) Studio jako webovou službu, najdete v tématu [nasazení studia](publish-a-machine-learning-web-service.md) , které popisuje, jak nasadit experimenty AzureML jako webovou službu. Případně příloha A obsahuje pokyny, jak vytvořit a otestovat jednoduchý experiment AzureML a nasadit ho jako webovou službu.
+* Pracovní prostor, služba a api_key experimentu AzureML nasazeného jako webová služba. Podrobnosti o tom, jak vytvořit experiment AzureML, najdete v tématu [rychlý Start studia](create-experiment.md). Informace o tom, jak nasadit experiment (klasický) Studio jako webovou službu, najdete v tématu [nasazení studia](deploy-a-machine-learning-web-service.md) , které popisuje, jak nasadit experimenty AzureML jako webovou službu. Případně příloha A obsahuje pokyny, jak vytvořit a otestovat jednoduchý experiment AzureML a nasadit ho jako webovou službu.
 
 ## <a name="create-an-api-management-instance"></a>Vytvoření instance služby API Management
 
 Webovou službu Azure Machine Learning můžete spravovat s instancí API Management.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **+ Vytvořit prostředek**.
 3. Do vyhledávacího pole zadejte "API Management" a pak vyberte prostředek API Management.
-4. Klikněte na **Vytvořit**.
+4. Klikněte na možnost **Vytvořit**.
 5. Hodnota **název** se použije k vytvoření jedinečné adresy URL (v tomto příkladu se používá "demoazureml").
 6. Vyberte **předplatné**, **skupinu prostředků**a **umístění** pro instanci služby.
 7. Zadejte hodnotu pro **název organizace** (Tento příklad používá "demoazureml").
 8. Zadejte **e-mailovou zprávu správce** – tento e-mail se bude používat pro oznámení z API Managementho systému.
-9. Klikněte na **Vytvořit**.
+9. Klikněte na možnost **Vytvořit**.
 
 Vytvoření nové služby může trvat až 30 minut.
 
@@ -166,7 +166,7 @@ Po vyvolání operace se na portálu pro vývojáře zobrazí **požadovaná adr
 
 ## <a name="appendix-a---creating-and-testing-a-simple-azureml-web-service"></a>Příloha A – vytvoření a testování jednoduché webové služby AzureML
 ### <a name="creating-the-experiment"></a>Vytvoření experimentu
-Níže jsou uvedené kroky pro vytvoření jednoduchého experimentu AzureML a jeho nasazení jako webové služby. Webová služba přijímá jako vstupní sloupec libovolného textu a vrací sadu funkcí reprezentovaných jako celá čísla. Například:
+Níže jsou uvedené kroky pro vytvoření jednoduchého experimentu AzureML a jeho nasazení jako webové služby. Webová služba přijímá jako vstupní sloupec libovolného textu a vrací sadu funkcí reprezentovaných jako celá čísla. Příklad:
 
 | Text | Text s hodnotou hash |
 | --- | --- |

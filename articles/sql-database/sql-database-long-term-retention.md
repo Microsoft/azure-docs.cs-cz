@@ -1,5 +1,5 @@
 ---
-title: Ukládat zálohy Azure SQL Database po dobu až 10 let | Microsoft Docs
+title: Ukládat zálohy Azure SQL Database po dobu až 10 let
 description: Přečtěte si, jak Azure SQL Database podporuje ukládání úplných záloh databáze po dobu až 10 let.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: b43097dee6a3b4e8ec762e193dc2faf006ec796c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5d6f0797802a622ada1916752bc35c1bae2cde9f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567762"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689511"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Ukládat zálohy Azure SQL Database po dobu až 10 let
 
@@ -77,6 +77,6 @@ Informace o tom, jak nakonfigurovat dlouhodobé uchovávání pomocí Azure Port
 
 Chcete-li obnovit databázi z úložiště LTR, můžete vybrat konkrétní zálohování na základě jeho časového razítka. Databázi můžete obnovit na jakýkoli existující server v rámci stejného předplatného, jako je původní databáze. Informace o tom, jak obnovit databázi ze zálohy LTR pomocí Azure Portal nebo PowerShellu, najdete v tématu [správa Azure SQL Database dlouhodobé uchovávání záloh](sql-database-long-term-backup-retention-configure.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Vzhledem k tomu, že zálohy databáze chrání data před náhodným poškozením nebo odstraněním, jsou zásadní součástí jakékoli strategie pro provozní kontinuitu a zotavení po havárii. Další informace o ostatních řešeních pro provozní kontinuitu SQL Database najdete v tématu [Přehled provozní kontinuity](sql-database-business-continuity.md).

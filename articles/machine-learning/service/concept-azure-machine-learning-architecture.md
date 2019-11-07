@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: ba6d81596cd8a690f5c17e1ca55b91c5ff27b916
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 36c496b77be5bfda83b3ed424a7fdf2b53101aa4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497531"
+ms.locfileid: "73580619"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak Azure Machine Learning funguje: architektura a koncepty
 
@@ -23,7 +23,7 @@ Přečtěte si o architektuře, konceptech a pracovním postupu pro Azure Machin
 
 ![Azure Machine Learning architektura a pracovní postup](./media/concept-azure-machine-learning-architecture/workflow.png)
 
-## <a name="workflow"></a>Pracovní postupy
+## <a name="workflow"></a>Pracovní postup
 
 Pracovní postup modelu Machine Learning se obvykle řídí tímto pořadím:
 
@@ -56,7 +56,7 @@ Použijte tyto nástroje pro Azure Machine Learning:
 
 ## <a name="glossary"></a>Glosář
 + <a href="#activities">Aktivita</a>
-+ <a href="#compute-instance">Instance COMPUTE</a>
++ <a href="#compute-instance">Virtuální počítač poznámkového bloku</a>
 + <a href="#compute-targets">Cíle výpočtů</a>
 + <a href="#datasets-and-datastores">Datová sada & úložiště dat</a>
 + <a href="#endpoints">Bod</a>
@@ -84,15 +84,11 @@ Aktivita představuje dlouhou běžící operaci. Následující operace jsou p�
 
 Aktivity můžou poskytovat oznámení prostřednictvím sady SDK nebo webového uživatelského rozhraní, abyste mohli snadno monitorovat průběh těchto operací.
 
-### <a name="compute-instance"></a>Instance COMPUTE
+### <a name="compute-instance"></a>Virtuální počítač poznámkového bloku
 
-> [!NOTE]
-> Výpočetní instance jsou k dispozici pouze pro pracovní prostory s oblastí **střed USA – sever** nebo **Velká Británie – jih**.
->Pokud je váš pracovní prostor v jakékoli jiné oblasti, můžete místo toho vytvořit a použít [virtuální počítač s poznámkovým blokem](concept-compute-instance.md#notebookvm) . 
+**Virtuální počítač s Azure Machine Learning Poznámkový blok** je plně spravovaná cloudová pracovní stanice, která zahrnuje několik nástrojů a prostředí nainstalovaných pro strojové učení. Virtuální počítače s poznámkovým blokem se dají použít jako cíl výpočtů pro menší školicí a Inferencing úlohy. V případě rozsáhlých úloh [Azure Machine Learning výpočetní clustery](how-to-set-up-training-targets.md#amlcompute) s možnostmi škálování s více uzly lepší volbou cíle pro výpočty.
 
-**Instance služby compute Azure Machine Learning** (dříve virtuální počítač poznámkového bloku) je plně spravovaná cloudová pracovní stanice, která zahrnuje několik nástrojů a prostředí nainstalovaných pro strojové učení. Výpočetní instance se dají použít jako cíl výpočtů pro školení a Inferencing úlohy. V případě rozsáhlých úloh [Azure Machine Learning výpočetní clustery](how-to-set-up-training-targets.md#amlcompute) s možnostmi škálování s více uzly lepší volbou cíle pro výpočty.
-
-Přečtěte si další informace o [výpočetních instancích](concept-compute-instance.md).
+Další informace o virtuálních počítačích poznámkových bloků
 
 ### <a name="compute-targets"></a>Cíle výpočtů
 

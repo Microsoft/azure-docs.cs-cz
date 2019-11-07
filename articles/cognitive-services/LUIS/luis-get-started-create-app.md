@@ -9,16 +9,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 10/23/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 4acf6e4df978ffee6e0f8320bafbb64994aa0639
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 22a37dbd0b76710a14183aec1795639614207d16
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495433"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73613720"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rychlý start: Použití předem připravené aplikace domácí automatizace
+
+[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 V tomto rychlém startu vytvoříte aplikaci LUIS, která používá předem připravenou doménu `HomeAutomation` pro zapínání a vypínání světel a zařízení. Tato předem připravená doména poskytuje záměry, entity a příklady promluv. Až budete hotovi, budete mít koncový bod služby LUIS spuštěný v cloudu.
 
@@ -28,6 +30,8 @@ Pro účely tohoto článku potřebujete bezplatný účet LUIS, vytvořený na 
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
+[!INCLUDE [Select authoring resource](./includes/select-authoring-resource.md)]
+
 ## <a name="create-a-new-app"></a>Vytvoření nové aplikace
 Aplikace můžete vytvářet a spravovat na stránce **My Apps** (Moje aplikace). 
 
@@ -35,7 +39,7 @@ Aplikace můžete vytvářet a spravovat na stránce **My Apps** (Moje aplikace)
 
     ![Na portálu LUIS vyberte v seznamu Moje aplikace možnost + vytvořit.](./media/create-app-in-portal.png)
 
-1. V dialogovém okně pojmenujte aplikaci `Home Automation` potom vyberte **Hotovo**. LUIS vytvoří aplikaci.
+1. V dialogovém okně pojmenujte aplikaci `Home Automation` potom vyberte **Hotovo**. LUIS vytvoří aplikaci. Popis je volitelný a není používán k vytváření nebo předpovědi. Při vytváření aplikace v LUIS je prostředek předpovědi také nepovinný. Když publikujete aplikaci do produkčního prostředí, měli byste přiřadit prostředek předpovědi, aby vaše aplikace mohla zvládnout mnoho požadavků.  
 
     ![V dialogovém okně pojmenujte svou aplikaci jako domovskou automatizaci.](./media/create-new-app-details.png)
 
@@ -65,7 +69,7 @@ Vyberte záměr **HomeAutomation.TurnOff**. Vidíte, že záměr obsahuje seznam
 
 ## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
 
-[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="test-your-app"></a>Testování aplikace
 Jakmile aplikaci vytrénujete, můžete ji otestovat. Vyberte **test**. Do interaktivního testovacího podokna zadejte utterance testu, jako je `Turn off the lights`, a stiskněte klávesu ENTER. 
@@ -114,7 +118,25 @@ Znovu vyberte **Test** (Testovat) a sbalte podokno testování.
             "topIntent": "HomeAutomation.TurnOff",
             "intents": {
                 "HomeAutomation.TurnOff": {
-                    "score": 0.967174649
+                    "score": 0.984315455
+                },
+                "HomeAutomation.QueryState": {
+                    "score": 0.009912962
+                },
+                "HomeAutomation.TurnDown": {
+                    "score": 0.00626645749
+                },
+                "HomeAutomation.TurnUp": {
+                    "score": 0.00572059769
+                },
+                "HomeAutomation.SetDevice": {
+                    "score": 0.00379381469
+                },
+                "HomeAutomation.TurnOn": {
+                    "score": 0.00366983772
+                },
+                "None": {
+                    "score": 0.000623856
                 }
             },
             "entities": {
@@ -138,7 +160,7 @@ Znovu vyberte **Test** (Testovat) a sbalte podokno testování.
                             "text": "living room",
                             "startIndex": 13,
                             "length": 11,
-                            "score": 0.9494325,
+                            "score": 0.907323956,
                             "modelTypeId": 1,
                             "modelType": "Entity Extractor",
                             "recognitionSources": [

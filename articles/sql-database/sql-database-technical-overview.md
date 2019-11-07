@@ -1,5 +1,5 @@
 ---
-title: Co je služba Azure SQL Database? | Dokumenty Microsoft
+title: Co je služba Azure SQL Database?
 description: 'Seznámení s SQL Database: technické podrobnosti a možnosti systému pro správu relačních databází Microsoft (RDBMS) v cloudu.'
 keywords: představení sql,úvod do sql,co je sql database
 services: sql-database
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: e5782ba016cf58335de17cdacabbcca95914f59a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: d22408904ae21bc7512d4ebe8792666227893337
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066281"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687022"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Co je služba Azure SQL Database?
 
@@ -99,9 +99,9 @@ Azure SQL Database poskytuje pokročilé funkce monitorování a řešení potí
 
 Azure poskytuje [integrované nástroje pro monitorování výkonu](sql-database-performance.md) a [upozorňování](sql-database-insights-alerts-portal.md) v kombinaci s hodnocením výkonu, které vám umožní monitorovat stav tisíců databází. Pomocí těchto nástrojů můžete rychle posoudit dopad vertikálního navýšení nebo snížení kapacity na základě aktuálních nebo plánovaných potřeb výkonu. Kromě toho může SQL Database [generovat metriky a diagnostické protokoly](sql-database-metrics-diag-logging.md) pro snazší monitorování. SQL Database můžete nakonfigurovat pro ukládání využití prostředků, pracovních procesů, relací a možností připojení do jednoho z těchto prostředků Azure:
 
-- **Azure Storage**: Pro archivaci obrovského množství telemetrie za nízkou cenu.
-- **Event Hubs Azure**: Pro integraci SQL Database telemetrie s vlastními řešeními monitorování nebo aktivními kanály.
-- **Protokoly Azure monitor**: Integrované řešení monitorování s využitím sestav, upozorňování a zmírnění možností.
+- **Azure Storage:** Pro archivaci obrovských objemů telemetrických dat za nízkou cenu.
+- **Azure Event Hubs**: pro integraci SQL Database telemetrie s vlastními řešeními monitorování nebo aktivními kanály.
+- **Protokoly Azure monitor**: pro integrované řešení monitorování s využitím sestav, upozorňování a zmírnění možností.
 
 ![Diagram architektury monitorování Azure](./media/sql-database-metrics-diag-logging/architecture.png)
 
@@ -152,8 +152,8 @@ Mnohé z našich partnerů, kteří spouštějí [SaaS aplikace SQL Database pro
 
 [V SQL Database jsou k dispozici](sql-database-automatic-tuning.md)dvě další aspekty automatického ladění:
 
-- **Automatická správa indexů**: Identifikuje indexy, které by měly být přidány do databáze, a indexů, které by měly být odebrány.
-- **Automatické opravy plánu**: Identifikuje problematické plány a opravuje problémy s výkonem plánu SQL.
+- **Automatická správa indexů:** Identifikuje indexy, které by se měly do databáze přidat nebo z ní naopak odebrat.
+- **Automatická oprava plánu**: identifikuje problematické plány a opravuje problémy s výkonem plánu SQL.
 
 ### <a name="adaptive-query-processing"></a>Adaptivní zpracování dotazů
 
@@ -250,13 +250,13 @@ Zákazníci SQL Database mají pro SQL Server k Zvýhodněné hybridní využit�
 
 ## <a name="engage-with-the-sql-server-engineering-team"></a>Spolupráce s technickým týmem SQL Serveru
 
-- [Výměna z stacku DBA](https://dba.stackexchange.com/questions/tagged/sql-server): Zeptejte se otázek správy databáze.
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/sql-server): Zeptejte se na vývojové otázky.
-- [Fóra MSDN](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): Zeptejte se na technické dotazy.
-- [Zpětná vazba](https://aka.ms/sqlfeedback): Nahlásit chyby a funkci žádosti.
-- [Reddit](https://www.reddit.com/r/SQLServer/): Prodiskutujte SQL Server.
+- [Výměna z stacku DBA](https://dba.stackexchange.com/questions/tagged/sql-server): Položte otázky týkající se správy databáze.
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/sql-server): Položte otázky pro vývoj.
+- [Fóra MSDN](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): Položte technické dotazy.
+- [Zpětná vazba](https://aka.ms/sqlfeedback): nahlásit chyby a funkci žádosti.
+- [Reddit](https://www.reddit.com/r/SQLServer/): diskuze o SQL Server.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/sql-database/) pro porovnání nákladů a kalkulačky týkající se jednotlivých databází a elastických fondů.
 - Pokud chcete začít, podívejte se na tyto rychlé starty:

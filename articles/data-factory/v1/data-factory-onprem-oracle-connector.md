@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat do nebo z Oracle pomocí služby Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak kopírovat data do nebo z místní databáze Oracle pomocí služby Azure Data Factory.
+title: Kopírování dat z a do Oracle pomocí Data Factory
+description: Naučte se, jak kopírovat data do nebo z místní databáze Oracle pomocí Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,104 +13,104 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 51fae63b6db99f28a5b3bed056dadc0c2513ff0f
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 822713d67790906c972ad77a748ef8d52b871bc4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839936"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682430"
 ---
-# <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopírování dat do nebo z Oracle místní pomocí služby Azure Data Factory
+# <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopírování dat do a z Oracle místně pomocí Azure Data Factory
 
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, který používáte:"]
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](data-factory-onprem-oracle-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-oracle.md)
 
 > [!NOTE]
-> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Azure Data Factory, přečtěte si téma [konektor Oracle ve V2](../connector-oracle.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Azure Data Factory, přečtěte si téma [konektor Oracle v v2](../connector-oracle.md).
 
 
-Tento článek vysvětluje, jak pomocí aktivity kopírování ve službě Azure Data Factory k přesunu dat do nebo z místní databáze Oracle. Tento článek vychází [aktivity přesunu dat](data-factory-data-movement-activities.md), který nabízí obecný přehled o přesun dat pomocí aktivity kopírování.
+Tento článek vysvětluje, jak používat aktivitu kopírování v Azure Data Factory k přesunu dat do nebo z místní databáze Oracle. Článek se sestaví na [aktivity přesunu dat](data-factory-data-movement-activities.md), které představují obecný přehled přesunu dat pomocí aktivity kopírování.
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
-Data můžete kopírovat *z databáze Oracle* ukládá následující data:
+Data *z databáze Oracle* můžete kopírovat do následujících úložišť dat:
 
 [!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
 
-Může kopírovat data z následujících datových skladů *k databázi Oracle*:
+Data z následujících úložišť dat můžete kopírovat *do databáze Oracle*:
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-Služba data Factory podporuje připojení k místním zdrojům Oracle pomocí brány správy dat. V tématu [brána správy dat](data-factory-data-management-gateway.md) získat další informace o Data Management Gateway. Podrobné pokyny o tom, jak nastavit službu gateway v datovém kanálu pro přesun dat najdete v tématu [přesun dat z místních do cloudu](data-factory-move-data-between-onprem-and-cloud.md).
+Data Factory podporuje připojení k místním zdrojům Oracle pomocí brány Správa dat. Další informace o Správa dat bráně najdete v tématu [Správa dat Gateway](data-factory-data-management-gateway.md) . Podrobné pokyny, jak nastavit bránu v datovém kanálu pro přesun dat, najdete v tématu [přesun dat z místního prostředí do cloudu](data-factory-move-data-between-onprem-and-cloud.md).
 
-Brána je požadovaná i v případě, že Oracle je hostovaná v Azure infrastruktury jako služby (IaaS) virtuálního počítače. Bránu můžete nainstalovat na stejném virtuálním počítači IaaS jako úložiště dat nebo na jiný virtuální počítač, tak dlouho, dokud brána lze připojit k databázi.
+Brána se vyžaduje i v případě, že je Oracle hostovaný na virtuálním počítači infrastruktury Azure jako služba (IaaS). Bránu můžete nainstalovat na stejný virtuální počítač s IaaS jako úložiště dat nebo na jiný virtuální počítač, pokud se brána může připojit k databázi.
 
 > [!NOTE]
-> Tipy pro odstraňování problémů, které se vztahují k připojení a brány najdete v tématu [potíží brány](data-factory-data-management-gateway.md#troubleshooting-gateway-issues).
+> Tipy pro řešení potíží souvisejících s připojením a bránou najdete v tématu [řešení potíží s bránou](data-factory-data-management-gateway.md#troubleshooting-gateway-issues).
 
 ## <a name="supported-versions-and-installation"></a>Podporované verze a instalace
 
-Tento konektor Oracle podporuje dvě verze ovladače:
+Tento konektor Oracle podporuje dvě verze ovladačů:
 
-- **Ovladač Microsoft pro Oracle (doporučeno)** : Počínaje brána správy dat verze 2.7, ovladač Microsoft pro Oracle se automaticky nainstaluje s bránou. Není nutné pro instalaci nebo aktualizaci ovladače k navázání připojení k systému Oracle. Může také docházet lepší výkon kopírování s použitím tohoto ovladače. Jsou podporovány tyto verze databáze Oracle:
-  - R1 Oracle 12c (12.1)
-  - Oracle 11g R1, R2 (11.1, 11.2)
-  - Oracle 10g R1, R2 (10,1, 10.2)
-  - Oracle 9i R1, R2 (9.0.1, 9.2)
+- **Ovladač Microsoftu pro Oracle (doporučeno)** : od verze Správa dat Gateway verze 2,7 se ovladač Microsoftu pro Oracle automaticky nainstaluje spolu s bránou. K navázání připojení k Oracle nemusíte instalovat ani aktualizovat ovladač. Pomocí tohoto ovladače se můžete setkat i s lepším výkonem kopírování. Podporují se tyto verze databází Oracle:
+  - Oracle 12c R1 (12,1)
+  - Oracle 11g R1, R2 (11,1, 11,2)
+  - Oracle 10g R1, R2 (10,1, 10,2)
+  - Oracle 9i R1, R2 (9.0.1, 9,2)
   - Oracle 8i R3 (8.1.7)
 
     > [!NOTE]
-    > Nepodporuje proxy serveru Oracle.
+    > Proxy server Oracle se nepodporuje.
 
     > [!IMPORTANT]
-    > Ovladač Microsoft pro Oracle v současné době podporuje pouze kopírování dat od Oraclu. Ovladač nepodporuje zápis do databáze Oracle. Funkci test připojení pro bránu správy dat. **diagnostiky** kartu nepodporuje tento ovladač. Alternativně můžete použít Průvodce kopírováním pro ověření připojení.
+    > V současné době podporuje ovladač Microsoftu pro Oracle pouze kopírování dat z Oracle. Ovladač nepodporuje zápis do Oracle. Možnost Test připojení na kartě **diagnostika** Správa dat brány nepodporuje tento ovladač. Alternativně můžete použít Průvodce kopírováním k ověření připojení.
     >
 
-- **Poskytovatel dat Oracle pro .NET**: Poskytovatel dat Oracle můžete použít ke zkopírování dat z nebo do databáze Oracle. Tato součást je součástí [Oracle Data Access součásti pro Windows](https://www.oracle.com/technetwork/topics/dotnet/downloads/). Nainstalujte příslušné verze (32bitová nebo 64bitová verze) na počítači, kde je nainstalovaná brána. [Poskytovatel dat Oracle, .NET 12.1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) mají přístup k databázi Oracle Database 10 g vydaná verze 2 a novější verze.
+- **Oracle zprostředkovatel dat pro .NET**: ke kopírování dat z nebo do Oracle můžete použít Oracle zprostředkovatel dat. Tato součást je obsažena v [součástech Oracle Data Access Components pro systém Windows](https://www.oracle.com/technetwork/topics/dotnet/downloads/). Na počítač, na kterém je brána nainstalovaná, nainstalujte příslušnou verzi (32 bitů nebo 64). [Oracle zprostředkovatel dat .net 12,1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) má přístup Oracle Database 10g Release 2 a novějších verzích.
 
-    Pokud vyberete **XCopy instalace**, proveďte následující kroky jsou popsané v souboru readme.htm. Doporučujeme vybrat instalační program, který má uživatelské rozhraní (ne XCopy instalační program).
+    Pokud vyberete **instalaci příkazu xcopy**, proveďte kroky popsané v souboru Readme. htm. Doporučujeme vybrat instalační program, který má uživatelské rozhraní (nikoli instalační program XCopy).
 
-    Po instalaci poskytovatele restartujte službu hostitel Brána pro správu dat na svém počítači pomocí apletu služby nebo Data Management Gateway Configuration Manageru.
+    Po instalaci poskytovatele restartujte službu Správa dat hostitele brány na svém počítači pomocí apletu služby nebo Configuration Manager brány Správa dat.
 
-Pokud použijete Průvodce kopírováním pro vytvoření kanálu pro kopírování, typ ovladače je autodetermined. Ovladač Microsoft se používá ve výchozím nastavení, pokud vaše brána verze je starší než verze 2.7 nebo vyberte Oracle jako jímku.
+Pokud použijete Průvodce kopírováním k vytvoření kanálu kopírování, typ ovladače se určí znovu. Ovladač společnosti Microsoft se používá ve výchozím nastavení, pokud verze brány starší než verze 2,7 nebo jako jímku vyberete Oracle.
 
 ## <a name="get-started"></a>Začínáme
 
-Můžete vytvořit kanál, který obsahuje aktivitu kopírování. Kanál přesouvání dat do nebo z místní databáze Oracle pomocí různých nástrojů nebo rozhraní API.
+Můžete vytvořit kanál s aktivitou kopírování. Kanál přesouvá data do nebo z místní databáze Oracle pomocí různých nástrojů nebo rozhraní API.
 
-Nejjednodušší způsob, jak vytvořit kanál, je použití Průvodce kopírováním. Zobrazit [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod k vytvoření kanálu pomocí Průvodce kopírování dat.
+Nejjednodušší způsob, jak vytvořit kanál, je použít Průvodce kopírováním. Rychlý návod k vytvoření kanálu pomocí Průvodce Kopírování dat najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) .
 
-Jeden z následujících nástrojů můžete použít k vytvoření kanálu: **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**, nebo **rozhraní REST API**. Najdete v článku [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) pro podrobné pokyny k vytvoření kanálu obsahujícího aktivitu kopírování.
+K vytvoření kanálu můžete použít také jeden z následujících nástrojů: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager šablona**, rozhraní **.NET API**nebo **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
-Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky:
+Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, proveďte následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat jímky:
 
-1. Vytvoření **služby data factory**. Datová továrna může obsahovat jeden nebo víc kanálů.
-2. Vytvoření **propojené služby** propojení vstupní a výstupní data ukládá do služby data factory. Například pokud se kopírování dat z databáze Oracle do Azure Blob storage, vytvořte dvě propojené služby propojující Oracle database a účet úložiště Azure do služby data factory. Vlastnosti propojené služby, které jsou specifické pro Oracle, najdete v části [vlastnostem propojených služeb](#linked-service-properties).
-3. Vytvoření **datových sad** k představují vstupní a výstupní data pro operaci kopírování. V příkladu v předchozím kroku vytvoříte datovou sadu, která určit tabulku v databázi Oracle, který obsahuje vstupní data. Můžete vytvořit jinou datovou sadu, která zadejte kontejner objektů blob a složku obsahující data zkopírovaná z databáze Oracle. Vlastnosti datové sady, které jsou specifické pro Oracle, najdete v části [vlastnosti datové sady](#dataset-properties).
-4. Vytvoření **kanálu** , který obsahuje aktivitu kopírování, která přijímá jako vstupní datovou sadu a datovou sadu jako výstup. V předchozím příkladu použijete **OracleSource** jako zdroj a **BlobSink** jako jímka pro aktivitu kopírování. Podobně pokud kopírujete z úložiště objektů Blob v Azure k databázi Oracle, pomocí **BlobSource** a **třídě OracleSink** v aktivitě kopírování. Aktivita kopírování vlastností, které jsou specifické pro databáze Oracle, najdete v části [vlastnosti aktivity kopírování](#copy-activity-properties). Podrobnosti o tom, jak používat úložiště dat jako zdroj nebo jímku vyberte odkaz pro vaše úložiště dat v předchozí části.
+1. Vytvořte **datovou továrnu**. Datová továrna může obsahovat jeden nebo více kanálů.
+2. Vytvořte **propojené služby** , které propojí vstupní a výstupní úložiště dat s datovou továrnou. Pokud například kopírujete data z databáze Oracle do úložiště objektů BLOB v Azure, vytvořte dvě propojené služby, které propojí databázi Oracle a účet Azure Storage s datovou továrnou. Vlastnosti propojených služeb, které jsou specifické pro Oracle, najdete v tématu [vlastnosti propojených služeb](#linked-service-properties).
+3. Vytvořte datové **sady** , které reprezentují vstupní a výstupní data pro operaci kopírování. V příkladu v předchozím kroku vytvoříte datovou sadu pro zadání tabulky v databázi Oracle, která obsahuje vstupní data. Vytvoříte další datovou sadu pro určení kontejneru objektů BLOB a složky, která obsahuje data zkopírovaná z databáze Oracle. Vlastnosti datové sady, které jsou specifické pro Oracle, najdete v tématu [Vlastnosti datové sady](#dataset-properties).
+4. Vytvořte **kanál** s aktivitou kopírování, která přebírá datovou sadu jako vstup a datovou sadu jako výstup. V předchozím příkladu použijete jako jímku aktivity kopírování **OracleSource** jako zdroj a **BlobSink** . Podobně pokud kopírujete ze služby Azure Blob Storage do databáze Oracle, použijete v aktivitě kopírování **BlobSource** a **OracleSink** . Vlastnosti aktivity kopírování, které jsou specifické pro databázi Oracle, najdete v tématu [vlastnosti aktivity kopírování](#copy-activity-properties). Podrobnosti o tom, jak používat úložiště dat jako zdroj nebo jímku, získáte výběrem odkazu pro úložiště dat v předchozí části.
 
-Při použití průvodce jsou definice JSON pro tyto entity služby Data Factory automaticky vytvoří za vás: propojené služby, datových sad a kanálu. Při použití nástroje nebo rozhraní API (s výjimkou rozhraní .NET API), můžete definovat tyto entity služby Data Factory ve formátu JSON. Ukázky, které mají definice JSON entit služby Data Factory, které používáte pro kopírování dat do nebo z místní databáze Oracle najdete v tématu příklady JSON.
+Při použití Průvodce se automaticky vytvoří definice JSON pro tyto Data Factory entity: propojené služby, datové sady a kanál. Pokud používáte nástroje nebo rozhraní API (s výjimkou rozhraní .NET API), definujete tyto Data Factory entit pomocí formátu JSON. Ukázky, které mají definice JSON pro Data Factory entit, které slouží ke kopírování dat do nebo z místní databáze Oracle, najdete v ukázkách JSON.
 
-Následující části obsahují podrobnosti o vlastnostech JSON, které slouží k definování entit služby Data Factory.
+Následující části obsahují podrobné informace o vlastnostech JSON, které slouží k definování Data Factory entit.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Následující tabulka popisuje elementy JSON, které jsou specifické pro Oracle propojené služby:
+Následující tabulka popisuje elementy JSON, které jsou specifické pro propojenou službu Oracle:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| type |**Typ** musí být vlastnost nastavena na **OnPremisesOracle**. |Ano |
-| driverType | Určete, který ovladač určený ke kopírování dat z nebo do databáze Oracle. Povolené hodnoty jsou **Microsoft** a **ODP** (výchozí). Zobrazit [podporované verze a instalace](#supported-versions-and-installation) pro podrobnosti o ovladači. | Ne |
-| connectionString | Zadejte informace potřebné pro připojení k instanci databáze Oracle **connectionString** vlastnost. | Ano |
+| type |Vlastnost **Type** musí být nastavená na **OnPremisesOracle**. |Ano |
+| driverType | Určete, který ovladač má být použit ke zkopírování dat z databáze Oracle nebo do ní. Povolené hodnoty jsou **Microsoft** a **ODP** (výchozí). Podrobnosti o ovladači najdete v části [podporovaná verze a instalace](#supported-versions-and-installation) . | Ne |
+| Vlastnosti | Zadejte informace potřebné pro připojení k instanci databáze Oracle pro vlastnost **ConnectionString** . | Ano |
 | gatewayName | Název brány, který se používá pro připojení k místnímu serveru Oracle. |Ano |
 
-**Příklad: Pomocí ovladače Microsoft**
+**Příklad: použití ovladače společnosti Microsoft**
 
 > [!TIP]
-> Pokud se zobrazí chyba, která říká "ORA-01025: UPI parametr je mimo rozsah"a systém Oracle je verze 8i, přidejte `WireProtocolMode=1` připojovací řetězec a zkuste to znovu:
+> Pokud se zobrazí chyba s názvem ORA-01025: UPI je mimo rozsah a Oracle je verze 8i, přidejte `WireProtocolMode=1` do připojovacího řetězce a zkuste to znovu:
 
 ```json
 {
@@ -126,9 +126,9 @@ Následující tabulka popisuje elementy JSON, které jsou specifické pro Oracl
 }
 ```
 
-**Příklad: Pomocí ODP ovladače**
+**Příklad: použití ovladače ODP**
 
-Další informace o povolených formátech, naleznete v tématu [poskytovatel dat Oracle pro .NET ODP](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/).
+Další informace o povolených formátech najdete v tématu [poskytovatel dat Oracle pro .NET ODP](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/).
 
 ```json
 {
@@ -145,63 +145,63 @@ Další informace o povolených formátech, naleznete v tématu [poskytovatel da
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, naleznete v tématu [vytváření datových sad](data-factory-create-datasets.md).
+Úplný seznam sekcí a vlastností, které jsou k dispozici pro definování datových sad, najdete v tématu [vytváření datových sad](data-factory-create-datasets.md).
 
-Části souboru JSON datové sady, jako je například struktura, dostupnost a zásady, jsou podobné pro všechny typy datovou sadu (třeba Oracle, Azure Blob storage a Azure Table storage).
+Oddíly souboru JSON datové sady, jako je například struktura, dostupnost a zásada, jsou podobné pro všechny typy datových sad (například pro Oracle, úložiště objektů BLOB v Azure a úložiště tabulek Azure).
 
-**TypeProperties** oddílu se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti. **TypeProperties** části datové sady typu **OracleTable** má následující vlastnosti:
+Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl **typeProperties** pro datovou sadu typu **Oracle** má následující vlastnosti:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| tableName |Název tabulky v databázi Oracle, který odkazuje propojenou službu. |Ne (Pokud **oracleReaderQuery** nebo **OracleSource** určena) |
+| tableName |Název tabulky v databázi Oracle, na kterou odkazuje propojená služba. |Ne (Pokud je zadáno **oracleReaderQuery** nebo **OracleSource** ) |
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v tématu [vytváření kanálů](data-factory-create-pipelines.md).
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v tématu [vytváření kanálů](data-factory-create-pipelines.md).
 
-Vlastnosti, jako je název, popis, vstupní a výstupní tabulky a zásady jsou k dispozici pro všechny typy aktivit.
+Pro všechny typy aktivit jsou k dispozici vlastnosti, jako je název, popis, vstupní a výstupní tabulka a zásada.
 
 > [!NOTE]
-> Aktivitu kopírování, která přijímá pouze jeden vstup a vytvoří jenom jeden výstup.
+> Aktivita kopírování používá pouze jeden vstup a vytváří pouze jeden výstup.
 
-Vlastnosti, které jsou k dispozici v **typeProperties** části aktivity se liší s jednotlivými typu aktivity. Vlastnosti aktivity kopírování se liší v závislosti na typu zdroje a jímky.
+Vlastnosti, které jsou k dispozici v části **typeProperties** v aktivitě, se liší podle typu aktivity. Vlastnosti aktivity kopírování se liší v závislosti na typu zdroje a jímky.
 
 ### <a name="oraclesource"></a>OracleSource
 
-V aktivitě kopírování, pokud je zdroj **OracleSource** typu, jsou k dispozici v následujících vlastností **typeProperties** části:
+V části aktivita kopírování, pokud je zdrojem **OracleSource** typ, jsou v oddílu **typeProperties** k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požadováno |
+| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| oracleReaderQuery |Použijte vlastní dotaz číst data. |Řetězec dotazu SQL. Například "vyberte \* z **MyTable**". <br/><br/>Pokud není zadán, je proveden tento příkaz SQL: "vyberte \* z **MyTable**" |Ne<br />(Pokud **tableName** z **datovou sadu** určena) |
+| oracleReaderQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu jazyka SQL. Například "vybrat \* z **myTable**". <br/><br/>Pokud není zadaný, spustí se tento příkaz SQL: "vybrat \* z **myTable**". |Ne<br />(Pokud je zadaný **TableName** **objektu DataSet** ) |
 
 ### <a name="oraclesink"></a>OracleSink
 
-**Třídě OracleSink** podporuje následující vlastnosti:
+**OracleSink** podporuje následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požadováno |
+| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Doba čekání pro dávku vložte na dokončení před vypršením časového limitu operace. |**timespan**<br/><br/> Příklad: 00:30:00 (30 minut) |Ne |
-| writeBatchSize |Vloží data do tabulky SQL, když velikost vyrovnávací paměti dosáhne hodnoty **writeBatchSize**. |Celé číslo (počet řádků) |Ne (výchozí: 100) |
-| sqlWriterCleanupScript |Určuje dotaz pro aktivitu kopírování ke spuštění tak, aby se vyčistit data určitý řez. |Příkaz dotazu. |Ne |
-| sliceIdentifierColumnName |Určuje název sloupce pro aktivitu kopírování k vyplnění s identifikátorem automaticky generované řez. Hodnota pro **sliceIdentifierColumnName** se používá k vyčištění dat určitý řez, kdy se znovu spustit. |Název sloupce, který má datový typ sloupce **binary(32)** . |Ne |
+| writeBatchTimeout |Doba čekání na dokončení operace dávkového vložení před vypršením časového limitu. |**TimeSpan**<br/><br/> Příklad: 00:30:00 (30 minut) |Ne |
+| writeBatchSize |Vloží data do tabulky SQL, když velikost vyrovnávací paměti dosáhne hodnoty **writeBatchSize**. |Integer (počet řádků) |Ne (výchozí: 100) |
+| sqlWriterCleanupScript |Určuje dotaz pro aktivitu kopírování, která se má provést, aby se vyčistila data konkrétního řezu. |Příkaz dotazu. |Ne |
+| sliceIdentifierColumnName |Určuje název sloupce pro aktivitu kopírování, která se má vyplnit automaticky generovaným identifikátorem řezu. Hodnota pro **sliceIdentifierColumnName** se používá k vyčištění dat určitého řezu při opakovaném spuštění. |Název sloupce sloupce, který má datový typ **Binary (32)** . |Ne |
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>Příklady JSON pro kopírování dat do a z databáze Oracle
 
-Následující příklady popisují ukázkový JSON definice, které můžete použít k vytvoření kanálu pomocí [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Příklady ukazují, jak kopírovat data z nebo k databázi Oracle a do a z úložiště objektů Blob v Azure. Nicméně data je možné zkopírovat do libovolné jímky uvedené v [podporovaných úložišť dat a formáty](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování ve službě Azure Data Factory.
+V následujících příkladech jsou uvedeny ukázkové definice JSON, které můžete použít k vytvoření kanálu pomocí sady [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). V příkladech se dozvíte, jak kopírovat data z nebo do databáze Oracle nebo do úložiště objektů BLOB v Azure. Data je ale možné zkopírovat do kterékoli z jímky uvedených v [podporovaných úložištích a formátech dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování v Azure Data Factory.
 
-**Příklad: Kopírování dat z Oracle do Azure Blob storage**
+**Příklad: kopírování dat z Oracle do úložiště objektů BLOB v Azure**
 
-Ukázka obsahuje následující entity služby Data Factory:
+Ukázka má následující Data Factory entit:
 
-* Propojené služby typu [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties).
-* Propojené služby typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-* Vstupní hodnota [datovou sadu](data-factory-create-datasets.md) typu [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties).
-* Výstup [datovou sadu](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-* A [kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [OracleSource](data-factory-onprem-oracle-connector.md#copy-activity-properties) jako zdroj a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) jako jímku.
+* Propojená služba typu [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties).
+* Propojená služba typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
+* Vstupní [datová sada](data-factory-create-datasets.md) typu [Oracle](data-factory-onprem-oracle-connector.md#dataset-properties).
+* Výstupní [datová sada](data-factory-create-datasets.md) typu [azureblobu](data-factory-azure-blob-connector.md#dataset-properties).
+* [Kanál](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [OracleSource](data-factory-onprem-oracle-connector.md#copy-activity-properties) jako zdroj a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) jako jímku.
 
-Ukázce kopíruje data z tabulky v databázi Oracle v místním do objektu blob po hodinách. Další informace o různých vlastností, které se používají v ukázce najdete v následující části Ukázky.
+Ukázka kopíruje data z tabulky v místní databázi Oracle do objektu BLOB hourly. Další informace o různých vlastnostech, které se používají v ukázce, najdete v částech, které následují po ukázkách.
 
-**Oracle propojené služby**
+**Propojená služba Oracle**
 
 ```json
 {
@@ -217,7 +217,7 @@ Ukázce kopíruje data z tabulky v databázi Oracle v místním do objektu blob 
 }
 ```
 
-**Objekt Blob propojená služba Azure storage**
+**Propojená služba Azure Blob Storage**
 
 ```json
 {
@@ -233,9 +233,9 @@ Ukázce kopíruje data z tabulky v databázi Oracle v místním do objektu blob 
 
 **Vstupní datová sada Oracle**
 
-Příkladu se předpokládá, že vytvoříte tabulku s názvem **MyTable** v databázi Oracle. Obsahuje sloupec s názvem **timestampcolumn** dat časové řady.
+Ukázka předpokládá, že jste v Oracle vytvořili tabulku s názvem **myTable** . Obsahuje sloupec s názvem **timestampcolumn** pro data časové řady.
 
-Nastavení **externí**: **true** služby Data Factory informuje, že tato datová sada je externí vzhledem k objektu pro vytváření dat a datové sady není vytvářených aktivity ve službě data factory.
+Nastavení **External**: **true** informuje službu Data Factory, že datová sada je externí pro objekt pro vytváření dat a že datová sada není vytvořená aktivitou v datové továrně.
 
 ```json
 {
@@ -266,7 +266,7 @@ Nastavení **externí**: **true** služby Data Factory informuje, že tato datov
 
 **Výstupní datová sada Azure Blob**
 
-Data se zapisují do nového objektu blob každou hodinu (**frekvence**: **hodinu**, **interval**: **1**). Název složky a cesta k souboru pro tento objekt blob se dynamicky vyhodnocuje podle času spuštění řezu, který se právě zpracovává. Cesta ke složce používá rok, měsíc, den a hodinová část času zahájení.
+Data se zapisují do nového objektu BLOB každou hodinu (**frekvence**: **hodina**, **interval**: **1**). Cesta ke složce a název souboru pro objekt BLOB jsou dynamicky vyhodnocovány na základě počátečního času zpracovávaného řezu. Cesta ke složce používá část roku, měsíce, dne a hodiny počátečního času.
 
 ```json
 {
@@ -326,7 +326,7 @@ Data se zapisují do nového objektu blob každou hodinu (**frekvence**: **hodin
 
 **Kanál s aktivitou kopírování**
 
-Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na použití vstupních a výstupních datových sad a naplánované na každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **OracleSource** a **jímky** je typ nastaven na **BlobSink**. Dotaz SQL, který určíte pomocí **oracleReaderQuery** vlastnost vybere data za poslední hodinu pro kopírování.
+Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady a bylo naplánováno spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **OracleSource** a typ **jímky** je nastavený na **BlobSink**. Dotaz SQL, který zadáte pomocí vlastnosti **oracleReaderQuery** , vybere data za uplynulou hodinu ke zkopírování.
 
 ```json
 {
@@ -375,21 +375,21 @@ Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na pou�
 }
 ```
 
-**Příklad: Kopírování dat z Azure Blob storage do databáze Oracle**
+**Příklad: kopírování dat ze služby Azure Blob Storage do Oracle**
 
-Tato ukázka předvádí, jak kopírovat data z účtu úložiště objektů Blob v Azure do místní databáze Oracle. Však můžete zkopírovat data *přímo* z libovolného zdroje podle [podporovaných úložišť dat a formáty](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování ve službě Azure Data Factory.
+V této ukázce se dozvíte, jak kopírovat data z účtu služby Azure Blob Storage do místní databáze Oracle. Data ale můžete kopírovat *přímo* z libovolného zdroje uvedeného v části [podporovaná úložiště a formáty dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování v Azure Data Factory.
 
-Ukázka obsahuje následující entity služby Data Factory:
+Ukázka má následující Data Factory entit:
 
-* Propojené služby typu [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties).
-* Propojené služby typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-* Vstupní hodnota [datovou sadu](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-* Výstup [datovou sadu](data-factory-create-datasets.md) typu [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties).
-* A [kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) jako zdroj [třídě OracleSink](data-factory-onprem-oracle-connector.md#copy-activity-properties) jako jímku.
+* Propojená služba typu [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties).
+* Propojená služba typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
+* Vstupní [datová sada](data-factory-create-datasets.md) typu [azureblobu](data-factory-azure-blob-connector.md#dataset-properties).
+* Výstupní [datová sada](data-factory-create-datasets.md) typu [Oracle](data-factory-onprem-oracle-connector.md#dataset-properties).
+* [Kanál](data-factory-create-pipelines.md) , který má aktivitu kopírování, která jako jímku používá [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) jako zdroj [OracleSink](data-factory-onprem-oracle-connector.md#copy-activity-properties) .
 
-Ukázce kopíruje data z objektu blob do tabulky v databázi Oracle místní každou hodinu. Další informace o různých vlastností, které se používají v ukázce najdete v následující části Ukázky.
+Ukázka kopíruje data z objektu blob do tabulky v místní databázi Oracle každou hodinu. Další informace o různých vlastnostech, které se používají v ukázce, najdete v částech, které následují po ukázkách.
 
-**Oracle propojené služby**
+**Propojená služba Oracle**
 
 ```json
 {
@@ -405,7 +405,7 @@ Ukázce kopíruje data z objektu blob do tabulky v databázi Oracle místní ka�
 }
 ```
 
-**Objekt Blob propojená služba Azure storage**
+**Propojená služba Azure Blob Storage**
 
 ```json
 {
@@ -421,7 +421,7 @@ Ukázce kopíruje data z objektu blob do tabulky v databázi Oracle místní ka�
 
 **Vstupní datová sada Azure Blob**
 
-Data je převzata z nového objektu blob každou hodinu (**frekvence**: **hodinu**, **interval**: **1**). Název složky a cesta k souboru pro tento objekt blob se dynamicky vyhodnocuje podle času spuštění řezu, který se právě zpracovává. Cesta ke složce používá rok, měsíc a den část času zahájení. Název souboru používá hodinová část času zahájení. Nastavení **externí**: **true** služby Data Factory informuje, že tato tabulka je externí do služby data factory a není vytvořen aktivitou ve službě data factory.
+Data se vybírají z nového objektu BLOB každou hodinu (**frekvence**: **hodina**, **interval**: **1**). Cesta ke složce a název souboru pro objekt BLOB jsou dynamicky vyhodnocovány na základě počátečního času zpracovávaného řezu. Cesta ke složce používá část rok, měsíc a den v počátečním čase. Název souboru používá hodinovou část času spuštění. Nastavení **externí**: **true** informuje službu Data Factory, že tato tabulka je externí pro objekt pro vytváření dat a není vytvořená aktivitou v datové továrně.
 
 ```json
 {
@@ -479,9 +479,9 @@ Data je převzata z nového objektu blob každou hodinu (**frekvence**: **hodinu
 }
 ```
 
-**Oracle výstupní datovou sadu**
+**Výstupní datová sada Oracle**
 
-Příkladu se předpokládá vytvoříte tabulku s názvem **MyTable** v databázi Oracle. Vytvoření tabulky v databázi Oracle stejný počet sloupců, které očekáváte, že soubor CSV blob tak, aby obsahovala. Nové řádky do tabulky přidají každou hodinu.
+Ukázka předpokládá, že jste v Oracle vytvořili tabulku s názvem **myTable** . Vytvořte tabulku v Oracle se stejným počtem sloupců, který očekáváte, že soubor CSV BLOB bude obsahovat. Nové řádky jsou do tabulky přidány každou hodinu.
 
 ```json
 {
@@ -502,7 +502,7 @@ Příkladu se předpokládá vytvoříte tabulku s názvem **MyTable** v databá
 
 **Kanál s aktivitou kopírování**
 
-Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na použití vstupních a výstupních datových sad a naplánované spuštění každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **BlobSource** a **jímky** je typ nastaven na **třídě OracleSink**.
+Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby používala vstupní a výstupní datové sady a bylo naplánováno spuštění každou hodinu. V definici JSON kanálu je typ **zdroje** nastavený na **BlobSource** a typ **jímky** je nastavený na **OracleSink**.
 
 ```json
 {
@@ -553,7 +553,7 @@ Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na pou�
 
 ## <a name="troubleshooting-tips"></a>Rady pro řešení potíží
 
-### <a name="problem-1-net-framework-data-provider"></a>Problém 1: Zprostředkovatel dat .NET Framework
+### <a name="problem-1-net-framework-data-provider"></a>Problém 1: .NET Framework Zprostředkovatel dat
 
 **Chybová zpráva**
 
@@ -561,77 +561,77 @@ Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na pou�
 
 **Možné příčiny**
 
-* Nebyl nainstalován zprostředkovatel dat .NET Framework pro Oracle.
-* Zprostředkovatel dat .NET Framework pro Oracle byl nainstalován na rozhraní .NET Framework 2.0 a nebyla nalezena ve složce rozhraní .NET Framework 4.0.
+* Zprostředkovatel dat .NET Framework pro Oracle nebyla nainstalována.
+* Zprostředkovatel dat .NET Framework pro Oracle byl nainstalován do .NET Framework 2,0 a nenalezne se ve složce .NET Framework 4,0.
 
-**Řešení**
+**Rozhodnutí**
 
-* Pokud jste nenainstalovali zprostředkovatele .NET pro Oracle, [ji nainstalovat](https://www.oracle.com/technetwork/topics/dotnet/downloads/)a zkuste zopakovat scénář.
-* Pokud se zobrazí chybová zpráva, ani po instalaci poskytovatele, proveďte následující kroky:
-    1. Otevřete konfigurační soubor počítače pro rozhraní .NET 2.0 ze složky < systémový disk\>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
-    2. Vyhledejte **poskytovatel dat Oracle pro .NET**. Byste měli najít položku, jak je znázorněno v následujícím příkladu v části **system.data** > **DbProviderFactories**: `<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
-* Zkopírujte tuto položku do souboru machine.config v následující složce rozhraní .NET 4.0: < disk systému\>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Změňte verzi na 4.xxx.x.x.
-* Nainstalovat < cesta nainstalované ODP.NET\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll v globální mezipaměti sestavení (GAC) spuštěním **gacutil /i [cesta zprostředkovatele]** .
+* Pokud jste nenainstalovali poskytovatele .NET pro Oracle, [nainstalujte ho](https://www.oracle.com/technetwork/topics/dotnet/downloads/)a pak zkuste scénář zopakovat.
+* Pokud se zobrazí chybová zpráva i po instalaci poskytovatele, proveďte následující kroky:
+    1. Otevřete soubor konfigurace počítače pro .NET 2,0 ze složky < systémový disk\>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
+    2. Vyhledejte **Oracle zprostředkovatel dat pro .NET**. Měli byste být schopni najít položku, jak je znázorněno v následujícím příkladu v části **System. data** > **DbProviderFactories**: `<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
+* Zkopírujte tuto položku do souboru Machine. config v následující složce .NET 4,0: < systémový disk\>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Pak změňte verzi na 4. xxx. x.x.
+* Nainstalujte < ODP. NET Install Path\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll v globální mezipaměti sestavení (GAC) spuštěním příkazu **Gacutil/i [cesta zprostředkovatele]** .
 
-### <a name="problem-2-datetime-formatting"></a>Problém č. 2: Formátování data a času
+### <a name="problem-2-datetime-formatting"></a>Problém 2: formátování data a času
 
 **Chybová zpráva**
 
     Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
 
-**Řešení**
+**Rozhodnutí**
 
-Může být potřeba upravit řetězec dotazu v aktivitě kopírování založené na konfiguraci kalendářních dat v databázi Oracle. Tady je příklad (použití **to_date** funkce):
+Je možné, že budete muset upravit řetězec dotazu v aktivitě kopírování na základě toho, jak jsou data ve vaší databázi Oracle nakonfigurovaná. Tady je příklad (pomocí funkce **TO_DATE** ):
 
     "oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
 
 
-## <a name="type-mapping-for-oracle"></a>Mapování typu pro Oracle
+## <a name="type-mapping-for-oracle"></a>Mapování typů pro Oracle
 
-Jak je uvedeno v [aktivity přesunu dat](data-factory-data-movement-activities.md), aktivita kopírování provádí automatické typ převody z typů zdroje do jímky typů s použitím následujících dvoukrokový přístup:
+Jak je uvedeno v části [aktivity přesunu dat](data-factory-data-movement-activities.md), aktivita kopírování provádí automatické převody typů ze zdrojových typů do typů jímky pomocí následujících dvou kroků přístupu:
 
-1. Převeďte na typ formátu .NET typy nativní zdroje.
-2. Převeďte na typ jímky nativní typ formátu .NET.
+1. Převeďte z nativního zdrojového typu na typ .NET.
+2. Převeďte z typu .NET na nativní typ jímky.
 
-Při přesunu dat od Oraclu, se od Oracle datového typu na typ formátu .NET a naopak používají následující mapování:
+Když přesunete data z Oracle, použijí se z datového typu Oracle na typ .NET následující mapování a naopak:
 
-| Oracle datového typu | Datový typ rozhraní .NET framework |
+| Datový typ Oracle | .NET Framework datový typ |
 | --- | --- |
-| BFILE |Byte[] |
-| BLOB |Byte[]<br/>(podporováno pouze ve Oracle 10g a novějších verzích při použití ovladač Microsoft) |
+| BFILE |Byte [] |
+| PŘÍZNAKY |Byte []<br/>(podporované jenom v Oracle 10g a novějších verzích při použití ovladače Microsoftu) |
 | CHAR |Řetězec |
-| CLOB |Řetězec |
-| DATE |Datetime |
-| FLOAT |Decimal, String (Pokud přesnost > 28) |
-| INTEGER |Decimal, String (Pokud přesnost > 28) |
-| INTERVAL ROK MĚSÍC |Int32 |
-| DEN INTERVALU SEKUNDY. |TimeSpan |
-| LONG |Řetězec |
-| LONG RAW |Byte[] |
+| DATOVÝ typ CLOB |Řetězec |
+| DATE (Datum) |DateTime |
+| Plovák |Decimal, String (if Precision > 28) |
+| ČÍSLA |Decimal, String (if Precision > 28) |
+| INTERVAL OD ROKU DO MĚSÍCE |Uvedena |
+| DRUHÝ DEN INTERVALU |TimeSpan |
+| DLOUHOU |Řetězec |
+| DLOUHO NEZPRACOVANÉ |Byte [] |
 | NCHAR |Řetězec |
 | NCLOB |Řetězec |
-| NUMBER |Decimal, String (Pokud přesnost > 28) |
+| Automatické |Decimal, String (if Precision > 28) |
 | NVARCHAR2 |Řetězec |
-| RAW |Byte[] |
+| ZÍSKÁNÍ |Byte [] |
 | ROWID |Řetězec |
-| TIMESTAMP |Datetime |
-| TIMESTAMP WITH LOCAL TIME ZONE |Datetime |
-| TIMESTAMP WITH TIME ZONE |Datetime |
-| UNSIGNED INTEGER |Number |
+| ČASOVÉ razítko |DateTime |
+| ČASOVÉ RAZÍTKO S MÍSTNÍM ČASOVÝM PÁSMEM |DateTime |
+| ČASOVÉ RAZÍTKO S ČASOVÝM PÁSMEM |DateTime |
+| CELÉ ČÍSLO BEZ ZNAMÉNKA |Číslo |
 | VARCHAR2 |Řetězec |
 | XML |Řetězec |
 
 > [!NOTE]
-> Datové typy **INTERVALU roku a měsíce na** a **INTERVALU dne do druhé** nejsou podporovány při použití ovladače Microsoft.
+> Datové typy **intervalu roku do měsíce** a **druhý den v sekundách** nejsou podporovány při použití ovladače společnosti Microsoft.
 
-## <a name="map-source-to-sink-columns"></a>Mapování zdroje do jímky sloupce
+## <a name="map-source-to-sink-columns"></a>Mapovat zdroj na sloupce jímky
 
-Další informace o mapování sloupců v datové sadě zdroje do sloupců v datové sadě jímky, najdete v článku [mapování sloupců v datové sadě ve službě Data Factory](data-factory-map-columns.md).
+Další informace o mapování sloupců ve zdrojové datové sadě na sloupce v datové sadě jímky najdete v tématu [mapování sloupců datové sady v Data Factory](data-factory-map-columns.md).
 
-## <a name="repeatable-read-from-relational-sources"></a>Opakovatelné čtení z relačních zdrojů
+## <a name="repeatable-read-from-relational-sources"></a>Opakované čtení z relačních zdrojů
 
-Při kopírování dat z úložiště relačních dat mít na paměti, aby se zabránilo neúmyslnému výsledků opakovatelnost. Ve službě Azure Data Factory můžete ručně znovu spustit určitý řez. Zásady opakování pro datovou sadu můžete také nakonfigurovat tak, aby určitý řez se znovu spustí, když dojde k chybě. Když určitý řez znovu spuštěn, buď ručně, nebo podle zásady opakovaných pokusů, ujistěte se, že je stejná data bez ohledu na to, jak číst v mnoha případech určitý řez běží. Další informace najdete v tématu [Repeatable z relačních zdrojů](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+Při kopírování dat z relačních úložišť dat mějte na paměti, že se vyhnete nezamýšleným výsledkům. V Azure Data Factory můžete řez ručně znovu spustit. Pro datovou sadu můžete také nakonfigurovat zásady opakování, takže se řez znovu spustí, když dojde k selhání. Pokud je řez znovu spuštěn, buď ručně, nebo podle zásad opakování, ujistěte se, že stejná data jsou čtena bez ohledu na to, kolikrát je řez spuštěn. Další informace najdete v tématu [opakované čtení z relačních zdrojů](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="performance-and-tuning"></a>Výkon a ladění
 
-Zobrazit [Průvodce laděním a výkonem aktivity kopírování](data-factory-copy-activity-performance.md) Další informace o klíčových faktorů, které ovlivňují výkon přesun dat (aktivita kopírování) ve službě Azure Data Factory. Můžete také informace o různé způsoby, jak optimalizovat.
+Informace o klíčových faktorech ovlivňujících výkon přesunu dat (aktivita kopírování) v Azure Data Factory najdete v [Průvodci výkonem a optimalizací aktivity kopírování](data-factory-copy-activity-performance.md) . Můžete si také přečíst různé způsoby, jak je optimalizovat.

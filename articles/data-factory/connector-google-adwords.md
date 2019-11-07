@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat z Google AdWords pomocí Azure Data Factory | Microsoft Docs
+title: Kopírování dat z Google AdWords pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z Google AdWords na podporovaná úložiště dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 65bf1fa37ecb8d9e862b0e5042bed29470d750e1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: cc620e4dd7a84a85fb8d7bc8466a7a3fd116416e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935642"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680946"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>Kopírování dat z Google AdWords pomocí Azure Data Factory
 
@@ -104,7 +104,7 @@ Pokud chcete kopírovat data z Google AdWords, nastavte vlastnost Type datové s
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type datové sady musí být nastavená na: **GoogleAdWordsObject** . | Ano |
-| tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
+| tableName | Název tabulky | Ne (když je zadán zdroj aktivity "query") |
 
 **Příklad**
 

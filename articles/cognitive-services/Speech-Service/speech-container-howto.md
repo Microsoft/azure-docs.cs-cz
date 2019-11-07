@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 647edcab5ec2925016e8a099ae43b6133037f8de
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: efb2fd8fd6b77a27130b834c2b192c1e88eec97c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491074"
+ms.locfileid: "73578388"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Instalace a spuštění kontejnerů služby Speech
 
@@ -35,7 +35,7 @@ Kontejnery řeči umožňují zákazníkům vytvořit architekturu aplikace pro 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před použitím kontejnerů řeči je nutné splnit následující předpoklady:
 
@@ -167,19 +167,7 @@ Následující značka je příkladem formátu:
 2.0.0-amd64-en-us-preview
 ```
 
-V následující tabulce jsou uvedeny podporované národní prostředí pro **Převod řeči na text** ve verzi 2.0.0 kontejneru:
-
-| Jazykové prostředí | Značky |
-|--|--|
-| Čínština | `zh-CN` |
-| Angličtina | `en-US`<br>`en-GB`<br>`en-AU`<br>`en-IN` |
-| Francouzština | `fr-CA`<br>`fr-FR` |
-| Němčina | `de-DE` |
-| italština | `it-IT` |
-| Japonština | `ja-JP` |
-| Korejština | `ko-KR` |
-| Portugalština | `pt-BR` |
-| Španělština | `es-ES`<br>`es-MX` |
+Pro všechna podporovaná národní prostředí ve verzi 2.0.0 kontejneru **Speech-to-text** se zapůjčení zobrazí ve sloupci **Podpora kontejneru** v tabulce [podpory jazyka Speech to-text](language-support.md#speech-to-text) .
 
 # <a name="custom-speech-to-texttabcstt"></a>[Custom Speech na text](#tab/cstt)
 
@@ -221,24 +209,7 @@ Následující značka je příkladem formátu:
 1.3.0-amd64-en-us-jessarus-preview
 ```
 
-V následující tabulce jsou uvedeny podporované národní prostředí pro **Převod textu na řeč** v 1.3.0 verzi kontejneru:
-
-| Jazykové prostředí | Značky | Podporované hlasy |
-|--|--|--|
-| Čínština | `zh-CN` | huihuirus<br>kangkang-apollo<br>yaoyao-apollo |
-| Angličtina | `en-AU` | catherine<br>hayleyrus |
-| Angličtina | `en-GB` | Jiří – Apollo<br>hazelrus<br>Zuzana – Apollo |
-| Angličtina | `en-IN` | heera-apollo<br>priyarus<br>ravi-apollo<br> |
-| Angličtina | `en-US` | jessarus<br>benjaminrus<br>jessa24krus<br>zirarus<br>guy24krus |
-| Francouzština | `fr-CA` | caroline<br>harmonierus |
-| Francouzština | `fr-FR` | hortenserus<br>julie-apollo<br>Paul – Apollo |
-| Němčina | `de-DE` | hedda<br>heddarus<br>stefan-apollo |
-| italština | `it-IT` | cosimo-apollo<br>luciarus |
-| Japonština | `ja-JP` | ayumi-apollo<br>harukarus<br>ichiro-apollo |
-| Korejština | `ko-KR` | heamirus |
-| Portugalština | `pt-BR` | Daniel – Apollo<br>heloisarus |
-| Španělština | `es-ES` | elenarus<br>Laura – Apollo<br>pablo-apollo<br> |
-| Španělština | `es-MX` | hildarus<br>raul-apollo |
+Pro všechna podporovaná národní prostředí a odpovídající hlasy ve verzi 1.3.0 kontejneru převodu **textu na řeč** se podívejte na sloupec **Podpora kontejneru** v tabulce [podpory standardních hlasů jazyka](language-support.md#standard-voices) .
 
 > [!IMPORTANT]
 > Při vytváření standardního příspěvku http *pro převod textu na řeč* vyžaduje zpráva [SSML (Speech promarkup Language)](speech-synthesis-markup.md) prvek `voice` s atributem `name`. Hodnota je odpovídající národní prostředí a hlas kontejneru, označovaný také jako ["krátký název"](language-support.md#standard-voices). Například značka `latest` by měla název hlasu `en-US-JessaRUS`.
@@ -262,7 +233,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text
 
 Jakmile je kontejner na [hostitelském počítači](#the-host-computer), použijte následující postup pro práci s kontejnerem.
 
-1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. K dispozici jsou další [příklady](speech-container-configuration.md#example-docker-run-commands) `docker run` příkazu.
+1. [Spusťte kontejner](#run-the-container-with-docker-run)s požadovaným nastavením fakturace. K dispozici jsou [ další ](speech-container-configuration.md#example-docker-run-commands)příklady`docker run` příkazu.
 1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint)
 
 ## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner pomocí `docker run`
@@ -433,7 +404,7 @@ Při spuštění nebo spuštění kontejneru může docházet k problémům. Pou
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Vyúčtování
+## <a name="billing"></a>Fakturace
 
 Kontejnery řeči odesílají informace o fakturaci do Azure pomocí prostředku *řeči* ve vašem účtu Azure.
 

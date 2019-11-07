@@ -1,5 +1,5 @@
 ---
-title: Úvod do služby Azure Data Factory | Microsoft Docs
+title: Úvod do Azure Data Factory
 description: Seznamte se se službou Azure Data Factory, cloudovou službou pro integraci dat, která orchestruje a automatizuje přesouvání a transformaci dat.
 services: data-factory
 documentationcenter: ''
@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 0a81b9b230136a4ac4ed40e3af84859eccadf8d6
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: e23268d21b01435aa71d4f471afc6d37ee9e9c1d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882277"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672702"
 ---
 # <a name="what-is-azure-data-factory"></a>Co je služba Azure Data Factory?
 
@@ -28,7 +28,7 @@ Aby společnost mohla tyto protokoly analyzovat, potřebuje použít referenčn�
 
 Za účelem získání informací hodlá zpracovat spojená data pomocí clusteru Spark v cloudu (Azure HDInsight) a transformovaná data publikovat do cloudového datového skladu, jako je služba Azure SQL Data Warehouse, aby z nich mohla snadno vytvářet sestavy. Tento pracovní postup chce automatizovat a provádět jeho monitorování a správu na každodenní bázi. Zároveň ho chce spouštět, jakmile se v kontejneru úložiště objektů blob objeví soubory.
 
-Právě v takových scénářích práce s daty nachází uplatnění platforma Azure Data Factory. Jedná se o *cloudovou službu ETL a integraci dat, která umožňuje vytvářet pracovní postupy řízené daty pro orchestraci přesunu dat a transformaci dat ve velkém měřítku*. Pomocí služby Azure Data Factory můžete vytvářet a plánovat pracovní postupy řízené daty (označované jako kanály), které dokáží ingestovat data z různorodých úložišť dat. Můžete vytvářet složité procesy ETL, které vizuálně transformují data pomocí toků dat nebo pomocí výpočetních služeb, jako jsou Azure HDInsight Hadoop, Azure Databricks a Azure SQL Database. 
+Právě v takových scénářích práce s daty nachází uplatnění platforma Azure Data Factory. Jedná se o *cloudovou službu ETL a integraci dat, která umožňuje vytvářet pracovní postupy řízené daty pro orchestraci přesunu dat a transformaci dat ve velkém měřítku*. Pomocí služby Azure Data Factory můžete vytvářet a plánovat pracovní postupy řízené daty (označované jako kanály), které dokáží ingestovat data z různorodých zdrojů dat. Můžete vytvářet složité procesy ETL, které vizuálně transformují data pomocí toků dat nebo pomocí výpočetních služeb, jako jsou Azure HDInsight Hadoop, Azure Databricks a Azure SQL Database. 
 
 Transformovaná data navíc můžete publikovat do úložišť dat, jako jsou Azure SQL Data Warehouse pro aplikace business intelligence (BI), která se mají spotřebovat. V neposlední řadě služba Azure Data Factory umožňuje uspořádání nezpracovaných dat do smysluplných úložišť dat a datových jezer, která pomáhají při obchodním rozhodování.
 
@@ -81,12 +81,12 @@ Propojené služby jsou velmi podobné připojovacím řetězcům, které definu
 
 Propojené služby slouží ve službě Data Factory ke dvěma účelům:
 
-- Představují **úložiště dat**, k nimž mimo jiné patří například místní databáze SQL Serveru, databáze Oracle, sdílená složka nebo účet úložiště objektů blob v Azure. Seznam podporovaných úložišť dat najdete v článku o [aktivitě kopírování](copy-activity-overview.md).
+- Představují **úložiště dat**, k nimž mimo jiné patří například místní databáze SQL Serveru, databáze Oracle, sdílená složka nebo účet úložiště objektů blob Azure. Seznam podporovaných úložišť dat najdete v článku [Aktivita kopírování](copy-activity-overview.md).
 
 - Představují **výpočetní prostředek**, který může hostovat provádění aktivity. Například aktivita HDInsightHive se spouští na clusteru HDInsight Hadoop. Seznam aktivit transformace a podporovaných výpočetních prostředí najdete v článku o [transformaci dat](transform-data.md).
 
-### <a name="triggers"></a>Aktivační události
-Aktivační události představují jednotku zpracování, která určuje, kdy se má zahájit provádění kanálu. Pro různé typy událostí existují různé typy aktivačních událostí.
+### <a name="triggers"></a>Triggery
+Aktivační události jsou jednotkou zpracování, která určuje, kdy se má zahájit provádění kanálu. Pro různé typy událostí existují různé typy aktivačních událostí.
 
 ### <a name="pipeline-runs"></a>Spuštění kanálu
 Spuštění kanálu je instance provádění kanálu. Instance spuštění kanálu se obvykle vytvářejí předáváním argumentů do parametrů definovaných v kanálech. Argumenty je možné předat ručně nebo v rámci definice aktivační události.

@@ -1,6 +1,6 @@
 ---
 title: Nasazení a spotřeba
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: K nasazení pracovních postupů a modelů machine learningu jako webových služeb můžete použít Azure Machine Learning Studio (Classic). Tyto webové služby pak můžete použít k volání modelů strojového učení z aplikací přes Internet, aby se předpovědi v reálném čase nebo v režimu dávky.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: bf169a9b7064bd83caf0c9f8ec6dd6dd55894d67
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 47cd04615919fcc9db757ed4b9e8fd06eb297592
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493012"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684824"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Webové služby Azure Machine Learning Studio (Classic): nasazení a spotřeba
 
@@ -31,8 +31,8 @@ Portál studia (Classic) a Microsoft Azure Machine Learning portál webové slu�
 
 Následující odkazy poskytují obecné informace o tom, jak nasadit novou webovou službu:
 
-* Přehled o tom, jak nasadit novou webovou službu založenou na Azure Resource Manager, najdete v tématu [nasazení nové webové služby](publish-a-machine-learning-web-service.md).
-* Návod, jak nasadit webovou službu, najdete v tématu [nasazení webové služby Azure Machine Learning](publish-a-machine-learning-web-service.md).
+* Přehled o tom, jak nasadit novou webovou službu založenou na Azure Resource Manager, najdete v tématu [nasazení nové webové služby](deploy-a-machine-learning-web-service.md).
+* Návod, jak nasadit webovou službu, najdete v tématu [nasazení webové služby Azure Machine Learning](deploy-a-machine-learning-web-service.md).
 * Úplný návod, jak vytvořit a nasadit webovou službu, najdete v tématu [kurz 1: předpověď úvěrového rizika](tutorial-part1-credit-risk.md).
 * Konkrétní příklady nasazení webové služby najdete v tématech:
 
@@ -87,8 +87,8 @@ Další podrobnosti najdete v následujících článcích a vzorovém kódu:
 
 Webovou službu můžete testovat na portálu Azure Machine Learning Web Services. To zahrnuje testování rozhraní Request-response Service (RR) a služby Batch Execution Service (BES).
 
-* [Nasazení nové webové služby](publish-a-machine-learning-web-service.md)
-* [Nasazení webové služby Azure Machine Learning](publish-a-machine-learning-web-service.md)
+* [Nasazení nové webové služby](deploy-a-machine-learning-web-service.md)
+* [Nasazení webové služby Azure Machine Learning](deploy-a-machine-learning-web-service.md)
 * [Kurz 3: nasazení modelu úvěrového rizika](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>Z Excelu

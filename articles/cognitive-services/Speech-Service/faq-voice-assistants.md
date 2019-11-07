@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 7ad3f932e9a10723d6cc1bae2fc4854c932d4c64
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: eccf2a7a1b9c7ea7a21cd5d0cf0f60728284c05d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507074"
+ms.locfileid: "73579672"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>Hlasová asistenti: nejčastější dotazy
 
@@ -29,7 +29,7 @@ Pokud nemůžete najít odpovědi na vaše otázky v tomto dokumentu, podívejte
 
 **Otázka: mám použít vlastní příkazy (Preview) nebo Direct line Speech? Jaký je rozdíl?**
 
-Odpověď **:** [vlastní příkazy (Preview)](custom-commands.md) jsou vysoce složitou sadou nástrojů, která umožňuje snadno vytvořit a hostovat pomocníka, který je vhodný pro scénáře dokončování úkolů. [Přímý line Speech](direct-line-speech.md) poskytuje bohatší a sofistikované funkce, které umožňují využít robustní scénáře konverzace. Další informace najdete v [porovnání s řešením pomocníka](voice-assistants.md#comparing-assistant-solutions) .
+Odpověď **:** [vlastní příkazy (Preview)](custom-commands.md) jsou vysoce složitou sadou nástrojů, která umožňuje snadno vytvořit a hostovat pomocníka, který je vhodný pro scénáře dokončování úkolů. [Přímý line Speech](direct-line-speech.md) poskytuje bohatší a sofistikované funkce, které umožňují využít robustní scénáře konverzace. Další informace najdete v [porovnání s řešením pomocníka](voice-assistants.md#choosing-an-assistant-solution) .
 
 **Otázka: Návody začít?**
 
@@ -40,6 +40,17 @@ Odpověď **:** [vlastní příkazy (Preview)](custom-commands.md) jsou vysoce s
 * [Připojení robota k kanálu s přímým přístupem k lince Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>Ladění
+
+**Otázka: kde je tajný kód mého kanálu?**
+
+**A:** Pokud jste použili verzi Preview funkce Direct line Speech nebo čtete související dokumentaci, možná budete chtít najít tajný klíč na stránce pro registraci kanálu s přímým přístupem. Tato hodnota také očekává, že v sadě Speech SDK `DialogServiceConfig` metoda továrního `FromBotSecret`.
+
+Nejnovější verze funkce Direct line Speech zjednodušuje proces kontaktování robota ze zařízení. Na stránce registrace kanálu rozevírací seznam v horní části přidruží k registraci kanálu rozpoznávání řeči pomocí prostředku řeči. Sada Speech SDK v 1.8 po přidružení zahrnuje metodu `BotFrameworkConfig::FromSubscription` Factory, která nakonfiguruje `DialogServiceConnector`, aby kontaktovala robota, kterou jste přidružili k vašemu předplatnému.
+
+Pokud stále migrujete klientskou aplikaci z verze 1.7 na verzi 1.8, `DialogServiceConfig::FromBotSecret` může i nadále fungovat s neprázdnou hodnotou, která není null, pro svůj parametr tajného klíče kanálu, např. předchozí tajný klíč, který jste použili. Bude jednoduše ignorováno při použití předplatného pro rozpoznávání řeči přidruženého k novější registraci kanálu. Počítejte s tím, že hodnota *nesmí* být null a neprázdná, protože je na zařízení zaškrtnutá před relevantním přidružení na straně služby.
+
+
+Podrobnější příručku najdete v [části kurzu](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel) , která vás provede registrací kanálu.
 
 **Otázka: zobrazí se chyba 401 při připojování a nic nefunguje. Vím, že klíč předplatného pro rozpoznávání řeči je platný. Co se děje?**
 

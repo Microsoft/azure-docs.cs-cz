@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 10/23/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: c24b62ac729a0c52efb78f612c53c8844cf23b12
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ee22a2a8a12eb85439e191bc21e6cf391bea3f8
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500023"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612853"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co je Language Understanding (LUIS)?
 
@@ -114,7 +114,7 @@ Nástroje pro rychlé a snadné používání služby LUIS s využitím robota:
 * [LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen) – LUISGen je nástroj pro generování zdrojového kódu C# se silnými typy a zdrojového kódu TypeScript z exportovaného modelu LUIS.
 * [Dispatch](https://aka.ms/dispatch-tool) umožňuje používat z nadřazené aplikace několik aplikací LUIS a QnA Maker s využitím modelu dispečera.
 * [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) – LUDown je nástroj příkazového řádku, který pomáhá spravovat jazykové modely pro vašeho robota.
-* [Robot Framework – skladatel](https://github.com/microsoft/BotFramework-Composer)
+* [Robot Framework – skladatel](https://github.com/microsoft/BotFramework-Composer) – integrovaný vývojový nástroj pro vývojáře a víceklientské týmy pro sestavování roboty a konverzací pomocí Microsoft bot Frameworku
 
 Další služby Cognitive Services používané se službou LUIS:
 * [QnA maker][qnamaker] umožňuje zkombinovat několik typů textu do otázek a odpovědí znalostní báze.

@@ -1,6 +1,6 @@
 ---
 title: Správa životního cyklu aplikací
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Použijte osvědčené postupy pro správu životního cyklu aplikací v klasické verzi Azure Machine Learning Studio
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 10/27/2016
-ms.openlocfilehash: ce1a398939a65bb47c74f00159b667c3659f5a93
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d5e2ee72c30933305356cd2a7792d1972fa938da
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466998"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684723"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Správa životního cyklu aplikací v Azure Machine Learning Studio (Classic)
 Azure Machine Learning Studio (Classic) je nástroj pro vývoj experimentů strojového učení, které jsou provozované na cloudové platformě Azure. Vypadá to, že integrované vývojové prostředí (IDE) sady Visual Studio a Škálovatelná cloudová služba se sloučí do jediné platformy. Do klasické verze Azure Machine Learning Studio můžete zahrnout standardní postupy správy životního cyklu aplikací (ALM) od různých prostředků k automatizovanému spouštění a nasazování. Tento článek popisuje některé z možností a přístupů.
@@ -96,4 +96,4 @@ Důležitým aspektem ALM je umožnit automatizaci procesu provádění a nasaze
 ## <a name="next-steps"></a>Další kroky
 * Stáhněte modul [PowerShellu pro Azure Machine Learning Studio (Classic)](https://aka.ms/amlps) a začněte AUTOMATIZOVAT úlohy Alm.
 * Naučte se [vytvářet a spravovat velký počet modelů ml pomocí jediného experimentu](create-models-and-endpoints-with-powershell.md) prostřednictvím PowerShellu a rozhraní API pro přeškolení.
-* Přečtěte si další informace o [nasazení Azure Machine Learning webových služeb](publish-a-machine-learning-web-service.md).
+* Přečtěte si další informace o [nasazení Azure Machine Learning webových služeb](deploy-a-machine-learning-web-service.md).

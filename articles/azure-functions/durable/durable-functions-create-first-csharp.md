@@ -8,18 +8,20 @@ manager: jeconnoc
 keywords: azure functions, functions, event processing, compute, serverless architecture
 ms.service: azure-functions
 ms.topic: quickstart
-ms.date: 07/19/2019
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1579a4dfbab1ec9d9aa6bb3995bd88d948d6d5e2
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 563412fbc5e8d9af3c399b1f75696053549143c4
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933975"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615015"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Vytvoření první trvalé funkce v jazyce C\#
 
 *Durable Functions* je rozšíření [Azure Functions](../functions-overview.md) , které umožňuje psát stavové funkce v prostředí bez serveru. Toto rozšíření za vás spravuje stav, kontrolní body a restartování.
+
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 V tomto článku se naučíte, jak pomocí sady Visual Studio 2019 místně vytvořit a otestovat trvalou funkci "Hello World".  Tato funkce orchestruje a zřetězí volání dalších funkcí. Kód funkce potom publikujete do Azure. Tyto nástroje jsou k dispozici v rámci úlohy vývoje Azure v aplikaci Visual Studio 2019.
 
@@ -39,9 +41,9 @@ K provedení kroků v tomto kurzu je potřeba:
 
 Šablona Azure Functions vytvoří projekt, který se dá publikovat do aplikace Function App v Azure. Aplikace funkcí umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků.
 
-1. V sadě Visual Studio zvolte v nabídce **Soubor** možnost **Nový** > **Projekt**.
+1. V sadě Visual Studio zvolte v nabídce **Soubor** možnost  > Nový**Projekt**.
 
-1. V dialogovém okně **Přidat nový projekt** vyhledejte `functions`, vyberte šablonu **Azure Functions** a **pak vyberte další**. 
+1. V dialogovém okně **Přidat nový projekt** vyhledejte `functions`, zvolte šablonu **Azure Functions** a vyberte **Další**. 
 
     ![Dialogové okno Nový projekt pro vytvoření funkce v sadě Visual Studio](./media/durable-functions-create-first-csharp/functions-vs-new-project.png)
 
@@ -53,8 +55,8 @@ K provedení kroků v tomto kurzu je potřeba:
 
     | Nastavení      | Navrhovaná hodnota  | Popis                      |
     | ------------ |  ------- |----------------------------------------- |
-    | **Verze** | Azure Functions 2.x <br />(.NET Core) | Vytvoří projekt funkce, který používá modul runtime verze 2. x Azure Functions, který podporuje .NET Core. Azure Functions 1.x podporuje rozhraní .NET Framework. Další informace najdete v tématu s [přehledem verzí modulu runtime Azure Functions](../functions-versions.md).   |
-    | **Šablona** | Prázdné | Vytvoří prázdnou aplikaci Function App. |
+    | **Verze** | Azure Functions 2,0 <br />(.NET Core) | Vytvoří projekt funkce, který používá běhový modul verze 2,0 Azure Functions, který podporuje .NET Core. Azure Functions 1,0 podporuje .NET Framework. Další informace najdete v tématu s [přehledem verzí modulu runtime Azure Functions](../functions-versions.md).   |
+    | **Šablona** | Obsahovat | Vytvoří prázdnou aplikaci Function App. |
     | **Účet úložiště**  | Emulátor úložiště | Pro trvalou správu stavu funkce se vyžaduje účet úložiště. |
 
 4. Vyberte **vytvořit** k vytvoření prázdného projektu funkce. Tento projekt má základní konfigurační soubory potřebné ke spuštění vašich funkcí.
@@ -63,7 +65,7 @@ K provedení kroků v tomto kurzu je potřeba:
 
 Následující kroky používají šablonu k vytvoření trvalého kódu funkce v projektu.
 
-1. Klikněte pravým tlačítkem na projekt v aplikaci Visual Studio a vyberte **Přidat** > **novou funkci Azure Functions**.
+1. Klikněte pravým tlačítkem na projekt v aplikaci Visual Studio a vyberte **přidat** > **Nová funkce Azure Functions**.
 
     ![Přidat novou funkci](./media/durable-functions-create-first-csharp/functions-vs-add-new-function.png)
 
@@ -73,9 +75,12 @@ Následující kroky používají šablonu k vytvoření trvalého kódu funkce 
 
     ![Vybrat trvanlivé šablonu](./media/durable-functions-create-first-csharp/functions-vs-select-template.png)  
 
+> [!NOTE]
+> Tato šablona teď vytvoří trvalou funkci pomocí starší verze 1. x rozšíření. Informace o tom, jak upgradovat na novější verze 2. x Durable Functions, najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+
 Do aplikace se přidá nová trvalá funkce.  Otevřete nový soubor. cs pro zobrazení obsahu. Tato trvalá funkce je příklad řetězení jednoduchých funkcí s následujícími metodami:  
 
-| Metoda | FunctionName | Popis |
+| Metoda | functionName | Popis |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `<file-name>` | Spravuje trvalou orchestraci. V tomto případě se orchestrace spustí, vytvoří seznam a přidá výsledek tří volání funkcí do seznamu.  Po dokončení tří volání funkce vrátí seznam. |
 | **`SayHello`** | `<file-name>_Hello` | Funkce vrátí Hello. Jedná se o funkci, která obsahuje orchestraci obchodní logiky. |
@@ -101,7 +106,7 @@ Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na
 
 4. Zkopírujte hodnotu URL pro `statusQueryGetUri` a vložte ji do adresního řádku prohlížeče a spusťte požadavek.
 
-    Požadavek se zadotazuje instance orchestrace na stav. Měli byste získat případnou reakci, která vypadá nějak takto.  To ukazuje, že jsme instanci dokončili, a obsahuje výstupy nebo výsledky trvalé funkce.
+    Požadavek se zadotazuje instance orchestrace na stav. Měli byste získat případnou reakci, která vypadá nějak takto.  Tento výstup ukazuje, že jsme instanci dokončili, a obsahuje výstupy nebo výsledky trvalé funkce.
 
     ```json
     {
@@ -114,8 +119,8 @@ Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na
             "Hello Seattle!",
             "Hello London!"
         ],
-        "createdTime": "2018-11-08T07:07:40Z",
-        "lastUpdatedTime": "2018-11-08T07:07:52Z"
+        "createdTime": "2019-11-02T07:07:40Z",
+        "lastUpdatedTime": "2019-11-02T07:07:52Z"
     }
     ```
 

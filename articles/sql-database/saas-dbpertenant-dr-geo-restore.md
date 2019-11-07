@@ -1,5 +1,5 @@
 ---
-title: 'SaaS aplikace: Azure SQL Database geograficky redundantní zálohy pro zotavení po havárii | Microsoft Docs'
+title: 'Aplikace SaaS: Azure SQL Database geograficky redundantní zálohy pro zotavení po havárii '
 description: Naučte se používat Azure SQL Database geograficky redundantní zálohy k obnovení víceklientské aplikace SaaS v případě výpadku.
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
 ms.date: 01/14/2019
-ms.openlocfilehash: c8990e5183d09e8f530fdef952a80a09104d3617
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2f058a5cd20fff845a1feafe42b66beb1afef766
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570501"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692197"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Použití geografického obnovení k obnovení víceklientské aplikace SaaS ze záloh databáze
 
-V tomto kurzu se seznámíte s úplným scénářem zotavení po havárii pro víceklientské aplikace SaaS, která je implementovaná u databáze na model tenanta. [Geografické obnovení](sql-database-recovery-using-backups.md) použijete k obnovení katalogu a databází tenantů z automatického udržování geograficky redundantních záloh do alternativní oblasti obnovení. Po vyřešení výpadku použijete geografickou [replikaci](sql-database-geo-replication-overview.md) k vrácení změněných databází do jejich původní oblasti.
+V tomto kurzu se seznámíte s úplným scénářem zotavení po havárii pro víceklientské aplikace SaaS, která je implementovaná u databáze na model tenanta. [Geografické obnovení](sql-database-recovery-using-backups.md) použijete k obnovení katalogu a databází tenantů z automatického udržování geograficky redundantních záloh do alternativní oblasti obnovení. Po vyřešení výpadku použijete [geografickou replikaci](sql-database-geo-replication-overview.md) k vrácení změněných databází do jejich původní oblasti.
 
-![Geo-restore-architecture](media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
+![Geografické obnovení – architektura](media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
 
 Geografické obnovení je řešení zotavení po havárii s nejnižšími náklady pro Azure SQL Database. Obnovení z geograficky redundantní zálohy ale může způsobit ztrátu dat o jednu hodinu. Může to trvat značnou dobu v závislosti na velikosti každé databáze. 
 
@@ -62,7 +62,7 @@ Zotavení po havárii (DR) je důležité pro mnoho aplikací, ať už z důvod�
 V tomto kurzu se používá funkce Azure SQL Database a platforma Azure k řešení těchto problémů:
 
 * [Azure Resource Manager šablony](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template), aby bylo možné co nejrychleji rezervovat veškerou potřebnou kapacitu. Šablony Azure Resource Manager slouží ke zřízení zrcadlové image původních serverů a elastických fondů v oblasti obnovení. Pro zřizování nových tenantů se taky vytvoří samostatný server a fond.
-* [Klientská knihovna elastic Database](sql-database-elastic-database-client-library.md) (EDCL), chcete-li vytvořit a udržovat katalog databáze klienta. Rozšířený katalog obsahuje pravidelně aktualizované informace o fondu a konfiguraci databáze.
+* [Elastic Database klientské knihovny](sql-database-elastic-database-client-library.md) (EDCL) pro vytvoření a údržbu katalogu databáze klienta. Rozšířený katalog obsahuje pravidelně aktualizované informace o fondu a konfiguraci databáze.
 * [Horizontálních oddílů funkce obnovení](sql-database-elastic-database-recovery-manager.md) EDCL pro správu záznamů umístění databáze v katalogu během obnovování a vracení.  
 * [Geografické obnovení](sql-database-disaster-recovery.md), obnovení katalogu a databází klientů z automatického udržování geograficky redundantních záloh. 
 * [Operace asynchronního obnovení](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations), které jsou odesílány v pořadí priority tenanta, jsou zařazeny do fronty pro každý fond systémem a zpracovány v dávkách, takže fond není přetížen. Tyto operace můžete v případě potřeby zrušit před nebo během provádění.   
@@ -79,7 +79,7 @@ Skripty DR použité v tomto kurzu jsou k dispozici v [úložišti GitHub lístk
 ## <a name="review-the-healthy-state-of-the-application"></a>Zkontrolujte dobrý stav aplikace.
 Než začnete s procesem obnovení, zkontrolujte normální dobrý stav aplikace.
 
-1. Ve webovém prohlížeči otevřete centrum událostí Wingtip http://events.wingtip-dpt.&lt lístky (; User&gt;. trafficmanager.NET, nahraďte &lt; uživatele&gt; hodnotou uživatele vašeho nasazení).
+1. Ve webovém prohlížeči otevřete centrum událostí Wingtip Tickets (http://events.wingtip-dpt.&lt; User&gt;. trafficmanager.net, nahraďte &lt;User&gt; hodnotou uživatele vašeho nasazení).
     
    Posuňte se do dolní části stránky a Všimněte si názvu a umístění serveru katalogu v zápatí. Umístění je oblast, ve které jste nasadili aplikaci.    
 
@@ -105,7 +105,7 @@ V této úloze zahájíte proces synchronizace konfigurace serverů, elastickýc
 > [!IMPORTANT]
 > Pro zjednodušení se v těchto ukázkách implementují proces synchronizace a další dlouhodobé procesy obnovení a převracení, jako místní úlohy PowerShellu nebo relace spouštěné pod přihlášením uživatele klienta. Tokeny ověřování vystavené při vypršení platnosti přihlášení po několika hodinách a úlohy se pak nezdaří. V produkčním scénáři by dlouhotrvající procesy měly být implementovány jako spolehlivé služby Azure v nějakém typu, a to za provozu v instančním objektu. Další informace najdete v tématu [použití Azure PowerShell k vytvoření instančního objektu s certifikátem](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal). 
 
-1. V prostředí PowerShell ISE otevřete soubor Modules\UserConfig.psm1. ..\Learning. `<resourcegroup>` Nahraďte `<user>` a na řádcích 10 a 11 hodnotou použitou při nasazení aplikace. Uložte soubor.
+1. V prostředí PowerShell ISE otevřete soubor Modules\UserConfig.psm1. ..\Learning. Nahraďte `<resourcegroup>` a `<user>` na řádcích 10 a 11 hodnotou použitou při nasazení aplikace. Uložte soubor.
 
 2. V prostředí PowerShell ISE otevřete skript. ..\Learning Modules\Business kontinuita a havárie Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1.
 
@@ -113,7 +113,7 @@ V této úloze zahájíte proces synchronizace konfigurace serverů, elastickýc
 
 3. Nastavte následující:
 
-    $DemoScenario = 1: Spusťte úlohu na pozadí, která synchronizuje informace o konfiguraci serveru tenanta a fondu do katalogu.
+    $DemoScenario = 1: spustí úlohu na pozadí, která synchronizuje informace o konfiguraci tenanta serveru a fondu do katalogu.
 
 4. Pokud chcete skript pro synchronizaci spustit, vyberte F5. 
 
@@ -173,7 +173,7 @@ Představte si výpadky v oblasti, ve které je aplikace nasazená, a spusťte s
 
 1. V ISE PowerShellu ve skriptu ..\Learning pro zajištění kontinuity a havárie Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 nastavte následující hodnotu:
 
-    $DemoScenario = 2: Obnovte aplikaci do oblasti obnovení obnovením z geograficky redundantní zálohy.
+    $DemoScenario = 2: Obnovte aplikaci do oblasti obnovení obnovením z geograficky redundantního zálohování.
 
 2. Pokud chcete skript spustit, vyberte F5.  
 
@@ -199,7 +199,7 @@ I když je koncový bod aplikace v Traffic Manager zakázán, aplikace není k d
  
     ![Proces obnovení](media/saas-dbpertenant-dr-geo-restore/events-hub-tenants-offline-in-recovery-region.png)    
 
-  * Pokud otevřete stránku události tenanta přímo v době, kdy je klient v režimu offline, zobrazí se stránka s oznámením klienta offline. Pokud je například contoso v režimu offline, zkuste otevřít http://events.wingtip-dpt.&lt ; User&gt;. trafficmanager.NET/contosoconcerthall.
+  * Pokud otevřete stránku události tenanta přímo v době, kdy je klient v režimu offline, zobrazí se stránka s oznámením klienta offline. Pokud je například contoso v režimu offline, zkuste otevřít http://events.wingtip-dpt.&lt; uživatel&gt;. trafficmanager.net/contosoconcerthall.
 
     ![Proces obnovení](media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
@@ -208,7 +208,7 @@ Dokonce i před obnovením databází klientů můžete zřídit nové klienty v
 
 1. V prostředí PowerShell ISE ve skriptu ..\Learning pro zajištění kontinuity Modules\Business a havárie Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 nastavte následující vlastnost:
 
-    $DemoScenario = 3: Zřídí nového tenanta v oblasti obnovení.
+    $DemoScenario = 3: zřízení nového tenanta v oblasti obnovení.
 
 2. Pokud chcete skript spustit, vyberte F5.
 
@@ -246,13 +246,13 @@ Po dokončení procesu obnovení jsou aplikace a všichni klienti plně funkčn�
 
    * Verze pro obnovení katalogu a serverů tenants1 s příponou obnovení. Všechny obnovené databáze katalogu a klientů na těchto serverech mají všechny názvy používané v původní oblasti.
 
-   * SQL Server tenants2-DPT&lt;-&gt;User-Recovery. Tento server se používá ke zřízení nových tenantů během výpadku.
+   * Tenants2-DPT-&lt;uživatel&gt;obnovení systému SQL Server. Tento server se používá ke zřízení nových tenantů během výpadku.
 
-   * App Service s názvem Events – Wingtip-DPT-&lt;recoveryregion&gt;-&lt;User&gt;, což je instance obnovení aplikace události.
+   * App Service s názvem Events-DPT-&lt;recoveryregion&gt;-&lt;User&gt;, což je instance obnovení aplikace události.
 
      ![Prostředky contoso v oblasti obnovení](media/saas-dbpertenant-dr-geo-restore/resources-in-recovery-region.png) 
     
-5. Otevřete SQL Server tenants2-DPT&lt;-&gt;User-Recovery. Všimněte si, že obsahuje databázi hawthornhall a elastický fond Pool1. Databáze hawthornhall je nakonfigurovaná jako elastická databáze v elastickém fondu Pool1.
+5. Otevřete tenants2-DPT-&lt;User&gt;-Recovery serveru SQL Server. Všimněte si, že obsahuje databázi hawthornhall a elastický fond Pool1. Databáze hawthornhall je nakonfigurovaná jako elastická databáze v elastickém fondu Pool1.
 
 ## <a name="change-the-tenant-data"></a>Změna dat tenanta 
 V této úloze aktualizujete jednu z obnovených databází tenantů. Proces vrácení se kopíruje obnovené databáze, které byly změněny do původní oblasti. 
@@ -261,11 +261,11 @@ V této úloze aktualizujete jednu z obnovených databází tenantů. Proces vr�
 
 2. V ISE PowerShellu ve skriptu ..\Learning pro zajištění kontinuity a havárie Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 nastavte následující hodnotu:
 
-    $DemoScenario = 4: Odstraní událost z tenanta v oblasti obnovení.
+    $DemoScenario = 4: odstranění události z klienta v oblasti obnovení.
 
 3. Pokud chcete skript spustit, vyberte F5.
 
-4. Aktualizujte stránku s událostmi ve firmě http://events.wingtip-dpt.&lt contoso (&gt; ; User. trafficmanager.NET/contosoconcerthall) a Všimněte si, že chybí událost vážně Strauss.
+4. Aktualizujte stránku události akce společnosti Contoso (http://events.wingtip-dpt.&lt; User&gt;. trafficmanager.net/contosoconcerthall) a Všimněte si, že chybí událost vážně Strauss.
 
 V tomto okamžiku v tomto kurzu jste obnovili aplikaci, která je teď spuštěná v oblasti obnovení. V oblasti obnovení jste zřídili nového tenanta a upravili data jednoho z obnovených tenantů.  
 
@@ -319,17 +319,17 @@ Pokud jste postupovali podle tohoto kurzu, skript okamžitě znovu aktivuje Fabr
   
 1. V prostředí PowerShell ISE ve skriptu ..\Learning pro zajištění kontinuity a havárie Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 ověřte, že proces synchronizace katalogu pořád běží v instanci PowerShellu. V případě potřeby ho restartujte nastavením:
 
-    $DemoScenario = 1: Spusťte synchronizaci informací o serveru klienta, fondu a konfiguraci databáze do katalogu.
+    $DemoScenario = 1: Spustit synchronizaci informací o serveru klienta, fondu a konfiguraci databáze do katalogu.
 
     Pokud chcete skript spustit, vyberte F5.
 
 2.  Pak zahajte proces navracení, nastavte:
 
-    $DemoScenario = 5: Vrácení aplikace do původní oblasti.
+    $DemoScenario = 5: převrácení aplikace do původní oblasti.
 
     Pokud chcete skript pro obnovení spustit v novém okně PowerShellu, vyberte F5. Vrácení může trvat několik minut a může se monitorovat v okně PowerShellu.
 
-3. Když je skript spuštěný, aktualizujte stránku centra událostí (http://events.wingtip-dpt.&lt ; User&gt;. trafficmanager.NET).
+3. Když je skript spuštěný, aktualizujte stránku centra událostí (http://events.wingtip-dpt.&lt; uživatel&gt;. trafficmanager.net).
 
     Všimněte si, že všichni klienti jsou online a přístupné v celém rámci tohoto procesu.
 
@@ -351,7 +351,7 @@ Proces obnovení vytvoří všechny prostředky obnovení ve skupině prostředk
 
 1. V prostředí PowerShell ISE ve skriptu ..\Learning pro zajištění kontinuity Modules\Business a havárie Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 nastavte tyto možnosti:
     
-    $DemoScenario = 6: Odstraní zastaralé prostředky z oblasti obnovení.
+    $DemoScenario = 6: odstranit zastaralé prostředky z oblasti obnovení.
 
 2. Pokud chcete skript spustit, vyberte F5.
 

@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat z SAP ECC pomocí Azure Data Factory | Microsoft Docs
+title: Kopírování dat z SAP ECC pomocí Azure Data Factory
 description: Naučte se, jak kopírovat data z SAP ECC na podporovaná úložiště dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: c2b9fcc3f75b8f310532978061c887776f007ff0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 526f85ca4b8854a36232c75a55847a73a8d372cc
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089536"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680298"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Kopírování dat z SAP ECC pomocí Azure Data Factory
 
@@ -26,14 +26,14 @@ Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Da
 >[!TIP]
 >Pokud chcete získat přehled o celkové podpoře pro integraci dat přes ADF, přečtěte si článek [integrace dat SAP pomocí Azure Data Factory dokumentu White Paper](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) s podrobnými pokyny k úvodu, comparsion a pokyny.
 
-## <a name="supported-capabilities"></a>Podporované funkce
+## <a name="supported-capabilities"></a>Podporované možnosti
 
 Tento konektor SAP ECC se podporuje pro následující činnosti:
 
 - [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
 - [Aktivita Lookup](control-flow-lookup-activity.md)
 
-Data z SAP ECC můžete kopírovat do jakéhokoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Data z SAP ECC můžete kopírovat do jakéhokoli podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje nebo jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
 Konkrétně tento konektor SAP ECC podporuje:
 
@@ -72,13 +72,13 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu SAP ECC jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| `type` | Vlastnost musí být nastavena na `SapEcc`hodnotu. `type` | Ano |
+| `type` | Vlastnost `type` musí být nastavena na hodnotu `SapEcc`. | Ano |
 | `url` | Adresa URL služby SAP ECC OData. | Ano |
 | `username` | Uživatelské jméno použité pro připojení k SAP ECC. | Ne |
 | `password` | Heslo ve formátu prostého textu používané pro připojení k SAP ECC. | Ne |
-| `connectVia` | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Další informace najdete v části [požadavky](#prerequisites) . Pokud nezadáte modul runtime, použije se výchozí prostředí Azure Integration runtime. | Ne |
+| `connectVia` | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud nezadáte modul runtime, použije se výchozí prostředí Azure Integration runtime. | Ne |
 
 ### <a name="example"></a>Příklad
 
@@ -107,11 +107,11 @@ Pro propojenou službu SAP ECC jsou podporovány následující vlastnosti:
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v tématu [datové sady](concepts-datasets-linked-services.md). V následující části najdete seznam vlastností podporovaných datovou sadou SAP ECC.
 
-Chcete-li kopírovat data z SAP ECC, `type` nastavte vlastnost datové sady na `SapEccResource`.
+Chcete-li kopírovat data z SAP ECC, nastavte vlastnost `type` datové sady na `SapEccResource`.
 
 Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | `path` | Cesta k entitě SAP ECC OData | Ano |
 
@@ -140,13 +140,13 @@ Podporovány jsou následující vlastnosti:
 
 ### <a name="sap-ecc-as-a-source"></a>SAP ECC jako zdroj
 
-Chcete-li kopírovat data z SAP ECC, `type` nastavte vlastnost `source` v části aktivity kopírování na `SapEccSource`.
+Chcete-li kopírovat data z SAP ECC, nastavte vlastnost `type` v části `source` aktivity kopírování na `SapEccSource`.
 
-V `source` části aktivity kopírování jsou podporovány následující vlastnosti:
+V části `source` aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| `type` | Vlastnost oddílu aktivity kopírování musí být nastavena na `SapEccSource`hodnotu. `source` `type` | Ano |
+| `type` | Vlastnost `type` oddílu `source` aktivity kopírování musí být nastavená na `SapEccSource`. | Ano |
 | `query` | Možnosti dotazu OData pro filtrování dat Příklad:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>Konektor SAP ECC kopíruje data z kombinované adresy URL:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>Další informace najdete v tématu [komponenty adresy URL OData](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Ne |
 
 ### <a name="example"></a>Příklad
@@ -185,7 +185,7 @@ V `source` části aktivity kopírování jsou podporovány následující vlast
 
 Při kopírování dat z SAP ECC se z datových typů OData pro data SAP ECC používají následující mapování pro Azure Data Factory dočasných datových typů. Informace o tom, jak aktivita kopírování mapuje zdrojové schéma a datový typ k jímky, najdete v tématu [mapování schémat a datových typů](copy-activity-schema-and-type-mapping.md).
 
-| Datový typ OData | Data Factory dočasné datový typ |
+| Datový typ OData | Data Factory pomocný datový typ |
 |:--- |:--- |
 | `Edm.Binary` | `String` |
 | `Edm.Boolean` | `Bool` |
@@ -210,6 +210,6 @@ Při kopírování dat z SAP ECC se z datových typů OData pro data SAP ECC pou
 
 Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

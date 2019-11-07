@@ -1,62 +1,62 @@
 ---
-title: S Azure Media Clipperem vytvářet | Dokumentace Microsoftu
-description: Přehled služby Azure Media Clipperem, nástroj pro vytváření multimédia z prostředků
+title: Vytváření klipů pomocí Azure Media Clipperu | Microsoft Docs
+description: Přehled Azure Media Clipperu, nástroj pro vytváření mediálních klipů z assetů
 services: media-services
-keywords: Galerie, dílčí klip, kódování, médií
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+keywords: Clip; dílčí klip; Encoding; Media
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 35f1f359b44af00000ccd9047673b80ca541d376
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51f85dffd48e451b477018ef20491f8619a30f25
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61243859"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685009"
 ---
-# <a name="create-clips-with-azure-media-clipper"></a>Vytvářet s Azure Media Clipperem 
+# <a name="create-clips-with-azure-media-clipper"></a>Vytváření klipů pomocí Azure Media Clipperu 
 
-Azure Media Clipperem je bezplatné knihovna jazyka JavaScript, který umožňuje vývojářům webů, jejich uživatelům poskytnout rozhraní pro vytvoření multimédia. Tento nástroj je možné integrovat do libovolné webové stránce a poskytuje rozhraní API pro načítání prostředků a odesílání úloh oříznutí.
+Azure Media Clipper je bezplatná knihovna JavaScriptu, která umožňuje webovým vývojářům poskytovat svým uživatelům rozhraní pro vytváření mediálních klipů. Tento nástroj lze integrovat do libovolné webové stránky a poskytuje rozhraní API pro načítání assetů a odesílání ořezových úloh.
 
-Azure Media Clipperem vám umožní:
-- Trim břidlicová před a po slatu z za provozu archivy 
-- Vytváření video nejzajímavější body z události v reálném čase, živých nebo soubory videa na Vyžádání fMP4 AMS 
-- CONCATENATE videa z více zdrojů 
-- Vytvořit souhrn klipy z vašich mediálních materiálů AMS 
-- Oříznutí videa s přesností na rámec 
-- Generovat filtry dynamických manifestů přes existující za provozu a videa na Vyžádání prostředky s přesností skupiny z obrázků (GOP) 
-- Vytvořit kódovací úlohy s prostředky ve vašem účtu media services
+Azure Media Clipper vám umožní:
+- Vystřihování předslat a post-SLAT z živých archivů 
+- Sestavování videí od živých událostí AMS, živých archivů nebo souborů fMP4 VOD 
+- Zřetězení videí z více zdrojů 
+- Vytváření souhrnných klipů z prostředků médií AMS 
+- Vystřihnout videa s přesností snímků 
+- Generování dynamických filtrů manifestu pomocí stávajících živých a VOD prostředků s přesností skupinu GOP (Group-of-refotografie) 
+- Vytváření úloh kódování pro prostředky v účtu Media Services
 
-Požádat o nové funkce, zadejte své nápady nebo připomínky, odešlete do [UserVoice pro službu Azure Media Services](https://aka.ms/amsvoice/). Pokud máte a konkrétní problémy, dotazy nebo najít všechny chyby, přetažení Media Services team řádek na amcinfo@microsoft.com.
+Pokud chcete požádat o nové funkce, poskytněte nápady nebo zpětnou vazbu, odešlete do [UserVoice pro Azure Media Services](https://aka.ms/amsvoice/). Pokud máte nějaké a specifické problémy, otázky nebo zjistíte případné chyby, vyřaďte Media Services týmu řádek na amcinfo@microsoft.com.
 
-Následující obrázek ukazuje Clipperem rozhraní: ![Azure Media Clipper](media/media-services-azure-media-clipper-overview/media-services-azure-media-clipper-interface.PNG)
+Následující obrázek ukazuje rozhraní Clipperu: ![Azure Media Clipper](media/media-services-azure-media-clipper-overview/media-services-azure-media-clipper-interface.PNG)
 
 ## <a name="release-notes"></a>Poznámky k verzi
-Najdete v následujícím seznamu Clipperem blogový příspěvek, různé známé problémy a protokolu změn pro nejnovější verzi Clipperem:
-- [Blogový příspěvek](https://azure.microsoft.com/blog/azure-media-clipper/)
+Podívejte se na následující seznam pro Blogový příspěvek v Clipperu, různé známé problémy a protokol změn pro nejnovější verzi Clipperu:
+- [Příspěvek na blogu](https://azure.microsoft.com/blog/azure-media-clipper/)
 - [Seznam známých problémů](https://amp.azure.net/libs/amc/latest/docs/known_issues.html)
-- [Changelog](https://amp.azure.net/libs/amc/latest/docs/changelog.html)
+- [Změn](https://amp.azure.net/libs/amc/latest/docs/changelog.html)
 
 ## <a name="browser-support"></a>Podpora prohlížeče
-Azure Media Clipperem se vytvořil pomocí moderních technologií HTML5 a podporují následující prohlížeče:
+Azure Media Clipper je sestavený s využitím moderních technologií HTML5 a podporuje následující prohlížeče:
 
-- Microsoft Edge 13+
-- Internet Explorer 11+
+- Microsoft Edge 13 +
+- Internet Explorer 11 +
 - Chrome 54 +
 - Safari 10 +
 - Firefox 50 +
 
 > [!NOTE]
-> Aktuálně podporuje pouze přehrávání HTML5 streamovaných ze služby Azure Media Services.
+> V tuto chvíli se podporuje jenom přehrávání datových proudů HTML5 z Azure Media Services.
 
 ## <a name="language-support"></a>Podpora jazyků
-Widget Clipperu je k dispozici v následujících 18 jazycích:
+Widget v Clipperu je k dispozici v následujících 18 jazycích:
 - Čínština (zjednodušená)
 - Čínština (tradiční)
 - Čeština
-- Holandština Vlámsky
+- Holandština, Flemish
 - Angličtina
 - Francouzština
 - Němčina
@@ -72,5 +72,5 @@ Widget Clipperu je k dispozici v následujících 18 jazycích:
 - švédština
 - turečtina
 
-## <a name="next-steps"></a>Další postup
-Abyste mohli začít používat Azure Media Clipperem, přečtěte si [Začínáme](media-services-azure-media-clipper-getting-started.md) , kde najdete podrobnosti o tom, jak nasadit widgetu.
+## <a name="next-steps"></a>Další kroky
+Pokud chcete začít používat Azure Media Clipper, přečtěte si článek [Začínáme](media-services-azure-media-clipper-getting-started.md) , kde najdete podrobnosti o tom, jak tento widget nasadit.
