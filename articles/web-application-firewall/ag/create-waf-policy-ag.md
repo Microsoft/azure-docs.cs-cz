@@ -7,16 +7,19 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 10/26/2019
 ms.author: victorh
-ms.openlocfilehash: a7622489008a8fabef8aee3ffb2ffc4f33b48296
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 31a5ad92942b40e42b66e404df2d09cd8158f7a2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516666"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606483"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Vytvoření zásad firewallu webových aplikací pro Application Gateway
 
 Přidružení zásady WAF k naslouchacím procesům umožňuje, aby bylo více webů za jedním WAF chráněno pomocí různých zásad. Pokud máte například pět webů za vaší WAF, můžete mít pět samostatných zásad WAF (jeden pro každý naslouchací proces) a přizpůsobit vyloučení, vlastní pravidla a spravované RuleSets pro jednu lokalitu, aniž by to mělo vliv na ostatní čtyři. Pokud chcete, aby se jedna zásada provedla pro všechny lokality, můžete zásadu přidružit k Application Gateway místo jednotlivých posluchačů, aby se mohla použít globálně. Zásady je možné použít také pro pravidlo směrování na základě cesty. 
+
+   > [!NOTE]
+   > Zásady WAF pro jednotlivé lokality jsou k dispozici v Střed USA – jih a Severní Evropa. Pokud k nim chcete přistupovat na portálu, použijte prosím [Tento odkaz](https://aka.ms/AppgwwafWithAllFeatureFlags) , dokud nebude aktivní pro všechny.  
 
 Můžete vytvořit tolik zásad, kolik chcete. Až zásadu vytvoříte, musí být přidružená k Application Gateway, aby se projevila, ale může být přidružená k jakékoli kombinaci aplikačních bran a posluchačů. 
 

@@ -1,18 +1,18 @@
 ---
 title: Připojení k Azure Analysis Services s využitím Power BI | Microsoft Docs
-description: Přečtěte si, jak se připojit k serveru Azure Analysis Services pomocí Power BI.
+description: Přečtěte si, jak se připojit k serveru Azure Analysis Services pomocí Power BI. Po připojení mohou uživatelé prozkoumat data modelu.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 181a63fda1feddfb654eb32f46632f0656febb82
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: db0c00268c343cd99e439bb49460523cf0563c3c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295298"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573102"
 ---
 # <a name="connect-with-power-bi"></a>Propojení s Power BI
 
@@ -44,9 +44,9 @@ Po vytvoření serveru v Azure a nasazení tabelárního modelu do něj budou u�
 ## <a name="connect-in-power-bi-service"></a>Připojit v Power BI (služba)
 
 1. Vytvořte soubor Power BI Desktop s živým připojením k vašemu modelu na vašem serveru.
-2. V [Power BI](https://powerbi.microsoft.com)klikněte na **načíst data** > **soubory**a pak vyhledejte a vyberte soubor. pbix.
+2. V [Power BI](https://powerbi.microsoft.com)klikněte na **získat data** > **soubory**a pak vyhledejte a vyberte soubor. pbix.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 [Připojení k Azure Analysis Services](analysis-services-connect.md)   
 [Klientské knihovny](analysis-services-data-providers.md)
 

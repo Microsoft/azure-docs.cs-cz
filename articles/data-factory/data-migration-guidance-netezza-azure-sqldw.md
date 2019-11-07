@@ -1,5 +1,5 @@
 ---
-title: Použití Azure Data Factory k migraci dat z místního serveru Netezza do Azure | Microsoft Docs
+title: Použití Azure Data Factory k migraci dat z místního serveru Netezza do Azure
 description: K migraci dat z místního Netezza serveru do Azure použijte Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/03/2019
-ms.openlocfilehash: 9ea8326b10536cb91b9dc67f637664f0fc055e74
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: c5b36a04501b417af4e4527968a082da8a061804
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122836"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675805"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Použití Azure Data Factory k migraci dat z místního serveru Netezza do Azure 
 
@@ -62,7 +62,7 @@ Případně, pokud nechcete, aby se data přenesla prostřednictvím veřejného
 
 Další část popisuje, jak dosáhnout vyšší úrovně zabezpečení.
 
-## <a name="solution-architecture"></a>Architektury řešení
+## <a name="solution-architecture"></a>Architektura řešení
 
 Tato část popisuje dva způsoby, jak migrovat data.
 
@@ -120,9 +120,9 @@ Předchozí diagram lze interpretovat následujícím způsobem:
 
 Pro malé tabulky (to znamená, že tabulky se svazkem menším než 100 GB nebo které je možné migrovat do Azure do dvou hodin), můžete vytvořit každou úlohu kopírování dat na každou tabulku. Pro větší propustnost můžete spustit několik úloh kopírování Azure Data Factory pro souběžné načtení samostatných tabulek. 
 
-Aby bylo možné spouštět paralelní dotazy a kopírovat data podle oddílů, můžete v rámci každé úlohy kopírování spojit i určitou úroveň paralelismu pomocí [ `parallelCopies` nastavení vlastnosti](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) v některé z následujících možností datových oddílů:
+Aby bylo možné spouštět paralelní dotazy a kopírovat data podle oddílů, můžete v rámci každé úlohy kopírování získat přístup k určité úrovni paralelismu pomocí [nastavení vlastnosti`parallelCopies`](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) s kteroukoli z následujících možností datových oddílů:
 
-- Abychom vám pomohli dosáhnout vyšší efektivity, doporučujeme začít z datového řezu.  Ujistěte se, že hodnota v `parallelCopies` nastavení je menší než celkový počet oddílů datového řezu v tabulce na serveru Netezza.  
+- Abychom vám pomohli dosáhnout vyšší efektivity, doporučujeme začít z datového řezu.  Ujistěte se, že hodnota v nastavení `parallelCopies` je menší než celkový počet oddílů datového řezu v tabulce na serveru Netezza.  
 
 - Pokud je svazek každého oddílu pro datové řezy stále velký (například 10 GB nebo větší), doporučujeme přepnout na oddíl dynamického rozsahu. Tato možnost nabízí větší flexibilitu pro definování počtu oddílů a objemu jednotlivých oddílů podle sloupce oddílu, horní meze a dolní meze.
 
@@ -150,13 +150,13 @@ Pokud migrujete data ze serveru Netezza do Azure, ať už je místní lokalita z
 
 Osvědčeným postupem je vyřídit výkon konceptu (ověření koncepce) s reprezentativní ukázkovou datovou sadou, abyste pro každou aktivitu kopírování mohli určit vhodnou velikost oddílu. Každý oddíl do Azure doporučujeme načíst do dvou hodin.  
 
-Chcete-li zkopírovat tabulku, začněte s jednou aktivitou kopírování s jedním místně hostovaným počítačem IR. Postupně zvyšujte `parallelCopies` nastavení na základě počtu oddílů datového řezu v tabulce. Podívejte se, jestli se celá tabulka dá načíst do Azure do dvou hodin, podle propustnosti, která je výsledkem úlohy kopírování. 
+Chcete-li zkopírovat tabulku, začněte s jednou aktivitou kopírování s jedním místně hostovaným počítačem IR. Postupně zvyšujte nastavení `parallelCopies` v závislosti na počtu oddílů datového řezu v tabulce. Podívejte se, jestli se celá tabulka dá načíst do Azure do dvou hodin, podle propustnosti, která je výsledkem úlohy kopírování. 
 
 Pokud se do Azure nedá načíst do dvou hodin a kapacita uzlu IR v místním prostředí a úložiště dat se nepoužívá, postupně zvyšujte počet souběžných aktivit kopírování, dokud nedosáhnete limitu sítě nebo šířky pásma úložiště dat. pracují. 
 
 Sledujte využití CPU a paměti na místním počítači IR a připravte se na horizontální navýšení kapacity počítače nebo horizontální navýšení kapacity na více počítačů, když zjistíte, že je procesor a paměť plně využité. 
 
-Když narazíte na chyby omezování, jak je uvedeno v Azure Data Factory aktivita kopírování, buď snižte souběžnost `parallelCopies` nebo nastavení v Azure Data Factory, nebo zvažte zvýšení limitu šířky pásma nebo vstupně-výstupních operací za sekundu (IOPS) sítě a úložiště dat. 
+Když narazíte na chyby omezování, jak je uvedeno v Azure Data Factory aktivita kopírování, buď zmenšete nastavení souběžnosti nebo `parallelCopies` v Azure Data Factory, nebo zvažte zvýšení limitu šířky pásma nebo vstupně-výstupních operací za sekundu (IOPS) sítě a dat. Store. 
 
 
 ### <a name="estimate-your-pricing"></a>Odhad ceny 
@@ -173,7 +173,7 @@ Pojďme předpokládat, že jsou splněné následující příkazy:
 
 - Svazek 50-TB je rozdělen do 500 oddílů a každá aktivita kopírování přesune jeden oddíl.
 
-- Každá aktivita kopírování je nakonfigurována s jedním místním prostředím IR na čtyři počítače a dosáhne propustnosti 20 megabajtů za sekundu (MB/s). (V rámci aktivity `parallelCopies` kopírování je nastaveno na 4 a každé vlákno načtení dat z tabulky dosahuje propustnosti 5 MB/s.)
+- Každá aktivita kopírování je nakonfigurována s jedním místním prostředím IR na čtyři počítače a dosáhne propustnosti 20 megabajtů za sekundu (MB/s). (V rámci aktivity kopírování `parallelCopies` je nastavené na 4 a každé vlákno načte data z tabulky dosáhne propustnosti 5 MB/s.)
 
 - Souběžnost ForEach je nastavená na 3 a agregovaná propustnost je 60 MB/s.
 

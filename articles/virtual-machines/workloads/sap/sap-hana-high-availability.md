@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/15/2019
+ms.date: 11/06/2019
 ms.author: sedusch
-ms.openlocfilehash: 5632ccf6c9b9cb67d169c5b60f1adefd85b576b8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ffa2f937a14aa14750480d1c45498fb4c49fcc30
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791648"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721502"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
@@ -124,7 +124,7 @@ K nasazení šablony použijte následující postup:
 1. Vytvořte virtuální síť.
 1. Vytvořte skupinu dostupnosti.
    - Nastavte maximální doménu aktualizace.
-1. Vytvořte Nástroj pro vyrovnávání zatížení (interní).
+1. Vytvořte Nástroj pro vyrovnávání zatížení (interní). Doporučujeme [standardní nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
    - Vyberte virtuální síť vytvořenou v kroku 2.
 1. Vytvořte virtuální počítač 1.
    - Použijte SLES4SAP image v galerii Azure, která je podporovaná pro SAP HANA pro vybraný typ virtuálního počítače.
@@ -133,64 +133,104 @@ K nasazení šablony použijte následující postup:
    - Použijte SLES4SAP image v galerii Azure, která je podporovaná pro SAP HANA pro vybraný typ virtuálního počítače.
    - Vyberte skupinu dostupnosti vytvořenou v kroku 3. 
 1. Přidejte datové disky.
-1. Nakonfigurujte Nástroj pro vyrovnávání zatížení. Nejprve vytvořte front-end fond IP adres:
+1. Pokud používáte standardní nástroj pro vyrovnávání zatížení, postupujte podle těchto kroků konfigurace:
+   1. Nejprve vytvořte front-end fond IP adres:
+   
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **front-end IP fond**a vyberte **Přidat**.
+      1. Zadejte název nového fondu front-end IP adres (například **Hana-front-endu**).
+      1. Nastavte **přiřazení** na **statické** a zadejte IP adresu (například **10.0.0.13**).
+      1. Vyberte **OK**.
+      1. Až se vytvoří nový fond front-end IP adres, poznamenejte si IP adresu fondu.
+   
+   1. Dále vytvořte fond back-end:
+   
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **fondy back-endu**a vyberte **Přidat**.
+      1. Zadejte název nového fondu back-end (například **Hana-back-end**).
+      1. Vyberte **Virtual Network**.
+      1. Vyberte **Přidat virtuální počítač**.
+      1. Vyberte * * virtuální počítač * *.
+      1. Vyberte virtuální počítače SAP HANA clusteru a jejich IP adresy.
+      1. Vyberte **Přidat**.
+   
+   1. Potom vytvořte sondu stavu:
+   
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **sondy stavu**a vyberte **Přidat**.
+      1. Zadejte název nové sondy stavu (například **Hana-HP**).
+      1. Jako protokol a port 625**03**vyberte **TCP** . Hodnotu **intervalu** nastavte na 5 a mezní hodnota není v **pořádku** je nastavená na 2.
+      1. Vyberte **OK**.
+   
+   1. Dále vytvořte pravidla vyrovnávání zatížení:
+   
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
+      1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například **Hana-kg**).
+      1. Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Hana-front-endu**, **Hana-back-endu** a **Hana-HP**).
+      1. Vyberte **porty ha**.
+      1. Zvyšte **časový limit nečinnosti** na 30 minut.
+      1. Ujistěte se, že jste **povolili plovoucí IP adresu**.
+      1. Vyberte **OK**.
 
-   1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **front-end IP fond**a vyberte **Přidat**.
-   1. Zadejte název nového fondu front-end IP adres (například **Hana-front-endu**).
-   1. Nastavte **přiřazení** na **statické** a zadejte IP adresu (například **10.0.0.13**).
-   1. Vyberte **OK**.
-   1. Až se vytvoří nový fond front-end IP adres, poznamenejte si IP adresu fondu.
+   > [!Note]
+   > Pokud se virtuální počítače bez veřejných IP adres nacházejí v back-end fondu interní služby pro vyrovnávání zatížení (bez veřejné IP adresy), nebude žádné odchozí připojení k Internetu, pokud se neprovede další konfigurace, která umožní směrování na veřejné koncové body. Podrobnosti o tom, jak dosáhnout odchozího připojení, najdete v tématu [připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích s vysokou dostupností SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)  
 
-1. Dále vytvořte fond back-end:
+1. Případně, pokud váš scénář používá základní nástroj pro vyrovnávání zatížení, postupujte podle těchto kroků konfigurace:
+   1. Nejprve vytvořte front-end fond IP adres:
+   
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **front-end IP fond**a vyberte **Přidat**.
+      1. Zadejte název nového fondu front-end IP adres (například **Hana-front-endu**).
+      1. Nastavte **přiřazení** na **statické** a zadejte IP adresu (například **10.0.0.13**).
+      1. Vyberte **OK**.
+      1. Až se vytvoří nový fond front-end IP adres, poznamenejte si IP adresu fondu.
+   
+   1. Dále vytvořte fond back-end:
+   
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **fondy back-endu**a vyberte **Přidat**.
+      1. Zadejte název nového fondu back-end (například **Hana-back-end**).
+      1. Vyberte **Přidat virtuální počítač**.
+      1. Vyberte skupinu dostupnosti vytvořenou v kroku 3.
+      1. Vyberte virtuální počítače clusteru SAP HANA.
+      1. Vyberte **OK**.
+   
+   1. Potom vytvořte sondu stavu:
+   
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **sondy stavu**a vyberte **Přidat**.
+      1. Zadejte název nové sondy stavu (například **Hana-HP**).
+      1. Jako protokol a port 625**03**vyberte **TCP** . Hodnotu **intervalu** nastavte na 5 a mezní hodnota není v **pořádku** je nastavená na 2.
+      1. Vyberte **OK**.
+   
+   1. Pro SAP HANA 1,0 vytvořte pravidla vyrovnávání zatížení:
+   
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
+      1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například Hana-kg-3**03**15).
+      1. Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Hana-front-endu**).
+      1. Zachovejte **protokol** nastaven na **TCP**a zadejte port 3**03**15.
+      1. Zvyšte **časový limit nečinnosti** na 30 minut.
+      1. Ujistěte se, že jste **povolili plovoucí IP adresu**.
+      1. Vyberte **OK**.
+      1. Opakujte tento postup pro port 3**03**17.
+   
+   1. Pro SAP HANA 2,0 vytvořte pravidla vyrovnávání zatížení pro systémovou databázi:
+   
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
+      1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například Hana-kg-3**03**13).
+      1. Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Hana-front-endu**).
+      1. Zachovejte **protokol** nastaven na **TCP**a zadejte port 3**03**13.
+      1. Zvyšte **časový limit nečinnosti** na 30 minut.
+      1. Ujistěte se, že jste **povolili plovoucí IP adresu**.
+      1. Vyberte **OK**.
+      1. Opakujte tento postup pro port 3**03**14.
+   
+   1. Pro SAP HANA 2,0 nejprve vytvořte pravidla vyrovnávání zatížení pro databázi tenanta:
+   
+      1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
+      1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například Hana-kg-3**03**40).
+      1. Vyberte front-end IP adresu, fond back-endu a sondu stavu, který jste vytvořili dříve (například **Hana-Endu**).
+      1. Zachovejte **protokol** nastaven na **TCP**a zadejte port 3**03**40.
+      1. Zvyšte **časový limit nečinnosti** na 30 minut.
+      1. Ujistěte se, že jste **povolili plovoucí IP adresu**.
+      1. Vyberte **OK**.
+      1. Opakujte tyto kroky pro porty 3**03**41 a 3**03**42.
 
-   1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **fondy back-endu**a vyberte **Přidat**.
-   1. Zadejte název nového fondu back-end (například **Hana-back-end**).
-   1. Vyberte **Přidat virtuální počítač**.
-   1. Vyberte skupinu dostupnosti vytvořenou v kroku 3.
-   1. Vyberte virtuální počítače clusteru SAP HANA.
-   1. Vyberte **OK**.
-
-1. Potom vytvořte sondu stavu:
-
-   1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **sondy stavu**a vyberte **Přidat**.
-   1. Zadejte název nové sondy stavu (například **Hana-HP**).
-   1. Jako protokol a port 625**03**vyberte **TCP** . Hodnotu **intervalu** nastavte na 5 a mezní hodnota není v **pořádku** je nastavená na 2.
-   1. Vyberte **OK**.
-
-1. Pro SAP HANA 1,0 vytvořte pravidla vyrovnávání zatížení:
-
-   1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
-   1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například Hana-kg-3**03**15).
-   1. Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Hana-front-endu**).
-   1. Zachovejte **protokol** nastaven na **TCP**a zadejte port 3**03**15.
-   1. Zvyšte **časový limit nečinnosti** na 30 minut.
-   1. Ujistěte se, že jste **povolili plovoucí IP adresu**.
-   1. Vyberte **OK**.
-   1. Opakujte tento postup pro port 3**03**17.
-
-1. Pro SAP HANA 2,0 vytvořte pravidla vyrovnávání zatížení pro systémovou databázi:
-
-   1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
-   1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například Hana-kg-3**03**13).
-   1. Vyberte front-end IP adresu, fond back-end a sondu stavu, který jste vytvořili dříve (například **Hana-front-endu**).
-   1. Zachovejte **protokol** nastaven na **TCP**a zadejte port 3**03**13.
-   1. Zvyšte **časový limit nečinnosti** na 30 minut.
-   1. Ujistěte se, že jste **povolili plovoucí IP adresu**.
-   1. Vyberte **OK**.
-   1. Opakujte tento postup pro port 3**03**14.
-
-1. Pro SAP HANA 2,0 nejprve vytvořte pravidla vyrovnávání zatížení pro databázi tenanta:
-
-   1. Otevřete nástroj pro vyrovnávání zatížení, vyberte **pravidla vyrovnávání zatížení**a vyberte **Přidat**.
-   1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například Hana-kg-3**03**40).
-   1. Vyberte front-end IP adresu, fond back-endu a sondu stavu, který jste vytvořili dříve (například **Hana-Endu**).
-   1. Zachovejte **protokol** nastaven na **TCP**a zadejte port 3**03**40.
-   1. Zvyšte **časový limit nečinnosti** na 30 minut.
-   1. Ujistěte se, že jste **povolili plovoucí IP adresu**.
-   1. Vyberte **OK**.
-   1. Opakujte tyto kroky pro porty 3**03**41 a 3**03**42.
-
-Další informace o požadovaných portech pro SAP HANA naleznete v kapitole [připojení k databázím tenantů](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) v průvodci [SAP HANA databáze klienta](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) nebo v tématu [SAP Note 2388694][2388694].
+   Další informace o požadovaných portech pro SAP HANA naleznete v kapitole [připojení k databázím tenantů](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) v průvodci [SAP HANA databáze klienta](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) nebo v tématu [SAP Note 2388694][2388694].
 
 > [!IMPORTANT]
 > Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. TCP _timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).

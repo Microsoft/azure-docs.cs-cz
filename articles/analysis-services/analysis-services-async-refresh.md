@@ -1,18 +1,18 @@
 ---
 title: Asynchronní aktualizace pro Azure Analysis Services modely | Microsoft Docs
-description: Naučte se, jak kódovat asynchronní aktualizace pomocí REST API.
+description: Popisuje způsob použití Azure Analysis Services REST API k kódování asynchronní aktualizace dat modelu.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5fbb3f2cbc0e53ab1bc04d57b583802e26b92a60
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7c6fba10264939335cdef26f288973f8217f340b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147360"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573397"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchronní aktualizace s využitím rozhraní REST API
 
@@ -56,12 +56,12 @@ Můžete například použít příkaz POST v kolekci reaktuálnosti k proveden�
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Ověření
+## <a name="authentication"></a>Ověřování
 
 Všechna volání musí být ověřena pomocí platného tokenu Azure Active Directory (OAuth 2) v autorizační hlavičce a musí splňovat následující požadavky:
 
 - Token musí být buď token uživatele, nebo objekt služby aplikace.
-- Token musí mít správnou cílovou skupinu nastavenou na `https://*.asazure.windows.net`.
+- Token musí mít nastavenou správnou cílovou skupinu na `https://*.asazure.windows.net`.
 - Aby mohl uživatel nebo aplikace provést požadované volání, musí mít na serveru nebo v modelu dostatečná oprávnění. Úroveň oprávnění je určena rolemi v rámci modelu nebo skupiny pro správu na serveru.
 
     > [!IMPORTANT]
@@ -97,7 +97,7 @@ Tělo může vypadat takto:
 
 Určení parametrů není vyžadováno. Použije se výchozí hodnota.
 
-| Name (Název)             | Typ  | Popis  |Výchozí  |
+| Název             | Typ  | Popis  |Výchozí  |
 |------------------|-------|--------------|---------|
 | `Type`           | Výčet  | Typ zpracování, které má být provedeno. Typy jsou zarovnány s TMSL typy [příkazů pro obnovení](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) : Full, clearValues, vypočítat, dataonly, Automatic a defragmentovat. Typ přidání není podporován.      |   Automatické      |
 | `CommitMode`     | Výčet  | Určuje, zda budou objekty potvrzeny v dávkách nebo pouze v případě, že jsou dokončeny. Mezi režimy patří: Default, Transaction, partialBatch.  |  doručen       |
@@ -160,7 +160,7 @@ Chcete-li získat seznam historických operací aktualizace pro model, použijte
 ]
 ```
 
-## <a name="delete-refreshesrefreshid"></a>ODSTRANĚNÍ/refreshes/\<refreshId >
+## <a name="delete-refreshesrefreshid"></a>Odstranit/refreshes/\<refreshId >
 
 Chcete-li zrušit probíhající operaci aktualizace, použijte příkaz DELETE pro ID aktualizace.
 
@@ -207,11 +207,11 @@ Ukázka kódu používá ověřování [instančního objektu](#service-principa
 Další informace o tom, jak nastavit instanční objekt a přiřadit potřebná oprávnění v Azure jako, najdete v tématu [Vytvoření instančního objektu – Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md) a [Přidání instančního objektu k roli správce serveru](analysis-services-addservprinc-admins.md) . Po dokončení kroků proveďte následující další kroky:
 
 1.  V ukázce kódu vyhledejte **řetězcovou autoritu =...** , nahraďte **Common** číslem ID tenanta vaší organizace.
-2.  Komentář/Odkomentujte, aby se třída ClientCredential použila k vytvoření instance objektu přihlašovacích údajů. Ujistěte se, že \<App ID > a > klíč \<App jsou dostupné zabezpečeným způsobem nebo používají ověřování pomocí certifikátů u instančních objektů.
+2.  Komentář/Odkomentujte, aby se třída ClientCredential použila k vytvoření instance objektu přihlašovacích údajů. Zajistěte, aby \<ID aplikace > a \<klíč App Key > hodnot byly dostupné zabezpečeným způsobem nebo aby bylo možné použít ověřování pomocí certifikátů pro instanční objekty.
 3.  Spusťte ukázku.
 
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 [Ukázky](analysis-services-samples.md)   
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   

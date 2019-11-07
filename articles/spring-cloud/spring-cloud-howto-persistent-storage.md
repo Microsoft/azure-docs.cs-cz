@@ -1,20 +1,17 @@
 ---
 title: Jak používat trvalé úložiště v Azure jaře cloudu | Microsoft Docs
 description: Jak používat trvalé úložiště v Azure jaře cloudu
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: jeconnoc
-ms.openlocfilehash: f14da7d8e64c58a54a9da4d851ac22fd710ea8ca
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d70e7ff747b80b661e848f1c208f0d1c2c928248
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163730"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607767"
 ---
 # <a name="how-to-use-persistent-storage-in-azure-spring-cloud"></a>Jak používat trvalé úložiště v Azure jaře cloudu
 
@@ -23,7 +20,7 @@ Azure jaře Cloud nabízí pro vaši aplikaci dva typy úložiště: trvalé a d
 > [!WARNING]
 > Po restartování instance aplikace se trvale odstraní přidružené dočasné úložiště.
 
-Trvalé úložiště je kontejner sdílené složky spravovaný službou Azure přidělenou na aplikaci. Data uložená v trvalém úložišti se sdílejí napříč všemi instancemi aplikace. Instance služby jarní cloudová služba Azure může mít maximálně 10 aplikací s povoleným trvalým diskem. Každá aplikace přijímá 50 GB trvalého úložiště. Výchozí cesta pro připojení pro trvalé úložiště je `/persistent`.
+Trvalé úložiště je kontejner sdílené složky spravovaný službou Azure přidělenou na aplikaci. Data uložená v trvalém úložišti se sdílejí napříč všemi instancemi aplikace. Instance služby jarní cloudová služba Azure může mít maximálně 10 aplikací s povoleným trvalým diskem. Každá aplikace přijímá 50 GB trvalého úložiště. Výchozí cesta pro připojení k trvalému úložišti je `/persistent`.
 
 > [!WARNING]
 > *Zakázáním* trvalého úložiště dojde ke zrušení přidělení úložiště pro tuto aplikaci.  Všechna data v tomto účtu úložiště se ztratí. 
@@ -53,6 +50,12 @@ Trvalé úložiště je kontejner sdílené složky spravovaný službou Azure p
 Když je povolené trvalé úložiště, na této stránce se zobrazí jeho velikost a cesta.
 
 ## <a name="use-the-azure-cli-to-modify-persistent-storage"></a>Použití rozhraní příkazového řádku Azure pro úpravu trvalého úložiště
+
+V případě potřeby nainstalujte pro rozhraní příkazového řádku Azure CLI rozšíření jarního cloudu:
+
+```azurecli
+az extension add --name spring-cloud
+```
 
 Vytvořte aplikaci s povoleným trvalým diskem:
  

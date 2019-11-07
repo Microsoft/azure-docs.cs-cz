@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 24ce6de63d06402e24abdeb33996a3853175ce91
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4e04ae7d9594ac064c9f3707c797fb2709a79cb6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954406"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583009"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojení zařízení IoT DevKit MXChip k aplikaci Azure IoT Central
 
@@ -119,7 +119,7 @@ Zatřeste zařízení k odeslání hlášené vlastnosti. Zařízení pošle ná
 
 Můžete zobrazit měření telemetrie a hlášené hodnoty vlastností a nakonfigurovat nastavení v Azure IoT Central:
 
-1. Pomocí **Device Explorer** přejděte na stránku **měření** pro skutečně přidané zařízení MXChip:
+1. Pomocí **zařízení** přejděte na stránku **měření** pro skutečné zařízení MXChip, které jste přidali:
 
     ![Přejít na reálné zařízení](media/howto-connect-devkit/realdevicenew.png)
 
@@ -192,7 +192,7 @@ Aplikace vytvořená z ukázkové šablony aplikace Devkits zahrnuje šablonu za
 
 ### <a name="measurements"></a>Měření
 
-#### <a name="telemetry"></a>Telemetrie
+#### <a name="telemetry"></a>Telemetrická data
 
 | Název pole     | Jednotky  | Minimální | Maximum | Desetinná místa |
 | -------------- | ------ | ------- | ------- | -------------- |
@@ -210,12 +210,12 @@ Aplikace vytvořená z ukázkové šablony aplikace Devkits zahrnuje šablonu za
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
 
 #### <a name="states"></a>Stavy 
-| Name (Název)          | Zobrazované jméno   | BĚŽNOU | Upozornění | BEZPEČNÁ | 
+| Název          | Zobrazované jméno   | BĚŽNOU | Upozornění | BEZPEČNÁ | 
 | ------------- | -------------- | ------ | ------- | ------ | 
 | DeviceState   | Stav zařízení   | Zelená  | Orange  | Červená    | 
 
 #### <a name="events"></a>Akce 
-| Name (Název)             | Zobrazované jméno      | 
+| Název             | Zobrazované jméno      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | Stisknutí tlačítka B  | 
 
@@ -241,14 +241,14 @@ Přepnout nastavení
 | --------------- | ------------ | ---------- | --------- |
 | Vlastnost zařízení | Číslo Die   | dieNumber  | číslo    |
 | Vlastnost zařízení | Umístění zařízení   | location  | location    |
-| Text            | Vyrobeno v     | manufacturedIn   | Nevztahuje se       |
+| Text            | Vyrobeno v     | manufacturedIn   | Není dostupné.       |
 
 ### <a name="commands"></a>Příkazy
 
 | Zobrazované jméno | Název pole | Návratový typ | Zobrazovaný název vstupního pole | Název vstupního pole | Typ vstupního pole |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
 | Zvuk         | echo       | text        | hodnota, která se má zobrazit         | displayedValue   | text             |
-| Odpočítávání    | odpočítávání  | číslo      | Počet z               | countFrom        | číslo           |
+| Odpočítávání    | Odpočítávání  | číslo      | Počet z               | countFrom        | číslo           |
 
 ## <a name="next-steps"></a>Další kroky
 

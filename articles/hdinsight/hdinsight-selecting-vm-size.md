@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: d93c3599bb4a52a03d4ac436ca664ce6be1c55b9
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: a21e8d6c76c93b3084619c09f6a7664a25c1929c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200824"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682208"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>Výběr správné velikosti virtuálního počítače pro cluster Azure HDInsight
 
@@ -45,7 +45,7 @@ Rodiny virtuálních počítačů v Azure jsou optimalizované tak, aby vyhovova
 | [Optimalizované z hlediska výpočetních služeb](../virtual-machines/linux/sizes-compute.md)        | F           | Vysoký poměr procesorů k paměti. Vhodné pro webové servery se středním provozem, síťová zařízení, dávkové procesy a aplikační servery.        |
 | [Optimalizované z hlediska paměti](../virtual-machines/linux/sizes-memory.md)         | Esv3, Ev3  | Vysoký poměr paměti k procesoru. Velmi vhodné pro servery relačních databází, střední a velké mezipaměti a analýzu v paměti.                 |
 
-- Informace o cenách dostupných instancí virtuálních počítačů napříč oblastmi podporovanými HDInsight najdete v tématu [ceny služby HDInsight](https://azure.microsoft.com/en-us/pricing/details/hdinsight/).
+- Informace o cenách dostupných instancí virtuálních počítačů napříč oblastmi podporovanými HDInsight najdete v tématu [ceny služby HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="cost-saving-vm-types-for-light-workloads"></a>Náklady na úsporu typů virtuálních počítačů pro úlohy s lehkým zatížením
 
@@ -53,14 +53,14 @@ Pokud máte požadavky na zpracování světla, může být [Řada F-Series](htt
 
 Následující tabulka popisuje typy clusterů a typy uzlů, které lze vytvořit pomocí virtuálních počítačů Fsv2-Series.
 
-| Typ clusteru | Version | Pracovní uzel | Hlavní uzel | Uzel Zookeeper |
+| Typ clusteru | Verze | Pracovní uzel | Hlavní uzel | Uzel Zookeeper |
 |---|---|---|---|---|
-| Spark | Všechno | F4 a vyšší | ne | ne |
-| Hadoop | Všechno | F4 a vyšší | ne | ne |
-| Kafka | Všechno | F4 a vyšší | ne | ne |
-| HBase | Všechno | F4 a vyšší | ne | ne |
-| LLAP | Zabezpečen | ne | ne | ne |
-| Storm | Zabezpečen | ne | ne | ne |
+| Spark | Vše | F4 a vyšší | ne | ne |
+| Hadoop | Vše | F4 a vyšší | ne | ne |
+| Kafka | Vše | F4 a vyšší | ne | ne |
+| HBase | Vše | F4 a vyšší | ne | ne |
+| LLAP | zabezpečen | ne | ne | ne |
+| Storm | zabezpečen | ne | ne | ne |
 | Služba ML | JENOM HDI 3,6 | F4 a vyšší | ne | ne |
 
 Specifikace jednotlivých SKU F-Series najdete v tématu [velikosti virtuálních počítačů řady f-Series](https://azure.microsoft.com/blog/f-series-vm-size/).

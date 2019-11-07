@@ -1,69 +1,70 @@
 ---
 title: Připojení k rozhraní API Azure Cosmos DB pro MongoDB pomocí studia 3T
-titleSuffix: Azure Cosmos DB
-description: Naučte se, jak se připojit k Cosmos DB pomocí sady Studio 3T a rozhraní Azure Cosmos DB API pro MongoDB.
+description: Přečtěte si, jak se připojit k rozhraní API Azure Cosmos DB pro MongoDB pomocí studia 3T.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 12/26/2018
+ms.date: 11/01/2019
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: 46cac6720bbef133d6b3f7a269cf97a81cddd0c5
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: c9be9893d28439fdcff9f33f0303a816bd94c7b8
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70062114"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584420"
 ---
-# <a name="connect-to-cosmos-account-using-studio-3t"></a>Připojení k účtu Cosmos pomocí studia 3T
+# <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>Připojení k účtu Azure Cosmos pomocí studia 3T
 
-Pokud se chcete připojit k účtu Cosmos pomocí rozhraní API služby Azure Cosmos DB pro MongoDB, musíte:
+Pokud se chcete připojit k rozhraní API Azure Cosmos DB pro MongoDB pomocí studia 3T, musíte:
 
-* Stažení a instalace [studia 3T](https://studio3t.com/)
-* Informace o [připojovacím řetězci](connect-mongodb-account.md) Cosmos DB
+* Stáhněte a nainstalujte [Studio 3T](https://studio3t.com/).
+* Mít informace o [připojovacím řetězci](connect-mongodb-account.md) účtu Azure Cosmos.
 
 > [!NOTE]
-> V současné době jsou podporovány Robo 3T v 1.2 a nižší s rozhraním API Cosmos DB pro MongoDB. 
+> V současné době jsou Robo 3T v 1.2 a nižší verze podporované rozhraním API Cosmos DB pro MongoDB.
 
-## <a name="create-the-connection-in-studio-3t"></a>Vytvoření připojení v studia 3T
-Pokud chcete přidat účet Cosmos do Správce připojení studia 3T, proveďte následující kroky:
+## <a name="create-the-connection-in-studio-3t"></a>Vytvoření připojení v Studio 3T
 
-1. Načtěte informace o připojení pro účet Cosmos s nakonfigurovaným rozhraním API Azure Cosmos DB pro MongoDB podle pokynů v tématu [připojení aplikace MongoDB pro Azure Cosmos DB](connect-mongodb-account.md) článku.
+Pokud chcete přidat účet Azure Cosmos do Správce připojení studia 3T, použijte následující postup:
+
+1. Pomocí pokynů v tématu [připojení aplikace MongoDB k Azure Cosmos DB](connect-mongodb-account.md) článku načtěte informace o připojení pro účet MongoDB API pro váš Azure Cosmos DB.
 
     ![Snímek obrazovky se stránkou připojovacího řetězce](./media/mongodb-mongochef/ConnectionStringBlade.png)
-2. Klikněte na tlačítko **připojit** Správce připojení, potom klikněte na tlačítko **nové připojení**
+
+2. Kliknutím na **připojit** otevřete Správce připojení a pak klikněte na **nové připojení** .
 
     ![Snímek obrazovky Správce připojení Studio 3T](./media/mongodb-mongochef/ConnectionManager.png)
-3. V **nové připojení** okno na **Server** kartu, zadejte HOSTITELI (plně kvalifikovaný název domény) účtu služby Azure Cosmos DB a PORT.
+3. V okně **nové připojení** na kartě **Server** zadejte hostitele (FQDN) účtu Azure Cosmos a portu.
 
     ![Snímek obrazovky s kartou serveru správce připojení Studio 3T](./media/mongodb-mongochef/ConnectionManagerServerTab.png)
-4. V **nové připojení** okno na **ověřování** kartu, vybrat režim ověřování **Basic (MONGODB CR nebo SCARM – SHA-1)** a zadejte uživatelské jméno a heslo.  Přijměte výchozí ověřování databáze (správce) nebo zadejte vlastní hodnotu.
+4. V okně **nové připojení** na kartě **ověřování** vyberte možnost režim ověřování **Basic (MONGODB-CR nebo SCARM-SHA-1)** a zadejte uživatelské jméno a heslo.  Přijměte výchozí ověřovací databázi (správce) nebo zadejte vlastní hodnotu.
 
     ![Snímek obrazovky s kartou pro ověření Správce připojení Studio 3T](./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png)
-5. V **nové připojení** okno na **SSL** kartě **protokolu SSL používá pro připojení** zaškrtávací políčko a **přijmout certifikáty SSL podepsaný svým držitelem serveru**  přepínač.
+5. V okně **nové připojení** na kartě **SSL** zaškrtněte políčko **používat protokol SSL pro připojení** a přepínač pro **příjem certifikátů SSL přihlášený držitelem** .
 
     ![Snímek obrazovky s kartou SSL pro správce připojení Studio 3T](./media/mongodb-mongochef/ConnectionManagerSSLTab.png)
-6. Klikněte na tlačítko **Test připojení** tlačítko ověřit informace o připojení, klikněte na tlačítko **OK** vrátit do okna nové připojení, a potom klikněte na **Uložit**.
+6. Kliknutím na tlačítko **Testovat připojení** ověřte informace o připojení, kliknutím na tlačítko **OK** se vraťte do okna nové připojení a pak klikněte na **Uložit**.
 
     ![Snímek obrazovky okna 3T test Connection pro Studio](./media/mongodb-mongochef/TestConnectionResults.png)
 
-## <a name="use-studio-3t-to-create-a-database-collection-and-documents"></a>Použití studia 3T k vytvoření databáze, kolekce a dokumenty
-Pokud chcete vytvořit databázi, kolekci a dokumenty použití studia 3T, proveďte následující kroky:
+## <a name="use-studio-3t-to-create-a-database-collection-and-documents"></a>Použití studia 3T k vytvoření databáze, kolekce a dokumentů
+Pokud chcete vytvořit databázi, kolekci a dokumenty pomocí nástroje Studio 3T, proveďte následující kroky:
 
-1. V **Správce připojení**, zvýrazněte připojení a klikněte na tlačítko **připojit**.
+1. V **programu Správce připojení**zvýrazněte připojení a klikněte na **připojit**.
 
     ![Snímek obrazovky Správce připojení Studio 3T](./media/mongodb-mongochef/ConnectToAccount.png)
-2. Klikněte pravým tlačítkem na hostitele a zvolte **přidat databázi**.  Zadejte název databáze a klikněte na tlačítko **OK**.
+2. Klikněte pravým tlačítkem na hostitele a vyberte **Přidat databázi**.  Zadejte název databáze a klikněte na tlačítko **OK**.
 
     ![Snímek obrazovky s možností přidání databáze Studio 3T](./media/mongodb-mongochef/AddDatabase1.png)
-3. Klikněte pravým tlačítkem na databázi a zvolte **přidat kolekci**.  Zadejte název kolekce a klikněte na tlačítko **vytvořit**.
+3. Klikněte pravým tlačítkem na databázi a vyberte **přidat kolekci**.  Zadejte název kolekce a klikněte na **vytvořit**.
 
     ![Snímek obrazovky s možností přidání kolekce v Studio 3T](./media/mongodb-mongochef/AddCollection.png)
-4. Klikněte na tlačítko **kolekce** nabídka položek, klikněte na **přidat dokumentu**.
+4. Klikněte na položku nabídky **kolekce** a pak klikněte na **Přidat dokument**.
 
     ![Snímek obrazovky s položkou nabídky přidat dokument v Studio 3T](./media/mongodb-mongochef/AddDocument1.png)
-5. V dialogovém okně Přidat dokumentu vložte následující údaje a pak klikněte na tlačítko **přidat dokumentu**.
+5. V dialogovém okně Přidat dokument vložte následující příkaz a klikněte na tlačítko **Přidat dokument**.
 
         {
         "_id": "AndersenFamily",
@@ -81,7 +82,7 @@ Pokud chcete vytvořit databázi, kolekci a dokumenty použití studia 3T, prove
         "address": { "state": "WA", "county": "King", "city": "seattle" },
         "isRegistered": true
         }
-6. Přidáte jiného dokumentu, tentokrát s následujícím obsahem:
+6. Přidat další dokument, tentokrát s následujícím obsahem:
 
         {
         "_id": "WakefieldFamily",
@@ -108,7 +109,7 @@ Pokud chcete vytvořit databázi, kolekci a dokumenty použití studia 3T, prove
         "address": { "state": "NY", "county": "Manhattan", "city": "NY" },
         "isRegistered": false
         }
-7. Spuštění ukázkového dotazu. Například vyhledejte rodině příjmení "Andersen" a vrátí pole nadřazené položky a stavu.
+7. Spustí ukázkový dotaz. Hledejte například skupiny s názvem ' Andersen ' a vraťte pole nadřazených a státních stavů.
 
     ![Snímek obrazovky s výsledky dotazu Mongo](./media/mongodb-mongochef/QueryDocument1.png)
 

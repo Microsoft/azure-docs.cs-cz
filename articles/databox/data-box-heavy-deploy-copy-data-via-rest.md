@@ -1,6 +1,6 @@
 ---
-title: Kurz ke zkopírování dat do úložiště objektů Blob v Azure Data Box přes rozhraní REST API | Dokumentace Microsoftu
-description: Zjistěte, jak kopírovat data do úložiště objektů Blob v Azure Data Box přes rozhraní REST API
+title: Kurz kopírování dat do úložiště objektů BLOB v Azure Data Box Heavy přes rozhraní REST API | Microsoft Docs
+description: Naučte se, jak kopírovat data do úložiště objektů blob Azure Data Box Heavy přes rozhraní REST API.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,192 +8,192 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 2c66b94cbcfa4688d9dc45d99688abe76fa55d17
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: adc48acbadaef56958587dc79be377b76a21fdc0
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595739"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606299"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Kurz: Kopírování dat do úložiště objektů Blob v Azure Data Box přes rozhraní REST API  
+# <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Kurz: kopírování dat do Azure Data Box BLOB Storage přes rozhraní REST API  
 
-Tento kurz popisuje postupy pro připojení k úložišti objektů Blob v Azure Data Box přes rozhraní REST API přes *http* nebo *https*. Jakmile budete připojeni, jsou popsané kroky potřebné ke zkopírování dat do úložiště objektů Blob Data Box.
+Tento kurz popisuje postupy pro připojení k Azure Data Box BLOB Storage prostřednictvím rozhraní REST API přes *protokol HTTP* nebo *https*. Po připojení jsou popsány kroky potřebné ke zkopírování dat do úložiště objektů BLOB Data Box.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Požadavky
-> * Připojení k úložišti pole datový objekt Blob přes *http* nebo *https*
-> * Kopírování dat do služby Data Box Heavy
+> * Připojení k Data Box BLOB Storage přes *http* nebo *https*
+> * Kopírování dat do Data Boxu Heavy
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že:
 
-1. Dokončili jste [kurzu: Azure Data Box náročné nastavit](data-box-heavy-deploy-set-up.md).
-2. Jste přijali vaše náročné pole Data a stav objednávky na portálu je **dodáno**.
-3. Můžete si [požadavky na systém pro úložiště objektů Blob Data Box](data-box-system-requirements-rest.md) a jste obeznámeni s podporovanou verzí rozhraní API, sady SDK a nástroje.
-4. Máte přístup k hostitelskému počítači, který obsahuje data, který chcete zkopírovat do Data Box náročné. Hostitelský počítač musí splňovat tyto požadavky:
+1. Dokončili jste [kurz: nastavte Azure Data box Heavy](data-box-heavy-deploy-set-up.md).
+2. Obdrželi jste Data Box Heavy a stav objednávky na portálu je **Doručeno**.
+3. Zkontrolovali jste [požadavky na systém pro úložiště objektů Blob data box](data-box-system-requirements-rest.md) a znáte podporované verze rozhraní API, sad SDK a nástrojů.
+4. Máte přístup k hostitelskému počítači, který obsahuje data, která chcete zkopírovat do Data Box Heavy. Hostitelský počítač musí splňovat tyto požadavky:
     - Musí na něm běžet [podporovaný operační systém](data-box-system-requirements.md).
-    - Musí být připojený k vysokorychlostní síti. Pro nejrychlejší kopírování rychlosti můžete využít dvě připojení 10GbE 40 (jeden do každého uzlu) paralelně. Pokud nemáte k dispozici připojení 10GbE 40, doporučujeme, že máte alespoň dva 10 GbE připojení (jeden do každého uzlu). 
-5. [Stáhněte si nástroj AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417) v hostitelském počítači. AzCopy budete používat ke kopírování dat do úložiště objektů Blob v Azure Data Box z hostitelského počítače.
+    - Musí být připojený k vysokorychlostní síti. Největší rychlosti kopírování je možné dosáhnout použitím dvou paralelních připojení 40 GbE (jedno na uzel). Pokud nemáte k dispozici připojení 40 GbE, doporučujeme použít alespoň dvě připojení 10 GbE (jedno na uzel). 
+5. [Stáhněte si AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417) na hostitelském počítači. Pomocí AzCopy se zkopírují data do Azure Data Box úložiště objektů BLOB z hostitelského počítače.
 
 
-## <a name="connect-via-http-or-https"></a>Připojení přes protokol http nebo https
+## <a name="connect-via-http-or-https"></a>Připojení přes HTTP nebo https
 
-Můžete připojit k úložišti objektů Blob Data Box přes *http* nebo *https*.
+Pomocí *protokolu HTTP* nebo *https*se můžete připojit k data box úložišti objektů BLOB.
 
-- *HTTPS* je zabezpečené a doporučený způsob, jak připojit k úložišti objektů Blob Data Box.
-- *Http* se používá při připojení přes důvěryhodné sítě.
+- *Protokol HTTPS* je zabezpečený a doporučený způsob, jak se připojit k data box úložišti objektů BLOB.
+- *Protokol HTTP* se používá při připojování přes důvěryhodné sítě.
 
-Kroky pro připojení se liší při připojování k úložišti objektů Blob Data Box přes *http* nebo *https*.
+Postup připojení se liší v případě, že se připojíte k Data Box úložišti objektů BLOB pomocí *protokolu HTTP* nebo *https*.
 
-## <a name="connect-via-http"></a>Připojení přes protokol http
+## <a name="connect-via-http"></a>Připojit přes http
 
-Připojení k úložišti objektů Blob Data pole rozhraní REST API přes *http* vyžaduje následující kroky:
+Připojení k Data Box rozhraní REST API pro úložiště objektů BLOB přes *protokol HTTP* vyžaduje následující kroky:
 
-- Přidat IP adresu zařízení a na vzdáleného hostitele koncového bodu služby objektů blob
-- Konfigurace softwaru třetích stran a ověření připojení
+- Přidání koncového bodu služby IP zařízení a služby BLOB Service ke vzdálenému hostiteli
+- Konfigurace softwaru třetí strany a ověření připojení
 
-Každý z těchto kroků je popsán v následujících částech.
+Každý z těchto kroků je popsaný v následujících částech.
 
 > [!IMPORTANT]
-> Pro Data Box vysoké budete muset opakovat připojovací pokyny pro připojení k druhého uzlu.
+> Pro Data Box Heavy budete muset opakovat všechny pokyny k připojení, abyste se připojili k druhému uzlu.
 
-### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Přidat IP adresu zařízení a koncový bod služby blob
+### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Přidat IP adresu zařízení a koncový bod služby BLOB Service
 
 [!INCLUDE [data-box-add-device-ip](../../includes/data-box-add-device-ip.md)]
 
 
 
-### <a name="configure-partner-software-and-verify-connection"></a>Nakonfigurujte partnerský software a ověření připojení
+### <a name="configure-partner-software-and-verify-connection"></a>Konfigurace partnerského softwaru a ověření připojení
 
 [!INCLUDE [data-box-configure-partner-software](../../includes/data-box-configure-partner-software.md)]
 
 [!INCLUDE [data-box-verify-connection](../../includes/data-box-verify-connection.md)]
 
-## <a name="connect-via-https"></a>Připojení přes protokol https
+## <a name="connect-via-https"></a>Připojit prostřednictvím protokolu https
 
-Připojení k úložišti objektů Blob v Azure storage rozhraní REST API přes protokol https vyžaduje následující kroky:
+Připojení k rozhraní REST API služby Azure Blob Storage přes HTTPS vyžaduje následující kroky:
 
-- Stáhněte si certifikát z webu Azure portal
-- Naimportujte certifikát klienta nebo na vzdáleného hostitele
-- Přidat IP adresu zařízení a koncový bod služby klienta nebo vzdálený hostitel služby blob
-- Konfigurace softwaru třetích stran a ověření připojení
+- Stáhnout certifikát z Azure Portal
+- Import certifikátu na klienta nebo vzdáleném hostiteli
+- Přidání koncového bodu služby IP zařízení a služby BLOB Service do klienta nebo vzdáleného hostitele
+- Konfigurace softwaru třetí strany a ověření připojení
 
-Každý z těchto kroků je popsán v následujících částech.
+Každý z těchto kroků je popsaný v následujících částech.
 
 > [!IMPORTANT]
-> Pro Data Box vysoké budete muset opakovat připojovací pokyny pro připojení k druhého uzlu.
+> Pro Data Box Heavy budete muset opakovat všechny pokyny k připojení, abyste se připojili k druhému uzlu.
 
 ### <a name="download-certificate"></a>Stáhnout certifikát
 
-Stáhněte si certifikát pomocí webu Azure portal.
+K stažení certifikátu použijte Azure Portal.
 
-1. Přihlaste se na webu Azure portal.
-2. Přejděte na svoji objednávku Data Box a přejděte do **Obecné > Podrobnosti o zařízení**.
-3. V části **přihlašovací údaje zařízení**, přejděte na stránku **přístup přes rozhraní API** do zařízení. Klikněte na tlačítko **Stáhnout**. Touto akcí se stáhne  **\<název vaší objednávky > .cer** soubor certifikátu. **Uložit** tento soubor. Tento certifikát nainstaluje na klientský nebo hostitelský počítač, který budete používat pro připojení k zařízení.
+1. Přihlaste se k Azure Portal.
+2. Přejděte do objednávky Data Box a přejděte na **obecné > informace o zařízení**.
+3. V části **přihlašovací údaje pro zařízení**přejděte na **rozhraní API přístup** k zařízení. Klikněte na **Stáhnout**. Tato akce stáhne **\<název vaší objednávky > souboru certifikátu. cer** . **Uložte** tento soubor. Tento certifikát nainstalujete na klienta nebo na hostitelský počítač, který budete používat pro připojení k zařízení.
 
-    ![Stáhněte si certifikát na webu Azure portal](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
+    ![Stáhnout certifikát v Azure Portal](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  
 ### <a name="import-certificate"></a>Importovat certifikát 
 
-Přístup k poli datový objekt Blob úložiště prostřednictvím protokolu HTTPS vyžaduje certifikát SSL pro zařízení. Způsob, ve kterém tento certifikát je k dispozici do klientské aplikace se liší od aplikací a různé operační systémy a distribuce. Některé aplikace mají přístup k certifikátu, až po importu do úložiště certifikátů systému, zatímco jiné aplikace neukládejte pomocí tohoto mechanismu.
+Přístup k Data Box BLOB Storage přes HTTPS vyžaduje certifikát SSL pro zařízení. Způsob, jakým je tento certifikát dostupný pro klientskou aplikaci, se liší od aplikace až po aplikace a pro různé operační systémy a distribuce. Některé aplikace mohou získat přístup k certifikátu po jeho importu do úložiště certifikátů systému, zatímco jiné aplikace tento mechanismus nevyužívají.
 
-Konkrétní informace u některých aplikací je uvedený v této části. Další informace o dalších použitích najdete v dokumentaci pro aplikace a operační systém používá.
+Konkrétní informace pro některé aplikace jsou uvedené v této části. Další informace o dalších aplikacích naleznete v dokumentaci k aplikaci a používanému operačnímu systému.
 
-Následující postup použijte k importu `.cer` souboru do kořenového úložiště klienta Windows nebo Linux. V systému Windows můžete použít prostředí Windows PowerShell nebo uživatelské rozhraní serveru systému Windows k importu a nainstalovat certifikát do vašeho systému.
+Pomocí následujícího postupu naimportujte soubor `.cer` do kořenového adresáře klienta systému Windows nebo Linux. V systému Windows můžete k importu a instalaci certifikátu do systému použít Windows PowerShell nebo uživatelské rozhraní Windows serveru.
 
-#### <a name="use-windows-powershell"></a>Pomocí Windows Powershellu
+#### <a name="use-windows-powershell"></a>Použití prostředí Windows PowerShell
 
-1. Spusťte relaci prostředí Windows PowerShell jako správce.
+1. Spusťte relaci Windows PowerShellu jako správce.
 2. Na příkazovém řádku zadejte:
 
     ```
     Import-Certificate -FilePath C:\temp\localuihttps.cer -CertStoreLocation Cert:\LocalMachine\Root
     ```
 
-#### <a name="use-windows-server-ui"></a>Windows Server pomocí uživatelského rozhraní
+#### <a name="use-windows-server-ui"></a>Použít uživatelské rozhraní systému Windows Server
 
-1.  Klikněte pravým tlačítkem myši `.cer` a vyberte možnost **instalace certifikátu**. Tato akce spustí Průvodce importem certifikátu.
-2.  Pro **Store umístění**vyberte **místního počítače**a potom klikněte na tlačítko **Další**.
+1.  Klikněte pravým tlačítkem na soubor `.cer` a vyberte **nainstalovat certifikát**. Tato akce spustí Průvodce importem certifikátu.
+2.  V poli **umístění úložiště**vyberte **místní počítač**a pak klikněte na **Další**.
 
-    ![Import certifikátu pomocí Powershellu](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
+    ![Import certifikátu pomocí PowerShellu](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
 
-3.  Vyberte **všechny certifikáty umístit v následujícím úložišti**a potom klikněte na tlačítko **Procházet**. Přejděte do kořenového úložiště vzdáleného hostitele a potom klikněte na tlačítko **Další**.
+3.  Vyberte možnost **umístit všechny certifikáty do následujícího úložiště**a pak klikněte na tlačítko **Procházet**. Přejděte do kořenového úložiště vzdáleného hostitele a klikněte na **Další**.
 
-    ![Import certifikátu pomocí Powershellu](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
+    ![Import certifikátu pomocí PowerShellu](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
-4.  Klikněte na **Dokončit**. Zobrazí se zpráva s oznámením, že import proběhl úspěšně.
+4.  Klikněte na **Dokončit**. Zobrazí se zpráva oznamující, že import proběhl úspěšně.
 
-    ![Import certifikátu pomocí Powershellu](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
+    ![Import certifikátu pomocí PowerShellu](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
-#### <a name="use-a-linux-system"></a>Používat systém Linux
+#### <a name="use-a-linux-system"></a>Použití systému Linux
 
-Metoda Import certifikátu se liší podle distribuce.
+Způsob importu certifikátu se liší podle distribuce.
 
 > [!IMPORTANT]
-> Pro Data Box vysoké budete muset opakovat připojovací pokyny pro připojení k druhého uzlu.
+> Pro Data Box Heavy budete muset opakovat všechny pokyny k připojení, abyste se připojili k druhému uzlu.
 
-Několik, jako je Ubuntu nebo Debian, použijte `update-ca-certificates` příkazu.  
+Několik, například Ubuntu a Debian, použijte příkaz `update-ca-certificates`.  
 
-- Přejmenovat soubor certifikátu s kódováním Base64 mít `.crt` rozšíření a zkopírujte ho do `/usr/local/share/ca-certificates directory`.
+- Přejmenujte soubor certifikátu s kódováním base64 tak, aby měl rozšíření `.crt` a zkopírujte ho do `/usr/local/share/ca-certificates directory`.
 - Spusťte příkaz `update-ca-certificates`.
 
-Použít nejnovější verze RHEL, Fedora a CentOS `update-ca-trust` příkazu.
+Poslední verze RHEL, Fedora a CentOS používají příkaz `update-ca-trust`.
 
-- Zkopírujte soubor certifikátu do `/etc/pki/ca-trust/source/anchors` adresáře.
+- Zkopírujte soubor certifikátu do adresáře `/etc/pki/ca-trust/source/anchors`.
 - Spusťte `update-ca-trust`.
 
-Najdete v dokumentaci, které jsou specifické pro vaši distribuci podrobnosti.
+Podrobnosti najdete v dokumentaci specifické pro vaši distribuci.
 
-### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Přidat IP adresu zařízení a koncový bod služby blob 
+### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Přidat IP adresu zařízení a koncový bod služby BLOB Service 
 
-Použijte stejný postup [přidat IP adresu zařízení a koncový bod služby blob, při připojení přes *http*](#add-device-ip-address-and-blob-service-endpoint).
+[Při připojování přes *protokol HTTP*použijte stejný postup při přidávání IP adresy zařízení a koncového bodu služby BLOB Service](#add-device-ip-address-and-blob-service-endpoint).
 
-### <a name="configure-partner-software-and-verify-connection"></a>Nakonfigurujte partnerský software a ověření připojení
+### <a name="configure-partner-software-and-verify-connection"></a>Konfigurace partnerského softwaru a ověření připojení
 
-Uvedený postup [nakonfigurovat partnerský software, který jste použili při připojování přes *http*](#configure-partner-software-and-verify-connection). Jediným rozdílem je, že byste měli nechat *možnost protokolu http použijte* nezaškrtnuté.
+Postupujte podle pokynů ke [konfiguraci partnerského softwaru, který jste použili při připojování přes *protokol HTTP*](#configure-partner-software-and-verify-connection). Jediným rozdílem je, že byste měli nechat *možnost použít protokol HTTP* nezaškrtnutou.
 
-## <a name="copy-data-to-data-box-heavy"></a>Kopírování dat do služby Data Box Heavy
+## <a name="copy-data-to-data-box-heavy"></a>Kopírování dat do Data Boxu Heavy
 
-Po připojení k úložišti objektů Blob Data Box, dalším krokem je zkopírovat data. Před kopírování dat rozmyslete si následující věci:
+Až budete připojeni k úložišti objektů BLOB Data Box, je dalším krokem kopírování dat. Před kopírováním dat si přečtěte následující skutečnosti:
 
--  Při kopírování dat, ujistěte se, že velikost dat odpovídá omezení velikosti podle [služby Azure storage a Data Box náročné omezení](data-box-limits.md).
-- Pokud se data, která se nahrává podle těžké pole Data, současně odešle jiné aplikace mimo náročné pole dat, to může způsobit poškození odeslání úlohy selhání a data.
+-  Při kopírování dat se ujistěte, že velikost dat odpovídá omezením velikosti popsaným v [úložišti Azure a omezeních data box Heavy](data-box-limits.md).
+- Pokud jsou data odesílaná pomocí Data Box Heavy souběžně odeslána jinými aplikacemi mimo Data Box Heavy, může to vést k selhání úlohy a poškození dat.
 
-V tomto kurzu AzCopy slouží ke kopírování dat do úložiště objektů Blob Data Box. Ke zkopírování dat můžete také použít Průzkumníka služby Azure Storage (Pokud dáváte přednost nástroj založeným na GUI) nebo partnerský software.
+V tomto kurzu se AzCopy používá ke kopírování dat do úložiště objektů BLOB Data Box. Můžete také použít Průzkumník služby Azure Storage (Pokud dáváte přednost nástroji založenému na grafickém uživatelském rozhraní) nebo partnerskému softwaru ke zkopírování dat.
 
-Postup kopírování obsahuje následující kroky:
+Postup kopírování má následující kroky:
 
 - Vytvoření kontejneru
-- Nahrát obsah složky do úložiště objektů Blob Data Box
-- Nahrání upravených souborů do úložiště objektů Blob Data Box
+- Nahrání obsahu složky do Data Boxho úložiště objektů BLOB
+- Nahrání upravených souborů do Data Box BLOB Storage
 
 
-Každý z těchto kroků je podrobně popsány v následující části.
+Každý z těchto kroků je podrobně popsán v následujících částech.
 
 > [!IMPORTANT]
-> Pro Data Box vysoké budete muset opakovat pokynů kopírování ke kopírování dat do druhého uzlu.
+> Pro Data Box Heavy budete muset opakovat všechny pokyny pro kopírování a kopírovat data do druhého uzlu.
 
 ### <a name="create-a-container"></a>Vytvoření kontejneru
 
-Prvním krokem je vytvoření kontejneru, protože objekty BLOB se vždy nahrávají do kontejneru. Kontejnery organizovat skupiny objektů BLOB podobně, jako organizujete soubory do složek ve vašem počítači. Postupujte podle těchto pokynů vytvořte kontejner objektů blob.
+Prvním krokem je vytvoření kontejneru, protože objekty blob jsou vždycky nahrány do kontejneru. Kontejnery organizují skupiny objektů blob, stejně jako organizujete soubory ve složkách v počítači. Pomocí těchto kroků můžete vytvořit kontejner objektů BLOB.
 
 1. Otevřete Průzkumníka služby Storage.
-2. V levém podokně rozbalte účet úložiště, ve kterém chcete vytvořit kontejner objektů blob.
-3. Klikněte pravým tlačítkem na **kontejnery objektů Blob**a v místní nabídce vyberte **vytvořit kontejner objektů Blob**.
+2. V levém podokně rozbalte účet úložiště, ve kterém chcete vytvořit kontejner objektů BLOB.
+3. Klikněte pravým tlačítkem na **kontejnery objektů BLOB**a v místní nabídce vyberte **vytvořit kontejner objektů BLOB**.
 
-   ![Vytvořit kontejnery místní nabídka objektu blob](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
+   ![Místní nabídka pro vytvoření kontejnerů objektů BLOB](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
 
-4. Textové pole se zobrazí pod **kontejnery objektů Blob** složky. Zadejte název kontejneru objektů blob. Zobrazit [vytvoření kontejneru a nastavení oprávnění](../storage/blobs/storage-quickstart-blobs-dotnet.md) informace o pravidlech a omezení pro pojmenování kontejnerů objektů blob.
-5. Stisknutím klávesy **Enter** po dokončení vytvoření kontejneru objektů blob nebo **Esc** zrušit. Po úspěšném vytvoření kontejneru objektů blob, se zobrazí v části **kontejnery objektů Blob** složku pro vybraný účet úložiště.
+4. Pod složkou **kontejnerů objektů BLOB** se zobrazí textové pole. Zadejte název kontejneru objektů blob. Podívejte se na téma [vytvoření kontejneru a nastavení oprávnění](../storage/blobs/storage-quickstart-blobs-dotnet.md) pro informace o pravidlech a omezeních pro pojmenování kontejnerů objektů BLOB.
+5. Pokud chcete vytvořit kontejner objektů blob, stiskněte klávesu **ENTER** , nebo operaci zrušte stisknutím klávesy **ESC** . Po úspěšném vytvoření kontejneru objektů BLOB se zobrazí ve složce **kontejnery objektů BLOB** pro vybraný účet úložiště.
 
-   ![Vytvoření kontejneru objektů BLOB](media/data-box-deploy-copy-data-via-rest/create-blob-container-2.png)
+   ![Kontejner objektů BLOB byl vytvořen.](media/data-box-deploy-copy-data-via-rest/create-blob-container-2.png)
 
-### <a name="upload-contents-of-a-folder-to-data-box-blob-storage"></a>Nahrát obsah složky do úložiště objektů Blob Data Box
+### <a name="upload-contents-of-a-folder-to-data-box-blob-storage"></a>Nahrání obsahu složky do Data Boxho úložiště objektů BLOB
 
-Pomocí nástroje AzCopy můžete nahrát všechny soubory ve složce do úložiště objektů Blob ve Windows nebo Linuxu. Pokud chcete nahrát všechny objekty blob ve složce, zadejte následující příkaz AzCopy:
+Pomocí AzCopy můžete nahrát všechny soubory ve složce do úložiště objektů BLOB v systému Windows nebo Linux. Pokud chcete nahrát všechny objekty blob ve složce, zadejte následující příkaz AzCopy:
 
 #### <a name="linux"></a>Linux
 
@@ -208,15 +208,15 @@ Pomocí nástroje AzCopy můžete nahrát všechny soubory ve složce do úloži
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
 
 
-Nahraďte `<key>` klíčem svého účtu. Klíč účtu na webu Azure Portal, přejděte do účtu úložiště. Přejděte na **Nastavení > přístupové klíče**, vyberte klíč a vložte ho do příkazu AzCopy.
+Nahraďte `<key>` klíčem účtu. Klíč účtu získáte tak, že v Azure Portal přejdete do svého účtu úložiště. Přejděte na **nastavení > přístupové klíče**, vyberte klíč a vložte ho do příkazu AzCopy.
 
-Pokud zadaný cílový kontejner neexistuje, AzCopy ho vytvoří a soubor do něj nahraje. Aktualizuje zdrojovou cestu ke svému adresáři dat a nahraďte `data-box-storage-account-name` v cílové adresy URL s názvem účtu úložiště spojené s vašeho zařízení Data Box.
+Pokud zadaný cílový kontejner neexistuje, AzCopy ho vytvoří a soubor do něj nahraje. Aktualizujte zdrojovou cestu k adresáři dat a nahraďte `data-box-storage-account-name` v cílové adrese URL názvem účtu úložiště přidruženého k vašemu Data Box.
 
 Pokud chcete obsah zadaného adresáře nahrát do úložiště objektů blob rekurzivně, zadejte možnost `--recursive` (Linux) nebo `/S` (Windows). Když spustíte AzCopy s některou z těchto možností, nahrají se také všechny podsložky a soubory, které obsahují.
 
-### <a name="upload-modified-files-to-data-box-blob-storage"></a>Nahrání upravených souborů do úložiště objektů Blob Data Box
+### <a name="upload-modified-files-to-data-box-blob-storage"></a>Nahrání upravených souborů do Data Box BLOB Storage
 
-Pomocí AzCopy můžete nahrát soubory podle jejich čas poslední změny. Pokud to chcete vyzkoušet, upravte nebo vytvořte nové soubory ve zdrojovém adresáři pro účely testování. Pokud chcete nahrát pouze aktualizované nebo nové soubory, přidejte do příkazu AzCopy parametr `--exclude-older` (Linux) nebo `/XO` (Windows).
+Pomocí AzCopy můžete nahrávat soubory na základě času poslední změny. Pokud to chcete vyzkoušet, upravte nebo vytvořte nové soubory ve zdrojovém adresáři pro účely testování. Pokud chcete nahrát pouze aktualizované nebo nové soubory, přidejte do příkazu AzCopy parametr `--exclude-older` (Linux) nebo `/XO` (Windows).
 
 Pokud chcete zkopírovat pouze zdrojové prostředky, které neexistují v cíli, zadejte v příkazu AzCopy parametry `--exclude-older` i `--exclude-newer` (Linux) nebo `/XO` i `/XN` (Windows). AzCopy nahraje pouze aktualizovaná data na základě jejich časového razítka.
 
@@ -232,21 +232,21 @@ Pokud chcete zkopírovat pouze zdrojové prostředky, které neexistují v cíli
 
     AzCopy /Source:C:\myfolder /Dest:https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
 
-Pokud nejsou žádné chyby během operace připojit nebo kopírování, zobrazit [řešení potíží s poli datový objekt Blob úložiště](data-box-troubleshoot-rest.md).
+Pokud během operace připojení nebo kopírování dojde k nějakým chybám, přečtěte si téma [řešení potíží s data box BLOB Storage](data-box-troubleshoot-rest.md).
 
-Dalším krokem je k přípravě na odeslání vašeho zařízení.
+Dalším krokem je příprava zařízení k odeslání.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data Box Disk, jako jsou:
 
 > [!div class="checklist"]
 > * Požadavky
-> * Připojení k úložišti pole datový objekt Blob přes *http* nebo *https*
-> * Kopírování dat do služby Data Box Heavy
+> * Připojení k Data Box BLOB Storage přes *http* nebo *https*
+> * Kopírování dat do Data Boxu Heavy
 
 
-Přejděte k dalšímu kurzu se naučíte k odeslání vašeho zařízení Data Box zpět společnosti Microsoft.
+V dalším kurzu se dozvíte, jak Data Box odeslat zpět do Microsoftu.
 
 > [!div class="nextstepaction"]
-> [Dodávejte vaše Azure Data pole těžkých společnosti Microsoft](./data-box-heavy-deploy-picked-up.md)
+> [Odeslání Azure Data Boxu heavy do Microsoftu](./data-box-heavy-deploy-picked-up.md)

@@ -1,18 +1,18 @@
 ---
 title: Instalace místní brány dat pro Azure Analysis Services | Microsoft Docs
-description: Přečtěte si, jak nainstalovat a nakonfigurovat místní bránu dat.
+description: Přečtěte si, jak nainstalovat a nakonfigurovat místní bránu dat pro připojení k místním zdrojům dat ze serveru Azure Analysis Services.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 99b5a0ff9cc0fd7fdc3b8a0e453ed287c45e1c60
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 37658ea6b94d6369d282c49f79947a1f183b61c7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147125"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572843"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalace a konfigurace místní brány dat
 
@@ -20,7 +20,7 @@ Místní brána dat se vyžaduje v případě, že se nejmíň jeden Azure Analy
 
 Další informace o bráně a o tom, jak ji používá Azure Analysis Services, najdete v tématu [připojení k místním zdrojům dat](analysis-services-gateway.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 **Minimální požadavky:**
 
@@ -127,7 +127,7 @@ Po instalaci a registraci brány musíte vytvořit prostředek brány ve svém p
 
     ![Připojení serveru k úspěšnému dokončení prostředku brány](media/analysis-services-gateway-install/aas-gateway-connect-success.png)
 
-A je to. Pokud potřebujete otevřít porty nebo provést nějaké řešení potíží, zkontrolujte [místní bránu dat](analysis-services-gateway.md).
+A to je vše. Pokud potřebujete otevřít porty nebo provést nějaké řešení potíží, zkontrolujte [místní bránu dat](analysis-services-gateway.md).
 
 ## <a name="next-steps"></a>Další kroky
 

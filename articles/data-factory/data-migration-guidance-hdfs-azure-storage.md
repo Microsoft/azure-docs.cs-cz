@@ -1,5 +1,5 @@
 ---
-title: K migraci dat z místního clusteru Hadoop do Azure Storage použijte Azure Data Factory | Microsoft Docs
+title: K migraci dat z místního clusteru Hadoop do Azure Storage použijte Azure Data Factory
 description: Naučte se používat Azure Data Factory k migraci dat z místního clusteru Hadoop do Azure Storage.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 8/30/2019
-ms.openlocfilehash: a2e98e46b168ff2e1270c6512aa515278190350f
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: b952be49bf5bc00b338aa04ed51e9dc451b5c4f9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677958"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675818"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>K migraci dat z místního clusteru Hadoop do Azure Storage použijte Azure Data Factory 
 
@@ -107,7 +107,7 @@ Pokud některá z úloh kopírování selže kvůli přechodným problémům se 
 
 ### <a name="delta-data-migration"></a>Migrace rozdílových dat 
 
-V režimu Data Factory DistCp můžete použít parametr příkazového řádku DistCp `-update`, zapsat data, když se zdrojový soubor a cílový soubor liší velikost, pro migraci rozdílových dat.
+V režimu Data Factory DistCp můžete použít `-update`parametr příkazového řádku DistCp, zapsat data, když se zdrojový soubor a cílový soubor liší velikost, pro migraci rozdílových dat.
 
 V režimu Data Factory Native Integration je nejvhodnější způsob, jak identifikovat nové nebo změněné soubory ze HDFS, použít konvenci pojmenování podle časových oddílů. Když jsou data v HDFS v čase rozdělená do oddílů s informacemi o časovém řezu v názvu souboru nebo složky (například */yyyy/MM/DD/File.csv*), váš kanál může snadno určit, které soubory a složky se mají kopírovat přírůstkově.
 
@@ -144,7 +144,7 @@ Tady je odhadovaná cena na základě našich předpokladů:
 - [Konektor služby Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Konektor Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
 - [Průvodce laděním výkonu aktivity kopírování](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
-- [Vytvoření a konfigurace prostředí Integration runtime v místním prostředí](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
+- [Vytvoření a konfigurace místního prostředí Integration Runtime](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
 - [Vysoká dostupnost a škálovatelnost místního prostředí Integration runtime](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
 - [Požadavky na zabezpečení přesunu dat](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
 - [Ukládat přihlašovací údaje v Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)

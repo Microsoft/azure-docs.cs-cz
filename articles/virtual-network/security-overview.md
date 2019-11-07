@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 1d9fc022a0b0d5ba96517b4ed06b4a2576245a26
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 6046ab98e657cd14a2ac883cd32709c9a1b5da57
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886031"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721478"
 ---
 # <a name="security-groups"></a>Skupiny zabezpečení
 <a name="network-security-groups"></a>
@@ -33,13 +33,13 @@ Skupina zabezpečení sítě nemusí obsahovat žádná pravidla nebo může pod
 
 |Vlastnost  |Vysvětlení  |
 |---------|---------|
-|Name|Jedinečný název v rámci skupiny zabezpečení sítě.|
-|Priority | Číslo v rozsahu od 100 do 4096. Pravidla se zpracovávají v pořadí podle priority, přičemž nižší čísla, která mají vyšší prioritu, se zpracovávají před vyššími čísly. Jakmile provoz odpovídá pravidlu, zpracování se zastaví. V důsledku toho se nezpracují žádná existující pravidla s nižší prioritou (vyšší čísla), která mají stejné atributy jako pravidla s vyšší prioritou.|
-|Zdroj nebo cíl| Všechny nebo určitá IP adresa, blok CIDR (například 10.0.0.0/24), [značka služby](#service-tags) nebo [skupina zabezpečení aplikace](#application-security-groups). Pokud zadáváte adresu prostředku Azure, zadejte privátní IP adresu přiřazenou k tomuto prostředku. Skupiny zabezpečení sítě se zpracovávají poté, co Azure přeloží veřejnou IP adresu na privátní IP adresu pro příchozí provoz, a před tím, než Azure přeloží privátní IP adresu na veřejnou IP adresu pro odchozí provoz. Další informace o [IP adresách](virtual-network-ip-addresses-overview-arm.md) Azure. Zadání rozsahu, značky služby nebo skupiny zabezpečení aplikace umožňuje vytvářet méně pravidel zabezpečení. Možnost zadat v pravidlu několik jednotlivých IP adres a rozsahů (není možné zadat více značek služeb ani skupin aplikací) se označuje jako [rozšířená pravidla zabezpečení](#augmented-security-rules). Rozšířená pravidla zabezpečení je možné vytvářet pouze ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Resource Manager. Ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Classic není možné zadat více IP adres ani rozsahů IP adres. Další informace o [modelech nasazení Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
-|Protocol     | TCP, UDP, ICMP nebo Any.|
-|Direction| Určuje, jestli se pravidlo vztahuje na příchozí nebo odchozí provoz.|
+|Název|Jedinečný název v rámci skupiny zabezpečení sítě.|
+|Priorita | Číslo v rozsahu od 100 do 4096. Pravidla se zpracovávají v pořadí podle priority, přičemž nižší čísla, která mají vyšší prioritu, se zpracovávají před vyššími čísly. Jakmile provoz odpovídá pravidlu, zpracování se zastaví. V důsledku toho se nezpracují žádná existující pravidla s nižší prioritou (vyšší čísla), která mají stejné atributy jako pravidla s vyšší prioritou.|
+|Zdroj nebo cíl| Všechny nebo určitá IP adresa, blok CIDR (například 10.0.0.0/24), [značka služby](service-tags-overview.md) nebo [skupina zabezpečení aplikace](#application-security-groups). Pokud zadáváte adresu prostředku Azure, zadejte privátní IP adresu přiřazenou k tomuto prostředku. Skupiny zabezpečení sítě se zpracovávají poté, co Azure přeloží veřejnou IP adresu na privátní IP adresu pro příchozí provoz, a před tím, než Azure přeloží privátní IP adresu na veřejnou IP adresu pro odchozí provoz. Další informace o [IP adresách](virtual-network-ip-addresses-overview-arm.md) Azure. Zadání rozsahu, značky služby nebo skupiny zabezpečení aplikace umožňuje vytvářet méně pravidel zabezpečení. Možnost zadat v pravidlu několik jednotlivých IP adres a rozsahů (není možné zadat více značek služeb ani skupin aplikací) se označuje jako [rozšířená pravidla zabezpečení](#augmented-security-rules). Rozšířená pravidla zabezpečení je možné vytvářet pouze ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Resource Manager. Ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Classic není možné zadat více IP adres ani rozsahů IP adres. Další informace o [modelech nasazení Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
+|Protocol (Protokol)     | TCP, UDP, ICMP nebo Any.|
+|Směr| Určuje, jestli se pravidlo vztahuje na příchozí nebo odchozí provoz.|
 |Rozsah portů     |Můžete zadat určitý port nebo rozsah portů. Můžete zadat například 80 nebo 10000-10005. Zadání rozsahů umožňuje vytvářet méně pravidel zabezpečení. Rozšířená pravidla zabezpečení je možné vytvářet pouze ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Resource Manager. Ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Classic není možné zadat několik portů ani rozsahů portů ve stejném pravidlu zabezpečení.   |
-|Action     | Povolení nebo odepření.        |
+|Akce     | Povolení nebo odepření.        |
 
 Pravidla zabezpečení skupin zabezpečení sítě se vyhodnocují podle priority s použitím informací o řazené kolekci 5 členů (zdroj, zdrojový port, cíl, cílový port a protokol) a určují, jestli se má provoz povolit nebo odepřít. Pro stávající připojení se vytvoří záznam toku. Komunikace se povoluje nebo odepírá na základě stavu připojení v záznamu toku. Záznam toku umožňuje, aby skupina zabezpečení sítě byla stavová. Pokud zadáte odchozí pravidlo zabezpečení pro všechny adresy například přes port 80, není potřeba zadávat příchozí pravidlo zabezpečení pro reakci na odchozí provoz. Příchozí pravidlo zabezpečení je potřeba zadat pouze v případě, že se komunikace zahajuje externě. Opačně to platí také. Pokud je přes port povolený příchozí provoz, není potřeba zadávat odchozí pravidlo zabezpečení pro reakci na provoz přes tento port.
 Pokud odeberete pravidlo zabezpečení, které povolilo tok, nesmí se přerušit žádné stávající připojení. Toky provozu se přeruší v případě zastavení připojení a toku provozu oběma směry po dobu alespoň několika minut.
@@ -48,60 +48,13 @@ Počet pravidel zabezpečení, která můžete ve skupině zabezpečení sítě 
 
 ## <a name="augmented-security-rules"></a>Rozšířená pravidla zabezpečení
 
-Rozšířená pravidla zabezpečení zjednodušují definici zabezpečení pro virtuální sítě tím, že umožňují definovat větší a složitější zásady zabezpečení sítě při použití menšího počtu pravidel. Můžete zkombinovat více portů a explicitních IP adres a rozsahů do jediného, snadno pochopitelného pravidla zabezpečení. Rozšířená pravidla používejte v polích pravidla pro zdroj, cíl a port. Pokud chcete zjednodušit údržbu definice pravidla zabezpečení, zkombinujte rozšířená pravidla zabezpečení se [značkami služeb](#service-tags) nebo [skupinami zabezpečení aplikací](#application-security-groups). Existují omezení počtu adres, rozsahů a portů, které lze zadat v pravidle. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Rozšířená pravidla zabezpečení zjednodušují definici zabezpečení pro virtuální sítě tím, že umožňují definovat větší a složitější zásady zabezpečení sítě při použití menšího počtu pravidel. Můžete zkombinovat více portů a explicitních IP adres a rozsahů do jediného, snadno pochopitelného pravidla zabezpečení. Rozšířená pravidla používejte v polích pravidla pro zdroj, cíl a port. Pokud chcete zjednodušit údržbu definice pravidla zabezpečení, zkombinujte rozšířená pravidla zabezpečení se [značkami služeb](service-tags-overview.md) nebo [skupinami zabezpečení aplikací](#application-security-groups). Existují omezení počtu adres, rozsahů a portů, které lze zadat v pravidle. Podrobnosti najdete v tématu věnovaném [omezením Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 ## <a name="service-tags"></a>Značky služeb
 
-Značka služby představuje skupinu předpon IP adres a tím pomáhá minimalizovat složitost vytváření pravidla zabezpečení. Nemůžete vytvořit vlastní značku služby ani určit, které IP adresy jsou ve značce zahrnuté. Předpony adres zahrnuté ve značce služby spravuje Microsoft, a pokud se adresy změní, automaticky značku služby aktualizuje. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. 
+Značka služby představuje skupinu předpon IP adres z dané služby Azure. Pomáhá minimalizovat složitost častých aktualizací pravidel zabezpečení sítě.
 
-Následující značky služeb jsou k dispozici pro použití v [pravidlech skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules). Značky služby s hvězdičkou na konci (tj. AzureCloud *) se dají použít i v [Azure Firewallch síťových pravidel](https://docs.microsoft.com/azure/firewall/service-tags). 
-
-* **ApiManagement*** (jenom správce prostředků): Tato značka označuje předpony adresy provozu správy pro APIM implementovaná nasazení. Pokud jako hodnotu zadáte *ApiManagement*, provoz směřující do služby API Management se povolí nebo zakáže. Tato značka se doporučuje pro pravidlo zabezpečení příchozí/odchozí. 
-* **AppService*** (jenom správce prostředků): Tato značka označuje předpony adresy služby Azure AppService. Pokud jako hodnotu zadáte *AppService*, provoz směřující do služby App Service se povolí nebo zakáže. Pokud chcete povolit přístup ke službě App Service pouze v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete oblast zadat v následujícím formátu: AppService.[název_oblasti]. Tato značka se doporučuje pro odchozí pravidlo zabezpečení pro WebApps front-endu.  
-* **AppServiceManagement*** (jenom správce prostředků): Tato značka označuje předpony adresy provozu správy pro App Service Environment vyhrazená nasazení. Pokud jako hodnotu zadáte *AppServiceManagement*, provoz směřující do služby pro správu služby App Service se povolí nebo zakáže. Tato značka se doporučuje pro pravidlo zabezpečení příchozí/odchozí. 
-* **Azureactivedirectory selhala*** (jenom správce prostředků): Tato značka označuje předpony adresy služby Azureactivedirectory selhala. Pokud jako hodnotu zadáte *AzureActiveDirectory*, provoz směřující do služby Azure Active Directory se povolí nebo zakáže. Tato značka se doporučuje pro odchozí pravidlo zabezpečení.
-* **AzureActiveDirectoryDomainServices*** (jenom správce prostředků): Tato značka označuje předpony adresy provozu správy pro Azure Active Directory Domain Services vyhrazená nasazení. Pokud pro hodnotu zadáte *AzureActiveDirectoryDomainServices* , provoz se povolí nebo odepře AzureActiveDirectoryDomainServices. Tato značka se doporučuje pro pravidlo zabezpečení příchozí/odchozí.  
-* **AzureBackup*** (jenom správce prostředků): Tato značka označuje předpony adresy služby AzureBackup. Pokud pro hodnotu zadáte *AzureBackup* , provoz se povolí nebo odepře AzureBackup. Tato značka má závislost na značkách **úložiště** a **azureactivedirectory selhala** . Tato značka se doporučuje pro odchozí pravidlo zabezpečení. 
-* **AzureCloud*** (jenom správce prostředků): Tato značka označuje adresní prostor IP adres pro Azure včetně všech [veřejných IP adres Datacenter](https://www.microsoft.com/download/details.aspx?id=41653). Pokud jako hodnotu zadáte *AzureCloud*, provoz směřující na veřejné IP adresy Azure se povolí nebo zakáže. Pokud chcete v konkrétní [oblasti](https://azure.microsoft.com/regions)jenom udělit přístup k AzureCloud, můžete zadat oblast v následujícím formátu AzureCloud. [název oblasti]. Tato značka se doporučuje pro odchozí pravidlo zabezpečení. 
-* **AzureConnectors*** (jenom správce prostředků): Tato značka označuje předpony adres konektorů Logic Apps pro připojení sondy a back-endu. Pokud jako hodnotu zadáte *AzureConnectors*, provoz směřující do konektorů Azure se povolí nebo zakáže. Pokud chcete povolit přístup ke konektorům Azure pouze v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete oblast zadat v následujícím formátu: AzureConnectors.[název_oblasti]. Tato značka se doporučuje pro příchozí pravidlo zabezpečení. 
-* **AzureContainerRegistry*** (jenom správce prostředků): Tato značka označuje předpony adresy služby Azure Container Registry. Pokud jako hodnotu zadáte *AzureContainerRegistry*, provoz směřující do služby Azure Container Registry se povolí nebo zakáže. Pokud chcete povolit přístup ke službě Azure Container Registry pouze v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete oblast zadat v následujícím formátu: AzureContainerRegistry.[název_oblasti]. Tato značka se doporučuje pro odchozí pravidlo zabezpečení. 
-* **AzureCosmosDB*** (jenom správce prostředků): Tato značka označuje předpony adresy služby Azure Cosmos Database. Pokud jako hodnotu zadáte *AzureCosmosDB*, provoz směřující do služby Azure Cosmos DB se povolí nebo zakáže. Pokud chcete povolit přístup ke službě Azure Cosmos DB pouze v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete oblast zadat v následujícím formátu: AzureCosmosDB.[název_oblasti]. Tato značka se doporučuje pro odchozí pravidlo zabezpečení. 
-* **AzureDataLake*** (jenom správce prostředků): Tato značka označuje předpony adresy služby Azure Data Lake. Pokud jako hodnotu zadáte *AzureDataLake*, provoz směřující do služby Azure Data Lake se povolí nebo zakáže. Tato značka se doporučuje pro odchozí pravidlo zabezpečení. 
-* **AzureKeyVault*** (jenom správce prostředků): Tato značka označuje předpony adresy služby Azure datatrezor. Pokud jako hodnotu zadáte *AzureKeyVault*, provoz směřující do služby Azure Key Vault se povolí nebo zakáže. Pokud chcete povolit přístup ke službě Azure Key Vault pouze v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete oblast zadat v následujícím formátu: AzureKeyVault.[název_oblasti]. Tato značka má závislost na značce **azureactivedirectory selhala** . Tato značka se doporučuje pro odchozí pravidlo zabezpečení.  
-* **AzureLoadBalancer** (Správce prostředků) (**AZURE_LOADBALANCER** pro klasický): Tato značka označuje Nástroj pro vyrovnávání zatížení infrastruktury Azure. Značka se přeloží na [virtuální IP adresu hostitele](security-overview.md#azure-platform-considerations) (168.63.129.16), kde mají původ sondy stavu Azure. Pokud nepoužíváte nástroj pro vyrovnávání zatížení Azure, můžete toto pravidlo přepsat.
-* **AzureMachineLearning*** (jenom správce prostředků): Tato značka označuje předpony adresy služby AzureMachineLearning. Pokud pro hodnotu zadáte *AzureMachineLearning* , provoz se povolí nebo odepře AzureMachineLearning. Tato značka se doporučuje pro odchozí pravidlo zabezpečení. 
-* **AzureMonitor*** (jenom správce prostředků): Tato značka označuje předpony adres Log Analytics, App Insights, AzMon a vlastní metriky (koncové body 4Gigový). Pokud pro hodnotu zadáte *AzureMonitor* , provoz se povolí nebo odepře AzureMonitor. U Log Analytics má tato značka závislost na značce **úložiště** . Tato značka se doporučuje pro odchozí pravidlo zabezpečení.
-* **AzurePlatformDNS** (Jenom Správce prostředků): Tato značka označuje DNS, což je základní služba infrastruktury. Pokud pro tuto hodnotu zadáte *AzurePlatformDNS* , můžete pro službu DNS zakázat výchozí [aspekty platformy Azure](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) . Při používání této značky prosím buďte opatrní. Před použitím této značky se doporučuje testování. 
-* **AzurePlatformIMDS** (Jenom Správce prostředků): Tato značka označuje IMDS, což je základní služba infrastruktury. Pokud pro tuto hodnotu zadáte *AzurePlatformIMDS* , můžete zakázat výchozí [aspekty platformy Azure](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) pro IMDS. Při používání této značky prosím buďte opatrní. Před použitím této značky se doporučuje testování. 
-* **AzurePlatformLKM** (Jenom Správce prostředků): Tato značka označuje licencování systému Windows nebo službu správy klíčů. Pokud pro tuto hodnotu zadáte *AzurePlatformLKM* , můžete zakázat výchozí [aspekty platformy Azure](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) pro licencování. Při používání této značky prosím buďte opatrní. Před použitím této značky se doporučuje testování. 
-* **AzureTrafficManager*** (jenom správce prostředků): Tato značka označuje adresní prostor IP adres pro IP adresy sondy Azure Traffic Manager. Další informace o IP adresách sondy pro Traffic Manager najdete v tématu [Azure Traffic Manager – nejčastější dotazy](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). Tato značka se doporučuje pro příchozí pravidlo zabezpečení.  
-* **BatchNodeManagement*** (jenom správce prostředků): Tato značka označuje předpony adresy provozu správy pro Azure Batch vyhrazená nasazení. Pokud pro tuto hodnotu zadáte *BatchNodeManagement* , provoz se do výpočetních uzlů povolí nebo odepře službě Batch. Tato značka se doporučuje pro pravidlo zabezpečení příchozí/odchozí. 
-* **CognitiveServicesManagement** (Jenom Správce prostředků): Tato značka označuje předpony adres přenosu pro Cognitive Services. Pokud pro hodnotu zadáte *CognitiveServicesManagement* , provoz se povolí nebo odepře CognitiveServicesManagement. Tato značka se doporučuje pro odchozí pravidlo zabezpečení.  
-* **Dynamics365ForMarketingEmail** (Jenom Správce prostředků): Tato značka označuje předpony adres marketingové e-mailové služby Dynamics 365. Pokud pro hodnotu zadáte *Dynamics365ForMarketingEmail* , provoz se povolí nebo odepře Dynamics365ForMarketingEmail. Pokud chcete v konkrétní [oblasti](https://azure.microsoft.com/regions)jenom udělit přístup k Dynamics365ForMarketingEmail, můžete zadat oblast v následujícím formátu Dynamics365ForMarketingEmail. [název oblasti].
-* **EventHub*** (jenom správce prostředků): Tato značka označuje předpony adresy služby Azure EventHub. Pokud jako hodnotu zadáte *EventHub*, provoz směřující do služby Event Hubs se povolí nebo zakáže. Pokud chcete povolit přístup ke službě Event Hubs pouze v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete oblast zadat v následujícím formátu: EventHub.[název_oblasti]. Tato značka se doporučuje pro odchozí pravidlo zabezpečení. 
-* **GatewayManager** (Jenom Správce prostředků): Tato značka označuje předpony adres provozu správy pro vyhrazená nasazení VPN/App Gateway. Pokud jako hodnotu zadáte *GatewayManager*, provoz směřující do služby Správce brány se povolí nebo zakáže. Tato značka se doporučuje pro příchozí pravidlo zabezpečení. 
-* **Internet** (Správce prostředků) (**Internet** pro klasický): Tato značka označuje adresní prostor IP adres, který je mimo virtuální síť a dosažitelný veřejným internetem. Rozsah adres zahrnuje [veřejný adresní prostor IP adres vlastněný Azure](https://www.microsoft.com/download/details.aspx?id=41653).
-* **MicrosoftContainerRegistry*** (jenom správce prostředků): Tato značka označuje předpony adresy služby Microsoft Container Registry. Pokud jako hodnotu zadáte *MicrosoftContainerRegistry*, provoz směřující do služby Microsoft Container Registry se povolí nebo zakáže. Pokud chcete povolit přístup ke službě Microsoft Container Registry pouze v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete oblast zadat v následujícím formátu: MicrosoftContainerRegistry.[název_oblasti]. Tato značka se doporučuje pro odchozí pravidlo zabezpečení. 
-* **ServiceBus*** (jenom správce prostředků): Tato značka označuje předpony adresy služby Azure ServiceBus s využitím úrovně Premium Service. Pokud jako hodnotu zadáte *ServiceBus*, provoz směřující do služby Service Bus se povolí nebo zakáže. Pokud chcete povolit přístup ke službě Service Bus pouze v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete oblast zadat v následujícím formátu: ServiceBus.[název_oblasti]. Tato značka se doporučuje pro odchozí pravidlo zabezpečení. 
-* **ServiceFabric*** (jenom správce prostředků): Tato značka označuje předpony adresy služby ServiceFabric. Pokud pro hodnotu zadáte *ServiceFabric* , provoz se povolí nebo odepře ServiceFabric. Tato značka se doporučuje pro odchozí pravidlo zabezpečení. 
-* **SQL*** (pouze správce prostředků): Tato značka označuje předpony adres Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL a Azure SQL Data Warehouse služeb. Pokud jako hodnotu zadáte *SQL*, provoz směřující do SQL se povolí nebo zakáže. Pokud chcete v konkrétní [oblasti](https://azure.microsoft.com/regions)jenom udělit přístup k SQL, můžete zadat oblast v následujícím formátu SQL. [název oblasti]. Značka představuje službu, ale ne konkrétní instance služby. Značka například představuje službu Azure SQL Database, ale ne konkrétní server nebo databázi SQL. Tato značka se doporučuje pro odchozí pravidlo zabezpečení. 
-* **SqlManagement*** (jenom správce prostředků): Tato značka označuje předpony adres provozu správy pro nasazení ve vyhrazeném systému SQL. Pokud pro hodnotu zadáte *SqlManagement* , provoz se povolí nebo odepře SqlManagement. Tato značka se doporučuje pro pravidlo zabezpečení příchozí/odchozí. 
-* **Úložiště*** (jenom správce prostředků): Tato značka označuje adresní prostor IP adres pro službu Azure Storage. Pokud jako hodnotu zadáte *Storage*, provoz směřující do úložiště se povolí nebo zakáže. Pokud chcete pouze přístup k úložišti v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete zadat oblast v následujícím úložišti formátu. [název oblasti]. Značka představuje službu, ale ne konkrétní instance služby. Značka například představuje službu Azure Storage, ale ne konkrétní účet služby Azure Storage. Tato značka se doporučuje pro odchozí pravidlo zabezpečení. 
-* **VirtualNetwork** (Správce prostředků) (**VIRTUAL_NETWORK** pro klasický): Tato značka zahrnuje adresní prostor virtuální sítě (všechny rozsahy CIDR definované pro virtuální síť), všechny připojené místní adresní prostory, [partnerské](virtual-network-peering-overview.md) virtuální sítě nebo virtuální sítě připojené k [bráně](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json) [virtuální sítě. virtuální IP adresa hostitele](security-overview.md#azure-platform-considerations) a předpony adresy použité pro [trasy definované uživatelem](virtual-networks-udr-overview.md) Upozorňujeme, že tato značka může obsahovat výchozí trasu. 
-
-> [!NOTE]
-> Značky služeb Azure označují předpony adres z konkrétního cloudu, který se používá. 
-
-> [!NOTE]
-> Pokud implementujete [koncový bod služby pro virtuální síť](virtual-network-service-endpoints-overview.md) pro službu, jako je Azure Storage nebo Azure SQL Database, Azure pro tuto službu přidá [trasu](virtual-networks-udr-overview.md#optional-default-routes) k podsíti virtuální sítě. Předpony adres pro trasu jsou stejné předpony adres nebo rozsahy CIDR jako u odpovídající značky služby.
-
-### <a name="service-tags-in-on-premises"></a>Značky služeb v místním prostředí  
-Můžete si stáhnout a integrovat s místní bránou firewall seznam značek služeb s podrobnostmi o následujících týdenních publikacích pro Azure [Public](https://www.microsoft.com/download/details.aspx?id=56519), [USA](https://www.microsoft.com/download/details.aspx?id=57063), [Čína](https://www.microsoft.com/download/details.aspx?id=57062)a [Německo](https://www.microsoft.com/download/details.aspx?id=57064) .
-
-Tyto informace můžete také programově načíst pomocí **rozhraní API zjišťování značek služby** (Public Preview) – [REST](https://aka.ms/discoveryapi_rest), [Azure PowerShell](https://aka.ms/discoveryapi_powershell)a [Azure CLI](https://aka.ms/discoveryapi_cli). 
-
-> [!NOTE]
-> Následující týdenní publikace (stará verze) pro cloudy Azure [Public](https://www.microsoft.com/en-us/download/details.aspx?id=41653), [Čína](https://www.microsoft.com/en-us/download/details.aspx?id=42064)a [Německo](https://www.microsoft.com/en-us/download/details.aspx?id=54770) budou zastaralé 30. června 2020. Začněte používat aktualizované publikace, jak je popsáno výše. 
+Další informace najdete v tématu [značky služeb Azure](service-tags-overview.md). 
 
 ## <a name="default-security-rules"></a>Výchozí pravidla zabezpečení
 
@@ -111,51 +64,51 @@ Azure v každé skupině zabezpečení sítě, kterou vytvoříte, vytvoří ná
 
 #### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|Priority|Source|Zdrojové porty|Cíl|Cílové porty|Protocol|Access|
+|Priorita|Zdroj|Zdrojové porty|Cíl|Cílové porty|Protocol (Protokol)|Přístup|
 |---|---|---|---|---|---|---|
-|65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|Any|Allow|
+|65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|Všechny|Povolit|
 
 #### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|Priority|Source|Zdrojové porty|Cíl|Cílové porty|Protocol|Access|
+|Priorita|Zdroj|Zdrojové porty|Cíl|Cílové porty|Protocol (Protokol)|Přístup|
 |---|---|---|---|---|---|---|
-|65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|Any|Allow|
+|65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|Všechny|Povolit|
 
 #### <a name="denyallinbound"></a>DenyAllInbound
 
-|Priority|Source|Zdrojové porty|Cíl|Cílové porty|Protocol|Access|
+|Priorita|Zdroj|Zdrojové porty|Cíl|Cílové porty|Protocol (Protokol)|Přístup|
 |---|---|---|---|---|---|---|
-|65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Any|Odepřít|
+|65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Všechny|Odepřít|
 
 ### <a name="outbound"></a>Odchozí
 
 #### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|Priority|Source|Zdrojové porty| Cíl | Cílové porty | Protocol | Access |
+|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protocol (Protokol) | Přístup |
 |---|---|---|---|---|---|---|
-| 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | Any | Allow |
+| 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | Všechny | Povolit |
 
 #### <a name="allowinternetoutbound"></a>AllowVnetOutBound
 
-|Priority|Source|Zdrojové porty| Cíl | Cílové porty | Protocol | Access |
+|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protocol (Protokol) | Přístup |
 |---|---|---|---|---|---|---|
-| 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | Any | Allow |
+| 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | Všechny | Povolit |
 
 #### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|Priority|Source|Zdrojové porty| Cíl | Cílové porty | Protocol | Access |
+|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protocol (Protokol) | Přístup |
 |---|---|---|---|---|---|---|
-| 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Any | Odepřít |
+| 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Všechny | Odepřít |
 
-Ve sloupcích **Zdroj** a **Cíl** jsou hodnoty *VirtualNetwork*, *AzureLoadBalancer* a *Internet* [značky služeb](#service-tags), a nikoli IP adresy. Ve sloupci Protocol zahrnuje **všechny** protokoly TCP, UDP a ICMP. Při vytváření pravidla můžete zadat TCP, UDP, ICMP nebo Any. Hodnota *0.0.0.0/0* ve sloupcích **Zdroj** a **Cíl** představuje všechny adresy. Klienti, jako je Azure Portal, Azure CLI nebo PowerShell, můžou pro tento výraz použít * nebo Any.
+Ve sloupcích **Zdroj** a **Cíl** jsou hodnoty *VirtualNetwork*, *AzureLoadBalancer* a *Internet* [značky služeb](service-tags-overview.md), a nikoli IP adresy. Ve sloupci Protocol zahrnuje **všechny** protokoly TCP, UDP a ICMP. Při vytváření pravidla můžete zadat TCP, UDP, ICMP nebo Any. Hodnota *0.0.0.0/0* ve sloupcích **Zdroj** a **Cíl** představuje všechny adresy. Klienti, jako je Azure Portal, Azure CLI nebo PowerShell, můžou pro tento výraz použít * nebo Any.
  
 Výchozí pravidla nemůžete odebrat, ale můžete je přepsat vytvořením pravidel s vyšší prioritou.
 
-## <a name="application-security-groups"></a>Skupiny zabezpečení aplikace
+## <a name="application-security-groups"></a>Skupiny zabezpečení aplikací
 
 Skupiny zabezpečení aplikací umožňují konfigurovat zabezpečení sítě jako přirozené rozšíření struktury aplikace. Můžete seskupovat virtuální počítače a na základě těchto skupin definovat zásady zabezpečení sítě. Zásady zabezpečení můžete opakovaně používat ve velkém měřítku bez potřeby ruční údržby explicitních IP adres. O složitost explicitních IP adres a několika skupin pravidel se stará platforma a vy se tak můžete zaměřit na obchodní logiku. Pro lepší pochopení skupin zabezpečení aplikací si představte následující příklad:
 
-![Skupiny zabezpečení aplikace](./media/security-groups/application-security-groups.png)
+![Skupiny zabezpečení aplikací](./media/security-groups/application-security-groups.png)
 
 Na předchozím obrázku jsou *NIC1* a *NIC2* členy skupiny zabezpečení aplikace *AsgWeb*. *NIC3* je členem skupiny zabezpečení aplikace *AsgLogic*. *NIC4* je členem skupiny zabezpečení aplikace *AsgDb*. Přestože jsou všechna síťová rozhraní v tomto příkladu členy pouze jedné skupiny zabezpečení aplikace, síťové rozhraní může být členem více skupin zabezpečení aplikací, a to až do limitu daného [omezeními Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). Žádné ze síťových rozhraní nemá přidruženou skupinu zabezpečení sítě. Skupina *NSG1* je přidružená k oběma podsítím a obsahuje následující pravidla:
 
@@ -163,25 +116,25 @@ Na předchozím obrázku jsou *NIC1* a *NIC2* členy skupiny zabezpečení aplik
 
 Toto pravidlo je potřeba k povolení provozu směřujícího z internetu na webové servery. Vzhledem k tomu, že výchozí pravidlo zabezpečení [DenyAllInbound](#denyallinbound) odepírá příchozí provoz z internetu, není pro skupiny zabezpečení aplikací *AsgLogic* a *AsgDb* potřeba žádné další pravidlo.
 
-|Priority|Source|Zdrojové porty| Cíl | Cílové porty | Protocol | Access |
+|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protocol (Protokol) | Přístup |
 |---|---|---|---|---|---|---|
-| 100 | Internet | * | AsgWeb | 80 | TCP | Allow |
+| 100 | Internet | * | AsgWeb | 80 | TCP | Povolit |
 
 ### <a name="deny-database-all"></a>Deny-Database-All
 
 Vzhledem k tomu, že výchozí pravidlo zabezpečení [AllowVNetInBound](#allowvnetinbound) povoluje veškerou komunikaci mezi prostředky ve stejné virtuální síti, je toto pravidlo potřeba k odepření provozu ze všech prostředků.
 
-|Priority|Source|Zdrojové porty| Cíl | Cílové porty | Protocol | Access |
+|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protocol (Protokol) | Přístup |
 |---|---|---|---|---|---|---|
-| 120 | * | * | AsgDb | 1433 | Any | Odepřít |
+| 120 | * | * | AsgDb | 1433 | Všechny | Odepřít |
 
 ### <a name="allow-database-businesslogic"></a>Allow-Database-BusinessLogic
 
 Toto pravidlo povoluje provoz ze skupiny zabezpečení aplikace *AsgLogic* do skupiny zabezpečení aplikace *AsgDb*. Priorita tohoto pravidla je vyšší než priorita pravidla *Deny-Database-All*. Díky tomu se toto pravidlo zpracuje před pravidlem *Deny-Database-All*, takže se povolí provoz ze skupiny zabezpečení aplikace *AsgLogic*, zatímco veškerý ostatní provoz se zablokuje.
 
-|Priority|Source|Zdrojové porty| Cíl | Cílové porty | Protocol | Access |
+|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protocol (Protokol) | Přístup |
 |---|---|---|---|---|---|---|
-| 110 | AsgLogic | * | AsgDb | 1433 | TCP | Allow |
+| 110 | AsgLogic | * | AsgDb | 1433 | TCP | Povolit |
 
 Pravidla určující skupinu zabezpečení aplikace jako zdroj nebo cíl se použijí pouze na síťová rozhraní, která jsou členy příslušné skupiny zabezpečení aplikace. Pokud síťové rozhraní není členem žádné skupiny zabezpečení aplikace, pravidlo se pro něj nepoužije, ani když je k podsíti přiřazená skupina zabezpečení sítě.
 
@@ -209,19 +162,26 @@ Předchozí obrázek společně s následujícím textem vám pomůže porozumě
 
 V případě příchozího provozu zpracuje Azure nejprve pravidla ve skupině zabezpečení sítě přidružené k příslušné podsíti, pokud taková skupina existuje, a pak pravidla ve skupině zabezpečení sítě přidružené k síťovému rozhraní, pokud taková skupina existuje.
 
-- **VM1**: Pravidla zabezpečení v *NSG1* se zpracovávají, protože jsou přidružená k *Subnet1* a *VM1* je v *Subnet1*. Pokud jste nevytvořili pravidlo povolující příchozí provoz na portu 80, výchozí pravidlo zabezpečení [DenyAllInbound](#denyallinbound) provoz odepře a skupina *NSG2* ho nikdy nevyhodnotí, protože skupina *NSG2* je přidružená k síťovému rozhraní. Pokud skupina *NSG1* obsahuje pravidlo zabezpečení povolující port 80, provoz se pak zpracuje skupinou *NSG2*. Pokud pro virtuální počítač chcete povolit příchozí provoz přes port 80, skupina *NSG1* i *NSG2* musí obsahovat pravidlo povolující příchozí provoz přes port 80 z internetu.
-- **VM2**: Pravidla v *NSG1* se zpracovávají, protože *VM2* je také v *Subnet1*. Vzhledem k tomu, že k síťovému rozhraní virtuálního počítače *VM2* není přidružená žádná skupina zabezpečení sítě, přijme toto rozhraní veškerý provoz povolený skupinou *NSG1* nebo se mu odepře veškerý provoz zakázaný skupinou *NSG1*. Pokud je skupina zabezpečení sítě přidružená k podsíti, povolí se nebo se odepře provoz do všech prostředků ve stejné podsíti.
-- **VM3**: Vzhledem k tomu, že k *podsíť subnet2*není přidružená žádná skupina zabezpečení sítě, je provoz povolený v podsíti a zpracovává je *NSG2*, protože *NSG2* je přidružená k síťovému rozhraní připojenému k *VM3*.
-- **VM4**: Provoz je povolený pro *VM4,* protože skupina zabezpečení sítě není přidružená k *Subnet3*nebo síťovému rozhraní ve virtuálním počítači. Pokud k podsíti a síťovému rozhraní není přidružená žádná skupina zabezpečení sítě, povolí se přes ně průchod veškerého síťového provozu.
+- **VM1:** Zpracují se pravidla ve skupině *NSG1*, protože je přidružená k podsíti *Subnet1* a virtuální počítač *VM1* se nachází v podsíti *Subnet1*. Pokud jste nevytvořili pravidlo povolující příchozí provoz na portu 80, výchozí pravidlo zabezpečení [DenyAllInbound](#denyallinbound) provoz odepře a skupina *NSG2* ho nikdy nevyhodnotí, protože skupina *NSG2* je přidružená k síťovému rozhraní. Pokud skupina *NSG1* obsahuje pravidlo zabezpečení povolující port 80, provoz se pak zpracuje skupinou *NSG2*. Pokud pro virtuální počítač chcete povolit příchozí provoz přes port 80, skupina *NSG1* i *NSG2* musí obsahovat pravidlo povolující příchozí provoz přes port 80 z internetu.
+- **VM2:** Zpracují se pravidla ve skupině *NSG1*, protože virtuální počítač *VM2* se také nachází v podsíti *Subnet1*. Vzhledem k tomu, že k síťovému rozhraní virtuálního počítače *VM2* není přidružená žádná skupina zabezpečení sítě, přijme toto rozhraní veškerý provoz povolený skupinou *NSG1* nebo se mu odepře veškerý provoz zakázaný skupinou *NSG1*. Pokud je skupina zabezpečení sítě přidružená k podsíti, povolí se nebo se odepře provoz do všech prostředků ve stejné podsíti.
+- **VM3:** Vzhledem k tomu, že k podsíti *Subnet2* není přidružená žádná skupina zabezpečení sítě, povolí se příchozí provoz do této podsítě a zpracuje se skupinou *NSG2*, protože skupina *NSG2* je přidružená k síťovému rozhraní připojenému k virtuálnímu počítači *VM3*.
+- **VM4:** Provoz do virtuálního počítače *VM4* se povolí, protože k podsíti *Subnet3* ani k síťovému rozhraní na virtuálním počítači není přidružená žádná skupina zabezpečení sítě. Pokud k podsíti a síťovému rozhraní není přidružená žádná skupina zabezpečení sítě, povolí se přes ně průchod veškerého síťového provozu.
 
 ### <a name="outbound-traffic"></a>Odchozí provoz
 
 V případě odchozího provozu zpracuje Azure nejprve pravidla ve skupině zabezpečení sítě přidružené k příslušnému síťovému rozhraní, pokud taková skupina existuje, a pak pravidla ve skupině zabezpečení sítě přidružené k podsíti, pokud taková skupina existuje.
 
-- **VM1**: Pravidla zabezpečení v *NSG2* jsou zpracovávána. Pokud nevytvoříte pravidlo zabezpečení zakazující odchozí provoz přes port 80 do internetu, výchozí pravidlo zabezpečení [AllowInternetOutbound](#allowinternetoutbound) ve skupině *NSG1* i *NSG2* provoz povolí. Pokud skupina *NSG2* obsahuje pravidlo zabezpečení zakazující port 80, provoz se odepře a skupina *NSG1* ho nikdy nevyhodnotí. Pokud chcete na virtuálním počítači zakázat odchozí provoz přes port 80, jedna ze skupin zabezpečení sítě nebo obě musí obsahovat pravidlo zakazující odchozí provoz přes port 80 do internetu.
-- **VM2**: Veškerý provoz se prostřednictvím síťového rozhraní odesílá do podsítě, protože síťové rozhraní připojené k *VM2* nemá přidruženou skupinu zabezpečení sítě. Zpracují se pravidla ve skupině *NSG1*.
-- **VM3**: Pokud má *NSG2* pravidlo zabezpečení, které zakazuje port 80, přenos se zamítne. Pokud skupina *NSG2* obsahuje pravidlo zabezpečení povolující port 80, povolí se odchozí provoz přes port 80 do internetu, protože k podsíti *Subnet2* není přidružená žádná skupina zabezpečení sítě.
-- **VM4**: Veškerý síťový provoz je povolený z *VM4,* protože skupina zabezpečení sítě není přidružená k síťovému rozhraní připojenému k virtuálnímu počítači nebo k *Subnet3*.
+- **VM1:** Zpracují se pravidla zabezpečení ve skupině *NSG2*. Pokud nevytvoříte pravidlo zabezpečení zakazující odchozí provoz přes port 80 do internetu, výchozí pravidlo zabezpečení [AllowInternetOutbound](#allowinternetoutbound) ve skupině *NSG1* i *NSG2* provoz povolí. Pokud skupina *NSG2* obsahuje pravidlo zabezpečení zakazující port 80, provoz se odepře a skupina *NSG1* ho nikdy nevyhodnotí. Pokud chcete na virtuálním počítači zakázat odchozí provoz přes port 80, jedna ze skupin zabezpečení sítě nebo obě musí obsahovat pravidlo zakazující odchozí provoz přes port 80 do internetu.
+- **VM2:** Veškerý provoz se odešle přes síťové rozhraní do podsítě, protože k síťovému rozhraní připojenému k virtuálnímu počítači *VM2* není přidružená žádná skupina zabezpečení sítě. Zpracují se pravidla ve skupině *NSG1*.
+- **VM3:** Pokud skupina *NSG2* obsahuje pravidlo zabezpečení zakazující port 80, provoz se odepře. Pokud skupina *NSG2* obsahuje pravidlo zabezpečení povolující port 80, povolí se odchozí provoz přes port 80 do internetu, protože k podsíti *Subnet2* není přidružená žádná skupina zabezpečení sítě.
+- **VM4:** Veškerý odchozí provoz z virtuálního počítače *VM4* se povolí, protože k síťovému rozhraní připojenému k virtuálnímu počítači ani k podsíti *Subnet3* není přidružená žádná skupina zabezpečení sítě.
+
+
+### <a name="intra-subnet-traffic"></a>Provoz uvnitř podsítě
+
+Je důležité si uvědomit, že pravidla zabezpečení v NSG přidružené k podsíti můžou mít vliv na připojení mezi virtuálním počítačem v rámci tohoto virtuálního počítače. Například pokud je do *NSG1* přidáno pravidlo, které zakazuje veškerý příchozí a odchozí provoz, *VM1* a *VM2* už nebudou moct vzájemně komunikovat. Další pravidlo by se muselo přidat konkrétně, aby to bylo možné. 
+
+
 
 Agregovaná pravidla použitá na síťové rozhraní můžete snadno zobrazit v [platných pravidlech zabezpečení](virtual-network-network-interface.md#view-effective-security-rules) pro síťové rozhraní. Pomocí funkce [Ověření toku protokolu IP](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json) v nástroji Azure Network Watcher můžete také určit, jestli je povolená komunikace směřující do síťového rozhraní nebo z něj. Ověření toku protokolu IP vám řekne, jestli je povolená nebo zakázaná komunikace, a které pravidlo zabezpečení sítě povoluje nebo odepírá provoz.
 
@@ -233,21 +193,21 @@ Agregovaná pravidla použitá na síťové rozhraní můžete snadno zobrazit v
 
 ## <a name="azure-platform-considerations"></a>Důležité informace o platformě Azure
 
-- **Virtuální IP adresa uzlu hostitele**: Základní služby infrastruktury, jako jsou DHCP, DNS, IMDS a sledování stavu, se poskytují prostřednictvím virtualizované IP adresy hostitele 168.63.129.16 a 169.254.169.254. Tyto IP adresy patří společnosti Microsoft a jsou jediné virtualizované IP adresy, které se používají ve všech oblastech pro tento účel.
-- **Licencování (služba správy klíčů)** : Bitové kopie systému Windows spuštěné ve virtuálních počítačích musí být licencované. Aby se zajistilo licencování, odesílají se žádosti o licenci na hostitelské servery Služby správy klíčů, které takové dotazy zpracovávají. Požadavek odchází přes port 1688. Pro nasazení využívající konfiguraci [výchozí trasy 0.0.0.0/0](virtual-networks-udr-overview.md#default-route) bude toto pravidlo platformy zakázané.
-- **Virtuální počítače ve fondech s vyrovnáváním zatížení**: Použitý zdrojový port a rozsah adres pocházejí z počítače, který není nástrojem pro vyrovnávání zatížení. Cílový port a rozsah adres odpovídá cílovému počítači, a nikoli nástroji pro vyrovnávání zatížení.
-- **Instance služby Azure**: Instance několika služeb Azure, jako je HDInsight, prostředí aplikačních služeb a Virtual Machine Scale Sets, jsou nasazené v podsítích virtuální sítě. Úplný seznam služeb, které můžete nasadit do virtuální sítě, najdete v tématu [Virtuální síť pro služby Azure](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network). Před použitím skupiny zabezpečení sítě na podsíť, ve které je nasazený prostředek, se ujistěte, že znáte požadavky jednotlivých služeb na porty. Pokud odepřete porty, které služba vyžaduje, nebude správně fungovat.
-- **Odesílání odchozího e-mailu**: Společnost Microsoft doporučuje používat ověřené služby SMTP relay (obvykle připojené přes port TCP 587, ale často i jiné) k posílání e-mailů z Azure Virtual Machines. Služby pro přenos přes protokol SMTP se specializují na reputaci odesílatele, aby se minimalizovala možnost odmítnutí zpráv poskytovateli e-mailu třetích stran. Mezi takové služby pro přenos přes protokol SMTP patří mimo jiné Exchange Online Protection a SendGrid. Používání služeb pro přenos přes protokol SMTP v Azure není nijak omezeno, a to bez ohledu na typ předplatného. 
+- **Virtuální IP adresa uzlu hostitele**: základní služby infrastruktury, jako jsou DHCP, DNS, IMDS a sledování stavu, se poskytují prostřednictvím virtualizované IP adresy hostitele 168.63.129.16 a 169.254.169.254. Tyto IP adresy patří společnosti Microsoft a jsou jediné virtualizované IP adresy, které se používají ve všech oblastech pro tento účel.
+- **Licencování (Služba správy klíčů):** Image Windows spuštěné na virtuálních počítačích musí být licencované. Aby se zajistilo licencování, odesílají se žádosti o licenci na hostitelské servery Služby správy klíčů, které takové dotazy zpracovávají. Požadavek odchází přes port 1688. Pro nasazení využívající konfiguraci [výchozí trasy 0.0.0.0/0](virtual-networks-udr-overview.md#default-route) bude toto pravidlo platformy zakázané.
+- **Virtuální počítače ve fondech s vyrovnáváním zatížení:** Použitý zdrojový port a rozsah adres odpovídá zdrojovému počítači, a nikoli nástroji pro vyrovnávání zatížení. Cílový port a rozsah adres odpovídá cílovému počítači, a nikoli nástroji pro vyrovnávání zatížení.
+- **Instance služeb Azure:** V podsítích virtuální sítě jsou nasazené instance několika služeb Azure, například HDInsight, prostředí aplikačních služeb a škálovací sady virtuálních počítačů. Úplný seznam služeb, které můžete nasadit do virtuální sítě, najdete v tématu [Virtuální síť pro služby Azure](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network). Před použitím skupiny zabezpečení sítě na podsíť, ve které je nasazený prostředek, se ujistěte, že znáte požadavky jednotlivých služeb na porty. Pokud odepřete porty, které služba vyžaduje, nebude správně fungovat.
+- **Odesílání odchozích e-mailů:** Microsoft doporučuje k odesílání e-mailů ze služby Azure Virtual Machines využívat služby pro přenos přes ověřený protokol SMTP (obvykle připojené přes port TCP 587, ale často i jiný). Služby pro přenos přes protokol SMTP se specializují na reputaci odesílatele, aby se minimalizovala možnost odmítnutí zpráv poskytovateli e-mailu třetích stran. Mezi takové služby pro přenos přes protokol SMTP patří mimo jiné Exchange Online Protection a SendGrid. Používání služeb pro přenos přes protokol SMTP v Azure není nijak omezeno, a to bez ohledu na typ předplatného. 
 
   Pokud jste své předplatné Azure vytvořili před 15. listopadem 2017, kromě možnosti používat služby pro přenos přes protokol SMTP můžete e-maily odesílat také přímo přes port TCP 25. Pokud jste své předplatné vytvořili po 15. listopadu 2017, možná nebudete moci odesílat e-maily přímo přes port 25. Chování odchozí komunikace přes port 25 závisí na typu vašeho předplatného, a to následujícím způsobem:
 
-     - **Smlouva Enterprise**: Odchozí komunikace portu 25 je povolena. Odchozí emaily můžete z virtuálních počítačů odesílat přímo externím poskytovatelům e-mailu bez jakýchkoli omezení platformy Azure. 
-     - **Průběžné platby:** Odchozí komunikace portu 25 je blokována ze všech prostředků. Pokud potřebujete odesílat e-maily z virtuálního počítače přímo externím poskytovatelům e-mailu (bez použití přenosu přes zabezpečený protokol SMTP), můžete vytvořit žádost o odebrání tohoto omezení. Žádosti se posuzují a schvalují na základě vlastního uvážení Microsoftu a vyhoví se jim pouze po provedení kontrol v souvislosti s možnými podvody. Pokud chcete vytvořit žádost, otevřete případ podpory s typem problému *Technický*, *Možnosti připojení k virtuální síti*, *Nelze odesílat e-maily (SMTP/port 25)* . Do případu podpory zahrňte podrobnosti o tom, proč vaše předplatné potřebuje odesílat e-maily přímo poskytovatelům e-mailu místo používání přenosu přes ověřený protokol SMTP. Pokud má vaše předplatné výjimku, odchozí komunikace přes port 25 jsou schopné pouze virtuální počítače vytvořené po datu udělení výjimky.
-     - **MSDN, Azure Pass, systém Azure v rámci licenčního programu Open, vzdělávání, BizSpark a bezplatná zkušební verze**: Odchozí komunikace portu 25 je blokována ze všech prostředků. Není možné vytvořit žádost o odebrání omezení, protože takovým žádostem se nevyhovuje. Pokud z virtuálního počítače potřebujete odesílat e-maily, musíte k tomu použít službu pro přenos přes protokol SMTP.
-     - **Poskytovatel cloudové služby**: Zákazníci, kteří využívají prostředky Azure prostřednictvím poskytovatele cloudové služby, můžou vytvořit případ podpory s poskytovatelem cloudových služeb a požádat ho, aby poskytovatel při odblokování vytvořil pro uživatele případ odblokování, pokud nelze použít zabezpečený přenos SMTP.
+     - **Smlouva Enterprise:** Odchozí komunikace přes port 25 je povolená. Odchozí emaily můžete z virtuálních počítačů odesílat přímo externím poskytovatelům e-mailu bez jakýchkoli omezení platformy Azure. 
+     - **Průběžné platby:** Odchozí komunikace přes port 25 ze všech prostředků je blokovaná. Pokud potřebujete odesílat e-maily z virtuálního počítače přímo externím poskytovatelům e-mailu (bez použití přenosu přes zabezpečený protokol SMTP), můžete vytvořit žádost o odebrání tohoto omezení. Žádosti se posuzují a schvalují na základě vlastního uvážení Microsoftu a vyhoví se jim pouze po provedení kontrol v souvislosti s možnými podvody. Pokud chcete vytvořit žádost, otevřete případ podpory s typem problému *Technický*, *Možnosti připojení k virtuální síti*, *Nelze odesílat e-maily (SMTP/port 25)* . Do případu podpory zahrňte podrobnosti o tom, proč vaše předplatné potřebuje odesílat e-maily přímo poskytovatelům e-mailu místo používání přenosu přes ověřený protokol SMTP. Pokud má vaše předplatné výjimku, odchozí komunikace přes port 25 jsou schopné pouze virtuální počítače vytvořené po datu udělení výjimky.
+     - **MSDN, Azure Pass, Azure v rámci licenčního programu Open License, Azure ve vzdělávání, BizSpark a bezplatná zkušební verze:** Odchozí komunikace přes port 25 ze všech prostředků je blokovaná. Není možné vytvořit žádost o odebrání omezení, protože takovým žádostem se nevyhovuje. Pokud z virtuálního počítače potřebujete odesílat e-maily, musíte k tomu použít službu pro přenos přes protokol SMTP.
+     - **Poskytovatel cloudových služeb:** Zákazníci, kteří využívají prostředky Azure prostřednictvím poskytovatele cloudových služeb, si mohou u poskytovatele cloudových služeb vytvořit případ podpory a požádat ho, aby v jejich zastoupení vytvořil případ odblokování, pokud se nedá použít zabezpečený přenos SMTP.
 
   Pokud vám Azure povolí odesílat e-maily přes port 25, Microsoft nemůže zaručit přijetí příchozích e-mailů z vašeho virtuálního počítače poskytovateli e-mailu. Pokud konkrétní poskytovatel odmítá e-maily z vašeho virtuálního počítače, spolupracujte přímo s daným poskytovatelem a vyřešte případné problémy s doručováním zpráv nebo filtrováním nevyžádané pošty, nebo použijte službu pro přenos přes ověřený protokol SMTP.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Zjistěte, jak [vytvořit skupinu zabezpečení sítě](tutorial-filter-network-traffic.md).

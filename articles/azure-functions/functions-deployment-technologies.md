@@ -1,21 +1,19 @@
 ---
 title: Technologie nasazení v Azure Functions | Microsoft Docs
 description: Seznamte se s různými způsoby, jak můžete nasadit kód pro Azure Functions.
-services: functions
-documentationcenter: .net
 author: ColbyTresness
-manager: dariac
+manager: gwallace
 ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 4d32a652219d48a2cc101259ea6b76fbfa910821
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: ce8287626b390d6eac4a3461d928c24f515f4023
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72674967"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576127"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie nasazení v Azure Functions
 
@@ -31,7 +29,7 @@ Azure Functions podporuje místní vývoj a hostování pro různé platformy v 
 
 Každý plán má jiné chování. Ne všechny technologie nasazení jsou k dispozici pro každý charakter Azure Functions. Následující graf ukazuje, které technologie nasazení jsou podporovány pro každou kombinaci operačního systému a plánu hostování:
 
-| Technologie nasazení | Spotřeba Windows | Windows Premium (Preview) | Vyhrazená pro Windows  | Spotřeba Linux | Linux Premium (Preview) | Vyhrazený pro Linux |
+| Technologie nasazení | Spotřeba Windows | Windows Premium | Vyhrazená pro Windows  | Spotřeba Linux | Linux Premium | Vyhrazený pro Linux |
 |-----------------------|:-------------------:|:-------------------------:|:------------------:|:---------------------------:|:-------------:|:---------------:|
 | Adresa URL externího balíčku<sup>1</sup> |✔|✔|✔|✔|✔|✔|
 | Nasazení zip |✔|✔|✔|✔|✔|✔|
@@ -86,7 +84,7 @@ Když se aplikace na platformě Linux vytváří vzdáleně, [spouštějí se z 
 
 Aplikace Functions pro Linux běžící v plánu spotřeby nemají web SCM/Kudu, který omezuje možnosti nasazení. Aplikace Function App v systému Linux spuštěné v plánu spotřeby ale podporují vzdálená sestavení.
 
-##### <a name="dedicated-and-premium-preview-plans"></a>Plány vyhrazené a Premium (verze Preview)
+##### <a name="dedicated-and-premium-plans"></a>Vyhrazené a prémiové plány
 
 Aplikace Function App běžící na systému Linux ve [vyhrazeném plánu (App Service)](functions-scale.md#app-service-plan) a [plánu Premium](functions-scale.md#premium-plan) mají také omezený web SCM/Kudu.
 
@@ -183,13 +181,13 @@ V editoru založeném na portálu můžete přímo upravovat soubory, které jso
 
 V následující tabulce jsou uvedeny operační systémy a jazyky, které podporují úpravy portálu:
 
-| | Spotřeba Windows | Windows Premium (Preview) | Vyhrazená pro Windows | Spotřeba Linux | Linux Premium (Preview)| Vyhrazený pro Linux |
-|-|:-----------------: |:-------------------------:|:-----------------:|:---------------------------:|:---------------:|:---------------:|
+| | Spotřeba Windows | Windows Premium | Vyhrazená pro Windows | Spotřeba Linux | Linux Premium | Vyhrazený pro Linux |
+|-|:-----------------: |:----------------:|:-----------------:|:-----------------:|:-------------:|:---------------:|
 | C# | | | | | |
-| C#Pravidel |✔|✔|✔| |✔<sup> \*</sup> |✔<sup> \*</sup>|
+| C#Pravidel |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
 | F# | | | | | | |
 | Java | | | | | | |
-| JavaScript (Node.js) |✔|✔|✔| |✔<sup> \*</sup>|✔<sup> \*</sup>|
+| JavaScript (Node.js) |✔|✔|✔| |✔<sup>\*</sup>|✔<sup>\*</sup>|
 | Python (Preview) | | | | | | |
 | PowerShell (Preview) |✔|✔|✔| | | |
 | TypeScript (Node. js) | | | | | | |

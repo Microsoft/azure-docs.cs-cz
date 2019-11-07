@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0879cb33a0796e19724bd143e57780d6ce27bfcf
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7c884d3c7102fc47f6efad86d9fe3704afd0edcf
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657756"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73590536"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Vysvětlení restartování virtuálních počítačů – údržba vs. výpadek
 Existují tři scénáře, které mohou vést k ovlivnění virtuálního počítače v Azure: neplánovaná údržba hardwaru, neočekávané výpadky a plánovaná údržba.
@@ -39,7 +39,7 @@ Pokud chcete snížit dopad výpadků kvůli jedné nebo několika takovým udá
 
 ## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>Použití zón dostupnosti k ochraně před chybami na úrovni datacentra
 
-[Zóny dostupnosti](../articles/availability-zones/az-overview.md) rozšiřují úroveň řízení, kterou máte k dispozici, abyste zachovali dostupnost aplikací a dat na vašich virtuálních počítačích. Zóny dostupnosti jsou jedinečná fyzická umístění v rámci oblasti Azure. Každá zóna se skládá z jednoho nebo více datových Center vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech. Fyzické oddělení Zóny dostupnosti v rámci oblasti chrání aplikace a data před selháními datových center. Redundantní služby v zóně replikují aplikace a data napříč Zóny dostupnosti, aby se chránily před jednotlivými chybami.
+[Zóny dostupnosti](../articles/availability-zones/az-overview.md) rozšiřují úroveň řízení, kterou máte k dispozici, abyste zachovali dostupnost aplikací a dat na vašich virtuálních počítačích. Zóny dostupnosti jsou jedinečná fyzická umístění uvnitř oblasti Azure. Každou zónu tvoří jedno nebo několik datacenter vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech. Fyzické oddělení Zóny dostupnosti v rámci oblasti chrání aplikace a data před selháními datových center. Redundantní služby v zóně replikují aplikace a data napříč Zóny dostupnosti, aby se chránily před jednotlivými chybami.
 
 Zóna dostupnosti v oblasti Azure je kombinací **domény selhání** a **aktualizační domény**. Pokud například vytvoříte tři nebo více virtuálních počítačů ve třech zónách v oblasti Azure, budou vaše virtuální počítače efektivně distribuovány mezi tři domény selhání a tři aktualizační domény. Platforma Azure tuto distribuci rozpoznává mezi aktualizačními doménami, aby se zajistilo, že se virtuální počítače v různých zónách neaktualizují současně.
 
@@ -60,24 +60,31 @@ Základní platforma Azure každému virtuálnímu počítači ve skupině dostu
 Domény selhání definují skupinu virtuálních počítačů, které sdílejí společný zdroj napájení a síťový přepínač. Ve výchozím nastavení jsou virtuální počítače konfigurované v rámci skupiny dostupnosti rozdělené až do tří domén selhání pro nasazení podle modelu Resource Manager (do dvou domén selhání pro model nasazení Classic). Přestože umístění virtuálních počítačů do skupiny dostupnosti neochrání vaši aplikaci před selháním operačního systému nebo selháním spojeným s konkrétní aplikací, omezí se tím dopad potenciálních selhání fyzického hardwaru, výpadků sítě nebo přerušení napájení.
 
 <!--Image reference-->
-   ![Koncepční vykreslování konfigurace aktualizační domény a domény selhání](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
+   ![koncepční vykreslování konfigurace domény aktualizace a domény selhání](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 
 ## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>Použití spravovaných disků pro virtuální počítače ve skupině dostupnosti
 Pokud aktuálně používáte virtuální počítače s nespravovanými disky, důrazně doporučujeme [převést virtuální počítače ve skupině dostupnosti na používání spravovaných disků](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md).
 
 [Spravované disky](../articles/virtual-machines/windows/managed-disks-overview.md) poskytují vyšší spolehlivost skupiny dostupnosti tím, že zajišťují dostatečné oddělení jednotlivých disků virtuálních počítačů ve skupině dostupnosti, aby se zabránilo jedinému bodu selhání. Provede to tím, že automaticky umístí disky do různých domén selhání úložiště (clustery úložiště) a zarovnají je s doménou selhání virtuálního počítače. Pokud doména selhání úložiště selže kvůli selhání hardwaru nebo softwaru, dojde k chybě jenom instance virtuálního počítače s disky v doméně selhání úložiště.
-![Doménami selhání spravované disky](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
+![Managed disks doménami selhání](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 
 > [!IMPORTANT]
 > Počet domén selhání pro spravované skupiny dostupnosti se liší podle oblasti – buď dvě, nebo tři na oblast. V následující tabulce jsou uvedeny počty podle oblastí
 
 [!INCLUDE [managed-disks-common-fault-domain-region-list](managed-disks-common-fault-domain-region-list.md)]
 
+> Poznámka: za určitých okolností se může stát, že 2 virtuální počítače, které jsou součástí stejného AvailabilitySet, sdílejí stejný FaultDomain. Můžete to ověřit tak, že do svého AvailabilitySetete a zkontrolujete sloupec doména selhání.
+> Toto chování může být zjištěno, když při nasazování virtuálních počítačů došlo k následující sekvenci:
+> - Nasazení prvního virtuálního počítače
+> - Zastavení nebo zrušení přidělení prvního virtuálního počítače
+> - Za těchto okolností nasaďte druhý virtuální počítač. disk s operačním systémem druhého virtuálního počítače se dá vytvořit ve stejné doméně selhání jako první virtuální počítač, takže druhý virtuální počítač se také bude nakládat na stejný FaultDomain. 
+> Chcete-li se tomuto problému vyhnout, doporučujeme, abyste virtuální počítač nezastavili nebo nezměnili mezi jeho nasazeními.
+
 Pokud máte v úmyslu používat virtuální počítače s nespravovanými disky, postupujte podle osvědčených postupů pro účty úložiště, kde jsou virtuální pevné disky (VHD) virtuálních počítačů uložené jako [objekty blob stránky](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs).
 
 1. **Uchovávejte všechny disky (s operačním systémem i s daty) přidružené k virtuálnímu počítači ve stejném účtu úložiště.**
 2. Než začnete přidávat další virtuální pevné disky do účtu úložiště, **zkontrolujte [omezení](../articles/storage/common/storage-scalability-targets.md) počtu nespravovaných disků v účtu služby Storage**.
-3. **Pro každý virtuální počítač ve skupině dostupnosti použijte samostatný účet úložiště.** Nesdílejte účty služby Storage mezi více virtuálními počítači ve stejné skupině dostupnosti. Je přijatelné pro virtuální počítače v různých skupinách dostupnosti ke sdílení účtů úložiště, pokud jsou výše osvědčené ![postupy následovány nespravovanými disky doménami selhání](./media/virtual-machines-common-manage-availability/umd-updated.png)
+3. **Pro každý virtuální počítač ve skupině dostupnosti použijte samostatný účet úložiště.** Nesdílejte účty služby Storage mezi více virtuálními počítači ve stejné skupině dostupnosti. Je přijatelné pro virtuální počítače v různých skupinách dostupnosti ke sdílení účtů úložiště, pokud se výše osvědčené postupy následují ![nespravovanými disky doménami selhání](./media/virtual-machines-common-manage-availability/umd-updated.png)
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>Použití naplánovaných událostí k proaktivní reakci na události s vlivem na virtuální počítače
 
@@ -89,14 +96,14 @@ Pokud jsou vaše virtuální počítače téměř totožné a slouží pro vaši
 Můžete například umístit všechny virtuální počítače na front-end aplikace, na které běží IIS, Apache a Nginx, v jedné zóně dostupnosti nebo sadě. Ujistěte se, že se ve stejné zóně dostupnosti nebo sadě nacházejí pouze front-end virtuální počítače. Podobně zajistěte, aby byly pouze virtuální počítače datové vrstvy umístěny do vlastní zóny dostupnosti nebo sady, jako jsou například replikované SQL Server virtuální počítače nebo vaše virtuální počítače MySQL.
 
 <!--Image reference-->
-   ![Aplikační vrstvy](./media/virtual-machines-common-manage-availability/application-tiers.png)
+   ![aplikační vrstvy](./media/virtual-machines-common-manage-availability/application-tiers.png)
 
 ## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>Kombinování nástroje pro vyrovnávání zatížení se zónami nebo sadami dostupnosti
 Zkombinujte [Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) se zónou dostupnosti nebo nastavte, aby se získala nejvyšší odolnost aplikace. Azure Load Balancer rozděluje provoz mezi víc virtuálních počítačů. Azure Load Balancer je součástí virtuálních počítačů úrovně Standard. Ne všechny úrovně virtuálních počítačů zahrnují nástroj Azure Load Balancer. Další informace o vyrovnávání zatížení virtuálních počítačů najdete v článku [Vyrovnávání zatížení virtuálních počítačů](../articles/virtual-machines/virtual-machines-linux-load-balance.md).
 
 Pokud nástroj pro vyrovnávání zatížení není nakonfigurovaný k vyrovnávání provozu mezi víc virtuálních počítačů, všechny plánované události údržby ovlivní jediný virtuální počítač obsluhující provoz a způsobí výpadek vrstvy aplikace. Umístěním více virtuálních počítačů na stejné vrstvě aplikace do stejné skupiny dostupnosti a pod jeden nástroj pro vyrovnávání zatížení umožníte nepřetržitou obsluhu provozu alespoň jednou instancí.
 
-Kurz o tom, jak vyrovnávat zatížení napříč zónami dostupnosti, najdete v tématu vyrovnávání [zatížení virtuálních počítačů napříč všemi zónami dostupnosti pomocí Azure CLI](../articles/load-balancer/load-balancer-standard-public-zone-redundant-cli.md).
+Kurz o tom, jak vyrovnávat zatížení napříč zónami dostupnosti, najdete v tématu [Vyrovnávání zatížení virtuálních počítačů napříč všemi zónami dostupnosti pomocí Azure CLI](../articles/load-balancer/load-balancer-standard-public-zone-redundant-cli.md).
 
 
 <!-- Link references -->

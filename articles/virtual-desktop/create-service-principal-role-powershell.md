@@ -1,5 +1,5 @@
 ---
-title: Vytvoření instančních objektů a přiřazení rolí Windows Virtual desktopu pomocí PowerShellu – Azure
+title: Přiřazení role instančního objektu služby virtuálních klientů Windows – Azure
 description: Vytvoření instančních objektů a přiřazení rolí pomocí prostředí PowerShell ve virtuálním počítači s Windows.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: 87057d29d9d95ac0ebca298e40ca0d8c2aa9b0b1
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 1141731697c9f649a4a8d4052cd550605049b52e
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679620"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606938"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Kurz: vytvoření instančních objektů a přiřazení rolí pomocí PowerShellu
 
@@ -21,7 +21,7 @@ Instanční objekty jsou identity, které můžete vytvořit v Azure Active Dire
 - Automatizujte určité úlohy správy virtuálních počítačů s Windows.
 - Použijte jako přihlašovací údaje místo uživatelů MFA – povinné při spuštění libovolné šablony Azure Resource Manager pro virtuální počítač s Windows.
 
-V tomto kurzu se dozvíte, jak:
+V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvořte instanční objekt v Azure Active Directory.
@@ -42,7 +42,7 @@ Než budete moct vytvořit instanční objekty a přiřazení rolí, musíte ud�
 
 3. Postupujte podle všech pokynů v tomto článku ve stejné relaci prostředí PowerShell. Proces nemusí fungovat, pokud ukončíte relaci PowerShellu tím, že okno zavřete a znovu otevřete později.
 
-## <a name="create-a-service-principal-in-azure-active-directory"></a>Vytvoření instančního objektu ve službě Azure Active Directory
+## <a name="create-a-service-principal-in-azure-active-directory"></a>Vytvoření instančního objektu v Azure Active Directory
 
 Po splnění požadavků v relaci PowerShellu spusťte následující rutiny PowerShellu pro vytvoření instančního objektu služby s více klienty v Azure.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/27/2019
-ms.openlocfilehash: 515d1da5333bb29237baa4bd941275f32ba754d3
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 8bb144c78c5346f3351a6ada779a808410dbb30d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161571"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73667987"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights rozhraní API pro vlastní události a metriky
 
@@ -20,7 +20,7 @@ Do své aplikace vložte pár řádků kódu, abyste zjistili, co uživatelé s 
 
 ## <a name="api-summary"></a>Souhrn rozhraní API
 
-Základní rozhraní API je na všech platformách stejné, kromě několika variant, jako je `GetMetric` (jenom .NET).
+Základní rozhraní API je na všech platformách stejné, kromě několika variant, jako je `GetMetric`(jenom .NET).
 
 | Metoda | Použití |
 | --- | --- |
@@ -104,7 +104,7 @@ telemetry.getContext().getUser().setId("...");
 telemetry.getContext().getDevice().setId("...");
 ```
 
-V projektech Node. js můžete použít `new applicationInsights.TelemetryClient(instrumentationKey?)` k vytvoření nové instance, ale toto nastavení se doporučuje jenom pro scénáře, které vyžadují izolovanou konfiguraci z `defaultClient` typu singleton.
+V projektech Node. js můžete použít `new applicationInsights.TelemetryClient(instrumentationKey?)` k vytvoření nové instance, ale toto nastavení se doporučuje jenom pro scénáře, které vyžadují izolovanou konfiguraci z `defaultClient`typu singleton.
 
 ## <a name="trackevent"></a>TrackEvent
 
@@ -337,7 +337,7 @@ Ve výchozím nastavení jsou časy hlášené jako **Doba načítání zobrazen
 Místo toho můžete použít tyto kroky:
 
 * Nastavte v volání [trackPageView](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/API.md#trackpageview) explicitní dobu trvání: `appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`.
-* Použijte `startTrackPage` a `stopTrackPage` volání časování zobrazení stránky.
+* Použijte `startTrackPage` a `stopTrackPage`volání časování zobrazení stránky.
 
 *JavaScript*
 
@@ -522,7 +522,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-Většina důležitých informací o zásobníku se už extrahuje do samostatných proměnných, ale pokud chcete získat další informace, můžete si vyžádat `details` strukturu. Vzhledem k tomu, že je tato struktura dynamická, je vhodné přetypovat výsledek na očekávaný typ. Například:
+Většina důležitých informací o zásobníku se už extrahuje do samostatných proměnných, ale pokud chcete získat další informace, můžete si vyžádat `details` strukturu. Vzhledem k tomu, že je tato struktura dynamická, je vhodné přetypovat výsledek na očekávaný typ. Příklad:
 
 ```kusto
 exceptions
@@ -569,7 +569,7 @@ telemetry.trackTrace({
 *JavaScript na straně klienta nebo prohlížeče*
 
 ```javascript
-trackTrace(message: string, properties?: {[string]:string}, severityLevel?: AI.SeverityLevel)
+trackTrace(message: string, properties?: {[string]:string}, severityLevel?: SeverityLevel)
 ```
 
 Protokoluje diagnostickou událost, jako je například zadání nebo ukončení metody.
@@ -585,7 +585,7 @@ Můžete hledat obsah zprávy, ale (na rozdíl od hodnot vlastností) nemůžete
 Omezení velikosti `message` je mnohem vyšší než omezení vlastností.
 Výhodou TrackTrace je, že do zprávy můžete ukládat poměrně dlouhá data. Můžete například zakódovat data POST.  
 
-Kromě toho můžete do zprávy přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Například:
+Kromě toho můžete do zprávy přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Příklad:
 
 *C#*
 
@@ -890,7 +890,7 @@ telemetry.TrackEvent(event);
 ```
 
 > [!WARNING]
-> Nepoužívejte znovu stejnou instanci položky telemetrie (v tomto příkladu `event`), aby se volání metody Track * () víckrát volalo. To může způsobit odeslání telemetrie s nesprávnou konfigurací.
+> Nepoužívejte znovu stejnou instanci položky telemetrie (v tomto příkladu`event`), aby se volání metody Track * () víckrát volalo. To může způsobit odeslání telemetrie s nesprávnou konfigurací.
 >
 >
 
@@ -1013,11 +1013,11 @@ Můžete napsat kód pro zpracování telemetrie před jejich odesláním ze sad
 
 [Přidání vlastností](../../azure-monitor/app/api-filtering-sampling.md#add-properties) do telemetrie implementací `ITelemetryInitializer`. Můžete například přidat čísla verzí nebo hodnoty, které se počítají z jiných vlastností.
 
-Před odesláním ze sady SDK pomocí implementace `ITelemetryProcessor` může [filtrování](../../azure-monitor/app/api-filtering-sampling.md#filtering) upravit nebo zahodit telemetrii. Můžete řídit, co se odesílá nebo zahodí, ale budete mít k dispozici vliv na vaše metriky. V závislosti na tom, jak položky zahodíte, může být ztracena možnost navigace mezi souvisejícími položkami.
+Před odesláním ze sady SDK pomocí implementace `ITelemetryProcessor`může [filtrování](../../azure-monitor/app/api-filtering-sampling.md#filtering) upravit nebo zahodit telemetrii. Můžete řídit, co se odesílá nebo zahodí, ale budete mít k dispozici vliv na vaše metriky. V závislosti na tom, jak položky zahodíte, může být ztracena možnost navigace mezi souvisejícími položkami.
 
 [Vzorkování](../../azure-monitor/app/api-filtering-sampling.md) je zabalené řešení, které snižuje objem dat odesílaných z vaší aplikace na portál. V takovém případě nemá vliv na zobrazené metriky. A to i bez ovlivnění vaší schopnosti diagnostikovat problémy pomocí navigace mezi souvisejícími položkami, jako jsou výjimky, požadavky a zobrazení stránek.
 
-[Další informace](../../azure-monitor/app/api-filtering-sampling.md).
+[Další informace](../../azure-monitor/app/api-filtering-sampling.md)
 
 ## <a name="disabling-telemetry"></a>Zakázání telemetrie
 
@@ -1148,7 +1148,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient má kontextovou vlastnost, která obsahuje hodnoty, které jsou odesílány společně se všemi daty telemetrie. Obvykle jsou nastavené standardními moduly telemetrie, ale můžete je také nastavit sami. Například:
+TelemetryClient má kontextovou vlastnost, která obsahuje hodnoty, které jsou odesílány společně se všemi daty telemetrie. Obvykle jsou nastavené standardními moduly telemetrie, ale můžete je také nastavit sami. Příklad:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";

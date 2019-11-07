@@ -1,6 +1,6 @@
 ---
-title: Jak používat Service Bus témata s PHP | Microsoft Docs
-description: Naučte se používat Service Bus témata s PHP v Azure.
+title: 'Rychlý Start: jak používat Service Bus témata s PHP'
+description: 'Rychlý Start: Naučte se používat Service Bus témata s PHP v Azure.'
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -11,17 +11,17 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
-ms.topic: article
-ms.date: 04/15/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: eba2c0aeb37f2bc2283e7afb108bb4578981120e
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: b55d3c93f9926b7446dadf069b37a878caa81e15
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147217"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721647"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Jak používat Service Bus témata a odběry pomocí PHP
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Rychlý Start: jak používat Service Bus témata a odběry pomocí PHP
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
@@ -35,7 +35,7 @@ V tomto článku se dozvíte, jak používat Service Bus témata a odběry. Uká
 
 ## <a name="prerequisites"></a>Požadavky
 1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Postupujte podle kroků v [rychlém startu: Použijte Azure Portal k vytvoření Service Bus tématu a odběry tématu](service-bus-quickstart-topics-subscriptions-portal.md) k vytvoření Service Bus **oboru názvů** a získání **připojovacího řetězce**.
+2. Postupujte podle kroků v [rychlém startu: použijte Azure Portal k vytvoření Service Bus tématu a odběry tématu](service-bus-quickstart-topics-subscriptions-portal.md) k vytvoření **oboru názvů** Service Bus a získání **připojovacího řetězce**.
 
     > [!NOTE]
     > V tomto rychlém startu vytvoříte **téma** a **předplatné** k tématu pomocí **php** . 
@@ -87,7 +87,7 @@ require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 
-V následujících příkladech `require_once` je příkaz vždy zobrazen, ale jsou odkazovány pouze třídy, které jsou nezbytné pro spuštění příkladu.
+V následujících příkladech je vždy zobrazen příkaz `require_once`, ale jsou odkazovány pouze třídy, které jsou nezbytné pro spuštění příkladu.
 
 ## <a name="set-up-a-service-bus-connection"></a>Nastavení Service Busho připojení
 Chcete-li vytvořit instanci klienta Service Bus, musíte nejprve mít platný připojovací řetězec v tomto formátu:
@@ -96,9 +96,9 @@ Chcete-li vytvořit instanci klienta Service Bus, musíte nejprve mít platný p
 Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[Primary Key]
 ```
 
-Kde `Endpoint` je obvykle formát `https://[yourNamespace].servicebus.windows.net`.
+Kde `Endpoint` obvykle je `https://[yourNamespace].servicebus.windows.net`formátu.
 
-Chcete-li vytvořit libovolného klienta služby Azure, musíte použít `ServicesBuilder` třídu. Můžete:
+Chcete-li vytvořit libovolného klienta služby Azure, je nutné použít třídu `ServicesBuilder`. Můžete:
 
 * Předání připojovacího řetězce přímo do něj.
 * Použijte **CloudConfigurationManager (ccm)** pro kontrolu několika externích zdrojů pro připojovací řetězec:
@@ -118,9 +118,9 @@ $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($
 ```
 
 ## <a name="create-a-topic"></a>Vytvoření tématu
-Můžete provádět operace správy pro Service Bus témata prostřednictvím `ServiceBusRestProxy` třídy. Objekt je vytvořen `ServicesBuilder::createServiceBusService` pomocí metody Factory s příslušným připojovacím řetězcem, který zapouzdřuje oprávnění tokenu pro jeho správu. `ServiceBusRestProxy`
+Můžete provádět operace správy pro Service Bus témata prostřednictvím `ServiceBusRestProxy` třídy. Objekt `ServiceBusRestProxy` je vytvořen pomocí metody `ServicesBuilder::createServiceBusService` Factory s příslušným připojovacím řetězcem, který zapouzdřuje oprávnění tokenu pro jeho správu.
 
-Následující příklad ukazuje, `ServiceBusRestProxy` jak vytvořit instanci a volání `ServiceBusRestProxy->createTopic` pro vytvoření tématu s názvem `mytopic` v rámci `MySBNamespace` oboru názvů:
+Následující příklad ukazuje, jak vytvořit instanci `ServiceBusRestProxy` a volání `ServiceBusRestProxy->createTopic` k vytvoření tématu s názvem `mytopic` v rámci oboru názvů `MySBNamespace`:
 
 ```php
 require_once 'vendor/autoload.php';
@@ -148,12 +148,12 @@ catch(ServiceException $e){
 ```
 
 > [!NOTE]
-> Můžete použít `listTopics` metodu pro `ServiceBusRestProxy` objekty a ověřit, zda téma se zadaným názvem již existuje v oboru názvů služby.
+> Pomocí metody `listTopics` v objektech `ServiceBusRestProxy` můžete zjistit, zda v oboru názvů služby již existuje téma se zadaným názvem.
 > 
 > 
 
 ## <a name="create-a-subscription"></a>Vytvoření odběru
-Odběry témat jsou také vytvořeny s `ServiceBusRestProxy->createSubscription` metodou. Odběry mají názvy a můžou mít volitelné filtry, které omezují výběr zpráv odesílaných do virtuální fronty odběru.
+Odběry témat jsou také vytvořeny pomocí metody `ServiceBusRestProxy->createSubscription`. Odběry mají názvy a můžou mít volitelné filtry, které omezují výběr zpráv odesílaných do virtuální fronty odběru.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Vytvoření odběru s výchozím filtrem (MatchAll).
 Pokud při vytvoření nového předplatného není zadaný žádný filtr, použije se filtr **MatchAll** (výchozí). Když se použije filtr **MatchAll** , všechny zprávy publikované v tématu se umístí do virtuální fronty odběru. Následující příklad vytvoří odběr s názvem `mysubscription` a použije výchozí filtr **MatchAll** .
@@ -187,11 +187,11 @@ catch(ServiceException $e){
 Můžete taky vytvořit filtry, které vám umožní zprávy odeslané do tématu zobrazit v konkrétním odběru tématu. Nejpružnější typ filtru podporovaný předplatnými je [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter), které implementuje podmnožinu SQL92. Filtry SQL pracují s vlastnostmi zpráv publikované do tématu. Další informace o SqlFilters naleznete v tématu [vlastnost SqlFilter. syntaxi][sqlfilter].
 
 > [!NOTE]
-> Každé pravidlo v předplatném zpracovává příchozí zprávy nezávisle a přidává jejich výsledné zprávy do předplatného. Kromě toho má každé nové předplatné výchozí objekt **Rule** s filtrem, který přidává všechny zprávy z tématu do předplatného. Chcete-li dostávat pouze zprávy, které odpovídají vašemu filtru, je nutné odebrat výchozí pravidlo. Výchozí pravidlo můžete odebrat pomocí `ServiceBusRestProxy->deleteRule` metody.
+> Každé pravidlo v předplatném zpracovává příchozí zprávy nezávisle a přidává jejich výsledné zprávy do předplatného. Kromě toho má každé nové předplatné výchozí objekt **Rule** s filtrem, který přidává všechny zprávy z tématu do předplatného. Chcete-li dostávat pouze zprávy, které odpovídají vašemu filtru, je nutné odebrat výchozí pravidlo. Výchozí pravidlo můžete odebrat pomocí metody `ServiceBusRestProxy->deleteRule`.
 > 
 > 
 
-Následující příklad vytvoří odběr s názvem `HighMessages` **SqlFilter** , který vybere pouze zprávy, které mají vlastní `MessageNumber` vlastnost větší než 3. Informace o přidávání vlastních vlastností do zpráv naleznete v tématu [odeslání zpráv do tématu](#send-messages-to-a-topic) .
+Následující příklad vytvoří odběr s názvem `HighMessages` s **SqlFilter** , který vybere pouze zprávy, které mají vlastní vlastnost `MessageNumber` větší než 3. Informace o přidávání vlastních vlastností do zpráv naleznete v tématu [odeslání zpráv do tématu](#send-messages-to-a-topic) .
 
 ```php
 $subscriptionInfo = new SubscriptionInfo("HighMessages");
@@ -206,7 +206,7 @@ $ruleResult = $serviceBusRestProxy->createRule("mytopic", "HighMessages", $ruleI
 
 Tento kód vyžaduje použití dalšího oboru názvů: `WindowsAzure\ServiceBus\Models\SubscriptionInfo`.
 
-Podobně následující příklad vytvoří odběr s názvem `LowMessages` `SqlFilter` s tím, že `MessageNumber` vybere pouze zprávy, které mají vlastnost menší nebo rovna 3.
+Podobně následující příklad vytvoří odběr s názvem `LowMessages` s `SqlFilter`, který vybere pouze zprávy, které mají vlastnost `MessageNumber` menší nebo rovny 3.
 
 ```php
 $subscriptionInfo = new SubscriptionInfo("LowMessages");
@@ -219,10 +219,10 @@ $ruleInfo->withSqlFilter("MessageNumber <= 3");
 $ruleResult = $serviceBusRestProxy->createRule("mytopic", "LowMessages", $ruleInfo);
 ```
 
-Když se teď `mytopic` zpráva pošle do tématu, je vždycky Doručená příjemcům, kteří se přihlásili `mysubscription` k předplatnému, a selektivně doručit příjemcům a `LowMessages` předplatným (v závislosti na `HighMessages` po obsahu zprávy).
+Když se teď zpráva pošle `mytopic` tématu, je vždycky Doručená příjemcům, kteří se přihlásili k předplatnému `mysubscription` a dají se selektivně doručovat na příjemce, kteří se přihlásili k odběru `HighMessages` a `LowMessages` předplatných (v závislosti na obsahu zprávy).
 
 ## <a name="send-messages-to-a-topic"></a>Odeslání zprávy do tématu
-Chcete-li odeslat zprávu do Service Bus téma, vaše aplikace volá `ServiceBusRestProxy->sendTopicMessage` metodu. Následující kód ukazuje, jak odeslat zprávu do `mytopic` tématu, které bylo dříve vytvořeno `MySBNamespace` v rámci oboru názvů služby.
+Chcete-li odeslat zprávu do Service Bus téma, vaše aplikace zavolá metodu `ServiceBusRestProxy->sendTopicMessage`. Následující kód ukazuje, jak odeslat zprávu do `mytopic`ho tématu dříve vytvořeného v rámci oboru názvů služby `MySBNamespace`.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -252,7 +252,7 @@ catch(ServiceException $e){
 }
 ```
 
-Zprávy odeslané do témat Service Bus jsou instance třídy [BrokeredMessage][BrokeredMessage]. Objekty [BrokeredMessage][BrokeredMessage] mají sadu standardních vlastností a metod, jakož i vlastnosti, které lze použít pro uložení vlastních vlastností specifických pro aplikace. Následující příklad ukazuje, jak odeslat pět testovacích zpráv do `mytopic` dříve vytvořeného tématu. Metoda se používá k přidání vlastní vlastnosti (`MessageNumber`) ke každé zprávě. `setProperty` Hodnota `MessageNumber` vlastnosti se u každé zprávy liší (tuto hodnotu můžete použít k určení, které odběry obdrží, jak je znázorněno v části [Vytvoření](#create-a-subscription) předplatného):
+Zprávy odeslané do témat Service Bus jsou instance třídy [BrokeredMessage][BrokeredMessage]. Objekty [BrokeredMessage][BrokeredMessage] mají sadu standardních vlastností a metod, jakož i vlastnosti, které lze použít pro uložení vlastních vlastností specifických pro aplikace. Následující příklad ukazuje, jak odeslat pět testovacích zpráv do dříve vytvořeného tématu `mytopic`. Metoda `setProperty` slouží k přidání vlastní vlastnosti (`MessageNumber`) do každé zprávy. Hodnota vlastnosti `MessageNumber` se u každé zprávy liší (tuto hodnotu můžete použít k určení, které odběry obdrží, jak je znázorněno v části [vytvoření předplatného](#create-a-subscription) ):
 
 ```php
 for($i = 0; $i < 5; $i++){
@@ -271,11 +271,11 @@ for($i = 0; $i < 5; $i++){
 Témata Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Hlavička, která obsahuje standardní a vlastní vlastnosti aplikace, může mít velikost až 64 KB. Počet zpráv držených v tématu není omezený, ale celková velikost zpráv držených v tématu omezená je. Tento horní limit velikosti tématu je 5 GB. Další informace o kvótách najdete v tématu [Service Bus kvóty][Service Bus quotas].
 
 ## <a name="receive-messages-from-a-subscription"></a>Přijímání zpráv z předplatného
-Nejlepším způsobem, jak přijímat zprávy z předplatného, je použití `ServiceBusRestProxy->receiveSubscriptionMessage` metody. Zprávy mohou být přijímány ve dvou různých režimech: [ *ReceiveAndDelete* a *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode). Výchozí hodnota je **PeekLock**.
+Nejlepším způsobem, jak přijímat zprávy z předplatného, je použít metodu `ServiceBusRestProxy->receiveSubscriptionMessage`. Zprávy mohou být přijímány ve dvou různých režimech: [ *ReceiveAndDelete* a *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode). Výchozí hodnota je **PeekLock**.
 
 Při použití režimu [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) je přijetí jednorázová operace – tzn. když Service Bus přijme požadavek na čtení zprávy v odběru, označí zprávu jako spotřebovávanou a vrátí ji do aplikace. [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) * režim je nejjednodušší model a funguje nejlépe ve scénářích, ve kterých aplikace může tolerovat nezpracovávání zprávy, když dojde k selhání. Pro lepší vysvětlení si představte scénář, ve kterém spotřebitel vyšle požadavek na přijetí, ale než ji může zpracovat, dojde v něm k chybě a ukončí se. Vzhledem k tomu, že Service Bus označila zprávu jako spotřebovaná, pak když se aplikace znovu spustí a začne znovu přijímat zprávy, vynechala zprávu, která byla spotřebována před selháním.
 
-Ve výchozím režimu [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) se příjem zprávy stane dvě operace fáze, která umožňuje podporovat aplikace, které nemůžou tolerovat chybějící zprávy. Když Service Bus přijme požadavek, najde zprávu, která je na řadě ke spotřebování, uzamkne ji proti spotřebování jinými spotřebiteli a vrátí ji do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo je uloží spolehlivě pro budoucí zpracování), dokončí druhou fázi procesu příjmu tím, že se přijatá zpráva pošle `ServiceBusRestProxy->deleteMessage`do. Když Service Bus uvidí `deleteMessage` volání, označí zprávu jako spotřebou a odebere ji z fronty.
+Ve výchozím režimu [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) se příjem zprávy stane dvě operace fáze, která umožňuje podporovat aplikace, které nemůžou tolerovat chybějící zprávy. Když Service Bus přijme požadavek, najde zprávu, která je na řadě ke spotřebování, uzamkne ji proti spotřebování jinými spotřebiteli a vrátí ji do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo je uloží spolehlivě pro budoucí zpracování), dokončí druhou fázi procesu přijímání tím, že se přijatá zpráva pošle `ServiceBusRestProxy->deleteMessage`. Když Service Bus uvidí volání `deleteMessage`, označí zprávu jako spotřebou a odebere ji z fronty.
 
 Následující příklad ukazuje, jak přijmout a zpracovat zprávu pomocí režimu [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) (výchozí režim). 
 
@@ -319,14 +319,14 @@ catch(ServiceException $e){
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Postupy: zpracování chyb aplikace a nečitelných zpráv
-Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud aplikace příjemce z nějakého důvodu nemůže zprávu zpracovat, může volat `unlockMessage` metodu na přijaté zprávě (místo `deleteMessage` metody). Způsobuje Service Bus odemčení zprávy ve frontě a její zpřístupnění pro opětovné přijetí, a to buď pomocí stejné aplikace, nebo jiné náročné aplikace.
+Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud aplikace příjemce z nějakého důvodu nemůže zprávu zpracovat, může volat metodu `unlockMessage` v přijaté zprávě (namísto metody `deleteMessage`). Způsobuje Service Bus odemčení zprávy ve frontě a její zpřístupnění pro opětovné přijetí, a to buď pomocí stejné aplikace, nebo jiné náročné aplikace.
 
 Je také časový limit přidružený ke zprávě uzamčený ve frontě a pokud aplikace nedokáže zpracovat zprávu před vypršením časového limitu zámku (například pokud dojde k selhání aplikace), Service Bus automaticky odemkne zprávu a nastaví ji. k dispozici pro opětovné přijetí.
 
-V případě, že aplikace po zpracování zprávy dojde k chybě, ale před `deleteMessage` vydáním žádosti, je zpráva po restartování znovu doručena do aplikace. Tento typ zpracování se často nazývá *alespoň po* zpracování; To znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích může být stejná zpráva doručena znovu. Pokud scénář nemůže tolerovat duplicitní zpracování, vývojáři aplikací by měli přidat další logiku do aplikací pro zpracování duplicitního doručování zpráv. Často se dosahuje pomocí `getMessageId` metody zprávy, která zůstává konstantní během pokusů o doručení.
+V případě, že aplikace po zpracování zprávy dojde k chybě, ale před vydáním žádosti o `deleteMessage`, zpráva se znovu doručí do aplikace při restartu. Tento typ zpracování se často nazývá *alespoň po* zpracování; To znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích může být stejná zpráva doručena znovu. Pokud scénář nemůže tolerovat duplicitní zpracování, vývojáři aplikací by měli přidat další logiku do aplikací pro zpracování duplicitního doručování zpráv. Často se dosahuje pomocí metody `getMessageId` zprávy, která zůstává při pokusůch o doručení konstantní.
 
 ## <a name="delete-topics-and-subscriptions"></a>Odstranění témat a odběrů
-Chcete-li odstranit téma nebo odběr, použijte `ServiceBusRestProxy->deleteTopic` metody nebo v `ServiceBusRestProxy->deleteSubscripton` uvedeném pořadí. Pokud se odstraní téma, odstraní se i všechny odběry registrované k tomuto tématu.
+K odstranění tématu nebo předplatného použijte `ServiceBusRestProxy->deleteTopic` nebo metody `ServiceBusRestProxy->deleteSubscripton`, v uvedeném pořadí. Pokud se odstraní téma, odstraní se i všechny odběry registrované k tomuto tématu.
 
 Následující příklad ukazuje, jak odstranit téma s názvem `mytopic` a jeho registrovaná předplatná.
 
@@ -354,7 +354,7 @@ catch(ServiceException $e){
 }
 ```
 
-Pomocí `deleteSubscription` metody můžete odběr odstranit nezávisle:
+Pomocí metody `deleteSubscription` můžete odběr odstranit nezávisle:
 
 ```php
 $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");

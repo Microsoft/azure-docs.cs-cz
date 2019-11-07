@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: cosmos-db
 ms.date: 09/26/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d50b946e67bbcc171850b71021165356011f58e3
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: d0b5042c1401a95cc75f4c01ace843659b6babfe
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755205"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681760"
 ---
 # <a name="solutions-using-globally-distributed-analytics-in-azure-cosmos-db"></a>Řešení využívající globálně distribuované analýzy v Azure Cosmos DB
 
@@ -34,12 +34,12 @@ Podporu Sparku v Azure Cosmos DB můžete použít k poskytování doporučení 
 
 Následující obrázek ukazuje, jak se Azure Cosmos DB podpora Sparku používá k optimalizaci cen a propagačních akcí:
 
-![Podpora Sparku v Azure Cosmos DB pro optimalizaci cen a propagačních akcí](./media/spark-api-introduction/optimize-pricing-and-promotions.png)
+![Podpora Sparku v Azure Cosmos DB pro optimalizaci cen a propagačních akcí](./media/analytics-solution-architectures/optimize-pricing-and-promotions.png)
 
 
 Následující obrázek ukazuje, jak se Azure Cosmos DB podpora Sparku používá v modulu doporučení v reálném čase:
 
-![Podpora Azure Cosmos DB Spark v modulu doporučení v reálném čase](./media/spark-api-introduction/real-time-recommendation-engine.png)
+![Podpora Azure Cosmos DB Spark v modulu doporučení v reálném čase](./media/analytics-solution-architectures/real-time-recommendation-engine.png)
 
 ## <a name="manufacturing-and-iot"></a>Výroba a IoT
 
@@ -49,7 +49,7 @@ Integrovaná analytická platforma Azure Cosmos DB umožňuje povolit analýzu d
 
 Následující obrázek ukazuje, jak se Azure Cosmos DB podpora Sparku používá ke čtení metrik ze zařízení IoT a k použití analýzy inteligentních mřížek:
 
-![Podpora Sparku Azure Cosmos DB pro čtení metrik ze zařízení IoT](./media/spark-api-introduction/read-metrics-from-iot-devices.png)
+![Podpora Sparku Azure Cosmos DB pro čtení metrik ze zařízení IoT](./media/analytics-solution-architectures/read-metrics-from-iot-devices.png)
 
 ## <a name="predictive-maintenance"></a>Prediktivní údržba
 
@@ -59,13 +59,13 @@ Následující obrázek ukazuje, jak se Azure Cosmos DB podpora Sparku použív�
 
 Následující obrázek ukazuje, jak se Azure Cosmos DB podpora Sparku používá k vytvoření prediktivního systému údržby:
 
-![Podpora Sparku Azure Cosmos DB k vytvoření prediktivního systému údržby](./media/spark-api-introduction/predictive-maintenance-system.png)
+![Podpora Sparku Azure Cosmos DB k vytvoření prediktivního systému údržby](./media/analytics-solution-architectures/predictive-maintenance-system.png)
 
 Následující obrázek ukazuje, jak se Azure Cosmos DB podpora Sparku používá k sestavení diagnostického systému pro vozidlo v reálném čase:
 
-![Podpora Sparku Azure Cosmos DB pro sestavení diagnostického systému pro vozidlo v reálném čase](./media/spark-api-introduction/real-time-vehicle-diagnostic-system.png)
+![Podpora Sparku Azure Cosmos DB pro sestavení diagnostického systému pro vozidlo v reálném čase](./media/analytics-solution-architectures/real-time-vehicle-diagnostic-system.png)
 
-## <a name="gaming"></a>Hry
+## <a name="gaming"></a>Hraní her
 
 * Díky integrované podpoře Spark vám Azure Cosmos DB umožňuje snadno sestavovat, škálovat a nasazovat pokročilé analýzy a modely strojového učení během několika minut, aby se vytvořily nejlepší možné herní prostředí.
 
@@ -75,7 +75,7 @@ Následující obrázek ukazuje, jak se Azure Cosmos DB podpora Sparku použív�
 
 Následující obrázek ukazuje, jak se v herních analýzách používá Azure Cosmos DB podpora Sparku:
 
-![Podpora Sparku v Azure Cosmos DB v herních analýzách](./media/spark-api-introduction/gaming-analytics.png)
+![Podpora Sparku v Azure Cosmos DB v herních analýzách](./media/analytics-solution-architectures/gaming-analytics.png)
 
 ## <a name="next-steps"></a>Další kroky
 

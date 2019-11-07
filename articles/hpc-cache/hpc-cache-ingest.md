@@ -1,17 +1,17 @@
 ---
-title: Přesun dat do cloudového kontejneru Azure HPC cache (Preview)
+title: Přesun dat do cloudového kontejneru mezipaměti HPC Azure
 description: Jak naplnit službu Azure Blob Storage pro použití s mezipamětí Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 6c505e6918071b61a4152b0b421ed7cee3282206
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a206b63b03bcb3bb17e201487f0e00bcb3926151
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024500"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582230"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Přesun dat do služby Azure Blob Storage
 
@@ -64,7 +64,7 @@ Příkazy ``cp`` nebo ``copy``, které obvykle slouží k přenosu dat z jednoho
 
 V této části se dozvíte o strategiích pro vytvoření vícevláknového systému kopírování souborů s více vlákny pro přesun dat do úložiště objektů BLOB s využitím Azure HPC cache. Vysvětluje koncepty přenosu souborů a body rozhodování, které lze použít k efektivnímu kopírování dat pomocí více klientů a jednoduchých příkazů kopírování.
 
-Vysvětluje taky některé nástroje, které vám pomůžou. Nástroj ``msrsync`` lze použít k částečnému automatizaci procesu rozdělení datové sady do kontejnerů a použití příkazů rsync. Skript ``parallelcp`` je další nástroj, který čte zdrojový adresář a automaticky vystavuje příkazy kopírování.
+Vysvětluje taky některé nástroje, které vám pomůžou. Nástroj ``msrsync`` lze použít k částečnému automatizaci procesu rozdělení datové sady do kontejnerů a používání příkazů rsync. Skript ``parallelcp`` je další nástroj, který čte zdrojový adresář a automaticky vystavuje příkazy kopírování.
 
 ### <a name="strategic-planning"></a>Strategické plánování
 
@@ -79,9 +79,9 @@ Strategie paralelního příjmu dat s mezipamětí služby Azure HPC cache zahrn
 
 * Ruční kopírování – vícevláknové kopírování můžete vytvořit ručně na straně klienta spuštěním více než jednoho příkazu kopírování na pozadí v porovnání s předdefinovanými sadami souborů nebo cest. Přečtěte si podrobnosti v tématu [Azure HPC cache ingestování – metoda ručního kopírování](hpc-cache-ingest-manual.md) .
 
-* Částečně automatizované kopírování pomocí ``msrsync`` @ no__t-1 @ no__t-2 je Obálkový nástroj, který spouští více paralelních procesů ``rsync``. Podrobnosti si můžete přečíst v tématu [Azure HPC cache data ingestování – metoda msrsync](hpc-cache-ingest-msrsync.md).
+* Částečně automatizované kopírování pomocí ``msrsync`` - ``msrsync`` je Obálkový nástroj, který spouští více paralelních procesů ``rsync``. Podrobnosti si můžete přečíst v tématu [Azure HPC cache data ingestování – metoda msrsync](hpc-cache-ingest-msrsync.md).
 
-* Skriptované kopírování pomocí ``parallelcp`` – Naučte se, jak vytvořit a spustit skript paralelního kopírování v [Azure HPC cache data ingestně – paralelní kopírování metody skriptu](hpc-cache-ingest-parallelcp.md).
+* Skriptované kopírování pomocí ``parallelcp`` – Přečtěte si, jak vytvořit a spustit skript paralelního kopírování v [Azure HPC cache – paralelní kopírování metody skriptu](hpc-cache-ingest-parallelcp.md).
 
 ## <a name="next-steps"></a>Další kroky
 

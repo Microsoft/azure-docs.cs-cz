@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 98ebc8d9408d937730643056f65c3d8011c1fdc4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ecad41097786a40f7c605a686f085136856c950a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493400"
+ms.locfileid: "73581587"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Kurz: vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte, jak provádět následující úlohy:
 > * Zobrazit podrobnosti experimentu.
 > * Nasaďte model.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 
@@ -86,12 +86,12 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
         Pole|Popis| Hodnota pro kurz
         ---|---|---
         Formát souboru|Definuje rozložení a typ dat uložených v souboru.| Oddělených
-        Oddělovač|Jeden nebo více znaků pro určení hranice mezi &nbsp; samostatné, nezávislé oblasti v prostém textu nebo jiných datových proudech. |Tečkou
+        Oddělovač|Jeden nebo více znaků pro určení hranice mezi&nbsp; samostatné, nezávislé oblasti v prostém textu nebo jiných datových proudech. |Tečkou
         Encoding|Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.| UTF-8
         Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).| Všechny soubory mají stejná záhlaví.
-        Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.| Žádné
+        Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.| Žádný
 
-    1. Formulář **schématu** umožňuje další konfiguraci dat pro tento experiment. V tomto příkladu vyberte přepínač pro funkci **day_of_week** , a tak, aby se pro tento experiment nezahrnul. Vyberte **Další**.
+    1. Formulář **schématu** umožňuje další konfiguraci dat pro tento experiment. V tomto příkladu vyberte přepínač pro funkci **day_of_week** , a tak, aby se pro tento experiment nezahrnul. Vyberte **Next** (Další).
 
         ![Konfigurace karty Preview](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
 
@@ -120,7 +120,7 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
 
         1. Po vytvoření vyberte nový cíl služby COMPUTE z rozevíracího seznamu.
 
-    1. Vyberte **Další**.
+    1. Vyberte **Next** (Další).
 
 1. Ve formuláři **typ úlohy a nastavení** vyberte jako typ úlohy strojového učení možnost **klasifikace** .
 
@@ -129,11 +129,11 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
         >[!NOTE]
         > V tomto kurzu nenastavíte prahovou hodnotu metriky nebo maximální počet jader na iteraci. Ani nebudete blokovat testování algoritmů.
    
-        Další konfigurace&nbsp;|Popis|Hodnota &nbsp;for &nbsp;tutorial
+        Další konfigurace&nbsp;|Popis|&nbsp;hodnoty pro&nbsp;kurz
         ------|---------|---
         Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|AUC_weighted
         Automaticky featurization| Umožňuje předzpracování. To zahrnuje automatické čištění dat, přípravu a transformaci, které generují syntetické funkce.| Povolení
-        Blokované algoritmy | Algoritmy, které chcete vyloučit z úlohy školení| Žádné
+        Blokované algoritmy | Algoritmy, které chcete vyloučit z úlohy školení| Žádný
         Výstupní kritérium| Pokud je splněno kritérium, úloha školení se zastaví. |&nbsp;úlohy školení&nbsp;čas (hodiny): 1 <br> &nbsp;prahová hodnota skóre&nbsp;metriky: žádné
         Ověření | Vyberte typ křížového ověření a počet testů.|Typ ověřování:<br>křížové ověření &nbsp;k-skládání&nbsp; <br> <br> Počet ověření: 2
         Souběžnost| Maximální počet provedených paralelních iterací a jader používaných na iteraci| Maximální&nbsp;souběžných&nbsp;ch iterací: 5<br> Maximální počet&nbsp;jader&nbsp;na iteraci&nbsp;: žádné
@@ -171,18 +171,21 @@ V tomto kontextu experimentu se **VotingEnsemble** považuje za nejlepší model
 
 1. V levém dolním rohu vyberte tlačítko **nasadit nejlepší model** .
 
-1. Nasaďte **nejvhodnější podokno model nasazení** následujícím způsobem:
+1. Nasaďte podokno **nasadit model** následujícím způsobem:
 
     Pole| Hodnota
     ----|----
     Název nasazení| Moje automl – nasazení
     Popis nasazení| Moje první automatizované nasazení experimentu Machine Learning
-    Skript bodování| AutoGenerate
-    Skript prostředí| AutoGenerate
+    Typ výpočtu | Výběr instance služby Azure COMPUTE (ACI)
+    Povolení ověřování| Dezaktivovat. 
+    Použití vlastních nasazení| Dezaktivovat. Umožňuje automaticky vygenerovat výchozí soubor ovladače (skript bodování) a soubor prostředí. 
     
+    V tomto příkladu používáme výchozí hodnoty uvedené v nabídce *Upřesnit* . 
+
 1. Vyberte **Nasadit**.  
 
-    V podokně **doporučeného modelu** se v části **stav** nasazení po dokončení nasazení zobrazí zpráva o úspěšném nasazení. Pro pravidelnou kontrolu stavu nasazení vyberte **aktualizovat** .
+    V horní části obrazovky **spuštění** se zobrazí zelená zpráva o úspěchu a v podokně **doporučený model** se zobrazí stavová zpráva v části **stav nasazení**. Pro pravidelnou kontrolu stavu nasazení vyberte **aktualizovat** .
     
 Nyní máte provozní webovou službu, která generuje předpovědi. 
 

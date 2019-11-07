@@ -1,20 +1,17 @@
 ---
 title: Analýza protokolů a metrik v Azure jaře cloudu | Microsoft Docs
 description: Naučte se analyzovat diagnostická data v Azure jaře cloudu.
-services: spring-cloud
 author: jpconnock
-manager: gwallace
-editor: ''
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 955641f3511989baa5bfc3c0fa4d7df7ccbf9bfa
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: ebe438bd2dc5b4921ce733001f3c9df19bc592fe
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554574"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607863"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analýza protokolů a metrik pomocí nastavení diagnostiky
 
@@ -36,7 +33,7 @@ Chcete-li začít, povolte jednu z těchto služeb pro příjem dat. Pokud se ch
     * **Odeslat do Log Analytics**
 
 1. Zvolte, kterou kategorii protokolů a kategorii metrik chcete monitorovat, a pak zadejte dobu uchování (ve dnech). Doba uchování se vztahuje jenom na účet úložiště.
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 > [!NOTE]
 > Může existovat mezera mezi až 15 minutami, kdy se generují protokoly nebo metriky, a když se objeví ve vašem účtu úložiště, v centru událostí nebo Log Analytics.

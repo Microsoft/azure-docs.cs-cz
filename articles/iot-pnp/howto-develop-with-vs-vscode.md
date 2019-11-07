@@ -3,17 +3,17 @@ title: Použití sady Visual Studio a Visual Studio Code k sestavení zařízen�
 description: Pomocí sady Visual Studio a Visual Studio Code urychlíte tvorbu modelů zařízení IoT technologie Plug and Play a implementací kódu zařízení.
 author: liydu
 ms.author: liydu
-ms.date: 09/10/2019
+ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: d68a3f99096ca64b357239f61cf7ff17d6fc3f83
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 7bb4e507df24f50238197b738fd54e6b5c1d05ee
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935726"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571189"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code"></a>Použití nástrojů Azure IoT pro Visual Studio Code
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak:
 - Použijte vygenerovaný kód v projektu zařízení.
 - Iterujte tak, že znovu vygenerujete kostru kódu.
 
-Další informace o použití VS Code k vývoji zařízení IoT najdete v tématu [https://github.com/microsoft/vscode-iot-workbench](https://github.com/microsoft/vscode-iot-workbench).
+Další informace o použití VS Code k vývoji zařízení IoT najdete v článku [https://github.com/microsoft/vscode-iot-workbench](https://github.com/microsoft/vscode-iot-workbench).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -46,23 +46,32 @@ V VS Code pomocí **kombinace kláves CTRL + SHIFT + P** otevřete paletu přík
 
 - **Název projektu** Název projektu se používá jako název složky pro generovaný kód a další soubory projektu. Ve výchozím nastavení je složka umístěná vedle souboru DCM. Chcete-li se vyhnout nutnosti ručnímu kopírování vygenerované složky kódu vždy, když aktualizujete DCM a znovu vygenerujete kód zařízení, zachovejte soubor DCM ve stejné složce jako složka projektu.
 
-- **Typ projektu**. Generátor kódu také generuje soubor projektu, aby bylo možné integrovat kód do vlastního projektu nebo do projektu sady SDK pro zařízení. V současné době jsou podporované typy projektů:
-
-    - **Projekt cmake**: pro projekt zařízení, který používá [cmake](https://cmake.org/) jako systém sestavení. Tato možnost vygeneruje `CMakeLists.txt` soubor ve stejné složce jako kód jazyka C.
-    - **MXChip IoT DevKit Project**: pro projekt zařízení, který běží na zařízení [MXChip IoT DevKit](https://aka.ms/iot-devkit) . Tato možnost generuje projekt Arduino, který můžete [použít v vs Code](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) nebo v integrovaném vývojovém prostředí Arduino pro sestavování a spouštění na zařízení IoT DevKit.
-
 - **Způsob připojení ke službě Azure IoT**. Vygenerované soubory také obsahují kód pro konfiguraci zařízení pro připojení k Azure IoT Hub. Můžete se rozhodnout připojit se přímo k [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) nebo použít [službu Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps).
 
     - **Přes IoT Hub připojovací řetězec zařízení**: zadejte připojovací řetězec zařízení, pro který se má aplikace zařízení připojit IoT Hub přímo.
-    - **Přes DPS symetrický klíč**: zadejte **ID oboru**, **ID registrace**a **klíč SAS** pro aplikaci zařízení, která je nutná pro připojení k IoT Hub nebo IoT Central pomocí DPS.
+    - **Přes DPS symetrický klíč**: zadejte **Rozsah ID**, **symetrický klíč** a **ID zařízení** pro aplikaci zařízení, které jsou potřeba pro připojení k IoT Hub nebo IoT Central pomocí DPS.
+
+- **Typ projektu**. Generátor kódu také generuje projekt CMake nebo Arduino. V současné době jsou podporované typy projektů:
+
+    - **Projekt cmake ve Windows**: pro projekt zařízení, který používá [cmake](https://cmake.org/) jako systém sestavení v systému Windows. Tato možnost generuje `CMakeLists.txt` s konfiguracemi sady SDK pro zařízení ve stejné složce jako kód jazyka C.
+    - **Projekt cmake v systému Linux**: pro projekt zařízení, který používá [cmake](https://cmake.org/) jako systém sestavení na platformě Linux. Tato možnost generuje `CMakeLists.txt` s konfiguracemi sady SDK pro zařízení ve stejné složce jako kód jazyka C.
+    - **MXChip IoT DevKit Project**: pro projekt zařízení, který běží na zařízení [MXChip IoT DevKit](https://aka.ms/iot-devkit) . Tato možnost generuje projekt Arduino, který můžete [použít v vs Code](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) nebo v integrovaném vývojovém prostředí Arduino pro sestavování a spouštění na zařízení IoT DevKit.
+
+- **Typ sady SDK pro zařízení**. Pokud vyberete CMake jako typ projektu, jedná se o krok ke konfiguraci způsobu, jakým bude generovaný kód zahrnovat sadu SDK pro zařízení Azure IoT C v `CMakeLists.txt`:
+
+    - **Prostřednictvím zdrojového kódu**: vygenerovaný kód spoléhá na [zdrojový kód sady SDK pro zařízení](https://github.com/Azure/azure-iot-sdk-c) , který se má zahrnout do a společně s ním společně sestavit. To se doporučuje, když jste upravili zdrojový kód sady SDK pro zařízení.
+    - **Prostřednictvím Vcpkg**: generovaný kód spoléhá na to, že [sada SDK pro zařízení Vcpkg](https://github.com/microsoft/vcpkg/tree/master/ports/azure-iot-sdk-c) se má zahrnout do a sestavit společně s ní. Toto je doporučený způsob pro zařízení s Windows, Linux nebo macOS.
+
+    > [!NOTE]
+    > Podpora macOS pro sadu SDK pro zařízení Azure IoT C Vcpkg pracuje v průběhu.
 
 Generátor kódu se pokusí použít soubory DCM a rozhraní umístěné v místní složce. Pokud soubory rozhraní nejsou v místní složce, generátor kódu je vyhledá v úložišti veřejného modelu nebo v úložišti modelu společnosti. [Společné soubory rozhraní](./concepts-common-interfaces.md) jsou uloženy v úložišti veřejného modelu.
 
 Po dokončení generování kódu rozšíření otevře nové okno VS Code s kódem. Otevřete-li vygenerovaný soubor, například **Main. c**, může se stát, že technologie IntelliSense ohlásí, že nemůže otevřít zdrojové soubory sady c SDK. Chcete-li povolit správnou navigaci pomocí technologie IntelliSense a kódu, použijte následující postup pro zahrnutí zdroje C SDK:
 
-1. V VS Code pomocí **kombinace kláves CTRL + SHIFT + P** otevřete paletu příkazů, zadejte a vyberte **C/C++: Úpravou konfigurace (JSON** ) otevřete soubor **c_cpp_properties. JSON** .
+1. V vs Code pomocí **kombinace kláves CTRL + SHIFT + P** otevřete paletu příkazů, zadejte a vyberte **C/C++: upravit konfigurace (JSON)** k otevření souboru **c_cpp_properties. JSON** .
 
-1. Do `includePath` části přidejte cestu k sadě SDK pro zařízení:
+1. Do části `includePath` přidejte cestu k sadě SDK pro zařízení:
 
     ```json
     "includePath": [
@@ -79,100 +88,81 @@ Následující pokyny popisují způsob použití vygenerovaného kódu ve vlast
 
 ### <a name="linux"></a>Linux
 
-Sestavení kódu zařízení společně se sadou SDK pro zařízení C pomocí CMake v prostředí Linux, jako je Ubuntu nebo Debian:
+Sestavte kód zařízení společně se sadou SDK zařízení C Vcpkg pomocí CMake v prostředí Linux, jako je Ubuntu nebo Debian:
 
 1. Otevřete aplikaci terminálu.
 
-1. `cmake`Pomocí příkazu`apt-get` nainstalujte RSZ, **Git**, a všechny závislosti:
+1. Pomocí příkazu `apt-get` nainstalujte **RSZ**, **Git**, `cmake`a všechny závislosti:
 
-    ```sh
+    ```bash
     sudo apt-get update
     sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
     ```
 
-    Ověřte, že verze `cmake` nástroje je nad **2.8.12** a verze **RSZ** je vyšší než **4.4.7**.
+    Ověřte, že verze `cmake` je nad **2.8.12** a verze **RSZ** je vyšší než **4.4.7**.
 
-    ```sh
+    ```bash
     cmake --version
     gcc --version
     ```
 
-1. Naklonujte úložiště [sady SDK Azure IoT C](https://github.com/Azure/azure-iot-sdk-c) :
+1. Nainstalovat Vcpkg:
 
-    ```sh
-    git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
+    ```bash
+    git clone https://github.com/Microsoft/vcpkg.git
+    cd vcpkg
+
+    ./bootstrap-vcpkg.sh
     ```
 
-    Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
+    Pokud chcete připojit [integraci](https://github.com/microsoft/vcpkg/blob/master/docs/users/integration.md)uživatelů na úrovni uživatele, spusťte:
 
-1. Zkopírujte složku, která obsahuje generovaný kód, do kořenové složky sady SDK pro zařízení.
-
-1. V vs Code otevřete `CMakeLists.txt` soubor v kořenové složce sady SDK pro zařízení.
-
-1. Přidejte následující řádek na konec `CMakeLists.txt` souboru, aby při kompilování sady SDK zahrnoval složku se zástupnými procedurami kódu zařízení:
-
-    ```txt
-    add_subdirectory({generated_code_folder_name})
+    ```bash
+    ./vcpkg integrate install
     ```
 
-1. V kořenové složce sady `cmake` SDK pro zařízení vytvořte složku s názvem a přejděte do této složky.
+1. Instalace sady SDK pro zařízení Azure IoT C Vcpkg:
 
-    ```sh
+    ```bash
+    ./vcpkg install azure-iot-sdk-c[public-preview,use_prov_client]
+    ```
+
+1. Vytvoření podadresáře `cmake` ve složce obsahuje zástupný kód generovaného kódu a přejděte do této složky:
+
+    ```bash
     mkdir cmake
     cd cmake
     ```
 
 1. Spusťte následující příkazy, abyste pomocí CMake sestavili sadu SDK pro zařízení a vygenerovanou zástupné kódy:
 
-    ```cmd\sh
-    cmake -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON ..
+    ```bash
+    cmake .. -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}/scripts/buildsystems/vcpkg.cmake"
+
     cmake --build .
     ```
 
 1. Po úspěšném sestavení spusťte aplikaci určení připojovacího řetězce zařízení IoT Hub jako parametru.
 
-    ```cmd\sh
-    cd azure-iot-sdk-c/cmake/{generated_code_folder_name}/
+    ```bash
     ./{generated_code_project_name} "[IoT Hub device connection string]"
     ```
 
 ### <a name="windows"></a>Windows
 
-Chcete-li sestavit kód zařízení společně se sadou SDK zařízení C v systému Windows pomocí CMake a sady Visual StudioC++ C/compilers na příkazovém řádku, přečtěte si téma [rychlý start pro IoT technologie Plug and Play](./quickstart-create-pnp-device.md). Následující kroky ukazují, jak sestavovat kód zařízení spolu se sadou C SDK pro zařízení jako projekt CMake v sadě Visual Studio.
+Chcete-li sestavit kód zařízení společně se sadou SDK zařízení C v systému Windows pomocí CMake a sady Visual StudioC++ C/compilers na příkazovém řádku, přečtěte si téma [rychlý start pro IoT technologie Plug and Play](./quickstart-create-pnp-device.md). Následující kroky ukazují, jak sestavovat kód zařízení spolu se sadou C SDK Vcpkg jako projekt CMake v sadě Visual Studio.
+
+1. Postupujte podle kroků v [rychlém](https://docs.microsoft.com/azure/iot-pnp/quickstart-create-pnp-device#prepare-the-development-environment) startu a nainstalujte sadu SDK pro zařízení Azure IoT pro jazyk C přes Vcpkg.
 
 1. Instalace sady [Visual Studio 2019 (Community, Professional nebo Enterprise)](https://visualstudio.microsoft.com/downloads/) – Ujistěte se, že jste do úlohy zahrnuli komponentu **Správce balíčků NuGet** a **desktopový vývoj. C++**
 
-1. Otevřete Visual Studio a **na stránce Začínáme** vyberte **klonovat nebo rezervovat kód**:
-
-1. V **umístění úložiště**naklonujte úložiště [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) :
-
-    ```txt
-    https://github.com/Azure/azure-iot-sdk-c
-    ```
-
-    Měli byste očekávat, že dokončení této operace trvá několik minut, a můžete se podívat na průběh v podokně **Team Explorer** .
-
-1. Otevřete **Azure-IoT-SDK-c** úložiště v **Team Explorer**, vyberte **větve**, vyhledejte větev **Public-Preview** a podívejte se na ni.
-
-    ![Veřejná verze Preview](media/howto-develop-with-vs-vscode/vs-public-preview.png)
-
-1. Zkopírujte složku, která obsahuje generovaný kód, do kořenové složky sady SDK pro zařízení.
-
-1. `azure-iot-sdk-c` Otevřete složku v vs.
-
-1. `CMakeLists.txt` Otevřete soubor v kořenové složce sady SDK pro zařízení.
-
-1. Přidejte následující řádek na konec `CMakeLists.txt` souboru, aby při kompilování sady SDK zahrnoval složku se zástupnými procedurami kódu zařízení:
-
-    ```txt
-    add_subdirectory({generated_code_folder_name})
-    ```
+1. Otevřete Visual Studio, vyberte **soubor > otevřít > cmake.** Chcete-li otevřít `CMakeLists.txt` ve složce obsahuje generovaný kód.
 
 1. Na panelu nástrojů **Obecné** Najděte rozevírací seznam **Konfigurace** . Výběrem **možnosti spravovat konfiguraci** přidejte nastavení cmake pro svůj projekt.
 
     ![Správa konfigurace](media/howto-develop-with-vs-vscode/vs-manage-config.png)
 
-1. V **Nastavení cmake**přidejte novou konfiguraci a jako cíl vyberte **x64-Release** .
+1. V **Nastavení cmake**přidejte novou konfiguraci a jako cíl vyberte **x86-Debug** .
 
 1. Do **argumentů příkazu cmake**přidejte následující řádek:
 
@@ -182,13 +172,16 @@ Chcete-li sestavit kód zařízení společně se sadou SDK zařízení C v syst
 
 1. Uložte soubor.
 
-1. V **Průzkumník řešení**klikněte `CMakeLists.txt` pravým tlačítkem myši na v kořenové složce a v místní nabídce vyberte možnost **sestavit** , čímž sestavíte sadu SDK pro zařízení a vygenerovanou zástupné kódy.
+1. Přepněte na **x86-Debug** v rozevíracím seznamu **Konfigurace** . Aby CMake vygenerovala mezipaměť, potřebuje několik sekund. Zobrazte okno výstup a podívejte se na průběh.
+
+    ![Výstup CMake](media/howto-develop-with-vs-vscode/vs-cmake-output.png)
+
+1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na `CMakeLists.txt` v kořenové složce a v místní nabídce vyberte **sestavit** a sestavte zástupný kód vygenerovaných kódů pomocí sady SDK pro zařízení.
 
 1. Po úspěšném sestavení spusťte na příkazovém řádku aplikaci, která určuje připojovací řetězec zařízení IoT Hub jako parametr.
 
     ```cmd
-    cd %USERPROFILE%\CMakeBuilds\{workspaceHash}\build\x64-Release\{generated_code_folder_name}\
-    {generated_code_project_name}.exe "[IoT Hub device connection string]"
+    .\out\build\x86-Debug\{generated_code_project_name}.exe "[IoT Hub device connection string]"
     ```
 
 > [!TIP]
@@ -196,7 +189,7 @@ Chcete-li sestavit kód zařízení společně se sadou SDK zařízení C v syst
 
 ### <a name="macos"></a>macOS
 
-Následující kroky ukazují, jak vytvořit kód zařízení spolu se sadou C SDK pro zařízení v macOS pomocí CMake:
+Následující kroky ukazují, jak vytvořit kód zařízení spolu se zdrojovým kódem sady C SDK pro zařízení v macOS pomocí CMake:
 
 1. Otevřete aplikaci Terminal.
 
@@ -215,7 +208,7 @@ Následující kroky ukazují, jak vytvořit kód zařízení spolu se sadou C S
 
 1. [Opravte oblé](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#upgrade-curl-on-mac-os) na nejnovější dostupnou verzi.
 
-1. Naklonujte úložiště [sady SDK Azure IoT C](https://github.com/Azure/azure-iot-sdk-c) :
+1. Ve složce, která obsahuje generovaný kód, naklonujte úložiště [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) :
 
     ```bash
     git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
@@ -223,17 +216,7 @@ Následující kroky ukazují, jak vytvořit kód zařízení spolu se sadou C S
 
     Buďte připravení na to, že může trvat i několik minut, než se tato operace dokončí.
 
-1. Zkopírujte složku, která obsahuje generovaný kód, do kořenové složky sady SDK pro zařízení.
-
-1. V vs Code otevřete `CMakeLists.txt` soubor v kořenové složce sady SDK pro zařízení.
-
-1. Přidejte následující řádek na konec `CMakeLists.txt` souboru, aby při kompilování sady SDK zahrnoval složku se zástupnými procedurami kódu zařízení:
-
-    ```txt
-    add_subdirectory({generated_code_folder_name})
-    ```
-
-1. V kořenové složce sady `cmake` SDK pro zařízení vytvořte složku s názvem a přejděte do této složky.
+1. Ve složce obsahující generovaný kód vytvořte složku s názvem `cmake` a přejděte do této složky.
 
     ```bash
     mkdir cmake
@@ -250,7 +233,7 @@ Následující kroky ukazují, jak vytvořit kód zařízení spolu se sadou C S
 1. Po úspěšném sestavení spusťte aplikaci určení připojovacího řetězce zařízení IoT Hub jako parametru.
 
     ```bash
-    cd azure-iot-sdk-c/cmake/{generated_code_folder_name}/
+    cd {generated_code_folder_name}/cmake/
     ./{generated_code_project_name} "[IoT Hub device connection string]"
     ```
 
@@ -264,15 +247,15 @@ Generátor kódu může znovu vygenerovat kód, pokud aktualizujete soubory DCM 
 
 1. Vyberte **znovu vytvořit kód pro {Project Name}** .
 
-1. Generátor kódu používá předchozí nastavení, které jste nakonfigurovali a znovu generuje kód. Nepřepisuje však soubory, které mohou obsahovat uživatelský kód, například `main.c` a. `{project_name}_impl.c`
+1. Generátor kódu používá předchozí nastavení, které jste nakonfigurovali a znovu generuje kód. Nepřepisuje však soubory, které mohou obsahovat uživatelský kód, například `main.c` a `{project_name}_impl.c`.
 
 > [!NOTE]
-> Pokud aktualizujete identifikátor URN v souboru rozhraní, bude zpracován jako nové rozhraní. Když kód znovu vygenerujete, generátor kódu vygeneruje kód pro rozhraní, ale nepřepíše původní `{project_name}_impl.c` soubor v souboru.
+> Pokud aktualizujete identifikátor URN v souboru rozhraní, bude zpracován jako nové rozhraní. Když kód znovu vygenerujete, generátor kódu vygeneruje kód pro rozhraní, ale nepřepíše původní soubor v `{project_name}_impl.c`.
 
 ## <a name="problems-and-feedback"></a>Problémy a zpětná vazba
 
 Azure IoT Tools je open source projekt na GitHubu. U všech problémů a žádostí o funkce můžete [vytvořit problém na GitHubu](https://github.com/microsoft/vscode-azure-iot-tools/issues/new).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku se naučíte, jak používat Visual Studio a Visual Studio Code k vygenerování kostry kódu C k implementaci aplikace zařízení. Navržený další krok se naučíte, jak [nainstalovat a používat nástroj Azure IoT Explorer](./howto-install-iot-explorer.md) .

@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/26/2019
 ms.author: helohr
-ms.openlocfilehash: c19aa6e0acc936c5b03afdab99ce0b9230838ce2
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 41b0c1ced9e66bd58d73683865b2c40afc16c5d3
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71339007"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605853"
 ---
-# <a name="connect-with-the-android-client"></a>Připojení pomocí klienta Android
+# <a name="connect-with-the-android-client"></a>Práce s klientem Android
 
-> To platí pro: Android 4,1 a novější, Chromebooks s ChromeOS 53 a novějším.
+> Platí pro: Android 4,1 a novější, Chromebooks s ChromeOS 53 a novějším.
 
 >[!NOTE]
 > Možnost přístupu k prostředkům virtuálního počítače s Windows z klienta pro Android je aktuálně dostupná ve verzi Preview.
@@ -35,7 +35,7 @@ Přihlášení k odběru informačního kanálu:
 
 1. V centru připojení klepněte na **+** a potom klepněte na **kanál vzdáleného prostředku**.
 2. Do pole **Adresa URL informačního kanálu** zadejte adresu URL informačního kanálu. Adresa URL informačního kanálu může být buď adresa URL, nebo e-mailová adresa.
-   - Pokud použijete adresu URL, použijte toho, kterého vám správce poskytl, obvykle <https://rdweb.wvd.microsoft.com>.
+   - Pokud použijete adresu URL, použijte toho, kterého vám správce poskytl, normálně <https://rdweb.wvd.microsoft.com>.
    - Pokud chcete používat e-mail, zadejte svou e-mailovou adresu. Pokud váš správce nakonfiguroval server tímto způsobem, bude klient hledat adresu URL přidruženou k vaší e-mailové adrese.
 3. Klepněte na **Další**.
 4. Po zobrazení výzvy zadejte své přihlašovací údaje.

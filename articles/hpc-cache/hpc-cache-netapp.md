@@ -1,19 +1,19 @@
 ---
-title: Použijte Azure HPC cache (Preview) a Azure NetApp Files
+title: Použití mezipaměti HPC Azure a Azure NetApp Files
 description: Jak používat mezipaměť prostředí Azure HPC ke zvýšení přístupu k datům uloženým pomocí Azure NetApp Files
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 35d7a11c4f39f15c6b2f904df77b88b85c2208e5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c6259dabd5ee9c53d37a3396f36832720a103c23
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954939"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582170"
 ---
-# <a name="use-azure-hpc-cache-preview-with-azure-netapp-files"></a>Použití Azure HPC cache (Preview) s Azure NetApp Files
+# <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>Použití mezipaměti prostředí Azure HPC s Azure NetApp Files
 
 Jako cíl úložiště pro mezipaměť HPC Azure můžete použít [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) . Tento článek vysvětluje, jak můžou tyto dvě služby spolupracovat, a poskytuje tipy pro jejich nastavení.
 

@@ -1,18 +1,18 @@
 ---
 title: Zdroje dat podporované v Azure Analysis Services | Microsoft Docs
-description: Popisuje zdroje dat podporované pro datové modely v Azure Analysis Services.
+description: Popisuje zdroje dat a konektory podporované tabulkami 1200 a vyššími datovými modely v Azure Analysis Services.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cc47ff50aa7bb6dce58ed83f75f69fb600ad040b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5539d290ea182e24a50a103a762f011202ebf33a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146937"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572966"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Zdroje dat podporované v Azure Analysis Services
 
@@ -99,7 +99,7 @@ Při migraci místního SQL Server Analysis Services tabulkového modelu do Azur
 
 1. V **průzkumníku > tabulkových modelů** sady Visual Studio > **zdroje dat**klikněte pravým tlačítkem na připojení ke zdroji dat a pak klikněte na **Upravit zdroj dat**.
 2. V části **Upravit připojení**kliknutím na **Upřesnit** otevřete okno Vlastnosti pro upřesnění.
-3. V části **nastavit upřesňující vlastnosti** > **poskytovatelé**vyberte příslušného poskytovatele.
+3. V **Nastavení Upřesnit vlastnosti** > **poskytovatelé**vyberte příslušného poskytovatele.
 
 ## <a name="impersonation"></a>Zosobnění
 V některých případech může být nutné zadat jiný účet zosobnění. Účet zosobnění lze zadat v aplikaci Visual Studio nebo SSMS.

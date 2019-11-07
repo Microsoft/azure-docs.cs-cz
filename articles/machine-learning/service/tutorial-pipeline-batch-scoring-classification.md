@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: f693a80726c9185bbd75d5fb99eb7e5f3ccad987
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d5a8ada7be99cfbd541b9ac58db2eba094536fc0
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493506"
+ms.locfileid: "73580525"
 ---
 # <a name="build--use-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Sestavení & použití kanálu Azure Machine Learning pro dávkové vyhodnocování
 
@@ -37,7 +37,7 @@ V tomto kurzu provedete následující úlohy:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte virtuální počítač s Azure Machine Learning pracovním prostorem nebo notebookem, vyplňte [část 1 tohoto kurzu instalace](tutorial-1st-experiment-sdk-setup.md).
 * Po dokončení kurzu instalace použijte stejný server poznámkového bloku a otevřete Poznámkový blok *kurzy/tutorial-Pipeline-Batch-scoring-Classification. ipynb* .
@@ -415,7 +415,7 @@ df.head(10)
       <td>Rhodesian Ridgeback</td>
     </tr>
     <tr>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>ILSVRC2012_val_00000103. JPEG</td>
       <td>tripod</td>
     </tr>
@@ -522,7 +522,7 @@ RunDetails(published_pipeline_run).show()
 
 Tuto část neprovádějte, pokud máte v plánu spouštět další kurzy Azure Machine Learning.
 
-### <a name="stop-the-compute-instance"></a>Zastavení výpočetní instance
+### <a name="stop-the-notebook-vm"></a>Zastavení virtuálního počítače poznámkového bloku
 
 [!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 

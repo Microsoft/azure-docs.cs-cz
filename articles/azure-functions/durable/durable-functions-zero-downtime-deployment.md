@@ -8,27 +8,32 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5e6e51d2a058f89a04a81800b81f3c316be4eab7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b47604f2c8703ba587e98d68dc30552e5944f562
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301487"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614502"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Nasazení s nulovým výpadkem pro Durable Functions
+
 [Model spolehlivého spuštění](durable-functions-checkpointing-and-replay.md) Durable Functions vyžaduje, aby orchestrace byly deterministické, což vytvoří další výzvu, která je potřeba zvážit při nasazování aktualizací. Pokud nasazení obsahuje změny signatur funkcí aktivity nebo logiky nástroje Orchestrator, instance orchestrace v rámci letu selžou. Tato situace je obzvláště problémem pro instance dlouhotrvajících orchestrací, což může představovat hodiny nebo dny v práci.
 
 Aby nedošlo k těmto chybám, musíte buď zpozdit nasazení, dokud se nedokončí všechny spuštěné instance orchestrace, nebo zajistit, aby všechny spuštěné instance orchestrace používaly stávající verze vašich funkcí. Další informace o tom, jak se správou verzí, najdete [v tématu Správa verzí v Durable Functions](durable-functions-versioning.md).
 
+> [!NOTE]
+> Tento článek poskytuje pokyny pro aplikace Functions cílené na Durable Functions 1. x. Ještě nebyla aktualizována na účet pro změny, které byly zavedeny v Durable Functions 2. x. Další informace o rozdílech mezi verzemi rozšíření naleznete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+
 Následující graf porovnává tři hlavní strategie, abyste dosáhli nasazení s nulovými výpadky pro Durable Functions: 
 
-| Strategie |  When to use | IT | Nevýhody |
+| Strategie |  Kdy je použít | IT | Nevýhody |
 | -------- | ------------ | ---- | ---- |
 | **[Správa verzí](#versioning)** |  Aplikace, u kterých nedochází k častým [změnám.](durable-functions-versioning.md) | Jednoduchá implementace. |  Zvýšení velikosti aplikace funkcí v paměti a počtu funkcí<br/>Duplikace kódu. |
 | **[Stavová kontrolu pomocí slotu](#status-check-with-slot)** | Systém, který nemá dlouhotrvající orchestraci trvající více než 24 hodin nebo často překrývající orchestrace. | Základ jednoduchého kódu.<br/>Nevyžaduje další správu aplikací Function App. | Vyžaduje další účet úložiště nebo správu centra úloh.<br/>Vyžaduje časové období, kdy nejsou spuštěny žádné orchestrace. |
 | **[Směrování aplikace](#application-routing)** | Systém, který nemá časová období, když orchestrace nejsou spuštěny, například ty, které mají orchestraci trvající více než 24 hodin nebo často překrývající orchestrace. | Zpracovává nové verze systémů s nepřetržitým spouštěním orchestrace, které mají zásadní změny. | Vyžaduje inteligentní směrovač aplikace.<br/>Může se jednat o maximální počet aplikací Function App povolených vaším předplatným (výchozí 100). |
 
 ## <a name="versioning"></a>Správa verzí
+
 Definujte nové verze vašich funkcí a ve své aplikaci Function App ponechte staré verze. Jak vidíte v diagramu, verze funkce se bude součástí svého názvu. Vzhledem k tomu, že předchozí verze funkcí jsou zachovány, mohou instance orchestrace v letadle i nadále na ně odkazovat. Mezitím požadavky na nové instance orchestrace volají na nejnovější verzi, kterou může vaše klientská funkce Orchestration odkazovat z nastavení aplikace.
 
 ![Strategie správy verzí](media/durable-functions-zero-downtime-deployment/versioning-strategy.png)
@@ -62,7 +67,7 @@ Následující diagram znázorňuje popis konfigurace slotů nasazení a účtů
 
 Následující fragmenty JSON jsou příklady nastavení připojovacího řetězce v souboru Host. JSON.
 
-#### <a name="functions-2x"></a>Functions 2.x
+#### <a name="functions-20"></a>Funkce 2,0
 
 ```json
 {
@@ -146,7 +151,7 @@ Směrovač spravuje stav, ve kterém je nasazená verze kódu vaší aplikace, d
 
 ![Směrování aplikací (první čas)](media/durable-functions-zero-downtime-deployment/application-routing.png)
 
-Směrovač směruje požadavky na nasazení a orchestraci na příslušnou aplikaci funkcí na základě `version` odeslaných s požadavkem a ignoruje verzi opravy.
+Směrovač směruje požadavky na nasazení a orchestraci na příslušnou aplikaci funkcí na základě `version` poslaných s požadavkem a ignoruje verzi opravy.
 
 Když nasadíte novou verzi aplikace *bez* zásadní změny, můžete zvýšit verzi opravy. Směrovač se nasadí do vaší stávající aplikace Function App a odešle požadavky na starou a nové verze kódu se směruje do stejné aplikace Function App.
 

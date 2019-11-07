@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: 87942ae8132c89c502bd6e0f4c8d5b5c81a0a14c
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.date: 11/04/2019
+ms.openlocfilehash: 1371b286f5e9bd82345e17c11e910c68fac9fed2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950370"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603154"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mysql"></a>Doporučení týkající se výkonu v Azure Database for MySQL
 
 **Platí pro:** Azure Database for MySQL 5,7
-
-> [!IMPORTANT]
-> Doporučení k výkonu jsou ve verzi Preview.
 
 Funkce doporučení pro výkon analyzuje vaše databáze a vytváří přizpůsobené návrhy pro zlepšení výkonu. Při vytváření doporučení analyzuje tato analýza různé charakteristiky databáze, včetně schématu. Povolením [úložiště dotazů](concepts-query-store.md) na serveru můžete plně využít funkci doporučení pro výkon. Pokud je schéma výkonu VYPNUTé, zapnutí úložiště dotazů umožní performance_schema a podmnožinu nástrojů schématu výkonu potřebných pro danou funkci. Po implementaci jakéhokoli doporučení výkonu byste měli testovat výkon a vyhodnotit dopad těchto změn.
 

@@ -1,18 +1,18 @@
 ---
-title: Klientské knihovny vyžadované pro připojení k Azure Analysis Services | Microsoft Docs
+title: Klientské knihovny Azure Analysis Services | Microsoft Docs
 description: Popisuje klientské knihovny vyžadované pro připojení klientských aplikací a nástrojů Azure Analysis Services
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8ce5083d444aa05b59677fb46e7aa80200835412
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f78ac8686f23c47995cab9686c2ca3f6cf88fa6b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147087"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573061"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Klientské knihovny pro připojení k Azure Analysis Services
 
@@ -20,7 +20,7 @@ Klientské knihovny jsou nezbytné pro připojení klientských aplikací a nás
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>Stažení nejnovějších klientských knihoven (Instalační služba systému Windows)  
 
-|Ke stažení  |Verze produktu  | 
+|Stáhnout  |Verze produktu  | 
 |---------|---------|
 |[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.5.15    |
 |[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.5.15       |
@@ -54,7 +54,7 @@ Klientské knihovny pro připojení klienta se liší od zprostředkovatelů dat
   
  Zprostředkovatel Analysis Services OLE DB se automaticky nainstaluje pomocí většiny nástrojů a klientských aplikací používaných pro přístup k databázím Analysis Services. Musí být nainstalovaný na počítačích, které se používají pro přístup k Analysis Services dat.  
   
- Poskytovatelé OLE DB jsou často určení v připojovacích řetězcích. Připojovací řetězec Analysis Services používá jinou klasifikaci pro odkazování na zprostředkovatele OLE DB: MSOLAP. \<version >. dll.
+ Poskytovatelé OLE DB jsou často určení v připojovacích řetězcích. Připojovací řetězec Analysis Services používá pro odkazování na zprostředkovatele OLE DB jinou klasifikaci: MSOLAP.\<verze >. dll.
 
 ### <a name="amo"></a>AMO  
 
@@ -74,7 +74,7 @@ Klientské knihovny pro připojení klienta se liší od zprostředkovatelů dat
   
 1.  Přejděte do části `C:\Program Files\Microsoft Analysis Services\AS OLEDB\` (Soubor > Nový > Jiné). Pokud máte více než jednu složku, vyberte vyšší číslo.
   
-2.  Klikněte pravým tlačítkem na **MSOLAP. dll**  > **vlastnosti**  > **Podrobnosti**. Pokud název souboru je msolap140. dll, je starší než nejnovější verze a měl by být upgradován.
+2.  Klikněte pravým tlačítkem na **MSOLAP. dll** > **vlastnosti** > **Podrobnosti**. Pokud název souboru je msolap140. dll, je starší než nejnovější verze a měl by být upgradován.
     
     ![Podrobnosti klientské knihovny](media/analysis-services-data-providers/aas-msolap-details.png)
     
@@ -82,12 +82,12 @@ Klientské knihovny pro připojení klienta se liší od zprostředkovatelů dat
 ### <a name="amo"></a>AMO
 
 1. Přejděte do části `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\` (Soubor > Nový > Jiné). Pokud máte více než jednu složku, vyberte vyšší číslo.
-2. Klikněte pravým tlačítkem na**vlastnosti** **Microsoft. AnalysisServices** > .  > **Podrobnosti**.  
+2. Klikněte pravým tlačítkem na **Microsoft. AnalysisServices** > **vlastnosti** > **Podrobnosti**.  
 
 ### <a name="adomd"></a>ADOMD
 
 1. Přejděte do části `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\` (Soubor > Nový > Jiné). Pokud máte více než jednu složku, vyberte vyšší číslo.
-2. Klikněte pravým tlačítkem na **Microsoft. AnalysisServices. klienta AdomdClient**–**vlastnosti** >   > **Podrobnosti**.  
+2. Klikněte pravým tlačítkem na **Microsoft. AnalysisServices. klienta adomdclient** > **vlastnosti** > **Podrobnosti**.  
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -4,14 +4,14 @@ description: K vytvoření a konfiguraci Azure Cosmos DB použijte šablony Azur
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 7861196daf3b04430200096a0d42bdcc6e6d5cf9
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: ecdfe89e899e0d416784ae32a0d66b335c09e2b6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053225"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582814"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Šablony Azure Resource Manager pro Azure Cosmos DB
 
@@ -21,12 +21,10 @@ Následující tabulky obsahují odkazy na šablony Azure Resource Manager pro A
 
 |**Šablona**|**Popis**|
 |---|---|
-|[Vytvoření účtu Azure Cosmos, databáze, kontejneru](manage-sql-with-resource-manager.md#create-resource) | Tato šablona vytvoří účet SQL (Core) rozhraní API ve dvou oblastech s povoleným více hlavními servery. Účet Azure Cosmos bude mít dva kontejnery, které sdílejí propustnost na úrovni databáze. |
+|[Vytvoření účtu Azure Cosmos, databáze, kontejneru](manage-sql-with-resource-manager.md#create-resource) | Tato šablona vytvoří účet SQL (Core) rozhraní API ve dvou oblastech se dvěma kontejnery s propustností sdílené databáze a kontejnerem s vyhrazenou propustností. Propustnost lze aktualizovat opětovným odesláním šablony s aktualizovanou hodnotou vlastnosti propustnosti. |
 |[Vytvoření účtu Azure Cosmos, databáze a kontejneru s uloženou procedurou, triggerem a systémem souborů UDF](manage-sql-with-resource-manager.md#create-sproc) | Tato šablona vytvoří účet SQL (Core) rozhraní API ve dvou oblastech s uloženou procedurou, triggerem a systémem souborů UDF pro kontejner. |
-|[Aktualizace propustnosti (RU/s) pro databázi](manage-sql-with-resource-manager.md#database-ru-update) | Tato šablona aktualizuje propustnost pro databázi v účtu rozhraní API SQL (Core). |
-|[Aktualizace propustnosti (RU/s) pro kontejner](manage-sql-with-resource-manager.md#container-ru-update) | Tato šablona aktualizuje propustnost kontejneru v účtu rozhraní API SQL (Core). |
 
-## <a name="mongodb-api"></a>MongoDB API
+## <a name="mongodb-api"></a>Rozhraní MongoDB API
 
 |**Šablona**|**Popis**|
 |---| ---|
@@ -34,7 +32,7 @@ Následující tabulky obsahují odkazy na šablony Azure Resource Manager pro A
 |[Aktualizace propustnosti (RU/s) pro databázi](manage-mongodb-with-resource-manager.md#database-ru-update) | Tato šablona aktualizuje propustnost pro databázi v účtu rozhraní MongoDB API. |
 |[Aktualizace propustnosti (RU/s) pro kolekci](manage-mongodb-with-resource-manager.md#collection-ru-update) | Tato šablona aktualizuje propustnost kontejneru v účtu rozhraní MongoDB API. |
 
-## <a name="cassandra-api"></a>Rozhraní API Cassandra
+## <a name="cassandra-api"></a>Rozhraní Cassandra API
 
 |**Šablona**|**Popis**|
 |---| ---|

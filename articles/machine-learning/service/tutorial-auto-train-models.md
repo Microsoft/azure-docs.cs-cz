@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: a7bd735a808532ed0e61cf42dca2d7a797092487
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 23441fb64293647698921c17c06731ab413b7699
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493694"
+ms.locfileid: "73582456"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Kurz: Použití automatizovaného strojového učení k předvídání taxislužby tarifů
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,7 +33,7 @@ V tomto kurzu se seznámíte s následujícími úlohami:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze](https://aka.ms/AMLFree) Azure Machine Learning dnes
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte virtuální počítač s Azure Machine Learning pracovním prostorem nebo notebookem, dokončete [kurz instalace](tutorial-1st-experiment-sdk-setup.md) .
 * Po dokončení kurzu instalace otevřete Poznámkový blok **kurzy/Regression-Automated-ml. ipynb** pomocí stejného serveru poznámkového bloku.
@@ -115,8 +115,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 05:45:03</td>
       <td>3</td>
       <td>4,84</td>
-      <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
+      <td>Žádný</td>
       <td>-73,88</td>
       <td>40,84</td>
       <td>-73,94</td>
@@ -137,10 +137,10 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-20 16:26:29</td>
       <td>2015-01-20 16:30:26</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>0,69</td>
-      <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
+      <td>Žádný</td>
       <td>-73,96</td>
       <td>40,81</td>
       <td>-73,96</td>
@@ -161,10 +161,10 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-01 05:58:10</td>
       <td>2015-01-01 06:00:55</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>0,45</td>
-      <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
+      <td>Žádný</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,91</td>
@@ -185,10 +185,10 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-17 02:20:50</td>
       <td>2015-01-17 02:41:38</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>0,00</td>
-      <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
+      <td>Žádný</td>
       <td>-73,81</td>
       <td>40,70</td>
       <td>-73,82</td>
@@ -206,13 +206,13 @@ green_taxi_df.head(10)
     </tr>
     <tr>
       <th>1269627</th>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>2015-01-01 05:04:10</td>
       <td>2015-01-01 05:06:23</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>0,50</td>
-      <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
+      <td>Žádný</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,92</td>
@@ -230,13 +230,13 @@ green_taxi_df.head(10)
     </tr>
     <tr>
       <th>811755</th>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>2015-01-04 19:57:51</td>
       <td>2015-01-04 20:05:45</td>
       <td>2</td>
       <td>1,10</td>
-      <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
+      <td>Žádný</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,95</td>
@@ -254,13 +254,13 @@ green_taxi_df.head(10)
     </tr>
     <tr>
       <th>737281</th>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>2015-01-03 12:27:31</td>
       <td>2015-01-03 12:33:52</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>0,90</td>
-      <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
+      <td>Žádný</td>
       <td>-73,88</td>
       <td>40,76</td>
       <td>-73,87</td>
@@ -278,13 +278,13 @@ green_taxi_df.head(10)
     </tr>
     <tr>
       <th>113951</th>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>2015-01-09 23:25:51</td>
       <td>2015-01-09 23:39:52</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>3,30</td>
-      <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
+      <td>Žádný</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,91</td>
@@ -305,15 +305,15 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-11 17:15:14</td>
       <td>2015-01-11 17:22:57</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>1,19</td>
-      <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
+      <td>Žádný</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,95</td>
       <td>Tlačítka ...</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>7,00</td>
       <td>0,00</td>
       <td>0,50</td>
@@ -329,10 +329,10 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-22 23:16:33</td>
       <td>2015-01-22 23:20:13</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>0,65</td>
-      <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
+      <td>Žádný</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,94</td>
@@ -416,8 +416,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 05:45:03</td>
       <td>3</td>
       <td>4,84</td>
-      <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
+      <td>Žádný</td>
       <td>-73,88</td>
       <td>40,84</td>
       <td>-73,94</td>
@@ -428,7 +428,7 @@ green_taxi_df.head(10)
       <td>pak</td>
       <td>16,30</td>
       <td>1,00</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>11</td>
       <td>6</td>
       <td>5</td>
@@ -438,10 +438,10 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-20 16:26:29</td>
       <td>2015-01-20 16:30:26</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>0,69</td>
-      <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
+      <td>Žádný</td>
       <td>-73,96</td>
       <td>40,81</td>
       <td>-73,96</td>
@@ -452,9 +452,9 @@ green_taxi_df.head(10)
       <td>pak</td>
       <td>6,30</td>
       <td>1,00</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>20</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>16</td>
     </tr>
     <tr>
@@ -462,10 +462,10 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-01 05:58:10</td>
       <td>2015-01-01 06:00:55</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>0,45</td>
-      <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
+      <td>Žádný</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,91</td>
@@ -476,8 +476,8 @@ green_taxi_df.head(10)
       <td>pak</td>
       <td>4,80</td>
       <td>1,00</td>
-      <td>1\. místo</td>
-      <td>1\. místo</td>
+      <td>1</td>
+      <td>1</td>
       <td>3</td>
       <td>5</td>
     </tr>
@@ -486,10 +486,10 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-17 02:20:50</td>
       <td>2015-01-17 02:41:38</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>0,00</td>
-      <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
+      <td>Žádný</td>
       <td>-73,81</td>
       <td>40,70</td>
       <td>-73,82</td>
@@ -500,20 +500,20 @@ green_taxi_df.head(10)
       <td>pak</td>
       <td>13,80</td>
       <td>1,00</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>17</td>
       <td>5</td>
       <td>2</td>
     </tr>
     <tr>
       <th>1269627</th>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>2015-01-01 05:04:10</td>
       <td>2015-01-01 05:06:23</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>0,50</td>
-      <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
+      <td>Žádný</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,92</td>
@@ -524,20 +524,20 @@ green_taxi_df.head(10)
       <td>pak</td>
       <td>5,00</td>
       <td>1,00</td>
-      <td>1\. místo</td>
-      <td>1\. místo</td>
+      <td>1</td>
+      <td>1</td>
       <td>3</td>
       <td>5</td>
     </tr>
     <tr>
       <th>811755</th>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>2015-01-04 19:57:51</td>
       <td>2015-01-04 20:05:45</td>
       <td>2</td>
       <td>1,10</td>
-      <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
+      <td>Žádný</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,95</td>
@@ -548,20 +548,20 @@ green_taxi_df.head(10)
       <td>pak</td>
       <td>7,80</td>
       <td>1,00</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>4</td>
       <td>6</td>
       <td>19</td>
     </tr>
     <tr>
       <th>737281</th>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>2015-01-03 12:27:31</td>
       <td>2015-01-03 12:33:52</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>0,90</td>
-      <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
+      <td>Žádný</td>
       <td>-73,88</td>
       <td>40,76</td>
       <td>-73,87</td>
@@ -572,20 +572,20 @@ green_taxi_df.head(10)
       <td>pak</td>
       <td>6,80</td>
       <td>1,00</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>3</td>
       <td>5</td>
       <td>12</td>
     </tr>
     <tr>
       <th>113951</th>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>2015-01-09 23:25:51</td>
       <td>2015-01-09 23:39:52</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>3,30</td>
-      <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
+      <td>Žádný</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,91</td>
@@ -596,7 +596,7 @@ green_taxi_df.head(10)
       <td>pak</td>
       <td>13,80</td>
       <td>1,00</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>9</td>
       <td>4</td>
       <td>23</td>
@@ -606,10 +606,10 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-11 17:15:14</td>
       <td>2015-01-11 17:22:57</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>1,19</td>
-      <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
+      <td>Žádný</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,95</td>
@@ -620,7 +620,7 @@ green_taxi_df.head(10)
       <td>pak</td>
       <td>9,55</td>
       <td>1,00</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>11</td>
       <td>6</td>
       <td>17</td>
@@ -630,10 +630,10 @@ green_taxi_df.head(10)
       <td>2</td>
       <td>2015-01-22 23:16:33</td>
       <td>2015-01-22 23:20:13</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>0,65</td>
-      <td>Žádné</td>
-      <td>Žádné</td>
+      <td>Žádný</td>
+      <td>Žádný</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,94</td>
@@ -644,7 +644,7 @@ green_taxi_df.head(10)
       <td>pak</td>
       <td>6,30</td>
       <td>1,00</td>
-      <td>1\. místo</td>
+      <td>1</td>
       <td>22</td>
       <td>3</td>
       <td>23</td>
@@ -898,7 +898,7 @@ Definujte parametr experimentu a nastavení modelu pro školení. Zobrazí úpln
 |----|----|---|
 |**iteration_timeout_minutes**|2|Časový limit pro každou iteraci v minutách Snižte tuto hodnotu pro snížení celkové doby běhu.|
 |**experiment_timeout_minutes**|20|Maximální doba v minutách, po kterou můžou všechny iterace v kombinaci trvat, než se experiment ukončí.|
-|**enable_early_stopping**|Pravda|Příznak pro enble předčasné ukončení, pokud se skóre nezlepšuje v krátkém období.|
+|**enable_early_stopping**|True|Příznak pro enble předčasné ukončení, pokud se skóre nezlepšuje v krátkém období.|
 |**primary_metric**| spearman_correlation | Metrika, kterou chcete optimalizovat Model nejlépe přizpůsoben se vybere na základě této metriky.|
 |**featurization**| Automaticky | Pomocí **auto**může experiment předzpracovat vstupní data (zpracování chybějících dat, převod textu na číslo atd.).|
 |**podrobností**| logging.INFO | Řídí úroveň protokolování.|
@@ -1062,7 +1062,7 @@ Tradiční proces vývoje modelu strojového učení je vysoce náročný na pro
 
 Tuto část neprovádějte, pokud máte v plánu spouštět jiné kurzy Azure Machine Learning.
 
-### <a name="stop-the-compute-instance"></a>Zastavení výpočetní instance
+### <a name="stop-the-notebook-vm"></a>Zastavení virtuálního počítače poznámkového bloku
 
 [!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 

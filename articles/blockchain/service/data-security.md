@@ -6,20 +6,20 @@ keywords: ''
 author: PatAltimore
 ms.author: patricka
 ms.date: 05/02/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
-ms.openlocfilehash: 00d4911c0f2541ea5c64eccca3ab1b1505e06390
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 63e61844ddb5bd0f0ed52b67e26ea5bf1857fd2b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608542"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579928"
 ---
 # <a name="azure-blockchain-service-security"></a>Zabezpečení služby Azure blockchain
 
-Služba Azure blockchain využívá několik možností Azure, které zajistí zabezpečení a dostupnost vašich dat. Data jsou zabezpečená pomocí izolace, šifrování a ověřování.
+Azure Blockchain Service k zajištění zabezpečení a dostupnosti vašich dat využívá několik funkcí Azure. Zabezpečení dat zajišťuje izolace, šifrování a ověřování.
 
 ## <a name="isolation"></a>Izolace
 
@@ -29,7 +29,7 @@ Prostředky služby Azure blockchain jsou izolované v privátní virtuální s�
 
 ## <a name="encryption"></a>Šifrování
 
-Uživatelská data se ukládají ve službě Azure Storage. Data uživatelů jsou v klidovém stavu zašifrovaná a v klidovém stavu a jejich zabezpečení a důvěrnost. Další informace naleznete v tématu: [Průvodce zabezpečením Azure Storage.](../../storage/common/storage-security-guide.md)
+Uživatelská data se ukládají ve službě Azure Storage. Data uživatelů jsou v klidovém stavu zašifrovaná a v klidovém stavu a jejich zabezpečení a důvěrnost. Další informace najdete v tématu: [Azure Storage Průvodce zabezpečením](../../storage/common/storage-security-guide.md).
 
 ## <a name="authentication"></a>Ověřování
 
@@ -63,6 +63,6 @@ Privátní klíče slouží k digitálnímu podepisování transakcí. V soukrom
 
 Klíče Constellation slouží k jednoznačné identifikaci uzlu kvora. Klíče Constellation jsou generovány v době zřizování uzlu a jsou zadány v parametru privateFor soukromé transakce v rámci kvora.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Konfigurace uzlů transakcí služby Azure blockchain](configure-transaction-nodes.md)

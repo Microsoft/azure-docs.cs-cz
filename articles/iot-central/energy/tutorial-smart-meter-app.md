@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 06b4fe3b716f2252f064a5b36fcde7dd7198db2d
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: c7bb35e7de6400a0fad13845a3faa38ad21b6de7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026743"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581245"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Kurz: vytvoření a procházení šablony aplikace pro monitorování inteligentního měření 
 
@@ -29,11 +29,11 @@ Tento kurz vás provede procesem vytvoření aplikace pro monitorování intelig
 
 Pokud předplatné nemáte, [Vytvořte si bezplatný zkušební účet](https://azure.microsoft.com/free)
 
-## <a name="prerequisites"></a>Předpoklady
-- Žádné
+## <a name="prerequisites"></a>Požadavky
+- Žádný
 - Doporučuje se předplatné Azure, ale není to nutné.
 
-## <a name="create-a-smart-meter-monitoring-app"></a>Vytvoření aplikace pro monitorování inteligentního měření 
+## <a name="create-a-smart-meter-monitoring-app"></a>Vytvoření aplikace pro inteligentní monitorování měřičů 
 
 Tuto aplikaci můžete vytvořit ve třech jednoduchých krocích:
 
@@ -41,8 +41,8 @@ Tuto aplikaci můžete vytvořit ve třech jednoduchých krocích:
 
 2. Vyberte kartu **energie** a klikněte na **vytvořit aplikaci** na dlaždici aplikace **monitorování inteligentního měření** .
 
-    [!div class="mx-imgBorder"]
-    ![Build App](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
+    > [!div class="mx-imgBorder"]
+    > ![Build App](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
     
 
 3. Při **Vytvoření aplikace** se otevře formulář **nové aplikace** . Vyplňte požadované podrobnosti, jak je znázorněno na následujícím obrázku:
@@ -72,25 +72,25 @@ Adatum je fiktivní energetická společnost, která monitoruje a spravuje intel
 * Sledování celkové spotřeby energie pro účely plánování a fakturace
 * Operace s příkazy a ovládacími prvky, jako je třeba měřič připojení a verze firmwaru aktualizace. V šabloně se na příkazových tlačítkách zobrazují možné funkce a neodesílají skutečné příkazy. 
 
-[!div class="mx-imgBorder"]
-řídicí panel monitorování inteligentního měření ![](media/tutorial-iot-central-smart-meter/smart-meter-dashboard.png)
+> [!div class="mx-imgBorder"]
+> řídicí panel monitorování inteligentního měření ![](media/tutorial-iot-central-smart-meter/smart-meter-dashboard.png)
 
 ### <a name="devices"></a>Zařízení
 Aplikace přichází s ukázkovým zařízením inteligentního měření. Podrobnosti o zařízení uvidíte kliknutím na kartu **zařízení** .
 
-[!div class="mx-imgBorder"]
-![zařízení inteligentního měření](media/tutorial-iot-central-smart-meter/smart-meter-devices.png)
+> [!div class="mx-imgBorder"]
+> ![zařízení inteligentního měření](media/tutorial-iot-central-smart-meter/smart-meter-devices.png)
 
 Kliknutím na odkaz ukázkový **SM0123456789** zařízení zobrazíte podrobnosti o zařízení. Můžete aktualizovat vlastnosti zařízení s možností zápisu na stránce **aktualizace vlastností** a vizualizovat aktualizované hodnoty na řídicím panelu.
 
-[!div class="mx-imgBorder"]
-![vlastnosti inteligentního měřiče](media/tutorial-iot-central-smart-meter/smart-meter-device-properties.png)
+> [!div class="mx-imgBorder"]
+> ![vlastnosti inteligentního měřiče](media/tutorial-iot-central-smart-meter/smart-meter-device-properties.png)
 
 ### <a name="device-template"></a>Šablona zařízení
 Pokud chcete zobrazit model zařízení inteligentního měření, klikněte na kartu **šablony zařízení** . Model má předem definované rozhraní pro data, vlastnosti, příkazy a zobrazení.
 
-[!div class="mx-imgBorder"]
-![šablony zařízení inteligentního měření](media/tutorial-iot-central-smart-meter/smart-meter-device-template.png)
+> [!div class="mx-imgBorder"]
+> ![šablony zařízení inteligentního měření](media/tutorial-iot-central-smart-meter/smart-meter-device-template.png)
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

@@ -4,14 +4,14 @@ description: Informace o správě účtů databáze ve službě Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: f67487f6da5c9be028703d7890e16ffab0c858c6
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 049be390403fe984ed4f8f38a4cdc86e24060e49
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812532"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582617"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Správa účtu služby Azure Cosmos DB
 
@@ -33,17 +33,17 @@ Další informace najdete v tématu [Vytvoření účtu Azure Cosmos DB pomocí 
 
 ### <a id="create-database-account-via-arm-template"></a>Šablona Azure Resource Manager
 
-Tato šablona Azure Resource Manager vytvoří účet Azure Cosmos pro všechna podporovaná rozhraní API nakonfigurovaná se dvěma oblastmi a možnostmi výběru úrovně konzistence, automatického převzetí služeb při selhání a více hlavních serverů. Pokud chcete tuto šablonu nasadit, klikněte na stránce Readme na nasadit do Azure a [vytvořte účet Azure Cosmos](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-create-multi-region-account) .
+Tato šablona Azure Resource Manager vytvoří účet Azure Cosmos pro rozhraní SQL API nakonfigurovaný se dvěma oblastmi a možnostmi pro výběr úrovně konzistence, automatického převzetí služeb při selhání a více hlavních serverů. Pokud chcete tuto šablonu nasadit, klikněte na stránce Readme na nasadit do Azure a [vytvořte účet Azure Cosmos](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql) .
 
 ## <a name="addremove-regions-from-your-database-account"></a>Přidání oblastí do účtu databáze nebo jejich odebrání
 
 ### <a id="add-remove-regions-via-portal"></a>Azure Portal
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure](https://portal.azure.com).
 
 1. Přejděte k účtu Azure Cosmos a otevřete nabídku **replikovat data globálně** .
 
-1. Chcete-li přidat oblasti, vyberte šestiúhelníky na mapě pomocí popisku **+** , který odpovídá požadovaným oblastem. Pokud chcete přidat oblast, vyberte možnost **+ Přidat oblast** a v rozevírací nabídce vyberte oblast.
+1. Chcete-li přidat oblasti, vyberte šestiúhelníky na mapě pomocí popisku **+** , který odpovídá vašim požadovaným oblastem (y). Pokud chcete přidat oblast, vyberte možnost **+ Přidat oblast** a v rozevírací nabídce vyberte oblast.
 
 1. Chcete-li odebrat oblasti, zrušte zaškrtnutí jedné nebo více oblastí z mapy tak, že vyberete modré šestiúhelníky se značkami zaškrtnutí. Nebo vyberte ikonu "wastebasket" (🗑) vedle oblasti na pravé straně.
 
@@ -113,7 +113,7 @@ Viz téma [Povolení oblastí s několika zápisy pomocí prostředí PowerShell
             "type": "Microsoft.DocumentDb/databaseAccounts",
             "kind": "GlobalDocumentDB",
             "name": "[parameters('name')]",
-            "apiVersion": "2015-04-08",
+            "apiVersion": "2019-08-01",
             "location": "[parameters('location')]",
             "tags": {},
             "properties": {
@@ -123,11 +123,13 @@ Viz téma [Povolení oblastí s několika zápisy pomocí prostředí PowerShell
                 [
                     {
                         "locationName": "[parameters('primaryRegion')]",
-                        "failoverPriority": 0
+                        "failoverPriority": 0,
+                        "isZoneRedundant": false
                     },
                     {
                         "locationName": "[parameters('secondaryRegion')]",
-                        "failoverPriority": 1
+                        "failoverPriority": 1,
+                        "isZoneRedundant": false
                     }
                 ],
                 "enableMultipleWriteLocations": true
@@ -151,7 +153,7 @@ Možnost automatického převzetí služeb při selhání umožňuje Azure Cosmo
 
 3. V podokně **automatické převzetí služeb při selhání** ověřte, že je **možnost povolit automatické převzetí služeb při** selhání nastavena na **zapnuto**. 
 
-4. Vyberte **Save** (Uložit).
+4. Vyberte **Uložit**.
 
    ![Nabídka portálu Automatické převzetí služeb při selhání](./media/how-to-manage-database-account/automatic-failover.png)
 
@@ -182,7 +184,7 @@ Po nakonfigurování účtu Cosmos pro automatické převzetí služeb při selh
 
 4. Pokud chcete změnit prioritu převzetí služeb při selhání, přetáhněte oblasti čtení přes tři tečky na levé straně řádku, která se zobrazí, když na ně najedete myší.
 
-5. Vyberte **Save** (Uložit).
+5. Vyberte **Uložit**.
 
    ![Nabídka portálu Automatické převzetí služeb při selhání](./media/how-to-manage-database-account/automatic-failover.png)
 

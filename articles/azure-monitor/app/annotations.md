@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/01/2019
-ms.openlocfilehash: 9dbdd683a8545e0f8c573dfba60daa96ef5ff08d
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: f9ab1f1ef2b64c07a3b0c8ddf93d6ef4293517db
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677856"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73668116"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Poznámky na grafech metrik v Application Insights
 
@@ -53,6 +53,9 @@ Vytvořte samostatný klíč rozhraní API pro každou ze šablon verze Azure Pi
 1. Vyberte **Přidat úlohu**a potom z nabídky vyberte úlohu **poznámky k verzi Application Insights** .
    
    ![Vyberte přidat úlohu a vyberte Application Insights poznámky k verzi.](./media/annotations/3-add-task.png)
+
+   > [!NOTE]
+   > Úloha poznámky k verzi aktuálně podporuje jenom agenty založené na Windows. neběží na Linux, macOS nebo jiných typech agentů.
    
 1. V části **ID aplikace**vložte Application Insights ID, které jste zkopírovali z karty **přístup k rozhraní API** .
    
@@ -68,7 +71,7 @@ Vytvořte samostatný klíč rozhraní API pro každou ze šablon verze Azure Pi
    
 1. V okně Šablona verze vyberte na kartě **proměnné** možnost **Přidat** a vytvořte definici proměnné pro nový klíč rozhraní API.
 
-1. Do pole **název**zadejte `ApiKey` a pod položkou **hodnota**vložte klíč rozhraní API, který jste zkopírovali z karty **přístup k rozhraní API** .
+1. Do pole **název**zadejte `ApiKey`a pod položkou **hodnota**vložte klíč rozhraní API, který jste zkopírovali z karty **přístup k rozhraní API** .
    
    ![Na kartě proměnné DevOps Azure vyberte Přidat, pojmenujte proměnnou ApiKey a vložte klíč rozhraní API pod hodnotu.](./media/annotations/7-paste-api-key.png)
    
@@ -88,7 +91,7 @@ Pomocí skriptu prostředí PowerShell pro [CreateReleaseAnnotation](https://git
    
 1. Pomocí kroků v předchozím postupu můžete získat ID Application Insights a na kartě **přístup k rozhraní api** Application Insights vytvořit klíč rozhraní API.
    
-1. Zavolejte skript prostředí PowerShell s následujícím kódem a nahraďte zástupné symboly v závorkách hodnotami. @No__t_0 jsou volitelné. 
+1. Zavolejte skript prostředí PowerShell s následujícím kódem a nahraďte zástupné symboly v závorkách hodnotami. `-releaseProperties` jsou volitelné. 
    
    ```powershell
    

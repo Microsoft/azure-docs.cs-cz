@@ -1,68 +1,68 @@
 ---
-title: Dotazování na Avro data pomocí Azure Data Lake Analytics | Dokumentace Microsoftu
-description: Pomocí vlastnosti text zprávy směrovat do úložiště objektů Blob v telemetrii zařízení a zadávat dotazy na data formátu Avro, která jsou zapsána do úložiště objektů Blob.
+title: Dotazování na data Avro pomocí Azure Data Lake Analytics | Microsoft Docs
+description: Vlastnosti textu zprávy slouží ke směrování telemetrie zařízení do úložiště objektů BLOB a dotazování na data formátu Avro, která se zapisují do úložiště objektů BLOB.
 author: ash2017
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 84e1dd77c6e873dc2facb5126bbddf795192b60d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 92fc5bb88ff5efd8fe1a8cd61be833b3984b673a
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257751"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605622"
 ---
-# <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Dotazování na Avro data pomocí Azure Data Lake Analytics
+# <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Dotazování na data Avro pomocí Azure Data Lake Analytics
 
-Tento článek popisuje, jak dotazovat data Avro můžete efektivně směrovat zprávy ze služby Azure IoT Hub ke službám Azure. [Směrování zpráv](iot-hub-devguide-messages-d2c.md) umožňuje filtrovat data s využitím bohaté dotazy na základě vlastnosti zprávy, text zprávy, značky dvojčat zařízení a vlastnosti dvojčete zařízení. Další informace o dotazování funkce směrování zpráv, najdete v článku [zprávy syntaxi dotazů směrování](iot-hub-devguide-routing-query-syntax.md).
+Tento článek popisuje, jak pomocí dotazu na Avro data efektivně směrovat zprávy z Azure IoT Hub do služeb Azure. [Směrování zpráv](iot-hub-devguide-messages-d2c.md) umožňuje filtrovat data pomocí bohatých dotazů na základě vlastností zpráv, textu zprávy, značek a dvojitých vlastností zařízení. Další informace o možnostech dotazování ve směrování zpráv najdete v článku o [syntaxi dotazu směrování zpráv](iot-hub-devguide-routing-query-syntax.md).
 
-Výzvu se, že když Azure IoT Hub provádí směrování zpráv do úložiště objektů Blob v Azure, ve výchozím nastavení služby IoT Hub zapíše obsah ve formátu Avro, který má do zprávy vlastnost text i vlastnost zprávy. Formát Avro se nepoužívá pro všechny ostatní koncové body. Ačkoli formát Avro se skvěle hodí pro zachování dat a zpráva, představuje výzvu ji používat k dotazování na data. Porovnání je mnohem jednodušší pro dotazování na data ve formátu JSON nebo CSV. IoT Hub teď podporuje zápis dat do úložiště objektů Blob ve formátu JSON, jakož i AVRO.
+Je to proto, že když Azure IoT Hub směruje zprávy do služby Azure Blob Storage, ve výchozím nastavení IoT Hub zapisuje obsah ve formátu Avro, který má vlastnost tělo zprávy i vlastnost Message. Formát Avro se nepoužívá pro žádné jiné koncové body. I když je formát Avro skvělý pro zachování dat a zpráv, je to výzva k jeho použití k dotazování na data. Ve srovnání se formátem JSON nebo CSV je mnohem snazší dotazování na data. IoT Hub nyní podporuje zápis dat do úložiště objektů BLOB ve formátu JSON a také AVRO.
 
-Další informace najdete v tématu [pomocí Azure Blob Storage jako koncový bod směrování](iot-hub-devguide-messages-d2c.md#azure-blob-storage).
+Další informace najdete v tématu [použití Azure Storage jako koncového bodu směrování](iot-hub-devguide-messages-d2c.md#azure-storage).
 
-Adres nerelačních potřebám velkých objemů dat a formátů a tento problém vyřešili, můžete použít mnoho vzorků velkých objemů dat pro transformaci a škálování data. Jednomu ze vzorů, "platba za dotazu", Azure Data Lake Analytics, který je hlavním cílem tohoto článku. I když v Hadoop nebo jiná řešení můžete snadno spustit dotaz, Data Lake Analytics je často vhodnější pro tento přístup "platba za dotaz".
+Chcete-li vyřešit nerelační potřeby velkých objemů dat a formáty a překonat tuto výzvu, můžete použít mnoho vzorů velkých objemů dat pro transformaci a škálování dat. Jednou ze vzorů je "platí pro dotaz", je Azure Data Lake Analytics, což je zaměření tohoto článku. I když můžete snadno spustit dotaz v Hadoop nebo jiných řešeních, Data Lake Analytics je často vhodnější pro tento přístup typu "Plaťte na dotaz".
 
-Není k dispozici "Extraktor" pro Avro v U-SQL. Další informace najdete v tématu [U-SQL Avro příklad](https://github.com/Azure/usql/tree/master/Examples/AvroExamples).
+Pro Avro v U-SQL je k dispozici "extraktor". Další informace najdete v tématu [Avro příklad u-SQL](https://github.com/Azure/usql/tree/master/Examples/AvroExamples).
 
-## <a name="query-and-export-avro-data-to-a-csv-file"></a>Dotazování a Avro data exportovat do souboru CSV
+## <a name="query-and-export-avro-data-to-a-csv-file"></a>Dotazování a export Avro dat do souboru CSV
 
-V této části dotazování na Avro data a exportujte ho do souboru CSV v úložišti objektů Blob v Azure, i když může snadno umístit data v jiných úložištích nebo dat úložiště.
+V této části se dotazuje na data Avro a exportují je do souboru CSV v úložišti objektů BLOB v Azure, i když můžete data snadno umístit do jiných úložišť nebo úložišť dat.
 
-1. Nastavení služby Azure IoT Hub pro data trasy pro koncový bod úložiště objektů Blob v Azure pomocí vlastnosti v textu zprávy k výběru zprávy.
+1. Nastavte Azure IoT Hub pro směrování dat do koncového bodu služby Azure Blob Storage pomocí vlastnosti v těle zprávy pro výběr zpráv.
 
-   ![V části "Vlastní koncové body"](./media/iot-hub-query-avro-data/query-avro-data-1a.png)
+   ![Oddíl Custom Endpoints](./media/iot-hub-query-avro-data/query-avro-data-1a.png)
 
    ![Pravidla směrování](./media/iot-hub-query-avro-data/query-avro-data-1b.png)
 
-   Další informace o nastavení trasy a vlastní koncové body, naleznete v tématu [směrování zpráv pro službu IoT hub](iot-hub-create-through-portal.md#message-routing-for-an-iot-hub).
+   Další informace o nastavení tras a vlastních koncových bodech najdete v tématu [směrování zpráv pro službu IoT Hub](iot-hub-create-through-portal.md#message-routing-for-an-iot-hub).
 
-2. Ujistěte se, že vaše zařízení má kódování, typu obsahu a potřebná data ve vlastnosti nebo zprávy, jak je uvedeno v dokumentaci k produktu. Při zobrazení těchto atributů v Device Explorer, jak je znázorněno zde můžete ověřit, že jsou nastavené správně.
+2. Ujistěte se, že vaše zařízení má kódování, typ obsahu a požadovaná data v rámci vlastností nebo textu zprávy, jak je odkazováno v dokumentaci k produktu. Při zobrazení těchto atributů v Device Explorer, jak je znázorněno zde, můžete ověřit, že jsou správně nastaveny.
 
-   ![V podokně Data centra událostí](./media/iot-hub-query-avro-data/query-avro-data-2.png)
+   ![Podokno data centra událostí](./media/iot-hub-query-avro-data/query-avro-data-2.png)
 
-3. Nastavte instanci Azure Data Lake Store a Data Lake Analytics instance. Azure IoT Hub nesměruje do Data Lake Store instance, ale instance Data Lake Analytics vyžaduje.
+3. Nastavte instanci Azure Data Lake Store a instanci Data Lake Analytics. Azure IoT Hub nesměruje na instanci Data Lake Store, ale instance Data Lake Analytics vyžaduje jednu instanci.
 
-   ![Data Lake Store a Data Lake Analytics](./media/iot-hub-query-avro-data/query-avro-data-3.png)
+   ![Instance Data Lake Store a Data Lake Analytics](./media/iot-hub-query-avro-data/query-avro-data-3.png)
 
-4. V Data Lake Analytics nakonfigurujte jako další úložiště, stejné úložiště objektů Blob, který směruje Azure IoT Hub dat do úložiště objektů Blob v Azure.
+4. V Data Lake Analytics nakonfigurujte úložiště objektů BLOB v Azure jako další úložiště, stejné úložiště objektů blob, na které Azure IoT Hub směruje data.
 
-   ![V podokně "Zdroje dat"](./media/iot-hub-query-avro-data/query-avro-data-4.png)
+   ![Podokno zdroje dat](./media/iot-hub-query-avro-data/query-avro-data-4.png)
 
-5. Jak je popsáno v [U-SQL Avro příklad](https://github.com/Azure/usql/tree/master/Examples/AvroExamples), budete potřebovat čtyři knihovny DLL. Tyto soubory nahrajte do umístění ve vaší instanci Data Lake Store.
+5. Jak je popsáno v [příkladu Avro U-SQL](https://github.com/Azure/usql/tree/master/Examples/AvroExamples), budete potřebovat čtyři soubory DLL. Nahrajte tyto soubory do umístění ve vaší instanci Data Lake Store.
 
-   ![Čtyři nahraných souborů knihovny DLL](./media/iot-hub-query-avro-data/query-avro-data-5.png)
+   ![Čtyři nahrané soubory DLL](./media/iot-hub-query-avro-data/query-avro-data-5.png)
 
-6. V sadě Visual Studio vytvořte projekt U-SQL.
+6. V aplikaci Visual Studio vytvořte projekt U-SQL.
 
-   ! Vytvoření project](./media/iot-hub-query-avro-data/query-avro-data-6.png) U-SQL
+   ! Vytvoření projektu U-SQL] (./Media/IoT-Hub-Query-Avro-data/Query-Avro-data-6.png)
 
-7. Vložte obsah následujícího skriptu do nově vytvořený soubor. Upravit tři zvýrazněné sekce: účtu Data Lake Analytics, cesty k souborům přidružené knihovny DLL a správnou cestu k účtu úložiště.
+7. Vložte obsah následujícího skriptu do nově vytvořeného souboru. Upravte tři zvýrazněné oddíly: účet Data Lake Analytics, přidružené cesty k souborům DLL a správnou cestu k vašemu účtu úložiště.
 
-   ![Tři části má být upraven](./media/iot-hub-query-avro-data/query-avro-data-7a.png)
+   ![Tři oddíly, které mají být upraveny](./media/iot-hub-query-avro-data/query-avro-data-7a.png)
 
-   Skutečné skript U-SQL pro jednoduché výstup do souboru CSV:
+   Skutečný skript U-SQL pro jednoduchý výstup do souboru CSV:
 
     ```sql
         DROP ASSEMBLY IF EXISTS [Avro];
@@ -129,15 +129,15 @@ V této části dotazování na Avro data a exportujte ho do souboru CSV v úlo�
         OUTPUT @cnt TO @output_file USING Outputters.Text(); 
     ```
 
-    Data Lake Analytics, kterou trvalo 5 minut, spusťte následující skript, která byla omezena na 10 jednotek analýzy a zpracování 177 soubory. Výsledek se zobrazí ve výstupu souboru CSV, který se zobrazí na následujícím obrázku:
+    Spuštění následujícího skriptu trvalo Data Lake Analytics pět minut, což bylo omezeno na 10 analytických jednotek a zpracovaných souborů 177. Výsledek se zobrazí ve výstupu souboru CSV, který je zobrazený na následujícím obrázku:
 
     ![Výsledky výstupu do souboru CSV](./media/iot-hub-query-avro-data/query-avro-data-7b.png)
 
-    ![Výstup převodu do souboru CSV](./media/iot-hub-query-avro-data/query-avro-data-7c.png)
+    ![Výstup převedený na soubor CSV](./media/iot-hub-query-avro-data/query-avro-data-7c.png)
 
-    Parsovat JSON, pokračujte krokem 8.
+    Chcete-li kód JSON analyzovat, pokračujte krokem 8.
 
-8. Většina IoT zprávy jsou ve formátu JSON. Přidejte následující řádky, je možné analyzovat zprávu do souboru JSON, která vám umožní přidat klauzule WHERE a výstup pouze potřebná data.
+8. Většina zpráv IoT je ve formátu JSON. Přidáním následujících řádků můžete analyzovat zprávu do souboru JSON, který umožňuje přidat klauzule WHERE a výstup pouze potřebná data.
 
     ```sql
        @jsonify =
@@ -163,16 +163,16 @@ V této části dotazování na Avro data a exportujte ho do souboru CSV v úlo�
         OUTPUT @cnt TO @output_file USING Outputters.Text();
     ```
 
-    Výstup zobrazuje sloupec pro každou položku v `SELECT` příkazu.
+    Výstup zobrazí sloupec pro každou položku v příkazu `SELECT`.
 
-    ![Výstup zobrazuje sloupec pro každou položku](./media/iot-hub-query-avro-data/query-avro-data-8.png)
+    ![Výstup zobrazující sloupec pro každou položku](./media/iot-hub-query-avro-data/query-avro-data-8.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak zadávat dotazy na data Avro můžete efektivně směrovat zprávy ze služby Azure IoT Hub ke službám Azure.
+V tomto kurzu jste zjistili, jak pomocí dotazu na Avro data efektivně směrovat zprávy z Azure IoT Hub do služeb Azure.
 
-Příklady kompletní řešení začátku do konce, které používají služby IoT Hub, najdete v článku [dokumentace k Akcelerátorům řešení Azure IoT](/azure/iot-accelerators).
+Příklady kompletních řešení, která používají IoT Hub, najdete v [dokumentaci k akcelerátorům řešení Azure IoT](/azure/iot-accelerators).
 
-Další informace o vývoji řešení s využitím služby IoT Hub, najdete v článku [Příručka vývojáře pro IoT Hub](iot-hub-devguide.md).
+Další informace o vývoji řešení pomocí IoT Hub najdete v příručce pro [vývojáře IoT Hub](iot-hub-devguide.md).
 
-Další informace o směrování zpráv ve službě IoT Hub, najdete v článku [odesílání a příjem zpráv pomocí služby IoT Hub](iot-hub-devguide-messaging.md).
+Další informace o směrování zpráv v IoT Hub najdete v tématu [posílání a přijímání zpráv pomocí IoT Hub](iot-hub-devguide-messaging.md).

@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s Azure Data Factorymi datovými toky | Microsoft Docs
+title: Řešení potíží s Azure Data Factory toky dat
 description: Naučte se řešit problémy toku dat v Azure Data Factory.
 services: data-factory
 author: kromerm
@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 10/08/2019
 ms.author: makromer
-ms.openlocfilehash: 53c38af2208be6bb7cdb794ad0403456613f2df6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1b2309ec71cb3d43f4e5a39b80db593ab201c614
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486185"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721344"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Řešení potíží s Azure Data Factory toky dat
 
@@ -76,6 +76,15 @@ Tento článek popisuje běžné metody řešení potíží pro toky dat v Azure
 
 - **Řešení**: můžete zkrátit délku dat pro sloupce řetězců pomocí ```left()``` v odvozeném sloupci nebo implementovat [vzor "chybový řádek".](how-to-data-flow-error-rows.md)
 
+### <a name="error-message-since-spark-23-the-queries-from-raw-jsoncsv-files-are-disallowed-when-the-referenced-columns-only-include-the-internal-corrupt-record-column"></a>Chybová zpráva: protože Spark 2,3, dotazy z nezpracovaných souborů JSON/CSV jsou zakázané, pokud odkazované sloupce obsahují jenom interní poškozený sloupec záznamu. 
+
+- **Příznaky**: čtení ze zdroje JSON se nepovedlo.
+
+- **Příčina**: při čtení ze zdroje JSON s jedním dokumentem na mnoha vnořených řádcích, ADF, přes Spark, nemůže určit, kde začíná nový dokument a předchozí dokument končí.
+
+- **Řešení**: ve zdrojové transformaci, která používá datovou sadu JSON, rozbalte "nastavení JSON" a zapněte "jednotlivý dokument".
+
+
 ## <a name="general-troubleshooting-guidance"></a>Obecné pokyny k odstraňování potíží
 
 1. Ověřte stav připojení datové sady. V každé transformaci zdroje a jímky navštivte propojenou službu pro každou datovou sadu, kterou používáte, a otestujte připojení.
@@ -86,7 +95,7 @@ Tento článek popisuje běžné metody řešení potíží pro toky dat v Azure
 
 Pro další nápovědu k řešení potíží zkuste tyto prostředky:
 
-*  [Blog Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Blog věnovaný Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
 *  [Videa k Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Fórum MSDN](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)

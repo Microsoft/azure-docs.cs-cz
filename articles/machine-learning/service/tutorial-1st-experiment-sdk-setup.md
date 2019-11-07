@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 891615ea301348b83124823b10403964d394c224
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 59844c5989abb03bbe5134c83c9653290c17d0a9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476017"
+ms.locfileid: "73582484"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Kurz: Začínáme s vytvářením prvního experimentu ML pomocí sady Python SDK
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvořte [pracovní prostor Azure Machine Learning](concept-workspace.md) pro použití v dalším kurzu.
 > * Naklonujte Poznámkový blok kurzů do složky v pracovním prostoru.
-> * Vytvořte cloudovou instanci COMPUTE s nainstalovanou a předem nakonfigurovanou sadou Azure Machine Learning Python SDK.
+> * Vytvořte cloudový virtuální počítač s poznámkovým blokem s nainstalovanou a předem nakonfigurovanou sadou Azure Machine Learning Python SDK.
 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
@@ -79,7 +79,7 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
     
 1. Ve složce s **kurzy** vyberte soubor **kurz – 1st-experiment-SDK-ipynb** .
 
-1. Na horním panelu vyberte výpočetní instanci, kterou chcete použít ke spuštění poznámkového bloku. Tyto virtuální počítače jsou předem nakonfigurované se všemi [potřebnými ke spuštění Azure Machine Learning](concept-compute-instance.md#contents). Můžete vybrat virtuální počítač vytvořený libovolným uživatelem pracovního prostoru. 
+1. Na horním panelu vyberte virtuální počítač poznámkového bloku, který chcete použít ke spuštění poznámkového bloku. Tyto virtuální počítače jsou předem nakonfigurované se všemi potřebnými ke spuštění Azure Machine Learning. Můžete vybrat virtuální počítač vytvořený libovolným uživatelem pracovního prostoru. 
 
 1. Pokud se nenašly žádné virtuální počítače, vyberte **+ Přidat výpočetní** prostředky a vytvořte virtuální počítač.
 
@@ -89,9 +89,6 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
 
 1. Jakmile je virtuální počítač k dispozici, zobrazí se na horním panelu nástrojů.  Tento Poznámkový blok teď můžete spustit buď pomocí rutiny **Spustit vše** na panelu nástrojů, nebo pomocí **SHIFT + ENTER** v buňkách kódu poznámkového bloku.
 
-> [!NOTE]
-> Výpočetní instance jsou k dispozici pouze pro pracovní prostory s oblastí **střed USA – sever** nebo **Velká Británie – jih**.
->Pokud je váš pracovní prostor v jakékoli jiné oblasti, můžete místo toho vytvořit a použít [virtuální počítač s poznámkovým blokem](concept-compute-instance.md#notebookvm) .  Ke spuštění poznámkového bloku můžete použít buď virtuální počítač s poznámkovým blokem, nebo instanci služby Compute.
 
 ## <a name="next-steps"></a>Další kroky
 

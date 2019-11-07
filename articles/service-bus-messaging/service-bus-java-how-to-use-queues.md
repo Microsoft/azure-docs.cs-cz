@@ -1,6 +1,6 @@
 ---
-title: Použití Azure Service Bus front s Java
-description: Naučte se používat fronty Service Bus v Azure. Ukázky kódu napsané v jazyce Java.
+title: 'Rychlý Start: použití Azure Service Bus front pomocí Java'
+description: 'Rychlý Start: Naučte se používat fronty Service Bus v Azure. Ukázky kódu napsané v jazyce Java.'
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -11,18 +11,19 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
-ms.topic: article
-ms.date: 04/10/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 19cfd2c5dd4229e4687fcb1a3286509c9b768d7a
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: bb51f30a69294cd78d0664a5bdae70c969da1972
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155504"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721703"
 ---
-# <a name="use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Použití Azure Service Bus front s jazykem Java k posílání a přijímání zpráv
+# <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Rychlý Start: použití Azure Service Bus front s jazykem Java k posílání a přijímání zpráv
+
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 V tomto kurzu se naučíte vytvářet aplikace v jazyce Java pro posílání zpráv a příjem zpráv z fronty Azure Service Bus. 
 
@@ -44,7 +45,7 @@ Před vytvořením této ukázky se ujistěte, že máte nainstalovanou [sadu Az
 
 ![Přidání knihoven Microsoft Azure pro Java do projektu zatmění](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
 
-Do horní části `import` souboru Java přidejte následující příkazy:
+Do horní části souboru Java přidejte následující příkazy `import`:
 
 ```java
 // Include the following imports to use Service Bus APIs
@@ -125,7 +126,7 @@ Vzhledem k tomu, že Service Bus označila zprávu jako spotřebovaná, pak kdy�
 
 V režimu **PeekLock** se přijme operace se dvěma fázemi, která umožňuje podporovat aplikace, které nemůžou tolerovat chybějící zprávy. Když Service Bus přijme požadavek, najde zprávu, která je na řadě ke spotřebování, uzamkne ji proti spotřebování jinými spotřebiteli a vrátí ji do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo je uloží spolehlivě pro budoucí zpracování), dokončí druhou fázi procesu příjmu voláním **Delete** v přijaté zprávě. Když Service Bus uvidí volání při **odstranění** , označí zprávu jako spotřebou a odebere ji z fronty.
 
-Následující příklad ukazuje, jak lze přijímat a zpracovávat zprávy pomocí režimu **PeekLock** (nikoli ve výchozím režimu). Následující příklad provádí nekonečnou smyčku a zpracovává zprávy, když dorazí `TestQueue`do naší:
+Následující příklad ukazuje, jak lze přijímat a zpracovávat zprávy pomocí režimu **PeekLock** (nikoli ve výchozím režimu). Následující příklad provádí nekonečnou smyčku a zpracovává zprávy, když dorazí do našich `TestQueue`:
 
 ```java
     public void run() throws Exception {

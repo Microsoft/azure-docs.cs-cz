@@ -1,5 +1,5 @@
 ---
-title: Textový formát s oddělovači v Azure Data Factory | Microsoft Docs
+title: Textový formát s oddělovači v Azure Data Factory
 description: Toto téma popisuje, jak v Azure Data Factory pracovat s odděleným formátem textu.
 author: linda33wj
 manager: craigg
@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: fb836b44ebd567f0ce1c833ca523b1c199ed9c9a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: b710492b3416371d8d554945a60160261e5a8c6a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72785998"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73674827"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Textový formát s oddělovači v Azure Data Factory
 
@@ -30,15 +30,15 @@ Pro následující konektory se podporuje textový formát s oddělovači: [Amaz
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Vlastnost Type datové sady musí být nastavená na **DelimitedText**. | Ano      |
 | location         | Nastavení umístění souborů. Každý konektor založený na souborech má svůj vlastní typ umístění a podporované vlastnosti v rámci `location`.  | Ano      |
-| columnDelimiter  | Znak (y) použitý k oddělení sloupců v souboru. V současné době je oddělovač více znaků podporován pouze pro tok dat mapování, nikoli pro aktivitu kopírování. <br>Výchozí hodnota je **čárka `,`** , pokud je oddělovač sloupce definován jako prázdný řetězec, což znamená bez oddělovače, je celý řádek považován za jeden sloupec. | Ne       |
-| rowDelimiter     | Jeden znak nebo "\r\n", který se používá k oddělení řádků v souboru.<br>Výchozí hodnota je libovolná z následujících hodnot pro **čtení: ["\r\n", "\r", "\n"]** a **"\n" nebo "\r\n" při zápisu** pomocí mapování toku dat a aktivity kopírování v uvedeném pořadí. <br>Je-li hodnota `rowDelimiter` nastavená na hodnotu bez oddělovače (prázdný řetězec), musí být `columnDelimiter` nastavena také na hodnotu bez oddělovače (prázdný řetězec), což znamená, že bude celý obsah zacházet jako jediná hodnota. | Ne       |
-| quoteChar        | Jediný znak pro hodnoty sloupce uvozovek, pokud obsahuje oddělovač sloupců. <br>Výchozí hodnota je **dvojité uvozovky** `"`. <br>Pro mapování toku dat `quoteChar` nemůže být prázdný řetězec. <br>Pokud je pro aktivitu kopírování definovaná hodnota `quoteChar`, znamená to, že není v uvozovkách žádná znak citace ani hodnota sloupce a `escapeChar` se používá k opuštění oddělovače sloupců a sebe samé. | Ne       |
-| escapeChar       | Jeden znak pro řídicí uvozovky uvnitř hodnoty v uvozovkách.<br>Výchozí hodnota je **zpětné lomítko `\`** . <br>Pro mapování toku dat `escapeChar` nemůže být prázdný řetězec. <br/>Pokud je pro aktivitu kopírování definovaná hodnota `escapeChar`, musí být hodnota `quoteChar` nastavena jako prázdný řetězec. v takovém případě zajistěte, aby všechny hodnoty sloupce neobsahovaly oddělovače. | Ne       |
+| columnDelimiter  | Znak (y) použitý k oddělení sloupců v souboru. V současné době je oddělovač více znaků podporován pouze pro tok dat mapování, nikoli pro aktivitu kopírování. <br>Výchozí hodnota je **čárka `,`** , když je oddělovač sloupce definovaný jako prázdný řetězec, což znamená, že se celý řádek považuje za jeden sloupec. | Ne       |
+| rowDelimiter     | Jeden znak nebo "\r\n", který se používá k oddělení řádků v souboru.<br>Výchozí hodnota je libovolná z následujících hodnot pro **čtení: ["\r\n", "\r", "\n"]** a **"\n" nebo "\r\n" při zápisu** pomocí mapování toku dat a aktivity kopírování v uvedeném pořadí. <br>Pokud je `rowDelimiter` nastavena na hodnotu bez oddělovače (prázdný řetězec), musí být `columnDelimiter` nastavena jako bez oddělovače (prázdný řetězec), což znamená, že bude celý obsah považován za jedinou hodnotu. | Ne       |
+| quoteChar        | Jediný znak pro hodnoty sloupce uvozovek, pokud obsahuje oddělovač sloupců. <br>Výchozí hodnota je **dvojité uvozovky** `"`. <br>Pro mapování toku dat `quoteChar` nemůže být prázdným řetězcem. <br>Pokud je pro aktivitu kopírování definována hodnota `quoteChar` jako prázdný řetězec, znamená to, že znak citace ani hodnota sloupce není v uvozovkách a `escapeChar` se používá k opuštění oddělovače sloupců a sebe samé. | Ne       |
+| escapeChar       | Jeden znak pro řídicí uvozovky uvnitř hodnoty v uvozovkách.<br>Výchozí hodnota je **zpětné lomítko `\`** . <br>Pro mapování toku dat `escapeChar` nemůže být prázdným řetězcem. <br/>Pokud je pro aktivitu kopírování definována hodnota `escapeChar` jako prázdný řetězec, musí být `quoteChar` nastavena jako prázdný řetězec. v takovém případě zajistěte, aby všechny hodnoty sloupce neobsahovaly oddělovače. | Ne       |
 | firstRowAsHeader | Určuje, zda má být první řádek považován za řádek záhlaví s názvy sloupců.<br>Povolené hodnoty jsou **true** a **false** (výchozí). | Ne       |
 | nullValue        | Určuje řetězcovou reprezentaci hodnoty null. <br>Výchozí hodnota je **prázdný řetězec**. | Ne       |
 | encodingName     | Typ kódování používaný pro čtení a zápis testovacích souborů. <br>Povolené hodnoty jsou následující: UTF-8, UTF-16, "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", " IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149" , "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13", "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", " WINDOWS-1252 "," WINDOWS-1253 "," WINDOWS-1254 "," WINDOWS-1255 "," WINDOWS-1256 "," WINDOWS-1257 "," WINDOWS-1258 ".<br>Datový tok mapování poznámek nepodporuje kódování UTF-7. | Ne       |
 | compressionCodec | Kompresní kodek používaný pro čtení a zápis textových souborů. <br>Povolené hodnoty jsou **bzip2**, **gzip**, **Deflate**, **ZipDeflate**, **přichycení**nebo **LZ4**. pro použití při ukládání souboru. <br>Poznámka: aktivita kopírování nepodporuje "přichycení" & "LZ4" a tok dat mapování nepodporuje "ZipDeflate". | Ne       |
-| compressionLevel | Kompresní poměr <br>Povolené hodnoty jsou **optimální** nebo **nejrychlejší**.<br>- **nejrychlejší:** komprese by měla být dokončena co nejrychleji, a to i v případě, že výsledný soubor není optimálně komprimován.<br>- **optimální**: operace komprese by měla být optimálně komprimovaná, i když dokončení operace trvá déle. Další informace najdete v tématu [úroveň komprese](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) . | Ne       |
+| compressionLevel | Kompresní poměr <br>Povolené hodnoty jsou **optimální** nebo **nejrychlejší**.<br>- **nejrychlejší:** komprese by se měla dokončit co nejrychleji, a to i v případě, že výsledný soubor není optimálně komprimován.<br>- **optimální**: komprese by měla být optimálně komprimovaná, i když dokončení operace trvá déle. Další informace najdete v tématu [úroveň komprese](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) . | Ne       |
 
 Níže je příklad objektu s oddělovači textu v Azure Blob Storage:
 
@@ -79,9 +79,9 @@ V části ***\*zdrojového\**** aktivity kopírování jsou podporovány násled
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **DelimitedTextSource**. | Ano      |
 | formatSettings | Skupina vlastností Viz tabulka **nastavení čtení s oddělovači textu** níže. | Ne       |
-| storeSettings  | Skupina vlastností, jak číst data z úložiště dat. Každý konektor založený na souborech má své vlastní podporované nastavení čtení v části `storeSettings`. | Ne       |
+| storeSettings  | Skupina vlastností, jak číst data z úložiště dat. Jednotlivé konektory založené na souborech mají ve `storeSettings`své vlastní podporované nastavení pro čtení. | Ne       |
 
-Podporované **nastavení čtení textu s oddělovači** v rámci `formatSettings`:
+Podporuje **nastavení čtení textu s oddělovači** v rámci `formatSettings`:
 
 | Vlastnost      | Popis                                                  | Požaduje se |
 | ------------- | ------------------------------------------------------------ | -------- |
@@ -103,7 +103,7 @@ Podporované **nastavení zápisu textu s oddělovači** v rámci `formatSetting
 | Vlastnost      | Popis                                                  | Požaduje se                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | Typ formatSettings musí být nastaven na hodnotu **DelimitedTextWriteSetting**. | Ano                                                   |
-| fileExtension | Přípona souboru, která slouží k pojmenování výstupních souborů, např. `.csv`, `.txt`. Je nutné zadat, když `fileName` není zadáno ve výstupní datové sadě DelimitedText. | Ano, pokud není zadaný název souboru v výstupní datové sadě |
+| fileExtension | Přípona souboru, která slouží k pojmenování výstupních souborů, např. `.csv`, `.txt`. Je nutné zadat, když `fileName` není zadána ve výstupní datové sadě DelimitedText. | Ano, pokud není zadaný název souboru v výstupní datové sadě |
 
 ## <a name="mapping-data-flow-properties"></a>Mapování vlastností toku dat
 

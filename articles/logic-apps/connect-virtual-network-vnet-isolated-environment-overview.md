@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 07/26/2019
-ms.openlocfilehash: 5d42b9fc2dfd7cbee230b65f7d9844c9e7332147
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.date: 11/06/2019
+ms.openlocfilehash: adb89c04a83bbfbd5bddd5c23b0fa88019a88991
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680509"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721384"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Přístup k prostředkům Azure Virtual Network z Azure Logic Apps pomocí prostředí integračních služeb (ISEs)
 
@@ -28,9 +28,9 @@ Po vytvoření ISE můžete při vytváření vaší aplikace logiky nebo účtu
 
 Vaše aplikace logiky teď může přímo přistupovat k systémům, které jsou uvnitř nebo připojené k vaší virtuální síti pomocí kterékoli z těchto položek:
 
-* Konektor **ISE**s popiskem pro tento systém, například SQL Server
+* Konektor **ISE**s popiskem pro tento systém
 * Integrovaná aktivační událost nebo akce s označením **Core**, jako je například Trigger nebo akce http
-* vlastní konektor
+* Vlastní konektor
 
 Tento přehled popisuje další podrobnosti o tom, jak ISE poskytuje vašim aplikacím logiky a integračním účtům přímý přístup k vaší virtuální síti Azure a porovnává rozdíly mezi ISE a službou Global Logic Apps.
 
@@ -51,7 +51,7 @@ Logic Apps v ISE poskytují stejné uživatelské prostředí a podobné možnos
 * Blob Storage Azure, File Storage a Table Storage
 * Fronty Azure, Azure Service Bus, Azure Event Hubs a IBM MQ
 * FTP a SFTP – SSH
-* SQL Server, SQL Data Warehouse Azure Cosmos DB
+* SQL Server, Azure SQL Data Warehouse Azure Cosmos DB
 * AS2, X12 a EDIFACT
 
 Rozdíl mezi konektory ISE a non-ISE je v umístěních, kde se spouštějí triggery a akce:
@@ -92,6 +92,7 @@ Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pr
 Při vytváření ISE můžete použít buď interní nebo externí koncové body přístupu. Tyto koncové body určují, jestli triggery Request nebo Webhooku v Logic Apps ve vašem ISE můžou přijímat volání z vnějšku vaší virtuální sítě. Tyto koncové body mají také vliv na přístup k vstupům a výstupům v historii spuštění aplikace logiky.
 
 * **Interní**: veřejné koncové body, které umožňují volání Logic Apps v ISE plus přístup k vstupům a výstupům v historii spouštění jenom *z vaší virtuální sítě* .
+
 * **External**: veřejné koncové body, které umožňují volání Logic Apps v ISE plus přístup k vstupům a výstupům v historii spouštění *mimo vaši virtuální síť* .
 
 > [!IMPORTANT]
@@ -103,15 +104,20 @@ Při vytváření ISE můžete použít buď interní nebo externí koncové bod
 
 Pro místní systémy, které jsou připojené k virtuální síti Azure, zaISE do této sítě, aby vaše aplikace logiky mohly přímý přístup k těmto systémům pomocí kterékoli z těchto položek:
 
-* Konektor ISE-Version pro tento systém, například SQL Server
 * Akce HTTP
+
+* Konektor ISE s popiskem pro tento systém
+
+  > [!IMPORTANT]
+  > Pokud chcete s konektorem SQL Server používat ověřování systému Windows, musíte použít místní [bránu dat](../logic-apps/logic-apps-gateway-install.md). Konektor SQL Server nepodporuje ověřování Windows pro aplikaci logiky v ISE.
+
 * Vlastní konektor
 
   * Pokud máte vlastní konektory, které vyžadují místní bránu dat, a Vy jste tyto konektory vytvořili mimo ISE, můžete tyto konektory použít i v ISE.
   
   * Vlastní konektory vytvořené ve ISE nefungují s místní bránou dat. Tyto konektory mají ale přímý přístup k místním zdrojům dat, které jsou připojené k virtuální síti hostující ISE. Proto Logic Apps v ISE pravděpodobně nepotřebují bránu dat při komunikaci s těmito prostředky.
 
-U místních systémů, které nejsou připojené k virtuální síti nebo které nemají konektory ISE-Version, musíte nejdřív nastavit místní [bránu dat](../logic-apps/logic-apps-gateway-install.md) , než se aplikace logiky můžou k těmto systémům připojit.
+U místních systémů, které nejsou připojené k virtuální síti nebo které nemají konektory ISE-labled, musíte nejdřív nastavit místní [bránu dat](../logic-apps/logic-apps-gateway-install.md) , než se aplikace logiky můžou k těmto systémům připojit.
 
 <a name="create-integration-account-environment"></a>
 

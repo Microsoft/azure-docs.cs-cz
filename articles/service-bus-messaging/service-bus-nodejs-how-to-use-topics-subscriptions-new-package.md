@@ -1,6 +1,6 @@
 ---
-title: Jak používat Azure Service Bus témata a odběry s Node. js | Microsoft Docs
-description: Naučte se používat Service Bus témata a odběry v Azure z aplikace Node. js.
+title: 'Rychlý Start: jak používat Azure Service Bus témata a odběry pomocí Node. js'
+description: 'Rychlý Start: Naučte se používat Service Bus témata a odběry v Azure z aplikace Node. js.'
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -11,24 +11,24 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
-ms.topic: article
-ms.date: 04/15/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: f927274e1e866a9cba72330280316cc5ee7d8047
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: fa6f40eba02ffe171dc521f952e0d00fc35fc7e6
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178058"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721663"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Jak používat Service Bus témata a odběry s využitím Node. js a balíčku Azure/Service-Bus
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Rychlý Start: jak používat Service Bus témata a odběry s využitím Node. js a balíčku Azure/Service-Bus
 > [!div class="op_multi_selector" title1="Programovací jazyk" title2="Manageru balíček s Node. js"]
 > - [(Node. js | Azure-SB)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
 > - [(Node. js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
 
 V tomto kurzu zjistíte, jak napsat program Node. js pro posílání zpráv do Service Busho tématu a příjem zpráv z Service Bus předplatného pomocí nového balíčku [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) . Tento balíček používá rychlejší [Protokol AMQP 1,0](service-bus-amqp-overview.md) , zatímco starší balíček [Azure-SB](https://www.npmjs.com/package/azure-sb) používaný [Service Bus rozhraní API pro běh REST](/rest/api/servicebus/service-bus-runtime-rest). Ukázky jsou napsány v jazyce JavaScript.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Pokud nemáte téma a předplatné, se kterým chcete pracovat, postupujte podle kroků v tématu [použití Azure Portal k vytvoření Service Bus témata a předplatných](service-bus-quickstart-topics-subscriptions-portal.md) , abyste je mohli vytvořit. Poznamenejte si připojovací řetězec pro vaši instanci Service Bus a názvy tématu a předplatného, které jste vytvořili. Tyto hodnoty použijeme v ukázkách.
 
@@ -89,7 +89,7 @@ Interakce s tématem Service Bus začíná vytvořením instance třídy [Servic
 
 Blahopřejeme! Právě jste odeslali zprávy do fronty Service Bus.
 
-Zprávy mají některé standardní vlastnosti, například `label` a `messageId`, které můžete nastavit při odesílání. Pokud chcete nastavit libovolné vlastní vlastnosti, použijte `userProperties`, což je objekt JSON, který může uchovávat páry klíč-hodnota vašich vlastních dat.
+Zprávy mají některé standardní vlastnosti, například `label` a `messageId`, které můžete nastavit při odesílání. Pokud chcete nastavit jakékoli vlastní vlastnosti, použijte `userProperties`, což je objekt JSON, který může uchovávat páry klíč-hodnota vašich vlastních dat.
 
 Témata Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Počet zpráv držených v tématu není nijak omezený, ale celková velikost zpráv držených v tématu je omezena. Velikost tématu se definuje při vytvoření, maximální limit je 5 GB. Další informace o kvótách najdete v tématu [Service Bus kvóty](service-bus-quotas.md).
 
@@ -132,12 +132,12 @@ Interakce s předplatným Service Bus začíná vytvořením instance třídy [S
 
 Blahopřejeme! Právě jste dostali zprávy z předplatného Service Bus.
 
-Metoda [createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient#createreceiver-receivemode-) přebírá v `ReceiveMode`, což je výčet s hodnotami [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) a [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations). Nezapomeňte [vyrovnávat zprávy](message-transfers-locks-settlement.md#settling-receive-operations) , pokud použijete režim `PeekLock` pomocí kterékoli z metod `complete()`, `abandon()`, `defer()` nebo `deadletter()` ve zprávě.
+Metoda [createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient#createreceiver-receivemode-) přebírá v `ReceiveMode`, což je výčet s hodnotami [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) a [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations). Nezapomeňte [vyrovnávat zprávy](message-transfers-locks-settlement.md#settling-receive-operations) , pokud použijete režim `PeekLock` pomocí kterékoli z `complete()`, `abandon()`, `defer()`nebo `deadletter()` metod ve zprávě.
 
 ## <a name="subscription-filters-and-actions"></a>Akce a filtry předplatného
 Service Bus podporuje [filtry a akce v předplatných](topic-filters.md), což umožňuje filtrovat příchozí zprávy do předplatného a upravovat jejich vlastnosti.
 
-Jakmile budete mít instanci `SubscriptionClient`, můžete k tomu použít níže uvedené metody, které vám pomůžou získat a odebrat pravidla v rámci předplatného a řídit tak filtry a akce.
+Jakmile budete mít instanci `SubscriptionClient` můžete pomocí níže uvedených metod získat, přidat a odebrat pravidla v rámci předplatného a řídit tak filtry a akce.
 
 - getrules
 - addRule

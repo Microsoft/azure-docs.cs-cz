@@ -1,19 +1,19 @@
 ---
-title: Požadavky mezipaměti HPC Azure (Preview)
+title: Požadavky na mezipaměť prostředí Azure HPC
 description: Předpoklady pro použití mezipaměti HPC Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: cfaa8f94dbb836a61b7f024c9426625d874dc524
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ca7a12f45f8d907ee65df85e349883e4c14af47a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709963"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582154"
 ---
-# <a name="prerequisites-for-azure-hpc-cache-preview"></a>Předpoklady pro Azure HPC cache (Preview)
+# <a name="prerequisites-for-azure-hpc-cache"></a>Předpoklady pro mezipaměť Azure HPC
 
 Než použijete Azure Portal k vytvoření nové mezipaměti prostředí Azure HPC, ujistěte se, že vaše prostředí splňuje tyto požadavky.
 
@@ -22,7 +22,7 @@ Než použijete Azure Portal k vytvoření nové mezipaměti prostředí Azure H
 Doporučuje se placené předplatné.
 
 > [!NOTE]
-> Během vydání verze Preview musí tým Azure HPC cache přidat vaše předplatné do seznamu přístupu, aby ho bylo možné použít k vytvoření instance mezipaměti. Tento postup pomáhá zajistit, že každý zákazník získá vysoce kvalitní odezvu z testovacích mezipamětí. Vyplňte [Tento formulář](https://aka.ms/onboard-hpc-cache) a požádejte o přístup.
+> Během prvních několika měsíců od verze GA musí tým Azure HPC cache přidat vaše předplatné do seznamu přístupu předtím, než bude možné ho použít k vytvoření instance mezipaměti. Tento postup pomáhá zajistit, že každý zákazník získá vysoce kvalitní odezvu z mezipamětí. Vyplňte [Tento formulář](https://aka.ms/onboard-hpc-cache) a požádejte o přístup.
 
 ## <a name="network-infrastructure"></a>Síťová infrastruktura
 
@@ -86,7 +86,7 @@ Pokud chcete vytvořit kompatibilní účet úložiště, použijte Tato nastave
 * Úroveň přístupu (výchozí): **Hot**
 
 Je vhodné použít účet úložiště ve stejném umístění jako mezipaměť.
-<!-- need to clarify location - same region or same resource group or same virtual network? -->
+<!-- clarify location - same region or same resource group or same virtual network? -->
 
 Musíte taky dát aplikaci cache přístup k vašemu účtu úložiště Azure. Podle popisu v části [Přidání cílů úložiště](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) poskytněte mezipaměti přispěvatelům účet úložiště a přispěvatel dat objektů BLOB úložiště. Pokud nejste vlastníkem účtu úložiště, udělejte tohoto kroku vlastník.
 

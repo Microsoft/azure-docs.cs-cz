@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 145ab994bbd2ac2445947968ccdeadbb730eb76a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 16066ceeb7196bb181d144cc9529d6db627ed828
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476118"
+ms.locfileid: "73582517"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Prozkoumejte Azure Machine Learning pomocí poznámkových bloků Jupyter
 
@@ -24,7 +24,7 @@ ms.locfileid: "73476118"
 
 V tomto článku se dozvíte, jak získat přístup k úložišti z následujících prostředí:
 
-- [Azure Machine Learning výpočetní instance](#notebookvm)
+- [Virtuální počítač s Azure Machine Learning poznámkového bloku](#notebookvm)
 - [Přineste si vlastní server poznámkového bloku](#byo)
 - [Data Science Virtual Machine](#dsvm)
 
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak získat přístup k úložišti z následujíc
 > Po klonování úložiště najdete poznámkové bloky kurzu ve složce **kurzy** a poznámkových blocích specifických pro konkrétní funkce ve složce **How-to-AzureML** .
 
 <a name="notebookvm"></a>
-## <a name="get-samples-on-azure-machine-learning-compute-instance"></a>Získat ukázky pro Azure Machine Learning výpočetní instance
+## <a name="get-samples-on-azure-machine-learning-notebook-vm"></a>Získat ukázky na virtuálním počítači s Azure Machine Learning poznámkového bloku
 
 Nejjednodušší způsob, jak začít s ukázkami, je projít si [kurz: nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md). Po dokončení budete mít k dispozici vyhrazený server poznámkového bloku předem načtený pomocí sady SDK a ukázkového úložiště. Nepotřebujete žádné soubory ke stažení nebo instalaci.
 

@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 10/04/2019
 ms.author: victorh
-ms.openlocfilehash: 844e24466e9a9b46be3212690767a408e75f234d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0ac37378797c59d79af5d026200b68154836c5ac
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516614"
+ms.locfileid: "73585397"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Vlastní pravidla pro Firewall webových aplikací V2 v Azure Application Gateway
 
@@ -163,6 +163,11 @@ Seznam hodnot, které mají být porovnány, což může být považováno za "j
 
 ## <a name="geomatch-custom-rules-preview"></a>Vlastní pravidla pro neshodu (Preview)
 
+Vlastní pravidla umožňují vytvářet upravená pravidla tak, aby vyhovovala přesným potřebám vašich aplikací a vašim zásadám zabezpečení. Nyní můžete omezit přístup k vašim webovým aplikacím podle země nebo oblasti, která je k dispozici ve verzi Public Preview. Stejně jako u všech vlastních pravidel může být tato logika složená s jinými pravidly, aby vyhovovala potřebám vaší aplikace. 
+
+   > [!NOTE]
+   > Vlastní pravidla pro inshodě jsou dostupná v Střed USA – jih a Severní Evropa. Pokud k nim chcete přistupovat na portálu, použijte prosím [Tento odkaz](https://aka.ms/AppGWWAFGeoMatch) , dokud nebude aktivní pro všechny. 
+
 Pokud používáte operátor geografického porovnávání, mohou být selektory libovolné z následujících dvoumístné kódů zemí. 
 
 |Kód země | Název země |
@@ -189,7 +194,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | BI | Burundi|
 | BJ | Benin|
 | BL | Svatý Bartoloměj|
-| BN | Brunej Darussalam|
+| BN | Sultanát Brunej|
 | BO | Bolívie|
 | BR | Brazílie|
 | BS | Bahamy|
@@ -211,7 +216,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | CV | Cabo Verde|
 | CY | Kypr|
 | CZ | Česká republika|
-| Německo | Německo|
+| DE | Německo|
 | DK | Dánsko|
 | DO | Dominikánská republika|
 | DZ | Alžírsko|
@@ -259,7 +264,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | KW | Kuvajt|
 | KY | Kajmanské ostrovy|
 | KZ | Kazachstán|
-| LATINSKÁ AMERIKA | Laoská lidově demokratická republika|
+| LA | Laoská lidově demokratická republika|
 | LB | Libanon|
 | LI | Lichtenštejnsko|
 | LK | Srí Lanka|
@@ -285,7 +290,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | MX | Mexiko|
 | MY | Malajsie|
 | MZ | Mosambik|
-| není k dispozici | Namibie|
+| Není k dispozici | Namibie|
 | NE | Niger|
 | NG | Nigérie|
 | NI | Nikaragua|
@@ -333,7 +338,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | TZ | Sjednocená tanzanská republika|
 | UA | Ukrajina|
 | UG | Uganda|
-| Spojené státy | Spojené státy|
+| USA | Spojené státy|
 | UY | Uruguay|
 | UZ | Uzbekistán|
 | VC | Svatý Vincenc a Grenadiny|
@@ -341,7 +346,7 @@ Pokud používáte operátor geografického porovnávání, mohou být selektory
 | VG | Britské Panenské ostrovy|
 | VI | Americké Panenské ostrovy|
 | VN | Vietnam|
-| ZA | Jihoafrická republika|
+| ZA | Jižní Afrika|
 | ZM | Zambie|
 | ZW | Zimbabwe|
 

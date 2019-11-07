@@ -1,6 +1,6 @@
 ---
-title: Terminologie služby Azure Service Fabric sítě | Dokumentace Microsoftu
-description: Další informace o běžných termínů pro Azure Service Fabric mřížky.
+title: Terminologie pro Azure Service Fabric sítě | Microsoft Docs
+description: Tento článek podrobně popisuje terminologii, kterou používá Azure Service Fabric mřížka, která vám pomůže lépe pochopit výrazy používané v dokumentaci.
 services: service-fabric-mesh
 keywords: ''
 author: dkkapur
@@ -9,80 +9,80 @@ ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 2d2661593ba3d9be2755d81803c8e248a2f7d0e1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cacf3a7419982e8c0e8d55700c903e3414cfcbb4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60810601"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663009"
 ---
-# <a name="service-fabric-mesh-terminology"></a>Terminologie Service Fabric mřížky
+# <a name="service-fabric-mesh-terminology"></a>Terminologie Service Fabricch mřížek
 
-Azure Service Fabric Mesh je plně spravovaná služba, která vývojářům umožňuje nasazovat aplikace zajišťující mikroslužby, aniž by museli spravovat virtuální počítače, úložiště nebo sítě. Tento článek obsahuje podrobnosti o terminologii používané službou Azure Service Fabric mřížky pochopit termínů používaných v dokumentaci.
+Azure Service Fabric Mesh je plně spravovaná služba, která vývojářům umožňuje nasazovat aplikace zajišťující mikroslužby, aniž by museli spravovat virtuální počítače, úložiště nebo sítě. Tento článek podrobně popisuje terminologii, kterou používá Azure Service Fabric mřížka, která vám pomůže lépe pochopit výrazy používané v dokumentaci.
 
 ## <a name="service-fabric"></a>Service Fabric
 
-[Service Fabric](/azure/service-fabric/) je open source platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb. Service Fabric je orchestrátor, která je základem sítě pro Service Fabric. Service Fabric poskytuje možnosti pro jak můžete vytvářet a spouštět vaše aplikace mikroslužeb. K psaní služeb a rozhodnete, jak spustit aplikaci z několika možností prostředí můžete použít libovolné architektury.
+[Service Fabric](/azure/service-fabric/) je open source platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb. Service Fabric je nástroj Orchestrator, který je Service Fabric sítí. Service Fabric poskytuje možnosti, jak můžete vytvářet a spouštět aplikace mikroslužeb. Můžete použít libovolné rozhraní k zápisu služeb a zvolit, kde spustit aplikaci z více možností prostředí.
 
-## <a name="application-and-service-concepts"></a>Aplikace a koncepty služby
+## <a name="application-and-service-concepts"></a>Koncepce aplikací a služeb
 
-**Aplikace Service Fabric sítě**: Aplikace Service Fabric sítě jsou popsané [Model prostředků](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources) (zdrojové soubory pro YAML a JSON) a je možné nasadit do libovolného prostředí, kde běží Service Fabric.
+**Service Fabric aplikace sítě**: aplikace Service Fabric mřížku jsou popsány v [modelu prostředků](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources) (soubory prostředků YAML a JSON) a lze je nasadit do jakéhokoli prostředí, kde Service Fabric běží.
 
-**Aplikace Service Fabric nativní**: Nativní aplikace Service Fabric jsou popsané [nativní aplikační Model](/azure/service-fabric/service-fabric-application-model) (založený na formátu XML manifestů aplikace a služby).  Nativní aplikace Service Fabric nelze spustit v Service Fabric mřížky.
+**Service Fabric nativní aplikace**: Service Fabric nativní aplikace jsou popsány v rámci [nativního aplikačního modelu](/azure/service-fabric/service-fabric-application-model) (aplikace založené na jazyce XML a manifesty služeb).  Service Fabric nativní aplikace nelze spouštět v Service Fabric sítě.
 
-**Aplikace**: Aplikace Service Fabric mřížky je jednotka nasazení, správu verzí a životního cyklu aplikace sítě. Životní cyklus jednotlivých instancí aplikací se dají spravovat nezávisle.  Aplikace se skládají z jednoho nebo více balíčků kódu služby a nastavení. Aplikace je definována pomocí schématu modelu prostředků Azure (SV).  Služby jsou popsány jako vlastnosti prostředku aplikace do šablony správce prostředků.  Sítě a svazky, které používají aplikace se odkazuje aplikace.  Při vytváření aplikací, aplikací, služeb, sítě a svazky jsou modelovány pomocí modelu prostředků služby Service Fabric.
+**Aplikace**: Service Fabric aplikace sítě je jednotka nasazení, správy verzí a životnosti aplikace sítě. Životní cyklus jednotlivých instancí aplikace je možné spravovat nezávisle.  Aplikace se skládají z jednoho nebo více balíčků kódu služby a nastavení. Aplikace je definovaná pomocí schématu Azure Resource model (RM).  Služby jsou popsány jako vlastnosti prostředku aplikace v šabloně RM.  Odkazy na sítě a svazky používané aplikací jsou odkazovány v aplikaci.  Při vytváření aplikace jsou aplikace, služby (y), sítě a svazky modelovány pomocí modelu Service Fabric prostředků.
 
-**Služba**: Službu v aplikaci představuje mikroslužby a provádí kompletní a samostatné funkce. Každá služba se skládá z jednoho nebo více, balíčky kódu, které popisují vše potřebné pro spuštění image kontejneru, který je přidružený k balíčku kódu.  Počet replik služby v aplikaci je možné škálovat a oddálení.
+**Služba**: služba v aplikaci představuje mikroslužbu a provede úplnou a samostatnou funkci. Každá služba se skládá z jednoho nebo více balíčků kódu, které popisují vše potřebné ke spuštění image kontejneru přidružené k balíčku kódu.  Počet replik služby v aplikaci je možné škálovat a navýšit.
 
-**Balíček kódu**: Balíčky kódu popisují vše potřebné pro spuštění image kontejneru, který je přidružený k balíčku kódu, včetně následujících:
+**Balíček kódu**: balíčky kódu popisují vše potřebné ke spuštění image kontejneru přidružené k balíčku kódu, včetně následujících:
 
-* Název kontejneru, verzi a registru
+* Název, verze a registr kontejneru
 * Prostředky procesoru a paměti vyžadované pro každý kontejner
-* Koncové body sítě
-* Svazky v kontejneru, odkazující na samostatný svazek prostředek připojení.
+* Síťové koncové body
+* Svazky, které se mají připojit do kontejneru a odkazují na samostatný prostředek svazku.
 
 ## <a name="deployment-and-application-models"></a>Modely nasazení a aplikace 
 
-K nasazení služby, budete muset popisují, jak by měly být spuštěny. Service Fabric podporuje tři různé modely nasazení:
+Chcete-li nasadit své služby, je třeba popsat, jak by měly být spuštěny. Service Fabric podporuje tři různé modely nasazení:
 
 ### <a name="resource-model"></a>Model prostředků
-Prostředky topologie Fabric Service jsou cokoli, co je možné nasadit jednotlivě do Service Fabric; včetně aplikací, služeb, sítě a svazky. Prostředky jsou definovány pomocí souboru JSON, který je možné nasadit do koncového bodu clusteru.  Pro Service Fabric sítě se používá schéma modelu prostředků Azure. Schéma souboru YAML lze také snadněji vytvářet soubory definic. Prostředky je možné nasadit všude, kde běží Service Fabric. Model prostředků je nejjednodušší způsob, jak popisují své aplikace Service Fabric. Hlavní zaměřuje se na jednoduché nasazení a správu kontejnerizovaných služeb. Další informace najdete v článku [Úvod do modelu prostředků služby Service Fabric](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources).
+Prostředky Service Fabric jsou cokoli, co se dá nasadit jednotlivě do Service Fabric; včetně aplikací, služeb, sítí a svazků. Prostředky se definují pomocí souboru JSON, který se dá nasadit na koncový bod clusteru.  V případě Service Fabric sítě se používá schéma modelu Azure Resource model. Schéma souborů YAML lze také použít k snadnějšímu vytváření definičních souborů. Prostředky je možné nasadit kdekoli Service Fabric spuštění. Model prostředků představuje nejjednodušší způsob, jak popsání Service Fabricch aplikací. Hlavním fokusem je jednoduché nasazení a Správa kontejnerových služeb. Pokud se chcete dozvědět víc, přečtěte si [Úvod do modelu prostředků Service Fabric](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources).
 
 ### <a name="native-model"></a>Nativní model
-Model nativní aplikace poskytuje svoje aplikace s využitím úplného nízké úrovně přístupu do Service Fabric. Aplikace a služby jsou definovány jako registrovaných typů v souborech manifestu XML.
+Nativní aplikační model poskytuje vašim aplikacím úplný přístup na nízké úrovni k Service Fabric. Aplikace a služby jsou definovány jako registrované typy v souborech manifestu XML.
 
-Nativní model podporuje rozhraní modelu Reliable Services, které poskytuje přístup k rozhraní API modulu runtime Service Fabric a rozhraní API v jazyce C# a Java pro správu clusteru. Nativní model také podporuje libovolný kontejnery a spustitelné soubory.
+Nativní model podporuje rozhraní Reliable Services Framework, které poskytuje přístup k rozhraním API Service Fabric runtime a k rozhraním API C# pro správu clusteru v a Java. Nativní model podporuje také libovolné kontejnery a spustitelné soubory.
 
-Nativní model není podporována v prostředí sítě pro Service Fabric.  Další informace najdete v tématu [Přehled programovacího modelu](/azure/service-fabric/service-fabric-choose-framework).
+Nativní model není podporován v prostředí Service Fabric sítě.  Další informace naleznete v tématu [Přehled programovacího modelu](/azure/service-fabric/service-fabric-choose-framework).
 
 ### <a name="docker-compose"></a>Docker Compose 
-[Docker Compose](https://docs.docker.com/compose/) je součástí projektu Dockeru. Service Fabric poskytuje omezenou podporu pro nasazení aplikací pomocí Docker Compose modelu.
+[Docker Compose](https://docs.docker.com/compose/) je součástí projektu Docker. Service Fabric poskytuje omezené podpory pro nasazení aplikací pomocí modelu Docker Compose.
 
 ## <a name="environments"></a>Prostředí
 
-Service Fabric je technologie open source platforma, která na základě několika různými službami a produkty. Společnost Microsoft poskytuje následující možnosti:
+Service Fabric je open source technologie pro platformu, na které jsou založené různé služby a produkty. Společnost Microsoft poskytuje následující možnosti:
 
- - **Service Fabric sítě**: Plně spravovaná služba pro spouštění aplikací Service Fabric v Microsoft Azure.
- - **Azure Service Fabric**: Nabídka clusteru Service Fabric hostované v Azure. Poskytuje integrace mezi službami Service Fabric a infrastrukturu Azure, spolu s upgradu a správy konfigurace clusterů Service Fabric.
- - **Service Fabric samostatné**: Instalace a konfigurace nástroje pro sadu [nasadit clustery Service Fabric kdekoli](/azure/service-fabric/service-fabric-deploy-anywhere) (v místním nebo jakýkoli jiný poskytovatel cloudu). Není spravuje Azure.
- - **Vývojový cluster Service Fabric**: Poskytuje místní vývojové prostředí na Windows, Linux nebo Mac pro vývoj aplikací Service Fabric.
+ - **Service Fabricová síť**: plně spravovaná služba pro spouštění Service Fabric aplikací v Microsoft Azure.
+ - **Azure Service Fabric**: Nabídka Azure hosted Service Fabric clusteru. Poskytuje integraci mezi Service Fabric a infrastrukturou Azure spolu se správou aktualizací a konfigurací Service Fabricch clusterů.
+ - **Service Fabric Standalone**: sada nástrojů pro instalaci a konfiguraci pro [nasazení Service Fabricch clusterů kdekoli](/azure/service-fabric/service-fabric-deploy-anywhere) (místně nebo v jakémkoli poskytovateli cloudu). Nespravuje se v Azure.
+ - **Service Fabric vývojový cluster**: poskytuje místní vývojové prostředí v systému Windows, Linux nebo Mac pro vývoj aplikací Service Fabric.
 
-## <a name="environment-framework-and-deployment-model-support-matrix"></a>Matice podpory prostředí, rozhraní a modelu nasazení
-Různá prostředí mají různé úrovně podpory platformy a modely nasazení. Následující tabulka popisuje podporované architektury a kombinace modelu nasazení.
+## <a name="environment-framework-and-deployment-model-support-matrix"></a>Matice podpory pro prostředí, architekturu a model nasazení
+Různá prostředí mají různé úrovně podpory pro architektury a modely nasazení. V následující tabulce jsou popsány podporované kombinace rozhraní a modelu nasazení.
 
 | Typ aplikace | Popisuje | Síť Azure Service Fabric | Clustery Azure Service Fabric (libovolný operační systém)| Místní cluster | Samostatný cluster |
 |---|---|---|---|---|---|
-| Aplikace Service Fabric sítě | Model prostředků (YAML a JSON) | Podporováno |Nepodporuje se | Windows – podporováno, Linux a Mac – není podporované | Windows – není podporované |
-|Nativní aplikace Service Fabric | Model nativní aplikace (XML) | Nepodporuje se| Podporováno|Podporováno|Windows – podporováno|
+| Aplikace Service Fabric sítě | Model prostředků (YAML & JSON) | Podporuje se |Nepodporováno | Windows – podporováno, Linux a Mac – nepodporováno | Windows – nepodporováno |
+|Service Fabric nativních aplikací | Nativní aplikační model (XML) | Nepodporuje se| Podporuje se|Podporuje se|Windows – podporováno|
 
-Následující tabulka popisuje různé aplikačních modelů a nástrojů, která existuje pro ně pro Service Fabric.
+V následující tabulce jsou popsány různé modely aplikací a nástroje, které pro ně existují pro Service Fabric.
 
 | Typ aplikace | Popisuje | Visual Studio | Eclipse | SFCTL | AZ CLI | PowerShell|
 |---|---|---|---|---|---|---|
-| Aplikace Service Fabric sítě | Model prostředků (YAML a JSON) | VS 2017 |Nepodporuje se |Nepodporuje se | Podporuje se – pouze prostředí sítě | Nepodporuje se|
-|Nativní aplikace Service Fabric | Model nativní aplikace (XML) | VS 2017 a VS 2015| Podporováno|Podporováno|Podporováno|Podporováno|
+| Aplikace Service Fabric sítě | Model prostředků (YAML & JSON) | VS 2017 |Nepodporováno |Nepodporováno | Podporované – jenom pro prostředí sítě | Nepodporuje se|
+|Service Fabric nativních aplikací | Nativní aplikační model (XML) | VS 2017 a VS 2015| Podporuje se|Podporuje se|Podporuje se|Podporuje se|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o službě Service Fabric Mesh najdete v článku s [přehledem služby Service Fabric Mesh](service-fabric-mesh-overview.md).
 

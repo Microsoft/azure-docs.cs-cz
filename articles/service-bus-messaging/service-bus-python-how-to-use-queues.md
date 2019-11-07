@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: použití Azure Service Bus front s Pythonem'
-description: Naučte se používat Azure Service Bus fronty z Pythonu.
+title: 'Rychlý Start: použití Azure Service Bus front s Pythonem'
+description: 'Rychlý Start: Naučte se používat Azure Service Bus fronty z Pythonu.'
 services: service-bus-messaging
 documentationcenter: python
 author: axisc
@@ -11,24 +11,24 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
-ms.topic: article
-ms.date: 04/10/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 69ae02ea7c0c04312dd4e64125c80384172c6528
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 4319299eabb57451e3a25a69196a63094f66ab9b
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72438113"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721641"
 ---
-# <a name="tutorial-use-azure-service-bus-queues-with-python"></a>Kurz: použití Azure Service Bus front s Pythonem
+# <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Rychlý Start: použití Azure Service Bus front s Pythonem
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
 V tomto kurzu se naučíte vytvářet aplikace v Pythonu pro posílání zpráv a příjem zpráv z Service Bus fronty. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. Postupujte podle kroků v části [použití Azure Portal k vytvoření článku Service Bus Queue](service-bus-quickstart-portal.md) .
     1. Přečtěte si rychlý **přehled** Service Busch **front**. 
@@ -46,7 +46,7 @@ Objekt **ServiceBusClient** vám umožní pracovat s frontami. Do horní části
 from azure.servicebus import ServiceBusClient
 ```
 
-Následující kód vytvoří objekt **ServiceBusClient** . Nahraďte `<CONNECTION STRING>` řetězcem ConnectionString ServiceBus.
+Následující kód vytvoří objekt **ServiceBusClient** . Nahraďte `<CONNECTION STRING>` řetězcem ServiceBus ConnectionString.
 
 ```python
 sb_client = ServiceBusClient.from_connection_string('<CONNECTION STRING>')
@@ -68,7 +68,7 @@ sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
 Další informace najdete v [dokumentaci k pythonu Azure Service Bus](/python/api/overview/azure/servicebus?view=azure-python).
 
 ## <a name="send-messages-to-a-queue"></a>Zasílání zpráv do fronty
-Chcete-li odeslat zprávu do fronty Service Bus, aplikace zavolá metodu `send` objektu `ServiceBusClient`.
+Chcete-li odeslat zprávu do fronty Service Bus, aplikace zavolá metodu `send` na objektu `ServiceBusClient`.
 
 Následující příklad ukazuje, jak odeslat zkušební zprávu do fronty s názvem `taskqueue` pomocí `send_queue_message`:
 
@@ -113,7 +113,7 @@ Pokud je parametr `peek_lock` nastaven na **hodnotu false**, budou zprávy z fro
 
 Chování při čtení a odstranění zprávy jako součást operace Receive je nejjednodušší model a funguje nejlépe ve scénářích, ve kterých aplikace může tolerovat nezpracovávání zprávy v případě selhání. Pro lepší vysvětlení si představte scénář, ve kterém spotřebitel vyšle požadavek na přijetí, ale než ji může zpracovat, dojde v něm k chybě a ukončí se. Vzhledem k tomu, že Service Bus bude označena jako spotřebovaná zpráva, pak když se aplikace znovu spustí a začne znovu spotřebovávat zprávy, vynechá se zpráva, která byla spotřebována před chybou.
 
-Pokud je parametr `peek_lock` nastaven na **hodnotu true**, obdrží se příjem dvou fází, což umožňuje podporovat aplikace, které nemůžou tolerovat chybějící zprávy. Když Service Bus přijme požadavek, najde zprávu, která je na řadě ke spotřebování, uzamkne ji proti spotřebování jinými spotřebiteli a vrátí ji do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo je uloží spolehlivě pro budoucí zpracování), dokončí druhou fázi procesu Receive voláním metody **Delete** u objektu **Message** . Metoda **Delete** označí zprávu jako spotřebou a odebere ji z fronty.
+Pokud je parametr `peek_lock` nastaven na **hodnotu true**, obdrží se v průběhu operace dvě fáze, která umožňuje podporovat aplikace, které nemůžou tolerovat chybějící zprávy. Když Service Bus přijme požadavek, najde zprávu, která je na řadě ke spotřebování, uzamkne ji proti spotřebování jinými spotřebiteli a vrátí ji do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo je uloží spolehlivě pro budoucí zpracování), dokončí druhou fázi procesu Receive voláním metody **Delete** u objektu **Message** . Metoda **Delete** označí zprávu jako spotřebou a odebere ji z fronty.
 
 ```python
 msg.delete()

@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat pomocí nástroje pro kopírování dat Azure | Dokumentace Microsoftu
+title: Kopírování dat pomocí nástroje Azure Kopírování dat
 description: Vytvořte datovou továrnu Azure a pak pomocí nástroje pro kopírování dat zkopírujte data z úložiště objektů blob v Azure do databáze SQL.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: a99f319c25613f811b48923c734b77b135b677bc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 4646d7429dc4b3286f6af8861eaf7f1e6e27a760
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827933"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683602"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopírování dat z úložiště objektů blob v Azure do databáze SQL pomocí nástroje pro kopírování dat
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -36,9 +36,9 @@ V tomto kurzu budete provádět následující kroky:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* **Účet úložiště Azure**: Jako _zdrojové_ úložiště dat použijte úložiště objektů BLOB. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
-* **Azure SQL Database**: Použijte databázi SQL jako úložiště dat _jímky_ . Pokud databázi SQL nemáte, přečtěte si pokyny v tématu [Vytvoření databáze SQL](../sql-database/sql-database-get-started-portal.md).
+* **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* **Účet úložiště Azure:** Jako _zdrojové_ úložiště dat použijte úložiště objektů blob. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
+* **Azure SQL Database:** Jako úložiště dat _jímky_ použijte databázi SQL. Pokud databázi SQL nemáte, přečtěte si pokyny v tématu [Vytvoření databáze SQL](../sql-database/sql-database-get-started-portal.md).
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Vytvoření objektu blob a tabulky SQL
 
@@ -71,11 +71,11 @@ Provedením těchto kroků si připravte úložiště objektů blob a databázi 
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-2. Povolte službám Azure přístup k SQL Serveru. Ověřte, že je pro váš server, na kterém běží SQL Database, povolené nastavení **Povolit přístup ke službám Azure**. Toto nastavení umožní službě Data Factory zapisovat data do vaší instance databáze. Pokud chcete toto nastavení ověřit a zapnout, přejděte na Azure SQL Server > Přehled > nastavení brány firewall serveru > nastavte možnost **Povolit přístup ke službám Azure** na **zapnuto**.
+2. Povolte službám Azure přístup k SQL serveru. Ověřte, že je pro váš server, na kterém běží SQL Database, povolené nastavení **Povolit přístup ke službám Azure**. Toto nastavení umožní službě Data Factory zapisovat data do vaší instance databáze. Pokud chcete toto nastavení ověřit a zapnout, přejděte na Azure SQL Server > Přehled > nastavení brány firewall serveru > nastavte možnost **Povolit přístup ke službám Azure** na **zapnuto**.
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce vlevo vyberte vytvořit**Data Factory** **analýzy** >  **prostředků** > :
+1. V nabídce vlevo vyberte **vytvořit prostředek** > **Analytics** > **Data Factory**:
     
     ![Vytvoření nové datové továrny](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Do pole **Název** na stránce **Nová datová továrna** zadejte **ADFTutorialDataFactory**.
@@ -100,7 +100,7 @@ Provedením těchto kroků si připravte úložiště objektů blob a databázi 
 
 1. Po vytvoření se zobrazí domovská stránka **Datová továrna**.
     
-    ![Domovská stránka datové továrny](./media/doc-common-process/data-factory-home-page.png)
+    ![Domovská stránka objektu pro vytváření dat](./media/doc-common-process/data-factory-home-page.png)
 1. Pokud chcete na samostatné kartě otevřít uživatelské rozhraní služby Azure Data Factory, vyberte dlaždici **Vytvořit a monitorovat**.
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Vytvoření kanálu pomocí nástroje pro kopírování dat
@@ -128,7 +128,7 @@ Provedením těchto kroků si připravte úložiště objektů blob a databázi 
 
     b. Kliknutím na **Next** (Další) přejděte k dalšímu kroku.
 
-1. Na stránce **Nastavení formátu souboru** si všimněte, že nástroj automaticky rozpoznává oddělovače sloupců a řádků. Vyberte **Další**. Na této stránce si také můžete prohlédnou data a schéma vstupních dat.
+1. Na stránce **Nastavení formátu souboru** si všimněte, že nástroj automaticky rozpoznává oddělovače sloupců a řádků. Vyberte **Next** (Další). Na této stránce si také můžete prohlédnou data a schéma vstupních dat.
 
     ![Nastavení formátu souboru](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 1. Na stránce **Destination data store** (Cílové úložiště dat) proveďte následující kroky:
@@ -147,15 +147,15 @@ Provedením těchto kroků si připravte úložiště objektů blob a databázi 
 
 1. Na stránce **Mapování tabulek** vyberte tabulku **[dbo].[emp]** a pak vyberte **Další**.
 
-1. Na stránce **Mapování schématu** si všimněte mapování prvního a druhého sloupce ve vstupním souboru na sloupce **FirstName** (Jméno) a **LastName** (Příjmení) tabulky **emp**. Vyberte **Další**.
+1. Na stránce **Mapování schématu** si všimněte mapování prvního a druhého sloupce ve vstupním souboru na sloupce **FirstName** (Jméno) a **LastName** (Příjmení) tabulky **emp**. Vyberte **Next** (Další).
 
     ![Stránka Mapování schématu](./media/tutorial-copy-data-tool/schema-mapping.png)
 1. Na stránce **Settings** (Nastavení) vyberte **Next** (Další).
 1. Na stránce **Souhrn** zkontrolujte nastavení a pak vyberte **Další**.
 1. Na stránce **Nasazení** vyberte **Monitorovat** a začněte monitorovat kanál (úlohu).
-1. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**. Sloupec **Akce** obsahuje odkazy na zobrazení podrobností o spuštění aktivit a na opětovné spuštění kanálu. Seznam můžete aktualizovat výběrem možnosti **Aktualizovat**.
+1. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**. Sloupec **Akce** obsahuje odkazy na zobrazení podrobností o spuštění aktivit a na opětovné spuštění kanálu. Seznam můžete aktualizovat kliknutím na **Aktualizovat**.
 
-1. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce**. Podrobnosti o operaci kopírování zobrazíte výběrem odkazu **Podrobnosti** (ikona brýlí) ve sloupci **Akce**. Pokud se chcete vrátit do zobrazení spuštění kanálu, vyberte odkaz **spuštění kanálu** v horní části. Jestliže chcete zobrazení aktualizovat, vyberte **Aktualizovat**.
+1. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce**. Podrobnosti o operaci kopírování zobrazíte výběrem odkazu **Podrobnosti** (ikona brýlí) ve sloupci **Akce**. Pokud se chcete vrátit do zobrazení spuštění kanálu, vyberte odkaz **spuštění kanálu** v horní části. Pokud chcete zobrazení aktualizovat, vyberte **Aktualizovat**.
 
     ![Monitorování spuštění aktivit](./media/tutorial-copy-data-tool/activity-monitoring.png)
 
@@ -165,7 +165,7 @@ Provedením těchto kroků si připravte úložiště objektů blob a databázi 
 
 1. Výběrem karty **Autor** na levé straně přepněte do režimu úprav. Pomocí editoru můžete aktualizovat propojené služby, datové sady a kanály vytvořené nástrojem. Podrobnosti o úpravách těchto entit v uživatelském rozhraní služby Data Factory najdete ve [verzi tohoto kurzu pro Azure Portal](tutorial-copy-data-portal.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Kanál v této ukázce kopíruje data z úložiště objektů blob do databáze SQL. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]

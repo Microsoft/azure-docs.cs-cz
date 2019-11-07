@@ -1,20 +1,20 @@
 ---
 title: Připojení k Azure Analysis Services s využitím Excelu | Microsoft Docs
-description: Přečtěte si, jak se připojit k serveru Azure Analysis Services pomocí Excelu.
+description: Přečtěte si, jak se připojit k serveru Azure Analysis Services pomocí Excelu. Po připojení můžou uživatelé vytvářet kontingenční tabulky pro zkoumání dat.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1ba6864d0bab460b270f6f27acced57d7943a17a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: bb76accfef94327386d0ff58d003782a9fe3b0d2
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295328"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573150"
 ---
-# <a name="connect-with-excel"></a>Propojit s Excelem
+# <a name="connect-with-excel"></a>Propojení s Excelem
 
 Po vytvoření serveru a nasazení tabelárního modelu do něj mohou klienti připojit a začít prozkoumat data. 
 
@@ -28,7 +28,7 @@ Připojení k serveru v Excelu je podporované pomocí získat data v Excelu 201
 
 1. V Excelu na pásu karet **data** klikněte na **načíst externí data** > **z jiných zdrojů** > **z Analysis Services**.
 
-2. V Průvodci datovým připojením zadejte do pole **název serveru**název serveru včetně protokolu a identifikátoru URI. Například asazure://westcentralus.asazure.windows.net/advworks. Pak v části přihlašovací **údaje pro přihlášení**vyberte **použít následující uživatelské jméno a heslo**a zadejte uživatelské jméno organizace, například nancy@adventureworks.com a heslo.
+2. V Průvodci datovým připojením zadejte do pole **název serveru**název serveru včetně protokolu a identifikátoru URI. Například asazure://westcentralus.asazure.windows.net/advworks. Pak v části přihlašovací **údaje pro přihlášení**vyberte **použít následující uživatelské jméno a heslo**a zadejte uživatelské jméno organizace, například nancy@adventureworks.coma heslo.
 
     > [!IMPORTANT]
     > Pokud se přihlásíte pomocí účtu Microsoft, Live ID, Yahoo, Gmail atd. nebo se budete muset přihlásit pomocí služby Multi-Factor Authentication, ponechejte pole pro heslo prázdné. Po kliknutí na tlačítko Další se zobrazí výzva k zadání hesla. 
@@ -40,7 +40,7 @@ Připojení k serveru v Excelu je podporované pomocí získat data v Excelu 201
     ![Připojit z aplikace Excel vybrat model](./media/analysis-services-connect-excel/aas-connect-excel-select.png)
 
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 [Klientské knihovny](analysis-services-data-providers.md)   
 [Správa serveru](analysis-services-manage.md)     

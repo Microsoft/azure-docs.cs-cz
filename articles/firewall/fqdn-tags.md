@@ -1,45 +1,45 @@
 ---
-title: Přehled značek plně kvalifikovaný název domény pro Brána Firewall služby Azure
-description: Další informace o značkách plně kvalifikovaný název domény v Brána Firewall služby Azure
+title: Přehled značek plně kvalifikovaného názvu domény pro Azure Firewall
+description: Přečtěte si o značkách plně kvalifikovaného názvu domény v Azure Firewall
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
 ms.date: 4/23/2019
 ms.author: victorh
-ms.openlocfilehash: 7a412589f4e86f2a49d07f2d01ca34bf30fd528b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d78f67b96776fa3fb1d13fbf7b385e41ca3aa59a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721180"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73665561"
 ---
-# <a name="fqdn-tags-overview"></a>Přehled značek plně kvalifikovaný název domény
+# <a name="fqdn-tags-overview"></a>Přehled značek plně kvalifikovaného názvu domény
 
-Značku plně kvalifikovaný název domény představuje skupinu plně kvalifikované názvy domény (FQDN) přidružené k dobře známým službám Microsoft. V pravidlech aplikace můžete použít značku plně kvalifikovaný název domény Pokud chcete povolit požadované odchozí síťové přenosy přes bránu firewall.
+Značka plně kvalifikovaného názvu domény představuje skupinu plně kvalifikovaných názvů domén (FQDN) přidružených k dobře známým službám Microsoftu. V pravidlech aplikací můžete použít značku plně kvalifikovaného názvu domény, která umožní požadovaný odchozí síťový provoz přes bránu firewall.
 
-Například pokud chcete ručně povolit aktualizace Windows síťové přenosy přes bránu firewall, musíte vytvořit víc pravidel aplikace za dokumentaci společnosti Microsoft. Pomocí značek plně kvalifikovaný název domény, můžete vytvořit pravidlo aplikace, zahrňte **aktualizací Windows** označit a nyní síťového provozu do koncových bodů může probíhat přes bránu firewall Microsoft Windows Update.
+Chcete-li například ručně web Windows Update síťový provoz přes bránu firewall, je třeba vytvořit více pravidel aplikací pro každou dokumentaci společnosti Microsoft. Pomocí značek plně kvalifikovaného názvu domény můžete vytvořit pravidlo aplikace, zahrňte značku **aktualizací Windows** a teď můžete směrovat síťový provoz do Microsoft Web Windows Update koncových bodů přes bránu firewall.
 
-Nelze vytvořit vlastní značky plně kvalifikovaný název domény, ani můžete můžete určit, které jsou ve značce zahrnuté plně kvalifikovaných názvů domény. Microsoft spravuje plně kvalifikované názvy domény zahrnuté ve značce plně kvalifikovaný název domény a aktualizuje označit jako změnu plně kvalifikovaných názvů domény. 
+Nemůžete vytvořit vlastní značky plně kvalifikovaného názvu domény, ani nemůžete určit, které plně kvalifikované názvy domény jsou zahrnuty v rámci značky. Společnost Microsoft spravuje plně kvalifikované názvy domén, které jsou obsaženy ve značce plně kvalifikovaného názvu domény, a aktualizuje značku jako plně kvalifikované názvy domén. 
 
 <!--- screenshot of application rule with a FQDN tag.-->
 
-V následující tabulce jsou uvedeny aktuální značky plně kvalifikovaný název domény, která vám pomůže. Společnost Microsoft udržuje tyto značky a můžete očekávat, že k příležitostně přidávat další značky.
+Následující tabulka uvádí aktuální plně kvalifikované názvy domén, které můžete použít. Společnost Microsoft tyto značky udržuje a je možné očekávat, že další značky budou pravidelně přidávány.
 
-## <a name="current-fqdn-tags"></a>Aktuální značky plně kvalifikovaný název domény
+## <a name="current-fqdn-tags"></a>Aktuální značky plně kvalifikovaného názvu domény
 
-|Plně kvalifikovaný název domény značky  |Popis  |
+|FQDN – značka  |Popis  |
 |---------|---------|
-|Windows Update     |Povolí odchozí přístup ke službě Microsoft Update, jak je popsáno v [konfigurace brány Firewall pro aktualizace softwaru](https://technet.microsoft.com/library/bb693717.aspx).|
-|Program Diagnostika|Povolí odchozí přístup ke všem [koncových bodů Windows diagnostiky](https://docs.microsoft.com/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints).|
-|Microsoft Active Protection Service (MAPS)|Povolí odchozí přístup k [MAPY](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/).|
-|App Service Environment (ASE)|Povolí odchozí přístup k platformě provoz služby ASE. Tato značka nezahrnuje zákaznické úložiště a SQL koncové body vytvořené ve službě ASE. Ty by měla být povolená přes [koncové body služby](../virtual-network/tutorial-restrict-network-access-to-resources.md) nebo přidat ručně.<br><br>Další informace o integraci se službou ASE Brána Firewall služby Azure najdete v tématu [používat jenom služby App Service Environment](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase).|
-|Azure Backup|Povolí odchozí přístup ke službám Azure Backup.|
-|Azure HDInsight<br>(Preview)|Povolí odchozí přístup pro provoz platformě HDInsight. Tato značka nezahrnuje zákaznické úložiště nebo SQL provoz z HDInsight. Povolit tyto pomocí [koncové body služby](../virtual-network/tutorial-restrict-network-access-to-resources.md) nebo je přidat ručně.|
+|web Windows Update     |Povolte odchozí přístup k Microsoft Update, jak je popsáno v tématu [jak nakonfigurovat bránu firewall pro aktualizace softwaru](https://technet.microsoft.com/library/bb693717.aspx).|
+|Program Diagnostika|Povolí odchozí přístup ke všem [koncovým bodům diagnostiky Windows](https://docs.microsoft.com/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints).|
+|Microsoft Active Protection Service (MAPS)|Povolí odchozí přístup ke [mapám](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/).|
+|App Service Environment (pomocného mechanismu)|Umožňuje odchozí přístup k provozu platformy pomocného mechanismu. Tato značka nepokrývá úložiště pro konkrétní zákazníky a koncové body SQL vytvořené pomocí pomocného mechanismu služby. Ty by měly být povolené prostřednictvím [koncových bodů služby](../virtual-network/tutorial-restrict-network-access-to-resources.md) nebo je přidat ručně.<br><br>Další informace o integraci Azure Firewall s pomocným mechanismem řízení přístupu najdete v tématu [uzamčení App Service Environment](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase).|
+|Azure Backup|Povolí odchozí přístup ke službě Azure Backup Services.|
+|Azure HDInsight|Povolí odchozí přístup pro přenosy platformy HDInsight. Tato značka nepokrývá úložiště pro konkrétní zákazníka ani data SQL ze služby HDInsight. Povolte je pomocí [koncových bodů služby](../virtual-network/tutorial-restrict-network-access-to-resources.md) nebo je přidejte ručně.|
 
 > [!NOTE]
-> Při výběru značek plně kvalifikovaný název domény v pravidle aplikace, portu protokolu: pole musí být nastavené na **https**.
+> Při výběru značky plně kvalifikovaného názvu domény v pravidle aplikace musí být pole protokol: port nastavené na **https**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak nasadit Azure, najdete v článku [kurzu: Nasazení a konfiguraci brány Firewall Azure pomocí webu Azure portal](tutorial-firewall-deploy-portal.md).
+Další informace o nasazení Azure Firewall najdete v tématu [kurz: nasazení a konfigurace Azure firewall použití Azure Portal](tutorial-firewall-deploy-portal.md).

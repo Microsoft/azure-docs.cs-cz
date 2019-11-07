@@ -1,5 +1,5 @@
 ---
-title: Vytvoření kontejneru profilu FSLogix pro fond hostitelů pomocí sdílené složky založené na virtuálním počítači – Azure
+title: Sdílená složka kontejneru profilu FSLogix virtuálního počítače s Windows – Azure
 description: Postup nastavení kontejneru profilu FSLogix pro fond hostitelů virtuálních klientů s Windows pomocí sdílené složky na základě virtuálního počítače.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: 0e7516fc4874e4cbc387f2f494efc6ef745d64f7
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 65d800cc6c1b6818369807ffeae9cd350a34066f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311591"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606993"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Vytvoření kontejneru profilů pro fond hostitelů s využitím sdílené složky
 
@@ -59,15 +59,15 @@ Pokud chcete nakonfigurovat virtuální počítače s FSLogix softwarem, udělej
 
 1. [Připojte se k virtuálnímu počítači](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) pomocí přihlašovacích údajů, které jste zadali při vytváření virtuálního počítače.
 2. Spusťte internetový prohlížeč a přejděte na [Tento odkaz](https://go.microsoft.com/fwlink/?linkid=2084562) a Stáhněte si agenta FSLogix.
-3. Přejděte do \\ @ no__t-1Win32 @ no__t-2Release nebo \\ @ no__t-4X64 @ no__t-5Release v souboru zip a spusťte **FSLogixAppsSetup** pro instalaci agenta FSLogix.  Další informace o tom, jak nainstalovat FSLogix, najdete v tématu [Stažení a instalace FSLogix](https://docs.microsoft.com/fslogix/install-ht).
-4. Pokud chcete potvrdit, že je agent nainstalovaný, přejděte na **programové soubory** > **FSLogix**@no__t **-3.**
-5. V nabídce Start spusťte program **Regedit** jako správce. Přejděte na **počítač @ no__t-1HKEY_LOCAL_MACHINE @ no__t-2software @ no__t-3FSLogix**.
+3. Přejděte na \\\\Win32\\vydání nebo \\\\verze x64\\v souboru. zip a spuštěním **FSLogixAppsSetup** nainstalujte agenta FSLogix.  Další informace o tom, jak nainstalovat FSLogix, najdete v tématu [Stažení a instalace FSLogix](https://docs.microsoft.com/fslogix/install-ht).
+4. Přejděte na **programové soubory** > **FSLogix** > **aplikace** a potvrďte, že je agent nainstalovaný.
+5. V nabídce Start spusťte program **Regedit** jako správce. Přejděte na **počítač\\HKEY_LOCAL_MACHINE\\software\\FSLogix**.
 6. Vytvořte klíč s názvem **Profiles**.
 7. Pro klíč profilů vytvořte následující hodnoty:
 
-| Name (Název)                | Typ               | Data/hodnota                        |
+| Název                | Typ               | Data/hodnota                        |
 |---------------------|--------------------|-----------------------------------|
-| Povoleno             | HODNOTY              | 1\. místo                                 |
+| Povoleno             | HODNOTY              | 1                                 |
 | VHDLocations        | Hodnota s více řetězci | "Síťová cesta pro sdílenou složku"     |
 
 >[!IMPORTANT]

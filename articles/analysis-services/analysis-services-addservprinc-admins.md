@@ -1,18 +1,18 @@
 ---
-title: Přidání instančního objektu do role správce serveru Azure Analysis Services | Microsoft Docs
-description: Naučte se přidat instanční objekt služby Automation do role správce serveru.
+title: Přidání instančního objektu do role správce Azure Analysis Services | Microsoft Docs
+description: Naučte se přidat instanční objekt služby Automation do role správce serveru Azure Analysis Services.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c141bcea030f5afcc3cb33adba32f4a96c335eec
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0a3a86283c8ec9876fbec049a2a1a110eb1a80f3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147399"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573614"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Přidání instančního objektu k roli správce serveru 
 
@@ -30,7 +30,7 @@ K dokončení této úlohy musíte mít oprávnění [Správce serveru](analysis
 ## <a name="add-service-principal-to-server-administrators-role"></a>Přidání instančního objektu k roli správců serveru
 
 1. V SSMS se připojte k Azure AS serveru.
-2. V **Vlastnosti serveru** > **zabezpečení**klikněte na **Přidat**.
+2. V **nastavení vlastnosti serveru** > **zabezpečení**klikněte na **Přidat**.
 3. V nabídce **Vyberte uživatele nebo skupinu**vyhledejte registrovanou aplikaci podle názvu, vyberte a pak klikněte na **Přidat**.
 
     ![Hledat hlavní účet služby](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)

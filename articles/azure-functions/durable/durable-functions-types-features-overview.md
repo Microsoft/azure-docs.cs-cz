@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7b395bd6024beb52b9263ac4fe655b5328a8e662
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 555b4d95358978e84e14e8a2e8b3d1c9cb2efc18
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "70933158"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614601"
 ---
 # <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions typy a funkce (Azure Functions)
 
@@ -24,7 +24,7 @@ V Azure Functions aktuálně existují čtyři typy trvalých funkcí: Activity,
 
 ## <a name="orchestrator-functions"></a>Funkce nástroje Orchestrator
 
-Funkce nástroje Orchestrator popisují způsob provádění akcí a pořadí, ve kterém jsou akce provedeny. Funkce nástroje Orchestrator popisují orchestraci v kódu (C# nebo JavaScriptu), jak je znázorněno v [Durable Functionsch vzorcích aplikací](durable-functions-overview.md#application-patterns). Orchestrace může mít mnoho různých typů akcí, včetně [funkcí aktivity](#activity-functions), [dílčích orchestrací](durable-functions-orchestrations.md#sub-orchestrations), [čekání na externí události](durable-functions-orchestrations.md#external-events), [http](durable-functions-orchestrations.md#calling-http-endpoints)a [časovače](durable-functions-orchestrations.md#durable-timers). Funkce nástroje Orchestrator mohou také interagovat s [funkcemi entit](#entity-functions).
+Funkce nástroje Orchestrator popisují způsob provádění akcí a pořadí, ve kterém jsou akce provedeny. Funkce nástroje Orchestrator popisují orchestraci v kódu (C# nebo JavaScriptu), jak je znázorněno v [Durable Functionsch vzorcích aplikací](durable-functions-overview.md#application-patterns). Orchestrace může mít mnoho různých typů akcí, včetně [funkcí aktivity](#activity-functions), [dílčích orchestrací](durable-functions-orchestrations.md#sub-orchestrations), [čekání na externí události](durable-functions-orchestrations.md#external-events), [http](durable-functions-http-features.md)a [časovače](durable-functions-orchestrations.md#durable-timers). Funkce nástroje Orchestrator mohou také interagovat s [funkcemi entit](#entity-functions).
 
 > [!NOTE]
 > Funkce nástroje Orchestrator jsou zapisovány pomocí obyčejného kódu, ale existují přísné požadavky na zápis kódu. Konkrétně musí být kód funkce nástroje Orchestrator *deterministický*. Po neúspěšném provedení těchto požadavků determinismem může dojít ke správnému spuštění funkcí nástroje Orchestrator. Podrobné informace o těchto požadavcích a způsobu jejich řešení najdete v tématu [omezení kódu](durable-functions-code-constraints.md) .
@@ -40,7 +40,7 @@ Na rozdíl od funkcí Orchestrator nejsou funkce aktivity omezeny v typu práce,
 > [!NOTE]
 > Vzhledem k tomu, že funkce aktivity zaručují *alespoň jedno* spuštění, doporučujeme, abyste *idempotentní* logiku funkce Activity, kdykoli to bude možné.
 
-K definování funkce aktivity použijte [Trigger aktivity](durable-functions-bindings.md#activity-trigger) . Funkce .NET obdrží [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) jako parametr. Můžete také navazovat Trigger na jakýkoli jiný objekt, který lze serializovat, a předat do něj vstupní hodnoty funkce. V jazyce JavaScript můžete ke vstupu přistupovat prostřednictvím vlastnosti `<activity trigger binding name>` [objektu `context.bindings`](../functions-reference-node.md#bindings). Funkcí aktivity může být předána pouze jedna hodnota. Chcete-li předat více hodnot, je nutné použít řazené kolekce členů, pole nebo komplexní typy.
+K definování funkce aktivity použijte [Trigger aktivity](durable-functions-bindings.md#activity-trigger) . Funkce .NET obdrží jako parametr `DurableActivityContext`. Můžete také navazovat Trigger na jakýkoli jiný objekt, který lze serializovat, a předat do něj vstupní hodnoty funkce. V jazyce JavaScript můžete ke vstupu přistupovat prostřednictvím vlastnosti `<activity trigger binding name>` v [objektu`context.bindings`](../functions-reference-node.md#bindings). Funkcí aktivity může být předána pouze jedna hodnota. Chcete-li předat více hodnot, je nutné použít řazené kolekce členů, pole nebo komplexní typy.
 
 > [!NOTE]
 > Funkci aktivity můžete aktivovat jenom z funkce Orchestrator.
@@ -50,7 +50,7 @@ K definování funkce aktivity použijte [Trigger aktivity](durable-functions-bi
 Funkce entit definují operace pro čtení a aktualizaci malých částí stavu. Často odkazujeme na tyto stavové entity jako *odolné entity*. Podobně jako funkce nástroje Orchestrator jsou funkce entit funkce se speciálním typem triggeru, *triggerem entity*. Mohou být také vyvolány z klientských funkcí nebo z funkcí nástroje Orchestrator. Na rozdíl od funkcí Orchestrator nemají entity Functions žádná konkrétní omezení kódu. Funkce entit také spravují stav explicitně namísto implicitního reprezentace stavu prostřednictvím řízení toku.
 
 > [!NOTE]
-> Funkce entit a související funkce jsou dostupné jenom v Durable Functions 2,0 a novějších. Funkce entit jsou momentálně ve verzi Public Preview.
+> Funkce entit a související funkce jsou dostupné jenom v Durable Functions 2,0 a novějších.
 
 Další informace o funkcích entit najdete v článku [trvalé entity](durable-functions-entities.md) .
 

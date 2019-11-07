@@ -1,18 +1,18 @@
 ---
-title: Vytvoření souboru ODC pro připojení k serveru Azure Analysis Services | Microsoft Docs
+title: Připojení k Azure Analysis Services se souborem. odc | Microsoft Docs
 description: Naučte se vytvořit soubor datových připojení Office pro připojení a načtení dat z Analysis Servicesho serveru v Azure.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5aa9645ec3138ed661305e1019b3e6dadfe4d212
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a4e2dc09c54b39d58b0193e7ac9f585236886722
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146681"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572672"
 ---
 # <a name="create-an-office-data-connection-file"></a>Vytvoření souboru s datovým připojením Office
 
@@ -21,7 +21,7 @@ Informace v tomto článku popisují, jak můžete vytvořit soubor datového p�
 
 1. Níže zkopírujte soubor s ukázkovým připojením a vložte ho do textového editoru. 
 
-2. V `odc:ConnectionString` změňte následující vlastnosti:
+2. V `odc:ConnectionString`změňte následující vlastnosti:
 
     *   V `Data Source=asazure://<region>.asazure.windows.net/<servername>;` změňte `<region>` na oblast Analysis Services serveru a `<servername>` na název vašeho serveru.
 

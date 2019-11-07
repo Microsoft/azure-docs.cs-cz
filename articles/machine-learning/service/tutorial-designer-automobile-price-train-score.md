@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 8aafc1caf44e6a937fc53801f2fa34157dc9eab5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3df1a0430983b52d8a791acabbd03efe19055697
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501586"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721769"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Kurz: předpověď ceny automobilu pomocí návrháře (Preview)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -32,7 +32,7 @@ V první části kurzu se naučíte:
 > * Výuka modelu strojového učení
 > * Vyhodnocení modelu Machine Learning
 
-V [druhé části](tutorial-designer-automobile-price-deploy.md) kurzu se naučíte, jak nasadit prediktivní model jako Inferencing koncový bod v reálném čase, abyste mohli předpovídat cenu každé auta na základě technických specifikací, které vám odešlete. 
+V [druhé části](tutorial-designer-automobile-price-deploy.md) kurzu se naučíte, jak nasadit prediktivní model jako Inferencing koncový bod v reálném čase, abyste mohli předpovídat cenu každé auta na základě technických specifikací, které vám posíláte. 
 
 > [!Note]
 >Dokončená verze tohoto kurzu je k dispozici jako vzorový kanál.
@@ -59,11 +59,11 @@ Pokud máte pracovní prostor Azure Machine Learning s **edicí Enterprise**, [p
 
 1. Vyberte **snadno použitelné předem připravené moduly**.
 
-1. V horní části plátna vyberte výchozí název kanálu, který jste **vytvořili** , a přejmenujte ho na něco smysluplného. Například **"předpověď ceny automobilu"** . Název nemusí být jedinečný.
+1. V horní části plátna vyberte výchozí název kanálu, **"vytvoření kanálu-zapnuto..."** a přejmenujte ho na něco smysluplného. Například **"předpověď ceny automobilu"** . Název nemusí být jedinečný.
 
 ## <a name="import-data"></a>Import dat
 
-Návrhář obsahuje několik ukázkových datových sad, které můžete experimentovat s nástrojem. Pro tento kurz použijte ukázková data o **cenách automobilu (RAW)** . 
+Návrhář obsahuje několik ukázkových datových sad, které můžete experimentovat s nástrojem. Pro tento kurz použijte **data o cenách automobilu (RAW)** . 
 
 1. Vlevo od plátna kanálu je paleta datových sad a modulů. Vyberte **datové sady** a zobrazte si část **ukázky** a zobrazte si dostupné ukázkové datové sady.
 
@@ -89,17 +89,17 @@ Můžete vizualizovat data a pochopit datovou sadu, kterou budete používat.
 
 ## <a name="prepare-data"></a>Příprava dat
 
-Datové sady obvykle vyžadují před analýzou určitý předzpracování. Při vizualizaci datové sady jste si pravděpodobně všimli některých chybějících hodnot. Tyto chybějící hodnoty se musí vyčistit, aby model mohl data správně analyzovat. Odeberete sloupce s velkým počtem chybějících hodnot a odeberete všechny řádky, které obsahují chybějící hodnoty.
+Datové sady obvykle vyžadují před analýzou určitý předzpracování. Při kontrole datové sady jste si pravděpodobně všimli některých chybějících hodnot. Tyto chybějící hodnoty je potřeba vyčistit, aby model mohl správně analyzovat data.
 
 ### <a name="remove-a-column"></a>Odebrání sloupce
 
 Při výukovém modelu je nutné provést něco o chybějících datech. Ve sloupci **normalizované ztráty** v této datové sadě chybí mnoho hodnot, takže tento sloupec z modelu zcela vyloučíte.
 
-1. Vyberte sloupce dat, se kterými chcete pracovat. Do pole Hledat v horní části palety zadejte **Select** a vyhledejte modul **Výběr sloupců v datové sadě** .
+1. Do pole Hledat v horní části palety zadejte **Select** a vyhledejte modul **Výběr sloupců v datové sadě** .
 
 1. Klikněte na plátno a přetáhněte modul **Výběr sloupců v datové sadě** na plátno. Přetáhněte modul pod modul DataSet.
 
-1. Připojte datovou sadu, kterou jste přidali dříve, do modulu **Výběr sloupců v datové sadě** kliknutím a přetažením. Přetáhněte z výstupního portu datové sady, což je malý kroužek v dolní části datové sady na plátně, na vstupní port pro **Výběr sloupců v datové sadě**, což je malý kruh v horní části modulu.
+1. Připojte datovou sadu **dat o ceně automobilu (RAW)** k poli **Vybrat sloupce v datové sadě**. Přetáhněte z výstupního portu datové sady, což je malý kroužek v dolní části datové sady na plátně, na vstupní port pro **Výběr sloupců v datové sadě**, což je malý kruh v horní části modulu.
 
     > [!TIP]
     > Pokud připojíte výstupní port jednoho modulu ke vstupnímu portu jiného, vytvoříte tok dat prostřednictvím kanálu.
@@ -109,7 +109,7 @@ Při výukovém modelu je nutné provést něco o chybějících datech. Ve slou
 
 1. Vyberte modul **Výběr sloupců v datové sadě** .
 
-1. V podokně **vlastnosti** napravo od plátna vyberte **parametry**  > **Upravit sloupec**.
+1. V podokně **vlastnosti** napravo od plátna vyberte **parametry** > **Upravit sloupec**.
 
 1. Vyberte **+** pro přidání nového pravidla.
 
@@ -125,7 +125,7 @@ Při výukovém modelu je nutné provést něco o chybějících datech. Ve slou
 
 1. Vyberte modul **Výběr sloupců v datové sadě** . 
 
-1. V okně **vlastnosti**vyberte **parametry**  > **Komentář** a zadejte "vyloučit normalizované ztráty".
+1. V podokně **vlastnosti** vyberte **parametry** > **Komentář** a zadejte "vyloučit normalizované ztráty".
 
 ### <a name="clean-missing-data"></a>Vyčistit chybějící data
 
@@ -140,7 +140,7 @@ Ve vaší datové sadě ještě chybí hodnoty po odebrání sloupce **normalizo
 
 1. V podokně Vlastnosti vyberte v **režimu čištění**možnost **odstranit celý řádek** .
 
-1. V podokně Vlastnosti zadejte "odebrat řádky chybějících hodnot". v poli **Komentář** .  
+1. V poli **Komentář** k podoknu vlastností zadejte "odebrat chybějící řádky hodnot".  
 
     Váš kanál by teď měl vypadat nějak takto:
     
@@ -148,43 +148,43 @@ Ve vaší datové sadě ještě chybí hodnoty po odebrání sloupce **normalizo
 
 ## <a name="train-a-machine-learning-model"></a>Výuka modelu strojového učení
 
-Teď, když jsou data předzpracovaná, můžete vytvořit prediktivní model. Vaše data budete používat ke výukě modelu. Pak otestujete model, abyste viděli, jak úzce je možné předpovědět ceny.
+Teď, když jsou data zpracovaná, můžete vytvořit prediktivní model.
 
 ### <a name="select-an-algorithm"></a>Výběr algoritmu
 
 **Klasifikace** a **regrese** jsou dva typy technik strojového učení se supervizí. **Klasifikace** předpovídá odpověď ze definované sady kategorií, jako je například barva (červená, modrá nebo zelená). **Regrese** se používá k předpovídání čísla.
 
-Vzhledem k tomu, že chcete odhadnout cenu, což je číslo, můžete použít regresní algoritmus. V tomto příkladu použijete model lineární regrese.
+Vzhledem k tomu, že chcete předpovědět cenu, což je číslo, můžete použít regresní algoritmus. V tomto příkladu použijete model lineární regrese.
 
 ### <a name="split-the-data"></a>Rozdělení dat
 
-Použijte svá data pro školení modelu a testujte je rozdělením dat do dvou samostatných datových sad.
+Rozdělte data do dvou samostatných datových sad pro účely školení modelu a testování.
 
-1. Zadejte **rozdělená data** do vyhledávacího pole, abyste našli modul **rozdělení dat** a připojili ho k levému portu modulu **Vyčištění chybějících dat** .
+1. Do vyhledávacího pole zadejte **rozdělená data** , abyste našli modul **rozdělení dat** a připojili ho k levému portu modulu **Vyčištění chybějících dat** .
 
 1. Vyberte modul **rozdělit data** .
 
 1. V podokně Vlastnosti nastavte **zlomek řádků v první výstupní sadě dat** na 0,7.
 
-    Tím je rozděleno 70 procent dat za účelem výuky modelu a při testování obsahuje zpět 30 procent.
+    Toto rozdělení 70 procent dat za účelem analýzy modelu a 30 procent pro jeho testování.
 
-1. V podokně Vlastnosti zadejte "rozdělit datovou sadu do sady školení (0,7) a sadu testů (0,3)." v poli **Komentář** .
+1. V poli **Komentář** k vlastnostem zadejte "rozdělit datovou sadu do sady školení (0,7) a testovací sadu (0,3)."
 
 ### <a name="train-the-model"></a>Trénování modelu
 
-Zajistěte si model tím, že mu udělíte sadu dat, která obsahuje cenu. Model vyhledá data a vyhledá korelaci mezi funkcemi automobilu a jeho cenou.
+Zajistěte si model tím, že mu udělíte sadu dat, která obsahuje cenu. Model prochází data a vyhledává korelace mezi funkcemi automobilu a cenou za účelem vytvoření modelu.
 
 1. Chcete-li vybrat sledovací algoritmus, zrušte zaškrtnutí políčka pro hledání palety modulu.
 
 1. Rozbalte **Machine Learning algoritmy**.
     
-    Tímto se zobrazí několik kategorií modulů, které je možné použít k inicializaci algoritmů strojového učení.
+    Zobrazí se několik kategorií modulů, které můžete použít k inicializaci výukových algoritmů.
 
-1. Pro tento kanál vyberte **regresi**  > **lineární regresi** a přetáhněte ji na plátno kanálu.
+1. Vyberte **regresi** > **lineární regresi** a přetáhněte ji na plátno kanálu.
 
 1. Najděte modul **vlakového modelu** a přetáhněte ho na plátno kanálu. 
 
-1. Připojte výstup modulu lineární regrese k levému vstupu modulu vlak model.
+1. Připojte výstup modulu **lineární regrese** k levému vstupu modulu **vlak model** .
 
 1. Připojte výstup školicích dat (levý port) modulu **rozdělení dat** ke správnému vstupu modulu **vlak model** .
 
@@ -194,7 +194,9 @@ Zajistěte si model tím, že mu udělíte sadu dat, která obsahuje cenu. Model
 
 1. V podokně Vlastnosti vyberte možnost **Upravit selektor sloupců** .
 
-1. V dialogovém okně **popisek sloupce** rozbalte rozevírací nabídku a vyberte **názvy sloupců**. Do textového pole zadejte **Price**. Cena je hodnota, kterou model hodlá předpovědět.
+1. V dialogovém okně **popisek sloupce** rozbalte rozevírací nabídku a vyberte **názvy sloupců**. 
+
+1. Do textového pole zadejte **Price**. Cena je hodnota, kterou model hodlá předpovědět.
 
     Váš kanál by měl vypadat takto:
 
@@ -202,13 +204,13 @@ Zajistěte si model tím, že mu udělíte sadu dat, která obsahuje cenu. Model
 
 ## <a name="evaluate-a-machine-learning-model"></a>Vyhodnocení modelu Machine Learning
 
-Teď, když jste pronaučili model pomocí 70 procent vašich dat, můžete ho použít k vyhodnocení dalších 30 procent dat, abyste viděli, jak dobře model funguje.
+Po školení modelu pomocí 70 procent dat ho můžete použít k vyhodnocení dalších 30 procent, abyste viděli, jak dobře model funguje.
 
 1. Do vyhledávacího pole zadejte **model skóre** a najděte modul **skóre modelu** a přetáhněte ho na plátno kanálu. 
 
 1. Připojte výstup modulu **vlak model** k levému vstupnímu portu **modelu skóre**. Připojte výstup testovacích dat (pravý port) modulu **rozdělení dat** ke správnému vstupnímu portu **modelu skóre**.
 
-1. Do vyhledávacího pole zadejte **vyhodnocení** pro vyhledání **modelu vyhodnocení** a přetáhněte modul na plátno kanálu. 
+1. Do vyhledávacího pole zadejte **vyhodnotit** a najděte **model vyhodnocení** a přetáhněte ho na plátno kanálu. 
 
 1. Propojte výstup modulu určení **skóre modelu** s levým vstupem **modelu vyhodnocení**. 
 
@@ -224,15 +226,17 @@ Teď, když jste pronaučili model pomocí 70 procent vašich dat, můžete ho p
 
 Po dokončení běhu můžete zobrazit výsledky spuštění kanálu. 
 
-1. Výběrem modulu **skóre** modelu Zobrazte výstup z modulu **skóre modelu** .
+1. Vyberte modul určení **skóre modelu** , ve kterém chcete zobrazit jeho výstup.
 
-1. V podokně **vlastnosti** vyberte možnost **výstupy**  > **vizualizace**. Na výstupu se zobrazí predikované hodnoty ceny a známé hodnoty v testovacích datech.
+1. V podokně **vlastnosti** vyberte možnost **výstupy** > **vizualizace**.
+
+    Tady vidíte předpovězené ceny a skutečné ceny z testovacích dat.
 
     ![Snímek obrazovky výstupní vizualizace, která zvýrazňuje sloupec označení skóre](./media/ui-tutorial-automobile-price-train-score/score-result.png)
 
-1. Výběrem modulu **skóre** modelu Zobrazte výstup z modulu **vyhodnocení modelu** .
+1. Vyberte modul **vyhodnocení modelu** a zobrazte jeho výstup.
 
-1. V podokně **vlastnosti** vyberte **výstup**  > **vizualizace**a pak vyberte **vizualizovat**.
+1. V podokně **vlastnosti** vyberte **výstup** > **vizualizace**.
 
 Pro váš model se zobrazí následující statistiky:
 
@@ -242,7 +246,7 @@ Pro váš model se zobrazí následující statistiky:
 * **Relativní kvadratická chyba**: Průměr kvadratických chyb relativních ke kvadratickému rozdílu mezi skutečnými hodnotami a průměrem všech skutečných hodnot
 * **Koeficient stanovitelnosti**: označuje se také jako hodnota v metrice R. Jedná se o statistickou metriku, která označuje, jak dobře model odpovídá datům.
 
-Pro každou statistiku chyb platí, že menší hodnota je lepší. Menší hodnota označuje, že předpověď přesněji odpovídá skutečným hodnotám. U koeficientu stanovitelnosti je bližší jeho hodnota jednomu (1,0), což je lepší předpovědi.
+Pro každou statistiku chyb platí, že menší hodnota je lepší. Menší hodnota označuje, že předpovědi jsou bližší k skutečným hodnotám. Pro koeficient stanovení je bližší jeho hodnota jednomu (1,0), což je lepší předpovědi.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -250,11 +254,11 @@ Pro každou statistiku chyb platí, že menší hodnota je lepší. Menší hodn
 
 ## <a name="next-steps"></a>Další kroky
 
-V první části tohoto kurzu jste dokončili tyto kroky:
+V první části tohoto kurzu jste dokončili následující úlohy:
 
 * Vytvoření kanálu
 * Příprava dat
-* Vyškolený model
+* Trénování modelu
 * Skóre a vyhodnocení modelu
 
 V části druhá část se dozvíte, jak model nasadit jako koncový bod v reálném čase.

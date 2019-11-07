@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: abf222b7a6d6e8fd053fa83c066d2b7850f575ab
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 22bb36e3b22f65bbf9922bd31e4b2e041cdb8979
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756909"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601234"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Globálně distribuované transakční a analytické úložiště pro kontejnery Azure Cosmos
 
@@ -29,15 +29,15 @@ Transakční modul úložiště je zálohovaný místními SSD, zatímco analyti
 
 |Funkce  |Transakční úložiště  |Analytické úložiště |
 |---------|---------|---------|
-|Maximální velikost úložiště na jeden kontejner Azure Cosmos |   Bez omezení      |    Bez omezení     |
-|Maximální velikost úložiště na klíč logického oddílu   |   10 GB      |   Bez omezení      |
+|Maximální velikost úložiště na jeden kontejner Azure Cosmos |   Unlimited      |    Unlimited     |
+|Maximální velikost úložiště na klíč logického oddílu   |   10 GB      |   Unlimited      |
 |Kódování úložiště  |   Řádky orientované pomocí interního formátu.   |   Sloupce orientované pomocí formátu Apache Parquet. |
 |Místní úložiště |   Replikované úložiště, které je založené na místním/souběžném clusteru SSD. |  Replikované úložiště zajištěné nenáročným vzdáleným/vypnutým clusterem SSD.       |
 |Stálost  |    99,99999 (7-9 s)     |  99,99999 (7-9 s)       |
-|Rozhraní API, která přistupují k datům  |   SQL, MongoDB, Cassandra, Gremlin, Tables a Etcd.       | Apache Spark         |
+|Rozhraní API, která přistupují k datům  |   SQL, MongoDB, Cassandra, Gremlin, Tables a etcd.       | Apache Spark         |
 |Uchování (Time-to-Live nebo TTL)   |  Řízené zásadami nakonfigurovanými na kontejneru Azure Cosmos pomocí vlastnosti `DefaultTimeToLive`.       |   Řízené zásadami nakonfigurovanými na kontejneru Azure Cosmos pomocí vlastnosti `ColumnStoreTimeToLive`.      |
-|Cena za GB    |   0,25/GB      |  $0,02/GB       |
-|Cena za transakce úložiště    | Zajištěná propustnost se účtuje $0,008 za 100 RU/s s hodinovou fakturací.        |  Propustnost na základě spotřeby se účtuje $0,05 pro 10 000 transakcí zápisu a $0,004 pro transakce s 10 000m čtením.       |
+|Cena za GB    |   Zobrazit [stránku s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)     |   Zobrazit [stránku s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)        |
+|Cena za transakce úložiště    |  Zobrazit [stránku s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)         |   Zobrazit [stránku s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)        |
 
 ## <a name="benefits-of-transactional-and-analytical-storage"></a>Výhody transakčního a analytického úložiště
 
@@ -66,53 +66,6 @@ Pro jeden nebo více oblastí Azure Cosmos účet bez ohledu na to, jestli je je
 V dané oblasti transakční úlohy fungují na transakčním a řádkovém úložišti vašeho kontejneru. Na druhé straně analytické úlohy působí v rámci analytického a sloupcového úložiště vašeho kontejneru. Tyto dva úložné motory pracují nezávisle a poskytují striktní izolaci výkonu mezi úlohami.
 
 Transakční úlohy využívají zřízenou propustnost (ru). Na rozdíl od transakčních úloh je propustnost analytických úloh založena na skutečné spotřebě. Analytické úlohy využívají prostředky na vyžádání.
-
-### <a name="on-demand-snapshots-and-time-travel-analytics"></a>Snímky na vyžádání a analýza času – cestování
-
-Můžete pořizovat snímky dat uložených v analytickém úložišti vašich kontejnerů Azure Cosmos, a to tak, že zavoláte příkaz `CreateSnapshot (name, timestamp)` v kontejneru. Snímky jsou pojmenovány "záložky" v historii aktualizací, které byly někdy provedeny ve vašem kontejneru.
-
-![Snímky na vyžádání a analýza času – cestování](./media/globally-distributed-transactional-analytical-storage/ondemand-analytical-data-snapshots.png)
-
-V době vytváření snímku můžete kromě názvu zadat časové razítko, které definuje stav kontejneru v historii aktualizací. Data snímku pak můžete načíst do Sparku a provádět dotazy.
-
-V současné době můžete na vyžádání kdykoli pořizovat snímky, takže automatické pořizování snímků na základě plánu nebo vlastních zásad se zatím nepodporují.
-
-### <a name="configure-and-tier-data-between-transactional-and-analytical-storage-independently"></a>Nezávisle nakonfigurujte data a vrstvu mezi transakčním a analytickým úložištěm.
-
-V závislosti na vašem scénáři můžete nezávisle povolit nebo zakázat každý ze dvou modulů úložiště. Konfigurace pro jednotlivé scénáře jsou následující:
-
-|Scénář |Nastavení transakčního úložiště  |Nastavení analytického úložiště |
-|---------|---------|---------|
-|Výhradně spouštění analytických úloh (s nekonečným uchováváním) |  DefaultTimeToLive = 0       |  ColumnStoreTimeToLive =-1       |
-|Spouštění transakčních úloh výhradně (s nekonečným uchováváním)  |   DefaultTimeToLive =-1      |  ColumnStoreTimeToLive = 0       |
-|Spuštění transakčních i analytických úloh (s nekonečným uchováváním)   |   DefaultTimeToLive =-1      | ColumnStoreTimeToLive =-1        |
-|Spuštění transakčních a analytických úloh (s různými intervaly uchovávání informací, označované také jako vrstvení úložiště)  |  DefaultTimeToLive = <Value1>       |     ColumnStoreTimeToLive = <Value2>    |
-
-1. **Konfigurace kontejneru výhradně pro analytické úlohy (s nekonečným uchováváním)**
-
-   Kontejner Azure Cosmos můžete nakonfigurovat výhradně pro analytické úlohy. Tato konfigurace má výhodu, kdy nemusíte platit za transakční úložiště. Pokud je vaším cílem použít kontejner jenom pro analytické úlohy, můžete transakční úložiště zakázat nastavením `DefaultTimeToLive` na 0 v kontejneru Cosmos a můžete povolit analytické úložiště s nekonečným uchováním nastavením `ColumnStoreTimeToLive` na hodnotu-1.
-
-   ![Analytické úlohy s nekonečným uchováváním](./media/globally-distributed-transactional-analytical-storage/analytical-workload-configuration.png)
-
-1. **Konfigurace kontejneru výhradně pro transakční úlohy (s nekonečné uchovávání)**
-
-   Kontejner Azure Cosmos můžete nakonfigurovat výhradně pro transakční úlohy. Analytické úložiště můžete zakázat nastavením `ColumnStoreTimeToLive` na 0 na kontejneru a můžete povolit analytické úložiště s nekonečným uchováním nastavením `DefaultTimeToLive` na hodnotu-1.
-
-   ![Transakční úlohy s nekonečným uchováváním](./media/globally-distributed-transactional-analytical-storage/transactional-workload-configuration.png)
-
-1. **Konfigurace kontejneru pro transakční i analytické úlohy (s nekonečným uchováváním)**
-
-   Kontejner Azure Cosmos můžete nakonfigurovat pro transakční i analytické úlohy s úplnou izolací výkonu mezi nimi. Analytické úložiště můžete povolit nastavením `ColumnStoreTimeToLive` na hodnotu-1 a povolení transakčního úložiště s nekonečné uchovávání nastavením `DefaultTimeToLive ` na hodnotu-1.
-
-   ![Transakční a analytické úlohy s nekonečným uchováváním](./media/globally-distributed-transactional-analytical-storage/analytical-transactional-configuration-infinite-retention.png)
-
-1. **Konfigurace kontejneru pro transakční i analytické úlohy s využitím vrstvení úložiště**
-
-   Kontejner Azure Cosmos můžete nakonfigurovat pro transakční i analytické úlohy s úplnou izolací výkonu mezi nimi a různými intervaly uchovávání. Azure Cosmos DB vynutilo, aby se analytické úložiště vždycky zachovalo delší dobu než transakční úložiště.
-
-   Můžete povolit transakční úložiště s nekonečným uchováváním nastavením `DefaultTimeToLive` na < hodnotu 1 > a povolit analytické úložiště nastavením `ColumnStoreTimeToLive` na < hodnoty 2 >. Azure Cosmos DB vyhodnotí, že < hodnota 2 > je vždycky větší než < hodnota 1 >.
-
-   ![Transakční a analytické úlohy s využitím vrstev úložiště](./media/globally-distributed-transactional-analytical-storage/analytical-transactional-configuration-specified-retention.png)
 
 ## <a name="next-steps"></a>Další kroky
 

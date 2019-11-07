@@ -1,218 +1,229 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Freshservice | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Freshservice.
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s Freshservice | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Freshservice.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 3dd22b1f-445d-45c6-8eda-30207eb9a1a8
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fbf69ba814b99434e933ed700fb0c8c842c3312
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3ba2f59799629873553fe261abebf59529ad94d
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67101842"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "73570615"
 ---
-# <a name="tutorial-integrate-freshservice-with-azure-active-directory"></a>Kurz: Freshservice integrovat s Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshservice"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Freshservice
 
 V tomto kurzu se dozvíte, jak integrovat Freshservice s Azure Active Directory (Azure AD). Když integrujete Freshservice s Azure AD, můžete:
 
-* Ovládací prvek ve službě Azure AD, který má přístup k Freshservice.
-* Aby uživatelé mohli být automaticky přihlášeni k Freshservice pomocí jejich účtů služby Azure AD.
-* Správa účtů v jednom centrálním místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k Freshservice.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k Freshservice svým účtům Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli začít, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat měsíční zkušební verze [tady](https://azure.microsoft.com/pricing/free-trial/).
-* Freshservice jednotné přihlašování (SSO) povolené předplatné.
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Freshservice odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurovat a otestovat jednotné přihlašování služby Azure AD v testovacím prostředí. Podporuje Freshservice **SP** jednotné přihlašování zahájené pomocí
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
+
+* Freshservice podporuje jednotné přihlašování iniciované v **SP**
 
 ## <a name="adding-freshservice-from-the-gallery"></a>Přidání Freshservice z Galerie
 
-Konfigurace integrace Freshservice do služby Azure AD, budete muset přidat Freshservice z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci Freshservice do služby Azure AD, musíte přidat Freshservice z Galerie do svého seznamu spravovaných aplikací SaaS.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. V levém navigačním podokně, vyberte **Azure Active Directory** služby.
-1. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, **novou aplikaci**.
-1. V **přidat z Galerie** části, zadejte **Freshservice** do vyhledávacího pole.
-1. Vyberte **Freshservice** z výsledků panelu a pak přidat aplikaci. Počkejte několik sekund, zatímco aplikace se přidá do vašeho tenanta.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Freshservice** .
+1. Na panelu výsledků vyberte **Freshservice** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on-for-freshservice"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Freshservice
 
-Konfigurace a otestování jednotného přihlašování k Azure AD s Freshservice pomocí testovacího uživatele volá **Britta Simon**. Pro jednotné přihlašování pro práci budete muset vytvořit vztah odkazu mezi uživatele služby Azure AD a související uživatel v Freshservice.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Freshservice pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Freshservice.
 
-Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD s Freshservice, proveďte následující stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Freshservice, dokončete následující stavební bloky:
 
-1. **[Konfigurace jednotného přihlašování k Azure AD](#configure-azure-ad-sso)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace jednotného přihlašování Freshservice](#configure-freshservice-sso)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele Freshservice](#create-freshservice-test-user)**  – Pokud chcete mít protějšek Britta Simon Freshservice, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-sso)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[Nakonfigurujte FRESHSERVICE SSO](#configure-freshservice-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+    1. **[Vytvořte Freshservice Test User](#create-freshservice-test-user)** -to, abyste měli protějšek B. Simon v Freshservice, která je propojená s reprezentací uživatele v Azure AD.
+1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování k Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
-Použijte následující postup povolení jednotného přihlašování Azure AD na webu Azure Portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Freshservice** stránky integrace aplikací, najdete **spravovat** a vyberte **jednotného přihlašování**.
-1. Na **vybrat jedinou metodu přihlašování** stránce **SAML**.
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, klikněte na ikonu úprav/pera **základní konfiguraci SAML** můžete upravit nastavení.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Freshservice** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Na **základní konfiguraci SAML** stránky, zadejte hodnoty pro následující pole:
+1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<democompany>.freshservice.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<democompany>.freshservice.com`
 
-    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<democompany>.freshservice.com`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<democompany>.freshservice.com`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory Freshservice klienta](https://support.freshservice.com/) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Freshservice](https://support.freshservice.com/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. V **podpisový certifikát SAML** klikněte na tlačítko **upravit** tlačítko Otevřít **podpisový certifikát SAML** dialogového okna.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-    ![Upravit podpisového certifikátu SAML](common/edit-certificate.png)
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-1. V **podpisový certifikát SAML** tématu, zkopírujte **kryptografický otisk** a uložte ho do počítače.
+1. Freshservice vyžaduje k získání jednotného přihlašování otisk otisku SHA-256. K získání otisku prstu SHA-256 proveďte následující kroky:
 
-    ![Zkopírujte hodnotu kryptografického otisku](common/copy-thumbprint.png)
+    Otisk ![otisku prstu](./media/freshservice-tutorial/ic790821.png "")
 
-1. Na **nastavení Freshservice** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+    1. Otevřete [odkaz](https://www.samltool.com/fingerprint.php) v jiném webovém prohlížeči.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    1. Otevřete stažený soubor certifikátu (Base64) v programu Poznámkový blok a vložte obsah do textového pole **certifikát X. 509** .
 
-    a. Přihlašovací adresa URL
+    1. V poli algoritmus vyberte **SHA256** z rozevíracího seznamu.
 
-    b. Identifikátor Azure AD
+    1. Klikněte na **Vypočítat otisk prstu**.
 
-    c. Adresa URL – odhlášení
+    1. Kliknutím na ikonu Kopírovat zkopírujte vygenerovaný **otisk prstu** a uložte ho do svého počítače.
 
-### <a name="configure-freshservice-sso"></a>Konfigurace jednotného přihlašování Freshservice
+1. V části **Nastavení Freshservice** na **Azure Portal**zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
-1. K automatizaci konfigurace v rámci Freshservice, je potřeba nainstalovat **Moje aplikace zabezpečené přihlašování rozšíření prohlížeče** kliknutím **nainstalovat rozšíření**.
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    ![Moje aplikace rozšíření](common/install-myappssecure-extension.png)
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-2. Po přidání rozšíření do prohlížeče, klikněte na **nastavení Freshservice** nasměruje na aplikaci Freshservice. Odtud zadejte přihlašovací údaje správce pro přihlášení do Freshservice. Rozšíření prohlížeče budou automaticky nakonfigurovat aplikaci za vás a automatizovat kroky 3 až 6.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-    ![Nastavení konfigurace](common/setup-sso.png)
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
+   1. Do pole **Název** zadejte `B.Simon`.  
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. například `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
-3. Pokud chcete nastavit Freshservice ručně, otevřete nové okno webového prohlížeče a přihlaste na webu společnosti Freshservice jako správce a proveďte následující kroky:
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-4. V nabídce v horní části klikněte na tlačítko **správce**.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Freshservice.
 
-    ![Správce](./media/freshservice-tutorial/ic790814.png "správce")
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **Freshservice**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-5. V **zákaznického portálu služeb**, klikněte na tlačítko **zabezpečení**.
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-    ![Zabezpečení](./media/freshservice-tutorial/ic790815.png "zabezpečení")
-
-6. V **zabezpečení** části, proveďte následující kroky:
-
-    ![Jednotné přihlašování](./media/freshservice-tutorial/ic790816.png "jednotné přihlašování")
-
-    a. Přepínač **jednotné přihlašování**.
-
-    b. Vyberte **SAML SSO**.
-
-    c. V **SAML přihlašovací adresa URL** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
-
-    d. V **odhlašovací adresa URL** textového pole vložte hodnotu **odhlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
-
-    e. V **otisku certifikátu zabezpečení** vložit do textového pole **kryptografický OTISK** hodnota certifikátu, který jste zkopírovali z portálu Azure portal.
-
-    f. Klikněte na **Uložit**.
-
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
-
-V této části vytvoříte testovacího uživatele na webu Azure Portal volá Britta Simon.
-
-1. V levém podokně webu Azure Portal vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
-1. V **uživatele** vlastností, postupujte podle těchto kroků:
-   1. Do pole **Název** zadejte `Britta Simon`.  
-   1. V **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
-   1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-   1. Klikněte na možnost **Vytvořit**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
-
-V této části povolíte Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Freshservice.
-
-1. Na webu Azure Portal, vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikací vyberte **Freshservice**.
-1. Na stránce Přehled aplikace najít **spravovat** a vyberte **uživatelů a skupin**.
-
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
-
-1. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. V **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** ze seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. Pokud očekáváte libovolná hodnota role v kontrolní výraz SAML v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu a klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. V **přidat přiřazení** dialogového okna, klikněte na tlačítko **přiřadit** tlačítko.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-freshservice-test-user"></a>Vytvoření Freshservice testovacího uživatele
+## <a name="configure-freshservice-sso"></a>Konfigurace jednotného přihlašování Freshservice
 
-Pokud chcete povolit Azure AD uživatelům umožní přihlásit k FreshService, musí být poskytnuty do FreshService. V případě FreshService zřizování se ruční úlohy.
+1. Pokud chcete automatizovat konfiguraci v rámci Freshservice, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
 
-**K poskytnutí uživatelského účtu, postupujte následovně:**
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
 
-1. Přihlaste se k vaší **FreshService** společnosti serveru jako správce.
+2. Po přidání rozšíření do prohlížeče klikněte na **Freshservice nastavení** a nasměrujte vás na aplikaci Freshservice. Odtud zadejte přihlašovací údaje správce, které se přihlásí k Freshservice. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-6.
 
-2. V nabídce v horní části klikněte na tlačítko **správce**.
+    ![Konfigurace instalace](common/setup-sso.png)
 
-    ![Správce](./media/freshservice-tutorial/ic790814.png "správce")
+3. Pokud chcete nastavit Freshservice ručně, otevřete nové okno webového prohlížeče a přihlaste se k webu Freshservice společnosti jako správce a proveďte následující kroky:
 
-3. V **Správa uživatelů** klikněte na tlačítko **žadatelů o deklaraci**.
+4. V nabídce v horní části klikněte na **správce**.
 
-    ![Žadatelů o deklaraci](./media/freshservice-tutorial/ic790818.png "žadatele")
+    ![](./media/freshservice-tutorial/ic790814.png "Správce") správy
 
-4. Klikněte na tlačítko **nový žadatel**.
+5. Na **portálu Customer**klikněte na **zabezpečení**.
 
-    ![Nové žadatelů o deklaraci](./media/freshservice-tutorial/ic790819.png "nové žadatele")
+    ![](./media/freshservice-tutorial/ic790815.png "Zabezpečení") zabezpečení
 
-5. V **nový žadatel** části, proveďte následující kroky:
+6. V části **zabezpečení** proveďte následující kroky:
 
-    ![Nový žadatel](./media/freshservice-tutorial/ic790820.png "nový žadatel")  
+    (./media/freshservice-tutorial/ic790816.png "Jednotné") přihlašování jednotného ![přihlašování]
 
-    a. Zadejte **křestní jméno** a **e-mailu** atributy platný účet služby Azure Active Directory ke zřízení do související textových polí.
+    a. Přepnout **jednotné přihlašování**
+
+    b. Vyberte **jednotné přihlašování SAML**.
+
+    c. Do textového pole **Adresa URL pro přihlášení SAML** vložte hodnotu **přihlašovací adresa URL**, kterou jste zkopírovali z Azure Portal.
+
+    d. Do textového pole **Adresa URL pro odhlášení** vložte hodnotu **URL pro odhlášení**, kterou jste zkopírovali z Azure Portal.
+
+    e. Do textového pole **otisk otisku certifikátu zabezpečení** vložte hodnotu **otisku prstu** , kterou jste vygenerovali dříve.
+
+    f. Klikněte na **Uložit**.
+
+### <a name="create-freshservice-test-user"></a>Vytvořit testovacího uživatele Freshservice
+
+Aby se uživatelé Azure AD mohli přihlašovat k FreshService, musí se zřídit v FreshService. V případě FreshService je zřizování ručním úkolem.
+
+**Chcete-li zřídit uživatelský účet, proveďte následující kroky:**
+
+1. Přihlaste se k webu **FreshService** společnosti jako správce.
+
+2. V nabídce v horní části klikněte na **správce**.
+
+    ![](./media/freshservice-tutorial/ic790814.png "Správce") správy
+
+3. V části **Správa uživatelů** klikněte na možnost **žadatelé**.
+
+    ![](./media/freshservice-tutorial/ic790818.png "Žadatelé") žadatele
+
+4. Klikněte na **Nový žadatel**.
+
+    ![Noví noví](./media/freshservice-tutorial/ic790819.png "žadatelé")
+
+5. V části **Nový žadatel** proveďte následující kroky:
+
+    Nový žadatel ![nového žadatele](./media/freshservice-tutorial/ic790820.png "")  
+
+    a. Zadejte **jméno** a **e-mailovou** adresu platného Azure Active Directory účtu, který chcete zřídit do souvisejících textových polí.
 
     b. Klikněte na **Uložit**.
 
     > [!NOTE]
-    > Držitel účtu Azure Active Directory získá e-mailu včetně odkaz pro potvrzení účtu, pak se změní na aktivní
+    > Držitel účtu Azure Active Directory získá e-mail, včetně odkazu na potvrzení účtu, než bude aktivní.
     >  
 
 > [!NOTE]
-> Můžete použít jakékoli jiné FreshService uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných FreshService uživatelským účtům, zřídit AAD.
+> K zřizování uživatelských účtů AAD můžete použít jiné nástroje pro vytváření uživatelských účtů FreshService nebo rozhraní API poskytovaná FreshService.
 
-### <a name="test-sso"></a>Test SSO
+## <a name="test-sso"></a>Test SSO
 
-Při výběru dlaždice Freshservice na přístupovém panelu, můžete by měl být automaticky přihlášeni k Freshservice, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-## <a name="additional-resources"></a>Další prostředky
+Když na přístupovém panelu kliknete na dlaždici Freshservice, měli byste se automaticky přihlásit k Freshservice, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+## <a name="additional-resources"></a>Další zdroje
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Vyzkoušejte si Freshservice s Azure AD](https://aad.portal.azure.com/)

@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 62af688c6090b61f2596ab376cb479c270b87759
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 78e085aae97114e6848b736c40b16c755256d0cd
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274113"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571115"
 ---
-# <a name="load-balancer-health-probes"></a>Load Balancer sondy stavu
+# <a name="load-balancer-health-probes"></a>Sondy stavu Load Balanceru
 
 Pokud používáte pravidla vyrovnávání zatížení s Azure Load Balancer, je nutné zadat sondy stavu, aby bylo možné Load Balancer detekovat stav koncového bodu back-endu.  Konfigurace sondy stavu a odezvy sondy určují, které instance fondu back-end budou dostávat nové toky. Sondy stavu můžete použít k detekci selhání aplikace na koncovém bodu back-endu. Můžete také vygenerovat vlastní odpověď na sondu stavu a použít sondu stavu pro řízení toku ke správě zátěže nebo plánovaného výpadku. Pokud selže test stavu, Load Balancer zastaví odesílání nových toků do příslušné instance, která není v pořádku.
 
 Sondy stavu podporují více protokolů. Dostupnost konkrétního protokolu sondy stavu se liší podle Load Balancer SKU.  Kromě toho se chování služby liší podle Load Balancer SKU, jak je znázorněno v této tabulce:
 
-| | SKU Standard | Základní SKU |
+| | Standardní SKU | Základní SKU |
 | --- | --- | --- |
 | [Typy sond](#types) | TCP, HTTP, HTTPS | TCP, HTTP |
 | [Chování testu](#probedown) | Všechny sondy vyplynou, všechny toky TCP pokračuje. | Všechny sondy vyprší, všechny toky TCP vyprší. | 
@@ -48,6 +48,9 @@ Konfigurace sondy stavu se skládá z následujících elementů:
 - Protokol testu
 - Port testu
 - Cesta HTTP, která se má použít pro HTTP GET při použití sond HTTP (S)
+
+> [!NOTE]
+> Definice sondy není povinná ani při použití Azure PowerShell, Azure CLI, šablon nebo rozhraní API zaškrtnutá. Testy ověření sondy se provádějí jenom při použití webu Azure Portal.
 
 ## <a name="understanding-application-signal-detection-of-the-signal-and-reaction-of-the-platform"></a>Porozumění signalizaci aplikace, detekci signálu a reakci platformy
 
@@ -81,9 +84,9 @@ Protokol používaný sondou stavu lze nakonfigurovat na jednu z následujícíc
 
 Dostupné protokoly závisí na použité Load Balancer SKU:
 
-|| PROTOKOLU | HTTP | HTTPS |
+|| TCP | HTTP | HTTPS |
 | --- | --- | --- | --- |
-| SKU Standard |    &#9989; |   &#9989; |   &#9989; |
+| Standardní SKU |    &#9989; |   &#9989; |   &#9989; |
 | Základní SKU |   &#9989; |   &#9989; | &#10060; |
 
 ### <a name="tcpprobe"></a>Test TCP
@@ -237,7 +240,7 @@ Pokud máte na svém VIRTUÁLNÍm počítači více rozhraní, musíte si být j
 
 Nepovolujte [Časová razítka TCP](https://tools.ietf.org/html/rfc1323).  Povolení časových razítek TCP může způsobit selhání sond stavu kvůli tomu, že pakety TCP jsou vyřazeny z hostovaného operačního systému hostovaného operačního systému virtuálního počítače. výsledkem Load Balancer označení příslušného koncového bodu.  Ve výchozím nastavení jsou časová razítka TCP zapnutá u imagí s posíleným zabezpečením virtuálních počítačů a musí být zakázaná.
 
-## <a name="monitoring"></a>Sledovaný
+## <a name="monitoring"></a>Monitorování
 
 Veřejné i interní [Standard Load Balancer](load-balancer-standard-overview.md) zveřejňují stav testu stavu koncového bodu na koncovém bodu a koncovým bodem back-end jako multidimenzionální metriky prostřednictvím Azure monitor. Tyto metriky můžou využívat jiné služby Azure nebo partnerské aplikace. 
 
@@ -250,7 +253,7 @@ Základní veřejné Load Balancer zveřejňuje stav sondy stavu pro každý bac
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [Standard Load Balancer](load-balancer-standard-overview.md)
+- Další informace o [Load Balanceru úrovně Standard](load-balancer-standard-overview.md)
 - [Začínáme vytvářet veřejný Nástroj pro vyrovnávání zatížení v Správce prostředků pomocí prostředí PowerShell](load-balancer-get-started-internet-arm-ps.md)
 - [REST API pro sondy stavu](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
 - Vyžádejte si nové možnosti sondy stavu s [Load Balancer UserVoice](https://aka.ms/lbuservoice)

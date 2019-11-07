@@ -1,30 +1,30 @@
 ---
-title: Jak škálovat s více instancemi pro služby Azure SignalR
-description: V mnoha scénářích škálování často zákazník potřebuje ke zřízení více instancí a konfigurace se dají použít společně k vytvoření nasazení ve velkém měřítku. Například horizontálního dělení vyžaduje že podporu více instancí.
+title: Jak škálovat více instancí služby Azure Signal
+description: V mnoha scénářích škálování zákazník často potřebuje zřídit víc instancí a nakonfigurovat ho tak, aby je používal dohromady, aby se vytvořilo nasazení ve velkém měřítku. Například horizontálního dělení vyžaduje podporu více instancí.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: zhshang
-ms.openlocfilehash: e284a0492774e02cab79db6d9006c1718a7fcfc9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e31bc4133cced793d793c07d2e0ee3df29efddb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60809237"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672335"
 ---
-# <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Jak škálovat služby SignalR s více instancemi?
-Nejnovější sady SDK služby SignalR podporuje několik koncových bodů pro instance služby SignalR. Můžete pomocí této funkce lze škálovat souběžných připojení, nebo ho použít pro zasílání zpráv mezi různými oblastmi.
+# <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Jak škálovat službu signálu pomocí více instancí?
+Nejnovější sada SDK služby signalizace podporuje více koncových bodů pro instance služby Signal. Pomocí této funkce můžete škálovat souběžná připojení nebo je použít pro zasílání zpráv mezi oblastmi.
 
 ## <a name="for-aspnet-core"></a>Pro ASP.NET Core
 
-### <a name="how-to-add-multiple-endpoints-from-config"></a>Postup přidání více koncových bodů z konfigurace došlo k chybě?
+### <a name="how-to-add-multiple-endpoints-from-config"></a>Jak přidat více koncových bodů z konfigurace?
 
-Konfigurace s klíčem `Azure:SignalR:ConnectionString` nebo `Azure:SignalR:ConnectionString:` pro připojovací řetězec služby SignalR.
+Config pomocí Key `Azure:SignalR:ConnectionString` nebo `Azure:SignalR:ConnectionString:` pro připojovací řetězec služby Signal.
 
-Pokud klíč začíná `Azure:SignalR:ConnectionString:`, musí být ve formátu `Azure:SignalR:ConnectionString:{Name}:{EndpointType}`, kde `Name` a `EndpointType` jsou vlastnosti `ServiceEndpoint` objektů a jsou přístupné z kódu.
+Pokud klíč začíná na `Azure:SignalR:ConnectionString:`, měla by být ve formátu `Azure:SignalR:ConnectionString:{Name}:{EndpointType}`, kde `Name` a `EndpointType` jsou vlastnosti objektu `ServiceEndpoint` a jsou přístupné z kódu.
 
-Můžete přidat více instancí připojovací řetězce s využitím následující `dotnet` příkazy:
+Připojovací řetězce s více instancemi můžete přidat pomocí následujících příkazů `dotnet`:
 
 ```batch
 dotnet user-secrets set Azure:SignalR:ConnectionString:east-region-a <ConnectionString1>
@@ -32,10 +32,10 @@ dotnet user-secrets set Azure:SignalR:ConnectionString:east-region-b:primary <Co
 dotnet user-secrets set Azure:SignalR:ConnectionString:backup:secondary <ConnectionString3>
 ```
 
-### <a name="how-to-add-multiple-endpoints-from-code"></a>Postup přidání více koncových bodů z kódu?
+### <a name="how-to-add-multiple-endpoints-from-code"></a>Jak přidat více koncových bodů z kódu?
 
-A `ServicEndpoint` třída se používá k popisu vlastnosti koncového bodu služby Azure SignalR.
-Můžete nakonfigurovat několik koncových bodů instance při použití sady SDK služby Azure SignalR prostřednictvím:
+K popisu vlastností koncového bodu služby signalizace Azure je představena `ServicEndpoint` třída.
+Pomocí sady SDK služby Azure Signaler můžete nakonfigurovat několik koncových bodů instance prostřednictvím:
 ```cs
 services.AddSignalR()
         .AddAzureSignalR(options => 
@@ -53,23 +53,23 @@ services.AddSignalR()
         });
 ```
 
-### <a name="how-to-customize-endpoint-router"></a>Jak přizpůsobit směrovače koncový bod?
+### <a name="how-to-customize-endpoint-router"></a>Jak přizpůsobit směrovač koncových bodů?
 
-Ve výchozím nastavení, sada SDK používá [DefaultEndpointRouter](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR/EndpointRouters/DefaultEndpointRouter.cs) ke sbírání koncových bodů.
+Ve výchozím nastavení sada SDK používá [DefaultEndpointRouter](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR/EndpointRouters/DefaultEndpointRouter.cs) k výběru koncových bodů.
 
 #### <a name="default-behavior"></a>Výchozí chování 
-1. Směrování žádostí klienta
+1. Směrování požadavků klientů
 
-    Když klient `/negotiate` s aplikačním serverem. Ve výchozím nastavení, sady SDK **náhodně vybere** jeden koncový bod ze sady dostupných koncových bodů služby.
+    Když se klient `/negotiate` s aplikačním serverem. Sada SDK ve výchozím nastavení **náhodně vybere** jeden koncový bod ze sady dostupných koncových bodů služby.
 
 2. Směrování zpráv serveru
 
-    Když *odeslání zprávy na konkrétní **připojení*** a cílové připojení se směruje na aktuálním serveru, dostane zprávu přímo do tohoto koncového bodu připojení. V opačném případě jsou vysílali zprávy pro každý koncový bod Azure SignalR.
+    Když se * posílá zpráva na konkrétní * * připojení * * * a cílové připojení se směruje na aktuální server, pošle se tato zpráva přímo do tohoto připojeného koncového bodu. V opačném případě se zprávy všesměrově vysílají do každého koncového bodu služby Azure Signal.
 
-#### <a name="customize-routing-algorithm"></a>Přizpůsobení algoritmus směrování
-Pokud máte zvláštní znalost k identifikaci jaké koncové body se měli zúčastnit zprávy, můžete vytvořit vlastní směrovače.
+#### <a name="customize-routing-algorithm"></a>Přizpůsobení algoritmu směrování
+Můžete vytvořit vlastní směrovač, pokud máte zvláštní znalosti, abyste určili, na které koncové body by měly zprávy jít.
 
-Vlastní směrovač je definován pod jako příklad při o skupiny začínající `east-` vždy přejděte na koncový bod s názvem `east`:
+Vlastní směrovač je definován níže jako příklad, když se skupiny začínající na `east-` vždy přejdou na koncový bod s názvem `east`:
 
 ```cs
 private class CustomRouter : EndpointRouterDecorator
@@ -87,7 +87,7 @@ private class CustomRouter : EndpointRouterDecorator
 }
 ```
 
-Vyjednávání níže, další příklad, který přepíše výchozí chování, vyberte koncové body, závisí na níž je umístěn server aplikace.
+Další příklad, který přepisuje výchozí chování při vyjednání, na výběr koncových bodů závisí na umístění aplikačního serveru.
 
 ```cs
 private class CustomRouter : EndpointRouterDecorator
@@ -110,7 +110,7 @@ private class CustomRouter : EndpointRouterDecorator
 }
 ```
 
-Nezapomeňte k registraci na směrovač pomocí kontejnerů DI:
+Nezapomeňte zaregistrovat směrovač do DI Container pomocí:
 
 ```cs
 services.AddSingleton(typeof(IEndpointRouter), typeof(CustomRouter));
@@ -127,15 +127,15 @@ services.AddSignalR()
             });
 ```
 
-## <a name="for-aspnet"></a>Pro technologii ASP.NET
+## <a name="for-aspnet"></a>Pro ASP.NET
 
-### <a name="how-to-add-multiple-endpoints-from-config"></a>Postup přidání více koncových bodů z konfigurace došlo k chybě?
+### <a name="how-to-add-multiple-endpoints-from-config"></a>Jak přidat více koncových bodů z konfigurace?
 
-Konfigurace s klíčem `Azure:SignalR:ConnectionString` nebo `Azure:SignalR:ConnectionString:` pro připojovací řetězec služby SignalR.
+Config pomocí Key `Azure:SignalR:ConnectionString` nebo `Azure:SignalR:ConnectionString:` pro připojovací řetězec služby Signal.
 
-Pokud klíč začíná `Azure:SignalR:ConnectionString:`, musí být ve formátu `Azure:SignalR:ConnectionString:{Name}:{EndpointType}`, kde `Name` a `EndpointType` jsou vlastnosti `ServiceEndpoint` objektů a jsou přístupné z kódu.
+Pokud klíč začíná na `Azure:SignalR:ConnectionString:`, měla by být ve formátu `Azure:SignalR:ConnectionString:{Name}:{EndpointType}`, kde `Name` a `EndpointType` jsou vlastnosti objektu `ServiceEndpoint` a jsou přístupné z kódu.
 
-Můžete přidat více instancí připojovací řetězce ke službě `web.config`:
+Do `web.config`můžete přidat více připojovacích řetězců s více instancemi:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -150,10 +150,10 @@ Můžete přidat více instancí připojovací řetězce ke službě `web.config
 </configuration>
 ```
 
-### <a name="how-to-add-multiple-endpoints-from-code"></a>Postup přidání více koncových bodů z kódu?
+### <a name="how-to-add-multiple-endpoints-from-code"></a>Jak přidat více koncových bodů z kódu?
 
-A `ServicEndpoint` třída se používá k popisu vlastnosti koncového bodu služby Azure SignalR.
-Můžete nakonfigurovat několik koncových bodů instance při použití sady SDK služby Azure SignalR prostřednictvím:
+K popisu vlastností koncového bodu služby signalizace Azure je představena `ServicEndpoint` třída.
+Pomocí sady SDK služby Azure Signaler můžete nakonfigurovat několik koncových bodů instance prostřednictvím:
 
 ```cs
 app.MapAzureSignalR(
@@ -171,11 +171,11 @@ app.MapAzureSignalR(
         });
 ```
 
-### <a name="how-to-customize-router"></a>Jak přizpůsobit směrovače?
+### <a name="how-to-customize-router"></a>Jak přizpůsobit směrovač?
 
-Jediným rozdílem mezi funkce SignalR technologie ASP.NET a funkce SignalR technologie ASP.NET Core je typ kontextu http pro `GetNegotiateEndpoint`. Pro funkci SignalR technologie ASP.NET, je [IOwinContext](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR.AspNet/EndpointRouters/DefaultEndpointRouter.cs#L19) typu.
+Jediným rozdílem mezi signálem ASP.NET a signálem ASP.NET Core je typ kontextu http pro `GetNegotiateEndpoint`. Pro signál ASP.NET je typu [IOwinContext](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR.AspNet/EndpointRouters/DefaultEndpointRouter.cs#L19) .
 
-Níže je příklad vyjednávání vlastní funkce SignalR technologie ASP.NET:
+Níže je uveden vlastní příklad dohadování pro ASP.NET signál:
 
 ```cs
 private class CustomRouter : EndpointRouterDecorator
@@ -197,7 +197,7 @@ private class CustomRouter : EndpointRouterDecorator
 }
 ```
 
-Nezapomeňte k registraci na směrovač pomocí kontejnerů DI:
+Nezapomeňte zaregistrovat směrovač do DI Container pomocí:
 
 ```cs
 var hub = new HubConfiguration();
@@ -213,33 +213,33 @@ app.MapAzureSignalR(GetType().FullName, hub, options => {
 });
 ```
 
-## <a name="configuration-in-cross-region-scenarios"></a>Konfigurace ve scénářích mezi oblastmi
+## <a name="configuration-in-cross-region-scenarios"></a>Konfigurace v různých scénářích pro různé oblasti
 
-`ServiceEndpoint` Objekt má `EndpointType` vlastnost s hodnotou `primary` nebo `secondary`.
+Objekt `ServiceEndpoint` má vlastnost `EndpointType` s hodnotou `primary` nebo `secondary`.
 
-`primary` Koncové body jsou upřednostňované koncových bodů pro příjem komunikace s klienty a jsou považovány za spolehlivější síťové připojení; `secondary` koncové body jsou považovány za méně spolehlivé připojení k síti a jsou používány pouze pro aktuální server komunikace s klienty, například všesměrové vysílání zpráv, nikoli pro klienta a současně provoz serveru.
+`primary` koncové body jsou preferované koncové body pro příjem klientského provozu a považují se za spolehlivější síťová připojení; `secondary` koncových bodů se považují za méně spolehlivá síťová připojení a používají se pouze k přebírání klientských přenosů mezi servery, například při vysílání zpráv, nikoli při přebírání klientů pro provoz serveru.
 
-V případech, mezi různými oblastmi může nestabilní sítě. Pro jednu aplikaci server umístěný v *USA – východ*, koncový bod služby SignalR umístěné ve stejné *USA – východ* oblasti se dají konfigurovat jako `primary` a označení koncových bodů v jiných oblastech `secondary`. V této konfiguraci můžete koncové body služby v jiných oblastech **přijímat** zprávy z tohoto *USA – východ* aplikačního serveru, ale nebudou mít žádný **mezi různými oblastmi** klienti směrovat do Tento server aplikace. Architektuře můžete vidět v následujícím diagramu:
+V případech různých oblastí může být síť nestabilní. U jednoho serveru aplikace umístěného v *východní USA*se koncový bod služby Signal umístěný ve stejné *východní USA* oblasti dá nakonfigurovat jako `primary` a koncové body v dalších oblastech označených jako `secondary`. V této konfiguraci můžou koncové body služby v jiných oblastech **přijímat** zprávy z tohoto *východní USA* serveru aplikace, ale na tento aplikační server se nesměrují žádní klienti pro **různé oblasti** . Architektura se zobrazuje v následujícím diagramu:
 
-![Mezi geografickými Infra](./media/signalr-howto-scale-multi-instances/cross_geo_infra.png)
+![Mezi geografickým a geografickým infračerveným](./media/signalr-howto-scale-multi-instances/cross_geo_infra.png)
 
-Když klient zkusí `/negotiate` s aplikační server s výchozí směrovač SDK **náhodně vybere** ze sady k dispozici jeden koncový bod `primary` koncových bodů. Pokud koncový bod je k dispozici, pak SDK **náhodně vybere** ze všech dostupných `secondary` koncových bodů. Koncový bod je označen jako **dostupné** při zachování připojení mezi serverem a koncový bod služby.
+Když se klient pokusí `/negotiate` s aplikačním serverem, sada SDK **náhodně vybere** jeden koncový bod ze sady dostupných koncových bodů `primary`. Pokud primární koncový bod není k dispozici, sada SDK **náhodně vybere** ze všech dostupných koncových bodů `secondary`. Pokud je připojení mezi serverem a koncovým bodem služby aktivní, je koncový bod označený jako **dostupný** .
 
-Ve scénáři mezi různými oblastmi, pokud se klient pokusí `/negotiate` s aplikačním serverem hostovaný v *USA – východ*, je výchozí vždy vrátí `primary` koncový bod umístěný ve stejné oblasti. Když všechny *USA – východ* koncových bodů nejsou k dispozici, klient se přesměruje do koncových bodů v jiných oblastech. Následující části převzetí služeb při selhání popisuje scénář podrobněji.
+Pokud se v případě různých oblastí pokusí klient `/negotiate` s aplikačním serverem hostovaným v *východní USA*, ve výchozím nastavení vždycky vrátí `primary` koncový bod umístěný ve stejné oblasti. Pokud nejsou k dispozici všechny koncové body *východní USA* , klient bude přesměrován do koncových bodů v jiných oblastech. V části převzetí služeb při selhání níže se podrobně popisuje scénář.
 
-![Normální vyjednávání](./media/signalr-howto-scale-multi-instances/normal_negotiate.png)
+![Normální dohadování](./media/signalr-howto-scale-multi-instances/normal_negotiate.png)
 
 ## <a name="fail-over"></a>Převzetí služeb při selhání
 
-Když všechny `primary` koncových bodů nejsou k dispozici, klienta `/negotiate` vybere z dostupných `secondary` koncových bodů. Tento mechanismus převzetí služeb při selhání vyžaduje, aby každý koncový bod by měl sloužit jako `primary` koncový bod serveru aspoň jednu aplikaci.
+Pokud nejsou k dispozici všechny koncové body `primary`, `/negotiate` z dostupných `secondary` koncových bodů klienta vybere. Tento mechanismus pro převzetí služeb při selhání vyžaduje, aby měl každý koncový bod sloužit jako `primary` koncový bod k aspoň jednomu aplikačnímu serveru.
 
 ![Převzetí služeb při selhání](./media/signalr-howto-scale-multi-instances/failover_negotiate.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V této příručce jste se dozvěděli o tom, jak nakonfigurovat více instancí ve stejné aplikaci pro škálování, horizontálního dělení a scénáře mezi oblastmi.
+V této příručce jste se dozvěděli o tom, jak nakonfigurovat více instancí ve stejné aplikaci pro scénáře škálování, horizontálního dělení a mezi oblastmi.
 
-Podporuje více koncových bodů lze také ve scénářích vysokou dostupnost a obnovení.
+Ve scénářích pro vysokou dostupnost a zotavení po havárii lze také použít více koncových bodů.
 
 > [!div class="nextstepaction"]
-> [Nastavení služby SignalR pro zotavení po havárii a vysoká dostupnost](./signalr-concept-disaster-recovery.md)
+> [Nastavení služby signalizace pro zotavení po havárii a vysokou dostupnost](./signalr-concept-disaster-recovery.md)

@@ -2,17 +2,17 @@
 title: Architektura virtuální sítě Azure HDInsight
 description: Seznamte se s prostředky, které jsou k dispozici při vytváření clusteru HDInsight v Virtual Network Azure.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.author: hrasheed
-ms.openlocfilehash: 340974201d62f97669db442f4a95439a6ac90a5e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.date: 10/31/2019
+ms.openlocfilehash: 0a1139f7bf1711a5f6d980e67a8a9027bfd3af52
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960627"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73665325"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Architektura virtuální sítě Azure HDInsight
 
@@ -22,7 +22,7 @@ Tento článek popisuje prostředky, které jsou k dispozici při nasazení clus
 
 Clustery Azure HDInsight mají různé typy virtuálních počítačů nebo uzlů. Každý typ uzlu hraje roli v provozu systému. Následující tabulka shrnuje tyto typy uzlů a jejich role v clusteru.
 
-| type | Popis |
+| Typ | Popis |
 | --- | --- |
 | Hlavní uzel |  Pro všechny typy clusterů kromě Apache Storm hlavní uzly hostují procesy, které spravují provádění distribuované aplikace. Hlavní uzel je také uzel, do kterého můžete přihlédnout a spouštět aplikace, které jsou potom koordinovány pro spouštění v rámci prostředků clusteru. Počet hlavních uzlů je pevně stanoven dvakrát pro všechny typy clusterů. |
 | Uzel ZooKeeper | Zookeeper koordinuje úlohy mezi uzly, které provádí zpracování dat. Má také volbu vedoucího hlavního uzlu a sleduje, který hlavní uzel spouští určitou hlavní službu. Počet uzlů ZooKeeper je pevně stanoven na tři. |
@@ -55,23 +55,23 @@ V rámci virtuální sítě používané se službou HDInsight se automaticky vy
 | --- | --- | --- |
 |Nástroj pro vyrovnávání zatížení | tři | |
 |Síťová rozhraní | devět | Tato hodnota je založena na běžném clusteru, kde každý uzel má své vlastní síťové rozhraní. Devět rozhraní je pro dva hlavní uzly, tři uzly Zookeeper, dva pracovní uzly a dva uzly brány, které jsou uvedené v předchozí tabulce. |
-|Veřejná IP adresa | dva |    |
+|Veřejné IP adresy | dva |    |
 
 ## <a name="endpoints-for-connecting-to-hdinsight"></a>Koncové body pro připojení ke službě HDInsight
 
 Ke clusteru HDInsight máte přístup třemi způsoby:
 
-- Koncový bod HTTPS mimo virtuální síť v `CLUSTERNAME.azurehdinsight.net`.
-- Koncový bod SSH pro přímé připojení k hlavnímu uzlu `CLUSTERNAME-ssh.azurehdinsight.net`na.
+- Koncový bod HTTPS mimo virtuální síť na `CLUSTERNAME.azurehdinsight.net`.
+- Koncový bod SSH pro přímé připojení k hlavnímu uzlu na `CLUSTERNAME-ssh.azurehdinsight.net`.
 - Koncový bod HTTPS v rámci virtuální sítě `CLUSTERNAME-int.azurehdinsight.net`. Všimněte si, že v této adrese URL je "-int". Tento koncový bod se přeloží na soukromou IP adresu v této virtuální síti a není přístupný z veřejného Internetu.
 
 K těmto třem koncovým bodům se přiřadí nástroj pro vyrovnávání zatížení.
 
 Veřejné IP adresy se také poskytují ke dvěma koncovým bodům, které umožňují připojení mimo virtuální síť.
 
-1. K nástroji pro vyrovnávání zatížení pro plně kvalifikovaný název domény (FQDN), který se má použít při připojování ke clusteru z Internetu `CLUSTERNAME.azurehdinsight.net`, se přiřadí jedna veřejná IP adresa.
-1. Druhá veřejná IP adresa se používá pouze pro název `CLUSTERNAME-ssh.azurehdinsight.net`domény SSH.
+1. K nástroji pro vyrovnávání zatížení se přiřadí jedna veřejná IP adresa pro plně kvalifikovaný název domény (FQDN), která se použije při připojování ke clusteru z Internetu `CLUSTERNAME.azurehdinsight.net`.
+1. Druhá veřejná IP adresa se používá jenom pro název domény `CLUSTERNAME-ssh.azurehdinsight.net`jenom SSH.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Zabezpečení příchozího provozu do clusterů HDInsight ve virtuální síti s privátním koncovým bodem](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
+- [Zabezpečení příchozího provozu do clusterů HDInsight ve virtuální síti s privátním koncovým bodem](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)

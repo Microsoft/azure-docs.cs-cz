@@ -3,6 +3,7 @@ title: Vytvoření analytické aplikace v obchodě v Azure IoT Central | Microso
 description: V tomto kurzu se dozvíte, jak v IoT Central vytvořit maloobchodní aplikaci analýzy v obchodě. Vytvoříte ho, přizpůsobíte ho a přidáte zařízení snímače.
 services: iot-central
 ms.service: iot-central
+ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.custom:
 - iot-storeAnalytics-checkout
@@ -10,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 10/03/2019
-ms.openlocfilehash: 0d586aaab4fc87bb671e67152cf66e9fb1447504
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a662201823808c9e2e34e9210096cb081e1b9430
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495177"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615311"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Kurz: vytvoření analytické aplikace v obchodě v Azure IoT Central
 
@@ -41,7 +42,7 @@ V tomto kurzu se naučíte:
 > * Připojení zařízení k aplikaci
 > * Přidat pravidla a akce pro monitorování podmínek
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení této série kurzů potřebujete:
 * Doporučuje se předplatné Azure. Volitelně můžete použít bezplatnou 7 dní zkušební verzi. Pokud nemáte předplatné Azure, můžete ho vytvořit na [stránce registrace do Azure](https://aka.ms/createazuresubscription).
@@ -76,9 +77,9 @@ Vytvoření nové aplikace pro rezervaci v rámci úložiště, která použív�
 
     Další informace o adresářích a předplatných najdete v [rychlém startu k vytvoření aplikace](../core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
 
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
-    ![Stránka aplikace Azure IoT Central](./media/tutorial-in-store-analytics-create-app-pnp/preview-application-template.png)
+    ![Stránka vytvoření aplikace Azure IoT Central](./media/tutorial-in-store-analytics-create-app-pnp/preview-application-template.png)
 
 ## <a name="customize-application-settings"></a>Přizpůsobení nastavení aplikace
 Jako tvůrce můžete změnit několik nastavení pro přizpůsobení uživatelského prostředí aplikace. V této části vyberete předdefinovaný motiv aplikace. Volitelně se naučíte, jak vytvořit vlastní motiv a aktualizovat image aplikace. Vlastní motiv vám umožní nastavit barvy prohlížeče aplikace, ikonu prohlížeče a logo aplikace, které se zobrazí v záhlaví grafiky.
@@ -91,7 +92,7 @@ Výběr předdefinovaného motivu aplikace:
 
 2. Vyberte nový **motiv**.
 
-3. Vyberte **Save** (Uložit).
+3. Vyberte **Uložit**.
 
 Místo použití předdefinovaného motivu můžete vytvořit vlastní motiv. Pokud chcete k přizpůsobení aplikace a dokončení kurzu použít sadu ukázkových imagí, Stáhněte si [ukázkové image společnosti Contoso](https://github.com/Azure-Samples/iot-central-docs-samples/tree/master/retail).
 
@@ -109,7 +110,7 @@ Vytvoření vlastního motivu:
 
 1. V případě potřeby nahraďte výchozí **barvy v prohlížeči** přidáním hexadecimálních kódů HTML. Pro **záhlaví**přidejte *#008575*.  Pro **zvýraznění**přidejte *#A1F3EA*. 
 
-1. Vyberte **Save** (Uložit). 
+1. Vyberte **Uložit**. 
 
     ![Vlastní logo pro Azure IoT Central](./media/tutorial-in-store-analytics-create-app-pnp/select-application-logo.png)
 
@@ -123,7 +124,7 @@ Aktualizace image aplikace:
 
 1. Pomocí tlačítka **Vybrat obrázek** můžete zvolit obrázek, který se má nahrát jako obrázek aplikace. Tento obrázek se zobrazí na dlaždici aplikace na stránce **Moje aplikace** ve správci aplikací IoT Central.
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 1. Volitelně můžete přejít na zobrazení **Moje aplikace** na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) . Dlaždice aplikace zobrazuje aktualizovaný obrázek aplikace.
 
@@ -146,7 +147,7 @@ Přidání šablony zařízení RuuviTag do vaší aplikace:
 
     ![Šablona zařízení RuuviTag pro senzory Azure IoT Central](./media/tutorial-in-store-analytics-create-app-pnp/ruuvitag-device-template.png)
 
-1. Vyberte **Create** (Vytvořit). Aplikace přidá šablonu zařízení RuuviTag.
+1. Vyberte **Vytvořit**. Aplikace přidá šablonu zařízení RuuviTag.
 
 1. V levém podokně vyberte **šablony zařízení** . Na stránce se zobrazí všechny šablony zařízení, které jsou součástí šablony aplikace, a šablonu zařízení RuuviTag, kterou jste právě přidali.
 

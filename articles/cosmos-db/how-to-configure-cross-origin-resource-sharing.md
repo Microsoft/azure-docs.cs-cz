@@ -6,21 +6,21 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: 82c49854611e6c425b75f0830a1402c8f5a4694e
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 2823ae22c8128f52ae67cf283a9a619a03abd719
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299170"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580677"
 ---
-# <a name="configure-cross-origin-resource-sharing-cors"></a>Konfigurace sdílení prostředků mezi zdroji (CORS) 
+# <a name="configure-cross-origin-resource-sharing-cors"></a>Konfigurace sdílení prostředků mezi zdroji (CORS)
 
 Sdílení prostředků mezi zdroji (CORS) je funkce HTTP, která umožňuje webové aplikaci spuštěné v jedné doméně přistupovat k prostředkům v jiné doméně. Webové prohlížeče implementují omezení zabezpečení označované jako zásady stejného původu, které brání webové stránce v volání rozhraní API v jiné doméně. CORS ale poskytuje zabezpečený způsob, jak, aby zdrojová doména mohla volat rozhraní API v jiné doméně. Rozhraní API Core (SQL) v Azure Cosmos DB teď podporuje sdílení prostředků mezi zdroji (CORS) pomocí hlavičky "allowedOrigins". Po povolení podpory CORS pro váš účet Azure Cosmos se vyhodnotí jenom ověřené požadavky, které určují, jestli jsou povolené podle pravidel, která jste zadali.
 
-Nastavení sdílení prostředků mezi zdroji (CORS) můžete nakonfigurovat z Azure Portal nebo ze Azure Resource Manager šablony. Pro účty Cosmos využívající rozhraní API Core (SQL) Azure Cosmos DB podporuje knihovnu JavaScriptu, která funguje v obou prostředích Node. js i v prohlížeči. Tato knihovna teď může využít podporu CORS při použití režimu brány. Pro použití této funkce není nutná žádná konfigurace na straně klienta. Díky podpoře CORS můžou prostředky z prohlížeče získat přímý přístup k Azure Cosmos DB prostřednictvím [knihovny JavaScriptu](https://www.npmjs.com/package/@azure/cosmos) nebo přímo z [REST API](https://docs.microsoft.com/rest/api/cosmos-db/) pro jednoduché operace. 
+Nastavení sdílení prostředků mezi zdroji (CORS) můžete nakonfigurovat z Azure Portal nebo ze Azure Resource Manager šablony. Pro účty Cosmos využívající rozhraní API Core (SQL) Azure Cosmos DB podporuje knihovnu JavaScriptu, která funguje v obou prostředích Node. js i v prohlížeči. Tato knihovna teď může využít podporu CORS při použití režimu brány. Pro použití této funkce není nutná žádná konfigurace na straně klienta. Díky podpoře CORS můžou prostředky z prohlížeče získat přímý přístup k Azure Cosmos DB prostřednictvím [knihovny JavaScriptu](https://www.npmjs.com/package/@azure/cosmos) nebo přímo z [REST API](https://docs.microsoft.com/rest/api/cosmos-db/) pro jednoduché operace.
 
 > [!NOTE]
-> Podpora CORS je platná a podporovaná pro rozhraní API pro Azure Cosmos DB Core (SQL). Neplatí pro rozhraní Azure Cosmos DB API pro Cassandra, Gremlin nebo MongoDB, protože tyto protokoly nepoužívají pro komunikaci mezi klientem a serverem protokol HTTP. 
+> Podpora CORS je platná a podporovaná pro rozhraní API pro Azure Cosmos DB Core (SQL). Neplatí pro rozhraní Azure Cosmos DB API pro Cassandra, Gremlin nebo MongoDB, protože tyto protokoly nepoužívají pro komunikaci mezi klientem a serverem protokol HTTP.
 
 ## <a name="enable-cors-support-from-azure-portal"></a>Povolit podporu CORS z Azure Portal
 
@@ -28,53 +28,36 @@ Pomocí následujících kroků můžete povolit sdílení prostředků mezi zdr
 
 1. Přejděte k účtu služby Azure Cosmos DB. Otevřete okno **CORS** .
 
-2. Zadejte čárkami oddělený seznam počátek, který může provádět volání mezi zdroji Azure Cosmos DB účtu. Například `https://www.mydomain.com` `https://mydomain.com` `https://api.mydomain.com`. Můžete také použít zástupný znak "\*", který umožňuje všechny původce a vybrat **Odeslat**. 
+2. Zadejte čárkami oddělený seznam počátek, který může provádět volání mezi zdroji Azure Cosmos DB účtu. Například `https://www.mydomain.com`, `https://mydomain.com``https://api.mydomain.com`. Můžete také použít zástupný znak "\*" pro povolení všech původu a vybrat **Odeslat**. 
 
    > [!NOTE]
-   > V současné době nemůžete použít zástupné znaky jako součást názvu domény. Například formát `https://*.mydomain.net` se ještě nepodporuje. 
-   
+   > V současné době nemůžete použít zástupné znaky jako součást názvu domény. Například `https://*.mydomain.net` formát ještě není podporovaný. 
+
    ![Povolení sdílení prostředků mezi zdroji pomocí Azure Portal](./media/how-to-configure-cross-origin-resource-sharing/enable-cross-origin-resource-sharing-using-azure-portal.png)
- 
+
 ## <a name="enable-cors-support-from-resource-manager-template"></a>Povolit podporu CORS z šablony Správce prostředků
 
 Pokud chcete povolit CORS pomocí šablony Správce prostředků, přidejte do jakékoli existující šablony oddíl CORS s vlastností "allowedOrigins". Následující JSON je příklad šablony, která vytvoří nový účet Azure Cosmos s povoleným CORS.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {},
-    "variables": {},
-    "resources": [
-        {
-            "name": "test",
-            "type": "Microsoft.DocumentDB/databaseAccounts",
-            "apiVersion": "2015-04-08",
-            "location": "East US 2",
-            "properties": {
-                "databaseAccountOfferType": "Standard",
-                "consistencyPolicy": {
-                    "defaultConsistencyLevel": "Session",
-                    "maxIntervalInSeconds": 5,
-                    "maxStalenessPrefix": 100
-                },
-                "locations": [
-                    {
-                        "id": "test-eastus2",
-                        "failoverPriority": 0,
-                        "locationName": "East US 2"
-                    }
-                ],
-                "cors": [
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "name": "[variables('accountName')]",
+      "apiVersion": "2019-08-01",
+      "location": "[parameters('location')]",
+      "kind": "GlobalDocumentDB",
+      "properties": {
+        "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
+        "locations": "[variables('locations')]",
+        "databaseAccountOfferType": "Standard",
+        "cors": [
                     {
                         "allowedOrigins": "*"
                     }
                 ]
-            },
-            "dependsOn": [
-            ]
         }
-    ]
+    }
 }
 ```
 
@@ -109,5 +92,3 @@ Další informace o dalších způsobech zabezpečení účtu Azure Cosmos najde
 * [Nakonfigurujte bránu firewall pro Azure Cosmos DB](how-to-configure-firewall.md) článek.
 
 * [Konfigurace přístupu na základě virtuální sítě a podsítě pro účet Azure Cosmos DB](how-to-configure-vnet-service-endpoint.md)
-    
-

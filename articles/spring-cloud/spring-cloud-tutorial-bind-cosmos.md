@@ -1,20 +1,17 @@
 ---
 title: Vytvoření vazby Azure Cosmos DB k aplikaci Azure jaře Cloud | Microsoft Docs
 description: Přečtěte si, jak vytvořit vazby Azure Cosmos DB k aplikaci Azure jaře Cloud.
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 10/06/2019
-ms.author: v-vasuke
-ms.openlocfilehash: d051fd431180e9cb86f1df4642fb5e947103c007
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.author: jeconnoc
+ms.openlocfilehash: 76a2b9f305f041a19b8d7ace8234a804825f6a0e
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038727"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607136"
 ---
 # <a name="tutorial-bind-an-azure-cosmos-db-to-your-azure-spring-cloud-application"></a>Kurz: vytvoření vazby Azure Cosmos DB k aplikaci Azure jaře Cloud
 
@@ -28,9 +25,9 @@ Požadavky:
 
 Azure Cosmos DB má pět různých typů rozhraní API, které podporují vazby:
 
-1. Vytvoří účet databáze Azure Cosmos DB. Nápovědu k vytvoření databáze [najdete v tomto článku](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) . Poznamenejte si název vaší databáze. Náš název je `testdb`.
+1. Vytvoří účet databáze Azure Cosmos DB. Nápovědu k vytvoření databáze [najdete v tomto článku](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) . Poznamenejte si název vaší databáze. Náš název je pojmenován `testdb`.
 
-1. V závislosti na vašem typu rozhraní API přidejte jednu z následujících závislostí do `pom.xml` vaší jarní cloudové aplikace.
+1. Do `pom.xml` vaší jarní cloudové aplikace přidejte jednu z následujících závislostí podle vašeho typu rozhraní API.
     
     #### <a name="api-type-core-sql"></a>Typ rozhraní API: jádro (SQL)
 

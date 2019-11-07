@@ -1,5 +1,5 @@
 ---
-title: Připojení klientů vzdálené plochy na virtuálním počítači s Windows – Azure
+title: Řešení potíží s virtuálním počítačem s Windows vzdálené plochy – Azure
 description: Řešení problémů při nastavování připojení klienta v prostředí klienta virtuální plochy Windows
 services: virtual-desktop
 author: Heidilohr
@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 22590a7ecc94efbfad5eefe27f284bdb191e876d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3aae74a4fed499674f015ed0adb59016877583f3
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676403"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607387"
 ---
-# <a name="remote-desktop-client-connections"></a>Připojení klientů vzdálené plochy
+# <a name="remote-desktop-client-connections"></a>Připojení klientů Vzdálené plochy
 
 Pomocí tohoto článku můžete vyřešit problémy s připojením klienta k virtuální ploše Windows.
 
@@ -54,7 +54,7 @@ Zkuste se připojit pomocí jiného klienta, jako je klient vzdálené plochy pr
 
 1. Restartujte prohlížeč.
 2. Vymazat soubory cookie prohlížeče. Informace najdete [v tématu Odstranění souborů cookie v aplikaci Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-3. Vymažte mezipaměť prohlížeče. Viz [Vymazat mezipaměť prohlížeče pro prohlížeč](https://binged.it/2RKyfdU).
+3. Smažte mezipaměť prohlížeče. Viz [Vymazat mezipaměť prohlížeče pro prohlížeč](https://binged.it/2RKyfdU).
 4. Otevřete prohlížeč v privátním režimu.
 
 ## <a name="web-client-stops-responding-or-disconnects"></a>Webový klient přestane reagovat nebo odpojení.
@@ -74,7 +74,7 @@ Pokud webový klient zachovává výzvy k zadání přihlašovacích údajů, po
 1. Ověřte správnost adresy URL webového klienta.
 2. Potvrďte, že přihlašovací údaje jsou pro prostředí virtuálních počítačů s Windows svázané s adresou URL.
 3. Vymazat soubory cookie prohlížeče. Informace najdete [v tématu Odstranění souborů cookie v aplikaci Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-4. Vymažte mezipaměť prohlížeče. Viz [Vymazat mezipaměť prohlížeče pro prohlížeč](https://binged.it/2RKyfdU).
+4. Smažte mezipaměť prohlížeče. Viz [Vymazat mezipaměť prohlížeče pro prohlížeč](https://binged.it/2RKyfdU).
 5. Otevřete prohlížeč v privátním režimu.
 
 ## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Klient služby Vzdálená plocha pro Windows 7 nebo Windows 10 přestane reagovat nebo ho nejde otevřít.

@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/30/2019
-ms.openlocfilehash: 9b70a9c364768322a3eae6ef5b92c87b6839c540
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.date: 11/04/2019
+ms.openlocfilehash: b0839cf418cd30f62623e046960c32d41537609a
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242091"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614384"
 ---
 # <a name="tutorial-configure-azure-kubernetes-service-aks-clusters-in-azure-using-ansible"></a>Kurz: konfigurace clusterů Azure Kubernetes Service (AKS) v Azure pomocí Ansible
 
@@ -30,7 +30,7 @@ AKS je možné nakonfigurovat tak, aby pro ověřování uživatelů používala
 > * Vytvoření clusteru AKS
 > * Konfigurace clusteru AKS
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
@@ -54,7 +54,8 @@ Uložte následující ukázkový playbook jako `azure_create_aks.yml`:
     ssh_key: "your_ssh_key"
     client_id: "your_client_id"
     client_secret: "your_client_secret"
-  tasks:
+    aks_version: aks_version
+tasks:
   - name: Create resource group
     azure_rm_resourcegroup:
       name: "{{ resource_group }}"
@@ -65,6 +66,7 @@ Uložte následující ukázkový playbook jako `azure_create_aks.yml`:
       location: "{{ location }}"
       resource_group: "{{ resource_group }}"
       dns_prefix: "{{ aks_name }}"
+      kubernetes_version: "{{aks_version}}"
       linux_profile:
         admin_username: "{{ username }}"
         ssh_key: "{{ ssh_key }}"
@@ -81,9 +83,10 @@ Uložte následující ukázkový playbook jako `azure_create_aks.yml`:
 
 Před spuštěním PlayBook se podívejte na následující poznámky:
 
-- První část v rámci `tasks` definuje skupinu prostředků s názvem `myResourceGroup` v umístění `eastus`.
+- První oddíl v rámci `tasks` definuje skupinu prostředků s názvem `myResourceGroup` v umístění `eastus`.
 - Druhá část v rámci `tasks` definuje cluster AKS s názvem `myAKSCluster` v rámci skupiny prostředků `myResourceGroup`.
-- Pro zástupný text `your_ssh_key` zadejte svůj veřejný klíč RSA v jednořádkovém formátu – začněte řetězcem SSH-RSA (bez uvozovek).
+- Pro zástupný symbol `your_ssh_key` zadejte svůj veřejný klíč RSA v jednořádkovém formátu – začněte řetězcem SSH-RSA (bez uvozovek).
+- Pro zástupný text `aks_version` použijte příkaz [AZ AKS get-versions](/cli/azure/aks?view=azure-cli-latest#az-aks-get-versions) .
 
 Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 
@@ -111,7 +114,7 @@ localhost                  : ok=3    changed=2    unreachable=0    failed=0
 
 ## <a name="scale-aks-nodes"></a>Škálování uzlů AKS
 
-Ukázkový playbook v předchozí části definuje dva uzly. Počet uzlů upravíte úpravou hodnoty @no__t 0 v bloku `agent_pool_profiles`.
+Ukázkový playbook v předchozí části definuje dva uzly. Počet uzlů upravíte úpravou hodnoty `count` v bloku `agent_pool_profiles`.
 
 Uložte následující ukázkový playbook jako `azure_configure_aks.yml`:
 
@@ -148,7 +151,7 @@ Uložte následující ukázkový playbook jako `azure_configure_aks.yml`:
 
 Před spuštěním PlayBook se podívejte na následující poznámky:
 
-- Pro zástupný text `your_ssh_key` zadejte svůj veřejný klíč RSA v jednořádkovém formátu – začněte řetězcem SSH-RSA (bez uvozovek).
+- Pro zástupný symbol `your_ssh_key` zadejte svůj veřejný klíč RSA v jednořádkovém formátu – začněte řetězcem SSH-RSA (bez uvozovek).
 
 Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 

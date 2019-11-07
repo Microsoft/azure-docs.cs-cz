@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 41a626ba602ad33f22c3ea4acc39dd4f3438cbd0
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: eb4f607672c39d45b7791ccaeeb6f7cff9393cb9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935687"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571015"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Instalace a použití rozšíření Azure IoT pro rozhraní příkazového řádku Azure
 
@@ -62,7 +62,7 @@ Pokud chcete používat rozšíření Azure IoT pro rozhraní příkazového ř�
     > [!NOTE]
     > Během veřejné verze Preview jsou funkce IoT technologie Plug and Play dostupné jenom v centrech IoT vytvořených v oblastech **střed USA**, **Severní Evropa**a **Japonsko – východ** .
 
-- Zařízení zaregistrované ve službě IoT Hub. K registraci zařízení můžete použít následující příkaz rozhraní příkazového řádku Azure, nezapomeňte nahradit `{YourIoTHubName}` zástupné symboly a `{YourDeviceID}` pomocí vašich hodnot:
+- Zařízení zaregistrované ve službě IoT Hub. K registraci zařízení můžete použít následující příkaz rozhraní příkazového řádku Azure, nezapomeňte nahradit `{YourIoTHubName}` a `{YourDeviceID}` zástupné symboly pomocí vašich hodnot:
 
     ```cmd/sh
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
@@ -126,31 +126,31 @@ Vypíše všechny příkazy pro rozhraní v zařízení:
 az iot dt list-commands --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString}
 ```
 
-`--repo-login` Bez parametru tento příkaz použije úložiště veřejného modelu.
+Bez parametru `--repo-login` tento příkaz používá úložiště veřejného modelu.
 
 Vyvolat příkaz:
 
 ```cmd/sh
-az iot dt invoke-command --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --command-name {CommandName} --command-payload {CommandPayload or FilePath}
+az iot dt invoke-command --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --cn {CommandName} --command-payload {CommandPayload or FilePath}
 ```
 
-#### <a name="telemetry"></a>Telemetrie
+#### <a name="digital-twin-events"></a>Digitální zdvojené události
 
-Monitoruje veškerou telemetrii technologie Plug and Play IoT z určitého zařízení a rozhraní, které se přesměrují do koncového bodu centra událostí **$Default** :
+Monitorujte všechny události IoT technologie Plug and Play digitálních událostí z konkrétního zařízení a rozhraní, které se přesměrují do skupiny uživatelů centra událostí **$Default** :
 
 ```cmd/sh
-az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString}
+az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID}
 ```
 
-Monitorovat veškerou telemetrii technologie Plug and Play IoT z určitého zařízení a rozhraní v konkrétní skupině příjemců:
+Monitorujte všechny události IoT technologie Plug and Play digitálních událostí z konkrétního zařízení a rozhraní, které se přesměrují na konkrétní skupinu příjemců:
 
 ```cmd/sh
-az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString} --consumer-group {YourConsumerGroup}
+az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --consumer-group {YourConsumerGroup}
 ```
 
 ### <a name="manage-interfaces-in-a-model-repository"></a>Správa rozhraní v úložišti modelu
 
-V následujících příkazech se používá veřejné úložiště modelu IoT technologie Plug and Play. Pokud chcete použít úložiště podnikového modelu, přidejte `--login` argument s připojovacím řetězcem úložiště modelu.
+V následujících příkazech se používá veřejné úložiště modelu IoT technologie Plug and Play. Pokud chcete použít úložiště podnikového modelu, přidejte argument `--login` s připojovacím řetězcem úložiště modelu.
 
 Vypíše rozhraní ve veřejném úložišti IoT technologie Plug and Play model:
 
@@ -190,7 +190,7 @@ Pouze partneři Microsoftu mohou publikovat rozhraní do úložiště veřejnéh
 
 ### <a name="manage-device-capability-models-in-a-model-repository"></a>Správa modelů schopností zařízení v úložišti modelu
 
-V následujících příkazech se používá veřejné úložiště modelu IoT technologie Plug and Play. Pokud chcete použít úložiště podnikového modelu, přidejte `--login` argument s připojovacím řetězcem úložiště modelu.
+V následujících příkazech se používá veřejné úložiště modelu IoT technologie Plug and Play. Pokud chcete použít úložiště podnikového modelu, přidejte argument `--login` s připojovacím řetězcem úložiště modelu.
 
 Seznamte se s možnostmi modelu zařízení v úložišti IoT technologie Plug and Play Public model:
 
@@ -228,6 +228,6 @@ az iot pnp capability-model publish --model {YourModelID} --login {YourCompanyMo
 
 Pouze partneři Microsoftu mohou publikovat modely do úložiště veřejného modelu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku se naučíte, jak nainstalovat a používat rozšíření Azure IoT pro rozhraní příkazového řádku Azure pro interakci s technologie Plug and Playmi zařízeními. Navržený další krok se naučíte, jak [Spravovat modely](./howto-manage-models.md).

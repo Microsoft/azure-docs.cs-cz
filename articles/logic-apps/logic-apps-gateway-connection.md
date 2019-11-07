@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/18/2019
-ms.openlocfilehash: 6a01999eff6accf1b8d7f56729d9dce77fbedb0a
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 49ed6eedf55a8a3c0faa2fa1ff60b9894af78285
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72988715"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580858"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Připojení k místním zdrojům dat z Azure Logic Apps
 
@@ -28,8 +28,8 @@ Tento článek ukazuje, jak vytvořit prostředek brány Azure pro dříve [nain
 Informace o tom, jak používat bránu s dalšími službami, najdete v těchto článcích:
 
 * [Místní brána dat Power BI Microsoftu](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Microsoft Flow místní bránu dat](https://flow.microsoft.com/documentation/gateway-manage/)
-* [Microsoft PowerApps místní bránu dat](https://powerapps.microsoft.com/tutorials/gateway-management/)
+* [Automatizace místní brány dat](https://flow.microsoft.com/documentation/gateway-manage/)
+* [Místní brána dat Microsoft Power Apps](https://powerapps.microsoft.com/tutorials/gateway-management/)
 * [Azure Analysis Services místní bránu dat](../analysis-services/analysis-services-gateway.md)
 
 <a name="supported-connections"></a>
@@ -53,7 +53,7 @@ Místní brána dat v Azure Logic Apps podporuje místní [konektory](../connect
 
 Azure Logic Apps podporuje operace čtení a zápisu přes bránu dat. Nicméně tyto operace mají [omezení velikosti datové části](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations). I když samotné brány neúčtují další náklady, [Logic Apps cenový model](../logic-apps/logic-apps-pricing.md) se vztahuje na tyto konektory a další operace v Azure Logic Apps.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Místní brána dat je už v místním počítači nainstalovaná](../logic-apps/logic-apps-gateway-install.md).
 
@@ -140,7 +140,7 @@ Chcete-li aktualizovat nastavení pro připojení brány, můžete upravit přip
 
 Pokud chcete najít všechna připojení rozhraní API přidružená k vašemu předplatnému Azure:
 
-* V hlavní nabídce Azure přejděte na **všechny služby**  > **připojení rozhraní API**pro**Web**  > .
+* V hlavní nabídce Azure přejděte na **všechny služby** > **připojení rozhraní API**pro **Web** > .
 * Nebo z hlavní nabídky Azure přejděte na **všechny prostředky**. Nastavte filtr **typu** na **připojení rozhraní API**.
 
 <a name="change-delete-gateway-resource"></a>
@@ -153,7 +153,7 @@ Pokud chcete vytvořit jiný prostředek brány, propojte instalaci brány s jin
 
 1. Pokud jste to ještě neučinili, vyberte v nabídce prostředku brány místní **bránu dat**. Na panelu nástrojů prostředek brány vyberte **Odstranit**.
 
-   Například:
+   Příklad:
 
    ![Odstranění prostředku brány v Azure](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway-resource.png)
 

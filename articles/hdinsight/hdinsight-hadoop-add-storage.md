@@ -1,73 +1,73 @@
 ---
-title: Přidat další Azure účty úložiště pro HDInsight
-description: Zjistěte, jak přidat další služby Azure storage účty do existujícího clusteru HDInsight.
+title: Přidání dalších účtů úložiště Azure do HDInsight
+description: Přečtěte si, jak přidat další účty Azure Storage do stávajícího clusteru HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/08/2019
-ms.author: hrasheed
-ms.openlocfilehash: 8a844465f7ba2222acd7efaf100c7b682c15adb2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 10/31/2019
+ms.openlocfilehash: e29041942157e720cce3414f7b6e6904667c1894
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433517"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73665475"
 ---
-# <a name="add-additional-storage-accounts-to-hdinsight"></a>Přidání dalších účtů úložiště pro HDInsight
+# <a name="add-additional-storage-accounts-to-hdinsight"></a>Přidání dalších účtů úložiště do HDInsight
 
-Zjistěte, jak pomocí skriptových akcí můžete přidat další služby Azure storage *účty* pro HDInsight. Kroky v tomto dokumentu přidat úložiště *účet* do existujícího clusteru HDInsight se systémem Linux. Tento článek se týká úložiště *účty* (ne výchozí clusteru účet úložiště) a ne další úložiště, jako [Azure Data Lake Storage Gen1](hdinsight-hadoop-use-data-lake-store.md) a [Azure Data Lake Storage Gen2 ](hdinsight-hadoop-use-data-lake-storage-gen2.md).
+Naučte se používat akce skriptů k přidání dalších *účtů* úložiště Azure do HDInsight. Kroky v tomto dokumentu přidávají *účet* úložiště do stávajícího clusteru HDInsight se systémem Linux. Tento článek se týká *účtů* úložiště (nikoli výchozího účtu úložiště clusteru) a ne dalšího úložiště, jako je [Azure Data Lake Storage Gen1](hdinsight-hadoop-use-data-lake-store.md) a [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 > [!IMPORTANT]  
-> Informace v tomto dokumentu je o přidání dalšího úložiště do clusteru po jeho vytvoření. Informace o přidání účtů úložiště při vytváření clusteru najdete v tématu [nastavení clusterů v HDInsight se Apache Hadoop, Apache Spark, Apache Kafka a další](hdinsight-hadoop-provision-linux-clusters.md).
+> Informace v tomto dokumentu se týkají přidání dalších účtů úložiště do clusteru po jeho vytvoření. Informace o přidávání účtů úložiště během vytváření clusteru najdete v tématu [Nastavení clusterů v HDInsight pomocí Apache Hadoop, Apache Spark, Apache Kafka a dalších](hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Cluster Hadoop v HDInsight. Zobrazit [Začínáme s HDInsight v Linuxu](./hadoop/apache-hadoop-linux-tutorial-get-started.md).
-* Název účtu úložiště a klíč. Zobrazit [spravovat nastavení účtu úložiště na webu Azure Portal](../storage/common/storage-account-manage.md).
-* [Název clusteru správně notaci](hdinsight-hadoop-manage-ambari-rest-api.md#identify-correctly-cased-cluster-name).
-* Pokud používáte PowerShell, bude nutné AZ modulu.  Zobrazit [Přehled prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
+* Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./hadoop/apache-hadoop-linux-tutorial-get-started.md).
+* Název a klíč účtu úložiště Viz [Správa nastavení účtu úložiště v Azure Portal](../storage/common/storage-account-manage.md).
+* [Správně použita název clusteru](hdinsight-hadoop-manage-ambari-rest-api.md#identify-correctly-cased-cluster-name).
+* Pokud používáte PowerShell, budete potřebovat AZ Module.  Další informace najdete v tématu [přehled Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 * Pokud jste nenainstalovali Azure CLI, přečtěte si téma [rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
-* Pokud používáte prostředí bash nebo příkazového řádku windows, budete také potřebovat **jq**, příkazového řádku procesoru JSON.  Zobrazit [ https://stedolan.github.io/jq/ ](https://stedolan.github.io/jq/). Bash na Ubuntu ve Windows 10 najdete v části [subsystém Windows pro Linux Instalační příručka pro Windows 10](https://docs.microsoft.com/windows/wsl/install-win10).
+* Pokud používáte bash nebo příkazový řádek systému Windows, budete také potřebovat **JQ**procesor JSON na příkazovém řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/). Informace o bash v Ubuntu ve Windows 10 najdete v tématu [Instalační příručka k systému Windows pro Linux pro Windows 10](https://docs.microsoft.com/windows/wsl/install-win10).
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Tento skript používá následující parametry:
+Tento skript má následující parametry:
 
-* __Název účtu služby Azure storage__: Název účtu úložiště, které chcete přidat do clusteru HDInsight. Po spuštění skriptu, může HDInsight číst a zapisovat data uložená v tomto účtu úložiště.
+* __Název účtu služby Azure Storage__: název účtu úložiště, který se má přidat do clusteru HDInsight. Po spuštění skriptu může HDInsight číst a zapisovat data uložená v tomto účtu úložiště.
 
-* __Klíč účtu úložiště Azure__: Klíč, který uděluje přístup k účtu úložiště.
+* __Klíč účtu úložiště Azure__: klíč, který uděluje přístup k účtu úložiště.
 
-* __-p__ (volitelné): -Li zadán, klíče není zašifrovaný a je uložen v souboru core-site.xml jako prostý text.
+* __-p__ (volitelné): Pokud je zadaný, klíč se nešifruje a uloží se do souboru Core-site. XML jako prostý text.
 
-Během zpracování skript provede následující akce:
+Během zpracování skript provádí následující akce:
 
-* Pokud účet úložiště už existuje v core-site.xml konfiguraci clusteru, ukončí skriptu a jsou prováděny žádné další akce.
+* Pokud účet úložiště již existuje v konfiguraci Core-site. XML pro cluster, skript se ukončí a neprovede se žádné další akce.
 
-* Ověřuje, že účet úložiště existuje a je přístupný pomocí klíče.
+* Ověřuje, že účet úložiště existuje a je k němu možné přihlédnout pomocí klíče.
 
-* Klíč zašifruje pomocí přihlašovacích údajů clusteru.
+* Šifruje klíč pomocí pověření clusteru.
 
-* Účet úložiště se přidá do souboru core-site.xml.
+* Přidá účet úložiště do souboru Core-site. XML.
 
-* Zastaví a restartuje [Apache Oozie](https://oozie.apache.org/), [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), [Apache Hadoop MapReduce2](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html), a [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) služby. Zastavení a spuštění těchto služeb umožňuje je, aby používaly nový účet úložiště.
+* Zastaví a restartuje [Apache Oozie](https://oozie.apache.org/), [Apache Hadoop nitě](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) [Apache HADOOP MapReduce2](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)a služby [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) . Zastavení a spuštění těchto služeb umožňuje používat nový účet úložiště.
 
 > [!WARNING]  
-> Použití účtu úložiště v jiném umístění než HDInsight cluster se nepodporuje.
+> Použití účtu úložiště v jiném umístění, než je cluster HDInsight, se nepodporuje.
 
 ## <a name="the-script"></a>Skript
 
 __Umístění skriptu__: [https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)
 
-__Požadavky na__:  Skript se musí použít na __hlavním uzlům__. Nepotřebujete označte tento skript jako __trvalé__, jak přímo aktualizuje konfiguraci Ambari clusteru.
+__Požadavky__: skript se musí použít na __hlavní uzly__. Tento skript není nutné označit jako __trvalý__, protože přímo aktualizuje konfiguraci Ambari pro cluster.
 
-## <a name="to-use-the-script"></a>Pomocí skriptu
+## <a name="to-use-the-script"></a>Použití skriptu
 
-Tento skript je možné z prostředí Azure PowerShell, rozhraní příkazového řádku Azure nebo na webu Azure portal.
+Tento skript lze použít z Azure PowerShell, Azure CLI nebo Azure Portal.
 
 ### <a name="powershell"></a>PowerShell
 
-Pomocí [odeslat AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/submit-azhdinsightscriptaction). Nahraďte `CLUSTERNAME`, `ACCOUNTNAME`, a `ACCOUNTKEY` příslušnými hodnotami.
+Pomocí [Submit-AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/submit-azhdinsightscriptaction). Nahraďte `CLUSTERNAME`, `ACCOUNTNAME`a `ACCOUNTKEY` odpovídajícími hodnotami.
 
 ```powershell
 # Update these parameters
@@ -88,7 +88,7 @@ Submit-AzHDInsightScriptAction `
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Pomocí [az akce skriptu hdinsight – spuštění](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute).  Nahraďte `CLUSTERNAME`, `RESOURCEGROUP`, `ACCOUNTNAME`, a `ACCOUNTKEY` příslušnými hodnotami.
+Pomocí příkazu [AZ HDInsight Script-Action Execute](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute).  Hodnoty `CLUSTERNAME`, `RESOURCEGROUP`, `ACCOUNTNAME`a `ACCOUNTKEY` nahraďte odpovídajícími hodnotami.
 
 ```cli
 az hdinsight script-action execute ^
@@ -102,129 +102,124 @@ az hdinsight script-action execute ^
 
 ### <a name="azure-portal"></a>portál Azure
 
-Zobrazit [použít akci skriptu pro spuštěný cluster](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster).
+Viz [použití akce skriptu na běžícím clusteru](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster).
 
 ## <a name="known-issues"></a>Známé problémy
 
-### <a name="storage-firewall"></a>Úložiště brány firewall
+### <a name="storage-firewall"></a>Brána firewall úložiště
 
-Pokud se rozhodnete k zabezpečení vašeho účtu úložiště pomocí **virtuální sítí a bran firewall** omezení **vybrané sítě**, je potřeba povolit výjimku **Povolit důvěryhodné Microsoft služby...**  tak, aby HDInsight můžete přístup k vašemu účtu úložiště.
+Pokud se rozhodnete zabezpečit svůj účet úložiště s omezeními **bran firewall a virtuální sítě** u **vybraných sítí**, ujistěte se, že je **povolená výjimka Povolit důvěryhodné služby Microsoftu...** , aby HDInsight mohla získat přístup k vašemu úložišti. zohledňují.
 
-### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>Účty úložiště se nezobrazuje v portálu Azure portal nebo nástrojů
+### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>Účty úložiště, které se nezobrazují v Azure Portal nebo nástrojích
 
-Při prohlížení clusteru HDInsight na webu Azure Portal, vyberte __účty úložiště__ položku __vlastnosti__ nezobrazuje úložišti účty přidané prostřednictvím tuto akci se skripty. Azure PowerShell a rozhraní příkazového řádku Azure se nezobrazují dalšího účtu úložiště buď.
+Při zobrazení clusteru HDInsight v Azure Portal se při výběru položky __účty úložiště__ v části __vlastnosti__ nezobrazí účty úložiště přidané prostřednictvím této akce skriptu. Azure PowerShell a Azure CLI nezobrazují žádné další účty úložiště.
 
-Informace o úložiště není zobrazit, protože skript upravuje pouze core-site.xml konfiguraci clusteru. Tyto informace nepoužívá k načítání informace o clusteru pomocí rozhraní API pro správu Azure.
+Informace o úložišti nejsou zobrazeny, protože skript upravuje pouze konfiguraci Core-site. XML pro cluster. Tyto informace se nepoužívají při načítání informací o clusteru pomocí rozhraní API pro správu Azure.
 
-Chcete-li zobrazit informace o účtu úložiště do clusteru pomocí tohoto skriptu, použijte rozhraní Ambari REST API. Použijte následující příkazy pro načtení těchto informací pro váš cluster:
+Pokud chcete zobrazit informace o účtu úložiště, které jste přidali do clusteru pomocí tohoto skriptu, použijte REST API Ambari. K načtení těchto informací pro cluster použijte následující příkazy:
 
 ### <a name="powershell"></a>PowerShell
 
-Nahraďte `CLUSTERNAME` s názvem clusteru správně notaci. Nejdřív zjistěte verzi konfigurace služby používá tak, že zadáte následující příkaz:
-
-```powershell
-# getting service_config_version
-$clusterName = "CLUSTERNAME"
-
-$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_service_config_versions/HDFS" `
-    -Credential $creds -UseBasicParsing
-$respObj = ConvertFrom-Json $resp.Content
-$respObj.Clusters.desired_service_config_versions.HDFS.service_config_version
-```
-
-Nahraďte `ACCOUNTNAME` skutečné názvy. Potom nahraďte `4` s skutečná verze konfigurace služby a zadejte příkaz. Po zobrazení výzvy zadejte přihlašovací heslo clusteru.
+Nahraďte `CLUSTERNAME` správným názvem clusteru použita. Nahraďte `ACCOUNTNAME` skutečnými názvy. Po zobrazení výzvy zadejte heslo pro přihlášení ke clusteru.
 
 ```powershell
 # Update values
+$clusterName = "CLUSTERNAME"
 $accountName = "ACCOUNTNAME"
-$version = 4
 
 $creds = Get-Credential -UserName "admin" -Message "Enter the cluster login credentials"
-$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=$version" `
+
+# getting service_config_version
+$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_service_config_versions/HDFS" `
+    -Credential $creds -UseBasicParsing
+$respObj = ConvertFrom-Json $resp.Content
+
+$configVersion=$respObj.Clusters.desired_service_config_versions.HDFS.service_config_version
+
+$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=$configVersion" `
     -Credential $creds
 $respObj = ConvertFrom-Json $resp.Content
 $respObj.items.configurations.properties."fs.azure.account.key.$accountName.blob.core.windows.net"
 ```
 
-### <a name="bash"></a>Bash
-Nahraďte `myCluster` s názvem clusteru správně notaci.
+### <a name="bash"></a>bash
+
+Nahraďte `CLUSTERNAME` správným názvem clusteru použita. Nahraďte `PASSWORD` heslem správce clusteru. Nahraďte `STORAGEACCOUNT` skutečným názvem účtu úložiště.
 
 ```bash
-export CLUSTERNAME='myCluster'
+export clusterName="CLUSTERNAME"
+export password='PASSWORD'
+export storageAccount="STORAGEACCOUNT"
 
-curl --silent -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_service_config_versions/HDFS" \
-| jq ".Clusters.desired_service_config_versions.HDFS[].service_config_version" 
-```
+export ACCOUNTNAME='"'fs.azure.account.key.$storageAccount.blob.core.windows.net'"'
 
-Nahraďte `myAccount` názvem skutečného úložiště účtu. Potom nahraďte `4` s skutečná verze konfigurace služby a zadejte příkaz:
+export configVersion=$(curl --silent -u admin:$password -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName?fields=Clusters/desired_service_config_versions/HDFS" \
+| jq ".Clusters.desired_service_config_versions.HDFS[].service_config_version")
 
-```bash
-export ACCOUNTNAME='"fs.azure.account.key.myAccount.blob.core.windows.net"'
-export VERSION='4'
-
-curl --silent -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=$VERSION" \
+curl --silent -u admin:$password -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=$configVersion" \
 | jq ".items[].configurations[].properties[$ACCOUNTNAME] | select(. != null)"
 ```
 
-### <a name="cmd"></a>cmd
+### <a name="cmd"></a>přepsat
 
-Nahraďte `CLUSTERNAME` s názvem clusteru správně malá a velká použita v obou skripty. Nejdřív zjistěte verzi konfigurace služby používá tak, že zadáte následující příkaz:
+V obou skriptech nahraďte `CLUSTERNAME` správným názvem clusteru použita. Nejprve Identifikujte použitou verzi konfigurace služby zadáním následujícího příkazu:
 
 ```cmd
 curl --silent -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME?fields=Clusters/desired_service_config_versions/HDFS" | ^
-jq-win64 ".Clusters.desired_service_config_versions.HDFS[].service_config_version" 
+jq-win64 ".Clusters.desired_service_config_versions.HDFS[].service_config_version"
 ```
 
-Nahraďte `ACCOUNTNAME` názvem skutečného úložiště účtu. Potom nahraďte `4` s skutečná verze konfigurace služby a zadejte příkaz:
+Nahraďte `ACCOUNTNAME` skutečným názvem účtu úložiště. Pak nahraďte `4` skutečnou verzí konfigurace služby a zadejte příkaz:
 
 ```cmd
 curl --silent -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=4" | ^
 jq-win64 ".items[].configurations[].properties["""fs.azure.account.key.ACCOUNTNAME.blob.core.windows.net"""] | select(. != null)"
 ```
+
 ---
 
- Podobně jako tento text se zobrazí informace vrácené z tohoto příkazu:
+Informace vrácené z tohoto příkazu se zobrazí jako následující text:
 
     "MIIB+gYJKoZIhvcNAQcDoIIB6zCCAecCAQAxggFaMIIBVgIBADA+MCoxKDAmBgNVBAMTH2RiZW5jcnlwdGlvbi5henVyZWhkaW5zaWdodC5uZXQCEA6GDZMW1oiESKFHFOOEgjcwDQYJKoZIhvcNAQEBBQAEggEATIuO8MJ45KEQAYBQld7WaRkJOWqaCLwFub9zNpscrquA2f3o0emy9Vr6vu5cD3GTt7PmaAF0pvssbKVMf/Z8yRpHmeezSco2y7e9Qd7xJKRLYtRHm80fsjiBHSW9CYkQwxHaOqdR7DBhZyhnj+DHhODsIO2FGM8MxWk4fgBRVO6CZ5eTmZ6KVR8wYbFLi8YZXb7GkUEeSn2PsjrKGiQjtpXw1RAyanCagr5vlg8CicZg1HuhCHWf/RYFWM3EBbVz+uFZPR3BqTgbvBhWYXRJaISwssvxotppe0ikevnEgaBYrflB2P+PVrwPTZ7f36HQcn4ifY1WRJQ4qRaUxdYEfzCBgwYJKoZIhvcNAQcBMBQGCCqGSIb3DQMHBAhRdscgRV3wmYBg3j/T1aEnO3wLWCRpgZa16MWqmfQPuansKHjLwbZjTpeirqUAQpZVyXdK/w4gKlK+t1heNsNo1Wwqu+Y47bSAX1k9Ud7+Ed2oETDI7724IJ213YeGxvu4Ngcf2eHW+FRK"
 
-Tento text je příkladem šifrovaný klíč, který se používá pro přístup k účtu úložiště.
+Tento text je příkladem šifrovaného klíče, který se používá pro přístup k účtu úložiště.
 
-### <a name="unable-to-access-storage-after-changing-key"></a>Nelze získat přístup k úložišti po změně klíče
+### <a name="unable-to-access-storage-after-changing-key"></a>Po změně klíče nejde získat přístup k úložišti.
 
-Pokud změníte klíč pro účet úložiště HDInsight už mít přístup k účtu úložiště. HDInsight používá kopii klíče uložené v mezipaměti v core-site.xml pro cluster. Tato kopie v mezipaměti musí být aktualizovány tak, aby odpovídaly novým klíčem.
+Pokud změníte klíč pro účet úložiště, HDInsight už nebude moct získat přístup k účtu úložiště. HDInsight používá kopii klíče uloženou v mezipaměti Core-site. XML pro cluster. Tuto kopii v mezipaměti je potřeba aktualizovat tak, aby odpovídala novému klíči.
 
-Spuštění skriptu znovu akce nemá __není__ aktualizovat klíč, protože skript zkontroluje, jestli obsahuje položku pro účet úložiště už existuje. Pokud položka již existuje, neprovede žádné změny.
+Když znovu spustíte akci skriptu, klíč se __neaktualizuje,__ protože skript zkontroluje, jestli už položka pro účet úložiště existuje. Pokud položka již existuje, neprovede žádné změny.
 
-Chcete-li tento problém vyřešit, musíte odebrat existující položku pro účet úložiště. Použijte následující kroky pro odebrání existující položky:
+Pokud chcete tento problém obejít, musíte odebrat existující položku pro účet úložiště. Existující položku odeberete pomocí následujícího postupu:
 
 > [!IMPORTANT]  
-> Otáčení klíč úložiště pro účet primární úložiště připojené ke clusteru se nepodporuje.
+> Otočení klíče úložiště pro primární účet úložiště připojené ke clusteru se nepodporuje.
 
 1. Ve webovém prohlížeči otevřete webové uživatelské rozhraní Ambari pro váš cluster HDInsight. Identifikátor URI je `https://CLUSTERNAME.azurehdinsight.net`. Nahraďte `CLUSTERNAME` názvem svého clusteru.
 
-    Po zobrazení výzvy zadejte přihlašovací jméno uživatele HTTP a heslo pro váš cluster.
+    Po zobrazení výzvy zadejte přihlašovacího uživatele HTTP a heslo pro váš cluster.
 
-2. V seznamu služeb na levé straně stránky vyberte __HDFS__. Vyberte __Configs__ kartu uprostřed stránky.
+2. V seznamu služeb na levé straně stránky vyberte __HDFS__. Pak vyberte kartu __Konfigurace__ ve středu stránky.
 
-3. V __filtr...__  pole, zadejte hodnotu __fs.azure.account__. Vrátí záznamy pro všechny další účty úložiště, které jsou přidané do clusteru. Existují dva typy položek. __keyprovider__ a __klíč__. Oba obsahují název účtu úložiště jako součást názvu klíče.
+3. Do pole __Filter...__ zadejte hodnotu __FS. Azure. Account__. Tato funkce vrátí položky pro všechny další účty úložiště, které byly přidány do clusteru. Existují dva typy položek: __klíč a klíč__. Oba obsahují název účtu úložiště jako součást názvu klíče.
 
-    Tady jsou ukázkové položky pro účet úložiště s názvem __mystorage__:
+    Níže jsou uvedené příklady položek pro účet úložiště s názvem __mystorage__:
 
         fs.azure.account.keyprovider.mystorage.blob.core.windows.net
         fs.azure.account.key.mystorage.blob.core.windows.net
 
-4. Jakmile zjistíte, klíče pro účet úložiště, budete muset odebrat, použijte na červenou '-' ikony napravo od položky k jeho odstranění. Potom použijte __Uložit__ tlačítko uložte provedené změny.
+4. Po zjištění klíčů pro účet úložiště, který potřebujete odebrat, použijte k napravení ikony červené '-' na pravé straně položky a odstraňte ji. Pak použijte tlačítko __Uložit__ a uložte provedené změny.
 
-5. Po uložení změn, použití akce skriptu k přidání účtu úložiště a nová hodnota klíče do clusteru.
+5. Po uložení změn použijte akci skriptu a přidejte do clusteru účet úložiště a novou hodnotu klíče.
 
-### <a name="poor-performance"></a>Nízký výkon
+### <a name="poor-performance"></a>Špatný výkon
 
-Pokud je účet úložiště v jiné oblasti než HDInsight cluster, můžete se setkat nízký výkon. Přístup k datům v jiné oblasti automaticky odesílá síťový provoz, mimo Azure datovým centrem a přes veřejný internet, které můžou představovat latence.
+Pokud je účet úložiště v jiné oblasti než cluster HDInsight, může docházet ke špatnému výkonu. Přístup k datům v jiné oblasti odesílá síťový provoz mimo oblastní datové centrum Azure a přes veřejný Internet, což může zavádět latenci.
 
 ### <a name="additional-charges"></a>Další poplatky
 
-Pokud je účet úložiště v jiné oblasti než HDInsight cluster, můžete si všimnout poplatky za odchozí přenos dalších na fakturaci Azure. Poplatek za výchozí přenos dat se používá při opustí datovým centrem. Tato sazba platí i v případě, že se provoz určený pro jiného datového centra Azure v jiné oblasti.
+Pokud je účet úložiště v jiné oblasti než cluster HDInsight, můžete si při fakturaci Azure všimnout dalších poplatků za výstup. Poplatek za výstupní data se použije, když data opustí místní datové centrum. Tento poplatek se uplatní i v případě, že je provoz určený pro jiné datové centrum Azure v jiné oblasti.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Jste se naučili, jak přidat další účty úložiště do existujícího clusteru HDInsight. Další informace o akcí skriptů najdete v tématu [HDInsight založených na Linuxu přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md)
+Zjistili jste, jak přidat další účty úložiště do stávajícího clusteru HDInsight. Další informace o akcích skriptu najdete v tématu [Přizpůsobení clusterů HDInsight se systémem Linux pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md) .

@@ -1,39 +1,36 @@
 ---
-title: Analýzy hrozeb v Azure brány Firewall na základě filtrování
-description: Seznamte se s bránou Firewall služby Azure threat intelligence filtrování
+title: Azure Firewall filtrování na základě analýzy hrozeb
+description: Další informace o Azure Firewall filtrování logiky hrozeb
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 3/11/2019
+ms.date: 11/05/2019
 ms.author: victorh
-ms.openlocfilehash: 4ef9089c94d9e806cc519c4f8243cdcb7e73953a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f6a60d7c29fc7e482e32233aa86d65a801e3f55c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60194027"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582256"
 ---
-# <a name="azure-firewall-threat-intelligence-based-filtering---public-preview"></a>Brána Firewall před internetovými útoky Azure na základě logiky filtrování – ve verzi Public Preview
+# <a name="azure-firewall-threat-intelligence-based-filtering"></a>Azure Firewall filtrování na základě logiky hrozeb
 
-Pro bránu firewall můžete povolit filtrování na základě analýzy hrozeb, které bude upozorňovat na provoz směřující z nebo do známých škodlivých IP adres nebo domén a odepírat takový provoz. Tyto IP adresy a domény se přebírají z informačního kanálu analýzy hrozeb Microsoftu. [Intelligent Security Graph](https://www.microsoft.com/en-us/security/operations/intelligence) využívá Microsoft analýzu hrozeb a používá víc služeb, včetně Azure Security Center.
+Pro bránu firewall můžete povolit filtrování na základě analýzy hrozeb, které bude upozorňovat na provoz směřující z nebo do známých škodlivých IP adres nebo domén a odepírat takový provoz. Tyto IP adresy a domény se přebírají z informačního kanálu analýzy hrozeb Microsoftu. [Intelligent Security Graph](https://www.microsoft.com/en-us/security/operations/intelligence) využívá Microsoft Threat Intelligence a používá ho víc služeb, včetně Azure Security Center.
 
-![Analýza hrozeb brány firewall](media/threat-intel/firewall-threat.png)
+![Analýza hrozeb v bráně firewall](media/threat-intel/firewall-threat.png)
 
-> [!IMPORTANT]
-> Threat intelligence na základě filtrování je aktuálně ve verzi public preview a je k dispozici ve verzi preview smlouvu o úrovni služeb. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti.  Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Pokud jste povolili filtrování založené na hrozbách, budou přidružená pravidla zpracována před všemi pravidly NAT, síťovými pravidly nebo pravidly aplikací.
 
-Pokud je povolené filtrování podle intelligence před internetovými útoky, přidružená pravidla se zpracovávají před jakoukoli pravidel NAT, pravidla nebo pravidla aplikací. Během období preview jsou zahrnuty pouze nejvyšší spolehlivosti záznamy.
+Můžete zvolit, že při aktivaci pravidla stačí protokolovat výstrahu, nebo můžete zvolit možnost výstraha a odepřít režim.
 
-Můžete se jenom přihlásit výstrahu, když se aktivuje pravidlo, nebo můžete vyberte výstrahu a zakázat režim.
+V režimu výstrahy je ve výchozím nastavení povolené filtrování na základě logiky hrozeb. Tuto funkci nemůžete vypnout nebo změnit režim, dokud nebude v oblasti k dispozici rozhraní portálu.
 
-Ve výchozím nastavení je filtrování threat intelligence podle povolené v režimu výstrah. Nejde tuto funkci vypnout nebo změňte režim, dokud nebude ve vaší oblasti k dispozici rozhraní portálu.
-
-![Analýza hrozeb na základě filtrování rozhraní portálu](media/threat-intel/threat-intel-ui.png)
+![Rozhraní portálu pro filtrování na základě analýzy hrozeb](media/threat-intel/threat-intel-ui.png)
 
 ## <a name="logs"></a>Protokoly
 
-Následující úryvek protokolu ukazuje aktivovaných pravidlo:
+Následující výpis protokolu ukazuje aktivované pravidlo:
 
 ```
 {
@@ -49,12 +46,12 @@ Následující úryvek protokolu ukazuje aktivovaných pravidlo:
 
 ## <a name="testing"></a>Testování
 
-- **Odchozí testování** -upozornění na přerušené přenosy odchozích by měl být výjimečné události, protože to znamená, že došlo k napadení o vašem prostředí. Abychom odchozí výstrahy test práci, test, který se vytvořil plně kvalifikovaný název domény, který aktivuje výstrahu. Použití **testmaliciousdomain.eastus.cloudapp.azure.com** pro odchozí testy.
+- **Odchozí testování** – výstrahy odchozího provozu by měly být vzácná událost, protože to znamená, že došlo k ohrožení zabezpečení vašeho prostředí. Aby bylo možné otestovat odchozí výstrahy, je vytvořen testovací plně kvalifikovaný název domény, který aktivuje výstrahu. Pro odchozí testy použijte **testmaliciousdomain.eastus.cloudapp.Azure.com** .
 
-- **Příchozí testování** – můžete chtít zobrazit výstrahy pro příchozí provoz, pokud jsou nakonfigurovaná pravidla DNAT v bráně firewall. To platí i v případě, že pro pravidla DNAT jsou povolené jenom konkrétní zdroje a provoz jinak byl odepřen. Brány Firewall Azure nebude upozorňovat na všechny skenery portů; pouze na skenery, které jsou známé také zapojit do škodlivých aktivit.
+- **Příchozí testování** – Pokud jsou v bráně firewall nakonfigurovaná pravidla DNAT, můžete očekávat, že se výstrahy budou zobrazovat na příchozím provozu. To platí i v případě, že je v pravidle DNAT povolené jenom konkrétní zdroje a provoz se jinak zamítl. Azure Firewall neupozorní na všechny známé skenery portů; jenom na skenerech, u kterých se ví, že se taky zapojí škodlivá aktivita.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [ukázek Azure bránu Firewall Log Analytics](log-analytics-samples.md)
-- Zjistěte, jak [nasazení a konfiguraci brány Firewall Azure](tutorial-firewall-deploy-portal.md)
-- Zkontrolujte [Microsoft Security intelligence report](https://www.microsoft.com/en-us/security/operations/security-intelligence-report)
+- [Příklady ukázek Azure Firewall Log Analytics](log-analytics-samples.md)
+- Zjistěte, jak [nasadit a nakonfigurovat Azure firewall](tutorial-firewall-deploy-portal.md) .
+- Kontrola [sestavy Microsoft Security Intelligence](https://www.microsoft.com/en-us/security/operations/security-intelligence-report)

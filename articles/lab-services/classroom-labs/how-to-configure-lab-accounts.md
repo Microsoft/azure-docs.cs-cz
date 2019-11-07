@@ -1,6 +1,6 @@
 ---
-title: Konfigurace účtů testovacího prostředí ve službě Azure Lab Services | Dokumentace Microsoftu
-description: Zjistěte, jak nakonfigurovat účet testovacího prostředí po jeho vytvoření.
+title: Konfigurace účtů testovacího prostředí v Azure Lab Services | Microsoft Docs
+description: Naučte se konfigurovat účet testovacího prostředí po jeho vytvoření.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,70 +13,73 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: spelluru
-ms.openlocfilehash: ba469c038f04a31a57e798b97b5120bec573feae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9faf7de25b8bf227dd4c7f3588972f98f7493439
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65414039"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583950"
 ---
-# <a name="configure-lab-accounts-in-azure-lab-services"></a>Konfigurace účtů testovacího prostředí ve službě Azure Lab Services 
-Ve službě Azure Lab Services účet testovacího prostředí je kontejner pro testovací prostředí spravované typy, jako jsou testovací prostředí v učebnách. Správce nastaví účet testovacího prostředí pomocí Azure Lab Services a poskytuje přístup k vlastníků testovacího prostředí, kteří můžou vytvářet testovací prostředí v rámci účtu. Tento článek popisuje, jak vytvořit účet testovacího prostředí, zobrazit všechny účty testovacího prostředí nebo odstranění účtu služby testovacího prostředí.
+# <a name="configure-lab-accounts-in-azure-lab-services"></a>Konfigurace účtů testovacího prostředí v Azure Lab Services 
+V Azure Lab Services účet testovacího prostředí je kontejner pro spravované typy testovacích prostředí, jako je například učeben Labs. Správce nastaví účet testovacího prostředí pomocí Azure Lab Services a poskytne přístup k vlastníkům testovacího prostředí, kteří můžou v účtu vytvářet Labs. Tento článek popisuje, jak vytvořit účet testovacího prostředí, Zobrazit všechny účty testovacího prostředí nebo odstranit účet testovacího prostředí.
 
-## <a name="connect-with-a-peer-virtual-network"></a>Spojte se s partnerská virtuální síť
-Připojení virtuální sítě jako partnerské sítě k virtuální síti testovacího prostředí, postupujte podle těchto kroků:
+## <a name="connect-with-a-peer-virtual-network"></a>Připojení k partnerské virtuální síti
+Pokud chcete připojit virtuální síť jako rovnocennou síť k virtuální síti testovacího prostředí, postupujte podle těchto kroků:
 
-1. Na **účet testovacího prostředí** stránce **Labs konfigurace** v nabídce vlevo.
+1. Na stránce **účet testovacího prostředí** v nabídce vlevo vyberte **Konfigurace Labs** .
 
-    ![Stránka Konfigurace testovacích prostředí](../media/how-to-manage-lab-accounts/labs-configuration-page.png) 
-1. Pro **partnerská virtuální síť**vyberte **povoleno** nebo **zakázané**. Výchozí hodnota je **zakázané**. Pokud chcete povolit partnerská virtuální síť, proveďte následující kroky: 
-    1. Vyberte **povolené**.
-    2. Vyberte **VNet** z rozevíracího seznamu. 
+    ![Konfigurační stránka Labs](../media/how-to-manage-lab-accounts/labs-configuration-page.png) 
+1. V případě **partnerské virtuální sítě**vyberte možnost **povoleno** nebo **zakázáno**. Výchozí hodnota je **zakázaná**. Pokud chcete povolit partnerský virtuální síť, proveďte následující kroky: 
+    1. Vyberte **povoleno**.
+    2. Z rozevíracího seznamu vyberte **virtuální síť** . 
 3. Na panelu nástrojů vyberte **Uložit**. 
 
-Testovací prostředí vytvořené v rámci tohoto účtu jsou připojené k vybrané virtuální síti. Přístupem k prostředkům ve vybrané virtuální síti. Další informace najdete v tématu [připojit síť testovacího prostředí s partnerská virtuální síť v Azure Lab Services](how-to-connect-peer-virtual-network.md).
+Laboratoře vytvořené v tomto účtu jsou připojené k vybrané virtuální síti. Můžou mít přístup k prostředkům ve vybrané virtuální síti. Další informace najdete v tématu [připojení sítě testovacího prostředí k partnerské virtuální síti v Azure Lab Services](how-to-connect-peer-virtual-network.md).
 
-Když vyberete virtuální síť pro **partnerská virtuální síť** pole, **Autor testovacího prostředí povolit vybrat umístění testovacího prostředí** možnost je zakázaná. Je to proto, že testovací prostředí v rámci účtu testovacího prostředí musí být ve stejné oblasti jako účet testovacího prostředí můžou připojit k prostředkům v partnerské virtuální sítě. 
+Když vyberete virtuální síť pro pole **rovnocenná virtuální síť** , možnost **Povolení testovacího prostředí pro výběr umístění testovacího** prostředí je zakázaná. Je to proto, že laboratoře v účtu testovacího prostředí musí být ve stejné oblasti jako účet testovacího prostředí, aby se připojovaly k prostředkům v partnerské virtuální síti. 
 
-## <a name="allow-lab-creator-to-pick-location-for-the-lab"></a>Povolit Autor testovacího prostředí a vyberte umístění pro testovací prostředí
-Můžete povolit Autor testovacího prostředí vytvářet testovací prostředí v jiném umístění než umístění účtu testovacího prostředí pomocí následujících kroků: 
+## <a name="allow-lab-creator-to-pick-location-for-the-lab"></a>Umožňuje tvůrci testovacího prostředí vybrat umístění pro testovací prostředí.
+Pomocí následujících kroků můžete programu Lab Creator vytvořit testovací prostředí v jiném umístění než je umístění účtu testovacího prostředí: 
 
-1. Na **účet testovacího prostředí** stránce **Labs konfigurace** v nabídce vlevo.
-2. Pro **Autor testovacího prostředí povolit vybrat umístění testovacího prostředí**vyberte **povoleno** Pokud chcete, aby autor testovacího prostředí, abyste mohli vybrat umístění pro testovací prostředí. Pokud je zakázaná, tato praktická cvičení se automaticky vytvoří ve stejném umístění, ve které existuje účet testovacího prostředí. 
+1. Na stránce **účet testovacího prostředí** v nabídce vlevo vyberte **Konfigurace Labs** .
+2. Pro možnost **Povolit autor testovacího prostředí vybrat umístění testovacího prostředí**vyberte možnost **povoleno** , pokud chcete, aby autor testovacího prostředí mohl vybrat umístění pro testovací prostředí. Pokud je tato verze zakázaná, laboratoře se automaticky vytvoří ve stejném umístění, ve kterém účet testovacího prostředí existuje. 
     
-    Toto pole je zakázáno, pokud vyberete virtuální síť pro **partnerská virtuální síť** pole. Je to proto, že testovací prostředí v rámci účtu testovacího prostředí musí být ve stejné oblasti jako účet testovacího prostředí pro jejich přístupu k prostředkům v partnerské virtuální síti. 
+    Toto pole je zakázáno, když vyberete virtuální síť pro pole **partnerské virtuální sítě** . Je to proto, že laboratoře v účtu testovacího prostředí musí být ve stejné oblasti jako účet testovacího prostředí pro přístup k prostředkům v partnerské virtuální síti. 
 1. Na panelu nástrojů vyberte **Uložit**. 
 
-    ![Konfigurace nastavení umístění testovacího prostředí](../media/how-to-manage-lab-accounts/labs-configuration-page-lab-location.png)
+    ![Konfigurovat nastavení umístění testovacího prostředí](../media/how-to-manage-lab-accounts/labs-configuration-page-lab-location.png)
 
 
-## <a name="specify-an-address-range-for-vms-in-the-lab"></a>Zadejte rozsah adres pro virtuální počítače v testovacím prostředí
-Následující postup obsahuje kroky k zadejte rozsah adres pro virtuální počítače v testovacím prostředí. Při aktualizaci rozsahu, který jste dříve zadali, rozsah adres upravené platí jenom pro virtuální počítače, které jsou vytvořeny po provedení změny. 
+## <a name="specify-an-address-range-for-vms-in-the-lab"></a>Zadejte rozsah adres pro virtuální počítače v testovacím prostředí.
+Následující postup obsahuje kroky k určení rozsahu adres pro virtuální počítače v testovacím prostředí. Pokud aktualizujete rozsah, který jste předtím zadali, vztahuje se upravený rozsah adres pouze na virtuální počítače, které byly vytvořeny po provedení změny. 
 
-Při zadávání rozsahu adres, který by měl mít na paměti, tady jsou některá omezení. 
+Tady jsou některá omezení, která určují rozsah adres, které byste měli mít na paměti. 
 
-- Předpona, která musí být menší než nebo rovna hodnotě 23. 
-- Pokud chcete účet testovacího prostředí je v partnerském vztahu virtuální sítě, rozsah zadaná adresa nesmí překrývat s rozsahem adres z partnerské virtuální síti.
+- Předpona musí být menší nebo rovna 23. 
+- Pokud je virtuální síť v partnerském vztahu k účtu testovacího prostředí, zadaný rozsah adres se nemůže překrývat s rozsahem adres z partnerské virtuální sítě.
 
-1. Na **účet testovacího prostředí** stránce **Labs konfigurace** v nabídce vlevo.
-2. Pro **rozsah adres** pole, zadejte rozsah adres pro virtuální počítače, které budou vytvořeny v testovacím prostředí. Rozsah adres by měl být v zápisu classless Inter-Domain routing (CIDR) (Příklad: 10.20.0.0/23). Virtuální počítače v testovacím prostředí se vytvoří v tomto rozsahu adres.
+1. Na stránce **účet testovacího prostředí** v nabídce vlevo vyberte **Konfigurace Labs** .
+2. V poli **Rozsah adres** zadejte rozsah adres pro virtuální počítače, které budou vytvořeny v testovacím prostředí. Rozsah adres by měl být v notaci směrování mezi doménami (například: 10.20.0.0/23). Virtuální počítače v testovacím prostředí se vytvoří v tomto rozsahu adres.
 3. Na panelu nástrojů vyberte **Uložit**. 
 
-    ![Konfigurovat rozsah adres](../media/how-to-manage-lab-accounts/labs-configuration-page-address-range.png)
+    ![Konfigurace rozsahu adres](../media/how-to-manage-lab-accounts/labs-configuration-page-address-range.png)
 
 ## <a name="add-a-user-to-the-lab-creator-role"></a>Přidání uživatele do role Autor testovacího prostředí
 Pokud chcete v účtu testovacího prostředí nastavit testovací prostředí v učebně, musí být uživatel v účtu testovacího prostředí členem role **Autor testovacího prostředí**. Do této role se automaticky přidá účet, který jste použili k vytvoření účtu testovacího prostředí. Pokud máte v úmyslu použít k vytvoření testovacího prostředí v učebně stejný uživatelský účet, můžete tento krok přeskočit. Pokud chcete k vytvoření testovacího prostředí v učebně použít jiný uživatelský účet, postupujte takto: 
 
 Přidejte vyučující do role **Autor testovacího prostředí**, abyste jim poskytli oprávnění k vytvoření testovacích prostředí pro jejich třídy:
 
-1. Na **účet testovacího prostředí** stránce **řízení přístupu (IAM)** a klikněte na tlačítko **+ přidat přiřazení role** na panelu nástrojů. 
+1. Na stránce **účet testovacího prostředí** vyberte **řízení přístupu (IAM)** a klikněte na tlačítko **+ Přidat přiřazení role** na panelu nástrojů. 
 
-    ![Řízení přístupu -> tlačítko Přidat přiřazení Role](../media/tutorial-setup-lab-account/add-role-assignment-button.png)
-1. Na **přidat přiřazení role** stránce **Autor testovacího prostředí** pro **Role**, vyberte uživatele, kterou chcete přidat do role Tvůrce prostředí a vyberte **Uložit**. 
+    ![Access Control – tlačítko Přidat přiřazení role >](../media/tutorial-setup-lab-account/add-role-assignment-button.png)
+1. Na stránce **Přidat přiřazení role** vyberte možnost **Autor testovacího prostředí** pro **role**, vyberte uživatele, kterého chcete přidat do role testovací tvůrci, a vyberte **Uložit**. 
 
-    ![Přidat Autor testovacího prostředí](../media/tutorial-setup-lab-account/add-lab-creator.png)
+    ![Přidat autora testovacího prostředí](../media/tutorial-setup-lab-account/add-lab-creator.png)
 
-## <a name="specify-marketplace-images-available-to-lab-creators"></a>Zadejte Image z Marketplace k dispozici pro tvůrce prostředí
+    > [!NOTE]
+    > Pokud přidáváte neúčet Microsoftého uživatele jako tvůrce testovacího prostředí, přečtěte si část [Přidání uživatele bez účet Microsoft jako tvůrce testovacího prostředí](#add-a-non-microsoft-account-user-as-a-lab-creator) . 
+
+## <a name="specify-marketplace-images-available-to-lab-creators"></a>Určení imagí Marketplace dostupných pro tvůrci testovacího prostředí
 Jako vlastník účtu testovacího prostředí můžete určit image z Marketplace, které můžou autoři testovacích prostředí použít k vytváření testovacích prostředí v tomto účtu testovacího prostředí. 
 
 1. V nabídce vlevo vyberte **Marketplace images** (Image z Marketplace). Ve výchozím nastavení se zobrazí úplný seznam imagí (povolených i zakázaných). Pomocí možnosti **Enabled only**/**Disabled only** (Jenom povolené / Jenom zakázané) v rozevíracím seznamu v horní části můžete seznam filtrovat, aby se v něm zobrazovaly jen povolené/zakázané image. 
@@ -99,13 +102,42 @@ Jako vlastník účtu testovacího prostředí můžete určit image z Marketpla
     1. V posledním sloupci vyberte **…** (tři tečky) a zvolte **Enable image** (Povolit image). 
     2. Zaškrtnutím políček před názvy imagí v seznamu můžete vybrat několik imagí. Potom zvolte **Enable selected images** (Povolit vybrané image). 
 
+## <a name="add-a-non-microsoft-account-user-as-a-lab-creator"></a>Přidání uživatele bez účet Microsoft jako autora testovacího prostředí
+Pokud chcete přidat uživatele jako tvůrce testovacího prostředí, použijte své e-mailové účty. Můžou se používat tyto typy e-mailových účtů:
+
+- E-mailový účet, který poskytuje Office 365 Azure Active Directory vaší univerzity (AAD). 
+- E-mailový účet Microsoftu, například `@outlook.com`, `@hotmail.com`, `@msn.com`nebo `@live.com`.
+- E-mailový účet, který není od Microsoftu, který poskytuje společnost Yahoo nebo Google. Tyto typy účtů však musí být propojeny s účet Microsoft.
+- Účet GitHub. Tento účet musí být propojený s účet Microsoft.
+
+### <a name="using-a-non-microsoft-email-account"></a>Použití e-mailového účtu jiného než Microsoftu
+Tvůrci a instruktoři testovacího prostředí můžou používat e-mailové účty jiných společností než Microsoftu k registraci a přihlášení k prostředí učebny.  Přihlášení k portálu služby testovacího prostředí však vyžaduje, aby instruktory nejprve vytvořily účet Microsoft propojená s jejich e-mailovou adresou jinou než Microsoftu.
+
+Mnoho instruktorů už může mít účet Microsoft propojených s vašimi e-mailovými adresami, které nejsou od Microsoftu. Například instruktori již účet Microsoft, pokud používal svou e-mailovou adresu s jinými produkty nebo službami společnosti Microsoft, jako je Office, Skype, OneDrive nebo Windows.  
+
+Když se instruktor přihlásí na portál služby Lab Services, zobrazí se výzva k zadání e-mailové adresy a hesla. Pokud se instruktor pokusí přihlásit pomocí neúčet Microsoft, který nemá účet Microsoft propojený, instruktor dostane následující chybovou zprávu: 
+
+![Chybová zpráva](../media/how-to-configure-student-usage/cant-find-account.png)
+
+Chcete-li se zaregistrovat účet Microsoft, instruktory by měly přejít na [http://signup.live.com](http://signup.live.com).  
 
 
+### <a name="using-a-github-account"></a>Použití účtu GitHub
+Instruktoři můžou k registraci a přihlášení k prostředí učebny použít taky existující účet GitHubu. Pokud už instruktor má účet Microsoft propojený se svým účtem GitHubu, může se přihlásit a zadat heslo, jak je znázorněno v předchozí části. Pokud ještě neodkazují svůj účet GitHubu na účet Microsoft, měly by si vybrat **Možnosti přihlášení**:
 
-## <a name="next-steps"></a>Další postup
+![Odkaz Možnosti přihlášení](../media/how-to-configure-student-usage/signin-options.png)
+
+Na stránce **Možnosti přihlášení** vyberte možnost **Přihlásit se pomocí GitHubu**.
+
+![Přihlaste se pomocí odkazu na GitHub](../media/how-to-configure-student-usage/signin-github.png)
+
+Nakonec se zobrazí výzva k vytvoření účet Microsoft, která je propojená s jejich účtem GitHubu. K tomu dochází automaticky, když instruktor vybere **Next (další**).  Instruktor se pak hned přihlásí a připojí k vývojovému prostředí učebny.
+
+
+## <a name="next-steps"></a>Další kroky
 Viz následující články:
 
-- [Jako vlastník testovacího prostředí vytvoření a správa testovacích prostředí](how-to-manage-classroom-labs.md)
-- [Jako vlastník testovacího prostředí nastavení a publikování šablon](how-to-create-manage-template.md)
-- [Jako vlastník testovacího prostředí konfigurovat a spravovat využití testovacího prostředí](how-to-configure-student-usage.md)
-- [Jako uživatel, který testovací prostředí přístup k testovacím prostředím v učebnách](how-to-use-classroom-lab.md)
+- [Jako vlastník testovacího prostředí vytvářet a spravovat cvičení](how-to-manage-classroom-labs.md)
+- [Jako vlastník testovacího prostředí, nastavení a publikování šablon](how-to-create-manage-template.md)
+- [Jako vlastník testovacího prostředí konfigurace a řízení využití testovacího prostředí](how-to-configure-student-usage.md)
+- [Jako uživatel testovacího prostředí, Access učeben Labs](how-to-use-classroom-lab.md)

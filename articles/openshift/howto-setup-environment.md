@@ -1,107 +1,96 @@
 ---
-title: Nastavení vývojového prostředí Azure Red Hat OpenShift | Dokumentace Microsoftu
-description: Zde jsou uvedeny požadavky pro práci s Microsoft Azure Red Hat OpenShift.
+title: Nastavení vývojového prostředí Azure Red Hat OpenShift | Microsoft Docs
+description: Tady jsou požadavky pro práci s Microsoft Azure Red Hat OpenShift.
 services: openshift
-keywords: nastavení systému Red hat openshift nastavit
+keywords: nastavení nastavení Red Hat OpenShift
 author: jimzim
 ms.author: jzim
-ms.date: 05/10/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
 manager: jeconnoc
-ms.openlocfilehash: a31655e8c8805505bdcc5e90bf25191590d35c18
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: fa09ed90258a62d37dafeea5f4760e1fabdc210b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672518"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581602"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Nastavení vývojového prostředí Azure Red Hat OpenShift
 
-K vytváření a spouštění aplikací v Microsoft Azure Red Hat OpenShift, bude nutné:
+K sestavování a spouštění aplikací Microsoft Azure Red Hat OpenShift budete potřebovat:
 
-* Koupit Azure rezervované instance virtuálních počítačů.
-* Nainstalovat verzi 2.0.65 (nebo vyšší) z příkazového řádku Azure (nebo použijte Azure Cloud Shell).
-* Zaregistrujte se `AROGA` funkce a poskytovatelů prostředků přidružené.
-* Vytvoření tenanta Azure Active Directory (Azure AD).
-* Vytvoření objektu aplikace Azure AD.
-* Vytvoření uživatele služby Azure AD.
+* Nainstalujte verzi 2.0.65 Azure CLI (nebo novější) (nebo použijte Azure Cloud Shell).
+* Zaregistrujte se na funkci `AROGA` a přidružené poskytovatele prostředků.
+* Vytvořte tenanta Azure Active Directory (Azure AD).
+* Vytvořte objekt aplikace služby Azure AD.
+* Vytvořte uživatele Azure AD.
 
-Postupujte podle následujících pokynů vás provede všechny tyto požadavky.
-
-## <a name="purchase-azure-red-hat-openshift-application-nodes-reserved-instances"></a>Nákup rezervované instance Azure Red Hat OpenShift aplikace uzly
-
-Než budete moct použít Azure Red Hat OpenShift, budete muset zakoupit minimálně 4 uzly aplikace Azure Red Hat OpenShift vyhrazené, po jejichž uplynutí je budete moct zřizování clusterů.
-
-Pokud jste zákazník Azure [koupit Azure Red Hat OpenShift rezervované instance](https://aka.ms/openshift/buy) prostřednictvím webu Azure portal. Po zakoupení, aktivuje vaše předplatné během 24 hodin.
-
-Pokud si nejste zákazník Azure [kontaktujte prodej](https://aka.ms/openshift/contact-sales) a vyplňte formulář prodeje v dolní části stránky zahájíte proces.
-
-Odkazovat [stránce s cenami Azure Red Hat OpenShift](https://aka.ms/openshift/pricing) Další informace.
+Následující pokyny vás provedou všemi těmito požadavky.
 
 ## <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
 
-Azure Red Hat OpenShift vyžaduje verzi 2.0.65 nebo vyšší rozhraní příkazového řádku Azure. Pokud jste již nainstalovali rozhraní příkazového řádku Azure, můžete zjistit, které verze máte spuštěním:
+Azure Red Hat OpenShift vyžaduje rozhraní příkazového řádku Azure 2.0.65 nebo vyšší verze. Pokud jste už rozhraní příkazového řádku Azure nainstalovali, můžete zjistit, kterou verzi máte spuštěnou:
 
 ```bash
 az --version
 ```
 
-První řádek výstupu bude mít verzi rozhraní příkazového řádku, například `azure-cli (2.0.65)`.
+První řádek výstupu bude mít verzi CLI, například `azure-cli (2.0.65)`.
 
-Toto jsou pokyny pro [instalaci rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Pokud budete potřebovat nové instalace nebo upgrade.
+Tady jsou pokyny pro [instalaci Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , pokud potřebujete novou instalaci nebo upgrade.
 
-Alternativně můžete použít [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). Pokud používáte Azure Cloud Shell, je potřeba vybrat možnost **Bash** prostředí, pokud budete chtít postupovat podle [vytvoření a Správa clusteru Azure Red Hat OpenShift](tutorial-create-cluster.md) série kurzů.
+Alternativně můžete použít [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). Pokud používáte Azure Cloud Shell, nezapomeňte vybrat prostředí **bash** , pokud plánujete postupovat podle kurzu [Vytvoření a Správa řady Azure Red Hat OpenShift](tutorial-create-cluster.md) .
 
-## <a name="register-providers-and-features"></a>Zaregistrovat poskytovatele a funkce
+## <a name="register-providers-and-features"></a>Registrovat poskytovatele a funkce
 
-`Microsoft.ContainerService AROGA` Funkce `Microsoft.Solutions`, `Microsoft.Compute`, `Microsoft.Storage`, `Microsoft.KeyVault` a `Microsoft.Network` zprostředkovatele musí být zaregistrovaný k vašemu předplatnému ručně před nasazením svůj první cluster Azure Red Hat OpenShift.
+Před nasazením prvního clusteru Azure Red Hat OpenShift musí být do vašeho předplatného ručně zaregistrovaná funkce `Microsoft.ContainerService AROGA` `Microsoft.Solutions`, `Microsoft.Compute`, `Microsoft.Storage`, `Microsoft.KeyVault` a `Microsoft.Network`.
 
-Ručně registrovat tyto poskytovatele a funkce, použijte následující pokyny z prostředí Bash, pokud jste nainstalovali rozhraní příkazového řádku nebo z relace Azure Cloud Shell (Bash) vašeho webu Azure Portal:
+Pokud chcete tyto poskytovatele a funkce zaregistrovat ručně, použijte následující pokyny z prostředí bash, pokud máte nainstalované rozhraní příkazového řádku nebo z relace Azure Cloud Shell (bash) v Azure Portal:
 
-1. Pokud máte více předplatných Azure, zadejte ID předplatného odpovídající:
+1. Pokud máte více předplatných Azure, zadejte příslušné ID předplatného:
 
     ```bash
     az account set --subscription <SUBSCRIPTION ID>
     ```
 
-1. Registrovat funkci Microsoft.ContainerService AROGA:
+1. Zaregistrujte funkci Microsoft. ContainerService AROGA:
 
     ```bash
     az feature register --namespace Microsoft.ContainerService -n AROGA
     ```
 
-1. Zaregistrujte poskytovatele Microsoft.Storage:
+1. Zaregistrujte poskytovatele Microsoft. Storage:
 
     ```bash
     az provider register -n Microsoft.Storage --wait
     ```
     
-1. Registrace poskytovatele Microsoft.Compute:
+1. Zaregistrujte poskytovatele Microsoft. Compute:
 
     ```bash
     az provider register -n Microsoft.Compute --wait
     ```
 
-1. Registrace poskytovatele Microsoft.Solutions:
+1. Zaregistrujte poskytovatele Microsoft. Solutions:
 
     ```bash
     az provider register -n Microsoft.Solutions --wait
     ```
 
-1. Registrace poskytovatele Microsoft.Network:
+1. Zaregistrujte poskytovatele Microsoft. Network:
 
     ```bash
     az provider register -n Microsoft.Network --wait
     ```
 
-1. Registrace poskytovatele Microsoft.KeyVault:
+1. Zaregistrujte poskytovatele Microsoft. klíčů trezoru:
 
     ```bash
     az provider register -n Microsoft.KeyVault --wait
     ```
 
-1. Aktualizujte registraci poskytovatele prostředků Microsoft.ContainerService:
+1. Obnovte registraci poskytovatele prostředků Microsoft. ContainerService:
 
     ```bash
     az provider register -n Microsoft.ContainerService --wait
@@ -109,21 +98,21 @@ Ručně registrovat tyto poskytovatele a funkce, použijte následující pokyny
 
 ## <a name="create-an-azure-active-directory-azure-ad-tenant"></a>Vytvoření tenanta Azure Active Directory (Azure AD)
 
-Služba Azure Red Hat OpenShift vyžaduje, aby přidružené tenanta Azure Active Directory (Azure AD), který představuje vaše organizace a její vztah Microsoftu. Svého tenanta Azure AD umožňuje zaregistrovat, sestavení a spravovat aplikace, jakož i využívat další služby Azure.
+Služba Azure Red Hat OpenShift vyžaduje přidruženého tenanta Azure Active Directory (Azure AD), který představuje vaši organizaci a její vztah k Microsoftu. Váš tenant služby Azure AD umožňuje registrovat, sestavovat a spravovat aplikace a také používat další služby Azure.
 
-Pokud nemáte Azure AD pro účely vašeho clusteru Azure Red Hat OpenShift jako tenant nebo chcete vytvořit tenanta pro testování, postupujte podle pokynů v [vytvoření tenanta Azure AD pro váš cluster Azure Red Hat OpenShift](howto-create-tenant.md) před Pokračujte v tomto průvodci.
+Pokud Azure AD nemáte k použití jako tenanta pro cluster Azure Red Hat OpenShift nebo chcete vytvořit tenanta pro testování, postupujte podle pokynů v tématu [Vytvoření tenanta Azure AD pro cluster Azure Red Hat OpenShift](howto-create-tenant.md) , než budete pokračovat v tomto průvodci. .
 
-## <a name="create-an-azure-ad-user-security-group-and-application-object"></a>Vytvoření uživatele, skupiny zabezpečení a aplikace Azure AD objektu
+## <a name="create-an-azure-ad-user-security-group-and-application-object"></a>Vytvoření uživatele služby Azure AD, skupiny zabezpečení a objektu aplikace
 
-Azure Red Hat OpenShift vyžaduje oprávnění k provádění úloh na clusteru, jako je například konfigurace úložiště. Tato oprávnění jsou představovány [instanční objekt služby](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object). Také budete chtít vytvořit nového uživatele služby Active Directory pro účely testování aplikace běžící v clusteru Azure Red Hat OpenShift.
+Azure Red Hat OpenShift vyžaduje oprávnění k provádění úloh v clusteru, jako je například konfigurace úložiště. Tato oprávnění jsou reprezentována prostřednictvím [instančního objektu](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object). Budete také chtít vytvořit nového uživatele služby Active Directory pro testování aplikací běžících ve vašem clusteru Azure Red Hat OpenShift.
 
-Postupujte podle pokynů v [vytvoření objektu aplikace Azure AD a uživatel](howto-aad-app-configuration.md) k vytvoření instančního objektu, generovat URL klienta tajný klíč a ověřování zpětného volání pro vaši aplikaci a vytvořit novou skupinu zabezpečení Azure AD a uživatel pro přístup k cluster.
+Postupujte podle pokynů v části [vytvoření objektu aplikace služby Azure AD a uživatele](howto-aad-app-configuration.md) k vytvoření instančního objektu, VYGENERUJTE adresu URL tajného klíče klienta a zpětného volání ověřování pro vaši aplikaci a vytvořte novou skupinu zabezpečení Azure AD a uživatele pro přístup ke clusteru.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Teď můžete začít používat Azure Red Hat OpenShift.
+Teď jste připraveni použít Azure Red Hat OpenShift!
 
-Projděte si kurz:
+Vyzkoušejte si kurz:
 > [!div class="nextstepaction"]
 > [Vytvoření clusteru Azure Red Hat OpenShift](tutorial-create-cluster.md)
 

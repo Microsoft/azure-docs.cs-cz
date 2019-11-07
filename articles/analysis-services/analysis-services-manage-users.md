@@ -1,18 +1,18 @@
 ---
-title: Ověřování a oprávnění uživatele v Azure Analysis Services | Microsoft Docs
-description: Přečtěte si o ověřování a uživatelských oprávněních v Azure Analysis Services.
+title: Azure Analysis Services ověřování a oprávnění uživatele | Microsoft Docs
+description: Tento článek popisuje, jak Azure Analysis Services používá Azure Active Directory (Azure AD) pro správu identit a ověřování uživatelů.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a48292b7600d8b9e400bf1e2d61aec313ce29f4b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4a054c3c042e18f1679acd75e5ba5ad74f66edff
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146869"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572753"
 ---
 # <a name="authentication-and-user-permissions"></a>Ověřování a uživatelská oprávnění
 
@@ -22,7 +22,7 @@ Azure Analysis Services podporuje [spolupráci Azure AD B2B](../active-directory
 
 ![Azure Analysis Services Architektura ověřování](./media/analysis-services-manage-users/aas-manage-users-arch.png)
 
-## <a name="authentication"></a>Ověření
+## <a name="authentication"></a>Ověřování
 
 Všechny klientské aplikace a nástroje používají k připojení k serveru jednu nebo více Analysis Services [klientských knihoven](analysis-services-data-providers.md) (AMO, MSOLAP, ADOMD). 
 
@@ -81,4 +81,4 @@ Role na této úrovni se vztahují na uživatele nebo účty, které potřebují
 [Správa přístupu k prostředkům pomocí skupin Azure Active Directory](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [Správa databázových rolí a uživatelů](analysis-services-database-users.md)  
 [Správa správců serveru](analysis-services-server-admins.md)  
-[Řízení přístupu na základě role](../role-based-access-control/overview.md)  
+[Řízení přístupu na základě rolí](../role-based-access-control/overview.md)  

@@ -1,195 +1,94 @@
 ---
-title: Vizualizace dat v Průzkumníku dat Azure pomocí služby Grafana
-description: V tomto návodu se dozvíte, jak nastavit Průzkumník dat Azure jako zdroj dat pro Grafana, a pak vizualizovat data z ukázkové clusteru.
+title: Vizualizace dat z Azure Průzkumník dat pomocí Grafana
+description: V tomto postupu se naučíte, jak nastavit službu Azure Průzkumník dat jako zdroj dat pro Grafana a pak vizualizovat data z ukázkového clusteru.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 6/30/2019
-ms.openlocfilehash: 0f148a97b25afb9135223ff92afb898d4734c586
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: f1eb9fb0d81d1e9cdf3dd8628a6d7ad1f0ccce92
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537801"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582031"
 ---
-# <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Vizualizace dat v Průzkumníku dat Azure v Grafana
+# <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Vizualizace dat z Azure Průzkumník dat v Grafana
 
-Grafana je analytická platforma, která umožňuje dotazování a vizualizace dat, pak vytvořit a sdílet řídicí panely založené na vašich vizualizací. Grafana poskytuje Průzkumníka dat Azure *modulu plug-in*, což vám umožní připojit k a vizualizace počítačových dat z Průzkumníku dat Azure. V tomto článku se dozvíte, jak nastavit Průzkumník dat Azure jako zdroj dat pro Grafana, a pak vizualizovat data z ukázkové clusteru.
+Grafana je analytická platforma, která umožňuje dotazování a vizualizaci dat a následné vytváření a sdílení řídicích panelů na základě vizualizací. Grafana poskytuje *modul plug-in*Azure Průzkumník dat, který umožňuje připojení a vizualizaci dat z Azure Průzkumník dat. V tomto článku se naučíte, jak nastavit službu Azure Průzkumník dat jako zdroj dat pro Grafana a pak vizualizovat data z ukázkového clusteru.
 
-Pomocí následující video, můžete zjistíte, jak pomocí modulu plug-in pro Grafana Průzkumník dat Azure, nastavit Průzkumník dat Azure jako zdroj dat pro Grafana a potom vizualizují data. 
+Pomocí následujícího videa se naučíte používat modul plug-in Azure Průzkumník dat v Grafana, nastavit Azure Průzkumník dat jako zdroj dat pro Grafana a pak vizualizovat data. 
 
 > [!VIDEO https://www.youtube.com/embed/fSR_qCIFZSA]
 
-Případně můžete [konfigurace zdroje dat](#configure-the-data-source) a [vizualizace dat](#visualize-data) uvedené níže.
+Případně můžete [nakonfigurovat zdroj dat](#configure-the-data-source) a [vizualizovat data](#visualize-data) podle podrobných pokynů v následujícím článku.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat následující dokončete tento postup:
+K dokončení tohoto postupu potřebujete následující:
 
 * [Grafana verze 5.3.0 nebo novější](https://docs.grafana.org/installation/) pro váš operační systém
 
-* [Průzkumník dat Azure plugin](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation) pro Grafana
+* [Modul plug-in Azure Průzkumník dat](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation) pro Grafana
 
-* Clusteru, který obsahuje ukázková data StormEvents. Další informace najdete v tématu [rychlý start: Vytvoření clusteru Průzkumník dat Azure a databáze](create-cluster-database-portal.md) a [Ingestování ukázková data do Průzkumníku dat Azure](ingest-sample-data.md).
+* Cluster, který obsahuje ukázková data StormEvents. Další informace najdete v tématu [rychlý Start: Vytvoření clusteru azure Průzkumník dat a databáze](create-cluster-database-portal.md) a ingestování [ukázkových dat do Azure Průzkumník dat](ingest-sample-data.md).
 
     [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-## <a name="configure-the-data-source"></a>Konfigurace zdroje dat
+[!INCLUDE [data-explorer-configure-data-source](../../includes/data-explorer-configure-data-source.md)]
 
-Provedete následující kroky konfigurace Průzkumník dat Azure jako zdroj dat pro Grafana. Tyto kroky v této části podrobně probereme:
+### <a name="specify-properties-and-test-the-connection"></a>Zadejte vlastnosti a otestujte připojení.
 
-1. Vytvoření instančního objektu služby Azure Active Directory (Azure AD). Služby, které používá Grafana přístup ke službě Průzkumník dat Azure.
+S instančním objektem přiřazeným k roli *Návštěvníci* teď v instanci Grafana zadáte vlastnosti a otestujete připojení k Azure Průzkumník dat.
 
-1. Přidání instančního objektu služby Azure AD pro *prohlížeče* role databáze Průzkumník dat Azure.
-
-1. Zadejte vlastnosti připojení Grafana na základě informací z instančního objektu služby Azure AD a potom otestujte připojení.
-
-### <a name="create-a-service-principal"></a>Vytvoření instančního objektu
-
-Služby můžete vytvořit instanční objekt v [webu Azure portal](#azure-portal) nebo pomocí [rozhraní příkazového řádku Azure](#azure-cli) prostředí příkazového řádku. Bez ohledu na to, jakou metodu použijete, po vytvoření, který jste získali hodnoty pro čtyři vlastnosti připojení, které budete používat v dalších krocích.
-
-#### <a name="azure-portal"></a>portál Azure
-
-1. Pokud chcete vytvořit instanční objekt služby, postupujte podle pokynů [dokumentace k webu Azure portal](/azure/active-directory/develop/howto-create-service-principal-portal).
-
-    1. V [přiřazení aplikace k roli](/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) části, přiřazení role typu **čtečky** ke svému clusteru Průzkumník dat Azure.
-
-    1. V [získání hodnot pro přihlášení](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) tématu, zkopírujte tři vlastnosti hodnoty uvedené v krocích: **ID adresáře** (ID tenanta), **ID aplikace**, a **heslo**.
-
-1. Na webu Azure Portal, vyberte **předplatná** zkopírujte ID předplatného, ve kterém vytvoříte instanční objekt služby.
-
-    ![ID předplatného – portál](media/grafana/subscription-id-portal.png)
-
-#### <a name="azure-cli"></a>Azure CLI
-
-1. Vytvoření instančního objektu. Nastavte příslušeného oboru a typ role `reader`.
-
-    ```azurecli
-    az ad sp create-for-rbac --name "https://{UrlToYourGrafana}:{PortNumber}" --role "reader" \
-                             --scopes /subscriptions/{SubID}/resourceGroups/{ResourceGroupName}
-    ```
-
-    Další informace najdete v tématu [vytvoření instančního objektu Azure pomocí rozhraní příkazového řádku Azure](/cli/azure/create-an-azure-service-principal-azure-cli).
-
-1. Příkaz vrátí výsledek nastavte takto. Zkopírujte hodnoty tři vlastnosti: **appID**, **heslo**, a **tenanta**.
-
-    ```json
-    {
-      "appId": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-      "displayName": "{UrlToYourGrafana}:{PortNumber}",
-      "name": "https://{UrlToYourGrafana}:{PortNumber}",
-      "password": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-      "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
-    }
-    ```
-
-1. Získá seznam vašich předplatných.
-
-    ```azurecli
-    az account list --output table
-    ```
-
-    Zkopírujte ID odpovídající předplatné.
-
-    ![ID předplatného – rozhraní příkazového řádku](media/grafana/subscription-id-cli.png)
-
-### <a name="add-the-service-principal-to-the-viewers-role"></a>Přidejte instanční objekt služby k roli prohlížeče
-
-Teď, když máte instanční objekt služby, přidáte jej do *prohlížeče* role databáze Průzkumník dat Azure. Můžete provést tuto úlohu v rámci **oprávnění** na webu Azure Portal nebo v části **dotazu** příkazem správy.
-
-#### <a name="azure-portal---permissions"></a>Azure portal – oprávnění
-
-1. Na webu Azure Portal přejděte ke svému clusteru Průzkumník dat Azure.
-
-1. V **přehled** vyberte databázi s ukázkovými daty StormEvents.
-
-    ![Vyberte databázi](media/grafana/select-database.png)
-
-1. Vyberte **oprávnění** pak **přidat**.
-
-    ![Oprávnění k databázi](media/grafana/database-permissions.png)
-
-1. V části **přidat databázi oprávnění**, vyberte **prohlížeč** role potom **vyberte objekty zabezpečení**.
-
-    ![Přidejte oprávnění k databázi](media/grafana/add-permission.png)
-
-1. Hledání pro instanční objekt služby, které jste vytvořili (příkladu je objekt zabezpečení **mb grafana**). Vybrat objekt zabezpečení, pak **vyberte**.
-
-    ![Spravovat oprávnění na webu Azure Portal](media/grafana/new-principals.png)
-
-1. Vyberte **Uložit**.
-
-    ![Spravovat oprávnění na webu Azure Portal](media/grafana/save-permission.png)
-
-#### <a name="management-command---query"></a>Příkaz správy – dotaz
-
-1. Na webu Azure Portal, přejděte ke svému clusteru Průzkumník dat Azure a vyberte **dotazu**.
-
-    ![Dotaz](media/grafana/query.png)
-
-1. V okně dotazu spusťte následující příkaz. Pomocí ID aplikace a ID tenanta z webu Azure portal nebo rozhraní příkazového řádku.
-
-    ```kusto
-    .add database {TestDatabase} viewers ('aadapp={ApplicationID};{TenantID}')
-    ```
-
-    Příkaz vrátí výsledek nastavte takto. V tomto příkladu první řádek je pro stávajícího uživatele v databázi a druhý řádek je pro instanční objekt, který byl právě přidali.
-
-    ![Sada výsledků dotazu](media/grafana/result-set.png)
-
-### <a name="specify-properties-and-test-the-connection"></a>Zadejte vlastnosti a otestujte připojení
-
-S instanční objekt služby, které jsou přiřazeny *prohlížeče* roli, můžete teď určit vlastnosti ve vaší instanci služby Grafana a otestujte připojení do Průzkumníku dat Azure.
-
-1. V Grafana, v nabídce vlevo vyberte ikonu ozubeného kola pak **zdroje dat**.
+1. V Grafana v nabídce vlevo vyberte ikonu ozubeného kolečka a **zdroje dat**.
 
     ![Zdroje dat](media/grafana/data-sources.png)
 
-1. Vyberte **přidat zdroj dat**.
+1. Vyberte **Přidat zdroj dat**.
 
-1. Na **zdroje dat / nová** stránky, zadejte název pro zdroj dat a pak vyberte typ **Datasource Průzkumník dat Azure**.
+1. Na stránce **zdroje dat/nová** zadejte název zdroje dat a potom vyberte typ **zdroje dat Azure Průzkumník dat**.
 
-    ![Název připojení a typ](media/grafana/connection-name-type.png)
+    ![Název a typ připojení](media/grafana/connection-name-type.png)
 
-1. Zadejte název vašeho clusteru ve formě https://{ClusterName}. {Region}. kusto.windows.net. Zadejte jiné hodnoty z webu Azure portal nebo rozhraní příkazového řádku. V tabulce níže pro mapování na následujícím obrázku.
+1. Do formuláře https://{název_clusteru} zadejte název clusteru. {Region}. kusto. Windows. NET. Zadejte další hodnoty z Azure Portal nebo CLI. Mapování najdete v tabulce pod následujícím obrázkem.
 
     ![Vlastnosti připojení](media/grafana/connection-properties.png)
 
-    | Uživatelské rozhraní služby Grafana | portál Azure | Azure CLI |
+    | Uživatelské rozhraní Grafana | portál Azure | Azure CLI |
     | --- | --- | --- |
     | ID předplatného | ID PŘEDPLATNÉHO | SubscriptionId |
-    | Id tenanta | ID adresáře | tenant |
-    | Id klienta | ID aplikace | appId |
-    | Tajný klíč klienta | Heslo | password |
+    | ID tenanta | ID adresáře | tenant |
+    | ID klienta | ID aplikace | appId |
+    | Tajný klíč klienta | Heslo | heslo |
     | | | |
 
-1. Vyberte **uložit a otestovat**.
+1. Vyberte **uložit & test**.
 
-    Je-li test úspěšný, přejděte k další části. Pokud budete mít nějaké problémy, zkontrolujte hodnoty, které jste zadali v Grafana a přezkoumání předchozí kroky.
+    Pokud je test úspěšný, pokračujte k další části. Pokud narazíte na nějaké problémy, zkontrolujte hodnoty zadané v Grafana a Projděte si předchozí kroky.
 
 ## <a name="visualize-data"></a>Vizualizace dat
 
-Nyní jste dokončili konfiguraci Průzkumník dat Azure jako zdroj dat pro Grafana, je čas, která bude vizualizovat data. Ukážeme základní příklad, ale dochází k mnoha více můžete provést. Doporučujeme, abyste prohlížení [psát dotazy pro Průzkumníka služby Azure Data](write-queries.md) Příklady dalších dotazů ke spuštění ukázkové datové sadě.
+Nyní jste dokončili konfiguraci služby Azure Průzkumník dat jako zdroje dat pro Grafana, je čas na vizualizaci dat. Ukážeme si základní příklad, který vám může udělat spoustu dalšího. Doporučujeme, abyste si vyhledali [dotazy na zápis pro Azure Průzkumník dat](write-queries.md) příklady dalších dotazů, které se mají spustit na vzorové datové sadě.
 
-1. V Grafana, v nabídce vlevo vyberte ikonu se znaménkem plus pak **řídicí panel**.
+1. V Grafana nabídce vlevo vyberte ikonu Plus a potom **řídicí panel**.
 
-    ![Vytvoření řídicího panelu](media/grafana/create-dashboard.png)
+    ![Vytvořit řídicí panel](media/grafana/create-dashboard.png)
 
-1. V části **přidat** kartu, vyberte možnost **grafu**.
+1. Na kartě **Přidat** vyberte **graf**.
 
     ![Přidat graf](media/grafana/add-graph.png)
 
-1. Na panelu grafu vyberte **nadpis panelu** pak **upravit**.
+1. Na panelu graf vyberte **název panelu** a pak **Upravit**.
 
-    ![Upravit panel](media/grafana/edit-panel.png)
+    ![Panel pro úpravy](media/grafana/edit-panel.png)
 
-1. V dolní části panelu, vyberte **zdroj dat** vyberte zdroj dat, který jste nakonfigurovali.
+1. V dolní části panelu vyberte **zdroj dat** a pak vyberte zdroj dat, který jste nakonfigurovali.
 
     ![Výběr zdroje dat](media/grafana/select-data-source.png)
 
-1. V podokně dotazu, zkopírujte do ní následující dotaz, pak vyberte **spustit**. Dotaz intervalů počet událostí za den pro ukázkové datové sadě.
+1. V podokně dotazu zkopírujte následující dotaz a pak vyberte **Spustit**. Dotaz sestaví počet událostí podle dne pro sadu vzorových dat.
 
     ```kusto
     StormEvents
@@ -198,22 +97,22 @@ Nyní jste dokončili konfiguraci Průzkumník dat Azure jako zdroj dat pro Graf
 
     ![Spuštění dotazu](media/grafana/run-query.png)
 
-1. Grafu nezobrazí žádné výsledky, protože je zaměřen ve výchozím nastavení data z posledních 6 hodin. V horní nabídce vyberte **posledních 6 hodin**.
+1. Graf nezobrazuje žádné výsledky, protože je ve výchozím nastavení vymezený na data za posledních 6 hodin. V horní nabídce vyberte **Poslední 6 hodin**.
 
     ![Posledních 6 hodin](media/grafana/last-six-hours.png)
 
-1. Zadejte vlastní rozsah, který zahrnuje 2007, roce zahrnutého v našich StormEvents ukázkovou datovou sadu. Vyberte **Použít**.
+1. Zadejte vlastní rozsah, který pokrývá 2007, rok zahrnutý v naší ukázkové sadě dat StormEvents. Vyberte **Použít**.
 
     ![Vlastní rozsah kalendářních dat](media/grafana/custom-date-range.png)
 
-    Graf nyní zobrazuje data z 2007, kterých rozdělit podle dne.
+    Nyní se v grafu zobrazí data z 2007, která jsou rozdělená podle dnů.
 
-    ![Dokončení grafu](media/grafana/finished-graph.png)
+    ![Graf dokončen](media/grafana/finished-graph.png)
 
-1. V horní nabídce vyberte uložení ikony: ![Ikonu Uložit](media/grafana/save-icon.png).
+1. V horní nabídce vyberte ikonu Uložit: ![Ikona Uložit](media/grafana/save-icon.png).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Psaní dotazů pro Azure Data Explorer](write-queries.md)
 
-* [Kurz: Vizualizovat data z Průzkumníka služby Azure Data v Power BI](visualize-power-bi.md)
+* [Kurz: vizualizace dat z Azure Průzkumník dat v Power BI](visualize-power-bi.md)

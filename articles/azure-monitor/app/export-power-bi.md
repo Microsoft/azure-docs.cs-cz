@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/10/2018
-ms.openlocfilehash: 04848f763fe8246f8e10f563169c04ea37b0ed37
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 3ec20f82bc12b60e5b88a02bb92a4a0ada4dcae7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677316"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73668009"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Power BI informačního kanálu od Application Insights
 [Power BI](https://www.powerbi.com/) je sada obchodních nástrojů, která pomáhá analyzovat data a sdílet přehledy. V každém zařízení jsou k dispozici řídicí panely s bohatou dostupností. Můžete kombinovat data z mnoha zdrojů, včetně analytických dotazů z [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
@@ -40,7 +40,7 @@ Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 3. V nabídce **Export** vyberte možnost **Power BI (M)** . Uložte textový soubor.
    
     ![Snímek obrazovky s analýzou se zvýrazněnou nabídkou export](./media/export-power-bi/analytics-export-power-bi.png)
-4. V Power BI Desktop vyberte **získat Data**  > **prázdný dotaz**. Pak v editoru dotazů v části **zobrazení**vyberte **Rozšířený editor**.
+4. V Power BI Desktop vyberte **získat Data** > **prázdný dotaz**. Pak v editoru dotazů v části **zobrazení**vyberte **Rozšířený editor**.
 
     Vložte exportovaný skript jazyka M do Rozšířený editor.
 
@@ -65,7 +65,7 @@ Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
    ![Snímek obrazovky s tlačítkem Power BI](./media/export-power-bi/button.png)
 
-3. V Power BI Desktop vyberte **získat Data**  > **prázdný dotaz**. Pak v editoru dotazů v části **zobrazení**vyberte **Rozšířený editor**.
+3. V Power BI Desktop vyberte **získat Data** > **prázdný dotaz**. Pak v editoru dotazů v části **zobrazení**vyberte **Rozšířený editor**.
 
    ![Snímek obrazovky Power BI Desktop s zvýrazněným tlačítkem pro prázdné dotazy](./media/export-power-bi/blankquery.png)
 
@@ -90,6 +90,8 @@ K tomu může dojít, pokud obnovovací token nebyl aktualizován. Vyzkoušejte 
 
 1. Přihlaste se k Azure Portal a ujistěte se, že máte k tomuto prostředku přístup.
 2. Pokuste se aktualizovat přihlašovací údaje pro řídicí panel.
+3. Zkuste vymazat mezipaměť z desktopu PowerBI.
+
 
    Pokud máte přístup a aktualizace přihlašovacích údajů nefunguje, otevřete prosím lístek podpory.
 
@@ -100,8 +102,8 @@ Pokud omezení datové sady přicházející z analytického dotazu nesplňuje v
 
 1. Vytvořte [klíč rozhraní API](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 2. Aktualizujte skript Power BIu M, který jste exportovali z analýzy, a to tak, že nahradíte Azure Resource Manager adresu URL rozhraní API Application Insights.
-   * Nahraďte **https: \//Management.Azure.com/Subscriptions/...**
-   * s, **https: \//API.ApplicationInsights.IO/beta/Apps/...**
+   * Nahraďte **https:\//Management.Azure.com/Subscriptions/...**
+   * s, **https:\//API.ApplicationInsights.IO/beta/Apps/...**
 3. Nakonec aktualizujte přihlašovací údaje na Basic a použijte svůj klíč rozhraní API.
 
 **Existující skript**
@@ -121,7 +123,7 @@ Tato metoda vytvoří úplný řídicí panel telemetrie za vás. Počáteční 
 
 ### <a name="get-the-adapter"></a>Získání adaptéru
 1. Přihlaste se k [Power BI](https://app.powerbi.com/).
-2. Otevřete ikonu **získat Data** ![Screenshot ikony GetData v levém dolním rohu ](./media/export-power-bi/001.png) **služby**.
+2. Otevřete okno **získat Data** ![snímku ikony GetData v levém dolním rohu](./media/export-power-bi/001.png)**služby**.
 
     ![Snímky obrazovky získat z Application Insights zdroji dat](./media/export-power-bi/002.png)
 

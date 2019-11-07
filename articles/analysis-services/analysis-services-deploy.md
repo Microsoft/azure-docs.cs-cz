@@ -1,24 +1,24 @@
 ---
-title: Nasazení na Azure Analysis Services pomocí sady Visual Studio | Microsoft Docs
+title: Nasazení modelu pro Azure Analysis Services pomocí sady Visual Studio | Microsoft Docs
 description: Naučte se, jak nasadit tabulkový model na Azure Analysis Services Server pomocí sady Visual Studio.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 60681739854515078a521a4ff795e52aa7d74183
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 71b3b7815d2a4b0b4de3afdca9db93156f505445
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146963"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572884"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>Nasazení modelu ze sady Visual Studio
 
 Jakmile ve svém předplatném Azure vytvoříte server, můžete na něj nasadit databázi tabulkového modelu. Můžete použít Visual Studio s projekty Analysis Services k sestavení a nasazení projektu tabelárního modelu, na kterém pracujete. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Na začátek budete potřebovat:
 

@@ -8,12 +8,12 @@ ms.date: 11/04/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: chroyal
-ms.openlocfilehash: 1f46fe92fd6650daa3ba4b9a930c4d781925d3fc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 484322fb0486eeb4ab67366d32350c69a18da743
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518252"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605928"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Konfigurace Data Manager blockchain pomocí Azure Portal
 
@@ -24,7 +24,7 @@ Pokud chcete nakonfigurovat instanci Data Manager blockchain, postupujte takto:
 * Vytvoření instance blockchain Data Manager pro uzel transakce služby Azure blockchain
 * Přidání aplikací blockchain
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Kompletní [rychlé zprovoznění: Vytvoření člena blockchain pomocí Azure Portal](create-member.md) nebo [rychlé zprovoznění: Vytvoření člena blockchain služby Azure BLOCKCHAIN pomocí Azure CLI](create-member-cli.md)
 * Vytvoření [tématu Event Grid](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
@@ -36,7 +36,7 @@ Instance blockchain Data Manager se připojuje a monitoruje uzel transakcí slu�
 
 Odchozí připojení odesílá blockchain data do Azure Event Grid. Při vytváření instance nakonfigurujete jedno odchozí připojení. Blockchain Data Manager podporuje vícenásobná odchozí připojení Event Grid tématu pro všechny dané instance služby blockchain Data Manager. Blockchain data můžete odesílat do jednoho cíle nebo odesílat blockchain data do více cílů. Pokud chcete přidat další cíl, stačí do instance přidat další odchozí připojení.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Přejít na člen služby Azure blockchain, který se má připojit k blockchain Data Manager. Vyberte **Blockchain data Manager**.
 1. Vyberte **Přidat**.
 
@@ -46,14 +46,14 @@ Odchozí připojení odesílá blockchain data do Azure Event Grid. Při vytvá�
 
     Nastavení | Popis
     --------|------------
-    Name (Název) | Zadejte jedinečný název pro připojenou blockchain Data Manager. Název Data Manager blockchain může obsahovat malá písmena a číslice a maximální délka je 20 znaků.
+    Název | Zadejte jedinečný název pro připojenou blockchain Data Manager. Název Data Manager blockchain může obsahovat malá písmena a číslice a maximální délka je 20 znaků.
     Uzel transakce | Vyberte uzel transakce. V seznamu jsou jenom uzly transakcí, ke kterým máte přístup pro čtení.
     Název připojení | Zadejte jedinečný název odchozího připojení, kde se odesílají data blockchain transakce.
     Koncový bod služby Event Grid | V rámci stejného předplatného, jako je blockchain Data Manager instance, vyberte téma Event Grid.
 
 1. Vyberte **OK**.
 
-    Vytvoření instance blockchain Data Manager trvá méně než minutu. Po nasazení instance se automaticky spustí. Běžící instance blockchain Data Manager zachycuje události blockchain z uzlu transakce a odesílá data do odchozích připojení. Chcete-li také zachytit dekódovat data události a vlastností z uzlu transakce, vytvořte blockchain aplikaci pro instanci blockchain Data Manager.
+    Vytvoření instance blockchain Data Manager trvá méně než minutu. Po nasazení instance se automaticky spustí. Běžící instance blockchain Data Manager zachycuje události blockchain z uzlu transakce a odesílá data do odchozích připojení.
 
     Nová instance se zobrazí v seznamu instancí blockchain Data Manager pro člena služby Azure blockchain.
 
@@ -63,7 +63,10 @@ Odchozí připojení odesílá blockchain data do Azure Event Grid. Při vytvá�
 
 Pokud přidáte blockchain aplikaci, blockchain Data Manager dekódování události a stavu vlastnosti aplikace. V opačném případě jsou odesílána pouze nezpracovaná data bloku a nezpracované transakce. Blockchain Data Manager také zjišťuje adresy smluv při nasazení smlouvy. Do instance Data Manager blockchain můžete přidat více aplikací blockchain.
 
-Blockchain Data Manager vyžaduje, aby se do přidání aplikace přidal soubor ABI a bytového kódu.
+> [!IMPORTANT]
+> V současné době nejsou aplikace blockchain, které deklarují [typy polí](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) soliding nebo [mapování typů](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) , plně podporovány. Vlastnosti deklarované jako pole nebo typy mapování nebudou v rámci zpráv *ContractPropertiesMsg* nebo *DecodedContractEventsMsg* dekódovat.
+
+Blockchain Data Manager vyžaduje, aby se aplikace přidala do souboru s nasazeným bajtem a nasazeným souborem.
 
 ### <a name="get-contract-abi-and-bytecode"></a>Získání kontraktu ABI a bytového kódu
 
@@ -79,17 +82,15 @@ Smlouva ABI definuje rozhraní inteligentních kontraktů. Popisuje, jak pracova
 
 1. Uložte pole **ABI** jako soubor JSON. Například *ABI. JSON*. Tento soubor použijete v pozdějším kroku.
 
-Bajtový kód kontraktu je kompilovaná chytrá smlouva spuštěná virtuálním počítačem s Ethereem. Pomocí tohoto rozšíření můžete zkopírovat kód kontraktu do schránky.
+Blockchain Data Manager vyžaduje nasazený bytový kód pro inteligentní kontrakt. Nasazený bajt se liší od bajtového kódu inteligentního kontraktu. Můžete získat nasazený bajtový kód ze zkompilovaného souboru metadat smlouvy.
 
-1. V podokně Průzkumník Visual Studio Code rozbalte složku **Build/Contracts** vašeho projektu Solid of.
-1. Klikněte pravým tlačítkem na soubor JSON metadat kontraktu. Název souboru je název čipové smlouvy následovaný příponou **. JSON** .
-1. Vyberte **Kopírovat bajtový kód kontraktu**.
+1. Otevřete soubor s metadaty kontraktu obsaženým ve složce **Build/Contracts** projektu Solid of. Název souboru je název čipové smlouvy následovaný příponou **. JSON** .
+1. V souboru JSON vyhledejte element **deployedBytecode** .
+1. Zkopírujte hexadecimální hodnotu bez uvozovek.
 
-    ![Podokno Visual Studio Code s výběrem Kopírovat kód kontraktu](./media/data-manager-portal/bytecode-devkit.png)
+    ![Visual Studio Code podokno s podbajtem v metadatech](./media/data-manager-portal/bytecode-metadata.png)
 
-    Bajtový kód kontraktu je zkopírován do schránky.
-
-1. Uložte hodnotu **bajtového kódu** jako soubor JSON. Příklad: *bytového kódu. JSON*. Uloží pouze šestnáctkovou hodnotu. Tento soubor použijete v pozdějším kroku.
+1. Uložte hodnotu **bajtového kódu** jako soubor JSON. Příklad: *bytového kódu. JSON*. Tento soubor použijete v pozdějším kroku.
 
 Následující příklad ukazuje soubory *ABI. JSON* a *bytového souboru. JSON* otevřené v editoru vs Code. Soubory by měly vypadat podobně.
 
@@ -111,7 +112,7 @@ Blockchain Data Manager vyžaduje, aby při přidávání aplikace byly v adrese
 
     | Pole | Popis |
     |-------|-------------|
-    | Name (Název)  | Pojmenujte kontejner. Například *smartcontract* |
+    | Název  | Pojmenujte kontejner. Například *smartcontract* |
     | Úroveň veřejného přístupu | Zvolit *privátní (bez anonymního přístupu)* |
 
 1. Kliknutím na **OK** kontejner vytvoříte.
@@ -147,7 +148,7 @@ Pro každý objekt BLOB vygenerujte sdílený přístupový podpis.
 
     Nastavení | Popis
     --------|------------
-    Name (Název) | Zadejte jedinečný název, který má blockchain aplikace sledovat.
+    Název | Zadejte jedinečný název, který má blockchain aplikace sledovat.
     ABI kontraktu | Cesta URL k souboru ABI kontraktu Další informace najdete v tématu [Vytvoření kontraktu ABI a adresy URL bytového kódu](#create-contract-abi-and-bytecode-url).
     Bajtový kód kontraktu | Cesta URL k souboru bytového kódu Další informace najdete v tématu [Vytvoření kontraktu ABI a adresy URL bytového kódu](#create-contract-abi-and-bytecode-url).
 
@@ -169,4 +170,7 @@ Pokud chcete zastavit zachytávání událostí blockchain a odesílat data do o
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [obslužných rutinách událostí v Azure Event Grid](../../event-grid/event-handlers.md).
+Zkuste vytvořit Průzkumníka zpráv blockchain transakce pomocí blockchain Data Manager a Azure Cosmos DB.
+
+> [!div class="nextstepaction"]
+> [Kurz: použití Data Manager blockchain k odesílání dat do Azure Cosmos DB](data-manager-cosmosdb.md)

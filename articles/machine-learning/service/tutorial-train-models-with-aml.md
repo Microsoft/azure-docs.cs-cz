@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd215e754b7e72c9ac424a53015955332068558e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4d16c07bf42c99b905868cb956d82e8723da61d6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493566"
+ms.locfileid: "73581545"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Kurz: analýza modelů klasifikace imagí pomocí MNIST ručně zapsaných dat a scikit – Naučte se pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,12 +39,12 @@ Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před t
 >[!NOTE]
 > Kód v tomto článku byl testován pomocí [sady Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 1.0.65 verze.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Dokončete [kurz: Začínáme s vytvářením prvního experimentu ml](tutorial-1st-experiment-sdk-setup.md) na:
     * Vytvoření pracovního prostoru
     * Naklonujte Poznámkový blok kurzů do složky v pracovním prostoru.
-    * Vytvořte cloudovou instanci Compute.
+    * Vytvořte cloudový virtuální počítač s poznámkovým blokem.
 
 * Ve složce s naklonovánými **kurzy** otevřete Poznámkový blok **img-Classification-part1-Training. ipynb** . 
 
@@ -148,7 +148,7 @@ else:
 
 Nyní máte k dispozici potřebné balíčky a výpočetní prostředky pro trénink modelu v cloudu.
 
-## <a name="explore-data"></a>Prozkoumání dat
+## <a name="explore-data"></a>Zkoumání dat
 
 Než začnete pracovat s modelem, potřebujete pochopit data, která používáte k jeho učení. V této části získáte informace o následujících postupech:
 
@@ -367,7 +367,7 @@ Co se stane, když počkáte:
 
 Průběh spuštěné úlohy můžete sledovat několika způsoby. V tomto kurzu se používá widget Jupyter a metoda `wait_for_completion`.
 
-### <a name="jupyter-widget"></a>Pomůcka Jupyter
+### <a name="jupyter-widget"></a>Widget Jupyter
 
 Sledujte průběh běhu pomocí [widgetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). Podobně jako odeslání běhu je pomůcka asynchronní a poskytuje aktualizace za provozu každých 10 až 15 sekund, dokud se nedokončí úloha:
 

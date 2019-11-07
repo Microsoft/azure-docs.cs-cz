@@ -1,18 +1,18 @@
 ---
 title: Protokolování diagnostiky pro Azure Analysis Services | Microsoft Docs
-description: Přečtěte si o nastavení diagnostického protokolování pro Azure Analysis Services.
+description: Popisuje, jak nastavit protokolování diagnostiky prostředků Azure pro monitorování serveru Azure Analysis Services.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/31/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a9684042a76c9c906a75334c319b4ca8ee0b727b
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b8ae2c529bebebae4ebc2d7b0b8a7e420fe9bcc7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298607"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572777"
 ---
 # <a name="setup-diagnostic-logging"></a>Nastavení protokolování diagnostiky
 
@@ -43,9 +43,9 @@ Výběr **modulu** protokoluje všechny [xEvents](https://docs.microsoft.com/ana
 |Příkazy     |  Začátek příkazu       |
 |Příkazy     |  Konec příkazu       |
 |Chyby & upozornění     |   Chyba      |
-|Identifikace     |   Zjistit konec      |
+|Informace     |   Zjistit konec      |
 |Oznámení     |    Oznámení     |
-|Session     |  Inicializace relace       |
+|Relace     |  Inicializace relace       |
 |Zámky    |  Ukončení       |
 |Zpracování dotazů     |   VertiPaq SE – začátek dotazu      |
 |Zpracování dotazů     |   VertiPaq SE – konec dotazu      |
@@ -70,7 +70,7 @@ Kategorie metriky zapisuje stejné [metriky serveru](analysis-services-monitor.m
 
 ## <a name="setup-diagnostics-logging"></a>Nastavení protokolování diagnostiky
 
-### <a name="azure-portal"></a>Portál Azure
+### <a name="azure-portal"></a>portál Azure
 
 1. V [Azure Portal](https://portal.azure.com) > serveru klikněte v levém navigačním panelu na **diagnostické protokoly** a pak klikněte na **zapnout diagnostiku**.
 
@@ -90,7 +90,7 @@ Kategorie metriky zapisuje stejné [metriky serveru](analysis-services-monitor.m
 
 3. Klikněte na **Uložit**.
 
-    Pokud se zobrazí chyba oznamující, že se nepovedlo aktualizovat diagnostiku pro název \<workspace >. Předplatné @no__t 0subscription ID > není zaregistrované pro použití Microsoft. Insights. " pomocí pokynů [Azure Diagnostics Poradce při potížích](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) zaregistrujte účet a potom tento postup opakujte.
+    Pokud se zobrazí chyba oznamující, že se nepovedlo aktualizovat diagnostiku pro \<název pracovního prostoru >. Předplatné \<ID předplatného > není zaregistrované pro používání Microsoft. Insights. " pomocí pokynů [Azure Diagnostics Poradce při potížích](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) zaregistrujte účet a potom tento postup opakujte.
 
     Chcete-li změnit způsob, jakým jsou protokoly diagnostiky uloženy v jakémkoli okamžiku v budoucnu, můžete se vrátit na tuto stránku a upravit nastavení.
 
@@ -134,7 +134,7 @@ Pokud chcete povolit metriky a protokolování diagnostiky pomocí PowerShellu, 
 
 Tyto parametry můžete kombinovat, chcete-li povolit více možností výstupu.
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 
 Naučte se, jak [změnit nastavení diagnostiky pomocí REST API Azure monitor](https://docs.microsoft.com/rest/api/monitor/). 
 
@@ -158,7 +158,7 @@ Pokud chcete zobrazit diagnostická data, v Log Analytics pracovním prostoru ot
 
 ![Možnosti prohledávání protokolu v Azure Portal](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
-V Tvůrci dotazů rozbalte **LogManagement** > **AzureDiagnostics**. AzureDiagnostics zahrnuje události modulu a služby. Všimněte si, že je dotaz vytvořen průběžně. Pole EventClass @ no__t-0s obsahuje názvy xEvent, které mohou vypadat dobře, pokud jste použili xEvents pro místní protokolování. Klikněte na **EventClass @ no__t-1** nebo jeden z názvů událostí a Log Analytics pracovní prostor bude pokračovat v vytváření dotazu. Nezapomeňte uložit dotazy pro pozdější použití.
+V Tvůrci dotazů rozbalte **LogManagement** > **AzureDiagnostics**. AzureDiagnostics zahrnuje události modulu a služby. Všimněte si, že je dotaz vytvořen průběžně. Pole EventClass\_s obsahuje názvy xEvent, které můžou vypadat dobře, pokud jste použili xEvents pro místní protokolování. Klikněte na **EventClass\_s** nebo na jeden z názvů událostí a Log Analytics pracovní prostor bude pokračovat v vytváření dotazu. Nezapomeňte uložit dotazy pro pozdější použití.
 
 ### <a name="example-queries"></a>Příklady dotazů
 
@@ -215,12 +215,12 @@ K dispozici jsou stovky dotazů, které můžete použít. Další informace o d
 
 V tomto rychlém kurzu vytvoříte účet úložiště ve stejném předplatném a skupině prostředků jako server služby Analysis Service. Pak pomocí Set-AzDiagnosticSetting zapněte protokolování diagnostiky a odešlete výstup do nového účtu úložiště.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 K dokončení tohoto kurzu musíte mít následující prostředky:
 
 * Existující server Azure Analysis Services. Pokyny k vytvoření prostředku serveru najdete v tématu [vytvoření serveru v Azure Portal](analysis-services-create-server.md)nebo [Vytvoření Azure Analysis Servicesho serveru pomocí PowerShellu](analysis-services-create-powershell.md).
 
-### <a name="aconnect-to-your-subscriptions"></a>@no__t – 0Connect k předplatným
+### <a name="aconnect-to-your-subscriptions"></a></a>se připojit k předplatným
 
 Spusťte relaci Azure PowerShellu a přihlaste se k účtu Azure pomocí následujícího příkazu:  
 
@@ -251,7 +251,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 
 Pro svoje protokoly můžete použít existující účet úložiště, pokud je ve stejném předplatném jako váš server. V tomto kurzu vytvoříte nový účet úložiště vyhrazený pro Analysis Services protokoly. Pokud chcete usnadnit ukládání podrobností účtu úložiště do proměnné s názvem **SA**.
 
-Použijete také stejnou skupinu prostředků jako ta, která obsahuje váš server Analysis Services. Nahraďte hodnoty pro `awsales_resgroup`, `awsaleslogs` a `West Central US` vlastními hodnotami:
+Použijete také stejnou skupinu prostředků jako ta, která obsahuje váš server Analysis Services. Nahraďte hodnoty pro `awsales_resgroup`, `awsaleslogs`a `West Central US` vlastními hodnotami:
 
 ```powershell
 $sa = New-AzStorageAccount -ResourceGroupName awsales_resgroup `

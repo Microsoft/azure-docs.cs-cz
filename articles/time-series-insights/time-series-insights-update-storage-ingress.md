@@ -8,35 +8,57 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b61e194bdea5fd8272ffc0fc9e16a2d80d3cf60
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
-ms.translationtype: HT
+ms.openlocfilehash: d0cdd78aaa2b58743e16a2e7cfe213a9daed85ff
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989710"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605880"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Ukládání dat a příchozí přenosy v Azure Time Series Insights ve verzi Preview
 
-Tento článek popisuje aktualizace úložiště dat a příchozí Azure Time Series Insights ve verzi Preview. Pokrývá základní strukturu úložiště, formát souboru a ID časové řady. Popisuje také základní proces příchozího přenosu dat, propustnost a omezení.
+Tento článek popisuje aktualizace úložiště dat a příchozí Azure Time Series Insights ve verzi Preview. Pokrývá základní strukturu úložiště, formát souboru a ID časové řady. Popisuje také základní proces příchozího přenosu dat, osvědčené postupy a aktuální omezení verze Preview.
 
 ## <a name="data-ingress"></a>Příchozí datové přenosy
 
-V Time Series Insights ve verzi Preview určují zásady příchozího přenosu dat, ze kterých se dají data nacházet, a jaký formát mají mít data.
-
-[Přehled modelu časové řady ![](media/v2-update-storage-ingress/tsi-data-ingress.png)](media/v2-update-storage-ingress/tsi-data-ingress.png#lightbox)
+Vaše Azure Time Series Insights prostředí obsahuje modul ingestování, který umožňuje shromažďovat, zpracovávat a ukládat data časových řad. Při plánování prostředí je potřeba vzít v úvahu několik důležitých informací, aby se zajistilo, že se zpracují všechna příchozí data a aby se dosáhlo vysokého rozsahu příchozího přenosu dat a minimalizovala latence příjmu (doba potřebná pro čtení a zpracování dat z události v TSI). zdroj). V Time Series Insights ve verzi Preview určují zásady příchozího přenosu dat, ze kterých se dají data nacházet, a jaký formát mají mít data.
 
 ### <a name="ingress-policies"></a>Zásady příchozího přenosu dat
 
-Time Series Insights Preview podporuje stejné zdroje událostí, které Time Series Insights aktuálně podporuje:
+Time Series Insights Preview podporuje následující zdroje událostí:
 
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
 Time Series Insights Preview podporuje maximálně dva zdroje událostí na instanci.
   
-Azure Time Series Insights podporuje JSON odeslaný prostřednictvím Azure IoT Hub nebo Azure Event Hubs. Pokud chcete optimalizovat data ve službě IoT JSON, přečtěte si, [jak můžete tvarovat JSON](./time-series-insights-send-events.md#supported-json-shapes).
+Azure Time Series Insights podporuje JSON odeslaný prostřednictvím Azure IoT Hub nebo Azure Event Hubs.
+
+> [!WARNING] 
+> Při připojování nového zdroje událostí k prostředí Time Series Insights Preview v závislosti na počtu událostí aktuálně ve IoT Hub nebo centru událostí se může vyskytnout vysoká latence při příjmu. Vzhledem k tomu, že se data ingestují, měli byste očekávat tuto vysokou latenci, ale pokud vaše prostředí indikuje jinak, kontaktujte nás odesláním lístku podpory prostřednictvím Azure Portal.
+
+## <a name="ingress-best-practices"></a>Osvědčené postupy pro příchozí přenosy
+
+Doporučujeme, abyste využívali následující osvědčené postupy:
+
+* Nakonfigurujte Time Series Insights a centrum IoT nebo centrum událostí ve stejné oblasti. Tím se sníží latence přijímání, která vzniká v důsledku sítě.
+* Vypočítejte předpokládané požadavky na škálování tak, že vypočítáte očekávanou rychlost příjmu a ověříte, že spadá do podporované sazby uvedené níže.
+* Seznamte se s tím, jak optimalizovat a natvarovat data JSON, jakož i aktuální omezení ve verzi Preview. Přečtěte si, jak můžete naformátovat [JSON pro příchozí a dotaz](./time-series-insights-update-how-to-shape-events.md).
+
+### <a name="ingress-scale-and-limitations-in-preview"></a>Škálování a omezení příchozího přenosu dat ve verzi Preview
+
+Ve výchozím nastavení podporuje Time Series Insights Preview počáteční škálu příchozího přenosu dat až 1 megabajt za sekundu (MB/s) na prostředí. V případě potřeby je dostupná propustnost až 16 MB/s, pokud je to potřeba, kontaktujte nás odesláním lístku podpory v Azure Portal. Kromě toho je omezení počtu na oddíly 0,5 MB/s. To má důsledky pro zákazníky, kteří používají IoT Hub specificky, vzhledem k spřažení mezi zařízením IoT Hub a oddílem. Ve scénářích, kdy jedno zařízení brány předává zprávy do centra pomocí vlastního ID zařízení a připojovacího řetězce, je nebezpečí dosažení 0,5 MB/s, že se zprávy dostanou do jednoho oddílu, a to i v případě, že datová část události Určuje jinou službu TS. Identifikační. Míra příchozího přenosu dat se zobrazuje jako faktor počtu zařízení, která jsou ve vaší organizaci, četnosti emisí událostí a velikosti události. Při výpočtu míry přijímání příjmu by uživatelé měli IoT Hub, aby používali počet používaných připojení centra místo celkového počtu zařízení v organizaci. Podpora škálování na více serverů pokračuje. Tato dokumentace bude aktualizována, aby odrážela tato vylepšení. 
+
+> [!WARNING]
+> Pro prostředí, která používají IoT Hub jako zdroj události, vypočtěte rychlost příjmu pomocí počtu používaných zařízení centra.
+
+Další informace o jednotkách a oddílech propustnosti najdete na následujících odkazech:
+
+* [Škálování IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
+* [Škálování centra událostí](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
+* [Oddíly centra událostí](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#partitions)
 
 ### <a name="data-storage"></a>Úložiště dat
 
@@ -53,19 +75,11 @@ Time Series Insights Preview uloží data z chladírny do úložiště objektů 
 > Jako vlastník účtu služby Azure Blob Storage, ve kterém jsou uložená data, máte plný přístup ke všem datům v účtu. Tento přístup zahrnuje oprávnění k zápisu a odstraňování. Neupravujte ani neodstraňujte data, která Time Series Insights náhled zapisuje, protože to může způsobit ztrátu dat.
 
 ### <a name="data-availability"></a>Dostupnost dat
+
 Time Series Insights zobrazovat náhled oddílů a data indexů pro optimální výkon dotazů. Data budou k dispozici pro dotaz po jejím indexování. Množství dat, která se ingestují, můžou ovlivnit tuto dostupnost.
 
 > [!IMPORTANT]
-> Vydaná verze Time Series Insights pro obecné dostupnosti zpřístupňuje data v 60 sekund po jejich načtení ze zdroje událostí. Během období Preview může docházet k delší době, než budou data k dispozici. Pokud se setkáte s významnou latencí delší než 60 sekund, kontaktujte nás prosím.
-
-### <a name="scale"></a>Měřítko
-
-Ve výchozím nastavení podporuje Time Series Insights Preview počáteční škálu příchozího přenosu dat až 1 megabajt za sekundu (MB/s) na prostředí. V případě potřeby je k dispozici propustnost až 16 MB/s. Pokud potřebujete podporu rozšířeného škálování, kontaktujte nás prosím.
-
-Pro zdroj událostí můžete získat další možnosti příchozího přenosu dat a škálování:
-
-* [IoT Hub](../iot-hub/iot-hub-scaling.md)
-* [Event Hubs](../event-hubs/event-hubs-scalability.md)
+> Nadcházející verze Time Series Insights, která je k dispozici pro obecné dostupnosti, zpřístupní data po uplynutí 60 sekund od jejího čtení ze zdroje událostí. Během období Preview může docházet k delší době, než budou data k dispozici. Pokud se setkáte s významnou latencí delší než 60 sekund, odešlete prosím lístek podpory prostřednictvím Azure Portal.
 
 ## <a name="azure-storage"></a>Azure Storage
 

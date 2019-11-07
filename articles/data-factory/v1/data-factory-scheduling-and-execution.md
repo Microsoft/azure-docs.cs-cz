@@ -1,5 +1,5 @@
 ---
-title: Plánování a spouštění s Data Factory | Microsoft Docs
+title: Plánování a spouštění pomocí Data Factory
 description: Naučte se aspekty plánování a spouštění Azure Data Factory aplikačního modelu.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6ea8a03f45a3655c5761e0011876c6232b5bf36b
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 15a2d6ae5d8b80468ffcdd00d60b1f36843ed677
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135295"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666137"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Plánování a provádění Data Factory
 > [!NOTE]
@@ -59,7 +59,7 @@ Vlastnost **Scheduler** pro aktivitu je volitelná. Pokud tuto vlastnost zadáte
 ## <a name="specify-schedule-for-a-dataset"></a>Určení plánu pro datovou sadu
 Aktivita v kanálu Data Factory může mít nula nebo více vstupních **datových sad** a vytvoří jednu nebo více výstupních datových sad. V případě aktivity můžete zadat tempo, ve kterém jsou k dispozici vstupní data, nebo se výstupní data vytvoří pomocí oddílu **dostupnosti** v definicích datových sad. 
 
-**Frekvence** v části **dostupnost** Určuje časovou jednotku. Povolené hodnoty četnosti: Minuta, hodina, den, týden a měsíc. Vlastnost **interval** v oddílu Availability určuje násobitel pro frekvenci. Příklad: Pokud je frekvence nastavená na den a interval je nastaven na hodnotu 1 pro výstupní datovou sadu, budou výstupní data vyprodukována každý den. Pokud zadáte frekvenci jako minutu, doporučujeme nastavit interval na ne méně než 15. 
+**Frekvence** v části **dostupnost** Určuje časovou jednotku. Povolené hodnoty četnosti jsou: minuty, hodina, den, týden a měsíc. Vlastnost **interval** v oddílu Availability určuje násobitel pro frekvenci. Příklad: Pokud je frekvence nastavená na den a interval je nastaven na hodnotu 1 pro výstupní datovou sadu, budou výstupní data vyprodukována každý den. Pokud zadáte frekvenci jako minutu, doporučujeme nastavit interval na ne méně než 15. 
 
 V následujícím příkladu jsou vstupní data dostupná každou hodinu a výstupní data se vytvářejí každou hodinu (`"frequency": "Hour", "interval": 1`). 
 
@@ -117,7 +117,7 @@ V následujícím příkladu jsou vstupní data dostupná každou hodinu a výst
 
 V současné době **výstupní datová sada zařídí plán**. Jinými slovy, plán zadaný pro výstupní datovou sadu se používá ke spuštění aktivity za běhu. Proto je nutné vytvořit výstupní datovou sadu i v případě, že aktivita nevytváří žádný výstup. Pokud aktivita nemá žádný vstup, vstupní datovou sadu vytvářet nemusíte. 
 
-V následující definici kanálu se k určení plánu aktivity používá vlastnost Scheduleru. Tato vlastnost je nepovinná. V současné době musí být plán aktivity shodný s plánem zadaným pro výstupní datovou sadu.
+V následující definici kanálu se k určení plánu aktivity používá vlastnost **Scheduleru** . Tato vlastnost je nepovinná. V současné době musí být plán aktivity shodný s plánem zadaným pro výstupní datovou sadu.
  
 ```json
 {
@@ -170,9 +170,9 @@ Každá jednotka dat spotřebovaná nebo vytvořená spuštěním aktivity se na
 
 Diagram zobrazuje hodinové datové řezy pro vstupní a výstupní datovou sadu. Diagram znázorňuje tři vstupní řezy, které jsou připravené ke zpracování. Aktivita 10-11 AM probíhá a produkuje výstupní řez 10-11. 
 
-K časovému intervalu přidruženému k aktuálnímu řezu v datové sadě JSON můžete přistupovat pomocí proměnných: [Vlastnosti slicestart](data-factory-functions-variables.md#data-factory-system-variables) a [SliceEnd](data-factory-functions-variables.md#data-factory-system-variables). Podobně můžete získat přístup k časovému intervalu přidruženému k oknu aktivity pomocí WindowStart a WindowEnd. Plán aktivity musí odpovídat plánu výstupní datové sady pro aktivitu. Hodnoty vlastnosti slicestart a SliceEnd se proto shodují s hodnotami WindowStart a WindowEnd. Další informace o těchto proměnných naleznete v článcích [Data Factory functions a System Variables](data-factory-functions-variables.md#data-factory-system-variables) .  
+K časovému intervalu přidruženému k aktuálnímu řezu v datové sadě JSON můžete přistupovat pomocí proměnných: [vlastnosti slicestart](data-factory-functions-variables.md#data-factory-system-variables) a [SliceEnd](data-factory-functions-variables.md#data-factory-system-variables). Podobně můžete získat přístup k časovému intervalu přidruženému k oknu aktivity pomocí WindowStart a WindowEnd. Plán aktivity musí odpovídat plánu výstupní datové sady pro aktivitu. Hodnoty vlastnosti slicestart a SliceEnd se proto shodují s hodnotami WindowStart a WindowEnd. Další informace o těchto proměnných naleznete v článcích [Data Factory functions a System Variables](data-factory-functions-variables.md#data-factory-system-variables) .  
 
-Tyto proměnné můžete použít pro různé účely ve formátu JSON aktivity. Můžete je například použít k výběru dat ze vstupních a výstupních datových sad představujících data časových řad (například: od 8 do 9 dop. Tento příklad také používá **WindowStart** a **WindowEnd** k výběru relevantních dat pro spuštění aktivity a jejich zkopírování do objektu BLOB s odpovídajícím **FolderPath**. **FolderPath** je parametrizovaný tak, aby měl samostatné složky pro každou hodinu.  
+Tyto proměnné můžete použít pro různé účely ve formátu JSON aktivity. Můžete je například použít k výběru dat ze vstupních a výstupních datových sad představujících data časových řad (například 8 AM až 9 dop.). Tento příklad také používá **WindowStart** a **WindowEnd** k výběru relevantních dat pro spuštění aktivity a jejich zkopírování do objektu BLOB s odpovídajícím **FolderPath**. **FolderPath** je parametrizovaný tak, aby měl samostatné složky pro každou hodinu.  
 
 V předchozím příkladu je plán určený pro vstupní a výstupní datové sady stejný (každou hodinu). Pokud je vstupní datová sada pro aktivitu k dispozici v jiné frekvenci, například každých 15 minut, aktivita vytvářející tuto výstupní datovou sadu se pořád spustí jednou za hodinu jako výstupní datová sada, která řídí plán aktivity. Další informace najdete v tématu [model DataSets s různou frekvencí](#model-datasets-with-different-frequencies).
 
@@ -182,16 +182,16 @@ V části dostupnost definice datové sady jste viděli použití vlastností č
 ### <a name="dataset-availability"></a>Dostupnost datové sady 
 Následující tabulka obsahuje popis vlastností, které můžete použít v části **dostupnost** :
 
-| Vlastnost | Popis | Požadováno | Výchozí |
+| Vlastnost | Popis | Požaduje se | Výchozí |
 | --- | --- | --- | --- |
-| frequency |Určuje časovou jednotku pro produkci řezu datové sady.<br/><br/><b>Podporovaná frekvence</b>: Minuta, hodina, den, týden, měsíc |Ano |Není k dispozici |
-| interval |Určuje násobitel pro frekvenci.<br/><br/>Frekvence x interval určuje, jak často se řez vytvoří.<br/><br/>Pokud potřebujete datovou sadu rozdělit na každou hodinu, nastavte <b>četnost</b> na <b>hodinu</b>a <b>interval</b> na <b>1</b>.<br/><br/><b>Poznámka:</b> Pokud zadáte četnost jako minutu, doporučujeme nastavit interval na ne méně než 15. |Ano |Není k dispozici |
-| style |Určuje, zda má být řez vytvořen na začátku nebo konci intervalu.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Pokud je frekvence nastavená na month (měsíc) a Style je nastavená na EndOfInterval, řez se vytvoří během posledního dne v měsíci. Pokud je styl nastaven na StartOfInterval, řez se vytvoří první den v měsíci.<br/><br/>Pokud je frekvence nastavená na den a styl je nastavený na EndOfInterval, řez se vytvoří za poslední hodinu dne.<br/><br/>Pokud je frekvence nastavená na Hour (hodina) a Style je nastavená na EndOfInterval, řez se vytvoří na konci hodiny. Například pro řez v období 1 PM – 2 se vytvoří řez na 2 ODP. |Ne |EndOfInterval |
-| anchorDateTime |Definuje absolutní pozici v čase využívané schedulerem k výpočtu hranic řezu datové sady. <br/><br/><b>Poznámka:</b> Pokud AnchorDateTime obsahuje části s daty, které jsou lépe podrobnější než frekvence, budou podrobnější části ignorovány. <br/><br/>Například pokud je <b>interval</b> <b>každou hodinu</b> (frekvence: hodina a interval: 1) a <b>AnchorDateTime</b> obsahuje <b>minuty a sekundy</b>, přičemž části AnchorDateTime v <b>minutách a sekundách</b> se ignorují. |Ne |01/01/0001 |
-| offset |Časový interval, podle kterého se posune začátek a konec všech řezů datové sady <br/><br/><b>Poznámka:</b> Je-li zadán parametr anchorDateTime i offset, je výsledkem kombinovaný posun. |Ne |Není k dispozici |
+| frequency |Určuje časovou jednotku pro produkci řezu datové sady.<br/><br/><b>Podporovaná frekvence</b>: minuta, hodina, den, týden, měsíc |Ano |Není k dispozici |
+| interval |Určuje násobitel pro frekvenci.<br/><br/>Frekvence x interval určuje, jak často se řez vytvoří.<br/><br/>Pokud potřebujete datovou sadu rozdělit na každou hodinu, nastavte <b>četnost</b> na <b>hodinu</b>a <b>interval</b> na <b>1</b>.<br/><br/><b>Poznámka</b>: Pokud zadáte frekvenci jako minutu, doporučujeme nastavit interval na ne méně než 15. |Ano |Není k dispozici |
+| Řez |Určuje, zda má být řez vytvořen na začátku nebo konci intervalu.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Pokud je frekvence nastavená na month (měsíc) a Style je nastavená na EndOfInterval, řez se vytvoří během posledního dne v měsíci. Pokud je styl nastaven na StartOfInterval, řez se vytvoří první den v měsíci.<br/><br/>Pokud je frekvence nastavená na den a styl je nastavený na EndOfInterval, řez se vytvoří za poslední hodinu dne.<br/><br/>Pokud je frekvence nastavená na Hour (hodina) a Style je nastavená na EndOfInterval, řez se vytvoří na konci hodiny. Například pro řez v období 1 PM – 2 se vytvoří řez na 2 ODP. |Ne |EndOfInterval |
+| anchorDateTime |Definuje absolutní pozici v čase využívané schedulerem k výpočtu hranic řezu datové sady. <br/><br/><b>Poznámka</b>: Pokud AnchorDateTime obsahuje části s daty, které jsou lépe podrobnější než frekvence, budou podrobnější části ignorovány. <br/><br/>Například pokud je <b>interval</b> <b>každou hodinu</b> (četnost: hodina a interval: 1) a <b>AnchorDateTime</b> obsahuje <b>minuty a sekundy</b>, budou části <b>minut a sekund</b> AnchorDateTime ignorovány. |Ne |01/01/0001 |
+| polohy |Časový interval, podle kterého se posune začátek a konec všech řezů datové sady <br/><br/><b>Poznámka</b>: Pokud jsou zadány oba anchorDateTime i offset, výsledkem je kombinovaný posun. |Ne |Není k dispozici |
 
 ### <a name="offset-example"></a>Příklad posunutí
-Ve výchozím nastavení se pro`"frequency": "Day", "interval": 1`každý den () řezy začnou začínat časem UTC (půlnoc). Pokud chcete, aby byl čas zahájení nastavený na hodnotu 6 času UTC, nastavte posun, jak je znázorněno v následujícím fragmentu kódu: 
+Ve výchozím nastavení se pro každý den (`"frequency": "Day", "interval": 1`) řezy začnou v rozmezí od času UTC (půlnoc). Pokud chcete, aby byl čas zahájení nastavený na hodnotu 6 času UTC, nastavte posun, jak je znázorněno v následujícím fragmentu kódu: 
 
 ```json
 "availability":
@@ -202,7 +202,7 @@ Ve výchozím nastavení se pro`"frequency": "Day", "interval": 1`každý den ()
 }
 ```
 ### <a name="anchordatetime-example"></a>Příklad anchorDateTime
-V následujícím příkladu se datová sada vytvoří jednou za 23 hodin. První řez začíná v čase určeném parametrem anchorDateTime, který je nastaven na `2017-04-19T08:00:00` hodnotu (čas UTC).
+V následujícím příkladu se datová sada vytvoří jednou za 23 hodin. První řez začíná v čase určeném parametrem anchorDateTime, který je nastaven na hodnotu `2017-04-19T08:00:00` (čas UTC).
 
 ```json
 "availability":    
@@ -214,7 +214,7 @@ V následujícím příkladu se datová sada vytvoří jednou za 23 hodin. Prvn�
 ```
 
 ### <a name="offsetstyle-example"></a>Příklad posunutí/stylu
-Následující datová sada je měsíční datová sada a je vytvořena na 3. v každém měsíci v 8:00.`3.08:00:00`():
+Následující datová sada je měsíční datová sada a je vytvořena na 3. v každém měsíci v 8:00. (`3.08:00:00`):
 
 ```json
 "availability": {
@@ -226,11 +226,11 @@ Následující datová sada je měsíční datová sada a je vytvořena na 3. v 
 ```
 
 ### <a name="dataset-policy"></a>Zásada datové sady
-Datová sada může mít definované zásady ověřování, které určují, jak se dají ověřit data generovaná při spuštění v rámci řezu předtím, než bude připravená na spotřebu. V takových případech se po dokončení řezu stav výstupního řezu změní na **čekání** s podstavem **ověřování**. Po ověření řezů se stav řezu změní na připraveno. Pokud byl vytvořen datový řez, ale ověřování neprošlo, spuštění aktivit pro podřízené řezy, které jsou závislé na tomto řezu, se nezpracují. [Monitorování a Správa kanálů](data-factory-monitor-manage-pipelines.md) pokrývá různé stavy datových řezů v Data Factory.
+Datová sada může mít definované zásady ověřování, které určují, jak se dají ověřit data generovaná při spuštění v rámci řezu předtím, než bude připravená na spotřebu. V takových případech se po dokončení řezu stav výstupního řezu změní na **čekání** s podstavem **ověřování**. Po ověření řezů se stav řezu změní na **připraveno**. Pokud byl vytvořen datový řez, ale ověřování neprošlo, spuštění aktivit pro podřízené řezy, které jsou závislé na tomto řezu, se nezpracují. [Monitorování a Správa kanálů](data-factory-monitor-manage-pipelines.md) pokrývá různé stavy datových řezů v Data Factory.
 
-Oddíl **Policy** v definici datové sady definuje kritéria nebo podmínku, kterou musí řezy datové sady splňovat. Následující tabulka obsahuje popis vlastností, které můžete použít v části Policy ( **zásady** ):
+Oddíl **Policy** v definici datové sady definuje kritéria nebo podmínku, kterou musí řezy datové sady splňovat. Následující tabulka obsahuje popis vlastností, které můžete použít v části **Policy (zásady** ):
 
-| Název zásad | Popis | Použito pro | Požadováno | Výchozí |
+| Název zásady | Popis | Použito pro | Požaduje se | Výchozí |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB | Ověří, jestli data v **objektu blob Azure** splňují požadavky na minimální velikost (v megabajtech). |Azure Blob |Ne |Není k dispozici |
 | minimumRows | Ověří, jestli data v **databázi SQL Azure** nebo **tabulce Azure** obsahují minimální počet řádků. |<ul><li>Azure SQL Database</li><li>Tabulka Azure</li></ul> |Ne |Není k dispozici |
@@ -268,12 +268,12 @@ Zásady ovlivňují chování aktivity za běhu, konkrétně při zpracování �
 
 | Vlastnost | Povolené hodnoty | Výchozí hodnota | Popis |
 | --- | --- | --- | --- |
-| concurrency |Integer <br/><br/>Maximální hodnota: 10 |1 |Počet souběžných spuštění aktivity.<br/><br/>Určuje počet paralelních spuštění aktivit, ke kterým může dojít v různých řezech. Například pokud aktivita potřebuje projít velkou sadou dostupných dat, větší hodnota souběžnosti zrychluje zpracování dat. |
+| Concurrency |Integer <br/><br/>Maximální hodnota: 10 |1 |Počet souběžných spuštění aktivity.<br/><br/>Určuje počet paralelních spuštění aktivit, ke kterým může dojít v různých řezech. Například pokud aktivita potřebuje projít velkou sadou dostupných dat, větší hodnota souběžnosti zrychluje zpracování dat. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Určuje pořadí datových řezů, které jsou zpracovávány.<br/><br/>Například pokud máte 2 řezy (jedna se děje na 16:00 a druhý na 17:00), a obě jsou vyřízeny. Pokud nastavíte executionPriorityOrder na NewestFirst, řez se nejprve zpracuje v 5 odp. Podobně pokud nastavíte executionPriorityORder na OldestFIrst, bude zpracován řez ve 4 PM. |
-| Opakovat |Integer<br/><br/>Maximální hodnota může být 10. |0 |Počet opakovaných pokusů, než se zpracování dat pro řez označí jako selhání. Pokus o spuštění aktivity pro datový řez se opakuje do zadaného počtu opakování. Opakování se provede co nejdříve po selhání. |
-| časový limit |TimeSpan |00:00:00 |Časový limit aktivity Příklad: 00:10:00 (implikuje časový limit 10 minut)<br/><br/>Pokud hodnota není zadaná nebo je 0, časový limit je nekonečný.<br/><br/>Pokud doba zpracování dat v řezu překročí hodnotu časového limitu, je zrušena a systém se pokusí o opakované zpracování. Počet opakování závisí na vlastnosti opakování. Pokud dojde k vypršení časového limitu, je stav nastavený na vypršel časový limit. |
-| delay |TimeSpan |00:00:00 |Určete zpoždění před spuštěním zpracování dat řezu.<br/><br/>Spuštění aktivity pro datový řez se spustí, jakmile je zpoždění po očekávanou dobu provádění.<br/><br/>Příklad: 00:10:00 (implikuje zpoždění po 10 minutách) |
-| longRetry |Integer<br/><br/>Maximální hodnota: 10 |1 |Počet dlouhých pokusů o opakování před neúspěšným provedením řezu<br/><br/>Má pokusy jsou rozmístěny pomocí longRetryInterval. Takže pokud potřebujete zadat čas mezi opakovanými pokusy, použijte má. Pokud jsou zadány parametry Retry a má, každý má pokus obsahuje pokusy o opakování a maximální počet pokusů o opakování * má.<br/><br/>Například pokud máme v zásadách aktivity následující nastavení:<br/>Opakujte 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Předpokládejme, že je možné provést pouze jeden řez (stav čeká na vyřízení) a spuštění aktivity pokaždé neproběhne úspěšně. Zpočátku by se mělo 3 po sobě jdoucích pokusů o spuštění. Po každém pokusu se stav řezu opakuje. Po prvním 3 pokusech se bude stav řezu má.<br/><br/>Po hodinu (tj. hodnotě longRetryInteval) by existovala další sada 3 po sobě jdoucích pokusů o spuštění. Po této operaci se stav řezu nezdařil a nebude proveden pokus o další opakování. Proto byly provedeny celkem 6 pokusů.<br/><br/>Pokud je jakékoli spuštění úspěšné, bude stav řezu připravený a nebude proveden pokus o další opakované pokusy.<br/><br/>Má se můžou použít v situacích, kdy se závislá data dostanou v nedeterministických časech, nebo v celkovém prostředí je vločka, pod kterou se zpracování dat děje. V takových případech s tím, že se opakuje jeden po jiné, to nemusí pomáhat a provádět po uplynutí časového intervalu požadovaného výstupu.<br/><br/>Upozornění: nenastavujte vysoké hodnoty pro má nebo longRetryInterval. Vyšší hodnoty obvykle implikují jiné systémové problémy. |
+| retry |Integer<br/><br/>Maximální hodnota může být 10. |0 |Počet opakovaných pokusů, než se zpracování dat pro řez označí jako selhání. Pokus o spuštění aktivity pro datový řez se opakuje do zadaného počtu opakování. Opakování se provede co nejdříve po selhání. |
+| timeout |TimeSpan |00:00:00 |Časový limit aktivity Příklad: 00:10:00 (implikuje časový limit 10 minut)<br/><br/>Pokud hodnota není zadaná nebo je 0, časový limit je nekonečný.<br/><br/>Pokud doba zpracování dat v řezu překročí hodnotu časového limitu, je zrušena a systém se pokusí o opakované zpracování. Počet opakování závisí na vlastnosti opakování. Pokud dojde k vypršení časového limitu, je stav nastavený na vypršel časový limit. |
+| způsobené |TimeSpan |00:00:00 |Určete zpoždění před spuštěním zpracování dat řezu.<br/><br/>Spuštění aktivity pro datový řez se spustí, jakmile je zpoždění po očekávanou dobu provádění.<br/><br/>Příklad: 00:10:00 (implikuje zpoždění po 10 minutách) |
+| Má |Integer<br/><br/>Maximální hodnota: 10 |1 |Počet dlouhých pokusů o opakování před neúspěšným provedením řezu<br/><br/>Má pokusy jsou rozmístěny pomocí longRetryInterval. Takže pokud potřebujete zadat čas mezi opakovanými pokusy, použijte má. Pokud jsou zadány parametry Retry a má, každý má pokus obsahuje pokusy o opakování a maximální počet pokusů o opakování * má.<br/><br/>Například pokud máme v zásadách aktivity následující nastavení:<br/>Opakovat: 3<br/>Má: 2<br/>longRetryInterval: 01:00:00<br/><br/>Předpokládejme, že je možné provést pouze jeden řez (stav čeká na vyřízení) a spuštění aktivity pokaždé neproběhne úspěšně. Zpočátku by se mělo 3 po sobě jdoucích pokusů o spuštění. Po každém pokusu se stav řezu opakuje. Po prvním 3 pokusech se bude stav řezu má.<br/><br/>Po hodinu (tj. hodnotě longRetryInteval) by existovala další sada 3 po sobě jdoucích pokusů o spuštění. Po této operaci se stav řezu nezdařil a nebude proveden pokus o další opakování. Proto byly provedeny celkem 6 pokusů.<br/><br/>Pokud je jakékoli spuštění úspěšné, bude stav řezu připravený a nebude proveden pokus o další opakované pokusy.<br/><br/>Má se můžou použít v situacích, kdy se závislá data dostanou v nedeterministických časech, nebo v celkovém prostředí je vločka, pod kterou se zpracování dat děje. V takových případech s tím, že se opakuje jeden po jiné, to nemusí pomáhat a provádět po uplynutí časového intervalu požadovaného výstupu.<br/><br/>Upozornění: nenastavujte vysoké hodnoty pro má nebo longRetryInterval. Vyšší hodnoty obvykle implikují jiné systémové problémy. |
 | longRetryInterval |TimeSpan |00:00:00 |Prodleva mezi dlouhými pokusy o opakování |
 
 Další informace najdete v článku [kanály](data-factory-create-pipelines.md) . 
@@ -281,7 +281,7 @@ Další informace najdete v článku [kanály](data-factory-create-pipelines.md)
 ## <a name="parallel-processing-of-data-slices"></a>Paralelní zpracování datových řezů
 Můžete nastavit počáteční datum pro kanál v minulosti. Když to uděláte, Data Factory automaticky vypočítá (vrátí zpět) všechny datové řezy v minulosti a začne je zpracovávat. Příklad: Pokud vytvoříte kanál s počátečním datem 2017-04-01 a aktuální datum je 2017-04-10. Pokud je tempo výstupní datové sady denně, Data Factory spustí zpracování všech řezů od 2017-04-01 do 2017-04-09, protože počáteční datum je v minulosti. Řez z 2017-04-10 se ještě nezpracovává, protože hodnota vlastnosti Style v oddílu Availability je EndOfInterval ve výchozím nastavení. Nejdříve se zpracuje nejstarší řez, protože výchozí hodnota executionPriorityOrder je OldestFirst. Popis vlastnosti Style najdete v části věnované [dostupnosti datové sady](#dataset-availability) . Popis části executionPriorityOrder najdete v části věnované [zásadám aktivit](#activity-policies) . 
 
-Můžete nakonfigurovat zpětně naplněné datové řezy, které mají být zpracovány paralelně , nastavením vlastnosti souběžnosti v části **zásady** JSON aktivity. Tato vlastnost určuje počet spuštění paralelní aktivity, ke kterým může dojít v různých řezech. Výchozí hodnota pro vlastnost Concurrency je 1. Proto ve výchozím nastavení je jeden řez zpracováván současně. Maximální hodnota je 10. Když kanál potřebuje projít velkou sadou dostupných dat, větší hodnota souběžnosti zrychluje zpracování dat. 
+Můžete nakonfigurovat zpětně naplněné datové řezy, které mají být zpracovány paralelně, nastavením vlastnosti **souběžnosti** v části **zásady** JSON aktivity. Tato vlastnost určuje počet spuštění paralelní aktivity, ke kterým může dojít v různých řezech. Výchozí hodnota pro vlastnost Concurrency je 1. Proto ve výchozím nastavení je jeden řez zpracováván současně. Maximální hodnota je 10. Když kanál potřebuje projít velkou sadou dostupných dat, větší hodnota souběžnosti zrychluje zpracování dat. 
 
 ## <a name="rerun-a-failed-data-slice"></a>Opětovné spuštění neúspěšného datového řezu
 Když při zpracování datového řezu dojde k chybě, můžete zjistit, proč se zpracování řezu nepovedlo pomocí Azure Portalových oken nebo monitorovat a spravovat aplikace. Podrobnosti najdete v tématu [monitorování a Správa kanálů pomocí Azure Portalových](data-factory-monitor-manage-pipelines.md) oken nebo [aplikací pro monitorování a správu](data-factory-monitor-manage-app.md) .
@@ -323,14 +323,14 @@ Příklad najdete v části kopírování sekvenčně v dodatku.
 ## <a name="model-datasets-with-different-frequencies"></a>Modelování datových sad s různou frekvencí
 V ukázkách byly frekvence pro vstupní a výstupní datové sady a okno plánu aktivit stejné. Některé scénáře vyžadují možnost vytvářet výstup s různou frekvencí, než je frekvence jednoho nebo více vstupů. Data Factory podporuje modelování těchto scénářů.
 
-### <a name="sample-1-produce-a-daily-output-report-for-input-data-that-is-available-every-hour"></a>Ukázka 1: Vytvoří denní výstupní sestavu pro vstupní data, která jsou k dispozici každou hodinu.
+### <a name="sample-1-produce-a-daily-output-report-for-input-data-that-is-available-every-hour"></a>Ukázka 1: vytvoření denní výstupní sestavy pro vstupní data, která jsou k dispozici každou hodinu
 Vezměte v úvahu scénář, ve kterém máte během každé hodiny ve službě Azure Blob Storage k dispozici vstupní měření dat od senzorů. Chcete vytvořit každodenní souhrnnou sestavu se statistikami, jako je například střední, maximální a minimální hodnota pro den s [Data Factory aktivitou podregistru](data-factory-hive-activity.md).
 
 Tady je postup, jak můžete modelovat tento scénář pomocí Data Factory:
 
 **Vstupní datová sada**
 
-Hodinové vstupní soubory jsou ve složce pro daný den vyřazeny. Dostupnost pro vstup je nastavená na **hodinu** (frekvence: Hodina, interval: 1).
+Hodinové vstupní soubory jsou ve složce pro daný den vyřazeny. Dostupnost pro vstup je nastavená na **hodinu** (frekvence: hodina, interval: 1).
 
 ```json
 {
@@ -359,7 +359,7 @@ Hodinové vstupní soubory jsou ve složce pro daný den vyřazeny. Dostupnost p
 ```
 **Výstupní datová sada**
 
-Jeden výstupní soubor se vytvoří každý den ve složce dne. Dostupnost výstupu je nastavená na **den** (frekvence: Den a interval: 1).
+Jeden výstupní soubor se vytvoří každý den ve složce dne. Dostupnost výstupu je nastavená na **den** (frekvence: den a interval: 1).
 
 ```json
 {
@@ -443,14 +443,14 @@ Následující diagram znázorňuje scénář z hlediska závislosti dat.
 
 Výstupní řez každého dne závisí na 24 hodinových řezech ze vstupní datové sady. Data Factory tyto závislosti automaticky vypočte pomocí zjištění vstupních datových řezů, které spadají do stejného časového období jako výstupní řez, který se má vyrobit. Pokud některý z 24 vstupních řezů není k dispozici, Data Factory čeká, než se vstupní řez před spuštěním každodenního spuštění aktivity vypustí.
 
-### <a name="sample-2-specify-dependency-with-expressions-and-data-factory-functions"></a>Ukázka 2: Určení závislosti pomocí výrazů a funkcí Data Factory
+### <a name="sample-2-specify-dependency-with-expressions-and-data-factory-functions"></a>Ukázka 2: určení závislosti s výrazy a Data Factory funkcemi
 Pojďme zvážit jiný scénář. Předpokládejme, že máte aktivitu podregistru, která zpracovává dvě vstupní datové sady. Jedna z nich má data denně, ale jeden z nich získává nová data každý týden. Předpokládejme, že jste chtěli spojit mezi dvěma vstupy a vytvořit výstup každý den.
 
 Jednoduchý přístup, ve kterém Data Factory automaticky vyhodnotit správné vstupní řezy ke zpracování pomocí zarovnání na časové období výstupního datového řezu nefunguje.
 
 Je nutné určit, že pro každý běh aktivity má Data Factory pro týdenní vstupní datovou sadu použít datový řez poslední týden. K implementaci tohoto chování použijte Azure Data Factory funkce, jak je znázorněno v následujícím fragmentu kódu.
 
-**Input1: Objekt blob Azure**
+**Input1: Azure Blob**
 
 Prvním vstupem je denní aktualizace objektu blob Azure.
 
@@ -480,7 +480,7 @@ Prvním vstupem je denní aktualizace objektu blob Azure.
 }
 ```
 
-**Input2: Objekt blob Azure**
+**Input2: Azure Blob**
 
 Input2 je týdenní aktualizace objektu blob Azure.
 
@@ -510,9 +510,9 @@ Input2 je týdenní aktualizace objektu blob Azure.
 }
 ```
 
-**Výkonem Objekt blob Azure**
+**Výstup: Azure Blob**
 
-Jeden výstupní soubor se vytvoří každý den ve složce pro daný den. Dostupnost výstupu je nastavená na **den** (frekvence: Den, interval: 1).
+Jeden výstupní soubor se vytvoří každý den ve složce pro daný den. Dostupnost výstupu je nastavená na **den** (frekvence: den, interval: 1).
 
 ```json
 {
@@ -604,7 +604,7 @@ Je možné spustit více operací kopírování jeden po druhém sekvenčním a 
 
 Soubor copyactivity1
 
-Vstup: Integrován. Výstup: Dataset2.
+Input: DataSet. Výstup: Dataset2.
 
 CopyActivity2
 
@@ -703,7 +703,7 @@ Vstup: DataSet1. Výstup: Dataset2.
 
 CopyActivity2
 
-Vztahují Dataset3, Dataset2. Výstup: Dataset4.
+Vstupy: Dataset3, Dataset2. Výstup: Dataset4.
 
 ```json
 {

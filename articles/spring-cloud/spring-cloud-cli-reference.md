@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: reference
 ms.date: 10/03/2019
 ms.author: jeconnoc
-ms.openlocfilehash: c0694bf53f4a0644c8da2b50660dbfd6a5b339c7
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: a1f82d4efa7756b44ca5ed9859aa872c1f55b565
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038857"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607827"
 ---
 # <a name="az-spring-cloud"></a>AZ jaře-Cloud
 
@@ -92,11 +92,11 @@ az spring-cloud create  --name -n
 | Požadované parametry | |
 | --- | ---: |
 | --Name-n | Název této instance Azure jaře cloudu |
-| --Resource-Group-g | Určuje skupinu prostředků pro tuto aplikaci.  Konfigurace výchozí skupiny pomocí `az configure --defaults group=<name>` |
+| --Resource-Group-g | Určuje skupinu prostředků pro tuto aplikaci.  Nakonfigurujte výchozí skupinu pomocí `az configure --defaults group=<name>` |
 
 | Volitelné parametry | |
 | --- | ---: |
-| --Location-l | Určuje umístění serveru pro tuto aplikaci.  Najít platná umístění pomocí `az account list-locations` |
+| --Location-l | Určuje umístění serveru pro tuto aplikaci.  Vyhledat platná umístění pomocí `az account list-locations` |
 | --No-Wait | Nespouštějte dlouho probíhající operace.
 
 ### <a name="examples"></a>Příklady
@@ -126,7 +126,7 @@ az spring cloud --name -n
 | --- | ---: |
 | -No – čekání | Nečekejte na dokončení dlouho spuštěných operací. |
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 Odstraní instanci cloudu Azure jaře s názvem "Mojesluzba" z "MyResourceGroup".
 
@@ -507,7 +507,7 @@ az spring-cloud app update --name -n
 | --No-Wait | Nečekejte na dokončení dlouhotrvajících operací. |
 | --Běhová verze | Běhová verze jazyka používaného v aplikaci  Povolené hodnoty: `Java_11`, `Java_8`. |
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 Přidejte proměnnou prostředí pro aplikaci.
 
@@ -723,7 +723,7 @@ Aktualizuje vazbu služby pro Azure cache pro Redis.
 
 Vytvořte pracovní nasazení pro aplikaci.
 
-Pokud chcete nasadit kód nebo aktualizovat nastavení na existující nasazení, použijte `az spring-cloud app deploy --deployment <staging-deployment>` nebo AZ-Cloud App Update--Deployment <staging deployment>.
+Pokud chcete nasadit kód nebo aktualizovat nastavení na existující nasazení, použijte `az spring-cloud app deploy --deployment <staging-deployment>` nebo AZ jaře-Cloud App Update--Deployment <staging deployment>.
 
 | Požadované parametry | |
 | --- | ---: |

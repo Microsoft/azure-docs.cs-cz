@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: thweiss
-ms.openlocfilehash: 1eb769ec64e50be65d63be43d897c1190789e555
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 254c2645d842a6f6a2eaaeca2369b93a81e1a8cd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518759"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681679"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account-preview"></a>Konfigurace privátního odkazu Azure pro účet Azure Cosmos (Preview)
 
@@ -39,8 +39,8 @@ Pomocí následujícího postupu můžete vytvořit privátní odkaz pro existuj
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte skupinu prostředků.|
     | **Podrobnosti instance** |  |
-    | Name (Název) | Zadejte libovolný název vašeho privátního koncového bodu; Pokud se tento název povede, vytvořte jedinečný. |
-    |Oblast| Vyberte oblast, do které chcete nasadit privátní propojení. Privátní koncový bod by měl být vytvořen ve stejném umístění, kde existuje vaše virtuální síť.|
+    | Název | Zadejte libovolný název vašeho privátního koncového bodu; Pokud se tento název povede, vytvořte jedinečný. |
+    |Region (Oblast)| Vyberte oblast, do které chcete nasadit privátní propojení. Privátní koncový bod by měl být vytvořen ve stejném umístění, kde existuje vaše virtuální síť.|
     |||
 1. Vyberte **Další: prostředek**.
 1. V **Vytvoření privátního koncového bodu – prostředek**zadejte nebo vyberte tyto informace:
@@ -53,6 +53,7 @@ Pomocí následujícího postupu můžete vytvořit privátní odkaz pro existuj
     | Prostředek |Vyberte svůj účet Azure Cosmos. |
     |Cílový dílčí prostředek |Vyberte Cosmos DB typ rozhraní API, který chcete namapovat. Tato možnost je standardně jenom jedna volba pro rozhraní API SQL, MongoDB a Cassandra. Pro Gremlin a rozhraní API tabulky můžete také zvolit *SQL* , protože tato rozhraní API se vzájemně spolupracují s rozhraním SQL API. |
     |||
+
 1. Vyberte **Další: Konfigurace**.
 1. V **Vytvoření privátního koncového bodu (Preview) – konfigurace**zadejte nebo vyberte tyto informace:
 
@@ -62,14 +63,26 @@ Pomocí následujícího postupu můžete vytvořit privátní odkaz pro existuj
     | Virtuální síť| Vyberte svou virtuální síť. |
     | Podsíť | Vyberte podsíť. |
     |**Integrace Privátní DNS**||
-    |Integrace s privátní zónou DNS |Vyberte **Ano**. |
-    |Zóna Privátní DNS |Vybrat *privatelink.Documents.Azure.com* |
+    |Integrace s privátní zónou DNS |Vyberte **Ano**. <br><br/> Abyste mohli soukromě propojit s vaším soukromým koncovým bodem, budete potřebovat záznam DNS. Doporučuje se integrovat privátní koncový bod s privátní zónou DNS. Můžete také využít vlastní servery DNS nebo vytvořit záznamy DNS pomocí hostitelských souborů na virtuálních počítačích. |
+    |Zóna Privátní DNS |Vybrat *privatelink.Documents.Azure.com* <br><br/> Zóna Privátní DNS je určena automaticky a nelze ji nyní změnit pomocí Azure Portal.|
     |||
 
 1. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci.
 1. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
 
 Po schválení privátních odkazů pro účet Azure Cosmos je Azure Portal v podokně **Brána firewall a virtuální sítě** šedá možnost **všechny sítě** .
+
+Následující tabulka ukazuje mapování mezi různými typy rozhraní API účtu Azure Cosmos, podporovanými dílčími prostředky a odpovídajícími názvy privátních zón. Účty Gremlin a rozhraní API pro tabulky jsou přístupné prostřednictvím rozhraní SQL API, takže existují 2 položky pro tato rozhraní API:
+
+|Typ rozhraní API účtu Azure Cosmos  |Podporované dílčí prostředky (nebo skupiny identifikátorů) |Název privátní zóny  |
+|---------|---------|---------|
+|Sql    |   Sql      | privatelink.documents.azure.com   |
+|Cassandra    | Cassandra        |  privatelink.cassandra.cosmos.azure.com    |
+|Mongo   |  MongoDB       |  privatelink.mongo.cosmos.azure.com    |
+|Gremlin     | Gremlin        |  privatelink.gremlin.cosmos.azure.com   |
+|Gremlin     |  Sql       |  privatelink.documents.azure.com    |
+|Tabulka    |    Tabulka     |   privatelink.table.cosmos.azure.com    |
+|Tabulka     |   Sql      |  privatelink.documents.azure.com    |
 
 ### <a name="fetch-the-private-ip-addresses"></a>Načtení privátních IP adres
 
@@ -267,7 +280,7 @@ $deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpoint
 $deploymentOutput
 ```
 
-V PowerShellovém skriptu může proměnná "GroupId" obsahovat pouze jednu hodnotu, což je typ rozhraní API tohoto účtu. Povolené hodnoty jsou: SQL, MongoDB, Cassandra, Gremlin a Table. Některé typy účtů Azure Cosmos jsou přístupné prostřednictvím více rozhraní API. Například:
+V PowerShellovém skriptu může proměnná "GroupId" obsahovat pouze jednu hodnotu, což je typ rozhraní API tohoto účtu. Povolené hodnoty jsou: SQL, MongoDB, Cassandra, Gremlin a Table. Některé typy účtů Azure Cosmos jsou přístupné prostřednictvím více rozhraní API. Příklad:
 
 * K účtu rozhraní Gremlin API je možné přihlédnout z účtů Gremlin a SQL API.
 * K účtu rozhraní API pro tabulky lze přihlédnout z tabulek i z účtů rozhraní SQL API.
@@ -280,9 +293,11 @@ Po úspěšném nasazení šablony uvidíte výstup podobný tomu, co se zobrazu
 
 Po nasazení šablony jsou privátní IP adresy rezervované v rámci podsítě. Pravidlo brány firewall účtu Azure Cosmos je nakonfigurované tak, aby přijímalo jenom připojení z privátního koncového bodu.
 
-## <a name="configure-private-dns"></a>Konfigurace privátního serveru DNS
+## <a name="configure-custom-dns"></a>Konfigurace vlastního systému DNS
 
 Během verze Preview privátního odkazu byste měli použít privátní DNS v podsíti, ve které byl vytvořen privátní koncový bod. A konfigurace koncových bodů tak, aby každá z privátních IP adres byla namapována na položku DNS (viz vlastnost "FQDN" v odpovědi zobrazené výše).
+
+Při vytváření privátního koncového bodu ho můžete integrovat s privátní zónou DNS v Azure. Pokud se rozhodnete neintegrovat privátní koncový bod s privátní zónou DNS v Azure a místo toho použít vlastní DNS, musíte nakonfigurovat DNS tak, aby přidal nový záznam DNS pro privátní IP adresu odpovídající nové oblasti.
 
 ## <a name="firewall-configuration-with-private-link"></a>Konfigurace brány firewall s privátním odkazem
 
@@ -292,7 +307,7 @@ Následují různé situace a výsledky při použití privátního propojení v
 
 * Pokud je nakonfigurovaný veřejný provoz nebo koncový bod služby a vytvoří se privátní koncové body, pak odpovídající typ pravidla brány firewall autorizuje různé typy příchozích přenosů.
 
-* Pokud není nakonfigurovaný žádný veřejný provoz nebo koncový bod služby a vytvoří se privátní koncové body, účet Azure Cosmos je přístupný jenom prostřednictvím privátních koncových bodů.
+* Pokud není nakonfigurovaný žádný veřejný provoz nebo koncový bod služby a vytvoří se privátní koncové body, účet Azure Cosmos je přístupný jenom prostřednictvím privátních koncových bodů. Pokud není nakonfigurovaný žádný veřejný provoz nebo koncový bod služby, pak se všechny schválené privátní koncové body odmítnou nebo odstraní a účet se otevře ve všech sítích.
 
 ## <a name="update-private-endpoint-when-you-add-or-remove-a-region"></a>Aktualizace privátního koncového bodu při přidání nebo odebrání oblasti
 
@@ -304,9 +319,9 @@ Přidání nebo odebrání oblastí pro účet Azure Cosmos vyžaduje, abyste p�
 
 Například pokud nasadíte účet Azure Cosmos ve třech oblastech: "Západní USA", "Střed USA" a "Západní Evropa". Při vytváření privátního koncového bodu pro svůj účet jsou v podsíti vyhrazené 4 privátní IP adresy. Jednu pro každou oblast, která se počítá jako celkem 3 a jedna pro koncový bod Global/region-nezávislá.
 
-Později, pokud do účtu Azure Cosmos přidáte novou oblast, například "Východní USA". Ve výchozím nastavení není nová oblast dostupná z existujícího privátního koncového bodu. Správce účtu Azure Cosmos by měl aktualizovat připojení privátního koncového bodu před tím, než bude formulář přistupovat k nové oblasti.
+Později, pokud do účtu Azure Cosmos přidáte novou oblast, například "Východní USA". Ve výchozím nastavení není nová oblast dostupná z existujícího privátního koncového bodu. Správce účtu Azure Cosmos by měl aktualizovat připojení privátního koncového bodu před tím, než bude formulář přistupovat k nové oblasti. 
 
-Při spuštění příkazu ` Get-AzPrivateEndpoint -Name <your private endpoint name> -ResourceGroupName <your resource group name>` obsahuje výstup příkazu `ActionRequired` parametr, který je nastaven na hodnotu "znovu vytvořit". Tato hodnota označuje, že by se měl aktualizovat privátní koncový bod. Potom správce účtu Azure Cosmos spustí příkaz `Set-AzPrivateEndpoint`, který aktivuje aktualizaci privátního koncového bodu.
+Při spuštění příkazu ` Get-AzPrivateEndpoint -Name <your private endpoint name> -ResourceGroupName <your resource group name>` obsahuje výstup příkazu `actionsRequired` parametr, který je nastaven na hodnotu "znovu vytvořit". Tato hodnota označuje, že by se měl aktualizovat privátní koncový bod. Potom správce účtu Azure Cosmos spustí příkaz `Set-AzPrivateEndpoint`, který aktivuje aktualizaci privátního koncového bodu.
 
 ```powershell
 $pe = Get-AzPrivateEndpoint -Name <your private endpoint name> -ResourceGroupName <your resource group name>
@@ -314,9 +329,11 @@ $pe = Get-AzPrivateEndpoint -Name <your private endpoint name> -ResourceGroupNam
 Set-AzPrivateEndpoint -PrivateEndpoint $pe
 ```
 
-Nová privátní IP adresa je automaticky vyhrazena v podsíti v rámci tohoto privátního koncového bodu a hodnota `ActionRequired` bude `None`. Pokud nemáte žádnou privátní integraci zóny DNZ (jinými slovy, pokud používáte vlastní privátní DNS), musíte nakonfigurovat privátní DNS a přidat nový záznam DNS pro privátní IP adresu odpovídající nové oblasti.
+Nová privátní IP adresa je automaticky vyhrazena v podsíti v rámci tohoto privátního koncového bodu a hodnota `actionsRequired` bude `None`. Pokud nemáte žádnou privátní integraci zóny DNZ (jinými slovy, pokud používáte vlastní privátní DNS), musíte nakonfigurovat privátní DNS a přidat nový záznam DNS pro privátní IP adresu odpovídající nové oblasti.
 
-Stejný postup můžete použít při odebrání oblasti. Privátní IP adresa odebrané oblasti se automaticky uvolní a příznak `ActionRequired` se `None`. Pokud nemáte žádnou privátní integraci zóny DNZ, musíte nakonfigurovat privátní DNS, aby se odebral záznam DNS pro odebraný region.
+Stejný postup můžete použít při odebrání oblasti. Privátní IP adresa odebrané oblasti se automaticky uvolní a příznak `actionsRequired` se `None`. Pokud nemáte žádnou privátní integraci zóny DNZ, musíte nakonfigurovat privátní DNS, aby se odebral záznam DNS pro odebraný region.
+
+Záznamy DNS v privátní zóně DNS se neodstraňují automaticky při odstranění privátního koncového bodu nebo odebrání oblasti z účtu Azure Cosmos. Záznamy DNS je nutné odebrat ručně.
 
 ## <a name="current-limitations"></a>Aktuální omezení
 
@@ -328,7 +345,7 @@ Při použití privátního odkazu s účtem Azure Cosmos platí následující 
 
 * Pokud používáte rozhraní API Azure Cosmos DB pro účty MongoDB, které mají privátní odkaz, nemůžete použít nástroje jako Robo 3T, Studio 3T, Mongoose atd. Koncový bod může obsahovat podporu privátních odkazů pouze v případě, že je zadán parametr appName =<account name>. Příklad: replicaSet = globaldb & appName = mydbaccountname. Vzhledem k tomu, že tyto nástroje nepředá název aplikace v připojovacím řetězci ke službě, takže nemůžete použít privátní odkaz. K těmto účtům ale budete mít přístup pomocí ovladačů SDK s 3,6 verzí.
 
-* Podpora privátních odkazů pro účty Azure Cosmos a virtuální sítě je k dispozici pouze v konkrétních oblastech. Seznam podporovaných oblastí najdete v části [dostupné oblasti](../private-link/private-link-overview.md#availability) v článku věnovaném privátním odkazům.
+* Podpora privátních odkazů pro účty Azure Cosmos a virtuální sítě je k dispozici pouze v konkrétních oblastech. Seznam podporovaných oblastí najdete v části [dostupné oblasti](../private-link/private-link-overview.md#availability) v článku věnovaném privátním odkazům. **Virtuální síť i účet Azure Cosmos by měly být v podporovaných oblastech, aby bylo možné vytvořit privátní koncový bod**.
 
 * Virtuální síť nejde přesunout ani odstranit, pokud obsahuje privátní odkaz.
 
@@ -337,6 +354,15 @@ Při použití privátního odkazu s účtem Azure Cosmos platí následující 
 * U účtu Azure Cosmos nejde převzít služby při selhání do oblasti, která není namapovaná na všechny privátní koncové body, které jsou k ní připojené. Další informace najdete v tématu Přidání nebo odebrání oblastí v předchozí části.
 
 * Správce sítě by měl udělit alespoň oprávnění "*/PrivateEndpointConnectionsApproval" v oboru účtu Azure Cosmos správcem k vytváření automaticky schválených privátních koncových bodů.
+
+### <a name="private-dns-zone-integration-limitations"></a>Omezení integrace Privátní DNS zóny
+
+Záznamy DNS v privátní zóně DNS se neodstraňují automaticky při odstranění privátního koncového bodu nebo odebrání oblasti z účtu Azure Cosmos. Záznamy DNS musíte ručně odebrat předtím, než:
+
+* Přidávání nového privátního koncového bodu připojeného k této soukromé zóně DNS.
+* Přidání nové oblasti do libovolného databázového účtu s privátními koncovými body propojenými s touto privátní zónou DNS.
+
+Bez vyčištění záznamů DNS se může stát, že neočekávané problémy roviny dat, jako například výpadek dat do oblastí přidaných po odebrání privátního koncového bodu nebo odebrání oblasti.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 40718cdb12cbc46bf0587dfdc657ee06c090061b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.date: 11/04/2019
+ms.openlocfilehash: c8891fc96e3e511e4127b4e114a45b5a865cf8eb
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598244"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603024"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Monitorování výkonu Azure Database for MySQL s využitím úložiště dotazů
 
 **Platí pro:** Azure Database for MySQL 5,7
-
-> [!IMPORTANT]
-> Úložiště dotazů je ve verzi Preview.
 
 Funkce úložiště dotazů v Azure Database for MySQL poskytuje způsob, jak sledovat výkon dotazů v průběhu času. Úložiště dotazů zjednodušuje řešení potíží s výkonem tím, že vám pomůže rychle najít nejdelší běžící a většinu dotazů náročných na prostředky. Úložiště dotazů automaticky zachycuje historii dotazů a statistik za běhu a zachovává je pro vaši kontrolu. Odděluje data podle časových oken, takže můžete vidět vzory využití databáze. Data pro všechny uživatele, databáze a dotazy se ukládají do databáze schématu **MySQL** v instanci Azure Database for MySQL.
 
@@ -107,7 +104,7 @@ Následující možnosti platí konkrétně pro čekání na statistiku.
 > [!NOTE]
 > V současné době **query_store_capture_mode** nahrazuje tuto konfiguraci, a to znamená, že **query_store_capture_mode** i **QUERY_STORE_WAIT_SAMPLING_CAPTURE_MODE** musí být povolené pro všechny, aby statistiky čekání fungovaly. Pokud je **query_store_capture_mode** vypnutý, vyčkejte na vypínání statistik, protože statistiky čekání využívají performance_schema Enabled a query_text zachycené úložištěm dotazů.
 
-Použijte [Azure Portal](howto-server-parameters.md)  or [Azure CLI](howto-configure-server-parameters-using-cli.md)  to získat nebo nastavit jinou hodnotu parametru.
+K získání nebo nastavení jiné hodnoty parametru použijte [Azure Portal](howto-server-parameters.md) nebo  [Azure CLI](howto-configure-server-parameters-using-cli.md) .
 
 ## <a name="views-and-functions"></a>Zobrazení a funkce
 
@@ -175,9 +172,9 @@ Toto zobrazení vrátí data událostí čekání v úložišti dotazů. Pro ka�
 ## <a name="limitations-and-known-issues"></a>Omezení a známé problémy
 
 - Pokud má server MySQL parametr `default_transaction_read_only` na, nemůže úložiště dotazů zachytit data.
-- Funkce úložiště dotazů se dá přerušit, pokud dojde k dlouhým dotazům v kódování Unicode (\> = 6000 bajtů).
+- Funkce úložiště dotazů se dá přerušit, pokud dojde k dlouhým dotazům v kódování Unicode (\>= 6000 bajtů).
 - Doba uchování pro statistiku čekání je 24 hodin.
-- V případě, že statistika čekání používá ukázku pro zachycení zlomku událostí. Četnost lze upravit pomocí `query_store_wait_sampling_frequency` parametru.
+- V případě, že statistika čekání používá ukázku pro zachycení zlomku událostí. Četnost lze upravit pomocí `query_store_wait_sampling_frequency`parametru.
 
 ## <a name="next-steps"></a>Další kroky
 

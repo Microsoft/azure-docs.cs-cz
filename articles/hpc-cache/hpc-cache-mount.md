@@ -1,19 +1,19 @@
 ---
-title: Připojení mezipaměti HPC Azure (Preview)
+title: Připojení mezipaměti HPC Azure
 description: Postup připojení klientů ke službě Azure HPC cache Service
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 3257cf92c628650fc50e0a36ec37fcab920aba2f
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: d906ed9a1a55e936c6374806a9037085c47e3b01
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254563"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582218"
 ---
-# <a name="mount-the-azure-hpc-cache-preview"></a>Připojení mezipaměti HPC Azure (Preview)
+# <a name="mount-the-azure-hpc-cache"></a>Připojení mezipaměti HPC Azure
 
 Po vytvoření mezipaměti k ní budou mít klienti NFS přístup pomocí jednoduchého příkazu Mount.
 
@@ -25,7 +25,7 @@ Příkaz Mount se skládá ze dvou prvků:
 ![snímek stránky s přehledem instance mezipaměti HPC v Azure se zvýrazněným políčkem v pravém dolním rohu seznamu adres připojení](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE] 
-> Adresy připojení mezipaměti odpovídají síťovým rozhraním v podsíti mezipaměti. V rámci skupiny prostředků jsou tyto síťové adaptéry uvedené s názvy končícími na `-cluster-nic-` a číslo. Tato rozhraní neměňte ani neodstraňujte, jinak se mezipaměť nestane nedostupnou.
+> Adresy připojení mezipaměti odpovídají síťovým rozhraním v podsíti mezipaměti. V rámci skupiny prostředků jsou tyto síťové karty uvedené s názvy končícími na `-cluster-nic-` a číslem. Tato rozhraní neměňte ani neodstraňujte, jinak se mezipaměť nestane nedostupnou.
 
 Cesty k virtuálnímu oboru názvů se zobrazí na stránce **cíle úložiště** . Kliknutím na název jednotlivého cíle úložiště zobrazíte jeho podrobnosti, včetně agregovaných cest oboru názvů přidružených k němu.
 
@@ -61,7 +61,7 @@ V případě robustního připojení klienta předejte tato nastavení a argumen
 ``hard`` | Provizorní připojení k mezipaměti HPC Azure jsou spojená s chybami aplikací a možnou ztrátou dat. 
 ``proto=netid`` | Tato možnost podporuje odpovídající zpracování chyb sítě systému souborů NFS.
 ``mountproto=netid`` | Tato možnost podporuje odpovídající zpracování chyb sítě pro operace připojení.
-``retry=n`` | Nastavte ``retry=30``, aby se předešlo přechodným chybám připojení. (V připojeních na popředí se doporučuje jiná hodnota.)
+``retry=n`` | Nastavte ``retry=30``, aby nedocházelo k přechodným chybám připojení. (V připojeních na popředí se doporučuje jiná hodnota.)
 
 ## <a name="next-steps"></a>Další kroky
 

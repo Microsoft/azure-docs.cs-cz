@@ -1,5 +1,5 @@
 ---
-title: Nasazení virtuálního počítače s Windows 7 na virtuálním počítači s Windows – Azure
+title: Nasazení virtuálního počítače se systémem Windows 7 – Azure
 description: Jak nakonfigurovat a nasadit virtuální počítač se systémem Windows 7 na virtuálním počítači s Windows
 services: virtual-desktop
 author: Heidilohr
@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
-ms.openlocfilehash: 3a6fb67ce531ed8cc028d2d0a8dfc3022544efe0
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 90b871c2b75f7ed40c290231ef822258c6b4e6d4
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947567"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606872"
 ---
-# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Nasazení virtuálního počítače s Windows 7 na virtuálním počítači s Windows
+# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Nasazení virtuálního počítače s Windows 7 do Windows Virtual Desktopu
 
 Proces nasazení virtuálního počítače s Windows 7 na virtuálním počítači s Windows se trochu liší od virtuálních počítačů, na kterých běží novější verze Windows. V této příručce se dozvíte, jak nasadit Windows 7.
 
@@ -35,7 +35,7 @@ Postup nastavení virtuálního počítače se systémem Windows 7 na virtuáln�
 5. Na svém VIRTUÁLNÍm počítači přejdete na web Windows Update.
 6. Nainstalujte všechny aktualizace Windows v důležité kategorii.
 7. Nainstalovat všechny aktualizace systému Windows v nepovinné kategorii (kromě jazykových sad). Tím se nainstaluje aktualizace protokol RDP (Remote Desktop Protocol) 8,0 ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35393)), kterou potřebujete k dokončení těchto pokynů.
-8. Otevřete Editor místních zásad skupiny a přejděte na **Konfigurace počítače** > **šablony pro správu** > **součásti systému Windows** > **Služba Vzdálená plocha** > **hostitel relace vzdálené plochy** **prostředí vzdálené relace** > .
+8. Otevřete Editor místních zásad skupiny a přejděte na **Konfigurace počítače** > **šablony pro správu** > **součásti systému Windows** > **Vzdálená plocha** > **hostitel relace vzdálené plochy**  > **prostředí vzdálené relace**.
 9. Povolte zásadu protokol RDP (Remote Desktop Protocol) 8,0.
 10. Restartujte virtuální počítač spuštěním následujícího příkazu:
     

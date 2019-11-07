@@ -1,20 +1,17 @@
 ---
 title: Nejčastější dotazy k Azure jaře cloudu | Microsoft Docs
 description: Přečtěte si nejčastější dotazy k Azure jaře cloudu.
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 10/07/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 12ef5586ac1e7ecf27824f95add3355451cf555a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.author: jeconnoc
+ms.openlocfilehash: 1fb241ab1335e6b9c9be55acbbe2e21378831b69
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163766"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607228"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -39,7 +36,7 @@ Celkový počet instancí aplikace na jednu instanci cloudové služby Azure na 
 Instance služby Azure jaře Cloud Service na oblast na předplatné | odst
 Trvalé svazky | 10 × 50 GBytes
 
-*_otevření [lístku podpory](https://azure.microsoft.com/support/faq/) pro zvýšení limitu._
+_pro zvýšení limitu *otevřít [lístek podpory](https://azure.microsoft.com/support/faq/) ._
 
 Další podrobnosti najdete v nejčastějších dotazech k [podpoře Azure](https://azure.microsoft.com/support/faq/).
 
@@ -59,7 +56,7 @@ Východní USA, Západní USA 2, Západní Evropa a jihovýchodní Asie.
 
 Tady jsou známá omezení Azure jaře cloudu, když je služba ve verzi Preview.
 
-* `spring.application.name` přepíše název aplikace, který se používá k vytvoření jednotlivých aplikací.
+* `spring.application.name` bude přepsáno názvem aplikace použitým k vytvoření jednotlivých aplikací.
 * `server.port` se v konfiguračním souboru z úložiště Git nepovoluje. Přidání do konfiguračního souboru bude nejspíš způsobit, že aplikace nebude dostupná z jiných aplikací nebo z Internetu.
 * Šablony Azure Portal a Správce prostředků nepodporují nahrávání balíčků aplikací. Dá se to udělat jenom prostřednictvím nasazení aplikace pomocí Azure CLI.
 * Omezení kvóty najdete v tématu [Jaké plány služeb nabízí Azure jaře Cloud](#what-service-plans-does-azure-spring-cloud-offer).
@@ -82,7 +79,7 @@ Azure jarní Cloud podporuje jazyky Java 8 a 11.
 
 Metriky najdete na kartě Přehled aplikace a na kartě [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#interacting-with-azure-monitor-metrics) .
 
-Azure jaře Cloud podporuje export protokolů a metriky aplikace na jaře do Azure Storage, EventHub a [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs#log-queries). Název tabulky ve Log Analytics je `AppPlatformLogsforSpring`. Pokud ho chcete povolit, přečtěte si tento článek o našich [diagnostických službách](diagnostic-services.md).
+Azure jaře Cloud podporuje export protokolů a metriky aplikace na jaře do Azure Storage, EventHub a [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs#log-queries). Název tabulky v Log Analytics je `AppPlatformLogsforSpring`. Pokud ho chcete povolit, přečtěte si tento článek o našich [diagnostických službách](diagnostic-services.md).
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Podporuje Azure jaře Cloud distribuované trasování?
 

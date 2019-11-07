@@ -1,19 +1,19 @@
 ---
-title: Ingestování dat ve verzi Preview mezipaměti prostředí Azure HPC – paralelní kopírování skriptu
+title: Ingestování dat mezipaměti HPC Azure – paralelní kopírování skriptu
 description: Jak použít skript paralelního kopírování k přesunu dat do cíle úložiště objektů BLOB v mezipaměti HPC Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 4899f946cb358693c969def3fa740af64675d934
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 0bb74dcd683145fbae22cf0b6d2827ad9e16de0e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254509"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582697"
 ---
-# <a name="azure-hpc-cache-preview-data-ingest---parallel-copy-script-method"></a>Azure HPC cache (Preview) data ingestování – paralelní kopírování metody skriptu
+# <a name="azure-hpc-cache-data-ingest---parallel-copy-script-method"></a>Ingestování dat mezipaměti HPC Azure – paralelní kopírování metody skriptu
 
 Tento článek obsahuje pokyny pro vytvoření skriptu ``parallelcp`` a jeho použití k přesunu dat do kontejneru úložiště objektů BLOB pro použití s mezipamětí Azure HPC.
 
@@ -21,7 +21,7 @@ Další informace o přesouvání dat do úložiště objektů BLOB pro mezipam�
 
 ## <a name="create-the-parallelcp-script"></a>Vytvoření skriptu parallelcp
 
-Ve skriptu níže se přidá spustitelný soubor `parallelcp`. (Tento skript je určený pro Ubuntu. Pokud používáte jinou distribuci, musíte nainstalovat ``parallel`` samostatně.)
+Níže uvedený skript přidá spustitelný `parallelcp`. (Tento skript je navržený pro Ubuntu; Pokud používáte jinou distribuci, musíte ``parallel`` nainstalovat samostatně.)
 
 ```bash
 sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM 
@@ -75,11 +75,11 @@ EOM
 
 ## <a name="parallel-copy-example"></a>Příklad paralelního kopírování
 
-V tomto příkladu se používá paralelní kopírování skriptu pro kompilaci ``glibc`` pomocí zdrojových souborů v mezipaměti HPC Azure.
+V tomto příkladu se používá skript paralelního kopírování pro kompilaci ``glibc`` používání zdrojových souborů v mezipaměti HPC Azure.
 
 Zdrojové soubory jsou ukládány do mezipaměti v bodu připojení mezipaměti služby Azure HPC a soubory objektů jsou uloženy na místním pevném disku.
 
-V tomto příkladu se používá skript paralelního kopírování s možností ``-j`` a ``make`` pro získání paralelismu.
+V tomto příkladu se používá skript paralelního kopírování s možností ``-j`` a ``make`` k paralelnímu získání.
 
 ```bash
 sudo apt-get update

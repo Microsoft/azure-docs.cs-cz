@@ -6,16 +6,16 @@ keywords: ''
 author: PatAltimore
 ms.author: patricka
 ms.date: 09/05/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: d50ee0fa06f34167cd4be9e787f6e351d3ef7e3b
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 4613d441fd0d363654073d4832de19139a7781e7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845210"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579737"
 ---
 # <a name="azure-blockchain-workbench-preview-architecture"></a>Architektura Azure blockchain Workbench Preview
 
@@ -99,7 +99,7 @@ Události odrážejí informace, které jsou relevantní pro jednotlivce a syst�
 
 Například příjemce SQL monitoruje události, spotřebovává je a naplní databázi SQL pomocí zahrnutých hodnot. Kopírování umožňuje rekreaci v úložišti s neplatnými daty v neznámém řetězci.
 
-## <a name="azure-sql-database"></a>Databáze SQL Azure
+## <a name="azure-sql-database"></a>Databáze Azure SQL
 
 Azure SQL Database připojená k blockchain Workbench ukládá definice kontraktů, metadata konfigurace a repliky přístupné pro SQL data uložená v blockchain. Tato data lze snadno dotazovat, vizuálně nebo analyzovat přímým přístupem k databázi. Vývojáři a jiní uživatelé mohou používat databázi pro vytváření sestav, analýzy nebo jiné integrace zaměřené na data. Například uživatelé mohou vizualizovat data transakcí pomocí Power BI.
 

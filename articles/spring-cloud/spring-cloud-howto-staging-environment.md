@@ -1,51 +1,40 @@
 ---
 title: Nastavení přípravného prostředí v Azure jaře cloudu | Microsoft Docs
 description: Naučte se používat nasazování s modrou zelenou službou Azure Pramenitého cloudu
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
-ms.date: 10/07/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 454eeaa2568891ec35fe698cdb20c5448e10887e
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.topic: conceptual
+ms.date: 10/31/2019
+ms.author: jeconnoc
+ms.openlocfilehash: 24ce4dee04e4daf3eaee4144f8dc56de5867bbca
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038983"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607209"
 ---
-# <a name="how-to-set-up-a-staging-environment"></a>Nastavení přípravného prostředí
+# <a name="how-to-set-up-a-staging-environment"></a>Jak nastavit přípravné prostředí
 
 V tomto článku se dozvíte, jak pomocí modelu nasazení Blue-zelená ve jarním cloudu Azure využít pracovní nasazení. Také se dozvíte, jak umístit toto pracovní nasazení do produkčního prostředí beze změny produkčního nasazení přímo.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že jste už nasadili aplikaci PiggyMetrics z našeho [kurzu spuštění aplikace](spring-cloud-quickstart-launch-app-portal.md). PiggyMetrics zahrnuje tři aplikace: "brána", "Account-Service" a "auth-Service".  
 
 Máte-li jinou aplikaci, kterou chcete použít v tomto příkladu, bude nutné provést jednoduchou změnu ve veřejné části aplikace.  Tato změna rozlišuje vaše pracovní nasazení od výroby.
-
->[!NOTE]
-> Před zahájením tohoto rychlého startu se ujistěte, že vaše předplatné Azure má přístup k jarnímu cloudu Azure.  Jako služba ve verzi Preview se na nás zeptáme, abychom vám mohli přidat vaše předplatné do seznamu povolených adres.  Pokud chcete prozkoumat možnosti Azure jarního cloudu, obraťte se na nás e-mailem: azure-spring-cloud@service.microsoft.com.
 
 >[!TIP]
 > Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku.  Má předinstalované běžné nástroje Azure, včetně nejnovějších verzí Git, JDK, Maven a Azure CLI. Pokud jste přihlášeni ke svému předplatnému Azure, spusťte [Azure Cloud Shell](https://shell.azure.com) z Shell.Azure.com.  Další informace o Azure Cloud Shell najdete v [naší dokumentaci](../cloud-shell/overview.md) .
 
 Postup dokončení tohoto článku:
 
-1. [Nainstalovat Git](https://git-scm.com/).
-1. [Nainstalovat JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
-1. [Nainstalujte Maven 3,0 nebo novější.](https://maven.apache.org/download.cgi)
-1. [Instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-1. [Registrace předplatného Azure](https://azure.microsoft.com/free/)
 
 ## <a name="install-the-azure-cli-extension"></a>Instalace rozšíření Azure CLI
 
 Pomocí následujícího příkazu nainstalujte rozšíření Azure jaře Cloud pro rozhraní příkazového řádku Azure.
 
 ```azurecli
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+az extension add --name spring-cloud
 ```
     
 ## <a name="view-all-deployments"></a>Zobrazit všechna nasazení
@@ -79,10 +68,10 @@ V Azure Portal přejdete do své instance služby a výběrem možnosti **Správ
 
 >[!TIP]
 > * Ověřte, zda koncový bod testu končí znakem "/", aby bylo zajištěno, že CSS bude správně načteno.  
-> * Pokud Váš prohlížeč vyžaduje, abyste zadali přihlašovací údaje pro zobrazení stránky, použijte k dekódování koncového bodu testu [adresu URL](https://www.urldecoder.org/) . Dekódování adresy URL vrátí adresu URL ve formátu "https://\<username >: \<Password > @ \<cluster-Name >. test. azureapps. IO/Gateway/zelená".  Pro přístup ke koncovému bodu použijte tento postup.
+> * Pokud Váš prohlížeč vyžaduje, abyste zadali přihlašovací údaje pro zobrazení stránky, použijte k dekódování koncového bodu testu [adresu URL](https://www.urldecoder.org/) . Dekódování adresy URL vrátí adresu URL ve formátu https://\<username >:\<heslo > @\<clusteru-Name >. test. azureapps. IO/Gateway/zelená.  Pro přístup ke koncovému bodu použijte tento postup.
 
 >[!NOTE]    
-> Nastavení konfiguračního serveru se vztahuje na vaše pracovní prostředí i na produkci. Pokud jste například nastavili cestu kontextu (`server.servlet.context-path`) pro bránu aplikace na serveru konfigurace jako *somepath*, cesta ke zeleně provedeným změnám nasazení: "https://\<username >: \<password > @ \<cluster-Name >. test. azureapps. IO/ Brána/zelená/somepath/... "
+> Nastavení konfiguračního serveru se vztahuje na vaše pracovní prostředí i na produkci. Pokud jste například nastavili cestu kontextu (`server.servlet.context-path`) pro bránu aplikace na serveru konfigurace jako *somepath*, cesta ke zeleně změnám nasazení: "https://\<username >:\<Password > @\<cluster-Name >. test.azureapps.io/gateway/green/somepath/... "
  
  Pokud v tuto chvíli navštívíte svou veřejnou bránu aplikace, měli byste vidět starou stránku bez nové změny.
     

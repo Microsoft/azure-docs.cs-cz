@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 540e72a4472fce626822f0b22bfac11a23aea205
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6ed04c875140f3ecd14eff31829e931efbe84ea2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466772"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606654"
 ---
 # <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Běžné chyby a upozornění kanálu obohacení AI v Azure Kognitivní hledání
 
@@ -32,36 +32,36 @@ Následující části vám pomůžou vyřešit chyby, takže indexování můž
 ### <a name="could-not-read-document"></a>Nepovedlo se přečíst dokument.
 Indexer nemohl přečíst dokument ze zdroje dat. K tomu může dojít v důsledku:
 
-| Důvod | Příklad: | Akce |
+| Důvod | Příklad | Akce |
 | --- | --- | --- |
-| Nekonzistentní typy polí v různých dokumentech | Typ hodnoty se neshoduje s typem sloupce. Nepodařilo se uložit `'{47.6,-122.1}'` ve sloupci autoři.  Očekávaný typ je JArray. | Ujistěte se, že je typ každého pole stejný v různých dokumentech. Pokud je například prvním dokumentem `'startTime'` pole DateTime a druhý dokument je řetězec, tato chyba bude dosaženo. |
+| Nekonzistentní typy polí v různých dokumentech | Typ hodnoty se neshoduje s typem sloupce. Nepovedlo se uložit `'{47.6,-122.1}'` ve sloupci autoři.  Očekávaný typ je JArray. | Ujistěte se, že je typ každého pole stejný v různých dokumentech. Pokud je například prvním dokumentem `'startTime'` pole DateTime a druhý dokument je řetězec, tato chyba bude dosaženo. |
 | chyby ze základní služby zdroje dat | (z Cosmos DB) `{"Errors":["Request rate is large"]}` | Zkontrolujte instanci úložiště, abyste měli jistotu, že je v pořádku. Možná budete muset upravit škálování nebo dělení na oddíly. |
 | přechodné problémy | Při přijímání výsledků ze serveru došlo k chybě na úrovni přenosu. (poskytovatel: Zprostředkovatel TCP, chyba: 0 – existující připojení bylo vynuceně ukončeno vzdáleným hostitelem | Občas dojde k neočekávaným potížím s připojením. Zkuste znovu spustit dokument v indexeru později. |
 
 ### <a name="could-not-extract-document-content"></a>Nelze extrahovat obsah dokumentu.
 Indexer se zdrojem dat objektu BLOB nemohl extrahovat obsah z dokumentu (například soubor PDF). K tomu může dojít v důsledku:
 
-| Důvod | Příklad: | Akce |
+| Důvod | Příklad | Akce |
 | --- | --- | --- |
 | objekt BLOB překračuje limit velikosti. | Dokument je `'150441598'` bajtů, což překračuje maximální velikost `'134217728'` bajtů pro extrakci dokumentů pro aktuální úroveň služby. | [chyby indexování objektů BLOB](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| objekt BLOB má nepodporovaný typ obsahu. | Dokument má nepodporovaný typ obsahu `'image/png'`. | [chyby indexování objektů BLOB](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
+| objekt BLOB má nepodporovaný typ obsahu. | Dokument má nepodporovaný typ obsahu `'image/png'` | [chyby indexování objektů BLOB](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | objekt BLOB je zašifrovaný. | Dokument se nepovedlo zpracovat – může být zašifrovaný nebo chráněný heslem. | [nastavení objektu BLOB](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed) |
 | přechodné problémy | Chyba při zpracování objektu BLOB: požadavek byl přerušen: požadavek byl zrušen. | Občas dojde k neočekávaným potížím s připojením. Zkuste znovu spustit dokument v indexeru později. |
 
 ### <a name="could-not-parse-document"></a>Nepovedlo se analyzovat dokument.
 Indexer si přečte dokument ze zdroje dat, ale při převodu obsahu dokumentu do zadaného schématu mapování polí došlo k problému. K tomu může dojít v důsledku:
 
-| Důvod | Příklad: | Akce |
+| Důvod | Příklad | Akce |
 | --- | --- | --- |
 | Chybí klíč dokumentu. | Klíč dokumentu nemůže být chybí nebo je prázdný. | Zajistěte, aby všechny dokumenty měly platný klíč dokumentu. |
 | Klíč dokumentu je neplatný. | Klíč dokumentu nemůže být delší než 1024 znaků. | Upravte klíč dokumentu tak, aby splňoval požadavky na ověření. |
-| Mapování polí pro pole nelze použít. | Nelze použít funkci mapování `'functionName'` do pole `'fieldName'`. Pole nemůže mít hodnotu null. Název parametru: bajty | Překontrolujte [mapování polí](search-indexer-field-mappings.md) definovaná v indexeru a porovnejte je s daty zadaného pole neúspěšného dokumentu. Může být nutné změnit mapování polí nebo data dokumentu. |
+| Mapování polí pro pole nelze použít. | Nelze použít funkci mapování `'functionName'` k poli `'fieldName'`. Pole nemůže mít hodnotu null. Název parametru: bajty | Překontrolujte [mapování polí](search-indexer-field-mappings.md) definovaná v indexeru a porovnejte je s daty zadaného pole neúspěšného dokumentu. Může být nutné změnit mapování polí nebo data dokumentu. |
 | Nepodařilo se přečíst hodnotu pole. | Nelze načíst hodnotu sloupce `'fieldName'` v indexu `'fieldIndex'`. Při přijímání výsledků ze serveru došlo k chybě na úrovni přenosu. (poskytovatel: poskytovatel protokolu TCP, chyba: 0 – existující připojení bylo vynuceně ukončeno vzdáleným hostitelem.) | Tyto chyby jsou obvykle způsobeny neočekávanými problémy s připojením ke zdrojové službě zdroje dat. Zkuste znovu spustit dokument v indexeru později. |
 
 ### <a name="could-not-execute-skill"></a>Nepovedlo se spustit dovednost.
 Indexer nemohl v dovednosti spustit dovednost.
 
-| Důvod | Příklad: | Akce |
+| Důvod | Příklad | Akce |
 | --- | --- | --- |
 | Problémy s přechodným připojením | Došlo k přechodné chybě. Zkuste to prosím znova později. | Občas dojde k neočekávaným potížím s připojením. Zkuste znovu spustit dokument v indexeru později. |
 | Potenciální chyba produktu | Došlo k neočekávané chybě. | To indikuje neznámou třídu selhání a může znamenat, že došlo k chybě produktu. Požádejte o pomoc [lístek podpory](https://ms.portal.azure.com/#create/Microsoft.Support) . |
@@ -80,7 +80,7 @@ Existují dva případy, kdy se může zobrazit tato chybová zpráva, z nichž 
 Mnohé z vestavěných dovedností rozpoznávání, jako je rozpoznávání jazyka, rozpoznávání entit nebo rozpoznávání OCR, jsou zajištěny koncovým bodem rozhraní API služby vnímání. Někdy dochází k přechodným problémům s těmito koncovými body a vyprší časový limit žádosti. V případě přechodných problémů nedochází k nápravě, s výjimkou čekání a akci opakujte. Jako zmírnění zvažte nastavení indexeru, který se bude [spouštět podle plánu](search-howto-schedule-indexers.md). Naplánované indexování se ponechá tam, kde skončila. Za předpokladu, že dojde k vyřešení přechodných problémů, by mělo být při dalším naplánovaném spuštění možné pokračovat v indexování a zpracování dovedností pro rozpoznávání.
 
 #### <a name="custom-skills"></a>Vlastní dovednosti
-Pokud narazíte na chybu s časovým limitem s vlastní dovedností, kterou jste vytvořili, můžete si vyzkoušet několik věcí. Nejdřív zkontrolujte svoji vlastní dovednost a ujistěte se, že není zablokovaná v nekonečné smyčce a že vrátí výsledek konzistentně. Jakmile ověříte, že se jedná o tento případ, určete, co je doba provádění vaší dovednosti. Pokud jste nezadali explicitně hodnotu `timeout` na vlastní definici dovednosti, pak je výchozí `timeout` 30 sekund. Pokud není dostatečná doba 30 sekund, než se vaše dovednost spustí, můžete zadat vyšší hodnotu `timeout` v definici vlastní dovednosti. Tady je příklad vlastní definice dovednosti, kde časový limit je nastavený na 90 sekund:
+Pokud narazíte na chybu s časovým limitem s vlastní dovedností, kterou jste vytvořili, můžete si vyzkoušet několik věcí. Nejdřív zkontrolujte svoji vlastní dovednost a ujistěte se, že není zablokovaná v nekonečné smyčce a že vrátí výsledek konzistentně. Jakmile ověříte, že se jedná o tento případ, určete, co je doba provádění vaší dovednosti. Pokud jste nezadali explicitně `timeout` hodnotu pro vlastní definici dovedností, výchozí `timeout` je 30 sekund. Pokud není dostatečná doba 30 sekund, než se vaše dovednost spustí, můžete zadat vyšší hodnotu `timeout` v definici vlastní dovednosti. Tady je příklad vlastní definice dovednosti, kde časový limit je nastavený na 90 sekund:
 
 ```json
   {
@@ -104,13 +104,13 @@ Pokud narazíte na chybu s časovým limitem s vlastní dovedností, kterou jste
       }
 ```
 
-Maximální hodnota, kterou můžete nastavit pro parametr `timeout`, je 230 sekund.  Pokud vaše vlastní dovednost nemůže běžet konzistentně během 230 sekund, můžete zvážit omezení `batchSize` vlastní dovednosti, takže bude mít méně dokumentů pro zpracování v rámci jednoho spuštění.  Pokud jste již nastavili `batchSize` na 1, bude nutné přepište dovednost, aby bylo možné ji spustit za méně než 230 sekund, nebo jinak rozdělit do několika vlastních dovedností, aby čas spuštění pro jednu vlastní dovednost byl maximálně 230 sekund. Další informace najdete v [dokumentaci k vlastním dovednostím](cognitive-search-custom-skill-web-api.md) .
+Maximální hodnota, kterou můžete nastavit pro parametr `timeout`, je 230 sekund.  Pokud vaše vlastní dovednost nemůže běžet konzistentně během 230 sekund, můžete zvážit omezení `batchSize` vlastní dovednosti, aby bylo možné zpracovávat méně dokumentů v rámci jednoho spuštění.  Pokud jste již `batchSize` nastavili na 1, bude nutné přepište dovednost, aby bylo možné ji spustit za méně než 230 sekund, nebo jinak rozdělit do několika vlastních dovedností tak, aby čas spuštění pro jednu vlastní dovednost byl maximálně 230 sekund. Další informace najdete v [dokumentaci k vlastním dovednostím](cognitive-search-custom-skill-web-api.md) .
 
-### <a name="could-not-mergeorupload--delete-document-to-the-search-index"></a>Nepovedlo se `MergeOrUpload` | dokument `Delete` do indexu hledání
+### <a name="could-not-mergeorupload--delete-document-to-the-search-index"></a>Nepovedlo se`MergeOrUpload`| dokument '`Delete`' do indexu hledání
 
 Dokument byl načten a zpracován, ale indexer ho nemohl přidat do indexu vyhledávání. K tomu může dojít v důsledku:
 
-| Důvod | Příklad: | Akce |
+| Důvod | Příklad | Akce |
 | --- | --- | --- |
 | Termín v dokumentu je větší než [limit 32 KB](search-limits-quotas-capacity.md#api-request-limits) . | Pole obsahuje termín, který je příliš velký. | Tomuto omezení se můžete vyhnout tím, že zajistíte, že pole není nakonfigurováno jako filtrovatelné, plošky nebo seřaditelné.
 | Dokument je větší než [maximální velikost požadavku rozhraní API](search-limits-quotas-capacity.md#api-request-limits) . | Dokument je moc velký a nedá se indexovat. | [Indexování velkých datových sad](search-howto-large-index.md)
@@ -123,7 +123,7 @@ Dokument byl načten a zpracován, ale indexer ho nemohl přidat do indexu vyhle
 
 Dokument byl načten a zpracován, ale kvůli neshodě v konfiguraci polí indexu a povaze dat extrahovaných indexerem nelze přidat do indexu vyhledávání. K tomu může dojít v důsledku:
 
-| Důvod | Příklad:
+| Důvod | Příklad
 | --- | ---
 | Datový typ polí extrahovaných indexerem není kompatibilní s datovým modelem odpovídajícího pole cílového indexu. | Datové pole '_data_' v dokumentu s klíčem '_data_' má neplatnou hodnotu ' typu ' EDM. String ' '. Očekával se typ Collection (EDM. String). |
 | Nepovedlo se extrahovat žádnou entitu JSON z řetězcové hodnoty. | Hodnotu typu EDM. String pole_data_nelze analyzovat jako objekt JSON. Chyba: po analýze hodnoty byl zjištěn neočekávaný znak: ' '. Cesta '_cesta_', řádek 1, pozice 3162. ' |
@@ -143,7 +143,7 @@ Upozornění neukončí indexování, ale označují podmínky, které by mohly 
 ### <a name="could-not-execute-skill-because-a-skill-input-was-invalid"></a>Nelze provést dovednost, protože vstup odbornosti byl neplatný.
 Indexer nemohl v dovednosti spustit dovednost, protože chybí vstup pro dovednost, nesprávný typ nebo jinak neplatné.
 
-Dovednosti v rozpoznávání mají požadované vstupy a volitelné vstupy. Například dovednost pro [extrakci klíčových frází](cognitive-search-skill-keyphrases.md) má dva požadované vstupy `text`, `languageCode` a žádné volitelné vstupy. Pokud jsou požadované vstupy neplatné, dovednost se přeskočí a vygeneruje upozornění. Přeskočené dovednosti negenerují žádné výstupy, takže pokud jiné dovednosti využívají výstupy vynechaných dovedností, můžou generovat další upozornění.
+Dovednosti v rozpoznávání mají požadované vstupy a volitelné vstupy. Například dovednost pro [extrakci klíčových frází](cognitive-search-skill-keyphrases.md) má dva požadované vstupy `text`, `languageCode`a žádné volitelné vstupy. Pokud jsou požadované vstupy neplatné, dovednost se přeskočí a vygeneruje upozornění. Přeskočené dovednosti negenerují žádné výstupy, takže pokud jiné dovednosti využívají výstupy vynechaných dovedností, můžou generovat další upozornění.
 
 Pokud chcete zadat výchozí hodnotu pro případ chybějícího vstupu, můžete použít [podmíněnou dovednost](cognitive-search-skill-conditional.md) k vygenerování výchozí hodnoty a potom použít výstup [podmíněné dovednosti](cognitive-search-skill-conditional.md) jako vstup dovednosti.
 
@@ -161,18 +161,18 @@ Pokud chcete zadat výchozí hodnotu pro případ chybějícího vstupu, můžet
 }
 ```
 
-| Důvod | Příklad: | Akce |
+| Důvod | Příklad | Akce |
 | --- | --- | --- |
 | Nesprávný vstup dovednosti je nesprávného typu. | Požadovaný vstup `X` dovednosti není očekávaného typu `String`. Požadovaný vstup `X` dovednosti není v očekávaném formátu. | Určité dovednosti očekávají vstupy konkrétního typu, například [mínění dovednost](cognitive-search-skill-sentiment.md) očekává, že `text` být řetězec. Pokud vstup Určuje hodnotu, která není typu řetězec, pak se dovednost nespustí a negeneruje žádné výstupy. Ujistěte se, že vaše datová sada má v typu stejné vstupní hodnoty, nebo použijte [vlastní dovednost webového rozhraní API](cognitive-search-custom-skill-web-api.md) k předzpracování vstupu. Pokud provádíte iteraci dovedností v poli, ověřte, že kontext dovednosti a vstup mají `*` ve správných pozicích. Pro pole by měl být obvykle jak kontext, tak vstupní zdroj `*`. |
 | Chybí vstup dovedností. | `X` chybí požadovaný vstup pro dovednost. | Pokud se zobrazí všechny dokumenty s tímto upozorněním, pravděpodobně dojde k překlepu ve vstupních cestách a v cestě byste měli poklepat na název vlastnosti velká a malá písmena, `*` v cestě a dokumenty ze zdroje dat definovat požadované vstupy. |
 | Vstup kódu pro jazyk dovednosti je neplatný. | `languageCode` pro zadávání dovedností má `X,Y,Z`následující kódy jazyka, minimálně jeden z nich je neplatný. | Další podrobnosti najdete [níže](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid) . |
 
 ### <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>Vstup dovedností ' languageCode ' má následující kódy jazyka ' X, Y, Z ', minimálně jeden z nich je neplatný.
-Jedna nebo více hodnot předaných do volitelného vstupu `languageCode` dovedností pro příjem dat není podporováno. Tato situace může nastat, Pokud předáváte výstup [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) k následným dovednostím a výstup se skládá z více jazyků, než jaké jsou podporované v těchto dovednostech.
+Jedna nebo více hodnot předaných do volitelného `languageCode` vstupu odbornosti pro příjem dat se nepodporuje. Tato situace může nastat, Pokud předáváte výstup [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) k následným dovednostím a výstup se skládá z více jazyků, než jaké jsou podporované v těchto dovednostech.
 
-Pokud víte, že je vaše datová sada v jednom jazyce, měli byste odebrat [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) a vstup dovedností `languageCode` a místo toho použít pro tuto dovednost parametr dovednosti `defaultLanguageCode`, za předpokladu, že je jazyk podporován pro tuto dovednost.
+Pokud víte, že je vaše datová sada v jednom jazyce, měli byste odebrat [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) `languageCode` a vstup odbornosti a místo toho použít pro tuto dovednost parametr dovednosti `defaultLanguageCode`, za předpokladu, že je jazyk pro tuto dovednost podporovaný.
 
-Pokud víte, že vaše datová sada obsahuje více jazyků, takže potřebujete [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) a `languageCode`, zvažte přidání [ConditionalSkill](cognitive-search-skill-conditional.md) pro odfiltrování textu s jazyky, které nejsou podporované před předáním do text na dovednost pro příjem dat.  Tady je příklad toho, co může vypadat jako u EntityRecognitionSkill:
+Pokud víte, že vaše datová sada obsahuje více jazyků, takže potřebujete [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) a `languageCode` vstup, zvažte přidání [ConditionalSkill](cognitive-search-skill-conditional.md) pro odfiltrování textu s jazyky, které nejsou podporované před předáním do text na dovednost pro příjem dat.  Tady je příklad toho, co může vypadat jako u EntityRecognitionSkill:
 
 ```json
 {
@@ -195,7 +195,7 @@ Tady jsou některé odkazy na aktuálně podporované jazyky pro každou dovedno
 ### <a name="skill-input-was-truncated"></a>Vstup dovedností byl zkrácen.
 Vnímání dovedností má omezení na délku textu, který lze analyzovat najednou. Pokud je textový vstup těchto dovedností nad tímto limitem, zkrátili jsme text tak, aby se dosáhlo limitu, a pak se na tomto zkráceném textu provede obohacení. To znamená, že se dovednost spustí, ale ne všechna vaše data.
 
-V následujícím příkladu LanguageDetectionSkill může vstupní pole `'text'` aktivovat toto upozornění, pokud překročí limit znaků. Omezení pro zadávání dovedností najdete v [dokumentaci k dovednostem](cognitive-search-predefined-skills.md).
+V následujícím příkladu LanguageDetectionSkill může vstupní pole `'text'` aktivovat toto upozornění, pokud se překročí limit znaků. Omezení pro zadávání dovedností najdete v [dokumentaci k dovednostem](cognitive-search-predefined-skills.md).
 
 ```json
  {
@@ -224,7 +224,12 @@ Možnost obnovit nedokončenou úlohu indexování je predikátem, ve kterém js
 
 Toto chování je možné přepsat, což umožňuje přírůstkové průběh a potlačení tohoto upozornění pomocí vlastnosti `assumeOrderByHighWatermarkColumn` Configuration.
 
-[Další informace o Cosmos DB přírůstkovém průběhu a vlastních dotazech.](https://go.microsoft.com/fwlink/?linkid=2099593)
+Další informace najdete v tématu [přírůstkový průběh a vlastní dotazy](search-howto-index-cosmosdb.md#IncrementalProgress).
+
+### <a name="truncated-extracted-text-to-x-characters"></a>Zkrácený extrahovaný text na X znaků
+Indexery omezují, kolik textu lze z jednoho dokumentu extrahovat. Toto omezení závisí na cenové úrovni: 32 000 znaků pro úroveň Free, 64 000 pro Basic a 4 000 000 pro úrovně Standard, Standard S2 a Standard S3. Zkrácený text nebude indexován. Chcete-li se tomuto upozornění vyhnout, zkuste rozdělit dokumenty s velkými objemy textu do několika menších dokumentů. 
+
+Další informace najdete v tématu [omezení indexerů](search-limits-quotas-capacity.md#indexer-limits).
 
 ### <a name="could-not-map-output-field-x-to-search-index"></a>Výstupní pole ' X ' nelze namapovat na index vyhledávání
 Mapování polí výstupu, které odkazují na neexistující nebo null data, vytvoří upozornění pro každý dokument a výsledkem bude prázdné pole indexu. Chcete-li tento problém vyřešit, dvakrát ověřte, zda zdrojové cesty mapování polí pro výstup neumožňují překlepy, nebo nastavte výchozí hodnotu pomocí [podmíněné dovednosti](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist).

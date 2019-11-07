@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/05/2019
 ms.author: memildin
-ms.openlocfilehash: f6fba7bc8e8b7d040805f0be62d436caebf638af
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: d705174f46ba38f37ae8cce9839c2d1f63ab6bf8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520905"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73664272"
 ---
 # <a name="threat-detection-for-cloud-native-computing-in-azure-security-center"></a>Detekce hrozeb pro nativní výpočetní prostředí cloudu v Azure Security Center
 
@@ -40,10 +40,10 @@ Security Center má také přístup k podkladovým izolovaným prostorům a virt
 
 > [!div class="mx-tableFixed"]
 
-|Upozornění|Popis|
+|Výstrahy|Popis|
 |---|---|
 |**Zjistila se podezřelá vyvolání motivu WordPress.**|Protokol aktivity App Service označuje možnou aktivitu vkládání kódu na prostředek App Service.<br/> Tato podezřelá aktivita se podobá aktivitě, která pracuje s motivem WordPress, aby podporovala spouštění kódu na straně serveru následovaný přímým webovým požadavkem na vyvolání souboru s tímto tématem. Tento typ aktivity může být součástí kampaně útoku přes WordPress.|
-|**Bylo zjištěno připojení k webové stránce z neobvyklé IP adresy.**|Protokol aktivit App Service označuje připojení k citlivé webové stránce ze zdrojové adresy, která se k němu ještě nepřipojila. To může znamenat, že se někdo pokusí o útok hrubou silou na stránky pro správu vaší webové aplikace. Může to být také výsledkem legitimního uživatele, který používá novou IP adresu.|
+|**Bylo zjištěno připojení k webové stránce z neobvyklé IP adresy.**|Protokol aktivit App Service označuje připojení k citlivé webové stránce ze zdrojové adresy, která se k němu ještě nepřipojila. Toto připojení může znamenat, že se někdo pokusí o útok hrubou silou na stránky pro správu vaší webové aplikace. Může to být také výsledkem legitimního uživatele, který používá novou IP adresu.|
 |**V nástroji Analýza hrozeb se našla IP adresa, která se připojila k vašemu Azure App Service rozhraní FTP.**|Analýza protokolů App Service FTP zjistila připojení ze zdrojové adresy, která byla nalezena v informačním kanálu analýzy hrozeb. Během tohoto připojení uživatel přistupoval k uvedeným stránkám.|
 |**Zjistilo se webové otisky prstů.**|Protokol aktivit App Service označuje možnou aktivitu otisku webu na prostředku App Service. <br/>Tato podezřelá aktivita je přidružená k nástroji s názvem blind slonů. Nástroj vyhledá webové servery otiskem prstů a pokusí se zjistit nainstalované aplikace a jejich verze. Útočníci často používají tento nástroj k tomu, aby vyhledali chyby zabezpečení webových aplikací.|
 |**Zjištěn podezřelý přístup k potenciálně ohroženým webovým stránkám**|Protokol aktivity App Service označuje, že se použila webová stránka, na kterou se jeví citlivý. <br/>Tato podezřelá aktivita pochází ze zdrojové adresy, jejíž model přístupu se podobá webovému skeneru. Tento druh aktivity se často přidruží k pokusu útočníka, aby zkontroloval vaši síť a pokusil se získat přístup k citlivým nebo ohroženým webovým stránkám.|
@@ -59,15 +59,47 @@ Security Center poskytuje detekci hrozeb v reálném čase pro vaše kontejnerov
 
 Zjišťují se hrozby na různých úrovních: 
 
-* Agent Security Center **úrovně hostitele** (dostupný na úrovni Standard, viz [ceny](security-center-pricing.md) ) monitoruje Linux pro podezřelé aktivity. Agent aktivuje výstrahy pro podezřelé aktivity pocházející z uzlu nebo kontejneru, který je v něm spuštěný. Příklady takových aktivit zahrnují detekci webového prostředí a připojení se známými podezřelými IP adresami. </br>
-Pro lepší přehled o zabezpečení vašich kontejnerových prostředí agent sleduje analýzu specifickou pro kontejnery. Aktivuje výstrahy pro události, jako je vytvoření privilegovaného kontejneru, podezřelý přístup k serverům rozhraní API a servery Secure Shell (SSH) běžící uvnitř kontejneru Docker.
+* Agent Security Center **úrovně hostitele** (dostupný na úrovni Standard, viz [ceny](security-center-pricing.md) ) monitoruje Linux pro podezřelé aktivity. Agent aktivuje výstrahy pro podezřelé aktivity pocházející z uzlu nebo kontejneru, který je v něm spuštěný. Příklady takových aktivit zahrnují detekci webového prostředí a připojení se známými podezřelými IP adresami.
+
+    Pro lepší přehled o zabezpečení vašich kontejnerových prostředí agent sleduje analýzu specifickou pro kontejnery. Aktivuje výstrahy pro události, jako je vytvoření privilegovaného kontejneru, podezřelý přístup k serverům rozhraní API a servery Secure Shell (SSH) běžící uvnitř kontejneru Docker.
 
     >[!NOTE]
     > Pokud se rozhodnete neinstalovat agenty na hostitele, bude se vám zobrazovat jenom podmnožina výhod a upozornění detekce hrozeb. Pořád budete dostávat výstrahy týkající se analýzy sítě a komunikace se škodlivými servery.
 
-* Pro **úroveň clusteru AKS**je sledování detekce hrozeb založené na analýze protokolů auditu Kubernetes. Pokud chcete toto monitorování bez **agentů** povolit, přidejte na stránce s **nastavením cenové &** možnost Kubernetes (podívejte se na [ceny](security-center-pricing.md)). Pokud chcete na této úrovni generovat výstrahy, Security Center monitorovat služby spravované AKS pomocí protokolů načtených pomocí AKS. Mezi příklady událostí na této úrovni patří exponované řídicí panely Kubernetes, vytváření vysoce privilegovaných rolí a citlivých připojení. 
+* Pro **úroveň clusteru AKS**je sledování detekce hrozeb založené na analýze protokolů auditu Kubernetes. Pokud chcete toto monitorování bez **agentů** povolit, přidejte na stránce s **nastavením cenové &** možnost Kubernetes (podívejte se na [ceny](security-center-pricing.md)). Pokud chcete na této úrovni generovat výstrahy, Security Center monitorovat služby spravované AKS pomocí protokolů načtených pomocí AKS. Mezi příklady událostí na této úrovni patří exponované řídicí panely Kubernetes, vytváření vysoce privilegovaných rolí a vytváření citlivých připojení. 
 
     >[!NOTE]
     > Security Center generuje upozornění na detekci pro akce a nasazení služby Azure Kubernetes, ke kterým dochází po povolení možnosti Kubernetes v nastaveních předplatného. 
 
 Náš globální tým výzkumných pracovníků pro zabezpečení nepřetržitě monitoruje i na šířku hrozby. Přidávají výstrahy a chyby specifické pro kontejner při jejich zjištění.
+
+
+### <a name="aks-cluster-level-alerts"></a>Výstrahy na úrovni clusteru AKS
+
+> [!div class="mx-tableFixed"]
+
+|Výstrahy|Popis|
+|---|---|
+|**VERZE PREVIEW – zjistila se vazba role Správce clusteru.**|Analýza protokolu auditu Kubernetes zjistila novou vazbu na roli Správce clusteru, která má za následek oprávnění správce. Zbytečné poskytování oprávnění správce může mít za následek problémy s eskalací oprávnění v clusteru.|
+|**Zjištěný řídicí panel Kubernetes vystavený verzí PREVIEW**|Analýza protokolu auditu Kubernetes zjistila expozici řídicího panelu Kubernetes službou Vyrovnávání zatížení. Vystavené řídicí panely umožňují neověřený přístup ke správě clusteru a představují bezpečnostní hrozbu.|
+|**PREVIEW – zjistila se nová role s vysokou úrovní oprávnění.**|Analýza protokolu auditu Kubernetes zjistila novou roli s vysokou úrovní oprávnění. Vazba na roli s vysokými oprávněními poskytuje zvýšená oprávnění uživatele nebo skupiny v clusteru. Zbytečně poskytování zvýšených oprávnění může způsobit problémy eskalace oprávnění v clusteru.|
+|**PREVIEW – zjistil se nový kontejner v oboru názvů Kube-System.**|Analýza protokolu auditu Kubernetes zjistila nový kontejner v oboru názvů Kube-System, který není mezi kontejnery, které obvykle běží v tomto oboru názvů. Obory názvů Kube-System by neměly obsahovat prostředky uživatele. Útočníci můžou pomocí tohoto oboru názvů skrývat škodlivé součásti.|
+|**PREVIEW – zjistil se kontejner dolování z digitálního Currency.**|Analýza protokolu auditu Kubernetes zjistila kontejner, který obsahuje image přidruženou k nástroji dolování v digitální měně.|
+|**VERZE PREVIEW – zjistil se privilegovaný kontejner.**|Analýza protokolu auditu Kubernetes zjistila nový kontejner s oprávněním. Privilegovaný kontejner má přístup k prostředkům uzlu a přerušuje izolaci mezi kontejnery. Pokud dojde k ohrožení zabezpečení, může útočník získat přístup k uzlu pomocí privilegovaného kontejneru.|
+|**PREVIEW – zjistil se kontejner s citlivým připojením svazku.**|Analýza protokolu auditu Kubernetes zjistila nový kontejner s citlivým připojením svazku. Zjištěný svazek je hostPath typ, který připojuje citlivý soubor nebo složku z uzlu do kontejneru. Pokud dojde k ohrožení bezpečnosti kontejneru, útočník může toto připojení použít k získání přístupu k uzlu.|
+
+
+
+### <a name="host-level-alerts"></a>Výstrahy na úrovni hostitele
+
+> [!div class="mx-tableFixed"]
+
+|Výstrahy|Popis|
+|---|---|
+|**Zjistil se privilegovaný kontejner.**|Protokoly počítače označují, že je spuštěn kontejner Docker s oprávněním. Privilegovaný kontejner má plný přístup k prostředkům hostitele. Pokud dojde k ohrožení zabezpečení, může útočník získat přístup k hostitelskému počítači pomocí privilegovaného kontejneru.|
+|**Privilegovaný příkaz spuštěný v kontejneru**|Protokoly počítače označují, že v kontejneru Docker byl spuštěn privilegovaný příkaz. Privilegovaný příkaz má rozšířená oprávnění na hostitelském počítači.|
+|**Zjistil se vystavený démon Docker.**|Protokoly počítače označují, že démon Docker (dockerd) zveřejňuje soket TCP. Ve výchozím nastavení konfigurace Docker nepoužívá šifrování ani ověřování, když je povolený soket TCP. Kdokoli s přístupem k příslušnému portu pak může získat úplný přístup k démonu Docker.|
+|**Server SSH běží uvnitř kontejneru.**|Protokoly počítače označují, že server SSH běží uvnitř kontejneru Docker. I když toto chování může být záměrné, často to znamená, že kontejner je nesprávně nakonfigurovaný nebo porušil.|
+|**Zjistil se kontejner s Miner imagí.**|Protokoly počítače označují spuštění kontejneru Docker se spuštěnou imagí přidruženou k dolování v digitální měně. Toto chování může znamenat, že vaše prostředky budou zneužity.|
+|**Podezřelá žádost o rozhraní Kubernetes API**|Protokoly počítače označují, že v rozhraní Kubernetes API byl proveden podezřelý požadavek. Požadavek byl odeslán z uzlu Kubernetes, případně z jednoho z kontejnerů, které jsou spuštěny v uzlu. I když toto chování může být záměrné, může to znamenat, že uzel používá napadený kontejner.|
+|**Podezřelá žádost na řídicí panel Kubernetes**|Protokoly počítače označují, že na řídicím panelu Kubernetes byl proveden podezřelý požadavek. Požadavek byl odeslán z uzlu Kubernetes, případně z jednoho z kontejnerů, které jsou spuštěny v uzlu. I když toto chování může být záměrné, může to znamenat, že uzel používá napadený kontejner.|

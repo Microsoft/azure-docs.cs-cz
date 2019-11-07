@@ -1,17 +1,17 @@
 ---
-title: Regionální redundance a převzetí služeb při selhání s využitím Azure HPC cache (Preview)
+title: Regionální redundance a převzetí služeb při selhání s využitím mezipaměti HPC Azure
 description: Techniky pro poskytování funkcí převzetí služeb při selhání pro zotavení po havárii s využitím mezipaměti HPC Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: ca771ceed433c6eb0ed26bba6fcb1bf11db211f0
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: e0ff9bc66c7d185f8fe07b4b4574833fcd7e2604
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72031614"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582081"
 ---
 # <a name="use-multiple-caches-for-regional-failover-recovery"></a>Použití více mezipamětí pro místní obnovení převzetí služeb při selhání
 

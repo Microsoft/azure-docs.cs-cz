@@ -1,6 +1,6 @@
 ---
 title: Kurz – konfigurace mezipamětí v mezipaměti Azure pro Redis pomocí Ansible
-description: Naučte se používat Ansible k vytváření, škálování a restartování Azure cache pro Redis.
+description: Naučte se používat Ansible k vytváření, škálování, restartování a přidání pravidla brány firewall do Azure cache pro Redis.
 keywords: Ansible, Azure, DevOps, bash, PlayBook, cache, Redis
 ms.topic: tutorial
 ms.service: ansible
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 92592dffb3a9094ae74328e8819cafc9469c2ac7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 95b42bc9539c36a533eb528c3c26ade89e99290b
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241796"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614368"
 ---
 # <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>Kurz: Konfigurace mezipamětí v mezipaměti Azure pro Redis pomocí Ansible
 
@@ -31,7 +31,7 @@ ms.locfileid: "72241796"
 > * Přidání pravidla brány firewall do mezipaměti
 > * Odstranění mezipaměti
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]

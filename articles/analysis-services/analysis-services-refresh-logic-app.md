@@ -1,17 +1,17 @@
 ---
 title: Aktualizace pomocí Logic Apps pro Azure Analysis Services modely | Microsoft Docs
-description: Naučte se, jak kódovat asynchronní aktualizace pomocí Azure Logic Apps.
+description: Tento článek popisuje, jak pomocí Azure Logic Apps kódovat asynchronní aktualizace pro Azure Analysis Services.
 author: chrislound
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: acf31bf3e7e8c3a0835640dee36f8435a1eba625
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a44aa5b355bea675f5d99761d97b8876a9b2a7d7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294612"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572346"
 ---
 # <a name="refresh-with-logic-apps"></a>Aktualizace pomocí Logic Apps
 
@@ -19,7 +19,7 @@ Pomocí Logic Apps a volání REST můžete provádět automatizované operace a
 
 Další informace o použití rozhraní REST API s Azure Analysis Services najdete v tématu [asynchronní aktualizace s REST API](analysis-services-async-refresh.md).
 
-## <a name="authentication"></a>Ověření
+## <a name="authentication"></a>Ověřování
 
 Všechna volání musí být ověřena pomocí platného tokenu Azure Active Directory (OAuth 2).  Příklady v tomto článku budou k ověření Azure Analysis Services použít instanční objekt (SPN). Další informace najdete v tématu [Vytvoření instančního objektu pomocí služby Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -28,7 +28,7 @@ Všechna volání musí být ověřena pomocí platného tokenu Azure Active Dir
 > [!IMPORTANT]
 > V následujících příkladech se předpokládá, že je brána firewall Azure Analysis Services zakázaná.  Pokud je brána firewall povolená, musí být v bráně Azure Analysis Services firewall povolená veřejná IP adresa iniciátoru žádosti. Další informace o rozsahu IP adres aplikace logiky na oblast najdete v tématu [omezení a informace o konfiguraci pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses).
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 #### <a name="create-a-service-principal-spn"></a>Vytvoření instančního objektu (SPN)
 
@@ -65,7 +65,7 @@ Aktivitu HTTP nakonfigurujte následujícím způsobem:
 |Vlastnost  |Hodnota  |
 |---------|---------|
 |**Metoda**     |SPUŠTĚNÍ         |
-|**IDENTIFIKÁTOR URI**     | https://*na server region*/Servers/*AAS název serveru*/Models/*název vaší databáze*/refreshes <br /> <br /> Například: https: \//westus. asazure. Windows. NET/servery/MyServer/Models/AdventureWorks/aktualizace|
+|**IDENTIFIKÁTOR URI**     | https://*na server region*/Servers/*AAS název serveru*/Models/*název vaší databáze*/refreshes <br /> <br /> Například: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|
 |**Hlavičky**     |   Content-Type, Application/JSON <br /> <br />  ![Hlavičky](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Text**     |   Další informace o vytváření textu žádosti najdete v tématu [asynchronní aktualizace pomocí REST API-post/refreshes](analysis-services-async-refresh.md#post-refreshes). |
 |**Ověřování**     |Protokol OAuth pro Active Directory         |

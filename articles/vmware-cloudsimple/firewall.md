@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 798f95281740213ac23892eb3b54ff780ca18395
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 411b4bb74c21a445f4001c949e1c7811af212453
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772348"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606452"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Nastavení tabulek a pravidel brány firewall pro privátní cloudy
 
@@ -33,6 +33,9 @@ Tabulky brány firewall a přidružená pravidla umožňují určit omezení pro
 4. Zadejte název tabulky.
 5. Zobrazí se výchozí pravidlo pro tabulku. Kliknutím na **vytvořit nové pravidlo** vytvořte další pravidlo. Podrobnosti najdete v následujícím postupu.
 6. Kliknutím na **Hotovo** uložte tabulku brány firewall.
+
+> [!IMPORTANT]
+> Pro každý privátní Cloud můžete vytvořit až dvě tabulky brány firewall.
 
 ## <a name="firewall-rules"></a>Pravidla brány firewall
 
@@ -62,12 +65,15 @@ Pravidla brány firewall určují, jak brána firewall zpracovává konkrétní 
 
 3. Kliknutím na **Hotovo** uložte pravidlo a přidejte ho do seznamu pravidel pro tabulku brány firewall.
 
+> [!IMPORTANT]
+> Každá tabulka brány firewall může mít až 10 příchozích pravidel a 20 odchozích pravidel. Tato omezení se dají zvýšit [kontaktováním podpory](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+
 ## <a name="attach-vlanssubnets"></a>Připojit sítě VLAN a podsítě
 
 Po definování tabulky brány firewall můžete určit podsítě, na které se vztahují pravidla v tabulce.
 
-1. Na stránce**tabulky brány firewall** **sítě** > vyberte tabulku brány firewall.
+1. Na stránce **tabulky brány firewall** **sítě** > vyberte tabulku brány firewall.
 2. Otevřete kartu **připojené sítě VLAN/podsíť** .
 3. Klikněte na **připojit k síti VLAN nebo podsíti**.
 4. Vyberte privátní cloud a síť VLAN. Zobrazí se název přidružené podsítě a blok CIDR.
-5. Klikněte na **Submit** (Odeslat).
+5. Klikněte na **Odeslat**.

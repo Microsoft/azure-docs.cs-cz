@@ -1,6 +1,6 @@
 ---
-title: Doporučení – koncepty služby SQL Data Warehouse | Dokumentace Microsoftu
-description: Další informace o doporučení SQL Data Warehouse a jak se generují
+title: SQL Data Warehouse doporučení
+description: Informace o SQL Data Warehouse doporučeních a způsobu jejich vygenerování
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
@@ -10,56 +10,57 @@ ms.subservice: manage
 ms.date: 11/05/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b275f23209979e1a8068ecd99465f7b52392bc6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 09dff2c8ddf5b9038aa715cef02e099ccbc68f8a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61421218"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685920"
 ---
-# <a name="sql-data-warehouse-recommendations"></a>Doporučení pro SQL Data Warehouse
+# <a name="sql-data-warehouse-recommendations"></a>SQL Data Warehouse doporučení
 
-Tento článek popisuje doporučení obsluhuje SQL Data Warehouse pomocí Azure Advisoru.  
+Tento článek popisuje doporučení obsluhovaná SQL Data Warehouse prostřednictvím Azure Advisor.  
 
-SQL Data Warehouse poskytuje doporučení, aby váš datový sklad je trvale optimalizován pro výkon. Datový sklad doporučení jsou úzce integrovaná s [Azure Advisoru](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) , kde přinášejí osvědčené postupy přímo v rámci [webu Azure portal](https://aka.ms/Azureadvisor). SQL Data Warehouse analyzuje aktuální stav služby data warehouse, shromažďuje telemetrická data a zařízení Surface doporučení pro aktivní úlohy na denní bázi. Scénáře podporovaná data warehouse doporučení jsou popsány níže spolu s jak použít doporučené akce.
+SQL Data Warehouse poskytuje doporučení k zajištění konzistentního optimalizace datového skladu pro výkon. Doporučení pro datový sklad jsou úzce integrovaná s [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) , aby vám poskytovala osvědčené postupy přímo v rámci [Azure Portal](https://aka.ms/Azureadvisor). SQL Data Warehouse analyzuje aktuální stav datového skladu, shromažďuje telemetrii a nabízí doporučení pro vaše aktivní úlohy na denní tempo. Podporované scénáře doporučení pro datový sklad jsou popsány níže spolu s postupem použití doporučených akcí.
 
-Pokud máte nějakou zpětnou vazbu na Poradce pro SQL Data Warehouse nebo setkáte s problémy, kontaktujte [ sqldwadvisor@service.microsoft.com ](mailto:sqldwadvisor@service.microsoft.com).   
+Pokud máte jakoukoli zpětnou vazbu ke službě SQL Data Warehouse Advisor nebo máte nějaké problémy, nahlaste se [sqldwadvisor@service.microsoft.com](mailto:sqldwadvisor@service.microsoft.com).   
 
-Klikněte na tlačítko [tady](https://aka.ms/Azureadvisor) zkontrolujte svá doporučení ještě dnes! Aktuálně tato funkce se vztahuje na Gen2 pouze datové sklady. 
+Pokud si chcete vyzkoušet doporučení ještě dnes, klikněte [sem](https://aka.ms/Azureadvisor) . Tato funkce je momentálně platná jenom pro Gen2 datové sklady. 
 
-## <a name="data-skew"></a>Nerovnoměrná distribuce dat
+## <a name="data-skew"></a>Zkosit data
 
-Nerovnoměrná distribuce dat může způsobit další data pohybu nebo prostředků problémová místa při spuštění vaší úlohy. Následující dokumentace popisuje zobrazit identifikovat Nerovnoměrná distribuce dat a zabránit ho tak, že vyberete optimální distribučního klíče.
+Při spuštění úlohy může zkosit data způsobit větší problém při přesunu dat nebo při jejich používání. V následující dokumentaci se dozvíte, jak identifikovat zešikmení dat a zabránit tomu, aby se vybraly výběrem optimálního distribučního klíče.
 
-- [Zjistit a odebrat Nerovnoměrná distribuce](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice) 
+- [Identifikace a odebrání zkosení](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice) 
 
-## <a name="no-or-outdated-statistics"></a>Ne nebo jsou zastaralé statistiky
+## <a name="no-or-outdated-statistics"></a>Žádné nebo zastaralé statistiky
 
-Budete mít statistiky neoptimální může vážně ovlivnit výkon dotazů, protože to může způsobit optimalizátoru dotazů SQL Data Warehouse ke generování plány neoptimální dotazů. Následující dokumentace popisuje osvědčené postupy týkající se vytváření a aktualizaci statistiky:
+Díky podoptimálním statistikám může mít vážně dopad na výkon dotazů, protože to může způsobit, že Optimalizátor dotazů SQL Data Warehouse vygeneruje neoptimální plány dotazů. Následující dokumentace popisuje osvědčené postupy při vytváření a aktualizaci statistik:
 
-- [Vytváření a aktualizaci statistik tabulek](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)
+- [Vytváření a aktualizace statistiky tabulky](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)
 
-Pokud chcete zobrazit seznam ovlivněných tabulek pomocí těchto doporučení, spusťte následující příkaz [skriptu T-SQL](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables). Advisor nepřetržitě spouští stejný skript T-SQL ke generování těchto doporučení.
+Pokud chcete zobrazit seznam ovlivněných tabulek pomocí těchto doporučení, spusťte následující [skript T-SQL](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables). Advisor průběžně spouští stejný skript T-SQL, aby vygeneroval tato doporučení.
 
 ## <a name="replicate-tables"></a>Replikovat tabulky
 
-Replikované tabulky doporučení služby Advisor detekuje tabulky kandidáty na základě následující fyzické charakteristiky:
+V případě doporučení pro replikovanou tabulku detekuje Advisor kandidáty na tabulku na základě následujících fyzických vlastností:
 
-- Replikované tabulky velikostí
+- Velikost replikované tabulky
 - Počet sloupců
 - Typ distribuce tabulky
 - Počet oddílů
 
-Advisor průběžně využívá heuristiky založený na úlohách, jako je četnost přístupu tabulky, v průměru vráceny řádky a prahové hodnoty kolem údajů o skladu velikost a aktivitu pro Ujistěte se, že jsou generovány vysoce kvalitní doporučení. 
+Advisor průběžně využívá heuristiky založené na úlohách, jako je četnost přístupů k tabulkám, počet vrácených řádků v průměru a prahové hodnoty velikosti datového skladu a aktivity, abyste zajistili, že se vygenerují vysoce kvalitní doporučení. 
 
-Následující část popisuje heuristickými metodami založený na úlohách, mohou najít na webu Azure Portal pro každou replikovanou tabulku doporučení:
+Níže jsou popsány heuristicky založené na úlohách, které můžete najít v Azure Portal pro každé z doporučení replikované tabulky:
 
-- Kontrola avg-průměrné procento řádků vrácených z tabulky pro každý přístup k tabulce za posledních 7 dnů
-- Častá čtení, není pro sadu vs11 – označuje, že tabulka nebyla aktualizována v posledních sedmi dnech při zobrazování aktivit přístupu
-- Číst/aktualizovat poměr - poměr jak často se použila v tabulce vzhledem k jeho aktualizace za posledních sedm dnů
-- Aktivita – měří využití na základě aktivity přístupu. To porovnává aktivit přístupu tabulky vzhledem k aktivity přístupu k tabulce v datovém skladu za posledních sedm dnů. 
+- Průměrný počet řádků vrácených z tabulky pro každý přístup k tabulce za posledních sedm dní
+- Časté čtení bez aktualizace – označuje, že se tabulka během posledních sedmi dnů neaktualizovala při zobrazení aktivity přístupu.
+- Poměr pro čtení a aktualizaci – poměr mezi časté, k němuž byla tabulka přístupná, když se aktualizuje za posledních sedm dní
+- Activity – měří míru využití na základě aktivity přístupu. Tím se porovná aktivita přístupu k tabulce vzhledem k průměrné aktivitě přístupu k tabulce v rámci datového skladu za posledních sedm dní. 
 
-Aktuálně služby Advisor zobrazí pouze maximálně čtyři replikované tabulky kandidáty najednou v clusterovaných indexech columnstore priorit nejvyšší aktivity.
+V současné době se u clusterovaných indexů columnstore zobrazí jenom čtyři kandidáty replikované tabulky s upřednostněním nejvyšší aktivity.
 
 > [!IMPORTANT]
-> Doporučení replikované tabulky není úplné testování a nebere operace přesunu dat účtu. Pracujeme na přidání tohoto jako heuristické metody, ale do té doby by měla vždy ověřovaly vašich úloh po použití doporučení. Obraťte se prosím na sqldwadvisor@service.microsoft.com při zjištění doporučení replikované tabulky, které způsobí, že úlohy chcete vrátit. Další informace o replikované tabulky, navštivte následující [dokumentaci](https://docs.microsoft.com/azure/sql-data-warehouse/design-guidance-for-replicated-tables#what-is-a-replicated-table).
+> Doporučení replikované tabulky není úplného ověření a nebere v úvahu operace přesunu dat. Pracujeme na tom, abychom tento postup používali jako heuristickou, ale mezitím byste po použití doporučení měli vždy ověřit své zatížení. Pokud si vyžádáte doporučení replikovaných tabulek, která způsobí, že se vaše úloha vrátí do, kontaktujte prosím sqldwadvisor@service.microsoft.com. Další informace o replikovaných tabulkách najdete v následující [dokumentaci](https://docs.microsoft.com/azure/sql-data-warehouse/design-guidance-for-replicated-tables#what-is-a-replicated-table).

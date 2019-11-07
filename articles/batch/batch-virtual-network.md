@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: b4be715bd910326b3d06837508e7a07ac853189f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 78f29bacaadac5f01e4a8dd26bf03b2bda84f2bf
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322649"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73577577"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Vytvoření fondu Azure Batch ve virtuální síti
 
@@ -30,7 +30,7 @@ Fond Azure Batch obsahuje nastavení, která umožňují komunikačním uzlům v
 
 * **Virtuální síť Azure**. V následující části najdete informace o požadavcích a konfiguraci virtuální sítě. Pokud chcete připravit virtuální síť s jednou nebo více podsítěmi předem, můžete použít Azure Portal, Azure PowerShell, rozhraní příkazového řádku Azure (CLI) nebo jiné metody.  
   * Pokud chcete vytvořit virtuální síť založenou na Azure Resource Manager, přečtěte si téma [vytvoření virtuální sítě](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Pro nová nasazení se doporučuje použít virtuální síť založená na Správce prostředků a je podporovaná jenom ve fondech v konfiguraci virtuálního počítače.
-  * Pokud chcete vytvořit klasickou virtuální síť, přečtěte si téma [vytvoření virtuální sítě (klasické) s několika](../virtual-network/create-virtual-network-classic.md)podsítěmi. Klasická virtuální síť je podporovaná jenom ve fondech v konfiguraci Cloud Services.
+  * Pokud chcete vytvořit klasickou virtuální síť, přečtěte si téma [vytvoření virtuální sítě (klasické) s několika podsítěmi](../virtual-network/create-virtual-network-classic.md). Klasická virtuální síť je podporovaná jenom ve fondech v konfiguraci Cloud Services.
 
 ## <a name="vnet-requirements"></a>Požadavky na virtuální síť
 
@@ -56,15 +56,15 @@ Ve vaší organizaci můžete mít požadavky na přesměrování (vynucení) in
 
 Aby bylo zajištěno, že výpočetní uzly fondu Azure Batch fungují ve virtuální síti s povoleným vynuceným tunelovým propojením, je nutné pro tuto podsíť přidat následující [trasy definované uživatelem](../virtual-network/virtual-networks-udr-overview.md) :
 
-* Služba Batch potřebuje komunikovat s výpočetními uzly fondu pro úlohy plánování. Pokud chcete povolit tuto komunikaci, přidejte uživatelsky definovanou trasu pro každou IP adresu, kterou používá služba Batch, v oblasti, ve které existuje účet Batch. Informace o tom, jak získat seznam IP adres služby Batch, najdete v tématu [značky služeb v](../virtual-network/security-overview.md#service-tags-in-on-premises) místním prostředí.
+* Služba Batch potřebuje komunikovat s výpočetními uzly fondu pro úlohy plánování. Pokud chcete povolit tuto komunikaci, přidejte uživatelsky definovanou trasu pro každou IP adresu, kterou používá služba Batch, v oblasti, ve které existuje účet Batch. Informace o tom, jak získat seznam IP adres služby Batch, najdete v tématu [značky služeb v](../virtual-network/service-tags-overview.md) místním prostředí.
 
-* Ujistěte se, že odchozí přenosy do Azure Storage (konkrétně adresy URL formuláře `<account>.table.core.windows.net`, `<account>.queue.core.windows.net`a `<account>.blob.core.windows.net`) nejsou blokované prostřednictvím místního síťového zařízení.
+* Zajistěte, aby odchozí přenosy do Azure Storage (konkrétně adresy URL formuláře `<account>.table.core.windows.net`, `<account>.queue.core.windows.net`a `<account>.blob.core.windows.net`) nejsou blokované prostřednictvím místního síťového zařízení.
 
 Když přidáte trasu definovanou uživatelem, definujte trasu pro každou související předponu IP adresy dávky a nastavte **typ dalšího segmentu směrování** na **Internet**. Prohlédněte si následující příklad:
 
 ![Trasa definovaná uživatelem](./media/batch-virtual-network/user-defined-route.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Podrobný přehled služby Batch najdete v tématu [vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch](batch-api-basics.md).
 - Další informace o vytváření tras definovaných uživatelem najdete v tématu [vytvoření trasy definované uživatelem Azure Portal](../virtual-network/tutorial-create-route-table-portal.md).

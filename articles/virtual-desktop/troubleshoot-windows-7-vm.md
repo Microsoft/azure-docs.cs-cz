@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s virtuálními počítači s Windows 7 na virtuálním počítači s Windows – Azure
+title: Virtuální počítač se systémem Windows 7 – Azure
 description: Jak vyřešit problémy s virtuálními počítači s Windows 7 v prostředí virtuálních počítačů s Windows
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: helohr
-ms.openlocfilehash: 282a4d166e48a41015cb2f08496fe39419bdcaf7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: ee641a694371ffd3fbc691a05edac707e37e959d
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374266"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607330"
 ---
 # <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>Řešení potíží s virtuálními počítači s Windows 7 ve Windows Virtual Desktopu
 
@@ -42,7 +42,7 @@ Tuto chybu opravíte tak, že přidáte uživatele do skupiny uživatelů vzdál
 1. Otevřete web Azure Portal.
 2. Vyberte virtuální počítač, na kterém jste viděli chybovou zprávu.
 3. Vyberte **Spustit příkaz**.
-4. Spusťte následující příkaz s `<username>` nahrazeným názvem uživatele, který chcete přidat:
+4. Spusťte následující příkaz s `<username>` nahrazeným jménem uživatele, kterého chcete přidat:
    
    ```cmd
    net localgroup "Remote Desktop Users" <username> /add

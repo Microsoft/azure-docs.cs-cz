@@ -1,21 +1,21 @@
 ---
-title: Vytvoření mezipaměti prostředí Azure HPC (verze Preview)
+title: Vytvoření mezipaměti prostředí Azure HPC
 description: Vytvoření instance mezipaměti prostředí Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: fa6408d33504c6ac73eacec079e9c08acd4cece2
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: aaa939051a1aeafdb0650119772fc7214506aa8d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255262"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582185"
 ---
 # <a name="plan-the-aggregated-namespace"></a>Plánování agregovaného oboru názvů
 
-Azure HPC cache (Preview) umožňuje klientům přístup k nejrůznějším systémům úložiště prostřednictvím virtuálního oboru názvů, který skrývá podrobnosti o back-endovém systému úložiště.
+Mezipaměť HPC Azure umožňuje klientům přístup k nejrůznějším systémům úložiště prostřednictvím virtuálního oboru názvů, který skrývá podrobnosti o back-endovém systému úložiště.
 
 Když přidáte cíl úložiště, nastavíte cestu k souboru pro klienta. Klientské počítače připojí tuto cestu k souboru a můžou do mezipaměti ukládat požadavky na čtení souborů místo přímého připojení systému úložiště.
 
@@ -57,7 +57,7 @@ Vzhledem k tomu, že zdrojové cesty NFS jsou podadresářům stejného exportu,
 | *IP adresa nebo název hostitele* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
 | *IP adresa nebo název hostitele* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |
 
-Klientská aplikace může připojit mezipaměť a snadno přistupovat k agregovaným cestám k souborům oboru názvů ``/source``, ``/templates/sku798`` a ``/templates/sku980``.
+Klientská aplikace může připojit mezipaměť a snadno získat přístup k agregovaným cestám k souborům oboru názvů ``/source``, ``/templates/sku798``a ``/templates/sku980``.
 
 ## <a name="next-steps"></a>Další kroky
 

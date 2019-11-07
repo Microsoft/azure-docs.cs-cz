@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad7bdfd3abc4d3b4b672f5471ea826d4cef0f3fc
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 87071b8e1102067110baae70c424aa74a5e0702c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596889"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73570831"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimalizujte výkon a spolehlivost Azure Functions
 
@@ -30,14 +30,14 @@ Velké a dlouho běžící funkce můžou způsobit neočekávané problémy s �
 
 Funkce může být velká z důvodu mnoha závislostí Node. js. Import závislostí může také způsobit delší dobu načítání, která vede k neočekávaným časovým limitům. Závislosti jsou načítány explicitně i implicitně. Jeden modul načtený vaším kódem může načíst vlastní další moduly. 
 
-Kdykoli je to možné, refaktorujte velké funkce na menší sady funkcí, které fungují společně, a rychle vrátí odpovědi. Například Webhook nebo funkce triggeru HTTP může vyžadovat odpověď potvrzení v určitém časovém limitu. pro Webhooky je běžné, že vyžadují okamžitou reakci. Datovou část triggeru HTTP můžete předat do fronty, aby ji bylo možné zpracovat funkcí triggeru fronty. Tento přístup umožňuje odložit skutečnou práci a vrátit okamžitou odpověď.
+Kdykoli je to možné, refaktorujte velké funkce na menší sady funkcí, které fungují společně, a rychle vrátí odpovědi. Například Webhook nebo funkce triggeru HTTP může vyžadovat odpověď potvrzení v určitém časovém limitu. pro Webhooky je běžné, že vyžadují okamžitou reakci. Datovou část triggeru HTTP můžete předat do fronty, aby ji bylo možné zpracovat funkcí triggeru fronty. Tento přístup umožňuje odložit skutečnou práci a vrátit okamžitou odezvu.
 
 
 ### <a name="cross-function-communication"></a>Komunikace mezi funkcemi
 
 [Durable Functions](durable/durable-functions-overview.md) a [Azure Logic Apps](../logic-apps/logic-apps-overview.md) jsou sestaveny pro správu přechodů stavu a komunikaci mezi více funkcemi.
 
-Pokud při integraci s více funkcemi nepoužíváte Durable Functions nebo Logic Apps, je obecně osvědčeným postupem použít pro komunikaci mezi funkcemi fronty úložiště.  Hlavním důvodem je, že fronty úložiště mají levnější a mnohem snazší zřízení. 
+Pokud při integraci s více funkcemi nepoužíváte Durable Functions nebo Logic Apps, je nejlepší pro komunikaci mezi funkcemi používat fronty úložiště. Hlavním důvodem je, že fronty úložiště mají levnější a mnohem snazší zřizování než jiné možnosti úložiště. 
 
 Jednotlivé zprávy ve frontě úložiště mají omezení velikosti až 64 KB. Pokud potřebujete předat větší zprávy mezi funkcemi, Azure Service Bus frontu můžete použít k podpoře velikosti zpráv až do 256 KB na úrovni Standard a až 1 MB na úrovni Premium.
 
@@ -50,7 +50,7 @@ Centra událostí jsou užitečná pro podporu komunikace s vysokými objemy.
 
 Funkce by měly být bezstavové a idempotentní, pokud je to možné. Přidružte k vašim datům všechny požadované informace o stavu. Například zpracování objednávky by pravděpodobně mělo přidruženého člena `state`. Funkce může zpracovat objednávku na základě tohoto stavu, zatímco samotná funkce zůstane Bezstavová. 
 
-Funkce idempotentní jsou obzvláště Doporučené s triggery časovače. Například pokud máte něco, co naprosto musí běžet jednou denně, zapište ho, aby mohl běžet kdykoli během dne se stejnými výsledky. Funkce může skončit, pokud pro určitý den nefunguje žádná práce. I v případě, že se nepovedlo dokončit předchozí spuštění, mělo by se další spuštění vystavit tam, kde skončila.
+Funkce idempotentní jsou obzvláště Doporučené s triggery časovače. Například pokud máte něco, co naprosto musí běžet jednou denně, zapište ho, aby mohl běžet kdykoli během dne se stejnými výsledky. Funkce může skončit, i když pro určitý den nebude fungovat žádná práce. I v případě, že se nepovedlo dokončit předchozí spuštění, mělo by se další spuštění vystavit tam, kde skončila.
 
 
 ### <a name="write-defensive-functions"></a>Zápis funkcí obrannou linií
@@ -62,7 +62,7 @@ Předpokládejme, že vaše funkce může kdykoli narazit na výjimku. Navrhnět
  
 V závislosti na tom, jak komplexní je váš systém, možná budete mít k dispozici tyto služby, které se budou chovat chybou, výpadky sítě nebo dosažené limity kvót atd. Všechny tyto funkce mohou mít na funkci kdykoli vliv. Je potřeba navrhnout vaše funkce, které se na ni budou připravovat.
 
-Jak váš kód reaguje, když po vložení 5 000 těchto položek do fronty ke zpracování dojde k chybě? Sledujte položky v sadě, kterou jste dokončili. V opačném případě je můžete vložit znovu později. To může mít vážný dopad na pracovní tok. 
+Jak váš kód reaguje, když po vložení 5 000 těchto položek do fronty ke zpracování dojde k chybě? Sledujte položky v sadě, kterou jste dokončili. V opačném případě je můžete vložit znovu později. Toto dvojité vložení může mít vážný dopad na pracovní tok, takže [idempotentní funkce](functions-idempotent.md). 
 
 Pokud byla položka fronty již zpracována, povolte funkci no-op.
 
@@ -74,7 +74,7 @@ Existuje několik faktorů, které mají vliv na to, jak se instance aplikace Fu
 
 ### <a name="share-and-manage-connections"></a>Sdílení a Správa připojení
 
-Kdykoli je to možné, znovu použijte připojení k externím prostředkům.  Další informace najdete [v tématu Správa připojení v Azure Functions](./manage-connections.md).
+Kdykoliv je to možné, znovu použijte připojení k externím prostředkům.  Další informace najdete [v tématu Správa připojení v Azure Functions](./manage-connections.md).
 
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Nemíchejte testovací a produkční kód ve stejné aplikaci Function App
 
@@ -82,17 +82,13 @@ Funkce v rámci sdílených prostředků aplikace Function App. Například pam�
 
 Buďte opatrní, co nahráváte do aplikací produkčních funkcí. Průměrná velikost paměti napříč všemi funkcemi v aplikaci.
 
-Pokud máte sdílené sestavení odkazované více funkcemi .NET, vložte ho do společné sdílené složky. Odkaz na sestavení s příkazem podobným následujícímu příkladu, pokud používáte C# skripty (. csx): 
+Pokud máte sdílené sestavení odkazované více funkcemi .NET, vložte ho do společné sdílené složky. V opačném případě byste mohli omylně nasadit více verzí stejného binárního souboru, které se chovají odlišně mezi funkcemi.
 
-    #r "..\Shared\MyAssembly.dll". 
-
-V opačném případě je snadné nechtěně nasazovat více testovacích verzí stejného binárního souboru, které se chovají různě mezi funkcemi.
-
-Nepoužívejte podrobné protokolování v produkčním kódu. Má negativní dopad na výkon.
+Nepoužívejte podrobné protokolování v produkčním kódu, který má negativní dopad na výkon.
 
 ### <a name="use-async-code-but-avoid-blocking-calls"></a>Použít asynchronní kód, ale vyhnout se blokování volání
 
-Asynchronní programování je doporučeným osvědčeným postupem. Vždy se však Vyhněte odkazování na vlastnost `Result` nebo volání metody `Wait` v instanci `Task`. Tento přístup může vést k vyčerpání vlákna.
+Asynchronní programování je doporučeným osvědčeným postupem. Nicméně vždy vyhněte odkazování na vlastnost `Result` nebo volání metody `Wait` na instanci `Task`. Tento přístup může vést k vyčerpání vlákna.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -104,15 +100,11 @@ U C# funkcí lze typ změnit na pole silného typu.  Například namísto `Event
 
 ### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Konfigurace chování hostitelů pro lepší zpracování souběžnosti
 
-Soubor `host.json` v aplikaci Function App umožňuje konfiguraci chování hostitele a spuštění.  Kromě dávkování chování můžete spravovat souběžnost pro určitý počet triggerů.  Často se upravují hodnoty v těchto možnostech, které mohou pokaždé škálovat každou instanci odpovídajícím způsobem pro požadavky vyvolaných funkcí.
+Soubor `host.json` ve Function App umožňuje konfiguraci chování hostitele a spuštění.  Kromě dávkování chování můžete spravovat souběžnost pro určitý počet triggerů. Často se upravují hodnoty v těchto možnostech, které mohou pokaždé škálovat každou instanci odpovídajícím způsobem pro požadavky vyvolaných funkcí.
 
-Nastavení v souboru Hosts se aplikují napříč všemi funkcemi v rámci aplikace v rámci *jedné instance* funkce. Pokud jste třeba aplikaci Function App s 2 funkcemi HTTP a souběžnými požadavky nastavili na 25, požadavek na Trigger HTTP by měl počítat se sdílenými 25 souběžnými požadavky.  Pokud se tato aplikace Functions škáluje na 10 instancí, funkce 2 umožní efektivně 250 souběžných požadavků (10 instancí × 25 souběžných požadavků na instanci).
+Nastavení v souboru Host. JSON se aplikují napříč všemi funkcemi v rámci aplikace v rámci *jedné instance* funkce. Pokud jste třeba aplikaci Function App se dvěma funkcemi HTTP a [`maxConcurrentRequests`](functions-bindings-http-webhook.md#hostjson-settings) požadavky nastavili na 25, požadavek na Trigger http by se dostal do sdíleného 25 souběžných požadavků.  Když se tato aplikace Functions škáluje na 10 instancí, můžou tyto dvě funkce efektivně umožňovat 250 souběžných žádostí (10 instancí × 25 souběžných požadavků na instanci). 
 
-**Možnosti hostitele Concurrency protokolu HTTP**
-
-[!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
-
-Další možnosti konfigurace hostitele najdete [v dokumentu konfigurace hostitele](functions-host-json.md).
+Další možnosti konfigurace hostitele najdete v [článku Konfigurace Host. JSON](functions-host-json.md).
 
 ## <a name="next-steps"></a>Další kroky
 

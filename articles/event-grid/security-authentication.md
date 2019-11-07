@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
-ms.openlocfilehash: f22d8c57b0127e646321a20587d0cd89f5c9ea45
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b9e471928940094b29bdffeb73ea42fe852492cb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72325407"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73665575"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpečení a ověřování 
 
@@ -35,11 +35,11 @@ Stejně jako mnoho dalších služeb, které podporují Webhooky, Event Grid vy�
 
 Pokud používáte jiný typ koncového bodu, jako je Azure Functions založený na triggeru HTTP, váš kód koncového bodu musí být součástí ověřovací metody handshake s Event Grid. Event Grid podporuje dva způsoby ověření předplatného.
 
-1. **ValidationCode handshake (program)** : Pokud řídíte zdrojový kód pro koncový bod, doporučuje se tato metoda. V době vytváření odběru událostí Event Grid odešle do vašeho koncového bodu událost ověření předplatného. Schéma této události je podobné jako jakákoli jiná událost Event Grid. Datová část této události obsahuje vlastnost @no__t 0. Vaše aplikace ověří, zda je žádost o ověření určena pro očekávané předplatné události, a vrátí ověřovací kód na Event Grid. Tento mechanismus handshake je podporován ve všech Event Grid verzích.
+1. **ValidationCode handshake (program)** : Pokud řídíte zdrojový kód pro koncový bod, doporučuje se tato metoda. V době vytváření odběru událostí Event Grid odešle do vašeho koncového bodu událost ověření předplatného. Schéma této události je podobné jako jakákoli jiná událost Event Grid. Datová část této události obsahuje vlastnost `validationCode`. Vaše aplikace ověří, zda je žádost o ověření určena pro očekávané předplatné události, a vrátí ověřovací kód na Event Grid. Tento mechanismus handshake je podporován ve všech Event Grid verzích.
 
 2. **ValidationURL handshake (ruční)** : v některých případech nebudete mít přístup ke zdrojovému kódu koncového bodu pro implementaci metody handshake ValidationCode. Například pokud používáte službu třetí strany (například [Zapier](https://zapier.com) nebo [IFTTT](https://ifttt.com/)), nemůžete programově reagovat pomocí ověřovacího kódu.
 
-   Počínaje verzí 2018-05-01-Preview Event Grid podporuje manuální ověřování metodou handshake. Pokud vytváříte odběr událostí pomocí sady SDK nebo nástroje, který používá rozhraní API verze 2018-05-01-Preview nebo novější, Event Grid odešle vlastnost `validationUrl` v datové části události ověření předplatného. K dokončení metody handshake Najděte tuto adresu URL v datech události a ručně odešlete požadavek GET. Můžete použít buď klienta REST, nebo webový prohlížeč.
+   Počínaje verzí 2018-05-01-Preview Event Grid podporuje manuální ověřování metodou handshake. Pokud vytváříte odběr událostí pomocí sady SDK nebo nástroje používající rozhraní API verze 2018-05-01-Preview nebo novější, Event Grid v datové části události ověření předplatného odeslat vlastnost `validationUrl`. K dokončení metody handshake Najděte tuto adresu URL v datech události a ručně odešlete požadavek GET. Můžete použít buď klienta REST, nebo webový prohlížeč.
 
    Zadaná adresa URL je platná 5 minut. Během této doby je stav zřizování odběru události `AwaitingManualAction`. Pokud nedokončíte ruční ověření během 5 minut, stav zřizování je nastaven na `Failed`. Než začnete s ručním ověřováním, budete muset vytvořit odběr událostí znovu.
 
@@ -54,7 +54,7 @@ Pokud používáte jiný typ koncového bodu, jako je Azure Functions založený
 * Událost obsahuje hodnotu hlavičky "AEG-Event-Type: SubscriptionValidation".
 * Tělo události má stejné schéma jako jiné události Event Grid.
 * Vlastnost eventType události je `Microsoft.EventGrid.SubscriptionValidationEvent`.
-* Vlastnost dat události obsahuje vlastnost @no__t 0 s náhodně generovaným řetězcem. Například "validationCode: acb13...".
+* Vlastnost data události obsahuje vlastnost `validationCode` s náhodně generovaným řetězcem. Například "validationCode: acb13...".
 * Data události také obsahují vlastnost `validationUrl` s adresou URL pro ruční ověření předplatného.
 * Pole obsahuje pouze událost ověření. Další události se odesílají v samostatném požadavku po návratu zpět ověřovacího kódu.
 * Sady SDK pro EventGrid dataplan mají třídy odpovídající datům události ověření předplatného a odpovědi na ověření předplatného.
@@ -85,15 +85,15 @@ Chcete-li prokázat vlastnictví koncového bodu, vraťte kód ověření do vla
 }
 ```
 
-Je nutné vrátit stavový kód odpovědi HTTP 200 OK. Přijatý protokol HTTP 202 nebyl rozpoznán jako platná odpověď ověření předplatného Event Grid.
+Je nutné vrátit stavový kód odpovědi HTTP 200 OK. Přijatý protokol HTTP 202 nebyl rozpoznán jako platná odpověď ověření předplatného Event Grid. Požadavek HTTP musí být dokončen do 30 sekund. Pokud operace nekončí do 30 sekund, operace se zruší a může se znovu pokusit po 5 sekundách. Pokud se všechny pokusy nezdaří, bude se považovat za chybu ověřovací metody handshake.
 
-Nebo můžete předplatné ověřit ručně odesláním požadavku GET na adresu URL pro ověření. Předplatné události zůstane v nedokončeném stavu, dokud se neověří.
+Nebo můžete předplatné ověřit ručně odesláním požadavku GET na adresu URL pro ověření. Předplatné události zůstane v nedokončeném stavu, dokud se neověří. Ověřovací adresa URL používá port 553. Pokud vaše pravidla brány firewall blokují port 553, může být potřeba aktualizovat pravidla pro úspěšnou ruční handshaki.
 
 Příklad manipulace s ověřovací metodou handshake předplatného najdete v [ C# ukázce](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs).
 
 ### <a name="checklist"></a>Kontrolní seznam
 
-Pokud se při vytváření odběru událostí zobrazuje chybová zpráva, například "pokus o ověření poskytnutého koncového bodu https: \//koncový bod, se nezdařilo. Další podrobnosti najdete na adrese https: \//neboli. MS/esvalidation ", označuje, že došlo k chybě ověřovací metody handshake. Chcete-li tuto chybu vyřešit, ověřte následující aspekty:
+Pokud se při vytváření odběru událostí zobrazuje chybová zpráva, například "pokus o ověření poskytnutého koncového bodu https:\//Your-Endpoint-here se nezdařila. Další podrobnosti najdete na adrese https:\//aka.ms/esvalidation ", což značí, že došlo k chybě ověřovací metody handshake. Chcete-li tuto chybu vyřešit, ověřte následující aspekty:
 
 * Máte pod cílovým koncovým bodem řízení kódu aplikace? Pokud například píšete funkci Azure Functions Trigger založenou na protokolu HTTP, máte přístup k kódu aplikace, abyste je mohli změnit?
 * Máte-li přístup k kódu aplikace, implementujte mechanismus handshake založený na ValidationCode, jak je znázorněno v ukázce výše.
@@ -118,7 +118,7 @@ Musíte mít oprávnění **Microsoft. EventGrid/EventSubscriptions/Write** pro 
 
 Pro systémová témata potřebujete oprávnění k zápisu nového odběru události v oboru prostředku, který publikuje událost. Formát prostředku je: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
 
-Například pro přihlášení k odběru události v účtu úložiště s názvem **ucet**budete potřebovat oprávnění Microsoft. EventGrid/EventSubscriptions/Write pro: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
+Například pro přihlášení k odběru události v účtu úložiště s názvem **ucet**potřebujete oprávnění Microsoft. EventGrid/EventSubscriptions/Write: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
 
 ### <a name="custom-topics"></a>Vlastní témata
 

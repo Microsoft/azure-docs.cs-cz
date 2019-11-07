@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 8a78c854e9c842915700d4a20c1a57e4f1594a2e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3495d62c7447ba50d9ffe48e68b15dbe36867ac9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472453"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73662597"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
 
@@ -33,19 +33,20 @@ Při vytváření a správě clusterů AKS, které podporují více fondů uzlů
 
 * Výchozí fond uzlů (první) nelze odstranit.
 * Nelze použít doplněk směrování aplikace HTTP.
+* Cluster AKS musí používat standardní nástroj pro vyrovnávání zatížení SKU pro použití více fondů uzlů, ale funkce nástroje pro vyrovnávání zatížení Basic SKU není podporována.
+* Cluster AKS musí pro uzly používat sadu škálování virtuálních počítačů.
 * Nemůžete přidat ani odstranit fondy uzlů pomocí existující šablony Správce prostředků jako u většiny operací. Místo toho [použijte šablonu samostatného správce prostředků](#manage-node-pools-using-a-resource-manager-template) k provádění změn v fondech uzlů v clusteru AKS.
 * Název fondu uzlů musí začínat malým písmenem a může obsahovat jenom alfanumerické znaky. U fondů uzlů se systémem Linux musí být délka v rozmezí od 1 do 12 znaků, v případě fondů uzlů systému Windows musí být délka mezi 1 a 6 znaky.
 * Cluster AKS může mít maximálně osm fondů uzlů.
 * Cluster AKS může mít maximálně 400 uzlů v těchto osmi fondech uzlů.
 * Všechny fondy uzlů se musí nacházet ve stejné podsíti.
-* Cluster AKS musí pro uzly používat sadu škálování virtuálních počítačů.
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
 Začněte tím, že vytvoříte cluster AKS s jedním fondem uzlů. Následující příklad používá příkaz [AZ Group Create][az-group-create] k vytvoření skupiny prostředků s názvem *myResourceGroup* v oblasti *eastus* . Pomocí příkazu [AZ AKS Create][az-aks-create] se pak vytvoří cluster AKS s názvem *myAKSCluster* . A *--Kubernetes-verze* *1.13.10* se používá k zobrazení způsobu aktualizace fondu uzlů v následujícím kroku. Můžete zadat libovolnou [podporovanou verzi Kubernetes][supported-versions].
 
 > [!NOTE]
-> Při použití více fondů uzlů není podporována *základní* Load balanacer SKU. Ve výchozím nastavení jsou clustery AKS vytvořeny pomocí *standardní* SKU loadbalacer.
+> Při použití více fondů uzlů není podporována *základní* Load balanacer SKU. Ve výchozím nastavení se clustery AKS s použitím služby Load Balancer *úrovně Standard* (SKU) z Azure CLI a Azure Portal vytvoří.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -547,20 +548,7 @@ AKS uzly nevyžadují pro komunikaci své vlastní veřejné IP adresy. Někter�
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-Po úspěšné registraci nasaďte šablonu Azure Resource Manager podle [výše](#manage-node-pools-using-a-resource-manager-template) uvedených pokynů a přidejte do agentPoolProfiles následující logickou hodnotu "enableNodePublicIP". Nastavte tuto hodnotu na `true` jako výchozí je nastavená jako `false`, pokud není zadaná. Toto je vlastnost pouze pro dobu vytváření a vyžaduje minimální verzi rozhraní API 2019-06-01. Tato možnost se dá použít pro fondy uzlů pro Linux i Windows.
-
-```
-"agentPoolProfiles":[  
-    {  
-      "maxPods": 30,
-      "osDiskSizeGB": 0,
-      "agentCount": 3,
-      "agentVmSize": "Standard_DS2_v2",
-      "osType": "Linux",
-      "vnetSubnetId": "[parameters('vnetSubnetId')]",
-      "enableNodePublicIP":true
-    }
-```
+Po úspěšné registraci nasaďte šablonu Azure Resource Manager podle [výše](#manage-node-pools-using-a-resource-manager-template) uvedených pokynů a přidejte vlastnost boolean Value `enableNodePublicIP` do agentPoolProfiles. Nastavte hodnotu na `true` jako výchozí nastavení, pokud není zadané, jako `false`. Toto je vlastnost pouze pro dobu vytváření a vyžaduje minimální verzi rozhraní API 2019-06-01. Tato možnost se dá použít pro fondy uzlů pro Linux i Windows.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

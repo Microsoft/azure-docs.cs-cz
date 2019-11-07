@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 5e8dc6629cfbbc3e42aeeb4dc94f33d13867ca9f
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 8c9258f099587ba4dbdfe3a7e46f72cd7a825024
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024792"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603823"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Zdroje událostí v Azure Event Grid
 
@@ -129,7 +129,7 @@ Přihlaste se k odběru Service Busch událostí, aby reagovaly na zprávy bez a
 | [Přehled: Azure Service Bus pro Event Grid integraci](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | Přehled integrace Service Bus s Event Grid |
 | [Schéma událostí](event-schema-service-bus.md) | Zobrazuje pole v Service Busch událostech. |
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 Přihlaste se k odběru událostí Blob Storage pro reakci na události vytvořené a odstraněné objekty blob.
 
@@ -144,7 +144,7 @@ Přihlaste se k odběru událostí Blob Storage pro reakci na události vytvoře
 | [Přehled: reakce na události služby Blob Storage](../storage/blobs/storage-blob-event-overview.md) | Přehled integrace služby Blob Storage s Event Grid. |
 | [Schéma událostí](event-schema-blob-storage.md) | Zobrazuje pole v Blob Storagech událostech. |
 
-## <a name="maps"></a>Mapy
+## <a name="maps"></a>Maps
 Přihlaste se k odběru událostí Azure Maps pro reakci na události geografické ploty. Aplikace může například doručovat e-mailové oznámení pokaždé, když zařízení vstoupí do geografické zóny nebo je ukončí.
 
 |Název  |Popis  |
@@ -171,7 +171,14 @@ Přihlaste se k odběru událostí služby signalizace Azure, aby reagovaly na u
 | [Odeslání událostí služby signalizace Azure do Event Grid](../azure-signalr/signalr-howto-event-grid-integration.md) | Ukazuje, jak odesílat události služby signalizace Azure do aplikace prostřednictvím Event Grid. |
 | [Schéma událostí](event-schema-azure-signalr.md) | Zobrazuje pole v událostech služby signalizace Azure. |
 
+## <a name="azure-machine-learning"></a>Azure Machine Learning
 
+Přihlaste se k odběru Azure Machine Learning událostí pracovního prostoru, aby odpovídaly registraci modelu.
+
+| Název | Popis |
+| ----- | ----- |
+| [Využívání Azure Machine Learningch událostí](../machine-learning/service/concept-event-grid-integration.md) | Přehled Integrace Azure Machine Learning s Event Grid |
+| [Azure Event Grid schéma událostí pro Azure Machine Learning](event-schema-machine-learning.md) | Zobrazí pole v událostech Azure Machine Learning. |
 
 ## <a name="next-steps"></a>Další kroky
 

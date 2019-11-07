@@ -1,5 +1,5 @@
 ---
-title: Použití Azure Data Factory k migraci dat ze služby Data Lake a datového skladu do Azure | Microsoft Docs
+title: Použití Azure Data Factory k migraci dat ze služby Data Lake a datového skladu do Azure
 description: Pomocí Azure Data Factory migrujte data ze svých datových Lake a datových skladů do Azure.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/30/2019
-ms.openlocfilehash: 2d2fc1e2992e379c80a16dee2c1983f9559470c5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 0be9cbc9c5af2e0778654ef70c5350b48f10c35d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931130"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675763"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Použití Azure Data Factory k migraci dat ze služby Data Lake nebo datového skladu do Azure
 
@@ -36,7 +36,7 @@ Azure Data Factory může přesunout petabajty (PB) dat pro migraci Data Lake a 
   - Azure Data Factory využívá metodu s průběžnými platbami, takže platíte jenom za čas, který skutečně využijete ke spuštění migrace dat do Azure.  
 - Azure Data Factory může provádět jednorázové historické zatížení i plánovaná přírůstková zatížení.
 - Azure Data Factory používá prostředí Azure Integration runtime (IR) k přesouvání dat mezi veřejně přístupnými koncovými body datového Lake a skladu. Může taky používat místní prostředí IR pro přesun dat pro koncové body Data Lake a Warehouse v Azure Virtual Network (VNet) nebo za bránou firewall.
-- Azure Data Factory má zabezpečení na podnikové úrovni: Pro zabezpečenou integraci služeb a služeb můžete použít Instalační služba systému Windows (MSI) nebo identitu služby, nebo použít Azure Key Vault ke správě přihlašovacích údajů.
+- Azure Data Factory má zabezpečení na podnikové úrovni: pro zabezpečenou integraci služeb a služeb můžete použít Instalační služba systému Windows (MSI) nebo identitu služby, případně můžete použít Azure Key Vault pro správu přihlašovacích údajů.
 - Azure Data Factory poskytuje prostředí pro vytváření obsahu bez kódu a bohatě integrovaný řídicí panel pro monitorování.  
 
 ## <a name="online-vs-offline-data-migration"></a>Online vs. migrace offline dat
@@ -51,7 +51,7 @@ Existují tři klíčové důležité důvody, pokud si vyberete mezi online a o
 
 Předpokládejme například, že plánujete použít Azure Data Factory k dokončení migrace dat do dvou týdnů ( *okna migrace*). Všimněte si růžového nebo modrého vyjmutého řádku v následující tabulce. Nejnižší růžová buňka pro libovolný daný sloupec zobrazuje párování velikosti dat a šířky pásma sítě, jejichž okno migrace je nejblíže, ale méně než dva týdny. (Jakékoli párování velikosti a šířky pásma v modré buňce má okno online migrace delší než dva týdny.) 
 
-![online vs.](media/data-migration-guidance-overview/online-offline.png) Tato tabulka vám pomůže určit, jestli můžete požadované okno migrace splnit prostřednictvím online migrace (Azure Data Factory), a to na základě velikosti vašich dat a dostupné šířky pásma sítě. Pokud je okno online migrace delší než dva týdny, budete chtít použít offline migraci.
+![online vs.](media/data-migration-guidance-overview/online-offline.png) této tabulce vám pomůže určit, jestli můžete požadované okno migrace dodržet prostřednictvím online migrace (Azure Data Factory) na základě velikosti vašich dat a dostupné šířky pásma sítě. Pokud je okno online migrace delší než dva týdny, budete chtít použít offline migraci.
 
 > [!NOTE]
 > Při použití online migrace můžete pomocí jediného nástroje dosáhnout historických a koncových informačních kanálů od začátku do konce.  Prostřednictvím tohoto přístupu se vaše data dají během celého okna migrace synchronizovat mezi existujícím a novým úložištěm. To znamená, že můžete logiku ETL znovu sestavit v novém úložišti s aktualizovanými daty.

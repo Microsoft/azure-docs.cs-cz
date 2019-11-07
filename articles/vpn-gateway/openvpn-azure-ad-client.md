@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: cherylmc
-ms.openlocfilehash: f4241b2ace2d7c86e1ed9036ca6d1da4a59eb61f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 704dcd6335766a6058de4e520b8dcbca0d304c9d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517524"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721472"
 ---
 # <a name="configure-a-vpn-client-for-p2s-vpn-connections-azure-ad-authentication-preview"></a>Konfigurace klienta VPN pro připojení P2S VPN: ověřování Azure AD (Preview)
 
@@ -20,7 +20,7 @@ Tento článek vám pomůže nakonfigurovat klienta VPN pro připojení k virtu�
 
 ## <a name="profile"></a>Práce s profily klienta
 
-Chcete-li se připojit, je třeba nakonfigurovat profil klienta VPN na každém počítači, který se chce připojit k virtuální síti. Můžete vytvořit profil klienta na počítači, exportovat ho a pak ho naimportovat do dalších počítačů.
+Abyste se mohli připojit, je potřeba [Stáhnout](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) klienta Azure VPN a nakonfigurovat profil klienta VPN na každém počítači, který se chce připojit k virtuální síti. Můžete vytvořit profil klienta na počítači, exportovat ho a pak ho naimportovat do dalších počítačů.
 
 ### <a name="cert"></a>Vytvoření profilu klienta založeného na certifikátech
 
@@ -30,7 +30,7 @@ Při práci s profilem založeným na certifikátech se ujistěte, že jsou na k
 
 ### <a name="radius"></a>Postup vytvoření profilu klienta protokolu RADIUS
 
-  ![Zaoblen](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
+  ![zaoblen](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
 
 ### <a name="export"></a>Export a distribuce profilu klienta
 

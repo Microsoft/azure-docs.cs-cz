@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services vysoká dostupnost | Microsoft Docs
-description: Zajišťuje Azure Analysis Services vysokou dostupnost.
+description: Tento článek popisuje, jak Azure Analysis Services poskytuje vysokou dostupnost během přerušení služby.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 151739c77939ab98b0cdca6d75692267ef0d4385
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 2e750dce804ea93f3d3068ffd36bc7a73a50906a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295316"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573361"
 ---
 # <a name="analysis-services-high-availability"></a>Analysis Services vysoká dostupnost
 
@@ -33,6 +33,6 @@ Abyste se vyhnuli nutnosti měnit připojovací řetězce u klientů pro vytvá�
 ## <a name="related-information"></a>Související informace
 
 [Zálohování a obnovení](analysis-services-backup.md)   
-[Správa Azure Analysis Services](analysis-services-manage.md)   
+[Spravovat Azure Analysis Services](analysis-services-manage.md)   
 [Názvy serverů s aliasem](analysis-services-server-alias.md) 
 

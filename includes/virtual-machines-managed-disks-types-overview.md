@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3dfc3c309fe3583ddd4307cbfe4e55bf6522ffc3
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 60d0425a7dbc532e856c7bf3c91065d2548c9b9a
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955856"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601387"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Jaké typy disků jsou k dispozici v Azure?
 
@@ -23,10 +23,10 @@ Služba Azure Managed disks v současné době nabízí čtyři typy disků. ka�
 
 V následující tabulce najdete porovnání disků Ultra, Premium Solid-State-Drives (SSD), Standard SSD a standardních pevných disků (HDD) pro spravované disky, které vám pomůžou rozhodnout se, co se má použít.
 
-|   | Ultra disk   | SSD úrovně Premium   | SSD úrovně Standard   | HDD úrovně Standard   |
+|   | Ultra disk   | Premium SSD   | SSD úrovně Standard   | Standard HDD   |
 |---------|---------|---------|---------|---------|
 |Typ disku   |SSD   |SSD   |SSD   |HDD   |
-|Scénář   |Úlohy náročné na v/v, jako jsou SAP HANA, databáze nejvyšší úrovně (například SQL, Oracle) a další úlohy náročné na transakce.   |Provozní a výkonově citlivé úlohy   |Webové servery, lehce používané podnikové aplikace a vývoj a testování   |Zálohování, Nekritická, zřídka přístup   |
+|Scénář   |Úlohy náročné na v/v, jako jsou [SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), databáze nejvyšší úrovně (například SQL, Oracle) a další úlohy náročné na transakce.   |Úlohy v produkčním prostředí a úlohy, u kterých záleží na výkonu   |Webové servery, lehce používané podnikové aplikace a vývoj a testování   |Zálohování, Nekritická, zřídka přístup   |
 |Maximální velikost disku   |65 536 gibibajt (GiB)    |32 767 GiB    |32 767 GiB   |32 767 GiB   |
 |Maximální propustnost   |soubory MiB 2 000/s    |soubory MiB 900/s   |soubory MiB 750/s   |soubory MiB 500/s   |
 |Maximální IOPS   |160 000    |20 000   |6 000   |2 000   |
@@ -52,7 +52,7 @@ Mezi klíčové funkce Ultra diskù patří:
 |---------|---------|---------|
 |4     |1 200         |300         |
 |8     |2 400         |600         |
-|16bitovém     |4 800         |1 200         |
+|16     |4 800         |1 200         |
 |32     |9 600         |2 000         |
 |64     |19 200         |2 000         |
 |128     |38 400         |2 000         |
@@ -62,13 +62,4 @@ Mezi klíčové funkce Ultra diskù patří:
 
 ### <a name="ga-scope-and-limitations"></a>Rozsah a omezení GA
 
-V současnosti mají extrémně disky další omezení, jsou následující:
-
-- Podporují se v Východní USA 2, jihovýchodní Asie a Severní Evropa ve dvou zónách dostupnosti na oblast.  
-- Dá se použít jenom se zónami dostupnosti (skupinami dostupnosti a nasazeními s jedním virtuálním počítačem mimo zóny nebude mít možnost připojit Ultra disk).
-- Podporují se jenom u virtuálních počítačů ES/DS v3.
-- K dispozici pouze jako datové disky a podporují pouze velikost fyzického sektoru 4k  
-- Dá se vytvořit jenom jako prázdné disky.  
-- Ještě nepodporují snímky disků, image virtuálních počítačů, skupiny dostupnosti, sady škálování virtuálních počítačů a Azure Disk Encryption.
-- Ještě nepodporují integraci s Azure Backup ani Azure Site Recovery
-- Aktuální maximální limit pro IOPS na virtuálních počítačích GA je 80 000.
+[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](managed-disks-ultra-disks-GA-scope-and-limitations.md)]

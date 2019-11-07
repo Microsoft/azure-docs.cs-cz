@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: eb48afb15e1314dcf670ba04afd9609876dc9539
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3790511bf3f71cdeb01853e4051a013719502d9f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472823"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605095"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Vytvoření clusteru služby Azure Kubernetes (AKS), který používá Zóny dostupnosti
 
@@ -32,12 +32,12 @@ Clustery AKS se teď dají vytvářet pomocí zón dostupnosti v následujícíc
 
 * Střední USA
 * Východ USA 2
-* USA – východ
+* Východ USA
 * Francie – střed
 * Japonsko – východ
 * Severní Evropa
 * Jihovýchodní Asie
-* Velká Británie – jih
+* Spojené království – jih
 * Západní Evropa
 * Západní USA 2
 
@@ -72,9 +72,9 @@ V případě výpadku zóny se uzly dají znovu vyrovnávat ručně nebo pomocí
 
 ## <a name="create-an-aks-cluster-across-availability-zones"></a>Vytvoření clusteru AKS napříč zónami dostupnosti
 
-Když vytvoříte cluster pomocí příkazu [AZ AKS Create][az-aks-create] , definuje parametr `--zones`, do kterého se nasadí uzly agenta. Komponenty roviny ovládacího prvku AKS pro váš cluster jsou rozloženy v rámci nejvyšší dostupné konfigurace při vytváření clusteru s určením parametru `--zones`.
+Když vytvoříte cluster pomocí příkazu [AZ AKS Create][az-aks-create] , definuje parametr `--zones`, do kterého se nasadí uzly agenta. Komponenty roviny ovládacího prvku AKS pro váš cluster jsou rozloženy i mezi zóny v nejvyšší dostupné konfiguraci při definování parametru `--zones` v době vytváření clusteru.
 
-Pokud při vytváření clusteru AKS nedefinujete žádné zóny pro výchozí fond agentů, nepoužijí komponenty řízení AKS pro váš cluster zóny dostupnosti. Další fondy uzlů můžete přidat pomocí příkazu [AZ AKS nodepool Add][az-aks-nodepool-add] a zadáním `--zones` pro tyto nové uzly agentů, ale komponenty roviny ovládacího prvku zůstanou bez vědomí zóny dostupnosti. Po nasazení nemůžete změnit povědomí o zónách pro fond uzlů nebo AKS součásti ovládacího prvku.
+Pokud při vytváření clusteru AKS nedefinujete žádné zóny pro výchozí fond agentů, nepoužijí komponenty řízení AKS pro váš cluster zóny dostupnosti. Další fondy uzlů můžete přidat pomocí příkazu [AZ AKS nodepool Add][az-aks-nodepool-add] a zadáním `--zones` pro tyto nové uzly, ale komponenty roviny ovládacího prvku zůstanou bez vědomí zóny dostupnosti. Po nasazení nemůžete změnit povědomí o zónách pro fond uzlů nebo AKS součásti ovládacího prvku.
 
 Následující příklad vytvoří cluster AKS s názvem *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*. Vytvoří se celkem *3* uzlů – jeden agent v zóně *1*, jeden v *2*a potom jeden ve *3*. Komponenty roviny ovládacího prvku AKS jsou také distribuovány mezi zóny v nejvyšší dostupné konfiguraci, protože jsou definovány jako součást procesu vytváření clusteru.
 

@@ -1,17 +1,17 @@
 ---
 title: Aktualizovat Azure Analysis Services modely pomocí Azure Automation | Microsoft Docs
-description: Naučte se aktualizovat model kódu pomocí Azure Automation.
+description: Tento článek popisuje, jak model kódu aktualizuje pro Azure Analysis Services pomocí Azure Automation.
 author: chrislound
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: ed1634ef1009149dc2937174b20248eab9cd335f
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a79123d57f80474e1871ef68f9a92ea9417089ac
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294797"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572358"
 ---
 # <a name="refresh-with-azure-automation"></a>Aktualizace pomocí Azure Automation
 
@@ -21,13 +21,13 @@ V příkladu v tomto článku se používají [moduly prostředí PowerShell SQL
 
 Ukázková sada Runbook PowerShellu, která demonstruje aktualizaci modelu, je k dispozici dále v tomto článku.  
 
-## <a name="authentication"></a>Ověření
+## <a name="authentication"></a>Ověřování
 
 Všechna volání musí být ověřena pomocí platného tokenu Azure Active Directory (OAuth 2).  V příkladu v tomto článku se k ověření Azure Analysis Services použije instanční objekt (SPN).
 
 Další informace o vytváření instančního objektu najdete v tématu [Vytvoření instančního objektu pomocí Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!IMPORTANT]
 > Následující příklad předpokládá, že je brána firewall Azure Analysis Services zakázaná. Pokud je brána firewall povolená, musí být v bráně firewall povolená veřejná IP adresa iniciátoru žádosti.
@@ -44,7 +44,7 @@ Další informace o vytváření instančního objektu najdete v tématu [Vytvo�
  
     ![Importovat modul](./media/analysis-services-refresh-azure-automation/2.png)
 
-4. Klikněte na **OK**.
+4. Klikněte na tlačítko **OK**.
  
 ### <a name="create-a-service-principal-spn"></a>Vytvoření instančního objektu (SPN)
 
@@ -111,7 +111,7 @@ Dá se nakonfigurovat takto:
 
     ![Konfigurovat parametry](./media/analysis-services-refresh-azure-automation/16.png)
 
-5. Klikněte na **OK**.
+5. Klikněte na tlačítko **OK**.
 
 ## <a name="consume-with-data-factory"></a>Využití s Data Factory
 
@@ -135,7 +135,7 @@ Pokud chcete sadu Runbook využívat pomocí Azure Data Factory, vytvořte nejpr
 
 3. V Data Factory konfigurace **aktivity webu**
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
    ![Ukázková aktivita webu](./media/analysis-services-refresh-azure-automation/19.png)
 
@@ -147,7 +147,7 @@ Pokud chcete sadu Runbook využívat pomocí Azure Data Factory, vytvořte nejpr
 |Vlastnost  |Hodnota  |
 |---------|---------|
 |**AnalysisServicesDatabase**     |Název databáze Azure Analysis Services <br/> Příklad: AdventureWorksDB         |
-|**AnalysisServicesServer**     |Název serveru Azure Analysis Services. <br/> Příklad: https: \//westus. asazure. Windows. NET/servery/MyServer/Models/AdventureWorks/         |
+|**AnalysisServicesServer**     |Název serveru Azure Analysis Services. <br/> Příklad: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
 |**DatabaseRefreshType**     |Typ aktualizace, která má být provedena. <br/> Příklad: Full         |
 
 Příklad těla JSON:

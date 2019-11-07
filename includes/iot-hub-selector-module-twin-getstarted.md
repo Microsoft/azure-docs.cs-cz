@@ -5,11 +5,11 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 07/27/2019
 ms.openlocfilehash: 1713c8898c0df2eb86732554d7656a26720009d1
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68671108"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73590533"
 ---
 > [!div class="op_single_selector"]
 > * [Azure Portal](../articles/iot-hub/iot-hub-portal-csharp-module-twin-getstarted.md)

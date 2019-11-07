@@ -9,14 +9,14 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: b890fe1a9ef30e18a54ced9f48015bed39298807
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: b7b9cd1040accda4d39af4d0a18940b56a45f929
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858880"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569888"
 ---
-# <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>Kurz: Vytvoření a otestování modelu schopností zařízení pomocí Visual Studio Code
+# <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>Kurz: vytvoření a otestování modelu schopností zařízení pomocí Visual Studio Code
 
 V tomto kurzu se dozvíte, jak jako vývojář zařízení použít Visual Studio Code k vytvoření _modelu schopností zařízení_. Model můžete použít k vygenerování kostry kódu pro spuštění na zařízení, které se připojuje k instanci Azure IoT Hub v cloudu.
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 Pokud chcete pracovat s modelem schopností zařízení v tomto kurzu, budete potřebovat:
 
-* [Visual Studio Code](https://code.visualstudio.com/download): VS Code je k dispozici pro více platforem.
+* [Visual Studio Code](https://code.visualstudio.com/download): vs Code je k dispozici pro více platforem.
 * Sady [nástrojů Azure IoT pro rozšíření vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) . K instalaci balíčku rozšíření v VS Code použijte následující postup:
 
     1. V VS Code vyberte kartu **rozšíření** .
@@ -43,14 +43,9 @@ Pokud chcete pracovat s modelem schopností zařízení v tomto kurzu, budete po
 
 K sestavení vygenerovaného kódu jazyka C v systému Windows v tomto kurzu budete potřebovat:
 
-* [Visual Studio (komunita, Professional nebo Enterprise)](https://visualstudio.microsoft.com/downloads/) – nezapomeňte při instalaci sady Visual Studio zahrnout komponentu **Správce balíčků NuGet** a **vývoj C++ desktopových** aplikací.
+* [Nástroje pro sestavení pro sadu Visual Studio](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) pomocí  **C++ nástrojů sestavení** a úloh **komponent správce balíčků NuGet** . Nebo pokud už máte [Visual Studio (Community, Professional nebo Enterprise)](https://visualstudio.microsoft.com/downloads/) 2019, 2017 nebo 2015 se stejnými úlohami.
 * [Git](https://git-scm.com/download)
 * [CMake](https://cmake.org/download/)
-* Místní kopie sady Azure IoT C SDK:
-
-    ```cmd
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
-    ```
 
 K otestování kódu zařízení v tomto kurzu budete potřebovat:
 
@@ -71,13 +66,13 @@ Pokud chcete vytvořit soubor rozhraní, který definuje možnosti vašeho zař�
 
 1. Spusťte VS Code a stisknutím **kombinace kláves CTRL + SHIFT + P** otevřete paletu příkazů.
 
-1. Zadejte **technologie Plug and Play** a pak vyberte **& Play technologie IoT plug-in: Příkaz Create** Interface
+1. Zadejte **technologie Plug and Play** a pak vyberte příkaz **& IoT Plug and Play: Create Interface** .
 
 1. Vyhledejte a vyberte složku **devicemodel** , kterou jste vytvořili.
 
 1. Pak jako název rozhraní zadejte **EnvironmentalSensor** a stiskněte klávesu **ENTER**. VS Code vytvoří vzorový soubor rozhraní s názvem **EnvironmentalSensor. Interface. JSON**.
 
-1. Nahraďte obsah tohoto souboru následujícím kódem JSON a nahraďte `{your name}` ho `@id` v poli jedinečnou hodnotou. Používejte pouze znaky a-z, A-Z, 0-9 a podtržítko. Další informace najdete v tématu [Formát digitálního Nevlákenového identifikátoru](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format). Aby bylo možné uložit rozhraní do úložiště, musí být ID rozhraní jedinečné:
+1. Nahraďte obsah tohoto souboru následující JSON a nahraďte `{your name}` v poli `@id` s jedinečnou hodnotou. Používejte pouze znaky a-z, A-Z, 0-9 a podtržítko. Další informace najdete v tématu [Formát digitálního Nevlákenového identifikátoru](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format). Aby bylo možné uložit rozhraní do úložiště, musí být ID rozhraní jedinečné:
 
     ```json
     {
@@ -176,7 +171,7 @@ Pokud chcete vytvořit soubor rozhraní, který definuje možnosti vašeho zař�
           "commandType": "synchronous"
         }
       ],
-      "@context": "http://azureiot.com/v1/contexts/Interface.json"
+      "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
     }
     ```
 
@@ -219,9 +214,9 @@ Chcete-li vytvořit soubor modelu, který určuje rozhraní, které vaše zaří
 
 1. Stisknutím **kombinace kláves CTRL + SHIFT + P** otevřete paletu příkazů.
 
-1. Zadejte **technologie Plug and Play** a pak vyberte **& Play technologie IoT plug-in: Vytvořte příkaz modelu** schopností. Pak jako název modelu zadejte **SensorboxModel** . VS Code vytvoří vzorový soubor rozhraní s názvem **SensorboxModel. capabilitymodel. JSON**.
+1. Zadejte **technologie Plug and Play** a potom vyberte **& IoT Plug and Play: Create Capability model** . Pak jako název modelu zadejte **SensorboxModel** . VS Code vytvoří vzorový soubor rozhraní s názvem **SensorboxModel. capabilitymodel. JSON**.
 
-1. Nahraďte obsah tohoto souboru následujícím `{your name}` kódem JSON a nahraďte ho `@id` v poli a `EnvironmentalSensor` rozhraní se stejnou hodnotou, jakou jste použili v souboru **EnvironmentalSensor. Interface. JSON** . Aby bylo možné uložit rozhraní do úložiště, musí být ID rozhraní jedinečné:
+1. Nahraďte obsah tohoto souboru následující JSON a nahraďte `{your name}` v poli `@id` a v rozhraní `EnvironmentalSensor` se stejnou hodnotou, jakou jste použili v souboru **EnvironmentalSensor. Interface. JSON** . Aby bylo možné uložit rozhraní do úložiště, musí být ID rozhraní jedinečné:
 
     ```json
     {
@@ -256,7 +251,7 @@ Chcete-li stáhnout rozhraní **DeviceInformation** z úložiště veřejného m
 
 1. Zadejte **technologie Plug and Play**, vyberte příkaz **Otevřít úložiště modelu** a pak vyberte **Otevřít úložiště veřejného modelu**.
 
-1. Vyberte **rozhraní**a pak vyberte rozhraní informace o zařízení s ID `urn:azureiot:DeviceManagement:DeviceInformation:1`a pak vyberte **Stáhnout**.
+1. Vyberte **rozhraní**a pak vyberte rozhraní informací o zařízení s ID `urn:azureiot:DeviceManagement:DeviceInformation:1`a pak vyberte **Stáhnout**.
 
 Teď máte tři soubory, které tvoří model schopností zařízení:
 
@@ -280,7 +275,7 @@ Otevření firemního úložiště v VS Code:
 
 1. Stisknutím **kombinace kláves CTRL + SHIFT + P** otevřete paletu příkazů.
 
-1. Zadejte **technologie Plug and Play** a pak vyberte **& Play technologie IoT plug-in: Otevřete příkaz úložiště** modelu.
+1. Zadejte **technologie Plug and Play** a potom vyberte **& IoT plug-in, příkaz Open model úložiště** .
 
 1. Vyberte **Otevřít úložiště organizačních modelů** a vložte ho do svého připojovacího řetězce.
 
@@ -290,7 +285,7 @@ Publikování modelu a rozhraní schopností zařízení do úložiště vaší 
 
 1. Stisknutím **kombinace kláves CTRL + SHIFT + P** otevřete paletu příkazů.
 
-1. Zadejte **technologie Plug and Play** a pak vyberte **& Play technologie IoT plug-in: Odešlete soubory do úložiště** modelu příkazu.
+1. Zadejte **technologie Plug and Play** a potom vyberte příkaz **Plug and & Play: Odeslat soubory do úložiště modelu** .
 
 1. Vyberte soubory **EnvironmentalSensor. Interface. JSON** a **SensorboxModel. capabilitymodel. JSON** a vyberte **OK**.
 
@@ -302,7 +297,7 @@ K vygenerování kostry kódu C z modelu můžete použít **nástroje Azure IoT
 
 1. Stisknutím **kombinace kláves CTRL + SHIFT + P** otevřete paletu příkazů.
 
-1. Zadejte **technologie Plug and Play** a pak vyberte **& Play technologie IoT plug-in: Vygenerujte příkaz pro** zástupné kódy zařízení.
+1. Zadejte **technologie Plug and Play** a potom vyberte **IoT plug & Play: příkaz generovat kód zařízení stub** .
 
 1. Vyberte soubor modelu schopností **SensorboxModel. capabilitymodel. JSON** .
 
@@ -310,9 +305,11 @@ K vygenerování kostry kódu C z modelu můžete použít **nástroje Azure IoT
 
 1. Jako jazyk vyberte **ANSI C** .
 
-1. Jako cíl vyberte **projekt cmake** .
-
 1. Jako způsob připojení vyberte **prostřednictvím IoT Hub připojovací řetězec zařízení** .
+
+1. Vyberte **projekt cmake ve Windows** jako šablonu projektu.
+
+1. Vyberte **prostřednictvím Vcpkg** jako způsob, jak zahrnout sadu SDK pro zařízení.
 
 VS Code generuje kostru kódu C a uloží soubory do složky **sensorbox_app** ve složce **modelcode** . VS Code otevře nové okno, které obsahuje soubory generovaného kódu.
 
@@ -355,7 +352,7 @@ Když kód spustíte, připojí se k IoT Hub a spustí odesílání ukázkových
 
     Poznamenejte si připojovací řetězec.
 
-1. Na příkazovém řádku přejděte do složky **Azure-IoT-SDK-c** , kde jste vytvořili sadu SDK a ukázky. Pak přejděte do složky pro **vydání\\cmake\\sensorbox_app** .
+1. Na příkazovém řádku přejděte do složky **Azure-IoT-SDK-c** , kde jste vytvořili sadu SDK a ukázky. Pak přejděte do složky pro **vydání\\sensorbox_app\\cmake** .
 
 1. Spusťte následující příkaz:
 
@@ -365,7 +362,7 @@ Když kód spustíte, připojí se k IoT Hub a spustí odesílání ukázkových
 
 1. Pomocí nástroje Azure IoT Explorer můžete komunikovat se zařízením IoT technologie Plug and Play připojeném ke službě IoT Hub. Další informace najdete v tématu [instalace a použití Azure IoT Exploreru](./howto-install-iot-explorer.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste vytvořili IoT technologie Plug and Play připraveni k certifikaci, se naučíte:
 

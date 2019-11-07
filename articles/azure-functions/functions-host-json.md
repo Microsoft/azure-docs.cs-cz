@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 96c346db74c1e6c43c3501b657621d09e019309c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 584fb7b97b8342289d7ca2f23b0479eb1169867a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469202"
+ms.locfileid: "73575895"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Reference Host. JSON pro Azure Functions 2. x  
 
@@ -148,7 +148,7 @@ Seznam funkcí, které hostitel úlohy spouští. Prázdné pole znamená spušt
 ## <a name="functiontimeout"></a>functionTimeout
 
 Označuje dobu trvání časového limitu pro všechny funkce. Postupuje podle formátu řetězce TimeSpan. V plánu spotřeby bez serveru je platný rozsah od 1 sekundy do 10 minut a výchozí hodnota je 5 minut.  
-Ve vyhrazeném (App Service) plánu není celkový limit a výchozí hodnota je 30 minut. Hodnota `-1` označuje neohraničené spouštění.
+Ve vyhrazeném (App Service) plánu není celkový limit a výchozí hodnota je 30 minut. Hodnota `-1` označuje neohraničené spuštění.
 
 ```json
 {
@@ -182,23 +182,7 @@ Nastavení konfigurace pro [Monitor stavu hostitele](https://github.com/Azure/az
 
 ## <a name="http"></a>http
 
-Nastavení konfigurace najdete v [aktivačních událostech http a vazbách](functions-bindings-http-webhook.md).
-
-```json
-{
-    "extensions": {
-        "http": {
-            "routePrefix": "api",
-            "maxOutstandingRequests": 200,
-            "maxConcurrentRequests": 100,
-            "dynamicThrottlesEnabled": true
-        }
-    }
-}
-```
-
-
-[!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
+Nastavení konfigurace najdete v [aktivačních událostech http a vazbách](functions-bindings-http-webhook.md#hostjson-settings).
 
 ## <a name="logging"></a>Protokolu
 
@@ -206,7 +190,7 @@ Nastavení konfigurace najdete v [aktivačních událostech http a vazbách](fun
 
 ```json
 "logging": {
-    "fileLoggingMode": "debugOnly",
+    "fileLoggingMode": "debugOnly"
     "logLevel": {
       "Function.MyFunction": "Information",
       "default": "None"
@@ -222,10 +206,10 @@ Nastavení konfigurace najdete v [aktivačních událostech http a vazbách](fun
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
-|fileLoggingMode|debugOnly|Definuje, jakou úroveň protokolování souborů je povoleno.  Možnosti jsou `never`, `always` `debugOnly`. |
-|logLevel|–|Objekt, který definuje filtrování kategorií protokolů pro funkce v aplikaci. Verze 2. x se řídí rozložením ASP.NET Core pro filtrování kategorií protokolů. To vám umožní filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolů](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
-|konzola|–| Nastavení protokolování [konzoly](#console) . |
-|ApplicationInsights|–| Nastavení [applicationInsights](#applicationinsights) |
+|fileLoggingMode|debugOnly|Definuje, jakou úroveň protokolování souborů je povoleno.  Možnosti jsou `never`, `always``debugOnly`. |
+|logLevel|neuvedeno|Objekt, který definuje filtrování kategorií protokolů pro funkce v aplikaci. Verze 2. x se řídí rozložením ASP.NET Core pro filtrování kategorií protokolů. To vám umožní filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolů](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
+|konzola|neuvedeno| Nastavení protokolování [konzoly](#console) . |
+|ApplicationInsights|neuvedeno| Nastavení [applicationInsights](#applicationinsights) |
 
 ## <a name="console"></a>konzola
 
@@ -245,7 +229,7 @@ Toto nastavení je podřízenou položkou [protokolování](#logging). Řídí p
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|isEnabled|false|Povolí nebo zakáže protokolování konzoly.| 
+|isEnabled|false (nepravda)|Povolí nebo zakáže protokolování konzoly.| 
 
 ## <a name="manageddependency"></a>managedDependency
 
@@ -293,11 +277,11 @@ Nastavení konfigurace pro chování zámku typu singleton. Další informace na
 |listenerLockPeriod|00:01:00|Období, pro které jsou pořízeny zámky naslouchacího procesu.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Časový interval, který se používá pro obnovení zámku naslouchacího procesu, pokud se nepovedlo získat zámek naslouchacího procesu při spuštění.| 
 |lockAcquisitionTimeout|00:01:00|Maximální doba, po kterou se modul runtime pokusí získat zámek.| 
-|lockAcquisitionPollingInterval|–|Interval mezi pokusy o získání zámku.| 
+|lockAcquisitionPollingInterval|neuvedeno|Interval mezi pokusy o získání zámku.| 
 
 ## <a name="version"></a>version
 
-Pro aplikaci Function App, která cílí na modul runtime v2, se vyžaduje řetězec verze `"version": "2.0"`.
+Pro aplikaci Function App, která cílí na modul runtime v2, se vyžaduje `"version": "2.0"` řetězec verze.
 
 ## <a name="watchdirectories"></a>watchDirectories
 

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/01/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 64af398ec4829a0336294b33fef102392b9a4099
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 6549cf030772d805b063510b9931968027639511
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163875"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583140"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Mapování doporučení ukázka srovnávacího plánu pro CIS Microsoft Azure Foundation
 
@@ -356,13 +356,13 @@ Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overvie
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste zkontrolovali mapování ovládacího prvku pro kontrolní plán služby CIS Microsoft Azure Foundation, přečtěte si následující článek, kde najdete informace o podrobném plánu nebo návštěvě Azure Policy v Azure Portal k přiřazení iniciativy:
+Teď, když jste zkontrolovali mapování ovládacího prvku pro kontrolní plán služby CIS Microsoft Azure Foundation, najdete v následujících článcích informace o podrobném plánu nebo návštěvě Azure Policy v Azure Portal k přiřazení iniciativy:
 
 > [!div class="nextstepaction"]
-> [Ci Microsoft Azure Foundation – přehled srovnávacích testů](./index.md)
-> [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/Definitions)
+> [Ci Microsoft Azure Foundation – přehled testu výkonnosti – přehled](./index.md)
+> [SNS Microsoft Azure Foundation – postup nasazení](./deploy.md)
 
-Další články o semodrotiskych a jejich použití:
+Další články věnované podrobným plánům a postupu jejich využití:
 
 - Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)
