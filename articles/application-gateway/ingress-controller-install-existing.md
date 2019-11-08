@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/22/2019
+ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 045fb54956e78e826b06dc1c56c29e1c7bd430bd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dec43a4d7eb5a9546fcd77cce972b93542ea3b10
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513416"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795944"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Instalace AGIC (příchozího adaptéru Application Gateway) pomocí existující Application Gateway
 
@@ -27,7 +27,7 @@ AGIC [sleduje prostředky](https://kubernetes.io/docs/concepts/services-networki
 - [Instalace kontroleru příchozího přenosu dat pomocí Helm](#install-ingress-controller-as-a-helm-chart)
 - [Více clusterů a sdílených Application Gateway](#multi-cluster--shared-application-gateway): Nainstalujte AGIC do prostředí, kde Application Gateway se sdílí mezi jedním nebo více clustery AKS a/nebo jinými součástmi Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 V tomto dokumentu se předpokládá, že už máte nainstalované tyto nástroje a infrastrukturu:
 - [AKS](https://azure.microsoft.com/services/kubernetes-service/) s povolenými [pokročilými sítěmi](https://docs.microsoft.com/azure/aks/configure-azure-cni)
 - [Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/create-zone-redundant) ve stejné virtuální síti jako AKS
@@ -72,7 +72,7 @@ AGIC komunikuje se serverem rozhraní Kubernetes API a Azure Resource Manager. P
 
 ## <a name="set-up-aad-pod-identity"></a>Nastavení identity AAD pod
 
-[Identita AAD pod](https://github.com/Azure/aad-pod-identity) je kontroler, podobně jako AGIC, který se taky spouští na AKS. Naváže Azure Active Directory identity k Kubernetes luskům. Aby aplikace v Kubernetes pod mohla komunikovat s dalšími komponentami Azure, vyžaduje se identita. V takovém případě potřebujeme pro AGIC pod oprávnění k tomu, aby se požadavky HTTP na [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+[Identita AAD pod](https://github.com/Azure/aad-pod-identity) je kontroler, podobně jako AGIC, který se taky spouští na AKS. Naváže Azure Active Directory identity k Kubernetes luskům. Aby aplikace v Kubernetes pod mohla komunikovat s dalšími komponentami Azure, vyžaduje se identita. V takovém případě potřebujeme autorizaci pro AGIC pod, aby bylo možné požadavky HTTP na [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
 Postupujte podle [pokynů pro instalaci služby AAD pod](https://github.com/Azure/aad-pod-identity#deploy-the-azure-aad-identity-infra) , abyste přidali tuto komponentu do AKS.
 
@@ -91,7 +91,7 @@ Pomocí [Cloud Shell](https://shell.azure.com/) můžete spustit všechny násle
     az identity show -g <resourcegroup> -n <identity-name>
     ```
 
-1. Udělte identitě `Contributor` přístup Application Gateway. Za tímto účelem budete potřebovat ID Application Gateway, který bude vypadat přibližně takto: `/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
+1. Udělte identitě `Contributor` přístup k vašemu Application Gateway. Za tímto účelem budete potřebovat ID Application Gateway, který bude vypadat přibližně takto: `/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
 
     Získat seznam ID Application Gateway v předplatném pomocí: `az network application-gateway list --query '[].id'`
 
@@ -128,7 +128,7 @@ armAuth:
 ```
 
 ## <a name="install-ingress-controller-as-a-helm-chart"></a>Instalace kontroleru příchozího přenosu dat jako Helmový graf
-V prvních několika krocích jsme do svého clusteru Kubernetes nainstalovali do služby Helm. K instalaci balíčku AGIC Helm použijte [Cloud Shell](https://shell.azure.com/) :
+V prvních několika krocích nainstalujeme do vašeho clusteru Kubernetes do Helm. K instalaci balíčku AGIC Helm použijte [Cloud Shell](https://shell.azure.com/) :
 
 1. Přidání úložiště `application-gateway-kubernetes-ingress` Helm a provedení aktualizace Helm
 
@@ -244,9 +244,9 @@ Než povolíte toto nastavení, __zálohujte prosím konfiguraci Application Gat
 Stažený soubor zip bude mít šablony JSON, bash a PowerShellové skripty, které můžete použít k obnovení Application Gateway
 
 ### <a name="example-scenario"></a>Ukázkový scénář
-Pojďme se podívat na imaginární Application Gateway, který spravuje provoz pro 2 weby:
+Pojďme se podívat na imaginární Application Gateway, který spravuje provoz dvou webů:
   - `dev.contoso.com` – hostováno na novém AKS pomocí Application Gateway a AGIC
-  - `prod.contoso.com` – hostovaná v [sadě škálování Azure virtuální Machine](https://azure.microsoft.com/services/virtual-machine-scale-sets/)
+  - `prod.contoso.com` – hostovaná v [sadě škálování virtuálních počítačů Azure](https://azure.microsoft.com/services/virtual-machine-scale-sets/)
 
 Ve výchozím nastavení předpokládá AGIC 100% vlastnictví Application Gateway, na které se odkazuje. AGIC Přepisuje veškerou konfiguraci služby App Gateway. Pokud jsme chtěli ručně vytvořit naslouchací proces pro `prod.contoso.com` (v Application Gateway), aniž byste ho definovali v Kubernetes příchozího přenosu dat, AGIC během několika sekund odstraní `prod.contoso.com` konfiguraci.
 

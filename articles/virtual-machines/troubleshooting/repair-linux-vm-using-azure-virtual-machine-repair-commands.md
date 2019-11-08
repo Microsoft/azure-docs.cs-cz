@@ -6,7 +6,7 @@ documentationcenter: ''
 author: v-miegge
 manager: dcscontentpm
 editor: ''
-tags: ''
+tags: virtual-machines
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.workload: infrastructure-services
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 56e420f9641638bfa79ff077be73132b00b934ab
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 49fdfde402938ce8d0ee1b141a47e68c99c502e7
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "71132088"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796202"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Oprava virtuálního počítače s Linuxem pomocí příkazů pro opravu virtuálních počítačů Azure
 
@@ -54,13 +54,13 @@ Další dokumentaci a pokyny najdete v tématu [AZ VM Repair](https://docs.micro
 
    Pokud dáváte přednost místní instalaci a používání rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu ``az --version``. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-2. Pokud jste použili příkazy `az vm repair` poprvé, přidejte rozšíření rozhraní příkazového řádku pro opravu virtuálního počítače.
+2. Pokud `az vm repair` příkazy používáte poprvé, přidejte rozšíření rozhraní příkazového řádku pro opravu virtuálního počítače.
 
    ```azurecli-interactive
    az extension add -n vm-repair
    ```
 
-   Pokud jste dříve používali příkazy `az vm repair`, použijte všechny aktualizace rozšíření VM-Repair.
+   Pokud jste už dříve použili `az vm repair` příkazy, aplikujte všechny aktualizace na rozšíření VM-Repair.
 
    ```azurecli-interactive
    az extension update -n vm-repair

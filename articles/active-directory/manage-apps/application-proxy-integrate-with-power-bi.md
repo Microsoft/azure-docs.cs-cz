@@ -16,18 +16,18 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2148d6ea869a87571008c1f84c5b1000d4030bbb
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 845ffda22cae9464870786cc5997b9f5521c03e1
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175946"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795631"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Povolení vzdáleného přístupu pro Power BI Mobile s využitím Azure Proxy aplikací služby AD
 
 Tento článek popisuje, jak pomocí služby Azure Proxy aplikací služby AD povolit, aby se mobilní aplikace Power BI připojovala Server sestav Power BI (PBIRS) a SQL Server Reporting Services (SSRS) 2016 a novější. Prostřednictvím této integrace můžou uživatelé mimo podnikovou síť přistupovat ke svým Power BIm sestavám z Power BI mobilní aplikace a chránit pomocí ověřování Azure AD. Tato ochrana zahrnuje [výhody zabezpečení](application-proxy-security.md#security-benefits) , jako je podmíněný přístup a Multi-Factor Authentication.  
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento článek předpokládá, že jste již nasadili služby sestav a [povolili proxy aplikace](application-proxy-add-on-premises-application.md).
 
@@ -73,7 +73,7 @@ Pokud chcete nakonfigurovat KCD, opakujte následující kroky pro každý poč�
 4. Nastavení delegování nastavte na **Důvěřovat tomuto počítači pro delegování pouze určeným službám**. Pak vyberte **použít libovolný protokol pro ověřování**.
 5. Vyberte **Přidat**a pak vyberte **Uživatelé nebo počítače**.
 6. Zadejte účet služby, který používáte pro službu Reporting Services. Jedná se o účet, do kterého jste přidali hlavní název služby (SPN) v rámci konfigurace služby Reporting Services.
-7. Klikněte na **OK**. Pokud chcete změny uložit, klikněte znovu na **OK** .
+7. Klikněte na tlačítko **OK**. Pokud chcete změny uložit, klikněte znovu na **OK** .
 
 Další informace najdete v tématu [omezené delegování protokolu Kerberos pro jednotné přihlašování k vašim aplikacím pomocí proxy aplikací](application-proxy-configure-single-sign-on-with-kcd.md).
 
@@ -82,7 +82,7 @@ Další informace najdete v tématu [omezené delegování protokolu Kerberos pr
 Teď jste připraveni nakonfigurovat Azure Proxy aplikací služby AD.
 
 1. Publikujte služby sestav prostřednictvím proxy aplikací s následujícím nastavením. Podrobné pokyny k publikování aplikace prostřednictvím proxy aplikací najdete v tématu [publikování aplikací pomocí Azure proxy aplikací služby AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
-   - **Interní adresa URL**: zadejte adresu URL serveru sestav, ke kterému konektor může získat přístup v podnikové síti. Ujistěte se, že je tato adresa URL dosažitelná ze serveru, na kterém je konektor nainstalovaný. Osvědčeným postupem je použití domény nejvyšší úrovně, jako je například `https://servername/`, aby se předešlo problémům s podcestami (například `https://servername/reports/` a `https://servername/reportserver/`) nepublikovanými prostřednictvím proxy aplikací.
+   - **Interní adresa URL**: zadejte adresu URL serveru sestav, ke kterému konektor může získat přístup v podnikové síti. Ujistěte se, že je tato adresa URL dosažitelná ze serveru, na kterém je konektor nainstalovaný. Osvědčeným postupem je použití domény nejvyšší úrovně, jako je například `https://servername/`, aby se předešlo problémům s podcestami publikovanými prostřednictvím proxy aplikací. Například použijte `https://servername/` a nikoli `https://servername/reports/` nebo `https://servername/reportserver/`.
      > [!NOTE]
      > Doporučujeme použít zabezpečené připojení HTTPS k serveru sestav. Informace o postupu najdete v tématu [Konfigurace připojení SSL na serveru sestav v nativním režimu](https://docs.microsoft.com/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017) .
    - **Externí adresa URL**: zadejte veřejnou adresu URL, ke které se Power BI mobilní aplikace připojí. Například pokud se používá vlastní doména, může to vypadat jako `https://reports.contoso.com`. Pokud chcete použít vlastní doménu, nahrajte certifikát pro doménu a nasměrujte záznam DNS na výchozí doménu msappproxy.net pro vaši aplikaci. Podrobný postup najdete v tématu [práce s vlastními doménami v Azure proxy aplikací služby AD](application-proxy-configure-custom-domain.md).
