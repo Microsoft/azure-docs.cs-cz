@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/08/2019
+ms.date: 11/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 20cfcea4a8b58c1c01a7c710163b7320ff96d65c
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 96dae96e16ce033ce15a8f1e9386e5252562654a
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330822"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796228"
 ---
 # <a name="what-is-azure-front-door-service"></a>Co je Azure Front Door Service?
 Služba Azure Front Door vám umožňuje definovat, spravovat a monitorovat globální směrování webového provozu tím, že provádí optimalizaci pro nejlepší výkon a poskytuje okamžité globální převzetí služeb při selhání, aby byla zajištěna vysoká dostupnost. Se službou Front Door můžete transformovat svoje globální (zahrnující více oblastí) spotřebitelské a podnikové aplikace do robustních a vysoce výkonných přizpůsobených moderních aplikací, rozhraní API a obsahu, kterými s pomocí Azure oslovíte globální cílovou skupinu.
@@ -57,16 +57,16 @@ Pokud k doručování obsahu používáte službu Front Door a chcete, aby se v 
 Pro názvy vlastních domén podporuje služba Front Door také protokol HTTPS. Tuto funkci můžete použít buď tak, že pro provoz vyberete spravované certifikáty služby Front Door, nebo nahrajete vlastní certifikát SSL.
 
 ## <a name="application-layer-security"></a>Zabezpečení aplikační vrstvy
-Azure Front Door umožňuje vytvořit vlastní pravidla firewallu webových aplikací pro řízení přístupu za účelem ochrany úloh HTTP/HTTPS před zneužitím na základě klientských IP adres, kódů zemí a parametrů HTTP. Front Door dále umožňuje vytvořit pravidla omezení rychlosti, aby bylo možné vypořádat se s provozem škodlivých robotů. 
+Přední dvířka Azure umožňují vytvářet vlastní pravidla firewallu webových aplikací (WAF) pro řízení přístupu, která chrání vaše úlohy HTTP/HTTPS před zneužitím na základě IP adres klientů, kódu země a parametrů protokolu HTTP. Front Door dále umožňuje vytvořit pravidla omezení rychlosti, aby bylo možné vypořádat se s provozem škodlivých robotů. Další informace o firewallu webových aplikací najdete v tématu [co je firewall webových aplikací Azure?](../web-application-firewall/overview.md)
 
 Samotná platforma Front Door je chráněná službou [Azure DDoS Protection](../virtual-network/ddos-protection-overview.md) Basic. Z důvodu další ochrany je možné ve virtuálních sítích povolit službu Azure DDoS Protection Standard a pomocí automatického ladění a zmírnění chránit prostředky před útoky na vrstvě sítě (TCP/UDP). Front Door je reverzní proxy vrstvy 7 a standardně povoluje pouze webový přenos do back-endů a blokuje ostatní typy provozu.
 
 ## <a name="url-redirection"></a>Přesměrování adres URL
-Pomocí nasdílení změn silné oboru na podporu pouze zabezpečené komunikace se očekává webové aplikace automaticky přesměrovat veškerý provoz protokolu HTTP na HTTPS. Tím se zajistí, že veškerá komunikace mezi uživateli a aplikace probíhá přes šifrované cestu. 
+Díky silnému nabízenému vysílání na podporu zabezpečené komunikace se očekává, že webové aplikace automaticky přesměrují všechny přenosy HTTP na HTTPS. Tím se zajistí, že se veškerá komunikace mezi uživateli a aplikací stane přes šifrovanou cestu. 
 
-Tradičně počet vlastníků aplikace se zabývat tento požadavek tak, že vytvoříte o vyhrazenou službu, jehož jediným účelem byla pro přesměrování požadavků, které obdrží na protokolu HTTP na HTTPS. Služba Azure branou podporuje možnost přesměrovat provoz z HTTP na HTTPS. To zjednodušuje konfiguraci aplikací, optimalizuje využití prostředků a podporuje nové scénáře přesměrování, včetně globálního přesměrování a přesměrování na základě cesty. Adresa URL přesměrování z Azure branou služby není omezený na HTTP, HTTPS přesměrování samostatně, ale také k přesměrování na jiný název hostitele, přesměrování na jinou cestu, nebo dokonce k novým řetězcem dotazu v adrese URL přesměrování.
+Vlastníci aplikací tento požadavek provedli vytvořením vyhrazené služby, jejíž jediným účelem bylo přesměrování požadavků, které přijímá v HTTP na HTTPS. Služba front-dveří Azure podporuje možnost přesměrovat provoz z HTTP na HTTPS. To zjednodušuje konfiguraci aplikací, optimalizuje využití prostředků a podporuje nové scénáře přesměrování, včetně globálního přesměrování a přesměrování na základě cesty. Přesměrování adresy URL ze služby front-end z Azure se neomezí jenom na přesměrování HTTP na HTTPS, ale taky pro přesměrování na jiný název hostitele, přesměrování na jinou cestu nebo dokonce přesměrování na nový řetězec dotazu v adrese URL.
 
-Další informace najdete v tématu [síťový provoz přesměruje](front-door-url-redirect.md) branou službou Azure.
+Další informace najdete v tématu [přesměrování provozu](front-door-url-redirect.md) pomocí služby Azure front-dveří.
 
 ## <a name="url-rewrite"></a>Přepsání adresy URL
 Front Door podporuje [přepsání adresy URL](front-door-url-rewrite.md) tím, že povoluje konfiguraci volitelné vlastní předávací cesty, která se má použít při vytváření žádosti o předání do back-endu. Služba Front Door dále umožňuje konfigurovat hlavičku hostitele, která se má při předání žádosti do back-endu odeslat.
@@ -80,7 +80,7 @@ Protokol HTTP/2 umožňuje plně duplexní komunikaci mezi back-endy aplikací a
 
 Informace o cenách najdete v tématu, které se věnuje [cenám služby Front Door](https://azure.microsoft.com/pricing/details/frontdoor/).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si, jak [vytvořit službu Front Door](quickstart-create-front-door.md).
+- Přečtěte si, jak [vytvořit Front Door](quickstart-create-front-door.md).
 - Přečtěte si, [jak služba Front Door funguje](front-door-routing-architecture.md).
