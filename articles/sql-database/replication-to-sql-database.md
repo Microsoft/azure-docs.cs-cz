@@ -1,22 +1,22 @@
 ---
-title: Replikace do Azure SQL Database "
+title: Replikace
 description: Další informace o použití SQL Server replikace s Azure SQL Database izolovanými databázemi a databázemi v elastických fondech
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: ae564a98b77b1ac564fa9aae152b27c491187d0c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ac198ed8eac6221831fbb280129b76e5fa4e3413
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692218"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815764"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikace do SQL Database jedné a sdružené databáze
 
@@ -38,7 +38,7 @@ SQL Server replikaci je možné nakonfigurovat na [servery SQL Database](sql-dat
 - SQL Server 2014 (12. x) SP1 CU3
 - SQL Server 2014 (12. x) RTM CU10
 - SQL Server 2012 (11. x) SP2 CU8 nebo SP3
-- Pokus o konfiguraci replikace pomocí starší verze může mít za následek chybu MSSQL_REPL20084 (proces se nemohl připojit k odběrateli.) a MSSQL_REPL40532 (nemůže otevřít název serveru \<> požadoval přihlášení. Přihlášení se nezdařilo.).  
+- Pokud se pokusíte nakonfigurovat replikaci pomocí starší verze, může dojít k chybě MSSQL_REPL20084 (proces se nemohl připojit k odběrateli) a MSSQL_REPL40532 (nemůže otevřít server \<název > požadovaný přihlášením. Přihlášení se nezdařilo.).  
 - Pokud chcete používat všechny funkce Azure SQL Database, musíte používat nejnovější verze nástrojů [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
   
 ## <a name="remarks"></a>Poznámky

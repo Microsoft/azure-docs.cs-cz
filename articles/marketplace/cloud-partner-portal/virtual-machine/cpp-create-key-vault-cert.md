@@ -4,15 +4,16 @@ description: Vysvětluje, jak zaregistrovat virtuální počítač z virtuální
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pabutler
-ms.openlocfilehash: c27605d2f9b87a9d4ba3d2326c0ce7ad437d3441
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 4adc6f716050e2d792e0a5c022972e4340d2846a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240980"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823114"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>Vytvořit certifikáty pro Azure Key Vault
 
@@ -32,7 +33,7 @@ Pro tuto práci můžete použít buď novou, nebo existující skupinu prostře
 
 Úpravou a spuštěním následujícího skriptu Azure PowerShellu vytvořte soubor certifikátu (. pfx) v místní složce.  Je potřeba nahradit hodnoty pro následující parametry:
 
-|  **Parametr**        |   **Popis**                                                               |
+|  **Ukazatele**        |   **Popis**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$certroopath` | Místní složka, do které se uloží soubor. pfx  |
 | `$location`    | Jedno ze standardních zeměpisných míst Azure  |
@@ -76,9 +77,9 @@ Pro tuto práci můžete použít buď novou, nebo existující skupinu prostře
 
 ## <a name="create-the-key-vault"></a>Vytvoření trezoru klíčů
 
-Zkopírujte obsah [šablony nasazení trezoru klíčů](./cpp-key-vault-deploy-template.md) do souboru na místním počítači. (v následujícím příkladu skriptu je `C:\certLocation\keyvault.json`tento prostředek.)  Pokud chcete vytvořit instanci Azure Key Vault a přidruženou skupinu prostředků, upravte a spusťte následující skript Azure PowerShellu.  Je potřeba nahradit hodnoty pro následující parametry:
+Zkopírujte obsah [šablony nasazení trezoru klíčů](./cpp-key-vault-deploy-template.md) do souboru na místním počítači. (v následujícím příkladu skriptu je tento prostředek `C:\certLocation\keyvault.json`.)  Pokud chcete vytvořit instanci Azure Key Vault a přidruženou skupinu prostředků, upravte a spusťte následující skript Azure PowerShellu.  Je potřeba nahradit hodnoty pro následující parametry:
 
-|  **Parametr**        |   **Popis**                                                               |
+|  **Ukazatele**        |   **Popis**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$postfix`            | Libovolný číselný řetězec připojený k identifikátorům nasazení                     |
 | `$rgName`             | Název skupiny prostředků Azure (RG), která se má vytvořit                                        |
@@ -205,13 +206,13 @@ Certifikáty, které jsou obsaženy v souboru. pfx, teď můžete ukládat do no
             echo $certpassword
             $jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
             $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
-            $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText –Force
+            $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText -Force
             $objAzureKeyVaultSecret=Set-AzureKeyVaultSecret -VaultName $kvname -Name "ISVSecret$postfix" -SecretValue $secret
             echo $objAzureKeyVaultSecret.Id 
     
 ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Dále [nasadíte virtuální počítač z uživatelské image virtuálního](./cpp-deploy-vm-user-image.md)počítače.

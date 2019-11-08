@@ -4,15 +4,16 @@ description: Postup vytvoření samoobslužného klienta pro předběžné ově�
 services: Azure, Marketplace, Cloud Partner Portal, Virtual Machine
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pabutler
-ms.openlocfilehash: 46923ecd33a054a36aa6900a415d0b563e5afff0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: fc62875873f38630e592c79aebd6a138665ed6e4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163252"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809210"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Vytvoření klientského samočinného testu pro předběžné ověření image virtuálního počítače Azure
 
@@ -68,7 +69,7 @@ V následující tabulce jsou popsána pole rozhraní API.
 |  DNSName           |  Název virtuálního počítače, který se má testovat    |
 |  Uživatel              |  Uživatelské jméno pro přihlášení k virtuálnímu počítači         |
 |  Heslo          |  Heslo pro přihlášení k virtuálnímu počítači          |
-|  OS                |  Operační systém virtuálního počítače: buď `Linux`, nebo `Windows`          |
+|  Operační systém                |  Operační systém virtuálního počítače: buď `Linux`, nebo `Windows`          |
 |  PortNo            |  Otevřete číslo portu pro připojení k virtuálnímu počítači. Číslo portu je obvykle `22` pro Linux a `5986` pro Windows.          |
 |  |  |
 
@@ -99,7 +100,7 @@ $Body = @{
     "CompanyName" = "ABCD"
 
 } | ConvertTo-Json
-$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
+$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" -Headers $headers;
 $Content = $res | ConvertFrom-Json
 ```
 Následující snímek obrazovky ukazuje příklad volání rozhraní API v prostředí PowerShell.
@@ -109,7 +110,7 @@ Následující snímek obrazovky ukazuje příklad volání rozhraní API v pros
 Pomocí předchozího příkladu můžete načíst JSON a analyzovat ho a získat následující podrobnosti:
 
 ```powershell
-$testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $res)
+$testresult = ConvertFrom-Json -InputObject (ConvertFrom-Json -InputObject $res)
 
   Write-Host "OSName: $($testresult.OSName)"
   Write-Host "OSVersion: $($testresult.OSVersion)"
@@ -144,7 +145,7 @@ Chcete-li volat rozhraní API v prostředí PowerShell, použijte následující
 Následující příklad kódu ukazuje volání prostředí PowerShell do rozhraní API.
 
 ```powershell
-$accesstoken = “Get token for your Client AAD App”
+$accesstoken = "Get token for your Client AAD App"
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Authorization", "Bearer $accesstoken")
 $Body = @{
@@ -156,7 +157,7 @@ $Body = @{
     "CompanyName" = "ABCD"
 
 } | ConvertTo-Json
-$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
+$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" -Headers $headers;
 $Content = $res | ConvertFrom-Json
 ```
 
@@ -167,7 +168,7 @@ Následující snímek obrazovky ukazuje příklad volání rozhraní API v pros
 Pomocí předchozího příkladu můžete načíst JSON a analyzovat ho a získat následující podrobnosti:
 
 ```powershell
-$testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $res)
+$testresult = ConvertFrom-Json -InputObject (ConvertFrom-Json -InputObject $res)
 
   Write-Host "OSName: $($testresult.OSName)"
   Write-Host "OSVersion: $($testresult.OSVersion)"
@@ -219,7 +220,7 @@ Následující snímek obrazovky ukazuje výsledky JSON ze oblého volání.
 
 Pomocí následujících kroků vyberte tenanta Azure AD, ve kterém chcete vytvořit aplikaci.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V horním řádku nabídek vyberte svůj účet a v seznamu adresář zvolte tenanta služby Active Directory, kde chcete aplikaci zaregistrovat. Případně můžete kliknutím na ikonu **adresář + předplatné** zobrazit globální filtr předplatných. Následující snímek obrazovky ukazuje příklad tohoto filtru.
 
    ![Vyberte filtr předplatného.](./media/stclient-subscription-filter.png)
@@ -249,7 +250,7 @@ K registraci klientské aplikace použijte následující postup.
    - **Typ aplikace** – výběr **webové aplikace/rozhraní API**
    - **Adresa URL pro přihlášení** – typ https:\//isvapp.azurewebsites.NET/selftest-VM
 
-4. Vyberte **Create** (Vytvořit).
+4. Vyberte **Vytvořit**.
 5. V části **Registrace aplikací** nebo **registrovaná aplikace**zkopírujte **ID aplikace**.
 
    ![Získat ID aplikace](./media/stclient-app-id.png)
@@ -275,7 +276,7 @@ K registraci klientské aplikace použijte následující postup.
 
     ![Konfigurace více tenantů pro aplikaci](./media/stclient-yes-multitenant.png)
 
-18. Vyberte **Save** (Uložit).
+18. Vyberte **Uložit**.
 19. V části **Nastavení**vyberte **klíče**.
 20. Vytvořte tajný klíč výběrem pole **Popis** klíče. Nakonfigurujte následující pole:
 
@@ -377,7 +378,7 @@ Pokud chcete požádat o tokeny Auth0 pro kteroukoli z autorizovaných aplikací
 
 ```powershell
 $clientId = "Application Id of AD Client APP";
-$clientSecret = "Secret Key of AD Client APP “
+$clientSecret = "Secret Key of AD Client APP "
 $audience = "https://management.core.windows.net";
 $authority = "https://login.microsoftonline.com/common/oauth2/token"
 $grantType = "client_credentials";
@@ -397,8 +398,8 @@ $token.AccessToken
 Předejte token do rozhraní API pro samočinné testování pomocí následujícího kódu v autorizační hlavičce:
 
 ```powershell
-$redirectUri = ‘https://isvapp.azurewebsites.net/selftest-vm’
-$accesstoken = ‘place your token here’
+$redirectUri = 'https://isvapp.azurewebsites.net/selftest-vm'
+$accesstoken = 'place your token here'
 
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Authorization", "Bearer $accesstoken")

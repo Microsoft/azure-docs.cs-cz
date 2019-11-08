@@ -1,20 +1,21 @@
 ---
-title: Azure SQL Database – Diagnostika výkonu na úrovni služby s škálovatelným škálováním
+title: Diagnostika výkonu v měřítku
 description: Tento článek popisuje, jak řešit problémy s výkonem s výkonným škálováním v Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
+ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: b8acdbc63098ae99355e8874f7c1585759e5fb7f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a7c64284c958fa8b3ec89c2b27515fe167a04011
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689861"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811151"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>Diagnostika řešení potíží s výkonem s škálovatelným škálováním SQL
 
@@ -27,7 +28,7 @@ Pro řešení problémů s výkonem v databázi s škálovatelným škálování
 
 Každá Azure SQL Database úroveň služby má omezení četnosti generování protokolu vyhodnocená prostřednictvím [zásad správného řízení přenosů protokolů](sql-database-resource-limits-database-server.md#transaction-log-rate-governance). V měřítku je limit generování protokolu aktuálně nastaven na 100 MB/s bez ohledu na úroveň služby. Existují však situace, kdy je potřeba omezit rychlost generování protokolu u primární repliky výpočetních dat, aby se Slaa obnovitelnost. Toto omezení se stane, když je [Server stránky nebo jiná výpočetní replika](sql-database-service-tier-hyperscale.md#distributed-functions-architecture) významně za použití nových záznamů protokolu z protokolovací služby.
 
-Následující typy čekání (v [Sys. DM _os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)) popisují důvody, proč je možné omezit rychlost protokolu u primární repliky Compute:
+Následující typy čekání (v [Sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)) popisují důvody, proč je možné omezit rychlost protokolu u primární repliky Compute:
 
 |Typ čekání    |Popis                         |
 |-------------          |------------------------------------|
@@ -46,10 +47,10 @@ Pokud je ve výpočetní replice vydaný objekt pro čtení, pokud data ve fondu
 Několik zobrazení dynamické správy a rozšířených událostí obsahuje sloupce a pole, která určují počet vzdálených čtení ze stránkového serveru, který se dá porovnat s celkovými čteními. 
 
 - Sloupce pro čtení serveru stránky sestavy jsou k dispozici ve zobrazení dynamické správy spouštění, například:
-    - [sys. DM _exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
-    - [sys. DM _exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
-    - [sys. DM _exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
-    - [sys. DM _exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
+    - [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
+    - [sys. dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
+    - [sys. dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
+    - [sys. dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
 - Do následujících rozšířených událostí se přidají čtení stránkového serveru:
     - sql_statement_completed
     - sp_statement_completed
@@ -68,12 +69,12 @@ Několik zobrazení dynamické správy a rozšířených událostí obsahuje slo
 
 ## <a name="virtual-file-stats-and-io-accounting"></a>Statistika virtuálních souborů a monitorování vstupně-výstupních operací
 
-V Azure SQL Database je [Sys. DM _io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF primárním způsobem, jak monitorovat SQL Server v/v. Vlastnosti v/v na měřítku se liší v důsledku [distribuované architektury](sql-database-service-tier-hyperscale.md#distributed-functions-architecture). V této části se zaměřujeme na vstupně-výstupní operace (čtení a zápisy) do datových souborů, jak je vidět v tomto DMF. V rámci škálování každý datový soubor, který je viditelný v tomto DMF, odpovídá serveru vzdálené stránky. Mezipaměť RBPEX, kterou tady uvádíme, je místní mezipaměť založená na SSD, která je v replikě COMPUTE nepokrývá mezipaměť.
+V Azure SQL Database je [Sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF primárním způsobem, jak monitorovat SQL Server v/v. Vlastnosti v/v na měřítku se liší v důsledku [distribuované architektury](sql-database-service-tier-hyperscale.md#distributed-functions-architecture). V této části se zaměřujeme na vstupně-výstupní operace (čtení a zápisy) do datových souborů, jak je vidět v tomto DMF. V rámci škálování každý datový soubor, který je viditelný v tomto DMF, odpovídá serveru vzdálené stránky. Mezipaměť RBPEX, kterou tady uvádíme, je místní mezipaměť založená na SSD, která je v replikě COMPUTE nepokrývá mezipaměť.
 
 
 ### <a name="local-rbpex-cache-usage"></a>Použití místní mezipaměti RBPEX
 
-Místní mezipaměť RBPEX existuje ve výpočetním uzlu v místním úložišti SSD. V této mezipaměti RBPEX je tedy v této mezipaměti rychlejší než v/v na vzdálených serverech. V současné době má [Sys. DM _io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) v databázi s velkým škálováním speciální řádek, ve kterém se hlásí v/v místní mezipaměť RBPEX na výpočetní replice. Tento řádek má hodnotu 0 pro sloupec `database_id` i `file_id`. Například následující dotaz vrátí statistiku využití RBPEX od spuštění databáze.
+Místní mezipaměť RBPEX existuje ve výpočetním uzlu v místním úložišti SSD. V této mezipaměti RBPEX je tedy v této mezipaměti rychlejší než v/v na vzdálených serverech. V současné době má [Sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) v databázi s velkým škálováním speciální řádek, který v vstupně-výstupních operacích prochází v místní mezipaměti RBPEX na výpočetní replice. Tento řádek má hodnotu 0 pro sloupec `database_id` i `file_id`. Například následující dotaz vrátí statistiku využití RBPEX od spuštění databáze.
 
 `select * from sys.dm_io_virtual_file_stats(0,NULL);`
 
@@ -83,8 +84,8 @@ Poměr operací čtení provedených v RBPEX a agregovaných čtení provedenýc
 ### <a name="data-reads"></a>Čtení dat
 
 - Pokud jsou čtení vydávány modulem SQL Server na výpočetní replice, mohou být obsluhovány buď místní mezipamětí RBPEX, nebo pomocí vzdálené stránky, nebo kombinací dvou, pokud se čte více stránek.
-- Když výpočetní replika přečte některé stránky z konkrétního souboru, například file_id 1, pokud se tato data nacházejí výhradně v místní mezipaměti RBPEX, všechny vstupně-výstupní operace pro toto čtení se týkají file_id 0 (RBPEX). Pokud jsou některá část těchto dat v místní mezipaměti RBPEX a některá část je na vzdáleném serveru stránky, v/v je k disfile_id 0 pro součást obsluhované z RBPEX a část obsluhovaná ze serveru vzdálené stránky je poskytována k hodnotě file_id 1. 
-- Když výpočetní replika požádá o stránku na konkrétní hodnotu [LSN](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide/) ze stránky serveru, pokud server stránky nezachytil požadavek na hodnotu LSN, přečtení na výpočetní replice počká, dokud se server stránky nepřed vrátí do výpočetní repliky. Pro všechny čtení ze stránky serveru na výpočetní replice se zobrazí typ čekání PAGEIOLATCH_ *, pokud čeká na tuto vstupně-výstupní operaci. Tato doba čekání zahrnuje dobu potřebnou k zaznamenání požadované stránky na straně serveru na požadovanou hodnotu LSN a dobu potřebnou k přenosu stránky ze serveru stránky do repliky služby Compute.
+- Když výpočetní replika přečte některé stránky z konkrétního souboru, například file_id 1, pokud se tato data nacházejí výhradně v místní mezipaměti RBPEX, všechny vstupně-výstupní operace pro toto čtení se započítávají na file_id 0 (RBPEX). Pokud je některá část těchto dat v místní mezipaměti RBPEX a některá část je na vzdáleném serveru stránky, v/v je k dis 0 pro součást obsluhované z RBPEX a část obsluhovaná ze serveru vzdálené stránky je k disfile_id k file_id 1. 
+- Když výpočetní replika požádá o stránku na konkrétní hodnotu [LSN](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide/) ze stránky serveru, pokud server stránky nezachytil požadavek na hodnotu LSN, přečtení na výpočetní replice počká, dokud se server stránky nepřed vrátí do výpočetní repliky. Pro všechny čtení ze stránky serveru na výpočetní replice se zobrazí PAGEIOLATCH_ * typ čekání, pokud čeká na tuto vstupně-výstupní operaci. Tato doba čekání zahrnuje dobu potřebnou k zaznamenání požadované stránky na straně serveru na požadovanou hodnotu LSN a dobu potřebnou k přenosu stránky ze serveru stránky do repliky služby Compute.
 - Velké čtení, jako je čtení předem, se často provádí pomocí [čtení "bodového shromažďování"](/sql/relational-databases/reading-pages/). To umožňuje čtení až 4 MB stránek najednou, považuje se za jeden načtený v modulu SQL Server. Pokud jsou však čtena data v RBPEX, jsou tyto čtení účtovány jako více než jeden jednotlivý čtení 8 KB od fondu vyrovnávacích pamětí a RBPEX vždy používá stránky 8 KB. V důsledku toho může být počet čtení v IOs, který se zobrazuje u RBPEX, větší než skutečný počet IOs, který modul provedl.
 
 
@@ -92,11 +93,11 @@ Poměr operací čtení provedených v RBPEX a agregovaných čtení provedenýc
 
 - Primární replika COMPUTE neprovádí zápis přímo na stránky serverů. Místo toho se záznamy protokolu z protokolovací služby přehrávají na odpovídajících stránkách. 
 - Zápisy, ke kterým dochází ve výpočetní replice, se převážně zapisují do místního RBPEX (file_id 0). Pro zápisy na logických souborech, které jsou větší než 8 KB, tj. ty, které se prováděly pomocí funkce [shromáždit-zápis](/sql/relational-databases/writing-pages/), se každá operace zápisu převede na více než 8 KB jednotlivých zápisů do RBPEX, protože fond vyrovnávací paměti a RBPEX vždycky používají stránky 8 KB. V důsledku toho může být počet IOs pro zápis, který se zobrazuje u RBPEX, větší než skutečný počet IOs provedený modulem.
-- Soubory jiné než RBPEX nebo datové soubory jiné než file_id 0, které odpovídají stránkovým serverům, zobrazují také zápisy. Ve vrstvě služeb s škálovatelným škálováním se tyto zápisy simulují, protože výpočetní repliky Nikdy nezapisovat přímo na stránky serverů. Zápisu vstupně-výstupních operací a propustnosti se účtují, když se vyskytují na výpočetní replice, ale latence u datových souborů jiných než file_id 0 neodráží skutečnou latenci zápisů na straně serveru.
+- Soubory, které nejsou RBPEX, nebo datové soubory jiné než file_id 0, které odpovídají stránkovým serverům, zobrazují také zápisy. Ve vrstvě služeb s škálovatelným škálováním se tyto zápisy simulují, protože výpočetní repliky Nikdy nezapisovat přímo na stránky serverů. Zápisu vstupně-výstupních operací a propustnosti se účtují tak, jak se vyskytují na výpočetní replice, ale latence u datových souborů jiných než file_id 0 neodráží skutečnou latenci zápisů na straně serveru.
 
 ### <a name="log-writes"></a>Zápisy do protokolu
 
-- Na primární výpočetní prostředky se za zápis protokolu používá file_id 2 v sys. DM _io_virtual_file_stats. Zápis do protokolu primárního COMPUTE je zápis do zóny pro odpočívadlo protokolu.
+- V případě primárního COMPUTE se pro zápis do protokolu používá file_id 2 sys. dm_io_virtual_file_stats. Zápis do protokolu primárního COMPUTE je zápis do zóny pro odpočívadlo protokolu.
 - Záznamy protokolu nejsou u sekundární repliky na potvrzení zabezpečení posíleny. V škálování je protokol aplikován službou xlog na vzdálené repliky. Vzhledem k tomu, že zápisy protokolů se ve skutečnosti nevyskytují na sekundárních replikách, je jakékoli monitorování v/v protokolu na sekundárních replikách pouze pro účely sledování.
 
 ## <a name="additional-resources"></a>Další zdroje

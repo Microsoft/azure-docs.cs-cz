@@ -1,5 +1,5 @@
 ---
-title: Zřízení v SaaS víceklientské architektuře Azure
+title: Zřízení ve více tenantůch SaaS
 description: Naučte se zřizovat a zařadit nové klienty do Azure SQL Database aplikace SaaS multi-tenant.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 ms.date: 09/24/2018
-ms.openlocfilehash: f829c0d734838de42a82343876cefa007dcca04d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: cae0b2730a9426b183dc330a18a76122ac87cc66
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692009"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73817923"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Zřízení a zakatalogu nových tenantů v aplikaci SaaS s využitím Azure SQL Database horizontálně dělené pro více tenantů
 
@@ -168,7 +168,7 @@ Chcete-li pochopit, jak aplikace Wingtip implementuje nové zřizování tenanta
 
 4. Po zastavení spuštění skriptu na zarážce stiskněte klávesu **F11** pro krok do kódu.
 
-   ![Ladí](media/saas-multitenantdb-provision-and-catalog/debug.png)
+   ![ladí](media/saas-multitenantdb-provision-and-catalog/debug.png)
 
 5. Sledujte provádění skriptu pomocí možností nabídky **ladění** , **F10** a **F11**, abyste mohli přenášet nebo nazývat na volané funkce.
 

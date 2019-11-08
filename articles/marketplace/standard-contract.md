@@ -1,58 +1,59 @@
 ---
-title: Standardní smlouvy | Azure
-description: Standardní smlouvy v Azure Marketplace a AppSource
+title: Smlouva Standard | Azure
+description: Smlouva Standard Azure Marketplace a AppSource
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: ellacroi
-ms.openlocfilehash: 80c157423572d356026f257e81d52650ce01d3e8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 17c1bf9d20b6f2e3ec450ff7bfb54fe61494ff09
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620384"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819500"
 ---
 # <a name="standard-contract"></a>Standardní kontrakt
 
-Zjednodušit proces zajišťování pro zákazníky a snižuje složitost právní pro dodavatele softwaru, společnost Microsoft nabízí standardní smluvní šablony k usnadnění transakce na webu Marketplace. Místo vytváření vlastních podmínek a ujednání, můžete zvolit standardní smlouvou, který zákazníci potřebují pouze jednou přijmout a ověřte svůj software nabízet vydavatelům Azure Marketplace. Standardní smlouvy najdete tady: [ https://go.microsoft.com/fwlink/?linkid=2041178 ](https://go.microsoft.com/fwlink/?linkid=2041178). 
+Pro zjednodušení procesu nákupu pro zákazníky a omezení právní složitosti pro dodavatele softwaru nabízí společnost Microsoft standardní šablonu smlouvy, aby usnadnila transakci na webu Marketplace. Místo vytváření vlastních podmínek a ujednání můžou Azure Marketplace vydavatelé zvolit, že mají nabízet svůj software v rámci standardní smlouvy, které zákazníci potřebují, aby je Vet a přijali jenom jednou. Standardní kontrakt najdete tady: [https://go.microsoft.com/fwlink/?linkid=2041178](https://go.microsoft.com/fwlink/?linkid=2041178). 
 
-Podmínky a ujednání pro nabídku jsou definované na kartě Marketplace při vytváření nabídky v portál partnerů cloudu. Změnou nastavení na Ano je povolena možnost Standardní kontraktu.
+Podmínky a ujednání pro nabídku jsou definovány na kartě Marketplace při vytváření nabídky v portál partnerů cloudu. Možnost standardní smlouva je povolená změnou nastavení na Ano.
 
-![Povolení možnosti standardní kontraktu](media/marketplace-publishers-guide/standard-contract.png)
+![Povolení možnosti standardní kontrakt](media/marketplace-publishers-guide/standard-contract.png)
 
 >[!Note] 
->Pokud se rozhodnete použít standardní smlouvy, se stále vyžadují pro zvláštní podmínky a ujednání [poskytovatele Cloud Solution Provider](./cloud-solution-providers.md) kanálu.
+>Pokud se rozhodnete použít standardní smlouvu, jsou pro kanál [Cloud Solution Provider](./cloud-solution-providers.md) stále vyžadovány samostatné podmínky a ujednání.
 
-## <a name="standard-contract-amendments"></a>Standardní smlouvy změny
+## <a name="standard-contract-amendments"></a>Změny smlouvy Standard
 
-Standardní smlouvy změny povolit vydavatele vyberte standardní smlouvy, pro jednoduchost a s vlastní podmínky jejich produktu nebo firmě.  Zákazníkům stačí zkontrolovat změny kontrakt, pokud jste už zkontrolovali a přijmout kontraktu standardní Microsoft.
+Standardní změny smlouvy umožňují vydavatelům vybrat standardní kontrakt pro jednoduchost a s přizpůsobenými podmínkami pro svůj produkt nebo firmu.  Zákazníci si musí jenom projít změny smlouvy, pokud už zkontrolovali a přijali standardní kontrakt společnosti Microsoft.
 
-Pro vydavatele Azure Marketplace k dispozici jsou dva druhy změny:
+Existují dva druhy změn, které jsou k dispozici pro Azure Marketplace vydavatelé:
 
-* Univerzální změny: Tyto změny se použijí univerzálně se standardní smlouvou pro všechny zákazníky. Univerzální změny jsou uvedeny na každý zákazník produktu v toku nákupu.
+* Univerzální změny: tyto změny se aplikují všeobecně na standardní smlouvu pro všechny zákazníky. Univerzální změny se zobrazují každému zákazníkovi produktu v toku nákupu.
 
 ![Univerzální změny](media/marketplace-publishers-guide/universal-amendaments.png)
 
-* Vlastní změny: Azure Marketplace má také zřizování pro vlastní změny, které jsou cíleny na klienty. Jsou speciální změny se standardní smlouvou, na kterou cílí jen některým zákazníkům. Vydavatelé můžete vybrat tenanta, které chtějí zaměřit. Zákazníci z tohoto tenanta by nákupu produktu v rámci standardní kontrakt a cílové změny.
+* Vlastní změny: Azure Marketplace má taky zřízení pro vlastní změny, které cílí na klienty. Jedná se o zvláštní změny standardní smlouvy, které se zaměřují jenom na konkrétní zákazníky. Vydavatelé můžou zvolit tenanta, na který chtějí cílit. Zákazníci z tohoto tenanta si kupují produkt v rámci smlouvy Standard a cílené změny.
 
 ![Vlastní změny](media/marketplace-publishers-guide/custom-amendaments.png)
 
 >[!Note] 
->Cílem vlastní změny zákazníci získají univerzální dodatku standardní podmínky při nákupu.
+>Zákazníci, na které cílíte vlastní změny, získají při nákupu také univerzální změnu standardních podmínek.
 
 >[!Note]
->Následující typy nabídek podporují standardní změny smlouvy: Aplikace Azure (řešení šablony a spravované aplikace), virtuální počítače, kontejnery, aplikace typu kontejner.
+>Následující typy nabídek podporují standardní smlouvy o změnách: aplikace Azure (šablony řešení a spravované aplikace), Virtual Machines, kontejnery a aplikace typu kontejner.
 
 ### <a name="customer-experience"></a>Prostředí pro zákazníky
 
-Zákazníci budou moci zobrazit podmínky spojené s tímto produktem jako standardní smlouvy Microsoft a změn během procesu nákupu na webu Azure Portal.
+Během procesu nákupu v Azure Portal budou zákazníci moci zjistit, jaké jsou informace spojené s produktem, jako standardní kontrakt společnosti Microsoft a změny.
 
-![Zkušenosti zákazníků Azure portal.](media/marketplace-publishers-guide/ibiza-customer-experience.png)
+![Prostředí pro zákazníky Azure Portal.](media/marketplace-publishers-guide/ibiza-customer-experience.png)
 
-### <a name="api"></a>rozhraní API
+### <a name="api"></a>Rozhraní API
 
-Zákazníci můžou využít `Get-AzureRmMarketplaceTerms` načtení podmínky nabídky a přijmout. Standardní kontrakt a související změny se vrátí ve výstupu rutiny.
+Zákazníci mohou pomocí `Get-AzureRmMarketplaceTerms` načíst podmínky nabídky a přijmout je. Ve výstupu rutiny se vrátí standardní smlouva a související změny.
 
 ---

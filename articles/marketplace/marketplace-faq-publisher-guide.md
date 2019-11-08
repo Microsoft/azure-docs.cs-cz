@@ -4,15 +4,16 @@ description: Odpovědi na běžné dotazy týkající se Azure Marketplace a Mic
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: c24f956a7aeb68fe6b0325705a9e7dab8e70b063
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 300f1783c1c514a6cc49d700c2741be85e69c3e8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330240"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822979"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Nejčastější dotazy týkající se komerčního tržiště Microsoftu
 
@@ -35,9 +36,9 @@ Azure Marketplace je navržená pro odborníky v oblasti IT a vývojáře v clou
 Azure Marketplace nabízí technická řešení a služby Microsoftu a partnerů, které rozšiřují služby a produkty Azure. Katalog řešení zahrnuje několik kategorií, včetně:
 
 * základní operační systémy
-* databases
-* zabezpečení
-* identita
+* databáze
+* security
+* identity
 * Sítě
 * Blockchain
 * vývojářské nástroje
@@ -117,7 +118,7 @@ Předplatné Azure je součástí ceny za řešení nezávislých výrobců soft
 
 *Platné*
 
-+ *Zdarma:* SKU zdarma. Pro licenční poplatky za software nebo použití nabídky se neplatí žádné poplatky.
++ *Zdarma:* Skladová jednotka zdarma Pro licenční poplatky za software nebo použití nabídky se neplatí žádné poplatky.
 
 + *Bezplatná zkušební verze softwaru:* Nabídka, která je po omezené době zdarma. Za licenční poplatky za software vydavatele se za použití během zkušebního období neúčtují žádné poplatky. Po vypršení platnosti se automaticky převede na placené nabídky na základě standardních sazeb vydaných vydavatelem.
 
@@ -224,7 +225,7 @@ Kontaktujte poskytovatele vydavatelů pro veškerou technickou podporu produktu.
 
 **Koho se mám obrátit na podporu fakturace/otázky týkající se řešení třetích stran zakoupeného z webu Marketplace?**
 
-Kontaktujte podpora Microsoftu [podporu Azure](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
+Kontaktujte podporu Microsoftu na webu [podpory Azure](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
 
 **Na koho se mám obrátit, když mám dotazy ohledně cen nebo podmínek pro Partnerská řešení prodávaná na Azure Marketplace?**
 
@@ -246,7 +247,7 @@ Licence, které se zruší, budou podléhat zásadám refundace, které se v tě
 
 **Podporují se refundace pro nabídky založené na spotřebě?**
 
-Jakékoli poplatky založené na spotřebě – bez ohledu na to, jestli se jedná o hodinové virtuální počítače nebo vlastní měřiče, se neúčtují prostřednictvím zrušení. Jakmile se spotřeba dokončí, poplatky se zpracují na základě Commerce platforme Microsoftu a veškeré spory služby, kde se požaduje refundace, se budou zpracovávat mimo systémy Microsoftu mezi vydavatelem a zákazníkem přímo. Nabídky, které podporují paušální sazbu a účtované náklady, se řídí standardními zásadami refundace za paušální sazby.
+Jakékoli poplatky založené na spotřebě – bez ohledu na to, jestli se jedná o hodinové virtuální počítače nebo vlastní měřiče, se nevracejí prostřednictvím zrušení. Jakmile se spotřeba dokončí, poplatky se zpracují na základě Commerce platforme Microsoftu a veškeré spory služby, kde se požaduje refundace, se budou zpracovávat mimo systémy Microsoftu mezi vydavatelem a zákazníkem přímo. Nabídky, které podporují paušální sazbu a účtované náklady, se řídí standardními zásadami refundace za paušální sazby.
 
 **Je možné změnit plány na střední období?**
 
@@ -267,7 +268,7 @@ Ne, obchodní zásady jsou konzistentní napříč Azure Marketplace a Microsoft
 
 **Co je Azure Marketplace?**
 
-[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) je online aplikace a služby Marketplace. Zákazníci (převážně IT specialisté a vývojáři) můžou zjišťovat a kupovat cloudová softwarová řešení vytvořená v nástroji nebo pro Azure. Jeho katalog obsahuje více než 8 000 výpisů, jako jsou například stavební bloky Azure jako Virtual Machines (virtuální počítače), rozhraní API, šablony řešení, SaaS aplikace a konzultační nabídky služeb.
+[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) je online tržiště aplikací a služeb. Zákazníci (převážně IT specialisté a vývojáři) můžou zjišťovat a kupovat cloudová softwarová řešení vytvořená v nástroji nebo pro Azure. Jeho katalog obsahuje více než 8 000 výpisů, jako jsou například stavební bloky Azure jako Virtual Machines (virtuální počítače), rozhraní API, šablony řešení, SaaS aplikace a konzultační nabídky služeb.
 
 Azure Marketplace je výchozím bodem pro všechny společné aktivity Microsoftu pro uvedení na trh.  Zaměřujeme se na pomoc pro partnery, kteří dosáhnou více zákazníků. Můžete publikovat nové výpisy a také Azure Marketplace použít k provádění kampaní pro vytváření reklamních a vyžádaných aplikací a provádět v Microsoftu společné prodejní a marketingové aktivity.
 
@@ -285,7 +286,7 @@ Azure Marketplace poskytuje pro partnery Microsoftu trh, který umožňuje propa
 
 Partneři Microsoftu můžou zvolit, kam se mají publikovat na základě cílové cílové skupiny.
 
-Microsoft poskytuje dvě odlišná cloudová tržiště prodejní místa – Azure Marketplace a AppSource. Tato prodejní místa umožňují zákazníkům hledat, zkoušet a kupovat cloudové aplikace a služby. Každý prezentace slouží jako jedinečné potřeby zákazníků a umožňuje partnerům Microsoftu cílit svá řešení nebo služby na základě cílové cílové skupiny.
+Microsoft poskytuje dvě odlišná cloudová tržiště prodejní místa-Azure Marketplace a AppSource. Tato prodejní místa umožňují zákazníkům hledat, zkoušet a kupovat cloudové aplikace a služby. Každý prezentace slouží jako jedinečné potřeby zákazníků a umožňuje partnerům Microsoftu cílit svá řešení nebo služby na základě cílové cílové skupiny.
 
 Vyberte [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps) pro cílení na odborníky na IT a vývojáře nebo na technické uživatele.
 
@@ -323,7 +324,7 @@ Pokud potřebujete další informace a chcete začít s povolením zkušební ve
 
 Chcete-li začít, vydavatelé by měli ověřit, že [účet vývojářského centra](deprecated/register-dev-center.md) ještě není zaregistrovaný (aby se zabránilo duplikaci). Po potvrzení se další krok zaregistrujete tak, že se [přihlásíte](https://account.microsoft.com/account/) pomocí účet Microsoft, které se přidruží k účtu vývojáře.
 
-Pokud ještě nemáte účet Microsoft, můžete [vytvořit účet](https://signup.live.com/) (například contoso_marketplace@live.com).
+Pokud ještě nemáte účet Microsoft, můžete si [vytvořit účet](https://signup.live.com/) (například: contoso_marketplace@live.com).
 
 **Proč je vyžadován účet centra pro vývojáře?**
 
@@ -335,7 +336,7 @@ Zájemci jsou zákazníci, kteří nasazují vaše produkty z webu Marketplace. 
 
 **Kde můžu získat pomoc při nastavování cíle realizace?**
 
-Další informace najdete v [centru partnerů – získání zájemců na zákazníky](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) nebo odeslání lístku podpory prostřednictvím [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) tak, že vyberete typ nabídky a správu potenciálních zákazníků.
+Další informace najdete v [centru partnerů – získáte dokumentaci k zákaznickým zájemcům](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) nebo odešlete lístek podpory prostřednictvím [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) , a to tak, že vyberete typ nabídky a správu potenciálních zákazníků.
 
 **Je nutné nakonfigurovat cíl zájemce pro publikování nabídky na webu Marketplace?**
 
@@ -432,7 +433,7 @@ Projděte si [příručku pro Azure Marketplace Publisher](marketplace-publisher
 
     ![Vybrat oblasti](media/marketplace-publishers-guide/FAQ-choose-geo.png)
 
-1.  Seznam se automaticky otevře se všemi dostupnými zeměmi nebo oblastmi, na které se budou prodávat.  Klikněte na zaškrtávací políčko vedle každé země nebo oblasti, pro kterou chcete zpřístupnit tuto SKU. Klikněte na **OK**.
+1.  Seznam se automaticky otevře se všemi dostupnými zeměmi nebo oblastmi, na které se budou prodávat.  Klikněte na zaškrtávací políčko vedle každé země nebo oblasti, pro kterou chcete zpřístupnit tuto SKU. Klikněte na tlačítko **OK**.
 
     ![Vybrat seznam zemí/oblastí](media/marketplace-publishers-guide/FAQ-select-countries.png)
 

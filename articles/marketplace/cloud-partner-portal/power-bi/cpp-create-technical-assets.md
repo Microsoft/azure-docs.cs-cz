@@ -1,29 +1,30 @@
 ---
-title: Vytvoření technických prostředků pro nabídku aplikace Power BI | Azure Marketplace
-description: Seznam technických prostředků potřebných pro publikování nabídky aplikace Power BI na webu Microsoft Marketplace AppSource.
+title: Vytváření technických prostředků pro nabídku aplikace Power BI | Azure Marketplace
+description: Seznam technických prostředků vyžadovaných k publikování nabídky Power BI aplikací na webu Microsoft AppSource Marketplace.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: pabutler
-ms.openlocfilehash: 7736dcb892d829fc0e3af4bc87f1e6d80a3fa6cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d0ae48b7314b63f2863e238fd38d0351546502d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943081"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73817911"
 ---
-# <a name="create-power-bi-app-offer-technical-assets"></a>Vytvořte nabídku aplikace Power BI technické prostředky
+# <a name="create-power-bi-app-offer-technical-assets"></a>Vytvoření technických prostředků nabídky pro Power BI aplikaci
 
-Primární technické asset, který budete potřebovat pro tento typ nabídky se aplikace Power BI. Aplikace Power BI je kolekce primární datové sady, sestavy nebo řídicí panely a volitelné připojených služeb a vložené datové sady. Se vyvinula z dříve označovaný jako prostředek typu [balíčku obsahu](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction). Další informace o vývoji tohoto typu aplikace najdete v tématu [co jsou aplikace šablony Power BI?](https://go.microsoft.com/fwlink/?linkid=2028636).
+Primární technický prostředek, který potřebujete pro tento typ nabídky, je Power BI aplikace. Power BI aplikace je kolekce primárních datových sad, sestav nebo řídicích panelů a volitelných propojených služeb a integrovaných datových sad. Vyvinul se z typu assetu, dříve označovaného jako [balíček obsahu](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction). Další informace o vývoji tohoto typu aplikace najdete v tématu [co jsou Power BI šablonových aplikací?](https://go.microsoft.com/fwlink/?linkid=2028636).
 
 
-## <a name="obtain-an-installation-url"></a>Získání adresy URL instalace
+## <a name="obtain-an-installation-url"></a>Získat adresu URL instalace
 
-Aplikace Power BI můžete vytvářet pouze v rámci [služby Power BI](https://powerbi.microsoft.com/). Pokud chcete začít, přihlaste se [licenci Power BI Pro](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro). Po vytvoření a testování vaší aplikace služby v Power BI, uložte adresu URL instalace aplikace, která generuje Power BI. Nakonec zadejte adresu URL na [technické informace o](./cpp-technical-info-tab.md) kartu odesílací formulář portál partnerů cloudu.
+Aplikaci Power BI můžete vytvořit pouze v rámci [služba Power BI](https://powerbi.microsoft.com/). Začněte tím, že se přihlásíte pomocí [licence Power BI pro](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro). Po vytvoření a otestování aplikace služby v Power BI uložte adresu URL instalace aplikace, kterou vygeneruje Power BI. Nakonec zadejte adresu URL na kartě [technické informace](./cpp-technical-info-tab.md) formuláře pro odeslání portál partnerů cloudu.
  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Poté, co jste vytvořili a otestovat aplikaci Power BI a vytvoříte přidružené nabídky, je možné [publikování nabídky aplikace Power BI](./cpp-publish-offer.md). 
+Po vytvoření a otestování aplikace Power BI a vytvoření přidružené nabídky můžete [nabídku Power BI aplikace publikovat](./cpp-publish-offer.md). 

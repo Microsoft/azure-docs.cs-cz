@@ -1,57 +1,58 @@
 ---
-title: Vedoucí povolit sdílení na webu Azure Marketplace | Azure
-description: Zjistěte, jak povolit sdílení potenciálních zákazníků pro Azure Marketplace a AppSource, kde vydavatelé můžou aplikace a služby.
+title: Povolit sdílení potenciálních zákazníků v Azure Marketplace | Azure
+description: Naučte se, jak povolit sdílení potenciálních zákazníků pro Azure Marketplace a AppSource pro vydavatele aplikací a služeb.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 9aecef81547131e6f843fdd55db259d2c4299c9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4475f6aecb0fe80cd20138eb885b79b6e7e82208
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938680"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818671"
 ---
 # <a name="enable-lead-sharing"></a>Povolit sdílení potenciálních zákazníků
-Zajištění, že je povolená Správa potenciálních zákazníků pro výpis ve [Azure Marketplace](https://azuremarketplace.microsoft.com) nebo [Microsoft AppSource](https://appsource.microsoft.com) vám umožňují zobrazit kontaktní informace na tyto cílové skupiny:
+Zajištění, že pro váš výpis v [Azure Marketplace](https://azuremarketplace.microsoft.com) je povolená Správa zájemců, nebo vám [Microsoft AppSource](https://appsource.microsoft.com) můžou získat kontaktní informace pro tyto cílové skupiny:
 
 | Prodejní místo | Cílová skupina |
 |:--- |:--- |
-| AppSource | Firemním zákazníkům |
+| AppSource | Obchodní zákazníci |
 | Azure Marketplace | Všichni zákazníci |
 
-Zájemci poskytují základ pro oslovování kampaní uvedené v následující tabulce pro související pohyby prodeje podle pole prodejci, a informace o tom, jak svou aplikaci nebo nabídka provádí:
+Vaše zájemci poskytují základ pro dostupnost kampaní uvedených v následující tabulce, pro související prodejní pohyby pracovníky vašich polí a pro informace o tom, jak vaše aplikace nebo nabídka provádí:
 
-| Prodejní místo | Kampaň |
+| Prodejní místo | Vedení |
 |:--- |:--- |
-| AppSource | Určený |
-| Azure Marketplace | Generování poptávky v |
+| AppSource | Nurture |
+| Azure Marketplace | Generace na vyžádání |
 
-Použijte následující postupy pro zájemci:
-*   Kvalifikovat zájemci a stanovíte jeho skóre zájemců jako prodejní příležitosti.
-*   Pečovat o stávající zájemci zadat prodejní kanály.
-*   Zarovnejte své úsilí s celkovou marketingové strategie kampaně.
+Pro vaše zájemce použijte následující postupy:
+*   Zařaďte své zájemce a nahodnocení potenciálních zákazníků jako prodejních příležitostí.
+*   Nurture své zájemce na zadání obchodního kanálu.
+*   Zarovnejte své úsilí s celkovou strategií marketingové kampaně.
 
-Zájemci prokázat zájem zákazníků v seznamu následující:
+Vaši potenciální zákazníci ukazují na následující výpisy zájemci na zákazníky:
 
-| Prodejní místo | Výpis |
+| Prodejní místo | Fondů |
 |:--- |:--- |
 | AppSource | <table> <tr><td>Aplikace</td></tr> <tr><td>Konzultační služby</td></tr> </table> |
 | Azure Marketplace | <table> <tr><td>Nabídka</td></tr> <tr><td>Technologie</td></tr> </table> |
 
-Proces byste měli mít na místě, abyste pokračovali se zájemci, jak je popsáno v následující tabulce:
+Měli byste mít zavedený proces, který bude pokračovat se zájemci, jak je popsáno v následující tabulce:
 
-| Prodejní místo | Potenciálních zákazníků |
+| Prodejní místo | Zájemc |
 |:--- |:--- |
-| AppSource | <table> <tr><td>CRM</td></tr> <tr><td>Pole Prodejce Microsoft CRM</td></tr> </table> |
-| Azure Marketplace | <table> <tr><td>Azure Marketplace</td></tr> <tr><td>Pole Prodejce Microsoft CRM</td></tr> </table> |
+| AppSource | <table> <tr><td>Vaše CRM</td></tr> <tr><td>Microsoft Field prodávající CRM</td></tr> </table> |
+| Azure Marketplace | <table> <tr><td>Azure Marketplace</td></tr> <tr><td>Microsoft Field prodávající CRM</td></tr> </table> |
 
-Se liší od společnosti Microsoft seller kvalifikovaný potenciálních zákazníků, které jsou součástí programu společného prodeje zájemci v prodejní místa na webu Marketplace.
+Vaše potenciální zákazníky v prodejní místa na webu Marketplace se liší od potenciálních zákazníků dodaných společností Microsoft, kteří jsou součástí programu společného prodeje.
 
-Další informace o tom, jak získat přístup k programu společného prodeje, naleznete v tématu [podpořit své podnikání díky Microsoft](./promote-your-business-with-microsoft.md).
+Další informace o tom, jak získat přístup k programu společného prodeje, najdete v tématu [propagace vaší firmy s Microsoftem](./promote-your-business-with-microsoft.md).
 
-## <a name="next-steps"></a>Další postup
-Zkontrolujte [Průvodce publikováním webu Azure Marketplace a AppSource](./marketplace-publishers-guide.md).
+## <a name="next-steps"></a>Další kroky
+Přečtěte si [příručku pro publikování Azure Marketplace a AppSource](./marketplace-publishers-guide.md).

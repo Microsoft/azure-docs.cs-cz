@@ -4,15 +4,16 @@ description: Konfigurace správy zájemců pro Azure Blob
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 7/30/2019
 ms.author: evansma
-ms.openlocfilehash: c67855422808f5ec4c81242edcece4e447f2f44f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 5da4e0ab315b3f66a477b816f6fc5d27de7aa339
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902361"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812375"
 ---
 # <a name="lead-management-instructions-for-azure-blob"></a>Pokyny pro správu informací o službě Azure Blob
 
@@ -39,7 +40,7 @@ Pokud se v partnerském centru pro příjem Azure Marketplacech a AppSourcech po
 
     ![Přístup k účtu služby Azure Storage](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-access.png)
 
-5. V podokně účtu úložiště vyberte **přístupové klíče** a zkopírujte hodnotu připojovacího *řetězce* pro tento klíč. Tuto hodnotu uložte, protože se jedná o hodnotu *připojovacího řetězce účtu úložiště* , kterou budete muset zadat na portálu pro publikování a získat zájemce pro vaši nabídku na webu Marketplace.
+5. V podokně účtu úložiště vyberte **přístupové klíče** a zkopírujte hodnotu *připojovacího řetězce* pro tento klíč. Tuto hodnotu uložte, protože se jedná o hodnotu *připojovacího řetězce účtu úložiště* , kterou budete muset zadat na portálu pro publikování a získat zájemce pro vaši nabídku na webu Marketplace.
 
      Příkladem připojení Sting je:
 
@@ -80,8 +81,8 @@ Až budete připraveni ke konfiguraci informací o správě zájemce pro vaši n
 
 4. Zadejte **název kontejneru** a **připojovací řetězec účtu úložiště** , který jste získali z následujících pokynů.
 
-    * Příklad názvu kontejneru:`marketplaceleadcontainer`
-    * Příklad připojovacího řetězce účtu úložiště: `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net`![Podrobnosti o připojení](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
+    * Příklad názvu kontejneru: `marketplaceleadcontainer`
+    * Příklad připojovacího řetězce účtu úložiště: `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![podrobnosti o připojení](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
 
 5. Vyberte **Uložit**.
 

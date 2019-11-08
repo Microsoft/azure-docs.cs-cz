@@ -1,42 +1,43 @@
 ---
 title: Vytvoření uživatelské image virtuálního počítače pro Azure Marketplace
-description: Jsou uvedené kroky a odkazy na požadovaná k vytvoření uživatelské image virtuálního počítače.
+description: Obsahuje seznam kroků a odkazů vyžadovaných k vytvoření uživatelské image virtuálního počítače.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 0005ab517d38903b87889b67449569495e396265
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e63f09dc538c5e66b244826cf3b5f92ac388b6a9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938334"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818701"
 ---
 # <a name="create-a-user-vm-image"></a>Vytvoření uživatelské image virtuálního počítače
 
-Tento článek vysvětluje dvě obecné kroky potřebné k vytvoření nespravované image z generalizovaného virtuálního pevného disku.  Odkazy jsou k dispozici a provede vás provede jednotlivými kroky: zachycení bitové kopie a Zobecněte image.
+Tento článek vysvětluje dva obecné kroky potřebné k vytvoření nespravované image z zobecněného virtuálního pevného disku.  K dispozici jsou odkazy, které vás provedou jednotlivými kroky: zachycení image a generalizace obrázku.
 
 
 ## <a name="capture-the-vm-image"></a>Zachycení image virtuálního počítače
 
-Postupujte podle pokynů v článku o zachycení virtuálního počítače, který odpovídá vašemu přístupu k přístupu:
+Postupujte podle pokynů v následujícím článku o zachycení virtuálního počítače, který odpovídá vašemu přístupovému přístupu:
 
--  PowerShell: [Vytvoření nespravované image virtuálního počítače z virtuálního počítače Azure](../../../virtual-machines/windows/capture-image-resource.md)
--  Azure CLI: [Jak vytvořit image virtuálního počítače nebo virtuálního pevného disku](../../../virtual-machines/linux/capture-image.md)
--  API: [Virtual Machines – zachytávání](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
-
-
-## <a name="generalize-the-vm-image"></a>Zobecněte image virtuálního počítače
-
-Protože jste vygenerovali uživatelská image z dříve generalizovaného virtuálního pevného disku, jeho by měl také zobecnit.  Znovu vyberte v následujícím článku, který odpovídá vaší mechanismus přístupu.  (Můžete může mít již zobecněný disk když jste zachytili.)
-
--  PowerShell: [Generalizace virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/windows/sa-copy-generalized#generalize-the-vm)
--  Azure CLI: [Krok 2: Vytvoření image virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image#step-2-create-vm-image)
--  API: [Virtual Machines – Generalize](https://docs.microsoft.com/rest/api/compute/virtualmachines/generalize)
+-  PowerShell: [Vytvoření image nespravovaného virtuálního počítače z virtuálního počítače Azure](../../../virtual-machines/windows/capture-image-resource.md)
+-  Azure CLI: [Vytvoření image virtuálního počítače nebo virtuálního pevného disku](../../../virtual-machines/linux/capture-image.md)
+-  Rozhraní API: [Virtual Machines-Capture](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="generalize-the-vm-image"></a>Generalizace image virtuálního počítače
 
-Dále se [vytvořit certifikát](cpp-create-key-vault-cert.md) a uložte ji na novou službu Azure Key Vault.  Tento certifikát je vyžadován pro vytvoření zabezpečeného WinRM připojení k virtuálnímu počítači.
+Vzhledem k tomu, že jste vygenerovali image uživatele z dříve zobecněného virtuálního pevného disku, měl by být taky zobecněný.  Znovu vyberte následující článek, který odpovídá mechanismu přístupu.  (Už jste si zachytili disk, možná jste si ho zaznamenali.)
+
+-  PowerShell: [generalizace virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/windows/sa-copy-generalized#generalize-the-vm)
+-  Azure CLI: [Krok 2: vytvoření image virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image#step-2-create-vm-image)
+-  API: [Virtual Machines-generalizace](https://docs.microsoft.com/rest/api/compute/virtualmachines/generalize)
+
+
+## <a name="next-steps"></a>Další kroky
+
+V dalším kroku [vytvoříte certifikát](cpp-create-key-vault-cert.md) a uložíte ho do nového Azure Key Vault.  Tento certifikát je nutný k navázání zabezpečeného připojení WinRM k virtuálnímu počítači.

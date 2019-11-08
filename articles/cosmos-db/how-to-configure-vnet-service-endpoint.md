@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1c81045408a948820c8b9fef56e2c7d69cd39e08
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: c399bed803145659bae1863e9e0b919f33254627
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811916"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820205"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Konfigurace přístupu z virtuálních sítí (VNet)
 
@@ -52,7 +52,7 @@ Následující části popisují, jak nakonfigurovat koncový bod služby virtu�
 > K povolení koncových bodů služby virtuální sítě budete potřebovat následující oprávnění předplatného:
 >   * Předplatné s virtuální sítí: Přispěvatel sítě
 >   * Předplatné s Azure Cosmos DBm účtem: Přispěvatel účtu DocumentDB
->   * Pokud je vaše virtuální síť a účet Azure Cosmos DB v různých předplatných, ujistěte se, že odběr, který má virtuální síť, má taky zaregistrovaný poskytovatel prostředků `Microsoft.DocumentDB`. Pokud chcete zaregistrovat poskytovatele prostředků, přečtěte si článek [poskytovatelé a typy prostředků Azure](../azure-resource-manager/resource-manager-supported-services.md) .
+>   * Pokud je vaše virtuální síť a účet Azure Cosmos DB v různých předplatných, ujistěte se, že předplatné, které má virtuální síť, má také zaregistrované `Microsoft.DocumentDB` poskytovatele prostředků. Pokud chcete zaregistrovat poskytovatele prostředků, přečtěte si článek [poskytovatelé a typy prostředků Azure](../azure-resource-manager/resource-manager-supported-services.md) .
 
 Tady jsou pokyny pro registraci předplatného u poskytovatele prostředků.
 
@@ -68,7 +68,7 @@ Tady jsou pokyny pro registraci předplatného u poskytovatele prostředků.
 
    ![Vyberte virtuální síť a podsíť pro novou virtuální síť.](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
 
-Pokud používáte účet Azure Cosmos DB jinými službami Azure, jako je Azure Search nebo ke kterému se přistupuje ze služby Stream Analytics nebo Power BI, povolíte přístup tak, že **v globálním datacentru Azure vyberete přijímat připojení**.
+Pokud váš Azure Cosmos DB účet používají jiné služby Azure, jako je Azure Kognitivní hledání nebo ke kterému se přistupuje ze služby Stream Analytics nebo Power BI, povolíte přístup tak, že **v globálním datacentru Azure vyberete přijímat připojení**.
 
 Abyste měli jistotu, že máte přístup k Azure Cosmos DB metriky z portálu, musíte povolit možnost **Povolit přístup z možností Azure Portal** . Další informace o těchto možnostech najdete v článku [Konfigurace brány firewall protokolu IP](how-to-configure-firewall.md) . Po povolení přístupu vyberte **Uložit** a uložte nastavení.
 
@@ -235,7 +235,7 @@ az cosmosdb create \
 
 ### <a name="connect-and-configure-a-cosmos-account-to-a-back-end-subnet-independently"></a>Připojení a konfigurace účtu Cosmos k podsíti back-endu nezávisle na sobě
 
-Tato ukázka je určená k tomu, aby ukázala, jak připojit účet Azure Cosmos k existující nové virtuální síti, ve které ještě není nakonfigurovaná podsíť pro koncové body služby. K tomu je potřeba použít parametr `--ignore-missing-vnet-service-endpoint`. To umožňuje, aby se konfigurace účtu Cosmos dokončila bez chyby předtím, než se dokončí konfigurace do podsítě virtuální sítě. Po dokončení konfigurace podsítě bude účet Cosmos dostupný přes nakonfigurovanou podsíť.
+Tato ukázka je určená k tomu, aby ukázala, jak připojit účet Azure Cosmos k existující nové virtuální síti, ve které ještě není nakonfigurovaná podsíť pro koncové body služby. To se provádí pomocí parametru `--ignore-missing-vnet-service-endpoint`. To umožňuje, aby se konfigurace účtu Cosmos dokončila bez chyby předtím, než se dokončí konfigurace do podsítě virtuální sítě. Po dokončení konfigurace podsítě bude účet Cosmos dostupný přes nakonfigurovanou podsíť.
 
 ```azurecli-interactive
 # Create an Azure Cosmos Account with a service endpoint connected to a backend subnet

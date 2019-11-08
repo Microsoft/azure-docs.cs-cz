@@ -1,63 +1,64 @@
 ---
-title: Začínáme s Insights prodejce
-description: Úvod do funkce přehledů prodejce portál partnerů cloudu.
+title: Začínáme s využitím prodejců – přehledy
+description: Seznámení s funkcí prodávající přehledy portál partnerů cloudu.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 6c903c87bc153864381a3f1763afaeeb7796090a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d335525a23ca2e1442ae009dcfbc062bff8cc77d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943060"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824767"
 ---
-<a name="getting-started-with-seller-insights"></a>Začínáme s Insights prodejce
+<a name="getting-started-with-seller-insights"></a>Začínáme s využitím prodejců – přehledy
 ====================================
 
-Tento článek popisuje, k dispozici v rámci funkce prodejce přehledů [portál partnerů cloudu](https://cloudpartner.azure.com/#insights).
+Tento článek popisuje funkci prodejce Insights, kterou máte k dispozici v rámci [portál partnerů cloudu](https://cloudpartner.azure.com/#insights).
 
 
-<a name="insights-tour"></a>Insights Tour
+<a name="insights-tour"></a>Prohlídka přehledů
 -------------
 
-Portál partnerů cloudu nabízí přehledy související s: zákazníky Azure a Web Marketplace VS a použití. Tady je stručný přehled různých dat a přehledů, že budete pravděpodobně používat nejčastěji.
+Portál partnerů cloudu nabízí přehledy týkající se vašich zákazníků a využití Azure a VS Marketplace. Tady je rychlý přehled různých dat a přehledů, které vám pravděpodobně budou pracovat nejvíc.
 
 <a name="top-navigation-bar"></a>Horní navigační panel
 ------------------
 
-Po výběru **Insights** na levém řádku nabídek, se zobrazí v horní části, která udává, které moduly insights, abyste měli přístup k navigační panel.
+Až v levém řádku nabídek vyberete **přehledy** , zobrazí se v horní části navigační panel s informacemi o tom, ke kterým modulům přehledů máte přístup.
 
-1.  **Souhrn** – Tato karta zobrazuje grafy trendů a hodnoty dat, která je nejvíc hledané kombinaci po vydavateli.
+1.  **Souhrn** – Tato karta zobrazuje grafy, trendy a hodnoty dat, která se nejvíce snaží od vydavatelů.
 
-2.  **Výběr** – Tato karta zobrazuje informace o výplaty a souvisejících transakcí v grafech a ke stažení formátů.
+2.  **Výběr** – Tato karta zobrazuje informace o výběrech a souvisejících transakcích v grafech a ve formátech ke stažení.
 
-3.  **Využití & objednávky** – Tato karta zobrazuje informace o využití a objednávky v grafech a ke stažení formátů.
+3.  **Orders & Usage** – na této kartě se zobrazují informace o objednávkách a využití v grafech a ve formátech ke stažení.
 
-4.  **Zákazník** – Tato karta zobrazuje informace o vašich zákazníků a jejich nákupů.
+4.  **Zákazník** – na této kartě se zobrazují informace o vašich zákaznících a jejich nákupech.
 
-5.  **Nasazení** – Tato karta zobrazuje informace o nasazení úspěchy a chyby v grafech a úrovně formát událostí.
+5.  **Nasazení** – na této kartě se zobrazují informace o úspěchu a selhání nasazení v grafech i ve formátech úrovně události.
 
-6.  **Soubory ke stažení** -stahování velkých datových sad je jednodušší a méně rušivá s nové prostředí pro stahování.
+6.  **Stahování – stahování** velkých objemů dat je jednodušší a méně náročné na nové prostředí pro stahování.
 
-Může se stát, že vidíte pouze omezená sada modulů uvedených výše.
-Pouze uživatelé s *vlastníka* oprávnění vidět **výběr** a **zákazníka** moduly z důvodu citlivé informace o zákaznících a společnosti. Práce s rolí vlastník uvnitř vaší organizace, které chcete změnit oprávnění, pokud potřebujete přístup k těmto modulům.
+Může se stát, že se vám zobrazí jenom omezená sada modulů uvedených výše.
+Pouze uživatelé s oprávněním *vlastníka* mohou zobrazit **Výběr** a moduly **zákazníka** z důvodu citlivých informací o zákaznících a společnosti. Pokud potřebujete mít přístup k těmto modulům, pracujte s rolí vlastníka v rámci vaší organizace, abyste změnili vaše oprávnění.
 
 
-<a name="tips"></a>Tipy:
+<a name="tips"></a>Tip
 -----
 
--   Nezapomeňte upravit data zobrazíte informace, které vás nejvíce zajímají.
--   Stáhněte data úrovně transakce provádět další analýzy na informacích uvedených insights prodejce.
--   Pokud hledáte informace o výběr nebo zákazníka, ujistěte se, že jste přihlášeni jako roli vlastníka a role přispěvatele. Další informace o oprávnění uživatele najdete v tématu [spravovat uživatele](./cloud-partner-portal-manage-users.md).
+-   Nezapomeňte upravit data a zobrazit si informace, které vás zajímají.
+-   Stáhněte si data na úrovni transakce, abyste provedli další analýzu informací poskytovaných prodejci Insights.
+-   Pokud hledáte informace o vypsání nebo zákaznících, ujistěte se, že jste přihlášeni jako role vlastníka, nikoli jako role přispěvatele. Další informace o uživatelských oprávněních najdete v tématu [Správa uživatelů](./cloud-partner-portal-manage-users.md).
 
 
-<a name="finding-more-help"></a>Hledání další nápovědy
+<a name="finding-more-help"></a>Hledání další nápovědě
 -----------------
 
-- [Definice Insights prodejce](./si-insights-definitions-v4.md) -najít definice pro metriky a data
+- [Definice přehledů prodejců](./si-insights-definitions-v4.md) – vyhledání metrik a dat
 
-- [Začínáme s prodejce Insights](./si-getting-started.md) – Úvod do funkce prodejce přehledů.
+- [Začínáme s prodávajícími přehledy](./si-getting-started.md) – Úvod k funkci prodejce Insights.
 

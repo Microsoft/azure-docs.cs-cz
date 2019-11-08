@@ -1,5 +1,5 @@
 ---
-title: Aktualizace informací o profilu a účtu na portálu moje aplikace – Azure Active Directory | Microsoft Docs
+title: Aktualizace profilu a účtu na portálu moje aplikace – Azure AD
 description: Naučte se aktualizovat svůj profil a informace o pracovním nebo školním účtu, včetně změny hesla, zapnutí resetování hesla, aktualizaci metod ověření zabezpečení, zobrazení podmínek použití vaší organizace a odhlášení z všude, co jste přihlášeni pomocí svého pracovního nebo školního účtu.
 services: active-directory
 author: eross-msft
@@ -13,14 +13,14 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40cf8e16e08db67c36009435758db36797518d96
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4416b35d2e2204cec2a9ffe2f50e92983d6204c0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160767"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820384"
 ---
-# <a name="update-your-profile-and-account-info-from-the-my-apps-portal"></a>Aktualizace informací o profilu a účtu na portálu moje aplikace
+# <a name="update-your-profile-and-account-info-on-the-my-apps-portal"></a>Aktualizace informací o profilu a účtu na portálu moje aplikace
 
 Svůj pracovní nebo školní účet můžete použít s portálem web **Moje aplikace** , abyste mohli zobrazit a spustit spoustu cloudových aplikací vaší organizace, abyste mohli aktualizovat některé z vašich informací o profilu a účtu, abyste viděli informace o **skupinách** a mohli provádět  **kontroly přístupu** pro vaše aplikace a skupiny. Pokud nemáte přístup k portálu **Moje aplikace** , musíte se obrátit na helpdesk, aby vám udělil oprávnění.
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 254a1fd8644015de33855e13f78ab122d28f1e35
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: d9349391ad9af1a4ec1c84b586f825f3f7632ff8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817108"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815752"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Rychlý Start: Přidání přihlašování do webové aplikace v Pythonu pomocí Microsoftu
 
@@ -32,7 +32,7 @@ Po dokončení průvodce bude aplikace přijímat přihlašovacíky osobních ú
 
 ![Ukazuje, jak ukázková aplikace vygenerovaná tímto rychlým startem funguje.](media/quickstart-v2-python-webapp/python-quickstart.svg)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení této ukázky budete potřebovat:
 
@@ -55,7 +55,7 @@ K provedení této ukázky budete potřebovat:
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Možnost 2: Registrace a ruční konfigurace aplikace a vzorového kódu
 >
-> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte si aplikaci
 >
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
@@ -74,6 +74,13 @@ K provedení této ukázky budete potřebovat:
 >      - Vyberte dobu trvání klíče **v intervalu 1 roku**.
 >      - Po kliknutí na tlačítko **Přidat**se zobrazí hodnota klíče.
 >      - Zkopírujte hodnotu klíče. Budete ho potřebovat později.
+> 1. Vyberte oddíl **oprávnění rozhraní API** .
+>
+>      - Klikněte na tlačítko **Přidat oprávnění** a pak na
+>      - Ujistěte se, že je vybraná karta **rozhraní API Microsoftu** .
+>      - V části *běžně používaná rozhraní Microsoft API* klikněte na **Microsoft Graph**
+>      - V části **delegovaná oprávnění** zkontrolujte, že jsou zaškrtnutá správná oprávnění: **User. ReadBasic. All**. V případě potřeby použijte vyhledávací pole.
+>      - Vyberte tlačítko **Přidat oprávnění** .
 >
 > [!div class="sxs-lookup" renderon="portal"]
 >
@@ -83,11 +90,12 @@ K provedení této ukázky budete potřebovat:
 >
 > 1. Přidejte adresu URL odpovědi jako `http://localhost:5000/getAToken`.
 > 1. Vytvořte tajný klíč klienta.
+> 1. Přidat uživatele. ReadBasic rozhraní API Microsoft Graph. všechna delegovaná oprávnění.
 >
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Udělat změnu za mě]()
+> > [Provést tyto změny pro mě]()
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Už nakonfigurované](media/quickstart-v2-aspnet-webapp/green-check.png) Vaše aplikace je nakonfigurovaná s tímto atributem
+> > ![Už nakonfigurováno](media/quickstart-v2-aspnet-webapp/green-check.png) Vaše aplikace už má tento atribut nakonfigurovaný.
 
 #### <a name="step-2-download-your-project"></a>Krok 2: Stáhněte si projekt
 
@@ -97,7 +105,7 @@ K provedení této ukázky budete potřebovat:
 
 1. Extrahujte soubor ZIP do místní složky bližší ke kořenové složce, třeba **C:\Azure-Samples**.
 1. Pokud používáte integrované vývojové prostředí, otevřete ukázku v oblíbeném INTEGROVANÉm vývojovém prostředí (volitelné).
-1. Otevřete soubor **app_config. py** , který najdete v kořenové složce a nahraďte následujícím fragmentem kódu:
+1. Otevřete soubor **app_config. py** , který najdete v kořenové složce, a nahraďte ho následujícím fragmentem kódu:
 
 ```python
 CLIENT_ID = "Enter_the_Application_Id_here"
@@ -126,24 +134,24 @@ AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
    python app.py
    ```
    > [!IMPORTANT]
-   > Tato aplikace rychlý Start používá k identifikaci jako důvěrného klienta tajný klíč klienta. Vzhledem k tomu, že se tajný klíč klienta přidá do souborů projektu jako prostý text, doporučuje se místo toho použít certifikát namísto tajného klíče klienta před tím, než aplikaci vyberou jako produkční aplikaci. Další informace o použití certifikátu najdete v [těchto pokynech](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-certificate-credentials).
+   > Tato aplikace rychlý Start používá k identifikaci jako důvěrného klienta tajný klíč klienta. Vzhledem k tomu, že se tajný klíč klienta přidá do souborů projektu jako prostý text, doporučuje se místo toho použít certifikát namísto tajného klíče klienta před tím, než aplikaci vyberou jako produkční aplikaci. Další informace o použití certifikátu najdete v [těchto pokynech](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials).
 
-   ## <a name="more-information"></a>Další informace
+## <a name="more-information"></a>Další informace
 
-   ### <a name="getting-msal"></a>Získání MSAL
-   MSAL je knihovna používaná k přihlašování uživatelů a žádosti o tokeny používané pro přístup k rozhraní API chráněnému platformou Microsoft identity.
-   MSAL Python můžete do své aplikace přidat pomocí PIP.
+### <a name="getting-msal"></a>Získání MSAL
+MSAL je knihovna používaná k přihlašování uživatelů a žádosti o tokeny používané pro přístup k rozhraní API chráněnému platformou Microsoft identity.
+MSAL Python můžete do své aplikace přidat pomocí PIP.
 
-   ```Shell
-   pip install msal
-   ```
+```Shell
+pip install msal
+```
 
-   ### <a name="msal-initialization"></a>Inicializace knihovny MSAL
-   Odkaz na MSAL Python můžete přidat přidáním následujícího kódu do horní části souboru, kde budete používat MSAL:
+### <a name="msal-initialization"></a>Inicializace knihovny MSAL
+Odkaz na MSAL Python můžete přidat přidáním následujícího kódu do horní části souboru, kde budete používat MSAL:
 
-   ```Python
-   import msal
-   ```
+```Python
+import msal
+```
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 7364bc41a67d8651c91745a8763fff62fee722fe
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 027a35db9fcb6c0e95be5da276f673b9295ad436
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784814"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812706"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Možnost společného prodeje v partnerském centru
 
@@ -33,7 +34,7 @@ Vyberte svůj typ nabídky:
 | **Typ nabídky**    | **Popis**  |
 | :------------------- | :-------------------|
 | Zařízení | Nabídka, která zahrnuje sestavování nebo prodej hardwaru od výrobce zařízení. |
-| IP | Aplikace nebo jiný chráněný materiál licencovaný na používání zákazníka. Například: program CRM, který je možné licencovat a nainstalovat místně. |
+| IP adresa | Aplikace nebo jiný chráněný materiál licencovaný na používání zákazníka. Například: program CRM, který je možné licencovat a nainstalovat místně. |
 | Služba | Praktické odborné znalosti pro určitý jednorázový projekt, často dodávané prostřednictvím konzultantů. Příklad: nastavení zákaznické databáze pro klienta (s klientem předpokládá zodpovědnost za provoz databáze po doručení). |
 | Spravovaná služba | Praktická znalost pro cloudový projekt, obvykle průběžně. Například: poskytování platformy a nástrojů pro spuštění online databáze a průběžnou správu poskytovanou poskytovatelem spravované služby. |
 

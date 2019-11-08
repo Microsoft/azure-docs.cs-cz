@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: anroth
-ms.openlocfilehash: 5c583270428a459f500ae0e220592805fd1bf454
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 0a2b48a6c046150f6e685ecda0c0d765342e0194
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718908"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818952"
 ---
 # <a name="how-to-move-your-limited-trial-project-to-azure"></a>Postup přesunutí vašeho omezeného zkušebního projektu do Azure
 
@@ -46,7 +46,7 @@ K jednomu prostředku může být přidruženo více projektů. Další podrobno
 
 ## <a name="find-your-limited-trial-project-information"></a>Hledání informací o aplikaci s omezeným počtem zkušebních verzí
 
-Chcete-li přesunout projekt, budete potřebovat _ID projektu_ a _školicí klíč_ pro projekt, který se pokoušíte migrovat. Pokud tyto informace nemáte, navštivte [https://limitedtrial.customvision.ai/projects](https://limitedtrial.customvision.ai/projects) a Získejte ID a klíč pro každý z vašich projektů. 
+Chcete-li přesunout projekt, budete potřebovat _ID projektu_ a _školicí klíč_ pro projekt, který se pokoušíte migrovat. Pokud tyto informace nemáte, navštivte [https://www.customvision.ai/projects](https://www.customvision.ai/projects) a Získejte ID a klíč pro každý z vašich projektů. 
 
 ## <a name="use-the-python-sample-code-to-copy-your-project-to-azure"></a>Zkopírování projektu do Azure pomocí ukázkového kódu Pythonu
 

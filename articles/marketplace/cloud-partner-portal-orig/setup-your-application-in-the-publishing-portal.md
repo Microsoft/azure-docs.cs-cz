@@ -1,184 +1,185 @@
 ---
-title: Nastavení aplikace na portálu publikování
-description: Podle pokynů v nastavení aplikace v portálu pro publikování cloudu.
+title: Nastavení aplikace na portálu pro publikování
+description: Pokyny, jak nastavit aplikaci na portálu pro publikování v cloudu
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 6da80bd3b5fe487a44400f4f3c21e8fa49da75d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bf89f94d91e0d809428cf8098db0fb37afdb47a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943553"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814685"
 ---
-# <a name="setup-your-application-in-the-publishing-portal"></a>Nastavení aplikace na portálu publikování
+# <a name="setup-your-application-in-the-publishing-portal"></a>Nastavení aplikace na portálu pro publikování
 
-Nyní jste připraveni k nastavení aplikace na portálu publikování.
+Nyní jste připraveni nastavit aplikaci na portálu pro publikování.
 
-## <a name="login-and-create-a-new-offer"></a>Přihlášení a vytvořte novou nabídku
+## <a name="login-and-create-a-new-offer"></a>Přihlaste se a vytvořte novou nabídku.
 
 1. Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
-2. V levém navigačním panelu klikněte na "+ New nabízejí" a vyberte "Dynamics 365 for Customer Engagement."
+2. V levém navigačním panelu klikněte na + nová nabídka a vyberte Dynamics 365 pro zákaznickou zapojení.
 
-![Vyberte novou nabídku](./media/CRMScreenShot14.png)
+![Výběr nové nabídky](./media/CRMScreenShot14.png)
 
-1. Nová nabídka zobrazení "Editoru" teď pro vás otevřen a jsme připraveni začít vytvářením obsahu.
+1. Otevře se nová nabídka "Editor", která je teď otevřená a Vy jsme připraveni začít s vytvářením obsahu.
 
-![Nová nabídka obrazovka](./media/CRMScreenShot15.png)
+![Obrazovka nové nabídky](./media/CRMScreenShot15.png)
 
-1. "Formuláře", které je potřeba doplnit jsou viditelné na levé straně v rámci zobrazení "Editoru". Každý "formulář" obsahuje sadu polí, která se mají doplnit. Vyžaduje se pole označená červenou hvězdičkou (\*).
+1. Formuláře "Forms", které je třeba vyplnit, jsou zobrazeny vlevo v zobrazení "Editor". Každý "formu" tvoří sadu polí, která mají být vyplněna. Povinná pole jsou označena červenou hvězdičkou (\*).
 
-Existují čtyři hlavní formuláře pro vytváření obsahu Dynamics 365 Customer Engagement nabídky.
+Existují čtyři hlavní formuláře pro vytváření nabídek Dynamics 365 for Customer Engagement.
 
-* Nabídka nastavení
+* Nastavení nabídky
 * Technické informace
 * Prezentace podrobnosti
 * Kontakty
 
-## <a name="fill-out-the-offer-settings-form"></a>Vyplňte formulář pro nastavení nabídky
+## <a name="fill-out-the-offer-settings-form"></a>Vyplnění formuláře nastavení nabídky
 
-Formulář pro nastavení nabídky je základní formulář a zadejte nastavení nabídky. Různá pole jsou popsané níže.
+Formulář nastavení nabídky je základní formulář pro určení nastavení nabídky. Různá pole jsou popsána níže.
 
 ### <a name="offer-id"></a>ID nabídky
 
-Toto je jedinečný identifikátor nabídky v rámci profilu vydavatele. Toto ID se nebude zobrazovat v adresách URL produktu. Může se skládat jenom z malých alfanumerických znaků nebo pomlček (-). ID nesmí končit spojovníkem a nesmí být delší než 50 znaků. Toto pole je uzamčen, jakmile uvedete nabídky.
+Toto je jedinečný identifikátor nabídky v rámci profilu vydavatele. Toto ID bude viditelné v adresách URL produktu. Může se skládat jenom z malých alfanumerických znaků nebo pomlček (-). ID nemůže končit spojovníkem a může mít maximálně 50 znaků. Po živé nabídce bude toto pole uzamčené.
 
-například, pokud vydavatele **"contoso"** vydavatelé vytvoří v rámci nabídky s ID nabídky **"ukázkové webové aplikace"** , se zobrazí v AppSource jako "https:\//appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview"
+Pokud například Vydavatel **"contoso"** vytvoří nabídku s ID nabídky **"Sample-WebApp"** , zobrazí se v AppSource jako "https:\//appsource.Microsoft.com/Marketplace/Apps/contoso.Sample-WebApp?TAB=Overview".
 
 ### <a name="publisher-id"></a>ID vydavatele
 
-Tento rozevírací seznam umožňuje zvolit profil vydavatele, který chcete publikovat v rámci této nabídky. Toto pole je uzamčen, jakmile uvedete nabídky.
+V tomto rozevíracím seznamu můžete zvolit profil vydavatele, pod kterým chcete tuto nabídku publikovat. Po živé nabídce bude toto pole uzamčené.
 
-### <a name="name"></a>Název
+### <a name="name"></a>Name (Název)
 
-Toto je zobrazovaný název nabídky. Toto je název, který se zobrazí v [AppSource](https://appsource.microsoft.com/). Může mít maximálně 50 znaků.
+Toto je zobrazovaný název vaší nabídky. Toto je název, který se zobrazí v [AppSource](https://appsource.microsoft.com/). Může mít maximálně 50 znaků.
 
-Klikněte na "Save" rozdělanou práci uložit. Dalším krokem je přidání technické informace pro vaši nabídku.
+Kliknutím na Uložit uložte svůj průběh. Dalším krokem je přidání technických informací pro vaši nabídku.
 
-## <a name="fill-out-the-technical-info-form"></a>Vyplňte formulář technické informace
+## <a name="fill-out-the-technical-info-form"></a>Vyplňte formulář technické informace.
 
 
-Technické informace o formulář je, kde bude vyplňte informace specifické pro vaše Dynamics 365 Customer Engagement řešení. Se ukazatel myši je k dispozici s dalšími informacemi. Viz následující příklad.
+Ve formuláři technické informace najdete informace specifické pro řešení Dynamics 365 for Customer Engagement. Po najetí myší na se zobrazí další informace. Viz následující příklad.
 
-![Technické informace obrazovky](./media/CRMScreenShot16.png)
+![Obrazovka s technickými informacemi](./media/CRMScreenShot16.png)
 
 ### <a name="application-info"></a>Informace o aplikaci
 
-Většina vydavatelé ponechá tato pole s výchozími hodnotami, uživatele, ne, ne a prázdné adresy URL konfigurace aplikace podle výše uvedeném snímku obrazovky.
+Většina vydavatelů ponechá tato pole výchozími hodnotami, uživatel, ne, ne a prázdná adresa URL konfigurace aplikace na snímku obrazovky výše.
 
-### <a name="crm-package"></a>Balíček aplikace CRM
+### <a name="crm-package"></a>Balíček CRM
 
 ![Informace o balíčku CRM](./media/CRMScreenShot17.png)
 
-Následuje vysvětlení těchto polí:
+Tady je vysvětlení těchto polí:
 
-* Název souboru balíčku: Název souboru jste vytvořili v předchozím kroku při vytváření souboru zip, který je váš balíček AppSource CRM. V příkladu výše je "Microsoft\_SamplePackage.zip".
-* Adresa URL umístění balíčku: Toto je adresa URL k účtu Azure Storage, který obsahuje název souboru balíčku, který je zadaný výše. To je adresa URL vytvořené v kroku 9 v části výše.
-* Existuje více než jeden balíček crm v souboru balíčku: Vyberte možnost Ano **pouze** pokud podporujete více verzí aplikace crm pomocí různých balíčků. Pro většinu partnerů bude jím "Ne". Pokud vyberete Ano, musíte vytvořit balíčky AppSource pro každou verzi vašeho řešení. _Poznámka: NENÍ to požádá, pokud máte více **zip** soubory. Pokud máte víc souborů solution.zip ale jenom jedna verze, byste měli stále vybrat "Ne". Nástroj pro vytváření balíčků se pohromadě tyto na automaticky._
+* Název souboru balíčku: název souboru, který jste vytvořili v předchozím kroku při vytváření souboru zip, který je vaším balíčkem AppSource CRM. Ve výše uvedeném příkladu je to "Microsoft\_SamplePackage. zip".
+* Adresa URL umístění balíčku: Toto je adresa URL účtu Azure Storage, který obsahuje výše uvedený název souboru balíčku. Je to adresa URL vytvořená v kroku 9 výše uvedené části.
+* V souboru balíčku je více než jeden balíček CRM **: Pokud** podporujete více verzí CRM s různými balíčky, vyberte Ano. U většiny partnerů bude tato možnost "ne". Pokud vyberete Ano, budete muset vytvořit balíčky AppSource pro každou verzi vašeho řešení. _Poznámka: Pokud máte více souborů **zip** , nedotazuje se na ně. Pokud máte více souborů. zip, ale jenom jednu verzi, měli byste pořád vybrat ne. Nástroj pro balení bude tyto aplikace automaticky spojovat._
 
 ### <a name="crm-package-availability"></a>Dostupnost balíčku CRM
 
-V této části vyberte jaké oblasti vašeho balíčku bude k dispozici do CRM. Informace, na které CRM oblasti slouží, které země nebo oblasti, najdete v tématu odkazu: [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
+V této části vyberte, které oblasti aplikace CRM budou zpřístupněny pro. Informace o tom, které oblasti CRM slouží pro země nebo oblasti, najdete na tomto odkazu: [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
 
-Poznámka: Nasazení do Německo "Suverénních a Cloud pro státní správu USA" suverénních vyžaduje speciální oprávnění a ověření během certifikace
+Poznámka: nasazení do Německa "svrchovan and US Gov Cloud" v rámci certifikace vyžaduje zvláštní oprávnění a ověření.
 
 ## <a name="storefront-details"></a>Prezentace podrobnosti
 
 ### <a name="offer-summary"></a>Souhrn nabídky
 
-Toto je souhrn vaší nabídky návrh hodnoty. Zobrazí se na stránce hledání vaší nabídky. Měla by být delší než 100 znaků.
+Toto je souhrn hodnoty na pozici vaší nabídky. Zobrazí se na stránce pro hledání vaší nabídky. Hodnota by měla být maximálně 100 znaků.
 
 ### <a name="offer-description"></a>Popis nabídky
 
-Toto je popis, který se zobrazí na stránce podrobností aplikace. Maximální povolený počet je 1300 znaků
+Toto je popis, který se zobrazí na stránce s podrobnostmi o vaší aplikaci. Povolené maximum je 1300 znaků.
 
 ### <a name="industries"></a>Odvětví
 
-Vyberte odvětví, že vaše aplikace je nejlepší zarovnán. Pokud má vaše aplikace má vztah k více oborů, můžete nechat prázdné.
+Vyberte odvětví, na které je aplikace nejlépe zarovnána. Pokud má vaše aplikace vztah k více oborům, můžete nechat pole prázdné.
 
-### <a name="categories"></a>Categories
+### <a name="categories"></a>Kategorie
 
-Vyberte příslušné kategorie, které jsou relevantní pro vaši aplikaci. Vyberte až 3.
+Vyberte kategorie, které jsou relevantní pro vaši aplikaci. Vyberte maximálně 3.
 
 ### <a name="app-type"></a>Typ aplikace
 
-Vyberte typ zkušební verzi, která vám umožní vaši aplikaci na AppSource. "Free" znamená, že vaše aplikace je zdarma. "Zkušební verze" znamená, že zákazníci si můžou vyzkoušet vaše aplikace na krátkou dobu na AppSource. "Žádost o zkušební verzi" není podporován pro Dynamics 365 Customer Engagement aplikací. Nevybírejte tuto možnost.
+Vyberte typ zkušební verze, kterou aplikace povolí v AppSource. ' Free ' znamená, že je vaše aplikace zadarmo. "Zkušební" znamená, že zákazníci můžou vaši aplikaci po krátkou dobu vyzkoušet na AppSource. Možnost žádost o zkušební verzi není podporovaná pro Dynamics 365 pro aplikace Customer Engagement. Tuto možnost nevybírejte.
 
 ### <a name="help-link-for-your-app"></a>Odkaz na nápovědu pro vaši aplikaci
 
-Zadejte adresu URL na stránku, která má pomoci související informace pro vaši aplikaci.
+Zadejte adresu URL stránky, která obsahuje nápovědu související s informacemi pro vaši aplikaci.
 
 ### <a name="supported-countriesregions"></a>Podporované země/oblasti
 
-Toto pole určuje země nebo oblasti, ve kterých bude k dispozici pro zkušební verzi vaší nabídky.
+Toto pole určuje země nebo oblasti, ve kterých bude nabídka k dispozici pro zkušební verzi.
 
 ### <a name="supported-languages"></a>Podporované jazyky
 
-Vyberte jazyky, které vaše aplikace podporuje. Pokud vaše aplikace podporuje další jazyky, které nejsou v tomto seznamu, pokračovat v publikování vaší nabídky a pošlete nám e-mail na: [ appsource@microsoft.com ](mailto:appsource@microsoft.com) a dejte nám vědět.
+Vyberte jazyky, které vaše aplikace podporuje. Pokud vaše aplikace podporuje další jazyky, které nejsou v tomto seznamu, pokračujte v publikování vaší nabídky a pošlete nám e-mail na adrese: [appsource@microsoft.com](mailto:appsource@microsoft.com) , abychom nás věděli.
 
 ### <a name="app-version"></a>verze aplikace
 
-Zadejte číslo verze pro vaši aplikaci
+Zadejte číslo verze vaší aplikace.
 
-### <a name="app-release-date"></a>Datum vydání verze aplikace
+### <a name="app-release-date"></a>Datum vydání aplikace
 
-Zadejte datum vydání verze pro vaši aplikaci
+Zadejte datum vydání vaší aplikace.
 
-### <a name="products-your-app-works-with-max-3"></a>Produkty, které vaše aplikace funguje se (maximálně 3)
+### <a name="products-your-app-works-with-max-3"></a>Produkty, se kterými pracuje vaše aplikace (max. 3)
 
-Konkrétní produkty, které vaše aplikace funguje se. Můžete vytvořit seznam maximálně tři produkty. Seznam produktu, klikněte na znaménko plus (vedle nový) a vytvoří se nové otevřít textové pole pro zadání názvu produktu, který vaše aplikace funguje se.
+Konkrétní seznam produktů, se kterými vaše aplikace pracuje. Můžete uvést maximálně tři produkty. Pokud chcete zobrazit seznam produktů, klikněte na znaménko plus (vedle novinek) a vytvoří se nové otevřené textové pole pro zadání názvu produktu, ve kterém vaše aplikace pracuje.
 
-### <a name="search-keywords-max-3"></a>Klíčová slova pro vyhledávání (maximálně 3)
+### <a name="search-keywords-max-3"></a>Hledaná klíčová slova (max 3)
 
-AppSource umožňuje zákazníkům hledat na základě klíčových slov. Můžete zadat sadu klíčových slov, u kterých vaše aplikace zobrazí se zákazníky.
+AppSource umožňuje zákazníkovi vyhledávat na základě klíčových slov. Můžete zadat sadu klíčových slov, pro které se vaše aplikace bude zobrazovat zákazníkům.
 
-Například pokud aplikace "E-mailem žádají služba" e-mailů, poštovní, poštovní služba může být několik klíčových slov. Volte slova, které uživatelé budou pravděpodobně používat k hledání pro vaši aplikaci do AppSource vyhledávacího pole.
+Například pokud je aplikace e-maily "Moje e-mailová služba", poštovní služba může být některá klíčová slova. Vyberte slova, která uživatelé budou nejspíš používat k hledání vaší aplikace v vyhledávacím poli AppSource.
 
-### <a name="hide-key"></a>Skrýt klíče
+### <a name="hide-key"></a>Skrýt klíč
 
-Toto je klíč, který se zkombinuje s adresou URL náhledu nabídky ke skrytí před veřejné zobrazení. Není heslo. Můžete zadat libovolný řetězec tady.
+Klíč, který se bude kombinovat s adresou URL náhledu nabídky, aby se skryla z veřejného zobrazení. Nejedná se o heslo. Sem můžete zadat libovolný řetězec.
 
-### <a name="offer-logo-png-format-48x48"></a>Nabídka logo (formátu png, 48 x 48)
+### <a name="offer-logo-png-format-48x48"></a>Logo nabídky (formát PNG, 48x48)
 
-Tím se zobrazí na stránce hledání vaší aplikace. **Je povolen pouze formátu png.** Nahrajte obrázek png s překladem 48PX\*48PX
+Tato akce se zobrazí na stránce vyhledávání vaší aplikace. **Je povolený pouze formát PNG.** Nahrání obrázku PNG s rozlišením 48PX\*48PX
 
-### <a name="offer-logo-png-format-216x216"></a>Nabídka logo (formátu png, 216 x 216)
+### <a name="offer-logo-png-format-216x216"></a>Logo nabídky (formát PNG, 216x216)
 
-Zobrazí se na stránku podrobností aplikace. **Je povolen pouze formátu png.** Nahrajte obrázek png s překladem 216PX\*216PX
+Tato stránka se zobrazí na stránce s podrobnostmi vaší aplikace. **Je povolený pouze formát PNG.** Nahrání obrázku PNG s rozlišením 216PX\*216PX
 
 ### <a name="videos"></a>Videa
 
-Můžete nahrát maximálně čtyři videa. Pro každé video, které chcete nahrát musíte vyplnit název videa, adresa URL (YouTube nebo Vimeo pouze) a miniaturu pro přidružení k videu. Miniatura musí být ve formátu png a musí být 1280PX\*720PX. Chcete-li přidat nový video(s), klikněte na znaménko plus. Thumbnail(s) videa se zobrazí na stránce podrobností aplikace.
+Můžete nahrát maximálně čtyři videa. Pro každé video, které chcete nahrát, je potřeba vyplnit název videa, adresu URL (jenom YouTube nebo Vimeo) a miniaturu, kterou chcete přidružit k videu. Miniatura musí být ve formátu PNG a musí být 1280PX\*720PX. Chcete-li přidat nové videa, klikněte na znaménko plus. Miniatury videa se zobrazí na stránce podrobností vaší aplikace.
 
 ### <a name="documents"></a>Dokumenty
 
-Můžete nahrát maximálně tři dokumenty ve formátu PDF. Pro každý dokument, který chcete nahrát musíte vyplnit název dokumentu a nahrajete daný dokument. Dokument musí být ve formátu pdf.
+Ve formátu PDF můžete nahrát maximálně tři dokumenty. Pro každý dokument, který chcete nahrát, je potřeba vyplnit název dokumentu a nahrajte ho. Dokument musí být ve formátu PDF.
 
-Pokud chcete přidat nové dokumenty, klikněte na znaménko plus
+Chcete-li přidat nové dokumenty, klikněte na znaménko plus.
 
 ### <a name="screenshots"></a>Snímky obrazovek
 
-Toto jsou snímky obrazovky, který se zobrazí na stránce s podrobnostmi AppSource pro aplikaci.
+Jsou to snímky obrazovky, které se zobrazí na stránce s podrobnostmi o AppSource vaší aplikace.
 
 ### <a name="privacy-policy"></a>Zásada zabezpečení
 
-Zadejte adresu URL zásad ochrany osobních údajů vaší aplikace
+Zadejte adresu URL zásad ochrany osobních údajů vaší aplikace.
 
 ### <a name="terms-of-use"></a>Podmínky použití
 
-Zadejte podmínky použití vaší aplikace. Zákazníci AppSource je potřeba přijmout tyto podmínky předtím, než se pokusí vaše aplikace
+Zadejte podmínek použití vaší aplikace. Zákazníci AppSource musí tyto podmínky přijmout, aby mohli vyzkoušet vaši aplikaci.
 
 ### <a name="support-url"></a>Adresa URL podpory
 
 Zadejte adresu URL podpory pro vaši aplikaci.
 
-### <a name="lead-destination"></a>Vedoucí cíl
+### <a name="lead-destination"></a>Cíl zájemce
 
-Vyberte systému CRM, kde vést se uloží. Zde vyberte "Azure Table", pokud máte jeden z následujících systémů CRM: Salesforce, Marketo, Microsoft Dynamics CRM. Systému CRM, zde je, kde napíšeme podrobnosti koncových uživatelů, kteří vyzkouší vaši aplikaci na AppSource (zájemce). V závislosti na systému CRM, které vyberete klikněte na odpovídající následující adresu URL pro informace o tom, jak projít další sadu polí
+Vyberte systém CRM, ve kterém se bude ukládat zájemce. Pokud máte jeden z následujících systémů CRM: Salesforce, Marketo, Microsoft Dynamics CRM, vyberte tabulku Azure. Systém CRM, který zde vyberete, je místo, kde zapíšeme podrobnosti o koncových uživatelích, kteří si vyzkouší vaši aplikaci na AppSource (zájemci). V závislosti na zvoleném systému CRM klikněte na odpovídající adresu URL níže, kde najdete informace o tom, jak dokončit další sadu polí.
 
 * [Tabulka Azure](./cloud-partner-portal-lead-management-instructions-azure-table.md)
 * [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md)
@@ -187,4 +188,4 @@ Vyberte systému CRM, kde vést se uloží. Zde vyberte "Azure Table", pokud má
 
 ## <a name="storefront-details"></a>Prezentace podrobnosti
 
-Kontaktní údaje se používají pouze pro vnitřní komunikace mezi partnerem a Microsoftem. Poznámka: Je důležité používat e-mailovou adresu, která je sledována v těchto polích. Tento e-mail budeme používat ke komunikaci s vámi na průběh v publikování na AppSource. Pouze adresu URL podpory se nebude zobrazovat na zákazníky.
+Kontaktní údaje se používají pro interní komunikaci mezi partnerem a Microsoftem. Poznámka: je důležité použít e-mailovou adresu, která je sledována v těchto polích. Tento e-mail budeme používat ke komunikaci s vámi a vaším průběhem publikování na AppSource. Pouze adresa URL podpory bude viditelná pro zákazníky.

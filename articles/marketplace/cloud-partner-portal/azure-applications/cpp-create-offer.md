@@ -1,32 +1,33 @@
 ---
-title: Vytvoření nabídky aplikace Azure | Azure Marketplace
-description: Jak publikovat novou nabídku Azure aplikace na Azure Marketplace.
+title: Vytvoření nabídky aplikací Azure | Azure Marketplace
+description: Jak publikovat novou nabídku aplikace Azure na Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 2eed5ed60d5aed7fb537e886f39b97dfc8257f19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 173e371c97ed2ab281bd7badae29f253e1e3e1f8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943010"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827646"
 ---
-# <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikace Azure
+# <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
-Tento článek popisuje, jak vytvářet a publikovat položku nabídky aplikace Azure pro Azure Marketplace. Každé nabídky se zobrazí jako vlastní entity na webu Azure Marketplace a se skládá z následujících seskupení prostředků a služeb podpory: Podrobnosti, skladové jednotky, marketingové artefakty, nabídky a informace o podpoře.
+Tento článek popisuje, jak vytvořit a publikovat položku nabídky aplikace Azure pro Azure Marketplace. Každá nabídka se zobrazí jako vlastní entita v Azure Marketplace a skládá se z následujících skupin prostředků a podpůrných služeb: podrobnosti nabídky, SKU, marketingové artefakty a informace o podpoře.
 
 ## <a name="new-offer-form"></a>Formulář nové nabídky
 
-Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/)a pak vyberte **+ nová nabídka** na panelu nabídky vlevo. Na nové nabídky nabídku, vyberte **aplikací Azure** zobrazíte **nová nabídka** formuláře a zahájit proces definice prostředků pro nové nabídky.
+Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/)a v levém řádku nabídek vyberte **+ Nová nabídka** . V nabídce nová nabídka vyberte **aplikace Azure** , abyste zobrazili formulář **nové nabídky** a začali postup definování prostředků pro novou nabídku.
 
 ![Formulář nové nabídky](./media/azure-new-managedapp-offer.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Stránka Nová nabídka obsahuje sadu karet a pole formuláře, které použijete k vytvoření nové nabídky. Následující články popisují, jak definovat skupiny prostředků a služeb podpory pro nové nabídky.
+Nová stránka nabídky poskytuje sadu karet a polí formuláře, která použijete k vytvoření nové nabídky. Následující články vysvětlují, jak definovat skupiny assetů a podpůrné služby pro novou nabídku.
 
 * [Karta Nastavení nabídky](./cpp-offer-settings-tab.md)
 * [Karta Skladové položky](./cpp-skus-tab.md)

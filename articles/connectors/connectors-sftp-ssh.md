@@ -10,12 +10,12 @@ ms.reviewer: divswa, klam, LADocs
 ms.topic: article
 ms.date: 06/18/2019
 tags: connectors
-ms.openlocfilehash: 33c6007ebc429bb0d95d702ae9b90f9ac411a88c
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: a48ba0d2d691314a1ca7c91ac7ae27b62fbb379b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695194"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825238"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorování, vytváření a Správa souborů SFTP pomocí SSH a Azure Logic Apps
 
@@ -49,7 +49,7 @@ Tady jsou další klíčové rozdíly mezi konektorem SFTP-SSH a konektorem SFTP
 
 * Používá [knihovnu SSH.NET](https://github.com/sshnet/SSH.NET), což je open-source Secure Shell (SSH) Library podporující rozhraní .NET.
 
-* Ve výchozím nastavení můžou akce SFTP-SSH číst nebo zapisovat soubory o *velikosti 1 GB* , ale jenom v *15 MB* bloků dat. Aby bylo možné zpracovat soubory větší než 15 MB, může protokol SFTP – akce protokolu SSH používat [bloky zpráv](../logic-apps/logic-apps-handle-large-messages.md). Akce kopírovat soubor však podporuje pouze 15 MB souborů, protože tato akce nepodporuje vytváření bloků zpráv. Protokol SFTP – triggery SSH nepodporují vytváření bloků dat.
+* Ve výchozím nastavení můžou akce SFTP-SSH číst nebo zapisovat soubory o *velikosti 1 GB* , ale jenom v *15 MB* bloků dat. Aby bylo možné zpracovat soubory větší než 15 MB, může protokol SFTP – akce protokolu SSH používat [bloky zpráv](../logic-apps/logic-apps-handle-large-messages.md). Pro nahrání velkých souborů budete potřebovat i oprávnění ke čtení i zápisu. Akce kopírovat soubor však podporuje pouze 15 MB souborů, protože tato akce nepodporuje vytváření bloků zpráv. Protokol SFTP – triggery SSH nepodporují vytváření bloků dat.
 
 * Poskytuje akci **vytvořit složku** , která vytvoří složku v zadané cestě na serveru SFTP.
 
@@ -57,11 +57,11 @@ Tady jsou další klíčové rozdíly mezi konektorem SFTP-SSH a konektorem SFTP
 
 * Uloží připojení do serveru SFTP *po dobu až 1 hodiny*, což zvyšuje výkon a snižuje počet pokusů o připojení k serveru. Pokud chcete nastavit dobu trvání tohoto chování při ukládání do mezipaměti, upravte vlastnost [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) v konfiguraci SSH na vašem serveru SFTP.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* Vaše adresa serveru SFTP a přihlašovací údaje účtu, které vaší aplikaci logiky umožní přístup k vašemu účtu SFTP. Potřebujete také přístup k privátnímu klíči SSH a k heslu privátního klíče SSH.
+* Vaše adresa serveru SFTP a přihlašovací údaje účtu, které vaší aplikaci logiky umožní přístup k vašemu účtu SFTP. Potřebujete také přístup k privátnímu klíči SSH a k heslu privátního klíče SSH. Pokud chcete při nahrávání velkých souborů použít bloky dat, potřebujete oprávnění ke čtení i zápisu.
 
   > [!IMPORTANT]
   >
@@ -86,8 +86,8 @@ SFTP – SSH spouští dotazování systému souborů SFTP a hledání všech so
 
 | Klient SFTP | Akce |
 |-------------|--------|
-| WinSCP | Přejít na **možnosti** > **Předvolby** > **přenos** > **Upravit** > **zachovat časové razítko** > **Zakázat** |
-| FileZilly | Přejít na **přenos** > **zachovat časová razítka přenesených souborů** > **Zakázat** |
+| WinSCP | Přejít na **možnosti** > **předvolby** > **přenos** > **Upravit** > **zachovat časové razítko** > **Zakázat** |
+| FileZilly | Přejít na **přenos** > **zachovejte časová razítka přenesených souborů** > **Zakázat** |
 |||
 
 Pokud aktivační událost najde nový soubor, aktivační událost zkontroluje, jestli je nový soubor hotový, a ne částečně napsaný. Soubor může mít například probíhající změny, když aktivační událost kontroluje souborový server. Aby nedošlo k vrácení částečně napsaného souboru, aktivační událost zapisuje časové razítko pro soubor, který má poslední změny, ale tento soubor okamžitě nevrátí. Aktivační událost vrátí soubor pouze při opakovaném dotazování serveru. V některých případech může toto chování způsobit zpoždění až dvojnásobku intervalu dotazování triggeru.
@@ -108,7 +108,7 @@ Pokud je váš privátní klíč ve formátu výstupního souboru, který použ�
 
    `puttygen <path-to-private-key-file-in-PuTTY-format> -O private-openssh -o <path-to-private-key-file-in-OpenSSH-format>`
 
-   Například:
+   Příklad:
 
    `puttygen /tmp/sftp/my-private-key-putty.ppk -O private-openssh -o /tmp/sftp/my-private-key-openssh.pem`
 
@@ -126,7 +126,7 @@ Pokud je váš privátní klíč ve formátu výstupního souboru, který použ�
 
    ![Vyberte Exportovat OpenSSH klíč.](./media/connectors-sftp-ssh/export-openssh-key.png)
 
-1. Uložte soubor privátního klíče s příponou názvu souboru `.pem`.
+1. Uložte soubor privátního klíče s `.pem` příponou názvu souboru.
 
 <a name="connect"></a>
 
@@ -142,7 +142,7 @@ Pokud je váš privátní klíč ve formátu výstupního souboru, který použ�
 
    Pro existující aplikace logiky v rámci posledního kroku, kam chcete přidat akci, vyberte možnost **Nový krok**. Do vyhledávacího pole zadejte jako filtr "SFTP SSH". V seznamu akce vyberte akci, kterou chcete.
 
-   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Zvolte znaménko plus ( **+** ), které se zobrazí, a pak vyberte **přidat akci**.
 
 1. Zadejte potřebné informace pro vaše připojení.
 
@@ -156,7 +156,7 @@ Pokud je váš privátní klíč ve formátu výstupního souboru, který použ�
 
    1. V nabídce **Úpravy** poznámkového bloku vyberte **Vybrat vše**.
 
-   1. Vyberte možnost **upravit** > **Kopírovat**.
+   1. Vyberte **upravit** > **Kopírovat**.
 
    1. V aktivační události SFTP-SSH nebo v akci, kterou jste přidali, vložte *úplný* klíč, který jste zkopírovali do vlastnosti **privátního klíče SSH** , který podporuje více řádků.  ***Nezapomeňte klíč vložit*** . ***Klíč nezadejte ručně ani neupravujte***.
 

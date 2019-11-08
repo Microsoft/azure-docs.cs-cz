@@ -4,15 +4,16 @@ description: Služby pro uvedení na trh – Tato část popisuje seznam osvěd�
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: 9f55abf85803adf0f52bbfa445b9f3e489c9448b
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 439617c07b8059860c6d412cc60d56d4ac8c36a5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821058"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818669"
 ---
 # <a name="offer-listing-best-practices"></a>Osvědčené postupy nabídky
 
@@ -43,7 +44,7 @@ Pro nabídku můžete vybrat až dvě kategorie a dvě podkategorie. Níže uved
 | \* Automobilový     | \* Automobilový |
 | Zemědělství     | \* Jiné – nesegmentované |
 | Distribuce    | \* Velkoobchod <br> \* Zásilka balíčku & expedice |
-| Vzdělávání     | \* Vyšší vzdělávání <br> \* Primární vzdělávání sekundárního &/K-12 <br> \* Knihovny & muzeí |
+| Education     | \* Vyšší vzdělávání <br> \* Primární vzdělávání sekundárního &/K-12 <br> \* Knihovny & muzeí |
 | Finanční služby     | \* Bankovní & kapitálové trhy <br> \* Pojištění |
 | Státní správa    | \* Obrana & Intelligence (používá se pro volání národního a veřejného zabezpečení) <br> \* Státní bezpečnost & spravedlnosti <br> \* Civilní samospráva |
 | Zdravotní péče (používá se pro volání stavu)   | \* Plátce stavu <br> \* Poskytovatel stavu <br> \* Farmaceutické výrobky |

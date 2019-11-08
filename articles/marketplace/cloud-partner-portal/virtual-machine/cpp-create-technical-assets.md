@@ -4,22 +4,23 @@ description: Vysvětluje, jak vytvořit technické prostředky pro nabídku virt
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: pabutler
-ms.openlocfilehash: c1ef00f846dfad76629b0603ab79fba17249417c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 45d0ff5b7b3fea1566b13b61bd01cc17da61e4b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224526"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824509"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>Vytváření technických prostředků pro nabídku virtuálního počítače
 
 V této části se seznámíte s vytvořením a konfigurací technických prostředků pro nabídku virtuálního počítače pro Azure Marketplace.  Virtuální počítač obsahuje dvě komponenty: virtuální pevný disk řešení (VHD) a volitelné přidružené datové disky.  
 
 - *Virtuální pevné disky (VHD)* , které obsahují operační systém a řešení, které nasadíte pomocí nabídky Azure Marketplace. Proces přípravy VHD se liší v závislosti na tom, jestli se jedná o virtuální počítač založený na platformě Linux, Windows nebo na vlastním virtuálním počítači.
-- *Datové disky* reprezentují vyhrazené a trvalé úložiště pro virtuální počítač. Nepoužívejte virtuální pevný disk řešení (například `C:` jednotky) k ukládání trvalých informací.
+- *Datové disky* reprezentují vyhrazené a trvalé úložiště pro virtuální počítač. Nepoužívejte *virtuální* pevný disk řešení (například `C:` jednotka) k ukládání trvalých informací.
 
 Image virtuálního počítače obsahuje jeden disk s operačním systémem a žádný nebo více datových disků. Pro každý disk je potřeba jeden VHD. I prázdné datové disky vyžadují vytvoření virtuálního pevného disku.
 Musíte nakonfigurovat operační systém virtuálního počítače, velikost virtuálního počítače, porty, které se mají otevřít, a až 15 připojených datových disků.
@@ -52,9 +53,9 @@ Kromě toho doporučujeme do vývojového prostředí přidat následující ná
 
 -   [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 -   [Visual Studio Code](https://code.visualstudio.com/)
-    *   Klapk [Nástroje Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    *   Klapk [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   Klapk [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+    *   Rozšíření: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *   Přípona: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    *   Přípona: [PRETTIFY JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
 Navrhujeme také kontrolu dostupných nástrojů na stránce [Azure vývojářské nástroje](https://azure.microsoft.com/tools/) a pokud používáte Visual Studio, [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
 

@@ -4,15 +4,16 @@ description: Vytváření a Správa nabídek Azure a AppSource Marketplace
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: pabutler
-ms.openlocfilehash: 746b1b51d593b21bdf85bca4eeb75c135196093a
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: f1e561e84daed6c24ca0d9b7832af3d975082e25
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962857"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818760"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Nabídky Azure a AppSource Marketplace
 
@@ -32,9 +33,9 @@ Další informace o těchto tržištích najdete v článku [Průvodce publikov�
 Proces vytvoření nové nabídky se výrazně liší v různých typech nabídek, například mezi [nabídkou aplikací Azure](./azure-applications/cpp-azure-app-offer.md) a [nabídkou konzultační služby](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md).  Naproti tomu mnoho dalších operací, které provádíte na nabídce v [portál partnerů cloudu](https://cloudpartner.azure.com) , jsou poměrně standardizované napříč různými typy nabídek.  Tyto běžné operace – včetně publikování, zobrazení stavu, aktualizace a odstranění – jsou uvedené v části [Správa nabídek](./manage-offers/cpp-manage-offers.md) .
 
 
-## <a name="test-drive"></a>Test Drive
+## <a name="test-drive"></a>Testovací verze
 
-*Test Drive* je funkce Marketplace, která zákazníkům poskytuje možnost "vyzkoušet si", jak si můžete koupit pro každou nabídku.  Funkce testovacích jednotek je omezená na následující podmnožinu typů nabídek: [Aplikace Azure](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 for customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md), [Dynamics 365 pro finance a provoz](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [SaaS aplikace](./saas-app/cpp-saas-offer.md)a [virtuální počítače](./virtual-machine/cpp-virtual-machine-offer.md).  Tato funkce vyžaduje, aby Vydavatel vytvořil šablonu testovacího disku přizpůsobenou pro svou nabídku.  Další informace najdete v části [testovací jednotka](./test-drive/what-is-test-drive.md).
+*Test Drive* je funkce Marketplace, která zákazníkům poskytuje možnost "vyzkoušet si", jak si můžete koupit pro každou nabídku.  Funkce testovacích jednotek je omezená na následující podmnožinu typů nabídek: [aplikace Azure](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 for customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md), [Dynamics 365 pro finance a operace](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [SaaS aplikace](./saas-app/cpp-saas-offer.md)a [virtuální počítače](./virtual-machine/cpp-virtual-machine-offer.md).  Tato funkce vyžaduje, aby Vydavatel vytvořil šablonu testovacího disku přizpůsobenou pro svou nabídku.  Další informace najdete v části [testovací jednotka](./test-drive/what-is-test-drive.md).
 
 Pomocí [filtru testovacích jednotek](https://azuremarketplace.microsoft.com/marketplace/apps?filters=test-drive)můžete procházet stávající nabídky na webu Marketplace, které obsahují ukázky zkušebních jednotek. 
 
@@ -46,8 +47,8 @@ V následující tabulce jsou uvedeny typy aktuálních nabídek, které [portá
 |                Typ nabídky                |  Marketplace  |   Popis                                                           |
 |                ----------                |  -----------  |   -----------                                                           |
 | [Aplikace Azure](./azure-applications/cpp-azure-app-offer.md) | Azure | Řešení se skládá z jednoho nebo více virtuálních počítačů (VM), volitelného vlastního kódu Azure nasazeného pomocí šablony Azure Resource Manageru.  Nasazení může provést buď zákazník prostřednictvím šablony řešení, nebo spravovaná vydavatelem. Tento typ slouží k poskytnutí větší flexibility než poskytnutého typu nabídky virtuálního počítače.  |
-| [Konzultační služba](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md) | protokoly | Konzultanti kvalifikované pro společnost Microsoft mohou vypsat své služby specifické pro doménu buď v Azure Marketplace nebo AppSource.  Jejich odborné znalosti pomáhají zákazníkům vyhodnotit své problémy a vytvářet a nasazovat správná řešení pro splnění jejich obchodních cílů.  |
-| [Kontejner](./containers/cpp-containers-offer.md)  | Azure | Řešení je image kontejneru Docker zřízená jako služba založená na Kubernetes nebo služby Azure Container Instances. |
+| [Konzultační služba](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md) | Protokoly | Konzultanti kvalifikované pro společnost Microsoft mohou vypsat své služby specifické pro doménu buď v Azure Marketplace nebo AppSource.  Jejich odborné znalosti pomáhají zákazníkům vyhodnotit své problémy a vytvářet a nasazovat správná řešení pro splnění jejich obchodních cílů.  |
+| [Vnitřního](./containers/cpp-containers-offer.md)  | Azure | Řešení je image kontejneru Docker zřízená jako služba založená na Kubernetes nebo služby Azure Container Instances. |
 | [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md) | AppSource | Balíček, který rozšiřuje toto plánování podnikových zdrojů (ERP) a systému pro správu podnikových prostředků. |
 | [Dynamics 365 pro zákaznickou zapojení](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | Balíček, který rozšiřuje tento systém správy zákaznických prostředků (CRM) prostřednictvím svých modulů Sales, Service, Project Service a Field Service  |
 | [Dynamics 365 pro finance a operace](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | Balíček, který rozšiřuje tuto službu pro plánování podnikových zdrojů (ERP), která podporuje pokročilé finanční operace, provoz, výrobní prostředky a řízení dodavatelských řetězců |

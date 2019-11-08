@@ -1,5 +1,5 @@
 ---
-title: Použití automatizovaného rozhraní ML Azure ke školení & nasazení modelů
+title: Sestavení & nasazení automatizovaných modelů ML
 titleSuffix: Azure Machine Learning
 description: Vytvářejte, spravujte a nasaďte automatizované experimenty strojového učení v Azure Machine Learning Studiu.
 services: machine-learning
@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: e1bb84c142fb24086cf6c11a7b1070bdd29ae3f2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 25e775cf7bfd415768144b28ab2ca6989f360edd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581276"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818487"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Vytvářejte, Zkoumejte a nasaďte automatizované experimenty strojového učení pomocí Azure Machine Learning studia
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -215,7 +215,7 @@ Automatizované ML vám pomůže s nasazením modelu bez psaní kódu:
     >[!Important]
     > Názvy souborů musí být pod 32 znaků a musí začínat a končit alfanumerickými znaky. Může obsahovat pomlčky, podtržítka, tečky a alfanumerické znaky mezi. Mezery nejsou povoleny.
 
-    Nabídka *Upřesnit* nabízí výchozí funkce pro nasazení, jako je nastavení shromažďování dat a využití prostředků. Pokud si přejete přepsat tato výchozí nastavení, udělejte to v této nabídce.
+    Nabídka *Upřesnit* nabízí výchozí funkce pro nasazení, jako je například [shromažďování dat](how-to-enable-app-insights.md) a nastavení využití prostředků. Pokud si přejete přepsat tato výchozí nastavení, udělejte to v této nabídce.
 
 1. Vyberte **Nasadit**. Dokončení nasazení může trvat přibližně 20 minut.
 

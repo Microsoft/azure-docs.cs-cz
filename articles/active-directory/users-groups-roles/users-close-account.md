@@ -1,5 +1,5 @@
 ---
-title: Zavřete svůj pracovní nebo školní účet v nespravovaném adresáři – Azure Active Directory | Microsoft Docs
+title: Zavřít pracovní nebo školní účet v nespravovaném adresáři služby Azure AD
 description: Jak zavřít svůj pracovní nebo školní účet v nespravovaném Azure Active Directory.
 services: active-directory
 author: rolyon
@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0da4c6b1c1434dae564ab4876a3ab3f341a87097
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 3c101c0ef7932151e675c5c514ac558e6e0f94b2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891961"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815721"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-directory"></a>Zavřete svůj pracovní nebo školní účet v nespravovaném adresáři.
 
@@ -28,7 +28,7 @@ Uživatelé v nespravovaném adresáři se často vytvářejí při registraci s
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Než budete moct účet zavřít, zkontrolujte, že máte následující položky:
 
@@ -39,7 +39,7 @@ Než budete moct účet zavřít, zkontrolujte, že máte následující položk
 > [!WARNING]
 > Zavření účtu je nevratné. Po zavření účtu se odeberou všechny osobní údaje. Už nebudete mít přístup k vašemu účtu a datům přidruženým k vašemu účtu.
 
-## <a name="close-your-account"></a>Uzavřít váš účet
+## <a name="close-your-account"></a>Zavřít účet
 
 Pokud chcete zavřít nespravovaný pracovní nebo školní účet, postupujte podle těchto kroků:
 

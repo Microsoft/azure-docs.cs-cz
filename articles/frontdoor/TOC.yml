@@ -48,16 +48,6 @@
       href: front-door-url-rewrite.md
     - name: Přesměrování adresy URL
       href: front-door-url-redirect.md
-    - name: WAF
-      items:
-        - name: Přehled
-          href: waf-overview.md
-        - name: Vlastní pravidla
-          href: waf-front-door-custom-rules.md
-        - name: Nastavení zásad
-          href: waf-front-door-policy-settings.md
-        - name: Monitorování a protokolování
-          href: waf-front-door-monitor.md
 - name: Návody
   items:
     - name: Přesměrování provozu
@@ -74,26 +64,10 @@
           href: front-door-troubleshoot-routing.md
         - name: Povolené certifikační autority
           href: front-door-troubleshoot-allowed-ca.md
-    - name: Konfigurace WAF
-      items:
-        - name: Konfigurace zásad WAF – portál
-          href: waf-front-door-create-portal.md
-        - name: Konfigurace zásad WAF – Azure PowerShell
-          href: waf-front-door-custom-rules-powershell.md
-        - name: Konfigurace ochrany před roboty
-          href: waf-front-door-policy-configure-bot-protection.md
-        - name: Konfigurace vlastního kódu odpovědi
-          href: waf-front-door-configure-custom-response-code.md
-        - name: Konfigurace omezení IP adres
-          href: waf-front-door-configure-ip-restriction.md
-        - name: Konfigurace limitu frekvence – Azure PowerShell
-          href: waf-front-door-rate-limit-powershell.md
 - name: Nejčastější dotazy
   items:
     - name: Nejčastější dotazy ke službě Front Door
       href: front-door-faq.md
-    - name: Nejčastější dotazy k WAF
-      href: waf-faq.md
 - name: Referenční informace
   items:
     - name: Azure CLI

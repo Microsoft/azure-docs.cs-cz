@@ -14,25 +14,24 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/21/2019
+ms.date: 11/07/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: 0335f5c71f99e6c7a90ce920c25e6bb7e9b4a08f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 452ccfc796fcd2a390c7380f4c6b2ced2057dc3b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211947"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822354"
 ---
-# <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Kurz: Nabízená oznámení do aplikací pro iOS pomocí Azure Notification Hubs
+# <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Kurz: Zasílání nabízených oznámení aplikacím pro iOS službou Azure Notification Hubs
 
 > [!div class="op_single_selector"]
 > * [Objective-C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
 > * [Swift](notification-hubs-ios-push-notifications-swift-apps-get-started.md)
 
-
-V tomto kurzu se dozvíte, jak používat Azure Notification Hubs k zasílání nabízených oznámení aplikaci pro iOS. Vytvoříte prázdnou aplikaci pro iOS, která přijímá nabízená oznámení [služby Apple Push Notification (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1).
+V tomto kurzu použijete Azure Notification Hubs k odesílání nabízených oznámení do aplikace pro iOS. Vytvoříte prázdnou aplikaci pro iOS, která přijímá nabízená oznámení [služby Apple Push Notification (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1).
 
 V tomto kurzu provedete následující kroky:
 
@@ -40,19 +39,21 @@ V tomto kurzu provedete následující kroky:
 > * Vygenerujete soubor s žádostí o podepsání certifikátu
 > * Požádáte aplikaci o nabízená oznámení
 > * Vytvoření zřizovacího profilu pro aplikaci
-> * Konfigurace centra oznámení pro nabízená oznámení iOS
+> * Nakonfigurujete v centru oznámení nabízená oznámení pro iOS
 > * Připojíte aplikaci pro iOS ke službě Notification Hubs
 > * Odešlete nabízená oznámení
 > * Ověříte, že aplikace přijímá oznámení
 
-Dokončený kód v tomto kurzu lze najít v části [Github](https://github.com/Azure/azure-notificationhubs-ios/tree/master/Samples). 
+Úplný kód pro tento kurz najdete [na GitHubu](https://github.com/Azure/azure-notificationhubs-ios/tree/master/Samples).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut [vytvořit bezplatný účet Azure](https://azure.microsoft.com/free) .
+Pro absolvování tohoto kurzu musí být splněné následující požadavky:
+
+* Aktivní účet Azure. Pokud účet nemáte, můžete si [vytvořit bezplatný účet Azure](https://azure.microsoft.com/free).
 * [Windows Azure Messaging Framework]
 * Poslední verze jazyka [Xcode]
-* Zařízení podporující iOS 10 (nebo novější verzi)
+* Zařízení s podporou iOS verze 10 (nebo novější)
 * Členství v [programu pro vývojáře Apple](https://developer.apple.com/programs/).
   
   > [!NOTE]
@@ -88,20 +89,20 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy Notificati
 
    - Integrace přes Cocoapods
 
-     Přidejte do své `podfile` aplikace následující závislosti, které budou zahrnovat sadu Azure Notification Hubs SDK.
+     Přidejte do svého `podfile` následující závislosti, které budou do vaší aplikace zahrnovat sadu Azure Notification Hubs SDK.
 
      ```ruby
      pod 'AzureNotificationHubs-iOS'
      ```
 
-     Spusťte `pod install` instalaci nově definovaného bodu pod a `.xcworkspace`otevřete.
+     Spusťte `pod install` pro instalaci nově definovaného bodu pod a otevřete `.xcworkspace`.
 
      > [!NOTE]
-     > Pokud ```[!] Unable to find a specification for `AzureNotificationHubs-iOS` ``` se vám při spuštění `pod install`zobrazí chyba, spusťte `pod repo update` prosím, abyste získali nejnovější lusky z úložiště Cocoapods a pak běželi `pod install`.
+     > Pokud se zobrazí chyba, například **[!] Při spouštění `pod install`se nepovedlo najít specifikaci pro AzureNotificationHubs-iOS** , spusťte prosím `pod repo update` a získejte nejnovější lusky z úložiště Cocoapods a pak spusťte `pod install`.
 
    - Integrace přes Carthage
 
-     Přidejte do své `Cartfile` aplikace následující závislosti, které budou zahrnovat sadu Azure Notification Hubs SDK.
+     Přidejte do svého `Cartfile` následující závislosti, které budou do vaší aplikace zahrnovat sadu Azure Notification Hubs SDK.
 
      ```ruby
      github "Azure/azure-notificationhubs-ios"
@@ -129,8 +130,8 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy Notificati
     #ifndef HubInfo_h
     #define HubInfo_h
 
-        #define HUBNAME @"<Enter the name of your hub>"
-        #define HUBLISTENACCESS @"<Enter your DefaultListenSharedAccess connection string"
+    #define HUBNAME @"<Enter the name of your hub>"
+    #define HUBLISTENACCESS @"<Enter your DefaultListenSharedAccess connection string"
 
     #endif /* HubInfo_h */
     ```
@@ -142,11 +143,11 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy Notificati
     #import <UserNotifications/UserNotifications.h>
     #import "HubInfo.h"
     ```
-8. V souboru přidejte následující kód `didFinishLaunchingWithOptions` do metody na základě vaší verze iOS. `AppDelegate.m` Tento kód zaregistruje popisovač vašeho zařízení do APN:
+
+8. V `AppDelegate.m` souboru přidejte následující kód do metody `didFinishLaunchingWithOptions` na základě vaší verze iOS. Tento kód zaregistruje popisovač vašeho zařízení do APN:
 
     ```objc
-    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound |
-        UIUserNotificationTypeAlert | UIUserNotificationTypeBadge categories:nil];
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge categories:nil];
 
     [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
     [[UIApplication sharedApplication] registerForRemoteNotifications];
@@ -155,21 +156,21 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy Notificati
 9. Do stejného souboru přidejte následující metody:
 
     ```objc
-        - (void) application:(UIApplication *) application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *) deviceToken {
-        SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:HUBLISTENACCESS
-                                    notificationHubPath:HUBNAME];
+    (void) application:(UIApplication *) application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *) deviceToken {
+     SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:HUBLISTENACCESS
+                                 notificationHubPath:HUBNAME];
 
-        [hub registerNativeWithDeviceToken:deviceToken tags:nil completion:^(NSError* error) {
-            if (error != nil) {
-                NSLog(@"Error registering for notifications: %@", error);
-            }
-            else {
-                [self MessageBox:@"Registration Status" message:@"Registered"];
-            }
-        }];
-        }
+     [hub registerNativeWithDeviceToken:deviceToken tags:nil completion:^(NSError* error) {
+         if (error != nil) {
+             NSLog(@"Error registering for notifications: %@", error);
+         }
+         else {
+             [self MessageBox:@"Registration Status" message:@"Registered"];
+         }
+     }];
+     }
 
-    -(void)MessageBox:(NSString *) title message:(NSString *)messageText
+    (void)MessageBox:(NSString *) title message:(NSString *)messageText
     {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:messageText preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
@@ -183,9 +184,9 @@ Dokončení tohoto kurzu je předpokladem pro všechny ostatní kurzy Notificati
 10. Do stejného souboru přidejte následující metodu pro zobrazení **UIAlert**, pokud bylo přijato oznámení, že je aplikace aktivní:
 
     ```objc
-    - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
-        NSLog(@"%@", userInfo);
-        [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
+    (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
+      NSLog(@"%@", userInfo);
+      [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
     }
     ```
 
@@ -215,7 +216,7 @@ Chcete-li otestovat nabízená oznámení na iOS, musíte aplikaci nasadit do fy
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto příkladu jste vysílali nabízená oznámení pro všechna vaše registrovaná zařízení iOS. Pokud se chcete naučit zasílat nabízená oznámení určitým zařízením s iOSem, pokračujte následujícím kurzem:
+V tomto příkladu jste vysílali nabízená oznámení pro všechna vaše registrovaná zařízení iOS. V následujícím kurzu se dozvíte, jak zasílat nabízená oznámení do konkrétních zařízení iOS:
 
 > [!div class="nextstepaction"]
 >[Zasílání nabízených oznámení do konkrétních zařízení](notification-hubs-ios-xplat-segmented-apns-push-notification.md)

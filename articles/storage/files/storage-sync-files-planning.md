@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 698702e24f1f6dfc6b94b75de77c08156832e566
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e1f7aeb5615c1a22c1970f118c24c996ac936870
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177840"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826823"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -99,7 +99,7 @@ Zobrazení výsledků ve formátu CSV:
 ### <a name="system-requirements"></a>Systémové požadavky
 - Server, na kterém je spuštěná jedna z následujících verzí operačního systému:
 
-    | Version | Podporované SKU | Podporované možnosti nasazení |
+    | Verze | Podporované SKU | Podporované možnosti nasazení |
     |---------|----------------|------------------------------|
     | Windows Server 2019 | Datacenter a Standard | Úplné a základní |
     | Windows Server 2016 | Datacenter a Standard | Úplné a základní |
@@ -143,7 +143,7 @@ Zobrazení výsledků ve formátu CSV:
 |-|-|
 | Desktop. ini | Soubor specifický pro systém |
 | ethumbs. DB $ | Dočasný soubor pro miniatury |
-| ~$ \*. \* | Dočasný soubor Office |
+| ~$\*.\* | Dočasný soubor Office |
 | \*. tmp | Dočasný soubor |
 | \*. laccdb | Soubor zámků Access DB|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | Soubor interní synchronizace|
@@ -158,7 +158,7 @@ Clustering s podporou převzetí služeb při selhání ve Windows serveru podpo
 > Aby synchronizace fungovala správně, musí být na každém uzlu v clusteru s podporou převzetí služeb při selhání nainstalovaný agent Azure File Sync.
 
 ### <a name="data-deduplication"></a>Odstranění duplicitních dat
-**Verze agenta 5.0.2.0 nebo novější**   
+**Windows server 2016 a Windows server 2019**   
 Odstranění duplicitních dat je podporováno u svazků s povoleným vytvářením vrstev cloudu v systému Windows Server 2016. Povolení odstranění duplicitních dat u svazku s povoleným vrstvou cloudu umožňuje ukládat do mezipaměti více souborů bez nutnosti zajistit další úložiště. 
 
 Když je u svazku s povoleným vrstvou cloudu povolené odstranění duplicitních dat, bude v umístění koncového bodu serveru na základě nastavení zásad cloudu vyčištěné duplicitní soubory ve stejném umístění. Jakmile budou optimalizované soubory odstranění duplicit vrstveny, úloha uvolňování paměti při odstranění duplicitních dat se automaticky spustí, aby se uvolní místo na disku, a to odebráním nepotřebných bloků dat, na které už neodkazuje jiné soubory na svazku.
@@ -168,8 +168,8 @@ Všimněte si, že úspory svazku se vztahují jenom na server. vaše data ve sd
 > [!Note]  
 > Odstranění duplicitních dat a vrstvení cloudu se na stejném svazku na serveru 2019 aktuálně nepodporují kvůli chybě, která bude opravena v budoucí aktualizaci.
 
-**Windows Server 2012 R2 nebo starší verze agenta**  
-U svazků, které nemají povolené vrstvení cloudu, Azure File Sync podporuje odstranění duplicitních dat Windows serveru, které je na svazku zapnuté.
+**Windows Server 2012 R2**  
+Azure File Sync nepodporuje odstranění duplicitních dat a vrstvení cloudu na stejném svazku. Pokud je u svazku povolené odstranění duplicitních dat, musí být vrstva cloudu zakázaná. 
 
 **Poznámky**
 - Pokud se odstranění duplicitních dat nainstaluje před instalací agenta Azure File Sync, vyžaduje se restart k podpoře odstranění duplicitních dat a vrstvení cloudu na stejném svazku.
@@ -211,7 +211,7 @@ Použití nástroje Sysprep na serveru s nainstalovaným agentem Azure File Sync
 Pokud je na koncovém bodu serveru povolené vrstvení cloudu, soubory, které jsou vrstveny, se přeskočí a neindexují služba Windows Search. Soubory bez vrstev jsou indexovány správně.
 
 ### <a name="antivirus-solutions"></a>Antivirová řešení
-Vzhledem k tomu, že antivirová práce funguje, prohledává soubory pro známý škodlivý kód, antivirový produkt může způsobit odvolání vrstvených souborů. Ve verzích 4,0 a vyšších od agenta Azure File Sync má vrstvené soubory nastavenou FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS sadu atributů zabezpečení systému Windows. Doporučujeme, abyste se od dodavatele softwaru dozvěděli, jak nakonfigurovat jejich řešení tak, aby přeskočilo čtení souborů s touto sadou atributů (mnoho z nich provede automaticky). 
+Vzhledem k tomu, že antivirová práce funguje, prohledává soubory pro známý škodlivý kód, antivirový produkt může způsobit odvolání vrstvených souborů. Ve verzích 4,0 a vyšších Azure File Sync agenta mají vrstvený soubor FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS nastaven atribut zabezpečení systému Windows. Doporučujeme, abyste se od dodavatele softwaru dozvěděli, jak nakonfigurovat jejich řešení tak, aby přeskočilo čtení souborů s touto sadou atributů (mnoho z nich provede automaticky). 
 
 Interní antivirová řešení Microsoftu, Windows Defender a System Center Endpoint Protection (SCEP), automaticky přeskočí čtení souborů s nastavením tohoto atributu. Otestovali jsme je a zjistili jsme jeden malý problém: Když přidáte server do existující skupiny synchronizace, soubory menší než 800 bajtů se odvolají (stáhnou) na novém serveru. Tyto soubory zůstanou na novém serveru a nebudou vrstveny, protože nesplňují požadavek na velikost vrstev (> 64 KB).
 
@@ -244,25 +244,25 @@ Obecně platí, Azure File Sync by měla podporovat interoperabilitu s řešení
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Další řešení pro správu hierarchických úložišť (HSM)
 S Azure File Sync by se neměla používat žádná další řešení HSM.
 
-## <a name="region-availability"></a>Regionální dostupnost
+## <a name="region-availability"></a>Dostupnost v oblastech
 Azure File Sync je k dispozici pouze v následujících oblastech:
 
-| Oblast | Umístění Datacenter |
+| Region (Oblast) | Umístění Datacenter |
 |--------|---------------------|
 | Austrálie – východ | Nový Jižní Wales |
 | Austrálie – jihovýchod | Victoria |
 | Brazílie – jih | Sao Paulo – stát |
-| Kanada – střed | Toronto |
+| Střední Kanada | Toronto |
 | Kanada – východ | Québec |
-| Střední Indie | Puné |
+| Střed Indie | Puné |
 | Střední USA | Iowa |
 | Východní Asie | Hongkong – zvláštní správní oblast |
-| USA – východ | Virginie |
+| Východ USA | Virginie |
 | USA – východ 2 | Virginie |
 | Francie – střed | Paříž |
 | Francie – jih * | Marseille |
-| Korea – střed | Soul |
-| Korea – jih | Pusan |
+| Jižní Korea – střed | Soul |
+| Jižní Korea – jih | Busan |
 | Japonsko – východ | Tokio, Saitama |
 | Japonsko – západ | Ósaka |
 | Středoseverní USA | Illinois |
@@ -270,13 +270,13 @@ Azure File Sync je k dispozici pouze v následujících oblastech:
 | Jižní Afrika – sever | Johannesburg |
 | Jižní Afrika – západ * | Kapské město |
 | Středojižní USA | Texas |
-| Jižní Indie | Čennaj |
+| Indie – jih | Čennaj |
 | Jihovýchodní Asie | Singapur |
-| Velká Británie – jih | Londýn |
-| Velká Británie – západ | Cardiff |
-| US Gov – Arizona | Arizona |
-| US Gov – Texas | Texas |
-| USA – Virginie | Virginie |
+| Spojené království – jih | Londýn |
+| Spojené království – západ | Cardiff |
+| USA (Gov) – Arizona | Arizona |
+| USA (Gov) – Texas | Texas |
+| USA (Gov) – Virginia | Virginie |
 | Spojené arabské emiráty – sever | Dubaj |
 | Spojené arabské emiráty střed * | Abú Zabí |
 | Západní Evropa | Nizozemsko |
@@ -301,34 +301,34 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 | Austrálie – východ      | Austrálie – jihovýchod|
 | Austrálie – jihovýchod | Austrálie – východ     |
 | Brazílie – jih        | Středojižní USA   |
-| Kanada – střed      | Kanada – východ        |
-| Kanada – východ         | Kanada – střed     |
-| Střední Indie       | Jižní Indie        |
+| Střední Kanada      | Kanada – východ        |
+| Kanada – východ         | Střední Kanada     |
+| Střed Indie       | Indie – jih        |
 | Střední USA          | Východ USA 2          |
 | Východní Asie           | Jihovýchodní Asie     |
-| USA – východ             | Západní USA            |
+| Východ USA             | Západní USA            |
 | Východ USA 2           | Střední USA         |
 | Francie – střed      | Francie – jih       |
 | Francie – jih        | Francie – střed     |
 | Japonsko – východ          | Japonsko – západ         |
 | Japonsko – západ          | Japonsko – východ         |
-| Korea – střed       | Korea – jih        |
-| Korea – jih         | Korea – střed      |
+| Jižní Korea – střed       | Jižní Korea – jih        |
+| Jižní Korea – jih         | Jižní Korea – střed      |
 | Severní Evropa        | Západní Evropa        |
 | Středoseverní USA    | Středojižní USA   |
 | Jižní Afrika – sever  | Jižní Afrika – západ  |
 | Jižní Afrika – západ   | Jižní Afrika – sever |
 | Středojižní USA    | Středoseverní USA   |
-| Jižní Indie         | Střední Indie      |
+| Indie – jih         | Střed Indie      |
 | Jihovýchodní Asie      | Východní Asie          |
-| Velká Británie – jih            | Velká Británie – západ            |
-| Velká Británie – západ             | Velká Británie – jih           |
-| US Gov – Arizona      | US Gov – Texas       |
-| USA – Iowa         | USA – Virginie    |
-| USA – Virginie      | US Gov – Texas       |
+| Spojené království – jih            | Spojené království – západ            |
+| Spojené království – západ             | Spojené království – jih           |
+| USA (Gov) – Arizona      | USA (Gov) – Texas       |
+| US Gov – Iowa         | USA (Gov) – Virginia    |
+| USA (Gov) – Virginia      | USA (Gov) – Texas       |
 | Západní Evropa         | Severní Evropa       |
 | Středozápadní USA     | Západní USA 2          |
-| Západní USA             | USA – východ            |
+| Západní USA             | Východ USA            |
 | Západní USA 2           | Středozápadní USA    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure

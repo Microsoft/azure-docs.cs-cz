@@ -1,5 +1,5 @@
 ---
-title: Přidání účtů mimo Microsoft do Microsoft Authenticator aplikace – Azure Active Directory | Microsoft Docs
+title: Přidání neúčet Microsoft do ověřovací aplikace – Azure AD
 description: Postup přidání účtů jiných společností než Microsoft, jako je Google, Facebook nebo GitHub, do aplikace Microsoft Authenticator pro dvoustupňové ověřování.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1521d2b3d47667466636a1ac15f107826e40942
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 62d866e9bf543577887ee99173a52202fcfec632
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942930"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803661"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>Přidání účtů jiných společností než Microsoft
 
@@ -45,7 +45,7 @@ Přidejte svůj účet Google tím, že zapnete dvojúrovňové ověřování a 
 
 ### <a name="turn-on-two-factor-verification"></a>Zapnout dvojúrovňové ověřování
 
-1. V počítači klikněte na https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome, vyberte Začínáme apak ověřte svoji identitu.
+1. V počítači klikněte na https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome **, vyberte Začínáme a pak**ověřte svoji identitu.
 
 2. Postupujte podle pokynů na stránce, abyste zapnuli dvoustupňové ověřování pro váš osobní účet Google.
 
@@ -70,7 +70,7 @@ Přidejte svůj účet Google tím, že zapnete dvojúrovňové ověřování a 
 
 6. V počítači klikněte na tlačítko **Další** na stránce **nastavit ověřovací data** , zadejte pro svůj účet Google kód pro ověření, který jste zadali v aplikaci, a pak vyberte **ověřit**.
 
-7. Váš účet se ověří a můžete vybrat Hotovo , aby se stránka **nastavit ověřovací data** zavřela.
+7. Váš účet se ověří a můžete vybrat **Hotovo** , aby se stránka **nastavit ověřovací data** zavřela.
 
     >[!NOTE]
     >Další informace o dvojúrovňovém ověřování a účtu Google najdete v tématu [Zapnutí ověřování 2 kroky](https://support.google.com/accounts/answer/185839) a další [informace o 2 krocích ověřování](https://www.google.com/landing/2step/help.html).
@@ -81,7 +81,7 @@ Přidejte svůj účet Facebook tím, že zapnete dvojúrovňové ověřování 
 
 ### <a name="turn-on-two-factor-verification"></a>Zapnout dvojúrovňové ověřování
 
-1. V počítači otevřete Facebook, v pravém horním rohu vyberte rozevírací nabídku a pak přejděte na **Nastavení** > **zabezpečení a přihlášení**.
+1. V počítači otevřete Facebook, v pravém horním rohu vyberte rozevírací nabídku a pak přejděte na **nastavení** > **zabezpečení a přihlášení**.
 
     Zobrazí se stránka **zabezpečení a přihlášení** .
 
@@ -164,7 +164,7 @@ Přidejte svůj účet Amazon tím, že zapnete dvojúrovňové ověřování a 
 
     Zobrazí se stránka **Upřesnit nastavení zabezpečení** .
 
-3. VyberteZačínáme.
+3. Vyberte **Začínáme**.
 
 4. Vyberte možnost **ověřovací aplikace** na stránce **Zvolte způsob, jak obdržíte kódy** .
 
@@ -187,14 +187,14 @@ Přidejte svůj účet Amazon tím, že zapnete dvojúrovňové ověřování a 
 
 10. Na stránce **Přidat způsob ověření zálohy** zadejte na svém počítači čtyřmístný ověřovací kód, který vám poskytla metoda ověření zálohování pro váš účet Amazon, a pak vyberte **ověřit kód a pokračovat**.
 
-11. Na stránce **skoro dokončeno** rozhodněte, jestli počítač má mít důvěryhodné zařízení, a pak ho vyberte **. Zapněte dvoustupňové ověřování**.
+11. Na stránce **skoro dokončeno** rozhodněte, jestli počítač má mít důvěryhodné zařízení, a pak **ho vyberte. Zapněte dvoustupňové ověřování**.
 
     Zobrazí se stránka **Upřesnit nastavení zabezpečení** se zobrazenými aktualizovanými podrobnostmi o dvou faktorech ověřování.
 
     >[!NOTE]
-    >Další informace o dvojúrovňovém ověřování a účtu Amazon najdete v článku [o dvoustupňovém ověřování](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) a přihlašování [pomocí dvoustupňového ověřování](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440).
+    >Další informace o dvojúrovňovém ověřování a účtu Amazon najdete v článku [o dvoustupňovém ověřování](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) a [přihlašování pomocí dvoustupňového ověřování](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Po přidání účtů do aplikace se můžete přihlásit pomocí ověřovací aplikace na svém zařízení. Další informace najdete v tématu [přihlášení pomocí aplikace](user-help-auth-app-sign-in.md).
 

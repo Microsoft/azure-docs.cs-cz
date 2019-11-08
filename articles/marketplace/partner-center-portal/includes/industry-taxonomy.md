@@ -7,6 +7,7 @@ author: qianw211
 manager: evansma
 editor: ''
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
@@ -14,12 +15,12 @@ ms.workload: identity
 ms.date: 09/20/2019
 ms.author: v-qiwe
 ms.custom: include file
-ms.openlocfilehash: 87fb0535bb4597ff1f0fd2bf73783b661ae9a23d
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 144540b3d50c217f74608cedb546b80ab7ba222b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72816960"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825557"
 ---
 Volitelně můžete vybrat až dva obory a dvě svislá v rámci každého odvětví. Tyto kategorie slouží k zobrazení vaší nabídky, pokud se ve vyhledávacích filtrech používá obor a svislá a používají se v prezentace.  Pokud je vaše nabídka cílena na konkrétní obor a/nebo vertikálně, ujistěte se, jak vaše nabídka podporuje vybrané obory nebo svislé čáry v popisu nabídky.  V opačném případě, pokud vaše nabídka není specifická pro konkrétní obor, neprovádějte výběr a ponechte tuto část prázdnou.
 
@@ -31,7 +32,7 @@ Volitelně můžete vybrat až dva obory a dvě svislá v rámci každého odvě
 | \* Automobilový     | \* Automobilový |
 | Zemědělství     | \* Jiné – nesegmentované |
 | Distribuce    | \* Velkoobchod <br> \* Zásilka balíčku & expedice |
-| Vzdělávání     | \* Vyšší vzdělávání <br> \* Primární vzdělávání sekundárního &/K-12 <br> \* Knihovny & muzeí |
+| Education     | \* Vyšší vzdělávání <br> \* Primární vzdělávání sekundárního &/K-12 <br> \* Knihovny & muzeí |
 | Finanční služby     | \* Bankovní & kapitálové trhy <br> \* Pojištění |
 | Státní správa    | \* Obrana & Intelligence (používá se pro volání národního a veřejného zabezpečení) <br> \* Státní bezpečnost & spravedlnosti <br> \* Civilní samospráva |
 | Zdravotní péče (používá se pro volání stavu)   | \* Plátce stavu <br> \* Poskytovatel stavu <br> \* Farmaceutické výrobky |

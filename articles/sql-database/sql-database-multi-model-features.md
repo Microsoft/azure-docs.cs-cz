@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database možností pro více modelů
+title: Možnosti s více modely
 description: Azure SQL Database vám umožní pracovat s více datovými modely ve stejné databázi.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: 0d59db65e940cab12dccaeeacc9083eb7fbba20e
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
-ms.translationtype: HT
+ms.openlocfilehash: 2e8519fa8d96b7fe016b9da4ba84ce481a57d94e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795767"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802820"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Možnosti pro více modelů Azure SQL Database
 
@@ -74,7 +74,7 @@ Azure SQL Database umožňuje snadnou práci s daty JSON a integraci databáze s
 
 ![Funkce JSON](./media/sql-database-json-features/image_1.png)
 
-Pokud máte text JSON, můžete extrahovat data z JSON nebo ověřit, jestli je formát JSON správně formátovaný, pomocí integrovaných funkcí [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx), [JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx)a. [JSON](https://msdn.microsoft.com/library/dn921896.aspx). Funkce [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) umožňuje aktualizovat hodnotu uvnitř textu JSON. Pro pokročilejší dotazování a analýzu může funkce [OPENJSON](https://msdn.microsoft.com/library/dn921885.aspx) transformovat pole objektů JSON do sady řádků. Libovolný dotaz SQL může být proveden na vrácené sadě výsledků. Nakonec je k dispozici klauzule [for JSON](https://msdn.microsoft.com/library/dn921882.aspx) , která umožňuje formátovat data uložená v relačních tabulkách jako text JSON.
+Pokud máte text JSON, můžete extrahovat data z JSON nebo ověřit, jestli je JSON správně formátovaný, pomocí integrovaných funkcí [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx), [JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx)a ve formátu [JSON.](https://msdn.microsoft.com/library/dn921896.aspx) Funkce [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) umožňuje aktualizovat hodnotu uvnitř textu JSON. Pro pokročilejší dotazování a analýzu může funkce [OPENJSON](https://msdn.microsoft.com/library/dn921885.aspx) transformovat pole objektů JSON do sady řádků. Libovolný dotaz SQL může být proveden na vrácené sadě výsledků. Nakonec je k dispozici klauzule [for JSON](https://msdn.microsoft.com/library/dn921882.aspx) , která umožňuje formátovat data uložená v relačních tabulkách jako text JSON.
 
 Další informace najdete v tématu [jak pracovat s daty JSON v azure SQL Database](sql-database-json-features.md).
 [JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) je základní SQL Server funkce databázového stroje, takže můžete najít další informace o funkci JSON tam.

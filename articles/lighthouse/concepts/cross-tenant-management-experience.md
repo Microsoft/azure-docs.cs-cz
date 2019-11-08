@@ -4,15 +4,15 @@ description: Správa delegovaných prostředků v Azure umožňuje prostředí p
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 10/24/2019
+ms.date: 11/7/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: eb4ec10755b7ca2227623ba0842d2b1175635594
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 182970cc39d200c37264a93d5e1b70c8839e5ef7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901817"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825827"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -46,6 +46,11 @@ Poskytujeme také rozhraní API k provádění úloh správy delegovaných prost
 ## <a name="enhanced-services-and-scenarios"></a>Rozšířené služby a scénáře
 
 Většinu úkolů a služeb je možné provádět na delegovaných prostředcích ve spravovaných klientech. Níže jsou uvedeny některé z klíčových scénářů, ve kterých může být Správa mezi klienty efektivní.
+
+[Azure ARC pro servery (Preview)](https://docs.microsoft.com/azure/azure-arc/servers/overview):
+
+- [Připojení počítačů se systémem Windows Server nebo Linux mimo Azure](https://docs.microsoft.com/azure/azure-arc/servers/quickstart-onboard-portal) k delegovaným předplatným nebo skupinám prostředků v Azure
+- Spravujte připojené počítače pomocí konstrukcí Azure, například Azure Policy a označování.
 
 [Azure Automation](https://docs.microsoft.com/azure/automation/):
 

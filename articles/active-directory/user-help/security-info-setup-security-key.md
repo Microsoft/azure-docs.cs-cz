@@ -1,5 +1,5 @@
 ---
-title: Nastavení bezpečnostních údajů pro použití bezpečnostního klíče (Preview) – Azure Active Directory | Microsoft Docs
+title: Nastavení informací o zabezpečení (Preview) pro klíč zabezpečení – Azure AD
 description: Jak nastavit bezpečnostní údaje pro ověření identity pomocí klíče zabezpečení rychlá identita online (FIDO2).
 services: active-directory
 author: eross-msft
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47ae7de87efd787b7d3cba14a33688c4b29637e6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a9d86d594f0918e6a9ffed49142a81a0f7834e86
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160710"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803794"
 ---
-# <a name="set-up-security-info-to-use-a-security-key-preview"></a>Nastavení bezpečnostních údajů pro použití bezpečnostního klíče (Preview)
+# <a name="set-up-security-info-preview-for-a-security-key"></a>Nastavení informací o zabezpečení (Preview) pro klíč zabezpečení
 
 Klíče zabezpečení můžete použít jako metodu přihlašování s neplatným heslem v rámci vaší organizace. Bezpečnostní klíč je fyzické zařízení, které se používá s jedinečným PIN kódem pro přihlášení ke svému pracovnímu nebo školnímu účtu. Vzhledem k tomu, že klíče zabezpečení vyžadují, abyste měli fyzické zařízení a něco znáte, považuje se za silnější metodu ověřování než uživatelské jméno a heslo.
 
@@ -80,7 +80,7 @@ Abyste se mohli přihlásit ke svému pracovnímu nebo školnímu účtu pomocí
 
     Vrátíte se do **nastavení nová metoda přihlašování** .
 
-7. Vyberte **Další**.
+7. Vyberte **Next** (Další).
 
 8. Vraťte se na stránku **bezpečnostní údaje** , zadejte název, který budete později rozpoznávat pro svůj nový klíč zabezpečení, a pak vyberte **Další**.
 

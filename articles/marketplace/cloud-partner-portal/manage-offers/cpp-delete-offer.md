@@ -1,76 +1,77 @@
 ---
-title: Odstranění nabídky na webu marketplace | Azure Marketplace
-description: Odstranění nabídky na Azure a AppSource tržišť s řešeními pomocí portál Cloud Partner
+title: Odstranit nabídky Marketplace | Azure Marketplace
+description: Odstraňte nabídky na tržištích Azure a AppSource pomocí portál partnerů cloudu
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: pabutler
-ms.openlocfilehash: 542bc611ac8820385c3f749aa151afc1dcdf6db5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a75fbb0c4b9c364342a406a8076128346943101
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942137"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826763"
 ---
-# <a name="delete-azure-marketplace-and-appsource-offers-or-skus"></a>Odstranění nabídky Azure Marketplace a AppSource nebo skladové položky
+# <a name="delete-azure-marketplace-and-appsource-offers-or-skus"></a>Odstranit Azure Marketplace a nabídky AppSource a SKU
 
-Z různých důvodů se můžete rozhodnout pro stažení vaši nabídku z webu Microsoft marketplace, který může mít dvě formy:
+Z různých důvodů se můžete rozhodnout, že svou nabídku budete z webu Microsoft Marketplace stáhnout, což může mít dvě formy:
 
-- *Odebrání nabídky* zajistí, že noví zákazníci mohou už koupit a nasadit vaši nabídku, ale nemá žádný vliv na stávající zákazníky, kterým musí podporovat podle licenční smlouvou a které jsou relevantní zákony. 
-- *Nabízí ukončení* je proces ukončení služby a/nebo licenční smlouva mezi vámi a vašimi stávajícími zákazníky. 
+- *Odebrání nabídky* zajišťuje, že noví zákazníci už nemůžou nabídku koupit ani nasadit, ale nemá žádný vliv na stávající zákazníky, které musíte podporovat v souladu s licenční smlouvou a souvisejícími zákony. 
+- *Ukončení nabídky* je proces ukončení služby a/nebo licenční smlouvy mezi vámi a vašimi stávajícími zákazníky. 
 
-Pokyny a zásady týkající se odebrání a ukončení nabídky se řídí [smlouvy vydavatele Microsoft Marketplace](https://go.microsoft.com/fwlink/?LinkID=699560) a [zásadách pro účast](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) (část [nabídky pozastavení nebo odebrání](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal)). 
+Doprovodné materiály a zásady týkající se odebrání a ukončení nabídky se řídí [smlouvou Microsoft Marketplace vydavatele](https://go.microsoft.com/fwlink/?LinkID=699560) a [zásadami pro účast](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) (oddíl [nabízející pozastavení a odstraňování](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal)). 
 
-Tento článek hovoří o různých nepodporuje odstranění scénáře a kroky potřebné k provedení každého.  
+Tento článek pojednává o různých podporovaných scénářích odstraňování a krocích potřebných k jejich provedení.  
 
 > [!NOTE]
-> Můžete odstranit nabídku, která nebyla publikována tak, že jednoduše vyberete **odstranit** tlačítko na panelu nástrojů **Editor** kartu.
+> Nabídku, která nebyla publikována, můžete odstranit pouhým kliknutím na tlačítko **Odstranit** na panelu nástrojů na kartě **Editor** .
 
 
-## <a name="delete-a-published-sku-from-the-azure-marketplace"></a>Odstranit publikované skladovou Položku z Azure Marketplace
+## <a name="delete-a-published-sku-from-the-azure-marketplace"></a>Odstranění publikované SKU z Azure Marketplace
 
-Publikované skladové položky můžete odstranit z Azure Marketplace pomocí následujících kroků:
+Publikovanou SKLADOVOU položku můžete z Azure Marketplace odstranit pomocí následujících kroků:
 
 1.  Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
-2.  V **všechny nabídky** vyberte vaši nabídku.  Vaše nabídka má být zobrazen v **Editor** kartu.
-3.  V levém panelu nástrojů vyberte **SKU** kartu. 
-4.  Vyberte jednotku SKU, kterou chcete odstranit a klikněte na tlačítko **odstranit** tlačítko.
-5.  [Znovu publikujte](./cpp-publish-offer.md) nabídky na webu Azure Marketplace.
+2.  Na stránce **všechny nabídky** vyberte svoji nabídku.  Vaše nabídka by se měla zobrazit na kartě **Editor** .
+3.  Na levém panelu nástrojů vyberte kartu **SKU** . 
+4.  Vyberte skladovou jednotku, kterou chcete odstranit, a klikněte na tlačítko **Odstranit** .
+5.  [Znovu publikujte](./cpp-publish-offer.md) nabídku Azure Marketplace.
 
-Upravené nabídky po publikování na webu Azure Marketplace, vybraná skladová položka už nejsou uvedení v Azure Marketplace a webu Azure portal.
+Po publikování upravené nabídky do Azure Marketplace již nebude vybraná SKU uvedena v Azure Marketplace a Azure Portal.
 
 
-## <a name="roll-back-to-a-previous-sku-version"></a>Vrátit zpět na předchozí verzi SKU
+## <a name="roll-back-to-a-previous-sku-version"></a>Vrátit se zpátky k předchozí verzi SKU
 
-Aktuální verzi publikované skladové položky z Azure Marketplace můžete odstranit pomocí kroků v tomto poli. Po dokončení procesu se skladovou Položku se vrátí zpět na předchozí verzi.
+Aktuální verzi publikované SKU z Azure Marketplace můžete odstranit pomocí tohoto postupu. Po dokončení procesu se skladová položka vrátí zpět na předchozí verzi.
 
 1. Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
-2. V **všechny nabídky** vyberte vaši nabídku.  Vaše nabídka má být zobrazen v **Editor** kartu.
-3. V levém panelu nástrojů vyberte **SKU** kartu. 
-4. Nejnovější verzi prostředku související řešení odstraníte ze seznamu diskových verzí.  V závislosti na typu nabídky, toto pole může být **disková verze**, **verze balíčku**, nebo podobné asset. 
-5. [Znovu publikujte](./cpp-publish-offer.md) nabídky na webu Azure Marketplace.
+2. Na stránce **všechny nabídky** vyberte svoji nabídku.  Vaše nabídka by se měla zobrazit na kartě **Editor** .
+3. Na levém panelu nástrojů vyberte kartu **SKU** . 
+4. Odstraní nejnovější verzi přidruženého prostředku řešení ze seznamu verzí disků.  V závislosti na typu nabídky může být toto pole **verze disku**, **verze balíčku**nebo podobný prostředek. 
+5. [Znovu publikujte](./cpp-publish-offer.md) nabídku Azure Marketplace.
 
-Po publikování upravené nabídky na webu Marketplace theAzure aktuální verzi SKU uvedené už nejsou uvedení. v Tržišti Azure Marketplace a na webu Azure portal.  Skladovou Položku se vrátí zpět na předchozí verzi.
+Po publikování upravené nabídky na webu theAzure Marketplace už nebude uvedená aktuální verze uvedené SKU. v Azure Marketplace a Azure Portal.  SKU se vrátí zpět na předchozí verzi.
 
 
-## <a name="delete-a-live-offer"></a>Odstranit živé nabídku
+## <a name="delete-a-live-offer"></a>Odstraní živou nabídku.
 
-Existují různé procedurální, firmy a právní aspekty na podmínky odebrání za provozu nabídky. Postupujte podle následujících kroků získejte pokyny od týmu podporu k odebrání za provozu nabídky z Azure Marketplace:
+Existují různé postupy, obchodní a právní aspekty odebrání živé nabídky. Pomocí následujících kroků získejte od týmu podpory pokyny, jak odebrat živou nabídku z Azure Marketplace:
 
-1.  Pomocí lístku podpory zvýšit [vytvořit incident](https://go.microsoft.com/fwlink/?linkid=844975) stránky, nebo kliknutím **podporují** v pravém horním rohu [portál partnerů cloudu](https://cloudpartner.azure.com/).
+1.  Vyvolejte lístek podpory pomocí stránky [vytvořit incident](https://go.microsoft.com/fwlink/?linkid=844975) nebo kliknutím na **Podpora** v pravém horním rohu [portál partnerů cloudu](https://cloudpartner.azure.com/).
 
-2.  Vyberte svůj typ konkrétní nabídky v **typ problému** seznam a vyberte **odebrání publikované nabídky** v **kategorie** seznamu.
+2.  V seznamu **typ problému** vyberte svůj konkrétní typ nabídky a v seznamu **kategorie** vyberte možnost **Odebrat publikovanou nabídku** .
 
 3.  Odešlete žádost.
 
-Proces odstranění nabídky vás provede na tým podpory.
+Tým podpory vás provede procesem odstraňování nabídky.
 
 > [!NOTE]
-> Odstraňuje se nabídka (nebo skladové položky) nebude mít vliv aktuální nákupy této nabídky (nebo skladové položky). Tyto nákupy se budou nadále fungovat jako předtím. Ale odstraněné nabídky a skladové položky nebudou k dispozici pro všechny budoucí nákupy.
+> Odstranění nabídky (nebo SKU) nebude mít vliv na aktuální nákupy této nabídky (ani SKU). Tyto nákupy budou i nadále fungovat jako dříve. Odstraněné nabídky nebo skladové položky však nebudou k dispozici pro žádné budoucí nákupy.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Jakmile se seznámíte s základních operací, používané ke správě nabídky, budete chtít vytvořit instanci Microsoft [nabídky marketplace](../cpp-marketplace-offers.md).
+Jakmile se seznámíte se základními operacemi, které se používají ke správě nabídek, budete připraveni vytvořit instanci nabídky na [webu Microsoft Marketplace](../cpp-marketplace-offers.md).

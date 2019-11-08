@@ -1,5 +1,5 @@
 ---
-title: Vysoká dostupnost – Azure SQL Database služba
+title: Vysoká dostupnost
 description: Seznamte se s funkcemi a funkcemi pro vysokou dostupnost služby Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 10/14/2019
-ms.openlocfilehash: b34590ca275b6e7254af7820fdc1a03655351cea
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 86a3fd7c67dc2e544a1510dc910951452c32245d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689953"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811352"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 

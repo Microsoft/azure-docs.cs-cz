@@ -1,5 +1,5 @@
 ---
-title: Nastavte bezpečnostní údaje (Preview) pro použití ověřovací aplikace – Azure Active Directory | Microsoft Docs
+title: Nastavení informací o zabezpečení (Preview) pro aplikaci ověřování – Azure AD
 description: Jak nastavit bezpečnostní údaje pro ověření vaší identity pomocí aplikace Microsoft Authenticator.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 101d478d37055a08a5ced9113e070bf826613bd3
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 19f44f4df9e3c17c376830c6a404a21e8a5d67b2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160772"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805082"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>Nastavení informací o zabezpečení (Preview) pro použití ověřovací aplikace
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dfe5b886ff389cf2d0f01d402990929c0ef5628
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 247dee2cfbb00b185e941fde05c2198459a05e20
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72033970"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815744"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifikace a řešení problémů s přiřazením licencí pro skupinu v Azure Active Directory
 
@@ -29,6 +29,11 @@ Licencování na základě skupin v Azure Active Directory (Azure AD) zavádí k
 Pokud přiřadíte licence přímo jednotlivým uživatelům, bez použití licencování na základě skupin, operace přiřazení může selhat. Například když spustíte rutinu PowerShellu `Set-MsolUserLicense` v uživatelském systému, rutina může selhat z mnoha důvodů, které souvisejí s obchodní logikou. Může se například jednat o nedostatečný počet licencí nebo o konflikt mezi dvěma plány služeb, které se nedají přiřadit ve stejnou dobu. Problém se okamžitě nahlásí zpátky.
 
 Pokud používáte licencování na základě skupin, může dojít k těmto chybám, ale dojde na pozadí, zatímco služba Azure AD přiřazuje licence. Z tohoto důvodu chyby nemůžete okamžitě sdělit. Místo toho se zaznamenávají na objekt uživatele a pak se nahlásí prostřednictvím portálu pro správu. Původní záměr na licenci uživatele není nikdy ztracen, ale je zaznamenán v chybovém stavu pro budoucí šetření a řešení.
+
+## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>LicenseAssignmentAttributeConcurrencyException v protokolech auditu
+
+**Problém:** Uživatel má LicenseAssignmentAttributeConcurrencyException pro přiřazení licence v protokolech auditu.
+Když se licencování na základě skupiny pokusí zpracovat souběžné přiřazení licence stejné licence uživateli, tato výjimka se zaznamená na uživatele. K tomu obvykle dochází v případě, že je uživatel členem více skupin se stejnou přiřazenou licencí. Služba AZure AD se znovu pokusí zpracovat uživatelskou licenci a tento problém se vyřeší. Od zákazníka není vyžadována žádná akce k vyřešení tohoto problému.
 
 ## <a name="find-license-assignment-errors"></a>Najít Chyby přiřazení licencí
 
@@ -56,7 +61,7 @@ V následujících částech najdete popis každého potenciálního problému a
 
 **Problém:** Pro jeden z produktů, které jsou ve skupině zadané, není k dispozici dostatek licencí. Musíte si buď koupit další licence na produkt, nebo uvolnit nepoužívané licence od jiných uživatelů nebo skupin.
 
-Pokud chcete zjistit, kolik licencí je dostupných, přejděte na **Azure Active Directory** **licence** >   > **všechny produkty**.
+Pokud chcete zjistit, kolik licencí je dostupných, přejděte na **Azure Active Directory** > **licence** > **všech produktech**.
 
 Pokud chcete zjistit, kteří uživatelé a skupiny pracují s licencemi, vyberte produkt. V části **licencovaní uživatelé**se zobrazí seznam všech uživatelů, kteří mají licence přiřazené přímo nebo přes jednu nebo více skupin. V části **licencované skupiny**se zobrazí všechny skupiny, které mají přiřazené produkty.
 
@@ -87,7 +92,7 @@ Chcete-li tento problém vyřešit, je nutné zajistit, aby byl požadovaný pl�
 
 ## <a name="usage-location-isnt-allowed"></a>Umístění použití není povolené.
 
-**Problém:** Některé služby společnosti Microsoft nejsou k dispozici ve všech umístěních z důvodu místních zákonů a předpisů. Než budete moct přiřadit licenci k uživateli, musíte zadat vlastnost **umístění využití** pro uživatele. Umístění můžete zadat v části **uživatel** >  @no__t nastavení**profilu**-3 v Azure Portal.
+**Problém:** Některé služby společnosti Microsoft nejsou k dispozici ve všech umístěních z důvodu místních zákonů a předpisů. Než budete moct přiřadit licenci k uživateli, musíte zadat vlastnost **umístění využití** pro uživatele. Umístění můžete zadat v části **profil** **uživatele** >  > **Nastavení** v Azure Portal.
 
 Když se Azure AD pokusí přiřadit licenci skupiny uživateli, jehož umístění využívání není podporované, dojde k chybě a zaznamená chybu pro uživatele.
 

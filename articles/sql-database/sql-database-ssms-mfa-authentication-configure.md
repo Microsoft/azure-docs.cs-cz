@@ -1,5 +1,5 @@
 ---
-title: Konfigurace služby Multi-Factor Authentication – Azure SQL
+title: Konfigurace Multi-Factor Authentication
 description: Naučte se používat ověřování Multi-Factor Authentication s SSMS pro SQL Database a SQL Data Warehouse.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 37b962b84e72cf3b0005ad744d81974a55c1a75e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7849f6d391cad7e973babfa97f2859b9df40f23e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687104"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820883"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Konfigurace služby Multi-Factor Authentication pro SQL Server Management Studio a Azure AD
 

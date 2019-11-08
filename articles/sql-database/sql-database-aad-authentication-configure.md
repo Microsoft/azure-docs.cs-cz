@@ -1,5 +1,5 @@
 ---
-title: Konfigurace ověřování Azure Active Directory – SQL
+title: Konfigurace ověřování Azure Active Directory
 description: Přečtěte si, jak se připojit k SQL Database, spravované instanci a SQL Data Warehouse pomocí Azure Active Directory ověřování – po konfiguraci služby Azure AD.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 11/06/2019
-ms.openlocfilehash: d23fcb781f5eddd71d5ddce9344d988d2e323611
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 48334d8ce266ddcc92e4d2b27634db3d8c9f1bc9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691387"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816795"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurace a Správa ověřování Azure Active Directory pomocí SQL
 
@@ -279,7 +279,7 @@ K zobrazení dalších informací pro každý z těchto příkazů použijte př
 
 ### <a name="powershell-examples-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Příklady prostředí PowerShell pro Azure SQL Database a Azure SQL Data Warehouse
 
-Následující skript zřídí skupinu správců Azure AD s názvem **DBA_Group** (ID objektu `40b79501-b343-44ed-9ce7-da4c8cc7353f`) pro server **demo_server** ve skupině prostředků s názvem **Skupina-23**:
+Následující skript zřídí skupinu správců Azure AD s názvem **DBA_Group** (ID objektu `40b79501-b343-44ed-9ce7-da4c8cc7353f`) pro **demo_server** Server ve skupině prostředků s názvem **Skupina-23**:
 
 ```powershell
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Resource Manager: vytvoření jedné databáze – Azure SQL Database '
+title: 'Azure Resource Manager: vytvoření samostatné databáze'
 description: Pomocí šablony Azure Resource Manager vytvořte v Azure SQL Database jednu databázi.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
 ms.date: 06/28/2019
-ms.openlocfilehash: 3c46dbe5cac4407eda8b4198613eda1c1742ed35
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b7888215a2d463c8007168e215179ace898ca1cc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687204"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821024"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Rychlý Start: vytvoření jedné databáze v Azure SQL Database pomocí šablony Azure Resource Manager
 

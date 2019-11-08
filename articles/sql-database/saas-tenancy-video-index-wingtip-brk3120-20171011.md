@@ -1,5 +1,5 @@
 ---
-title: 'Indexované video, aplikace Azure SaaS SQL '
+title: Video aplikace SaaS SQL
 description: Tento článek indexuje různé časové body v našem videu 81 minut o návrhu aplikace SaaS DB tenantů, od konference Ignite, která se drží 11. října 2017. Můžete přeskočit na část, která vás zajímá. Jsou popsány alespoň 3 vzory. Popisujeme funkce Azure, které zjednodušují vývoj a správu.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 3d9b9c5af1994e2d0b3fd8f720def06489f3669d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0194d99a10eb34ecd8ad10fa0a1509baf8436381
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691913"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818480"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Video indexované a s poznámkami pro víceklientské aplikace SaaS pomocí Azure SQL Database
 

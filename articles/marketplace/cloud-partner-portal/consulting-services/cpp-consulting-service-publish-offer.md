@@ -1,36 +1,37 @@
 ---
-title: Azure a Dynamics 365 konzultační služby nabízejí publikování | Azure Marketplace
-description: Publikování Azure nebo Dynamics 365 konzultační služby nabídky v portál partnerů cloudu pro Azure Marketplace nebo AppSource.
+title: Služby Azure a Dynamics 365 – konzultační služba – publikování nabídek | Azure Marketplace
+description: V portál partnerů cloudu pro Azure Marketplace nebo AppSource můžete publikovat nabídku konzultační služby Azure nebo Dynamics 365.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pabutler
-ms.openlocfilehash: 44fe7f11d365761c351e488d834a63392ea9cac1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d2daf68bae5e24dd8ec3501befd186a50c2cb16
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942793"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818103"
 ---
-# <a name="publish-a-consulting-service-offer"></a>Publikovat nabídku na konzultační služby
+# <a name="publish-a-consulting-service-offer"></a>Publikování konzultační nabídky služby
 
-Po dokončení **nabízejí nastavení**, **podrobnosti z prodejních míst**, a **kontakty**vyberte **publikovat** a zadejte e-mailovou adresu. Microsoft je připravená k publikování vaší nabídky, dostanete e-mailu můžete zobrazit jeho náhled dříve, než přejde za provozu. Můžete se vrátit na portál a zkontrolovat stav vaší nabídky kdykoli.
+Po dokončení **nastavení nabídek**, **prezentace podrobností**a **kontaktů**vyberte **publikovat** a zadejte e-mailovou adresu. Když je Microsoft připravený k publikování vaší nabídky, obdržíte e-mail, ve kterém si můžete zobrazit jeho náhled, než bude živý. Můžete se kdykoli vrátit na portál a kdykoli kdykoli ověřit stav vaší nabídky.
 
-Nabídky se může zobrazit v "Publikování bylo zrušeno" nebo "Publikování se nezdařilo" stav během procesu publikování. Tyto názvy jsou součástí normálního procesu a povolit Microsoft provést úpravy pro vaši nabídku. Pokud vaše nabídka se zobrazí jako "Publikování bylo zrušeno", ponechte tento stav.
+Nabídky se můžou během procesu publikování zobrazit ve stavu "publikování zrušeno" nebo "publikování se nezdařilo". Tato označení jsou běžnou součástí procesu a umožňují společnosti Microsoft provádět úpravy vaší nabídky. Pokud se vaše nabídka zobrazí jako "publikování zrušeno", ponechte tento stav.
 
-## <a name="lead-destination"></a>Vedoucí cíl
+## <a name="lead-destination"></a>Cíl zájemce
 
-Můžete zvolit uložení informací o zájemcích systému CRM. Systému CRM, zde je, kde jsme zapisovat informace o uživatelích, kteří vyzkouší vaši aplikaci na AppSource.
+Můžete vybrat systém CRM, ve kterém jsou uložené informace o potenciálním zájemci. Systém CRM, který zde vyberete, je místo, kde zapíšeme informace o uživatelích, kteří si aplikaci vyzkoušeli na AppSource.
 
-Založený na systému CRM, které zvolíte, vyberte odpovídající adresu URL z následujícího seznamu informace o tom, jak vyplnit další sadu polí.
+V závislosti na zvoleném systému CRM vyberte odpovídající adresu URL z následujícího seznamu, kde najdete informace o tom, jak vyplnit další sadu polí.
 
-Vyberte [Azure Table](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) Pokud některou z následujících systémů CRM:  
+Pokud máte jeden z následujících systémů CRM, vyberte [tabulku Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) :  
 * [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo)
 * [Microsoft Dynamics CRM](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)
 * [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokračujte na další informace o publikování vaší nabídky.
+Pokračujte a Naučte se, jak publikovat vaši nabídku.

@@ -1,23 +1,24 @@
 ---
-title: Načtení operací rozhraní API | Azure Marketplace
-description: Načte všechny operace týkající se nabídky nebo na konkrétní operace pro zadané ID operace get elementu.
+title: Načíst rozhraní API operací | Azure Marketplace
+description: Načte všechny operace v nabídce nebo získá konkrétní operaci pro zadaný operationId.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 1fbcc1d50dbc4488c4123be64e85de612233ccc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3eb77744d61322ca0aed20bb2b3f486cc02ac70
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935784"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819594"
 ---
 <a name="retrieve-operations"></a>Načtení operací
 ===================
 
-Načte všechny operace týkající se nabídky nebo na konkrétní operace pro zadané ID operace get elementu. Klient může používat parametry dotazu k filtrování běžící operace.
+Načte všechny operace v nabídce nebo získá konkrétní operaci pro zadaný operationId. Klient může pomocí parametrů dotazů filtrovat spuštěné operace.
 
 ``` https
 
@@ -33,25 +34,25 @@ Načte všechny operace týkající se nabídky nebo na konkrétní operace pro 
 
 |  **Název**          |      **Popis**                                                                                           | **Datový typ** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
-|  publisherId       |  Identifikátor vydavatel, například `Contoso`                                                                   |  String       |
-|  offerId           |  Identifikátor nabídky                                                                                              |  String       |
-|  operationId       |  Identifikátor GUID, který jednoznačně identifikuje operace týkající se nabídky. OperationId může načíst s použitím tohoto rozhraní API a také dochází v hlavičce HTTP odpovědi pro jakékoli dlouho spuštěné operace, jako [nabídka publikovat](./cloud-partner-portal-api-publish-offer.md) rozhraní API.  |   Guid   |
-|  filteredStatus    | Nepovinný dotaz parametr slouží k filtrování podle stavu (třeba `running`) na kolekci vrácené poskytovatelem tohoto rozhraní API.  |   String |
-|  api-version       | Nejnovější verzi rozhraní API                                                                                           |    Datum      |
+|  publisherId       |  Identifikátor vydavatele, například `Contoso`                                                                   |  Řetězec       |
+|  Hodnotami OfferId           |  Identifikátor nabídky                                                                                              |  Řetězec       |
+|  operationId       |  Identifikátor GUID, který jedinečně identifikuje operaci na nabídce OperationId může být načten pomocí tohoto rozhraní API a také se vrátí v hlavičce HTTP odpovědi pro jakoukoli dlouhodobou operaci, jako je například rozhraní API [nabídky publikovat](./cloud-partner-portal-api-publish-offer.md) .  |   Guid   |
+|  filteredStatus    | Volitelný parametr dotazu použitý k filtrování podle stavu (například `running`) v kolekci vrácené tímto rozhraním API.  |   Řetězec |
+|  verze API-Version       | Nejnovější verze rozhraní API                                                                                           |    Datum      |
 |  |  |  |
 
 
-<a name="header"></a>Záhlaví
+<a name="header"></a>Hlavička
 ------
 
 |  **Název**          |  **Hodnota**           |
 |  ---------------   | -------------------- |
-|  Content-Type      | `application/json`   |
+|  Typ obsahu      | `application/json`   |
 |  Autorizace     | `Bearer YOUR_TOKEN`  |
 |  |  |
 
 
-<a name="body-example"></a>Příklad těla
+<a name="body-example"></a>Příklad textu
 ------------
 
 ### <a name="response"></a>Odpověď
@@ -81,7 +82,7 @@ Načte všechny operace týkající se nabídky nebo na konkrétní operace pro 
     ]
 ```
 
-#### <a name="get-operation"></a>Operace GET elementu
+#### <a name="get-operation"></a>Operace GET
 
 ``` json
     [
@@ -178,21 +179,21 @@ Načte všechny operace týkající se nabídky nebo na konkrétní operace pro 
 
 |  **Název**                    |  **Popis**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
-|  id                          | Identifikátor GUID, který jednoznačně identifikuje operace                                                       |
-|  submissionType              | Určuje typ operace ohlašovaný nabídky, například `Publish/GGoLive`      |
-|  createdDateTime             | Datum a čas UTC při vytvoření operaci                                                       |
-|  lastActionDateTime          | Datum a čas UTC při byla provedena poslední aktualizace na operaci                                       |
-|  status                      | Stav operace, buď `not started` \| `running` \| `failed` \| `completed`. Pouze jedna operace může mít stav `running` najednou. |
+|  id                          | Identifikátor GUID, který jedinečně identifikuje operaci                                                       |
+|  submissionType              | Určuje typ operace hlášené pro nabídku, například `Publish/GGoLive`      |
+|  createdDateTime             | Datum a čas UTC při vytvoření operace                                                       |
+|  lastActionDateTime          | Datum a čas UTC, kdy byla provedena poslední aktualizace na operaci                                       |
+|  status                      | Stav operace, buď `not started` \| `running` \| `failed` \| `completed`. V jednom okamžiku může mít stav `running` jenom jedna operace. |
 |  error                       | Chybová zpráva pro neúspěšné operace                                                               |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Stavové kódy odezvy
+### <a name="response-status-codes"></a>Stavové kódy odpovědí
 
-| **Kód**  |   **Popis**                                                                                  |
+| **Znakovou**  |   **Popis**                                                                                  |
 |  -------- |   -------------------------------------------------------------------------------------------------|
-|  200      | `OK` -Žádost byla úspěšně zpracována a byly vráceny požadované operace.        |
-|  400      | `Bad/Malformed request` Text – Chyba odpovědi může obsahovat další informace.                    |
-|  403      | `Forbidden` -Klienta nemá přístup k určený obor názvů.                          |
-|  404      | `Not found` -Zadaná entita neexistuje.                                                 |
+|  200      | `OK` – požadavek byl úspěšně zpracován a byly vráceny požadované operace.        |
+|  400      | `Bad/Malformed request` – tělo chybové odpovědi může obsahovat další informace.                    |
+|  403      | `Forbidden` – klient nemá přístup k zadanému oboru názvů.                          |
+|  404      | `Not found` – zadaná entita neexistuje.                                                 |
 |  |  |

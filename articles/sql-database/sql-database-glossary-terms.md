@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database Glosář pojmů
+title: Glosář termínů
 description: Azure SQL Database Glosář pojmů
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/26/2019
-ms.openlocfilehash: f3b23fbd435ce9496ac85927e84ae6ddd4df297c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 86da4ecab387da80954c2267ddeabe32a723474c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689943"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802728"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL Database Glosář pojmů
 

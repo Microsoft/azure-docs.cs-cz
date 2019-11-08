@@ -1,5 +1,5 @@
 ---
-title: Horizontální navýšení kapacity s Azure SQL Database
+title: Horizontální navýšení kapacity
 description: Vývojáři SaaS (software jako služba) můžou snadno vytvářet elastické a škálovatelné databáze v cloudu pomocí těchto nástrojů.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 56556576dffd4e022f919af89459d92e48c6c895
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3e30e54eb18eb5d487da6821d285109b1a22297f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690243"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823602"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Horizontální navýšení kapacity s Azure SQL Database
 Pomocí nástrojů **elastic Database** můžete snadno ŠKÁLOVAT databáze SQL Azure. Pomocí těchto nástrojů a funkcí můžete vytvářet řešení pro transakční úlohy a zejména aplikace SaaS (software jako služba), které jsou k **disAzure SQL Database** . Funkce Elastic Database se skládají z:

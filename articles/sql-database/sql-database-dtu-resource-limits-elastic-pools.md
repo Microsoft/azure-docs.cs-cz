@@ -1,22 +1,22 @@
 ---
-title: Azure SQL Database omezení prostředků DTU elastické fondy | Microsoft Docs
+title: Prostředky DTU omezení elastických fondů
 description: Tato stránka popisuje některé běžné limity prostředků DTU pro elastické fondy v Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 03/14/2019
-ms.openlocfilehash: 08e6c27b359e8fcf48caed6faf21c0aed8fad224
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8b5d87d62f1db5e7d472af4cc2153d8841be6241
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521023"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826542"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí modelu nákupu DTU
 
@@ -39,7 +39,7 @@ V případě SQL Database elastických fondů se v následujících tabulkách z
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
 | Zahrnuté úložiště na fond (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
 | Maximální počet možností úložiště na fond (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Maximální úložiště OLTP v paměti na fond (GB) | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se |
+| Maximální úložiště OLTP v paměti na fond (GB) | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. |
 | Maximální počet databází pro každý fond | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Maximální počet souběžných pracovních procesů (požadavků) na fond | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Maximální počet souběžných relací na fond | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
@@ -54,7 +54,7 @@ V případě SQL Database elastických fondů se v následujících tabulkách z
 |:---|---:|---:|---:| ---: | ---: | ---: |
 | Zahrnuté úložiště na fond (GB) | 50 | 100 | 200 | 300 | 400 | 800 |
 | Maximální počet možností úložiště na fond (GB) | 50, 250, 500 | 100, 250, 500, 750 | 200, 250, 500, 750, 1024 | 300, 500, 750, 1024, 1280 | 400, 500, 750, 1024, 1280, 1536 | 800, 1024, 1280, 1536, 1792, 2048 |
-| Maximální úložiště OLTP v paměti na fond (GB) | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se |
+| Maximální úložiště OLTP v paměti na fond (GB) | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. |
 | Maximální počet databází pro každý fond | 100 | 200 | 500 | 500 | 500 | 500 |
 | Maximální počet souběžných pracovních procesů (požadavků) na fond | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Maximální počet souběžných relací na fond | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -69,7 +69,7 @@ V případě SQL Database elastických fondů se v následujících tabulkách z
 |:---|---:|---:|---:| ---: | ---: |
 | Zahrnuté úložiště na fond (GB) | 1200 | 1600 | 2000 | 2500 | 3000 |
 | Maximální počet možností úložiště na fond (GB) | 1200, 1280, 1536, 1792, 2048, 2304, 2560 | 1600, 1792, 2048, 2304, 2560, 2816, 3072 | 2000, 2048, 2304, 2560, 2816, 3072, 3328, 3584 | 2500, 2560, 2816, 3072, 3328, 3584, 3840, 4096 | 3000, 3072, 3328, 3584, 3840, 4096 |
-| Maximální úložiště OLTP v paměti na fond (GB) | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se | Nevztahuje se |
+| Maximální úložiště OLTP v paměti na fond (GB) | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. |
 | Maximální počet databází pro každý fond | 500 | 500 | 500 | 500 | 500 |
 | Maximální počet souběžných pracovních procesů (požadavků) na fond | 2400 | 3200 | 4000 | 5000 | 6000 |
 | Maximální počet souběžných relací na fond | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -84,7 +84,7 @@ V případě SQL Database elastických fondů se v následujících tabulkách z
 |:---|---:|---:|---:| ---: | ---: |
 | Zahrnuté úložiště na fond (GB) | 250 | 500 | 750 | 1024 | 1536 |
 | Maximální počet možností úložiště na fond (GB) | 250, 500, 750, 1024 | 500, 750, 1024 | 750, 1024 | 1024 | 1536 |
-| Maximální úložiště OLTP v paměti na fond (GB) | 1\. místo | 2 | 4 | 10 | 12 |
+| Maximální úložiště OLTP v paměti na fond (GB) | 1 | 2 | 4 | 10 | 12 |
 | Maximální počet databází pro každý fond | 50 | 100 | 100 | 100 | 100 |
 | Maximální počet souběžných pracovních procesů na fond (požadavky) | 200 | 400 | 800 | 1600 | 2400 |
 | Maximální počet souběžných relací na fond | 30000 | 30000 | 30000 | 30000 | 30000 |

@@ -1,5 +1,5 @@
 ---
-title: Přidejte svůj pracovní nebo školní účet do aplikace pro Microsoft Authenticator Azure Active Directory | Microsoft Docs
+title: Přidání pracovního nebo školního účtu k ověřovací aplikaci – Azure AD
 description: Jak do aplikace Microsoft Authenticator přidat svůj pracovní nebo školní účet pro účely dvou faktorů ověřování.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3be2ee662a061cdcb6acc58e47eda5feda3b9eee
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: c7c9fa41a1278f0e1e54a06c3930e3bbc3d3d3ae
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880794"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803740"
 ---
 # <a name="add-your-work-or-school-account"></a>Přidat svůj pracovní nebo školní účet
 
@@ -39,7 +39,7 @@ Pokud vaše organizace používá dvojúrovňové ověřování, můžete nastav
 
     ![Obrazovka, která poskytuje kód QR](./media/user-help-auth-app-download-install/auth-app-barcode.png)
 
-3. Otevřete aplikaci Microsoft Authenticator, v pravém horním rohu vyberte **Přidat účet** a potom vyberte **pracovní nebo školní účet**.
+3. Otevřete aplikaci Microsoft Authenticator, v pravém horním rohu vyberte **Přidat účet** **a potom** vyberte **pracovní nebo školní účet**.
 
     >[!Note]
     >Pokud Microsoft Authenticator aplikaci nakonfigurujete poprvé, může se zobrazit výzva s dotazem, jestli chcete, aby aplikace měla přístup k vaší kameře (iOS), nebo aby aplikaci mohla pořizovat snímky a nahrávat video (Android). Je nutné vybrat možnost **umožnit** , aby mohla aplikace ověřovatele získat přístup k fotoaparátu, aby pomohlo vytvořit obrázek kódu QR v dalším kroku. Pokud fotoaparát nepovolíte, můžete přesto nastavit ověřovací aplikaci, ale budete muset informace o kódu přidat ručně. Informace o tom, jak kód přidat ručně, najdete v tématu věnovaném [ručnímu přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
@@ -53,7 +53,7 @@ Pokud vaše organizace používá dvojúrovňové ověřování, můžete nastav
 
     ![Obrazovka účty](./media/user-help-auth-app-download-install/auth-app-accounts.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Po přidání účtů do aplikace se můžete přihlásit pomocí ověřovací aplikace na svém zařízení. Další informace najdete v tématu [přihlášení pomocí aplikace](user-help-auth-app-sign-in.md).
 

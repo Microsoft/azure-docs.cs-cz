@@ -1,91 +1,92 @@
 ---
-title: Portál pro partnery navigace pro Azure Marketplace v cloudu
-description: Vysvětlení navigace v rámci portál partnerů cloudu pro Azure Marketplace.
+title: portál partnerů cloudu navigace pro Azure Marketplace
+description: Vysvětlení navigace v rámci portál partnerů cloudu pro Azure Marketplace
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: pabutler
-ms.openlocfilehash: ef329bfef9dc4f98dfd975a33c190f0b1825df4e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57ccc7fb738dc23956e56e70c68405cc995a9a99
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942103"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821481"
 ---
 # <a name="cloud-partner-portal-navigation"></a>Navigace portál partnerů cloudu
 
-Existují dva primární uživatelské rozhraní (UI) mechanismy pro navigaci v [portál partnerů cloudu](https://cloudpartner.azure.com): horním řádku nabídek a levé navigační podokno.  Tyto prvky uživatelského rozhraní jsou neutrální, bez ohledu na to, jaké stránky na portálu přejděte na k dispozici.
+Existují dva mechanismy primárního uživatelského rozhraní (UI) pro navigaci v [portál partnerů cloudu](https://cloudpartner.azure.com): horní panel nabídek a navigační podokno na levé straně.  Tyto prvky uživatelského rozhraní jsou invariantní, k dispozici bez ohledu na to, na jakou stránku na portálu přejdete.
 
 
-## <a name="menu-bar"></a>Panel nabídek
+## <a name="menu-bar"></a>Řádek nabídek
 
-Panel nabídek běží v horní části portálu.  Obsahuje následující čtyři aktivní oblasti:
+Panel nabídek se spouští v horní části webu portálu.  Má následující čtyři aktivní oblasti:
 
-![Panel nabídek](./media/top-menubar1.png)
+![Řádek nabídek](./media/top-menubar1.png)
 
-Kliknutím na tyto oblasti za následek následující akce:
+Kliknutím na tyto oblasti dojde k následujícím akcím:
 
-1. Název oblasti – přejde na domovské stránce portálu.
-2. **Nápověda** tlačítko - zobrazí nabídky Nápověda, která poskytuje prostředky pro asistencí uživateli.
-3. **Zpětná vazba** tlačítko - zobrazí **pošlete nám svůj názor** formuláře.
-4. **Vydavatel** tlačítko – zobrazí nabídku, která umožňuje uživateli spravovat svůj profil.
+1. Oblast nadpisu – přejde na domovskou stránku portálu.
+2. Tlačítko pro **nápovědu** – zobrazí nabídku Help, která poskytuje prostředky pro pomoc uživateli.
+3. Tlačítko pro **zpětnou vazbu** – zobrazí formulář **poslat nám svůj názor** .
+4. Tlačítko **Vydavatel** – zobrazí nabídku, která umožňuje uživateli spravovat svůj profil.
 
-Tyto nabídky a formuláře jsou popsány níže.
+Tyto nabídky a formuláře jsou popsány dále.
 
-### <a name="help-menu"></a>Nabídka Nápověda
+### <a name="help-menu"></a>Nabídka Help
 
-**Pomáhají** nabídka obsahuje materiály, které pomáhají uživatele s portálem Cloud Partner.
+V nabídce **help** najdete prostředky, které pomáhají uživateli s portál partnerů cloudu.
 
-![Horním řádku nabídek](./media/top-menubar2.png)
+![Horní panel nabídek](./media/top-menubar2.png)
 
-V nabídce nápovědy obsahuje následující položky:
+Nabídka help obsahuje následující položky:
 
-- **Dokumentace ke službě** – spustí na nové záložce prohlížeče a přejde na domovské stránce dokumentace pro portál partnerů cloudu. 
-- **Fórum** – spustí na nové kartě a přejde na domovské stránce dokumentace pro komunitě partnerů pro AppSource a tržišť s řešeními Azure.
-- **Podpora** – spustí na nové kartě a přejde na stránku podpory pro Marketplace publikování, kde můžete vytvořit zprávu o incidentu.  Jsme posuzovat a zkontrolujte veškerá zpětná vazba a jsme vždy respektujeme vaše soukromí. Budete jenom vás kontaktujeme v případě požadavku nebo požádat o další informace.
+- **Dokumentace** – spustí novou kartu v prohlížeči a přejde na domovskou stránku dokumentace pro portál partnerů cloudu. 
+- **Fórum** – umožňuje spustit novou kartu a přejít na domovskou stránku dokumentace pro partnerský komunitu pro AppSource a Azure Marketplace.
+- **Podpora** – spustí novou kartu a přejde na stránku podpory pro publikování na webu Marketplace, kde můžete vytvořit sestavu incidentu.  Vyhrazujeme si a zkontrolujeme veškerou zpětnou vazbu a budeme vždycky respektovat vaše osobní údaje. Budeme vás kontaktovat jenom v případě, že si vyžádáte nebo požádáte o další informace.
 
 
-### <a name="send-us-feedback-form"></a>Pošlete nám zpětnou vazbu formuláře
+### <a name="send-us-feedback-form"></a>Pošlete nám svůj názor na formulář
 
-**Pošlete nám svůj názor** formulář poskytuje metodu s přímým přístupem k poskytnutí zpětné vazby na Marketplace vydavatele Onboardingový tým.  Budete jenom vás můžeme kontaktovat další informace v případě, že si projdete **OK vás kontaktovat ohledně vaší zpětné vazby** zaškrtávací políčko.
+Formulář pro **odeslání zpětné vazby** vám poskytne přímý způsob, jak poskytnout zpětnou vazbu týmu na webu Marketplace.  Budeme vás kontaktovat jenom v případě, že jste si zaškrtli políčko OK, abyste se mohli **obrátit na vaše názory** .
 
 ![Formulář pro názory](./media/feedback-form.png)
 
 > [!TIP]
-> Pokud vaše zpětná vazba je o konkrétní stránce na portál Cloud Partner, přejděte prosím na tuto stránku před kliknutím na **zpětnou vazbu** tlačítko.  Ověřte, že **zahrnout snímek obrazovky** zaškrtávací políčko zaškrtnuto, před odesláním svůj názor tak, aby se dají zachytit stav vaší relace uživatelského rozhraní. 
+> Pokud se vaše zpětná vazba týká konkrétní stránky na portál partnerů cloudu, přejděte prosím na tuto stránku a potom klikněte na tlačítko **Zpětná vazba** .  Před odesláním zpětné vazby ověřte, zda je zaškrtnuto políčko **Zahrnout snímek obrazovky** , aby bylo možné zachytit stav uživatelského rozhraní vaší relace. 
 
 
-### <a name="publisher-menu"></a>Nabídky vydavatele
+### <a name="publisher-menu"></a>Nabídka vydavatele
 
-Tato nabídka umožňuje spravovat váš profil a relace: přímý přístup na stránku svého profilu vydavatele, zobrazit smlouvy vydavatele Microsoft nebo odhlásit z aktuální relace. 
+V této nabídce můžete spravovat profil a relaci: přímý přístup na stránku vašeho profilu vydavatele, zobrazení smlouvy Microsoft Publisher nebo odhlášení z aktuální relace. 
 
-![Nabídky vydavatele](./media/publisher-menu.png)
+![Nabídka vydavatele](./media/publisher-menu.png)
 
 
 ## <a name="left-navigation-pane"></a>Levé navigační podokno
 
-Zabírá sbalitelné navigačního podokna levé straně na portálu.  Obsahuje řádek nabídek s následujícími položkami, které partnerům umožňují:
+Sbalitelný navigační panel zabírá levou stranu portálu.  Obsahuje řádek nabídek s následujícími položkami, které umožní partnerům:
 
 
 |    **Položka nabídky**     |      **Popis**                       |
 |    -------------     |      ---------------                       |
-| ![Nová položka nabídky](./media/left-navbar1.png) | [Nabídka Nová nabídka](./cpp-new-offer-menu.md) k vytvoření nové nabídky zadaného typu. |
-| ![Všechny položky nabídky](./media/left-navbar2.png) | [Všechny nabídky](./cpp-all-offers-page.md) stránky a zobrazit všechny odeslané nabízí některé jejich primární charakteristiky. |
-| ![Schválení položky](./media/left-navbar3.png) | [Schválení](./cpp-approvals-page.md) stránku, abyste zobrazili jejich aktuálně schválené nabídky. |
-| ![Všichni vydavatelé položky](./media/left-navbar4.png) | [Všichni vydavatelé](./cpp-all-publishers-page.md) stránce uvedeny všechny aktuální vydavatele partnera zaregistrovaný cloud. |
-| ![Uživatelé položky](./media/left-navbar5.png) | [Uživatelé](./cpp-users-page.md) stránce uvedeny všechny aktuální uživatelské účty spojené s partnery zaregistrovaný cloud. |
-| ![Položka historie](./media/left-navbar6.png) | [Historie](./cpp-history-page.md) stránce uvedeny události publikování a úprava nabídky pro všechny vydavatele. |
-| ![Položka přehledů](./media/left-navbar7.png) | [Insights](./cpp-insights-page.md) stránka obsahuje různé řídicí panely, které tvoří *prodejce Insights* funkce tohoto portálu. |
-| ![Dokumentace ke službě položky](./media/left-navbar8.png) | Spustí novou kartu na domovskou stránku dokumentace pro portál partnerů cloudu (duplicitní položka v **pomáhají** nabídky). |
-| ![Fórum položky](./media/left-navbar9.png)  | Spustí novou kartu na domovskou stránku dokumentace pro komunitě partnerů pro AppSource a tržišť s řešeními Azure (duplicitní položku **pomáhají** nabídky). |
+| ![Nová položka nabídky](./media/left-navbar1.png) | [Nová nabídka nabídky](./cpp-new-offer-menu.md) pro vytvoření nových nabídek zadaného typu. |
+| ![Položka všechny nabídky](./media/left-navbar2.png) | Stránka [všechny nabídky](./cpp-all-offers-page.md) k zobrazení všech odeslaných nabídek a některých jejich primárních vlastností. |
+| ![Položka schválení](./media/left-navbar3.png) | Stránka [schválení](./cpp-approvals-page.md) pro zobrazení všech svých aktuálně schválených nabídek. |
+| ![Všichni vydavatelé – položka](./media/left-navbar4.png) | Stránka [Všichni vydavatelé](./cpp-all-publishers-page.md) uvádí všechny aktuálně registrovaní vydavatelé cloudových partnerů. |
+| ![Položka uživatelů](./media/left-navbar5.png) | Stránka [Uživatelé](./cpp-users-page.md) uvádí všechny aktuální uživatelské účty přidružené k registrovaným cloudovým partnerům. |
+| ![Položka historie](./media/left-navbar6.png) | Stránka [Historie](./cpp-history-page.md) obsahuje seznam nabídek pro publikování a úpravy všech vydavatelů. |
+| ![Položka Insights](./media/left-navbar7.png) | Stránka [přehledy](./cpp-insights-page.md) obsahuje různé řídicí panely, které obsahují funkci *prodejce Insights* tohoto portálu. |
+| ![Položka dokumentace](./media/left-navbar8.png) | Spustí novou kartu na domovské stránce dokumentace pro portál partnerů cloudu (duplicitní položky v nabídce **help** ). |
+| ![Položka fóra](./media/left-navbar9.png)  | Spustí novou kartu na domovské stránce dokumentace pro partnerský komunitní komunitu pro AppSource a Azure Marketplace (duplicitní položky v nabídce **help** ). |
 |  |  |
 
 > [!NOTE]
-> Protože tento řádek nabídek se pravidelně aktualizuje tak, aby odrážela nové funkce na portálu, položky, které se zobrazí nemusí přesně odpovídat těm v předchozí tabulce.
+> Vzhledem k tomu, že se tato položka MenuBar pravidelně aktualizuje, aby odrážela nové funkce portálu, položky, které vidíte, se nemusí přesně shodovat s hodnotami uvedenými v tabulce výše.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další článek [nová nabídka nabídky](./cpp-new-offer-menu.md), jsou uvedeny typy nabídek, které můžete vytvořit pomocí **nová nabídka** nabídky.
+V dalším článku se v [nabídce nová](./cpp-new-offer-menu.md)nabídka zobrazí seznam typů nabídek, které můžete vytvořit pomocí nabídky **Nová** nabídka.

@@ -1,22 +1,22 @@
 ---
-title: 'Spouštění analytických dotazů pro databáze tenantů pomocí Azure SQL Data Warehouse '
+title: Spouštění analytických dotazů pro databáze tenantů
 description: Analytické dotazy pro více tenantů využívají data extrahovaná z Azure SQL Database, SQL Data Warehouse, Azure Data Factory nebo Power BI.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: MightyPen, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: f4a89029d7ed90f1a2406dcf0f8046a1c651353f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4791cd3a6b6f72c5d9ee4ca828d66b0d361f356c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691873"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816772"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Prozkoumejte SaaS Analytics pomocí Azure SQL Database, SQL Data Warehouse, Data Factory a Power BI
 
@@ -104,8 +104,8 @@ V Průzkumník objektů:
 1. Rozbalte položku *Catalog-DPT-&lt;user&gt;* Server.
 1. Ověřte, že se zobrazuje úložiště analýzy obsahující následující objekty:
     1. Tabulky **raw_Tickets**, **raw_Customers**, **raw_Events** a **raw_Venues** uchovávají nezpracovaná extrahovaná data z databází tenantů.
-    1. Tabulky se schématy hvězdiček jsou **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**a **dim_Dates**.
-    1. Uloženou proceduru **sp_transformExtractedData** slouží k transformaci dat a jejich načtení do tabulek se schématem hvězdiček.
+    1. Tabulky schématu hvězdiček jsou **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**a **dim_Dates**.
+    1. Uložená procedura, **sp_transformExtractedData** slouží k transformaci dat a jejich načtení do tabulek se schématem hvězdiček.
 
 ![DWtables](media/saas-tenancy-tenant-analytics/DWtables.JPG)
 
@@ -143,7 +143,7 @@ Na stránce Přehled přejděte na levý panel na kartu **Autor** a sledujte, ž
 
 Tři vnořené kanály jsou: SQLDBToDW, DBCopy a TableCopy.
 
-**Kanál 1 – SQLDBToDW** vyhledá názvy databází klientů uložených v databázi katalogu (název tabulky: [__ShardManagement]. [ ShardsGlobal]) a pro každou databázi tenanta spustí kanál **DBCopy** . Po dokončení se spustí zadané schéma uložené procedury **sp_TransformExtractedData** . Tato uložená procedura transformuje načtená data v pracovních tabulkách a naplní tabulky schématu hvězdiček.
+**Kanál 1 – SQLDBToDW** vyhledá názvy databází klientů uložených v databázi katalogu (název tabulky: [__ShardManagement]. [ ShardsGlobal]) a pro každou databázi tenanta spustí kanál **DBCopy** . Po dokončení se spustí zadané **sp_TransformExtractedData** schéma uložené procedury. Tato uložená procedura transformuje načtená data v pracovních tabulkách a naplní tabulky schématu hvězdiček.
 
 **Kanál 2 – DBCopy** vyhledá názvy zdrojových tabulek a sloupců z konfiguračního souboru uloženého v úložišti objektů BLOB.  Kanál **TableCopy** se pak spustí pro každou ze čtyř tabulek: TicketFacts, CustomerFacts, EventFacts a VenueFacts. Aktivita **[foreach](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)** se spouští paralelně pro všechny 20 databází. ADF umožňuje souběžně běžet maximálně 20 iterací cyklů. Zvažte vytvoření více kanálů pro další databáze.    
 
@@ -158,7 +158,7 @@ Vzhledem k třem propojeným službám existují tři datové sady, které odkaz
 ### <a name="data-warehouse-pattern-overview"></a>Přehled vzoru datového skladu
 SQL Data Warehouse se používá jako úložiště analýzy k provedení agregace pro data tenanta. V této ukázce se používá základ, který načte data do SQL Data Warehouse. Nezpracovaná data se načítají do pracovních tabulek, které mají sloupec identity, aby bylo možné sledovat řádky, které byly transformované na tabulky se schématy hvězdiček. Vzor načítání je znázorněn na následujícím obrázku: ![loadingpattern](media/saas-tenancy-tenant-analytics/loadingpattern.JPG)
 
-V tomto příkladu se používají tabulky dimenzí typu s pomalou změnou (SCD). Každá dimenze má definován náhradní klíč pomocí sloupce identity. Jako osvědčený postup je předem vyplněna tabulka dimenze kalendářních dat za účelem úspory času. Pro ostatní tabulky dimenzí CREATE TABLE jako vyberte... (CTAS) příkaz slouží k vytvoření dočasné tabulky obsahující existující upravené a neupravené řádky spolu s náhradními klíči. To se provádí s IDENTITY_INSERT = ON. Do tabulky se pak vloží nové řádky s IDENTITY_INSERT = OFF. U snadného vrácení se změnami se přejmenuje stávající tabulka dimenzí a dočasná tabulka se přejmenuje, aby se stala novou tabulkou dimenzí. Před každým spuštěním se stará tabulka dimenzí odstraní.
+V tomto příkladu se používají tabulky dimenzí typu s pomalou změnou (SCD). Každá dimenze má definován náhradní klíč pomocí sloupce identity. Jako osvědčený postup je předem vyplněna tabulka dimenze kalendářních dat za účelem úspory času. Pro ostatní tabulky dimenzí CREATE TABLE jako vyberte... (CTAS) příkaz slouží k vytvoření dočasné tabulky obsahující existující upravené a neupravené řádky spolu s náhradními klíči. To se provádí s IDENTITY_INSERT = ON. Nové řádky jsou potom vloženy do tabulky pomocí IDENTITY_INSERT = OFF. U snadného vrácení se změnami se přejmenuje stávající tabulka dimenzí a dočasná tabulka se přejmenuje, aby se stala novou tabulkou dimenzí. Před každým spuštěním se stará tabulka dimenzí odstraní.
 
 Tabulky dimenzí jsou načteny před tabulku faktů. Tato sekvence zajišťuje, že pro každou příchodný fakt již existují všechny odkazované dimenze. Vzhledem k tomu, že jsou fakta načteny, odpovídá obchodnímu klíči pro každou odpovídající dimenzi a do každého faktu jsou přidány odpovídající náhradní klíče.
 
@@ -228,7 +228,7 @@ Tato znázornění kumulativního prodeje lístků v čase pro všechny událost
 
 Přehledy o vzorech prodávajícího lístku mohou vést k optimalizaci obchodního modelu lístků společnosti Wingtip. Místo toho, aby všichni klienti současně nabíjíi, možná společnost Wingtip zavedla úrovně služeb s různými výpočetními velikostmi. Větší místa, která je potřeba k prodeji dalších lístků za den, vám může nabídnout vyšší úroveň s vyšší smlouvou o úrovni služeb (SLA). Těmto místům můžou být databáze umístěné ve fondu s vyššími limity pro prostředky pro každou databázi. Každá úroveň služby by mohla mít přidělenou hodinu v prodeji a za překročení přidělení se účtují další poplatky. Větší místa, která mají pravidelné nárůsty prodeje, by měla těžit z vyšších úrovní a lístky Wingtip můžou monetizovat své služby efektivněji.
 
-Mezitím můžou někteří zákazníci, kteří si bojovat, podali za to, že si dostanou dostatek lístků za účelem zarovnání nákladů na službu. V těchto přehledech je například možné zvýšit prodej lístků za účelem jejich konání. Vyšší tržby by zvýšily vnímanou hodnotu služby. Klikněte pravým tlačítkem na fact_Tickets a vyberte **Nová míra**. Pro novou míru nazvanou **AverageTicketsSold**zadejte následující výraz:
+Mezitím můžou někteří zákazníci, kteří si bojovat, podali za to, že si dostanou dostatek lístků za účelem zarovnání nákladů na službu. V těchto přehledech je například možné zvýšit prodej lístků za účelem jejich konání. Vyšší tržby by zvýšily vnímanou hodnotu služby. Klikněte pravým tlačítkem fact_Tickets a vyberte možnost **Nová míra**. Pro novou míru nazvanou **AverageTicketsSold**zadejte následující výraz:
 
 ```
 AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[VenueCapacity]))*100, COUNTROWS(dim_Events))

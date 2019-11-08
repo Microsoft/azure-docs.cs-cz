@@ -1,50 +1,51 @@
 ---
-title: Vytvoření nabídky virtuálních počítačů v Azure Marketplace
-description: Seznamy umožňují kroky potřebné k vytvoření nového virtuálního počítače (VM) pro Azure Marketplace.
+title: Vytvoření nabídky virtuálního počítače v Azure Marketplace
+description: Seznam kroků požadovaných k vytvoření nové nabídky virtuálního počítače pro Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 4cd635c6f664a5260b79e62ea72bbb86fc4e1e4f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e10bd22b91b51fb811601e49fad06d8f8b30127
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938358"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73817104"
 ---
-# <a name="create-virtual-machine-offer"></a>Vytvoření nabídky virtuálních počítačů
+# <a name="create-virtual-machine-offer"></a>Vytvořit nabídku virtuálního počítače
 
-Tato část uvádí kroky potřebné k vytvoření nové žádosti nabídky virtuálních počítačů (VM) pro Azure Marketplace.  Každé nabídky se zobrazí jako vlastní entity na webu Azure Marketplace a je přidružený nejmíň jeden skladové položky.  Nabídky virtuálních počítačů se skládá z následujících seskupení prostředků a služeb podpory: 
+V této části jsou uvedené kroky potřebné k vytvoření nového požadavku na nabídku pro virtuální počítač (VM) pro Azure Marketplace.  Každá nabídka se zobrazí jako vlastní entita v Azure Marketplace a je spojena s jednou nebo více SKU.  Nabídka virtuálních počítačů se skládá z následujících skupin prostředků a podpůrných služeb: 
 
-![Prostředky pro nabídky virtuálních počítačů](./media/publishvm_002.png)
+![Prostředky pro nabídku virtuálních počítačů](./media/publishvm_002.png)
 
-kde:
+,
 
-|  **Skupiny prostředků**   |  **Popis**  |
+|  **Skupina prostředků**   |  **Popis**  |
 |  ---------------   |  ---------------  |
-|    Skladové položky            |  Nejmenší prodejných jednotka nabídky. Jediné nabídky (produktu třídy) může mít více jednotek SKU přidružený k rozlišení mezi podporované funkce, typy imagí virtuálních počítačů a modely fakturace. |
-|  Marketplace       | Obsahuje marketing, právních i průběžné správy prostředků a specifikace.  <ul><li> Marketingové prostředky zahrnují název nabídky, popis a loga</li> <li> Právní prostředky zahrnují další právní dokumentace, zásady ochrany osobních údajů a podmínky použití</li>  <li> Zásada umožňuje průběžné správy můžete určit způsob zpracování vede z portálu Azure Marketplace s koncovým uživatelem.</li> </ul> |
-| Podpora            | Obsahuje informace o podpoře kontaktní údaje a zásady |
-| Testovací verze         | Definuje prostředky, které umožňují koncovým uživatelům otestujte předtím, než může zakoupit |
+|    SKU            |  Nejmenší jednotka kupní jednotky nabídky. K jedné nabídce (třídě produktu) může být přidruženo více SKU, aby bylo možné rozlišovat mezi podporovanými funkcemi, typy imagí virtuálních počítačů a modely fakturace. |
+|  Marketplace       | Obsahuje prostředky a specifikace pro marketing, právní a vedoucí.  <ul><li> Marketingové prostředky zahrnují název nabídky, popis a loga.</li> <li> Právní prostředky zahrnují zásady ochrany osobních údajů, podmínek použití a další právní dokumentaci.</li>  <li> Zásady správy potenciálních zákazníků vám umožní určit, jak se mají zpracovávat potenciální zákazníky z portálu Azure Marketplace portál pro koncové uživatele.</li> </ul> |
+| Podpora            | Obsahuje informace o kontaktech a zásadách podpory |
+| Testovací verze         | Definuje prostředky, které koncovým uživatelům umožní otestovat vaši nabídku před jejich nákupem. |
 |  |  |
 
 
 ## <a name="new-offer-form"></a>Formulář nové nabídky
 
-Jednou vaše Přihlaste se [portál partnerů cloudu](https://cloudpartner.azure.com/), klikněte na tlačítko **+ nová nabídka** položka na levém řádku nabídek. V nabídce výsledný klikněte na **virtuálních počítačů** zobrazíte **nová nabídka** formuláře a zahájit proces definice prostředků pro nové nabídky virtuálních počítačů. 
+Po přihlášení k [portál partnerů cloudu](https://cloudpartner.azure.com/)klikněte na tlačítko **+ Nová položka nabídky** na levém řádku nabídek. V výsledné nabídce kliknutím na **Virtual Machines** zobrazíte formulář **nové nabídky** a zahájíte proces definování prostředků pro novou nabídku virtuálních počítačů. 
 <!-- not all publishers see corevm or azure apps test, you need to be whitelisted to see them. we should hide those in these images. -->
 
-![Výběr nového virtuálního počítače nabídka uživatelského rozhraní](./media/publishvm_003.png)
+![Výběr uživatelského rozhraní nabídky nového virtuálního počítače](./media/publishvm_003.png)
 
 > [!WARNING]
-> Pokud **virtuálních počítačů** možnost není zobrazena, nebo není povoleno a pak váš účet nemá oprávnění vytvořit tento typ nabídky.  Zkontrolujte prosím, že jste splnili veškeré [požadavky](./cpp-prerequisites.md) pro tento typ nabídky, včetně registrace pro účet pro vývojáře.
+> Pokud není zobrazená možnost **Virtual Machines** nebo není povolená, váš účet nemá oprávnění k vytvoření tohoto typu nabídky.  Zkontrolujte prosím, že jste splnili všechny [předpoklady](./cpp-prerequisites.md) pro tento typ nabídky, včetně registrace pro vývojářský účet.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Následující témata v této části odráží karet **nová nabídka** stránky (pro typ nabídky virtuálních počítačů).  Každý článek vysvětluje, jak používat kartě přidružené k definování skupin prostředků a služeb podpory pro nové nabídky virtuálních počítačů.
+Následující témata v této části zrcadlí karty na nové stránce **nabídky** (pro typ nabídky VM).  Každý článek vysvětluje, jak pomocí přidružené karty definovat skupiny prostředků a podpůrné služby pro novou nabídku virtuálních počítačů.
 
 - [Karta Nastavení nabídky](./cpp-offer-settings-tab.md)
 - [Karta Skladové položky](./cpp-skus-tab.md)

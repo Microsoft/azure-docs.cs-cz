@@ -1,5 +1,5 @@
 ---
-title: 'Azure SQL Database nákup modelů '
+title: Nákupní modely
 description: Přečtěte si informace o nákupních modelech, které jsou k dispozici pro Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: 48537ec4c62410565d32350b1e3a11bbc7a2ca6e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: be223245c634b8e38dc5e4c89df4c265c22c0b57
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687555"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821263"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Volba mezi vCore a nákupními modely DTU
 
@@ -125,7 +125,7 @@ Do existujícího fondu můžete přidat další eDTU bez výpadku databáze a b
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Určení počtu DTU potřebných pro zatížení
 
-Pokud chcete migrovat existující úlohu místního nebo SQL Server virtuálního počítače na Azure SQL Database, použijte [kalkulačku DTU](https://dtucalculator.azurewebsites.net/) k aproximaci počtu potřebných DTU. Pro existující úlohu Azure SQL Database použijte [přehledy výkonu dotazů](sql-database-query-performance.md) , které vám pomůžou pochopit využití prostředků databáze (DTU) a získat hlubší přehledy pro optimalizaci vašich úloh. Zobrazení dynamické správy resource_stats (DMV) [Sys. DM _db_](https://msdn.microsoft.com/library/dn800981.aspx) vám umožňuje zobrazit spotřebu prostředků za poslední hodinu. V zobrazení katalogu [Sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) se zobrazuje spotřeba prostředků za posledních 14 dní, ale s nižší věrností průměrných průměrných rychlostí 5 minut.
+Pokud chcete migrovat existující úlohu místního nebo SQL Server virtuálního počítače na Azure SQL Database, použijte [kalkulačku DTU](https://dtucalculator.azurewebsites.net/) k aproximaci počtu potřebných DTU. Pro existující úlohu Azure SQL Database použijte [přehledy výkonu dotazů](sql-database-query-performance.md) , které vám pomůžou pochopit využití prostředků databáze (DTU) a získat hlubší přehledy pro optimalizaci vašich úloh. Zobrazení dynamické správy (DMV) [resource_stats sys. dm_db_](https://msdn.microsoft.com/library/dn800981.aspx) umožňuje zobrazit spotřebu prostředků za poslední hodinu. V zobrazení katalogu [Sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) se zobrazuje spotřeba prostředků za posledních 14 dní, ale s nižší věrností průměrných průměrných rychlostí 5 minut.
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Úlohy, které využívají elastický fond prostředků
 

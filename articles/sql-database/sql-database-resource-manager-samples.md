@@ -1,5 +1,5 @@
 ---
-title: Šablony Azure Resource Manager pro SQL Database
+title: Šablony Azure Resource Manageru
 description: K vytvoření a konfiguraci Azure SQL Database použijte šablony Azure Resource Manager.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 2bd9b110b5ea416bacc8896da8ca514b50f958ce
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 16091286aecc6dfdbcfa833a76920ff4bc9c64de
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687473"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821130"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Šablony Azure Resource Manager pro Azure SQL Database
 

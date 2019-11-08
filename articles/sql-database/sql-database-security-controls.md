@@ -1,5 +1,5 @@
 ---
-title: Ovládací prvky zabezpečení pro Azure SQL Database
+title: Ovládací prvky zabezpečení
 description: Kontrolní seznam ovládacích prvků zabezpečení pro vyhodnocení Azure SQL Database
 services: sql-database
 author: msmbaldwin
@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 77ff55389bac53d8719d86b4ac77f281415af49f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 58070cab1221b9d9585784d82cf1a48afcedb8af
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886363"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802827"
 ---
 # <a name="security-controls-for-azure-sql-database"></a>Ovládací prvky zabezpečení pro Azure SQL Database
 
@@ -45,13 +45,13 @@ SQL Database zahrnuje [jednu databázi](sql-database-single-index.yml) i [spravo
 | Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
 | Ověřování| Ano | Azure Active Directory (Azure AD) |
-| Authorization| Ano | Žádné |
+| Autorizace| Ano | Žádný |
 
 ## <a name="data-protection"></a>Ochrana dat
 
 | Řízení zabezpečení | Ano/Ne | Poznámky |
 |---|---|--|
-| Šifrování na straně serveru v klidovém umístění: Klíče spravované společností Microsoft | Ano | Označuje se jako "použití šifrování", jak je popsáno v článku [Always Encrypted](sql-database-always-encrypted.md). Šifrování na straně serveru používá [transparentní šifrování dat](transparent-data-encryption-azure-sql.md).|
+| Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft | Ano | Označuje se jako "použití šifrování", jak je popsáno v článku [Always Encrypted](sql-database-always-encrypted.md). Šifrování na straně serveru používá [transparentní šifrování dat](transparent-data-encryption-azure-sql.md).|
 | Šifrování při přenosu:<ul><li>Šifrování Azure ExpressRoute</li><li>Šifrování ve virtuální síti</li><li>Šifrování mezi virtuálními sítěmi</ul>| Ano | Pomocí protokolu HTTPS. |
 | Zpracování šifrovacího klíče, jako je například CMK nebo BYOK| Ano | Jsou nabízeny zpracování klíčů spravovaných službou i zákazníkem. Druhá z nich je nabízena prostřednictvím [Azure Key Vault](../key-vault/index.yml). |
 | Šifrování na úrovni sloupce poskytované datovými službami Azure| Ano | Prostřednictvím [Always Encrypted](sql-database-always-encrypted.md). |
@@ -61,7 +61,7 @@ SQL Database zahrnuje [jednu databázi](sql-database-single-index.yml) i [spravo
 
 | Řízení zabezpečení | Ano/Ne | Poznámky|
 |---|---|--|
-| Podpora správy konfigurace, jako je například Správa verzí konfigurace| Ne  | Žádné |
+| Podpora správy konfigurace, jako je například Správa verzí konfigurace| Ne  | Žádný |
 
 ## <a name="additional-security-controls-for-sql-database"></a>Další ovládací prvky zabezpečení pro SQL Database
 
@@ -71,6 +71,6 @@ SQL Database zahrnuje [jednu databázi](sql-database-single-index.yml) i [spravo
 | Preventivní: zjišťování a klasifikace dat  | Ano | Viz [Azure SQL Database a SQL Data Warehouse klasifikace & zjišťování dat](sql-database-data-discovery-and-classification.md). |
 | Detekce: detekce hrozeb | Ano | Viz [Rozšířená ochrana před internetovými útoky pro Azure SQL Database](sql-database-threat-detection-overview.md). |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o [integrovaných kontrolních prvcích zabezpečení napříč službami Azure](../security/fundamentals/security-controls.md).

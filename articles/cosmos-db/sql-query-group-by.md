@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: tisande
-ms.openlocfilehash: d92e24836a0eb5757de9bbdb516be290456deb7f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e41e81457421bfe27e3c0313fc06e39e6df4cdce
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333258"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819106"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Klauzule GROUP BY v Azure Cosmos DB
 
 Klauzule GROUP BY rozděluje výsledky dotazu podle hodnot jedné nebo více zadaných vlastností.
 
 > [!NOTE]
-> Azure Cosmos DB aktuálně podporuje GROUP BY v [sadě .NET SDK 3,3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.3.0) nebo novější.
-> Podpora pro jiné jazykové sady a portál Azure Portal není aktuálně k dispozici, ale je plánována.
+> Azure Cosmos DB aktuálně podporuje GROUP BY v sadě .NET SDK 3,3 a vyšší a také v sadě JavaScript SDK 3,4 a vyšší.
+> Podpora pro jinou jazykovou sadu SDK není aktuálně k dispozici, ale je plánována.
 
 ## <a name="syntax"></a>Syntaxe
 

@@ -1,5 +1,5 @@
 ---
-title: Odebrání použití TLS 1,0 a 1,1 s mezipamětí Azure pro Redis | Microsoft Docs
+title: Odeberte TLS 1,0 a 1,1 pro použití s Azure cache pro Redis | Microsoft Docs
 description: Zjistěte, jak z aplikace odebrat TLS 1,0 a 1,1 při komunikaci s Azure cache pro Redis.
 services: cache
 documentationcenter: ''
@@ -14,45 +14,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: d1d44467d310b87d306ea7401e66784d684a1bf3
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 638ce4b07201453d0bb00d3610cb695b72b6d698
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901895"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806754"
 ---
-# <a name="remove-use-of-tls-10-and-11-with-azure-cache-for-redis"></a>Odebrání použití TLS 1,0 a 1,1 s mezipamětí Azure pro Redis
+# <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Odeberte TLS 1,0 a 1,1 pro použití s Azure cache pro Redis.
 
-K použití výhradně TLS 1,2 nebo vyšší úrovně je v celém oboru nabízená oznámení. Verze TLS 1,0 a 1,1 se označují jako náchylné k útokům, jako jsou TOUCHDOWN a POODLE, a obsahují i další slabé stránky ohrožení zabezpečení a ohrožení zabezpečení (CVE). Nepodporují také moderní šifrovací metody a šifrovací sady Doporučené standardy dodržování předpisů PCI. Tento [blog o zabezpečení TLS](https://www.acunetix.com/blog/articles/tls-vulnerabilities-attacks-final-part/) podrobněji popisuje některé z těchto chyb zabezpečení.
+K exkluzivnímu používání protokolu TLS (Transport Layer Security) verze 1,2 nebo novější se nabízí celé odvětví. Je známo, že TLS verze 1,0 a 1,1 jsou náchylné k útokům, jako je TOUCHDOWN a POODLE, a k dalším běžným slabým místám zabezpečení a ohrožením (CVE). Nepodporují také moderní šifrovací metody a šifrovací sady Doporučené standardy dodržování předpisů v oboru platebních karet (PCI). Tento [blog o zabezpečení TLS](https://www.acunetix.com/blog/articles/tls-vulnerabilities-attacks-final-part/) podrobněji popisuje některé z těchto ohrožení zabezpečení.
 
-I když žádné z těchto možností nepředstavují bezprostřední problémy, měli byste zvážit přesunutí mimo použití TLS 1,0 a 1,1 jako nejdřívějšího možného využití. Azure cache pro Redis přestane podporovat tyto verze TLS od 31. března 2020. Aby vaše aplikace po tomto datu komunikovala s mezipamětí, budete muset použít aspoň TLS 1,2.
+I když žádný z těchto otázek nepředstavuje okamžitý problém, doporučujeme, abyste zastavili používání protokolu TLS 1,0 a 1,1 brzy. Azure cache pro Redis přestane podporovat tyto verze protokolu TLS od 31. března 2020. Po tomto datu bude vaše aplikace vyžadovat použití TLS 1,2 nebo novější ke komunikaci s mezipamětí.
 
-Tento článek poskytuje obecné pokyny k tomu, jak tyto závislosti detekovat a odstranit z vaší aplikace.
+Tento článek poskytuje obecné pokyny k detekci závislostí na těchto starších verzích TLS a jejich odebrání z aplikace.
 
-## <a name="check-if-your-application-is-already-compliant"></a>Ověřte, jestli je vaše aplikace už kompatibilní.
+## <a name="check-whether-your-application-is-already-compliant"></a>Ověřte, zda je aplikace již kompatibilní.
 
-Nejjednodušší způsob, jak zjistit, jestli vaše aplikace bude fungovat s TLS 1,2, je nastavit minimální verzi protokolu TLS pro testovací nebo pracovní mezipaměť, kterou používá pro TLS 1,2. Nastavení minimální verze protokolu TLS můžete najít v části [Rozšířená nastavení](cache-configure.md#advanced-settings) instance mezipaměti v Azure Portal. Pokud aplikace i nadále funguje podle očekávání po této změně, bude pravděpodobně kompatibilní. Některé klientské knihovny Redis používané v naší aplikaci může být potřeba specificky nakonfigurovat tak, aby povolovaly TLS 1,2, aby se mohly připojit k Azure cache pro Redis prostřednictvím tohoto protokolu zabezpečení.
+Nejjednodušší způsob, jak zjistit, jestli vaše aplikace bude fungovat s TLS 1,2, je nastavit **minimální hodnotu verze TLS** na TLS 1,2 v testovací nebo pracovní mezipaměti, kterou používá. **Minimální verze protokolu TLS** je v [upřesňujících nastaveních](cache-configure.md#advanced-settings) instance mezipaměti v Azure Portal. Pokud aplikace i nadále funguje podle očekávání po této změně, je to pravděpodobně vyhovující. Je možné, že budete muset nakonfigurovat některé klientské knihovny Redis, které vaše aplikace používá, konkrétně k povolení TLS 1,2, aby se mohly připojit k mezipaměti Azure pro Redis prostřednictvím tohoto protokolu zabezpečení.
 
 ## <a name="configure-your-application-to-use-tls-12"></a>Konfigurace aplikace tak, aby používala TLS 1,2
 
-Většina aplikací využívá klientské knihovny Redis ke zpracování komunikace s jejich mezipamětí. Níže najdete pokyny ke konfiguraci některých oblíbených klientských knihoven v různých programovacích jazycích a architekturách pro použití TLS 1,2.
+Většina aplikací používá klientské knihovny Redis ke zpracování komunikace s jejich mezipamětí. Tady jsou pokyny pro konfiguraci některých oblíbených klientských knihoven v různých programovacích jazycích a architekturách pro použití TLS 1,2.
 
 ### <a name="net-framework"></a>.NET Framework
 
-Redis klienti .NET používají nejnižší verzi TLS ve výchozím nastavení v .NET Framework 4.5.2 nebo nižší a nejvyšší verzi TLS 4,6 nebo vyšší. Pokud používáte starší verzi .NET Framework, můžete povolit TLS 1,2 ručně:
+Redis klienti .NET standardně používají nejstarší verzi TLS ve výchozím nastavení v .NET Framework 4.5.2 nebo starším a používají nejnovější verzi TLS v .NET Framework 4,6 nebo novější. Pokud používáte starší verzi .NET Framework, můžete povolit TLS 1,2 ručně:
 
-* StackExchange. Redis: nastavte `ssl=true` a `sslprotocls=tls12` v připojovacím řetězci.
-* ServiceStack. Redis: postupujte podle [těchto pokynů](https://github.com/ServiceStack/ServiceStack.Redis/pull/247).
+* **Stackexchange. Redis:** V připojovacím řetězci nastavte `ssl=true` a `sslprotocls=tls12`.
+* **ServiceStack. Redis:** Postupujte podle [pokynů ServiceStack. Redis](https://github.com/ServiceStack/ServiceStack.Redis/pull/247).
 
 ### <a name="net-core"></a>.NET Core
 
-Redis klienti .NET Core ve výchozím nastavení používají nejvyšší verzi TLS.
+Redis klienti .NET Core používají ve výchozím nastavení nejnovější verzi TLS.
 
 ### <a name="java"></a>Java
 
-Redis klienti Java používají protokol TLS 1,0 v Java verze 6 nebo nižší. Jedis, Lettuce a Radisson se nebudou moct připojit ke službě Azure cache pro Redis, pokud je v mezipaměti zakázané TLS 1,0. V současné době neexistuje žádné známé alternativní řešení.
+Redis klienti Java používají TLS 1,0 v Java verze 6 nebo starší. Jedis, Lettuce a Radisson se nemůžou připojit ke službě Azure cache pro Redis, pokud je v mezipaměti zakázané TLS 1,0. V současné době není k dispozici žádné známé alternativní řešení.
 
-V jazyce Java 7 nebo novějším Redis klienti standardně nepoužívají TLS 1,2, ale můžou být pro něj nakonfigurované. Lettuce a Radisson tuto chvíli nepodporují. Přeruší se, pokud mezipaměť akceptuje jenom připojení TLS 1,2. Jedis umožňuje zadat základní nastavení TLS s následujícím fragmentem kódu:
+V jazyce Java 7 nebo novějším používají klienti Redis ve výchozím nastavení TLS 1,2, ale můžou se pro něj nakonfigurovat. Lettuce a Radisson tuto konfiguraci teď nepodporují. Přeruší se, pokud mezipaměť akceptuje pouze připojení TLS 1,2. Jedis umožňuje zadat základní nastavení TLS s následujícím fragmentem kódu:
 
 ``` Java
 SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
@@ -74,7 +74,7 @@ Uzly Redis a IORedis ve výchozím nastavení používají TLS 1,2.
 
 ### <a name="php"></a>PHP
 
-Predis v PHP 7 nefunguje, protože ta podporuje jenom TLS 1,0. V PHP 7.2.1 nebo níže používá Predis standardně TLS 1,0 nebo 1,1. Při vytváření instancí klienta můžete zadat TLS 1,2:
+Predis v PHP 7 nebude fungovat, protože PHP 7 podporuje jenom TLS 1,0. Ve výchozím nastavení používá Predis ve PHP 7.2.1 nebo starší protokol TLS 1,0 nebo 1,1. Při vytváření instance klienta můžete zadat TLS 1,2:
 
 ``` PHP
 $redis=newPredis\Client([

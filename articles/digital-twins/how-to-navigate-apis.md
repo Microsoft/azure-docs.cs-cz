@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/27/2019
-ms.openlocfilehash: 5df8bb0ba0323692bddf94ae2888e8fcf1ad24a9
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: b0c3d72085e008524811f479ccbdeec013e26c4c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063270"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822246"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Jak používat rozhraní API pro správu digitálních vláken Azure
 
@@ -116,4 +116,4 @@ Pokud se chcete dozvědět několik běžných vzorů dotazů rozhraní API, př
 
 Pokud chcete získat další informace o vašich koncových bodech rozhraní API, přečtěte si, [Jak používat digitální vlákna Swagger](./how-to-use-swagger.md).
 
-Ke kontrole syntaxe OData a dostupných relačních operátorů si přečtěte [v Azure Search operátory porovnání OData](../search/search-query-odata-comparison-operators.md).
+Ke kontrole syntaxe OData a dostupných relačních operátorů si přečtěte [v Azure kognitivní hledání operátory porovnávání OData](../search/search-query-odata-comparison-operators.md).

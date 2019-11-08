@@ -1,5 +1,5 @@
 ---
-title: Správa schématu Azure SQL Database v aplikaci s více klienty
+title: Správa schématu v aplikaci s více klienty
 description: Správa schématu pro více tenantů v aplikaci s více tenanty využívající službu Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: a4838e571c6dc678fba470ef7f1026388f55d444
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6f660426c41b37dd27438c28cbf603bdbf1e58b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691981"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822109"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Správa schématu v aplikaci SaaS, která využívá horizontálně dělené víceklientské databáze SQL
 

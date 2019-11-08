@@ -1,118 +1,119 @@
 ---
-title: Konfigurace potenciálních zákazníků | Azure Marketplace
-description: Nakonfigurujte potenciálních zákazníků v portál partnerů cloudu.
+title: Konfigurace zákaznických zákazníků | Azure Marketplace
+description: Nakonfigurujte potenciální zákazníky v portál partnerů cloudu.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: c3e483a33d986eff767b3529e30208319ad90b23
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 312e172321c25248f1b0801bdbccf71762319989
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64934992"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818816"
 ---
 <a name="get-customer-leads"></a>Získání potenciálních zákazníků
 ==================
 
-Tento článek vysvětluje, jak vytvořit pomocí portálu pro partnery Cloud potenciálních zákazníků. Můžete připojit k systému CRM těchto potenciálních zákazníků a integrovat do prodejních kanálů.
+Tento článek vysvětluje, jak vytvořit zájemce zákazníka pomocí portál partnerů cloudu. Tyto zájemce můžete propojit s vaším systémem CRM a integrovat je do svého obchodního kanálu.
 
-## <a name="leads"></a>Potenciálních zákazníků
+## <a name="leads"></a>Zájemc
 
-Potenciální zákazníci jsou zákazníci, kteří mají zájem o nebo své produkty z nasazení [Azure Marketplace](https://azuremarketplace.microsoft.com/) nebo z [AppSource](https://appsource.microsoft.com).
+Zájemci jsou zákazníci, kteří mají zájem, nebo nasazují vaše produkty z [Azure Marketplace](https://azuremarketplace.microsoft.com/) nebo z [AppSource](https://appsource.microsoft.com).
 
 ### <a name="azure-marketplace"></a>Azure Marketplace
 
-1.  Zákazník má "Jednotka testu" o vaší nabídce. Testovací verze jsou akcelerované příležitost, můžete okamžitě sdílet vaši firmu s potenciálními zákazníky bez jakékoli překážky k položce. Všechny testovací verze generovat zájemce pro zákazníky, kteří se zajímají pokusu o produktu Další informace. Další informace o Test jednotek při [vyzkoušejte Azure Marketplace](https://azuremarketplace.azureedge.net/documents/azure-marketplace-test-drive-program.pdf).
+1.  Zákazník vezme "zkušební verzi" vaší nabídky. Testovací jednotky představují urychlenou příležitost pro okamžité sdílení vaší firmy s potenciálními zákazníky bez jakýchkoli překážek vstupu. Všechny testovací jednotky vygenerují zájemce pro zákazníky, kteří mají zájem o vyzkoušení produktu a další informace. Přečtěte si další informace o testovacích jednotkách na [Azure Marketplace testovacím disku](https://azuremarketplace.azureedge.net/documents/azure-marketplace-test-drive-program.pdf).
 
-    ![Příklady Marketplace testů jednotky](./media/cloud-partner-portal-get-customer-leads/test-drive-offer.png)
+    ![Příklady testovacích jednotek Marketplace](./media/cloud-partner-portal-get-customer-leads/test-drive-offer.png)
  
 
 <!-- -->
 
-1. Zákazník souhlasí s sdílení svých informací po výběru "Stáhnout". Je toto zájemce **počáteční zájmu** potenciálních zákazníků, kde můžeme sdílet informace o zákazníkovi, který vyjádřil zájmu o získání váš produkt. Zájemce je nejvyšší úrovni pořízení trychtýřového grafu.
+1. Zákazník souhlasí s sdílením svých informací po výběru možnosti "získat IT nyní". Tento potenciální zákazník je **počátečním zájmem** , kde sdílíme informace o zákazníkovi, který vyjádřil zájem o získání vašeho produktu. Vedoucí je horní část trychtýře pořízení.
 
-   ![Získat nyní možnost](./media/cloud-partner-portal-get-customer-leads/get-it-now-button.png)
+   ![Získat možnost hned](./media/cloud-partner-portal-get-customer-leads/get-it-now-button.png)
 
-1. Zákazník vybere "Koupit" v [webu Azure Portal](https://portal.azure.com/) získat váš produkt. Je tento vedoucí **active** potenciálních zákazníků, kde můžeme sdílet informace o zákazníkovi, který začal nasadit váš produkt.
+1. Zákazník vybere možnost koupit na webu [Azure Portal](https://portal.azure.com/) a získá svůj produkt. Tento potenciální zákazník je **aktivním** zájemcem, který sdílí informace o zákazníkovi, který zahájil nasazení vašeho produktu.
 
-   ![Kupte si možnost](./media/cloud-partner-portal-get-customer-leads/purchase-button.png)
+   ![Možnost nákupu](./media/cloud-partner-portal-get-customer-leads/purchase-button.png)
 
 
 ### <a name="appsource"></a>AppSource
 
-1.  Zákazník trvalo "Jednotka testu" pro vaši nabídku. Testovací verze jsou akcelerované příležitost, můžete okamžitě sdílet vaši firmu s potenciálními zákazníky bez jakékoli překážky k položce. Všechny testovací verze vygeneruje zájemce zákazníka, kterému se chcete o produktu Další informace. Další informace o Test jednotek při [testovací verze na AppSource](https://appsource.microsoft.com/blogs/want-to-try-an-app-take-a-test-drive).
+1.  Zákazník si pro vaši nabídku vybral "testovací disk". Testovací jednotky představují urychlenou příležitost pro okamžité sdílení vaší firmy s potenciálními zákazníky bez jakýchkoli překážek vstupu. Všechny testovací jednotky vygenerují potenciálního zákazníka, který vás zajímá při pokusu o vyzkoušení vašeho produktu a další informace. Přečtěte si další informace o testovacích jednotkách na [AppSource testovacím disku](https://appsource.microsoft.com/blogs/want-to-try-an-app-take-a-test-drive).
 
     ![Příklad testovací jednotky](./media/cloud-partner-portal-get-customer-leads/test-drive-offer-2.png)
 
-2.  Zákazník souhlasí s sdílení svých informací po výběru "Stáhnout". Je toto zájemce **počáteční zájmu** potenciálních zákazníků, kde můžeme sdílet informace o zákazníkovi, který vyjadřuje zájmu o získání váš produkt. Zájemce je nejvyšší úrovni pořízení trychtýřového grafu.
+2.  Zákazník souhlasí s sdílením svých informací po výběru možnosti "získat IT nyní". Tento potenciální zákazník je **počátečním zájmem** , kde sdílíme informace o zákazníkovi, který vyjadřuje zájem o získání vašeho produktu. Vedoucí je horní část trychtýře pořízení.
 
-      ![Získat nyní možnost](./media/cloud-partner-portal-get-customer-leads/get-it-now-button-2.png)
+      ![Získat možnost hned](./media/cloud-partner-portal-get-customer-leads/get-it-now-button-2.png)
 
 
-3.  Zákazník vybere "Obraťte se na mě" na vaši nabídku. Je tento vedoucí **aktivní** potenciálních zákazníků, kde můžeme sdílet informace o zákazníkovi, který požádá o následovat o produktu.
+3.  Zákazník vybere u vaší nabídky "kontaktujte mě". Tento potenciální zákazník je **aktivním** zájemcem, který sdílí informace o zákazníkovi, který požaduje, aby se s produktem řídili.
 
-    ![Kontaktujte mě možnost](./media/cloud-partner-portal-get-customer-leads/contact-me-image.png)
+    ![Kontakt mi – možnost](./media/cloud-partner-portal-get-customer-leads/contact-me-image.png)
 
-<a name="lead-data"></a>Vedoucí dat
+<a name="lead-data"></a>Data potenciálních zákazníků
 ---------
 
-Jednotlivé potenciální zákazníky, které obdržíte během procesu nákupu zákazníka má data v konkrétních polích. Vzhledem k tomu, že získáte potenciálních zákazníků z několika kroků, je nejlepší způsob, jak zpracovat zájemce zrušit duplicitní a přizpůsobit zpracování. Tímto způsobem každého zákazníka je stále odpovídající zprávu a vytváříte jedinečné spolupráci.
+Každý zájemce, kterého obdržíte během procesu pořízení zákazníka, má data v konkrétních polích. Vzhledem k tomu, že dostanete zájemce z více kroků, nejlepším způsobem, jak tyto zájemce zpracovat, je zrušit duplicitu a přizpůsobit následné. Tímto způsobem si jednotliví zákazníci dostanou příslušnou zprávu a vytváříte jedinečnou relaci.
 
-### <a name="lead-source"></a>Zdroje informací
+### <a name="lead-source"></a>Zdroj potenciálních zákazníků
 
-Formát pro zdroj potenciálních zákazníků je **zdroj**-**akce** |  **nabídky**
+Formát zdroje potenciálního zákazníka je **zdroj**-**akci** |  **nabídce** .
 
-**Zdroje**: "AzureMarketplace", "Generování auditních", "TestDrive" a "AppSource (SPZA)"
+**Zdroje**: "AzureMarketplace", "AzurePortal", "testdrive" a "APPSOURCE (SPZA)"
 
 **Akce**:
-- "In" – instalace. Tato akce je na webu Azure Marketplace nebo AppSource, když zákazník koupí produkt.
-- "Čas načtení stránky"--zastupuje partnera vedla zkušební verze. Tato akce je na AppSource když zákazník používá kontaktu mě možnost.
-- "DNC"--nekontaktujte. Tato akce je na AppSource, když se zkoušejí kontaktovat jako získá požadované partnerem, který byl křížové uvedené na stránce vaší aplikace. Sdílíme vedoucí nahoru, bylo daného zákazníka křížové uvedena ve vaší aplikaci, ale nemusí být kontaktován.
-- Tato akce "Vytvořit"--je pouze uvnitř na webu Azure Portal a se vygeneruje, když zákazník koupí nabídky ke svému účtu.
-- "StartTestDrive" – Tato akce je pouze pro testování jednotek a se vygeneruje, když zákazník spustí jejich testovací verze.
+- "INS" – instalace. Tato akce se provádí v Azure Marketplace nebo AppSource, když zákazník koupí váš produkt.
+- "PLT" – představuje zkušební verzi LED pro partnery. Tato akce se provádí v AppSource, když zákazník používá možnost kontakt mi.
+- "DNC" – nekontaktuje se. Tato akce se provádí na AppSource, když se partner, který jste provedli na stránce aplikace, vyžádá, aby kontaktoval. Sdílíme, že tento zákazník byl ve vaší aplikaci uveden výše, ale není potřeba ho kontaktovat.
+- "Vytvořit" – Tato akce je určena pouze v rámci webu Azure Portal a je generována, když zákazník koupí vaši nabídku na svůj účet.
+- "StartTestDrive" – Tato akce je určena pouze pro testovací jednotky a je generována, když zákazník spustí testovací jednotku.
 
-**Nabízí**
+**Nabídky**
 
-Následující příklady ukazují jedinečné identifikátory, které jsou přiřazeny k vydavatele a nabídky na konkrétní: checkpoint.check – bod r77-10sg-byol, bitnami.openedxcypress a docusign.3701c77e-1cfa - 4c 56-91e6-3ed0b622145a.
+Následující příklady znázorňují jedinečné identifikátory, které jsou přiřazeny vydavateli a konkrétní nabídce: Checkpoint. Check-Point-r77-10sg-BYOL, Bitnami. openedxcypress a Docusign. 3701c77e-1cfa-4c56-91e6-3ed0b622145a.
 
 
-### <a name="customer-info"></a>Informace o zákaznících
+### <a name="customer-info"></a>Informace o zákazníkovi
 
-Pole v následujícím příkladu se zobrazí informace o zákazníkovi, který je obsažen v zájemce.
-- Jméno: John
-- Příjmení: Smith
-- Email: jsmith\@microsoft.com
+Pole v následujícím příkladu ukazují informace o zákaznících, které jsou obsaženy v rámci zájemce.
+- FirstName: Jan
+- LastName: Smith
+- E-mail: JSmith\@microsoft.com
 - Telefon: 1234567890
-- Země: USA
+- Země: US
 - Společnost: Microsoft
-- Název: CTO
+- Název: technický ředitel
 
 >[!Note]
->Všechna data v předchozím příkladu je vždy k dispozici pro jednotlivé potenciální zákazníky.
+>Ne všechna data v předchozím příkladu jsou vždy k dispozici pro každého zájemce.
 
-Aktivně pracujeme na zlepšení potenciálních zákazníků, takže pokud je datové pole, který nezobrazí tady ale by měl mít prosím [pošlete nám svůj názor](mailto:AzureMarketOnboard@microsoft.com).
+Aktivně pracujeme na vylepšení zájemců, takže pokud existuje datové pole, které tady nevidíte, ale chcete, [pošlete nám](mailto:AzureMarketOnboard@microsoft.com)prosím svůj názor.
 
-<a name="how-to-connect-your-crm-system-with-the-cloud-partner-portal"></a>Jak se připojit váš systém CRM s portálem Cloud Partner
+<a name="how-to-connect-your-crm-system-with-the-cloud-partner-portal"></a>Postup připojení systému CRM pomocí portál partnerů cloudu
 ------------------------------------------------------------
 
-Pokud chcete začít, získávání potenciálních zákazníků, jsme vytvořili naši vést Management connector na portál Cloud Partner tak, že můžete snadno připojit vaše informace CRM a budeme spojení za vás. Teď dokáže snadno využít zájemců vygenerovaný na webu marketplace bez významných technického úsilí pro integraci s externím systémem.
+Abychom mohli začít s přijímáním zájemců, sestavili jsme náš konektor pro správu potenciálních zákazníků na portál partnerů cloudu, abyste mohli snadno připojit informace o CRM a my vám budeme připojení. Teď můžete snadno využít potenciální zákazníky vygenerované na webu Marketplace bez významného vývojového úsilí pro integraci s externím systémem.
 
-![Konektor může vést management](./media/cloud-partner-portal-get-customer-leads/lead-management-connector.png)
+![Konektor pro správu potenciálních zákazníků](./media/cloud-partner-portal-get-customer-leads/lead-management-connector.png)
 
-Nám můžete napsat zájemce do různých systémů CRM nebo přímo do služby Azure Storage tabulky ve kterém můžete spravovat zájemce ale chcete. Každý z následujících odkazů poskytují pokyny pro připojení k realizace cíle:
+Zájemce můžeme psát do celé řady systémů CRM nebo přímo do Azure Storage tabulky, kde můžete spravovat potenciální zákazníky. Každý z následujících odkazů obsahuje pokyny pro připojení k možným cílům potenciálních zákazníků:
 
--   [Dynamics CRM Online](./cloud-partner-portal-lead-management-instructions-dynamics.md) pokyny o tom, jak nakonfigurovat pro získání zájemců Dynamics CRM Online.
--   [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md) se zobrazí pokyny pro nastavení konfigurace služby Marketo vést k získání potenciálních zákazníků.
--    [Salesforce](./cloud-partner-portal-lead-management-instructions-salesforce.md) se zobrazí pokyny pro nastavení vaše instance Salesforce pro získání potenciálních zákazníků.
--    [Azure Table](./cloud-partner-portal-lead-management-instructions-azure-table.md) se zobrazí pokyny pro nastavení vašeho účtu úložiště Azure pro získávání potenciálních zákazníků v Azure table.
--   [Koncový bod HTTPS](./cloud-partner-portal-lead-management-instructions-https.md) se zobrazí pokyny pro nastavení vašeho koncového bodu Https pro získání potenciálních zákazníků.
+-   [Dynamics CRM Online](./cloud-partner-portal-lead-management-instructions-dynamics.md) vám umožní získat pokyny ke konfiguraci Dynamics CRM online za účelem získání zájemců.
+-   [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md) , kde najdete pokyny k nastavení konfigurace vedoucího služby Marketo k získání zájemců.
+-    [Salesforce](./cloud-partner-portal-lead-management-instructions-salesforce.md) , kde najdete pokyny k nastavení instance Salesforce pro získání potenciálních zákazníků.
+-    [Tabulka Azure](./cloud-partner-portal-lead-management-instructions-azure-table.md) , kde najdete pokyny k nastavení účtu Azure Storage pro získávání zájemců v tabulce Azure.
+-   [Koncovým bodem https](./cloud-partner-portal-lead-management-instructions-https.md) získáte pokyny k nastavení koncového bodu https, abyste získali zájemci.
 
-Po nakonfigurování cíl potenciálních zákazníků a publikování vaší nabídky, vytvoříme ověření připojení a odeslat testovací zájemce. Při zobrazení nabídky předtím, než můžete vysílat živě, můžete také otestovat připojení zájemce pokusu o získání nabídky v prostředí ve verzi preview. Je důležité, abyste měli jistotu, že vašeho pobytu nastavení zájemce aktuální tak, aby neztratili všechny potenciální zákazníky, proto se ujistěte, že je tato připojení aktualizovat pokaždé, když se něco změnilo na vaší straně.
+Po nakonfigurování cíle realizace a publikování vaší nabídky ověříme připojení a pošleme vám testovacího vedoucího. Při prohlížení nabídky před tím, než budete připraveni, můžete také otestovat své zájemce tím, že se pokusíte získat nabídku sami v prostředí verze Preview. Je důležité zajistit, aby vaše nastavení potenciálních zákazníků zůstalo v aktuálním stavu, takže nepřijdete o žádné zájemce, proto nezapomeňte aktualizovat tato připojení, kdykoli se na konci změnila nějaká změna.
 
 <a name="what-next"></a>Co dál?
 ----------
 
-Po technické nastavení je na místě, by měl obsahovat těchto potenciálních zákazníků na aktuální prodejní a marketingové strategie a provozních procesů. Máme hodně zajímá lépe pochopit celkový prodej zpracování a chcete úzce spolupracovat s vámi na poskytování vysoce kvalitní zájemce a dostatek dat, které vám zajistí úspěch. Vítáme váš názor na jsme způsob optimalizace a Vylepšete si potenciální zákazníci, který jsme vám poslali s dalšími daty, abyste se mohli úspěšně tito zákazníci. Dejte nám vědět, pokud máte zájem [poskytování zpětné vazby](mailto:AzureMarketOnboard@microsoft.com) a návrhy pro prodejní tým mohl být větších úspěchů s Marketplace vede umožní.
+Až bude technická instalace zavedena, měli byste tyto zájemce začlenit do své aktuální prodejní & strategie a provozní procesy. Máme na vědomí lepší přehled o celkovém prodejním procesu a poznáte s vámi, abyste měli k dispozici vysoce kvalitní zájem a dostatečné množství dat, abychom vám tak mohli úspěšně probíhat. Uvítáme vaše názory na to, jak můžeme optimalizovat a zdokonalovat zájemce, abychom vám poslali další data, abychom těmto zákazníkům pomohli zajistit úspěch. Dejte nám prosím vědět, pokud máte zájem o [poskytování zpětné vazby](mailto:AzureMarketOnboard@microsoft.com) a návrhů, které umožní vašemu prodejnímu týmu získat větší úspěšnost s zájemci na webu Marketplace.

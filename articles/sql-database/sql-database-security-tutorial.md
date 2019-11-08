@@ -1,5 +1,5 @@
 ---
-title: Zabezpečení jedné nebo sdružené databáze v Azure SQL Database
+title: Zabezpečení jedné nebo sdružené databáze
 description: Kurz, který vás seznámí s technikami a funkcemi pro zabezpečení jedné nebo sdružené databáze v Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 44fd49c391f4c6cddf24e3fddd7fa85a0d5ea4f2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 05ea21f7b3221425e5b052797d79e629fdfe3ba5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687429"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818040"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Kurz: zabezpečení jedné nebo sdružené databáze
 
@@ -334,7 +334,7 @@ Povolení nebo ověření šifrování:
     ![Transparentní šifrování dat](./media/sql-database-security-tutorial/encryption-settings.png)
 
 > [!NOTE]
-> Pokud chcete zobrazit stav šifrování, připojte se k databázi pomocí [SSMS](./sql-database-connect-query-ssms.md) a proveďte dotaz na sloupec `encryption_state` zobrazení [Sys. DM _database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) . Stav `3` označuje, že databáze je zašifrovaná.
+> Chcete-li zobrazit stav šifrování, připojte se k databázi pomocí [SSMS](./sql-database-connect-query-ssms.md) a proveďte dotaz na sloupec `encryption_state` zobrazení [Sys. dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) . Stav `3` označuje, že databáze je zašifrovaná.
 
 ## <a name="next-steps"></a>Další kroky
 

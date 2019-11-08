@@ -4,15 +4,16 @@ description: Jak používat soukromé SKU ke správě dostupnosti nabídky
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: pabutler
-ms.openlocfilehash: 940b50cf4a04abacd4d7be2104dd97fb8b3db736
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: eb6eac5eafaeea239bfaf9cf2aface3db659dd57
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883115"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818836"
 ---
 <a name="private-skus-and-plans"></a>Soukromé SKU a plány
 ============
@@ -65,7 +66,7 @@ V případě aktualizací imagí budete potřebovat jenom aktualizaci image pův
 Soukromé nabídky lze najít a nasadit pouze cílené uživatele.
 V současné době podporujeme cílení uživatelů pomocí ID předplatných.
 
-Tyto odběry je možné zadat prostřednictvím ručního vstupního formuláře **až po 10**předplatných nebo nahráním souboru CSV, který umožňuje **až 20 000**předplatných.
+Tyto odběry je možné zadat prostřednictvím ručního vstupního formuláře **až po 10 předplatných**nebo nahráním souboru CSV, který umožňuje **až 20 000 předplatných**.
 
 Ruční zadání pro skupinu s omezeným přístupem:
 
@@ -98,7 +99,7 @@ Pokud používáte rozhraní API a nechcete spravovat soubor CSV, můžete sprav
 
 ###  <a name="managing-subscriptions-with-the-api"></a>Správa předplatných pomocí rozhraní API
 
-Rozhraní API můžete použít buď k nahrání sdíleného svazku clusteru, nebo k přímé správě cílové skupiny (bez použití sdíleného svazku clusteru). Obecně stačí jednoduše načíst nabídku, aktualizovat `restrictedAudience` objekt a následně tyto změny odeslat zpět do vaší nabídky, aby bylo možné přidat nebo odebrat členy cílové skupiny.
+Rozhraní API můžete použít buď k nahrání sdíleného svazku clusteru, nebo k přímé správě cílové skupiny (bez použití sdíleného svazku clusteru). Obecně stačí jednoduše načíst vaši nabídku, aktualizovat objekt `restrictedAudience` a pak tyto změny odeslat zpět do vaší nabídky, aby bylo možné přidat nebo odebrat členy cílové skupiny.
 
 Tady je postup, jak programově aktualizovat seznam cílových skupin:
 
@@ -136,7 +137,7 @@ Tady je postup, jak programově aktualizovat seznam cílových skupin:
 
     c. Nahrajte aktualizovaný soubor CSV do umístění, jako je [Azure Blob Storage](../../storage/blobs/storage-blobs-overview.md) nebo [OneDrive](https://onedrive.live.com), a vytvořte odkaz na soubor určený jen pro čtení. Toto bude váš nový *SasUrl*.
 
-    d. Aktualizujte klíč pomocí nového *SasUrl.* `restrictedAudience.uploadedCsvUri`
+    d. Aktualizujte `restrictedAudience.uploadedCsvUri` klíč pomocí nového *SasUrl*.
 
     **Pokud jste ručně zadali původní seznam předplatných pro Vaši soukromou nabídku z portál partnerů cloudu:**
 
@@ -156,7 +157,7 @@ Tady je postup, jak programově aktualizovat seznam cílových skupin:
         ]}
     ```
 
-    a. Pro každý objekt skupiny s omezeným přístupem přidejte nebo odstraňte položky `restrictedAudience.manualEntries` v seznamu podle potřeby.
+    a. Pro každý objekt skupiny s omezeným přístupem přidejte nebo odstraňte položky v seznamu `restrictedAudience.manualEntries` podle potřeby.
 
 4. Až se dokončí aktualizace všech *restrictedAudience* objektů pro každou SKU vaší soukromé nabídky, [aktualizujte nabídku](cloud-partner-portal-api-creating-offer.md):
 

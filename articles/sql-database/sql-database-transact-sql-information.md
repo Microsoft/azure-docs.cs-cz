@@ -1,5 +1,5 @@
 ---
-title: Řešení rozdílů v T-SQL – migrace Azure SQL Database
+title: Řešení rozdílů v T-SQL – migrace
 description: Příkazy jazyka Transact-SQL, které služba Azure SQL Database plně nepodporuje
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: edb978e27621cbc0df66ab32ba7472629c3f8bd1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 15c661a1ef917dcf73b5a86cd450c94a35b08c88
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686931"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822484"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Řešení rozdílů v jazyce Transact-SQL během migrace na SQL Database
 

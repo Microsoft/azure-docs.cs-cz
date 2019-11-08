@@ -1,5 +1,5 @@
 ---
-title: Provozní úložiště dotazů v Azure SQL Database
+title: Provozování úložiště dotazů
 description: Naučte se pracovat s úložištěm dotazů v Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: b4f999818fe3b3517ee3fb48c22e616ee50f2d88
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fa60992c85e69143bfd65cc1a1f420ed85c8fd93
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567151"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802770"
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>Provozování úložiště dotazů v Azure SQL Database
 
@@ -31,13 +31,13 @@ ms.locfileid: "68567151"
 
 Tato část popisuje optimální výchozí nastavení konfigurace, která jsou navržená tak, aby zajistila spolehlivé fungování úložiště dotazů a závislých funkcí, jako je například [SQL Database Advisor a řídicí panel výkonu](https://azure.microsoft.com/updates/sqldatabaseadvisorga/). Výchozí konfigurace je optimalizovaná pro kontinuální shromažďování dat, což je minimální čas strávený ve stavu vypnuto/READ_ONLY.
 
-| Konfiguraci | Popis | Výchozí | Komentář |
+| Konfigurace | Popis | Výchozí | Poznámka |
 | --- | --- | --- | --- |
 | MAX_STORAGE_SIZE_MB |Určuje limit pro datový prostor, který může úložiště dotazů převzít v rámci databáze zákazníka. |100 |Vynutilo pro nové databáze |
 | INTERVAL_LENGTH_MINUTES |Definuje velikost časového okna, během kterého se shromažďují a uchovávají shromážděné statistiky za běhu pro plány dotazů. Každý aktivní plán dotazu má po dobu definovanou v této konfiguraci maximálně jeden řádek. |60 |Vynutilo pro nové databáze |
 | STALE_QUERY_THRESHOLD_DAYS |Zásady čištění založené na čase, které řídí dobu uchování trvalých statistik za běhu a neaktivní dotazy |30 |Vynutilo pro nové databáze a databáze s předchozí výchozí (367) |
-| SIZE_BASED_CLEANUP_MODE |Určuje, jestli se má automaticky vyčistit data, když se blíží limitu velikosti dat úložiště dotazů. |AUTO |Vynutilo pro všechny databáze |
-| QUERY_CAPTURE_MODE |Určuje, zda jsou sledovány všechny dotazy nebo pouze podmnožina dotazů. |AUTO |Vynutilo pro všechny databáze |
+| SIZE_BASED_CLEANUP_MODE |Určuje, jestli se má automaticky vyčistit data, když se blíží limitu velikosti dat úložiště dotazů. |AUTOMATICKY |Vynutilo pro všechny databáze |
+| QUERY_CAPTURE_MODE |Určuje, zda jsou sledovány všechny dotazy nebo pouze podmnožina dotazů. |AUTOMATICKY |Vynutilo pro všechny databáze |
 | FLUSH_INTERVAL_SECONDS |Určuje maximální dobu, během které jsou zachycená běhová Statistika udržována v paměti, než se vyprázdní na disk. |900 |Vynutilo pro nové databáze |
 |  | | | |
 

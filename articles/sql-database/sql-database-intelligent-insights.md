@@ -1,5 +1,5 @@
 ---
-title: Monitorování výkonu databáze pomocí Intelligent Insights-Azure SQL Database
+title: Monitorování výkonu databáze pomocí Intelligent Insights
 description: Azure SQL Database Intelligent Insights pomocí integrovaných inteligentních funkcí průběžně monitoruje využití databáze prostřednictvím umělých inteligentních funkcí a detekuje rušivé události, které způsobují špatný výkon.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: c073b535271ba8f9f11e17ba5203b13e257e211b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bd42117b384b9e384d59f9f4298c937135cafd34
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689676"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810174"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Intelligent Insights používání AI k monitorování a řešení potíží s výkonem databáze
 
@@ -147,7 +147,7 @@ Vygenerované přehledy obsahují počet požadavků s časovým limitem a poče
 
 ## <a name="excessive-wait-times"></a>Nadměrné doby čekání
 
-Model nadměrné doby čekání sleduje jednotlivé databázové dotazy. Detekuje neobvykle vysoké statistiky čekání na dotaz, které překračují absolutní prahové hodnoty spravované systémem. Následující dotaz nenáročné metriky čekací doby jsou pozorovány pomocí nové funkce SQL Server, Statistika čekání úložiště dotazů (sys. query_store_wait_stats):
+Model nadměrné doby čekání sleduje jednotlivé databázové dotazy. Detekuje neobvykle vysoké statistiky čekání na dotaz, které překračují absolutní prahové hodnoty spravované systémem. Pomocí nové funkce SQL Server se pozorují následující dotazy nadměrného čekacích časů, statistiky čekání v úložišti dotazů (sys. query_store_wait_stats):
 
 - Dosažení limitů prostředků
 - Dosažení limitů prostředků elastického fondu

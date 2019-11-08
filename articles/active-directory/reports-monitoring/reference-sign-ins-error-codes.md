@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 931f2fbe5798966c41378d9b401dcd59cafc5cca
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 9bb7114611ce5c7eabb8124ad11db64d50e12946
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820871"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809825"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kódy chyb sestav aktivit přihlašování 
 
@@ -127,6 +127,7 @@ Pomocí [rozhraní API pro vytváření sestav](concept-reporting-api.md)můžet
 |50177|Pro průchozí uživatele není externí výzva podporována.|
 |50178|Řízení relace není pro průchozí uživatele podporováno.|
 |50180|Vyžaduje se integrované ověřování systému Windows. Povolte tenantovi bezproblémové jednotné přihlašování.|
+|50181|Chyba související s jednorázovým heslem při přihlašování |
 |50201|Toto přerušení výzvy zprávy se uživateli zobrazí během přihlašování, pokud je třeba poskytnout další informace uživateli.|
 |51001|Pomocný parametr domény není k dispozici u místního identifikátoru zabezpečení místního hlavního názvu uživatele (UPN).|
 |51004|Uživatelský účet v adresáři neexistuje.|
@@ -187,7 +188,7 @@ Pomocí [rozhraní API pro vytváření sestav](concept-reporting-api.md)můžet
 |530032|Blokováno zásadami zabezpečení.| 
 |700016|Aplikace s identifikátorem {appIdentifier} se nenašla v adresáři {tenant}. K tomu může dojít, pokud aplikace nebyla nainstalována správcem tenanta nebo odsouhlasena žádným uživatelem v tenantovi. Je možné, že jste odeslali žádost o ověření na špatného tenanta.|
 |900432|Důvěrného klienta není v žádosti mezi cloudy podporován.|
-|7000218|Tělo žádosti musí obsahovat následující parametr: ' client_assertion ' nebo ' client_secret '.|
+|7000218|Tělo žádosti musí obsahovat následující parametr: client_assertion nebo client_secret.|
 
 
 ## <a name="next-steps"></a>Další kroky

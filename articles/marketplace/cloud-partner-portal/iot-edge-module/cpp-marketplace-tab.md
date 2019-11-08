@@ -1,102 +1,103 @@
 ---
-title: Popis webu Marketplace pro modul služby Azure IoT Edge | Azure Marketplace
-description: Vytvořte popis marketplace pro modul IoT Edge.
+title: Popis Marketplace pro modul Azure IoT Edge | Azure Marketplace
+description: Vytvoří popis Marketplace pro modul IoT Edge.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: aa0c908e18233926965d8dc3cd1b474f876b8dda
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57bae42eb44c174657e59fa8b017da2931ae681b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942432"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814604"
 ---
-# <a name="iot-edge-module-marketplace-tab"></a>Kartu Marketplace modul IoT Edge
+# <a name="iot-edge-module-marketplace-tab"></a>Karta tržiště modulu IoT Edge
 
-**Marketplace** karty **nová nabídka** stránky umožňuje, aby pomáhala potenciálním zákazníkům poskytnout marketing, prodej a právní informace a smluv a správu generují z potenciálních zákazníků Marketplace. Tento formulář dlouhý je rozdělen na čtyři části: **Přehled**, **marketingové artefakty**, **vést správu**, a **právní**.
+Karta **tržiště** na **nové stránce nabídky** vám umožní poskytnout potenciálním zákazníkům marketingové, prodejní a právní informace a smlouvy a spravovat zájemce vygenerované z webu Marketplace. Tato dlouhá forma je rozdělená na čtyři části: **Přehled**, **marketingové artefakty**, **řízení vedoucích**a **právní**.
 
 
 ## <a name="overview"></a>Přehled
 
-V této části zadáte obecné informace o nabídky Azure Marketplace.  Hvězdičku (*) připojeným k názvu pole označuje, že je to požadováno.
+V této části zadáte obecné informace o vaší nabídce Azure Marketplace.  Hvězdička (*), která je připojena k názvu pole, označuje, že je požadováno.
 
-![Přehled část Marketplace kartě na formulář Nová nabídka pro moduly IoT Edge](./media/iot-edge-module-marketplace-tab-overview.png)
+![Oddíl přehled na kartě Marketplace na novém formuláři nabídky pro moduly IoT Edge](./media/iot-edge-module-marketplace-tab-overview.png)
 
-Následující tabulka popisuje účel a obsah těchto polí. Povinná pole jsou uvést hvězdičkou (*).
+Následující tabulka popisuje účel a obsah těchto polí. Požadovaná pole jsou indicted hvězdičkou (*).
 
 |  **Pole**                |     **Popis**                                                          |
 |  ---------                |     ---------------                                                          |
-| **Název\***                 | Název nabídky. Se bude zobrazovat výrazném místě na webu Marketplace.  Maximální délka 50 znaků. <!--ADD PICTURE IN ACTION-->|
-| **Souhrn\***               | Krátký popis nabídky Delší než 100 znaků. <!--ADD PICTURE IN ACTION-->|
-| **Dlouhé shrnutí\***          | Už souhrn nabídky (i když může být stejná jako **souhrnu**).  Delší než 256 znaků. <!--ADD PICTURE IN ACTION-->|
-| **Popis\***           | Popis nabídky.  3000 znaků podporuje jednoduchý formátování HTML.<br/> Musí obsahovat *minimální požadavky na hardware* odstavce v dolní části. Příklad: <br/> <p><u>Minimální požadavky na hardware:</u> Linux x64 a arm32 operační systém, 1 GB paměti RAM, 500 Mb úložiště</p>
-| **Identifikátor marketing\***  | Jedinečnou adresu URL pro přidružení k této nabídce obvykle zahrnuje vaší organizace a název řešení, maximální délka 50 znaků.  Příklad: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
-| **ID předplatných ve verzi Preview** | Přidejte jeden až 100 identifikátorů předplatného náhledy. Tato předplatná uvedená prázdné budou mít přístup do nabídky publikovaný produkt, než přejde za provozu. |
-| **Užitečné odkazy**          | Vícenásobného výběru obchodní a technické kategorií, které nabízejí lze nejlépe přidružit.  Maximálně 10 povolené. Ujistěte se, že chcete přidat alespoň jeden odkaz na dokumentaci a jedno propojení kompatibilních zařízení IoT Edge z [katalog zařízení Azure IoT](https://catalog.azureiotsolutions.com/). |
-| **Navrhované kategorií\*** | Můžete si vyberte až o pěti kategorií. Že se zobrazí na vaší stránce s podrobnostmi o produktu. Na stránkách procházet všechny moduly IoT Edge se zobrazí pod *Internet of Things \> modul IoT Edge* kategorie.|
+| **\* názvu**                 | Název nabídky Bude se zobrazovat na webu Marketplace na místě.  Maximální délka 50 znaků. <!--ADD PICTURE IN ACTION-->|
+| **Souhrn\***               | Krátké shrnutí nabídky Maximální délka 100 znaků. <!--ADD PICTURE IN ACTION-->|
+| **Dlouhý souhrn\***          | Delší souhrn nabídky (i když by to bylo stejné jako u **souhrnu**).  Maximální délka 256 znaků. <!--ADD PICTURE IN ACTION-->|
+| **Popis\***           | Popis nabídky  Maximální délka 3000 znaků podporuje jednoduché formátování HTML.<br/> V dolní části musí být uveden *minimální odstavec požadavků na hardware* . například: <br/> <p><u>Minimální požadavky na hardware:</u> Linux x64 a arm32 OS, 1 GB paměti RAM, 500 MB úložiště</p>
+| **\* identifikátoru marketingu**  | Jedinečná adresa URL, která se má přidružit k této nabídce, obvykle zahrnuje vaši organizaci a název řešení, maximální délka 50 znaků.  Příklad: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
+| **Náhled ID předplatných** | Přidejte jednu až 100 identifikátorů předplatného pro náhledy. Po publikování těchto bílých předplatných budou mít přístup k této nabídce k dispozici, než budou živá. |
+| **Užitečné odkazy**          | Vícenásobné výběry obchodních a technických kategorií, které nabízejí možnost být nejlépe přidruženy k.  Maximální povolená hodnota je 10. Nezapomeňte přidat aspoň jeden odkaz na svou dokumentaci a jeden odkaz na kompatibilní IoT Edge zařízení z [katalogu zařízení Azure IoT](https://catalog.azureiotsolutions.com/). |
+| **Navrhované kategorie\*** | Vyberte až pět kategorií. Zobrazí se na stránce s informacemi o produktu. Na stránkách procházet jsou všechny IoT Edge moduly zobrazeny v kategorii *modulu IoT Edge Internet věcí \>* .|
 |  |  |
 
 
 ### <a name="offer-example"></a>Příklad nabídky
 
- Následující příklady ukazují jak nabídky **Title**, **Souhrn**, **popis**, **loga**, a **snímky obrazovky** pole se zobrazí v zobrazení.
+ Následující příklady ukazují, jak se pole **název**nabídky, **Souhrn**, **Popis**, **loga**a **snímky obrazovky** zobrazují v různých zobrazeních.
 
  
 #### <a name="on-the-azure-marketplace-website"></a>Na webu Azure Marketplace:
 
-- Při procházení nabídky:
+- Při procházení nabízí:
 
-    ![Jak se zobrazují nabídky na webu marketplace na webu Azure Marketplace – procházení](./media/iot-edge-module-ampdotcom-card.png)
+    ![Jak se zobrazují nabídky Marketplace na Azure Marketplace webu – Procházet](./media/iot-edge-module-ampdotcom-card.png)
 
-- Při prohlížení podrobnosti nabídky:
+- Při prohlížení podrobností nabídky:
 
-    ![Jak modul IoT Edge se zobrazí při hledání podrobnosti o produktu na webu](./media/iot-edge-module-ampdotcom-pdp.png)
-
-
-#### <a name="on-the-azure-portal-website"></a>Na webu Azure portal:
-
-- Při procházení nabídky:
-
-    ![Jak modul IoT Edge se zobrazí při procházení webu Azure portal #1](./media/iot-edge-module-portal-browse.png)
-
-    ![Jak modul IoT Edge se zobrazí při procházení webu Azure portal #2](./media/iot-edge-module-portal-product-picker.png)
-
-- Při hledání v rámci nabídky:
-
-    ![Jak modul IoT Edge se zobrazí při vyhledávání na webu Azure portal](./media/iot-edge-module-portal-search.png)
-
-- Při prohlížení podrobnosti nabídky:
-
-    ![Jak modul IoT Edge se zobrazí při hledání podrobnosti o produktu na portálu](./media/iot-edge-module-portal-pdp.png)
+    ![Jak se IoT Edge modul zobrazuje při prohlížení podrobností produktu na webu](./media/iot-edge-module-ampdotcom-pdp.png)
 
 
-## <a name="marketing-artifacts"></a>Artefakty marketing
+#### <a name="on-the-azure-portal-website"></a>Na webu Azure Portal:
 
-Tato část obsahuje následující témata: **Loga**, **snímek obrazovky**, a **videa**. 
+- Při procházení nabízí:
+
+    ![Jak se IoT Edge modul zobrazuje při procházení Azure Portal #1](./media/iot-edge-module-portal-browse.png)
+
+    ![Jak se IoT Edge modul zobrazuje při procházení Azure Portal #2](./media/iot-edge-module-portal-product-picker.png)
+
+- Při hledání nabídky:
+
+    ![Jak se IoT Edge modul zobrazuje při hledání Azure Portal](./media/iot-edge-module-portal-search.png)
+
+- Při prohlížení podrobností nabídky:
+
+    ![Jak se IoT Edge modul zobrazuje při prohlížení podrobností o produktu na portálu](./media/iot-edge-module-portal-pdp.png)
+
+
+## <a name="marketing-artifacts"></a>Marketingové artefakty
+
+Tato část obsahuje následující pododdíly: **loga**, snímky **obrazovky**a **videa**. 
 
 >[!Note]
->Loga jsou pouze požadované marketingové artefakty, ale všechny důrazně doporučujeme pro nejlepší odvolání zákazníka.
+>Jsou to jedinými požadovanými artefakty marketingu, ale u nich se důrazně doporučuje nejlepšího odvolání od zákazníka.
 
-![Marketingové artefakty části Marketplace karty ve formuláři nová nabídka pro virtuální počítače](./media/publishvm_009.png)
+![Část marketingové artefakty na kartě Marketplace na novém formuláři nabídky pro virtuální počítače](./media/publishvm_009.png)
 
 |  **Pole**                |     **Popis**                                                          |
 |  ---------                |     ---------------                                                          |
-| *Loga*  | Podívejte se, že pokud chcete zobrazit, jak a kde se použije vašeho loga zachycuje na předchozí obrazovku.  |
-| **Malé\***                 | 40 x 40 Pixelový formát PNG                                                     |
-| **Střední\***                | Formát PNG 90 x 90 pixelů                                                     |
-| **Velké\***                 | Formát PNG 115 x 115 pixelů                                                  |
-| **Široký\***                  | Formát PNG 255 x 115 pixelů                                                   |
-| **Hero**                  | Formát PNG 815 x 290 pixelů.  Volitelné, ale jednou nahrané ikonu hero nelze odstranit. |
-| *Snímky obrazovky*  | Snímky obrazovky se zobrazí na vaší stránce s podrobnostmi o produktu. Jsou vhodné k vizuálnímu zobrazení činnosti modulu IoT Edge a jak to funguje. Můžete zobrazit diagramy architektury nebo použít případu obrázky pro instanci. Volitelné, ale maximálně pěti snímků obrazovky na SKU. |
-| **Název**                  | Název nebo název. Delší než 100 znaků.                             |
-| **Image**                 | Snímek obrazovky, 533 x 324 Pixelový formát PNG                               |
-| *Videa*  | Videa se zobrazí na vaší stránce s podrobnostmi o produktu. Jsou vhodné k vizuálnímu zobrazení činnosti modulu IoT Edge a jak to funguje. |
-| **Název**                  | Název nebo název. Delší než 100 znaků.                             |
-| **Odkaz**                  | Adresa URL videa, hostované na YouTube nebo Vimeo                                        |
-| **Miniatura**             | Formát PNG 533 x 324 pixelů                                                     |
+| *Značk*  | Podívejte se na předchozí snímek obrazovky a zjistěte, jak a kde se budou používat vaše loga.  |
+| **Malá\***                 | Formát PNG 40x40 pixelů                                                     |
+| **Střední\***                | Formát PNG 90x90 pixelů                                                     |
+| **Velké\***                 | Formát PNG 115x115 pixelů                                                  |
+| **Roztažitelné\***                  | Formát PNG 255x115 pixelů                                                   |
+| **Hero**                  | Formát PNG 815x290 pixel.  Volitelné, ale po nahrání ikony Hero nejde odstranit. |
+| *Snímky obrazovky*  | Snímky obrazovky se zobrazí na stránce s informacemi o produktu. Představují dobrý způsob, jak vizuálně informovat o tom, co váš IoT Edge modul dělá a jak funguje. Pro instanci můžete zobrazit diagramy architektury nebo ilustrace případu použití. Volitelné, ale maximálně pět snímků obrazovky na SKU. |
+| **Název**                  | Název nebo název Maximální délka 100 znaků.                             |
+| **Image**                 | Obrázek snímku obrazovky, formát PNG 533x324 pixelů                               |
+| *Videa*  | Videa se zobrazí na stránce s informacemi o produktu. Představují dobrý způsob, jak vizuálně informovat o tom, co váš IoT Edge modul dělá a jak funguje. |
+| **Název**                  | Název nebo název Maximální délka 100 znaků.                             |
+| **Odkaz**                  | Adresa URL videa hostovaná na YouTube nebo Vimeo                                        |
+| **Miniatuře**             | Formát PNG 533x324 pixelů                                                     |
 |  |  |
 
 
@@ -105,28 +106,28 @@ Tato část obsahuje následující témata: **Loga**, **snímek obrazovky**, a 
 <!-- It seems like this section could be better located in some common area, maybe an AMP Marketing/Design section 
 +1 this should all be in a common area and referenced from here to that location.-->
 
-Všechny loga nahráli na portál Cloud Partner postupujte podle pokynů:
+Všechna loga odeslaná na portál partnerů cloudu by měla postupovat podle pokynů:
 
-*  Design Azure má jednoduchou paletu barev. Zachovat počet primární a sekundární barvy na vaše logo nízké.
-*  Jsou bílé barvy motivu na webu Azure Portal a černé. Vyhněte se použití tyto barvy jako barva pozadí pro vašeho loga. Použijte barvu, která způsobí, že vaše loga viditelného na webu Azure Portal. Doporučujeme použít jednoduché primární barvy. Pokud používáte průhledným pozadím, ujistěte se, že nejsou loga/text bílé, černá a modrá.
-*  Nepoužívejte barevného přechodu pozadí na vaše logo.
-*  Předejde text – dokonce i vaše společnost nebo název značky – na loga. Vzhled a chování vašeho loga musí být "ploché" a přechody se měli vyhnout.
-*  Logo není stretch.
+*  Design Azure má jednoduchou paletu barev. Ponechte počet primárních a sekundárních barev v logu nízký.
+*  Barvy motivu webu Azure Portal jsou bílé a černé. Vyhněte se použití těchto barev jako barvy pozadí pro vaše loga. Použijte barvu, která bude mít v Azure Portal výrazným logem. Doporučujeme použít jednoduché primární barvy. Pokud používáte průhledné pozadí, zajistěte, aby se loga/text nepoužívala bílá, černá nebo modrá.
+*  Nepoužívejte na svém logu pozadí přechodu.
+*  Vyhněte se umístění textu, dokonce i názvu vaší společnosti nebo značky – na logo. Vzhled a chování loga by mělo být "ploché" a mělo by se vyhnout přechodu.
+*  Nepřizpůsobujte logo.
 
 
 #### <a name="hero-logo"></a>Hero logo
 
-Hero logo je volitelné.
+Logo Hero je volitelné.
 
 >[!Important]
->Po nahrání loga Hero nelze odstranit.
+>Po nahrání loga Hero se nedají odstranit.
 
-Pomocí následujících pokynů pro Hero logo: 
+Pro logo Hero použijte následující pokyny: 
 
-*  Nejsou povoleny černou, bílou a průhledné pozadí.
-*  Vyhněte se použití jakékoli světlé barevné jako pozadí loga.  Vydavatel zobrazovaný název, plán nadpis a nabídky, dlouhé shrnutí se zobrazují Barva písma bílé a musí být pozadí.
-*  Vyhněte se použití Většina textu při navrhování loga. Název vydavatele, název plánu, nabídky, dlouhé shrnutí a tlačítko Vytvořit jsou vložené prostřednictvím kódu programu uvnitř logo při jejím uvedené. 
-* Patří nevyužité obdélníkové místo na pravé straně hero logo. Toto prázdné místo je 415 × 100 pixelů a posun od levé 370 pixelů.  
+*  Černá, bílá a průhledná pozadí nejsou povoleny.
+*  Vyhněte se použití jakékoli světlé barvy jako pozadí loga.  Zobrazované jméno vydavatele, název plánu a celková doba nabídky se zobrazí v barvě bílého písma a musí se vystavit na pozadí.
+*  Nepoužívejte většinu textu při navrhování loga. V případě, že je nabídka uvedena, jsou do loga vložena pole název vydavatele, název plánu, dlouhý souhrn nabídky a tlačítko vytvořit. 
+* Zahrňte nepoužívané obdélníkové místo na pravé straně loga Hero. Toto prázdné místo je 415x100 pixelů a posun od levého po 370 pixelů.  
 
 <!-- P2: woudl be nice to also have an picture int he context of iot edge of the hero image
 As an example, the following hero icon is for the Azure Container Service.
@@ -137,19 +138,19 @@ As an example, the following hero icon is for the Azure Container Service.
 
 ## <a name="lead-management"></a>Správa potenciálních zákazníků
 
-Tato část umožňuje nastavení možnosti k shromažďování údajů o zákazníkovi vede generované z nabídky na webu Azure Marketplace. Z rozevíracího seznamu můžete vybrat následující možnosti úložiště.
+V této části můžete nastavit možnosti pro shromažďování zájemců od zákazníků vygenerovaných z vašich nabídek Azure Marketplace. Z rozevíracího seznamu můžete vybrat následující možnosti úložiště.
 
-* **Žádný** – výchozí informace o zájemcích nejsou shromažďována.
-* Azure Table - zapisovat do tabulky Azure, který je zadán pomocí připojovacího řetězce.
-* Dynamics CRM Online – zapsána do [Microsoft Dynamics 365 Online](https://dynamics.microsoft.com/) instance určené parametrem adresu URL a ověřování pověření.
-* Koncový bod HTTPS - zapsána do zadaného koncového bodu HTTPS jako datovou část JSON.
-* Marketo - zapisovat na daný [Marketo](https://www.marketo.com/) instance určené ID serveru, munchkin ID a ID formuláře.
-* Salesforce – zapsána do [Salesforce](https://www.salesforce.com/) databáze určené parametrem identifikátor objektu.
+* **Žádné** – výchozí informace o zájemci nejsou shromažďovány.
+* Tabulka Azure – zapisuje se do tabulky Azure určené připojovacím řetězcem.
+* Dynamics CRM Online – zapisuje se do [online instance Microsoft Dynamics 365](https://dynamics.microsoft.com/) určené adresou URL a přihlašovacími údaji ověřování.
+* Koncový bod HTTPS – zapisuje do zadaného koncového bodu HTTPS jako datovou část JSON.
+* Marketo – zapsané do zadané instance [Marketo](https://www.marketo.com/) , určené ID serveru, ID Munchkin a ID formuláře.
+* Salesforce – zapsáno do databáze [Salesforce](https://www.salesforce.com/) určené identifikátorem objektu.
 
-Po úspěšném publikování vaší nabídky, ověření připojení potenciálních zákazníků a vedoucí test je automaticky odeslán do cíle, které jste nakonfigurovali. 
+Po úspěšném publikování vaší nabídky se ověří připojení zájemce a vedoucí testu se automaticky pošle do cílového umístění, které jste nakonfigurovali. 
 
 >[!Note]
->Vedoucí informace by měly být spravovány průběžně a tato nastavení by být okamžitě aktualizovat pokaždé, když dojde ke změně vaší architektury správy zákazníka.
+>Informace o potenciálních zákaznících by se měly průběžně spravovat a tato nastavení by se měla zobrazit výzva k aktualizaci vždy, když provedete změny v architektuře správy zákazníků
 
 <!-- there is missing some marketing imagess
 1. inside azure portal the wide logo/regular logo
@@ -160,16 +161,16 @@ Po úspěšném publikování vaší nabídky, ověření připojení potenciál
 
 ## <a name="legal"></a>Právní informace
 
-Tato část umožňuje poskytnout dvě právní dokumenty, které jsou požadovány pro každou nabídku: Zásady ochrany osobních údajů a podmínky použití.
+V této části můžete zadat dva právní dokumenty, které jsou potřeba pro jednotlivé nabídky: zásady ochrany osobních údajů a podmínky použití.
 
 |  **Pole**                    |     **Popis**                                                          |
 |  ---------                    |     ---------------                                                          |
-| **Adresa URL zásad ochrany osobních údajů\***      | Adresa URL zásad odeslaných ochrany osobních údajů                                            |
-| **Použít standardní Constract\***  | Určuje, zda použít standardní šablonu smlouvy od Microsoftu.  Další informace najdete v tématu [standardní smlouvy](https://docs.microsoft.com/azure/marketplace/standard-contract).   |
-| **Podmínky použití\***            | *Podmínky použití* jako vložený jednoduchý HTML nebo odkaz na svoje odeslaných podmínky použití stránky     |
+| **Adresa URL zásad ochrany osobních údajů\***      | Adresa URL vašich publikovaných zásad ochrany osobních údajů                                            |
+| **Použít standardní\* Constract**  | Určuje, zda má být použita standardní šablona smlouvy Microsoft.  Další informace najdete v tématu [standardní smlouva](https://docs.microsoft.com/azure/marketplace/standard-contract).   |
+| **Podmínky použití\***            | *Podmínky použití* jako vložený jednoduchý HTML nebo odkaz na stránku publikovaných podmínek použití     |
 |  |  |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Použití [podporují](./cpp-support-tab.md) kartu a zadat uživatele a technické podpory prostředků pro vaši nabídku.
+Kartu [Podpora](./cpp-support-tab.md) použijte k poskytnutí prostředků technické podpory a podpory uživatelů pro vaši nabídku.

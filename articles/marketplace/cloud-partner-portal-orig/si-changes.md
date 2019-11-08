@@ -1,58 +1,59 @@
 ---
-title: Zpráva k vydání verze Insights prodejce
-description: Poskytuje informace o změnách funkce prodejce přehledů.
+title: Poznámky k verzi prodejce Insights
+description: Poskytuje informace o změnách funkce prodejce Insights.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 3/3/2019
 ms.author: pabutler
-ms.openlocfilehash: c6e9e4fe672c7e171ed4b1cd60655f9e71a562e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f7e461241793b27d838c04311509f43932df291
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943125"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808963"
 ---
-# <a name="seller-insights-release-notes"></a>Zpráva k vydání verze Insights prodejce 
+# <a name="seller-insights-release-notes"></a>Poznámky k verzi prodejce Insights 
 
 (Datum vydání: 1. března 2019)
 
-Tento článek obsahuje informace o změnách na funkci na prodejce Insights [portál partnerů cloudu](https://cloudpartner.azure.com/#insights).
+Tento článek poskytuje informace o změnách funkce prodejce Insights v [portál partnerů cloudu](https://cloudpartner.azure.com/#insights).
 
-## <a name="release-highlights-for-march-1-2019"></a>Nejdůležitější Novinky ve verzi pro 1. března 2019
+## <a name="release-highlights-for-march-1-2019"></a>Zvýraznění vydaných verzí 1. března 2019
 
-* *Trend zákazníka* přidány do souhrnu
-* *Prvních pět zákazníků* v souhrnu odrážejí zákazník má všechna předplatná Azure
-* *Normalizovaná Trend využití & aktivní Trend objednávky* v souhrnu přesunutá do části *měsíční objednávky na první pohled*
-* *Sestava odsouhlasení obecných licencí výběr* aktualizovat
-* *Prvních pět zákazníků* na výběr odrážejí zákazník má všechna předplatná Azure
-* *Sestava využití* aktualizovat pomocí ID zákazníka
-* *Zákazník držby* na využití & objednávky odráží zákazník má všechna předplatná Azure
+* *Trend zákazníka* se přidal do souhrnu.
+* *Pět nejoblíbenějších zákazníků* na Shrnutí odráží všechna předplatná Azure, která má zákazník
+* Trend *normalizovaného využití & trendu aktivních objednávek* na souhrnu přesunutý pod *měsíčními objednávkami na první pohled*
+* *Sestava odsouhlasení výběrů* se aktualizovala.
+* *Pět nejoblíbenějších zákazníků* na výběr odráží všechna předplatná Azure, která má zákazník
+* *Sestava využití* aktualizovaná s ID zákazníka
+* *Zákaznická Tenurea* na objednávkách & využití odráží všechna předplatná Azure, která má zákazník
 
 
 (Datum vydání: 28. července 2018)
 
-## <a name="release-highlights-for-july-28-2018"></a>Nejdůležitější Novinky ve verzi pro 28. července 2018
+## <a name="release-highlights-for-july-28-2018"></a>Zvýraznění verze na 28. července 2018
 
 
--   *Odhad ceny* zviditelňují poplatky zákazníků s měny převod vliv.
--   *Naplánované výplaty* poskytují starší pohled potenciální výplaty.
--  *Použití odkazu identifikátory* poskytnout data věrnost mezi využití ze strany zákazníků a objednávek výplaty
--   *Použití s denním intervalem* poskytuje další členitosti a lepší přehled o využití ze strany zákazníků.
+-   *Odhadované ceny* poskytují pohled na poplatky za zákazníky s důsledky převodu měny.
+-   *Prognózy* vydaných výsledků poskytují předchozí pohled na potenciální výběry.
+-  *Referenční identifikátory použití* poskytují věrnost dat mezi zákaznickým využitím a objednávkami s výběry.
+-   *Využití v denním zrnitě* poskytuje větší členitost a lepší přehled o používání zákazníků.
 
 
-### <a name="changes-to-data-structure-and-taxonomy"></a>Změny datové struktury a taxonomie
+### <a name="changes-to-data-structure-and-taxonomy"></a>Změny struktury dat a taxonomie
 
-V následující tabulce jsou uvedeny metriky, které byly přidány nebo podstatně změna v této vydané verzi. 
+V následující tabulce jsou uvedeny metriky, které byly v této verzi přidány nebo podstatně změněny. 
 
 | **Nový termín**                   |    **Definice**                                                             |
 |--------------------------------|  ---------------------------------------------------------------------------- |
-| Cena (kopie)                     | Cena za jednotku využití pro danou skladovou jednotku (v místní měně zákazníka).       |
-| Odhadovaný poplatek rozšířené (kopie) | Odhadovaná rozšířené poplatek za množství jednotek využití pro danou skladovou jednotku (v místní měně zákazníka). Tato hodnota nemusí být přesné z důvodu chyby zaokrouhlení nebo zkrácení.   |
-| Vydavatel měny (PC)        | Měna upřednostňuje vydavatele pro výběr.                               |
-| Odhadovaná cena (PC)           | Odhadovaná cena za jednotku využití pro daný skladová jednotka založená na směnných převod na datum využití se počítá (v místní měně vydavatele). Tato hodnota nemusí být přesné z důvodu chyby zaokrouhlení nebo zkrácení.   |
-| Odhadovaný poplatek rozšířené (PC) | Odhadované rozšířené poplatek za množství jednotek využití pro daný skladová jednotka založená na směnných převod na datum využití se počítá (v místní měně vydavatele). Tato hodnota nemusí být přesné z důvodu chyby zaokrouhlení nebo zkrácení. |
-| Odhadované výběr (PC)          | Odhadované poplatky za množství jednotek využití pro danou skladovou jednotku podle cizích měn převod na datum, kdy využití se počítá (v místní měně vydavatele). Tato hodnota nemusí být přesné z důvodu chyby zaokrouhlení nebo zkrácení.   |
-| Referenční informace k využití                | Identifikátor pro jeden nebo více dnů využití ze strany zákazníků pro danou skladovou Položku přidruženou ke položka v sestavě výběr. |
+| Cena (CC)                     | Cena za jednotku využití pro danou SKLADOVOU položku (v měně zákazníka).       |
+| Odhadované rozšířené poplatky (CC) | Odhadované rozšířené náklady na množství jednotek využití pro danou skladovou jednotku (v měně zákazníka). Tato hodnota může být nepřesná, protože došlo k chybám zaokrouhlení nebo zkrácení.   |
+| Měna vydavatele (PC)        | Měna, kterou Vydavatel upřednostňuje pro výběr.                               |
+| Odhadovaná cena (PC)           | Odhadovaná cena jednotky využití pro danou SKLADOVOU jednotku na základě konverze cizí směny při využití data se počítá (v měně vydavatele). Tato hodnota může být nepřesná, protože došlo k chybám zaokrouhlení nebo zkrácení.   |
+| Odhadované rozšířené poplatky (PC) | Odhadované rozšířené náklady na množství jednotek využití pro danou skladovou jednotku na základě konverze cizí směny při využití data se počítá (v měně vydavatele). Tato hodnota může být nepřesná, protože došlo k chybám zaokrouhlení nebo zkrácení. |
+| Odhadovaný výběr (PC)          | Odhadovaná platba za množství jednotek využití pro danou skladovou jednotku na základě konverze cizí směny na datum, kdy se využití počítá (v měně vydavatele). Tato hodnota může být nepřesná, protože došlo k chybám zaokrouhlení nebo zkrácení.   |
+| Odkaz na použití                | Identifikátor jednoho nebo více dnů využití zákazníka pro danou skladovou jednotku přidruženou k položce v sestavě výběr. |
 |  |  |

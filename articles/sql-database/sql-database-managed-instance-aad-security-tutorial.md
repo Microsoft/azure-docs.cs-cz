@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database zabezpečení spravované instance pomocí objektů zabezpečení serveru Azure AD (přihlášení)
+title: Zabezpečení spravované instance pomocí objektů zabezpečení serveru Azure AD (přihlášení)
 description: Seznamte se s technikami a funkcemi pro zabezpečení spravované instance v Azure SQL Database a používání objektů zabezpečení serveru Azure AD (přihlášení).
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 4816b59c56f10a20f74777ad1badc11b59a599d1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bd65a21c2aa21643c76966410931949db7d17ad6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689470"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822796"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Kurz: zabezpečení spravované instance v Azure SQL Database pomocí objektů zabezpečení serveru Azure AD (přihlášení)
 
@@ -258,7 +258,7 @@ Další informace o udělení oprávnění databáze najdete v tématu [Začín�
     Všichni uživatelé, kteří patří do **MYGROUP** , mají přístup k databázi **MyMITestDB** .
 
     > [!IMPORTANT]
-    > Při vytváření uživatele z objektu zabezpečení serveru Azure AD (přihlášení) zadejte **uživatelské** jméno jako stejné Login_name od **přihlášení**.
+    > Při vytváření **uživatele** z objektu zabezpečení serveru Azure AD (přihlášení) zadejte user_name jako stejný Login_name od **přihlášení**.
 
     Další informace najdete v tématu [Vytvoření uživatele](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current).
 

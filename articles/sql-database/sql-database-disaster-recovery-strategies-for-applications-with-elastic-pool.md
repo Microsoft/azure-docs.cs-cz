@@ -1,5 +1,5 @@
 ---
-title: Návrh řešení pro zotavení po havárii – Azure SQL Database
+title: Návrh řešení pro zotavení po havárii
 description: Pomocí správného vzoru pro převzetí služeb při selhání se dozvíte, jak navrhnout cloudové řešení pro zotavení po havárii.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 535397dcf32a617038ab4bef4ec7aa227f4563b1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4eeaa187142a6d0d97b12f685ebc455f3844606f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690650"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825874"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Strategie zotavení po havárii pro aplikace používající SQL Database elastické fondy
 

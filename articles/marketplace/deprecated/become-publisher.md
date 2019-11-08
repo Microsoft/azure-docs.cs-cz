@@ -5,22 +5,23 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 manager: nunoc
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 11ab9f6bb4ab61a669c9c898ee9f5668b7cd568f
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b306c4e8f0362d714e9c5ae076f18e161f1dab53
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598659"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826007"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Staňte se vydavatelem cloudového tržiště
 
 Tento článek popisuje, jak se zaregistrovat jako vydavatel cloudového tržiště. V závislosti na vybrané možnosti publikování a vašem aktuálním členství v Microsoft Partner Network nemusí být potřeba některé z následujících kroků. Po zaregistrování budete moct vytvořit nabídky Marketplace pro Azure Marketplace nebo AppSource.
 
 
-|  | Krok registrace | Trvání | Podrobnosti |  
+|  | Krok registrace | Doba trvání | Podrobnosti |  
 |:--- |:--- |:--- |:--- |  
 | 1 | Zaregistrovat v Microsoft Partner Network | 15 min | [Zaregistrovat v Microsoft Partner Network](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) |  
 | 2 | Vytvoření účtu Microsoft <ul>(požadováno pro Azure Marketplace nabídky Transact; doporučeno pro jiné)</ul> | 15 min | [Vytvořit ID Microsoftu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) |  
@@ -29,7 +30,7 @@ Tento článek popisuje, jak se zaregistrovat jako vydavatel cloudového tržiš
 | 5 | Zaregistrujte se na webu Microsoft Developer Center (Dev Center) (pro nabídky Azure Marketplace Transact). | 5-10 dní | [Registrace na webu Dev Center](/azure/marketplace/deprecated/register-dev-center) |  
 
 
-## <a name="1-register-in-microsoft-partner-network"></a>1. Zaregistrovat v Microsoft Partner Network  
+## <a name="1-register-in-microsoft-partner-network"></a>1. Zaregistrujte se do Microsoft Partner Network  
 | 15 min |  
 Účast v cloudovém tržišti Microsoftu vyžaduje členství ve službě Microsoft Partner Network (MPN), která také poskytuje klíčové výhody, programy a sledování výkonu partnerů. Pokud vaše organizace ještě není členem, připojte se k Microsoft Partner Network (MPN), abyste se stal oficiálním partnerem Microsoftu a získali další výhody a podporu publikování na webu Marketplace. 
 
@@ -43,9 +44,9 @@ Otevřete lístek s podporou Microsoft [Partner Support](https://partner.microso
 
 ---
 
-## <a name="2-create-a-microsoft-account"></a>2. Vytvoření účtu Microsoft  
+## <a name="2-create-a-microsoft-account"></a>2. vytvoření účtu Microsoft  
 | 15 min |  
-Pro přístup k mnoha zařízením a službám společnosti Microsoft se používá účet Microsoft,  *\@například Outlook.com nebo \@Live.com*. Vyžaduje se pro Azure Marketplace nabídky Transact a doporučujeme, abyste ji použili všem cloudovým vydavatelům. Další informace o výhodách a používání účet Microsoft najdete na [této stránce](https://account.microsoft.com/account/). Pro přístup k portál partnerů cloudu budete používat osobní účet Microsoft, platformu publikování, kterou použijete k vytvoření a správě nabídek na webu Marketplace. 
+Pro přístup k mnoha zařízením a službám společnosti Microsoft se používá účet Microsoft, například *\@Outlook.com nebo \@Live.com*. Vyžaduje se pro Azure Marketplace nabídky Transact a doporučujeme, abyste ji použili všem cloudovým vydavatelům. Další informace o výhodách a používání účet Microsoft najdete na [této stránce](https://account.microsoft.com/account/). Pro přístup k portál partnerů cloudu budete používat osobní účet Microsoft, platformu publikování, kterou použijete k vytvoření a správě nabídek na webu Marketplace. 
 
 [! DŮLEŽITÉ] Všimněte si, že účet Microsoft přidružené k pracovnímu e-mailu vám neumožní přístup k portálu.
 
@@ -59,7 +60,7 @@ Pro přístup k mnoha zařízením a službám společnosti Microsoft se použí
 
 ---
 
-## <a name="3-create-a-partner-center-account"></a>3. Vytvořit účet partnerského centra  
+## <a name="3-create-a-partner-center-account"></a>3. vytvoření účtu partnerského centra  
 | 15 min |  
 
 Po [odeslání řešení](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) na Marketplace vás náš tým připojuje k podpoře vašeho prostředí pro publikování. Další informace najdete v tématu [Vytvoření účtu partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) .
@@ -74,21 +75,21 @@ You will be asked to include the following information:
 -->
 
 ---
-## <a name="4-sign-into-cloud-partner-portal"></a>4. Přihlaste se portál partnerů cloudu
+## <a name="4-sign-into-cloud-partner-portal"></a>4. Přihlaste se k portál partnerů cloudu
 | 1-3 dní | <br>
 Náš tým registrace na webu Marketplace ověří podrobnosti registrace na webu Marketplace, které jsou uvedené v kroku 3. Po schválení obdržíte uvítací e-mail s přihlašovacími údaji k účtu a pokyny pro přihlášení k [portál partnerů cloudu](https://cloudpartner.azure.com).
 
 K vytváření, publikování a správě nabídek na webu Marketplace použijete [portál partnerů cloudu](https://cloudpartner.azure.com) . Po přijetí uvítacího e-mailu schválení se můžete okamžitě přihlásit k [portál partnerů cloudu](https://cloudpartner.azure.com) pomocí účet Microsoft získat přístup k dalším technickým informacím o publikování na webu Marketplace a vytvoření nabídky. 
 *   Další informace o používání portál partnerů cloudu najdete [v části Začínáme v článku informace](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal). Aby bylo možné získat přístup k těmto podrobnostem, je nutné, abyste byli přihlášeni k portál partnerů cloudu.
 *   Pokud máte dotazy nebo chcete naplánovat volání s přehledem registrace, přečtěte si další články v této příručce pro vydavatele nebo otevřete žádost o podporu v části Typ problému > Marketplace v rámci portál partnerů cloudu.
-*   Pokud jste neobdrželi uvítací e-mail, zkontrolujte složku spamu, kde najdete e-mail s řádkem předmětu "Vítá vás Microsoft Marketplace!." Pokud ve složce spamu není žádný e-mail, obraťte se prosím na [podporu Microsoftu](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=&supportregion=&pesid=16230&forceorigin=esmc&ccsid=636595105151894820). Na stránce Podpora prosím vyberte: Typ problému, který > registraci do Marketplace  Náš tým pro zprovoznění publikování na webu Marketplace vám pomůže s dotazy. 
+*   Pokud jste neobdrželi uvítací e-mail, zkontrolujte složku spamu, kde najdete e-mail s řádkem předmětu "Vítá vás Microsoft Marketplace!." Pokud ve složce spamu není žádný e-mail, obraťte se prosím na [podporu Microsoftu](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=&supportregion=&pesid=16230&forceorigin=esmc&ccsid=636595105151894820). Na stránce Podpora vyberte: typ problému > registraci do Marketplace.  Náš tým pro zprovoznění publikování na webu Marketplace vám pomůže s dotazy. 
 
 
-## <a name="5-register-in-dev-center-for-transact-publishing-option-only"></a>5. Zaregistrovat ve vývojářském centru (jenom pro možnost publikování v Transact) 
+## <a name="5-register-in-dev-center-for-transact-publishing-option-only"></a>5. registrace ve vývojářském centru (jenom pro možnost publikování v Transact) 
 | 5-10 dní |  
 Pro nabídky, které používají možnost publikování v Transact, se vyžaduje účet [služby Dev Center](https://developer.microsoft.com/store/register) : zahrnuje virtuální počítače, aplikace Azure a aplikace SaaS nakonfigurované pro prodej prostřednictvím Azure. Informace o účtu [centra pro vývojáře](https://developer.microsoft.com/store/register) používá společnost Microsoft k ověření informací o zákonných, daňových a bankovních údajích pro vaši organizaci, které se použijí pro účely vyhodnocování při prodeji a účtování poplatků za licence k softwaru prostřednictvím Azure Marketplace. 
 
-Proces registrace [centra pro vývoj](https://developer.microsoft.com/store/register) můžete spustit ještě před vytvořením nabídky v portál partnerů cloudu, ale před publikováním nabídky na webu Marketplace se musí dokončit. Pokud máte v úmyslu použít možnost publikování v režimu Transact, doporučujeme tento proces spustit co nejdříve, pokud máte v úmyslu 5 – 10 dní typická doba trvání tohoto kroku. 
+Proces registrace [centra pro vývoj](https://developer.microsoft.com/store/register) můžete spustit ještě před vytvořením nabídky v portál partnerů cloudu, ale před publikováním nabídky na webu Marketplace se musí dokončit. Pokud máte v úmyslu použít možnost publikování v jazyce Transact, doporučujeme tento proces spustit co nejdříve, pokud máte v úmyslu použít tuto dobu 5-10 dní od čtvrtého dne. 
 
 Jednotlivé registrace ve [vývojářském centru](https://developer.microsoft.com/store/register) musí být platným zástupcem vaší organizace a musí poskytovat osobní údaje pro ověření své identity. Zaregistrujte se účet Microsoft vytvořeným v kroku 2 a použijte stejný účet Microsoft, který jste použili pro přístup k portál partnerů cloudu.
 
@@ -104,8 +105,8 @@ Až dokončíte registraci [služby Dev Center](https://developer.microsoft.com/
 >Před vytvořením účtu Microsoft Dev Center ověřte, že vaše organizace ještě nemá účet služby Dev Center, aby se předešlo duplicitním účtům. Další informace najdete v části [registrace v centru pro vývojáře](https://docs.microsoft.com/azure/marketplace/register-dev-center) .
 
 
-## <a name="next-steps"></a>Další postup
-* Seznamte se s prodejní místaem na webu Marketplace: [Porovnávání AppSource a Azure Marketplace](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace).
+## <a name="next-steps"></a>Další kroky
+* Seznamte se s prodejní místaem na webu Marketplace: [porovnání AppSource a Azure Marketplace](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace).
 *   [Určete typ výpisu pro vaše řešení](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type).
 
  

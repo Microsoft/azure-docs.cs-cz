@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: b88c56872408a7ffe127a4e96d2313301d44c892
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7d4eab7546a488bf2d4ede8f7c71143e823ba493
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690529"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823935"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Migrace existujících databází pro horizontální navýšení kapacity
 Pomocí nástrojů Azure SQL Database Database Tools (například [klientské knihovny elastic Database](sql-database-elastic-database-client-library.md)) můžete snadno spravovat vaše stávající databáze horizontálně dělené s více instancemi. Nejprve převeďte existující sadu databází na použití [správce map horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md). 

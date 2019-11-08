@@ -1,44 +1,45 @@
 ---
-title: Doprovodné materiály k Azure Marketplace optimalizace pro vyhledávací weby
-description: Obsahuje pokyny k maximalizaci optimalizace pro vyhledávací weby (SEO).
+title: Pokyny k Azure Marketplace SEO
+description: Poskytuje pokyny pro maximalizaci optimalizace vyhledávacích vyhledávačů (SEO).
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: pabutler
-ms.openlocfilehash: f5b956ed1197e3898c9536bda3a93a41e8ee35c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7115798faadc3209413d22a384433417ec0ddff0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935105"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819584"
 ---
-# <a name="azure-marketplace-seo-guidance"></a>Doprovodné materiály k Azure Marketplace optimalizace pro vyhledávací weby
+# <a name="azure-marketplace-seo-guidance"></a>Pokyny k Azure Marketplace SEO
 
-Tento článek vysvětluje, jak maximalizovat možnosti rozpoznání vaši nabídku prostřednictvím funkce hledání v [Azure Marketplace](https://azuremarketplace.microsoft.com) a [AppSource](https://appsource.microsoft.com). 
+Tento článek vysvětluje, jak maximalizovat zjistitelnost vaší nabídky prostřednictvím funkce hledání v [Azure Marketplace](https://azuremarketplace.microsoft.com) a [AppSource](https://appsource.microsoft.com). 
 
 
-## <a name="general-explanation-of-algorithm"></a>Obecné vysvětlení algoritmu.
+## <a name="general-explanation-of-algorithm"></a>Obecné vysvětlení algoritmu
 
-Prodejní weby společnosti Microsoft využít Azure Search pro provozování možnosti vyhledávání webu. Algoritmus je založen na termín frekvence – inverzní dokumentu frekvence ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)). Standardní [analyzátor Lucene](https://lucene.apache.org/core/) se používá.
+Microsoft Marketplace využívá Azure Kognitivní hledání k zajištění možností vyhledávání na webu. Algoritmus je založen na četnosti termínů – inverzní frekvence dokumentů ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)). Použije se standardní [analyzátor Lucene](https://lucene.apache.org/core/) .
 
-Obecně platí veškerý text pole, kategorie a odvětví a zahrnut do weightage význam. Specializované podmínky, které nejsou používány často aplikací, ale často ve vaší aplikaci bude generovat vyšší ohodnocení shoda s vyhledávání. Proto včetně jako "Virtuální počítač" by nabízejí málo výhodné, že "Služba Azure search" by mnohem více specializovaný.
-Níže jsou uvedeny nejdůležitější pole vzít v úvahu.
+Obecně platí, že všechna textová pole, kategorie a odvětví jsou zahrnutá do váhy, která je v závažnosti. Specializované výrazy, které se často používají aplikacemi, ale často ve vaší aplikaci, vygenerují vyšší skóre shody s hledáním. Podobně jako "VM" by to vedlo k malým výhodám, protože "Azure Search" by bylo mnohem více specializované.
+Níže jsou uvedená nejdůležitější pole, která je potřeba vzít v úvahu.
 
  
-|  Pole                   | Význam | Doprovodné materiály                                                                                            |
+|  Pole                   | Závažnost | Doprovodné materiály                                                                                            |
 |  --------------------    | ----------                   | ---------------                                                                   |
-| Název nabídky               |  Vysoká      | Přesné nebo blízko úplnou shodu s vyhledávací dotaz získáte vysoké hodnocení.                       |
-| Název vydavatele           |  Vysoká      | Přesné nebo blízko úplnou shodu s vyhledávací dotaz získáte vysoké hodnocení.                       |
-| Krátký popis        |  Střední    | Zadané názvy aplikací a vydavatel názvy téměř zaručí vysoké hodnocení, nemusí být nejdůležitější. V tomto případě je důležité krátký popis. Zachovat text, stručné a výstižně. Klíčová slova a očekávané hledané termíny by měly být zahrnuty pro nejlepší výsledek.  Například "Toto je nejlepší maloobchodní POS plně postavené na Dynamics 365" je méně efektivní než "Retail POS (point prodeje) pro Dynamics 365".  | 
-| Dlouhý popis         |  Nízká       | Popis nabízí způsob, jak do větší hloubky. Nejúčinnější popisy jsou přiměřené a klíčová slova jsou používány.  Do bodu popisy pomocí klíčových slov bude přínosem pro více než dlouho dlouhý text. Zkontrolujte že klíčových pojmů, jako je například "IoT", jsou k dispozici v popisu.  |
-| Kategorie produktů       | Střední     |  Kategorie produktů jsou určeny kombinaci možností vydavatele a Microsoftu. Správný výběr těchto kategorií tak, aby uživatelé snadno najít aplikace správnou kategorii. |
+| Název nabídky               |  Vysoký      | Přesné nebo blízko úplné shody s vyhledávacím dotazem bude poskytovat vysoké hodnocení.                       |
+| Název vydavatele           |  Vysoký      | Přesné nebo blízko úplné shody s vyhledávacím dotazem bude poskytovat vysoké hodnocení.                       |
+| Krátký popis        |  Střednědobé používání    | Vzhledem k tomu, že pojmenovávání názvů aplikací a vydavatelů bude téměř zaručeno vysoké hodnocení, nemusí být relevantní. V tomto případě je krátký popis kritický. Ponechte text stručný a k bodu. K dosažení nejlepšího výsledku by měly být zahrnuty klíčová slova a očekávané hledané výrazy.  Například "Toto je nejlepší maloobchodní POS sestavený plně na Dynamics 365" je méně efektivní než "Retail POS (Point of prodej) pro Dynamics 365".  | 
+| Dlouhý popis         |  Nízká       | Popis nabízí způsob, jak přejít do větší hloubky. Nejefektivnější popisy mají rozumnou délku a používají se klíčová slova.  Popisy k bodům pomocí klíčových slov budou využívat více než dlouhého textu, který by měl být dlouhý. Ujistěte se, že se v popisu nacházejí Klíčové výrazy, například "IoT".  |
+| Kategorie produktů       | Střednědobé používání     |  Kategorie produktů jsou určeny kombinací možností vydavatele a společnosti Microsoft. Tyto kategorie vyberte odpovídajícím způsobem, aby uživatelé mohli snadno najít aplikace ve správné kategorii. |
 |  |  |  |
 
 
 ## <a name="other-tips"></a>Další tipy
 
--   Hledání navrhuje aktivity získá náročné uživatelů. Upřednostňuje shody názvu nebo vydavatele aplikace. Krátký popis stane pole klíče pro Pokud hledaný termín není přesná shoda s názvem vydavatele nebo aplikaci.
--   Dokumenty, kde stahování nejsou součástí weightage vyhledávání.
--   Vaše aplikace skutečný pořízení a použití bude mít vliv i pořadí hledání. Například dva ekvivalentní aplikací, kde jeden má výrazně více uživatelů získají vyšší pořadí.
+-   Při hledání se bude jednat o velkou aktivitu uživatelů. Určuje prioritu shody s názvem aplikace a vydavatelem. Krátký popis se zobrazí jako klíčové pole, pokud hledaný termín není přesná shoda s názvem vydavatele nebo aplikace.
+-   Dokumenty ke stažení nejsou zahrnuté do váhy vyhledávání.
+-   Skutečné získání a využití vašich aplikací ovlivní také hodnocení vyhledávání. Například dvě ekvivalentní aplikace, kde jedna má příliš velké množství uživatelů, získají vyšší hodnocení.

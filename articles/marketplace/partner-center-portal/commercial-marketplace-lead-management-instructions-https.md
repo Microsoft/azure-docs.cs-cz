@@ -4,19 +4,20 @@ description: Konfigurace správy zájemců pro koncový bod HTTPS
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: evansma
-ms.openlocfilehash: 6a34bdcab5a13af682515bbae96e9a1800ccc37f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 83efb9cfd1ee7464a334ebc4064dbfaa20ab30de
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902192"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812294"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Konfigurace správy potenciálních zákazníků pomocí koncového bodu HTTPS
 
-Pokud se v partnerském centru pro příjem Azure Marketplace a AppSourcech potenciálních zákazníků nepodporovaný systém pro správu vztahů se zákazníky (CRM), můžete tyto zájemce zpracovat pomocí koncového bodu HTTPS v MS Flow. S koncovým bodem HTTPS je možné tyto zájemce odeslat jako e-mailové oznámení nebo je můžete zapsat do systému správy vztahů se zákazníky (CRM), který podporuje MS Flow. Pokyny v tomto článku vás seznámí se základním procesem vytvoření nového toku pomocí Microsoft Flow, který vygeneruje adresu URL POST HTTP, kterou zadáte do portálu pro publikování pro pole **Adresa URL koncového bodu HTTPS > https** . Obsahuje také pokyny, jak otestovat tok pomocí nástroje s názvem "Poster", který lze najít [](https://www.getpostman.com/downloads/) online.
+Pokud se v partnerském centru pro příjem Azure Marketplace a AppSourcech potenciálních zákazníků nepodporovaný systém pro správu vztahů se zákazníky (CRM), můžete tyto zájemce zpracovat pomocí koncového bodu HTTPS v MS Flow. S koncovým bodem HTTPS je možné tyto zájemce odeslat jako e-mailové oznámení nebo je můžete zapsat do systému správy vztahů se zákazníky (CRM), který podporuje MS Flow. Pokyny v tomto článku vás seznámí se základním procesem vytvoření nového toku pomocí Microsoft Flow, který vygeneruje adresu URL POST HTTP, kterou zadáte do portálu pro publikování pro pole **Adresa URL koncového bodu HTTPS > https** . Obsahuje také pokyny, jak otestovat tok pomocí nástroje s názvem " [Poster](https://www.getpostman.com/downloads/) ", který lze najít online.
 
 ## <a name="create-a-flow-using-microsoft-flow"></a>Vytvoření toku pomocí Microsoft Flow
 
@@ -24,7 +25,7 @@ Pokud se v partnerském centru pro příjem Azure Marketplace a AppSourcech pote
 
 2. Přihlaste se a v řádku nabídek vyberte **Moje toky** .
 
-3. Vyberte **+ automatizovaná – od prázdná**.
+3. Vyberte **+ automatizovaná – z prázdné**.
 
     ![Moje toky + automatizovaná – od prázdná](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
@@ -33,7 +34,7 @@ Pokud se v partnerském centru pro příjem Azure Marketplace a AppSourcech pote
     ![Sestavit automatizovaný tok – přeskočit](./media/commercial-marketplace-lead-management-instructions-https/build-automated-flow.png)
 
 5. V poli **vyhledávací konektory a triggery** zadejte "Request" a najděte konektor požadavků.
-6. Včásti triggery vyberte, **kdy se přijme požadavek HTTP**. 
+6. V části *triggery*vyberte, **kdy se přijme požadavek HTTP**. 
 
     ![konektor požadavku – triggery](./media/commercial-marketplace-lead-management-instructions-https/request-connector.png)
 
@@ -110,7 +111,7 @@ Pokud se v partnerském centru pro příjem Azure Marketplace a AppSourcech pote
 
     ![Vytvořit nový záznam](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
 
-3. Zadejte **název organizace** , který je přidružený k systému CRM. V rozevíracím seznamu **název entity** vyberte zájemci.
+3. Zadejte **název organizace** , který je přidružený k systému CRM. V rozevíracím seznamu **název entity** vyberte **zájemci** .
 
     ![Vybrat potenciální zákazníky](./media/commercial-marketplace-lead-management-instructions-https/select-leads.png)
 
@@ -118,7 +119,7 @@ Pokud se v partnerském centru pro příjem Azure Marketplace a AppSourcech pote
 
     ![Přidat dynamický obsah](./media/commercial-marketplace-lead-management-instructions-https/add-dynamic-content.png)
 
-5. Namapujte požadovaná pole a potom vyberte **Uložit** . tím tok uložíte. Vytvoří se adresa URL POST protokolu HTTP a je dostupná v okně *při přijetí požadavku HTTP* . Zkopírujte tuto adresu URL pomocí ovládacího prvku kopírování, který se nachází napravo od adresy URL POST protokolu HTTP – to je důležité, aby nedošlo k omylům při neúspěšném výskytu jakékoli části celé adresy URL. Tuto adresu URL uložte, protože ji budete potřebovat, když konfigurujete správu potenciálních zákazníků na portálu pro publikování.
+5. Namapujte požadovaná pole a potom vyberte **Uložit** . tím tok uložíte. Vytvoří se adresa URL POST protokolu HTTP a je dostupná v okně *při přijetí požadavku HTTP* . Zkopírujte tuto adresu URL pomocí ovládacího prvku kopírování, který se nachází napravo od adresy URL POST protokolu HTTP – to je důležité, aby nedošlo k omylům při nevracení žádné části celé adresy URL. Tuto adresu URL uložte, protože ji budete potřebovat, když konfigurujete správu potenciálních zákazníků na portálu pro publikování.
 
     ![Při přijetí požadavku HTTP.](./media/commercial-marketplace-lead-management-instructions-https/when-http-request-received.png)
 
@@ -135,7 +136,7 @@ Pokud se v partnerském centru pro příjem Azure Marketplace a AppSourcech pote
 
 4. V okně **Odeslat e-mail** nakonfigurujte následující povinná pole:
 
-   - Zadejte alespoň jednu platnou e-mailovou adresu, kam budou odesílány zájemci.
+   - Zadejte alespoň jednu platnou **e-** mailovou adresu, kam budou odesílány zájemci.
    - Tok **předmětu** vám dává možnost Přidat dynamický obsah, jako je například **LeadSource** , na následujícím snímku obrazovky. Začněte zadáním názvu pole a kliknutím na seznam pro výběr dynamického obsahu v místním okně. 
 
         >[!Note] 
@@ -148,15 +149,15 @@ Pokud se v partnerském centru pro příjem Azure Marketplace a AppSourcech pote
 
        ![Přidat akci e-mailu](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
 
-5. Kliknutím na **Uložit** dokončete tok. Vytvoří se adresa URL POST protokolu HTTP a je dostupná v okně *při přijetí požadavku HTTP* . Zkopírujte tuto adresu URL pomocí ovládacího prvku kopírování, který se nachází napravo od adresy URL POST protokolu HTTP – to je důležité, aby nedošlo k omylům při neúspěšném výskytu jakékoli části celé adresy URL. Tuto adresu URL uložte, protože ji budete potřebovat, když konfigurujete správu potenciálních zákazníků na portálu pro publikování.
+5. Kliknutím na **Uložit** dokončete tok. Vytvoří se adresa URL POST protokolu HTTP a je dostupná v okně *při přijetí požadavku HTTP* . Zkopírujte tuto adresu URL pomocí ovládacího prvku kopírování, který se nachází napravo od adresy URL POST protokolu HTTP – to je důležité, aby nedošlo k omylům při nevracení žádné části celé adresy URL. Tuto adresu URL uložte, protože ji budete potřebovat, když konfigurujete správu potenciálních zákazníků na portálu pro publikování.
 
-   ![Adresa URL operace HTTP POST ](./media/commercial-marketplace-lead-management-instructions-https/http-post-url.png)
+   ![ADRESA URL PRO POST HTTP ](./media/commercial-marketplace-lead-management-instructions-https/http-post-url.png)
 
 ### <a name="testing"></a>Testování
 
-Podle následujících kroků můžete testovat, že vše funguje podle očekávání, a to pomocí nástroje [](https://app.getpostman.com/app/download/win64)označovaného jako "Poster", který je možné stáhnout online. Toto je k dispozici pro Windows. 
+Podle následujících kroků můžete testovat, že vše funguje podle očekávání, a to pomocí nástroje označovaného jako " [Poster](https://app.getpostman.com/app/download/win64)", který je možné stáhnout online. Toto je k dispozici pro Windows. 
 
-1. Spusťte příkaz post a vyberte **Nový** > **požadavek** a nastavte si testovací nástroj. 
+1. Spusťte příkaz post a vyberte **nový** > **žádost** o nastavení nástroje test Tool. 
 
    ![Požadavek na nastavení testovacího nástroje](./media/commercial-marketplace-lead-management-instructions-https/postman-request.png)
 

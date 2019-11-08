@@ -8,18 +8,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 7c60fdfd4d8e579c24da3c43501e4437806becc6
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: f7a6ab954aff1bcc2e3dae3fc035db4b136ccbbe
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241717"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818169"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Použití clusteru HDInsight Spark k analýze dat v Data Lake Storage Gen1
 
 V tomto článku použijete [Jupyter notebook](https://jupyter.org/) dostupné s clustery HDInsight Spark ke spuštění úlohy, která čte data z účtu Data Lake Storage.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure Data Lake Storage Gen1. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal](../../data-lake-store/data-lake-store-get-started-portal.md).
 
@@ -30,7 +30,7 @@ V tomto článku použijete [Jupyter notebook](https://jupyter.org/) dostupné s
 > [!NOTE]  
 > Pokud jste vytvořili cluster HDInsight s Data Lake Storage jako výchozí úložiště, nemusíte tento krok provádět. Proces vytvoření clusteru přidá ukázková data do účtu Data Lake Storage, který zadáte při vytváření clusteru. Přejděte k části použití clusteru HDInsight Spark s Data Lake Storage.
 
-Pokud jste vytvořili cluster HDInsight s Data Lake Storage jako další úložiště a Azure Storage Blob jako výchozí úložiště, měli byste nejdřív zkopírovat ukázková data do účtu Data Lake Storage. Můžete použít ukázková data z Azure Storage Blob přidružená ke clusteru HDInsight. K tomu můžete použít [Nástroj ADLCopy](https://aka.ms/downloadadlcopy) . Stáhněte a nainstalujte si nástroj z odkazu.
+Pokud jste vytvořili cluster HDInsight s Data Lake Storage jako další úložiště a Azure Storage Blob jako výchozí úložiště, měli byste nejdřív zkopírovat ukázková data do účtu Data Lake Storage. Můžete použít ukázková data z Azure Storage Blob přidružená ke clusteru HDInsight. K tomu můžete použít [Nástroj ADLCopy](https://www.microsoft.com/download/details.aspx?id=50358) . Stáhněte a nainstalujte si nástroj z odkazu.
 
 1. Otevřete příkazový řádek a přejděte do adresáře, kde je nainstalovaný AdlCopy, obvykle `%HOMEPATH%\Documents\adlcopy`.
 

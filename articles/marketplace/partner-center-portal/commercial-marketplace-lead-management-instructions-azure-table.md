@@ -4,15 +4,16 @@ description: Konfigurace správy zájemců pro Azure Table
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: evansma
-ms.openlocfilehash: 7151be3ac9f55825fd2e9dde35c9afda6a30726a
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 9b24e6eb714c531b49ba08591bf4ed33d0f10101
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902634"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812338"
 ---
 # <a name="configure-lead-management-using-an-azure-table"></a>Konfigurace správy potenciálních zákazníků pomocí tabulky Azure
 
@@ -35,7 +36,7 @@ Pokud se v partnerském centru pro příjem Azure Marketplacech a AppSourcech po
 
     ![Přístup k účtu služby Azure Storage](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png)
 
-5. V podokně účtu úložiště vyberte **přístupové klíče** a zkopírujte hodnotu připojovacího *řetězce* pro tento klíč. Tuto hodnotu uložte, protože se jedná o hodnotu *připojovacího řetězce účtu úložiště* , kterou budete muset zadat na portálu pro publikování a získat zájemce pro vaši nabídku na webu Marketplace. 
+5. V podokně účtu úložiště vyberte **přístupové klíče** a zkopírujte hodnotu *připojovacího řetězce* pro tento klíč. Tuto hodnotu uložte, protože se jedná o hodnotu *připojovacího řetězce účtu úložiště* , kterou budete muset zadat na portálu pro publikování a získat zájemce pro vaši nabídku na webu Marketplace. 
 
     Příkladem připojení Sting je:
 
@@ -106,7 +107,7 @@ V další sadě kroků se připojíte ke své tabulce Azure a nastavíte logiku 
 
             ![Entity Azure Table Get](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
-        * *Filtrovat dotaz* – toto pole vyberte a vložte tuto funkci do pole:`Timestamp gt datetime'@{body('Get_past_time')}'`
+        * *Filtrovat dotaz* – toto pole vyberte a vložte tuto funkci do pole: `Timestamp gt datetime'@{body('Get_past_time')}'`
 
             ![Entity Azure Table Get – filtr Querry.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
 
@@ -144,9 +145,9 @@ V několika dalších krocích nastavíte akci, která se má provést, na zákl
 
 19. V okně **Office 365 Outlook** zadejte informace pro následující pole:
 
-    1. Zadejte e-mailovou adresu pro každého, kdo získá toto oznámení.
-    1. **Předmět** – zadejte předmět e-mailu. Příklad: Noví zájemci!
-    1. **Tělo** – přidejte text, který chcete zahrnout do každého e-mailu (volitelné) a vložte ho do textu `body('Get_entities')?['value']`.
+    1. Zadejte **e-** mailovou adresu pro každého, kdo získá toto oznámení.
+    1. **Předmět** – zadejte předmět e-mailu. Například: Noví zájemci!
+    1. **Tělo** – přidejte text, který chcete zahrnout do každého e-mailu (volitelné), a vložte ho do textu `body('Get_entities')?['value']`.
 
     >[!Note]
     >Do těla tohoto e-mailu můžete vložit další statické nebo dynamické datové body.

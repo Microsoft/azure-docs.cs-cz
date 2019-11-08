@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ba9b06c9a3e6025d7227493713fe9187fba233
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 9603cdf11373891aaa3541330cb7f65c09352496
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514905"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818894"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrace z federace na synchronizaci hodnot hash hesel pro Azure Active Directory
 
@@ -161,7 +161,7 @@ Další informace o podmínkách **umístění** v podmíněném přístupu najd
 
 Když připojíte zařízení ke službě Azure AD, můžete vytvořit pravidla podmíněného přístupu, která zajistí, aby zařízení splňovala vaše standardy přístupu pro zabezpečení a dodržování předpisů. Uživatelé se také můžou k zařízení přihlásit pomocí pracovního nebo školního účtu místo osobního účtu. Když použijete hybridní zařízení připojená k Azure AD, můžete do Azure AD připojit zařízení připojená k doméně služby Active Directory. Je možné, že vaše federované prostředí bylo nastaveno na použití této funkce.
 
-Aby se zajistilo, že hybridní připojení bude i nadále fungovat pro všechna zařízení, která jsou připojená k doméně po převodu domén na synchronizaci hodnot hash hesel, musíte pro klienty s Windows 10 použít možnosti Azure AD Connect zařízení k naplnění spojovacího bodu služby a pak synchronizovat aktivní. Účty počítače adresáře do Azure AD. 
+Aby se zajistilo, že hybridní připojení bude i nadále fungovat pro všechna zařízení, která jsou připojená k doméně po převodu domén na synchronizaci hodnot hash hesel pro klienty Windows 10, musíte k synchronizaci počítače se službou Active Directory použít Azure AD Connect možnosti zařízení. účty do Azure AD. 
 
 Pro účty počítačů s Windows 8 a Windows 7 používá hybridní připojení k registraci počítače ve službě Azure AD bezproblémové přihlašování. Nemusíte synchronizovat účty počítačů s Windows 8 a Windows 7, jako je tomu u zařízení s Windows 10. Je ale potřeba nasadit aktualizovaný soubor workplacejoin. exe (prostřednictvím souboru. msi) na klienty se systémy Windows 8 a Windows 7, aby se mohli sami zaregistrovat pomocí bezproblémového přihlašování. [Stáhněte soubor. msi](https://www.microsoft.com/download/details.aspx?id=53554).
 
@@ -263,7 +263,7 @@ Informace o řešení potíží najdete v tématu [řešení potíží se synchr
 
 Aby zařízení používalo bezproblémové jednotné přihlašování, musíte do nastavení zóny intranetu pro uživatele přidat adresu URL služby Azure AD pomocí zásad skupiny ve službě Active Directory.
 
-Ve výchozím nastavení webové prohlížeče automaticky vypočítávají správnou zónu, buď Internet, nebo intranet, z adresy URL. Například **http: \/ \/contoso/** Maps do zóny intranetu a **http: \/ \/intranet. contoso.com** se mapuje na zónu Internetu (protože adresa URL obsahuje tečku). Prohlížeče odesílají lístky protokolu Kerberos do koncového bodu cloudu, jako je například adresa URL služby Azure AD, jenom v případě, že explicitně přidáte adresu URL do zóny intranetu prohlížeče.
+Ve výchozím nastavení webové prohlížeče automaticky vypočítávají správnou zónu, buď Internet, nebo intranet, z adresy URL. Například **http:\/\/contoso/** Maps na intranetovou zónu a **http:\/\/intranet.contoso.com** se mapuje do zóny Internet (protože adresa URL obsahuje tečku). Prohlížeče odesílají lístky protokolu Kerberos do koncového bodu cloudu, jako je například adresa URL služby Azure AD, jenom v případě, že explicitně přidáte adresu URL do zóny intranetu prohlížeče.
 
 Dokončete kroky k [zavedení](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) požadovaných změn vašich zařízení.
 
@@ -313,7 +313,7 @@ Nejprve změňte metodu přihlašování:
    > [!IMPORTANT]
    > V tomto okamžiku se všechny federované domény změní na spravované ověřování. Synchronizace hodnot hash hesel je nová metoda ověřování.
 
-7. Na portálu Azure AD vyberte **Azure Active Directory**  > **Azure AD Connect**.
+7. Na portálu Azure AD vyberte **Azure Active Directory** > **Azure AD Connect**.
 8. Ověřte tato nastavení:
    * **Federace** je nastavená na **disabled (zakázáno**).
    * **Bezproblémové jednotné přihlašování** je nastavené na **povoleno**.
@@ -335,9 +335,9 @@ Tuto možnost použijte, pokud jste původně nenakonfigurovali federované dom�
 3. Na stránce **připojit ke službě Azure AD** zadejte uživatelské jméno a heslo pro účet globálního správce.
 4. Na **přihlašovací stránce uživatele** vyberte tlačítko **synchronizace hodnoty hash hesla** . Vyberte **Povolit jednotné přihlašování**a pak vyberte **Další**.
 
-   Než povolíte synchronizaci hodnot hash hesel: ![Screenshot, která na přihlašovací stránce uživatele zobrazuje možnost nekonfigurovat ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image12.png)<br />
+   Než povolíte synchronizaci hodnot hash hesel: ![snímek obrazovky, který na přihlašovací stránce uživatele zobrazuje možnost nekonfigurovat](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image12.png)<br />
 
-   Po povolení synchronizace hodnot hash hesel: ![Screenshot, která na přihlašovací stránce uživatele zobrazuje nové možnosti ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
+   Po povolení synchronizace hodnot hash hesel: ![snímku obrazovky, který na přihlašovací stránce uživatele zobrazuje nové možnosti](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
    
    > [!NOTE]
    > Počínaje verzí Azure AD Connect 1.1.880.0 je ve výchozím nastavení zaškrtnuto políčko **bezproblémové jednotné přihlašování** .
@@ -353,7 +353,7 @@ Tuto možnost použijte, pokud jste původně nenakonfigurovali federované dom�
 
 6. Na stránce **připraveno ke konfiguraci** se ujistěte, že je zaškrtnuté políčko **spustit proces synchronizace po dokončení konfigurace** . Pak vyberte **Konfigurovat**.
 
-   ![Screenshot, který zobrazuje tlačítko konfigurovat na stránce připraveno ke konfiguraci ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image15.png)<br />
+   ![snímek obrazovky, který zobrazuje tlačítko konfigurovat na stránce připraveno ke konfiguraci](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image15.png)<br />
    Po výběru tlačítka **Konfigurovat** bude bezproblémové jednotné přihlašování nakonfigurované tak, jak je uvedeno v předchozím kroku. Konfigurace synchronizace hodnot hash hesel se nezměnila, protože byla dříve povolena.
 
    > [!IMPORTANT]
@@ -382,7 +382,7 @@ Dokončete převod pomocí modulu Azure AD PowerShell:
    Set-MsolDomainAuthentication -Authentication Managed -DomainName <domain name>
    ```
 
-3. Na portálu Azure AD vyberte **Azure Active Directory**  > **Azure AD Connect**.
+3. Na portálu Azure AD vyberte **Azure Active Directory** > **Azure AD Connect**.
 4. Spuštěním následujícího příkazu ověřte, že se doména převedla na spravovanou:
 
    ``` PowerShell
@@ -400,7 +400,7 @@ Když váš tenant použil federované identity, přesměruje se uživatelé na 
 Test synchronizace hodnot hash hesel:
 
 1. Spusťte Internet Explorer v režimu InPrivate, aby vás bez problémů přihlašování automaticky přihlásilo.
-2. Přejít na přihlašovací stránku Office 365 ([ https://portal.office.com](https://portal.office.com/)).
+2. Přejít na přihlašovací stránku Office 365 ([https://portal.office.com](https://portal.office.com/)).
 3. Zadejte hlavní název uživatele (UPN) a pak vyberte **Další**. Ujistěte se, že zadáváte hlavní název uživatele (UPN), který byl synchronizovaný z místní instance služby Active Directory a který dřív používal federované ověřování. Zobrazí se stránka, na které zadáte uživatelské jméno a heslo:
 
    ![Snímek obrazovky zobrazující přihlašovací stránku, na které zadáte uživatelské jméno](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image18.png)
@@ -417,8 +417,8 @@ Test synchronizace hodnot hash hesel:
 1. Přihlaste se k počítači připojenému k doméně, který je připojený k podnikové síti.
 2. V aplikaci Internet Explorer nebo Chrome použijte jednu z následujících adres URL (v doméně nahraďte "contoso"):
 
-   * https: \/ \/myapps. microsoft.com/contoso.com
-   * https: \/ \/myapps. microsoft.com/contoso.onmicrosoft.com
+   * https:\/\/myapps.microsoft.com/contoso.com
+   * https:\/\/myapps.microsoft.com/contoso.onmicrosoft.com
 
    Uživatel se krátce přesměruje na přihlašovací stránku služby Azure AD, kde se zobrazí zpráva "Probíhá pokus o přihlášení". Uživateli se nezobrazí výzva k zadání uživatelského jména nebo hesla.<br />
 

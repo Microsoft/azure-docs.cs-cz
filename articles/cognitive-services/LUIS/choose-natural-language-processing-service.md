@@ -1,6 +1,6 @@
 ---
 title: Použití Cognitive Services NLP k obohacení konverzací
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Cognitive Services poskytuje dvě služby pro zpracování v přirozeném jazyce, Language Understanding a QnA Maker, každý s jiným účelem. Informace o tom, kdy používat jednotlivé služby a jak se vzájemně přidávají
 author: diberry
 ms.author: diberry
@@ -8,12 +8,12 @@ manager: nitinme
 ms.topic: conceptual
 ms.service: cognitive-services
 ms.date: 08/01/2019
-ms.openlocfilehash: f293f57f4a98e822aa1c3950614ba5a186f9751d
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 32159b37d3d1a8609181d81dc1a73f27177adb85
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816922"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818195"
 ---
 # <a name="use-cognitive-services-with-natural-language-processing-nlp-to-enrich-bot-conversations"></a>Použití Cognitive Services se zpracováním přirozeného jazyka (NLP) k obohacení konverzací robota
 
@@ -31,17 +31,17 @@ Language Understanding (LUIS) a QnA Maker řeší různé problémy. LUIS určuj
 
 Aby bylo možné vybrat správnou službu, je nutné pochopit text uživatele z klientské aplikace a informace o tom, které klientské aplikace potřebují získat ze služby pro rozpoznávání.
 
-Pokud robot váš chat obdrží text `How do I get to the Human Resources building on the Seattle North campus?`, použijte následující graf, který vám pomůže pochopit, jak každá služba pracuje s textem.
+Pokud vaše chatovací robot obdrží text `How do I get to the Human Resources building on the Seattle North campus?`, použijte následující graf, který vám pomůže pochopit, jak každá služba pracuje s textem.
 
 |Služba|Klientská aplikace určuje|
 |--|--|
-|LUIS|**Určuje** , zda je uživatel členem textu – služba nevrátí odpověď na otázku. Například tento text je klasifikován jako shodný s `FindLocation` záměrem.<br>|
+|LUIS|**Určuje** , zda je uživatel členem textu – služba nevrátí odpověď na otázku. Například tento text je klasifikován jako vyhovující `FindLocation` záměr.<br>|
 |QnA Maker|**Vrátí odpověď na dotaz** z vlastní znalostní báze. Například tento text je určen jako otázka se statickou textovou odpovědí `Get on the #9 bus and get off at Franklin street`.|
 |||
 
 ## <a name="when-do-you-use-luis"></a>Kdy používáte LUIS? 
 
-LUIS použijte, pokud potřebujete znát záměr utterance jako součást procesu v robotovi chatu. Po pokračování s ukázkovým textem `How do I get to the Human Resources building on the Seattle North campus?`, když znáte záměr uživatele, zjistíte umístění, můžete podrobnosti o utterance (vydaná s entitami) předat jiné službě, jako je například Transport Server, a získat tak odpověď. 
+LUIS použijte, pokud potřebujete znát záměr utterance jako součást procesu v robotovi chatu. Když budete pokračovat s ukázkovým textem, `How do I get to the Human Resources building on the Seattle North campus?`po zjištění záměru uživatele najít umístění, můžete předat podrobnosti o utterance (vycházejících s entitami) do jiné služby, jako je například Transport Server, a získat tak odpověď. 
 
 K určení záměru nemusíte kombinovat LUIS a QnA Maker. 
 
@@ -51,7 +51,7 @@ Tyto dvě služby můžete v tomto utterance kombinovat, pokud robot robot potř
 
 Použijte QnA Maker, když máte statickou znalostní bázi odpovědí. Tato znalostní báze je vlastní pro vaše potřeby, které jste sestavili s dokumenty, jako jsou soubory PDF a adresy URL. 
 
-V případě, že budete pokračovat `How do I get to the Human Resources building on the Seattle North campus?`s příkladem utterance, pošlete text jako dotaz do publikované služby QnA maker a dostanete nejlepší odpověď. 
+Pokračujeme v příkladu utterance `How do I get to the Human Resources building on the Seattle North campus?`, pošlete text, jako dotaz na publikovanou QnA Maker službu a dostanete nejlepší odpověď. 
 
 K určení odpovědi na otázku nemusíte kombinovat LUIS a QnA Maker.
 
@@ -63,7 +63,7 @@ Pokud sestavíte QnA Maker znalostní bázi, ale víte, že se doména předmět
 
 Vaše klientská aplikace by musela monitorovat LUIS i QnA Maker reakce na skóre. Pokud je skóre z QnA Maker menší než jakákoli prahová hodnota, použijte informace o záměru a entitě vrácené z LUIS a předejte informace službě třetí strany.
 
-Pokud budete pokračovat s ukázkovým `How do I get to the Human Resources building on the Seattle North campus?`textem, Předpokládejme, že QnA maker vrací skóre s nízkou spolehlivostí. Použijte záměr vrácený z Luis `FindLocation` a všechny extrahované entity, `Human Resources building` například a `Seattle North campus`, k odeslání těchto informací službě mapování nebo vyhledávání pro jinou odpověď. 
+Pokračování s ukázkovým textem `How do I get to the Human Resources building on the Seattle North campus?`předpokládá, že QnA Maker vrací skóre s nízkou spolehlivostí. Pomocí záměru vráceného z LUIS `FindLocation` a všech extrahovaných entit, jako je například `Human Resources building` a `Seattle North campus`, můžete odeslat tyto informace službě mapování nebo vyhledávání pro jinou odpověď. 
 
 Tuto odpověď třetí strany můžete zobrazit uživateli k ověření. Jakmile budete mít schválení uživatele, můžete přejít zpět na QnA Maker a přidat informace, abyste mohli rozšířit vaše znalosti. 
 
@@ -82,7 +82,7 @@ Implementujte osvědčené postupy pro každou službu:
 * Osvědčené postupy pro [Luis](luis-concept-best-practices.md)
 * [QnA maker](../qnamaker/concepts/best-practices.md) osvědčené postupy
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Language Understanding (LUIS)](what-is-luis.md)
 * [QnA Maker](../qnamaker/overview/overview.md)

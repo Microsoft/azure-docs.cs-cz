@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 998513c942cf1b6ceae861160abfe3dc6dac7792
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d5983d25685242a696300f293231bbf987e8442d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690331"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823732"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Dotazování napříč cloudovou databází s různými schématy (Preview)
 
@@ -171,7 +171,7 @@ Elastický dotaz také zavádí uloženou proceduru, která poskytuje přímý p
 
 * Název zdroje dat (nvarchar): název externího zdroje dat typu RDBMS. 
 * Dotaz (nvarchar): dotaz T-SQL, který má být spuštěn ve vzdálené databázi. 
-* Deklarace parametru (nvarchar) – volitelné: řetězec s definicemi datových typů pro parametry používané v parametru dotazu (jako sp_executesql). 
+* Deklarace parametru (nvarchar) – volitelné: řetězec s definicemi datových typů pro parametry používané v parametru dotazu (například sp_executesql). 
 * Seznam hodnot parametrů – volitelné: čárkami oddělený seznam hodnot parametrů (například sp_executesql).
 
 Nástroj SP\_Execute\_Remote využívá externí zdroj dat, který je k dispozici v parametrech vyvolání, ke spuštění daného příkazu T-SQL ve vzdálené databázi. Pro připojení ke vzdálené databázi používá přihlašovací údaje k externímu zdroji dat.  

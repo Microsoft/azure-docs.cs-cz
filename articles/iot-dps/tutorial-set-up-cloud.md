@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 8f06d3f033a2bf5907dc2ee324359bef0eb247d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 41689b7596c9da350a9e0fec619e49d332a36d5b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60953497"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826196"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Konfigurace cloudových prostředků pro zřizování zařízení pomocí služby IoT Hub Device Provisioning
 
@@ -48,7 +48,7 @@ Pomocí těchto kroků vytvořte novou instanci služby Device Provisioning.
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **Název** | Jakýkoli jedinečný název | -- | 
    | **Předplatné** | Vaše předplatné  | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
-   | **Skupina prostředků** | myResourceGroup | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). |
+   | **Skupina prostředků** | myResourceGroup | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging). |
    | **Umístění** | Libovolné platné umístění | Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/). |   
 
    ![Zadání základních informací o službě Device Provisioning na portálu](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
@@ -63,7 +63,7 @@ Pomocí těchto kroků vytvořte novou instanci služby Device Provisioning.
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>Načtení připojovacího řetězce pro službu IoT hub
+### <a name="retrieve-connection-string-for-iot-hub"></a>Načtení připojovacího řetězce pro Centrum IoT
 
 [!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
 
@@ -77,27 +77,27 @@ Dalším krokem je propojení služby Device Provisioning s centrem IoT, aby slu
 
 2. Na stránce služby Device Provisioning klikněte na **Propojená centra IoT**.
 
-3. Klikněte na tlačítko **Add** (Přidat).
+3. Klikněte na **Přidat**.
 
 4. Na stránce **Přidat propojení na centrum IoT Hub** zadejte následují informace a klikněte na **Uložit**:
 
-    * **Předplatné:** Ujistěte se, že je vybraný odběr, který obsahuje službu IoT hub. Na IoT Hub nacházející se v jiném předplatném můžete odkázat.
+    * **Předplatné:** Přesvědčte se, že je vybrané předplatné obsahující IoT Hub. Na IoT Hub nacházející se v jiném předplatném můžete odkázat.
 
-    * **Služby IoT hub:** Zvolte název centra IoT, který chcete propojit s touto instancí služby Device Provisioning.
+    * **IoT Hub:** Zvolte název IoT Hubu, který chcete propojit s instancí služby Device Provisioning.
 
-    * **Zásady přístupu:** Vyberte **iothubowner** jako přihlašovací údaje pro vytvoření propojení s centrem IoT.
+    * **Zásady přístupu:** Vyberte **iothubowner** jako přihlašovací údaje, které se použijí k vytvoření propojení s IoT Hubem.
 
    ![Propojení názvu centra se službou Device Provisioning na portálu](./media/tutorial-set-up-cloud/link-iot-hub-to-dps-portal.png)
 
 ## <a name="set-the-allocation-policy-on-the-device-provisioning-service"></a>Nastavení zásad přidělování ve službě Device Provisioning
 
-Zásady přidělování je IoT Hub Device Provisioning Service nastavení, která určuje způsob přiřazování zařízení do služby IoT hub. Existují tři podporované zásady přidělování: 
+Zásada přidělování je IoT Hub Device Provisioning Service nastavení, které určuje, jak se zařízení přiřazují do služby IoT Hub. Existují tři podporované zásady přidělování: 
 
-1. **Nejnižší latence**: Zařízení se zřizují podle centra s nejnižší latenci do zařízení IoT hubu.
+1. **Nejnižší latence:** Zařízení se zřizují v centru IoT, které má se zařízením nejnižší latenci.
 
-2. **Rovnoměrně vážená distribuce** (výchozí): Propojená centra IoT hub se stejnou pravděpodobností zařízení se zřizují k nim. Toto nastavení je výchozí. Pokud zřizujete zařízení pouze v jednom centru IoT, můžete nechat toto nastavení. 
+2. **Rovnoměrně vážená distribuce (výchozí):** Zařízení se zřizují se stejnou pravděpodobností ve všech propojených centrech IoT. Toto nastavení je výchozí. Pokud zřizujete zařízení pouze v jednom centru IoT, můžete nechat toto nastavení. 
 
-3. **Statická konfigurace přes seznam registrací**: Specifikace požadovaného centra IoT v seznamu registrací má přednost před zásady přidělování Device Provisioning Service – úroveň.
+3. **Statická konfigurace prostřednictvím seznamu registrací:** Specifikace požadovaného centra IoT v seznamu registrací má přednost před zásadami přidělování na úrovni služby Device Provisioning.
 
 Pokud chcete nastavit zásady přidělování, na stránce služby Device Provisioning klikněte na **Spravovat zásady přidělování**. Ujistěte se, že jsou zásady nastavené na hodnotu **Rovnoměrně vážená distribuce** (výchozí). Pokud provedete nějaké změny, až budete hotovi, klikněte na **Uložit**.
 
@@ -111,7 +111,7 @@ Další kurzy v této kolekci vycházejí z tohoto kurzu. Pokud chcete pokračov
 
 2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte své centrum IoT. V horní části stránky **Všechny prostředky** klikněte na **Odstranit**.
  
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

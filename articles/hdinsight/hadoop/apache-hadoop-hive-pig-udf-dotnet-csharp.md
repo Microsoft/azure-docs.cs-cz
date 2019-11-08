@@ -6,60 +6,61 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 11/06/2019
 ms.author: hrasheed
-ms.openlocfilehash: 222b91b2efefa81186d32fee7229aa0cc4f13a63
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: b8baf8ee11d34756e55f3a78fd5916e042785587
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044591"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821624"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Použití C# uživatelsky definovaných funkcí s Apache Hive a Apache prasetem v Apache Hadoop ve službě HDInsight
 
-Naučte se používat C# uživatelsky definované funkce (UDF) s Apache Hive a Apache prasetem v HDInsight.
+Naučte se používat C# uživatelsky definované funkce (UDF) s [Apache Hive](https://hive.apache.org) a [Apache prasetem](https://pig.apache.org) v HDInsight.
 
 > [!IMPORTANT]
-> Kroky v tomto dokumentu fungují s clustery HDInsight se systémem Linux i Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Správa verzí komponent HDInsight](../hdinsight-component-versioning.md).
+> Kroky v tomto dokumentu fungují s clustery HDInsight se systémem Linux. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Správa verzí komponent HDInsight](../hdinsight-component-versioning.md).
 
 Podregistr i prase mohou předat data externím aplikacím ke zpracování. Tento proces se označuje jako _streamování_. Při použití aplikace .NET se data předávají do aplikace na vstupu a aplikace vrátí výsledky na STDOUT. Chcete-li číst a zapisovat ze standardního vstupu a STDOUT, můžete použít `Console.ReadLine()` a `Console.WriteLine()` z konzolové aplikace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Znalost psaní a vytváření C# kódu, který cílí na .NET Framework 4,5.
 
-    * Použijte libovolné prostředí IDE, které chcete. Doporučujeme [Visual Studio](https://www.visualstudio.com/vs) 2015, 2017 nebo [Visual Studio Code](https://code.visualstudio.com/). Kroky v tomto dokumentu používají Visual Studio 2017.
+    Použijte libovolné prostředí IDE, které chcete. Doporučujeme [aplikaci Visual Studio](https://www.visualstudio.com/vs) nebo [Visual Studio Code](https://code.visualstudio.com/). Kroky v tomto dokumentu používají Visual Studio 2019.
 
-* Způsob nahrajte soubory. exe do clusteru a spusťte úlohy z vepřového a podregistru. Doporučujeme Data Lake nástroje pro Visual Studio, Azure PowerShell a Azure Classic CLI. Kroky v tomto dokumentu používají nástroje Data Lake pro Visual Studio k nahrání souborů a spuštění ukázkového dotazu na podregistr.
+* Způsob nahrajte soubory. exe do clusteru a spusťte úlohy z vepřového a podregistru. Doporučujeme [Data Lake nástroje pro Visual Studio](../../data-lake-analytics/data-lake-analytics-data-lake-tools-install.md), [Azure POWERSHELL](/powershell/azure)a [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). Kroky v tomto dokumentu používají nástroje Data Lake pro Visual Studio k nahrání souborů a spuštění ukázkového dotazu na podregistr.
 
-    Další informace o dalších způsobech spuštění dotazů na podregistrů a úloh pro vepřové zobrazení najdete v následujících dokumentech:
+    Další informace o dalších způsobech spuštění dotazů na podregistry najdete v tématu [co je Apache Hive a HiveQL v Azure HDInsight](hdinsight-use-hive.md).
 
-    * [Použití Apache Hive se službou HDInsight](hdinsight-use-hive.md)
-
-    * [Použití Apache prasete se službou HDInsight](hdinsight-use-pig.md)
-
-* Cluster Hadoop v HDInsight. Další informace o vytvoření clusteru najdete v tématu [Vytvoření clusteru HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
+* Cluster Hadoop v HDInsight. Další informace o vytvoření clusteru najdete v tématu [Vytvoření clusterů HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="net-on-hdinsight"></a>.NET v HDInsight
 
-* Clustery __HDInsight se systémem Linux__ využívající [Mono (https://mono-project.com)](https://mono-project.com) pro spouštění aplikací .NET. Mono verze 4.2.1 je součástí HDInsight verze 3,6.
+Clustery *HDInsight se systémem Linux* používají [Mono (https://mono-project.com)](https://mono-project.com) ke spouštění aplikací .NET. Mono verze 4.2.1 je součástí HDInsight verze 3,6.
 
-    Další informace o kompatibilitě mono s .NET Framework verzí naleznete v tématu [Kompatibilita mono](https://www.mono-project.com/docs/about-mono/compatibility/).
+Další informace o kompatibilitě mono s .NET Framework verzí naleznete v tématu [Kompatibilita mono](https://www.mono-project.com/docs/about-mono/compatibility/).
 
-* Clustery __HDInsight založené na Windows__ používají ke spouštění aplikací .NET modul Microsoft .NET CLR.
-
-Další informace o verzi rozhraní .NET Framework a mono, které jsou součástí verze služby HDInsight, najdete v tématu [verze komponent HDInsight](../hdinsight-component-versioning.md).
+Další informace o verzi .NET Framework a mono obsažených ve verzích HDInsight najdete v tématu [verze komponent HDInsight](../hdinsight-component-versioning.md).
 
 ## <a name="create-the-c-projects"></a>Vytvoření projektů\# v jazyce C
 
+Následující části popisují, jak vytvořit C# projekt v aplikaci Visual Studio pro Apache Hive systému souborů UDF a Apache prasete UDF.
+
 ### <a name="apache-hive-udf"></a>Apache Hive UDF
 
-1. Otevřete Visual Studio a vytvořte řešení. Jako typ projektu vyberte **Konzolová aplikace (.NET Framework)** a pojmenujte nový projekt **HiveCSharp**.
+Vytvoření C# projektu pro Apache Hive systému souborů UDF:
 
-    > [!IMPORTANT]
-    > Pokud používáte cluster HDInsight se systémem Linux, vyberte __.NET Framework 4,5__ . Další informace o kompatibilitě mono s .NET Framework verzí naleznete v tématu [Kompatibilita mono](https://www.mono-project.com/docs/about-mono/compatibility/).
+1. Otevřete sadu Visual Studio.
 
-2. Obsah **program.cs** nahraďte následujícím kódem:
+2. V okně **Start** vyberte **vytvořit nový projekt**.
+
+3. V okně **vytvořit nový projekt** přejděte na a vyberte šablonu **Konzolová aplikace (.NET Framework)** ( C# verze). Pak vyberte **Další**.
+
+4. V okně **Konfigurovat nový projekt** zadejte **název projektu** *HiveCSharp*a přejděte do **umístění** , do kterého chcete nový projekt uložit, nebo ho vytvořte. Potom vyberte **Vytvořit**.
+
+5. V integrovaném vývojovém prostředí sady Visual Studio nahraďte obsah *program.cs* následujícím kódem:
 
     ```csharp
     using System;
@@ -110,13 +111,21 @@ Další informace o verzi rozhraní .NET Framework a mono, které jsou součást
     }
     ```
 
-3. Sestavte projekt.
+6. V řádku nabídek vyberte **sestavení** > **Sestavit řešení** a sestavte projekt.
 
 ### <a name="apache-pig-udf"></a>Apache prasete UDF
 
-1. Otevřete Visual Studio a vytvořte řešení. Jako typ projektu vyberte **Konzolová aplikace**a pojmenujte nový projekt **PigUDF**.
+Vytvoření C# projektu pro Apache Hive systému souborů UDF:
 
-2. Obsah souboru **program.cs** nahraďte následujícím kódem:
+1. Otevřete sadu Visual Studio.
+
+2. V okně **Start** vyberte **vytvořit nový projekt**.
+
+3. V okně **vytvořit nový projekt** přejděte na a vyberte šablonu **Konzolová aplikace (.NET Framework)** ( C# verze). Pak vyberte **Další**.
+
+4. V okně **Konfigurovat nový projekt** zadejte **název projektu** *PigUDF*a přejděte na nebo vytvořte **umístění** , do kterého chcete nový projekt uložit. Potom vyberte **Vytvořit**.
+
+5. V integrovaném vývojovém prostředí sady Visual Studio nahraďte obsah *program.cs* následujícím kódem:
 
     ```csharp
     using System;
@@ -149,41 +158,47 @@ Další informace o verzi rozhraní .NET Framework a mono, které jsou součást
 
     Tento kód analyzuje řádky odesílané z prasete a přeformátuje řádky, které začínají na `java.lang.Exception`.
 
-3. Uložte **program.cs**a pak Sestavte projekt.
+6. V řádku nabídek vyberte **sestavení** > **Sestavit řešení** a sestavte projekt.
 
 ## <a name="upload-to-storage"></a>Nahrání do úložiště
 
-1. V aplikaci Visual Studio otevřete **Průzkumník serveru**.
+V dalším kroku nahrajte do úložiště v clusteru HDInsight aplikace v podregistru a v systému vepřového systému pro systém souborů.
+
+1. V aplikaci Visual Studio vyberte možnost **zobrazit** > **Průzkumník serveru**.
 
 2. Rozbalte položku **Azure** a pak rozbalte **HDInsight**.
 
-3. Pokud se zobrazí výzva, zadejte svoje přihlašovací údaje k předplatnému Azure a pak klikněte na **Přihlásit**se.
+3. Pokud se zobrazí výzva, zadejte svoje přihlašovací údaje k předplatnému Azure a pak vyberte **Přihlásit**se.
 
-4. Rozbalte cluster HDInsight, do kterého chcete nasadit tuto aplikaci. Zobrazí se položka s textem __(výchozí účet úložiště)__ .
+4. Rozbalte cluster HDInsight, do kterého chcete nasadit tuto aplikaci. Zobrazí se položka s textem **(výchozí účet úložiště)** .
 
-    ![Průzkumník serveru zobrazení účtu úložiště pro cluster](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png)
+    ![Výchozí účet úložiště, cluster HDInsight, Průzkumník serveru](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png)
 
-    * Pokud tuto položku lze rozšířit, používáte __účet Azure Storage__ jako výchozí úložiště pro cluster. Chcete-li zobrazit soubory ve výchozím úložišti pro cluster, rozbalte položku a dvakrát klikněte na položku __(výchozí kontejner)__ .
+    * Pokud tuto položku lze rozšířit, jako výchozí úložiště pro cluster používáte **účet Azure Storage** . Chcete-li zobrazit soubory ve výchozím úložišti pro cluster, rozbalte položku a dvakrát klikněte na položku **(výchozí kontejner)** .
 
-    * Pokud tuto položku nelze rozšířit, jako výchozí úložiště pro cluster používáte __Azure Data Lake Storage__ . Chcete-li zobrazit soubory ve výchozím úložišti pro cluster, dvakrát klikněte na položku __(výchozí účet úložiště)__ .
+    * Pokud tuto položku nelze rozšířit, jako výchozí úložiště pro cluster používáte **Azure Data Lake Storage** . Chcete-li zobrazit soubory ve výchozím úložišti pro cluster, dvakrát klikněte na položku **(výchozí účet úložiště)** .
 
-6. Chcete-li nahrát soubory. exe, použijte jednu z následujících metod:
+5. Chcete-li nahrát soubory. exe, použijte jednu z následujících metod:
 
-   * Pokud používáte __účet Azure Storage__, klikněte na ikonu nahrát a potom přejděte do složky **bin\Debug** projektu **HiveCSharp** . Nakonec vyberte soubor **HiveCSharp. exe** a klikněte na tlačítko **OK**.
+    * Pokud používáte **účet Azure Storage**, vyberte ikonu **nahrát objekt BLOB** .
 
-       ![Ikona nahrání HDInsight pro nový projekt](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
+        ![Ikona nahrání HDInsight pro nový projekt](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
+
+        V dialogovém okně **nahrát nový soubor** vyberte v části **název souboru**možnost **Procházet**. V dialogovém okně **nahrát objekt BLOB** zadejte do složky *bin\Debug* projektu *HiveCSharp* a pak zvolte soubor *HiveCSharp. exe* . Nakonec vyberte **otevřít** a pak kliknutím na **OK** dokončete nahrávání.
     
-   * Pokud používáte __Azure Data Lake Storage__, klikněte pravým tlačítkem myši na prázdnou oblast v seznamu souborů a vyberte __Odeslat__. Nakonec vyberte soubor **HiveCSharp. exe** a klikněte na **otevřít**.
+    * Pokud používáte **Azure Data Lake Storage**, klikněte pravým tlačítkem myši na prázdnou oblast v seznamu souborů a vyberte **Odeslat**. Nakonec zvolte soubor *HiveCSharp. exe* a vyberte **otevřít**.
 
-     Po dokončení nahrávání __HiveCSharp. exe__ opakujte proces nahrávání pro soubor __PigUDF. exe__ .
+    Po dokončení nahrávání *HiveCSharp. exe* opakujte proces nahrávání pro soubor *PigUDF. exe* .
 
 ## <a name="run-an-apache-hive-query"></a>Spuštění dotazu Apache Hive
 
-1. V aplikaci Visual Studio otevřete **Průzkumník serveru**.
+Nyní můžete spustit dotaz na podregistr, který používá vaši aplikaci pro podregistr UDF.
+
+1. V aplikaci Visual Studio vyberte možnost **zobrazit** > **Průzkumník serveru**.
 
 2. Rozbalte položku **Azure** a pak rozbalte **HDInsight**.
 
-3. Klikněte pravým tlačítkem na cluster, na který jste nasadili aplikaci **HiveCSharp** , a pak vyberte **zapsat dotaz na podregistr**.
+3. Klikněte pravým tlačítkem na cluster, na který jste nasadili aplikaci *HiveCSharp* , a pak vyberte **zapsat dotaz na podregistr**.
 
 4. Pro dotaz na podregistr použijte následující text:
 
@@ -205,56 +220,56 @@ Další informace o verzi rozhraní .NET Framework a mono, které jsou součást
     > [!IMPORTANT]
     > Odkomentujte příkaz `add file`, který odpovídá typu výchozího úložiště používaného pro váš cluster.
 
-    Tento dotaz vybere pole `clientid`, `devicemake`a `devicemodel` ze `hivesampletable`a předá pole aplikaci HiveCSharp. exe. Dotaz očekává, že aplikace vrátí tři pole, která jsou uložena jako `clientid`, `phoneLabel`a `phoneHash`. Dotaz také očekává, že se HiveCSharp. exe najde v kořenovém adresáři výchozího kontejneru úložiště.
+    Tento dotaz vybere pole `clientid`, `devicemake`a `devicemodel` ze `hivesampletable`a pak je předá do aplikace *HiveCSharp. exe* . Dotaz očekává, že aplikace vrátí tři pole, která jsou uložena jako `clientid`, `phoneLabel`a `phoneHash`. Dotaz také očekává, že se *HiveCSharp. exe* najde v kořenovém adresáři výchozího kontejneru úložiště.
 
-5. Kliknutím na **Odeslat** odešlete úlohu do clusteru HDInsight. Otevře se okno **Souhrn úlohy podregistru** .
+5. Vyberte **Odeslat** a odešlete úlohu do clusteru HDInsight. Otevře se okno **Souhrn úlohy podregistru** .
 
-6. Kliknutím na tlačítko **aktualizovat** aktualizujete souhrn, dokud se **stav úlohy** nezmění na **dokončeno**. Výstup úlohy zobrazíte kliknutím na **výstup úlohy**.
+6. Výběrem **aktualizovat** aktualizujte souhrn, dokud se **stav úlohy** nezmění na **dokončeno**. Chcete-li zobrazit výstup úlohy, vyberte **výstup úlohy**.
 
 ## <a name="run-an-apache-pig-job"></a>Spuštění úlohy Apache prasete
 
-1. Pomocí SSH se připojte ke clusteru HDInsight. Například, `ssh sshuser@mycluster-ssh.azurehdinsight.net`. Další informace najdete v tématu [Použití SSH withHDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md) .
+Můžete také spustit úlohu vepřového sádla, která používá vaši aplikaci systému souborů prasete UDF.
 
-2. Pomocí jednoho z následujících příkazů spusťte příkazový řádek prasete:
+1. Pomocí SSH se připojte ke clusteru HDInsight. (Například spusťte příkaz `ssh sshuser@<clustername>-ssh.azurehdinsight.net`.) Další informace najdete v tématu [Použití SSH withHDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-        pig
+2. Pomocí následujícího příkazu spusťte příkazový řádek prasete:
 
-    > [!IMPORTANT]
-    > Pokud používáte cluster se systémem Windows, použijte místo toho následující příkazy:
-    > ```
-    > cd %PIG_HOME%
-    > bin\pig
-    > ```
+    ```shell
+    pig
+    ```
 
     Zobrazí se výzva `grunt>`.
 
 3. Chcete-li spustit úlohu prasete, která používá aplikaci .NET Framework, zadejte následující:
 
-        DEFINE streamer `PigUDF.exe` CACHE('/PigUDF.exe');
-        LOGS = LOAD '/example/data/sample.log' as (LINE:chararray);
-        LOG = FILTER LOGS by LINE is not null;
-        DETAILS = STREAM LOG through streamer as (col1, col2, col3, col4, col5);
-        DUMP DETAILS;
+    ```pig
+    DEFINE streamer `PigUDF.exe` CACHE('/PigUDF.exe');
+    LOGS = LOAD '/example/data/sample.log' as (LINE:chararray);
+    LOG = FILTER LOGS by LINE is not null;
+    DETAILS = STREAM LOG through streamer as (col1, col2, col3, col4, col5);
+    DUMP DETAILS;
+    ```
 
-    Příkaz `DEFINE` vytvoří alias `streamer` pro aplikace pigudf. exe a `CACHE` ho načte z výchozího úložiště pro cluster. Později se `streamer` používá s operátorem `STREAM` ke zpracování jednoduchých řádků obsažených v protokolu a vrácení dat jako řady sloupců.
+    Příkaz `DEFINE` vytvoří alias `streamer` pro aplikaci *PigUDF. exe* a `CACHE` ji načte z výchozího úložiště pro cluster. Později se `streamer` používá s operátorem `STREAM` ke zpracování jednoduchých řádků obsažených v `LOG` a vrácení dat jako řady sloupců.
 
     > [!NOTE]
-    > Název aplikace, který se používá pro streamování, musí být při použití s `SHIP`ohraničen znakem \` (znakem zaškrtnutí) a ' (jednoduchá uvozovka).
+    > Název aplikace, který se používá pro streamování, musí být při použití `SHIP`s aliasem ohraničen znakem \` (znakem zaškrtnutí) a znakem "(jednoduché uvozovky)".
 
 4. Po zadání posledního řádku by se měla úloha spustit. Vrátí výstup podobný následujícímu textu:
 
-        (2012-02-03 20:11:56 SampleClass5 [WARN] problem finding id 1358451042 - java.lang.Exception)
-        (2012-02-03 20:11:56 SampleClass5 [DEBUG] detail for id 1976092771)
-        (2012-02-03 20:11:56 SampleClass5 [TRACE] verbose detail for id 1317358561)
-        (2012-02-03 20:11:56 SampleClass5 [TRACE] verbose detail for id 1737534798)
-        (2012-02-03 20:11:56 SampleClass7 [DEBUG] detail for id 1475865947)
+    ```output
+    (2019-07-15 16:43:25 SampleClass5 [WARN] problem finding id 1358451042 - java.lang.Exception)
+    (2019-07-15 16:43:25 SampleClass5 [DEBUG] detail for id 1976092771)
+    (2019-07-15 16:43:25 SampleClass5 [TRACE] verbose detail for id 1317358561)
+    (2019-07-15 16:43:25 SampleClass5 [TRACE] verbose detail for id 1737534798)
+    (2019-07-15 16:43:25 SampleClass7 [DEBUG] detail for id 1475865947)
+    ```
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto dokumentu jste se seznámili s postupem použití .NET Framework aplikace z podregistru a vepřového sádla v HDInsight. Pokud se chcete dozvědět, jak používat Python s podregistru a vepřovým nástrojem, přečtěte si téma [použití Pythonu s Apache Hive a Apache prasete v HDInsight](python-udf-hdinsight.md).
 
-Další způsoby použití prasete a podregistru a další informace o použití MapReduce najdete v následujících dokumentech:
+Další způsoby použití podregistru a další informace o použití MapReduce najdete v následujících článcích:
 
 * [Použití Apache Hive se službou HDInsight](hdinsight-use-hive.md)
-* [Použití Apache prasete se službou HDInsight](hdinsight-use-pig.md)
 * [Použití MapReduce se službou HDInsight](hdinsight-use-mapreduce.md)

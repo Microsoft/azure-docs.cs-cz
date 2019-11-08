@@ -1,5 +1,5 @@
 ---
-title: Rozdíly v jazyce T-SQL spravované instance Azure SQL Database
+title: Rozdíly v jazyce T-SQL spravované instance
 description: Tento článek popisuje rozdíly v T-SQL mezi spravovanou instancí v Azure SQL Database a SQL Server
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 5efa52da0005d0b98820c648dfe7c8489bc39076
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3518404b76625e2557aaefdc6ab5ad7353683984
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687859"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823325"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Rozdíly v jazyce T-SQL spravované instance, omezení a známé problémy
 
@@ -149,7 +149,7 @@ Spravovaná instance nemá přístup k souborům, takže nejde vytvořit zprost�
 - Nastavení přihlašovacích údajů Azure AD namapované na skupinu Azure AD, protože vlastník databáze není podporovaný.
 - Je podporováno zosobnění objektů zabezpečení na úrovni serveru Azure AD pomocí jiných objektů zabezpečení Azure AD, jako je například klauzule [Execute as](/sql/t-sql/statements/execute-as-transact-sql) . Spustit jako omezení jsou:
 
-  - Příkaz Spustit jako uživatel není podporován pro uživatele Azure AD, pokud se název liší od přihlašovacího jména. Příkladem je, když se uživatel vytvoří pomocí syntaxe vytvořit uživatele [myAadUser] od přihlášení [john@contoso.com] a při pokusu o zosobnění se jako uživatel = _myAadUser_pokusí o zosobnění. Když vytváříte uživatele z objektu zabezpečení serveru Azure AD (přihlášení), zadejte **uživatelské** jméno jako stejné Login_name od **přihlášení**.
+  - Příkaz Spustit jako uživatel není podporován pro uživatele Azure AD, pokud se název liší od přihlašovacího jména. Příkladem je, když se uživatel vytvoří pomocí syntaxe vytvořit uživatele [myAadUser] od přihlášení [john@contoso.com] a při pokusu o zosobnění se jako uživatel = _myAadUser_pokusí o zosobnění. Když vytváříte **uživatele** z objektu zabezpečení serveru Azure AD (přihlášení), zadejte user_name jako stejný Login_name od **přihlášení**.
   - Jenom objekty zabezpečení na úrovni SQL Server (přihlášení), které jsou součástí role `sysadmin`, můžou spouštět následující operace, které cílí na objekty zabezpečení Azure AD:
 
     - SPUSTIT JAKO UŽIVATEL
@@ -161,7 +161,7 @@ Spravovaná instance nemá přístup k souborům, takže nejde vytvořit zprost�
     - Exportujte databázi ze spravované instance a importujte ji do SQL Database v rámci stejné domény služby Azure AD. 
     - Exportujte databázi z SQL Database a importujte ji do spravované instance ve stejné doméně Azure AD.
     - Exportujte databázi ze spravované instance a importujte ji do SQL Server (verze 2012 nebo novější).
-      - V této konfiguraci jsou všichni uživatelé Azure AD vytvořeni jako objekty SQL Database (uživatelé) bez přihlášení. Typ uživatelů je uveden jako SQL (viditelné jako SQL_USER v sys. database_principals). Jejich oprávnění a role zůstávají v SQL Server metadatech databáze a lze je použít pro zosobnění. Nedají se ale použít k přístupu k SQL Server a k jejich přihlášení pomocí svých přihlašovacích údajů.
+      - V této konfiguraci jsou všichni uživatelé Azure AD vytvořeni jako objekty SQL Database (uživatelé) bez přihlášení. Typ uživatelů je uveden jako SQL (zobrazený jako SQL_USER v sys. database_principals). Jejich oprávnění a role zůstávají v SQL Server metadatech databáze a lze je použít pro zosobnění. Nedají se ale použít k přístupu k SQL Server a k jejich přihlášení pomocí svých přihlašovacích údajů.
 
 - Pouze hlavní přihlášení na úrovni serveru, které je vytvořeno procesem zřizování spravované instance, členové rolí serveru, například `securityadmin` nebo `sysadmin`, nebo jiná přihlášení s oprávněními změnit libovolné přihlašovací oprávnění na úrovni serveru můžou vytvořit server Azure AD. objekty zabezpečení (přihlášení) v hlavní databázi pro spravovanou instanci.
 - Pokud je přihlášení objektem zabezpečení SQL, můžou pomocí příkazu CREATE vytvořit přihlašovací údaje pro účet Azure AD jenom přihlášení, která jsou součástí role `sysadmin`.
@@ -170,11 +170,11 @@ Spravovaná instance nemá přístup k souborům, takže nejde vytvořit zprost�
 - Překrývající se objekty zabezpečení serveru Azure AD (přihlášení) s účtem správce Azure AD jsou povolené. Objekty zabezpečení serveru Azure AD (přihlášení) mají přednost před správcem Azure AD při vyřešení objektu zabezpečení a uplatnění oprávnění pro spravovanou instanci.
 - Při ověřování se pro řešení ověřování objektu zabezpečení používá následující sekvence:
 
-    1. Pokud účet Azure AD existuje přímo namapovaný na objekt zabezpečení serveru Azure AD (přihlášení), který se nachází v zobrazení sys. server_principals jako typ "E", udělte přístup a uplatní se oprávnění pro objekt zabezpečení serveru Azure AD (přihlášení).
-    2. Pokud je účet Azure AD členem skupiny Azure AD, která je namapovaná na objekt zabezpečení serveru Azure AD (přihlášení), který se nachází v zobrazení sys. server_principals jako typ X, udělte přístup a uplatní se oprávnění pro přihlášení ke skupině Azure AD.
+    1. Pokud účet Azure AD existuje přímo namapovaný na objekt zabezpečení serveru Azure AD (přihlášení), který se nachází v sys. server_principals jako typ "E", udělit přístup a použít oprávnění pro objekt zabezpečení serveru Azure AD (přihlášení).
+    2. Pokud je účet Azure AD členem skupiny Azure AD, která je namapovaná na objekt zabezpečení serveru Azure AD (přihlášení), který se nachází v sys. server_principals jako typ X, udělte přístup a uplatní se oprávnění k přihlášení skupiny Azure AD.
     3. Pokud je účet Azure AD zvláštní portálem konfigurovaný správce Azure AD pro spravovanou instanci, která neexistuje v zobrazeních systému spravované instance, použijte zvláštní pevná oprávnění správce Azure AD pro spravovanou instanci (starší režim).
-    4. Pokud účet Azure AD existuje jako přímo mapovaný k uživateli Azure AD v databázi, která je k dispozici v zobrazení sys. database_principals jako typ "E", udělte přístup a uplatní se oprávnění uživatele databáze Azure AD.
-    5. Pokud je účet Azure AD členem skupiny Azure AD, která je namapovaná na uživatele Azure AD v databázi, která je k dispozici v zobrazení sys. database_principals jako Type "X", udělte přístup a uplatní se oprávnění pro přihlášení ke skupině Azure AD.
+    4. Pokud účet Azure AD existuje jako přímo mapovaný k uživateli Azure AD v databázi, která je k dispozici v zobrazení sys. database_principals jako typ "E", "udělení přístupu a oprávnění k použití pro uživatele databáze Azure AD.
+    5. Pokud je účet Azure AD členem skupiny služby Azure AD, která je namapovaná na uživatele Azure AD v databázi, která je k dispozici v zobrazení sys. database_principals jako typ "X", udělte přístup a uplatní se oprávnění pro přihlášení ke skupině Azure AD.
     6. Pokud máte přihlášení ke službě Azure AD namapované na uživatelský účet Azure AD nebo na účet skupiny Azure AD, který se přeloží na uživatele, který ověřuje, budou použita všechna oprávnění z tohoto přihlášení služby Azure AD.
 
 ### <a name="service-key-and-service-master-key"></a>Klíč služby a hlavní klíč služby
@@ -313,7 +313,7 @@ Následující typy tabulek nejsou podporovány:
 - [SOUBOREM](/sql/relational-databases/blob/filestream-sql-server)
 - [OBJEKTU FILETABLE](/sql/relational-databases/blob/filetables-sql-server)
 - [Externí tabulka](/sql/t-sql/statements/create-external-table-transact-sql) (základ)
-- [MEMORY_OPTIMIZED](/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables) (Nepodporováno pouze v pro obecné účely vrstvě)
+- [MEMORY_OPTIMIZED](/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables) (Nepodporováno pouze v pro obecné účely úrovni)
 
 Informace o tom, jak vytvářet a měnit tabulky, najdete v tématu [Create Table](/sql/t-sql/statements/create-table-transact-sql) a [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql).
 
@@ -345,7 +345,7 @@ Neuvedené příkazy DBCC, které jsou povolené v SQL Server nejsou ve spravova
 
 - Podporován je pouze omezený počet globálních příznaků trasování. `Trace flags` na úrovni relace nejsou podporovány. Viz [příznaky trasování](/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
 - [DBCC TRACEOFF kterým](/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) a [DBCC TRACEON](/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) fungují s omezeným počtem globálních příznaků Trace-Flags.
-- [Příkaz DBCC CHECKDB](/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) s možnostmi REPAIR_ALLOW_DATA_LOSS, REPAIR_FAST a REPAIR_REBUILD nelze použít, protože databázi nelze nastavit v režimu `SINGLE_USER` – viz téma [ALTER DATABASE rozdíl](#alter-database-statement). Potenciální poškození databáze zpracovává tým podpory Azure. Pokud všímáte poškození databáze, které by mělo být opraveno, obraťte se na podporu Azure.
+- [Příkaz DBCC CHECKDB](/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) s možnostmi REPAIR_ALLOW_DATA_LOSS, REPAIR_FAST a REPAIR_REBUILD nelze použít, protože databázi nelze nastavit v režimu `SINGLE_USER`-viz část [ALTER DATABASE rozdíly](#alter-database-statement). Potenciální poškození databáze zpracovává tým podpory Azure. Pokud všímáte poškození databáze, které by mělo být opraveno, obraťte se na podporu Azure.
 
 ### <a name="distributed-transactions"></a>Distribuované transakce
 
@@ -355,8 +355,8 @@ MSDTC a [elastické transakce](sql-database-elastic-transactions-overview.md) ak
 
 Některé cíle specifické pro systém Windows pro rozšířené události (XEvents) nejsou podporovány:
 
-- Cíl `etw_classic_sync` není podporován. Ukládejte `.xel` soubory v úložišti objektů BLOB v Azure. Viz [cíl etw_classic_sync](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target).
-- Cíl `event_file` není podporován. Ukládejte `.xel` soubory v úložišti objektů BLOB v Azure. Viz [cíl event_file](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
+- Cíl `etw_classic_sync` není podporován. Ukládejte `.xel` soubory v úložišti objektů BLOB v Azure. Viz [etw_classic_sync Target](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target).
+- Cíl `event_file` není podporován. Ukládejte `.xel` soubory v úložišti objektů BLOB v Azure. Viz [event_file Target](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
 
 ### <a name="external-libraries"></a>Externí knihovny
 
@@ -458,7 +458,7 @@ Pokud je replikace povolená v databázi ve [skupině převzetí služeb při se
   - zařízení `FROM DISK`/`TAPE`/Backup se nepodporuje.
   - Zálohovací sklady nejsou podporované.
 - možnosti `WITH` nejsou podporované, například bez `DIFFERENTIAL` nebo `STATS`.
-- `ASYNC RESTORE`: obnovení pokračuje i v případě, že dojde k přerušení připojení klienta. Pokud je připojení vyřazeno, můžete v zobrazení `sys.dm_operation_status` zjistit stav operace obnovení a pro databázi pro vytvoření a odstranění. Viz [Sys. DM _operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
+- `ASYNC RESTORE`: obnovení pokračuje i v případě, že dojde k přerušení připojení klienta. Pokud je připojení vyřazeno, můžete v zobrazení `sys.dm_operation_status` zjistit stav operace obnovení a pro databázi pro vytvoření a odstranění. Viz [Sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
 
 Následující možnosti databáze jsou nastaveny nebo přepsány a nelze je změnit později: 
 
@@ -494,7 +494,7 @@ Služba Service Broker mezi instancemi není podporována:
 ### <a name="stored-procedures-functions-and-triggers"></a>Uložené procedury, funkce a triggery
 
 - `NATIVE_COMPILATION` se v úrovni Pro obecné účely nepodporuje.
-- Následující možnosti [sp_configure](/sql/relational-databases/system-stored-procedures/sp-configure-transact-sql) nejsou podporované: 
+- Následující možnosti [sp_configure](/sql/relational-databases/system-stored-procedures/sp-configure-transact-sql) nejsou podporovány: 
   - `allow polybase export`
   - `allow updates`
   - `filestream_access_level`
@@ -607,7 +607,7 @@ Zosobnění pomocí `EXECUTE AS USER` nebo `EXECUTE AS LOGIN` následujících o
 -   Uživatelé AAD s aliasem V tomto případě se vrátí následující chyba `15517`.
 - Přihlášení AAD a uživatelé na základě aplikací AAD nebo instančních objektů. V tomto případě jsou v tomto případě `15517` a `15406`vráceny následující chyby.
 
-### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>parametr @query není v sp_send_db_mail podporovaný.
+### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>parametr @query se v sp_send_db_mail nepodporuje.
 
 **Datum:** Duben 2019
 

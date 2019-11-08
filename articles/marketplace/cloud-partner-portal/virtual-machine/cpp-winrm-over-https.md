@@ -1,41 +1,42 @@
 ---
-title: Vzdálená správa Windows přes protokol HTTPS pro Azure | Azure Marketplace
-description: Vysvětluje postup konfigurace virtuálního počítače s hostovaným v Azure, na základě Windows tak, že je možné spravovat vzdáleně pomocí prostředí PowerShell.
+title: Vzdálená správa systému Windows přes HTTPS pro Azure | Azure Marketplace
+description: Vysvětluje, jak nakonfigurovat virtuální počítač s hostovaným systémem Windows, aby jej bylo možné spravovat vzdáleně pomocí prostředí PowerShell.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: pabutler
-ms.openlocfilehash: fb661a2705d437d1f40ceebcad7e759c2a78540f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e159bd9b57b26c99afd590d6a9f2153dba2a205
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938226"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808430"
 ---
-# <a name="windows-remote-management-over-https"></a>Vzdálená správa Windows přes protokol HTTPS
+# <a name="windows-remote-management-over-https"></a>Vzdálená správa systému Windows přes HTTPS
 
-Tato část vysvětluje postup konfigurace virtuálního počítače s hostovaným v Azure, na základě Windows tak, aby ho můžete spravovat a nasazovat vzdáleně pomocí Powershellu.  Pokud chcete povolit vzdálenou komunikaci prostředí PowerShell, cílový virtuální počítač musí vystavit koncový bod HTTPS Vzdálená správa Windows (WinRM).  Další informace o vzdálené komunikace Powershellu najdete v tématu [spouštění vzdálených příkazů](https://docs.microsoft.com/powershell/scripting/core-powershell/running-remote-commands?view=powershell-6).  Další informace týkající se WinRM, naleznete v tématu [Vzdálená správa Windows](https://docs.microsoft.com/windows/desktop/WinRM/portal).
+V této části se dozvíte, jak nakonfigurovat virtuální počítač s hostovaným prostředím Azure, aby se mohl vzdáleně spravovat a nasazovat pomocí PowerShellu.  Aby bylo možné povolit vzdálenou komunikaci PowerShellu, cílový virtuální počítač musí vystavit koncový bod HTTPS Vzdálená správa systému Windows (WinRM).  Další informace o vzdálené komunikaci PowerShellu najdete v tématu [spouštění vzdálených příkazů](https://docs.microsoft.com/powershell/scripting/core-powershell/running-remote-commands?view=powershell-6).  Další informace o WinRM najdete v tématu [Vzdálená správa systému Windows](https://docs.microsoft.com/windows/desktop/WinRM/portal).
 
-Pokud jste vytvořili virtuální počítač pomocí jednoho z postupů "klasickém" Azure – na portálu Service Manager Azure nebo zastaralá [Azure Service Management API](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100))– je automaticky nakonfigurován s koncovým bodem služby WinRM.  Ale pokud vytvoříte virtuální počítač pomocí kteréhokoli z těchto přístupů "moderní" Azure a pak se váš virtuální počítač *není* nakonfigurovat pro WinRM prostřednictvím protokolu HTTPS.  
+Pokud jste virtuální počítač vytvořili pomocí některého z "klasických" přístupů do Azure – buď portál Azure Service Manager, nebo zastaralý [rozhraní API pro správu služeb Azure](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100)), pak se automaticky nakonfiguruje s koncovým bodem WinRM.  Pokud ale vytvoříte virtuální počítač pomocí některého z následujících "moderních" Azure přístupů, váš virtuální *počítač nebude nakonfigurovaný* pro WINRM přes HTTPS.  
 
-- Použití [webu Azure portal](https://portal.azure.com/), typicky ze schválených base, jak je popsáno v části [vytvoření virtuálního pevného disku kompatibilního s Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd)
-- [Pomocí šablon Azure Resource Manageru](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
-- Pomocí příkazového prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure.  Příklady najdete v tématu [rychlý start: Vytvoření virtuálního počítače s Windows v Azure pomocí prostředí PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell) a [rychlý start: Vytvoření virtuálního počítače s Linuxem pomocí Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-cli).
+- Použití [Azure Portal](https://portal.azure.com/), obvykle od schválené základny, jak je popsáno v části [Vytvoření virtuálního pevného disku kompatibilního s Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd)
+- [Používání šablon Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
+- Použijte Azure PowerShell nebo příkazové prostředí rozhraní příkazového řádku Azure CLI.  Příklady najdete v tématu [rychlý Start: Vytvoření virtuálního počítače s Windows v Azure pomocí PowerShellu](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell) a [rychlého startu: Vytvoření virtuálního počítače se systémem Linux pomocí Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-cli).
 
-Tento koncový bod služby WinRM je také potřeba spustit certifikační sadu nástrojů pro připojení virtuálních počítačů, jak je popsáno v [certifikaci vaší image virtuálního počítače](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-certify-vm).
+Tento koncový bod WinRM je taky nutný ke spuštění certifikační sady nástrojů pro registraci virtuálního počítače, jak je popsáno v části [certifikace image virtuálního počítače](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-certify-vm).
 
-Naopak, obvykle virtuálních počítačů s Linuxem se vzdáleně spravovat buď pomocí [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure) nebo Linuxové příkazy z konzoly SSH.  Azure poskytuje také několik alternativních metod [spouštět skripty ve virtuálním počítačům s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/run-scripts-in-vm).  Pro složitější scénáře existuje mnoho řešení automatizace a integrace k dispozici pro virtuální počítače s Windows a Linux.
+Na rozdíl od toho se obvykle vzdálené virtuální počítače se systémem Linux spravují pomocí příkazů [Azure CLI](https://docs.microsoft.com/cli/azure) nebo Linux z konzoly SSH.  Azure také nabízí několik alternativních metod [spouštění skriptů na virtuálním počítači Linux](https://docs.microsoft.com/azure/virtual-machines/linux/run-scripts-in-vm).  U složitějších scénářů je k dispozici několik řešení pro automatizaci a integraci pro virtuální počítače se systémem Windows nebo Linux.
 
 
 ## <a name="configure-and-deploy-with-winrm"></a>Konfigurace a nasazení pomocí WinRM
 
-Koncový bod služby WinRM pro virtuální počítač s Windows můžete nakonfigurovat při dvou různých fázích vývoje:
+Koncový bod WinRM pro virtuální počítač se systémem Windows se dá nakonfigurovat během dvou různých fází vývoje:
 
-- Při vytváření – při nasazení virtuálního počítače do existujícího virtuálního pevného disku.  Toto je upřednostňovaný způsob pro nové nabídky.  Tento přístup vyžaduje vytvoření certifikátu Azure pomocí šablon Azure Resource Manageru a případně i přizpůsobené skripty Powershellu pro spuštění. 
-- Po nasazení – na existující virtuální počítač hostovaný v Azure.  Tuto metodu použijte, pokud již máte řešení virtuálních počítačů nasazených v Azure a se muset povolit vzdálené správy systému Windows pro něj.  Tento přístup vyžaduje ruční změny webu Azure portal a spuštění skriptu na cílovém virtuálním počítači. 
+- Během vytváření – během nasazování virtuálního počítače do existujícího virtuálního pevného disku.  Toto je upřednostňovaný přístup pro nové nabídky.  Tento přístup vyžaduje vytvoření certifikátu Azure pomocí zadaných šablon Azure Resource Manager a spuštění přizpůsobených skriptů PowerShellu. 
+- Po nasazení – na existujícím virtuálním počítači hostovaném v Azure.  Tento postup použijte, pokud už máte řešení virtuálního počítače nasazené v Azure a potřebujete pro něj Povolit vzdálenou správu systému Windows.  Tento přístup vyžaduje ruční změny v Azure Portal a spuštění skriptu na cílovém virtuálním počítači. 
 
 
-## <a name="next-steps"></a>Další postup
-Pokud vytváříte nový virtuální počítač, můžete povolit WinRM během [nasazení virtuálního počítače z jeho virtuální pevné disky](./cpp-deploy-vm-vhd.md).  V opačném případě můžete v existujícím virtuálním počítači povolená služba WinRM  
+## <a name="next-steps"></a>Další kroky
+Pokud vytváříte nový virtuální počítač, můžete WinRM během [nasazování virtuálního počítače z jeho VHD](./cpp-deploy-vm-vhd.md)povolit.  V opačném případě se WinRM dá povolit v existujícím virtuálním počítači.  

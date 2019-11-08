@@ -1,5 +1,5 @@
 ---
-title: Poznámky k verzi Azure SQL Database | Microsoft Docs
+title: Poznámky k verzi
 description: Seznamte se s novými funkcemi a vylepšeními služby Azure SQL Database a v dokumentaci k Azure SQL Database
 services: sql-database
 author: stevestein
@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: 62ec5d4e85a6e72982b49872af59e7b579c4fd77
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 56830e20b190958c1c411f5daa1d2a7e928f0f3d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496262"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821200"
 ---
 # <a name="sql-database-release-notes"></a>Poznámky k verzi SQL Database
 

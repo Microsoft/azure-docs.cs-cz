@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 97b954ee5e00c13211a3b2a2254b6d34bccb780c
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: e0e649045e3efe488804fd37c030fe01991ad232
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72674949"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803610"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -50,7 +50,7 @@ Data z aktivačních událostí a vazeb jsou svázána s funkcí prostřednictv�
 }
 ```
 
-@No__t_0 soubor obsahuje následující kód funkce:
+`__init__.py` soubor obsahuje následující kód funkce:
 
 ```python
 def main(req):
@@ -73,7 +73,7 @@ Použijte poznámky Pythonu, které jsou součástí balíčku [Azure. Functions
 
 ## <a name="alternate-entry-point"></a>Alternativní vstupní bod
 
-Výchozí chování funkce můžete změnit volitelně zadáním vlastností `scriptFile` a `entryPoint` v souboru *Function. JSON* . Například _funkce Function. JSON_ ukazuje, že modul runtime používá metodu `customentry()` v souboru _Main.py_ jako vstupní bod pro funkci Azure Functions.
+Můžete změnit výchozí chování funkce, a to tak, že v souboru *Function. JSON* zadáte `scriptFile` a vlastnosti `entryPoint`. Například _funkce Function. JSON_ níže říká modulu runtime, aby používal metodu `customentry()` v souboru _Main.py_ jako vstupní bod pro funkci Azure Functions.
 
 ```json
 {
@@ -173,7 +173,7 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-Když je funkce vyvolána, požadavek HTTP je předán do funkce jako `req`. Položka bude načtena z Blob Storage Azure na základě _ID_ v adrese URL trasy a zpřístupněna jako `obj` v těle funkce.  Tady je uvedený účet úložiště, který je připojovacím řetězcem, který se nachází v, což je stejný účet úložiště, který používá aplikace Function App.
+Když je funkce vyvolána, požadavek HTTP se předává funkci jako `req`. Položka bude načtena z Blob Storage Azure na základě _ID_ v adrese URL trasy a zpřístupněna jako `obj` v těle funkce.  Tady je uvedený účet úložiště, který je připojovacím řetězcem, který se nachází v, což je stejný účet úložiště, který používá aplikace Function App.
 
 
 ## <a name="outputs"></a>Výstupy
@@ -182,7 +182,7 @@ Výstup může být vyjádřen v návratové hodnotě i v parametrech Output. Po
 
 Chcete-li použít vrácenou hodnotu funkce jako hodnotu výstupní vazby, vlastnost `name` vazby by měla být nastavena na `$return` v `function.json`.
 
-Chcete-li vytvořit více výstupů, použijte metodu `set()` poskytnutou rozhraním [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python) k přiřazení hodnoty k vazbě. Například následující funkce může odeslat zprávu do fronty a také vrátit odpověď HTTP.
+Chcete-li vytvořit více výstupů, použijte metodu `set()` poskytovanou rozhraním [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python) k přiřazení hodnoty k vazbě. Například následující funkce může odeslat zprávu do fronty a také vrátit odpověď HTTP.
 
 ```json
 {
@@ -224,7 +224,7 @@ def main(req: func.HttpRequest,
 
 ## <a name="logging"></a>Protokolování
 
-Přístup k protokolovacímu nástroji Azure Functions runtime je k dispozici prostřednictvím kořenové obslužné rutiny [`logging`](https://docs.python.org/3/library/logging.html#module-logging) ve vaší aplikaci Function App. Tento protokolovací nástroj je svázán s Application Insights a umožňuje označit upozornění a chyby, které byly zjištěny během provádění funkce.
+Přístup k protokolovacímu nástroji Azure Functions runtime je k dispozici prostřednictvím kořenové [`logging`](https://docs.python.org/3/library/logging.html#module-logging) obslužné rutiny ve vaší aplikaci Function App. Tento protokolovací nástroj je svázán s Application Insights a umožňuje označit upozornění a chyby, které byly zjištěny během provádění funkce.
 
 Následující příklad zaznamená informační zprávu, když je funkce vyvolána prostřednictvím triggeru protokolu HTTP.
 
@@ -250,7 +250,7 @@ Další informace o protokolování najdete v tématu [monitorování Azure Func
 
 ## <a name="http-trigger-and-bindings"></a>Aktivační procedura HTTP a vazby
 
-Aktivační událost HTTP je definována v souboru Function. Jan. @No__t_0 vazby musí odpovídat pojmenovanému parametru ve funkci. V předchozích příkladech se používá název vazby `req`. Tento parametr je objekt [HttpRequest] a je vrácen objekt [HttpResponse] .
+Aktivační událost HTTP je definována v souboru Function. Jan. `name` vazby musí odpovídat pojmenovanému parametru ve funkci. V předchozích příkladech se používá název vazby `req`. Tento parametr je objekt [HttpRequest] a je vrácen objekt [HttpResponse] .
 
 Z objektu [HttpRequest] můžete získat hlavičky žádosti, parametry dotazu, parametry směrování a tělo zprávy. 
 
@@ -294,7 +294,7 @@ V těchto situacích můžete zlepšit výkon spuštěním asynchronního a pomo
 
 ### <a name="async"></a>Async
 
-Pro spuštění funkce jako asynchronní korutina doporučujeme použít příkaz `async def`.
+Doporučujeme použít příkaz `async def`, aby se funkce spouštěla jako asynchronní korutina.
 
 ```python
 # Runs with asyncio directly
@@ -303,7 +303,7 @@ async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-Pokud je funkce `main()` synchronní (bez kvalifikátoru `async`), funkce se automaticky spustí ve fondu vláken `asyncio`.
+Když je funkce `main()` synchronní (bez kvalifikátoru `async`), funkce se automaticky spustí v `asyncio` fondu vláken.
 
 ```python
 # Runs in an asyncio thread-pool
@@ -318,9 +318,9 @@ Ve výchozím nastavení má každá instance hostitele Functions pracovní proc
 
 ## <a name="context"></a>Kontext
 
-Chcete-li získat kontext vyvolání funkce během provádění, zahrňte do podpisu argument [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) . 
+Chcete-li získat kontext vyvolání funkce během provádění, zahrňte do signatury argument [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) . 
 
-Například:
+Příklad:
 
 ```python
 import azure.functions
@@ -418,7 +418,7 @@ K sestavování závislostí a publikování pomocí systému pro průběžné d
 
 ## <a name="unit-testing"></a>Testování částí
 
-Funkce napsané v Pythonu se dají testovat jako jiný kód Pythonu pomocí standardních testovacích architektur. U většiny vazeb je možné vytvořit objektový vstupní objekt vytvořením instance příslušné třídy z balíčku `azure.functions`. Vzhledem k tomu, že balíček [`azure.functions`](https://pypi.org/project/azure-functions/) není hned k dispozici, nezapomeňte jej nainstalovat prostřednictvím souboru `requirements.txt`, jak je popsáno v části [verze Pythonu a Správa balíčků](#python-version-and-package-management) výše.
+Funkce napsané v Pythonu se dají testovat jako jiný kód Pythonu pomocí standardních testovacích architektur. U většiny vazeb je možné vytvořit objektový vstupní objekt vytvořením instance příslušné třídy z balíčku `azure.functions`. Vzhledem k tomu, že balíček [`azure.functions`](https://pypi.org/project/azure-functions/) není hned k dispozici, nezapomeňte ho nainstalovat pomocí `requirements.txt` souboru, jak je popsáno v části [verze Pythonu a Správa balíčků](#python-version-and-package-management) výše.
 
 Následující příklad je vzorovým testem funkce aktivované protokolem HTTP:
 
@@ -533,6 +533,27 @@ class TestFunction(unittest.TestCase):
             'msg body: test',
         )
 ```
+## <a name="temporary-files"></a>Dočasné soubory
+
+Metoda `tempfile.gettempdir()` vrátí dočasnou složku, která je v systému Linux `/tmp`. Aplikace může pomocí tohoto adresáře ukládat dočasné soubory vygenerované a používané funkcemi během provádění. 
+
+> [!IMPORTANT]
+> U souborů zapsaných do dočasného adresáře není zaručeno zachování trvalých volání. Během horizontálního navýšení kapacity se nesdílí dočasné soubory mezi instancemi. 
+
+Následující příklad vytvoří pojmenovaný dočasný soubor v dočasném adresáři (`/tmp`):
+
+```python
+import logging
+import azure.functions as func
+import tempfile
+from os import listdir
+
+#---
+   tempFilePath = tempfile.gettempdir()   
+   fp = tempfile.NamedTemporaryFile()     
+   fp.write(b'Hello world!')              
+   filesDirListInTemp = listdir(tempFilePath)     
+```   
 
 ## <a name="known-issues-and-faq"></a>Známé problémy a nejčastější dotazy
 

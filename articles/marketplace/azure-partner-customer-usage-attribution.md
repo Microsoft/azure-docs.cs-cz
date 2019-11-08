@@ -4,15 +4,16 @@ description: Přehled toho, jak sledovat zákaznickou spotřebu Azure Marketplac
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 9/23/2019
 ms.author: pabutler
-ms.openlocfilehash: c077b93b887482dda5ae127bb3dbaec71b2ea11b
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c84f5538d2f553a713b52aa795a10acddac9aff8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260087"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819885"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Přisuzování využití ze strany zákazníků partnerům Azure
 
@@ -22,9 +23,9 @@ Microsoft teď nabízí metodu, která pomáhá partnerům lépe sledovat využi
 
 Jako partner Microsoftu můžete k využití Azure přidružit všechny prostředky Azure, které zřídíte jménem zákazníka. Přidružení můžete vytvořit prostřednictvím Azure Marketplace, úložiště pro rychlé zprovoznění, privátních úložišť GitHub a zapojení zákazníka na jednu možnost. Označení zákaznického využití podporuje tři možnosti nasazení:
 
-- Šablony Azure Resource Manager: Partneři můžou pomocí Správce prostředků šablon nasadit služby Azure pro spouštění softwaru partnera. Partneři můžou vytvořit šablonu Správce prostředků k definování infrastruktury a konfigurace jejich řešení Azure. Šablona Správce prostředků umožňuje vašim zákazníkům nasadit vaše řešení v celém životním cyklu. Máte jistotu, že se prostředky nasazují v konzistentním stavu.
-- Rozhraní API pro Azure Resource Manager: Partneři můžou rozhraní API pro Správce prostředků volat přímo k nasazení Správce prostředků šablony nebo pro generování volání rozhraní API, která přímo zřídí služby Azure.
-- Terraformu Partneři můžou použít Cloud Orchestrator, jako je Terraformu, k nasazení šablony Správce prostředků nebo nasazení služeb Azure přímo.
+- Azure Resource Manager šablony: partneři můžou pomocí šablon Správce prostředků nasadit služby Azure, aby mohli provozovat software partnera. Partneři můžou vytvořit šablonu Správce prostředků k definování infrastruktury a konfigurace jejich řešení Azure. Šablona Správce prostředků umožňuje vašim zákazníkům nasadit vaše řešení v celém životním cyklu. Máte jistotu, že se prostředky nasazují v konzistentním stavu.
+- Rozhraní Azure Resource Manager API: partneři můžou volat rozhraní API Správce prostředků přímo, aby mohli nasadit šablonu Správce prostředků nebo aby generovala volání rozhraní API, která přímo zřídí služby Azure.
+- Terraformu: partneři můžou pomocí cloudového nástroje Orchestrator, jako je Terraformu, nasadit šablonu Správce prostředků nebo přímo nasadit služby Azure.
 
 Přidělení zákaznického využití je pro nové nasazení a nepodporuje označení existujících prostředků, které už byly nasazené.
 
@@ -40,14 +41,14 @@ Další informace o vytváření a publikování šablon řešení najdete v té
 
 * [Vytvořte a nasaďte první šablonu správce prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 * [Nabídka aplikací Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)
-* Video: [Sestavování šablon řešení a spravovaných aplikací pro Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603).
+* Video: [sestavování šablon řešení a spravovaných aplikací pro Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603).
 
 
 ## <a name="add-a-guid-to-your-template"></a>Přidání identifikátoru GUID do šablony
 
 Chcete-li přidat globálně jedinečný identifikátor (GUID), proveďte jednu úpravu souboru hlavní šablony:
 
-1. [Vytvořte identifikátor GUID](#create-guids) pomocí navrhované metody a zaregistrujte [identifikátor GUID](#register-guids-and-offers).
+1. [Vytvořte identifikátor GUID](#create-guids) pomocí navrhované metody a [zaregistrujte identifikátor GUID](#register-guids-and-offers).
 
 1. Otevřete šablonu Správce prostředků.
 
@@ -99,7 +100,7 @@ Pokud chcete při návrhu volání rozhraní API povolit jeho přihlašování, 
 > [!Note]
 > Formát řetězce je důležitý. Pokud není k dispozici předpona **PID-** prefix, není možné zadat dotaz na data. Různé sady SDK sledují různě. Pokud chcete implementovat tuto metodu, přečtěte si přístup k podpoře a sledování pro preferovanou sadu Azure SDK.
 
-#### <a name="example-the-python-sdk"></a>Příklad: Sada Python SDK
+#### <a name="example-the-python-sdk"></a>Příklad: sada Python SDK
 
 Pro Python použijte atribut **config** . Atribut lze přidat pouze k vlastnosti UserAgent. Tady je příklad:
 
@@ -137,12 +138,12 @@ provider "azurerm" {
           client_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
           ……
           # new stuff for ISV attribution
-          partner_id = “xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"}
+          partner_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"}
 ```
 Partneři, kteří chtějí získat své nasazení prostřednictvím Terraformuu, které sledují označení zákaznického využití, musí provádět tyto akce:
 
 * Vytvořte identifikátor GUID (identifikátor GUID by měl být přidán pro každou nabídku nebo SKU).
-* Aktualizujte svého poskytovatele Azure a nastavte hodnotu *partner_id* na GUID (neopravte GUID pomocí "PID-", stačí ho nastavit na skutečný identifikátor GUID).
+* Aktualizujte svého poskytovatele Azure a nastavte hodnotu *partner_id* na identifikátor GUID (neopravte GUID pomocí "PID-", stačí ho nastavit na skutečný identifikátor GUID).
 
 ## <a name="create-guids"></a>Vytvořit GUID
 
@@ -230,7 +231,7 @@ foreach ($deployment in $deployments){
 }
 ```
 
-## <a name="report"></a>Zpráva
+## <a name="report"></a>Sestava
 
 Sestavu pro přidělení zákaznického využití najdete na řídicím panelu analyzovat v partnerském centru. ([https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). Pokud chcete zobrazit sestavu, musíte se přihlásit pomocí přihlašovacích údajů partnerského centra. Pokud narazíte na nějaké problémy se sestavou nebo přihlášením, vytvořte žádost o podporu podle pokynů v části získat podporu.
 
@@ -240,21 +241,21 @@ Kliknutím na sledovanou šablonu v rozevíracím seznamu typ přidružení part
 
 ## <a name="notify-your-customers"></a>Upozorněte vaše zákazníky
 
-Partneři by měli informovat své zákazníky o nasazeních, která používají označení zákaznického využití. Microsoft oznamuje partnerovi využití Azure, které je k těmto nasazením přidružené. Následující příklady zahrnují obsah, který můžete použít k informování zákazníků o těchto nasazeních. V příkladech nahraďte \<Partnerská > názvem vaší společnosti. Partneři by se měli ujistit, že se oznámení zarovnají se zásadami ochrany osobních údajů a kolekcí dat, včetně možností pro vyloučení zákazníků ze sledování.
+Partneři by měli informovat své zákazníky o nasazeních, která používají označení zákaznického využití. Microsoft oznamuje partnerovi využití Azure, které je k těmto nasazením přidružené. Následující příklady zahrnují obsah, který můžete použít k informování zákazníků o těchto nasazeních. V příkladech nahraďte \<PARTNERská > názvem vaší společnosti. Partneři by se měli ujistit, že se oznámení zarovnají se zásadami ochrany osobních údajů a kolekcí dat, včetně možností pro vyloučení zákazníků ze sledování.
 
 ### <a name="notification-for-resource-manager-template-deployments"></a>Oznámení pro nasazení šablon Správce prostředků
 
-Když tuto šablonu nasadíte, Microsoft dokáže identifikovat instalaci \<partnerského > softwaru s nasazenými prostředky Azure. Společnost Microsoft je schopná korelovat prostředky Azure, které se používají k podpoře softwaru. Společnost Microsoft tyto informace shromažďuje, aby poskytovala co nejvíc zkušeností s produkty a pracovala s jejich podnikáním. Data se shromažďují a řídí zásadami ochrany osobních údajů od Microsoftu, které najdete na adrese https://www.microsoft.com/trustcenter.
+Když nasadíte tuto šablonu, společnost Microsoft dokáže identifikovat instalaci \<> softwaru pro partnery s nasazenými prostředky Azure. Společnost Microsoft je schopná korelovat prostředky Azure, které se používají k podpoře softwaru. Společnost Microsoft tyto informace shromažďuje, aby poskytovala co nejvíc zkušeností s produkty a pracovala s jejich podnikáním. Data se shromažďují a řídí zásadami ochrany osobních údajů od Microsoftu, které najdete na adrese https://www.microsoft.com/trustcenter.
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>Oznámení pro nasazení SDK nebo rozhraní API
 
-Když nasadíte \<partnerský > software, společnost Microsoft dokáže identifikovat \<instalaci partnerského > softwaru s nasazenými prostředky Azure. Společnost Microsoft je schopná korelovat prostředky Azure, které se používají k podpoře softwaru. Společnost Microsoft tyto informace shromažďuje, aby poskytovala co nejvíc zkušeností s produkty a pracovala s jejich podnikáním. Data se shromažďují a řídí zásadami ochrany osobních údajů od Microsoftu, které najdete na adrese https://www.microsoft.com/trustcenter.
+Když nasadíte software \<PARTNER >, společnost Microsoft dokáže identifikovat instalaci \<ho > softwaru pro partnery s nasazenými prostředky Azure. Společnost Microsoft je schopná korelovat prostředky Azure, které se používají k podpoře softwaru. Společnost Microsoft tyto informace shromažďuje, aby poskytovala co nejvíc zkušeností s produkty a pracovala s jejich podnikáním. Data se shromažďují a řídí zásadami ochrany osobních údajů od Microsoftu, které najdete na adrese https://www.microsoft.com/trustcenter.
 
 ## <a name="get-support"></a>Získat podporu
 
 Existují dva kanály podpory v závislosti na problémech, které máte k dispozici.
 
-Pokud narazíte na nějaké problémy v partnerském centru, jako je například zobrazení sestavy týkající se zákaznického používání nebo přihlašování, vytvořte žádost o podporu pomocí týmu podpory partnerského centra, který najdete tady:[https://partner.microsoft.com/support](https://partner.microsoft.com/support)
+Pokud narazíte na nějaké problémy v partnerském centru, jako je například zobrazení sestavy týkající se zákaznického používání nebo přihlašování, vytvořte žádost o podporu pomocí týmu podpory partnerského centra: [https://partner.microsoft.com/support](https://partner.microsoft.com/support)
 
 ![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
@@ -273,7 +274,7 @@ Pokud potřebujete pomoc s registrací na tržišti a/nebo s uvedením údajů o
 
 1. Vyberte možnost **Spustit požadavek**.
 
-1. Na další stránce zadejte požadované hodnoty. Vyberte **pokračovat**.
+1. Na další stránce zadejte požadované hodnoty. Vyberte **Pokračovat**.
 
 1. Na další stránce zadejte požadované hodnoty.
 
@@ -288,7 +289,7 @@ Můžete také získat technické pokyny od Microsoft Partner Technical konzulta
 
 ### <a name="how-to-submit-a-technical-consultation-request"></a>Odeslání žádosti o technickou spolupráci
 
-1. Přejděte [https://aka.ms/TechnicalJourney](https://aka.ms/TechnicalJourney)na adresu.
+1. Navštivte [https://aka.ms/TechnicalJourney](https://aka.ms/TechnicalJourney).
 1. Vyberte cloudovou infrastrukturu a správu a otevře se nová stránka, která vám umožní zobrazit technickou cestu.
 1. V části služby nasazení klikněte na tlačítko Odeslat žádost.
 1. Přihlaste se pomocí účtu MSA (MPN) nebo svého AAD (účet partnerského řídicího panelu). na základě přihlašovacích údajů pro přihlášení se otevře formulář online žádosti:
@@ -297,9 +298,9 @@ Můžete také získat technické pokyny od Microsoft Partner Technical konzulta
     * Zadejte název a popis problému (uveďte co nejvíc podrobností).
 1. Klikněte na Odeslat.
 
-Prohlédněte si podrobné pokyny k snímkům obrazovky v [https://aka.ms/TechConsultInstructions](https://aka.ms/TechConsultInstructions).
+Zobrazte si podrobné pokyny s snímky obrazovky na [https://aka.ms/TechConsultInstructions](https://aka.ms/TechConsultInstructions).
 
-### <a name="whats-next"></a>Co dál
+### <a name="whats-next"></a>Kam dál
 
 Obraťte se na partnera Microsoftu, který vám poskytne odborného technického konzultanta k nastavení volání podle rozsahu vašich potřeb.
 

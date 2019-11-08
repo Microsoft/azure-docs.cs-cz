@@ -1,5 +1,5 @@
 ---
-title: Protokol diagnostiky výkonu Intelligent Insights – Azure SQL Database
+title: Protokol diagnostiky výkonu Intelligent Insights
 description: Intelligent Insights poskytuje diagnostický protokol pro problémy s výkonem Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 86381f5670f09b5e6a215793dc1ea4eab7ecbb8e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9ed2cc8bfb10d916218417a7dd27010638d2a927
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689696"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810288"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Použijte protokol Intelligent Insights Azure SQL Database Performance Diagnostics
 
@@ -40,9 +40,9 @@ Záhlaví protokolu je běžné a skládá se z časového razítka (TimeGenerat
 
 Vlastnost Identifikace problému (issueId_d) poskytuje způsob, jak jednoznačně sledovat problémy s výkonem až do vyřešení. Víc záznamů událostí ve stavu vytváření sestav protokolu u stejného problému bude sdílet stejné ID problému.
 
-Společně s ID problému nástroj pro diagnostiku hlásí časová razítka Start (intervalStartTime_t) a end (intervalEndTme_t), která souvisí s problémem, který se nahlásil v diagnostickém protokolu.
+Společně s ID problému nástroj pro diagnostiku hlásí časová razítka počátečních (intervalStartTime_t) a koncových (intervalEndTme_tch) časových razítek konkrétní události týkající se problému, který je uveden v diagnostickém protokolu.
 
-Vlastnost elastický fond (elasticPoolName_s) určuje, do kterého elastického fondu databáze s problémem patří. Pokud databáze není součástí elastického fondu, nemá tato vlastnost žádnou hodnotu. Databáze, ve které byl problém zjištěn, je zveřejněna ve vlastnosti název databáze (databaseName_s).
+Vlastnost elastický fond (elasticPoolName_s) určuje, do kterého elastického fondu databáze s problémem patří. Pokud databáze není součástí elastického fondu, nemá tato vlastnost žádnou hodnotu. Databáze, ve které byl problém zjištěn, se zveřejní ve vlastnosti název databáze (databaseName_s).
 
 ```json
 "intervalStartTime_t": "2017-9-25 11:00", // start of the issue reported time stamp
@@ -126,7 +126,7 @@ Vlastnost DurationIncreaseSeconds poskytuje jednotku měření v sekundách. Mě
 
 ## <a name="root-cause-analysis-and-improvement-recommendations"></a>Doporučení k analýze a vylepšení hlavní příčiny
 
-Poslední část Intelligent Insightsho protokolu výkonu se týká analýzy automatických hlavních příčin zjištěného problému s snížením výkonu. Informace se zobrazí v uživatelsky přívětivém verbiage ve vlastnosti rootCauseAnalysis_s (root příčina Analysis). Doporučení pro zlepšení jsou obsažena v protokolu, kde je to možné.
+Poslední část Intelligent Insightsho protokolu výkonu se týká analýzy automatických hlavních příčin zjištěného problému s snížením výkonu. Tyto informace se zobrazí v uživatelsky přívětivém verbiage ve vlastnosti "původní Analýza příčiny" (rootCauseAnalysis_s). Doporučení pro zlepšení jsou obsažena v protokolu, kde je to možné.
 
 ```json
 // example of reported root cause analysis of the detected performance issue, in a human-readable format

@@ -1,66 +1,66 @@
 ---
-title: Zabezpečený přístup k účtu služby Azure Cosmos DB s využitím koncového bodu služby virtuální sítě Azure
-description: Tento dokument popisuje, o virtuální síť a podsíť řízení přístupu k účtu Azure Cosmos.
+title: Zabezpečený přístup k účtu Azure Cosmos DB pomocí koncového bodu služby Azure Virtual Network
+description: Tento dokument popisuje informace o virtuální síti a řízení přístupu k podsíti pro účet Azure Cosmos.
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: dfc3ebc0274c87466d6dc27c93880483df023085
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 791821fbfe5854c27b7e3e6927a56a66ac1f1dc2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242476"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819082"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Přístup k Azure Cosmos DB z virtuálních sítí (VNet)
 
-Můžete nakonfigurovat účet Azure Cosmos, který chcete povolit přístup pouze z konkrétní podsítě virtuální sítě (VNet). Povolením [koncový bod služby](../virtual-network/virtual-network-service-endpoints-overview.md) pro přístup ke službě Azure Cosmos DB na podsítě v rámci virtuální sítě, provoz z této podsítě ke službě Azure Cosmos DB se neposílají identity podsítě a virtuální sítě. Po povolení koncového bodu služby Azure Cosmos DB můžete omezit přístup k podsíti tak, že přidáte ke svému účtu Azure Cosmos.
+Účet Azure Cosmos můžete nakonfigurovat tak, aby povoloval přístup jenom z konkrétní podsítě virtuální sítě (VNet). Povolením [koncového bodu služby](../virtual-network/virtual-network-service-endpoints-overview.md) pro přístup k Azure Cosmos DB v podsíti ve virtuální síti se přenos z této podsítě pošle Azure Cosmos DB s identitou podsítě a Virtual Network. Po povolení koncového bodu služby Azure Cosmos DB můžete omezit přístup k podsíti tím, že ji přidáte do svého účtu Azure Cosmos.
 
-Ve výchozím nastavení je přístupný z jakéhokoli zdroje účet služby Azure Cosmos, když žádosti je přiložený platný autorizační token. Při přidání jedné nebo několika podsítí v rámci virtuální sítě, se zobrazí pouze požadavky pocházejících z těchto podsítí platnou odpověď. Žádosti pocházející z jakéhokoli jiného zdroje přijetí odpovědi 403 (zakázáno). 
+Ve výchozím nastavení je účet Azure Cosmos přístupný z libovolného zdroje, pokud je žádost doprovázena platným autorizačním tokenem. Když do virtuální sítě přidáte jednu nebo víc podsítí, budou se v rámci požadavků, které pocházejí z těchto podsítí, získat platná odpověď. Žádosti pocházející z jakéhokoliv jiného zdroje obdrží odpověď 403 (zakázáno). 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-Tady jsou některé nejčastější dotazy týkající se konfigurace přístupu z virtuální sítě:
+Tady jsou některé nejčastější dotazy týkající se konfigurace přístupu z virtuálních sítí:
 
-### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>Můžete zadat koncový bod služby virtuální sítě a zásad řízení přístupu IP v rámci účtu Azure Cosmos? 
+### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>Můžu v účtu Azure Cosmos zadat jak koncový bod služby virtuální sítě, tak i zásady řízení přístupu IP? 
 
-Koncový bod služby virtuální sítě a zásad řízení přístupu IP (označuje se také jako brána firewall) můžete povolit na vašem účtu Azure Cosmos. Tyto dvě funkce se doplňují a souhrnně zajištění izolace a zabezpečení vašeho účtu Azure Cosmos. Pomocí IP adresy brány firewall zajistí, že statické IP adresy můžete přístup k vašemu účtu. 
+V účtu Azure Cosmos můžete povolit koncový bod služby virtuální sítě a zásadu řízení přístupu IP (neboli bránu firewall). Tyto dvě funkce jsou doplňující a společně zajišťují izolaci a zabezpečení účtu Azure Cosmos. Použití brány firewall protokolu IP zajišťuje, že ke svému účtu budou mít přístup statické IP adresy. 
 
-### <a name="how-do-i-limit-access-to-subnet-within-a-virtual-network"></a>Jak můžu omezit přístup k podsíti ve virtuální síti? 
+### <a name="how-do-i-limit-access-to-subnet-within-a-virtual-network"></a>Návody omezit přístup k podsíti v rámci virtuální sítě? 
 
-Existují dva kroky potřebné k omezení přístupu k účtu Azure Cosmos z podsítě. Nejprve je povolený provoz z podsítě provádět její podsítě a identitu virtuální sítě ke službě Azure Cosmos DB. Je to tím, že koncový bod služby pro službu Azure Cosmos DB v podsíti. Dále je přidání pravidla v účtu Azure Cosmos zadání této podsítě jako zdroj, ze kterého můžete přístupu k účtu.
+K omezení přístupu k účtu Azure Cosmos z podsítě se vyžadují dva kroky. Nejdřív povolíte provoz z podsítě, aby se mohla Azure Cosmos DBa identita vaší podsítě a virtuální sítě. To se provádí povolením koncového bodu služby pro Azure Cosmos DB v podsíti. V dalším kroku se přidá pravidlo do účtu Azure Cosmos, který určuje tuto podsíť jako zdroj, ze kterého se dá dostat k účtu.
 
-### <a name="will-virtual-network-acls-and-ip-firewall-reject-requests-or-connections"></a>Se seznamy ACL virtuální sítě a brány Firewall protokolu IP odmítnout žádosti o připojení nebo připojení? 
+### <a name="will-virtual-network-acls-and-ip-firewall-reject-requests-or-connections"></a>Budou seznamy řízení přístupu k virtuální síti a žádosti o připojení brány firewall protokolu IP odmítnuty? 
 
-Při přístupu k brány firewall protokolu IP nebo virtuální sítě přidána pravidla, pouze žádosti z povolené zdroje get platné odpovědi. Další požadavky byly zamítnuty s 403 (zakázáno). Je důležité odlišení od připojení brány firewall na úrovni firewall účet Azure Cosmos. Zdroj může pořád připojit ke službě a nejsou odmítl připojení sami.
+Když se přidají pravidla přístupu k bránám firewall nebo k virtuální síti, žádosti z povolených zdrojů získají platné odpovědi. Jiné požadavky se odmítnou s 403 (zakázáno). Bránu firewall účtu Azure Cosmos je důležité odlišit od brány firewall na úrovni připojení. Zdroj se stále může ke službě připojit a samotné připojení se neodmítlo.
 
-### <a name="my-requests-started-getting-blocked-when-i-enabled-service-endpoint-to-azure-cosmos-db-on-the-subnet-what-happened"></a>Moje žádosti o spuštění blokován, pokud mám povolený koncový bod služby Azure Cosmos DB v podsíti. Co se stalo?
+### <a name="my-requests-started-getting-blocked-when-i-enabled-service-endpoint-to-azure-cosmos-db-on-the-subnet-what-happened"></a>Když se povolí koncový bod služby Azure Cosmos DB v podsíti, začaly se zablokovat moje žádosti. Co se stalo?
 
-Po povolení koncového bodu služby pro službu Azure Cosmos DB v podsíti zdroje přenosů, obraťte se účtu se přepne z veřejné IP adresy na virtuální síť a podsíť. Pokud má váš účet Azure Cosmos založené na protokolu IP brány firewall pouze provoz z podsítě povolenou službu už neodpovídá pravidla firewallu protokolu IP a proto zamítne. Projít kroky bezproblémově migrovat z založené na protokolu IP brány firewall pro řízení přístupu na virtuální síti.
+Jakmile je koncový bod služby pro Azure Cosmos DB v podsíti povolený, zdroj provozu, který přiblíží účtu, se přepne z veřejné IP adresy do virtuální sítě a podsítě. Pokud má váš účet Azure Cosmos jenom bránu firewall založenou na protokolu IP, provoz z podsítě s povolenými službami už nebude odpovídat pravidlům brány firewall protokolu IP a proto se odmítne. Přečtěte si postup plynule migrace z brány firewall založené na protokolu IP na řízení přístupu na základě virtuální sítě.
 
-### <a name="do-the-peered-virtual-networks-also-have-access-to-azure-cosmos-account"></a>Partnerské virtuální sítě také mají přístup k účtu Azure Cosmos? 
-Mít přístup pouze virtuální sítě a podsítě přidán k účtu Azure Cosmos. Jejich partnerských virtuálních sítích nelze přístup k účtu, dokud nebudou přidány podsítě v rámci partnerských virtuálních sítích na účet.
+### <a name="do-the-peered-virtual-networks-also-have-access-to-azure-cosmos-account"></a>Mají partnerské virtuální sítě taky přístup k účtu Azure Cosmos? 
+Jenom virtuální síť a jejich podsítě přidávané k účtu Azure Cosmos mají přístup. Jejich partnerský virtuální sítě nemá přístup k účtu, dokud nebudou do účtu přidány podsítě v rámci partnerských virtuálních sítí.
 
-### <a name="what-is-the-maximum-number-of-subnets-allowed-to-access-a-single-cosmos-account"></a>Co je povolen maximální počet podsítí pro přístup k jednomu účtu Cosmos? 
-V současné době může mít maximálně 64 podsítí povolené pro účet Azure Cosmos.
+### <a name="what-is-the-maximum-number-of-subnets-allowed-to-access-a-single-cosmos-account"></a>Jaký je maximální počet podsítí s povoleným přístupem k jednomu účtu Cosmos? 
+V současné době můžete mít pro účet Azure Cosmos povolený maximálně 64 podsítí.
 
-### <a name="can-i-enable-access-from-vpn-and-express-route"></a>Můžete povolit přístup z VPN a Expressroute? 
-Pro přístup k účtu Azure Cosmos přes Express route z v místním prostředí, je třeba povolit partnerský vztah Microsoftu. Po přepnutí brány firewall protokolu IP nebo pravidla přístupu k virtuální síti, můžete přidat veřejné IP adresy používané pro partnerský vztah Microsoftu na bráně firewall IP účtu Azure Cosmos umožňuje v místním prostředí služby přístup k účtu Azure Cosmos. 
+### <a name="can-i-enable-access-from-vpn-and-express-route"></a>Můžu povolit přístup z sítě VPN a Express Route? 
+Pro přístup k účtu Azure Cosmos přes Express Route z místního prostředí budete muset povolit partnerské vztahy Microsoftu. Po umístění brány firewall protokolu IP nebo pravidla přístupu k virtuální síti můžete přidat veřejné IP adresy používané pro partnerský vztah Microsoftu na svém účtu brány firewall Azure Cosmos, aby místní služby mohly přistupovat k účtu Azure Cosmos. 
 
-### <a name="do-i-need-to-update-the-network-security-groups-nsg-rules"></a>Je potřeba aktualizovat pravidla skupiny zabezpečení sítě (NSG)? 
-Pravidla skupiny zabezpečení sítě umožňují omezit připojení do a z podsítě virtuální sítě. Když přidáte koncový bod služby pro službu Azure Cosmos DB k podsíti, není nutné otevřít odchozí připojení do skupiny zabezpečení sítě pro váš účet Azure Cosmos. 
+### <a name="do-i-need-to-update-the-network-security-groups-nsg-rules"></a>Potřebuji aktualizovat pravidla skupin zabezpečení sítě (NSG)? 
+Pravidla NSG se používají k omezení připojení k podsíti s virtuální sítí a z ní. Když do podsítě přidáte koncový bod služby pro Azure Cosmos DB, není nutné otevírat odchozí připojení v NSG pro váš účet Azure Cosmos. 
 
 ### <a name="are-service-endpoints-available-for-all-vnets"></a>Jsou k dispozici koncové body služby pro všechny virtuální sítě?
-Ne, virtuální sítě pouze Azure Resource Manageru můžete mít povolený koncový bod služby. Klasické virtuální sítě nepodporují koncových bodů služby.
+Ne, u koncového bodu služby můžou být povolené jenom Azure Resource Manager virtuální sítě. Klasické virtuální sítě nepodporují koncové body služby.
 
-### <a name="can-i-accept-connections-from-within-public-azure-datacenters-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>Můžete mi "Přijímat připojení z v rámci veřejných datových centrech Azure" když je povolen přístup koncových bodů služby pro službu Azure Cosmos DB?  
-To je potřeba, pouze když chcete svůj účet služby Azure Cosmos DB ke kterým přistupují jiné Azure od služby jako Azure Data factory, Azure Search nebo některý službu, která je nasazena v dané oblasti Azure.
+### <a name="can-i-accept-connections-from-within-public-azure-datacenters-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>Můžu přijmout připojení z veřejných datacenter Azure, když je povolený koncový bod služby Access pro Azure Cosmos DB?  
+To se vyžaduje jenom v případě, že chcete, aby k účtu Azure Cosmos DB přistupovaly jiné služby Azure, jako je Azure Data Factory, Azure Kognitivní hledání nebo jakákoli služba nasazená v dané oblasti Azure.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Jak omezit přístup k účtu Azure Cosmos pro tento počet podsítí: v rámci virtuálních sítí](how-to-configure-vnet-service-endpoint.md)
-* [Postup konfigurace brány firewall protokolu IP pro váš účet Azure Cosmos](how-to-configure-firewall.md)
+* [Omezení přístupu účtu Azure Cosmos k podsítím v rámci virtuálních sítí](how-to-configure-vnet-service-endpoint.md)
+* [Jak nakonfigurovat bránu firewall protokolu IP pro účet Azure Cosmos](how-to-configure-firewall.md)
 

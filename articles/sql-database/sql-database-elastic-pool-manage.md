@@ -1,5 +1,5 @@
 ---
-title: Správa elastických fondů – Azure SQL Database
+title: Správa elastických fondů
 description: Vytvářejte a spravujte elastické fondy Azure SQL.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: ad8f076c65c852f338e380f1ad8fca4e5dcb79ba
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4ae2e84ab5f6108de4e8236c39371cf9658809d8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690460"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823867"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Správa elastických fondů v Azure SQL Database
 

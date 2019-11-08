@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 9cefdc9354560ac5b7f3789cde2408a4c255c186
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: f2cb1907557c2440a5a94c0f4799eac95a8cf507
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191758"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827863"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Aktualizace stávající nabídky na komerčním webu Marketplace
 
@@ -20,7 +21,7 @@ Stávající nabídky si můžete prohlédnout na kartě **Přehled** na [portá
 
 Aktualizace stávající nabídky, která je aktuálně živá na webu Marketplace: 
 
-1. Vyberte název nabídky, kterou chcete aktualizovat. Stav nabídky může být uvedený jako **Live**, **publikování probíhá**, **koncept**, **nutná pozornost**nebo neprodávaná na **webu Marketplace** (Pokud jste předtím zvolili možnost ukončit prodej této nabídky). Po výběru se otevře stránka s **přehledem nabídky** pro tuto nabídku.
+1. Vyberte název nabídky, kterou chcete aktualizovat. Stav nabídky může být uvedený jako **Live**, **publikování probíhá**, **koncept**, **nutná pozornost**nebo **neprodávaná na webu Marketplace** (Pokud jste předtím zvolili možnost ukončit prodej této nabídky). Po výběru se otevře stránka s **přehledem nabídky** pro tuto nabídku.
 2. Pro oblast, kterou chcete aktualizovat, vyberte na kartě Přehled možnost **aktualizovat** nebo položku nabídky z levé navigace. Můžete chtít aktualizovat **nastavení nabídek**, **vlastnosti**, **seznam nabídek**, **Náhled**, **technickou konfiguraci**, **Přehled plánu**nebo **testovací jednotku**. 
 3. Proveďte požadované změny a pak vyberte **Uložit**. Tento postup opakujte, dokud nebudou všechny změny dokončeny.
 
@@ -30,12 +31,12 @@ Až budete připraveni publikovat aktualizovanou nabídku, vyberte **publikovat*
 
 
 - Podívejte se na téma stav dokončení pro části nabídky, kterou jste aktualizovali: 
-    - **Nepublikované změny**: Oddíl byl aktualizován a je dokončen. Byla poskytnuta všechna požadovaná data a v aktualizacích nebyly zavedeny žádné chyby.
-    - **Nedokončeno**: Aktualizace provedené v oddílu zavedly chyby, které je třeba opravit, nebo vyžadují, aby byly k dispozici další informace.
+    - **Nepublikované změny**: oddíl se aktualizoval a je dokončený. Byla poskytnuta všechna požadovaná data a v aktualizacích nebyly zavedeny žádné chyby.
+    - **Nedokončeno**: aktualizace provedené v oddílu zavedly chyby, které je třeba opravit, nebo vyžadují, aby byly k dispozici další informace.
 - Poskytněte týmu certifikace Další informace, aby se zajistilo plynulé testování.
 - Kliknutím na **Odeslat**aktualizujte aktualizovanou nabídku pro publikování.  Po zpřístupnění verze Preview aktualizované nabídky vám pošleme e-mail, abyste mohli zkontrolovat a odhlásit.
 
-**DŮLEŽITÉ:** Abyste mohli publikovat aktualizovanou nabídku vaší zamýšlené cílové skupině (veřejné nebo soukromé), musíte si prohlédnout svou nabídku Preview a vybrat **Přejít na Live** .
+**Důležité**: Pokud je vaše nabídka k dispozici, je nutné zkontrolovat, že je k dispozici, a vybrat možnost **Přejít do živého** publikování vaší aktualizované nabídky vaší zamýšlené cílové skupině (veřejné nebo soukromé).
 
 ## <a name="update-a-plan-within-an-existing-offer"></a>Aktualizace plánu v rámci stávající nabídky
 
@@ -85,7 +86,7 @@ Pokud se rozhodnete tuto nabídku nebo plán prodat znovu, postupujte podle poky
 
 ## <a name="remove-offers-from-existing-customers"></a>Odebrat nabídky od stávajících zákazníků
 
-Pokud chcete odebrat nabídky od stávajících zákazníků, Zaprotokolujte [žádost o podporu](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). V seznamu **typ problému** vyberte konkrétní typ nabídky a v seznamu **kategorie** vyberte **Odebrat publikovanou nabídku** . Odešlete žádost. Tým podpory vás provede procesem odebrání nabídky.
+Pokud chcete odebrat nabídky od stávajících zákazníků, [Zaprotokolujte žádost o podporu](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). V seznamu **typ problému** vyberte konkrétní typ nabídky a v seznamu **kategorie** vyberte **Odebrat publikovanou nabídku** . Odešlete žádost. Tým podpory vás provede procesem odebrání nabídky.
 
 ## <a name="sync-private-plan-audiences"></a>Synchronizovat veřejné skupiny plánů
 
@@ -98,6 +99,6 @@ Aktualizace a synchronizace privátní cílové skupiny pro vaše plány:
 
 **Synchronizace privátní cílové skupiny** bude publikovat jenom změny vašich privátních cílových skupin bez publikování dalších aktualizací, které jste mohli udělat v rámci nabídky konceptů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Podívejte se na stav publikování vaší nabídky na komerčním webu Marketplace.](./publishing-status.md)

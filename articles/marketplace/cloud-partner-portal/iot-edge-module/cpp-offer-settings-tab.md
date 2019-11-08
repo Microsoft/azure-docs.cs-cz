@@ -1,41 +1,42 @@
 ---
-title: Nabízejí nastavení pro modul služby Azure IoT Edge | Azure Marketplace
-description: Konfigurace nastavení nabídky pro modul IoT Edge.
+title: Nastavení nabídky pro modul Azure IoT Edge | Azure Marketplace
+description: Nakonfigurujte nastavení nabídky pro modul IoT Edge.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: 75781f09f4ca1eb2c3dbd176508fb233036e6776
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1043f467a7363bc0e3eedba40fd2246015592276
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942259"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814093"
 ---
-# <a name="iot-edge-module-offer-settings-tab"></a>Karta nabízejí nastavení modulu IoT Edge
+# <a name="iot-edge-module-offer-settings-tab"></a>Karta nastavení nabídky modulu IoT Edge
 
-**Moduly IoT Edge > Nová nabídka** otevře se stránka s fokusem na **nabízejí nastavení** kartu. 
+**IoT Edge moduly > novou stránku nabídky** se otevře s fokusem na kartě **nastavení nabídky** . 
 
 ![Nová stránka nabídky pro moduly IoT Edge](./media/iot-edge-module-offer-settings-tab.png)
 
 
-## <a name="offer-identity-settings"></a>Nabídka nastavení Identity
+## <a name="offer-identity-settings"></a>Nastavení identity nabídky
 
-V části **nabízejí Identity**, je třeba zadat informace pro pole popsaná v následující tabulce. Hvězdičku (*) připojeným k názvu pole označuje, že je to požadováno. 
+V části **Nabídka identity**musíte zadat informace pro pole popsaná v následující tabulce. Hvězdička (*), která je připojena k názvu pole, označuje, že je požadováno. 
 
 |  **Pole**       |     **Popis**                                                          |
 |  ---------       |     ---------------                                                          |
-| **ID nabídky\***       | Jedinečný identifikátor (v rámci profilu vydavatele) pro tuto nabídku. Tento identifikátor se nebude zobrazovat v sestavách adresy URL a přehledů produktů. Má maximální délku než 50 znaků a můžou používat malé alfanumerické znaky a pomlčky (-). (Identifikátor nemůže končit spojovníkem.) **Poznámka:** Toto pole nelze změnit po ukončení nabídky za provozu. <br> Například pokud Contoso publikuje nabídka s ID nabídky **-iot-edge – modul**, jí přiřazena adresa URL Azure Marketplace `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-iot-edge-module?tab=Overview`. |
-| **Publisher\***     | Jedinečný identifikátor vaší organizace na webu Azure Marketplace. Všechny nabídky by měly být přidruženy s vaším ID vydavatele. Tuto hodnotu nelze změnit po jejím uložení. |
-| **Název\***          | Zobrazovaný název nabídky. Tento název se zobrazí na webu Azure Marketplace a na portál Cloud Partner. Může mít maximálně 50 znaků. Doporučujeme používat pro svůj produkt rozpoznat název značky. Pokud je jak produktu na trh, nezahrnujte název vaší organizace. Pokud jsou marketing této nabídky do jiných webových stránek a publikace, ujistěte se, že název je ve všech publikacích přesně stejné. |
+| **ID nabídky\***       | Jedinečný identifikátor (v rámci profilu vydavatele) pro nabídku. Tento identifikátor bude viditelný v adresách URL produktů a sestavách Insights. Má maximální délku 50 znaků a může používat malé alfanumerické znaky a pomlčky (-). (Identifikátor nemůže končit spojovníkem.) **Poznámka:** Po živé nabídce nelze toto pole změnit. <br> Pokud například contoso zveřejňuje nabídku s **ukázkami ID nabídky-IoT-Edge-Module**, přiřadí se Azure Marketplace adresa URL `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-iot-edge-module?tab=Overview`. |
+| **\* vydavatele**     | Jedinečný identifikátor vaší organizace v Azure Marketplace. Všechny vaše nabídky by se měly přidružit k vašemu vydavateli s vaším ID. Tuto hodnotu nelze po uložení nabídky změnit. |
+| **Název\***          | Zobrazovaný název vaší nabídky Tento název se zobrazí v Azure Marketplace a v portál partnerů cloudu. Může mít maximálně 50 znaků. Pro váš produkt doporučujeme použít rozpoznatelný název značky. Nepoužívejte název vaší organizace, pokud to nezpůsobuje uvedení produktu na trh. Pokud tuto nabídku zadáte na jiné weby a publikace, ujistěte se, že je název přesně stejný ve všech publikacích. |
 |  |  |
 
 
-Vyberte **Uložit** nabízejí nastavení uložte.
+Vyberte **Uložit** a uložte nastavení nabídky.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Použití [SKU](./cpp-skus-tab.md) kartu Konfigurace SKU pro vaši nabídku.
+Použijte kartu [SKU](./cpp-skus-tab.md) ke konfiguraci SKU pro vaši nabídku.

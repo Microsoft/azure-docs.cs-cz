@@ -4,15 +4,16 @@ description: Tady je postup připojení Business Applications programu ISV Conne
 services: Azure Marketplace, Cloud Partner Portal
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 7/12/2019
 ms.author: evansma
-ms.openlocfilehash: 349998b53378d00b6524f94578aa11642321d691
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 4a47886176b704cc3bc36cc9fa85d1d3faee4c58
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182556"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819148"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Průvodce registrací programu pro připojení nezávislého výrobce softwaru (ISV) společnosti Microsoft Business Applications
 
@@ -36,7 +37,7 @@ Pokud chcete zaregistrovat a využít výhody pro Business Applications softwaru
 [Partnerské centrum](https://partner.microsoft.com) je místo, kde můžete spravovat nastavení účtu pro program ISV Connect.
 
 > [!NOTE]
-> Tento krok vyžaduje roli *vlastníka* v portál partnerů cloudu pro daný účet a roli *vlastníka* nebo manažera v partnerském centru.
+> Tento krok vyžaduje roli *vlastníka* v portál partnerů cloudu pro daný účet a roli *vlastníka* nebo *manažera* v partnerském centru.
 
 Pokud jste již publikovali nabídky Dynamics CE nebo Dynamics OPS, pravděpodobně váš účet portál partnerů cloudu (CPP) již byl migrován a aktivován v partnerském centru. V takovém případě můžete účet partnerského centra aktivovat ručně z profilu vašeho vydavatele CPP.
 
@@ -77,7 +78,7 @@ Dále nastavte fakturační údaje pro Business Applications program ISV Connect
 
 5. Zadejte ID daně nebo nastavení ID DPH (Pokud je k dispozici).
 
-6. Vyberte **Uložit** uložte provedené změny.
+6. Kliknutím na **Uložit** uložte změny.
 
 Fakturační profil můžete kdykoli aktualizovat, ale *název společnosti* a fakturační adresa *země* se nedají později změnit.
 

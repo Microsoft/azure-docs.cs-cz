@@ -4,15 +4,16 @@ description: Vysvětluje, jak zaregistrovat virtuální počítač z virtuální
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: evansma
-ms.openlocfilehash: 1aa946c813de41423d4fb2ba5b3aa5274db90f39
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 797c258c963d0daec32a8f9ac7c4e0665dc465d3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934963"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813403"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Nasazení virtuálního počítače z virtuálních pevných disků
 
@@ -46,7 +47,7 @@ K vytvoření a nasazení uživatelské image virtuálního počítače použije
 Po nasazení virtuálního počítače budete připraveni k [certifikaci vaší image virtuálního počítače](./cpp-certify-vm.md).
 
 1. Klikněte na **Nový** a vyhledejte **nasazení šablony**a potom **v editoru vyberte vytvořit vlastní šablonu**.  <br/>
-   ![Sestavení šablony nasazení VHD v Azure Portal](./media/publishvm_021.png)
+   ![šablonu nasazení VHD pro sestavení v Azure Portal](./media/publishvm_021.png)
 
 1. Zkopírujte tuto [šablonu JSON](./cpp-deploy-json-template.md) a vložte ji do editoru a klikněte na **Uložit**. <br/>
    ![Uložit šablonu nasazení VHD do Azure Portal](./media/publishvm_022.png)
@@ -55,27 +56,27 @@ Po nasazení virtuálního počítače budete připraveni k [certifikaci vaší 
 
    <table> <tr> <td valign="top"> <img src="./media/publishvm_023.png" alt="Custom deployment property page 1"> </td> <td valign="top"> <img src="./media/publishvm_024.png" alt="Custom deployment property page 2"> </td> </tr> </table> <br/> 
 
-   |  **Parametr**              |   **Popis**                                                            |
+   |  **Ukazatele**              |   **Popis**                                                            |
    |  -------------              |   ---------------                                                            |
    | Název účtu úložiště uživatele   | Název účtu úložiště, kde se nachází zobecněný virtuální pevný disk                    |
    | Název kontejneru úložiště uživatele | Název kontejneru, kde se nachází zobecněný virtuální pevný disk                          |
    | Název DNS pro veřejnou IP adresu      | Název DNS veřejné IP adresy. Název DNS je na virtuálním počítači, budete ho definovat na webu Azure Portal po nasazení nabídky.  |
    | Uživatelské jméno správce             | Uživatelské jméno účtu správce pro nový virtuální počítač                                  |
    | Heslo správce              | Heslo účtu správce pro nový virtuální počítač                                  |
-   | Typ operačního systému                     | Operační systém virtuálního počítače `Windows` : \|`Linux`                                    |
+   | OS Type                     | Operační systém virtuálního počítače: `Windows` \| `Linux`                                    |
    | ID předplatného             | Identifikátor vybraného předplatného                                      |
-   | Location                    | Zeměpisná poloha nasazení                                        |
-   | Velikost virtuálního počítače                     | [Velikost virtuálního počítače Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), například`Standard_A2` |
+   | Umístění                    | Zeměpisná poloha nasazení                                        |
+   | Velikost virtuálního počítače                     | [Velikost virtuálního počítače Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), například `Standard_A2` |
    | Název veřejné IP adresy      | Název vaší veřejné IP adresy                                               |
    | Název virtuálního počítače                     | Název nového virtuálního počítače                                                           |
-   | Název virtuální sítě        | Název virtuální sítě používané virtuálním počítačem                                   |
+   | Název Virtual Network        | Název virtuální sítě používané virtuálním počítačem                                   |
    | Název síťové karty                    | Název síťové karty, na které běží virtuální síť               |
    | ADRESA URL VIRTUÁLNÍHO PEVNÉHO DISKU                     | Úplná adresa URL virtuálního pevného disku s operačním systémem                                                     |
    |  |  |
             
 1. Po poskytnutí těchto hodnot klikněte na **koupit**. 
 
-Azure zahájí nasazení: vytvoří nový virtuální počítač se zadaným nespravovaným virtuálním pevným diskem v zadané cestě k účtu úložiště.  Průběh můžete sledovat v Azure Portal kliknutím na **Virtual Machines** na levé straně portálu.  Po vytvoření virtuálního počítače se stav změní z `Starting` na. `Running` 
+Azure zahájí nasazení: vytvoří nový virtuální počítač se zadaným nespravovaným virtuálním pevným diskem v zadané cestě k účtu úložiště.  Průběh můžete sledovat v Azure Portal kliknutím na **Virtual Machines** na levé straně portálu.  Po vytvoření virtuálního počítače se stav změní z `Starting` na `Running`. 
 
 
 ### <a name="deploy-a-vm-from-powershell"></a>Nasazení virtuálního počítače z PowerShellu

@@ -1,44 +1,45 @@
 ---
-title: Nabídka Azure IoT Edge Module publikování – přehled | Azure Marketplace
-description: Na webu Azure Marketplace nabízí přehled procesu k publikování modul IoT Edge.
+title: Přehled publikování nabídky modulu Azure IoT Edge | Azure Marketplace
+description: Přehled procesu publikování nabídky IoT Edge modulu v Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: pabutler
-ms.openlocfilehash: 319031ec99d449ea5866bb5234cc617145954173
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97df9a61d15e0d90e81f42cef327aea23873ffa0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942614"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814327"
 ---
-# <a name="iot-edge-module-offer-publishing-overview"></a>Modul IoT Edge nabízí přehled publikování
+# <a name="iot-edge-module-offer-publishing-overview"></a>Přehled publikování nabídky modulu IoT Edge
 
-<table> <tr> <td>Tato část vysvětluje, jak publikovat novou nabídku modulu Azure IoT Edge do Microsoftu <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a>. Modul IoT Edge je kontejner kompatibilní s Dockerem, který provedl ke spuštění na zařízení IoT Edge. Moduly Azure IoT Edge je nejmenší jednotka výpočtu spravuje IoT Edge a může obsahovat služeb Azure nebo kód vlastní řešení. </td> <td><img src="./media/iotedge-icon1.png"  alt="Azure IoT Edge module icon" /></td> </tr> </table>
+<table> <tr> <td>V této části se dozvíte, jak publikovat novou nabídku modulu Azure IoT Edge pro Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a>. Modul IoT Edge je kontejner kompatibilní s Docker, který je vytvořený pro spuštění na IoT Edgem zařízení. Azure IoT Edge moduly jsou nejmenší jednotkou výpočtu spravovanou pomocí IoT Edge a můžou obsahovat služby Azure nebo vlastní kód řešení. </td> <td><img src="./media/iotedge-icon1.png"  alt="Azure IoT Edge module icon" /></td> </tr> </table>
 
 ## <a name="publishing-process"></a>Proces publikování
 
-Postup vysoké úrovně pro uvedení nabídky modul IoT Edge jsou:
+Postup pro publikování nabídky modulu IoT Edge v rámci vysoké úrovně je následující:
 
-1. Vytvoření nabídky<br> Poskytují podrobné informace týkající se nabídky. Tyto informace zahrnují: popis nabídky, marketingové materiály, informace o podpoře a specifikace asset.
+1. Vytvoření nabídky<br> Poskytněte podrobné informace o této nabídce. Tyto informace zahrnují: popis nabídky, marketingové materiály, informace o podpoře a specifikace assetu.
 
-2. Vytvořit obchodní a technické prostředky<br> Vytvoření prostředků (právní dokumenty a marketingové materiály) a technických prostředků pro související řešení (obrázky modul IoT Edge hostované ve službě Azure Container Registry.
+2. Vytváření obchodních a technických prostředků<br> Vytvořte si obchodní prostředky (právní dokumenty a marketingové materiály) a technické prostředky pro přidružené řešení (IoT Edge image modulu hostované v Azure Container Registry.
 
-3. Vytvoření SKU<br> Vytvoření skladové jednotky spojené s nabídkou. Je vyžadována pro každý obrázek, který se chystáte publikovat jedinečný skladová položka.
+3. Vytvoření SKU<br> Vytvořte SKU přidružené k této nabídce. Pro každou bitovou kopii, kterou plánujete publikovat, se vyžaduje jedinečná SKU.
 
-4. Certifikace a publikování nabídky <br>Po dokončení nabídka a technických prostředků, můžete odeslat nabídku. Toto odeslání spustí se proces publikování. Během tohoto procesu řešení je testována ověřen, certifikace, pak "místo pro živé" na webu Azure Marketplace.
+4. Certifikace a publikování nabídky <br>Po dokončení nabídky a technických prostředků můžete nabídku odeslat. Toto odeslání spustí proces publikování. Během tohoto procesu je řešení testováno, ověřeno, certifikováno a pak "" bude fungovat "na Azure Marketplace.
 
 ## <a name="parts-of-an-offer"></a>Části nabídky
 
-V následujících článcích pokrývají klíčové části nabídky modul IoT Edge.
+Následující články obsahují základní klíčové části nabídky modulu IoT Edge.
 
-- [Požadavky](./cpp-prerequisites.md) <br>Tento článek uvádí technické a podnikové požadavky, abyste mohli vytvořit nebo publikovat modul IoT Edge nabízejí.
-- [Příprava technických prostředků modulu IoT Edge](./cpp-create-technical-assets.md) <br>Tento článek popisuje, jak připravit technických prostředků pro modul IoT Edge. Tyto prostředky musí splňovat všechny požadované technických kritérií před modul IoT Edge můžete zveřejnit na webu Azure Marketplace.
-- [Vytvoření nabídky modulu IoT Edge](./cpp-create-offer.md) <br>Tento článek obsahuje kroky potřebné k vytvoření nové IoT Edge module nabídku položky pomocí [portál partnerů cloudu](https://cloudpartner.azure.com).
-- [Publikování nabídky modulu IoT Edge](./cpp-publish-offer.md)<br> Tento článek popisuje, jak odeslat nabídku k publikování na webu Azure Marketplace.
+- [Požadavky](./cpp-prerequisites.md) <br>V tomto článku jsou uvedené technické a obchodní požadavky před tím, než můžete vytvořit nebo publikovat nabídku modulu IoT Edge.
+- [Příprava technických prostředků modulu IoT Edge](./cpp-create-technical-assets.md) <br>Tento článek popisuje, jak připravit technické prostředky pro modul IoT Edge. Tyto prostředky musí splňovat všechna požadovaná technická kritéria, aby bylo možné IoT Edge modul publikovat na Azure Marketplace.
+- [Vytvoření nabídky modulu IoT Edge](./cpp-create-offer.md) <br>V tomto článku jsou uvedené kroky potřebné k vytvoření nové položky nabídky modulu IoT Edge pomocí [portál partnerů cloudu](https://cloudpartner.azure.com).
+- [Publikování nabídky modulu IoT Edge](./cpp-publish-offer.md)<br> Tento článek popisuje, jak odeslat nabídku pro publikování na Azure Marketplace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Zkontrolujte [technické a podnikové požadavky](./cpp-prerequisites.md) pro publikování na webu Microsoft Azure Marketplace modul IoT Edge.
+Seznamte se s [technickými a podnikovými požadavky](./cpp-prerequisites.md) pro publikování IoT Edge modulu do Microsoft Azure Marketplace.

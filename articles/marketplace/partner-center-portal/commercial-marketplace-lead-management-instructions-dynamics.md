@@ -4,15 +4,16 @@ description: Nakonfigurujte řízení zájemců pro Dynamics 365 pro zákaznicko
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: evansma
-ms.openlocfilehash: 181a3f3a8d3cabb2fdf6caf79cef16201fab0c68
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 37cf613b6e0bd2ec9910dd3e7431c0feaa02431c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177808"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812312"
 ---
 # <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Konfigurace správy zájemců pro Dynamics 365 pro zákaznickou zapojení
 
@@ -21,7 +22,7 @@ Tento článek popisuje, jak nastavit Dynamics 365 for Customer Engagement (dř�
 >[!Note]
 >Tyto pokyny jsou specifické pro prostředí Microsoft Hosted Cloud Dynamics 365 for Customer Engagement. Připojení přímo k Prem prostředí Dynamics se momentálně nepodporuje. k dispozici jsou i další možnosti, jak můžete dostávat zájemce, jako je například konfigurace [koncového bodu https](./commercial-marketplace-lead-management-instructions-https.md) nebo [tabulky Azure](./commercial-marketplace-lead-management-instructions-azure-table.md) pro příjem zájemců.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku jsou nutná následující oprávnění uživatele:
 
@@ -34,7 +35,7 @@ K dokončení kroků v tomto článku jsou nutná následující oprávnění u�
 
 1.  Stáhněte si [řešení Microsoft Marketplace pro zápis zájemců](https://mpsapiprodwus.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip) a uložte ho místně do vašeho počítače.
 
-2.  Otevřete Dynamics 365 pro zapojení zákazníka tak, že přejdete na adresu URL vaší instance Dynamics (například `https://tenant.crm.dynamics.com`).
+2.  Přejděte na adresu URL vaší instance Dynamics (například `https://tenant.crm.dynamics.com`), otevřete Dynamics 365 pro zákaznickou zapojení.
 
 3.  Nastavení přístupu výběrem ikony ozubeného kolečka a **rozšířeného nastavení** v horním navigačním panelu.
  
@@ -138,7 +139,7 @@ Tyto hodnoty uložte, protože se jedná o *uživatelské jméno a heslo* , kter
 
 Posledním krokem je povolit uživatele, kterého jste vytvořili pro zápis zájemců.
 
-1. Otevřete Dynamics 365 pro zapojení zákazníka tak, že přejdete na adresu URL vaší instance Dynamics (například `https://tenant.crm.dynamics.com`).
+1. Přejděte na adresu URL vaší instance Dynamics (například `https://tenant.crm.dynamics.com`), otevřete Dynamics 365 pro zákaznickou zapojení.
 2. Nastavení přístupu výběrem ikony ozubeného kolečka a **rozšířeného nastavení** v horním navigačním panelu.
 3. Na stránce nastavení v horním navigačním panelu přejděte do nabídky nastavení a vyberte **zabezpečení**.
 4. Po na stránce zabezpečení vyberte **Uživatelé** a vyberte uživatele, kterého jste vytvořili v části Konfigurace oprávnění uživatele v tomto dokumentu, a pak vyberte **Spravovat role**. 
@@ -185,7 +186,7 @@ Až budete připraveni ke konfiguraci informací o správě zájemce pro vaši n
 
     ![Podrobnosti o připojení – Azure Active Directory](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-application-id.png)
 
-7. Pokud jste vybrali možnost Office 365, zadejte **uživatelské jméno** (příklad: `contoso@contoso.onmicrosoft.com`) a heslo (příklad: `P@ssw0rd`).
+7. Pokud jste vybrali možnost Office 365, zadejte **uživatelské jméno** (příklad: `contoso@contoso.onmicrosoft.com`) a heslo (například: `P@ssw0rd`).
 
     ![Podrobnosti o připojení – uživatelské jméno](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: mlearned
-ms.openlocfilehash: 558c04be77f911f40be9e8880950d1670a3c169e
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
-ms.translationtype: HT
+ms.openlocfilehash: aa0cf1ef3f758d7aba4639d779bde90249d039cb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747745"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815678"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Zabezpečený přístup k serveru rozhraní API pomocí rozsahů povolených IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -25,17 +25,9 @@ V tomto článku se dozvíte, jak pomocí rozsahů povolených IP adres serveru 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-V tomto článku se předpokládá, že pracujete s clustery, které používají [kubenet][kubenet].  S clustery založenými na [CNI (Azure Container Networking Interface)][cni-networking] nebudete mít potřebnou směrovací tabulku potřebnou k zabezpečení přístupu.  Směrovací tabulku budete muset vytvořit ručně.  Další informace o správě směrovacích tabulek najdete v tématu [Vytvoření, změna nebo odstranění směrovací tabulky][route-tables].
-
 Schválené rozsahy IP adres serveru API fungují jenom pro nové clustery AKS, které vytvoříte. V tomto článku se dozvíte, jak vytvořit cluster AKS pomocí Azure CLI.
 
 Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.76 nebo novější. Pro nalezení verze spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
-
-## <a name="limitations"></a>Omezení
-
-Při konfiguraci rozsahů IP adres autorizovaných serverem API platí následující omezení:
-
-* V tuto chvíli nemůžete použít Azure Dev Spaces, protože komunikace se serverem API je taky blokovaná.
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>Přehled povolených IP adres serveru rozhraní API
 
@@ -69,6 +61,7 @@ az aks create \
 > Tyto rozsahy byste měli přidat do seznamu povolených:
 > - Veřejná IP adresa brány firewall
 > - Libovolný rozsah, který představuje sítě, ze kterých budete spravovat cluster.
+> - Pokud používáte Azure Dev Spaces v clusteru AKS, musíte na [základě vaší oblasti zapnout další rozsahy][dev-spaces-ranges].
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>Zadejte odchozí IP adresy pro nástroj pro vyrovnávání zatížení Standard SKU.
 
@@ -141,6 +134,7 @@ Další informace najdete v tématu [koncepty zabezpečení pro aplikace a clust
 
 <!-- LINKS - external -->
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
+[dev-spaces-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [kubenet]: https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#kubenet
 
 <!-- LINKS - internal -->

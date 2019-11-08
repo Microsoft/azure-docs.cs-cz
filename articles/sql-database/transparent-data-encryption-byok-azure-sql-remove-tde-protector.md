@@ -1,22 +1,22 @@
 ---
-title: PowerShell – odebrání ochrany TDE Azure SQL Database | Microsoft Docs
+title: Odebrání ochrany TDE – PowerShell
 description: Návod, jak reagovat na potenciálně ohrožené ochrany TDE pro Azure SQL Database nebo datový sklad pomocí TDE s podporou BYOK (Přineste si vlastní klíč).
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: dc117dd844a3a47cafa1b37170c95fe852bb82ef
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: df1bf5a53cd5c49465acbe363c71a4a316cd2cc9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566064"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820779"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Odebrání ochrany transparentní šifrování dat (TDE) pomocí prostředí PowerShell
 
@@ -40,9 +40,9 @@ Pokud dojde k ohrožení bezpečnosti nějakého klíče, aby služba nebo uživ
 
 Mějte na paměti, že jakmile se ochrana TDE v Key Vault odstraní, **všechna připojení k šifrovaným databázím na serveru jsou blokovaná a tyto databáze budou přecházet do režimu offline a budou se zahodit do 24 hodin**. Staré zálohy šifrované s ohroženým klíčem již nejsou přístupné.
 
-Následující kroky popisují, jak kontrolovat kryptografické otisky ochrany TDE, které pořád používají virtuální soubory protokolů (VLF) dané databáze. Kryptografický otisk aktuálního TDE ochrany databáze a ID databáze lze najít spuštěním: Vyberte [database_id],       [encryption_state], [encryptor_type],/*asymetrický klíč znamená integrace, certifikát znamená klíče spravované službou*/[encryptor_thumbprint], z [sys]. [ dm_database_encryption_keys] 
+Následující kroky popisují, jak kontrolovat kryptografické otisky ochrany TDE, které pořád používají virtuální soubory protokolů (VLF) dané databáze. Kryptografický otisk aktuálního TDE ochrany databáze a ID databáze lze najít spuštěním: SELECT [database_id],       [encryption_state], [encryptor_type],/*asymetrický klíč znamená integrace, certifikát znamená klíče spravované službou*/[ encryptor_thumbprint], z [sys]. [dm_database_encryption_keys] 
  
-Následující dotaz vrátí VLFs a příslušné kryptografické otisky používané pro šifrování. Každý jiný kryptografický otisk odkazuje na jiný klíč v Azure Key Vault (integrace): SELECT * FROM sys. DM _db_log_info (database_id) 
+Následující dotaz vrátí VLFs a příslušné kryptografické otisky používané pro šifrování. Každý jiný kryptografický otisk odkazuje na jiný klíč v Azure Key Vault (integrace): SELECT * FROM sys. dm_db_log_info (database_id) 
 
 Příkaz PowerShellu Get-AzureRmSqlServerKeyVaultKey poskytuje kryptografický otisk ochrany TDE, která se používá v dotazu, abyste viděli, které klíče se mají zachovat a které klíče se mají odstranit v integrace. Z Azure Key Vault můžete bezpečně odstranit jenom klíče, které už nepoužívá databáze.
 
@@ -115,7 +115,7 @@ Tato příručka přechází přes dvě přístupy v závislosti na požadované
 2. Zazálohujte klíčový materiál ochrany TDE v Key Vault.
 3. Odebrat potenciálně ohrožený klíč z Key Vault
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Naučte se, jak otočit ochranu TDE serveru tak, aby splňovala požadavky na zabezpečení: [Otočení ochrany transparentní šifrování dat pomocí PowerShellu](transparent-data-encryption-byok-azure-sql-key-rotation.md)
-- Začínáme s podporou Bring Your Own Key pro TDE: [Zapnutí TDE pomocí vlastního klíče z Key Vault pomocí PowerShellu](transparent-data-encryption-byok-azure-sql-configure.md)
+- Naučte se, jak otočit ochranu TDE serveru tak, aby splňovala požadavky na zabezpečení: [otočení transparentní šifrování dat ochrany pomocí PowerShellu](transparent-data-encryption-byok-azure-sql-key-rotation.md)
+- Začínáme s podporou Bring Your Own Key TDE: [Zapnutí TDE pomocí vlastního klíče z Key Vault pomocí PowerShellu](transparent-data-encryption-byok-azure-sql-configure.md)

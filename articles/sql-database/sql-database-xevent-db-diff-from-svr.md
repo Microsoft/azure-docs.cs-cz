@@ -1,5 +1,5 @@
 ---
-title: Rozšířené události v SQL Database
+title: Rozšířené události
 description: Popisuje rozšířené události (XEvents) v Azure SQL Database a způsob, jakým se relace událostí mírně liší od relací událostí v Microsoft SQL Server.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 64cfcd9451416a6eb35301268b285bd00cf0cad4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: cab5b5baf318eb9eadc398ce525e0de716d0df2d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686776"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822306"
 ---
 # <a name="extended-events-in-sql-database"></a>Rozšířené události v SQL Database
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -74,7 +74,7 @@ Související témata poskytují dva ukázky kódu:
 - Klauzule **on Database** se vztahuje také na příkazy jazyka Transact-SQL v [relaci události ALTER](https://msdn.microsoft.com/library/bb630368.aspx) a [drop](https://msdn.microsoft.com/library/bb630257.aspx) .
 
 
-- Osvědčeným postupem je zahrnout možnost relace události **STARTUP_STATE = on** ve vaší **relaci vytvoření události** nebo příkazy pro **změnu relace události** .
+- Osvědčeným postupem je zahrnout možnost relace události **STARTUP_STATE = on** v **relaci vytvoření události** nebo příkazy pro **změnu relace události** .
     - Hodnota **= on** podporuje automatické restartování po opětovné konfiguraci logické databáze z důvodu převzetí služeb při selhání.
 
 ## <a name="new-catalog-views"></a>Nové zobrazení katalogu
@@ -97,23 +97,23 @@ Azure SQL Database má [zobrazení dynamické správy (zobrazení dynamické spr
 
 | Název DMV | Popis |
 |:--- |:--- |
-| **sys. DM _xe_database_session_event_actions** |Vrátí informace o akcích relace události. |
-| **sys. DM _xe_database_session_events** |Vrátí informace o událostech relace. |
-| **sys. DM _xe_database_session_object_columns** |Zobrazuje konfigurační hodnoty pro objekty, které jsou vázány na relaci. |
-| **sys. DM _xe_database_session_targets** |Vrátí informace o cílech relace. |
-| **sys. DM _xe_database_sessions** |Vrátí řádek pro každou relaci události, která je vymezena na aktuální databázi. |
+| **sys. dm_xe_database_session_event_actions** |Vrátí informace o akcích relace události. |
+| **sys. dm_xe_database_session_events** |Vrátí informace o událostech relace. |
+| **sys. dm_xe_database_session_object_columns** |Zobrazuje konfigurační hodnoty pro objekty, které jsou vázány na relaci. |
+| **sys. dm_xe_database_session_targets** |Vrátí informace o cílech relace. |
+| **sys. dm_xe_database_sessions** |Vrátí řádek pro každou relaci události, která je vymezena na aktuální databázi. |
 
 V Microsoft SQL Server jsou podobná zobrazení katalogu pojmenována bez\_část názvu *databáze* , například:
 
-- **Sys. DM _xe_sessions**místo názvu<br/>**Sys. DM _xe_database_sessions**.
+- **Sys. dm_xe_sessions**místo názvu<br/>**Sys. dm_xe_database_sessions**.
 
 ### <a name="dmvs-common-to-both"></a>Zobrazení dynamické správy společné pro obojí
 Pro rozšířené události jsou k dispozici další zobrazení dynamické správy, které jsou společné pro Azure SQL Database i Microsoft SQL Server:
 
-- **sys. DM _xe_map_values**
-- **sys. DM _xe_object_columns**
-- **sys. DM _xe_objects**
-- **sys. DM _xe_packages**
+- **sys. dm_xe_map_values**
+- **sys. dm_xe_object_columns**
+- **sys. dm_xe_objects**
+- **sys. dm_xe_packages**
 
   <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets"></a>
 
@@ -186,7 +186,7 @@ Pokud se zobrazí chybová zpráva oznamující, že byla vynutila maximální v
 
 Cílem **souboru událostí** může být latence sítě nebo selhání při trvalém ukládání dat do objektů blob Azure Storage. Další události v SQL Database mohou být zpožděny, když čekají na dokončení síťové komunikace. Tato prodleva může zpomalit vaše zatížení.
 
-- Pokud chcete toto riziko snížit, vyhněte se nastavení možnosti **EVENT_RETENTION_MODE** na **NO_EVENT_LOSS** v definicích relace události.
+- Pokud chcete toto riziko snížit, vyhněte se nastavení **EVENT_RETENTION_MODE** možnost **NO_EVENT_LOSS** v definicích relace události.
 
 ## <a name="related-links"></a>Související odkazy
 

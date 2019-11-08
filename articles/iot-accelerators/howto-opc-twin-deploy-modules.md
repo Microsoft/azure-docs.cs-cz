@@ -1,6 +1,6 @@
 ---
 title: Postup nasazení OPC vlákna pro Azure od začátku | Microsoft Docs
-description: Postup nasazení OPC vlákna od začátku
+description: Tento článek popisuje, jak nasazovat OPC zcela od začátku pomocí IoT Edge okna Azure Portal a také pomocí AZ CLI.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: df1dd45d58baf82710b5e362afaf055aad140b98
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 96a4afff3e58bfa1ebf661909f380aa525fea76e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302649"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820143"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>Nasazení OPC vyzdvojeného modulu a závislostí od začátku
 
@@ -111,23 +111,23 @@ Nejjednodušší způsob, jak nasadit moduly do zařízení Azure IoT Edge brán
 
 ### <a name="prerequisites"></a>Požadavky
 
-1. Nasaďte zdvojené [závislosti](howto-opc-twin-deploy-dependencies.md) OPC a získá výsledný `.env` soubor. Poznamenejte si `hub name` nasazenou `PCS_IOTHUBREACT_HUB_NAME` proměnnou ve výsledném `.env` souboru.
+1. Nasaďte zdvojené [závislosti](howto-opc-twin-deploy-dependencies.md) OPC a získá výsledný soubor `.env`. Poznamenejte si nasazené `hub name` `PCS_IOTHUBREACT_HUB_NAME` proměnné ve výsledném souboru `.env`.
 
-2. Zaregistrujte a spusťte bránu pro [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) nebo [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IoT Edge `device id`a poznamenejte si ji.
+2. Zaregistrujte a spusťte IoT Edge bránu pro [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) nebo [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) a poznamenejte si její `device id`.
 
 ### <a name="deploy-to-an-edge-device"></a>Nasazení do hraničního zařízení
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) a přejděte do služby IoT hub.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) a přejděte do služby IoT Hub.
 
 2. V nabídce na levé straně vyberte **IoT Edge** .
 
-3. Kliknutím na ID cílové zařízení ze seznamu zařízení.
+3. V seznamu zařízení klikněte na ID cílového zařízení.
 
 4. Vyberte **Nastavit moduly**.
 
 5. V části **moduly nasazení** na stránce vyberte **Přidat** a **IoT Edge modul.**
 
-6. V dialogovém okně **IoT Edge vlastní modul** použijte `opctwin` jako název modulu jako název a pak zadejte *identifikátor URI image* kontejneru jako
+6. V dialogovém okně **IoT Edge vlastní modul** použijte jako název pro modul `opctwin` a pak zadejte *identifikátor URI image* kontejneru jako
 
    ```bash
    mcr.microsoft.com/iotedge/opc-twin:latest
@@ -139,7 +139,7 @@ Nejjednodušší způsob, jak nasadit moduly do zařízení Azure IoT Edge brán
    {"NetworkingConfig": {"EndpointsConfig": {"host": {}}}, "HostConfig": {"NetworkMode": "host" }}
    ```
 
-   V případě potřeby zadejte volitelná pole. Pro další informace o kontejneru vytvořte možnosti, zásady restartování a zjistěte požadovaný stav [EdgeAgent požadované vlastnosti](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub#edgeagent-desired-properties). Další informace o dvojčeti modulu najdete v části [definovat nebo aktualizace požadované vlastnosti](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties).
+   V případě potřeby vyplňte volitelná pole. Další informace o možnostech vytvoření kontejneru, zásadách restartování a požadovaném stavu najdete v tématu [EdgeAgent požadované vlastnosti](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub#edgeagent-desired-properties). Další informace o tomto modulu najdete v tématu [definice nebo aktualizace požadovaných vlastností](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties).
 
 7. Vyberte **Save (Uložit** ) a opakujte krok **5**.  
 
@@ -170,9 +170,9 @@ Nejjednodušší způsob, jak nasadit moduly do zařízení Azure IoT Edge brán
 
     a vyberte **Další** .
 
-11. Zkontrolujte informace o nasazení a manifest.  Měl by vypadat jako výše uvedený manifest nasazení.  Vyberte **odeslat**.
+11. Zkontrolujte informace o nasazení a manifest.  Měl by vypadat jako výše uvedený manifest nasazení.  Vyberte **Odeslat**.
 
-12. Po nasazení modulů do svého zařízení, můžete zobrazit všechny z nich **podrobnosti o zařízení** stránky portálu. Tato stránka zobrazuje název každé nasazené modulu, stejně jako užitečné informace, jako je nasazení stavu a ukončovací kód.
+12. Až nasadíte moduly do svého zařízení, můžete je zobrazit na stránce **Podrobnosti o zařízení** na portálu. Tato stránka zobrazuje název každého nasazeného modulu a také užitečné informace, jako je stav nasazení a ukončovací kód.
 
 ## <a name="deploying-using-azure-cli"></a>Nasazení pomocí Azure CLI
 
@@ -182,26 +182,26 @@ Nejjednodušší způsob, jak nasadit moduly do zařízení Azure IoT Edge brán
 
 ### <a name="quickstart"></a>Rychlý start
 
-1. Výše uvedený manifest nasazení uložte do `deployment.json` souboru.  
+1. Výše uvedený manifest nasazení uložte do souboru `deployment.json`.  
 
-2. Chcete-li použít konfiguraci pro zařízení IoT Edge, použijte následující příkaz:
+2. Pomocí následujícího příkazu použijte konfiguraci pro IoT Edge zařízení:
 
    ```bash
    az iot edge set-modules --device-id [device id] --hub-name [hub name] --content ./deployment.json
    ```
 
-   V `device id` parametru se rozlišují malá a velká písmena. Obsahu parametr odkazuje na nasazení manifestu soubor, který jste uložili. 
+   Parametr `device id` rozlišuje velká a malá písmena. Parametr obsahu odkazuje na soubor manifestu nasazení, který jste uložili. 
     ![AZ IoT Edge Set-module Output](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/set-modules.png)
 
-3. Po nasazení modulů do svého zařízení, můžete zobrazit všechny z nich pomocí následujícího příkazu:
+3. Až nasadíte moduly do svého zařízení, můžete je zobrazit pomocí následujícího příkazu:
 
    ```bash
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 
-   Parametr ID zařízení rozlišuje velká a malá písmena. ![AZ iot hub modul identity výstupu](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
+   Parametr ID zařízení rozlišuje velká a malá písmena. ![AZ IoT Hub Module-identity list Output](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste se naučili, jak nasadit OPC od začátku, je tady doporučený další krok:
 

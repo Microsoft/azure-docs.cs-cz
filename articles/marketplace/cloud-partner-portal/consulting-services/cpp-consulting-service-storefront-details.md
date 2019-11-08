@@ -1,34 +1,35 @@
 ---
-title: Zadejte podrobnosti prezentace consulting nabídky | Azure Marketplace
-description: Definujte prezentace podrobnosti do Azure nebo Dynamics 365 konzultační služby nabídky v portál partnerů cloudu.
+title: Zadejte prezentace podrobnosti o konzultační nabídce | Azure Marketplace
+description: V portál partnerů cloudu najdete podrobné informace o prezentace ve službě Azure nebo v nabídce konzultační služby Dynamics 365.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 1b028fe016d6ae3df8c1dfce548fc0c11479d5a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d741361cdeb25d6fc063f95da7bc301178f31fc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942713"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818085"
 ---
 # <a name="storefront-details-tab"></a>Karta podrobností o prodejních místech
 
-Tento článek vysvětluje, jak zadejte podrobnosti pro vaši prodejní místo. **Podrobnosti z prodejních míst** karta se skládá z následujících částí:
+Tento článek vysvětluje, jak zadat podrobnosti pro prezentace. Karta **Podrobnosti prezentace** se skládá z následujících částí:
 
 -   **Podrobnosti nabídky**
 -   **Informace o vydavateli**
--   **Podrobnosti**
--   **Artefakty marketing**
+-   **Podrobnosti o výpisu**
+-   **Marketingové artefakty**
 
-![Vytvořte novou konzultační služby nabídku - karta Podrobnosti výkladní skříň](media/consultingoffer-storefront-details.png)
+![Vytvoření nové nabídky konzultační služby – karta Podrobnosti prezentace](media/consultingoffer-storefront-details.png)
 
 
 ## <a name="offer-details"></a>Podrobnosti nabídky
 
-**Podrobnosti nabídky** oddíl obsahuje následující pole:
+Část **Podrobnosti nabídky** obsahuje následující pole:
 
 -   **Souhrn nabídky\***
 -   **Popis nabídky\***
@@ -36,75 +37,75 @@ Tento článek vysvětluje, jak zadejte podrobnosti pro vaši prodejní místo. 
 
 ### <a name="offer-summary"></a>Souhrn nabídky\*
 
-Souhrn nabídky je stručný popis nabídky, která se zobrazí pod název nabídky. Zadejte souhrn nabídky, bez žádné přerušení řádku pomocí prostého textu. Následující příklady jsou dobré nabídka souhrny spolu s jejich odpovídající názvy nabídky.
+Souhrn nabídky je stručný popis vaší nabídky, která se zobrazuje hned pod názvem nabídky. Pomocí prostého textu můžete zadat souhrn nabídky bez konců řádků. V následujících příkladech jsou správné nabídky souhrny spolu s odpovídajícími názvy nabídek.
 
 *Příklad 1*
 
--   **Název nabídky**: Cloudové analýzy: Seminář o 3 dny
--   **Nabízí souhrn**: Přehled Microsoft Azure a Power BI, vyhodnocení aktuálního prostředí a mini POC.
+-   **Název nabídky**: Cloud Analytics: 3. den dílny
+-   **Shrnutí nabídky**: Přehled Microsoft Azure a Power BI, posouzení aktuálního prostředí a zkrácení ověření koncepce.
 
 *Příklad 2*
 
--   **Název nabídky**: Průmyslové Azure IoT: 30denního testování konceptu
--   **Nabízí souhrn**: Vytvoření připojené průmyslové produktu pilotního nasazení pro zabezpečené připojení zařízení v poli s řešením Azure IoT Hub pomocí řídicích panelů, sestav a oznámení.
+-   **Název nabídky**: průmyslový Azure IoT: 30Denní testování konceptu
+-   **Shrnutí nabídky**: vytvoření pilotního produktu připojeného k průmyslovému prostředí pro bezpečné připojení zařízení v poli k řešení Azure IoT Hub s řídicími panely, sestavami a oznámeními.
 
 *Příklad 3*
 
--   **Název nabídky**: Odborné služby: Přehledové 1 hodina
--   **Nabízí souhrn**: Přehled a ukázka předem, rozšířené Dynamics 365 pro operace řešení, která poskytuje rozšířené řízení projektů, fakturaci a prostředků pro profesionální služby.
+-   **Název nabídky**: profesionální služby: 1 – Přehled lidských zdrojů
+-   **Souhrn nabídky**: Přehled a ukázka předkonfigurovaného řešení Dynamics 365 for Operations, které poskytuje rozšířenou správu projektů, fakturace a prostředků pro profesionální služby.
 
-*Příklad 4:*
+*Příklad 4*
 
--   **Název nabídky**: Power BI ve vaší světě: Seminář o 4-hr
--   **Nabízí souhrn**: Začít pracovat s vaší první řídicí panel a přečtěte si osvědčené postupy. Až 12 studenty provádí na místě.
+-   **Název nabídky**: Power BI ve světě: 4 – hr Workshop
+-   **Souhrn nabídky**: Začněte pracovat s prvním řídicím panelem a Naučte se osvědčené postupy. Až pro 12 studentů, které provádíme na pracovišti.
 
 *Příklad 5*
 
--   **Název nabídky**: Dynamics a projekty: Posouzení 3 dny
--   **Nabízí souhrn**: Požadavky na shromažďování a hodnocení pro řešení ERP pro společnosti poskytující odborné služby a podniky řízené projektu.
+-   **Název nabídky**: Dynamics a projekty: posouzení za 3 dny
+-   **Souhrn nabídky**: požadavky na shromažďování a hodnocení řešení pro ERP navržené pro firmy profesionálních služeb a pro firmy založené na projektech.
 
 
 ### <a name="offer-description"></a>Popis nabídky\*
 
-Zadejte popis konzultační nabídky v **nabízejí popis** pole. Popis dobré nabídky zahrnuje najdete přesné informace, jak vypadá zapojení a dodávky zákazníkovi konec. Mělo by to jasně pomoct pochopit, co dostanou zákazníka. Zahrnout, jak vaše nabídka má vztah k produktu společnosti Microsoft, pro který nabízíte konzultační služby.
+Do pole **Popis nabídky** zadejte popis nabídky konzultační služby. Dobrý popis nabídky pokrývá přesné informace o tom, co se na zapojení zdá, a o tom, jak je to pro zákazníka na konci. Mělo by to jasně pomáhat zákazníkovi pochopit, co získají. Zahrňte, jak vaše nabídka souvisí s produktem společnosti Microsoft, pro který nabízíte konzultační služby.
 
-Nabídka popisu nezahrnují e-mailovou adresu nebo telefonní číslo. A **Kontaktujte mě** tlačítko je součástí vaší nabídky nahrát zájemce do cíle správy potenciálních zákazníků, které identifikují pro vaši nabídku.
+V popisu nabídky nezahrnujte svou e-mailovou adresu nebo telefonní číslo. Tlačítko **kontakt mi** je součástí vaší nabídky, aby mohl odeslat zájemce do cíle správy zájemců, který pro vaši nabídku identifikujete.
 
-Zadejte popis nabídky ve formátu Markdown. Pokud nejste obeznámeni s Markdownu nebo formátování pro kód HTML, přečtěte si téma [používání Markdownu pro vytváření dokumentace](https://docs.microsoft.com/contribute/how-to-write-use-markdown).
+Zadejte popis nabídky ve formátu Markdownu. Pokud nejste obeznámeni s Markdownu nebo formátováním pro HTML, přečtěte si téma [použití Markdownu pro psaní dokumentů](https://docs.microsoft.com/contribute/how-to-write-use-markdown).
 
-Tyto formáty použijte, abyste měli jistotu, že vaše nabídka je vaši zákazníci mohli číst.
+Pomocí těchto formátů se ujistěte, že je vaše nabídka pro vaše zákazníky snadno čitelná.
 
-Zachovat stručný popis nabídky a dodržovat limit počtu znaků, protože uživatelé třeba číst dlouhý text. Můžete také nahrát marketingové brožury, tabulky faktů a jiných dokumentů, které popisují vaši nabídku v podrobnější informace.
+Ponechte popis vaší nabídky stručný a nastavte limit počtu znaků, protože uživatelé nechtějí číst dlouhý text. Můžete také nahrát marketingové brožury, seznamy faktů a další dokumenty, které popíší vaši nabídku podrobněji.
 
-Následující příklad ukazuje popis dobře složené nabídky a její související název a souhrn:
+Následující příklad ukazuje dobře sestavený popis nabídky a její související název a souhrn:
 
-**Název nabídky**: Cloudové analýzy: Seminář o 3 dny
+**Název nabídky**: Cloud Analytics: 3. den dílny
 
-**Nabízí souhrn**: Přehled Microsoft Azure a Power BI, vyhodnocení aktuálního prostředí a mini POC.
+**Shrnutí nabídky**: Přehled Microsoft Azure a Power BI, posouzení aktuálního prostředí a zkrácení ověření koncepce.
 
-**Nabízejí popis**: Tento den 3 seminář je pro technické a obchodní vedení a na straně klienta zařízení se nachází na místě.
+**Popis nabídky**: Tento třetí den dílny je zaměřený na technický a podnikatelský vedoucí a je uložený na pracovišti v zařízení klienta.
 
 Program
 
-1 den
+Den 1
 
--   Se zaměřuje na zabezpečení, škálování a uspořádání dat v rámci Microsoftu cloudu pomocí Azure Data Lake, Azure HDInsight nebo Azure SQL Data Warehouse.
+-   Zaměřuje se na zabezpečení, škálování a organizování dat v cloudu Microsoftu pomocí Azure Data Lake, Azure HDInsight nebo Azure SQL Data Warehouse.
 
-2\. den
+Den 2
 
--   Popisuje, jak nakonfigurovat a nasadit řešení pokročilé analýzy s využitím Microsoft R a Azure Machine Learning.
+-   Popisuje, jak nakonfigurovat a nasadit Pokročilá Analytická řešení pomocí Microsoft R a Azure Machine Learning.
 
 Den 3
 
--   Popisuje, jak nakreslit užitečné přehledy a zprovoznění analýz pomocí Power BI a obsahuje relaci spolupráci na cobuild řídicí panel Power BI.
+-   Obsahuje informace o tom, jak pomocí Power BI nakreslit užitečné poznatky a analýzy zprovoznění a zahrnuje relaci spolupracovníka pro sestavení Power BIho řídicího panelu.
 
 Výstupy
 
-Na konci semináře můžete klienta definovat plán vyšší úrovně a plán služby implementaci řešení data a analýzy v cloudu Microsoftu.
+Po konci dílny může klient definovat plán na vysoké úrovni a plán implementace pro data a analytická řešení v cloudu Microsoftu.
 
-Následující ukázkový soubor Markdown je předchozí nabídky:
+Následující vzorový soubor Markdownu je pro předchozí nabídku:
 
-    This 3-day workshop is for technical and business leaders and is held on-site at the client’s facility.
+    This 3-day workshop is for technical and business leaders and is held on-site at the client's facility.
 
       ### Agenda
 
@@ -127,85 +128,85 @@ Následující ukázkový soubor Markdown je předchozí nabídky:
 
 ## <a name="publisher-information"></a>Informace o vydavateli
 
-**MPN ID**
+**ID MPN**
 
-Zadejte ID svého devět číslic Microsoft Partner Network (MPN). Pokud nemáte MPN ID, můžete jej získat na webu Microsoft Partner Center.
+Zadejte své devět číslic, ID Microsoft Partner Network (MPN). Pokud nemáte ID MPN, můžete ho získat v partnerském centru Microsoftu.
 
-**Partner Center ID**
+**ID partnerského centra**
 
-Zadejte nové ID partnera System Center, pokud nemáte.
+Zadejte nové ID partnerského centra, pokud ho máte.
 
-**MPN ID**
+**ID MPN**
 
-Zadejte tajný klíč k náhledu na vaši nabídku na AppSource dříve, než přejde za provozu.
-Tento identifikátor se heslo.
+Než začnete s jeho zahájením, zadejte tajný klíč pro náhled nabídky na AppSource.
+Tento identifikátor není heslo.
 
 
-## <a name="listing-details"></a>Podrobnosti
+## <a name="listing-details"></a>Podrobnosti o výpisu
 
 **Typ konzultační služby**
 
-Microsoft se zaměřuje výhradně na pevné oboru, doba trvání upravovat, předpokládaných nebo pevné ceny (nebo bez) a především předprodejní orientované consulting nabídky služeb pro jediného zákazníka. Typy služeb jsou hodnocení, přehledové, implementace, testování konceptu a nabídky seminář o provedených na místě nebo virtuálně. Spravované AppSource konzultační služby marketplace nepodporuje naslouchání nebo předplatné služeb.
+Společnost Microsoft se zaměřuje výhradně na pevný rozsah, pevnou dobu trvání, odhadovanou nebo pevnou cenu (nebo zdarma) a primárně předprodejní konzultační nabídky služeb pro jediného zákazníka. Typy služeb jsou posuzování, přehledy, implementace, ověření konceptu a nabídky dílny prováděné buď na pracovišti, nebo prakticky. Tržiště AppSource konzultačních služeb nepodporuje výpisy pro služby spravované nebo předplatného.
 
 >[!Note]
->Konzultační služby AppSource nejsou vhodné marketplace pro předplatné nebo školení na vyžádání.
+>Konzultační služby AppSource nejsou vhodné na webu Marketplace pro předplatné ani školení na vyžádání.
 
-Jsou zahrnuty následující pět typů nabídek:
+K dispozici jsou následující pět typů nabídek:
 
--   **Posouzení**: Vyhodnocení na základě prostředí a určit použitelnost řešení a poskytuje odhad nákladů a časování.
--   **Přehledovou**: Úvod do řešení a konzultační služby k vykreslení zájmu zákazníků s využitím architektury, ukázek a příkladů zákazníků. Brífinků musí být provedeny na místě.
--   **Implementace**: Dokončení instalace, jejímž výsledkem plně funkčního řešení. Pro tohoto pilotního programu Společnost Microsoft doporučuje omezení na řešení, která může být implementovaná za týden nebo kratší.
--   **Testování konceptu**: Omezením oboru implementace k určení, zda řešení splňuje požadavky zákazníka.
--   **Seminář**: Interaktivní engagement se provádí v místním prostředí zákazníka, které mohou obsahovat školicích seminářů, brífinků, hodnocení a ukázky založená na data nebo prostředí zákazníka.
+-   **Posouzení**: vyhodnocení prostředí zákazníka k určení použitelnosti řešení a zajištění odhadu nákladů a časování.
+-   **Přehled**: Úvod do řešení nebo poradenské služby za účelem vystavení zájmu zákazníků pomocí platforem, ukázek a příkladů zákazníků. Krátké nakládání musí být provedeno na pracovišti.
+-   **Implementace**: kompletní instalace, která má za následek plně funkční řešení. V tomto pilotním programu Microsoft doporučuje omezit na řešení, která se dají implementovat v jednom nebo kratším týdnu.
+-   **Ověření koncepce**: implementace s omezeným rozsahem k určení, jestli řešení splňuje požadavky zákazníka.
+-   **Workshop**: interaktivní zapojení na místech zákazníka, která můžou zahrnovat školicí cvičení, krátké účely, posouzení nebo ukázky založené na datech a prostředí zákazníka.
 
-**Dostupnost země/oblast**
+**Dostupnost země nebo oblasti**
 
-Vyberte zemi a oblast, kde je k dispozici tato nabídka konzultační služby. Jediné nabídky nelze publikovat ve více zemích nebo oblastech. Nová nabídka musí být vytvořeny pro každou zemi nebo oblast.
+Vyberte zemi a oblast, kde je tato nabídka služeb k dispozici. Jednu nabídku nelze publikovat ve více zemích nebo oblastech. Pro každou zemi nebo oblast se musí vytvořit nová nabídka.
 
 >[!Note]
->AppSource konzultační služby jsou aktuálně živě ve Spojených státech amerických, Spojené království a Kanadě. Můžete odeslat nabídku země/oblast, která ještě není za provozu a budou zkontrolovány a připravené na přechod na živý přenos. Minimální počet nabídek, které jsou připravené na přechod na živý přenos je třeba otevřít Nová země nebo oblast, proto doporučujeme nabídky pro zemích nebo oblastech, které nejsou za provozu.
+>Konzultační služby AppSource jsou v současnosti živé v USA, Spojeném království a Kanadě. Můžete odeslat nabídku pro zemi nebo oblast, která ještě není živá, a bude prověřená a připravená k provozu. K otevření nové země nebo oblasti se vyžaduje minimální počet nabídek připravených k provozu, takže nabídky pro země nebo oblasti, které nejsou živé, doporučujeme.
 
 **Odvětví**
 
-Vyberte obory, které nabízejí konzultační služby se nejlíp.
+Vyberte odvětví, na které se nabídka konzultační služby vztahuje.
 
-**Doba trvání**
+**Úkolu**
 
-Vyberte číslo (například 3 nebo 4) v části **doba trvání**a pak vyberte **hodinu**, **den**, nebo **týden**.
+V části **Doba trvání**vyberte číslo (například 3 nebo 4) a pak vyberte **hodiny**, **den**nebo **týden**.
 
 **Primární produkty**
 
-Chcete-li publikovat na webu Azure Marketplace, vyberte **Azure** jako primární produkt. Potom vyberte příslušné **oblasti řešení**.
+Pokud chcete publikovat na Azure Marketplace, jako primární produkt vyberte **Azure** . Pak vyberte příslušné **oblasti řešení**.
 
-Chcete-li publikovat na webu AppSource, vyberte **Dynamics 365**, **Power BI**, nebo **PowerApps** jako svůj primární produkt. Také můžete vybrat další relevantní **podporovaných produktů**. Potom nabídkou na konzultační služby zobrazuje položky, které jsou spojeny s každým z těchto produktů na AppSource.
+Pokud chcete publikovat na AppSource, jako svůj primární produkt vyberte **Dynamics 365**, **Power BI**nebo **PowerApps** . Můžete také vybrat jiné relevantní příslušné **produkty**. Pak se nabídka konzultační služby zobrazí v seznamech, které jsou spojené s každým z těchto produktů v AppSource.
 
-**Příslušné možnosti**
+**Příslušné kompetence**
 
-Vyberte možnosti, které jsou relevantní pro tato nabídka má zobrazovat spolu s podrobnostmi nabídky.
+Vyberte kompetence související s touto nabídkou, aby se zobrazily spolu s podrobnostmi o nabídce.
 
-## <a name="marketing-artifacts"></a>Marketingové artefaktů
+## <a name="marketing-artifacts"></a>Marketingové artefakty
 
 **Logo společnosti (formát PNG, 48 x 48 pixelů)**
 
-Nahrajte obrázek, který se zobrazí na dlaždici vaší nabídky na stránce nabídky galerie zobrazit. Obrázek musí být obrázek PNG s rozlišením 48 x 48 pixelů.
+Nahrajte obrázek, který se zobrazí na dlaždici vaší nabídky na stránce zobrazení galerie nabídek. Obrázek musí být obrázek. png s rozlišením 48 x 48 pixelů.
 
-**Logo společnosti (formát PNG, pixelů 216 x 216)**
+**Logo společnosti (formát PNG, 216 x 216 pixelů)**
 
-Nahrajte obrázek, který se zobrazí na stránce s podrobnostmi o vaší nabídce. Obrázek musí být obrázek PNG s rozlišením 216 x 216 pixelů.
+Nahrajte obrázek, který se zobrazí na stránce podrobností vaší nabídky. Obrázek musí být obrázek. png s rozlišením 216 x 216 pixelů.
 
-**Videa (omezeno na čtyři)**
+**Videa (omezená na čtyři)**
 
-Nahrajte až čtyři zákazníka Případová studie videa nebo videa odkaz na zákazníka. Pokud žádné nemáte, nahrajte videa, která vysvětluje odborných znalostí společnosti týkajících se nabídky. Pokud máte Power BI nebo PowerApps prezentaci řešení, nahrajte na prezentaci video. Odkazy na video musí být pro YouTube nebo Vimeo.
+Nahrajte až čtyři videa pro případovou studii zákazníků nebo zákaznická videa. Pokud žádné nemáte, nahrajte video s vysvětlením odborných znalostí vaší společnosti, které se vztahují k této nabídce. Pokud máte předvedení Power BI nebo PowerApps řešení, nahrajte sem video s ukázkami. Odkazy na video musí být pro YouTube nebo Vimeo.
 
-**Dokumenty (omezena na tři)**
+**Dokumenty (omezené na tři)**
 
-Nahrajte marketingové brožuru nabídkou na konzultační služby podrobně popisuje. Můžete také odeslat společnosti přehled, tabulky faktů nebo případové studie. Ujistěte se, že vaše dokumenty aktuální název vybrané produkty a není funkce konkurenčních produktů společnosti Microsoft.
+Nahrajte si marketingovou brožuru, která podrobně popisuje nabídku konzultačních služeb. Můžete také nahrát firemní přehled, seznamy faktů nebo případové studie. Ujistěte se, že vaše dokumenty používají aktuální názvy doporučených produktů a nevyužívají konkurenční produkty Microsoftu.
 
-**Snímky obrazovky (omezeno na 5)**
+**Snímky obrazovky (omezeno na pět)**
 
-Nahrávání až o pěti obrázků, které poskytují další informace o vaší nabídce, jeho výsledky nebo vaší společnosti. Fragment kódu brožuru marketing, relevantní snímků z prezentace, nebo bitovou kopii, která ukazuje podpora společnosti nebo odbornými znalostmi o je několik příkladů.
+Nahrajte až pět imagí, které vám poskytnou další informace o vaší nabídce, jejích dodávkách nebo vaší společnosti. Příkladem může být fragment vaší marketingové brožury, relevantní snímek z prezentace nebo obrázek, který zobrazuje potenciál společnosti nebo odbornosti.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Teď jste připravení [publikovat konzultační služby](./cpp-consulting-service-publish-offer.md) nabízejí.
+Teď jste připraveni publikovat nabídku [konzultačních služeb](./cpp-consulting-service-publish-offer.md) .

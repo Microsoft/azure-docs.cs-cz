@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d70812779d392cc4555c91599fad37c2d2c68ba5
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d5d621ec9eccca56c4e4e9075b6e9cca75c05c98
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793577"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818583"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Omezení služby v Azure Kognitivní hledání
 
@@ -46,18 +46,20 @@ Maximální limity pro úložiště, úlohy a množství indexů, dokumentů a d
 
 ## <a name="index-limits"></a>Omezení indexu
 
-| Prostředek | Zadarmo | Základní&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | Paměť |
+| Prostředek | Free | Základní&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | Paměť |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | Maximální počet indexů |3 |5 nebo 15 |50 |200 |200 |1 000 na oddíl nebo 3 000 na službu |10 |10 |
-| Maximální počet jednoduchých polí na index |1 000 |100 |1 000 |1 000 |1 000 |1 000 |1 000 |1 000 |
+| Maximální počet jednoduchých polí na index |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
 | Maximální složitá pole kolekce na index |40 |40 |40 |40 |40 |40 |40 |40 |
-| Maximální počet prvků napříč všemi složitými kolekcemi na dokument |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
+| Maximální počet prvků napříč všemi složitými kolekcemi na dokument&nbsp;<sup>2</sup> |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
 | Maximální hloubka složitých polí |10 |10 |10 |10 |10 |10 |10 |10 |
-| Maximální počet modulu pro [návrhy](https://docs.microsoft.com/rest/api/searchservice/suggesters) na index |1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |1\. místo |
+| Maximální počet modulu pro [návrhy](https://docs.microsoft.com/rest/api/searchservice/suggesters) na index |1 |1 |1 |1 |1 |1 |1 |1 |
 | Maximální počet [profilů vyhodnocování](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) na index |100 |100 |100 |100 |100 |100 |100 |100 |
 | Maximální počet funkcí na profil |8 |8 |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> základní služby vytvořené před prosince 2017 mají nižší limity (5 namísto 15) na indexech. Úroveň Basic je jediná SKU s nižším limitem 100 polí na jeden index.
+
+<sup>2</sup> má velký počet prvků v komplexních kolekcích pro každý dokument v současné době způsobuje vysoké využití úložiště. Jedná se o známý problém. Do té doby je limit 3000 bezpečný horní mez pro všechny úrovně služeb. Tento limit se vynutil jenom pro operace indexování, které využívají nejstarší dostupnou verzi rozhraní API GA (GA), která podporuje pole komplexního typu (`2019-05-06`) a vyšší. Aby nedošlo k přerušení klientů, kteří používají dřívější verze Preview rozhraní API (které podporují pole komplexních typů), nebudeme toto omezení vynucovat pro operace indexování, které používají tyto verze rozhraní API Preview. Verze Preview rozhraní API není určena k použití v produkčních scénářích a důrazně doporučujeme zákazníkům přejít na nejnovější verzi rozhraní API GA.
 
 <a name="document-limits"></a>
 
@@ -77,15 +79,15 @@ Pokud portál indikuje omezení dokumentu, služba byla buď vytvořena před 20
 
 + Austrálie – východ
 + Východní Asie
-+ Střední Indie
++ Střed Indie
 + Japonsko – západ
 + Středozápadní USA
 
 Pro služby podléhající omezením dokumentu platí následující maximální limity:
 
-|  Zadarmo | Úroveň Basic | S1 | S2 | S3 | S3&nbsp;HD |
+|  Free | Basic | S1 | S2 | S3 | S3&nbsp;HD |
 |-------|-------|----|----|----|-------|
-|  10 000 |1 @ no__t_0_ milionů |15 milionů na oddíl nebo 180 milionů na službu |60 milionů na oddíl nebo 720 milionů na službu |120 milionů na oddíl nebo 1,4 miliard na službu |1 milion na index nebo 200 milionů na oddíl |
+|  10 000 |1&nbsp;milionů |15 milionů na oddíl nebo 180 milionů na službu |60 milionů na oddíl nebo 720 milionů na službu |120 milionů na oddíl nebo 1,4 miliard na službu |1 milion na index nebo 200 milionů na oddíl |
 
 Pokud vaše služba obsahuje omezení, která vás zablokují, vytvořte novou službu a pak znovu publikujte veškerý obsah do této služby. Neexistuje žádný mechanismus pro bezproblémové opětovné zřízení vaší služby na nový hardware na pozadí.
 
@@ -108,15 +110,15 @@ Pro zajištění rovnováhy a stability služby jako celku existovala maximáln�
 
 | Prostředek | Bezplatná&nbsp;<sup>1</sup> | Základní&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |Paměť |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
-| Maximální počet indexerů |3 |5 nebo 15|50 |200 |200 |Nevztahuje se |10 |10 |
-| Maximální počet zdrojů dat |3 |5 nebo 15 |50 |200 |200 |Nevztahuje se |10 |10 |
-| Maximální dovednosti <sup>4</sup> |3 |5 nebo 15 |50 |200 |200 |Nevztahuje se |10 |10 |
-| Maximální zatížení indexování na vyvolání |dokumenty 10 000 |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Nevztahuje se |Bez omezení |Bez omezení |
+| Maximální počet indexerů |3 |5 nebo 15|50 |200 |200 |Není dostupné. |10 |10 |
+| Maximální počet zdrojů dat |3 |5 nebo 15 |50 |200 |200 |Není dostupné. |10 |10 |
+| Maximální dovednosti <sup>4</sup> |3 |5 nebo 15 |50 |200 |200 |Není dostupné. |10 |10 |
+| Maximální zatížení indexování na vyvolání |dokumenty 10 000 |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Není dostupné. |Bez omezení |Bez omezení |
 | Minimální plán | 5 minut |5 minut |5 minut |5 minut |5 minut |5 minut |5 minut | 5 minut |
-| Maximální doba běhu <sup>5</sup> | 1-3 minut |24 hodin |24 hodin |24 hodin |24 hodin |Nevztahuje se  |24 hodin |24 hodin |
-| Maximální doba spuštění pro rozpoznávání dovednosti nebo indexování objektů BLOB s analýzou obrázku <sup>5</sup> | 3-10 minut |2 hodiny |2 hodiny |2 hodiny |2 hodiny |Nevztahuje se  |2 hodiny |2 hodiny |
-| Indexer objektů BLOB: maximální velikost objektu blob, MB |16 |16 |128 |256 |256 |Nevztahuje se  |256 |256 |
-| Indexer objektů BLOB: maximální počet znaků obsahu extrahovaných z objektu BLOB |32 000 |64 000 |4 @ no__t_0_ milionů |4 @ no__t_0_ milionů |4 @ no__t_0_ milionů |Nevztahuje se |4 @ no__t_0_ milionů |4 @ no__t_0_ milionů |
+| Maximální doba běhu <sup>5</sup> | 1-3 minut |24 hodin |24 hodin |24 hodin |24 hodin |Není dostupné.  |24 hodin |24 hodin |
+| Maximální doba spuštění pro rozpoznávání dovednosti nebo indexování objektů BLOB s analýzou obrázku <sup>5</sup> | 3-10 minut |2 hodiny |2 hodiny |2 hodiny |2 hodiny |Není dostupné.  |2 hodiny |2 hodiny |
+| Indexer objektů BLOB: maximální velikost objektu blob, MB |16 |16 |128 |256 |256 |Není dostupné.  |256 |256 |
+| Indexer objektů BLOB: maximální počet znaků obsahu extrahovaných z objektu BLOB |32 000 |64 000 |4&nbsp;milionů |4&nbsp;milionů |4&nbsp;milionů |Není dostupné. |4&nbsp;milionů |4&nbsp;milionů |
 
 <sup>1</sup> bezplatné služby mají maximální dobu provádění indexeru 3 minuty pro zdroje objektů BLOB a 1 minutu pro všechny ostatní zdroje dat. V případě indexování AI, který volá Cognitive Services, jsou bezplatné služby omezené na 20 bezplatných transakcí za den, kde transakce je definovaná jako dokument, který úspěšně projde kanálem pro obohacení.
 
@@ -128,11 +130,14 @@ Pro zajištění rovnováhy a stability služby jako celku existovala maximáln�
 
 <sup>5</sup> zátěžového vyhledávání a analýza obrázků v Azure Blob indexování mají kratší dobu běhu než běžné indexování textu. Analýza obrázků a zpracování přirozeného jazyka jsou výpočty náročné a využívají neúměrné objemy dostupného výpočetního výkonu. Čas spuštění byl snížen, aby bylo možné v frontě poskytnout ostatním úlohám možnost spustit.  
 
+> [!NOTE]
+> Jak je uvedeno v [omezeních indexu](#index-limits), indexery taky vyhodnotí horní limit 3000 prvků napříč všemi složitými kolekcemi na dokument počínaje nejnovější verzí rozhraní GA API, která podporuje komplexní typy (`2019-05-06`) a vyšší. To znamená, že pokud jste indexer vytvořili s předchozí verzí rozhraní API, nebudete platit od tohoto omezení. Aby se zachovala maximální kompatibilita, indexer, který byl vytvořen s předchozí verzí rozhraní API a který se pak aktualizuje pomocí `2019-05-06` verze rozhraní API, bude v omezeních nadále **vyloučený** . Zákazníci by měli mít pozor na nepříznivý dopad na velmi velké komplexní kolekce (jak bylo uvedeno dříve) a důrazně doporučujeme vytvořit nové indexery s nejnovější verzí rozhraní GA API.
+
 ## <a name="synonym-limits"></a>Omezení synonym
 
 Maximální povolený počet map synonym se liší podle cenové úrovně. Každé pravidlo může mít až 20 rozšíření, kde rozšíření je equivalvent termínem. Například dané "Cat", asociace s "Kitty", "Feline" a "Felis" (rod pro kočky) by se znamenaly jako 3 rozšíření.
 
-| Prostředek | Zadarmo | Úroveň Basic | S1 | S2 | S3 | S3-HD |L1 | Paměť |
+| Prostředek | Free | Basic | S1 | S2 | S3 | S3-HD |L1 | Paměť |
 | -------- | -----|------ |----|----|----|-------|---|----|
 | Maximální počet mapování synonym |3 |3|5 |10 |20 |20 | 10 | 10 |
 | Maximální počet pravidel na mapování |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |

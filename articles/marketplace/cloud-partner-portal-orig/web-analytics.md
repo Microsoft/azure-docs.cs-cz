@@ -5,15 +5,16 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: a6b2a7981452b47a3992b6c0efee286878e143fb
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: d47a67be157f71a30a6ae155790ed78a78fd6743
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962881"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814648"
 ---
 <a name="web-analytics"></a>Webové analýzy
 =============
@@ -24,7 +25,7 @@ Teď, když jste vytvořili a publikovali vaši nabídku, je další částí va
 
 ![Stránka WebAnalytics](./media/si-getting-started/WebAnalytics1.png)
 
-Zobrazí se řídicí panel s bohatou sadou pro ID vašeho vydavatele, který je sestavený pomocí Microsoft Power BI, a umožňuje zobrazit každou z\' vašich nabídek data, která se denně aktualizují.
+Zobrazí se řídicí panel s bohatou sadou pro ID vašeho vydavatele, který je sestavený pomocí Microsoft Power BI, a umožní vám zobrazit všechny nabídky\' data, která se aktualizují každý den.
 
 <a name="microsoft-campaigns"></a>**Kampaně Microsoftu**
 -----------------------
@@ -41,23 +42,23 @@ Existují dva způsoby, jak vytvořit vlastní kampaň.
 
 1. Do adresy URL přidejte parametr dotazu **mktcmpid** , který popisuje, co je kampaň a na jakou stránku nebo událost pocházejí.
 
-Můžete například použít:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
+Můžete například použít: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
 
-1. (Rozšířené): V adrese URL použijte jedno z našich podporovaných ID obecných kampaní. Chceme se dopracovat s dalšími značkami ref, které potřebujete použít, Proto podporujeme konvenci pro automatické rozpoznávání těchto dalších značek:
+1. (Rozšířené): v adrese URL použijte jedno z našich podporovaných identifikátorů obecné kampaně. Chceme se dopracovat s dalšími značkami ref, které potřebujete použít, Proto podporujeme konvenci pro automatické rozpoznávání těchto dalších značek:
     
     1. **UTM\_kampaň**
     2. **UTM\_zdroj**
     3. **odkazů**
     4. **src**
 
-Můžete například použít:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>
+Můžete například použít: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>
 
 Můžete si vybrat, že budete mít kombinaci několika těchto ID kampaně k dalšímu určení více zdrojů provozního provozu pro kampaň, jako je například místo, odkud zákazník pochází (e-mail, blog, zdroj sociálních médií atd.).
 
 Příklad:
 
-1. Odkazující na Bulletin:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
-2. Odkazující na LinkedIn:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
+1. Odkazující na Bulletin: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
+2. Odkazující na LinkedIn: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
 
 ### <a name="ensuring-campaigns-pass-through-all-your-pages"></a>**Zajištění toho, aby kampaně prošly všemi vašimi stránkami**
 
@@ -65,13 +66,13 @@ Může se jednat o scénář, ve kterém vaše kampaně mají zprostředkující
 
 Zde naleznete příklad:
 
-1. Zaměstnanci marketingu koupí reklamy z Google na provoz na cílové stránce\' <https://contoso.com>společnosti. Tato cílová stránka obsahuje \"odkaz na svůj produkt\" , na <https://appsource.com>který odkazuje.
-2. Uživatel klikne na reklamu a rozmístění na\'svou cílovou stránku společnosti.
+1. Zaměstnanci marketingu koupí reklamy z Google, aby mohli provoz na úvodní stránce společnosti\'s <https://contoso.com>. Tato cílová stránka obsahuje \"vyzkoušet odkaz na\" produktu, který se odkazuje na <https://appsource.com>.
+2. Uživatel klikne na reklamu a rozmístění na svou společnost\'cílovou stránku.
     1.  Adresa URL odkazu = google.com
-    2.  Adresa URL cílové stránky =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-3. Uživatel klikne na \"odkaz vyzkoušet můj\" produkt a přejde do AppSource.
-    1. Adresa URL odkazu =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-    2. Adresa URL cílové stránky (**Ujistěte se, že tato\_adresa URL má\_utmou kampaň a zdroj UTM do této adresy URL**) = [ https://appsource.microsoft.com/product/dynamics-365/contoso.offername? **\_ UTM\_ kampaň = MyCampaignAdName & UTM source = MySourceAdName** ](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
+    2.  Adresa URL cílové stránky = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
+3. Uživatel klikne na \"vyzkoušet odkaz na produkt\" a přejde do AppSource.
+    1. Adresa URL odkazu = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
+    2. Adresa URL cílové stránky (**Ujistěte se, že tato adresa URL má utm\_kampaně a utm\_zdroj přidaný do této adresy URL**) = [https://appsource.microsoft.com/product/dynamics-365/contoso.offername?**UTM\_kampaň = MyCampaignAdName & UTM\_source = MySourceAdName** ](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
 
 <a name="how-to-evaluate-the-success-of-a-campaign"></a>Jak vyhodnotit úspěch kampaně
 -----------------------------------------
@@ -92,7 +93,7 @@ Podobně jako u zobrazení míry převodu celé nabídky můžete v tomto grafu 
 
 ![WebAnalytics4](./media/si-getting-started/WebAnalytics4.png)
 
-Podobně jako v tom, jak se podíváme na domény zákazníků, vám tento graf umožní zobrazit distribuci vašich dat na kampaň, kterou uživatelé přijdou na Marketplace v části. \_Nekampaň znamená, že zákazník neměl při přechodu na web Marketplace v adrese URL ID kampaně.
+Podobně jako v tom, jak se podíváme na domény zákazníků, vám tento graf umožní zobrazit distribuci vašich dat na kampaň, kterou uživatelé přijdou na Marketplace v části. \_á kampaň znamená, že zákazník neměl při přechodu na web Marketplace v adrese URL ID kampaně.
 
 <a name="next-steps"></a>**Další kroky**
 --------------

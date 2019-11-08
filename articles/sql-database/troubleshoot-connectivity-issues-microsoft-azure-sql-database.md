@@ -1,19 +1,20 @@
 ---
-title: Řešení potíží s připojením pomocí Microsoft Azure SQL Database | Microsoft Docs
+title: Řešení potíží s připojením
 description: Popisuje řešení potíží s připojením v Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.topic: troubleshooting
+ms.custom: seo-lt-2019
 author: v-miegge
 ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
-ms.openlocfilehash: 9de6d85e1fc54d60f999cfa18665067b3998a432
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 20988296b5eac7152c53abd6d238043288feacc8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390663"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807274"
 ---
 # <a name="troubleshooting-connectivity-issues-with-microsoft-azure-sql-database"></a>Řešení potíží s připojením pomocí Microsoft Azure SQL Database
 
@@ -28,9 +29,9 @@ Pokud připojení ke službě Azure SQL Database selže, zobrazí se chybové zp
 Řešení tohoto problému:
 
 1. Podívejte se na [řídicí panel služby Microsoft Azure](https://status.azure.com/status) pro všechny známé výpadky. 
-2. Pokud neexistují žádné známé výpadky, otevřete na [webu podpory Microsoft Azure](http://azure.microsoft.com/support/options) , kde otevřete případ podpory.
+2. Pokud neexistují žádné známé výpadky, otevřete na [webu podpory Microsoft Azure](https://azure.microsoft.com/support/options) , kde otevřete případ podpory.
 
-Další informace najdete v tématu [řešení potíží s informacemi o tom, že databáze na serveru není aktuálně k dispozici](https://docs.microsoft.com/azure/sql-database/sql-database-troubleshoot-common-connection-issues#troubleshoot-transient-errors).
+Další informace najdete v tématu [řešení potíží s informacemi o tom, že databáze na serveru není aktuálně k dispozici](sql-database-troubleshoot-common-connection-issues.md#troubleshoot-transient-errors).
 
 ## <a name="a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server"></a>Při navazování připojení k SQL Server došlo k chybě související se sítí nebo instanci.
 
@@ -129,7 +130,7 @@ Správce služby obvykle může pomocí následujících kroků přidat přihla�
    ```
    
    > [!NOTE]
-   > K namapování konkrétních uživatelů na konkrétní databázové role můžete také použít `sp_addrolemember`.
+   > K mapování konkrétních uživatelů na konkrétní databázové role můžete také použít `sp_addrolemember`.
 
 Další informace najdete v tématu [Správa databází a přihlášení v Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins).
 
@@ -188,7 +189,7 @@ Pokud chcete tento problém obejít, zkuste jednu z následujících metod:
   > [!NOTE]
   > Jedná se o minimalist přístup, který nemusí problém vyřešit.
 
-  1. Spusťte následující dotaz SQL pro kontrolu zobrazení [Sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) , abyste viděli všechny blokující požadavky:
+  1. Spusťte následující dotaz SQL pro kontrolu zobrazení [Sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) , abyste viděli všechny blokující požadavky:
 
              ```
              SELECT * FROM dm_exec_requests
@@ -197,7 +198,7 @@ Pokud chcete tento problém obejít, zkuste jednu z následujících metod:
   2. Určete **vstupní vyrovnávací paměť** pro blokování Headers.
   3. Nalaďte dotaz na blokování hlav.
 
-    Podrobný postup pro řešení potíží najdete v tématu [je můj dotaz běží v cloudu dobře?](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+    Podrobný postup pro řešení potíží najdete v tématu [je můj dotaz běží v cloudu dobře?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
 
 * Pokud databáze konzistentně dosáhne svého limitu bez ohledu na blokující a dlouhotrvající dotazy, zvažte upgrade na jednu z nových verzí verze Preview (například [edice Standard nebo Premium](https://azure.microsoft.com/pricing/details/sql-database/)).
 
@@ -265,7 +266,7 @@ Následující kroky vám pomůžou vyřešit problém nebo vám poskytnou dalš
 
 Při opakovaném výskytu této chyby zkuste problém vyřešit pomocí následujících kroků: 
 
-1. Podívejte se na zobrazení sys. DM _exec_requests a zobrazte všechny otevřené relace, které mají pro sloupec total_elapsed_time vysokou hodnotu. Tuto kontrolu proveďte spuštěním následujícího skriptu SQL:
+1. Pokud chcete zobrazit otevřené relace, které mají pro sloupec total_elapsed_time vysokou hodnotu, zkontrolujte zobrazení sys. dm_exec_requests. Tuto kontrolu proveďte spuštěním následujícího skriptu SQL:
 
    ```
    SELECT * FROM dm_exec_requests
@@ -275,7 +276,7 @@ Při opakovaném výskytu této chyby zkuste problém vyřešit pomocí následu
 
 Zvažte také dávkování dotazů. Informace o dávkovém zpracování najdete v tématu [použití dávkového zpracování ke zlepšení výkonu aplikace SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-use-batching-to-improve-performance).
 
-Podrobný postup pro řešení potíží najdete v tématu [je můj dotaz běží v cloudu dobře?](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+Podrobný postup pro řešení potíží najdete v tématu [je můj dotaz běží v cloudu dobře?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
 
 ### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>Chyba 40551: relace byla ukončena z důvodu nadměrného využití databáze TEMPDB
 
@@ -311,7 +312,7 @@ Při řešení tohoto problému zkuste použít následující metody:
 
 Pokud chcete tento problém obejít, zkuste optimalizovat dotaz.
 
-Podrobný postup pro řešení potíží najdete v tématu [je můj dotaz běží v cloudu dobře?](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+Podrobný postup pro řešení potíží najdete v tématu [je můj dotaz běží v cloudu dobře?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
 
 
 ### <a name="cannot-open-database-master-requested-by-the-login-the-login-failed"></a>Databázi "Master" požadovanou v rámci přihlášení nelze otevřít. Přihlášení se nezdařilo.
@@ -336,7 +337,7 @@ System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
 ClientConnectionId:<Client connection ID>
 ```
 
-Pokud je výjimka aktivována při potížích s dotazem, všimnete si zásobníku volání, který je podobný následujícímu (Poznamenejte si odkaz na třídu **SqlCommand** ). V této situaci [budete ladit dotazy](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+Pokud je výjimka aktivována při potížích s dotazem, všimnete si zásobníku volání, který je podobný následujícímu (Poznamenejte si odkaz na třídu **SqlCommand** ). V této situaci [budete ladit dotazy](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
 
 ```
   at System.Data.SqlClient.SqlCommand.ExecuteReader()
@@ -364,7 +365,7 @@ Viz [získat informace o připojení SQL Server](https://docs.microsoft.com/azur
 
 5. Jako osvědčený postup se ujistěte, že je nastavená logika opakování. Další informace o logice opakování najdete v tématu [řešení přechodných chyb a chyb připojení k SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-issues).
 
-Pokud tyto kroky problém nevyřeší, zkuste shromáždit více dat a pak se obraťte na podporu. Pokud je vaše aplikace cloudová služba, povolte protokolování. Tento krok vrátí časové razítko UTC selhání. Kromě toho SQL Azure vrátí ID trasování. Tyto informace mohou využívat [služby zákaznické podpory společnosti Microsoft](http://azure.microsoft.com/support/options/) . 
+Pokud tyto kroky problém nevyřeší, zkuste shromáždit více dat a pak se obraťte na podporu. Pokud je vaše aplikace cloudová služba, povolte protokolování. Tento krok vrátí časové razítko UTC selhání. Kromě toho SQL Azure vrátí ID trasování. Tyto informace mohou využívat [služby zákaznické podpory společnosti Microsoft](https://azure.microsoft.com/support/options/) . 
 
 Další informace o tom, jak povolit protokolování, najdete v tématu [Povolení protokolování diagnostiky pro aplikace v Azure App Service](https://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/).
 

@@ -1,5 +1,5 @@
 ---
-title: Automatizace úloh Azure SQL
+title: Automatizace úloh
 description: Použití automatizace úloh ke spouštění skriptů jazyka Transact-SQL (T-SQL) v rámci jedné nebo více databází SQL Azure
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/25/2019
-ms.openlocfilehash: bbef299271618dc672daea17249f29866e75c430
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c2548bb4537d17a3dab94d5476c743e2a70faad0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689669"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810091"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatizace úloh správy pomocí databázových úloh
 
@@ -212,7 +212,7 @@ Při vytváření agenta úloh se v *databázi úloh* vytvoří schéma, tabulky
 
 |Název role  |Oprávnění ke schématu jobs  |Oprávnění ke schématu jobs_internal  |
 |---------|---------|---------|
-|**jobs_reader**     |    SELECT     |    Žádné     |
+|**jobs_reader**     |    SELECT     |    Žádný     |
 
 > [!IMPORTANT]
 > Jako správce databáze zvažte před udělením přístupu k *databázi úloh* všechny bezpečnostní důsledky. Uživatel se zlými úmysly s oprávněními k vytváření nebo úpravě úloh by mohl vytvořit nebo upravit úlohu, která se pomocí uložených přihlašovacích údajů připojí k databázi pod jeho kontrolou a uživatel se zlými úmysly by tak mohl zjistit přihlašovací heslo.
@@ -263,7 +263,7 @@ Každý krok úlohy určuje skript T-SQL, který se má spustit, jednu nebo něk
 
 Výstupy kroků úloh pro každou cílovou databázi se podrobně zaznamenávají a výstup skriptu je možné zachytávat do určené tabulky. Můžete určit databázi, do které se budou ukládat všechna data vrácená z úlohy.
 
-#### <a name="job-history"></a>Historie úloh
+#### <a name="job-history"></a>Historie úlohy
 
 Historie spouštění úloh se ukládá do *databáze úloh*. Úloha vyčištění systému vyprázdní historii spouštění starší než 45 dnů. Pokud chcete odebrat historii mladší než 45 dnů, zavolejte v **databázi úloh** uloženou proceduru *sp_purge_history*.
 

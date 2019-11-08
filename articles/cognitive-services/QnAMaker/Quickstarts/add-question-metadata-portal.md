@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: ed50e6adbcca7cbb4935400c7850c37dc2ed389f
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 92735d8982fb1364d5ebfe0494f5ee51f4302469
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803533"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794003"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Rychlý Start: Přidání otázek a odpovědí pomocí portálu QnA Maker
 
@@ -31,7 +31,7 @@ Například otázky v následující tabulce jsou o omezeních služeb Azure, al
 |Sada|Otázky|Odpověď|Metadata|
 |--|--|--|--|
 |1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
-|2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Search tier supports.`|`service=search`<br>`link_in_answer=false`|
+|2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
 
 Po přidání metadat do sady otázek a odpovědí může klientská aplikace:
 
@@ -40,7 +40,7 @@ Po přidání metadat do sady otázek a odpovědí může klientská aplikace:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Služba QnA Maker
 * Znalostní báze vytvořený v této QnA Maker službě
@@ -61,7 +61,7 @@ Při importu této adresy URL byla vytvořena pouze jedna otázka s jednou odpov
 
 V tomto postupu přidejte další otázky.
 
-1. Na stránce **Upravit** použijte vyhledávací pole nad rámec otázek a odpovědí a vyhledejte otázku `How large a knowledge base can I create?`.
+1. Na stránce **Upravit** použijte vyhledávací pole nad rámec otázek a odpovědí a vyhledejte otázku `How large a knowledge base can I create?`
 
 1. Ve sloupci **otázka** vyberte **+ Přidat alternativní formulování** a potom přidejte každou novou formulaci, která je uvedená v následující tabulce.
 
@@ -92,9 +92,9 @@ Přidání metadat do otázky a sady odpovědí umožňuje klientské aplikaci p
 
 1. Vyberte **Možnosti zobrazení**a pak vyberte **zobrazit metadata**. 
 
-1. Pro otázku a sadu odpovědí, které jste právě přidali, vyberte **Přidat značky metadat**a pak přidejte název `service` a hodnotu `search` `service:search`.
+1. Pro otázku a sadu odpovědí, které jste právě přidali, vyberte **Přidat značky metadat**a pak přidejte název `service` a hodnotu `search``service:search`.
 
-1. Přidejte další značky metadat s názvem `link_in_answer` a hodnotou `false` `link_in_answer:false`.
+1. Přidejte další značky metadat s názvem `link_in_answer` a hodnotou `false``link_in_answer:false`.
 
 1. Vyhledejte první odpověď v tabulce `How large a knowledge base can I create?`. 
 1. Přidejte páry metadat pro stejné dvě Tagy metadat:
@@ -121,7 +121,7 @@ Přidání metadat do otázky a sady odpovědí umožňuje klientské aplikaci p
     curl -X POST https://your-resource-name.azurewebsites.net/qnamaker/knowledgebases/your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
 
-    Všimněte si, že otázka je pouze jedno slovo, `size`, což může vracet buď otázku a sadu odpovědí. Pole `strictFilters` instruuje odpověď, aby se snížila pouze na odpovědi `qna_maker`. 
+    Všimněte si, že otázka je pouze jedno slovo, `size`, které může vracet sadu otázek a odpovědí. `strictFilters` pole oznamuje odpověď, aby se snížila pouze na `qna_maker` odpovědi. 
 
     [!INCLUDE [Tip for debug property to JSON request](../includes/tip-debug-json.md)]
 
@@ -162,7 +162,7 @@ Přidání metadat do otázky a sady odpovědí umožňuje klientské aplikaci p
     }
     ```
 
-    Pokud je k dispozici sada otázek a odpovědí, která nevyhověla hledanému termínu, ale nesplnila tento filtr, nebude vrácena. Místo toho se vrátí obecná odpověď @no__t – 0.
+    Pokud je k dispozici sada otázek a odpovědí, která nevyhověla hledanému termínu, ale nesplnila tento filtr, nebude vrácena. Místo toho se vrátí obecná odpověď `No good match found in KB.`.
 
     Zajistěte, aby páry názvů a hodnot metadat byly v rámci požadovaných limitů. 
 

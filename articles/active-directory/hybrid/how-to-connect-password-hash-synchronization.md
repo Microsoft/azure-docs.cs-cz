@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d8caafe312c123a9d572e9a5f4c5cf64a05f7ea
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ac1b75536e092203490a390860a1cead7ac333b7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721036"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73817977"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí Azure AD Connect synchronizace
 Tento článek poskytuje informace, které potřebujete k synchronizaci uživatelských hesel z místní instance služby Active Directory s instancí cloudové Azure Active Directory (Azure AD).
@@ -63,7 +63,7 @@ V následující části jsou popsány podrobné informace o tom, jak funguje sy
 > [!NOTE]
 > Původní algoritmus hash MD4 se nepřenáší do služby Azure AD. Místo toho se přenáší hodnota hash SHA256 původního algoritmu hash MD4. Výsledkem je, že pokud se získá hodnota hash uložená v Azure AD, nedá se použít v rámci útoku typu Pass-the-hash.
 
-### <a name="security-considerations"></a>Informace o zabezpečení
+### <a name="security-considerations"></a>Aspekty zabezpečení
 
 Při synchronizaci hesel není verze ve formátu prostého textu hesla vystavena funkci synchronizace hodnot hash hesel, službě Azure AD ani žádné z přidružených služeb.
 
@@ -100,7 +100,7 @@ Je-li *EnforceCloudPasswordPolicyForPasswordSyncedUsers* zakázán (což je výc
 
 Pokud chcete povolit funkci EnforceCloudPasswordPolicyForPasswordSyncedUsers, spusťte následující příkaz pomocí modulu MSOnline PowerShellu:
 
-`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers  $true`
+`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers -Enable $true`
 
 Po povolení Azure AD nepřejde ke každému synchronizovanému uživateli, aby z atributu PasswordPolicies odebral hodnotu `DisablePasswordExpiration`. Místo toho je hodnota nastavená na `None` při příští synchronizaci hesla pro každého uživatele při dalším změně hesla v místní službě AD.  
 

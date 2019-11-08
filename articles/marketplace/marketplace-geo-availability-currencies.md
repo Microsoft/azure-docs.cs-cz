@@ -4,21 +4,22 @@ description: Geografická dostupnost v Azure Marketplace a AppSource
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: ellacroi
-ms.openlocfilehash: 344479a270119137a256620304d88f139d0b0322
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 0b12e122cef3a05af7a09918ba434d103e33a1a2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619968"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822941"
 ---
 # <a name="geographic-availability-and-currency-support"></a>Geografická dostupnost a podpora měny
 
 Nabídky Azure Marketplace a AppSource se dají koupit v 141 zeměpisných oblastech, jak jsou definované fakturační adresou zákazníka, a transakce se dají dokončit ve 17 měnách. V následující tabulce jsou uvedeny všechny podporované geografické polohy, jejich [kód ISO 3166 2-číslice alfa](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)a přiřazená měna.
 
-|   Název země nebo oblasti               |   ISO-2   |   Currency   |
+|   Název země nebo oblasti               |   ISO-2   |   Měna   |
 |-------------------------------------|-----------|--------------|
 | Afghánistán                         | AF        | USD          |
 | Albánie                             | AL        | USD          |
@@ -26,11 +27,11 @@ Nabídky Azure Marketplace a AppSource se dají koupit v 141 zeměpisných oblas
 | Andorra                             | AD        | EUR          |
 | Angola                              | AO        | USD          |
 | Argentina                           | AR        | USD          |
-| Arménie                             | dop.        | USD          |
+| Arménie                             | AM        | USD          |
 | Austrálie                           | AU        | AUD          |
 | Rakousko                             | AT        | EUR          |
 | Ázerbájdžán                          | AZ        | USD          |
-| Bahrain                             | BH        | USD          |
+| Bahrajn                             | BH        | USD          |
 | Bangladéš                          | BD        | USD          |
 | Barbados                            | BB        | USD          |
 | Bělorusko                             | BY        | USD          |
@@ -41,7 +42,7 @@ Nabídky Azure Marketplace a AppSource se dají koupit v 141 zeměpisných oblas
 | Bosna a Hercegovina              | BA        | USD          |
 | Botswana                            | BW        | USD          |
 | Brazílie                              | BR        | BRL\*        |
-| Brunej                              | BN        | USD          |
+| Sultanát                              | BN        | USD          |
 | Bulharsko                            | BG        | EUR          |
 | Kamerun                            | CM        | USD          |
 | Kanada                              | CA        | CAD          |
@@ -50,23 +51,23 @@ Nabídky Azure Marketplace a AppSource se dají koupit v 141 zeměpisných oblas
 | Chile                               | CL        | USD          |
 | Kolumbie                            | CO        | USD          |
 | Kostarika                          | CR        | USD          |
-| Côte d'Ivoire (Pobřeží slonoviny)                       | CI        | USD          |
+| Pobřeží slonoviny                       | CI        | USD          |
 | Chorvatsko                             | HR        | EUR          |
-| Curaçao                             | SKUPINA        | USD          |
+| Curaçao                             | Skupina        | USD          |
 | Kypr                              | CY        | EUR          |
 | Česká republika                      | CZ        | EUR          |
 | Dánsko                             | DK        | DKK          |
 | Dominikánská republika                  | DO        | USD          |
 | Ekvádor                             | EC        | USD          |
 | Egypt                               | EG        | USD          |
-| El Salvador                         | SV        | USD          |
+| Salvador                         | SV        | USD          |
 | Estonsko                             | EE        | EUR          |
 | Etiopie                            | ET        | USD          |
 | Faerské ostrovy                       | FO        | DKK          |
 | Fidži                                | FJ        | AUD          |
 | Finsko                             | FI        | EUR          |
 | Francie                              | FR        | EUR          |
-| Georgie                             | GE        | USD          |
+| Gruzie                             | GE        | USD          |
 | Německo                             | DE        | EUR          |
 | Ghana                               | GH        | USD          |
 | Řecko                              | GR        | EUR          |
@@ -76,11 +77,11 @@ Nabídky Azure Marketplace a AppSource se dají koupit v 141 zeměpisných oblas
 | Maďarsko                             | HU        | EUR          |
 | Island                             | IS        | EUR          |
 | Indie                               | IN        | INR          |
-| Indonésie                           | id        | USD          |
+| Indonésie                           | ID        | USD          |
 | Irák                                | IQ        | USD          |
 | Irsko                             | IE        | EUR          |
 | Izrael                              | IL        | USD          |
-| Itálie                               | it        | EUR          |
+| Itálie                               | IT        | EUR          |
 | Jamajka                             | JM        | USD          |
 | Japonsko                               | JP        | JPY          |
 | Jordánsko                              | JO        | USD          |
@@ -95,7 +96,7 @@ Nabídky Azure Marketplace a AppSource se dají koupit v 141 zeměpisných oblas
 | Lichtenštejnsko                       | LI        | EUR          |
 | Litva                           | LT        | EUR          |
 | Lucembursko                          | LU        | EUR          |
-| Macao – zvláštní administrativní oblast                           | MO        | USD          |
+| Macao – zvláštní správní oblast                           | MO        | USD          |
 | Severní Makedonie                     | MK        | USD          |
 | Malajsie                            | MY        | USD          |
 | Malta                               | MT        | EUR          |
@@ -163,4 +164,4 @@ Nabídky Azure Marketplace a AppSource se dají koupit v 141 zeměpisných oblas
 | Zimbabwe                            | ZW        | USD          |
 |   |   |   |
 
-\*Pro zákazníky v Brazílii používá web Marketplace v rámci poskytovatelů cloudových řešení (CSP) USD.
+\* pro zákazníky v Brazílii používá web Marketplace přes poskytovatele Cloud Solution Providers (CSP).

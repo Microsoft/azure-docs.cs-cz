@@ -4,15 +4,16 @@ description: Vysvětluje, jak prostřednictvím kódu programu automatizovat pra
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 50b785ed9456b0b112dea01a219e988b81094571
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 6464c8354c9d56092380e4b76c1ea962f5102c72
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73154652"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824334"
 ---
 <a name="automate-offer-publishing"></a>Automatizace publikování nabídek
 =========================
