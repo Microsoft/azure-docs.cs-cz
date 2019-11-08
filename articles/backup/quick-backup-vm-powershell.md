@@ -1,6 +1,6 @@
 ---
 title: Rychlý start Azure – Zálohování virtuálního počítače pomocí PowerShellu
-description: Zjistěte, jak zálohovat virtuální počítače pomocí Azure PowerShellu.
+description: V tomto rychlém startu se dozvíte, jak zálohovat virtuální počítače Azure pomocí modulu Azure PowerShell.
 author: dcurwin
 manager: carmonm
 ms.service: backup
@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: ea4f982409f339487cd570230ebbb75682f409ec
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 268cac453ed68903c73b597ffeff2569c13e9db7
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874600"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747080"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Zálohování virtuálního počítače v Azure pomocí PowerShellu
 
-[Azure POWERSHELL AZ](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0) Module slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. 
+[Azure POWERSHELL AZ](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0) Module slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech.
 
 [Azure Backup](backup-overview.md) zálohuje místní počítače a aplikace a virtuální počítače Azure. V tomto článku se dozvíte, jak zálohovat virtuální počítač Azure pomocí modulu AZ Module. Případně můžete zálohovat virtuální počítač pomocí rozhraní příkazového [řádku Azure](quick-backup-vm-cli.md)nebo [Azure Portal](quick-backup-vm-portal.md).
 
@@ -30,17 +30,17 @@ Tento rychlý Start vyžaduje Azure PowerShell AZ Module verze 1.0.0 nebo nověj
 
 ## <a name="sign-in-and-register"></a>Přihlášení a registrace
 
-1. Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzAccount` a postupujte podle pokynů na obrazovce.
+1. Přihlaste se ke svému předplatnému Azure pomocí příkazu `Connect-AzAccount` a postupujte podle pokynů na obrazovce.
 
     ```powershell
     Connect-AzAccount
     ```
+
 2. Při prvním použití Azure Backup musíte ve svém předplatném zaregistrovat poskytovatele služby Azure Recovery Services pomocí příkazu [Register-AzResourceProvider](/powershell/module/az.Resources/Register-azResourceProvider), a to takto:
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
-
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
@@ -53,7 +53,6 @@ Při vytváření trezoru postupujte takto:
 - Azure Backup automaticky zpracovává úložiště pro zálohovaná data. Ve výchozím nastavení používá trezor [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy-grs.md). Geografická redundance zajišťuje, že zálohovaná data se replikují do sekundární oblasti Azure a stovky kilometrů od primární oblasti.
 
 Teď vytvořte Trezor:
-
 
 1. K vytvoření trezoru použijte [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) :
 
@@ -72,11 +71,12 @@ Teď vytvořte Trezor:
     ```
 
 3. Změňte konfiguraci redundance úložiště (LRS/GRS) trezoru pomocí [set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperty), a to následujícím způsobem:
-    
+
     ```powershell
     Get-AzRecoveryServicesVault `
         -Name "myRecoveryServicesVault" | Set-AzRecoveryServicesBackupProperty -BackupStorageRedundancy LocallyRedundant/GeoRedundant
     ```
+
     > [!NOTE]
     > Redundanci úložiště lze upravit pouze v případě, že nejsou k tomuto trezoru chráněny žádné zálohované položky.
 
@@ -85,7 +85,7 @@ Teď vytvořte Trezor:
 Povolíte zálohování pro virtuální počítač Azure a zadáte zásady zálohování.
 
 - Zásady definují, kdy se zálohování spustí, a jak dlouho se mají zachovat body obnovení vytvořené zálohami.
-- Výchozí zásada ochrany spouští zálohování jednou denně pro virtuální počítač a zachovává vytvořené body obnovení po dobu 30 dnů. Pomocí této výchozí zásady můžete rychle chránit svůj virtuální počítač. 
+- Výchozí zásada ochrany spouští zálohování jednou denně pro virtuální počítač a zachovává vytvořené body obnovení po dobu 30 dnů. Pomocí této výchozí zásady můžete rychle chránit svůj virtuální počítač.
 
 Zapněte zálohování následujícím způsobem:
 
@@ -112,7 +112,8 @@ Zálohy běží v souladu s plánem zadaným v zásadách zálohování. Můžet
 - Po počátečním zálohování Každá úloha zálohování vytvoří přírůstkové body obnovení.
 - Přírůstkové body obnovení jsou efektivní z hlediska úložiště a času, protože přenášejí pouze změny provedené od posledního zálohování.
 
-Pokud chcete spustit zálohování ad hoc, použijte [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem). 
+Pokud chcete spustit zálohování ad hoc, použijte [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem).
+
 - V trezoru zadáte kontejner, který uchovává data záloh pomocí [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer).
 - Každý virtuální počítač určený k zálohování se považuje za položku. Pokud chcete spustit úlohu zálohování, získáte informace o virtuálním počítači pomocí [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem).
 
@@ -134,7 +135,6 @@ Spusťte úlohu zálohování ad hoc následujícím způsobem:
 
 2. Možná budete muset počkat až 20 minut, protože první úloha zálohování vytvoří úplný bod obnovení. Sledujte úlohu, jak je popsáno v následujícím postupu.
 
-
 ## <a name="monitor-the-backup-job"></a>Monitorování úlohy zálohování
 
 1. Spuštěním rutiny [Get-AzRecoveryservicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) můžete monitorovat stav úlohy.
@@ -142,7 +142,8 @@ Spusťte úlohu zálohování ad hoc následujícím způsobem:
     ```powershell
     Get-AzRecoveryservicesBackupJob
     ```
-    Výstup je podobný následujícímu příkladu, který ukazuje úlohu jako neprůběh:
+
+    Výstup je podobný následujícímu příkladu, který ukazuje úlohu jako **neprůběh**:
 
     ```output
     WorkloadName   Operation         Status       StartTime              EndTime                JobID
@@ -153,10 +154,10 @@ Spusťte úlohu zálohování ad hoc následujícím způsobem:
 
 2. Po **dokončení**stavu úlohy je virtuální počítač chráněný a je uložený úplný bod obnovení.
 
-
 ## <a name="clean-up-the-deployment"></a>Vyčištění nasazení
 
 Pokud už nepotřebujete zálohovat virtuální počítač, můžete ho vyčistit.
+
 - Pokud chcete vyzkoušet obnovení virtuálního počítače, přeskočte vyčištění.
 - Pokud jste použili existující virtuální počítač, můžete přeskočit poslední rutinu [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) a ponechat skupinu prostředků a virtuální počítač na místě.
 
@@ -169,10 +170,9 @@ Remove-AzRecoveryServicesVault -Vault $vault
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
+## <a name="next-steps"></a>Další kroky
 
-## <a name="next-steps"></a>Další postup
+V tomto rychlém startu jste vytvořili trezor služby Recovery Services, povolili ochranu virtuálního počítače a vytvořili prvotní bod obnovení.
 
-V tomto rychlém startu jste vytvořili trezor služby Recovery Services, povolili ochranu virtuálního počítače a vytvořili prvotní bod obnovení. 
-
-- Naučte se, [jak](tutorial-backup-vm-at-scale.md) zálohovat virtuální počítače v Azure Portal.
+- [Naučte](tutorial-backup-vm-at-scale.md) se, jak zálohovat virtuální počítače v Azure Portal.
 - [Zjistěte, jak](tutorial-restore-disk.md) rychle obnovit virtuální počítač.
