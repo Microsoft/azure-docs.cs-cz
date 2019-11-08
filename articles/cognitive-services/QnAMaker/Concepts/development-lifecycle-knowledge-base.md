@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 52d4efaba25dcede3322586d05fceb4d166f51e3
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 1cb5af13bdd309c762337e64ecde8538afc756b0
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973808"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794846"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>Životní cyklus znalostní báze v QnA Maker
 QnA Maker se nejlépe učí v iterativním koloběhu změn modelu, příkladů utterance, publikování a shromažďování dat z dotazů na koncové body. 
@@ -35,7 +35,7 @@ Znalostní báze je připravená na testování, jakmile se naplní obsahem, a t
 
 Tato těsná smyčka test-Update pokračuje, dokud nebudete spokojeni s výsledky. Naučte se [testovat znalostní bázi](../How-To/test-knowledge-base.md).
 
-Pro velké aktualizací KB použijte automatizované testování pomocí [rozhraní generateAnswer API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) a vlastnost těla `isTest`, která se dotazuje znalostní báze `test` místo publikované znalostní báze. 
+Pro velké aktualizací KB použijte automatizované testování pomocí [rozhraní generateAnswer API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) a vlastnost těla `isTest`, která se dotazuje `test` znalostní báze místo publikované znalostní báze. 
 
 ```json
 {
@@ -47,11 +47,11 @@ Pro velké aktualizací KB použijte automatizované testování pomocí [rozhra
 ```
 
 ## <a name="publish-the-knowledge-base"></a>Publikování znalostní báze
-Po dokončení testování znalostní báze ho můžete publikovat. Publikování nabídne nejnovější verzi testované znalostní báze do vyhrazeného Azure Search indexu představujícího **publikovanou** znalostní bázi. Vytvoří také koncový bod, který lze volat ve vaší aplikaci nebo robotovi chatu.
+Po dokončení testování znalostní báze ho můžete publikovat. Publikování nabídne nejnovější verzi testované znalostní báze do vyhrazeného indexu služby Azure Kognitivní hledání reprezentujícího **publikovanou** znalostní bázi. Také se přitom vytvoří koncový bod, který je možné volat v aplikaci nebo chatovacím robotu.
 
 Všechny změny v testovací verzi znalostní báze tak nebudou mít vliv na publikovanou verzi, která může být v produkční aplikaci živá.
 
-Každý z těchto znalostní báze se dá cílit na samostatné testování. Pomocí rozhraní API můžete cílit na testovací verzi znalostní báze s vlastností těla `isTest` ve volání generateAnswer.
+Každý z těchto znalostní báze se dá cílit na samostatné testování. Pomocí rozhraní API můžete v volání generateAnswer cílit na testovací verzi znalostní báze s vlastností těla `isTest`.
 
 Naučte se [publikovat znalostní bázi](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
 

@@ -1,6 +1,6 @@
 ---
 title: Nainstalovat Azure Backup Server v Azure Stack | Microsoft Docs
-description: Pomocí Azure Backup Server můžete chránit nebo zálohovat zatížení v Azure Stack.
+description: V tomto článku se dozvíte, jak pomocí Azure Backup Server chránit nebo zálohovat úlohy v Azure Stack.
 author: dcurwin
 manager: carmonm
 ms.service: backup
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: da941d0234fe78791f9a1c2f2a7d01122247534c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: bdcd7cbd24ca7023070585df46aa8cea7bdc70eb
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639854"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747288"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalace Azure Backup Serveru v Azure Stacku
 
@@ -25,6 +25,7 @@ Tento článek vysvětluje, jak nainstalovat Azure Backup Server v Azure Stack. 
 >
 
 ## <a name="azure-backup-server-protection-matrix"></a>Systém ochrany Azure Backup Serveru
+
 Azure Backup Server chrání následující Azure Stack úlohy virtuálních počítačů.
 
 | Chráněný zdroj dat | Ochrana a obnovení |
@@ -46,35 +47,43 @@ Azure Backup Server chrání následující Azure Stack úlohy virtuálních po�
 Při instalaci Azure Backup Server ve vašem prostředí Azure Stack zvažte doporučení v této části. Instalační služba Azure Backup Server kontroluje, jestli vaše prostředí splňuje nezbytné požadavky, ale ušetříte čas tím, že se připraví před instalací.
 
 ### <a name="determining-size-of-virtual-machine"></a>Určení velikosti virtuálního počítače
+
 Pokud chcete spustit Azure Backup Server na virtuálním počítači s Azure Stack, použijte velikost a2 nebo větší. Pokud potřebujete pomoc při výběru velikosti virtuálního počítače, Stáhněte si [Azure Stack kalkulačku velikosti virtuálního](https://www.microsoft.com/download/details.aspx?id=56832)počítače.
 
 ### <a name="virtual-networks-on-azure-stack-virtual-machines"></a>Virtuální sítě na virtuálních počítačích s Azure Stack
+
 Všechny virtuální počítače, které se používají v úlohách Azure Stack, musí patřit do stejné služby Azure Virtual Network a předplatného Azure.
 
 ### <a name="azure-backup-server-vm-performance"></a>Výkon virtuálního počítače s Azure Backup Server
+
 Pokud sdílíte s jinými virtuálními počítači, omezení velikosti a IOPS účtu úložiště ovlivní Azure Backup Server výkon virtuálního počítače. Z tohoto důvodu byste měli pro Azure Backup Server virtuální počítač použít samostatný účet úložiště. Agent Azure Backup spuštěný v Azure Backup Server potřebuje dočasné úložiště pro:
+
 - vlastní použití (umístění mezipaměti),
 - data obnovená z cloudu (místní pracovní oblast)
 
 ### <a name="configuring-azure-backup-temporary-disk-storage"></a>Konfigurace Azure Backup dočasného diskového úložiště
-Každý Azure Stack virtuální počítač obsahuje dočasné diskové úložiště, které je k dispozici uživateli jako svazek `D:\`. Místní pracovní oblast, kterou vyžaduje Azure Backup, se dá nakonfigurovat tak, aby `D:\`se nacházela v a umístění mezipaměti se `C:\`dá umístit na. Tímto způsobem není potřeba žádné úložiště Carved z datových disků připojených k Azure Backup Servermu virtuálnímu počítači.
+
+Každý Azure Stack virtuální počítač obsahuje dočasné diskové úložiště, které je k dispozici pro uživatele jako `D:\`svazku. Místní pracovní oblast, kterou vyžaduje Azure Backup, lze nakonfigurovat tak, aby se nacházela v `D:\`a umístění mezipaměti lze umístit na `C:\`. Tímto způsobem není potřeba žádné úložiště Carved z datových disků připojených k Azure Backup Servermu virtuálnímu počítači.
 
 ### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>Ukládání zálohovaných dat na místní disk a v Azure
-Azure Backup Server ukládá data záloh na discích Azure připojených k virtuálnímu počítači pro provozní obnovení. Jakmile jsou disky a prostory úložiště připojené k virtuálnímu počítači, Azure Backup Server pro vás spravuje úložiště. Velikost úložiště záloh dat závisí na počtu a velikosti disků připojených ke každému Azure Stackmu virtuálnímu [počítači](/azure-stack/user/azure-stack-storage-overview). Každá velikost Azure Stack virtuálního počítače má maximální počet disků, které lze připojit k virtuálnímu počítači. Například a2 je čtyři disky. A3 je osm disků. A4 je 16 disků. Opět velikost a počet disků určuje celkový fond úložiště záloh.
+
+Azure Backup Server ukládá data záloh na discích Azure připojených k virtuálnímu počítači pro provozní obnovení. Jakmile jsou disky a prostory úložiště připojené k virtuálnímu počítači, Azure Backup Server pro vás spravuje úložiště. Velikost úložiště záloh dat závisí na počtu a velikosti disků připojených ke každému [Azure Stackmu virtuálnímu počítači](/azure-stack/user/azure-stack-storage-overview). Každá velikost Azure Stack virtuálního počítače má maximální počet disků, které lze připojit k virtuálnímu počítači. Například a2 je čtyři disky. A3 je osm disků. A4 je 16 disků. Opět velikost a počet disků určuje celkový fond úložiště záloh.
 
 > [!IMPORTANT]
-> Neměli byste **uchovávat data** obnovení (zálohování) na discích s Azure Backup Server po dobu delší než pět dní.
+> **Neměli byste uchovávat data** obnovení (zálohování) na discích s Azure Backup Server po dobu delší než pět dní.
 >
 
 Ukládání zálohovaných dat v Azure omezuje infrastrukturu zálohování na Azure Stack. Pokud jsou data starší než pět dnů, měla by být uložena v Azure.
 
-Pokud chcete ukládat zálohovaná data v Azure, vytvořte nebo použijte Recovery Services trezor. Při přípravě zálohování Azure Backup Server úlohy nakonfigurujete [trezor Recovery Services](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault). Po nakonfigurování pokaždé, když se úloha zálohování spustí, se v trezoru vytvoří bod obnovení. Každý trezor Recovery Services uchovává až 9999 bodů obnovení. V závislosti na počtu vytvořených bodů obnovení a dobu, po kterou jsou zachována, můžete data zálohy uchovávat mnoho let. Můžete například vytvořit měsíční body obnovení a uchovávat je po dobu pěti let.
- 
+Pokud chcete ukládat zálohovaná data v Azure, vytvořte nebo použijte Recovery Services trezor. Při přípravě zálohování Azure Backup Server úlohy [nakonfigurujete trezor Recovery Services](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault). Po nakonfigurování pokaždé, když se úloha zálohování spustí, se v trezoru vytvoří bod obnovení. Každý trezor Recovery Services uchovává až 9999 bodů obnovení. V závislosti na počtu vytvořených bodů obnovení a dobu, po kterou jsou zachována, můžete data zálohy uchovávat mnoho let. Můžete například vytvořit měsíční body obnovení a uchovávat je po dobu pěti let.
+
 ### <a name="scaling-deployment"></a>Škálování nasazení
+
 Pokud chcete škálovat nasazení, máte následující možnosti:
-  - Horizontální navýšení kapacity – zvětšete velikost Azure Backup Server virtuálního počítače z řady na řady D a zvyšte místní úložiště [podle pokynů pro virtuální počítače Azure Stack](/azure-stack/user/azure-stack-manage-vm-disks).
-  - Přesměrování dat – odešlete starší data do Azure a zachovejte jenom nejnovější data v úložišti připojeném k Azure Backup Server.
-  - Horizontální navýšení kapacity – přidejte další Azure Backup servery, abyste chránili úlohy.
+
+- Horizontální navýšení kapacity – zvětšete velikost Azure Backup Server virtuálního počítače z řady na řady D a zvyšte místní úložiště [podle pokynů pro virtuální počítače Azure Stack](/azure-stack/user/azure-stack-manage-vm-disks).
+- Přesměrování dat – odešlete starší data do Azure a zachovejte jenom nejnovější data v úložišti připojeném k Azure Backup Server.
+- Horizontální navýšení kapacity – přidejte další Azure Backup servery, abyste chránili úlohy.
 
 ### <a name="net-framework"></a>.NET Framework
 
@@ -86,12 +95,13 @@ Azure Backup Server virtuální počítač musí být připojený k doméně. Na
 
 ## <a name="using-an-iaas-vm-in-azure-stack"></a>Použití virtuálního počítače s IaaS v Azure Stack
 
-Při volbě serveru pro Azure Backup Server začněte s imagí Windows Server 2012 R2 Datacenter nebo Windows Server 2016 Datacenter. [V tomto článku vytvořte svůj první virtuální počítač s Windows ve službě Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), který poskytuje kurz, jak začít s doporučeným virtuálním počítačem. Doporučené minimální požadavky pro virtuální počítač serveru (VM) by měly být: A2 Standard se dvěma jádry a 3,5-GB RAM.
+Při volbě serveru pro Azure Backup Server začněte s imagí Windows Server 2012 R2 Datacenter nebo Windows Server 2016 Datacenter. [V tomto článku vytvořte svůj první virtuální počítač s Windows ve službě Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), který poskytuje kurz, jak začít s doporučeným virtuálním počítačem. Doporučené minimální požadavky pro virtuální počítač serveru (VM) by měly být: a2 Standard se dvěma jádry a 3,5-GB RAM.
 
 Ochrana úloh pomocí Azure Backup Server má spoustu drobné odlišnosti. Tento článek vám pomůže vysvětlit tyto drobné odlišnostiy, [nainstalovat DPM jako virtuální počítač Azure](https://technet.microsoft.com/library/jj852163.aspx). Než počítač nasadíte, přečtěte si tento článek kompletně.
 
 > [!NOTE]
 > Azure Backup Server je navržená tak, aby běžela na vyhrazeném virtuálním počítači s jedním účelem. Nemůžete nainstalovat Azure Backup Server na:
+>
 > - Počítač spuštěný jako řadič domény
 > - Počítač, na kterém je nainstalovaná role aplikačního serveru
 > - Počítač, na kterém je spuštěný server Exchange
@@ -108,7 +118,7 @@ Možnost replikace úložiště Recovery Services trezoru umožňuje výběr mez
 Chcete-li upravit nastavení replikace úložiště:
 
 1. Vyberte svůj trezor a otevřete tak řídicí panel trezoru a nabídku nastavení. Pokud se nabídka **Nastavení** neotevře, klikněte na **všechna nastavení** na řídicím panelu trezoru.
-2. V nabídce **Nastavení** klikněte na **zálohovat** > **Konfigurace zálohování** infrastruktury a otevřete nabídku **Konfigurace zálohování** . V nabídce **Konfigurace zálohování** vyberte pro svůj trezor možnost replikace úložiště.
+2. V nabídce **Nastavení** klikněte na **infrastruktura zálohování** > **Konfigurace zálohování** . otevře se nabídka **Konfigurace zálohování** . V nabídce **Konfigurace zálohování** vyberte pro svůj trezor možnost replikace úložiště.
 
     ![Seznam trezorů záloh](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -116,7 +126,7 @@ Chcete-li upravit nastavení replikace úložiště:
 
 Existují dva způsoby, jak stáhnout instalační službu Azure Backup Server. Instalační program Azure Backup Server můžete stáhnout z webu [služby Stažení softwaru](https://www.microsoft.com/en-us/download/details.aspx?id=55269). Můžete si také stáhnout instalační program Azure Backup Server, když konfigurujete Recovery Services trezor. Následující kroky vás provedou stažením instalačního programu z Azure Portal při konfiguraci trezoru Recovery Services.
 
-1. Z Azure Stack virtuálního počítače se přihlaste [ke svému předplatnému Azure v Azure Portal](https://portal.azure.com/).
+1. Z Azure Stack virtuálního počítače se [přihlaste ke svému předplatnému Azure v Azure Portal](https://portal.azure.com/).
 2. V nabídce na levé straně vyberte **všechny služby**.
 
     ![Výběr možnosti všechny služby v hlavní nabídce](./media/backup-mabs-install-azure-stack/click-all-services.png)
@@ -314,30 +324,30 @@ První záložní kopie je udržována v úložišti připojeném k Azure Backup
 
 ## <a name="network-connectivity"></a>Připojení k síti
 
-Aby produkt mohl úspěšně fungovat, Azure Backup Server vyžaduje připojení ke službě Azure Backup. Pokud chcete ověřit, jestli má počítač připojení k Azure, použijte ```Get-DPMCloudConnection``` rutinu v konzole Azure Backup Server PowerShellu. Pokud má výstup rutiny hodnotu TRUE, pak připojení existuje, jinak není dostupné žádné připojení.
+Aby produkt mohl úspěšně fungovat, Azure Backup Server vyžaduje připojení ke službě Azure Backup. Pokud chcete ověřit, jestli má počítač připojení k Azure, použijte rutinu ```Get-DPMCloudConnection``` v konzole PowerShellu Azure Backup Server. Pokud má výstup rutiny hodnotu TRUE, pak připojení existuje, jinak není dostupné žádné připojení.
 
-Kromě toho musí být předplatné Azure v dobrém stavu. Pokud chcete zjistit stav předplatného a spravovat ho, přihlaste se na [portál](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)předplatného.
+Kromě toho musí být předplatné Azure v dobrém stavu. Pokud chcete zjistit stav předplatného a spravovat ho, přihlaste se na [portál předplatného](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 
 Jakmile budete znát stav připojení Azure a předplatného Azure, můžete pomocí následující tabulky zjistit dopad na nabízené funkce zálohování a obnovení.
 
-| Stav připojení | Předplatné Azure | Zálohování do Azure | Zálohovat na disk | Obnovení z Azure | Obnovení z disku |
+| Stav připojení | předplatné Azure | Zálohování do Azure | Zálohovat na disk | Obnovení z Azure | Obnovení z disku |
 | --- | --- | --- | --- | --- | --- |
-| Připojeno |Aktivní |Povoleno |Povoleno |Povoleno |Povoleno |
-| Připojeno |Vypršela platnost |Zastaveno |Zastaveno |Povoleno |Povoleno |
+| Připojeno |Aktivní |Povolené |Povolené |Povolené |Povolené |
+| Připojeno |Platnost vypršela |Zastaveno |Zastaveno |Povolené |Povolené |
 | Připojeno |Zajištění zrušeno |Zastaveno |Zastaveno |Zastaveno a body obnovení Azure byly odstraněny |Zastaveno |
-| Ztracené připojení > 15 dní |Aktivní |Zastaveno |Zastaveno |Povoleno |Povoleno |
-| Ztracené připojení > 15 dní |Vypršela platnost |Zastaveno |Zastaveno |Povoleno |Povoleno |
+| Ztracené připojení > 15 dní |Aktivní |Zastaveno |Zastaveno |Povolené |Povolené |
+| Ztracené připojení > 15 dní |Platnost vypršela |Zastaveno |Zastaveno |Povolené |Povolené |
 | Ztracené připojení > 15 dní |Zajištění zrušeno |Zastaveno |Zastaveno |Zastaveno a body obnovení Azure byly odstraněny |Zastaveno |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Obnovování ze ztráty připojení
 
-Pokud brána firewall nebo proxy brání v přístupu k Azure, seznam povolených následujících adres domény v profilu brány firewall nebo proxy serveru:
+Pokud brána firewall nebo proxy server brání v přístupu k Azure, přidejte následující adresy domény do seznamu povolených profilů brány firewall nebo proxy serveru:
 
 - `http://www.msftncsi.com/ncsi.txt`
 - \*.Microsoft.com
 - \*.WindowsAzure.com
-- \*. microsoftonline.com
-- \*. windows.net
+- \*.microsoftonline.com
+- \*.windows.net
 
 Po obnovení připojení k Azure do Azure Backup Server stav předplatného Azure určí operace, které je možné provést. Po **připojení**serveru použijte tabulku v [Možnosti připojení k síti](backup-mabs-install-azure-stack.md#network-connectivity) , abyste viděli dostupné operace.
 
@@ -346,7 +356,7 @@ Po obnovení připojení k Azure do Azure Backup Server stav předplatného Azur
 Je možné změnit předplatné Azure ze stavu, ve kterém *vypršela platnost* , nebo *Zrušit* stav na *aktivní* . I když stav předplatného není *aktivní*:
 
 - Při *zrušení zřízení*předplatného ztratí funkčnost. Obnovení předplatného na *aktivní*revives funkce zálohování a obnovení. Pokud se zálohovaná data na místním disku uchovávají s dostatečně velkým obdobím uchovávání, můžou se data ze zálohy načíst. Data záloh v Azure se ale irretrievably ztratí, jakmile předplatné vstoupí do stavu *zrušení zřízení* .
-- I když *platnost*předplatného vypršela, ztratí funkčnost. Po *vypršení platnosti*předplatného se naplánované zálohy nespustí.
+- I když platnost předplatného *vypršela*, ztratí funkčnost. Po *vypršení platnosti*předplatného se naplánované zálohy nespustí.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

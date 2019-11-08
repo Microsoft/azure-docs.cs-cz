@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: akjosh
-ms.openlocfilehash: 0a88c1e4d357f2919635e36a223e79b0407c0b8b
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: d3ad0e6d88ed849074989dc36698c01209921449
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168750"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749692"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Řešení potíží s připojením ke vzdálené ploše virtuálního počítače Azure
 Připojení RDP (Remote Desktop Protocol) k vašemu virtuálnímu počítači Azure s Windows může z různých důvodů selhat a vy tak k němu můžete ztratit přístup. Problém může být ve službě Vzdálená plocha na virtuálním počítači, v síťovém připojením nebo v klientovi vzdálené plochy na hostitelském počítači. Tento článek vás provede některými nejběžnějšími metodami řešení potíží s připojením RDP. 
 
-Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete kontaktovat odborníky na Azure na [webu MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete kontaktovat odborníky na Azure na [webu MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/). Případně můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 <a id="quickfixrdp"></a>
 
@@ -86,7 +86,7 @@ Po každém kroku řešení potíží zkuste znovu připojit k vašemu VIRTUÁLN
     ![Resetovat přihlašovací údaje uživatele v Azure Portal](./media/troubleshoot-rdp-connection/reset-password.png)
 7. **Restartujte virtuální počítač**. Tento krok řešení potíží může opravit všechny základní problémy, které vlastní virtuální počítač.
    
-    Vyberte svůj virtuální počítač v Azure Portal a klikněte na kartu **Přehled** . Klikněte na tlačítko **restartovat** :
+    Vyberte virtuální počítač v Azure Portal a klikněte na kartu **Přehled** . klikněte na tlačítko **restartovat** :
    
     ![Restartujte virtuální počítač v Azure Portal](./media/troubleshoot-rdp-connection/restart-vm.png)
 8. **Znovu nasaďte virtuální**počítač. Tento krok řešení potíží znovu nasadí váš virtuální počítač na jiného hostitele v rámci Azure, aby se opravily jakékoli základní platformy nebo problémy se sítí.
@@ -106,16 +106,16 @@ Pokud stále dochází k problémům s protokolem RDP, můžete [otevřít žád
 ## <a name="troubleshoot-using-azure-powershell"></a>Řešení potíží pomocí Azure PowerShell
 Pokud jste to ještě neudělali, [nainstalujte a nakonfigurujte nejnovější Azure PowerShell](/powershell/azure/overview).
 
-Následující příklady používají proměnné `myResourceGroup`, jako například, `myVM`a. `myVMAccessExtension` Nahraďte názvy a umístění těchto proměnných vlastními hodnotami.
+Následující příklady používají proměnné jako `myResourceGroup`, `myVM`a `myVMAccessExtension`. Nahraďte názvy a umístění těchto proměnných vlastními hodnotami.
 
 > [!NOTE]
-> Pomocí rutiny [set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) prostředí PowerShell resetujete přihlašovací údaje uživatele a konfiguraci RDP. V následujících příkladech `myVMAccessExtension` je název, který zadáte jako součást procesu. Pokud jste již dříve pracovali s VMAccessAgent, můžete získat název existujícího rozšíření pomocí nástroje `Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"` a ověřit vlastnosti virtuálního počítače. Chcete-li zobrazit název, podívejte se do části "přípony" ve výstupu.
+> Pomocí rutiny [set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) prostředí PowerShell resetujete přihlašovací údaje uživatele a konfiguraci RDP. V následujících příkladech je `myVMAccessExtension` název, který zadáte jako součást procesu. Pokud jste již dříve pracovali s VMAccessAgent, můžete získat název existujícího rozšíření pomocí `Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"` a ověřit vlastnosti virtuálního počítače. Chcete-li zobrazit název, podívejte se do části "přípony" ve výstupu.
 
 Po každém kroku řešení potíží zkuste znovu připojit k vašemu VIRTUÁLNÍmu počítači. Pokud se stále nemůžete připojit, zkuste další krok.
 
 1. **Resetujte připojení RDP**. Tento krok řešení potíží resetuje konfiguraci RDP, když jsou zakázaná vzdálená připojení nebo blokuje protokol RDP, například pravidla brány Windows Firewall.
    
-    Následující příklad obnoví připojení RDP na virtuálním počítači s názvem `myVM` `WestUS` v umístění a ve skupině prostředků s názvem `myResourceGroup`:
+    Následující příklad obnoví připojení RDP na virtuálním počítači s názvem `myVM` v umístění `WestUS` a ve skupině prostředků s názvem `myResourceGroup`:
    
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" `
@@ -123,7 +123,7 @@ Po každém kroku řešení potíží zkuste znovu připojit k vašemu VIRTUÁLN
     ```
 2. **Ověřte pravidla skupiny zabezpečení sítě**. Tento krok řešení potíží ověří, že máte ve skupině zabezpečení sítě pravidlo, které povoluje provoz protokolu RDP. Výchozím portem pro protokol RDP je port TCP 3389. Při vytváření virtuálního počítače se nemusí automaticky vytvořit pravidlo pro povolení provozu RDP.
    
-    Nejprve přiřaďte k `$rules` proměnné všechna konfigurační data pro skupinu zabezpečení sítě. Následující příklad získá informace o skupině zabezpečení sítě s názvem `myNetworkSecurityGroup` ve skupině prostředků s názvem: `myResourceGroup`
+    Nejdřív přiřaďte všechna konfigurační data pro skupinu zabezpečení sítě k proměnné `$rules`. Následující příklad získá informace o skupině zabezpečení sítě s názvem `myNetworkSecurityGroup` ve skupině prostředků s názvem `myResourceGroup`:
    
     ```powershell
     $rules = Get-AzNetworkSecurityGroup -ResourceGroupName "myResourceGroup" `
@@ -136,7 +136,7 @@ Po každém kroku řešení potíží zkuste znovu připojit k vašemu VIRTUÁLN
     $rules.SecurityRules
     ```
    
-    Následující příklad ukazuje platné pravidlo zabezpečení, které povoluje provoz protokolu RDP. `Protocol`Můžete zobrazit `DestinationPortRange` ,,a`Direction`správněnakonfigurovat: `Access`
+    Následující příklad ukazuje platné pravidlo zabezpečení, které povoluje provoz protokolu RDP. Můžete zobrazit `Protocol`, `DestinationPortRange`, `Access`a `Direction` jsou správně nakonfigurovány:
    
     ```powershell
     Name                     : default-allow-rdp
@@ -157,13 +157,13 @@ Po každém kroku řešení potíží zkuste znovu připojit k vašemu VIRTUÁLN
     Pokud nemáte pravidlo, které povoluje provoz protokolu RDP, [Vytvořte pravidlo skupiny zabezpečení sítě](../windows/nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Povolte port TCP 3389.
 3. **Resetovat přihlašovací údaje uživatele** Tento krok řešení potíží resetuje heslo na účtu místního správce, který zadáte, pokud si nejste jistí nebo jste zapomněli přihlašovací údaje.
    
-    Nejdřív zadejte uživatelské jméno a nové heslo přiřazením přihlašovacích údajů k `$cred` proměnné následujícím způsobem:
+    Nejdřív zadejte uživatelské jméno a nové heslo, a to tak, že do proměnné `$cred` přiřadíte přihlašovací údaje následujícím způsobem:
    
     ```powershell
     $cred=Get-Credential
     ```
    
-    Teď aktualizujte přihlašovací údaje na svém VIRTUÁLNÍm počítači. V následujícím příkladu se aktualizují přihlašovací údaje na virtuálním počítači `WestUS` s názvem `myVM` v umístění a ve skupině `myResourceGroup`prostředků s názvem:
+    Teď aktualizujte přihlašovací údaje na svém VIRTUÁLNÍm počítači. V následujícím příkladu se aktualizují přihlašovací údaje na virtuálním počítači s názvem `myVM` v umístění `WestUS` a ve skupině prostředků s názvem `myResourceGroup`:
    
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" `
@@ -173,14 +173,14 @@ Po každém kroku řešení potíží zkuste znovu připojit k vašemu VIRTUÁLN
     ```
 4. **Restartujte virtuální počítač**. Tento krok řešení potíží může opravit všechny základní problémy, které vlastní virtuální počítač.
    
-    Následující příklad restartuje virtuální počítač `myVM` s názvem ve skupině prostředků `myResourceGroup`s názvem:
+    Následující příklad restartuje virtuální počítač s názvem `myVM` ve skupině prostředků s názvem `myResourceGroup`:
    
     ```powershell
     Restart-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
     ```
 5. **Znovu nasaďte virtuální**počítač. Tento krok řešení potíží znovu nasadí váš virtuální počítač na jiného hostitele v rámci Azure, aby se opravily jakékoli základní platformy nebo problémy se sítí.
    
-    V následujícím příkladu se znovu nasadí virtuální počítač `myVM` s názvem `WestUS` v umístění a ve skupině prostředků s `myResourceGroup`názvem:
+    V následujícím příkladu se znovu nasadí virtuální počítač s názvem `myVM` v umístění `WestUS` a ve skupině prostředků s názvem `myResourceGroup`:
    
     ```powershell
     Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -224,7 +224,7 @@ Po každém kroku řešení potíží se pokuste znovu připojit k virtuálnímu
     ![Resetovat přihlašovací údaje uživatele v Azure Portal](./media/troubleshoot-rdp-connection/classic-reset-password.png)
 6. **Restartujte virtuální počítač**. Tento krok řešení potíží může opravit všechny základní problémy, které vlastní virtuální počítač.
    
-    Vyberte svůj virtuální počítač v Azure Portal a klikněte na kartu **Přehled** . Klikněte na tlačítko **restartovat** :
+    Vyberte virtuální počítač v Azure Portal a klikněte na kartu **Přehled** . klikněte na tlačítko **restartovat** :
    
     ![Restartujte virtuální počítač v Azure Portal](./media/troubleshoot-rdp-connection/classic-restart-vm.png)
 
@@ -238,7 +238,7 @@ Při pokusu o připojení k VIRTUÁLNÍmu počítači přes RDP se může objevi
 * [Vzdálená relace byla odpojena, protože nejsou k dispozici žádné licenční servery vzdálené plochy pro poskytnutí licence](troubleshoot-specific-rdp-errors.md#rdplicense).
 * [Vzdálená plocha nemůže najít počítač "název"](troubleshoot-specific-rdp-errors.md#rdpname).
 * [Došlo k chybě ověřování. Místní autoritu zabezpečení nelze kontaktovat](troubleshoot-specific-rdp-errors.md#rdpauth).
-* [Chyba zabezpečení systému Windows: Vaše přihlašovací údaje nefungovaly](troubleshoot-specific-rdp-errors.md#wincred).
+* [Chyba zabezpečení systému Windows: vaše přihlašovací údaje nefungovaly](troubleshoot-specific-rdp-errors.md#wincred).
 * [Tento počítač se nemůže připojit ke vzdálenému počítači](troubleshoot-specific-rdp-errors.md#rdpconnect).
 
 ## <a name="additional-resources"></a>Další zdroje

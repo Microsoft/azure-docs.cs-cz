@@ -8,33 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/21/2019
 ms.author: aahi
-ms.openlocfilehash: 6e46d58b3f1ef33902ab44043e954d9718d865af
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3aa4da9a9cf3d1d4b664e81f1fd18f2b225d731d
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73508042"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799764"
 ---
 ## <a name="personal-information-entity-types"></a>Typy entit osobních informací:
-
-### <a name="person"></a>Person (Osoba)
-Rozpoznané názvy a jiné osoby v textu.
-Jazyky
-* Verze Public Preview: `English`
-
-| Název podtypu | Popis             |
-|--------------|-------------------------|
-| Není dostupné.          | Rozpoznané názvy, například `Bill Gates`, `Marie Curie` |
-
-### <a name="organization"></a>Organizace  
-
-Uznávané organizace, společnosti, organizace a další skupiny lidí. Například: společnosti, politické skupiny, hudební pásma, sportovní klub, státní orgány a veřejné organizace. Státní příslušníky a náboženství nejsou zahrnuté do tohoto typu entity. Jazyky 
-
-* Verze Public Preview: `English`
-
-| Název podtypu | Popis                                                                                      |
-|--------------|--------------------------------------------------------------------------------------------------|
-| Není dostupné.          | organizace, například `Microsoft``NASA` `National Oceanic and Atmospheric Administration` |
 
 ### <a name="phone-number"></a>Telefonní číslo
 

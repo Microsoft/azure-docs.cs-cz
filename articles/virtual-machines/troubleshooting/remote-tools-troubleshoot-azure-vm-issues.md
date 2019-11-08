@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: 70d777fe2e939c1871bc318eed439214fd3e3f60
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: fab1e0b6f3b01446baed974b4be9b7295af4f837
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155732"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749718"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Řešení potíží s virtuálními počítači Azure pomocí nástrojů Remote Tools
 
@@ -39,7 +39,7 @@ psexec \\<computer>-u user -s cmd
 
 >[!Note]
 >* Příkaz musí být spuštěný na počítači, který je ve stejné virtuální síti.
->* K nahrazení \<> počítače se dá použít DIP nebo název hostitele.
+>* K nahrazení \<počítačovým > lze použít DIP nebo název hostitele.
 >* Parametr-s zajistí, že se příkaz vyvolá pomocí systémového účtu (oprávnění správce).
 >* PsExec používá porty TCP 135 a 445. Proto musí být oba porty otevřeny v bráně firewall.
 
@@ -91,7 +91,7 @@ Set-AzureVMCustomScriptExtension "CustomScriptExtension" -VM $vm -StorageAccount
 
 ### <a name="for-v2-vms"></a>Pro virtuální počítače v2
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ```powershell
 #Setup the basic variables
@@ -250,7 +250,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 ## <a name="next-steps"></a>Další kroky
 
-[Enter-PSSession](https://technet.microsoft.com/library/hh849707.aspx)
+[Zadejte-PSSession](https://technet.microsoft.com/library/hh849707.aspx)
 
 [Rozšíření vlastních skriptů pro Windows s použitím modelu nasazení Classic](../extensions/custom-script-classic.md)
 

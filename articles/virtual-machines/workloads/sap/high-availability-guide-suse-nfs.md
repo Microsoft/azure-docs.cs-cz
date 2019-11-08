@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 0e4daaa3417ce349111fbc811be36a4615058c76
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: 771a20ccf1c34958308d58dafb6fb01e36bb408a
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791722"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749020"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
@@ -94,7 +94,7 @@ Server NFS používá vyhrazený virtuální název hostitele a virtuální IP a
 * Port testu paměti
   * Port 61000 pro NW1
   * Port 61001 pro NW2
-* Pravidla LoadBalancing
+* Pravidla LoadBalancing (Pokud se používá základní nástroj pro vyrovnávání zatížení)
   * 2049 TCP pro NW1
   * 2049 UDP pro NW1
   * 2049 TCP pro NW2
@@ -136,48 +136,85 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster systému s
    SLES for SAP Applications 12 SP3 (BYOS) se používá  
    Vybrat skupinu dostupnosti vytvořenou dříve  
 1. Přidejte jeden datový disk pro každý systém SAP do obou virtuálních počítačů.
-1. Vytvořit Load Balancer (interní)  
-   1. Vytvoření IP adresy front-endu
-      1. IP adresa 10.0.0.4 pro NW1
-         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte front-end IP fond a klikněte na Přidat.
-         1. Zadejte název nového fondu IP adres front-endu (například **NW1-front-end**).
-         1. Nastavte přiřazení na statické a zadejte IP adresu (například **10.0.0.4**).
-         1. Klikněte na OK.
-      1. IP adresa 10.0.0.5 pro NW2
-         * Opakujte výše uvedené kroky pro NW2.
-   1. Vytvoření back-end fondů
-      1. Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru NFS pro NW1
-         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte fondy back-endu a klikněte na Přidat.
-         1. Zadejte název nového back-end fondu (například **NW1-back-end**).
-         1. Klikněte na Přidat virtuální počítač.
-         1. Vyberte skupinu dostupnosti, kterou jste vytvořili dříve.
-         1. Vybrat virtuální počítače clusteru NFS
-         1. Klikněte na OK.
-      1. Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru NFS pro NW2
-         * Zopakováním výše uvedených kroků vytvořte fond back-end pro NW2.
-   1. Vytvoření sond stavu
-      1. Port 61000 pro NW1
-         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
-         1. Zadejte název nového testu stavu (například **NW1-HP**).
-         1. Vybrat TCP as Protocol, port 610**00**, zachovat interval 5 a špatný práh 2
-         1. Klikněte na OK.
-      1. Port 61001 pro NW2
-         * Zopakováním výše uvedených kroků vytvořte sondu stavu pro NW2.
-   1. Pravidla LoadBalancing
-      1. 2049 TCP pro NW1
+1. Vytvořte Load Balancer (interní). Doporučujeme [standardní nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).  
+   1. Při vytváření standardního nástroje pro vyrovnávání zatížení postupujte podle těchto pokynů:
+      1. Vytvoření IP adresy front-endu
+         1. IP adresa 10.0.0.4 pro NW1
+            1. Otevřete nástroj pro vyrovnávání zatížení, vyberte front-end IP fond a klikněte na Přidat.
+            1. Zadejte název nového fondu IP adres front-endu (například **NW1-front-end**).
+            1. Nastavte přiřazení na statické a zadejte IP adresu (například **10.0.0.4**).
+            1. Klikněte na OK.
+         1. IP adresa 10.0.0.5 pro NW2
+            * Opakujte výše uvedené kroky pro NW2.
+      1. Vytvoření back-end fondů
+         1. Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru NFS pro NW1
+            1. Otevřete nástroj pro vyrovnávání zatížení, vyberte fondy back-endu a klikněte na Přidat.
+            1. Zadejte název nového back-end fondu (například **NW1-back-end**).
+            1. Vyberte Virtual Network
+            1. Klikněte na Přidat virtuální počítač.
+            1. Vyberte virtuální počítače clusteru NFS a jejich IP adres.
+            1. Klikněte na Přidat.
+         1. Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru NFS pro NW2
+            * Zopakováním výše uvedených kroků vytvořte fond back-end pro NW2.
+      1. Vytvoření sond stavu
+         1. Port 61000 pro NW1
+            1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
+            1. Zadejte název nového testu stavu (například **NW1-HP**).
+            1. Vybrat TCP as Protocol, port 610**00**, zachovat interval 5 a špatný práh 2
+            1. Klikněte na OK.
+         1. Port 61001 pro NW2
+            * Zopakováním výše uvedených kroků vytvořte sondu stavu pro NW2.
+      1. Pravidla LoadBalancing
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte pravidla vyrovnávání zatížení a klikněte na Přidat.
-         1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například **NW1-kg-2049**).
-         1. Vyberte front-end IP adresu, fond back-endu a sondu stavu, který jste vytvořili dříve (například **NW1-front-endu**).
-         1. Zachovejte protokol **TCP**, zadejte port **2049**
+         1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například **NW1-kg**).
+         1. Vyberte front-end IP adresu, fond back-endu a sondu stavu, který jste vytvořili dříve (například **NW1-front-endu**. **NW1 – back-end** a **NW1-HP**)
+         1. Vyberte **porty ha**.
          1. Prodloužit časový limit nečinnosti na 30 minut
          1. **Ujistěte se, že jste povolili plovoucí IP adresu.**
          1. Klikněte na OK.
-      1. 2049 UDP pro NW1
-         * Opakujte výše uvedené kroky pro port 2049 a UDP pro NW1
-      1. 2049 TCP pro NW2
-         * Opakujte výše uvedené kroky pro port 2049 a TCP pro NW2
-      1. 2049 UDP pro NW2
-         * Opakujte výše uvedené kroky pro port 2049 a UDP pro NW2
+         * Opakujte výše uvedené kroky a vytvořte pravidlo vyrovnávání zatížení pro NW2.
+   1. Případně, pokud váš scénář vyžaduje základní nástroj pro vyrovnávání zatížení, postupujte podle těchto pokynů:
+      1. Vytvoření IP adresy front-endu
+         1. IP adresa 10.0.0.4 pro NW1
+            1. Otevřete nástroj pro vyrovnávání zatížení, vyberte front-end IP fond a klikněte na Přidat.
+            1. Zadejte název nového fondu IP adres front-endu (například **NW1-front-end**).
+            1. Nastavte přiřazení na statické a zadejte IP adresu (například **10.0.0.4**).
+            1. Klikněte na OK.
+         1. IP adresa 10.0.0.5 pro NW2
+            * Opakujte výše uvedené kroky pro NW2.
+      1. Vytvoření back-end fondů
+         1. Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru NFS pro NW1
+            1. Otevřete nástroj pro vyrovnávání zatížení, vyberte fondy back-endu a klikněte na Přidat.
+            1. Zadejte název nového back-end fondu (například **NW1-back-end**).
+            1. Klikněte na Přidat virtuální počítač.
+            1. Vyberte skupinu dostupnosti, kterou jste vytvořili dříve.
+            1. Vybrat virtuální počítače clusteru NFS
+            1. Klikněte na OK.
+         1. Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru NFS pro NW2
+            * Zopakováním výše uvedených kroků vytvořte fond back-end pro NW2.
+      1. Vytvoření sond stavu
+         1. Port 61000 pro NW1
+            1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
+            1. Zadejte název nového testu stavu (například **NW1-HP**).
+            1. Vybrat TCP as Protocol, port 610**00**, zachovat interval 5 a špatný práh 2
+            1. Klikněte na OK.
+         1. Port 61001 pro NW2
+            * Zopakováním výše uvedených kroků vytvořte sondu stavu pro NW2.
+      1. Pravidla LoadBalancing
+         1. 2049 TCP pro NW1
+            1. Otevřete nástroj pro vyrovnávání zatížení, vyberte pravidla vyrovnávání zatížení a klikněte na Přidat.
+            1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například **NW1-kg-2049**).
+            1. Vyberte front-end IP adresu, fond back-endu a sondu stavu, který jste vytvořili dříve (například **NW1-front-endu**).
+            1. Zachovejte protokol **TCP**, zadejte port **2049**
+            1. Prodloužit časový limit nečinnosti na 30 minut
+            1. **Ujistěte se, že jste povolili plovoucí IP adresu.**
+            1. Klikněte na OK.
+         1. 2049 UDP pro NW1
+            * Opakujte výše uvedené kroky pro port 2049 a UDP pro NW1
+         1. 2049 TCP pro NW2
+            * Opakujte výše uvedené kroky pro port 2049 a TCP pro NW2
+         1. 2049 UDP pro NW2
+            * Opakujte výše uvedené kroky pro port 2049 a UDP pro NW2
 
 > [!IMPORTANT]
 > Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. TCP _timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).

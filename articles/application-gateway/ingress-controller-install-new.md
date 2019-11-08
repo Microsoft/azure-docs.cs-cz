@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/22/2019
+ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: a11a444ca4e9485273f5dc94209c390289080838
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 30b5f6593d2d2ca17ad600a55f9dc7e2a379f0f0
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513442"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795929"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Jak nainstalovat Application Gateway AGIC (příchozí adaptér) pomocí nového Application Gateway
 
@@ -124,7 +124,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
   Azure Active Directory pod identitou poskytuje přístup založený na tokenech k [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
   [Identita AAD pod](https://github.com/Azure/aad-pod-identity) přidá do clusteru Kubernetes následující součásti:
-   * Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity`, `AzureAssignedIdentity`, `AzureIdentityBinding`
+   * Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity`, `AzureAssignedIdentity``AzureIdentityBinding`
    * Komponenta [spravovaného řadiče identity (MIC)](https://github.com/Azure/aad-pod-identity#managed-identity-controllermic)
    * Komponenta [spravované identity (NMI) uzlů](https://github.com/Azure/aad-pod-identity#node-managed-identitynmi)
 
@@ -250,7 +250,7 @@ Instalace identity AAD pod do clusteru:
     ```
 
    Hodnoty:
-     - `verbosityLevel`: nastavuje úroveň podrobností infrastruktury protokolování AGIC. Možné hodnoty najdete v tématu [úrovně protokolování](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels) .
+     - `verbosityLevel`: nastaví úroveň podrobností infrastruktury protokolování AGIC. Možné hodnoty najdete v tématu [úrovně protokolování](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels) .
      - `appgw.subscriptionId`: ID předplatného Azure, ve kterém se Application Gateway nachází. Příklad: `a123b234-a3b4-557d-b2df-a0bc12de1234`
      - `appgw.resourceGroup`: název skupiny prostředků Azure, ve které se vytvořila Application Gateway. Příklad: `app-gw-resource-group`
      - `appgw.name`: název Application Gateway. Příklad: `applicationgatewayd0f0`

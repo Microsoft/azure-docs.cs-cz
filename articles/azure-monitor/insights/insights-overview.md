@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
-ms.openlocfilehash: 3abf3d562b9ca4d6fc9907c065dbaf9a52d58c5f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 81d82ce79130513a2827090a98bfef192c9d7829
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555339"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795728"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Přehled přehledů v Azure Monitor
 Přehledy poskytují přizpůsobené možnosti monitorování pro konkrétní aplikace a služby. Ukládají data na [Azure monitor datovou platformu](../platform/data-platform.md) a využívají jiné funkce Azure monitor k analýze a upozorňování, ale mohou shromažďovat další data a poskytovat jedinečné uživatelské prostředí v Azure Portal. Přístup k přehledům z části **Přehled** v nabídce Azure Monitor v Azure Portal.
@@ -46,6 +46,11 @@ Azure Monitor pro virtuální počítače monitoruje vaše virtuální počíta�
 Podívejte [se, co je Azure monitor pro virtuální počítače?](vminsights-overview.md)
 
 ![Azure Monitor pro virtuální počítače](media/insights-overview/vm-insights.png)
+
+## <a name="azure-monitor-for-network-preview"></a>Azure Monitor pro síť (Preview)
+Azure Monitor pro síť poskytuje komplexní přehled o stavu a metrikách pro všechny síťové prostředky. Rozšířené možnosti vyhledávání vám pomůžou identifikovat závislosti prostředků a povolit scénáře jako identifikaci prostředků, které hostují váš web, jednoduše hledáním názvu vašeho webu.
+
+![Azure Monitor pro sítě](media/insights-overview/network-insights.png)
 
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o [Azure monitor datovou platformu](../platform/data-platform.md) , kterou využívají přehledy.

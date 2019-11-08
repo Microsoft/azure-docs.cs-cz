@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: d5a8ada7be99cfbd541b9ac58db2eba094536fc0
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ccd29952693ecbc1db5927d5deabae874b6e9933
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580525"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796699"
 ---
 # <a name="build--use-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Sestavení & použití kanálu Azure Machine Learning pro dávkové vyhodnocování
 
@@ -480,7 +480,7 @@ Pokud chcete kanál spustit z koncového bodu REST, budete potřebovat hlavičku
 
 Ověřování instančního objektu zahrnuje vytvoření *Registrace aplikace* v *Azure Active Directory*. Nejdřív vygenerujete tajný klíč klienta a potom udělíte roli instančního objektu *přístup* k pracovnímu prostoru Machine Learning. Ke správě toku ověřování použijte třídu [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) . 
 
-`InteractiveLoginAuthentication` i `ServicePrincipalAuthentication` dědí z `AbstractAuthentication`. V obou případech použijte funkci `get_authentication_header()` stejným způsobem, jak načíst hlavičku:
+[`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py) i `ServicePrincipalAuthentication` dědí z `AbstractAuthentication`. V obou případech použijte funkci [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#get-authentication-header--) stejným způsobem, jak načíst hlavičku:
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication

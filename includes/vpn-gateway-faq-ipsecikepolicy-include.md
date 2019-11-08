@@ -5,18 +5,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 11/06/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 57e8905fd9722d5b8a8b0ab76dbcea5b91c6d30a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6fa1912e80a98c98f058931708e191d0fff5bc66
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495863"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799753"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Jsou vlastní zásady IPsec/IKE podporovány ve všech skladových jednotkách (SKU) služby Azure VPN Gateway?
-Vlastní zásady IPsec/IKE se podporují ve **všech SKU Azure s výjimkou základní skladové**položky (SKU).
+Vlastní zásady IPsec/IKE jsou podporovány v branách Azure VPN Gateway úrovně **VpnGw1, VpnGw2, VpnGw3, Standard** a **HighPerformance**. Skladová položka **Basic** **není** podporována.
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>Kolik zásad můžu zadat pro jedno připojení?
 Pro jedno připojení můžete zadat pouze ***jednu*** kombinaci zásad.
@@ -27,22 +27,22 @@ Ne, musíte zadat všechny algoritmy a parametry pro protokol IKE (hlavní reži
 ### <a name="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy"></a>Jaké algoritmy a síly klíče jsou podporované ve vlastních zásadách?
 Následující tabulka uvádí podporované kryptografické algoritmy a síly klíče, které můžou zákazníci konfigurovat. Pro každé pole musíte vybrat jednu možnost.
 
-| **IPsec/IKEv2**  | **Možnosti**                                                                   |
-| ---              | ---                                                                           |
-| Šifrování protokolem IKEv2 | AES256, AES192, AES128, DES3, DES                                             |
-| Integrita protokolu IKEv2  | SHA384, SHA256, SHA1, MD5                                                     |
-| Skupina DH         | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, Žádná |
-| Šifrování protokolem IPsec | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, Žádné      |
-| Integrita protokolu IPsec  | GCMAES256, GCMAES192, GCMAES128, SHA256, SHA1, MD5                            |
-| Skupina PFS        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Žádná                              |
-| Doba života přidružení zabezpečení v rychlém režimu   | Sekundy (integer; **min. 300** / výchozí hodnota 27 000 sekund)<br>Kilobajty (integer; **min. 1024** / výchozí hodnota 102 400 000 kilobajtů)           |
-| Selektor provozu | UsePolicyBasedTrafficSelectors ($True nebo $False; výchozí hodnota je $False)                 |
-|                  |                                                                               |
+| **IPsec/IKEv1, IKEv2**  | **Možnosti**                                                                   |
+| ---                     | ---                                                                           |
+| IKEv1, šifrování IKEv2 | AES256, AES192, AES128, DES3, DES                                             |
+| IKEv1, integrita IKEv2  | SHA384, SHA256, SHA1, MD5                                                     |
+| Skupina DH                | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, Žádná  |
+| Šifrování protokolem IPsec        | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, Žádné      |
+| Integrita protokolu IPsec         | GCMAES256, GCMAES192, GCMAES128, SHA256, SHA1, MD5                            |
+| Skupina PFS               | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Žádná                              |
+| Doba života přidružení zabezpečení v rychlém režimu          | Sekundy (integer; **min. 300** / výchozí hodnota 27 000 sekund)<br>Kilobajty (integer; **min. 1024** / výchozí hodnota 102 400 000 kilobajtů) |
+| Selektor provozu        | UsePolicyBasedTrafficSelectors ($True nebo $False; výchozí hodnota je $False)                 |
+|                         |                                                                               |
 
 > [!IMPORTANT]
 > 1. DHGroup2048 a PFS2048 jsou stejná skupina Diffie-Hellman **14** v PFS protokolů IKE a IPsec. Kompletní mapování najdete v části [Skupiny Diffie-Hellman](#DH).
 > 2. V případě algoritmů GCMAES musíte zadat stejný algoritmus GCMAES a délku klíče pro šifrování protokolem IPsec i integritu dat.
-> 3. V branách Azure VPN Gateway je doba života přidružení zabezpečení protokolu IKEv2 v hlavním režimu pevně nastavena na 28 800 sekund.
+> 3. Životnost SA v hlavním režimu IKEv1 a IKEv2 se v bráně Azure VPN Gateway stanoví na 28 800 sekund.
 > 4. Doby života přidružení zabezpečení v rychlém režimu jsou volitelné parametry. Pokud nebyla zadána žádná doba života, použijí se výchozí hodnoty 27 000 sekund (7,5 hodiny) a 102 400 000 kilobajtů (102 GB).
 > 5. UsePolicyBasedTrafficSelector je parametr možnosti v připojení. Podívejte se na další položku nejčastějších dotazů týkající se možnosti UsePolicyBasedTrafficSelectors.
 
@@ -102,6 +102,18 @@ Ano. Tunel typu VNet-to-VNet se skládá ze dvou prostředků připojení v Azur
 
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>Fungují zásady IPsec/IKE na připojení ExpressRoute?
 Ne. Zásady IPsec/IKE fungují pouze na připojeních VPN typu Site-to-Site a VNet-to-VNet prostřednictvím bran Azure VPN Gateway.
+
+### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>Návody vytvářet připojení s typem protokolu IKEv1 nebo IKEv2?
+Připojení IKEv1 se dají vytvořit na všech SKU typu RouteBased VPN, s výjimkou základního SKU. Při vytváření připojení můžete zadat typ protokolu připojení IKEv1 nebo IKEv2. Pokud nezadáte typ protokolu připojení, použije se IKEv2 jako výchozí možnost, pokud je to možné. Další informace najdete v dokumentaci k [rutinám PowerShellu](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) . U typů SKU a podpory IKEv1/IKEv2 najdete informace v tématu [připojení bran k zařízením VPN založeným na zásadách](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
+
+### <a name="is-transit-between-between-ikev1-and-ikev2-connections-allowed"></a>Je přenos mezi IKEv1 a IKEv2 povolený?
+Ano. Je podporovaný přenos mezi připojeními IKEv1 a IKEv2.
+
+### <a name="can-i-have-ikev1-site-to-site-connections-on-basic-skus-of-routebased-vpn-type"></a>Můžu mít IKEv1 připojení typu Site-to-site na základních SKU typu RouteBased VPN?
+Ne. Všechny SKU RouteBased VPN s výjimkou základních SKU typu sítě VPN založeného na trasách podporují připojení IKEv1 pro síť Site-to-site.
+
+### <a name="can-i-change-the-connection-protocol-type-after-the-connection-is-created-ikev1-to-ikev2-and-vice-versa"></a>Můžu po vytvoření připojení změnit typ protokolu připojení (IKEv1 to IKEv2 a naopak)?
+Ne. Po vytvoření připojení se protokoly IKEv1/IKEv2 nedají změnit. Je nutné odstranit a znovu vytvořit nové připojení s požadovaným typem protokolu.
 
 ### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>Kde najdu Další informace o konfiguraci protokolu IPsec?
 Viz téma [Konfigurace zásad IPSec/IKE pro připojení S2S nebo VNet-to-VNet](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md) .

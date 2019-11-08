@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 10/18/2019
-ms.openlocfilehash: d515982dc2937b660de75ee723cebe39b33bec7d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/06/2019
+ms.openlocfilehash: a8deb7933bb19745bbe4c3b3a209c19c9cc712bd
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580871"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796314"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
@@ -33,9 +33,9 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
 * Účet a předplatné Azure. Pokud nemáte účet Azure s předplatným, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-  * K instalaci a správě brány v místním počítači je potřeba použít stejný účet Azure.
+  * Váš účet Azure musí patřit do jednoho [Azure Active Directoryho tenanta nebo adresáře Azure AD](../active-directory/fundamentals/active-directory-whatis.md#terminology). Je nutné použít stejný účet Azure pro instalaci a správu brány na místním počítači.
 
-    Během instalace brány se přihlásíte pomocí účtu Azure, který propojí instalaci brány s vaším účtem Azure a jenom s tímto účtem. Později musíte v Azure Portal použít stejný účet Azure pro vytvoření prostředku brány Azure, který registruje a deklaruje instalaci brány. V Azure Logic Apps místní triggery a akce pak pomocí prostředku brány připojte k místním zdrojům dat.
+  * Během instalace brány se přihlásíte pomocí účtu Azure, který propojí instalaci brány s vaším účtem Azure a jenom s tímto účtem. Později v Azure Portal musíte použít stejný účet Azure a tenanta Azure AD při vytváření prostředku brány Azure, který registruje a deklaruje instalaci brány. V Azure Logic Apps místní triggery a akce pak pomocí prostředku brány připojte k místním zdrojům dat.
 
     > [!NOTE]
     > Můžete propojit jenom jednu instalaci brány a jeden prostředek brány Azure. Nemůžete propojit stejnou instalaci brány s více účty Azure nebo prostředky služby Azure Gateway. Účet Azure se ale může připojit k několika instalacím brány a prostředkům služby Azure Gateway. V místním triggeru nebo akci můžete vybrat z různých předplatných Azure a pak vybrat přidružený prostředek brány.

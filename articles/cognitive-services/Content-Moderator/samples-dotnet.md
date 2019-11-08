@@ -1,7 +1,7 @@
 ---
 title: Ukázky kódu – Content Moderator, .NET
 titleSuffix: Azure Cognitive Services
-description: Použijte Content Moderator v aplikacích .NET prostřednictvím sady SDK.
+description: Naučte se používat Azure Cognitive Services Content Moderator v aplikacích .NET prostřednictvím sady SDK.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: sample
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 5a8deed7fa12688ee0d252ef0707be7a6b633e50
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 930571c841146e0b12efbf7325915ba2b23a7efa
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043988"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744344"
 ---
 # <a name="content-moderator-net-sdk-samples"></a>Ukázky Content Moderator .NET SDK
 

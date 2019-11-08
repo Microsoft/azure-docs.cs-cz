@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 1311328dde6fc70202ce3c6271b33f79d52102cc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1eef7b6505c4800acbe8aa69cf6f17eecc503aed
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472239"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796022"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Přehled portálu pro vývojáře Azure API Management
 
@@ -115,9 +115,33 @@ Ne.
 
 Ne.
 
-### <a name="im-getting-a-cors-error-when-using-the-interactive-console-what-should-i-do"></a>Při použití interaktivní konzoly se mi zobrazuje chyba CORS Co mám dělat?
+### <a name="im-getting-a-cors-error-when-using-the-interactive-console-what-should-i-do"></a>Při použití interaktivní konzoly se mi zobrazuje chyba CORS Co bych měl/a dělat?
 
-Interaktivní konzola vytvoří požadavek rozhraní API na straně klienta z prohlížeče. Problém CORS můžete vyřešit tak, že do svých rozhraní API přidáte [zásadu CORS](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) . Můžete buď zadat všechny parametry ručně (například počátek jako https://contoso.com) nebo použít zástupnou hodnotu `*`.
+Interaktivní konzola vytvoří požadavek rozhraní API na straně klienta z prohlížeče. Problém CORS můžete vyřešit tak, že do svých rozhraní API přidáte [zásadu CORS](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) . Všechny parametry můžete zadat ručně nebo použít `*` hodnoty zástupných znaků. Příklad:
+
+```XML
+<cors>
+    <allowed-origins>
+        <origin>*</origin>
+    </allowed-origins>
+    <allowed-methods>
+        <method>GET</method>
+        <method>POST</method>
+        <method>PUT</method>
+        <method>DELETE</method>
+        <method>HEAD</method>
+        <method>OPTIONS</method>
+        <method>PATCH</method>
+        <method>TRACE</method>
+    </allowed-methods>
+    <allowed-headers>
+        <header>*</header>
+    </allowed-headers>
+    <expose-headers>
+        <header>*</header>
+    </expose-headers>
+</cors>
+```
 
 ## <a name="next-steps"></a>Další kroky
 

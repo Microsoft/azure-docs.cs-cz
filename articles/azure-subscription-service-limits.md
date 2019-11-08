@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 71e4b62ddcb3f144b49b99e6ba95a47971d3f4bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: MT
+ms.openlocfilehash: 12e9367ca9e330806af4c7cc5db626edddff5c25
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476947"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795275"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument obsahuje seznam některých nejběžnějších omezení Microsoft Azure, která se také někdy označují jako kvóty. Tento dokument v tuto chvíli nepokrývá všechny služby Azure. V průběhu času se seznam rozbalí a aktualizuje, aby pokryl víc služeb.
@@ -48,6 +48,7 @@ V následujícím seznamu omezení zobrazuje nová tabulka rozdíly v omezeních
 * [Automation](#automation-limits)
 * [Azure Cache for Redis](#azure-cache-for-redis-limits)
 * [Azure Cloud Services](#azure-cloud-services-limits)
+* [Kognitivní hledání Azure](#azure-cognitive-search-limits)
 * [Azure Cognitive Services](#azure-cognitive-services-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
 * [Azure Database for MySQL](#azure-database-for-mysql)
@@ -60,7 +61,6 @@ V následujícím seznamu omezení zobrazuje nová tabulka rozdíly v omezeních
 * [Azure Maps](#azure-maps-limits)
 * [Azure Monitor](#azure-monitor-limits)
 * [Azure Policy](#azure-policy-limits)
-* [Azure Search](#azure-search-limits)
 * [Služba signalizace Azure](#azure-signalr-service-limits)
 * [Backup](#backup-limits)
 * [Batch](#batch-limits)
@@ -80,7 +80,7 @@ V následujícím seznamu omezení zobrazuje nová tabulka rozdíly v omezeních
 * [Služba IoT Hub Device Provisioning](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
 * [Media Services](#media-services-limits)
-* [Mobile Services](#mobile-services-limits)
+* [Mobie Services](#mobile-services-limits)
 * [Multi-Factor Authentication](#multi-factor-authentication-limits)
 * [Networking](#networking-limits)
   * [Application Gateway](#application-gateway-limits)
@@ -104,7 +104,7 @@ V následujícím seznamu omezení zobrazuje nová tabulka rozdíly v omezeních
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
-* [Storage](#storage-limits)
+* [Úložiště](#storage-limits)
 * [StorSimple systém](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
 * [Předplatné](#subscription-limits)
@@ -270,7 +270,7 @@ Omezení Azure Database for MySQL najdete v tématu [omezení v Azure Database f
 ### <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
 Omezení Azure Database for PostgreSQL najdete v tématu [omezení v Azure Database for PostgreSQL](postgresql/concepts-limits.md).
 
-### <a name="azure-search-limits"></a>Omezení Azure Search
+### <a name="azure-cognitive-search-limits"></a>Omezení Azure Kognitivní hledání
 Cenové úrovně určují kapacitu a omezení služby vyhledávání. Mezi vrstvy patří:
 
 * **Bezplatná** víceklientská služba, která je sdílená s ostatními předplatiteli Azure, je určená pro vyhodnocení a malé vývojové projekty.
@@ -285,7 +285,7 @@ Cenové úrovně určují kapacitu a omezení služby vyhledávání. Mezi vrstv
 
 [!INCLUDE [azure-search-limits-per-service](../includes/azure-search-limits-per-service.md)]
 
-Další informace o omezeních na podrobnější úrovni, jako je velikost dokumentu, dotazy za sekundu, klíče, žádosti a odpovědi, najdete v tématu [omezení služby v Azure Search](search/search-limits-quotas-capacity.md).
+Další informace o omezeních na podrobnější úrovni, jako je velikost dokumentu, dotazy za sekundu, klíče, žádosti a odpovědi, najdete v tématu [omezení služby v Azure kognitivní hledání](search/search-limits-quotas-capacity.md).
 
 ### <a name="media-services-limits"></a>Omezení Media Services
 [!INCLUDE [azure-mediaservices-limits](../includes/azure-mediaservices-limits.md)]
@@ -402,7 +402,7 @@ Omezení SQL Database najdete v tématu omezení [prostředků SQL Database pro 
 ### <a name="sql-data-warehouse-limits"></a>Omezení SQL Data Warehouse
 Omezení SQL Data Warehouse najdete v tématu [omezení prostředků SQL Data Warehouse](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 - [Pochopení omezení a zvýšení počtu Azure](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 - [Velikosti virtuálních počítačů a cloudových služeb pro Azure](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Velikosti pro Azure Cloud Services](cloud-services/cloud-services-sizes-specs.md)

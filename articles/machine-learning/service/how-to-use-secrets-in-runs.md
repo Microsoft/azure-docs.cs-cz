@@ -11,23 +11,23 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: c0d696e3fc060a2779eba7d7e895397ea3245383
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e2074cec65ea4c1df803999c6a995f73ea4227ee
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489282"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796676"
 ---
 # <a name="use-secrets-in-training-runs"></a>Používání tajných kódů v školicích běhůch
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak bezpečně používat tajné klíče v školicím běhu. Pokud se například chcete připojit k externí databázi pro dotazování školicích dat, budete muset předat uživatelské jméno a heslo do kontextu vzdáleného spuštění. Kódování takových hodnot do školicích skriptů v nešifrovaných textech je nezabezpečené, protože by to vystavilo tajný klíč. 
+V tomto článku se dozvíte, jak bezpečně používat tajné klíče v školicím běhu. Pokud se například chcete připojit k externí databázi pro dotazování školicích dat, budete muset předat uživatelské jméno a heslo do kontextu vzdáleného spuštění. Kódování takových hodnot do školicích skriptů v nešifrovaném textu je nezabezpečené, protože by to vystavilo tajný klíč. 
 
 Místo toho pracovní prostor Azure Machine Learning [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) jako přidružený prostředek. Tento Key Vault se dá použít k zabezpečenému předávání tajných kódů ke vzdálenému spouštění prostřednictvím sady rozhraní API v Azure Machine Learning Python SDK.
 
 Základní tok pro používání tajných klíčů je:
- 1. V místním počítači se přihlaste k Azure a připojte se k vašemu pracovnímu prostoru.
- 2. V místním počítači nastavte tajný klíč v pracovním prostoru Key Vault
+ 1. V místním počítači se přihlaste k Azure a připojte se k pracovnímu prostoru.
+ 2. V místním počítači nastavte tajný klíč v Key Vault pracovního prostoru.
  3. Odešlete vzdálené spuštění.
  4. V rámci vzdáleného spuštění Získejte tajný klíč z hodnoty klíče a použijte ho.
 
@@ -47,7 +47,7 @@ keyvault.set_secret(name="mysecret", value = my_secret)
 
 Neumísťujte tajnou hodnotu v kódu Pythonu, protože je nezabezpečená pro uložení v souboru jako nešifrovaný text. Místo toho Získejte tajnou hodnotu z proměnné prostředí, například tajný klíč sestavení Azure DevOps, nebo z interaktivního uživatelského vstupu.
 
-Pomocí metody [list_secrets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#set-secret-name--value-) můžete zobrazit seznam tajných názvů. Metoda __set_secret__ aktualizuje tajnou hodnotu, pokud název již existuje.
+Pomocí metody [list_secrets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#list-secrets--) můžete zobrazit seznam tajných názvů. Metoda __set_secret__ aktualizuje tajnou hodnotu, pokud název již existuje.
 
 ## <a name="get-secrets"></a>Získání tajných kódů
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2019
 ms.author: barclayn
-ms.openlocfilehash: 0fddabc7973fbea147de9f3b6e6da5556407030c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fc3c7ea2f0060fc6ab20fa821c9e45d6e5173d4f
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498463"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795805"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Šifrování dat Azure – v klidovém případě
 
@@ -262,24 +262,24 @@ Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím f
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **Na straně serveru pomocí klíče spravovaného službou**     | **Na straně serveru pomocí klíče spravovaného zákazníkem**             | **Klientská strana s použitím klíče spravovaného klientem**      |
 | **AI a Machine Learning**      |                    |                    |                    |
-| Azure Search                     | Ano                | Preview            | -                  |
+| Kognitivní hledání Azure                     | Ano                | Preview            | -                  |
 | Azure Machine Learning   | Ano                | -                  | -                  |
 | Azure Machine Learning Studio    | Ano                | Verze Preview, RSA 2048-bit | -               |
 | Power BI                         | Ano                | Verze Preview, RSA 2048-bit | -                  |
-| **Analýzy**                    |                    |                    |                    |
+| **Analýza**                    |                    |                    |                    |
 | Azure Stream Analytics           | Ano                | -                  | -                  |
 | Event Hubs                       | Ano                | Preview, všechny délky RSA. | -                  |
 | Azure Analysis Services          | Ano                | -                  | -                  |
-| Katalog dat Azure               | Ano                | -                  | -                  |
+| Azure Data Catalog               | Ano                | -                  | -                  |
 | Apache Kafka ve službě Azure HDInsight  | Ano                | Všechny délky RSA.   | -                  |
 | Průzkumník dat Azure              | Ano                | -                  | -                  |
 | Azure Data Factory               | Ano                | Ano                | -                  |
 | Azure Data Lake Store            | Ano                | Ano, RSA 2048-bit  | -                  |
-| **Containers**                   |                    |                    |                    |
+| **Kontejnery**                   |                    |                    |                    |
 | Azure Kubernetes Service         | Ano                | -                  | -                  |
 | Container Registry               | Ano                | -                  | -                  |
 | **Compute**                      |                    |                    |                    |
-| Služba Virtual Machines                 | Ano                | Ano, RSA 2048-bit  | -                  |
+| Virtuální počítače                 | Ano                | Ano, RSA 2048-bit  | -                  |
 | Sada škálování virtuálních počítačů        | Ano                | Ano, RSA 2048-bit  | -                  |
 | SAP HANA                         | Ano                | Ano, RSA 2048-bit  | -                  |
 | **Databáze**                    |                    |                    |                    |
@@ -291,7 +291,7 @@ Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím f
 | Azure SQL Data Warehouse         | Ano                | Ano, RSA 2048-bit  | Ano                |
 | SQL Server Stretch Database      | Ano                | Ano, RSA 2048-bit  | Ano                |
 | Table Storage                    | Ano                | -                  | Ano                |
-| Azure Cosmos DB                  | Ano                | -                  | -                  |
+| Databáze Azure Cosmos                  | Ano                | -                  | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps                     | Ano                | -                  | Ano                |
 | Azure Repos                      | Ano                | -                  | Ano                |
@@ -310,7 +310,7 @@ Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím f
 | Media Services                   | Ano                | -                  | Ano                |
 | **Storage**                      |                    |                    |                    |
 | Blob Storage                     | Ano                | Ano, RSA 2048-bit  | Ano                |
-| Disk Storage                     | Ano                | -                  | -                  |
+| Diskové úložiště                     | Ano                | -                  | -                  |
 | Spravované diskové úložiště             | Ano                | -                  | -                  |
 | File Storage                     | Ano                | Ano, RSA 2048-bit  | -                  |
 | Queue Storage                    | Ano                | -                  | Ano                |

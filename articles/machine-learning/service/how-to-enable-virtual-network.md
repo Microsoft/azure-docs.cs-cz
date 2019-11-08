@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/25/2019
-ms.openlocfilehash: 2559a3cbd786c737b316a860e9c75434c6c719a4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e5dee838df2a60bf2038f2c7d2b1cc5958354d29
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576578"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796766"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpečení experimentů s Azure ML a odvození úloh v rámci Azure Virtual Network
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,7 @@ Pokud chcete použít účet úložiště Azure pro pracovní prostor ve virtuá
     - V části __virtuální sítě__vyberte odkaz __Přidat existující virtuální síť__ . Tato akce přidá virtuální síť, ve které se nachází vaše výpočetní výkon (viz krok 1).
 
         > [!IMPORTANT]
-        > Účet úložiště musí být ve stejné virtuální síti jako virtuální počítače poznámkového bloku nebo clustery používané pro školení nebo odvození.
+        > Účet úložiště musí být ve stejné virtuální síti jako clustery používané pro školení nebo odvození.
 
     - Zaškrtněte políčko __pro přístup k tomuto účtu úložiště udělit důvěryhodné služby Microsoftu__ .
 
@@ -108,7 +108,7 @@ Pokud chcete používat Azure Machine Learning možnosti experimentování s Azu
 
 ## <a name="use-a-machine-learning-compute"></a>Použít Výpočetní prostředky služby Machine Learning
 
-Pokud chcete použít virtuální počítač nebo výpočetní cluster pro Azure Machine Learning Poznámkový blok ve virtuální síti, musí být splněné následující požadavky na síť:
+Pokud chcete ve virtuální síti použít výpočetní cluster Azure Machine Learning, musí být splněné následující požadavky na síť:
 
 > [!div class="checklist"]
 > * Virtuální síť musí být ve stejném předplatném a oblasti jako pracovní prostor Azure Machine Learning.
@@ -246,27 +246,6 @@ Po dokončení procesu vytváření můžete model pomocí clusteru v experiment
 
 <a id="vmorhdi"></a>
 
-### <a name="create-a-compute-instance-in-a-virtual-network"></a>Vytvoření výpočetní instance ve virtuální síti
-
-Vytvořte Azure Machine Learning výpočetní instance ve virtuální síti. Chcete-li vytvořit výpočetní instanci, postupujte následovně:
-
-1. V pracovním prostoru Studio v levém podokně vyberte **COMPUTE** .
-
-1. Na kartě výpočetní instance vyberte **Nový** a začněte vytvářet novou výpočetní instanci.
-
-1. Nastavte pole výpočetní název a velikost virtuálního počítače a povolte nebo zakažte přístup přes SSH.
-
-1. Pokud chcete tuto výpočetní instanci nakonfigurovat tak, aby používala virtuální síť, postupujte následovně:
-
-    a. Vyberte **Upřesnit nastavení**.
-
-    b. V rozevíracím seznamu  **skupiny prostředků** vyberte skupinu prostředků, která obsahuje virtuální síť.
-
-    c. V rozevíracím seznamu  **virtuální sítě** vyberte virtuální síť, která obsahuje podsíť.
-
-    d. V rozevíracím seznamu  **podsítě** vyberte podsíť, která se má použít.
-
-1. Vyberte **vytvořit** a zřídíte výpočetní instanci v rámci virtuální sítě.
 
 ## <a name="use-a-virtual-machine-or-hdinsight-cluster"></a>Použití virtuálního počítače nebo clusteru HDInsight
 

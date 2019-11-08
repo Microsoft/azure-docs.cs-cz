@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 11/06/2019
 ms.author: apimpm
-ms.openlocfilehash: 0bf52b45bc315874c58be50bccbffa49090d554d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 88ef235d47a548ce426eaa2e8a8a56fb9dcb01d2
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294338"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796036"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Omezení importu rozhraní API a známé problémy
 
@@ -33,13 +33,15 @@ Pokud obdržíte chyby při importu dokumentu OpenAPI, ujistěte se, že jste ho
 ### <a name="open-api-general"> </a>Obecné
 
 -   Požadované parametry v obou cestách i dotazech musí mít jedinečné názvy. (V OpenAPI musí být název parametru jedinečný jenom v rámci umístění, například cesta, dotaz, záhlaví. V API Management ale povolujeme, aby byly operace rozlišené pomocí cest i parametrů dotazů (které OpenAPI nepodporuje). To je důvod, proč potřebujeme, aby názvy parametrů byly jedinečné v rámci celé šablony URL.)
--   **@no__t – ukazatele 1ref** nemůžou odkazovat na externí soubory.
+-   Ukazatelé **\$** odkazů nemůžou odkazovat na externí soubory.
 -   jedinou podporovanou příponou jsou **x-MS-Paths** a **x-servery** .
 -   Vlastní rozšíření se při importu ignorují a neukládají se ani neuchovávají pro export.
 -   **Rekurze** – API Management nepodporuje definice, které jsou definovány rekurzivně (například schémata odkazující samy na sebe).
 -   Adresa URL zdrojového souboru (je-li k dispozici) se použije na relativní adresy URL serveru.
 -   Definice zabezpečení jsou ignorovány.
 -   Vložené definice schématu pro operace rozhraní API se nepodporují. Definice schématu jsou definované v oboru rozhraní API a můžou se na ně odkazovat v oborech požadavků a odpovědích na operace rozhraní API.
+-   Definovaný parametr adresy URL musí být součástí šablony adresy URL.
+-   **Vytvoří** klíčové slovo, které popisuje typy MIME VRACENé rozhraním API, není podporováno. 
 
 ### <a name="open-api-v2"> </a>Openapi verze 2
 

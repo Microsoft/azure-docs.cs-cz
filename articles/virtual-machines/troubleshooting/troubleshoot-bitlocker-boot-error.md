@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
-ms.openlocfilehash: b0b8528a8eaf5cab22bb2482bd60e760d8bf5e3d
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 80fd91106530c0150a85d508b24041b2263da925
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058114"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749666"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Chyby spuštění nástroje BitLocker na virtuálním počítači Azure
 
  Tento článek popisuje chyby nástroje BitLocker, ke kterým může dojít při spuštění virtuálního počítače s Windows v Microsoft Azure.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="symptom"></a>Příznak
 
@@ -31,7 +31,7 @@ ms.locfileid: "71058114"
 
 - Připojte ovladač USB s klíčem BitLockeru.
 
-- Jste uzamčeni! Zadejte obnovovací klíč, abyste mohli znovu pokračovat (rozložení klávesnice: US) nesprávné přihlašovací údaje byly zadány příliš mnohokrát, takže váš počítač byl uzamčen, aby chránil vaše osobní údaje. K načtení obnovovacího klíče použijte https://windows.microsoft.com/recoverykeyfaq jiný počítač nebo mobilní zařízení. V případě potřeby je ID klíče XXXXXXX. Nebo můžete resetovat počítač.
+- Jste uzamčeni! Zadejte obnovovací klíč, který se má znovu zobrazit (rozložení klávesnice: US). nesprávné přihlašovací údaje byly zadány příliš mnohokrát, takže váš počítač byl uzamčen, aby chránil vaše osobní údaje. Pokud chcete získat obnovovací klíč, použijte https://windows.microsoft.com/recoverykeyfaq z jiného počítače nebo mobilního zařízení. V případě potřeby je ID klíče XXXXXXX. Nebo můžete resetovat počítač.
 
 - Zadejte heslo k odemknutí této jednotky [] stisknutím klávesy INSERT zobrazíte heslo při psaní.
 - Zadejte obnovovací klíč, který načte obnovovací klíč ze zařízení USB.
@@ -46,8 +46,8 @@ Pokud chcete tento problém vyřešit, zastavte a uvolněte virtuální počíta
 
 Pokud tato metoda problém nevyřeší, postupujte podle těchto kroků a obnovte soubor klíče bek ručně:
 
-1. Pořídit snímek systémového disku ovlivněného virtuálního počítače jako zálohy. Další informace najdete v tématu [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md).
-2. [Připojení disku systému pro virtuální počítač pro obnovení](troubleshoot-recovery-disks-portal-windows.md). Pokud chcete spustit příkaz [Manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) v kroku 7, musí být na virtuálním počítači pro obnovení povolená funkce **Nástroj BitLocker Drive Encryption** .
+1. Pořídit snímek systémového disku ovlivněného virtuálního počítače jako zálohy. Další informace najdete v tématu [vytvoření snímku disku](../windows/snapshot-copy-managed-disk.md).
+2. [Připojte systémový disk k virtuálnímu počítači pro obnovení](troubleshoot-recovery-disks-portal-windows.md). Pokud chcete spustit příkaz [Manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) v kroku 7, musí být na virtuálním počítači pro obnovení povolená funkce **Nástroj BitLocker Drive Encryption** .
 
     Když připojíte spravovaný disk, může se zobrazit zpráva "obsahuje nastavení šifrování, a proto nemůže být použita jako chybová zpráva" datový disk ". V takovém případě spusťte následující skript a pokuste se znovu připojit disk:
 
@@ -107,7 +107,7 @@ Pokud tato metoda problém nevyřeší, postupujte podle těchto kroků a obnovt
 
     Teď, když máte název souboru klíče bek pro jednotku, je nutné vytvořit název tajného souboru. KLÍČE bek soubor k odemknutí jednotky.
 
-6.  Stáhněte si soubor klíče bek na disk pro obnovení. Následující příklad uloží soubor klíče bek do složky C:\BEK. Ujistěte se, že `C:\BEK\` cesta existuje před spuštěním skriptů.
+6.  Stáhněte si soubor klíče bek na disk pro obnovení. Následující příklad uloží soubor klíče bek do složky C:\BEK. Ujistěte se, že cesta `C:\BEK\` existuje před spuštěním skriptů.
 
     ```powershell
     $vault = "myKeyVault"
@@ -137,7 +137,7 @@ Pokud tato metoda problém nevyřeší, postupujte podle těchto kroků a obnovt
 
                     manage-bde -protectors -disable F: -rc 0
            
-    - Jednotku úplně dešifrujte. Chcete-li to provést, spusťte následující příkaz:
+    - Jednotku úplně dešifrujte. Provedete to spuštěním následujícího příkazu:
 
                     manage-bde -off F:
 
@@ -266,20 +266,20 @@ V případě scénáře použití klíčového šifrovacího klíče postupujte 
 
              manage-bde -protectors -disable F: -rc 0
            
-    - Jednotku úplně dešifrujte. Chcete-li to provést, spusťte následující příkaz:
+    - Jednotku úplně dešifrujte. Provedete to spuštěním následujícího příkazu:
 
                     manage-bde -off F:
 ## <a name="script-troubleshooting"></a>Odstraňování potíží se skripty
 
-**Chyba: Nepovedlo se načíst soubor nebo sestavení.**
+**Chyba: nepovedlo se načíst soubor nebo sestavení.**
 
 K této chybě dochází, protože cesty k sestavení ADAL jsou chybné. Pokud je modul AZ Module nainstalován pouze pro aktuálního uživatele, budou sestavení ADAL umístěna v `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`.
 
-Můžete také vyhledat `Az.Accounts` složku a vyhledat správnou cestu.
+Můžete také vyhledat složku `Az.Accounts` a vyhledat správnou cestu.
 
-**Chyba: Rutiny Get-AzKeyVaultSecret nebo Get-AzKeyVaultSecret se nerozpoznaly jako název rutiny.**
+**Chyba: Get-AzKeyVaultSecret nebo Get-AzKeyVaultSecret není rozpoznán jako název rutiny.**
 
-Pokud používáte starý modul AZ PowerShell, musíte změnit dva příkazy na `Get-AzureKeyVaultSecret` a. `Get-AzureKeyVaultSecret`
+Pokud používáte starý modul AZ PowerShell, je nutné změnit dva příkazy na `Get-AzureKeyVaultSecret` a `Get-AzureKeyVaultSecret`.
 
 **Ukázky parametrů**
 

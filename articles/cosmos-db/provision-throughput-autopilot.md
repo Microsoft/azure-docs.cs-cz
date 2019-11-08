@@ -6,19 +6,19 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3e2d9b892ad42563b481a0b1fe6a468daefad672
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: e0c3c88119c3d064326442881854920b411f5ed4
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606436"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748383"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Vytvoření kontejnerů a databází Azure Cosmos v režimu autopilotu (Preview)
 
 Azure Cosmos DB umožňuje zřídit propustnost pro kontejnery v režimu ručního nebo autopilotního. Tento článek popisuje výhody a případy použití režimu autopilotu.
 
 > [!NOTE]
-> Režim autopilotu je aktuálně k dispozici ve verzi Public Preview.
+> Režim autopilotu je aktuálně k dispozici ve verzi Public Preview. Pokud chcete povolit funkci autopilotu pro účet Azure Cosmos, přečtěte si část [Povolení autopilotu](#enable-autopilot) v tomto článku. Můžete povolit autopilotování jenom pro nové databáze a kontejnery, ale pro existující kontejnery a databáze k dispozici.
 
 Kromě ručního zřizování propustnosti teď můžete nakonfigurovat kontejnery Azure Cosmos v režimu autopilotu. Kontejnery a databáze Azure Cosmos nakonfigurované v režimu autopilotu budou **automaticky a okamžitě škálovat zajištěné propustnosti na základě potřeb vaší aplikace, aniž by došlo k narušení SLA.**
 
@@ -68,7 +68,7 @@ Případy použití pro kontejnery Azure Cosmos nakonfigurované v režimu autop
 | **Ceny** | Ručně zřízené RU/s za hodinu | V případě účtů oblastí s jedním zápisem platíte za propustnost využité každou hodinu, a to pomocí programu autopilot RU/s za hodinovou sazbu. <br/><br/>U účtů s více oblastmi zápisu se neúčtují žádné další poplatky za autopilot. Za tuto propustnost platíte za každou hodinu, a to pomocí stejné sady multi-Master RU/s za hodinovou sazbu. |
 | **Nejvhodnější pro typy úloh** |  Předvídatelné a stabilní úlohy|   Nepředvídatelné a proměnlivé úlohy  |
 
-## <a name="enable-autopilot-from-azure-portal"></a>Povolit autopilot z Azure Portal
+## <a name="a-idenable-autopilot-enable-autopilot-from-azure-portal"></a><a id="enable-autopilot"> povolení autopilotu z Azure Portal
 
 K vyzkoušení autopilotního projektu můžete v účtech Azure Cosmos povolit v z Azure Portal. Pomocí následujících kroků povolte možnost autopilot:
 

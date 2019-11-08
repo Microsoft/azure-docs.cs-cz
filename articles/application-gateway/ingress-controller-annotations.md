@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/11/2019
+ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 1e5d2597617247d1e1cd85178aaceab512c99139
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a3583a5efd120733ce7f6b71a7594b5636593f99
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513546"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796009"
 ---
 # <a name="annotations-for-application-gateway-ingress-controller"></a>Poznámky pro řadič Application Gateway pro příchozí přenos dat 
 
@@ -45,7 +45,7 @@ Tato poznámka umožňuje přepsat cestu back-end zadanou v prostředku přícho
 appgw.ingress.kubernetes.io/backend-path-prefix: <path prefix>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -80,7 +80,7 @@ Application Gateway je [možné nakonfigurovat](https://docs.microsoft.com/azure
 appgw.ingress.kubernetes.io/ssl-redirect: "true"
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -117,7 +117,7 @@ appgw.ingress.kubernetes.io/connection-draining: "true"
 appgw.ingress.kubernetes.io/connection-draining-timeout: "60"
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -149,7 +149,7 @@ Tato poznámka umožňuje určit, jestli se má povolit spřažení na základě
 appgw.ingress.kubernetes.io/cookie-based-affinity: "true"
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -180,7 +180,7 @@ Tato poznámka umožňuje zadat časový limit žádosti v sekundách, po které
 appgw.ingress.kubernetes.io/request-timeout: "20"
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -215,7 +215,7 @@ Tato poznámka nám umožňuje určit, jestli se má tento koncový bod vystavit
 appgw.ingress.kubernetes.io/use-private-ip: "true"
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -248,7 +248,7 @@ Tato poznámka nám umožňuje zadat protokol, který Application Gateway použ�
 appgw.ingress.kubernetes.io/backend-protocol: "https"
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress

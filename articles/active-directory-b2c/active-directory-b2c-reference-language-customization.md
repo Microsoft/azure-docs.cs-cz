@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bced7a4b994172a1a2076149d6f25adb39c99b54
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 62d75267421d1f7587f136ea1e76f7c4b4341a37
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015564"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73742643"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Přizpůsobení jazyka v Azure Active Directory B2C
 
@@ -23,13 +23,13 @@ Přizpůsobení jazyka v Azure Active Directory B2C (Azure AD B2C) umožňuje, a
 
 ## <a name="how-language-customization-works"></a>Jak funguje přizpůsobení jazyka
 
-Pomocí vlastního nastavení jazyka můžete vybrat jazyky, ve kterých je tok uživatele k dispozici. Po povolení funkce můžete zadat parametr `ui_locales`řetězce dotazu, z vaší aplikace. Když zavoláte Azure AD B2C, vaše stránka je přeložena do národního prostředí, které jste uvedli. Tento typ konfigurace poskytuje plnou kontrolu nad jazyky v uživatelském toku a ignoruje nastavení jazyka v prohlížeči zákazníka.
+Pomocí vlastního nastavení jazyka můžete vybrat jazyky, ve kterých je tok uživatele k dispozici. Po povolení funkce můžete do aplikace zadat parametr řetězce dotazu `ui_locales`. Když zavoláte Azure AD B2C, vaše stránka je přeložena do národního prostředí, které jste uvedli. Tento typ konfigurace poskytuje plnou kontrolu nad jazyky v uživatelském toku a ignoruje nastavení jazyka v prohlížeči zákazníka.
 
-Možná nebudete potřebovat tuto úroveň kontroly nad jazyky, které zákazník uvidí. Pokud neposkytnete `ui_locales` parametr, zkušenost zákazníka je vydiktována nastavením prohlížeče. Můžete si i nadále řídit, na které jazyky se má tok uživatele přeložit, a to tak, že ho přidáte jako podporovaný jazyk. Pokud je prohlížeč zákazníka nastavený tak, aby zobrazoval jazyk, který nechcete podporovat, zobrazí se místo toho jazyk, který jste vybrali jako výchozí v podporovaných jazykových verzích.
+Možná nebudete potřebovat tuto úroveň kontroly nad jazyky, které zákazník uvidí. Pokud neposkytnete parametr `ui_locales`, zkušenost zákazníka je vydiktována nastavením prohlížeče. Můžete si i nadále řídit, na které jazyky se má tok uživatele přeložit, a to tak, že ho přidáte jako podporovaný jazyk. Pokud je prohlížeč zákazníka nastavený tak, aby zobrazoval jazyk, který nechcete podporovat, zobrazí se místo toho jazyk, který jste vybrali jako výchozí v podporovaných jazykových verzích.
 
-* **jazyk určený pro národní prostředí**: Po povolení přizpůsobení jazyka se tok uživatele převede do zadaného jazyka.
-* **Požadovaný jazyk prohlížeče**: Pokud není `ui_locales` zadaný žádný parametr, tok uživatele se převede na jazyk požadovaný prohlížečem, *Pokud je podporovaný jazyk*.
-* **Výchozí jazyk zásad**: Pokud prohlížeč neurčí jazyk, nebo neurčí, který není podporován, tok uživatele bude převeden do výchozího jazyka toku uživatele.
+* **jazykově definované národní prostředí**: po povolení přizpůsobení jazyka se tok uživatele převede do jazyka, který je zde určen.
+* **Požadovaný jazyk v prohlížeči**: Pokud není zadaný žádný parametr `ui_locales`, váš uživatelský tok se převede na jazyk požadovaný prohlížečem, *Pokud je podporovaný jazyk*.
+* **Výchozí jazyk zásad**: Pokud prohlížeč neurčí jazyk, nebo neurčí, který není podporovaný, tok uživatele se převede do výchozího jazyka toku uživatele.
 
 > [!NOTE]
 > Pokud používáte vlastní atributy uživatele, je třeba zadat vlastní překlady. Další informace najdete v tématu [přizpůsobení řetězců](#customize-your-strings).
@@ -38,7 +38,7 @@ Možná nebudete potřebovat tuto úroveň kontroly nad jazyky, které zákazní
 
 Zásady, které byly vytvořené před všeobecnou dostupností přizpůsobení jazyka, musí nejdřív tuto funkci povolit. Zásady a uživatelské toky, které se vytvořily po nastavení jazyka, jsou ve výchozím nastavení povolené.
 
-Když v toku uživatele povolíte přizpůsobení jazyka, můžete řídit jazyk toku uživatele přidáním `ui_locales` parametru.
+Když v toku uživatele povolíte přizpůsobení jazyka, můžete řídit jazyk toku uživatele přidáním parametru `ui_locales`.
 
 1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**.
 1. Klikněte na tok uživatele, u kterého chcete povolit překlady.
@@ -47,7 +47,7 @@ Když v toku uživatele povolíte přizpůsobení jazyka, můžete řídit jazyk
 
 ## <a name="select-which-languages-in-your-user-flow-are-enabled"></a>Vyberte jazyky, ve kterých je tok uživatele povolený.
 
-Povolte sadu jazyků pro váš uživatelský tok, který se bude překládat na v případě, že ho prohlížeč `ui_locales` požaduje bez parametru.
+Povolte sadu jazyků pro tok uživatele, který se má přeložit do aplikace v případě, že ji prohlížeč požaduje bez parametru `ui_locales`.
 
 1. Ujistěte se, že tok uživatele má povolené přizpůsobení jazyka z předchozích pokynů.
 1. Na stránce **jazyky** toku uživatele vyberte jazyk, který chcete podporovat.
@@ -55,7 +55,7 @@ Povolte sadu jazyků pro váš uživatelský tok, který se bude překládat na 
 1. V horní části podokna Vlastnosti vyberte **Uložit** .
 
 >[!NOTE]
->`ui_locales` Pokud parametr není zadán, bude stránka přeložena do jazyka prohlížeče zákazníka pouze v případě, že je povolena.
+>Pokud není zadán parametr `ui_locales`, stránka bude přeložena do jazyka prohlížeče zákazníka pouze v případě, že je povolena.
 >
 
 ## <a name="customize-your-strings"></a>Přizpůsobení řetězců
@@ -72,13 +72,13 @@ Tyto kroky poskytují soubor JSON, který můžete použít k zahájení úprav 
 ### <a name="change-any-string-on-the-page"></a>Změna libovolného řetězce na stránce
 
 1. Otevřete soubor JSON stažený z předchozích pokynů v editoru JSON.
-1. Vyhledejte prvek, který chcete změnit. Můžete vyhledat `StringId` řetězec, který hledáte, nebo vyhledat `Value` atribut, který chcete změnit.
-1. Aktualizujte `Value` atribut tak, co chcete zobrazit.
-1. Pro každý řetězec, který chcete změnit, změňte `Override` na. `true`
+1. Vyhledejte prvek, který chcete změnit. Můžete najít `StringId` pro řetězec, který hledáte, nebo vyhledat atribut `Value`, který chcete změnit.
+1. Aktualizujte atribut `Value` s tím, co chcete zobrazit.
+1. U každého řetězce, který chcete změnit, změňte `Override` na `true`.
 1. Uložte soubor a nahrajte změny. (Ovládací prvek nahrávání můžete najít na stejném místě, kam jste stáhli soubor JSON.)
 
 > [!IMPORTANT]
-> Pokud potřebujete přepsat řetězec, ujistěte se, že jste nastavili `Override` hodnotu na `true`. Pokud se hodnota nezmění, bude položka ignorována.
+> Pokud potřebujete přepsat řetězec, ujistěte se, že jste nastavili hodnotu `Override` na `true`. Pokud se hodnota nezmění, bude položka ignorována.
 
 ### <a name="change-extension-attributes"></a>Změnit atributy rozšíření
 
@@ -104,7 +104,7 @@ Nahraďte `<ExtensionAttributeValue>` novým řetězcem, který se má zobrazit.
 
 ### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>Zadání seznamu hodnot pomocí LocalizedCollections
 
-Pokud chcete poskytnout seznam sad hodnot pro odpovědi, je nutné vytvořit `LocalizedCollections` atribut. `LocalizedCollections`je pole `Name` a `Value` páry. Pořadí položek bude zobrazeno v pořadí. Chcete- `LocalizedCollections`li přidat, použijte následující formát:
+Pokud chcete poskytnout seznam sad hodnot pro odpovědi, je nutné vytvořit atribut `LocalizedCollections`. `LocalizedCollections` je pole párů `Name` a `Value`. Pořadí položek bude zobrazeno v pořadí. Chcete-li přidat `LocalizedCollections`, použijte následující formát:
 
 ```JSON
 {
@@ -128,9 +128,9 @@ Pokud chcete poskytnout seznam sad hodnot pro odpovědi, je nutné vytvořit `Lo
 }
 ```
 
-* `ElementId`je atributem uživatele, na `LocalizedCollections` který je tento atribut odpovědí.
-* `Name`je hodnota, která se zobrazí uživateli.
-* `Value`je to, co se v deklaraci identity vrátí, když je tato možnost vybraná.
+* `ElementId` je atribut uživatele, na který je tento atribut `LocalizedCollections` odpovědí.
+* `Name` je hodnota, která se zobrazí uživateli.
+* `Value` je to, co se v deklaraci identity vrátí, když je tato možnost vybraná.
 
 ### <a name="upload-your-changes"></a>Nahrání změn
 
@@ -145,7 +145,7 @@ Změny se uloží do toku uživatele automaticky.
 
 ## <a name="customize-the-page-ui-by-using-language-customization"></a>Přizpůsobení uživatelského rozhraní stránky pomocí přizpůsobení jazyka
 
-Obsah HTML můžete lokalizovat dvěma způsoby. Jedním ze způsobů je zapnout [přizpůsobení jazyka](active-directory-b2c-reference-language-customization.md). Povolením této funkce umožníte Azure AD B2C přeslat parametr `ui-locales`OpenID Connect do svého koncového bodu. Server obsahu může tento parametr použít k poskytování přizpůsobených stránek HTML, které jsou specifické pro konkrétní jazyk.
+Obsah HTML můžete lokalizovat dvěma způsoby. Jedním ze způsobů je zapnout [přizpůsobení jazyka](active-directory-b2c-reference-language-customization.md). Povolením této funkce umožníte Azure AD B2C přeposlání parametru OpenID Connect `ui-locales`na koncový bod. Server obsahu může tento parametr použít k poskytování přizpůsobených stránek HTML, které jsou specifické pro konkrétní jazyk.
 
 Alternativně můžete vyžádat obsah z různých míst na základě používaného národního prostředí. V rámci koncového bodu s povoleným CORS můžete nastavit strukturu složky pro hostování obsahu pro konkrétní jazyky. Pokud použijete zástupnou hodnotu `{Culture:RFC5646}`, zavoláte tu správnou. Předpokládejme například, že se jedná o vlastní identifikátor URI stránky:
 
@@ -153,7 +153,7 @@ Alternativně můžete vyžádat obsah z různých míst na základě používan
 https://wingtiptoysb2c.blob.core.windows.net/{Culture:RFC5646}/wingtip/unified.html
 ```
 
-Můžete načíst stránku v `fr`. Když stránka vyžádá obsah HTML a CSS, stáhne se z:
+Stránku můžete načíst do `fr`. Když stránka vyžádá obsah HTML a CSS, stáhne se z:
 
 ```
 https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
@@ -203,56 +203,56 @@ Azure AD B2C zahrnuje podporu pro následující jazyky. Jazyky toku uživatelů
 
 | Jazyk              | Kód jazyka | Toky uživatele         | Oznámení MFA  |
 |-----------------------| :-----------: | :----------------: | :----------------: |
-| arabština                | snížen            | znak                | :heavy_check_mark: |
-| Bulharština             | BG            | znak                | :heavy_check_mark: |
-| Bengálština                | bn            | :heavy_check_mark: | znak                |
-| Katalánština               | určen            | znak                | :heavy_check_mark: |
-| Čeština                 | cs            | :heavy_check_mark: | :heavy_check_mark: |
-| dánština                | da            | :heavy_check_mark: | :heavy_check_mark: |
-| Němčina                | de            | :heavy_check_mark: | :heavy_check_mark: |
-| Řečtina                 | el            | :heavy_check_mark: | :heavy_check_mark: |
-| Angličtina               | cs-CZ            | :heavy_check_mark: | :heavy_check_mark: |
-| Španělština               | es            | :heavy_check_mark: | :heavy_check_mark: |
-| Estonština              | et            | znak                | :heavy_check_mark: |
-| Baskičtina                | Balijšitna            | znak                | :heavy_check_mark: |
-| Finština               | fi            | :heavy_check_mark: | :heavy_check_mark: |
-| Francouzština                | fr            | :heavy_check_mark: | :heavy_check_mark: |
-| Galicijština              | GL            | znak                | :heavy_check_mark: |
-| Gudžarátština              | Gu            | :heavy_check_mark: | znak                |
-| Hebrejština                | uvede            | znak                | :heavy_check_mark: |
-| Hindština                 | Ahoj            | :heavy_check_mark: | :heavy_check_mark: |
-| Chorvatština              | h            | :heavy_check_mark: | :heavy_check_mark: |
-| Maďarština             | hu            | :heavy_check_mark: | :heavy_check_mark: |
-| Indonéština            | id            | znak                | :heavy_check_mark: |
-| italština               | it            | :heavy_check_mark: | :heavy_check_mark: |
-| Japonština              | ja            | :heavy_check_mark: | :heavy_check_mark: |
-| Kazaština                | kk            | znak                | :heavy_check_mark: |
-| Kannadština               | KN            | :heavy_check_mark: | znak                |
-| Korejština                | ko            | :heavy_check_mark: | :heavy_check_mark: |
-| Litevština            | lt            | znak                | :heavy_check_mark: |
-| Lotyština               | lv            | znak                | :heavy_check_mark: |
-| Malajálamština             | ml            | :heavy_check_mark: | znak                |
-| Maráthština               | Vážený            | :heavy_check_mark: | znak                |
-| Malajština                 | ms            | :heavy_check_mark: | :heavy_check_mark: |
-| Norština – Bokmal      | nb            | :heavy_check_mark: | znak                |
-| Holandština                 | nl            | :heavy_check_mark: | :heavy_check_mark: |
-| norština             | ne            | znak                | :heavy_check_mark: |
-| Paňdžábština               | pa            | :heavy_check_mark: | znak                |
-| polština                | pl            | :heavy_check_mark: | :heavy_check_mark: |
-| Portugalština – Brazílie   | pt-br         | :heavy_check_mark: | :heavy_check_mark: |
-| Portugalština (Portugalsko) | pt-pt         | :heavy_check_mark: | :heavy_check_mark: |
-| Rumunština              | ro            | :heavy_check_mark: | :heavy_check_mark: |
-| ruština               | ru            | :heavy_check_mark: | :heavy_check_mark: |
-| Slovenština                | SM            | :heavy_check_mark: | :heavy_check_mark: |
-| Slovinština             | sl            | znak                | :heavy_check_mark: |
-| Srbština – cyrilice    | SR-cryl-cs    | znak                | :heavy_check_mark: |
-| Srbština – latinka       | SR-Latn-cs    | znak                | :heavy_check_mark: |
-| švédština               | sv            | :heavy_check_mark: | :heavy_check_mark: |
-| Tamilština                 | ta            | :heavy_check_mark: | znak                |
-| Telugština                | te            | :heavy_check_mark: | znak                |
-| Thajština                  | .            | :heavy_check_mark: | :heavy_check_mark: |
-| turečtina               | recenzent            | :heavy_check_mark: | :heavy_check_mark: |
-| Ukrajinština             | Velká Británie            | znak                | :heavy_check_mark: |
-| Vietnamština            | vi            | znak                | :heavy_check_mark: |
-| Čínština (zjednodušená)  | zh – Hans       | :heavy_check_mark: | :heavy_check_mark: |
-| Čínština (tradiční) | zh – Hant       | :heavy_check_mark: | :heavy_check_mark: |
+| arabština                | snížen            | ![ne](media/active-directory-b2c-reference-language-customization/no.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Bulharština             | BG            | ![ne](media/active-directory-b2c-reference-language-customization/no.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Bengálština                | bn            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ne](media/active-directory-b2c-reference-language-customization/no.png) |
+| Katalánština               | určen            | ![ne](media/active-directory-b2c-reference-language-customization/no.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Čeština                 | cs            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| dánština                | da            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Němčina                | de            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Řečtina                 | el            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Angličtina               | en            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Španělština               | es            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Estonština              | et            | ![ne](media/active-directory-b2c-reference-language-customization/no.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Baskičtina                | Balijšitna            | ![ne](media/active-directory-b2c-reference-language-customization/no.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Finština               | fi            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Francouzština                | fr            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Galicijština              | GL            | ![ne](media/active-directory-b2c-reference-language-customization/no.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Gudžarátština              | Gu            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ne](media/active-directory-b2c-reference-language-customization/no.png) |
+| Hebrejština                | uvede            | ![ne](media/active-directory-b2c-reference-language-customization/no.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Hindština                 | Ahoj            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Chorvatština              | oddělení            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Maďarština             | hu            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Indonéština            | id            | ![ne](media/active-directory-b2c-reference-language-customization/no.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| italština               | it            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Japonština              | ja            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Kazaština                | kk            | ![ne](media/active-directory-b2c-reference-language-customization/no.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Kannadština               | KN            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ne](media/active-directory-b2c-reference-language-customization/no.png) |
+| Korejština                | ko            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Litevština            | lt            | ![ne](media/active-directory-b2c-reference-language-customization/no.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Lotyština               | lv            | ![ne](media/active-directory-b2c-reference-language-customization/no.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Malajalámština             | l            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ne](media/active-directory-b2c-reference-language-customization/no.png) |
+| Maráthština               | Vážený            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ne](media/active-directory-b2c-reference-language-customization/no.png) |
+| Malajština                 | Arial            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Norština – Bokmal      | nb            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ne](media/active-directory-b2c-reference-language-customization/no.png) |
+| Holandština                 | nl            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| norština             | ne            | ![ne](media/active-directory-b2c-reference-language-customization/no.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Paňdžábština               | PA            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ne](media/active-directory-b2c-reference-language-customization/no.png) |
+| polština                | pl            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Portugalština – Brazílie   | pt-br         | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Portugalština (Portugalsko) | pt-pt         | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Rumunština              | ro            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| ruština               | ru            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Slovenština                | SM            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Slovinština             | SSL            | ![ne](media/active-directory-b2c-reference-language-customization/no.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Srbština – cyrilice    | SR-cryl-cs    | ![ne](media/active-directory-b2c-reference-language-customization/no.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Srbština – latinka       | SR-Latn-cs    | ![ne](media/active-directory-b2c-reference-language-customization/no.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| švédština               | sv            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Tamilština                 | Ta            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ne](media/active-directory-b2c-reference-language-customization/no.png) |
+| Telugština                | te            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ne](media/active-directory-b2c-reference-language-customization/no.png) |
+| Thajština                  | Kolik            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| turečtina               | recenzent            | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Ukrajinština             | Velká Británie            | ![ne](media/active-directory-b2c-reference-language-customization/no.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Vietnamština            | InterDev            | ![ne](media/active-directory-b2c-reference-language-customization/no.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Čínština (zjednodušená)  | zh – Hans       | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |
+| Čínština (tradiční) | zh – Hant       | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) | ![ano](media/active-directory-b2c-reference-language-customization/yes.png) |

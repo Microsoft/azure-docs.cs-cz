@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: philmea
-ms.openlocfilehash: 533a199f75baa5a27ed06698f22d4d046be45507
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 173be8207df2f0128dfc9ae3c36aa3c3dc392bee
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607880"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748571"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub vysoká dostupnost a zotavení po havárii
 
@@ -62,7 +62,7 @@ Až se operace převzetí služeb při selhání pro Centrum IoT dokončí, oče
 > [!CAUTION]
 > - Název a koncový bod, který je kompatibilní s centrem událostí, se po převzetí služeb při selhání změní na koncový bod IoT Hub integrovaných událostí. Při přijímání zpráv telemetrie z integrovaného koncového bodu pomocí klienta centra událostí nebo hostitele procesoru událostí byste měli připojení vytvořit [pomocí připojovacího řetězce služby IoT Hub](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) . Tím zajistíte, že vaše back-endové aplikace budou dál fungovat, aniž by bylo nutné ruční zásah po převzetí služeb při selhání. Pokud použijete název a koncový bod kompatibilní s centrem událostí ve vaší back-endové aplikaci přímo, budete muset znovu nakonfigurovat aplikaci tak, že po převzetí služeb při selhání znovu nakonfigurujete [nový název a koncový bod kompatibilní](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) s centrem událostí, aby bylo možné pokračovat v operacích.
 >
-> - Při směrování do úložiště doporučujeme, abyste zavedli kontejner úložiště a pak na ně prováděli iteraci, aby se zajistilo, že všechny kontejnery budou čteny bez jakýchkoli předpokladů oddílu. Rozsah oddílu se může během převzetí služeb při selhání nebo ručního převzetí služeb při selhání iniciovat společnosti Microsoft změnit. Informace o tom, jak vytvořit výčet seznamu objektů blob, najdete v tématu [směrování do služby Azure Storage](iot-hub-devguide-messages-d2c.md#azure-storage).
+> - Při směrování do úložiště doporučujeme vypsat objekty blob nebo soubory a potom je v nich vymezit, aby se zajistilo, že všechny objekty blob nebo soubory budou čteny bez nutnosti vytvářet žádné předpoklady oddílu. Rozsah oddílu se může během převzetí služeb při selhání nebo ručního převzetí služeb při selhání iniciovat společnosti Microsoft změnit. K vytvoření výčtu seznamů objektů BLOB nebo [seznamu adls Gen2 rozhraní API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) pro seznam souborů můžete použít [rozhraní list API blobů](https://docs.microsoft.com/rest/api/storageservices/list-blobs) . 
 
 ## <a name="microsoft-initiated-failover"></a>Převzetí služeb při selhání iniciované Microsoftem
 

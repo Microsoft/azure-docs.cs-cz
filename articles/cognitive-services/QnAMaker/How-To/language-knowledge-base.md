@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: diberry
-ms.openlocfilehash: 849c919950c57a1df3b0fb76021de6e10254c7b4
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: a818d84bf3df712190ccc6c1721c26933a9fbcdb
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286413"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73793937"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Jazyková podpora obsahu znalostní báze pro QnA Maker
 
@@ -38,9 +38,9 @@ Výběr jazyka je součástí kroků k vytvoření první znalostní báze v pro
 ![Snímek obrazovky QnA Makerového portálu pro výběr jazyka pro první znalostní bázi](../media/language-support/select-language-when-creating-knowledge-base.png)
 
 ## <a name="query-matching-and-relevance"></a>Shoda a závažnost dotazu
-QnA Maker závisí na [analyzátorech Azure Search jazyka](https://docs.microsoft.com/rest/api/searchservice/language-support) pro poskytování výsledků. 
+QnA Maker závisí na [analyzátorech kognitivní hledání jazyka Azure](https://docs.microsoft.com/rest/api/searchservice/language-support) pro poskytování výsledků. 
 
-I když jsou funkce Azure Search pro podporované jazyky v nominální hodnotě, QnA Maker má další řazení, které se nachází nad výsledky Azure Search. V tomto modelu hodnocení používáme některé speciální sémantické funkce a funkce založené na slovech v následujících jazycích. 
+I když jsou možnosti Azure Kognitivní hledání pro podporované jazyky v nominální hodnotě, QnA Maker má další hodnocení, které je umístěné nad výsledky Azure Search. V tomto modelu hodnocení používáme některé speciální sémantické funkce a funkce založené na slovech v následujících jazycích. 
 
 |Jazyky s dalšími přiřazením|
 |--|
@@ -51,13 +51,13 @@ I když jsou funkce Azure Search pro podporované jazyky v nominální hodnotě,
 |Francouzština|
 |Němčina|
 |Maďarština|
-|Italština|
+|italština|
 |Japonština|
 |Korejština|
-|Polština|
+|polština|
 |Portugalština|
 |Španělština|
-|Švédština|
+|švédština|
 
 Toto dodatečné hodnocení představuje interní pracovní QnA Maker hodnocení.
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/07/2019
 ms.author: dapine
-ms.openlocfilehash: 163fe24c941f779a2160ee5ef50f9d4dfcea1022
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a30fcd0ec7e53c78876596baf787639e81c638db
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486737"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795014"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Konfigurace kontejnerů Docker Language Understanding 
 
@@ -64,9 +64,9 @@ Toto nastavení najdete v následujících umístěních:
 * Azure Portal: **Cognitive Services** Overview, označený `Endpoint`
 * Portál LUIS: **klíčová stránka a nastavení koncového bodu** jako součást identifikátoru URI koncového bodu.
 
-| Požaduje se | Name (Název) | Data type | Popis |
+| Požaduje se | Název | Data type | Popis |
 |----------|------|-----------|-------------|
-| Ano      | `Billing` | string | Identifikátor URI koncového bodu fakturace |
+| Ano      | `Billing` | řetězec | Identifikátor URI koncového bodu fakturace Další informace o získání identifikátoru URI fakturace najdete v tématu [shromáždění požadovaných parametrů](luis-container-howto.md#gathering-required-parameters). Další informace a úplný seznam regionálních koncových bodů najdete v tématu [názvy vlastních subdomén pro Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
 ## <a name="eula-setting"></a>Nastavení smlouvy EULA
 
@@ -94,7 +94,7 @@ Přesná syntaxe umístění hostitelského připojení se liší v závislosti 
 
 V následující tabulce jsou popsána podporovaná nastavení.
 
-|Požaduje se| Name (Název) | Data type | Popis |
+|Požaduje se| Název | Data type | Popis |
 |-------|------|-----------|-------------|
 |Ano| `Input` | Řetězec | Cíl vstupního připojení Výchozí hodnota je `/input`. Toto je umístění souborů balíčku LUIS. <br><br>Příklad:<br>`--mount type=bind,src=c:\input,target=/input`|
 |Ne| `Output` | Řetězec | Cíl připojení pro výstup. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly dotazů LUIS a protokoly kontejnerů. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|

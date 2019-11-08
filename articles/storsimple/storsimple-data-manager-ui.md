@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure StorSimple Data Manager UI | Dokumentace Microsoftu
-description: Popisuje, jak pomocí služby StorSimple Data Manager uživatelského rozhraní
+title: Uživatelské rozhraní Data Manager Microsoft Azure StorSimple | Microsoft Docs
+description: Popisuje, jak používat rozhraní StorSimple Data Manager služby.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,152 +14,152 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: fa897b4b77f7f5869eab2ba2e7db9afbd84febfa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a87b4c07d2e961d9876fb44c6584f37ad9246df
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631325"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796643"
 ---
-# <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Správa služby StorSimple Data Manageru na webu Azure portal
+# <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Správa služby StorSimple Data Manager v Azure Portal
 
-Tento článek vysvětluje, jak transformovat data uložená na zařízeních StorSimple 8000 series pomocí uživatelského rozhraní Správce dat StorSimple. Transformovaná data mohou být spotřebovány pak dalšími službami Azure, jako jsou Azure Media Services, Azure HDInsight, Azure Machine Learning a Azure Search.
+V tomto článku se dozvíte, jak můžete pomocí uživatelského rozhraní StorSimple Data Manager transformovat data umístěná na zařízeních řady StorSimple 8000. Transformovaná data pak může využívat jiné služby Azure, jako je Azure Media Services, Azure HDInsight, Azure Machine Learning a Azure Kognitivní hledání.
 
 
-## <a name="use-storsimple-data-transformation"></a>Pomocí transformace dat StorSimple
+## <a name="use-storsimple-data-transformation"></a>Použití transformace dat StorSimple
 
-Správce dat StorSimple je prostředků, ve kterých je vytvořena instance transformace. Transformace dat service umožňuje transformovat data z formátu StorSimple na nativním formátu do objektů BLOB nebo soubory Azure. Transformace dat StorSimple nativním formátu, budete muset zadat podrobnosti o zařízení řady StorSimple 8000 a datech, které vás zajímají, který chcete transformovat.
+StorSimple Data Manager je prostředek, ve kterém je vytvořena instance transformace dat. Služba transformace dat umožňuje transformovat data z formátu StorSimple do nativního formátu v objektech blob nebo souborech Azure. Pokud chcete transformovat data nativního formátu StorSimple, musíte zadat podrobnosti o zařízení řady StorSimple 8000 a data, která chcete transformovat.
 
-### <a name="create-a-storsimple-data-manager-service"></a>Vytvoření služby StorSimple Data Manageru
+### <a name="create-a-storsimple-data-manager-service"></a>Vytvoření služby StorSimple Data Manager
 
-Proveďte následující kroky k vytvoření služby StorSimple Data Manageru.
+Chcete-li vytvořit službu StorSimple Data Manager, proveďte následující kroky.
 
 1. Pomocí přihlašovacích údajů účtu Microsoft se přihlaste na webu [Azure Portal](https://portal.azure.com/).
 
-2. Klikněte na tlačítko **+ vytvořit prostředek** a vyhledávání za StorSimple Data Manager.
+2. Klikněte na **+ vytvořit prostředek** a vyhledejte StorSimple data Manager.
 
-    ![Vytvoření služby StorSimple Data Manager 1](./media/storsimple-data-manager-ui/create-service-1.png)
+    ![Vytvoření StorSimple Data Manager služby 1](./media/storsimple-data-manager-ui/create-service-1.png)
 
-3. Klikněte na tlačítko Správce dat StorSimple a potom klikněte na tlačítko **vytvořit**.
+3. Klikněte na StorSimple Data Manager a pak klikněte na **vytvořit**.
     
-    ![Vytvoření služby StorSimple Data Manager 2](./media/storsimple-data-manager-ui/create-service-3.png)
+    ![Vytvoření StorSimple Data Manager služby 2](./media/storsimple-data-manager-ui/create-service-3.png)
 
-3. Pro novou službu zadejte následující informace:
+3. Pro novou službu zadejte následující:
 
-   1. Zadejte jedinečnou **název služby** pro správce dat StorSimple. Jedná se o popisný název, který můžete použít k identifikaci služby. Název může být tvořen 3 až 24 písmeny, číslicemi a spojovníky. Název musí začínat a končit písmenem nebo číslicí.
+   1. Zadejte jedinečný **název služby** pro váš StorSimple data Manager. Jedná se o popisný název, který můžete použít k identifikaci služby. Název může být tvořen 3 až 24 písmeny, číslicemi a spojovníky. Název musí začínat a končit písmenem nebo číslicí.
 
-   2. Zvolte **předplatné** z rozevíracího seznamu. Předplatné je propojeno s vaším fakturačním účtem. Toto pole je automaticky naplněná (a nikoli volitelnou) Pokud máte jenom jedno předplatné.
+   2. Vyberte **předplatné** z rozevíracího seznamu. Předplatné je propojeno s vaším fakturačním účtem. Pokud máte jenom jedno předplatné, vyplní se toto pole automaticky (a nedá se vybrat).
 
    3. Vyberte existující skupinu prostředků nebo vytvořte novou skupinu. Další informace najdete v tématu [Skupiny prostředků Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
 
-   4. Zadejte **umístění** pro vaši službu, která jsou uloženy vaše účty úložiště a služby Správce dat StorSimple. Služby Správce zařízení StorSimple, service Data Manager a přidružený účet úložiště by měl být v podporovaných oblastech.
+   4. Zadejte **umístění** služby, které slouží k uložení účtů úložiště a služby StorSimple data Manager. Služba StorSimple Device Manager, Služba Data Manager a přidružený účet úložiště by měly být všechny v podporovaných oblastech.
     
-   5. Pokud chcete získat odkaz na tuto službu na řídicí panel, vyberte **připnout na řídicí panel**.
+   5. Pokud chcete na řídicím panelu získat odkaz na tuto službu, vyberte **Připnout na řídicí panel**.
     
-   6. Klikněte na možnost **Vytvořit**.
+   6. Klikněte na **Vytvořit**.
 
-      ![Vytvoření služby StorSimple Data Manager 3](./media/storsimple-data-manager-ui/create-service-4.png)
+      ![Vytvoření StorSimple Data Manager služby 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
-Vytvoření služby trvá několik minut. Po úspěšném vytvoření služby a zobrazí se nové služby se zobrazí oznámení.
+Vytvoření služby trvá několik minut. Po úspěšném vytvoření služby se zobrazí oznámení a zobrazí se nová služba.
 
 ### <a name="create-a-data-transformation-job-definition"></a>Vytvoření definice úlohy transformace dat
 
-V rámci služby StorSimple Data Manageru je potřeba vytvořit definice úlohy transformace data. Definice úlohy Určuje informace, které vás zajímají Přesun do účtu úložiště v nativním formátu dat StorSimple. Jakmile vytvoříte definici úlohy, poté můžete spouštět tuto úlohu znovu pomocí nastavení různých běhového prostředí.
+V rámci StorSimple Data Manager služby je potřeba vytvořit definici úlohy transformace dat. Definice úlohy určuje podrobnosti o StorSimple datech, která vás zajímá, do účtu úložiště v nativním formátu. Jakmile vytvoříte definici úlohy, můžete tuto úlohu spustit znovu s jiným nastavením modulu runtime.
 
-Proveďte následující kroky a vytvoříte definici úlohy.
+K vytvoření definice úlohy proveďte následující kroky.
 
-1. Přejděte na službu, kterou jste vytvořili. Přejděte na **správy > úlohy definice**.
+1. Přejděte ke službě, kterou jste vytvořili. Přejít na **Definice úloh > správy**.
 
-2. Klikněte na tlačítko **+ úlohy definice**.
+2. Klikněte na **+ definice úlohy**.
 
-    ![Klikněte na + definice úlohy](./media/storsimple-data-manager-ui/create-job-definition-1.png)
+    ![Kliknout na + definice úlohy](./media/storsimple-data-manager-ui/create-job-definition-1.png)
 
-3. Zadejte název vaší definice úlohy. Název může být v rozmezí 3 až 63 znaků. Název může obsahovat velká a malá písmena, číslice a pomlčky.
+3. Zadejte název definice úlohy. Název může být dlouhý 3 až 63 znaků. Název může obsahovat velká a malá písmena, číslice a spojovníky.
 
-4. Zadejte umístění, kde běží vaše úlohy. Toto umístění může být jiné než umístění, ve kterém je nasazená služba.
+4. Zadejte umístění, kde je úloha spuštěna. Toto umístění může být jiné než místo, kde je služba nasazená.
 
-5. Klikněte na tlačítko **zdroj** k určení zdroje dat úložiště.
+5. Klikněte na **zdroj** a určete zdrojové úložiště dat.
 
-    ![Konfigurace úložiště dat zdrojového kódu](./media/storsimple-data-manager-ui/create-job-definition-2.png)
+    ![Konfigurace úložiště zdrojových dat](./media/storsimple-data-manager-ui/create-job-definition-2.png)
 
-6. Protože to je nová služba Data Manager, žádná data úložiště jsou nakonfigurované. V **nastavit zdroj dat**, zadejte podrobnosti o zařízení řady StorSimple 8000 a dat, které vás zajímají.
+6. Vzhledem k tomu, že se jedná o novou Data Manager službu, nejsou nakonfigurovaná žádná úložiště dat. V části **Konfigurovat zdroj dat**zadejte podrobnosti zařízení řady StorSimple 8000 a data, která vás zajímají.
 
-   Chcete-li přidat správce zařízení StorSimple jako úložiště dat, klikněte na tlačítko **přidat nový** v rozevíracím seznamu úložiště dat a pak klikněte na tlačítko **úložiště dat přidat**.
+   Pokud chcete přidat Device Manager StorSimple jako úložiště dat, klikněte na **Přidat nový** v rozevíracím seznamu úložiště dat a pak klikněte na **Přidat úložiště dat**.
 
     ![Přidat nové úložiště dat](./media/storsimple-data-manager-ui/create-job-definition-3.png)
   
-   1. Zvolte **StorSimple řady 8000 správce** jako datový typ úložiště.
+   1. Jako typ úložiště dat vyberte **StorSimple 8000 series Manager** .
     
-   2. Zadejte popisný název pro zdroj dat úložiště.
+   2. Zadejte popisný název úložiště zdrojových dat.
     
-   3. Z rozevíracího seznamu vyberte předplatné přidružené k vaší službě Správce zařízení StorSimple.
+   3. V rozevíracím seznamu vyberte předplatné přidružené k vaší službě StorSimple Device Manager.
     
-   4. Zadejte název sady aplikaci Správce zařízení StorSimple pro **prostředků**.
+   4. Zadejte název StorSimple Device Manager **prostředku**.
 
-   5. Zadejte **Service data encryption** klíče pro službu Správce zařízení StorSimple. 
+   5. Zadejte **šifrovací klíč dat služby** pro službu StorSimple Device Manager. 
 
-      ![Konfigurace zdroje dat, úložiště 1](./media/storsimple-data-manager-ui/create-job-definition-4.png)
+      ![Konfigurace zdrojového úložiště dat 1](./media/storsimple-data-manager-ui/create-job-definition-4.png)
 
-      Klikněte na tlačítko **OK** až budete hotovi. Toto uloží datového úložiště. Opětovné použití tohoto správce zařízení StorSimple v jiné definice úloh bez nutnosti zadávat znovu tyto parametry. Trvá několik sekund, po kliknutí na **OK** pro nově vytvořený zdrojové úložiště dat se zobrazí v rozevírací nabídce.
+      Po dokončení klikněte na **OK** . Tím uložíte úložiště dat. Znovu použít tuto StorSimple Device Manager v jiných definicích úlohy bez zadání těchto parametrů. Po kliknutí na **OK** může trvat několik sekund, než se nově vytvořené zdrojové úložiště dat zobrazí v rozevíracím seznamu.
 
-7. Z rozevíracího seznamu pro **úložiště dat**, vyberte úložiště dat, který jste vytvořili. 
+7. V rozevíracím seznamu pro **úložiště dat**vyberte úložiště dat, které jste vytvořili. 
 
-   1. Zadejte název zařízení řady StorSimple 8000, obsahující data, které vás zajímají.
+   1. Zadejte název zařízení řady StorSimple 8000, které obsahuje data, která vás zajímají.
 
-   2. Zadejte název svazku na zařízení StorSimple, které má vaše data, které vás zajímají.
+   2. Zadejte název svazku umístěného na zařízení StorSimple, které má vaše data zájmu.
 
-   3. V **filtr** podsekce, zadejte kořenový adresář, který obsahuje vaše data zájem _\MyRootDirectory\Data_ formátu. Například písmena jednotky _\C:\Data_ nejsou podporovány. Můžete také přidat nějaké souboru filtry.
+   3. V podčásti **Filtr** zadejte kořenový adresář, který obsahuje vaše data o vašem zájmu ve formátu _\MyRootDirectory\Data_ . Písmena jednotek, například _\C: \Data_ , nejsou podporována. Sem můžete přidat také libovolné filtry souborů.
 
-   4. Služba transformace dat funguje na data, která se nasdílí Azure pomocí snímků. Při spuštění této úlohy můžete vytvořit zálohu pokaždé, když se tato úloha je spuštěna (pro práci na nejnovější data) nebo použijte existující poslední zálohy v cloudu (Pokud pracujete na některých Archivovaná data).
+   4. Služba transformace dat pracuje s daty, která se do Azure vloží přes snímky. Když tuto úlohu spustíte, můžete si zvolit, jestli se má při každém spuštění této úlohy provést zálohování (pro práci s nejnovějšími daty), nebo použít poslední existující zálohu v cloudu (Pokud pracujete na některých archivovaných datech).
 
-   5. Klikněte na **OK**.
+   5. Klikněte na tlačítko **OK**.
 
-      ![Konfigurace zdroje dat, úložiště 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
+      ![Konfigurace zdrojového datového úložiště 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
-8. V dalším kroku cílového úložiště dat je potřeba nakonfigurovat. Vyberte účty úložiště pro soubory umístit do objektů BLOB v příslušném účtu. V rozevíracím seznamu vyberte **přidat nový** a potom **nastavení**.
+8. V dalším kroku je potřeba nakonfigurovat cílové úložiště dat. Vyberte účty úložiště a vložte soubory do objektů BLOB v tomto účtu. V rozevíracím seznamu vyberte **Přidat nové** a pak **nakonfigurujte nastavení**.
 
-9. Vyberte typ cílového úložiště, které chcete přidat a jiné parametry přidružené úložiště.
+9. Vyberte typ cílového úložiště, který chcete přidat, a další parametry přidružené k úložišti.
 
-    Pokud vyberete cílový typ účtu úložiště, můžete zadat popisný název předplatného (zvolte stejné jako u služby nebo jiné) a účet úložiště.
-        ![Konfigurace cílového úložiště dat 1](./media/storsimple-data-manager-ui/create-job-definition-10.png)
+    Pokud vyberete cíl typu účtu úložiště, můžete zadat popisný název, předplatné (zvolte stejnou možnost jako u služby nebo jiné) a účet úložiště.
+        ![konfigurace cílového úložiště dat 1](./media/storsimple-data-manager-ui/create-job-definition-10.png)
 
-    Fronty úložiště se vytvoří při spuštění úlohy. Tato fronta je naplňována zprávami o transformovaných objektech blob, jakmile jsou připravené. Název této fronty je stejný jako název definice úlohy.
+    Při spuštění úlohy se vytvoří fronta úložiště. Tato fronta je naplňována zprávami o transformovaných objektech blob, jakmile jsou připravené. Název této fronty je stejný jako název definice úlohy.
     
-10. Poté, co přidáte úložiště dat, počkejte několik minut.
+10. Po přidání úložiště dat počkejte několik minut.
     
-    1. Vybrat jako cíl z rozevíracího seznamu v úložišti, které jste vytvořili **název cílového účtu**.
+    1. V rozevíracím seznamu v **názvu cílového účtu**vyberte úložiště, které jste vytvořili jako cíl.
 
-    2. Zvolte typ úložiště jako objekty BLOB nebo soubory. Zadejte název kontejneru úložiště, ve které se nachází Transformovaná data. Klikněte na **OK**.
+    2. Jako objekty blob nebo soubory vyberte typ úložiště. Zadejte název kontejneru úložiště, ve kterém se transformovaná data nacházejí. Klikněte na tlačítko **OK**.
 
-        ![Konfigurace cílového účtu úložiště úložiště dat](./media/storsimple-data-manager-ui/create-job-definition-16.png)
+        ![Konfigurace účtu úložiště cílového datového úložiště](./media/storsimple-data-manager-ui/create-job-definition-16.png)
 
-11. Můžete také zkontrolovat možnost zobrazit odhad doby trvání úloh před spuštěním úlohy. Klikněte na tlačítko **OK** k vytvoření definice úlohy. Vaší definice úlohy je nyní dokončena. Pomocí nastavení různých běhových můžete tuto definici úlohy více než jednou prostřednictvím uživatelského rozhraní.
+11. Můžete také zaškrtnout možnost pro zobrazení odhadu trvání úlohy před spuštěním úlohy. Kliknutím na tlačítko **OK** vytvořte definici úlohy. Vaše definice úlohy je teď dokončená. Tuto definici úlohy můžete použít několikrát přes uživatelské rozhraní s různými nastaveními modulu runtime.
 
-    ![Definice dokončení úlohy](./media/storsimple-data-manager-ui/create-job-definition-13.png)
+    ![Dokončení definice úlohy](./media/storsimple-data-manager-ui/create-job-definition-13.png)
 
-    Definice nově vytvořeného projektu se přidá do seznamu definice úloh pro tuto službu.
+    Nově vytvořená definice úlohy se přidá do seznamu definic úloh pro tuto službu.
 
-### <a name="run-the-job-definition"></a>Spustit definice úloh
+### <a name="run-the-job-definition"></a>Spuštění definice úlohy
 
-Pokaždé, když potřebujete přesunout data z StorSimple k účtu úložiště, kterou jste zadali v definici úlohy, musíte ho spustit. Za běhu můžete některé parametry zadávají jinak. Kroky jsou následující:
+Kdykoli potřebujete přesunout data z StorSimple do účtu úložiště, který jste zadali v definici úlohy, je nutné ji spustit. V době běhu lze některé parametry zadat odlišně. Postup je následující:
 
-1. Vyberte svoji službu StorSimple Data Manager a přejděte na **správy > úlohy definice**. Vyberte a klikněte na definici úlohy, které chcete spustit.
+1. Vyberte službu StorSimple Data Manager a pokračujte na **Definice úloh > správy**. Vyberte definici úlohy, kterou chcete spustit, a klikněte na ni.
      
-     ![Spustit úlohu spustit 1](./media/storsimple-data-manager-ui/start-job-run1.png)
+     ![Spustit úlohu 1](./media/storsimple-data-manager-ui/start-job-run1.png)
 
-2. Klikněte na tlačítko **spustit nyní**.
+2. Klikněte na **Spustit nyní**.
      
-     ![Spustit úlohu spustit 2](./media/storsimple-data-manager-ui/start-job-run2.png)
+     ![Spustit spuštění úlohy 2](./media/storsimple-data-manager-ui/start-job-run2.png)
 
-3. Klikněte na tlačítko **parametry běhu** upravit všechna nastavení, která můžete chtít změnit pro tuto úlohu spustit. Klikněte na tlačítko **OK** a potom klikněte na tlačítko **spustit** ke spuštění vaší úlohy.
+3. Kliknutím na položku **nastavení spuštění** upravíte všechna nastavení, která můžete pro spuštění úlohy změnit. Klikněte na tlačítko **OK** a potom kliknutím na tlačítko **Spustit** spusťte úlohu.
 
-    ![Spustit úlohu spustit 3](./media/storsimple-data-manager-ui/start-job-run3.png)
+    ![Spuštění úlohy 3](./media/storsimple-data-manager-ui/start-job-run3.png)
 
-4. Pokud chcete tuto úlohu monitorovat, přejděte na **úlohy** do Správce dat StorSimple. Kromě sledování **úlohy** okna, můžete také poslouchat na frontu úložiště, kam se zpráva přidá pokaždé, když se soubor přesune ze StorSimple k účtu úložiště.
+4. Pokud chcete monitorovat tuto úlohu, přečtěte si v StorSimple Data Manager **úlohy** . Kromě monitorování v okně **úlohy** můžete také naslouchat frontě úložiště, do které se přidá zpráva pokaždé, když se soubor přesune z StorSimple do účtu úložiště.
 
-    ![Spustit úlohu spustit 4](./media/storsimple-data-manager-ui/start-job-run4.png)
+    ![Spustit úlohu 4](./media/storsimple-data-manager-ui/start-job-run4.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Použití sady .NET SDK ke spuštění úlohy správce dat StorSimple](storsimple-data-manager-dotnet-jobs.md).
+[Pomocí sady .NET SDK spusťte StorSimple data Manager úlohy](storsimple-data-manager-dotnet-jobs.md).

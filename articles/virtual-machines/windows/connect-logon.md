@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 1980ee0bdea1316f6117d9deb7d2adb9df941768
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 6566ce4b9cec9ff09666e734625f15033c85127b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162612"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749569"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Jak se připojit a přihlásit k virtuálnímu počítači Azure s Windows
 Pomocí tlačítka **Připojit** na webu Azure Portal spustíte z počítače s Windows relaci Vzdálené plochy (protokol RDP). Nejdřív se připojíte k virtuálnímu počítači a potom se přihlásíte.
@@ -33,16 +33,16 @@ Pokud se chcete připojit k virtuálnímu počítači s Windows z počítače Ma
 4. V horní části stránky pro virtuální počítač vyberte **připojit**.
 2. Na stránce **připojit k virtuálnímu počítači** vyberte příslušnou IP adresu a port. Ve většině případů by se měla používat výchozí IP adresa a port. Vyberte **Stáhnout soubor RDP**. Pokud má virtuální počítač nastavenou sadu zásad za běhu, musíte nejdřív před stažením souboru RDP vybrat tlačítko **požádat o přístup** a požádat ho o přístup. Další informace o zásadách za běhu najdete v tématu [Správa přístupu k virtuálním počítačům pomocí zásad podle časových údajů](../../security-center/security-center-just-in-time.md).
 2. Otevřete stažený soubor RDP a po zobrazení výzvy vyberte **připojit** . 
-2. Zobrazí se upozornění, že `.rdp` soubor pochází od neznámého vydavatele. To se očekává. V okně **připojení ke vzdálené ploše** pokračujte výběrem **připojit** .
+2. Zobrazí se upozornění, že soubor `.rdp` pochází od neznámého vydavatele. To se očekává. V okně **připojení ke vzdálené ploše** pokračujte výběrem **připojit** .
    
     ![Snímek obrazovky upozornění na neznámého vydavatele](./media/connect-logon/rdp-warn.png)
 3. V okně **Zabezpečení systému Windows** vyberte **Další možnosti** a pak **Použít jiný účet**. Zadejte přihlašovací údaje pro účet na virtuálním počítači a pak vyberte **OK**.
    
-     **Místní účet**: Obvykle se jedná o uživatelské jméno a heslo místního účtu, které jste zadali při vytváření virtuálního počítače. V tomto případě je doménou název virtuálního počítače ve formátu *název_virtuálního_počítače*&#92;*uživatelské_jméno*.  
+     **Místní účet**: obvykle se jedná o uživatelské jméno a heslo místního účtu, které jste zadali při vytváření virtuálního počítače. V tomto případě je doménou název virtuálního počítače ve formátu *název_virtuálního_počítače*&#92;*uživatelské_jméno*.  
    
     **Virtuální počítač připojený k doméně**: Pokud virtuální počítač patří do domény, zadejte uživatelské jméno ve formátu *doména*&#92;*uživatelské_jméno*. Účet také musí být členem skupiny Administrators nebo musí mít udělené oprávnění ke vzdálenému přístupu k virtuálnímu počítači.
    
-    **Řadič domény**: Pokud je virtuální počítač řadičem domény, zadejte uživatelské jméno a heslo účtu správce domény pro danou doménu.
+    **Řadič domény**: Pokud je virtuální počítač řadičem domény, zadejte uživatelské jméno a heslo účtu správce domény pro tuto doménu.
 4. Vyberte **Ano** , pokud chcete ověřit identitu virtuálního počítače a dokončit přihlášení.
    
    ![Snímek obrazovky zobrazující zprávu o ověření identity virtuálního počítače](./media/connect-logon/cert-warning.png)
@@ -55,9 +55,9 @@ Pokud se chcete připojit k virtuálnímu počítači s Windows z počítače Ma
 
 ## <a name="connect-to-the-virtual-machine-using-powershell"></a>Připojení k virtuálnímu počítači pomocí PowerShellu
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
-Pokud používáte PowerShell a máte nainstalovaný modul Azure PowerShell, můžete se také připojit pomocí `Get-AzRemoteDesktopFile` rutiny, jak je znázorněno níže.
+Pokud používáte PowerShell a máte nainstalovaný modul Azure PowerShell, můžete se také připojit pomocí rutiny `Get-AzRemoteDesktopFile`, jak je znázorněno níže.
 
 V tomto příkladu se okamžitě spustí připojení RDP, které vás provede podobnými výzvami.
 

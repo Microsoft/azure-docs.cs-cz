@@ -4,17 +4,18 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/23/2019
-ms.openlocfilehash: 3a6807cc204a5f8a6957bb03cf4dcbaf3611c17c
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: b9f84385e49fcf5f101b7ce642b0a82e3a4b9388
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71148389"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799766"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Ověřování pomocí Azure Active Directory
 
 > [!IMPORTANT]
-> V současné době se ověřování podporuje **pouze** rozhraní API pro počítačové zpracování obrazu, Face API, rozhraní API pro analýzu textu a moderní čtečky pomocí Azure Active Directory (AAD).
+> 1. V současné době platí **pouze** rozhraní API pro počítačové zpracování obrazu, Face API, rozhraní API pro analýzu textu, moderní čtečka, funkce pro rozpoznávání formulářů, detektor anomálií a všechny služby Bing s výjimkou vlastní vyhledávání Bingu ověřování pomocí Azure Active Directory (AAD).
+> 2. Ověřování AAD se musí vždycky používat společně s názvem vlastní subdomény vašeho prostředku Azure. [Regionální koncové body](https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-custom-subdomains#is-there-a-list-of-regional-endpoints) nepodporují ověřování AAD.
 
 V předchozích částech jsme vám ukázali, jak ověřit službu Azure Cognitive Services pomocí klíče předplatného s jednou službou nebo více službami. I když tyto klíče poskytují rychlou a jednoduchou cestu k zahájení vývoje, jsou v složitějších scénářích, které vyžadují řízení přístupu na základě rolí. Pojďme se podívat na to, co je potřeba k ověřování pomocí Azure Active Directory (AAD).
 
@@ -22,7 +23,7 @@ V následujících částech budete pomocí prostředí Azure Cloud Shell nebo A
 
 ### <a name="create-a-resource-with-a-custom-subdomain"></a>Vytvoření prostředku s vlastní subdoménou
 
-Prvním krokem je vytvoření vlastní subdomény.
+Prvním krokem je vytvoření vlastní subdomény. Pokud chcete použít existující prostředek Cognitive Services, který nemá název vlastní subdomény, postupujte podle pokynů v [Cognitive Services vlastní subdomény](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#how-does-this-impact-existing-resources) , abyste pro svůj prostředek povolili vlastní subdoménu.
 
 1. Začněte otevřením Azure Cloud Shell. pak [Vyberte předplatné](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0#description):
 

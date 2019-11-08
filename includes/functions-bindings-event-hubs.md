@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: ef3dc13bd7d36e11f3109ef96a6f453b59afe145
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 0f94c89a52de138b261796cbef25c0acb57622c4
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809338"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73799740"
 ---
 ## <a name="trigger"></a>Trigger
 
@@ -385,13 +385,13 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Function. JSON – vlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** | – | Musí být nastavené na `eventHubTrigger`. Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
-|**direction** | – | Musí být nastavené na `in`. Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
-|**Jméno** | – | Název proměnné, která představuje položku události v kódu funkce. |
+|**type** | neuvedeno | Musí být nastavené na `eventHubTrigger`. Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
+|**direction** | neuvedeno | Musí být nastavené na `in`. Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
+|**Jméno** | neuvedeno | Název proměnné, která představuje položku události v kódu funkce. |
 |**dílčí** |**EventHubName** | Pouze funkce 1. x. Název centra událostí Pokud je v připojovacím řetězci přítomen i název centra událostí, tato hodnota tuto vlastnost Přepisuje za běhu. |
 |**eventHubName** |**EventHubName** | Pouze funkce 2. x. Název centra událostí Pokud je v připojovacím řetězci přítomen i název centra událostí, tato hodnota tuto vlastnost Přepisuje za běhu. |
 |**Klientská organizace** |**Klientská organizace** | Volitelná vlastnost, která nastaví [skupinu uživatelů](../articles/event-hubs/event-hubs-features.md#event-consumers) použitou k přihlášení k odběru událostí v centru. Je-li tento parametr vynechán, je použita skupina příjemců `$Default`. |
-|**kardinalita** | – | Pro JavaScript. Pokud chcete povolit dávkování, nastavte na `many`.  Pokud tento parametr vynecháte nebo nastavíte na `one`, jedna zpráva byla předána funkci. |
+|**kardinalita** | neuvedeno | Pro JavaScript. Pokud chcete povolit dávkování, nastavte na `many`.  Pokud tento parametr vynecháte nebo nastavíte na `one`, jedna zpráva byla předána funkci. |
 |**vázán** |**Vázán** | Název nastavení aplikace, které obsahuje připojovací řetězec k oboru názvů centra událostí. Zkopírujte tento připojovací řetězec kliknutím na tlačítko **informace o připojení** pro [obor názvů](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), nikoli v samotném centru událostí. Tento připojovací řetězec musí mít aspoň oprávnění ke čtení pro aktivaci triggeru.|
 |**dílčí**|**EventHubName**|Název centra událostí Dá se odkazovat pomocí nastavení aplikace `%eventHubName%`|
 
@@ -643,7 +643,7 @@ def main(timer: func.TimerRequest) -> str:
 Následující příklad ukazuje funkci jazyka Java, která zapisuje zprávu contianing aktuálním časem do centra událostí.
 
 ```java
-@}FunctionName("sendTime")
+@FunctionName("sendTime")
 @EventHubOutput(name = "event", eventHubName = "samples-workitems", connection = "AzureEventHubConnection")
 public String sendTime(
    @TimerTrigger(name = "sendTimeTrigger", schedule = "0 *&#47;5 * * * *") String timerInfo)  {
@@ -676,9 +676,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Function. JSON – vlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** | – | Musí být nastavené na eventHub. |
-|**direction** | – | Musí být nastavené na "out". Tento parametr je nastaven automaticky při vytváření vazby v Azure Portal. |
-|**Jméno** | – | Název proměnné použitý v kódu funkce, který představuje událost. |
+|**type** | neuvedeno | Musí být nastavené na eventHub. |
+|**direction** | neuvedeno | Musí být nastavené na "out". Tento parametr je nastaven automaticky při vytváření vazby v Azure Portal. |
+|**Jméno** | neuvedeno | Název proměnné použitý v kódu funkce, který představuje událost. |
 |**dílčí** |**EventHubName** | Pouze funkce 1. x. Název centra událostí Pokud je v připojovacím řetězci přítomen i název centra událostí, tato hodnota tuto vlastnost Přepisuje za běhu. |
 |**eventHubName** |**EventHubName** | Pouze funkce 2. x. Název centra událostí Pokud je v připojovacím řetězci přítomen i název centra událostí, tato hodnota tuto vlastnost Přepisuje za běhu. |
 |**vázán** |**Vázán** | Název nastavení aplikace, které obsahuje připojovací řetězec k oboru názvů centra událostí. Zkopírujte tento připojovací řetězec kliknutím na tlačítko **informace o připojení** pro *obor názvů*, nikoli v samotném centru událostí. Tento připojovací řetězec musí mít oprávnění Odeslat pro odeslání zprávy do datového proudu událostí.|
@@ -687,7 +687,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 ## <a name="output---usage"></a>Výstup – využití
 
-Do C# skriptu C# a zasílejte zprávy pomocí parametru metody, jako je například`out string paramName`. Ve C# skriptu `paramName` je hodnota zadaná ve vlastnosti `name` *funkce Function. JSON*. Chcete-li zapsat více zpráv, můžete místo `out string`použít `ICollector<string>` nebo `IAsyncCollector<string>`.
+Do C# skriptu C# a zasílejte zprávy pomocí parametru metody, jako je například `out string paramName`. Ve C# skriptu `paramName` je hodnota zadaná ve vlastnosti `name` *Function. JSON*. Chcete-li zapsat více zpráv, můžete místo `out string`použít `ICollector<string>` nebo `IAsyncCollector<string>`.
 
 V JavaScriptu přístup k výstupní události pomocí `context.bindings.<name>`. `<name>` je hodnota zadaná ve vlastnosti `name` *Function. JSON*.
 
@@ -724,5 +724,5 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
 |maxBatchSize|64|Maximální počet událostí přijatých pro jednu smyčku příjmu.|
-|prefetchCount|–|Výchozí PrefetchCount, které bude používat základní EventProcessorHost.|
-|batchCheckpointFrequency|1\. místo|Počet dávek události, které mají být zpracovány před vytvořením kontrolního bodu centra EventHub.|
+|prefetchCount|neuvedeno|Výchozí PrefetchCount, které bude používat základní EventProcessorHost.|
+|batchCheckpointFrequency|1|Počet dávek události, které mají být zpracovány před vytvořením kontrolního bodu centra EventHub.|
