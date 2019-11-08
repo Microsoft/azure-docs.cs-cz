@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: 55e802aa1f7bdf0d67d1a9c3f020d255afdc8130
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 4291db0bb1edbc366c42febed992a7c27d46eb15
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261908"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796753"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrace databáze PostgreSQL pomocí výpisu a obnovení
 [Pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) můžete použít k extrakci databáze PostgreSQL do souboru s výpisem paměti a [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) pro obnovení databáze PostgreSQL z archivního souboru vytvořeného pomocí pg_dump.
@@ -34,7 +34,7 @@ pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb -f testdb
 ```
 
 
-## <a name="restore-the-data-into-the-target-azure-database-for-postrgesql-using-pg_restore"></a>Obnovení dat do cílové služby Azure Database for PostrgeSQL pomocí pg_restore
+## <a name="restore-the-data-into-the-target-azure-database-for-postgresql-using-pg_restore"></a>Obnovení dat do cílového Azure Database for PostgreSQL pomocí pg_restore
 Po vytvoření cílové databáze můžete použít příkaz pg_restore a parametr-d,--dbname k obnovení dat do cílové databáze ze souboru s výpisem paměti.
 ```bash
 pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user@servername> --dbname=<target database name> <database>.dump
@@ -42,9 +42,9 @@ pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user@ser
 Zahrnutím parametru--No-Owner dojde k tomu, že všechny objekty vytvořené během obnovování budou vlastněny uživatelem zadaným parametrem--username. Další informace najdete v oficiální dokumentaci k PostgreSQL na [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html).
 
 > [!NOTE]
-> Pokud váš server PostgreSQL vyžaduje připojení SSL (ve výchozím nastavení na serverech Azure Database for PostgreSQL), nastavte proměnnou `PGSSLMODE=require` prostředí tak, aby se nástroj pg_restore připojil k protokolu SSL. Bez SSL se chyba může přečíst.`FATAL:  SSL connection is required. Please specify SSL options and retry.`
+> Pokud váš server PostgreSQL vyžaduje připojení SSL (ve výchozím nastavení na Azure Database for PostgreSQL serverech), nastavte proměnnou prostředí `PGSSLMODE=require` tak, aby se nástroj pg_restore připojil k protokolu SSL. Bez protokolu SSL se může zobrazit chyba `FATAL:  SSL connection is required. Please specify SSL options and retry.`
 >
-> Na příkazovém řádku Windows spusťte příkaz `SET PGSSLMODE=require` před spuštěním příkazu pg_restore. V systému Linux nebo bash spusťte příkaz `export PGSSLMODE=require` před spuštěním příkazu pg_restore.
+> V příkazovém řádku Windows spusťte příkaz `SET PGSSLMODE=require` před spuštěním příkazu pg_restore. V systému Linux nebo bash spusťte příkaz `export PGSSLMODE=require` před spuštěním příkazu pg_restore.
 >
 
 V tomto příkladu obnovte data ze souboru s výpisem paměti **TestDB. dump** do databáze **mypgsqldb** na cílovém serveru **mydemoserver.Postgres.Database.Azure.com**. 
@@ -72,7 +72,7 @@ Jedním ze způsobů, jak migrovat stávající databázi PostgreSQL do služby 
 
 - Mělo by být již provedeno ve výchozím nastavení, ale otevřete soubor s výpisem paměti, abyste ověřili, že příkazy CREATE index jsou po vložení dat. Pokud tomu tak není, přesuňte příkazy CREATE index po vložení dat.
 
-- Obnovte s přepínači – FC a- *#* j pro paralelizovat obnovení. *#* je počet jader na cílovém serveru. Můžete také zkusit *#* nastavit na dvojnásobek počtu jader cílového serveru, abyste viděli dopad. Příklad:
+- Obnovte pomocí přepínačů-FC a-j *#* paralelizovat obnovení. *#* je počet jader na cílovém serveru. Můžete také zkusit s *#* nastavenou na dvojnásobek počtu jader cílového serveru, abyste viděli dopad. Příklad:
 
     ```
     pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump
@@ -83,7 +83,7 @@ Jedním ze způsobů, jak migrovat stávající databázi PostgreSQL do služby 
 - Na cílovém serveru Azure Database for PostgreSQL před obnovením zvažte následující:
     - Vypněte sledování výkonu dotazů, protože tyto statistiky nejsou během migrace potřeba. To můžete provést nastavením pg_stat_statements. Track, pg_qs. query_capture_mode a pgms_wait_sampling. query_capture_mode na NONE.
 
-    - K urychlení migrace použijte vysoce výpočetní a vysoce paměťovou SKU, například 32 vCore paměť optimalizované pro optimalizaci. Až se obnovení dokončí, můžete se snadno škálovat zpátky na preferovanou skladovou jednotku. Čím vyšší je SKU, tím více paralelismu můžete dosáhnout zvýšením odpovídajícího `-j` parametru v příkazu pg_restore. 
+    - K urychlení migrace použijte vysoce výpočetní a vysoce paměťovou SKU, například 32 vCore paměť optimalizované pro optimalizaci. Až se obnovení dokončí, můžete se snadno škálovat zpátky na preferovanou skladovou jednotku. Čím vyšší je SKU, tím více paralelismu můžete dosáhnout zvýšením odpovídajícího parametru `-j` v příkazu pg_restore. 
 
     - Další IOPS na cílovém serveru můžou zlepšit výkon při obnovení. Další IOPS můžete zřídit zvýšením velikosti úložiště serveru. Toto nastavení se nedá vrátit, ale zvažte, jestli by vyšší IOPS během budoucna využila výhody vaší skutečné zátěže.
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: f411771fbf39a99642506253fc025d6b29840423
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7d5a232d92c37a94ff427a3bf203f6f20764060e
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648647"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748575"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reakce na události IoT Hub pomocí Event Grid k aktivaci akcí
 
@@ -33,11 +33,11 @@ IoT Hub zveřejňují následující typy událostí:
 
 | Typ události | Popis |
 | ---------- | ----------- |
-| Microsoft.Devices.DeviceCreated | Publikováno, když je zařízení zaregistrované do služby IoT Hub. |
-| Microsoft.Devices.DeviceDeleted | Publikováno při odstranění zařízení ze služby IoT Hub. |
-| Microsoft.Devices.DeviceConnected | Publikováno, když je zařízení připojené ke IoT Hub. |
+| Microsoft. Devices. DeviceCreated | Publikováno, když je zařízení zaregistrované do služby IoT Hub. |
+| Microsoft. Devices. DeviceDeleted | Publikováno při odstranění zařízení ze služby IoT Hub. |
+| Microsoft. Devices. DeviceConnected | Publikováno, když je zařízení připojené ke IoT Hub. |
 | Microsoft. Devices. DeviceDisconnected | Publikováno, když se zařízení odpojí od služby IoT Hub. |
-| Microsoft.Devices.DeviceTelemetry | Publikováno po odeslání zprávy telemetrie zařízení do služby IoT Hub |
+| Microsoft. Devices. DeviceTelemetry | Publikováno po odeslání zprávy telemetrie zařízení do služby IoT Hub |
 
 Pomocí Azure Portal nebo rozhraní příkazového řádku Azure můžete nakonfigurovat, které události se mají publikovat z každého centra IoT Hub. Například zkuste kurz [Odeslat e-mailová oznámení o událostech Azure IoT Hub pomocí Logic Apps](../event-grid/publish-iot-hub-events-to-logic-apps.md).
 
@@ -166,7 +166,7 @@ Podrobný popis jednotlivých vlastností najdete v tématu [Azure Event Grid sc
 
 Odběry událostí IoT Hub mohou filtrovat události na základě typu události, datového obsahu a předmětu, což je název zařízení.
 
-Event Grid umožňuje [filtrování](../event-grid/event-filtering.md) typů událostí, předmětů a obsahu dat. Při vytváření předplatného Event Grid můžete zvolit přihlášení k odběru vybraných událostí IoT. Filtry předmětu v Event Grid fungují na základě **začátku** (prefix) a **končí** na (přípona) shod. Filtr používá `AND` operátor, takže události s subjektem, které odpovídají předponě a příponám, budou doručeny do odběratele.
+Event Grid umožňuje [filtrování](../event-grid/event-filtering.md) typů událostí, předmětů a obsahu dat. Při vytváření předplatného Event Grid můžete zvolit přihlášení k odběru vybraných událostí IoT. Filtry předmětu v Event Grid fungují na základě **začátku** (prefix) a **končí** na (přípona) shod. Filtr používá operátor `AND`, takže události s subjektem, které odpovídají předponě a příponám, budou doručeny do odběratele.
 
 Předmět událostí IoT používá formát:
 
@@ -194,7 +194,7 @@ Aplikace, které zpracovávají IoT Hub události, by měly postupovat podle tě
 
 * Zprávy mohou být doručeny mimo pořadí nebo po zpoždění. Pomocí pole ETag můžete zjistit, jestli jsou informace o objektech pro události vytvořené nebo odstraněné zařízení aktuální.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vyzkoušejte kurz IoT Hub události](../event-grid/publish-iot-hub-events-to-logic-apps.md)
 
@@ -204,4 +204,4 @@ Aplikace, které zpracovávají IoT Hub události, by měly postupovat podle tě
 
 * [Porovnání rozdílů mezi událostmi a zprávami IoT Hub směrování](iot-hub-event-grid-routing-comparison.md)
 
-* [Naučte se používat události telemetrie IoT k implementaci prostorové analýzy IoT pomocí Azure Maps (a IoT Hub směrování zpráv).](../azure-maps/tutorial-iot-hub-maps.md#filter-events-using-iot-hub-message-routing)
+* [Naučte se používat události telemetrie IoT k implementaci prostorové analýzy IoT pomocí Azure Maps](../azure-maps/tutorial-iot-hub-maps.md#create-an-azure-function-and-add-an-event-grid-subscription)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 9537744787df7fc6c470bc1ee6862ad3f2991ae9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1f5f8f3a315b894ab8bc972d36008b5bce85d8e7
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088726"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749240"
 ---
 # <a name="resize-a-windows-vm"></a>Změna velikosti virtuálního počítače s Windows
 
@@ -29,7 +29,7 @@ Po vytvoření virtuálního počítače můžete virtuální počítač škálo
 
 Pokud virtuální počítač používá Premium Storage, ujistěte se, že zvolíte verzi **s** , abyste získali Premium Storage podporu. Například vyberte Standard_E4**s**_V3 namísto Standard_E4_v3.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="resize-a-windows-vm-not-in-an-availability-set"></a>Změna velikosti virtuálního počítače s Windows, který není ve skupině dostupnosti
 
@@ -54,7 +54,7 @@ $vm.HardwareProfile.VmSize = "<newVMsize>"
 Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 ```
 
-Pokud požadovaná velikost není uvedená, spusťte následující příkazy, čímž zrušíte přidělení virtuálního počítače, jeho velikost a restartujte virtuální počítač. Nahraďte  **\<newVMsize >** velikostí, kterou chcete.
+Pokud požadovaná velikost není uvedená, spusťte následující příkazy, čímž zrušíte přidělení virtuálního počítače, jeho velikost a restartujte virtuální počítač. Nahraďte **\<newVMsize >** velikostí, kterou chcete.
    
 ```powershell
 Stop-AzVM -ResourceGroupName $resourceGroup -Name $vmName -Force
@@ -122,7 +122,7 @@ $vmIds = $as.VirtualMachinesReferences
     }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pro další škálovatelnost spusťte více instancí virtuálních počítačů a nahorizontální navýšení kapacity. Další informace najdete v tématu [Automatické škálování počítačů s Windows v sadě škálování virtuálního počítače](../../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md).
 

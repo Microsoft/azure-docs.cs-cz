@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: bfb012116f74e451f9479c8c65057e5c8405bbb4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fc7e0f7e4e0e80a030a437bc4f0f13360595f32e
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513780"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747706"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Nasazení samoobslužné brány Azure API Management do Docker
 
@@ -26,11 +26,14 @@ Tento článek popisuje kroky pro nasazení místní hostované brány Azure API
 > [!NOTE]
 > Funkce brány pro samoobslužné hostování je ve verzi Preview. V rámci verze Preview je brána v místním prostředí dostupná jenom pro vývojáře a úrovně Premium bez dalších poplatků. Úroveň pro vývojáře je omezená na jediné nasazení samoobslužné brány.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
 - Vytvořte prostředí Docker. [Docker pro stolní počítače](https://www.docker.com/products/docker-desktop) je vhodnou možností pro účely vývoje a vyhodnocení. Informace o všech edicích Docker, jejich funkcích a komplexní dokumentaci k samotnému Docker najdete v [dokumentaci k Docker](https://docs.docker.com) .
 - [Zřízení prostředku brány v instanci API Management](api-management-howto-provision-self-hosted-gateway.md)
+
+> [!NOTE]
+> Samoobslužná brána je zabalená jako kontejner Docker založený na systému Linux.
 
 ## <a name="deploy-the-self-hosted-gateway-to-docker"></a>Nasazení samoobslužné brány do Docker
 
@@ -63,4 +66,5 @@ CONTAINER ID        IMAGE                                                 COMMAN
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o samoobslužné bráně najdete v tématu [Přehled služby Azure API Management v místním prostředí pro samoobslužné hostování](self-hosted-gateway-overview.md) .
+* Další informace o samoobslužné bráně najdete v tématu [Přehled služby Azure API Management v místním prostředí pro samoobslužné hostování](self-hosted-gateway-overview.md).
+* [Nakonfigurujte vlastní název domény pro samoobslužnou bránu](api-management-howto-configure-custom-domain-gateway.md).

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: e4f1797d600a226eb152a464efe4da8ddbdb6207
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ff50d972ad9590fb70dbcf67e21f8b5dc8c32fad
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606220"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748052"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Použití směrování zpráv IoT Hub k posílání zpráv ze zařízení do cloudu do různých koncových bodů
 
@@ -57,7 +57,7 @@ IoT Hub vytvoří dávky zprávy a zapisuje data do úložiště vždy, když d�
 
 Můžete použít libovolnou konvenci pojmenovávání souborů, ale musíte použít všechny uvedené tokeny. Pokud nejsou k dispozici žádná data pro zápis, IoT Hub bude zapisovat do prázdného objektu BLOB.
 
-Doporučujeme, abyste zavedli kontejnery úložiště a pak na ně prováděli iteraci, aby se zajistilo, že všechny kontejnery budou čteny bez jakýchkoli předpokladů oddílu. Rozsah oddílu se může během [převzetí služeb při selhání iniciované společností Microsoft](iot-hub-ha-dr.md#microsoft-initiated-failover) nebo [ruční převzetí služeb při](iot-hub-ha-dr.md#manual-failover)selhání IoT Hub změnit. K vytvoření výčtu seznamů objektů blob můžete použít [rozhraní list API objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/list-blobs) . Podívejte se prosím na následující ukázku jako na doprovodné materiály.
+Doporučujeme vypsat objekty blob nebo soubory a potom je v nich vymezit, aby se zajistilo, že všechny objekty blob nebo soubory budou čteny bez nutnosti provádět žádné předpoklady oddílu. Rozsah oddílu se může během [převzetí služeb při selhání iniciované společností Microsoft](iot-hub-ha-dr.md#microsoft-initiated-failover) nebo [ruční převzetí služeb při](iot-hub-ha-dr.md#manual-failover)selhání IoT Hub změnit. K vytvoření výčtu seznamů objektů BLOB nebo [seznamu adls Gen2 rozhraní API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) pro seznam souborů můžete použít [rozhraní list API blobů](https://docs.microsoft.com/rest/api/storageservices/list-blobs) . Podívejte se prosím na následující ukázku jako na doprovodné materiály.
 
 ```csharp
 public void ListBlobsInContainer(string containerName, string iothub)

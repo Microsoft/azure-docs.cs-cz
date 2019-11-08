@@ -1,6 +1,6 @@
 ---
-title: Rozšíření diagnostiky Azure pro Windows | Dokumentace Microsoftu
-description: Monitorování virtuálních počítačů Windows Azure pomocí rozšíření Azure Diagnostics
+title: Azure Diagnostics rozšíření pro Windows | Microsoft Docs
+description: Monitorování virtuálních počítačů Azure s Windows pomocí rozšíření Azure Diagnostics
 services: virtual-machines-windows
 documentationcenter: ''
 author: johnkemnetz
@@ -12,40 +12,40 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: 58c520ecbaf764140748167e458c301ab56de375
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4230e2aac8d386c759a403b9008029d68049569c
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708056"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749402"
 ---
-# <a name="azure-diagnostics-extension-for-windows-vms"></a>Rozšíření diagnostiky Azure pro virtuální počítače s Windows
+# <a name="azure-diagnostics-extension-for-windows-vms"></a>Rozšíření Azure Diagnostics pro virtuální počítače s Windows
 
 ## <a name="overview"></a>Přehled
 
-Rozšíření virtuálního počítače Diagnostika Azure umožňuje shromažďovat data monitorování, jako jsou čítače výkonu a protokoly událostí z vašeho virtuálního počítače Windows. Můžete podrobně určit, jaká data chcete shromáždit a ve kterém chcete data chcete přejít, jako je například účet služby Azure Storage nebo centra událostí Azure. Tato data můžete použít také k vytváření grafů na webu Azure Portal nebo vytvářet upozornění metrik.
+Rozšíření Azure Diagnostics VM umožňuje shromažďovat data monitorování, například čítače výkonu a protokoly událostí, z virtuálního počítače s Windows. Můžete přesně určit, jaká data chcete shromažďovat a kam chcete data přejít, jako je například účet Azure Storage nebo centrum událostí Azure. Tato data můžete také použít k sestavování grafů v Azure Portal nebo vytváření výstrah metrik.
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
-Rozšíření Azure Diagnostics dají spustit pro klienta Windows 10, Windows Server 2008 R2, 2012, 2012 R2 a 2016.
+Rozšíření Azure Diagnostics lze spustit pro klienta Windows 10, Windows Server 2008 R2, 2012, 2012 R2 a 2016.
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
-Rozšíření Azure Diagnostics vyžaduje, aby cílový virtuální počítač je připojený k Internetu. 
+Rozšíření Azure Diagnostics vyžaduje, aby byl cílový virtuální počítač připojený k Internetu. 
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-[Rozšíření Azure Diagnostics schéma a hodnoty vlastností jsou popsány v tomto dokumentu.](../../azure-monitor/platform/diagnostics-extension-schema-1dot3.md)
+[Schéma rozšíření Azure Diagnostics a hodnoty vlastností jsou popsány v tomto dokumentu.](../../azure-monitor/platform/diagnostics-extension-schema-1dot3.md)
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
-Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Schéma JSON, které jsou podrobně popsané v předchozí části lze použít v šabloně Azure Resource Manageru pro spuštění rozšíření Azure Diagnostics při nasazení šablony Azure Resource Manageru. Zobrazit [použití monitorováním a diagnostikou pomocí šablony Azure Resource Manageru a virtuální počítač Windows](extensions-diagnostics-template.md).
+Rozšíření virtuálních počítačů Azure je možné nasadit pomocí šablon Azure Resource Manager. Schéma JSON popsané v předchozí části lze použít v šabloně Azure Resource Manager ke spuštění rozšíření Azure Diagnostics během nasazování šablony Azure Resource Manager. Přečtěte si téma [použití monitorování a diagnostiky s virtuálními počítači s Windows a šablonami Azure Resource Manager](extensions-diagnostics-template.md).
 
-## <a name="azure-cli-deployment"></a>Nasazení v Azure CLI
+## <a name="azure-cli-deployment"></a>Nasazení Azure CLI
 
-Azure CLI slouží k nasazení rozšíření Azure Diagnostics do existujícího virtuálního počítače. Nahraďte platný kód JSON z výše uvedeného schématu rozšíření na chráněná nastavení a nastavení vlastnosti. 
+Pomocí rozhraní příkazového řádku Azure můžete nasadit rozšíření Azure Diagnostics do existujícího virtuálního počítače. Nahraďte vlastnosti Protected Settings a Settings platným JSON ze schématu rozšíření výše. 
 
 ```azurecli
 az vm extension set \
@@ -57,11 +57,11 @@ az vm extension set \
   --settings public-settings.json 
 ```
 
-## <a name="powershell-deployment"></a>Nasazení pomocí Powershellu
+## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
 
-`Set-AzVMDiagnosticsExtension` Příkaz slouží k přidání rozšíření Azure Diagnostics do existujícího virtuálního počítače. Viz také [použití Powershellu k povolení diagnostiky Azure v rámci virtuálního počítače se systémem Windows](ps-extensions-diagnostics.md).
+Pomocí příkazu `Set-AzVMDiagnosticsExtension` lze přidat rozšíření Azure Diagnostics do existujícího virtuálního počítače. Další informace najdete [v tématu použití PowerShellu k povolení Azure Diagnostics ve virtuálním počítači s Windows](ps-extensions-diagnostics.md).
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 
 ```powershell
@@ -78,18 +78,18 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup `
 
 ### <a name="troubleshoot"></a>Řešení potíží
 
-Data o stavu nasazení rozšíření se dají načíst z portálu Azure portal a pomocí rozhraní příkazového řádku Azure. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure CLI.
+Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí rozhraní příkazového řádku Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure CLI.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-[Najdete v článku](../../azure-monitor/platform/diagnostics-extension-troubleshooting.md) pro pokročilejší Průvodce odstraňováním potíží pro rozšíření Azure Diagnostics.
+Podrobný průvodce odstraňováním potíží pro Azure Diagnostics rozšíření [najdete v tomto článku](../../azure-monitor/platform/diagnostics-extension-troubleshooting.md) .
 
 ### <a name="support"></a>Podpora
 
-Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o používání podpory Azure najdete v článku [nejčastější dotazy k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).
+Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete kontaktovat odborníky na Azure na [webu MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/). Případně můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o použití podpory Azure najdete v tématu [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Další kroky
 * [Další informace o rozšíření Azure Diagnostics](../../azure-monitor/platform/diagnostics-extension-overview.md)
-* [Projděte si rozšíření schématu a verze](../../azure-monitor/platform/diagnostics-extension-schema.md)
+* [Zkontrolovat schéma a verze rozšíření](../../azure-monitor/platform/diagnostics-extension-schema.md)

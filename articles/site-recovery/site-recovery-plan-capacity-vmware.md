@@ -1,96 +1,96 @@
 ---
-title: Plánování kapacity a škálování pro zotavení po havárii VMware do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek vám může pomoci plánování kapacity a škálování při nastavování zotavení po havárii virtuálních počítačů VMware do Azure pomocí Azure Site Recovery.
+title: Plánování kapacity a škálování pro zotavení po havárii VMware do Azure pomocí Azure Site Recovery | Microsoft Docs
+description: Tento článek vám může pomoci při plánování kapacity a škálování při nastavování zotavení po havárii virtuálních počítačů VMware do Azure pomocí Azure Site Recovery.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 9a77b3982d8aed6ae694c32baecd7ae194c51724
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0bf1b34295d827124198206e743bc21d5f7eb904
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924830"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747899"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Plánování kapacity a škálování pro zotavení po havárii VMware do Azure
 
 Tento článek slouží k plánování kapacity a škálování při replikaci místních virtuálních počítačů VMware a fyzických serverů do Azure pomocí [Azure Site Recovery](site-recovery-overview.md).
 
-## <a name="how-do-i-start-capacity-planning"></a>Jak začít, plánování kapacity?
+## <a name="how-do-i-start-capacity-planning"></a>Návody začít plánovat kapacitu?
 
-Další informace o požadavky na infrastrukturu Azure Site Recovery, shromážděte informace o prostředí replikace spuštěním [Azure Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner-doc) pro replikaci VMware. Další informace najdete v tématu [o Site Recovery Deployment Planner pro replikaci z VMware do Azure](site-recovery-deployment-planner.md). 
+Pokud se chcete dozvědět víc o Azure Site Recovery požadavcích na infrastrukturu, shromážděte informace o prostředí replikace spuštěním [Plánovač nasazení služby Azure Site Recovery](https://aka.ms/asr-deployment-planner-doc) pro replikaci VMware. Další informace najdete v tématu [o Plánovač nasazení Site Recovery pro VMware do Azure](site-recovery-deployment-planner.md). 
 
-Plánovač nasazení služby Site Recovery poskytuje sestavu, která obsahuje kompletní informace o kompatibilních a nekompatibilních virtuálních počítačích, discích jednotlivých virtuálních počítačů, a četnost změn dat na disku. Nástroj také obsahuje souhrn požadavků na šířku pásma sítě pro splnění cíle cíle bodu obnovení a infrastrukturu Azure, které je nutné pro úspěšné replikaci a testovací převzetí služeb při selhání.
+Site Recovery Plánovač nasazení poskytuje sestavu s úplnými informacemi o kompatibilních a nekompatibilních virtuálních počítačích, discích na virtuálním počítači a četnosti změn dat na disk. Nástroj také shrnuje požadavky na šířku pásma sítě tak, aby splňovaly cílovou RPO a infrastrukturu Azure, která je potřebná pro úspěšnou replikaci a testovací převzetí služeb při selhání.
 
-## <a name="capacity-considerations"></a>Důležité informace o kapacity
+## <a name="capacity-considerations"></a>Požadavky na kapacitu
 
 Komponenta | Podrobnosti
 --- | ---
-**Replikace** | **Maximální denní frekvenci změn**: Chráněný počítač lze použít pouze jeden procesový server. Jeden procesový server dokáže zpracovat denní změnu přenosové rychlosti až do velikosti 2 TB. Ano 2 TB se, že že maximální frekvence každodenní změny dat, která je podporována pro chráněný počítač.<br /><br /> **Maximální propustnost**: Replikované počítače můžou patřit do jednoho účtu úložiště v Azure. Standardní účet úložiště Azure dokáže zpracovat až 20 000 požadavků za sekundu. Doporučujeme omezit počet vstupně výstupní operace za sekundu (IOPS) ve zdrojovém počítači, na 20 000. Například pokud máte zdrojový počítač, který má pět disků a každý disk generuje 120 IOPS (velikosti 8 kB) na zdrojovém počítači, zdrojový počítač je v rámci limit 500 vstupně-výstupních operací Azure na disku. (Počet účtů úložiště vyžaduje je rovna celkové zdrojový počítač dělený 20 000 IOPS.)
-**Konfigurační server** | Konfigurační server musí být schopna zpracovávat denní kapacitu změnit rychlost přes všechny úlohy spuštěné na chráněných počítačích. Konfigurace počítače musí mít dostatečnou šířku pásma, pokud chcete nepřetržitě replikovat data do služby Azure Storage.<br /><br /> Osvědčeným postupem je umístit konfigurační server na segment sítě LAN ve stejné síti jako počítače, které chcete chránit. Konfigurační server můžete umístit na jinou síť, ale počítače, které chcete chránit by měly mít viditelnost vrstvy 3 sítě.<br /><br /> V tabulce v následující části jsou shrnuté doporučené velikosti pro konfigurační server.
-**Procesový server** | První procesový server je nainstalovaný ve výchozím nastavení na konfiguračním serveru. Můžete nasadit další Procesové servery pro horizontální vašeho prostředí. <br /><br /> Procesový server přijímá data replikace z chráněného počítače. Procesový server optimalizuje data pomocí ukládání do mezipaměti, komprese a šifrování. Procesový server poté odešle data do Azure. Počítač serveru proces musí mít dostatek prostředků k provedení těchto úloh.<br /><br /> Procesový server používá mezipaměť založené na disku. Použijte samostatný mezipaměti disku 600 GB nebo více ke zpracování změny dat, které jsou uloženy v případě kritický bod sítě nebo kvůli výpadku.
+**Replikace** | **Maximální denní četnost změn**: chráněný počítač může používat jenom jeden procesový Server. Jeden procesový server může zpracovat denní četnost změn až do 2 TB. Proto je 2 TB maximální denní četnost změn dat, která je podporovaná pro chráněný počítač.<br /><br /> **Maximální propustnost**: replikovaný počítač může patřit k jednomu účtu úložiště v Azure. Účet standardní Azure Storage může zpracovávat maximálně 20 000 požadavků za sekundu. Doporučujeme, abyste omezili počet vstupně-výstupních operací za sekundu (IOPS) v rámci zdrojového počítače na 20 000. Pokud máte například zdrojový počítač, který má pět disků a každý disk generuje na zdrojovém počítači 120 IOPS (8 KB), bude zdrojový počítač v rámci limitu IOPS v Azure na disk, který je 500. (Počet požadovaných účtů úložiště je stejný jako celkový počet vstupně-výstupních operací na zdrojovém počítači dělený 20 000.)
+**Konfigurační server** | Konfigurační server musí být schopný zvládnout kapacitu denních změn napříč všemi úlohami spuštěnými v chráněných počítačích. Aby bylo možné průběžně replikovat data do Azure Storage, musí mít konfigurační počítač dostatečnou šířku pásma.<br /><br /> Osvědčeným postupem je umístit konfigurační server do sítě a segmentu LAN jako počítače, které chcete chránit. Konfigurační server můžete umístit na jinou síť, ale počítače, které chcete chránit, by měly mít viditelnost sítě 3.<br /><br /> Doporučení velikosti pro konfigurační server jsou shrnutá v tabulce v následující části.
+**Procesový server** | První procesový Server je ve výchozím nastavení nainstalován na konfiguračním serveru. Můžete nasadit další procesní servery pro škálování prostředí. <br /><br /> Procesový server přijímá data replikace z chráněných počítačů. Procesový Server optimalizuje data pomocí ukládání do mezipaměti, komprese a šifrování. Procesový Server pak odešle data do Azure. Aby bylo možné provádět tyto úlohy, musí mít počítač procesového serveru dostatek prostředků.<br /><br /> Procesový Server používá mezipaměť založenou na disku. Pro zpracování změn dat uložených v případě, že dojde k kritickým místu nebo výpadku sítě, použijte samostatný disk mezipaměti o velikosti 600 GB nebo více.
 
-## <a name="size-recommendations-for-the-configuration-server-and-inbuilt-process-server"></a>Doporučené velikosti pro konfigurační server a integrované procesový server
+## <a name="size-recommendations-for-the-configuration-server-and-inbuilt-process-server"></a>Doporučení pro velikost konfiguračního serveru a sestaveného procesového serveru
 
-Konfigurační server, který chrání úlohy pomocí integrované procesový server dokáže zpracovat až 200 virtuálních počítačů na základě následujících konfigurací:
+Konfigurační server, který používá sestavený procesový Server k ochraně zatížení, může zpracovat až 200 virtuálních počítačů na základě následujících konfigurací:
 
-Procesor | Memory (Paměť) | Velikost mezipaměti disku | Frekvence změny dat | Chráněné počítače
+Procesor | Memory (Paměť) | Velikost disku mezipaměti | Frekvence změny dat | Chráněné počítače
 --- | --- | --- | --- | ---
-8 virtuálních procesorů (2 sockets * 4 jádra \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB nebo méně | Můžete replikovat počítače méně než 100.
-12 virtuálních procesorů (2 sockets * 6 jader \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB až 1 TB | Můžete replikovat počítače 100 až 150.
-16 virtuálních procesorů (2 sockets * 8 jader \@ 2,5 GHz) | 32 GB | 1 TB | > 1 TB na 2 TB | Můžete replikovat počítače 151 až 200.
-Nasadit jiném konfiguračním serveru pomocí [šablony OVF](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template). | | | | Pokud replikujete více než 200 počítačů, nasazování nového serveru konfigurace.
-Nasadit další [procesový server](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | >2 TB| Nasaďte nový horizontální navýšení kapacity procesový server, když celková denní četnost změn dat je větší než 2 TB.
+8 vCPU (2 sokety × 4 jádra \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB nebo méně | Použijte k replikaci méně než 100 počítačů.
+12 vCPU (2 sokety × 6 jader \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB až 1 TB | Použijte k replikaci počítačů s 100 až 150.
+16 vCPU (2 sokety × 8 jader \@ 2,5 GHz) | 32 GB | 1 TB | > 1 TB až 2 TB | Použijte k replikaci počítačů s 151 až 200.
+Nasazení jiného konfiguračního serveru pomocí [šablony OVF](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template) | | | | Pokud provádíte replikaci více než 200 počítačů, nasaďte nový konfigurační server.
+Nasaďte jiný [procesový Server](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | > 2 TB| Nasazení nového procesového serveru se škálováním na více instancí, pokud je celková rychlost denních změn dat větší než 2 TB.
 
-V těchto konfigurací:
+V těchto konfiguracích:
 
-* Každý zdrojový počítač má tři disky 100 GB.
-* Srovnávací testy úložiště osm jednotek sdíleného přístupového podpisu 10 TIS ot. / min jsme použili s RAID 10 pro měření mezipaměti disku.
+* Každý zdrojový počítač má tři disky o velikosti 100 GB.
+* Pro měření disku mezipaměti jsme použili srovnávací úložiště osmi jednotek sdíleného přístupového podpisu z 10 K ot./min. s RAID 10.
 
-## <a name="size-recommendations-for-the-process-server"></a>Velikost doporučení k procesového serveru
+## <a name="size-recommendations-for-the-process-server"></a>Doporučení pro velikost procesového serveru
 
-Procesový server je komponenta, která zpracovává replikační data ve službě Azure Site Recovery. Pokud denní frekvenci změn je větší než 2 TB, je nutné přidat horizontální navýšení kapacity procesových serverů pro zpracování zátěže replikace. Chcete-li horizontálně navýšit kapacitu, můžete:
+Procesový Server je komponenta, která zpracovává replikaci dat v Azure Site Recovery. Pokud je rychlost denních změn větší než 2 TB, je nutné přidat procesové servery se škálováním na více instancí pro zpracování zatížení replikace. K horizontálnímu navýšení kapacity můžete:
 
-* Zvýšit počet konfiguračních serverů a nasadit pomocí [šablony OVF](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template). Například můžete chránit až 400 počítačů s použitím dva konfigurační servery.
-* Přidat [horizontální navýšení kapacity procesových serverů](vmware-azure-set-up-process-server-scale.md#download-installation-file). Horizontální navýšení kapacity procesových serverů můžete zpracovat provoz replikace místo (nebo kromě) konfiguračního serveru.
+* Zvyšte počet konfiguračních serverů nasazením pomocí [šablony OVF](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template). Můžete například chránit až 400 počítačů pomocí dvou konfiguračních serverů.
+* Přidejte [procesové servery se škálováním na více](vmware-azure-set-up-process-server-scale.md#download-installation-file)instancí. Pro zpracování provozu replikace místo (nebo kromě) konfiguračního serveru použijte procesní servery se škálováním na více instancí.
 
-Následující tabulka popisuje tento scénář:
+Tento scénář je popsán v následující tabulce:
 
-* Nastavit horizontální navýšení kapacity procesového serveru.
-* Nakonfigurujete chráněné virtuální počítače používat horizontální navýšení kapacity procesového serveru.
-* Každý chráněný zdrojový počítač má tři disky 100 GB.
+* Nastavíte procesový Server se škálováním na více instancí.
+* Nakonfigurovali jste chráněné virtuální počítače na používání procesového serveru se škálováním na více instancí.
+* Každý chráněný zdrojový počítač má tři disky o velikosti 100 GB.
 
-Další procesový server | Velikost mezipaměti disku | Frekvence změny dat | Chráněné počítače
+Další procesový Server | Velikost disku mezipaměti | Frekvence změny dat | Chráněné počítače
 --- | --- | --- | ---
-4 virtuální procesory (2 sockets * 2 jádra \@ 2,5 GHz), 8 GB paměti | 300 GB | Aby se 250 GB nebo méně | Můžete replikovat počítače 85 nebo méně.
-8 virtuálních procesorů (2 sockets * 4 jádra \@ 2,5 GHz), 12 GB paměti | 600 GB | 251 GB až 1 TB | Můžete replikovat počítače 86 až 150.
-12 virtuálních procesorů (2 sockets * 6 jader \@ 2,5 GHz) 24 GB paměti | 1 TB | > 1 TB na 2 TB | Můžete replikovat počítače 151 k 225.
+4 vCPU (2 sokety × 2 jádra \@ 2,5 GHz), 8 GB paměti | 300 GB | 250 GB nebo méně | Použijte k replikaci 85 nebo méně počítačů.
+8 vCPU (2 sokety × 4 jádra \@ 2,5 GHz), 12 GB paměti | 600 GB | 251 GB až 1 TB | Použijte k replikaci počítačů s 86 až 150.
+12 vCPU (2 sokety × 6 jader \@ 2,5 GHz) 24 GB paměti | 1 TB | > 1 TB až 2 TB | Použijte k replikaci počítačů s 151 až 225.
 
-Jak škálovat vaše servery závisí na vaši volbu pro vertikální nebo horizontální navýšení kapacity modelu. Vertikální navýšení kapacity, nasazení několika serverů špičkové konfigurace a zpracování servery. Pro horizontální navýšení kapacity, nasaďte další servery, které obsahují méně materiálů. Pokud chcete chránit 200 počítačů s tak celkovou frekvence každodenní změny dat 1,5 TB, může trvat jednu z následujících akcí:
+Způsob škálování serverů závisí na vašich preferencích pro model škálování na více instancí nebo pro škálování na více instancí. Pro horizontální navýšení kapacity nasaďte několik serverů a procesových serverů s vysokou úrovní konfigurace. Pro horizontální navýšení kapacity nasaďte další servery, které mají méně prostředků. Pokud například chcete chránit 200 počítačů s celkovou denní rychlostí změny dat o 1,5 TB, můžete provést jednu z následujících akcí:
 
-* Nastavení jednoho procesu serveru (16 virtuálních procesorů, 24 GB paměti RAM).
-* Nastavte dva procesových serverů, (2 × 8 virtuálních procesorů, 2 * 12 GB paměti RAM).
+* Nastavte jeden procesový Server (16 vCPU, 24 GB paměti RAM).
+* Nastavte dva procesní servery (2 x 8 vCPU, 2 × 12 GB paměti RAM).
 
-## <a name="control-network-bandwidth"></a>Řídí šířku pásma sítě
+## <a name="control-network-bandwidth"></a>Řízení šířky pásma sítě
 
-Když použijete [Site Recovery Deployment Planner](site-recovery-deployment-planner.md) k výpočtu šířky pásma, které potřebujete pro replikaci (počáteční replikace a potom tato rozdílová), máte několik možností pro řízení šířky pásma, který se používá pro replikace:
+Po použití [Site Recovery Plánovač nasazení](site-recovery-deployment-planner.md) k výpočtu šířky pásma, kterou potřebujete pro replikaci (počáteční replikace a rozdílové rozdíly), máte několik možností, jak řídit šířku pásma, která se používá pro replikaci:
 
-* **Omezení šířky pásma**: Přenos VMware, která se replikují do Azure, prochází konkrétním procesový server. Můžete omezit šířku pásma na počítačích, na kterých běží jako procesových serverů.
-* **Ovlivnění šířky pásma**: Můžete ovlivnit šířku pásma, která se bude používat pro replikaci pomocí několika klíčů registru:
-  * **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM** hodnotu registru určuje počet vláken, které se používají pro přenos dat (počáteční nebo rozdílové replikace) disku. Vyšší hodnota zvětšuje šířku pásma sítě, který se používá pro replikaci.
-  * **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\DownloadThreadsPerVM** hodnotu registru určuje počet vláken, které se používají pro přenos dat při navrácení služeb po obnovení.
+* **Omezení šířky pásma**: provoz VMware, který se replikuje do Azure, prochází přes konkrétní procesový Server. Šířku pásma můžete omezit na počítačích, které jsou spuštěny jako procesové servery.
+* **Vliv na šířku pásma**: šířku pásma, která se používá pro replikaci, můžete ovlivnit pomocí několika klíčů registru:
+  * Hodnota registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM** určuje počet vláken, která se používají pro přenos dat (počáteční nebo rozdílovou replikaci) disku. Vyšší hodnota zvyšuje šířku pásma sítě, která se používá pro replikaci.
+  * Hodnota registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\DownloadThreadsPerVM** určuje počet vláken, která se použijí pro přenos dat během navrácení služeb po obnovení.
 
 ### <a name="throttle-bandwidth"></a>Omezení šířky pásma
 
-1. Otevřete modul snap-in Azure Backup konzoly MMC v počítači, který používáte jako procesový server. Ve výchozím nastavení zástupce pro zálohování je k dispozici na ploše nebo v následující složce: Agent\bin C:\Program Files\Microsoft Azure Recovery Services.
-2. V modulu snap-in, vyberte **změnit vlastnosti**.
+1. Na počítači, který používáte jako procesový Server, otevřete modul snap-in Azure Backup MMC. Ve výchozím nastavení je zástupce pro zálohování k dispozici na ploše nebo v následující složce: C:\Program Files\Microsoft Azure Recovery Services Agent\bin.
+2. V modulu snap-in vyberte **změnit vlastnosti**.
 
-    ![Snímek obrazovky s Azure Backup konzoly MMC modul snap-in umožňuje změnit vlastnosti](./media/site-recovery-vmware-to-azure/throttle1.png)
-3. Na **omezování** kartu, vyberte možnost **Povolit omezování šířky pásma Internetu u operací zálohování**. Nastavte limity pro pracovní a nepracovní dobu. Platné rozsahy jsou 512 kB/s na 1,023 MB/s.
+    ![Snímek obrazovky s možností modulu snap-in Azure Backup MMC ke změně vlastností](./media/site-recovery-vmware-to-azure/throttle1.png)
+3. Na kartě **omezování** vyberte **Povolit omezování šířky pásma internetu u operací zálohování**. Nastavte limity pro pracovní a nepracovní dobu. Platné rozsahy jsou od 512 do 1 023 MB/s.
 
-    ![Snímek obrazovky dialogového okna Vlastnosti zálohování Azure](./media/site-recovery-vmware-to-azure/throttle2.png)
+    ![Snímek obrazovky dialogového okna vlastností Azure Backup](./media/site-recovery-vmware-to-azure/throttle2.png)
 
 Pro nastavení omezování můžete také použít rutinu [Set OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx). Tady je příklad:
 
@@ -100,74 +100,74 @@ Pro nastavení omezování můžete také použít rutinu [Set OBMachineSetting]
 
 **Set-OBMachineSetting -NoThrottle** označuje, že není požadováno žádné omezování.
 
-### <a name="alter-the-network-bandwidth-for-a-vm"></a>Příkaz ALTER šířky pásma sítě pro virtuální počítač
+### <a name="alter-the-network-bandwidth-for-a-vm"></a>Změna šířky pásma sítě pro virtuální počítač
 
-1. V registru Virtuálního počítače, přejděte na **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication**.
-   * Ke změně šířky pásma provoz na replikačního disku, upravte hodnotu **UploadThreadsPerVM**. Vytvořte klíč, pokud neexistuje.
-   * Ke změně šířky pásma pro přenosy navrácení služeb po obnovení z Azure, upravte hodnotu **DownloadThreadsPerVM**.
-2. Výchozí hodnota pro každý klíč je **4**. V síti s „nadměrným zřízením“ je třeba tyto klíče registru změnit z výchozích hodnot. Maximální hodnota, můžete je **32**. Monitorováním provozu hodnotu optimalizujte.
+1. V registru virtuálního počítače, přejít na **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication**.
+   * Pokud chcete změnit provoz šířky pásma na replikačním disku, upravte hodnotu **UploadThreadsPerVM**. Pokud klíč neexistuje, vytvořte ho.
+   * Pokud chcete změnit šířku pásma pro překlopení provozu z Azure, upravte hodnotu **DownloadThreadsPerVM**.
+2. Výchozí hodnota pro každý klíč je **4**. V síti s „nadměrným zřízením“ je třeba tyto klíče registru změnit z výchozích hodnot. Maximální hodnota, kterou můžete použít, je **32**. Monitorováním provozu hodnotu optimalizujte.
 
-## <a name="set-up-the-site-recovery-infrastructure-to-protect-more-than-500-vms"></a>Nastavení infrastruktury Site Recovery pro ochranu víc než 500 virtuálních počítačů
+## <a name="set-up-the-site-recovery-infrastructure-to-protect-more-than-500-vms"></a>Nastavení infrastruktury Site Recovery pro ochranu více než 500 virtuálních počítačů
 
-Před nastavením infrastruktura Site Recovery, přístup k prostředí k měření následující faktory: kompatibilních virtuálních počítačů, frekvence každodenní změny dat, požadovaná šířka pásma sítě pro cíl bodu obnovení, které chcete dosáhnout, počet Site Recovery součásti, které jsou požadované a čas potřebný k dokončení počáteční replikace. Proveďte následující kroky k získání požadovaných informací:
+Než nastavíte infrastrukturu Site Recovery, získáte přístup k prostředí a změříte následující faktory: kompatibilní virtuální počítače, rychlost denní změny dat, požadovaná šířka pásma sítě pro RPO, který chcete dosáhnout, počet Site Recovery požadované součásti a čas potřebný k dokončení počáteční replikace. Pro shromáždění požadovaných informací proveďte následující kroky:
 
-1. K měření tyto parametry, spusťte Plánovač nasazení služby Site Recovery ve vašem prostředí. Užitečné pokyny najdete v části [o Site Recovery Deployment Planner pro replikaci z VMware do Azure](site-recovery-deployment-planner.md).
-2. Nasazení konfiguračního serveru, který splňuje [doporučené velikosti pro konfigurační server](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server). Pokud vaše produkční úlohy překročí celkový počet virtuálních 650 počítačů, nasazování jiném konfiguračním serveru.
-3. Podle měřené denní frekvenci změn dat, nasaďte [horizontální navýšení kapacity procesových serverů](vmware-azure-set-up-process-server-scale.md#download-installation-file) díky [velikost pokyny](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server).
-4. Pokud očekáváte, že data změnit sazbou za virtuální počítač disk překročit 2 MB/s, ujistěte se, že používáte spravované disky úrovně premium. Site Recovery Deployment Planner se spouští v konkrétním časovém období. Špičky v četnost změn dat v jinou dobu nemusí být zachyceny v sestavě.
-5. [Nastavení šířky pásma sítě](site-recovery-plan-capacity-vmware.md#control-network-bandwidth) podle k dosažení cíle bodu obnovení.
-6. Při nastavení infrastruktury, povolte zotavení po havárii pro vaše úlohy. Další informace o postupu [nastavení zdrojového prostředí pro VMware pro replikaci Azure](vmware-azure-set-up-source.md).
+1. Pro měření těchto parametrů spusťte Site Recovery Plánovač nasazení ve vašem prostředí. Užitečné pokyny najdete v tématu [informace o Site Recovery Plánovač nasazení pro VMware do Azure](site-recovery-deployment-planner.md).
+2. Nasaďte konfigurační server, který splňuje [doporučení pro velikost konfiguračního serveru](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server). Pokud vaše produkční úlohy překročí 650 virtuálních počítačů, nasaďte další konfigurační server.
+3. Na základě měřené míry denní změny dat nasaďte [procesové servery se škálováním na více](vmware-azure-set-up-process-server-scale.md#download-installation-file) instancí s [pokyny pro velikost](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server).
+4. Pokud očekáváte, že rychlost změny dat pro virtuální počítač disku překročí 2 MB/s, ujistěte se, že používáte spravované disky úrovně Premium. Site Recovery Plánovač nasazení běžet po určitou dobu. Špičky v rychlosti změny dat v jiné době nemusí být zachyceny v sestavě.
+5. [Nastavte šířku pásma sítě](site-recovery-plan-capacity-vmware.md#control-network-bandwidth) na základě bodu obnovení, který chcete dosáhnout.
+6. Po nastavení infrastruktury povolte zotavení po havárii pro vaše úlohy. Další informace najdete v tématu [nastavení zdrojového prostředí pro replikaci z VMware do Azure](vmware-azure-set-up-source.md).
 
 ## <a name="deploy-additional-process-servers"></a>Nasazení dalších procesových serverů
 
-Pokud horizontální navýšení kapacity nasazení nad 200 zdrojové počítače nebo pokud máte celkem denní četnost více než 2 TB změn dat, je nutné přidat procesní servery pro zpracování objem přenosů. Vylepšili jsme produktu v 9.24 verze, kterou chcete zadat [zpracovávat výstrahy serveru](vmware-physical-azure-monitor-process-server.md#process-server-alerts) na tom, kdy k nastavení horizontální navýšení kapacity procesového serveru. [Nastavit procesový server](vmware-azure-set-up-process-server-scale.md) k ochraně nové zdrojové počítače nebo [Vyrovnávání zatížení](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load).
+Pokud nasáhnete horizontální navýšení kapacity nasazení nad rámec 200 zdrojových počítačů nebo pokud máte celkovou denní četnost změn více než 2 TB, je nutné přidat procesové servery pro zpracování objemu přenosů. Vylepšili jsme produkt ve verzi 9,24, aby poskytoval [výstrahy procesového serveru](vmware-physical-azure-monitor-process-server.md#process-server-alerts) při nastavení procesu serveru se škálováním na více instancí. [Nastavte procesový Server](vmware-azure-set-up-process-server-scale.md) pro ochranu nových zdrojových počítačů nebo [vyvážení zátěže](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load).
 
-### <a name="migrate-machines-to-use-the-new-process-server"></a>Migrace počítačů používat nový procesový server
+### <a name="migrate-machines-to-use-the-new-process-server"></a>Migrace počítačů na použití nového procesového serveru
 
-1. Vyberte **nastavení** > **Site Recovery servery**. Vyberte konfigurační server a potom rozbalte **zpracovat servery**.
+1. Vyberte **nastavení** > **Site Recovery serverech**. Vyberte konfigurační server a pak rozbalte **procesové servery**.
 
-    ![Snímek obrazovky dialogového okna procesový Server](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
-2. Klikněte pravým tlačítkem na procesový server aktuálně používán a pak vyberte **přepínač**.
+    ![Snímek obrazovky s dialogovým oknem procesového serveru](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
+2. Klikněte pravým tlačítkem na procesový Server, který se právě používá, a pak vyberte **přepínač**.
 
-    ![Snímek obrazovky dialogového okna konfigurace serveru](./media/site-recovery-vmware-to-azure/migrate-ps3.png)
-3. V **vyberte cílový procesový server**, vyberte nový procesový server, který chcete použít. Vyberte virtuální počítače, které budou zpracovávat na serveru. Pokud chcete získat informace o serveru, vyberte ikonu informace. Pro vám pomůže zajistit načíst rozhodnutí, se zobrazí průměrnou prostor, který je potřeba replikovat každý vybraný virtuální počítač pro nový procesový server. Výběrem symbolu zaškrtnutí zahájíte replikaci pro nový procesový server.
+    ![Snímek obrazovky s dialogovým oknem konfigurační server](./media/site-recovery-vmware-to-azure/migrate-ps3.png)
+3. V části **Vybrat cílový procesový Server**vyberte nový procesový Server, který chcete použít. Pak vyberte virtuální počítače, které bude server zpracovávat. Chcete-li získat informace o serveru, vyberte ikonu informace. V rámci rozhodování o zatížení se zobrazí průměrné místo, které je nutné pro replikaci jednotlivých vybraných virtuálních počítačů na nový procesový Server. Zaškrtnutím tohoto políčka zahájíte replikaci na nový procesový Server.
 
-## <a name="deploy-additional-master-target-servers"></a>Nasadit další hlavní cílové servery
+## <a name="deploy-additional-master-target-servers"></a>Nasaďte další hlavní cílové servery.
 
-V následující scénáře se vyžaduje více než jeden hlavní cílový server:
+V následujících scénářích je vyžadován více než jeden hlavní cílový server:
 
-*   Chcete chránit virtuální počítač s linuxem.
-*   Hlavní cílový server k dispozici na konfiguračním serveru nemá přístup k úložišti dat virtuálního počítače.
-*   Celkový počet disků na hlavním cílovém serveru (počet místní disky na serveru) a počtu disků, které se mají chránit, je větší než 60 disky.
+*   Chcete chránit virtuální počítač se systémem Linux.
+*   Hlavní cílový server dostupný na konfiguračním serveru nemá přístup k úložišti dat virtuálního počítače.
+*   Celkový počet disků na hlavním cílovém serveru (počet místních disků na serveru a počet chráněných disků) je větší než 60 disků.
 
-Zjistěte, jak přidat hlavní cílový server pro virtuální počítač s linuxem, najdete v článku [instalace hlavního cílového serveru s Linuxem pro navrácení služeb po obnovení](vmware-azure-install-linux-master-target.md).
+Další informace o tom, jak přidat hlavní cílový server pro virtuální počítač se systémem Linux, najdete v tématu [instalace hlavního cílového serveru Linux pro navrácení služeb po obnovení](vmware-azure-install-linux-master-target.md).
 
-Chcete-li přidat hlavní cílový server pro virtuální počítač na základě Windows:
+Postup přidání hlavního cílového serveru pro virtuální počítač se systémem Windows:
 
-1. Přejděte na **trezor služby Recovery Services** > **infrastruktura Site Recovery** > **konfigurační servery**.
-2. Vyberte požadované konfigurační server a pak vyberte **hlavního cílového serveru**.
+1. Přejít na **Recovery Services trezor** > **Site Recovery** > **konfigurační servery**infrastruktury.
+2. Vyberte požadovaný konfigurační server a pak vyberte **hlavní cílový server**.
 
-    ![Snímek obrazovky zobrazující tlačítko Přidat hlavního cílového serveru](media/site-recovery-plan-capacity-vmware/add-master-target-server.png)
-3. Stáhněte si soubor sjednocené instalace a potom spusťte soubor na virtuálním počítači vytvořit hlavní cílový server.
-4. Vyberte **instalace hlavního cílového** > **Další**.
+    ![Snímek obrazovky, na kterém se zobrazuje tlačítko Přidat hlavní cílový server](media/site-recovery-plan-capacity-vmware/add-master-target-server.png)
+3. Stáhněte si soubor sjednocené instalace a pak na virtuálním počítači spusťte soubor a nastavte hlavní cílový server.
+4. Jako **Další**vyberte **instalovat hlavní cíl** > .
 
-    ![Snímek obrazovky s výběrem možnosti instalace hlavního cíle](media/site-recovery-plan-capacity-vmware/choose-MT.PNG)
+    ![Snímek obrazovky, který zobrazuje výběr možnosti instalovat hlavní cíl](media/site-recovery-plan-capacity-vmware/choose-MT.PNG)
 5. Vyberte výchozí umístění instalace a pak vyberte **nainstalovat**.
 
-     ![Snímek obrazovky zobrazující výchozí umístění instalace](media/site-recovery-plan-capacity-vmware/MT-installation.PNG)
-6. K registraci hlavního cíle s konfiguračním serverem, vyberte **pokračovat na konfiguraci**.
+     ![Snímek obrazovky, který zobrazuje výchozí umístění instalace](media/site-recovery-plan-capacity-vmware/MT-installation.PNG)
+6. Pokud chcete zaregistrovat hlavní cíl s konfiguračním serverem, vyberte **pokračovat ke konfiguraci**.
 
-    ![Snímek obrazovky zobrazující pokračovat na konfiguraci tlačítko](media/site-recovery-plan-capacity-vmware/MT-proceed-configuration.PNG)
-7. Zadejte IP adresu konfiguračního serveru a pak zadejte přístupové heslo. Zjistěte, jak generovat přístupové heslo, najdete v článku [vygenerovat heslo konfiguračního serveru](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase). 
+    ![Snímek obrazovky, který zobrazuje tlačítko Přejít na konfiguraci](media/site-recovery-plan-capacity-vmware/MT-proceed-configuration.PNG)
+7. Zadejte IP adresu konfiguračního serveru a pak zadejte heslo. Informace o tom, jak vygenerovat heslo, najdete v tématu [generování hesla konfiguračního serveru](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase). 
 
-    ![Snímek obrazovky, který ukazuje, kam je třeba zadat IP adresu a heslo pro konfigurační server](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
+    ![Snímek obrazovky, který ukazuje, kde zadat IP adresu a přístupové heslo pro konfigurační server](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
 8. Vyberte **Zaregistrovat**. Po dokončení registrace vyberte **Dokončit**.
 
-Po úspěšném dokončení registrace je server uveden na webu Azure Portal v **trezor služby Recovery Services** > **infrastruktura Site Recovery**  >   **Konfigurace serverů**, na hlavním cílovém serveru konfiguračního serveru.
+Po úspěšném dokončení registrace se server zobrazí v Azure Portal v **trezoru Recovery Services** > Site Recovery > **konfiguračního serveru** **infrastruktury** na hlavních cílových serverech konfigurační server.
 
  > [!NOTE]
- > Stáhněte si nejnovější verzi [hlavního cílového serveru jednotný instalační soubor Windows](https://aka.ms/latestmobsvc).
+ > Stáhněte si nejnovější verzi [souboru sjednocené instalace hlavního cílového serveru pro Windows](https://aka.ms/latestmobsvc).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Stažení a spuštění [Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner).
+Stáhněte a spusťte [Site Recovery Plánovač nasazení](https://aka.ms/asr-deployment-planner).

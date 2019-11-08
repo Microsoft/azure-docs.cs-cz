@@ -3,20 +3,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: include
-ms.date: 05/21/2019
+ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: b159ec8620fa8c93e4917f73be9b9898e1b4fbcc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16647b6a13e64073ab570d36a8a380d0e36bd855
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244589"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73799739"
 ---
-- Nemusíte kopírovat soubory přímo do všech vytvořených sdílené složky. Budete muset vytvořit složku ve sdílené složce a zkopírujte soubory do této složky.
-- Složku ve složce *StorageAccount_BlockBlob* a *StorageAccount_PageBlob* je kontejner. Například kontejnery jsou vytvořeny jako *StorageAccount_BlockBlob/kontejneru* a *StorageAccount_PageBlob/kontejneru*.
-- Všechny složky, vytvořené přímo v rámci *StorageAccount_AzureFiles* přeloženy do sdílené složky Azure.
-- Pokud máte existující objekt Azure (například soubor nebo objekt blob) v cloudu se stejným názvem jako objekt, který je kopírování, bude zařízení Data Box přepsat soubor v cloudu.
-- Každý soubor zapsán do *StorageAccount_BlockBlob* a *StorageAccount_PageBlob* sdílené složky se nahraje jako objekt blob bloku a objektů blob stránky.
-- Úložiště objektů blob v Azure nepodporuje adresáře. Pokud vytváříte složku ve složce *StorageAccount_BlockBlob* složku a pak virtuální složky se vytvoří v názvu objektu blob. Pro soubory Azure je udržován skutečné adresářovou strukturu.
-- Všechny prázdné hierarchii adresářů (bez jakékoli soubory) vytvořené v rámci *StorageAccount_BlockBlob* a *StorageAccount_PageBlob* složky nebylo odesláno.
-- Pokud nejsou žádné chyby při odesílání dat do Azure, vytvoří se protokol chyb v účtu cílového úložiště. Cesta k této chybě protokolu je k dispozici, když se nahrávání dokončí, a vy můžete zkontrolovat protokol k provedení nápravné akce. Neodstraňovat data ze zdroje bez ověření odesílaná data.
+- Nekopírujte soubory přímo do žádné z předvytvořených sdílených složek. Je nutné vytvořit složku ve sdílené složce a následně zkopírovat soubory do této složky.
+- Složka pod *StorageAccount_BlockBlob* a *StorageAccount_PageBlob* je kontejner. Například kontejnery jsou vytvořeny jako *StorageAccount_BlockBlob/Container* a *StorageAccount_PageBlob/Container*.
+- Každá složka vytvořená přímo v rámci *StorageAccount_AzureFiles* je přeložena do sdílené složky Azure.
+- Pokud máte v cloudu existující objekt Azure (například objekt BLOB nebo soubor), který má stejný název jako objekt, který se právě kopíruje, Data Box přepíše soubor v cloudu.
+- Každý soubor zapsaný do sdílených složek *StorageAccount_BlockBlob* a *StorageAccount_PageBlob* se nahraje jako objekt blob bloku a objekt blob stránky v uvedeném pořadí.
+- Úložiště objektů BLOB v Azure nepodporuje adresáře. Pokud vytvoříte složku ve složce *StorageAccount_BlockBlob* , vytvoří se v názvu objektu BLOB virtuální složky. Pro soubory Azure se zachová skutečná adresářová struktura.
+- Žádná prázdná hierarchie adresářů (bez jakýchkoli souborů) vytvořená v rámci složek *StorageAccount_BlockBlob* a *StorageAccount_PageBlob* není nahraná.
+- Pokud při nahrávání dat do Azure dojde k nějakým chybám, v cílovém účtu úložiště se vytvoří protokol chyb. Cesta k tomuto protokolu chyb je k dispozici po dokončení nahrávání a můžete si prohlédnout protokol a provést nápravné akce. Neodstraňujte data ze zdroje bez ověřování nahraných dat.
+- Metadata souboru a oprávnění systému souborů NTFS se nezachovají při nahrávání dat do souborů Azure. Například *atribut naposledy upravený* soubory se nebude uchovávat při kopírování dat.
