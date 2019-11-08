@@ -5,17 +5,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 06/20/2019
+ms.date: 11/06/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 0e8f1453687f7424c6b651dc324e66e84dd8d29f
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: e3b3d944508a4261b78def0b3bee13f7395a8bf0
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302532"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748992"
 ---
-K zobrazení a zkopírování přístupových klíčů účtu úložiště nebo připojovací řetězec z portálu Azure portal:
+Zobrazení a zkopírování přístupových klíčů účtu úložiště nebo připojovacího řetězce z Azure Portal:
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
 2. Vyhledejte svůj účet úložiště.
@@ -23,4 +23,6 @@ K zobrazení a zkopírování přístupových klíčů účtu úložiště nebo 
 4. V části **key1** vyhledejte hodnotu **Klíč** a kliknutím na tlačítko **Kopírovat** zkopírujte klíč účtu.
 5. Alternativně můžete zkopírovat celý připojovací řetězec. V části **key1** vyhledejte hodnotu **Připojovací řetězec** a kliknutím na tlačítko **Kopírovat** zkopírujte připojovací řetězec.
 
-    ![Snímek obrazovky ukazující, jak zobrazit přístupové klíče na webu Azure Portal](media/storage-view-keys-include/portal-connection-string.png)
+    ![Snímek obrazovky znázorňující zobrazení přístupových klíčů v Azure Portal](media/storage-view-keys-include/portal-connection-string.png)
+
+Pro přístup k Azure Storage můžete použít libovolný klíč, ale obecně je dobrým zvykem použít první klíč a při střídání klíčů rezervovat použití druhého klíče.

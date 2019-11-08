@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: ac1572a75a3310afb9d0e0a34c6751ed12d839f9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 24ed7b75dfa8cb09c530a3f4a896aa9ff9aa92b5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102437"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749176"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Nahrání zobecněného virtuálního pevného disku do Azure za účelem vytvoření nového virtuálního počítače
 
@@ -30,7 +30,7 @@ Pokud chcete vytvořit virtuální počítač ze specializovaného virtuálního
 
 Toto téma se věnuje používání účtů úložiště, ale doporučujeme zákazníkům, aby se místo toho přesunuli pomocí Managed Disks. Kompletní návod, jak připravit, nahrát a vytvořit nový virtuální počítač pomocí spravovaných disků, najdete v tématu [Vytvoření nového virtuálního počítače z zobecněného virtuálního pevného disku nahraného do Azure pomocí Managed disks](upload-generalized-managed.md).
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="prepare-the-vm"></a>Příprava virtuálního počítače
 
@@ -40,20 +40,20 @@ Zobecněný virtuální pevný disk měl odebrat všechny informace o osobním �
   * Generalizace virtuálního počítače pomocí nástroje Sysprep
 
 ### <a name="generalize-a-windows-virtual-machine-using-sysprep"></a>Generalizace virtuálního počítače s Windows pomocí nástroje Sysprep
-V této části se dozvíte, jak zobecnit virtuální počítač s Windows pro použití jako image. Nástroj Sysprep kromě jiného odebere všechny informace o vašich osobních účtech a připraví počítač, aby se dal použít jako image. Další informace o nástroji Sysprep najdete v tématu [Použití nástroje Sysprep: Úvod](https://technet.microsoft.com/library/bb457073.aspx).
+V této části se dozvíte, jak zobecnit virtuální počítač s Windows pro použití jako image. Nástroj Sysprep kromě jiného odebere všechny informace o vašich osobních účtech a připraví počítač, aby se dal použít jako image. Další informace o nástroji Sysprep najdete v článku věnovaném [úvodu do použití nástroje Sysprep](https://technet.microsoft.com/library/bb457073.aspx).
 
 Ujistěte se, že nástroj Sysprep podporuje role serveru spuštěné v počítači. Další informace najdete v tématu [Podpora nástroje Sysprep pro role serveru](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) .
 
 > [!IMPORTANT]
-> Pokud spouštíte nástroj Sysprep před prvním nahráním virtuálního pevného disku do Azure, ujistěte se, že jste před spuštěním nástroje Sysprep připravili [virtuální počítač](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . 
+> Pokud spouštíte nástroj Sysprep před prvním nahráním virtuálního pevného disku do Azure, ujistěte se, že jste před spuštěním nástroje Sysprep [připravili virtuální počítač](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . 
 > 
 > 
 
 1. Přihlaste se k virtuálnímu počítači s Windows.
-2. Otevřete okno příkazového řádku jako správce. Změňte adresář na **%WINDIR%\system32\sysprep**a potom spusťte příkaz `sysprep.exe`.
+2. Otevřete okno příkazového řádku jako správce. Změňte adresář na **%WINDIR%\system32\sysprep**a potom spusťte `sysprep.exe`.
 3. V dialogovém okně **Nástroj pro přípravu systému** vyberte **Zobrazit prostředí prvního spuštění počítače** a ujistěte se, že je zaškrtnuté políčko **Generalizovat**.
 4. V **Možnosti vypnutí**vyberte **vypnout**.
-5. Klikněte na **OK**.
+5. Klikněte na tlačítko **OK**.
    
     ![Spustit nástroj Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
 6. Po dokončení nástroj Sysprep vypne virtuální počítač. 
@@ -68,7 +68,7 @@ Ujistěte se, že nástroj Sysprep podporuje role serveru spuštěné v počíta
 
 Nahrajte virtuální pevný disk do účtu služby Azure Storage.
 
-### <a name="log-in-to-azure"></a>Přihlášení k Azure
+### <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 Pokud ještě nemáte nainstalované prostředí PowerShell verze 1,4 nebo novější, přečtěte si, [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview).
 
 1. Otevřete Azure PowerShell a přihlaste se ke svému účtu Azure. Otevře se automaticky otevírané okno, ve kterém můžete zadat svoje přihlašovací údaje k účtu Azure.
@@ -81,7 +81,7 @@ Pokud ještě nemáte nainstalované prostředí PowerShell verze 1,4 nebo nově
     ```powershell
     Get-AzSubscription
     ```
-3. Nastavte správné předplatné pomocí ID předplatného. Nahraďte `<subscriptionID>` ID správného předplatného.
+3. Nastavte správné předplatné pomocí ID předplatného. Nahraďte `<subscriptionID>` číslem správného předplatného.
    
     ```powershell
     Select-AzSubscription -SubscriptionId "<subscriptionID>"
@@ -148,13 +148,13 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 V závislosti na připojení k síti a velikosti souboru VHD může dokončení tohoto příkazu chvíli trvat.
 
 
-## <a name="create-a-new-vm"></a>Vytvoření nového virtuálního počítače 
+## <a name="create-a-new-vm"></a>Vytvořte nový virtuální počítač. 
 
 K vytvoření nového virtuálního počítače teď můžete použít nahraný virtuální pevný disk. 
 
 ### <a name="set-the-uri-of-the-vhd"></a>Nastavte identifikátor URI virtuálního pevného disku.
 
-Identifikátor URI pro virtuální pevný disk, který se má použít, je ve formátu: https://**mystorageaccount**. blob.Core.Windows.NET/**myContainer**/**MyVhdName**. VHD. V tomto příkladu je virtuální pevný disk s názvem **myVHD** v účtu úložiště **mystorageaccount** v kontejneru **myContainer**.
+Identifikátor URI pro virtuální pevný disk, který se má použít, je ve formátu: https://**mystorageaccount**. blob.core.windows.net/**myContainer**/**MyVhdName**. VHD. V tomto příkladu je virtuální pevný disk s názvem **myVHD** v účtu úložiště **mystorageaccount** v kontejneru **myContainer**.
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"

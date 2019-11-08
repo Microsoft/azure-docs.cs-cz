@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: efbb6ccef9096ed89f6ccd16f8d3b37c9a97b278
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: de33ed80055c26870a29b4c4393a9072ec8dda5e
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103211"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749486"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Odpojení datového disku od virtuálního počítače s Windows
 
@@ -31,7 +31,7 @@ Když už nepotřebujete datový disk připojený k virtuálnímu počítači, m
 
 Pokud znovu chcete použít stávající data na disku, můžete ho znovu připojit ke stejnému nebo jinému virtuálnímu počítači.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="detach-a-data-disk-using-powershell"></a>Odpojení datového disku pomocí PowerShellu
 
@@ -53,7 +53,7 @@ Disk zůstává v úložišti, ale už není připojený k virtuálnímu počít
 2. Vyberte virtuální počítač s datovým diskem, který chcete odpojit, a kliknutím na **zastavit** zrušte přidělení virtuálního počítače.
 3. V podokně virtuální počítač vyberte **disky**.
 4. V horní části podokna **disky** vyberte **Upravit**.
-5. V podokně **disky** klikněte na úplně vpravo od datového disku, který chcete odpojit, a klikněte ![na tlačítko Odpojit obrázek](./media/detach-disk/detach.png) tlačítka odpojit.
+5. V podokně **disky** v pravém dolním rohu datového disku, který chcete odpojit, klikněte na obrázek tlačítka pro odpojení ![](./media/detach-disk/detach.png) tlačítko Odpojit.
 5. Po odebrání disku klikněte na **Uložit** v horní části podokna.
 6. V podokně virtuální počítač klikněte na **Přehled** a potom kliknutím na tlačítko **Start** v horní části podokna restartujte virtuální počítač.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: b7d2e1b08653cb8023ef6a5190ab53ecc3d568a6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: de394a98f78b0bdb7cdf090de5c052cc761aa92d
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951507"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748620"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojení zařízení IoT DevKit MXChip k aplikaci Azure IoT Central
 
@@ -25,16 +25,16 @@ V tomto článku s postupem:
 - Připravte zařízení a připojte ho k aplikaci IoT Central.
 - Zobrazení telemetrie a vlastností ze zařízení v IoT Central.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku budete potřebovat následující zdroje:
 
-1. [Zařízení DevKit](https://aka.ms/iot-devkit-purchase).
-1. Aplikace IoT Central vytvořená z šablony **aplikace ve verzi Preview** . Můžete postupovat podle kroků v části [Vytvoření aplikace IoT technologie Plug and Play](./quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+- [Zařízení DevKit](https://aka.ms/iot-devkit-purchase).
+- Aplikace IoT Central vytvořená z šablony **aplikace ve verzi Preview** . Můžete postupovat podle kroků v části [Vytvoření aplikace IoT technologie Plug and Play](./quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
 
 ## <a name="get-device-connection-details"></a>Získat podrobnosti o připojení zařízení
 
-V aplikaci Azure IoT Central vyberte kartu **Správa** a vyberte **připojení zařízení**. Poznamenejte si **Rozsah ID** a **primární klíč**.
+V aplikaci Azure IoT Central vyberte kartu **Správa** a vyberte **připojení zařízení**. Poznamenejte si **ID oboru** a **primární klíč** (v odkazu **Zobrazit klíče** ). A ujistěte se, že je povoleno **automatické schvalování** .
 
 ![Podrobnosti o připojení skupiny zařízení](media/howto-connect-devkit-pnp/device-group-connection-details.png)
 
@@ -61,7 +61,7 @@ V aplikaci Azure IoT Central vyberte kartu **Správa** a vyberte **připojení z
 
     - Název sítě Wi-Fi (SSID).
     - Vaše heslo k síti Wi-Fi.
-    - Podrobnosti o připojení: **ID zařízení** , které si můžete vybrat sami, a primární klíč **ID** a **skupinu SAS** , které jste si poznamenali dříve.
+    - Podrobnosti o připojení: **ID zařízení** , které si můžete vybrat sami, a v **primárním klíči** s **ID oboru** a skupinou SAS, které jste si poznamenali dříve.
 
     > [!NOTE]
     > V současné době se IoT DevKit může připojit pouze k Wi-Fi 2,4 GHz, 5 GHz není v důsledku omezení hardwaru podporováno.
@@ -82,11 +82,11 @@ V tomto kroku zobrazíte telemetrii ve vaší aplikaci Azure IoT Central.
 
 V aplikaci IoT Central vyberte kartu **zařízení** a vyberte zařízení, které jste přidali. Na kartě **Přehled** můžete zobrazit telemetrii ze zařízení DevKit:
 
-   ![Přehled zařízení IoT Central](media/howto-connect-devkit-pnp/mxchip-overview-page.png)
+![Přehled zařízení IoT Central](media/howto-connect-devkit-pnp/mxchip-overview-page.png)
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Chcete-li zkontrolovat kód nebo ho upravit a zkompilovat, přejít na [ukázky kódu](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/).
+Chcete-li zkontrolovat kód nebo ho upravit a zkompilovat, přejít do [úložiště GitHub MXChip IoT DevKit Sample Code](https://github.com/MXCHIP/IoTDevKit/tree/master/pnp).
 
 ## <a name="next-steps"></a>Další kroky
 

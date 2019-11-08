@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 08/26/2019
 ms.author: aahi
-ms.openlocfilehash: 8c5df8461c74d48c0712ab1947e29813e7e1ea3f
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
-ms.translationtype: MT
+ms.openlocfilehash: 3b616ac76d2b7fca0d83db2b17b0978bbb249e45
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032677"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73742725"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Co je rozhraní API pro analýzu textu?
 
@@ -25,7 +25,7 @@ Rozhraní API je součástí služby [Azure Cognitive Services](https://docs.mic
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
-Analýza textu může znamenat různé věci, ale v Cognitive Services rozhraní API pro analýzu textu poskytuje čtyři typy analýz, jak je popsáno níže. Tyto funkce můžete použít spolu s [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)nebo klientskou knihovnou pro [.NET](quickstarts/csharp.md), [Python](quickstarts/python-sdk.md), [Node. js](quickstarts/nodejs-sdk.md), [Přejít](quickstarts/go-sdk.md)nebo [Ruby](quickstarts/ruby-sdk.md).
+Analýza textu může znamenat různé věci, ale v Cognitive Services rozhraní API pro analýzu textu poskytuje čtyři typy analýz, jak je popsáno níže. Tyto funkce můžete použít spolu s [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)nebo s [klientskou knihovnou](quickstarts/text-analytics-sdk.md).
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
 Pomocí [analýzy mínění](how-tos/text-analytics-how-to-sentiment-analysis.md) zjistíte, co si zákazníci myslí o vaší značce nebo tématu analýzou nezpracovaného textu pro poznámky o kladných nebo záporných mínění. Toto rozhraní API vrátí pro každý dokument skóre mínění mezi 0 a 1, přičemž 1 je mez pro nejvíce kladné hodnocení.<br /> Modely analýzy jsou předem vytrénované pomocí rozsáhlého textu a technologiemi přirozeného jazyka od Microsoftu. Pro [vybrané jazyky](text-analytics-supported-languages.md) může rozhraní API analyzovat a stanovit skóre jakéhokoliv nezpracovaného textu, který zadáte, přičemž vrátí výsledky přímo do volající aplikace.
@@ -83,9 +83,9 @@ Tato část byla přesunuta do samostatného článku pro lepší vyhledatelnost
 
 Všechny koncové body rozhraní API pro analýzu textu přijímají data v podobě nezpracovaného textu. Aktuální limit je 5 120 znaků pro každý dokument; Pokud potřebujete analyzovat větší dokumenty, můžete je rozdělit do menších bloků.
 
-| Omezení | Value |
+| škálování | Hodnota |
 |------------------------|---------------|
-| Maximální velikost jednoho dokumentu | 5 120 znaků měřených podle [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
+| Maximální velikost jednoho dokumentu | 5 120 znaků měřených [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
 | Maximální velikost celého požadavku | 1 MB |
 | Maximální počet dokumentů v požadavku | 1 000 dokumentů |
 
@@ -93,24 +93,24 @@ Vaše omezení četnosti se bude lišit od cenové úrovně.
 
 | Vrstva          | Počet požadavků za sekundu | Žádosti za minutu |
 |---------------|---------------------|---------------------|
-| S/více službami | 1000                | 1000                |
+| S/více službami | 1 000                | 1 000                |
 | S0/F0         | 100                 | 300                 |
 | S1            | 200                 | 300                 |
 | S2            | 300                 | 300                 |
 | S3            | 500                 | 500                 |
-| S4            | 1000                | 1000                |
+| S4            | 1 000                | 1 000                |
 
 Požadavky se měří pro každou funkci Analýza textu samostatně. Můžete například odeslat maximální počet požadavků pro vaši cenovou úroveň všem funkcím ve stejnou dobu.      
 
 ## <a name="unicode-encoding"></a>Kódování Unicode
 
-Rozhraní API pro analýzu textu používá kódování Unicode pro textové vyjádření a kalkulaci počtu znaků. Požadavky je možné odesílat v kódování UTF-8 i UTF-16 bez měřitelných rozdílů v počtu znaků. Body kódu sady Unicode jsou použité jako heuristika délky znaků a jsou považovány za ekvivalentní ve smyslu datového omezení analýzy textu. Pokud použijete [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) k získání počtu znaků, použijete stejnou metodu, kterou používáme k měření velikosti dat.
+Rozhraní API pro analýzu textu používá kódování Unicode pro textové vyjádření a kalkulaci počtu znaků. Požadavky je možné odesílat v kódování UTF-8 i UTF-16 bez měřitelných rozdílů v počtu znaků. Body kódu sady Unicode jsou použité jako heuristika délky znaků a jsou považovány za ekvivalentní ve smyslu datového omezení analýzy textu. Pokud k získání počtu znaků použijete [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) , používáte stejnou metodu, kterou používáme k měření velikosti dat.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 + [Vytvořte prostředek Azure](../cognitive-services-apis-create-account.md) pro analýza textu, abyste získali klíč a koncový bod pro vaše aplikace.
 
-+ [Rychlý start](quickstarts/csharp.md) obsahuje vysvětlení volání rozhraní REST API napsaných v jazyce C#. Zjistěte, jak odesílat text, zvolit analýzu a zobrazit výsledky s minimem kódu. Pokud chcete, můžete místo toho začít s rychlým startem [Pythonu](quickstarts/python.md) .
++ [Rychlý start](quickstarts/text-analytics-sdk.md) obsahuje vysvětlení volání rozhraní REST API napsaných v jazyce C#. Zjistěte, jak odesílat text, zvolit analýzu a zobrazit výsledky s minimem kódu. Pokud chcete, můžete místo toho začít s [rychlým startem Pythonu](quickstarts/python.md) .
 
 + Další informace o nových verzích a funkcích najdete [v tématu Co je nového v rozhraní API pro analýzu textu](whats-new.md) .
 

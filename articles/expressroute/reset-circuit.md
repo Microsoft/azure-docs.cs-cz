@@ -1,6 +1,6 @@
 ---
-title: 'Obnovení se nezdařilo - okruhu ExpressRoute: PowerShell: Azure | Dokumentace Microsoftu'
-description: Tento článek pomůže obnovit okruh ExpressRoute, který je ve stavu selhání.
+title: 'Resetování neúspěšného okruhu – ExpressRoute: PowerShell: Azure | Microsoft Docs'
+description: Tento článek vám pomůže resetovat okruh ExpressRoute, který je ve stavu selhání.
 services: expressroute
 author: anzaman
 ms.service: expressroute
@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 11/28/2018
 ms.author: anzaman
 ms.custom: seodec18
-ms.openlocfilehash: f6fd8e5f0e5730e55fa5bbe13f74be796dd6a4cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: deeb1c65cae7e3a5b42230dbda1ad8efa717ba0b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66115840"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748100"
 ---
-# <a name="reset-a-failed-expressroute-circuit"></a>Resetování okruhu ExpressRoute, který selhal
+# <a name="reset-a-failed-expressroute-circuit"></a>Resetování neúspěšného okruhu ExpressRoute
 
-Při operaci v okruhu ExpressRoute nepodaří úspěšně vyřídit, okruh může přejít do stavu "selhání". Tento článek pomáhá resetování okruhu Azure ExpressRoute, který selhal.
+Po úspěšném dokončení operace na okruhu ExpressRoute může okruh přejít do stavu "neúspěch". Tento článek vám pomůže resetovat neúspěšný okruh Azure ExpressRoute.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 ## <a name="reset-a-circuit"></a>Resetování okruhu
 
@@ -40,7 +40,7 @@ Při operaci v okruhu ExpressRoute nepodaří úspěšně vyřídit, okruh můž
    ```azurepowershell-interactive
    Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
-5. Spusťte následující příkazy k resetování okruhu, který je v chybovém stavu:
+5. Spuštěním následujících příkazů resetujete okruh, který je ve stavu selhání:
 
    ```azurepowershell-interactive
    $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -48,8 +48,8 @@ Při operaci v okruhu ExpressRoute nepodaří úspěšně vyřídit, okruh můž
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-Okruh by měl být nyní jsou v pořádku. Vytvořit lístek podpory s [podpory Microsoftu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Pokud okruh je stále v chybovém stavu.
+Okruh by teď měl být v pořádku. Pokud je okruh stále ve stavu selhání, otevřete lístek podpory s [podporou Microsoftu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Vytvořit lístek podpory s [podpory Microsoftu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Pokud stále dochází k problémům.
+Pokud stále dochází k problémům, otevřete lístek podpory s [podporou Microsoftu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .

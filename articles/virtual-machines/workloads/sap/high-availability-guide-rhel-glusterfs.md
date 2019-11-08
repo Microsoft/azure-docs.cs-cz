@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: fd5014de622c37950c15006c2cc4dcbbb27ef8e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2ae9a1419232cca051f7cab4e9bd8c70f885df73
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101127"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749045"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>GlusterFS na virtuálních počítačích Azure s Red Hat Enterprise Linuxem pro SAP NetWeaver
 
@@ -98,21 +98,21 @@ K nasazení všech požadovaných prostředků můžete použít jednu z šablon
    4. Uživatelské jméno správce, heslo správce nebo klíč SSH  
       Vytvoří se nový uživatel, který se dá použít k přihlášení k počítači.
    5. ID podsítě  
-      Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako/Subscriptions/ **&lt;ID&gt;** předplatného **&lt;/resourceGroups/název&gt;skupiny prostředků**/Providers/Microsoft.Network/virtualNetworks/ **&lt; &gt;** název**podsítě/subnets/&gt; názvu virtuální sítě&lt;**
+      Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako/Subscriptions/ **&lt;ID předplatného&gt;** /resourceGroups/ **&lt;název skupiny prostředků&gt;** /providers/Microsoft.Network/virtualNetworks/ **&lt;virtuální síť&gt;** /subnets/ **&lt;název podsítě&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Ruční nasazení Linux pomocí Azure Portal
 
-Nejprve je třeba vytvořit virtuální počítače pro tento cluster. Následně vytvoříte Nástroj pro vyrovnávání zatížení a použijete virtuální počítače ve fondech back-endu.
+Nejprve je třeba vytvořit virtuální počítače pro tento cluster. Následně vytvoříte Nástroj pro vyrovnávání zatížení a použijete virtuální počítače ve fondech back-endu. Doporučujeme [standardní nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).  
 
 1. Vytvoření skupiny prostředků
 1. Vytvoření Virtual Network
 1. Vytvoření skupiny dostupnosti  
    Nastavit maximální aktualizační doménu
 1. Vytvořit virtuální počítač 1  
-   Použijte minimálně RHEL 7. v tomto příkladu se jedná o bitovou kopii Red Hat Enterprise Linux 7,4.<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   Použijte alespoň RHEL 7, v tomto příkladu <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM> bitovou kopii Red Hat Enterprise Linux 7,4  
    Vybrat skupinu dostupnosti vytvořenou dříve  
 1. Vytvořit virtuální počítač 2  
-   Použijte minimálně RHEL 7. v tomto příkladu se jedná o bitovou kopii Red Hat Enterprise Linux 7,4.<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   Použijte alespoň RHEL 7, v tomto příkladu <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM> bitovou kopii Red Hat Enterprise Linux 7,4  
    Vybrat skupinu dostupnosti vytvořenou dříve  
 1. Přidejte jeden datový disk pro každý systém SAP do obou virtuálních počítačů.
 
@@ -120,15 +120,15 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster. Následn�
 
 Následující položky jsou předpony buď **[A]** – platí pro všechny uzly, **[1]** – platí jenom pro uzel 1, **[2]** , které platí jenom pro uzel 2, **[3]** – platí jenom pro uzel 3.
 
-1. **[A]**  Nastavit rozlišení názvu hostitele
+1. **[A]** nastavení rozlišení názvu hostitele
 
-   Můžete buď použít DNS server nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
+   Můžete buď použít server DNS, nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
    V následujících příkazech nahraďte IP adresu a název hostitele.
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Vložte následující řádky do/etc/hosts. Změňte IP adresu a název hostitele, aby odpovídaly vašemu prostředí
+   Vložte následující řádky do/etc/hosts. Změňte IP adresu a název hostitele tak, aby odpovídaly vašemu prostředí.
 
    <pre><code># IP addresses of the Gluster nodes
    <b>10.0.0.40 glust-0</b>
@@ -348,7 +348,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    sudo gluster volume start <b>NW2</b>-aers
    </code></pre>
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Instalace SAP ASCS a databáze](high-availability-guide-rhel.md)
 * [Plánování a implementace Azure Virtual Machines pro SAP][planning-guide]

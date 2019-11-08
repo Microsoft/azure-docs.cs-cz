@@ -1,6 +1,6 @@
 ---
 title: Zálohování a obnovení souborů Azure pomocí Azure Backup a PowerShellu
-description: Zálohujte a obnovte soubory Azure pomocí Azure Backup a PowerShellu.
+description: V tomto článku se dozvíte, jak zálohovat a obnovovat soubory Azure pomocí služby Azure Backup a PowerShellu.
 author: dcurwin
 manager: carmonm
 ms.service: backup
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: dacurwin
 ms.reviewer: pullabhk
-ms.openlocfilehash: bfaecc5fe9fbbd68ba0f138b7b40b2507d729635
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 491e27f85d00ce512995a63e43b9e248798e5d0f
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968638"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747629"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>Zálohování a obnovení souborů Azure pomocí PowerShellu
 
@@ -22,6 +22,7 @@ Tento článek popisuje, jak pomocí Azure PowerShell zálohovat a obnovovat sd�
 Tento kurz vysvětluje následující postupy:
 
 > [!div class="checklist"]
+>
 > * Nastavte PowerShell a zaregistrujte poskytovatele služby Azure Recovery Services.
 > * Vytvořte trezor služby Recovery Services.
 > * Nakonfigurujte zálohování sdílené složky Azure.
@@ -41,7 +42,7 @@ Hierarchie objektů je shrnuta v následujícím diagramu.
 
 ![Recovery Services hierarchie objektů](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-Přečtěte si referenční informace k [rutině](/powershell/module/az.recoveryservices) **AZ. RecoveryServices** v knihovně Azure.
+Přečtěte si referenční informace k rutině **AZ. RecoveryServices** [cmdlet reference](/powershell/module/az.recoveryservices) v knihovně Azure.
 
 ## <a name="set-up-and-install"></a>Nastavení a instalace
 

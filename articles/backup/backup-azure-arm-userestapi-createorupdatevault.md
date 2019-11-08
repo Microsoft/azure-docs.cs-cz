@@ -1,6 +1,6 @@
 ---
-title: 'Azure Backup: Vytvoření trezorů Recovery Services pomocí REST API'
-description: Správa operací zálohování a obnovení zálohování virtuálních počítačů Azure pomocí REST API
+title: 'Azure Backup: vytvoření trezorů Recovery Services pomocí REST API'
+description: V tomto článku se dozvíte, jak spravovat operace zálohování a obnovení zálohování virtuálních počítačů Azure pomocí REST API.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: dacurwin
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: f60a675b87d989f12ac3e6181f580b8acffa640b
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 7c9d165f623367d1c888b90f76e96ce8fa2e8f89
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688700"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747560"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Vytvoření trezoru služby Azure Recovery Services pomocí REST API
 
@@ -27,30 +27,30 @@ Pokud chcete vytvořit nebo aktualizovat trezor služby Azure Recovery Services,
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}?api-version=2016-06-01
 ```
 
-## <a name="create-a-request"></a>Vytvořit žádost
+## <a name="create-a-request"></a>Vytvoření žádosti
 
-Chcete-li vytvořit požadavek *Put* , `{subscription-id}` je vyžadován parametr. Pokud máte více předplatných, přečtěte si téma [práce s více](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)předplatnými. Nadefinujete `{resourceGroupName}` a `{vaultName}` pro své `api-version` prostředky spolu s parametrem. Tento článek používá `api-version=2016-06-01`.
+Chcete-li vytvořit požadavek *Put* , je vyžadován parametr `{subscription-id}`. Pokud máte více předplatných, přečtěte si téma [práce s více předplatnými](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). Nadefinujete `{resourceGroupName}` a `{vaultName}` prostředků spolu s parametrem `api-version`. Tento článek používá `api-version=2016-06-01`.
 
 Jsou vyžadovány následující hlavičky:
 
-| Hlavička žádosti   | Popis |
+| Hlavička požadavku   | Popis |
 |------------------|-----------------|
-| *Content-Type:*  | Povinný parametr. Nastavte na `application/json`. |
-| *Authorization:* | Povinný parametr. Nastavte na platný `Bearer` [přístupový token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+| *Content-Type:*  | Povinná hodnota. Nastavte na `application/json`. |
+| *Authorization:* | Povinná hodnota. Nastavte na platný `Bearer`přístupový token[ ](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
-Další informace o tom, jak vytvořit žádost, najdete v tématu [komponenty REST API žádosti](/rest/api/azure/#components-of-a-rest-api-requestresponse)o odezvu.
+Další informace o tom, jak vytvořit žádost, najdete v tématu [komponenty REST API žádosti o odezvu](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
 ## <a name="create-the-request-body"></a>Vytvoření textu žádosti
 
 Následující běžné definice se používají k sestavení textu žádosti:
 
-|Name  |Požadováno  |Typ  |Popis  |
+|Name (Název)  |Požaduje se  |Typ  |Popis  |
 |---------|---------|---------|---------|
-|eTag     |         |   Řetězec      |  Volitelné eTag       |
+|značk     |         |   Řetězec      |  Volitelné eTag       |
 |location     |  true       |Řetězec         |   Umístění prostředku      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Vlastnosti trezoru       |
-|SKU     |         |  [Sku](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Určuje jedinečný systémový identifikátor každého prostředku Azure.     |
-|značky     |         | Object        |     Značky prostředků    |
+|Skladové     |         |  [Sku](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Určuje jedinečný systémový identifikátor každého prostředku Azure.     |
+|značek     |         | Objekt        |     Značky prostředků    |
 
 Všimněte si, že název trezoru a název skupiny prostředků jsou k dispozici v identifikátoru URI PUT. Text žádosti definuje umístění.
 
@@ -68,11 +68,11 @@ Následující vzorový text se používá k vytvoření trezoru v "Západní US
 }
 ```
 
-## <a name="responses"></a>Odpovědi
+## <a name="responses"></a>Odezvy
 
 Existují dvě úspěšné odpovědi, které by mohla operace vytvořit nebo aktualizovat Recovery Services trezoru:
 
-|Name  |Typ  |Popis  |
+|Name (Název)  |Typ  |Popis  |
 |---------|---------|---------|
 |200 OK     |   [Trezor](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)      | OK        |
 |201 vytvořeno     | [Trezor](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Vytvořeno      |
@@ -98,7 +98,7 @@ Zhuštěná *201 vytvořená* odpověď z předchozího ukázkového textu žád
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Vytvořte zásady zálohování pro zálohování virtuálního počítače Azure v tomto trezoru](backup-azure-arm-userestapi-createorupdatepolicy.md).
 

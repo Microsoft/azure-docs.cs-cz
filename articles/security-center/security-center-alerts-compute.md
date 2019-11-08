@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/05/2019
 ms.author: memildin
-ms.openlocfilehash: d705174f46ba38f37ae8cce9839c2d1f63ab6bf8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6b6acb0ae1452795fe02906779b920e4b41f9a55
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664272"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748389"
 ---
 # <a name="threat-detection-for-cloud-native-computing-in-azure-security-center"></a>Detekce hrozeb pro nativní výpočetní prostředí cloudu v Azure Security Center
 
@@ -66,7 +66,7 @@ Zjišťují se hrozby na různých úrovních:
     >[!NOTE]
     > Pokud se rozhodnete neinstalovat agenty na hostitele, bude se vám zobrazovat jenom podmnožina výhod a upozornění detekce hrozeb. Pořád budete dostávat výstrahy týkající se analýzy sítě a komunikace se škodlivými servery.
 
-* Pro **úroveň clusteru AKS**je sledování detekce hrozeb založené na analýze protokolů auditu Kubernetes. Pokud chcete toto monitorování bez **agentů** povolit, přidejte na stránce s **nastavením cenové &** možnost Kubernetes (podívejte se na [ceny](security-center-pricing.md)). Pokud chcete na této úrovni generovat výstrahy, Security Center monitorovat služby spravované AKS pomocí protokolů načtených pomocí AKS. Mezi příklady událostí na této úrovni patří exponované řídicí panely Kubernetes, vytváření vysoce privilegovaných rolí a vytváření citlivých připojení. 
+* Pro **úroveň clusteru AKS**je sledování detekce hrozeb založené na analýze protokolů auditu Kubernetes. Pokud chcete toto monitorování bez **agentů** povolit, přidejte na stránce s **nastavením cenové &** možnost Kubernetes (podívejte se na [ceny](security-center-pricing.md)). Pokud chcete na této úrovni generovat výstrahy, Security Center monitorovat služby spravované AKS pomocí protokolů načtených pomocí AKS. Mezi příklady událostí na této úrovni patří exponované řídicí panely Kubernetes, vytváření vysoce privilegovaných rolí a vytváření citlivých připojení.
 
     >[!NOTE]
     > Security Center generuje upozornění na detekci pro akce a nasazení služby Azure Kubernetes, ke kterým dochází po povolení možnosti Kubernetes v nastaveních předplatného. 

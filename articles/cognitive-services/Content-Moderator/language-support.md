@@ -1,7 +1,7 @@
 ---
 title: Jazyková podpora – rozhraní Content Moderator API
 titleSuffix: Azure Cognitive Services
-description: Toto je seznam přirozených jazyků, které rozhraní API pro Content Moderator podporuje.
+description: Toto je seznam přirozených jazyků, které podporuje rozhraní API služby Azure Cognitive Services Content Moderator.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: b4e6a5ca2dc19671dab3087c0a182925ac8f9a1b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 9574af31c881589668c462099cae46d9e83b454b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755324"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744361"
 ---
 # <a name="language-support-for-content-moderator-api"></a>Jazyková podpora pro rozhraní Content Moderator API
 
@@ -25,7 +25,7 @@ ms.locfileid: "72755324"
 > Pro detekci **podmínek vulgárních** výrazů použijte [kód ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) podporovaných jazyků uvedených v tomto článku, nebo ponechte prázdné.
 
 
-| Detekce jazyka | Vulgárních výrazů   | OCR    | Automatické opravy     |
+| Rozpoznávání jazyka | Vulgárních výrazů   | OCR    | Automatické opravy     |
 | -------------------- |-------------|--------|---------------------|
 | Arabština (Roman)   | Afrikánština   | arabština   | arabština |
 | Čára | Albánština | Čínština (zjednodušená)    | dánština |

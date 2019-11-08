@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: e096982c7bbf4f06b96ef4e3918ca1caa9d481a0
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 599417131f228c95168641c54ffbb947e3682f7b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169087"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750003"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Omezení instalace rozšíření na virtuálních počítačích s Windows pomocí Azure Policy
 
@@ -26,7 +26,7 @@ Pokud chcete zabránit použití nebo instalaci určitých rozšíření na virt
 
 V tomto kurzu se používá Azure PowerShell v Cloud Shell, která se průběžně aktualizuje na nejnovější verzi. 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="create-a-rules-file"></a>Vytvoření souboru pravidel
 
@@ -66,7 +66,7 @@ Zkopírujte následující soubor. JSON a vložte ho do souboru.
 }
 ```
 
-Až skončíte, stiskněte klávesu **CTRL + O** a pak **zadáním** uložte soubor. Stiskněte **CTRL + X** , abyste soubor zavřeli a ukončili.
+Až skončíte, stiskněte **klávesu CTRL + O** a pak **zadáním** uložte soubor. Stiskněte **CTRL + X** , abyste soubor zavřeli a ukončili.
 
 ## <a name="create-a-parameters-file"></a>Vytvoření souboru parametrů
 
@@ -95,7 +95,7 @@ Zkopírujte následující soubor. JSON a vložte ho do souboru.
 }
 ```
 
-Až skončíte, stiskněte klávesu **CTRL + O** a pak **zadáním** uložte soubor. Stiskněte **CTRL + X** , abyste soubor zavřeli a ukončili.
+Až skončíte, stiskněte **klávesu CTRL + O** a pak **zadáním** uložte soubor. Stiskněte **CTRL + X** , abyste soubor zavřeli a ukončili.
 
 ## <a name="create-the-policy"></a>Vytvoření zásady
 
@@ -141,7 +141,7 @@ $assignment
 
 ## <a name="test-the-policy"></a>Testování zásad
 
-Pokud chcete zásadu otestovat, zkuste použít rozšíření přístupu virtuálních počítačů. Následující zprávy by se měly podařit s chybou set-AzVMAccessExtension: Zásady nepovolily prostředek myVMAccess.
+Pokud chcete zásadu otestovat, zkuste použít rozšíření přístupu virtuálních počítačů. Následující příkaz by neměl selhat se zprávou "set-AzVMAccessExtension: prostředek" myVMAccess "byl zakázán zásadami."
 
 ```azurepowershell-interactive
 Set-AzVMAccessExtension `

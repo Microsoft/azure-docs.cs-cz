@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: ec8250f6cdb44af3c99c1d34d1f14fbd2209aac0
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: f70052a62152a20f808c1e491a663d1406fbd407
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530092"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747707"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>Instalace linkeru ve službě Azure Kubernetes Service (AKS)
 
@@ -248,7 +248,7 @@ Opening Linkerd dashboard in the default browser
 > [!WARNING]
 > Odstranění linkeru ze spuštěného systému může vést k problémům souvisejícím s provozem mezi vašimi službami. Než budete pokračovat, ujistěte se, že jste provedli správné fungování vašeho systému bez linkeru.
 
-Nejprve bude nutné odebrat proxy roviny dat. Odstraňte jakékoli automatické [Anotace][linkerd-automatic-proxy-injection] vkládání proxy z oboru názvů úloh a naveďte nasazení úloh. Vaše úlohy by již neměly mít žádné přidružené součásti roviny dat.
+Nejprve bude nutné odebrat proxy roviny dat. Odstraňte jakékoli automatické [Anotace][linkerd-automatic-proxy-injection] injektáže proxy z oboru názvů úlohy a zaveďte nasazení úloh. Vaše úlohy by již neměly mít žádné přidružené součásti roviny dat.
 
 Nakonec odstraňte rovinu ovládacího prvku následujícím způsobem:
 

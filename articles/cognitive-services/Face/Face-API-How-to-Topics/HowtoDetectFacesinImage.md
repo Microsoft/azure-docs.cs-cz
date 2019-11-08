@@ -1,7 +1,7 @@
 ---
 title: Rozpoznávání ploch v obrázku – Face API
 titleSuffix: Azure Cognitive Services
-description: Naučte se používat různá data vrácená funkcí rozpoznávání tváře.
+description: Tato příručka ukazuje, jak použít detekci obličeje k extrakci atributů, jako je pohlaví, věk nebo pozice z daného obrázku.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 07089def3290d6d64919ad2551de7584646cc681
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9b66231d995ffb6980ce36852115c571cd102681
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306633"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744279"
 ---
 # <a name="get-face-detection-data"></a>Získat data o detekci obličeje
 
@@ -27,9 +27,9 @@ V této příručce se dozvíte, jak:
 - Získejte na obrázku umístění různých orientačních bodů, jako jsou žákům, nos a pusa.
 - Odhadujte pohlaví, věk, emoce a další atributy zjištěné plochy.
 
-## <a name="setup"></a>Instalace
+## <a name="setup"></a>Nastavení
 
-V tomto průvodci se předpokládá, že už [](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) jste nastavili `faceClient`objekt FaceClient s názvem s klíčovým předplatným a adresou URL koncového bodu. Z tohoto místa můžete použít funkci detekce obličeje voláním [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), který se používá v tomto průvodci nebo v [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet). Pokyny, jak tuto funkci nastavit, najdete v některém z rychlých startů.
+V tomto průvodci se předpokládá, že už jste nastavili objekt [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) s názvem `faceClient`s klíčovým bodem předplatného a adresou URL koncového bodu. Z tohoto místa můžete použít funkci detekce obličeje voláním [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), který se používá v tomto průvodci nebo v [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet). Pokyny, jak tuto funkci nastavit, najdete v některém z rychlých startů.
 
 Tato příručka se zaměřuje na konkrétní volání detekce, například jaké argumenty můžete předat a co můžete s vrácenými daty dělat. Doporučujeme zadat dotaz jenom na funkce, které potřebujete. Dokončení každé operace trvá déle.
 

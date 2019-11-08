@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 76110fa04441540875e65c8bc056fc21555c5db6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 74ef55fe9a0a6603bd43d68b6b8557dce1bca921
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102280"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749147"
 ---
 # <a name="create-a-snapshot"></a>Vytvoření snímku
 
@@ -29,7 +29,7 @@ Pokud se chystáte použít snímek k vytvoření nového virtuálního počíta
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlásit se na [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **vytvořit prostředek**a pak vyhledejte a vyberte **snímek**.
 3. V okně **snímku** vyberte **vytvořit**. Zobrazí se okno **vytvořit snímek** .
 4. Zadejte **název** snímku.
@@ -43,7 +43,7 @@ Pokud se chystáte použít snímek k vytvoření nového virtuálního počíta
 
 Následující kroky ukazují, jak zkopírovat disk VHD, vytvořit konfiguraci snímku a pořídit snímek disku pomocí rutiny [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) . 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 1. Nastavte některé parametry: 
 
@@ -72,7 +72,7 @@ Následující kroky ukazují, jak zkopírovat disk VHD, vytvořit konfiguraci s
    ```
    
    > [!NOTE]
-   > Pokud chcete snímek Uložit do odolného úložiště s využitím zóny, vytvořte ho v oblasti, která podporuje [zóny dostupnosti](../../availability-zones/az-overview.md) , a tento `-SkuName Standard_ZRS` parametr přidejte.   
+   > Pokud chcete snímek Uložit do odolného úložiště s využitím zóny, vytvořte ho v oblasti, která podporuje [zóny dostupnosti](../../availability-zones/az-overview.md) , a zahrňte parametr `-SkuName Standard_ZRS`.   
    
 4. Pořídit snímek:
 
@@ -84,6 +84,6 @@ Následující kroky ukazují, jak zkopírovat disk VHD, vytvořit konfiguraci s
    ```
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Vytvořte virtuální počítač ze snímku vytvořením spravovaného disku ze snímku a připojením nového spravovaného disku jako disku s operačním systémem. Další informace najdete v ukázce v tématu [Vytvoření virtuálního počítače ze snímku pomocí PowerShellu](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json).

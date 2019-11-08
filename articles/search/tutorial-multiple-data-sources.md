@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3b94e3e352f4d6b5cd7da41feb9660be2ffed2bd
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 69b18cdd4d0bb8e3d13bbacd5d21764004308786
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786489"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795645"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-cognitive-search-index"></a>C#Kurz: kombinování dat z více zdrojů dat v jednom indexu Azure Kognitivní hledání
 
@@ -30,13 +30,13 @@ V tomto kurzu C#se používá sada .NET SDK pro Azure Kognitivní hledání a Az
 > * Indexovat data hotelu z Azure Cosmos DB
 > * Sloučení dat z hotelových místností z úložiště objektů BLOB
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto rychlém startu se používají následující služby, nástroje a data. 
 
 - [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento kurz můžete použít bezplatnou službu.
 
-- [Vytvořte účet Azure Cosmos DB](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) pro uložení ukázkových údajů o hotelu.
+- [Vytvořte účet Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) pro uložení ukázkových údajů o hotelu.
 
 - [Vytvořte účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) pro ukládání ukázkových dat BLOB JSON.
 
@@ -58,7 +58,7 @@ Abyste mohli komunikovat se službou Azure Kognitivní hledání, budete potřeb
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-1. V části **nastavení**  > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+1. V části **nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
 ![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
 
@@ -98,7 +98,7 @@ Tato ukázka používá dvě malé sady dat, které popisují sedm fiktivních h
 
 1. Přejděte do složky, která obsahuje ukázkové soubory. Vyberte všechny z nich a pak klikněte na **nahrát**.
 
-   ![Nahrání souborů](media/tutorial-multiple-data-sources/blob-upload.png "Nahrávání souborů")
+   ![Nahrání souborů](media/tutorial-multiple-data-sources/blob-upload.png "Nahrání souborů")
 
 Až se nahrávání dokončí, soubory by se měly zobrazit v seznamu datového kontejneru.
 

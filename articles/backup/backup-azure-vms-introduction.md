@@ -1,18 +1,18 @@
 ---
 title: Informace o zálohování virtuálních počítačů Azure
-description: Přečtěte si o zálohování virtuálních počítačů Azure a poznamenejte si Doporučené postupy.
+description: V tomto článku se dozvíte, jak služba Azure Backup zálohuje virtuální počítače Azure a jak postupovat podle osvědčených postupů.
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: db3e4b8a8abea4718f5779790906bf45591d221c
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: e22c4c24e83be0f89b306eed0eb1d80bdd9387e1
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018689"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747197"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Přehled zálohování virtuálních počítačů Azure
 
@@ -34,10 +34,10 @@ Tady je postup, jak Azure Backup Dokončit zálohování virtuálních počíta�
     - Zálohování je optimalizované tak, že se všechny disky virtuálních počítačů paralelně zálohují.
     - U každého zálohovaného disku Azure Backup přečte bloky na disku a identifikuje a přenese pouze bloky dat, které se změnily (rozdílové) od předchozí zálohy.
     - Data snímku se nemusí hned zkopírovat do trezoru. Může to trvat několik hodin v době špičky. Celková doba zálohování pro virtuální počítač bude pro denní zásady zálohování kratší než 24 hodin.
- 1. Změny provedené na virtuálním počítači s Windows po Azure Backup jsou zapnuté:
-    -   Microsoft Visual C++ 2013 Redistributable (x64) – 12.0.40660 je nainstalovaná na VIRTUÁLNÍm počítači.
-    -   Typ spuštění služby Stínová kopie svazku (VSS) se změnil na automatické z ručního.
-    -   Přidaná služba systému Windows IaaSVmProvider
+1. Změny provedené na virtuálním počítači s Windows po Azure Backup jsou zapnuté:
+    - Microsoft Visual C++ 2013 Redistributable (x64) – 12.0.40660 je nainstalovaná na VIRTUÁLNÍm počítači.
+    - Typ spuštění služby Stínová kopie svazku (VSS) se změnil na automatické z ručního.
+    - Přidaná služba systému Windows IaaSVmProvider
 
 1. Po dokončení přenosu dat se snímek odebere a vytvoří se bod obnovení.
 
@@ -54,7 +54,7 @@ Když zálohujete virtuální počítače Azure pomocí Azure Backup, jsou virtu
 
 U spravovaných a nespravovaných virtuálních počítačů Azure podporuje zálohování jak virtuální počítače zašifrované jenom s BEKs, nebo virtuální počítače zašifrované pomocí BEKs společně s KEK.
 
-Zálohované BEKs (tajné klíče) a KEK (klíče) jsou šifrované. Dají se číst a používat jenom v případě, že se obnoví zpátky do trezoru klíčů autorizovanými uživateli. Neoprávnění uživatelé ani Azure nemohou číst ani používat zálohované klíče a tajné kódy.
+Zálohované BEKs (tajné klíče) a KEK (klíče) jsou šifrované. Dají se číst a používat jenom v případě, že se obnoví zpátky do trezoru klíčů autorizovanými uživateli. Neoprávnění uživatelé nebo Azure můžou číst nebo používat zálohované klíče nebo tajné klíče.
 
 BEKs se také zálohují. Takže pokud dojde ke ztrátě BEKs, autorizovaní uživatelé můžou obnovit BEKs do trezoru klíčů a obnovit šifrované virtuální počítače. Pouze uživatelé s potřebnou úrovní oprávnění mohou zálohovat a obnovovat šifrované virtuální počítače nebo klíče a tajné kódy.
 
@@ -64,7 +64,7 @@ Azure Backup převezme snímky podle plánu zálohování.
 
 - **Virtuální počítače s Windows:** V případě virtuálních počítačů s Windows se služba Backup koordinuje se stínovou kopií svazku, aby vybrala snímek konzistentní vzhledem k aplikacím na discích virtuálních počítačů.
 
-  - Ve výchozím nastavení Azure Backup provede úplné zálohování VSS. [Další informace](https://blogs.technet.com/b/filecab/archive/2008/05/21/what-is-the-difference-between-vss-full-backup-and-vss-copy-backup-in-windows-server-2008.aspx).
+  - Ve výchozím nastavení Azure Backup provede úplné zálohování VSS. [Další informace](https://blogs.technet.com/b/filecab/archive/2008/05/21/what-is-the-difference-between-vss-full-backup-and-vss-copy-backup-in-windows-server-2008.aspx)
   - Chcete-li změnit nastavení tak, aby Azure Backup trvalo zálohování kopírováním služby VSS, nastavte následující klíč registru z příkazového řádku:
 
     **REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgent"/v USEVSSCOPYBACKUP/t REG_SZ/d TRUE/f**
@@ -81,8 +81,8 @@ Následující tabulka vysvětluje různé typy konzistence snímků:
 
 **Snímek** | **Podrobnosti** | **Pohledávky** | **Aspekty**
 --- | --- | --- | ---
-**Konzistentní vzhledem k aplikacím** | Zálohování konzistentní s aplikací zaznamenává obsah paměti a nedokončené vstupně-výstupní operace. Snímky konzistentní vzhledem k aplikacím používají zapisovač VSS (nebo předzálohovací skripty pro Linux), aby se zajistila konzistence dat aplikace před tím, než dojde k zálohování. | Při obnovování virtuálního počítače pomocí snímku konzistentního vzhledem k aplikacím se spustí virtuální počítač. Nedošlo k žádnému poškození nebo ztrátě dat. Aplikace se spustí v konzistentním stavu. | Windows: Všechny zapisovače VSS byly úspěšné.<br/><br/> Linux: Před/po jsou nakonfigurovány a úspěšně spouštěny skripty.
-**Konzistentní se systémem souborů** | Zálohy konzistentní se systémem souborů poskytují konzistenci tím, že pořizuje všechny soubory ve stejnou dobu.<br/><br/> | Při obnovování virtuálního počítače pomocí snímku konzistentního se systémem souborů se spustí virtuální počítač. Nedošlo k žádnému poškození nebo ztrátě dat. Aplikace potřebují implementovat vlastní mechanizmus "opravování", aby se zajistila konzistence obnovených dat. | Windows: Některé zapisovače VSS selhaly. <br/><br/> Linux: Výchozí (pokud nejsou nakonfigurované nebo neúspěšné skripty předem)
+**Konzistentní vzhledem k aplikacím** | Zálohování konzistentní s aplikací zaznamenává obsah paměti a nedokončené vstupně-výstupní operace. Snímky konzistentní vzhledem k aplikacím používají zapisovač VSS (nebo předzálohovací skripty pro Linux), aby se zajistila konzistence dat aplikace před tím, než dojde k zálohování. | Při obnovování virtuálního počítače pomocí snímku konzistentního vzhledem k aplikacím se spustí virtuální počítač. Nedošlo k žádnému poškození nebo ztrátě dat. Aplikace se spustí v konzistentním stavu. | Windows: Všechny zapisovače VSS byly úspěšné.<br/><br/> Linux: jsou nakonfigurovány a úspěšně spouštěny skripty před prodejem.
+**Konzistentní se systémem souborů** | Zálohy konzistentní se systémem souborů poskytují konzistenci tím, že pořizuje všechny soubory ve stejnou dobu.<br/><br/> | Při obnovování virtuálního počítače pomocí snímku konzistentního se systémem souborů se spustí virtuální počítač. Nedošlo k žádnému poškození nebo ztrátě dat. Aplikace potřebují implementovat vlastní mechanizmus "opravování", aby se zajistila konzistence obnovených dat. | Windows: některé zapisovače VSS selhaly. <br/><br/> Linux: výchozí (pokud nejsou nakonfigurovány nebo se nezdařily skripty před prodejem)
 **Konzistentní vzhledem k selháním** | K snímkům konzistentním se selháním obvykle dochází v případě, že se virtuální počítač Azure vypíná v době zálohování. Budou zachycena a zálohována pouze data, která na disku již existují v době zálohování.<br/><br/> Bod obnovení konzistentní vzhledem k selháním nezaručuje konzistenci dat pro operační systém nebo aplikaci. | I když nejsou k dispozici žádné záruky, virtuální počítač se obvykle spustí a potom spustí kontrolu disku, aby opravil chyby poškození. Veškerá data v paměti nebo operace zápisu, které nebyly přeneseny na disk před ztrátou chyby. Aplikace implementují svá vlastní ověření dat. Databázová aplikace může například použít svůj transakční protokol k ověření. Pokud transakční protokol obsahuje položky, které nejsou v databázi, software databáze zahrne transakce zpět, dokud nebudou data konzistentní. | Virtuální počítač je ve stavu vypnutí.
 
 ## <a name="backup-and-restore-considerations"></a>Předpoklady pro zálohování a obnovení
@@ -103,7 +103,7 @@ Tyto běžné scénáře mohou ovlivnit celkovou dobu zálohování:
 
 - **Přidává se nový disk do chráněného virtuálního počítače Azure:** Pokud dojde k přírůstkové zálohování virtuálního počítače a přidání nového disku, čas zálohování se zvýší. Celková doba zálohování může být poslední více než 24 hodin kvůli počáteční replikaci nového disku a rozdílové replikaci stávajících disků.
 - **Fragmentované disky:** Operace zálohování jsou rychlejší, když jsou změny disků souvislé. Pokud jsou změny rozloženy a rozděleny na disk, bude zálohování pomalejší.
-- **Změny disku:** Pokud chráněné disky s přírůstkovým zálohováním docházejí z provozu s více než 200 GB, zálohování může trvat dlouhou dobu (více než osm hodin), než se dokončí.
+- Změny **disku:** Pokud chráněné disky s přírůstkovým zálohováním docházejí z provozu s více než 200 GB, zálohování může trvat dlouhou dobu (více než osm hodin), než se dokončí.
 - **Verze zálohy:** Nejnovější verze služby Backup (známá jako verze okamžitého obnovení) využívá více optimalizovaného procesu než porovnání kontrolního součtu k identifikaci změn. Pokud ale používáte rychlé obnovení a odstranili jste snímek zálohy, zálohování se přepne na porovnání kontrolního součtu. V tomto případě bude operace zálohování delší než 24 hodin (nebo selhání).
 
 ## <a name="best-practices"></a>Osvědčené postupy
@@ -132,7 +132,7 @@ Například Vezměte virtuální počítač a2-Standard, který má dva další 
 
 **Disk** | **Maximální velikost** | **Skutečná data k dispozici**
 --- | --- | ---
-Disk s operačním systémem | 4095 GB | 17 GB
+Disk OS | 4095 GB | 17 GB
 Místní/dočasný disk | 135 GB | 5 GB (Nezahrnuto do zálohování)
 Datový disk 1 | 4095 GB | 30 GB
 Datový disk 2 | 4095 GB | 0 GB
@@ -140,14 +140,15 @@ Datový disk 2 | 4095 GB | 0 GB
 Skutečná velikost virtuálního počítače v tomto případě je 17 GB + 30 GB + 0 GB = 47 GB. Tato chráněná velikost instance (47 GB) se bude základem pro měsíční faktura. Vzhledem k nárůstu množství dat ve virtuálním počítači se velikost chráněné instance, která se používá pro fakturaci, změní na odpovídající.
 
 <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb"></a>
-## <a name="public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Verze Public Preview: Zálohování virtuálního počítače s velikostí disků až do 30 TB
+
+## <a name="public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Public Preview: zálohování virtuálního počítače s velikostí disků až do 30 TB
 
 Azure Backup teď podporuje verzi Public Preview větší a výkonnější [Azure Managed disks](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) o velikosti až 30 TB. Tato verze Preview poskytuje podporu pro spravované virtuální počítače na úrovni produkce.
 
-Zálohy pro virtuální počítače s každou velikostí disku až do 30TB a 256TB kombinované pro všechny disky ve virtuálním počítači by měly fungovat bez problémů, aniž by to mělo vliv na stávající zálohy. Není nutná žádná akce uživatele, aby bylo možné získat zálohy na discích s velkým množstvím, pokud je virtuální počítač již nakonfigurován pomocí Azure Backup.
+Zálohy virtuálních počítačů s každou velikostí disků až do 30 TB a maximálně 256 TB v kombinaci pro všechny disky ve virtuálním počítači by měly fungovat bez problémů, aniž by to mělo vliv na stávající zálohy. Není nutná žádná akce uživatele, aby bylo možné získat zálohy na discích s velkým množstvím, pokud je virtuální počítač již nakonfigurován pomocí Azure Backup.
 
 Všechny služby Azure Virtual Machines s velkými disky, které mají nakonfigurovanou zálohu, by měly být úspěšně zálohovány.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď [Připravte zálohování virtuálních počítačů Azure](backup-azure-arm-vms-prepare.md).

@@ -1,6 +1,6 @@
 ---
-title: 'Azure Backup: Obnovení virtuálních počítačů Azure pomocí REST API'
-description: Správa operací obnovení zálohování virtuálních počítačů Azure pomocí REST API
+title: 'Azure Backup: obnovení virtuálních počítačů Azure pomocí REST API'
+description: V tomto článku se dozvíte, jak spravovat operace obnovení zálohy virtuálního počítače Azure pomocí REST API.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: dacurwin
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: bdbceec2f1d0a900ffdb392d8a0505ce11419036
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 364b6ab589cc0fa50953a71d55adeccc79462eed
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954890"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747532"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Obnovení virtuálních počítačů Azure pomocí REST API
 
@@ -31,13 +31,13 @@ Dostupné body obnovení zálohované položky mohou být uvedeny pomocí [REST 
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2016-12-01
 ```
 
-A jsou sestaveny [zde.](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1) `{protectedItemName}` `{containerName}` `{fabricName}`je "Azure".
+`{containerName}` a `{protectedItemName}` jsou sestaveny [zde](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1). `{fabricName}` je "Azure".
 
 Identifikátor URI *Get* má všechny požadované parametry. Není potřeba žádné další tělo žádosti.
 
-### <a name="responses"></a>Odpovědi
+### <a name="responses"></a>Odezvy
 
-|Name  |Typ  |Popis  |
+|Name (Název)  |Typ  |Popis  |
 |---------|---------|---------|
 |200 OK     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
@@ -119,7 +119,7 @@ X-Powered-By: ASP.NET
 ......
 ```
 
-Bod obnovení je označený `{name}` polem ve výše uvedené reakci.
+Bod obnovení se identifikuje pomocí pole `{name}` ve výše uvedené odpovědi.
 
 ## <a name="restore-disks"></a>Obnovit disky
 
@@ -131,13 +131,13 @@ Aktivace disků pro obnovení je požadavek *post* . Pokud chcete získat dalš�
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2016-12-01
 ```
 
-A jsou sestaveny [zde.](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1) `{protectedItemName}` `{containerName}` `{fabricName}`je "Azure" a `{recoveryPointId}` `{name}` je pole bodu obnovení uvedeného [výše](#example-response).
+`{containerName}` a `{protectedItemName}` jsou sestaveny [zde](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1). `{fabricName}` je "Azure" a `{recoveryPointId}` je `{name}` pole bodu obnovení uvedeného [výše](#example-response).
 
 ### <a name="create-request-body"></a>Vytvořit text žádosti
 
 Pokud chcete aktivovat obnovení disku ze zálohy virtuálního počítače Azure, níže jsou uvedené součásti textu žádosti.
 
-|Name  |Typ  |Popis  |
+|Name (Název)  |Typ  |Popis  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -171,13 +171,13 @@ Aktivace disku pro obnovení je [asynchronní operace](https://docs.microsoft.co
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Name  |Typ  |Popis  |
+|Name (Název)  |Typ  |Popis  |
 |---------|---------|---------|
-|202 přijato     |         |     Přijato    |
+|202 přijato     |         |     Přijata    |
 
 #### <a name="example-responses"></a>Příklady odpovědí
 
-Jakmile odešlete identifikátor URI pro aktivaci disků pro obnovení, počáteční odpověď je 202 (přijato) s hlavičkou umístění nebo Azure-Async-Header.
+Jakmile odešlete identifikátor *URI* pro aktivaci disků pro obnovení, počáteční odpověď je 202 (přijato) s hlavičkou umístění nebo Azure-Async-Header.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -279,7 +279,7 @@ Následující text žádosti definuje vlastnosti vyžadované k aktivaci obnove
 
 Odpověď by měla být zpracována stejným způsobem, jak [je vysvětleno výše pro obnovení disků](#response).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o rozhraních REST API Azure Backup najdete v následujících dokumentech:
 

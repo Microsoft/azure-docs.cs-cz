@@ -1,7 +1,7 @@
 ---
 title: Nastavení služby QnA Maker – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Než budete moct vytvořit žádné nástroje QnA Maker znalostních bází, nejprve musíte vytvořit služba QnA Maker v Azure. Každý, kdo má oprávnění k vytvoření nových prostředků v předplatném můžete nastavit služba QnA Maker.
+description: Než budete moct vytvořit QnA Maker znalostní báze, musíte nejdřív nastavit službu QnA Maker v Azure. Každý, kdo má oprávnění k vytváření nových prostředků v předplatném, může nastavit službu QnA Maker.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a2b467eed010edbb842d536bd8f6e3f4107fcea8
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 6d52062561e3f08a214f3e191706583edc844786
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984366"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794217"
 ---
 # <a name="manage-qna-maker-resources"></a>Správa prostředků QnA Maker
 
-Než budete moct vytvořit žádné nástroje QnA Maker znalostních bází, nejprve musíte vytvořit služba QnA Maker v Azure. Každý, kdo má oprávnění k vytvoření nových prostředků v předplatném můžete nastavit služba QnA Maker.
+Než budete moct vytvořit QnA Maker znalostní báze, musíte nejdřív nastavit službu QnA Maker v Azure. Každý, kdo má oprávnění k vytváření nových prostředků v předplatném, může nastavit službu QnA Maker.
 
 ## <a name="types-of-keys-in-qna-maker"></a>Typy klíčů v QnA Maker
 
@@ -28,12 +28,12 @@ Vaše služba QnA Maker se zabývá dvěma druhy klíčů: **klíče předplatn�
 
 ![Správa klíčů](../media/qnamaker-how-to-key-management/key-management.png)
 
-|Name|Location|Účel|
+|Název|Umístění|Účel|
 |--|--|--|
 |Klíč předplatného|[Azure Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Tyto klíče se používají pro přístup k [rozhraním API služby QnA maker Management](https://go.microsoft.com/fwlink/?linkid=2092179). Tato rozhraní API umožňují upravovat otázky a odpovědi ve znalostní bázi a publikovat znalostní bázi. Tyto klíče se vytvoří při vytvoření nové služby QnA Maker.<br><br>Tyto klíče najdete na **Cognitive Services** prostředku na stránce **klíče** .|
 |Klíč koncového bodu|[Portál QnA Maker](http://www.qnamaker.ai)|Tyto klíče se používají pro přístup k publikovanému koncovému bodu znalostní báze a získání odpovědi na otázku uživatele. Tento koncový bod obvykle používáte v robotovi chatu nebo v kódu klientské aplikace, který se připojuje ke službě QnA Maker. Tyto klíče se vytvoří při publikování QnA Maker znalostní báze Knowledge Base.<br><br>Tyto klíče najdete na stránce **nastavení služby** . Vyhledá tuto stránku v nabídce uživatele v pravém horním rohu stránky v rozevírací nabídce.|
 
-## <a name="create-a-new-qna-maker-service"></a>Vytvořit novou službu QnA Maker
+## <a name="create-a-new-qna-maker-service"></a>Vytvoření nové služby QnA Maker
 
 Tento postup slouží k vytvoření prostředků Azure potřebných ke správě obsahu znalostní báze. Po dokončení tohoto postupu najdete klíče _předplatného_ na stránce **klíče** pro prostředek v Azure Portal.
 
@@ -41,27 +41,27 @@ Tento postup slouží k vytvoření prostředků Azure potřebných ke správě 
 
 1. Po přečtení podmínek a ujednání vyberte **vytvořit** :
 
-    ![Vytvořit novou službu QnA Maker](../media/qnamaker-how-to-setup-service/create-new-resource-button.png)
+    ![Vytvoření nové služby QnA Maker](../media/qnamaker-how-to-setup-service/create-new-resource-button.png)
 
 1. V **QnA maker**vyberte odpovídající úrovně a oblasti:
 
-    ![Vytvořit novou službu QnA Maker – cenová úroveň a oblasti](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
+    ![Vytvoření nové služby QnA Maker – cenová úroveň a oblasti](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
 
     * Do pole **název** zadejte jedinečný název, který identifikuje tuto QnA maker službu. Tento název taky identifikuje koncový bod QnA Maker, ke kterému se bude vaše znalostní báze přidružit.
     * Vyberte **předplatné** , pod kterým bude nasazen QnA maker prostředek.
     * Vyberte **cenovou úroveň** pro službu QnA maker Management Services (rozhraní API pro portál a správu). Podívejte se na [Další podrobnosti o cenách SKU](https://aka.ms/qnamaker-pricing).
     * Vytvořte novou skupinu prostředků (doporučeno) nebo použijte existující **skupinu prostředků** , ve které chcete tento prostředek QnA maker nasadit. QnA Maker vytvoří několik prostředků Azure. Když vytvoříte skupinu prostředků pro tyto prostředky, můžete tyto prostředky snadno najít, spravovat a odstranit podle názvu skupiny prostředků.
     * Vyberte **umístění skupiny prostředků**.
-    * Zvolte **cenová úroveň hledání** služby Azure Search. Pokud není dostupná možnost úrovně Free (vypadá šedě), znamená to, že už máte bezplatnou Azure Searchovou vrstvu nasazenou prostřednictvím vašeho předplatného. V takovém případě bude nutné začít s úrovní Basic Azure Search. Viz [Podrobnosti o cenách Azure Search](https://azure.microsoft.com/pricing/details/search/).
-    * Vyberte **umístění pro hledání** , ve kterém chcete Azure Search data nasadit. Omezení, kde musí být zákaznická data uložená, vám pomůžou určit umístění, které jste si zvolili pro Azure Search.
+    * Vyberte **cenovou úroveň hledání** služby Azure kognitivní hledání. Pokud není dostupná možnost úrovně Free (zobrazí se šedě), znamená to, že už máte nasazenou bezplatnou službu prostřednictvím vašeho předplatného. V takovém případě bude nutné začít s úrovní Basic. Viz [Podrobnosti o cenách Azure kognitivní hledání](https://azure.microsoft.com/pricing/details/search/).
+    * Vyberte **umístění pro hledání** , ve kterém chcete nasadit indexy Azure kognitivní hledání. Omezení, kde musí být zákaznická data uložená, vám pomůžou určit umístění, které si zvolíte pro Azure Kognitivní hledání.
     * Do pole **název aplikace** zadejte název instance Azure App Service.
-    * Ve výchozím nastavení App Service výchozí úroveň Standard (S1). Tento plán můžete změnit po vytvoření. Přečtěte si další informace o [cenách App Service](https://azure.microsoft.com/pricing/details/app-service/).
+    * Ve výchozím nastavení App Service výchozí úroveň Standard (S1). Plán můžete změnit po vytvoření. Přečtěte si další informace o [cenách App Service](https://azure.microsoft.com/pricing/details/app-service/).
     * Vyberte **umístění webu** , kam se má App Service nasadit.
 
         > [!NOTE]
         > **Umístění hledání** se může lišit od **umístění webu**.
 
-    * Vyberte, zda chcete povolit **Application Insights**. Pokud **Application Insights** je povolené, nástroj QnA Maker shromažďuje telemetrická data na provoz, chatu a chyby.
+    * Vyberte, zda chcete povolit **Application Insights**. Pokud je povolená **Application Insights** , QnA maker shromažďuje telemetrii o provozu, protokolech chatu a chybách.
     * Vyberte **umístění app Insights** , kde se bude Application Insights prostředek nasadit.
     * V případě míry úspory nákladů můžete [sdílet](#share-existing-services-with-qna-maker) některé, ale ne všechny prostředky Azure vytvořené pro QnA maker. 
 
@@ -69,7 +69,7 @@ Tento postup slouží k vytvoření prostředků Azure potřebných ke správě 
 
 1. Po dokončení nasazení se ve vašem předplatném vytvoří následující prostředky:
 
-   ![Prostředek vytvoří nová služba QnA Maker](../media/qnamaker-how-to-setup-service/resources-created.png)
+   ![Prostředek vytvořil novou službu QnA Maker.](../media/qnamaker-how-to-setup-service/resources-created.png)
 
     Prostředek s typem _Cognitive Services_ má vaše klíče _předplatného_ .
 
@@ -79,7 +79,7 @@ Klíče předplatného můžete zobrazit a obnovit z Azure Portal, kde jste vytv
 
 1. V Azure Portal otevřete prostředek QnA Maker a vyberte prostředek, který má typ _Cognitive Services_ :
 
-    ![Seznam prostředků nástroje QnA Maker](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
+    ![Seznam prostředků QnA Maker](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
 
 2. Přejít k **klíčům**:
 
@@ -89,7 +89,7 @@ Klíče předplatného můžete zobrazit a obnovit z Azure Portal, kde jste vytv
 
 Koncový bod je ve stejné oblasti jako prostředek, protože klávesy koncových bodů slouží k volání znalostní báze.
 
-Klíče koncového bodu je možné spravovat z [portál QnA Maker](https://qnamaker.ai).
+Klíče koncového bodu je možné spravovat z [portálu QnA maker](https://qnamaker.ai).
 
 1. Přihlaste se k [portálu QnA maker](https://qnamaker.ai), otevřete svůj profil a vyberte **nastavení služby**:
 
@@ -106,13 +106,13 @@ Klíče koncového bodu je možné spravovat z [portál QnA Maker](https://qnama
 
 QnA Maker vytvoří několik prostředků Azure. Pokud chcete snížit úroveň správy a výhod sdílení nákladů, použijte následující tabulku, která vám pomůže pochopit, co můžete a nemůžete sdílet:
 
-|Služba|Sdílení|Reason|
+|Služba|Sdílení|Důvod|
 |--|--|--|
-|Cognitive Services|X|Není možné podle návrhu|
+|Kognitivní služby|×|Není možné podle návrhu|
 |Plán služby App Service|✔|Pevné místo na disku přidělené pro plán App Service. Pokud jiné aplikace sdílející stejný plán App Service používají významné místo na disku, dojde k problémům s instancí App Service Qnamakerem.|
-|App Service|X|Není možné podle návrhu|
+|App Service|×|Není možné podle návrhu|
 |Application Insights|✔|Může být sdíleno|
-|Služba vyhledávání|✔|1. `testkb` je rezervovaný název pro službu qnamakerem; nemůže ji použít jiný.<br>2. Mapování synonym podle názvu `synonym-map` je vyhrazeno pro službu qnamakerem.<br>3. Počet publikovaných základů znalostí je omezený na úrovni služby vyhledávání. Pokud jsou dostupné bezplatné indexy, můžou je používat i jiné služby.|
+|Služba Search|✔|1. `testkb` je rezervovaný název pro službu Qnamakerem. nedají se použít jiní uživatelé.<br>2. pro službu Qnamakerem je vyhrazena mapa synonym podle názvu `synonym-map`.<br>3. počet publikovaných znalostní báze je omezený na úrovni služby vyhledávání. Pokud jsou dostupné bezplatné indexy, můžou je používat i jiné služby.|
 
 Přečtěte si další informace o službě [App Service](../../../app-service/index.yml) a [službě vyhledávání](../../../search/index.yml).
 
@@ -124,11 +124,11 @@ Pokud vytváříte službu QnA prostřednictvím šablon Azure Resource Manager,
 
 ## <a name="upgrade-qna-maker"></a>QnA Maker upgradu
 
-|Upgrade|Reason|
+|Aktualizace|Důvod|
 |--|--|
 |[Upgrade](#upgrade-qna-maker-sku) SKU správy QnA Maker|Ve znalostní bázi chcete mít další otázky a odpovědi.|
 |[Upgrade](#upgrade-app-service) SKU App Service|Vaše znalostní báze potřebuje k obsluze více požadavků z klientské aplikace, jako je například robot pro chat.|
-|[Upgrade](#upgrade-the-azure-search-service) Služba Azure Search|Máte v plánu, abyste měli spoustu znalostní báze.|
+|[Upgrade](#upgrade-the-azure-cognitive-search-service) Služba Azure Kognitivní hledání|Máte v plánu, abyste měli spoustu znalostní báze.|
 
 
 ### <a name="upgrade-qna-maker-sku"></a>Aktualizace QnA Maker SKU
@@ -145,7 +145,7 @@ Postup při upgradu SKU QnA Maker Management:
 
     ![Ceny QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
 
-### <a name="upgrade-app-service"></a>Upgradovat službu App Service
+### <a name="upgrade-app-service"></a>App Service upgradu
 
  Pokud vaše znalostní báze potřebuje k poskytování více požadavků z klientské aplikace, upgradujte si App Service cenovou úroveň.
 
@@ -155,9 +155,9 @@ V Azure Portal klikněte na prostředek App Service a podle potřeby vyberte mo�
 
 ![Škálování QnA Maker App Service](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
-### <a name="upgrade-the-azure-search-service"></a>Upgrade služby Azure Search
+### <a name="upgrade-the-azure-cognitive-search-service"></a>Upgrade služby Azure Kognitivní hledání
 
-Pokud máte v úmyslu mít spoustu znalostní báze, upgradujte si cenovou úroveň služby Azure Search.
+Pokud máte v úmyslu mít spoustu znalostní báze, upgradujte si cenovou úroveň služby Azure Kognitivní hledání.
 
 V současné době nemůžete provést místní upgrade SKU služby Azure Search. Můžete ale vytvořit nový prostředek služby Azure Search s požadovanou skladovou jednotkou, obnovit data do nového prostředku a pak ho propojit s QnA Makerm zásobníkem. Postupujte přitom takto:
 
@@ -185,13 +185,13 @@ V současné době nemůžete provést místní upgrade SKU služby Azure Search
 
 ## <a name="get-the-latest-runtime-updates"></a>Získat nejnovější aktualizace modulu runtime
 
-Modul runtime Qnamakerem je součástí instance Azure App Service, která se nasadí při [vytváření služby qnamakerem](./set-up-qnamaker-service-azure.md) v Azure Portal. Aktualizace probíhají pravidelně modulu runtime. Instance QnA Maker App Service je v režimu automatické aktualizace po vydání rozšíření lokality z dubna 2019 (verze 5 +). Tato aktualizace je navržená tak, aby se při upgradech postaral o nulové výpadky.
+Modul runtime Qnamakerem je součástí instance Azure App Service, která se nasadí při [vytváření služby qnamakerem](./set-up-qnamaker-service-azure.md) v Azure Portal. Aktualizace se pravidelně provádějí do modulu runtime. Instance QnA Maker App Service je v režimu automatické aktualizace po vydání rozšíření lokality z dubna 2019 (verze 5 +). Tato aktualizace je navržená tak, aby se při upgradech postaral o nulové výpadky.
 
-Aktuální verzi můžete zjistit na adrese https://www.qnamaker.ai/UserSettings. Pokud je vaše verze starší než verze 5. x, je nutné restartovat App Service, aby se projevily nejnovější aktualizace:
+Aktuální verzi můžete ověřit na https://www.qnamaker.ai/UserSettings. Pokud je vaše verze starší než verze 5. x, je nutné restartovat App Service, aby se projevily nejnovější aktualizace:
 
 1. V [Azure Portal](https://portal.azure.com)přejdete do služby qnamakerem (skupina prostředků).
 
-    ![Skupina prostředků Azure QnA maker](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
+    ![Qnamakerem skupina prostředků Azure](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
 
 1. Vyberte instanci App Service a otevřete část **Přehled** .
 
@@ -205,7 +205,7 @@ Aktuální verzi můžete zjistit na adrese https://www.qnamaker.ai/UserSettings
 
 Služba správy QnA Maker se používá jenom pro QnA Maker portál a pro počáteční zpracování dat. Tato služba je k dispozici pouze v Západní USA oblasti. V této Západní USA službě se neukládají žádná zákaznická data.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o službě [App Service](../../../app-service/index.yml) a [službě vyhledávání](../../../search/index.yml).
 

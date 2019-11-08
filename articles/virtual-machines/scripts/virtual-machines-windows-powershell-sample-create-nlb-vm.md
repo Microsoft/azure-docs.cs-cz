@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2238f223f22ee43e7afd8b5162fb16cb16a2adf4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 92f437a175228ab75287bdbcf6da31b2786bcbd4
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090761"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748723"
 ---
 # <a name="load-balance-traffic-between-highly-available-virtual-machines"></a>Vyrovnávání zatížení provozu mezi vysoce dostupnými virtuálními počítači
 
@@ -30,7 +30,7 @@ Tento ukázkový skript vytvoří vše potřebné pro spuštění několika virt
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -68,7 +68,7 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | Vytvoří virtuální počítač. |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. |
 
-Virtuální počítače můžete také vytvořit pomocí vlastní spravované image. `Set-AzVMSourceImage` V konfiguraci virtuálního počítače `-Id` použijte pro použití parametrů a `-VM` místo `-PublisherName`, `-Offer`, `-Skus`a `-Version`.
+Virtuální počítače můžete také vytvořit pomocí vlastní spravované image. V konfiguraci virtuálního počítače `Set-AzVMSourceImage` místo `-PublisherName`, `-Offer`, `-Skus`a `-Version`použít parametry `-Id` a `-VM`.
 
 Například vytvoření konfigurace virtuálního počítače by bylo:
 

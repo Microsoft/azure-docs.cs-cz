@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: Content Moderator klientskou knihovnu pro Python | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Začněte s knihovnou klienta Content Moderator pro Python.
+description: Naučte se, jak začít s Azure Cognitive Services Content Moderator klientské knihovně pro Python.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 28c70e7d226e8f4b2458234e1f14754cdbb1825c
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 3978b4ec302bf4dd2390f2390c967ca6e12e67d5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044033"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744411"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>Rychlý Start: Content Moderator klientskou knihovnu pro Python
 
@@ -29,9 +29,9 @@ Použití klientské knihovny Content Moderator pro Python pro:
 * [Použití vlastního seznamu obrázků](#use-a-custom-image-list)
 * [Vytvořit recenzi](#create-a-review)
 
-[Referenční dokumentace](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) | [zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) | [balíček (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/)[ukázky](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)  | 
+[Referenční dokumentace](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) |  | [ukázky](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) | balíčku [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) [(PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * [Python 3. x](https://www.python.org/)
@@ -72,7 +72,7 @@ pip install --upgrade azure-cognitiveservices-vision-contentmoderator
 
 Následující třídy zpracovávají některé z hlavních funkcí sady Content Moderator Python SDK.
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |[ContentModeratorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python)|Tato třída je potřebná pro všechny funkce Content Moderator. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd.|
 |[ImageModerationOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python)|Tato třída poskytuje funkce pro analýzu obrázků pro obsah pro dospělé, osobní údaje nebo lidské obličeje.|
@@ -356,4 +356,4 @@ V tomto rychlém startu jste zjistili, jak pomocí Content Moderator knihovny Py
 >[Koncepty moderování obrázků](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
 
 * [Co je Azure Content Moderator?](./overview.md)
-* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py).
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py)

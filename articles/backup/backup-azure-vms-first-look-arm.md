@@ -1,18 +1,18 @@
 ---
 title: Zálohujte virtuální počítač Azure z nastavení virtuálního počítače pomocí Azure Backup
-description: Zjistěte, jak zálohovat virtuální počítač Azure pomocí služby Azure Backup.
+description: V tomto článku se dozvíte, jak zálohovat jeden virtuální počítač Azure nebo několik virtuálních počítačů Azure pomocí služby Azure Backup.
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: cfbec94a2922995eed546d526c1f469e2ea54118
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 232c027ef60a031df53f2439586a0ae459ab67d5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969050"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747232"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Zálohování virtuálního počítače Azure z nastavení virtuálního počítače
 
@@ -35,7 +35,7 @@ Aby bylo možné zálohovat virtuální počítače Azure, Azure Backup nainstal
 
 ## <a name="back-up-from-azure-vm-settings"></a>Zálohování z nastavení virtuálního počítače Azure
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Klikněte na **všechny služby** a ve filtru zadejte **virtuální počítače**a potom klikněte na **virtuální počítače**.
 3. V seznamu virtuálních počítačů vyberte virtuální počítač, který chcete zálohovat.
 4. V nabídce VM (virtuální počítač) klikněte na **zálohovat**.

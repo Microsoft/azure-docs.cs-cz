@@ -8,59 +8,49 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: d0a490fd3b23c96923af10db3c1f9ee9ea0dfad5
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: a97a03f7ef20ae56cec04341fe76b79ee657547b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044884"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748475"
 ---
-# <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Konfigurace plánu oprav operačního systému pro clustery HDInsight se systémem Linux 
+# <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Konfigurace plánu oprav operačního systému pro clustery HDInsight se systémem Linux
 
 > [!IMPORTANT]
 > Image Ubuntu budou k dispozici pro nové vytvoření clusteru Azure HDInsight do tří měsíců od jejich publikování. Od ledna 2019 nejsou spuštěné clustery automaticky opraveny. Pokud chtějí zákazníci opravit běžící cluster, musí použít akce skriptu nebo jiné mechanismy. Nově vytvořené clustery budou mít vždycky nejnovější dostupné aktualizace, včetně nejnovějších oprav zabezpečení.
 
-V některých případech je nutné restartovat virtuální počítače v clusteru HDInsight, aby se nainstalovaly důležité opravy zabezpečení.
+HDInsight poskytuje podporu pro provádění běžných úloh v clusteru, jako je například instalace oprav operačního systému, aktualizace zabezpečení a restartování uzlů. Tyto úlohy se provádějí pomocí následujících dvou skriptů, které se dají spustit jako [akce skriptu](hdinsight-hadoop-customize-cluster-linux.md), a nakonfigurují se pomocí parametrů:
 
-Pomocí akcí skriptu popsaných v tomto článku můžete upravit plán oprav operačního systému následujícím způsobem:
-
-1. Nainstalujte všechny aktualizace nebo nainstalujte jenom aktualizace jádra a zabezpečení nebo aktualizace jádra.
-2. Proveďte okamžité restartování nebo naplánujte restartování virtuálního počítače.
+- `schedule-reboots.sh` – proveďte okamžité restartování nebo naplánujte restart na uzlech clusteru.
+- `install-updates-schedule-reboots.sh` – nainstalujte všechny aktualizace, jenom aktualizace jádra a zabezpečení, nebo jenom aktualizace jádra.
 
 > [!NOTE]  
-> Akce skriptu popsané v tomto článku budou fungovat jenom s clustery HDInsight se systémem Linux vytvořenými od 1. srpna 2016. Opravy jsou platné až po restartování virtuálních počítačů.
 > Akce skriptu nebudou automaticky používat aktualizace pro všechny budoucí aktualizační cykly. Spusťte skripty pokaždé, když se musí použít nové aktualizace, aby se nainstalovaly aktualizace, a pak se virtuální počítač restartuje.
 
-## <a name="add-information-to-the-script"></a>Přidání informací do skriptu
-
-Použití skriptu vyžaduje následující informace:
-
-- Umístění skriptu install-Updates-Schedule-restarts: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/install-updates-schedule-reboots.sh.
-    
-   HDInsight používá tento identifikátor URI k vyhledání a spuštění skriptu na všech virtuálních počítačích v clusteru. Tento skript poskytuje možnosti pro instalaci aktualizací a restartování virtuálního počítače.
+## <a name="restart-nodes"></a>Restartovat uzly
   
-- Umístění skriptu pro restartování nástroje Schedule: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/schedule-reboots.sh.
-    
-   HDInsight používá tento identifikátor URI k vyhledání a spuštění skriptu na všech virtuálních počítačích v clusteru. Tento skript restartuje virtuální počítač.
-  
-- Typ uzlu clusteru, pro který je skript použit, je hlavnímu uzlu, workernode a Zookeeper. Použije skript pro všechny typy uzlů v clusteru. Pokud se skript nepoužije na typ uzlu, virtuální počítače pro tento typ uzlu se neaktualizují ani nerestartují.
+Plán skriptu [–](https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/schedule-reboots.sh)restartování, nastaví typ restartování, který bude proveden na počítačích v clusteru. Při odesílání akce skriptu nastavte, aby se nastavily na všech třech typech uzlů: hlavní uzel, pracovní uzel a Zookeeper. Pokud se skript nepoužije na typ uzlu, virtuální počítače pro tento typ uzlu se neaktualizují ani nerestartují.
 
-- Skript Install-Updates-Schedule-restarts akceptuje dva číselné parametry:
+`schedule-reboots script` akceptuje jeden číselný parametr:
 
-    | Parametr | Definice |
-    | --- | --- |
-    | Nainstalovat pouze aktualizace jádra/nainstalovat všechny aktualizace/instalovat pouze aktualizace jádra a zabezpečení|0, 1 nebo 2. Hodnota 0 nainstaluje pouze aktualizace jádra. Hodnota 1 nainstaluje všechny aktualizace a 2 nainstaluje pouze aktualizace jádra a zabezpečení. Pokud není zadán žádný parametr, výchozí hodnota je 0. |
-    | Bez restartování/povolení restartování plánu/povolení okamžitého restartování |0, 1 nebo 2. Hodnota 0 zakáže restart. Hodnota 1 umožňuje naplánovat restart a 2 umožňuje okamžité restartování. Pokud není zadán žádný parametr, výchozí hodnota je 0. Uživatel musí změnit vstupní parametr 1 na vstupní parametr 2. |
-   
- - Skript pro restartování nástroje Schedule-restarts akceptuje jeden číselný parametr:
+| Parametr | Přijaté hodnoty | Definice |
+| --- | --- | --- |
+| Typ restartování, který se má provést | 1 nebo 2 | Hodnota 1 povolí restart plánu (naplánováno během 12-24 hodin). Hodnota 2 umožňuje okamžité restartování (5 minut). Pokud není zadán žádný parametr, výchozí hodnota je 1. |  
 
-    | Parametr | Definice |
-    | --- | --- |
-    | Povolit restart plánu/povolit okamžité restartování |1 nebo 2. Hodnota 1 povolí restart plánu (naplánováno během 12-24 hodin). Hodnota 2 umožňuje okamžité restartování (5 minut). Pokud není zadán žádný parametr, výchozí hodnota je 1. |  
+## <a name="install-updates-and-restart-nodes"></a>Instalovat aktualizace a restartovat uzly
+
+Skript [install-Updates-Schedule-Reboots.sh](https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/install-updates-schedule-reboots.sh) poskytuje možnosti pro instalaci různých typů aktualizací a restartování virtuálního počítače.
+
+Skript `install-updates-schedule-reboots` přijímá dva číselné parametry, jak je popsáno v následující tabulce:
+
+| Parametr | Přijaté hodnoty | Definice |
+| --- | --- | --- |
+| Typ aktualizací, které se mají nainstalovat | 0, 1 nebo 2 | Hodnota 0 nainstaluje pouze aktualizace jádra. Hodnota 1 nainstaluje všechny aktualizace a 2 nainstaluje pouze aktualizace jádra a zabezpečení. Pokud není zadán žádný parametr, výchozí hodnota je 0. |
+| Typ restartování, který se má provést | 0, 1 nebo 2 | Hodnota 0 zakáže restart. Hodnota 1 umožňuje naplánovat restart a 2 umožňuje okamžité restartování. Pokud není zadán žádný parametr, výchozí hodnota je 0. Uživatel musí změnit vstupní parametr 1 na vstupní parametr 2. |
 
 > [!NOTE]
 > Po použití v existujícím clusteru musíte označit skript jako trvalý. Jinak budou všechny nové uzly vytvořené prostřednictvím operací škálování používat výchozí plán oprav. Použijete-li skript jako součást procesu vytváření clusteru, bude automaticky trvalý.
-
 
 ## <a name="next-steps"></a>Další kroky
 

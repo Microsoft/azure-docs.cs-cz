@@ -1,6 +1,7 @@
 ---
-title: 'Rychlý Start: Content Moderator klientskou knihovnu pro Java | Microsoft Docs'
-description: Začněte s knihovnou klienta Content Moderator pro Java.
+title: 'Rychlý Start: Content Moderator Klientská knihovna pro Java'
+titleSuffix: Azure Cognitive Services
+description: Naučte se, jak začít s Azure Cognitive Services Content Moderator klientské knihovně pro Java.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 9f31d54314c6d6bd7a7f9ae2d134c1281bfe9294
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: edc51be93ba209a1c60970e6fa1b47fca75048c6
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044093"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744436"
 ---
 # <a name="quickstart-content-moderator-client-library-for-java"></a>Rychlý Start: Content Moderator Klientská knihovna pro Java
 
@@ -26,7 +27,7 @@ Pomocí klientské knihovny Content Moderator pro jazyk Java:
 
 [Referenční dokumentace](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable) | [artefaktem (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator) | [ukázek](https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Aktuální verze sady [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -94,7 +95,7 @@ Pak v nové složce vytvořte soubor s názvem *ContentModeratorQuickstart. Java
 
 Následující třídy zpracovávají některé hlavní funkce Content Moderator Java SDK.
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |[ContentModeratorClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable)|Tato třída je potřebná pro všechny funkce Content Moderator. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd.|
 |[ImageModeration](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations?view=azure-java-stable)|Tato třída poskytuje funkce pro analýzu obrázků pro obsah pro dospělé, osobní údaje nebo lidské obličeje.|
@@ -204,4 +205,4 @@ V tomto rychlém startu jste zjistili, jak používat knihovnu Content Moderator
 >[Koncepty moderování obrázků](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
 
 * [Co je Azure Content Moderator?](./overview.md)
-* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/blob/master/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java).
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/blob/master/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java)

@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 10/8/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 1b11c6beda5b261d1edc77dcbb365d8d8df8bd09
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 01408e3592af58f05db32e4722e4a85cd2acd0ef
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176714"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747784"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi agenta Azure File Sync
-Azure File Sync umožňuje centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure bez toho, aby se zajistila flexibilita, výkon a kompatibilita místního souborového serveru. Instalace Windows serveru jsou transformované na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru (včetně SMB, NFS a FTPS). Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
+Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
 
-V tomto článku najdete poznámky k verzi pro podporované verze agenta Azure File Sync.
+Tento článek obsahuje poznámky k podporovaným verzím agenta Synchronizace souborů Azure.
 
 ## <a name="supported-versions"></a>Podporované verze
-Agent Azure File Sync podporuje následující verze:
+Agent Synchronizace souborů Azure podporuje následující verze:
 
 | RTM | Číslo verze agenta | Datum vydání | Stav |
 |----|----------------------|--------------|------------------|
@@ -36,14 +36,11 @@ Agent Azure File Sync podporuje následující verze:
 | Kumulativní aktualizace z dubna 2019 – [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4\. dubna 2019 | Podporováno |
 | Kumulativní aktualizace z března 2019 – [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7\. března 2019 | Podporováno |
 | Verze verze 5 – [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12. února 2019 | Podporováno |
-| Kumulativní aktualizace z ledna 2019 – [KB4481059](https://support.microsoft.com/help/4481059)| 4.3.0.0 | 14. ledna 2019 | Verze Supported agenta vyprší 5. listopadu 2019 |
-| Kumulativní aktualizace z prosince 2018 – [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 10. prosince 2018 | Verze Supported agenta vyprší 5. listopadu 2019 |
-| Kumulativní aktualizace z prosince 2018 | 4.1.0.0 | 4\. prosince 2018 | Verze Supported agenta vyprší 5. listopadu 2019 |
-| Verze v4 | 4.0.1.0 | 13. listopadu 2018 | Verze Supported agenta vyprší 5. listopadu 2019 |
-| Verze v3 | 3.1.0.0 - 3.4.0.0 | Nepodporováno | Nepodporované – platnost verzí agenta vyprší 19. srpna 2019 |
-| Agenti pre-GA | 1.1.0.0 – 3.0.13.0 | Není k dispozici | Nepodporováno – platnost verzí agentů vypršela 1. října 2018 |
+| Verze v4 | 4.0.1.0 - 4.3.0.0 | – | Nepodporované – verze agentů vypršela 6. listopadu 2019 |
+| Verze v3 | 3.1.0.0 - 3.4.0.0 | – | Nepodporované – platnost verzí agenta vyprší 19. srpna 2019 |
+| Agenti pre-GA | 1.1.0.0 – 3.0.13.0 | – | Nepodporováno – platnost verzí agentů vypršela 1. října 2018 |
 
-### <a name="azure-file-sync-agent-update-policy"></a>Zásada aktualizace agenta Azure File Sync
+### <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
 ## <a name="agent-version-8000"></a>Verze agenta 8.0.0.0
@@ -71,34 +68,34 @@ Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Syn
 - Agent vyžaduje aspoň 2 GiB paměti. Pokud server běží na virtuálním počítači s povolenou dynamickou pamětí, měl by být virtuální počítač nakonfigurovaný s minimální 2048 MiB paměti.
 - Služba agenta synchronizace úložiště (FileSyncSvc) nepodporuje koncové body serveru nacházející se na svazku, který má komprimovaný adresář systému SVI (System Volume Information). Tato konfigurace bude mít za následek neočekávané výsledky.
 
-### <a name="interoperability"></a>Interoperabilita
-- Antivirová ochrana, zálohování a další aplikace, které mají přístup k vrstveným souborům, můžou způsobit nežádoucí odvolání, pokud nerespektují atribut offline a přeskočí čtení obsahu těchto souborů. Další informace najdete v tématu věnovaném [řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md).
+### <a name="interoperability"></a>Vzájemná funkční spolupráce
+- Antivirové, zálohovací a další aplikace s přístupem k vrstveným souborům můžou způsobit nežádoucí odvolání, pokud nerespektují atribut offline a přeskočí čtení obsahu těchto souborů. Další informace najdete v tématu věnovaném [řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md).
 - Blokování souborů (Správce prostředků souborového Správce prostředků serveru) může způsobit nekonečná selhání synchronizace, když jsou soubory blokované z důvodu blokování souborů.
 - Spuštění nástroje Sysprep na serveru s nainstalovaným agentem Azure File Sync není podporováno a může vést k neočekávaným výsledkům. Agent Azure File Sync by měl být nainstalovaný po nasazení image serveru a dokončení zkrácené instalace nástroje Sysprep.
 
 ### <a name="sync-limitations"></a>Omezení synchronizace
-Následující položky se nesynchronizují, ale zbytek systému bude i nadále fungovat normálně:
+Následující položky se nesynchronizují, ale zbytek systému bude fungovat normálně dál:
 - Soubory s nepodporovanými znaky. Seznam nepodporovaných znaků najdete v [Průvodci odstraňováním potíží](storage-sync-files-troubleshoot.md#handling-unsupported-characters) .
 - Soubory nebo adresáře, které končí tečkou.
-- Cesty, které jsou delší než 2 048 znaků.
-- Část volitelného seznamu řízení přístupu (DACL) popisovače zabezpečení, pokud je větší než 2 KB. (Tento problém se týká pouze v případě, že máte více než přibližně 40 položek řízení přístupu (ACE) pro jednu položku.)
-- Část seznamu řízení přístupu (SACL) popisovače zabezpečení, která se používá k auditování.
+- Cesty delší než 2 048 znaků.
+- Část volitelného seznamu řízení přístupu (DACL) popisovače zabezpečení, pokud je větší než 2 kB. (To je problém pouze v případě, že pro jednu položku máte více než přibližně 40 položek řízení přístupu.)
+- Část seznamu řízení auditování přístupu (SACL) popisovače zabezpečení, která se používá se pro auditování.
 - Rozšířené atributy.
 - Alternativní datové proudy.
 - Body rozboru.
 - Pevné odkazy.
-- Komprese (Pokud je nastavená pro soubor na serveru) se nezachová při synchronizaci změn do tohoto souboru z ostatních koncových bodů.
-- Jakýkoli soubor zašifrovaný pomocí systému souborů EFS (nebo jiného šifrování v uživatelském režimu), který brání službě číst data.
+- Komprese (pokud je nastavená pro soubor na serveru) se nezachová při synchronizaci změn do tohoto souboru z ostatních koncových bodů.
+- Všechny soubory šifrované pomocí systému souborů EFS (nebo jiného šifrování v uživatelském režimu), který brání službě ve čtení těchto dat.
 
     > [!Note]  
-    > Azure File Sync vždycky šifrují data při přenosu. Data se vždycky šifrují v klidovém stavu v Azure.
+    > Synchronizace souborů Azure vždy šifruje přenášená data. Neaktivní uložená data se vždy šifrují v Azure.
  
 ### <a name="server-endpoint"></a>Koncový bod serveru
-- Koncový bod serveru je možné vytvořit pouze na svazku NTFS. Azure File Sync se v současnosti nepodporují ReFS, FAT, FAT32 a jiné systémy souborů.
-- Vrstvené soubory se stanou nepřístupné, pokud se soubory před odstraněním koncového bodu serveru nevrátí. Chcete-li obnovit přístup k souborům, vytvořte koncový bod serveru znovu. Pokud uplynula 30 dní od odstranění koncového bodu serveru nebo pokud byl odstraněn koncový bod cloudu, vrstvené soubory, které nebyly znovu volány, nebudou použitelné. Další informace najdete v tématu [vrstvené soubory nejsou po odstranění koncového bodu serveru dostupné na serveru](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint).
+- Koncový bod serveru je možné vytvořit pouze na svazku NTFS. Synchronizace souborů Azure v současné době nepodporuje systémy souborů ReFS, FAT, FAT32 a jiné.
+- Vrstvené soubory se stanou nepřístupné, pokud se soubory před odstraněním koncového bodu serveru nevrátí. Chcete-li obnovit přístup k souborům, vytvořte koncový bod serveru znovu. Pokud uplynula 30 dní od odstranění koncového bodu serveru nebo pokud byl odstraněn koncový bod cloudu, vrstvené soubory, které nebyly znovu volány, nebudou použitelné. Další informace najdete v tématu [vrstvené soubory nejsou po odstranění koncového bodu serveru dostupné na serveru](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint).
 - Na systémovém svazku není podporováno vrstvení cloudu. Pokud chcete vytvořit koncový bod serveru na systémovém svazku, zakažte při vytváření koncového bodu serveru vrstvení cloudu.
-- Clustering s podporou převzetí služeb při selhání se podporuje jenom u clusterových disků, ale ne u sdílených svazků clusteru (CSV).
-- Koncový bod serveru nemůže být vnořený. Může současně existovat na stejném svazku paralelně s jiným koncovým bodem.
+- Clustering převzetí služeb při selhání se podporuje pouze s clusterovanými disky, nikoli však se sdílenými svazky clusteru (CSV).
+- Koncový bod serveru nemůže být vnořený. Může existovat paralelně na stejném svazku spolu s jiným koncovým bodem.
 - Neukládejte stránkovací soubor operačního systému nebo aplikace do umístění koncového bodu serveru.
 - Název serveru na portálu se neaktualizuje, pokud se server přejmenuje.
 
@@ -110,7 +107,7 @@ Následující položky se nesynchronizují, ale zbytek systému bude i nadále 
     > Azure File Sync nepodporuje přesun předplatného na jiného tenanta Azure AD.
 
 ### <a name="cloud-tiering"></a>Vrstvení cloudu
-- Pokud se vrstvený soubor zkopíruje do jiného umístění pomocí nástroje Robocopy, výsledný soubor nebude vrstven. Atribut offline může být nastaven, protože příkaz Robocopy nesprávně zahrnuje tento atribut do operací kopírování.
+- Pokud se vrstvený soubor zkopíruje do nového umístění pomocí příkazu Robocopy, výsledný soubor nebude vrstvený. Může však mít nastavený atribut offline, protože příkaz Robocopy nesprávně zahrnuje tento atribut do operací kopírování.
 - Při kopírování souborů pomocí nástroje Robocopy použijte možnost/MIR, která zachová časová razítka souborů. Tím se zajistí, že se starší soubory budou vrstvit dřív než nedávno používané soubory.
 
 ## <a name="agent-version-7200"></a>Verze agenta 7.2.0.0
@@ -164,34 +161,34 @@ Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Syn
 - Agent vyžaduje aspoň 2 GiB paměti. Pokud server běží na virtuálním počítači s povolenou dynamickou pamětí, měl by být virtuální počítač nakonfigurovaný s minimální 2048 MiB paměti.
 - Služba agenta synchronizace úložiště (FileSyncSvc) nepodporuje koncové body serveru nacházející se na svazku, který má komprimovaný adresář systému SVI (System Volume Information). Tato konfigurace bude mít za následek neočekávané výsledky.
 
-### <a name="interoperability"></a>Interoperabilita
-- Antivirová ochrana, zálohování a další aplikace, které mají přístup k vrstveným souborům, můžou způsobit nežádoucí odvolání, pokud nerespektují atribut offline a přeskočí čtení obsahu těchto souborů. Další informace najdete v tématu věnovaném [řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md).
+### <a name="interoperability"></a>Vzájemná funkční spolupráce
+- Antivirové, zálohovací a další aplikace s přístupem k vrstveným souborům můžou způsobit nežádoucí odvolání, pokud nerespektují atribut offline a přeskočí čtení obsahu těchto souborů. Další informace najdete v tématu věnovaném [řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md).
 - Blokování souborů (Správce prostředků souborového Správce prostředků serveru) může způsobit nekonečná selhání synchronizace, když jsou soubory blokované z důvodu blokování souborů.
 - Spuštění nástroje Sysprep na serveru s nainstalovaným agentem Azure File Sync není podporováno a může vést k neočekávaným výsledkům. Agent Azure File Sync by měl být nainstalovaný po nasazení image serveru a dokončení zkrácené instalace nástroje Sysprep.
 
 ### <a name="sync-limitations"></a>Omezení synchronizace
-Následující položky se nesynchronizují, ale zbytek systému bude i nadále fungovat normálně:
+Následující položky se nesynchronizují, ale zbytek systému bude fungovat normálně dál:
 - Soubory s nepodporovanými znaky. Seznam nepodporovaných znaků najdete v [Průvodci odstraňováním potíží](storage-sync-files-troubleshoot.md#handling-unsupported-characters) .
 - Soubory nebo adresáře, které končí tečkou.
-- Cesty, které jsou delší než 2 048 znaků.
-- Část volitelného seznamu řízení přístupu (DACL) popisovače zabezpečení, pokud je větší než 2 KB. (Tento problém se týká pouze v případě, že máte více než přibližně 40 položek řízení přístupu (ACE) pro jednu položku.)
-- Část seznamu řízení přístupu (SACL) popisovače zabezpečení, která se používá k auditování.
+- Cesty delší než 2 048 znaků.
+- Část volitelného seznamu řízení přístupu (DACL) popisovače zabezpečení, pokud je větší než 2 kB. (To je problém pouze v případě, že pro jednu položku máte více než přibližně 40 položek řízení přístupu.)
+- Část seznamu řízení auditování přístupu (SACL) popisovače zabezpečení, která se používá se pro auditování.
 - Rozšířené atributy.
 - Alternativní datové proudy.
 - Body rozboru.
 - Pevné odkazy.
-- Komprese (Pokud je nastavená pro soubor na serveru) se nezachová při synchronizaci změn do tohoto souboru z ostatních koncových bodů.
-- Jakýkoli soubor zašifrovaný pomocí systému souborů EFS (nebo jiného šifrování v uživatelském režimu), který brání službě číst data.
+- Komprese (pokud je nastavená pro soubor na serveru) se nezachová při synchronizaci změn do tohoto souboru z ostatních koncových bodů.
+- Všechny soubory šifrované pomocí systému souborů EFS (nebo jiného šifrování v uživatelském režimu), který brání službě ve čtení těchto dat.
 
     > [!Note]  
-    > Azure File Sync vždycky šifrují data při přenosu. Data se vždycky šifrují v klidovém stavu v Azure.
+    > Synchronizace souborů Azure vždy šifruje přenášená data. Neaktivní uložená data se vždy šifrují v Azure.
  
 ### <a name="server-endpoint"></a>Koncový bod serveru
-- Koncový bod serveru je možné vytvořit pouze na svazku NTFS. Azure File Sync se v současnosti nepodporují ReFS, FAT, FAT32 a jiné systémy souborů.
+- Koncový bod serveru je možné vytvořit pouze na svazku NTFS. Synchronizace souborů Azure v současné době nepodporuje systémy souborů ReFS, FAT, FAT32 a jiné.
 - Vrstvené soubory se stanou nepřístupné, pokud se soubory před odstraněním koncového bodu serveru nevrátí. Chcete-li obnovit přístup k souborům, vytvořte koncový bod serveru znovu. Pokud uplynula 30 dní od odstranění koncového bodu serveru nebo pokud byl odstraněn koncový bod cloudu, vrstvené soubory, které nebyly znovu volány, nebudou použitelné.
 - Na systémovém svazku není podporováno vrstvení cloudu. Pokud chcete vytvořit koncový bod serveru na systémovém svazku, zakažte při vytváření koncového bodu serveru vrstvení cloudu.
-- Clustering s podporou převzetí služeb při selhání se podporuje jenom u clusterových disků, ale ne u sdílených svazků clusteru (CSV).
-- Koncový bod serveru nemůže být vnořený. Může současně existovat na stejném svazku paralelně s jiným koncovým bodem.
+- Clustering převzetí služeb při selhání se podporuje pouze s clusterovanými disky, nikoli však se sdílenými svazky clusteru (CSV).
+- Koncový bod serveru nemůže být vnořený. Může existovat paralelně na stejném svazku spolu s jiným koncovým bodem.
 - Neukládejte stránkovací soubor operačního systému nebo aplikace do umístění koncového bodu serveru.
 - Název serveru na portálu se neaktualizuje, pokud se server přejmenuje.
 
@@ -203,7 +200,7 @@ Následující položky se nesynchronizují, ale zbytek systému bude i nadále 
     > Azure File Sync nepodporuje přesun předplatného na jiného tenanta Azure AD.
 
 ### <a name="cloud-tiering"></a>Vrstvení cloudu
-- Pokud se vrstvený soubor zkopíruje do jiného umístění pomocí nástroje Robocopy, výsledný soubor nebude vrstven. Atribut offline může být nastaven, protože příkaz Robocopy nesprávně zahrnuje tento atribut do operací kopírování.
+- Pokud se vrstvený soubor zkopíruje do nového umístění pomocí příkazu Robocopy, výsledný soubor nebude vrstvený. Může však mít nastavený atribut offline, protože příkaz Robocopy nesprávně zahrnuje tento atribut do operací kopírování.
 - Při kopírování souborů pomocí nástroje Robocopy použijte možnost/MIR, která zachová časová razítka souborů. Tím se zajistí, že se starší soubory budou vrstvit dřív než nedávno používané soubory.
 
 ## <a name="agent-version-6300"></a>Verze agenta 6.3.0.0
@@ -261,34 +258,34 @@ Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Syn
 - Agent vyžaduje aspoň 2 GiB paměti. Pokud server běží na virtuálním počítači s povolenou dynamickou pamětí, měl by být virtuální počítač nakonfigurovaný s minimální 2048 MiB paměti.
 - Služba agenta synchronizace úložiště (FileSyncSvc) nepodporuje koncové body serveru nacházející se na svazku, který má komprimovaný adresář systému SVI (System Volume Information). Tato konfigurace bude mít za následek neočekávané výsledky.
 
-### <a name="interoperability"></a>Interoperabilita
-- Antivirová ochrana, zálohování a další aplikace, které mají přístup k vrstveným souborům, můžou způsobit nežádoucí odvolání, pokud nerespektují atribut offline a přeskočí čtení obsahu těchto souborů. Další informace najdete v tématu věnovaném [řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md).
+### <a name="interoperability"></a>Vzájemná funkční spolupráce
+- Antivirové, zálohovací a další aplikace s přístupem k vrstveným souborům můžou způsobit nežádoucí odvolání, pokud nerespektují atribut offline a přeskočí čtení obsahu těchto souborů. Další informace najdete v tématu věnovaném [řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md).
 - Blokování souborů (Správce prostředků souborového Správce prostředků serveru) může způsobit nekonečná selhání synchronizace, když jsou soubory blokované z důvodu blokování souborů.
 - Spuštění nástroje Sysprep na serveru s nainstalovaným agentem Azure File Sync není podporováno a může vést k neočekávaným výsledkům. Agent Azure File Sync by měl být nainstalovaný po nasazení image serveru a dokončení zkrácené instalace nástroje Sysprep.
 
 ### <a name="sync-limitations"></a>Omezení synchronizace
-Následující položky se nesynchronizují, ale zbytek systému bude i nadále fungovat normálně:
+Následující položky se nesynchronizují, ale zbytek systému bude fungovat normálně dál:
 - Soubory s nepodporovanými znaky. Seznam nepodporovaných znaků najdete v [Průvodci odstraňováním potíží](storage-sync-files-troubleshoot.md#handling-unsupported-characters) .
 - Soubory nebo adresáře, které končí tečkou.
-- Cesty, které jsou delší než 2 048 znaků.
-- Část volitelného seznamu řízení přístupu (DACL) popisovače zabezpečení, pokud je větší než 2 KB. (Tento problém se týká pouze v případě, že máte více než přibližně 40 položek řízení přístupu (ACE) pro jednu položku.)
-- Část seznamu řízení přístupu (SACL) popisovače zabezpečení, která se používá k auditování.
+- Cesty delší než 2 048 znaků.
+- Část volitelného seznamu řízení přístupu (DACL) popisovače zabezpečení, pokud je větší než 2 kB. (To je problém pouze v případě, že pro jednu položku máte více než přibližně 40 položek řízení přístupu.)
+- Část seznamu řízení auditování přístupu (SACL) popisovače zabezpečení, která se používá se pro auditování.
 - Rozšířené atributy.
 - Alternativní datové proudy.
 - Body rozboru.
 - Pevné odkazy.
-- Komprese (Pokud je nastavená pro soubor na serveru) se nezachová při synchronizaci změn do tohoto souboru z ostatních koncových bodů.
-- Jakýkoli soubor zašifrovaný pomocí systému souborů EFS (nebo jiného šifrování v uživatelském režimu), který brání službě číst data.
+- Komprese (pokud je nastavená pro soubor na serveru) se nezachová při synchronizaci změn do tohoto souboru z ostatních koncových bodů.
+- Všechny soubory šifrované pomocí systému souborů EFS (nebo jiného šifrování v uživatelském režimu), který brání službě ve čtení těchto dat.
 
     > [!Note]  
-    > Azure File Sync vždycky šifrují data při přenosu. Data se vždycky šifrují v klidovém stavu v Azure.
+    > Synchronizace souborů Azure vždy šifruje přenášená data. Neaktivní uložená data se vždy šifrují v Azure.
  
 ### <a name="server-endpoint"></a>Koncový bod serveru
-- Koncový bod serveru je možné vytvořit pouze na svazku NTFS. Azure File Sync se v současnosti nepodporují ReFS, FAT, FAT32 a jiné systémy souborů.
+- Koncový bod serveru je možné vytvořit pouze na svazku NTFS. Synchronizace souborů Azure v současné době nepodporuje systémy souborů ReFS, FAT, FAT32 a jiné.
 - Vrstvené soubory se stanou nepřístupné, pokud se soubory před odstraněním koncového bodu serveru nevrátí. Chcete-li obnovit přístup k souborům, vytvořte koncový bod serveru znovu. Pokud uplynula 30 dní od odstranění koncového bodu serveru nebo pokud byl odstraněn koncový bod cloudu, vrstvené soubory, které nebyly znovu volány, nebudou použitelné.
 - Na systémovém svazku není podporováno vrstvení cloudu. Pokud chcete vytvořit koncový bod serveru na systémovém svazku, zakažte při vytváření koncového bodu serveru vrstvení cloudu.
-- Clustering s podporou převzetí služeb při selhání se podporuje jenom u clusterových disků, ale ne u sdílených svazků clusteru (CSV).
-- Koncový bod serveru nemůže být vnořený. Může současně existovat na stejném svazku paralelně s jiným koncovým bodem.
+- Clustering převzetí služeb při selhání se podporuje pouze s clusterovanými disky, nikoli však se sdílenými svazky clusteru (CSV).
+- Koncový bod serveru nemůže být vnořený. Může existovat paralelně na stejném svazku spolu s jiným koncovým bodem.
 - Neukládejte stránkovací soubor operačního systému nebo aplikace do umístění koncového bodu serveru.
 - Název serveru na portálu se neaktualizuje, pokud se server přejmenuje.
 
@@ -300,9 +297,9 @@ Následující položky se nesynchronizují, ale zbytek systému bude i nadále 
     > Azure File Sync nepodporuje přesun předplatného na jiného tenanta Azure AD.
 
 ### <a name="cloud-tiering"></a>Vrstvení cloudu
-- Pokud se vrstvený soubor zkopíruje do jiného umístění pomocí nástroje Robocopy, výsledný soubor nebude vrstven. Atribut offline může být nastaven, protože příkaz Robocopy nesprávně zahrnuje tento atribut do operací kopírování.
+- Pokud se vrstvený soubor zkopíruje do nového umístění pomocí příkazu Robocopy, výsledný soubor nebude vrstvený. Může však mít nastavený atribut offline, protože příkaz Robocopy nesprávně zahrnuje tento atribut do operací kopírování.
 - Při kopírování souborů pomocí nástroje Robocopy použijte možnost/MIR, která zachová časová razítka souborů. Tím se zajistí, že se starší soubory budou vrstvit dřív než nedávno používané soubory.
-- Při prohlížení vlastností souboru z klienta SMB se může zobrazit nesprávně nastavený atribut offline, protože ukládání metadat souboru z protokolu SMB.
+- Při zobrazení vlastností souboru v klientovi SMB se může zobrazit nesprávně nastavený atribut offline. Důvodem je ukládání metadat souboru do mezipaměti protokolem SMB.
 
 ## <a name="agent-version-5200"></a>Verze agenta 5.2.0.0
 Následující poznámky k verzi jsou pro verzi 5.2.0.0 agenta Azure File Sync vydané 4. dubna 2019. Tyto poznámky jsou kromě poznámky k verzi uvedené pro verzi 5.0.2.0.
@@ -359,34 +356,34 @@ Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Syn
 - Služba agenta synchronizace úložiště (FileSyncSvc) nepodporuje koncové body serveru nacházející se na svazku, který má komprimovaný adresář systému SVI (System Volume Information). Tato konfigurace bude mít za následek neočekávané výsledky.
 - Režim FIPS není podporován a musí být zakázán. 
 
-### <a name="interoperability"></a>Interoperabilita
-- Antivirová ochrana, zálohování a další aplikace, které mají přístup k vrstveným souborům, můžou způsobit nežádoucí odvolání, pokud nerespektují atribut offline a přeskočí čtení obsahu těchto souborů. Další informace najdete v tématu věnovaném [řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md).
+### <a name="interoperability"></a>Vzájemná funkční spolupráce
+- Antivirové, zálohovací a další aplikace s přístupem k vrstveným souborům můžou způsobit nežádoucí odvolání, pokud nerespektují atribut offline a přeskočí čtení obsahu těchto souborů. Další informace najdete v tématu věnovaném [řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md).
 - Blokování souborů (Správce prostředků souborového Správce prostředků serveru) může způsobit nekonečná selhání synchronizace, když jsou soubory blokované z důvodu blokování souborů.
 - Spuštění nástroje Sysprep na serveru s nainstalovaným agentem Azure File Sync není podporováno a může vést k neočekávaným výsledkům. Agent Azure File Sync by měl být nainstalovaný po nasazení image serveru a dokončení zkrácené instalace nástroje Sysprep.
 
 ### <a name="sync-limitations"></a>Omezení synchronizace
-Následující položky se nesynchronizují, ale zbytek systému bude i nadále fungovat normálně:
+Následující položky se nesynchronizují, ale zbytek systému bude fungovat normálně dál:
 - Soubory s nepodporovanými znaky. Seznam nepodporovaných znaků najdete v [Průvodci odstraňováním potíží](storage-sync-files-troubleshoot.md#handling-unsupported-characters) .
 - Soubory nebo adresáře, které končí tečkou.
-- Cesty, které jsou delší než 2 048 znaků.
-- Část volitelného seznamu řízení přístupu (DACL) popisovače zabezpečení, pokud je větší než 2 KB. (Tento problém se týká pouze v případě, že máte více než přibližně 40 položek řízení přístupu (ACE) pro jednu položku.)
-- Část seznamu řízení přístupu (SACL) popisovače zabezpečení, která se používá k auditování.
+- Cesty delší než 2 048 znaků.
+- Část volitelného seznamu řízení přístupu (DACL) popisovače zabezpečení, pokud je větší než 2 kB. (To je problém pouze v případě, že pro jednu položku máte více než přibližně 40 položek řízení přístupu.)
+- Část seznamu řízení auditování přístupu (SACL) popisovače zabezpečení, která se používá se pro auditování.
 - Rozšířené atributy.
 - Alternativní datové proudy.
 - Body rozboru.
 - Pevné odkazy.
-- Komprese (Pokud je nastavená pro soubor na serveru) se nezachová při synchronizaci změn do tohoto souboru z ostatních koncových bodů.
-- Jakýkoli soubor zašifrovaný pomocí systému souborů EFS (nebo jiného šifrování v uživatelském režimu), který brání službě číst data.
+- Komprese (pokud je nastavená pro soubor na serveru) se nezachová při synchronizaci změn do tohoto souboru z ostatních koncových bodů.
+- Všechny soubory šifrované pomocí systému souborů EFS (nebo jiného šifrování v uživatelském režimu), který brání službě ve čtení těchto dat.
 
     > [!Note]  
-    > Azure File Sync vždycky šifrují data při přenosu. Data se vždycky šifrují v klidovém stavu v Azure.
+    > Synchronizace souborů Azure vždy šifruje přenášená data. Neaktivní uložená data se vždy šifrují v Azure.
  
 ### <a name="server-endpoint"></a>Koncový bod serveru
-- Koncový bod serveru je možné vytvořit pouze na svazku NTFS. Azure File Sync se v současnosti nepodporují ReFS, FAT, FAT32 a jiné systémy souborů.
+- Koncový bod serveru je možné vytvořit pouze na svazku NTFS. Synchronizace souborů Azure v současné době nepodporuje systémy souborů ReFS, FAT, FAT32 a jiné.
 - Vrstvené soubory se stanou nepřístupné, pokud se soubory před odstraněním koncového bodu serveru nevrátí. Chcete-li obnovit přístup k souborům, vytvořte koncový bod serveru znovu. Pokud uplynula 30 dní od odstranění koncového bodu serveru nebo pokud byl odstraněn koncový bod cloudu, vrstvené soubory, které nebyly znovu volány, nebudou použitelné.
 - Na systémovém svazku není podporováno vrstvení cloudu. Pokud chcete vytvořit koncový bod serveru na systémovém svazku, zakažte při vytváření koncového bodu serveru vrstvení cloudu.
-- Clustering s podporou převzetí služeb při selhání se podporuje jenom u clusterových disků, ale ne u sdílených svazků clusteru (CSV).
-- Koncový bod serveru nemůže být vnořený. Může současně existovat na stejném svazku paralelně s jiným koncovým bodem.
+- Clustering převzetí služeb při selhání se podporuje pouze s clusterovanými disky, nikoli však se sdílenými svazky clusteru (CSV).
+- Koncový bod serveru nemůže být vnořený. Může existovat paralelně na stejném svazku spolu s jiným koncovým bodem.
 - Neukládejte stránkovací soubor operačního systému nebo aplikace do umístění koncového bodu serveru.
 - Název serveru na portálu se neaktualizuje, pokud se server přejmenuje.
 
@@ -398,92 +395,6 @@ Následující položky se nesynchronizují, ale zbytek systému bude i nadále 
     > Azure File Sync nepodporuje přesun předplatného na jiného tenanta Azure AD.
 
 ### <a name="cloud-tiering"></a>Vrstvení cloudu
-- Pokud se vrstvený soubor zkopíruje do jiného umístění pomocí nástroje Robocopy, výsledný soubor nebude vrstven. Atribut offline může být nastaven, protože příkaz Robocopy nesprávně zahrnuje tento atribut do operací kopírování.
+- Pokud se vrstvený soubor zkopíruje do nového umístění pomocí příkazu Robocopy, výsledný soubor nebude vrstvený. Může však mít nastavený atribut offline, protože příkaz Robocopy nesprávně zahrnuje tento atribut do operací kopírování.
 - Při kopírování souborů pomocí nástroje Robocopy použijte možnost/MIR, která zachová časová razítka souborů. Tím se zajistí, že se starší soubory budou vrstvit dřív než nedávno používané soubory.
-- Při prohlížení vlastností souboru z klienta SMB se může zobrazit nesprávně nastavený atribut offline, protože ukládání metadat souboru z protokolu SMB.
-
-## <a name="agent-version-4300"></a>Verze agenta 4.3.0.0
-Následující poznámky k verzi jsou pro 4.3.0.0 verze Azure File Sync agenta vydané 14. ledna 2019. Tyto poznámky jsou kromě poznámky k verzi uvedené pro verzi 4.0.1.0.
-
-Seznam problémů opravených v této verzi:  
-- Po upgradu agenta Azure File Sync na verzi 4. x nejsou soubory vrstveny.
-- AfsUpdater. exe se teď podporuje v systému Windows Server 2019.
-- Různá vylepšení spolehlivosti pro synchronizaci. 
-
-## <a name="agent-version-4200"></a>Verze agenta 4.2.0.0
-Následující poznámky k verzi jsou pro verzi 4.2.0.0 agenta Azure File Sync vydané 10. prosince 2018. Tyto poznámky jsou kromě poznámky k verzi uvedené pro verzi 4.0.1.0.
-
-Seznam problémů opravených v této verzi:  
-- Při vytvoření snímku služby VSS může dojít k chybě Stop 0x3B nebo stop Error 0x1E.  
-- Pokud je povolená vrstva cloudu, může dojít k nevrácení paměti.  
-
-## <a name="agent-version-4100"></a>Verze agenta 4.1.0.0
-Následující poznámky k verzi jsou pro verzi 4.1.0.0 agenta Azure File Sync vydané 4. prosince 2018. Tyto poznámky jsou kromě poznámky k verzi uvedené pro verzi 4.0.1.0.
-
-Seznam problémů opravených v této verzi:  
-- Server může přestat reagovat z důvodu nevracení paměti na úrovni cloudu.  
-- Instalace agenta se nezdařila s následující chybou: Chyba 1921. Službu agenta synchronizace úložiště (FileSyncSvc) se nepovedlo zastavit.  Ověřte, zda máte dostatečná oprávnění k zastavení systémových služeb.  
-- Služba agenta synchronizace úložiště (FileSyncSvc) může selhat, pokud je využití paměti vysoké.  
-- Různá vylepšení spolehlivosti pro vrstvení a synchronizaci cloudu.
-
-## <a name="agent-version-4010"></a>Verze agenta 4.0.1.0
-Následující poznámky k verzi jsou pro 4.0.1.0 agenta Azure File Sync (vydané 13. listopadu 2018).
-
-### <a name="evaluation-tool"></a>Nástroj pro vyhodnocení
-Před nasazením Azure File Sync byste měli vyhodnotit, jestli je kompatibilní s vaším systémem pomocí nástroje Azure File Sync Evaluation Tool. Tento nástroj je Azure PowerShell rutinou, která kontroluje potenciální problémy se systémem souborů a datovou sadou, jako jsou nepodporované znaky nebo Nepodporovaná verze operačního systému. Pokyny k instalaci a používání najdete v části [Nástroj pro vyhodnocení](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) v příručce pro plánování. 
-
-### <a name="agent-installation-and-server-configuration"></a>Instalace agenta a konfigurace serveru
-Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Sync s Windows serverem, najdete v tématu [Plánování nasazení Azure File Sync](storage-sync-files-planning.md) a [postup nasazení Azure File Sync](storage-sync-files-deployment-guide.md).
-
-- Instalační balíček agenta musí být nainstalovaný se zvýšenými oprávněními (správce).
-- V možnostech nasazení systému Windows Server Core nebo nano Server není agent podporován.
-- Agent je podporován pouze v systémech Windows Server 2019, Windows Server 2016 a Windows Server 2012 R2.
-- Agent vyžaduje aspoň 2 GiB paměti. Pokud server běží na virtuálním počítači s povolenou dynamickou pamětí, měl by být virtuální počítač nakonfigurovaný s minimální 2048 MiB paměti.
-- Služba agenta synchronizace úložiště (FileSyncSvc) nepodporuje koncové body serveru nacházející se na svazku, který má komprimovaný adresář systému SVI (System Volume Information). Tato konfigurace bude mít za následek neočekávané výsledky.
-- Režim FIPS není podporován a musí být zakázán. 
-- Při vytvoření snímku služby VSS může dojít k chybě Stop 0x3B nebo stop Error 0x1E.
-
-### <a name="interoperability"></a>Interoperabilita
-- Antivirová ochrana, zálohování a další aplikace, které mají přístup k vrstveným souborům, můžou způsobit nežádoucí odvolání, pokud nerespektují atribut offline a přeskočí čtení obsahu těchto souborů. Další informace najdete v tématu věnovaném [řešení potíží s Azure File Sync](storage-sync-files-troubleshoot.md).
-- Blokování souborů (Správce prostředků souborového Správce prostředků serveru) může způsobit nekonečná selhání synchronizace, když jsou soubory blokované z důvodu blokování souborů.
-- Spuštění nástroje Sysprep na serveru s nainstalovaným agentem Azure File Sync není podporováno a může vést k neočekávaným výsledkům. Agent Azure File Sync by měl být nainstalovaný po nasazení image serveru a dokončení zkrácené instalace nástroje Sysprep.
-- Odstranění duplicitních dat a vrstvení cloudu se nepodporuje na stejném svazku.
-
-### <a name="sync-limitations"></a>Omezení synchronizace
-Následující položky se nesynchronizují, ale zbytek systému bude i nadále fungovat normálně:
-- Soubory s nepodporovanými znaky. Seznam nepodporovaných znaků najdete v [Průvodci odstraňováním potíží](storage-sync-files-troubleshoot.md#handling-unsupported-characters) .
-- Soubory nebo adresáře, které končí tečkou.
-- Cesty, které jsou delší než 2 048 znaků.
-- Část volitelného seznamu řízení přístupu (DACL) popisovače zabezpečení, pokud je větší než 2 KB. (Tento problém se týká pouze v případě, že máte více než přibližně 40 položek řízení přístupu (ACE) pro jednu položku.)
-- Část seznamu řízení přístupu (SACL) popisovače zabezpečení, která se používá k auditování.
-- Rozšířené atributy.
-- Alternativní datové proudy.
-- Body rozboru.
-- Pevné odkazy.
-- Komprese (Pokud je nastavená pro soubor na serveru) se nezachová při synchronizaci změn do tohoto souboru z ostatních koncových bodů.
-- Jakýkoli soubor zašifrovaný pomocí systému souborů EFS (nebo jiného šifrování v uživatelském režimu), který brání službě číst data.
-
-    > [!Note]  
-    > Azure File Sync vždycky šifrují data při přenosu. Data se vždycky šifrují v klidovém stavu v Azure.
- 
-### <a name="server-endpoint"></a>Koncový bod serveru
-- Koncový bod serveru je možné vytvořit pouze na svazku NTFS. Azure File Sync se v současnosti nepodporují ReFS, FAT, FAT32 a jiné systémy souborů.
-- Vrstvené soubory se stanou nepřístupné, pokud se soubory před odstraněním koncového bodu serveru nevrátí. Chcete-li obnovit přístup k souborům, vytvořte koncový bod serveru znovu. Pokud uplynula 30 dní od odstranění koncového bodu serveru nebo pokud byl odstraněn koncový bod cloudu, vrstvené soubory, které nebyly znovu volány, nebudou použitelné.
-- Na systémovém svazku není podporováno vrstvení cloudu. Pokud chcete vytvořit koncový bod serveru na systémovém svazku, zakažte při vytváření koncového bodu serveru vrstvení cloudu.
-- Clustering s podporou převzetí služeb při selhání se podporuje jenom u clusterových disků, ale ne u sdílených svazků clusteru (CSV).
-- Koncový bod serveru nemůže být vnořený. Může současně existovat na stejném svazku paralelně s jiným koncovým bodem.
-- Neukládejte stránkovací soubor operačního systému nebo aplikace do umístění koncového bodu serveru.
-- Název serveru na portálu se neaktualizuje, pokud se server přejmenuje.
-
-### <a name="cloud-endpoint"></a>Koncový bod cloudu
-- Azure File Sync podporuje přímé provádění změn ve sdílené složce Azure. Všechny změny provedené ve sdílené složce Azure se ale nejdřív musí zjistit pomocí úlohy zjišťování změn Azure File Sync. Úloha detekce změn se iniciuje pro koncový bod cloudu každých 24 hodin. Kromě toho změny provedené ve sdílené složce Azure přes protokol REST neaktualizují čas poslední změny protokolu SMB a nebudou se zobrazovat jako změny v synchronizaci.
-- Služba synchronizace úložiště nebo účet úložiště se dá přesunout do jiné skupiny prostředků nebo předplatného v rámci stávajícího tenanta Azure AD. Pokud je účet úložiště přesunutý, musíte mu udělit přístup ke službě hybridní Synchronizace souborů k účtu úložiště (podívejte se, [jestli má Azure File Sync přístup k účtu úložiště](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
-
-    > [!Note]  
-    > Azure File Sync nepodporuje přesun předplatného na jiného tenanta Azure AD.
-
-### <a name="cloud-tiering"></a>Vrstvení cloudu
-- Nastavení zásad cloudových vrstev na základě data slouží k zadání souborů, které se mají ukládat do mezipaměti, pokud se v zadaném počtu dnů přistupovalo. Další informace najdete v tématu [Přehled vrstvení cloudu](https://docs.microsoft.com/azure/storage/files/storage-sync-cloud-tiering#afs-force-tiering).
-- Pokud se vrstvený soubor zkopíruje do jiného umístění pomocí nástroje Robocopy, výsledný soubor nebude vrstven. Atribut offline může být nastaven, protože příkaz Robocopy nesprávně zahrnuje tento atribut do operací kopírování.
-- Při kopírování souborů pomocí nástroje Robocopy použijte možnost/MIR, která zachová časová razítka souborů. Tím se zajistí, že se starší soubory budou vrstvit dřív než nedávno používané soubory.
-- Při prohlížení vlastností souboru z klienta SMB se může zobrazit nesprávně nastavený atribut offline, protože ukládání metadat souboru z protokolu SMB.
+- Při zobrazení vlastností souboru v klientovi SMB se může zobrazit nesprávně nastavený atribut offline. Důvodem je ukládání metadat souboru do mezipaměti protokolem SMB.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: e2faf444aa411f0e60f1b5c7b1f811abc2f6b63a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 1825f9f0f5d525c0129341d800ca5949136ae633
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176685"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750075"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Rozšíření DSC pro Linux (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -35,7 +35,7 @@ Rozšíření DSCForLinux je publikované a podporované Microsoftem. Rozšíře
 - Instalace vlastních modulů DSC do virtuálního počítače se systémem Linux (instalace ExtensionAction)
 - Odebrat vlastní moduly DSC na virtuální počítač se systémem Linux (odebrat ExtensionAction)
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,12 +43,12 @@ Rozšíření DSCForLinux je publikované a podporované Microsoftem. Rozšíře
 
 Rozšíření DSC pro Linux podporuje všechny [distribuce systému Linux schválené v Azure](/azure/virtual-machines/linux/endorsed-distros) s výjimkou těchto:
 
-| Šíření | Version |
+| Distribuce | Verze |
 |---|---|
 | Debian | všechny verze |
 | Ubuntu| 18,04 |
  
-### <a name="internet-connectivity"></a>Připojení k Internetu
+### <a name="internet-connectivity"></a>Připojení k internetu
 
 Rozšíření DSCForLinux vyžaduje, aby byl cílový virtuální počítač připojený k Internetu. Například registrovat rozšíření vyžaduje připojení ke službě Automation. Pro jiné akce, jako je například vyžádání, vyžádání, instalace vyžaduje připojení ke službě Azure Storage nebo GitHub. Závisí na nastaveních poskytovaných zákazníkem.
 
@@ -58,13 +58,13 @@ Rozšíření DSCForLinux vyžaduje, aby byl cílový virtuální počítač př
 
 Tady jsou všechny podporované parametry veřejné konfigurace:
 
-* `FileUri`: (nepovinný řetězec) identifikátor URI souboru MOF/souboru meta MOF/souboru ZIP vlastního prostředku.
-* `ResourceName`: (nepovinný, řetězec) název vlastního modulu prostředků
+* `FileUri`: (nepovinný, String) identifikátor URI souboru MOF/souboru meta MOF/souboru ZIP vlastního prostředku.
+* `ResourceName`: (nepovinný, String) název modulu vlastních prostředků
 * `ExtensionAction`: (nepovinný řetězec) určuje, co rozšíření dělá. platné hodnoty: registrace, vložení, stažení, instalace, odebrání. Pokud není zadaný, považuje se ve výchozím nastavení za nabízenou akci.
-* `NodeConfigurationName`: (volitelné, řetězec) název konfigurace uzlu, která se má použít.
+* `NodeConfigurationName`: (volitelné, String) název konfigurace uzlu, která se má použít.
 * `RefreshFrequencyMins`: (volitelné, int) určuje, jak často (v minutách) se DSC pokusí získat konfiguraci ze serveru vyžádané replikace. 
        Pokud se konfigurace na serveru pro vyžádání liší od aktuální položky na cílovém uzlu, zkopíruje se do úložiště čeká na vyřízení a použije se.
-* `ConfigurationMode`: (nepovinný řetězec) určuje, jak má DSC použít konfiguraci. Platné hodnoty jsou: ApplyOnly, ApplyAndMonitor, ApplyAndAutoCorrect.
+* `ConfigurationMode`: (volitelné, řetězec) určuje, jak má DSC použít konfiguraci. Platné hodnoty jsou: ApplyOnly, ApplyAndMonitor, ApplyAndAutoCorrect.
 * `ConfigurationModeFrequencyMins`: (volitelné, int) určuje, jak často (v minutách) DSC ověří, jestli je konfigurace v požadovaném stavu.
 
 > [!NOTE]
@@ -75,10 +75,10 @@ Tady jsou všechny podporované parametry veřejné konfigurace:
 
 Tady jsou všechny podporované parametry chráněné konfigurace:
 
-* `StorageAccountName`: (nepovinný, řetězec) název účtu úložiště, který obsahuje soubor.
-* `StorageAccountKey`: (nepovinný, řetězec) klíč účtu úložiště, který obsahuje soubor.
-* `RegistrationUrl`: (nepovinný, řetězec) adresa URL účtu Azure Automation
-* `RegistrationKey`: (nepovinný, řetězec) přístupový klíč účtu Azure Automation
+* `StorageAccountName`: (volitelné, řetězec) název účtu úložiště, který obsahuje soubor.
+* `StorageAccountKey`: (nepovinný, String) klíč účtu úložiště, který obsahuje soubor.
+* `RegistrationUrl`: (nepovinný, String) adresa URL účtu Azure Automation
+* `RegistrationKey`: (volitelné, řetězec) přístupový klíč účtu Azure Automation
 
 
 ## <a name="scenarios"></a>Scénáře
@@ -274,7 +274,7 @@ $publicConfig = '{
 }'
 ```
 
-## <a name="template-deployment"></a>Template deployment
+## <a name="template-deployment"></a>Nasazení šablon
 
 Rozšíření virtuálních počítačů Azure je možné nasadit pomocí šablon Azure Resource Manager. Šablony jsou ideální při nasazení jednoho nebo více virtuálních počítačů, které vyžadují konfiguraci po nasazení, jako je připojování k Azure Automation. 
 
@@ -286,9 +286,9 @@ Další informace o šabloně Azure Resource Manager najdete v [Azure Resource M
 ## <a name="azure-cli-deployment"></a>Nasazení Azure CLI
 
 ### <a name="21-using-azure-cliazure-cli"></a>2,1. Použití [**Azure CLI**] [Azure-CLI]
-Před nasazením rozšíření DSCForLinux byste měli nakonfigurovat `public.json` a `protected.json`, a to podle různých scénářů v oddílu 3.
+Před nasazením rozšíření DSCForLinux byste měli nakonfigurovat `public.json` a `protected.json`podle různých scénářů v oddílu 3.
 
-#### <a name="211-classic"></a>bodů. Klasický
+#### <a name="211-classic"></a>bodů. Klasické
 Klasický režim se taky označuje jako režim správy služeb Azure. Můžete na něj přejít spuštěním:
 ```
 $ azure config mode asm
@@ -318,7 +318,7 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
 > [!NOTE]
-> V režimu Azure Resource Manager není nyní k dispozici `azure vm extension list`.
+> V režimu Azure Resource Manager není `azure vm extension list` nyní k dispozici.
 >
 
 ### <a name="22-using-azure-powershellazure-powershell"></a>2,2. Použití [**Azure PowerShell**] [Azure-PowerShell]

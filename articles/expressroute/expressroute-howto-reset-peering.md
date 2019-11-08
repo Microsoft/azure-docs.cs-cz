@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 841c68b43e7f31693863268c3a7b2bd544c5e7ae
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 2258bfbf2a1bf6a8dccf9d274e6e89e4c53a978a
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965336"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748230"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>Resetování partnerských vztahů okruhu ExpressRoute
 
@@ -25,7 +25,7 @@ Existuje několik scénářů, ve kterých může být užitečné resetovat par
 
 ### <a name="working-with-azure-powershell"></a>Práce s Azure PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 

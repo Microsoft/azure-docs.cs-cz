@@ -1,6 +1,6 @@
 ---
 title: Ukázky PowerShellu pro službu Azure Backup
-description: Ukázky PowerShellu pro službu Azure Backup
+description: Tento článek obsahuje odkazy na ukázky skriptů prostředí PowerShell, které používají Azure Backup k zálohování a obnovení dat.
 author: dcurwin
 manager: carmonm
 ms.service: backup
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 01/31/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: af21ee3aa807228c5a6f0e70e22442bc15b59ddf
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 4283871d17f01a3b70884e898397794ae7e4eb84
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639451"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747103"
 ---
 # <a name="azure-backup-powershell-samples"></a>Ukázky PowerShellu pro službu Azure Backup
 
@@ -24,4 +24,3 @@ Následující tabulka odkazuje na ukázky skriptů PowerShell, které používa
 |**Zálohování virtuálních počítačů**||
 | [Zálohování šifrovaného virtuálního počítače do Azure](./scripts/backup-powershell-sample-backup-encrypted-vm.md) | Zazálohujte všechna data šifrovaného virtuálního počítače.|
 | | |
-

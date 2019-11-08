@@ -6,6 +6,7 @@ documentationcenter: na
 author: v-miegge
 manager: dcscontentpm
 editor: ''
+tags: virtual-network
 ms.assetid: 1a3d1e84-f793-41b4-aa04-774a7e8f7719
 ms.service: virtual-network
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 0898a65323957cbab4c2ab5278e9970cf0c16a90
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 1fddbe908ccebc1384dcccde0810366f1a6d5da7
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219235"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796242"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Řešení potíží s partnerskými vztahy virtuálních sítí
 
@@ -66,11 +67,11 @@ Informace o konfiguraci partnerského vztahu virtuálních sítí pro virtuáln�
 
 ### <a name="for-a-site-to-site-connection-or-an-expressroute-connection"></a>Připojení typu Site-to-site nebo připojení ExpressRoute
 
-Postupujte podle kroků v části: [Nakonfigurujte přenos brány VPN pro partnerský vztah virtuálních sítí](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json).
+Postupujte podle kroků v části [Konfigurace přenosu brány VPN pro partnerský vztah virtuální sítě](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json).
 
 ### <a name="for-point-to-site-connections"></a>Pro připojení Point-to-site
 
-1. Postupujte podle kroků v části: [Nakonfigurujte přenos brány VPN pro partnerský vztah virtuálních sítí](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json).
+1. Postupujte podle kroků v části [Konfigurace přenosu brány VPN pro partnerský vztah virtuální sítě](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json).
 2. Po navázání nebo změně partnerského vztahu virtuální sítě Stáhněte a přeinstalujte balíček Point-to-site, aby klienti Point-to-site získali aktualizované trasy k virtuální síti paprsků.
 
 ## <a name="configure-virtual-network-peering-with-hub-spoke-topology-virtual-network"></a>Konfigurace partnerského vztahu virtuálních sítí pomocí virtuální sítě topologie hvězdicové a hvězdicové topologie
@@ -126,7 +127,7 @@ Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu, který
    1. Spusťte trasování sítě na cílovém virtuálním počítači. Pro Windows můžete použít **netsh**. Pro Linux použijte **TCPDump**.
    2. Spusťte **TcpPing** nebo **PsPing** ze zdroje do cílové IP adresy.
 
-      Toto je příklad příkazu **TcpPing** :`tcping64.exe -t <destination VM address> 3389`
+      Toto je příklad příkazu **TcpPing** : `tcping64.exe -t <destination VM address> 3389`
 
    3. Po dokončení **TcpPing** zastavte trasování sítě v cíli.
    4. Pokud pakety přicházejí ze zdroje, nedochází k potížím se sítí. Vyhledejte problém s konfigurací tím, že prověřte bránu firewall virtuálního počítače i aplikaci, která naslouchá na tomto portu.
@@ -222,11 +223,11 @@ Další informace najdete v následujících článcích:
 
 ## <a name="troubleshoot-a-virtual-network-peering-configuration-error-message"></a>Řešení potíží s chybovou zprávou o konfiguraci partnerského vztahu virtuálních sítí 
 
-### <a name="current-tenant-tenant-id-isnt-authorized-to-access-linked-subscription"></a>Aktuální tenant `<TENANT ID>` nemá autorizaci pro přístup k propojenému předplatnému.
+### <a name="current-tenant-tenant-id-isnt-authorized-to-access-linked-subscription"></a>Aktuální `<TENANT ID>` tenanta nemá autorizaci pro přístup k propojenému předplatnému.
 
 Pokud chcete tento problém vyřešit, přečtěte si téma [vytvoření partnerského vztahu – Azure CLI](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli).
 
-### <a name="not-connected"></a>Nepřipojené
+### <a name="not-connected"></a>Nepřipojeno
 
 Pokud chcete tento problém vyřešit, odstraňte partnerský vztah z obou virtuálních sítí a pak je znovu vytvořte.
 

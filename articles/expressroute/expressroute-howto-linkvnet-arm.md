@@ -1,6 +1,6 @@
 ---
-title: 'Propojení virtuální sítě k okruhu ExpressRoute: PowerShell: Azure | Dokumentace Microsoftu'
-description: Tento dokument poskytuje přehled o tom, jak propojit virtuální sítě (Vnet) pro okruhy ExpressRoute pomocí modelu nasazení Resource Manageru a Powershellu.
+title: 'Propojení virtuální sítě s okruhem ExpressRoute: PowerShell | Microsoft Docs'
+description: Tento dokument poskytuje přehled, jak propojit virtuální sítě (virtuální sítě) se ExpressRoute okruhy pomocí modelu nasazení Správce prostředků a prostředí PowerShell.
 services: expressroute
 author: ganesr
 ms.service: expressroute
@@ -8,49 +8,49 @@ ms.topic: article
 ms.date: 05/20/2018
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 620eff5468d7d3b4bf8ddeea62fa67b39609fce6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d4b746a245fc1ee2b0d3532bfabc973f513c7661
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65950365"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748291"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>Připojení virtuální sítě k okruhu ExpressRoute
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
-> * [Video – Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [Video – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
 > * [PowerShell (Classic)](expressroute-howto-linkvnet-classic.md)
 >
 
-Tento článek pomáhá propojení virtuálních sítí (Vnet) pro okruhy Azure ExpressRoute pomocí modelu nasazení Resource Manageru a Powershellu. Virtuální sítě může být buď v rámci stejného předplatného nebo součástí jiného předplatného. Tento článek také ukazuje, jak aktualizovat propojení virtuální sítě.
+Tento článek vám pomůže propojit virtuální sítě (virtuální sítě) se okruhy Azure ExpressRoute pomocí modelu nasazení Správce prostředků a prostředí PowerShell. Virtuální sítě mohou být buď ve stejném předplatném, nebo v rámci jiného předplatného. Tento článek také ukazuje, jak aktualizovat odkaz virtuální sítě.
 
-* Až 10 virtuálních sítí můžete propojit standardní okruh ExpressRoute. Všechny virtuální sítě musí být ve stejné geopolitické oblasti, při použití standardní okruh ExpressRoute. 
+* Na standardní okruh ExpressRoute můžete propojit až 10 virtuálních sítí. Pokud používáte standardní okruh ExpressRoute, musí být všechny virtuální sítě ve stejné geopolitické oblasti. 
 
-* Jedné virtuální sítě nesmí být propojení až čtyři okruhy ExpressRoute. Postupujte podle kroků v tomto článku vytvořte nový objekt připojení pro každý okruh ExpressRoute, ke kterému se připojujete. Okruhy ExpressRoute může být ve stejném předplatném, různá předplatná nebo kombinaci obou.
+* Jedna virtuální síť může být propojená s až čtyřmi okruhy ExpressRoute. Pomocí kroků v tomto článku vytvoříte nový objekt připojení pro každý okruh ExpressRoute, ke kterému se připojujete. Okruhy ExpressRoute můžou být ve stejném předplatném, různých předplatných nebo kombinaci obou.
 
-* Můžete propojit virtuální sítě mimo geopolitické oblasti okruh ExpressRoute nebo připojit větší počet virtuálních sítí pro váš okruh ExpressRoute, pokud jste povolili doplněk ExpressRoute premium. Zkontrolujte, [nejčastější dotazy k](expressroute-faqs.md) podrobné informace o doplněk premium.
+* Můžete propojit virtuální sítě mimo geopolitickou oblast okruhu ExpressRoute nebo připojit větší počet virtuálních sítí k okruhu ExpressRoute, pokud jste povolili doplněk ExpressRoute Premium. Další podrobnosti o doplňku Premium najdete v [nejčastějších dotazech](expressroute-faqs.md) .
 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
-* Zkontrolujte [požadavky](expressroute-prerequisites.md), [požadavky směrování](expressroute-routing.md), a [pracovních postupů](expressroute-workflows.md) předtím, než začnete s konfigurací.
+* Než začnete s konfigurací, Projděte si [požadavky,](expressroute-prerequisites.md) [požadavky na směrování](expressroute-routing.md)a [pracovní postupy](expressroute-workflows.md) .
 
 * Musí mít aktivní okruh ExpressRoute. 
-  * Postupujte podle pokynů a [vytvořit okruh ExpressRoute](expressroute-howto-circuit-arm.md) a mějte ho povolený poskytovatel připojení. 
-  * Ujistěte se, že máte soukromého partnerského vztahu Azure nakonfigurovaný pro váš okruh. Zobrazit [konfigurace směrování](expressroute-howto-routing-arm.md) najdete pokyny pro směrování. 
-  * Ověřte, že je nakonfigurovaný soukromého partnerského vztahu Azure a partnerského vztahu protokolu BGP mezi vaší sítí a Microsoftem nahoru tak, že povolíte připojení k začátku do konce.
-  * Ujistěte se, že máte virtuální síť a Brána virtuální sítě vytvořené a plně zřízený. Postupujte podle pokynů a [vytvořit bránu virtuální sítě pro ExpressRoute](expressroute-howto-add-gateway-resource-manager.md). Brána virtuální sítě pro ExpressRoute používá GatewayType "ExpressRoute", ne VPN.
+  * Podle pokynů [vytvořte okruh ExpressRoute](expressroute-howto-circuit-arm.md) a pořiďte okruh povolený vaším poskytovatelem připojení. 
+  * Ujistěte se, že máte pro váš okruh nakonfigurovaný privátní partnerský vztah Azure. Pokyny k směrování najdete v článku věnovaném [konfiguraci směrování](expressroute-howto-routing-arm.md) . 
+  * Ujistěte se, že je nakonfigurovaný privátní partnerský vztah Azure a že partnerský vztah protokolu BGP mezi vaší sítí a Microsoftem je tak, aby bylo možné povolit kompletní připojení.
+  * Ujistěte se, že máte virtuální síť a že byla vytvořena a plně zřízena Brána virtuální sítě. Postupujte podle pokynů a [vytvořte bránu virtuální sítě pro ExpressRoute](expressroute-howto-add-gateway-resource-manager.md). Brána virtuální sítě pro ExpressRoute používá GatewayType "ExpressRoute", ne VPN.
 
-### <a name="working-with-azure-powershell"></a>Práce s využitím Azure Powershellu
+### <a name="working-with-azure-powershell"></a>Práce s Azure PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Připojení virtuální sítě v rámci stejného předplatného k okruhu
-Pomocí následující rutiny můžete připojit bránu virtuální sítě k okruhu ExpressRoute. Ujistěte se, že brány virtuální sítě je vytvořen a připraven k propojení předtím, než spustíte rutinu:
+## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Připojení virtuální sítě ve stejném předplatném k okruhu
+Bránu virtuální sítě můžete připojit k okruhu ExpressRoute pomocí následující rutiny. Ujistěte se, že je brána virtuální sítě vytvořená a je připravená k propojení před spuštěním rutiny:
 
 ```azurepowershell-interactive
 $circuit = Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
@@ -59,31 +59,31 @@ $connection = New-AzVirtualNetworkGatewayConnection -Name "ERConnection" -Resour
 ```
 
 ## <a name="connect-a-virtual-network-in-a-different-subscription-to-a-circuit"></a>Připojení virtuální sítě jiného předplatného k okruhu
-Okruh ExpressRoute můžete sdílet napříč několika předplatnými. Následující obrázek znázorňuje jednoduchý způsob sdílení prací pro okruhy ExpressRoute schéma napříč několika předplatnými.
+Okruh ExpressRoute můžete sdílet mezi několika předplatnými. Následující obrázek ukazuje jednoduché schéma, jak sdílení funguje pro okruhy ExpressRoute napříč několika předplatnými.
 
-Každá z menších cloudy v rámci velkých cloudových se používá k reprezentování odběry, které patří k různým oblastem v rámci organizace. Vlastní předplatné každé oddělení v rámci organizace můžete použít k nasazení svých služeb – ale můžete sdílet jeden okruh ExpressRoute pro připojení zpět k místní síti. Jednoho oddělení (v tomto příkladu: IT) může vlastnit okruh ExpressRoute. Okruh ExpressRoute můžete použít další předplatná v rámci organizace.
+Každý z menších cloudů ve velkém cloudu se používá k reprezentaci předplatných, která patří do různých oddělení v rámci organizace. Každé oddělení v rámci organizace může používat vlastní předplatné pro nasazení svých služeb – ale může sdílet jeden okruh ExpressRoute pro připojení zpět k místní síti. Jeden oddělení (v tomto příkladu: IT) může vlastnit okruh ExpressRoute. Další předplatná v rámci organizace můžou používat okruh ExpressRoute.
 
 > [!NOTE]
-> Poplatky za připojení a šířku pásma pro okruh ExpressRoute se použijí na vlastníka předplatného. Všechny virtuální sítě sdílejí stejnou šířku pásma.
+> Pro vlastníka předplatného se použijí poplatky za připojení a šířku pásma pro okruh ExpressRoute. Všechny virtuální sítě mají stejnou šířku pásma.
 > 
 > 
 
-![Připojením mezi předplatnými](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
+![Připojení mezi předplatnými](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
 
 
-### <a name="administration---circuit-owners-and-circuit-users"></a>Správa – okruh uživatelů a vlastníků okruh
+### <a name="administration---circuit-owners-and-circuit-users"></a>Správa – vlastníci okruhu a uživatelé okruhu
 
-Vlastníka okruhu je autorizovaný uživatel Power prostředku okruhu ExpressRoute. Vlastníka okruhu můžete vytvářet autorizace, které můžou uplatnit: uživatelé okruhu". Uživatelé okruhu jsou vlastníky bran virtuální sítě, které nejsou ve stejném předplatném jako okruh ExpressRoute. Uživatelé okruhu můžete uplatnění autorizací (jedním autorizačním jednu virtuální síť).
+' Okruh Owner ' je autorizovaným uživatelem prostředku okruhu ExpressRoute. Vlastník okruhu může vytvořit autorizaci, které může uplatnit "okruh uživatelů". Uživatelé okruhu jsou vlastníky bran virtuální sítě, které nejsou v rámci stejného předplatného jako okruh ExpressRoute. Uživatelé okruhu můžou uplatnit autorizaci (jednu autorizaci na virtuální síť).
 
-Vlastníka okruhu má schopnost upravovat dokumentů a odvolání přístupu autorizace kdykoli. Odvolává se autorizace výsledkem spojení odstraňuje z předplatného, jehož přístup byl odvolán.
+Vlastník okruhu má kdykoliv oprávnění upravovat a odvolat. Odvolání výsledků autorizace ve všech připojeních propojení, která se odstraňují z předplatného, jehož přístup byl odvolán.
 
 ### <a name="circuit-owner-operations"></a>Operace vlastníka okruhu
 
-**Chcete-li vytvořit povolení**
+**Vytvoření autorizace**
 
-Vlastníka okruhu vytvoří autorizaci. Výsledkem je vytvoření autorizačního klíče, který je možné připojit své brány virtuální sítě k okruhu ExpressRoute uživatelem okruhu. Povolení platí jenom jedno připojení.
+Vlastník okruhu vytvoří autorizaci. Výsledkem je vytvoření autorizačního klíče, který může uživatel okruhu použít k připojení bran virtuální sítě k okruhu ExpressRoute. Autorizace je platná jenom pro jedno připojení.
 
-Následující rutiny fragment kódu ukazuje, jak vytvořit povolení:
+Následující fragment rutiny ukazuje, jak vytvořit autorizaci:
 
 ```azurepowershell-interactive
 $circuit = Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
@@ -95,7 +95,7 @@ $auth1 = Get-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -N
 ```
 
 
-Odpověď na to bude obsahovat autorizační klíč a stav:
+Odpověď na tuto zprávu bude obsahovat autorizační klíč a stav:
 
     Name                   : MyAuthorization1
     Id                     : /subscriptions/&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&/resourceGroups/ERCrossSubTestRG/providers/Microsoft.Network/expressRouteCircuits/CrossSubTest/authorizations/MyAuthorization1
@@ -106,18 +106,18 @@ Odpověď na to bude obsahovat autorizační klíč a stav:
 
 
 
-**Ke kontrole autorizace**
+**Kontrola autorizací**
 
-Vlastníka okruhu můžete zkontrolovat všechny autorizace, které jsou vydány na konkrétní okruhu spuštěním následující rutiny:
+Vlastník okruhu může zkontrolovat všechna oprávnění vydaná určitým okruhem spuštěním následující rutiny:
 
 ```azurepowershell-interactive
 $circuit = Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 $authorizations = Get-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit
 ```
 
-**Chcete-li přidat autorizace**
+**Přidání autorizací**
 
-Vlastníka okruhu můžete přidat autorizace pomocí následující rutiny:
+Vlastník okruhu může přidat autorizaci pomocí následující rutiny:
 
 ```azurepowershell-interactive
 $circuit = Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
@@ -128,28 +128,28 @@ $circuit = Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 $authorizations = Get-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit
 ```
 
-**Chcete-li odstranit autorizace**
+**Odstranění autorizací**
 
-Vlastníka okruhu můžete odvolání nebo odstranění autorizací uživateli spuštěním následující rutiny:
+Vlastník okruhu může pro uživatele odvolat nebo odstranit autorizaci spuštěním následující rutiny:
 
 ```azurepowershell-interactive
 Remove-AzExpressRouteCircuitAuthorization -Name "MyAuthorization2" -ExpressRouteCircuit $circuit
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit
 ```    
 
-### <a name="circuit-user-operations"></a>Operace pro uživatele okruhu
+### <a name="circuit-user-operations"></a>Operace uživatele obvodu
 
-ID partnera a autorizační klíč z vlastníka okruhu, musí uživatel okruhu. Autorizační klíč je identifikátor GUID.
+Uživatel okruhu potřebuje partnerského ID a autorizační klíč od vlastníka okruhu. Autorizační klíč je identifikátor GUID.
 
-ID partnera můžete zkontrolovat pomocí následujícího příkazu:
+ID partnerského zařízení lze zkontrolovat pomocí následujícího příkazu:
 
 ```azurepowershell-interactive
 Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 ```
 
-**Chcete-li uplatnit autorizaci připojení**
+**Uplatnění autorizace připojení**
 
-Uživatele okruhu spuštěním následující rutiny můžete uplatnit autorizaci odkaz:
+Uživatel okruhu může spustit následující rutinu pro uplatnění autorizace propojení:
 
 ```azurepowershell-interactive
 $id = "/subscriptions/********************************/resourceGroups/ERCrossSubTestRG/providers/Microsoft.Network/expressRouteCircuits/MyCircuit"    
@@ -157,16 +157,16 @@ $gw = Get-AzVirtualNetworkGateway -Name "ExpressRouteGw" -ResourceGroupName "MyR
 $connection = New-AzVirtualNetworkGatewayConnection -Name "ERConnection" -ResourceGroupName "RemoteResourceGroup" -Location "East US" -VirtualNetworkGateway1 $gw -PeerId $id -ConnectionType ExpressRoute -AuthorizationKey "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
 ```
 
-**K uvolnění ověření připojení**
+**Uvolnění autorizace připojení**
 
-Povolení můžete uvolnit tak, že odstraníte okruh ExpressRoute k virtuální síti, která odkazuje připojení.
+Autorizaci můžete uvolnit odstraněním připojení, které propojuje okruh ExpressRoute s virtuální sítí.
 
-## <a name="modify-a-virtual-network-connection"></a>Upravit připojení k virtuální síti
+## <a name="modify-a-virtual-network-connection"></a>Úprava připojení k virtuální síti
 Můžete aktualizovat některé vlastnosti připojení k virtuální síti. 
 
-**Chcete-li aktualizovat váhy připojení**
+**Aktualizace váhy připojení**
 
-Virtuální síť lze připojit k více okruhům ExpressRoute. Může se zobrazit stejné předpony z více než jeden okruh ExpressRoute. Zvolte připojení, které chcete posílat provoz určený pro tuto předponu můžete změnit *RoutingWeight* připojení. Provoz se pošle na připojení s nejvyšším *RoutingWeight*.
+Vaše virtuální síť se může připojit k několika okruhům ExpressRoute. Můžete obdržet stejnou předponu z více než jednoho okruhu ExpressRoute. Pokud chcete zvolit připojení pro odesílání provozu určené pro tuto předponu, můžete změnit *RoutingWeight* připojení. Provoz se pošle na připojení s nejvyšší *RoutingWeight*.
 
 ```azurepowershell-interactive
 $connection = Get-AzVirtualNetworkGatewayConnection -Name "MyVirtualNetworkConnection" -ResourceGroupName "MyRG"
@@ -174,13 +174,13 @@ $connection.RoutingWeight = 100
 Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection
 ```
 
-Rozsah *RoutingWeight* je od 0 do 32 000. Výchozí hodnota je 0.
+Rozsah *RoutingWeight* je 0 až 32000. Výchozí hodnota je 0.
 
 ## <a name="configure-expressroute-fastpath"></a>Konfigurace ExpressRoute FastPath 
-Můžete povolit [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) Pokud váš okruh ExpressRoute není v [ExpressRoute přímo](expressroute-erdirect-about.md) a bránu virtuálního newtork je Ultra výkon nebo ErGw3AZ. FastPath zlepšuje preformance cesty dat jako jsou pakety za sekundu a připojení za sekundu mezi místní sítí a virtuální sítí. 
+Můžete povolit [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) , pokud je váš okruh ExpressRoute v [ExpressRoute Direct](expressroute-erdirect-about.md) a Brána virtuální sítě je Ultra Performance nebo ErGw3AZ. FastPath vylepšuje výkon cesty k datům, jako jsou pakety za sekundu, a připojení za sekundu mezi vaší místní sítí a virtuální sítí. 
 
 > [!NOTE] 
-> Pokud již máte připojení k virtuální síti, ale ještě nepovolili FastPath musíte odstranit připojení virtuální sítě a vytvořte novou. 
+> Pokud už máte připojení k virtuální síti, ale nepovolili FastPath, musíte odstranit připojení k virtuální síti a vytvořit nový. 
 > 
 >  
 
@@ -190,5 +190,5 @@ $gw = Get-AzVirtualNetworkGateway -Name "MyGateway" -ResourceGroupName "MyRG"
 $connection = New-AzVirtualNetworkGatewayConnection -Name "MyConnection" -ResourceGroupName "MyRG" -ExpressRouteGatewayBypass -VirtualNetworkGateway1 $gw -PeerId $circuit.Id -ConnectionType ExpressRoute -Location "MyLocation" 
 ``` 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: bf964f23b6c38444fb15b61161cb7ed5a2b15e00
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 01d5670add82291cb91264ab41fcd312a338840c
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102653"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749326"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí Azure PowerShell
 Tyto kroky ukazují, jak používat Azure PowerShell příkazy k migraci prostředků infrastruktury jako služby (IaaS) z modelu nasazení Classic do modelu nasazení Azure Resource Manager.
@@ -35,9 +35,9 @@ Tady je vývojový diagram pro identifikaci pořadí, ve kterém je potřeba pro
 
 ![Snímek obrazovky, který ukazuje kroky migrace](media/migration-classic-resource-manager/migration-flow.png)
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
-## <a name="step-1-plan-for-migration"></a>Krok 1: Plánování migrace
+## <a name="step-1-plan-for-migration"></a>Krok 1: plánování migrace
 Tady je několik doporučených postupů, které doporučujeme při vyhodnocování migrace prostředků IaaS z modelu Classic na Správce prostředků:
 
 * Přečtěte si [podporované a nepodporované funkce a konfigurace](migration-classic-resource-manager-overview.md). Pokud máte virtuální počítače, které používají nepodporované konfigurace nebo funkce, doporučujeme, abyste počkali, až bude podpora konfigurace/funkcí oznámena. Případně, pokud to vyhovuje vašim potřebám, odeberte tuto funkci nebo ji z této konfigurace přeinstalujte, aby bylo možné migraci povolit.
@@ -48,14 +48,14 @@ Tady je několik doporučených postupů, které doporučujeme při vyhodnocová
 >
 >Brány ExpressRoute, které se připojují k okruhům ExpressRoute v jiném předplatném, se nedají migrovat automaticky. V takových případech odeberte bránu ExpressRoute, migrujte virtuální síť a znovu vytvořte bránu. Další informace najdete v tématu [migrace okruhů ExpressRoute a přidružených virtuálních sítí z modelu nasazení Classic do nasazení Správce prostředků](../../expressroute/expressroute-migration-classic-resource-manager.md) .
 
-## <a name="step-2-install-the-latest-version-of-azure-powershell"></a>Krok 2: Nainstalovat nejnovější verzi Azure PowerShell
-Existují dvě hlavní možnosti, jak nainstalovat Azure PowerShell: [Galerie prostředí PowerShell](https://www.powershellgallery.com/profiles/azure-sdk/) nebo [Instalace webové platformy (WebPI)](https://aka.ms/webpi-azps). WebPI přijímá měsíční aktualizace. Galerie prostředí PowerShell průběžně průběžně přijímá aktualizace. Tento článek je založený na Azure PowerShell verze 2.1.0.
+## <a name="step-2-install-the-latest-version-of-azure-powershell"></a>Krok 2: Instalace nejnovější verze Azure PowerShell
+Existují dvě hlavní možnosti instalace Azure PowerShell: [Galerie prostředí PowerShell](https://www.powershellgallery.com/profiles/azure-sdk/) nebo [instalační program webové platformy (WebPI)](https://aka.ms/webpi-azps). WebPI přijímá měsíční aktualizace. Galerie prostředí PowerShell průběžně průběžně přijímá aktualizace. Tento článek je založený na Azure PowerShell verze 2.1.0.
 
 Pokyny k instalaci najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/overview).
 
 <br>
 
-## <a name="step-3-ensure-that-you-are-an-administrator-for-the-subscription-in-azure-portal"></a>Krok 3: Ujistěte se, že jste správce předplatného v Azure Portal
+## <a name="step-3-ensure-that-you-are-an-administrator-for-the-subscription-in-azure-portal"></a>Krok 3: Ujistěte se, že jste správcem předplatného v Azure Portal
 K provedení této migrace musíte být přidáni jako spolusprávce předplatného v [Azure Portal](https://portal.azure.com).
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
@@ -64,7 +64,7 @@ K provedení této migrace musíte být přidáni jako spolusprávce předplatn�
 
 Pokud nemůžete přidat spolusprávce, kontaktujte správce služby nebo spolusprávce předplatného, aby se mohli přidat.   
 
-## <a name="step-4-set-your-subscription-and-sign-up-for-migration"></a>Krok 4: Nastavte si předplatné a zaregistrujte se do migrace.
+## <a name="step-4-set-your-subscription-and-sign-up-for-migration"></a>Krok 4: nastavte předplatné a zaregistrujte se na migraci
 Nejdřív spusťte příkazový řádek PowerShellu. Pro migraci je potřeba nastavit prostředí pro klasický i Správce prostředků.
 
 Přihlaste se ke svému účtu pro model Správce prostředků.
@@ -88,7 +88,7 @@ Nastavte si předplatné Azure pro aktuální relaci. V tomto příkladu se nast
 > [!NOTE]
 > Registrace je jednorázový krok, ale před pokusem o migraci ji musíte provést sami. Bez registrace se zobrazí následující chybová zpráva:
 >
-> *Důvodu chybného požadavku Předplatné není zaregistrované pro migraci.*
+> *Důvodu chybného požadavku: předplatné není zaregistrované pro migraci.*
 
 Zaregistrujte se zprostředkovatelem prostředků migrace pomocí následujícího příkazu:
 
@@ -102,7 +102,7 @@ Počkejte prosím pět minut, než se registrace dokončí. Stav schválení mů
     Get-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 ```
 
-Před pokračováním se ujistěte `Registered` , že je RegistrationState.
+Před pokračováním se ujistěte, že je RegistrationState `Registered`.
 
 Teď se přihlaste ke svému účtu pro klasický model.
 
@@ -133,7 +133,7 @@ Tento příklad zkontroluje dostupnost v oblasti **západní USA** . Nahraďte n
 Get-AzVMUsage -Location "West US"
 ```
 
-## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>Krok 6: Spuštění příkazů pro migraci prostředků IaaS
+## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>Krok 6: spuštění příkazů pro migraci prostředků IaaS
 * [Migrace virtuálních počítačů v cloudové službě (ne ve virtuální síti)](#step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
 * [Migrace virtuálních počítačů ve virtuální síti](#step-61-option-2---migrate-virtual-machines-in-a-virtual-network)
 * [Migrace účtu úložiště](#step-62-migrate-a-storage-account)
@@ -142,7 +142,7 @@ Get-AzVMUsage -Location "West US"
 > Všechny popsané operace jsou idempotentní. Pokud máte jiný problém než Nepodporovaná funkce nebo Chyba konfigurace, Doporučujeme zopakovat operaci příprava, přerušení nebo potvrzení. Platforma se pak pokusí akci zopakovat.
 
 
-### <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>Krok 6,1: Možnost 1 – migrace virtuálních počítačů v cloudové službě (mimo virtuální síť)
+### <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>Krok 6,1: možnost 1 – migrace virtuálních počítačů v cloudové službě (mimo virtuální síť)
 Seznam cloudových služeb získáte pomocí následujícího příkazu a pak vyberte cloudovou službu, kterou chcete migrovat. Pokud jsou virtuální počítače v cloudové službě ve virtuální síti nebo pokud mají webové role nebo role pracovního procesu, příkaz vrátí chybovou zprávu.
 
 ```powershell
@@ -201,7 +201,7 @@ Připravte virtuální počítače v cloudové službě pro migraci. Máte dvě 
         -VirtualNetworkName $vnetName -SubnetName $subnetName
     ```
 
-Po úspěšném dokončení operace přípravy s některou z předchozích možností se dotazuje na stav migrace virtuálních počítačů. Ujistěte se, že jsou ve `Prepared` stavu.
+Po úspěšném dokončení operace přípravy s některou z předchozích možností se dotazuje na stav migrace virtuálních počítačů. Ujistěte se, že jsou ve stavu `Prepared`.
 
 V tomto příkladu se nastaví název virtuálního počítače na **myVM**. Nahraďte název příkladu vlastním názvem virtuálního počítače.
 
@@ -223,7 +223,7 @@ Pokud je připravená konfigurace dobrá, můžete přesunout prostředky vpřed
     Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName
 ```
 
-### <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>Krok 6,1: Možnost 2 – migrace virtuálních počítačů ve virtuální síti
+### <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>Krok 6,1: možnost 2 – migrace virtuálních počítačů ve virtuální síti
 
 K migraci virtuálních počítačů ve virtuální síti migrujete virtuální síť. Virtuální počítače se automaticky migrují s virtuální sítí. Vyberte virtuální síť, kterou chcete migrovat.
 > [!NOTE]
@@ -231,7 +231,7 @@ K migraci virtuálních počítačů ve virtuální síti migrujete virtuální 
 <br>
 
 > [!NOTE]
-> Název virtuální sítě se může lišit od toho, co se zobrazuje na novém portálu. Nový portál Azure Portal zobrazí název, `[vnet-name]` ale skutečný název virtuální sítě je typu. `Group [resource-group-name] [vnet-name]` Před migrací si vyhledáte skutečný název virtuální sítě pomocí příkazu `Get-AzureVnetSite | Select -Property Name` nebo ho zobrazte na původním portálu Azure Portal. 
+> Název virtuální sítě se může lišit od toho, co se zobrazuje na novém portálu. Nový portál Azure Portal zobrazí název jako `[vnet-name]` ale skutečný název virtuální sítě je typu `Group [resource-group-name] [vnet-name]`. Před migrací vyhledáte skutečný název virtuální sítě pomocí příkazu `Get-AzureVnetSite | Select -Property Name` nebo ho zobrazte na původním portálu Azure Portal. 
 
 V tomto příkladu se nastaví název virtuální sítě na **myVnet**. Nahraďte ukázkový název virtuální sítě vlastním.
 

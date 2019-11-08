@@ -1,6 +1,6 @@
 ---
 title: Azure Backup pro úlohy SQL Server pomocí Azure Backup Server
-description: Úvod k zálohování SQL Server databází pomocí Azure Backup Server
+description: V tomto článku se seznámíte s postupy konfigurace zálohování SQL Server databází pomocí serveru Microsoft Azure Backup (MABS).
 ms.reviewer: kasinh
 author: dcurwin
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: dacurwin
-ms.openlocfilehash: f36560dbaea5b3efe29d38ca750fc732b9281360
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: e1e1c7f30066197c6420956368a09de69e87e466
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969123"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747338"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Zálohování SQL Server do Azure s využitím Azure Backup Server
 
