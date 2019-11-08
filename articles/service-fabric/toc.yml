@@ -487,6 +487,8 @@
                   href: service-fabric-application-secret-management-windows.md
                 - name: Nastavení šifrovacího certifikátu a šifrování tajných kódů v Linuxu
                   href: service-fabric-application-secret-management-linux.md
+                - name: Bezpečné ukládání tajných kódů pomocí KeyVaultReference (Preview)
+                  href: service-fabric-keyvault-references.md
             - name: Konfigurace reverzního proxy serveru pro zabezpečenou komunikaci
               href: service-fabric-reverseproxy-configure-secure-communication.md
             - name: Spuštění skriptu spuštění služby jako místní uživatel nebo systémový účet
