@@ -1,6 +1,6 @@
 ---
 title: Rychlý start Azure – Zálohování virtuálního počítače pomocí webu Azure Portal
-description: Zjistěte, jak zálohovat virtuální počítače pomocí webu Azure Portal.
+description: V tomto rychlém startu se dozvíte, jak vytvořit trezor Recovery Services, povolit ochranu na VIRTUÁLNÍm počítači Azure a zálohovat virtuální počítač s Azure Portal.
 ms.reviewer: saurse
 author: dcurwin
 manager: carmonm
@@ -11,31 +11,33 @@ ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 485273fbde5e54b467210cb5fd47ea432efceb85
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 09154c68ab5cb0c3db3cd3325a4bf37fa33c1144
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210038"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747065"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Zálohování virtuálního počítače v Azure
-Zálohy Azure je možné vytvářet na webu Azure Portal. Tato metoda poskytuje uživatelské rozhraní v prohlížeči, pomocí kterého můžete vytvářet a konfigurovat zálohy Azure a všechny související prostředky. Svá data můžete chránit prováděním záloh v pravidelných intervalech. Azure Backup vytváří body obnovení, které je možné uchovávat v geograficky redundantních trezorech obnovení. Tento článek podrobně popisuje, jak zálohovat virtuální počítač pomocí webu Azure Portal. 
+
+Zálohy Azure je možné vytvářet na webu Azure Portal. Tato metoda poskytuje uživatelské rozhraní v prohlížeči, pomocí kterého můžete vytvářet a konfigurovat zálohy Azure a všechny související prostředky. Svá data můžete chránit prováděním záloh v pravidelných intervalech. Azure Backup vytváří body obnovení, které je možné uchovávat v geograficky redundantních trezorech obnovení. Tento článek podrobně popisuje, jak zálohovat virtuální počítač pomocí webu Azure Portal.
 
 V tomto rychlém startu se povolí zálohování na existujícím virtuálním počítači Azure. Pokud potřebujete vytvořit virtuální počítač, můžete [vytvořit virtuální počítač pomocí webu Azure Portal](../virtual-machines/windows/quick-create-portal.md).
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
+Přihlaste se k Azure Portal v <https://portal.azure.com.>
 
 ## <a name="select-a-vm-to-back-up"></a>Výběr virtuálního počítače k zálohování
-Vytvořte jednoduché plánované denní zálohování do trezoru služby Recovery Services. 
 
-1. V nabídce na levé straně vyberte **Virtuální počítače**. 
+Vytvořte jednoduché plánované denní zálohování do trezoru služby Recovery Services.
+
+1. V nabídce na levé straně vyberte **Virtuální počítače**.
 2. V seznamu zvolte virtuální počítač, který chcete zálohovat. Pokud jste použili ukázkové příkazy z rychlého úvodu k virtuálním počítačům, virtuální počítač má název *myVM* a je ve skupině prostředků *myResourceGroup*.
 3. V části **Operace** zvolte **Zálohování**. Otevře se okno **Povolit zálohování**.
 
-
 ## <a name="enable-backup-on-a-vm"></a>Povolení zálohování na virtuálním počítači
+
 Trezor služby Recovery Services je logický kontejner, který uchovává zálohovaná data pro každý chráněný prostředek, například virtuální počítače Azure. Úloha zálohování pro chráněný prostředek při spuštění vytvoří uvnitř trezoru služby Recovery Services bod obnovení. Pomocí některého z těchto bodů obnovení pak můžete obnovit data k danému bodu v čase.
 
 1. Vyberte **Vytvořit nový** a zadejte název nového trezoru, například *myRecoveryServicesVault*.
@@ -45,14 +47,14 @@ Trezor služby Recovery Services je logický kontejner, který uchovává záloh
 
     Ve výchozím nastavení je trezor nastavený pro geograficky redundantní úložiště. Tato úroveň redundance úložiště vaše data chrání ještě více tím, že zajišťuje replikaci zálohovaných dat do sekundární oblasti Azure, která je od primární oblasti vzdálená stovky kilometrů.
 
-    K definování, kdy se spouští úloha zálohování a jak dlouho se uchovávají body obnovení, vytváříte a používáte zásady. Výchozí zásada ochrany spouští úlohu zálohování každý den a uchovává body obnovení po dobu 30 dnů. Tyto výchozí hodnoty zásady můžete použít k rychlému zajištění ochrany vašeho virtuálního počítače. 
+    K definování, kdy se spouští úloha zálohování a jak dlouho se uchovávají body obnovení, vytváříte a používáte zásady. Výchozí zásada ochrany spouští úlohu zálohování každý den a uchovává body obnovení po dobu 30 dnů. Tyto výchozí hodnoty zásady můžete použít k rychlému zajištění ochrany vašeho virtuálního počítače.
 
 3. Pokud chcete přijmout hodnoty výchozí zásady zálohování, vyberte **Povolit zálohování**.
 
 vytvoření trezoru služby Recovery Services chvíli trvá.
 
-
 ## <a name="start-a-backup-job"></a>Spuštění úlohy zálohování
+
 Zálohování můžete spustit ihned a nečekat na spuštění úlohy výchozí zásadou v naplánovaném čase. Tato první úloha zálohování vytvoří úplný bod obnovení. Každá úloha zálohování po tomto prvotním zálohování vytváří přírůstkové body obnovení. Přírůstkové body obnovení jsou efektivní z hlediska úložiště a času, protože přenášejí pouze změny provedené od posledního zálohování.
 
 1. V okně **Zálohování** pro váš virtuální počítač vyberte **Zálohovat nyní**.
@@ -61,12 +63,12 @@ Zálohování můžete spustit ihned a nečekat na spuštění úlohy výchozí 
 
 2. Pokud chcete přijmout zásadu uchovávání záloh po dobu 30 dnů, ponechte výchozí **Datum, do kterého má být záloha zachována**. Pokud chcete úlohu spustit, vyberte **Zálohovat**.
 
-
 ## <a name="monitor-the-backup-job"></a>Monitorování úlohy zálohování
+
 V okně **Zálohování** pro váš virtuální počítač je zobrazený stav zálohování a počet dokončených bodů obnovení. Po dokončení úlohy zálohování virtuálního počítače se na pravé straně okna **Přehled** zobrazí informace uvádějící **Čas poslední zálohy**, **Poslední bod obnovení** a **Nejstarší bod obnovení**.
 
-
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
+
 Pokud už ochrana virtuálního počítače není potřeba, můžete ji vypnout, odebrat body obnovení a trezor služby Recovery Services a pak odstranit skupinu prostředků a související prostředky virtuálního počítače.
 
 Pokud se chystáte pokračovat ke kurzu služby Backup, který vysvětluje postup obnovení dat virtuálního počítače, přeskočte kroky v této části a přejděte na [Další kroky](#next-steps).
@@ -83,14 +85,14 @@ Pokud se chystáte pokračovat ke kurzu služby Backup, který vysvětluje postu
 
     Jakmile je zálohování virtuálního počítače zastaveno a body obnovení jsou odebrány, můžete odstranit skupinu prostředků. Pokud jste použili existující virtuální počítač, možná budete chtít zachovat skupinu prostředků a virtuální počítač.
 
-5. V nabídce na levé straně vyberte **Skupiny prostředků**. 
+5. V nabídce na levé straně vyberte **Skupiny prostředků**.
 6. V seznamu zvolte vaši skupinu prostředků. Pokud jste použili ukázkové příkazy z rychlého úvodu k virtuálním počítačům, skupina prostředků má název *myResourceGroup*.
 7. Vyberte **Odstranit skupinu prostředků**. Pro potvrzení zadejte název skupiny prostředků a pak vyberte **Odstranit**.
 
     ![Odstranění skupiny prostředků z webu Azure Portal](./media/quick-backup-vm-portal/delete-resource-group.png)
 
-
 ## <a name="next-steps"></a>Další kroky
+
 V tomto rychlém startu jste vytvořili trezor služby Recovery Services, povolili ochranu virtuálního počítače a vytvořili prvotní bod obnovení. Pokud se chcete o službách Azure Backup a Recovery Services dozvědět více, pokračujte ke kurzům.
 
 > [!div class="nextstepaction"]

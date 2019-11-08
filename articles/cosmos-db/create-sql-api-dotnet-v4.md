@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: c927ef071dec6e87e82a9634ccfc7097f2f187e6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 362662cb6ac9b0535a0e762e5c484b31dcc009a6
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502062"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796095"
 ---
 # <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>Rychlý Start: Vytvoření konzolové aplikace pomocí sady .NET V4 SDK pro správu Azure Cosmos DB prostředků účtů rozhraní SQL API.
 
@@ -34,7 +34,9 @@ Databáze Azure Cosmos je databázová služba Microsoftu s více modely použit
 * Vytváření dotazů na data 
 * Odstranění databáze
 
-## <a name="prerequisites"></a>Předpoklady
+Balíček | ho [zdrojového kódu knihovny](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/v4) [(NuGet)](https://www.nuget.org/packages/Azure.Cosmos)
+
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) nebo si můžete [vyzkoušet Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, zdarma a závazků. 
 * [Sada SDK .NET Core 3](https://dotnet.microsoft.com/download/dotnet-core). Spuštěním `dotnet --version`můžete ověřit, která verze je ve vašem prostředí k dispozici.
@@ -120,7 +122,7 @@ Stále v adresáři aplikace nainstalujte Azure Cosmos DB klientskou knihovnu pr
 
 Ukázková aplikace se musí ověřit pro váš účet Azure Cosmos. K ověřování byste měli do aplikace předat přihlašovací údaje účtu Azure Cosmos. Pomocí následujících kroků Získejte přihlašovací údaje k účtu Azure Cosmos:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 1. Přejděte k účtu Azure Cosmos.
 
@@ -132,7 +134,7 @@ Než začnete sestavovat aplikaci, Podívejme se na hierarchii prostředků v Az
 
 * Účet Azure Cosmos 
 * Databáze 
-* Containers 
+* Kontejnery 
 * Items
 
 Další informace o hierarchii různých entit najdete v tématu [práce s databázemi, kontejnery a položkami v Azure Cosmos DB](databases-containers-items.md) článku. K interakci s těmito prostředky použijete následující třídy .NET:

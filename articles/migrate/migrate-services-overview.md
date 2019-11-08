@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: eadfc4e302f4445e8e0d5105aeac4361328cb259
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 8b1e716e482c49ceba0c600aaba30fe276bdb74d
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715451"
+ms.locfileid: "73748000"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
@@ -44,16 +44,16 @@ Kromě nativních nástrojů Azure se Azure Migrate integruje s řadou nabídek 
 
 **ISV** | **Funkce**
 --- | ---
-[Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Migrace
-[Cloudamize](https://www.cloudamize.com/platform) | Posouzení 
-[Technologie spolupronájmu](https://www.corenttech.com/AzureMigrate/) | Posouzení a migrace
-[Zařízení 42](https://docs.device42.com/) | Posouzení
-[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Posouzení
-[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | Migrace
-[Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Posouzení
-[UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Posouzení
+[Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Migrace serverů
+[Cloudamize](https://www.cloudamize.com/platform) | Vyhodnotit servery
+[Technologie spolupronájmu](https://www.corenttech.com/AzureMigrate/) | Posouzení a migrace serverů
+[Zařízení 42](https://docs.device42.com/) | Vyhodnotit servery
+[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Vyhodnotit VDI
+[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | Migrace serverů
+[Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Vyhodnotit servery
+[UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Posouzení serverů a databází
 
-## <a name="tool-integration"></a>Integrace nástrojů
+## <a name="azure-tool-integration"></a>Integrace nástrojů Azure
 
 Tabulka shrnuje jiné nástroje, které jsou integrované v Azure Migrate.
 
@@ -112,7 +112,7 @@ Azure Migrate se integruje s Azure Database Migration Service (DMS) pro migraci 
 ## <a name="movere"></a>Movere
 
  
-Pracovní oddělení je SaaS platforma, která zvyšuje business intelligence tím, že v jednom dni přesně prezentuje celé IT prostředí. Vzhledem k tomu, že organizace rozšiřují, mění a digitálně optimalizují, poskytuje řešení podnikům jistotu, že potřebují mít přehled o svých prostředích, a to bez ohledu na platformu, aplikaci nebo zeměpisnou verzi. Společnost Microsoft [získala](https:/azure.microsoft.com/blog/microsoft-acquires-movere-to-help-customers-unlock-cloud-innovation-with-seamless-migration-tools) stěhovací společnost a už se neprodává jako samostatná nabídka.  K dispozici je stěhovací společnost prostřednictvím hodnocení řešení Microsoftu a programů Cloud ekonomie. [Přečtěte si další informace](https://www.movere.io) o stěhovací společnosti. Pokud máte nějaké dotazy, odešlete je na: movereq@microsoft.com nebo kontaktujte zástupce společnosti Microsoft.
+Pracovní oddělení je SaaS platforma, která zvyšuje business intelligence tím, že v jednom dni přesně prezentuje celé IT prostředí. Vzhledem k tomu, že organizace rozšiřují, mění a digitálně optimalizují, poskytuje řešení podnikům jistotu, že potřebují mít přehled o svých prostředích, a to bez ohledu na platformu, aplikaci nebo zeměpisnou verzi. Společnost Microsoft [získala](https://azure.microsoft.com/blog/microsoft-acquires-movere-to-help-customers-unlock-cloud-innovation-with-seamless-migration-tools/) stěhovací společnost a už se neprodává jako samostatná nabídka.  K dispozici je stěhovací společnost prostřednictvím hodnocení řešení Microsoftu a programů Cloud ekonomie. [Přečtěte si další informace](https://www.movere.io) o stěhovací společnosti. Pokud máte nějaké dotazy, odešlete je na: movereq@microsoft.com nebo kontaktujte zástupce společnosti Microsoft.
 
 Doporučujeme také podívat se na Azure Migrate, naši integrovanou službu migrace. Azure Migrate poskytuje centrální centrum pro zjednodušení migrace do cloudu. Centrum poskytuje komplexní podporu pro různé úlohy, včetně fyzických a virtuálních serverů, databází a aplikací. Koncová viditelnost usnadňuje sledování průběhu během zjišťování, posuzování a migrace. Díky integrovanému softwaru pro Azure i partnerským výrobcům ISV má Azure Migrate také rozsáhlou škálu funkcí, včetně zjišťování virtuálních a fyzických serverů, správného určení velikosti, plánování nákladů, vyhodnocení na základě importu a aplikace bez agentů. Analýza závislostí. Pokud hledáte odbornou pomoc, jak začít, společnost Microsoft má odborného [poskytovatele spravované služby pro Azure experta](https://azure.microsoft.com/partners) , který vám pomůže na cestě. Podívejte se na [web Azure Migrate](https://azure.microsoft.com/services/azure-migrate/). 
  
