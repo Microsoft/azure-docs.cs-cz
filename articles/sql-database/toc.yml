@@ -361,7 +361,7 @@
               href: /azure/connectors/connectors-create-api-sqlazure?toc=/azure/sql-database/toc.json
             - name: Použití konektoru Spark
               href: sql-database-spark-connector.md
-            - name: Indexování s využitím služby Azure Search
+            - name: Index s využitím kognitivního hledání Azure
               href: /azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers?toc=/azure/sql-database/toc.json
             - name: Konfigurace zásad dočasného uchovávání informací
               href: sql-database-temporal-tables-retention-policy.md

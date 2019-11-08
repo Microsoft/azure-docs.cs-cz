@@ -1,0 +1,53 @@
+### YamlMime:Hub
+title: Dokumentace Odvětví pro Azure
+summary: Naučte se používat Azure k vytváření řešení pro běžné případy použití v jednotlivých odvětvích.
+brand: azure
+metadata:
+  title: Dokumentace Odvětví pro Azure
+  description: Naučte se používat Azure k vytváření řešení pro běžné případy použití v jednotlivých odvětvích.
+  ms.service: azure-industry
+  ms.topic: hub-page
+  ms.collection: collection
+  author: DCtheGeek
+  ms.author: dacoulte
+  ms.date: 11/04/2019
+  ms.openlocfilehash: 2777093db7486f17cf19b45db08bbd0168a4e2a8
+  ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 11/07/2019
+  ms.locfileid: "73797070"
+highlightedContent:
+  items:
+  - title: Azure FarmBeats
+    itemType: overview
+    url: ./agriculture/overview.md
+  - title: Fórum komunity
+    itemType: concept
+    url: https://aka.ms/FarmBeatsMSDN
+  - title: UserVoice (názory)
+    itemType: get-started
+    url: https://aka.ms/FarmBeatsForum
+productDirectory:
+  title: Oblasti řešení pro jednotlivá odvětví
+  items:
+  - title: Azure FarmBeats
+    imageSrc: ../media/index/industry-agriculture-farmbeats.svg
+    summary: Rychlé sestavování digitálních řešení pro zemědělství v cloudu
+    url: ./agriculture/overview.md
+  - title: Finanční služby
+    imageSrc: ../media/index/industry-financial.png
+    summary: Řešení a případy použití pro odvětví finančních služeb
+    url: /azure/industry-marketing/financial/
+  - title: Zdravotnictví a lékařské technologie
+    imageSrc: ../media/index/industry-health.png
+    summary: Řešení a případy použití pro odvětví zdravotnictví a lékařských technologií
+    url: /azure/industry-marketing/health/
+  - title: Výroba
+    imageSrc: ../media/index/industry-manufacturing.png
+    summary: Řešení a případy použití pro odvětví výroby
+    url: /azure/industry-marketing/manufacturing/
+  - title: Maloobchod
+    imageSrc: ../media/index/industry-retail.png
+    summary: Řešení a případy použití pro odvětví maloobchodu
+    url: /azure/industry-marketing/retail/

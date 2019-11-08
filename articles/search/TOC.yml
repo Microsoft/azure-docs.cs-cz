@@ -119,7 +119,7 @@
           href: search-security-trimming-for-azure-search.md
         - name: Filtry na identity AAD
           href: search-security-trimming-for-azure-search-with-aad.md
-        - name: Správa šifrovacích klíčů (Preview)
+        - name: Správa šifrovacích klíčů
           href: search-security-manage-encryption-keys.md
     - name: Vývoj
       items:
@@ -253,7 +253,7 @@
           href: cognitive-search-concept-troubleshooting.md
         - name: Odkazy na dokumentaci
           href: cognitive-search-resources-documentation.md
-        - name: Knowledge Store (Preview)
+        - name: Knowledge Store
           items:
             - name: Vytvoření s využitím architektury REST a Postman
               href: knowledge-store-create-rest.md
@@ -277,7 +277,7 @@
           href: query-simple-syntax.md
         - name: Úplná syntaxe dotazů Lucene
           href: query-lucene-syntax.md
-        - name: moreLikeThis (Preview)
+        - name: Parametr dotazů moreLikeThis
           href: search-more-like-this.md
     - name: Použití filtrů
       items:

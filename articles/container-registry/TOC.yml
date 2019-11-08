@@ -39,7 +39,7 @@
           href: container-registry-tutorial-deploy-update.md
 - name: Koncepty
   items:
-    - name: Skladové položky služby Container Registry
+    - name: Omezení a skladové položky služby Container Registry
       href: container-registry-skus.md
     - name: 'Registry, úložiště a image'
       href: container-registry-concepts.md
@@ -75,8 +75,6 @@
               href: container-registry-retention-policy.md
             - name: Automatické vymazání značek a manifestů (Preview)
               href: container-registry-auto-purge.md
-        - name: Upgrade registru Classic
-          href: container-registry-upgrade.md
         - name: Použití webhooků ACR
           href: container-registry-webhook.md
         - name: Úložiště grafů Helmu (Preview)

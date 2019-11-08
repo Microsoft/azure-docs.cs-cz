@@ -107,6 +107,8 @@
           href: sql-reference-data.md
         - name: Ověřování pomocí spravované identity – výstup objektů blob
           href: blob-output-managed-identity.md
+        - name: Ověřování pomocí spravované identity – Power BI
+          href: powerbi-output-managed-identity.md
     - name: Vytváření řešení
       items:
         - name: Analýza subjektivního hodnocení na Twitteru

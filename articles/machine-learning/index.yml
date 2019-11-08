@@ -2,7 +2,7 @@
 title: Dokumentace ke službě Azure Machine Learning
 summary: Azure Machine Learning nabízí webová rozhraní a sady SDK umožňující rychle trénovat a nasazovat kanály a modely strojového učení ve velkém měřítku. K těmto funkcím můžete přistupovat z opensourcových architektur Pythonu, jako jsou PyTorch, TensorFlow a scikit-learn.
 metadata:
-  title: Dokumentace ke službě Machine Learning – Azure
+  title: Dokumentace ke službě Azure Machine Learning
   description: Azure Machine Learning nabízí webová rozhraní a sady SDK umožňující rychle trénovat a nasazovat kanály a modely strojového učení ve velkém měřítku. K těmto funkcím můžete přistupovat z opensourcových architektur Pythonu, jako jsou PyTorch, TensorFlow a scikit-learn.
   services: machine-learning
   ms.service: machine-learning
@@ -12,12 +12,12 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 10/29/2019
-  ms.openlocfilehash: 3459782fc0cad6767889d7377fcbfeaf00e99b1e
-  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.openlocfilehash: c6b0b67f206ec335a5e30098dd75b7e71db5770f
+  ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73580647"
+  ms.lasthandoff: 11/08/2019
+  ms.locfileid: "73828119"
 landingContent:
 - title: Začínáme s Azure ML
   linkLists:
@@ -97,7 +97,9 @@ landingContent:
       url: service/how-to-consume-web-service.md
     - text: Dávkové předpovědi
       url: service/how-to-run-batch-predictions.md
-- title: Procházení referenčních dokumentů
+    - text: Komplexní příklady (GitHub)
+      url: https://github.com/microsoft/MLOps
+- title: Přejít k referenčním dokumentům
   linkLists:
   - linkListType: reference
     links:
@@ -109,3 +111,7 @@ landingContent:
       url: https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest
     - text: Moduly a algoritmy designeru
       url: algorithm-module-reference/module-reference.md
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/azureml/
+    - text: Referenční architektury AI (GitHub)
+      url: https://github.com/Microsoft/AI

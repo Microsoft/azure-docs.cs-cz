@@ -58,11 +58,13 @@
       href: tutorial-train-deploy-model-cli.md
 - name: Ukázky
   items:
-    - name: Notebooks
+    - name: Poznámkové bloky Jupyter
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
     - name: Otevřené datové sady Azure
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
+    - name: Kompletní příklady MLOps
+      href: 'https://github.com/microsoft/MLOps'
 - name: Koncepty
   items:
     - name: Pracovní prostor
@@ -109,14 +111,11 @@
               href: how-to-change-storage-access-key.md
         - name: Monitorování Azure Machine Learningu
           href: monitor-azure-machine-learning.md
+        - name: Integrace Event Gridu
+          href: concept-event-grid-integration.md
     - name: Hloubkové učení
       displayName: 'deep learning vs machine learning, deep learning, vs, versus'
       href: concept-deep-learning-vs-machine-learning.md
-    - name: Integrace Event Gridu
-      href: concept-event-grid-integration.md
-    - name: Integrace Gitu
-      displayName: git github gitlab
-      href: concept-train-model-git-integration.md
 - name: Návody
   items:
     - name: Vytváření a správa pracovních prostorů
@@ -145,6 +144,9 @@
         - name: Použití rozšíření VS Code
           displayName: 'Visual Studio Code, VSCode, tools, ai, vs'
           href: how-to-vscode-tools.md
+        - name: Integrace Gitu
+          displayName: github gitlab
+          href: concept-train-model-git-integration.md
     - name: Práce s daty
       items:
         - name: Získání dat z úložiště dat
@@ -330,21 +332,17 @@
       href: how-to-use-event-grid.md
 - name: Referenční informace
   items:
-    - name: ML SDK (Python)
+    - name: Python SDK
       displayName: 'api, core, package, python, class'
       href: 'https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py'
-    - name: ML SDK (R)
+    - name: R SDK
       displayName: 'api, core, package, R, class'
       href: 'https://azure.github.io/azureml-sdk-for-r/reference/index.html'
-    - name: Machine Learning CLI
+    - name: Rozhraní příkazového řádku
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/azureml/'
-    - name: Monitorování odkazů na data
-      href: monitor-resource-reference.md
-    - name: Reference YAML ke kanálu strojového učení
-      href: reference-pipeline-yaml.md
     - name: Moduly designeru
       displayName: 'module, reference, algorithm, studio'
       items:
@@ -478,6 +476,12 @@
               href: ../algorithm-module-reference/summarize-data.md
         - name: Chybové zprávy a kódy
           href: ../algorithm-module-reference/machine-learning-module-error-codes.md
+    - name: ML ve velkém měřítku
+      href: /azure/architecture/data-guide/big-data/machine-learning-at-scale
+    - name: Monitorování odkazů na data
+      href: monitor-resource-reference.md
+    - name: Reference YAML ke kanálu strojového učení
+      href: reference-pipeline-yaml.md
 - name: Zdroje a prostředky
   items:
     - name: "Poznámky k\_verzi"
