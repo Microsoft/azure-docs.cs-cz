@@ -1,40 +1,41 @@
 ---
-title: Karta nabízejí nastavení virtuálního počítače na portálu partnerů cloudu pro Azure Marketplace
-description: Popisuje na kartě nabídky nastavení použité při vytváření virtuálního počítače Azure Marketplace nabídku.
+title: Karta nastavení nabídky virtuálního počítače v portál partnerů cloudu pro Azure Marketplace
+description: Popisuje kartu nastavení nabídky, která se používá při vytváření nabídky virtuálních počítačů s Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal, virtual machine
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: d361b6b8b08f9556cd57215ebdf82c1bf69d372d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6f7b90f6b02999869026db24836091233692143c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938159"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824445"
 ---
-# <a name="virtual-machine-offer-settings-tab"></a>Karta nabízejí nastavení virtuálního počítače
+# <a name="virtual-machine-offer-settings-tab"></a>Karta nastavení nabídky virtuálního počítače
 
-**Nová nabídka** otevře se stránka pro virtuální počítače na první kartě s názvem **nabízejí nastavení**.  
+**Nová stránka nabídky** pro virtuální počítače se otevře na první kartě s názvem **Nabídka nastavení**.  
 
-![Nová stránka nabídky virtuálních počítačů](./media/publishvm_004.png)
+![Nová stránka nabídky pro virtuální počítače](./media/publishvm_004.png)
 
 
-## <a name="offer-settings-fields"></a>Nabídka nastavení pole
+## <a name="offer-settings-fields"></a>Pole nastavení nabídky
 
-V **nabízejí nastavení** kartu, je nutné zadat následující pole.  Připojený hvězdička (*) na název pole označuje, že je povinný. 
+Na kartě **nastavení nabídky** musíte zadat následující pole.  Připojená hvězdička (*) v názvu pole označuje, že je požadovaná. 
 
 |  **Pole**       |     **Popis**                                                          |
 |  ---------       |     ---------------                                                          |
-| **ID nabídky\***   | Jedinečný identifikátor (v rámci profilu vydavatele) pro tuto nabídku. Tento identifikátor se nebude zobrazovat v adresách URL produktu, šablon Azure Resource Manageru, a oznámí fakturace. To má maximální délku než 50 znaků, lze pouze obsahovat malé alfanumerické znaky a pomlčky (-), ale nesmí končit spojovníkem. Toto pole nelze změnit po ukončení nabídky za provozu. <br> Například pokud Contoso publikuje nabídka s ID nabídky **ukázkový virtuální počítač**, je přiřazena adresa URL Azure Marketplace `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-vm?tab=Overview` . |
-| **Publisher\***  | Jedinečný identifikátor vaší organizace na webu Azure Marketplace. Všechny nabídky by měly být přidruženy s vaším ID vydavatele. Tuto hodnotu nelze změnit po uložení nabídky. |
-| **Název\***       | Zobrazovaný název nabídky. Tento název se zobrazí na webu Azure Marketplace a na portál Cloud Partner. Může mít maximálně 50 znaků. Pokyny v tomto poli se zahrnou rozpoznat název značky pro tento produkt. Pokud to je, jak je na trh, nezahrnujte název vaší organizace. Pokud jsou marketing této nabídky do jiných webových stránek a publikace, ujistěte se, že název je ve všech publikacích přesně stejné. |
+| **ID nabídky\***   | Jedinečný identifikátor (v rámci profilu vydavatele) pro nabídku. Tento identifikátor bude viditelný v adresách URL produktů, Azure Resource Manager šablonách a fakturačních sestavách. Maximální délka je 50 znaků, může se skládat jenom z malých alfanumerických znaků a spojovníků (-), ale nemůže končit pomlčkou. Po živé nabídce nelze toto pole změnit. <br> Pokud například contoso zveřejňuje nabídku s ID nabídky **Sample-VM**, přiřadí se Azure Marketplace adresa URL `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-vm?tab=Overview`. |
+| **\* vydavatele**  | Jedinečný identifikátor vaší organizace v Azure Marketplace. Všechny vaše nabídky by se měly přidružit k vašemu vydavateli s vaším ID. Tuto hodnotu nelze změnit, jakmile se nabídka uloží. |
+| **Název\***       | Zobrazovaný název vaší nabídky Tento název se zobrazí v Azure Marketplace a v portál partnerů cloudu. Může mít maximálně 50 znaků. Tady je návod, jak pro svůj produkt zahrnout rozpoznatelný název značky. Sem nezahrnujte název vaší organizace, pokud to nezpůsobuje uvedení na trh. Pokud tuto nabídku zadáte na jiné weby a publikace, ujistěte se, že je název přesně stejný ve všech publikacích. |
 |   |   |
  
-Klikněte na tlačítko **Uložit** poté, co jste zadali všechna pole. 
+Po zadání všech polí klikněte na **Uložit** . 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Na další kartě přidáte [SKU](./cpp-skus-tab.md) pro vaši nabídku.
+Na další kartě přidáte [SKU](./cpp-skus-tab.md) do vaší nabídky.

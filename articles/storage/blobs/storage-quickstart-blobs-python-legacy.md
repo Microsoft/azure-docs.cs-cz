@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: vytvoření objektu BLOB v úložišti objektů BLOB v Azure pomocí Pythonu'
-description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště pro Python k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
+title: 'Rychlý Start: Klientská knihovna služby Azure Blob Storage v 2.1 pro Python'
+description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště v 2.1 pro Python k nahrání objektu BLOB pro Azure Storage, stažení objektu BLOB a výpisu objektů BLOB v kontejneru.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 09/11/2019
@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 8a3f8b5f8944552c92ac5a1c1d5fb2eabffad2c9
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 606c7d1fd012052a22afeef906bbe9df4c63a76b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608740"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825285"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-in-azure-blob-storage-with-python"></a>Rychlý Start: nahrání, stažení a výpis objektů BLOB v úložišti objektů BLOB v Azure pomocí Pythonu
+# <a name="quickstart-azure-blob-storage-client-library-v21-for-python"></a>Rychlý Start: Klientská knihovna služby Azure Blob Storage v 2.1 pro Python
 
 V tomto článku můžete pomocí Pythonu nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů BLOB v Azure. Objekty blob jsou jednoduše objekty, které mohou obsahovat velké objemy textových nebo binárních dat, včetně obrázků, dokumentů, datových proudů médií a dat archivu. Objekty BLOB v Azure Storage se liší od sdílených složek, tabulek bez schématu a front zpráv.  Další informace najdete v tématu [Úvod do Azure Storage](/azure/storage/common/storage-introduction).
 
@@ -97,8 +97,8 @@ Vzorový program vytvoří testovací soubor ve složce *dokumenty* , nahraje so
 
 1. Než budete pokračovat, přejděte do složky *dokumenty* a vyhledejte dva soubory.
 
-    * *QuickStart_\<univerzálně jedinečným identifikátorem\>*
-    * *QuickStart_\<Universal-Unique-identifikátor\>_DOWNLOADED*
+    * *QuickStart_\<univerzálně jedinečný identifikátor\>*
+    * *QuickStart_\<univerzálně jedinečný identifikátor\>_DOWNLOADED*
 
 1. Můžete je otevřít a podívat se, že jsou stejné.
 
@@ -145,7 +145,7 @@ Jakmile budete mít CloudBlobContainer, vytvořte instanci objektu **CloudBlockB
 
 Pokud chcete nahrát soubor do objektu blob, získejte úplnou cestu k souboru spojením názvu adresáře a názvu souboru na místním disku. Pak můžete soubor nahrát do zadané cesty pomocí metody `create_blob_from_path`. 
 
-Vzorový kód vytvoří místní soubor, který systém používá k nahrání a stažení, a uloží soubor, který systém nahraje jako *full_path_to_file* a název objektu BLOB jako *local_file_name*. Tento příklad nahraje soubor do vašeho kontejneru s názvem `quickstartblobs`:
+Vzorový kód vytvoří místní soubor, který systém používá k nahrání a stažení, a uloží soubor, který systém nahraje jako *full_path_to_file* a název objektu blob jako *local_file_name*. Tento příklad nahraje soubor do vašeho kontejneru s názvem `quickstartblobs`:
 
 ```python
 # Create a file in Documents to test the upload and download.

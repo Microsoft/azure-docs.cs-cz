@@ -1,5 +1,5 @@
 ---
-title: Začínáme s mezidatabázovými dotazy (vertikální dělení)
+title: Začínáme s mezidatabázovými dotazy
 description: Jak používat dotaz na elastickou databázi s vertikálně rozdělenými databázemi
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: b6d9ba0c57850c61626d7b6d99fcb1fffc2d3c25
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: af93035766eaf1afa12d124b8379ee55c5567260
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690400"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823798"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Začínáme s mezidatabázovými dotazy (vertikální dělení) (Preview)
 

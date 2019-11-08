@@ -1,5 +1,5 @@
 ---
-title: Konektor Spark s Azure SQL Database a SQL Server | Microsoft Docs
+title: Konektor Spark s Azure SQL Database a SQL Server
 description: Naučte se používat konektor Spark pro Azure SQL Database a SQL Server
 services: sql-database
 ms.service: sql-database
@@ -11,29 +11,29 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: efa31e72811b83c00c1b2ee4a5d1a42fc7089630
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d398019b62078da6943cb98cbafc3ac39640513f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163169"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820878"
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-spark-connector-for-azure-sql-database-and-sql-server"></a>Urychlení analýzy velkých objemů dat v reálném čase pomocí konektoru Spark pro Azure SQL Database a SQL Server
 
 Konektor Spark pro Azure SQL Database a SQL Server umožňuje, aby databáze SQL, včetně Azure SQL Database a SQL Server, sloužily jako vstupní zdroj dat nebo jímka výstupních dat pro úlohy Spark. Umožňuje využívat transakční data v reálném čase s analýzou velkých objemů dat a uchovávat výsledky pro dotazy a vytváření sestav v režimu ad hoc. V porovnání s integrovaným konektorem JDBC poskytuje tento konektor možnost hromadného vkládání dat do databází SQL. Může překoná řádek po vložení řádku s 10x, aby 20krát rychlejší výkon. Konektor Spark pro Azure SQL Database a SQL Server také podporuje ověřování AAD. Umožňuje zabezpečené připojení k databázi SQL Azure z Azure Databricks pomocí svého účtu AAD. Poskytuje podobná rozhraní s integrovaným konektorem JDBC. K použití tohoto nového konektoru je snadné migrovat stávající úlohy Sparku.
 
-## <a name="download"></a>Ke stažení
+## <a name="download"></a>Stáhnout
 Začněte tím, že si stáhnete konektor Spark do SQL DB z [úložiště Azure-SQLDB-Spark](https://github.com/Azure/azure-sqldb-spark) na GitHubu.
 
 ## <a name="official-supported-versions"></a>Oficiální podporované verze
 
-| Součást                            |Version                  |
+| Komponenta                            |Verze                  |
 | :----------------------------------- | :---------------------- |
 | Apache Spark                         |2.0.2 nebo novější           |
 | Scala                                |2,10 nebo novější            |
 | Ovladač Microsoft JDBC pro SQL Server |6,2 nebo novější             |
 | Microsoft SQL Server                 |SQL Server 2008 nebo novější |
-| Azure SQL Database                   |Podporováno                |
+| Azure SQL Database                   |Podporuje se                |
 
 Konektor Spark pro Azure SQL Database a SQL Server využívá ovladač Microsoft JDBC pro SQL Server přesun dat mezi uzly Spark Worker a databáze SQL:
  

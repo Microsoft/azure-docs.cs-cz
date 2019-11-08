@@ -1,6 +1,6 @@
 ---
 title: Přidání skutečného zařízení do aplikace Azure IoT Central | Microsoft Docs
-description: Jako operátor přidejte skutečné zařízení do aplikace Azure IoT Central.
+description: Naučte se, jak přidat a nakonfigurovat reálné zařízení v aplikaci Azure IoT Central. Můžete si také přečíst kód na skutečném zařízení.
 author: sandeeppujar
 ms.author: sandeepu
 ms.date: 08/23/2019
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 1f7afde7a5c4f3553cde40e4b179d056b8caee9b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fce5be4d059d7b3698f1e76a4ec6ff46c4ce3c0b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956205"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824610"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Kurz: Přidání skutečného zařízení do aplikace Azure IoT Central
 
@@ -33,10 +33,10 @@ V tomto kurzu se naučíte:
 > * Přidat nové skutečné zařízení
 > * Nakonfigurovat skutečné zařízení
 > * Získat připojovací řetězec pro skutečné zařízení z aplikace
-> * Porozumět, jak se klientský kód mapuje k aplikaci
+> * Jak se klientský kód mapuje k aplikaci
 > * Konfigurace klientského kódu pro skutečné zařízení
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předtím, než začnete, je potřeba, aby tvůrce vytvořil aplikaci Azure IoT Central v prvním kurzu sestavování: [Definujte nový typ zařízení](tutorial-define-device-type.md) (povinné).
 
@@ -120,7 +120,7 @@ Následující postup popisuje, jak připravit ukázku [Node.js](https://nodejs.
 
 1. V textovém editoru vytvořte soubor s názvem **ConnectedAirConditioner.js** ve složce `connectedairconditioner`.
 
-1. Na začátek souboru **ConnectedAirConditioner.js** přidejte následující příkazy `require`:
+1. Na začátek souboru `require`ConnectedAirConditioner.js**přidejte následující příkazy**:
 
     ```javascript
     'use strict';
@@ -133,7 +133,7 @@ Následující postup popisuje, jak připravit ukázku [Node.js](https://nodejs.
     var ProvisioningDeviceClient = require('azure-iot-provisioning-device').ProvisioningDeviceClient;
     ```
 
-1. Do souboru přidejte následující deklarace proměnných. Nahraďte zástupné symboly `{your Scope ID}`, `{your Device ID}` a `{your Primary Key}` informacemi o připojení zařízení, které jste si dříve poznamenali:
+1. Do souboru přidejte následující deklarace proměnných. Nahraďte zástupné symboly `{your Scope ID}`, `{your Device ID}`a `{your Primary Key}` informacemi o připojení zařízení, které jste si dříve poznamenali:
 
     ```javascript
     var provisioningHost = 'global.azure-devices-provisioning.net';
@@ -350,7 +350,7 @@ V tomto kurzu jste se naučili:
 > * Přidat nové skutečné zařízení
 > * Nakonfigurovat nové zařízení
 > * Získat připojovací řetězec pro skutečné zařízení z aplikace
-> * Porozumět, jak se klientský kód mapuje k aplikaci
+> * Jak se klientský kód mapuje k aplikaci
 > * Konfigurace klientského kódu pro skutečné zařízení
 
 Teď, když jste připojili reálné zařízení k aplikaci Azure IoT Central, tady je několik navrhovaných dalších kroků.

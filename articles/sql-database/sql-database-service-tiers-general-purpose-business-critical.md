@@ -1,5 +1,5 @@
 ---
-title: 'Azure SQL Database – obecný účel a důležité pro podnikání '
+title: Ggeneral účel a důležité pro podnikání
 description: Článek popisuje úrovně služeb pro obecné účely a důležité pro firmy v rámci nákupního modelu založeného na vCore.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 10/01/2019
-ms.openlocfilehash: c6af083c4b3d16fa695da0ccc968c90b5480b6c4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 85b610969f9e5e85d014f89b90cfd862731aaf0c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687269"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821080"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL Database úrovní služeb
 

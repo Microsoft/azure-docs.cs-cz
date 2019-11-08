@@ -7,13 +7,13 @@ ms.service: logic-apps
 ms.topic: include
 ms.author: estfan
 ms.custom: include file
-ms.date: 05/15/2018
-ms.openlocfilehash: d60d7727e0674298fa6da7e7330221318da23efd
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.date: 11/08/2019
+ms.openlocfilehash: 0be29f6f541aa58e57eb665ebaf29e35f42865e4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161619"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826322"
 ---
 * Pokud používáte Azure SQL Database, postupujte podle pokynů v části [připojení k Azure SQL Database](#connect-azure-sql-db).
 
@@ -44,7 +44,9 @@ Když se aktivační procedura nebo akce SQL vyzve k zadání informací o přip
 
 ### <a name="connect-to-sql-server"></a>Připojení k SQL Serveru
 
-Když se aktivační procedura nebo akce SQL vyzve k zadání informací o připojení, postupujte podle těchto kroků, které fungují pro aktivační události a akce. Než začnete, ujistěte se, že jste už [nastavili místní bránu dat](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection). V opačném případě se brána při vytváření připojení nezobrazí v seznamu bran.
+Když se aktivační procedura nebo akce SQL vyzve k zadání informací o připojení, postupujte podle těchto kroků, které fungují pro aktivační události a akce. Pro scénáře, které vyžadují, abyste nainstalovali místní [bránu dat](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-install) na místním počítači a [vytvořili prostředek služby Azure Data Gateway](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection), ujistěte se, že jste nejdřív dokončili tyto požadavky. V opačném případě se prostředek brány nezobrazí v seznamu bran při vytváření připojení.
+
+Pokud chcete používat ověřování systému Windows s konektorem SQL Server v [prostředí ISE (Integration Service Environment)](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment-overview), použijte neISE verzi konektoru a místní bránu dat. Verze ISE s popiskem nepodporuje ověřování systému Windows.
 
 1. Pro **název připojení**vytvořte název pro vaše připojení.
 

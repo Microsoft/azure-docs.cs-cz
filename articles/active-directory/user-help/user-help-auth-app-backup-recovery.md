@@ -1,5 +1,5 @@
 ---
-title: Zálohování a obnovení pomocí aplikace Microsoft Authenticator App-Azure Active Directory | Microsoft Docs
+title: Zálohování a obnovení pomocí aplikace Microsoft Authenticator – Azure AD
 description: Naučte se zálohovat a obnovovat přihlašovací údaje k účtu pomocí aplikace Microsoft Authenticator.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 08/22/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b4e45fbe6533832765e90e5cf244f0dcbcf0b72
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 2404dd443c1e3ede1d3ad5a81888e9f805edb810
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035127"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820265"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Zálohování a obnovení přihlašovacích údajů k účtu pomocí aplikace Microsoft Authenticator
 
@@ -52,7 +52,7 @@ Než budete moct zálohovat přihlašovací údaje, musíte mít:
 
 ### <a name="to-turn-on-cloud-backup-for-android-devices"></a>Zapnutí zálohování cloudu pro zařízení s Androidem
 
-- Na zařízení s Androidem vyberte **Nastavení**, vyberte **zálohování**a pak zapněte **zálohování**do cloudu.
+- Na zařízení s Androidem vyberte **Nastavení**, vyberte **zálohování**a pak zapněte **zálohování do cloudu**.
 
     Přihlašovací údaje k účtu se zálohují do svého cloudového účtu.
 
@@ -86,7 +86,7 @@ U osobních účtů Microsoft můžete svou identitu prokázat zadáním hesla s
 
     ![Aplikace Microsoft Authenticator, kde se zobrazují dostupné účty s příslušnými šipkami rozevíracího seznamu](./media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png)
 
-2. Vyberte **Přihlásit se**a obnovte, zadejte heslo a potvrďte svou e-mailovou adresu nebo telefonní číslo jako další ověření.
+2. Vyberte **Přihlásit se a obnovte**, zadejte heslo a potvrďte svou e-mailovou adresu nebo telefonní číslo jako další ověření.
 
     ![Microsoft Authenticator aplikaci, která vám umožní zadat přihlašovací údaje](./media/user-help-auth-app-backup-recovery/backup-and-recovery-sign-in.png)
 
@@ -121,7 +121,7 @@ K dispozici je několik důvodů, proč vaše zálohování nemusí být k dispo
 
 - **Záloha je zastaralá.** Pokud jsou informace o zálohování zastaralé, může být požádáno o aktualizaci informací opětovným přihlášením k účtu Microsoft Recovery. Váš účet pro obnovení je osobní účet Microsoft původně jste použili k uložení zálohy. Pokud se vyžaduje přihlášení, zobrazí se v nabídce nebo na panelu akcí červená tečka. Po výběru červené tečky se zobrazí výzva, abyste se znovu přihlásili a aktualizovali vaše informace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste zálohovali a obnovili přihlašovací údaje účtu na nové zařízení, můžete k ověření vaší identity použít aplikaci Microsoft Authenticator. Další informace najdete v tématu [přihlášení ke svým účtům pomocí aplikace Microsoft Authenticator](user-help-sign-in.md).
 

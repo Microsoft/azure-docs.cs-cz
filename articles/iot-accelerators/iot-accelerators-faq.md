@@ -1,6 +1,6 @@
 ---
-title: Akcelerátory řešení IoT – nejčastější dotazy – Azure | Dokumentace Microsoftu
-description: Nejčastější dotazy k akcelerátorům řešení IoT
+title: Nejčastější dotazy k akcelerátorům řešení IoT – Azure | Microsoft Docs
+description: Tento článek obsahuje odpovědi na nejčastější dotazy k akcelerátorům řešení IoT. Obsahuje odkazy na úložiště GitHub.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,106 +8,106 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: b2f08e811217572e09a254e9ab3306ab954b14b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b448099dab0e79dca38310396896be46cf2e0ff6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61447947"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826253"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Nejčastější dotazy k akcelerátorům řešení IoT
 
-Viz také [propojená specifické pro objekt pro vytváření – nejčastější dotazy](iot-accelerators-faq-cf.md) a [vzdálené – nejčastější dotazy pro monitorování specifických](iot-accelerators-faq-rm-v2.md) .
+Přečtěte si také nejčastější dotazy [k připojeným objektům pro konkrétní továrnu](iot-accelerators-faq-cf.md) a [vzdálené monitorování](iot-accelerators-faq-rm-v2.md) .
 
-### <a name="where-can-i-find-the-source-code-for-the-solution-accelerators"></a>Kde lze najít zdrojový kód pro akcelerátory řešení?
+### <a name="where-can-i-find-the-source-code-for-the-solution-accelerators"></a>Kde najdu zdrojový kód pro akcelerátory řešení?
 
-Zdrojový kód je uložena v následujícím úložišti GitHub:
+Zdrojový kód je uložený v následujících úložištích GitHub:
 
-* [Akcelerátor řešení vzdálené monitorování (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
-* [Akcelerátor řešení vzdálené monitorování (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
-* [Akcelerátor řešení prediktivní údržby](https://github.com/Azure/azure-iot-predictive-maintenance)
-* [Akcelerátor řešení propojené továrny](https://github.com/Azure/azure-iot-connected-factory)
+* [Akcelerátor řešení pro vzdálené sledování (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
+* [Akcelerátor řešení pro vzdálené sledování (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
+* [Akcelerátor řešení pro prediktivní údržbu](https://github.com/Azure/azure-iot-predictive-maintenance)
+* [Akcelerátor řešení pro připojenou továrnu](https://github.com/Azure/azure-iot-connected-factory)
 
-### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>Jaké sady SDK můžete použít k vývoji klientů zařízení pro akcelerátory řešení?
+### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>Jaké sady SDK můžu používat k vývoji klientů zařízení pro akcelerátory řešení?
 
-Odkazy na sady SDK zařízení IoT jiný jazyk (C, .NET, Java, Node.js, Python) najdete v [sadami SDK služby Microsoft Azure IoT](https://github.com/Azure/azure-iot-sdks) úložištích GitHub.
+Odkazy na sady SDK zařízení IoT pro jazyky (C, .NET, Java, Node. js, Python) můžete najít v úložištích [Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) GitHub.
 
-Pokud používáte DevKit zařízení, najdete prostředky a ukázky [sadou SDK IoT DevKit](https://github.com/Microsoft/devkit-sdk) úložiště GitHub.
+Pokud používáte zařízení DevKit, můžete najít materiály a ukázky v úložišti GitHub [sady IoT DevKit SDK](https://github.com/Microsoft/devkit-sdk) .
 
-### <a name="is-the-new-microservices-architecture-available-for-all-the-three-solution-accelerators"></a>Je k dispozici pro všechny tři řešení akcelerátory nové architektury mikroslužeb?
+### <a name="is-the-new-microservices-architecture-available-for-all-the-three-solution-accelerators"></a>Je k dispozici nová architektura mikroslužeb pro všechny tři akcelerátory řešení?
 
-V současné době pouze řešení vzdáleného monitorování využívá architekturu mikroslužeb obsahuje nejširší scénář.
+V současné době pouze řešení vzdáleného monitorování využívá architekturu mikroslužeb, protože se vztahuje na nejširší scénář.
 
-### <a name="what-advantages-does-the-new-open-sourced-microservices-based-architecture-provide-in-the-new-update"></a>Jaké výhody nové open source založených na mikroslužbách architektury poskytuje v nové aktualizaci?
+### <a name="what-advantages-does-the-new-open-sourced-microservices-based-architecture-provide-in-the-new-update"></a>Jaké výhody přináší nová otevřená architektura pro mikroslužby založené na mikroslužbách v nové aktualizaci?
 
-Za poslední dva roky se výrazně vyvinula cloudové architektury. Mikroslužeb mají umístila jako skvělé vzor k dosažení škálování a flexibility, aniž byste museli obětovat rychlost vývoje. Tento Architektonický model se používá v různými službami společnosti Microsoft interně skvělé spolehlivosti a škálovatelnosti výsledky. Microsoft je uvedením tyto poznatky o do praxe akcelerátory řešení tak, aby zákazníci využívat.
+Za poslední dva roky se cloudová architektura významně vyvinula. Mikroslužby se vyvíjejí jako skvělý vzor pro zajištění škálování a flexibility, aniž by došlo k omezení vývoje. Tento model architektury se používá v několika službách Microsoftu interně s velkou spolehlivostí a škálovatelností výsledků. Microsoft vkládá tyto učení do praxe v akcelerátorech řešení, aby na ně zákazníci využili výhody.
 
-### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-azure-ad-tenant-how-do-i-complete-this-task"></a>Jsem Správce služeb a chci změnit adresář mapování mezi svoje předplatné a konkrétního tenanta Azure AD. Jak tento úkol provést?
+### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-azure-ad-tenant-how-do-i-complete-this-task"></a>Jsem správce služeb a chci změnit mapování adresáře mezi předplatným a konkrétním klientem služby Azure AD. Návody dokončit tuto úlohu?
 
-Zobrazit [k přidání existujícího předplatného do adresáře služby Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory)
+Další informace najdete v tématu [Přidání existujícího předplatného do adresáře služby Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory) .
 
-### <a name="i-want-to-change-a-service-administrator-or-co-administrator-when-logged-in-with-an-organizational-account"></a>Chci změnit správce služeb nebo spolupracujícího správce po přihlášení pomocí účtu organizace
+### <a name="i-want-to-change-a-service-administrator-or-co-administrator-when-logged-in-with-an-organizational-account"></a>Chci změnit správce služby nebo spolusprávce, pokud se přihlásili pomocí účtu organizace.
 
-Přečtěte si článek podpory [změna správce služeb a spolupracujícího správce po přihlášení pomocí účtu organizace](https://azure.microsoft.com/support/changing-service-admin-and-co-admin).
+[Pokud se přihlásíte pomocí účtu organizace, přečtěte si článek o podpoře – Změna správce služby a spolupracujícího správce](https://azure.microsoft.com/support/changing-service-admin-and-co-admin).
 
-### <a name="why-am-i-seeing-this-error-your-account-does-not-have-the-proper-permissions-to-create-a-solution-please-check-with-your-account-administrator-or-try-with-a-different-account"></a>Proč se zobrazuje tato chyba? "Váš účet nemá potřebná oprávnění k vytvoření řešení. "Obraťte se na svého správce účtu, nebo zkuste s jiným účtem."
+### <a name="why-am-i-seeing-this-error-your-account-does-not-have-the-proper-permissions-to-create-a-solution-please-check-with-your-account-administrator-or-try-with-a-different-account"></a>Proč se mi zobrazuje tato chyba? "Váš účet nemá správná oprávnění k vytvoření řešení. Obraťte se na správce účtu nebo zkuste použít jiný účet. "
 
-Podívejte se na následující diagram pokyny:
+Pokyny najdete v následujícím diagramu:
 
 ![Vývojový diagram oprávnění](media/iot-accelerators-faq/flowchart.png)
 
 > [!NOTE]
-> Pokud bude pořád zobrazovat chyby po ověření jste globálním správcem tenanta Azure AD a spolusprávcem předplatného, požádejte správce účtu, odeberte uživatele a přiřadit potřebná oprávnění v tomto pořadí. Nejprve přidat uživatele jako globální správce a pak přidat uživatele jako spolusprávce předplatného Azure. Pokud problémy přetrvávají, obraťte se na [Nápověda a podpora](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+> Pokud se zobrazí chyba i po ověření, že jste globálním správcem tenanta Azure AD a spolusprávcem předplatného, požádejte správce účtu, aby tento uživatel odebral a znovu přidělil potřebná oprávnění v tomto pořadí. Nejdřív přidejte uživatele jako globálního správce a pak přidejte uživatele jako spolusprávce předplatného Azure. Pokud potíže potrvají, obraťte se na [pomoc s &](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-### <a name="why-am-i-seeing-this-error-when-i-have-an-azure-subscription-an-azure-subscription-is-required-to-create-pre-configured-solutions-you-can-create-a-free-trial-account-in-just-a-couple-of-minutes"></a>Proč vidím tuto chybu, když mám předplatné Azure? "Předplatné Azure je potřeba vytvořit předem nakonfigurovaná řešení. Bezplatný zkušební účet můžete vytvořit během několika minut."
+### <a name="why-am-i-seeing-this-error-when-i-have-an-azure-subscription-an-azure-subscription-is-required-to-create-pre-configured-solutions-you-can-create-a-free-trial-account-in-just-a-couple-of-minutes"></a>Proč se mi tato chyba zobrazuje i v případě, že mám předplatné Azure? "Předplatné Azure se vyžaduje k vytváření předem nakonfigurovaných řešení. Během několika minut můžete vytvořit bezplatný zkušební účet. "
 
-Pokud si nejste jisti, že máte předplatné Azure, ověření klienta mapování pro vaše předplatné a ověřte, zda je v rozevírací nabídce vybrali správný tenanta. Pokud jste ověřili tenanta je správný, postupujte podle předchozí diagram a ověřit mapování vašeho předplatného a tohoto tenanta Azure AD.
+Pokud jste si jisti, že máte předplatné Azure, ověřte mapování tenanta pro vaše předplatné a zkontrolujte, jestli je v rozevíracím seznamu vybraný správný tenant. Pokud jste ověřili, že je tenant správný, postupujte podle předchozího diagramu a ověřte mapování předplatného a tohoto tenanta Azure AD.
 
-### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Kde najdu informace o předchozí verzi řešení vzdáleného monitorování
+### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Kde najdu informace o předchozí verzi řešení vzdáleného monitorování?
 
-Předchozí verze akcelerátor řešení vzdálené monitorování se označuje jako řešení vzdáleného monitorování IoT Suite předkonfigurované. Můžete najít Archivovaná dokumentace na [ https://docs.microsoft.com/previous-versions/azure/iot-suite/ ](https://docs.microsoft.com/previous-versions/azure/iot-suite/).
+Předchozí verze akcelerátoru řešení vzdáleného monitorování byla známá jako předkonfigurované řešení vzdáleného monitorování IoT Suite. Archivovanou dokumentaci najdete na adrese [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/).
 
-### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>Je k dispozici nový akcelerátor řešení ve stejné zeměpisné oblasti jako existující řešení?
+### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>Je nový akcelerátor řešení dostupný ve stejné geografické oblasti jako stávající řešení?
 
-Ano, nové vzdálené monitorování je k dispozici ve stejné zeměpisné oblasti.
+Ano, nové vzdálené monitorování je k dispozici ve stejných geografických oblastech.
 
-### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>Jaký je rozdíl mezi odstranění skupiny prostředků na webu Azure Portal a kliknutím na Odstranit v akcelerátoru řešení v azureiotsolutions.com?
+### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>Jaký je rozdíl mezi odstraněním skupiny prostředků v Azure Portal a kliknutím na Odstranit v akcelerátoru řešení v azureiotsolutions.com?
 
-* Pokud odstraníte akcelerátor řešení v [azureiotsolutions.com](https://www.azureiotsolutions.com/), odstraňte všechny prostředky, které se nasadily při vytváření akcelerátor řešení. Pokud jste do skupiny prostředků přidali další prostředky, odstraní se také tyto prostředky.
-* Pokud odstraníte skupinu prostředků [webu Azure portal](https://portal.azure.com), můžete odstranit pouze prostředky v příslušné skupině prostředků. Musíte také odstranit aplikaci Azure Active Directory přidružené k akcelerátoru řešení.
+* Pokud odstraníte akcelerátor řešení v [azureiotsolutions.com](https://www.azureiotsolutions.com/), odstraníte všechny prostředky, které byly nasazeny při vytváření akcelerátoru řešení. Pokud jste do skupiny prostředků přidali další prostředky, odstraní se i tyto prostředky.
+* Pokud odstraníte skupinu prostředků v [Azure Portal](https://portal.azure.com), odstraníte jenom prostředky v této skupině prostředků. Také je nutné odstranit aplikaci Azure Active Directory přidruženou k akcelerátoru řešení.
 
-### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>I nadále využívat své existující investice do akcelerátory řešení Azure IoT?
+### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>Můžu dál využívat svoje stávající investice do akcelerátorů řešení Azure IoT?
 
-Ano. Jakékoli řešení, které dnes existuje i nadále fungovat ve vašem předplatném Azure a zdrojový kód zůstane k dispozici na Githubu.
+Ano. Jakékoli řešení, které dnes existuje, bude v předplatném Azure fungovat a zdrojový kód zůstane dostupný na GitHubu.
 
-### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>Kolik instancí služby IoT Hub můžete zřídit v jednom předplatném?
+### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>Kolik instancí IoT Hub můžu zřídit v předplatném?
 
-Ve výchozím nastavení můžete zřídit [10 IoT hub na předplatné](../azure-subscription-service-limits.md#iot-hub-limits). Můžete vytvořit [lístek podpory Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) chcete tento limit zvýšit. V důsledku toho od každé ustanovení akcelerátor řešení novou službu IoT Hub, můžete zřídit až 10 akcelerátory řešení v rámci daného předplatného.
+Ve výchozím nastavení můžete zřídit [10 Center IoT na jedno předplatné](../azure-subscription-service-limits.md#iot-hub-limits). K vyvolání tohoto limitu můžete vytvořit [lístek podpory Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) . Vzhledem k tomu, že každé akcelerátor řešení zřizuje nové IoT Hub, můžete v daném předplatném zřídit jenom 10 akcelerátorů řešení.
 
-### <a name="how-many-azure-cosmos-db-instances-can-i-provision-in-a-subscription"></a>Kolik instancí služby Azure Cosmos DB může zřídit v jednom předplatném?
+### <a name="how-many-azure-cosmos-db-instances-can-i-provision-in-a-subscription"></a>Kolik instancí Azure Cosmos DB můžu zřídit v předplatném?
 
-Padesát. Můžete vytvořit [lístek podpory Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) chcete tento limit zvýšit, ale ve výchozím nastavení, můžete zřídit 50 instancí Cosmos DB na jedno předplatné.
+50. Můžete vytvořit [lístek podpory Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro zvýšení tohoto limitu, ale ve výchozím nastavení můžete zřídit jenom 50 Cosmos DB instancí na předplatné.
 
 ### <a name="how-many-free-bing-maps-apis-can-i-provision-in-a-subscription"></a>Kolik bezplatných rozhraní API Map Bing můžu zřídit v jednom předplatném?
 
-Dvě. V předplatném Azure můžete vytvořit pouze dvě vnitřní transakce úrovně 1 mapy Bing pro podnikových plánů. Ve výchozím nastavení s plánem vnitřní transakce úrovně 1 zřídí řešení vzdáleného monitorování. V důsledku toho můžete zřídit až dvě vzdálené monitorování řešení v rámci předplatného bez možnosti úprav.
+Dvě. V rámci předplatného Azure můžete vytvořit pouze dvě interní transakce úrovně 1 mapy Bing pro podnikové plány. Řešení vzdáleného monitorování je ve výchozím nastavení zřízené s plánem interních transakcí úrovně 1. V důsledku toho můžete v předplatném zřídit jenom dvě řešení vzdáleného monitorování bez jakýchkoli úprav.
 
-### <a name="can-i-create-a-solution-accelerator-if-i-have-microsoft-azure-for-dreamspark"></a>Můžete vytvořit akcelerátoru řešení, když mám Microsoft Azure pro DreamSpark?
+### <a name="can-i-create-a-solution-accelerator-if-i-have-microsoft-azure-for-dreamspark"></a>Můžu vytvořit akcelerátor řešení, pokud mám Microsoft Azure pro DreamSpark?
 
 > [!NOTE]
-> Microsoft Azure pro DreamSpark je teď označuje jako Microsoft Imagine pro studenty.
+> Microsoft Azure pro DreamSpark se nyní říká Microsoft Imagine pro studenty.
 
-V současné době nelze vytvořit akcelerátoru řešení se [Microsoft Azure pro DreamSpark](https://azure.microsoft.com/pricing/member-offers/imagine/) účtu. Však můžete vytvořit [Bezplatný zkušební účet pro Azure](https://azure.microsoft.com/free/) během několika minut, která vám umožní vytvořit akcelerátoru řešení.
+V současné době nemůžete vytvořit akcelerátor řešení s [Microsoft Azure pro účet DreamSpark](https://azure.microsoft.com/pricing/member-offers/imagine/) . Můžete si ale během několika minut vytvořit [bezplatný zkušební účet pro Azure](https://azure.microsoft.com/free/) , který vám umožní vytvořit akcelerátor řešení.
 
-### <a name="how-do-i-delete-an-azure-ad-tenant"></a>Jak odstranit tenanta služby Azure AD?
+### <a name="how-do-i-delete-an-azure-ad-tenant"></a>Návody odstranit tenanta Azure AD?
 
-Najdete v příspěvku blogu Eric Golpeho [Walkthrough of Deleting Tenanta služby Azure AD](https://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx).
+[Postup odstranění tenanta Azure AD](https://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx)najdete v příspěvku na blogu pro Eric Golpe.
 
-### <a name="next-steps"></a>Další postup
+### <a name="next-steps"></a>Další kroky
 
 Můžete si také prostudovat některé další funkce a možnosti akcelerátorů řešení IoT:
 
-* [Prozkoumejte možnosti akcelerátor řešení vzdálené monitorování](quickstart-remote-monitoring-deploy.md)
+* [Prozkoumejte možnosti akcelerátoru řešení vzdáleného monitorování](quickstart-remote-monitoring-deploy.md)
 * [Přehled akcelerátorů řešení prediktivní údržby](iot-accelerators-predictive-overview.md)
-* [Nasazení akcelerátoru řešení připojená továrna](quickstart-connected-factory-deploy.md)
-* [Zabezpečení IoT od počátku](/azure/iot-fundamentals/iot-security-ground-up)
+* [Nasadit akcelerátor řešení propojené továrny](quickstart-connected-factory-deploy.md)
+* [Zabezpečení IoT od základů](/azure/iot-fundamentals/iot-security-ground-up)

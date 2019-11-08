@@ -1,61 +1,62 @@
 ---
-title: Vytvoření nabídky na webu Marketplace | Azure Marketplace
-description: Vytvoření nabídky na Azure a AppSource tržišť s řešeními pomocí portál Cloud Partner
+title: Vytváření nabídek pro Marketplace | Azure Marketplace
+description: Vytvářejte nabídky na tržištích Azure a AppSource pomocí portál partnerů cloudu
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pabutler
-ms.openlocfilehash: cc0d8e68578500d4fa5f1b167790d60c8f7c5067
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4aa4e154c99f20963485a98d1a21af4ae2b7a1b1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942145"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73828099"
 ---
-# <a name="create-azure-marketplace-and-appsource-offers"></a>Vytvoření nabídky Azure Marketplace a AppSource
+# <a name="create-azure-marketplace-and-appsource-offers"></a>Vytváření nabídek Azure Marketplace a AppSource
 
-Ten, který je hlavním účelem portál partnerů cloudu umožňuje vydavatelům vytvořit (a potom publikovat) nabízí Microsoft Azure a tržišť s řešeními AppSource.  Tato operace vždy začíná vyberete typ požadovaného nabídky z [nabízejí nové nabídky](../portal-tour/cpp-new-offer-menu.md).  V reakci odpovídající **nová nabídka** zobrazí se stránka pro daný typ nabídky.  Například následující obrázek ukazuje výchozí **nová nabídka** stránky pro typ aplikace Azure.
+Jedním z podstatných účelů portál partnerů cloudu je umožnit vydavatelům vytvářet (a publikovat) nabídky na tržištích Microsoft Azure a AppSource.  Tato operace vždy zahájí výběr požadovaného typu nabídky z [nabídky nová](../portal-tour/cpp-new-offer-menu.md)nabídka.  V odpovědi se pro daný typ nabídky zobrazí příslušná **Nová stránka nabídky** .  Například následující obrázek ukazuje výchozí stránku **nové nabídky** pro typ aplikace Azure.
 
-![Nová nabídka výchozí stránka](./media/new-offer-page.png)
+![Nová výchozí stránka nabídky](./media/new-offer-page.png)
 
-Nejsou k dispozici v vodorovné řádku nabídek, které se zobrazí v horní části této stránky výběry dvě karty: 
-- **Editor** kartě – umožňuje položka informace a nahrání prostředků pro nové nabídky instance.  Na této kartě se zobrazí ve výchozím nastavení.
-- **Stav** karta – poskytuje stav publikování a uvádí všechny problémy ověření a revize. 
+V horizontálním řádku nabídek zobrazeném směrem k horní části této stránky jsou k dispozici dva výběry karet: 
+- Karta **Editor** – povolí záznam informací a nahrávání prostředků pro novou instanci nabídky.  Tato karta se zobrazí ve výchozím nastavení.
+- Karta **stav** – poskytuje stav publikování a uvádí všechny problémy ověřování a kontroly. 
 
-Při vytváření nabídky, je použít **Editor** kartu a zadejte informace o této nabídce. 
+Když vytvoříte nabídku, můžete k zadání informací o této nabídce použít kartu **Editor** . 
 
 ## <a name="editing-operations"></a>Operace úprav
 
-Vodorovném panelu nástrojů nad vstupní oblastí dat zobrazuje následující tlačítka:
+Vodorovný panel nástrojů umístěný nad oblastí pro zadávání dat zobrazuje následující tlačítka:
 
 |   Tlačítko    |   Účel                                                          |
 |   ------    |  --------                                                          |
-| **Uložit**    | Uloží změny poslední vstupní data.  Je nutné ručně uložit změny před opustíte na stránce nebo vaše změny se ztratí. | 
-| **Zahození** | Odstraní poslední změny dat (od posledního uložení)             |
-| **Compare** | Porovná stavu aktuální nabídky v rámci publikované nabídky.  Aktivní jenom po nabídka byla úspěšně publikována.  |
-| **Publikování** | Zahájí proces publikování pro tuto nabídku                       |
-| **Odstranění**  | V rámci této nabídky odstraní po jeho vytvoření, ale předtím, než se publikoval. |
+| **Uloží**    | Uloží všechny změny nedávných záznamů dat.  Předtím, než přejdete na stránku nebo dojde ke ztrátě změn, je nutné ručně uložit změny. | 
+| **Odstraňovat** | Zahodí nedávné změny v datech (od posledního uložení).             |
+| **Porovnán** | Porovná stav aktuální nabídky s publikovanou nabídkou.  Povoluje se jenom po úspěšném publikování nabídky.  |
+| **Publikování** | Zahájí proces publikování pro tuto nabídku.                       |
+| **Odstranění**  | Odstraní tuto nabídku po vytvoření, ale ještě před jejím publikováním. |
 |   |   |
 
 
-## <a name="editing-tabs"></a>Úpravy karty
+## <a name="editing-tabs"></a>Úpravy karet
 
-Při vytváření nabídky, zadáte požadované a volitelné dat na jednotlivých kartách v levém sloupci svislé **nová nabídka** stránky.  Pro shromažďování dat se zobrazí standardní ovládací prvky uživatelského rozhraní – například textová pole, rozevírací nabídky a zaškrtávací políčka –.  I když konkrétní kolekci úpravy karty, závisí na typu nabídky, následující tabulka uvádí některé běžné karty.
+Při vytváření nabídky zadáte požadovaná a volitelná data na každé kartě nacházející se v levém svislém sloupci stránky **nové nabídky** .  Standardní ovládací prvky uživatelského rozhraní – například textová pole, rozevírací nabídky a zaškrtávací políčka – jsou zobrazeny pro shromažďování dat.  I když konkrétní kolekce úprav karet závisí na typu nabídky, v následující tabulce jsou uvedeny některé běžné karty.
 
 |      Název karty       |   Účel                                                            |
 |      --------       |   -------                                                            |
-| **Nabídka nastavení**  | Shromažďuje nabídky a vydavatel informace o identitě.                    |
-| **SKU**            | Definuje vlastnosti technické a podnikové pro každou verzi skladovou jednotku (SKU) o vaší nabídce |
-| **Testovací verze**      | Pro tyto typy, které podporují tuto volitelnou funkci definuje ukázku pro vaši nabídku.  Další informace najdete v tématu [co je to Test Drive?](../test-drive/what-is-test-drive.md)  |
-| **Marketplace** nebo **výkladní skříň** | Shromažďuje textové řetězce, dokumenty a obrázky používané k výpisu nabídky na webu Marketplace |
-| **Podpora**         | Shromažďuje kontaktní informace na zákazníka, inženýrství a odborné pomoci online  |
+| **Nastavení nabídky**  | Shromažďuje informace o identitě nabídky a vydavatele.                    |
+| **SKU**            | Definuje technické a obchodní charakteristiky pro každou verzi vaší nabídky sklad-Keeping Unit (SKU). |
+| **Testovací jednotka**      | Pro tyto typy, které podporují tuto volitelnou funkci, definuje ukázku pro vaši nabídku.  Další informace najdete v tématu [co je Test Drive?](../test-drive/what-is-test-drive.md) .  |
+| **Marketplace** nebo **prezentace** | Shromažďuje textové řetězce, dokumenty a obrázky použité k vypsání nabídky na webu Marketplace. |
+| **Podpora**         | Shromažďuje kontaktní informace pro zákazníky, technickou a online podporu.  |
 |  |  |
 
-Obsah s podobným názvem karty se může lišit mezi typy jinou nabídku.  Nabídka konkrétní podrobnosti o těchto karet jsou k dispozici v části "Vytvoření nabídky" pro každý typ nabídky.
+Obsah karet podobně pojmenovaných se může lišit v různých typech nabídek.  Podrobnosti o těchto kartách jsou uvedeny v části "Vytvoření nabídky" pro každý typ nabídky.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Po vytvoření a uložení nabídky a před nebo po publikování můžete [zobrazit stav](./cpp-view-status-offer.md).
+Po vytvoření a uložení nabídky a před nebo po jejím publikování můžete [zobrazit její stav](./cpp-view-status-offer.md).

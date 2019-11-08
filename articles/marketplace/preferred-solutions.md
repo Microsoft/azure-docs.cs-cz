@@ -1,19 +1,20 @@
 ---
-title: Azure Marketplace a AppSource upřednostňované řešení
-description: Přehled upřednostňované řešení v rámci webu Marketplace a jak se vybírají
+title: Azure Marketplace a AppSource upřednostňovaná řešení
+description: Přehled preferovaných řešení v rámci Marketplace a jejich výběru
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: ellacroi
-ms.openlocfilehash: 225ed171599e3f822fc869c97a1c7d91f9107b1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c481d7781ff35623655b472dbcfae6d50ada40a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65779795"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827827"
 ---
-# <a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Upřednostňované řešení v Azure Marketplace a AppSource
+# <a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Upřednostňovaná řešení v Azure Marketplace a AppSource
 
-Microsoft upřednostňováno, že je řešení cloudové aplikace, vybrané pro jeho kvality, výkonu a schopnost adresu zákaznické potřeby v určité odvětví svislé nebo řešení oblasti. Tým odborníků Microsoftu ověří řešení od partnerů s možnostmi a konkrétní prověřené možnosti. Tato řešení jsou vybrané v našem cloudu prodejní místa, Azure Marketplace a AppSource, stejně jako na webu Azure Portal. Upřednostňované řešení na AppSource se dají zobrazit tak vertikální vazby odvětví. Upřednostňované řešení na webu Azure Marketplace a na webu Azure portal můžete zjistit v kategoriích vodorovné řešení.
+Upřednostňovaným řešením Microsoftu je cloudová aplikace vybraná pro svou kvalitu, výkon a možnost řešení potřeb zákazníků v určité odvětví vertikální nebo oblasti řešení. Tým expertů Microsoftu ověřuje řešení od partnerů s konkrétními prověřenými kompetencemi a možnostmi. Tato řešení jsou doporučená v našich cloudových tržištích prodejní místa, Azure Marketplace a AppSource a také v Azure Portal. Upřednostňovaná řešení na AppSource můžou být zjištěná v oboru, ve svislém směru. Upřednostňovaná řešení na Azure Marketplace a Azure Portal je možné zjistit napříč horizontálními kategoriemi řešení.

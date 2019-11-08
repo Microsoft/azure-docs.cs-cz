@@ -1,6 +1,6 @@
 ---
-title: Připojený objekt pro vytváření řešení funkce – Azure | Dokumentace Microsoftu
-description: Přehled funkcí připojené továrny v předkonfigurovaném řešení.
+title: Funkce řešení propojené továrny – Azure | Microsoft Docs
+description: Tento článek popisuje přehled funkcí předkonfigurovaného řešení propojené továrny, jako je například řídicí panel cloudu, pravidla a výstrahy.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,28 +8,28 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
-ms.openlocfilehash: 2a11640959a8c7fdd0d238aba92698eb47934969
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c868aa0f1c2449ccf163523c9ded25a31d1d84c4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080452"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820113"
 ---
-# <a name="what-is-connected-factory-iot-solution-accelerator"></a>Co je akcelerátor řešení připojené továrny IoT?
+# <a name="what-is-connected-factory-iot-solution-accelerator"></a>K čemu je připojená akcelerátor řešení IoT Factory?
 
-Propojené továrny je implementace společnosti Microsoft Azure průmyslové referenční architektura IoT v, zabalit jako na open-source řešení. Můžete ho použít jako výchozí bod pro komerční produktu. Můžete nasadit předem sestavené verzi řešení připojená továrna do vašeho předplatného Azure z [akcelerátory řešení Azure IoT](https://www.azureiotsolutions.com/#solutions/types/CF).
+Propojená továrna je implementací referenční architektury Azure v průmyslu Azure, která je zabalená jako řešení open source. Můžete ho použít jako výchozí bod pro komerční produkt. Předem vytvořenou verzi řešení propojené továrny můžete nasadit do svého předplatného Azure z [akcelerátorů řešení Azure IoT](https://www.azureiotsolutions.com/#solutions/types/CF).
 
 ![Řídicí panel řešení propojené továrny](./media/iot-accelerators-connected-factory-features/dashboard.png)
 
-Akcelerátor řešení připojená továrna [kód je k dispozici na Githubu](https://github.com/Azure/azure-iot-connected-factory).
+Kód akcelerátoru řešení propojené továrny [je k dispozici na GitHubu](https://github.com/Azure/azure-iot-connected-factory).
 
-Propojená továrna zahrnuje následující funkce:
+Propojená továrna zahrnuje tyto funkce:
 
 ## <a name="industrial-device-interoperability"></a>Vzájemná funkční spolupráce průmyslových zařízení
 
 - Připojte se k průmyslovým prostředkům pomocí rozhraní OPC UA.
-- Použití simulovaných výrobních linek (servery OPC UA v kontejnerech Dockeru) zobrazíte živou telemetrii z nich.
-- Procházejte model informace o OPC UA serverů OPC UA z řídicího panelu cloud.
+- Pomocí simulovaných výrobních linek (se spuštěnými servery OPC UA v kontejnerích Docker) si můžete prohlédnout živou telemetrii z nich.
+- Projděte si informační model OPC UA serverů OPC UA z řídicího panelu cloudu.
 
 ## <a name="remote-management"></a>Vzdálená správa
 
@@ -38,31 +38,31 @@ Propojená továrna zahrnuje následující funkce:
 
 ## <a name="cloud-dashboard"></a>Řídicí panel cloudu
 
-- Zobrazit náhledy telemetrie přímo na řídicím panelu cloud.
+- Zobrazení verzí Preview telemetrie přímo na řídicím panelu cloudu.
 - Prohlédněte si trendy v telemetrických datech a vytvářejte korelace s využitím řídicího panelu průzkumníka Time Series Insights.
-- Z řídicího panelu cloud, najdete v článku vypočtené celkové efektivity zařízení (OEE) a klíčových ukazatelů výkonu (KPI).
-- Zobrazení asset průmyslové hierarchie v topologii stromu i na interaktivní mapu.
-- Zobrazení, potvrzení a zavírání výstrah z řídicího panelu cloud.
+- Přečtěte si část vypočtená Celková efektivita vybavení (celkové efektivity zařízení) a klíčové ukazatele výkonu (KPI) z řídicího panelu cloudu.
+- Zobrazení hierarchií průmyslových prostředků ve stromové topologii a také na interaktivní mapě.
+- Zobrazení, potvrzení a zavření výstrah z řídicího panelu cloudu.
 
 ## <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
-- [Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) je sestaven pro ukládání, vizualizaci a dotazování velkých objemů dat časových řad. Připojené továrny využívá tuto službu.
-- Propojená továrna se integruje s Tato služba umožňuje provádět hloubkové, v reálném čase analýzy údajů zařízení.
+- [Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) je sestavená pro ukládání, vizualizaci a dotazování velkých objemů dat časových řad. Propojená továrna tuto službu využívá.
+- Propojená továrna s touto službou umožňuje provádět hloubkovou analýzu dat zařízení v reálném čase.
 
-## <a name="rules-and-alerts"></a>Pravidel a výstrah
+## <a name="rules-and-alerts"></a>Pravidla a výstrahy
 
-[Konfigurace pravidel založené na prahových hodnotách pro výstrahy](iot-accelerators-connected-factory-configure.md).
+[Nakonfigurujte pravidla na základě prahových hodnot pro výstrahy](iot-accelerators-connected-factory-configure.md).
 
 ## <a name="end-to-end-security"></a>Komplexní zabezpečení
 
 - Konfigurujte pro uživatele oprávnění zabezpečení s využitím řízení přístupu na základě role (RBAC).
-- Koncové šifrování je implementováno pomocí OPC UA ověřování (pomocí certifikátů X.509), stejně jako tokeny zabezpečení.
+- Komplexní šifrování se implementuje pomocí ověřování OPC UA (pomocí certifikátů X. 509) a také tokenů zabezpečení.
 
 ## <a name="customizability"></a>Přizpůsobitelnost
 
-- Přizpůsobení řešení pro splnění konkrétních podnikových požadavků.
-- Úplné řešení zdrojového kódu k dispozici na Githubu. Zobrazit [předkonfigurované řešení připojené továrny](https://github.com/Azure/azure-iot-connected-factory) úložiště.
+- Řešení můžete přizpůsobit tak, aby splňovalo konkrétní obchodní požadavky.
+- Kompletní zdrojový kód řešení dostupný na GitHubu. Podívejte se na úložiště [předkonfigurovaných řešení propojené továrny](https://github.com/Azure/azure-iot-connected-factory) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o akcelerátor řešení připojená továrna, najdete v tomto rychlém startu [zkuste cloudové řešení ke správě mých průmyslová zařízení IoT](quickstart-connected-factory-deploy.md).
+Další informace o akcelerátoru řešení propojené továrny najdete v tématu rychlý Start [vyzkoušet cloudové řešení pro správu mých zařízení v průmyslu IoT](quickstart-connected-factory-deploy.md).

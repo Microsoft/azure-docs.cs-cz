@@ -10,13 +10,13 @@ ms.reviewer: klam; LADocs
 manager: carmonm
 ms.topic: conceptual
 tags: connectors
-ms.date: 11/06/2019
-ms.openlocfilehash: ed30ba305ec990256625052cb92f1b7524c826e2
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 11/08/2019
+ms.openlocfilehash: a6367e5897e9bd548550b099c0bd2e6186845d6d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720953"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826330"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Automatizace pracovních postupů pro SQL Server nebo Azure SQL Database pomocí Azure Logic Apps
 
@@ -44,10 +44,11 @@ Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](..
 
     `Server=tcp:{your-server-name}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
 
-* Než budete moct propojit Logic Apps s místními systémy, jako je SQL Server, musíte [nastavit místní bránu dat](../logic-apps/logic-apps-gateway-install.md). Tímto způsobem můžete bránu vybrat při vytváření připojení SQL pro vaši aplikaci logiky.
+* Místní [Brána dat](../logic-apps/logic-apps-gateway-install.md) nainstalovaná na místním počítači a [prostředek služby Azure Data Gateway vytvořeného v Azure Portal](../logic-apps/logic-apps-gateway-connection.md) pro tyto scénáře:
 
-  > [!IMPORTANT]
-  > Pokud chcete s tímto konektorem používat ověřování systému Windows, musíte použít místní bránu dat. Tento konektor nepodporuje ověřování Windows pro aplikaci logiky v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
+  * Vaše aplikace logiky se nespouštějí v [prostředí integrační služby (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
+
+  * Aplikace logiky *se spouštějí v* prostředí integrační služby, ale pro připojení SQL Server musíte použít ověřování systému Windows. V tomto scénáři použijte kromě ISE verze konektoru SQL Server a zároveň s bránou data Gateway, protože verze ISE nepodporuje ověřování systému Windows.
 
 * Aplikace logiky, kde potřebujete přístup k vaší databázi SQL. Chcete-li spustit aplikaci logiky pomocí triggeru SQL, budete potřebovat [prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 

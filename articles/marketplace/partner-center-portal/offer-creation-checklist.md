@@ -5,16 +5,17 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 66c28039f9126ed9e3f56c3ac15b1b3d82279b64
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 1643a1e309ecc2bcfc440e3553fcffef54cfb038
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036377"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824630"
 ---
-# <a name="saas-offer-creation-checklist"></a>Kontrolní seznam pro vytváření nabídky SaaS
+# <a name="saas-offer-creation-checklist"></a>Kontrolní seznam k vytváření nabídek SaaS
 
 Proces vytvoření nabídky SaaS vás provede několika stránkami. Tady jsou podrobné informace, které můžete zadat na každé stránce s odkazy na Další informace o jednotlivých položkách.
 
@@ -43,7 +44,7 @@ První část informací, které budete požádáni, získáte jako ID a alias p
 | **Název pole**    | **Poznámky**   |  
 | :---------------- | :-----------| 
 | ID nabídky  | Požadováno, po vytvoření nelze změnit. Maximálně 50 znaků a musí obsahovat jenom malá písmena, alfanumerické znaky, pomlčky nebo podtržítka. |
-| Alias nabídky  | Povinný parametr. |
+| Alias nabídky  | Povinná hodnota. |
 
 ## <a name="offer-setup-page"></a>Stránka nastavení nabídky
 
@@ -51,14 +52,14 @@ Stránka pro nastavení nabídek je místo, kde se můžete přihlásit k různ�
 
 | **Název pole**    | **Poznámky**   | 
 | :---------------- | :-----------|  
-| Chtěli byste prodávat přes Microsoft?  | Povinný parametr. Výchozí: Ano |
-| Jak chcete potenciálním zákazníkům pracovat se seznamem nabídek? (Volání akce)  | Vyžaduje se, pokud nechcete prodávat prostřednictvím Microsoftu. Výchozí: Bezplatná zkušební verze, možnosti: "Získat hned", "bezplatnou zkušební verzi", "kontaktujte mě." |
+| Chtěli byste prodávat přes Microsoft?  | Povinná hodnota. Výchozí: Ano |
+| Jak chcete potenciálním zákazníkům pracovat se seznamem nabídek? (Volání akce)  | Vyžaduje se, pokud nechcete prodávat prostřednictvím Microsoftu. Výchozí: bezplatná zkušební verze, možnosti: "načíst hned", "bezplatné zkušební verze", "kontaktujte mě". |
 | Adresa URL zkušební verze  | Vyžaduje se, pokud je vybrána možnost "bezplatná zkušební verze", jak by zákazníci měli pracovat se seznamem nabídek. |
 | Adresa URL nabídky  | Vyžaduje se, pokud je vybraná možnost Get to Now (načíst), jak by zákazníci měli pracovat se seznamem nabídek. |
-| Kanály  | Volitelný parametr. Výchozí: Nesouhlasí se s kanálem CSP (prodejce).  |
-| Test Drive | Volitelný parametr. Výchozí: Není povolená žádná testovací jednotka.  |
-| Typ testovací jednotky | Vyžaduje se, pokud je povolená testovací jednotka. Výchozí: Nic se nevybralo. Nastavení Azure Resource Manager, Dynamics 365 pro firmy Business Central, Dynamics 365 for Customer Engagement, Dynamics 365 for Operations, aplikace logiky, Power BI.  |
-| Správa vedoucích – připojení k systému CRM | Požaduje se při prodeji prostřednictvím Microsoftu nebo při výpisu nabídek "kontaktujte mě". Výchozí: není připojený žádný systém CRM. Možnosti CRM: Tabulka Azure, Azure Blob, Dynamics CRM Online, HTTPs ' Endpoint, Marketo, Salesforce  |
+| Kanály  | Volitelné. Výchozí: nesouhlasí se do kanálu CSP (prodejce).  |
+| Testovací verze | Volitelné. Výchozí: není povolená žádná testovací jednotka.  |
+| Typ testovací jednotky | Vyžaduje se, pokud je povolená testovací jednotka. Výchozí: není vybráno. Možnosti: Azure Resource Manager, Dynamics 365 pro firmy Business Central, Dynamics 365 for Customer Engagement, Dynamics 365 for Operations, Logic App, Power BI.  |
+| Správa potenciálních zákazníků – připojení k systému CRM | Požaduje se při prodeji prostřednictvím Microsoftu nebo při výpisu nabídek "kontaktujte mě". Výchozí: není připojený žádný systém CRM. Možnosti CRM: tabulka Azure, Azure Blob, Dynamics CRM Online, HTTPs ' Endpoint, Marketo, Salesforce  |
 
 ## <a name="properties-page"></a>Stránka Vlastnosti
 
@@ -66,10 +67,10 @@ Stránka vlastnosti je místo, kde můžete definovat kategorie a obory použív
 
 | **Název pole**    | **Poznámky**   | 
 | :---------------- | :-----------|  
-| Kategorie a podkategorie | Požadováno 1 a max 3. Výchozí: Nic se nevybralo. |
-| Odvětví a subodvětví | Volitelný parametr. maximum 2 L1 Industry a maximum 2 subodvětví v rámci každého oboru L1, výchozí: Nevybrán žádný |
-| verze aplikace  | Volitelný parametr. Výchozí: Žádné. |
-| Použití standardní smlouvy  | Volitelný parametr. Výchozí: není vybráno.  | |
+| Kategorie a podkategorie | Požadováno 1 a max 3. Výchozí: není vybráno. |
+| Odvětví a subodvětví | Volitelné. maximum 2 L1 Industry a maximum 2 subodvětví v rámci každého oboru L1, výchozí: žádné vybrané |
+| verze aplikace  | Volitelné. Výchozí: žádné. |
+| Použití standardní smlouvy  | Volitelné. Výchozí: není vybráno.  | |
 | Podmínky použití  | Povinné, pokud není vybrána standardní smlouva.  |
 
 ## <a name="offer-listing-page"></a>Stránka se seznamem nabídek
@@ -78,21 +79,21 @@ Stránka výpisu je místo, kde můžete zadat text a obrázky, které se zákaz
 
 | **Název pole**    | **Poznámky**   |
 | :---------------- | :-----------| 
-| Name  | Požadováno, max. 50 znaků. |
+| Name (Název)  | Požadováno, max. 50 znaků. |
 | Souhrn  | Požadováno, max. 100 znaků. | 
 | Popis  | Požadováno, max. 3000 znaků. |
 | Pokyny pro Začínáme  | Požadováno, max. 3000 znaků. |
 | Pokyny pro Začínáme  | Požadováno, max. 3000 znaků. |
 | Hledat klíčová slova  | Volitelné, doporučené, max 3 klíčová slova. |
-| Adresa URL zásad ochrany osobních údajů  | Povinný parametr. |
-| Adresa URL marketingových materiálů programu CSP  | Volitelný parametr. |
-| Název užitečného odkazu + adresa URL  | Volitelný parametr. |
+| Adresa URL zásad ochrany osobních údajů  | Povinná hodnota. |
+| Adresa URL marketingových materiálů programu CSP  | Volitelné. |
+| Název užitečného odkazu + adresa URL  | Volitelné. |
 | Název doprovodnéch dokumentů + soubor  | Požadováno, minimum 1 a max 3. Musí se jednat o formát souboru PDF. |
 | Snímky obrazovek  | Požadováno, minimální počet 1 snímek obrazovky a maximální 5; doporučuje se čtyři nebo více. Ve formátu PNG musí být 1280 X 720. |
-| Ukládat loga (malá, střední, Velká, rozsáhlá, Hero)  | Malá (48 × 48) a velká (216 × 216); jiné velikosti volitelné, ale doporučené: Střední (90 x 90), roztažitelné (255 x 115), Hero (815 x 290). Musí být ve formátu PNG. |
+| Ukládat loga (malá, střední, Velká, rozsáhlá, Hero)  | Malá (48 × 48) a velká (216 × 216); jiné velikosti volitelné, ale doporučené: střední (90 x 90), roztažitelné (255 x 115), Hero (815 x 290). Musí být ve formátu PNG. |
 | Název videa + adresa URL + Miniatura  | Volitelné, doporučené, maximální 4 videa. Miniatura musí být ve formátu PNG 1280 x 720. Video musí být hostované na YouTube nebo Vimeo. |
 | Kontakty (program CSP, strojírenství, podpora)  | Technické a podpůrné kontaktní požadavky (jméno, e-mail a telefonní číslo); Program CSP kontaktuje volitelnou, ale doporučuje se. |
-| Adresa URL podpory  | Povinný parametr. |
+| Adresa URL podpory  | Povinná hodnota. |
 
 ## <a name="preview-page"></a>Stránka náhledu
 
@@ -137,11 +138,11 @@ Stránka plánování cen a dostupnosti vám umožní definovat obchodní charak
 | **Název pole**    | **Poznámky**   | 
 | :---------------- | :-----------| 
 | Dostupnost trhu  | Požadováno, minimum 1 a Max 141. |
-| Cenový model  | Povinný parametr. Výchozí: Paušální sazba. Nastavení Paušální sazba na uživatele |
+| Cenový model  | Povinná hodnota. Výchozí: paušální sazba. Možnosti: paušální sazba, na uživatele. |
 | Minimální a maximální počet sedadel  | Volitelné, dostupné jenom v případě, že je vybraný cenový model založený na pracovních stanicích. |
-| Fakturační období  | Povinný parametr. Výchozí: Nadpis. Nastavení Měsíčně, roční. |
+| Fakturační období  | Povinná hodnota. Výchozí: měsíčně. Možnosti: měsíčně, ročně. |
 | Cena  | Požaduje se USD za měsíc, pokud je vybraný měsíční fakturační termín; nebo USD za rok, pokud je vybraný roční fakturační termín. |
-| Cílová skupina plánu  | Volitelný parametr. Výchozí: Veřejný plán. Nastavení Veřejné, privátní podle ID tenanta |
+| Cílová skupina plánu  | Volitelné. Výchozí: veřejný plán. Možnosti: Public, Private podle ID tenanta |
 | Skupina omezeného plánu (ID tenanta + popis)  | Vyžaduje se, pokud je vybraný privátní plán. Minimální 1 a maximum 10 ID klientů, pokud jsou zadány ručně. Max 20000 při importu souboru CSV |
 
 ## <a name="test-drive-listing-page"></a>Stránka se seznamem testovacích jednotek
@@ -150,16 +151,16 @@ K dispozici pouze v případě, že jste vybrali možnost nabídnout si pro vaš
 
 | **Název pole**    | **Poznámky**   | 
 | :---------------- | :-----------| 
-| Popis  | Povinný parametr. |
-| Uživatelské jméno a soubor ručně  | Požadováno, max 1 doc. Musí být ve formátu PDF. |
+| Popis  | Povinná hodnota. |
+| Uživatelské jméno a soubor ručně  | Required, max 1 doc. musí být ve formátu PDF. |
 | Název videa, adresa URL + Miniatura  | Volitelné, doporučené. Miniatura musí být 533 × 324 ve formátu JPGP nebo PNG. Video musí být hostované na YouTube nebo Vimeo. |
 
 ## <a name="review-and-publish-page"></a>Stránka pro kontrolu a publikování
 
 | **Název pole**    | **Poznámky**   | 
 | :---------------- | :-----------| 
-| Poznámky k certifikaci  | Volitelný parametr. |
+| Poznámky k certifikaci  | Volitelné. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Vytvořit novou nabídku SaaS](./create-new-saas-offer.md)

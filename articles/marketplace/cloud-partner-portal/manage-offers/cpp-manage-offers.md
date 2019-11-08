@@ -1,38 +1,39 @@
 ---
-title: Správa služby Azure a nabídky AppSource Marketplace | Azure Marketplace
-description: Správa nabídek na Azure a tržišť s řešeními AppSource
+title: Správa nabídek Azure a AppSource Marketplace | Azure Marketplace
+description: Správa nabídek na tržištích Azure a AppSource
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: pabutler
-ms.openlocfilehash: 8a03ce94971d704aa38c1be5d7cfbb3c24bd2f82
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9bbbad0434cf0e3b27d985b10bd0552d1fb4315a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943364"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826755"
 ---
-# <a name="manage-azure-and-appsource-marketplace-offers"></a>Správa služby Azure a nabídky AppSource Marketplace
+# <a name="manage-azure-and-appsource-marketplace-offers"></a>Správa nabídek Azure a AppSource Marketplace
 
-Tato část představuje obecné operace používat ke správě nabídky pro Azure a tržišť s řešeními AppSource.  Například vysvětluje, jak používat [portál partnerů cloudu](https://cloudpartner.azure.com/) vytvoření a publikování nabídky na webu marketplace.  Tato část také popisuje technických problémů, které jsou společné pro většinu typů nabídky, jako je například založený na textu a obrázků prostředky.
+V této části se seznámíte s obecnými operacemi, které se používají ke správě nabídek pro tržiště Azure a AppSource.  Například vysvětluje, jak použít [portál partnerů cloudu](https://cloudpartner.azure.com/) k vytvoření a publikování nabídky Marketplace.  Tato část také vysvětluje technické problémy, které jsou společné pro většinu typů nabídek, jako jsou například textové a obrázkové materiály.
 
 
-## <a name="standard-offer-operations"></a>Standardní nabídka operace
+## <a name="standard-offer-operations"></a>Standardní operace nabídky
 
-Portál partnerů cloudu umožňuje vydavatele k provádění následujících základních operací v rámci nabídky.
+Portál partnerů cloudu umožňuje vydavateli provádět v nabídce následující základní operace.
 
 |     Operace      |  Popis                                           |
 |     ---------      |  -----------                                           |
-| [Vytvoření nabídky](./cpp-create-offer.md)   | Vytvoří položku čekající nabídky v úložišti registrace, ale nejsou automaticky ji publikovat na webu Microsoft marketplace | 
-| [Zobrazení stavu nabídky](./cpp-view-status-offer.md)   | Poskytuje stav publikování nabídky.  Existuje více míst na portálu, kde se zobrazí informace o stavu. |
-| [Publikování nabídky](./cpp-publish-offer.md) | Ověří a pak odešle dokončené nabídky položku odpovídající webu Microsoft marketplace.  Nabídka je pak říká, že *live*. |
-| [Aktualizace nabídky](./cpp-update-offer.md)   | Umožňuje úpravu určité vlastnosti existující nabídky.  Platí pro čekající na vyřízení a publikované nabídky. |
-| [Odstranění nabídky](./cpp-delete-offer.md)   | Odstraní nabídku existující čekající na nebo za provozu.  | 
+| [Vytvoření nabídky](./cpp-create-offer.md)   | Vytvoří nevyřízenou položku nabídky v úložišti připojování, ale automaticky ji nepublikuje na webu Microsoft Marketplace. | 
+| [Zobrazení stavu nabídky](./cpp-view-status-offer.md)   | Poskytuje stav publikování nabídky.  Na portálu je více míst, kde se zobrazují informace o stavu. |
+| [Publikování nabídky](./cpp-publish-offer.md) | Ověří a odešle dokončenou položku nabídky na příslušný web Microsoft Marketplace.  Tato nabídka je pak označována jako *živá*. |
+| [Aktualizace nabídky](./cpp-update-offer.md)   | Umožňuje úpravy určitých vlastností existující nabídky.  Platí pro nedokončené i publikované nabídky. |
+| [Odstranění nabídky](./cpp-delete-offer.md)   | Odstraní existující nevyřízenou nebo živou nabídku.  | 
 |  |  |
   
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokud nejste obeznámeni s možnostmi a uživatelského rozhraní na portál Cloud Partner, najdete v části [Cloud Partner Portal Tour](../portal-tour/cpp-portal-tour.md).  Další informace později o [vytvoření nabídky](./cpp-create-offer.md).
+Pokud nejste obeznámeni s funkcemi a uživatelským rozhraním portál partnerů cloudu, přečtěte si část [portál partnerů cloudu Tour](../portal-tour/cpp-portal-tour.md).  Potom si přečtěte další informace o [Vytvoření nabídky](./cpp-create-offer.md).

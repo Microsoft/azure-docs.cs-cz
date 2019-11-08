@@ -1,5 +1,5 @@
 ---
-title: Aktivní geografická replikace – Azure SQL Database
+title: Aktivní geografická replikace
 description: Aktivní geografickou replikaci můžete použít k vytvoření čitelných sekundárních databází jednotlivých databází ve stejném nebo jiném datovém centru (oblasti).
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 74cbb9fa5a00b287746afd92fe74f50bfa19110b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 33697fd8d3b0c6faea423026e1462834c6b1ef4c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691314"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822659"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Vytváření a používání aktivní geografické replikace
 
@@ -48,7 +48,7 @@ Aktivní geografická replikace využívá technologii služby [Always On](https
 > [!NOTE]
 > Pokud dojde k selhání sítě mezi dvěma oblastmi, opakujeme každých 10 sekund, než se znovu naváže připojení.
 > [!IMPORTANT]
-> Aby bylo zaručeno, že před převzetím služeb při selhání bude kritická Změna primární databáze replikována na sekundární, můžete vynutit synchronizaci, aby se zajistila replikace kritických změn (například aktualizace hesla). Vynucená synchronizace má vliv na výkon, protože blokuje volající vlákno, dokud nebudou všechny potvrzené transakce replikovány. Podrobnosti najdete v tématu [sp_wait_for_database_copy_sync](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync). Pokud chcete monitorovat prodlevu replikace mezi primární databází a geograficky sekundárním, přečtěte si článek [Sys. DM _geo_replication_link_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).
+> Aby bylo zaručeno, že před převzetím služeb při selhání bude kritická Změna primární databáze replikována na sekundární, můžete vynutit synchronizaci, aby se zajistila replikace kritických změn (například aktualizace hesla). Vynucená synchronizace má vliv na výkon, protože blokuje volající vlákno, dokud nebudou všechny potvrzené transakce replikovány. Podrobnosti najdete v tématu [sp_wait_for_database_copy_sync](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync). Pokud chcete monitorovat prodlevu replikace mezi primární databází a geograficky sekundárním, přečtěte si téma [Sys. dm_geo_replication_link_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).
 
 Následující obrázek ukazuje příklad aktivní geografické replikace nakonfigurované s primárním umístěním v Střed USA – sever oblasti a sekundární v Střed USA – jih oblasti.
 
@@ -120,7 +120,7 @@ U primárních i sekundárních databází je potřeba, aby měly stejnou úrove
 > Publikovaný cíl RPO = 5 sec nelze zaručit, pokud je sekundární databáze konfigurována se stejnou velikostí výpočetní velikosti jako primární. 
 
 
-Pokud se rozhodnete vytvořit sekundární s nižší výpočetní velikostí, graf procenta v/v v modulu Azure Portal poskytuje dobrý způsob, jak odhadnout minimální výpočetní Velikost sekundárního počítače, který je nutný k udržení zatížení replikace. Pokud je vaše primární databáze například P6 (1000 DTU) a její hodnota v/v v% je 50%, musí být sekundární hodnota aspoň P4 (500 DTU). Data v/v protokolu můžete také načíst pomocí zobrazení databáze [Sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) nebo [Sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) .  Omezování je hlášeno jako stav čekání HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO v zobrazeních databáze [Sys. DM _exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) a [Sys. DM _os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) . 
+Pokud se rozhodnete vytvořit sekundární s nižší výpočetní velikostí, graf procenta v/v v modulu Azure Portal poskytuje dobrý způsob, jak odhadnout minimální výpočetní Velikost sekundárního počítače, který je nutný k udržení zatížení replikace. Pokud je vaše primární databáze například P6 (1000 DTU) a její hodnota v/v v% je 50%, musí být sekundární hodnota aspoň P4 (500 DTU). Data v/v protokolu můžete také načíst pomocí zobrazení databáze [Sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) nebo [Sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) .  Omezování je hlášeno jako stav čekání HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO v zobrazeních databáze [Sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) a [Sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) . 
 
 Další informace o SQL Database velikosti výpočetních prostředků najdete v tématu [co jsou SQL Database úrovně služeb](sql-database-purchase-models.md).
 
@@ -143,19 +143,19 @@ Primární databázi můžete upgradovat nebo downgradovat na jinou výpočetní
 
 ## <a name="preventing-the-loss-of-critical-data"></a>Zabránění ztrátě důležitých dat
 
-V důsledku vysoké latence sítí WAN používá průběžné kopírování mechanismus asynchronní replikace. Asynchronní replikace způsobuje nenevyhnutelnou ztrátu dat, pokud dojde k selhání. Některé aplikace ale nemusí vyžadovat žádnou ztrátu dat. Aby bylo možné tyto kritické aktualizace chránit, může vývojář aplikace volat systémovou proceduru [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) okamžitě po potvrzení transakce. Volání **sp_wait_for_database_copy_sync** blokuje volající vlákno, dokud se poslední potvrzená transakce nepřenesla do sekundární databáze. Nečeká ale na přenesení transakcí a jejich potvrzení na sekundárním počítači. **sp_wait_for_database_copy_sync** je vymezen na konkrétní odkaz průběžné kopírování. Tento postup může volat každý uživatel s právy pro připojení k primární databázi.
+V důsledku vysoké latence sítí WAN používá průběžné kopírování mechanismus asynchronní replikace. Asynchronní replikace způsobuje nenevyhnutelnou ztrátu dat, pokud dojde k selhání. Některé aplikace ale nemusí vyžadovat žádnou ztrátu dat. Pro ochranu těchto důležitých aktualizací může vývojář aplikace volat [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) systémové procedury ihned po potvrzení transakce. Volání **sp_wait_for_database_copy_sync** blokuje volající vlákno, dokud se poslední potvrzená transakce nepřenesla do sekundární databáze. Nečeká ale na přenesení transakcí a jejich potvrzení na sekundárním počítači. **sp_wait_for_database_copy_sync** má obor na konkrétní odkaz průběžné kopírování. Tento postup může volat každý uživatel s právy pro připojení k primární databázi.
 
 > [!NOTE]
-> **sp_wait_for_database_copy_sync** zabraňuje ztrátě dat po převzetí služeb při selhání, ale nezaručuje úplnou synchronizaci pro přístup pro čtení. Zpoždění způsobené voláním procedury **sp_wait_for_database_copy_sync** může být významné a závisí na velikosti transakčního protokolu v době volání.
+> **sp_wait_for_database_copy_sync** zabrání ztrátě dat po převzetí služeb při selhání, ale nezaručuje úplnou synchronizaci pro přístup pro čtení. Zpoždění způsobené voláním procedury **sp_wait_for_database_copy_sync** může být významné a závisí na velikosti transakčního protokolu v době volání.
 
 ## <a name="monitoring-geo-replication-lag"></a>Sledování prodlevy geografické replikace
 
-Chcete-li monitorovat prodlevu s ohledem na RPO, použijte *replication_lag_sec* sloupec [Sys. DM _geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) na primární databázi. V sekundách se zobrazuje prodleva mezi transakcemi potvrzenými na primárním a trvalým sekundárním počítači. Například Pokud je hodnota prodlevy 1 sekunda, znamená to, že v tomto okamžiku došlo k výpadku primárního objektu a dojde k zahájení převzetí služeb při selhání. 1 sekunda z posledních přechodů nebude uložena. 
+Chcete-li monitorovat prodlevu s ohledem na RPO, použijte *replication_lag_sec* sloupec [Sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) v primární databázi. V sekundách se zobrazuje prodleva mezi transakcemi potvrzenými na primárním a trvalým sekundárním počítači. Například Pokud je hodnota prodlevy 1 sekunda, znamená to, že v tomto okamžiku došlo k výpadku primárního objektu a dojde k zahájení převzetí služeb při selhání. 1 sekunda z posledních přechodů nebude uložena. 
 
-Chcete-li změřit prodlevu s ohledem na změny primární databáze, které byly aplikovány na sekundární databázi, tj. k dispozici pro čtení ze sekundární databáze, porovnejte *last_commit* čas v sekundární databázi se stejnou hodnotou v primární databázi.
+Chcete-li změřit prodlevu s ohledem na změny primární databáze, které byly aplikovány na sekundární databázi, tj. k dispozici pro čtení ze sekundární databáze, porovnejte *last_commit* čas u sekundární databáze se stejnou hodnotou v primární databázi.
 
 > [!NOTE]
-> Někdy *replication_lag_sec* v primární databázi má hodnotu null, což znamená, že primární aktuálně nevíte, jak daleko je sekundární.   K tomu obvykle dochází po restartování procesu a mělo by to být přechodný stav. Zvažte možnost upozorňování aplikace, pokud *replication_lag_sec* vrátí hodnotu null po delší dobu. To by znamenalo, že sekundární databáze nemůže komunikovat s primárním kvůli chybě trvalého připojení. Existují taky podmínky, které by mohly způsobit, že rozdíl mezi *last_commit* časem v sekundárním a primárním databázi bude velký. Například Pokud se potvrzení provede na primárním počítači po dlouhou dobu bez jakýchkoli změn, bude rozdíl přejít až na velkou hodnotu, než se rychle vrátí na 0. Pokud rozdíl mezi těmito dvěma hodnotami zůstane dlouhý po dlouhou dobu, zvažte jeho chybový stav.
+> Někdy *replication_lag_sec* v primární databázi má hodnotu null, což znamená, že primární aktuálně nevíte, jak daleko je sekundární.   K tomu obvykle dochází po restartování procesu a mělo by to být přechodný stav. Zvažte upozorňování aplikace, pokud *replication_lag_sec* vrátí hodnotu null po delší dobu. To by znamenalo, že sekundární databáze nemůže komunikovat s primárním kvůli chybě trvalého připojení. Existují taky podmínky, které by mohly způsobit, že rozdíl mezi *last_commitm* časem v sekundárním a primárním databázi bude velký. Například Pokud se potvrzení provede na primárním počítači po dlouhou dobu bez jakýchkoli změn, bude rozdíl přejít až na velkou hodnotu, než se rychle vrátí na 0. Pokud rozdíl mezi těmito dvěma hodnotami zůstane dlouhý po dlouhou dobu, zvažte jeho chybový stav.
 
 
 ## <a name="programmatically-managing-active-geo-replication"></a>Programová správa aktivní geografické replikace
@@ -172,9 +172,9 @@ Jak je popsáno výše, aktivní geografická replikace se dá spravovat taky pr
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Pro vytvoření sekundární databáze pro existující databázi a spuštění replikace dat použijte argument přidat sekundární na SERVER. |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Použití převzetí služeb při selhání nebo FORCE_FAILOVER_ALLOW_DATA_LOSS k přepnutí sekundární databáze na primární pro zahájení převzetí služeb při selhání |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Pomocí odebrat sekundární na serveru ukončete replikaci dat mezi SQL Database a zadanou sekundární databází. |
-| [sys. Geo _replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Vrátí informace o všech stávajících odkazech replikace pro každou databázi na serveru Azure SQL Database. |
-| [sys. DM _geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Získá čas poslední replikace, prodlevu poslední replikace a další informace o odkazu replikace pro danou databázi SQL. |
-| [sys. DM _operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Zobrazuje stav všech databázových operací, včetně stavu replikačních odkazů. |
+| [sys. geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Vrátí informace o všech stávajících odkazech replikace pro každou databázi na serveru Azure SQL Database. |
+| [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Získá čas poslední replikace, prodlevu poslední replikace a další informace o odkazu replikace pro danou databázi SQL. |
+| [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Zobrazuje stav všech databázových operací, včetně stavu replikačních odkazů. |
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |způsobí, že aplikace počká, až budou všechny potvrzené transakce replikovány a potvrzeny aktivní sekundární databází. |
 |  | |
 
@@ -204,8 +204,8 @@ Jak je popsáno výše, aktivní geografická replikace se dá spravovat taky pr
 | [Získat stav databáze pro vytvoření nebo aktualizaci](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Vrátí stav během operace vytvoření. |
 | [Nastavit sekundární databázi jako primární (plánované převzetí služeb při selhání)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failover) |Nastaví, která sekundární databáze je primární databází převzetím služeb při selhání z aktuální primární databáze. **Tato možnost není pro spravovanou instanci podporována.**|
 | [Nastavit sekundární databázi jako primární (neplánované převzetí služeb při selhání)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failoverallowdataloss) |Nastaví, která sekundární databáze je primární databází převzetím služeb při selhání z aktuální primární databáze. Tato operace může způsobit ztrátu dat. **Tato možnost není pro spravovanou instanci podporována.**|
-| [Získat odkaz replikace](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Získá konkrétní odkaz replikace pro danou databázi SQL v partnerství geografické replikace. Načte informace viditelné v zobrazení katalogu sys. Geo _replication_links. **Tato možnost není pro spravovanou instanci podporována.**|
-| [Odkazy replikace – seznam podle databáze](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Získá všechny odkazy replikace pro danou databázi SQL v partnerství geografické replikace. Načte informace viditelné v zobrazení katalogu sys. Geo _replication_links. |
+| [Získat odkaz replikace](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Získá konkrétní odkaz replikace pro danou databázi SQL v partnerství geografické replikace. Načte informace viditelné v zobrazení katalogu sys. geo_replication_links. **Tato možnost není pro spravovanou instanci podporována.**|
+| [Odkazy replikace – seznam podle databáze](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Získá všechny odkazy replikace pro danou databázi SQL v partnerství geografické replikace. Načte informace viditelné v zobrazení katalogu sys. geo_replication_links. |
 | [Odstranit odkaz replikace](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | Odstraní odkaz replikace databáze. Nejde provést během převzetí služeb při selhání. |
 |  | |
 

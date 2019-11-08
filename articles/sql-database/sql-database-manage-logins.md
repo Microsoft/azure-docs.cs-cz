@@ -1,5 +1,5 @@
 ---
-title: Přihlášení a uživatelé Azure SQL
+title: Přihlášení a uživatelé
 description: Přečtěte si o SQL Database a SQL Data Warehouse správě zabezpečení, konkrétně o správě přístupu k databázi a zabezpečení přihlášení prostřednictvím hlavního účtu na úrovni serveru.
 keywords: zabezpečení databáze SQL,správa zabezpečení databáze,zabezpečení přihlášení,zabezpečení databáze,přístup k databázi
 services: sql-database
@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/26/2019
-ms.openlocfilehash: 501df95b80bd651020fa044970f6bc701959a6a5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a33c653199ae21b551acadfb4503eae029ddc5e4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689475"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822830"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Řízení a udělení přístupu k databázi SQL Database a SQL Data Warehouse
 
@@ -140,7 +140,7 @@ Na začátku může uživatele vytvořit jenom jeden ze správců nebo vlastník
 GRANT ALTER ANY USER TO Mary;
 ```
 
-Chcete-li poskytnout dalším uživatelům úplnou kontrolu nad databází, nastavte je jako člen pevné databázové role **db_owner** .
+Chcete-li poskytnout dalším uživatelům úplnou kontrolu nad databází, zajistěte, aby byly členy **db_owner** pevné databázové role.
 
 V Azure SQL Database použijte příkaz `ALTER ROLE`.
 

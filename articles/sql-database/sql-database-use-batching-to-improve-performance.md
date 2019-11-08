@@ -1,5 +1,5 @@
 ---
-title: Použití dávkového zpracování ke zlepšení výkonu aplikace Azure SQL Database
+title: Použití dávkového zpracování ke zlepšení výkonu aplikace
 description: Téma poskytuje legitimaci, že dávkové databázové operace významně zvyšují rychlost a škálovatelnost vašich Azure SQL Databasech aplikací. I když tyto techniky dávkování fungují pro všechny SQL Server databáze, zaměřuje se na Azure.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 3d18f5b77d08a55bd06656a72cbc02c040b6f127
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 175ba6b4e65b4a6e276dbfb586e210027a6cd9b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566249"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822424"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Použití dávkového zpracování ke zlepšení výkonu aplikace SQL Database
 
@@ -97,7 +97,7 @@ Následující tabulka uvádí některé výsledky ad hoc testování. Testy pro
 
 **Z místního prostředí do Azure**:
 
-| Operace | Bez transakce (MS) | Transakce (MS) |
+| Provoz | Bez transakce (MS) | Transakce (MS) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
@@ -106,7 +106,7 @@ Následující tabulka uvádí některé výsledky ad hoc testování. Testy pro
 
 Z **Azure do Azure (stejné datacentrum)** :
 
-| Operace | Bez transakce (MS) | Transakce (MS) |
+| Provoz | Bez transakce (MS) | Transakce (MS) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -167,7 +167,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-V předchozím příkladu objekt **SqlCommand** vloží řádky z parametru  **\@** s hodnotou tabulky TestTvp. Dříve vytvořený objekt **DataTable** je přiřazen tomuto parametru pomocí metody **SqlCommand. Parameters. Add** . Dávkování vkládání v jednom volání významně zvyšuje výkon při sekvenčních vkládáních.
+V předchozím příkladu objekt **SqlCommand** vloží řádky z parametru s hodnotou tabulky, **\@TestTvp**. Dříve vytvořený objekt **DataTable** je přiřazen tomuto parametru pomocí metody **SqlCommand. Parameters. Add** . Dávkování vkládání v jednom volání významně zvyšuje výkon při sekvenčních vkládáních.
 
 Pro zlepšení předchozího příkladu použijte namísto textového příkazu uloženou proceduru. Následující příkaz Transact-SQL vytvoří uloženou proceduru, která převezme parametr s hodnotou tabulky **SimpleTestTableType** .
 
@@ -193,7 +193,7 @@ Ve většině případů mají parametry s hodnotou tabulky stejný nebo lepší
 
 V následující tabulce jsou uvedeny výsledky ad hoc testů pro použití parametrů s hodnotou tabulky v milisekundách.
 
-| Operace | Z místního prostředí do Azure (MS) | Stejné datacentrum Azure (MS) |
+| Provoz | Z místního prostředí do Azure (MS) | Stejné datacentrum Azure (MS) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -233,7 +233,7 @@ V některých případech je vhodnější hromadné kopírování přes parametr
 
 Následující výsledky ad hoc testu ukazují výkon dávkování s **SqlBulkCopy** v milisekundách.
 
-| Operace | Z místního prostředí do Azure (MS) | Stejné datacentrum Azure (MS) |
+| Provoz | Z místního prostředí do Azure (MS) | Stejné datacentrum Azure (MS) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -278,7 +278,7 @@ Tento příklad je určen k zobrazení konceptu Basic. Realističtější scén�
 
 Následující výsledky ad hoc testu ukazují výkon tohoto typu příkazu INSERT v milisekundách.
 
-| Operace | Parametry s hodnotou tabulky (MS) | Vložení jednoho příkazu (MS) |
+| Provoz | Parametry s hodnotou tabulky (MS) | Vložení jednoho příkazu (MS) |
 | --- | --- | --- |
 | 1 |32 |20 |
 | 10 |30 |25 |
@@ -291,9 +291,9 @@ Následující výsledky ad hoc testu ukazují výkon tohoto typu příkazu INSE
 
 Tento přístup může být trochu rychlejší pro dávky, které jsou menší než 100 řádků. I když je vylepšení malé, tato technika je další možnost, která může dobře fungovat ve scénáři konkrétní aplikace.
 
-### <a name="dataadapter"></a>DataAdapter
+### <a name="dataadapter"></a>Modul
 
-Třída **DataAdapter** umožňuje upravit objekt **DataSet** a následně odeslat změny jako operace vložení, aktualizace a odstranění. Používáte-li objekt **DataAdapter** tímto způsobem, je důležité si uvědomit, že pro každou operaci DISTINCT jsou provedeny samostatné volání. Chcete-li zvýšit výkon, použijte vlastnost **UpdateBatchSize** na počet operací, které by měly být v dávce. Další informace najdete v tématu [provádění dávkových operací pomocí](https://msdn.microsoft.com/library/aadf8fk2.aspx)dataadapterů.
+Třída **DataAdapter** umožňuje upravit objekt **DataSet** a následně odeslat změny jako operace vložení, aktualizace a odstranění. Používáte-li objekt **DataAdapter** tímto způsobem, je důležité si uvědomit, že pro každou operaci DISTINCT jsou provedeny samostatné volání. Chcete-li zvýšit výkon, použijte vlastnost **UpdateBatchSize** na počet operací, které by měly být v dávce. Další informace najdete v tématu [provádění dávkových operací pomocí Dataadapterů](https://msdn.microsoft.com/library/aadf8fk2.aspx).
 
 ### <a name="entity-framework"></a>Entity Framework
 
@@ -580,7 +580,7 @@ JOIN @IdentityLink L ON L.SubmittedKey = D.OrderID;
 GO
 ```
 
-V tomto příkladu lokálně definovaná @IdentityLink tabulka ukládá skutečné hodnoty ČísloObjednávky z nově vložených řádků. Tyto identifikátory objednávky se liší od dočasných hodnot KódObjednávky v @orders parametrech a a @details hodnotách tabulky. Z tohoto důvodu @IdentityLink tabulka pak propojí hodnoty ČísloObjednávky z parametrushodnotamireálnéhodnotyČísloObjednávkypronovéřádkyvtabulcePurchaseOrder.@orders Po provedení tohoto kroku @IdentityLink může tabulka zjednodušit vkládání podrobností objednávky se skutečnou ČísloObjednávky, která splňuje omezení cizího klíče.
+V tomto příkladu místně definovaná @IdentityLink tabulka ukládá skutečné hodnoty ČísloObjednávky z nově vložených řádků. Tyto identifikátory objednávky se liší od dočasných hodnot KódObjednávky v @orders a @details parametrů hodnot tabulky. Z tohoto důvodu tabulka @IdentityLink pak propojí hodnoty ČísloObjednávky z parametru @orders se skutečnými hodnotami ČísloObjednávky pro nové řádky v tabulce PurchaseOrder. Po provedení tohoto kroku může tabulka @IdentityLink usnadnit vkládání podrobností objednávky pomocí skutečné hodnoty ČísloObjednávky, která splňuje omezení cizího klíče.
 
 Tuto uloženou proceduru lze použít z kódu nebo z jiných volání jazyka Transact-SQL. Příklad kódu naleznete v části s parametry s hodnotou tabulky v tomto dokumentu. Následující příkaz Transact-SQL ukazuje, jak volat sp_InsertOrdersBatch.
 
@@ -635,7 +635,7 @@ CREATE TYPE EmployeeTableType AS TABLE
 GO
 ```
 
-Dále vytvořte uloženou proceduru nebo zadejte kód, který používá příkaz MERGE k provedení aktualizace a vložení. Následující příklad používá příkaz Merge u parametru s hodnotou tabulky, @employeestypu EmployeeTableType. Obsah @employees tabulky tady není zobrazený.
+Dále vytvořte uloženou proceduru nebo zadejte kód, který používá příkaz MERGE k provedení aktualizace a vložení. Následující příklad používá příkaz MERGE u parametru s hodnotou tabulky, @employeestypu EmployeeTableType. Obsah @employees tabulky tady není zobrazený.
 
 ```sql
 MERGE Employee AS target
@@ -674,7 +674,7 @@ Následující seznam poskytuje souhrn doporučení pro dávkování popsaných 
 * Vyhněte se paralelnímu spouštění dávek, které pracují s jednou tabulkou v jedné databázi. Pokud se rozhodnete rozdělit jednu dávku napříč více pracovními vlákny, spusťte testy pro určení ideálního počtu vláken. Po nespecifikované prahové hodnotě bude více vláken snižovat výkon a nebude je zvyšovat.
 * Zvažte ukládání do vyrovnávací paměti podle velikosti a času jako způsob implementace dávkování pro více scénářů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Tento článek se zaměřuje na to, jak techniky navrhování a kódování databází, které souvisejí s dávkou, můžou zlepšit výkon a škálovatelnost aplikace. Toto je ale v celkové strategii jenom jeden faktor. Další způsoby, jak zvýšit výkon a škálovatelnost, najdete v tématu [Azure SQL Database Průvodce výkonem pro izolované databáze](sql-database-performance-guidance.md) a [cenové a výkonové požadavky pro elastický fond](sql-database-elastic-pool-guidance.md).
 

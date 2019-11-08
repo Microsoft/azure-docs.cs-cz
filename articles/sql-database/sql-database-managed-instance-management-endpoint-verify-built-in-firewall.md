@@ -1,5 +1,5 @@
 ---
-title: Zjistit vestavěnou bránu firewall Azure SQL Database spravované instance
+title: Vyhledat vestavěnou bránu firewall spravované instance
 description: Přečtěte si, jak ověřit integrovanou ochranu brány firewall v Azure SQL Database Managed instance.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: 912eeb95895597b9172d50463f380dd511fe196c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 555ef56aafa37a1e1d384f945b04f9237adc5f7d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73688021"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821803"
 ---
 # <a name="verifying-the-managed-instance-built-in-firewall"></a>Ověřování integrované brány firewall spravované instance
 

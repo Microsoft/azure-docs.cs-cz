@@ -1,22 +1,22 @@
 ---
-title: 'Rychlý Start: Klientská knihovna pro Azure Blob Storage pro Java SDK V8'
-description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Pak pomocí Azure Storage klientské knihovny pro Java SDK V8 nahrajte objekt blob, který se Azure Storage, stáhne objekt BLOB a vypíše objekty BLOB v kontejneru.
+title: 'Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V8 pro jazyk Java'
+description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Pak použijte Azure Storage klientské knihovny V8 pro jazyk Java k nahrání objektu blob do Azure Storage, stažení objektu BLOB a výpisu objektů BLOB v kontejneru.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 10/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 404599ade960d43ef2cb86777fb41701ce96e11b
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a6c4380e44d705e551bc96746a809c57aa02ac5b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609122"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825379"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-for-java-sdk-v8"></a>Rychlý Start: Klientská knihovna pro Azure Blob Storage pro Java SDK V8
+# <a name="quickstart-azure-blob-storage-client-library-v8-for-java"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V8 pro jazyk Java
 
-Začněte s klientskou knihovnou Azure Blob Storage pro Java. Azure Blob Storage je řešení úložiště objektů od Microsoftu pro Cloud. Postupujte podle kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy. Úložiště objektů blob je optimalizované pro ukládání velkých objemů nestrukturovaných dat.
+Začínáme s klientskou knihovnou V8 pro Azure Blob Storage pro Java. Azure Blob Storage je řešení úložiště objektů od Microsoftu pro Cloud. Postupujte podle kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy. Úložiště objektů blob je optimalizované pro ukládání velkých objemů nestrukturovaných dat.
 
 Pomocí klientské knihovny Azure Blob Storage pro jazyk Java:
 

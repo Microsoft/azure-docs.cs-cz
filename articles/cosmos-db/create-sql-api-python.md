@@ -12,12 +12,12 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: 92175e3b9776f90bd50e356a700b2a2d475c8a85
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 82426c0093550864b421d7acc35780c4173895a8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602458"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824734"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Rychlý Start: sestavení aplikace v Pythonu pomocí Azure Cosmos DB účtu rozhraní SQL API
 
@@ -39,7 +39,7 @@ V tomto rychlém startu se používá verze 4 [sady Python SDK](https://pypi.org
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Python 3,6](https://www.python.org/downloads/), ve vaší `PATH`je k dispozici spustitelný soubor `python`.
+* [Python 3.6 +](https://www.python.org/downloads/), ve vaší `PATH`je k dispozici spustitelný soubor `python`.
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Rozšíření Python pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)
 
@@ -154,7 +154,7 @@ Všechny následující fragmenty kódu pocházejí ze souboru `cosmos_get_start
 5. Spuštěním následujícího příkazu nainstalujte balíček azure-cosmos. 
 
     ```python
-    pip3 install azure-cosmos==4.0.0b5
+    pip install --pre azure-cosmos
     ```
 
     Pokud při pokusu o instalaci balíčku azure-cosmos dojde k chybě v podobě odepření přístupu, budete muset [spustit VS Code jako správce](https://stackoverflow.com/questions/37700536/visual-studio-code-terminal-how-to-run-a-command-with-administrator-rights).

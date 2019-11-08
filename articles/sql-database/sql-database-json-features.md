@@ -1,5 +1,5 @@
 ---
-title: Práce s daty JSON v Azure SQL Database
+title: Práce s daty JSON
 description: Azure SQL Database umožňuje analyzovat, dotazovat a formátovat data v zápisu JavaScript Object Notation (JSON).
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 01/15/2019
-ms.openlocfilehash: 2fe760e3792b5540b18946fd9dbcc5d571b50ee9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 958d937ad85fd62249c7ce3f0e0ab2f8cc1d1b80
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689657"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819945"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Začínáme s funkcemi JSON v Azure SQL Database
 Azure SQL Database umožňuje analyzovat a dotazovat data reprezentovaná ve formátu JavaScript Object Notation [(JSON)](https://www.json.org/) a exportovat relační data jako text JSON. V Azure SQL Database jsou k dispozici následující scénáře JSON:
@@ -69,7 +69,7 @@ Výstup tohoto dotazu vypadá takto:
 }
 ```
 
-V tomto příkladu jsme vrátili jeden objekt JSON místo pole zadáním možnosti [WITHOUT_ARRAY_WRAPPER](https://msdn.microsoft.com/library/mt631354.aspx) . Tuto možnost můžete použít, pokud víte, že vracíte jeden objekt jako výsledek dotazu.
+V tomto příkladu jsme vrátili jeden objekt JSON namísto pole zadáním možnosti [WITHOUT_ARRAY_WRAPPER](https://msdn.microsoft.com/library/mt631354.aspx) . Tuto možnost můžete použít, pokud víte, že vracíte jeden objekt jako výsledek dotazu.
 
 Hlavní hodnotou klauzule FOR JSON je, že umožňuje vracet složitá hierarchická data z databáze formátovaná jako vnořené objekty JSON nebo pole. Následující příklad ukazuje, jak zahrnout řádky z `Orders` tabulky, které patří do `Customer` jako vnořené pole `Orders`:
 
@@ -143,7 +143,7 @@ where Id = 1
 
 Funkce JSON_VALUE extrahuje hodnotu z textu JSON uloženého ve sloupci data. Tato funkce používá cestu podobnou JavaScriptu k odkazování na hodnotu v textu JSON k extrakci. Extrahovaná hodnota se dá použít v jakékoli části dotazu SQL.
 
-Funkce JSON_QUERY se podobá JSON_VALUE. Na rozdíl od JSON_VALUE Tato funkce extrahuje komplexní dílčí objekt, například pole nebo objekty, které jsou umístěny v textu JSON.
+Funkce JSON_QUERY je podobná JSON_VALUE. Na rozdíl od JSON_VALUE Tato funkce extrahuje složitý dílčí objekt, například pole nebo objekty, které jsou umístěny v textu JSON.
 
 Funkce JSON_MODIFY umožňuje zadat cestu k hodnotě v textu JSON, která se má aktualizovat, a také novou hodnotu, která přepíše starou. Tímto způsobem můžete snadno aktualizovat text JSON bez nutnosti přeanalyzovat celou strukturu.
 

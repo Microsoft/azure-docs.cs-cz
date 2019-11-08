@@ -1,6 +1,6 @@
 ---
 title: Jak v Azure nasadit závislosti v cloudu OPC s dvojitou závislostí | Microsoft Docs
-description: Postup nasazení OPCch závislostí Azure.
+description: Tento článek popisuje, jak nasadit OPCé závislosti Azure, které jsou potřeba k místnímu vývoji a ladění.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: cb07899b51280cff8613d637640c0da23debbc8e
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 231d1efa02ec80e8ad56a8895d4262d774480111
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016520"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824102"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>Nasazení závislostí pro místní vývoj
 
@@ -50,7 +50,7 @@ Skript nasazení se pokusí zaregistrovat aplikace AAD v Azure Active Directory.
 2. Případně můžete nasadit privátního tenanta AAD, restartovat skript a vybrat ho pro použití.
 3. Pokračovat bez ověřování.  Vzhledem k tomu, že vaše mikroslužby spouštíte místně, je to přijatelné, ale Nenapodobují produkční prostředí.  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste úspěšně nasadili OPCé služby, které jsou v existujícím projektu, je tady doporučený další krok:
 

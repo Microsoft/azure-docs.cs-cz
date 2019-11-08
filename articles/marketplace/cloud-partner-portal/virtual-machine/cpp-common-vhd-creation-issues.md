@@ -4,16 +4,17 @@ description: Nejčastější dotazy týkající se vytvoření virtuálního pev
 services: Azure Marketplace
 author: HannibalSII
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/02/2018
 ms.author: hascipio
 ms.reviewer: v-divte; v-miclar
-ms.openlocfilehash: bb7e62138dbefdd8ff4933ef10602986a5da2bf6
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 1d4224d8f1f735ecef3d4551e3032b916e81dc3c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875000"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826618"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>Běžné problémy při vytváření virtuálního pevného disku (FAQ)
 
@@ -62,17 +63,17 @@ Tyto zásady podpory jsou podrobně popsané v článku [podpora serverového so
 
 ## <a name="do-virtual-machines-have-unique-identifiers-associated-with-them"></a>Mají virtuální počítače přidružené jedinečné identifikátory?
 
-Ano, pokud je hostována v Azure.  Azure přiřadí jedinečný identifikátor nazvaný jedinečné ID virtuálního počítače Azure ke každému nově vytvořenému prostředku virtuálního počítače.  Další informace najdete v blogu o jedinečném [ID virtuálního počítače Azure](https://blogs.msdn.microsoft.com/wasimbloch/2016/10/20/azure-virtual-machine-unique-id/).  Tento identifikátor lze také získat programově prostřednictvím [rozhraní list API](https://docs.microsoft.com/rest/api/compute/virtualmachines/list).
+Ano, pokud je hostována v Azure.  Azure přiřadí jedinečný identifikátor nazvaný jedinečné ID virtuálního počítače Azure ke každému nově vytvořenému prostředku virtuálního počítače.  Další informace najdete v blogu o [jedinečném ID virtuálního počítače Azure](https://blogs.msdn.microsoft.com/wasimbloch/2016/10/20/azure-virtual-machine-unique-id/).  Tento identifikátor lze také získat programově prostřednictvím [rozhraní list API](https://docs.microsoft.com/rest/api/compute/virtualmachines/list).
 
 
 ## <a name="in-a-vm-how-do-you-manage-the-custom-script-extension-in-the-startup-task"></a>Jak ve virtuálním počítači spravujete rozšíření vlastních skriptů v úloze po spuštění?
 
-Následující článek podrobně popisuje, jak používat rozšíření vlastních skriptů pomocí modulu Azure PowerShell, Azure Resource Manager šablony a podrobně popisuje postup řešení potíží v systémech Windows: [Rozšíření vlastních skriptů pro Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
+Následující článek podrobně popisuje, jak používat rozšíření vlastních skriptů pomocí modulu Azure PowerShell, Azure Resource Manager šablony a podrobně popisuje postup řešení potíží v systémech Windows: [rozšíření vlastních skriptů pro Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/) .
 
 
 ## <a name="are-32-bit-applications-or-services-supported-in-the-azure-marketplace"></a>Jsou 32 aplikace nebo služby podporované v Azure Marketplace?
 
-Obecně platí, ne.  Podporované operační systémy a standardní služby pro virtuální počítače Azure jsou v 64 bitů.  Z technického hlediska ale většina 64 operačních systémů podporuje spouštění 32 verzí aplikací z důvodu zpětné kompatibility.  Používání 32ch aplikací v rámci řešení virtuálních počítačů se ale nepodporuje, takže se proto důrazně nedoporučuje .  Místo toho aplikaci znovu zkompilujte jako 64 projekt.
+Obecně platí, ne.  Podporované operační systémy a standardní služby pro virtuální počítače Azure jsou v 64 bitů.  Z technického hlediska ale většina 64 operačních systémů podporuje spouštění 32 verzí aplikací z důvodu zpětné kompatibility.  Používání 32ch aplikací v rámci řešení virtuálních počítačů se ale nepodporuje, takže se proto *důrazně nedoporučuje*.  Místo toho aplikaci znovu zkompilujte jako 64 projekt.
 
 Další informace najdete v následujících článcích:
 - [Spouštění 32 aplikací](https://docs.microsoft.com/windows/desktop/WinProg64/running-32-bit-applications)
@@ -80,7 +81,7 @@ Další informace najdete v následujících článcích:
 - [Podpora serverového softwaru Microsoft pro virtuální počítače Microsoft Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)
 
 
-## <a name="every-time-i-try-to-create-an-image-from-my-vhds-i-get-the-error-vhd-is-already-registered-with-image-repository-as-the-resource-in-powershell-i-did-not-create-any-image-before-nor-did-i-find-any-image-with-this-name-in-azure-how-do-i-resolve-this-issue"></a>Pokaždé, když se pokusím vytvořit image z mých virtuálních pevných disků, zobrazí `.VHD is already registered with image repository as the resource` se chyba v PowerShellu. Nevytvořil (a) jsem obrázek, ale v Azure nebyl nalezen žádný obrázek s tímto názvem. Návody vyřešit tento problém?
+## <a name="every-time-i-try-to-create-an-image-from-my-vhds-i-get-the-error-vhd-is-already-registered-with-image-repository-as-the-resource-in-powershell-i-did-not-create-any-image-before-nor-did-i-find-any-image-with-this-name-in-azure-how-do-i-resolve-this-issue"></a>Pokaždé, když se pokusím vytvořit image z mých virtuálních pevných disků, zobrazí se chyba `.VHD is already registered with image repository as the resource` PowerShellu. Nevytvořil (a) jsem obrázek, ale v Azure nebyl nalezen žádný obrázek s tímto názvem. Návody vyřešit tento problém?
 
 K tomuto problému obvykle dochází v případě, že uživatel zřídil virtuální počítač z virtuálního pevného disku, který na něm má zámek.  Ověřte, že tento virtuální pevný disk nemá přidělený žádný virtuální počítač, a potom zkuste operaci zopakovat.  Pokud s tím budou dál problémy, otevřete lístek podpory, jak je vysvětleno v tématu [podpora portál partnerů cloudu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal). 
 

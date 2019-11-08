@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: c28469e15841e2675c20868b74cf044159c4e9ca
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 2962f6c5032ba317f9eb8f10c2abddb566aad904
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259178"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825510"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Jak spravovat účet komerčního tržiště v partnerském centru 
 
@@ -48,14 +49,14 @@ Nastavení účtu se nachází v pravém horním rohu [řídicího panelu komer�
 ![Nabídka nastavení účtu v partnerském centru](./media/dashboard-developer-settings.png)
 
 V **Nastavení účtu**budete moct zobrazit vaše:
-- **Podrobnosti účtu**: Typ účtu a stav účtu
+- **Podrobnosti účtu**: typ účtu a stav účtu
 - **ID vydavatele**: ID prodejce, ID uživatele, ID vydavatele, klienti Azure AD atd.
-- **Kontaktní údaje**: Zobrazované jméno vydavatele, jméno kontaktní osoby, e-mail, telefon a adresa
-- **Finanční údaje**: Účet výběr, daňový profil a stav blokování výběr
-- **Zařízení**: Všechna testovací zařízení přidružená k vašemu účtu
-- **Identifikátory GUID sledování**: Jakékoli sledovací identifikátory GUID přidružit k vašemu účtu
+- **Kontaktní údaje**: zobrazované jméno vydavatele, jméno kontaktní osoby, e-mail, telefon a adresa
+- **Finanční podrobnosti**: účet výběr, daňový profil a stav blokování výběr
+- **Zařízení**: všechna testovací zařízení přidružená k vašemu účtu
+- **Sledovací identifikátory GUID**: jakékoli sledovací identifikátory GUID přidružit k vašemu účtu
 
-### <a name="account-details"></a>Podrobnosti o účtu
+### <a name="account-details"></a>Podrobnosti účtu
 
 V části Podrobnosti o účtu uvidíte základní informace, jako je **typ účtu** (společnost nebo jednotlivec) a **stav ověření** vašeho účtu. Během procesu ověřování účtu se tato nastavení zobrazí každý požadovaný krok, včetně ověření e-mailu, ověřování zaměstnanosti a obchodního ověření. V případě potřeby můžete také aktualizovat svůj e-mail a znovu ho ověřit. 
 
@@ -83,8 +84,8 @@ Pokud chcete nastavit svůj účet pro výběr, musíte **přidružit svůj úč
 3. Pokud chcete dokončit nastavení svého účtu druhu, odhlaste se úplně od partnerského centra a pak se znovu přihlaste pomocí účtu Microsoft (místo pracovního účtu). 
 
 Teď, když je účet Microsoft spojený, přidáte účet typu výběr, budete potřebovat:
-- **Zvolit způsob platby**: Bankovní účet nebo PayPal
-- **Přidat platební údaje**: To může zahrnovat výběr typu účtu (kontroly a úspory), zadání názvu držitele účtu, čísla účtu a čísla směrování, fakturační adresy, telefonního čísla nebo e-mailové adresy PayPal. \* Další informace o používání služby PayPal jako způsobu platby na účet a o tom, jestli se podporuje v oblasti vašeho trhu, najdete v tématu [informace o PayPal](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info).
+- **Zvolit způsob platby**: bankovní účet nebo PayPal
+- **Přidat platební informace**: může to zahrnovat výběr typu účtu (kontroly a úspory), zadání názvu držitele účtu, čísla účtu a čísla směrování, fakturační adresy, telefonního čísla nebo e-mailové adresy PayPal. \* Další informace o používání služby PayPal jako způsobu platby na účet a o tom, jestli se podporuje v oblasti vašeho trhu, najdete v tématu [informace o PayPal](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info).
 
 > [!IMPORTANT]
 > Změna účtu výběr může zpozdit vaše platby až do jednoho platebního cyklu. K tomuto zpoždění dochází, protože potřebujeme ověřit změnu účtu, stejně jako při prvním nastavování účtu výběr. Po ověření účtu se pořád bude platit celá částka. jakékoli platby splatné za aktuální platební cyklus budou přidány do dalšího.  
@@ -124,7 +125,7 @@ Jakmile nastavíte stav blokování výběr na **zapnuto**, budou všechny výb�
 
 ### <a name="devices"></a>Zařízení
 
-Nastavení správy zařízení se vztahuje pouze na publikování UWP. [Další informace](https://docs.microsoft.com/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info).
+Nastavení správy zařízení se vztahuje pouze na publikování UWP. [Další informace](https://docs.microsoft.com/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info)
 
 ### <a name="tracking-guids"></a>Identifikátory GUID sledování
 
@@ -149,7 +150,7 @@ Další informace najdete v tématu [sledování zákaznického využití Azure 
 
 Partnerské centrum využívá [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) pro přístup a správu účtu s více uživateli. Služba Azure AD vaší organizace se v rámci procesu registrace automaticky přidruží k vašemu účtu partnerského centra. 
 
-## <a name="manage-users"></a>Spravovat uživatele
+## <a name="manage-users"></a>Správa uživatelů
 
 Oddíl **Uživatelé** v partnerském centru (v části **Nastavení účtu**) vám umožní spravovat uživatele, skupiny a aplikace Azure AD, které mají přístup k vašemu účtu partnerského centra, pomocí služby Azure AD. Aby bylo možné spravovat uživatele, musíte být přihlášeni pomocí svého [pracovního účtu](./company-work-accounts.md) (přidruženého TENANTA Azure AD). Pokud chcete spravovat uživatele v rámci jiného pracovního účtu nebo tenanta, budete se muset odhlásit a pak znovu přihlásit jako uživatel s oprávněním **správce** pro tento pracovní účet nebo tenanta. 
 
@@ -223,7 +224,7 @@ Pokud některý z uživatelů potřebuje změnit heslo, může to udělat sami, 
 3.  Zobrazí se stránka s potvrzením, která zobrazuje přihlašovací informace pro uživatele, včetně dočasného hesla. Nezapomeňte vytisknout nebo zkopírovat tyto informace a poskytnout ji uživateli, protože po opuštění této stránky nebudete mít přístup k dočasnému heslu.
 
 
-## <a name="manage-groups"></a>Spravovat skupiny
+## <a name="manage-groups"></a>Správa skupin
 
 Skupiny umožňují řídit více rolí uživatelů a oprávnění dohromady.
 
@@ -304,7 +305,7 @@ Pokud vaše aplikace Azure AD čte a zapisuje data v Microsoft Azure AD, bude po
 
 Uživatelům vaší společnosti můžete přiřadit následující role a oprávnění pro program komerčního tržiště v partnerském centru:
 
-- **Manager**
+- **Programu**
   - Má přístup ke všem funkcím účet Microsoft s výjimkou nastavení daně a výběr
   - Může spravovat uživatele, role a pracovní účty (klienty).
 - **Developer**
@@ -339,9 +340,9 @@ Pokud chcete vytvořit značku nového tenanta Azure AD s vaším účtem partne
 
 1.  Na stránce **klienti** (v části **Nastavení účtu**) vyberte **vytvořit nového tenanta Azure AD**.
 2. Zadejte informace o adresáři pro novou službu Azure AD:
-    - **Název domény**: Jedinečný název, který budeme používat pro vaši doménu Azure AD, spolu s ". onmicrosoft.com". Pokud jste například zadali "example", vaše doména Azure AD by byla "example.onmicrosoft.com".
-    - **Kontaktní e-mail**: E-mailová adresa, na které vám můžeme v případě potřeby kontaktovat váš účet.
-    - **Informace o uživatelském účtu globálního správce**: Křestní jméno, příjmení, uživatelské jméno a heslo, které chcete použít pro nový účet globálního správce.
+    - **Název domény**: jedinečný název, který budeme používat pro vaši doménu Azure AD, společně s ". onmicrosoft.com". Pokud jste například zadali "example", vaše doména Azure AD by byla "example.onmicrosoft.com".
+    - **Kontaktní e-mail**: e-mailová adresa, na které vám můžeme v případě potřeby kontaktovat váš účet.
+    - **Informace o uživatelském účtu globálního správce**: jméno, příjmení, uživatelské jméno a heslo, které chcete použít pro nový účet globálního správce.
 3. Vyberte **vytvořit** a potvrďte informace o nové doméně a účtu.
 4. Přihlaste se pomocí svého nového uživatelského jména a hesla globálního správce služby Azure AD, abyste mohli začít [přidávat a spravovat uživatele](#manage-users).
 
@@ -364,6 +365,6 @@ Když odeberete tenanta, všichni uživatelé, kteří byli přidáni do účtu 
 Pokud jsou k dispozici aktualizace smluv, které vyžadují vaši pozornost, můžou se v horní části této stránky zobrazit **potřebné akce** . Pokud chcete přijmout aktualizovanou smlouvu, nejdřív si přečtěte verzi odkazované smlouvy a pak vyberte **přijmout smlouvu**. 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Vytvořit novou nabídku SaaS](./create-new-saas-offer.md)

@@ -4,15 +4,16 @@ description: Vysvětluje tři metody určení cen nabídek virtuálních počít
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: e398b43e679fb6420c2256e77d34359ae537ac1c
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: c7ea5afeb46c30837c2ae53e871bb64f5d8cf292
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868745"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827340"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>Ceny nabídek virtuálních počítačů
 ==================================
@@ -106,7 +107,7 @@ Vydavatel může také odeslat tabulku s cenami do dočasného umístění úlo�
 Vydavatelé virtuálních počítačů byli informováni 2. července 2019 o přidání nových cen pro nové velikosti virtuálních počítačů Azure (na základě počtu jader).  Nové ceny jsou pro základní velikosti 10, 44, 48, 60, 120, 208 a 416.  Pro existující virtuální počítač se automaticky vypočítaly nové ceny pro tyto velikosti jader na základě aktuálních cen.  Vydavatelé mají od 1. srpna 2019 kontrolu nad dalšími cenami a provádět požadované změny.  Po tomto datu se projeví automaticky vypočtené ceny pro tyto nové základní velikosti, pokud už je Vydavatel znovu Nepublikovaná.
 
 
-<a name="regions"></a>Regions
+<a name="regions"></a>Oblasti
 -------
 
 V následující tabulce jsou uvedeny různé oblasti, které můžete zadat pro vlastní ceny za základní jádro a jejich odpovídající kódy měn.
@@ -124,8 +125,8 @@ V následující tabulce jsou uvedeny různé oblasti, které můžete zadat pro
 | BG         | Bulharsko             | BGN               |
 | CA         | Kanada               | CAD               |
 | CL         | Chile                | CLP               |
-| CO         | Kolumbie             | COP               |
-| CR         | Kostarika           | CRC               |
+| CO         | Kolumbie             | NÁKLADY               |
+| CR         | Kostarika           | KONTROLNÍ               |
 | HR         | Chorvatsko              | HRK               |
 | CY         | Kypr               | EUR               |
 | CZ         | Česká republika       | CZK               |
@@ -144,7 +145,7 @@ V následující tabulce jsou uvedeny různé oblasti, které můžete zadat pro
 | HU         | Maďarsko              | HUF               |
 | IS         | Island              | PŘIDĚLENÍ               |
 | IN         | Indie                | INR               |
-| id         | Indonésie            | IDR               |
+| ID         | Indonésie            | IDR               |
 | IE         | Irsko              | EUR               |
 | IL         | Izrael               | ILS               |
 | IT         | Itálie                | EUR               |
@@ -163,7 +164,7 @@ V následující tabulce jsou uvedeny různé oblasti, které můžete zadat pro
 | MT         | Malta                | EUR               |
 | MX         | Mexiko               | MXN               |
 | PAMATOVAT         | Černá Hora           | EUR               |
-| MA         | Maroko              | MAD –               |
+| MA         | Maroko              | Mad –               |
 | NL         | Nizozemsko          | EUR               |
 | NZ         | Nový Zéland          | NZD               |
 | NG         | Nigérie              | NGN               |

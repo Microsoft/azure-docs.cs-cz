@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: dotaz Azure SQL Database pomocí Editoru dotazů '
+title: 'Azure Portal: dotaz pomocí Editoru dotazů'
 description: Zjistěte, jak se připojit k SQL Database na webu Azure Portal pomocí editoru dotazů SQL. Potom spustíte příkazy jazyka Transact-SQL (T-SQL) k dotazování a úpravě dat.
 keywords: connect to sql database,azure portal, portal, query editor
 services: sql-database
@@ -12,12 +12,12 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 10/24/2019
-ms.openlocfilehash: 75882b13341c7fc373de141ba12f8806cb106906
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3990d7ec63c312d38168fe76269e1a920f1a6817
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690924"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827118"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Rychlý Start: použití Editoru dotazů SQL Azure Portal k připojení a dotazování dat
 
@@ -31,7 +31,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
   || Izolovaná databáze |
   |:--- |:--- |
-  | Vytváření| [Azure Portal](sql-database-single-database-get-started.md) |
+  | Vytvoření| [Azure Portal](sql-database-single-database-get-started.md) |
   || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
   | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](sql-database-server-level-firewall-rule.md)|
@@ -42,7 +42,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 ## <a name="sign-in-the-azure-portal"></a>Přihlášení Azure Portal
 
-Přihlásit se na [Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="connect-using-sql-authentication"></a>Připojení pomocí ověřování SQL
 

@@ -1,44 +1,45 @@
 ---
-title: Aplikace Power BI nabízejí požadavky | Azure Marketplace
-description: Obsahuje požadavky pro publikování aplikace Power BI na webu AppSource.
+title: Požadavky nabídky Power BI aplikace | Azure Marketplace
+description: Poskytuje předpoklady pro publikování Power BI aplikace do AppSource.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: c436522bd5f1a9d52b71d85b7b47ac9a089c0b25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 486a1b9ca213828b5a26571de7bc34d06f56d434
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258172"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826023"
 ---
-# <a name="power-bi-app-offer-prerequisites"></a>Aplikace Power BI nabízejí požadavky
+# <a name="power-bi-app-offer-prerequisites"></a>Požadavky nabídky Power BI aplikace
 
-Tento článek obsahuje technické a podnikové požadavky, které je potřeba splnit, předtím, než můžete publikovat aplikaci Power BI nabízet na webu marketplace AppSource.  Pokud jste tak již neučinili, přečtěte si [Office 365, Dynamics 365, PowerApps a Power BI nabízí průvodce publikováním](../../appsource-offer-publishing-guide.md).
+Tento článek poskytuje technické a obchodní požadavky, které je potřeba splnit, než můžete publikovat nabídku aplikace Power BI na webu AppSource Marketplace.  Pokud jste to ještě neudělali, přečtěte si [příručku k publikování na webu Office 365, Dynamics 365, PowerApps a Power BI](../../appsource-offer-publishing-guide.md).
 
 
 ## <a name="technical-requirements"></a>Technické požadavky
 
-Hlavní technický asset budete potřebovat pro tento typ nabídky se [aplikaci Power BI](https://go.microsoft.com/fwlink/?linkid=2028636). Další informace najdete v tématu [technických prostředků vytvořit Power BI](./cpp-create-technical-assets.md).
+Hlavním technickým prostředkem, který budete potřebovat pro tento typ nabídky, je [Power BI aplikace](https://go.microsoft.com/fwlink/?linkid=2028636). Další informace najdete v tématu [vytvoření Power BI technických prostředků](./cpp-create-technical-assets.md).
 
-Po aplikaci služby je vytvořený a otestovaný v Power BI, měli byste uložit adresa URL instalace aplikace Power BI vygeneruje. Budete potřebovat k [vytvořte nabídku aplikace Power BI](./cpp-create-offer.md).
+Po vytvoření a otestování aplikace služby v Power BI byste měli uložit adresu URL instalace aplikace, kterou vygeneruje Power BI. Budete ho potřebovat k [vytvoření Power BI nabídky aplikace](./cpp-create-offer.md).
 
 ## <a name="business-requirements"></a>Obchodní požadavky
 
-Obchodní požadavky zahrnují procesní, smluvní a právní závazky.  Musíte mít:
+Mezi obchodní požadavky patří procedurální, smluvní a právní závazky.  Musíte:
 
-- Být vydavatele na webu marketplace zaregistrovaný cloud. Pokud jste se nezaregistrovali, postupujte podle kroků v [stát vydavatelem cloudové Tržiště](https://docs.microsoft.com/azure/marketplace/become-publisher).
+- Být registrovaným vydavatelem cloudového tržiště. Pokud nejste registrováni, postupujte podle kroků v části [Staňte se vydavatelem cloudového tržiště](https://docs.microsoft.com/azure/marketplace/become-publisher).
 
     > [!NOTE] 
-    > Použijte stejný účet Microsoft Developer Center registrace k přihlášení [portál partnerů cloudu](https://cloudpartner.azure.com). By měl mít pouze jeden účet Microsoft pro svoje nabídky na AppSource. Účty by neměly být specifické pro jednotlivé služby nebo nabídky.
+    > K přihlášení do [portál partnerů cloudu](https://cloudpartner.azure.com)použijte stejný registrační účet Microsoft Developer Center. Pro nabídky AppSource byste měli mít jenom jeden účet Microsoft. Účty by neměly být specifické pro jednotlivé služby nebo nabídky.
  
 - Zákazníkům je třeba zpřístupnit z obchodního hlediska přiměřenou technickou podporu.
-- Zadejte obsah, který splňuje kritéria pro uvedené na AppSource vaší nabídky. Další informace najdete v tématu [mají aplikace do seznamu na AppSource? Tady je způsob](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how).
-- V souladu s [prohlášení o ochraně osobních údajů Microsoft](https://privacy.microsoft.com/privacystatement).
+- Poskytněte obsah, který splňuje kritéria pro uvedení vaší nabídky na AppSource. Další informace najdete v tématu [seznam aplikací pro AppSource? Tady je postup](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how).
+- Vyhovět [prohlášení společnosti Microsoft o zásadách ochrany osobních údajů](https://privacy.microsoft.com/privacystatement).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Po splnění všech požadavků, jste připraveni [vytvořte nabídku aplikace Power BI](./cpp-create-offer.md) v portál partnerů cloudu.
+Až splníte všechny požadavky, budete připraveni vytvořit v portál partnerů cloudu [nabídku aplikace Power BI](./cpp-create-offer.md) .
