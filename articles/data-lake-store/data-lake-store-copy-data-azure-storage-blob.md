@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z úložiště objektů BLOB Azure do Azure Data Lake Storage Gen1 | Dokumentace Microsoftu
-description: Pomocí AdlCopy nástroje pro kopírování dat z úložiště objektů BLOB Azure do Azure Data Lake Storage Gen1
+title: Kopírování dat z objektů blob Azure Storage do Azure Data Lake Storage Gen1 | Microsoft Docs
+description: Kopírování dat z objektů blob Azure Storage do Azure Data Lake Storage Gen1 pomocí nástroje AdlCopy
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,58 +12,58 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: be66fd51b37c0e62b2b757a88ee1db9319b2093a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6ecd27c1be0fa6b4f13415cc21a57fcdaaf962de
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60878827"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824571"
 ---
-# <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Kopírování dat z úložiště objektů BLOB Azure do Azure Data Lake Storage Gen1
+# <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Kopírování dat z objektů blob Azure Storage do Azure Data Lake Storage Gen1
 > [!div class="op_single_selector"]
 > * [Pomocí DistCp](data-lake-store-copy-data-wasb-distcp.md)
 > * [Pomocí AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)
 >
 >
 
-Poskytuje nástroj příkazového řádku Azure Data Lake Storage Gen1 [AdlCopy](https://aka.ms/downloadadlcopy), zkopírovat data z následujících zdrojů:
+Azure Data Lake Storage Gen1 poskytuje nástroj příkazového řádku [AdlCopy](https://www.microsoft.com/download/details.aspx?id=50358)pro kopírování dat z následujících zdrojů:
 
-* Z Azure Storage BLOB do Data Lake Storage Gen1. Nelze použití AdlCopy ke kopírování dat z Data Lake Storage Gen1 do objektů BLOB Azure Storage.
-* Mezi dva účty Azure Data Lake Storage Gen1.
+* Z Azure Storage objektů blob do Data Lake Storage Gen1. AdlCopy nelze použít ke kopírování dat z Data Lake Storage Gen1 do objektů blob Azure Storage.
+* Mezi dvěma účty Azure Data Lake Storage Gen1.
 
-Navíc můžete použít nástroj AdlCopy ve dvou různých režimech:
+Nástroj AdlCopy můžete také použít ve dvou různých režimech:
 
-* **Samostatné**, kde nástroj používá Data Lake Storage Gen1 prostředky k provedení úlohy.
-* **Účet Data Lake Analytics pomocí**, kde se jednotky přiřazené k vašemu účtu Data Lake Analytics používá pro operaci kopírování. Můžete chtít tuto možnost použijte, pokud chcete provádět úlohy kopírování předvídatelným způsobem.
+* **Standalone**, kde nástroj používá k provedení úlohy Data Lake Storage Gen1 prostředky.
+* **Pomocí účtu Data Lake Analytics**, kde se k provedení operace kopírování použijí jednotky přiřazené vašemu účtu Data Lake Analytics. Tuto možnost můžete použít, pokud chcete provádět úlohy kopírování předvídatelným způsobem.
 
 ## <a name="prerequisites"></a>Požadavky
 Je nutné, abyste před zahájením tohoto článku měli tyto položky:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure Storage blob** kontejneru s daty.
-* **Účet Azure Data Lake Storage Gen1**. Pokyny k jeho vytvoření najdete v tématu [Začínáme s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
-* **Účet Azure Data Lake Analytics (volitelné)** – viz [Začínáme s Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md) pokyny o tom, jak vytvořit účet Data Lake Analytics.
-* **Nástroj AdlCopy**. Nainstalujte nástroj AdlCopy z [ https://aka.ms/downloadadlcopy ](https://aka.ms/downloadadlcopy).
+* **Azure Storage kontejner objektů BLOB** s některými daty.
+* **Účet Azure Data Lake Storage Gen1**. Pokyny, jak ho vytvořit, najdete v tématu Začínáme [s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) .
+* **Účet Azure Data Lake Analytics (volitelné)** – pokyny k vytvoření účtu Data Lake Analytics najdete v části začínáme [s Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md) .
+* **Nástroj AdlCopy** Nainstalujte [Nástroj AdlCopy](https://www.microsoft.com/download/details.aspx?id=50358).
 
-## <a name="syntax-of-the-adlcopy-tool"></a>Syntaxi nástroje pomocí AdlCopy
-Použijte následující syntaxi pro práci s nástrojem AdlCopy
+## <a name="syntax-of-the-adlcopy-tool"></a>Syntaxe nástroje AdlCopy
+Pomocí následující syntaxe můžete pracovat s nástrojem AdlCopy.
 
     AdlCopy /Source <Blob or Data Lake Storage Gen1 source> /Dest <Data Lake Storage Gen1 destination> /SourceKey <Key for Blob account> /Account <Data Lake Analytics account> /Units <Number of Analytics units> /Pattern
 
-Parametry v syntaxi popsané níže:
+Parametry v syntaxi jsou popsány níže:
 
 | Možnost | Popis |
 | --- | --- |
-| source |Určuje umístění zdrojových dat v Azure storage blob. Zdrojem může být kontejner objektů blob, objekt blob nebo jiného účtu Data Lake Storage Gen1. |
-| cíl |Určuje cíl Gen1 úložiště Data Lake pro kopírování. |
-| SourceKey |Určuje přístupový klíč úložiště pro zdrojový objekt blob úložiště Azure. To je potřeba, pouze pokud je zdroj kontejner objektů blob nebo objekt blob. |
-| Účet |**Volitelné**. Použijte, pokud chcete spustit úlohu kopírování pomocí účtu Azure Data Lake Analytics. Pokud používáte parametr/Account v syntaxi, ale nezadávejte účet Data Lake Analytics, AdlCopy používá výchozí účet pro spuštění úlohy. Navíc pokud použijete tuto možnost, musíte přidat zdroj (Azure Storage Blob) a cíl (Azure Data Lake Storage Gen1) jako zdroj dat pro svůj účet Data Lake Analytics. |
-| Jednotky |Určuje počet jednotek Data Lake Analytics, které se použije pro úlohu kopírování. Tato možnost je povinná, pokud použijete **účtu** můžete zadat účet Data Lake Analytics. |
-| Vzor |Určuje vzor regulárního výrazu, která určuje, jaké objekty BLOB nebo soubory ke zkopírování. AdlCopy používá odpovídající malá a velká písmena. Výchozím způsobem používaným-li zadána žádná vzor je zkopírovat všechny položky. Zadávání více vzory souborů se nepodporuje. |
+| Zdroj |Určuje umístění zdrojových dat v objektu BLOB služby Azure Storage. Zdrojem může být kontejner objektů blob, objekt BLOB nebo jiný Data Lake Storage Gen1 účet. |
+| Propojovací |Určuje Data Lake Storage Gen1 cíl kopírování. |
+| SourceKey |Určuje přístupový klíč úložiště pro zdroj objektu BLOB služby Azure Storage. To se vyžaduje jenom v případě, že zdrojem je kontejner objektů BLOB nebo objekt BLOB. |
+| Účet |**Volitelné**. Tuto funkci použijte, pokud chcete použít účet Azure Data Lake Analytics ke spuštění úlohy kopírování. Použijete-li v syntaxi možnost/Account, ale nezadáte účet Data Lake Analytics, použije AdlCopy výchozí účet ke spuštění úlohy. Pokud použijete tuto možnost, musíte přidat zdroj (Azure Storage Blob) a cíl (Azure Data Lake Storage Gen1) jako zdroje dat pro účet Data Lake Analytics. |
+| Jednotky |Určuje počet Data Lake Analytics jednotek, které budou použity pro úlohu kopírování. Tato možnost je povinná, pokud k určení Data Lake Analytics účtu použijete možnost **/account** . |
+| Vzor |Určuje vzor regulárního výrazu, který určuje, které objekty blob nebo soubory ke zkopírování. AdlCopy používá porovnávání rozlišující velká a malá písmena. Výchozí vzor použitý v případě, že není zadán žádný vzor, kopíruje všechny položky. Určení více vzorů souborů není podporováno. |
 
-## <a name="use-adlcopy-as-standalone-to-copy-data-from-an-azure-storage-blob"></a>Použití AdlCopy ke kopírování dat z objektu blob služby Azure Storage (jako samostatný)
-1. Otevřete příkazový řádek a přejděte do adresáře, kde AdlCopy je nainstalovaný, obvykle `%HOMEPATH%\Documents\adlcopy`.
-2. Spusťte následující příkaz pro kopírování jen konkrétní objekt blob ze zdrojového kontejneru do složky Data Lake Storage Gen1:
+## <a name="use-adlcopy-as-standalone-to-copy-data-from-an-azure-storage-blob"></a>Použití AdlCopy (jako samostatné) ke kopírování dat z Azure Storageého objektu BLOB
+1. Otevřete příkazový řádek a přejděte do adresáře, kde je nainstalovaný AdlCopy, obvykle `%HOMEPATH%\Documents\adlcopy`.
+2. Spusťte následující příkaz ke zkopírování konkrétního objektu BLOB ze zdrojového kontejneru do složky Data Lake Storage Gen1:
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
 
@@ -72,9 +72,9 @@ Parametry v syntaxi popsané níže:
         AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log /dest swebhdfs://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
     >[!NOTE] 
-    >Výše uvedené syntaxe Určuje soubor, který má být zkopírován do složky v účtu Data Lake Storage Gen1. Nástroj AdlCopy vytvoří složku, pokud neexistuje zadaný název složky.
+    >Výše uvedená syntaxe určuje soubor, který se má zkopírovat do složky v Data Lake Storage Gen1ovém účtu. Nástroj AdlCopy vytvoří složku, pokud zadaný název složky neexistuje.
 
-    Zobrazí se výzva k zadání přihlašovacích údajů předplatného Azure, ve kterém máte účtu Data Lake Storage Gen1. Zobrazí se výstup podobný následujícímu:
+    Zobrazí se výzva k zadání přihlašovacích údajů k předplatnému Azure, pod kterým máte účet Data Lake Storage Gen1. Zobrazí se výstup podobný následujícímu:
 
         Initializing Copy.
         Copy Started.
@@ -82,7 +82,7 @@ Parametry v syntaxi popsané níže:
         Finishing Copy.
         Copy Completed. 1 file copied.
 
-1. Můžete také zkopírovat všechny objekty BLOB z jednoho kontejneru do účtu Data Lake Storage Gen1 pomocí následujícího příkazu:
+1. Všechny objekty BLOB z jednoho kontejneru můžete také zkopírovat do účtu Data Lake Storage Gen1 pomocí následujícího příkazu:
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/ /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>        
 
@@ -92,13 +92,13 @@ Parametry v syntaxi popsané níže:
 
 ### <a name="performance-considerations"></a>Otázky výkonu
 
-Pokud kopírujete z účtu služby Azure Blob Storage, může omezí během kopírování na straně úložiště objektů blob. To bude mít negativní dopad na výkon úlohy kopírování. Další informace o omezeních úložiště objektů Blob v Azure najdete v tématu limity služby Azure Storage na [předplatného Azure a omezení služeb](../azure-subscription-service-limits.md).
+Pokud provádíte kopírování z účtu Azure Blob Storage, můžete se během kopírování na straně úložiště objektů BLOB omezit. Tím dojde ke snížení výkonu úlohy kopírování. Další informace o limitech Azure Blob Storage najdete v tématu omezení Azure Storage v rámci [předplatného a služeb Azure](../azure-subscription-service-limits.md).
 
-## <a name="use-adlcopy-as-standalone-to-copy-data-from-another-data-lake-storage-gen1-account"></a>Použití AdlCopy ke kopírování dat z jiného účtu Data Lake Storage Gen1 (jako samostatný)
-Můžete také použití AdlCopy ke kopírování dat mezi dva účty Data Lake Storage Gen1.
+## <a name="use-adlcopy-as-standalone-to-copy-data-from-another-data-lake-storage-gen1-account"></a>Použití AdlCopy (jako samostatné) ke kopírování dat z jiného Data Lake Storage Gen1 účtu
+Pomocí AdlCopy můžete také kopírovat data mezi dvěma Data Lake Storage Gen1 účty.
 
-1. Otevřete příkazový řádek a přejděte do adresáře, kde AdlCopy je nainstalovaný, obvykle `%HOMEPATH%\Documents\adlcopy`.
-2. Spusťte následující příkaz pro kopírování z jednoho účtu Data Lake Storage Gen1 konkrétního souboru do jiného.
+1. Otevřete příkazový řádek a přejděte do adresáře, kde je nainstalovaný AdlCopy, obvykle `%HOMEPATH%\Documents\adlcopy`.
+2. Spusťte následující příkaz ke zkopírování konkrétního souboru z jednoho Data Lake Storage Gen1 účtu do jiného.
 
         AdlCopy /Source adl://<source_adlsg1_account>.azuredatalakestore.net/<path_to_file> /dest adl://<dest_adlsg1_account>.azuredatalakestore.net/<path>/
 
@@ -107,36 +107,36 @@ Můžete také použití AdlCopy ke kopírování dat mezi dva účty Data Lake 
         AdlCopy /Source adl://mydatastorage.azuredatalakestore.net/mynewfolder/909f2b.log /dest adl://mynewdatalakestorage.azuredatalakestore.net/mynewfolder/
 
    > [!NOTE]
-   > Výše uvedené syntaxe Určuje soubor, který má být zkopírován do složky v cílovém účtu Data Lake Storage Gen1. Nástroj AdlCopy vytvoří složku, pokud neexistuje zadaný název složky.
+   > Výše uvedená syntaxe určuje soubor, který se má zkopírovat do složky v cílovém Data Lake Storage Gen1 účtu. Nástroj AdlCopy vytvoří složku, pokud zadaný název složky neexistuje.
    >
    >
 
-    Zobrazí se výzva k zadání přihlašovacích údajů předplatného Azure, ve kterém máte účtu Data Lake Storage Gen1. Zobrazí se výstup podobný následujícímu:
+    Zobrazí se výzva k zadání přihlašovacích údajů k předplatnému Azure, pod kterým máte účet Data Lake Storage Gen1. Zobrazí se výstup podobný následujícímu:
 
         Initializing Copy.
         Copy Started.|
         100% data copied.
         Finishing Copy.
         Copy Completed. 1 file copied.
-3. Následující příkaz zkopíruje všechny soubory z konkrétní složky v účtu Data Lake Storage Gen1 zdroje do složky v účtu Data Lake Storage Gen1 cíli.
+3. Následující příkaz zkopíruje všechny soubory z konkrétní složky ve zdrojovém Data Lake Storage Gen1 účtu do složky v cílovém Data Lake Storage Gen1 účtu.
 
         AdlCopy /Source adl://mydatastorage.azuredatalakestore.net/mynewfolder/ /dest adl://mynewdatalakestorage.azuredatalakestore.net/mynewfolder/
 
 ### <a name="performance-considerations"></a>Otázky výkonu
 
-Při použití AdlCopy jako samostatný nástroj, kopie je spustit na sdílené, spravované prostředky Azure. Výkon, který se může zobrazit v tomto prostředí závisí na zatížení systému a dostupné prostředky. Tento režim je nejvhodnější pro malé přenosy na základě ad hoc. Žádné parametry musí být vyladěné při použití AdlCopy jako samostatný nástroj.
+Při použití AdlCopy jako samostatného nástroje se kopie spouští na sdílených spravovaných prostředcích Azure. Výkon, který se může v tomto prostředí zobrazit, závisí na zatížení systému a dostupných prostředcích. Tento režim se nejlépe používá pro malé přenosy na základě ad hoc. Při použití AdlCopy jako samostatného nástroje není nutné vyladit žádné parametry.
 
-## <a name="use-adlcopy-with-data-lake-analytics-account-to-copy-data"></a>Použití AdlCopy ke kopírování dat (s účtem Data Lake Analytics)
-Váš účet Data Lake Analytics můžete použít také ke spuštění úlohy AdlCopy ke kopírování dat z Azure storage BLOB do Data Lake Storage Gen1. Tuto možnost byste obvykle použili, když jsou data přesunout v rozsahu od terabajtů po gigabajtech a chcete, aby propustnost lepší a předvídatelný výkon.
+## <a name="use-adlcopy-with-data-lake-analytics-account-to-copy-data"></a>Kopírování dat pomocí AdlCopy (s Data Lake Analyticsm účtem)
+Účet Data Lake Analytics můžete použít také ke spuštění úlohy AdlCopy ke zkopírování dat z objektů BLOB služby Azure Storage do Data Lake Storage Gen1. Tuto možnost obvykle použijete, když přesunete data v rozsahu gigabajtů a terabajtů a potřebujete lepší a předvídatelné propustnost výkonu.
 
-Použití účtu Data Lake Analytics pomocí AdlCopy ke kopírování z úložiště objektů Blob Azure, je nutné přidat zdroj (Azure Storage Blob) jako zdroj dat pro svůj účet Data Lake Analytics. Pokyny k přidání dalších zdrojů dat do účtu Data Lake Analytics najdete v tématu [zdrojů dat účtu Správa služby Data Lake Analytics](../data-lake-analytics/data-lake-analytics-manage-use-portal.md#manage-data-sources).
+Chcete-li použít účet Data Lake Analytics s AdlCopy ke zkopírování z Azure Storage Blob, je třeba jako zdroj dat pro účet Data Lake Analytics přidat zdroj (Azure Storage Blob). Pokyny k přidání dalších zdrojů dat do účtu Data Lake Analytics najdete v tématu [Správa zdrojů dat účtu Data Lake Analytics](../data-lake-analytics/data-lake-analytics-manage-use-portal.md#manage-data-sources).
 
 > [!NOTE]
-> Pokud kopírujete z účtu služby Azure Data Lake Storage Gen1 jako zdroj, který používá účet Data Lake Analytics, není nutné přidružit účet Data Lake Storage Gen1 k účtu Data Lake Analytics. Požadavek na zdrojovém úložišti přidružit k účtu Data Lake Analytics je pouze v případě, že zdroj je účet služby Azure Storage.
+> Pokud kopírujete z účtu Azure Data Lake Storage Gen1 jako zdroj pomocí účtu Data Lake Analytics, není nutné přidružit účet Data Lake Storage Gen1 k účtu Data Lake Analytics. Požadavek na přidružení zdrojového úložiště s účtem Data Lake Analytics je pouze v případě, že zdrojem je účet Azure Storage.
 >
 >
 
-Spusťte následující příkaz pro kopírování z Azure Storage blob do účtu Data Lake Storage Gen1 pomocí účtu Data Lake Analytics:
+Spusťte následující příkaz ke zkopírování z Azure Storageého objektu blob do účtu Data Lake Storage Gen1 pomocí účtu Data Lake Analytics:
 
     AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Account <data_lake_analytics_account> /Units <number_of_data_lake_analytics_units_to_be_used>
 
@@ -144,19 +144,19 @@ Příklad:
 
     AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest swebhdfs://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== /Account mydatalakeanalyticaccount /Units 2
 
-Podobně spusťte následující příkaz zkopíruje všechny soubory z konkrétní složky v účtu Data Lake Storage Gen1 zdroje do složky v cílovém účtu Data Lake Storage Gen1 pomocí účtu Data Lake Analytics:
+Podobně spusťte následující příkaz, který zkopíruje všechny soubory z konkrétní složky ve zdrojovém Data Lake Storage Gen1 účtu do složky v cílovém Data Lake Storage Gen1 účtu pomocí účtu Data Lake Analytics:
 
     AdlCopy /Source adl://mysourcedatalakestorage.azuredatalakestore.net/mynewfolder/ /dest adl://mydestdatastorage.azuredatalakestore.net/mynewfolder/ /Account mydatalakeanalyticaccount /Units 2
 
 ### <a name="performance-considerations"></a>Otázky výkonu
 
-Při kopírování dat v rozsahu od terabajtů, pomocí účtu Azure Data Lake Analytics pomocí AdlCopy poskytuje lepší a více předvídatelný výkon. Parametr, který by měly být vyladěné je počet jednotek Azure Data Lake Analytics má použít pro úlohu kopírování. Zvýšením počtu jednotek zvýší výkon vaší úlohy kopírování. Každý soubor, které se mají zkopírovat, můžete použít maximální jednu jednotku. Určení víc jednotek, než je počet souborů, které jsou kopírovány nedojde ke zvýšení výkonu.
+Při kopírování dat v rozsahu terabajtů používá AdlCopy s vlastním účtem Azure Data Lake Analytics lepší a předvídatelný výkon. Parametr, který se má ladit, je počet Azure Data Lake Analytics jednotek, které se mají použít pro úlohu kopírování. Zvýšením počtu jednotek dojde ke zvýšení výkonu úlohy kopírování. Každý soubor, který se má zkopírovat, může používat maximálně jednu jednotku. Zadáním více jednotek, než je počet kopírovaných souborů, nedojde ke zvýšení výkonu.
 
 ## <a name="use-adlcopy-to-copy-data-using-pattern-matching"></a>Použití AdlCopy ke kopírování dat pomocí porovnávání vzorů
-V této části se dozvíte, jak k použití AdlCopy ke kopírování ze zdroje dat (v našem příkladu používáme Azure Storage Blob) k určení Data Lake Storage Gen1 účtu pomocí porovnávání vzorů. Například můžete použít následující postup bude kopírováno všechny soubory s příponou CSV zdrojového objektu blob do cíle.
+V této části se dozvíte, jak pomocí AdlCopy kopírovat data ze zdroje (v našem příkladu níže používáme Azure Storage Blob) k cílovému Data Lake Storage Gen1mu účtu pomocí porovnávání vzorů. Pomocí následujících kroků můžete například zkopírovat všechny soubory s příponou. csv ze zdrojového objektu blob do cílového umístění.
 
-1. Otevřete příkazový řádek a přejděte do adresáře, kde AdlCopy je nainstalovaný, obvykle `%HOMEPATH%\Documents\adlcopy`.
-2. Spusťte následující příkaz pro kopírování všech souborů s příponou *.csv z konkrétní objekt blob z kontejneru zdroje do složky Data Lake Storage Gen1:
+1. Otevřete příkazový řádek a přejděte do adresáře, kde je nainstalovaný AdlCopy, obvykle `%HOMEPATH%\Documents\adlcopy`.
+2. Spusťte následující příkaz, který zkopíruje všechny soubory s příponou *. CSV z konkrétního objektu BLOB ze zdrojového kontejneru do složky Data Lake Storage Gen1:
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Pattern *.csv
 
@@ -165,20 +165,20 @@ V této části se dozvíte, jak k použití AdlCopy ke kopírování ze zdroje 
         AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/FoodInspectionData/ /dest adl://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== /Pattern *.csv
 
 ## <a name="billing"></a>Fakturace
-* Pokud použijete nástroj AdlCopy jako samostatné vám budou účtovat náklady na odchozí přenosy pro přesun dat, pokud není zdrojový účet úložiště Azure ve stejné oblasti jako účet Data Lake Storage Gen1.
-* Pokud se vaše Data Lake Analytics pomocí nástroje AdlCopy účtu, standardní [Data Lake Analytics sazeb za](https://azure.microsoft.com/pricing/details/data-lake-analytics/) platit.
+* Pokud použijete nástroj AdlCopy jako samostatný, budou se vám účtovat náklady na výstup pro přesun dat, pokud zdrojový Azure Storage účet není ve stejné oblasti jako Data Lake Storage Gen1 účet.
+* Pokud použijete nástroj AdlCopy s vaším účtem Data Lake Analytics, budou platit standardní [Data Lake Analytics fakturační sazby](https://azure.microsoft.com/pricing/details/data-lake-analytics/) .
 
-## <a name="considerations-for-using-adlcopy"></a>Důležité informace týkající se pomocí AdlCopy
-* AdlCopy (pro verzi 1.0.5), podporuje kopírování dat ze zdroje, které společně existovat více než tisíce souborů a složek. Ale pokud narazíte na problémy kopírování velkou datovou sadu, můžete distribuovat soubory nebo složky do jiné podřízené složky a místo toho použijte cestu pro tyto podřízené složky jako zdroj.
+## <a name="considerations-for-using-adlcopy"></a>Předpoklady pro používání AdlCopy
+* AdlCopy (pro verzi 1.0.5) podporuje kopírování dat ze zdrojů, které společně mají více než tisíce souborů a složek. Pokud ale dojde k problémům s kopírováním velké datové sady, můžete soubory nebo složky distribuovat do různých podsložek a místo toho použít cestu k těmto podsložkám jako zdroj.
 
-## <a name="performance-considerations-for-using-adlcopy"></a>Faktory ovlivňující výkon u pomocí AdlCopy
+## <a name="performance-considerations-for-using-adlcopy"></a>Požadavky na výkon pro použití AdlCopy
 
-AdlCopy podporuje kopírování dat, který obsahuje tisíce souborů a složek. Pokud narazíte na problémy kopírování velkou datovou sadu, můžete do menších podsložky můžete distribuovat soubory či složky. AdlCopy byla vytvořena pro ad hoc kopie. Pokud se pokoušíte kopírování dat pravidelně, měli byste zvážit použití [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) , která poskytuje úplné řízení kolem operace kopírování.
+AdlCopy podporuje kopírování dat obsahujících tisíce souborů a složek. Pokud ale dojde k problémům s kopírováním velké datové sady, můžete soubory nebo složky distribuovat do menších podsložek. AdlCopy byl sestaven pro ad hoc kopie. Pokud se snažíte kopírovat data opakovaně, měli byste zvážit použití [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) , která poskytuje úplnou správu kolem operací kopírování.
 
 ## <a name="release-notes"></a>Poznámky k verzi
-* 1.0.13 – Pokud se kopírování dat do stejného účtu Azure Data Lake Storage Gen1 napříč více příkazů adlcopy, nepotřebujete znovu zadat přihlašovací údaje pro každé spuštění už. Adlcopy nyní ukládá tyto informace během různých spuštění.
+* 1.0.13 – Pokud kopírujete data do stejného Azure Data Lake Storage Gen1 účtu v několika příkazech AdlCopy, nemusíte už znovu zadávat svoje přihlašovací údaje pro každý běh. AdlCopy nyní bude tyto informace ukládat do mezipaměti v různých spuštěních.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Použití Azure Data Lake Analytics s Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Použití Azure HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

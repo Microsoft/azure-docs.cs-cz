@@ -1,5 +1,5 @@
 ---
-title: Automatizace replikace změn schématu v Azure Synchronizace dat SQL
+title: Automatizujte replikaci změn schématu v Synchronizace dat SQL
 description: Naučte se automatizovat replikaci změn schématu v Azure Synchronizace dat SQL.
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: data sync
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/14/2018
-ms.openlocfilehash: 01cc82a2ada1f4ac8f26b223b7168b2cca157793
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 639901975bbb66b9f410bea297d9e48cd96d6d1b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686877"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822437"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Automatizace replikace změn schématu v Azure Synchronizace dat SQL
 
@@ -84,7 +84,7 @@ INSERT INTO SchemaChanges (SqlStmt, Description)
 
 Aktivační událost vloží záznam do tabulky sledování změn schématu pro každý příkaz ALTER TABLE. Tento příklad přidá filtr, aby se zabránilo replikaci změn schématu provedených v rámci schématu data **Sync**, protože tyto změny jsou pravděpodobně provedeny službou synchronizace dat. Pokud chcete replikovat pouze určité typy změn schématu, přidejte další filtry.
 
-Můžete také přidat další aktivační události pro replikaci jiných typů změn schématu. Například vytvořte aktivační události CREATE_PROCEDURE, ALTER_PROCEDURE a DROP_PROCEDURE pro replikaci změn uložených procedur.
+Můžete také přidat další aktivační události pro replikaci jiných typů změn schématu. Můžete například vytvořit CREATE_PROCEDURE, ALTER_PROCEDURE a DROP_PROCEDURE triggery pro replikaci změn uložených procedur.
 
 ### <a name="create-a-trigger-on-other-endpoints-to-apply-schema-changes-during-insertion"></a>Vytvořit Trigger na jiných koncových bodech pro použití změn schématu během vložení
 

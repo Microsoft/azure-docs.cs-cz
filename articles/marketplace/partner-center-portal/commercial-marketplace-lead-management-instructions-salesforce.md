@@ -4,15 +4,16 @@ description: Nakonfigurujte správu zájemců na Salesforce pro zákazníky Azur
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: evansma
-ms.openlocfilehash: d941a7902dd374a931147bdaa8f015c46268ee8a
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: bdd3bb50fc69083c73eb01a84bf0fb0db82a8a65
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69901984"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812157"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Konfigurace správy zájemců pro Salesforce
 
@@ -23,29 +24,29 @@ Tento článek popisuje, jak nastavit systém Salesforce pro zpracování potenc
 1. Přihlaste se k Salesforce.
 2. Pokud používáte osvětlovací prostředí Salesforce.
     1. Na domovské stránce Salesforce vyberte **Nastavení** .
-    ![Nastavení Salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
+    ![nastavení Salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
 
     1. Na stránce nastavení přejděte přes levou navigaci k **nástrojům platforem – > nastavení funkcí – > marketingu > Web-to-zájemce**.
-    ![Web Salesforce – zájemce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
+    ![webu Salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
 
 3. Pokud používáte rozhraní Salesforce Classic:
     1. Na domovské stránce Salesforce vyberte **Nastavení** .
-    ![Nastavení služby Salesforce Classic](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-setup.png)
+    ![klasické nastavení Salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-setup.png)
 
-    1. Na stránce nastavení přejděte pomocí levé navigace k sestavování **-> přizpůsobení-> potenciální zákazníky – > z webu na potenciálního zákazníka**.
-    ![Klasický Web-to-vedoucí pro Salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
+    1. Na stránce nastavení přejděte pomocí levé navigace k **sestavování-> přizpůsobení-> potenciální zákazníky – > z webu na potenciálního zákazníka**.
+    ![webu Salesforce Classic Web-to-vedoucí](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
 
 Ostatní pokyny jsou stejné bez ohledu na to, jaké prostředí Salesforce používáte.
 
 4. Na **stránce nastavení webu na základě potenciálního zákazníka**vyberte tlačítko **vytvořit formulář na webu pro** pořízení.
 5. Při **instalaci z webu na potenciálního zákazníka**vyberte **vytvořit webový formulář pro**vyřízení.
-    ![Salesforce – instalace z webu na potenciálního zákazníka](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-3.png)
+    ![Salesforce-Web-to-vedoucí nastavení](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-3.png)
 
-6. Na **formuláři vytvořit web do zájemce**se ujistěte, že `the Include reCAPTCHA in HTML` nastavení není zaškrtnuté a vyberte **Generovat**. 
-    ![Salesforce – vytvoření formuláře z webu na potenciálního zákazníka](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-4.png)
+6. Na **formuláři vytvořit web do zájemce**se ujistěte, že nastavení `the Include reCAPTCHA in HTML` není zaškrtnuté a vyberte **Generovat**. 
+    ![Salesforce – vytvoření formuláře z webu na zájemce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-4.png)
 
 7. Zobrazí se text HTML. Vyhledejte text "OID" a zkopírujte **hodnotu OID** z textu HTML (jenom text mezi uvozovkami) a uložte ho. Tuto hodnotu vložíte do pole **identifikátor organizace** na portálu pro publikování.
-    ![Salesforce – vytvoření formuláře z webu na potenciálního zákazníka](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-5.png)
+    ![Salesforce – vytvoření formuláře z webu na zájemce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-5.png)
 
 8. Vybráno **dokončeno**.
 
@@ -55,9 +56,9 @@ Až budete připraveni ke konfiguraci informací o správě zájemce pro vaši n
 
 1. Přejděte na stránku **nastavení nabídky** pro vaši nabídku.
 1. V části Správa zájemců vyberte **připojit** .
-    ![Správa vedoucích – připojení](./media/commercial-marketplace-lead-management-instructions-salesforce/lead-management-connect.png)
+    Správa vedoucích ![– připojení](./media/commercial-marketplace-lead-management-instructions-salesforce/lead-management-connect.png)
 
-1. V automaticky otevíraném okně s podrobnostmi o připojení vyberte **Salesforce** pro **cíl zájemce** a `oid` vložte ho do pole od webového-vedoucího formuláře, který jste vytvořili pomocí předchozích kroků v poli **identifikátor organizace** .
+1. V automaticky otevíraném okně Podrobnosti připojení vyberte **Salesforce** pro **cíl zájemce** a vložte ho do `oid` z formuláře z webu do zájemce, který jste vytvořili pomocí předchozích kroků do pole **identifikátor organizace** .
 
 1. Vyberte **Uložit**. 
 

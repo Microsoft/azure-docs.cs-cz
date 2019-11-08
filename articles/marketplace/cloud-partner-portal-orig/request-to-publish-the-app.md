@@ -5,26 +5,27 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: e272d051af6070007bcebc0f697d2854cd721497
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9558e7684fa8ab742319890940800da85daa1706
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943587"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814758"
 ---
 # <a name="request-to-publish-the-app"></a>Žádost o publikování aplikace
 
-![Klikněte na tlačítko Publikovat](./media/CRMScreenShot18.png)
+![Kliknutím publikujete](./media/CRMScreenShot18.png)
 
-1. Kliknutím na tlačítko Publikovat odešlete vaši nabídku na náš tým certifikace. Budete moct zobrazit stav vaší nabídky na kartě Stav.
+1. Kliknutím na tlačítko publikovat odešlete vaši nabídku do našeho certifikačního týmu. Na kartě stav si budete moct zobrazit stav nabídky.
 
-![Zkontrolujte stav publikování](./media/CRMScreenShot19.png)
+![Zkontrolovat stav publikace](./media/CRMScreenShot19.png)
 
-## <a name="republish-the-app"></a>Znovu publikovat aplikaci
+## <a name="republish-the-app"></a>Opětovné publikování aplikace
 
- Pokud je potřeba vytvořit žádost o aplikaci znovu publikovat, nejprve klikněte na tlačítko Zrušit publikování na kartě Stav (Pokud již není aktivní požadavek, tento krok přeskočit). Provedené změny aplikace, aktualizujte tuto nabídku odpovídajícím způsobem a pak klikněte na tlačítko Publikovat odeslat znovu. # Speciální aspekty pro Microsoft Dynamics 365 Business Edition Poznámka, řešení pro Microsoft Dynamics 365 Business edice projdou další kontroly během certifikace k zajištění omezení verze Business Edition jsou zachovány. Omezení verze Business Edition jsou zdokumentované tady. # Získání nápovědy. Pokud narazíte na problémy, se můžete přihlásit lístek podpory kliknutím v pravém horním rohu a přejít na.
+ Pokud potřebujete vytvořit žádost o opětovné publikování aplikace, nejprve klikněte na tlačítko Zrušit publikování na kartě stav (Pokud již není požadavek aktivní, přeskočte tento krok). Proveďte v aplikaci změny, aktualizujte nabídku odpovídajícím způsobem a potom klikněte na tlačítko publikovat a znovu odešlete. # Zvláštní důležité požadavky pro Microsoft Dynamics 365 Business Edition Upozorňujeme, že řešení vytvořená pro edice Microsoft Dynamics 365 Business budou během certifikace podléhat dalším kontrolám, aby bylo zajištěno dodržování omezení edice Business Edition. Omezení edice Business Edition jsou popsána zde. # Získání help. Pokud narazíte na problémy, můžete protokolovat lístek podpory tak, že kliknete v pravém horním rohu a přejdete na.
 
 ![Opětovné publikování aplikace](./media/CRMScreenShot20.png)

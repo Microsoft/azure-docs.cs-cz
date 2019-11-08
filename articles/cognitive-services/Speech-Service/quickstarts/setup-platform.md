@@ -1,5 +1,5 @@
 ---
-title: Nastavení platformy pro vývoj
+title: 'Rychlý Start: nastavení platformy pro vývoj'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu se dozvíte, jak nainstalovat sadu Speech SDK pro vaši preferovanou platformu a programovací jazyk.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-three
-ms.openlocfilehash: c1d8a9b6dd7bf7ccf29997f26a1c8cafb01a536e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ad1806daa1fc00d5b14f9c6a30027f278f53e892
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682054"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826961"
 ---
-# <a name="quickstart-setup-development-environment"></a>Rychlý Start: Nastavení vývojového prostředí
+# <a name="quickstart-setup-development-environment"></a>Rychlý Start: vývojové prostředí pro instalaci
 
 ::: zone pivot="programming-language-csharp"
 **Volba cílového prostředí**

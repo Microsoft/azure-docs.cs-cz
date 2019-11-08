@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: syntetizace řeči – služba Speech'
+title: 'Rychlý Start: syntetizace řeči na službu pro rozpoznávání řeči od mluvčího'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijete sadu Speech SDK pro převod textu na syntetizované rozpoznávání řeči.
+description: V tomto rychlém startu použijete sadu Speech SDK k převodu textu na syntetizované rozpoznávání řeči a přehrání výstupu na mluvčíi.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: c080723c30b05e0fe8f3818b684fd47131223601
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 960e87860f004d8f9f2002b8125ecf26ee55237d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681973"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826862"
 ---
-# <a name="quickstart-synthesize-speech-by-using-the-speech-sdk"></a>Rychlý Start: syntetizace řeči pomocí sady Speech SDK
+# <a name="quickstart-synthesize-speech-to-a-speaker"></a>Rychlý Start: syntetizace řeči na mluvčím
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/tts/header.md)]

@@ -1,5 +1,5 @@
 ---
-title: SQL Database formát protokolu auditu
+title: Formát protokolu auditu
 description: Pochopte, jak jsou strukturované protokoly auditu SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 5befd15beba6a5c8071a6f5a01e34dc109fd118a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 389404f59b5a0cba1acd7aa097ddd3dd929d8082
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691212"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822000"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database formát protokolu auditu
 
@@ -48,14 +48,14 @@ Události auditu se zapisují do Log Analytics pracovního prostoru definovanéh
 | action_name | action_name_s | Název akce | Není dostupné. | řetězec |
 | additional_information | additional_information_s | Jakékoli další informace o události uložené jako XML | nvarchar (4000) | řetězec |
 | affected_rows | affected_rows_d | Počet řádků ovlivněných dotazem | bigint | int |
-| název_aplikace | application_name_s| Název klientské aplikace | nvarchar (128) | řetězec |
+| application_name | application_name_s| Název klientské aplikace | nvarchar (128) | řetězec |
 | audit_schema_version | audit_schema_version_d | Vždycky 1 | int | int |
 | class_type | class_type_s | Typ auditované entity, na které probíhá audit | varchar (2) | řetězec |
 | class_type_desc | class_type_description_s | Popis auditované entity, na které probíhá audit | Není dostupné. | řetězec |
 | client_ip | client_ip_s | Zdrojová IP adresa klientské aplikace | nvarchar (128) | řetězec |
 | connection_id | Není dostupné. | ID připojení na serveru | HLAVNÍCH | Není dostupné. |
 | data_sensitivity_information | data_sensitivity_information_s | Typy informací a popisky citlivosti vrácené auditovaným dotazem v závislosti na klasifikovaných sloupcích v databázi. Další informace o [Azure SQL Database zjišťování a klasifikace dat](sql-database-data-discovery-and-classification.md) | nvarchar (4000) | řetězec |
-| název_databáze | database_name_s | Kontext databáze, ve kterém došlo k akci | musí | řetězec |
+| database_name | database_name_s | Kontext databáze, ve kterém došlo k akci | musí | řetězec |
 | database_principal_id | database_principal_id_d | ID kontextu uživatele databáze, ve kterém se akce provádí | int | int |
 | database_principal_name | database_principal_name_s | Název kontextu uživatele databáze, ve kterém se akce provádí | musí | řetězec |
 | duration_milliseconds | duration_milliseconds_d | Doba spuštění dotazu v milisekundách | bigint | int |
@@ -68,7 +68,7 @@ Události auditu se zapisují do Log Analytics pracovního prostoru definovanéh
 | permission_bitmask | permission_bitmask_s | V případě potřeby se zobrazí oprávnění udělená, zamítnutá nebo odvolaná. | varbinary (16) | řetězec |
 | response_rows | response_rows_d | Počet řádků vrácených v sadě výsledků dotazu | bigint | int |
 | schema_name | schema_name_s | Kontext schématu, ve kterém došlo k akci. Hodnota NULL pro audity, ke kterým došlo mimo schéma | musí | řetězec |
-| Není dostupné. | securable_class_type_s | Zabezpečitelný objekt, který se mapuje na auditované class_type | Není dostupné. | řetězec |
+| Není dostupné. | securable_class_type_s | Zabezpečitelné objekty, které se mapují na class_type auditovány | Není dostupné. | řetězec |
 | sequence_group_id | sequence_group_id_g | Jedinečný identifikátor | varbinary | HLAVNÍCH |
 | sequence_number | sequence_number_d | Sleduje sekvenci záznamů v rámci jednoho záznamu auditu, který byl příliš velký, aby se vešel do vyrovnávací paměti pro zápis pro audity. | int | int |
 | server_instance_name | server_instance_name_s | Název instance serveru, ve které došlo k auditu | musí | řetězec |

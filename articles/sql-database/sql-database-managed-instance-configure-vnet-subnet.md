@@ -1,5 +1,5 @@
 ---
-title: Konfigurace existující virtuální sítě pro Azure SQL Database spravovanou instanci
+title: Konfigurace existující virtuální sítě pro spravovanou instanci
 description: Tento článek popisuje, jak nakonfigurovat existující virtuální síť a podsíť, kde můžete nasadit Azure SQL Database spravovanou instanci.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 01/15/2019
-ms.openlocfilehash: 0f6ababa9d25798f4b150c322d48d4c7af04a511
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6dfc0a59ab4150173196fae82d90eca4880d5364
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689380"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818876"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Konfigurace existující virtuální sítě pro Azure SQL Database spravovanou instanci
 

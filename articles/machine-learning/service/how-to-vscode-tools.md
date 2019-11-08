@@ -1,5 +1,5 @@
 ---
-title: Použití Visual Studio Code pro Machine Learning
+title: Azure Machine Learning v Visual Studio Code
 titleSuffix: Azure Machine Learning
 description: Naučte se, jak nainstalovat Azure Machine Learning pro Visual Studio Code a vytvořit experiment v Azure Machine Learning.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: jimgries
 author: greazer
 ms.date: 09/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: df23c41629dfe86058f0f2fb6602e85fd5a6d494
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dd85f3a495b90b3a1dc9d3f021d3600496792759
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489296"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824355"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Začínáme s Azure Machine Learning pro Visual Studio Code
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak používat **Azure Machine Learning pro Visual
 + Pro účely školení poskytuje podporu pro spouštění experimentů místně nebo vzdáleně. Pro každý experiment můžete protokolovat vlastní metriky více spuštění pro doladění parametrů
 + Azure Machine Learning můžete použít také k snadnému nasazení modelů strojového učení pro potřeby testování a výroby.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
@@ -143,7 +143,7 @@ A to je vše! Teď stačí použít rozšíření ke spuštění skriptu v cloud
 
 Po kliknutí na tlačítko pro spuštění experimentu odpovězte na následující výzvy:
 
-1. Zvolení předplatného Azure
+1. Zvolte svoje předplatné Azure.
 1. Vyberte vytvořit *Nový* pracovní prostor Azure ml.
 1. Vyberte ze sady předem nakonfigurovaných šablon k inicializaci prostředí Python pro spuštění. Šablony poskytují počáteční bod a obsahují nastavení pro:
     1. **PyTorch**, **TensorFlow**nebo **Scikit – informace**

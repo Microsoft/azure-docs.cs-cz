@@ -1,31 +1,32 @@
 ---
 title: Podpora pro AppSource | Azure
-description: Informace o podpoře a nabídne odkazy na AppSource.
+description: Informace o podpoře a odkazy na AppSource
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 manager: nunoc
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: ellacroi
-ms.openlocfilehash: 788a50b85b47b104f12c22ea3d4c39627c412cc2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b150f48e0eab0d83ec50a269f171a0bbfa4ed80
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937547"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827715"
 ---
 # <a name="support-for-appsource"></a>Podpora pro AppSource  
 Možnosti podpory pro AppSource.  
 
-## <a name="technical"></a>Technické  
+## <a name="technical"></a>Odbornou  
 
-| Podpora kanálu | Popis |  
+| Kanál podpory | Popis |  
 |:--- |:--- |  
-| Fóra na webu MSDN: Azure Active Directory se nachází v [social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD](https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD "Azure AD ve fórech MSDN") | Fórum Microsoft Developer Network. |  
-| StackOverflow: Azure Active Directory se nachází v [stackoverflow.com/questions/tagged/azure-active-directory](https://stackoverflow.com/questions/tagged/azure-active-directory "Azure AD na stackoverflow") | Stack Overflow prostředí tak, aby řešení a otázek k opravdu všechno spojené s Azure Active Directory (Azure AD). |  
+| Fóra MSDN: Azure Active Directory najdete na adrese [Social.MSDN.Microsoft.com/forums/Azure/Home?Forum=WindowsAzureAD](https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD "Azure AD ve fórech MSDN") | Fórum Microsoft Developer Network. |  
+| StackOverflow: Azure Active Directory nacházející se na [StackOverflow.com/Questions/Tagged/Azure-Active-Directory](https://stackoverflow.com/questions/tagged/azure-active-directory "Azure AD v StackOverflow") | Stack Overflow prostředí pro získání řešení a dotazování na všechno, co souvisí s Azure Active Directory (Azure AD). |  
 
-## <a name="next-steps"></a>Další postup
-Přejděte [Azure Marketplace a AppSource příručce pro vydavatele](./marketplace-publishers-guide.md) stránky.  
+## <a name="next-steps"></a>Další kroky
+Navštivte stránku [Příručka pro vydavatele Azure Marketplace a AppSource](./marketplace-publishers-guide.md) .  
  
 ---

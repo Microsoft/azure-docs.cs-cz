@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: dc8b2a00882abc2e88b357d5778eaf96ec71b1bd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 763a45446771f7b13178e22b0f7a35bd68bfc8bd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687574"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821288"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Veřejné datové sady pro testování a vytváření prototypů
 
@@ -42,7 +42,7 @@ Projděte si tento seznam veřejných datových sad pro data, která můžete po
 | [Data taxislužby v New Yorku](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "Záznamy o cestách taxislužby zahrnují pole zaznamenávající výběr a dropoff data a časy, umístění pro výběr a dropoff, vzdálenosti cest, vyhodnocené tarify, typy sazeb, typy plateb a počty spolupracujících řidičů." | Datové sady jsou v souborech CSV podle měsíců. |
 | [Microsoft Research data Sets – "data vědy pro výzkum"](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | Několik datových sad, které pokrývají interakci lidského počítače, zvuk/video, dolování dat, načítání informací, geoprostorového a umístění, zpracování přirozeného jazyka a roboty/počítačové vidění. | Datové sady jsou v různých formátech, stáhnout pro stažení. |
 | [Veřejná data genomu](https://www.completegenomics.com/public-data/) | "Sada různých datových sad pro celé humánní genomy je volně dostupná pro účely veřejného použití ke zvýšení jakékoli studie na základě genomu..." Poskytovatel, kompletní genomika, je soukromým podnikem pro zisk. | Datové sady po extrakci jsou ve formátu textu v systému UNIX. K dispozici jsou také analytické nástroje. |
-| [Otevření dat cloudu pro vědu data](https://www.opensciencedatacloud.org/) | "Open věda data Cloud poskytuje vědeckou komunitu s využitím prostředků pro ukládání, sdílení a analýzu terabajtů a řádu petabajtů vědeckých datových sad."| Datové sady jsou v různých formátech. |
+| [Otevření dat cloudu pro vědu data](https://www.opensciencedatacloud.org/projects/) | "Open věda data Cloud poskytuje vědeckou komunitu s využitím prostředků pro ukládání, sdílení a analýzu terabajtů a řádu petabajtů vědeckých datových sad."| Datové sady jsou v různých formátech. |
 | [Globální klimatická data – WorldClim](https://worldclim.org/) | "WorldClim je sada globálních vrstev klimatu (Gridded klimatických dat) s prostorovým rozlišením přibližně 1 km2. Tato data lze použít pro mapování a prostorové modelování. " | Tyto soubory obsahují geoprostorové údaje. Další informace najdete v tématu [Formát dat](https://worldclim.org/formats1). |
 | [Data o lidské společnosti – projekt GDELT](https://www.gdeltproject.org/data.html) | "Projekt GDELT je největší, nejucelenější a nejsnadnějším řešením otevřené databáze lidské společnosti, která byla vytvořena dříve." | Soubory nezpracovaných dat jsou ve formátu CSV. |
 | [Inzerce na data předpovědi pro Machine Learning z Criteo](https://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "Největší dříve veřejně vydanou datovou sadu ML." Další informace najdete v části [Criteo 1 TB klikněte na prediktivní datovou sadu](https://blogs.technet.microsoft.com/machinelearning/20../../now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/). | |

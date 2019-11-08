@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: diberry
-ms.openlocfilehash: 0241af88d30d47233d972bcb3e7c58ef8de12d6e
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1e39126324de486d118f808b37672c9fd08af711
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648248"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822766"
 ---
 # <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Kurz: Vytvoření aplikace LUIS k určení záměrů uživatelů
 
@@ -205,4 +205,4 @@ Poté, co LUIS vrátí odpověď JSON, služba LUIS s touto žádostí skončila
 V tomto kurzu jste vytvořili aplikaci LUIS, vytvořené záměry, Přidali jste vzorový projevy ke každému záměru a Přidali jste příklad projevy k záměru None, trained, Published a test na koncovém bodu. Toto jsou základní kroky vytvoření modelu LUIS. 
 
 > [!div class="nextstepaction"]
-> [Přidání předem připravených záměrů a entit do této aplikace](luis-tutorial-prebuilt-intents-entities.md)
+> [Přidání předem připravených záměrů a entit do této aplikace](tutorial-machine-learned-entity.md)

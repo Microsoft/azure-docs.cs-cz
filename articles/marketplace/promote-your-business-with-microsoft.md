@@ -1,38 +1,39 @@
 ---
-title: Propagaci vašeho podnikání s Microsoftem | Azure Marketplace
-description: Propagaci vašeho podnikání. pro vydavatele aplikace a služby pomocí webu Azure Marketplace a AppSource
+title: Propagovat svoji firmu pomocí Microsoftu | Azure Marketplace
+description: Propagovat své podnikání pomocí Azure Marketplace a AppSource pro vydavatele aplikací a služeb
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: f21c5f94c595fe3718a0a59a80deff8f1c53b9fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0f33402c5ff9f970e2ffebf405178dbc0974690
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937652"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827792"
 ---
-# <a name="promote-your-business-with-microsoft"></a>Propagaci vašeho podnikání s Microsoftem 
+# <a name="promote-your-business-with-microsoft"></a>Propagovat svoji firmu pomocí Microsoftu 
 
-Microsoft má cíl podpora partnerů (vy) a zjednodušit prodej vaší aplikace nebo tuto nabídku v prodejní místa na webu marketplace. Ve výpisu na webu marketplace, přístup k programů a prostředků na webu marketplace. 
+Microsoft má cíl podporovat partnery (vy) a zjednodušit prodej vaší aplikace nebo nabídky na webu prodejní místa. Po uvedení na webu Marketplace získáte přístup k programům a prostředkům na webu Marketplace. 
 
-Pokud jste se ještě nepřihlásili na Microsoft Partner Network (MPN), proveďte to před pokračováním.  
-*   Další informace o programu MPN, navštivte stránku umístěného v programu Microsoft Partner Network [partner.microsoft.com](https://partner.microsoft.com).  
+Pokud jste se ještě nezaregistrovali do Microsoft Partner Network (MPN), udělejte to ještě před tím, než budete pokračovat.  
+*   Další informace o programu MPN najdete na stránce Microsoft Partner Network, která se nachází na adrese [partner.Microsoft.com](https://partner.microsoft.com).  
 
-MPN poskytuje pokyny pro následující témata.  
+Program MPN poskytuje pokyny pro následující témata.  
 *   Nové obchodní příležitosti  
-*   Propojení s týmy nebo partnery  
-*   Řešení a školení, které pomůžou rozvíjet vaše dovednosti  
+*   Připojení k týmům nebo partnerům  
+*   Řešení a školení, které vám pomůžou rozšířit dovednosti  
 
-Ke zvýšení úrovně nabídky nebo aplikace, použijte pro přístup k více výhodách a prostředcích v následující tabulce. 
+Pro zvýšení úrovně nabídky nebo aplikace použijte následující tabulku pro přístup k více výhodám a prostředkům. 
 
-| Výhody | Prostředky |  
+| Výhodnosti | Prostředky |  
 |:--- |:--- |  
-| Využijte své výhody Core | V rámci programu Microsoft Partner Network získáte základní výhody, které můžete ušetřit čas i peníze. Výhody může také pomoci lépe posílit vaše dovednosti, lépe zákazníků a navazovat kontakty kontaktovat potenciální podnikání.<ul> <li>Další informace o základní výhody, získáte základní výhody a požadavky na stránce umístění [partner.microsoft.com/membership/core-benefits](https://partner.microsoft.com/membership/core-benefits).</li> </ul> |  
-| Získejte kompetenci pro Cloudovou platformu | Získávat kompetencí umožňuje odlišíte se mezi ostatními partnery Microsoftu. Získávat kompetencí vám také pomůže ukazují technické znalosti a úspěchy zákazníků na trhu. S kompetencí je předpokladem pro mnoho klíčový partner programů, jako je společný prodej.<ul> <li>Další informace o kompetenci pro Cloudovou platformu, navštivte kompetenci pro Cloudovou platformu stránky umístění [partner.microsoft.com/membership/cloud-platform-competency](https://partner.microsoft.com/membership/cloud-platform-competency).</li> </ul> |  
-| Budou připravené společný prodej | Programu společného prodeje připravené umožňuje spolupracovat přímo s prodejci Microsoftu a dalšími partnery na cíl zákaznických příležitostí a plánování účtu. Vaše řešení, stane se viditelným pro prodejci Microsoftu v katalogu řešení prodejce. Prodejci Microsoftu jsou nízkou pro spolupráci a winning s vámi.<ul> <li>Další informace o společný prodej, navštivte podporovat vaše firma stránky umístění [partner.microsoft.com/reach-customers/promote-your-business](https://partner.microsoft.com/reach-customers/promote-your-business).</li> </ul> |  
+| Využijte své základní výhody | V rámci Microsoft Partner Network obdržíte sadu základních výhod, které vám pomůžou ušetřit čas i peníze. Výhody vám také pomohou posílit vaše schopnosti, lépe poskytovat zákazníkům a sestavovat připojení, aby dosáhli plného obchodního potenciálu.<ul> <li>Další informace o základních výhodách najdete na stránce základní výhody a požadavky, které najdete na adrese [partner.Microsoft.com/Membership/Core-Benefits](https://partner.microsoft.com/membership/core-benefits).</li> </ul> |  
+| Získání kompetence pro cloudovou platformu | Vybírání kompetence vám pomůže rozlišovat mezi ostatními partnery Microsoftu. Získání kompetence vám také pomůže předvést technickou odbornost a úspěšnost zákazníků na trhu. Kompetence je předpokladem pro mnoho klíčových partnerských programů, jako je například společný prodej.<ul> <li>Další informace o kompetenci cloudové platformy najdete na stránce kompetence pro cloudovou platformu, která se nachází na adrese [partner.Microsoft.com/Membership/Cloud-Platform-Competency](https://partner.microsoft.com/membership/cloud-platform-competency).</li> </ul> |  
+| Příprava na společný prodej | Přidaný program pro spoluprodejci vám umožňuje spolupracovat přímo s prodejci Microsoftu a dalšími partnery na základě zákaznických příležitostí a plánování účtů. Vaše řešení se bude zobrazovat prodejcům Microsoftu v katalogu řešení prodejce. Prodejci Microsoftu se neúčtují za spolupráci a výhru s vámi.<ul> <li>Další informace o připravenosti společného prodeje najdete na stránce propagace vaší firmy na adrese [partner.Microsoft.com/REACH-Customers/Promote-Your-Business](https://partner.microsoft.com/reach-customers/promote-your-business).</li> </ul> |  
 
 ---

@@ -1,59 +1,60 @@
 ---
 title: Začínáme | Azure Marketplace
-description: Začínáme s portálem Cloud Partner.
+description: Začínáme s portál partnerů cloudu.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 9d2c64479f65995c0eca756b86bd0a96a752867d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6065f0485b03a53fa55ae700831869998d9453cc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935763"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818377"
 ---
-# <a name="getting-started-with-the-cloud-partner-portal"></a>Začínáme s portálem Cloud Partner
+# <a name="getting-started-with-the-cloud-partner-portal"></a>Začínáme s portál partnerů cloudu
 
-Tento článek obsahuje návod, jak portál partnerů cloudu. Zjistěte, co můžete dělat s portál partnerů cloudu pro práci s nabídkami na [Azure Marketplace](https://azuremarketplace.microsoft.com/) a na [AppSource](https://appsource.microsoft.com/).
+Tento článek poskytuje návod portál partnerů cloudu. Seznamte se s tím, co můžete využít portál partnerů cloudu k práci s nabídkami na [Azure Marketplace](https://azuremarketplace.microsoft.com/) a v [AppSource](https://appsource.microsoft.com/).
 
-<a name="portal-tour"></a>Přehled portálu
+<a name="portal-tour"></a>Prohlídka portálu
 -----------
 
-Portál partnerů cloudu obsahuje všechno, co potřebujete k nabízení a provozovat úspěšné podnikání na cloud. Tady je stručný přehled části tohoto webu, který budete pravděpodobně používat nejčastěji.
+Portál partnerů cloudu obsahuje vše, co potřebujete k tomu, abyste mohli nabízet a provozovat úspěšnou firmu v cloudu. Tady je rychlý přehled částí tohoto webu, které se pravděpodobně často používají.
 
 ### <a name="left-navigation-bar"></a>Levý navigační panel
 
-Když poprvé objevil na portálu, měli byste vidět možné sbalit navigační panel. Je to, kde můžete procházet mezi položkami nabídky.
+Při první půdě na portálu by se měl zobrazit sbalitelný navigační panel. Zde je místo, kde můžete přecházet mezi položkami nabídky.
 
 ![Portál Cloud Partner](./media/cloud-partner-portal-getting-started-with-the-cloud-partner-portal/cloud-partner-portal-page.png)
 
-Pomocí panelu nabídek získat další informace o každé z následujících položek:
+Pomocí řádku nabídek získáte další informace o každé z následujících položek:
 
-- **Nová nabídka** – pusťte se do nové nabídky.
-- **Všechny nabídky** – zkontrolujte stav a stav aktuální nabídky.
-- **Uživatelé** - [Správa a řízení přístupu pro vaši společnost](./cloud-partner-portal-manage-users.md).
-- **Přečtěte si** – nastartujte své vzdělávání a Udržujte si přehled o novinkách v portálu pro partnery.
-- **Insights** – stačí navštívit portál Insights najít přehledy a informace o použití produktů a zákazníků.
+- **Nová nabídka** – zahájí novou nabídku.
+- **Všechny nabídky** – zkontroluje stav a stav všech vašich aktuálních nabídek.
+- **Uživatelé** - [Spravovat a řídit přístup pro vaši společnost](./cloud-partner-portal-manage-users.md).
+- **Seznamte** se s novinkami a sledujte, co je nového na portálu pro partnery.
+- **Přehledy** – informace o produktech a zákaznících najdete na portálu pro přehledy a informace o využití svých produktů a zákazníků.
 
-### <a name="offer-page"></a>Stránku nabídek
+### <a name="offer-page"></a>Stránka nabídky
 
-Pokračování prohlídku, po spuštění nové nabídky nebo se vrátit do vaší nabídky upravit, můžete udělat spoustu práce na stránce nabídky. To je, kde můžete nakonfigurovat všechna nastavení pro vaši nabídku a zkontrolujte stav.
+Když budete pokračovat v prohlídce, jakmile začnete novou nabídku nebo se vrátíte k úpravě vaší nabídky, na stránce nabídek provedete spoustu práce. Tady můžete nakonfigurovat všechna nastavení nabídky a ověřit její stav.
 
-![Stránku nabídek](./media/cloud-partner-portal-getting-started-with-the-cloud-partner-portal/offer-page.png)
+![Stránka nabídky](./media/cloud-partner-portal-getting-started-with-the-cloud-partner-portal/offer-page.png)
 
-Na stránce nabídky můžete:
-- Přidat obsah nebo zkontrolovat stav vaší nabídky, že při přepínání mezi dvěma režimy nejvyšší úrovně: **Editor** a **stav**.
-- Použití **panel akcí** explicitně spravovat vaši nabídku změny uložením a váš vstup, se zahodí.
-- Navigace mezi požadované **Forms** pro každou nabídku, jako je změna nastavení vaší nabídky.
+Na stránce nabídka můžete:
+- Pomocí přepínání mezi dvěma režimy nejvyšší úrovně je přidání obsahu nebo **zjištění stavu** **nabídky.**
+- Na **panelu akcí** můžete explicitně spravovat změny vaší nabídky tím, že uložíte a zahodíte svůj vstup.
+- Při změně nastavení nabídky přejděte mezi požadovanými **formuláři** pro každou nabídku.
 
-### <a name="menu-bar"></a>Panel nabídek
+### <a name="menu-bar"></a>Řádek nabídek
 
-A konečně horní části obrazovky vždy budete schopní vyznat se horním řádku nabídek. Tato nabídka obsahuje interaktivní akce pro podporu a zpětnou vazbu. Můžete také přistupovat všechny vydavatele informace o vašem účtu.
+Nakonec bude v horní části obrazovky vždy možné přejít na horní panel nabídek. Tato nabídka obsahuje interaktivní akce pro podporu a zpětnou vazbu. K informacím o účtu vašeho vydavatele můžete také přistupovat.
 
-![Panel nabídek](./media/cloud-partner-portal-getting-started-with-the-cloud-partner-portal/menu-bar.png)
+![Řádek nabídek](./media/cloud-partner-portal-getting-started-with-the-cloud-partner-portal/menu-bar.png)
 
--   **Potřebujete pomoc?** – Pokud jste někdy zaměňovat a potřebujete pomoc, vytvořte žádost o podporu a odkazy na dokumentaci.
--   **Zpětná vazba** -mají něco chcete říct? Dejte nám vědět tady. Microsoft si cení na webu Azure Marketplace, proces publikování na AppSource a celkové portál partnerů cloudu prostředí jako jednoduché a intuitivní, jako je to možné. Jsme posuzovat a zkontrolujte veškerá zpětná vazba a jsme vždy respektujeme vaše soukromí. Pouze vás můžeme kontaktovat při požádat o další informace.
-- **Vydavatelský účet smíte** – při první návštěvě portálu se zobrazí smlouvě s vydavatelem smlouvy tak, aby přijímal jak se stát vydavatelem. Od té chvíle jde, kde můžete provádět úpravy svůj profil vydavatele nebo návštěvě kontrakt. Toto je také odkud se připojujete svém účtu centra vývojářů na prodej vaší nabídky.
+-   **Potřebujete tuto podporu?** – Pokud se vám někdy nezaměňuje a potřebujete pomoc, vytvořte žádost o podporu a vyhledejte odkazy na dokumentaci.
+-   **Názor** – máte něco, co chcete vyslovit? Dejte nám prosím nějaké informace. Společnost Microsoft chce provést Azure Marketplace, proces publikování AppSource a celkové prostředí portálu cloud partner, jak to bude snadné a co nejjednodušší. Vyhrazujeme si a zkontrolujeme veškerou zpětnou vazbu a budeme vždycky respektovat vaše osobní údaje. Budeme vás kontaktovat jenom v případě, že si vyžádáte Další informace.
+- **Účet vydavatele** – když poprvé navštívíte portál, uvidíte, že se kontrakt vydavatele bude přijměte jako vydavatel. Od tohoto dne budete moct upravovat profil vydavatele nebo znovu navštívit kontrakt. Tím se také připojíte k vašemu účtu centra vývojářů, abyste mohli prodávat vaše nabídky.

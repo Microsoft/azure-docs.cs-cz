@@ -1,38 +1,39 @@
 ---
-title: Kontejnery služby Azure nabízejí požadavky | Azure Marketplace
-description: Požadavky pro publikování kontejneru Azure.
+title: Předpoklady pro nabídky Azure Containers | Azure Marketplace
+description: Předpoklady pro publikování kontejneru Azure.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: 87727d23b407853aa9dad8a52c0a1cea446353bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2c4e5520a2055fafee586fc369c21acfa36037c6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942562"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823138"
 ---
-# <a name="container-publishing-prerequisites"></a>Publikování požadavky kontejneru
+# <a name="container-publishing-prerequisites"></a>Požadavky na publikování kontejneru
 
-Tento článek popisuje předpoklady pro publikování nabídky kontejneru na webu Azure Marketplace.  Pokud jste tak již neučinili, měli byste zkontrolovat [Průvodce publikováním nabídky kontejnery](../../marketplace-containers.md).
+Tento článek popisuje předpoklady pro publikování nabídky kontejneru na Azure Marketplace.  Pokud jste to ještě neudělali, měli byste si projít [příručku pro publikování nabídek kontejnerů](../../marketplace-containers.md).
 
 ## <a name="publishing-prerequisites"></a>Požadavky na publikování
 
-K publikování novou image kontejneru, musíte splňovat následující požadavky:
+Chcete-li publikovat novou image kontejneru, je nutné splnit následující požadavky:
 
-- Přístup na portál partnerů cloudu. Další informace najdete v tématu Průvodce publikováním webu Azure Marketplace a AppSource.
-- Souhlas s podmínkami Azure Marketplace
-- Hostování technické asset kontejneru ve službě Azure Container Registry.
-- Máte připravený k použití metadata kontejneru. Například následující – úplný seznam:
+- Přístup k portál partnerů cloudu. Další informace najdete v tématu Příručka pro publikování Azure Marketplace a AppSource.
+- Dohoda s Azure Marketplace podmínkami
+- Hostování technického majetku kontejneru v Azure Container Registry.
+- Vaše metadata kontejneru jsou připravená k použití. Například následující nevyčerpávající seznam:
   - Název
   - Popis (ve formátu HTML)
-  - Obrázek loga (ve formátu PNG) a v nich pevné velikosti obrázků: 40 x 40 px, 90 x 90 px, 115 x 115 pixelů a 255 x 115 px.
-- A *Terms of Use* a *zásady ochrany osobních údajů* příkazy
+  - Obrázek loga (ve formátu PNG) a v těchto pevných velikostech obrázků: 40x40 px, 90x90 px, 115x 115 px a 255x115 px.
+- *Podmínek použití* a prohlášení o zásadách *ochrany osobních údajů*
 - Dokumentace k řešení kontejnerů
-- Kontaktní údaje podpory
+- Kontakty podpory
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokud jste tak již neučinili, je nutné [Příprava vašeho kontejneru technických prostředků](./cpp-create-technical-assets.md) před [vytvořit kontejner nabídky](./cpp-create-offer.md).  
+Pokud jste to ještě neudělali, musíte [připravit technické prostředky kontejneru](./cpp-create-technical-assets.md) před [vytvořením nabídky kontejneru](./cpp-create-offer.md).  

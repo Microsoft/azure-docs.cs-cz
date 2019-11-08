@@ -1,43 +1,43 @@
 ---
-title: 'Vzor návrhu Azure Cosmos DB: Aplikace sociálních médií'
-description: Další informace o vzoru návrhu pro sociální sítě s využitím flexibilní úložiště služby Azure Cosmos DB a dalšími službami Azure.
+title: 'Model návrhu Azure Cosmos DB: aplikace pro sociální média'
+description: Seznamte se s návrhovým vzorem pro sociální sítě, a to využitím flexibility úložiště Azure Cosmos DB a dalších služeb Azure.
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: 45e27b37ca7a1718674914fbe9203b7dc64475b1
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 8428e417f5f86edca77edae6ca4b7ef84e5ff425
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342109"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827303"
 ---
-# <a name="going-social-with-azure-cosmos-db"></a>Sociální funkce s Azure Cosmos DB
+# <a name="going-social-with-azure-cosmos-db"></a>Spolupráce s Azure Cosmos DB
 
-Žijete ve vysoce propojených společnosti znamená, že v určitém okamžiku v životě stanou součástí **sociálních sítí**. Sociální sítě používáte zachovat ve spojení s přáteli, kolegům, řada, nebo někdy také sdílet s lidmi s společné zájmy vaše nadšení.
+Živý ve vysoce propojené společnosti znamená, že v určitém okamžiku se stanete součástí **sociální sítě**. Pomocí sociálních sítí se budete moci spojit s přáteli, kolegy, rodinou nebo občas sdílet své zaujetí s lidmi se společnými zájmy.
 
-Jako technici a vývojáři pravděpodobně vás zajímá, jak tyto sítě úložiště a vzájemné propojení, vaše data. Nebo vás může mít i byl úkol vytvářet nebo upravovat architekturu, když nové sociálních sítí pro konkrétní volné místo na trhu. Kdy nastane významné otázky: Jak se tato data ukládají?
+Jako technici nebo vývojáři můžete mít přemýšleli, jak tyto sítě ukládají a propojovat vaše data. Nebo jste dokonce mohli vytvořit nebo vytvořit architekta nové sociální sítě pro konkrétní mezery trh. To je v situaci, kdy se jedná o významnou otázku: jak jsou všechna tato data uložena?
 
-Předpokládejme, že vytváříte nové a shiny sociální síti kde vaši uživatelé můžete publikovat články s související média, jako jsou obrázky, videa nebo dokonce music. Uživatelé mohou přidávat komentáře na příspěvky a poskytují body pro hodnocení. Bude kanál, které příspěvky, které budou uživatelé vidí a pracovat na cílové stránce hlavní webové stránky. Tato metoda není zvukové komplexní na první, ale z důvodu zjednodušení, Pojďme zastavit existuje. (Můžete delve do vlastní uživatelské kanály ovlivněny relace, ale přesahuje cílem tohoto článku.)
+Předpokládejme, že vytváříte novou a lesklou sociální síť, ve které mohou uživatelé publikovat články se souvisejícími médii, jako jsou obrázky, videa nebo dokonce hudba. Uživatelé mohou komentovat příspěvky a dávat body za hodnocení. K dispozici jsou informační kanály pro příspěvky, které uživatelé uvidí a budou s nimi pracovat na úvodní stránce na hlavním webu. Tato metoda není v první době složitá, ale z důvodu jednoduchosti ji zastavíme. (Můžete se rozznačit do vlastních uživatelských kanálů, které jsou ovlivněné vztahy, ale překročí rámec tohoto článku.)
 
-Ano jak můžete ukládat data a kde?
+Jak tedy ukládáte tato data a kde?
 
-Možná máte prostředí u databází SQL nebo hodnoty z [relační modelování dat](https://en.wikipedia.org/wiki/Relational_model). Můžete začít kreslení přibližně takto:
+Je možné, že máte zkušenosti s databázemi SQL nebo máte pojem [relační modelování dat](https://en.wikipedia.org/wiki/Relational_model). Můžete začít kreslit něco, jak je znázorněno níže:
 
-![Diagram ilustrující relativní relační model](./media/social-media-apps/social-media-apps-sql.png)
+![Diagram znázorňující relativní relační model](./media/social-media-apps/social-media-apps-sql.png)
 
-Nemusíte zajistit dokonalou normalizovaná a přehlednou datová struktura..., který nemá škálování.
+Dokonale normalizovaná a velmi poměrně datová struktura... To se neškáluje.
 
-Nezískávat mě chybný, že jsem pracovala s databázemi SQL všechny život. Hodí se ale stejně jako každý vzorek, postupů a softwaru platformy, není ideální pro každý scénář.
+Nedaří se mi znovu, již jsem pracoval s databázemi SQL a vše můj život. Jsou skvělé, ale podobně jako při každém vzoru, praxi a softwarové platformě není ideální pro každý scénář.
 
-Proč SQL není v tomto scénáři o nejlepší volbu? Podívejme se na struktuře jeden příspěvek. Kdybych chtěl zobrazení příspěvku na webu nebo aplikaci, by musím dotaz s... spojením osm tables(!) pouze k zobrazení jedné jeden příspěvek. Nyní obrázek streamovaných příspěvky, které dynamicky načíst a na obrazovce a může se zobrazit, kde teď předvedu.
+Proč není SQL nejlepší volbou v tomto scénáři? Pojďme se podívat na strukturu jednoho příspěvku. Pokud bych chtěl Zobrazit příspěvek na webu nebo v aplikaci, musím udělat dotaz s... připojením osmi tabulek (!) pouze k zobrazení jednoho příspěvku. Teď nahrajte datový proud příspěvků, které se dynamicky načítají a zobrazují na obrazovce, a můžete si všimnout, kde se to dělá.
 
-Můžete použít instanci SQL obrovské s dostatek power vyřešit tisíce dotazů s mnoha spojení k poskytování obsahu. Ale proč byste, pokud mezi doménami existuje jednodušší řešení?
+Můžete použít obrovský instanci SQL s dostatečnou silou pro řešení tisíců dotazů s mnoha spojeními, které slouží k poskytování obsahu. Ale proč byste měli, když existuje jednodušší řešení?
 
-## <a name="the-nosql-road"></a>Silniční NoSQL
+## <a name="the-nosql-road"></a>NoSQL cesta
 
-Tento článek vás provede do modelování dat sociální platforma databáze NoSQL Azure [služby Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) za výhodnou cenu. Také zjistíte, jak používat další funkce služby Azure Cosmos DB, jako [rozhraní Gremlin API](../cosmos-db/graph-introduction.md). Použití [NoSQL](https://en.wikipedia.org/wiki/NoSQL) přístup, ukládání dat ve formátu JSON a použití [denormalizace](https://en.wikipedia.org/wiki/Denormalization), dříve složité příspěvek je možné transformovat do jednoho [dokumentu](https://en.wikipedia.org/wiki/Document-oriented_database):
+Tento článek vás provede jednotlivými modelováním dat na sociálních platformách pomocí Azure NoSQL [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) Database a efektivně. Také se dozvíte, jak používat jiné funkce Azure Cosmos DB, jako je [GREMLIN API](../cosmos-db/graph-introduction.md). S využitím přístupu [NoSQL](https://en.wikipedia.org/wiki/NoSQL) , ukládání dat ve formátu JSON a použití [denormalizace](https://en.wikipedia.org/wiki/Denormalization), se dřív komplikovaný příspěvek dá transformovat do jednoho [dokumentu](https://en.wikipedia.org/wiki/Document-oriented_database):
 
     {
         "id":"ew12-res2-234e-544f",
@@ -56,11 +56,11 @@ Tento článek vás provede do modelování dat sociální platforma databáze N
         ]
     }
 
-A může být získali s pomocí jediného dotazu a žádná spojení. Tento dotaz je velmi jednoduché a nekomplikované a budget-wise, vyžaduje méně prostředků k dosažení lepších výsledků.
+A k tomu může dojít s jediným dotazem a bez spojení. Tento dotaz je mnohem jednoduchý a jasný a je z rozpočtu potřeba méně prostředků, aby bylo dosaženo lepšího výsledku.
 
-Azure Cosmos DB zajišťuje, že všechny vlastnosti jsou indexovány pomocí automatického indexování. Automatické indexování můžou být [přizpůsobené](index-policy.md). Přístup bez schémat umožňují ukládání dokumentů s jinou a dynamické struktury. Zítra možná budete potřebovat příspěvků na seznam kategorií nebo k nim má přiřazené hashtagy? Cosmos DB bude zpracovávat nové dokumenty s přidané atributy bez další práce potřebné od nás.
+Azure Cosmos DB zajistí, aby byly všechny vlastnosti indexovány pomocí automatického indexování. Automatické indexování lze dokonce [přizpůsobit](index-policy.md). Přístup bez schémat umožňuje uložit dokumenty s různou a dynamickou strukturou. Možná zítra budete chtít, aby příspěvky měly seznam kategorií nebo hashtagů, které jsou k nim přidružené? Cosmos DB zpracuje nové dokumenty pomocí přidaných atributů bez další práce, kterou nám vyžaduje.
 
-Další příspěvky k nadřazené vlastnosti lze považovat za komentářů na příspěvek. (Tento postup usnadňuje mapování pracovního objektu.)
+Komentáře na příspěvku lze považovat za jiné příspěvky s nadřazenou vlastností. (Tento postup zjednodušuje mapování objektů.)
 
     {
         "id":"1234-asd3-54ts-199a",
@@ -78,7 +78,7 @@ Další příspěvky k nadřazené vlastnosti lze považovat za komentářů na 
         "parent":"ew12-res2-234e-544f"
     }
 
-A všechny sociální interakce může být uložená na samostatný objekt jako čítače:
+A všechny sociální interakce mohou být uloženy na samostatném objektu jako čítače:
 
     {
         "id":"dfe3-thf5-232s-dse4",
@@ -88,7 +88,7 @@ A všechny sociální interakce může být uložená na samostatný objekt jako
         "points":200
     }
 
-Vytváření kanálů stačí vytváření dokumentů, které může obsahovat seznam příspěvek ID se daný relevance pořadí:
+Vytváření informačních kanálů je jenom věcí k vytváření dokumentů, které můžou obsahovat seznam ID příspěvků s daným pořadím významnosti:
 
     [
         {"relevance":9, "post":"ew12-res2-234e-544f"},
@@ -96,13 +96,13 @@ Vytváření kanálů stačí vytváření dokumentů, které může obsahovat s
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-Můžete mít "posledního" datový proud s příspěvky seřazené podle data vytvoření. Nebo můžete mít "Nejaktivnější" datový proud takových příspěvků s další lajků za posledních 24 hodin. Dokonce je možné implementovat vlastní datový proud pro každého uživatele na základě logiky jako sledujících a zájmy. Stále je seznam příspěvků. Je na vás o tom, jak vytvářet tyto seznamy, ale zůstává nerušený výkonu čtení. Jakmile získáte jednu z těchto seznamů, vydáte pomocí jediného dotazu pomocí služby Cosmos DB [IN – klíčové slovo](sql-query-keywords.md#in) k získání stránek příspěvků v čase.
+Můžete mít "poslední" datový proud s příspěvky seřazenými podle data vytvoření. Nebo můžete mít datový proud "nejžhavějších" s těmito příspěvky většími než za posledních 24 hodin. Můžete dokonce implementovat vlastní datový proud pro každého uživatele na základě logiky, jako je sledující a zájmy. Stále se jedná o seznam příspěvků. Je to způsob, jak tyto seznamy sestavit, ale výkon čtení zůstává nerušený. Po získání jednoho z těchto seznamů vydáte jeden dotaz, který Cosmos DB pomocí [klíčového slova in](sql-query-keywords.md#in) získat stránky příspěvků.
 
-Informační kanály datové proudy může být postavená pomocí [Azure App Services](https://azure.microsoft.com/services/app-service/) procesy na pozadí: [Webjobs](../app-service/webjobs-create.md). Po vytvoření příspěvek zpracování na pozadí můžete aktivovat pomocí [služby Azure Storage](https://azure.microsoft.com/services/storage/) [fronty](../storage/queues/storage-dotnet-how-to-use-queues.md) a aktivovat pomocí Webjobs [Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki), implementující Publikovat šíření uvnitř streamů v závislosti na vlastní logiku.
+Datové proudy informačního kanálu lze sestavit pomocí procesů [Azure App Services '](https://azure.microsoft.com/services/app-service/) na pozadí: [WebJobs](../app-service/webjobs-create.md). Po vytvoření příspěvku se zpracování na pozadí dá aktivovat pomocí [Azure Storage](https://azure.microsoft.com/services/storage/) [front](../storage/queues/storage-dotnet-how-to-use-queues.md) a WebJobs aktivovaných pomocí [sady Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki), která implementuje šíření po rozbalení v datových proudech na základě vlastní logiky.
 
-Body a lajky přes příspěvek mohou být zpracovány odložené způsobem pomocí Tento stejný postup k vytvoření konzistentní prostředí.
+Body a jako v příspěvku lze zpracovat odvoditelné způsobem pomocí stejné techniky pro vytvoření prostředí s konečnou konzistencí.
 
-Sledujících jsou trickier. Cosmos DB má omezení velikosti dokumentu a čtení/zápis velkých dokumentů může mít vliv na škálovatelnost aplikace. Takže si promyslet ukládání sledujících jako dokument s touto strukturou:
+Sledující jsou trickier. Cosmos DB má omezení velikosti dokumentu a čtení a zápis velkých dokumentů může mít vliv na škálovatelnost vaší aplikace. Můžete tedy zvážit ukládání sledujících dokumentů jako dokumentu s touto strukturou:
 
     {
         "id":"234d-sd23-rrf2-552d",
@@ -115,9 +115,9 @@ Sledujících jsou trickier. Cosmos DB má omezení velikosti dokumentu a čten�
         ]
     }
 
-Tato struktura může fungovat pro uživatele s několika tisíc sledujícími. Pokud některé celebrit připojí pořadí, ale tento přístup může vést k velikost velkých dokumentu a se nakonec pravděpodobně dojde limit velikosti dokumentu.
+Tato struktura může fungovat pro uživatele s několika tisíci sledujícími. Pokud se celebrit spojí s pořadím, ale tento přístup povede k velké velikosti dokumentu a může nakonec dosáhnout limitu velikosti dokumentu.
 
-Chcete-li tento problém vyřešit, je použít smíšené přístup. Jako část dokumentu statistiky uživatelů můžete ukládat počet sledujících:
+Chcete-li tento problém vyřešit, můžete použít smíšený přístup. V rámci dokumentu statistiky uživatele můžete ukládat Počet sledujících:
 
     {
         "id":"234d-sd23-rrf2-552d",
@@ -127,19 +127,19 @@ Chcete-li tento problém vyřešit, je použít smíšené přístup. Jako čás
         "totalPoints":11342
     }
 
-Skutečné graf sledující využívající službu Azure Cosmos DB můžete ukládat [rozhraní Gremlin API](../cosmos-db/graph-introduction.md) vytvořit [vrcholů](http://mathworld.wolfram.com/GraphVertex.html) pro každého uživatele a [hrany](http://mathworld.wolfram.com/GraphEdge.html) , Udržovat "A-způsobem – B" relace. Pomocí rozhraní Gremlin API můžete načíst sledující určitého uživatele a vytvářet složitější dotazy pro návrh lidí v běžných. Pokud chcete přidat do grafu, jako jsou kategorie obsahu, který lidé nebo využijte, můžete spustit tkaní prostředí, které zahrnují inteligentní zjišťování obsahu, návrhy obsahu, že tito uživatelé postupujte stejně jako nebo zjištění osoby, které může mít mnoho společně s.
+Můžete si uložit skutečný graf sledující pomocí Azure Cosmos DB [rozhraní Gremlin API](../cosmos-db/graph-introduction.md) k vytváření [vrcholů](http://mathworld.wolfram.com/GraphVertex.html) pro každého uživatele a [hrany](http://mathworld.wolfram.com/GraphEdge.html) , které udržují relace "A" za B ". Pomocí rozhraní Gremlin API můžete získat sledující konkrétního uživatele a vytvořit složitější dotazy pro návrh lidí. Pokud přidáte do grafu kategorie obsahu, které lidé chtějí nebo chtějí využít, můžete začít tkaní prostředí, která zahrnují inteligentní zjišťování obsahu, navrhovat obsah, který sledují lidé, jako je, nebo najít lidi, které mohou být v podstatě běžné.
 
-Dokument statistické údaje o uživatelích stále slouží k vytvoření karty v uživatelského rozhraní nebo náhledy rychlé profilu.
+K vytváření karet v uživatelském rozhraní nebo v náhledech rychlých profilů můžete použít dokument s statistikou uživatelů.
 
-## <a name="the-ladder-pattern-and-data-duplication"></a>"Adaptivní žebříček přenosových rychlostí" model a data duplicity
+## <a name="the-ladder-pattern-and-data-duplication"></a>Vzor "žebřík" a duplikace dat
 
-Jak možná jste si všimli v dokumentu JSON, který odkazuje na příspěvek, existují mnoho výskytů uživatele. A jste by mít uhodnout správné, že tyto duplikáty znamená, že informace popisující uživatel zadaný denormalizace, může být k dispozici více než jednom místě.
+Jak jste si všimli v dokumentu JSON, který odkazuje na příspěvek, existuje mnoho výskytů uživatele. A měli byste se rozhodnout, že tyto duplicity znamenají, že informace, které popisují uživatele, se můžou vyskytovat ve více než jednom místě.
 
-Povolit pro rychlejší dotazy, se vám účtovat duplicitních dat. Problém s tomuto vedlejšímu efektu je, že pokud některé akce, změny dat uživatele, je potřeba najít všechny aktivity nikdy nebyla a uživatele je všechny aktualizovat. Není zvukové praktické, hned?
+Pokud chcete pro rychlejší dotazy použít více dotazů, bude se vám zabývat duplicity dat. Tento problém s tímto účinkem spočívá v tom, že v případě, že se data uživatele změní, je nutné najít všechny aktivity, které uživatel někdy uskutečnil, a aktualizovat je všechny. Nejedná se o praktickou a pravou?
 
-Budete k jeho řešení Identifikujte klíčové atributy uživatele, který se zobrazí v aplikaci pro každou aktivitu. Pokud vizuálně zobrazit příspěvek ve vaší aplikaci a zobrazit pouze tvůrce příslušného názvu a obrázek, proč ukládání všech dat uživatele v atributu "createdBy"? Pokud pro každý komentáře že stačí zobrazit obrázek uživatele, nepotřebujete zbývající informace uživatele. Je to, kde se stane něco že můžu volat "adaptivní žebříček přenosových rychlostí vzor" zahrnuty.
+Chystáte se ho vyřešit určením klíčových atributů uživatele, který zobrazíte v aplikaci pro každou aktivitu. Pokud ve své aplikaci vizuálně ukážete příspěvek a chcete zobrazit jenom jméno autora a obrázek, proč ukládat všechna data uživatele do atributu "createdBy"? Pokud se u každého komentáře zobrazuje jenom obrázek uživatele, nepotřebujete opravdu zbývající informace o uživateli. To je místo, kde se zavolá "vzor žebříku".
 
-Pojďme se na informace o uživateli jako příklad:
+Pojďme získat informace o uživateli jako příklad:
 
     {
         "id":"dse4-qwe2-ert4-aad2",
@@ -155,17 +155,17 @@ Pojďme se na informace o uživateli jako příklad:
         "totalPosts":24
     }
 
-Zobrazením tyto informace může rychle zjistit, což je důležité informace a který není, tedy vytvoření "Přenosových rychlostí":
+Když si tyto informace prohlížíte, můžete rychle zjistit, které z nich jsou důležité a které nejsou, takže se vytvoří "žebřík":
 
-![Diagram vzoru adaptivní žebříček přenosových rychlostí](./media/social-media-apps/social-media-apps-ladder.png)
+![Diagram vzoru žebříku](./media/social-media-apps/social-media-apps-ladder.png)
 
-Nejmenší kroku se říká UserChunk, minimální část informace identifikující uživatele a používá se k replikaci dat. Zmenšením velikosti duplicitní data na pouze informace "zobrazíte" snížení rizika vzniku obrovských aktualizace.
+Nejmenší krok se nazývá UserChunk, minimální část informací, která identifikuje uživatele a používá se pro duplikaci dat. Zmenšením velikosti duplicitních dat na jenom informace, které se zobrazí, snížíte tak možnost obrovských aktualizací.
 
-Střední krok se nazývá uživatelem. Je úplná data, která se použije na většinu závislé na výkonu dotazů ve službě Cosmos DB, přístupu a kritické. Obsahuje informace UserChunk představované.
+Prostřední krok se nazývá uživatel. K dispozici jsou všechna data, která se použijí pro většinu dotazů závislých na výkonu na Cosmos DB, nejpravděpodobnějších a kritických. Obsahuje informace reprezentované UserChunk.
 
-Největší je rozšířená uživatele. Obsahuje informace o důležitých uživatele a další data, která nemusí být rychle přečíst nebo má konečnou využití, jako je proces přihlašování. Tato data mohou být uloženy mimo Cosmos DB v Azure SQL Database nebo úložiště tabulek Azure.
+Největší je rozšířený uživatel. Obsahuje důležité informace o uživateli a další data, která nemusejí být rychle čtena nebo mají konečné použití, například proces přihlašování. Tato data můžou být uložená mimo Cosmos DB v tabulkách Azure SQL Database nebo Azure Storage.
 
-Proč by i tyto informace ukládaly na různých místech a rozdělit uživatele? Protože z hlediska výkonu, tím větší dokumenty, costlier dotazy. Zachovejte dokumenty tenký správné informace, které se všechny vaše dotazy závislé na výkonu pro sociální sítě. Store Další informace pro konečné scénáře, jako jsou úpravy celých profilů, přihlášení a dolování dat pro analýzy využití a velké objemy dat iniciativy. Ve skutečnosti není stojíte pokud shromažďování dat pro dolování dat je pomalejší, protože běží na Azure SQL Database. Můžete mít problém ale aby uživatelé měli rychlý a tenký prostředí. Uživatelské uložené ve službě Cosmos DB může vypadat třeba takto:
+Proč byste mohli uživatele rozdělit a dokonce uložit tyto informace na různých místech? Vzhledem k tomu, že se z hlediska výkonu zobrazuje větší počet dokumentů, costlier dotazy. Udržujte si dokumenty na tenké straně se správnými informacemi, abyste mohli provádět všechny dotazy závislé na výkonu pro vaši sociální síť. Ukládejte Další Další informace pro případné scénáře, jako jsou úplné úpravy profilů, přihlášení a dolování dat pro účely analýzy využití a testování velkých objemů dat. Nezáleží na tom, jestli je shromažďování dat pro dolování dat pomalejší, protože běží na Azure SQL Database. Máte obavy, že uživatelé mají rychlý a tenký zážitek. Uživatel uložený v Cosmos DB by vypadal jako tento kód:
 
     {
         "id":"dse4-qwe2-ert4-aad2",
@@ -176,7 +176,7 @@ Proč by i tyto informace ukládaly na různých místech a rozdělit uživatele
         "twitterHandle":"\@john"
     }
 
-A příspěvek vypadat nějak takto:
+A příspěvek by vypadal jako:
 
     {
         "id":"1234-asd3-54ts-199a",
@@ -188,68 +188,68 @@ A příspěvek vypadat nějak takto:
         }
     }
 
-Pokud úpravy vznikne, kde je ovlivněna atribut bloků dat, můžete snadno vyhledat ovlivněné dokumenty. Stačí použít dotazy, které odkazují na indexované atributy, jako například `SELECT * FROM posts p WHERE p.createdBy.id == "edited_user_id"`a pak aktualizujte bloky dat.
+Když dojde k úpravě, kde je ovlivněn atribut bloku dat, můžete snadno najít ovlivněné dokumenty. Stačí použít dotazy, které odkazují na indexované atributy, například `SELECT * FROM posts p WHERE p.createdBy.id == "edited_user_id"`, a pak aktualizovat bloky dat.
 
-## <a name="the-search-box"></a>Do vyhledávacího pole
+## <a name="the-search-box"></a>Vyhledávací pole
 
-Uživatelé budou generovat naštěstí příliš mnoho obsahu. By měl být schopný poskytnout možnost vyhledávání a najdete obsah, který nemusí být přímo v jejich obsahu datové proudy, pravděpodobně protože neodpovídají autoři a možná se právě snažíte najít, staré příspěvek jste před šesti měsíci.
+Uživatelé vygenerují, donovanovo, mnoho obsahu. A měli byste být schopni umožnit vyhledávání a hledání obsahu, který nemusí být přímo v datových proudech obsahu, protože nedodržujete tvůrce, nebo možná jste se pokusili zjistit původní příspěvek, který jste před šesti měsíci.
 
-Vzhledem k tomu, že používáte služby Azure Cosmos DB, je možné snadno implementovat pomocí modulu vyhledávání [Azure Search](https://azure.microsoft.com/services/search/) za pár minut, aniž by museli zadávat žádný kód, než je proces hledání a uživatelského rozhraní.
+Vzhledem k tomu, že používáte Azure Cosmos DB, můžete snadno implementovat vyhledávací modul pomocí [Azure kognitivní hledání](https://azure.microsoft.com/services/search/) během několika minut, aniž byste museli psát kód, který je jiný než proces vyhledávání a uživatelské rozhraní.
 
-Tento proces je tak snadné
+Proč je tento proces tak snadný?
 
-Služba Azure Search implementuje co volají [indexery](https://msdn.microsoft.com/library/azure/dn946891.aspx), procesy na pozadí tohoto volání v úložištích dat a automagically přidání, aktualizace nebo odebrání objektů v indexy. Podporují taky [indexování Azure SQL Database](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/), [indexování objektů BLOB Azure](../search/search-howto-indexing-azure-blob-storage.md) a naštěstí [indexerů Azure Cosmos DB](../search/search-howto-index-documentdb.md). Přechod informace ze služby Cosmos DB do služby Azure Search je jednoduché. Obě technologie ukládat informace ve formátu JSON, takže stačí [vytvořit Index](../search/search-create-index-portal.md) a mapování atributů z vašich dokumentů chcete indexovat. A to je vše! V závislosti na velikosti dat bude váš obsah k dispozici pro hledání na během několika minut nejlepší řešení vyhledávání jako služby v infrastruktuře cloudu.
+Azure Kognitivní hledání implementuje, co volají [indexery](https://msdn.microsoft.com/library/azure/dn946891.aspx), procesy na pozadí, které jsou zapojené do úložišť dat, a automagic přidávají, aktualizují nebo odstraňují objekty v indexech. Podporují [Azure SQL Database indexery](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/), [indexery Azure BLOBs](../search/search-howto-indexing-azure-blob-storage.md) a naštěstí, [Azure Cosmos DB indexery](../search/search-howto-index-documentdb.md). Přechod informací z Cosmos DB do Azure Kognitivní hledání je jednoduchý. Obě technologie ukládají informace ve formátu JSON, takže potřebujete pouze [vytvořit index](../search/search-create-index-portal.md) a namapovat atributy z dokumentů, které chcete indexovat. A to je vše! V závislosti na velikosti dat bude k dispozici veškerý obsah, který bude prohledán během několika minut od nejlepšího řešení hledání jako služby v cloudové infrastruktuře.
 
-Další informace o službě Azure Search, můžete navštívit [Hitchhiker od průvodce hledání](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/).
+Další informace o službě Azure Kognitivní hledání najdete v [příručce hitchhiker](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/), kde můžete hledat.
 
-## <a name="the-underlying-knowledge"></a>Základní znalosti
+## <a name="the-underlying-knowledge"></a>Základní znalostní báze
 
-Po uložení všech tento obsah, který zvyšuje nebo každým dnem roste, může pro vás přemýšlení: Co mohu udělat pomocí tohoto streamu informací mých uživatelů?
+Po uložení veškerého tohoto obsahu, který se postupně rozroste a roste, se můžete setkat s tím, co se dá dělat s veškerým datovým proudem informací z mých uživatelů.
 
-Odpověď je jednoduchý: Začít pracovat a Učte se z něj.
+Odpověď je jednoduchá: uložte ji a Naučte se ji používat.
 
-Ale co je další? Zahrnují několik příkladů snadno [analýzu subjektivního hodnocení](https://en.wikipedia.org/wiki/Sentiment_analysis), obsah doporučení na základě zálib uživatelů, nebo dokonce automatizované content moderatoru, který zajišťuje, že obsah publikovaný sociálních sítí je bezpečný pro rodinu.
+Ale k čemu se můžete dozvědět? Mezi jednoduché příklady patří [Analýza mínění](https://en.wikipedia.org/wiki/Sentiment_analysis), doporučení k obsahu založené na uživatelských preferencích nebo dokonce i automatizovaný moderátor obsahu, který zajišťuje, aby byl obsah publikovaný vaší sociální sítí bezpečný pro rodinu.
 
-Teď, když mám tady připojeny, vám dovolí přemýšlet pravděpodobně potřebujete některé titul pH.d. v matematické vědy extrahovat tyto vzory a informace z jednoduchého databáze a soubory, ale by byl nesprávný.
+Teď, když jste se připojili, pravděpodobně budete potřebovat některé PhD v matematické oblasti pro extrakci těchto vzorků a informací z jednoduchých databází a souborů, ale je to ale chybné.
 
-[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/)patří [Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx), je plně spravovaná Cloudová služba, která umožňuje vytvářet pracovní postupy pomocí algoritmů v jednoduché rozhraní pro přetahování myší, kód vlastní algoritmy v [ R](https://en.wikipedia.org/wiki/R_\(programming_language\)), nebo použít některé z již integrované a připravené k použití rozhraní API, jako: [Rozhraní text Analytics](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [Content Moderator, nebo [doporučení](https://gallery.azure.ai/Solution/Recommendations-Solution).
+[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/), součást [Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx), je plně spravovaná cloudová služba, která umožňuje vytvářet pracovní postupy s využitím algoritmů v jednoduchém rozhraní přetažení, kódovat vlastní algoritmy v jazyce [R](https://en.wikipedia.org/wiki/R_\(programming_language\))nebo použít některé z těchto již vytvořená a připravená k použití rozhraní API, například: [Analýza textu](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [Content moderator nebo [doporučení](https://gallery.azure.ai/Solution/Recommendations-Solution).
 
-Chcete-li dosáhnout některého z těchto scénářů Machine Learning, můžete použít [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) k ingestování informace z různých zdrojů. Můžete také použít [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) pro zpracování informací a generovat výstup, který může být zpracována Azure Machine Learning.
+Chcete-li dosáhnout některého z těchto scénářů Machine Learning, můžete použít [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) k ingestování informací z různých zdrojů. Můžete také použít [u-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) ke zpracování informací a vygenerování výstupu, který lze zpracovat pomocí Azure Machine Learning.
 
-K dispozici další možností je použít [Azure Cognitive Services](https://www.microsoft.com/cognitive-services) k analýze obsahu; nejen můžete je jim lépe porozumět uživatelům (prostřednictvím analýza zapisovaly s [rozhraní Text Analytics API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api)), ale může také zjistit nežádoucí nebo až po zralé obsah a příslušně na ně s [rozhraní API pro počítačové zpracování obrazu](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api). Služby cognitive Services zahrnuje mnoho out-of-the-box řešení, které nevyžadují jakýkoli druh znalostní báze Machine Learning k použití.
+Další dostupnou možností je použít k analýze obsahu uživatelů službu [Azure Cognitive Services](https://www.microsoft.com/cognitive-services) ; nejenom je můžete lépe pochopit (analýzou toho, co zapisuje pomocí [rozhraní API pro analýzu textu](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api)), ale můžete taky zjistit nežádoucí nebo vyzrálější obsah a pracovat s ním [rozhraní API pro počítačové zpracování obrazu](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api). Cognitive Services obsahuje mnoho předem připravených řešení, která nevyžadují, aby se používaly žádné Machine Learning znalosti.
 
-## <a name="a-planet-scale-social-experience"></a>Sociální prostředí globálním měřítku
+## <a name="a-planet-scale-social-experience"></a>Prostředí globálním pro sociální škálování
 
-Je last, ale ne nejméně důležité článku můžu musí řešit: **škálovatelnost**. Při návrhu architekturu jednotlivé komponenty by se měly škálovat sama o sobě. Nakonec bude potřeba zpracovávat další data, nebo chcete mít větší zeměpisném pokrytí. Naštěstí je dosažení obě úlohy **předpřipravené prostředí** pomocí služby Cosmos DB.
+K dispozici je jen poslední, ale nejméně důležitý článek, který je potřeba řešit: **škálovatelnost**. Při návrhu architektury by se každá součást měla škálovat samostatně. Nakonec budete muset zpracovat více dat nebo budete chtít mít větší geografické pokrytí. Naštěstí, které jsou v obou úlohách, je **prostředí klíč** s Cosmos DB.
 
-Cosmos DB podporuje dynamické dělení out-of-the-box. Automaticky vytvoří oddíly na základě danou **klíč oddílu**, který je definován jako atribut v dokumentech. Definování správného klíče oddílu je třeba provést v době návrhu. Další informace najdete v tématu [dělení ve službě Azure Cosmos DB](partitioning-overview.md).
+Cosmos DB podporuje dynamické dělení předem. Automaticky vytvoří oddíly na základě daného **klíče oddílu**, který je definován jako atribut v dokumentech. Definování správného klíče oddílu je nutné provést v době návrhu. Další informace najdete v tématu [dělení v Azure Cosmos DB](partitioning-overview.md).
 
-Sociálních prostředí které musí být v souladu strategii dělení do toho, jak dotazovat a zápis. (Například čtení v rámci stejného oddílu jsou žádoucí a vyhnout se "hotspotů" tím, že rozprostírá zápisy na několik oddílů.) Některé možnosti jsou: oddíly na základě dočasné klíče (den/měsíc/týden), kategorie obsahu, geografické oblasti nebo uživatele. Všechno ve skutečnosti závisí na jak budete zadávat dotazy na data a zobrazit data ve vašem prostředí sociálních sítí.
+Pro sociální prostředí je nutné sjednotit strategii dělení pomocí způsobu dotazování a zápisu. (Například čtení v rámci stejného oddílu je žádoucí a nepoužívejte "aktivní body" rozšíříte zápisy na více oddílů.) Mezi možnosti patří: oddíly založené na dočasném klíči (den/měsíc/týden), podle kategorie obsahu, podle zeměpisné oblasti nebo podle uživatele. Všechno ve skutečnosti záleží na způsobu, jakým se dotazuje na data a zobrazují data v sociálním prostředí.
 
-Cosmos DB se spustí vaše dotazy (včetně [agregace](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)) na všechny oddíly transparentně, takže není nutné přidat jakékoli logiky růst objemu dat.
+Cosmos DB spustí vaše dotazy (včetně [agregací](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)) ve všech vašich oddílech transparentně, takže nemusíte přidávat žádnou logiku, protože vaše data roste.
 
-Čas, bude nakonec nárůstu provozu a využití prostředků (měřeno v [ru](request-units.md), nebo jednotek žádostí) se zvýší. Můžete se čtení a zápis víc často s růstem uživatelské základny. Vytváření a čtení další obsah se spustí uživatelskou základnu. Takže schopnost **škálování propustnosti** je důležité. Zvýšení vaší jednotky ru je snadné. Můžete to provést pomocí několika kliknutí na portálu Azure portal nebo pomocí [vydávání příkazů pomocí rozhraní API](https://docs.microsoft.com/rest/api/cosmos-db/replace-an-offer).
+V čase budete nakonec růst provozu a spotřebu prostředků (měřené v [ru](request-units.md)nebo jednotkách žádosti) se zvýší. Při zvětšování uživatelské základny budete číst a zapisovat častěji. Uživatelskou základnu začne vytvářet a číst další obsah. Schopnost **škálování propustnosti** je proto důležitá. Zvýšení ru je snadné. Můžete to udělat několika kliknutími na Azure Portal nebo vyvoláním [příkazů prostřednictvím rozhraní API](https://docs.microsoft.com/rest/api/cosmos-db/replace-an-offer).
 
-![Vertikální navýšení kapacity a definovat klíč oddílu](./media/social-media-apps/social-media-apps-scaling.png)
+![Škálování a definování klíče oddílu](./media/social-media-apps/social-media-apps-scaling.png)
 
-Co se stane, když stále zlepšovaly věci? Předpokládejme, že uživatelé z jiné oblasti, země nebo kontinentem Všimněte si, že vaše platforma a začít ji používat. Jaké skvělé překvapení!
+Co se stane, když všechno pořád ještě lepší? Předpokládejme, že uživatelé z jiné oblasti, země nebo kontinentu si vyvšimli vaši platformu a začnou ji používat. Co Skvělé neočekávaně!
 
-Ale Počkejte! Brzy zjistíte, že se vaše platforma nejsou optimálním řešením. Jsou to zatím od provozní oblasti, že je ještěrů latence. Samozřejmě nechcete, aby jejich ukončení. Pokud pouze došlo snadný způsob **rozšíření globálního dosahu**? Existuje!
+Ale počkejte! Brzy zjistíte, že své zkušenosti s platformou nejsou optimální. Jsou zatím mimo vaši provozní oblast, že latence je ještěrů. Zjevně nechcete, aby se ukončily. Pokud je k dispozici pouze snadný způsob **rozšíření globálního dosahu**? K dispozici je!
 
-Cosmos DB umožňuje [replikujte data globálně](../cosmos-db/tutorial-global-distribution-sql-api.md) a transparentně pomocí několika kliknutí a automaticky vybrat z dostupných oblastí z vaší [klientský kód](../cosmos-db/tutorial-global-distribution-sql-api.md). Tento proces také znamená, že můžete mít [více oblastí převzetí služeb při selhání](high-availability.md).
+Cosmos DB umožňuje globálně a transparentně [replikovat data](../cosmos-db/tutorial-global-distribution-sql-api.md) několika kliknutími a automaticky vybírat z dostupných oblastí z vašeho [klientského kódu](../cosmos-db/tutorial-global-distribution-sql-api.md). Tento proces také znamená, že můžete mít [více oblastí převzetí služeb při selhání](high-availability.md).
 
-Replikujte data globálně, budete muset Ujistěte se, že vaši klienti mohou využívat jejich výhod. Pokud používáte webový front-end nebo přístup k rozhraní API z mobilních klientů, můžete nasadit [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) a klonování služby Azure App Service na všechny požadované oblasti pomocí konfigurace výkon pro podporu vašich rozšířené globální pokrytí. Pokud vaši klienti získat přístup k rozhraní API nebo front-endu, bude směrovat na nejbližší App Service, který se pak připojí k místní replika služby Cosmos DB.
+Při globální replikaci dat je potřeba zajistit, aby ji vaši klienti mohli využít. Pokud používáte webový front-end nebo přístup k rozhraním API z mobilních klientů, můžete nasadit [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) a klonovat Azure App Service ve všech požadovaných oblastech pomocí konfigurace výkonu pro podporu vašeho rozšířeného globálního pokrytí. Když klienti přistupují k front-endu nebo rozhraním API, budou přesměrováni na nejbližší App Service, která se zase připojí k místní replice Cosmos DB.
 
-![Přidání globální pokrytí sociální platforma](./media/social-media-apps/social-media-apps-global-replicate.png)
+![Přidání globálního pokrytí na sociální platformu](./media/social-media-apps/social-media-apps-global-replicate.png)
 
 ## <a name="conclusion"></a>Závěr
 
-Tento článek některé přibližuje do alternativy zcela vytváření sociálních sítí v Azure se službami s nízkými náklady. poskytuje výsledky tím, že podporují použití více vrstvách úložiště řešení a data distribuci nazývá "Adaptivní žebříček přenosových rychlostí".
+Tento článek se podrobněji přenese do alternativních možností vytváření sociálních sítí, které jsou zcela v Azure, s nižšími náklady. poskytuje výsledky tím, že povzbudí použití řešení úložiště s více vrstvami a distribuce dat s názvem "žebřík".
 
-![Diagram interakcí mezi službami Azure pro sociální sítě](./media/social-media-apps/social-media-apps-azure-solution.png)
+![Diagram interakce mezi službami Azure pro sociální sítě](./media/social-media-apps/social-media-apps-azure-solution.png)
 
-Pravdy je, že neexistuje žádná stříbrné odrážky pro tento druh scénářů. Je synergii vytvořené kombinací skvělé služby, které umožňuje vytvářet skvělé prostředí: rychlost a volnosti služby Azure Cosmos DB zajistit skvělé aplikace sociálních sítí, intelligence za prvotřídní hledání řešení, jako je Azure Search pružnost služby Azure App Services k hostování aplikací není ještě jazykově nezávislé, ale procesy na pozadí výkonné a rozšiřitelné služby Azure Storage a Azure SQL Database pro ukládání velkých objemů dat a Analytický výkon služby Azure Machine Learning k Vytvoření znalostní báze a inteligentních funkcí, které můžete poskytnout zpětnou vazbu k vašim procesům a Pomozte nám posílat správný obsah správným uživatelům.
+Pravdy je, že pro tento druh scénářů není k dispozici žádná stříbrné odrážka. Jedná se o synergii vytvořenou kombinací skvělých služeb, které nám umožňují sestavovat Skvělé prostředí: rychlost a volnost Azure Cosmos DB pro zajištění Skvělé sociální aplikace, inteligentní řešení pro vyhledávání první třídy, jako je Azure Kognitivní hledání, flexibilita Azure App Services pro hostování nenezávislách aplikací pro jazyky, ale výkonné procesy na pozadí a rozšiřitelné Azure Storage a Azure SQL Database pro ukládání obrovského objemu dat a analytické síly Azure Machine Learning Vytvářejte znalosti a inteligentní informace, které vám poskytnou zpětnou vazbu vašim procesům, a nám pomůžou zajistit správný obsah správným uživatelům.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o případech použití pro službu Cosmos DB najdete v tématu [Cosmos DB běžné případy použití](use-cases.md).
+Další informace o případech použití Cosmos DB najdete v tématu [běžné případy použití Cosmos DB](use-cases.md).

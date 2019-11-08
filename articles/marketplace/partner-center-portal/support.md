@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: jamwall
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/17/2019
-ms.openlocfilehash: c0f3fba389f9cb6f55ac5bf7bb81475fa8244cbf
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 53d6b5b43a028d552c95c58aebf7268353621759
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195245"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827889"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Podpora programu komerčního tržiště v partnerském centru
 
@@ -30,7 +31,7 @@ Společnost Microsoft poskytuje podporu pro širokou škálu produktů a služeb
  
    ![Ikona podpory](./media/commercial-marketplace-support.png)
 
-1. Podokno **pomoc a podpora** se zobrazí na pravé straně stránky. Pro každý program v partnerském centru bude k dispozici rozevírací seznam, ve kterém je váš účet zaregistrován. Vyberte rozevírací nabídku komerčního tržiště. 
+1. Podokno **pomoc a podpora** se zobrazí na pravé straně stránky. Pro každý program v partnerském centru bude k dispozici rozevírací seznam, ve kterém je váš účet zaregistrován. Vyberte rozevírací nabídku **komerčního tržiště** . 
  
    ![Rozevírací nabídka podpora](./media/commercial-marketplace-support-pane.png)
 
@@ -44,9 +45,9 @@ Společnost Microsoft poskytuje podporu pro širokou škálu produktů a služeb
 
 Výběr **Další pomoci** z nabídky podpora komerčního tržiště v partnerském centru vás přesměruje na stránku Podpora Microsoftu pro firmy. Zobrazí se několik rozevíracích nabídek. Prvních několik rozevíracích nabídek je pro vás automaticky vyplněné. V případě podpory na webu Marketplace Identifikujte produktovou rodinu jako **cloudové a online služby**, produkt jako **vydavatele webu Marketplace**a verzi produktu jako **publikování na webu Marketplace**. Neměňte tyto výběry předem vyplněných rozevíracích nabídek. 
 
-- **Vyberte kategorii, která nejlépe popisuje problém**: Vyberte kategorii, která nejlépe odpovídá vašemu dotazu nebo problému. Výběrem kategorie se zobrazí další rozevírací nabídka, která vás vyzve k výběru problému, který nejlépe popisuje váš problém.
+- **Vyberte kategorii, která nejlépe popisuje problém**: zvolte kategorii, která nejlépe odpovídá vašemu dotazu nebo problému. Výběrem kategorie se zobrazí další rozevírací nabídka, která vás vyzve k výběru problému, který nejlépe popisuje váš problém.
 
-- **Vyberte problém, který nejlépe popisuje problém**: Vyberte problém z uvedených možností, které nejlépe odpovídají vašemu problému. V závislosti na vašem problému se může zobrazit nová část s informacemi o odkazech, které by mohly pomáhat s odkazy souvisejícími s vaším problémem. Před výběrem tlačítka **Další** zkontrolujte tyto odkazy a zjistěte, zda je otázka nebo problém vyřešen.
+- **Vyberte problém, který nejlépe popisuje problém**: Zvolte problém z uvedených možností, které nejlépe odpovídají vašemu problému. V závislosti na vašem problému se může zobrazit nová část s informacemi o odkazech, které by mohly pomáhat s odkazy souvisejícími s vaším problémem. Před výběrem tlačítka **Další** zkontrolujte tyto odkazy a zjistěte, zda je otázka nebo problém vyřešen.
 
 Když vyberete tlačítko **Další** , budete přesměrováni na stránku s **podrobnostmi o problému** . 
 
@@ -58,15 +59,15 @@ V části **Podrobnosti o problému** vysvětlete, k čemu potřebujete pomáhat
 - Vyberte jazyk, ve kterém chcete získat podporu.
 - Zadejte název problému (od 3 do 200 znaků).  
 - Zadejte stručný popis problému (maximálně 2000 znaků).
-- Vyberte **Další**.
+- Vyberte **Next** (Další).
 
 #### <a name="select-a-support-plan"></a>Vybrat plán podpory
 
-V části **plán podpory** se nevyžadují žádné informace. Vyberte **Další**. 
+V části **plán podpory** se nevyžadují žádné informace. Vyberte **Next** (Další). 
 
 #### <a name="select-the-severity-of-your-issue"></a>Vyberte závažnost problému.
 
-V části **závažnost** se nevyžadují žádné informace. Vyberte **Další**. 
+V části **závažnost** se nevyžadují žádné informace. Vyberte **Next** (Další). 
 
 #### <a name="who-should-we-contact"></a>Kdo by měl kontaktovat
 

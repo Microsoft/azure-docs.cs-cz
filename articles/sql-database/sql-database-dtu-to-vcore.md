@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database – migrace z DTU na vCore
+title: Migrace z DTU na vCore
 description: Migrujte z modelu DTU do modelu vCore. Migrace na vCore je podobná upgradu nebo downgrade mezi úrovní Standard a Premium.
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 10/08/2019
-ms.openlocfilehash: 73803ed6c583b8f40daa569a75806f54f6f4be45
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: f34439b7750ca1858e71d4a36121eb65001fff50
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690576"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811271"
 ---
 # <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migrace z modelu založeného na DTU na model založený na vCore
 

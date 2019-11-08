@@ -1,51 +1,52 @@
 ---
-title: Nabídka Power BI aplikace | Azure Marketplace
-description: Jak publikovat aplikaci Power BI na webu Marketplace Microsoft AppSource.
+title: Nabídka aplikace Power BI | Azure Marketplace
+description: Jak publikovat Power BI aplikaci na webu Microsoft AppSource Marketplace.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: pabutler
-ms.openlocfilehash: 72de873b773f174499b0cdc7225b344ea30a137f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d1974133562c0bb8b8006ea2ef323e6797643b67
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943033"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826071"
 ---
 # <a name="power-bi-app-offer"></a>Nabídka aplikací Power BI
 
 |              |                                |
 |--------------|--------------------------------|
-| Tento článek vysvětluje, jak publikovat aplikace Power BI do aplikace Microsoft [AppSource marketplace](https://appsource.microsoft.com/).  Aplikace Power BI balíčky přizpůsobitelné obsah Power BI, včetně datových sad, sestav a řídicích panelů. Můžete pak Nasaďte aplikaci do jiných tenantů Power BI prostřednictvím AppSource, provést úpravy a přizpůsobení povolené vývojář a připojte ho k vlastním datům. | ![Power BI icon](./media/powerbi-icon.png) |
+| Tento článek vysvětluje, jak publikovat aplikaci Power BI na [webu Microsoft AppSource Marketplace](https://appsource.microsoft.com/).  Balíčky aplikací Power BI přizpůsobitelné Power BI obsahu, včetně datových sad, sestav a řídicích panelů. Aplikaci pak můžete nasadit do jiných Power BI klientů prostřednictvím AppSource, provádět úpravy a přizpůsobení, které vývojář povoluje, a propojit ho s vašimi vlastními daty. | ![Ikona Power BI](./media/powerbi-icon.png) |
 
 
-Tento článek je rozdělené do tří hlavních částí:
+Tento článek je rozdělen na tři hlavní části:
 
--   [Požadavky](./cpp-prerequisites.md). Technické a podnikové požadavky pro vytváření a publikování aplikace Power BI nabízí.
--   [Vytvořte nabídku aplikace Power BI](./cpp-create-offer.md). Jak vytvořit položku nabídky aplikace Power BI s použitím [portál partnerů cloudu](https://cloudpartner.azure.com).
--   [Publikovat nabídku aplikace Power BI](./cpp-publish-offer.md). Jak odeslat novou nabídku AppSource pro publikování a aktualizace stávající nabídky.
-
-
-## <a name="publishing-steps"></a>Postup publikování
-
-Tady jsou základní kroky pro publikování na nabídku aplikace Power BI:
-
-![Aplikace Power BI nabízejí publikování kroky](media/publishing-steps.png)
-
-Tady je proces publikování nabídky aplikace Power BI:
-
-1. Vytvoření šablony aplikace v Power BI. Tato akce vytvoří adresa URL balíčku instalace, která představuje primární technické asset nabídky. Také v současné době podporují balíček test na předprodukční režim. Další informace najdete v tématu [co jsou aplikace šablony Power BI?](https://docs.microsoft.com/power-bi/service-template-apps-overview). 
-2. Shromažďování nebo vytvořte marketingové materiály nabídky, včetně: oficiální název, popis, loga, atd. 
-3. Shromažďování nebo vytvořte právní nabídky a dokumentů o podpoře: *podmínky použití*, *zásady ochrany osobních údajů*, *zásady podpory*, Nápověda pro uživatele atd.
-4. Vytvořte svou nabídku: použít portál partnerů cloudu ke konfiguraci podrobnosti nabídky, včetně popis nabídky, marketingové materiály, právní informace, informace o podpoře a specifikace asset.  Po nabídky je plně zadaný, odešlete ho pro publikování.
-5. Monitorování procesu publikování v portál partnerů cloudu.  Během tohoto kroku onboardingový tým AppSource testy, ověří a certifikuje vaší aplikace. 
-6. Po úspěšné certifikaci aplikace, zkontrolujte jeho testovacího prostředí a ji. 
-7. Aplikace Power BI je uvedené na AppSource (jeho "přejde za").
-8. V Power BI umožňuje zvýšit úroveň předprodukčního balíčku do produkčního prostředí. Další informace najdete v tématu [spravovat verze aplikace šablony](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release).
+-   [Požadavky](./cpp-prerequisites.md): Technické a obchodní požadavky na vytvoření a publikování nabídky aplikace Power BI.
+-   [Vytvořte nabídku aplikace Power BI](./cpp-create-offer.md). Vytvoření položky nabídky aplikace Power BI pomocí [portál partnerů cloudu](https://cloudpartner.azure.com).
+-   [Publikování nabídky aplikace Power BI](./cpp-publish-offer.md). Odeslání nové nabídky do AppSource pro publikování a aktualizace stávající nabídky
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="publishing-steps"></a>Kroky publikování
 
-Před vytvořením nabídky aplikace Power BI a publikování na webu AppSource, musíte splnit [požadavky](./cpp-prerequisites.md) pro publikování aplikace Power BI na webu AppSource.
+Tady je postup vysoké úrovně pro publikování Power BI nabídky aplikace:
+
+![Kroky publikování v nabídce aplikace Power BI](media/publishing-steps.png)
+
+Zde je Power BI proces publikování nabídky aplikace:
+
+1. Vytvořte šablonu aplikace v Power BI. Tato akce vygeneruje adresu URL instalace balíčku, která představuje primární technický prostředek pro nabídku. V tuto chvíli také povýší testovací balíček na předprodukční. Další informace najdete v tématu [co jsou Power BIch šablonových aplikací?](https://docs.microsoft.com/power-bi/service-template-apps-overview). 
+2. Shromážděte nebo Vytvářejte marketingové materiály nabídky, včetně: oficiální název, popis, loga atd. 
+3. Shromažďovat nebo vytvářet právní a podpůrné dokumenty nabídky: *podmínkami použití*, *Zásady ochrany osobních údajů*, *zásady podpory*, uživatelská pomoc atd.
+4. Vytvoření nabídky: použijte portál partnerů cloudu ke konfiguraci podrobností nabídky, včetně popisu nabídky, marketingových materiálů, právních informací, informací o podpoře a specifikace assetů.  Po úplném zadání nabídky ji odešlete k publikování.
+5. Monitorujte proces publikování v portál partnerů cloudu.  Během tohoto kroku otestuje tým AppSource registraci, ověří a osvědčí vaši aplikaci. 
+6. Po úspěšné certifikaci aplikace si ji Projděte v testovacím prostředí a uvolněte ji. 
+7. Aplikace Power BI je uvedená na AppSource (to je živá).
+8. V Power BI zvyšte úroveň předprodukčního balíčku na produkční. Další informace najdete v tématu [Správa vydání šablony aplikace](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release).
+
+
+## <a name="next-steps"></a>Další kroky
+
+Než vytvoříte nabídku aplikace Power BI a publikujete ji na AppSource, musíte splnit [požadavky](./cpp-prerequisites.md) na publikování Power BI aplikace do AppSource.

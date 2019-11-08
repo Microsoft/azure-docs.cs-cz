@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 3243c8dfcfa83129f57bcd3ea7969fb4f8b07156
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4043fd374a314735173a1f07f46c8394592b81e2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690354"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823718"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Přidání horizontálních oddílů pomocí nástrojů Elastic Database
 
@@ -53,7 +53,7 @@ V některých případech jste už možná namapovali rozsah na horizontálních
 
 ### <a name="example-splitting-a-range-and-assigning-the-empty-portion-to-a-newly-added-shard"></a>Příklad: rozdělení rozsahu a přiřazení prázdné části k nově přidanému horizontálních oddílů
 
-Vytvoří se databáze s názvem "sample_shard_2" a všechny potřebné objekty schématu v ní.  
+Byla vytvořena databáze s názvem "sample_shard_2" a všechny potřebné objekty schématu v ní.  
 
 ```csharp
 // sm is a RangeShardMap object.

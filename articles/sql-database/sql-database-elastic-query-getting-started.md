@@ -1,5 +1,5 @@
 ---
-title: Sestava napříč cloudových databází s horizontálním škálováním (horizontální dělení)
+title: Vytváření sestav napříč cloudovými databázemi s horizontálním navýšením kapacity
 description: Dotazy databázové databáze pro různé databáze můžete používat k sestavování napříč více databázemi.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
-ms.openlocfilehash: 1adc7757edc6d5abc50ed31ea2227711db60fcfe
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bad52b364dc83994e7985fc80b1b9f9e7f50481e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690414"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823781"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Sestava napříč cloudových databází s horizontálním škálováním (Preview)
 

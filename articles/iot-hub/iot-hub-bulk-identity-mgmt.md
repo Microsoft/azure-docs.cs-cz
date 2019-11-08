@@ -6,18 +6,18 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/11/2019
+ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 32c7a2a79c8d6a35008255b3c117f20d04ad7749
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3b498911999e224003710eced8e0c34989672800
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927406"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809195"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Hromadné import a export identit zařízení IoT Hub
 
-Každé centrum IoT má registr identit, který můžete použít k vytvoření prostředků pro jednotlivé zařízení ve službě. Registr identit také umožňuje řídit přístup k koncovým bodům orientovaným na zařízení. Tento článek popisuje, jak hromadně importovat a exportovat identity zařízení do registru identit a z něj.
+Každé centrum IoT má registr identit, který můžete použít k vytvoření prostředků pro jednotlivé zařízení ve službě. Registr identit také umožňuje řídit přístup k koncovým bodům orientovaným na zařízení. Tento článek popisuje, jak hromadně importovat a exportovat identity zařízení do registru identit a z něj. Pokud chcete zobrazit pracovní ukázku v C# nástroji a zjistit, jak můžete tuto schopnost využít při klonování rozbočovače do jiné oblasti, přečtěte si téma [postup klonování IoT Hub](iot-hub-how-to-clone.md).
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -421,7 +421,11 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak provádět hromadné operace s registrem identit ve službě IoT Hub. Pokud chcete získat další informace o správě IoT Hub Azure, postupujte podle těchto odkazů:
+V tomto článku jste zjistili, jak provádět hromadné operace s registrem identit ve službě IoT Hub. Mnohé z těchto operací, včetně postupu přesunutí zařízení z jednoho centra na jiný, se používají v [části Správa zařízení zaregistrovaných do služby IoT Hub v tématu Postup klonování IoT Hub](iot-hub-how-to-clone.md#managing-the-devices-registered-to-the-iot-hub). 
+
+Článek klonování obsahuje pracovní ukázku, která je k němu přidružená, která je umístěná C# v ukázkách IoT na této stránce: [ukázky C#Azure IoT pro ](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/), s projektem, který je ImportExportDevicesSample. Můžete si stáhnout ukázku a vyzkoušet ji. k dispozici jsou pokyny, [jak Naklonovat IoT Hub](iot-hub-how-to-clone.md) článek.
+
+Další informace o správě IoT Hub Azure najdete v následujících článcích:
 
 * [IoT Hub metriky](iot-hub-metrics.md)
 * [Protokoly IoT Hub](iot-hub-monitor-resource-health.md)

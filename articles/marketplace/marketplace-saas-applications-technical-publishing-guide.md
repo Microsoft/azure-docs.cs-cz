@@ -4,19 +4,20 @@ description: Podrobný průvodce a publikování kontrolních seznamů pro publi
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
 author: keithcharlie
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: kevidal
-ms.openlocfilehash: f9ff6e19a0f0091cb5b831279eee90727bbb89fd
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: c213bbcb3c7859aa4718916aafab970b3ffd4613
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742260"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813031"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Průvodce publikováním nabídky aplikací SaaS
 
-Aplikace SaaS se dají publikovat na webu Marketplace se třemi různými voláními akce: Kontaktujte mě, vyzkoušet si ho hned a získat hned. Tato příručka vysvětluje tyto tři možnosti, včetně požadavků pro každý z nich. 
+Aplikace SaaS můžou být na webu Marketplace publikované se třemi různými voláními akce: "kontaktujte mě", vyzkoušet si ho hned a získat hned. Tato příručka vysvětluje tyto tři možnosti, včetně požadavků pro každý z nich. 
 
 ## <a name="offer-overview"></a>Přehled nabídky  
 
@@ -27,7 +28,7 @@ SaaS aplikace jsou k dispozici v Azure prodejní místa v následující tabulce
 | AppSource | Ano (kontaktujte mě) | Ano (PowerBI/Dynamics) |
 | Azure Marketplace | Ne | Ano (aplikace SaaS) |   
 
-**Seznamu**  Možnost publikování výpisu se skládá z nabídky typu kontakt mi a používá se v případě, že účast na úrovni zkušební verze nebo transakce není proveditelná. Výhodou tohoto přístupu je to, že vydavatelům v rámci trhu umožňuje okamžitě začít přijímat potenciální zákazníky, kteří se můžou rozrůstat, aby zvýšili vaši firmu.  
+**Seznam:**  Možnost publikování výpisu se skládá z nabídky typu kontakt mi a používá se v případě, že účast na úrovni zkušební verze nebo transakce není proveditelná. Výhodou tohoto přístupu je to, že vydavatelům v rámci trhu umožňuje okamžitě začít přijímat potenciální zákazníky, kteří se můžou rozrůstat, aby zvýšili vaši firmu.  
 **Zkušební verze/transakce:**  Zákazník má možnost si přímo koupit nebo požádat o zkušební verzi vašeho řešení. Díky zkušebnímu prostředí se zvýší úroveň zapojení nabízená zákazníkům a umožní zákazníkům prozkoumat vaše řešení před nákupem. V rámci zkušebního prostředí budete mít lepší šanci na zvýšení úrovně v prodejní místa a měli byste očekávat více a mnohem víc a lepších příležitostí od zákaznických rezervací. Zkušební verze musí zahrnovat bezplatnou podporu aspoň po dobu trvání zkušebního období.  
 
 | Nabídka aplikací pro SaaS | Obchodní požadavky | Technické požadavky |  
@@ -133,17 +134,17 @@ Společnost Microsoft hostuje obchodní transakci. Společnost Microsoft účtuj
 | Požadavek | Podrobnosti |  
 |:--- |:--- |  
 |Fakturace a měření | Ceny vaší nabídky se účtují na základě cenového modelu, který jste vybrali před publikováním (paušální sazba nebo podle uživatele).  Pokud používáte model paušálních sazeb, můžete volitelně zahrnout další dimenze, které se použijí k účtování zákazníků na využití, která nejsou zahrnutá do paušální sazby. |  
-|Výmaz | Vaši nabídku nemůže zákazník kdykoli zrušit. |  
+|Zrušení | Vaši nabídku nemůže zákazník kdykoli zrušit. |  
 |Cílová stránka transakce | Můžete hostovat cílovou stránku transakce se značkou Azure, kde můžou uživatelé vytvářet a spravovat jejich účet služby SaaS. |   
 | Rozhraní API pro předplatné | Vystavíte službu, která může komunikovat s předplatným SaaS k vytváření, aktualizaci a odstraňování uživatelských účtů a plánu služeb. Kritické změny rozhraní API musí být podporované do 24 hodin. Pravidelně se vydávají nekritické změny rozhraní API. |  
 
 >[!Note]
 >Výslovný souhlas kanálu pro partnery Cloud Solution Providers (CSP) je teď k dispozici.  Další informace o marketingu vaší nabídky prostřednictvím kanálů partnerů Microsoft CSP najdete v tématu [Poskytovatelé cloudových řešení](./cloud-solution-providers.md) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Pokud jste to ještě neudělali,
 
-- [](https://azuremarketplace.microsoft.com/sell) Zaregistrujte se na webu Marketplace.
+- [Zaregistrujte](https://azuremarketplace.microsoft.com/sell) se na webu Marketplace.
 
 Pokud jste zaregistrováni a vytváříte novou nabídku nebo pracujete na stávajícím typu,
 

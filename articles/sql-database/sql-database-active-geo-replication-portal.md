@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: SQL Database geografickou replikaci '
+title: 'Azure Portal: geografická replikace'
 description: Konfigurace geografické replikace pro jednu nebo sdruženou databázi v Azure SQL Database pomocí Azure Portal a zahájení převzetí služeb při selhání
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 2a9d627cb2b51d0d7d0b07052f18a8dbe1dc2f19
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7ddaefb0f65db1cfc828e4baa844f6d8e01f9d2e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691331"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808128"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurace aktivní geografické replikace pro Azure SQL Database v Azure Portal a zahájení převzetí služeb při selhání
 
@@ -69,7 +69,7 @@ Sekundární databázi lze přepnout tak, aby se stala primární.
 2. V okně SQL Database vyberte **všechna nastavení** > **geografickou replikaci**.
 3. V seznamu **sekundární** databáze vyberte databázi, která se má stát novou primární, a klikněte na **převzetí služeb při selhání**.
 
-    ![Převzetí služeb](./media/sql-database-geo-replication-failover-portal/secondaries.png)
+    ![převzetí služeb](./media/sql-database-geo-replication-failover-portal/secondaries.png)
 4. Kliknutím na **Ano** zahájíte převzetí služeb při selhání.
 
 Příkaz okamžitě přepne sekundární databázi do primární role. Tento proces normálně by měl být dokončen do 30 sec nebo méně.

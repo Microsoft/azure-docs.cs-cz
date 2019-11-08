@@ -1,22 +1,22 @@
 ---
-title: 'Aplikace SaaS: Azure SQL Database geograficky redundantní zálohy pro zotavení po havárii '
+title: 'Aplikace SaaS: geograficky redundantní zálohy pro zotavení po havárii'
 description: Naučte se používat Azure SQL Database geograficky redundantní zálohy k obnovení víceklientské aplikace SaaS v případě výpadku.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
 ms.date: 01/14/2019
-ms.openlocfilehash: 2f058a5cd20fff845a1feafe42b66beb1afef766
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 270fc157fa14efa19ed30d35b614fb769804b72e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692197"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826459"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Použití geografického obnovení k obnovení víceklientské aplikace SaaS ze záloh databáze
 

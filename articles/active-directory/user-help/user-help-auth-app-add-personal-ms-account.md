@@ -1,5 +1,5 @@
 ---
-title: Přidání osobních účtů Microsoft do aplikace Microsoft Authenticator App – Azure Active Directory | Microsoft Docs
+title: Přidání osobního účet Microsoft do aplikace ověřovatele – Azure AD
 description: Jak přidat osobní účty Microsoft, například pro Outlook.com nebo Xbox LIVE do aplikace Microsoft Authenticator pro dvoustupňové ověřování.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cf4629ca97abc5d4ce508f7078f4691467ba249
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 9ca01aad76bfbeba0cf56be8ee74287a79f6346e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616081"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820243"
 ---
 # <a name="add-your-personal-microsoft-accounts"></a>Přidání osobních účtů Microsoft
 
@@ -39,7 +39,7 @@ Vlastní účet Microsoft můžete přidat tak, že nejprve zapnete dvojúrovňo
 
 ### <a name="turn-on-two-factor-verification"></a>Zapnout dvojúrovňové ověřování
 
-1. Na svém počítači navštivte stránku [Základy zabezpečení](https://account.microsoft.com/security) a přihlaste se pomocí svých osobních účet Microsoft. Například, alain@outlook.com.
+1. Na svém počítači navštivte stránku [Základy zabezpečení](https://account.microsoft.com/security) a přihlaste se pomocí svých osobních účet Microsoft. například alain@outlook.com.
 
 2. V dolní části stránky **Základy zabezpečení** klikněte na odkaz **Další možnosti zabezpečení** .
 
@@ -57,7 +57,7 @@ Vlastní účet Microsoft můžete přidat tak, že nejprve zapnete dvojúrovňo
 
 3. Na stránce **Přidat účet** vyberte možnost **osobní účet**.
 
-4. Přihlaste se k osobnímu účtu pomocí příslušné e-mailové adresy alain@outlook.com(například) a pak zvolte **Další**.
+4. Přihlaste se k osobnímu účtu pomocí příslušné e-mailové adresy (například alain@outlook.com) a pak zvolte **Další**.
 
     >[!Note]
     >Pokud nemáte osobní účet Microsoft, můžete si ho vytvořit tady.

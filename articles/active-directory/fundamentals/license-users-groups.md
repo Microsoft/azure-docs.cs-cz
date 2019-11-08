@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 09/06/2018
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 869713967a6a89611ab2ea9ca7b7516f090a5f92
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 9f690d23ac4d8c452d731c2f6fd4ae67dc281639
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034262"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805522"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Přiřazení nebo odebrání licencí na portálu Azure Active Directory
 
@@ -37,7 +37,7 @@ Pro službu Azure AD je k dispozici několik plánů licencí, mezi které patř
 
 Konkrétní informace o jednotlivých licenčních plánech a související informace o licencování najdete v tématu [co je potřeba](https://azure.microsoft.com/pricing/details/active-directory/).
 
-Ne všechny služby společnosti Microsoft jsou k dispozici ve všech umístěních. Předtím, než může být licence přiřazena ke skupině, je nutné zadat **umístění použití** pro všechny členy. Tuto hodnotu můžete nastavit v oblasti **nastavení Azure Active Directory &gt; uživatelé &gt; nastavení @no__t profilu** ve službě Azure AD. Žádný uživatel, jehož umístění pro použití není zadaný, zdědí umístění organizace Azure AD.
+Ne všechny služby společnosti Microsoft jsou k dispozici ve všech umístěních. Předtím, než může být licence přiřazena ke skupině, je nutné zadat **umístění použití** pro všechny členy. Tuto hodnotu můžete nastavit v oblasti **Azure Active Directory &gt; uživatelé &gt; nastavení profilu &gt;** v Azure AD. Žádný uživatel, jehož umístění pro použití není zadaný, zdědí umístění organizace Azure AD.
 
 ## <a name="view-license-plans-and-plan-details"></a>Zobrazení plánů licencí a podrobností plánu
 
@@ -82,11 +82,13 @@ Ujistěte se, že kdokoli, kdo potřebuje použít licencovanou službu Azure AD
     Stránka **přiřadit licenci** se aktualizuje a zobrazí se informace o tom, že je uživatel vybraný a že jsou nakonfigurované přiřazení.
 
     > [!NOTE]
-    > Ne všechny služby společnosti Microsoft jsou k dispozici ve všech umístěních. Předtím, než může být licence přiřazena uživateli, je nutné zadat **umístění používání**. Tuto hodnotu můžete nastavit v oblasti **nastavení Azure Active Directory &gt; uživatelé &gt; nastavení @no__t profilu** ve službě Azure AD. Žádný uživatel, jehož umístění pro použití není zadaný, zdědí umístění organizace Azure AD.
+    > Ne všechny služby společnosti Microsoft jsou k dispozici ve všech umístěních. Předtím, než může být licence přiřazena uživateli, je nutné zadat **umístění používání**. Tuto hodnotu můžete nastavit v oblasti **Azure Active Directory &gt; uživatelé &gt; nastavení profilu &gt;** v Azure AD. Žádný uživatel, jehož umístění pro použití není zadaný, zdědí umístění organizace Azure AD.
 
 1. Vyberte **Přiřadit**.
 
     Uživatel se přidá do seznamu licencovaných uživatelů a bude mít přístup k zahrnutým službám Azure AD.
+    > [!NOTE]
+    > Licence je také možné přiřadit uživateli přímo ze stránky **licence** uživatele. Pokud má uživatel přiřazenou licenci prostřednictvím členství ve skupině a chcete přiřadit stejnou licenci k uživateli přímo, můžete ji provést pouze ze stránky **produkty** uvedené v kroku 1.
 
 ### <a name="to-assign-a-license-to-a-group"></a>Přiřazení licence ke skupině
 

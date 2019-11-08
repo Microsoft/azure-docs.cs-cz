@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: atsenthi
-ms.openlocfilehash: 6ee7c71a66488e9636752676d68a79fdfaf855cb
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cf808bef75a73cef6e8c17045506f29fabf3b52e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599829"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819444"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric scénáře zabezpečení clusteru
-Cluster Azure Service Fabric je prostředek, který vlastníte. Je vaše zodpovědnost za zabezpečení clusterů, aby se zabránilo neoprávněným uživatelům v jejich připojení. Zabezpečený cluster je obzvláště důležitý při spuštění produkčních úloh v clusteru. I když je možné vytvořit nezabezpečený cluster, Pokud cluster zveřejňuje koncové body správy pro veřejný Internet, můžou se k němu připojit anonymní uživatelé. Nezabezpečené clustery se pro produkční úlohy nepodporují. 
+Cluster Azure Service Fabric je prostředek, který vlastníte. Je vaše zodpovědnost za zabezpečení clusterů, aby se zabránilo neoprávněným uživatelům v jejich připojení. Zabezpečený cluster je obzvláště důležitý při spuštění produkčních úloh v clusteru. Je možné vytvořit nezabezpečený cluster, ale Pokud cluster zveřejňuje koncové body správy na veřejný Internet, můžou se k němu připojit anonymní uživatelé. Nezabezpečené clustery se pro produkční úlohy nepodporují. 
 
 Tento článek představuje přehled scénářů zabezpečení pro clustery Azure a samostatné clustery a různé technologie, které můžete použít k jejich implementaci:
 
@@ -47,7 +47,7 @@ Informace o tom, jak nastavit zabezpečení certifikátů v clusteru pro Azure, 
 Informace o tom, jak nastavit zabezpečení certifikátů v clusteru pro samostatný cluster Windows serveru, najdete v tématu [Zabezpečení samostatného clusteru ve Windows pomocí certifikátů X. 509](service-fabric-windows-cluster-x509-security.md).
 
 ### <a name="node-to-node-windows-security"></a>Zabezpečení mezi uzly a systémy Windows
-Informace o nastavení zabezpečení Windows pro samostatný cluster Windows serveru najdete v tématu Zabezpečení samostatného [clusteru ve Windows pomocí zabezpečení systému Windows](service-fabric-windows-cluster-windows-security.md).
+Informace o nastavení zabezpečení Windows pro samostatný cluster Windows serveru najdete v tématu zabezpečení [samostatného clusteru ve Windows pomocí zabezpečení systému Windows](service-fabric-windows-cluster-windows-security.md).
 
 ## <a name="client-to-node-security"></a>Zabezpečení klient-uzel
 Zabezpečení typu klient-uzel ověřuje klienty a pomáhá zabezpečit komunikaci mezi klientem a jednotlivými uzly v clusteru. Tento typ zabezpečení pomáhá zajistit, že ke clusteru a aplikacím nasazeným v clusteru mají přístup jenom autorizovaní uživatelé. Klienti se jednoznačně identifikují prostřednictvím svých přihlašovacích údajů zabezpečení systému Windows nebo jejich přihlašovacích údajů pro zabezpečení certifikátů.
@@ -57,7 +57,7 @@ Zabezpečení typu klient-uzel ověřuje klienty a pomáhá zabezpečit komunika
 Clustery běžící v Azure a samostatné clustery, které běží v systému Windows, můžou používat [zabezpečení certifikátů](https://msdn.microsoft.com/library/ff649801.aspx) nebo [zabezpečení systému Windows](https://msdn.microsoft.com/library/ff649396.aspx).
 
 ### <a name="client-to-node-certificate-security"></a>Zabezpečení certifikátu klienta k uzlu
-Nastavte zabezpečení certifikátu klienta na uzel při vytváření clusteru, a to buď v Azure Portal, pomocí Správce prostředků šablony, nebo pomocí samostatné šablony JSON. Certifikát vytvoříte tak, že zadáte certifikát klienta správce nebo klientský certifikát uživatele. Osvědčeným postupem je, že je třeba zadat klientské certifikáty pro správce a uživatele, které zadáte, se liší od primárních a sekundárních certifikátů, které zadáte pro [zabezpečení](#node-to-node-security)mezi uzly. Ve výchozím nastavení se certifikáty clusteru pro zabezpečení mezi uzly přidají do seznamu povolených certifikátů správců klientů.
+Nastavte zabezpečení certifikátu klienta na uzel při vytváření clusteru, a to buď v Azure Portal, pomocí Správce prostředků šablony, nebo pomocí samostatné šablony JSON. Certifikát vytvoříte tak, že zadáte certifikát klienta správce nebo klientský certifikát uživatele. Osvědčeným postupem je, že je třeba zadat klientské certifikáty pro správce a uživatele, které zadáte, se liší od primárních a sekundárních certifikátů, které zadáte pro [zabezpečení](#node-to-node-security)mezi uzly. Certifikáty clusteru mají stejná práva jako certifikáty správce klienta. Měli byste je ale používat jenom v clusterech a ne prostřednictvím administrativních uživatelů jako osvědčený postup zabezpečení.
 
 Klienti, kteří se připojují ke clusteru pomocí certifikátu správce, mají úplný přístup k možnostem správy. Klienti, kteří se připojují ke clusteru pomocí klientského certifikátu jen pro čtení, mají přístup jen pro čtení k funkcím pro správu. Tyto certifikáty se používají pro RBAC, který je popsán dále v tomto článku.
 
@@ -83,7 +83,7 @@ U clusterů Service Fabric nasazených ve veřejné síti hostované v Azure dop
 V případě samostatných clusterů Windows serveru, pokud máte Windows Server 2012 R2 a Windows Active Directory, doporučujeme, abyste používali zabezpečení systému Windows se skupinovými účty spravované služby. V opačném případě použijte zabezpečení systému Windows s účty systému Windows.
 
 ## <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
-Řízení přístupu můžete použít k omezení přístupu k určitým operacím clusteru pro různé skupiny uživatelů. To pomáhá zvýšit zabezpečení clusteru. Pro klienty, kteří se připojují ke clusteru, se podporují dva typy řízení přístupu: Role správce a role uživatele.
+Řízení přístupu můžete použít k omezení přístupu k určitým operacím clusteru pro různé skupiny uživatelů. To pomáhá zvýšit zabezpečení clusteru. Pro klienty, kteří se připojují ke clusteru, jsou podporovány dva typy řízení přístupu: role správce a role uživatele.
 
 Uživatelé, kteří mají přiřazenou roli správce, mají plný přístup k funkcím správy, včetně funkcí pro čtení a zápis. Uživatelům, kteří mají přiřazenou roli uživatele, mají ve výchozím nastavení přístup jen pro čtení k funkcím pro správu (například možnosti dotazů). Můžou také řešit aplikace a služby.
 
@@ -115,7 +115,7 @@ Mezi další věci, které je potřeba vzít v úvahu:
 * Pole **předmětu** může mít více hodnot. Každá hodnota je předpona s inicializací k označení typu hodnoty. Obvykle se jedná o inicializaci **CN** (pro *běžný název*); například **cn = www\.contoso.com**. 
 * Pole **předmětu** může být prázdné. 
 * Pokud se v poli **alternativní název subjektu** naplní nepovinné pole, musí mít běžný název certifikátu i jednu položku na síť SAN. Ty se zadávají jako hodnoty **názvu DNS** . Informace o tom, jak vygenerovat certifikáty, které mají sítě SAN, najdete v tématu [Postup přidání alternativního názvu subjektu do certifikátu zabezpečeného protokolu LDAP](https://support.microsoft.com/kb/931351).
-* Hodnota pole zamýšleného **účelu** certifikátu by měla obsahovat odpovídající hodnotu, jako je **ověřování serveru** nebo **ověřování klientů**.
+* Hodnota pole **zamýšleného účelu** certifikátu by měla obsahovat odpovídající hodnotu, jako je **ověřování serveru** nebo **ověřování klientů**.
 
 ### <a name="application-certificates-optional"></a>Certifikáty aplikací (volitelné)
 V clusteru je možné nainstalovat libovolný počet dalších certifikátů pro účely zabezpečení aplikací. Před vytvořením clusteru Vezměte v úvahu scénáře zabezpečení aplikací, které vyžadují, aby byl v uzlech nainstalován certifikát, například:
@@ -133,7 +133,7 @@ Ve výchozím nastavení má certifikát clusteru oprávnění klienta správce.
 > [!NOTE]
 > Všechny operace správy na clusteru Service Fabric vyžadují certifikáty serveru. Klientské certifikáty nelze použít ke správě.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Vytvoření clusteru v Azure pomocí šablony Správce prostředků](service-fabric-cluster-creation-via-arm.md) 
 * [Vytvoření clusteru pomocí Azure Portal](service-fabric-cluster-creation-via-portal.md)
 

@@ -1,5 +1,5 @@
 ---
-title: Použití R s Machine Learning Services k dotazování Azure SQL Database
+title: Použití R s Machine Learning Services k dotazování
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
 description: V tomto článku se dozvíte, jak použít skript R s Azure SQL Database Machine Learning Services pro připojení k databázi SQL Azure a dotazování s použitím příkazů jazyka Transact-SQL.
 services: sql-database
@@ -13,14 +13,14 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: ff38346a9b3bd14db51383c116240b030d3ee42a
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: a54b538247f81ea3bb0ea70a2af374158bd9e2ff
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514862"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826976"
 ---
-# <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Rychlý start: Použití R s Machine Learning Services k dotazování služby Azure SQL Database (Preview)
+# <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Rychlý Start: použití R s Machine Learning Services k dotazování databáze SQL Azure (Preview)
 
 V tomto rychlém startu se dozvíte, jak použít [R](https://www.r-project.org/) se Machine Learning Services pro připojení k databázi SQL Azure a použití příkazů jazyka Transact-SQL k dotazování dat. Machine Learning Services je funkce Azure SQL Database, která se používá ke spouštění skriptů R v databázi. Další informace najdete v tématu [Azure SQL Database Machine Learning Services s R (Preview)](sql-database-machine-learning-services-overview.md).
 
@@ -47,7 +47,7 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 
   || Izolovaná databáze |
   |:--- |:--- |
-  | Create| [Azure Portal](sql-database-single-database-get-started.md) |
+  | Vytvoření| [Azure Portal](sql-database-single-database-get-started.md) |
   || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
   | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](sql-database-server-level-firewall-rule.md) |
@@ -80,11 +80,11 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
 
 1. Otevřete aplikaci **SQL Server Management Studio** a připojte se ke své databázi SQL.
 
-   Pokud potřebujete pomáhat s připojením, přečtěte si [rychlý Start: Pomocí SQL Server Management Studio se můžete připojit k databázi](sql-database-connect-query-ssms.md)SQL Azure a dotazovat se na ně.
+   Pokud potřebujete pomáhat s připojením, přečtěte si téma [rychlý Start: použití SQL Server Management Studio k připojení a dotazování databáze SQL Azure](sql-database-connect-query-ssms.md).
 
 1. Předejte kompletní skript R do uložené procedury [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) .
 
-   Skript se předává přes `@script` argument. Vše uvnitř `@script` argumentu musí být platný kód R.
+   Skript se předává pomocí argumentu `@script`. Vše uvnitř argumentu `@script` musí být platný kód R.
    
    >[!IMPORTANT]
    >Kód v tomto příkladu používá ukázková data AdventureWorksLT, která můžete zvolit jako zdroj při vytváření databáze. Pokud má vaše databáze jiná data, použijte tabulky z vlastní databáze v dotazu SELECT. 
@@ -105,9 +105,9 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
 
 1. Ověřte, zda je v okně **zprávy** vráceno prvních 20 řádků kategorie/produktu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Návrh první databáze SQL Azure](sql-database-design-first-database.md)
+- [Návrh první databáze Azure SQL](sql-database-design-first-database.md)
 - [Azure SQL Database Machine Learning Services (s R)](sql-database-machine-learning-services-overview.md)
 - [Vytvoření a spuštění jednoduchých skriptů R v Azure SQL Database Machine Learning Services (Preview)](sql-database-quickstart-r-create-script.md)
 - [Zápis pokročilých funkcí R v Azure SQL Database pomocí Machine Learning Services (Preview)](sql-database-machine-learning-services-functions.md)

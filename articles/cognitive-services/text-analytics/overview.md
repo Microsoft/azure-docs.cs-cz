@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 08/26/2019
+ms.date: 11/07/2019
 ms.author: aahi
-ms.openlocfilehash: 3b616ac76d2b7fca0d83db2b17b0978bbb249e45
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
-ms.translationtype: HT
+ms.openlocfilehash: 0f16c687f9816e99e05c2495a05596bd988ca9d2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73742725"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827318"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Co je rozhraní API pro analýzu textu?
 
@@ -83,7 +83,7 @@ Tato část byla přesunuta do samostatného článku pro lepší vyhledatelnost
 
 Všechny koncové body rozhraní API pro analýzu textu přijímají data v podobě nezpracovaného textu. Aktuální limit je 5 120 znaků pro každý dokument; Pokud potřebujete analyzovat větší dokumenty, můžete je rozdělit do menších bloků.
 
-| škálování | Hodnota |
+| Omezení | Hodnota |
 |------------------------|---------------|
 | Maximální velikost jednoho dokumentu | 5 120 znaků měřených [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
 | Maximální velikost celého požadavku | 1 MB |
@@ -93,12 +93,12 @@ Vaše omezení četnosti se bude lišit od cenové úrovně.
 
 | Vrstva          | Počet požadavků za sekundu | Žádosti za minutu |
 |---------------|---------------------|---------------------|
-| S/více službami | 1 000                | 1 000                |
+| S/více službami | 1000                | 1000                |
 | S0/F0         | 100                 | 300                 |
 | S1            | 200                 | 300                 |
 | S2            | 300                 | 300                 |
 | S3            | 500                 | 500                 |
-| S4            | 1 000                | 1 000                |
+| S4            | 1000                | 1000                |
 
 Požadavky se měří pro každou funkci Analýza textu samostatně. Můžete například odeslat maximální počet požadavků pro vaši cenovou úroveň všem funkcím ve stejnou dobu.      
 
@@ -110,7 +110,7 @@ Rozhraní API pro analýzu textu používá kódování Unicode pro textové vyj
 
 + [Vytvořte prostředek Azure](../cognitive-services-apis-create-account.md) pro analýza textu, abyste získali klíč a koncový bod pro vaše aplikace.
 
-+ [Rychlý start](quickstarts/text-analytics-sdk.md) obsahuje vysvětlení volání rozhraní REST API napsaných v jazyce C#. Zjistěte, jak odesílat text, zvolit analýzu a zobrazit výsledky s minimem kódu. Pokud chcete, můžete místo toho začít s [rychlým startem Pythonu](quickstarts/python.md) .
++ Pomocí [rychlého](quickstarts/text-analytics-sdk.md) startu spustíte odesílání volání rozhraní API. Zjistěte, jak odesílat text, zvolit analýzu a zobrazit výsledky s minimem kódu.
 
 + Další informace o nových verzích a funkcích najdete [v tématu Co je nového v rozhraní API pro analýzu textu](whats-new.md) .
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 771a20ccf1c34958308d58dafb6fb01e36bb408a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
-ms.translationtype: HT
+ms.openlocfilehash: c20fc2142718d3cc49d4b80c6a5e22e26a350335
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749020"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824866"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
@@ -94,7 +94,7 @@ Server NFS používá vyhrazený virtuální název hostitele a virtuální IP a
 * Port testu paměti
   * Port 61000 pro NW1
   * Port 61001 pro NW2
-* Pravidla LoadBalancing (Pokud se používá základní nástroj pro vyrovnávání zatížení)
+* Pravidla vyrovnávání zatížení (Pokud se používá základní nástroj pro vyrovnávání zatížení)
   * 2049 TCP pro NW1
   * 2049 UDP pro NW1
   * 2049 TCP pro NW2
@@ -164,7 +164,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster systému s
             1. Klikněte na OK.
          1. Port 61001 pro NW2
             * Zopakováním výše uvedených kroků vytvořte sondu stavu pro NW2.
-      1. Pravidla LoadBalancing
+      1. Pravidla vyrovnávání zatížení
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte pravidla vyrovnávání zatížení a klikněte na Přidat.
          1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například **NW1-kg**).
          1. Vyberte front-end IP adresu, fond back-endu a sondu stavu, který jste vytvořili dříve (například **NW1-front-endu**. **NW1 – back-end** a **NW1-HP**)
@@ -200,7 +200,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster systému s
             1. Klikněte na OK.
          1. Port 61001 pro NW2
             * Zopakováním výše uvedených kroků vytvořte sondu stavu pro NW2.
-      1. Pravidla LoadBalancing
+      1. Pravidla vyrovnávání zatížení
          1. 2049 TCP pro NW1
             1. Otevřete nástroj pro vyrovnávání zatížení, vyberte pravidla vyrovnávání zatížení a klikněte na Přidat.
             1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například **NW1-kg-2049**).
@@ -216,8 +216,11 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster systému s
          1. 2049 UDP pro NW2
             * Opakujte výše uvedené kroky pro port 2049 a UDP pro NW2
 
+> [!Note]
+> Pokud se virtuální počítače bez veřejných IP adres nacházejí v back-end fondu interní služby pro vyrovnávání zatížení (bez veřejné IP adresy), nebude žádné odchozí připojení k Internetu, pokud se neprovede další konfigurace, která umožní směrování na veřejné koncové body. Podrobnosti o tom, jak dosáhnout odchozího připojení, najdete v tématu [připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích s vysokou dostupností SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)  
+
 > [!IMPORTANT]
-> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. TCP _timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
 
 ### <a name="create-pacemaker-cluster"></a>Vytvoření clusteru Pacemaker
 

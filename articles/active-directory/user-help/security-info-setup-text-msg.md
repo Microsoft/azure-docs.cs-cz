@@ -1,5 +1,5 @@
 ---
-title: Nastavení informací o zabezpečení (Preview) pro použití zasílání zpráv SMS – Azure Active Directory | Microsoft Docs
+title: Nastavení informací o zabezpečení (Preview) pro textové zprávy – Azure AD
 description: Jak nastavit bezpečnostní údaje pro ověření identity pomocí zasílání zpráv SMS a mobilního zařízení.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3544094da72c1c0f854f3d02a34f8540ad2f784
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5a4be99a84964b7a55448692385d027262ecfec3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160883"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803842"
 ---
 # <a name="set-up-security-info-preview-to-use-text-messaging"></a>Nastavení informací o zabezpečení (Preview) pro použití zasílání textových zpráv
 
@@ -90,11 +90,11 @@ Pokud chcete, aby se textové zprávy používaly jako výchozí, když se přih
 
     ![Odkaz pro změnu výchozí metody přihlašování](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-2. V rozevíracím seznamu dostupných metod vyberte **text telefonu ( *_your_phone_number_* )** a pak vyberte **Potvrdit**.
+2. V rozevíracím seznamu dostupných metod vyberte **telefonní text ( *_your_phone_number_* )** a pak vyberte **Potvrdit**.
 
     ![Zvolit metodu pro výchozí přihlášení](media/security-info/securityinfo-myprofile-phonetext-changeddefault.png)
 
-    Výchozí metoda, která se používá pro změny přihlašování na **telefonní text ( *_your_phone_number_* )** .
+    Výchozí metoda, která se používá pro změny přihlášení k **telefonnímu textu ( *_your_phone_number_* )** .
 
 ## <a name="additional-security-info-methods"></a>Další metody zabezpečení
 

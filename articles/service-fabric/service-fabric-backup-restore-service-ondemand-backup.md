@@ -1,6 +1,6 @@
 ---
-title: Zálohování na vyžádání v Azure Service Fabric | Dokumentace Microsoftu
-description: Použít funkci zálohování a obnovení funkce v Service Fabric k zálohování vašich aplikačních dat podle potřeby.
+title: Zálohování na vyžádání v Azure Service Fabric | Microsoft Docs
+description: Pomocí funkce zálohování a obnovení v Service Fabric můžete zálohovat data aplikací v případě potřeby.
 services: service-fabric
 documentationcenter: .net
 author: aagup
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: bed3402de83984cae9134fe44058980ec18861b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88698a7a0f78987dc96bf7f39831ec1a7560a359
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65413940"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815870"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Zálohování na vyžádání v Azure Service Fabric
 
-Můžete zálohovat data Reliable Stateful services a Reliable Actors k řešení po havárii nebo data ztráty scénářů.
+Můžete zálohovat data spolehlivých stavových služeb a Reliable Actors řešit scénáře týkající se havárie nebo ztráty dat.
 
-Azure Service Fabric obsahuje funkce [pravidelné zálohování dat](service-fabric-backuprestoreservice-quickstart-azurecluster.md) a zálohování dat na základě potřeba. Zálohování na vyžádání je užitečné, protože ho budete chráněni před _ztrátě dat_/_poškození dat_ kvůli plánované změny v základní služby nebo jeho prostředí.
+Azure Service Fabric obsahuje funkce pro [pravidelné zálohování dat](service-fabric-backuprestoreservice-quickstart-azurecluster.md) a zálohování dat podle potřeby. Zálohování na vyžádání je užitečné, protože chrání před _ztrátou dat_/_poškození dat_ v důsledku plánovaných změn v základní službě nebo jejím prostředí.
 
-Funkce zálohování na vyžádání jsou užitečné pro zaznamenání stavu služby předtím, než ručně aktivujete službu nebo operace prostředí služby. Například pokud provedete změny v binární soubory služby při upgradu nebo downgradu služby. V takovém případě může pomoct zálohování na vyžádání, ochranu proti poškození dat podle kódu chyby aplikace.
+Funkce zálohování na vyžádání jsou užitečné pro zaznamenání stavu služeb před ruční aktivací operace služby nebo služby Service Environment. Například pokud provedete změnu v binárních souborech služby při upgradu nebo downgrade služby. V takovém případě může zálohování na vyžádání pomáhat chránit data před poškozením chyb kódu aplikace.
 ## <a name="prerequisites"></a>Požadavky
 
-- Instalace modulu Microsoft.ServiceFabric.Powershell.Http [Preview] pro volání konfigurace.
+- Nainstalujte modul Microsoft. ServiceFabric. PowerShell. http [v Preview] pro provedení konfiguračních volání.
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-- Ujistěte se, že Cluster je připojený pomocí `Connect-SFCluster` příkaz před provedením jakékoli použití modulu Microsoft.ServiceFabric.Powershell.Http požadavek na konfiguraci.
+- Před provedením jakékoli žádosti o konfiguraci pomocí modulu Microsoft. ServiceFabric. PowerShell. http zajistěte, aby byl cluster připojen pomocí příkazu `Connect-SFCluster`.
 
 ```powershell
 
@@ -45,17 +45,17 @@ Funkce zálohování na vyžádání jsou užitečné pro zaznamenání stavu sl
 ```
 
 
-## <a name="triggering-on-demand-backup"></a>Spouští se záloha na vyžádání
+## <a name="triggering-on-demand-backup"></a>Aktivuje se zálohování na vyžádání.
 
-Zálohování na vyžádání vyžaduje, aby podrobnosti o úložišti pro nahrání záložních souborů. Umístění zálohy na vyžádání, zadáte v zásadách pravidelné zálohování nebo v požadavku zálohování na vyžádání.
+Zálohování na vyžádání vyžaduje podrobnosti úložiště pro nahrávání záložních souborů. Umístění zálohy na vyžádání zadáte buď v zásadách pravidelného zálohování, nebo v žádosti o zálohování na vyžádání.
 
-### <a name="on-demand-backup-to-storage-specified-by-a-periodic-backup-policy"></a>Zálohování na vyžádání do úložiště určené pravidelné zásady zálohování
+### <a name="on-demand-backup-to-storage-specified-by-a-periodic-backup-policy"></a>Zálohování na vyžádání do úložiště určeného pravidelnými zásadami zálohování
 
-Můžete nakonfigurovat pravidelně zásady zálohování pro použití oddílu spolehlivé stavové služby nebo objekty Reliable Actor pro velmi zálohování na vyžádání do úložiště.
+Zásady pravidelného zálohování můžete nakonfigurovat tak, aby používaly oddíl spolehlivé stavové služby nebo spolehlivého objektu actor pro další zálohování na vyžádání do úložiště.
 
-Následující případ je pokračování scénář v [povolení pravidelné zálohování služby Reliable Stateful a Reliable Actors](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors). V takovém případě povolit zásady zálohování a použít oddíl a dojde k zálohování frekvencí sady ve službě Azure Storage.
+V tomto případě se jedná o pokračování scénáře při [povolování pravidelného zálohování pro spolehlivou stavovou službu a Reliable Actors](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors). V takovém případě zapnete zásadu zálohování, aby používala oddíl, a záloha se zavede na nastavené frekvenci v Azure Storage.
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Použití Microsoft.ServiceFabric.Powershell.Http modulu prostředí PowerShell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell s použitím modulu Microsoft. ServiceFabric. PowerShell. http
 
 ```powershell
 
@@ -63,9 +63,9 @@ Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22'
 
 ```
 
-#### <a name="rest-call-using-powershell"></a>Volání REST pomocí Powershellu
+#### <a name="rest-call-using-powershell"></a>Volání REST pomocí PowerShellu
 
-Použití [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) rozhraní API k nastavení aktivace pro zálohování na vyžádání pro ID oddílu `974bd92a-b395-4631-8a7f-53bd4ae9cf22`.
+Pomocí rozhraní [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) API můžete nastavit aktivaci pro zálohování na vyžádání pro ID oddílu `974bd92a-b395-4631-8a7f-53bd4ae9cf22`.
 
 ```powershell
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/974bd92a-b395-4631-8a7f-53bd4ae9cf22/$/Backup?api-version=6.4"
@@ -73,14 +73,14 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/9
 Invoke-WebRequest -Uri $url -Method Post -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
-Použití [GetBackupProgress](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress) rozhraní API, sledování [průběh zálohování na vyžádání](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress).
+Pomocí rozhraní [GetBackupProgress](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress) API Povolte sledování [průběhu zálohování na vyžádání](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress).
 
-### <a name="on-demand-backup-to-specified-storage"></a>Zálohování na vyžádání do zadaného úložiště
+### <a name="on-demand-backup-to-specified-storage"></a>Zálohování na vyžádání do určeného úložiště
 
-Můžete požádat o zálohování na vyžádání pro oddíl spolehlivé stavové služby nebo objekty Reliable Actor. Zadejte informace o úložiště jako součást požadavek na zálohování na vyžádání.
+Můžete požádat o zálohování na vyžádání pro oddíl spolehlivé stavové služby nebo spolehlivého objektu actor. Poskytněte informace o úložišti jako součást žádosti o zálohování na vyžádání.
 
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Použití Microsoft.ServiceFabric.Powershell.Http modulu prostředí PowerShell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell s použitím modulu Microsoft. ServiceFabric. PowerShell. http
 
 ```powershell
 
@@ -88,9 +88,9 @@ Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' -AzureBlo
 
 ```
 
-#### <a name="rest-call-using-powershell"></a>Volání REST pomocí Powershellu
+#### <a name="rest-call-using-powershell"></a>Volání REST pomocí PowerShellu
 
-Použití [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) rozhraní API k nastavení aktivace pro zálohování na vyžádání pro ID oddílu `974bd92a-b395-4631-8a7f-53bd4ae9cf22`. Uveďte následující informace služby Azure Storage:
+Pomocí rozhraní [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) API můžete nastavit aktivaci pro zálohování na vyžádání pro ID oddílu `974bd92a-b395-4631-8a7f-53bd4ae9cf22`. Zahrnout následující informace o Azure Storage:
 
 ```powershell
 $StorageInfo = @{
@@ -109,23 +109,34 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/9
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
-Můžete použít [GetBackupProgress](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress) API nastavit sledování [průběh zálohování na vyžádání](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress).
+K nastavení sledování [průběhu zálohování na vyžádání](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress)můžete použít rozhraní [GetBackupProgress](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress) API.
+
+### <a name="using-service-fabric-explorer"></a>Použití Service Fabric Explorer
+Ujistěte se, že je v nastavení Service Fabric Explorer povolený rozšířený režim.
+1. Vyberte požadované oddíly a klikněte na akce. 
+2. Vyberte možnost zálohování oddílu aktivačního oddílu a vyplňte informace pro Azure:
+
+    ![Spustit zálohu oddílu][0]
+
+    nebo sdílená složka:
+
+    ![Aktivovat sdílenou složku zálohovaného oddílu][1]
 
 ## <a name="tracking-on-demand-backup-progress"></a>Sledování průběhu zálohování na vyžádání
 
-Oddíl spolehlivé stavové služby nebo Reliable Actors přijímá pouze jeden požadavek na zálohování na vyžádání v čase. Jiná žádost může přijmout, až po dokončení aktuální žádost o zálohu na vyžádání.
+Oddíl spolehlivé stavové služby nebo spolehlivého objektu actor přijímá v jednom okamžiku jenom jednu žádost o zálohování na vyžádání. Další žádost lze přijmout až po dokončení aktuální žádosti o zálohování na vyžádání.
 
-Různé oddíly můžete aktivovat zálohování požadavků na vyžádání ve stejnou dobu.
+Různé oddíly mohou najednou spustit požadavky na zálohování na vyžádání.
 
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Použití Microsoft.ServiceFabric.Powershell.Http modulu prostředí PowerShell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell s použitím modulu Microsoft. ServiceFabric. PowerShell. http
 
 ```powershell
 
 Get-SFPartitionBackupProgress -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22'
 
 ```
-#### <a name="rest-call-using-powershell"></a>Volání REST pomocí Powershellu
+#### <a name="rest-call-using-powershell"></a>Volání REST pomocí PowerShellu
 
 ```powershell
 $url = "https://mysfcluster-backup.southcentralus.cloudapp.azure.com:19080/Partitions/974bd92a-b395-4631-8a7f-53bd4ae9cf22/$/GetBackupProgress?api-version=6.4"
@@ -135,9 +146,9 @@ $backupResponse = (ConvertFrom-Json $response.Content)
 $backupResponse
 ```
 
-Požadavky pro zálohování na vyžádání, může být v následujících stavů:
+Požadavky na zálohování na vyžádání můžou být v následujících stavech:
 
-- **Přijata**: Zálohování bylo zahájeno v oddílu a probíhá.
+- **Přijato**: záloha začala v oddílu a probíhá.
   ```
   BackupState             : Accepted
   TimeStampUtc            : 0001-01-01T00:00:00Z
@@ -147,8 +158,8 @@ Požadavky pro zálohování na vyžádání, může být v následujících sta
   LsnOfLastBackupRecord   : 0
   FailureError            :
   ```
-- **Úspěch**, **selhání**, nebo **vypršení časového limitu**: Požadovaný zálohování na vyžádání můžete dokončit v některém z následujících stavů:
-  - **Úspěch**: A _úspěch_ zálohování stav znamená, že se úspěšně zálohovány stav oddílu. Poskytuje odpověď _BackupEpoch_ a _BackupLSN_ pro oddíl spolu s čas ve standardu UTC.
+- **Úspěch**, **selhání**nebo **časový limit**: Požadovaná záloha na vyžádání může být dokončena v některém z následujících stavů:
+  - **Úspěch**: stav zálohování _po úspěchu_ indikuje, že se stav oddílu úspěšně zálohoval. Odpověď poskytuje _BackupEpoch_ a _BackupLSN_ pro oddíl spolu s časem ve standardu UTC.
     ```
     BackupState             : Success
     TimeStampUtc            : 2018-11-21T20:00:01Z
@@ -158,7 +169,7 @@ Požadavky pro zálohování na vyžádání, může být v následujících sta
     LsnOfLastBackupRecord   : 36
     FailureError            :
     ```
-  - **Selhání**: A _selhání_ zálohování stav znamená, že došlo k chybě během zálohování stav oddílu. Příčina selhání je uvedeno v odpovědi.
+  - **Selhání**: stav zálohování _selhání_ indikuje, že došlo k selhání během zálohování stavu oddílu. Příčina selhání je uvedena v odpovědi.
     ```
     BackupState             : Failure
     TimeStampUtc            : 0001-01-01T00:00:00Z
@@ -168,7 +179,7 @@ Požadavky pro zálohování na vyžádání, může být v následujících sta
     LsnOfLastBackupRecord   : 0
     FailureError            : @{Code=FABRIC_E_BACKUPCOPIER_UNEXPECTED_ERROR; Message=An error occurred during this operation.  Please check the trace logs for more details.}
     ```
-  - **Časový limit**: A _vypršení časového limitu_ zálohování stav znamená, že zálohování stavu oddílu nelze vytvořit v daném čase. Výchozí hodnota časového limitu je 10 minut. Zahajte novou žádost zálohování na vyžádání s větší [BackupTimeout](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout) v tomto scénáři.
+  - **Timeout**: _časový limit_ stavu zálohování indikuje, že se v daném časovém intervalu nepovedlo vytvořit zálohu stavu oddílu. Výchozí hodnota časového limitu je 10 minut. V tomto scénáři Iniciujte novou žádost o zálohování na vyžádání s větším [BackupTimeoutm](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout) .
     ```
     BackupState             : Timeout
     TimeStampUtc            : 0001-01-01T00:00:00Z
@@ -179,7 +190,10 @@ Požadavky pro zálohování na vyžádání, může být v následujících sta
     FailureError            : @{Code=FABRIC_E_TIMEOUT; Message=The request of backup has timed out.}
     ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Porozumět konfiguraci pravidelné zálohování](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
-- [Reference k rozhraní API REST BackupRestore](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [Vysvětlení Konfigurace pravidelného zálohování](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
+- [Odkaz na REST API BackupRestore](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+
+[0]: ./media/service-fabric-backuprestoreservice/trigger-partition-backup.png
+[1]: ./media/service-fabric-backuprestoreservice/trigger-backup-fileshare.png

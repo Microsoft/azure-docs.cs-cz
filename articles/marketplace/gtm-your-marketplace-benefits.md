@@ -4,19 +4,20 @@ description: Služby pro uvedení na trh – prostředky společnosti Microsoft,
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 6ae761b9558a0d6c1b663c1202bc560382c7b0b6
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7b563cd90ec3e46dfd2d4420b728cd6f69df40eb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752338"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818645"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Výhody vašeho komerčního tržiště
 
-Publikovali jste na webu Marketplace, nyní chcete zobrazit vaši nabídku, která je úspěšná. Nabízíme vám výhody – prodej, technický a marketing – potřebujete urychlit růst vaší nabídky.
+Publikovali jste na webu Marketplace, nyní chcete zobrazit vaši nabídku, která je úspěšná. Poskytujeme vám výhody – prodej, technický a marketing – potřebujete k urychlení růstu vaší nabídky.
 
 Když budete pracovat s vaší nabídkou, bude se tým na webu Marketplace vystihnout a začít pracovat s vámi na základě vašich nároků na vaše výhody. Výhody na webu Marketplace se účtují na základě zapojení do komerčního tržiště a prodeje. Tím více zahájíte, tím více se vrátíte zpět.
 

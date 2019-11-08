@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 35e6c61a8e8537035d70323c85dfc7a76f87cbcd
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 36ca95191e0e6422bd93360b98243393acad8147
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869557"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825480"
 ---
 # <a name="marketplace-metering-service-apis"></a>Rozhraní API služeb měření na marketplace
 
@@ -20,7 +21,7 @@ Rozhraní API události využití umožňuje generovat události využití pro k
 
 ## <a name="usage-event"></a>Událost použití
 
-**PŘÍSPĚVEK**:`https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**Příspěvek**: `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *Parametry dotazu:*
 
@@ -34,7 +35,7 @@ Rozhraní API události využití umožňuje generovat události využití pro k
 | ------------------ | ---------------------------- |
 | `x-ms-requestid`     | Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe pro identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi. |
 | `x-ms-correlationid` | Jedinečná řetězcová hodnota pro operaci na klientovi. Tento parametr koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi. |
-| `authorization`   | [Získat token nosiče webového tokenu JSON (JWT).](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Poznámka: Při vytváření požadavku HTTP se předpona `Bearer` tokenu získá z odkazovaného odkazu. |
+| `authorization`   | [Získat token nosiče webového tokenu JSON (JWT).](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Poznámka: při vytváření požadavku HTTP předpona `Bearer` tokenu získaného z odkazovaného odkazu. |
 
 *Request*
 
@@ -50,7 +51,7 @@ Rozhraní API události využití umožňuje generovat události využití pro k
 
 ### <a name="responses"></a>Odezvy
 
-Znakovou 200<br>
+Kód: 200<br>
 OK 
 
 ```json
@@ -66,7 +67,7 @@ OK
 }
 ```
 
-Znakovou 400 <br>
+Kód: 400 <br>
 Chybný požadavek, chybí nebo jsou zadána neplatná data nebo vypršela jejich platnost.
 
 ```json
@@ -84,7 +85,7 @@ Chybný požadavek, chybí nebo jsou zadána neplatná data nebo vypršela jejic
 }
 ```
 
-Znakovou 403<br>
+Kód: 403<br>
 Chybný požadavek, chybí nebo jsou zadána neplatná data nebo vypršela jejich platnost.
 
 ```json
@@ -94,8 +95,8 @@ Chybný požadavek, chybí nebo jsou zadána neplatná data nebo vypršela jejic
 }
 ```
 
-Znakovou 409<br>
-Konflikt, když obdržením volání použití pro ID prostředku využití a efektivní využití, které již existuje. Odpověď bude obsahovat `additionalInfo` pole, které obsahuje informace o přijaté zprávě.
+Kód: 409<br>
+Konflikt, když obdržením volání použití pro ID prostředku využití a efektivní využití, které již existuje. Odpověď bude obsahovat pole `additionalInfo`, které obsahuje informace o přijaté zprávě.
 
 ```json
 {
@@ -120,7 +121,7 @@ Rozhraní API události využití dávky umožňuje generovat události využit�
 >[!Note]
 >V komerčním tržišti společnosti Microsoft můžete zaregistrovat několik nabídek SaaS. Každá registrovaná nabídka SaaS má jedinečnou aplikaci Azure AD, která je zaregistrovaná pro účely ověřování a autorizace. Události emitované v dávce by měly patřit do nabídek se stejnou aplikací Azure AD v době registrace této nabídky.
 
-**PŘÍSPĚVEK:** `https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
+**Příspěvek:** `https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
 
 *Parametry dotazu:*
 
@@ -134,7 +135,7 @@ Rozhraní API události využití dávky umožňuje generovat události využit�
 | ------------------ | ------ |
 | `x-ms-requestid`     | Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe pro identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi. |
 | `x-ms-correlationid` | Jedinečná řetězcová hodnota pro operaci na klientovi. Tento parametr koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi. |
-| `authorization`      | [Získat token nosiče webového tokenu JSON (JWT).](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Poznámka: Při vytváření požadavku HTTP se předpona `Bearer` tokenu získá z odkazovaného odkazu.  |
+| `authorization`      | [Získat token nosiče webového tokenu JSON (JWT).](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Poznámka: při vytváření požadavku HTTP předpona `Bearer` tokenu získaného z odkazovaného odkazu.  |
 
 *Request*
 ```json
@@ -159,7 +160,7 @@ Rozhraní API události využití dávky umožňuje generovat události využit�
 ```
 ### <a name="responses"></a>Odezvy
 
-Znakovou 200<br>
+Kód: 200<br>
 OK
 
 ```json
@@ -192,7 +193,7 @@ OK
 }
 ```
 
-Popis stavového kódu odkazovaného `BatchUsageEvent` v odpovědi rozhraní API:
+Popis stavového kódu odkazovaného v `BatchUsageEvent` odezva rozhraní API:
 
 | Kód stavu  | Popis |
 | ---------- | -------------------- |
@@ -206,7 +207,7 @@ Popis stavového kódu odkazovaného `BatchUsageEvent` v odpovědi rozhraní API
 | `InvalidQuantity` | Předané množství je < 0. |
 | `BadArgument` | Vstup chybí nebo je poškozený. |
 
-Znakovou 400<br>
+Kód: 400<br>
 Chybný požadavek, chybí nebo jsou zadána neplatná data nebo vypršela jejich platnost.
 
 ```json
@@ -223,7 +224,7 @@ Chybný požadavek, chybí nebo jsou zadána neplatná data nebo vypršela jejic
   "code": "BadArgument"
 }
 ```
-Znakovou 403<br>
+Kód: 403<br>
 Uživatel není autorizovaný k provedení tohoto volání.
 
 ```json

@@ -1,5 +1,5 @@
 ---
-title: Připojení Excelu k jedné databázi v Azure SQL Database
+title: Připojení Excelu k jedné databázi
 description: Naučte se připojit Microsoft Excel k izolované databázi ve službě Azure SQL Database. Naimportujte si data do Excelu, kde můžete data dále zkoumat a vytvářet z nich sestavy.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: joseidz
 ms.author: craigg
 ms.reviewer: ''
 ms.date: 02/12/2019
-ms.openlocfilehash: 603aa52aefc4c4d1200d433f7f73f6070849c8f7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: de5f23bf1e8acd8a5fcd0cf8e1526f88667800c1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691031"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827136"
 ---
 # <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Připojení Excelu k izolované databázi ve službě Azure SQL Database a vytvoření sestavy
 

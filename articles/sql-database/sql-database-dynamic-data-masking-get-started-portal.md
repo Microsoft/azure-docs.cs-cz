@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: SQL Database Maskování dynamických dat '
+title: 'Azure Portal: dynamické maskování dat'
 description: Jak začít s SQL Database dynamické maskování dat v Azure Portal
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 ms.date: 03/04/2018
-ms.openlocfilehash: d92f77c56221d7c79ed30a6ca67d31d1b3f7f703
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0053958c0681e98ee225232249b050583d4e13b2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690577"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826573"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Začínáme s SQL Database dynamické maskování dat s využitím Azure Portal
 

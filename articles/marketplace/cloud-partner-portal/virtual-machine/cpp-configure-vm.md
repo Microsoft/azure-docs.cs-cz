@@ -4,15 +4,16 @@ description: Vysvětluje, jak velikost, aktualizace a generalizace virtuálních
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 1270dff0bcb8de117247a454ab9c144250cfb17c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ce7fe49b07dc250a9f56ff73229e347b997f0cc0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880349"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824501"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Konfigurace virtuálního počítače hostovaného pro Azure
 
@@ -43,7 +44,7 @@ U distribucí pro Linux se aktualizace běžně stahují a instalují prostředn
 
 ## <a name="perform-additional-security-checks"></a>Provedení dalších kontrol zabezpečení
 
-Měli byste udržovat vysokou úroveň zabezpečení pro obrázky vašeho řešení v Azure Marketplace.  Následující článek poskytuje kontrolní seznam konfigurací a postupů zabezpečení, které vám pomohou v tomto cíli: [Doporučení zabezpečení pro Azure Marketplace image](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images)  Některá z těchto doporučení jsou specifická pro image založené na systému Linux, ale většina se vztahují na všechny image virtuálních počítačů. 
+Měli byste udržovat vysokou úroveň zabezpečení pro obrázky vašeho řešení v Azure Marketplace.  Následující článek poskytuje kontrolní seznam konfigurací a postupů zabezpečení, které vám pomůžou v tomto cíli: [doporučení zabezpečení pro Azure Marketplace image](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images).  Některá z těchto doporučení jsou specifická pro image založené na systému Linux, ale většina se vztahují na všechny image virtuálních počítačů. 
 
 
 ## <a name="perform-custom-configuration-and-scheduled-tasks"></a>Provádění vlastních konfigurací a naplánovaných úloh
@@ -57,7 +58,7 @@ Další informace o úpravách pro Linux najdete v tématu [rozšíření a funk
 
 ## <a name="generalize-the-image"></a>Zobecnění image
 
-Všechny obrázky v Azure Marketplace musí být obecně znovu použitelné. Pro dosažení této opětovné použitelnosti musí být virtuální pevný disk operačníhosystému zobecněný, operace, která odebere všechny identifikátory a ovladače softwaru z virtuálního počítače.
+Všechny obrázky v Azure Marketplace musí být obecně znovu použitelné. Pro dosažení této opětovné použitelnosti musí být virtuální pevný disk operačního systému *zobecněný*, operace, která odebere všechny identifikátory a ovladače softwaru z virtuálního počítače.
 
 ### <a name="windows"></a>Windows
 
@@ -76,8 +77,8 @@ Následující dvoustupňový proces generalizuje virtuální počítač Linux a
 1.  Připojte se k VIRTUÁLNÍmu počítači se systémem Linux pomocí klienta SSH.
 2.  V okně SSH zadejte následující příkaz: <br/>
     `sudo waagent -deprovision+user`
-3.  Chcete `y` -li pokračovat, zadejte. (Můžete přidat `-force` parametr do předchozího příkazu, abyste se vyhnuli tomuto kroku potvrzení.)
-4.  Po dokončení příkazu zadejte `exit` příkaz pro uzavření klienta ssh.
+3.  Pokračujte zadáním `y`. (Můžete přidat parametr `-force` k předchozímu příkazu, abyste se vyhnuli tomuto kroku potvrzení.)
+4.  Po dokončení příkazu zadejte `exit` k uzavření klienta SSH.
 
 <!-- TD: I need to add meat and/or references to the following steps -->
 #### <a name="capture-the-image"></a>Zachytit bitovou kopii
@@ -89,10 +90,10 @@ Následující dvoustupňový proces generalizuje virtuální počítač Linux a
 
 Vytváření kopií virtuálních počítačů je často užitečné pro zálohování, testování, přizpůsobení převzetí služeb při selhání nebo vyrovnávání zatížení, které nabízí různé konfigurace řešení a tak dále. Informace o tom, jak duplikovat a stáhnout primární VHD, najdete v tématu:
 
-- Virtuální počítač Linux: [Stažení virtuálního pevného disku se systémem Linux z Azure](../../../virtual-machines/linux/download-vhd.md)
-- Virtuální počítač s Windows: [Stažení virtuálního pevného disku s Windows z Azure](../../../virtual-machines/windows/download-vhd.md)
+- Virtuální počítač se systémem Linux: [stažení virtuálního pevného disku se systémem Linux z Azure](../../../virtual-machines/linux/download-vhd.md)
+- Virtuální počítač s Windows: [stažení virtuálního pevného disku s Windows z Azure](../../../virtual-machines/windows/download-vhd.md)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Po zobecnění se virtuální počítač oddělí a vytvořili jste image virtuálního počítače, jste připraveni [nasadit virtuální počítač z virtuálního pevného disku](./cpp-deploy-vm-vhd.md).

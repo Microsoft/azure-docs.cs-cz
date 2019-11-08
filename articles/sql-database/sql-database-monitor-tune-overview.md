@@ -1,5 +1,5 @@
 ---
-title: Optimalizace monitorování a výkonu – Azure SQL Database
+title: Sledování a ladění výkonu
 description: Tipy pro ladění výkonu v Azure SQL Database prostřednictvím vyhodnocení a vylepšení.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: c11112963ec82a0e53df156048495e7b5141bcb7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e77af00dc3352af3265da90685e58b34c96bee81
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687763"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825164"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Sledování a ladění výkonu
 
@@ -34,7 +34,7 @@ Chcete-li zajistit, aby databáze běžela bez problémů, měli byste:
 
 Pokud chcete monitorovat výkon databáze SQL v Azure, Začněte monitorováním využitých prostředků relativně k úrovni výkonu databáze, kterou jste zvolili. Monitorujte následující zdroje:
  - **Využití CPU**: Zkontrolujte, jestli databáze v delší době dosáhla 100% využití procesoru. Vysoké využití procesoru může znamenat, že potřebujete identifikovat a ladit dotazy, které využívají nejvyšší výpočetní výkon. Vysoké využití procesoru může také znamenat, že databázi nebo instanci byste měli upgradovat na vyšší úroveň služby. 
- - **Čekací Statistika**: pomocí [Sys. DM _os_wait_stats (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) určete, jak dlouho čekají dotazy. Dotazy můžou čekat na prostředky, čekání nebo externí čekání. 
+ - **Čekací Statistika**: pomocí [Sys. dm_os_wait_stats (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) určete, jak dlouho čekají dotazy. Dotazy můžou čekat na prostředky, čekání nebo externí čekání. 
  - **Použití v/** v: Zkontrolujte, jestli se databáze nesnaží o limity vstupně-výstupních operací základního úložiště.
  - **Využití paměti**: množství paměti dostupné pro databázi nebo instanci je úměrné počtu virtuální jádra. Ujistěte se, že je paměť pro úlohu dostačující. Životnost stránky očekávané je jedním z parametrů, které mohou určit, jak rychle se stránky odstraňují z paměti.
 
@@ -91,11 +91,11 @@ Pokud narazíte na běžící problémy s výkonem, je vaším cílem určit př
 - Pomocí [Azure Portal](sql-database-manage-after-migration.md#monitor-databases-using-the-azure-portal) můžete monitorovat procento využití procesoru.
 - Použijte následující [zobrazení dynamické správy](sql-database-monitoring-with-dmvs.md):
 
-  - [Sys. DM _db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) DMV vrátí CPU, vstupně-výstupní operace a spotřebu paměti pro databázi SQL. U každého intervalu 15 sekund existuje jeden řádek, a to i v případě, že databáze neobsahuje žádné aktivity. Historická data se uchovávají po dobu jedné hodiny.
+  - [Sys. dm_db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) DMV vrací CPU, vstupně-výstupní operace a spotřebu paměti pro databázi SQL. U každého intervalu 15 sekund existuje jeden řádek, a to i v případě, že databáze neobsahuje žádné aktivity. Historická data se uchovávají po dobu jedné hodiny.
   - [Sys. resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) DMV vrátí využití CPU a data úložiště pro Azure SQL Database. Data se shromažďují a agregují v intervalech po pěti minutách.
 
 > [!IMPORTANT]
-> Informace o řešení problémů s využitím procesoru u dotazů T-SQL, které používají sys. DM _db_resource_stats a sys. resource_stats zobrazení dynamické správy, najdete v tématu [Identifikace problémů s výkonem procesoru](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues).
+> Informace o řešení problémů s využitím procesoru u dotazů T-SQL, které používají rozhraní sys. dm_db_resource_stats a sys. resource_stats zobrazení dynamické správy, najdete v tématu [Identifikace problémů s výkonem procesoru](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues).
 
 ### <a name="ParamSniffing"></a>Dotazy, které mají problémy PSP
 
@@ -108,7 +108,7 @@ Několik alternativních řešení může zmírnit problémy PSP. Každé řeše
 - Použijte [znovu zkompilování](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) nápovědy pro dotaz při každém spuštění dotazu. Toto řešení usnadňuje dobu kompilace a zvýšenou kapacitu procesoru pro lepší kvalitu plánu. Možnost `RECOMPILE` není často dostupná pro úlohy, které vyžadují vysokou propustnost.
 - Použijte pomocný parametr dotazu [Option (optimize for.](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) ..) pro přepsání skutečné hodnoty parametru s typickou hodnotou parametru, která vytvoří plán, který je dostatečně dobrý pro většinu možností hodnoty parametru. Tato možnost vyžaduje dobrou představu o optimálních hodnotách parametrů a přidružených vlastnostech plánu.
 - Použijte pomocný parametr dotazu [Option (optimalizovat pro neznámý)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) pro přepsání skutečné hodnoty parametru a místo toho použijte průměr vektoru hustoty. To lze provést také zachycením hodnot příchozích parametrů v místních proměnných a následným použitím místních proměnných v predikátech namísto použití samotných parametrů. Pro tuto opravu musí být průměrná hustota *dostatečně dobrá*.
-- Zakažte sledování parametrů výhradně pomocí pomocného parametru dotazu [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) .
+- Pomocí pomocného parametru dotazu [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) zakažte pouze sledování parametrů.
 - Použijte pomocný parametr dotazu [KEEPFIXEDPLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) k zabránění rekompilacím v mezipaměti. V tomto alternativním řešení se předpokládá, že v mezipaměti již existuje dobrý společný plán. Můžete také zakázat automatické aktualizace statistiky, aby se snížila pravděpodobnost, že bude dobrý plán vyřazený a bude zkompilován nový špatný plán.
 - Vynutit plán explicitním použitím pomocného parametru dotazu [použít plán](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) tak, že přepíšete dotaz a přidáte pomocný parametr do textu dotazu. Nebo nastavte konkrétní plán pomocí úložiště dotazů nebo povolením [automatického ladění](sql-database-automatic-tuning.md).
 - Nahraďte jeden postup vnořenou sadou procedur, které mohou být použity na základě podmíněné logiky a přidružených hodnot parametrů.
@@ -181,7 +181,7 @@ Opětovná kompilace (nebo nová kompilace po vyřazení mezipaměti) může st�
 
 - **Různé statistiky**: statistiky spojené s odkazovanými objekty se možná změnily nebo můžou být v nepodstatném rozdílu od statistik původních systémů.  Pokud se změní Statistika a provede se opětovná kompilace, používá Optimalizátor dotazů statistiku, která začíná od okamžiku jejich změny. Změny distribuce a četnosti dat revidované statistiky se mohou lišit od původní kompilace.  Tyto změny slouží k vytvoření odhadů mohutnosti. (*Odhady mohutnosti* jsou počet řádků, které se mají přesměrovat do logického stromu dotazů.) Změny odhadů mohutnosti můžou vést k volbě různých fyzických operátorů a přidružených objednávek operací.  I drobné změny statistik můžou mít za následek změnu plánu spuštění dotazu.
 
-- **Změnila se úroveň kompatibility databáze nebo verze Estimator**: změny úrovně kompatibility databáze mohou umožňovat nové strategie a funkce, které mohou mít za následek jiný plán spouštění dotazů.  Kromě úrovně kompatibility databáze může mít příznak QUERY_OPTIMIZER_HOTFIXES zakázaného nebo povoleného trasování 4199 nebo změněný stav konfigurace s rozsahem databáze v době kompilace také vliv výběru plánu spouštění dotazů.  Tento plán ovlivňují také příznaky trasování 9481 (vynutit starší verze CE) a 2312 (vynutit výchozí CE). 
+- **Změnila se úroveň kompatibility databáze nebo verze Estimator**: změny úrovně kompatibility databáze mohou umožňovat nové strategie a funkce, které mohou mít za následek jiný plán spouštění dotazů.  Kromě úrovně kompatibility databáze může mít zakázaný nebo povolený příznak trasování 4199 nebo změněný stav QUERY_OPTIMIZER_HOTFIXES konfigurace s rozsahem databáze také v době kompilace vliv výběru plánu spouštění dotazů.  Tento plán ovlivňují také příznaky trasování 9481 (vynutit starší verze CE) a 2312 (vynutit výchozí CE). 
 
 ### <a name="resolve-problem-queries-or-provide-more-resources"></a>Řešení problémů s dotazy nebo poskytnutí dalších prostředků
 
@@ -215,16 +215,16 @@ Pokud jste si jistí, že váš problém s výkonem nesouvisí s vysokým využi
 
 Tyto metody se běžně používají k zobrazení hlavních kategorií typů čekání:
 
-- Pomocí [úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) můžete najít statistiku čekání pro každý dotaz v průběhu času. V úložišti dotazů jsou typy čekání kombinovány do kategorií čekání. Můžete najít mapování kategorií čekání na typy čekání v [tabulce sys. query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table).
-- Pomocí [Sys. DM _db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) můžete vracet informace o všech čekáních zjištěných vlákny, které byly během operace provedeny. Pomocí tohoto agregovaného zobrazení můžete diagnostikovat problémy s výkonem Azure SQL Database a také s konkrétními dotazy a dávkami.
-- Pomocí [Sys. DM _os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) můžete vracet informace o frontě úloh, které čekají na určitý prostředek.
+- Pomocí [úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) můžete najít statistiku čekání pro každý dotaz v průběhu času. V úložišti dotazů jsou typy čekání kombinovány do kategorií čekání. Můžete najít mapování kategorií čekání na typy čekání v [Sys. query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table).
+- Pomocí [Sys. dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) vracet informace o všech čekáních zjištěných vlákny, které byly během operace provedeny. Pomocí tohoto agregovaného zobrazení můžete diagnostikovat problémy s výkonem Azure SQL Database a také s konkrétními dotazy a dávkami.
+- Pomocí [Sys. dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) můžete vracet informace o frontě úloh, které čekají na určitý prostředek.
 
 V případě scénářů s vysokým využitím procesoru se v úložišti dotazů a v statistikách čekání nemusí projevit využití CPU, pokud:
 
 - Vysoce náročné dotazy využívající procesor jsou pořád spuštěné.
 - Dotazy s vysokým využitím procesoru byly spuštěny, když došlo k převzetí služeb při selhání.
 
-Zobrazení dynamické správy, které sledují úložiště dotazů a statistiky čekání zobrazují výsledky pouze pro úspěšně dokončené a časované dotazy. Nezobrazují data pro aktuálně zpracovávané příkazy, dokud se nedokončí příkazy. Pomocí zobrazení dynamické správy [Sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) můžete sledovat aktuálně zpracovávané dotazy a přidruženou dobu pracovního procesu.
+Zobrazení dynamické správy, které sledují úložiště dotazů a statistiky čekání zobrazují výsledky pouze pro úspěšně dokončené a časované dotazy. Nezobrazují data pro aktuálně zpracovávané příkazy, dokud se nedokončí příkazy. Pomocí zobrazení dynamické správy [Sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) můžete sledovat aktuálně zpracovávané dotazy a přidruženou dobu pracovního procesu.
 
 Graf na začátku tohoto článku znázorňuje, že nejběžnější čekání:
 

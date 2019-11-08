@@ -1,6 +1,6 @@
 ---
 title: Jak nasadit modul s dvojitým OPCm do existujícího projektu Azure | Microsoft Docs
-description: Postup nasazení OPC vlákna do existujícího projektu.
+description: Tento článek popisuje, jak nasadit OPC vlákna do existujícího projektu. Můžete se také dozvědět, jak řešit potíže s nasazením.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 74b502a37081c729c5e33a0db7dc7f26cb44774b
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: b971ec13c71ccfd7d28ae6987593d09201b9b764
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972289"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824123"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Nasazení OPC vlákna do existujícího projektu
 
@@ -52,7 +52,7 @@ cd azure-iiot-components
 
    Výstup zahrnuje adresu URL veřejného koncového bodu. 
 
-3. Po úspěšném dokončení skriptu vyberte, zda chcete `.env` soubor uložit.  Soubor `.env` prostředí budete potřebovat, pokud se chcete připojit ke koncovému bodu cloudu pomocí nástrojů, jako je konzola nebo nasazení modulů pro vývoj a ladění.
+3. Po úspěšném dokončení skriptu vyberte, zda chcete soubor `.env` Uložit.  Pokud se chcete připojit ke koncovému bodu cloudu pomocí nástrojů, jako je konzola nebo nasadit moduly pro vývoj a ladění, budete potřebovat soubor `.env` prostředí.
 
 ## <a name="troubleshooting-deployment-failures"></a>Řešení potíží se selháním nasazení
 
@@ -66,7 +66,7 @@ Je možné, že název webu se už používá.  Pokud narazíte na tuto chybu, j
 
 ### <a name="azure-active-directory-aad-registration"></a>Registrace Azure Active Directory (AAD)
 
-Skript nasazení se pokusí zaregistrovat dvě aplikace AAD v Azure Active Directory.  V závislosti na vašich právech vybraného tenanta AAD může nasazení selhat. Existují dvě možnosti:
+Skript nasazení se pokusí zaregistrovat dvě aplikace AAD v Azure Active Directory.  V závislosti na vašich právech vybraného tenanta AAD může nasazení selhat. K dispozici jsou dvě možnosti:
 
 1. Pokud jste zvolili tenanta AAD ze seznamu tenantů, restartujte skript a zvolte jiný ze seznamu.
 2. Případně můžete nasadit privátního tenanta AAD v jiném předplatném, restartovat skript a vybrat ho pro použití.

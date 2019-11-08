@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: b324d3b9dca710dca6f5f99ad50ce4d973a42d2a
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 2f8aa41604ac176181252fb7b30cdeb2f039d10f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869544"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822879"
 ---
 # <a name="saas-fulfillment-apis---faq"></a>Rozhraní API pro naplnění SaaS – nejčastější dotazy
 
@@ -50,7 +51,7 @@ V dokumentu [rozhraní API pro plnění SaaS](https://docs.microsoft.com/azure/m
 
 ### <a name="how-do-you-know-the-saas-offer-to-which-the-user-subscribes-in-azure"></a>Jak poznáte nabídku SaaS, ke které se uživatel přihlašuje v Azure?
 
-Odpověď na `Resolve` rozhraní API obsahuje informace o nabídce a plánu přidružené k předplatnému SaaS.
+Odpověď na rozhraní `Resolve` API obsahuje informace o nabídce a plánu přidružené k předplatnému SaaS.
 
 ### <a name="how-can-the-azure-user-change-the-plan-associated-with-this-azure-subscription"></a>Jak může uživatel Azure změnit plán přidružený k tomuto předplatnému Azure?
 
@@ -83,6 +84,6 @@ Následující sekvence zachycuje tok, když uživatel Azure zruší odběr slu�
 
 ![Zákazník odhlašuje odběr v prezentace Microsoftu.](media/saas-metering-service-integration-flow-e.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace najdete v tématu [rozhraní API služby měření softwaru Marketplace](./marketplace-metering-service-apis.md) .

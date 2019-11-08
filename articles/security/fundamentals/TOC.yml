@@ -140,78 +140,20 @@
   items:
     - name: OCHRANA AU
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Webová aplikace IaaS
-          href: ../blueprints/au-protected-iaaswa-overview.md
-        - name: Webová aplikace PaaS
-          href: ../blueprints/au-protected-paaswa-overview.md
     - name: FedRAMP
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Analýzy dat
-          href: ../blueprints/fedramp-analytics-overview.md
-        - name: Datový sklad
-          href: ../blueprints/fedramp-datawarehouse-overview.md
-        - name: Webová aplikace IaaS
-          href: ../blueprints/fedramp-iaaswa-overview.md
-        - name: Webová aplikace PaaS
-          href: ../blueprints/fedramp-paaswa-overview.md
     - name: FFIEC
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Analýzy dat
-          href: ../blueprints/ffiec-analytics-overview.md
-        - name: Datový sklad
-          href: ../blueprints/ffiec-dw-overview.md
-        - name: Webová aplikace IaaS
-          href: ../blueprints/ffiec-iaaswa-overview.md
-        - name: Webová aplikace PaaS
-          href: ../blueprints/ffiec-paaswa-overview.md
     - name: HIPAA/HITRUST
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Stavová data a umělá inteligence
-          href: ../blueprints/azure-health.md
     - name: NIST SP 800-171
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Analýzy dat
-          href: ../blueprints/nist171-analytics-overview.md
-        - name: Datový sklad
-          href: ../blueprints/nist171-datawarehouse-overview.md
-        - name: Webová aplikace IaaS
-          href: ../blueprints/nist171-iaaswa-overview.md
-        - name: Webová aplikace PaaS
-          href: ../blueprints/nist171-paaswa-overview.md
     - name: PCI DSS
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Analýzy dat
-          href: ../blueprints/pcidss-analytics-overview.md
-        - name: Datový sklad
-          href: ../blueprints/pcidss-dw-overview.md
-        - name: Webová aplikace IaaS
-          href: ../blueprints/pcidss-iaaswa-overview.md
-        - name: Webová aplikace PaaS
-          href: ../blueprints/pcidss-paaswa-overview.md
     - name: UK NHS
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Analýzy dat
-          href: ../blueprints/uknhs-analytics-overview.md
-        - name: Datový sklad
-          href: ../blueprints/uknhs-datawarehouse-overview.md
-        - name: Webová aplikace IaaS
-          href: ../blueprints/uknhs-iaaswa-overview.md
-        - name: Webová aplikace PaaS
-          href: ../blueprints/uknhs-paaswa-overview.md
     - name: UK OFFICIAL
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Webová aplikace IaaS
-          href: ../blueprints/ukofficial-iaaswa-overview.md
-        - name: Webová aplikace PaaS
-          href: ../blueprints/ukofficial-paaswa-overview.md
 - name: Dokumenty white paper k zabezpečení
   href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
 - name: Služby zabezpečení Azure

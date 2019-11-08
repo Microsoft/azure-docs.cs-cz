@@ -1,5 +1,5 @@
 ---
-title: Spravovat nastavení dvou faktorů ověřování – Azure Active Directory | Microsoft Docs
+title: Správa nastavení dvou faktorů ověřování – Azure AD
 description: Přečtěte si, jak změnit podrobnosti metody ověření zabezpečení ve vztahu k ověřování dvou faktorů.
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ed7d812a9c1cba356277a4454234531ce8d41ef
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4c402e0992a3a04d674477bc9dd19e0181fd6775
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616152"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805267"
 ---
 # <a name="manage-your-two-factor-verification-method-settings"></a>Správa nastavení dvojúrovňové metody ověřování
 
@@ -125,7 +125,7 @@ Pokud jste v aplikaci Microsoft Authenticator vytvořili svůj pracovní nebo š
 
 ## <a name="turn-on-two-factor-verification-prompts-on-a-trusted-device"></a>Zapnutí dvojúrovňovéch výzev ověřování na důvěryhodném zařízení
 
-V závislosti na nastavení organizace se může zobrazit zaškrtávací políčko, které po **X dnech** po provedení dvojúrovňové ověřování v prohlížeči se znovu nedotazuje. Pokud jste toto políčko zaškrtli, aby se vám pozastavily dvoustupňové ověřování, a potom ztratíte vaše zařízení, nebo je možné, že vaše zařízení může ohrozit zabezpečení, měli byste pro ochranu svého účtu zapnout znovu výzvy pro ověření dvou faktorů. Bohužel nemůžete znovu zapnout výzvy pro jedno zařízení. Výzvy pro všechna vaše zařízení je třeba zapnout současně.
+V závislosti na nastavení organizace se může zobrazit zaškrtávací políčko, které po X dnech po provedení dvojúrovňové ověřování v prohlížeči se **znovu nedotazuje** . Pokud jste toto políčko zaškrtli, aby se vám pozastavily dvoustupňové ověřování, a potom ztratíte vaše zařízení, nebo je možné, že vaše zařízení může ohrozit zabezpečení, měli byste pro ochranu svého účtu zapnout znovu výzvy pro ověření dvou faktorů. Bohužel nemůžete znovu zapnout výzvy pro jedno zařízení. Výzvy pro všechna vaše zařízení je třeba zapnout současně.
 
 ### <a name="to-turn-two-factor-verification-prompts-back-on-for-your-devices"></a>Postup zapnutí služby dvojúrovňového ověřování na zařízeních znovu
 
@@ -133,7 +133,7 @@ V závislosti na nastavení organizace se může zobrazit zaškrtávací políč
 
     Až se příště přihlásíte k jakémukoli zařízení, zobrazí se výzva k provedení dvojúrovňového ověřování.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Po přidání nebo aktualizaci nastavení dvojúrovňového ověřování můžete spravovat hesla aplikací, přihlašovat se nebo získat pomoc s některými běžnými problémy souvisejícími s ověřováním dvou faktorů.
 

@@ -1,77 +1,78 @@
 ---
 title: Vytvoření virtuálního pevného disku kompatibilního s Azure pro Azure Marketplace
-description: Vysvětluje, jak vytvořit virtuální pevný disk pro nabídky virtuálních počítačů na webu Azure Marketplace.
+description: Vysvětluje, jak vytvořit VHD pro nabídku virtuálního počítače v Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: pabutler
-ms.openlocfilehash: a47d16108d98c5449d57d1db4892bffcead7e5f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 37fecb8100ec40ace02960a4f3390420a8bfc735
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072611"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816806"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Vytvoření virtuálního pevného disku kompatibilního s Azure
 
-Tento článek podrobně popisuje kroky potřebné k vytvoření virtuálního pevného disku (VHD) pro nabídky virtuálních počítačů (VM) na webu Azure Marketplace.  Zahrnuje také osvědčené postupy pro různé funkce, jako je například pomocí protokol RDP (Remote Desktop), výběr velikosti virtuálního počítače, instalace nejnovějších aktualizací Windows a zobecňuje se image virtuálního pevného disku.  V dalších částech zaměřuje na systému windows virtuální pevné disky; Další informace o vytváření virtuálních pevných disků založených na Linuxu najdete v tématu [Linux v distribucích schválených pro Azure](../../../virtual-machines/linux/endorsed-distros.md). 
+Tento článek podrobně popisuje kroky potřebné k vytvoření virtuálního pevného disku (VHD) pro nabídku virtuálního počítače v Azure Marketplace.  Zahrnuje taky osvědčené postupy pro různé aspekty, jako je například použití protokol RDP (Remote Desktop Protocol) (RDP), výběr velikosti virtuálního počítače, instalace nejnovějších aktualizací Windows a generalizace image VHD.  Následující oddíly se zaměřují hlavně na virtuální pevné disky založené na systému Windows. Další informace o vytváření VHD na discích se systémem Linux najdete v tématu [Linux v distribucích, které jsou schváleny v Azure](../../../virtual-machines/linux/endorsed-distros.md). 
 
 > [!WARNING]
-> Důrazně doporučujeme, abyste postupovali podle pokynů v tomto tématu můžete použít Azure k vytvoření virtuálního počítače obsahující předem nakonfigurované, potvrzená operační systém.  Pokud to není kompatibilní s řešením, je možné vytvořit a nakonfigurovat místní virtuální počítač pomocí schválených operačního systému.  Potom můžete nakonfigurovat a připravený k nahrání, jak je popsáno v [Příprava Windows VHD nebo VHDX, který chcete nahrát do Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
+> Důrazně doporučujeme postupovat podle pokynů v tomto tématu a použít Azure k vytvoření virtuálního počítače, který obsahuje předem nakonfigurovaný a schválený operační systém.  Pokud to není kompatibilní s vaším řešením, je možné vytvořit a nakonfigurovat místní virtuální počítač pomocí schváleného operačního systému.  Pak ji můžete nakonfigurovat a připravit pro nahrání, jak je popsáno v tématu [Příprava virtuálního pevného disku (VHD) Windows nebo VHDX pro nahrání do Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
 
 
-## <a name="select-an-approved-base"></a>Vyberte schválené základní
-Operační systém virtuálního pevného disku pro vaši image virtuálního počítače musí být založené na Azure schválené základní imagi, která obsahuje Windows Server nebo SQL Server.
-Chcete-li začít, vytvořte virtuální počítač z jednoho z následujících imagí nacházejí na portálu Microsoft Azure:
+## <a name="select-an-approved-base"></a>Vybrat schválený základ
+Virtuální pevný disk operačního systému pro vaši image virtuálního počítače musí být založený na základní imagi schválené pro Azure, která obsahuje Windows Server nebo SQL Server.
+Začněte tím, že vytvoříte virtuální počítač z jedné z následujících imagí, která je umístěná na portál Microsoft Azure:
 
 -   Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
 -   [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, Web)
 -   [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, Web)
 
 > [!TIP]
-> Pokud používáte aktuální portál Azure nebo PowerShell, Image Windows serveru publikované 8. září 2014 a později jsou schválené.
+> Pokud používáte aktuální Azure Portal nebo PowerShell, schvalují se image Windows serveru vydané 8. září 2014 a novějšími.
 
-Azure také nabízí celou řadu Linuxových distribucí schválených.  Aktuální seznam najdete v tématu [Linux v distribucích schválených pro Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+Alternativně nabízí Azure rozsah schválených distribucí systému Linux.  Aktuální seznam najdete v tématu [Linux v distribucích, které jsou schváleny v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 
 
-## <a name="create-vm-in-the-azure-portal"></a>Vytvoření virtuálního počítače na webu Azure Portal 
+## <a name="create-vm-in-the-azure-portal"></a>Vytvoření virtuálního počítače v Azure Portal 
 
-V Microsoftu [webu Azure portal](https://ms.portal.azure.com/), vytvořte základní image, pomocí následujících kroků.
+V Microsoft [Azure Portal](https://ms.portal.azure.com/)vytvořte základní Image pomocí následujících kroků.
 
-1. Přihlaste se k portálu pomocí účtu Microsoft pro předplatné Azure, že který chcete publikovat vaši nabídku virtuálního počítače.
-2. Vytvořit novou skupinu prostředků a poskytnout vaší **název skupiny prostředků**, **předplatné**, a **umístění skupiny prostředků**.  Další informace najdete v tématu [Správa skupin prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
-3. Klikněte na **virtuálních počítačů** v levém řádku nabídek zobrazíte na stránce podrobností virtuálních počítačů. 
-4. Na tuto novou stránku, klikněte na **+ přidat** zobrazíte **Compute** okno.  Pokud se na úvodní obrazovce se nezobrazí typ virtuálního počítače, můžete vyhledat název vašeho základního virtuálního počítače, například:
+1. Přihlaste se k portálu pomocí účet Microsoft pro předplatné Azure, které chcete publikovat v nabídce virtuálních počítačů.
+2. Vytvořte novou skupinu prostředků a zadejte **název skupiny prostředků**, **předplatné**a **umístění skupiny prostředků**.  Další pokyny najdete v tématu [Správa skupin prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
+3. Kliknutím na **virtuální počítače** na levém panelu nabídek zobrazíte stránku s podrobnostmi o virtuálních počítačích. 
+4. Na této nové stránce klikněte na **+ Přidat** , aby se zobrazilo okno **COMPUTE** .  Pokud na úvodní obrazovce nevidíte typ virtuálního počítače, můžete vyhledat název svého základního virtuálního počítače, například:
 
-    ![Okno Nový virtuální počítač COMPUTE](./media/publishvm_014.png)
+    ![Okno COMPUTE nového virtuálního počítače](./media/publishvm_014.png)
 
-5. Po výběru správné virtuální image, zadejte následující hodnoty:
-   * Na **Základy** okno, zadejte **název** u virtuálních počítačů mezi 1 až 15 znaků. (Tento příklad používá `DemoVm009`.)
-   * Zadejte **uživatelské jméno** a silné **heslo**, které se používají k vytvoření místního účtu ve virtuálním počítači.  (Tady `adminUser` se používá.)  Heslo musí mít 8 až 123 znaků a musí splňovat tři ze čtyř bezpečnostních požadavků: jedno malé písmeno, jedno velké písmeno, jedna číslice a jeden speciální znak. Další informace najdete v tématu [požadavcích na uživatelské jméno a heslo](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm).
-   * Vyberte skupinu prostředků, kterou jste vytvořili (zde `DemoResourceGroup`).
-   * Vyberte adresu Datacentra Azure **umístění** (zde `West US`).
-   * Klikněte na tlačítko **OK** uložte tyto hodnoty. 
+5. Po výběru vhodné virtuální image zadejte následující hodnoty:
+   * V okně **základy** zadejte **název** virtuálního počítače, mezi 1-15 alfanumerickými znaky. (Tento příklad používá `DemoVm009`.)
+   * Zadejte **uživatelské jméno** a silné **heslo**, které se použije k vytvoření místního účtu na virtuálním počítači.  (Zde `adminUser` použít.)  Heslo musí mít 8-123 znaků a musí splňovat tři ze čtyř následujících požadavků na složitost: jedno malé písmeno, jedno velké písmeno, jedna číslice a jeden speciální znak. Další informace najdete v tématu [požadavky na uživatelské jméno a heslo](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm).
+   * Vyberte skupinu prostředků, kterou jste vytvořili (tady `DemoResourceGroup`).
+   * Vyberte **umístění** datacentra Azure (tady `West US`).
+   * Kliknutím na tlačítko **OK** uložte tyto hodnoty. 
 
-6. Vyberte velikost virtuálního počítače k nasazení můžete použít následující doporučení:
-   * Pokud se chystáte vyvíjet virtuální pevný disk v místním, velikost není důležitá. Zvažte možnost použít jeden z menších virtuálních počítačů.
+6. Vyberte velikost virtuálního počítače, který chcete nasadit, a to pomocí následujících doporučení:
+   * Pokud se chystáte vyvíjet virtuální pevný disk v místním prostředí, nezáleží na velikosti. Zvažte možnost použít jeden z menších virtuálních počítačů.
    * Pokud se chystáte vyvíjet image v Azure, zvažte možnost použít pro zvolenou image jednu z doporučených velikostí virtuálního počítače.
-   * Informace o cenách najdete **doporučené cenové úrovně** selektoru zobrazeném na portálu. Zobrazí tři doporučené velikosti poskytnuté vydavatelem. (Tady je vydavatelem Microsoft.)
+   * Informace o cenách najdete v selektoru **Doporučené cenové úrovně** , které se zobrazí na portálu. Zobrazí se tři Doporučené velikosti poskytnuté vydavatelem. (Tady je Vydavatel Microsoft.)
 
    ![Okno velikost nového virtuálního počítače](./media/publishvm_015.png)
 
-7. V **nastavení** okno, nastavte **použití spravovaného disku** umožňuje **ne**.  To umožňuje spravovat ručně nový virtuální pevný disk. ( **Nastavení** okna také umožňuje změnit jiné změny úložiště a síťové možnosti, například výběrem **úrovně Premium (SSD)** v **typ disku**.)  Klikněte na tlačítko **OK** pokračujte.
+7. V okně **Nastavení** nastavte možnost **použít spravovaný disk** na **ne**.  To vám umožní ručně spravovat nový virtuální pevný disk. (Okno **Nastavení** také umožňuje změnit další změny možností úložiště a sítě, například výběr úrovně **Premium (SSD)** v **typu disku**.)  Pokračujte kliknutím na tlačítko **OK** .
 
-    ![Okno nastavení z nového virtuálního počítače](./media/publishvm_016.png)
+    ![Okno nastavení nového virtuálního počítače](./media/publishvm_016.png)
 
 8. Klikněte na **Souhrn** a zkontrolujte zvolené volby. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, klikněte na **OK**.
 
-    ![Okno s přehledem z nového virtuálního počítače](./media/publishvm_017.png)
+    ![Okno souhrnu nového virtuálního počítače](./media/publishvm_017.png)
 
-Azure zahájí vytváření virtuálního počítače, které jste zadali.  Průběh můžete sledovat kliknutím na **virtuálních počítačů** karty na levé straně.  Po jeho vytvoření, stav se změní na **systémem**.  V tomto okamžiku můžete [připojení k virtuálnímu počítači](./cpp-connect-vm.md).
+Azure zahajuje zřizování virtuálního počítače, který jste zadali.  Průběh můžete sledovat kliknutím na kartu **Virtual Machines** vlevo.  Po vytvoření se stav změní na **spuštěno**.  V tomto okamžiku se můžete [připojit k virtuálnímu počítači](./cpp-connect-vm.md).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokud jste narazili na problémy s dokončením vytváření nových založené na Azure virtuální pevný disk, přečtěte si téma [běžné problémy při vytváření virtuálního pevného disku](./cpp-common-vhd-creation-issues.md).  V opačném případě dále musí [připojit k virtuálním počítačům](./cpp-connect-vm.md) jste vytvořili v Azure. 
+Pokud jste narazili na potíže s vytvářením nového virtuálního pevného disku založeného na Azure, přečtěte si téma [běžné problémy při vytváření VHD](./cpp-common-vhd-creation-issues.md).  V opačném případě je nutné [se připojit k virtuálním](./cpp-connect-vm.md) počítačům, které jste vytvořili v Azure. 

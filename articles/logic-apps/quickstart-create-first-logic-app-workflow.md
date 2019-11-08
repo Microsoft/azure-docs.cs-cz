@@ -1,6 +1,6 @@
 ---
 title: Vytvoření prvního automatizovaného pracovního postupu – Azure Logic Apps
-description: Rychlý Start – sestavení prvního automatizované úlohy pomocí Azure Logic Apps pro řešení Integration System a Enterprise Application Integration (EAI)
+description: Rychlý Start – sestavení prvního automatizovaného pracovního postupu pomocí Azure Logic Apps pro řešení Integration System a Enterprise Application Integration (EAI)
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,20 +11,20 @@ ms.reviewer: klam, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: d5ac23da7b4460211100f1140c24f6ed28ab3e39
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: b6222747e352f446dab33314729f7f697e328909
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584342"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824905"
 ---
-# <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Rychlý start: Vytvoření prvního automatizovaného pracovního postupu pomocí Azure Logic Apps – Azure Portal
+# <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>Rychlý Start: vytvoření prvního pracovního postupu pomocí Azure Logic Apps-Azure Portal
 
-V tomto rychlém startu se seznámíte se sestavením prvního automatizovaného pracovního postupu pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md). V tomto článku vytvoříte aplikaci logiky, která pravidelně kontrolujte nové položky v informačním kanálu RSS webu. Pokud se najdou nové položky, aplikace logiky za každou z nich odešle e-mail. Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat jako tento pracovní postup:
+V tomto rychlém startu se seznámíte se základními obecnými koncepty, jak vytvořit první pracovní postup pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md), jako je vytvoření prázdné aplikace logiky, přidání triggeru a akce a testování aplikace logiky. V tomto rychlém startu vytvoříte aplikaci logiky, která pravidelně kontroluje informační kanál RSS webu pro nové položky. Pokud se najdou nové položky, aplikace logiky za každou z nich odešle e-mail. Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat jako tento pracovní postup:
 
 ![Ukázkový pracovní postup aplikace logiky vysoké úrovně](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
 
-Abyste mohli postupovat podle tohoto rychlého startu, potřebujete e-mailový účet od poskytovatele, který podporuje Azure Logic Apps, jako je například Office 365 Outlook, Outlook.com nebo Gmail. Pokud máte jiného poskytovatele, [tady se podívejte na seznam konektorů](https://docs.microsoft.com/connectors/). Tato aplikace logiky používá účet Office 365 Outlook. Pokud použijete jiný e-mailový účet, celkový postup bude stejný, ale vaše uživatelské rozhraní se může mírně lišit.
+Pro tento scénář potřebujete e-mailový účet ze služby, kterou podporuje Azure Logic Apps, jako je například Office 365 Outlook, Outlook.com nebo Gmail. Další podporované e-mailové služby najdete [v seznamu konektorů](https://docs.microsoft.com/connectors/). V tomto příkladu aplikace logiky používá Office 365 Outlook. Pokud používáte jinou e-mailovou službu, je celkový obecný postup stejný, ale vaše uživatelské rozhraní se může mírně lišit.
 
 Zároveň pokud ještě nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -42,7 +42,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašo
 
    ![Přidat novou aplikaci logiky](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
 
-1. V podokně aplikace logiky zadejte podrobnosti o vaší aplikaci logiky, jak je znázorněno níže. Až budete hotovi, vyberte **vytvořit**.
+1. V podokně **Aplikace logiky** zadejte podrobnosti o vaší aplikaci logiky, jak je znázorněno níže. Až budete hotovi, vyberte **vytvořit**.
 
    ![Zadání podrobností pro novou aplikaci logiky](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
@@ -69,11 +69,11 @@ Dále přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
 
 <a name="add-rss-trigger"></a>
 
-## <a name="check-rss-feed-with-a-trigger"></a>Kontrola informačního kanálu RSS pomocí triggeru
+## <a name="add-the-rss-trigger"></a>Přidat aktivační událost RSS
 
 1. V **Návrháři aplikace logiky**pod vyhledávacím polem vyberte **vše**.
 
-1. Do vyhledávacího pole zadejte `rss`. V seznamu triggery vyberte tuto aktivační událost: **při publikování položky informačního kanálu**.
+1. Do vyhledávacího pole zadejte `rss` k nalezení konektoru RSS. V seznamu triggery vyberte aktivační událost **při publikování položky informačního kanálu** .
 
    ![Vyberte, kdy se má aktivovat položka informačního kanálu.](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
@@ -84,13 +84,13 @@ Dále přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
    | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
    | **Adresa URL informačního kanálu RSS** | `http://feeds.reuters.com/reuters/topNews` | Odkaz na informační kanál RSS, který chcete monitorovat |
-   | **Interval** | 1\. místo | Počet intervalů, po které se má čekat mezi kontrolami |
+   | **Interval** | 1 | Počet intervalů, po které se má čekat mezi kontrolami |
    | **Frekvence** | Minuta | Jednota času pro každý interval mezi kontrolami  |
    ||||
 
    Interval a frekvence společně definují plán pro trigger vaší aplikace logiky. Tato aplikace logiky kontroluje kanál každou minutu.
 
-1. Pokud chcete podrobnosti o triggeru prozatím skrýt, klikněte na záhlaví triggeru.
+1. Chcete-li nyní sbalit podrobnosti triggeru, klikněte do záhlaví triggeru.
 
    ![Sbalením obrazce aplikace logiky skryjete podrobnosti.](./media/quickstart-create-first-logic-app-workflow/collapse-trigger-shape.png)
 
@@ -98,7 +98,7 @@ Dále přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
 
 Vaše aplikace logiky je teď v provozu, ale kromě kontroly informačního kanálu nic nedělá. Přidejte tedy akci, která bude reagovat na aktivaci triggeru.
 
-## <a name="send-email-with-an-action"></a>Odeslání e-mailu pomocí akce
+## <a name="add-the-send-email-action"></a>Přidat akci "Odeslat e-mail"
 
 Teď přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts) , která odešle e-mail, když se v informačním kanálu RSS objeví nová položka.
 
@@ -108,7 +108,7 @@ Teď přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts) ,
 
 1. V části **Zvolte akci** a vyhledávací pole vyberte **vše**.
 
-1. Do vyhledávacího pole zadejte `send an email`. V seznamu akcí vyberte akci Odeslat e-mail pro požadovaného poskytovatele e-mailu.
+1. Do vyhledávacího pole zadejte `send an email` a vyhledejte konektory, které tuto akci nabízejí. V seznamu akce vyberte akci "Odeslat e-mail" pro e-mailovou službu, kterou chcete použít. V tomto příkladu se používá konektor Outlooku pro Office 365, který má akci **Odeslat e-mail** .
 
    ![Výběr akce Odeslat e-mail pro Office 365 Outlook](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
 
@@ -117,7 +117,15 @@ Teď přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts) ,
    * Pro pracovní nebo školní účty Azure vyberte Office 365 Outlook.
    * Pro osobní účty Microsoft vyberte Outlook.com.
 
-1. Pokud se zobrazí výzva k zadání přihlašovacích údajů, přihlaste se ke svému e-mailovému účtu a Logic Apps vytvoří připojení k vašemu e-mailovému účtu.
+1. Pokud váš vybraný e-mailový konektor vás vyzve k ověření vaší identity, dokončete tento krok, abyste vytvořili propojení mezi vaší aplikací logiky a vaší e-mailovou službou.
+
+   > [!NOTE]
+   > V tomto konkrétním příkladu ručně ověříte svou identitu. Konektory, které vyžadují ověřování, se však liší v typech ověřování, které podporují. Máte také možnost nastavit způsob, jakým chcete zpracovávat ověřování. Například při použití šablon Azure Resource Manager pro nasazení můžete parametrizovat a zabezpečit vstupy, které chcete často nebo snadno měnit, například informace o připojení. Další informace najdete v těchto tématech:
+   >
+   > * [Parametry šablony pro nasazení](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)
+   > * [Autorizovat připojení OAuth](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)
+   > * [Ověření přístupu ke spravovaným identitám](../logic-apps/create-managed-service-identity.md)
+   > * [Ověřování připojení pro nasazení aplikace logiky](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections)
 
 1. V akci **Odeslat e-mail** určete data, která má e-mail zahrnovat.
 

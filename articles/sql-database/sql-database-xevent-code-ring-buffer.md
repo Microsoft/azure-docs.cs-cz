@@ -1,5 +1,5 @@
 ---
-title: Kód vyrovnávací paměti XEvent Ring pro SQL Database
+title: Kód vyrovnávací paměti XEvent Ring
 description: Poskytuje ukázku kódu Transact-SQL, který je v Azure SQL Database snadný a rychlý při použití cíle kruhové vyrovnávací paměti.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 8fd04cac394f05a9db18e84117a8647c1a17ba30
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7adffac045ddb2ba369993b1b805e3ce2304fb38
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686809"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822318"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Cílový kód cyklické vyrovnávací paměti pro rozšířené události v SQL Database
 
@@ -27,7 +27,7 @@ Chcete vytvořit kompletní ukázku kódu pro nejsnadnější rychlý způsob, j
 Toto téma představuje ukázku kódu Transact-SQL, který:
 
 1. Vytvoří tabulku s daty, která se mají demonstrovat.
-2. Vytvoří relaci pro existující rozšířenou událost, konkrétně **SqlServer. SQL _statement_starting**.
+2. Vytvoří relaci pro existující rozšířenou událost, konkrétně **SqlServer. sql_statement_starting**.
    
    * Událost je omezená na příkazy SQL, které obsahují konkrétní řetězec aktualizace: **příkaz jako% Update tabEmployee%** .
    * Rozhodne odeslat výstup události do cíle typu Ring buffer, jmenovitě **package0. ring_buffer**.
@@ -35,7 +35,7 @@ Toto téma představuje ukázku kódu Transact-SQL, který:
 4. Vydává několik jednoduchých příkazů SQL UPDATE.
 5. Vydá příkaz SQL SELECT, který načte výstup události z kruhové vyrovnávací paměti.
    
-   * jsou připojeni **_xe_database_session_targets sys. DM** a další zobrazení dynamické správy (zobrazení dynamické správy).
+   * jsou připojeni **Sys. dm_xe_database_session_targets** a další zobrazení dynamické správy (zobrazení dynamické správy).
 6. Zastaví relaci události.
 7. Uvolní cíl kruhové vyrovnávací paměti pro uvolnění prostředků.
 8. Zruší relaci události a ukázkovou tabulku.
@@ -54,10 +54,10 @@ Toto téma představuje ukázku kódu Transact-SQL, který:
 
 ## <a name="code-sample"></a>Ukázka kódu
 
-S velmi drobnými úpravami se dá spustit následující ukázka kódu Ring bufferu buď Azure SQL Database, nebo Microsoft SQL Server. Rozdíl je přítomnost uzlu ' _database ' v názvu některých zobrazení dynamické správy (zobrazení dynamické správy), který je použit v klauzuli FROM v kroku 5. Příklad:
+S velmi drobnými úpravami se dá spustit následující ukázka kódu Ring bufferu buď Azure SQL Database, nebo Microsoft SQL Server. Rozdíl je přítomnost uzlu ' _database ' v názvu některých zobrazení dynamické správy (zobrazení dynamické správy), která se používá v klauzuli FROM v kroku 5. Příklad:
 
-* sys. DM _xe<strong>_database</strong>_session_targets
-* sys. DM _xe_session_targets
+* sys. dm_xe<strong>_database</strong>_session_targets
+* sys. dm_xe_session_targets
 
 &nbsp;
 
@@ -220,7 +220,7 @@ Pro spuštění ukázky kódu jsme použili SSMS. exe.
 
 Pokud chcete zobrazit výsledky, klikneme na buňku pod záhlavím sloupce **target_data_XML**.
 
-Potom v podokně výsledků jsme klikli na buňku pod záhlavím sloupce **target_data_XML**. Tím kliknete na tlačítko vytvořit další kartu soubor v SSMS. exe, ve kterém se obsah buňky výsledku zobrazil jako XML.
+Pak v podokně výsledků kliknete na buňku pod záhlavím sloupce **target_data_XML**. Tím kliknete na tlačítko vytvořit další kartu soubor v SSMS. exe, ve kterém se obsah buňky výsledku zobrazil jako XML.
 
 Výstup je zobrazen v následujícím bloku. Vypadá to dlouhou dobu, ale je to pouze dva prvky **\<události >** .
 

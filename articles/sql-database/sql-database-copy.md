@@ -1,5 +1,5 @@
 ---
-title: Kopírování databáze SQL Azure
+title: Kopírování databáze
 description: Vytvořte reakční konzistentní kopii existující databáze SQL Azure na stejném nebo jiném serveru.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 09/04/2019
-ms.openlocfilehash: d49896d8088ae1352cb2785d061cde6c8647cb89
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ebf63d14a8fb883158d1ac3e0a8f3d6658920aa7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690798"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826660"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Kopírování reakční konzistentní kopie databáze SQL Azure
 
@@ -137,9 +137,9 @@ Pomocí kroků popsaných v předchozí části můžete zkopírovat databázi n
 
 ### <a name="monitor-the-progress-of-the-copying-operation"></a>Sledování průběhu operace kopírování
 
-Pomocí dotazu na zobrazení sys. databases a sys. DM _database_copies monitorujte proces kopírování. I když probíhá kopírování, sloupec **state_desc** zobrazení sys. databases pro novou databázi je nastaven na **kopírování**.
+Monitorujte proces kopírování dotazem na zobrazení sys. databases a sys. dm_database_copies. V průběhu kopírování je sloupec **state_desc** zobrazení sys. databases pro novou databázi nastaven na **kopírování**.
 
-* Pokud se kopírování nezdařilo, sloupec **state_desc** zobrazení sys. databases pro novou databázi je nastaven na hodnotu **podezření**. Spusťte příkaz DROP v nové databázi a opakujte akci později.
+* Pokud kopírování neproběhne úspěšně, je sloupec **state_desc** zobrazení sys. databases pro novou databázi nastaven na hodnotu **podezřelý**. Spusťte příkaz DROP v nové databázi a opakujte akci později.
 * Pokud je kopírování úspěšné, sloupec **state_desc** zobrazení sys. databases pro novou databázi je nastaven na hodnotu **online**. Kopírování je dokončeno a nová databáze je běžná databáze, kterou lze změnit nezávisle na zdrojové databázi.
 
 > [!NOTE]

@@ -1,22 +1,22 @@
 ---
-title: 'Vytvoření agenta elastické úlohy Azure SQL Database pomocí prostředí PowerShell '
+title: Vytvoření agenta elastických úloh pomocí PowerShellu
 description: Zjistěte, jak vytvořit agenta elastických úloh pomocí PowerShellu.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: tutorial
 author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 80f9db2d11c875d9be9bef225c04e3e90f3d0ff8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9724e54b03e5de065b8b39cb57c6a9880cf37cc6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692244"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827188"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Vytvoření agenta elastických úloh pomocí PowerShellu
 
@@ -72,7 +72,7 @@ K vytvoření agenta elastických úloh se vyžaduje databáze (S0 nebo vyšší
 
 *Skript níže vytvoří novou skupinu prostředků, server a databázi pro použití jako databázi úloh. Následující skript také vytvoří druhý server se dvěma prázdnými databázemi, ve kterých se mají spouštět úlohy.*
 
-Elastické úlohy nemají žádné specifické požadavky na pojmenování, takže můžete použít libovolné zásady vytváření názvů, pokud splňují [požadavky Azure](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
+Elastické úlohy nemají žádné specifické požadavky na pojmenování, takže můžete použít libovolné zásady vytváření názvů, pokud splňují [požadavky Azure](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
 
 ```powershell
 # Sign in to your Azure account

@@ -1,5 +1,5 @@
 ---
-title: Omezení prostředků serveru Azure SQL Database
+title: Omezení prostředků serveru
 description: Tento článek poskytuje přehled omezení prostředků Azure SQL Database serveru pro izolované databáze a elastické fondy. Poskytuje také informace o tom, co se stane, když dojde k dosažení nebo překročení těchto omezení prostředků.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 04/18/2019
-ms.openlocfilehash: b358e69df1df579e91a9098c120c7e6b4e3f2ead
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 907fc89c0d9af01865037f650c407edd97e96645
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687499"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821141"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>SQL Database omezení prostředků pro Azure SQL Database Server
 
@@ -88,7 +88,7 @@ Po vygenerování záznamů protokolu se každá operace vyhodnotí a vyhodnotí
 
 Skutečné sazby za generování protokolů, které jsou uvedené v době běhu, můžou být ovlivněné pomocí mechanismů zpětné vazby, ale dočasné snížení přípustných sazeb protokolu, aby systém mohl stabilizovat. Správa místa souboru protokolu, což nezpůsobuje nevyužité podmínky místa v protokolu a mechanismy replikace skupin dostupnosti dočasně snižují celkový počet systémových omezení. 
 
-Tvarování provozu správce míry přenosu dat se prochází prostřednictvím následujících typů čekání (zveřejněné v [Sys. DM _db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV):
+Tvarování provozu správce míry přenosu dat se prochází prostřednictvím následujících typů čekání (zveřejněné v [Sys. dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV):
 
 | Typ čekání | Poznámky |
 | :--- | :--- |

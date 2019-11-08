@@ -1,22 +1,22 @@
 ---
-title: 'Migrace na nové úlohy Elastic Database '
+title: Migrace na nové úlohy Elastic Database
 description: Migrujte na nové úlohy Elastic Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: johnpaulkee
 ms.author: joke
 ms.reviewer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 2cba7ecb4be500a8f7007c8da009e03e6f33dfde
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5a7ed254de7b7ea32f2fb357d860354693e46e92
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692260"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827236"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>Migrovat na nový úlohy elastické databáze
 

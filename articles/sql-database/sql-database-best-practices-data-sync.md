@@ -1,5 +1,5 @@
 ---
-title: 'Osvědčené postupy pro Azure Synchronizace dat SQL '
+title: Osvědčené postupy pro synchronizaci dat
 description: Seznamte se s osvědčenými postupy pro konfiguraci a provozování Azure Synchronizace dat SQL.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 728ac8ab42573e1cab30eaf12dd38a6d33b97aac
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 75fe07dc9847ae32248688bc20fac01e74c7b26a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691080"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821855"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Osvědčené postupy pro synchronizaci dat SQL 
 

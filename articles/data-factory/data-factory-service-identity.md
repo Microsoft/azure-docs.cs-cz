@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 437d1e13bfb0831bb3ece26f761cef4f5e2e0c6f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d8f65bef669e21af96ffe86319602ca5d1eea2c1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73676991"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822720"
 ---
 # <a name="managed-identity-for-data-factory"></a>Spravovaná identita pro Data Factory
 
@@ -26,7 +26,7 @@ Tento článek vám pomůže pochopit, co je spravovaná identita pro Data Facto
 
 ## <a name="overview"></a>Přehled
 
-Při vytváření datové továrny je možné vytvořit spravovanou identitu společně s vytvářením továrny. Spravovaná identita je spravovaná aplikace registrovaná v adresáři Azure Activity a představuje tuto specifickou datovou továrnu.
+Při vytváření datové továrny je možné vytvořit spravovanou identitu společně s vytvářením továrny. Spravovaná identita je spravovaná aplikace zaregistrovaná pro Azure Active Directory, která představuje konkrétní objekt pro vytváření dat.
 
 Spravovaná identita pro Data Factory přináší následující funkce:
 
@@ -136,7 +136,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 
 ### <a name="generate-managed-identity-using-sdk"></a>Generování spravované identity pomocí sady SDK
 
-Zavolejte funkci create_or_updatea objektu pro vytváření dat s identitou = New FactoryIdentity (). Ukázkový kód pomocí .NET:
+Zavolejte funkci Data Factory create_or_update funkce s identitou = New FactoryIdentity (). Ukázkový kód pomocí .NET:
 
 ```csharp
 Factory dataFactory = new Factory

@@ -4,15 +4,16 @@ description: Nakonfigurujte zájemce zákazníka na komerčním webu Marketplace
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: evansma
-ms.openlocfilehash: 31dcc8c1e35b627b231dbe2a62998c8514d05a20
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7ead8dee12d4376e6e1058b84a25b91c021a937c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902647"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812651"
 ---
 # <a name="customer-leads-from-your-marketplace-offer"></a>Potenciální zákazníci z nabídky na webu Marketplace
 
@@ -48,13 +49,13 @@ Tady jsou místa, kde se vygeneruje zájemce:
 
 ## <a name="understand-lead-data"></a>Pochopení údajů o potenciálních datech
 
-Každý zájemce, kterého obdržíte během procesu pořízení zákazníka, má data v konkrétních polích. První pole, pro které se má zjistit, `LeadSource` je pole, které následuje po tomto formátu: **Nabídka zdroj – akce** | 
+Každý zájemce, kterého obdržíte během procesu pořízení zákazníka, má data v konkrétních polích. První pole, pro které se má zjistit, je pole `LeadSource`, které následuje po tomto formátu: **Nabídka** **zdroj-akce** | .
 
-**Zdroje**: Hodnota tohoto pole se vyplní na základě webu Marketplace, který vygeneroval zájemce. Možné hodnoty jsou `"AzureMarketplace"`, `"AzurePortal"`a `"AppSource (SPZA)"`.
+**Zdroje**: hodnota pro toto pole je naplněná na základě tržiště, který vygeneroval zájemce. Možné hodnoty jsou `"AzureMarketplace"`, `"AzurePortal"`a `"AppSource (SPZA)"`.
 
-**Akce**: Hodnota tohoto pole se naplní na základě akce, kterou zákazník zavedl na webu Marketplace, který vygeneroval zájemce. 
+**Akce**: hodnota tohoto pole se naplní na základě akce, kterou zákazník zavedl na webu Marketplace, který vygeneroval tohoto zájemce. 
 
-Možné hodnoty jsou:
+Možné hodnoty:
 
 - "INS" – instalace. Tato akce se provádí v Azure Marketplace nebo AppSource, když zákazník koupí váš produkt.
 - "PLT" – představuje zkušební verzi LED pro partnery. Tato akce se provádí v AppSource, když zákazník používá možnost kontakt mi.
@@ -62,7 +63,7 @@ Možné hodnoty jsou:
 - "Vytvořit" – Tato akce je pouze uvnitř Azure Portal a je generována, když zákazník koupí vaši nabídku na svůj účet.
 - "StartTestDrive" – Tato akce je určena pouze pro testovací jednotky a je generována, když zákazník spustí testovací jednotku.
 
-**Nabídky**: Na webu Marketplace můžete mít několik nabídek. Hodnota tohoto pole je vyplněna na základě nabídky, která zájemce vygenerovala. ID vydavatele a ID nabídky jsou odesílány v tomto poli a jsou to hodnoty, které jste zadali při publikování nabídky na webu Marketplace.
+**Nabídky**: na webu Marketplace můžete mít více nabídek. Hodnota tohoto pole je vyplněna na základě nabídky, která zájemce vygenerovala. ID vydavatele a ID nabídky jsou odesílány v tomto poli a jsou to hodnoty, které jste zadali při publikování nabídky na webu Marketplace.
 
 Následující příklady znázorňují příklady hodnot v očekávaném formátu `publisherid.offerid`: 
 
@@ -74,13 +75,13 @@ Následující příklady znázorňují příklady hodnot v očekávaném formá
 
 Informace o zákazníkovi se odesílají prostřednictvím několika polí. Následující příklad ukazuje informace o zákaznících, které jsou obsaženy v rámci zájemce.
 
-- FirstName Jan
-- Polím Smith
-- E-mail: JSmith\@Microsoft.com
-- Hovor 1234567890
-- Země: USA
-- Podnikový Microsoft
-- Hlava TECHNICKÝ ŘEDITEL
+- FirstName: Jan
+- LastName: Smith
+- E-mail: JSmith\@microsoft.com
+- Telefon: 1234567890
+- Země: US
+- Společnost: Microsoft
+- Název: technický ředitel
 
 >[!Note]
 >Ne všechna data v předchozím příkladu jsou vždy k dispozici pro každého zájemce. Vzhledem k tomu, že se dostanete k několika krokům, jak je uvedeno v části zájemci pro zákazníky, nejlepším způsobem, jak zájemce zvládnout, je zrušit duplicitu záznamů a přizpůsobit následná sledování. Tímto způsobem si jednotliví zákazníci dostanou příslušnou zprávu a vytváříte jedinečnou relaci.
@@ -89,7 +90,7 @@ Informace o zákazníkovi se odesílají prostřednictvím několika polí. Nás
 
 1. *Proces* – definujte jasný prodejní proces s milníky, klíčovými ukazateli výkonu a jasným vlastnictvím týmu.
 2. *Kvalifikace* – definovat předpoklady, které označují, zda byl zájemce plně kvalifikován. Zajistěte, aby prodejci prodeje nebo marketingu zajistily, že potenciální zákazníky budou pečlivě zajišťovat celý prodejní proces.
-3. Nedělejte si nezapomněli pokračovat, očekává se, že typická transakce bude vyžadovat 5 až 12 následných volání.
+3. Nedělejte si nezapomněli *pokračovat,* očekává se, že typická transakce bude vyžadovat 5 až 12 následných volání.
 4. *Nurture* – nurture vaše zájemce, abyste mohli získat přístup k vyššímu ziskovému rozpětí.
 
 ## <a name="leads-frequently-asked-questions"></a>Nejčastější dotazy k zájemcům
@@ -104,7 +105,7 @@ Odpověď závisí na typu nabídky, kterou publikujete. SaaS a Dynamics 365 pro
 
 ### <a name="how-can-i-find-the-test-lead"></a>Jak můžu najít vedoucí test?
 
-`“MSFT_TEST”` Vyhledejte v cílovém cíli, tady je ukázka vedoucího testu od Microsoftu:
+Vyhledejte `"MSFT_TEST"` v cíli realizace, tady je ukázkový vedoucí testu od Microsoftu:
 
 ```
 company = MSFT_TEST_636573304831318844
@@ -141,7 +142,7 @@ K datům zájemce uloženým v tabulce Azure můžete přistupovat z webu Azure 
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-lead-is-sent-by-marketplace"></a>Nakonfiguroval (a) jsem tabulku Azure jako cíl pro zájem, můžu dostávat oznámení, když web Marketplace pošle novému potenciálního zákazníka?
 
-Ano, podle pokynů nastavte Microsoft flow, který odešle e-mail, pokud se do tabulky Azure v dokumentaci přidá zájemce. [](./commercial-marketplace-lead-management-instructions-azure-table.md)
+Ano, podle pokynů nastavte Microsoft flow, který odešle e-mail, pokud se do tabulky Azure [v dokumentaci přidá](./commercial-marketplace-lead-management-instructions-azure-table.md)zájemce.
 
 ### <a name="i-have-configured-salesforce-as-my-lead-destination-why-cant-i-find-the-leads"></a>Mám nakonfigurované Salesforce jako cíl pro zájem, proč nemůžu najít potenciální zákazníky?
 

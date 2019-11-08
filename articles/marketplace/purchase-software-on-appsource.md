@@ -1,73 +1,74 @@
 ---
-title: Jak k nákupu softwaru na AppSource | Azure Marketplace
-description: Kroky pro jeden k nákupu softwaru na AppSource | Azure Marketplace.
+title: Jak zakoupit software v AppSource | Azure Marketplace
+description: Postup pro nákup softwaru v AppSource | Azure Marketplace.
 author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/05/2019
-ms.openlocfilehash: dd68ac502a92b044e958969cc6a2863b5d197416
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3ca07f060aebcea82895f0463cac693c66f0c629
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621666"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827732"
 ---
-# <a name="how-to-purchase-software-on-microsoft-appsource"></a>Jak k nákupu softwaru na Microsoft AppSource
+# <a name="how-to-purchase-software-on-microsoft-appsource"></a>Jak koupit software na Microsoft AppSource
 
-Microsoft [AppSource](https://appsource.microsoft.com/) teď umožňuje zákazníkům odběru k aplikacím SaaS, které nabízí partnerů Microsoftu. Zákazníky můžete najít certifikovaných webové aplikace ve storu a můžete spravovat náklady, upgrady, downgrady a zrušení na jednom místě pomocí centra pro správu od Microsoftu. Tento článek popisuje, jak si můžete koupit aplikace ze storu.
+Microsoft [AppSource](https://appsource.microsoft.com/) nyní zákazníkům umožňuje přihlásit se k odběru aplikací SaaS, které nabízejí partneři Microsoftu. Zákazníci můžou najít certifikované webové aplikace v obchodě a můžou spravovat poplatky, upgrady, Downgrady a zrušení na jednom místě pomocí centra pro správu od Microsoftu. Tento článek popisuje, jak si můžete koupit aplikaci ze Storu.
 
 ## <a name="requirements"></a>Požadavky
 
-Nabídky SaaS koupit, budete potřebovat:
+K nákupu nabídek SaaS potřebujete:
 
 - Pracovní nebo školní účet.
 
     > [!Note]
-    > Pokud nemáte pracovní nebo školní účet, musíte vytvořit tenanta služby Azure Active Directory, do kterého můžete přidat pracovní nebo školní účet. Další informace najdete v tématu [rychlý start: Vytvořit nového tenanta v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
+    > Pokud nemáte pracovní nebo školní účet, musíte vytvořit klienta Azure Active Directory, ke kterému se může přidat pracovní nebo školní účet. Další informace najdete v tématu [rychlý Start: vytvoření nového tenanta v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
 
-- Uvedenou platnou platební kartu.
-
-    > [!Note]
-    > Platební karty musí patřit do země nebo oblast, ve kterém se zákazník zakoupení nabídky. Pokud chcete vybrat jiné zemi, vyberte "Změnit zemi/oblast fakturace" v dolní části stránky.
-
-## <a name="steps-for-making-purchases-on-appsource"></a>Kroky pro nákupy na AppSource
-
-1. Vyberte oblast a země pro fakturaci na [AppSource](https://appsource.microsoft.com/).
-1. Vyhledejte aplikaci, kterou chcete zakoupit.
+- Platná platební karta.
 
     > [!Note]
-    > AppSource umožňuje výběr aplikací lze vybírat, včetně bezplatné a zkušebních verzí a placená předplatná. Tento článek popisuje, jak placená předplatná je možné zakoupit prostřednictvím AppSource.
+    > Platební karta musí patřit do země nebo oblasti, ve které si zákazník nabídku koupí. Pokud chcete vybrat jinou zemi, v dolní části stránky vyberte změnit fakturační zemi nebo oblast.
 
-1. Vyberte **získat**.
-1. Zvolte příslušný plán:
+## <a name="steps-for-making-purchases-on-appsource"></a>Postup při nákupu na AppSource
 
-    1. Nastavte počet licencovaných míst
-    1. Nastavte fakturačního období.
+1. Vyberte oblast fakturace/země v [AppSource](https://appsource.microsoft.com/).
+1. Najděte aplikaci, kterou chcete koupit.
+
+    > [!Note]
+    > AppSource poskytuje výběr aplikací, ze kterých si můžete vybrat, včetně bezplatného, zkušebního a placeného předplatného. Tento článek popisuje, jak můžou být placené odběry zakoupeny prostřednictvím AppSource.
+
+1. Vyberte **získat hned**.
+1. Vyberte plán:
+
+    1. Nastavení počtu stanic
+    1. Nastavte fakturační období.
     
-1. Zadejte vaší fakturační adrese.
-1. Zadejte vaším způsobem platby:
-    * Podporované platební karty: Objevte Visa, hlavní karty, American Express.
+1. Zadejte fakturační adresu.
+1. Zadejte způsob platby:
+    * Podporované kreditní karty: Visa, hlavní karta, American Express, zjišťování.
     
-1. Vyberte **Odeslat objednávku**.
+1. Vyberte možnost **pořadí míst**.
 
-## <a name="how-to-configure-software-post-purchase"></a>Jak nakonfigurovat po nákupu softwaru
+## <a name="how-to-configure-software-post-purchase"></a>Postup konfigurace softwaru po nákupu
 
-Po přijetí vaší objednávky může trvat několik sekund získat potvrdit. Zobrazí se odkaz na konfiguraci vašeho předplatného SaaS na stránky, jakož i e-mail s potvrzením nákupu a odkaz k dokončení konfigurace.
+Po přijetí vaší objednávky může trvat několik sekund, než se potvrzení dostanou. Obdržíte odkaz na konfiguraci předplatného SaaS na stránce a také e-mail potvrzující nákup a odkaz pro dokončení konfigurace.
 
-1. Na **potvrzení objednávky** stránce **konfigurovat**. Alternativně můžete odesílat e-mailem potvrzení v odkazu na konfiguraci.
-1. Dokončení zřizování a nastavení na webu software poskytovatele.
+1. Na stránce **potvrzení objednávky** vyberte **Konfigurovat**. Případně můžete použít odkaz na konfiguraci, který jste poslali v e-mailu s potvrzením.
+1. Dokončete zřizování a nastavte na webu poskytovatele softwaru.
 
     > [!Note]
-    > Tento krok je povinný a je možné dokončit v každém okamžiku.
+    > Tento krok je povinný a může být kdykoli dokončen.
 
-## <a name="contact-support"></a>Kontaktujte podporu
+## <a name="contact-support"></a>Kontaktování podpory
 
-Jeden může [vyplňte lístek podpory](https://admin.microsoft.com/Adminportal/Home?source=applauncher#/homepage) prostřednictvím centra pro správu Microsoftu 365.
+[Lístek podpory můžete odeslat](https://admin.microsoft.com/Adminportal/Home?source=applauncher#/homepage) prostřednictvím centra pro správu Microsoft 365.
 
-Pro podnikové produkty [obraťte se na nápovědu zde](https://docs.microsoft.com/office365/admin/contact-support-for-business-products?view=o365-worldwide&tabs=phone).
+V případě obchodních produktů [kontaktujte nápovědu zde](https://docs.microsoft.com/office365/admin/contact-support-for-business-products?view=o365-worldwide&tabs=phone).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Najdete v článku [dokumentace k komerční Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) Další informace.
+- Další informace najdete v [dokumentaci k komerčnímu webu Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) .

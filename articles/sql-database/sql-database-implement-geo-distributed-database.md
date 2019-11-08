@@ -1,5 +1,5 @@
 ---
-title: Implementace řešení geograficky distribuované databáze SQL Azure | Microsoft Docs
+title: Implementace geograficky distribuovaného řešení
 description: Naučte se konfigurovat službu Azure SQL Database a aplikaci pro převzetí služeb při selhání replikovanou databází a testovací převzetí služeb při selhání.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 4a21fe3ed15d1dc2550f6863611b27d2b36c5c51
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 51380d312c778380602c64cac766b050511cf994
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568092"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810925"
 ---
-# <a name="tutorial-implement-a-geo-distributed-database"></a>Kurz: Implementace geograficky distribuované databáze
+# <a name="tutorial-implement-a-geo-distributed-database"></a>Kurz: implementace geograficky distribuované databáze
 
 Nakonfigurujte službu Azure SQL Database a aplikaci pro převzetí služeb při selhání do vzdálené oblasti a otestujte plán převzetí služeb při selhání. Získáte informace o těchto tématech:
 
@@ -101,7 +101,7 @@ Chcete-li vytvořit skupinu převzetí služeb při selhání, spusťte následu
        -FailoverGroupName $myfailovergroupname
    ```
 
-Nastavení geografické replikace můžete v Azure Portal změnit také tak, že vyberete databázi a pak **Nastavení** > **geografická replikace**.
+Nastavení geografické replikace můžete v Azure Portal změnit také tak, že vyberete databázi **a pak > ** **geografické replikace**.
 
 ![Nastavení geografické replikace](./media/sql-database-implement-geo-distributed-database/geo-replication.png)
 
@@ -123,7 +123,7 @@ Nastavení geografické replikace můžete v Azure Portal změnit také tak, že
 
 1. Pomocí oblíbeného editoru otevřete soubor *pom. XML* ve složce projektu.
 
-1. Přidejte ovladač Microsoft JDBC pro závislost SQL Server přidáním následující `dependency` části. Závislost musí být vložená v rámci větší `dependencies` části.
+1. Přidejte ovladač Microsoft JDBC pro závislost SQL Server přidáním následujícího oddílu `dependency`. Závislost musí být vložená v oblasti větší `dependencies`.
 
    ```xml
    <dependency>
@@ -133,7 +133,7 @@ Nastavení geografické replikace můžete v Azure Portal změnit také tak, že
    </dependency>
    ```
 
-1. Zadejte verzi jazyka Java přidáním `properties` části `dependencies` za oddíl:
+1. Zadejte verzi jazyka Java přidáním části `properties` za `dependencies` oddíl:
 
    ```xml
    <properties>
@@ -142,7 +142,7 @@ Nastavení geografické replikace můžete v Azure Portal změnit také tak, že
    </properties>
    ```
 
-1. Podporu souborů manifestu přidáním `build` části `properties` za oddíl:
+1. Podporu souborů manifestu přidáním části `build` za `properties` oddíl:
 
    ```xml
    <build>
@@ -329,7 +329,7 @@ Testování převzetí služeb při selhání:
       -FailoverGroupName $myfailovergroupname
    ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste nakonfigurovali službu Azure SQL Database a aplikaci pro převzetí služeb při selhání do vzdálené oblasti a otestovali jste plán převzetí služeb při selhání. Naučili jste se tyto postupy:
 

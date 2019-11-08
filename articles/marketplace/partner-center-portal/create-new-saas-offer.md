@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: da6fee7158344d331c6c2a68f0fab1b13cc3a291
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9eb283f538759f9591add4b04462de151f2cb014
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934103"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825542"
 ---
 # <a name="create-a-new-saas-offer"></a>Vytvořit novou nabídku SaaS
 
@@ -44,7 +45,7 @@ Příklad: test-nabídka-1
 
 <br>Příklad: nabídka testu 1&#8482;
 
-Vyberte **Create** (Vytvořit).  Pro tuto nabídku se vytvoří stránka s **přehledem nabídky** .  
+Vyberte **Vytvořit**.  Pro tuto nabídku se vytvoří stránka s **přehledem nabídky** .  
 
 <!---
 ![Offer overview on Partner Center](./media/commercial-marketplace-offer-overview.png)
@@ -57,8 +58,8 @@ Stránka **Přehled nabídky** obsahuje:
 - **Stav publikování** zobrazí vizuální znázornění kroků požadovaných k publikování této nabídky a dobu, po kterou bude každý krok trvat. Nedokončené ikony kroků publikování budou šedé. 
 
 - Nabídka **Přehled** nabídky obsahuje seznam odkazů pro provádění operací s touto nabídkou. Tento seznam operací se změní v závislosti na výběru provedeném pro vaši nabídku.  
-    - Pokud je nabídka koncept – odstranit koncept 
-    - Pokud je nabídka živá – zastavit prodej nabídky 
+    - Pokud je nabídka koncept-odstranit koncept 
+    - Pokud je nabídka živá, přestat prodávat nabídku 
     - Pokud je nabídka ve verzi Preview – přejít do provozu 
     - Pokud jste nedokončili registraci vydavatele, zrušte publikování
 
@@ -237,21 +238,21 @@ Základní komponenty pro vaši polohu hodnoty by měly obsahovat následující
 
 Aby bylo možné podrobnější popis nabídky, můžete k formátování popisu použít značky HTML. 
 
-1. Pokud chcete vytvořit odstavce, přidejte `<p>` na BEGGING textu a přidejte `</p>` na konci.
+1. Pokud chcete vytvořit odstavce, přidejte `<p>` do BEGGING textu a přidejte `</p>` na konci.
 
-    **Příklad**: 
+    **Příklad:** 
 
     `<p>` Toto je můj první odstavec. `</p>` <br>
-    `<p>` Toto je můj druhý odstavec. `</p>` <br>
+    `<p>` se jedná o můj druhý odstavec. `</p>` <br>
 
     Výše uvedená by vypadala takto:
 
     <p> Toto je můj první odstavec. </p>
     <p> Toto je můj druhý odstavec. </p>
 
-1. Chcete-li přidat **seznam položek s odrážkami**, umístěte text do značek `<li>` níže. V rámci značek `<ul>` a `</ul>` můžete kopírovat a vkládat další položky s odrážkami (položky mezi značkami `<li>` a `</li>`). Ujistěte se, že jste přidali `<ul></ul>`. 
+1. Chcete-li přidat **seznam položek s odrážkami**, umístěte text do značky `<li>` níže. V rámci značky `<ul>` a `</ul>` můžete kopírovat a vkládat další položky s odrážkami (položky mezi `<li>` a `</li>` značky). Ujistěte se, že jste přidali `<ul></ul>`. 
 
-    **Příklad**:
+    **Příklad:**
 
     ```
     <ul> 
@@ -268,19 +269,19 @@ Aby bylo možné podrobnější popis nabídky, můžete k formátování popisu
         <li> sem přidejte text </li> 
     </ul> 
 
-1. Do **tučného** obsahu přidejte `<b>` na začátku textu, který chcete tučně, a přidejte `</b>` na konec textu, který chcete tučně zadat. 
+1. Do **tučného** obsahu přidejte `<b>` na začátku textu, který chcete formátovat tučně, a přidejte `</b>` na konci textu, který chcete tučně zadat. 
 
-    **Příklad**: `<b>` bezplatné zkušební verze `</b>`
+    **Příklad**: `<b>` bezplatné zkušební `</b>`
     
     Výše uvedená by způsobila, že se slova bezplatné zkušební verze budou zobrazovat tučně v popisu nabídky v prezentace. 
 
     **BEZPLATNÁ ZKUŠEBNÍ VERZE**
 
-1. Chcete-li přidat **zalomení řádků** mezi vaším obsahem, přidejte `<br>` před obsah, který chcete spustit na novém řádku. Pokud chcete opustit mezeru a ujistit se, že obsah začíná na novém řádku, přidejte před obsah `<br><br>`. 
+1. Chcete-li přidat **zalomení řádků** mezi vaším obsahem, přidejte `<br>` před obsah, který chcete spustit na novém řádku. Pokud chcete opustit mezeru a ujistit se, že obsah začíná na novém řádku, přidejte `<br><br>` před obsah. 
 
-    **Příklad**:
+    **Příklad:**
 
-    Toto je textový řádek. `<br>` Toto je textový řádek, který začne na novém řádku. `<br><br>` se jedná o řádek, který spustí dva řádky níže. 
+    Toto je textový řádek. `<br>` je to textový řádek, který začne na novém řádku. `<br><br>` se jedná o řádek, který spustí dva řádky níže. 
 
     Výše uvedená by vypadala takto:
 
@@ -288,7 +289,7 @@ Aby bylo možné podrobnější popis nabídky, můžete k formátování popisu
 
 1. Chcete-li **zvětšit velikost textu**, vyberte nejprve, jak velký má být text. Použijte níže uvedené příklady. Po výběru velikosti textu přidejte odpovídající značky `<H*></H*>` na začátek a konec textu. 
 
-    **Příklad**:
+    **Příklad:**
 
     `<h1>`je to nadpis 1`</h1>` <br>
     `<h2>`je to Nadpis 2`</h2>` <br>
@@ -351,7 +352,7 @@ Karta **Technická konfigurace** definuje technické podrobnosti (cesta URL, Web
 
 - **Adresa URL cílové stránky** (povinné): Definujte adresu URL webu, na kterou budou zákazníci zakládat vaši nabídku na webu Marketplace. Tato adresa URL bude koncovým bodem, který obdrží token při směrování zákazníka na stránku. Tento token se dá vyměňovat pro podrobnosti zřizování pomocí řešení v rozhraních API pro plnění. Tyto podrobnosti a všechny ostatní, které shromažďujete, se dají použít jako součást interaktivní webové stránky zákazníka integrované v rámci vašeho prostředí k dokončení registrace a aktivaci jejich nákupu.
 
-- **Webhook připojení** (povinné): pro všechny asynchronní události, které Microsoft potřebuje poslat jménem zákazníka (příklad: předplatné SaaS je neplatné), vyžadujeme, abyste poskytli Webhook připojení. Pokud ještě nemáte systém Webhooku, nejjednodušší konfigurace bude mít aplikaci logiky koncového bodu HTTP, která bude naslouchat všem událostem, které do ní budou odesílány, a pak je správně zpracovat (např. https: \//prod-1westus. Logic. Azure. com: 443/Work ). Další informace najdete v tématu [pracovní postupy volání, triggeru nebo vnoření pracovních postupů s koncovými body HTTP v Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Webhook připojení** (povinné): pro všechny asynchronní události, které Microsoft potřebuje poslat jménem zákazníka (příklad: předplatné SaaS je neplatné), vyžadujeme, abyste poskytli Webhook připojení. Pokud ještě nemáte systém Webhooku, nejjednodušší konfigurace bude mít aplikaci logiky koncového bodu HTTP, která bude naslouchat všem událostem, které se do ní odesílají, a pak je správně zpracovat (např. https:\//prod-1westus.logic.azure.com:443/work). Další informace najdete v tématu [pracovní postupy volání, triggeru nebo vnoření pracovních postupů s koncovými body HTTP v Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
 - **ID tenanta Azure AD** (povinné): v rámci Azure Portal vyžadujeme [Vytvoření aplikace Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , abyste mohli ověřit, že připojení mezi našimi dvěma službami bude za ověřenou komunikací. [ID tenanta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)zjistíte tak, že přejdete na Azure Active Directory a vyberete **vlastnosti**a pak vyhledáte uvedené číslo **ID adresáře** (např. 50c464d3-4930-494c-963c-1e951d15360e).
 
@@ -406,7 +407,7 @@ Možnost konfigurace bezplatné zkušební verze je k dispozici pro každý plá
 >[!Note]
 >Jakmile je vaše nabídka s podporou transakcí publikovaná s bezplatnou zkušební verzí, nedá se pro tento plán zakázat. Ujistěte se, že toto nastavení je pro první publikování správné, aby se nemuselo znovu vytvářet plán.
 
-Chcete-li získat informace o předplatných zákazníků, které se aktuálně účastní bezplatné zkušební verze, použijte novou vlastnost rozhraní API `isFreeTrial`, která bude označena jako true nebo false. Další informace najdete v tématu [rozhraní API pro SaaS získat předplatné](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) .
+Pokud chcete získat informace o předplatných zákazníků, které se aktuálně účastní bezplatné zkušební verze, použijte novou vlastnost `isFreeTrial`API, která bude označená jako true nebo false. Další informace najdete v tématu [rozhraní API pro SaaS získat předplatné](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) .
 
 >[!Note]
 >Bezplatné zkušební verze se nepodporují pro plány, které využívají službu měření na webu Marketplace.
@@ -437,7 +438,7 @@ Vyberte frekvenci, kterou zákazníci musí platit v uvedené ceně. Musí se za
 - **Cena**: USD za měsíc nebo USD za rok
 
 Ceny nastavené v místní měně (USD = USA dolar) se převedou na místní měnu všech vybraných trhů pomocí aktuálních kurzů pro Exchange, které jsou k dispozici během instalace. Před publikováním tyto ceny ověřte, a to tak, že vyexportujete tabulku cen a zkontrolujete cenu na každém trhu. Pokud chcete nastavit vlastní ceny v individuálním trhu, upravte a importujte tabulku s cenami. Zodpovídáte za ověřování těchto cen a jejich nastavení.
-*\*musíte nejdřív Uložit změny cen, abyste mohli exportovat data o cenách.*
+*\*Aby bylo možné exportovat data o cenách, musíte nejdřív Uložit změny cen.*
 
 Před publikováním pečlivě zkontrolujte své ceny, protože existují určitá omezení, co se může po publikování plánu změnit:
 
@@ -483,8 +484,8 @@ Až dokončíte všechny požadované části nabídky, vyberte **publikovat** v
 Pokud tuto nabídku publikujete poprvé, můžete:
 
 - Podívejte se na téma stav dokončení pro jednotlivé části nabídky.
-    - *Nezahájeno* – znamená, že se oddíl nedotkl a musí se dokončit.
-    - *Nedokončeno* – znamená, že oddíl obsahuje chyby, které je třeba opravit, nebo vyžaduje, aby bylo k dispozici více informací. Vraťte se prosím k oddílům a aktualizujte je.
+    - *Nespuštěno* – znamená, že se oddíl nedotkl a je potřeba ho dokončit.
+    - *Nedokončeno* – znamená, že oddíl obsahuje chyby, které je potřeba opravit, nebo vyžaduje, aby se poskytly další informace. Vraťte se prosím k oddílům a aktualizujte je.
     - *Complete* – znamená, že část je dokončena, byla zadána všechna požadovaná data a nejsou k dispozici žádné chyby. Aby bylo možné nabídku odeslat, musí být všechny oddíly nabídky v úplném stavu.
 - Poskytněte pokyny k testování certifikačního týmu, abyste měli jistotu, že vaše aplikace je testována správně, kromě doplňkových poznámek, které jsou užitečné pro porozumění vaší aplikaci.
 - Kliknutím na **Odeslat**nabídku pro publikování odešlete. Pošleme vám e-mail s oznámením, že je k dispozici verze Preview vaší nabídky, kterou si můžete prohlédnout a schválit. Je nutné, abyste se vrátili do partnerského centra **a vybrali možnost pro publikování** nabídky na veřejném webu (nebo v případě soukromé nabídky pro privátní cílovou skupinu).

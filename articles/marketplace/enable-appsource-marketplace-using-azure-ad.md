@@ -5,15 +5,16 @@ services: Azure, AppSource, Marketplace, Compute, Storage, Networking, Blockchai
 author: qianw211
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: pabutler
-ms.openlocfilehash: 0b68687a2bbaa817f2776757ccab9571638c0fd5
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 9423263270313659017b16a5e34511e7ef385af5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876004"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825890"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Povolení uvedení na AppSource a Marketplace s využitím Azure Active Directory
 
@@ -35,12 +36,12 @@ Různé [Možnosti výpisu a typy nabídek](https://docs.microsoft.com/azure/mar
 | **Typ nabídky**    | **Vyžaduje se jednotné přihlašování Azure AD?**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 |  | Kontaktujte mě | Zkušební verze | Testovací verze | Transakce |
-| Virtuální počítač | Není k dispozici | Ne | Ne | Ne |
-| Aplikace Azure (šablona řešení)  | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
-| Spravované aplikace  | Není k dispozici | Není k dispozici | Není k dispozici | Ne |
+| Virtuální počítač | Není dostupné. | Ne | Ne | Ne |
+| Aplikace Azure (šablona řešení)  | Není dostupné. | Není dostupné. | Není dostupné. | Není dostupné. |
+| Spravované aplikace  | Není dostupné. | Není dostupné. | Není dostupné. | Ne |
 | SaaS  | Ne | Ano | Ano | Ano |
-| Containers  | Není k dispozici | Není k dispozici | Není k dispozici | Ne |
-| Konzultační služby  | Ne | Není k dispozici | Není k dispozici | Není k dispozici |
+| Kontejnery  | Není dostupné. | Není dostupné. | Není dostupné. | Ne |
+| Konzultační služby  | Ne | Není dostupné. | Není dostupné. | Není dostupné. |
 
 Další informace o technických požadavcích na SaaS najdete v tématu [SaaS Applications nabízí průvodce publikováním](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 
@@ -86,7 +87,7 @@ Pomocí Azure AD můžete podporovat jednu z následujících akcí:
 - Vývoj testovacích jednotek pro zákazníka
 - Vytvořte ukázkovou ukázkovou aplikaci pro více tenantů, která používá jednotné přihlašování.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Ujistěte se, že jste zaregistrováni [v Azure Marketplace](https://azuremarketplace.microsoft.com/sell).
+- Ujistěte se, že jste [zaregistrováni v Azure Marketplace](https://azuremarketplace.microsoft.com/sell).
 - Další informace o tom, jak vytvořit nebo dokončit vaši nabídku, najdete v tématu [Postup vytvoření účtu partnerského centra](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) .

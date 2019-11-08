@@ -1,5 +1,5 @@
 ---
-title: Transakční replikace s Azure SQL Database "
+title: Transakční replikace
 description: Přečtěte si o použití SQL Server transakční replikace s databázemi s jedním, sdruženými a instancemi v Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: 016b4f2ee191443cf608af18d1be6a94b6d53a39
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a57d1c85384204c26e75f7138b9514f2b3297bef
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687832"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823299"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Transakční replikace s databázemi s jednou, sdruženými a instancemi v Azure SQL Database
 
@@ -74,7 +74,7 @@ Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-dat
 | &nbsp; | &nbsp; | &nbsp; |
 
   >[!NOTE]
-  > - Pokus o konfiguraci replikace pomocí starší verze může mít za následek chybu MSSQL_REPL20084 (proces se nemohl připojit k odběrateli.) a MSSQ_REPL40532 (nemůže otevřít název serveru \<> požadoval přihlášení. Přihlášení se nezdařilo.)
+  > - Pokud se pokusíte nakonfigurovat replikaci pomocí starší verze, může dojít k chybě MSSQL_REPL20084 (proces se nemohl připojit k odběrateli) a MSSQ_REPL40532 (nemůže otevřít server \<název > požadovaný přihlášením. Přihlášení se nezdařilo.)
   > - Pokud chcete používat všechny funkce Azure SQL Database, musíte používat nejnovější verze [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a [Nástroje pro SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).
   
   ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>Matice podpory pro databáze instancí a místní systémy

@@ -1,6 +1,6 @@
 ---
 title: Co je OPC trezor – Azure | Microsoft Docs
-description: Přehled trezoru OPC
+description: Tento článek poskytuje přehled trezoru OPC. Může nakonfigurovat, registrovat a spravovat životní cyklus certifikátů pro aplikace OPC UA v cloudu.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 44315790116545dd888aed533731bbf01abe801d
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 66a322d4f60d9553a68207136ae609c1f9b50dbc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997306"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826202"
 ---
 # <a name="what-is-opc-vault"></a>Co je trezor OPC?
 
@@ -31,7 +31,7 @@ Následující diagram znázorňuje kompletní architekturu trezoru OPC.
 
 ![Architektura úložiště OPC](media/overview-opc-vault-architecture/opc-vault.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste se naučili o trezoru OPC a jeho použití, je tady doporučený další krok:
 

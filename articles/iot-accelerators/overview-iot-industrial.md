@@ -1,6 +1,6 @@
 ---
-title: Přehled Azure průmyslového IoT | Dokumentace Microsoftu
-description: Přehled průmyslového IoT
+title: Přehled služby Azure průmyslový IoT | Microsoft Docs
+description: Tento článek poskytuje přehled o průmyslových IoT. Vysvětluje, jak propojená továrna, připojení k továrnímu uspořádání a součásti zabezpečení v IIoT.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,46 +8,46 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 3c3a54d469d3dcbe04c11aa049906b551d68022f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c5d70e5a8784e88d3f2906d500768735dced1ee0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606202"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73828128"
 ---
-# <a name="what-is-industrial-iot-iiot"></a>Co je průmyslového IoT (IIoT)
+# <a name="what-is-industrial-iot-iiot"></a>Co je průmyslový IoT (IIoT)
 
-IIoT je průmyslového Internetu věcí. IIoT zvyšuje efektivitu průmyslové prostřednictvím aplikace IoT ve výrobním průmyslu. 
+IIoT je průmyslový Internet věcí. IIoT vylepšuje průmyslové efektivity prostřednictvím aplikace IoT v výrobním odvětví. 
 
-## <a name="improve-industrial-efficiencies"></a>Zlepšení efektivity průmyslu
+## <a name="improve-industrial-efficiencies"></a>Zvýšení efektivity průmyslu
 
-Vylepšete svoji provozní produktivitu a zisk s akcelerátoru řešení propojené továrny. Propojte a monitorujte své průmyslová vybavení a zařízení v cloudu, včetně strojů, které už v továrně pracují. Analyzujte data z IoT a získávejte z nich informace, které vám pomůžou zvýšit výkon celého závodu.
+Zvyšte svou provozní produktivitu a ziskovost pomocí akcelerátoru řešení propojené továrny. Propojte a monitorujte své průmyslová vybavení a zařízení v cloudu, včetně strojů, které už v továrně pracují. Analyzujte data z IoT a získávejte z nich informace, které vám pomůžou zvýšit výkon celého závodu.
 
-Omezit časově náročný proces přístup k factory floor počítačů pomocí Dvojčete OPC a váš čas soustředit na vytváření IIoT řešení. Zjednodušení správy certifikátů a integrace průmyslové asset s trezorem OPC a si jisti, že je zabezpečené připojení k prostředku. Tyto mikroslužby poskytují podobné REST API nad [průmyslového IoT Azure komponenty](https://github.com/Azure/azure-iiot-opc-ua). Rozhraní API služby vám dává kontrolu nad funkce modulu edge. 
+Omezte časově náročný proces přístupu k výrobním počítačům v továrně s OPC vláknem a Zaměřte se na čas při sestavování řešení IIoT. Zjednodušte správu certifikátů a průmyslovou integraci s OPC trezorem a máte jistotu, že je připojení assetů zabezpečené. Tyto mikroslužby poskytují rozhraní API podobné službě [Azure pro průmyslové komponenty IoT](https://github.com/Azure/azure-iiot-opc-ua). Rozhraní API služby poskytuje kontrolu nad funkcemi modulu Edge. 
 
-![Přehled průmyslového IoT](media/overview-iot-industrial/overview.png)
+![Přehled průmyslových IoT](media/overview-iot-industrial/overview.png)
 
 > [!NOTE]
-> Další informace o službách Azure průmyslového IoT, najdete v článku Githubu [úložiště](https://github.com/Azure/azure-iiot-services).
-Pokud nejste obeznámeni s fungování modulů Azure IoT Edge, začněte najdete v následujících článcích:
+> Další informace o službách Azure pro průmyslové služby IoT najdete v [úložišti](https://github.com/Azure/azure-iiot-services)GitHub.
+Pokud nejste obeznámeni s tím, jak Azure IoT Edge moduly fungují, začněte s následujícími články:
 - [Informace o Azure IoT Edge](../iot-edge/about-iot-edge.md)
 - [Moduly Azure IoT Edge](../iot-edge/iot-edge-modules.md)
 
 ## <a name="connected-factory"></a>Propojená továrna
 
-[Pro propojenou továrnu](../iot-accelerators/iot-accelerators-connected-factory-features.md) je implementace společnosti Microsoft Azure průmyslového IoT referenční architektura, kterou lze přizpůsobit podle konkrétních podnikových požadavků. V úložišti GitHub akcelerátor řešení připojená továrna je úplné řešení kód open-source a k dispozici. Můžete ho použít jako výchozí bod pro komerční produkt a během několika minut nasadit do svého předplatného Azure předem připravené řešení. 
+[Propojená továrna](../iot-accelerators/iot-accelerators-connected-factory-features.md) je implementace referenční architektury Azure v průmyslu Azure, kterou je možné přizpůsobit tak, aby splňovala konkrétní obchodní požadavky. Úplný kód řešení je open source a dostupný v úložišti GitHub akcelerátoru řešení propojené továrny. Můžete ho použít jako výchozí bod pro komerční produkt a během několika minut nasadit do svého předplatného Azure předem připravené řešení. 
 
-## <a name="factory-floor-connectivity"></a>Objekt pro vytváření floor připojení
+## <a name="factory-floor-connectivity"></a>Připojení k továrnímu uspořádání
 
-OPC dvojče je součást IIoT, který automatizuje registraci a zjišťování zařízení a nabízí vzdáleného řízení průmyslová zařízení prostřednictvím rozhraní REST API. Dvojče OPC používá pro připojení v cloudu a objekt pro vytváření sítí Azure IoT Edge a IoT Hub. Dvojče OPC umožňuje vývojářům IIoT soustředit na vytváření IIoT aplikací bez starostí o tom, jak bezpečně přistupovat k na místních počítačích.
+OPC je IIoT komponenta, která automatizuje zjišťování a registraci zařízení a nabízí vzdálené řízení průmyslových zařízení přes rozhraní REST API. OPC s dvojitou Vlákenou používá Azure IoT Edge a IoT Hub k propojení cloudu a sítě továrny. OPC se může vývojářům IIoT soustředit na vytváření aplikací IIoT, aniž by se museli starat o zabezpečený přístup k místním počítačům.
 
 ## <a name="security"></a>Zabezpečení
 
-Implementace sady OPC UA globální zjišťování serveru (GDS), která můžete konfigurovat, registrace a správa životního cyklu certifikátu pro server OPC UA a klientských aplikací v cloudu je trezor OPC. Trezor OPC usnadňuje implementaci a údržbu připojení k zabezpečeným prostředkem v průmyslových místa. Automatizací správy certifikátů trezor OPC uvolní operátory objekt pro vytváření z ruční a komplexní procesy, které jsou přidružené k připojení a certifikát správy.
+OPC trezor je implementací serveru OPC UA Global Discovery Server (GDS), který umožňuje konfigurovat, registrovat a spravovat životní cyklus certifikátů pro server OPC a klientské aplikace v cloudu. OPC trezor zjednodušuje implementaci a údržbu připojení k zabezpečenému majetku v oboru průmyslu. Díky automatizaci správy certifikátů OPC trezor uvolňuje výrobní operátory z ručních a složitých procesů přidružených ke správě připojení a certifikátů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Teď, když jsme měli Úvod do průmyslového IoT a jeho komponenty, tady je navrhované další krok:
+Teď, když máte Úvod do průmyslového IoT a jeho součástí, je tady doporučený další krok:
 
 > [!div class="nextstepaction"]
-> [Co je OPC Dvojčat](overview-opc-twin.md)
+> [Co je OPC s dvojitým obsahem](overview-opc-twin.md)

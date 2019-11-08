@@ -1,5 +1,5 @@
 ---
-title: Směrování závislé na datech s Azure SQL Database
+title: Směrování závislé na datech
 description: Použití třídy ShardMapManager v aplikacích .NET pro směrování závislé na datech, funkce databází horizontálně dělené v Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 319f2744cd437aea51a05592cd7a26f8b58fe761
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e5212ba7ed349f3596047fc0c027829b8667ddc5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690285"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823670"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Směrování dotazu do příslušné databáze pomocí směrování závislého na datech
 
 **Směrování závislé na datech** je schopnost použít data v dotazu ke směrování požadavku do příslušné databáze. Směrování závislé na datech je základní vzor při práci s databázemi horizontálně dělené. Kontext požadavku může být také použit ke směrování požadavku, zejména pokud klíč horizontálního dělení není součástí dotazu. Jednotlivé konkrétní dotazy nebo transakce v aplikaci využívající směrování závislé na datech mají omezený přístup k jedné databázi na žádost. Pro Azure SQL Database elastické nástroje se toto směrování dosahuje pomocí třídy **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)).
 
-Aplikace nemusí sledovat různé připojovací řetězce nebo umístění databáze přidružené k různým řezům dat v prostředí horizontálně dělené. Místo toho [správce mapy horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md) otevře připojení ke správným databázím v případě potřeby na základě dat v mapě horizontálních oddílů a hodnoty klíče horizontálního dělení, který je cílem žádosti aplikace. Klíčem je obvykle *Customer_ID*, *tenant_id*, *date_key*nebo nějaký jiný konkrétní identifikátor, který je základní parametr požadavku databáze.
+Aplikace nemusí sledovat různé připojovací řetězce nebo umístění databáze přidružené k různým řezům dat v prostředí horizontálně dělené. Místo toho [správce mapy horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md) otevře připojení ke správným databázím v případě potřeby na základě dat v mapě horizontálních oddílů a hodnoty klíče horizontálního dělení, který je cílem žádosti aplikace. Klíčem je obvykle *Customer_ID*, *tenant_id*, *date_key*nebo nějaký jiný konkrétní identifikátor, který je základním parametrem požadavku databáze.
 
 Další informace najdete v tématu horizontální navýšení kapacity [SQL Server se směrováním závislým na datech](https://technet.microsoft.com/library/cc966448.aspx).
 

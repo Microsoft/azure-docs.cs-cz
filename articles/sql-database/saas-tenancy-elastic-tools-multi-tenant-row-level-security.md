@@ -1,5 +1,5 @@
 ---
-title: 'Víceklientské aplikace s nástroji RLS a elastické databáze '
+title: Víceklientské aplikace s nástroji RLS a elastické databáze
 description: Pomocí nástrojů elastické databáze se zabezpečením na úrovni řádků sestavte aplikaci s vysoce škálovatelnou datovou vrstvou.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 4d3f25a6e234c3d3dfd878aaae68cf58684f2fac
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a5fe5d6d4076c5d82d33737d05bb95ede0a89c00
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691859"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822021"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Víceklientské aplikace s nástroji elastické databáze a zabezpečením na úrovni řádků
 

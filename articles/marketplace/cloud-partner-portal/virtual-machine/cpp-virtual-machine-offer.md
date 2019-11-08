@@ -1,47 +1,48 @@
 ---
-title: Nabídky virtuálních počítačů na webu Azure Marketplace
-description: Přehled procesu k publikování nabídky virtuálních počítačů na webu Azure Marketplace.
+title: Nabídka virtuálních počítačů v Azure Marketplace
+description: Přehled procesu publikování nabídky virtuálního počítače na Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: pabutler
-ms.openlocfilehash: fed0f47c963edf40883c432f5476bd7fe5720abb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0313c4f2581615e1d1a3a57fc191db7d7cc6e825
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938059"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808557"
 ---
 # <a name="virtual-machine-offer"></a>Nabídka virtuálních počítačů
 
 |    |    |
 |-----------------------------------------------------------------|------------------------------------------|
-| Tato část vysvětluje, jak publikovat novou nabídku virtuálního počítače [Azure Marketplace](https://azuremarketplace.microsoft.com). Podpora se poskytuje pro virtuální počítače s založené na Windows i linuxem, obsahující operační systém virtuálního pevného disku (VHD) a nula nebo více datových virtuálních pevných disků. | ![Ikona virtuálního počítače](./media/virtual-machine-icon.png)  |
+| V této části se dozvíte, jak publikovat novou nabídku virtuálních počítačů do [Azure Marketplace](https://azuremarketplace.microsoft.com). Podpora je poskytována pro virtuální počítače se systémem Windows i Linux, obsahující virtuální pevný disk operačního systému (VHD) a nula nebo více datových VHD. | ![ikona virtuálního počítače](./media/virtual-machine-icon.png)  |
 
 
 ## <a name="publishing-overview"></a>Přehled publikování
 
-V následujícím videu [optimalizovat si Azure Marketplace nabízí](https://channel9.msdn.com/Events/Build/2017/P4026?ocid=player), představuje komplexní přehled na webu Azure Marketplace, včetně publikování na tomto webu marketplace (pomocí řešení virtuálního počítače), jak optimalizovat uživatelské prostředí stránka produktu a volitelný testovací verzi prostředí jak uživatel vede jsou generovány a jak můžete využívat a optimalizovat zákaznické.
+Následující video, [optimalizace nabídky Azure Marketplace](https://channel9.msdn.com/Events/Build/2017/P4026?ocid=player), nabízí širokou škálu Azure Marketplace, včetně toho, jak publikovat na tomto webu Marketplace (pomocí řešení virtuálního počítače), jak optimalizovat činnost koncového uživatele se stránkou produktu. a volitelné prostředí Test Drive, jak se generují zájemce uživatelů a jak je můžete využívat, a optimalizovat zapojení zákazníků.
 
 > [!VIDEO https://channel9.msdn.com/Events/Build/2017/P4026/player]
 
 
-## <a name="vm-publishing-process-flow"></a>Proces publikování virtuálního počítače
+## <a name="vm-publishing-process-flow"></a>Tok procesu publikování virtuálních počítačů
 
-Následující diagram znázorňuje postup vysoké úrovně v publikování nabídky virtuálních počítačů. 
+Následující diagram znázorňuje nejdůležitější kroky při publikování nabídky virtuálních počítačů. 
 
-![Proces publikování virtuálního počítače](./media/publishvm_001.png)
+![Proces publikování virtuálních počítačů](./media/publishvm_001.png)
 
-1. Vytvořte svou nabídku – všechny podrobnosti a informace o nabídce nakonfigurovány, včetně popis nabídky, marketingové materiály, právní informace a asset požadavky na podporu.
+1. Vytvoření nabídky – nakonfigurují se všechny podrobnosti a informace o této nabídce, včetně popisu nabídky, marketingových materiálů, právních informací o podpoře a specifikací prostředků.
 
-2. Vytvořit obchodní a technické prostředky – vytvoření prostředků (právní dokumenty a marketingové materiály) a technických prostředků pro související řešení (tady, virtuální počítače a připojených disků). 
+2. Vytvořte si obchodní a technické prostředky – vytvořte si obchodní prostředky (právní dokumenty a marketingové materiály) a technické prostředky pro příslušné řešení (tady, virtuální počítače a připojené disky). 
 
-3. Vytvoření skladové Položce – vytvoření přidružené skladové jednotky spojené s nabídkou a odešlete je.  Je vyžadována pro každý obrázek, který máte v úmyslu publikovat jedinečný skladová položka. 
+3. Vytvoření SKU – vytvořte přidružené SKU přidružené k této nabídce a odešlete je.  Pro každou bitovou kopii, kterou plánujete publikovat, se vyžaduje jedinečná SKU. 
  
-4. Certifikace a publikujte nabídku – po dokončení se nabídka a technických prostředků, můžete odeslat nabídku. Toto odeslání se spustí proces publikování, ve které řešení je testována ověřen, certifikace, pak "místo pro živé" na webu marketplace.  
+4. Certifikace a publikování nabídky – Jakmile se nabídka a technické prostředky dokončí, můžete nabídku odeslat. U tohoto odeslání se spustí proces publikování, ve kterém je řešení testováno, ověřeno, certifikováno a pak bude na webu Marketplace aktivní.  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Předtím, než byste zvážit tyto kroky, je nutné splnit [technické a podnikové požadavky](./cpp-prerequisites.md) pro publikování virtuálního počítače na webu Microsoft Azure Marketplace. 
+Než se pustíte do tohoto postupu, musíte splnit [technické a obchodní požadavky](./cpp-prerequisites.md) pro publikování virtuálního počítače do Microsoft Azure Marketplace. 

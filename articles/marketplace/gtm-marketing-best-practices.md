@@ -1,27 +1,28 @@
 ---
-title: Go-To-Market Services - marketingové osvědčené postupy | Azure
-description: Go-To-Market Services – Tato část popisuje marketingové osvědčené postupy pro vydavatele Azure Marketplace
+title: Služby pro uvedení na trh – Doporučené postupy pro marketing | Azure
+description: Služby pro uvedení na trh – Tato část popisuje doporučené postupy pro vydavatele Azure Marketplace
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 6/24/2018
 ms.author: ellacroi
-ms.openlocfilehash: 4df5a94aebd91fc6941acbec149a5fde98d7f760
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5d2c6ce8682e24d981457ea8fc804ff04e226750
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441725"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823956"
 ---
 # <a name="marketing-best-practices"></a>Marketingové osvědčené postupy
 
-Zařazení optimalizované marketplace a go-to-market kampaně vám pomohou zrychlit pořízení podle potřeb vašich zákazníků a proto mohou hrát důležitou roli v cloudové obchodní strategii a modul. Připravte se na seznam nabídek, zadejte zákazníka zkušební verze a připojit se zákazníky Microsoftu a komunitě partnerů. Stáhněte si [AppSource a webu Azure Marketplace marketingové doporučené postupy](https://aka.ms/marketplacebestpractices) informace o svých marketingových aktivitách online využít na maximum.
+Optimalizované výpisy na webu Marketplace a kampaně pro uvedení na trh vám můžou přispět k urychlení nárůstu pořízení zákazníků, takže se v cloudové obchodní strategii a modulu můžou hrát významnou roli. Seznamte se s nabídkami, poskytněte zákaznické testy a spojte se s zákazníky Microsoftu a partnerskými komunitami. Stáhněte si [příručku pro osvědčené postupy pro AppSource & Azure Marketplace](https://aka.ms/marketplacebestpractices) , kde se dozvíte, jak na svém online marketingovém úsilí využít maximum.
 
-**Další postup**
+**Další kroky**
 
-Další informace o marketplace služby GTM, přejděte na [Go-to-market services](https://partner.microsoft.com/reach-customers/gtm).
+Další informace o službách GTM na webu Marketplace najdete na webu [služby pro uvedení na trh](https://partner.microsoft.com/reach-customers/gtm).
 
-Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com) k vytvoření a konfiguraci nabídky.
+Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com) a vytvořte a nakonfigurujte vaši nabídku.
 
 ---

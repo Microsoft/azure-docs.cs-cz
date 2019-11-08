@@ -4,15 +4,16 @@ description: Nejčastější dotazy týkající se funkce prodávající přehle
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 059ec175a48cdcdec6214a6581452ec0536bf566
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: b015d21005448d24d24923ba424a10a4af0d47b1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030453"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821603"
 ---
 <a name="seller-insights-faq"></a>Nejčastější dotazy k prodejci Insights
 ===================

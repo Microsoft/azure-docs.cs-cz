@@ -1,5 +1,5 @@
 ---
-title: Nastavte hesla aplikace na stránce informace o zabezpečení (Preview) – Azure Active Directory | Microsoft Docs
+title: Vytváření hesel aplikací v informacích o zabezpečení (Preview) – Azure AD
 description: Nastavte automaticky generovaná hesla (hesla aplikací), která se použijí v libovolné aplikaci bez prohlížeče, nebo v jakékoli aplikaci, která nepodporuje dvojúrovňové ověřování ve vaší organizaci. Heslo této aplikace je oddělené od normálního hesla a lze je nastavit na stránce informace o zabezpečení.
 services: active-directory
 author: eross-msft
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9638893c707757cb520acdf18e8e89a6cdf13f08
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: eb26d90772fc9e3e3e506946363c76cf02e6b2ef
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915978"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820327"
 ---
-# <a name="manage-app-passwords-from-your-security-info-preview-page"></a>Správa hesel aplikací ze stránky informace o zabezpečení (Preview)
+# <a name="create-app-passwords-from-your-security-info-preview-page"></a>Vytvoření hesel aplikací ze stránky Security Info (Preview)
 
 Některé aplikace, jako je například Outlook 2010, nepodporují dvoustupňové ověřování. Tato nedostatečná podpora znamená, že pokud ve vaší organizaci používáte dvoustupňové ověřování, aplikace nebude fungovat. Pokud se chcete tomuto problému vyhnout, můžete vytvořit automaticky generované heslo, které se použije u každé neprohlížečové aplikace, a to odděleně od normálního hesla.
 
@@ -46,7 +46,7 @@ Pokud používáte dvoustupňové ověřování u svého pracovního nebo školn
 
 ### <a name="to-create-a-new-app-password"></a>Vytvoření nového hesla aplikace
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a https://myprofile.microsoft.com/ pak přejít na stránku.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a pak přejít na stránku https://myprofile.microsoft.com/.
 
     ![Stránka můj profil zobrazující odkazy na zvýrazněné informace o zabezpečení](media/security-info/securityinfo-myprofile-page.png)
 

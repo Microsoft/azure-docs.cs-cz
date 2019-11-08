@@ -1,5 +1,5 @@
 ---
-title: Ukázka Azure SQL Database v paměti
+title: Ukázka v paměti
 description: Vyzkoušejte Azure SQL Database technologie v paměti pomocí ukázky OLTP a columnstore.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 8526236afdb0a312879cb3c1635a7fd85985278f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e7e7fc44d5f8b46a66c698d3a33ceeab5b8625c4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689822"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810329"
 ---
 # <a name="in-memory-sample"></a>Ukázka v paměti
 
@@ -100,7 +100,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
 ```
 
 
-**Nativně kompilovaná uložená procedura**: pomocí dotazu zobrazení katalogu můžete zkontrolovat tabulky SalesLT. USP _insertsalesorder_inmem:
+**Nativně kompilovaná uložená procedura**: tabulky saleslt. usp_InsertSalesOrder_inmem můžete zkontrolovat pomocí dotazu zobrazení katalogu:
 
 
 ```sql
@@ -168,7 +168,7 @@ end
 ```
 
 
-Chcete-li nastavit verzi *_ondisk* předchozího skriptu T-SQL pro OSTRESS. exe, nahraďte oba výskyty podřetězce *_inmem* parametrem *_ondisk*. Tyto náhrady mají vliv na názvy tabulek a uložených procedur.
+Chcete-li nastavit *_ondisk* verzi předchozího skriptu T-SQL pro OSTRESS. exe, měli byste nahradit oba výskyty podřetězce *_inmem* *_ondisk*. Tyto náhrady mají vliv na názvy tabulek a uložených procedur.
 
 
 ### <a name="install-rml-utilities-and-ostress"></a>Instalace nástrojů RML a `ostress`
@@ -239,7 +239,7 @@ Po dokončení `ostress.exe` zapíše dobu běhu jako poslední řádek výstupu
 #### <a name="reset-edit-for-_ondisk-then-rerun"></a>Resetovat, upravit pro *_ondisk*a pak znovu spustit
 
 
-Až budete mít výsledek z *_inmem* spuštění, proveďte následující kroky pro spuštění *_ondisk* :
+Po dokončení spuštění *_inmem* proveďte následující kroky pro *_ondisk* spuštění:
 
 
 1. Obnovte databázi spuštěním následujícího příkazu v SSMS a odstraňte všechna data, která byla vložena v předchozím běhu:
@@ -247,7 +247,7 @@ Až budete mít výsledek z *_inmem* spuštění, proveďte následující kroky
    EXECUTE Demo.usp_DemoReset;
    ```
 
-2. Úpravou příkazového řádku OSTRESS. exe nahraďte všechny *_inmemy* *_ondisk*.
+2. Úpravou příkazového řádku OSTRESS. exe nahraďte všechny _inmem *_ondisk*.
 
 3. Spusťte OSTRESS. exe podruhé a zachyťte výsledek trvání.
 

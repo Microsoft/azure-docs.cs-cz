@@ -1,22 +1,22 @@
 ---
-title: Zřizování nových tenantů ve víceklientské aplikaci, která používá Azure SQL Database
+title: Zřizování nových tenantů ve víceklientské aplikaci
 description: Naučte se zřizovat a zařadit nové klienty do Azure SQL Database aplikace SaaS víceklientské architektury.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: f0f1ebd8b2ef719a9556b6b20f6685d1da493263
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: cd5b45093be6d7cc8745013f18c897251f89f454
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692107"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822190"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Naučte se zřizovat nové klienty a registrovat je v katalogu.
 

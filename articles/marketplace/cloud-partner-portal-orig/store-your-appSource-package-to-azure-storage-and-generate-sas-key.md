@@ -1,59 +1,60 @@
 ---
-title: Store AppSource balíčku do služby Azure storage a generovat adresu URL s klíčem SAS
+title: Uložení balíčku AppSource do úložiště Azure a vygenerování adresy URL pomocí klíče SAS
 description: Podrobně popisuje kroky potřebné k nahrání a zabezpečení balíčku AppSource.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pabutler
-ms.openlocfilehash: ac77767aee2dcde33f4266e1d2d09c49dcf5f8a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f1a09244697a6771ad1b499f3d7c36eb7297067
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943287"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827653"
 ---
-<a name="store-your-appsource-package-to-azure-storage-and-generate-a-url-with-sas-key"></a>Store AppSource balíčku do služby Azure storage a generovat adresu URL s klíčem SAS
+<a name="store-your-appsource-package-to-azure-storage-and-generate-a-url-with-sas-key"></a>Uložení balíčku AppSource do úložiště Azure a vygenerování adresy URL pomocí klíče SAS
 =============================================================================
 
-Zachování zabezpečení souborů, musí všichni partneři uložit soubor balíčku jejich AppSource v účtu úložiště objektů blob v Azure a používat klíč SAS ke sdílení. Z umístění služby Azure storage k certifikaci a pro účely hodnocení AppSource se nám se načíst soubor balíčku.
+Aby bylo možné zachovat zabezpečení vašich souborů, všichni partneři musí uložit svůj soubor balíčku AppSource do účtu služby Azure Blob Storage a pomocí klíče SAS ho sdílet. Načteme soubor balíčku z vašeho umístění úložiště Azure pro certifikaci a použijeme ho pro AppSource testy.
 
-Pro nahrání balíčku do úložiště objektů blob použijte následující kroky:
+Pomocí následujících kroků nahrajte balíček do úložiště objektů BLOB:
 
-1. Přejděte na <https://azure.microsoft.com> a vytvořte si bezplatný účet zkušební verze nebo se fakturuje.
+1. Přejít na <https://azure.microsoft.com> a vytvořit bezplatný zkušební nebo Fakturovaný účet.
 
-2. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
+2. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
-3. Vytvořit nový účet úložiště kliknutím na **+ nová** a **Data + úložiště** účtu.
+3. Vytvořte nový účet úložiště tak, že kliknete na **+ Nový** a přejdete na účet **data + úložiště** .
 
-   ![Data + úložiště okna na portálu Microsoft Azure](media/CRMScreenShot7.png)
+   ![Okno data + úložiště na portálu Microsoft Azure](media/CRMScreenShot7.png)
 
-4. Zadejte **název** a **skupiny prostředků** pojmenujte a klikněte na tlačítko **vytvořit** tlačítko.
+4. Zadejte **název** a název **skupiny prostředků** a klikněte na tlačítko **vytvořit** .
 
    ![Vytvoření účtu úložiště na portálu Microsoft Azure](media/CRMScreenShot8.png)
 
-5. Přejděte do vaší nově vytvořené skupiny prostředků a vytvořit nový kontejner objektů blob.
+5. Přejděte do nově vytvořené skupiny prostředků a vytvořte nový kontejner objektů BLOB.
 
-   ![Nahrání balíčku jako objekt blob pomocí portálu Microsoft Azure](media/CRMScreenShot9.png)
+   ![Nahrání balíčku jako objektu BLOB pomocí Microsoft Azureového portálu](media/CRMScreenShot9.png)
 
-6. Pokud jste tak již neučinili, stáhněte a nainstalujte Microsoft [Průzkumníka služby Azure Storage](https://storageexplorer.com/).
+6. Pokud jste to ještě neudělali, Stáhněte a nainstalujte Microsoft [Průzkumník služby Azure Storage](https://storageexplorer.com/).
 
-7. Otevřete Průzkumníka služby Storage a použijte ikonu pro připojení k účtu služby Azure storage.
+7. Otevřete Průzkumník služby Storage a pomocí ikony se připojte k účtu služby Azure Storage.
 
-8. Přejděte do kontejneru objektů blob, který jste vytvořili a klikněte na tlačítko **nahrát** se přidat váš soubor zip balíčku.
+8. Přejděte do vytvořeného kontejneru objektů BLOB a kliknutím na **nahrát** přidejte soubor zip balíčku.
 
-   ![Nahrání balíčku pomocí Průzkumníka úložišť Microsoft](media/CRMScreenShot10.png)
+   ![Nahrání balíčku pomocí Microsoft Průzkumník služby Storage](media/CRMScreenShot10.png)
 
 9. Klikněte pravým tlačítkem na soubor a vyberte **získat sdílený přístupový podpis**.
 
-   ![Získat sdílený přístupový podpis Azure file](media/CRMScreenShot11.png)
+   ![Získání sdíleného přístupového podpisu pro soubor Azure](media/CRMScreenShot11.png)
 
-10. Upravit **čas vypršení platnosti** aby SAS aktivní po dobu jednoho měsíce, pak klikněte na tlačítko **vytvořit**.
+10. Upravte **čas vypršení platnosti** , aby bylo přidružení SA aktivní po dobu měsíce, a pak klikněte na **vytvořit**.
 
-    ![Upravit datum vypršení platnosti SAS Azure file](media/CRMScreenShot12.png)
+    ![Úprava data vypršení platnosti SAS pro soubor Azure](media/CRMScreenShot12.png)
 
-11. Do pole Adresa URL zkopírovat a uložit pro pozdější použití. Je potřeba při vytváření nabídky přidružené zadejte tuto adresu URL. 
+11. Zkopírujte pole Adresa URL a uložte ho pro pozdější verzi. Tuto adresu URL budete muset zadat při vytváření přidružené nabídky. 
 
-    ![Zkopírujte adresu URL SAS souboru Azure](media/CRMScreenShot13.png)
+    ![Kopírování adresy URL SAS souboru Azure](media/CRMScreenShot13.png)
 

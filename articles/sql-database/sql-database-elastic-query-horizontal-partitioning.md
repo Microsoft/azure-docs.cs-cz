@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
-ms.openlocfilehash: 37b19cd86cd13dd2bdc8b3a38abf61898b81d01b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 79abaade22fc107fa4c848607ff48232eeeb58ad
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690380"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823767"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Vytváření sestav napříč cloudových databází s horizontálním škálováním (Preview)
 
@@ -181,7 +181,7 @@ Elastický dotaz také zavádí uloženou proceduru, která poskytuje přímý p
 
 * Název zdroje dat (nvarchar): název externího zdroje dat typu RDBMS.
 * Dotaz (nvarchar): dotaz T-SQL, který se má provést na každém horizontálních oddílů.
-* Deklarace parametru (nvarchar) – volitelné: řetězec s definicemi datových typů pro parametry používané v parametru dotazu (jako sp_executesql).
+* Deklarace parametru (nvarchar) – volitelné: řetězec s definicemi datových typů pro parametry používané v parametru dotazu (například sp_executesql).
 * Seznam hodnot parametrů – volitelné: čárkami oddělený seznam hodnot parametrů (například sp_executesql).
 
 Nástroj SP\_Execute\_Remote využívá externí zdroj dat, který je k dispozici v parametrech volání, ke spuštění daného příkazu T-SQL ve vzdálených databázích. Pomocí přihlašovacích údajů k externímu zdroji dat se můžete připojit k databázi shardmap Manageru a vzdáleným databázím.  

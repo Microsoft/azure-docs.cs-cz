@@ -1,22 +1,23 @@
 ---
-title: Udělení přístupu Azure SQL Database a SQL Data Warehouse
+title: Udělení přístupu
 description: Přečtěte si, jak udělit přístup k Microsoft Azure SQL Database a SQL Data Warehouse.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: sql-data-warehouse
+titleSuffix: Azure SQL Database and SQL Data Warehouse
+ms.custom: sql-data-warehouse, seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 05/08/2019
-ms.openlocfilehash: c115cd7e4d531bfdc7ddbacd4f6eff2a892ea3c3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 05a949bbd99a36c41143190d216116f78c433951
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690747"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826599"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Řízení přístupu Azure SQL Database a SQL Data Warehouse
 

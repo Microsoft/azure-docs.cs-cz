@@ -1,5 +1,5 @@
 ---
-title: Podmíněný přístup – Azure SQL Database a datový sklad | Dokument Microsoft doc
+title: Podmíněný přístup
 description: Přečtěte si, jak nakonfigurovat podmíněný přístup pro Azure SQL Database a datový sklad.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 03/29/2019
-ms.openlocfilehash: 1b7000138c4dfc42b774969c1b971d969064b78f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9b8c0dbe03e47d32d8194408663973f07a07b1b9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569308"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827167"
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Podmíněný přístup (MFA) s Azure SQL Database a datovým skladem  
 
@@ -33,26 +33,26 @@ Následující kroky ukazují, jak nakonfigurovat SQL Database pro vymáhání z
 
 ## <a name="configure-ca-for-azure-sql-dbdw"></a>Konfigurace certifikační autority pro Azure SQL DB/DW  
 1. Přihlaste se k portálu, vyberte **Azure Active Directory**a potom vyberte **podmíněný přístup**. Další informace najdete v tématu [technické informace o podmíněném přístupu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference).  
-   ![Okno podmíněný přístup](./media/sql-database-conditional-access/conditional-access-blade.png) 
+   ![okno podmíněného přístupu](./media/sql-database-conditional-access/conditional-access-blade.png) 
      
 2. V okně **podmíněný přístup – zásady** klikněte na **nové zásady**, zadejte název a pak klikněte na **Konfigurovat pravidla**.  
 3. V části **přiřazení**vyberte **Uživatelé a skupiny**, zaškrtněte **políčko Vybrat uživatele a skupiny**a pak vyberte uživatele nebo skupinu pro podmíněný přístup. Klikněte na **Vybrat**a potom kliknutím na **Hotovo** přijměte svůj výběr.  
-   ![Vybrat uživatele a skupiny](./media/sql-database-conditional-access/select-users-and-groups.png)  
+   ![vybrat uživatele a skupiny](./media/sql-database-conditional-access/select-users-and-groups.png)  
 
 4. Vyberte **cloudové aplikace**, klikněte na **vybrat aplikace**. Zobrazí se všechny aplikace, které jsou k dispozici pro podmíněný přístup. Vyberte **Azure SQL Database**, v dolní části klikněte na **Vybrat**a pak klikněte na **Hotovo**.  
-   ![Vyberte SQL Database](./media/sql-database-conditional-access/select-sql-database.png)  
+   ![vybrat SQL Database](./media/sql-database-conditional-access/select-sql-database.png)  
    Pokud nemůžete najít **Azure SQL Database** uvedených v následujícím třetím snímku obrazovky, proveďte následující kroky:   
    - Přihlaste se k instanci Azure SQL DB/DW pomocí SSMS s účtem správce AAD.  
-   - Provést `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER`.  
+   - Spusťte `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER`.  
    - Přihlaste se k AAD a ověřte, že Azure SQL Database a datový sklad jsou uvedené v aplikacích v AAD.  
 
 5. Vyberte **řízení přístupu**, vyberte **udělit**a pak zkontrolujte zásadu, kterou chcete použít. V tomto příkladu vybereme možnost **vyžadovat službu Multi-Factor Authentication**.  
-   ![vybrat udělit přístup](./media/sql-database-conditional-access/grant-access.png)  
+   ![vyberte udělit přístup](./media/sql-database-conditional-access/grant-access.png)  
 
 ## <a name="summary"></a>Souhrn  
 Vybraná aplikace (Azure SQL Database), která umožňuje připojení k Azure SQL DB/DW pomocí Azure AD Premium nyní vynutila vybrané zásady podmíněného přístupu, **požadované vícefaktorové ověřování.**  
-Pokud máte dotazy týkající se služby Multi-Factor Authentication Azure SQL Database a datového MFAforSQLDB@microsoft.comskladu, kontaktujte.  
+Pokud máte dotazy týkající se služby Multi-Factor Authentication Azure SQL Database a datového skladu, obraťte se na MFAforSQLDB@microsoft.com.  
 
-## <a name="next-steps"></a>Další postup  
+## <a name="next-steps"></a>Další kroky  
 
 Kurz najdete v tématu [zabezpečení Azure SQL Database](sql-database-security-tutorial.md).

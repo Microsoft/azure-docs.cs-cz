@@ -1,5 +1,5 @@
 ---
-title: Agent synchronizace dat pro Azure Synchronizace dat SQL
+title: Agent synchronizace dat pro Synchronizace dat SQL
 description: Přečtěte si, jak nainstalovat a spustit agenta synchronizace dat pro Azure Synchronizace dat SQL k synchronizaci dat s místními SQL Server databázemi.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 097c8547093a13f73f1ae5facdc0f7e6c75c071d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6d0a728401ac9f0156cc8fa913ce486bb577c6dd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690786"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825178"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Agent synchronizace dat pro Azure Synchronizace dat SQL
 

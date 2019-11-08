@@ -1,34 +1,35 @@
 ---
-title: Konfigurace správy potenciálních zákazníků pro Salesforce | Azure Marketplace
-description: Konfigurace správy zájemce v Salesforce pro zákazníky Azure Marketplace.
+title: Konfigurace správy zájemců pro Salesforce | Azure Marketplace
+description: Nakonfigurujte správu zájemců na Salesforce pro zákazníky Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 0be5cd84e9ed8314584b5cea064b5c0241db1ab5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fa1bfdcd172b17f88f6acf14a9d9b80e13767da8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935108"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827710"
 ---
-# <a name="configure-lead-management-for-salesforce"></a>Konfigurace správy potenciálních zákazníků pro Salesforce
+# <a name="configure-lead-management-for-salesforce"></a>Konfigurace správy zájemců pro Salesforce
 
-Tento článek popisuje, jak nastavit systému Salesforce pro zpracování potenciálních zákazníků.
+Tento článek popisuje, jak nastavit systém Salesforce pro zpracování zájemců prodeje.
 
 1. Přihlaste se k Salesforce.
-2. Vyberte **nastavení**.
-    ![Salesforce – nastavení](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce1.png)
+2. Vyberte **Nastavení**.
+    ![nastavení Salesforce](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce1.png)
 
-3. Rozbalte **sestavení** nabídky **vlastní/potenciálních zákazníků/Web na zájemce**.
-    ![Salesforce webové zájemce](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce2.png)
+3. Rozbalením nabídky **sestavení** můžete **přizpůsobit/zájemci/Web-to-olovo**.
+    ![webu Salesforce](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce2.png)
 
-4. Na **instalační program webové zájemce**vyberte **formulář pro vytvoření webových zájemce**.
-    ![Formulář pro vytvoření služby Salesforce](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce3.png)
+4. Při **instalaci z webu na potenciálního zákazníka**vyberte **vytvořit webový formulář pro**vyřízení.
+    ![vytvoření formuláře Salesforce](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce3.png)
 
-5. Na **vytvořit formulář webové zájemce**vyberte **generovat** ![generovat Salesforce](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce4.png)
+5. Na **formuláři vytvořit web do zájemce**vyberte možnost **Generovat** ![Salesforce generovat](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce4.png)
 
-6. Zkopírujte Identifikátor objektu v ukázce a uložte ho. Budete vložte Identifikátor objektu v **identifikátor objektu** na portál partnerů cloudu.
-![Získání identifikátoru objektu Salesforce](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce5.png)
+6. Zkopírujte identifikátor OID v ukázce a uložte ho. Identifikátor OID vložíte do pole **identifikátor objektu** na portál partnerů cloudu.
+![Salesforce Get OID](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce5.png)

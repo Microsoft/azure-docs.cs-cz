@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database – omezení prostředků – spravovaná instance
+title: Omezení prostředků – spravovaná instance
 description: Tento článek poskytuje přehled Azure SQL Databasech omezení prostředků pro spravované instance.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 10/02/2019
-ms.openlocfilehash: 723704b6b81aacf086ff42b02c32259d0e2f1c6d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 08e378c4b5f6d8e17ac67a80401edf69611c0a13
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687910"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823333"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled Azure SQL Database omezení prostředků spravované instance
 
@@ -84,7 +84,7 @@ Managed instance má dvě úrovně služeb: [pro obecné účely](sql-database-s
 
 > [!NOTE]
 > - **Aktuálně dostupná velikost úložiště instance** je rozdíl mezi rezervovanou velikostí instance a využitým prostorem úložiště.
-> - Velikost dat a souborů protokolu v uživatelských i systémových databázích jsou zahrnuté do velikosti úložiště instance, která je porovnávána s limitem maximální velikosti úložiště. Pomocí systémového zobrazení <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">Sys. master_files</a> určete celkové využité místo podle databází. Protokoly chyb nejsou trvale uložené a nejsou zahrnuté do velikosti. Zálohy nejsou zahrnuté do velikosti úložiště.
+> - Velikost dat a souborů protokolu v uživatelských i systémových databázích jsou zahrnuté do velikosti úložiště instance, která je porovnávána s limitem maximální velikosti úložiště. Pomocí zobrazení <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">Sys. master_files</a> systému určíte celkové využité místo databáze. Protokoly chyb nejsou trvale uložené a nejsou zahrnuté do velikosti. Zálohy nejsou zahrnuté do velikosti úložiště.
 > - Propustnost a IOPS v Pro obecné účely úrovni závisí taky na [velikosti souboru](#file-io-characteristics-in-general-purpose-tier) , která není explicitně omezená pomocí spravované instance.
 > - Pomocí skupin s automatickým převzetím služeb při selhání můžete vytvořit další čitelnou repliku v jiné oblasti Azure.
 > - Maximální instance IOPS závisí na rozložení souborů a distribuci úlohy. Pokud například vytváříte soubory o velikosti 7 až 1 GB s maximálním počtem 5K IOPS každý a 7 malým počtem souborů (menší než 128 GB) s 500 IOPS, můžete pro každou instanci získat 38500 IOPS (7x5000 + 7x500), pokud vaše úloha může použít všechny soubory. Všimněte si, že pro automatické zálohování se používá také určité množství IOPS.

@@ -1,5 +1,5 @@
 ---
-title: Konfigurace skupiny převzetí služeb při selhání pro Azure SQL Database
+title: Konfigurace skupiny převzetí služeb při selhání
 description: Naučte se konfigurovat skupinu automatického převzetí služeb při selhání pro Azure SQL Database izolovanou databázi, elastický fond a spravovanou instanci pomocí Azure Portal, AZ CLI a PowerShell.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 626677ef9444e0ad99fd3678e23bdeec62fd920c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fb9ee2378679c420a7675856ec95e60f6ae1d14f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933392"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827137"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Konfigurace skupiny převzetí služeb při selhání pro Azure SQL Database
 
@@ -25,7 +25,7 @@ V tomto tématu se dozvíte, jak nakonfigurovat [skupinu automatického převzet
 ## <a name="single-database"></a>Izolovaná databáze
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu databázi pomocí Azure Portal nebo PowerShellu.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Vezměte v úvahu následující požadavky:
 
@@ -186,7 +186,7 @@ Vraťte skupinu převzetí služeb při selhání zpátky na primární server:
 ## <a name="elastic-pool"></a>Elastický fond
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní elastický fond pomocí Azure Portal nebo PowerShellu.  
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Vezměte v úvahu následující požadavky:
 
@@ -334,7 +334,7 @@ Pomocí Azure Portal nebo PowerShellu vytvořte skupinu převzetí služeb při 
 
 Budete muset vytvořit bránu pro virtuální síť každé spravované instance, připojit tyto dvě brány a pak vytvořit skupinu převzetí služeb při selhání.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 Vezměte v úvahu následující požadavky:
 
 - Sekundární spravovaná instance musí být prázdná.

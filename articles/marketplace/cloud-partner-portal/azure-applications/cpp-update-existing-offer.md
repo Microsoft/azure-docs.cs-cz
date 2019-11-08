@@ -1,99 +1,100 @@
 ---
-title: Aktualizace stávající nabídky aplikace Azure | Azure Marketplace
-description: Jak aktualizovat stávající nabídky Azure aplikace na Azure Marketplace.
+title: Aktualizace stávající nabídky aplikací Azure | Azure Marketplace
+description: Jak aktualizovat existující nabídku aplikace Azure na Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pabutler
-ms.openlocfilehash: a36df757e3a2682af641101ed82583a0cd293e0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6854e445ea63639866e9e39a6afc725237bbc8fe
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942818"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826103"
 ---
-# <a name="update-an-existing-azure-application-offer"></a>Aktualizace stávající nabídky aplikace Azure
+# <a name="update-an-existing-azure-application-offer"></a>Aktualizace stávající nabídky aplikací Azure
 
-Existují různé typy aktualizací, které můžete chtít provést pro vaši nabídku poté, co byla publikována a je v provozu. Všechny změny provedené v nové verzi nabídky by měla uložit a publikovat jej odrážejí na webu Marketplace. Tento článek popisuje postup prostřednictvím různých aspektů aktualizuje vaše nabídka spravované aplikace v [portál partnerů cloudu](https://cloudpartner.azure.com/).
+Existují různé druhy aktualizací, které můžete chtít provést v rámci své nabídky po jejím publikování a živém provozu. Všechny změny, které provedete v nové verzi vaší nabídky, by se měly uložit a znovu publikovat, aby se projevily na webu Marketplace. Tento článek popisuje různé aspekty aktualizace nabídky spravované aplikace v [portál partnerů cloudu](https://cloudpartner.azure.com/).
 
-Tady je několik důvodů, proč můžete chtít aktualizovat vaši nabídku, jako například:
+K dispozici je několik důvodů, proč byste mohli chtít aktualizovat nabídku, například:
 
-- Přidává se nová verze image do existujících skladových položek.
-- Přidání nové SKU.
-- Aktualizace metadat marketplace pro jednotlivé SKU a nabídky.
+- Přidává se nová verze image do stávajících SKU.
+- Přidávání nových SKU.
+- Aktualizují se metadata Marketplace pro nabídku nebo jednotlivé SKU.
 
-Které vám pomohou tyto úpravy, portál poskytuje **porovnání** a **historie** funkce.
+Pro pomoc s těmito úpravami nabízí portál funkce **porovnání** a **Historie** .
 
-## <a name="unpermitted-changes-to-an-azure-application-offer-or-sku"></a>Nedovolené změny do nabídky aplikace Azure nebo SKU
+## <a name="unpermitted-changes-to-an-azure-application-offer-or-sku"></a>Nepovolené změny nabídky nebo SKU aplikací Azure
 
-Existují atributy nabídky kontejner nebo skladovou jednotku, kterou nelze změnit poté, co tato nabídka je za provozu na webu Azure Marketplace. Nelze změnit následující nastavení:
+Existují atributy nabídky kontejneru nebo SKU, které nelze změnit poté, co je nabídka v Azure Marketplace živá. Nemůžete změnit následující nastavení:
 
-- ID nabídky a ID vydavatele, nabídky
-- ID SKU existující skladové položky
-- Verze značky, například: `1.0.1`
-- Model fakturace nebo licencí se změní na existující skladové položky
+- ID nabídky a ID vydavatele nabídky
+- ID SKU existujících SKU
+- Značky verze, například: `1.0.1`
+- Fakturační a licenční model se mění ve stávajících SKU
 
-## <a name="common-update-operations"></a>Běžné operace update
+## <a name="common-update-operations"></a>Běžné operace aktualizace
 
-Následující operace update jsou společná.
+Následující operace aktualizace jsou běžné.
 
-### <a name="update-image-version-for-a-sku"></a>Aktualizace verze image pro SKU
+### <a name="update-image-version-for-a-sku"></a>Verze aktualizace image pro SKU
 
-Je běžné, obrázek, který se pravidelně aktualizují opravy zabezpečení, další funkce a tak dále. V tomto scénáři kterou chcete aktualizovat obrázek, který odkazuje na skladovou jednotku s použitím následujících kroků:
+Je běžné, že se image pravidelně aktualizuje pomocí oprav zabezpečení, dalších funkcí atd. V tomto scénáři chcete aktualizovat bitovou kopii, kterou vaše SKU odkazuje, pomocí následujících kroků:
 
-1. Přihlaste se [portál partnerů cloudu](https://cloudpartner.azure.com/).
-2. V části **všechny nabídky**, najít nabídky, které chcete aktualizovat.
-3. V **SKU** kartu, vyberte skladovou Položku přidruženou bitovou kopii k aktualizaci.
-4. Vyberte **+ nová verze Image** přidáte novou bitovou kopii.
-5. Zadejte nové verze image. Verze image musí postupujte podle pokynů na stejné značky jako předchozí verze. Označení verze by měla mít formát X.Y.Z, kde X, Y a jsou celá čísla. Ověřte, zda je větší než všechny předchozí verze nové verze, kterou zadáte.
-6. Vyberte **publikovat** spuštění pracovního postupu pro publikování novou verzi image kontejneru na webu Azure Marketplace.
+1. Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
+2. V části **všechny nabídky**Najděte nabídku, kterou chcete aktualizovat.
+3. Na kartě **SKU** vyberte skladovou jednotku přidruženou k imagi, kterou chcete aktualizovat.
+4. Pokud chcete přidat nový obrázek, vyberte **+ Nová verze image** .
+5. Zadejte nové verze imagí. Verze image musí splňovat stejné pokyny pro značky jako v předchozích verzích. Značky verze by měly mít formát X. Y. Z, kde X, Y a Z jsou celá čísla. Ověřte, že nová verze, kterou zadáte, je větší než všechny předchozí verze.
+6. Vyberte **publikovat** a spusťte pracovní postup, který publikuje novou verzi image kontejneru do Azure Marketplace.
 
-### <a name="add-a-new-sku"></a>Přidat novou skladovou Položku
+### <a name="add-a-new-sku"></a>Přidat novou SKLADOVOU položku
 
-Chcete-li novou skladovou Položku pro danou nabídku dostupná, postupujte následovně:
+K dispozici je nová SKU pro vaši nabídku pomocí následujících kroků:
 
-1. Přihlaste se [portál partnerů cloudu](https://cloudpartner.azure.com/).
-2. V části **všechny nabídky**, najít nabídky, které chcete aktualizovat.
-3. V části **SKU** kartu, vyberte možnost **přidat novou skladovou Položku** a zadejte **SKU ID** v místním okně.
-4. Publikovat nabídku, pomocí kroků popsaných v [nabídka aplikaci Azure publikovat](./cpp-publish-offer.md).
-5. Vyberte **publikovat** spuštění pracovního postupu pro publikování nové skladové jednotky.
+1. Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
+2. V části **všechny nabídky**Najděte nabídku, kterou chcete aktualizovat.
+3. Na kartě **SKU** vyberte **Přidat novou SKU** a v automaticky otevíraném okně zadejte **ID SKU** .
+4. Znovu publikujte nabídku pomocí postupu popsaného v tématu [publikování nabídky aplikací Azure](./cpp-publish-offer.md).
+5. Vyberte **publikovat** a spusťte pracovní postup pro publikování nové SKU.
 
-### <a name="update-offer-marketplace-metadata"></a>Aktualizace nabídky marketplace metadat
+### <a name="update-offer-marketplace-metadata"></a>Aktualizace metadat webu nabídky
 
-Použijte následující postup k aktualizaci marketplace metadata související s vaší nabídkou. (Příklad: název společnosti, loga, atd.)
+Pomocí následujících kroků aktualizujte metadata Marketplace přidružená k vaší nabídce. (Například: název společnosti, loga atd.)
 
-1. Přihlaste se [portál partnerů cloudu](https://cloudpartner.azure.com/).
-2. V části **všechny nabídky**, najít nabídky, které chcete aktualizovat.
-3. Přejděte **Marketplace** kartu. Postupujte podle pokynů v [nabídka aplikaci Azure publikovat](./cpp-publish-offer.md) provést změny metadat.
-4. Vyberte **publikovat** ke spuštění pracovního postupu publikovat provedené změny.
+1. Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
+2. V části **všechny nabídky**Najděte nabídku, kterou chcete aktualizovat.
+3. Přejít na kartu **Marketplace** . při provádění změn metadat použijte pokyny v tématu [publikování nabídky aplikací Azure](./cpp-publish-offer.md) .
+4. Vyberte **publikovat** a spusťte pracovní postup pro publikování změn.
  
 >[!Note]
->Cloud poskytovatele řešení (CSP) partnera kanál vyjádřit výslovný souhlas je nyní k dispozici.  Podrobnosti najdete na [poskytovatele Cloud Solution Provider](../../cloud-solution-providers.md) Další informace o marketingu vaší nabídky prostřednictvím Microsoft CSP partner kanály.
+>Výslovný souhlas kanálu pro partnery Cloud Solution Providers (CSP) je teď k dispozici.  Další informace o marketingu vaší nabídky prostřednictvím kanálů partnerů Microsoft CSP najdete v tématu [Poskytovatelé cloudových řešení](../../cloud-solution-providers.md) .
 
-## <a name="deleting-an-existing-offer"></a>Odstraňuje se stávající nabídky
+## <a name="deleting-an-existing-offer"></a>Odstranění existující nabídky
 
-Můžete rozhodnout odebrat svou nabídku z webu Marketplace. Odstranění nabídky nemá vliv na aktuální nákupy na základě této nabídky. Tyto nákupy zákazníků budou nadále fungovat jako předtím. Tuto nabídku však nebudou k dispozici pro všechny nové nákupy po odstranění je dokončeno.
+Můžete se rozhodnout odebrat svou nabídku z webu Marketplace. Odstranění nabídky nemá vliv na aktuální nákupy této nabídky. Tyto nákupy zákazníků budou i nadále fungovat jako dříve. Nabídka však nebude k dispozici pro žádné nové nákupy po dokončení odstranění.
 
 Ukončení nabídky je proces ukončení služby a/nebo licenční smlouvy mezi vámi a vašimi stávajícími zákazníky.
-Pokyny a zásady týkající se odebrání a ukončení nabídky se řídí smlouvy vydavatele Microsoft Marketplace (viz sekce 7) a zásadách pro účast (viz část 6.2).
+Doprovodné materiály a zásady týkající se odebrání a ukončení nabídky se řídí smlouvou Microsoft Marketplace vydavateli (viz oddíl 7) a zásadami pro účast (viz oddíl 6,2).
 
-Další informace najdete v tématu [Delete a/SKU nabídky z Azure Marketplace](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-delete).
+Další informace najdete v tématu [odstranění a nabídka/SKU z Azure Marketplace](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-delete).
 
-## <a name="compare-feature"></a>Porovnání funkcí
+## <a name="compare-feature"></a>Compare – funkce
 
-Když provedete změny v publikované nabídky, můžete použít funkci porovnání auditovat změny, které jste udělali.
+Když provedete změny v publikované nabídce, můžete pomocí funkce Compare auditovat změny, které jste provedli.
 
-Jak používat funkci porovnání:
+Použití funkce Compare:
 
-1. V každém okamžiku procesu úprav vyberte porovnání pro vaši nabídku.
-2. Podívejte se na verzích vedle sebe marketingové prostředky a metadata.
+1. V jakémkoli okamžiku v procesu úprav vyberte porovnat pro vaši nabídku.
+2. Podívejte se na souběžné verze materiálů a metadat marketingu.
 
-## <a name="history-of-publishing-actions"></a>Historie publikování akce
+## <a name="history-of-publishing-actions"></a>Historie akcí publikování
 
-Pokud chcete zobrazit Historický publikační aktivity, vyberte **historie** karty na levé navigační nabídky panelu z cloudu portál pro partnery. Zobrazí se tedy akce prováděné po celou dobu životnosti vaší nabídky na webu Azure Marketplace.
+Chcete-li zobrazit historické aktivity publikování, vyberte kartu **Historie** v levém navigačním panelu portál partnerů cloudu. Můžete zobrazit akce s časovým razítkem provedenými během životnosti Azure Marketplace nabídek.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Nabídka aplikace Azure](./cpp-azure-app-offer.md)

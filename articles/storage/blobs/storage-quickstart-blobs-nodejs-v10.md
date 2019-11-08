@@ -1,20 +1,20 @@
 ---
-title: Nahrávání, stahování, výpis a odstraňování objektů BLOB pomocí Azure Storage v10 za účelem SDK pro JavaScript
-description: Vytvoření, nahrání a odstranění objektů blob a kontejnerů v Node.js pomocí služby Azure Storage
+title: 'Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure v10 za účelem pro JavaScript'
+description: Vytváření, odesílání a odstraňování objektů BLOB a kontejnerů v Node. js pomocí Azure Storage klientské knihovny v10 za účelem pro JavaScript
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 09/24/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: f8c7de63f2bd4b7329e8ae6a53123c9c1ea035af
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: b909da5da0d7352d4086222fe0411ac37668bd92
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240429"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825324"
 ---
-# <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript"></a>Rychlý start: Nahrávání, stahování, výpis a odstraňování objektů BLOB pomocí Azure Storage v10 za účelem SDK pro JavaScript
+# <a name="quickstart-azure-blob-storage-client-library-v10-for-javascript"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure v10 za účelem pro JavaScript
 
 V tomto rychlém startu se dozvíte, jak sadu [Azure Storage v10 SDK pro JavaScript](https://github.com/Azure/azure-sdk-for-js) v Node.js použít k nahrání, stažení, vypsání a odstranění objektů blob a správě kontejnerů.
 
@@ -203,7 +203,7 @@ Stejně jako kontejner tento objekt blob bloku zatím neexistuje. Proměnná *bl
 
 ### <a name="using-the-aborter-class"></a>Použití třídy Aborter
 
-Žádosti tohoto rozhraní API lze nastavit tak, aby jim po daném intervalu vypršel časový limit. Třída *Aborter* obsluhuje vypršení časového limitu žádostí. Následující kód vytvoří kontext, ve kterém je sadě žádostí uděleno 30 minut k provedení.
+Žádosti tohoto rozhraní API lze nastavit tak, aby jim po daném intervalu vypršel časový limit. Třída *Abort* zodpovídá za správu, jak vypršel časový limit požadavků. Následující kód vytvoří kontext, ve kterém je sada požadavků 30 minut spuštěna.
 
 ```javascript
 const aborter = Aborter.timeout(30 * ONE_MINUTE);

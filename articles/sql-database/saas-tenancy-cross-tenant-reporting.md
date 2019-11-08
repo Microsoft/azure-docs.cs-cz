@@ -1,5 +1,5 @@
 ---
-title: Spouštění dotazů vytváření sestav napříč více databázemi SQL Azure
+title: Vytváření sestav dotazů napříč více databázemi
 description: Generování sestav mezi klienty pomocí distribuovaných dotazů.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewers: billgib,ayolubek
 ms.date: 01/25/2019
-ms.openlocfilehash: f9af2af7893bd908988ee45476ce14a56f9768a9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c863946934df9990c14e49ef1a0a82bbc55b27c6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691901"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822086"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Generování sestav mezi klienty pomocí distribuovaných dotazů
 

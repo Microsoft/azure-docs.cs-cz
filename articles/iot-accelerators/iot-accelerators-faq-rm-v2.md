@@ -1,6 +1,6 @@
 ---
-title: Vzdálené monitorování akcelerátor řešení – nejčastější dotazy – Azure | Dokumentace Microsoftu
-description: Nejčastější dotazy k akcelerátoru řešení vzdáleného monitorování
+title: Nejčastější dotazy k akcelerátoru řešení vzdáleného monitorování – Azure | Microsoft Docs
+description: Tento článek obsahuje odpovědi na nejčastější dotazy k akcelerátorům řešení vzdáleného monitorování.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,45 +8,45 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 746d21c7ff4d5b939eea7690193ac07425b4001c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c410ac7f41adb623a7198320a1edced097778569
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61447902"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826239"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Nejčastější dotazy k akcelerátoru řešení vzdáleného monitorování
 
-Viz také Obecné [nejčastější dotazy k](iot-accelerators-faq.md).
+Viz také obecné [Nejčastější dotazy](iot-accelerators-faq.md).
 
-### <a name="how-much-does-it-cost-to-provision-the-new-remote-monitoring-solution"></a>Kolik stojí zřídit nové řešení vzdáleného monitorování?
+### <a name="how-much-does-it-cost-to-provision-the-new-remote-monitoring-solution"></a>Kolik stojí za zřízení nového řešení vzdáleného monitorování?
 
-Nový akcelerátor řešení nabízí dvě možnosti nasazení:
+Nové akcelerátory řešení nabízí dvě možnosti nasazení:
 
-* A *základní* možnost navržené pro vývojáře hledající nižší náklady na vývoj nebo zákazníci, kteří chtějí vytvořit ukázku nebo testování konceptu.
-* A *standardní* možnost určená pro podniky, které se chce k nasazení infrastruktury připravené pro produkční prostředí.
+* *Základní* možnost určená pro vývojáře, kteří hledají nižší náklady na vývoj nebo zákazníky, kteří chtějí vytvořit ukázku nebo zkoušku konceptu.
+* *Standardní* možnost navržená pro podniky, které chtějí nasadit infrastrukturu připravenou pro produkční prostředí.
 
-### <a name="how-can-i-ensure-i-keep-my-costs-down-while-i-develop-my-solution"></a>Jak můžete zajistit, že mám snížili Moje náklady při vyvíjet Moje řešení?
+### <a name="how-can-i-ensure-i-keep-my-costs-down-while-i-develop-my-solution"></a>Jak se dá zajistit, aby se při vývoji mého řešení udržovaly mé náklady?
 
-Kromě toho, že dvě odlišné nasazení nové řešení vzdáleného monitorování obsahují nastavení, které povolí nebo zakáže všechna Simulovaná zařízení, na vyžádání. Data přijatá v řešení a tím i celkové náklady na zakázání simulace snižuje.
+Kromě poskytování dvou různých nasazení má nové řešení vzdáleného monitorování nastavení pro povolení nebo zakázání všech simulovaných zařízení na vyžádání. Zakázáním simulace se zmenší data ingestovaná v řešení a tak celkové náklady.
 
-### <a name="what-is-the-difference-between-the-basic-and-standard-deployment-options-how-do-i-decide-between-the-two-deployment-options"></a>Jaký je rozdíl mezi možnostmi nasazení basic a standard? Jak se mám rozhodnout mezi možnostmi dvě nasazení?
+### <a name="what-is-the-difference-between-the-basic-and-standard-deployment-options-how-do-i-decide-between-the-two-deployment-options"></a>Jaký je rozdíl mezi možnostmi Basic a standard pro nasazení? Návody se mezi těmito dvěma možnostmi nasazení rozhodnout?
 
-Jednotlivé možnosti nasazení jsou reaguje na různé potřeby. Základní nasazení slouží k zahájení práce a vývoj PoC a Windows. Poskytuje zjednodušenou architektura s minimální potřebné prostředky a s nižšími náklady. Standardní nasazení slouží k vytváření a přizpůsobení řešení připravené pro produkční prostředí a umožňuje nasazení s nezbytné prvky, které mají Pamatujte si, že. Spolehlivost a škálování mikroslužby aplikací jsou vytvořené jako kontejnery Dockeru a nasazují pomocí orchestrátoru (Kubernetes ve výchozím nastavení). Úkolem orchestrátoru je nasazení, škálování a správa aplikace. Měli byste zvolit možnost podle aktuální potřeby. Můžete použít jednu, druhý nebo kombinace obou v závislosti na fázi vašeho projektu.
+Každá možnost nasazení reaguje na různé potřeby. Základní nasazení je navržené tak, aby bylo možné začít s vývojem a malými pilotními modulem pro ověření koncepce. Nabízí zjednodušenou architekturu s minimálními potřebnými prostředky a nižšími náklady. Standardní nasazení je navrženo tak, aby vytvořilo a upravilo řešení připravené pro produkční prostředí a poskytuje nasazení s nezbytnými prvky, které je potřeba realizovat. Pro spolehlivost a škálování jsou mikroslužby aplikací sestavené jako kontejnery Docker a nasazené pomocí nástroje Orchestrator (Kubernetes standardně). Úkolem orchestrátoru je nasazení, škálování a správa aplikace. V závislosti na vašich aktuálních potřebách byste si měli vybrat možnost. Můžete použít jeden, druhý nebo kombinaci obou obou v závislosti na fázi projektu.
 
-### <a name="how-do-i-configure-a-dynamic-map-on-the-dashboard"></a>Jak konfigurovat dynamickou mapu na řídicím panelu
+### <a name="how-do-i-configure-a-dynamic-map-on-the-dashboard"></a>Návody nakonfigurovat na řídicím panelu dynamickou mapu?
 
-Další informace najdete v tématu [klíč upgradu mapě zobrazíte zařízení na mapě dynamické](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map).
+Další informace najdete v tématu [upgrade mapového klíče pro zobrazení zařízení na dynamické mapě](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map).
 
-### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Kde najdu informace o předchozí verzi řešení vzdáleného monitorování
+### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Kde najdu informace o předchozí verzi řešení vzdáleného monitorování?
 
-Předchozí verze akcelerátor řešení vzdálené monitorování se označuje jako řešení vzdáleného monitorování IoT Suite předkonfigurované. Můžete najít Archivovaná dokumentace na [ https://docs.microsoft.com/previous-versions/azure/iot-suite/ ](https://docs.microsoft.com/previous-versions/azure/iot-suite/).
+Předchozí verze akcelerátoru řešení vzdáleného monitorování byla známá jako předkonfigurované řešení vzdáleného monitorování IoT Suite. Archivovanou dokumentaci najdete na adrese [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/).
 
-### <a name="next-steps"></a>Další postup
+### <a name="next-steps"></a>Další kroky
 
 Můžete si také prostudovat některé další funkce a možnosti akcelerátorů řešení IoT:
 
-* [Prozkoumejte možnosti akcelerátor řešení vzdálené monitorování](quickstart-remote-monitoring-deploy.md)
+* [Prozkoumejte možnosti akcelerátoru řešení vzdáleného monitorování](quickstart-remote-monitoring-deploy.md)
 * [Přehled akcelerátorů řešení prediktivní údržby](iot-accelerators-predictive-overview.md)
-* [Nasazení akcelerátoru řešení připojená továrna](quickstart-connected-factory-deploy.md)
-* [Zabezpečení IoT od počátku](/azure/iot-fundamentals/iot-security-ground-up)
+* [Nasadit akcelerátor řešení propojené továrny](quickstart-connected-factory-deploy.md)
+* [Zabezpečení IoT od základů](/azure/iot-fundamentals/iot-security-ground-up)

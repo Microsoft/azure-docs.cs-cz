@@ -1,5 +1,5 @@
 ---
-title: Přehled Azure SQL Database elastického dotazu
+title: Přehled elastického dotazu
 description: Elastický dotaz umožňuje spustit dotaz Transact-SQL, který zahrnuje více databází.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 07/01/2019
-ms.openlocfilehash: 08c191742425c448618db255491c709130df33a1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9566ac7169144d984f9200734c99eb10368b3142
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690362"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823739"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Přehled elastického dotazu Azure SQL Database (Preview)
 
@@ -110,7 +110,7 @@ Následující kroky nakonfigurují elastické databázové dotazy pro scénář
 * [Vytvořit hlavní klíč](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql) mymasterkey
 * [Vytvořit databázi s rozsahem přihlašovacích údajů](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql) mycredential
 * Vytvořte [mapu horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md) představující vaši datovou vrstvu pomocí klientské knihovny elastické databáze.
-* [Vytvořit nebo vyřadit externí zdroj dat](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) myDataSource typu **SHARD_MAP_MANAGER**
+* [Vytvořit nebo vyřadit externí zdroj dat](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) mydatasource typu **SHARD_MAP_MANAGER**
 * [Vytvořit nebo vyřadit externí tabulku](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) myTable
 
 Po provedení těchto kroků můžete získat přístup k horizontálně rozdělené tabulce "myTable", jako by šlo o místní tabulku. Azure SQL Database automaticky otevírá více paralelních připojení ke vzdáleným databázím, kde jsou fyzicky uloženy tabulky, zpracovává požadavky na vzdálené databáze a vrací výsledky.
@@ -138,7 +138,7 @@ Elastický dotaz je zahrnutý do nákladů na Azure SQL Database databáze. Měj
 * Spuštění prvního elastického dotazu může trvat až několik minut na standardní úrovni služby. Tento čas je nezbytný pro načtení funkce elastického dotazu. načítají se výkon s vyššími úrovněmi služeb a výpočetními velikostmi.
 * Skriptování externích zdrojů dat nebo externích tabulek z SSMS nebo SSDT se ještě nepodporuje.
 * Import/export pro SQL DB ještě nepodporuje externí zdroje dat a externí tabulky. Pokud potřebujete použít import/export, vyřaďte tyto objekty před exportem a pak je znovu vytvořte po importu.
-* Elastický dotaz momentálně podporuje jenom přístup jen pro čtení k externím tabulkám. V databázi, kde je definována externí tabulka, však můžete použít úplnou funkci T-SQL. To může být užitečné, například zachovat dočasné výsledky pomocí, například vybrat < column_list > do < local_table > nebo pro definování uložených procedur v databázi elastických dotazů, které odkazují na externí tabulky.
+* Elastický dotaz momentálně podporuje jenom přístup jen pro čtení k externím tabulkám. V databázi, kde je definována externí tabulka, však můžete použít úplnou funkci T-SQL. To může být užitečné, například zachovat dočasné výsledky pomocí, například vybrat < column_list > do < local_table > nebo definovat uložené procedury v databázi elastických dotazů, které odkazují na externí tabulky.
 * S výjimkou nvarchar (max) nejsou v definicích externích tabulek podporovány typy LOB (včetně prostorových typů). Jako alternativní řešení můžete vytvořit zobrazení na vzdálené databázi, která přenese typ LOB do nvarchar (max), definovat externí tabulku přes zobrazení místo základní tabulky a následně ji přetypovat zpátky na původní typ LOB v dotazech.
 * Sloupce datového typu nvarchar (max) ve výsledné sadě zakazují pokročilou dávkovou Technics dávkování použitou při implementaci elastického dotazu a mohou ovlivnit výkon dotazů na pořadí podle velikosti nebo dokonce dva objednávky v nekanonickém případě použití, kde velké množství neagregovaná data se přenášejí jako výsledek dotazu.
 * Statistiky sloupců v externích tabulkách nejsou aktuálně podporovány. Statistiky tabulek jsou podporovány, ale je nutné je vytvořit ručně.

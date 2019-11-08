@@ -1,40 +1,41 @@
 ---
-title: Vyzkoušejte si marketingové osvědčené postupy | Azure Marketplace
-description: Vyzkoušejte si marketingové osvědčené postupy pro vydavatele
+title: Osvědčené postupy pro testování a marketing | Azure Marketplace
+description: Osvědčené postupy pro testování marketingu pro vydavatele
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 02b2715c813f7814cf8bf5d23414bc14d5ff5a30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 177b4bd804ad878c8f983eefcd54399d1a72ba19
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939984"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824549"
 ---
-<a name="test-drive-marketing-and-best-practices"></a>Vyzkoušet si marketingové a osvědčené postupy
+<a name="test-drive-marketing-and-best-practices"></a>Marketing a osvědčené postupy pro testovací mechaniky
 =======================================
 
-Vyzkoušejte Azure Marketplace je skvělý nástroj pro obchodníci a My doporučujeme být součástí vašeho úsilí go-to-market při spuštění. Máme několik osvědčených postupů, které doporučujeme že provést okamžitě po publikování, bude výrazně podporu generování více potenciálních zákazníků z testovací verze:
+Azure Marketplace testovací jednotka je skvělým nástrojem pro pracovníky marketingu a při spuštění je doporučujeme začlenit do svého úsilí pro uvedení na trh. Máme několik osvědčených postupů, které vám doporučujeme okamžitě při publikování, které by významně podporovaly generování dalších potenciálních zákazníků z testovacích jednotek:
 
-- **Stránka odkazu**: Publikovat stránku na vaše webová služba, která komunikuje všechno o váš disk Azure otestovat a publikovat více referenčního seznamu propojení směrování provozu do vaší testovací verze
-- **Sociální média**: Vytvořte plán, kde můžete publikovat na kanálů sociálních médií o vaše testovací verze v pravidelných intervalech
-- **Blogy**: Napište příspěvek na blogu o Azure testovací verze. Zvýrazněte funkce a výhody, které uživatel dostane do zdarma vyzkoušet bezplatně a velmi málo včas. Ujistěte se, že odkaz na stránku jednotky testování v Azure na několika místech v blogu kopii. Tady se odkaz na ukázkový blogový příspěvek o jednotce testování v Azure. Dokonce lepší? Publikuje odkazy na váš příspěvek blogu na kanálů sociálních médií.
-- **E-mailu péči o zákazníky**: Informujte potenciálních zákazníků, které mají zapojení s vaší značkou prostřednictvím dalších kanálů prostřednictvím e-mailu je informovat o testovací verze a povzbudit je můžete vyzkoušet zdarma.
-- **Prodejní školení a nástroje**: Nastavení vzdělávání relace s prodejních týmů ukázka jednotky testovacího prostředí a navrhněte několik způsobů, jak se můžete zapojit své potenciálních zákazníků i zákazníky s ním. Prodejní poprosil můžete nastavit na ukázku s více kontakty ve společnosti pak každý z nich pošlete tento odkaz na testovací verzi později ho na chvíli sami.
-- **Obchod zobrazí a konferencí**: Máte stánku v odvětví událost, která pomáhala potenciálním zákazníkům se zúčastnili? Nastavit několik přenosné počítače na stánku a mít vaše testovací verze spouštění tak, aby zákazníci si testovací jízdu na vaše z mýtných bran, potom můžou komunikovat je o produktu během a po jejich zkušenostem!
+- **Stránka odkaz**: vystavte stránku na webové stránce, která se spojí se všemi informacemi o vaší testovací jednotce Azure, a odešlete několik odkazů odkazů, které směrují provoz na testovací verzi.
+- **Sociální média**: vytvořte plán, ve kterém budete pravidelně publikovat na svých sociálních médiích kanály o testovacích jednotkách.
+- **Blogy**: Napište příspěvek na blogu o vaší testovací jednotce Azure. Zvýrazněte funkce a výhody, které se uživateli dostanou zdarma a za velmi malou dobu. Ujistěte se, že na více místech v kopii blogu propojíte stránku Azure test disk. Tady je odkaz na Ukázkový příspěvek na blogu o Azure Test Drive. Ještě lepší? Vystavte odkazy na Blogový příspěvek v kanálech sociálních médií.
+- **Nurturing e-mailu**: informujte zájemce, kteří se zabývají vaší značkou prostřednictvím jiných kanálů přes e-mail, a informujte je o testovacích jednotkách a požádejte je o bezplatnou podporu.
+- **Školení a nástroje pro prodej**: Nastavte si výukovou relaci s prodejními týmy, abyste mohli předvést možnosti testovacích jednotek a začínat několik způsobů, jak můžou své zákazníky a zákazníci s ním spolupracovat. Prodej lidé může vytvořit ukázku s více kontakty ve společnosti a potom každou z nich poslat odkaz na testovací jednotku, aby ji sám převzala.
+- **Obchodní výstavy a konference**: dostali jste kabinu v oboru, který se zúčastní potenciálních zákazníků? Nastavte několik notebooků ve stánku a spusťte vaše testovací jednotky, aby si zákazníci mohli na svém stánku vyzkoušet testovací jednotku a pak s nimi po svém dojmu mluvit.
 
-<a name="lead-management"></a>Průběžná správa
+<a name="lead-management"></a>Správa zájemců
 ---------------
 
-Teď, když z testu jednotky generování vysoce kvalifikovaných prodejních příležitostí, budete chtít zajistit součástí těchto potenciálních zákazníků kanálů prodeje a marketingu a Zaujměte potenciální zákazníky proměnit zákazníci platit. Tady jsou některé doporučené postupy s ohledem na řízení potenciálních zákazníků prostřednictvím prodejního cyklu:
+Teď, když generujete vysoce kvalifikované potenciální zákazníky z testovacích jednotek, budete chtít zajistit, aby jste tyto zájemce zahrnuli do kanálů pro prodej a marketing a abyste se mohli zapojit do svých zákazníků. Tady jsou některé doporučené postupy, které se týkají řízení zájemců prostřednictvím prodejního cyklu:
 
-- Ujistěte se, kontaktu s zájemce během 24 hodin od jejich s ohledem na testovací verzi. Zobrazí se zájemci v CRM podle výběru okamžitě po Zákazník nasazuje na testovací verzi – nezapomeňte odešlete jim e-mail během prvních 24 hodin, pokud nejsou stále warm. Požádat o plánování telefonního hovoru s nimi, abyste lépe pochopili, jaké problémy se snaží k řešení a chcete zobrazit, pokud váš produkt pomoct.
-- Několik pokusů o zpracování, ale není bombard je. Doporučujeme že vám e-mailové těchto potenciálních zákazníků několikrát předtím, než je zavřít, ale neposkytují po první pokus. Nezapomeňte – tito zákazníci přímo zapojení s produktem a stráveného času v bezplatné zkušební verzi.
-- Jsou skvělé potenciální zákazníky!
-- Pokud zavřete zakázky zájemci jednotky testů nezapomeňte ho zaregistrovat v partnerského připojení. Také – rádi se dozvíme o vašich zákazníků wins, kde testovací verze hraje roli!
+- Zajistěte kontakt s zájemcem během 24 hodin od něj z testovacích jednotek. Přímo po nasazení testovacího prostředí v aplikaci CRM získáte zájemce, který si zajistěte, aby si poslal e-mail během prvních 24 hodin, zatímco budou pořád zahřívání. Požádejte o naplánování telefonního hovoru s nimi, abyste lépe pochopili problémy, které se pokoušejí vyřešit, a zjistili, jestli vám váš produkt může pomáhat.
+- Sledujte několik případů, ale bombard je. Před zavřením těchto zájemců doporučujeme, abyste si tento zájemce předtím zavřeli, ale po prvním pokusu se nedají. Nezapomeňte – tyto zákazníky přímo s vaším produktem a dobu strávenou v bezplatné zkušební verzi zabývají.
+- Jsou to skvělé potenciální zákazníky.
+- Pokud uzavřete obchod s testovací jednotkou, ujistěte se, že jste ho zaregistrovali u partnera Sales Connect. Rádi bychom měli slyšet informace o zákazníkovi, kde testovací jednotka prohrála roli!
 
-Test Drive nejčastější dotazy týkající se nachází zde: <https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices>
+Nejčastější dotazy k testovacím jednotkám najdete tady: <https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices>

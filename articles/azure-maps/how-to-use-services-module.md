@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 77659fdf93947cfbaa0daa322dccf4e9cb1a41fa
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 3911d4e780e993fdd1c2945b34cd683d47fb884a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844716"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827273"
 ---
 # <a name="use-the-azure-maps-services-module"></a>Použití modulu služby Azure Maps Services
 
@@ -23,7 +23,7 @@ Sada Azure Maps Web SDK poskytuje *modul služeb*. Tento modul je pomocná kniho
 
 1. Vytvořte nový soubor HTML.
 1. Načtěte modul Azure Maps Services. Můžete ho načíst jedním ze dvou způsobů:
-    - Použijte globálně hostovanou verzi Content Delivery Network služby Azure Maps Services v rámci Azure. Přidejte odkaz na skript do `<head>` prvku souboru:
+    - Použijte globálně hostovanou verzi Content Delivery Network služby Azure Maps Services v rámci Azure. Přidejte odkaz na skript do prvku `<head>` souboru:
 
         ```html
         <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
@@ -33,7 +33,7 @@ Sada Azure Maps Web SDK poskytuje *modul služeb*. Tento modul je pomocná kniho
     
         > **NPM instalace Azure – Maps – REST**
     
-        Pak přidejte odkaz na skript do `<head>` prvku souboru:
+        Pak přidejte odkaz na skript do prvku `<head>` souboru:
 
          ```html
         <script src="node_modules/azure-maps-rest/dist/js/atlas-service.min.js"></script>
@@ -124,7 +124,7 @@ Sada Azure Maps Web SDK poskytuje *modul služeb*. Tento modul je pomocná kniho
 
     Další informace najdete v tématu [ověřování pomocí Azure Maps](azure-maps-authentication.md).
 
-1. Následující kód používá nově vytvořený klient adresy URL Azure Search služby k inkódování adresy: "1 Microsoft Way, Redmond, WA". Kód používá `searchAddress` funkci a zobrazí výsledky jako tabulku v těle stránky.
+1. Následující kód používá nově vytvořený klient adresy URL služby Azure Maps Search k obnově kódu adresy: "1 Microsoft Way, Redmond, WA". Kód používá funkci `searchAddress` a zobrazí výsledky jako tabulku v těle stránky.
 
     ```javascript
     // Search for "1 microsoft way, redmond, wa".
@@ -163,7 +163,7 @@ Sada Azure Maps Web SDK poskytuje *modul služeb*. Tento modul je pomocná kniho
 Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>pomocí modulu služby</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o třídách a metodách, které se používají v tomto článku:
 

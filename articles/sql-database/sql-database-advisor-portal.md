@@ -1,5 +1,5 @@
 ---
-title: Použití doporučení pro výkon – Azure SQL Database
+title: Použití doporučení k výkonu
 description: Pomocí Azure Portal můžete najít doporučení pro výkon, která mohou optimalizovat výkon Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 24a590a80e768bba2e9b102bdf200e0cd96858f8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5462a03accb3420b3f0fcec4624734c8f6d68859
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691290"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811597"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Najít a použít doporučení pro výkon
 
@@ -105,7 +105,7 @@ Můžete nastavit Azure SQL Database pro automatické implementace doporučení.
     ![Doporučené indexy](./media/sql-database-automatic-tuning-enable/server.png)
 
 > [!NOTE]
-> Upozorňujeme, že možnost **DROP_INDEX** není aktuálně kompatibilní s aplikacemi, které používají přepínání oddílů a parametry indexu. 
+> Upozorňujeme, že možnost **DROP_INDEX** aktuálně není kompatibilní s aplikacemi, které používají přepínání oddílů a parametry indexu. 
 >
 
 Po výběru požadované konfigurace klikněte na použít.

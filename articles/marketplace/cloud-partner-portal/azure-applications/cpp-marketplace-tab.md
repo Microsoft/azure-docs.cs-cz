@@ -4,19 +4,20 @@ description: Kartu Marketplace použijte k identifikaci marketingových prostře
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: b5d54e4c6744675da0dea5b095590b71df6d2641
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 967b66a67d51b3a79bcf930ce977af48acc3dd63
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962867"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827565"
 ---
 # <a name="azure-application-marketplace-tab"></a>Karta Azure Application Marketplace
 
-Kartu Marketplace použijte k popisu vaší aplikace Azure a poskytování marketingových prostředků. Tato karta obsahuje následující formuláře: Přehled, artefakty marketingu, řízení vedoucích a právní.
+Kartu Marketplace použijte k popisu vaší aplikace Azure a poskytování marketingových prostředků. Tato karta obsahuje následující formuláře: Přehled, marketingové artefakty, řízení vedoucích a právní.
 
 ## <a name="overview-form"></a>Formulář s přehledem
 
@@ -28,11 +29,11 @@ Následující tabulka popisuje nastavení, která se použijí pro vytvoření 
 
 |      Pole         |    Popis    |
 |  ---------------   |  ---------------  |
-| **Hlava\***        | Název nabídky Bude se zobrazovat na webu Marketplace na místě. Maximální délka je 50 znaků. |
-| **Shrnut\***      | Krátké shrnutí nabídky Maximální délka je 100 znaků.           |
+| **\* názvu**        | Název nabídky Bude se zobrazovat na webu Marketplace na místě. Maximální délka je 50 znaků. |
+| **Souhrn\***      | Krátké shrnutí nabídky Maximální délka je 100 znaků.           |
 | **Dlouhý souhrn\*** | Delší souhrn nabídky (i když by to bylo stejné jako u souhrnu). Maximální délka je 256 znaků.           |
-| **Název\***  | Popis nabídky Maximální délka je 3000 znaků. Je povoleno jednoduché formátování HTML, včetně &lt;značek&gt;p &lt;&gt; &lt;&gt;, em&gt;, ul, li,&lt;ol&gt;aHeader. &lt;  |
-| **Identifikátor marketingu\*** | Jedinečná adresa URL, která se má přidružit k této nabídce, obvykle zahrnuje vaši organizaci a název řešení, maximální délka 50 znaků. Vyberte krátký a popisný identifikátor marketingu pro vaši službu. Tato nabídka bude použita v adresách URL webu Marketplace. Pokud je například vaším vydavatelem ID "contoso" a váš marketingový identifikátor je "dotazů", adresa URL vaší nabídky v Azure Marketplace bude https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp  
+| **Popis\***  | Popis nabídky Maximální délka je 3000 znaků. Je povoleno jednoduché formátování HTML, včetně &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;&gt;, &lt;ol&gt; a značek hlaviček.  |
+| **\* identifikátoru marketingu** | Jedinečná adresa URL, která se má přidružit k této nabídce, obvykle zahrnuje vaši organizaci a název řešení, maximální délka 50 znaků. Vyberte krátký a popisný identifikátor marketingu pro vaši službu. Tato nabídka bude použita v adresách URL webu Marketplace. Pokud je například vaším vydavatelem ID "contoso" a váš marketingový identifikátor je "dotazů", adresa URL vaší nabídky v Azure Marketplace bude https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp  
 | **Náhled ID předplatných\*** | Přidat z jednoho až 100 identifikátorů předplatného pro náhledy. Tyto bílé odběry budou mít přístup k vaší nabídce, pokud jsou po publikování dostupné ve verzi Preview a teprve potom budou aktivní.          |
 | **Užitečné odkazy**    | Volitelně můžete poskytnout odkazy na různé prostředky pro uživatele vaší nabídky, jako je podpora, dokumentace, fóra atd.  Doporučuje se přidat aspoň jeden odkaz na svou dokumentaci.            |
 | **Navrhované kategorie (max. 5)\*** | Vyberte jednu až pět kategorií. Vybrané kategorie se používají k mapování vaší nabídky na kategorie produktů dostupné v Azure Marketplace a na webu Azure Portal. Budou zobrazeny na stránkách pro procházení a na stránce s informacemi o produktu. |
@@ -49,10 +50,10 @@ V následující tabulce jsou popsány marketingové artefakty.
 
 |      Pole         |    Popis    |
 |  ---------------   |  ---------------  |
-| **Nejmenší\***        | Malé logo: 40x40 pixelů ve formátu PNG     |
-| **Úrovně\***       | Střední logo: 90x90 pixelů ve formátu PNG    |
-| **Celou\***        | Velké logo: 115x115 pixelů ve formátu PNG   |
-| **Rozlehlý\***         | Logo ve světě: 255x115 pixelů ve formátu PNG    |
+| **Malá\***        | Malé logo: 40x40 pixelů ve formátu PNG     |
+| **Střední\***       | Střední logo: 90x90 pixelů ve formátu PNG    |
+| **Velké\***        | Velké logo: 115x115 pixelů ve formátu PNG   |
+| **Roztažitelné\***         | Logo roztažitelné: 255x115 pixelů ve formátu PNG    |
 | **Hero**           | Volitelné logo Hero: 815x290 pixelů ve formátu PNG. **Poznámka:** Po nahrání nelze ikonu Hero odstranit. |
 | **Snímky obrazovky (max. 5)** |        Snímky obrazovky se zobrazí na stránce s informacemi o produktu. Představují dobrý způsob, jak vizuálně sdělit, co vaše aplikace dělá a jak funguje. Můžete například zobrazit diagramy architektury nebo ilustrace případu použití. Snímky obrazovky jsou volitelné a omezené na 5 na SKU. Přidání snímku obrazovky:<ul><li>Výběr **+ Přidat snímek obrazovky** pro otevření okna snímku obrazovky</li><li>**Název** – zadejte název nebo název (maximální délka je 100 znaků).</li><li>**Nahrání** – nahrání obrázku Musí být ve formátu PNG a velikost je 533 × 324 pixelů.</li></ul>           |
 | **Přidat video**      | Volitelná, videa se zobrazí na stránce s podrobnostmi o produktu. Představují dobrý způsob, jak vizuálně sdělit, co vaše aplikace dělá a jak funguje. Přidání videa: <ul><li>Vyberte **+ přidat video** a otevřete okno video.</li><li>**Název** – zadejte název nebo název (maximální délka je 100 znaků).</li><li>**Odkaz** – zadejte adresu URL pro web, který je hostitelem videa (YouTube nebo Vimeo).</li><li>**Miniatura** – nahrajte miniaturu. Musí být ve formátu PNG a velikost je 533 × 324 pixelů.</li></ul>          |
@@ -114,7 +115,7 @@ Formulář pro správu potenciálních zákazníků má volitelné pole pro konf
 ![Vybrat cíl správy potenciálních zákazníků](./media/azureapp-marketplace-leadmgmt.png)
 
 >[!TIP]
->Výběrem informační ikony zobrazíte tuto zprávu: Vyberte systém, ve kterém budou vaše potenciální zákazníci ukládat. [Tady](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) se dozvíte, jak se připojit k systému CRM. "
+>Výběrem informační ikony zobrazíte tuto zprávu: "vyberte systém, ve kterém budou vaše zájemci uložená. [Tady](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) se dozvíte, jak se připojit k systému CRM. "
 
 Další informace najdete v tématu [Konfigurace zákaznických zájemců](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads).
 
@@ -125,12 +126,12 @@ K poskytnutí právní dokumentace vyžadované pro každou nabídku použijte p
 
 Zadejte tyto informace:
 
-- **Adresa URL\* zásad ochrany osobních údajů** – zadejte odkaz na zásady ochrany osobních údajů vaší aplikace.
-- **Podmínkypoužití\***  – zadejte podmínek použití vaší aplikace. Zákazníci musí tyto podmínky přijmout, aby mohli svoji aplikaci vyzkoušet.
+- **Adresa URL zásad ochrany osobních údajů\*** – zadejte odkaz na zásady ochrany osobních údajů vaší aplikace.
+- **Podmínky použití\*** – zadejte podmínek použití pro vaši aplikaci. Zákazníci musí tyto podmínky přijmout, aby mohli svoji aplikaci vyzkoušet.
 
 ![Právní forma](./media/azureapp-marketplace-legal.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Karta Podpora](./cpp-support-tab.md)

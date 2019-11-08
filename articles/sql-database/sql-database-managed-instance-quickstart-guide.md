@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start – Azure SQL Database spravovaná instance
+title: Rychlý Start – spravovaná instance SQL
 description: Naučte se, jak rychle začít s Azure SQL Databaseem – spravovaná instance
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 07/11/2019
-ms.openlocfilehash: ef15f164b707d5f762191547326c120663a78350
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 602de3e23eb5419958f84b071e2220550d1d04d0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687941"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821724"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Začínáme s Azure SQL Database Managed instance
 

@@ -4,15 +4,16 @@ description: Integrovaná řešení v Azure Marketplace a Microsoft AppSource
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/15/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 8bffb2c71f5e07499338ea32e0c064392af81684
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: eaba5612221e712ad5b14f10876e083729970fde
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71706316"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818564"
 ---
 # <a name="publish-an-integrated-solution"></a>Publikování integrovaného řešení
 
@@ -41,7 +42,7 @@ Přehled programu integrovaných řešení najdete v [tomto videu](https://aka.m
     * Správa životního cyklu aplikací
     * Cloudová platforma
     * Analýza dat
-    * Standard
+    * Datové centrum
     * Datová platforma
     * DevOps
 
@@ -56,14 +57,14 @@ Partneři, kteří chtějí účast v programu, by měli identifikovat jiné par
 
 ## <a name="develop-an-integrated-solution"></a>Vývoj integrovaného řešení 
 
-Po schválení vašeho jmenování použijte prostředky propojeného programu k vývoji integrovaného řešení. Postupujte podle těchto kroků: 
+Po schválení vašeho jmenování použijte prostředky propojeného programu k vývoji integrovaného řešení. Postupujte následovně: 
 
 1. Dokončete klíčové obchodní a technické diskuze ve formátu dílny, abyste mohli definovat řešení a integrační přístup. 
 
     Vaše diskuze o řešení by měla zahrnovat tyto body:
     * Rozsah
     * Cílové zákazníky
-    * Pozice hodnoty
+    * Návrh hodnoty
     * Ceny
     * Licencování
     * Podmínky a ujednání
@@ -77,9 +78,9 @@ Po schválení vašeho jmenování použijte prostředky propojeného programu k
     * Architektura řešení
     * Ověřování
     * Uživatelské rozhraní
-    * Sledovaný
+    * Monitorování
     * Mechanismus nasazení
-    * API
+    * Rozhraní API
     * Sjednocené úložiště dat
 
     Tyto prostředky použijte pro proces vývoje:

@@ -1,38 +1,39 @@
 ---
-title: Transformace příklady pro vyzkoušení | Azure Marketplace
-description: Seznam příkladů v tom, jak implementovat testovací verze.
+title: Příklady transformace pro testovací disk | Azure Marketplace
+description: Seznam příkladů implementace testovacích jednotek
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 727028611c52a8d03026e5d3fa67b2e0ee7e2053
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2680ef04a2136c36e307dc5b119df3e8053c2597
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938481"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824523"
 ---
-<a name="transforming-examples-for-test-drive"></a>Transformace příklady pro testovací verze
+<a name="transforming-examples-for-test-drive"></a>Transformují se příklady pro testovací jednotky.
 ====================================
 
-Může být složitý proces zapínání architekturu prostředků do aplikace logiky testu jednotky nebo šablony Resource Manageru. Aby bylo možné pomohou lépe tohoto procesu jsme\'uložit provedené tři příklady o tom, jak nejlépe transformovat aktuální architektury:
+Proces od zapnutí architektury prostředků do testovací aplikace logiky nebo šablony Správce prostředků může být těžké. Abychom vám usnadnili tento proces, jsme\'v tomto článku udělali tři příklady, jak nejlépe transformovat aktuální architektury:
 
-<a name="transform-website-template-into-test-drive"></a>Transformace šablony webu na testovací verzi
+<a name="transform-website-template-into-test-drive"></a>Transformovat šablonu webu na testovací disk
 ------------------------------------------
 
 <https://github.com/Azure/AzureTestDrive/wiki/Transforming-Website-Deployment-Template-for-Test-Drive>
 
-<a name="transform-virtual-machine-template-into-test-drive"></a>Transformace šablony virtuálního počítače na testovací verzi
+<a name="transform-virtual-machine-template-into-test-drive"></a>Transformovat šablonu virtuálního počítače na testovací disk
 --------------------------------------------------
 
 <https://github.com/Azure/AzureTestDrive/wiki/Transforming-Virtual-Machine-Deployment-Template-for-Test-Drive>
 
-<a name="transform-existing-resource-manager-templates-into-test-drive"></a>Transformace šablon Resource Manageru existující na testovací verzi
+<a name="transform-existing-resource-manager-templates-into-test-drive"></a>Transformovat existující šablony Správce prostředků na testovací jednotku
 ------------------------------------------------
 
 <https://github.com/Azure/AzureTestDrive/wiki/Deploying-Existing-Solutions>
 
-Pokud máte další otázky, hledají Poradce při potížích nebo chtít, aby vaše testovací verze úspěšnější, přejděte prosím na [Test Drive Marketing a osvědčené postupy](./marketing-and-best-practices.md).
+Pokud máte více otázek, hledáte Rady pro řešení potíží nebo chcete, aby testovací verze byla více úspěšná, přejděte prosím na [Test Drive marketing a osvědčené postupy](./marketing-and-best-practices.md).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2019
 ms.author: yegu
-ms.openlocfilehash: d6bf0f788f7c71a55a4c3667023d8b1d9f571baf
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 4f577e6497e853d9b75f81b5da4f7121064a9d07
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820982"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826339"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Řešení potíží s Azure cache pro vypršení časových limitů Redis
 
@@ -34,7 +34,7 @@ Tato část popisuje řešení potíží s časovým limitem, ke kterým docház
 
 ## <a name="redis-server-patching"></a>Opravy serveru Redis
 
-Služba Azure cache pro Redis pravidelně aktualizuje svůj serverový software jako součást funkce spravované služby, kterou poskytuje. Tato aktivita [opravy](cache-failover.md) probíhá hlavně za scénou. Během opravy převzetí služeb při selhání se Redis klienti, kteří jsou připojení k těmto uzlům, můžou docházet k dočasným časovým limitům při přepínání mezi těmito uzly. Další informace o tom, jaké funkce opravy vedlejších účinků můžou mít vaše aplikace a jak můžete vylepšit zpracování událostí oprav, najdete v tématu [jak má klientská aplikace vliv na převzetí služeb při selhání](cache-failover.md#how-does-a-failover-impact-my-client-application) .
+Služba Azure cache pro Redis pravidelně aktualizuje svůj serverový software jako součást funkce spravované služby, kterou poskytuje. Tato aktivita [opravy](cache-failover.md) probíhá hlavně za scénou. Během opravy převzetí služeb při selhání se Redis klienti, kteří jsou připojení k těmto uzlům, můžou docházet k dočasným časovým limitům při přepínání mezi těmito uzly. Další informace o tom, jaké funkce aktualizace vedlejších účinků můžou mít v aplikaci a jak můžete vylepšit zpracování událostí oprav, najdete v tématu [jak převzetí služeb při selhání v klientské aplikaci ovlivní](cache-failover.md#how-does-a-failover-affect-my-client-application) .
 
 ## <a name="stackexchangeredis-timeout-exceptions"></a>Výjimky časového limitu StackExchange. Redis
 
@@ -111,7 +111,7 @@ Pomocí následujících kroků můžete prozkoumat možné hlavní příčiny.
       retryTimeoutInMilliseconds="3000" />
     ```
 
-1. [Sledováním](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) `Used Memory RSS` a `Used Memory` ověřte využití paměti na serveru Azure cache pro Redis. Pokud je zásada vyřazení nastavená na místo, Redis spustí vyřazení klíčů, když `Used_Memory` dosáhne velikosti mezipaměti. V ideálním případě by `Used Memory RSS` měla být jenom mírně vyšší než `Used memory`. Velký rozdíl znamená fragmentaci paměti (interní nebo externí). Pokud je `Used Memory RSS` menší než `Used Memory`, znamená to, že část paměti mezipaměti byla vyměněna operačním systémem. Pokud dojde k záměně, můžete očekávat některé významné latence. Vzhledem k tomu `Used Memory RSS`, že Redis nemá kontrolu nad tím, jak je jejich přidělení namapováno na paměťové stránky, je často výsledkem špičky využití paměti. Když server Redis uvolní paměť, přidělování paměti převezme paměť, ale může nebo nemusí získat paměť zpátky do systému. Může dojít k nesouladu mezi `Used Memory` hodnotou a spotřebou paměti, která je hlášena operačním systémem. Paměť mohla být použita a uvolněna Redis, ale nebyla vrácena zpět do systému. Chcete-li snížit problémy s pamětí, můžete provést následující kroky:
+1. [Sledováním](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) `Used Memory RSS` a `Used Memory`ověřte využití paměti na serveru Azure cache pro Redis. Pokud je zásada vyřazení nastavená na místo, Redis spustí vyřazení klíčů, když `Used_Memory` dosáhne velikosti mezipaměti. V ideálním případě by `Used Memory RSS` měla být jenom mírně vyšší než `Used memory`. Velký rozdíl znamená fragmentaci paměti (interní nebo externí). Pokud je `Used Memory RSS` menší než `Used Memory`, znamená to, že část paměti mezipaměti byla vyměněna operačním systémem. Pokud dojde k záměně, můžete očekávat některé významné latence. Vzhledem k tomu `Used Memory RSS`, že Redis nemá kontrolu nad tím, jak je jejich přidělení namapováno na paměťové stránky, je často výsledkem špičky využití paměti. Když server Redis uvolní paměť, přidělování paměti převezme paměť, ale může nebo nemusí získat paměť zpátky do systému. Může dojít k nesouladu mezi `Used Memory` hodnotou a spotřebou paměti, která je hlášena operačním systémem. Paměť mohla být použita a uvolněna Redis, ale nebyla vrácena zpět do systému. Chcete-li snížit problémy s pamětí, můžete provést následující kroky:
 
    - Upgradujte mezipaměť na větší velikost, aby neběžela omezení paměti systému.
    - Nastavte čas vypršení platnosti klíčů tak, aby byly starší hodnoty vyřazeny interaktivně.

@@ -1,5 +1,5 @@
 ---
-title: Přidání balíčku R do Azure SQL Database Machine Learning Services (Preview)
+title: Přidání balíčku R do Machine Learning Services (Preview)
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
 description: Tento článek vysvětluje, jak nainstalovat balíček R, který už není nainstalovaný v Azure SQL Database Machine Learning Services (Preview).
 services: sql-database
@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/29/2019
-ms.openlocfilehash: f82408a6aaa7cf3a492f3036a6db5d8666b6f160
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: ce85f45d823df42e70af53824e175968439621d3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598051"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819869"
 ---
 # <a name="add-an-r-package-to-azure-sql-database-machine-learning-services-preview"></a>Přidání balíčku R do Azure SQL Database Machine Learning Services (Preview)
 
@@ -70,7 +70,7 @@ V následujícím příkladu nainstalujete balíček **[Glue](https://cran.r-pro
 
 ### <a name="install-sqlmlutils"></a>Nainstalovat **sqlmlutils**
 
-1. Stáhněte si nejnovější soubor zip **sqlmlutils** z https://github.com/Microsoft/sqlmlutils/tree/master/R/dist aplikace do místního počítače. Nemusíte ho rozkomprimovat.
+1. Stáhněte si nejnovější soubor zip **sqlmlutils** z https://github.com/Microsoft/sqlmlutils/tree/master/R/dist do svého místního počítače. Nemusíte ho rozkomprimovat.
 
 1. Otevřete **příkazový řádek** a spusťte následující příkazy, abyste nainstalovali **RODBCext** a **sqlmlutils** do svého místního počítače. Nahraďte úplnou cestu k **sqlmlutils** souboru zip, který jste stáhli (příklad předpokládá, že se soubor nachází ve složce Dokumenty).
     
@@ -166,7 +166,7 @@ sql_remove.packages(connectionString = connection, pkgs = "glue", scope = "PUBLI
 > [!TIP]
 > Dalším způsobem instalace balíčku R do vaší databáze SQL Azure je nahrání balíčku R z bajtového datového proudu pomocí příkazu **Create External Library** jazyka T-SQL. Další informace najdete v tématu [Vytvoření knihovny z datového proudu bajtů](/sql/t-sql/statements/create-external-library-transact-sql#create-a-library-from-a-byte-stream) v referenční dokumentaci k [vytvoření externí knihovny](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure SQL Database Machine Learning Services s R (Preview) najdete v následujících článcích.
 

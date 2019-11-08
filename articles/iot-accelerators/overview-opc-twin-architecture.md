@@ -1,6 +1,6 @@
 ---
-title: Architektura OPC Dvojčete – Azure | Dokumentace Microsoftu
-description: Architektura Dvojčete OPC
+title: OPCá architektura – Azure | Microsoft Docs
+description: Tento článek poskytuje přehled o architektuře s dvojitou OPCí. Popisuje zjišťování, aktivaci, procházení a monitorování serveru.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,33 +8,33 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 6ce9394f3d454bda5ead51f2c77a47db137a5136
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b8d4424c92ff24c36650e34a5d050bdc5f0f9091
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606186"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819860"
 ---
-# <a name="opc-twin-architecture"></a>Architektura Dvojčete OPC
+# <a name="opc-twin-architecture"></a>OPCá architektura
 
-Následující obrázky znázorňují architektura Dvojčete OPC.
+Následující diagramy znázorňují OPCou architekturu.
 
-## <a name="discover-and-activate"></a>Zjišťování a aktivovat
+## <a name="discover-and-activate"></a>Vyhledat a aktivovat
 
-1. Operátor, který umožňuje v modulu pro prohledávání sítě nebo provede jednorázovou zjišťování pomocí adresy URL zjišťování. Zjištěné koncové body a informací o aplikaci odesílají přes telemetrie k připojení agenta ke zpracování.  Agent připojení zařízení OPC UA zpracuje události zjišťování serveru OPC UA odesílaných modulu IoT Edge Dvojčete OPC v režimu kontroly nebo zjišťování. Výsledek události zjišťování v registrace aplikace a aktualizace v registru zařízení OPC UA.
+1. Operátor povolí kontrolu sítě v modulu nebo vytvoří jednorázové zjišťování pomocí adresy URL zjišťování. Zjištěné koncové body a informace o aplikaci se odesílají prostřednictvím telemetrie do agenta připojování pro zpracování.  Agent registrace zařízení OPC UA zpracovává události zjišťování serveru OPC UA odeslané modulem OPC s dvojitou IoT Edge v režimu zjišťování nebo prohledávání. Události zjišťování mají za následek registraci a aktualizace aplikací v registru zařízení OPC UA.
 
-   ![Jak funguje Dvojčete OPC](media/overview-opc-twin-architecture/opc-twin1.png)
+   ![Jak funguje zdvojení OPC](media/overview-opc-twin-architecture/opc-twin1.png)
 
-1. Operátor, který zkontroluje certifikát nalezený koncový bod a aktivuje dvojčeti registrované koncový bod pro přístup. 
+1. Operátor zkontroluje certifikát zjištěného koncového bodu a aktivuje pro přístup nevlákenný koncový bod registrovaného koncového bodu. 
 
-   ![Jak funguje Dvojčete OPC](media/overview-opc-twin-architecture/opc-twin2.png)
+   ![Jak funguje zdvojení OPC](media/overview-opc-twin-architecture/opc-twin2.png)
 
-## <a name="browse-and-monitor"></a>Procházení a monitorování
+## <a name="browse-and-monitor"></a>Procházet a monitorovat
 
-1. Po aktivaci, operátor, který můžete použít rozhraní REST API služby Dvojčete procházet nebo kontrolovat informační model serveru, čtení a zápis objektové proměnné a volání metod.  Uživatel používá zjednodušené OPC UA rozhraní API plně vyjádřené v protokolu HTTP a JSON.
+1. Po aktivaci může operátor použít dovolanou REST API služby k procházení nebo kontrole modelu informací o serveru, proměnných objektu pro čtení a zápis a metod volání.  Uživatel používá zjednodušené rozhraní OPC UA API, které je plně v HTTP a JSON.
 
-   ![Jak funguje Dvojčete OPC](media/overview-opc-twin-architecture/opc-twin3.png)
+   ![Jak funguje zdvojení OPC](media/overview-opc-twin-architecture/opc-twin3.png)
 
-1. Rozhraní REST služby dvojčete lze také vytvořit v vydavatele OPC monitorované položky a předplatných. Vydavatel OPC umožňuje telemetrie posílaly z serverovými systémy OPC UA do služby IoT Hub. Další informace o vydavateli OPC, naleznete v tématu [co je vydavatel OPC](overview-opc-publisher.md).
+1. Rozhraní REST služby s dvojitou službou se dá použít také k vytvoření monitorovaných položek a odběrů v OPC vydavateli. Vydavatel OPC umožňuje, aby se telemetrie odesílala ze systémů serveru OPC UA do IoT Hub. Další informace o vydavateli OPC najdete v tématu [co je OPC Publisher](overview-opc-publisher.md).
 
-   ![Jak funguje Dvojčete OPC](media/overview-opc-twin-architecture/opc-twin4.png)
+   ![Jak funguje zdvojení OPC](media/overview-opc-twin-architecture/opc-twin4.png)

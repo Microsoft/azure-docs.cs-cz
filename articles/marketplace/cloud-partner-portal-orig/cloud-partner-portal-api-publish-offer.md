@@ -1,23 +1,24 @@
 ---
 title: Publikování nabídky | Azure Marketplace
-description: Rozhraní API publikovat zadané nabídky.
+description: Rozhraní API pro publikování zadané nabídky
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 117a4e5e238e754524ff813ce25ebc1105e2153c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7ad8086c417cf1f14d9116fa4abcb0a88030922
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64934983"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819641"
 ---
 <a name="publish-an-offer"></a>Publikování nabídky
 ================
 
-Spustí proces publikování pro zadaný nabídku. Toto volání je dlouho běžící operace.
+Spustí proces publikování pro určenou nabídku. Toto volání je dlouhodobě běžící operace.
 
   `POST  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/publish?api-version=2017-10-31`
 
@@ -26,23 +27,23 @@ Spustí proces publikování pro zadaný nabídku. Toto volání je dlouho běž
 
 |  **Název**      |    **Popis**                               |  **Datový typ** |
 |  ------------- |  ------------------------------------            |   -----------  |
-|  publisherId   | Identifikátor vydavatel, například `contoso`      |   String       |
-|  offerId       | Identifikátor nabídky                                 |   String       |
-|  api-version   | Nejnovější verzi rozhraní API                        |   Datum         |
+|  publisherId   | Identifikátor vydavatele, například `contoso`      |   Řetězec       |
+|  Hodnotami OfferId       | Identifikátor nabídky                                 |   Řetězec       |
+|  verze API-Version   | Nejnovější verze rozhraní API                        |   Datum         |
 |  |  |
 
 
-<a name="header"></a>Záhlaví
+<a name="header"></a>Hlavička
 ------
 
 |  **Název**        |    **Hodnota**          |
 |  --------        |    ---------          |
-|  Content-Type    | `application/json`    |
+|  Typ obsahu    | `application/json`    |
 |  Autorizace   |  `Bearer YOUR_TOKEN`  |
 |  |  |
 
 
-<a name="body-example"></a>Příklad těla
+<a name="body-example"></a>Příklad textu
 ------------
 
 ### <a name="request"></a>Žádost
@@ -56,11 +57,11 @@ Spustí proces publikování pro zadaný nabídku. Toto volání je dlouho běž
   }
 ```
 
-### <a name="request-body-properties"></a>Vlastnosti textu požadavku
+### <a name="request-body-properties"></a>Vlastnosti textu žádosti
 
 |  **Název**               |   **Popis**                                                                                 |
 |  ---------------------  | ------------------------------------------------------------------------------------------------- |
-|  oznámení e-mailů    | Čárkami oddělený seznam e-mailové adresy, která vás upozorní na průběh operace publikování. |
+|  oznámení – e-maily    | Čárkami oddělený seznam e-mailových adres, které se mají upozornit na průběh operace publikování. |
 |  |  |
 
 
@@ -73,16 +74,16 @@ Spustí proces publikování pro zadaný nabídku. Toto volání je dlouho běž
 
 |  **Název**             |    **Hodnota**                                                                 |
 |  -------------------- | ---------------------------------------------------------------------------- |
-| Operace umístění    | Adresa URL může být dotazována k určení stavu aktuální operace.    |
+| Operace – umístění    | Adresa URL, na kterou lze zadat dotaz, aby bylo možné zjistit aktuální stav operace.    |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Stavové kódy odezvy
+### <a name="response-status-codes"></a>Stavové kódy odpovědí
 
-| **Kód** |  **Popis**                                                                                                                           |
+| **Znakovou** |  **Popis**                                                                                                                           |
 | ------   |  ----------------------------------------------------------------------------------------------------------------------------------------- |
-| 202   | `Accepted` -Požadavek byl úspěšně přijat. Odpověď obsahuje umístění, které je možné sledovat operace, která se spustí. |
-| 400   | `Bad/Malformed request` Text odpovědi – chyba mohou poskytnout další informace.                                                               |
-| 422   | `Un-processable entity` – Označuje, že entita, která má být publikování se nezdařilo ověření.                                                        |
-| 404   | `Not found` -Určená klientem entita neexistuje.                                                                              |
+| 202   | `Accepted` – požadavek byl úspěšně přijat. Odpověď obsahuje umístění, které lze použít ke sledování operace, která je spuštěna. |
+| 400   | `Bad/Malformed request` – tělo chybové odpovědi může poskytovat další informace.                                                               |
+| 422   | `Un-processable entity` – určuje, že entita, která má být publikována, se nezdařila.                                                        |
+| 404   | `Not found` – entita určená klientem neexistuje.                                                                              |
 |  |  |

@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: f0fa86cc3de9f8c183d7b7a24fb03d02204adc17
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 38dcfe04473e8d2fbd81614908adef9636c44b19
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076144"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812864"
 ---
 # <a name="co-sell-state-codes"></a>Kódy stavu společného prodeje
 
@@ -23,7 +24,7 @@ Pokud je to možné, použijte tyto kódy k poskytnutí informací o stavu nebo 
 |   Název země/provincie               |   Kód    |
 |-------------------------------------|-----------|
 | Alabama                             | US-AL     |
-| Aljaška                              | US – AK     |
+| Alaska                              | US – AK     |
 | Arizona                             | US – AZ     |
 | Arkansas                            | SPOJENÉ STÁTY – AR     |
 | Kalifornie                          | US – CA     |
@@ -31,18 +32,18 @@ Pokud je to možné, použijte tyto kódy k poskytnutí informací o stavu nebo 
 | Connecticut                         | US-CT     |
 | Delaware                            | US-DE     |
 | Florida                             | US-FL     |
-| Georgie                             | US-GA     |
-| Havajské ostrovy                              | US – HI     |
-| Idaho                               | US-ID     |
+| Gruzie                             | US-GA     |
+| Ostrovy                              | US – HI     |
+| Plzeň                               | US-ID     |
 | Illinois                            | US-IL     |
 | Indiana                             | US     |
 | Iowa                                | US – IA     |
 | Kansas                              | US – KS     |
 | Kentucky                            | US – KY     |
-| Louisiana                           | US-LA     |
+| Louisianě                           | US-LA     |
 | Maine                               | US     |
 | Maryland                            | US-MD     |
-| Massachusetts                       | US-MA     |
+| Organizace                       | US-MA     |
 | Michigan                            | US – MI     |
 | Minnesota                           | US-MN     |
 | Mississippi                         | US-MS     |
@@ -50,18 +51,18 @@ Pokud je to možné, použijte tyto kódy k poskytnutí informací o stavu nebo 
 | Montana                             | US-MT     |
 | Nebraska                            | US-NE     |
 | Nevada                              | US-NV     |
-| New Hampshire                       | US – NH     |
-| New Jersey                          | US – NEWARKU     |
+| Nový Hampshire                       | US – NH     |
+| Nový Jersey                          | US – NEWARKU     |
 | Nové Mexiko                          | US-NM     |
 | New York                            | US-NY     |
 | Severní Karolína                      | US-NC     |
 | Severní Dakota                        | US – ND     |
 | Ohio                                | US – NE     |
 | Oklahoma                            | US – OK     |
-| Oregon                              | US-NEBO     |
-| Pennsylvánie                        | US-PA     |
-| Rhode Island                        | US-RI     |
-| Jižní Karolína                      | US – SC     |
+| Brno                              | US-NEBO     |
+| Pensylvánie                        | US-PA     |
+| Rhode ostrov                        | US-RI     |
+| Jižní Karolíně                      | US – SC     |
 | Jižní Dakota                        | US-SD     |
 | Tennessee                           | US-TN     |
 | Texas                               | US-TX     |
@@ -69,17 +70,17 @@ Pokud je to možné, použijte tyto kódy k poskytnutí informací o stavu nebo 
 | Vermont                             | US-VT     |
 | Virginie                            | US-VA     |
 | Washington                          | US – WA     |
-| Západní Virginie                       | US – WV     |
+| Západní) – Virginia                       | US – WV     |
 | Wisconsin                           | US-WI     |
 | Wyoming                             | US – WY     |
-| District of Columbia                | US-DC     |
+| Oblast Kolumbie                | US-DC     |
 | Americká Samoa                      | US – JAKO     |
 | Guam                                | US-GU     |
 | Severní Mariany            | US-MP     |
 | Portoriko                         | US-PR     |
-| Americké menší zámořské ostrovy | SPOJENÉ STÁTY – UM    |
+| Menší odlehlé ostrovy Spojených států amerických | SPOJENÉ STÁTY – UM    |
 |Americké Panenské ostrovy                 | US-VI     |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si informace o [možnosti společného prodeje v partnerském centru](./commercial-marketplace-co-sell.md).

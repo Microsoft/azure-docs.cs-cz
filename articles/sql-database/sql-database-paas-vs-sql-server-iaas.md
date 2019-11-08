@@ -1,5 +1,5 @@
 ---
-title: Volba správného nasazení v Azure SQL
+title: Zvolit správnou možnost nasazení
 description: Naučte se vybírat z možností nasazení v Azure SQL mezi databázemi SQL, spravovanými instancemi SQL a SQL Server na virtuálních počítačích Azure.
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/22/2019
-ms.openlocfilehash: 791a4e95048bec8b3c5664bb97760f7c852950e0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e642454807511e8e0bc0b6b6ca7af837e03de2cf
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687693"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821351"
 ---
 # <a name="choose-the-right-deployment-option-in-azure-sql"></a>Volba správného nasazení v Azure SQL
 

@@ -1,42 +1,43 @@
 ---
-title: Kontaktuje informace pro nabídku aplikace Power BI | Azure Marketplace
-description: Vyplňte pole kontakty nabídky aplikace Power BI pro webu Microsoft Marketplace AppSource.
+title: Kontaktní informace pro nabídku aplikace Power BI | Azure Marketplace
+description: Nakonfigurujte pole kontaktů pro Power BI nabídku aplikace pro Microsoft AppSource Marketplace.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: f659ad2f75f9dad390c37f0e1736af5991a32dfc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec1ed23b253f705e1830c1c014492fe52b2133f0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943246"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826537"
 ---
-# <a name="power-bi-app-contacts-tab"></a>Power BI aplikace kontakty kartu
+# <a name="power-bi-app-contacts-tab"></a>Karta kontaktů aplikace Power BI
 
-Použití **kontakty** karty **nová nabídka** stránku s cílem poskytnout uživatele a technické podpory prostředků pro vaši nabídku. Je rozdělený do dvou částí: **Technické** a **zákaznickou podporu**.
+Kartu **Kontakty** na **nové stránce nabídky** použijte k poskytnutí prostředků technické podpory a podpory uživatelů pro vaši nabídku. Je rozdělená na dvě části: **technické** a **zákaznické podpory**.
 
 ![Karta Kontakty](media/contacts-tab.png)
 
 
-## <a name="contacts-fields"></a>Pole kontakty 
+## <a name="contacts-fields"></a>Pole kontaktů 
 
-Následující tabulka popisuje účel každé pole.  Povinná pole jsou uvést hvězdičkou (*). 
+Následující tabulka popisuje účel jednotlivých polí.  Požadovaná pole jsou indicted hvězdičkou (*). 
 
 |   Pole               |   Popis                                                            |
 |-----------------------|--------------------------------------------------------------------------|
-| *Technický kontakt* | Slouží jako technický kontakt mezi AppSource a vaší organizaci.    |
-| **Název\***              | Jméno osoby nebo skupiny, která slouží jako technické nebo technické podpory. |
-| **E-mailu\***             | E-mailovou adresu Tento technický kontakt.                                  |
-| **Telefon\***             | Telefonní číslo technické podpory.                                       |
-| *Kontakt na podporu*     | Přijímá lístky podpory otevírány zákazníky v AppSource.            |
-| **Název\***              | Jméno osoby nebo skupiny, která slouží jako zákaznickou podporu.              |
-| **E-mailu\***             | E-mailová adresa podpory zákazníků.                                        |
+| *Technický kontakt* | Slouží jako technický kontakt mezi AppSource a vaší organizací.    |
+| **Název\***              | Jméno osoby nebo skupiny, která slouží jako technická nebo technická podpora. |
+| **\* e-mailu**             | E-mailová adresa tohoto technického kontaktu                                  |
+| **\* pro telefon**             | Telefonní číslo technické podpory.                                       |
+| *Kontakt podpory*     | Přijímá lístky podpory otevřené zákazníky v rámci AppSource.            |
+| **Název\***              | Jméno osoby nebo skupiny, která slouží jako zákaznická podpora.              |
+| **\* e-mailu**             | E-mailová adresa zákaznické podpory                                        |
 |   |   |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Po dokončení vaší nabídce aplikace Power BI, potvrďte, že jste vytvořili všechny přidružené [technických prostředků](./cpp-create-technical-assets.md) nabídky.
+Po dokončení nabídky Power BI aplikace potvrďte, že jste pro tuto nabídku vytvořili všechny přidružené [technické prostředky](./cpp-create-technical-assets.md) .

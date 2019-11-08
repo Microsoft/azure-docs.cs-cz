@@ -4,15 +4,16 @@ description: Zastaralá a propojená s odpovídajícími články na počítač�
 services: Azure, Marketplace, Cloud Partner Portal,
 author: ChJenk
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: pabutler
-ms.openlocfilehash: c59bf5aa4518d556de36b7aa4ea4ef91fa244dea
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: ffd8b22b19b8b73c99901e854b18465586fc9e7b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105573"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820042"
 ---
 # <a name="how-to-fill-out-the-technical-info-form"></a>Jak vyplnit formulář technické informace
 

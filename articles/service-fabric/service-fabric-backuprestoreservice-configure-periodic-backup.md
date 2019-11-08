@@ -1,6 +1,6 @@
 ---
-title: Principy pravidelné zálohování konfigurace v Azure Service Fabric | Dokumentace Microsoftu
-description: Použít Service Fabric pravidelné zálohování a obnovení funkce umožňující použití periodických dat. zálohování dat ve vašich aplikacích.
+title: Princip pravidelné konfigurace zálohování v Azure Service Fabric | Microsoft Docs
+description: Použijte funkci periodického zálohování a obnovení Service Fabric k povolení pravidelného zálohování dat aplikací.
 services: service-fabric
 documentationcenter: .net
 author: hrushib
@@ -14,38 +14,38 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: hrushib
-ms.openlocfilehash: b1b36ed5197aeb056c70200a49e09cc777d66d0b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 47faeff22db4e4a2b3630104c9b492b43e29fd7b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237358"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819266"
 ---
-# <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Principy pravidelné zálohování konfigurace v Azure Service Fabric
+# <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Princip pravidelné konfigurace zálohování v Azure Service Fabric
 
-Konfigurování pravidelné zálohování spolehlivé stavové služby Reliable Actors nebo se skládá z následujících kroků:
+Konfigurace pravidelného zálohování vašich spolehlivých stavových služeb nebo Reliable Actors skládá z následujících kroků:
 
-1. **Vytvoření zásady zálohování**: V tomto kroku se vytvoří jeden nebo více zásad zálohování v závislosti na požadavcích.
+1. **Vytváření zásad zálohování**: v tomto kroku se vytvoří jedna nebo víc zásad zálohování v závislosti na požadavcích.
 
-2. **Povolení zálohování**: V tomto kroku přidružte zásady zálohování, které jsou vytvořené v **kroku 1** do požadované entity _aplikace_, _služby_, nebo _oddílu_.
+2. **Povolení zálohování**: v tomto kroku přidružíte zásady zálohování vytvořené v **kroku 1** k požadovaným entitám, _aplikacím_, _službám_nebo _oddílům_.
 
-## <a name="create-backup-policy"></a>Vytvoření zásady zálohování
+## <a name="create-backup-policy"></a>Vytvořit zásady zálohování
 
-Zásady zálohování se skládá z následujících konfigurací:
+Zásady zálohování se skládají z následujících konfigurací:
 
-* **Automatické obnovení ztráty dat**: Určuje, zda se aktivovat obnovení automaticky pomocí nejnovější dostupné zálohy v případě, že oddíl dojde před událostí ztráty.
+* **Automatické obnovení při ztrátě dat**: Určuje, jestli se má automaticky aktivovat obnovení pomocí nejnovější dostupné zálohy pro případ, že dojde k události ztráty dat.
 
-* **Maximální počet přírůstkové zálohování**: Definuje maximální počet přírůstkové zálohy, jež mají být provedeny mezi dvěma úplné zálohy. Maximální počet přírůstkové zálohy zadejte horní limit. Úplné zálohy mohou být přijata před zadaným číslem přírůstkových záloh jsou dokončeny v jednom z následujících podmínek
+* **Max. přírůstkové zálohování**: definuje maximální počet přírůstkových záloh, které se mají mezi dvěma úplnými zálohami považovat. Maximální přírůstkové zálohování určuje horní limit. Před dokončením zadaného počtu přírůstkových záloh můžete provést úplnou zálohu v jedné z následujících podmínek:
 
-    1. Replika se nikdy neobsadila úplnou zálohu. vzhledem k tomu se stal primárním.
+    1. Replika nikdy netrvalou úplnou zálohu, protože se stala primární.
 
-    2. Některé záznamy protokolu od poslední zálohy byl zkrácen.
+    2. Některé záznamy protokolu od posledního zálohování byly zkráceny.
 
-    3. Repliky předán MaxAccumulatedBackupLogSizeInMB limit.
+    3. Replika vyhověla MaxAccumulatedBackupLogSizeInMB limitu.
 
-* **Plán zálohování**: Chvíli a frekvenci, ve kterém se má provést pravidelného zálohování. Jeden můžete naplánovat zálohování se opakovat v zadaném intervalu nebo v pevném časovém denně nebo týdně.
+* **Plán zálohování**: čas nebo četnost, s jakou se mají provádět pravidelné zálohy. Jedna může naplánovat opakované zálohování v zadaném intervalu nebo v pevně dané době každý den/týden.
 
-    1. **Plán zálohování na základě frekvence**: Tento typ plán by měl použít, pokud je nutné provést zálohování dat v pravidelných intervalech. Požadovaný časový interval mezi dvěma po sobě jdoucích zálohy je definována použít formát ISO8601. Plán frekvence zálohování podporuje rozlišení intervalu na minutu.
+    1. **Plán zálohování podle četnosti**: Tento typ plánu by měl být použit v případě, že je potřeba provést zálohování dat v pevně stanovených intervalech. Požadovaný časový interval mezi dvěma po sobě jdoucími zálohami je definován pomocí formátu ISO8601. Plán zálohování podle frekvencí podporuje rozlišení intervalu až minutu.
         ```json
         {
             "ScheduleKind": "FrequencyBased",
@@ -53,8 +53,8 @@ Zásady zálohování se skládá z následujících konfigurací:
         }
         ```
 
-    2. **Plán zálohování podle času**: Tento typ plán by měl použít, pokud je nutné provést zálohování dat v určitých časech ze dne nebo týdne. Typ frekvence plán může být buď denně nebo týdně.
-        1. **_Denní_ časovou synchronizací plán zálohování**: Tento typ plán by měl použít, pokud identifikátor potřeba provést zálohování dat v určitých časech dne. Chcete-li tuto verzi uveďte, nastavte `ScheduleFrequencyType` k _denní_; a nastavte `RunTimes` do seznamu požadovanou dobu během dne, ve formátu ISO8601 a datem zadat společně s času bude ignorován. Například `0001-01-01T18:00:00` představuje _18:00:00_ každý den, ignoruje se část data _0001-01-01_. Následující příklad znázorňuje konfiguraci tak, aby aktivační událost denní zálohování na _9:00:00_ a _18:00:00_ každý den.
+    2. **Plán zálohování na základě času**: Tento typ plánu by měl být použit v případě, že je potřeba provést zálohování dat v určitých časech dne nebo týdne. Typ frekvence plánu může být buď každý den, nebo každý týden.
+        1. **_Denní_ plán zálohování na základě času**: Tento typ plánu by měl být použit v případě, že ID potřebný k zálohování dat v určitém čase v daném dni. Pokud to chcete určit, nastavte `ScheduleFrequencyType` _denně_; a nastavte `RunTimes` na seznam požadovaného času během dne ve formátu ISO8601, datum zadané společně s časem bude ignorováno. `0001-01-01T18:00:00` například představuje _6:00_ . den, ignoruje se datum – část _0001-01-01_. Následující příklad ilustruje konfiguraci pro aktivaci každodenního zálohování v _9:00_ a _6:00 odp_ .
 
             ```json
             {
@@ -67,7 +67,7 @@ Zásady zálohování se skládá z následujících konfigurací:
             }
             ```
 
-        2. **_Týdenní_ časovou synchronizací plán zálohování**: Tento typ plán by měl použít, pokud identifikátor potřeba provést zálohování dat v určitých časech dne. Chcete-li tuto verzi uveďte, nastavte `ScheduleFrequencyType` k _týdenní_set `RunDays` seznam dní v týdnu, kdy zálohování musí spustit a nastavte `RunTimes` do seznamu požadovanou dobu během dne, ve formátu ISO8601 a datum zadat společně s čas budou ignorovány. Seznam dní v týdnu kdy aktivovat pravidelné zálohování. Následující příklad znázorňuje konfiguraci tak, aby aktivační událost denní zálohování na _9:00:00_ a _18:00:00_ během od pondělí do pátku.
+        2. **_Týdenní_ plán zálohování založený na čase**: Tento typ plánu by měl být použit v případě, že ID potřebné k provedení zálohování dat v určitých časech dne. Pokud to chcete určit, nastavte `ScheduleFrequencyType` na _týdně_; Nastavte `RunDays` na seznam dnů v týdnu, kdy se musí spustit zálohování a nastavit `RunTimes` na seznam požadovaného času během dne ve formátu ISO8601, datum zadané společně s časem se bude ignorovat. Seznam dnů v týdnu, kdy se má aktivovat pravidelná záloha Následující příklad ilustruje konfiguraci pro aktivaci každodenního zálohování v _9:00_ a _6:00 odpoledne_ během pondělí do pátku.
 
             ```json
             {
@@ -87,8 +87,8 @@ Zásady zálohování se skládá z následujících konfigurací:
             }
             ```
 
-* **Úložiště zálohování**: Určuje umístění pro nahrání zálohy. Úložiště může být buď úložiště objektů blob v Azure nebo pro sdílení souborů.
-    1. **Úložiště objektů blob v Azure**: Tento typ úložiště musí být vybrána, když potřeba, je vygenerována úložiště záloh v Azure. Obě _samostatné_ a _založené na Azure_ clustery můžete použít tento typ úložiště. Popis pro tento typ úložiště vyžaduje připojovací řetězec a název kontejneru, ve kterém budete muset nahrát zálohy. Pokud kontejneru se zadaným názvem není k dispozici, se vytvoří při nahrávání zálohy.
+* **Úložiště zálohování**: Určuje umístění pro nahrávání záloh. Úložištěm může být úložiště objektů blob Azure nebo sdílení souborů.
+    1. **Úložiště objektů BLOB v Azure**: Tento typ úložiště by měl být vybraný, pokud je potřeba ukládat vygenerované zálohy v Azure. Tento typ úložiště můžou používat _samostatné_ clustery i clustery _založené na Azure_ . Popis tohoto typu úložiště vyžaduje připojovací řetězec a název kontejneru, do kterého se mají nahrát zálohy. Pokud kontejner se zadaným názvem není k dispozici, vytvoří se během nahrávání zálohy.
         ```json
         {
             "StorageKind": "AzureBlobStore",
@@ -98,8 +98,8 @@ Zásady zálohování se skládá z následujících konfigurací:
         }
         ```
 
-    2. **Sdílené složky**: Tento typ úložiště by měl vybrat pro _samostatné_ clusterů, když je potřeba k ukládání dat zálohovat místní. Popis pro tento typ úložiště vyžaduje cesta sdílení souborů, ve kterém budete muset nahrát zálohy. Přístup ke sdílené složce je nakonfigurovat pomocí jednoho z následujících možností
-        1. _Integrované ověřování Windows_, kterých je přístup ke sdílené složce k dispozici pro všechny počítače patřící do clusteru Service Fabric. V takovém případě nastavte následující pole konfigurace _sdílenou složku_ záložní úložiště využívající SSD disky.
+    2. **Sdílená složka**: Tento typ úložiště by měl být vybraný pro _samostatné_ clustery, pokud je potřeba ukládat místní zálohování dat. Popis pro tento typ úložiště vyžaduje cestu ke sdílené složce, ve které je nutné nahrávat zálohy. Přístup ke sdílené složce se dá nakonfigurovat pomocí jedné z následujících možností:
+        1. _Integrované ověřování systému Windows_, kde je přístup ke sdílené složce k dispozici všem počítačům patřícím do clusteru Service Fabric. V takovém případě nastavte následující pole pro konfiguraci úložiště zálohování založeného na _sdílení souborů_ .
 
             ```json
             {
@@ -109,7 +109,7 @@ Zásady zálohování se skládá z následujících konfigurací:
             }
             ```
 
-        2. _Ochranu sdílené složky pomocí uživatelského jména a hesla_, kterých je přístup ke sdílené složce k dispozici pro určité uživatele. Specifikace úložiště sdílené složky souboru také poskytuje možnost zadání sekundární uživatelské jméno a sekundární heslo pro pověření fall zpět v případě selhání ověřování s primární uživatelské jméno a heslo primární. V takovém případě nastavte následující pole konfigurace _sdílenou složku_ záložní úložiště využívající SSD disky.
+        2. _Ochrana sdílené složky pomocí uživatelského jména a hesla_, kde je přístup ke sdílené složce k dispozici konkrétním uživatelům. Specifikace úložiště sdílené složky také nabízí možnost zadat sekundární uživatelské jméno a sekundární heslo pro poskytnutí přihlašovacích údajů zpátky pro případ, že ověřování selhalo s primárním uživatelským jménem a primárním heslem. V takovém případě nastavte následující pole pro konfiguraci úložiště zálohování založeného na _sdílení souborů_ .
 
             ```json
             {
@@ -124,11 +124,11 @@ Zásady zálohování se skládá z následujících konfigurací:
             ```
 
 > [!NOTE]
-> Ujistěte se, že spolehlivost úložiště splňuje nebo překračuje požadavky spolehlivost dat záloh.
+> Zajistěte, aby spolehlivost úložiště splňovala nebo překročila požadavky na spolehlivost zálohovaných dat.
 >
 
-* **Zásady uchovávání informací**: Určuje zásady pro uchovávání záloh v nakonfigurovaného úložiště. Je podporován pouze základní zásady uchovávání informací.
-    1. **Zásady uchovávání informací základní**: Tyto zásady uchování umožňuje zajistit optimální úložiště využití Odebírání záložních souborů, které jsou požadovány žádné další. `RetentionDuration` lze nastavit časové období, pro kterou jsou požadovány pro zachování v úložišti záloh. `MinimumNumberOfBackups` je volitelný parametr, který je možné zadat pro Ujistěte se, že zadaný počet zálohy se vždy zachovají bez ohledu na `RetentionDuration`. Následující příklad znázorňuje konfiguraci pro uchovávání záloh pro _10_ dnů a neumožňuje počet zálohy přejít níže _20_.
+* **Zásady uchovávání informací**: Určuje zásadu pro uchovávání záloh v nakonfigurovaném úložišti. Podporují se jenom základní zásady uchovávání informací.
+    1. **Základní zásady uchovávání informací**: tyto zásady uchovávání informací umožňují zajistit optimální využití úložiště odebráním záložních souborů, které nejsou potřeba. je možné zadat `RetentionDuration` pro nastavení časového rozsahu, pro který je nutné uchovávat zálohy v úložišti. `MinimumNumberOfBackups` je volitelný parametr, který se dá zadat, aby se zajistilo, že zadaný počet záloh vždycky zůstane bez ohledu na `RetentionDuration`. Následující příklad ilustruje konfiguraci pro uchovávání záloh po dobu _10_ dnů a nepovoluje počet záloh, které se budou nacházet pod _20_.
 
         ```json
         {
@@ -138,117 +138,117 @@ Zásady zálohování se skládá z následujících konfigurací:
         }
         ```
 
-## <a name="enable-periodic-backup"></a>Povolit pravidelné zálohování
-Po definování zásad zálohování pro splnění požadavků pro zálohování dat, zásady zálohování by měly být správně přidružené buď _aplikace_, nebo _služby_, nebo _oddílu_.
+## <a name="enable-periodic-backup"></a>Povolit pravidelná zálohování
+Po definování zásad zálohování tak, aby splňovaly požadavky na zálohování dat, by se zásady zálohování měly vhodně přidružit buď k _aplikaci_, nebo ke _službě_, nebo k _oddílu_.
 
-### <a name="hierarchical-propagation-of-backup-policy"></a>Hierarchické šíření zásady zálohování
-V Service Fabric, je vztah mezi aplikace, služby a oddíly hierarchické, jak je vysvětleno v [aplikační model](./service-fabric-application-model.md). Zásady zálohování může být přidružené buď _aplikace_, _služby_, nebo _oddílu_ v hierarchii. Zásady zálohování hierarchicky rozšíří na další úroveň. Za předpokladu, že existuje pouze jeden zásady zálohování vytvořena a přidružena _aplikace_, všechny stavové oddíly, které patří ke všem _spolehlivé stavové služby_ a _Reliable Actors_ z _aplikace_ bude možné zálohovaných pomocí zásady zálohování. Nebo pokud je přidružené zásady zálohování _spolehlivé stavové služby_, všechny její oddíly budou mít zálohovaných pomocí zásady zálohování.
+### <a name="hierarchical-propagation-of-backup-policy"></a>Hierarchické šíření zásad zálohování
+V Service Fabric vztah mezi aplikací, službou a oddíly je hierarchický, jak je vysvětleno v [modelu aplikace](./service-fabric-application-model.md). Zásady zálohování je možné přidružit buď k _aplikaci_, _službě_, nebo k _oddílu_ v hierarchii. Zásady zálohování se šíří hierarchicky do další úrovně. Za předpokladu, že existuje pouze jedna zásada zálohování vytvořená a přidružená k _aplikaci_, všechny stavové oddíly patřící do všech _spolehlivých stavových služeb_ a _Reliable Actors_ _aplikace_ budou zálohovány pomocí zásady zálohování. Nebo pokud jsou zásady zálohování přidružené ke _spolehlivé stavové službě_, všechny její oddíly se zálohují pomocí zásad zálohování.
 
-### <a name="overriding-backup-policy"></a>Přepsání zásady zálohování
-Můžou existovat scénáře, kde je zálohování dat pomocí stejného plánu zálohování vyžaduje pro všechny služby aplikace s výjimkou určité služby ve kterém je potřeba, aby zálohování dat používají vyšší frekvence plán nebo pořízení zálohy na jiný účet úložiště nebo sdílení souborů. K řešení scénářů, obnovení zálohy služba poskytuje zařízení pro zásady přepsání rozšíří na služby a oddílu oboru. Když zásada zálohování je přidružené na _služby_ nebo _oddílu_, přepíše rozšíří zásady zálohování, pokud existuje.
+### <a name="overriding-backup-policy"></a>Přepsání zásad zálohování
+Může nastat situace, kdy se pro všechny služby aplikace vyžaduje zálohování dat se stejným plánem zálohování s výjimkou konkrétních služeb, kde je potřeba mít zálohu dat pomocí vyššího plánu četnosti nebo zálohy na jiný účet úložiště. sdílení souborů. Pro vyřešení takových scénářů nabízí služba obnovení zálohovací služby možnost přepsat rozšířenou zásadu v oboru služeb a oddílu. Pokud jsou zásady zálohování přidružené k _službě_ nebo _oddílu_, potlačí zásady šíření záloh, pokud nějaké existují.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
-Tento příklad používá instalace s dvěma aplikacemi _MyApp_A_ a _MyApp_B_. Aplikace _MyApp_A_ obsahuje dvě Reliable Stateful services _SvcA1_ & _SvcA3_a jedna služba Reliable Actors _ActorA2_. _SvcA1_ obsahuje tři oddíly při _ActorA2_ a _SvcA3_ obsahují dva oddíly.  Aplikace _MyApp_B_ obsahuje tři Reliable Stateful services _SvcB1_, _SvcB2_, a _SvcB3_. _SvcB1_ a _SvcB2_ obsahuje dva oddíly, které každý při _SvcB3_ obsahuje tři oddíly.
+V tomto příkladu se používá instalační program se dvěma aplikacemi, _MyApp_A_ a _MyApp_B_. Aplikace _MyApp_A_ obsahuje dvě spolehlivé stavové služby, _SvcA1_ & _SvcA3_a jednu službu Reliable actor _ActorA2_. _SvcA1_ obsahuje tři oddíly, zatímco _ActorA2_ a _SvcA3_ obsahují dva oddíly.  Aplikace _MyApp_B_ obsahuje tři spolehlivé stavové služby, _SvcB1_, _SvcB2_a _SvcB3_. _SvcB1_ a _SvcB2_ obsahují dva oddíly, zatímco _SvcB3_ obsahuje tři oddíly.
 
-Předpokládají, že jsou požadavky na tyto aplikace dat záloh následujícím způsobem
+Předpokládejme, že tyto aplikace tyto požadavky na zálohování dat jsou následující.
 
 1. MyApp_A
-    1. Vytvoření denní zálohování dat pro všechny oddíly všech _Reliable Stateful services_ a _Reliable Actors_ patřící do aplikace. Nahrát data záloh do umístění _BackupStore1_.
+    1. Vytvořte každodenní zálohu dat pro všechny oddíly všech _spolehlivých stavových služeb_ a _Reliable Actors_ patřících do aplikace. Nahrajte data zálohy do umístění _BackupStore1_.
 
-    2. Jedna ze služeb, _SvcA3_, vyžaduje data zálohování každou hodinu.
+    2. Jedna ze služeb, _SvcA3_, vyžaduje zálohování dat každou hodinu.
 
-    3. Velikost dat v oddílu _SvcA1_P2_ je větší než bylo očekáváno a jeho zálohovaná data by měla být uložena do umístění jiného úložiště _BackupStore2_.
+    3. Velikost dat v oddílu _SvcA1_P2_ je větší, než se očekávalo, a data zálohy by se měla ukládat do jiného umístění úložiště _BackupStore2_.
 
 2. MyApp_B
-    1. Vytvořit zálohu dat každou neděli v 8:00:00 pro všechny oddíly _SvcB1_ služby. Nahrát data záloh do umístění _BackupStore1_.
+    1. Vytvoří zálohu dat každé neděle v 8:00 pro všechny oddíly služby _SvcB1_ . Nahrajte data zálohy do umístění _BackupStore1_.
 
-    2. Vytvořit záložní kopii dat, každý den v 8:00:00 pro oddíl _SvcB2_P1_. Nahrát data záloh do umístění _BackupStore1_.
+    2. Vytvoří zálohu dat každý den v 8:00 _SvcB2_P1_pro oddíl. Nahrajte data zálohy do umístění _BackupStore1_.
 
-Pokud chcete vyřešit tyto požadavky pro zálohování dat, se vytvoří zásady zálohování k BP_5 BP_1 a zásadu povolíte následujícím způsobem.
+Aby bylo možné tyto požadavky na zálohování dat vyřešit, jsou vytvořeny zásady zálohování BP_1 k BP_5 jsou vytvořeny a zálohování je povoleno následujícím způsobem.
 1. MyApp_A
-    1. Vytvořit zásadu zálohování, _BP_1_, s frekvencí podle plánu zálohování kde frequency je nastavená na 24 hodin. a úložiště, které umožňují použít umístění úložiště zálohování _BackupStore1_. Tuto zásadu Povolit pro aplikaci _MyApp_A_ pomocí [povolit zálohování aplikace](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableapplicationbackup) rozhraní API. Tato akce povolí zálohování dat pomocí zásad zálohování _BP_1_ pro všechny oddíly _Reliable Stateful services_ a _Reliable Actors_ které patří k aplikaci  _MyApp_A_.
+    1. Vytvořte zásady zálohování _BP_1_s plánem zálohování podle frekvencí, kde frekvence je nastavená na 24 hodin. a úložiště zálohování je nakonfigurované tak, aby používalo umístění úložiště _BackupStore1_. Povolte tuto zásadu pro _MyApp_A_ aplikací pomocí povolení rozhraní API pro [zálohování aplikací](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableapplicationbackup) . Tato akce umožňuje zálohování dat pomocí zásad zálohování _BP_1_ pro všechny oddíly _spolehlivých stavových služeb_ a _Reliable Actors_ patřících do _MyApp_A_aplikací.
 
-    2. Vytvořit zásadu zálohování, _BP_2_, kde frequency je nastavená na 1 na základě četnosti zálohování plánu hodin. a úložiště, které umožňují použít umístění úložiště zálohování _BackupStore1_. Povolit tyto zásady pro službu _SvcA3_ pomocí [povolit službu Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) rozhraní API. Tato akce přepíše rozšíří zásady _BP_1_ ve explicitně povolené zásady zálohování _BP_2_ pro všechny oddíly služby _SvcA3_ což vede k zálohování dat pomocí služby backup zásady _BP_2_ pro tyto oddíly.
+    2. Vytvořte zásady zálohování _BP_2_s plánem zálohování podle frekvencí, kde frekvence je nastavená na 1 hod. a úložiště zálohování je nakonfigurované tak, aby používalo umístění úložiště _BackupStore1_. Povolte tuto zásadu pro Service _SvcA3_ pomocí povolení rozhraní API pro [zálohování služby](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) . Tato akce přepíše rozšířenou zásadu _BP_1_ tím, že explicitně povolí zásady zálohování _BP_2_ pro všechny oddíly služby Service _SvcA3_ , což vede k zálohování dat pomocí zásad zálohování _BP_2_ pro tyto oddíly.
 
-    3. Vytvořit zásadu zálohování, _BP_3_, s frekvencí podle plánu zálohování kde frequency je nastavená na 24 hodin. a úložiště, které umožňují použít umístění úložiště zálohování _BackupStore2_. Povolit tyto zásady pro oddíl _SvcA1_P2_ pomocí [povolit zálohování oddílu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) rozhraní API. Tato akce přepíše rozšíří zásady _BP_1_ ve explicitně povolené zásady zálohování _BP_3_ pro oddíl _SvcA1_P2_.
+    3. Vytvořte zásady zálohování _BP_3_s plánem zálohování podle frekvencí, kde frekvence je nastavená na 24 hodin. a úložiště zálohování je nakonfigurované tak, aby používalo umístění úložiště _BackupStore2_. Povolte tuto zásadu pro _SvcA1_P2_ oddílů pomocí povolení rozhraní API pro [zálohování oddílů](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) . Tato akce přepíše rozšířenou zásadu _BP_1_ tím, že explicitně povolí zásady zálohování _BP_3_ pro _SvcA1_P2_oddílů.
 
 2. MyApp_B
-    1. Vytvořit zásadu zálohování, _BP_4_, s časovou synchronizací plán zálohování kde je plán frekvence typu nastaven na každý týden, spuštění dnů je nastavena na neděli, a doba spuštění nastavený na 8:00:00. Úložiště nakonfigurovaná tak, aby používal umístění úložiště zálohování _BackupStore1_. Povolit tyto zásady pro službu _SvcB1_ pomocí [povolit službu Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) rozhraní API. Tato akce povolí zálohování dat pomocí zásad zálohování _BP_4_ pro všechny oddíly služby _SvcB1_.
+    1. Vytvořte zásady zálohování _BP_4_s časovým plánem zálohování na základě času, kde je typ frekvence plánování nastavený na týdně, dny spuštění jsou nastavené na neděli a časy spuštění jsou nastavené na 8:00. Úložiště zálohování je nakonfigurované tak, aby používalo umístění úložiště _BackupStore1_. Povolte tuto zásadu pro Service _SvcB1_ pomocí povolení rozhraní API pro [zálohování služby](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) . Tato akce povolí zálohování dat pomocí zásad zálohování _BP_4_ pro všechny oddíly služby Service _SvcB1_.
 
-    2. Vytvořit zásadu zálohování, _BP_5_, s časovou synchronizací plán zálohování kde typ frekvenci plánu je nastavena na každý den a čas spuštění je nastavená na 8:00:00. Úložiště nakonfigurovaná tak, aby používal umístění úložiště zálohování _BackupStore1_. Povolit tyto zásady pro oddíl _SvcB2_P1_ pomocí [povolit zálohování oddílu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) rozhraní API. Tato akce povolí zálohování dat pomocí zásad zálohování _BP_5_ pro oddíl _SvcB2_P1_.
+    2. Vytvořte zásady zálohování _BP_5_s časovým plánem zálohování na základě času, kde je typ frekvence plánování nastavený na denně a časy spuštění jsou nastavené na 8:00. Úložiště zálohování je nakonfigurované tak, aby používalo umístění úložiště _BackupStore1_. Povolte tuto zásadu pro _SvcB2_P1_ oddílů pomocí povolení rozhraní API pro [zálohování oddílů](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) . Tato akce povolí zálohování dat pomocí zásad zálohování _BP_5_ pro _SvcB2_P1_oddílů.
 
-Následující diagram znázorňuje explicitně povolené zásady zálohování a rozšíří zásady zálohování.
+Následující diagram znázorňuje explicitně povolené zásady zálohování a zásady šíření záloh.
 
-![Hierarchie aplikace Service Fabric][0]
+![Service Fabric hierarchie aplikace][0]
 
 ## <a name="disable-backup"></a>Zakázat zálohování
-Pokud není nutné k zálohování dat, můžete zásady zálohování zakázáno. Zásady povolené na zálohování _aplikace_ se dá deaktivovat jenom na stejné _aplikace_ pomocí [zakázat zálohu aplikace](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) rozhraní API, zásady zálohování povoleno _služby_ současně se dají zakázat _služby_ pomocí [zakázat službu Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup) rozhraní API a aktivovat na zásady zálohování _oddílu_ současně se dají zakázat _oddílu_ pomocí [zakázat zálohování oddílu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) rozhraní API.
+Zásady zálohování je možné zakázat, pokud není nutné data zálohovat. Zásady zálohování povolené v _aplikaci_ je možné zakázat jenom ve stejné _aplikaci_ pomocí rozhraní API pro [zálohování aplikací](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) . zásady zálohování povolené v rámci _služby_ můžou být ve stejné _službě_ zakázané pomocí [Disable. ](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup)Rozhraní API pro zálohování služby a zásady zálohování povolené v _oddílu_ je možné zakázat ve stejném _oddílu_ pomocí rozhraní API pro [zálohování oddílů](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) .
 
-* Zakázání zásady zálohování pro _aplikace_ zastaví všechny zálohy periodických dat. děje oddílů spolehlivé stavové služby nebo oddíly Reliable Actors v důsledku šíření zásady zálohování.
+* Zakázáním zásad zálohování pro _aplikaci_ se zastaví všechna pravidelná zálohování dat, která se děje v důsledku šíření zásad zálohování do spolehlivých oddílů stavových služeb nebo spolehlivých oddílů actor.
 
-* Zakázání zásady zálohování pro _služby_ zastaví všechny zálohy periodických dat. děje v důsledku šíření tyto zásady zálohování na oddíly _služby_.
+* Zakázáním zásad zálohování pro _službu_ dojde k zastavení všech pravidelného zálohování dat v důsledku šíření těchto zásad zálohování do oddílů _služby_.
 
-* Zakázání zásady zálohování pro _oddílu_ zastaví všechny zálohy periodických dat. děje z důvodu zásad zálohování v oddílu.
+* Zakázání zásad zálohování pro _oddíl_ zastaví všechna pravidelná zálohování dat, která se děje v důsledku zásad zálohování v oddílu.
 
-* Při zakazování zálohy pro entity(application/service/partition) `CleanBackup` může být nastaven na _true_ odstranit všechny zálohy v nakonfigurovaného úložiště.
+* Při zakazování zálohování entity (aplikace/služby/oddílu) `CleanBackup` možné nastavit na _hodnotu true_ , aby se odstranily všechny zálohy v nakonfigurovaném úložišti.
     ```json
     {
         "CleanBackup": true 
     }
     ```
 
-## <a name="suspend--resume-backup"></a>Pozastavit a obnovit zálohování
-Dočasné pozastavení pravidelné zálohování dat může vyžadují určité situace. V takové situaci, v závislosti na požadavek na pozastavení zálohování rozhraní API může použít na _aplikace_, _služby_, nebo _oddílu_. Pravidelné zálohování pozastavení je přenositelný podstrom hierarchie aplikace od okamžiku, kdy se použije. 
+## <a name="suspend--resume-backup"></a>Pozastavit & pokračování v zálohování
+Určitá situace může vyžadovat dočasné pozastavení pravidelného zálohování dat. V takové situaci se v závislosti na požadavku dá pozastavit zálohovací rozhraní API použít na _aplikaci_, _službu_nebo _oddíl_. Přerušení pravidelného zálohování je přenositelný přes podstrom hierarchie aplikace z bodu, který se používá. 
 
-* Při pozastavení se má použít na _aplikace_ pomocí [pozastavení aplikace Zálohování](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) rozhraní API, všechny služby a oddíly v rámci této aplikace se pozastavuje pravidelné zálohování dat.
+* Pokud je v _aplikaci_ použito pozastavení, které používá rozhraní API pro zablokování [aplikace](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) , pak se všechny služby a oddíly v této aplikaci pozastaví na pravidelné zálohování dat.
 
-* Při pozastavení se má použít na _služby_ pomocí [pozastavení služby zálohování](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendservicebackup) rozhraní API, všechny oddíly v rámci této služby se pozastavuje pravidelné zálohování dat.
+* Když se na _službu_ používá pozastavení pomocí rozhraní API pro [zálohování služby](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendservicebackup) , pak se všechny oddíly v této službě pozastaví, aby se pravidelně zálohovaná data používala.
 
-* Při pozastavení se má použít na _oddílu_ pomocí [pozastavit oddílu zálohování](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) rozhraní API a pak se pozastaví oddíly v rámci této služby se pozastavuje pravidelné zálohování dat.
+* Když se v _oddílu_ použije pozastavení rozhraní API pro [pozastavení oddílu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) , pozastaví se při pravidelném zálohování dat oddíly v této službě.
 
-Po pozastavení se vaše potřeby zálohování periodických dat. můžete obnovit pomocí odpovídajících obnovit zálohování rozhraní API. Pravidelné zálohování musí pokračovat znovu současně _aplikace_, _služby_, nebo _oddílu_ kde bylo pozastaveno.
+Až bude potřeba pozastavení převzít, můžete pravidelná zálohování dat obnovit pomocí příslušného obnovení záložního rozhraní API. Pravidelná záloha musí být obnovena ve stejné _aplikaci_, _službě_nebo _oddílu_ , kde byla pozastavena.
 
-* Pokud bylo použito pro pozastavení _aplikace_, pak by měl obnovit, pomocí [obnovit zálohu aplikace](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) rozhraní API. 
+* Pokud bylo na _aplikaci_použito pozastavení, mělo by být obnoveno pomocí rozhraní [Resume API pro zálohování aplikací](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) . 
 
-* Pokud bylo použito pro pozastavení _služby_, pak by měl obnovit, pomocí [obnovit službu zálohování](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeservicebackup) rozhraní API.
+* Pokud se v rámci _služby_použilo pozastavení, mělo by být obnoveno pomocí rozhraní API pro [zálohování zálohovací služby](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeservicebackup) .
 
-* Pokud bylo použito pro pozastavení _oddílu_, pak by měl obnovit, pomocí [Obnovit oddíl zálohování](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) rozhraní API.
+* Pokud se v _oddílu_použilo pozastavení, mělo by se pokračovat pomocí rozhraní API pro [zálohování záložního oddílu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) .
 
-### <a name="difference-between-suspend-and-disable-backups"></a>Rozdíl mezi pozastavit a zakázat zálohování
-Zakázat zálohování by měl při zálohování už nejsou vyžadované pro konkrétní aplikace, služby nebo oddíl. Jeden můžete vyvolat zakažte požadavek na zálohování společně s parametrem čisté zálohy na mít hodnotu true, což znamená, že všechny existující zálohy budou také odstraněny. Ale pozastavení se má použít ve scénářích, kde jeden chce vypnout záloh dočasně jako při zaplnění místního disku nebo nahrávání zálohování selhává kvůli problému známé síti atd. 
+### <a name="difference-between-suspend-and-disable-backups"></a>Rozdíl mezi pozastavením a zakázáním záloh
+Pokud již nejsou pro určitou aplikaci, službu nebo oddíl požadovány zálohy, je vhodné použít příkaz Zakázat zálohování. Jedna z těchto možností může vyvolat zákaz žádosti o zálohování spolu s parametrem vyčistit zálohy, což by znamenalo, že se odstranila i všechna existující zálohování. Pozastavení je ale vhodné použít ve scénářích, kdy si jeden chce dočasně vypnout zálohování, jako když se místní disk změní na plný nebo když se zálohování nedaří kvůli známému problému se sítí atd. 
 
-Při zakázání lze vyvolat pouze na úrovni, která byla starší pro zálohování explicitně povolená ale pozastavení můžete použít na libovolné úrovni, která je aktuálně povolena pro zálohování buď přímo nebo prostřednictvím dědičnosti nebo hierarchii. Například pokud je zálohování povolené na úrovni aplikace, jeden vyvolat zakázat pouze na úrovni aplikace ale pozastavit může být vyvolána v aplikaci, jakékoli služby nebo oddíl pro tuto aplikaci. 
+I když se možnost zakázat dá vyvolávat jenom na úrovni, která byla dříve povolená pro zálohování, ale pozastavení se dá použít na libovolné úrovni, která je aktuálně povolená pro zálohování přímo nebo přes dědičnost nebo hierarchii. Pokud je například na úrovni aplikace zapnuté zálohování, může se jedna z nich vyvolat zakázat jenom na úrovni aplikace. pozastavení je ale možné vyvolat v rámci aplikace, libovolné služby nebo oddílu v této aplikaci. 
 
-## <a name="auto-restore-on-data-loss"></a>Automatické obnovení ztráty dat
-Oddíl služby může dojít ke ztrátě dat z důvodu neočekávané chyby. Například disku pro dvě ze tří replik pro oddíl (včetně primární replice) získá poškozený nebo dojde k vymazání.
+## <a name="auto-restore-on-data-loss"></a>Automatické obnovení při ztrátě dat
+Oddíl služby může přijít o data z důvodu neočekávané chyby. Například disk pro dvě z následujících replik pro oddíl (včetně primární repliky) je poškozený nebo smazáný.
 
-Když Service Fabric zjistí, že oddíl je ztrátu dat, vyvolá `OnDataLossAsync` rozhraní metoda v oddílu a očekává, že oddíl má provést požadované akce, která pocházejí z ztrátě dat. V této situaci, pokud má platné zásady zálohování v oddílu `AutoRestoreOnDataLoss` příznak nastaven na `true` pak získá obnovení aktivuje automaticky pomocí nejnovější dostupné zálohy pro tento oddíl.
+Pokud Service Fabric zjistí, že se oddíl nachází v neztrátě dat, vyvolá metodu `OnDataLossAsync` rozhraní v oddílu a očekává, že oddíl provede požadovanou akci, aby mohla přijít o ztrátu dat. V takovém případě platí, že pokud mají zásady efektivního zálohování v oddílu `AutoRestoreOnDataLoss` příznak nastaven na `true`, bude obnovení automaticky aktivováno pomocí nejnovější dostupné zálohy pro tento oddíl.
 
 ## <a name="get-backup-configuration"></a>Získat konfiguraci zálohování
-Jsou k dispozici získat informace o konfiguraci zálohování na samostatné rozhraní API _aplikace_, _služby_, a _oddílu_ oboru. [Získejte informace o konfiguraci zálohování aplikace](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo), [získat informace o konfiguraci zálohování služby](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo), a [získat informace o konfiguraci zálohování oddílu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) jsou rozhraní API v uvedeném pořadí. Tato rozhraní API, hlavně vrátí příslušné zásady zálohování, rozsah, jakou zásadu zálohování, která jsou použité a zálohování pozastavení podrobnosti. Tady je stručný popis vrácené výsledky těchto rozhraní API.
+K dispozici jsou samostatná rozhraní API pro získání informací o konfiguraci zálohování v oboru _aplikací_, _služeb_a _oddílu_ . [Získat informace o konfiguraci zálohování aplikace](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo), [získat informace o konfiguraci zálohování služby](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)a [získat informace o konfiguraci zálohování oddílu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) jsou tato rozhraní API v uvedeném pořadí. Hlavně tato rozhraní API vracejí příslušné zásady zálohování, rozsah, ve kterém jsou zásady zálohování použity, a podrobnosti o pozastavení zálohování. Následuje stručný popis vrácených výsledků těchto rozhraní API.
 
-- Informace o konfiguraci zálohování aplikace: poskytuje podrobné informace o zásady zálohování použít v aplikaci a všechny zásady údajů na služby a oddíly, které patří k aplikaci. Zahrnuje také informace o pozastavení pro aplikace a služby a oddíly.
+- Informace o konfiguraci zálohování aplikace: poskytuje podrobné informace o zásadách zálohování použitých v aplikaci a všech riddench zásad na službách a oddílech, které patří k aplikaci. Zahrnuje také informace o pozastavení pro aplikace a IT služby a oddíly.
 
-- Informace o konfiguraci zálohování služby: poskytuje podrobné informace o platné zásady zálohování na službu a obor, na které byla tato zásada použitá a všechny zásady údajů na její oddíly. Obsahuje také informace o pozastavení služby a jejích oddílů.
+- Informace o konfiguraci zálohování služby: poskytuje podrobné informace o efektivních zásadách zálohování při provozu a rozsahu, ve kterém se tato zásada použila, a všech riddench zásad ve svých oddílech. Obsahuje také informace o pozastavení pro službu a její oddíly.
 
-- Rozdělit informace o konfiguraci zálohování: poskytuje podrobné informace o platné zásady zálohování v oddílu a rozsah, ve kterém byla tato zásada použitá. Obsahuje také informace o pozastavení pro oddíly.
+- Informace o konfiguraci zálohování oddílů: poskytuje podrobné informace o efektivních zásadách zálohování v oddílu a rozsahu, ve kterém se tato zásada použila. Obsahuje také informace o pozastavení oddílů.
 
-## <a name="list-available-backups"></a>Seznam dostupných záloh
+## <a name="list-available-backups"></a>Zobrazit seznam dostupných záloh
 
-Dostupné zálohy je možný, pomocí rozhraní API získat seznam zálohování. Výsledek volání rozhraní API obsahuje informace o zálohování položky související s všechny zálohy, které jsou k dispozici na na úložiště zálohování, který je nakonfigurován v příslušné zásady zálohování. Seznam dostupných záloh patřící do aplikace, služby nebo oddílu jsou k dispozici různé varianty tohoto rozhraní API. Tato rozhraní API podporovat získávání _nejnovější_ dostupnou zálohou všemi příslušnými oddílů nebo filtrování záloh na základě _počáteční datum_ a _koncové datum_.
+K dispozici můžou být zálohy uvedené pomocí získat rozhraní API pro seznam zálohování. Výsledkem volání rozhraní API jsou informace o zálohování, které souvisí se všemi zálohami dostupnými v úložišti zálohování, které je nakonfigurované v příslušných zásadách zálohování. K dispozici jsou různé varianty tohoto rozhraní API, které jsou uvedené v seznamu dostupných záloh, které patří k aplikaci, službě nebo oddílu. Tato rozhraní API podporují získání _nejnovější_ dostupné zálohy všech příslušných oddílů nebo filtrování záloh na základě _počátečního_ a _koncového data_.
 
-Tato rozhraní API také podporujte stránkování výsledků, když _MaxResults_ parametr je nastaven na nenulové kladné celé číslo a rozhraní API vrátí maximální _MaxResults_ zálohovat informace o položky. V případě více informací o záloze položek jsou k dispozici než _MaxResults_ hodnotu, je vrácena token pro pokračování. Platné pokračování token parametru se dá použít k získání další sadu výsledků. Pokud hodnota tokenu platné pokračování je předán do příštího volání rozhraní API, rozhraní API vrátí další sadu výsledků. Žádný token pro pokračování je součástí odpovědi budou při všechny dostupné výsledky jsou vráceny.
+Tato rozhraní API také podporují stránkování výsledků, pokud je parametr _MaxResults_ nastaven na nenulové kladné celé číslo, pak rozhraní API vrátí údaje o maximálním _MaxResults_ zálohování. V případě jsou k dispozici více položek informací o zálohování než hodnota _MaxResults_ , pak je vrácen token pokračování. K získání další sady výsledků lze použít platný parametr tokenu pokračování. Když je předána platná hodnota tokenu pokračování dalšímu volání rozhraní API, vrátí rozhraní API další sadu výsledků. V odpovědi není zahrnutý žádný token pro pokračování, pokud jsou vráceny všechny dostupné výsledky.
 
-Tady je stručné informace o podporovaných variant.
+Níže jsou uvedené stručné informace o podporovaných variantách.
 
-- [Získání seznamu zálohování aplikace](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): Vrátí seznam záloh, které jsou k dispozici pro každý oddíl, do které patří k dané aplikaci Service Fabric.
+- [Získat seznam zálohování aplikace](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): vrátí seznam záloh dostupných pro každý oddíl, který patří do dané Service Fabric aplikace.
 
-- [Získání služby zálohování seznamu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist): Vrátí seznam záloh, které jsou k dispozici pro každý oddíl, do které patří k dané služby Service Fabric.
+- [Získat seznam zálohování služby](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist): vrátí seznam záloh dostupných pro každý oddíl, který patří do dané Service Fabric služby.
  
-- [Získání seznamu zálohování oddílu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): Vrátí seznam záloh, které jsou k dispozici pro zadaný oddíl.
+- [Získat seznam záloh oddílu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): vrátí seznam záloh dostupných pro zadaný oddíl.
 
-## <a name="next-steps"></a>Další postup
-- [Reference k rozhraní API REST obnovení zálohy](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+## <a name="next-steps"></a>Další kroky
+- [Odkaz na REST API obnovení zálohy](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
-[0]: ./media/service-fabric-backuprestoreservice/BackupPolicyAssociationExample.png
+[0]: ./media/service-fabric-backuprestoreservice/backup-policy-association-example.png

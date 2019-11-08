@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s Azure cache pro Redis ztráty dat | Microsoft Docs
+title: Řešení potíží se ztrátou dat v mezipaměti Azure pro Redis | Microsoft Docs
 description: Naučte se řešit problémy se ztrátou dat pomocí Azure cache pro Redis.
 services: cache
 documentationcenter: ''
@@ -14,19 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: yegu
-ms.openlocfilehash: 4fee7c84b394e84369b28d2a4191d0e581f3beba
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 8165ce3195c12af52cfee2fff598d9417697f4cb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044364"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806563"
 ---
-# <a name="troubleshoot-azure-cache-for-redis-data-loss"></a>Řešení potíží s Azure cache pro Redis ztrátu dat
+# <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Řešení potíží se ztrátou dat v mezipaměti Azure pro Redis
 
-Tato část popisuje, jak diagnostikovat skutečné nebo zjištěné ztráty dat, které se můžou vyskytnout v mezipaměti Azure pro Redis.
-
-- [Částečná ztráta klíčů](#partial-loss-of-keys)
-- [Hlavní nebo úplná ztráta klíčů](#major-or-complete-loss-of-keys)
+Tento článek popisuje, jak diagnostikovat skutečné nebo zjištěné ztráty dat, které se můžou vyskytnout v mezipaměti Azure pro Redis.
 
 > [!NOTE]
 > Několik kroků pro řešení potíží v této příručce obsahuje pokyny ke spouštění příkazů Redis a monitorování různých metrik výkonu. Další informace a pokyny najdete v článcích v části [Další informace](#additional-information) .
@@ -34,22 +31,22 @@ Tato část popisuje, jak diagnostikovat skutečné nebo zjištěné ztráty dat
 
 ## <a name="partial-loss-of-keys"></a>Částečná ztráta klíčů
 
-Redis po uložení do paměti náhodně neodstraní klíče. Odebere ale klíče v reakci na zásady vypršení platnosti nebo vyřazení a taky explicitní příkazy pro odstranění klíčů. Navíc klíče, které byly zapsány do hlavního uzlu v mezipaměti Azure Premium nebo standard pro Redis, nemusí být hned k dispozici na replice. Data se replikují z hlavního serveru do repliky v asynchronním a neblokujícím způsobu.
+Azure cache pro Redis po uložení do paměti náhodně neodstraní klíče. Odebere ale klíče v reakci na zásady vypršení platnosti nebo vyřazení a explicitní příkazy pro odstraňování klíčů. Klíče, které byly zapsány do hlavního uzlu v mezipaměti Azure Premium nebo standard pro instanci Redis, nemusí být okamžitě k dispozici v replice. Data se replikují z hlavního serveru do repliky v asynchronním a neblokujícím způsobu.
 
-Pokud zjistíte, že tyto klíče z mezipaměti zmizely, můžete podle následujících pokynů zjistit, které příčiny můžou být příčinou:
+Pokud zjistíte, že klíče z mezipaměti zmizely, podívejte se na tyto možné příčiny:
 
 | Příčina | Popis |
 |---|---|
-| [Vypršení platnosti klíče](#key-expiration) | Klíče jsou odebrány z důvodu nastavených časových limitů. |
-| [Vyřazení klíčů](#key-eviction) | Klíče jsou odstraněny při tlaku paměti |
+| [Vypršení platnosti klíče](#key-expiration) | Klíče se odeberou kvůli časovým limitům nastaveným pro ně. |
+| [Vyřazení klíčů](#key-eviction) | Klíče jsou odebrány v části tlak paměti. |
 | [Odstranění klíče](#key-deletion) | Klíče jsou odebrány pomocí explicitních příkazů DELETE. |
-| [Asynchronní replikace](#async-replication) | V replice nejsou k dispozici klíče kvůli zpožděním při replikaci dat. |
+| [Asynchronní replikace](#async-replication) | V replice nejsou k dispozici klíče kvůli zpožděním replikace dat. |
 
 ### <a name="key-expiration"></a>Vypršení platnosti klíče
 
-Redis odebere klíč automaticky, pokud se mu přiřadí časový limit a tato doba uplynula. Další podrobnosti o vypršení platnosti klíče Redis najdete v dokumentaci k příkazu [vypršení platnosti](http://redis.io/commands/expire) . Hodnoty časového limitu lze také nastavit pomocí příkazu [set](http://redis.io/commands/set), [SETEX](https://redis.io/commands/setex), [Poznámka GetSet](https://redis.io/commands/getset)a dalších příkazů \*STORE.
+Azure cache pro Redis odebere klíč automaticky, pokud je klíč přiřazen časový limit a období uplynulo. Další informace o vypršení platnosti klíče Redis najdete v dokumentaci k příkazům vypršení [platnosti](http://redis.io/commands/expire) . Hodnoty časového limitu lze také nastavit pomocí příkazů [set](http://redis.io/commands/set), [SETEX](https://redis.io/commands/setex), [Poznámka GetSet](https://redis.io/commands/getset)a další **\*Store** .
 
-Pomocí příkazu [info](http://redis.io/commands/info) můžete získat statistiku o počtu vypršení platnosti klíčů. V části *Statistika* se zobrazuje celkový počet klíčů s vypršenou platností. Část s *místem na disku* poskytuje další informace o počtu klíčů s časovými limity a průměrnou hodnotu časového limitu.
+Chcete-li získat statistiku o tom, kolik klíčů vypršelo, použijte příkaz [info](http://redis.io/commands/info) . V části `Stats` se zobrazuje celkový počet klíčů s vypršenou platností. V části `Keyspace` najdete další informace o počtu klíčů s časovým limitem a s průměrnou hodnotou časového limitu.
 
 ```
 # Stats
@@ -61,13 +58,13 @@ expired_keys:46583
 db0:keys=3450,expires=2,avg_ttl=91861015336
 ```
 
-Kromě toho se můžete podívat na diagnostické metriky pro vaši mezipaměť, abyste viděli, jestli existuje korelace mezi tím, kdy klíč chybí, a špička v klíčích s vypršenou platností. Informace o tom, jak používat oznámení a monitorování místa na disku k ladění těchto typů problémů, najdete v [příloze](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix) .
+Můžete se také podívat na diagnostické metriky pro vaši mezipaměť, abyste viděli, jestli existuje korelace mezi tím, kdy klíč chybí, a špička v klíčích s vypršenou platností. Další informace o použití oznámení o prostoru a **monitorování** k ladění těchto typů problémů najdete v příloze [Redisch neúspěšných přístupů k prostoru](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix) .
 
 ### <a name="key-eviction"></a>Vyřazení klíčů
 
-Redis vyžaduje místo v paměti pro ukládání dat. Vyprázdní klíče pro uvolnění dostupné paměti, pokud je to nutné. Když hodnoty **used_memory** nebo **Used_memory_rss** v příkazu [info](http://redis.io/commands/info) přistupují k nakonfigurovanému nastavení **maxmemory** , Redis spustí vyřazení klíčů z paměti na základě [zásad mezipaměti](http://redis.io/topics/lru-cache).
+Mezipaměť Azure pro Redis vyžaduje místo v paměti pro ukládání dat. Vyprázdní klíče a uvolní dostupnou paměť v případě potřeby. Když hodnoty **used_memory** nebo **Used_memory_rss** v příkazu [info](http://redis.io/commands/info) přistupují k nakonfigurovanému nastavení **maxmemory** , Azure cache pro Redis spustí vyřazení klíčů z paměti na základě [zásad mezipaměti](http://redis.io/topics/lru-cache).
 
-Pomocí příkazu [info](http://redis.io/commands/info) můžete monitorovat počet vyřazení klíčů.
+Počet vyřazených klíčů můžete monitorovat pomocí příkazu [info](http://redis.io/commands/info) :
 
 ```
 # Stats
@@ -75,11 +72,11 @@ Pomocí příkazu [info](http://redis.io/commands/info) můžete monitorovat po�
 evicted_keys:13224
 ```
 
-Kromě toho se můžete podívat na diagnostické metriky pro vaši mezipaměť a zjistit, jestli existuje korelace mezi tím, kdy klíč chybí, a špičkou v vyřazených klíčích. Informace o tom, jak používat oznámení a monitorování místa na disku k ladění těchto typů problémů, najdete v [příloze](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix) .
+Můžete se také podívat na diagnostické metriky pro vaši mezipaměť a zjistit, jestli existuje korelace mezi tím, kdy klíč chybí, a špičkou v vyřazených klíčích. Další informace o použití oznámení o prostoru a **monitorování** k ladění těchto typů problémů najdete v příloze [Redisch neúspěšných přístupů k prostoru](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix) .
 
 ### <a name="key-deletion"></a>Odstranění klíče
 
-Klienti Redis můžou pomocí příkazu [del](http://redis.io/commands/del) nebo [HDEL](http://redis.io/commands/hdel) explicitně odebrat klíče z Redis. Počet operací odstranění můžete sledovat pomocí příkazu [info](http://redis.io/commands/info) . Pokud byly volány příkazy DEL nebo HDEL, budou uvedeny v části *Commandstats* .
+Klienti Redis můžou pomocí příkazu [del](http://redis.io/commands/del) nebo [HDEL](http://redis.io/commands/hdel) explicitně odebrat klíče z mezipaměti Azure pro Redis. Počet operací odstranění můžete sledovat pomocí příkazu [info](http://redis.io/commands/info) . Pokud byly volány příkazy **del** nebo **HDEL** , budou uvedeny v části `Commandstats`.
 
 ```
 # Commandstats
@@ -91,21 +88,21 @@ cmdstat_hdel:calls=1,usec=47,usec_per_call=47.00
 
 ### <a name="async-replication"></a>Asynchronní replikace
 
-Jakákoli mezipaměť Azure pro Redis v úrovni Standard nebo Premium je nakonfigurovaná s hlavním uzlem a aspoň jednou replikou. Data jsou zkopírována z hlavního serveru do repliky asynchronně pomocí procesu na pozadí. Web [Redis.IO](http://redis.io/topics/replication) popisuje, jak obecně funguje replikace dat Redis. V případě scénářů, kdy klienti zapisují do Redis často, může dojít k částečné ztrátě dat kvůli tomu, že je zaručená okamžitá replikace. Pokud se například hlavní uzel přestane _po_ zapsání klíče do něj zapisuje, ale _před_ tím, než bude mít proces na pozadí možnost Odeslat tento klíč do repliky, klíč se ztratí, když replika převezme novou hlavní databázi.
+Jakákoli instance Azure cache for Redis v úrovni Standard nebo Premium je nakonfigurovaná s hlavním uzlem a aspoň jednou replikou. Data jsou zkopírována z hlavního serveru do repliky asynchronně pomocí procesu na pozadí. Web [Redis.IO](http://redis.io/topics/replication) popisuje, jak obecně funguje replikace dat Redis. Pro scénáře, kdy klienti zapisují do Redis často, může dojít k částečné ztrátě dat, protože je zaručená okamžitá replikace. Pokud se například hlavní uzel *po* zapsání klíče do něj zapíše, ale *před tím, než* bude moci proces na pozadí odeslat tento klíč do repliky, dojde ke ztrátě klíče, když replika převezme novou hlavní databázi.
 
 ## <a name="major-or-complete-loss-of-keys"></a>Hlavní nebo úplná ztráta klíčů
 
-Pokud zjistíte, že z mezipaměti zmizela většina nebo všechny klíče, můžete podle následujících pokynů zjistit, které příčiny můžou být příčinou:
+Pokud z mezipaměti nezmizí většina nebo všechny klíče, podívejte se na tyto možné příčiny:
 
 | Příčina | Popis |
 |---|---|
-| [Vyprazdňování klíče](#key-flushing) | Klíče byly ručně vyprázdněny |
-| [Nesprávný výběr databáze](#incorrect-database-selection) | Redis je nastavená na použití jiné než výchozí databáze. |
-| [Selhání instance Redis](#redis-instance-failure) | Server Redis je nedostupný. |
+| [Vyprazdňování klíče](#key-flushing) | Klíče byly vymazány ručně. |
+| [Nesprávný výběr databáze](#incorrect-database-selection) | Mezipaměť Azure pro Redis je nastavená na použití jiné než výchozí databáze. |
+| [Selhání instance Redis](#redis-instance-failure) | Server Redis není k dispozici. |
 
 ### <a name="key-flushing"></a>Vyprazdňování klíče
 
-Klienti mohou volat příkaz [FLUSHDB](http://redis.io/commands/flushdb) a odebrat všechny klíče v **jedné** databázi nebo [FLUSHALL](http://redis.io/commands/flushall) pro odebrání všech klíčů ze **všech** databází v mezipaměti Redis. To, jestli se klíče vyprázdní, můžete zjistit pomocí příkazu [info](http://redis.io/commands/info) . Zobrazí se v případě, že se v části *Commandstats* zavolal buď příkaz Flush.
+Klienti mohou volat příkaz [FLUSHDB](http://redis.io/commands/flushdb) a odebrat všechny klíče v *jedné* databázi nebo [FLUSHALL](http://redis.io/commands/flushall) pro odebrání všech klíčů ze *všech* databází v mezipaměti Redis. Chcete-li zjistit, zda byly klíče vyprázdněny, použijte příkaz [info](http://redis.io/commands/info) . V části `Commandstats` se dozvíte, zda byl buď volán příkaz **flush** :
 
 ```
 # Commandstats
@@ -117,13 +114,15 @@ cmdstat_flushdb:calls=1,usec=110,usec_per_call=52.00
 
 ### <a name="incorrect-database-selection"></a>Nesprávný výběr databáze
 
-Azure cache pro Redis ve výchozím nastavení používá databázi **DB0** . Pokud přepnete do jiné databáze (například DB1) a pokusíte se z ní číst klíče, Redis je nenalezne, protože každá databáze je logicky oddělená jednotka a obsahuje jinou datovou sadu. Pomocí příkazu [Select](http://redis.io/commands/select) můžete použít další dostupné databáze a vyhledat klíče v každém z nich.
+Azure cache pro Redis ve výchozím nastavení používá databázi **DB0** . Pokud přepnete do jiné databáze (například **DB1**) a pokusíte se z ní číst klíče, mezipaměť Azure pro Redis je nenalezne. Každá databáze je logicky oddělená jednotka a obsahuje jinou datovou sadu. Pomocí příkazu [Select](http://redis.io/commands/select) můžete použít další dostupné databáze a vyhledat klíče v každém z nich.
 
 ### <a name="redis-instance-failure"></a>Selhání instance Redis
 
-Redis je úložiště dat v paměti. Data se uchovávají na fyzických nebo virtuálních počítačích, které hostují Redis. Instance Azure cache for Redis se v úrovni Basic spouští jenom na jednom virtuálním počítači (VM). Pokud je tento virtuální počítač vypnutý, ztratí se všechna data uložená v mezipaměti. Mezipamětí v úrovních Standard a Premium nabízejí mnohem větší odolnost proti ztrátě dat pomocí dvou virtuálních počítačů v replikované konfiguraci. Pokud hlavní uzel v takové mezipaměti selže, bude uzel repliky přebírat data do obsluhy automaticky. Tyto virtuální počítače se nacházejí v samostatných doménách selhání a aktualizují, aby se minimalizovala pravděpodobnost, že se současně stane nedostupnými. V případě výpadku většího datového centra ale můžou virtuální počítače pořád dál nacházet. V těchto vzácných případech dojde ke ztrátě vašich dat.
+Redis je úložiště dat v paměti. Data se uchovávají na fyzických nebo virtuálních počítačích, které hostují mezipaměť Redis Cache. Instance Azure cache for Redis se v úrovni Basic spouští jenom na jednom virtuálním počítači (VM). Pokud je tento virtuální počítač vypnutý, ztratí se všechna data uložená v mezipaměti. 
 
-Měli byste zvážit použití [Trvalost dat Redis](http://redis.io/topics/persistence) a [geografické replikace](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-geo-replication) k vylepšení ochrany vašich dat před těmito selháními infrastruktury.
+Mezipamětí v úrovních Standard a Premium nabízejí mnohem větší odolnost proti ztrátě dat pomocí dvou virtuálních počítačů v replikované konfiguraci. V případě selhání hlavního uzlu v takové mezipaměti převezme uzel repliky automaticky data. Tyto virtuální počítače se nacházejí v samostatných doménách pro chyby a aktualizace, aby se minimalizovala pravděpodobnost, že se současně stane nedostupnými. Pokud se ale dojde k výpadku velkých Datacenter, virtuální počítače se ale pořád rozstanou pohromadě. V těchto vzácných případech dojde ke ztrátě vašich dat.
+
+Zvažte použití [Trvalost dat Redis](http://redis.io/topics/persistence) a [geografické replikace](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-geo-replication) k vylepšení ochrany vašich dat před těmito selháními infrastruktury.
 
 ## <a name="additional-information"></a>Další informace
 

@@ -1,5 +1,5 @@
 ---
-title: Konfigurace zabezpečení Azure SQL Database pro zotavení po havárii
+title: Konfigurace zabezpečení pro zotavení po havárii
 description: Seznamte se s požadavky na zabezpečení při konfiguraci a správě zabezpečení po obnovení databáze nebo převzetí služeb při selhání sekundárním serverem.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: 3c08ba1a37d7b0d16042d6496c27e0de8d070b75
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9d628583168883276e67d9e2f2fcafdce292769e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689965"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807496"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurace a Správa zabezpečení Azure SQL Database pro geografické obnovení nebo převzetí služeb při selhání
 
@@ -58,7 +58,7 @@ Přihlášení na zdrojovém serveru můžou určit jenom správce serveru nebo 
     FROM [sys].[sql_logins]
     WHERE [type_desc] = 'SQL_Login'
 
-Pouze člen databázové role db_owner, uživatel dbo nebo správce serveru může určit všechny objekty zabezpečení uživatele databáze v primární databázi.
+Pouze člen role databáze db_owner, uživatel dbo nebo správce serveru může určit všechny objekty zabezpečení databáze uživatele v primární databázi.
 
     SELECT [name], [sid]
     FROM [sys].[database_principals]

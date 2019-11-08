@@ -1,6 +1,6 @@
 ---
-title: Spustit vydavatele OPC – Azure | Dokumentace Microsoftu
-description: Spuštění vydavatele OPC
+title: Spuštění vydavatele OPC – Azure | Microsoft Docs
+description: Tento článek popisuje, jak spustit a ladit OPC Publisher. Také řeší požadavky na výkon a paměť.
 author: dominicbetts
 ms.author: dobett
 ms.date: 06/10/2019
@@ -8,20 +8,20 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 3b386171afc7916e5e803c39a9c7b3520752e6fd
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 66e2cb30dcd58b7ad0c6cedbb547f75c8039bc58
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603754"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824139"
 ---
 # <a name="run-opc-publisher"></a>Spuštění vydavatele OPC
 
-Tento článek popisuje, jak spustit ladění ad vydavatel OPC. Také řeší důležité informace o výkonu a paměti.
+Tento článek popisuje, jak spustit vydavatele služby AD Debug OPC Publisher. Také řeší požadavky na výkon a paměť.
 
 ## <a name="command-line-options"></a>Možnosti příkazového řádku
 
-Použití aplikace se zobrazí při použití `--help` možnost příkazového řádku takto:
+Použití aplikace je zobrazeno pomocí možnosti `--help` příkazového řádku následujícím způsobem:
 
 ```sh/cmd
 Current directory is: /appdata
@@ -334,47 +334,47 @@ Options:
                                 reside in a directory.
 ```
 
-Obvykle je zadat připojovací řetězec služby IoT Hub vlastníka pouze při prvním spuštění aplikace. Připojovací řetězec je zašifrované a uložené v úložišti certifikátů platformy. V pozdější spuštění aplikace načte připojovací řetězec z úložiště certifikátů. Pokud chcete zadat připojovací řetězec při každém běhu, zařízení, který je vytvořen pro aplikaci v registru zařízení služby IoT Hub je odebrat a znovu vytvořit.
+Obvykle je třeba zadat připojovací řetězec IoT Hub Owner pouze při prvním spuštění aplikace. Připojovací řetězec je zašifrovaný a uložený v úložišti certifikátů platformy. Při pozdějším spuštění aplikace přečte připojovací řetězec z úložiště certifikátů. Pokud při každém spuštění zadáte připojovací řetězec, zařízení, které je vytvořeno pro aplikaci v registru IoT Hub zařízení, se odebere a znovu vytvoří.
 
-## <a name="run-natively-on-windows"></a>Nativně běžet na Windows
+## <a name="run-natively-on-windows"></a>Spouštění nativně ve Windows
 
-Otevřít **opcpublisher.sln** projekt pomocí sady Visual Studio, sestavte řešení a publikujete ji. Aplikaci můžete spustit v **cílový adresář** publikováním následujícím způsobem:
+Otevřete projekt **opcpublisher. sln** se sadou Visual Studio, sestavte řešení a publikujte ho. Aplikaci můžete spustit v **cílovém adresáři** , do kterého jste publikovali následujícím způsobem:
 
 ```cmd
 dotnet opcpublisher.dll <applicationname> [<IoT Hubconnectionstring>] [options]
 ```
 
-## <a name="use-a-self-built-container"></a>Použití sami sestavili kontejneru
+## <a name="use-a-self-built-container"></a>Použití samostatně vytvořeného kontejneru
 
-Vytvoření vlastní kontejner, spusťte ji následujícím způsobem:
+Sestavte vlastní kontejner a spusťte ho následujícím způsobem:
 
 ```sh/cmd
 docker run <your-container-name> <applicationname> [<IoT Hubconnectionstring>] [options]
 ```
 
-## <a name="use-a-container-from-microsoft-container-registry"></a>Použití kontejneru z registru kontejneru Microsoft
+## <a name="use-a-container-from-microsoft-container-registry"></a>Použití kontejneru z Microsoft Container Registry
 
-V Microsoftu Container Registry je k dispozici předem připravených kontejneru. Spusťte následujícím způsobem:
+V Microsoft Container Registry je k dispozici předem vytvořený kontejner. Spusťte ji následujícím způsobem:
 
 ```sh/cmd
 docker run mcr.microsoft.com/iotedge/opc-publisher <applicationname> [<IoT Hubconnectionstring>] [options]
 ```
 
-Zkontrolujte [Docker Hubu](https://hub.docker.com/_/microsoft-iotedge-opc-publisher) zobrazíte podporované operační systémy a architektury procesoru. Pokud je podporován operační systém a procesor architektury, Docker automaticky vybere ten správný kontejner.
+Zkontrolujte [Docker Hub](https://hub.docker.com/_/microsoft-iotedge-opc-publisher) a podívejte se na podporované operační systémy a architektury procesorů. Pokud je podporován operační systém a architektura procesoru, Docker automaticky vybere správný kontejner.
 
-## <a name="run-as-an-azure-iot-edge-module"></a>Spustit jako modul služby Azure IoT Edge
+## <a name="run-as-an-azure-iot-edge-module"></a>Spustit jako modul Azure IoT Edge
 
-Vydavatel OPC je připravená k použití jako [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge) modulu. Při použití vydavatele OPC jako modul IoT Edge jediný podporovaný přenosové protokoly jsou **Amqp_Tcp_Only** a **Mqtt_Tcp_Only**.
+Vydavatel OPC je připravený k použití jako modul [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge) . Pokud používáte OPC Publisher jako modul IoT Edge, jediné podporované přenosové protokoly jsou **Amqp_Tcp_Only** a **Mqtt_Tcp_Only**.
 
-Přidáte modul vydavatele OPC pro vaše nasazení IoT Edge přejděte na nastavení služby IoT Hub na webu Azure Portal a proveďte následující kroky:
+Pokud chcete přidat vydavatele OPC jako modul do nasazení IoT Edge, v Azure Portal klikněte na nastavení IoT Hub a proveďte následující kroky:
 
-1. Přejděte na **IoT Edge** a vytvořte nebo vyberte zařízení IoT Edge.
+1. Přejít na **IoT Edge** a vytvořit nebo vybrat IoT Edge zařízení.
 1. Vyberte **Nastavit moduly**.
-1. Vyberte **přidat** pod **moduly nasazení** a potom **modul IoT Edge**.
-1. V **název** zadejte **vydavatele**.
-1. V **identifikátor URI Image** zadejte `mcr.microsoft.com/iotedge/opc-publisher:<tag>`
-1. Dostupné značky můžete najít na [Docker Hubu](https://hub.docker.com/_/microsoft-iotedge-opc-publisher)
-1. Vložte následující kód JSON do **možnosti vytvoření kontejneru** pole:
+1. V části **moduly nasazení** vyberte **přidat** a pak **IoT Edge modul**.
+1. Do pole **název** zadejte **Publisher**.
+1. Do pole **identifikátor URI image** zadejte `mcr.microsoft.com/iotedge/opc-publisher:<tag>`
+1. Dostupné značky najdete v [Docker Hub](https://hub.docker.com/_/microsoft-iotedge-opc-publisher) .
+1. Vložte následující JSON do pole **možnosti vytvoření kontejneru** :
 
     ```json
     {
@@ -385,10 +385,10 @@ Přidáte modul vydavatele OPC pro vaše nasazení IoT Edge přejděte na nastav
     }
     ```
 
-    Tato konfigurace nakonfiguruje IoT Edge a spusťte kontejner volá **vydavatele** použití vydavatele OPC image. Název hostitele systému kontejneru je nastavena na **vydavatele**. Vydavatel OPC je volána s argumentem příkazového řádku následující: `--aa`. Pomocí této možnosti důvěřuje vydavatel OPC certifikáty serverů OPC UA, který se připojuje ke službě. Můžete použít všechny parametry příkazového řádku vydavatel OPC. Jediným omezením je velikost **možnosti vytvoření kontejneru** podporuje IoT Edge.
+    Tato konfigurace nakonfiguruje IoT Edge ke spuštění kontejneru s názvem **Publisher** pomocí Image vydavatele OPC. Název hostitele systému kontejneru je nastaven na hodnotu **Publisher**. Vydavatel OPC se volá s následujícím argumentem příkazového řádku: `--aa`. Pomocí této možnosti Vydavatel OPC důvěřuje certifikátům serverů OPC UA, ke kterým se připojuje. Můžete použít jakékoli možnosti příkazového řádku pro vydavatele OPC. Jediným omezením je velikost **kontejneru pro vytváření kontejnerů** , které podporuje IoT Edge.
 
 1. Ostatní nastavení ponechte beze změny a vyberte **Uložit**.
-1. Pokud chcete zpracovat výstup vydavatele OPC místně se jiný modul IoT Edge, přejděte zpátky k **nastavit moduly** stránky. Pak přejděte **určení tras** karta a přidat novou trasu vypadá podobně jako následující kód JSON:
+1. Pokud chcete zpracovat výstup vydavatele OPC lokálně s jiným modulem IoT Edge, vraťte se na stránku **nastavit moduly** . Pak přejít na kartu **zadat trasy** a přidejte novou trasu, která bude vypadat jako následující JSON:
 
     ```json
     {
@@ -399,13 +399,13 @@ Přidáte modul vydavatele OPC pro vaše nasazení IoT Edge přejděte na nastav
     }
     ```
 
-1. Zpátky **nastavit moduly** stránce **Další**, dokud se nedostanete na poslední stránku konfigurace.
-1. Vyberte **odeslat** odeslat konfiguraci na hraničních zařízeních IoT.
-1. Pokud jste začali IoT Edge na hraniční zařízení a kontejneru dockeru **vydavatele** běží, si můžete prohlédnout výstup protokolu vydavatel OPC s použitím `docker logs -f publisher` nebo když Nahlédnete souboru protokolu. V předchozím příkladu se soubor protokolu je vyšší než `d:\iiotegde\publisher-publisher.log`. Můžete také použít [iot-edge – opc vydavatel diagnostický nástroj, který](https://github.com/Azure-Samples/iot-edge-opc-publisher-diagnostics).
+1. Zpátky na stránce **nastavit moduly** vyberte **Další**, dokud nedosáhnete poslední stránky konfigurace.
+1. Vyberte **Odeslat** pro odeslání konfigurace do IoT Edge.
+1. Po spuštění IoT Edge na hraničním zařízení a v případě, že je spuštěný **Vydavatel** kontejneru Docker, můžete zjistit výstup protokolu OPC vydavatele pomocí `docker logs -f publisher` nebo zkontrolováním souboru protokolu. V předchozím příkladu je soubor protokolu výše `d:\iiotegde\publisher-publisher.log`. Můžete také použít [Nástroj IoT-Edge-OPC-Publish-Diagnostics](https://github.com/Azure-Samples/iot-edge-opc-publisher-diagnostics).
 
-### <a name="make-the-configuration-files-accessible-on-the-host"></a>Ujistěte se, konfigurační soubory dostupné na hostiteli
+### <a name="make-the-configuration-files-accessible-on-the-host"></a>Zpřístupněte konfigurační soubory na hostiteli.
 
-Chcete-li IoT Edge module konfiguračních souborů v hostitelském systému souborů k dispozici, použijte následující **možnosti vytvoření kontejneru**. V následujícím příkladu je nasazení pomocí Linuxu kontejnery pro Windows:
+Chcete-li zpřístupnit konfigurační soubory modulu IoT Edge v hostitelském systému souborů, použijte následující **možnosti vytvoření kontejneru**. Následující příklad je nasazení pomocí kontejnerů Linux pro systém Windows:
 
 ```json
 {
@@ -422,13 +422,13 @@ Chcete-li IoT Edge module konfiguračních souborů v hostitelském systému sou
 }
 ```
 
-S těmito možnostmi vydavatel OPC načte uzly by měli zveřejnit ze souboru `./pn.json` kontejneru pracovní adresář nastaven na `/appdata` při spuštění. S těmito nastaveními vydavatel OPC načte soubor `/appdata/pn.json` z kontejneru zobrazíte její konfiguraci. Bez `--pf` možnost vydavatele OPC se pokusí přečíst výchozí konfigurační soubor `./publishednodes.json`.
+Pomocí těchto možností Vydavatel OPC přečte uzly, které by měly publikovat ze souboru `./pn.json` a pracovní adresář kontejneru je nastaven na `/appdata` při spuštění. Pomocí těchto nastavení OPC Publisher přečte soubor `/appdata/pn.json` z kontejneru, aby získal konfiguraci. Bez možnosti `--pf` se Vydavatel OPC pokusí přečíst výchozí konfigurační soubor `./publishednodes.json`.
 
-Soubor protokolu s použitím výchozí název `publisher-publisher.log`, jsou zapsána do `/appdata` a `CertificateStores` adresář se vytvoří taky v tomto adresáři.
+Soubor protokolu s použitím výchozího názvu `publisher-publisher.log`se zapisuje do `/appdata` a v tomto adresáři se taky vytvoří `CertificateStores` adresář.
 
-Chcete-li tyto soubory k dispozici do hostitelského souborového systému, konfigurace kontejneru vyžaduje svazek připojení vazby. `d://iiotedge:/appdata` Vazby mapuje adresář `/appdata`, což je aktuální pracovní adresář při spuštění kontejneru do hostitele adresáře `d://iiotedge`. Bez této možnosti se ukládají data bez souboru při dalším spuštění kontejneru.
+Aby všechny tyto soubory byly k dispozici v hostitelském systému souborů, vyžaduje konfigurace kontejneru přípojný svazek vazby. `d://iiotedge:/appdata` BIND mapuje adresář `/appdata`, což je aktuální pracovní adresář při spuštění kontejneru, do `d://iiotedge`adresáře hostitele. Bez této možnosti nejsou při příštím spuštění kontejneru uchována žádná data souborů.
 
-Pokud používáte kontejnery Windows a pak syntaxe `Binds` parametru se liší. Při spuštění kontejneru pracovní adresář nastaven `c:\appdata`. Do konfiguračního souboru v adresáři `d:\iiotedge`na hostitele, zadejte následující mapování v `HostConfig` části:
+Pokud používáte kontejnery Windows, je syntaxe parametru `Binds` odlišná. Při spuštění kontejneru je pracovní adresář `c:\appdata`. Chcete-li uložit konfigurační soubor do adresáře `d:\iiotedge`na hostiteli, zadejte následující mapování v části `HostConfig`:
 
 ```json
 "HostConfig": {
@@ -438,7 +438,7 @@ Pokud používáte kontejnery Windows a pak syntaxe `Binds` parametru se liší.
 }
 ```
 
-Pokud používáte Linuxové kontejnery v Linuxu, syntaxe `Binds` parametru se liší znovu. Při spuštění kontejneru pracovní adresář nastaven `/appdata`. Do konfiguračního souboru v adresáři `/iiotedge` na hostitele, zadejte následující mapování v `HostConfig` části:
+Pokud používáte kontejnery Linux v systému Linux, syntaxe parametru `Binds` se znovu liší. Při spuštění kontejneru je pracovní adresář `/appdata`. Chcete-li uložit konfigurační soubor do adresáře `/iiotedge` na hostiteli, zadejte následující mapování v části `HostConfig`:
 
 ```json
 "HostConfig": {
@@ -448,106 +448,106 @@ Pokud používáte Linuxové kontejnery v Linuxu, syntaxe `Binds` parametru se l
 }
 ```
 
-## <a name="considerations-when-using-a-container"></a>Informace týkající se použití kontejneru
+## <a name="considerations-when-using-a-container"></a>Předpoklady při použití kontejneru
 
-Následující části uvádějí některé co je potřeba vzít v úvahu při použití kontejneru:
+V následujících částech jsou uvedeny některé věci, které je potřeba vzít v úvahu při používání kontejneru:
 
 ### <a name="access-to-the-opc-publisher-opc-ua-server"></a>Přístup k serveru OPC vydavatele OPC UA
 
-Ve výchozím nastavení server OPC vydavatele OPC UA naslouchá na portu 62222. Pokud chcete zpřístupnit tento příchozí port v kontejneru, použijte následující příkaz:
+Ve výchozím nastavení naslouchá OPC Publisher OPC UA serveru na portu 62222. K vystavení tohoto příchozího portu v kontejneru použijte následující příkaz:
 
 ```sh/cmd
 docker run -p 62222:62222 mcr.microsoft.com/iotedge/opc-publisher <applicationname> [<IoT Hubconnectionstring>] [options]
 ```
 
-### <a name="enable-intercontainer-name-resolution"></a>Povolit intercontainer překlad
+### <a name="enable-intercontainer-name-resolution"></a>Povolit rozlišení názvů pro zahrnutí
 
-Pokud chcete povolit překlad z v rámci kontejneru do jiných kontejnerů, vytvořte uživatele definování síťového mostu docker a připojte se k této síti pomocí kontejneru `--network` možnost. Také přiřadit kontejneru názvem pomocí `--name` možnost následujícím způsobem:
+Pokud chcete povolit překlad IP adres z kontejneru do jiných kontejnerů, vytvořte uživatele definující síť Docker mostu a připojte kontejner k této síti pomocí možnosti `--network`. Pomocí možnosti `--name` přiřaďte kontejner taky název, jak je znázorněno níže:
 
 ```sh/cmd
 docker network create -d bridge iot_edge
 docker run --network iot_edge --name publisher mcr.microsoft.com/iotedge/opc-publisher <applicationname> [<IoT Hubconnectionstring>] [options]
 ```
 
-Kontejner je teď dostupný prostřednictvím názvu `publisher` podle dalších kontejnerů ve stejné síti.
+Kontejner je nyní dosažitelný pomocí názvu `publisher` jinými kontejnery ve stejné síti.
 
-### <a name="access-other-systems-from-within-the-container"></a>Přístup k jiné systémy z v rámci kontejneru
+### <a name="access-other-systems-from-within-the-container"></a>Přístup k jiným systémům v rámci kontejneru
 
-Jiné kontejnery lze dosáhnout pomocí parametrů, které jsou uvedené v předchozí části. Pokud operační systém, který je hostitelem Dockeru je server DNS, nastanou při přístupu k všechny systémy, které jsou známé DNS funguje.
+K ostatním kontejnerům se dá získat pomocí parametrů popsaných v předchozí části. Pokud je v operačním systému, na kterém je Docker hostovaný, povolený DNS, pak přístup ke všem systémům, které služba DNS zná, funguje.
 
-V sítích využívajících službu překladu názvů NetBIOS, povolení přístupu k jiným systémům spuštěním váš kontejner `--add-host` možnost. Tato možnost efektivně přidá položku do kontejneru soubor hostitele:
+V sítích, které používají překlad IP adres rozhraní NetBIOS, povolte přístup k jiným systémům spuštěním kontejneru s možností `--add-host`. Tato možnost efektivně přidá položku do hostitelského souboru kontejneru:
 
 ```cmd/sh
 docker run --add-host mydevbox:192.168.178.23  mcr.microsoft.com/iotedge/opc-publisher <applicationname> [<IoT Hubconnectionstring>] [options]
 ```
 
-### <a name="assign-a-hostname"></a>Přiřaďte název hostitele
+### <a name="assign-a-hostname"></a>Přiřadit název hostitele
 
-Vydavatel OPC používá název hostitele počítače, který je spuštěn na pro generování certifikátů a koncový bod. Docker zvolí náhodný název hostitele, pokud jeden není nastaven `-h` možnost. Následující příklad ukazuje, jak nastavit interní název hostitele kontejneru `publisher`:
+Vydavatel OPC používá název hostitele počítače, na kterém je spuštěný, pro certifikáty a generování koncových bodů. Docker zvolí náhodný název hostitele, pokud některý z možností `-h` nenastaví. Následující příklad ukazuje, jak nastavit interní název hostitele kontejneru na `publisher`:
 
 ```sh/cmd
 docker run -h publisher mcr.microsoft.com/iotedge/opc-publisher <applicationname> [<IoT Hubconnectionstring>] [options]
 ```
 
-### <a name="use-bind-mounts-shared-filesystem"></a>Použít připojení bind (sdílený systém souborů)
+### <a name="use-bind-mounts-shared-filesystem"></a>Použít připojení BIND (sdílený systém souborů)
 
-Namísto použití systému souborů kontejneru, můžete si zvolit hostitele systému souborů k ukládání informací o konfiguraci a soubory protokolu. Chcete-li tuto možnost nakonfigurujte, použijte `-v` možnost `docker run` v režimu připojení vazby.
+Místo použití systému souborů kontejnerů můžete zvolit systém souborů hostitele k ukládání informací o konfiguraci a souborů protokolu. Tuto možnost můžete nakonfigurovat pomocí možnosti `-v` `docker run` v režimu připojení BIND.
 
-## <a name="opc-ua-x509-certificates"></a>Certifikáty OPC UA X.509
+## <a name="opc-ua-x509-certificates"></a>Certifikáty OPC UA X. 509
 
-OPC UA používá certifikáty X.509, ověření klienta OPC UA a serveru při navázání připojení a k šifrování komunikace mezi nimi. Vydavatel OPC používá ke správě všech certifikátů úložišť certifikátů udržované sady OPC UA. Při spuštění vydavatel OPC zkontroluje, jestli existuje certifikát pro sebe sama. Pokud neexistuje žádný certifikát v úložišti certifikátů a jeden není jednou předané v příkazovém řádku, vydavatel OPC vytvoří certifikát podepsaný svým držitelem. Další informace najdete v tématu **InitApplicationSecurityAsync** metoda ve `OpcApplicationConfigurationSecurity.cs`.
+OPC UA používá certifikáty X. 509 k ověřování klienta a serveru OPC UA při navazování připojení a zašifrování komunikace mezi nimi. OPC Publisher používá úložiště certifikátů udržované zásobníkem OPC UA ke správě všech certifikátů. Při spuštění OPC Publisher kontroluje, jestli existuje certifikát pro sebe sama. Pokud v úložišti certifikátů není žádný certifikát a jeden z nich není předaný na příkazovém řádku, vytvoří Vydavatel OPC certifikát podepsaný svým držitelem. Další informace naleznete v tématu metoda **InitApplicationSecurityAsync** v `OpcApplicationConfigurationSecurity.cs`.
 
-Certifikáty podepsané svým držitelem neposkytují zabezpečení, protože nejsou podepsány důvěryhodné certifikační Autority.
+Certifikáty podepsané svým držitelem neposkytují žádné zabezpečení, protože nejsou podepsány důvěryhodnou certifikační autoritou.
 
-Vydavatel OPC poskytuje možností příkazového řádku:
+Vydavatel OPC poskytuje možnosti příkazového řádku pro:
 
-- Načtěte informace o žádosti o podepsání certifikátu z aktuální aplikace certifikát používaný službou vydavatel OPC.
-- Vydavatel OPC zřízení se certifikační Autorita certifikát podepsaný.
-- Certifikát podepsaný zřízení vydavatele OPC se nový pár klíčů a odpovídající certifikační Autority.
-- Přidáte certifikáty důvěryhodné partnera nebo úložiště certifikátů důvěryhodných vystavitelů.
-- Přidejte seznamu odvolaných certifikátů.
-- Odebrat certifikát od důvěryhodné partnera nebo úložiště certifikátů důvěryhodných vystavitelů.
+- Načte informace CSR pro aktuální certifikát aplikace používaný vydavatelem OPC.
+- Zřídit vydavatele OPC s certifikátem podepsaným certifikační autoritou.
+- Zřídit OPC Publisher s novou dvojicí klíčů a porovnávacím certifikátem podepsaným certifikační autoritou.
+- Přidejte certifikáty do úložiště certifikátů důvěryhodného partnera nebo důvěryhodného vystavitele.
+- Přidejte seznam odvolaných certifikátů.
+- Odeberte certifikát z úložiště certifikátů důvěryhodného partnera nebo důvěryhodného vystavitele.
 
-Všechny tyto možnosti umožňují předat parametry s využitím soubory nebo řetězce s kódováním base64.
+Všechny tyto možnosti umožňují předávat parametry pomocí souborů nebo řetězců kódovaných v kódování Base64.
 
-Výchozí typ úložiště pro všechna úložiště certifikátů je systém souborů, které můžete změnit pomocí možnosti příkazového řádku. Protože kontejner neposkytuje trvalého úložiště v jeho systému souborů, je nutné vybrat typ jiném úložišti. Použití Dockeru `-v` možností zachovat certifikát uloží do hostitelského souborového systému nebo na svazku Dockeru. Pokud používáte Docker svazku, můžete předat certifikáty pomocí řetězce s kódováním base64.
+Výchozím typem úložiště pro všechna úložiště certifikátů je systém souborů, který můžete změnit pomocí možností příkazového řádku. Vzhledem k tomu, že kontejner neposkytuje trvalé úložiště v systému souborů, musíte zvolit jiný typ úložiště. Pomocí možnosti Docker `-v` zachovejte úložiště certifikátů v systému souborů hostitele nebo na svazku Docker. Pokud používáte svazek Docker, můžete certifikáty předat pomocí řetězců kódovaných v kódování Base64.
 
-Běhové prostředí ovlivňuje, jak jsou trvalé certifikáty. Vyhněte se vytváření nových úložišť certifikátů při každém spuštění aplikace:
+Běhové prostředí má vliv na to, jak jsou certifikáty trvalé. Vyhněte se vytváření nových úložišť certifikátů při každém spuštění aplikace:
 
-- Běží nativně na Windows, nelze použít certifikát úložiště aplikací typu `Directory` vzhledem k tomu, že přístup k privátnímu klíči se nezdaří. V takovém případě použijte možnost `--at X509Store`.
-- Spuštění jako kontejner dockeru pro Linux, můžete namapovat úložiště certifikátů do hostitelského souborového systému s dockerem možnost Spustit `-v <hostdirectory>:/appdata`. Tato možnost umožňuje certifikát trvalé během spuštění aplikace.
-- Spuštění jako Linux kontejneru dockeru a chcete použít x X509 úložiště pro certifikát aplikace, použijte možnost spustit dockeru `-v x509certstores:/root/.dotnet/corefx/cryptography/x509stores` a možností aplikace `--at X509Store`
+- Spouštění nativně v systému Windows nemůžete použít úložiště certifikátů aplikace typu `Directory`, protože přístup k privátnímu klíči se nezdařil. V takovém případě použijte možnost `--at X509Store`.
+- Běží jako kontejner Docker pro Linux. úložiště certifikátů můžete namapovat na systém souborů hostitele pomocí možnosti Spustit jako Docker `-v <hostdirectory>:/appdata`. Tato možnost způsobí, že se certifikát v rámci aplikace bude trvalý.
+- Běží jako kontejner Docker pro Linux a pro certifikát aplikace chcete použít úložiště x509, použijte možnost spuštění Docker `-v x509certstores:/root/.dotnet/corefx/cryptography/x509stores` a možnost aplikace `--at X509Store`
 
-## <a name="performance-and-memory-considerations"></a>Aspekty týkající se výkonu a paměti
+## <a name="performance-and-memory-considerations"></a>Požadavky na výkon a paměť
 
-Tato část popisuje možnosti pro správu paměti a výkonu:
+Tato část popisuje možnosti správy paměti a výkonu:
 
-### <a name="command-line-parameters-to-control-performance-and-memory"></a>Parametry příkazového řádku k řízení výkonu a paměti
+### <a name="command-line-parameters-to-control-performance-and-memory"></a>Parametry příkazového řádku pro řízení výkonu a paměti
 
-Při spuštění vydavatele OPC, musíte znát vaše požadavky na výkon a paměťové prostředky k dispozici na hostiteli.
+Když spustíte OPC Publisher, budete muset znát požadavky na výkon a paměťové prostředky, které jsou k dispozici na hostiteli.
 
-Výkon a paměť jsou nezávislé a obě závisí na konfiguraci kolik uzlů nakonfigurovaná pro publikování. Ujistěte se, že tyto parametry splňují vaše požadavky:
+Výkon a výkon jsou závislé na konfiguraci, kolik uzlů nakonfigurujete pro publikování. Zajistěte, aby splňovaly vaše požadavky následující parametry:
 
-- IoT Hub odesílá intervalu: `--si`
-- Velikost zprávy služby IoT Hub (výchozí `1`): `--ms`
-- Monitorovaných položek fronty kapacity: `--mq`
+- IoT Hub odeslat interval: `--si`
+- Velikost zprávy IoT Hub (výchozí `1`): `--ms`
+- Kapacita fronty monitorovaných položek: `--mq`
 
-`--mq` Parametr určuje horní mez kapacity vnitřní fronty, který ukládá do vyrovnávací paměti všech oznamování změn hodnotu uzlu OPC. Pokud vydavatel OPC nemůže odesílat zprávy do služby IoT Hub rychlý dostatečně, této fronty vyrovnávací paměti oznámení. Tento parametr nastaví počet oznámení, která můžete do vyrovnávací paměti. Pokud se zobrazí počet položek v této frontě zvyšovat v testovacích běhů, pak aby se zabránilo ztrátě zpráv byste měli:
+Parametr `--mq` určuje horní mez kapacity interní fronty, která ukládá do vyrovnávací paměti všechna oznámení o změně hodnot uzlu OPC. Pokud Vydavatel OPC nemůže odesílat zprávy, aby IoT Hub dostatečně rychle, tato fronta ukládá oznámení do vyrovnávací paměti. Parametr nastaví počet oznámení, která lze ukládat do vyrovnávací paměti. Pokud vidíte, že počet položek v této frontě roste v testovacích běhůch, pak je třeba zabránit tomu, aby se ztrátě zprávy:
 
-- Zkracovat interval odeslání služby IoT Hub
-- Zvětšete velikost zpráv služby IoT Hub
+- Omezení IoT Hubho intervalu odesílání
+- Zvětšit IoT Hub velikost zprávy
 
-`--si` Vynutí parametr vydavatele OPC pro odesílání zpráv do služby IoT Hub v zadaném intervalu. Vydavatel OPC odešle zprávu jako velikost zprávy určené `--ms` parametr je dosaženo, nebo co nejdřív intervalu určeném `--si` parametr je dosaženo. Chcete-li zakázat možnost velikost zprávy, použijte `--ms 0`. V tomto případě vydavatel OPC používá největší velikost možné služby IoT Hub zprávy 256 kB k datům služby batch.
+Parametr `--si` vynutí, aby Vydavatel OPC odesílal zprávy do IoT Hub v zadaném intervalu. Vydavatel OPC pošle zprávu ihned po dosažení velikosti zprávy zadané parametrem `--ms`, nebo jakmile se dosáhne intervalu zadaného parametrem `--si`. Chcete-li zakázat možnost velikosti zprávy, použijte `--ms 0`. V tomto případě používá Vydavatel OPC největší možnou IoT Hub velikost zprávy 256 kB až po dávková data.
 
-`--ms` Umožňuje parametr dávkové zprávy odeslané do služby IoT Hub. Protokol, který používáte Určuje, zda nároky na odesílání zprávy do služby IoT Hub vysokou ve srovnání s skutečný čas odeslat datové části. Pokud váš scénář umožňuje latence při dat přijatý službou IoT Hub, nakonfigurujte vydavatele OPC použít největší velikost zprávy 256 kB.
+Parametr `--ms` umožňuje dávkám odeslat zprávy do IoT Hub. Protokol, který používáte, určuje, zda režie odeslání zprávy do IoT Hub je ve srovnání se skutečným časem odeslání datové části vysoká. Pokud váš scénář umožňuje latenci, když se data ingestují IoT Hub, nakonfiguruje se Vydavatel OPC, aby používal největší velikost zprávy 256 kB.
 
-Před použitím vydavatel OPC v produkčních scénářích testování výkonu a využití paměti za podmínek produkčního prostředí. Můžete použít `--di` parametr zadejte interval v sekundách, po kterou vydavatel OPC zapisuje diagnostické informace.
+Než použijete vydavatele OPC v produkčních scénářích, otestujte využití výkonu a paměti v rámci produkčních podmínek. Pomocí parametru `--di` můžete zadat interval (v sekundách), který OPC Publisher zapisuje diagnostické informace.
 
-### <a name="test-measurements"></a>Měření testu
+### <a name="test-measurements"></a>Měření testů
 
-Následující příklad diagnostics zobrazit měření s různými hodnotami parametru `--si` a `--ms` parametry publikování 500 uzly OPC publikování intervalu 1 sekundu.  Test použil sestavení pro ladění vydavatel OPC ve Windows 10 nativně po dobu 120 sekund. Protokol služby IoT Hub se výchozí protokolu MQTT.
+Následující příklad diagnostiky zobrazuje měření s různými hodnotami pro `--si` a parametry `--ms` publikování 500 uzlů pomocí intervalu publikování OPC 1 sekunda.  Test použil OPC sestavení pro ladění v systému Windows 10 nativně po dobu 120 sekund. Protokol IoT Hub byl výchozí protokol MQTT.
 
-#### <a name="default-configuration---si-10---ms-262144"></a>Výchozí konfigurace (--si – 10ms 262144)
+#### <a name="default-configuration---si-10---ms-262144"></a>Výchozí konfigurace (--si 10--MS 262144)
 
 ```log
 ==========================================================================
@@ -579,9 +579,9 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-Výchozí konfigurace odesílá data do služby IoT Hub každých 10 sekund nebo 256 kB dat je k dispozici pro službu IoT Hub pro ingestování. Tato konfigurace přidá střední latenci asi 10 sekund, ale má nejnižší pravděpodobnost ztrátě dat z důvodu velikostí velkých zpráv. Diagnostický výstup ukazuje nejsou žádné aktualizace ke ztrátě uzlu OPC: `monitored item notifications enqueue failure: 0`.
+Výchozí konfigurace odesílá data IoT Hub každých 10 sekund, nebo pokud je IoT Hub k ingestování k dispozici 256 kB dat. Tato konfigurace přidává střední latenci přibližně 10 sekund, ale má nejnižší pravděpodobnost ztrátě dat z důvodu velké velikosti zprávy. Výstup diagnostiky zobrazuje žádné ztracené aktualizace uzlů OPC: `monitored item notifications enqueue failure: 0`.
 
-#### <a name="constant-send-interval---si-1---ms-0"></a>Konstantní odeslat interval (--si 1 ms - 0)
+#### <a name="constant-send-interval---si-1---ms-0"></a>Interval konstantního odesílání (--si 1--MS 0)
 
 ```log
 ==========================================================================
@@ -613,9 +613,9 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-Pokud velikost zprávy je nastavena na hodnotu 0 vydavatel OPC interně dávek dat s využitím největší podporované služby IoT Hub velikost zprávy, které je 256 kB. Diagnostický výstup ukazuje Průměrná velikost 115,019 bajtů. V této konfiguraci vydavatel OPC nedojde ke ztrátě všech uzlů OPC hodnotu aktualizace a ve srovnání s výchozí má nižší latenci.
+Když je velikost zprávy nastavená na 0, OPC Publisher interně dávkuje data s využitím největší podporované velikosti IoT Hub zpráv, což je 256 kB. Výstup diagnostiky zobrazuje průměrnou velikost zprávy je 115 019 bajtů. V této konfiguraci OPC Publisher neztratí žádné aktualizace hodnot uzlu OPC a ve srovnání s výchozím nastavením má nižší latenci.
 
-### <a name="send-each-opc-node-value-update---si-0---ms-0"></a>Poslat každou aktualizaci hodnotu uzlu OPC (--si 0 – ms 0)
+### <a name="send-each-opc-node-value-update---si-0---ms-0"></a>Poslat každou aktualizaci hodnoty uzlu OPC (--si 0--MS 0)
 
 ```log
 ==========================================================================
@@ -647,9 +647,9 @@ current working set in MB: 96
 ==========================================================================
 ```
 
-Tato konfigurace odešle pro každou hodnotu uzlu OPC změnit zprávy do služby IoT Hub. Zobrazit diagnostiku Průměrná velikost je 234 bajtů, což je malý. Výhodou téhle konfigurace je, že vydavatel OPC nepřidává žádné latence. Počet ztrátou určitých aktualizací hodnotu uzlu OPC (`monitored item notifications enqueue failure: 44624`) je vysoké, což Ujistěte se, tato konfigurace vhodná pro scénáře s velké objemy telemetrických dat pro publikování.
+Tato konfigurace posílá pro každou hodnotu uzlu OPC změnu zprávy na IoT Hub. Diagnostika zobrazuje průměrnou velikost zprávy je 234 bajtů, což je malé. Výhodou této konfigurace je, že vydavatel OPC nepřidá žádnou latenci. Počet ztracených aktualizací OPC uzlů (`monitored item notifications enqueue failure: 44624`) je vysoký, takže tato konfigurace není vhodná pro scénáře s velkým objemem telemetrie, která se má publikovat.
 
-### <a name="maximum-batching---si-0---ms-262144"></a>Maximální dávkové zpracování (--si 0 – ms 262144)
+### <a name="maximum-batching---si-0---ms-262144"></a>Maximální dávkování (--si 0--MS 262144)
 
 ```log
 ==========================================================================
@@ -681,35 +681,35 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-Tato konfigurace dávek tolik aktualizací hodnotu uzlu OPC nejvíce. Maximální velikost zprávy služby IoT Hub je 256 kB, která je tady nakonfigurovaná. Neexistuje žádný interval odeslat požadovaný, což znamená, že objem dat pro službu IoT Hub pro ingestování určuje latence. Tato konfigurace má nejnižší pravděpodobnost ztráty všechny hodnoty uzlu OPC a je vhodný pro publikování vysoký počet uzlů. Při použití této konfigurace, ujistěte se, že váš scénář nemá podmínky, kde je zavedená vysokou latencí, není-li velikost zprávy 256 kB.
+Tato konfigurace dávkuje tolik OPC hodnot, kolik jich je možné aktualizovat. Maximální velikost zprávy IoT Hub je 256 kB, která je konfigurována zde. Nepožaduje se žádný časový interval pro odesílání, což znamená, že množství dat IoT Hub k ingestování určuje latenci. Tato konfigurace má nejnižší pravděpodobnost ztrátě všech hodnot uzlu OPC a je vhodná pro publikování vysokého počtu uzlů. Při použití této konfigurace se ujistěte, že váš scénář nemá podmínky, kde je zavedena vysoká latence, pokud není dosažena velikost zprávy 256 kB.
 
 ## <a name="debug-the-application"></a>Ladění aplikace
 
-Chcete-li ladit aplikaci, otevřete **opcpublisher.sln** řešení pomocí sady Visual Studio a nástroje pro ladění sady Visual Studio.
+Chcete-li ladit aplikaci, otevřete soubor řešení **opcpublisher. sln** pomocí sady Visual Studio a použijte ladicí nástroje sady Visual Studio.
 
-Pokud potřebujete přístup k serveru OPC UA v vydavatele OPC, ujistěte se, že brána firewall povoluje přístup k portu server naslouchá. Výchozí port je: 62222.
+Pokud potřebujete přístup k serveru OPC UA v OPC vydavateli, ujistěte se, že brána firewall umožňuje přístup k portu, na kterém server naslouchá. Výchozí port je: 62222.
 
-## <a name="control-the-application-remotely"></a>Vzdálené řízení aplikace
+## <a name="control-the-application-remotely"></a>Řízení aplikace vzdáleně
 
-Konfigurace uzlů pro publikování můžete udělat pomocí služby IoT Hub přímé metody.
+Konfigurace uzlů pro publikování se dá provádět pomocí IoT Hub přímých metod.
 
-Vydavatel OPC implementuje několik dalších volání přímé metody služby IoT Hub, ke čtení:
+OPC Publisher implementuje několik dalších volání přímých metod IoT Hub pro čtení:
 
 - Obecné informace.
-- Diagnostické informace o relacích, předplatných a monitorované položky OPC.
-- Diagnostické informace o zpráv ve službě IoT Hub a události.
-- Při spuštění protokolu.
-- Posledních 100 řádků v protokolu.
-- Vypněte aplikaci.
+- Diagnostické informace o OPC relacích, předplatných a monitorovaných položkách.
+- Diagnostické informace o IoT Hubch zprávách a událostech.
+- Protokol spuštění.
+- Poslední 100 řádky protokolu
+- Ukončete aplikaci.
 
-Následující úložiště GitHub obsahují nástroje [konfigurace uzlů pro publikování](https://github.com/Azure-Samples/iot-edge-opc-publisher-nodeconfiguration) a [diagnostické informace](https://github.com/Azure-Samples/iot-edge-opc-publisher-diagnostics). Oba nástroje jsou také dostupné jako kontejnery v Docker Hubu.
+Následující úložiště GitHub obsahují nástroje pro [konfiguraci uzlů pro publikování](https://github.com/Azure-Samples/iot-edge-opc-publisher-nodeconfiguration) a [čtení diagnostických informací](https://github.com/Azure-Samples/iot-edge-opc-publisher-diagnostics). Oba nástroje jsou také k dispozici jako kontejnery v Docker Hub.
 
-## <a name="use-a-sample-opc-ua-server"></a>Pomocí ukázky serveru OPC UA
+## <a name="use-a-sample-opc-ua-server"></a>Použití ukázkového serveru OPC UA
 
-Pokud nemáte k dispozici skutečný server OPC UA, můžete použít [ukázkový OPC UA PLC](https://github.com/Azure-Samples/iot-edge-opc-plc) začít. Tato ukázka PLC je také k dispozici v Docker Hubu.
+Pokud nemáte skutečný server OPC UA, můžete začít pomocí [ukázkového OPC UA PLC](https://github.com/Azure-Samples/iot-edge-opc-plc) . Tato ukázková PLC je dostupná taky v Docker Hub.
 
-Implementuje několik značek, které generují náhodná data a značky s anomálie. Ukázku můžete rozšířit, pokud chcete simulovat hodnoty další značky.
+Implementuje několik značek, které generují náhodná data a značky se anomáliemi. Ukázku můžete roztáhnout, pokud potřebujete simulovat další hodnoty značek.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Teď, když jste zjistili, jak spustit vydavatele OPC, doporučených dalších kroků jsou další informace o [OPC Dvojčete](overview-opc-twin.md) a [OPC trezor](overview-opc-vault.md).
+Teď, když jste se naučili, jak spustit OPC Publisher, doporučujeme další postup, jak se dozvědět o [OPC](overview-opc-twin.md) a [OPC trezoru](overview-opc-vault.md).

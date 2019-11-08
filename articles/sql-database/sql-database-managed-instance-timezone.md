@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database časová pásma spravované instance
+title: Časová pásma spravované instance
 description: Další informace o konkrétních časových pásmech Azure SQL Database Managed instance
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 09/03/2019
-ms.openlocfilehash: a578c626cd1edd4a3f7474e59c2e795be2e3c121
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0dbed3db8e106b9bfe1b48ff2b9bc52840fc4c3a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687846"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818864"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Časová pásma ve Azure SQL Database Managed instance
 
@@ -33,7 +33,7 @@ Sada podporovaných časových pásem je děděna ze základního operačního s
 
 [Zásady letního času a časového pásma pro letní](https://aka.ms/time) čas garantuje historickou přesnost od 2010 do výše.
 
-Seznam s názvy podporovaných časových pásem je zveřejněn prostřednictvím zobrazení systému [Sys. time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) .
+Seznam s názvy podporovaných časových pásem je zveřejněn prostřednictvím zobrazení [Sys. time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) System.
 
 ## <a name="set-a-time-zone"></a>Nastavení časového pásma
 

@@ -1,5 +1,5 @@
 ---
-title: Nastavení informací o zabezpečení (Preview) z příkazového řádku pro přihlášení – Azure Active Directory | Microsoft Docs
+title: Nastavení informací o zabezpečení (Preview) z příkazového řádku pro přihlášení – Azure AD
 description: Nastavení bezpečnostních údajů pro svůj pracovní nebo školní účet, pokud se zobrazí výzva na přihlašovací stránce vaší organizace.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e05515c2fd118c21f891be86fae6423affab0324
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 3ae1856c7934c658bd244445306b4bb78c666e38
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160890"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820291"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>Nastavení informací o zabezpečení (Preview) na příkazovém řádku přihlašovací stránky
 

@@ -4,20 +4,21 @@ description: Tento článek popisuje kritéria způsobilosti a požadavky na pub
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: e23a83ab3a5b110f74ab4ac203dfc020e8920c24
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: d56b83c8bd9a71ac30112f9e77a97ed8ab61a137
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285980"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825975"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Konzultační služby pro Azure Marketplace a AppSource
 Konzultační služby v Azure Marketplace a AppSource poskytují partnerům Microsoftu cíle připojení zákazníků k službám pro podporu a rozšiřování jejich používání v Azure a obchodních cílech. 
 
-Azure Marketplace a AppSource podporují seznam konzultačních nabídek služeb od partnerů Microsoftu (SI) od společnosti Microsoft – cílem nabídnout kvalitní konzultační služby, aby se zákazníci mohli spojit s odbornými službami, které potřebují. Pomoc zákazníkům vyhodnocovat, vyhodnocovat a nasazovat správná řešení a implementace, které vám pomůžou s jejich obchodními cíli a cíli.  
+Azure Marketplace a AppSource podporují seznam konzultačních nabídek služeb od partnerů společnosti Microsoft – cílem nabídnout kvalitní konzultační služby, které zákazníkům umožňují připojovat se ke zkušeným službám, které potřebují. Pomoc zákazníkům vyhodnocovat, vyhodnocovat a nasazovat správná řešení a implementace, které vám pomůžou s jejich obchodními cíli a cíli.  
 
 Tyto konzultační nabídky – nabídky služeb jsou zapojení specifické pro zákazníky. Vydavatelé mají možnost určit typ výpisu a s pevným rozsahem a dobou trvání, buď pevné nebo bezplatné, a mají definované agendu s dodávkou k zákazníkovi. Zájemci jsou přijímáni prostřednictvím oznámení v systému CRM partnera a chtějí reagovat na zákazníky během 48 hodin. 
 
@@ -30,14 +31,14 @@ Prodejní místa na webu Marketplace jsou zarovnané na cílové skupiny a cloud
 |Závažnost řešení     |Technické aplikace sestavené pro nebo postavené na Azure|Obchodní aplikace, které využívají nebo rozšířily D365, Power BI, O365 a Azure. (Doplňky nebo dokončené aplikace doplňku)|
 |Možnosti publikování     |Kontaktujte mě, zkušební verzi, transakční službu nebo služby pro Azure|Kontaktujte mě, zkušební verzi nebo služby pro Dynamics 365 a Power BI|
 |V prostředí produktu      |Portál pro správu Azure|Dynamics 365, Office 365, klientské aplikace Office| 
-|Jiné      |Místní publikování prostřednictvím Azure Stack konzultační služby pro Azure, spravované služby pro Azure|Konzultační služby pro Dynamics a Power BI|
+|Ostatní      |Místní publikování prostřednictvím Azure Stack konzultační služby pro Azure, spravované služby pro Azure|Konzultační služby pro Dynamics a Power BI|
 
 Nabídky konzultačních služeb, které jsou založené na Microsoft Dynamics 365 a Power BI mají nárok na seznam Microsoft AppSource. Další informace najdete v tématu [Microsoft AppSource pokynů pro výpis konzultačních služeb](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
 
 Konzultační služby a nabídky spravovaných služeb, které jsou založené na Microsoft Azure, jsou způsobilé pro Azure Marketplace. Další informace najdete v článcích o [publikování konzultační služby Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) a [publikování nabídky spravované služby na Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers).
 
 > [!Note]
-> Konzultační služby v Azure Marketplace by měly využít nabídky zaměřené na * * technickou cílovou skupinu se zaměřením na *technická řešení a služby Azure.* \* * Konzultační služby v AppSource by měly využít nabídky zaměřené na jejich odbornost při doručování kvalitních řešení pro Dynamics 365, Power BI nebo PowerApps, aby využívaly nabídky konzultačních služeb na AppSource.
+> Konzultační služby v Azure Marketplace by měly využít nabídky zaměřené na **technickou cílovou skupinu se zaměřením na *technická řešení a služby Azure.* \* * Konzultační služby v AppSource by měly využít nabídky zaměřené na jejich odbornost při doručování kvalitních řešení pro Dynamics 365, Power BI nebo PowerApps, aby využívaly nabídky konzultačních služeb na AppSource.
 > 
 > 
 > [!TIP]

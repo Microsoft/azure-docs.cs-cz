@@ -1,5 +1,5 @@
 ---
-title: Ukládat zálohy Azure SQL Database po dobu až 10 let
+title: Ukládat zálohy po dobu až 10 let
 description: Přečtěte si, jak Azure SQL Database podporuje ukládání úplných záloh databáze po dobu až 10 let.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 5d6f0797802a622ada1916752bc35c1bae2cde9f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0cd4c45403d59819bf7ba729ea99de76ccf967ca
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689511"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819896"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Ukládat zálohy Azure SQL Database po dobu až 10 let
 

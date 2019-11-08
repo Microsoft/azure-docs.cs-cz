@@ -1,5 +1,5 @@
 ---
-title: Konfigurace veřejného koncového bodu – Azure SQL Database spravovaná instance
+title: Konfigurace spravované instance s veřejným koncovým bodem
 description: Informace o tom, jak nakonfigurovat veřejný koncový bod pro spravovanou instanci
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: 6f953e4c549619a30564bdb061e98761474174c3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a35176770a3100a288ad3da52cd89870e0110f63
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687962"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73828029"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Konfigurace veřejného koncového bodu v Azure SQL Database Managed instance
 
@@ -110,7 +110,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 ## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>Získání připojovacího řetězce veřejného koncového bodu spravované instance
 
 1. Přejděte na stránku konfigurace spravované instance SQL, která je povolená pro veřejný koncový bod. V části konfigurace **Nastavení** vyberte kartu **připojovací řetězce** .
-1. Všimněte si, že název hostitele veřejného koncového bodu je ve formátu < mi_name >. **Public**. < dns_zone >. Database. Windows. NET a port používaný pro připojení je 3342.
+1. Všimněte si, že název hostitele veřejného koncového bodu se nachází ve formátu < mi_name >. **Public**. < dns_zone >. Database. Windows. NET a port používaný pro připojení je 3342.
 
     ![mi-Public-Endpoint-Conn-String. png](media/sql-database-managed-instance-public-endpoint-configure/mi-public-endpoint-conn-string.png)
 

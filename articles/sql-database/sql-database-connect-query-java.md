@@ -1,5 +1,5 @@
 ---
-title: Použití jazyka Java k dotazování na Azure SQL Database
+title: Použití jazyka Java k dotazování
 description: Ukazuje, jak pomocí jazyka Java vytvořit program, který se připojí ke službě Azure SQL Database a provede dotaz pomocí příkazů T-SQL.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ ms.author: andrela
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-java-july2019. seo-java-august2019
-ms.openlocfilehash: 8940e13dcc6d6287984ba1cc7c7510768b4e232f
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6d4d9353e29a29b0cd6db7575e49a00a213355d3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624085"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827044"
 ---
-# <a name="quickstart-use-java-to-connect-to-and-query-an-azure-sql-database"></a>Rychlý start: Použití Java k připojení a dotazování databáze SQL Azure
+# <a name="quickstart-use-java-to-connect-to-and-query-an-azure-sql-database"></a>Rychlý Start: použití Java k připojení a dotazování databáze SQL Azure
 
 Tento článek ukazuje, jak se pomocí [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) připojit k databázi SQL Azure. Pak můžete použít příkazy T-SQL k dotazování dat.
 
@@ -30,7 +30,7 @@ K dokončení této ukázky se ujistěte, že máte následující požadavky:
 
   || Izolovaná databáze | Spravovaná instance |
   |:--- |:--- |:---|
-  | Create| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
+  | Vytvoření| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
   || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
@@ -92,7 +92,7 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
 
 1. V projektu Maven byste už měli mít soubor s názvem *App. Java* , který najdete tady:
 
-   *..\sqltest\src\main\java\com\sqldbsamples\App.java*
+   *.. \sqltest\src\main\java\com\sqldbsamples\App.java*
 
 1. Soubor otevřete a nahraďte jeho obsah následujícím kódem. Pak přidejte příslušné hodnoty pro váš server, databázi, uživatele a heslo.
 
@@ -167,8 +167,8 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Návrh první databáze SQL Azure](sql-database-design-first-database.md)  
+- [Návrh první databáze Azure SQL](sql-database-design-first-database.md)  
 
 - [Ovladač Microsoft JDBC pro SQL Server](https://github.com/microsoft/mssql-jdbc)  
 
-- [Hlášení problémů/kladení dotazů](https://github.com/microsoft/mssql-jdbc/issues)  
+- [Hlášení problémů / kladení dotazů](https://github.com/microsoft/mssql-jdbc/issues)  

@@ -1,22 +1,23 @@
 ---
-title: Návrh první relační databáze – C# Azure SQL Database | Microsoft Docs
+title: Návrh první relační databázeC#
 description: Naučte se navrhovat první relační databázi v jedné databázi v Azure SQL Database C# pomocí ADO.NET.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
+ms.custom: seo-lt-2019
 ms.topic: tutorial
 author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
 ms.date: 07/29/2019
-ms.openlocfilehash: 3359c39b21edad72ce0b9d7feb35d442c842f002
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 201f90ae1ee7309f0271d046f341729c79749421
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640114"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825189"
 ---
-# <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>Kurz: Návrh relační databáze v jedné databázi v rámci Azure SQL Database C&#x23; a ADO.NET
+# <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>Kurz: návrh relační databáze v jedné databázi v rámci Azure SQL Database C&#x23; a ADO.NET
 
 Azure SQL Database je relační databáze jako služba (DBaaS) v Microsoft Cloud (Azure). V tomto kurzu zjistíte, jak pomocí webu Azure Portal a ADO.NET v sadě Visual Studio provádět následující úlohy:
 
@@ -31,7 +32,7 @@ Azure SQL Database je relační databáze jako služba (DBaaS) v Microsoft Cloud
 \* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 > [!TIP]
-> Následující Microsoft Learn modul vám pomůže naučit se zdarma, jak [vyvíjet a konfigurovat aplikaci ASP.NET, která](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)se dotazuje na Azure SQL Database, včetně vytvoření jednoduché databáze.
+> Následující Microsoft Learn modul vám pomůže naučit se zdarma, jak [vyvíjet a konfigurovat aplikaci ASP.NET, která se dotazuje na Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/), včetně vytvoření jednoduché databáze.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,7 +40,7 @@ Instalace sady [Visual Studio 2019](https://www.visualstudio.com/downloads/) neb
 
 ## <a name="create-a-blank-single-database"></a>Vytvoření prázdné jedné databáze
 
-Jedna databáze ve Azure SQL Database je vytvořena s definovanou sadou výpočetních prostředků a prostředků úložiště. Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a spravuje se pomocí databázového [serveru](sql-database-servers.md).
+Jedna databáze ve Azure SQL Database je vytvořena s definovanou sadou výpočetních prostředků a prostředků úložiště. Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a spravuje se pomocí [databázového serveru](sql-database-servers.md).
 
 Pomocí těchto kroků můžete vytvořit prázdnou jedinou databázi.
 
@@ -64,11 +65,11 @@ Pomocí těchto kroků můžete vytvořit prázdnou jedinou databázi.
     | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/naming-conventions). |
     | **Přihlašovací jméno správce serveru** | Libovolné platné jméno | Platná přihlašovací jména najdete v tématu [identifikátory databáze](/sql/relational-databases/databases/database-identifiers). |
     | **Heslo** | Libovolné platné heslo | Heslo musí mít alespoň osm znaků a musí obsahovat znaky ze tří z následujících kategorií: velká písmena, malá písmena, číslice a jiné než alfanumerické znaky. |
-    | **Location** | Libovolné platné umístění | Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/). |
+    | **Umístění** | Libovolné platné umístění | Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/). |
 
     ![create database-server](./media/sql-database-design-first-database/create-database-server.png)
 
-5. Klikněte na tlačítko **vyberte**.
+5. Klikněte na **Vybrat**.
 6. Klikněte na **Cenová úroveň** a zadejte úroveň služby, počet DTU nebo virtuálních jader a velikost úložiště. Můžete prozkoumat možnosti pro počet DTU/virtuální jádra a úložiště, které máte k dispozici pro jednotlivé úrovně služeb.
 
     Po výběru úrovně služby, počtu DTU nebo virtuální jádra a velikosti úložiště klikněte na **použít**.
@@ -92,7 +93,7 @@ Služba SQL Database vytvoří bránu firewall protokolu IP na úrovni serveru. 
 
 2. Zkopírujte tento plně kvalifikovaný název serveru, abyste ho mohli použít pro připojení k serveru a databázím z SQL Server Management Studio.
 
-   ![Název serveru](./media/sql-database-design-first-database/server-name.png)
+   ![název serveru](./media/sql-database-design-first-database/server-name.png)
 
 3. Na panelu nástrojů klikněte na **Nastavit bránu firewall serveru**. Otevře se stránka **Nastavení brány firewall** pro server služby SQL Database.
 
@@ -119,7 +120,7 @@ V tomto kurzu jste se naučili základní databázové úlohy, jako je napříkl
 > * Vytvoření databáze
 > * Nastavení pravidla brány firewall
 > * Připojení k databázi pomocí sady [Visual Studio a jazyka C#](sql-database-connect-query-dotnet-visual-studio.md)
-> * Vytváření tabulek
+> * Vytvoření tabulek
 > * Vložení, aktualizace, odstranění a dotazování dat
 
 Přejděte k dalšímu kurzu, kde se dozvíte o migraci dat.

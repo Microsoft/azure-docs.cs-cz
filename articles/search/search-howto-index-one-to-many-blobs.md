@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 863d38f6ea0f071a1c1a6678d025ec5b37a306dc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 127354e55a81e379825b41759f2b6150ba554a12
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466427"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818545"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>Indexování objektů BLOB pro vytváření více dokumentů hledání
 Ve výchozím nastavení bude indexer objektů BLOB zacházet s obsahem objektu BLOB jako s jedním vyhledávacím dokumentem. Některé hodnoty **parsingMode** podporují scénáře, kdy jednotlivý objekt BLOB může mít za následek více dokumentů pro hledání. Různé typy **parsingMode** , které umožňují indexeru extrahovat více než jeden dokument hledání z objektu BLOB:
@@ -31,7 +31,7 @@ Při použití některého z výše uvedených režimů analýzy jeden objekt BL
 
 Ve výchozím nastavení platí, že pokud nejsou zadána explicitní mapování polí pro pole index klíče, je `AzureSearch_DocumentKey` k němu namapována pomocí funkce mapování `base64Encode` pole.
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 Předpokládejme, že máte definici indexu s následujícími poli:
 + `id`
 + `temperature`
@@ -60,11 +60,11 @@ Když vytvoříte indexer a nastavíte **parsingMode** na `jsonLines` – bez za
 
 Výsledkem tohoto nastavení je index služby Azure Kognitivní hledání obsahující následující informace (pro zkrácení se zkrátilo ID kódované v kódování Base64).
 
-| id | teplota | tlak | časové razítko |
+| id | Teplota | tlak | časové razítko |
 |----|-------------|----------|-----------|
 | aHR0 ... YjEuanNvbjsx | 100 | 100 | 2019-02-13T00:00:00Z |
 | aHR0 ... YjEuanNvbjsy | 33 | 30 | 2019-02-14T00:00:00Z |
-| aHR0 ... YjIuanNvbjsx | 1\. místo | 1\. místo | 2018-01-12T00:00:00Z |
+| aHR0 ... YjIuanNvbjsx | 1 | 1 | 2018-01-12T00:00:00Z |
 | aHR0 ... YjIuanNvbjsy | 120 | 3 | 2013-05-11T00:00:00Z |
 
 ## <a name="custom-field-mapping-for-index-key-field"></a>Mapování vlastních polí pro pole indexového klíče
@@ -99,8 +99,8 @@ Pokud chcete nastavit explicitní mapování polí, ujistěte se, že je _source
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se základní strukturou a pracovním postupem indexování objektů BLOB už neseznámili, měli byste nejdřív projít část [indexování Azure Blob Storage Azure Search](search-howto-index-json-blobs.md) . Další informace o režimech analýzy pro různé typy obsahu objektů BLOB najdete v následujících článcích.
+Pokud jste už neznáte základní strukturu a pracovní postup indexování objektů blob, měli byste nejdřív projít téma [indexování azure BLOB Storage s azure kognitivní hledání](search-howto-index-json-blobs.md) . Další informace o režimech analýzy pro různé typy obsahu objektů BLOB najdete v následujících článcích.
 
 > [!div class="nextstepaction"]
-> [Indexování objektů BLOB CSV](search-howto-index-csv-blobs.md) 
+> [Indexování objektů BLOB CSV](search-howto-index-csv-blobs.md)
 > [INDEXOVÁNÍ objektů BLOB JSON](search-howto-index-json-blobs.md)

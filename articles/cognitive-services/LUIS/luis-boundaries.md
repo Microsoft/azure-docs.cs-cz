@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/07/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 5a65ee27d5175887b7bf0d9146afa025e665657c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0654916b344cf47cf9942b883d62d392c0552979
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488407"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818934"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Hranice pro LUIS model a klíče
 LUIS má několik oblastí hranice. První je [hranice modelu](#model-boundaries), která řídí záměry, entity a funkce v Luis. Druhá oblast má [omezení kvóty](#key-limits) na základě typu klíče. Třetí oblastí hranice je [kombinace kláves](#keyboard-controls) pro řízení webu Luis. Čtvrtá oblast je [mapování světové oblasti](luis-reference-regions.md) mezi vytvářením webu Luis a rozhraními API [koncového bodu](luis-glossary.md#endpoint) Luis. 
@@ -26,7 +26,7 @@ LUIS má několik oblastí hranice. První je [hranice modelu](#model-boundaries
 
 Pokud vaše aplikace překračuje limity a hranice modelu LUIS, zvažte použití aplikace [Luis Dispatch](luis-concept-enterprise.md#dispatch-tool-and-model) nebo [kontejneru Luis](luis-container-howto.md). 
 
-|Oblast|škálování|
+|Oblast|Omezení|
 |--|:--|
 | [Název aplikace][luis-get-started-create-app] | \* Výchozí znak maxima |
 | Aplikace| 500 aplikací na prostředek pro vytváření obsahu Azure |
@@ -35,7 +35,7 @@ Pokud vaše aplikace překračuje limity a hranice modelu LUIS, zvažte použit�
 | Externí entity | žádná omezení |
 | [Záměry][intents]|500 na aplikaci: 499 vlastní záměry a požadovaný záměr _none_ .<br>Aplikace [založená na odesílání](https://aka.ms/dispatch-tool) má odpovídající 500 zdrojů odesílání.|
 | [Seznam entit](./luis-concept-entity-types.md) | Nadřazený objekt: 50, podřízené položky: 20 000. Kanonický název je * výchozí hodnota Maximum znaků. Hodnoty synonym nemají omezení délky. |
-| Entity, které se [naučily počítačem + role](./luis-concept-entity-types.md):<br> Náhled<br>pouh<br>role entity|Limit buď pro 100 nadřazených entit, nebo na 330 entit, podle toho, které uživatele omezují napřed. Role se počítá jako entita pro účely této hranice. Příklad je složený s jednoduchou entitou, která má 2 role: 1 složený + 1 jednoduché + 2 role = 4 entit 330.|
+| Entity, které se [naučily počítačem + role](./luis-concept-entity-types.md):<br> Náhled<br>pouh<br>role entity|Limit buď pro 100 nadřazených entit, nebo na 330 entit, podle toho, které uživatele omezují napřed. Role se počítá jako entita pro účely této hranice. Příklad je složený s jednoduchou entitou, která má 2 role: 1 složený + 1 jednoduché + 2 role = 4 entit 330.<br>Dílčí součásti můžou být vnořené až o 5 úrovní.|
 |Model jako funkce| Maximální počet modelů, které lze použít jako popisovač (funkce) pro určitý model na 10 modelů. Maximální počet seznamů frází použitých jako popisovač (funkce) pro určitý model má být 10 frázových seznamů.|
 | [Náhled – entity dynamického seznamu](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 seznamy ~ 1 tisíc na požadavek koncového bodu předpovědi dotazu|
 | [Charakteristiky](luis-concept-patterns.md)|500 vzorů na aplikaci<br>Maximální délka vzorku je 400 znaků.<br>3 vzor. jakékoli entity na vzor<br>Maximálně 2 vnořených volitelných textů ve vzoru|
@@ -62,7 +62,7 @@ Následující musí být jedinečné v rámci aplikace LUIS:
 * Název verze
 * úmysl
 * Právnick
-* prostředků
+* role
 
 Následující musí být jedinečné v rámci použité oblasti:
 
@@ -74,7 +74,7 @@ V následujících názvech nepoužívejte následující znaky.
 
 |Objekt|Vyloučit znaky|
 |--|--|
-|Názvy záměrů, entit a rolí|`:`<br>`$`|
+|Názvy záměrů, entit a rolí|`:`<br>`$` <br> `&`|
 |Název verze|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|
 
 ## <a name="key-usage"></a>Použití klíče

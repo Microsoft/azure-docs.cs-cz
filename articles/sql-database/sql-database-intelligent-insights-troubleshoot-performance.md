@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s výkonem Azure SQL Database s využitím Intelligent Insights
+title: Řešení potíží s výkonem pomocí Intelligent Insights
 description: Intelligent Insights pomáhá řešit problémy s výkonem Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: fef1ed386dbf3acccc09b9bba743b6b33492da0e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b6ec1952d730b6515032572def65806a1ccbc0b2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689714"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810371"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Řešení potíží s výkonem Azure SQL Database s využitím Intelligent Insights
 
@@ -280,7 +280,7 @@ Další informace najdete v tématu [informace o tom, jak SQL Server brání v p
 
 Tento zjistitelný vzor výkonu indikuje stav, ve kterém Změna konfigurace v rámci databáze způsobuje regresi výkonu, která je zjištěna v porovnání s minulým 7 denním chováním úloh. Tento model označuje, že nedávná změna v konfiguraci s rozsahem databáze nemusí být výhodná pro váš výkon databáze.
 
-Změny konfigurace v rámci databáze lze nastavit pro každou jednotlivou databázi. Tato konfigurace se používá na základě případu pro optimalizaci individuálního výkonu vaší databáze. Pro každou jednotlivou databázi je možné nakonfigurovat následující možnosti: MAXDOP, LEGACY_CARDINALITY_ESTIMATION, PARAMETER_SNIFFING, QUERY_OPTIMIZER_HOTFIXES a CLEAR PROCEDURE_CACHE.
+Změny konfigurace v rámci databáze lze nastavit pro každou jednotlivou databázi. Tato konfigurace se používá na základě případu pro optimalizaci individuálního výkonu vaší databáze. Pro každou jednotlivou databázi je možné nakonfigurovat následující možnosti: MAXDOP, LEGACY_CARDINALITY_ESTIMATION, PARAMETER_SNIFFING, QUERY_OPTIMIZER_HOTFIXES a vymazat PROCEDURE_CACHE.
 
 ### <a name="troubleshooting"></a>Řešení potíží
 

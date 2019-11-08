@@ -1,22 +1,22 @@
 ---
-title: PowerShell – otočení TDE ochrany – Azure SQL Database | Microsoft Docs
+title: Otočení ochrany TDE – PowerShell
 description: Naučte se, jak otočit ochranu transparentní šifrování dat (TDE) pro Azure SQL Server.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 464ea73d9b3d7116205377600ffccee13a9e2dcb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5bfcacb9348940e0b36947f6e4e0d27839de35bb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566047"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824687"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>Otočení ochrany transparentní šifrování dat (TDE) pomocí prostředí PowerShell
 
@@ -29,7 +29,7 @@ Tato příručka popisuje dvě možnosti, jak na serveru otočit ochranu TDE.
 >
 
 > [!IMPORTANT]
-> Po přecházení neodstraňujte předchozí verze klíče.  Když se převezmou klíče, některá data se zašifrují s předchozími klíči, jako je třeba starší zálohy databáze. 
+> Po přecházení **neodstraňujte** předchozí verze klíče.  Když se převezmou klíče, některá data se zašifrují s předchozími klíči, jako je třeba starší zálohy databáze. 
 >
 
 ## <a name="prerequisites"></a>Požadavky
@@ -94,6 +94,6 @@ Ruční střídání klíčů používá rutiny [Add-AzKeyVaultKey](/powershell/
 
 ## <a name="next-steps"></a>Další kroky
 
-- V případě bezpečnostního rizika se dozvíte, jak odebrat potenciálně ohrožené ochrany TDE: [Odebrání potenciálně ohroženého klíče](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md) 
+- V případě bezpečnostního rizika se dozvíte, jak odebrat potenciálně ohrožený TDE ochranu: [Odebrání potenciálně ohroženého klíče](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md) . 
 
 - Začínáme s Azure Key Vault integrací a podporou Bring Your Own Key pro TDE: [Zapnutí TDE pomocí vlastního klíče z Key Vault pomocí PowerShellu](transparent-data-encryption-byok-azure-sql-configure.md)

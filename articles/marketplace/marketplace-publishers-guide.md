@@ -4,15 +4,16 @@ description: Přehled Azure Marketplace a Microsoft AppSource pro vydavatele apl
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: cd6b09a1130e50fae7bd83579a0f176af0b5b9cd
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: fba9c481ad9b3da1eb0dd5d8a4ff2499240a8cfa
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962609"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826485"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Příručka pro publikování Azure Marketplace a AppSource
 
@@ -30,7 +31,7 @@ Tato příručka se zabývá následujícími tématy:
 
 Tato příručka obsahuje technickou i firemní informace o krocích, které je třeba provést před uvedením svých aplikací a služeb. Pomocí obsahu můžete přejít k různým částem příručky a přejít přímo ke klíčovým tématům.
 
-Pokud máte dotazy týkající se Azure Marketplace a AppSource, pošlete nám zprávu v části **typ** > problému**připojování Marketplace**.  Náš tým pro zprovoznění publikování na webu Marketplace vám pomůže! 
+Pokud máte dotazy týkající se Azure Marketplace a AppSource, pošlete nám zprávu v části **typ problému** > **registraci do Marketplace**.  Náš tým pro zprovoznění publikování na webu Marketplace vám pomůže! 
 
 ## <a name="benefits-of-participating-in-the-marketplace"></a>Výhody účasti na Marketplace 
 
@@ -56,9 +57,9 @@ Získejte přehled o výkonu svých seznamů prostřednictvím přehledů a anal
 
 Nové výpisy na webu Marketplace mají nárok na nejrůznější sadu bezplatných výhod, které pomůžou partnerům rozšířit svou firmu na webu Marketplace. Tyto výhody spadají do následujících kategorií: 
 
-*   Odbornou Vše, co potřebujete, abyste aplikaci mohli začít spouštět. Od technické podpory, návrhu aplikací a návrhu architektury až po kredity Azure pro vývoj a testování. 
+*   Technický: všechno, co potřebujete, abyste mohli aplikaci připravit ke spuštění. Od technické podpory, návrhu aplikací a návrhu architektury až po kredity Azure pro vývoj a testování. 
 
-*   Společný marketing: Vše, co potřebujete ke spuštění vaší nabídky. Získejte přístup k bezplatným základům pro uvedení na trh od Microsoftu, které vám pomůžou spustit a propagovat vaše řešení. Můžete mít také nárok na další zařazení do marketingové kampaně Microsoftu a příležitosti na webu Marketplace.
+*   Spolumarketing: všechno, co potřebujete ke spuštění vaší nabídky. Získejte přístup k bezplatným základům pro uvedení na trh od Microsoftu, které vám pomůžou spustit a propagovat vaše řešení. Můžete mít také nárok na další zařazení do marketingové kampaně Microsoftu a příležitosti na webu Marketplace.
 
 *   Společný prodej: Začněte nebo Zrychlete svou cestu k prodeji s Microsoftem prostřednictvím webu Marketplace. Přístup k programům a podpoře pro zajištění společného prodeje pomocí Microsoft Teams
 
@@ -66,6 +67,6 @@ Po [odeslání řešení](https://partner.microsoft.com/dashboard/account/v3/enr
 
 Přečtěte si další informace o [výhodách komerčního tržiště](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Projděte si podrobné informace o tématech cloudového tržiště a prozkoumejte obsah vlevo. 

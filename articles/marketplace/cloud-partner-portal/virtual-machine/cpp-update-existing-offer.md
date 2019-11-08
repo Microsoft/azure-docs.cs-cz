@@ -1,173 +1,174 @@
 ---
-title: Aktualizace stávající nabídky virtuálních počítačů na webu Azure Marketplace
-description: Vysvětluje, jak aktualizovat stávající nabídky virtuálních počítačů na webu Azure Marketplace.
+title: Aktualizace existující nabídky virtuálních počítačů v Azure Marketplace
+description: Vysvětluje, jak aktualizovat existující nabídku virtuálních počítačů na Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: ansud
-ms.openlocfilehash: e6099caf949d93abf8c665f61cd9b91d545dd0f4
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 5cbee909b4bd6353ad8fbe9fcbc126dc4a245012
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612537"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823986"
 ---
-# <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Aktualizace stávající nabídky virtuálních počítačů na webu Azure Marketplace
+# <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Aktualizace existující nabídky virtuálních počítačů na Azure Marketplace
 
-Tento článek vás provede různé aspekty nabídky virtuálních počítačů (VM) v aktualizaci [portál partnerů cloudu](https://cloudpartner.azure.com/) a pak znovu publikovat tuto nabídku. 
+Tento článek vás provede různými aspekty aktualizace nabídky virtuálního počítače (VM) v [portál partnerů cloudu](https://cloudpartner.azure.com/) a opětovném publikování této nabídky. 
 
-Existuje mnoho běžné důvody pro aktualizaci nabídky, včetně:
+K dispozici je řada maloobchodechch důvodů, jak aktualizovat nabídku, včetně:
 
--  Přidat novou verzi image virtuálního počítače do existující skladové položky
--  Změna oblasti SKU je k dispozici
+-  Přidat novou verzi image virtuálního počítače do stávajících SKU
+-  Změna oblastí, které jsou k dispozici SKU
 -  Přidat nové SKU
--  Aktualizujte metadata marketplace pro jednotlivé SKU a nabídky
--  Aktualizovat ceny u nabídek
+-  Aktualizace metadat Marketplace pro nabídku nebo jednotlivé SKU
+-  Aktualizace cen pro nabídky s průběžnými platbami
 
-Které vám pomohou tyto úpravy, tento portál nabízí **porovnání** a **historie** funkce.  
+Pro pomoc s těmito úpravami nabízí portál funkce **porovnání** a **Historie** .  
 
 >[!Note]
->Cloud poskytovatele řešení (CSP) partnera kanál vyjádřit výslovný souhlas je nyní k dispozici.  Podrobnosti najdete na [poskytovatele Cloud Solution Provider](../../cloud-solution-providers.md) Další informace o marketingu vaší nabídky prostřednictvím Microsoft CSP partner kanály.
+>Výslovný souhlas kanálu pro partnery Cloud Solution Providers (CSP) je teď k dispozici.  Další informace o marketingu vaší nabídky prostřednictvím kanálů partnerů Microsoft CSP najdete v tématu [Poskytovatelé cloudových řešení](../../cloud-solution-providers.md) .
 
-## <a name="unpermitted-changes-to-vm-offer-or-sku"></a>Nedovolené změny nabídky virtuálních počítačů nebo SKU
+## <a name="unpermitted-changes-to-vm-offer-or-sku"></a>Nepovolené změny nabídky nebo SKU virtuálních počítačů
 
-Existují některé atributy nabídky virtuálních počítačů nebo skladovou jednotku, kterou nelze změnit, jakmile tato nabídka je za provozu na webu Azure Marketplace, hlavně:
+Existují některé atributy nabídky nebo SKU virtuálních počítačů, které nelze změnit, jakmile je nabídka v Azure Marketplace živá, zejména:
 
 -  **ID nabídky** a **ID vydavatele** nabídky
--  **SKU ID** existujících skladových položek
--  Datový disk počet existujících skladových položek
--  Model fakturace nebo licencí se změní na existující skladové položky
--  Cena zvýší na publikované skladové položky
+-  **ID SKU** existujících SKU
+-  Počet stávajících SKU dat pro datový disk
+-  Fakturační a licenční model se mění ve stávajících SKU
+-  Zvýšení ceny na publikovanou SKU
 
 
-## <a name="common-update-operations"></a>Běžné operace update
+## <a name="common-update-operations"></a>Běžné operace aktualizace
 
-I když existují širokou škálu vlastnostmi, které můžete změnit na nabídky virtuálních počítačů, jsou společné následující operace.
+I když existuje celá řada vlastností, které můžete v nabídce virtuálních počítačů změnit, jsou běžné následující operace.
 
-### <a name="update-the-vm-image-version-for-a-sku"></a>Aktualizovat verzi image virtuálního počítače pro SKU
+### <a name="update-the-vm-image-version-for-a-sku"></a>Aktualizace verze image virtuálního počítače pro SKU
 
-Je běžné, že image virtuálního počítače pravidelně aktualizovat opravy zabezpečení, další funkce a tak dále.  V takových případech budete chtít aktualizovat image virtuálního počítače, který odkazuje na skladovou jednotku s použitím následujících kroků:
+Je běžné, že bitová kopie virtuálního počítače se pravidelně aktualizuje pomocí oprav zabezpečení, dalších funkcí atd.  V takových scénářích chcete aktualizovat bitovou kopii virtuálního počítače, kterou vaše SKU odkazuje, pomocí následujících kroků:
 
-1.  Přihlaste se [portál partnerů cloudu](https://cloudpartner.azure.com/).
+1.  Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
 
-2.  V části **všechny nabídky**, najít nabídku na aktualizaci.
+2.  V části **všechny nabídky**Najděte nabídku, která se má aktualizovat.
 
-3.  V **SKU** klikněte na tlačítko na skladovou Položku přidruženou image virtuálního počítače k aktualizaci.
+3.  Na kartě **SKU** klikněte na skladovou jednotku přidruženou k imagi virtuálního počítače a aktualizujte ji.
 
-4.  V části **disková verze**, klikněte na **+ nová verze disku** přidat nové image virtuálního počítače.
+4.  V části **verze disku**klikněte na **+ Nová disková verze** a přidejte novou image virtuálního počítače.
 
-5.  Zadejte nové Image virtuálních počítačů **disková verze**. Verze disku musí podstoupit [sémantickou verzi](https://semver.org/) formátu. Verze by měla mít formát X.Y.Z, kde X, Y a jsou celá čísla. Ověřte, zda je větší než všechny předchozí verze; nové verze, které zadáte v opačném případě po publikování na novou verzi nezobrazí na portálu nebo na webu Azure Marketplace.
+5.  Zadejte novou **verzi disku**imagí virtuálních počítačů. Verze disku musí následovat po formátu [sémantické verze](https://semver.org/) . Verze by měly být ve formátu X. Y. Z, kde X, Y a Z jsou celá čísla. Ověřte, že nová verze, kterou zadáte, je větší než všechny předchozí verze. v opačném případě se nová verze po opětovném publikování nezobrazí na portálu nebo v Azure Marketplace.
 
-6.  Pro **URL virtuálního pevného disku operačního systému**, zadejte [sdílený přístupový podpis (SAS) URI](./cpp-get-sas-uri.md) pro operační systém virtuálního pevného disku. 
+6.  Pro **adresu URL virtuálního pevného disku operačního**systému zadejte [identifikátor URI sdíleného přístupového podpisu (SAS)](./cpp-get-sas-uri.md) , který jste vytvořili pro virtuální pevný disk s operačním systémem. 
 
     > [!WARNING] 
-    > Mezi různými verzemi SKU nejde změnit počet datových disků. Pokud předchozí verze umožňovaly datové disky, které jsou nakonfigurované, musí tuto novou verzi také mít stejný počet datových disků.
+    > Počet datových disků se nesmí měnit mezi různými verzemi SKU. Pokud měly předchozí verze nakonfigurované datové disky, musí mít tato nová verze taky stejný počet datových disků.
 
-7.  Klikněte na **publikovat** spuštění pracovního postupu pro publikování novou verzi virtuálního počítače na webu Azure Marketplace.
-
-
-### <a name="change-region-availability-of-a-sku"></a>Změnit dostupnost v oblastech SKU
-
-V průběhu času můžete zpřístupnit vaše nabídka/SKU v dalších oblastech.  Alternativně můžete chtít zastavit podporu nabídka/SKU v dané oblasti.
-Pokud chcete upravit dostupnosti, postupujte následovně:
-
-1.  Přihlaste se [portál partnerů cloudu](https://cloudpartner.azure.com/).
-
-2.  V části **všechny nabídky** najít nabídky, které chcete aktualizovat.
-
-3.  V **SKU** klikněte na tlačítko jednotky SKU, kterou chcete upravit její dostupnost.
-
-4.  Klikněte na **vybrat země** tlačítko **země/oblast dostupnosti** pole.
-
-5.  Ve skupině dostupnosti oblast rozbalovací přidat nebo odebrat oblasti pro tato skladová položka.
-
-6.  Klikněte na **publikovat** ke spuštění pracovního postupu publikovat k aktualizaci vašeho dostupnosti oblast skladové položky.
-
-Pokud SKU je k dispozici v nové oblasti, budete mít možnost určit ceny pro tuto konkrétní oblast prostřednictvím **exportovat Data ceny** funkce. Pokud přidáváte zpět oblasti, který byl dříve k dispozici před, nebude možné aktualizovat jeho ceny, protože o změně v cenách nejsou povolené.
+7.  Kliknutím na **publikovat** spustíte pracovní postup a publikujete novou verzi virtuálního počítače do Azure Marketplace.
 
 
-### <a name="add-a-new-sku"></a>Přidat novou skladovou Položku
+### <a name="change-region-availability-of-a-sku"></a>Změna dostupnosti oblasti SKU
 
-Následujícím postupem zpřístupnit novou skladovou Položku pro váš stávající nabídky: 
+V průběhu času možná budete chtít, aby vaše nabídka/SKU byla dostupná ve více oblastech.  Alternativně můžete chtít zastavit podporu nabídky/SKU v dané oblasti.
+Chcete-li upravit dostupnost, použijte následující postup:
 
-1.  Přihlaste se [portál partnerů cloudu](https://cloudpartner.azure.com/).
+1.  Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
 
-2.  V části **všechny nabídky** najít nabídky, které chcete aktualizovat.
+2.  V části **všechny nabídky** najdete nabídku, kterou chcete aktualizovat.
 
-3.  V části **skladové položky** klikněte na tlačítko na **přidat novou skladovou Položku** a zadejte **SKU ID** v místní nabídce.
+3.  Na kartě **SKU** klikněte na skladovou položku, kterou chcete změnit její dostupnost.
 
-4.  Opakované publikování virtuálního počítače podle popisu v článku [publikování virtuálního počítače na webu Azure Marketplace](./cpp-publish-offer.md).
+4.  Klikněte na tlačítko **Vybrat země** v poli **dostupnost země/oblasti** .
 
-5.  Klikněte na **publikovat** spuštění pracovního postupu pro publikování nové skladové jednotky.
+5.  V místní nabídce dostupnost oblasti přidejte nebo odeberte oblasti této SKU.
 
+6.  Kliknutím na **publikovat** spustíte pracovní postup publikování a aktualizujete dostupnost oblasti SKU.
 
-### <a name="update-offer-marketplace-metadata"></a>Aktualizace nabídky marketplace metadat
-
-Pomocí následujících kroků pro aktualizaci metadat marketplace – název společnosti, loga, atd. – spojené s nabídkou na: 
-
-1.  Přihlaste se [portál partnerů cloudu](https://cloudpartner.azure.com/).
-
-2.  V části **všechny nabídky** najít nabídky, které chcete aktualizovat.
-
-3.  Přejít **Marketplace** kartu a potom podle pokynů v článku [publikování virtuálního počítače na webu Azure Marketplace](./cpp-publish-offer.md) provést změny metadat.
-
-4.  Klikněte na **publikovat** ke spuštění pracovního postupu publikovat provedené změny.
+Pokud je SKU dostupná v nové oblasti, budete mít možnost zadat ceny pro konkrétní oblast prostřednictvím funkce **exportovat cenové údaje** . Pokud přidáváte oblast zpátky, která byla předtím k dispozici, nebudete moct ceny aktualizovat, protože změny cen nejsou povolené.
 
 
-### <a name="update-pricing-on-published-offers"></a>Aktualizace cen pro publikování nabídek
+### <a name="add-a-new-sku"></a>Přidat novou SKLADOVOU položku
 
-Po publikování vaší nabídky s průběžnými platbami nelze zvýšit přímo ceny SKU.  (Ale můžete vytvořit novou skladovou Položku v rámci stejné nabídky, odstranit staré skladové položky a pak znovu publikovat vaši nabídku pro nové zákazníky.)  Naopak můžete snížit ceny publikované nabídky pomocí následujících kroků:
+K dispozici je nová SKU pro stávající nabídku pomocí následujících kroků: 
 
-1.  Přihlaste se [portál partnerů cloudu](https://cloudpartner.azure.com/).
+1.  Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
 
-2.  V části **všechny nabídky**, najít nabídku na aktualizaci.
+2.  V části **všechny nabídky** najdete nabídku, kterou chcete aktualizovat.
 
-3.  Klikněte na SKU, pro kterou chcete snížit ceny.
+3.  Na kartě **SKU** klikněte na **Přidat novou SKU** a v automaticky otevíraném okně zadejte **ID SKU** .
 
-4.  Pokud jste nastavili informace o cenách v 1 × 1 grafické uživatelské rozhraní, můžete změnit ceny přímo v uživatelském rozhraní. Pokud nastavíte ceny prostřednictvím importu/exportu tabulky, může pouze snížit ceny prostřednictvím funkce importu a exportu.
+4.  Publikujte virtuální počítač znovu, jak je popsáno v článku [publikování virtuálního počítače pro Azure Marketplace](./cpp-publish-offer.md).
+
+5.  Kliknutím na **publikovat** spustíte pracovní postup a publikujete novou skladovou položku.
+
+
+### <a name="update-offer-marketplace-metadata"></a>Aktualizace metadat webu nabídky
+
+Pomocí následujících kroků aktualizujte metadata Marketplace – název společnosti, loga atd. – přidružené k vaší nabídce: 
+
+1.  Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
+
+2.  V části **všechny nabídky** najdete nabídku, kterou chcete aktualizovat.
+
+3.  Přejděte na kartu **Marketplace** a pak postupujte podle pokynů v článku [publikování virtuálního počítače pro Azure Marketplace](./cpp-publish-offer.md) a proveďte změny metadat.
+
+4.  Kliknutím na **publikovat** spustíte pracovní postup, aby se změny publikovaly.
+
+
+### <a name="update-pricing-on-published-offers"></a>Aktualizace cen u publikovaných nabídek
+
+Po publikování nabídky s průběžnými platbami se vám ceny za SKU nedají přímo zvýšit.  (Můžete ale vytvořit novou SKLADOVOU položku v rámci stejné nabídky, odstranit starou SKLADOVOU položku a pak znovu publikovat vaši nabídku pro nové zákazníky.)  Naproti tomu můžete snížit cenu publikované nabídky pomocí následujících kroků:
+
+1.  Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/).
+
+2.  V části **všechny nabídky**Najděte nabídku, která se má aktualizovat.
+
+3.  Klikněte na SKLADOVOU položku, pro kterou chcete snížit ceny.
+
+4.  Pokud jste nastavili ceny v grafickém uživatelském rozhraní 1x1, můžete změnit cenu přímo v uživatelském rozhraní. Pokud jste nastavili ceny pomocí tabulky import/export, můžete snížit ceny jenom pomocí funkce Import/export.
 
 3.  Klikněte na **Uložit**.
 
-4.  Klikněte na **publikovat** ke spuštění pracovního postupu publikovat provedené změny.
+4.  Kliknutím na **publikovat** spustíte pracovní postup, aby se změny publikovaly.
 
-Nové nižší ceny budou viditelné pro nové zákazníky, jakmile je v provozu na webu.  Tato nová cena ovlivní vaše zákazníky následujícími způsoby:
+Nově snížené ceny budou pro nové zákazníky viditelné, jakmile budou na webu aktivní.  Tato nová cena bude mít vliv na vaše zákazníky následujícími způsoby:
 
-- Tato nová míra bude účtovat nové zákazníky. 
-- Stávající zákazníci snížení cen se projeví zpětně na začátku fakturačního cyklu, během které snížení cen začal platit.
-Pokud mají byl již účtuje cyklu, během které došlo k cenu, dostanou při jejich příštím účtovacím období pro snížení ceny refundaci.
+- Novým zákazníkům se bude účtovat Tato nová sazba. 
+- U stávajících zákazníků se snížení ceny projeví zpětně na začátek fakturačního cyklu, během kterého se snížení ceny projeví.
+Pokud již byly za cyklus, během kterých došlo k poklesu cen, účtovány, obdrží během příštího fakturačního cyklu refundaci, aby se pokryla snížená cena.
 
 
 <!-- TD: This has been implemented, need to change the SKU Tab topic to reflect and move this section there. -->
-### <a name="simplified-currency-pricing"></a>Ceny zjednodušené měny
+### <a name="simplified-currency-pricing"></a>Ceny pro zjednodušenou měnu
 
-Od 1. září 2018 se nazývá obsahují nový oddíl **zjednodušená ceny měny** přidá se k portálu. Microsoft je zjednodušení obchodních Azure Marketplace povolením více předvídatelné ceny a kolekce od svých zákazníků po celém světě. Toto zjednodušení bude obsahovat snížení počtu měny, ve kterých jsme vašim zákazníkům faktury.
+Od září 1 2018 se na portál přidá nový oddíl s názvem **zjednodušená měna** . Microsoft zjednodušuje Azure Marketplace podnikání tím, že umožňuje více předvídatelných cen a kolekcí od zákazníků po celém světě. Toto zjednodušení bude zahrnovat omezení počtu měn, ve kterých vaše zákazníky fakturují.
 
-Nový oddíl bude trvat ceny v nových měn. Jakmile všichni zákazníci úspěšně migrováni na nových měn vyrovnání, původní části s cenami se vyřadí z provozu a bude i nadále pouze část zjednodušená ceny měny.
+Nová sekce bude v těchto nových měnách brát v úvahu ceny. Po migraci všech zákazníků do těchto nových měn vyrovnání se původní část ceny vyřadí a zachová se jenom část s cenami za zjednodušenou měnu.
 
-Budete mít až do 1. listopadu 2018 nastavit nové ceny pro oblasti, ve které měně vyrovnání se mění. Nebudete tak zároveň rozšiřujete ceny pro oblasti, ve které není změněn vyrovnání měny.
+K nastavení nové ceny pro oblasti, ve kterých se Měna vyrovnání mění, dostanete do 1. listopadu 2018. Nebudete moct zvýšit cenu za oblasti, ve kterých se Měna vyrovnání nemění.
 
 > [!NOTE] 
-> Pokud používáte rozhraní API pro publikování vaší nabídky, může se zobrazit nová část v rámci nabídky JSON. To by být označena jako `virtualMachinePricingV2` nebo `monthlyPricingV2`, v závislosti na typu nabídky. 
+> Pokud k publikování vaší nabídky používáte rozhraní API, můžete se ve formátu JSON nabídky podívat na novou část. V závislosti na typu nabídky se to dá opatřit jako `virtualMachinePricingV2` nebo `monthlyPricingV2`. 
 
-Pokud máte nějaké dotazy o této změně, obraťte se na [podpory Azure Marketplace](../../support-azure-marketplace.md).
-
-
-## <a name="compare-feature"></a>Porovnání funkcí
-
-Pokud provedete změny u již publikované nabídky, můžete využít **porovnání** funkce Auditovat změny, které byly provedeny. Chcete používat tuto funkci:
-
-1.  V každém okamžiku procesu úprav, klikněte na tlačítko **porovnání** tlačítko pro vaši nabídku.
-
-    ![Porovnejte funkce tlačítko](./media/publishvm_037.png)
+Pokud máte v souvislosti s touto změnou nějaké dotazy, obraťte se na [podporu Azure Marketplace](../../support-azure-marketplace.md).
 
 
-2.  Zobrazit vedle sebe verze marketingové prostředky a metadata.
+## <a name="compare-feature"></a>Compare – funkce
+
+Když provedete změny v již publikované nabídce, můžete využít funkci **porovnání** k auditu provedených změn. Chcete-li použít tuto funkci:
+
+1.  V jakémkoli okamžiku v procesu úprav klikněte na tlačítko **Porovnat** pro vaši nabídku.
+
+    ![Tlačítko porovnat funkci](./media/publishvm_037.png)
 
 
-## <a name="history-of-publishing-actions"></a>Historie publikování akce
+2.  Podívejte se na souběžné verze marketingových assetů a metadat.
 
-Chcete-li zobrazit všechny historické publikační aktivity, klikněte na **historie** položky v levém navigačním řádku nabídek portál partnerů cloudu. Tady budou moci zobrazit časovým razítkem akce, která byla přijata po celou dobu životnosti vaší nabídky na webu Azure Marketplace.  
+
+## <a name="history-of-publishing-actions"></a>Historie akcí publikování
+
+Chcete-li zobrazit všechny historické aktivity publikování, klikněte na položku **Historie** v levém navigačním panelu portál partnerů cloudu. Tady budete moct zobrazit časové razítko, které jste provedli během životnosti vašich Azure Marketplace nabídek.  
 <!-- TD: Add after section authored: For more information, see [History page](../portal-tour/cpp-history-page.md). -->
 

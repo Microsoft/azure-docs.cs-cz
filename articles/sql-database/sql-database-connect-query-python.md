@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: použití Pythonu k dotazování Azure SQL Database'
+title: 'Rychlý Start: použití Pythonu k dotazování'
 description: V tomto tématu se dozvíte, jak pomocí Pythonu vytvořit program, který se připojí ke službě Azure SQL Database a provede dotaz pomocí příkazů jazyka Transact-SQL.
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 32861fa8f8756c4e8d30c055582789d41a92fe7c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 42d5b500a48e427aad2372710597e0266b2e80aa
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331864"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827000"
 ---
 # <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>Rychlý start: Použití Pythonu k dotazování databáze Azure SQL
 
  Tento článek ukazuje, jak použít [Python](https://python.org) pro připojení k databázi SQL Azure a použití příkazů jazyka Transact-SQL k dotazování dat. Další podrobnosti o sadě SDK najdete v naší [referenční](https://docs.microsoft.com/python/api/overview/azure/sql) dokumentaci, [úložišti GitHubu pyodbc](https://github.com/mkleehammer/pyodbc/wiki/)a [ukázce pyodbc](https://github.com/mkleehammer/pyodbc/wiki/Getting-started).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
@@ -30,7 +30,7 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 
   || Izolovaná databáze | Spravovaná instance |
   |:--- |:--- |:---|
-  | Vytváření| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
+  | Vytvoření| [Azure Portal](sql-database-single-database-get-started.md) | [Azure Portal](sql-database-managed-instance-get-started.md) |
   || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
@@ -54,7 +54,7 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 
 Získejte informace o připojení, které potřebujete pro připojení ke službě Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Přejít na stránku **databáze SQL** nebo **spravované instance SQL** .
 
@@ -64,7 +64,7 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
 
 1. V textovém editoru vytvořte nový soubor s názvem *sqltest.py*.  
    
-1. Přidejte následující kód. Nahraďte vlastní hodnoty pro \<Server >, \<database >, \<username > a \<password >.
+1. Přidejte následující kód. Nahraďte vlastní hodnoty pro \<Server >, \<Database >, \<username > a \<Password >.
    
    >[!IMPORTANT]
    >Kód v tomto příkladu používá ukázková data AdventureWorksLT, která můžete zvolit jako zdroj při vytváření databáze. Pokud má vaše databáze jiná data, použijte tabulky z vlastní databáze v dotazu SELECT. 

@@ -1,5 +1,5 @@
 ---
-title: Řešení běžných problémů s připojením ke službě Azure SQL Database
+title: Řešení běžných problémů s připojením
 description: Postup identifikace a řešení běžných chyb připojení pro Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -12,16 +12,16 @@ manager: dcscontentpm
 ms.author: daleche
 ms.reviewer: jrasnik
 ms.date: 01/25/2019
-ms.openlocfilehash: cd0ab6d89d88c594d283dc0718c0f58ebb98bf43
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: dc58e495256bff9521eb6567736700f5ffcd6e4f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090795"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822473"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Řešení potíží s připojením pro Azure SQL Database
 
-Pokud se připojení k Azure SQL Database selžou, zobrazí se [chybové zprávy](sql-database-develop-error-messages.md). Tento článek je centralizované téma, které vám pomůže při řešení potíží s problémy s připojením Azure SQL Database. Zavádí [běžné příčiny](#cause) potíží s připojením, doporučuje Nástroj pro [řešení potíží](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) , který vám pomůže s tím, jak problém vyřešit, a poskytuje kroky pro řešení problémů s přechodem k [přechodným chybám](#troubleshoot-transient-errors) a trvalým nebo nepřechodným [chybám ](#troubleshoot-persistent-errors). 
+Pokud se připojení k Azure SQL Database selžou, zobrazí se [chybové zprávy](sql-database-develop-error-messages.md). Tento článek je centralizované téma, které vám pomůže při řešení potíží s problémy s připojením Azure SQL Database. Zavádí [běžné příčiny](#cause) potíží s připojením, doporučuje Nástroj pro [řešení potíží](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) , který vám pomůže s tím, jak problém vyřešit, a poskytuje kroky pro řešení problémů s [přechodem k přechodným chybám](#troubleshoot-transient-errors) a [trvalým nebo nepřechodným chybám ](#troubleshoot-persistent-errors). 
 
 Pokud narazíte na problémy s připojením, zkuste postup řešení potíží, který je popsaný v tomto článku.
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -81,7 +81,7 @@ Pokud se aplikace trvale nepřipojí k Azure SQL Database, obvykle se jedná o p
 3. Ověřte připojovací řetězec a další nastavení připojení. Viz část připojovací řetězec v [tématu problémy s připojením](sql-database-connectivity-issues.md#connections-to-sql-database).
 4. Ověřte stav služby na řídicím panelu. Pokud se domníváte, že se jedná o oblastní výpadky, přečtěte si téma [zotavení po výpadku](sql-database-disaster-recovery.md) , kde najdete kroky k obnovení do nové oblasti.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Hledat v dokumentaci k Microsoft Azure](https://azure.microsoft.com/search/documentation/)
 * [Zobrazit nejnovější aktualizace služby Azure SQL Database](https://azure.microsoft.com/updates/?service=sql-database)
 

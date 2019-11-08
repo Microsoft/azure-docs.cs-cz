@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database se připojit a rychlé starty dotazů
+title: Připojení a rychlé starty pro dotazy
 description: Rychlé starty pro službu Azure SQL Database, které ukazují připojení k databázi Azure SQL a její dotazování.
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: e7ddd5449b7a12b8586b0c1675690a9cebab57b8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 647bdcf5c8c49b5c942419c78155ed4f61c848bb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690835"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826876"
 ---
 # <a name="quickstarts-azure-sql-database-connect-and-query"></a>Rychlé starty: Azure SQL Database připojení a dotazování
 
 Následující dokument obsahuje odkazy na příklady Azure, které ukazují připojení k databázi Azure SQL a její dotazování. Obsahuje také několik doporučení týkající se protokolu TLS (Transport Level Security).
 
-## <a name="quickstarts"></a>Rychlé starty
+## <a name="quickstarts"></a>Šablony Rychlý start
 
 | |  |
 |---|---|
@@ -59,7 +59,7 @@ K připojení k Azure SQL Database můžete použít různé knihovny a architek
 
 Následující tabulka obsahuje seznam knihoven nebo *ovladačů* připojení, které klientské aplikace mohou používat z různých jazyků pro připojení a používání SQL Server v místním prostředí nebo v cloudu. Můžete je používat v systémech Linux, Windows nebo Docker a používat je k připojení k Azure SQL Database a Azure SQL Data Warehouse. 
 
-| Jazyk | Platforma | Další zdroje informací: | Stáhnout | Začínáme |
+| Jazyk | Platforma | Další zdroje | Stáhnout | Začínáme |
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows, Linux, macOS | [Microsoft ADO.NET pro SQL Server](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-sql-server) | [Stáhnout](https://www.microsoft.com/net/download/) | [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows, Linux, macOS | [Ovladač Microsoft JDBC pro SQL Server](https://msdn.microsoft.com/library/mt484311.aspx) | [Stáhnout](https://go.microsoft.com/fwlink/?linkid=852460) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)

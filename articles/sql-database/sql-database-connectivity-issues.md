@@ -1,5 +1,5 @@
 ---
-title: Práce s přechodnými chybami – Azure SQL Database
+title: Práce s přechodnými chybami
 description: Naučte se řešit potíže, diagnostikovat a zabránit chybu připojení SQL nebo přechodnou chybu v Azure SQL Database.
 keywords: připojení SQL, připojovací řetězec, problémy s připojením, přechodná chyba, Chyba připojení
 services: sql-database
@@ -13,12 +13,12 @@ manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 06/14/2019
-ms.openlocfilehash: 0191506cab9a54ad3978bfa7387c9ba1112ae815
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a943ade4bfc46083fe84274640d979928357a492
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690821"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826798"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Práce s SQL Database problémy s připojením a přechodnými chybami
 
@@ -116,9 +116,9 @@ V rámci prvního pokusu může program opravit chybu a potom se pokusit o přip
 Aby byl tento test praktický, váš program rozpozná parametr modulu runtime, který způsobí, že program provede následující:
 
 - Dočasně přidejte 18456 do seznamu chyb, které je třeba zvážit jako přechodné.
-- Záměrně do uživatelského jména přidejte ' WRONG_ '.
+- Účelně přidejte ' WRONG_ ' k uživatelskému jménu.
 - Po zaznamenání chyby odeberte ze seznamu 18456.
-- Odebere ' WRONG_ ' z uživatelského jména.
+- Z uživatelského jména odeberte ' WRONG_ '.
 - Pokuste se o připojení znovu a očekávat úspěch.
 
 <a id="net-sqlconnection-parameters-for-connection-retry" name="net-sqlconnection-parameters-for-connection-retry"></a>
@@ -277,7 +277,7 @@ Tady jsou některé příkazy SELECT jazyka Transact-SQL, které dotazují proto
 
 | Dotaz na protokol | Popis |
 |:--- |:--- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |Zobrazení [Sys. event_log](https://msdn.microsoft.com/library/dn270018.aspx) nabízí informace o jednotlivých událostech, které obsahují některé, které můžou způsobit přechodné chyby nebo selhání připojení.<br/><br/>V ideálním případě můžete hodnoty **start_time** nebo **end_time** korelovat s informacemi o tom, kdy v klientském programu došlo k potížím.<br/><br/>Chcete-li spustit tento dotaz, je nutné se připojit k *Hlavní* databázi. |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |Zobrazení [Sys. event_log](https://msdn.microsoft.com/library/dn270018.aspx) nabízí informace o jednotlivých událostech, které obsahují některé, které mohou způsobit přechodné chyby nebo selhání připojení.<br/><br/>V ideálním případě můžete sladit **start_time** nebo **end_time** hodnoty informacemi o tom, kdy došlo k potížím s klientským programem.<br/><br/>Chcete-li spustit tento dotaz, je nutné se připojit k *Hlavní* databázi. |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |Zobrazení [Sys. database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) nabízí agregované počty typů událostí pro další diagnostiku.<br/><br/>Chcete-li spustit tento dotaz, je nutné se připojit k *Hlavní* databázi. |
 
 <a id="d-search-for-problem-events-in-the-sql-database-log" name="d-search-for-problem-events-in-the-sql-database-log"></a>

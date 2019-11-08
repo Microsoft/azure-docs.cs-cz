@@ -1,5 +1,5 @@
 ---
-title: Stažení a instalace aplikace Microsoft Authenticator App-Azure Active Directory | Microsoft Docs
+title: Stažení a instalace aplikace Microsoft Authenticator – Azure AD
 description: Jak stáhnout, nainstalovat a používat aplikaci Microsoft Authenticator pro dvoustupňové ověřování.
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15ecdf0feb0d8e5307eac9916748e0bacdf51620
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: ebe80d44d52ffa348413e51cd5e82e8468537479
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616051"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820222"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Stažení a instalace aplikace Microsoft Authenticator
 
@@ -41,7 +41,7 @@ Aplikaci Microsoft Authenticator můžete použít několika způsoby, mezi kter
 > Vaše organizace může vyžadovat, abyste použili ověřovací aplikaci pro přihlášení a přístup k datům a dokumentům vaší organizace. I když se vaše uživatelské jméno může zobrazit v aplikaci, účet není ve skutečnosti nastavený tak, aby fungoval jako metoda ověřování, dokud nedokončíte proces registrace. Další informace najdete v tématu [Přidání pracovního nebo školního účtu](user-help-auth-app-add-work-school-account.md).
 > 
 > [!NOTE]
-> Pokud máte problémy s přihlášením k účtu, přečtěte si téma nemůžete [se přihlásit k vašemu účet Microsoft](https://support.microsoft.com/help/12429) , kde najdete nápovědu.  Získejte další informace o tom, co dělat, když se při pokusu o přihlášení ke účet Microsoft zobrazí zpráva ["tato účet Microsoft neexistují"](https://support.microsoft.com/help/13811) .
+> Pokud máte problémy s přihlášením k účtu, přečtěte si téma [nemůžete se přihlásit k vašemu účet Microsoft](https://support.microsoft.com/help/12429) , kde najdete nápovědu.  Získejte další informace o tom, co dělat, když se při pokusu o přihlášení ke účet Microsoft zobrazí zpráva ["tato účet Microsoft neexistují"](https://support.microsoft.com/help/13811) .
 
 ## <a name="download-and-install-the-app"></a>Stažení a instalace aplikace
 
@@ -52,8 +52,8 @@ Nainstalujte nejnovější verzi Microsoft Authenticator aplikace na základě v
 - **Apple iOS.** V zařízení se systémem Apple iOS [Stáhněte a nainstalujte aplikaci Microsoft Authenticator](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458)do obchodu App Store.
 
 >[!Important]
->Pokud momentálně nepoužíváte mobilní zařízení, můžete aplikaci Microsoft Authenticator získat tak, že si pošlete odkaz ke stažení ze [stránky Microsoft Authenticator](https://www.microsoft.com/account/authenticator).
+>Pokud momentálně nepoužíváte mobilní zařízení, můžete aplikaci Microsoft Authenticator získat tak, že si pošlete odkaz ke stažení ze [stránky Microsoft Authenticator](https://www.microsoft.com/en-us/account/authenticator).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Po stažení a instalaci aplikace je nutné přidat různé účty. Další informace najdete v tématu [Přidání vašich účtů](user-help-auth-app-add-account-overview.md).

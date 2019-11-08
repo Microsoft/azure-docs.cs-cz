@@ -1,5 +1,5 @@
 ---
-title: Povolit automatické ladění pro Azure SQL Database
+title: Povolení automatického ladění
 description: Automatické ladění můžete v Azure SQL Database povolit snadno.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 52e3dd01446a6292c3404f14bd8ebfb32aa00dd6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0abf4bb015be52a10178423a566433b87127a167
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691129"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821917"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Povolení automatického ladění pro monitorování dotazů a zlepšení výkonu úloh
 
@@ -32,7 +32,7 @@ Automatické ladění lze povolit na serveru nebo na úrovni databáze prostřed
 
 ## <a name="enable-automatic-tuning-on-server"></a>Povolit automatické ladění na serveru
 
-Na úrovni serveru můžete zvolit dědění konfigurace automatického ladění z "výchozí hodnoty Azure" nebo Nedědit konfiguraci. Výchozí hodnoty Azure jsou FORCE_LAST_GOOD_PLAN, CREATE_INDEX je zapnuté a DROP_INDEX je zakázané.
+Na úrovni serveru můžete zvolit dědění konfigurace automatického ladění z "výchozí hodnoty Azure" nebo Nedědit konfiguraci. Ve výchozím nastavení Azure jsou povolené FORCE_LAST_GOOD_PLAN, CREATE_INDEX je povolené a DROP_INDEX je zakázané.
 
 ### <a name="azure-portal"></a>portál Azure
 
@@ -41,7 +41,7 @@ Pokud chcete povolit automatické ladění Azure SQL Database logického **serve
 ![Server](./media/sql-database-automatic-tuning-enable/server.png)
 
 > [!NOTE]
-> Upozorňujeme, že v tuto chvíli není možnost **DROP_INDEX** kompatibilní s aplikacemi, které používají přepínání oddílů a pomocné parametry indexu a neměly by být v těchto případech povolené. Vyřazování nepoužívaných indexů se u úrovní služeb Premium a Pro důležité obchodní informace nepodporuje.
+> Upozorňujeme, že možnost **DROP_INDEX** v tuto chvíli není kompatibilní s aplikacemi, které používají přepínání oddílů a pomocné parametry indexu a neměly by být v těchto případech povolené. Vyřazování nepoužívaných indexů se u úrovní služeb Premium a Pro důležité obchodní informace nepodporuje.
 >
 
 Vyberte možnosti automatického ladění, které chcete povolit, a vyberte **použít**.
@@ -54,7 +54,7 @@ Další informace o použití REST API k povolení automatického ladění na se
 
 ## <a name="enable-automatic-tuning-on-an-individual-database"></a>Povolit automatické ladění v individuální databázi
 
-Azure SQL Database vám umožní individuálně zadat konfiguraci automatického ladění pro každou databázi. Na úrovni databáze můžete zvolit dědění konfigurace automatického ladění z nadřazeného serveru, "výchozí nastavení Azure" nebo Nedědit konfiguraci. Ve výchozím nastavení Azure je povolené FORCE_LAST_GOOD_PLAN, CREATE_INDEX je zapnuté a DROP_INDEX je zakázané.
+Azure SQL Database vám umožní individuálně zadat konfiguraci automatického ladění pro každou databázi. Na úrovni databáze můžete zvolit dědění konfigurace automatického ladění z nadřazeného serveru, "výchozí nastavení Azure" nebo Nedědit konfiguraci. Ve výchozím nastavení Azure je povolené FORCE_LAST_GOOD_PLAN, CREATE_INDEX je povolené a DROP_INDEX je zakázané.
 
 > [!TIP]
 > Obecně se doporučuje spravovat konfiguraci automatického ladění na **úrovni serveru** , aby bylo možné v každé databázi automaticky použít stejné nastavení konfigurace. Automatické ladění můžete nakonfigurovat v individuální databázi jenom v případě, že potřebujete, aby tato databáze měla různá nastavení, než ostatní dědí nastavení ze stejného serveru.
@@ -68,7 +68,7 @@ Jednotlivá nastavení automatického ladění je možné pro každou databázi 
 
 ![Databáze](./media/sql-database-automatic-tuning-enable/database.png)
 
-Upozorňujeme, že v tuto chvíli není možnost DROP_INDEX kompatibilní s aplikacemi, které používají přepínání oddílů a pomocné parametry indexu a neměly by být v těchto případech povolené.
+Upozorňujeme, že možnost DROP_INDEX v tuto chvíli není kompatibilní s aplikacemi, které používají přepínání oddílů a pomocné parametry indexu a neměly by být v těchto případech povolené.
 
 Po výběru požadované konfigurace klikněte na **použít**.
 

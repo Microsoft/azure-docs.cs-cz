@@ -1,5 +1,5 @@
 ---
-title: Vytvoření objektu BLOB v Azure Storage pro Node. js
+title: 'Rychlý Start: Klientská knihovna pro Azure Blob Storage v2 pro JavaScript'
 description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Pak pomocí klientské knihovny Azure Storage pro Node. js v2 nahrajte objekt blob do Azure Storage, Stáhněte objekt BLOB a vypište seznam objektů BLOB v kontejneru.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 8d0afc5a224e752bdd745ab4df0473a134b4180b
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 12078300b36412a1507991507a39654acdeb7c69
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609096"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825346"
 ---
-# <a name="upload-download-and-list-blobs-using-the-client-library-for-nodejs"></a>Nahrávání, stahování a výpis objektů BLOB pomocí klientské knihovny pro Node. js
+# <a name="quickstart-azure-blob-storage-client-library-v2-for-javascript"></a>Rychlý Start: Klientská knihovna pro Azure Blob Storage v2 pro JavaScript
 
 V této příručce se dozvíte, jak pomocí klientské knihovny pro Node. js v2 nahrávat, stahovat a vypisovat objekty BLOB pomocí služby Azure Blob Storage.
 

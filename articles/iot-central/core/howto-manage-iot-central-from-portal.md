@@ -1,6 +1,6 @@
 ---
 title: Spravovat IoT Central z Azure Portal | Microsoft Docs
-description: Umožňuje spravovat IoT Central z Azure Portal.
+description: Tento článek popisuje, jak vytvořit a spravovat vaše aplikace IoT Central z Azure Portal.
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 37e016da25be5fad86bc57e3ddf42458852a14bd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 59fc01920a94e8ab3e7037e4bb226ea18a4314bf
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950272"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806514"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Správa IoT Central z Azure Portal
 

@@ -4,15 +4,16 @@ description: Předpoklady pro správu účtů Azure Marketplace v portál partne
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: 09bf8479921c9bd55b98e835a19ea995fa37e20b
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: b0a9f312ba78e148a573064b81ff1f52fbd85c03
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720072"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826665"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Předpoklady pro správu účtů na portál partnerů cloudu 
 
@@ -34,7 +35,7 @@ V následující tabulce jsou uvedeny kroky nutné k úplné registraci jako Mic
 |                   Krok                   |  Výsledná registrace nebo prostředek                     |
 |                  ------                  |  -----------------------------------                    |
 | 1. Zaregistrujte se do Microsoft Partner Network |  ID Microsoft Partner Network pro vaši organizaci |
-| 2. Vytvořte účet Microsoft *           |  Ověřený účet Microsoft, končící @outlook.com, @live.com atd. |
+| 2. Vytvořte účet Microsoft *           |  Ověřený účet Microsoft, končící @outlook.com, @live.comatd. |
 | 3. Odeslání registračního formuláře webu Marketplace | Účet vydavatele na portál partnerů cloudu      |
 | 4. Přihlaste se k portál partnerů cloudu        | Oprávnění vytvářet a publikovat nabídky, spravovat uživatele, shromažďovat metriky Marketplace atd. |
 | 5. Zaregistrujte se do centra pro vývojáře Microsoftu * | Ověřený účet centra vývojářů; oprávnění k provádění transakcí Marketplace  |

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
-ms.openlocfilehash: 82b24b51a103d31bf20bbb7a9fc304095be523d5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0f10936867c101c07cc8d29d68dc45021bfad1b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689839"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810296"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>Pomocí OLTP v paměti můžete zlepšit výkon aplikace v SQL Database
 
@@ -94,7 +94,7 @@ Postup použití této možnosti migrace:
    
    * V SSMS klikněte pravým tlačítkem myši na uzel tabulky.
    * Kliknutím na tlačítko **tabulka skriptů jako** > **vytvořit** > **nové okno dotazu**.
-3. V okně skriptu přidejte do příkazu CREATE TABLE příkaz WITH (MEMORY_OPTIMIZED = ON).
+3. V okně skriptu přidejte do příkazu CREATE TABLE (MEMORY_OPTIMIZED = ON).
 4. Pokud existuje CLUSTEROVANÝ index, změňte ho na neclusterovaný.
 5. Přejmenujte existující tabulku pomocí SP_RENAME.
 6. Vytvořte novou paměťově optimalizovanou kopii tabulky spuštěním upravovaného CREATE TABLE skriptu.

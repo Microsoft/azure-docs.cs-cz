@@ -1,39 +1,40 @@
 ---
 title: Vytvoření nabídky modulu Azure IoT Edge | Azure Marketplace
-description: Jak publikovat nový modul IoT Edge pro web Marketplace.
+description: Jak publikovat nový modul IoT Edge pro Marketplace
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pabutler
-ms.openlocfilehash: 98eb537a5c064cd22b995ae214c8d61db7a8b6b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c1e2f5ac6078309b7bd8753a3fc57a592a67dcec
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942485"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826099"
 ---
-# <a name="create-a-new-iot-edge-module-offer-with-the-cloud-partner-portal"></a>Vytvořit novou nabídku modul IoT Edge s portálem Cloud Partner
+# <a name="create-a-new-iot-edge-module-offer-with-the-cloud-partner-portal"></a>Vytvoření nové nabídky modulu IoT Edge s využitím portál partnerů cloudu
 
-Tento článek popisuje, jak vytvářet a publikovat položku nabídky modul IoT Edge pro Azure Marketplace. Každé nabídky se zobrazí jako vlastní entity na webu Azure Marketplace a je přidružený nejmíň jeden skladové položky.  V rámci nabídky modul IoT Edge se skládá z následujících seskupení prostředků a služeb podpory:
+Tento článek popisuje, jak vytvořit a publikovat položku nabídky IoT Edge modulu pro Azure Marketplace. Každá nabídka se zobrazí jako vlastní entita v Azure Marketplace a je spojena s jednou nebo více SKU.  Nabídka modulu IoT Edge se skládá z následujících skupin prostředků a podpůrných služeb:
 
-|  **Skupiny prostředků**   |  **Popis**  |
+|  **Skupina prostředků**   |  **Popis**  |
 |  ---------------   |  ---------------  |
-|    Skladové položky            |  Nejmenší nasaditelný jednotka nabídky. Jediné nabídky (produktu třídy) může mít více jednotek SKU spojené s nabídkou. SKU můžete použít k rozlišení mezi podporované funkcemi a modely fakturace. |
-|  Marketplace       | Obsahuje marketing, právních i průběžné správy prostředků a specifikace.  <ul><li> Marketingové prostředky zahrnují název nabídky, popis a loga</li> <li> Právní prostředky zahrnují další právní dokumentace, zásady ochrany osobních údajů a podmínky použití</li>  <li> Můžete určit způsob zpracování vede z portálu pro koncové uživatele webu Azure Marketplace umožňuje zásad průběžné správy.</li> </ul> |
-| Podpora            | Obsahuje informace o podpoře kontaktní údaje a zásady |
+|    SKU            |  Nejmenší jednotka v nabídce k nasazení. K jedné nabídce (třídě produktu) může být přidruženo několik SKU přidružených k této nabídce. Můžete použít SKU k odlišení podporovaných funkcí a modelů fakturace. |
+|  Marketplace       | Obsahuje prostředky a specifikace pro marketing, právní a vedoucí.  <ul><li> Marketingové prostředky zahrnují název nabídky, popis a loga.</li> <li> Právní prostředky zahrnují zásady ochrany osobních údajů, podmínek použití a další právní dokumentaci.</li>  <li> Zásady správy potenciálních zákazníků vám umožní určit, jak se mají zpracovávat potenciální zákazníky z portálu Azure Marketplace portál pro koncové uživatele.</li> </ul> |
+| Podpora            | Obsahuje informace o kontaktech a zásadách podpory |
 
 
 ## <a name="new-offer-form"></a>Formulář nové nabídky 
 
-Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/)a pak vyberte **+ nová nabídka** na panelu nabídky vlevo. V nabídce Nová nabídka vyberte **moduly IoT Edge** zobrazíte **nová nabídka** formuláře a zahájit proces definice prostředků pro nové nabídky ioT Edge Module. 
+Přihlaste se k [portál partnerů cloudu](https://cloudpartner.azure.com/)a v levém řádku nabídek vyberte **+ Nová nabídka** . V nabídce nová nabídka vyberte **IoT Edge moduly** pro zobrazení **nového formuláře nabídky** a spusťte proces definování prostředků pro novou nabídku modulu IoT Edge. 
 
-![Nový modul IoT Edge nabízí uživatelské rozhraní výběru](./media/new-iot-edge-module-offer.png)
+![Výběr uživatelského rozhraní nabídky modulu New IoT Edge](./media/new-iot-edge-module-offer.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-**Nová nabídka** stránky pro typ nabídky modul IoT Edge poskytuje sadu karet a pole formuláře, které použijete k vytvoření nové nabídky. Každý z následujících článků vysvětluje, jak karta slouží k definování skupin prostředků a služeb podpory pro nové nabídky modul IoT Edge.
+**Nová stránka nabídky** pro typ nabídky IoT Edge modul poskytuje sadu karet a polí formuláře, které použijete k vytvoření nové nabídky. V následujících článcích se dozvíte, jak pomocí karty definovat skupiny assetů a podpůrné služby pro novou nabídku modulu IoT Edge.
 
 - [Karta Nastavení nabídky](./cpp-offer-settings-tab.md)
 - [Karta Skladové položky](./cpp-skus-tab.md)

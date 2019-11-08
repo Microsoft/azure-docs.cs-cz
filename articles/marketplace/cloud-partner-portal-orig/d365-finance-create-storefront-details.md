@@ -4,15 +4,16 @@ description: Zastaralá a propojená s odpovídajícími články na počítač�
 services: Azure, Marketplace, Cloud Partner Portal,
 author: ChJenk
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: pabutler
-ms.openlocfilehash: 17409daf20e981650cf1716c328c41e615c8b9db
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 819f952eae42235ea4fcd5508d5aee341e446b11
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105526"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819997"
 ---
 # <a name="how-to-fill-out-the-storefront-details-form"></a>Jak vyplnit formulář podrobností prezentace
 
