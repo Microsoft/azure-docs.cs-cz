@@ -5,14 +5,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 11/06/2019
 ms.author: tamram
-ms.openlocfilehash: 60104496006e790887dd9c4b3e4c3196e0ef6444
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3c01cc870b20c8256b215eb700548e6cd69ad0d5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671359"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749013"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Správa nastavení účtu úložiště v Azure Portal
 
@@ -24,7 +24,7 @@ Azure Storage podporuje autorizaci pomocí Azure Active Directory pro úložišt
 
 Nastavení **řízení přístupu** v Azure Portal nabízí jednoduchý způsob, jak přiřadit role RBAC uživatelům, skupinám, objektům služby a spravovaným identitám. Další informace o přiřazování rolí RBAC najdete v tématu [Správa přístupových práv k datům BLOB a front pomocí RBAC](storage-auth-aad-rbac.md).
 
-## <a name="tags"></a>Tags
+## <a name="tags"></a>Značky
 
 Azure Storage podporuje značky Azure Resource Manager k uspořádání prostředků Azure pomocí přizpůsobené taxonomie. Můžete použít značky pro účty úložiště, abyste je mohli seskupit v rámci svého předplatného logickým způsobem.
 
@@ -66,7 +66,7 @@ Změna konfigurace účtu úložiště může způsobit zvýšení nákladů. Da
 
 ## <a name="delete-a-storage-account"></a>Odstranění účtu úložiště
 
-Pokud chcete odebrat účet úložiště, který už nepoužíváte, přejděte na účet úložiště na portálu [Azure Portal](https://portal.azure.com) a klikněte na **Odstranit**. Odstraněním účtu úložiště se odstraní celý účet, včetně všech dat v účtu.
+Pokud chcete odebrat účet úložiště, který už nepoužíváte, přejděte na účet úložiště na [Portálu Azure](https://portal.azure.com) a klikněte na **Odstranit**. Odstraněním účtu úložiště se odstraní celý účet, včetně všech dat v účtu.
 
 > [!WARNING]
 > Odstraněný účet úložiště není možné obnovit ani není možné načíst žádný obsah, který byl součástí účtu před jeho odstraněním. Nezapomeňte si před odstraněním účtu zazálohovat všechno, co chcete uložit. To platí také pro všechny prostředky v rámci účtu – po odstranění jsou objekt blob, tabulka, fronta nebo soubor odstraněny trvale.

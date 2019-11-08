@@ -7,25 +7,25 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: b4c771b406d635410c22db5c1c4687a34a2e6eb0
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 4f2e1a6f18a83d1e6c691f3fbcb0d85c7afd1575
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130021"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795095"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Přizpůsobení CoreDNS pomocí služby Azure Kubernetes
 
 Služba Azure Kubernetes Service (AKS) používá projekt [CoreDNS][coredns] pro správu DNS clusteru a řešení u všech clusterů *1.12. x* a vyšších. Dříve se použil projekt Kube-DNS. Tento projekt Kube-DNS je nyní zastaralý. Další informace o přizpůsobení CoreDNS a Kubernetes najdete v [oficiální dokumentaci pro odesílání dat][corednsk8s].
 
-Jako AKS je spravovaná služba, a proto nemůžete změnit hlavní konfiguraci pro CoreDNS ( *CoreFile*). Místo toho použijete Kubernetes *ConfigMap* k přepsání výchozích nastavení. Pokud chcete zobrazit výchozí AKS CoreDNS ConfigMaps, použijte `kubectl get configmaps --namespace=kube-system coredns -o yaml` příkaz.
+Jako AKS je spravovaná služba, a proto nemůžete změnit hlavní konfiguraci pro CoreDNS ( *CoreFile*). Místo toho použijete Kubernetes *ConfigMap* k přepsání výchozích nastavení. Chcete-li zobrazit výchozí AKS CoreDNS ConfigMaps, použijte příkaz `kubectl get configmaps --namespace=kube-system coredns -o yaml`.
 
 V tomto článku se dozvíte, jak používat ConfigMaps pro základní možnosti přizpůsobení CoreDNS v AKS. Tento přístup se liší od konfigurace CoreDNS v jiných kontextech, jako je například použití CoreFile. Ověřte, že je spuštěná verze CoreDNS, protože hodnoty konfigurace se můžou mezi verzemi měnit.
 
 > [!NOTE]
-> `kube-dns`k dispozici jsou různé [Možnosti přizpůsobení][kubednsblog] prostřednictvím mapy konfigurace Kubernetes. CoreDNS není zpětně kompatibilní s Kube-DNS. Všechna vlastní nastavení, která jste předtím použili, musíte aktualizovat pro použití s CoreDNS.
+> `kube-dns` nabízí různé [Možnosti přizpůsobení][kubednsblog] prostřednictvím mapy konfigurace Kubernetes. CoreDNS není **zpětně** kompatibilní s Kube-DNS. Všechna vlastní nastavení, která jste předtím použili, musíte aktualizovat pro použití s CoreDNS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
@@ -35,7 +35,7 @@ Podporují se všechny integrované moduly plug-in CoreDNS. Nepodporují se žá
 
 ## <a name="rewrite-dns"></a>Přepsat DNS
 
-Jedním z scénářů je provést přepisování názvů DNS průběžně. V následujícím příkladu nahraďte `<domain to be written>` svým vlastním plně kvalifikovaným názvem domény. Vytvořte soubor s názvem `corednsms.yaml` a vložte následující příklad konfigurace:
+Jedním z scénářů je provést přepisování názvů DNS průběžně. V následujícím příkladu nahraďte `<domain to be written>` vlastním plně kvalifikovaným názvem domény. Vytvořte soubor s názvem `corednsms.yaml` a vložte následující příklad konfigurace:
 
 ```yaml
 apiVersion: v1
@@ -49,7 +49,7 @@ data:
         errors
         cache 30
         rewrite name substring <domain to be rewritten>.com default.svc.cluster.local
-        proxy .  /etc/resolv.conf # you can redirect this to a specific DNS server such as 10.0.0.10
+        forward .  /etc/resolv.conf # you can redirect this to a specific DNS server such as 10.0.0.10
     }
 ```
 
@@ -65,18 +65,18 @@ Chcete-li ověřit použití vlastních nastavení, použijte [kubectl Get confi
 kubectl get configmaps --namespace=kube-system coredns-custom -o yaml
 ```
 
-Nyní vynuťte CoreDNS znovu načíst ConfigMap. Příkaz [kubectl Delete pod][kubectl delete] není destruktivní a nezpůsobuje čas. `kube-dns` Lusky se odstraní a Plánovač Kubernetes je pak znovu vytvoří. Tyto nové lusky obsahují změnu hodnoty TTL.
+Nyní vynuťte CoreDNS znovu načíst ConfigMap. Příkaz [kubectl Delete pod][kubectl delete] není destruktivní a nezpůsobuje čas. `kube-dns` lusky se odstraní a Plánovač Kubernetes je pak znovu vytvoří. Tyto nové lusky obsahují změnu hodnoty TTL.
 
 ```console
 kubectl delete pod --namespace kube-system -l k8s-app=kube-dns
 ```
 
 > [!Note]
-> Výše uvedený příkaz je správný. I když se mění `coredns`, nasazení je pod názvem **Kube-DNS** .
+> Výše uvedený příkaz je správný. Když měníme `coredns`, nasazení je pod názvem **Kube-DNS** .
 
-## <a name="custom-proxy-server"></a>Vlastní proxy server
+## <a name="custom-forward-server"></a>Vlastní server pro přeposílání
 
-Pokud potřebujete zadat proxy server pro síťový provoz, můžete vytvořit ConfigMap pro přizpůsobení DNS. V následujícím příkladu aktualizujte `proxy` název a adresu na hodnoty vlastního prostředí. Vytvořte soubor s názvem `corednsms.yaml` a vložte následující příklad konfigurace:
+Pokud pro síťový provoz potřebujete zadat server pro přeposílání, můžete vytvořit ConfigMap pro přizpůsobení DNS. V následujícím příkladu aktualizujte `forward` název a adresu s použitím hodnot pro vlastní prostředí. Vytvořte soubor s názvem `corednsms.yaml` a vložte následující příklad konfigurace:
 
 ```yaml
 apiVersion: v1
@@ -87,7 +87,7 @@ metadata:
 data:
   test.server: | # you may select any name here, but it must end with the .server file extension
     <domain to be rewritten>.com:53 {
-        proxy foo.com 1.1.1.1
+        forward foo.com 1.1.1.1
     }
 ```
 
@@ -95,7 +95,7 @@ Jako v předchozích příkladech vytvořte ConfigMap pomocí příkazu [kubectl
 
 ```console
 kubectl apply -f corednsms.yaml
-kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
+kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
 ```
 
 ## <a name="use-custom-domains"></a>Použití vlastních domén
@@ -115,7 +115,7 @@ data:
     puglife.local:53 {
         errors
         cache 30
-        proxy . 192.11.0.1  # this is my test/dev DNS server
+        forward . 192.11.0.1  # this is my test/dev DNS server
     }
 ```
 
@@ -123,7 +123,7 @@ Jako v předchozích příkladech vytvořte ConfigMap pomocí příkazu [kubectl
 
 ```console
 kubectl apply -f corednsms.yaml
-kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
+kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
 ```
 
 ## <a name="stub-domains"></a>Domény se zástupnými procedurami
@@ -141,12 +141,12 @@ data:
     abc.com:53 {
         errors
         cache 30
-        proxy . 1.2.3.4
+        forward . 1.2.3.4
     }
     my.cluster.local:53 {
         errors
         cache 30
-        proxy . 2.3.4.5
+        forward . 2.3.4.5
     }
 
 ```
@@ -155,7 +155,7 @@ Jako v předchozích příkladech vytvořte ConfigMap pomocí příkazu [kubectl
 
 ```console
 kubectl apply -f corednsms.yaml
-kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
+kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
 ```
 
 ## <a name="hosts-plugin"></a>Modul plug-in hostitele
@@ -187,8 +187,6 @@ Další informace o konceptech základní sítě najdete v tématu [Koncepty sí
 [coredns]: https://coredns.io/
 [corednsk8s]: https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns
 [dnscache]: https://coredns.io/plugins/cache/
-[aks-quickstart-cli]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough
-[aks-quickstart-portal]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete

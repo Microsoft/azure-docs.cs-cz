@@ -1,71 +1,71 @@
 ---
-title: Odolnost proti chybám a zotavení po havárii ve službě Azure SignalR
-description: Přehled o tom, jak nastavit víc instancí služby SignalR k dosažení odolnost proti chybám a zotavení po havárii
+title: Odolnost a zotavení po havárii ve službě Azure Signal
+description: Přehled postupu nastavení více instancí služby signalizace pro zajištění odolnosti a zotavení po havárii
 author: chenkennt
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: eb70e65db4a086afc60e91cadf55a8844b102591
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf0f345b0fbf9fea2512f72c1996c9a1597cc0cd
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61402086"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747642"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Odolnost a zotavení po havárii
 
-Odolnost proti chybám a zotavení po havárii je běžné potřebu online systémy. Službě Azure SignalR již zaručuje 99,9 % dostupnost, ale je stále místní služba.
-Instance služby je vždy spuštěn v jedné oblasti a nebude převzetí služby při selhání do jiné oblasti po výpadku celé oblasti.
+Odolnost proti chybám a zotavení po havárii je běžnou potřebou pro online systémy. Služba signalizace Azure již garantuje 99,9% dostupnost, ale je stále místní službou.
+Instance služby je vždycky spuštěná v jedné oblasti a při výpadku v rámci oblasti se nepřevezme do jiné oblasti.
 
-Místo toho naše sady SDK služby poskytuje funkce pro podporu více instancí služby SignalR a automaticky přepnout na další instance, pokud některé z nich nejsou k dispozici.
-Díky této funkci bude možné obnovit, když je po havárii probíhá, ale budete muset nastavit topologie systému práva sami. Budete se dozvíte, jak k tomu v tomto dokumentu.
+Místo toho poskytuje naše sada SDK funkce pro podporu více instancí služby signalizace a automatické přepnutí na jiné instance, pokud některé z nich nejsou k dispozici.
+Pomocí této funkce se budete moci zotavit, když dojde k havárii, ale budete muset nastavit správnou systémovou topologii sami. V tomto dokumentu se dozvíte, jak to udělat.
 
-## <a name="high-available-architecture-for-signalr-service"></a>Vysoce dostupnou architekturu pro služby SignalR
+## <a name="high-available-architecture-for-signalr-service"></a>Vysoká dostupná architektura pro službu Signal
 
-Pokud chcete mít mezi různými oblastmi odolnost proti chybám pro služby SignalR, budete muset nastavit víc instancí služby v různých oblastech. Takže když jedné oblasti je vypnutý, ostatní může sloužit jako zálohování.
-Při připojování k serveru aplikace víc instancí služby, existují dvě role, primární a sekundární.
-Primární je instancí, který trvá online provozu a sekundární je plně funkční, ale zálohování instance pro primární.
-V naší implementaci SDK vyjednávání se vrátit pouze primární koncové body, tak v případě běžných klienti připojit jenom k primární koncových bodů.
-Ale pokud primární instance je vypnutý, vyjednávání se vrátit sekundární koncové body, takže klient může pořád vytvořit připojení.
-Primární instance a aplikačního serveru jsou připojené přes připojení normální serveru, ale sekundární instance a aplikačního serveru jsou připojené prostřednictvím speciální typ připojení s názvem slabé připojení.
-Hlavní rozdíl slabé připojení je, že ho nepřijme směrování připojení klienta, protože sekundární instance se nachází v jiné oblasti. Směrování klienta do jiné oblasti není optimální volbou (zvyšuje latenci).
+Aby bylo možné zajistit odolnost pro službu Signal u více oblastí, je nutné nastavit více instancí služby v různých oblastech. Takže pokud je jedna oblast mimo provoz, je možné použít jiné jako zálohu.
+Při připojování více instancí služby k aplikačnímu serveru jsou k dispozici dvě role, primární a sekundární.
+Primární je instance, která přebírá online provoz a sekundární je plně funkční, ale instance zálohování pro primární.
+V naší implementaci sady SDK vrátí funkce Negotiate pouze primární koncové body, takže v normálních případech se klienti připojují pouze k primárním koncovým bodům.
+Pokud je však primární instance mimo provoz, vyjednávat vrátí sekundární koncové body, aby klient stále mohl vytvořit připojení.
+Primární instance a Server aplikací jsou propojené prostřednictvím normálního připojení k serveru, ale sekundární instance a Server App Server jsou propojené prostřednictvím speciálního typu připojení označovaného jako slabé připojení.
+Hlavním rozdílem slabého připojení je, že nepřijímá směrování připojení klienta, protože je sekundární instance umístěna v jiné oblasti. Směrování klienta do jiné oblasti není optimální volbou (zvyšuje latenci).
 
-Jedna instance služby může mít různé role, při připojování k více serverů aplikace.
-Jeden typické nastavení pro různé oblasti scénář je, aby dva (nebo více) párů instancí služeb SignalR a serverů aplikací.
-V každé aplikaci, která pár serveru a služby SignalR se nacházejí ve stejné oblasti a služby SignalR je připojen k serveru aplikace jako primární roli.
-Mezi každé aplikaci, která páry serveru a služby SignalR jsou také připojené, ale SignalR bude sekundární při připojování k serveru v jiné oblasti.
+Jedna instance služby může mít různé role při připojování k více aplikačním serverům.
+Jedním z typických nastavení pro scénář mezi jednotlivými oblastmi je mít dvě (nebo více) páry instancí služby signalizace a aplikačních serverů.
+V rámci každého páru aplikačního serveru a služby signalizace se nachází ve stejné oblasti a služba signálu je připojená k aplikačnímu serveru jako primární role.
+Mezi jednotlivými páry aplikační server a služba signalizace se také připojí, ale při připojování k serveru v jiné oblasti se Signale jako sekundární.
 
-V této topologii zprávy z jednoho serveru pořád se dá doručit do všech klientů jako všem serverům aplikace a ze způsobu vzájemného propojení instance služby SignalR.
-Ale když se klient připojí, je vždy směrovat do aplikačního serveru ve stejné oblasti, abyste dosáhli latence sítě optimální.
+V této topologii se může zpráva z jednoho serveru dál doručovat všem klientům, protože se vzájemně spojují všechny aplikační servery a instance služby Signal.
+Pokud je však klient připojen, je vždy směrován do aplikačního serveru ve stejné oblasti, aby bylo dosaženo optimální latence sítě.
 
-Tady je diagram, který znázorňuje tyto topologie:
+Níže je diagram, který znázorňuje takovou topologii:
 
 ![topologie](media/signalr-concept-disaster-recovery/topology.png)
 
-## <a name="configure-app-servers-with-multiple-signalr-service-instances"></a>Konfigurace serverů aplikace s více instancemi služby SignalR
+## <a name="configure-app-servers-with-multiple-signalr-service-instances"></a>Konfigurace aplikačních serverů s více instancemi služby signalizace
 
-Jakmile budete mít servery služby a aplikace SignalR vytvořené v jednotlivých oblastech, můžete nakonfigurovat aplikačních serverů pro připojení k všech instancí služby SignalR.
+Jakmile budete mít službu signalizace a aplikační servery vytvořené v každé oblasti, můžete nakonfigurovat aplikační servery tak, aby se připojovaly ke všem instancím služby signalizace.
 
 Můžete to provést dvěma způsoby:
 
 ### <a name="through-config"></a>Prostřednictvím konfigurace
 
-Můžete měla vědět, jak nastavit připojovací řetězec služby SignalR prostřednictvím prostředí settings/web.cofig proměnné nebo aplikace, prostřednictvím položku konfigurace s názvem `Azure:SignalR:ConnectionString`.
-Pokud máte více koncových bodů, můžete je nastavit v více položek konfigurace, každou v následujícím formátu:
+V položce konfigurace s názvem `Azure:SignalR:ConnectionString`byste už měli znát způsob nastavení připojovacího řetězce služby signalizace prostřednictvím proměnných prostředí/nastavení aplikace/Web. Cofig.
+Pokud máte více koncových bodů, můžete je nastavit v několika položkách konfigurace, každý v následujícím formátu:
 
 ```
-Azure:SignalR:Connection:<name>:<role>
+Azure:SignalR:ConnectionString:<name>:<role>
 ```
 
-Tady `<name>` je název koncového bodu a `<role>` je jeho role (primární nebo sekundární).
-Název je volitelný, ale mohou být užitečné, pokud chcete dále přizpůsobit chování směrování mezi několik koncových bodů.
+Zde je `<name>` název koncového bodu a `<role>` je jeho role (primární nebo sekundární).
+Název je nepovinný, ale bude užitečný, pokud chcete dále přizpůsobit chování směrování mezi několika koncovými body.
 
-### <a name="through-code"></a>Prostřednictvím kódu.
+### <a name="through-code"></a>Prostřednictvím kódu
 
-Pokud chcete uložit připojovací řetězec někde jinde, může také číst ve vašem kódu a použít je jako parametry při volání metody `AddAzureSignalR()` (v ASP.NET Core) nebo `MapAzureSignalR()` (v technologii ASP.NET).
+Pokud upřednostňujete ukládání připojovacích řetězců do jiného, můžete je také přečíst ve svém kódu a použít je jako parametry při volání `AddAzureSignalR()` (v ASP.NET Core) nebo `MapAzureSignalR()` (v ASP.NET).
 
-Tady je ukázkový kód:
+Zde je ukázkový kód:
 
 ASP.NET Core:
 
@@ -88,46 +88,51 @@ app.MapAzureSignalR(GetType().FullName, hub,  options => options.Endpoints = new
     };
 ```
 
-## <a name="failover-sequence-and-best-practice"></a>Pořadí převzetí služeb při selhání a osvědčených postupů
+Můžete nakonfigurovat několik primárních nebo sekundárních instancí. Pokud existuje více primárních nebo sekundárních instancí, vyjednávat vrátí koncový bod v následujícím pořadí:
 
-Nyní máte nastavení systému správné topologie. Pokaždé, když jedna instance služby SignalR je vypnutý, bude online provoz směruje do jiné instance.
-Zde je, co se stane, když primární instance je mimo provoz (a obnoví po určité době):
+1. Pokud existuje aspoň jedna primární instance online, vraťte náhodnou primární online instanci.
+2. Pokud jsou všechny primární instance mimo provoz, vrátí instanci náhodného sekundárního online instance.
 
-1. Instance primární služby je mimo provoz, dojde ke ztrátě připojení všech serverů v této instanci.
-2. Všechny servery připojené k této instanci se označí jako offline a vyjednávání se vrátí tento koncový bod a spouštění vrácení sekundárního koncového bodu.
-3. Všechna připojení klientů v této instanci také byla uzavřena, klienti se znovu připojit. Vzhledem k tomu, že servery aplikace se teď vrátit sekundární koncový bod, klienti se budou připojovat k sekundární instanci.
-4. Sekundární instance nyní přijímá veškerý provoz online. Všechny zprávy ze serveru klientům doručovat stále jako sekundární je připojený ke všem serverům aplikace. Ale klienta na server zprávy jsou směrovány pouze na aplikační server ve stejné oblasti.
-5. Po primární instance je obnovená a zpátky do online režimu, budou aplikačního serveru navázat připojení k němu a označte ji jako v režimu online. Vyjednávání se nyní vrácení primárního koncového bodu znovu tak noví klienti připojeni zpět na primární. Ale existující klienti nebudou vyřadit a budou směrovány do sekundárního, dokud se sami odpojit.
+## <a name="failover-sequence-and-best-practice"></a>Sekvence převzetí služeb při selhání a osvědčené postupy
 
-Následující diagramy ukazují, jak se provádí převzetí služeb při selhání služby SignalR:
+Nyní máte správnou nastavení systémové topologie. Pokaždé, když je instance služby signalizace vypnutá, provoz online bude směrován na jiné instance.
+Tady se stane, co se stane, když primární instance nefunguje (a po nějaké době obnoví):
 
-Fig.1 před převzetí služeb při selhání ![před převzetí služeb při selhání](media/signalr-concept-disaster-recovery/before-failover.png)
+1. Instance primární služby je vypnutá, všechna připojení serveru v této instanci budou zahozena.
+2. Všechny servery připojené k této instanci označí jako offline a vyjednávání zastaví vrácení tohoto koncového bodu a začne vracet sekundární koncový bod.
+3. Všechna připojení klientů u této instance budou také zavřena, klienti se znovu připojí. Protože aplikační servery teď vracejí sekundární koncový bod, klienti se připojí k sekundární instanci.
+4. Nyní sekundární instance přebírá veškerý online provoz. Všechny zprávy ze serveru do klientů je stále možné doručit jako sekundární je připojen ke všem aplikačním serverům. Zprávy klienta se serverem se ale směrují jenom na aplikační server ve stejné oblasti.
+5. Po obnovení primární instance a návratu do režimu online bude aplikační server znovu navázat připojení k tomuto serveru a označí ho jako online. Vyjednávání bude nyní vracet znovu primární koncový bod, takže noví klienti budou připojeni zpět k primárnímu. Stávající klienti ale nebudou vyřazeni a budou se dál směrovat do sekundárního, dokud se nepřipojí sami.
 
-Fig.2 po převzetí služeb při selhání ![po převzetí služeb při selhání](media/signalr-concept-disaster-recovery/after-failover.png)
+Níže uvedené diagramy znázorňují, jak se převzetí služeb při selhání provádí ve službě signalizace:
 
-Fig.3 krátkého formátu času, po obnovení primární ![krátkého formátu času, po obnovení primární](media/signalr-concept-disaster-recovery/after-recover.png)
+Obrázek 1 ![před převzetím služeb při selhání](media/signalr-concept-disaster-recovery/before-failover.png)
 
-Zobrazí se v normální velikosti písmen pouze primární aplikačního serveru a služby SignalR online provoz (modře).
-Po převzetí služeb při selhání sekundární aplikační server a služby SignalR také aktivuje.
-Po primární služby SignalR je zpátky do online režimu, budou noví klienti připojovat k primární SignalR. Ale existující klienti připojit k sekundární tak mají obě instance provoz.
-Všechny existující klienti odpojit, systém bude zpět na normální (Fig.1).
+Obrázek 2 po převzetí služeb při selhání ![po převzetí služeb při selhání](media/signalr-concept-disaster-recovery/after-failover.png)
 
-Existují dva hlavní způsoby pro implementaci mezi různými oblastmi vysoce dostupnou architekturu:
+Obrázek. 3 krátká doba po primárním obnovování ![nejkratší čas po primárním obnovování](media/signalr-concept-disaster-recovery/after-recover.png)
 
-1. První z nich je mít pár aplikační server a instance služby SignalR trvá veškerý provoz online, a jinou dvojici jako záložní (volá se aktivní/pasivní vysokou dostupnost, ukazuje Fig.1). 
-2. Druhá je mít dva (nebo více) páry serverů aplikace a instancemi služby SignalR, každá část jedno přijímající online provozu a slouží jako zálohu pro ostatní kombinace (označované jako aktivní/aktivní, podobně jako Fig.3).
+V normálním případě je možné zobrazit pouze primární server aplikací a služba signálu, které mají online provoz (modře).
+Po převzetí služeb při selhání se sekundární aplikační server a služba Signal aktivují také jako aktivní.
+Po opětovném obnovení služby primárního signálu do režimu online se noví klienti připojí k primárnímu signálu. Stávající klienti se ale pořád připojují k sekundárním, takže obě instance budou mít provoz.
+Po odpojení všech stávajících klientů se systém vrátí do normálního (obrázek. 1).
 
-Služby SignalR může podporovat oba vzorky, hlavní rozdíl je, jak implementovat serverů aplikací.
-Servery aplikace jsou aktivní/pasivní vysokou dostupnost, služby SignalR bude aktivní/pasivní vysoká dostupnost také (jak primární aplikačního serveru vrátí pouze jeho primární instance služby SignalR).
-Pokud jsou servery aplikace aktivní/aktivní, SignalR také bude služba aktivní/aktivní (jako všechny servery aplikace vrátí svá vlastní primární instance SignalR, takže všechny z nich dokážete zajistit provoz).
+Existují dva hlavní vzory pro implementaci architektury s vysokou dostupností mezi oblastmi:
 
-Třeba poznamenat, bez ohledu na to, které vzory, které chcete použít, budete muset připojit k serveru aplikace jako primární každá instance služby SignalR.
+1. První z nich je mít dvojici instancí aplikačního serveru a služby Signal Service, které přebírají všechny online přenosy, a mají další dvojici jako zálohu (s názvem aktivní/pasivní, znázorněnou na obrázku obrázek 1). 
+2. Druhý má dvě (nebo víc) dvojic aplikačních serverů a instancí služby Signal, přičemž každý z nich se účastní provozu online provozu a slouží jako záloha pro jiné páry (s názvem aktivní/aktivní, podobně jako na obrázku. 3).
 
-Také vzhledem k povaze připojení SignalR (jde o připojení pro dlouhé) klientů bude docházet k připojení nedojde k havárii a provést převzetí služeb při selhání.
-Budete potřebovat pro zpracování takových případech na straně klienta, aby byla transparentní pro vaše koncové zákazníky. Třeba znovu připojte po ukončení připojení.
+Služba signalizace podporuje oba vzory. hlavní rozdíl spočívá v tom, jak implementujete aplikační servery.
+Pokud jsou aplikační servery aktivní/pasivní, služba signalizace bude taky aktivní/pasivní (protože primární server aplikace vrátí jenom primární instanci služby signalizace).
+Pokud jsou aplikační servery aktivní/aktivní, bude služba Signal Service taky aktivní/aktivní (protože všechny aplikační servery vrátí vlastní primární instance signalizace, takže všechny z nich můžou získat provoz).
 
-## <a name="next-steps"></a>Další postup
+Poznamenali jste si, které způsoby použití se vám budou muset připojit k aplikačnímu serveru jako primárnímu.
 
-V tomto článku jste zjistili, jak nakonfigurovat svoji aplikaci pro zajištění odolnosti proti chybám pro služby SignalR. Informace o tom další podrobnosti o serveru/klientu připojení a směrování připojení v SignalR služby, můžete si přečíst [v tomto článku](signalr-concept-internals.md) pro interní informace služby SignalR.
+Vzhledem k povaze připojení k signalizaci (Jedná se o připojení k signalizaci) se taky v případě výpadku a převzetí služeb při selhání uskuteční připojení.
+Tyto případy budete muset zpracovávat na straně klienta, aby byly koncovým zákazníkům transparentní. Například se po zavření připojení znovu připojte.
 
-Škálování scénářů, jako je v případě horizontálního dělení, které používají víc instancí současně zpracovat velký počet připojení, najdete v článku [škálování na více instancí](signalr-howto-scale-multi-instances.md)?
+## <a name="next-steps"></a>Další kroky
+
+V tomto článku jste se seznámili s postupem konfigurace aplikace pro zajištění odolnosti pro službu Signal. Chcete-li získat další podrobnosti o připojení serveru/klienta a směrování připojení ve službě Signaler, můžete si přečíst [Tento článek](signalr-concept-internals.md) pro interní služby signalizace.
+
+Pro scénáře škálování, jako je například horizontálního dělení, které používají více instancí společně pro zpracování velkého počtu připojení, si přečtěte, [Jak škálovat více instancí](signalr-howto-scale-multi-instances.md).
