@@ -4,20 +4,23 @@ description: Náprava pro běžné problémy s Azure Active Directory spoluprác
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/25/2017
+tags: active-directory
 ms.author: mimart
 author: v-miegge
-manager: celestedg
+manager: dcscontentpm
 ms.reviewer: mal
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom:
+- it-pro
+- seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f91ddee8668316df69c98ed14fbcabcb06b6da82
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 6449644f98280d75363f737be11f8e8b824cab36
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983396"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795178"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Řešení potíží s Azure Active Directory spolupráce B2B
 
@@ -43,7 +46,7 @@ Pokud jste tato nastavení nedávno změnili nebo přiřadili k uživateli roli 
 
 ## <a name="the-user-that-i-invited-is-receiving-an-error-during-redemption"></a>Uživatel, kterého jsem pozval, obdrží při uplatnění chyby chybu
 
-Běžné chyby patří:
+Mezi běžné chyby patří:
 
 ### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>Správce pozvání nepovolil, aby se EmailVerified uživatelé ve svém tenantovi vytvořili.
 
@@ -57,9 +60,9 @@ Pokud používáte ověřování federace a uživatel již v Azure Active Direct
 
 Aby bylo možné tento problém vyřešit, musí správce externího uživatele synchronizovat účet uživatele s Azure Active Directory.
 
-## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>\#Jak je, což není obvykle platný znak, se synchronizuje se službou Azure AD?
+## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Jak aplikace "\#", což není obvykle platný znak, se synchronizuje se službou Azure AD?
 
-je vyhrazený znak v UPN pro spolupráci Azure AD B2B nebo externí uživatele, protože pozvaný účet user@contoso.com se user_contoso. com # ext #@fabrikam.onmicrosoft.com.\# Proto se \# v UPN přicházejících z místního prostředí nemůžete přihlásit k Azure Portal. 
+"\#" je vyhrazený znak v UPN pro spolupráci Azure AD B2B nebo externí uživatele, protože pozvaný účet se user@contoso.com user_contoso. com # EXT #@fabrikam.onmicrosoft.com. Proto se \# v UPN přicházejících z místního prostředí nemůžou přihlásit k Azure Portal. 
 
 ## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Při přidávání externích uživatelů do synchronizované skupiny se zobrazí chyba
 
@@ -67,7 +70,7 @@ Externí uživatele je možné přidat pouze do skupin přiřazených nebo zabez
 
 ## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>Můj externí uživatel nedostal e-mail k uplatnění.
 
-Pozvánka by měla zkontrolovat pomocí filtru poskytovatele internetových služeb nebo spamu, aby bylo zajištěno, že je povolena následující adresa:Invites@microsoft.com
+Pozvánka by se měla zkontrolovat pomocí filtru poskytovatele internetových služeb nebo spamu, aby se zajistilo, že je povolená Tato adresa: Invites@microsoft.com
 
 ## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>Všimněte si, že vlastní zpráva nezahrnuje zprávy pozvánky v časech
 
@@ -92,6 +95,6 @@ Chcete-li tento problém vyřešit, musíte převzít klienta, který se zrušil
 
 Pokud je tenant identity za běhu (JIT) nebo virového tenanta (což znamená, že se jedná o samostatného nespravovaného tenanta Azure), může heslo resetovat jenom uživatel typu Host. Někdy organizace [převezme správu virového tenanta](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) , které se vytvoří, když zaměstnanci použijí své pracovní e-mailové adresy k registraci služeb. Až organizace převezme klienta virového, může resetování hesla uživatele nebo povolení SSPR jenom správce v této organizaci. V případě potřeby můžete jako pozvánku do organizace odebrat uživatelský účet hosta z adresáře a znovu odeslat pozvánku.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Získejte podporu pro spolupráci B2B.](get-support.md)

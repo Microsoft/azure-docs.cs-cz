@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: d835eda044c2a6d1e0e7c678073711e45fde7395
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: a70400a1d0c710b939b4dd6d157cb06e729f53cb
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972150"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747817"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>Informace o komponentách Site Recovery (konfigurace, proces, hlavní cíl)
 
@@ -27,12 +27,12 @@ Pro zotavení po havárii místních virtuálních počítačů VMware a fyzick�
 **Konstrukční**  | Počítač konfiguračního serveru spouští všechny místní Site Recovery komponenty, mezi které patří konfigurační server, procesový Server a hlavní cílový server.<br/><br/> Při nastavování konfiguračního serveru jsou všechny součásti nainstalovány automaticky. | [Přečtěte](vmware-azure-common-questions.md#configuration-server) si nejčastější dotazy ke konfiguračnímu serveru.
 **Role** | Konfigurační server koordinuje komunikaci mezi místním prostředím a Azure a spravuje replikaci dat. | Přečtěte si další informace o architektuře pro zotavení po havárii [VMware](vmware-azure-architecture.md) a [fyzických serverů](physical-azure-architecture.md) do Azure.
 **Požadavky VMware** | V případě zotavení po havárii místních virtuálních počítačů VMware je nutné nainstalovat a spustit konfigurační server jako místní a vysoce dostupný virtuální počítač VMware. | [Přečtěte si informace o](vmware-azure-deploy-configuration-server.md#prerequisites) požadavcích.
-**Nasazení VMware** | Doporučujeme nasadit konfigurační server pomocí stažené šablony vajíček. Tato metoda poskytuje jednoduše způsob, jak nastavit konfigurační server, který bude splňovat všechny požadavky a požadavky.<br/><br/> Pokud z nějakého důvodu nemůžete nasadit virtuální počítač VMware pomocí šablony vajíček, můžete nastavit počítače konfiguračního serveru ručně, jak je popsáno níže pro zotavení po havárii fyzického počítače. | [Nasaďte](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template) se šablonou vajíček.
+**Nasazení VMware** | Doporučujeme nasadit konfigurační server pomocí stažené šablony vajíček. Tato metoda poskytuje jednoduše způsob, jak nastavit konfigurační server, který bude splňovat všechny požadavky a požadavky.<br/><br/> Pokud z nějakého důvodu nemůžete nasadit virtuální počítač VMware pomocí šablony vajíček, můžete nastavit počítače konfiguračního serveru ručně, jak je popsáno níže pro zotavení po havárii fyzického počítače. | [Nasaďte](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template) se šablonou vajíček.
 **Požadavky na fyzický server** | Pro zotavení po havárii na místních fyzických serverech nasadíte konfigurační server ručně. | [Přečtěte si informace o](physical-azure-set-up-source.md#prerequisites) požadavcích.
 **Nasazení fyzického serveru** | Pokud se nedá nainstalovat jako virtuální počítač VMware, můžete ho nainstalovat na fyzický server. | [Nasaďte](physical-azure-set-up-source.md#set-up-the-source-environment) konfigurační server ručně.
 
 
-## <a name="process-server"></a>Procesový server
+## <a name="process-server"></a>Procesový Server
 
 **Nastavení** | **Podrobnosti** | **Odkazy**
 --- | --- | ---
@@ -51,5 +51,5 @@ Hlavní cílový server zpracovává replikační data během navrácení služe
 
 
 ## <a name="next-steps"></a>Další kroky
-- Projděte [](vmware-azure-architecture.md) si architekturu pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů.
+- Projděte si [architekturu](vmware-azure-architecture.md) pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů.
 - Přečtěte si [požadavky a předpoklady](vmware-physical-azure-support-matrix.md) pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure. 

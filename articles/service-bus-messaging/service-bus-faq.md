@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 80809afc9f2a8e8da2f6adecfe916141c4cd3e45
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 8a2a704f39aa678be819a7297b30f8926e414e56
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278344"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748448"
 ---
 # <a name="service-bus-faq"></a>Nejčastější dotazy k Service Bus
 
@@ -36,7 +36,7 @@ Tento článek popisuje některé časté otázky týkající se Microsoft Azure
 Téma se dá vizuálně rozvažovat za frontu a když se používá víc předplatných, bude se jednat o model bohatšího zasílání zpráv. Nástroj pro komunikaci typu 1: n v podstatě. Tento model publikování/předplatného (nebo *Pub/sub*) umožňuje aplikaci, která pošle zprávu do tématu s více předplatnými, aby tuto zprávu přijímalo více aplikacemi.
 
 ### <a name="what-is-a-partitioned-entity"></a>Co je dělená entita?
-Konvenční frontu nebo téma zpracovává jeden zprostředkovatel zpráv a ukládá se do jednoho úložiště pro zasílání zpráv. Podporováno pouze ve vrstvách Basic a standard pro zasílání zpráv, které jsou rozdělené do [dělené fronty nebo tématu](service-bus-partitioning.md) , jsou zpracovávány pomocí více zprostředkovatelů zpráv a uloženy v několika úložištích zasílání zpráv. Tato funkce znamená, že celková propustnost dělené fronty nebo tématu již není omezena výkonem jediného zprostředkovatele zpráv nebo úložiště pro zasílání zpráv. Kromě toho dočasný výpadek úložiště pro zasílání zpráv nezobrazuje dělenou frontu nebo téma není k dispozici.
+Konvenční frontu nebo téma zpracovává jeden zprostředkovatel zpráv a ukládá se do jednoho úložiště pro zasílání zpráv. Podporováno pouze ve vrstvách Basic a standard pro zasílání zpráv, které jsou [rozdělené do dělené fronty nebo tématu](service-bus-partitioning.md) , jsou zpracovávány pomocí více zprostředkovatelů zpráv a uloženy v několika úložištích zasílání zpráv. Tato funkce znamená, že celková propustnost dělené fronty nebo tématu již není omezena výkonem jediného zprostředkovatele zpráv nebo úložiště pro zasílání zpráv. Kromě toho dočasný výpadek úložiště pro zasílání zpráv nezobrazuje dělenou frontu nebo téma není k dispozici.
 
 Řazení není při použití dělených entit zajištěno. V případě, že je oddíl nedostupný, můžete i nadále odesílat a přijímat zprávy z dalších oddílů.
 
@@ -51,7 +51,7 @@ K posílání a přijímání zpráv můžete použít následující protokoly 
 
 V následující tabulce najdete Odchozí porty, které musíte otevřít, abyste mohli tyto protokoly používat ke komunikaci s Azure Event Hubs. 
 
-| Protocol | Porty | Podrobnosti | 
+| Protocol (Protokol) | Porty | Podrobnosti | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 a 5672 | Viz [Průvodce protokolem AMQP](service-bus-amqp-protocol-guide.md) . | 
 | SBMP | 9350 až 9354 | Zobrazit [režim připojení](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
@@ -65,7 +65,7 @@ Chcete-li najít správné IP adresy pro připojení k seznamu, postupujte podle
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Poznamenejte si IP adresu vrácenou `Non-authoritative answer`v. Tato IP adresa je statická. Jediným bodem v čase, který by měl být změněn, je, že obor názvů obnovíte na jiný cluster.
+2. Poznamenejte si IP adresu vrácenou v `Non-authoritative answer`. Tato IP adresa je statická. Jediným bodem v čase, který by měl být změněn, je, že obor názvů obnovíte na jiný cluster.
 
 Pokud používáte redundanci zóny pro svůj obor názvů, musíte provést několik dalších kroků: 
 
@@ -112,6 +112,13 @@ Jakýkoli přenos dat v rámci dané oblasti Azure se poskytuje zdarma, stejně 
 ### <a name="does-service-bus-charge-for-storage"></a>Účtuje se Service Bus za úložiště?
 Ne, Service Bus neúčtuje za úložiště. Existuje však kvóta, která omezuje maximální množství dat, která lze uchovávat pro jednotlivé fronty nebo témata. Podívejte se na další Nejčastější dotazy.
 
+### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>Mám obor názvů Service Bus Standard. Proč se mi v rámci skupiny prostředků ' $system ' účtují poplatky?
+Azure Service Bus nedávno upgradovali komponenty fakturace. Z tohoto důvodu, pokud máte obor názvů Service Bus Standard, může se zobrazit položka řádku pro prostředek "/Subscriptions/< azure_subscription_id >/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system" v části Skupina prostředků $ systém.
+
+Tyto poplatky reprezentují základní poplatek za předplatné Azure, které zřídilo obor názvů Service Bus Standard. 
+
+Je důležité si uvědomit, že se nejedná o nové poplatky, tj. existovaly i v předchozím modelu fakturace. Jedinou změnou je, že jsou teď uvedené v části $system. To se provádí kvůli contraints v novém fakturačním systému, který seskupuje poplatky za úrovni předplatného, které nejsou vázané na konkrétní prostředek, pod ID prostředku $system.
+
 ## <a name="quotas"></a>Kvóty
 
 Seznam limitů a kvót Service Bus najdete v tématu [Přehled kvót Service Bus][Quotas overview].
@@ -128,7 +135,7 @@ Služba Service Bus Messaging Services (fronty a témata/odběry) umožňuje apl
 
 ## <a name="troubleshooting"></a>Řešení potíží
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Proč nemůžu vytvořit obor názvů po jeho odstranění z jiného předplatného? 
-Když odstraníte obor názvů z předplatného, počkejte 4 hodiny, než ho znovu vytvoříte se stejným názvem v jiném předplatném. V opačném případě se může zobrazit následující chybová zpráva `Namespace already exists`:. 
+Když odstraníte obor názvů z předplatného, počkejte 4 hodiny, než ho znovu vytvoříte se stejným názvem v jiném předplatném. V opačném případě se může zobrazit následující chybová zpráva: `Namespace already exists`. 
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Jaké jsou některé výjimky generované rozhraními API Azure Service Bus a jejich navrhovanými akcemi?
 Seznam možných výjimek Service Bus naleznete v tématu [Exception Overview][Exceptions overview].
@@ -160,7 +167,7 @@ $res = Find-AzResource -ResourceNameContains mynamespace -ResourceType 'Microsof
 Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o Service Bus najdete v následujících článcích:
 
 * [Představujeme Azure Service Bus Premium (příspěvek na blogu)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)

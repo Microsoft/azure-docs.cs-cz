@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 10/18/2019
-ms.openlocfilehash: 49ed6eedf55a8a3c0faa2fa1ff60b9894af78285
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/06/2019
+ms.openlocfilehash: e0354f96036cce968e6b6909a18f97ff48347eda
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580858"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796256"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Připojení k místním zdrojům dat z Azure Logic Apps
 
@@ -57,7 +57,7 @@ Azure Logic Apps podporuje operace čtení a zápisu přes bránu dat. Nicméně
 
 * [Místní brána dat je už v místním počítači nainstalovaná](../logic-apps/logic-apps-gateway-install.md).
 
-* Máte [stejný účet a předplatné Azure](../logic-apps/logic-apps-gateway-install.md#requirements) , které se použily při instalaci této brány dat.
+* Používáte [stejný účet Azure a předplatné](../logic-apps/logic-apps-gateway-install.md#requirements) , které se použily při instalaci této brány dat. Tento účet Azure musí patřit do jednoho [Azure Active Directoryho tenanta nebo adresáře Azure AD](../active-directory/fundamentals/active-directory-whatis.md#terminology).
 
 * Vaše instalace brány ještě není zaregistrovaná a deklarovaná jiným prostředkem Azure Gateway.
 
@@ -87,7 +87,7 @@ Po instalaci brány na místní počítač vytvořte prostředek Azure pro vaši
    | **Předplatné** | Vyberte předplatné Azure pro účet Azure, který se použil pro instalaci brány. Výchozí předplatné vychází z účtu Azure, který jste použili k přihlášení. |
    | **Skupina prostředků** | [Skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) , kterou chcete použít |
    | **Umístění** | Stejná oblast nebo umístění, které bylo vybráno pro cloudovou službu brány během [Instalace brány](../logic-apps/logic-apps-gateway-install.md). V opačném případě se instalace brány nezobrazí v seznamu **název instalace** . Vaše umístění vaší aplikace logiky se může lišit od umístění prostředku brány. |
-   | **Název instalace** | Vyberte instalaci brány, která se zobrazí v seznamu jenom v případě, že jsou splněné tyto podmínky: <p><p>– Existuje ve stejné oblasti jako prostředek brány, který chcete vytvořit. <br>– Odpojování k jinému prostředku služby Azure Gateway <br>– Propojeno se stejným účtem Azure, který používáte k vytvoření prostředku brány <p><p>Další informace najdete v části [Nejčastější dotazy](#faq) . |
+   | **Název instalace** | Vyberte instalaci brány, která se zobrazí v seznamu jenom v případě, že jsou splněné tyto podmínky: <p><p>– Instalace brány používá stejnou oblast jako prostředek brány, který chcete vytvořit. <br>– Instalace brány není propojená s jiným prostředkem služby Azure Gateway. <br>– Instalace brány je propojená se stejným účtem Azure, který používáte k vytvoření prostředku brány. <br>– Váš účet Azure patří do tenanta jednoho [Azure Active Directory (Azure AD) nebo adresáře](../active-directory/fundamentals/active-directory-whatis.md#terminology) a je to stejný účet, který se použil pro instalaci brány. <p><p>Další informace najdete v části [Nejčastější dotazy](#faq) . |
    |||
 
    Tady je příklad, který ukazuje instalaci brány, která je ve stejné oblasti jako prostředek brány a je propojená se stejným účtem Azure:
@@ -164,7 +164,7 @@ Pokud chcete vytvořit jiný prostředek brány, propojte instalaci brány s jin
 **Otázka**: Proč se při vytváření prostředku moje brány v Azure nezobrazí moje instalace brány? <br/>
 Odpověď: k tomuto problému může **dojít z těchto**důvodů:
 
-* Váš účet Azure musí být stejný účet, který je propojený s instalací brány na místním počítači. Ověřte, že jste přihlášení k Azure Portal se stejnou identitou, která je propojená s instalací brány.
+* Váš účet Azure musí být stejný účet, který je propojený s instalací brány na místním počítači. Ověřte, že jste přihlášení k Azure Portal se stejnou identitou, která je propojená s instalací brány. Také se ujistěte, že váš účet Azure patří do jednoho [tenanta nebo adresáře služby Azure](../active-directory/fundamentals/active-directory-whatis.md#terminology) AD a je nastaven na stejný tenant nebo adresář služby Azure AD, který se použil při instalaci brány.
 
 * Instalace prostředků a brány brány musí používat stejnou oblast. Vaše umístění aplikace logiky se ale může lišit od umístění prostředku brány.
 

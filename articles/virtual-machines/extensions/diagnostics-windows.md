@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 771064774371e71c0664918790b296c156ed1c1f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 547de4862081b56bf627c3a00564ce6564f2ad09
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084777"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750102"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Použití PowerShellu k povolení Diagnostiky Azure na virtuálním počítači s Windows
 
 Azure Diagnostics je schopnost v Azure, která umožňuje shromažďování diagnostických dat v nasazené aplikaci. Diagnostické rozšíření můžete použít ke shromažďování diagnostických dat, jako jsou protokoly aplikací nebo čítače výkonu z virtuálního počítače Azure s Windows. 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-resource-manager-deployment-model"></a>Povolit rozšíření diagnostiky, pokud používáte model nasazení Správce prostředků
 Diagnostické rozšíření můžete povolit během vytváření virtuálního počítače s Windows pomocí modelu nasazení Azure Resource Manager přidáním konfigurace rozšíření do šablony Správce prostředků. V tématu [Vytvoření virtuálního počítače s Windows pomocí monitorování a diagnostiky použijte šablonu Azure Resource Manager](diagnostics-template.md).
@@ -80,9 +80,9 @@ Následující kód XML lze použít pro veřejnou konfiguraci diagnostiky s vý
 
 Konfigurace se musí aktualizovat, aby obsahovala následující:
 
-* Atribut *ResourceID* elementu Metrics se musí aktualizovat s ID prostředku pro virtuální počítač.
+* Atribut *ResourceID* elementu **Metrics** se musí aktualizovat s ID prostředku pro virtuální počítač.
   
-  * ID prostředku se dá sestavit pomocí následujícího vzoru:/subscriptions/{ID předplatného*pro předplatné s virtuálním počítačem*}/resourceGroups/{*název virtuálního počítače*}/Providers/Microsoft.COMPUTE/virtualMachines/{ *Název virtuálního počítače*}.
+  * ID prostředku se dá sestavit pomocí následujícího vzoru:/subscriptions/{*ID předplatného pro předplatné s virtuálním počítačem*}/resourceGroups/{*název virtuálního počítače*}/Providers/Microsoft.COMPUTE/virtualMachines/{ *Název virtuálního počítače*}.
   * Pokud je třeba ID předplatného pro předplatné, kde je spuštěný virtuální počítač, **11111111-1111-1111-1111-111111111111**, název skupiny prostředků pro skupinu prostředků je **MyResourceGroup**a název virtuálního počítače je **MyWindowsVM**a pak hodnota pro *ResourceID* by byla:
     
       ```xml

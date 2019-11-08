@@ -1,7 +1,7 @@
 ---
-title: Ukázkové uživatelské scénáře pro rozhraní Text Analytics API
+title: Příklady scénářů uživatelů pro rozhraní API pro analýzu textu
 titleSuffix: Azure Cognitive Services
-description: Pomocí tohoto článku uvidíte několik běžných scénářů integrace rozhraní API pro analýzu textu služby a procesy.
+description: V tomto článku si můžete prohlédnout některé běžné scénáře integrace rozhraní API pro analýzu textu do služeb a procesů.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,42 +10,42 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 04/04/2019
 ms.author: aahi
-ms.openlocfilehash: d8d2aed16b5af60c44501e6d72332783a164ff91
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 19421788eea59ea250efbaa656266da49dc3b42f
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478392"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73742729"
 ---
-# <a name="example-user-scenarios-for-the-text-analytics-api"></a>Ukázkové uživatelské scénáře pro rozhraní Text Analytics API
+# <a name="example-user-scenarios-for-the-text-analytics-api"></a>Příklady scénářů uživatelů pro rozhraní API pro analýzu textu
 
-Rozhraní Text Analytics API je Cloudová služba, která poskytuje pokročilé přirozeného jazyka zpracování text. Tento článek popisuje některé příklady případů použití pro rozhraní API pro integraci do obchodních řešení a procesů. 
+Rozhraní API pro analýzu textu je cloudová služba, která poskytuje pokročilé zpracování přirozeného jazyka nad textem. Tento článek popisuje příklady případů použití pro integraci rozhraní API do obchodních řešení a procesů. 
 
-## <a name="analyze-survey-results"></a>Analyzujte výsledky průzkumu
+## <a name="analyze-survey-results"></a>Analýza výsledků průzkumu
 
-Získejte podrobné přehledy z výsledků zjišťování zákazníků a zaměstnanců zpracováním nezpracovaný text odpovědi pomocí analýzy mínění. Agregovat výsledky pro analýzu, zpracovat a řízení závazky.
+Vykreslete přehledy ze výsledků průzkumu zákazníků a zaměstnanců zpracováním nezpracovaných textových odpovědí pomocí Analýza mínění. Agreguje výsledky pro analýzy, sledování a řízení zapojení.
 
-![Obrázek popisující, jak provádět analýzu subjektivního hodnocení na zjišťování zákazníků a zaměstnanců.](media/use-cases/survey-results.svg)
+![Obrázek popisující, jak provádět analýzu mínění na průzkumech zákazníků a zaměstnanců.](media/use-cases/survey-results.svg)
 
-## <a name="analyze-recorded-inbound-customer-calls"></a>Analýza hovorů se zákazníky zaznamenané příchozí
+## <a name="analyze-recorded-inbound-customer-calls"></a>Analyzovat zaznamenaná příchozí volání zákazníků
 
-Extrakce poznatků z volání služby zákazníka pomocí převod textu na řeč, analýzu subjektivního hodnocení a extrakci frází klíč. Zobrazení výsledků v řídicím panelu Power BI nebo portálu k lepšímu pochopení zákazníků, zvýrazněte zákazníků služby trendy a zapojení zákazníků. Odeslání žádosti rozhraní API v dávce pro vytváření sestav, nebo v v reálném čase zásahu. Zobrazit [ukázkový kód](https://github.com/rlagh2/callcenteranalytics).
+Pomocí Převod textu na řeč, Analýza mínění a Extrakce klíčových frází extrahujte přehledy z volání služeb zákazníkům. Zobrazit výsledky v Power BI řídicím panelu nebo na portálu, abyste lépe pochopili zákazníky, mohli zvýraznit trendy zákaznických služeb a řídit zapojení zákazníků. Odešlete požadavky rozhraní API jako dávku pro vytváření sestav nebo v reálném čase pro účely intervence. Viz [vzorový kód](https://github.com/rlagh2/callcenteranalytics).
 
-![Volání image popisující, jak automatizovat získávání informací ze služby zákazníkům pomocí analýzy mínění](media/use-cases/azure-inbound.svg)
+![Obrázek popisující, jak automatizovat získávání přehledů z hovorů zákaznických služeb pomocí analýzy mínění](media/use-cases/azure-inbound.svg)
 
-## <a name="process-and-categorize-support-incidents"></a>Zpracování a kategorizaci incidenty podpory
+## <a name="process-and-categorize-support-incidents"></a>Zpracování a kategorizace incidentů podpory
 
-Použití ke zpracování žádosti o podporu v nestrukturovaném textový formát extrakce frází klíč a rozpoznávání entit. Použijte extrahované fráze a entity ke kategorizaci požadavky pro prostředek plánování a vytváření analýz trendu.
+Pomocí Extrakce klíčových frází a rozpoznávání entit můžete zpracovat žádosti o podporu odeslané v nestrukturovaném textovém formátu. Pomocí extrahovaných frází a entit můžete kategorizovat požadavky na plánování prostředků a analýzu trendů.
 
-![Obrázek popisující, jak použít ke kategorizaci ukládání neplánovaných sestav a trendů klíčových frází rozpoznávání extrakce a entity](media/use-cases/support-incidents.svg)
+![Obrázek popisující, jak použít extrakci klíčových frází a rozpoznávání entit ke kategorizaci sestav a trendů incidentů](media/use-cases/support-incidents.svg)
 
-## <a name="monitor-your-products-social-media-feeds"></a>Sledování kanálů ze sociálních médií váš produkt
+## <a name="monitor-your-products-social-media-feeds"></a>Monitorování informačních kanálů sociálních médií v produktu
 
-Monitorování zpětné vazby uživatelů produktu na váš produkt twitter nebo Facebookovou stránku. Data můžete analyzovat mínění zákazníků směrem k uvádění nových produktů, extrahovat klíčové fráze o funkcích a žádosti o funkce nebo adresa zákazníka stížností při jejich provádění.
+Sledujte svůj názor na produkt uživatele na Twitteru nebo na Facebook stránkách. Pomocí dat můžete analyzovat zákaznická mínění k novým produktům, extrahovat klíčové fráze týkající se funkcí a požadavků na funkce nebo řešit reklamace zákazníků při jejich vzniku.
 
-![Obrázek popisující, jak monitorovat vaše produktu a společnosti zpětné vazby na sociálních médií pomocí extrakce klíčových frází](media/use-cases/social-feed.svg)
+![Obrázek popisující, jak monitorovat váš produkt a zpětnou vazbu na sociálních médiích pomocí extrakce klíčových frází](media/use-cases/social-feed.svg)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Co je API pro analýzu textu?](overview.md)
-* [Odeslat požadavek na používání rozhraní Text Analytics APIC#](quickstarts/csharp.md)
+* [Co je rozhraní API pro analýzu textu?](overview.md)
+* [Odeslat požadavek do rozhraní API pro analýzu textu pomocí klientské knihovny](quickstarts/text-analytics-sdk.md)

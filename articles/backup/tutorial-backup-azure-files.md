@@ -1,44 +1,49 @@
 ---
 title: Zálohování sdílených složek souborů Azure pomocí služby Azure Backup
-description: V tomto kurzu se dozvíte, jak zálohovat sdílené složky Azure.
+description: V tomto kurzu se naučíte, jak pomocí Azure Portal nakonfigurovat trezor Recovery Services a zálohovat sdílené složky Azure.
 author: dcurwin
 ms.author: dacurwin
 ms.date: 06/10/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: e63ad75effb03cf9dd5eb5c66b142cce629ea290
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a8b08f87441f9b4c67f718dfe9f0c894d0730a5f
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736233"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747046"
 ---
-# <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Zálohování sdílených složek Azure na webu Azure Portal
+# <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Zálohování sdílených složek Azure v Azure Portal
+
 V tomto kurzu se dozvíte, jak použít Azure Portal k zálohování [sdílených složek Azure](../storage/files/storage-files-introduction.md).
 
 V této příručce se naučíte:
 > [!div class="checklist"]
+>
 > * Konfigurace trezoru služby Recovery Services pro zálohování Souborů Azure
 > * Spuštění úlohy zálohování na vyžádání pro vytvoření bodu obnovení
 
-
 ## <a name="prerequisites"></a>Požadavky
+
 Než budete moct zálohovat sdílenou složku Azure, ujistěte se, že se nachází v jednom z [podporovaných typů účtu úložiště](tutorial-backup-azure-files.md#limitations-for-azure-file-share-backup-during-preview). Po ověření můžete chránit své sdílené složky.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Omezení zálohování sdílených složek Azure ve verzi Preview
+
 Zálohování sdílených složek Azure je ve verzi Preview. Podporují se sdílené složky Azure v účtech úložiště pro obecné účely v1 i pro obecné účely v2. Následující scénáře zálohování se nepodporují u sdílených složek Azure:
-- Nemůžete chránit sdílené složky Azure v účtech úložiště s povolenými virtuálními sítěmi nebo bránou firewall.
-- K ochraně souborů Azure pomocí Azure Backup není k dispozici žádné rozhraní příkazového řádku.
-- Maximální počet plánovaných záloh je jedna za den.
-- Maximální počet záloh na vyžádání jsou čtyři za den.
-- Používejte v účtu úložiště [zámky prostředků](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest), abyste zabránili nechtěnému odstranění záloh v trezoru služby Recovery Services.
-- Neodstraňujte snímky vytvořené službou Azure Backup. Odstranění snímků může způsobit ztrátu bodů obnovení nebo selhání obnovení.
-- Neodstraňujte sdílené složky, které jsou chráněné pomocí Azure Backup. Aktuální řešení odstraní všechny snímky vybrané Azure Backup, když se odstraní sdílená složka, a proto ztratí všechny body obnovení.
+
+* Nemůžete chránit sdílené složky Azure v účtech úložiště s povolenými virtuálními sítěmi nebo bránou firewall.
+* K ochraně souborů Azure pomocí Azure Backup není k dispozici žádné rozhraní příkazového řádku.
+* Maximální počet plánovaných záloh je jedna za den.
+* Maximální počet záloh na vyžádání jsou čtyři za den.
+* Používejte v účtu úložiště [zámky prostředků](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest), abyste zabránili nechtěnému odstranění záloh v trezoru služby Recovery Services.
+* Neodstraňujte snímky vytvořené službou Azure Backup. Odstranění snímků může způsobit ztrátu bodů obnovení nebo selhání obnovení.
+* Neodstraňujte sdílené složky, které jsou chráněné pomocí Azure Backup. Aktuální řešení odstraní všechny snímky vybrané Azure Backup, když se odstraní sdílená složka, a proto ztratí všechny body obnovení.
 
 Zálohování pro sdílené složky Azure v účtech úložiště s replikací [zóny redundantního úložiště](../storage/common/storage-redundancy-zrs.md) (ZRS) je aktuálně k dispozici pouze v střed USA (kapacitní jednotky), východní USA (EUS), východní USA 2 (EUS2), Severní Evropa (ne), jihovýchodní Asie (moře), západní Evropa (We) a západní USA 2 (WUS2).
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>Konfigurace zálohování sdílené složky Azure
+
 Tento kurz předpokládá, že už máte vytvořenou sdílenou složku Azure. Zálohování sdílené složky Azure:
 
 1. Vytvořte trezor služby Recovery Services ve stejné oblasti, ve které je vaše sdílená složka. Pokud už trezor máte, otevřete stránku Přehled vašeho trezoru a klikněte na **Zálohování**.
@@ -70,8 +75,8 @@ Tento kurz předpokládá, že už máte vytvořenou sdílenou složku Azure. Z�
     Po vytvoření zásady zálohování se v naplánovaném čase pořídí snímek sdílených složek a po zvolenou dobu se bude uchovávat bod obnovení.
 
 ## <a name="create-an-on-demand-backup"></a>Vytvoření zálohy na vyžádání
-Po nakonfigurování zásad zálohování budete chtít vytvořit zálohu na vyžádání, abyste zajistili ochranu dat před dalším naplánovaným zálohováním.
 
+Po nakonfigurování zásad zálohování budete chtít vytvořit zálohu na vyžádání, abyste zajistili ochranu dat před dalším naplánovaným zálohováním.
 
 ### <a name="to-create-an-on-demand-backup"></a>Vytvoření zálohy na vyžádání
 
@@ -91,12 +96,12 @@ Po nakonfigurování zásad zálohování budete chtít vytvořit zálohu na vy�
 
    ![Zvolit datum pro uchování bodu obnovení](./media/backup-file-shares/backup-now-menu.png)
 
-
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste pomocí webu Azure Portal provedli následující kroky:
 
 > [!div class="checklist"]
+>
 > * Konfigurace trezoru služby Recovery Services pro zálohování Souborů Azure
 > * Spuštění úlohy zálohování na vyžádání pro vytvoření bodu obnovení
 
@@ -104,4 +109,3 @@ Přejděte k dalšímu článku, který se má obnovit ze zálohy sdílené slo�
 
 > [!div class="nextstepaction"]
 > [Obnovení ze zálohy sdílených složek Azure](./backup-azure-files.md#restore-from-backup-of-azure-file-share)
- 

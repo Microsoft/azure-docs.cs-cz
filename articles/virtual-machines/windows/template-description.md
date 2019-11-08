@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 23519edb61df23c97dfd2162d6cabea6b7fa5d38
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: afbf77014ece981568d4123db7820a2fa0a8f60d
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101770"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749104"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuální počítače v šabloně Azure Resource Manager
 
@@ -27,7 +27,7 @@ Tento článek popisuje aspekty Azure Resource Manager šablony, které se vztah
 
 Galerie obsahuje mnoho [šablon](https://azure.microsoft.com/documentation/templates/?term=VM) , které zahrnují prostředek virtuálního počítače. Ne všechny prvky, které lze zahrnout do šablony, jsou popsány zde.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 Tento příklad ukazuje typický oddíl prostředků šablony pro vytvoření zadaného počtu virtuálních počítačů:
 
@@ -315,7 +315,7 @@ Pokud chcete vytvořit operační systém Linux, můžete použít tuto definici
 },
 ```
 
-Konfigurační nastavení disku operačního systému je přiřazeno k elementu osDisk. V příkladu je definován nový spravovaný disk s režimem ukládání do mezipaměti , který je nastaven na nepoužívatelné, a který disk vytváří z [Image platformy](cli-ps-findimage.md):
+Konfigurační nastavení disku operačního systému je přiřazeno k elementu osDisk. V příkladu je definován nový spravovaný disk s režimem **ukládání do mezipaměti** , který je nastaven na nepoužívatelné, a který disk vytváří z [Image platformy](cli-ps-findimage.md):
 
 ```
 "osDisk": { 
@@ -454,7 +454,7 @@ Pokud jste zajímá o stavu prostředků v nasazení, zobrazte skupinu prostřed
 
 ![Získat informace o nasazení](./media/template-description/virtual-machines-deployment-info.png)
     
-Nejedná se o problém, jak použít stejnou šablonu k vytvoření prostředků nebo k aktualizaci existujících prostředků. Když použijete příkazy k nasazení šablon, budete mít možnost vyslovit, který [režim](../../resource-group-template-deploy.md) chcete použít. Režim lze nastavit buď jako dokončený , nebo **přírůstkový**. Výchozím nastavením je přírůstkové aktualizace. Při použití kompletního režimu buďte opatrní, protože prostředky můžete omylem odstranit. Když nastavíte režim na **dokončeno**, správce prostředků odstraní všechny prostředky ve skupině prostředků, která není v šabloně.
+Nejedná se o problém, jak použít stejnou šablonu k vytvoření prostředků nebo k aktualizaci existujících prostředků. Když použijete příkazy k nasazení šablon, budete mít možnost vyslovit, který [režim](../../resource-group-template-deploy.md) chcete použít. Režim lze nastavit buď jako **dokončený** , nebo **přírůstkový**. Výchozím nastavením je přírůstkové aktualizace. Při použití **kompletního** režimu buďte opatrní, protože prostředky můžete omylem odstranit. Když nastavíte režim na **dokončeno**, správce prostředků odstraní všechny prostředky ve skupině prostředků, která není v šabloně.
 
 ## <a name="next-steps"></a>Další kroky
 

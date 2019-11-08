@@ -4,14 +4,14 @@ description: Obsahuje seznam typů prostředků Azure, které můžou mít víc 
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 11/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0f9db618b69ff692350f333b8a4a4354f4980169
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: c08b80a841199ed2737f6fe8d7f2b76943c5b269
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249126"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795653"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Prostředky, které nejsou omezeny na 800 instancí na skupinu prostředků
 
@@ -34,10 +34,10 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 
 * botServices – ve výchozím nastavení omezen na 800 instancí. Toto omezení se dá zvýšit kontaktováním podpory.
 
-## <a name="microsoftcompute"></a>Microsoft. COMPUTE
+## <a name="microsoftcompute"></a>Microsoft.Compute
 
 * disků
-* fotografií
+* images
 * snímky
 * VirtualMachines
 
@@ -58,24 +58,34 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 
 ## <a name="microsoftdbformariadb"></a>Microsoft. DBforMariaDB
 
-* Servery
+* servery
 
 ## <a name="microsoftdbformysql"></a>Microsoft. DBforMySQL
 
-* Servery
+* servery
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
 
 * serverGroups
-* Servery
+* servery
 * serversv2
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
 
-* Orgány
+* services
+
+## <a name="microsofteventhub"></a>Microsoft. EventHub
+
+* existující
+* Obsažené
+
+## <a name="microsoftexperimentation"></a>Microsoft. experimentování
+
+* experimentWorkspaces
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
 
+* configurationProfileAssignments
 * guestConfigurationAssignments
 * Vybavení
 * softwareUpdateProfile
@@ -94,7 +104,7 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 * netAppAccounts/capacityPools/svazky/mountTargets
 * netAppAccounts/capacityPools/svazky/snímky
 
-## <a name="microsoftnetwork"></a>Microsoft. Network
+## <a name="microsoftnetwork"></a>Microsoft.Network
 
 * applicationGatewayWebApplicationFirewallPolicies
 * applicationSecurityGroups
@@ -141,20 +151,28 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 
 * workspaceCollections – ve výchozím nastavení omezen na 800 instancí. Toto omezení se dá zvýšit kontaktováním podpory.
 
+## <a name="microsoftrelay"></a>Microsoft. Relay
+
+* Obsažené
+
 ## <a name="microsoftscheduler"></a>Microsoft. Scheduler
 
 * jobcollections
 
+## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
+
+* Obsažené
+
 ## <a name="microsoftservicefabricmesh"></a>Microsoft. ServiceFabricMesh
 
-* vyrovnání
+* aplikací
 * containerGroups
 * brány
 * sítí
 * záleží
-* svazků
+* volumes
 
-## <a name="microsoftstorage"></a>Microsoft. Storage
+## <a name="microsoftstorage"></a>Microsoft.Storage
 
 * storageAccounts
 

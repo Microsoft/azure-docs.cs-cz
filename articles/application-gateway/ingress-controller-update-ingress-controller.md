@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/23/2019
+ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 6ed73a2172e09e7255447b4467698670c95b63af
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3903ccd1c15765d06cd1794a40567e2c70062538
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513234"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795902"
 ---
 # <a name="how-to-upgrade-application-gateway-ingress-controller-using-helm"></a>Postup upgradu Application Gatewayho kontroleru příchozího přenosu dat pomocí Helm 
 
@@ -34,7 +34,7 @@ Než zahájíte postup upgradu, ujistěte se, že jste přidali požadované úl
         https://appgwingress.blob.core.windows.net/ingress-azure-helm-package/
     ```
 
-## <a name="upgrade"></a>Aktualizace
+## <a name="upgrade"></a>Upgrade
 
 1. Pokud chcete získat nejnovější verzi, aktualizujte úložiště AGIC Helm:
 

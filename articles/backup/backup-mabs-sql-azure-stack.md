@@ -1,6 +1,6 @@
 ---
 title: Zálohování SQL Server úloh na Azure Stack
-description: Pomocí Azure Backup Server můžete chránit SQL Server úlohy na Azure Stack.
+description: V tomto článku se dozvíte, jak nakonfigurovat Microsoft Azure Backup Server (MABS) pro ochranu SQL Server databáze na Azure Stack.
 ms.reviewer: adigan
 author: dcurwin
 manager: carmonm
@@ -8,14 +8,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: dacurwin
-ms.openlocfilehash: ab65a1bf371ff8581f347403b49fafed6697374c
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 28d4ad1a94cea6f21d1fe75483357d8788524b88
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210223"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747220"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Zálohování SQL Server v Azure Stack
+
 Tento článek slouží ke konfiguraci serveru Microsoft Azure Backup (MABS) k ochraně SQL Server databáze na Azure Stack.
 
 Správa zálohování SQL Server databáze do Azure a obnovení z Azure zahrnuje tři kroky:
@@ -29,6 +30,7 @@ Správa zálohování SQL Server databáze do Azure a obnovení z Azure zahrnuje
 [Instalace a příprava Azure Backup Server](backup-mabs-install-azure-stack.md).
 
 ## <a name="create-a-backup-policy-to-protect-sql-server-databases-to-azure"></a>Vytvoření zásady zálohování pro ochranu SQL Serverch databází do Azure
+
 1. V uživatelském rozhraní Azure Backup Server klikněte na pracovní prostor **ochrana** .
 
 2. Na pásu karet nástroje klikněte na **Nový** a vytvořte novou skupinu ochrany.
@@ -41,7 +43,7 @@ Správa zálohování SQL Server databáze do Azure a obnovení z Azure zahrnuje
 
     ![Vybrat typ skupiny ochrany – servery](./media/backup-azure-backup-sql/pg-servers.png)
 
-4. Na obrazovce **Vybrat členy skupiny** se v seznamu dostupné členy zobrazí různé zdroje dat. Kliknutím **+** rozbalíte složku a odhalte podsložky. Pokud chcete vybrat položku, klikněte na zaškrtávací políčko.
+4. Na obrazovce **Vybrat členy skupiny** se v seznamu dostupné členy zobrazí různé zdroje dat. Kliknutím na **+** rozbalte složku a odhalte podsložky. Pokud chcete vybrat položku, klikněte na zaškrtávací políčko.
 
     ![Výběr databáze SQL](./media/backup-azure-backup-sql/pg-databases.png)
 
@@ -68,7 +70,7 @@ Správa zálohování SQL Server databáze do Azure a obnovení z Azure zahrnuje
 
     ![Metoda počáteční replikace](./media/backup-azure-backup-sql/pg-manual.png)
 
-    Prvotní záložní kopie vyžaduje přenos celého zdroje dat (SQL Server databáze) z provozního serveru (SQL Server počítače) na Azure Backup Server. Tato data můžou být velká a přenos dat přes síť by mohl překročit šířku pásma. Z tohoto důvodu se můžete rozhodnout pro přenos prvotní zálohy: **Ručně** (pomocí vyměnitelného média) se vyhnete zahlcení šířky pásma nebo **automaticky přes síť** (v určitou dobu).
+    Prvotní záložní kopie vyžaduje přenos celého zdroje dat (SQL Server databáze) z provozního serveru (SQL Server počítače) na Azure Backup Server. Tato data můžou být velká a přenos dat přes síť by mohl překročit šířku pásma. Z tohoto důvodu se můžete rozhodnout pro přenos prvotní zálohy: **ručně** (pomocí vyměnitelného média), abyste se vyhnuli zahlcení šířky pásma nebo **automaticky přes síť** (v určitou dobu).
 
     Po dokončení prvotního zálohování jsou zbývající zálohy přírůstkové zálohy v prvotní záložní kopii. Přírůstkové zálohování je obvykle malé a snadno se přenáší přes síť.
 
@@ -93,7 +95,7 @@ Správa zálohování SQL Server databáze do Azure a obnovení z Azure zahrnuje
     >
     >
 
-    **Osvědčené postupy**: Pokud naplánujete zálohování do Azure tak, aby se spouštělo po dokončení zálohování místních disků, nejnovější zálohy na disku se vždycky zkopírují do Azure.
+    **Osvědčený postup**: Pokud naplánujete zálohování do Azure tak, aby se spouštělo po dokončení zálohování místních disků, nejnovější zálohy na disku se vždycky zkopírují do Azure.
 
 12. Vyberte plán zásad uchovávání informací. Podrobnosti o tom, jak fungují zásady uchovávání informací, najdete v [článku použití Azure Backup k nahrazení vaší páskové infrastruktury](backup-azure-backup-cloud-as-tape.md).
 
@@ -107,11 +109,12 @@ Správa zálohování SQL Server databáze do Azure a obnovení z Azure zahrnuje
     * Záloha na poslední sobotu v březnu v 12:00. odp. je uchováno po dobu 10 let
 13. Klikněte na **Další** a vyberte odpovídající možnost pro přenos prvotní záložní kopie do Azure. Můžete vybrat možnost **automaticky přes síť** .
 
-14. Po kontrole podrobností zásad na obrazovce souhrnu dokončete pracovní postup kliknutím na **vytvořit skupinu** . Můžete kliknout na **Zavřít** a monitorovat průběh úlohy v pracovním prostoru monitorování.
+14. Po kontrole podrobností zásad na obrazovce **souhrnu** dokončete pracovní postup kliknutím na **vytvořit skupinu** . Můžete kliknout na **Zavřít** a monitorovat průběh úlohy v pracovním prostoru monitorování.
 
     ![Probíhá vytváření skupiny ochrany.](./media/backup-azure-backup-sql/pg-summary.png)
 
 ## <a name="on-demand-backup-of-a-sql-server-database"></a>Zálohování databáze SQL Server na vyžádání
+
 Zatímco předchozí kroky vytvořily zásady zálohování, vytvoří se bod obnovení jenom v případě, že dojde k prvnímu zálohování. Místo čekání na vystavení plánovače pak níže uvedené kroky aktivují vytvoření bodu obnovení ručně.
 
 1. Před vytvořením bodu obnovení počkejte, až se stav skupiny ochrany zobrazí v poli **OK** pro databázi.
@@ -128,6 +131,7 @@ Zatímco předchozí kroky vytvořily zásady zálohování, vytvoří se bod ob
     ![Konzola monitorování](./media/backup-azure-backup-sql/sqlbackup-monitoring.png)
 
 ## <a name="recover-a-sql-server-database-from-azure"></a>Obnovení databáze SQL Server z Azure
+
 K obnovení chráněné entity (SQL Server databáze) z Azure se vyžadují následující kroky.
 
 1. Otevřete konzolu pro správu Azure Backup Server. Přejděte do pracovního prostoru **obnovení** , kde můžete zobrazit chráněné servery. Vyhledejte požadovanou databázi (v tomto případě ReportServer $ MSDPM2012). Vyberte **obnovení z** času, který je zadaný jako **online** bod.

@@ -1,6 +1,6 @@
 ---
 title: Řešení potíží se zálohováním stavu systému pomocí Azure Backup
-description: Řešení potíží se zálohováním stavu systému.
+description: V tomto článku se dozvíte, jak řešit problémy v zálohování stavu systému pro místní servery Windows.
 ms.reviewer: srinathv
 author: dcurwin
 manager: carmonm
@@ -9,18 +9,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 26ba811eba1a25dacddd04814f8e0d2805360920
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 71a2b73ab3570539a566f708ea8b1a41963d4e81
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018783"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747304"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Řešení potíží se zálohováním stavu systému
 
 Tento článek popisuje řešení problémů, se kterými se můžete setkat při použití zálohování stavu systému.
 
 ## <a name="basic-troubleshooting"></a>Základní řešení potíží
+
 Před zahájením odstraňování potíží se zálohováním stavu systému doporučujeme provést níže uvedené ověření:
 
 - [Zajistěte, aby byl agent Microsoft Azure Recovery Services (MARS) aktuální.](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
@@ -40,6 +41,7 @@ Před zahájením odstraňování potíží se zálohováním stavu systému dop
 - [Zvážení při spuštění agenta Zálohování na virtuálním počítači Azure](https://aka.ms/AB-AA4dwtr)
 
 ### <a name="limitation"></a>Omezení
+
 - Microsoft nedoporučuje obnovování pomocí obnovení stavu systému na jiný hardware.
 - Zálohování stavu systému aktuálně podporuje místní servery Windows, takže tato funkce není dostupná pro virtuální počítače Azure.
 
@@ -54,9 +56,10 @@ Ujistěte se, že je na serveru nainstalovaná a povolená Zálohování Windows
  ```powershell
 Get-WindowsFeature Windows-Server-Backup
  ```
+
 Pokud výstup zobrazuje **stav instalace** jako **k dispozici**, znamená to, že je funkce zálohování serveru k dispozici pro instalaci, ale není nainstalovaná na serveru. Pokud ale Zálohování Windows Serveru není nainstalovaná, použijte k její instalaci jednu z následujících metod.
 
-**Metoda 1: Instalace Zálohování Windows Serveru pomocí prostředí PowerShell**
+#### <a name="method-1-install-windows-server-backup-using-powershell"></a>Metoda 1: instalace Zálohování Windows Serveru pomocí prostředí PowerShell
 
 Pokud chcete nainstalovat Zálohování Windows Serveru pomocí PowerShellu, spusťte následující příkaz:
 
@@ -64,7 +67,7 @@ Pokud chcete nainstalovat Zálohování Windows Serveru pomocí PowerShellu, spu
   Install-WindowsFeature -Name Windows-Server-Backup
   ```
 
-**Metoda 2: Instalace Zálohování Windows Serveru pomocí Správce serveru**
+#### <a name="method-2-install-windows-server-backup-using-server-manager"></a>Metoda 2: instalace Zálohování Windows Serveru pomocí Správce serveru
 
 Pokud chcete nainstalovat Zálohování Windows Serveru pomocí Správce serveru, proveďte následující kroky:
 
@@ -84,8 +87,7 @@ Pokud chcete nainstalovat Zálohování Windows Serveru pomocí Správce serveru
 5. Na kartě **potvrzení** kliknutím na **instalovat** spusťte proces instalace.
 6. Na kartě **výsledky** se zobrazí funkce zálohování Windows serveru se úspěšně nainstalovala na Windows Server.
 
-    ![výsledek](./media/backup-azure-system-state-troubleshoot/results.jpg)
-
+    ![vyústit](./media/backup-azure-system-state-troubleshoot/results.jpg)
 
 ### <a name="system-volume-information-permission"></a>Oprávnění k informacím o svazcích systému
 
@@ -97,34 +99,34 @@ Ujistěte se, že níže uvedené služby jsou ve stavu spuštěno:
 
 **Název služby** | **Typ spouštění**
 --- | ---
-Vzdálené volání procedur (RPC) | Automatické
-Systém událostí COM+ (EventSystem) | Automatické
-Služba oznamování systémových událostí (SENS) | Automatické
-Stínová kopie svazku (VSS) | Ručně
-Poskytovatel Microsoft software Stínová kopie (SWPRV) | Ručně
+Vzdálené volání procedur (RPC) | Automaticky
+Systém událostí COM+ (EventSystem) | Automaticky
+Služba oznamování systémových událostí (SENS) | Automaticky
+Stínová kopie svazku (VSS) | Ruční
+Poskytovatel Microsoft software Stínová kopie (SWPRV) | Ruční
 
 ### <a name="validate-windows-server-backup-status"></a>Ověřit stav Zálohování Windows Serveru
 
-Pokud chcete ověřit stav Zálohování Windows Serveru, proveďte následující:
+Pokud chcete ověřit stav Zálohování Windows Serveru, proveďte následující kroky:
 
-  * Ujistěte se, že je spuštěný prostředí PowerShell WSB.
+- Ujistěte se, že je spuštěný prostředí PowerShell WSB.
 
-    -   Spusťte `Get-WBJob` z PowerShellu se zvýšenými oprávněními a ujistěte se, že nevrátí následující chybu:
+  - Spusťte `Get-WBJob` z PowerShellu se zvýšenými oprávněními a ujistěte se, že nevrátí následující chybu:
 
     > [!WARNING]
-    > Get-WBJob: Pojem Get-WBJob se nerozpoznal jako název rutiny, funkce, souboru skriptu nebo spustitelného programu. Zkontrolujte pravopis názvu, nebo pokud byla vložena cesta, ověřte, zda je cesta správná, a akci opakujte.
+    > Get-WBJob: pojem Get-WBJob se nerozpoznal jako název rutiny, funkce, souboru skriptu nebo spustitelného programu. Zkontrolujte pravopis názvu, nebo pokud byla vložena cesta, ověřte, zda je cesta správná, a akci opakujte.
 
-    -   Pokud dojde k chybě s touto chybou, přeinstalujte funkci Zálohování Windows Serveru na serverovém počítači, jak je uvedeno v kroku 1 požadavky.
+    - Pokud dojde k chybě s touto chybou, přeinstalujte funkci Zálohování Windows Serveru na serverovém počítači, jak je uvedeno v kroku 1 požadavky.
 
-  * Ujistěte se, že zálohování WSB funguje správně, spuštěním následujícího příkazu z příkazového řádku se zvýšenými oprávněními:
+  - Ujistěte se, že zálohování WSB funguje správně, spuštěním následujícího příkazu z příkazového řádku se zvýšenými oprávněními:
 
       `wbadmin start systemstatebackup -backuptarget:X: -quiet`
 
       > [!NOTE]
       >Nahraďte X písmenem jednotky svazku, kam chcete uložit image pro zálohování stavu systému.
 
-    - Pravidelně kontrolujte stav úlohy spuštěním `Get-WBJob` příkazu z PowerShellu se zvýšenými oprávněními.        
-    - Po dokončení úlohy zálohování ověřte konečný stav úlohy spuštěním `Get-WBJob -Previous 1` příkazu.
+    - Pravidelně kontrolujte stav úlohy spuštěním příkazu `Get-WBJob` z PowerShellu se zvýšenými oprávněními.
+    - Po dokončení úlohy zálohování zkontroluje konečný stav úlohy spuštěním příkazu `Get-WBJob -Previous 1`.
 
 Pokud úloha selže, indikuje problém WSB, který by způsobil selhání zálohování stavu systému agenta MARS.
 
@@ -134,23 +136,20 @@ Pokud úloha selže, indikuje problém WSB, který by způsobil selhání záloh
 
 | Příznak | Příčina | Řešení
 | -- | -- | --
-| – Agent MARS se nezdařil s chybovou zprávou: Úloha WSB se nezdařila s chybami VSS. Ověřte protokoly událostí služby VSS a vyřešte selhání. "<br/><br/> -V protokolech událostí aplikace VSS je k dispozici následující protokol chyb: "Zapisovač VSS odmítl událost s chybou 0x800423f2. časový limit zapisovače vypršel mezi událostmi zablokování a rozmrazení."| Zapisovač VSS nejde v čase dokončit kvůli nedostatku prostředků procesoru a paměti v počítači. <br/><br/> Modul pro zápis stínové kopie svazku už používá jiný zálohovací software, protože pro tuto zálohu se nepovedlo dokončit operaci snímku. | Počkejte, až bude procesor nebo paměť uvolněna v systému, nebo přeruší procesy, které zabírají příliš mnoho paměti nebo procesoru, a operaci opakujte. <br/><br/>  Počkejte na dokončení probíhajícího zálohování a zkuste operaci provést později, až v počítači neběží žádné zálohy.
-
+| -Agent MARS se nezdařil s chybovou zprávou: "úloha WSB selhala s chybami VSS. Ověřte protokoly událostí služby VSS a vyřešte selhání. "<br/><br/> -V protokolech událostí aplikace VSS je k dispozici následující protokol chyb: "modul pro zápis stínové kopie svazku odmítl událost s chybou 0x800423f2. časový limit zapisovače vypršel mezi událostmi zablokování a rozmrazení."| Zapisovač VSS nejde v čase dokončit kvůli nedostatku prostředků procesoru a paměti v počítači. <br/><br/> Modul pro zápis stínové kopie svazku už používá jiný zálohovací software, protože pro tuto zálohu se nepovedlo dokončit operaci snímku. | Počkejte, až bude procesor nebo paměť uvolněna v systému, nebo přeruší procesy, které zabírají příliš mnoho paměti nebo procesoru, a operaci opakujte. <br/><br/>  Počkejte na dokončení probíhajícího zálohování a zkuste operaci provést později, až v počítači neběží žádné zálohy.
 
 ### <a name="insufficient-disk-space-to-grow-shadow-copies"></a>Nedostatek místa na disku pro zvětšení stínových kopií
 
 | Příznak | Řešení
 | -- | --
-| – Agent MARS se nezdařil s chybovou zprávou: Zálohování nebylo úspěšné, protože svazek stínové kopie nešlo zvětšit, protože na svazcích obsahujících systémové soubory není dost místa na disku. <br/><br/> -V protokolech událostí systému Volsnap je k dispozici následující protokol chyb nebo upozornění: "Na svazku C není dostatek místa na disku: pro zvětšení úložiště stínových kopií pro stínové kopie jazyka C: z důvodu této chyby je nebezpečí odstranění všech stínových kopií svazku C:" | – Uvolněte místo na zvýrazněném svazku v protokolu událostí tak, aby bylo dost místa pro růst stínových kopií, zatímco probíhá zálohování. <br/><br/> – Při konfiguraci prostoru stínových kopií můžeme omezit množství místa využitého pro stínovou kopii. Další informace najdete v tomto [článku](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax) .
-
+| -Agent MARS se nezdařil s chybovou zprávou: zálohování se nezdařilo, protože svazek stínové kopie nemohl být zvětšen, protože na svazcích obsahujících systémové soubory není dostatek místa na disku. <br/><br/> -V protokolech událostí systému Volsnap jsou k dispozici následující protokol chyb nebo upozornění: "na svazku C není dostatek místa na disku: pro zvýšení úložiště stínové kopie pro stínové kopie C: z důvodu této chyby je riziko odstranění všech stínových kopií svazku C:" | – Uvolněte místo na zvýrazněném svazku v protokolu událostí tak, aby bylo dost místa pro růst stínových kopií, zatímco probíhá zálohování. <br/><br/> – Při konfiguraci prostoru stínových kopií můžeme omezit množství místa využitého pro stínovou kopii. Další informace najdete v tomto [článku](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax) .
 
 ### <a name="efi-partition-locked"></a>Oddíl EFI uzamčen
 
 | Příznak | Řešení
 | -- | --
-| Agent MARS se nezdařil s chybovou zprávou: Zálohování stavu systému se nepovedlo, protože systémový oddíl EFI je zamčený. Důvodem může být přístup k systémovému oddílu pomocí zabezpečení nebo zálohování softwaru třetí strany. | – Pokud k problému dochází kvůli bezpečnostnímu softwaru jiného výrobce, musíte se obrátit na dodavatele antivirového programu, aby mohl agenta MARS umožnit. <br/><br/> – Pokud je spuštěný zálohovací software jiného výrobce, počkejte na jeho dokončení a pak zkuste zálohování zopakovat.
+| Agent MARS se nezdařil s chybovou zprávou: "záloha stavu systému se nezdařila, protože systémový oddíl EFI je uzamčen. Důvodem může být přístup k systémovému oddílu pomocí zabezpečení nebo zálohování softwaru třetí strany. | – Pokud k problému dochází kvůli bezpečnostnímu softwaru jiného výrobce, musíte se obrátit na dodavatele antivirového programu, aby mohl agenta MARS umožnit. <br/><br/> – Pokud je spuštěný zálohovací software jiného výrobce, počkejte na jeho dokončení a pak zkuste zálohování zopakovat.
 
-
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o stavu systému Windows ve Správce prostředků nasazení najdete v tématu [zálohování stavu systému Windows Server](backup-azure-system-state.md)

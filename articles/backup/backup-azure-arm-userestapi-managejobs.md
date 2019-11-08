@@ -1,6 +1,6 @@
 ---
 title: 'Azure Backup: Správa úloh zálohování pomocí REST API'
-description: Správa úloh zálohování a obnovení Azure Backup pomocí REST API
+description: V tomto článku se dozvíte, jak sledovat a spravovat úlohy zálohování a obnovení Azure Backup pomocí REST API.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: b10283c2946d01101b941d53b6bf03be3a12e99e
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: c0ce79c68b9d9cf11ea20c2d6469f4240fb38a95
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954915"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747540"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Sledování úloh zálohování a obnovení pomocí REST API
 
@@ -23,7 +23,7 @@ Služba Azure Backup Service spouští úlohy, které běží na pozadí v různ
 
 ## <a name="fetch-job-information-from-operations"></a>Načíst informace o úloze z operací
 
-Operace, jako je například aktivace zálohování, vždy vrátí jobID. Příklad: Konečná odpověď [REST API operace zálohování aktivační události](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) je následující:
+Operace, jako je například aktivace zálohování, vždy vrátí jobID. Příklad: konečná odpověď [operace zálohování REST API Backup](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) je následující:
 
 ```http
 {
@@ -47,11 +47,11 @@ Operace, jako je například aktivace zálohování, vždy vrátí jobID. Přík
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2017-07-01
 ```
 
-`{jobName}` Je výše uvedená zpráva "jobId". Odpověď je vždy 200 OK s polem "status", které indikuje aktuální stav úlohy. Až bude "dokončeno" nebo "CompletedWithWarnings", sekce "extendedInfo" odhalí další podrobnosti o úloze.
+`{jobName}` je výše uvedená "jobId". Odpověď je vždy 200 OK s polem "status", které indikuje aktuální stav úlohy. Až bude "dokončeno" nebo "CompletedWithWarnings", sekce "extendedInfo" odhalí další podrobnosti o úloze.
 
 ### <a name="response"></a>Odpověď
 
-|Name  |Typ  |Popis  |
+|Name (Název)  |Typ  |Popis  |
 |---------|---------|---------|
 |200 OK     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | OK        |
 

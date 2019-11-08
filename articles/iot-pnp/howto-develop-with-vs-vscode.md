@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 7bb4e507df24f50238197b738fd54e6b5c1d05ee
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 6ce5a93cdd44af7f199d59d459daa46b4adb0719
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571189"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748039"
 ---
-# <a name="use-azure-iot-tools-for-visual-studio-code"></a>Použití nástrojů Azure IoT pro Visual Studio Code
+# <a name="use-visual-studio-and-visual-studio-code-to-build-iot-plug-and-play-devices"></a>Použití sady Visual Studio a Visual Studio Code k sestavování zařízení IoT technologie Plug and Play
 
 Nástroje Azure IoT Tools for Visual Studio Code poskytují integrované prostředí pro tvorbu modelů funkcí zařízení (DCM) a rozhraní, publikování do modelů úložišť a generování kostrového kódu C k implementaci aplikace zařízení.
 

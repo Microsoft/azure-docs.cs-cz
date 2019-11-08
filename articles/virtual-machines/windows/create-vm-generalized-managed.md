@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 30e5a7e5953c56ff452b992370e8225ca103abba
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 016b53660499b86de13855cfa994c84d6d9bc702
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079700"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749497"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Vytvoření virtuálního počítače ze spravované image
 
@@ -31,7 +31,7 @@ Před vytvořením nového virtuálního počítače budete muset [vytvořit spr
 
 1. Otevřete web [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **všechny prostředky**. Můžete řadit prostředky podle **typu** a snadno tak najít své image.
-3. Ze seznamu vyberte obrázek, který chcete použít. Otevře se Stránka s přehledem obrázku.
+3. Ze seznamu vyberte obrázek, který chcete použít. Otevře se stránka s **přehledem** obrázku.
 4. V nabídce vyberte **vytvořit virtuální počítač** .
 5. Zadejte informace o virtuálním počítači. Uživatelské jméno a heslo, které tady zadáte, se použije k přihlášení k virtuálnímu počítači. Po dokončení vyberte **OK**. Nový virtuální počítač můžete vytvořit v existující skupině prostředků, nebo výběrem možnosti **vytvořit novou** vytvořte novou skupinu prostředků pro uložení virtuálního počítače.
 6. Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr **Podporovaný typ disku**. 
@@ -43,7 +43,7 @@ Před vytvořením nového virtuálního počítače budete muset [vytvořit spr
 
 PowerShell můžete použít k vytvoření virtuálního počítače z Image pomocí zjednodušené sady parametrů pro rutinu [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) . Bitová kopie musí být ve stejné skupině prostředků, ve které vytvoříte virtuální počítač.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 Zjednodušená sada parametrů pro [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) vyžaduje, abyste zadali název, skupinu prostředků a název Image k vytvoření virtuálního počítače z image. New-AzVm použije hodnotu parametru **-Name** jako název všech prostředků, které vytvoří automaticky. V tomto příkladu poskytujeme podrobnější názvy pro každý z těchto prostředků, ale nechat rutinu je automaticky vytvořit. Můžete také vytvořit prostředky předem, například virtuální síť, a předat název prostředku do rutiny. New-AzVm použije stávající prostředky, pokud je může najít podle jména.
 

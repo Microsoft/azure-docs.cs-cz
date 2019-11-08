@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: f7f57a43697a9376062bdd3baa2d5f7333bf4a7f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 25091e8e58fbdba908fb00ece3cd2d3d296c5ab1
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100160"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749050"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Nastavení přístupu WinRM pro Virtual Machines v Azure Resource Manager
 
@@ -31,16 +31,16 @@ Tady jsou kroky, které musíte provést při nastavování virtuálního počí
 4. Získat adresu URL certifikátu podepsaného svým držitelem v Key Vault
 5. Odkazování na adresu URL certifikátů podepsaných svým držitelem při vytváření virtuálního počítače
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
-## <a name="step-1-create-a-key-vault"></a>Krok 1: Vytvoření trezoru klíčů
+## <a name="step-1-create-a-key-vault"></a>Krok 1: vytvoření Key Vault
 K vytvoření Key Vault můžete použít následující příkaz.
 
 ```
 New-AzKeyVault -VaultName "<vault-name>" -ResourceGroupName "<rg-name>" -Location "<vault-location>" -EnabledForDeployment -EnabledForTemplateDeployment
 ```
 
-## <a name="step-2-create-a-self-signed-certificate"></a>Krok 2: Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+## <a name="step-2-create-a-self-signed-certificate"></a>Krok 2: vytvoření certifikátu podepsaného svým držitelem
 Pomocí tohoto skriptu PowerShellu můžete vytvořit certifikát podepsaný svým držitelem.
 
 ```
@@ -55,7 +55,7 @@ $password = Read-Host -Prompt "Please enter the certificate password." -AsSecure
 Export-PfxCertificate -Cert $cert -FilePath ".\$certificateName.pfx" -Password $password
 ```
 
-## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>Krok 3: Nahrání certifikátu podepsaného svým držitelem do Key Vault
+## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>Krok 3: nahrání certifikátu podepsaného svým držitelem do Key Vault
 Před nahráním certifikátu do Key Vault vytvořeného v kroku 1 se musí převést na formát, který bude rozumět poskytovateli prostředků Microsoft. Compute. Níže uvedený skript prostředí PowerShell vám umožní
 
 ```
@@ -78,11 +78,11 @@ $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText –Force
 Set-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValue $secret
 ```
 
-## <a name="step-4-get-the-url-for-your-self-signed-certificate-in-the-key-vault"></a>Krok 4: Získat adresu URL certifikátu podepsaného svým držitelem v Key Vault
+## <a name="step-4-get-the-url-for-your-self-signed-certificate-in-the-key-vault"></a>Krok 4: získání adresy URL certifikátu podepsaného svým držitelem v Key Vault
 Poskytovatel prostředků Microsoft. COMPUTE potřebuje při zřizování virtuálního počítače adresu URL tajného kódu uvnitř Key Vault. To umožňuje poskytovateli prostředků Microsoft. COMPUTE stáhnout tajný kód a vytvořit ekvivalentní certifikát na virtuálním počítači.
 
 > [!NOTE]
-> Adresa URL tajného klíče musí obsahovat také verzi. Příklad adresy URL vypadá jako https:\//contosovault.Vault.Azure.NET:443/Secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
+> Adresa URL tajného klíče musí obsahovat také verzi. Příklad adresy URL vypadá jako https:\//contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve.
 
 #### <a name="templates"></a>Šablony
 Odkaz na adresu URL v šabloně můžete získat pomocí následujícího kódu.
@@ -94,7 +94,7 @@ Tuto adresu URL můžete získat pomocí následujícího příkazu PowerShellu.
 
     $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
 
-## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>Krok 5: Odkazování na adresu URL certifikátů podepsaných svým držitelem při vytváření virtuálního počítače
+## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>Krok 5: odkazování na adresu URL certifikátů podepsaných svým držitelem při vytváření virtuálního počítače
 #### <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manager
 Při vytváření virtuálního počítače prostřednictvím šablon se na certifikát odkazuje v části tajné klíče a v části winRM následujícím způsobem:
 
@@ -132,7 +132,7 @@ Při vytváření virtuálního počítače prostřednictvím šablon se na cert
 
 Ukázkovou šablonu pro výše uvedenou možnost najdete tady: [201-VM-WinRM-klíčů Trezor – Windows](https://azure.microsoft.com/documentation/templates/201-vm-winrm-keyvault-windows)
 
-Zdrojový kód pro tuto šablonu najdete na GitHubu [](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows) .
+Zdrojový kód pro tuto šablonu najdete na [GitHubu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows) .
 
 #### <a name="powershell"></a>PowerShell
     $vm = New-AzVMConfig -VMName "<VM name>" -VMSize "<VM Size>"
@@ -143,13 +143,13 @@ Zdrojový kód pro tuto šablonu najdete na GitHubu [](https://github.com/Azure/
     $CertificateStore = "My"
     $vm = Add-AzVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore $CertificateStore -CertificateUrl $secretURL
 
-## <a name="step-6-connecting-to-the-vm"></a>Krok 6: Připojování k virtuálnímu počítači
+## <a name="step-6-connecting-to-the-vm"></a>Krok 6: připojení k virtuálnímu počítači
 Než se budete moct připojit k virtuálnímu počítači, musíte se ujistit, že je váš počítač nakonfigurovaný pro vzdálenou správu WinRM. Spusťte PowerShell jako správce a spusťte následující příkaz, abyste se ujistili, že jste nastavili.
 
     Enable-PSRemoting -Force
 
 > [!NOTE]
-> Pokud výše uvedená nefunguje, možná budete muset zkontrolovat, jestli je spuštěná služba WinRM. Můžete to udělat pomocí`Get-Service WinRM`
+> Pokud výše uvedená nefunguje, možná budete muset zkontrolovat, jestli je spuštěná služba WinRM. Můžete to udělat pomocí `Get-Service WinRM`
 > 
 > 
 

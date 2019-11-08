@@ -1,7 +1,7 @@
 ---
 title: Přehledy, pracovní postupy a koncepty úloh – Content Moderator
 titleSuffix: Azure Cognitive Services
-description: Další informace o recenzích, pracovních postupech a úlohách
+description: V tomto článku se dozvíte o základních konceptech nástroje pro kontrolu. Recenze, pracovní postupy a úlohy.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 917636c8ae339e06321c169979611f74276ca523
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 1aba86efb9ea76fbf060e80b47f9f2f6cdf8ee71
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044003"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744420"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>Recenze, pracovní postupy a úlohy pro moderování obsahu
 
@@ -35,7 +35,7 @@ Pracovní postup je cloudově přizpůsobený filtr pro obsah. Pracovní postupy
 
 ### <a name="view-workflows"></a>Zobrazit pracovní postupy
 
-Pokud chcete zobrazit stávající pracovní postupy, použijte [Nástroj pro revizi](https://contentmoderator.cognitive.microsoft.com/) a vyberte **Nastavení**  > **pracovní postupy**.
+Pokud chcete zobrazit stávající pracovní postupy, použijte [Nástroj pro revizi](https://contentmoderator.cognitive.microsoft.com/) a vyberte **Nastavení** > **pracovní postupy**.
 
 ![Výchozí pracovní postup](images/default-workflow-listed.PNG)
 

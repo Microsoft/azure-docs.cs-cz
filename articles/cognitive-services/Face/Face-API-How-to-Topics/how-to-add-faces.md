@@ -1,7 +1,7 @@
 ---
-title: 'Příklad: Přidat tváří jeden objekt PersonGroup – rozhraní API pro rozpoznávání tváře'
+title: 'Příklad: Přidání ploch do osoby-Face API'
 titleSuffix: Azure Cognitive Services
-description: Použijte rozhraní API pro rozpoznávání tváře k přidání tváří do obrázků.
+description: Tato příručka ukazuje, jak přidat velký počet osob a ploch do objektu person pomocí Face API Azure Cognitive Services.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,25 +10,25 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 0415dcae08c188c1758150c4b8b0df4dee014ce6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2f8a6272b02aea5948be79ddf72d105c4f72bb33
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448606"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744243"
 ---
-# <a name="add-faces-to-a-persongroup"></a>Přidat tváří jeden objekt PersonGroup
+# <a name="add-faces-to-a-persongroup"></a>Přidání obličeje k osobě
 
-Tato příručka ukazuje, jak přidat velké množství osob a tváří na jeden objekt PersonGroup objekt. Stejné strategie platí také pro LargePersonGroup FaceList a LargeFaceList objekty. Tato ukázka je napsána v C# pomocí klientské knihovny Azure Cognitive Services Face API .NET.
+Tato příručka ukazuje, jak přidat velký počet osob a ploch do objektu Person. Stejná strategie platí i pro objekty LargePersonGroup, FaceList a LargeFaceList. Tato ukázka je napsaná C# pomocí klientské knihovny Azure Cognitive Services Face API .NET.
 
 ## <a name="step-1-initialization"></a>Krok 1: Inicializace
 
-Následující kód deklaruje několik proměnných a implementuje přidejte pomocnou funkci rozhraním pro rozpoznávání tváře naplánování požadavků:
+Následující kód deklaruje několik proměnných a implementuje pomocnou funkci pro naplánování žádostí o přidání obličeje:
 
 - `PersonCount` je celkový počet osob.
 - `CallLimitPerSecond` je maximální počet volání za sekundu podle úrovně předplatného.
 - `_timeStampQueue` je fronta zaznamenávající časová razítka požadavků.
-- `await WaitCallLimitPerSecondAsync()` počká, až je platný odeslat další požadavek.
+- `await WaitCallLimitPerSecondAsync()` čeká na odeslání dalšího požadavku do chvíle, kdy je platný.
 
 ```csharp
 const int PersonCount = 10000;
@@ -58,9 +58,9 @@ static async Task WaitCallLimitPerSecondAsync()
 }
 ```
 
-## <a name="step-2-authorize-the-api-call"></a>Krok 2: Povolit volání rozhraní API
+## <a name="step-2-authorize-the-api-call"></a>Krok 2: Autorizace volání rozhraní API
 
-Při použití klientské knihovny, je nutné předat váš klíč předplatného do konstruktoru **FaceClient** třídy. Příklad:
+Při použití klientské knihovny musíte předat klíč předplatného konstruktoru třídy **FaceClient** . Příklad:
 
 ```csharp
 private readonly IFaceClient faceClient = new FaceClient(
@@ -68,9 +68,9 @@ private readonly IFaceClient faceClient = new FaceClient(
     new System.Net.Http.DelegatingHandler[] { });
 ```
 
-Klíč předplatného najdete na webu Azure Marketplace na webu Azure Portal. Další informace najdete v tématu [předplatná](https://www.microsoft.com/cognitive-services/sign-up).
+Klíč předplatného získáte tak, že v Azure Portal přejdete na Azure Marketplace. Další informace najdete v tématu [předplatná](https://www.microsoft.com/cognitive-services/sign-up).
 
-## <a name="step-3-create-the-persongroup"></a>Krok 3: Vytvořte jeden objekt PersonGroup
+## <a name="step-3-create-the-persongroup"></a>Krok 3: Vytvoření kolekce PersonGroup
 
 Kolekce PersonGroup s názvem „MyPersonGroup“ slouží k ukládání osob.
 Čas žádosti se zařadí do fronty `_timeStampQueue`, aby se zajistilo celkové ověření.
@@ -82,9 +82,9 @@ _timeStampQueue.Enqueue(DateTime.UtcNow);
 await faceClient.LargePersonGroup.CreateAsync(personGroupId, personGroupName);
 ```
 
-## <a name="step-4-create-the-persons-for-the-persongroup"></a>Krok 4: Vytvoření osob pro jeden objekt PersonGroup
+## <a name="step-4-create-the-persons-for-the-persongroup"></a>Krok 4: vytvoření osob pro danou osobu
 
-Osob jsou vytvořeny současně, a `await WaitCallLimitPerSecondAsync()` platí také pro nedošlo k překročení limitu volání.
+Osoby jsou vytvořeny souběžně a `await WaitCallLimitPerSecondAsync()` jsou také aplikovány, aby nedocházelo k překročení limitu volání.
 
 ```csharp
 CreatePersonResult[] persons = new CreatePersonResult[PersonCount];
@@ -97,10 +97,10 @@ Parallel.For(0, PersonCount, async i =>
 });
 ```
 
-## <a name="step-5-add-faces-to-the-persons"></a>Krok 5: Přidat tváře osoby
+## <a name="step-5-add-faces-to-the-persons"></a>Krok 5: Přidání tváří osobám
 
-Přidat do jiné osoby tváří souběžného zpracování. Tváří, které jsou přidány pro jeden konkrétní osobu, která se provádějí postupně.
-Opět `await WaitCallLimitPerSecondAsync()` se vyvolá, aby Ujistěte se, že frekvence požadavku v rámci oboru omezení.
+Plošky přidané různým osobám jsou zpracovávány souběžně. Plošky přidané pro jednu konkrétní osobu jsou zpracovávány postupně.
+Znovu se vyvolá `await WaitCallLimitPerSecondAsync()`, aby se zajistilo, že frekvence požadavků spadá do rozsahu omezení.
 
 ```csharp
 Parallel.For(0, PersonCount, async i =>
@@ -122,21 +122,21 @@ Parallel.For(0, PersonCount, async i =>
 
 ## <a name="summary"></a>Souhrn
 
-V této příručce jste zjistili, procesem vytvoření jeden objekt PersonGroup s velké množství osob a tváří. Několik připomenutí:
+V této příručce jste se dozvěděli o procesu vytvoření osoby typu osoba s obrovským počtem osob a ploch. Několik připomenutí:
 
-- Tato strategie platí také pro FaceLists a LargePersonGroups.
-- Přidání nebo odstranění tváří různých FaceLists nebo osobám v LargePersonGroups souběžného zpracování.
-- Přidání nebo odstranění tváře, abyste jeden konkrétní FaceList nebo osoba LargePersonGroup se provádějí postupně.
-- Pro zjednodušení je vynecháno zpracování potenciální výjimky v této příručce. Pokud chcete vylepšit další odolnosti, použijte zásady opakování správné.
+- Tato strategie platí i pro FaceLists a LargePersonGroups.
+- Přidávání a odstraňování plošek pro různé FaceListsy nebo osoby v LargePersonGroups se zpracovávají souběžně.
+- Přidávání a odstraňování plošek na konkrétní FaceList nebo osoby v LargePersonGroup se provádí postupně.
+- Pro zjednodušení je v této příručce uveden postup, jak zpracovat potenciální výjimku. Pokud chcete zvýšit robustnost, použijte zásady správného opakování.
 
-Následující funkce byly vysvětlení a jsme vám ukázali:
+Následující funkce byly vysvětleny a ukázaly:
 
-- Vytvoření s použitím objektů Persongroup [jeden objekt PersonGroup – vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) rozhraní API.
-- S vytvořením osob [vytvořit jeden objekt PersonGroup uživatele –](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) rozhraní API.
-- Přidat tváře osoby pomocí [jeden objekt PersonGroup uživatele – přidání rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) rozhraní API.
+- Vytvořte objektů persongroup pomocí rozhraní API [Person-Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) .
+- Vytvořte osoby pomocí uživatele [Person – Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) API.
+- Přidejte obličeje k osobám pomocí rozhraní [Person osoby – přidat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) rozhraní API pro rozpoznávání tváře.
 
 ## <a name="related-topics"></a>Související témata
 
-- [Identifikace tváří v obrázku](HowtoIdentifyFacesinImage.md)
-- [Rozpoznávání tváří v obrázku](HowtoDetectFacesinImage.md)
-- [Použít funkci ve velkém měřítku](how-to-use-large-scale.md)
+- [Identifikace plošek v obrázku](HowtoIdentifyFacesinImage.md)
+- [Detekce plošek v obrázku](HowtoDetectFacesinImage.md)
+- [Použití funkce rozsáhlého škálování](how-to-use-large-scale.md)

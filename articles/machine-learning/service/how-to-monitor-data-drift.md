@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: eddfddc994482bcb6e60604703e7f306fee9c32b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.openlocfilehash: 24b1c22d9badc58360b0355bb4ef89017db27f06
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574330"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796739"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Detekce posunu dat (Preview) na modelech nasazených do služby Azure Kubernetes Service (AKS)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -189,6 +189,8 @@ Pokud se data odsadí negativně vlivem na výkon nasazeného modelu, je čas na
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úplný příklad použití posunu dat najdete v [poznámkovém bloku Azure ml – datový posun](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/monitor-models/data-drift/azure-ml-datadrift.ipynb). Tento Jupyter Notebook ukazuje použití [datové sady Azure Open](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) pro výuku modelu, který předpovídá počasí, nasadí ho do AKS a monitoruje posun dat. 
+* Úplný příklad použití posunu dat najdete v [poznámkovém bloku Azure ml – datový posun](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/monitor-models/data-drift/drift-on-aks.ipynb). Tento Jupyter Notebook ukazuje použití [datové sady Azure Open](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) pro výuku modelu, který předpovídá počasí, nasadí ho do AKS a monitoruje posun dat. 
+
+* Detekci posunu dat pomocí [monitorování datových sad](how-to-monitor-datasets.md)
 
 * Rádi bychom si výrazně vyhodnotili vaše dotazy, komentáře a návrhy, protože se pohyb dat blíží k všeobecné dostupnosti. Použijte následující tlačítko pro odeslání názoru na produkt. 

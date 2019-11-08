@@ -1,6 +1,6 @@
 ---
 title: 'Azure Backup: obnovení souborů a složek ze zálohy virtuálního počítače Azure'
-description: Obnovení souborů z bodu obnovení virtuálního počítače Azure
+description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu obnovení virtuálního počítače Azure.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: df8e309ecb2a81205684c60076015f79ac8c4c8f
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: c6b49e794011d915f8cd7b29e6317e80391f2675
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968487"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747381"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -212,17 +212,17 @@ V systému Linux musí operační systém počítače používaného k obnovení
 
 Skript také vyžaduje, aby byly součásti Python a bash spouštěny a bezpečně připojeny k bodu obnovení.
 
-|Součást | Version  |
+|Komponenta | Verze  |
 | --------------- | ---- |
 | bash | 4 a vyšší |
-| Python | 2.6.6 a vyšší  |
+| python | 2.6.6 a vyšší  |
 | PROTOKOLY | 1,2 by měla být podporovaná.  |
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Obnovení souborů ze záloh virtuálních počítačů s velkými disky
 
 V této části se dozvíte, jak provést obnovení souborů ze záloh virtuálních počítačů Azure, jejichž počet disků je > 16 a že velikost každého disku je > 4 TB.
 
-Vzhledem k tomu, že proces obnovení souborů připojí všechny disky ze zálohy, v případě velkého počtu disků (> 16) nebo velkých disků (> 4 TB) se doporučuje následující body akcí.
+Vzhledem k tomu, že proces obnovy souborů připojí všechny disky ze zálohy, když je použit velký počet disků (> 16) nebo velké disky (> 4 TB), jsou doporučeny následující body akcí:
 
 - Pro obnovení souborů ponechte samostatný server pro obnovení (virtuální počítače Azure s D2v3). Můžete použít jenom obnovení souboru a pak vypnout, pokud není potřeba. Obnovení původního počítače se nedoporučuje, protože bude mít významný dopad na samotný virtuální počítač.
 - Pak skript spusťte jednou, abyste zkontrolovali, jestli je operace obnovení souborů úspěšná.
@@ -244,7 +244,7 @@ Vzhledem k tomu, že proces obnovení souborů připojí všechny disky ze zálo
   - V souboru/etc/iSCSI/iscsid.conf změňte nastavení z
     - Node. [0]. Timeo. noop_out_timeout = 5 to Node. [0]. Timeo. noop_out_timeout = 30
 - Po provedení následujícího skriptu teď skript spusťte znovu. U těchto změn je vysoce pravděpodobné, že se obnovení souboru zdaří.
-- Pokaždé, když uživatel stáhne skript, Azure Backup zahájí proces přípravy bodu obnovení ke stažení. V případě velkých disků to bude trvat značnou dobu. Pokud dojde k následným nárůstům požadavků, cílová Příprava přejde ke stažení spirály. Proto se doporučuje stáhnout skript z portálu/PowerShell/CLI, počkat až 20-30 minut (Heuristická) a pak ji spustit. V tuto chvíli se očekává, že cíl bude připravený pro připojení ze skriptu.
+- Pokaždé, když uživatel stáhne skript, Azure Backup zahájí proces přípravy bodu obnovení ke stažení. U velkých disků to bude trvat značnou dobu. Pokud dojde k následným nárůstům požadavků, cílová Příprava přejde ke stažení spirály. Proto se doporučuje stáhnout skript z portálu/PowerShell/CLI, počkat až 20-30 minut (Heuristická) a pak ji spustit. V tuto chvíli se očekává, že cíl bude připravený pro připojení ze skriptu.
 - Po obnovení souboru se ujistěte, že se vrátíte na portál a kliknete na odpojit disky pro body obnovení, u kterých jste nedokázali připojit svazky. V podstatě tento krok vyčistí všechny existující procesy a relace a zvýší pravděpodobnost obnovení.
 
 ## <a name="troubleshooting"></a>Řešení potíží

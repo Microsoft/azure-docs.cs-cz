@@ -10,12 +10,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: e66b3e6563d796cc7b59e82233bd1b22bc906c6e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: MT
+ms.openlocfilehash: cff481c7c2e09da1dc8c8e2f971d9adb164d54da
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691353"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796125"
 ---
 # <a name="accelerated-database-recovery"></a>Urychlené obnovení databáze
 
@@ -99,11 +99,11 @@ Mezi čtyři klíčové součásti pravidla automatického nasazení patří:
 
 - **Logické vrácení**
 
-  Logické vrácení je asynchronní proces, který je zodpovědný za provádění vrácení zpět na úrovni řádku – poskytuje vrácení zpět a vrácení zpět pro všechny operace s verzí.
+  Logické vrácení je asynchronní proces, který je zodpovědný za provádění vrácení zpět na úrovni řádku – poskytuje vrácení zpět a vrácení zpět pro všechny operace s verzí. Logické vrácení je provedeno pomocí:
 
-  - Sleduje všechny přerušené transakce.
-  - Provede vrácení zpět pomocí PVS pro všechny uživatelské transakce.
-  - Uvolní všechny zámky hned po přerušení transakce.
+  - Udržování přehledu o všech přerušených transakcích a jejich označení jako neviditelná pro jiné transakce. 
+  - Vrácení zpět pomocí PVS pro všechny uživatelské transakce místo fyzického prohledávání transakčního protokolu a vrácení změn v jednom okamžiku.
+  - Uvolnění všech zámků ihned po přerušení transakce. Vzhledem k tomu, že přerušení zahrnuje jednoduše označení změn v paměti, proces je velmi efektivní a proto se zámky nemusí uchovávat po dlouhou dobu.
 
 - **sLog**
 

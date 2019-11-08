@@ -7,18 +7,18 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 088ca5c20b0681cdd36da1b8a187873399aa32c6
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b034bad8661e93cbf5797c93739f1db3a64626f0
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828464"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748902"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption ukázkové skripty 
 
 Tento článek poskytuje ukázkové skripty pro přípravu předem šifrovaných virtuálních pevných disků a dalších úloh.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="sample-powershell-scripts-for-azure-disk-encryption"></a>Ukázkové skripty PowerShellu pro Azure Disk Encryption 
 
@@ -103,7 +103,7 @@ Následující tabulka ukazuje, které parametry lze použít ve skriptu prostř
 4. Chcete-li zašifrovat operační systém, zadejte volumeType jako **všechny** nebo **operační systém** , pokud povolíte šifrování.
 
    > [!NOTE]
-   > Všechny procesy uživatelského prostoru, které nejsou spuštěny jako služby `systemd`, by měly být ukončeny pomocí `SIGKILL`. Restartujte virtuální počítač. Když na běžícím virtuálním počítači povolíte šifrování disků s operačním systémem, naplánujte výpadky virtuálního počítače.
+   > Všechny procesy uživatelského prostoru, které nejsou spuštěny jako `systemd` služby by měly být ukončeny pomocí `SIGKILL`. Restartujte virtuální počítač. Když na běžícím virtuálním počítači povolíte šifrování disků s operačním systémem, naplánujte výpadky virtuálního počítače.
 
 5. Pravidelně Sledujte průběh šifrování pomocí pokynů v [následující části](#monitoring-os-encryption-progress).
 
@@ -131,7 +131,7 @@ Průběh šifrování operačního systému můžete monitorovat třemi způsoby
     ```
   Jakmile virtuální počítač dosáhne "spuštěného" šifrování disku s operačním systémem, bude trvat přibližně 40 až 50 minut na virtuálním počítači s podporou Premium Storage.
 
-  Kvůli [potížím #388](https://github.com/Azure/WALinuxAgent/issues/388) v WALinuxAgent se v některých distribucích `OsVolumeEncrypted` a `DataVolumesEncrypted` ukázaly jako `Unknown`. U WALinuxAgent verze 2.1.5 a novější je tento problém vyřešen automaticky. Pokud se ve výstupu zobrazí `Unknown`, můžete ověřit stav šifrování disku pomocí Azure Resource Explorer.
+  Kvůli [potížím #388](https://github.com/Azure/WALinuxAgent/issues/388) v WALinuxAgent `OsVolumeEncrypted` a `DataVolumesEncrypted` se v některých distribucích zobrazovaly jako `Unknown`. U WALinuxAgent verze 2.1.5 a novější je tento problém vyřešen automaticky. Pokud se ve výstupu zobrazí `Unknown`, můžete ověřit stav šifrování disku pomocí Azure Resource Explorer.
 
   Přejít na [Azure Resource Explorer](https://resources.azure.com/)a potom rozbalte tuto hierarchii na panelu výběru vlevo:
 
@@ -151,7 +151,7 @@ Průběh šifrování operačního systému můžete monitorovat třemi způsoby
 
   ![Zobrazení instance virtuálního počítače](./media/disk-encryption/vm-instanceview.png)
 
-* Podívejte se na [diagnostiku spouštění](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/). Zprávy z rozšíření ADE by měly obsahovat předponu `[AzureDiskEncryption]`.
+* Podívejte se na [diagnostiku spouštění](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/). Zprávy z rozšíření ADE by měly být s předponou `[AzureDiskEncryption]`.
 
 * Přihlaste se k virtuálnímu počítači přes SSH a získejte protokol rozšíření z:
 
@@ -243,7 +243,7 @@ Nakonfigurujte šifrování pro práci s Azure pomocí následujících kroků:
     nls_utf8
     nls_iso8859-1
    ```
-6. Spuštěním `update-initramfs -u -k all` aktualizujte initramfs tak, aby se projevila `keyscript`.
+6. Spusťte `update-initramfs -u -k all` pro aktualizaci initramfs, aby se `keyscript` projevil.
 
 7. Nyní můžete zrušit zřízení virtuálního počítače.
 
@@ -315,7 +315,7 @@ Pokud chcete nakonfigurovat šifrování pro práci s Azure, proveďte následuj
     fi
     done
     ```
-5. Image initrd můžete aktualizovat spuštěním `/usr/sbin/dracut -f -v`.
+5. Spusťte `/usr/sbin/dracut -f -v` pro aktualizaci image initrd.
 
 6. Teď můžete zrušit zřízení virtuálního počítače a nahrát virtuální pevný disk do Azure.
 
@@ -434,7 +434,7 @@ K nastavení tajného klíče v trezoru klíčů použijte [set-AzKeyVaultSecret
 ```
 
 
-V dalším kroku použijte `$secretUrl` pro [připojení disku s operačním systémem bez použití KEK](#without-using-a-kek).
+K [připojení disku s operačním systémem bez použití KEK](#without-using-a-kek)použijte `$secretUrl` v dalším kroku.
 
 ### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>Tajný kód šifrování disku zašifrovaný pomocí KEK
 Než nahrajete tajný klíč do trezoru klíčů, můžete ho případně zašifrovat pomocí klíčového šifrovacího klíče. Použijte [rozhraní API](https://msdn.microsoft.com/library/azure/dn878066.aspx) pro zabalení k prvnímu šifrování tajného klíče pomocí klíčového šifrovacího klíče. Výstupem této operace zalamování je řetězec kódovaný v adrese URL Base64, který lze poté odeslat jako tajný klíč pomocí rutiny [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) .
@@ -527,7 +527,7 @@ Než nahrajete tajný klíč do trezoru klíčů, můžete ho případně zašif
     $secretUrl = $response.id
 ```
 
-V dalším kroku použijte `$KeyEncryptionKey` a `$secretUrl` pro [připojení disku s operačním systémem pomocí KEK](#using-a-kek).
+V dalším kroku použijte `$KeyEncryptionKey` a `$secretUrl` [Připojte disk s operačním systémem pomocí KEK](#using-a-kek).
 
 ##  <a name="specify-a-secret-url-when-you-attach-an-os-disk"></a>Zadejte adresu URL tajného kódu při připojení disku s operačním systémem.
 

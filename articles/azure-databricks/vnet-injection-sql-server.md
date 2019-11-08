@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
-ms.date: 04/02/2019
-ms.openlocfilehash: 773ffe264446e6a4d9ef2e88634e4f2c9b8aeb45
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.date: 11/07/2019
+ms.openlocfilehash: 460079248e6cbd939c36b84f94cac41dce4dda2b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273975"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747662"
 ---
 # <a name="tutorial-query-a-sql-server-linux-docker-container-in-a-virtual-network-from-an-azure-databricks-notebook"></a>Kurz: dotazování kontejneru Docker SQL Server Linux ve virtuální síti z poznámkového bloku Azure Databricks
 
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Nasazení pracovního prostoru Azure Databricks do virtuální sítě
 > * Instalace virtuálního počítače se systémem Linux ve veřejné síti
-> * Nainstalovat Docker
+> * Instalace Dockeru
 > * Nainstalovat Microsoft SQL Server do kontejneru Docker platformy Linux
 > * Dotazování SQL Server pomocí JDBC z poznámkového bloku datacihly
 
@@ -34,15 +34,15 @@ V tomto kurzu se naučíte:
 
 * Nainstalujte [Ubuntu pro Windows](https://www.microsoft.com/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab).
 
-* Stáhněte si [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
+* Stáhnout aplikaci [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
 
-## <a name="create-a-linux-virtual-machine"></a>Vytvoření virtuálního počítače se systémem Linux
+## <a name="create-a-linux-virtual-machine"></a>Vytvoření virtuálního počítače s Linuxem
 
 1. V Azure Portal vyberte ikonu pro **Virtual Machines**. Pak vyberte **+ Přidat**.
 
     ![Přidat nový virtuální počítač Azure](./media/vnet-injection-sql-server/add-virtual-machine.png)
 
-2. Na kartě **základy** vyberte Ubuntu Server 16,04 LTS. Změňte velikost virtuálního počítače na B1ms, který má jednu VCPU a 2 GB paměti RAM. Minimální požadavek na kontejner Docker SQL Server pro Linux je 2 GB. Vyberte uživatelské jméno a heslo správce.
+2. Na kartě **základy** vyberte Ubuntu Server 18,04 LTS a změňte velikost virtuálního počítače na B2s. Vyberte uživatelské jméno a heslo správce.
 
     ![Karta základy nové konfigurace virtuálního počítače](./media/vnet-injection-sql-server/create-virtual-machine-basics.png)
 
@@ -62,32 +62,31 @@ V tomto kurzu se naučíte:
 
 7. Přidejte pravidlo pro otevření portu 22 pro SSH. Použijte následující nastavení:
     
-    |Nastavením|Navrhovaná hodnota|Popis|
+    |Nastavení|Navrhovaná hodnota|Popis|
     |-------|---------------|-----------|
     |Zdroj|IP adresy|IP adresy určují, že toto pravidlo povolí nebo zakáže příchozí přenosy z konkrétní zdrojové IP adresy.|
-    |Zdrojové IP adresy|< veřejné IP adresy @ no__t-0|Zadejte veřejnou IP adresu. Veřejnou IP adresu najdete na webu [Bing.com](https://www.bing.com/) a hledáním možnosti **"moje IP adresa"** .|
+    |Zdrojové IP adresy|< veřejné IP\>|Zadejte veřejnou IP adresu. Veřejnou IP adresu najdete na webu [Bing.com](https://www.bing.com/) a hledáním možnosti **"moje IP adresa"** .|
     |Rozsahy zdrojových portů|*|Povolí provoz z libovolného portu.|
-    |Tabulka|IP adresy|IP adresy určují, že toto pravidlo povolí nebo odepře odchozí přenosy pro konkrétní zdrojovou IP adresu.|
-    |Cílové IP adresy|< veřejné IP adresy virtuálního počítače @ no__t-0|Zadejte veřejnou IP adresu vašeho virtuálního počítače. Najdete ho na stránce **Přehled** na vašem virtuálním počítači.|
+    |Cíl|IP adresy|IP adresy určují, že toto pravidlo povolí nebo odepře odchozí přenosy pro konkrétní zdrojovou IP adresu.|
+    |Cílové IP adresy|< veřejné IP adresy virtuálního počítače\>|Zadejte veřejnou IP adresu vašeho virtuálního počítače. Najdete ho na stránce **Přehled** na vašem virtuálním počítači.|
     |Rozsahy cílových portů|22|Otevřete port 22 pro SSH.|
     |Priorita|290|Zadejte prioritu pravidla.|
-    |Name|SSH-datacihly – kurz – virtuální počítač|Zadejte název pravidla.|
+    |Name (Název)|SSH-datacihly – kurz – virtuální počítač|Zadejte název pravidla.|
 
 
     ![Přidat příchozí pravidlo zabezpečení pro port 22](./media/vnet-injection-sql-server/open-port.png)
 
 8. Přidejte pravidlo pro otevření portu 1433 pro SQL s následujícím nastavením:
 
-    |Nastavením|Navrhovaná hodnota|Popis|
+    |Nastavení|Navrhovaná hodnota|Popis|
     |-------|---------------|-----------|
-    |Zdroj|IP adresy|IP adresy určují, že toto pravidlo povolí nebo zakáže příchozí přenosy z konkrétní zdrojové IP adresy.|
-    |Zdrojové IP adresy|10.179.0.0/16|Zadejte rozsah adres pro virtuální síť.|
+    |Zdroj|Všechny|Zdroj Určuje, že toto pravidlo povolí nebo odepře příchozí provoz z konkrétní zdrojové IP adresy.|
     |Rozsahy zdrojových portů|*|Povolí provoz z libovolného portu.|
-    |Tabulka|IP adresy|IP adresy určují, že toto pravidlo povolí nebo odepře odchozí přenosy pro konkrétní zdrojovou IP adresu.|
-    |Cílové IP adresy|< veřejné IP adresy virtuálního počítače @ no__t-0|Zadejte veřejnou IP adresu vašeho virtuálního počítače. Najdete ho na stránce **Přehled** na vašem virtuálním počítači.|
+    |Cíl|IP adresy|IP adresy určují, že toto pravidlo povolí nebo odepře odchozí přenosy pro konkrétní zdrojovou IP adresu.|
+    |Cílové IP adresy|< veřejné IP adresy virtuálního počítače\>|Zadejte veřejnou IP adresu vašeho virtuálního počítače. Najdete ho na stránce **Přehled** na vašem virtuálním počítači.|
     |Rozsahy cílových portů|1433|Otevřete port 22 pro SQL Server.|
     |Priorita|300|Zadejte prioritu pravidla.|
-    |Name|SQL-datacihly – kurz – virtuální počítač|Zadejte název pravidla.|
+    |Name (Název)|SQL-datacihly – kurz – virtuální počítač|Zadejte název pravidla.|
 
     ![Přidat příchozí pravidlo zabezpečení pro port 1433](./media/vnet-injection-sql-server/open-port2.png)
 
@@ -95,7 +94,7 @@ V tomto kurzu se naučíte:
 
 1. Otevřete [Ubuntu pro Windows](https://www.microsoft.com/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab)nebo jakýkoli jiný nástroj, který vám umožní SSH do virtuálního počítače. V Azure Portal přejděte na svůj virtuální počítač a vyberte **připojit** , abyste získali příkaz SSH, který potřebujete připojit.
 
-    ![Připojit k virtuálnímu počítači](./media/vnet-injection-sql-server/vm-ssh-connect.png)
+    ![Připojení k virtuálnímu počítači](./media/vnet-injection-sql-server/vm-ssh-connect.png)
 
 2. Zadejte příkaz do terminálu Ubuntu a zadejte heslo správce, které jste vytvořili při konfiguraci virtuálního počítače.
 

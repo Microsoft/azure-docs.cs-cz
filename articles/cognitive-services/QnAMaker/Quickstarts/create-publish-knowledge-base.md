@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 5d807f185a8cdb181093d37dac35ee2e467fdba9
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 8ce35156cd772487c4787f2f5fb99feb1225826f
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72328102"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794191"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rychlý Start: vytvoření, výuka a publikování znalostní báze QnA Maker Knowledge Base
 
@@ -67,11 +67,11 @@ Zahrňte do funkce CHITEST-chat preference, aby vaše znalosti uživatelů byly 
 
 1. Přidejte odpověď formátovanou pomocí _Markdownu_:
 
-    ` * Azure QnA Maker service\n* Azure Search\n* Azure web app\n* Azure app plan`
+    ` * Azure QnA Maker service\n* Azure Cognitive Search\n* Azure web app\n* Azure app plan`
 
     ![ Přidejte otázku jako text a odpověď formátovanou pomocí Markdownu.](../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png)
 
-    Symbol Markdownu `*` se používá pro body odrážek. @No__t-0 se používá pro nový řádek.  
+    Symbol Markdownu `*`se používá pro body odrážek. `\n` se používá pro nový řádek.  
 
     Na stránce pro **Úpravy** se zobrazí Markdownu. Když použijete **testovací** panel později, zobrazí se Markdownu správně. 
 
@@ -140,7 +140,7 @@ Vyčistěte prostředky QnA Maker a bot Framework v Azure Portal.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace:
+Další informace najdete tady:
 
 * [Formát Markdownu v odpovědích](../concepts/data-sources-supported.md)
 * [Testování Markdownu](../concepts/data-sources-supported.md#testing-your-markdown)

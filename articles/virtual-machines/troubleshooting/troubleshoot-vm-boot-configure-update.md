@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: 4263afe33caa4d6471848c8e7dbf9bc1eeec4bee
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: da45e24898bc3b5aead250077af69a61bdb33bab
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332539"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749636"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>Spuštění virtuálního počítače se zablokuje při přípravě Windows. Nevypínejte počítač v Azure
 
 Tento článek popisuje úvodní a přípravné obrazovky Windows, se kterými se můžete setkat při spuštění virtuálního počítače s Windows v Microsoft Azure. Poskytuje kroky, které vám pomůžou shromáždit data pro lístek podpory.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="symptoms"></a>Příznaky
 
@@ -100,7 +100,7 @@ Pokud chcete povolit protokol výpisu a sériovou konzolu, spusťte následujíc
 3. [Odpojte disk s operačním systémem a pak znovu připojte disk s operačním systémem k ovlivněnému virtuálnímu počítači](../windows/troubleshoot-recovery-disks-portal.md).
 4. Spusťte virtuální počítač a otevřete konzolu sériového portu.
 5. Chcete-li aktivovat výpis paměti, vyberte možnost **Odeslat nemaskovatelné přerušení (NMI)** .
-    @no__t – 0the obrázek k odeslání nemaskované přerušení @ no__t-1
+    ![obrázku, kde odeslat](./media/troubleshoot-vm-configure-update-boot/run-nmi.png) přerušení bez maskování
 6. Znovu připojte disk s operačním systémem k virtuálnímu počítači pro obnovení, shromážděte soubor výpisu paměti.
 
 ## <a name="contact-microsoft-support"></a>Kontaktujte podporu Microsoftu

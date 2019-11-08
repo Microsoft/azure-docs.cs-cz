@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: a15d450d033c04c59f6981a887689f1fc08919f1
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 42c674e236d769d48f6f17fc43494ac006219a8a
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958853"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795696"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage šifrování dat v klidovém umístění
 
@@ -40,9 +40,9 @@ Následující tabulka porovnává možnosti správy klíčů pro Azure Storage 
 |                                        |    Klíče spravované společností Microsoft                             |    Klíče spravované zákazníkem                                                                                                                        |    Klíče poskytované zákazníky                                                          |
 |----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 |    Operace šifrování a dešifrování    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
-|    Podporované služby Azure Storage Services    |    Všechny                                                |    BLOB Storage, soubory Azure                                                                                                               |    Blob Storage                                                                  |
+|    Podporované služby Azure Storage Services    |    Všechno                                                |    BLOB Storage, soubory Azure                                                                                                               |    Blob Storage                                                                  |
 |    Úložiště klíčů                         |    Úložiště klíčů Microsoftu    |    Azure Key Vault                                                                                                                              |    Azure Key Vault nebo jakékoli jiné úložiště klíčů                                                                 |
-|    Zodpovědnost za střídání klíčů         |    Microsoft                                          |    Zákazníka                                                                                                                                     |    Zákazníka                                                                      |
+|    Zodpovědnost za střídání klíčů         |    Microsoft                                          |    Zákazník                                                                                                                                     |    Zákazník                                                                      |
 |    Použití klíče                           |    Microsoft                                          |    Azure Portal, poskytovatel prostředků úložiště REST API, Azure Storage knihovny pro správu, PowerShell, rozhraní příkazového řádku        |    Azure Storage REST API (BLOB Storage), Azure Storage klientských knihoven    |
 |    Přístup ke klíči                          |    Jenom Microsoft                                     |    Microsoft, zákazník                                                                                                                    |    Jenom zákazník                                                                 |
 
@@ -74,12 +74,12 @@ V následujícím seznamu najdete popis očíslovaných kroků v diagramu:
 
 Pokud chcete odvolat přístup k klíčům spravovaným zákazníkem v účtu úložiště, přečtěte si téma [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) a [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault). Odvolání přístupu efektivně zablokuje přístup ke všem datům v účtu úložiště, protože šifrovací klíč je nepřístupný Azure Storage.
 
-Klíče spravované zákazníkem nejsou podporované pro [Azure Managed disks](../../virtual-machines/windows/managed-disks-overview.md).
+Klíče spravované zákazníkem jsou k dispozici také pro služby Azure Managed disks jako verze Public Preview. klíče spravované zákazníkem fungují jinak než u spravovaných disků než do zbytku úložiště. Podrobnosti najdete v našem [článku na předmětu](../../virtual-machines/linux/disk-encryption.md#customer-managed-keys-public-preview).
 
 Další informace o použití klíčů spravovaných zákazníkem s Azure Storage najdete v jednom z těchto článků:
 
-- [Konfigurace klíčů spravovaných zákazníkem pro Azure Storage šifrování z Azure Portal](storage-encryption-keys-portal.md)
-- [Konfigurace klíčů spravovaných zákazníkem pro Azure Storage šifrování z PowerShellu](storage-encryption-keys-powershell.md)
+- [Konfigurace klíčů spravovaných zákazníkem pro šifrování služby Azure Storage na webu Azure Portal](storage-encryption-keys-portal.md)
+- [Konfigurace klíčů spravovaných zákazníkem pro šifrování služby Azure Storage v PowerShellu](storage-encryption-keys-powershell.md)
 - [Použití klíčů spravovaných zákazníkem s šifrováním Azure Storage z Azure CLI](storage-encryption-keys-cli.md)
 
 > [!IMPORTANT]
@@ -199,6 +199,6 @@ Při šifrování Azure Storage jsou všechny účty Azure Storage a prostředky
 ## <a name="next-steps"></a>Další kroky
 
 - [Co je Azure Key Vault?](../../key-vault/key-vault-overview.md)
-- [Konfigurace klíčů spravovaných zákazníkem pro Azure Storage šifrování z Azure Portal](storage-encryption-keys-portal.md)
-- [Konfigurace klíčů spravovaných zákazníkem pro Azure Storage šifrování z PowerShellu](storage-encryption-keys-powershell.md)
-- [Konfigurace klíčů spravovaných zákazníkem pro Azure Storage šifrování z Azure CLI](storage-encryption-keys-cli.md)
+- [Konfigurace klíčů spravovaných zákazníkem pro šifrování služby Azure Storage na webu Azure Portal](storage-encryption-keys-portal.md)
+- [Konfigurace klíčů spravovaných zákazníkem pro šifrování služby Azure Storage v PowerShellu](storage-encryption-keys-powershell.md)
+- [Konfigurace klíčů spravovaných zákazníkem pro šifrování služby Azure Storage v Azure CLI](storage-encryption-keys-cli.md)

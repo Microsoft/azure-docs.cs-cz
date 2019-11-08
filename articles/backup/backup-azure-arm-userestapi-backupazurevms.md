@@ -1,6 +1,6 @@
 ---
 title: 'Azure Backup: zálohování virtuálních počítačů Azure pomocí REST API'
-description: Správa zálohovacích operací zálohování virtuálních počítačů Azure pomocí REST API
+description: V tomto článku se dozvíte, jak nakonfigurovat, iniciovat a spravovat operace zálohování pro zálohování virtuálních počítačů Azure pomocí REST API.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 837401256aa264a527e2323b055713f4bd8e8d1c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 901ae66281e1d68474304a4f5456a0163fcb6f2a
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671689"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747609"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Zálohování virtuálního počítače Azure pomocí Azure Backup přes REST API
 
@@ -108,13 +108,13 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 Identifikátor URI *Get* má všechny požadované parametry. Není potřeba žádný další text žádosti.
 
-##### <a name="responses-1"></a>Požadavků
+#### <a name="responses-1"></a>Požadavků
 
 |Name (Název)  |Typ  |Popis  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
-##### <a name="example-responses-1"></a>Příklady odpovědí
+#### <a name="example-responses-1"></a>Příklady odpovědí
 
 Po odeslání žádosti o *získání* se vrátí odpověď 200 (ok).
 
@@ -329,7 +329,7 @@ Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokon
 |---------|---------|---------|
 |202 přijato     |         |     Přijata    |
 
-##### <a name="example-responses-3"></a>Příklady odpovědí
+#### <a name="example-responses-3"></a>Příklady odpovědí
 
 Jakmile odešlete požadavek *post* pro zálohování na vyžádání, počáteční odpověď je 202 (přijato) s hlavičkou umístění nebo Azure-Async-Header.
 

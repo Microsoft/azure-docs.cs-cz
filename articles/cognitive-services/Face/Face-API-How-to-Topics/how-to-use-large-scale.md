@@ -1,7 +1,7 @@
 ---
-title: 'Příklad: Použití funkce velké škály Face API'
+title: 'Příklad: Používejte velkou škálu funkcí – Face API'
 titleSuffix: Azure Cognitive Services
-description: Použijte funkci v rozhraní API pro rozpoznávání tváře ve velkém měřítku.
+description: Tato příručka je článek týkající se horizontálního navýšení kapacity z existujících objektů Person a FaceList na objekty LargePersonGroup a LargeFaceList.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
-ms.openlocfilehash: d8ecfb53b78277e4b0e4a85d60fb6712d0bc2292
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 976baaef11251715218ecea71986f08ec5f72996
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114839"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73743730"
 ---
-# <a name="example-use-the-large-scale-feature"></a>Příklad: Použití funkce ve velkém měřítku
+# <a name="example-use-the-large-scale-feature"></a>Příklad: použití funkce rozsáhlého škálování
 
 Tato příručka je pokročilý článek týkající se horizontálního navýšení kapacity od stávajících objektů Person a FaceList do objektů LargePersonGroup a LargeFaceList. Tato příručka ukazuje proces migrace. Předpokládá základní znalost pomocí objektů Person a FaceList, operace [vlaku](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4) a funkcí rozpoznávání obličeje. Další informace o těchto tématech najdete v koncepční příručce pro [rozpoznávání tváře](../concepts/face-recognition.md) .
 
@@ -28,7 +28,7 @@ Ukázky se napíší C# pomocí klientské knihovny Azure Cognitive Services Fac
 > [!NOTE]
 > Pokud chcete povolit výkon při hledání na tvář pro identifikaci a FindSimilar ve velkém měřítku, zaveďte vlakovou operaci pro předzpracování LargeFaceList a LargePersonGroup. Doba školení se v závislosti na skutečné kapacitě mění v rozmezí sekund až o půl hodiny. Během období školení je možné provést identifikaci a FindSimilar, pokud se úspěšně provedlo úspěšné školení. Nevýhodou je, že nově přidané osoby a plošky se ve výsledku nebudou zobrazovat, dokud se nedokončí nová migrace po migraci do rozsáhlého školení.
 
-## <a name="step-1-initialize-the-client-object"></a>Krok 1: Inicializace objektu klienta
+## <a name="step-1-initialize-the-client-object"></a>Krok 1: inicializace objektu klienta
 
 Když použijete klientskou knihovnu Face API, klíč předplatného a koncový bod předplatného jsou předány prostřednictvím konstruktoru třídy FaceClient. Příklad:
 
@@ -45,7 +45,7 @@ faceClient.Endpoint = SubscriptionEndpoint
 Chcete-li získat klíč předplatného s odpovídajícím koncovým bodem, v Azure Portal Azure Marketplace.
 Další informace najdete v tématu [předplatná](https://azure.microsoft.com/services/cognitive-services/directory/vision/).
 
-## <a name="step-2-code-migration"></a>Krok 2: Migrace kódu
+## <a name="step-2-code-migration"></a>Krok 2: migrace kódu
 
 Tato část se zaměřuje na migraci implementace person nebo FaceList na LargePersonGroup nebo LargeFaceList. I když se LargePersonGroup nebo LargeFaceList liší od Personu nebo FaceList v rámci navrhování a interní implementace, rozhraní API jsou podobná zpětné kompatibilitě.
 
@@ -63,9 +63,9 @@ Přidejte všechny plošky a osoby ze strany Person do nové LargePersonGroup. D
 
 | Rozhraní API kolekce FaceList | Rozhraní API kolekce LargeFaceList |
 |:---:|:---:|
-| Create | Create |
-| Odstranění | Odstranění |
-| Získat | Získat |
+| Vytváření | Vytváření |
+| Odstranit | Odstranit |
+| Získejte | Získejte |
 | List | List |
 | Aktualizace | Aktualizace |
 | - | Trénování |
@@ -193,26 +193,26 @@ using (Stream stream = File.OpenRead(QueryImagePath))
 
 Jak bylo uvedeno dříve, Správa dat a část FindSimilar jsou téměř stejné. Jedinou výjimkou je to, že je potřeba, aby se v LargeFaceList, než FindSimilar funguje, dokončila operace nového předběžného zpracování vlaku.
 
-## <a name="step-3-train-suggestions"></a>Krok 3: Návrhy vlaku
+## <a name="step-3-train-suggestions"></a>Krok 3: návrhy vlaku
 
 I když se operace vlaků zrychlí [FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) a [Identifikace](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), je doba výuky, zejména při přicházejících do velkého rozsahu. Odhadovaná doba školení v různých měřítkech je uvedena v následující tabulce.
 
 | Škálování pro plošky nebo osoby | Odhadovaná doba školení |
 |:---:|:---:|
 | 1 000 | 1-2 sec |
-| 10,000 | 5-10 sec |
-| 100,000 | 1-2 min. |
+| 10 000 | 5-10 sec |
+| 100 000 | 1-2 min. |
 | 1 000 000 | 10-30 min. |
 
 Abychom lépe využili velkou škálu funkcí, doporučujeme následující strategie.
 
-### <a name="step-31-customize-time-interval"></a>Krok 3,1: Přizpůsobení časového intervalu
+### <a name="step-31-customize-time-interval"></a>Krok 3,1: přizpůsobení časového intervalu
 
-Jak je znázorněno `TrainLargeFaceList()`v, je časový interval v milisekundách pro zpoždění procesu kontroly stavu nekonečného školení. U kolekce LargeFaceList s více tvářemi bude použití delšího intervalu znamenat nižší počet volání i náklady. Upravte časový interval podle očekávané kapacity LargeFaceList.
+Jak je zobrazeno v `TrainLargeFaceList()`, existuje časový interval v milisekundách, který bude zpozdit proces kontroly stavu nekonečného školení. U kolekce LargeFaceList s více tvářemi bude použití delšího intervalu znamenat nižší počet volání i náklady. Upravte časový interval podle očekávané kapacity LargeFaceList.
 
-Stejná strategie platí i pro LargePersonGroup. Například když provedete LargePersonGroupi s 1 000 000 osobami, `timeIntervalInMilliseconds` může to být 60 000, což je 1 minutový interval.
+Stejná strategie platí i pro LargePersonGroup. Například když provedete LargePersonGroupi s 1 000 000 osobami `timeIntervalInMilliseconds`, může to být 60 000, což je 1 minutový interval.
 
-### <a name="step-32-small-scale-buffer"></a>Krok 3,2: Vyrovnávací paměť malého rozsahu
+### <a name="step-32-small-scale-buffer"></a>Krok 3,2: vyrovnávací paměť se zmenšeným škálováním
 
 Osoby nebo obličeje v LargePersonGroup nebo LargeFaceList jsou prohledávatelné až po vyškolení. V dynamickém scénáři se nové osoby nebo obličeje stále přidávají a je nutné je ihned prohledávat, ale školení může trvat déle, než je potřeba. 
 
@@ -227,11 +227,11 @@ Příklad pracovního postupu:
 1. Když se velikost kolekce vyrovnávací paměti zvyšuje na prahovou hodnotu nebo v době nečinnosti systému, vytvořte novou kolekci vyrovnávací paměti. Aktivovat operaci vlaku na hlavní kolekci.
 1. Po dokončení operace vlaku na hlavní kolekci odstraňte starou kolekci vyrovnávací paměti.
 
-### <a name="step-33-standalone-training"></a>Krok 3,3: Samostatné školení
+### <a name="step-33-standalone-training"></a>Krok 3,3: samostatné školení
 
 Pokud je přijatelné poměrně dlouhé latence, nemusíte aktivovat operaci vlaku hned po přidání nových dat. Místo toho můžete operaci Train oddělit od hlavní logiky a spouštět ji pravidelně. Tato strategie je vhodná pro dynamické scénáře s přijatelnou latencí. Dá se použít ke statickým scénářům k dalšímu snížení četnosti vlaků.
 
-Předpokládejme, že `TrainLargeFaceList`je funkcepodobná.`TrainLargePersonGroup` Typická implementace samostatného školení na LargePersonGroup vyvoláním [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) třídy v `System.Timers` je:
+Předpokládejme, že je `TrainLargePersonGroup` funkce podobná `TrainLargeFaceList`. Typická implementace samostatného školení na LargePersonGroup vyvoláním třídy [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) v `System.Timers` je:
 
 ```csharp
 private static void Main()
@@ -268,7 +268,7 @@ V této příručce jste zjistili, jak migrovat existující kód person nebo Fa
 - LargePersonGroup a LargeFaceList fungují podobně jako person nebo FaceList, s tím rozdílem, že operace vlaku vyžaduje LargeFaceList.
 - Využijte správnou strategii vlaků k aktualizaci dynamických dat pro velké datové sady.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pomocí Průvodce návodem se dozvíte, jak přidat plošky k osobě nebo provést operaci identifikace ve službě Person.
 
