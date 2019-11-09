@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 622b4e53be68025ad9553ce604041d14885bb2b2
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 7a0cce6b72240b95943fbece08cfbf61eaee3524
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330835"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891706"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobení hlavní image VHD
 
@@ -70,7 +70,7 @@ Pokud uživatelé potřebují přístup k určitým aplikacím LOB, doporučujem
 
 ### <a name="set-up-user-profile-container-fslogix"></a>Nastavení kontejneru profilu uživatele (FSLogix)
 
-Pokud chcete zahrnout kontejner FSLogix jako součást image, postupujte podle pokynů v tématu [vytvoření kontejneru profilu pro fond hostitelů pomocí sdílené složky](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). V [tomto rychlém](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial)startu můžete testovat funkčnost kontejneru FSLogix.
+Pokud chcete zahrnout kontejner FSLogix jako součást image, postupujte podle pokynů v tématu [vytvoření kontejneru profilu pro fond hostitelů pomocí sdílené složky](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). V [tomto rychlém](https://docs.microsoft.com/fslogix/configure-cloud-cache-tutorial)startu můžete testovat funkčnost kontejneru FSLogix.
 
 ### <a name="configure-windows-defender"></a>Konfigurace programu Windows Defender
 
@@ -86,7 +86,7 @@ Další informace o tom, jak nakonfigurovat Windows Defender pro vyloučení ur�
 
 Zakázání automatických aktualizací prostřednictvím místních Zásady skupiny:
 
-1. Otevřete **Editor místních zásad skupiny @ no__t-1Administrative Templates @ no__t-2Windows Components @ no__t-3Windows Update**.
+1. Otevřete **Editor místních zásad skupiny\\Šablony pro správu\\součásti systému Windows\\web Windows Update**.
 2. Klikněte pravým tlačítkem na **Konfigurovat Automatické aktualizace** a nastavte ji na **zakázáno**.
 
 Můžete také spustit následující příkaz na příkazovém řádku a zakázat tak automatické aktualizace.
@@ -109,7 +109,7 @@ Zásady vzdálené relace je možné vyhovět na úrovni Zásady skupiny, proto�
 
 Konfigurace zásad vzdálené relace:
 
-1. Přejděte na **Šablony pro správu** > **součásti systému Windows** > **služby vzdálené plochy** > **hostitel relace vzdálené plochy** > **omezení času relace**.
+1. Přejděte na **Šablony pro správu** > **součásti systému Windows** > **služba Vzdálená plocha** > **hostitel relace vzdálené plochy** > **časový limit relace**.
 2. Na panelu na pravé straně vyberte **nastavení časového limitu pro aktivní, ale nečinné zásady relací vzdálené plochy služby Vzdálená plocha** .
 3. Po zobrazení modálního okna změňte možnost zásady z **není nakonfigurovaná** na **povoleno** , aby se zásady aktivovaly.
 4. V rozevírací nabídce pod možností zásady nastavte hodnotu doba na **3 hodiny**.
@@ -134,7 +134,7 @@ Postup přesměrování časových pásem:
 1. Na serveru služby Active Directory otevřete **Konzola pro správu zásad skupiny**.
 2. Rozbalíte své domény a Zásady skupiny objekty.
 3. Klikněte pravým tlačítkem myši na **objekt Zásady skupiny** , který jste vytvořili pro nastavení zásad skupiny, a vyberte **Upravit**.
-4. V **Editor pro správu zásad skupiny**přejděte na**zásady** **konfigurace počítače** >   > **Šablony pro správu** > **součásti systému Windows** > **Vzdálená plocha**@no__ t-10**Hostitel relace vzdálené plochy**2**přesměrování zařízení a prostředků**.
+4. V **Editor pro správu zásad skupiny**přejděte na **Konfigurace počítače** > **zásady** > **šablony pro správu** > **součásti Windows** > **Vzdálená plocha** > **hostitel relace vzdálené plochy** > **zařízení a přesměrování prostředků**.
 5. Povolte nastavení **Povolit přesměrování časového pásma** .
 
 Tento příkaz můžete také spustit v hlavní imagi pro přesměrování časových pásem:

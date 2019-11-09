@@ -4,16 +4,16 @@ ms.service: billing
 ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
-ms.openlocfilehash: 015803c50aab06cadd290783afca6a41673f8be3
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 42e52ac964ec78e12be64d1bda63d7d04ff9beca
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376803"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73850315"
 ---
 Zkontrolujte typ smlouvy, abyste zjistili, jestli máte přístup k fakturačnímu účtu pro smlouvu s partnerem Microsoftu.
  
-1. Přihlaste se k webu [Azure Portal]( http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
  
 2. Vyhledejte **Cost Management a fakturace**.
  

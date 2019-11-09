@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/23/2019
-ms.openlocfilehash: 73aa641fc4bb01ef3d06820ecd18b61197ab81e7
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 3d748e1625f27be27b7f403fbab3e213b16c4dd6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695505"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890177"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Migrace úloh Azure Scheduleru na Azure Logic Apps
 
@@ -33,7 +33,7 @@ V tomto článku se dozvíte, jak můžete naplánovat jednorázové a opakovan�
 
 Další informace najdete v tématu [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md) nebo zkuste vytvořit svou první aplikaci logiky v tomto rychlém startu: [vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -106,9 +106,9 @@ Pokud chcete ručně spustit nebo aktivovat jednorázovou úlohu, odešlete vol�
 
 Například pomocí aplikace pro publikování můžete vytvořit požadavek POST s nastavením podobným této ukázce a pak vybrat **Odeslat** pro vytvoření žádosti.
 
-| Request – metoda | Adresa URL | Tělo | Hlavičky |
+| Request – metoda | zprostředkovatele identity | Tělo | Hlavičky |
 |----------------|-----|------|---------|
-| **POST** | <*koncový bod-URL*> | **získání** <p>**JSON (Application/JSON)** <p>Do pole **nezpracované** zadejte datovou část, kterou chcete v žádosti odeslat. <p>**Poznámka**: Toto nastavení automaticky nakonfiguruje hodnoty **hlaviček** . | **Klíč**: Content-Type <br>**Hodnota**: Application/JSON |
+| **POST** | <*koncový bod-adresa URL*> | **získání** <p>**JSON (Application/JSON)** <p>Do pole **nezpracované** zadejte datovou část, kterou chcete v žádosti odeslat. <p>**Poznámka**: Toto nastavení automaticky nakonfiguruje hodnoty **hlaviček** . | **Klíč**: Content-Type <br>**Hodnota**: Application/JSON |
 |||||
 
 ![Poslat požadavek na ruční aktivaci vaší aplikace logiky](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
@@ -193,12 +193,12 @@ Pokud ve službě Azure Scheduler neproběhne spuštění výchozí akce, může
 
 Další informace o zpracování výjimek naleznete v tématu [zpracování chyb a výjimek – vlastnost runafter šablonové](../logic-apps/logic-apps-exception-handling.md#catch-and-handle-failures-with-the-runafter-property).
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 <a name="retire-date"></a>
 
 **Otázka**: kdy je vyřazení z Azure Scheduleru? <br>
-Odpověď **: plán**Azure Scheduleru je naplánován na úplné vyřazení 31. prosince 2019. Důležité kroky, které je třeba provést před tímto datem a detailní časovou osou, najdete v tématu [rozšíření data vyřazení pro Scheduler do 31. prosince 2019](https://azure.microsoft.com/en-us/updates/extending-retirement-date-of-scheduler/). Obecné aktualizace najdete v tématu [Azure Updates – Scheduler](https://azure.microsoft.com/updates/?product=scheduler).
+Odpověď **: plán**Azure Scheduleru je naplánován na úplné vyřazení 31. prosince 2019. Důležité kroky, které je třeba provést před tímto datem a detailní časovou osou, najdete v tématu [rozšíření data vyřazení pro Scheduler do 31. prosince 2019](https://azure.microsoft.com/updates/extending-retirement-date-of-scheduler/). Obecné aktualizace najdete v tématu [Azure Updates – Scheduler](https://azure.microsoft.com/updates/?product=scheduler).
 
 **Otázka**: co se stane s kolekcemi úloh a úlohami po vystavování služby? <br>
 **O**: všechny kolekce úloh Scheduleru a úlohy přestanou běžet a jsou odstraněny ze systému.
@@ -223,7 +223,7 @@ Pokud má vaše předplatné Azure placený plán podpory, můžete v Azure Port
    | Vlastnost | Hodnota |
    |---------|-------|
    | **Typ problému** | **Odbornou** |
-   | **Předplatné** | <*vaše-Azure-subscription*> |
+   | **Předplatné** | <*vaše předplatné Azure*> |
    | **Služba** | V části **monitorování & Správa**vyberte **Plánovač**. Pokud nemůžete najít **Scheduler**, nejdřív vyberte **všechny služby** . |
    ||| 
 

@@ -1,79 +1,78 @@
 ---
-title: Postup ověření vlastnictví pro certifikáty webu X.509 s Azure IoT Hub Device Provisioning Service | Dokumentace Microsoftu
-description: Ověření certifikátů webu X.509 s vaší služby Device Provisioning Service
+title: Jak provést kontrolu vlastnictví certifikátů CA X. 509 pomocí Azure IoT Hub Device Provisioning Service
+description: Jak provést kontrolu vlastnictví certifikátů CA X. 509 pomocí Azure IoT Hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
 ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: afa4b3861e9fb7f91fd9f5d540353c5fad23efe0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e762a1ab307bdc5ca9369c3f2e424cf6fd35f163
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "54913610"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890635"
 ---
-# <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Postup ověření vlastnictví pro certifikáty webu X.509 s vaší služby Device Provisioning Service
+# <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Jak v rámci služby Device Provisioning udělat důkaz o vlastnictví certifikátů certifikační autority X. 509
 
-Ověřené X.509 certifikační autoritu (CA) certifikát je certifikát certifikační Autority, který je nahraný a zaregistrované u zřizování služeb a náramků RFID prostřednictvím důkaz vlastnictví se službou. 
+Ověřený certifikát certifikační autority (CA) X. 509 je certifikát certifikační autority, který se nahrál a zaregistroval ve vaší službě zřizování a který se dokončí pomocí ověření pomocí služby. 
 
-Důkaz vlastnictví zahrnuje následující kroky:
-1. Získáte jedinečný ověřovací kód vygenerovaný služby zřizování pro váš certifikát X.509 certifikační Autority. Můžete to provést z portálu Azure portal.
-2. Vytvořte certifikát pro ověření X.509 s ověřovací kód jako jeho předmět a podepsání certifikátu s privátním klíčem přidružené k vaší certifikátu webu X.509.
-3. Nahrajte certifikát podepsaný držitelem ověření ke službě. Služba ověří ověřovací certifikát, který se má ověřit, s využitím veřejné části certifikátu certifikační Autority tedy prokázání, že máte k dispozici privátnímu klíči certifikátu certifikační Autority.
+Důkaz o vlastnictví zahrnuje následující kroky:
+1. Získejte jedinečný ověřovací kód vygenerovaný službou zřizování pro certifikát vaší certifikační autority X. 509. Můžete to provést z Azure Portal.
+2. Vytvořte ověřovací certifikát X. 509 s ověřovacím kódem jako jeho subjektem a podepište certifikát s privátním klíčem přidruženým k vašemu certifikátu certifikační autority X. 509.
+3. Nahrajte do služby certifikát pro ověření podepsaného ověřování. Služba ověřuje ověřovací certifikát pomocí veřejné části certifikátu certifikační autority, která má být ověřena, čímž prokáže, že jste držiteli privátního klíče certifikátu certifikační autority.
 
-Ověřené certifikáty hrají důležitou roli při použití skupin pro registraci. Ověření vlastnictví certifikátu poskytuje další vrstvu zabezpečení tím, že zajišťuje, který uživatele nahrávajícího certifikátu je ve vlastnictví privátní klíč certifikátu. Ověření brání škodlivým actor pro analýzu sítě provoz z extrahování zprostředkující certifikát a vytvořit skupinu registrací ve své vlastní službě zřizování pomocí tohoto certifikátu, efektivně zneužitím vašich zařízení. Tím, že prokáže vlastnictví kořenové nebo zprostředkující certifikát v řetězu certifikátů, už prokázání, že máte oprávnění k generovat listové certifikáty pro zařízení, která se registruje jako součást této skupiny pro registraci. Z tohoto důvodu, kořenový nebo zprostředkující certifikát nakonfigurované ve skupině pro registraci musí být ověřený certifikát nebo musí shrnutí ověřený certifikát v řetězu certifikátů zařízení uvede během ověřování se službou. Další informace o skupinách registrace najdete v tématu [certifikáty X.509](concepts-security.md#x509-certificates) a [řízení přístupu zařízení ke službě zřizování pomocí certifikátů X.509](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
+Ověřené certifikáty při používání skupin registrací hrají důležitou roli. Ověřování vlastnictví certifikátu poskytuje další vrstvu zabezpečení tím, že zajišťuje, že k odeslání certifikátu má k dispozici privátní klíč certifikátu. Ověřování brání škodlivému objektu actor sledovat provoz z extrakce zprostředkujícího certifikátu a pomocí tohoto certifikátu vytvořit skupinu registrací ve své vlastní službě zřizování a efektivně tak znestarost vaše zařízení. Prokázáním vlastnictví kořenového nebo zprostředkujícího certifikátu v řetězu certifikátů zjistíte, že máte oprávnění generovat listové certifikáty pro zařízení, která se budou registrovat jako součást této skupiny zápisu. Z tohoto důvodu musí být kořenový nebo zprostředkující certifikát nakonfigurovaný ve skupině pro registraci buď ověřený certifikát, nebo musí v řetězu certifikátů vyhledat ověřený certifikát, který zařízení prezentuje při ověřování ve službě. Další informace o skupinách registrace najdete v tématu [certifikáty x. 509](concepts-security.md#x509-certificates) a [řízení přístupu zařízení ke službě zřizování pomocí certifikátů x. 509](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
 
-## <a name="register-the-public-part-of-an-x509-certificate-and-get-a-verification-code"></a>Zaregistrujte veřejnou část certifikátu X.509 a získat ověřovací kód
+## <a name="register-the-public-part-of-an-x509-certificate-and-get-a-verification-code"></a>Registrace veřejné části certifikátu X. 509 a získání ověřovacího kódu
 
-Zaregistrovat certifikát certifikační Autority ve vaší službě zřizování a získat ověřovací kód, který vám pomůže během důkaz vlastnictví, postupujte podle těchto kroků. 
+Pokud chcete zaregistrovat certifikát certifikační autority se službou zřizování a získat ověřovací kód, který můžete použít při kontrole, postupujte podle těchto kroků. 
 
-1. Na webu Azure Portal, přejděte k vaší službě zřizování a otevřete **certifikáty** z nabídky na levé straně. 
-2. Klikněte na tlačítko **přidat** přidat nový certifikát.
-3. Zadejte popisný Zobrazovaný název pro váš certifikát. Vyhledejte soubor .cer nebo .pem, který představuje veřejnou část certifikátu X.509. Klikněte na **Odeslat**.
-4. Jakmile obdržíte oznámení, že váš certifikát se úspěšně nahraje, klikněte na tlačítko **Uložit**.
+1. V Azure Portal přejděte do svojí služby zřizování a v nabídce na levé straně otevřete **certifikáty** . 
+2. Kliknutím na **Přidat** přidejte nový certifikát.
+3. Zadejte popisný zobrazovaný název certifikátu. Vyhledejte soubor. cer nebo. pem, který představuje veřejnou část certifikátu X. 509. Klikněte na **Odeslat**.
+4. Jakmile dostanete oznámení, že se váš certifikát úspěšně nahrál, klikněte na **Uložit**.
 
     ![Nahrání certifikátu](./media/how-to-verify-certificates/add-new-cert.png)  
 
-   Váš certifikát se zobrazí v **Průzkumník certifikátů** seznamu. Všimněte si, **stav** tento certifikát je *neověřené*.
+   Váš certifikát se zobrazí v seznamu **Průzkumník certifikátů** . Všimněte si, že **stav** tohoto certifikátu není *ověřen*.
 
 5. Klikněte na certifikát, který jste přidali v předchozím kroku.
 
-6. V **podrobnosti o certifikátu**, klikněte na tlačítko **vygenerovat ověřovací kód**.
+6. V **podrobnostech o certifikátu**klikněte na **Generovat ověřovací kód**.
 
-7. Vytvoří službu zřizování **ověřovací kód** , můžete použít k ověření vlastnictví certifikátu. Zkopírujte kód do schránky. 
+7. Služba zřizování vytvoří **ověřovací kód** , který můžete použít k ověření vlastnictví certifikátu. Zkopírujte kód do schránky. 
 
-   ![Ověření certifikátu](./media/how-to-verify-certificates/verify-cert.png)  
+   ![Ověřit certifikát](./media/how-to-verify-certificates/verify-cert.png)  
 
-## <a name="digitally-sign-the-verification-code-to-create-a-verification-certificate"></a>Digitálně podepisovat ověřovací kód k vytvoření ověřovacího certifikátu
+## <a name="digitally-sign-the-verification-code-to-create-a-verification-certificate"></a>Digitálně podepsat ověřovací kód pro vytvoření ověřovacího certifikátu
 
-Teď, budete muset přihlásit *ověřovací kód* s privátním klíčem přidružené k vaší certifikátu webu X.509, který generuje podpis. To se označuje jako [doklad o vlastnictví](https://tools.ietf.org/html/rfc5280#section-3.1) a má za následek podepsané ověřovací certifikát.
+Nyní je třeba podepsat *ověřovací kód* s privátním klíčem přidruženým k certifikátu CA X. 509, který vygeneruje signaturu. To se označuje jako [důkaz o vlastnictví](https://tools.ietf.org/html/rfc5280#section-3.1) a výsledkem je podepsaný ověřovací certifikát.
 
-Společnost Microsoft poskytuje nástroje a ukázky, které vám pomůžou vytvořit certifikát podepsaný držitelem ověření: 
+Microsoft poskytuje nástroje a ukázky, které vám pomůžou vytvořit certifikát podepsaného ověřování: 
 
-- **Azure IoT Hub C SDK** poskytuje Powershellu (Windows) a skripty Bash (Linux), vám pomůže vytvořit certifikační Autority a listové certifikáty pro vývoj a provádět testování vlastnictví pomocí ověřovacího kódu. Si můžete stáhnout [soubory](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) relevantní pro váš systém pracovní složky a postupujte podle pokynů [readme certifikáty certifikační Autority Správa](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) k provedení ověření vlastnictví certifikátu certifikační Autority. 
-- **SDK Azure IoT Hub C#** obsahuje [Ukázka ověření certifikátu skupiny](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample), které můžete provést ověření vlastnictví.
+- **Sada Azure IoT Hub C SDK** poskytuje skripty PowerShellu (Windows) a bash (Linux), které vám pomůžou vytvořit certifikační autority a listové certifikáty pro účely vývoje a provádět kontrolu vlastnictví pomocí ověřovacího kódu. [Soubory](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) relevantní pro systém můžete stáhnout do pracovní složky a podle pokynů v [souboru Readme Certificates CA Správa certifikátů](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) certifikační autority provést kontrolu vlastnictví certifikátu certifikační autority. 
+- **Sada Azure IoT Hub C# SDK** obsahuje [ukázku ověření certifikátu skupiny](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample), kterou můžete použít k tomu, abyste provedli kontrolu vlastnictví.
  
 > [!IMPORTANT]
-> Kromě provádění důkaz vlastnictví, skripty prostředí PowerShell a Bash uvedeném dříve také umožňují vytvářet kořenových certifikátů zprostředkující certifikáty a listové certifikáty, které slouží k ověřování a zřizování zařízení. Tyto certifikáty by měla sloužit pouze pro vývoj. Jejich byste nikdy neměli používat v produkčním prostředí. 
+> Kromě provádění ověření přístupnosti vám skripty PowerShellu a bash citované dříve také umožňují vytvářet kořenové certifikáty, zprostředkující certifikáty a listové certifikáty, které se dají použít k ověřování a zřizování zařízení. Tyto certifikáty by se měly používat jenom pro vývoj. Nikdy by se neměly používat v produkčním prostředí. 
 
-Využívají Bash a Powershellu skripty k dispozici v dokumentaci a sady SDK [OpenSSL](https://www.openssl.org/). Můžete také použít OpenSSL nebo jiných nástrojů třetích stran pomoct vám důkaz vlastnictví. Další informace o nástrojů, které jsou součástí sady SDK najdete v tématu [tom, jak použít nástroje poskytované v sadách SDK](how-to-use-sdk-tools.md). 
+Skripty PowerShellu a Bash, které jsou uvedené v dokumentaci a sady SDK, spoléhají na [OpenSSL](https://www.openssl.org/). Můžete také použít OpenSSL nebo jiné nástroje třetích stran, které vám pomůžou s prováděním důkazů o vlastnictví. Další informace o nástrojích dodaných se sadami SDK najdete v tématu [Jak používat nástroje](how-to-use-sdk-tools.md), které jsou k dispozici v sadách SDK. 
 
 
 ## <a name="upload-the-signed-verification-certificate"></a>Nahrát podepsaný ověřovací certifikát
 
-1. Výsledný podpis nahrajte jako ověřovací certifikát k vaší službě zřizování na portálu. V **podrobnosti o certifikátu** na webu Azure portal, použijte _Průzkumníka souborů_ ikonu vedle **soubor .pem nebo .cer ověřovacího certifikátu** pole, které chcete nahrát podepsané ověřovací certifikát z vašeho systému.
+1. Nahrajte výsledný podpis jako ověřovací certifikát do vaší služby zřizování na portálu. V části **Podrobnosti o certifikátu** na Azure Portal použijte ikonu _Průzkumníka souborů_ vedle pole **soubor ověřovacího certifikátu. pem nebo. cer** k nahrání podepsaného ověřovacího certifikátu z vašeho systému.
 
-2. Po úspěšném nahrání certifikátu klikněte na tlačítko **ověřte**. **Stav** změn certifikát **_ověřeno_** v **Průzkumník certifikátů** seznamu. Klikněte na tlačítko **aktualizovat** Pokud neaktualizuje automaticky.
+2. Po úspěšném nahrání certifikátu klikněte na **ověřit**. **Stav** certifikátu se změní na **_ověřený_** v seznamu **Průzkumník certifikátů** . Klikněte na tlačítko **aktualizovat** , pokud se neaktualizuje automaticky.
 
-   ![Nahrajte certifikát ověření](./media/how-to-verify-certificates/upload-cert-verification.png)  
+   ![Odeslat ověření certifikátu](./media/how-to-verify-certificates/upload-cert-verification.png)  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Další informace o tom, jak vytvořit skupinu registrací pomocí portálu, najdete v článku [Správa registrací zařízení pomocí webu Azure portal](how-to-manage-enrollments.md).
-- Další informace o tom, jak pomocí sady SDK pro služby můžete vytvořit skupinu registrací najdete v tématu [Správa registrací zařízení pomocí sady SDK pro služby](how-to-manage-enrollments-sdks.md).
+- Další informace o tom, jak pomocí portálu vytvořit skupinu registrací, najdete v tématu [Správa registrace zařízení pomocí Azure Portal](how-to-manage-enrollments.md).
+- Další informace o tom, jak používat sady SDK služby k vytvoření skupiny registrací, najdete v tématu Správa registrací [zařízení pomocí sad SDK pro služby](how-to-manage-enrollments-sdks.md).
 
 
 

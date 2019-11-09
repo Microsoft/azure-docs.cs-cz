@@ -1,30 +1,27 @@
 ---
-title: Ukázkový skript Azure Powershellu – vyvažovat zatížení u více webů pomocí Azure Powershellu | Dokumentace Microsoftu
-description: Ukázkový skript Azure Powershellu – vyvažovat zatížení u více webů na stejný virtuální počítač
+title: Ukázka skriptu Azure PowerShell – vyrovnávání zatížení několika webů pomocí Azure PowerShell | Microsoft Docs
+description: Ukázkový skript Azure PowerShell – vyrovnávání zatížení několika webů na stejný virtuální počítač
 services: load-balancer
 documentationcenter: load-balancer
-author: georgewallace
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: asudbring
+manager: KumudD
 ms.service: load-balancer
 ms.devlang: powershell
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
-ms.author: gwallace
-ms.openlocfilehash: 145b5a686b2707b6e60a481c08f187164d788580
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 0b266f5fcad0ef709e29a125f1b9b5ddba7fec90
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66121236"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890294"
 ---
-# <a name="load-balance-multiple-websites"></a>Vyvažovat zatížení u více webů
+# <a name="load-balance-multiple-websites"></a>Vyrovnávání zatížení několika webů
 
-Tento ukázkový skript vytvoří virtuální síť s dva virtuální počítače (VM), které jsou členy skupiny dostupnosti. Nástroj pro vyrovnávání zatížení přesměruje provoz pro dvě samostatné IP adresy na tyto dva virtuální počítače. Po spuštění skriptu můžete na tyto virtuální počítače nasadit software webového serveru a hostovat více webů, přičemž každý z nich bude mít vlastní IP adresu.
+Tento ukázkový skript vytvoří virtuální síť se dvěma virtuálními počítači, které jsou členy skupiny dostupnosti. Nástroj pro vyrovnávání zatížení přesměruje provoz pro dvě samostatné IP adresy na tyto dva virtuální počítače. Po spuštění skriptu můžete na tyto virtuální počítače nasadit software webového serveru a hostovat více webů, přičemž každý z nich bude mít vlastní IP adresu.
 
 V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) a pak spuštěním rutiny `Connect-AzAccount` vytvořte připojení k Azure.
 
@@ -66,7 +63,7 @@ Tento skript používá k vytvoření skupiny prostředků, virtuální sítě, 
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | Vytvoří virtuální počítač. |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/overview).
 

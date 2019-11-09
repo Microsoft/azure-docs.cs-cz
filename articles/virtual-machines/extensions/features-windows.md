@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d73a2dcd0aab3b972a3e0a9237e53d05d4a9a53
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 8b99e919c396ebc3ef72c046fbe3fef1261050ad
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750033"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891578"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozšíření a funkce virtuálních počítačů pro Windows
 
@@ -54,18 +54,18 @@ Informace o podporovaných operačních systémech a pokyny k instalaci najdete 
 
 #### <a name="supported-agent-versions"></a>Podporované verze agentů
 
-Aby se zajistilo nejlepší možné prostředí, existují minimální verze agenta. Další informace najdete v [tomto článku](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
+Aby se zajistilo nejlepší možné prostředí, existují minimální verze agenta. Další informace najdete v [tomto článku](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
 
 #### <a name="supported-oses"></a>Podporované operačních systémech
 
-Agent hosta systému Windows běží na více operačních systémech, ale rozhraní rozšíření má omezení pro operačních systémech rozšíření. Další informace najdete v [tomto článku](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
+Agent hosta systému Windows běží na více operačních systémech, ale rozhraní rozšíření má omezení pro operačních systémech rozšíření. Další informace najdete v [tomto článku](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems
 ).
 
 Některá rozšíření nejsou v rámci všech operačních systémech podporovaná a můžou generovat *kód chyby 51, nepodporovaný operační systém*. Projděte si dokumentaci k jednotlivým příponám, abyste mohli podporu.
 
 #### <a name="network-access"></a>Síťový přístup
 
-Balíčky rozšíření se stáhnou z úložiště rozšíření Azure Storage a nahrávání stavu rozšíření se publikují do Azure Storage. Pokud používáte [podporovanou](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) verzi agentů, nemusíte v oblasti virtuálního počítače povolit přístup k Azure Storage, protože agent může pomocí agenta přesměrovat komunikaci do kontroleru prostředků infrastruktury Azure pro komunikaci s agenty (funkce HostGAPlugin prostřednictvím privilegovaný kanál na privátní IP [168.63.129.16](https://docs.microsoft.com/en-us/azure/virtual-network/what-is-ip-address-168-63-129-16)). Pokud jste v nepodporované verzi agenta, musíte z virtuálního počítače v této oblasti povolený odchozí přístup ke službě Azure Storage.
+Balíčky rozšíření se stáhnou z úložiště rozšíření Azure Storage a nahrávání stavu rozšíření se publikují do Azure Storage. Pokud používáte [podporovanou](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) verzi agentů, nemusíte v oblasti virtuálního počítače povolit přístup k Azure Storage, protože agent může pomocí agenta přesměrovat komunikaci do kontroleru prostředků infrastruktury Azure pro komunikaci s agenty (funkce HostGAPlugin prostřednictvím privilegovaný kanál na privátní IP [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)). Pokud jste v nepodporované verzi agenta, musíte z virtuálního počítače v této oblasti povolený odchozí přístup ke službě Azure Storage.
 
 > [!IMPORTANT]
 > Pokud jste zablokovali přístup k *168.63.129.16* pomocí brány firewall hosta nebo proxy serveru, rozšíření selžou bez ohledu na výše uvedené. Vyžadují se porty 80, 443 a 32526.
@@ -140,7 +140,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
 Pomocí příkazu `Set-AzVMExtension` lze spustit libovolné rozšíření virtuálního počítače. Další informace najdete v referenčních informacích k [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
 
 
-### <a name="azure-portal"></a>Portál Azure
+### <a name="azure-portal"></a>portál Azure
 
 Rozšíření virtuálních počítačů je možné použít pro existující virtuální počítač prostřednictvím Azure Portal. Vyberte virtuální počítač na portálu, klikněte na **rozšíření**a pak vyberte **Přidat**. V seznamu dostupných rozšíření vyberte požadované rozšíření a postupujte podle pokynů v průvodci.
 

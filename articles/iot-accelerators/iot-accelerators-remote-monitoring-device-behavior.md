@@ -1,6 +1,6 @@
 ---
-title: Simulované zařízení chování v řešení vzdáleného monitorování – Azure | Dokumentace Microsoftu
-description: Tento článek popisuje, jak pomocí JavaScriptu můžete definovat chování Simulovaná zařízení v řešení vzdáleného monitorování.
+title: Simulované zařízení v řešení vzdáleného monitorování – Azure | Microsoft Docs
+description: Tento článek popisuje, jak pomocí JavaScriptu definovat chování simulovaného zařízení v řešení vzdáleného monitorování.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,38 +8,38 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 04d2ad2f0e86ee977600af86a2ffd1e9d7680375
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c39ca0a018bd22844cf7e5350e6d3586319aac16
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65823419"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890850"
 ---
 # <a name="implement-the-device-model-behavior"></a>Implementace chování modelu zařízení
 
-Tento článek [pochopení schématu modelu zařízení](iot-accelerators-remote-monitoring-device-schema.md) popisuje schéma definující model simulované zařízení. Tento článek uvedené dva typy soubor jazyka JavaScript, které implementují chování Simulovaná zařízení:
+Článek [porozumění schématu modelu zařízení](iot-accelerators-remote-monitoring-device-schema.md) popisuje schéma definující model simulovaného zařízení. Tento článek odkazoval na dva typy souborů JavaScriptu, které implementují chování simulovaného zařízení:
 
-- **Stav** soubory jazyka JavaScript, která spustí v pravidelných intervalech aktualizovat vnitřní stav zařízení.
-- **Metoda** soubory jazyka JavaScript, která se spouští při řešení volá metodu na zařízení.
+- **Stav** Soubory JavaScriptu, které se spouští v pevných intervalech k aktualizaci vnitřního stavu zařízení.
+- **Metoda** Soubory jazyka JavaScript, které jsou spouštěny, když řešení vyvolá metodu na zařízení.
 
 > [!NOTE]
-> Chování modelu zařízení jsou určeny pouze pro Simulovaná zařízení, které jsou hostované ve službě simulaci zařízení. Pokud chcete vytvořit skutečné zařízení, přečtěte si téma [připojení zařízení k akcelerátoru řešení vzdáleného monitorování](iot-accelerators-connecting-devices.md).
+> Chování modelu zařízení je pouze pro simulovaná zařízení hostovaná ve službě simulace zařízení. Pokud chcete vytvořit reálné zařízení, přečtěte si téma [připojení zařízení k akcelerátoru řešení vzdáleného monitorování](iot-accelerators-connecting-devices.md).
 
 V tomto článku získáte informace o těchto tématech:
 
 >[!div class="checklist"]
-> * Ovládací prvek stavu simulovaného zařízení
-> * Definujte, jak Simulovaná zařízení reaguje na volání metody v řešení vzdáleného monitorování
+> * Řízení stavu simulovaného zařízení
+> * Definování způsobu, jakým simulované zařízení reaguje na volání metody z řešení vzdáleného monitorování
 > * Ladění skriptů
 
 ## <a name="state-behavior"></a>Chování stavu
 
-[Simulace](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#simulation) části schématu modelu zařízení definuje vnitřní stav Simulovaná zařízení:
+Oddíl [simulace](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#simulation) schématu modelu zařízení definuje vnitřní stav simulovaného zařízení:
 
-- `InitialState` Definuje počáteční hodnoty pro všechny vlastnosti objektu stavu zařízení.
-- `Script` identifikuje soubor jazyka JavaScript, která běží na plán, který chcete aktualizovat stav zařízení.
+- `InitialState` definuje počáteční hodnoty pro všechny vlastnosti objektu stavu zařízení.
+- `Script` identifikuje soubor JavaScriptu, který se spouští podle plánu, aby se aktualizoval stav zařízení.
 
-Následující příklad ukazuje definici objektu stavu zařízení pro zařízení s Simulovaná chladič:
+Následující příklad ukazuje definici objektu stavu zařízení pro simulované chladicí zařízení:
 
 ```json
 "Simulation": {
@@ -61,9 +61,9 @@ Následující příklad ukazuje definici objektu stavu zařízení pro zaříze
 }
 ```
 
-Stav simulované zařízení, jak jsou definovány v `InitialState` části, je udržována v paměti službou simulace. Informace o stavu je předán jako vstup `main` funkci definovanou v **chladič-01-state.js**. V tomto příkladu simulace služba běží **chladič-01-state.js** souboru každých pět sekund. Skript můžete změnit stav simulované zařízení.
+Stav simulovaného zařízení, jak je definováno v oddílu `InitialState`, je v paměti uchováván službou simulace. Informace o stavu jsou předány jako vstup do funkce `main` definované v **Chiller-01-State. js**. V tomto příkladu služba simulace spouští soubor **Chiller-01-State. js** každých pět sekund. Skript může změnit stav simulovaného zařízení.
 
-Následující příklad zobrazuje přehled typické `main` funkce:
+Následující příklad ukazuje osnovu typické `main` funkce:
 
 ```javascript
 function main(context, previousState, previousProperties) {
@@ -76,15 +76,15 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-`context` Parametr má následující vlastnosti:
+Parametr `context` má následující vlastnosti:
 
 - `currentTime` jako řetězec s formátem `yyyy-MM-dd'T'HH:mm:sszzz`
-- `deviceId`, například `Simulated.Chiller.123`
-- `deviceModel`, například `Chiller`
+- `deviceId`například `Simulated.Chiller.123`
+- `deviceModel`například `Chiller`
 
-`state` Parametr obsahuje stav zařízení, která jsou spravovaná službou simulace zařízení. Tato hodnota je `state` objekt vrácený z předchozího volání `main`.
+Parametr `state` obsahuje stav zařízení, které udržuje služba pro simulaci zařízení. Tato hodnota je objekt `state` vrácený předchozím voláním metody `main`.
 
-Následující příklad ukazuje obvyklá implementace metody `main` metodu ke zpracování stavu zařízení spravovaná službou simulace:
+Následující příklad ukazuje typickou implementaci `main` metody pro zpracování stavu zařízení spravovaného službou simulace:
 
 ```javascript
 // Default state
@@ -118,7 +118,7 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-Následující příklad ukazuje způsob, jakým `main` metoda můžete simulovat hodnoty telemetrie, které se liší v čase:
+Následující příklad ukazuje, jak metoda `main` může simulovat hodnoty telemetrie, které se v průběhu času liší:
 
 ```javascript
 /**
@@ -156,13 +156,13 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-Můžete zobrazit úplný [chladič-01-state.js](https://github.com/Azure/device-simulation-dotnet/blob/master/Services/data/devicemodels/scripts/chiller-01-state.js) na Githubu.
+Kompletní [Chiller-01-State. js](https://github.com/Azure/device-simulation-dotnet/blob/master/Services/data/devicemodels/scripts/chiller-01-state.js) si můžete prohlédnout na GitHubu.
 
 ## <a name="method-behavior"></a>Chování metody
 
-[CloudToDeviceMethods](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#cloudtodevicemethods) části schématu modelu zařízení definuje metody Simulovaná zařízení jsou reaguje na.
+Část [CloudToDeviceMethods](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#cloudtodevicemethods) schématu modelu zařízení definuje metody, na které simulované zařízení reaguje.
 
-Následující příklad zobrazuje seznam metod podporovaných chladič simulované zařízení:
+Následující příklad ukazuje seznam metod podporovaných simulovaným zařízením chladicího zařízení:
 
 ```json
 "CloudToDeviceMethods": {
@@ -185,11 +185,11 @@ Následující příklad zobrazuje seznam metod podporovaných chladič simulova
 }
 ```
 
-Každá metoda má přidružený soubor jazyka JavaScript, který implementuje chování metody.
+Každá metoda má přidružený soubor JavaScriptu, který implementuje chování metody.
 
-Stav simulované zařízení, jak jsou definovány v `InitialState` části schématu, je udržována v paměti službou simulace. Informace o stavu je předán jako vstup `main` funkci definovanou v souboru jazyka JavaScript, když je volána metoda. Skript můžete změnit stav simulované zařízení.
+Stav simulovaného zařízení, jak je definováno v oddílu `InitialState` schématu, je v paměti uchováván službou simulace. Informace o stavu jsou předány jako vstup do funkce `main` definované v souboru JavaScriptu při volání metody. Skript může změnit stav simulovaného zařízení.
 
-Následující příklad zobrazuje přehled typické `main` funkce:
+Následující příklad ukazuje osnovu typické `main` funkce:
 
 ```javascript
 function main(context, previousState, previousProperties) {
@@ -197,23 +197,23 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-`context` Parametr má následující vlastnosti:
+Parametr `context` má následující vlastnosti:
 
 - `currentTime` jako řetězec s formátem `yyyy-MM-dd'T'HH:mm:sszzz`
-- `deviceId`, například `Simulated.Chiller.123`
-- `deviceModel`, například `Chiller`
+- `deviceId`například `Simulated.Chiller.123`
+- `deviceModel`například `Chiller`
 
-`state` Parametr obsahuje stav zařízení, která jsou spravovaná službou simulace zařízení.
+Parametr `state` obsahuje stav zařízení, které udržuje služba pro simulaci zařízení.
 
-`properties` Parametr obsahuje vlastnosti zařízení, které se zapisují jako ohlášené vlastnosti do dvojčete zařízení služby IoT Hub.
+Parametr `properties` obsahuje vlastnosti zařízení, které se zapisují jako hlášené vlastnosti do vlákna IoT Hub zařízení.
 
-Existují tři globální funkce, které lze použít k implementaci chování metody:
+Existují tři globální funkce, které lze použít pro usnadnění implementace chování metody:
 
-- `updateState` k aktualizaci stavu uchovávaného touto službu simulace.
-- `updateProperty` k aktualizaci jedné vlastnosti zařízení.
-- `sleep` pozastavit provádění simulovat dlouhotrvající úlohy.
+- `updateState` pro aktualizaci stavu, který uchovává služba simulace.
+- `updateProperty` pro aktualizaci jedné vlastnosti zařízení.
+- `sleep` pozastavení provádění, aby se simulovala dlouhodobě spuštěná úloha.
 
-Následující příklad ukazuje zkrácenou verzi **IncreasePressure method.js** skript chladič s Simulovaná zařízení používají:
+Následující příklad ukazuje zkrácenou verzi skriptu **IncreasePressure-Method. js** používané simulovanými zařízeními chladicího zařízení:
 
 ```javascript
 function main(context, previousState, previousProperties) {
@@ -248,27 +248,27 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-## <a name="debugging-script-files"></a>Ladění skriptů
+## <a name="debugging-script-files"></a>Ladění souborů skriptu
 
-Není možné připojit ladicí program k interpretu Javascript používá služba simulace zařízení spouštět skripty stavu a metody. Však můžete protokolovat informace v protokolu služby. Předdefinované `log()` funkce umožňuje uložit informace o sledování a ladění provádění funkce.
+Není možné připojit ladicí program k překladači JavaScriptu, který používá služba pro simulaci zařízení ke spouštění skriptů stavu a metody. Můžete však protokolovat informace v protokolu služby. Integrovaná funkce `log()` umožňuje ukládat informace pro sledování a ladění provádění funkce.
 
-Pokud dochází k chybě syntaxe interpretu selže, a zapíše `Jint.Runtime.JavaScriptException` položka do protokolu služby.
+Pokud dojde k chybě syntaxe, překladač se nezdařil a zapíše `Jint.Runtime.JavaScriptException` záznam do protokolu služby.
 
-[Místně spuštěná služba](https://github.com/Azure/device-simulation-dotnet#running-the-service-locally-eg-for-development-tasks) článku na Githubu se dozvíte, jak místně spustit službu pro simulaci zařízení. Místně spuštěná služba usnadňuje ladění simulovaných zařízení, před jejich nasazením do cloudu.
+V článku o [Spuštění místně spuštěné služby](https://github.com/Azure/device-simulation-dotnet#running-the-service-locally-eg-for-development-tasks) na GitHubu se dozvíte, jak místně spustit službu pro simulaci zařízení. Místní spuštění služby usnadňuje ladění simulovaných zařízení před jejich nasazením do cloudu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Tento článek popisuje jak definovat chování modelu vlastní simulované zařízení. Tento článek vám ukázali, jak do:
+Tento článek popisuje, jak definovat chování vlastního modelu simulovaného zařízení. Tento článek vám ukázal, jak:
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]
-> * Ovládací prvek stavu simulovaného zařízení
-> * Definujte, jak Simulovaná zařízení reaguje na volání metody v řešení vzdáleného monitorování
+> * Řízení stavu simulovaného zařízení
+> * Definování způsobu, jakým simulované zařízení reaguje na volání metody z řešení vzdáleného monitorování
 > * Ladění skriptů
 
-Teď, když jste zjistili, jak můžete určit chování Simulovaná zařízení, navrhované dalším krokem je další způsob [vytvoření simulovaného zařízení](iot-accelerators-remote-monitoring-create-simulated-device.md).
+Teď, když jste se naučili, jak určit chování simulovaného zařízení, je navržený další krok, kde se dozvíte, jak [vytvořit simulované zařízení](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
-Další informace pro vývojáře o řešení vzdáleného monitorování najdete v tématu:
+Další informace o vývojářích řešení vzdáleného monitorování najdete v těchto tématech:
 
 * [Referenční příručka pro vývojáře](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Průvodce řešením potíží pro vývojáře](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)

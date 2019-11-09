@@ -1,6 +1,6 @@
 ---
 title: Posílání zpráv na server MQTT pomocí klientské knihovny Azure MQTT | Microsoft Docs
-description: Použití DevKit jako klienta k posílání zpráv na server MQTT
+description: Naučte se používat klientskou knihovnu MQTT k posílání zpráv do zprostředkovatele MQTT. Také se dozvíte, jak nakonfigurovat mXChip IoT DevKit jako klienta MQTT.
 author: liydu
 manager: jeffya
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 6afe0a2fe366b83af45682245776c803c99483d3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4de8b0910a2be48cc626775c5c9bc873c6e780dc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73484036"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889551"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Odesílání zpráv na server MQTT
 
@@ -80,7 +80,7 @@ Pokud narazíte na problémy, přečtěte si [Nejčastější dotazy ke službě
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 * [Připojení IoT DevKit AZ3166 k Azure IoT Hub v cloudu](iot-hub-arduino-iot-devkit-az3166-get-started.md)
 * [Třepačka, Třesce](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)

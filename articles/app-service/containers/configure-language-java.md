@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: fa3cd84978119a5858e63712b4d22c2ea89ea528
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8f6fb9737d3d8dad93a95f31d566f7cc4706ded3
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470898"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886048"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux Java pro Azure App Service
 
@@ -55,7 +55,7 @@ Další informace najdete v tématu [protokoly streamování v Cloud Shell](../t
 
 Povolte [protokolování aplikací](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enable-application-logging-windows) prostřednictvím Azure Portal nebo pomocí [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) a nakonfigurujte App Service tak, aby se do místního systému souborů nebo do služby Azure Blob Storage napsaly standardní a standardní chybové proudy konzolové aplikace. Protokolování do místní instance systému souborů App Service je po konfiguraci zakázáno 12 hodin. Pokud budete potřebovat delší dobu uchování, nakonfigurujte aplikaci tak, aby zapisovala výstup do kontejneru úložiště objektů BLOB. Protokoly aplikací Java a Tomcat najdete v adresáři */Home/LogFiles/Application/* .
 
-Pokud vaše aplikace používá pro trasování [Logback](https://logback.qos.ch/) nebo [log4j](https://logging.apache.org/log4j) , můžete tato trasování přepošlete pro účely revize do Azure Application Insights pomocí pokynů pro konfiguraci protokolovacího rozhraní v tématu [prozkoumávání protokolů trasování Java v Application Insights ](/azure/application-insights/app-insights-java-trace-logs).
+Pokud vaše aplikace používá pro trasování [Logback](https://logback.qos.ch/) nebo [log4j](https://logging.apache.org/log4j) , můžete tyto trasování přepošlete pro účely revize do Azure Application Insights pomocí pokynů pro konfiguraci protokolovacího rozhraní v tématu [prozkoumat protokoly trasování Java v Application Insights](/azure/application-insights/app-insights-java-trace-logs).
 
 ### <a name="troubleshooting-tools"></a>Nástroje pro řešení potíží
 
@@ -239,6 +239,24 @@ Nejdřív postupujte podle pokynů pro [udělení přístupu aplikace Key Vault]
 
 Pro vložení těchto tajných kódů do konfiguračního souboru jarní nebo Tomcat použijte syntaxi vkládání proměnné prostředí (`${MY_ENV_VAR}`). V případě konfiguračních souborů pružiny se podívejte na tuto dokumentaci k [externě nakonfigurovaným konfiguracím](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html).
 
+## <a name="using-the-java-key-store"></a>Používání úložiště klíčů Java
+
+Ve výchozím nastavení se všechny veřejné nebo privátní certifikáty [nahrané do App Service Linux](../configure-ssl-certificate.md) načtou do úložiště klíčů Java, protože se spustí kontejner. To znamená, že nahrané certifikáty budou k dispozici v kontextu připojení při vytváření odchozích připojení TLS.
+
+Nástroj Java Key můžete interagovat nebo ladit tak, že [otevřete připojení SSH](app-service-linux-ssh-support.md) k vašemu App Service a spustíte `keytool`příkazu. Seznam příkazů najdete v [dokumentaci k nástroji Key](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) . Certifikáty jsou uložené ve výchozím umístění souborů úložiště klíčů v jazyce Java `$JAVA_HOME/jre/lib/security/cacerts`.
+
+Pro šifrování připojení JDBC může být nutná další konfigurace. Další informace najdete v dokumentaci pro zvolený ovladač JDBC.
+
+- [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
+- [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
+- [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
+
+### <a name="manually-initialize-and-load-the-key-store"></a>Ruční inicializace a načtení úložiště klíčů
+
+Můžete inicializovat úložiště klíčů a přidat certifikáty ručně. Vytvořte nastavení aplikace `SKIP_JAVA_KEYSTORE_LOAD`s hodnotou `1`, která zakáže App Service načtení certifikátů do úložiště klíčů automaticky. Všechny veřejné certifikáty nahrané do App Service prostřednictvím webu Azure Portal jsou uložené v části `/var/ssl/certs/`. Privátní certifikáty jsou uložené v `/var/ssl/private/`.
+
+Další informace o rozhraní API úložiště klíčů najdete [v oficiální dokumentaci](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html).
+
 ## <a name="configure-apm-platforms"></a>Konfigurace platforem APM
 
 V této části se dozvíte, jak připojit aplikace Java nasazené na Azure App Service v systému Linux pomocí platforem APM (Application Performance Monitoring) pro NewRelic a AppDynamics.
@@ -275,7 +293,7 @@ V této části se dozvíte, jak připojit aplikace Java nasazené na Azure App 
 
 Ve výchozím nastavení App Service očekává, že vaše aplikace JAR bude pojmenována *App. jar*. Pokud tento název obsahuje, bude automaticky spuštěn. Pro uživatele Maven můžete název JAR nastavit tak, že zahrnete `<finalName>app</finalName>` do části `<build>` souboru *pom. XML*. To [samé můžete provést v Gradle](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName) nastavením vlastnosti `archiveFileName`.
 
-Pokud chcete pro svůj JAR použít jiný název, musíte zadat také [spouštěcí příkaz](app-service-linux-faq.md#built-in-images) , který SPUSTÍ soubor JAR. Například, `java -jar my-jar-app.jar`. Hodnotu pro spouštěcí příkaz můžete nastavit na portálu v části Konfigurace > Obecné nastavení nebo pomocí nastavení aplikace s názvem `STARTUP_COMMAND`.
+Pokud chcete pro svůj JAR použít jiný název, musíte zadat také [spouštěcí příkaz](app-service-linux-faq.md#built-in-images) , který SPUSTÍ soubor JAR. například `java -jar my-jar-app.jar`. Hodnotu pro spouštěcí příkaz můžete nastavit na portálu v části Konfigurace > Obecné nastavení nebo pomocí nastavení aplikace s názvem `STARTUP_COMMAND`.
 
 ### <a name="server-port"></a>Port serveru
 

@@ -32,8 +32,8 @@
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Podpora jazyků
       href: 'https://aka.ms/ltlangsupport'
     - name: Regionální dostupnost
-      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=cognitive-services'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'

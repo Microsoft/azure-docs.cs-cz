@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: overview
 ms.date: 08/29/2019
 ms.author: tomfitz
-ms.openlocfilehash: f8ec833a469e3c3a9b4c88343a48e109fc5c9728
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 525271fdc94e0fd1b2cafe4a5a222ce9100156ef
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338211"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888480"
 ---
 # <a name="azure-resource-manager-overview"></a>Přehled Azure Resource Manageru
 
@@ -61,7 +61,7 @@ Pomocí Správce prostředků můžete:
 
 Azure poskytuje čtyři úrovně rozsahu: [skupiny pro správu](../governance/management-groups/overview.md), předplatná, [skupiny prostředků](#resource-groups)a prostředky. Následující obrázek ukazuje příklad těchto vrstev.
 
-![Scope](./media/resource-group-overview/scope-levels.png)
+![Rozsah](./media/resource-group-overview/scope-levels.png)
 
 Nastavení správy můžete použít na jakékoli z těchto úrovní rozsahu. Vybraná úroveň určuje rozsah použití nastavení. Nižší úrovně dědí nastavení z vyšších úrovní. Když například použijete [zásadu](../governance/policy/overview.md) pro předplatné, zásada se použije na všechny skupiny prostředků a prostředky v rámci vašeho předplatného. Když použijete zásadu pro skupinu prostředků, tato zásada se použije pro skupinu prostředků a všechny její prostředky. U jiné skupiny prostředků ale tato přiřazení zásad neplatí.
 
@@ -87,7 +87,7 @@ Při definování skupin prostředků byste měli vzít v úvahu některé důle
 
 Při vytváření skupiny prostředků pro ni musíte zadat umístění. Asi vás zajímá, proč skupina prostředků potřebuje umístění. A proč vůbec záleží na umístění skupiny prostředků, pokud prostředky mohou mít jiná umístění než skupina prostředků. Skupina prostředků ukládá metadata o prostředcích. Když zadáte umístění pro skupinu prostředků, určíte, kde jsou tato metadata uložená. Z důvodu dodržování předpisů může být nutné zajistit, aby se data ukládala v určité oblasti.
 
-Pokud je oblast skupiny prostředků dočasně nedostupná, nemůžete aktualizovat prostředky ve skupině prostředků, protože metadata nejsou k dispozici. Prostředky v jiných oblastech budou pořád fungovat podle očekávání, ale nemůžete je aktualizovat. Další informace o vytváření spolehlivých aplikací najdete v tématu [navrhování spolehlivých aplikací Azure](/azure/architecture/reliability/).
+Pokud je oblast skupiny prostředků dočasně nedostupná, nemůžete aktualizovat prostředky ve skupině prostředků, protože metadata nejsou k dispozici. Prostředky v jiných oblastech budou pořád fungovat podle očekávání, ale nemůžete je aktualizovat. Další informace o vytváření spolehlivých aplikací najdete v tématu [navrhování spolehlivých aplikací Azure](/azure/architecture/checklist/resiliency-per-service).
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Odolnost Azure Resource Manager
 
@@ -107,7 +107,7 @@ Tato odolnost se vztahuje na služby, které přijímají požadavky prostředni
 
 * Informace o všech operacích nabízených poskytovateli prostředků najdete v tématu [rozhraní API Azure REST](/rest/api/azure/).
 
-* Další informace o přesouvání prostředků najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo](resource-group-move-resources.md)předplatného.
+* Další informace o přesouvání prostředků najdete v tématu [Přesunutí prostředků do nové skupiny prostředků nebo předplatného](resource-group-move-resources.md).
 
 * Další informace o označování prostředků najdete v tématu [použití značek k uspořádání prostředků Azure](resource-group-using-tags.md).
 

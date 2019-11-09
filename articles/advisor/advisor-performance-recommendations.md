@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: c8647e316cc77e7e1eed5108fafccd6d70d181cf
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 1fec8a10a6699dc1360494cc7ac66e13f5d37ff0
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898186"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885735"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Zlepšení výkonu aplikací Azure pomocí Azure Advisor
 
@@ -73,7 +73,7 @@ Poradce identifikuje tabulky, které nejsou replikované, ale bude výhodná kon
 Migrujte model nasazení účtu úložiště na Azure Resource Manager (Správce prostředků), abyste mohli využít výhod nasazení šablon, dalších možností zabezpečení a možnosti upgradovat na účet GPv2, abyste mohli využívat nejnovější funkce Azure Storage. Poradce bude identifikovat všechny samostatné účty úložiště, které používají model nasazení Classic a doporučuje migraci na model nasazení Správce prostředků.
 
 > [!NOTE]
-> Klasické výstrahy v Azure Monitor byly vyřazeny ze srpna 2019. Doporučujeme vám upgradovat klasický účet úložiště, aby používal Správce prostředků k uchování funkcí upozorňování s novou platformou. Další informace najdete v tématu [vyřazení klasických výstrah](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform).
+> Klasické výstrahy v Azure Monitor byly vyřazeny ze srpna 2019. Doporučujeme vám upgradovat klasický účet úložiště, aby používal Správce prostředků k uchování funkcí upozorňování s novou platformou. Další informace najdete v tématu [vyřazení klasických výstrah](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform).
 
 ## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>Návrh účtů úložiště, aby nedošlo k překročení maximálního limitu předplatného
 
@@ -88,7 +88,7 @@ Velmi vysoké využití procesoru po delší dobu může způsobit pomalý výko
 Poměr přístupů do mezipaměti může mít za následek pomalejší výkon dotazů a zvýšené IOPS. Příčinou může být špatný plán dotazů nebo spuštění úlohy náročné na paměť. Řešení plánu dotazů nebo [zvýšení paměti](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) Azure Database for PostgreSQL databázového serveru, serveru Azure MySQL nebo serveru Azure MariaDB vám pomůže optimalizovat provádění databázových úloh. Azure Advisor identifikuje servery ovlivněné z důvodu této vysoké změny fondu vyrovnávací paměti a doporučuje buď opravit plán dotazů, přejít na vyšší SKU s větší pamětí nebo zvýšit velikost úložiště a získat tak více IOPS.
 
 ### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Použití Azure MySQL nebo repliky pro čtení Azure PostgreSQL k horizontálnímu navýšení kapacity pro úlohy náročné na čtení
-Azure Advisor využívá heuristiky založené na úlohách, jako je poměr čtení a zápisů na serveru za posledních sedm dní k identifikaci úloh náročných na čtení. Prostředek Azure Database for PostgreSQL nebo Azure Database for MySQL s velmi vysokým poměrem pro čtení a zápis může vést k tomu, že by došlo k zpomalení výkonu procesoru nebo paměti. Přidání [repliky](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) vám pomůže škálovat čtení na server repliky a zabránit omezením procesoru nebo paměti na primárním serveru. Advisor bude identifikovat servery s těmito vysokými úlohami náročnými na čtení a doporučit přidání  [repliky pro čtení](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas), aby bylo možné přesměrovat některé úlohy čtení.
+Azure Advisor využívá heuristiky založené na úlohách, jako je poměr čtení a zápisů na serveru za posledních sedm dní k identifikaci úloh náročných na čtení. Prostředek Azure Database for PostgreSQL nebo Azure Database for MySQL s velmi vysokým poměrem pro čtení a zápis může vést k tomu, že by došlo k zpomalení výkonu procesoru nebo paměti. Přidání [repliky](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) vám pomůže škálovat čtení na server repliky a zabránit omezením procesoru nebo paměti na primárním serveru. Advisor bude identifikovat servery s těmito vysokými úlohami náročnými na čtení a doporučit přidání [repliky pro čtení](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) pro přesměrování některých úloh čtení.
 
 
 ### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Škálujte svůj server Azure MySQL, Azure PostgreSQL nebo Azure MariaDB na vyšší SKU, aby nedocházelo k omezením připojení.
@@ -116,7 +116,7 @@ Azure Advisor určí Azure Cosmos DB kontejnery, které používají velikost st
 
 2.  Na řídicím panelu Advisor klikněte na kartu **výkon** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o doporučení Advisoru najdete tady:
 

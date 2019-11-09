@@ -5,8 +5,6 @@
   items:
     - name: Vysvětlení informací na faktuře
       href: billing-understand-your-bill.md
-    - name: Vysvětlení informací na faktuře za EA
-      href: billing-understand-your-bill-ea.md
     - name: Vysvětlení informací na faktuře – smlouva se zákazníkem Microsoftu
       href: billing-mca-understand-your-bill.md
     - name: Vysvětlení informací na faktuře – smlouva s partnerem Microsoftu
@@ -159,6 +157,8 @@
       items:
         - name: Začínáme na portálu Azure EA
           href: billing-ea-portal-get-started.md
+        - name: Vysvětlení informací na faktuře za EA
+          href: billing-understand-your-bill-ea.md
         - name: Role EA v Azure
           href: billing-understand-ea-roles.md
         - name: Správa portálu Azure EA

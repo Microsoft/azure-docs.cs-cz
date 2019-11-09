@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 94e8695e01ca5e5c456ce230c4cc84b41685fd9c
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 51c84410de39516312d2058eeda575023dbe32ab
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026528"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890765"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-iot-central"></a>Kurz: Vytvoření aplikace pro monitorování kvality vody v IoT Central
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 > * Přizpůsobení brandingu aplikace pomocí whitelabeling
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete:
 -  Doporučuje se předplatné Azure. Pokud nemáte předplatné Azure, můžete ho vytvořit na [stránce registrace do Azure](https://aka.ms/createazuresubscription).
@@ -64,11 +64,11 @@ Vytvoření nové aplikace pro monitorování kvality IoT Central v Azure:
     * **Adresa URL** – Volitelně můžete zvolit požadovanou adresu URL. Adresu URL můžete později změnit. 
     * Pokud máte předplatné Azure, zadejte svůj *adresář, předplatné Azure a oblast*. Pokud předplatné nemáte, můžete povolit **7 dní bezplatnou zkušební verzi** a dokončit požadované kontaktní údaje.  
 
-    Další informace o adresářích a předplatných najdete v [rychlém startu k vytvoření aplikace](../core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+    Další informace o adresářích a předplatných najdete v [rychlém startu k vytvoření aplikace](../preview/quick-deploy-iot-central.md).
 
 5. V dolní části stránky klikněte na tlačítko **vytvořit** . 
 
-    ![Stránka aplikace Azure IoT Central](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1.png)
+    ![Stránka vytvoření aplikace Azure IoT Central](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1.png)
 
 
 6. Nyní jste vytvořili aplikaci pro monitorování kvality vody pomocí **šablony monitorování kvality**služby Azure IoT Central voda. 

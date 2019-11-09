@@ -1,23 +1,24 @@
 ---
 title: Řešení potíží s přihlášením k předplatnému Azure
 description: Tato příručka vám pomůže vyřešit problémy s přihlášením na Azure Portal nebo Centrum účtů Azure.
+services: azure
 author: v-miegge
-manager: na
+manager: dcscontentpm
 editor: na
 tags: billing
 ms.service: billing
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
-ms.openlocfilehash: ca641813e8b01a39d31a56e3730424b0fa1d6436
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: e2cbaa5cf226eaf9835c1a63d21fae54c7093117
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "69657044"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795420"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Řešení potíží s přihlášením k předplatnému Azure
 
@@ -56,7 +57,7 @@ Pokud chcete tento problém vyřešit:
 
 **Scénář 2:** Chybová zpráva se objeví v [Centru účtů Azure](https://account.windowsazure.com/Subscriptions).
 
-Zkontrolujte, jestli použitý účet je Správce účtu. Pokud chcete ověřit, kdo je Správce účtu, postupujte takto:
+Zkontrolujte, jestli použitý účet je Správce účtu. Pokud chcete ověřit, kdo je správce účtu, postupujte takto:
 
 1. Přihlaste se k [zobrazení předplatných na webu Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 

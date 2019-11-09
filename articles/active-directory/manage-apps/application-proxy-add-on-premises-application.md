@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8d6297a32cd0f85cf354a93bfdac72cbad9603d
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 72678a67b1bc9845eae2bca658f35a05c9bcf659
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062832"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73883978"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory
 
@@ -45,6 +45,12 @@ K přidání místní aplikace do služby Azure AD potřebujete:
 Pokud chcete použít proxy aplikace, potřebujete Windows Server se systémem Windows Server 2012 R2 nebo novějším. Nainstalujete konektor proxy aplikace na server. Tento server konektoru se musí připojit k aplikačním proxy službám v Azure a místním aplikacím, které plánujete publikovat.
 
 Pro zajištění vysoké dostupnosti v produkčním prostředí doporučujeme mít více než jeden Windows Server. Pro tento kurz stačí jeden Windows Server.
+
+> [!IMPORTANT]
+> Pokud instalujete konektor na Windows Server 2019, existuje omezení HTTP2. Chcete-li úspěšně použít konektor v této verzi, přidejte následující klíč registru a restartujte server:
+    ```
+    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+    ```
 
 #### <a name="recommendations-for-the-connector-server"></a>Doporučení pro server konektoru
 
@@ -93,7 +99,7 @@ Pokud brána firewall vynutila provoz na základě pocházejících uživatelů,
 
 Povolte přístup k následujícím adresám URL:
 
-| Adresa URL | Jak se používá |
+| zprostředkovatele identity | Jak se používá |
 | --- | --- |
 | \*. msappproxy.net<br>\*. servicebus.windows.net | Komunikace mezi konektorem a cloudovou službou proxy aplikací |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure tyto adresy URL používá k ověření certifikátů. |

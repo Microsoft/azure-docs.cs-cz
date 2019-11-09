@@ -16,12 +16,12 @@ ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 704e217cd7ddea988b6a9812627aba8c8468fb73
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: e3ad689fb57c51d0deb698a723b93e6175bdbb5c
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955494"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882881"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Stav zřizování aplikace v karanténě
 
@@ -33,7 +33,7 @@ V karanténě se frekvence přírůstkových cyklů postupně zkracuje na jeden 
 
 Existují tři způsoby, jak ověřit, zda je aplikace v karanténě:
   
-- V Azure Portal přejděte na **Azure Active Directory** > **podnikové aplikace** >  @ no__t-4*název aplikace*&gt; @ no__t **-7 a** posuňte se na indikátor průběhu v dolní části.  
+- V Azure Portal přejděte na **Azure Active Directory** > **podnikové aplikace** > &lt;*název aplikace*&gt; > **zřizování** a posuňte se k indikátoru průběhu v dolní části.  
 
   ![Stavový řádek znázorňující stav karantény](media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
 
@@ -63,12 +63,12 @@ Nejprve Vyřešte problém, který způsobil, že se aplikace umístila do karan
 
 - Zkontrolujte nastavení zřizování aplikace a ujistěte se, že jste [zadali platné přihlašovací údaje správce](configure-automatic-user-provisioning-portal.md#configuring-automatic-user-account-provisioning). Azure AD musí být schopný vytvořit vztah důvěryhodnosti s cílovou aplikací. Ujistěte se, že jste zadali platné přihlašovací údaje a že váš účet má potřebná oprávnění.
 
-- Zkontrolujte [protokoly zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) a prozkoumejte, jaké chyby způsobují karanténu a řeší chybu. Přístup k protokolům zřizování v Azure Portal přejděte na **Azure Active Directory** &gt; **Enterprise Apps** &gt;. **protokoly zřizování (Preview)** v části **aktivita** .
+- Zkontrolujte [protokoly zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) a prozkoumejte, jaké chyby způsobují karanténu a řeší chybu. Přístup k protokolům zřizování v Azure Portal získáte tak, že v části **aktivita** přejdeme na **Azure Active Directory** &gt; **podnikové aplikace** &gt; **protokoly zřizování (Preview)** .
 
 Po vyřešení problému restartujte úlohu zřizování. Některé změny nastavení zřizování aplikace, jako jsou mapování atributů nebo filtry oborů, se automaticky restartují pro vás. Indikátor průběhu na stránce pro **zřizování** aplikace indikuje, kdy bylo zřizování naposledy spuštěno. Pokud potřebujete úlohu zřizování restartovat ručně, použijte jednu z následujících metod:  
 
 - Pomocí Azure Portal restartujte úlohu zřizování. Na stránce **zřizování** aplikace v části **Nastavení**vyberte **Vymazat stav a znovu spusťte synchronizaci** a nastavte **stav zřizování** **na zapnuto**. Tato akce plně restartuje službu zřizování, což může nějakou dobu trvat. Úplný počáteční cyklus se znovu spustí, který zruší escrows, odebere aplikaci z karantény a vymaže všechny vodoznaky.
 
-- [Restartujte úlohu zřizování](https://docs.microsoft.com/en-us/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)pomocí Microsoft Graph. Budete mít plnou kontrolu nad tím, co restartujete. Můžete zvolit vymazání escrows (pro restartování čítače v úschově, který se bude přestavovat do karantény), vymazat karanténu (Pokud chcete aplikaci odebrat z karantény) nebo zrušit meze. Použijte následující požadavek:
+- [Restartujte úlohu zřizování](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)pomocí Microsoft Graph. Budete mít plnou kontrolu nad tím, co restartujete. Můžete zvolit vymazání escrows (pro restartování čítače v úschově, který se bude přestavovat do karantény), vymazat karanténu (Pokud chcete aplikaci odebrat z karantény) nebo zrušit meze. Použijte následující požadavek:
  
        `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`

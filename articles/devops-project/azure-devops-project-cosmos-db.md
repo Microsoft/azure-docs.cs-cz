@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 1c16368990148406fbacdde2981c10fab0b2d405
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 229b4b9f53ea3866dce1169645f6d6da20827271
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969667"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888892"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-projects"></a>Nasazení aplikací Node. js využívajících Azure Cosmos DB s DevOps Projects
 
@@ -37,7 +37,7 @@ V tomto kurzu provedete následující:
 > * Potvrďte změny v Gitu a automaticky je nasaďte do Azure.
 > * Vyčištění prostředků
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Potřebujete předplatné Azure, které můžete získat zdarma prostřednictvím [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) .
 
@@ -45,7 +45,7 @@ Potřebujete předplatné Azure, které můžete získat zdarma prostřednictví
 
 DevOps Projects vytvoří v Azure Pipelines kanál CI/CD. Můžete vytvořit novou organizaci Azure DevOps nebo použít stávající organizaci. DevOps Projects také vytvoří prostředky Azure, jako jsou plány Azure Cosmos DB, Application Insights, App Service a App Service, v předplatném Azure dle vašeho výběru.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně vyberte **vytvořit prostředek**.
 
@@ -113,7 +113,7 @@ DevOps Projects automaticky nakonfiguruje kanál CI/CD ve vaší organizaci Azur
 
 1. Změňte název vašeho kanálu sestavení na výstižnější a pak v rozevíracím seznamu **uložit & fronty** vyberte **Uložit** .
 
-1. Pod názvem vašeho kanálu buildu vyberte **Historie**. V tomto podokně se zobrazuje záznam pro audit vašich nedávných změn pro sestavení. Azure DevOps sleduje všechny změny provedené v kanálu sestavení a umožňuje porovnat verze.
+1. Pod názvem kanálu buildu vyberte **Historie**. V tomto podokně se zobrazuje záznam pro audit vašich nedávných změn pro sestavení. Azure DevOps sleduje všechny změny provedené v kanálu sestavení a umožňuje porovnat verze.
 
 ## <a name="examine-the-cd-release-pipeline"></a>Kontrola kanálu pro vydání CD
 
@@ -169,6 +169,6 @@ Tyto kanály buildu a verze můžete upravit tak, aby splňovaly požadavky vaš
 > * Potvrďte změny v Gitu a automaticky je nasaďte do Azure.
 > * Vyčištění prostředků
 
-Další informace a další kroky najdete v tématu [definice kanálu pro průběžné nasazování (CD) s více fázemi](https://docs.microsoft.com/en-us/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) .
+Další informace a další kroky najdete v tématu [definice kanálu pro průběžné nasazování (CD) s více fázemi](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) .
 
 

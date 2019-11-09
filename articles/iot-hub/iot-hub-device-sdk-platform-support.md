@@ -1,18 +1,18 @@
 ---
 title: Podpora platforem sady SDK pro zařízení Azure IoT | Microsoft Docs
-description: Koncepty – seznam platforem podporovaných sadami SDK pro zařízení Azure IoT
+description: Open source sady SDK pro zařízení jsou k dispozici na GitHubu vC#jazyce C, .NET (), Java, Node. js a Python pro připojení zařízení k Azure IoT Hub a službě Device Provisioning (DPS).
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: ac5817675d3cfc97a8732ee2e10ec7b9246b12a5
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: d39fd95f8704650db16c1dc1553efaba2f727052
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693334"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889431"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Podpora platforem sady SDK pro zařízení Azure IoT
 
@@ -44,19 +44,19 @@ Pro každou z uvedených sad SDK Microsoft:
 
 [Sada SDK pro zařízení Azure IoT Hub C](https://github.com/Azure/azure-iot-sdk-c) je testována pomocí nástroje a podporuje následující konfigurace.
 
-| OS                  | Knihovna TLS                  | Další požadavky                                                                     |
+| Operační systém                  | Knihovna TLS                  | Další požadavky                                                                     |
 |---------------------|------------------------------|---------------------------------------------------------------------------------------------|
 | Linux               | OpenSSL, WolfSSL nebo BearSSL | Berkeley Sockets</br></br>Rozhraní standardu POSIX (Portable Operating System Interface)                       |
 | iOS 12,2            | OpenSSL nebo nativní OSX        | XCode emulované ve OSX 10.13.4                                                               |
 | Řada Windows 10   | SChannel                     |                                                                                             |
 | Mbed OS 5,4         | Mbed TLS 2                   | [MXChip IoT dev Kit](https://microsoft.github.io/azure-iot-developer-kit/)                  |
-| Operační systém Azure Sphere     | WolfSSL                      | [Azure Sphere MT3620](https://azure.microsoft.com/en-us/services/azure-sphere/get-started/) |
+| Operační systém Azure Sphere     | WolfSSL                      | [Azure Sphere MT3620](https://azure.microsoft.com/services/azure-sphere/get-started/) |
 
 ### <a name="python-sdk"></a>Python SDK
 
 [Sada SDK pro zařízení služby Azure IoT Hub Python](https://github.com/Azure/azure-iot-sdk-python) je testována s nástrojem a podporuje následující konfigurace.
 
-| OS                  | Přepínač                          |
+| Operační systém                  | Přepínač                          |
 |---------------------|-----------------------------------|
 | Linux               | Python 2,7 *, 3,4*, 3,5 *, 3,6, 3,7 |
 | MacOS High Sierra   | Python 2,7 *, 3,4*, 3,5 *, 3,6, 3,7 |
@@ -68,7 +68,7 @@ Pro každou z uvedených sad SDK Microsoft:
 
 [Sada SDK pro zařízení AzureC#IoT Hub .NET ()](https://github.com/Azure/azure-iot-sdk-csharp) je testována pomocí a podporuje následující konfigurace.
 
-| OS                                   | Úroveň Standard                                                   |
+| Operační systém                                   | Standard                                                   |
 |--------------------------------------|------------------------------------------------------------|
 | Linux                                | .NET Core 2.1                                              |
 | SKU Windows 10 Desktop a Server   | .NET Core 2,1, .NET Framework 4.5.1 nebo .NET Framework 4,7 |
@@ -79,7 +79,7 @@ Sadu .NET SDK je také možné použít s Windows IoT Core s [agentem zařízen�
 
 [Sada SDK pro zařízení Node. js v Azure IoT Hub](https://github.com/Azure/azure-iot-sdk-node) se testuje pomocí a podporuje následující konfigurace.
 
-| OS                  | Verze uzlu    |
+| Operační systém                  | Verze uzlu    |
 |---------------------|-----------------|
 | Linux               | LTS a aktuální |
 | Řada Windows 10   | LTS a aktuální |
@@ -88,7 +88,7 @@ Sadu .NET SDK je také možné použít s Windows IoT Core s [agentem zařízen�
 
 [Sada SDK pro zařízení s Azure IoT Hub Java](https://github.com/Azure/azure-iot-sdk-java) je testována s nástrojem a podporuje následující konfigurace.
 
-| OS                     | Verze Java |
+| Operační systém                     | Verze Java |
 |------------------------|--------------|
 | Rozhraní Android API 28         | Java 8       |
 | Linux x64             | Java 8       |
@@ -115,11 +115,11 @@ Microsoft spolupracuje s řadou partnerů, aby mohli průběžně rozšiřovat A
 
 * Pokud chcete procházet zařízení s certifikací Azure IoT Certified, přečtěte si téma [Microsoft Azure Certified for IoT katalogu zařízení](https://catalog.azureiotsolutions.com/).
 
-* Další informace o důvěryhodných partnerech Microsoftu nebo o tom, jak se stát důvěryhodným partnerem Microsoftu, najdete v tématu [Microsoft Azure certifikovaných Internet věcí důvěryhodných partnerů](https://azure.microsoft.com/en-us/marketplace/certified-iot-partners/).
+* Další informace o důvěryhodných partnerech Microsoftu nebo o tom, jak se stát důvěryhodným partnerem Microsoftu, najdete v tématu [Microsoft Azure certifikovaných Internet věcí důvěryhodných partnerů](https://azure.microsoft.com/marketplace/certified-iot-partners/).
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>Připojení k IoT Hub bez sady SDK
 
-Pokud nemůžete použít jednu ze sad SDK pro IoT Hub zařízení, můžete se přímo připojit k IoT Hub pomocí [IoT Hub rozhraní REST API](https://docs.microsoft.com/en-us/rest/api/iothub/) z libovolné aplikace, která dokáže odesílat a přijímat požadavky HTTPS a odpovědi.
+Pokud nemůžete použít jednu ze sad SDK pro IoT Hub zařízení, můžete se přímo připojit k IoT Hub pomocí [IoT Hub rozhraní REST API](https://docs.microsoft.com/rest/api/iothub/) z libovolné aplikace, která dokáže odesílat a přijímat požadavky HTTPS a odpovědi.
 
 ## <a name="support-and-other-resources"></a>Podpora a další zdroje informací
 

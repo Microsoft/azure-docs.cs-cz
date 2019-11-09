@@ -1,28 +1,24 @@
 ---
 title: Synchronizace stavu zařízení ze služby Azure IoT Hub | Microsoft Docs
-description: Stav mezi zařízeními a centrem IoT můžete synchronizovat pomocí dvojčat zařízení
+description: Naučte se používat vlákna zařízení ke konfiguraci vašich zařízení z cloudu a získávat data o stavu a dodržování předpisů z vašich zařízení.
 services: iot-hub
-documentationcenter: ''
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/21/2019
 ms.custom: mvc
-ms.openlocfilehash: 4ad3013f6914abbf4c75676e7423848dff9d5e9a
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 647182389ec0ad4cb2b80a0676812961cb9be770
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330360"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890430"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
-# <a name="tutorial-configure-your-devices-from-a-back-end-service"></a>Kurz: Konfigurovat zařízení z back-end služby
+# <a name="tutorial-configure-your-devices-from-a-back-end-service"></a>Kurz: Konfigurace zařízení z back-endové služby
 
 Vedle příjmu telemetrických dat ze zařízení můžete potřebovat zařízení nakonfigurovat z back-endové služby. Když do zařízení odesíláte požadovanou konfiguraci, můžete z nich někdy chtít zároveň přijmout aktualizace stavu a souladu s předpisy. Můžete tak například pro zařízení nastavit cílový rozsah provozní teploty nebo z nich shromáždit informace o verzi firmwaru.
 
@@ -43,7 +39,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí Node.js. Potřebujete Node.js v10.x.x, nebo později na vývojovém počítači.
+Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí Node.js. Ve vývojovém počítači potřebujete Node. js v10 za účelem. x. x nebo novější.
 
 Node.js pro různé platformy si můžete stáhnout z webu [nodejs.org](https://nodejs.org).
 
@@ -59,7 +55,7 @@ Stáhněte si ukázkový projekt Node.js z https://github.com/Azure-Samples/azur
 
 Abyste mohli dokončit tento kurz, musí vaše předplatné Azure obsahovat centrum IoT se zařízením přidaným do registru identit zařízení. Záznam v registru identit zařízení umožňuje připojení simulovaného zařízení, které v tomto kurzu spustíte, do vašeho centra.
 
-Pokud ještě nemáte služby IoT hub nastavit v rámci vašeho předplatného, můžete nastavit jednu pomocí následujícího skriptu příkazového řádku. Skript používá pro centrum IoT název **tutorial-iot-hub**. Při spuštění ho nahraďte vlastním jedinečným názvem. Skript vytvoří skupinu prostředků a centrum v oblasti **Střední USA**, kterou můžete změnit na bližší zeměpisnou oblast. Skript načte připojovací řetězec služby IoT Hub, který použijete v ukázkové back-endové aplikaci k připojení do centra IoT:
+Pokud ještě nemáte ve svém předplatném nastavený IoT Hub, můžete ho nastavit pomocí následujícího skriptu CLI. Skript používá pro centrum IoT název **tutorial-iot-hub**. Při spuštění ho nahraďte vlastním jedinečným názvem. Skript vytvoří skupinu prostředků a centrum v oblasti **Střední USA**, kterou můžete změnit na bližší zeměpisnou oblast. Skript načte připojovací řetězec služby IoT Hub, který použijete v ukázkové back-endové aplikaci k připojení do centra IoT:
 
 ```azurecli-interactive
 hubname=tutorial-iot-hub
@@ -240,7 +236,7 @@ Následující snímek obrazovky ukazuje výstup z aplikace simulovaného zaří
 
 ![Simulované zařízení](./media/tutorial-device-twins/SimulatedDevice2.png)
 
-Následující snímek obrazovky ukazuje výstup z back endová aplikace a zvýrazní jak obdrží a zpracuje aktualizaci ohlášených vlastností ze zařízení:
+Na následujícím snímku obrazovky vidíte výstup z back-endové aplikace a zvýrazní, jak přijímá a zpracovává aktualizaci hlášené vlastnosti ze zařízení:
 
 ![Back-endová aplikace](./media/tutorial-device-twins/BackEnd2.png)
 
@@ -257,7 +253,7 @@ Můžete použít také rozhraní příkazového řádku:
 az group delete --name tutorial-iot-hub-rg
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili synchronizovat informace o stavu mezi zařízeními a centrem IoT. V dalším kurzu se dozvíte, jak využít dvojčata zařízení k implementaci procesu aktualizace firmwaru.
 

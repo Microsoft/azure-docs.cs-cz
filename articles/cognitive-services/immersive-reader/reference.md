@@ -10,18 +10,18 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 1908ed916d61c7a65b1f0061c0fe8d8a08b5e41c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ed9bd6f5932fdcb2d9124a000115a6f68cf21613
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388095"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889314"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Referenční příručka k sadě pro moderní čtečku SDK
 
 Moderní čtečka SDK je knihovna JavaScriptu, která umožňuje integrovat moderní čtečku do vaší webové aplikace.
 
-# <a name="functions"></a>Functions
+## <a name="functions"></a>Functions
 
 Sada SDK zpřístupňuje funkce:
 
@@ -43,24 +43,24 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 | Name (Název) | Typ | Popis |
 | ---- | ---- |------------ |
-| `token` | string | Ověřovací token Azure AD. Podívejte se na [postupy ověřování Azure AD](./azure-active-directory-authentication.md). |
-| `subdomain` | string | Vlastní subdoména prostředku pro moderní čtečku v Azure. Podívejte se na [postupy ověřování Azure AD](./azure-active-directory-authentication.md). |
+| `token` | řetězec | Ověřovací token Azure AD. Podívejte se na [postupy ověřování Azure AD](./azure-active-directory-authentication.md). |
+| `subdomain` | řetězec | Vlastní subdoména prostředku pro moderní čtečku v Azure. Podívejte se na [postupy ověřování Azure AD](./azure-active-directory-authentication.md). |
 | `content` | [Obsah](#content) | Objekt obsahující obsah, který se má zobrazit v moderní čtečce. |
 | `options` | [Možnosti](#options) | Možnosti pro konfiguraci určitého chování moderního čtecího zařízení. Volitelné. |
 
 ### <a name="returns"></a>Vrátí
 
-Vrátí `Promise<HTMLDivElement>`, který se vyřeší, když se načtou moderní čtecí zařízení. @No__t-0 se přeloží na element `div`, jehož jediným podřízeným prvkem je prvek `iframe`, který obsahuje stránku s moderním čtecím modulem.
+Vrátí `Promise<HTMLDivElement>`, který se vyřeší, když se nahraje moderní čtečka. `Promise` se přeloží na `div` element, jehož jediným podřízeným prvkem je prvek `iframe`, který obsahuje stránku s atraktivním čtečkou.
 
 ### <a name="exceptions"></a>Výjimky
 
-Vrácený `Promise` bude odmítnut s objektem [`Error`](#error) , pokud se moderní čtecí zařízení nepovede načíst. Další informace najdete v tématu [kódy chyb](#error-codes).
+Vrácený `Promise` budou odmítnuty s objektem [`Error`](#error) v případě, že se moderní čtečka nepovede načíst. Další informace najdete v tématu [kódy chyb](#error-codes).
 
 ## <a name="close"></a>zavřít
 
 Zavře moderní čtečku.
 
-Příkladem případu použití této funkce je, že je tlačítko Ukončit skryté nastavením ```hideExitButton: true``` v [možnostech](#options). Pak jiné tlačítko (například šipka back-šipky pro mobilní hlavičku) může při kliknutí zavolat tuto funkci ```close```.
+Příkladem případu použití této funkce je, že je tlačítko Ukončit skryté nastavením ```hideExitButton: true``` v [Možnosti](#options). Pak jiné tlačítko (například šipka back-šipky pro mobilní hlavičku) může tuto funkci ```close``` vyvolat, když na ni kliknete.
 
 ```typescript
 close(): void;
@@ -68,7 +68,7 @@ close(): void;
 
 ## <a name="renderbuttons"></a>renderButtons
 
-Tato funkce styly a aktualizuje prvky tlačítka pro moderní čtečku dokumentu. Pokud je k dispozici ```options.elements```, tato funkce bude vykreslovat tlačítka v rámci ```options.elements```. V opačném případě se tlačítka vykreslí v rámci prvků dokumentu, které mají třídu ```immersive-reader-button```.
+Tato funkce styly a aktualizuje prvky tlačítka pro moderní čtečku dokumentu. Pokud je k dispozici ```options.elements```, tato funkce vykreslí tlačítka v rámci ```options.elements```. V opačném případě se tlačítka vykreslí v rámci prvků dokumentu, které mají třídu ```immersive-reader-button```.
 
 Tato funkce je automaticky volána sadou SDK při načtení okna.
 
@@ -115,7 +115,7 @@ Jeden blok dat, který se předává do obsahu moderního čtecího zařízení.
 | --------- | ----------- |
 | Text/prostý | Prostý text. |
 | text/HTML | Obsah HTML. [Další informace](#html-support)|
-| Application/MathML + XML | Jazyk MathML (Matematická Markup Language). [Další informace](https://developer.mozilla.org/en-US/docs/Web/MathML).
+| Application/MathML + XML | Jazyk MathML (Matematická Markup Language). [Další informace](https://developer.mozilla.org/en-US/docs/Web/MathML)
 | application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Dokument formátu Microsoft Word. docx.
 
 ### <a name="html-support"></a>Podpora HTML
@@ -124,7 +124,7 @@ Jeden blok dat, který se předává do obsahu moderního čtecího zařízení.
 | Styly písma | Tučné, kurzíva, podtržení, kód, přeškrtnutí, horní index, dolní index |
 | Neuspořádané seznamy | Disk, kruh, čtverec |
 | Seřazené seznamy | Decimal, Upper-Alpha, nižší-alfa, horní – Roman, nižší – Roman |
-| Vytváření | Už brzo |
+| Vytváření | Připravuje se |
 
 Nepodporované značky budou vykresleny srovnatelně. Obrázky a tabulky se aktuálně nepodporují.
 
@@ -170,8 +170,8 @@ Obsahuje informace o chybě.
 
 | Kód | Popis |
 | ---- | ----------- |
-| BadArgument | Zadaný argument je neplatný, podrobnosti naleznete `message`. |
-| prodlev | V rámci zadaného časového limitu se nepovedlo načíst moderní čtečku. |
+| BadArgument | Zadaný argument je neplatný, podrobnosti najdete v `message`. |
+| Prodlev | V rámci zadaného časového limitu se nepovedlo načíst moderní čtečku. |
 | TokenExpired | Platnost zadaného tokenu vypršela. |
 | Omezené | Překročilo se omezení četnosti volání. |
 
@@ -189,8 +189,8 @@ Pomocí následujících atributů můžete nakonfigurovat vzhled a chování tl
 
 | Atribut | Popis |
 | --------- | ----------- |
-| `data-button-style` | Nastaví styl tlačítka. Může být `icon`, `text` nebo `iconAndText`. Výchozí hodnota je `icon`. |
-| `data-locale` | Nastaví národní prostředí. Například `en-US` nebo `fr-FR`. Výchozí hodnota je English `en`. |
+| `data-button-style` | Nastaví styl tlačítka. Může být `icon`, `text`nebo `iconAndText`. Výchozí hodnota je `icon`. |
+| `data-locale` | Nastaví národní prostředí. Například `en-US` nebo `fr-FR`. Výchozí hodnota je `en`angličtiny. |
 | `data-icon-px-size` | Nastaví velikost ikony v pixelech. Výchozí hodnota je 20px. |
 
 ## <a name="browser-support"></a>Podpora prohlížeče

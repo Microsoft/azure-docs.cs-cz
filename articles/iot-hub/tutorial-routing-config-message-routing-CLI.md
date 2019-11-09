@@ -1,6 +1,6 @@
 ---
 title: Konfigurace směrování zpráv pro Azure IoT Hub pomocí rozhraní příkazového řádku Azure | Microsoft Docs
-description: Konfigurace směrování zpráv pro Azure IoT Hub pomocí Azure CLI
+description: Konfigurace směrování zpráv pro Azure IoT Hub pomocí Azure CLI. V závislosti na vlastnostech ve zprávě můžete směrovat na účet úložiště nebo Service Bus frontu.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 1748ec5ada9488487cd29ffb563226749b29f9f4
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 844ed44a588bfd789e7e2dcf2b9fecda3d51329b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808854"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890381"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>Kurz: použití rozhraní příkazového řádku Azure ke konfiguraci směrování zpráv IoT Hub
 
@@ -26,7 +26,7 @@ ms.locfileid: "72808854"
 
 Druhá část tohoto kurzu vám umožní stáhnout a spustit aplikaci Visual Studio pro posílání zpráv do IoT Hub. V souboru ke stažení je složka, která obsahuje Azure Resource Manager šablona a soubor parametrů, a také skripty Azure CLI a PowerShell.
 
-Pokud chcete zobrazit dokončený skript, Stáhněte si [ukázky Azure IoT C# ](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Rozbalte hlavní soubor. zip. Skript rozhraní příkazového řádku Azure CLI se nachází v/iot-hub/Tutorials/Routing/SimulatedDevice/resources/jako **iothub_routing_cli. azcli**.
+Pokud chcete zobrazit dokončený skript, Stáhněte si [ukázky Azure IoT C# ](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Rozbalte hlavní soubor. zip. Skript rozhraní příkazového řádku Azure CLI je v/iot-hub/Tutorials/Routing/SimulatedDevice/resources/jako **iothub_routing_cli. azcli**.
 
 ## <a name="use-the-azure-cli-to-create-your-resources"></a>Vytvoření prostředků pomocí Azure CLI
 

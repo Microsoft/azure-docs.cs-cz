@@ -1,30 +1,27 @@
 ---
-title: Ukázkový skript Azure Powershellu – Vyrovnávání zatížení provozu do virtuálních počítačů pro zajištění vysoké dostupnosti | Dokumentace Microsoftu
-description: Ukázkový skript Azure Powershellu – Vyrovnávání zatížení provozu do virtuálních počítačů pro zajištění vysoké dostupnosti
+title: Ukázka skriptu Azure PowerShell – provoz vyrovnávání zatížení do virtuálních počítačů pro zajištění vysoké dostupnosti | Microsoft Docs
+description: Ukázka skriptu Azure PowerShell – vyrovnávání zatížení provozu do virtuálních počítačů pro zajištění vysoké dostupnosti
 services: load-balancer
 documentationcenter: load-balancer
-author: georgewallace
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: asudbring
+manager: KumudD
 ms.service: load-balancer
 ms.devlang: powershell
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
-ms.author: gwallace
-ms.openlocfilehash: 282a9d0b1ae5afb873d9f3736550dff52e16bc12
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 73fe1b57f3f1d8bef388901f19438daff4110469
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160532"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890280"
 ---
 # <a name="load-balance-traffic-to-vms-for-high-availability"></a>Vyrovnávání zatížení provozu do virtuálních počítačů pro zajištění vysoké dostupnosti
 
-Tento ukázkový skript vytvoří vše potřebné pro spuštění několika virtuálních počítačů Windows nakonfigurovaný v s vysokou dostupností a vyrovnáváním zatížení. Po spuštění skriptu budete mít tři virtuální počítače připojené ke skupině dostupnosti Azure a přístupné přes službu Azure Load Balancer.
+Tento ukázkový skript vytvoří vše potřebné ke spuštění několika virtuálních počítačů s Windows nakonfigurovaných v konfiguraci s vysokou dostupností a vyrovnáváním zatížení. Po spuštění skriptu budete mít tři virtuální počítače připojené ke skupině dostupnosti Azure a přístupné přes službu Azure Load Balancer.
 
 V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) a pak spuštěním rutiny `Connect-AzAccount` vytvořte připojení k Azure.
 
@@ -66,7 +63,7 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 | [New-AzVM](/powershell/module/az.compute/new-azvm)  | Vytvoří virtuální počítač a připojí ho k síťové kartě, virtuální síti, podsíti a skupině NSG. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu.  |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/overview).
 

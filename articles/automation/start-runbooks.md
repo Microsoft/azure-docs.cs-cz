@@ -9,23 +9,23 @@ ms.author: robreed
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a42ba0a385b73032e3d4045094bc88613016b849
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8200052e14161d91b7daef6a0acd9c851518d9c2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850347"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886492"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Spuštění Runbooku v Azure Automation
 
 Následující tabulka vám pomůže určit metodu spuštění sady Runbook v Azure Automation, která je nejvhodnější pro váš konkrétní scénář. Tento článek obsahuje podrobnosti o spuštění sady Runbook pomocí Azure Portal a prostředí Windows PowerShell. Podrobnosti o dalších metodách jsou k dispozici v jiné dokumentaci, ke které máte přístup z odkazů níže.
 
-| **– Metoda** | **Svých** |
+| **Metoda** | **Svých** |
 | --- | --- |
 | [Azure Portal](#start-a-runbook-with-the-azure-portal) |<li>Nejjednodušší metoda s interaktivním uživatelským rozhraním.<br> <li>Formulář pro zadání jednoduchých hodnot parametrů.<br> <li>Snadno Sledujte stav úlohy.<br> <li>Přístup k ověřeným přihlášením pomocí Azure |
-| [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Volání z příkazového řádku pomocí rutin prostředí Windows PowerShell.<br> <li>Dá se zahrnout do automatizovaného řešení s několika kroky.<br> <li>Požadavek se ověřuje pomocí certifikátu nebo hlavního objektu zabezpečení nebo instančního objektu OAuth.<br> <li>Zadejte jednoduché a komplexní hodnoty parametrů.<br> <li>Sledovat stav úlohy.<br> <li>Klient je nutný k podpoře rutin PowerShellu. |
+| [Prostředí Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Volání z příkazového řádku pomocí rutin prostředí Windows PowerShell.<br> <li>Dá se zahrnout do automatizovaného řešení s několika kroky.<br> <li>Požadavek se ověřuje pomocí certifikátu nebo hlavního objektu zabezpečení nebo instančního objektu OAuth.<br> <li>Zadejte jednoduché a komplexní hodnoty parametrů.<br> <li>Sledovat stav úlohy.<br> <li>Klient je nutný k podpoře rutin PowerShellu. |
 | [Rozhraní API pro Azure Automation](/rest/api/automation/) |<li>Nejpružnější metoda, ale také nejvíc složitá.<br> <li>Volání z libovolného vlastního kódu, který může vytvářet požadavky HTTP.<br> <li>Žádost se ověří pomocí certifikátu nebo objektu zabezpečení nebo hlavního objektu OAuth uživatele.<br> <li>Zadejte jednoduché a komplexní hodnoty parametrů. *Pokud voláte sadu Runbook v Pythonu pomocí rozhraní API, je nutné serializovat datovou část JSON.*<br> <li>Sledovat stav úlohy. |
-| [Webhooks](automation-webhooks.md) |<li>Spustit Runbook z jednoho požadavku HTTP.<br> <li>Ověřeno s tokenem zabezpečení v adrese URL.<br> <li>Klient nemůže přepsat hodnoty parametrů zadané při vytvoření Webhooku. Sada Runbook může definovat jeden parametr, který je vyplněn podrobnostmi požadavku HTTP.<br> <li>Není možné sledovat stav úlohy prostřednictvím adresy URL Webhooku. |
+| [Webhooky](automation-webhooks.md) |<li>Spustit Runbook z jednoho požadavku HTTP.<br> <li>Ověřeno s tokenem zabezpečení v adrese URL.<br> <li>Klient nemůže přepsat hodnoty parametrů zadané při vytvoření Webhooku. Sada Runbook může definovat jeden parametr, který je vyplněn podrobnostmi požadavku HTTP.<br> <li>Není možné sledovat stav úlohy prostřednictvím adresy URL Webhooku. |
 | [Reakce na upozornění Azure](../log-analytics/log-analytics-alerts.md) |<li>Spuštění Runbooku v reakci na upozornění Azure<br> <li>Nakonfigurujte Webhook pro Runbook a odkaz na upozornění.<br> <li>Ověřeno s tokenem zabezpečení v adrese URL. |
 | [Plán](automation-schedules.md) |<li>Automaticky spustit sadu Runbook podle hodinových, denních, týdenních nebo měsíčního plánu.<br> <li>Manipulace s plánem prostřednictvím Azure Portal, rutin prostředí PowerShell nebo rozhraní Azure API.<br> <li>Zadejte hodnoty parametrů, které se mají použít s plánem. |
 | [Z jiné sady Runbook](automation-child-runbooks.md) |<li>Použití Runbooku jako aktivity v jiné sadě Runbook.<br> <li>Užitečné pro funkce používané více sadami Runbook.<br> <li>Zadejte hodnoty parametrů pro podřízený Runbook a použijte výstup v nadřazeném Runbooku. |
@@ -119,7 +119,7 @@ Joe
 Smith
 ```
 
-### <a name="arrays"></a>Řadách
+### <a name="arrays"></a>řadách
 
 Pokud je parametr pole, jako třeba [Array] nebo [String []], můžete k odeslání seznamu hodnot použít následující formát JSON: *[Hodnota1, hodnota2, hodnota3]* . Tyto hodnoty musí být jednoduché typy.
 
@@ -155,7 +155,7 @@ Joe
 Smith
 ```
 
-### <a name="credentials"></a>Pověření
+### <a name="credentials"></a>Přihlašovací údaje
 
 Pokud je parametrem datový typ **PSCredential**, můžete zadat název [assetu přihlašovacích údajů](automation-credentials.md)Azure Automation. Sada Runbook načte pověření s názvem, který zadáte.
 
@@ -183,8 +183,8 @@ Za předpokladu, že uživatelské jméno v přihlašovacích údajích bylo *JS
 jsmith
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Architektura Runbooku v aktuálním článku poskytuje podrobný přehled runbooků, které spravují prostředky v Azure a v místním prostředí pomocí Hybrid Runbook Worker. Další informace o spouštění runbooků Automation ve vašem datovém centru najdete v tématu [hybridní pracovní procesy Runbooku](automation-hybrid-runbook-worker.md).
 * Další informace o vytváření modulárních runbooků, které budou používat jiné Runbooky pro konkrétní nebo běžné funkce, najdete v tématu [podřízené Runbooky](automation-child-runbooks.md).
-* Další informace o PowerShellu, včetně referenčních modulů jazyka a výukových modulů, najdete v [dokumentaci](https://docs.microsoft.com/en-us/powershell/scripting/overview)k PowerShellu.
+* Další informace o PowerShellu, včetně referenčních modulů jazyka a výukových modulů, najdete v [dokumentaci k PowerShellu](https://docs.microsoft.com/powershell/scripting/overview).

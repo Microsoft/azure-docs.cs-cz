@@ -1,6 +1,6 @@
 ---
-title: Použít stávající služby IoT hub s řešením simulace zařízení – Azure | Dokumentace Microsoftu
-description: Tento článek popisuje, jak nakonfigurovat akcelerátor řešení simulace zařízení používat stávající služby IoT Hub.
+title: Použití existujícího centra IoT s řešením pro simulaci zařízení – Azure | Microsoft Docs
+description: Tento článek popisuje, jak nakonfigurovat akcelerátor řešení pro simulaci zařízení, aby používal existující IoT Hub.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,35 +8,35 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 38cde750ce07741a433baa1b8607a584f94ad9b1
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 1f89e23d7bb279e7cce5c104060cc7898517f8b7
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203957"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889181"
 ---
-# <a name="use-an-existing-iot-hub-with-the-device-simulation-solution-accelerator"></a>Akcelerátor řešení simulace zařízení pomocí stávající služby IoT hub
+# <a name="use-an-existing-iot-hub-with-the-device-simulation-solution-accelerator"></a>Použití existujícího centra IoT v akcelerátoru řešení pro simulaci zařízení
 
-Při nasazení simulace zařízení můžete také nasadit služby IoT hub pro použití v simulaci. Tato možnost nasadí [IoT hub úrovně S2 jedné škálovací jednotce je přidružená](../iot-hub/iot-hub-scaling.md). Pokud provádíte nasazení této volitelné služby IoT hub, můžete stále cílit na jiné služby IoT Hub pro spuštění simulace.
+Když nasadíte simulaci zařízení, můžete také zvolit nasazení služby IoT Hub pro použití v simulaci. Tato možnost nasadí [Centrum IoT úrovně S2 s jednou jednotkou škálování](../iot-hub/iot-hub-scaling.md). Pokud tuto volitelnou IoT Hub nasadíte, můžete si i nadále cílit na jiné IoT Hub pro spuštění simulace.
 
-Pokud se rozhodnete nasadit volitelné služby IoT Hub, musíte použít vlastní rozbočovače pro jakékoli simulace, které provozujete.
+Pokud se rozhodnete nenasadit volitelné IoT Hub, musíte pro všechny simulace, které spustíte, použít vlastní rozbočovač.
 
-Pokud nemáte k dispozici služby IoT hub, můžete vždy vytvořit nový štítek z [webu Azure portal](https://portal.azure.com).
+Pokud Centrum IoT nemáte, můžete z [Azure Portal](https://portal.azure.com)vždy vytvořit nový.
 
-Pokud chcete použít existující centrum IoT, potřebujete připojovací řetězec pro **iothubowner** sdílené zásady přístupu. Tento připojovací řetězec z můžete získat [webu Azure portal](https://portal.azure.com):
+Pokud chcete použít existující centrum IoT, potřebujete připojovací řetězec pro zásady sdíleného přístupu **iothubowner** . Tento připojovací řetězec můžete získat z [Azure Portal](https://portal.azure.com):
 
-1. Na stránce Konfigurace centra na portálu klikněte na tlačítko **zásady sdíleného přístupu**.
+1. Na stránce konfigurace centra na portálu klikněte na **zásady sdíleného přístupu**.
 
-1. Klikněte na tlačítko **iothubowner**.
+1. Klikněte na **iothubowner**.
 
-1. Zkopírujte primární nebo sekundární připojovací řetězec.
+1. Zkopírujte buď primární nebo sekundární připojovací řetězec.
 
-[![Získání připojovacího řetězce](./media/iot-accelerators-device-simulation-choose-hub/connectionstring-inline.png)](./media/iot-accelerators-device-simulation-choose-hub/connectionstring-expanded.png#lightbox)
+[![načíst připojovací řetězec](./media/iot-accelerators-device-simulation-choose-hub/connectionstring-inline.png)](./media/iot-accelerators-device-simulation-choose-hub/connectionstring-expanded.png#lightbox)
 
-Použijte připojovací řetězec, který jste zkopírovali, když konfigurujete simulace:
+Použijte připojovací řetězec, který jste zkopírovali při konfiguraci simulace:
 
 ![Konfigurace simulace](./media/iot-accelerators-device-simulation-choose-hub/configuresimulation.png)
 
-### <a name="next-steps"></a>Další postup
+### <a name="next-steps"></a>Další kroky
 
-V této příručce s postupy jste zjistili, jak používat stávající služby IoT hub v simulaci. V dalším kroku můžete chtít zjistěte, jak [vytvoření modelu pokročilé zařízení](iot-accelerators-device-simulation-advanced-device.md) pro simulaci.
+V této příručce se naučíte používat existující centrum IoT v simulaci. Dále můžete chtít zjistit, jak [vytvořit pokročilý model zařízení](iot-accelerators-device-simulation-advanced-device.md) pro simulaci.

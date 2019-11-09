@@ -1,6 +1,6 @@
 ---
-title: Vizualizace telemetrie simulace zařízení pomocí služby Time Series Insights – Azure | Dokumentace Microsoftu
-description: Zjistěte, jak nakonfigurovat prostředí Time Series Insights můžete zkoumat a analyzovat telemetrii generovanou akcelerátor řešení simulaci zařízení.
+title: Vizualizace simulované telemetrie pomocí Time Series Insights – Azure | Microsoft Docs
+description: Naučte se konfigurovat prostředí Time Series Insights pro zkoumání a analýzu telemetrie vygenerované akcelerátorem řešení pro simulaci zařízení.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,169 +8,169 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 5d20adc11e0d679e12fd060e719593a50180db8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2bbd7911a40d6a256d478e2533ad2469b8fd6973
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65834950"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889349"
 ---
-# <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Vizualizace telemetrická data odesílaná z akcelerátoru řešení simulace zařízení pomocí služby Time Series Insights
+# <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Použít Time Series Insights k vizualizaci telemetrie odeslané z akcelerátoru řešení pro simulaci zařízení
 
-Akcelerátor řešení simulace zařízení umožňuje generování telemetrie ze simulovaných zařízení pro testování řešení IoT. Tato příručka ukazuje, jak vizualizovat a analyzovat Simulovaná telemetrická data pomocí prostředí Time Series Insights.
+Akcelerátor řešení pro simulaci zařízení umožňuje generovat telemetrii z simulovaných zařízení a testovat vaše řešení IoT. V této příručce se dozvíte, jak vizualizovat a analyzovat simulaci telemetrie pomocí Time Series Insightsho prostředí.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li postupovat podle kroků v této příručce s postupy, potřebujete aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud chcete postupovat podle kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Kroky v této příručce s postupy předpokládají, že akcelerátor řešení simulace zařízení jste nasadili do vašeho předplatného Azure. Pokud jste nenasadili akcelerátor řešení, postupujte podle kroků v [nasazení a spuštění řešení cloudové zařízení simulace](quickstart-device-simulation-deploy.md) rychlý start.
+Postup v tomto průvodci předpokládá, že jste do svého předplatného Azure nasadili akcelerátor řešení pro simulaci zařízení. Pokud jste nenainstalovali akcelerátor řešení, postupujte podle kroků v části [nasazení a spuštění cloudového řešení simulace zařízení](quickstart-device-simulation-deploy.md) .
 
-Tento článek předpokládá, že je název akcelerátor řešení **contoso simulace**. Nahraďte **contoso simulace** s názvem jako akcelerátor řešení proveďte následující kroky.
+V tomto článku se předpokládá, že název akcelerátoru řešení je **simulace společnosti Contoso**. Při provádění následujících kroků nahraďte **simulaci contoso** názvem svého akcelerátoru řešení.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-consumer-group"></a>Vytvořit skupinu uživatelů
+## <a name="create-a-consumer-group"></a>Vytvoření skupiny uživatelů
 
-Je potřeba vytvořit vyhrazenou skupinu spotřebitelů ve službě IoT hub do datového proudu telemetrických dat do služby Time Series Insights. Zdroje událostí v Time Series Insights by měl mít výhradní použití skupinu příjemců IoT Hub.
+Ve službě IoT Hub potřebujete vytvořit vyhrazenou skupinu uživatelů pro streamování telemetrie do Time Series Insights. Zdroj události v Time Series Insights by měl mít výhradní použití IoT Hub skupiny příjemců.
 
-Následující kroky pomocí rozhraní příkazového řádku Azure ve službě Azure Cloud Shell vytvořte skupinu příjemců:
+Následující kroky používají rozhraní příkazového řádku Azure CLI v Azure Cloud Shell k vytvoření skupiny uživatelů:
 
-1. IoT hub je jedním z několika prostředků vygenerován při nasazení akcelerátoru řešení simulaci zařízení. Spusťte následující příkaz Najít název služby IoT hub – nezapomeňte použít název akcelerátor řešení:
+1. IoT Hub je jedním z několika prostředků vytvořených při nasazení akcelerátoru řešení pro simulaci zařízení. Spusťte následující příkaz, kde najdete název vašeho centra IoT – nezapomeňte použít název vašeho akcelerátoru řešení:
 
     ```azurecli-interactive
     az resource list --resource-group contoso-simulation -o table
     ```
 
-    IoT hub je prostředek typu **Microsoft.Devices/IotHubs**.
+    Centrum IoT je prostředkem typu **Microsoft. Devices/IotHubs**.
 
-1. Přidat skupinu uživatelů s názvem **devicesimulationtsi** k rozbočovači. V následujícím příkazu použijte název centra a řešení akcelerátoru:
+1. Přidejte do centra skupinu příjemců s názvem **devicesimulationtsi** . V následujícím příkazu použijte název vašeho centra a akcelerátoru řešení:
 
     ```azurecli-interactive
     az iot hub consumer-group create --hub-name contoso-simulation7d894 --name devicesimulationtsi --resource-group contoso-simulation
     ```
 
-    Teď můžete zavřít Azure Cloud Shell.
+    Nyní můžete Azure Cloud Shell zavřít.
 
-## <a name="create-a-new-time-series-insights-environment"></a>Vytvoření nového prostředí Time Series Insights
+## <a name="create-a-new-time-series-insights-environment"></a>Vytvoření nového Time Series Insightsho prostředí
 
-[Azure Time Series Insights](../../articles/time-series-insights/time-series-insights-overview.md) je plně spravovaná služba analýzy, ukládání a vizualizace pro správu dat časových řad IoT měřítku v cloudu. Chcete-li vytvořit nové prostředí Time Series Insights:
+[Azure Time Series Insights](../../articles/time-series-insights/time-series-insights-overview.md) je plně spravovaná služba pro analýzy, ukládání a vizualizace, která slouží ke správě dat časových řad ve službě IoT-Scale v cloudu. Vytvoření nového prostředí Time Series Insights:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. Vyberte **vytvořit prostředek** > **Internet of Things** > **Time Series Insights**:
+1. Vyberte **vytvořit prostředek** > **Internet věcí** > **Time Series Insights**:
 
-    ![Nové Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights.png)
+    ![Nový Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights.png)
 
-1. Chcete-li vytvořit prostředí Time Series Insights ve stejné skupině prostředků jako akcelerátor řešení, použijte hodnoty v následující tabulce:
+1. Pokud chcete vytvořit prostředí Time Series Insights ve stejné skupině prostředků jako akcelerátor řešení, použijte hodnoty v následující tabulce:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Název prostředí | Na následujícím snímku obrazovky používá název **Contoso-TSI**. Po dokončení tohoto kroku, zvolte svůj vlastní jedinečný název. |
+    | Název prostředí | Následující snímek obrazovky používá název **Contoso-TSI**. Po dokončení tohoto kroku vyberte svůj vlastní jedinečný název. |
     | Předplatné | Z rozevíracího seznamu vyberte své předplatné Azure. |
-    | Skupina prostředků | **simulace contoso**. Použijte název akcelerátor řešení. |
-    | Location | Tento příklad používá **USA – východ**. Vytvořte prostředí ve stejné oblasti jako váš akcelerátoru simulace zařízení. |
+    | Skupina prostředků | **simulace společnosti Contoso**. Použijte název akcelerátoru řešení. |
+    | Umístění | Tento příklad používá **východní USA**. Vytvořte prostředí ve stejné oblasti jako akcelerátor simulace zařízení. |
     | Skladová jednotka (SKU) |**S1** |
     | Kapacita | **1** |
 
-    ![Vytvoření služby Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights-create.png)
+    ![Vytvořit Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights-create.png)
 
     > [!NOTE]
-    > Přidání Time Series Insights prostředí do stejné skupiny prostředků jako akcelerátor řešení znamená, že se odstraní při odstranění akcelerátor řešení.
+    > Přidání prostředí Time Series Insights do stejné skupiny prostředků jako akcelerátor řešení znamená, že při odstranění akcelerátoru řešení dojde k jeho odstranění.
 
-1. Klikněte na možnost **Vytvořit**. Může trvat několik minut, než prostředí, který se má vytvořit.
+1. Klikněte na možnost **Vytvořit**. Vytvoření prostředí může trvat několik minut.
 
 ## <a name="create-event-source"></a>Vytvoření zdroje událostí
 
-Vytvořte nový zdroj událostí k připojení ke službě IoT hub. Použijte skupinu příjemců, který jste vytvořili v předchozích krocích. Zdroje událostí Time Series Insights vyžaduje vyhrazenou skupinu spotřebitelů není používán jinou službou.
+Vytvořte nový zdroj událostí pro připojení ke službě IoT Hub. Použijte skupinu uživatelů, kterou jste vytvořili v předchozích krocích. Zdroj události Time Series Insights vyžaduje vyhrazenou skupinu uživatelů, která se nepoužívá v jiné službě.
 
-1. Na webu Azure Portal přejděte do nového prostředí Time Series Insights.
+1. V Azure Portal přejděte do prostředí nové časové řady.
 
-1. Na levé straně klikněte na tlačítko **zdroje událostí**:
+1. Na levé straně klikněte na **zdroje událostí**:
 
-    ![Zobrazit události zdroje](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-sources.png)
+    ![Zobrazení zdrojů událostí](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-sources.png)
 
-1. Klikněte na tlačítko **přidat**:
+1. Klikněte na **Přidat**:
 
-    ![Přidání zdroje událostí](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-sources-add.png)
+    ![Přidat zdroj události](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-sources-add.png)
 
-1. Pokud chcete nakonfigurovat službu IoT hub jako nový zdroj událostí, použijte hodnoty v následující tabulce:
+1. Ke konfiguraci služby IoT Hub jako nového zdroje událostí použijte hodnoty v následující tabulce:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Zdroj událostí název | Na následujícím snímku obrazovky používá název **contoso-iot-hub**. Po dokončení tohoto kroku, použijte vlastní jedinečný název. |
-    | source | **IoT Hub** |
-    | Možnost importu | **Pomocí služby IoT Hub z dostupných předplatných** |
+    | Název zdroje události | Následující snímek obrazovky používá název **Contoso-IoT-Hub**. Po dokončení tohoto kroku použijte vlastní jedinečný název. |
+    | Zdroj | **IoT Hub** |
+    | Možnost importu | **Použít IoT Hub z dostupných předplatných** |
     | ID předplatného | Z rozevíracího seznamu vyberte své předplatné Azure. |
-    | Název centra IOT | **contoso-simulation7d894**. Použijte název vašeho centra IoT z akcelerátor řešení simulace zařízení. |
-    | Název zásad centra IOT | **iothubowner** |
-    | Klíč zásad centra IOT | Toto pole se vyplní automaticky. |
-    | Skupina uživatelů centra IOT | **devicesimulationtsi** |
+    | Název centra IoT Hub | **Contoso-simulation7d894**. Použijte název centra IoT z akcelerátoru řešení pro simulaci zařízení. |
+    | Název zásad centra IoT Hub | **iothubowner** |
+    | Klíč zásad centra IoT Hub | Toto pole je vyplněno automaticky. |
+    | Skupina uživatelů centra IoT Hub | **devicesimulationtsi** |
     | Formát serializace události | **JSON** |
     | Název vlastnosti časového razítka | Ponechte prázdné |
 
-    ![Vytvoření zdroje událostí](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-source-create.png)
+    ![Vytvořit zdroj události](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-source-create.png)
 
 1. Klikněte na možnost **Vytvořit**.
 
 > [!NOTE]
-> Je možné [udělení dodatečného přístupu uživatelům](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access) do Průzkumníka služby Time Series Insights.
+> [Dalším uživatelům můžete udělit přístup](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access) k Průzkumníku Time Series Insights.
 
 ## <a name="start-a-simulation"></a>Spustit simulaci
 
-Než použijete Průzkumníka služby Time Series Insights, nakonfigurujte akcelerátor řešení simulace zařízení k vygenerování nějaké telemetrie. Následující snímek obrazovky ukazuje spuštění simulace s 10 chladič zařízení:
+Před použitím Time Series Insights Exploreru nakonfigurujte akcelerátor řešení pro simulaci zařízení, aby se vygenerovala nějaká telemetrie. Následující snímek obrazovky ukazuje běžící simulaci s 10 zařízeními chladicího zařízení:
 
-![Spuštění simulace zařízení](./media/iot-accelerators-device-simulation-time-series-insights/running-simulation.png)
+![Simulace spuštění zařízení](./media/iot-accelerators-device-simulation-time-series-insights/running-simulation.png)
 
 ## <a name="time-series-insights-explorer"></a>Průzkumník Time Series Insights
 
-V Průzkumníku Time Series Insights je webová aplikace, které můžete použít k vizualizaci telemetrických dat.
+Time Series Insights Explorer je webová aplikace, kterou můžete použít k vizualizaci telemetrie.
 
-1. Na webu Azure Portal, vyberte Time Series Insights **přehled** kartu.
+1. V Azure Portal vyberte kartu **přehled** Time Series Insights.
 
-1. Webové aplikace Průzkumníka Time Series Insights, klikněte na tlačítko **přejít na prostředí**:
+1. Pro otevření webové aplikace v Průzkumníkovi Time Series Insights klikněte na **Přejít do prostředí**:
 
     ![Průzkumník Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-environment.png)
 
-1. Panel výběru času vyberte **posledních 30 minut** z rychlé časy nabídky a klikněte na tlačítko **hledání**:
+1. Na panelu pro výběr času vyberte v nabídce Rychlé časy **posledních 30 minut** a klikněte na **Hledat**:
 
-    ![Čas hledání v Průzkumníkovi Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-search-time.png)
+    ![Hledání v Průzkumníkovi Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-search-time.png)
 
-1. V panelu podmínky na levé straně vyberte **teploty** jako **míru** a **iothub připojení zařízení id** jako **rozdělit podle** hodnotu:
+1. Na panelu podmínka na levé straně vyberte **teplotu** jako **míru** a **iothub-Connection-Device-ID** jako **rozdělení podle** hodnoty:
 
-    ![Čas Series Insights Průzkumník dotazů](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
+    ![Dotaz aplikace Time Series Insights Explorer](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
 
-1. Klikněte pravým tlačítkem na graf a vyberte **zkoumat události**:
+1. Klikněte pravým tlačítkem na graf a vyberte **prozkoumat události**:
 
-    ![Čas události explorer Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-explore-events.png)
+    ![Události Time Series Insights Exploreru](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-explore-events.png)
 
-1. Data události se zobrazí v tabulce:
+1. Data události se zobrazí v mřížce:
 
-    ![Tabulka explorer doby Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-table.png)
+    ![Tabulka Time Series Insights Explorer](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-table.png)
 
-1. Klikněte na tlačítko perspektivy zobrazení:
+1. Klikněte na tlačítko Zobrazení perspektivy:
 
-    ![Čas Series Insights explorer perspektivy](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-explorer-perspective.png)
+    ![Perspektiva Time Series Insights Exploreru](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-explorer-perspective.png)
 
-1. Klikněte na tlačítko **+** přidat nový dotaz do perspektivy:
+1. Kliknutím na **+** přidáte nový dotaz do perspektivy:
 
-    ![Průzkumník Time Series Insights přidat dotaz](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-new-query.png)
+    ![Přidat dotaz v Průzkumníkovi Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-new-query.png)
 
-1. Vyberte **posledních 30 minut** jako časové období **vlhkosti** jako **míru**, a **iothub připojení zařízení id** jako **Rozdělit podle** hodnotu:
+1. Jako časový rozsah vyberte jako časové rozmezí, **vlhkost** jako **míru**a **iothub-Connection-ID zařízení** jako **rozdělení podle** hodnoty zadejte **posledních 30 minut** :
 
-    ![Čas Series Insights Průzkumník dotazů](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query2.png)
+    ![Dotaz aplikace Time Series Insights Explorer](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query2.png)
 
-1. Kliknutím na tlačítko zobrazení perspektivy zobrazení řídicího panelu telemetrie zařízení:
+1. Kliknutím na tlačítko perspektivní zobrazení zobrazte řídicí panel telemetrie zařízení:
 
-    ![Řídicí panel explorer čas Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-dashboard.png)
+    ![Řídicí panel Průzkumníka Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-dashboard.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud budete chtít dále zkoumat, ponechte akcelerátor řešení nasazení.
+Pokud plánujete prozkoumat další, nechte akcelerátor řešení nasazený.
 
-Pokud akcelerátor řešení už nepotřebujete, odstraňte ho z [zřídili řešení](https://www.azureiotsolutions.com/Accelerators#dashboard) stránky, že ji vyberete a pak kliknutím na **odstranit řešení**.
+Pokud už akcelerátor řešení nepotřebujete, odstraňte ho ze stránky [zřízené řešení](https://www.azureiotsolutions.com/Accelerators#dashboard) , a to tak, že ho vyberete a pak kliknete na **Odstranit řešení**.
 
-Pokud jste přidali do skupiny prostředků akcelerátor řešení prostředí Time Series Insights, je automaticky odstraní při odstranění akcelerátor řešení. V opačném případě bude zapotřebí ručně odebrat prostředí Time Series Insights na webu Azure Portal.
+Pokud jste přidali prostředí Time Series Insights do skupiny prostředků akcelerátoru řešení, automaticky se odstraní při odstranění akcelerátoru řešení. V opačném případě je nutné ručně odebrat Time Series Insights prostředí z Azure Portal.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak zkoumat a dotazování dat v Průzkumníku Time Series Insights najdete v tématu [Průzkumníka služby Azure Time Series Insights](../time-series-insights/time-series-insights-explorer.md).
+Další informace o tom, jak prozkoumat a dotazovat data v Průzkumníkovi Time Series Insights, najdete v článku [Azure Time Series Insights Explorer](../time-series-insights/time-series-insights-explorer.md).

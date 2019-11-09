@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: eee8a3b17a23d34610951db8b881397a0649b53a
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6ac102fa52977d3f9e07de1666dd98e8c2a31673
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516728"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890548"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>Rychlý Start: řízení zařízení připojeného ke službě Azure IoT Hub pomocí jazyka Java
 
@@ -27,17 +27,17 @@ Rychlý start používá dvě předem napsané aplikace Java:
 
 * Aplikaci simulovaného zařízení, která odpovídá na přímé metody volané z back-endové aplikace. Aby bylo možné přijímat volání přímé metody, připojí se tato aplikace ke koncovému bodu centra IoT pro konkrétní zařízení.
 
-* Back-endovou aplikaci, která na simulovaném zařízení volá přímé metody. Aby na zařízení bylo možné volat přímou metodu, připojí se tato aplikace ke koncovému bodu centra IoT na straně služby.
+* Back-endovou aplikaci, která na simulovaném zařízení volá přímé metody. Aby na zařízení bylo možné volat přímou metodu, připojí se tato aplikace ke koncovému bodu na straně služby ve vašem centru IoT.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí Javy. Java SE 8 budete potřebovat na svém vývojovém počítači.
 
-Pro Azure a Azure Stack si můžete stáhnout Java SE Development Kit 8 pro více platforem od [dlouhodobé podpory jazyka Java](https://docs.microsoft.com/en-us/java/azure/jdk/?view=azure-java-stable). Ujistěte se, že jste v části **Dlouhodobá podpora** vybrali **Java 8** , abyste se dostali ke stažení pro JDK 8.
+Pro Azure a Azure Stack si můžete stáhnout Java SE Development Kit 8 pro více platforem od [dlouhodobé podpory jazyka Java](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Ujistěte se, že jste v části **Dlouhodobá podpora** vybrali **Java 8** , abyste se dostali ke stažení pro JDK 8.
 
 Aktuální verzi Javy na vývojovém počítači můžete ověřit pomocí následujícího příkazu:
 
@@ -61,7 +61,7 @@ az extension add --name azure-cli-iot-ext
 
 Pokud jste to ještě neudělali, stáhněte si ukázkový projekt Java z webu https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip a extrahujte archiv ZIP.
 
-## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 Pokud jste dokončili předchozí [Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT](quickstart-send-telemetry-java.md), můžete tento krok přeskočit.
 
@@ -84,7 +84,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
       --hub-name {YourIoTHubName} --device-id MyJavaDevice
     ```
 
-2. Spuštěním následujícího příkazu ve službě Azure Cloud Shell získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
+2. Spuštěním následujícího příkazu v Azure Cloud Shellu získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
    **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který zvolíte pro Centrum IoT.
 
@@ -125,7 +125,7 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT 
 
 2. V libovolném textovém editoru otevřete soubor **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java**.
 
-    Nahraďte hodnotu proměnné `connString` připojovacím řetězcem zařízení, který jste si poznamenali dříve. Pak změny uložte do **SimulatedDevice. Java**.
+    Nahraďte hodnotu `connString` proměnné pomocí připojovacího řetězce zařízení, který jste si poznamenali dříve. Pak změny uložte do **SimulatedDevice. Java**.
 
 3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny a sestavte aplikaci simulovaného zařízení:
 

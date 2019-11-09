@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bbfab41c3324bc16874463d2fc0201f99ee9284b
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: a56abbcb72afc1f45683259d3bd3bf13309cda07
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516951"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886066"
 ---
 # <a name="back-up-your-app-in-azure"></a>Zálohování aplikace v Azure
 Funkce zálohování a obnovení v [Azure App Service](overview.md) umožňuje snadno vytvářet zálohy aplikací ručně nebo podle plánu. Zálohy můžete nakonfigurovat tak, aby se zachovaly až do neurčitého množství času. Aplikaci můžete obnovit do snímku předchozího stavu přepsáním existující aplikace nebo obnovením do jiné aplikace.
@@ -39,7 +39,7 @@ Funkce zálohování podporuje následující databázová řešení:
 - [SQL Database](https://azure.microsoft.com/services/sql-database/)
 - [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
 - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
-- [MySQL v aplikaci](https://azure.microsoft.com/en-us/blog/mysql-in-app-preview-app-service/)
+- [MySQL v aplikaci](https://azure.microsoft.com/blog/mysql-in-app-preview-app-service/)
  
 
 > [!NOTE]
@@ -68,7 +68,7 @@ Funkce zálohování podporuje následující databázová řešení:
     > [!NOTE]
     > Pokud se zobrazí následující zpráva, kliknutím na ni upgradujte plán App Service, abyste mohli pokračovat v zálohování.
     > Další informace najdete v tématu [horizontální navýšení kapacity aplikace v Azure](manage-scale-up.md).
-    > ![Choose účet úložiště ](./media/manage-backup/upgrade-plan.png)
+    > ![zvolit účet úložiště](./media/manage-backup/upgrade-plan.png)
     > 
     > 
 
@@ -156,7 +156,7 @@ Zálohování spouštějte stejným způsobem jako obvykle [ručně](#create-a-m
 <a name="aboutbackups"></a>
 
 ## <a name="how-backups-are-stored"></a>Způsob ukládání záloh
-Po provedení jedné nebo více záloh aplikace se zálohy zobrazí na stránce **kontejnery** vašeho účtu úložiště a v aplikaci. V účtu úložiště se každá záloha skládá z `.zip` souboru, který obsahuje data zálohy, a `.xml` souboru, který obsahuje manifest `.zip` obsahu souboru. Pokud chcete mít přístup k vašim zálohám, aniž byste museli provádět obnovení aplikace, můžete tyto soubory rozbalit a procházet.
+Po provedení jedné nebo více záloh aplikace se zálohy zobrazí na stránce **kontejnery** vašeho účtu úložiště a v aplikaci. V účtu úložiště se každá záloha skládá z`.zip` souboru, který obsahuje data zálohy, a `.xml` souboru, který obsahuje manifest `.zip` obsahu souboru. Pokud chcete mít přístup k vašim zálohám, aniž byste museli provádět obnovení aplikace, můžete tyto soubory rozbalit a procházet.
 
 Záloha databáze pro aplikaci je uložena v kořenové složce souboru ZIP. V případě databáze SQL se jedná o soubor BACPAC (bez přípony souboru) a je možné ho importovat. Pokud chcete vytvořit databázi SQL založenou na exportu BACPAC, přečtěte si téma [Import souboru BacPac pro vytvoření nové uživatelské databáze](https://technet.microsoft.com/library/hh710052.aspx).
 

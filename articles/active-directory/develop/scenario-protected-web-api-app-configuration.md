@@ -17,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8cc02831fa00a3974da1b74b07daf581f50dd22
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: eb562caf2dfc83841762748f37d1a7ee325de10b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569615"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882631"
 ---
 # <a name="protected-web-api-code-configuration"></a>Chráněné webové rozhraní API: Konfigurace kódu
 
@@ -158,6 +158,10 @@ Validátory jsou popsány v této tabulce:
 | `ValidateTokenReplay` | Zajistí, že token nebude znovu přehráván. (Zvláštní případ pro některé protokoly použití Jednorázová) |
 
 Validátory jsou všechny přidruženy k vlastnostem třídy `TokenValidationParameters`, která byla inicializována z konfigurace jádra ASP.NET/ASP.NET. Ve většině případů nebudete muset parametry měnit. Pro aplikace, které nejsou jeden tenant, existuje jedna výjimka. (Tj. webové aplikace, které přijímají uživatele z jakékoli organizace nebo z osobních účtů Microsoft.) V takovém případě musí být Vystavitel ověřený.
+
+## <a name="token-validation-in-azure-functions"></a>Ověřování tokenu v Azure Functions
+
+Je také možné ověřit tokeny příchozích přístupových tokenů ve službě Azure Functions. Příklady ověřování tokenů ve službě Azure Functions můžete najít v [dotnet](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions), [NodeJS](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)a [Pythonu](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions).
 
 ## <a name="next-steps"></a>Další kroky
 

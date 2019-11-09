@@ -13,12 +13,12 @@ ms.date: 10/25/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 12b8d6dff571c074d1f1422f75e33a8b12761bd9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4f0c8078a502d0332b02d95c0c46d9dbcc53a884
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572152"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886868"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Přidat certifikát SSL v Azure App Service
 
@@ -114,7 +114,7 @@ Pomocí následující tabulky můžete nakonfigurovat certifikát. Jakmile bude
 
 | Nastavení | Popis |
 |-|-|
-| Název | Popisný název certifikátu App Service. |
+| Name (Název) | Popisný název certifikátu App Service. |
 | Název hostitele holé domény | Sem zadejte kořenovou doménu. Vydaný certifikát zabezpečuje kořenovou *doménu i* subdoménu `www`. V vystaveném certifikátu obsahuje pole společné jméno kořenovou doménu a pole Alternativní název subjektu obsahuje doménu `www`. Chcete-li zabezpečit všechny subdomény, zadejte plně kvalifikovaný název domény, například `mysubdomain.contoso.com`).|
 | Předplatné | Datacentrum, které je hostitelem webové aplikace. |
 | Skupina prostředků | Skupina prostředků, která obsahuje certifikát. Můžete použít novou skupinu prostředků nebo vybrat stejnou skupinu prostředků jako aplikace App Service, například. |
@@ -135,7 +135,7 @@ Na stránce **stav Key Vault** klikněte na **úložiště Key Vault** a vytvoř
 
 | Nastavení | Popis |
 |-|-|
-| Název | Jedinečný název, který se skládá pro alfanumerické znaky a pomlčky. |
+| Name (Název) | Jedinečný název, který se skládá pro alfanumerické znaky a pomlčky. |
 | Skupina prostředků | Jako doporučení vyberte stejnou skupinu prostředků jako certifikát App Service. |
 | Umístění | Vyberte stejné umístění jako aplikace App Service. |
 | Cenová úroveň | Informace najdete v tématu informace [o cenách Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/). |
@@ -325,7 +325,7 @@ Po dokončení operace obnovení klikněte na **synchronizovat**. Operace synchr
 
 ### <a name="export-certificate"></a>Export certifikátu
 
-Vzhledem k tomu, že App Servicech certifikátů je [Key Vault tajný klíč](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets), můžete exportovat kopii PFX a použít ji pro jiné služby Azure nebo mimo Azure.
+Vzhledem k tomu, že App Service Certificate je [Key Vault tajný klíč](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets), můžete exportovat kopii PFX a použít ji pro jiné služby Azure nebo mimo Azure.
 
 Chcete-li exportovat App Service Certificate jako soubor PFX, spusťte v [Cloud Shell](https://shell.azure.com)následující příkazy. Pokud jste [nainstalovali Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli), můžete ho také spustit místně. Zástupné symboly nahraďte názvy, které jste použili při [vytváření certifikátu App Service](#start-certificate-order).
 
@@ -344,7 +344,7 @@ az keyvault secret download \
     --encoding base64
 ```
 
-Stažený soubor *appservicecertificate. pfx* je nezpracovaný soubor PKCS12, který obsahuje jak veřejné, tak privátní certifikáty. Vždycky, když se zobrazí výzva, heslo importu i fráze PEM Pass jsou prázdným řetězcem.
+Stažený soubor *appservicecertificate. pfx* je nezpracovaný soubor PKCS12, který obsahuje jak veřejné, tak privátní certifikáty. V každém řádku použijte prázdný řetězec pro heslo importu a frázi PEM Pass.
 
 ### <a name="delete-certificate"></a>Odstranit certifikát 
 

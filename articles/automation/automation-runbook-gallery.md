@@ -9,18 +9,18 @@ ms.author: robreed
 ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5daa1cf04e04507174fa480c785bd15b656541a1
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: d1ef652747dccdcb0e04ac8032dd47e2ebaa6bf2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019111"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886890"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galerie runbooků a modulů pro Azure Automation
 
 Místo vytváření vlastních runbooků a modulů v Azure Automation máte přístup ke scénářům, které už jsou sestavené Microsoftem a komunitou.
 
-Runbooky a [moduly](#modules-in-powershell-gallery) PowerShellu můžete z Galerie služby Script Center získat z Galerie prostředí PowerShell a [runbooků](#python-runbooks) v Pythonu. Můžete také přispět ke komunitě pomocí scénářů, které vyvíjíte, v tématu Přidání Runbooku do galerie.
+Runbooky a [moduly](#modules-in-powershell-gallery) PowerShellu můžete z Galerie služby Script Center získat z Galerie prostředí PowerShell a [runbooků v Pythonu](#python-runbooks) . Můžete také přispět ke komunitě pomocí scénářů, které vyvíjíte, v tématu Přidání Runbooku do galerie.
 
 ## <a name="runbooks-in-powershell-gallery"></a>Runbooky v Galerie prostředí PowerShell
 
@@ -35,7 +35,7 @@ Přímo z Galerie prostředí PowerShell můžete importovat jenom pomocí Azure
 
 1. Na webu Azure Portal otevřete účet Automation.
 2. V části **Automatizace procesu**klikněte na **Galerie Runbooky** .
-3. Vybrat **zdroj: Galerie prostředí PowerShell**.
+3. Vyberte **Zdroj: Galerie prostředí PowerShell**.
 4. Vyhledejte položku galerie, kterou chcete, a vyberte ji, abyste zobrazili její podrobnosti. Vlevo můžete zadat další parametry vyhledávání pro vydavatele a typ.
 
    ![Procházet galerii](media/automation-runbook-gallery/browse-gallery.png)
@@ -70,7 +70,7 @@ Moduly prostředí PowerShell obsahují rutiny, které lze použít v sadách Ru
 4. Na stránce **Procházet galerii** můžete vyhledávat podle následujících polí:
 
    * Název modulu
-   * Tags
+   * Značky
    * Autor
    * Název prostředku rutiny/DSC
 
@@ -109,8 +109,8 @@ Níže uvedený seznam obsahuje několik sad Runbook, které poskytují řešen�
 * [Copy-ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemFromAzureVM/) -Tato sada Runbook kopíruje vzdálený soubor z virtuálního počítače Windows Azure.
 * [Copy-ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemToAzureVM/) -Tato sada Runbook kopíruje místní soubor do virtuálního počítače Azure.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Informace o tom, jak začít se sadami Runbook, najdete [v tématu Správa runbooku v Azure Automation](manage-runbooks.md)
 * Informace o rozdílech mezi PowerShellem a pracovním postupem PowerShellu se sadami Runbook najdete v tématu [výuka pracovního postupu prostředí PowerShell](automation-powershell-workflow.md) .
-* Další informace o PowerShellu, včetně referenčních modulů jazyka a výukových modulů, najdete v [dokumentaci](https://docs.microsoft.com/en-us/powershell/scripting/overview)k PowerShellu.
+* Další informace o PowerShellu, včetně referenčních modulů jazyka a výukových modulů, najdete v [dokumentaci k PowerShellu](https://docs.microsoft.com/powershell/scripting/overview).

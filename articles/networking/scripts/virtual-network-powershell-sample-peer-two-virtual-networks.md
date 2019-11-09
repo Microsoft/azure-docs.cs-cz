@@ -1,30 +1,27 @@
 ---
-title: Ukázkový skript Azure Powershellu – Peer dvě virtuální sítě | Dokumentace Microsoftu
-description: Ukázkový skript Azure Powershellu – Peer dvě virtuální sítě
+title: Ukázkový skript Azure PowerShell – partnerských dvou virtuálních sítí | Microsoft Docs
+description: Ukázkový skript Azure PowerShell – partnerských dvou virtuálních sítí
 services: virtual-network
 documentationcenter: virtual-network
-author: georgewallace
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: KumudD
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: powershell
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
-ms.author: gwallace
-ms.openlocfilehash: 65f578a82cba73a21ef8be559c3b229235a073ac
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: kumud
+ms.openlocfilehash: 53af283813500fc93d3e5fb9d4b00a9c3034af2d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66156882"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890193"
 ---
-# <a name="peer-two-virtual-networks"></a>Navázání partnerského vztahu mezi dvěma virtuálními sítěmi
+# <a name="peer-two-virtual-networks"></a>Partnerské dva virtuální sítě
 
-Tento skript vytvoří a propojí dvě virtuální sítě ve stejné oblasti prostřednictvím sítě Azure. Po spuštění skriptu vytvoříte partnerský vztah mezi dvěma virtuálními sítěmi.
+Tento skript vytvoří a spojí dvě virtuální sítě ve stejné oblasti prostřednictvím sítě Azure. Po spuštění skriptu vytvoříte partnerský vztah mezi dvěma virtuálními sítěmi.
 
 V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) a pak spuštěním rutiny `Connect-AzAccount` vytvořte připojení k Azure.
 
@@ -55,7 +52,7 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače a vš
 | [Add-AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering) | Vytvoří partnerský vztah mezi dvěma virtuálními sítěmi.  |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/overview).
 

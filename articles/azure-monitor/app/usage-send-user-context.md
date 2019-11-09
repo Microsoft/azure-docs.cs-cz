@@ -8,12 +8,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: cf639be5db90e3632b8931564ac397c42e1d8403
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: b105e8ba79e99be02420ca1821f6a080b0862d6f
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899361"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887410"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Odeslání ID kontextů uživatele pro povolení prostředí využití v Azure Application Insights
 
@@ -48,7 +48,7 @@ Pokud ID obsahuje osobní identifikační údaje uživatele, není vhodná hodno
 
 ## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>Aplikace ASP.NET: nastavení kontextu uživatele v ITelemetryInitializer
 
-Vytvořte inicializátor telemetrie, jak je popsáno [zde](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer). Předejte ID relace prostřednictvím telemetrie požadavků a nastavte Context.User.Id a Context.Session.Id.
+Vytvořte inicializátor telemetrie, jak je popsáno [zde](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer). Předejte ID relace prostřednictvím telemetrie požadavků a nastavte Context.User.Id a Context.Session.Id.
 
 Tento příklad nastaví ID uživatele na identifikátor, jehož platnost vyprší po relaci. Pokud je to možné, použijte ID uživatele, které trvá napříč relacemi.
 

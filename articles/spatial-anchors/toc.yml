@@ -86,7 +86,7 @@
 - name: Zdroje a prostředky
   items:
     - name: Rozhraní REST API správy prostředků služby Azure Mixed Reality
-      href: 'https://docs.microsoft.com/en-us/rest/api/mixedreality/'
+      href: 'https://docs.microsoft.com/rest/api/mixedreality/'
     - name: Nejčastější dotazy
       href: spatial-anchor-faq.md
     - name: Poskytnutí zpětné vazby k produktu

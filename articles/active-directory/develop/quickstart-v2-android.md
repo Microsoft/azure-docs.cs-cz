@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: twhitney
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a1a86965eb6a50fa87c63f5713f21d6a467dedb
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 7c5d3941cec7554152090c68bc1dc95f29ca9f17
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242247"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882865"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlášení uživatelů a zavolání rozhraní API pro Microsoft Graph z aplikace pro Android
 
@@ -46,14 +46,14 @@ Aplikace musí být reprezentovány objektem aplikace v Azure Active Directory t
 > > [Provést tyto změny pro mě]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Už nakonfigurované](media/quickstart-v2-android/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
+> > ![Už nakonfigurované](media/quickstart-v2-android/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy
 >
 > ### <a name="step-2-download-the-project"></a>Krok 2: Stažení projektu 
-> * [Stažení ukázky kódu](https://github.com/Azure-Samples/ms-identity-android-java)
+> * [Stažení ukázky kódu](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
 >
 > ### <a name="step-3-configure-your-project"></a>Krok 3: Konfigurace projektu
 > 1. Extrahujte a otevřete projekt v nástroji Android Studio.
-> 2. Uvnitř aplikace > src > Main > res > RAW otevřete auth_config_multiple_account. JSON a nahraďte ji následujícím kódem:
+> 2. Uvnitř **aplikace** > **src** > **Main** > **res** > **raw**otevřete **auth_config_multiple_account. JSON** a nahraďte ji následujícím kódem:
 > ```javascript 
 > {
 >   "client_id" : "Enter_the_Application_Id_Here",
@@ -74,7 +74,7 @@ Aplikace musí být reprezentovány objektem aplikace v Azure Active Directory t
 > ```
 
 > [!div class="sxs-lookup" renderon="portal"]
-> 3. Uvnitř aplikace > src > Main > res > RAW otevřete auth_config_single_account. JSON a nahraďte ji následujícím kódem:
+> 3. Uvnitř **aplikace** > **src** > **Main** > **res** > **raw**otevřete **auth_config_single_account. JSON** a nahraďte ji následujícím kódem:
 > ```javascript 
 > {
 >   "client_id" : "Enter_the_Application_Id_Here",
@@ -98,22 +98,22 @@ Aplikace musí být reprezentovány objektem aplikace v Azure Active Directory t
 > 4. Uvnitř **aplikace** > **Src** > **Main**otevřete **souboru AndroidManifest. XML**.
 > 5. V uzlu **manifest\application** nahraďte uzel **<activity android:name="com.microsoft.identity.client.BrowserTabActivity">** následujícím způsobem:  
 > ```xml
-> <!--Intent filter to catch Microsoft's callback after Sign In-->
-> <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
->     <intent-filter>
->     <action android:name="android.intent.action.VIEW" />
->     <category android:name="android.intent.category.DEFAULT" />
->     <category android:name="android.intent.category.BROWSABLE" />
->         <!--
+> &lt;!--Intent filter to catch Microsoft's callback after Sign In--&gt;
+> &lt;activity android:name=&quot;com.microsoft.identity.client.BrowserTabActivity&quot;&gt;
+>     &lt;intent-filter&gt;
+>     &lt;action android:name=&quot;android.intent.action.VIEW&quot; /&gt;
+>     &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;
+>     &lt;category android:name=&quot;android.intent.category.BROWSABLE&quot; /&gt;
+>         &lt;!--
 >             Add in your scheme/host from registered redirect URI 
->             note that the leading "/" is required for android:path
->         -->
->         <data android:scheme="msauth"
->             android:host="Enter_the_Package_Name_here"
->             android:path="Enter_the_Signature_Hash_here"
->             android:scheme = "msauth" />
->     </intent-filter>
-> </activity>
+>             note that the leading &quot;/&quot; is required for android:path
+>         --&gt;
+>         &lt;data android:scheme=&quot;msauth&quot;
+>             android:host=&quot;Enter_the_Package_Name_Here&quot;
+>             android:path=&quot;Enter_the_Signature_Hash_Here&quot;
+>             android:scheme = &quot;msauth&quot; /&gt;
+>     &lt;/intent-filter&gt;
+> &lt;/activity&gt;
 > ```
 > 6. Spusťte aplikaci.
 > Ukázková aplikace se spustí na obrazovce **režimu jednoho účtu** . Ve výchozím nastavení je k dispozici výchozí obor ( **User. Read**), který se používá při čtení dat profilu během volání rozhraní API Microsoft Graph. Ve výchozím nastavení je k dispozici adresa URL pro volání rozhraní API Microsoft Graph. Oba tyto typy můžete změnit, pokud chcete.
@@ -136,7 +136,7 @@ Aplikace musí být reprezentovány objektem aplikace v Azure Active Directory t
 > [!div renderon="docs"]
 > ## <a name="step-1-get-the-sample-app"></a>Krok 1: získání ukázkové aplikace
 >
-> [Naklonujte kód](https://github.com/Azure-Samples/ms-identity-android-java.git).
+> [Stáhněte si kód](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip).
 >
 > ## <a name="step-2-run-the-sample-app"></a>Krok 2: spuštění ukázkové aplikace
 >
@@ -159,7 +159,7 @@ Aplikace musí být reprezentovány objektem aplikace v Azure Active Directory t
 
 Kód je uspořádaný na fragmenty, které ukazují, jak napsat jednu a více účtů MSAL aplikaci. Soubory s kódem jsou uspořádány takto:
 
-| Soubor  | Monstr  |
+| File  | Monstr  |
 |---------|---------|
 | MainActivity | Spravuje uživatelské rozhraní. |
 | MSGraphRequestWrapper  | Volá rozhraní API Microsoft Graph pomocí tokenu poskytnutého funkcí MSAL. |
@@ -515,7 +515,7 @@ Toto je konfigurační soubor pro aplikaci MSAL, která používá více účtů
 
 Vysvětlení různých polí najdete v tématu Vysvětlení [konfiguračního souboru pro Android MSAL](msal-configuration.md) .
 
-Na rozdíl od konfiguračního souboru [auth_config_single_account. JSON](#auth_config_single_accountjson) má tento konfigurační soubor místo `"account_mode" : "SINGLE"` `"account_mode" : "MULTIPLE"`, protože se jedná o aplikaci s více účty.
+Na rozdíl od konfiguračního souboru [auth_config_single_account. JSON](#auth_config_single_accountjson) má tento konfigurační soubor `"account_mode" : "MULTIPLE"` místo `"account_mode" : "SINGLE"`, protože se jedná o aplikaci s více účty.
 
 `"client_id"` je předem nakonfigurovaný tak, aby používal registraci objektu aplikace, kterou Microsoft udržuje.
 `"redirect_uri"`je předem nakonfigurovaný tak, aby používal podpisový klíč, který je k dispozici v ukázce kódu.
@@ -541,7 +541,7 @@ Na rozdíl od konfiguračního souboru [auth_config_single_account. JSON](#auth_
 
 ## <a name="next-steps"></a>Další kroky
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Zjistěte, jak vytvořit aplikaci použitou v tomto rychlém startu
+### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Naučte se vytvořit aplikaci za použití tohoto rychlého startu
 
 Vyzkoušejte si [uživatele přihlášení a zavolejte Microsoft Graph z kurzu aplikace pro Android](tutorial-v2-android.md) , kde najdete podrobný Průvodce vytvořením aplikace pro Android, která získá přístupový token a používá ho k volání rozhraní Microsoft Graph API.
 

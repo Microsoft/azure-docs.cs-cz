@@ -1,6 +1,6 @@
 ---
-title: Co je federace se službou Azure AD? | Dokumenty Microsoft
-description: Popisuje federace se službou Azure AD.
+title: Co je federace se službou Azure AD? | Dokumentace Microsoftu
+description: Popisuje federaci s Azure AD.
 services: active-directory
 author: billmath
 manager: daveba
@@ -13,18 +13,18 @@ ms.date: 11/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52f9832a4307ea9519df448f192eeca70043a6d6
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: aeb8886987c09b504262d6ea12863a646d6022cc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035169"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73883652"
 ---
 # <a name="what-is-federation-with-azure-ad"></a>Co je federace se službou Azure AD?
 
-Federace je kolekce domén, které mají vztah důvěryhodnosti. Úroveň důvěryhodnosti mohou lišit, ale obvykle zahrnuje ověřování a téměř vždy obsahuje autorizaci. Typické federace může obsahovat několik organizací, které mají vztah důvěryhodnosti pro sdílený přístup k sadu prostředků.
+Federace je kolekce domén, které mají zavedený vztah důvěryhodnosti. Úroveň důvěryhodnosti se může lišit, ale obvykle zahrnuje ověřování a téměř vždy zahrnuje autorizaci. Typická federace může zahrnovat řadu organizací, které navázaly důvěryhodnost pro sdílený přístup k sadě prostředků.
 
-Můžete vytvořit federaci místní prostředí s využitím Azure AD a použít tuto federaci pro ověřování a autorizaci.  Tato metoda přihlášení zajišťuje, že všechny ověření uživatele probíhá místně.  Tato metoda umožňuje správci provádět přísnější úrovně řízení přístupu. Federace se službou AD FS a PingFederate je k dispozici.
+Můžete federovat své místní prostředí pomocí Azure AD a použít tuto federaci k ověřování a autorizaci.  Tato metoda přihlašování zajišťuje, že veškeré ověření uživatele probíhá místně.  Tato metoda umožňuje správcům implementovat přísnější úrovně řízení přístupu. K dispozici je federace s AD FS a PingFederate.
 
 ![Federovaná identita](./media/whatis-hybrid-identity/federated-identity.png)
 
@@ -35,10 +35,10 @@ Můžete vytvořit federaci místní prostředí s využitím Azure AD a použí
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Co je hybridní identita?](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/whatis-hybrid-identity)
+- [Co je hybridní identita?](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
 - [Co je Azure AD Connect a Connect Health?](whatis-azure-ad-connect.md)
 - [Co je synchronizace hodnot hash hesel?](whatis-phs.md)
-- [Co je federace?](whatis-fed.md)
-- [Co je jednotné přihlašování na?](how-to-connect-sso.md)
-- [Jak funguje federace](how-to-connect-fed-whatis.md)
+- [Co je to federace?](whatis-fed.md)
+- [Co je jednotné přihlašování?](how-to-connect-sso.md)
+- [Jak federace funguje](how-to-connect-fed-whatis.md)
 - [Federace s PingFederate](how-to-connect-install-custom.md#configuring-federation-with-pingfederate)

@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 11/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 24b7f05bc59f3eb951897f5e36030b531d8f3aa9
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 5271b14ec008579d18a152a229b9768339927bb7
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959098"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888848"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Jak vytvořit uživatelsky definované funkce v digitálních prostředníkech Azure
 
@@ -44,7 +44,7 @@ Shody jsou objekty grafu, které určují, jaké uživatelsky definované funkce
   - `SensorDevice`
   - `SensorSpace`
 
-Následující příklad porovnávání vyhodnotí hodnotu true u jakékoli události telemetrie snímače s hodnotou `"Temperature"` jako její hodnoty datového typu. Pomocí ověřené žádosti HTTP POST můžete vytvořit více shod na uživatelsky definované funkci:
+Následující příklad porovnávání vyhodnotí hodnotu true u jakékoli události telemetrie snímače, která `"Temperature"` jako hodnotu datového typu. Pomocí ověřené žádosti HTTP POST můžete vytvořit více shod na uživatelsky definované funkci:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/matchers
@@ -54,24 +54,26 @@ S textem JSON:
 
 ```JSON
 {
-  "Name": "Temperature Matcher",
-  "Conditions": [
+  "id": "3626464-f39b-46c0-d9b0c-436aysj55",
+  "name": "Temperature Matcher",
+  "spaceId": "YOUR_SPACE_IDENTIFIER",
+  "conditions": [
     {
+      "id": "ag7gq35cfu3-e15a-4e9c-6437-sj6w68sy44s",
       "target": "Sensor",
       "path": "$.dataType",
       "value": "\"Temperature\"",
       "comparison": "Equals"
     }
-  ],
-  "SpaceId": "YOUR_SPACE_IDENTIFIER"
+  ]
 }
 ```
 
-| Hodnota | Nahradit |
+| Hodnota | Nahradit hodnotou |
 | --- | --- |
 | YOUR_SPACE_IDENTIFIER | Které oblasti serveru vaše instance hostuje |
 
-## <a name="create-a-user-defined-function"></a>Vytvoření uživatelsky definované funkce
+## <a name="create-a-user-defined-function"></a>Vytvoření uživatelem definované funkce
 
 Vytvoření uživatelsky definované funkce zahrnuje vytvoření požadavku HTTP s více částmi rozhraní API pro správu digitálních vláken Azure.
 
@@ -107,7 +109,7 @@ function process(telemetry, executionContext) {
 --USER_DEFINED_BOUNDARY--
 ```
 
-| Hodnota | Nahradit |
+| Hodnota | Nahradit hodnotou |
 | --- | --- |
 | USER_DEFINED_BOUNDARY | Název hranice obsahu s více částmi |
 | YOUR_SPACE_IDENTIFIER | Identifikátor prostoru  |
@@ -124,7 +126,7 @@ function process(telemetry, executionContext) {
 
 ### <a name="example-functions"></a>Ukázkové funkce
 
-Nastavte telemetrii senzorů přímo pro senzor s typem dat **teplota**, což je `sensor.DataType`:
+Nastavte telemetrii senzorů přímo pro senzor s použitím **teploty**datového typu, který je `sensor.DataType`:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -204,19 +206,19 @@ Vytvořte přiřazení role pro funkci definovanou uživatelem, která se má sp
     ```
    Ponechte ID požadované role. Bude předán jako atribut těla JSON **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) níže.
 
-1. **objectID** (`YOUR_USER_DEFINED_FUNCTION_ID`) bude uživatelsky definované ID funkce, které bylo dříve vytvořeno.
-1. Vyhledá hodnotu **path** (`YOUR_ACCESS_CONTROL_PATH`) dotazem na mezery pomocí `fullpath`.
+1. **objectID** (`YOUR_USER_DEFINED_FUNCTION_ID`) bude uživatelsky definované ID funkce, která byla vytvořena dříve.
+1. Najděte hodnotu **path** (`YOUR_ACCESS_CONTROL_PATH`) dotazem na mezery pomocí `fullpath`.
 1. Zkopírujte vrácenou hodnotu `spacePaths`. Použijete níže. Nastavte ověřený požadavek HTTP GET na:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
-    | Hodnota | Nahradit |
+    | Hodnota | Nahradit hodnotou |
     | --- | --- |
     | YOUR_SPACE_NAME | Název místa, které se má použít |
 
-1. Vložte vrácenou hodnotu `spacePaths` do **cesty** , abyste vytvořili uživatelem definovanou funkci přiřazení role tím, že provedete ověřený požadavek HTTP post:
+1. Vložte vrácenou `spacePaths`ovou hodnotu do **cesty** , abyste vytvořili uživatelem definovanou funkci přiřazení role, a to tak, že vytvoříte ověřený požadavek HTTP post:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments
@@ -232,7 +234,7 @@ Vytvořte přiřazení role pro funkci definovanou uživatelem, která se má sp
     }
     ```
 
-    | Hodnota | Nahradit |
+    | Hodnota | Nahradit hodnotou |
     | --- | --- |
     | YOUR_DESIRED_ROLE_IDENTIFIER | Identifikátor požadované role |
     | YOUR_USER_DEFINED_FUNCTION_ID | ID uživatelsky definované funkce, kterou chcete použít |

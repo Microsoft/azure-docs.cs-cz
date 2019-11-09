@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: 24e90ebd2994c5fffc1252167c06783421f2ac33
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: e072923c2c8b1d8e5bb281a5bcff992b25289b4d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035246"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888487"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektura Azure Backup a součásti
 
@@ -48,8 +48,8 @@ Recovery Services trezory mají následující funkce:
 - Zálohované položky můžete monitorovat v trezoru, včetně virtuálních počítačů Azure a místních počítačů.
 - Přístup k trezoru můžete spravovat pomocí [řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)v Azure.
 - Určíte, jak se data v trezoru replikují pro redundanci:
-  - **Místně redundantní úložiště (LRS)** : Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Další informace](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
-  - **Geograficky redundantní úložiště (GRS)** : Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Další informace](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
+  - **Místně redundantní úložiště (LRS)** : Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Další informace](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
+  - **Geograficky redundantní úložiště (GRS)** : Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Další informace](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)
   - Ve výchozím nastavení používají trezory Recovery Services GRS.
 
 ## <a name="backup-agents"></a>Agenti zálohování
@@ -120,7 +120,7 @@ Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][y
     - Zkopírovány jsou pouze bloky dat, které se od posledního zálohování změnily.
     - Data nejsou šifrovaná. Azure Backup můžou zálohovat virtuální počítače Azure, které se šifrují pomocí Azure Disk Encryption.
     - Data snímku se nemusí hned zkopírovat do trezoru. V časech špičky může zálohování trvat několik hodin. Celková doba zálohování pro virtuální počítač bude pro denní zásady zálohování kratší než 24 hodin.
-1. Po odeslání dat do trezoru se vytvoří bod obnovení. Ve výchozím nastavení se snímky uchovávají po dobu dvou dnů, než se odstraní. Tato funkce umožňuje operaci obnovení z těchto snímků, takže vystřihuje časy obnovení. Zkracuje dobu potřebnou k transformaci a zkopírování dat zpět z trezoru. Informace najdete v tématu [Azure Backup možnosti okamžitého obnovení](https://docs.microsoft.com/en-us/azure/backup/backup-instant-restore-capability).
+1. Po odeslání dat do trezoru se vytvoří bod obnovení. Ve výchozím nastavení se snímky uchovávají po dobu dvou dnů, než se odstraní. Tato funkce umožňuje operaci obnovení z těchto snímků, takže vystřihuje časy obnovení. Zkracuje dobu potřebnou k transformaci a zkopírování dat zpět z trezoru. Informace najdete v tématu [Azure Backup možnosti okamžitého obnovení](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability).
 
 Virtuální počítače Azure vyžadují přístup k Internetu pro řídicí příkazy. Pokud zálohujete úlohy do virtuálního počítače (například SQL Server zálohy databáze), data back-endu také potřebují přístup k Internetu.
 
@@ -178,7 +178,7 @@ Další informace o diskovém úložišti a dostupných typech disků pro virtu�
 Virtuální počítače Azure můžete zálohovat pomocí služby Premium Storage s Azure Backup:
 
 - Během zálohování virtuálních počítačů pomocí služby Premium Storage vytvoří služba Backup v účtu úložiště dočasné pracovní umístění s názvem *AzureBackup-* . Velikost pracovního umístění se rovná velikosti snímku bodu obnovení.
-- Ujistěte se, že účet Premium Storage má dostatek volného místa pro dočasné pracovní umístění. [Další informace](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits). Neupravujte pracovní umístění.
+- Ujistěte se, že účet Premium Storage má dostatek volného místa pro dočasné pracovní umístění. [Další informace](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits) Neupravujte pracovní umístění.
 - Po dokončení úlohy zálohování se pracovní umístění odstraní.
 - Cena za úložiště využitá pro pracovní umístění je konzistentní s [cenami služby Premium Storage](../virtual-machines/windows/disks-types.md#billing).
 

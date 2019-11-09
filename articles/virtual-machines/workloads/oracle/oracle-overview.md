@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
-ms.openlocfilehash: d8fed68d9b830df359f8129d55f1b9911f69e8f1
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 71caa6730e3a00f3aa80329d6b87d2531fdd8049
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802249"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891467"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Přehled aplikací a řešení Oracle v Azure
 
@@ -54,9 +54,9 @@ Spouštějte podnikové aplikace v Azure v podporovaných operačních systémec
 
 ## <a name="backup-oracle-workloads"></a>Zálohování úloh Oracle
 
-* Zálohování virtuálních počítačů Oracle pomocí [Azure Backup](https://docs.microsoft.com/en-us/azure/backup/backup-overview)
+* Zálohování virtuálních počítačů Oracle pomocí [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview)
 
-* Pomocí RMANu Oracle zálohujte svůj Oracle Database a volitelně pomocí služby [Azure Blob pojistky](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-how-to-mount-container-linux) připojte [vysoce redudant účet Azure Blob Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy) a zapište do něj zálohy rman pro zvýšení odolnosti.
+* Pomocí RMANu Oracle zálohujte svůj Oracle Database a volitelně pomocí služby [Azure Blob pojistky](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) připojte [vysoce redudant účet Azure Blob Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy) a zapište do něj zálohy rman pro zvýšení odolnosti.
 
 ## <a name="integration-of-azure-with-oci-preview"></a>Integrace Azure s OCI (Preview)
 
@@ -70,8 +70,8 @@ Spouštějte aplikace Oracle v infrastruktuře Azure, připojené k back-endu da
 Použití šablon Terraformu k nastavení infrastruktury Azure a instalaci aplikací Oracle ověřovaných a podporovaných pro spuštění v konfiguraci mezi cloudy:
 
 * Sada E-Business
-* JD Edwards EnterpriseOne
-* PeopleSoft
+* ŘEŠENÍ JD Edwards EnterpriseOne
+* PeopleSoft spouštěných místně
 * Maloobchodní aplikace Oracle
 * Hyperion finanční správa Oracle
 
@@ -86,7 +86,7 @@ V kombinaci s aplikacemi Oracle běžícími v Azure použijte Oracle Database C
 
 Nasazení aplikací Oracle v Azure je založené na modelu "Přineste si vlastní licenci". Předpokládáte, že máte řádně licenci na používání softwaru Oracle a máte k dispozici aktuální smlouvu o podpoře pro Oracle. Oracle garantuje mobilitu licencí z místního prostředí do Azure. Podívejte se na [Nejčastější dotazy](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)k Oracle-Azure.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o nasazování [imagí virtuálních počítačů Oracle](oracle-vm-solutions.md) v infrastruktuře Azure.
 

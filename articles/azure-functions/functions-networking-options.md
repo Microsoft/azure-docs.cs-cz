@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 34759077bd7223d17fea70d32bda63fd1b2595eb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4e55932d47389e09b135d571d0e000b9795e6edc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668127"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884952"
 ---
 # <a name="azure-functions-networking-options"></a>Možnosti Azure Functions sítě
 
@@ -86,7 +86,7 @@ Bez ohledu na použitou verzi poskytuje integrace s aplikací Function App pří
 Funkce integrace virtuální sítě:
 
 * Vyžaduje plán App Service Standard, Premium nebo PremiumV2.
-* podporuje protokoly TCP a UDP
+* Podporuje protokoly TCP a UDP
 * Práce s aplikacemi App Service a aplikacemi funkcí
 
 Existuje několik věcí, které integrace virtuální sítě nepodporuje, včetně:
@@ -116,6 +116,12 @@ Pokud chcete zajistit vyšší úroveň zabezpečení, můžete omezit počet sl
 Když vytváříte aplikaci Function App, musíte vytvořit nebo propojit s účtem Azure Storage pro obecné účely, který podporuje objekty blob, Queue a Table Storage. V tuto chvíli nemůžete u tohoto účtu použít žádná omezení virtuální sítě. Pokud v účtu úložiště, který používáte pro aplikaci Function App, nakonfigurujete koncový bod služby virtuální sítě, bude aplikace přerušit.
 
 [Přečtěte si další informace o požadavcích na účet úložiště.](./functions-create-function-app-portal.md#storage-account-requirements)
+
+### <a name="using-key-vault-references"></a>Použití Key Vaultch odkazů 
+
+Key Vault odkazy umožňují používat v aplikaci Azure Functions tajné klíče z Azure Key Vault, aniž by bylo nutné provádět změny kódu. Azure Key Vault je služba, která poskytuje centralizovanou správu tajných kódů s úplnou kontrolou zásad přístupu a historie auditu.
+
+V současné době [Key Vault odkazy](../app-service/app-service-key-vault-references.md) nebudou fungovat, pokud je váš Key Vault zabezpečený pomocí koncových bodů služby. Pokud se chcete připojit k Key Vault pomocí integrace virtuální sítě, budete muset volat Trezor klíčů v kódu aplikace.
 
 ## <a name="virtual-network-triggers-non-http"></a>Aktivační události virtuální sítě (jiné než HTTP)
 

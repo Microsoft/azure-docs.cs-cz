@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 5c2ecd5a53bb77193469ba1135c46d9b5fa65b2c
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8b7e50fdc02ab47c50cecb95073f1b51393db898
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202973"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885634"
 ---
 # <a name="security-hardening-in-aks-virtual-machine-hosts"></a>Posílení zabezpečení v hostitelích virtuálních počítačů s AKS 
 
@@ -30,7 +30,7 @@ Cílem hostitelského operačního systému s posíleným zabezpečením je sní
 
 * AKS poskytuje standardně optimalizovaný hostitelský operační systém. Neexistuje žádná možnost výběru alternativního operačního systému. 
 
-* Azure na AKS hostitelích virtuálních počítačů aplikuje každodenní opravy (včetně oprav zabezpečení). Některé z těchto oprav budou vyžadovat restart, i když jiné nebudou. Zodpovídáte za plánování restartování hostitele virtuálních počítačů AKS podle potřeby. Pokyny k automatizaci oprav AKS najdete v tématu věnovaném [opravám AKS uzlů](https://docs.microsoft.com/en-us/azure/aks/node-updates-kured).
+* Azure na AKS hostitelích virtuálních počítačů aplikuje každodenní opravy (včetně oprav zabezpečení). Některé z těchto oprav budou vyžadovat restart, i když jiné nebudou. Zodpovídáte za plánování restartování hostitele virtuálních počítačů AKS podle potřeby. Pokyny k automatizaci oprav AKS najdete v tématu věnovaném [opravám AKS uzlů](https://docs.microsoft.com/azure/aks/node-updates-kured).
 
 Níže je uveden přehled posílení zabezpečení obrázků, která je implementovaná v AKS modulu, aby vytvořila hostitelský operační systém s optimalizovaným zabezpečením. Práce byla implementována [v tomto projektu GitHubu](https://github.com/Azure/aks-engine/projects/7).  
 
@@ -75,7 +75,7 @@ AKS-Engine v tuto chvíli nepropaguje ani nedodržuje žádné konkrétní stand
 |5.4.1.1 |Zajistěte, aby vypršení platnosti hesla bylo 90 dní nebo méně. |
 |5.4.1.4 |Zajistěte, aby byl neaktivní zámek hesla nastaven na 30 dní nebo méně. |
 |5.4.4 |Zajistěte, aby výchozí uživatel umask byl 027 nebo více omezující. |
-|5.6 |Zajistěte, aby byl omezený přístup k příkazu su|
+|5,6 |Zajistěte, aby byl omezený přístup k příkazu su|
 
 ## <a name="additional-notes"></a>Další poznámky
  

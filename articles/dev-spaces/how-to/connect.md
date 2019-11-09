@@ -9,12 +9,12 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 description: Zjistěte, jak připojit vývojový počítač k AKS clusteru pomocí Azure Dev Spaces
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 0adaa4266978cf9c9ef42359c0cf4f81c5c5f056
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 15e46fba19d92e08a9c87a63f6f01ec6b0836910
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571710"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888913"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>Připojení vývojového počítače ke clusteru AKS (Preview)
 
@@ -96,7 +96,7 @@ Po výběru režimu připojení budete vyzváni k zadání portu TCP vaší mís
 Po výběru portu TCP vaší aplikace Azure Dev Spaces naváže připojení ke clusteru AKS. Azure Dev Spaces do clusteru AKS vloží agenta pro přesměrování provozu mezi clusterem AKS a vývojovým počítačem. Vytvoření tohoto připojení může trvat několik minut. Azure Dev Spaces také požádá o přístup správce, aby mohl upravovat soubor *hostitelů* ve vývojovém počítači.
 
 > [!IMPORTANT]
-> Jakmile Azure Dev Spaces naváže připojení ke clusteru AKS, ostatní služby v clusteru AKS nemusí správně fungovat, dokud službu nespustíte ve vývojovém počítači. Pokud má vaše služba závislost, která není ve vývojovém počítači k dispozici, může být nutné upravit svou aplikaci nebo zadat [Další konfiguraci](#additional-configuration) .
+> Jakmile Azure Dev Spaces naváže připojení ke clusteru AKS, nemusí ostatní služby v clusteru AKS fungovat správně, dokud službu nespustíte ve vývojovém počítači, pokud zvolíte možnost *nahradit* režim připojení. Místo toho můžete zvolit režim připojení *klonování* pro vytvoření podřízeného vývojového prostoru pro přesměrování a vyhnout se případnému přerušení v nadřazeném prostoru. Pokud má vaše služba závislost, která není ve vývojovém počítači k dispozici, může být nutné upravit svou aplikaci nebo zadat [Další konfiguraci](#additional-configuration) .
 
 Po navázání připojení ke clusteru AKS otevře Azure Dev Spaces okno terminálu s názvem *AZDS Connect-Bikes* . Toto okno terminálu obsahuje všechny proměnné prostředí a položky DNS nakonfigurované z clusteru AKS. Jakýkoli kód, který spustíte v tomto okně terminálu nebo pomocí ladicího programu Visual Studio Code, je připojen ke clusteru AKS.
 
@@ -108,7 +108,7 @@ Kromě toho Azure Dev Spaces vytvoří okno s názvem *vývojářské prostory p
 
 Azure Dev Spaces má také položku stavového řádku, která zobrazuje stav připojení.
 
-![Stav](../media/how-to-connect/connect-status.png)
+![Status](../media/how-to-connect/connect-status.png)
 
 Ověřte, že se ve stavovém řádku zobrazují *vývojové prostory: připojeno k vývojovým/bicyklům na místním portu 3000*.
 

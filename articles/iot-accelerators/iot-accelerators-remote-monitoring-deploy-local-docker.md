@@ -1,6 +1,6 @@
 ---
-title: Nasazení řešení vzdáleného monitorování místně - Dockeru – Azure | Dokumentace Microsoftu
-description: Tato příručka ukazuje, jak do svého místního počítače pomocí Dockeru pro vývoj a testování nasazení akcelerátoru řešení vzdáleného monitorování.
+title: Nasazení řešení vzdáleného monitorování místně Docker – Azure | Microsoft Docs
+description: V této příručce se dozvíte, jak nasadit akcelerátor řešení vzdáleného monitorování do místního počítače pomocí Docker pro testování a vývoj.
 author: avneet723
 manager: hegate
 ms.author: avneets
@@ -8,74 +8,74 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: db934725fe91a142c43ba66701919e9d5a70a4b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 32b47d9d6d45ff471961f55f8159dbe85eae2dce
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967537"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888839"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně - Dockeru
+# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>Nasaďte místně Docker akcelerátor řešení vzdáleného monitorování
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-Tento článek ukazuje, jak nasazení akcelerátoru řešení vzdáleného monitorování do místního počítače pro vývoj a testování. Zjistíte, jak nasadit mikroslužby do místní kontejnery Dockeru. Nasazení místního mikroslužeb používá tyto cloudové služby: Služby IoT Hub, Cosmos DB, Azure Stream Analytics a Azure Time Series Insights v cloudu.
+V tomto článku se dozvíte, jak nasadit akcelerátor řešení vzdáleného monitorování do místního počítače pro testování a vývoj. Naučíte se, jak nasazovat mikroslužby do místních kontejnerů Docker. Místní nasazení mikroslužeb používá následující cloudové služby: IoT Hub, Cosmos DB, Azure streaming Analytics a služby Azure Time Series Insights v cloudu.
 
-Pokud chcete spustit akcelerátor řešení vzdálené monitorování v rozhraní IDE v místním počítači, přečtěte si téma [nasazení akcelerátoru řešení vzdáleného monitorování místně – Visual Studio](iot-accelerators-remote-monitoring-deploy-local.md).
+Pokud chcete spustit akcelerátor řešení vzdáleného monitorování v integrovaném vývojovém prostředí (IDE) na místním počítači, přečtěte si téma [nasazení akcelerátoru řešení vzdáleného monitorování místně – Visual Studio](iot-accelerators-remote-monitoring-deploy-local.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-K nasazení služby Azure používá akcelerátor řešení vzdálené monitorování, potřebujete aktivní předplatné Azure.
+Pokud chcete nasadit služby Azure používané akcelerátorem řešení vzdáleného monitorování, potřebujete aktivní předplatné Azure.
 
 Pokud nemáte účet, můžete si během několika minut vytvořit bezplatný účet zkušební. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-### <a name="machine-setup"></a>Instalace počítače
+### <a name="machine-setup"></a>Nastavení počítače
 
-K dokončení místní nasazení, budete potřebovat následující nástroje nainstalované na místním vývojovém počítači:
+K dokončení místního nasazení potřebujete na svém místním vývojovém počítači nainstalované následující nástroje:
 
 * [Git](https://git-scm.com/)
 * [Docker](https://www.docker.com)
-* [Visual Studio](https://visualstudio.microsoft.com/) – Pokud máte v plánu provést změny na mikroslužby.
-* [Node.js v8](https://nodejs.org/) -tento software je předpokladem pro počítače s CLI, skripty použít k vytvoření prostředků Azure. Nepoužívejte Node.js v10.
+* [Visual Studio](https://visualstudio.microsoft.com/) – Pokud plánujete provádět změny mikroslužeb.
+* [Node. js V8](https://nodejs.org/) – tento software je předpokladem pro počítače CLI, které skripty používají k vytváření prostředků Azure. Nepoužívejte Node. js v10 za účelem.
 
 > [!NOTE]
-> Tyto nástroje jsou dostupné na spoustě platforem, včetně Windows, Linuxu a iOS.
+> Tyto nástroje jsou k dispozici na mnoha platformách, včetně systémů Windows, Linux a iOS.
 
 [!INCLUDE [iot-accelerators-local-setup](../../includes/iot-accelerators-local-setup.md)]
 
-## <a name="run-the-microservices-in-docker"></a>Spuštění mikroslužby v Dockeru
+## <a name="run-the-microservices-in-docker"></a>Spuštění mikroslužeb v Docker
 
-Otevřete nový příkazový řádek opravdu přístup k nastavením proměnné prostředí **start.cmd** skriptu. Na Windows můžete ověřit, že proměnné prostředí se nastavují spuštěním následujícího příkazu:
+Otevřete nový příkazový řádek a ujistěte se, že máte přístup k proměnným prostředí nastaveným pomocí skriptu **Start. cmd** . V systému Windows můžete ověřit, zda jsou proměnné prostředí nastaveny spuštěním následujícího příkazu:
 
 ```cmd
 set PCS
 ```
 
-Příkaz zobrazí všechny proměnné prostředí nastavuje **start.cmd** skriptu.
+Příkaz zobrazí všechny proměnné prostředí nastavené skriptem **Start. cmd** .
 
-Ujistěte se, že Dockeru běží na místním počítači.
+Ujistěte se, že je na vašem místním počítači spuštěný Docker.
 > [!NOTE]
-> Docker musí běžet [kontejnery Linuxu](https://docs.docker.com/docker-for-windows/) Pokud běží na Windows.
+> Docker musí mít spuštěné [kontejnery Linux](https://docs.docker.com/docker-for-windows/) , pokud je spuštěný ve Windows.
 
-Mikroslužeb spouštěných v kontejnerech Dockeru místní potřebují přístup k Azure cloud services. Můžete otestovat připojení k Internetu pomocí následujícího příkazu ping internetovou adresu z uvnitř kontejneru Docker prostředí:
+Mikroslužby běžící v místních kontejnerech Docker potřebují přístup ke cloudovým službám Azure. K otestování připojení k Internetu prostředí Docker můžete použít následující příkaz k otestování internetové adresy z kontejneru v rámci služby:
 
 ```cmd/sh
 docker run --rm -ti library/alpine ping google.com
 ```
 
-Ke spuštění akcelerátor řešení, přejděte na **služby\\skripty\\místní** složku v prostředí příkazového řádku a spusťte následující příkaz:
+Chcete-li spustit akcelerátor řešení, přejděte do části **služby\\skripty\\místní** složky v prostředí příkazového řádku a spusťte následující příkaz:
 
 ```cmd/sh
 docker-compose up
 ```
 
 > [!NOTE] 
-> Ujistěte se, že jste [sdílet místní jednotku](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115) s Dockerem předtím, než spustíte `docker-compose up`.
+> Před spuštěním `docker-compose up`se ujistěte, že jste [nasdíleli místní jednotku](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115) s Docker.
 
-Při prvním spuštění tohoto příkazu Docker stáhne mikroslužeb Image z Docker hubu vytvářet kontejnery místně. V následujícím spuštění Docker spouští kontejnery okamžitě.
+Při prvním spuštění tohoto příkazu Docker stáhne image mikroslužeb z dokovacího centra a vytvoří kontejnery místně. V následujících spuštěních Docker spouští kontejnery hned.
 
 > [!TIP]
-> Microsoft často vydává nové Image Dockeru s novými funkcemi. Následující sady příkazů k vyčištění můžete použít místní kontejnery Docker a odpovídající Image před o přijetí změn nejnovější těm, které jsou:
+> Microsoft často zveřejňuje nové image Docker s novými funkcemi. Následující sadu příkazů můžete použít k vyčištění místních kontejnerů Docker a odpovídajících imagí předtím, než budete moci načíst nejnovější položky:
 
 ```cmd/sh
 docker list
@@ -83,27 +83,27 @@ docker rm <list_of_containers>
 docker rmi <list_of_images>
 ```
 
-Chcete-li zobrazit protokoly z kontejneru, můžete použít samostatné prostředí. Napřed Zjistěte ID kontejneru pomocí `docker ps` příkazu. Pak pomocí `docker logs {container-id} --tail 1000` k zobrazení posledních 1000 položek u zadaného kontejneru.
+K zobrazení protokolů z kontejneru můžete použít samostatné prostředí. Nejdřív Najděte ID kontejneru pomocí příkazu `docker ps`. Pak použijte `docker logs {container-id} --tail 1000` k zobrazení posledních 1000 položek pro zadaný kontejner.
 
-### <a name="start-the-stream-analytics-job"></a>Spuštění úlohy Stream Analytics
+### <a name="start-the-stream-analytics-job"></a>Spustit úlohu Stream Analytics
 
-Postupujte podle těchto kroků spustíte úlohu Stream Analytics:
+Pomocí následujících kroků spusťte úlohu Stream Analytics:
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
-1. Přejděte **skupiny prostředků** vytvořen pro vaše řešení. Název skupiny prostředků je název, který jste zvolili pro vaše řešení při spuštění **start.cmd** skriptu.
-1. Klikněte na **úlohy Stream Analytics** v seznamu prostředků.
-1. V úloze Stream Analytics **přehled** stránky, klikněte na tlačítko **Start** tlačítko. Pak klikněte na tlačítko **Start** ihned spustíte úlohu.
+1. Přejděte do **skupiny prostředků** vytvořené pro vaše řešení. Název skupiny prostředků je název, který jste zvolili pro vaše řešení při spuštění skriptu **Start. cmd** .
+1. V seznamu prostředků klikněte na **úlohu Stream Analytics** .
+1. Na stránce **Přehled** úlohy Stream Analytics klikněte na tlačítko **Start** . Potom kliknutím na **Spustit** spusťte úlohu hned teď.
 
-### <a name="connect-to-the-dashboard"></a>Připojte se k řídicímu panelu
+### <a name="connect-to-the-dashboard"></a>Připojení k řídicímu panelu
 
-Chcete-li získat přístup k řídicím panelu řešení vzdáleného monitorování, přejděte na `http://localhost:8080` v prohlížeči. Teď můžete použít místní mikroslužeb a webového uživatelského rozhraní.
+Přístup k řídicímu panelu řešení vzdáleného monitorování získáte tak, že v prohlížeči přejdete na `http://localhost:8080`. Teď můžete použít webové uživatelské rozhraní a místní mikroslužby.
 
 ## <a name="clean-up"></a>Vyčištění
 
-Aby se zabránilo zbytečným poplatky, po dokončení testování odebrat cloudovým službám z vašeho předplatného Azure. Pokud chcete odebrat služby, přejděte [webu Azure portal](https://ms.portal.azure.com) a odstranit prostředek skupiny, která **start.cmd** skript vytvořený.
+Aby nedocházelo k zbytečným poplatkům, po dokončení testování odeberte cloudové služby z předplatného Azure. Chcete-li odebrat služby, přejděte do [Azure Portal](https://ms.portal.azure.com) a odstraňte skupinu prostředků, kterou vytvořil skript **Start. cmd** .
 
-Použití `docker-compose down --rmi all` příkazu odeberte Image Dockeru a uvolněte místo na místním počítači. Můžete také odstranit místní kopie úložiště vzdálené monitorování vytvoří, když jste naklonovali zdrojový kód z Githubu.
+Pomocí příkazu `docker-compose down --rmi all` odeberte image Docker a uvolněte místo na svém místním počítači. Můžete také odstranit místní kopii úložiště vzdáleného monitorování vytvořenou při klonování zdrojového kódu z GitHubu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Teď, když nasadíte řešení vzdáleného monitorování, dalším krokem je [prozkoumat možnosti řídicího panelu řešení](quickstart-remote-monitoring-deploy.md).
+Teď, když jste nasadili řešení vzdáleného monitorování, je dalším krokem [prozkoumat možnosti řídicího panelu řešení](quickstart-remote-monitoring-deploy.md).

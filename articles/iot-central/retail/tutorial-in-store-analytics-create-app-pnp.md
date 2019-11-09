@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 10/03/2019
-ms.openlocfilehash: a662201823808c9e2e34e9210096cb081e1b9430
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: b0d2617983a7ee1702e8871a2c6bfc5f0511656f
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615311"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890681"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Kurz: vytvoření analytické aplikace v obchodě v Azure IoT Central
 
@@ -75,7 +75,7 @@ Vytvoření nové aplikace pro rezervaci v rámci úložiště, která použív�
 
 1. Pokud máte předplatné Azure, zadejte svůj *adresář, předplatné Azure a oblast*. Pokud předplatné nemáte, můžete povolit **7 dní bezplatnou zkušební verzi** a dokončit požadované kontaktní údaje.  
 
-    Další informace o adresářích a předplatných najdete v [rychlém startu k vytvoření aplikace](../core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+    Další informace o adresářích a předplatných najdete v [rychlém startu k vytvoření aplikace](../preview/quick-deploy-iot-central.md).
 
 1. Vyberte **Vytvořit**.
 
@@ -160,7 +160,7 @@ Potom Přizpůsobte šablony zařízení přidáním vlastností cloudu. Vlastno
 
 Třetí, přizpůsobení šablon zařízení vytvářením vlastních zobrazení. Zobrazení umožňují operátorům vizualizovat telemetrie a metadata pro vaše zařízení, jako jsou metriky a stav zařízení.
 
-Tady použijete první dvě metody k přizpůsobení šablony zařízení pro senzory RuuviTag. Informace o vytváření zobrazení pro senzory najdete v tématu [Přidání simulovaného zařízení do rychlého startu aplikace IoT Central](../core/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) .
+Tady použijete první dvě metody k přizpůsobení šablony zařízení pro senzory RuuviTag. Informace o vytváření zobrazení pro senzory najdete v tématu [Přidání simulovaného zařízení do rychlého startu aplikace IoT Central](../preview/quick-create-pnp-device.md) .
 
 Přizpůsobení vestavěných rozhraní šablony zařízení RuuviTag:
 
@@ -227,8 +227,8 @@ Pro účely tohoto kurzu použijete pro sestavení aplikace následující sadu 
 
 Provedením kroků v následujících dvou článcích spojíte skutečnou Rigado bránu a snímače RuuviTag. Po dokončení se vraťte k tomuto kurzu. Vzhledem k tomu, že už jste v tomto kurzu vytvořili šablony zařízení, nemusíte je vytvářet znovu v následující sadě pokynů.
 
-- Pokud chcete připojit bránu Rigado, přečtěte si článek [připojení 500 Rigado do aplikace Azure IoT Central](../core/howto-connect-rigado-cascade-500-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
-- Pokud chcete připojit senzory RuuviTag, přečtěte si téma [připojení snímače RuuviTag k aplikaci Azure IoT Central](../core/howto-connect-ruuvi-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json). V případě potřeby můžete také použít tyto pokyny k vytvoření dvou simulovaných senzorů.
+- Pokud chcete připojit bránu Rigado, přečtěte si článek [připojení 500 Rigado do aplikace Azure IoT Central](../preview/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
+- Pokud chcete připojit senzory RuuviTag, přečtěte si téma [připojení snímače RuuviTag k aplikaci Azure IoT Central](../preview/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json). V případě potřeby můžete také použít tyto pokyny k vytvoření dvou simulovaných senzorů.
 
 ## <a name="add-rules-and-actions"></a>Přidat pravidla a akce
 V rámci používání senzorů ve vaší aplikaci Azure IoT Central k monitorování podmínek můžete vytvořit pravidla ke spouštění akcí, když jsou splněné určité podmínky. Pravidlo je spojeno se šablonou zařízení a jedním nebo více zařízeními a obsahuje podmínky, které musí být splněny na základě telemetrie a událostí zařízení. Pravidlo má také jednu nebo více přidružených akcí. Akce můžou zahrnovat posílání e-mailových oznámení nebo aktivaci akce Webhooku pro posílání dat do jiných služeb. Šablona aplikace v rámci služby **Store Analytics – rezervace** obsahuje některá předdefinovaná pravidla pro zařízení v aplikaci.

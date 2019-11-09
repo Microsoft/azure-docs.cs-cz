@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 2ab79cccaafeb1b48100285a5fd495340b545278
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 478ebde1de5624796ebf1dde5cf89f4e1f9d9104
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615340"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890740"
 ---
 # <a name="architecture-of-iot-central-digital-distribution-center-application-template"></a>Architektura šablony aplikace IoT Central digital Distribution Center
 
@@ -48,4 +48,4 @@ Platforma IoT Central poskytuje bohatou možnost rozšiřitelnosti prostřednict
 ## <a name="next-steps"></a>Další kroky
 * Postup nasazení šablony nástroje [digital Distribution Center](./tutorial-iot-central-digital-distribution-center-pnp.md)
 * Další informace o [IoT Central maloobchodních šablon](./overview-iot-central-retail-pnp.md)
-* Další informace o IoT Central najdete v tématu [IoT Central Overview](../core/overview-iot-central-pnp.md) .
+* Další informace o IoT Central najdete v tématu [IoT Central Overview](../preview/overview-iot-central.md) .

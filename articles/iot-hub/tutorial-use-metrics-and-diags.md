@@ -1,22 +1,21 @@
 ---
 title: Nastavení a použití metrik a diagnostických protokolů ve službě Azure IoT Hub | Microsoft Docs
-description: Nastavení a použití metrik a diagnostických protokolů ve službě Azure IoT Hub
+description: Naučte se, jak nastavit a používat metriky a diagnostické protokoly ve službě Azure IoT Hub. Tím získáte data, která se budou analyzovat, aby bylo možné diagnostikovat problémy, které vaše centrum může mít.
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 7349287945a56bb7674e364f515d0b763015ed59
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3bda78a54b0914465a50d664ab0323444203a387
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262319"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890366"
 ---
-# <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Kurz: Nastavení a použití metrik a diagnostických protokolů ve službě IoT Hub
+# <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Kurz: nastavení a použití metrik a diagnostických protokolů ve službě IoT Hub
 
 Pokud máte řešení IoT Hub spuštěné v produkčním prostředí, chcete nastavit několik metrik a povolit diagnostické protokoly. Pokud dojde k potížím, budete mít k dispozici data, která vám pomůžou s diagnostikou problému a jeho rychlejším řešením. V tomto článku se dozvíte, jak povolit diagnostické protokoly a jak je zjistit, jestli neobsahuje chyby. Nastavili jste také některé metriky, které se budou sledovat, a výstrahy, které se aktivují, když metrika dosáhla určité hranice. Můžete vám například poslat e-mail, když počet odeslaných zpráv telemetrie překročí určitou hranici, nebo když se počet použitých zpráv blíží kvótě povolených zpráv za den pro IoT Hub. 
 
@@ -116,7 +115,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 ```
 
 >[!NOTE]
->Při vytváření identity zařízení se může zobrazit následující chyba: *Nenašly se žádné klíče pro zásady iothubowner IoT Hub ContosoTestHub*. Pokud chcete tuto chybu opravit, aktualizujte rozšíření IoT Azure CLI a pak znovu spusťte poslední dva příkazy ve skriptu. 
+>Při vytváření identity zařízení se může zobrazit následující chyba: *nenašly se žádné klíče pro zásady iothubowner IoT Hub ContosoTestHub*. Pokud chcete tuto chybu opravit, aktualizujte rozšíření IoT Azure CLI a pak znovu spusťte poslední dva příkazy ve skriptu. 
 >
 >Tady je příkaz pro aktualizaci rozšíření. Spusťte to v instanci Cloud Shell.
 >
@@ -161,7 +160,7 @@ Později, když se podíváte na diagnostické protokoly, budete moci zobrazit p
 
 Teď můžete nastavit některé metriky, které se budou sledovat při posílání zpráv do centra. 
 
-1. V podokně nastavení pro Centrum IoT klikněte na možnost metriky v části **monitorování** .
+1. V podokně nastavení pro Centrum IoT klikněte na možnost **metriky** v části **monitorování** .
 
 2. V horní části obrazovky klikněte na tlačítko **Poslední 24 hodin (automaticky)** . V rozevíracím seznamu, který se zobrazí, vyberte **Poslední 4 hodiny** pro **časový rozsah**a nastavte **časové rozlišení** na **1 minutu**, místní čas. Kliknutím na **použít** uložte tato nastavení. 
 
@@ -172,7 +171,7 @@ Teď můžete nastavit některé metriky, které se budou sledovat při posílá
    ![Snímek obrazovky znázorňující přidání metriky pro odeslané zprávy telemetrie](./media/tutorial-use-metrics-and-diags/07-metrics-telemetry-messages-sent.png)
 
 
-4. Nyní kliknutím na **Přidat metriku** přidejte do grafu další metriku. Vyberte skupinu prostředků (**ContosoTestHub**). Včásti metrika vyberte **Celkový počet použitých zpráv**. V případě **agregace**vyberte **AVG**. 
+4. Nyní kliknutím na **Přidat metriku** přidejte do grafu další metriku. Vyberte skupinu prostředků (**ContosoTestHub**). V části **metrika**vyberte **Celkový počet použitých zpráv**. V případě **agregace**vyberte **AVG**. 
 
    Teď obrazovka zobrazuje minimalizovanou metriku pro *odeslané zprávy telemetrie*a navíc novou metriku pro *Celkový počet použitých zpráv*.
 
@@ -196,27 +195,27 @@ IoT Hub ještě neproběhla migrace na [metriky v Azure monitor](/azure/azure-mo
 
     Vyplňte jednotlivá pole: 
 
-    **Předplatné:** Nechte toto pole nastavené na vaše aktuální předplatné.
+    **Předplatné**: nechte toto pole nastavené na vaše aktuální předplatné.
 
-    **Zdroj**: Nastavte toto pole na *metriky*.
+    **Zdroj**: nastavte toto pole na *metriky*.
 
-    **Skupina prostředků**: Nastavte toto pole na aktuální skupinu prostředků *ContosoResources*. 
+    **Skupina prostředků**: nastavte toto pole na aktuální skupinu prostředků *ContosoResources*. 
 
-    **Typ prostředku**: Nastavte toto pole na IoT Hub. 
+    **Typ prostředku**: nastavte toto pole na IoT Hub. 
 
-    **Prostředek:** Vyberte centrum IoT, *ContosoTestHub*.
+    **Prostředek**: vyberte Centrum IoT, *ContosoTestHub*.
 
 3. Kliknutím na **Přidat upozornění metriky (Classic)** nastavte novou výstrahu.
 
     Vyplňte jednotlivá pole:
 
-    **Název**: Zadejte název pravidla upozornění, například *zprávy telemetrie*.
+    **Název**: zadejte název pravidla upozornění, například *zprávy telemetrie*.
 
-    **Popis**: Zadejte popis výstrahy, jako je například výstraha, *když jsou odesílány zprávy telemetrie 1000*. 
+    **Popis**: zadejte popis výstrahy, jako je například *výstraha, když jsou odesílány zprávy telemetrie 1000*. 
 
-    **Zdroj**: Nastavte tuto hodnotuna metriky.
+    **Zdroj**: nastavte tuto hodnotu na *metriky*.
 
-    U předplatného, **skupiny prostředků**a **prostředku** musí být nastavené hodnoty na hodnotu, kterou jste vybrali na obrazovce **Zobrazit klasické výstrahy** . 
+    U **předplatného**, **skupiny prostředků**a **prostředku** musí být nastavené hodnoty na hodnotu, kterou jste vybrali na obrazovce **Zobrazit klasické výstrahy** . 
 
     Nastavte **metriku** na *odeslané zprávy telemetrie*.
 
@@ -224,13 +223,13 @@ IoT Hub ještě neproběhla migrace na [metriky v Azure monitor](/azure/azure-mo
 
 4. Po grafu nastavte následující pole:
 
-   **Podmínka**: Nastavte na hodnotu *větší než*.
+   **Podmínka**: nastavte na hodnotu *větší než*.
 
-   **Prahová hodnota**: Nastavte na 1000.
+   **Prahová hodnota**: nastavte na 1000.
 
-   **Období**: Nastaví se na *za posledních 5 minut*.
+   **Period**: nastaveno na *za posledních 5 minut*.
 
-   **Příjemci oznámení e-mailem**: Sem zadejte svou e-mailovou adresu. 
+   **Příjemci oznámení e-mailem**: sem zadejte svou e-mailovou adresu. 
 
    ![Snímek obrazovky zobrazující obrazovku s dolní polovinou výstrah](./media/tutorial-use-metrics-and-diags/11-alerts-add-rule-bottom.png)
 
@@ -240,25 +239,25 @@ IoT Hub ještě neproběhla migrace na [metriky v Azure monitor](/azure/azure-mo
 
    Na obrazovce **Zobrazit klasické výstrahy** klikněte na **Přidat výstrahu metriky (Classic)** a potom vyplňte tato pole v podokně **Přidat pravidlo** .
 
-   **Název**: Zadejte název pravidla upozornění, například *Počet použitých zpráv*.
+   **Název**: zadejte název pravidla upozornění, například *Počet použitých zpráv*.
 
-   **Popis**: Zadejte popis výstrahy, jako je například výstraha *pro blížící se kvótě*.
+   **Popis**: zadejte popis výstrahy, jako je například *výstraha, pokud se blíží kvótě*.
 
-   **Zdroj**: Nastavte toto pole na *metriky*.
+   **Zdroj**: nastavte toto pole na *metriky*.
 
-    U předplatného, **skupiny prostředků**a **prostředku** musí být nastavené hodnoty na hodnotu, kterou jste vybrali na obrazovce **Zobrazit klasické výstrahy** . 
+    U **předplatného**, **skupiny prostředků**a **prostředku** musí být nastavené hodnoty na hodnotu, kterou jste vybrali na obrazovce **Zobrazit klasické výstrahy** . 
 
     Nastavte **metriku** na *Celkový počet použitých zpráv*.
 
 6. V grafu vyplňte následující pole:
 
-   **Podmínka**: Nastavte na hodnotu *větší než*.
+   **Podmínka**: nastavte na hodnotu *větší než*.
 
-   **Prahová hodnota**: Nastavte na 1000.
+   **Prahová hodnota**: nastavte na 1000.
 
-   **Období**: Nastavte toto pole na *více než posledních 5 minut*. 
+   **Period**: nastavte toto pole na *více než posledních 5 minut*. 
 
-   **Příjemci oznámení e-mailem**: Sem zadejte svou e-mailovou adresu. 
+   **Příjemci oznámení e-mailem**: sem zadejte svou e-mailovou adresu. 
 
    Kliknutím na tlačítko **OK** uložte pravidlo. 
 
@@ -288,7 +287,7 @@ Dvojím kliknutím na soubor řešení (SimulatedDevice.sln) otevřete kód v sa
 
 ## <a name="run-and-test"></a>Spuštění a testování 
 
-V program.cs změňte `Task.Delay` hodnotu od 1000 na 10, což zkracuje dobu mezi odesíláním zpráv z 1 sekundy na. 01 sekund. Zkrácením tohoto zpoždění se zvýší počet odeslaných zpráv.
+V Program.cs změňte `Task.Delay` z 1000 na 10, což zkracuje dobu mezi odesíláním zpráv z 1 sekundy na. 01 sekund. Zkrácením tohoto zpoždění se zvýší počet odeslaných zpráv.
 
 ```csharp
 await Task.Delay(10);

@@ -1,26 +1,25 @@
 ---
-title: Vytvoření služby Azure IoT hub pomocí rozhraní REST API poskytovatele prostředků | Dokumentace Microsoftu
-description: Jak používat rozhraní REST API poskytovatele prostředků k vytvoření služby IoT Hub.
+title: Vytvoření centra IoT Azure pomocí poskytovatele prostředků REST API | Microsoft Docs
+description: Naučte se, jak pomocí REST API C# poskytovatele prostředků vytvořit a spravovat IoT Hub programově.
 author: robinsh
-manager: philmea
 ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 6d91f5e61dfd7c3cb4d1869edf0c6cb8c2c85190
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d5e38e2ecfa2406ff0f58f73d828aa45d84c512
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827517"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890487"
 ---
-# <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>Vytvoření IoT hubu pomocí poskytovatel prostředků REST API (.NET)
+# <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>Vytvoření služby IoT Hub pomocí REST API poskytovatele prostředků (.NET)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Můžete použít [rozhraní REST API poskytovatele prostředků služby IoT Hub](https://docs.microsoft.com/rest/api/iothub/iothubresource) můžete vytvářet a spravovat služby Azure IoT hubs prostřednictvím kódu programu. V tomto kurzu se dozvíte, jak vytvořit IoT hub z programu v jazyce C# pomocí rozhraní REST API poskytovatele prostředků služby IoT Hub.
+Pomocí [poskytovatele prostředků IoT Hub REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) můžete programově vytvářet a spravovat centra IoT Azure. V tomto kurzu se dozvíte, jak používat IoT Hub poskytovatele prostředků REST API k vytvoření centra IoT z C# programu.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -28,23 +27,23 @@ Pro absolvování tohoto kurzu potřebujete:
 
 * Visual Studio.
 
-* Aktivní účet Azure. Pokud účet nemáte, můžete vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) během několika minut.
+* Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .
 
-* [Azure PowerShell 1.0](https://docs.microsoft.com/powershell/azure/install-Az-ps) nebo novější.
+* [Azure PowerShell 1,0](https://docs.microsoft.com/powershell/azure/install-Az-ps) nebo novější.
 
 [!INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
 ## <a name="prepare-your-visual-studio-project"></a>Příprava projektu sady Visual Studio
 
-1. V sadě Visual Studio, vytvořit pomocí Visual C# Windows klasický desktopový projekt **Konzolová aplikace (.NET Framework)** šablony projektu. Pojmenujte projekt **CreateIoTHubREST**.
+1. V aplikaci Visual Studio vytvořte klasický desktopový projekt pro Visual C# Windows pomocí šablony projektu **Konzolová aplikace (.NET Framework)** . Pojmenujte projekt **CreateIoTHubREST**.
 
-2. V Průzkumníku řešení klikněte pravým tlačítkem myši na projekt a potom klikněte na tlačítko **spravovat balíčky NuGet**.
+2. V Průzkumník řešení klikněte pravým tlačítkem na projekt a pak klikněte na **Spravovat balíčky NuGet**.
 
-3. Ve správci balíčků NuGet zkontrolujte **zahrnout předběžné verze**a na **Procházet** stránkové vyhledávání pro **Microsoft.Azure.Management.ResourceManager**. Vyberte balíček, klikněte na tlačítko **nainstalovat**v **změny vyplývající z revize** klikněte na tlačítko **OK**, pak klikněte na tlačítko **souhlasím** tak, aby přijímal licence.
+3. Ve Správci balíčků NuGet **Zahrňte zahrnutí předběžné verze**a na stránce **Procházet** vyhledejte **Microsoft. Azure. Management. ResourceManager**. Vyberte balíček, klikněte na **nainstalovat**. v části **Zkontrolovat změny** klikněte na **OK**a **pak kliknutím na Souhlasím** přijměte licence.
 
-4. Vyhledejte ve správci balíčků NuGet **Microsoft.IdentityModel.Clients.ActiveDirectory**.  Klikněte na tlačítko **nainstalovat**v **změny vyplývající z revize** klikněte na tlačítko **OK**, pak klikněte na tlačítko **souhlasím** přijměte licenci.
+4. Ve Správci balíčků NuGet vyhledejte **Microsoft. IdentityModel. clients. Active**.  Klikněte na **nainstalovat**, v části **Zkontrolovat změny** klikněte na **OK**a pak **klikněte na Souhlasím, aby se** licence přijímala.
 
-5. V souboru Program.cs nahraďte existující **pomocí** příkazy následujícím kódem:
+5. V Program.cs nahraďte existující příkazy **using** následujícím kódem:
 
     ```csharp
     using System;
@@ -60,7 +59,7 @@ Pro absolvování tohoto kurzu potřebujete:
     using System.Threading;
     ```
 
-6. V souboru Program.cs přidejte následující proměnné na statické nahraďte zástupné hodnoty. Jste si poznamenali **ApplicationId**, **SubscriptionId**, **TenantId**, a **heslo** výše v tomto kurzu. **Název skupiny prostředků** je název skupiny prostředků, použijete při vytváření služby IoT hub. Můžete použít existující nebo nové skupiny prostředků. **Název služby IoT Hub** je název služby IoT Hub, můžete vytvořit, jako například **MyIoTHub**. Název služby IoT hub musí být globálně jedinečný. **Název nasazení** , jako je název pro nasazení, **Deployment_01**.
+6. Do Program.cs přidejte následující statické proměnné nahrazující zástupné hodnoty. Dříve v tomto kurzu jste si poznamenali **ApplicationId**, **SubscriptionId**, **TenantId**a **Password** . **Název skupiny prostředků** je název skupiny prostředků, kterou použijete při vytváření centra IoT. Můžete použít již existující nebo novou skupinu prostředků. **Název IoT Hub** je název vytvořeného IoT Hub, například **MyIoTHub**. Název vašeho centra IoT musí být globálně jedinečný. **Název nasazení** je název pro nasazení, například **Deployment_01**.
 
     ```csharp
     static string applicationId = "{Your ApplicationId}";
@@ -76,11 +75,11 @@ Pro absolvování tohoto kurzu potřebujete:
 
 [!INCLUDE [iot-hub-get-access-token](../../includes/iot-hub-get-access-token.md)]
 
-## <a name="use-the-resource-provider-rest-api-to-create-an-iot-hub"></a>Vytvoření IoT hubu pomocí rozhraní REST API poskytovatele prostředků
+## <a name="use-the-resource-provider-rest-api-to-create-an-iot-hub"></a>Vytvoření centra IoT pomocí REST API poskytovatele prostředků
 
-Použití [rozhraní REST API poskytovatele prostředků služby IoT Hub](https://docs.microsoft.com/rest/api/iothub/iothubresource) k vytvoření služby IoT hub ve vaší skupině prostředků. Provádět změny existující služby IoT hub můžete také použít rozhraní REST API poskytovatele prostředků.
+[REST API poskytovatele prostředků IoT Hub](https://docs.microsoft.com/rest/api/iothub/iothubresource) použijte k vytvoření centra IoT ve vaší skupině prostředků. K provedení změn v existující službě IoT Hub můžete také použít REST API poskytovatele prostředků.
 
-1. Do souboru Program.cs přidejte následující metodu:
+1. Přidejte následující metodu do Program.cs:
 
     ```csharp
     static void CreateIoTHub(string token)
@@ -89,14 +88,14 @@ Použití [rozhraní REST API poskytovatele prostředků služby IoT Hub](https:
     }
     ```
 
-2. Přidejte následující kód, který **CreateIoTHub** metody. Tento kód vytvoří **HttpClient** objekt s ověřovací token do hlavičky:
+2. Do metody **CreateIoTHub** přidejte následující kód. Tento kód vytvoří objekt **HttpClient** s ověřovacím tokenem v hlavičkách:
 
     ```csharp
     HttpClient client = new HttpClient();
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
     ```
 
-3. Přidejte následující kód, který **CreateIoTHub** metody. Tento kód popisuje vytvoření služby IoT hub a generuje reprezentaci JSON. Aktuální seznam umístění, které podporují služby IoT Hub najdete v části [stav Azure](https://azure.microsoft.com/status/):
+3. Do metody **CreateIoTHub** přidejte následující kód. Tento kód popisuje, jak centrum IoT vytvoří a vygeneruje reprezentaci JSON. Aktuální seznam umístění, která podporují IoT Hub, najdete v tématu [stav Azure](https://azure.microsoft.com/status/):
 
     ```csharp
     var description = new
@@ -114,7 +113,7 @@ Použití [rozhraní REST API poskytovatele prostředků služby IoT Hub](https:
     var json = JsonConvert.SerializeObject(description, Formatting.Indented);
     ```
 
-4. Přidejte následující kód, který **CreateIoTHub** metody. Tento kód odešle požadavek REST do Azure. Kód poté zkontroluje odpověď a načte adresu URL, které vám umožní monitorovat stav úlohy nasazení:
+4. Do metody **CreateIoTHub** přidejte následující kód. Tento kód odešle požadavek REST do Azure. Kód pak zkontroluje odpověď a načte adresu URL, kterou můžete použít k monitorování stavu úlohy nasazení:
 
     ```csharp
     var content = new StringContent(JsonConvert.SerializeObject(description), Encoding.UTF8, "application/json");
@@ -130,7 +129,7 @@ Použití [rozhraní REST API poskytovatele prostředků služby IoT Hub](https:
     var asyncStatusUri = result.Headers.GetValues("Azure-AsyncOperation").First();
     ```
 
-5. Přidejte následující kód do konce **CreateIoTHub** metody. Tento kód používá **asyncStatusUri** adresu získali v předchozím kroku, a počkejte na dokončení nasazení:
+5. Na konec metody **CreateIoTHub** přidejte následující kód. Tento kód používá **asyncStatusUri** adresu získanou v předchozím kroku k čekání na dokončení nasazení:
 
     ```csharp
     string body;
@@ -142,7 +141,7 @@ Použití [rozhraní REST API poskytovatele prostředků služby IoT Hub](https:
     } while (body == "{\"status\":\"Running\"}");
     ```
 
-6. Přidejte následující kód do konce **CreateIoTHub** metody. Tento kód načte klíče ze služby IoT hub vytvořili a vypíše do konzoly:
+6. Na konec metody **CreateIoTHub** přidejte následující kód. Tento kód načte klíče centra IoT, které jste vytvořili, a vytiskne je do konzoly:
 
     ```csharp
     var listKeysUri = string.Format("https://management.azure.com/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Devices/IotHubs/{2}/IoTHubKeys/listkeys?api-version=2016-02-03", subscriptionId, rgName, iotHubName);
@@ -153,38 +152,38 @@ Použití [rozhraní REST API poskytovatele prostředků služby IoT Hub](https:
 
 ## <a name="complete-and-run-the-application"></a>Dokončení a spuštění aplikace
 
-Aplikace je nyní možné dokončit voláním **CreateIoTHub** metoda před sestavit a spustit ho.
+Nyní můžete aplikaci dokončit voláním metody **CreateIoTHub** před sestavením a spuštěním.
 
-1. Přidejte následující kód do konce **hlavní** metody:
+1. Na konec metody **Main** přidejte následující kód:
 
     ```csharp
     CreateIoTHub(token.AccessToken);
     Console.ReadLine();
     ```
 
-2. Klikněte na tlačítko **sestavení** a potom **sestavit řešení**. Opravte všechny chyby.
+2. Klikněte na **sestavit** a pak na **Sestavit řešení**. Opravte všechny chyby.
 
-3. Klikněte na tlačítko **ladění** a potom **spustit ladění** ke spuštění aplikace. Může trvat několik minut, než se nasazení pro spuštění.
+3. Klikněte na **ladit** a potom **Spusťte ladění** , aby se aplikace spustila. Spuštění nasazení může trvat několik minut.
 
-4. Pokud chcete ověřit, že vaše aplikace přidá novou službu IoT hub, najdete [webu Azure portal](https://portal.azure.com/) a zobrazit seznam prostředků. Můžete taky použít **Get-AzResource** rutiny Powershellu.
+4. Pokud chcete ověřit, že vaše aplikace přidala nové centrum IoT, přejděte na [Azure Portal](https://portal.azure.com/) a zobrazte si seznam prostředků. Alternativně můžete použít rutinu PowerShellu **Get-AzResource** .
 
 > [!NOTE]
-> Tato ukázková aplikace přidá S1 Standard služby IoT Hub pro kterou se vám účtuje. Až budete hotovi, můžete odstranit centrum IoT prostřednictvím [webu Azure portal](https://portal.azure.com/) nebo s použitím **odebrat AzResource** rutiny Powershellu, až budete hotovi.
+> Tato ukázková aplikace přidá standardní IoT Hub S1, pro které se účtuje. Až budete hotovi, můžete Centrum IoT odstranit pomocí [Azure Portal](https://portal.azure.com/) nebo pomocí rutiny prostředí PowerShell **Remove-AzResource** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Nyní jste nasadili IoT hubu pomocí rozhraní REST API poskytovatele prostředků, můžete dále zkoumat:
+Nyní jste nasadili IoT Hub pomocí REST API poskytovatele prostředků, možná budete chtít prozkoumat další:
 
-* Přečtěte si o možnostech [rozhraní REST API poskytovatele prostředků služby IoT Hub](https://docs.microsoft.com/rest/api/iothub/iothubresource).
+* Přečtěte si o možnostech [REST API IoT Hub poskytovatele prostředků](https://docs.microsoft.com/rest/api/iothub/iothubresource).
 
-* Čtení [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md) Další informace o možnostech Azure Resource Manageru.
+* Přečtěte si [Azure Resource Manager přehled](../azure-resource-manager/resource-group-overview.md) , kde najdete další informace o možnostech Azure Resource Manager.
 
-Další informace o vývoji pro službu IoT Hub, najdete v následujících článcích:
+Další informace o vývoji pro IoT Hub najdete v následujících článcích:
 
-* [Seznámení s C SDK](iot-hub-device-sdk-c-intro.md)
+* [Seznámení se sadou C SDK](iot-hub-device-sdk-c-intro.md)
 
 * [Sady Azure IoT SDK](iot-hub-devguide-sdks.md)
 
-Podrobněji prozkoumat možnosti služby IoT Hub, najdete v tématech:
+Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
 
-* [Nasazení AI do hraničních zařízení pomocí služby Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Nasazení AI do hraničních zařízení pomocí Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

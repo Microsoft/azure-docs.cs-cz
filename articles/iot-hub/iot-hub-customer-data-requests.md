@@ -1,53 +1,52 @@
 ---
-title: Zákaznická data žádosti o funkce
-description: Souhrnné informace o zákaznická data žádosti o funkce
+title: Žádosti o zákaznická data pro zařízení Azure IoT Hub
+description: Většina zařízení spravovaných v Azure IoT Hub není osobní, ale některé jsou. Tento článek se domluví o správcích, kteří můžou exportovat nebo odstranit osobní údaje ze zařízení.
 author: robinsh
-manager: philmea
 ms.author: robinsh
 ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 1519637eddf909040131a1efac5738fc7cc8e565
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29b3ed46ffe7f2236fc63d65ed49385b29b1a08a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60845796"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889471"
 ---
-# <a name="summary-of-customer-data-request-features"></a>Souhrnné informace o zákaznická data žádosti o funkce
+# <a name="summary-of-customer-data-request-features"></a>Shrnutí funkcí žádosti o data zákazníků
 
-Azure IoT Hub je založená na rozhraní REST API Cloudová služba určenou pro podnikové zákazníky, která umožňuje zabezpečenou obousměrnou komunikaci mezi miliony zařízení a oddílů služby Azure.
+Azure IoT Hub je cloudová služba založená na REST API, která je zaměřená na podnikové zákazníky, která umožňuje zabezpečenou obousměrnou komunikaci mezi miliony zařízení a službou Azure dělenou službou.
 
 [!INCLUDE [gdpr-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-Jednotlivá zařízení přiřazený identifikátor zařízení (ID zařízení) správcem tenanta. Data zařízení se vycházející z ID přiděleného zařízení. Společnost Microsoft udržuje žádné informace a nemá přístup k datům, která by umožnilo ID zařízení na uživatele korelace.
+Jednotlivým zařízením je přiřazen identifikátor zařízení (ID zařízení) správce klienta. Data zařízení jsou založená na ID přiřazeného zařízení. Společnost Microsoft nespravuje žádné informace a nemá přístup k datům, která by umožňovala korelaci uživatelů s ID zařízení.
 
-Mnoho zařízení spravovaná ve službě Azure IoT Hub nejsou osobní zařízení, třeba office Termostat nebo objekt pro vytváření robota. Zákazníci mohou, ale vezměte v úvahu některé zařízení, která budou identifikovatelné osobní údaje a podle vlastního uvážení může udržovat vlastní prostředek nebo metod, které jsou zařízení, která jednotlivcům sledování inventáře. Azure IoT Hub spravuje a ukládá všechna data přidružená k zařízení, jako by šlo osobní údaje.
+Mnohé ze zařízení spravovaných v Azure IoT Hub nejsou osobní zařízení, například Kancelářský termostat nebo robot pro tovární navýšení. Zákazníci si ale můžou všimnout, že některá zařízení budou identifikovatelné osobně a na základě jejich uvážení můžou udržovat své vlastní prostředky nebo metody sledování inventáře, které propojují zařízení s jednotlivci. Azure IoT Hub spravuje a ukládá všechna data, která jsou přidružená k zařízením, jako by šlo o osobní údaje.
 
-Správce tenanta můžete použít na webu Azure portal nebo rozhraní REST API služby ke splnění požadavků na informace o exportu nebo odstraněním data přidružená k ID zařízení.
+Správci klientů můžou pomocí Azure Portal nebo rozhraní REST API služby vyplnit žádosti o informace tím, že exportují nebo odstraňují data přidružená k ID zařízení.
 
-Pokud používáte funkci směrování služby Azure IoT Hub pro předávání zpráv zařízení do jiných služeb, musí být požadavky na data provedena správcem tenanta pro každý koncový bod směrování aby bylo možné dokončit žádost o úplné pro dané zařízení. Další podrobnosti najdete v tématu referenční dokumentaci pro každý koncový bod. Další informace o podporovaných koncových bodech, najdete v části [Reference – koncové body IoT Hubu](iot-hub-devguide-endpoints.md).
+Pokud používáte funkci směrování služby Azure IoT Hub k přeposílání zpráv zařízení na jiné služby, musí být požadavky na data provedeny správcem tenanta pro každý koncový bod směrování, aby bylo možné dokončit úplný požadavek na dané zařízení. Další podrobnosti najdete v referenční dokumentaci pro každý koncový bod. Další informace o podporovaných koncových bodech naleznete v tématu [IoT Hub koncových bodů reference](iot-hub-devguide-endpoints.md).
 
-Pokud používáte funkci Integrace služby Azure Event Grid služby Azure IoT Hub, musí být požadavky na data provedena správcem tenanta pro každý předplatitel tyto události. Další informace najdete v tématu [reagovat na události služby IoT Hub s využitím služby Event Grid](iot-hub-event-grid.md).
+Pokud používáte funkci Azure Event Grid Integration služby Azure IoT Hub, musí být požadavky na data provedeny správcem tenanta pro každého předplatitele těchto událostí. Další informace najdete v tématu [reakce na události IoT Hub pomocí Event Grid](iot-hub-event-grid.md).
 
-Pokud použijete k vytvoření diagnostické protokoly Azure monitoru funkci Integrace služby Azure IoT Hub, musí správce tenanta proti uložené protokoly provádět požadavky na data. Další informace najdete v tématu [monitorování stavu služby Azure IoT Hub](iot-hub-monitor-resource-health.md).
+Pokud používáte funkci Azure Monitor Integration služby Azure IoT Hub k vytváření protokolů diagnostiky, musí být požadavky na data provedeny správcem klienta proti uloženým protokolům. Další informace najdete v tématu [monitorování stavu Azure IoT Hub](iot-hub-monitor-resource-health.md).
 
-## <a name="deleting-customer-data"></a>Odstraňuje se zákaznická data
+## <a name="deleting-customer-data"></a>Odstraňují se zákaznická data
 
-Správce tenanta můžete použít okno zařízení IoT rozšíření Azure IoT Hub na webu Azure Portal se odstranit zařízení, které odstraní data přidružená k tomuto zařízení.
+Správci klientů mohou pomocí okna zařízení IoT v rozšíření Azure IoT Hub v Azure Portal odstranit zařízení, které odstraní data přidružená k tomuto zařízení.
 
-Je také možné provést operace odstranění pro zařízení pomocí rozhraní REST API. Další informace najdete v tématu [Service – odstranit zařízení](/rest/api/iothub/service/deletedevice).
+Je také možné provádět operace odstranění pro zařízení pomocí rozhraní REST API. Další informace najdete v tématu [Služba – odstranění zařízení](/rest/api/iothub/service/deletedevice).
 
 ## <a name="exporting-customer-data"></a>Export zákaznických dat
 
-Správce tenanta můžete využívat kopírování a vložte do okna zařízení IoT rozšíření Azure IoT Hub na webu Azure Portal k exportu data přidružená k zařízení.
+Správci klientů můžou využít kopírování a vkládání v podokně zařízení IoT rozšíření Azure IoT Hub v Azure Portal k exportu dat přidružených k zařízení.
 
-Je také možné provést operacích exportu proveďte pro zařízení pomocí rozhraní REST API. Další informace najdete v tématu [Service – získání zařízení](/rest/api/iothub/service/getdevice).
+Je také možné provádět operace exportu pro zařízení pomocí rozhraní REST API. Další informace najdete v tématu [Služba – získat zařízení](/rest/api/iothub/service/getdevice).
 
 > [!NOTE]
-> Při použití služby enterprise od Microsoftu, Microsoft generuje určité informace, označované jako protokoly generované systémem. Některé služby Azure IoT Hub systémem generované protokoly nejsou přístupné nebo exportovat správci tenanta. Tyto protokoly představují skutečné akce provedené v rámci služby a diagnostických dat týkající se pro jednotlivá zařízení.
+> Když použijete podnikové služby společnosti Microsoft, vygeneruje společnost Microsoft nějaké informace, které se nazývají systémem generované protokoly. Některé protokoly generované systémem Azure IoT Hub nejsou pro správce klientů k dispozici nebo je můžou exportovat. Tyto protokoly představují věcné akce prováděné v rámci služby a diagnostická data související s jednotlivými zařízeními.
 
 ## <a name="links-to-additional-documentation"></a>Odkazy na další dokumentaci
 
-Kompletní dokumentaci k rozhraní API služby Azure IoT Hub se nachází na [rozhraní API služby IoT Hub](https://docs.microsoft.com/rest/api/iothub/service).
+Úplná dokumentace pro rozhraní API služby Azure IoT Hub se nachází v [rozhraních API služby IoT Hub](https://docs.microsoft.com/rest/api/iothub/service).

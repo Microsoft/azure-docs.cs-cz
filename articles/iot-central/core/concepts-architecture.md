@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 9206bf07a36cc5724b173790eb94037cb86add9c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 25b0ec1b86a59b944cdb895bd536da32a1f8595b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952079"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884476"
 ---
-# <a name="azure-iot-central-architecture"></a>Architektura Azure IoT Central
+# <a name="azure-iot-central-architecture"></a>Architektura služby Azure IoT Central
 
 [!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
@@ -57,7 +57,7 @@ Azure IoT Central ukládá data aplikací v cloudu. Uložená data aplikací zah
 
 Azure IoT Central využívá úložiště časových řad k měření dat odesílaných z vašich zařízení. Data časové řady ze zařízení, která služba Analytics používá.
 
-## <a name="analytics"></a>Analýzy
+## <a name="analytics"></a>Analýza
 
 Služba analýzy zodpovídá za generování vlastních dat sestav, která aplikace zobrazuje. Operátor může [přizpůsobit analýzy](howto-create-analytics.md) zobrazené v aplikaci. Analytická služba je postavená na [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/) a zpracovává data měření odesílaná z vašich zařízení.
 
@@ -83,7 +83,7 @@ Aplikace může mít jedno nebo několik simulovaných a reálných zařízení 
 
 ## <a name="data-export"></a>Export dat
 
-V aplikaci IoT Central Azure můžete [data průběžně exportovat](howto-export-data-event-hubs-service-bus.md) do vlastních Event Hubs Azure a instancí služby Azure Service Bus. Data můžete také pravidelně exportovat do svého účtu služby Azure Blob Storage. IoT Central může exportovat měření, zařízení a šablony zařízení.
+V aplikaci IoT Central v Azure můžete [data průběžně exportovat](howto-export-data-event-hubs-service-bus.md) do vlastních instancí Azure Event Hubs, Azure Service Bus a Azure Blob Storage. IoT Central může exportovat měření, zařízení a šablony zařízení.
 
 ## <a name="batch-device-updates"></a>Aktualizace zařízení Batch
 

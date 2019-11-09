@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 8360db3e31899dc7ca0a2b502d0036358f0858d6
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: d72636265ff3ac654faba91d1420b502b35d3192
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615234"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889002"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Kurz: nasazení a procházení šablonou aplikace pro správu inteligentního inventáře
 
@@ -109,4 +109,4 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte šablonu aplikace na
 ## <a name="next-steps"></a>Další kroky
 * Další informace o [konceptu správy inteligentního inventáře](./architecture-smart-inventory-management-pnp.md) správy inteligentních zásob
 * Další informace o jiných [šablonách IoT Central maloobchodních prodejů](./overview-iot-central-retail-pnp.md)
-* Další informace o IoT Central najdete v tématu [IoT Central Overview](../core/overview-iot-central-pnp.md) .
+* Další informace o IoT Central najdete v tématu [IoT Central Overview](../preview/overview-iot-central.md) .

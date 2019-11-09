@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 8916cb0438f0005d3ff9f720cf1b5a5653eeac77
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9a226c17dd72d0dcd6403277054cf264f0094e65
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504029"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73850318"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -44,7 +44,7 @@ Předtím, než budete moci inicializovat objekt `IntentRecognizer`, je nutné v
 Tato ukázka vytvoří objekt `SpeechConfig` pomocí klíče a oblasti LUIS. Úplný seznam dostupných metod naleznete v tématu [Třída SpeechConfig](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig).
 
 > [!NOTE]
-> Je důležité použít klíč koncového bodu LUIS a ne počáteční nebo Authroing klíče, protože pro rozpoznávání řeči je platný jenom klíč koncového bodu. Pokyny, jak získat správný klíč, najdete v tématu [Vytvoření aplikace v Luis a získání klíče koncového bodu](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md) .
+> Je důležité použít klíč koncového bodu LUIS a ne počáteční nebo zdrojové klíče, protože pro rozpoznávání řeči je platný jenom klíč koncového bodu. Pokyny, jak získat správný klíč, najdete v tématu [Vytvoření aplikace v Luis a získání klíče koncového bodu](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md) .
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=12)]
 

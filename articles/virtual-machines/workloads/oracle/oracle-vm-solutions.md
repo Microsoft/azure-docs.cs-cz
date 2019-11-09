@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: 4480819a08ef9a7a4ad7257f75a94c5d10a3d312
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 23e638b1d678e6ecf19c23220828185eb0e25a00
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858571"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891441"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Image virtuálních počítačů Oracle a jejich nasazení v Microsoft Azure
 
@@ -79,7 +79,7 @@ Tyto možnosti jsou možné, protože Azure NetApp Files jsou založené na NetA
 
 ## <a name="licensing-oracle-database--software-on-azure"></a>Licencování Oracle Database & software v Azure
 Microsoft Azure je autorizované cloudové prostředí pro spouštění Oracle Database. Tabulka Oracle Core Factor se nedá použít při licencování databází Oracle v cloudu. Místo toho se při použití virtuálních počítačů s technologií Hyper-Threading povolených pro databáze edice Enterprise Edition počítá 2 vCPU jako ekvivalentní jedné licenci Oracle Processor, pokud je povolená možnost webthreading (jak je uvedeno v dokumentu zásady). Podrobnosti o zásadách najdete [tady](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf).
-Databáze Oracle obecně vyžadují větší paměť a vstupně-výstupní operace. Z tohoto důvodu se pro tyto úlohy doporučují [paměťově optimalizované virtuální počítače](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-memory) . Pro lepší optimalizaci vašich úloh se doporučují [základní vcpu](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/constrained-vcpu) Oracle DB pro úlohy, které vyžadují vysoké množství paměti, úložiště a vstupně-výstupní propustnosti, ale ne vysoký počet jader.
+Databáze Oracle obecně vyžadují větší paměť a vstupně-výstupní operace. Z tohoto důvodu se pro tyto úlohy doporučují [paměťově optimalizované virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) . Pro lepší optimalizaci vašich úloh se doporučují [základní vcpu](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu) Oracle DB pro úlohy, které vyžadují vysoké množství paměti, úložiště a vstupně-výstupní propustnosti, ale ne vysoký počet jader.
 
 Když migrujete software Oracle a úlohy z místního prostředí do Microsoft Azure, Oracle nabízí mobilitu licencí, jak je uvedeno v tématu [Oracle on Azure – Nejčastější dotazy](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) .
 
@@ -90,7 +90,7 @@ Oracle RAC je navržený tak, aby zmírnil selhání jednoho uzlu v místní kon
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>Požadavky na vysokou dostupnost a zotavení po havárii
 Při používání databází Oracle v Azure zodpovídáte za implementaci řešení vysoké dostupnosti a zotavení po havárii, abyste se vyhnuli výpadkům. 
 
-Vysoká dostupnost a zotavení po havárii pro Oracle Database Enterprise Edition (bez spoléhání na Oracle RAC) se dá v Azure dosáhnout pomocí [ochrany dat, aktivní ochrany dat](https://www.oracle.com/database/technologies/high-availability/dataguard.html)nebo [Oracle GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate)se dvěma databázemi na dvou oddělených virtuálních počítačích. virtuální. Oba virtuální počítače by měly být ve stejné [virtuální síti](https://azure.microsoft.com/documentation/services/virtual-network/) , aby se zajistilo, že budou mít přístup k sobě přes soukromou trvalou IP adresu.  Kromě toho doporučujeme umístit virtuální počítače do stejné skupiny dostupnosti, aby je bylo možné do Azure umístit do samostatných domén selhání a upgradovacích domén. Pokud chcete mít geografickou redundanci, nastavte dvě databáze tak, aby se replikují mezi dvěma různými oblastmi, a propojte tyto dvě instance s VPN Gateway.
+Vysoká dostupnost a zotavení po havárii pro Oracle Database Enterprise Edition (bez spoléhání na Oracle RAC) se dá v Azure dosáhnout pomocí [ochrany dat, aktivní ochrany dat](https://www.oracle.com/database/technologies/high-availability/dataguard.html)nebo [Oracle GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate)se dvěma databázemi na dvou různých virtuálních počítačích. Oba virtuální počítače by měly být ve stejné [virtuální síti](https://azure.microsoft.com/documentation/services/virtual-network/) , aby se zajistilo, že budou mít přístup k sobě přes soukromou trvalou IP adresu.  Kromě toho doporučujeme umístit virtuální počítače do stejné skupiny dostupnosti, aby je bylo možné do Azure umístit do samostatných domén selhání a upgradovacích domén. Pokud chcete mít geografickou redundanci, nastavte dvě databáze tak, aby se replikují mezi dvěma různými oblastmi, a propojte tyto dvě instance s VPN Gateway.
 
 Kurz [implementace Oracle data Guard v Azure](configure-oracle-dataguard.md) vás provede základními postupy nastavení v Azure.  
 
@@ -102,7 +102,7 @@ Kromě toho, že máte v Azure navržený řešení HA a zotavení po havárii, 
 
 
 ## <a name="support-for-jd-edwards"></a>Podpora pro řešení JD Edwards
-Podle informací o podpoře Oracle Poznámka k [dokumentu s ID 2178595,1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4), řešení JD Edwards EnterpriseOne verze 9,2 a vyšší jsou podporovány v **jakékoli veřejné cloudové nabídce** , která splňuje jejich konkrétní `Minimum Technical Requirements` (MTR).  Musíte vytvořit vlastní image, které splňují specifikace MTR pro kompatibilitu s operačním systémem a softwarovou aplikací. 
+Podle podpory Oracle Poznámka k [dokumentu s ID 2178595,1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4), řešení JD Edwards EnterpriseOne verze 9,2 a vyšší jsou podporovány v **jakékoli nabídce veřejného cloudu** , která splňuje jejich konkrétní `Minimum Technical Requirements` (MTR).  Musíte vytvořit vlastní image, které splňují specifikace MTR pro kompatibilitu s operačním systémem a softwarovou aplikací. 
 
 
 ## <a name="oracle-weblogic-server-virtual-machine-images"></a>Image virtuálních počítačů Oracle WebLogic Server
@@ -126,7 +126,7 @@ Podle informací o podpoře Oracle Poznámka k [dokumentu s ID 2178595,1](https:
     -Dweblogic.rjvm.enableprotocolswitch=true
     ```
 
-Související informace najdete v článku znalostní báze **860340,1** na <https://support.oracle.com>adrese.
+Související informace najdete v článku **860340,1** znalostní báze na adrese <https://support.oracle.com>.
 
 * **Omezení dynamického clusteringu a vyrovnávání zatížení.** Předpokládejme, že chcete použít dynamický cluster na serveru WebLogic a zveřejnit ho pomocí jediného veřejného koncového bodu s vyrovnáváním zatížení v Azure. To se dá udělat, pokud použijete pevné číslo portu pro každý ze spravovaných serverů (nedynamicky přiřadíte z rozsahu) a nespustíte více spravovaných serverů, než jsou počítače, které správce sleduje. To znamená, že pro každý virtuální počítač není k dispozici více než jeden spravovaný server. Pokud vaše konfigurace vede k většímu počtu spuštěných serverů WebLogic, než je virtuálních počítačů (tj. Pokud více instancí serveru WebLogic Server sdílí stejný virtuální počítač), není možné použít více než jednu z těchto instancí serverů WebLogic. pro vytvoření vazby na dané číslo portu. Ostatní na tomto virtuálním počítači selžou.
 

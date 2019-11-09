@@ -16,7 +16,7 @@
     - name: Připojení zařízení ke službě IoT Hub – Linux
       href: quickstart-connect-pnp-device-linux.md
     - name: Připojení zařízení ke službě IoT Central
-      href: ../iot-central/core/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      href: ../iot-central/preview/quick-create-pnp-device.md
     - name: Připojení k zařízení ve vašem řešení
       href: quickstart-connect-pnp-device-solution.md
 - name: Kurzy

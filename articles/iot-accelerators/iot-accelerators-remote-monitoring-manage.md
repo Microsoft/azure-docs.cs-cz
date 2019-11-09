@@ -1,5 +1,5 @@
 ---
-title: Konfigurace zařízení v vzdáleného monitorování řešení kurz – Azure | Dokumentace Microsoftu
+title: Konfigurace zařízení v řešení vzdáleného monitorování – Azure | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak nakonfigurovat zařízení připojená k akcelerátoru řešení vzdáleného monitorování.
 author: dominicbetts
 manager: timlt
@@ -9,18 +9,18 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: d23b7c8fa10127094fec67535333ae169f0f38f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e4236952bd41c4955e337813ff6d706263b8ef47
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61453094"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890905"
 ---
-# <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Kurz: Konfigurace zařízení připojených k řešení monitorování
+# <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Kurz: konfigurace zařízení připojených k řešení monitorování
 
-V tomto kurzu použijete akcelerátor řešení pro vzdálené monitorování ke konfiguraci a správě připojených zařízení IoT. Přidat nové zařízení k akcelerátoru řešení a konfigurace zařízení.
+V tomto kurzu použijete akcelerátor řešení pro vzdálené monitorování ke konfiguraci a správě připojených zařízení IoT. Přidáte nové zařízení do akcelerátoru řešení a nakonfigurujete zařízení.
 
-Společnost Contoso si objednala nové stroje pro rozšíření jednoho ze svých závodů. Při čekání na doručení nových strojů budete chtít spustit simulaci a otestovat chování vašeho řešení. Při spuštění simulace, přidat nové zařízení simulovaného modul akcelerátor řešení vzdálené monitorování a test, který toto simulované zařízení správně reaguje na aktualizace konfigurace. Přestože tento kurz využívá telemetrická Simulovaná zařízení, vývojář zařízení můžete implementovat přímých metod na [skutečné zařízení připojeno k akcelerátoru řešení vzdáleného monitorování](iot-accelerators-connecting-devices.md).
+Společnost Contoso si objednala nové stroje pro rozšíření jednoho ze svých závodů. Při čekání na doručení nových strojů budete chtít spustit simulaci a otestovat chování vašeho řešení. Chcete-li spustit simulaci, přidejte nové simulované zařízení modulu do akcelerátoru řešení vzdáleného monitorování a otestujte, že toto simulované zařízení reaguje správně na aktualizace konfigurace. I když tento kurz používá simulovaná zařízení, vývojář zařízení může implementovat přímé metody do [reálného zařízení připojeného k akcelerátoru řešení vzdáleného monitorování](iot-accelerators-connecting-devices.md).
 
 V tomto kurzu se naučíte:
 
@@ -36,7 +36,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="add-a-simulated-device"></a>Přidání simulovaného zařízení
 
-Přejděte **Device Explorer** stránku v řešení a potom klikněte na tlačítko **+ nové zařízení**:
+V řešení přejděte na stránku **Device Explorer** a pak klikněte na **+ nové zařízení**:
 
 [![Zřízení simulovaného zařízení](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-expanded.png#lightbox)
 
@@ -46,7 +46,7 @@ Na panelu **Nové zařízení** zvolte **Simulované**, počet zařízení, kter
 
 ## <a name="test-the-simulated-device"></a>Test simulovaného zařízení
 
-K otestování simulované modul zařízení odesílá telemetrii a vytváření sestav hodnoty vlastností, vyberte ho v seznamu zařízení na **Device Explorer** stránky. Na panelu **Podrobnosti o zařízení** se zobrazí aktuální informace o motoru:
+Chcete-li otestovat simulované zařízení modulu, odesílá hodnoty vlastností telemetrie a vytváření sestav, vyberte je v seznamu zařízení na stránce **Device Explorer** . Na panelu **Podrobnosti o zařízení** se zobrazí aktuální informace o motoru:
 
 [![Zobrazení nového simulovaného zařízení motoru](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-expanded.png#lightbox)
 
@@ -60,7 +60,7 @@ Pokud chcete zobrazit podrobnou diagnostiku posuňte se na panelu **Podrobnosti 
 
 ## <a name="reconfigure-a-device"></a>Změna konfigurace zařízení
 
-Pokud chcete otestovat, můžete aktualizovat vlastnosti konfigurace modul, vyberte ho v seznamu zařízení na **Device Explorer** stránky. Pak klikněte na tlačítko **úlohy**a klikněte na tlačítko **vlastnosti**. Na panelu úloh se zobrazí hodnoty vlastností pro vybrané zařízení, které můžete aktualizovat:
+Chcete-li otestovat, zda lze aktualizovat vlastnosti konfigurace modulu, vyberte ji v seznamu zařízení na stránce **Device Explorer** . Pak klikněte na **úlohy**a pak zvolte **vlastnosti**. Na panelu úloh se zobrazí hodnoty vlastností pro vybrané zařízení, které můžete aktualizovat:
 
 [![Změna konfigurace zařízení](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-expanded.png#lightbox)
 
@@ -83,7 +83,7 @@ Pokud si jako operátor chcete usnadnit uspořádání a správu zařízení, m�
 * Tým pro chytrá vozidla spravuje nákladní vozy a prototypy zařízení.
 * Tým pro chytré budovy spravuje chladiče, výtahy a motory.
 
-Pokud chcete zobrazit všechna svá zařízení, přejděte na **Device Explorer** stránky a zvolte **všechna zařízení** filtru:
+Pokud chcete zobrazit všechna vaše zařízení, přejděte na stránku **Device Explorer** a vyberte filtr **všechna zařízení** :
 
 [![Zobrazení všech zařízení](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-expanded.png#lightbox)
 
@@ -103,7 +103,7 @@ Na panelu **Úlohy** vyberte **Značka**, nastavte název úlohy na **AddSmartBu
 
 ### <a name="create-filters"></a>Vytváření filtrů
 
-Hodnoty značek teď můžete využít k vytváření filtrů. Na **Device Explorer** klikněte na **Správa skupin zařízení**:
+Hodnoty značek teď můžete využít k vytváření filtrů. Na stránce **Device Explorer** klikněte na možnost **Spravovat skupiny zařízení**:
 
 [![Správa skupin zařízení](./media/iot-accelerators-remote-monitoring-manage/devicesmanagefilters-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmanagefilters-expanded.png#lightbox)
 
@@ -121,7 +121,7 @@ Operátor společnosti Contoso teď může zadávat dotazy na zařízení na zá
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se dozvěděli, jak konfigurovat a spravovat zařízení připojená k akcelerátoru řešení pro vzdálené monitorování. Pokud se chcete naučit, jak používat akcelerátor řešení k provádění analýz původních příčin neočekávaného upozornění, pokračujte k dalšímu kurzu.
 

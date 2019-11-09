@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: d0bf023be9c34f449c40ff74ba9e68ea5e197e2e
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 6450169ae2b2d74006eedc66f35338494257594a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615368"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889090"
 ---
 # <a name="architecture-of-iot-central-smart-inventory-management-application-template"></a>Architektura šablony aplikace IoT Central správy inteligentního inventáře
 
@@ -54,4 +54,4 @@ Platforma IoT Central poskytuje bohatou možnost rozšiřitelnosti prostřednict
 ## <a name="next-steps"></a>Další kroky
 * Naučte se nasadit [šablonu správy inteligentních inventářů](./tutorial-iot-central-smart-inventory-management-pnp.md) .
 * Další informace o [IoT Central maloobchodních šablon](./overview-iot-central-retail-pnp.md)
-* Další informace o IoT Central najdete v tématu [IoT Central Overview](../core/overview-iot-central-pnp.md) .
+* Další informace o IoT Central najdete v tématu [IoT Central Overview](../preview/overview-iot-central.md) .

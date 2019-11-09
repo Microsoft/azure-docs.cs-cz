@@ -1,7 +1,7 @@
 ---
 title: Řídicí panel – Language Understanding – LUIS
 titleSuffix: Azure Cognitive Services
-description: Opravte záměry pomocí řídicího panelu Analytics, vizuálního nástroje pro sestavy.
+description: Opravte záměry a entity pomocí řídicího panelu vaší školené aplikace. Řídicí panel zobrazuje celkové informace o aplikaci s příklady záměrů, které by se měly opravit.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 22e187bba3782e485685354c203a6273d5bcc618
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: d9ae126753f55349f9bf3eefd20bc4d222866af1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735058"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888198"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Vylepšení aplikace pomocí řídicího panelu
 
@@ -33,7 +33,7 @@ Tři problémy řešené na řídicím panelu jsou:
 |Problém|Barva grafu|Vysvětlení|
 |--|--|--|
 |Nevyrovnanost dat|-|K tomu dochází, když se množství příkladů projevy významně liší. Všechny záměry musí mít _zhruba_ stejný počet příkladů projevy – s výjimkou záměru None. Mělo by to mít jenom 10%-15% celkového počtu projevy v aplikaci.<br><br> Pokud jsou data nevyvážená, ale přesnost záměru je nad určitou prahovou hodnotou, tato nerovnováha není hlášena jako problém.<br><br>**Začněte s tímto problémem – může to být hlavní příčina dalších problémů.**|
-|Zrušit zaškrtnutí předpovědi|Oranžová|K tomu dojde v případě, že je přední záměr a skóre dalšího záměru dostatečně blízko, že se mohou vrátit k dalšímu školení, z důvodu [negativního vzorkování](luis-how-to-train.md#train-with-all-data) nebo více příkladů projevy přidaných do záměru. |
+|Zrušit zaškrtnutí předpovědi|Orange|K tomu dojde v případě, že je přední záměr a skóre dalšího záměru dostatečně blízko, že se mohou vrátit k dalšímu školení, z důvodu [negativního vzorkování](luis-how-to-train.md#train-with-all-data) nebo více příkladů projevy přidaných do záměru. |
 |Nesprávné předpovědi|Červená|K tomu dochází, když se příklad utterance nepředpokládá pro označení záměru (záměr je v rámci).|
 
 Správné předpovědi jsou reprezentovány barvou modrá.
@@ -100,7 +100,7 @@ Nepřidávejte projevy do záměru None pouze v případě, že to není navrže
 
 > [!Tip]
 > Použijte třetí část na stránce, **projevy na záměr** s nastavením **projevy (číslo)** jako rychlý vizuální průvodce, který potřebuje další projevy.  
-    ![Pomocí příkazu "projevy (číslo)" Najděte záměry s nevyrovnanou únikem dat.](./media/luis-how-to-use-dashboard/predictions-per-intent-number-of-utterances.png)
+    ![použít projevy (číslo) k nalezení záměrů s nevyrovnanou datovou nerovnováhuí.](./media/luis-how-to-use-dashboard/predictions-per-intent-number-of-utterances.png)
 
 ### <a name="review-incorrect-predictions"></a>Kontrola nesprávných předpovědi
 
@@ -157,7 +157,7 @@ Filtr vám umožní najít záměry s konkrétním problémem:
 |Filtr|Navrhované procento|Účel|
 |--|--|--|
 |Nejvíce problematických záměrů|-|**Začněte tady** – oprava projevy v tomto záměru vylepšuje aplikaci více než jiné opravy.|
-|Opravit předpovědi níže|60%|Toto je procento projevy ve vybraném záměru, které jsou správné, ale mají pod prahovou hodnotou hodnocení spolehlivosti. |
+|Opravit předpovědi níže|60 %|Toto je procento projevy ve vybraném záměru, které jsou správné, ale mají pod prahovou hodnotou hodnocení spolehlivosti. |
 |Zrušit zaškrtnutí předpovědi nad|15 %|Toto je procentuální podíl projevy ve zvoleném záměru, který se zaměňuje s nejbližším záměrem Rival.|
 |Nesprávná předpovědi nad|15 %|Toto je procento projevy ve vybraném záměru, které jsou nesprávně předpovězené. |
 
@@ -169,6 +169,6 @@ Co je důležité skóre pro předpověď spolehlivosti? Na začátku vývoje ap
 
 Tyto dva filtry umožňují najít projevy na vybraném záměru nad rámec vaší prahové hodnoty. Tyto dva procentní podíly si můžete představit jako procento chyb. Pokud jste spokojeni s 10-15% chybou pro předpovědi, nastavte prahovou hodnotu pro filtr na 15% a vyhledejte všechny projevy nad touto hodnotou. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Správa prostředků Azure](luis-how-to-azure-subscription.md)

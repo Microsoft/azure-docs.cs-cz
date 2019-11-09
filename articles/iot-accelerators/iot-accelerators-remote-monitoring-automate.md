@@ -1,5 +1,5 @@
 ---
-title: Zjišťování problémů se zařízením ve vzdálené monitorování řešení kurz – Azure | Dokumentace Microsoftu
+title: Použití řešení vzdáleného monitorování k detekci problémů zařízení – Azure | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak v řešení pro vzdálené monitorování pomocí pravidel a akcí automaticky detekovat problémy se zařízeními na základě prahových hodnot.
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 91ee5087e5f41cda3648c2ecadcfcf16fd32a249
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61448239"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888875"
 ---
-# <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Kurz: Rozpoznávání problémů se zařízeními připojenými k vaší řešení monitorování
+# <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Kurz: Detekce problémů se zařízeními připojenými k řešení pro monitorování
 
 V tomto kurzu nakonfigurujete akcelerátor řešení pro vzdálené monitorování tak, aby detekoval problémy s připojenými zařízeními IoT. Problémy se zařízeními můžete detekovat tak, že přidáte pravidla, která generují upozornění na řídicím panelu řešení.
 
@@ -92,7 +92,7 @@ Druhou podmínku přidáte kliknutím na + Přidat podmínku. Pro novou podmínk
 
 | Nastavení          | Hodnota                                 |
 | ---------------- | ------------------------------------- |
-| Pole podmínky 2| teplota                           |
+| Pole podmínky 2| Teplota                           |
 | Operátor podmínky 2 | Větší než                      |
 | Hodnota podmínky 2    | 75                                |
 
@@ -132,9 +132,9 @@ Najednou můžete odstranit pouze jedno pravidlo.
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se dozvěděli, jak pomocí stránky **Pravidla** v akcelerátoru řešení pro vzdálené monitorování vytvářet a spravovat pravidla, která v řešení aktivují upozornění. Informace o tom, jak pomocí akcelerátoru řešení spravovat a konfigurovat připojená zařízení, najdete v dalším kurzu.
 
 > [!div class="nextstepaction"]
-> [Konfigurace a správa zařízení připojených k řešení monitorování](iot-accelerators-remote-monitoring-manage.md)
+> [Konfigurace a správa zařízení připojených k řešení pro monitorování](iot-accelerators-remote-monitoring-manage.md)

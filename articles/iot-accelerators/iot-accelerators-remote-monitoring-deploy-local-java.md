@@ -1,5 +1,5 @@
 ---
-title: Místní nasazení řešení vzdáleného monitorování (přes IntelliJ IDE) – Azure | Microsoft Docs
+title: Nasazení řešení vzdáleného monitorování místně – IntelliJ IDE – Azure | Microsoft Docs
 description: V této příručce se dozvíte, jak nasadit akcelerátor řešení vzdáleného monitorování do místního počítače pomocí IntelliJ pro testování a vývoj.
 author: v-krghan
 manager: dominicbetts
@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2f3c11763bb2f406caf9d33275fc29b0d140da9a
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 779ee1e057d74b11c5e0ba58dc2fd32b803f1e0e
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "70743321"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888812"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně – IntelliJ
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-V tomto článku se dozvíte, jak nasadit akcelerátor řešení vzdáleného monitorování do místního počítače pro testování a vývoj. Naučíte se, jak spustit mikroslužby v IntelliJ. Místní nasazení mikroslužeb bude používat tyto cloudové služby: IoT Hub, Azure Cosmos DB, Azure Stream Analytics a Azure Time Series Insights.
+V tomto článku se dozvíte, jak nasadit akcelerátor řešení vzdáleného monitorování do místního počítače pro testování a vývoj. Naučíte se, jak spustit mikroslužby v IntelliJ. Místní nasazení mikroslužeb bude používat tyto cloudové služby: IoT Hub, Azure Cosmos DB, Azure streaming Analytics a Azure Time Series Insights.
 
 Pokud chcete spustit akcelerátor řešení vzdáleného monitorování v Docker na místním počítači, přečtěte si téma [nasazení akcelerátoru řešení vzdáleného monitorování místně Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md).
 
@@ -27,7 +27,7 @@ Pokud chcete spustit akcelerátor řešení vzdáleného monitorování v Docker
 
 Pokud chcete nasadit služby Azure používané akcelerátorem řešení vzdáleného monitorování, potřebujete aktivní předplatné Azure.
 
-Pokud nemáte účet, můžete si během několika minut vytvořit bezplatný účet zkušební. Podrobnosti najdete v tématu [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/pricing/free-trial/).
+Pokud nemáte účet, můžete si během několika minut vytvořit bezplatný účet zkušební. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 ### <a name="machine-setup"></a>Nastavení počítače
 
@@ -36,7 +36,7 @@ K dokončení místního nasazení potřebujete na svém místním vývojovém p
 * [Git](https://git-scm.com/)
 * [Docker](https://www.docker.com)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [IntelliJ Community Edition](https://www.jetbrains.com/idea/download/)
+* [Edice IntelliJ Community](https://www.jetbrains.com/idea/download/)
 * [Modul plug-in IntelliJ Scala](https://plugins.jetbrains.com/plugin/1347-scala)
 * [Modul plug-in IntelliJ SBT](https://plugins.jetbrains.com/plugin/5007-sbt)
 * [Modul plug-in prováděcího modulu SBT IntelliJ](https://plugins.jetbrains.com/plugin/7247-sbt-executor)
@@ -98,18 +98,18 @@ Pokud jste ještě nevytvořili požadované prostředky Azure, postupujte podle
    Skript také přidá do místního počítače sadu proměnných prostředí. Každý název proměnné má předpony **počítačů**. Tyto proměnné prostředí poskytují podrobné informace, které umožňují vzdálené monitorování číst hodnoty konfigurace z prostředku Azure Key Vault.
 
    > [!TIP]
-   > Až se skript dokončí, uloží proměnné prostředí do souboru s názvem  **\<vaše domovská složka\>\\. osobní\\řešení počítače\>\<název. env**. Můžete je použít pro budoucí nasazení akcelerátoru řešení. Všimněte si, že všechny proměnné prostředí nastavené v místním počítači přepíší hodnoty **v\\\\\\souboru**
+   > Po dokončení skriptu uloží proměnné prostředí do souboru s názvem **\<domovské složky\>\\. počítače\\\<název řešení\>. env**. Můžete je použít pro budoucí nasazení akcelerátoru řešení. Všimněte si, že všechny proměnné prostředí nastavené v místním počítači přepíší hodnoty ve **skriptech služby\\\\místní\\soubor. env** při spuštění **Docker-Dock**.
 
 1. Zavřete prostředí příkazového řádku.
 
 ### <a name="use-existing-azure-resources"></a>Použití existujících prostředků Azure
 
 Pokud jste již vytvořili požadované prostředky Azure, nastavte odpovídající proměnné prostředí v místním počítači:
-* **PCS_KEYVAULT_NAME**: Název prostředku Key Vault.
+* **PCS_KEYVAULT_NAME**: název prostředku Key Vault.
 * **PCS_AAD_APPID**: ID aplikace Azure Active Directory (Azure AD).
-* **PCS_AAD_APPSECRET**: Tajný kód aplikace Azure AD.
+* **PCS_AAD_APPSECRET**: tajný klíč aplikace služby Azure AD.
 
-Z tohoto prostředku Key Vault budou načteny konfigurační hodnoty. Tyto proměnné prostředí se dají uložit do  **\<\>\\\\složky snázvem\>. ENV v souboru. env z nasazení.\<** Všimněte si, že proměnné prostředí nastavené v místním počítači přepíší hodnoty v souboru **\\\\. env skriptu\\služby** , když spustíte **Docker-Dock**.
+Z tohoto prostředku Key Vault budou načteny konfigurační hodnoty. Tyto proměnné prostředí se dají uložit do **\<domovské složky\>\\. počítače\\\<souboru. env s názvem řešení** z nasazení.\> Všimněte si, že proměnné prostředí nastavené v místním počítači přepíší hodnoty v **\\skripty\\místní\\soubor. env** při spuštění **Docker-** Dock.
 
 Některá z konfigurací, které potřebuje mikroslužba, je uložená v instanci Key Vault, která byla vytvořena při počátečním nasazení. Odpovídající proměnné v trezoru klíčů by měly být podle potřeby upraveny.
 
@@ -159,8 +159,8 @@ Následující kroky ukazují, jak spustit mikroslužby vzdáleného monitorová
 
 #### <a name="create-run-configurations"></a>Vytvoření konfigurací spuštění
 
-1. Vyberte **Spustit** > **úpravy konfigurace**.
-1. Vyberte **Přidat nový konfigurační** > **SBT úlohu**.
+1. Vyberte **spustit** > **Upravit konfigurace**.
+1. Vyberte **Přidat novou konfiguraci** > **úlohu SBT**.
 1. Zadejte **název**a potom zadejte **úlohy** jako **Spustit**.
 1. V závislosti na službě, kterou chcete spustit, vyberte **pracovní adresář** .
 1. Výběrem možnosti **použít** > **OK** uložte své volby.
@@ -172,17 +172,17 @@ Následující kroky ukazují, jak spustit mikroslužby vzdáleného monitorová
 
 Například následující obrázek ukazuje, jak přidat konfiguraci pro službu:
 
-[![Snímek obrazovky okna konfigurace spuštění nebo ladění IntelliJ IDE zobrazující možnost storageAdapter zvýrazněnou v seznamu úlohy SBT v levém podokně a položky v polích název, úkoly, pracovní adresář a parametry virtuálního počítače v pravém podokně.](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
+[![snímku okna konfigurace spuštění nebo ladění IntelliJ IDE, v němž je zobrazená možnost storageAdapter zvýrazněná v seznamu úlohy SBT v levém podokně a položky v polích název, úkoly, pracovní adresář a parametry virtuálního počítače v pravém podokně.](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
 
 #### <a name="create-a-compound-configuration"></a>Vytvoření složené konfigurace
 
-1. Chcete-li spustit všechny služby dohromady, vyberte možnost **Přidat novou konfiguraci** >  **.**
+1. Pokud chcete spustit všechny služby společně, vyberte **Přidat novou konfiguraci** > **složený**.
 1. Zadejte **název**a pak vyberte **Přidat úlohy SBT**.
 1. Výběrem možnosti **použít** > **OK** uložte své volby.
 
 Například následující obrázek ukazuje, jak přidat všechny úlohy SBT do jedné konfigurace:
 
-[![Snímek obrazovky okna konfigurace spuštění nebo ladění IntelliJ IDE zobrazující možnost AllServices zvýrazněnou v složeném seznamu v levém podokně a možnost deviceTelemetry úlohy SBT, která je v pravém podokně zvýrazněna.](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
+[![snímku okna konfigurace spuštění nebo ladění IntelliJ IDE, ve kterém je zobrazená možnost AllServices zvýrazněná v složeném seznamu v levém podokně a možnost deviceTelemetry úlohy SBT, která se v pravém podokně zvýrazní.](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
 
 Vyberte možnost **Spustit** a sestavte a spusťte webové služby na místním počítači.
 
@@ -190,16 +190,16 @@ Každá webová služba otevře okno příkazového řádku a okno webového pro
 
 Chcete-li získat přístup ke stavu služeb, přejděte na následující adresy URL:
 
-* Správce IoT Hub:[http://localhost:9002/v1/status](http://localhost:9002/v1/status)
-* Telemetrie zařízení:[http://localhost:9004/v1/status](http://localhost:9004/v1/status)
-* Konfigurace[http://localhost:9005/v1/status](http://localhost:9005/v1/status)
-* adaptér úložiště:[http://localhost:9022/v1/status](http://localhost:9022/v1/status)
+* Správce IoT Hub: [http://localhost:9002/v1/status](http://localhost:9002/v1/status)
+* Telemetrie zařízení: [http://localhost:9004/v1/status](http://localhost:9004/v1/status)
+* konfigurace: [http://localhost:9005/v1/status](http://localhost:9005/v1/status)
+* adaptér úložiště: [http://localhost:9022/v1/status](http://localhost:9022/v1/status)
 
 ### <a name="start-the-stream-analytics-job"></a>Spustit úlohu Stream Analytics
 
 Pomocí následujících kroků spusťte úlohu Stream Analytics:
 
-1. Přejděte na [Azure Portal](https://portal.azure.com).
+1. Přejděte na [portál Azure](https://portal.azure.com).
 1. Přejít na **skupinu prostředků** vytvořenou pro vaše řešení. Název skupiny prostředků je název, který jste zvolili pro vaše řešení při spuštění skriptu **Start. cmd** .
 1. V seznamu prostředků vyberte **úlohu Stream Analytics** .
 1. Na stránce **Přehled** úlohy Stream Analytics vyberte tlačítko **Start** a potom výběrem tlačítka **Spustit** spusťte úlohu.
@@ -213,7 +213,7 @@ npm install
 npm start
 ```
 
-Po dokončení příkazu **Start** se v prohlížeči zobrazí stránka na adrese [http://localhost:3000/dashboard](http://localhost:3000/dashboard). Očekává se chyba na této stránce. Chcete-li zobrazit aplikaci bez chyb, proveďte následující kroky.
+Po dokončení příkazu **Start** se v prohlížeči zobrazí stránka s adresou [http://localhost:3000/dashboard](http://localhost:3000/dashboard). Očekává se chyba na této stránce. Chcete-li zobrazit aplikaci bez chyb, proveďte následující kroky.
 
 ### <a name="configure-and-run-nginx"></a>Konfigurace a spuštění Nginx
 
@@ -226,7 +226,7 @@ Další informace o spuštění Nginx najdete v tématu [Nginx for Windows](http
 
 ### <a name="connect-to-the-dashboard"></a>Připojení k řídicímu panelu
 
-Pokud chcete získat přístup k řídicímu panelu řešení vzdáleného http://localhost:9000 monitorování, přejděte do části v prohlížeči.
+Přístup k řídicímu panelu řešení vzdáleného monitorování získáte tak, že v prohlížeči přejdete na http://localhost:9000.
 
 ## <a name="clean-up"></a>Vyčištění
 
@@ -234,6 +234,6 @@ Abyste se vyhnuli zbytečným poplatkům, po dokončení testování odeberte cl
 
 Můžete také odstranit místní kopii úložiště vzdáleného monitorování, která byla vytvořena při klonování zdrojového kódu z GitHubu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste nasadili řešení vzdáleného monitorování, je dalším krokem [prozkoumat možnosti řídicího panelu řešení](quickstart-remote-monitoring-deploy.md).

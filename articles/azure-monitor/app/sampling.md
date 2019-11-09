@@ -8,12 +8,12 @@ author: cijothomas
 ms.author: cithomas
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
-ms.openlocfilehash: 82c0855e3ea3b6a89c1b20569971b0dc6b3d449c
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c124e6c433f83212c0db815a2fd06cfcfdf86253
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899859"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884716"
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 
@@ -28,7 +28,7 @@ Vzorkování snižuje náklady na provoz a data a pomáhá vyhnout se omezován�
 * Adaptivní vzorkování je ve výchozím nastavení povolené ve všech nejnovějších verzích ASP.NET ASP.NET Core a sadách SDK (Software Development Kit).
 * Vzorkování můžete také nastavit ručně. To se dá nakonfigurovat na portálu na *stránce využití a odhadované náklady*v sadě ASP.NET SDK v souboru ApplicationInsights. config v sadě sdk pro ASP.NET Core pomocí kódu nebo v sadě Java SDK v souboru ApplicationInsights. XML.
 * Pokud protokolovat vlastní události a potřebujete zajistit, aby byla sada událostí zachována nebo zahozena společně, musí mít události stejnou hodnotu OperationId.
-* U každého záznamu ve vlastnosti `itemCount` je hlášený dělitel vzorků *n* , který se v hledání zobrazí pod popisným názvem "počet požadavků" nebo "počet událostí". `itemCount==1`, pokud vzorkování není v operaci.
+* U každého záznamu ve vlastnosti `itemCount`se nahlásí hodnota dělitele vzorkování *n* , která se ve vyhledávání zobrazí pod popisným názvem "počet požadavků" nebo "počet událostí". `itemCount==1`, pokud vzorkování není v operaci.
 * Pokud píšete analytické dotazy, měli byste [vzít v úvahu vzorkování](../../azure-monitor/log-query/aggregations.md). Konkrétně místo pouhého počítání záznamů byste měli použít `summarize sum(itemCount)`.
 
 ## <a name="types-of-sampling"></a>Typy vzorkování
@@ -145,7 +145,7 @@ Adaptivní vzorkování je ve výchozím nastavení povolené pro všechny aplik
 
 ### <a name="turning-off-adaptive-sampling"></a>Vypnutí adaptivního vzorkování
 
-Při přidávání Application Insights služby je možné zakázat výchozí funkci vzorkování, v metodě ```ConfigureServices``` pomocí ```ApplicationInsightsServiceOptions``` v rámci souboru `Startup.cs`:
+Výchozí funkci vzorkování lze zakázat při přidávání Application Insights služby, v metodě ```ConfigureServices```pomocí ```ApplicationInsightsServiceOptions``` v souboru `Startup.cs`:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -190,7 +190,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ```
 
-**Pokud ke konfiguraci vzorkování použijete výše uvedenou metodu, nezapomeňte použít nastavení ```aiOptions.EnableAdaptiveSampling = false;``` s AddApplicationInsightsTelemetry ().**
+**Pokud ke konfiguraci vzorkování použijete výše uvedenou metodu, nezapomeňte použít nastavení ```aiOptions.EnableAdaptiveSampling = false;``` v AddApplicationInsightsTelemetry ().**
 
 ## <a name="fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications"></a>Vzorkování s pevnou sazbou pro ASP.NET, ASP.NET Core, weby Java a aplikace Python
 
@@ -202,7 +202,7 @@ V Průzkumník metrik se tarify, jako je počet požadavků a výjimek, vynásob
 
 ### <a name="configuring-fixed-rate-sampling-in-aspnet"></a>Konfigurace vzorkování s pevnou sazbou v ASP.NET
 
-1. **Disable Adaptive vzorkování**: v [souboru ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)odstraňte nebo odkomentujte uzel `AdaptiveSamplingTelemetryProcessor`.
+1. **Disable Adaptive vzorkování**: v [souboru ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)odstraňte nebo Odkomentujte `AdaptiveSamplingTelemetryProcessor` uzel.
 
     ```xml
 
@@ -257,7 +257,7 @@ V Průzkumník metrik se tarify, jako je počet požadavků a výjimek, vynásob
 
 ### <a name="configuring-fixed-rate-sampling-in-aspnet-core"></a>Konfigurace vzorkování s pevnou sazbou v ASP.NET Core
 
-1. **Zakázat adaptivní vzorkování**: v metodě ```ConfigureServices``` lze provést změny pomocí ```ApplicationInsightsServiceOptions```:
+1. **Zakázat adaptivní vzorkování**: v metodě ```ConfigureServices```lze provádět změny pomocí ```ApplicationInsightsServiceOptions```:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -340,7 +340,7 @@ Typy telemetrie, které lze zahrnout nebo vyloučit z vzorkování, jsou: závis
 > 
 > 
 
-2. V rámci konfigurace `Tracer` můžete zadat vzorkovník `sampler`. Pokud není zadaný žádný explicitní vzorkovník, použije se ve výchozím nastavení ProbabilitySampler. ProbabilitySampler by ve výchozím nastavení použila sazbu 1/10000, což znamená, že se do Application Insights pošle jeden z každých 10000 požadavků. Informace o zadání vzorkovací frekvence najdete níže.
+2. V rámci konfigurace `sampler` můžete zadat vzorkovník `Tracer`. Pokud není zadaný žádný explicitní vzorkovník, použije se ve výchozím nastavení ProbabilitySampler. ProbabilitySampler by ve výchozím nastavení použila sazbu 1/10000, což znamená, že se do Application Insights pošle jeden z každých 10000 požadavků. Informace o zadání vzorkovací frekvence najdete níže.
 
 3. Při zadávání vzorkovníku se ujistěte, že hodnota `Tracer` určuje vzorkovník se vzorkovací frekvencí od 0.0 do 1.0 (včetně). Vzorkovací frekvence 1,0 představuje 100%, což znamená, že všechny vaše požadavky budou odeslány jako telemetrie do Application Insights.
 
@@ -376,7 +376,7 @@ Vzorkování ingestování nefunguje, pokud je operace vzorkování na základě
 ## <a name="sampling-for-web-pages-with-javascript"></a>Vzorkování pro webové stránky pomocí JavaScriptu
 Webové stránky pro vzorkování s pevnou sazbou můžete nakonfigurovat z libovolného serveru. 
 
-Když [nakonfigurujete webové stránky pro Application Insights](../../azure-monitor/app/javascript.md), upravte fragment JavaScriptu, který získáte z portálu Application Insights. (V aplikacích ASP.NET je fragment kódu typicky v _Layout. cshtml.)  Vložit řádek jako `samplingPercentage: 10,` před klíč instrumentace:
+Když [nakonfigurujete webové stránky pro Application Insights](../../azure-monitor/app/javascript.md), upravte fragment JavaScriptu, který získáte z portálu Application Insights. (V aplikacích ASP.NET fragment kódu obvykle probíhá _Layout. cshtml.)  Vložit řádek jako `samplingPercentage: 10,` před klíč instrumentace:
 
     <script>
     var appInsights= ... 
@@ -534,7 +534,7 @@ Podle pokynů v [tomto](https://docs.microsoft.com/azure/azure-functions/functio
 
 *Existují určité vzácné události, které vždycky chcete vidět. Jak se dají dostat za modul vzorkování?*
 
-* Nejlepším způsobem, jak toho dosáhnout, je napsat vlastní [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer), který nastaví `SamplingPercentage` na 100 u položky telemetrie, kterou chcete uchovat, jak je znázorněno níže. Vzhledem k tomu, že je zaručeno spouštění inicializátorů před procesory telemetrie (včetně vzorkování), zajistí to, že všechny techniky vzorkování budou tuto položku ignorovat z jakéhokoli hlediska vzorkování.
+* Nejlepším způsobem, jak toho dosáhnout, je napsat vlastní [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer), který nastaví `SamplingPercentage` na 100 pro položku telemetrie, kterou chcete uchovat, jak je znázorněno níže. Vzhledem k tomu, že je zaručeno spouštění inicializátorů před procesory telemetrie (včetně vzorkování), zajistí to, že všechny techniky vzorkování budou tuto položku ignorovat z jakéhokoli hlediska vzorkování.
 
 ```csharp
      public class MyTelemetryInitializer : ITelemetryInitializer

@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 9d55eca3df8897650f78a6bd85b649349c806e95
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 17d429444b81746a5c5082b8310c5208bc35f3d2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615268"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889039"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Kurz: nasazení a procházení prostřednictvím připojené šablony logistické aplikace
 
@@ -109,4 +109,4 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte šablonu aplikace na
 ## <a name="next-steps"></a>Další kroky
 * Další informace o [pojmu spojené logistiky](./architecture-connected-logistics-pnp.md)
 * Další informace o jiných [šablonách IoT Central maloobchodních prodejů](./overview-iot-central-retail-pnp.md)
-* Další informace o [IoT Central přehledu](../core/overview-iot-central-pnp.md)
+* Další informace o [IoT Central přehledu](../preview/overview-iot-central.md)

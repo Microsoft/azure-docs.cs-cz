@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c76fd151bf70bfff6eed3b45a673f94777e59467
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 2b15cc56cb4f804fac0b047819ccf166950e1cf3
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797904"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890971"
 ---
 # <a name="imagery-partner-integration"></a>Integrace partnerů z snímků
 
@@ -40,7 +40,7 @@ V partnerském softwaru pomocí dronů je nutné použít následující přihla
 
 Rozhraní API obsahují technickou dokumentaci k Swagger. Přečtěte si [Swagger](https://aka.ms/FarmBeatsDatahubSwagger) , kde najdete informace o rozhraních API a odpovídajících požadavcích nebo odpovědích.
 
-## <a name="authentication"></a>Ověření
+## <a name="authentication"></a>Ověřování
 
 FarmBeats využívá [službu Active Directory]((https://docs.microsoft.com/azure/app-service/overview-authentication-authorization))Microsoft Azure. Ověřování Azure App Service poskytuje integrovanou podporu ověřování a autorizace. 
 
@@ -97,7 +97,7 @@ Volitelně můžete zahrnout parametry dotazu pro volání funkce GET k filtrov�
 
 Níže uvedená ukázková žádost slouží k získání seznamu zařízení:
 
-```
+```azurepowershell-interactive
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 "Content-Type: application/json" -H
 "Authorization: Bearer <Access-Token>”
@@ -108,7 +108,7 @@ Většina volání GET, POST a PUT vyžaduje tělo požadavku JSON.
 Níže uvedená ukázková žádost slouží k vytvoření zařízení (obsahuje vstupní kód JSON s textem žádosti).
 
 
-```json
+```azurepowershell-interactive
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  
 "accept: application/json" -H  
 "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d

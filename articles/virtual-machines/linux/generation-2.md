@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: lahugh
-ms.openlocfilehash: 6d90075f866cb65e5428a1641ebd4cf77dd2a887
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b5cc4a511d6347d28a1737932c1b4b5b768d3fc4
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73479584"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891570"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Podpora virtuálních počítačů 2. generace v Azure
 
@@ -59,7 +59,8 @@ Virtuální počítače generace 2 podporují následující image na webu Marke
 * Windows Server 2012 Datacenter
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
-* Ubuntu Server 16.04 +
+* Ubuntu Server 16.04, 18.04, 19,04, 19,10 
+* RHEL 8,0
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Místní a Azure generace 2 – virtuální počítače
 
@@ -81,7 +82,7 @@ Azure v současné době nepodporuje některé funkce, které místní technolog
 |---------|--------------|--------------|
 | Spouštění             | PCAT         | UEFI |
 | Řadiče disku | IDE          | SCSI |
-| Velikosti virtuálních počítačů         | Všechny velikosti virtuálních počítačů | Jenom virtuální počítače, které podporují Premium Storage |
+| Velikost virtuálních počítačů         | Všechny velikosti virtuálních počítačů | Jenom virtuální počítače, které podporují Premium Storage |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Generace 1 vs. generace 2 – možnosti
 
@@ -101,7 +102,7 @@ Azure v současné době nepodporuje některé funkce, které místní technolog
 
 V Azure Portal nebo Azure CLI můžete vytvořit virtuální počítače 2. generace z image Marketplace, která podporuje spouštění pomocí UEFI.
 
-#### <a name="azure-portal"></a>Portál Azure
+#### <a name="azure-portal"></a>portál Azure
 
 Image generace 2 pro Windows a SLES jsou součástí stejné nabídky serveru jako image Gen1. Z hlediska toků to znamená, že vyberete nabídku a SKU z portálu pro váš virtuální počítač. Pokud SKU podporuje jak image generace 1, tak i generace 2, můžete vybrat vytvoření virtuálního počítače generace 2 z karty *Upřesnit* v toku vytváření virtuálních počítačů.
 

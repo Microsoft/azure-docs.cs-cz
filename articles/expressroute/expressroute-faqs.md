@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 4dd4831d6437b7026459dc358455335dd0fa221b
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: f27a6df86ebbe2b07b73016f304ac364e88664bb
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063103"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891037"
 ---
-# <a name="expressroute-faq"></a>Nejčastější dotazy k ExpressRoute
+# <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
 ## <a name="what-is-expressroute"></a>Co je ExpressRoute?
 
@@ -101,7 +101,7 @@ Pokud se zobrazí zpráva potřebná pro ověření, shromážděte dokumenty, k
 Prostředí Dynamics 365 a Common Data Service (CD) jsou hostována v Azure, takže zákazníci využívají základní podporu ExpressRoute pro prostředky Azure. Můžete se připojit ke svým koncovým bodům služby, pokud váš filtr směrovače obsahuje oblasti Azure, ve kterých jsou vaše prostředí Dynamics 365 a CD hostovaná.
 
 > [!NOTE]
-> [ExpressRoute Premium](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-faqs#expressroute-premium) se **nevyžaduje** pro připojení Dynamics 365 přes Azure ExpressRoute.
+> [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) se **nevyžaduje** pro připojení Dynamics 365 přes Azure ExpressRoute.
 
 ## <a name="data-and-connections"></a>Data a připojení
 

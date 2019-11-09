@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 21f55805e0486d987922a1aa160f2938f3a50155
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5acfb60395f39d17e640e389ae2a28e220ccfae6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792443"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884361"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rychlý Start: vytvoření služby Azure Kognitivní hledání na portálu
 
 Azure Kognitivní hledání je samostatný prostředek, který se používá k připojení vyhledávacího prostředí ve vlastních aplikacích. I když se služba Azure Kognitivní hledání snadno integruje s jinými službami Azure, můžete ji použít taky jako samostatnou součást nebo ji integrovat s aplikacemi na síťových serverech nebo se softwarem běžícím na jiných cloudových platformách.
 
-V tomto článku se dozvíte, jak vytvořit prostředek Azure Kognitivní hledání v [Azure Portal](https://portal.azure.com/).
+V tomto článku se dozvíte, jak vytvořit prostředek v [Azure Portal](https://portal.azure.com/).
 
 [![animovaný GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -33,28 +33,30 @@ Případně si můžete [aktivovat výhody pro předplatitele MSDN](https://azur
 
 ## <a name="find-azure-cognitive-search"></a>Najít Kognitivní hledání Azure
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V levém horním rohu klikněte na symbol plus (+ vytvořit prostředek).
 3. Pomocí panelu hledání vyhledejte "Azure Kognitivní hledání" nebo přejděte k prostředku přes **Web** > **Azure kognitivní hledání**.
 
-![Přejít na prostředek služby Azure Kognitivní hledání](./media/search-create-service-portal/find-search3.png "Navigační cesta k Azure Kognitivní hledání")
+![Vytvoření prostředku na portálu](./media/search-create-service-portal/find-search3.png "Vytvoření prostředku na portálu")
 
-## <a name="select-a-subscription"></a>Výběr předplatného
+## <a name="choose-a-subscription"></a>Zvolit předplatné
 
-Pokud máte více než jedno předplatné, vyberte to, jehož součástí jsou také služby úložiště dat nebo souborů. Azure Kognitivní hledání může automaticky detekovat službu Azure Table a BLOB Storage, SQL Database a Azure Cosmos DB pro indexování prostřednictvím [*indexerů*](search-indexer-overview.md), ale jenom pro služby v rámci stejného předplatného.
+Nastavení ID předplatného a skupiny prostředků je váš první krok. Pokud máte více než jedno předplatné, vyberte to, jehož součástí jsou také služby úložiště dat nebo souborů. Azure Kognitivní hledání může automaticky detekovat službu Azure Table a BLOB Storage, SQL Database a Azure Cosmos DB pro indexování prostřednictvím [*indexerů*](search-indexer-overview.md), ale jenom pro služby v rámci stejného předplatného.
 
 ## <a name="set-a-resource-group"></a>Nastavení skupiny prostředků
 
-Skupina prostředků je povinná a je užitečná pro správu prostředků, včetně služby cost management. Skupina prostředků se může skládat z jedné služby nebo více služeb používaných společně. Pokud například používáte Azure Kognitivní hledání k indexování databáze Azure Cosmos DB, mohli byste pro účely správy nastavit obě služby stejné skupiny prostředků. 
+Skupina prostředků je povinná a je užitečná pro správu všech prostředků, včetně nákladů. Skupina prostředků se může skládat z jedné služby nebo více služeb používaných společně. Pokud například používáte Azure Kognitivní hledání k indexování databáze Azure Cosmos DB, mohli byste pro účely správy nastavit obě služby stejné skupiny prostředků. 
 
 Pokud nekombinujete prostředky do jedné skupiny, nebo pokud jsou stávající skupiny prostředků vyplněné prostředky používanými v nesouvisejících řešeních, vytvořte novou skupinu prostředků jenom pro svůj prostředek Azure Kognitivní hledání. 
 
-Při používání služby můžete sledovat náklady na aktuální a předpokládané náklady (jak je znázorněno na snímku obrazovky), nebo se můžete posunout dolů a zobrazit poplatky za jednotlivé prostředky.
+![Vytvořit novou skupinu prostředků](./media/search-create-service-portal/new-resource-group.png "Vytvoření nové skupiny prostředků")
+
+V průběhu času můžete sledovat aktuální a předpokládané náklady (jak je znázorněno na snímku obrazovky) nebo přejít dolů a zobrazit poplatky za jednotlivé prostředky. Následující snímek obrazovky znázorňuje druh informací o nákladech, které můžete očekávat, když zkombinujete více prostředků do jedné skupiny.
 
 ![Správa nákladů na úrovni skupiny prostředků](./media/search-create-service-portal/resource-group-cost-management.png "Správa nákladů na úrovni skupiny prostředků")
 
 > [!TIP]
-> Odstraněním skupiny prostředků se odstraní také služby v této skupině. U prototypových projektů, které využívají více služeb, spojení všech služeb do stejné skupiny prostředků usnadňuje vyčištění po skončení projektu.
+> Skupiny prostředků zjednodušují vyčištění, protože odstraněním skupiny se také odstraní služby, které jsou v ní obsažené. U prototypových projektů, které využívají více služeb, spojení všech služeb do stejné skupiny prostředků usnadňuje vyčištění po skončení projektu.
 
 ## <a name="name-the-service"></a>Pojmenování služby
 
@@ -77,7 +79,7 @@ Jako služba Azure je možné Azure Kognitivní hledání hostovat v datových c
 
 Kliknutím na stejné umístění pro několik služeb můžete snížit nebo vyvarovat poplatky za šířku pásma. Pokud například indexuje data, která poskytuje jiná služba Azure (Azure Storage, Azure Cosmos DB Azure SQL Database), vytvoření služby Azure kognitivní hledání ve stejné oblasti se vyhne poplatkům za šířku pásma (u odchozích dat se neúčtují žádné poplatky, když služby jsou ve stejné oblasti).
 
-Pokud navíc používáte obohacení vyhledávání AI, vytvořte službu ve stejné oblasti jako prostředek Cognitive Services. *Společné umístění Azure kognitivní hledání a Cognitive Services ve stejné oblasti je požadavek na obohacení AI*.
+Pokud navíc používáte rozšíření AI, vytvořte službu ve stejné oblasti jako Cognitive Services. *Společné umístění Azure kognitivní hledání a Cognitive Services ve stejné oblasti je požadavek na obohacení AI*.
 
 > [!Note]
 > Střed Indie není v tuto chvíli pro nové služby k dispozici. Pro služby, které jsou už v Střed Indie, můžete škálovat bez omezení a služba je v této oblasti plně podporovaná. Omezení v této oblasti je dočasné a omezené jenom na nové služby. Tato poznámka se odstraní, když už neplatí omezení.
@@ -104,9 +106,9 @@ Vaše služba se nasadí během několika minut, což můžete sledovat prostře
 
 Pokud nepoužíváte portál, programový přístup k vaší nové službě vyžaduje, abyste zadali koncový bod adresy URL a klíč rozhraní API pro ověřování.
 
-1. Na stránce Přehled služby Najděte a zkopírujte koncový bod adresy URL na pravé straně stránky.
+1. Na stránce **Přehled** vyhledejte a zkopírujte koncový bod adresy URL na pravé straně stránky.
 
-2. V levém navigačním podokně vyberte **klíče** a pak zkopírujte jeden z klíčů správce (Jedná se o ekvivalentní). K vytváření, aktualizaci a odstraňování objektů ve službě se vyžadují klíče rozhraní API pro správu.
+2. Na stránce **klíče** zkopírujte jeden z klíčů správce (Jedná se o ekvivalentní). K vytváření, aktualizaci a odstraňování objektů ve službě se vyžadují klíče rozhraní API pro správu. Naproti tomu klíče dotazů poskytují přístup pro čtení k obsahu indexu.
 
    ![Stránka s přehledem služby s koncovým bodem adresy URL](./media/search-create-service-portal/get-url-key.png "Koncový bod adresy URL a další podrobnosti služby")
 
@@ -151,7 +153,7 @@ Druhá služba není potřebná pro zajištění vysoké dostupnosti. Vysoká do
 
 ## <a name="next-steps"></a>Další kroky
 
-Po zřízení služby Azure Kognitivní hledání můžete na portálu pokračovat a vytvořit svůj první index.
+Po zřízení služby můžete na portálu pokračovat a vytvořit svůj první index.
 
 > [!div class="nextstepaction"]
 > [Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání na portálu](search-get-started-portal.md)

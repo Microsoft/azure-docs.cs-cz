@@ -6,14 +6,14 @@ author: bandersmsft
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/01/2019
 ms.author: banders
-ms.openlocfilehash: d211334ad2aa760cd63b98c6827fb2512811a1d3
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b1cc034b4d397f170b57e873cb9a5d74c91f83f4
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70806945"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73746455"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>Nákup rezervací s měsíčními platbami
 
@@ -24,6 +24,7 @@ Doposud vyžadovaly rezervace Azure platbu předem. Teď můžete za rezervace p
 Měsíční platby jsou k dispozici pro:
 
 - Virtuální počítače
+- Azure Storage
 - SQL Database
 - SQL Data Warehouse
 - Databáze Cosmos
@@ -60,20 +61,6 @@ Když vyměňujete měsíčně placenou rezervaci, celkové náklady na nový n�
 Pokud zrušíte měsíčně placenou rezervaci, může Microsoft za budoucí potvrzené platby, které jsou zrušeny, požadovat poplatek za zrušení. Zbývající potvrzené platby narůstají k limitu refundace 50 000 USD.
 
 Další informace o výměně a refundacích najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](billing-azure-reservations-self-service-exchange-and-refund.md).
-
-## <a name="faq"></a>Časté otázky
-
-Otázka: Nabízí Azure možnost částečně předem placených rezervací?<br>
-Odpověď: Ne. Protože náklady na rezervace placené předem i na rezervace placené měsíčně jsou stejné, Microsoft nepodporuje částečné platby předem.
-
-Otázka: Jsou měsíční platby k dispozici pro program Microsoft Cloud Solution Provider (CSP)?<br>
-Odpověď: Ano, partneři můžou kupovat rezervace pro své zákazníky CSP na webu Azure Portal. Možnost nákupu rezervací s měsíční fakturací není v Partnerském centru k dispozici.
-
-Otázka: Jsem zákazník služby Azure Government v USA. Můžu za nákupy rezervací platit měsíčně?<br>
-Odpověď: Momentálně ne.
-
-Otázka: Můžu výměnu nebo refundaci udělat přímo na webu Azure Portal – místo vytváření lístku podpory?<br>
-Odpověď: Momentálně ne. Žádosti o výměnu a refundaci rezervací s měsíčními platbami zpracovává podpora Azure.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/15/2019
+ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a77c0e38db06698e714c3d0c3df0d9a5f028787b
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 097429e9c761d447a7164c813a6c84d3f07f0ab6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71672939"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891423"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Úlohy SAP v Azure: kontrolní seznam pro plánování a nasazení
 
@@ -128,7 +128,7 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
             - Oracle Linux 7,5. Pokud používáte jádro RHCKL, je vyžadována verze 3.10.0-862.13.1. el7. Pokud používáte jádro Oracle UEK, je vyžadována verze 5.
         - Otestujte a vyhodnoťte latenci sítě mezi virtuálními počítači aplikační vrstvy SAP a virtuálními počítači DBMS podle poznámky k podpoře SAP [#500235](https://launchpad.support.sap.com/#/notes/500235) a [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Vyhodnoťte výsledky na základě pokynů pro latenci sítě v části [SAP Support note #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Latence sítě by měla být v mírném nebo dobrém rozsahu. Výjimky se vztahují na provoz mezi virtuálními počítači a velkými jednotkami instancí, jak je uvedeno v [tomto článku](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance).
         - Ujistěte se, že nasazení interního nástroje jsou nastavená tak, aby používala přímé vrácení serveru. Toto nastavení omezí latenci při použití Azure ILBs pro konfigurace s vysokou dostupností na vrstvě DBMS.
-        - Pokud používáte Azure Load Balancer společně s hostovanými operačními systémy Linux, ověřte, zda je parametr sítě Linux **net. IPv4. TCP _timestamps** nastaven na **hodnotu 0**. Toto doporučení je v konfliktu s doporučeními ve starších verzích [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421). Poznámka SAP je nyní aktualizována na stav, že tento parametr musí být nastaven na **hodnotu 0** , aby fungoval se službou Azure Load Balancer.
+        - Pokud používáte Azure Load Balancer společně s hostovanými operačními systémy Linux, ověřte, zda je parametr sítě Linux **net. IPv4. tcp_timestamps** nastaven na **hodnotu 0**. Toto doporučení je v konfliktu s doporučeními ve starších verzích [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421). Poznámka SAP je nyní aktualizována na stav, že tento parametr musí být nastaven na **hodnotu 0** , aby fungoval se službou Azure Load Balancer.
         - Pokud chcete dosáhnout optimální latence sítě, zvažte použití [skupin umístění blízkosti Azure](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) . Další informace najdete v tématu [skupiny umístění blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
    4. Nasazení s vysokou dostupností a zotavením po havárii.
         - Pokud nasadíte vrstvu aplikace SAP bez definování konkrétní zóny dostupnosti Azure, ujistěte se, že všechny virtuální počítače, na kterých běží instance dialogových oken SAP nebo instance middlewaru s jedním systémem SAP, jsou nasazené ve [skupině dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability).
@@ -160,7 +160,7 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
    1.  Ověřte, že [Skupina zabezpečení sítě a pravidla ASC](https://docs.microsoft.com/azure/virtual-network/security-overview) pracují podle očekávání a chrání chráněné prostředky.
    1.  Ujistěte se, že jsou šifrované všechny prostředky, které je třeba šifrovat. Definuje a implementuje procesy pro zálohování certifikátů, ukládání a přístup k těmto certifikátům a obnovování šifrovaných entit.
    1.  Použijte [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq) pro disky s operačním systémem, kde je to možné, z pohledu na operační systém – bod podpory.
-   1.  Ujistěte se, že nepoužíváte příliš mnoho vrstev šifrování. V některých případech má smysl použít Azure Disk Encryption společně s jednou z transparentní šifrování datch metod DBMS.
+   1.  Ujistěte se, že nepoužíváte příliš mnoho vrstev šifrování. V některých případech má smysl použít Azure Disk Encryption společně s jednou z transparentní šifrování datch metod DBMS k ochraně různých disků nebo komponent na stejném serveru.  Na serveru SAP DBMS můžete například povolit Azure Disk Encryption (ADE) na spouštěcím disku operačního systému (Pokud operační systém podporuje ADE) a tyto datové disky nepoužívá soubory pro trvalost dat DBMS.  Příkladem je použití ADE na disku, který uchovává šifrovací klíče DBMS TDE.
 1. Testování výkonu. V SAP na základě trasování a měření SAP proveďte tato porovnání:
    - V případě potřeby Porovnejte prvních 10 online sestav s vaší aktuální implementací.
    - V případě potřeby Porovnejte prvních 10 dávkových úloh s aktuální implementací.

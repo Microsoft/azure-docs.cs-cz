@@ -1,6 +1,6 @@
 ---
 title: Přidání ID korelace do zpráv IoT s distribuovaným trasováním (Preview)
-description: ''
+description: Naučte se používat distribuované trasování, které umožňuje sledovat zprávy IoT v rámci služeb Azure, které vaše řešení používá.
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: e4403c245a3cae671f83260ae313ed400b0f7721
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: a6e7d2dc9b6274c07fda011bff8ec9dc59f74f95
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259356"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889449"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Trasování zpráv ze zařízení do cloudu Azure IoT pomocí distribuované trasování (Preview)
 
@@ -28,7 +28,7 @@ Povolení distribuovaného trasování pro IoT Hub vám dává možnost:
 - Měření a pochopení toku zpráv a latence ze zařízení až po IoT Hub a směrování koncových bodů.
 - Začněte s úvahami, jak chcete implementovat distribuované trasování pro služby mimo Azure ve vašem řešení IoT.
 
-V tomto článku použijete [sadu SDK pro zařízení Azure IoT pro jazyk C](./iot-hub-device-sdk-c-intro.md) s distribuovaným trasováním. Podpora distribuovaného trasování pro ostatní sady SDK stále probíhá.
+V tomto článku použijete [sadu SDK pro zařízení Azure IoT pro jazyk C](iot-hub-device-sdk-c-intro.md) s distribuovaným trasováním. Podpora distribuovaného trasování pro ostatní sady SDK stále probíhá.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -38,7 +38,7 @@ V tomto článku použijete [sadu SDK pro zařízení Azure IoT pro jazyk C](./i
   - **Jihovýchodní Asie**
   - **Západní USA 2**
 
-- V tomto článku se předpokládá, že máte zkušenosti s posíláním zpráv telemetrie do služby IoT Hub. Ujistěte se, že jste dokončili [rychlý Start pro odeslání telemetrie C](./quickstart-send-telemetry-c.md).
+- V tomto článku se předpokládá, že máte zkušenosti s posíláním zpráv telemetrie do služby IoT Hub. Ujistěte se, že jste dokončili [rychlý Start pro odeslání telemetrie C](quickstart-send-telemetry-c.md).
 
 - Zaregistrujte zařízení ve službě IoT Hub (kroky dostupné v každém rychlém startu) a poznamenejte si připojovací řetězec.
 
@@ -58,8 +58,8 @@ V této části nakonfigurujete IoT Hub k protokolování atributů distribuovan
 
 1. Vyberte jednu nebo více z následujících možností, které určují, kam bude protokolování odesláno:
 
-    - **Archivovat do účtu úložiště**: Nakonfigurujte účet úložiště, který bude obsahovat informace o protokolování.
-    - **Streamování do centra událostí**: Nakonfigurujte centrum událostí tak, aby obsahovalo informace o protokolování.
+    - **Archivovat do účtu úložiště**: Nakonfigurujte účet úložiště tak, aby obsahoval informace o protokolování.
+    - **Streamování do centra událostí**: Konfigurace centra událostí tak, aby obsahovalo informace o protokolování.
     - **Odeslat do Log Analytics**: Nakonfigurujte pracovní prostor Log Analytics tak, aby obsahoval informace o protokolování.
 
 1. V části **protokol** vyberte operace, pro které chcete informace o protokolování.
@@ -88,9 +88,9 @@ Tyto pokyny se týkají vytváření ukázek ve Windows. Další prostředí nal
 
 ### <a name="clone-the-source-code-and-initialize"></a>Klonovat zdrojový kód a inicializovat
 
-1. Pro Visual Studio 2015 nebo 2017 nainstalujte [úlohu vývoj desktopových C++aplikací s názvem](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2017) .
+1. Pro Visual Studio 2015 nebo 2017 nainstalujte [úlohu vývoj desktopových aplikací s C++názvem](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2017) .
 
-1. Nainstalujte [cmake](https://cmake.org/). Zajistěte, aby byla `PATH` v aplikaci `cmake -version` , a to zadáním z příkazového řádku.
+1. Nainstalujte [cmake](https://cmake.org/). Zadáním `cmake -version` z příkazového řádku se ujistěte, že je ve vašem `PATH`.
 
 1. Otevřete prostředí příkazového řádku nebo Git Bash. Spusťte následující příkaz pro naklonování úložiště GitHub sady [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c):
 
@@ -109,7 +109,7 @@ Tyto pokyny se týkají vytváření ukázek ve Windows. Další prostředí nal
     cmake ..
     ```
 
-    Pokud `cmake` nemůžete C++ najít kompilátor, může při spuštění výše uvedeného příkazu dojít k chybám sestavení. Pokud k tomu dojde, zkuste tento příkaz spustit v [příkazovém řádku sady Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
+    Pokud `cmake` nenajde váš C++ kompilátor, může při spuštění výše uvedeného příkazu dojít k chybám sestavení. Pokud k tomu dojde, zkuste tento příkaz spustit v [příkazovém řádku sady Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
 
     Po úspěšném sestavení by posledních pár řádků výstupu mělo vypadat přibližně takto:
 
@@ -129,23 +129,23 @@ Tyto pokyny se týkají vytváření ukázek ve Windows. Další prostředí nal
 
 ### <a name="edit-the-send-telemetry-sample-to-enable-distributed-tracing"></a>Pokud chcete povolit distribuované trasování, upravte ukázku odeslat telemetrii.
 
-1. K otevření `azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c` zdrojového souboru použijte Editor.
+1. Pomocí editoru otevřete zdrojový soubor `azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c`.
 
 1. Vyhledejte deklaraci konstanty `connectionString`:
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_config&highlight=2)]
 
-    Hodnotu `connectionString` konstanty nahraďte připojovacím řetězcem zařízení, na které jste si poznamenali v části [registrace zařízení](./quickstart-send-telemetry-c.md#register-a-device) v rychlém startu pro [odeslání telemetrie C](./quickstart-send-telemetry-c.md).
+    Hodnotu `connectionString` konstanty nahraďte připojovacím řetězcem zařízení, na které jste si poznamenali v části [registrace zařízení](./quickstart-send-telemetry-c.md#register-a-device) v [rychlém startu pro odeslání telemetrie C](./quickstart-send-telemetry-c.md).
 
-1. Změňte definici na `5000`: `MESSAGE_COUNT`
+1. Změňte `MESSAGE_COUNT` definování na `5000`:
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_config&highlight=3)]
 
-1. Vyhledejte řádek kódu, který volá `IoTHubDeviceClient_LL_SetConnectionStatusCallback` k registraci funkce zpětného volání stavu připojení před smyčkou odeslání zprávy. Přidejte kód pod tento řádek, jak je znázorněno `IoTHubDeviceClient_LL_EnablePolicyConfiguration` níže pro volání povolení distribuovaného trasování pro zařízení:
+1. Vyhledejte řádek kódu, který volá `IoTHubDeviceClient_LL_SetConnectionStatusCallback` k registraci funkce zpětného volání stavu připojení před smyčkou odeslání zprávy. Přidejte kód pod tento řádek, jak je znázorněno níže, a zavolejte `IoTHubDeviceClient_LL_EnablePolicyConfiguration` povolení distribuovaného trasování pro zařízení:
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_tracing&highlight=5)]
 
-    Funkce umožňuje zásady pro konkrétní funkce IoTHub, které jsou konfigurovány prostřednictvím [vláken zařízení.](./iot-hub-devguide-device-twins.md) `IoTHubDeviceClient_LL_EnablePolicyConfiguration` Jakmile `POLICY_CONFIGURATION_DISTRIBUTED_TRACING` je tato funkce povolená s výše uvedeným řádkem kódu, bude chování trasování zařízení odrážet distribuované vektorizace změny provedené v zařízení.
+    Funkce `IoTHubDeviceClient_LL_EnablePolicyConfiguration` umožňuje zásady pro konkrétní funkce IoTHub, které jsou konfigurovány prostřednictvím [vláken zařízení](./iot-hub-devguide-device-twins.md). Po povolení `POLICY_CONFIGURATION_DISTRIBUTED_TRACING` s výše uvedeným řádkem kódu bude chování trasování zařízení odrážet distribuované vektorizace změny provedené v zařízení.
 
 1. Pokud chcete, aby se ukázková aplikace běžela bez použití všech kvót, přidejte na konci smyčky odeslat zprávu prodlevu o délce jednoho sekundy:
 
@@ -153,7 +153,7 @@ Tyto pokyny se týkají vytváření ukázek ve Windows. Další prostředí nal
 
 ### <a name="compile-and-run"></a>Kompilace a spuštění
 
-1. Přejděte do adresáře projektu *iothub_ll_telemetry_sample* z adresáře cmake (`azure-iot-sdk-c/cmake`), který jste vytvořili dříve, a zkompilujte ukázku:
+1. Přejděte do adresáře *iothub_ll_telemetry_sample* projektu z adresáře cmake (`azure-iot-sdk-c/cmake`), který jste vytvořili dříve, a zkompilujte ukázku:
 
     ```cmd
     cd iothub_client/samples/iothub_ll_telemetry_sample
@@ -174,10 +174,10 @@ Tyto pokyny se týkají vytváření ukázek ve Windows. Další prostředí nal
 
 **Není triviální** k zobrazení náhledu funkce distribuované trasování bez použití sady C SDK. Proto se tento přístup nedoporučuje.
 
-Nejdřív je nutné implementovat všechny primitivní IoT Hub protokolu ve zprávách pomocí Průvodce vývojem [pro vytváření a čtení zpráv IoT Hub](iot-hub-devguide-messages-construct.md). Pak upravte vlastnosti protokolu ve zprávách MQTT/AMQP na hodnotu přidat `tracestate` jako systémovou **vlastnost**. Konkrétně:
+Nejdřív je nutné implementovat všechny primitivní IoT Hub protokolu ve zprávách pomocí Průvodce vývojem [pro vytváření a čtení zpráv IoT Hub](iot-hub-devguide-messages-construct.md). Pak upravte vlastnosti protokolu ve zprávách MQTT/AMQP a přidejte `tracestate` jako **systémovou vlastnost**. Konkrétně:
 
-* V případě MQTT přidejte `%24.tracestate=timestamp%3d1539243209` do tématu zprávy, kde `1539243209` by měla být nahrazena časem vytvoření zprávy ve formátu časového razítka systému UNIX. Příklad naleznete v tématu implementace [v sadě C SDK](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761) .
-* Pro AMQP přidejte `key("tracestate")` a `value("timestamp=1539243209")` jako anotaci zpráv. Referenční implementaci najdete [tady](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527).
+* V případě MQTT přidejte `%24.tracestate=timestamp%3d1539243209` do tématu zprávy, kde by `1539243209` mělo být nahrazeno časem vytvoření zprávy ve formátu časového razítka systému UNIX. Příklad naleznete v tématu implementace [v sadě C SDK](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761) .
+* V případě AMQP přidejte `key("tracestate")` a `value("timestamp=1539243209")` jako anotaci zpráv. Referenční implementaci najdete [tady](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527).
 
 Chcete-li řídit procento zpráv obsahujících tuto vlastnost, implementujte logiku pro naslouchání událostem inicializovaným v cloudu, jako jsou například zdvojené aktualizace.
 
@@ -201,11 +201,11 @@ Chcete-li změnit procento zpráv, které mají být trasovány z cloudu, je nut
 
 1. Počkejte několik sekund a pak stiskněte tlačítko **aktualizovat**. po úspěšném potvrzení zařízení se zobrazí ikona synchronizace se symbolem zaškrtnutí.
 
-1. Vraťte se do okna konzoly pro aplikaci zprávy telemetrie. Ve vlastnostech aplikace se zobrazí zprávy odesílané `tracestate` ve službě.
+1. Vraťte se do okna konzoly pro aplikaci zprávy telemetrie. Ve vlastnostech aplikace se zobrazí zprávy odesílané pomocí `tracestate`.
 
     ![Stav trasování](./media/iot-hub-distributed-tracing/MicrosoftTeams-image.png)
 
-1. Volitelné Nastavte vzorkovací frekvenci na jinou hodnotu a sledujte změnu četnosti, kterou zprávy ve vlastnostech aplikace obsahují `tracestate` .
+1. Volitelné Nastavte vzorkovací frekvenci na jinou hodnotu a sledujte změnu v četnosti, kterou zprávy do vlastností aplikace zahrnují `tracestate`.
 
 ### <a name="update-using-azure-iot-hub-toolkit-for-vs-code"></a>Aktualizace pomocí sady Azure IoT Hub Toolkit pro VS Code
 
@@ -240,10 +240,10 @@ Pokud chcete aktualizovat konfiguraci pro vzorkování distribuovaného trasová
 }
 ```
 
-| Název elementu | Požadováno | Typ | Popis |
+| Název elementu | Požaduje se | Typ | Popis |
 |-----------------|----------|---------|-----------------------------------------------------|
-| `sampling_mode` | Ano | Integer | Pro zapnutí a vypnutí vzorkování se aktuálně podporují dvě hodnoty režimu. `1`je zapnuto a `2` , je vypnuto. |
-| `sampling_rate` | Ano | Integer | Tato hodnota je procento. Povolují se jenom `0` hodnoty `100` z na (včetně).  |
+| `sampling_mode` | Ano | Integer | Pro zapnutí a vypnutí vzorkování se aktuálně podporují dvě hodnoty režimu. `1` je zapnuto a, `2` je vypnutý. |
+| `sampling_rate` | Ano | Integer | Tato hodnota je procento. Povolují se jenom hodnoty z `0` do `100` (včetně).  |
 
 ## <a name="query-and-visualize"></a>Dotazování a vizualizace
 
@@ -251,7 +251,7 @@ Chcete-li zobrazit všechna trasování protokolovaná IoT Hub, proveďte dotaz 
 
 ### <a name="query-using-log-analytics"></a>Dotaz pomocí Log Analytics
 
-Pokud jste nastavili [Log Analytics s diagnostickými protokoly](../azure-monitor/platform/resource-logs-collect-storage.md), vyhledejte v `DistributedTracing` kategorii protokoly. Tento dotaz například zobrazí všechna zaznamenaná trasování:
+Pokud jste nastavili [Log Analytics s diagnostickými protokoly](../azure-monitor/platform/resource-logs-collect-storage.md), vyhledejte v kategorii `DistributedTracing` dotaz na protokoly. Tento dotaz například zobrazí všechna zaznamenaná trasování:
 
 ```Kusto
 // All distributed traces 
@@ -263,11 +263,11 @@ AzureDiagnostics
 
 Příklady protokolů, jak je znázorněno Log Analytics:
 
-| TimeGenerated | OperationName | Category | Level | CorrelationId | Trvání v MS | properties |
+| TimeGenerated | OperationName | Kategorie | Úroveň | CorrelationId | Trvání v MS | Vlastnosti |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| 2018-02-22T03:28:28.633Z | DiagnosticIoTHubD2C | DistributedTracing | Informační | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId":"AZ3166","messageSize":"96","callerLocalTimeUtc":"2018-02-22T03:27:28.633Z","calleeLocalTimeUtc":"2018-02-22T03:27:28.687Z"} |
-| 2018-02-22T03:28:38.633Z | DiagnosticIoTHubIngress | DistributedTracing | Informační | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled":"false","parentSpanId":"0144d2590aacd909"} |
-| 2018-02-22T03:28:48.633Z | DiagnosticIoTHubEgress | DistributedTracing | Informační | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType": "EventHub"; "koncový bod": "myEventHub", "parentSpanId": "0144d2590aacd909"} |
+| 2018-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | DistributedTracing | Informační | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId": "AZ3166", "messageSize": "96", "callerLocalTimeUtc": "2018-02-22T03:27:28.633 Z", "calleeLocalTimeUtc": "2018-02-22T03:27:28.687 Z"} |
+| 2018-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | DistributedTracing | Informační | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled": "false"; "parentSpanId": "0144d2590aacd909"} |
+| 2018-02-22T03:28:48.633 Z | DiagnosticIoTHubEgress | DistributedTracing | Informační | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType": "EventHub"; "koncový bod": "myEventHub", "parentSpanId": "0144d2590aacd909"} |
 
 Informace o různých typech protokolů najdete v tématu [diagnostické protokoly Azure IoT Hub](iot-hub-monitor-resource-health.md#distributed-tracing-preview).
 
@@ -304,9 +304,9 @@ Po povolení bude podpora distribuovaného trasování pro IoT Hub postupovat po
 1. Zařízení IoT zprávu pošle IoT Hub.
 1. Zpráva se dorazí do brány služby IoT Hub.
 1. IoT Hub vyhledá `tracestate` ve vlastnostech aplikace zprávy a zkontroluje, jestli je ve správném formátu.
-1. Pokud ano, IoT Hub generuje a zaznamená `trace-id` protokoly `span-id` a a Azure monitor diagnostické protokoly v kategorii `DiagnosticIoTHubD2C`.
-1. Po dokončení zpracování zprávy IoT Hub vytvoří další `span-id` a zaprotokoluje je spolu s existující `trace-id` kategorií `DiagnosticIoTHubIngress`.
-1. Pokud je pro zprávu zapnuté směrování, IoT Hub zapíše do vlastního koncového bodu a zaznamená `span-id` jiný se stejnou `trace-id` kategorií `DiagnosticIoTHubEgress`.
+1. Pokud ano, IoT Hub vygeneruje a zaprotokoluje `trace-id` a `span-id` pro Azure Monitor diagnostické protokoly v kategorii `DiagnosticIoTHubD2C`.
+1. Po dokončení zpracování zprávy IoT Hub vygeneruje další `span-id` a zaprotokoluje ho spolu s existujícím `trace-id` v `DiagnosticIoTHubIngress`kategorie.
+1. Pokud je pro zprávu povoleno směrování, IoT Hub zapíše do vlastního koncového bodu a zaprotokoluje další `span-id` se stejným `trace-id` v `DiagnosticIoTHubEgress`kategorie.
 1. Výše uvedené kroky se opakují pro každou vygenerovanou zprávu.
 
 ## <a name="public-preview-limits-and-considerations"></a>Omezení a požadavky pro veřejnou verzi Preview

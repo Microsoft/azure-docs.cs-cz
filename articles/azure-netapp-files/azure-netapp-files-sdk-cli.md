@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: b-juche
-ms.openlocfilehash: 290fc279a7d2ff2369758c170b3fb64635ee01af
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: fba762a53ec562bdbd52468716ce6e44eb717aaa
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532282"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887189"
 ---
 # <a name="azure-netapp-files-sdks-and-cli-tools"></a>Sady Azure NetApp Files SDK a nástroje CLI
 
@@ -33,7 +33,7 @@ V následující tabulce jsou uvedeny podporované sady SDK.  Podrobnosti o podp
 |------------------|--------------------------------------------------------------|
 |    .NET  |    [Azure/Azure – sada SDK – pro-NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/netapp)    |
 |    Python  |  [Azure/Azure – SDK – for-Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/netapp)    |
-|    Go    |    [Azure/Azure – SDK – for-přejít](https://github.com/Azure/azure-sdk-for-go/tree/master/services/netapp)       |
+|    Přejít    |    [Azure/Azure – SDK – for-přejít](https://github.com/Azure/azure-sdk-for-go/tree/master/services/netapp)       |
 |    Java |     [Azure/Azure – SDK – pro – Java](https://github.com/Azure/azure-sdk-for-java/tree/master/netapp/resource-manager) |
 |    JavaScript    |    [Azure/Azure – SDK – pro-js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/netapp/arm-netapp)    |
 |    Ruby   |    [Azure/Azure – SDK – pro – Ruby](https://github.com/Azure/azure-sdk-for-ruby/tree/master/management/azure_mgmt_netapp)    |
@@ -47,13 +47,13 @@ V následující tabulce jsou uvedené podporované nástroje CLI a jejich odkaz
 |    Azure CLI  |    [AZ netappfiles](https://docs.microsoft.com/cli/azure/netappfiles?view=azure-cli-latest)    |
 |    PowerShell   |    [Azure PowerShell pro Azure NetApp Files](https://docs.microsoft.com/powershell/module/az.netappfiles/?view=azps-2.5.0#netapp_files)    |
 
-## <a name="code-samples"></a>Ukázky kódu
+## <a name="code-samples"></a>Ukázky kódů
 
 V následující tabulce jsou uvedeny ukázky kódu pro váš odkaz.   
 
 |    Jazyk/nástroj    |    Dokumentace k ukázce kódu    |
 |------------------|--------------------------------------------|
-|    .NET   |    [Ukázka Azure NetApp Files SDK pro. NETCore](https://docs.microsoft.com/en-us/samples/azure-samples/netappfiles-dotnetcore-sdk-sample/azure-netappfiles-sdk-sample-for-net-core/) |    
+|    .NET   |    [Ukázka Azure NetApp Files SDK pro. NETCore](https://docs.microsoft.com/samples/azure-samples/netappfiles-dotnetcore-sdk-sample/azure-netappfiles-sdk-sample-for-net-core/) |    
 |    Python    |    [Ukázka sady SDK pro Azure NetApp Files pro Python](https://docs.microsoft.com/samples/azure-samples/netappfiles-python-sdk-sample/azure-netappfiles-sdk-sample-for-python/)    |
 
 ## <a name="next-steps"></a>Další kroky   

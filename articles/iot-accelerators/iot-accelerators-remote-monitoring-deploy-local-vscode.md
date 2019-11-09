@@ -1,6 +1,6 @@
 ---
-title: Nasazení řešení vzdáleného monitorování místně (Visual Studio Code) – Azure | Dokumentace Microsoftu
-description: Tato příručka ukazuje, jak do svého místního počítače pomocí nástroje Visual Studio Code pro vývoj a testování nasazení akcelerátoru řešení vzdáleného monitorování.
+title: Nasazení řešení vzdáleného monitorování místně – Visual Studio Code – Azure | Microsoft Docs
+description: V této příručce se dozvíte, jak nasadit akcelerátor řešení vzdáleného monitorování do místního počítače pomocí Visual Studio Code pro testování a vývoj.
 author: avneet723
 manager: hegate
 ms.author: avneets
@@ -8,99 +8,99 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: ed3301eb0e723e05e2a642ffea2f1609032553b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8f1d20e9a6a78d99a23fe4b98aeb4f3eb8359da7
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730170"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890963"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně – Visual Studio Code
+# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>Nasaďte místně Visual Studio Code akcelerátor řešení vzdáleného monitorování.
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-Tento článek ukazuje, jak nasazení akcelerátoru řešení vzdáleného monitorování do místního počítače pro vývoj a testování. Zjistíte, jak spouštět mikroslužby v aplikaci Visual Studio Code. Nasazení místního mikroslužeb používá tyto cloudové služby: IoT Hub, Cosmos DB, Azure Streamovou analýzu a služby Azure Time Series Insights.
+V tomto článku se dozvíte, jak nasadit akcelerátor řešení vzdáleného monitorování do místního počítače pro testování a vývoj. Naučíte se, jak spustit mikroslužby v Visual Studio Code. Místní nasazení mikroslužeb používá následující cloudové služby: IoT Hub, Cosmos DB, Azure streaming Analytics a Azure Time Series Insights.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K nasazení služby Azure používá akcelerátor řešení vzdálené monitorování, potřebujete aktivní předplatné Azure.
+Pokud chcete nasadit služby Azure používané akcelerátorem řešení vzdáleného monitorování, potřebujete aktivní předplatné Azure.
 
 Pokud nemáte účet, můžete si během několika minut vytvořit bezplatný účet zkušební. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-### <a name="machine-setup"></a>Instalace počítače
+### <a name="machine-setup"></a>Nastavení počítače
 
-K dokončení místní nasazení, budete potřebovat následující nástroje nainstalované na místním vývojovém počítači:
+K dokončení místního nasazení potřebujete na svém místním vývojovém počítači nainstalované následující nástroje:
 
 * [Git](https://git-scm.com/)
 * [.NET Core](https://dotnet.microsoft.com/download)
 * [Docker](https://www.docker.com)
-* [Server Nginx](https://nginx.org/en/download.html)
+* [Nginx](https://nginx.org/en/download.html)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [VS Code C# rozšíření](https://code.visualstudio.com/docs/languages/csharp)
-* [Node.js v8](https://nodejs.org/) -tento software je předpokladem pro počítače s CLI, skripty použít k vytvoření prostředků Azure. Nepoužívejte Node.js v10
+* [C# Rozšíření vs Code](https://code.visualstudio.com/docs/languages/csharp)
+* [Node. js V8](https://nodejs.org/) – tento software je předpokladem pro počítače CLI, které skripty používají k vytváření prostředků Azure. Nepoužívejte Node. js v10 za účelem
 
 > [!NOTE]
-> Visual Studio Code je k dispozici pro Windows, Mac OS a Ubuntu.
+> Visual Studio Code je k dispozici pro Windows, Mac a Ubuntu.
 
 [!INCLUDE [iot-accelerators-local-setup](../../includes/iot-accelerators-local-setup.md)]
 
-## <a name="run-the-microservices"></a>Spouštět mikroslužby
+## <a name="run-the-microservices"></a>Spustit mikroslužby
 
-V této části spustíte mikroslužeb vzdáleného monitorování. Spuštění ve webovém uživatelském rozhraní nativně, simulace zařízení služby v Dockeru a mikroslužeb ve Visual Studio Code.
+V této části spustíte mikroslužby vzdáleného monitorování. Webové uživatelské rozhraní běží nativně, služba simulace zařízení v Docker a mikroslužby v Visual Studio Code.
 
 ### <a name="build-the-code"></a>Sestavení kódu
 
-Přejděte do azure-iot-pcs-remote-monitoring-dotnet\services v příkazovém řádku a spusťte následující příkazy sestavení kódu.
+Přejděte na Azure-IoT-PCs-Remote-Monitoring-dotnet\services na příkazovém řádku a spusťte následující příkazy a sestavte kód.
 
 ```cmd
 dotnet restore
 dotnet build -c Release
 ```
 
-### <a name="deploy-all-other-microservices-on-local-machine"></a>Nasadit všechny mikroslužby v místním počítači
+### <a name="deploy-all-other-microservices-on-local-machine"></a>Nasadit všechny ostatní mikroslužby v místním počítači
 
-Následující kroky ukazují, jak spouštět mikroslužby vzdálené monitorování ve Visual Studio Code:
+Následující kroky ukazují, jak spustit mikroslužby vzdáleného monitorování v Visual Studio Code:
 
 1. Spusťte editor Visual Studio Code.
-1. Ve VS Code, Otevřít **azure-iot-pcs-remote-monitoring-dotnet** složky.
-1. Vytvořit novou složku s názvem **.vscode** v **azure-iot-pcs-remote-monitoring-dotnet** složky.
-1. Zkopírujte soubory **launch.json** a **tasks.json** z services\scripts\local\launch\idesettings\vscode k **.vscode** složky, které jste právě vytvořili.
-1. Otevřít **ladění panel** v nástroji VS Code a spusťte **spustit všechny mikroslužby** konfigurace. Tato konfigurace mikroslužeb simulace zařízení spustí v Dockeru a běží mikroslužby v ladicím programu.
+1. V VS Code otevřete složku **Azure-IoT-PC-Remote-Monitoring-dotnet** .
+1. Ve složce **Azure-IoT-PC-Remote-Monitoring-dotnet** vytvořte novou složku s názvem **. VSCode** .
+1. Zkopírujte soubory **Launch. JSON** a **Tasks. JSON** z services\scripts\local\launch\idesettings\vscode do složky **. VSCode** , kterou jste právě vytvořili.
+1. Otevřete **panel ladění** v vs Code a spusťte konfiguraci **spuštění všech mikroslužeb** . Tato konfigurace spustí mikroslužbu simulace zařízení v Docker a spustí další mikroslužby v ladicím programu.
 
-Výstup spuštění **spustit všechny microsoervices** v konzole ladění bude vypadat nějak takto:
+Výstup ze spuštěných **běhů spustit všechny microsoervices** v konzole ladění vypadá následovně:
 
-[![Deploy-Local-Microservices](./media/deploy-locally-vscode/auth-debug-results-inline.png)](./media/deploy-locally-vscode/auth-debug-results-expanded.png#lightbox)
+[![nasazení – místní mikroslužby](./media/deploy-locally-vscode/auth-debug-results-inline.png)](./media/deploy-locally-vscode/auth-debug-results-expanded.png#lightbox)
 
 ### <a name="run-the-web-ui"></a>Spuštění webového uživatelského rozhraní
 
-V tomto kroku spuštění ve webovém uživatelském rozhraní. Přejděte do **azure-iot-pcs-remote-monitoring-dotnet\webui** z vaší místní složky zkopírujte a spusťte následující příkazy:
+V tomto kroku spustíte webové uživatelské rozhraní. Přejděte do složky **Azure-IoT-PCs-Remote-Monitoring-dotnet\webui** v místní kopii a spusťte následující příkazy:
 
 ```cmd
 npm install
 npm start
 ```
 
-Po dokončení spuštění v prohlížeči zobrazí na stránce **http:\//localhost:3000 / řídicí panel**. Chyby na této stránce se očekává. Chcete-li zobrazit aplikaci bez chyby, proveďte následující kroky.
+Po dokončení spuštění v prohlížeči se zobrazí stránka **http:\//localhost: 3000/řídicí panel**. Očekává se chyba na této stránce. Chcete-li zobrazit aplikaci bez chyb, proveďte následující krok.
 
-### <a name="configure-and-run-nginx"></a>Nakonfigurování a spuštění serveru NGINX
+### <a name="configure-and-run-nginx"></a>Konfigurace a spuštění NGINX
 
-Reverzní proxy server nastavte propojení webové aplikace a mikroslužeb spouštěných v místním počítači:
+Nastavte reverzní proxy server pro propojení webové aplikace a mikroslužeb běžící na vašem místním počítači:
 
-* Kopírování **nginx.conf** soubor **webui\scripts\localhost** složku **nginx\conf** instalační adresář.
-* Spustit **nginx**.
+* Zkopírujte soubor **Nginx. conf** ze složky **webui\scripts\localhost** do instalačního adresáře **nginx\conf** .
+* Spusťte **Nginx**.
 
-Další informace o spouštění **nginx**, naleznete v tématu [nginx pro Windows](https://nginx.org/en/docs/windows.html).
+Další informace o spuštění **Nginx**najdete v tématu [Nginx for Windows](https://nginx.org/en/docs/windows.html).
 
-### <a name="connect-to-the-dashboard"></a>Připojte se k řídicímu panelu
+### <a name="connect-to-the-dashboard"></a>Připojení k řídicímu panelu
 
-Chcete-li získat přístup k řídicím panelu řešení vzdáleného monitorování, přejděte na http:\//localhost:9000 v prohlížeči.
+Pokud chcete získat přístup k řídicímu panelu řešení vzdáleného monitorování, přejděte v prohlížeči na http:\//localhost: 9000.
 
 ## <a name="clean-up"></a>Vyčištění
 
-Aby se zabránilo zbytečným poplatky, po dokončení testování odebrat cloudovým službám z vašeho předplatného Azure. Pokud chcete odebrat služby, přejděte [webu Azure portal](https://ms.portal.azure.com) a odstranit prostředek skupiny, která **start.cmd** skript vytvořený.
+Aby nedocházelo k zbytečným poplatkům, po dokončení testování odeberte cloudové služby z předplatného Azure. Chcete-li odebrat služby, přejděte do [Azure Portal](https://ms.portal.azure.com) a odstraňte skupinu prostředků, kterou vytvořil skript **Start. cmd** .
 
-Můžete také odstranit místní kopie úložiště vzdálené monitorování vytvoří, když jste naklonovali zdrojový kód z Githubu.
+Můžete také odstranit místní kopii úložiště vzdáleného monitorování vytvořenou při klonování zdrojového kódu z GitHubu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Teď, když nasadíte řešení vzdáleného monitorování, dalším krokem je [prozkoumat možnosti řídicího panelu řešení](quickstart-remote-monitoring-deploy.md).
+Teď, když jste nasadili řešení vzdáleného monitorování, je dalším krokem [prozkoumat možnosti řídicího panelu řešení](quickstart-remote-monitoring-deploy.md).

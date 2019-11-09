@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a8823a9b354ca4ae9ecab0eeac265b486116bec
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 050bc3cf6b81b9467d9947a4f611477e2fcbcd9a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808971"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885868"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny v Azure Active Directory
 
@@ -54,7 +54,7 @@ Další podrobné pokyny najdete v tématu [Aktualizace dynamické skupiny](grou
 
 ### <a name="rule-syntax-for-a-single-expression"></a>Syntaxe pravidla pro jeden výraz
 
-Jediným výrazem je nejjednodušší forma pravidla členství a má jenom tři části uvedené výše. Pravidlo s jedním výrazem vypadá nějak takto: `Property Operator Value`, kde syntaxe vlastnosti je název Object. Property.
+Jediným výrazem je nejjednodušší forma pravidla členství a má jenom tři části uvedené výše. Pravidlo s jedním výrazem vypadá podobně jako toto: `Property Operator Value`, kde syntaxe vlastnosti je název Object. Property.
 
 Následuje příklad správného vytvořeného pravidla členství s jedním výrazem:
 
@@ -88,7 +88,7 @@ Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvořen
 
 | Vlastnosti | Povolené hodnoty | Využití |
 | --- | --- | --- |
-| AccountEnabled |true false |User. accountEnabled-EQ true |
+| accountEnabled |true false |User. accountEnabled-EQ true |
 | Nastavení dirsyncenabled |true false |User. nastavení dirsyncenabled-EQ true |
 
 ### <a name="properties-of-type-string"></a>Vlastnosti typu String
@@ -96,15 +96,15 @@ Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvořen
 | Vlastnosti | Povolené hodnoty | Využití |
 | --- | --- | --- |
 | city |Libovolná hodnota řetězce nebo hodnota *null* |(User. City-EQ "hodnota") |
-| Krajin |Libovolná hodnota řetězce nebo hodnota *null* |(User. Country-EQ "value") |
+| krajin |Libovolná hodnota řetězce nebo hodnota *null* |(User. Country-EQ "value") |
 | Společnosti | Libovolná hodnota řetězce nebo hodnota *null* | (User. companyName-EQ "value") |
 | Ministerstvo |Libovolná hodnota řetězce nebo hodnota *null* |(User. Department-EQ "hodnota") |
-| DisplayName |Libovolná hodnota řetězce |(User. DisplayName-EQ "value") |
+| displayName |Libovolná hodnota řetězce |(User. DisplayName-EQ "value") |
 | Zaměstnance |Libovolná hodnota řetězce |(User. employeeId-EQ "value")<br>(User. ČísloZaměstnance-ne *null*) |
 | facsimileTelephoneNumber |Libovolná hodnota řetězce nebo hodnota *null* |(User. facsimileTelephoneNumber-EQ "value") |
-| GivenName |Libovolná hodnota řetězce nebo hodnota *null* |(User. Value-EQ "value") |
-| JobTitle |Libovolná hodnota řetězce nebo hodnota *null* |(User. jobTitle-EQ "value") |
-| Modul |Libovolná hodnota řetězce nebo hodnota *null* (adresa SMTP uživatele) |(User. mail-EQ "value") |
+| givenName |Libovolná hodnota řetězce nebo hodnota *null* |(User. Value-EQ "value") |
+| jobTitle |Libovolná hodnota řetězce nebo hodnota *null* |(User. jobTitle-EQ "value") |
+| modul |Libovolná hodnota řetězce nebo hodnota *null* (adresa SMTP uživatele) |(User. mail-EQ "value") |
 | mailNickName |Libovolná hodnota řetězce (e-mailový alias uživatele) |(User. mailNickName-EQ "value") |
 | telefon |Libovolná hodnota řetězce nebo hodnota *null* |(User. Mobile-EQ "value") |
 | Objektu |Identifikátor GUID objektu uživatele |(User. objectId-EQ "11111111-1111-1111-1111-111111111111") |
@@ -116,8 +116,8 @@ Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvořen
 | sipProxyAddress |Libovolná hodnota řetězce nebo hodnota *null* |(User. sipProxyAddress-EQ "value") |
 | state |Libovolná hodnota řetězce nebo hodnota *null* |(User. State-EQ "value") |
 | streetAddress |Libovolná hodnota řetězce nebo hodnota *null* |(User. streetAddress-EQ "value") |
-| Příjmení |Libovolná hodnota řetězce nebo hodnota *null* |(User. příjmení-EQ "hodnota") |
-| TelephoneNumber |Libovolná hodnota řetězce nebo hodnota *null* |(User. telephoneNumber-EQ "value") |
+| příjmení |Libovolná hodnota řetězce nebo hodnota *null* |(User. příjmení-EQ "hodnota") |
+| telephoneNumber |Libovolná hodnota řetězce nebo hodnota *null* |(User. telephoneNumber-EQ "value") |
 | usageLocation |Dva směrové číslo země |(User. usageLocation-EQ "US") |
 | userPrincipalName (Hlavní název uživatele) |Libovolná hodnota řetězce |(User. userPrincipalName-EQ "alias@domain") |
 | userType |člen typu host *null* |(User. userType-EQ "Member") |
@@ -357,7 +357,10 @@ Název vlastní vlastnosti lze najít v adresáři dotazem na vlastnost uživate
 
 ## <a name="rules-for-devices"></a>Pravidla pro zařízení
 
-Můžete také vytvořit pravidlo, které vybere objekty zařízení pro členství ve skupině. Nemůžete mít uživatele i zařízení jako členy skupiny. Atribut **organizationalUnit** již není uveden a neměl by být použit. Tento řetězec je v Intune nastavený v určitých případech, ale Azure AD ho nerozpoznal, takže se do skupin na základě tohoto atributu nepřidala žádná zařízení.
+Můžete také vytvořit pravidlo, které vybere objekty zařízení pro členství ve skupině. Nemůžete mít uživatele i zařízení jako členy skupiny. 
+
+> [!NOTE]
+> Atribut **organizationalUnit** již není uveden a neměl by být použit. Tento řetězec je v Intune nastavený v určitých případech, ale Azure AD ho nerozpoznal, takže se do skupin na základě tohoto atributu nepřidala žádná zařízení.
 
 > [!NOTE]
 > systemlabels je atribut jen pro čtení, který nelze nastavit pomocí Intune.
@@ -366,10 +369,10 @@ Můžete také vytvořit pravidlo, které vybere objekty zařízení pro členst
 
 Je možné použít následující atributy zařízení.
 
- Atribut zařízení  | Hodnoty | Příklad:
+ Atribut zařízení  | Hodnoty | Příklad
  ----- | ----- | ----------------
- AccountEnabled | true false | (Device. accountEnabled-EQ true)
- DisplayName | Libovolná hodnota řetězce |(Device. DisplayName-EQ "Rob iPhone")
+ accountEnabled | true false | (Device. accountEnabled-EQ true)
+ displayName | Libovolná hodnota řetězce |(Device. DisplayName-EQ "Rob iPhone")
  deviceOSType | Libovolná hodnota řetězce | (Device. deviceOSType-EQ "iPad")-nebo (zařízení. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-obsahuje "AndroidEnterprise")<br>(Device. deviceOSType-EQ "AndroidForWork")
  deviceOSVersion | Libovolná hodnota řetězce | (Device. deviceOSVersion-EQ "9,1")
  deviceCategory | platný název kategorie zařízení | (Device. deviceCategory-EQ "BYOD")
@@ -379,9 +382,8 @@ Je možné použít následující atributy zařízení.
  enrollmentProfileName | Registrační profil zařízení Apple, registrace zařízení – identifikátory podnikových zařízení (Android – celoobrazovkový) nebo název profilu Windows autopilot | (zařízení. enrollmentProfileName-EQ "DEP – iPhone")
  s kořenem | true false | (Device.-rooted-EQ true)
  managementType | MDM (pro mobilní zařízení)<br>POČÍTAČ (pro počítače spravované agentem Intune pro počítače) | (Device. managementType-EQ "MDM")
- organizationalUnit | platná místní organizační jednotka (OU) | (Device. organizationalUnit – obsahuje "notebook")
  deviceId | platné ID zařízení Azure AD | (Device. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
- Objektu | platné ID objektu Azure AD |  (Device. objectId-EQ 76ad43c9-32c5-45e8-a272-7b58b58f596d ")
+ Objektu | platné ID objektu Azure AD |  (Device. objectId-EQ "76ad43c9-32c5-45e8-a272-7b58b58f596d")
  devicePhysicalIds | libovolná hodnota řetězce používaná autopilotem, například všechna zařízení s autopilotem, ČísloObjednávky nebo PurchaseOrderID  | (Device. devicePhysicalIDs-any _-obsahuje "[ZTDId]") (Device. devicePhysicalIds-any _-EQ "[ČísloObjednávky]: 179887111881") (Device. devicePhysicalIds-any _-EQ "[PurchaseOrderId]: 76222342342")
  systemLabels | libovolný řetězec odpovídající vlastnosti zařízení Intune pro označování moderních zařízení na pracovišti | (Device. systemLabels-obsahuje "M365Managed")
 

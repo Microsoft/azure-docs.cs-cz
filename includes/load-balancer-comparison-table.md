@@ -8,28 +8,28 @@ ms.topic: include
 ms.date: 02/08/2018
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: 1d3ce900f7354b31e999c12b8e1eb0e23d391fcb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8b08e0ced0c7094890a80c37452c7f1b001fe511
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175428"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888690"
 ---
 | | Standardní SKU | Základní SKU |
 | --- | --- | --- |
-| Velikost fondu back-endu | Podporuje až 1 000 instancí. | Podporuje až 100 instancí. |
-| Koncové body back-Endového fondu | jakýkoli virtuální počítač v jedné virtuální sítě, včetně kombinace virtuální počítače, skupiny dostupnosti, škálovacích sad virtuálních počítačů. | Nastavení virtuálních počítačů ve škálovací sadě nebo virtuální počítač jednoho dostupnosti. |
+| Velikost fondu back-endu | Podporuje až 1000 instancí. | Podporuje až 100 instancí. |
+| Koncové body fondu back-endu | Libovolný virtuální počítač v jedné virtuální síti, včetně blendů virtuálních počítačů, skupin dostupnosti a virtuálních počítačů s měřítkem. | Virtuální počítače v jedné skupině dostupnosti nebo v sadě škálování virtuálních počítačů. |
 | [Sondy stavu](../articles/load-balancer/load-balancer-custom-probe-overview.md#types) | TCP, HTTP, HTTPS | TCP, HTTP |
-| [Sonda stavu dolů chování](../articles/load-balancer/load-balancer-custom-probe-overview.md#probedown) | Připojení TCP zůstat naživu na instanci test dolů __a__ na všechny testy dolů. | Připojení TCP zůstat naživu na instanci test mimo provoz. Ukončete všechna připojení TCP pro všechny testy jsou vypnuté. |
-| Zóny dostupnosti | Ve standardním SKU, zónové a zónově redundantních front-endů pro příchozí a odchozí, odchozí toky mapování překonat selhání zóny, Vyrovnávání zatížení mezi zónami. | Není k dispozici. |
-| Diagnostika | Azure Monitor, vícedimenzionálních metrik, včetně bajtů a čítače paketů, stav testu stavu, pokusy o připojení (TCP SYN), stav odchozí připojení (SNAT úspěšné i neúspěšné toky), měření roviny aktivních dat. | Azure Log Analytics pro veřejný Load balancer úrovně pouze SNAT vyčerpání výstrahy, počet stavu back-endový fond. |
-| HA porty | Interní nástroj pro vyrovnávání zatížení | Není k dispozici. |
-| Ve výchozím nastavení zabezpečení | Veřejná IP adresa, veřejné koncové body nástroje pro vyrovnávání zatížení, interního nástroje pro vyrovnávání zatížení, které jsou koncové body jsou uzavřené příchozích toků, není-li přidat na seznam povolených skupinou zabezpečení sítě. | Otevřít ve výchozím nastavení, volitelné skupiny zabezpečení sítě. |
-| [Odchozí připojení](../articles/load-balancer/load-balancer-outbound-connections.md) | Můžete definovat explicitně fondu na základě odchozí NAT s [odchozí pravidla](../articles/load-balancer/load-balancer-outbound-rules-overview.md). Můžete použít několik front-endů se podle zatížení vyrovnávání pravidlo odhlásit. Odchozí scénář _musí_ explicitně vytvořit pro virtuální počítač, skupinu dostupnosti virtuálního počítače škálovací sady pomocí odchozího připojení.  Koncové body služeb virtuální sítě se dá kontaktovat bez definování odchozího připojení a na zpracování dat se nepočítají.  Všechny veřejné IP adresy, včetně služeb Azure PaaS, která není k dispozici jako koncové body služby virtuální sítě, musíte kontaktovat prostřednictvím odchozího připojení a počet směrem k zpracovaná data. Když virtuální počítač obsluhuje jenom interní nástroj pro vyrovnávání zatížení, dostupnost sady nebo škálovací sady virtuálních počítačů, odchozí připojení přes výchozí SNAT nejsou k dispozici. použít [odchozí pravidla](../articles/load-balancer/load-balancer-outbound-rules-overview.md) místo. Přenosový protokol konkrétní založené na protokolu Příchozí pravidlo Vyrovnávání zatížení je výstupní programování SNAT. | Jeden front-endu, když jsou k dispozici několik front-endů vybraného náhodně.  Když virtuální počítač obsluhuje jenom interní nástroj pro vyrovnávání zatížení, skupinu dostupnosti nebo škálovací sady virtuálních počítačů, výchozí použita SNAT. |
-| [Odchozí pravidla](../articles/load-balancer/load-balancer-outbound-rules-overview.md) | Deklarativní odchozí NAT konfiguraci pomocí veřejné IP adresy nebo veřejné předpony IP nebo obojí, konfigurovatelné odchozí časový limit nečinnosti (4 – 120 minut), vlastních SNAT přiřazování portů | Není k dispozici. |
-|  [Resetování TCP v nečinnosti](../articles/load-balancer/load-balancer-tcp-reset.md) | Povolit TCP vynulují časového limitu nečinnosti (TCP RVNÍ) u libovolného pravidla | Není k dispozici. |
-| [Několik front-endů](../articles/load-balancer/load-balancer-multivip-overview.md) | Příchozí a [odchozí](../articles/load-balancer/load-balancer-outbound-connections.md) | Pouze příchozí |
-| Operace správy | Většina operací < 30 sekund | 60 – 90 sekund typické. |
-| SLA | 99,99 % pro cestu k datům s dva virtuální počítače v dobrém stavu. | Není k dispozici. | 
-| Ceny | Účtuje podle počtu pravidel, zpracování dat příchozí a odchozí přidruženého prostředku.  | Bez poplatků. |
+| [Chování sondy stavu](../articles/load-balancer/load-balancer-custom-probe-overview.md#probedown) | Připojení TCP zůstávají v provozu při testování instance dolů __a__ na všech sondách. | Připojení TCP zůstávají v provozu při testování instance. Všechna připojení TCP se ukončí, když jsou všechny sondy mimo provoz. |
+| Zóny dostupnosti | Back-endy zóny a oblasti front-endu pro příchozí a odchozí provoz. Mapování odchozích toků při selhání zóny. Vyrovnávání zatížení mezi zónami. | Není k dispozici. |
+| Diagnostika | Azure Monitor. Multidimenzionální metriky, včetně bajtů a čítačů paketů. Stav sondy stavu. Pokusy o připojení (TCP SYN). Stav odchozího připojení (úspěšné a neúspěšné toky SNAT). Aktivní měření roviny dat. | Azure Log Analytics jenom pro veřejné Load Balancer. Výstraha vyčerpání SNAT. Počet stavů back-end fondu |
+| Porty HA | Interní nástroj pro vyrovnávání zatížení | Není k dispozici. |
+| Zabezpečení ve výchozím nastavení | Veřejné IP adresy, koncové body veřejných Load Balancer a interní Load Balancer koncových bodů se zavřou do příchozích toků, pokud to nepovoluje skupina zabezpečení sítě. | Ve výchozím nastavení otevřete. Skupina zabezpečení sítě je volitelná. |
+| [Odchozí připojení](../articles/load-balancer/load-balancer-outbound-connections.md) | Můžete explicitně definovat odchozí NAT založené na fondu s [odchozími pravidly](../articles/load-balancer/load-balancer-outbound-rules-overview.md). Pro jedno pravidlo vyrovnávání zatížení můžete použít více front-endu s časovým limitem pro vyrovnávání zatížení. Odchozí scénář se _musí_ explicitně vytvořit pro virtuální počítač, skupinu dostupnosti nebo sadu škálování virtuálního počítače pro použití odchozího připojení. K koncovým bodům služby virtuální sítě se dá získat přístup bez definování odchozího připojení a nepočítá se od zpracovaných dat. Všechny veřejné IP adresy, včetně služeb Azure PaaS, nejsou k dispozici jako koncové body služby virtuální sítě, musí být dostupné pomocí odchozího připojení a počítají se ke zpracování dat. Když virtuální počítač, Skupina dostupnosti nebo sada škálování virtuálního počítače zachová jenom interní Load Balancer, odchozí připojení přes výchozí SNAT nejsou dostupná. Místo toho použijte [odchozí pravidla](../articles/load-balancer/load-balancer-outbound-rules-overview.md) . Odchozí programování SNAT závisí na protokolu transportu příchozího pravidla vyrovnávání zatížení. | Jeden front-end, vybraný náhodně, pokud je k dispozici více front-endy. Pokud virtuální počítač, Skupina dostupnosti nebo sada škálování virtuálních počítačů obsluhuje jenom interní Load Balancer, použije se výchozí SNAT. |
+| [Odchozí pravidla](../articles/load-balancer/load-balancer-outbound-rules-overview.md) | Deklarativní Konfigurace odchozího překladu adres (NAT), používá veřejné IP adresy nebo předpony veřejných IP adres nebo obojí. Konfigurovatelný časový limit nečinnosti pro odchozí připojení (4-120 minut). Vlastní přidělení portu SNAT | Není k dispozici. |
+| [Resetování protokolu TCP při nečinnosti](../articles/load-balancer/load-balancer-tcp-reset.md) | Povolit resetování protokolu TCP (TCP RST) pro časový limit nečinnosti u libovolného pravidla | Není k dispozici. |
+| [Více front-endy](../articles/load-balancer/load-balancer-multivip-overview.md) | Příchozí a [odchozí](../articles/load-balancer/load-balancer-outbound-connections.md) | Pouze příchozí |
+| Operace správy | Většina operací < 30 sekund | typických 60 až 90 sekund |
+| SLA | 99,99% pro cestu k datům se dvěma zdravými virtuálními počítači. | Neuvedeno | 
+| Ceny | Účtuje se podle počtu pravidel, příchozích a odchozích dat, která jsou přidružená k prostředku. | Bez poplatků |
 |  |  |  |

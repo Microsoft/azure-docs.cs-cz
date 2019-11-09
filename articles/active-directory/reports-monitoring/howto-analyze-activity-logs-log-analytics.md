@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52ab1bd445f8af0bf58dcb6b1176904aa073877a
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 04d9bb8bca64292b73bc14f02d126d384da33780
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820962"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885268"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Analýza protokolů aktivit Azure AD pomocí protokolů Azure Monitor
 
@@ -32,13 +32,13 @@ V tomto článku se dozvíte, jak analyzovat protokoly aktivit Azure AD v pracov
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 Pokud chcete postup sledovat, potřebujete:
 
 * Log Analytics pracovní prostor ve vašem předplatném Azure. Naučte se, jak [vytvořit pracovní prostor Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
 * Nejdřív proveďte kroky pro [Směrování protokolů aktivit služby Azure AD do vašeho pracovního prostoru Log Analytics](howto-integrate-activity-logs-with-log-analytics.md).
-*  [Přístup](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions) k pracovnímu prostoru Log Analytics
+*  [Přístup](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions) k pracovnímu prostoru Log Analytics
 * Následující role v Azure Active Directory (Pokud přistupujete Log Analytics prostřednictvím Azure Active Directoryového portálu)
     - Správce zabezpečení
     - Čtecí modul zabezpečení
@@ -47,7 +47,7 @@ Pokud chcete postup sledovat, potřebujete:
     
 ## <a name="navigate-to-the-log-analytics-workspace"></a>Přejděte do pracovního prostoru Log Analytics.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
 2. Vyberte **Azure Active Directory**a potom v části **monitorování** vyberte **protokoly** . tím otevřete pracovní prostor Log Analytics. Pracovní prostor se otevře s výchozím dotazem.
 
@@ -104,7 +104,7 @@ Pro svůj dotaz můžete také nastavit výstrahy. Pokud třeba chcete nakonfigu
 
 Můžete si také stáhnout předem připravené zobrazení Log Analytics pro protokoly aktivit služby Azure AD. Zobrazení poskytují několik sestav, které se týkají běžných scénářů týkajících se událostí auditu a přihlašování. Pomocí postupu popsaného v předchozí části můžete také upozornit na kterékoli z dat, která jsou uvedena v sestavách.
 
-* **Události zřizování účtů Azure AD**: Toto zobrazení ukazuje sestavy týkající se aktivity zřizování auditování, jako je počet nových uživatelů zřízených a zřizovacích selhání, počet aktualizovaných uživatelů a selhání aktualizace a počet uživatelů. zrušení zřízení a odpovídající selhání.    
+* **Události zřizování účtů Azure AD**: Toto zobrazení ukazuje sestavy týkající se aktivity zřizování auditování, jako je počet nových uživatelů, kteří se zřídili a provisionují chyby, počet uživatelů, kteří se aktualizovaly a aktualizují selhání, a počet nezřízených a odpovídajících selhání uživatelů.    
 * **Události přihlášení**: Toto zobrazení ukazuje nejrelevantnější sestavy týkající se monitorování přihlašovacích aktivit, jako jsou například přihlášení podle aplikace, uživatele, zařízení a také souhrnné zobrazení sledování počtu přihlášení v průběhu času.
 * **Uživatel, který provádí souhlas**: Toto zobrazení ukazuje sestavy týkající se souhlasu uživatele, jako je například souhlas udělený uživatelem, přihlášení uživatelů, kteří udělili souhlas, a také přihlášení aplikací pro všechny aplikace založené na souhlasu. 
 

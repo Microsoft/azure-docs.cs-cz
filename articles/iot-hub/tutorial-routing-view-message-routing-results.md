@@ -1,6 +1,6 @@
 ---
 title: Zobrazení výsledků směrování zpráv služby Azure IoT Hub (.NET) | Microsoft Docs
-description: Zobrazení výsledků směrování zpráv služby Azure IoT Hub
+description: Po nastavení všech prostředků pomocí části 1 tohoto kurzu přidejte možnost směrovat zprávy do Azure Stream Analytics a zobrazit výsledky v PowerBI.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 6d40f7d81faa77a48a32aadefdf44ed89e184efb
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: bfee4e64070e5f37eaa3d63280409f00c0ed8672
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900780"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890393"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Kurz: část 2 – zobrazení směrovaných zpráv
 
@@ -52,7 +52,7 @@ Fronta Service Bus se použije pro příjem zpráv označených jako kritické. 
 
    ![Obrazovka vytvoření aplikace logiky](./media/tutorial-routing-view-message-routing-results/create-logic-app.png)
 
-   Vyberte **Create** (Vytvořit). Nasazení aplikace může trvat několik minut.
+   Vyberte **Vytvořit**. Nasazení aplikace může trvat několik minut.
 
 2. Teď přejděte do aplikace logiky. Nejjednodušší způsob, jak se dostat do aplikace logiky, je vybrat **skupiny prostředků**, vybrat skupinu prostředků (Tento kurz používá **ContosoResources**) a pak vybrat aplikaci logiky ze seznamu prostředků. 
 
@@ -88,7 +88,7 @@ Fronta Service Bus se použije pro příjem zpráv označených jako kritické. 
 
    ![Možnosti e-mailu pro aplikaci logiky](./media/tutorial-routing-view-message-routing-results/logic-app-send-email.png)
 
-9. Vyberte **Save** (Uložit). Pak návrháře aplikace logiky zavřete.
+9. Vyberte **Uložit**. Pak návrháře aplikace logiky zavřete.
 
 ## <a name="set-up-azure-stream-analytics"></a>Nastavení služby Azure Stream Analytics
 
@@ -138,7 +138,7 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
    ![Nastavte vstupy pro úlohu Stream Analytics.](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-inputs.png)
 
-3. Vyberte **Save** (Uložit).
+3. Vyberte **Uložit**.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
@@ -158,7 +158,7 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
    ![Nastavte výstupy pro úlohu Stream Analytics.](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-outputs.png)
 
-4. Vyberte **Save** (Uložit).
+4. Vyberte **Uložit**.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Konfigurace dotazu pro úlohu Stream Analytics
 
@@ -170,7 +170,7 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
    ![Nastavte dotaz pro úlohu Stream Analytics.](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-query.png)
 
-4. Vyberte **Save** (Uložit).
+4. Vyberte **Uložit**.
 
 5. Zavřete podokno dotazu. Vrátíte se do zobrazení prostředků ve skupině prostředků. Vyberte úlohu Stream Analytics. V tomto kurzu má název **contosoJob**.
 

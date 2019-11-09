@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: gwallace
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc9ca5f5a638f0b36a28d58172fe8052b3d1522f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: b59343fca5e14d211864a1354001819c918bd1ca
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875436"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891523"
 ---
 # <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>Co dělat v případě, že přerušení služby Azure ovlivňuje virtuální počítače Azure
 V Microsoftu pracujeme na tom, abychom zajistili, že naše služby jsou vždycky k dispozici, až je budete potřebovat. Síly nad rámec našeho ovládacího prvku někdy ovlivňují způsob, jakým způsobují neplánované výpadky služeb.
@@ -33,28 +33,28 @@ Tento článek se zabývá skutečným scénářem zotavení po havárii, když 
 
 Abychom vám pomohli zvládnout tyto výjimečné výskyty, poskytujeme následující pokyny pro virtuální počítače Azure v případě výpadku služby celé oblasti, kde je nasazená vaše aplikace virtuálního počítače Azure.
 
-## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>Možnost 1: Iniciování převzetí služeb při selhání pomocí Azure Site Recovery
+## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>Možnost 1: zahájení převzetí služeb při selhání pomocí Azure Site Recovery
 Pro své virtuální počítače můžete nakonfigurovat Azure Site Recovery, abyste mohli aplikaci obnovit jediným kliknutím v několika minutách. Můžete replikovat do oblasti Azure podle vašeho výběru a Neomezovat na spárované oblasti. Můžete začít [replikací virtuálních počítačů](https://aka.ms/a2a-getting-started). Můžete [vytvořit plán obnovení](../site-recovery/site-recovery-create-recovery-plans.md) , abyste mohli automatizovat celý proces převzetí služeb při selhání pro vaši aplikaci. Převzetí [služeb při selhání](../site-recovery/site-recovery-test-failover-to-azure.md) můžete předem testovat bez dopadu na produkční aplikaci nebo probíhající replikaci. V případě přerušení primární oblasti stačí [zahájit převzetí služeb při selhání](../site-recovery/site-recovery-failover.md) a přenést aplikaci do cílové oblasti.
 
 
-## <a name="option-2-wait-for-recovery"></a>Možnost 2: Počkat na obnovení
-V takovém případě není nutná žádná akce s vaší částí. Víte, že usilovně pracujeme na obnovení dostupnosti služby. Aktuální stav služby můžete zobrazit na našem řídicím [panelu Azure Service Health](https://azure.microsoft.com/status/).
+## <a name="option-2-wait-for-recovery"></a>Možnost 2: čekání na obnovení
+V takovém případě není nutná žádná akce s vaší částí. Víte, že usilovně pracujeme na obnovení dostupnosti služby. Aktuální stav služby můžete zobrazit na našem [řídicím panelu Azure Service Health](https://azure.microsoft.com/status/).
 
 Tato možnost je nejlepší, pokud jste nemuseli nastavovat Azure Site Recovery, geograficky redundantní úložiště s přístupem pro čtení nebo geograficky redundantní úložiště před přerušením. Pokud jste pro účet úložiště, kde jsou uložené virtuální pevné disky virtuálních počítačů (VHD), nastavili geograficky redundantní úložiště nebo geograficky redundantní úložiště s přístupem pro čtení, můžete se podívat, jak obnovit základní virtuální pevný disk image a pokusit se o zřízení nového virtuálního počítače. Nejedná se o upřednostňovanou možnost, protože neexistují žádné záruky synchronizace dat. V důsledku toho není zaručena funkčnost této možnosti.
 
 
 > [!NOTE]
-> Mějte na paměti, že k tomuto procesu nemáte žádnou kontrolu a dojde k tomu jenom pro přerušení služeb v rámci oblasti. Z tohoto důvodu musíte také spoléhat na jiné strategie zálohování specifické pro aplikace, abyste dosáhli nejvyšší úrovně dostupnosti. Další informace najdete v části o strategiích [dat pro zotavení po havárii](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan).
+> Mějte na paměti, že k tomuto procesu nemáte žádnou kontrolu a dojde k tomu jenom pro přerušení služeb v rámci oblasti. Z tohoto důvodu musíte také spoléhat na jiné strategie zálohování specifické pro aplikace, abyste dosáhli nejvyšší úrovně dostupnosti. Další informace najdete v části o [strategiích dat pro zotavení po havárii](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan).
 >
 >
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Začněte [chránit své aplikace běžící na virtuálních počítačích Azure](https://aka.ms/a2a-getting-started) pomocí Azure Site Recovery
 
 - Další informace o tom, jak implementovat strategii zotavení po havárii a vysokou dostupnost, najdete v tématu [zotavení po havárii a vysoká dostupnost pro aplikace Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-- Podrobné technické porozumění funkcím cloudové platformy najdete v tématu [technické pokyny k odolnosti Azure](../resiliency/resiliency-technical-guidance.md).
+- Podrobné technické porozumění funkcím cloudové platformy najdete v tématu [technické pokyny k odolnosti Azure](/azure/data-lake-store/data-lake-store-disaster-recovery-guidance).
 
 
 - Pokud pokyny nejsou jasné nebo pokud byste chtěli, aby Microsoft prováděl operace vaším jménem, obraťte se na [zákaznickou podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

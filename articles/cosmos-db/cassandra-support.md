@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 12df79696033e69abbf48f053c1a594be9409cda
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c0a47e922ae8cdca3c70cb53f9fa2f7dafe191c6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721106"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889230"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Funkce Apache Cassandra, které podporuje rozhraní API Cassandra pro Azure Cosmos DB 
 
@@ -110,7 +110,7 @@ Nástroj příkazového řádku CQLSH se dodává se systémem Apache Cassandra 
 
 **Windows:**
 
-Pokud používáte systém Windows, doporučujeme povolit [systém souborů systému Windows pro Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10#install-the-windows-subsystem-for-linux). Pak můžete postupovat podle níže uvedených příkazů pro Linux.
+Pokud používáte systém Windows, doporučujeme povolit [systém souborů systému Windows pro Linux](https://docs.microsoft.com/windows/wsl/install-win10#install-the-windows-subsystem-for-linux). Pak můžete postupovat podle níže uvedených příkazů pro Linux.
 
 **Unix/Linux/Mac:**
 
@@ -179,9 +179,9 @@ Azure Cosmos DB podporuje řízení přístupu na základě role (RBAC) pro zři
 
 ## <a name="keyspace-and-table-options"></a>Možnosti prostoru klíčů a tabulek
 
-Možnosti pro název oblasti, třídy, replication_factor a datacentrum v příkazu pro vytvoření prostoru klíčů se aktuálně ignorují. Systém používá k přidání oblastí základní metodu replikace [globální distribuce](global-dist-under-the-hood.md) Azure Cosmos DB. Pokud potřebujete data mezi oblastmi, můžete ji povolit na úrovni účtu pomocí PowerShellu, rozhraní příkazového řádku nebo portálu. Další informace najdete v článku [Přidání oblastí](how-to-manage-database-account.md#addremove-regions-from-your-database-account) . Durable_writes nejde zakázat, protože Azure Cosmos DB zajišťuje, že každý zápis je trvalý. V každé oblasti Azure Cosmos DB replikuje data napříč sadou replik, která je tvořená čtyřmi replikami a tuto [konfiguraci](global-dist-under-the-hood.md) sady replik nelze upravit.
+Možnosti pro název oblasti, třídu, replication_factor a datacentrum v příkazu pro vytvoření prostoru klíčů se aktuálně ignorují. Systém používá k přidání oblastí základní metodu replikace [globální distribuce](global-dist-under-the-hood.md) Azure Cosmos DB. Pokud potřebujete data mezi oblastmi, můžete ji povolit na úrovni účtu pomocí PowerShellu, rozhraní příkazového řádku nebo portálu. Další informace najdete v článku [Přidání oblastí](how-to-manage-database-account.md#addremove-regions-from-your-database-account) . Durable_writes nejde zakázat, protože Azure Cosmos DB zajišťuje, že každý zápis je trvalý. V každé oblasti Azure Cosmos DB replikuje data napříč sadou replik, která je tvořená čtyřmi replikami a tuto [konfiguraci](global-dist-under-the-hood.md) sady replik nelze upravit.
  
-Při vytváření tabulky s výjimkou gc_grace_seconds, která by měla být nastavena na hodnotu nula, jsou všechny možnosti ignorovány.
+Při vytváření tabulky se ignorují všechny možnosti, kromě gc_grace_seconds, které by měly být nastavené na hodnotu nula.
 V prostoru a tabulce se nachází další možnost s názvem "cosmosdb_provisioned_throughput" s minimální hodnotou 400 RU/s. Propustnost místa na disku umožňuje sdílení propustnosti napříč několika tabulkami a je užitečná pro scénáře, kdy všechny tabulky nevyužívají zřízenou propustnost. Příkaz ALTER TABLE umožňuje změnit zřízenou propustnost napříč oblastmi. 
 
 ```

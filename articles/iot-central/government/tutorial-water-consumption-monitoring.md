@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 59dae65d32f1b816e59ee883cb4529c6f1fd212c
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d79c4585d9764e2cc5cebd679372a97946479396
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026564"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889160"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-in-iot-central"></a>Kurz: Vytvoření aplikace monitorování spotřeby vody v IoT Central
 
@@ -32,7 +32,7 @@ V tomto kurzu se dozvíte, jak:
 > * Konfigurace úloh
 > * Přizpůsobení brandingu aplikace pomocí whitelabeling
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete:
 -  Doporučuje se předplatné Azure. Pokud nemáte předplatné Azure, můžete ho vytvořit na [stránce registrace do Azure](https://aka.ms/createazuresubscription).
@@ -60,11 +60,11 @@ Vytvoření nové aplikace monitorování spotřeby v Azure IoT Centrale:
     * **Adresa URL**: IoT Central vygeneruje adresu URL na základě názvu aplikace. Můžete zvolit, aby se adresa URL aktualizovala na míru. Adresu URL můžete později změnit. 
     * Pokud máte předplatné Azure, zadejte svůj *adresář, předplatné Azure a oblast*. Pokud předplatné nemáte, můžete povolit **7 dní bezplatnou zkušební verzi** a dokončit požadované kontaktní údaje.  
 
-    Další informace o adresářích a předplatných najdete v [rychlém startu k vytvoření aplikace](../core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+    Další informace o adresářích a předplatných najdete v [rychlém startu k vytvoření aplikace](../preview/quick-deploy-iot-central.md).
 
 5. V dolní části stránky klikněte na tlačítko **vytvořit** . 
 
-    ![Stránka aplikace Azure IoT Central](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring.png)
+    ![Stránka vytvoření aplikace Azure IoT Central](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring.png)
 
 6. Nyní jste vytvořili aplikaci pro monitorování spotřeby vody pomocí šablony monitorování využití služby Azure IoT Central **voda** .
 

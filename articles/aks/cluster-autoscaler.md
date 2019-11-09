@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: f27b910910ca21aa36582506e6c7b2d1d39da88a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ce5d2965d0127eec01620c702d7d83bd0b39416
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472853"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885785"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatické škálování clusteru pro splnění požadavků aplikace ve službě Azure Kubernetes (AKS)
 
@@ -123,6 +123,35 @@ Po zakázání automatického škálování clusteru můžete ručně škálovat
 
 Pokud chcete znovu povolit automatické škálování clusteru v existujícím clusteru, můžete ho znovu povolit pomocí příkazu [AZ AKS Update][az-aks-update] a zadat parametry *--Enable-cluster-AutoScale*, *--min-Count*a *--Max-Count* .
 
+## <a name="retrieve-cluster-autoscaler-logs-and-status"></a>Načtení protokolů a stavu automatického škálování clusteru
+
+Chcete-li diagnostikovat a ladit události automatického škálování, můžete protokoly a stav načíst z doplňku automatického škálování.
+
+AKS spravuje automatické škálování clusteru vaším jménem a spouští ho v rovině spravovaného ovládacího prvku. Protokoly hlavního uzlu je třeba nakonfigurovat tak, aby se zobrazily v důsledku.
+
+Pokud chcete nakonfigurovat protokoly, které se budou nabízet z automatického škálování clusteru, Log Analytics postupujte podle těchto kroků.
+
+1. Nastavte pravidlo pro diagnostické protokoly pro nabízení protokolů clusteru – automatického škálování na Log Analytics. [Pokyny najdete tady](https://docs.microsoft.com/azure/aks/view-master-logs#enable-diagnostics-logs), nezapomeňte zaškrtnout políčko `cluster-autoscaler`, když vyberete možnosti pro "protokoly".
+1. Klikněte na oddíl Logs v clusteru prostřednictvím Azure Portal.
+1. Zadejte následující příklad dotazu do Log Analytics:
+
+```
+AzureDiagnostics
+| where Category == "cluster-autoscaler"
+```
+
+Měly by se zobrazit protokoly podobné následujícímu, pokud jsou protokoly, které se mají načíst.
+
+![Protokoly Log Analytics](media/autoscaler/autoscaler-logs.png)
+
+Automatické škálování clusteru také zapíše stav do configmap s názvem `cluster-autoscaler-status`. Chcete-li tyto protokoly načíst, spusťte následující příkaz `kubectl`. Stav bude hlášen pro každý fond uzlů nakonfigurovaný pomocí automatického škálování clusteru.
+
+```
+kubectl get configmap -n kube-system cluster-autoscaler-status -o yaml
+```
+
+Pokud se chcete dozvědět víc o tom, co se protokoluje pomocí automatického škálování, přečtěte si nejčastější dotazy k [projektu GitHubu Kubernetes/autoscaleer](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#ca-doesnt-work-but-it-used-to-work-yesterday-why).
+
 ## <a name="use-the-cluster-autoscaler-with-multiple-node-pools-enabled"></a>Použití automatického škálování clusteru s povolenými fondy více uzly
 
 Automatické škálování clusteru lze použít společně s povolenými [fondy více uzlů](use-multiple-node-pools.md) . Pomocí tohoto dokumentu se dozvíte, jak povolit více fondů uzlů a přidat další fondy uzlů do existujícího clusteru. Při použití obou funkcí současně povolíte automatické škálování clusteru pro každý fond jednotlivých uzlů v clusteru a můžete každému z nich předat jedinečná pravidla automatického škálování.
@@ -149,7 +178,7 @@ az aks nodepool update \
   --disable-cluster-autoscaler
 ```
 
-Pokud chcete znovu povolit automatické škálování clusteru v existujícím clusteru, můžete ho znovu povolit pomocí příkazu [AZ AKS nodepool Update][az-aks-nodepool-update] , který určuje parametry *--Enable-cluster-autoscaleer*, *--min-Count*a *--Max-Count* . .
+Pokud chcete znovu povolit automatické škálování clusteru v existujícím clusteru, můžete ho znovu povolit pomocí příkazu [AZ AKS nodepool Update][az-aks-nodepool-update] , který určuje parametry *--Enable-cluster-autoscaleer*, *--min-Count*a *--Max-Count* .
 
 ## <a name="next-steps"></a>Další kroky
 

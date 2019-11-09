@@ -1,5 +1,5 @@
 ---
-title: Kurz používání upozornění a opravy problémů se zařízeními v řešení pro vzdálené monitorování – Azure | Microsoft Docs
+title: Použití výstrah v řešení vzdáleného monitorování – Azure | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak pomocí upozornění na použití identifikovat a opravovat problémy se zařízeními připojenými k akcelerátoru řešení pro vzdálené monitorování.
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 1cd1eb9a0bd4b8457ea82303a747acb2553ab707
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 853fa2b80e04dd8d9225d023db8030fed044ed7f
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61452588"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890927"
 ---
 # <a name="tutorial-troubleshoot-and-fix-device-issues"></a>Kurz: Řešení a oprava problémů se zařízeními
 
@@ -84,6 +84,6 @@ Snížení teploty zařízení můžete zkontrolovat tak, že zobrazíte telemet
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se dozvěděli, jak pomocí upozornění identifikovat problémy se zařízeními a jak na těchto zařízeních pracovat za účelem vyřešení problémů. Zjistěte, jak na akcelerátor řešení připojit skutečné zařízení, pokračujte články s postupy.
+V tomto kurzu jste se dozvěděli, jak pomocí upozornění identifikovat problémy se zařízeními a jak na těchto zařízeních pracovat za účelem vyřešení problémů. Pokud se chcete dozvědět, jak připojit reálné zařízení k akcelerátoru řešení, přejděte k článkům s postupy.
 
 Právě jste se naučili spravovat problémy se zařízeními. Jako další krok navrhujeme zjistit, jak [připojit zařízení k akcelerátoru řešení pro vzdálené monitorování](iot-accelerators-connecting-devices.md).

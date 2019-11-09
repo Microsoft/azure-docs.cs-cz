@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8a783581394de05fff9f0060e124e8dc59c96b60
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8fa20608f09b4e3006dad685d2fc52bcc9207b5a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790173"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890149"
 ---
 # <a name="working-with-skillsets-in-azure-cognitive-search"></a>Práce s dovednosti v Azure Kognitivní hledání
 
@@ -32,7 +32,7 @@ Dovednosti má tři vlastnosti:
 
 
 
-Dovednosti jsou vytvořeny ve formátu JSON. Pomocí [jazyka Expression](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional)můžete vytvářet komplexní dovednosti s využitím smyček a [větvení](https://docs.microsoft.com/en-us/azure/search/cognitive-search-skill-conditional) . Jazyk výrazů používá zápis cesty k [ukazateli JSON](https://tools.ietf.org/html/rfc6901) s několika úpravami k identifikaci uzlů ve stromu obohacení. ```"/"``` projde nižší úroveň ve stromové struktuře a ```"*"``` funguje jako operátor for-each v kontextu. Tyto koncepty jsou nejlépe popsané v příkladu. K ilustraci některých konceptů a funkcí si projdeme dovednosti [Sample prohlídek](knowledge-store-connect-powerbi.md) . Pokud se chcete podívat na dovednosti, když jste následovali pracovní postup importu dat, budete muset použít klienta REST API k [získání dovednosti](https://docs.microsoft.com/en-us/rest/api/searchservice/get-skillset).
+Dovednosti jsou vytvořeny ve formátu JSON. Pomocí [jazyka Expression](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional)můžete vytvářet komplexní dovednosti s využitím smyček a [větvení](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional) . Jazyk výrazů používá zápis cesty k [ukazateli JSON](https://tools.ietf.org/html/rfc6901) s několika úpravami k identifikaci uzlů ve stromu obohacení. ```"/"``` projde nižší úroveň ve stromové struktuře a ```"*"``` funguje jako operátor for-each v kontextu. Tyto koncepty jsou nejlépe popsané v příkladu. K ilustraci některých konceptů a funkcí si projdeme dovednosti [Sample prohlídek](knowledge-store-connect-powerbi.md) . Pokud se chcete podívat na dovednosti, když jste následovali pracovní postup importu dat, budete muset použít klienta REST API k [získání dovednosti](https://docs.microsoft.com/rest/api/searchservice/get-skillset).
 
 ### <a name="enrichment-tree"></a>Strom obohacení
 
@@ -43,14 +43,14 @@ Jakmile je dokument v kanálu obohacení, je reprezentován jako strom obsahu a 
 
 |Režim Source\Parsing dat|Výchozí|JSON, řádky JSON & CSV|
 |---|---|---|
-|Blob Storage|/document/content<br>/document/normalized_images/*<br>...|/document/{key1}<br>/document/{key2}<br>...|
-|SQL|/document/{column1}<br>/document/{column2}<br>...|Nevztahuje se |
-|Cosmos DB|/document/{key1}<br>/document/{key2}<br>...|Nevztahuje se|
+|Blob Storage|/document/content<br>/Document/normalized_images/*<br>...|/document/{key1}<br>/document/{key2}<br>...|
+|SQL|/document/{column1}<br>/document/{column2}<br>...|Není dostupné. |
+|Databáze Cosmos|/document/{key1}<br>/document/{key2}<br>...|Není dostupné.|
 
  Při provádění dovedností přidávají nové uzly do stromu obohacení. Tyto nové uzly pak mohou být použity jako vstupy pro dovednosti s využitím pro příjem dat, projekci do obchodu Knowledge Store nebo mapování na pole indexu. Rozšíření nejsou proměnlivá: po vytvoření se uzly nedají upravovat. Vzhledem k tomu, že vaše dovednostiy jsou složitější, takže se strom pro rozšíření, ale ne všechny uzly ve stromu pro rozšíření, nemusí dělat na index nebo na obchod znalostní báze. Můžete selektivně zachovat jenom podmnožinu obohacení na index nebo úložiště znalostní báze.
 
 Můžete selektivně zachovat jenom podmnožinu obohacení na index nebo úložiště znalostní báze.
-Ve zbývající části tohoto dokumentu budeme předpokládat, že pracujeme s [ukázkami hotelů](https://docs.microsoft.com/en-us/azure/search/knowledge-store-connect-powerbi), ale stejné koncepty platí i pro rozšiřování dokumentů ze všech ostatních zdrojů dat.
+Ve zbývající části tohoto dokumentu budeme předpokládat, že pracujeme s [ukázkami hotelů](https://docs.microsoft.com/azure/search/knowledge-store-connect-powerbi), ale stejné koncepty platí i pro rozšiřování dokumentů ze všech ostatních zdrojů dat.
 
 ### <a name="context"></a>Kontext
 Každá dovednost vyžaduje kontext. Kontext určuje:

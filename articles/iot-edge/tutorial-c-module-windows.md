@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fdd1aeea20160bb1a9f91de934bd9268a179648a
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: c098b67ab2782fa3cf29b5b19aa198f899ba69c0
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529221"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890619"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Kurz: vývoj modulu C IoT Edge pro zařízení s Windows
 
@@ -42,7 +42,7 @@ Následující tabulka vám pomůže pochopit možnosti vývoje a nasazení modu
 | -- | ------------------ | ------------------ |
 | **Systém Windows AMD64** |  | ![Vývoj modulů C pro WinAMD64 v aplikaci Visual Studio](./media/tutorial-c-module/green-check.png) |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Před zahájením tohoto kurzu byste si měli projít předchozí kurz pro nastavení vývojového prostředí pro vývoj kontejnerů Windows: [vývoj IoT Edgech modulů pro zařízení s Windows](tutorial-develop-for-windows.md). Po dokončení tohoto kurzu byste měli mít následující požadavky: 
 
@@ -88,7 +88,7 @@ Vytvořte šablonu řešení v C, kterou můžete přizpůsobit pomocí vlastní
    | ----- | ----- |
    | Vybrat šablonu | Vyberte **modul C**. | 
    | Název projektu modulu | Pojmenujte modul **CModule**. | 
-   | Úložiště imagí Docker | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Vaše image kontejneru je předem vyplněná z hodnoty název projektu modulu. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br> Konečné úložiště imagí vypadá jako \<registry název \>. azurecr.io/cmodule. |
+   | Úložiště imagí Docker | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Vaše image kontejneru je předem vyplněná z hodnoty název projektu modulu. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br> Konečné úložiště imagí vypadá jako \<název registru\>. azurecr.io/cmodule. |
 
    ![Konfigurace projektu pro cílové zařízení, typ modulu a registr kontejnerů](./media/tutorial-c-module-windows/add-application-and-module.png)
 
@@ -134,11 +134,11 @@ Výchozí kód modulu přijímá zprávy ve vstupní frontě a předává je spo
       )
       ```
 
-   3. Přidejte **my_parson** do seznamu knihoven v části **target_link_libraries** souboru CMakeLists. txt.
+   3. Přidejte `my_parson` do seznamu knihoven v části **target_link_libraries** souboru CMakeLists. txt.
 
    4. Uložte soubor **CMakeLists.txt**.
 
-   5. Otevřete **CModule**  > **Main. c**. V dolní části seznamu příkazů include přidejte nový, který bude zahrnovat `parson.h` pro podporu JSON:
+   5. Otevřete **CModule** > **Main. c**. V dolní části seznamu příkazů include přidejte nový, který bude zahrnovat `parson.h` pro podporu JSON:
 
       ```c
       #include "parson.h"
@@ -174,6 +174,14 @@ Výchozí kód modulu přijímá zprávy ve vstupní frontě a předává je spo
 4. Vyhledejte funkci `InputQueue1Callback` a nahraďte celou funkci následujícím kódem. Tato funkce implementuje samotný filtr zasílání zpráv. Při přijetí zprávy kontroluje, zda velikost hlášené teploty překročí prahovou hodnotu. Pokud ano, přepošle zprávu přes výstupní frontu. Pokud ne, bude zpráva ignorována. 
 
     ```c
+    static unsigned char *bytearray_to_str(const unsigned char *buffer, size_t len)
+    {
+        unsigned char *ret = (unsigned char *)malloc(len + 1);
+        memcpy(ret, buffer, len);
+        ret[len] = '\0';
+        return ret;
+    }
+
     static IOTHUBMESSAGE_DISPOSITION_RESULT InputQueue1Callback(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
     {
         IOTHUBMESSAGE_DISPOSITION_RESULT result;
@@ -183,7 +191,10 @@ Výchozí kód modulu přijímá zprávy ve vstupní frontě a předává je spo
         unsigned const char* messageBody;
         size_t contentSize;
 
-        if (IoTHubMessage_GetByteArray(message, &messageBody, &contentSize) != IOTHUB_MESSAGE_OK)
+        if (IoTHubMessage_GetByteArray(message, &messageBody, &contentSize) == IOTHUB_MESSAGE_OK)
+        {
+            messageBody = bytearray_to_str(messageBody, contentSize);
+        } else
         {
             messageBody = "<null>";
         }
@@ -301,7 +312,7 @@ Výchozí kód modulu přijímá zprávy ve vstupní frontě a předává je spo
 
 ## <a name="build-and-push-your-module"></a>Sestavení a vložení modulu
 
-V předchozí části jste vytvořili řešení IoT Edge a Přidali jste do **CModule** kód pro odfiltrování zpráv, u kterých se teplota hlášeného počítače nachází pod přijatelnou prahovou hodnotou. Teď je potřeba sestavit toto řešení jako image kontejneru a odeslat ho do registru kontejneru. 
+V předchozí části jste vytvořili řešení IoT Edge a Přidali jste do **CModule** kód pro odfiltrování zpráv, u kterých se teplota hlášeného počítače nachází pod přijatelnou prahovou hodnotou. Teď je potřeba vytvořit toto řešení jako image kontejneru a odeslat ho do registru kontejneru. 
 
 1. Pomocí následujícího příkazu se přihlaste k Docker na svém vývojovém počítači. Přihlaste se pomocí uživatelského jména, hesla a přihlašovacího serveru ze služby Azure Container Registry. Tyto hodnoty můžete načíst z oddílu **přístupové klíče** v registru v Azure Portal.
 
@@ -315,7 +326,7 @@ V předchozí části jste vytvořili řešení IoT Edge a Přidali jste do **CM
 
 3. Vyberte **sestavení a moduly nabízených IoT Edge**. 
 
-   Příkaz Build a push spustí tři operace. Nejprve vytvoří novou složku v řešení s názvem **config** , která obsahuje úplný manifest nasazení, vyplní informace v šabloně nasazení a další soubory řešení. Za druhé se spustí `docker build` pro sestavení image kontejneru na základě vhodné souboru Dockerfile pro vaši cílovou architekturu. Pak se spustí `docker push`, aby se úložiště imagí nahrajte do registru kontejneru. 
+   Příkaz Build a push spustí tři operace. Nejprve vytvoří novou složku v řešení s názvem **config** , která obsahuje úplný manifest nasazení, vyplní informace v šabloně nasazení a další soubory řešení. Za druhé spustí `docker build` k sestavení image kontejneru na základě vhodné souboru Dockerfile pro vaši cílovou architekturu. Pak se spustí `docker push` a nahrajte úložiště imagí do svého registru kontejneru. 
 
 ## <a name="deploy-modules-to-device"></a>Nasadit moduly do zařízení
 

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6cdebb8f6abea2b50dd8aad58ccc9fb5e680cba9
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 635431fb87e5f164f92ab4b7a1027ee96e9d801a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73798476"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891002"
 ---
 # <a name="generate-maps"></a>Generovat mapy
 
@@ -170,7 +170,7 @@ Vlhkost v půdě je voda, která je držena v prostorech mezi částicemi v půd
 Před pokusem o vygenerování heatmapu vlhkosti v půdě ověřte následující:
 
 - Musí se nasadit aspoň tři senzory vlhkosti v půdě. Microsoft doporučuje, abyste se nepokusili vytvořit mapu vlhkosti půdy před nasazením senzorů a přidružením k farmě.  
-- Alespoň jedna pracovní verze dostupnosti v cloudu musí být k dispozici po dobu posledních 120 dní od dne, pro který byla požadována mapa vlhkosti půdy.
+- Generování heatmapu vlhkosti v půdě má vliv na pokrytí cest Sentinel, cloudové pokrytí a cloudové stíny. Alespoň jedna pracovní verze dostupnosti v cloudu musí být k dispozici po dobu posledních 120 dní od dne, pro který byla požadována mapa vlhkosti půdy.
 - Aspoň polovinu senzorů nasazených ve farmě musí být online a musí mít streamování dat do datového centra.
 - Heatmapu by mělo být vygenerováno pomocí měření senzoru ze stejného poskytovatele.
 
@@ -220,6 +220,6 @@ Použijte k tomu následující postup:
 4. Vyberte ikonu **řazení** vedle záhlaví tabulky, která se mají seřadit podle farmy, data, vytvoření, ID úlohy a typu úlohy.
 5. Procházejte seznamem dostupných map pomocí navigačních tlačítek na konci stránky.
 6. Vyberte mapu, kterou chcete zobrazit. V automaticky otevíraném okně se zobrazí náhled pro vybranou mapu.
-7. Vyberte možnost **Stáhnout** rozevírací nabídku a vyberte formát stahování a mapa se stáhne a uloží do místní složky vašeho počítače.
+7. Vyberte možnost **Stáhnout** rozevírací nabídku a vyberte formát stahování a mapa se stáhne a uloží do zadané složky.
 
     ![Beats farmy projektu](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)

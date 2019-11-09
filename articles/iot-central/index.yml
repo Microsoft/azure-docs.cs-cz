@@ -10,72 +10,72 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: cf720d7a526a913cc4c06ee160de3eecbe92e0a1
-  ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+  ms.openlocfilehash: f43c21d483bbb43bb270a7a70c4de6be1fb90f35
+  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/30/2019
-  ms.locfileid: "73176114"
+  ms.lasthandoff: 11/09/2019
+  ms.locfileid: "73890749"
 highlightedContent:
   items:
   - title: Co je IoT Central?
     itemType: overview
-    url: ./core/overview-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    url: ./preview/overview-iot-central.md
   - title: Co jsou šablony aplikací?
     itemType: concept
-    url: ./core/concepts-app-templates.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    url: ./core/concepts-app-templates.md
   - title: Architektura služby Azure IoT Central
     itemType: architecture
-    url: ./core/concepts-architecture-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    url: ./preview/concepts-architecture.md
   - title: Vytvoření nové aplikace
     itemType: quickstart
-    url: ./core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    url: ./preview/quick-deploy-iot-central.md
   - title: Definování typu zařízení a přidání zařízení
     itemType: tutorial
-    url: ./core/howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    url: ./preview/howto-set-up-template.md
   - title: Monitorování zařízení
     itemType: tutorial
-    url: ./core/tutorial-create-telemetry-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    url: ./preview/tutorial-create-telemetry-rules.md
 conceptualContent:
   items:
   - title: Připojování (funkce Preview)
     links:
-    - url: ./core/howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - url: ./preview/howto-set-up-template.md
       itemType: how-to-guide
       text: Nastavení šablony zařízení
-    - url: ./core/tutorial-connect-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - url: ./preview/tutorial-connect-pnp-device.md
       itemType: tutorial
       text: Připojení zařízení IoT Plug and Play
     footerLink:
-      url: ./core/index.yml?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: ./preview/index.yml
       text: Další informace
   - title: Stále připojení (funkce Preview)
     links:
-    - url: ./core/tutorial-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - url: ./preview/tutorial-use-device-groups.md
       itemType: how-to-guide
       text: Použití skupin zařízení
-    - url: ./core/howto-manage-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - url: ./preview/howto-manage-devices.md
       itemType: how-to-guide
       text: správu zařízení
-    - url: ./core/howto-run-a-job.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - url: ./core/howto-run-a-job.md
       itemType: concept
       text: Jak spustit úlohu
-    - url: ./core/howto-create-analytics-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - url: ./preview/howto-create-analytics.md
       itemType: how-to-guide
       text: Analýza dat zařízení
     footerLink:
-      url: ./core/index.yml?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: ./preview/index.yml
       text: Další informace
   - title: Transformace (funkce Preview)
     links:
-    - url: ./core/howto-create-telemetry-rules.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - url: ./preview/tutorial-create-telemetry-rules.md
       itemType: how-to-guide
       text: Vytvoření pravidla telemetrie
-    - url: ./core/howto-export-data-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - url: ./preview/howto-export-data.md
       itemType: how-to-guide
       text: Konfigurace nepřetržitého exportu dat
     footerLink:
-      url: ./core/index.yml?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: ./preview/index.yml
       text: Další informace
 productDirectory:
   title: Začínáme sestavovat s využitím šablon oborových aplikací

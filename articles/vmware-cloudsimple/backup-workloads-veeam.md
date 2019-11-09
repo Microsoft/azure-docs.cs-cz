@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 880b31702cf1c0a92ab7ee536cd88e8e6957f6f8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 3414cc54e5023bdeebb2d5536c1408f981e68f19
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430846"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891406"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Zálohování virtuálních počítačů s úlohami v privátním cloudu CloudSimple pomocí Veeam B & R
 
@@ -136,7 +136,7 @@ Vytvořte pravidla brány firewall mezi podsítí pro správu a sítí zálohov�
 
 V následující tabulce je uveden seznam portů.
 
-| Ikona | Popis | Ikona | Popis |
+| ikona | Popis | ikona | Popis |
 | ------------ | ------------- | ------------ | ------------- |
 | Backup Server  | vCenter  | PROTOKOL HTTPS/TCP  | 443 |
 | Backup Server <br> *Vyžaduje se pro nasazení součástí Veeam Backup & pro replikaci.* | Záložní proxy server  | TCP/UDP  | 135, 137 až 139 a 445 |
@@ -194,9 +194,9 @@ Připojte virtuální síť k privátnímu cloudu podle pokynů v tématu [přip
 
 ### <a name="configure-azure-blob-storage-for-long-term-data-retention"></a>Konfigurace úložiště objektů BLOB v Azure pro dlouhodobé uchovávání dat
 
-1. Vytvořte účet úložiště pro obecné účely (GPv2) standardního typu a kontejner objektů blob, jak je popsáno v části Microsoft video [Začínáme with Azure Storage](https://azure.microsoft.com/en-gb/resources/videos/get-started-with-azure-storage).
+1. Vytvořte účet úložiště pro obecné účely (GPv2) standardního typu a kontejner objektů blob, jak je popsáno v části Microsoft video [Začínáme with Azure Storage](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage).
 2. Vytvořte kontejner úložiště Azure, jak je popsáno v tématu [Vytvoření](https://docs.microsoft.com/rest/api/storageservices/create-container) odkazu na kontejner.
-2. Stáhněte si nástroj příkazového řádku `azcopy` pro Linux od společnosti Microsoft. V prostředí bash v CentOS 7,5 můžete použít následující příkazy.
+2. Stáhněte si nástroj `azcopy` příkazového řádku pro Linux od Microsoftu. V prostředí bash v CentOS 7,5 můžete použít následující příkazy.
 
     ```
     wget -O azcopy.tar.gz https://aka.ms/downloadazcopylinux64
@@ -206,7 +206,7 @@ Připojte virtuální síť k privátnímu cloudu podle pokynů v tématu [přip
     sudo yum -y install icu
     ```
 
-3. K kopírování záložních souborů do kontejneru objektů BLOB a z něj použijte příkaz `azcopy`.  Podrobné příkazy najdete v tématu [přenos dat pomocí AzCopy v systému Linux](../storage/common/storage-use-azcopy-linux.md) .
+3. Pomocí příkazu `azcopy` můžete kopírovat záložní soubory do kontejneru objektů BLOB a z něj.  Podrobné příkazy najdete v tématu [přenos dat pomocí AzCopy v systému Linux](../storage/common/storage-use-azcopy-linux.md) .
 
 ### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>Konzola vCenter pro privátní cloud: Nainstalujte Veeam B & R
 
@@ -290,7 +290,7 @@ Chcete-li zrušit oprávnění, přečtěte si téma oprávnění ke zrušení [
 * [Připojení virtuální sítě k okruhu jiné předplatné](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription)
 * [Vytvoření virtuálního počítače se systémem Linux v Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Postup připojení spravovaného datového disku k virtuálnímu počítači s Windows v Azure Portal](../virtual-machines/windows/attach-managed-disk-portal.md)
-* [Začínáme s využitím Azure Storage-video](https://azure.microsoft.com/en-gb/resources/videos/get-started-with-azure-storage)
+* [Začínáme s využitím Azure Storage-video](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
 * [Vytvořit kontejner](https://docs.microsoft.com/rest/api/storageservices/create-container)
 * [Přenos dat pomocí AzCopy v Linuxu](../storage/common/storage-use-azcopy-linux.md)
 

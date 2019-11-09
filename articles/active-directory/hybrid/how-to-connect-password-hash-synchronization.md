@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac1b75536e092203490a390860a1cead7ac333b7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0398ff7eb8931acc400b326ff92deaf75f0aa97e
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817977"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882828"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí Azure AD Connect synchronizace
 Tento článek poskytuje informace, které potřebujete k synchronizaci uživatelských hesel z místní instance služby Active Directory s instancí cloudové Azure Active Directory (Azure AD).
@@ -32,7 +32,7 @@ Pokud chcete synchronizovat heslo, Azure AD Connect Sync extrahuje hodnotu hash 
 
 Skutečný tok dat procesu synchronizace hodnot hash hesel je podobný synchronizaci uživatelských dat. Hesla jsou ale synchronizovaná častěji než standardní okno synchronizace adresářů pro jiné atributy. Proces synchronizace hodnot hash hesel se spouští každé 2 minuty. Frekvence tohoto procesu se nedá změnit. Při synchronizaci hesla přepíše existující heslo cloudu.
 
-Při prvním povolení funkce synchronizace hodnot hash hesel provádí počáteční synchronizaci hesel všech uživatelů v oboru. Nelze explicitně definovat podmnožinu hesel uživatelů, které chcete synchronizovat. Pokud však existuje více konektorů, je možné zakázat synchronizaci hodnot hash hesel pro některé konektory, ale ne jiné pomocí rutiny [set-ADSyncAADPasswordSyncConfiguration](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant) .
+Při prvním povolení funkce synchronizace hodnot hash hesel provádí počáteční synchronizaci hesel všech uživatelů v oboru. Nelze explicitně definovat podmnožinu hesel uživatelů, které chcete synchronizovat. Pokud však existuje více konektorů, je možné zakázat synchronizaci hodnot hash hesel pro některé konektory, ale ne jiné pomocí rutiny [set-ADSyncAADPasswordSyncConfiguration](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant) .
 
 Když změníte místní heslo, aktualizované heslo se synchronizuje častěji během několika minut.
 Funkce synchronizace hodnot hash hesel automaticky opakuje neúspěšné pokusy o synchronizaci. Pokud při pokusu o synchronizaci hesla dojde k chybě, do prohlížeče událostí se zaznamená chyba.

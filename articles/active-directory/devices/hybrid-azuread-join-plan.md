@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66e583a75f7103a7cccf560d537e440ba47cae5a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: c016ce349acdfff6145286d9fc07e08db4ed9516
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596344"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882816"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Postupy: plánování implementace služby Hybrid Azure Active Directory JOIN
 
@@ -30,7 +30,7 @@ Přenosem zařízení do Azure AD maximalizujete produktivitu uživatelů díky 
 
 Pokud máte místní prostředí Active Directory (AD) a chcete se připojit k počítačům připojeným k doméně AD do služby Azure AD, můžete to provést pomocí hybridního připojení k Azure AD. Tento článek poskytuje související kroky pro implementaci hybridního připojení k Azure AD ve vašem prostředí. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že jste obeznámeni se [Seznámkou se správou identit zařízení v Azure Active Directory](../device-management-introduction.md).
 
@@ -55,7 +55,7 @@ Připojení k hybridní službě Azure AD podporuje širokou škálu zařízení
 
 ### <a name="windows-current-devices"></a>Aktuální zařízení s Windows
 
-- Windows 10
+- Windows 10
 - Windows Server 2016
 - Windows Server 2019
 
@@ -75,7 +75,7 @@ Jako první krok plánování byste měli zkontrolovat prostředí a určit, jes
 
 Služba připojení k hybridní službě Azure AD se v současné době nepodporuje, pokud vaše prostředí obsahuje jednu doménovou strukturu služby AD synchronizující data identity do více než jednoho tenanta Azure AD.
 
-Pokud vaše prostředí používá infrastrukturu virtuálních klientských počítačů (VDI), přečtěte si téma [Identita zařízení a virtualizace plochy](https://docs.microsoft.com/en-us/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
+Pokud vaše prostředí používá infrastrukturu virtuálních klientských počítačů (VDI), přečtěte si téma [Identita zařízení a virtualizace plochy](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
 
 Připojení k hybridní službě Azure AD se podporuje pro čip TPM kompatibilní se standardem FIPS 2,0 a nepodporuje se pro čip TPM 1,2. Pokud vaše zařízení mají čip TPM kompatibilní se standardem FIPS 1,2, musíte je před tím, než budete pokračovat s hybridním připojením k Azure AD, zakázat. Microsoft neposkytuje žádné nástroje pro zakázání režimu FIPS pro čipy TPM, protože je závislý na výrobci čipu TPM. Požádejte o podporu svého hardwarového výrobce OEM. Od verze WIndows 10 1903 se čipy TPM 1,2 nepoužívají pro připojení k hybridní službě Azure AD a zařízení s těmito čipy tpmmi se budou považovat za neexistující TPM.
 
@@ -124,7 +124,7 @@ Federované prostředí by mělo mít poskytovatele identity, který podporuje n
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **AD FS/Services/Trust/2005/windowstransport** , **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat koncové body systému Windows WS-Trust, najdete v tématu [zakázání koncových bodů systému Windows WS-Trust na proxy serveru](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). To, jaké koncové body jsou povolené, můžete zobrazit pomocí konzoly pro správu AD FS pod**koncovými body** >  **služby**.
+> **AD FS/Services/Trust/2005/windowstransport** , **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat koncové body systému Windows WS-Trust, najdete v tématu [zakázání koncových bodů systému Windows WS-Trust na proxy serveru](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). To, jaké koncové body jsou povolené, můžete zobrazit pomocí konzoly pro správu AD FS v části **koncové body** **služby** > .
 
 > [!NOTE]
 > Azure AD nepodporuje čipové karty ani certifikáty ve spravovaných doménách.
@@ -150,12 +150,12 @@ V následující tabulce najdete podrobné informace o podpoře místních UPN s
 | Balíček | Federované | Z verze 1703 | Všeobecně dostupné |
 | Bez směrování | Federované | Z verze 1803 | Všeobecně dostupné |
 | Balíček | Spravované | Z verze 1803 | Všeobecně dostupná služba Azure AD SSPR ve Windows zamykací obrazovky není podporovaná. |
-| Bez směrování | Spravované | Nepodporováno | |
+| Bez směrování | Spravované | Nepodporuje se | |
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Konfigurace služby hybrid Azure Active Directory JOIN pro federované prostředí](hybrid-azuread-join-federated-domains.md)
+> [Konfigurace hybridního prostředí Azure Active Directory JOIN pro federované prostředí](hybrid-azuread-join-federated-domains.md)
 > [konfigurace hybridního Azure Active Directory JOIN pro spravované prostředí](hybrid-azuread-join-managed-domains.md)
 
 <!--Image references-->

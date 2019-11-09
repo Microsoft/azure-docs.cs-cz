@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: 9073893ebfcfea1a7f4e2a00bf82babcb8841122
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 690df14e4e09b4a35589446029468a7d757d2732
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838521"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888617"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Kurz: výuka a nasazení prvního modelu v jazyce R s Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -269,7 +269,7 @@ as.numeric(predict(accident_model,newdata, type="response")*100)
 
 ## <a name="deploy-as-a-web-service"></a>Nasazení jako webové služby
 
-Pomocí modelu můžete předpovědět nebezpečí smrti proti kolizi. Použijte Azure ML k nasazení modelu jako předpovědi služby. V tomto kurzu nasadíte webovou službu v [Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-instances/) (ACI).
+Pomocí modelu můžete předpovědět nebezpečí smrti proti kolizi. Použijte Azure ML k nasazení modelu jako předpovědi služby. V tomto kurzu nasadíte webovou službu v [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (ACI).
 
 ### <a name="register-the-model"></a>Registrace modelu
 

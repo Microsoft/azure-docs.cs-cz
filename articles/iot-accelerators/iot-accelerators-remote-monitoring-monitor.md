@@ -1,5 +1,5 @@
 ---
-title: Monitorujte svoje zařízení IoT z řešení Azure kurz – Azure | Dokumentace Microsoftu
+title: Monitorování zařízení v řešení vzdáleného monitorování – Azure | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak monitorovat zařízení IoT pomocí akcelerátoru řešení pro vzdálené monitorování.
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: d6d850fa8f896809318be77529e10abddaf6ea9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 400a71b11fde210b889d938041e88c5ebe73c1dc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61452368"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890870"
 ---
-# <a name="tutorial-monitor-your-iot-devices"></a>Kurz: Monitorujte svoje zařízení IoT
+# <a name="tutorial-monitor-your-iot-devices"></a>Kurz: Monitorování zařízení IoT
 
 V tomto kurzu použijete akcelerátor řešení pro vzdálené monitorování k monitorování připojených zařízení IoT. Pomocí řídicího panelu řešení zobrazíte telemetrii, informace o zařízení, upozornění a klíčové ukazatele výkonu.
 
@@ -69,7 +69,7 @@ Pokud chcete zobrazit podrobnosti o nákladním voze truck-02, posuňte a přibl
 
 [![Zobrazení podrobností o zařízení na řídicím panelu](./media/iot-accelerators-remote-monitoring-monitor/dashboarddevicedetail-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboarddevicedetail-expanded.png#lightbox)
 
-## <a name="view-alerts"></a>Zobrazení upozornění
+## <a name="view-alerts"></a>Zobrazení výstrah
 
 Na panelu **Upozornění** se zobrazují podrobné informace o nejnovějších upozorněních ze zařízení. Upozornění z nákladního vozu truck-02 poukazují na vyšší než běžnou teplotu nákladu:
 
@@ -95,9 +95,9 @@ Způsob agregace klíčových ukazatelů výkonu určují stejné filtry, které
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se dozvěděli, jak pomocí stránky **Řídicí panel** v akcelerátoru řešení pro vzdálené monitorování filtrovat a monitorovat simulované nákladní vozy. Informace o tom, jak pomocí akcelerátoru řešení detekovat problémy s připojenými zařízeními, najdete v dalším kurzu.
 
 > [!div class="nextstepaction"]
-> [Detekce problémů se zařízeními připojenými k řešení monitorování](iot-accelerators-remote-monitoring-automate.md)
+> [Detekce problémů se zařízeními připojenými k řešení pro monitorování](iot-accelerators-remote-monitoring-automate.md)

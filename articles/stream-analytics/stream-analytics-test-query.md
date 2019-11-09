@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9c67d511f6c94c8b9af034835e149875304e2235
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: d68c1ee084efc146d69d8404aadb8acbb4cc33d1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918968"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891753"
 ---
 # <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>Testování úlohy Azure Stream Analytics s ukázkovými daty
 
-V Azure Stream Analytics můžete dotaz testovat bez spuštění nebo zastavení úlohy. Na webu Azure Portal můžete testovat dotazy na příchozí data z vaší vstupní jímky nebo nahraná ukázková data z místního souboru. Dotazy můžete testovat také místně z místních ukázkových dat nebo živých dat v [aplikaci Visual Studio](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-live-data-local-testing) a [Visual Studio Code](https://docs.microsoft.com/en-us/azure/stream-analytics/vscode-local-run). 
+V Azure Stream Analytics můžete dotaz testovat bez spuštění nebo zastavení úlohy. Na webu Azure Portal můžete testovat dotazy na příchozí data z vaší vstupní jímky nebo nahraná ukázková data z místního souboru. Dotazy můžete testovat také místně z místních ukázkových dat nebo živých dat v [aplikaci Visual Studio](stream-analytics-live-data-local-testing.md) a [Visual Studio Code](vscode-local-run.md). 
 
 ## <a name="sample-incoming-data-from-input"></a>Ukázková příchozí data ze vstupu
 
@@ -74,7 +74,7 @@ Místo používání živých dat můžete použít ukázková data z místního
 
 1. Přihlaste se k portálu Azure.
    
-2. Vyhledejte existující úlohy Stream Analytics a vyberte ho.
+2. Vyhledejte existující úlohu Stream Analytics a vyberte ji.
 
 3. Na stránce Stream Analytics úlohy pod záhlavím **topologie úlohy** vyberte možnost **dotaz** . otevře se okno Editor dotazů.
 
@@ -98,7 +98,7 @@ Místo používání živých dat můžete použít ukázková data z místního
 
 10. Po ověření výsledků zobrazených v prohlížeči můžete úlohu **Spustit** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 
@@ -106,4 +106,4 @@ Místo používání živých dat můžete použít ukázková data z místního
 
 * [Vysvětlení vstupů pro Azure Stream Analytics](stream-analytics-add-inputs.md)
 
-* [Vysvětlení vytvořené jako výstupy z Azure Stream Analytics](stream-analytics-define-outputs.md)
+* [Porozumění výstupům z Azure Stream Analytics](stream-analytics-define-outputs.md)
