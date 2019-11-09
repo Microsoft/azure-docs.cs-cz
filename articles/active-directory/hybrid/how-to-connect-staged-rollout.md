@@ -6,16 +6,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 11/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24efd9d67e5bcc083ce1a02dcf0850a39189afe8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 2596091324acde5c4fdc3f7c467849f90266fec9
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173109"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847232"
 ---
 # <a name="cloud-authentication-staged-rollout-public-preview"></a>Cloudové ověřování: fáze zavedení (Public Preview)
 
@@ -33,7 +33,7 @@ Tyto funkce by se měly vzít v úvahu před přechodem na cloudové ověřován
 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 -   Máte tenanta Azure AD se federované domény.
 
@@ -117,18 +117,18 @@ Povolte bezproblémové jednotné přihlašování v doménových strukturách A
 
 2. Přejděte do složky% ProgramFiles%\\Microsoft Azure Active Directory Connect.
 
-3. Pomocí tohoto příkazu Importujte modul bezproblémového prostředí PowerShell pro jednotné přihlašování: `Import-Module .\\AzureADSSO.psd1`.
+3. Pomocí tohoto příkazu Importujte modul bezproblémového prostředí PowerShell pro jednotné přihlašování: `Import-Module .\AzureADSSO.psd1`.
 
 4. Spusťte PowerShell jako správce. V prostředí PowerShell volejte `New-AzureADSSOAuthenticationContext`. Tento příkaz by měl poskytnout dialogové okno, kde můžete zadat přihlašovací údaje globálního správce vašeho tenanta.
 
-5. Zavolejte `Get-AzureADSSOStatus \| ConvertFrom-Json`. Tento příkaz vám poskytne seznam doménových struktur AD (podívejte se na seznam\" \"domény), na kterém je tato funkce povolená. Ve výchozím nastavení je nastavena na hodnotu false na úrovni tenanta.
+5. Zavolejte `Get-AzureADSSOStatus | ConvertFrom-Json`. Tento příkaz vám poskytne seznam doménových struktur AD (podívejte se na seznam\" \"domény), na kterém je tato funkce povolená. Ve výchozím nastavení je nastavena na hodnotu false na úrovni tenanta.
 
    > **Příklad:** 
    > ![příklad výstupu Windows powershellu](./media/how-to-connect-staged-rollout/sr3.png)
 
-6. Zavolejte `\$creds = Get-Credential`. Po zobrazení výzvy zadejte přihlašovací údaje správce domény pro zamýšlenou doménovou strukturu služby AD.
+6. Zavolejte `$creds = Get-Credential`. Po zobrazení výzvy zadejte přihlašovací údaje správce domény pro zamýšlenou doménovou strukturu služby AD.
 
-7. Zavolejte `Enable-AzureADSSOForest -OnPremCredentials \$creds`. Tento příkaz vytvoří účet počítače AZUREADSSOACC z místního řadiče domény pro tuto konkrétní doménovou strukturu služby Active Directory, která je nutná pro bezproblémové jednotné přihlašování.
+7. Zavolejte `Enable-AzureADSSOForest -OnPremCredentials $creds`. Tento příkaz vytvoří účet počítače AZUREADSSOACC z místního řadiče domény pro tuto konkrétní doménovou strukturu služby Active Directory, která je nutná pro bezproblémové jednotné přihlašování.
 
 8. Bezproblémové jednotné přihlašování vyžaduje, aby adresy URL byly v zóně intranetu. K nasazení těchto adres URL pomocí zásad skupiny se prosím podívejte na [bezproblémové rychlé zprovoznění jednotného přihlašování](how-to-connect-sso-quick-start.md#step-3-roll-out-the-feature) .
 
@@ -240,7 +240,7 @@ Tady je postup, jak můžete sledovat přihlašování uživatelů, ke kterým d
 
 -   **Otázka: můžeme použít PowerShell k provádění připraveného zavedení?**
 
--   Odpověď: Ano, přečtěte si dokumentaci k použití prostředí PowerShell k provedení připraveného zavedení.
+-   Odpověď: Ano, přečtěte si dokumentaci k použití prostředí PowerShell k provedení připraveného zavedení [.](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)
 
 ## <a name="next-steps"></a>Další kroky
 - [AzureAD 2,0 Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )

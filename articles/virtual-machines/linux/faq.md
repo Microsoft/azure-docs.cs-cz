@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 0648b9b321aabc7c9e56997c320a63386542498c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e7c577e28b30e68020532049affba59f355341cf
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083380"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838497"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Nejčastější dotazy týkající se Linux Virtual Machines
 Tento článek popisuje některé běžné otázky týkající se virtuálních počítačů s Linux vytvořenými v Azure pomocí modelu nasazení Správce prostředků. Verzi tohoto tématu pro Windows najdete v části [Nejčastější dotazy týkající se Windows Virtual Machines](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -30,7 +30,7 @@ Všichni předplatitelé můžou na virtuálním počítači Azure spouštět se
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Kolik úložiště můžu využít s virtuálním počítačem?
 Každý datový disk může mít až 32 767 GiB. Počet datových disků, které můžete využít, závisí na velikosti virtuálního počítače. Podrobnosti najdete v článku [Velikosti služeb Virtual Machines](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Azure Managed Disks jsou doporučené nabídky diskového úložiště pro použití s Azure Virtual Machines k trvalému ukládání dat. Pro každý virtuální počítač můžete použít několik Spravovaných disků. Managed Disks nabízí dva typy trvalých možností úložiště: Managed Disks úrovně Premium a Standard Informace o cenách najdete v tématu [Managed disks ceny](https://azure.microsoft.com/pricing/details/managed-disks).
+Azure Managed Disks jsou doporučené nabídky diskového úložiště pro použití s Azure Virtual Machines k trvalému ukládání dat. Pro každý virtuální počítač můžete použít několik Spravovaných disků. Spravované disky nabízí dva typy odolných úložišť: Premium a Standard. Informace o cenách najdete v tématu [Managed disks ceny](https://azure.microsoft.com/pricing/details/managed-disks).
 
 Účty Azure Storage taky můžou poskytovat úložiště pro disk operačního systému a všechny datové disky. Každý disk je soubor .vhd uložený jako objekt blob stránky. Podrobnosti o cenách najdete v tématu [Podrobnosti o cenách úložiště](https://azure.microsoft.com/pricing/details/storage/).
 
@@ -52,10 +52,10 @@ Pro vytváření virtuálních počítačů v existujících předplatných Azur
 Ano, teď je to možné. Nejdřív je potřeba zastavit navráceného virtuálního počítače. Pak můžete přidat nebo odebrat síťovou kartu (Pokud se nejedná o poslední síťovou kartu na VIRTUÁLNÍm počítači). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>Existují nějaké požadavky na název počítače?
-Ano. Název počítače může mít délku maximálně 64 znaků. Další informace o pojmenování prostředků najdete v tématu [pravidla a omezení konvence](/azure/architecture/best-practices/naming-conventions) pojmenování.
+Ano. Název počítače může mít délku maximálně 64 znaků. Další informace o pojmenování prostředků najdete v tématu [pravidla a omezení konvence pojmenování](/azure/architecture/best-practices/resource-naming) .
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>Existují nějaké požadavky na název skupiny prostředků?
-Ano. Název skupiny prostředků může mít délku maximálně 90 znaků. Další informace o skupinách prostředků najdete v tématu [pravidla a omezení konvence](/azure/architecture/best-practices/naming-conventions) pojmenování.
+Ano. Název skupiny prostředků může mít délku maximálně 90 znaků. Další informace o skupinách prostředků najdete v tématu [pravidla a omezení konvence pojmenování](/azure/architecture/best-practices/resource-naming) .
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>Jaké jsou požadavky na uživatelské jméno při vytváření virtuálního počítače?
 
@@ -88,7 +88,7 @@ Hesla musí taky splňovat 3 z následujících 4 požadavků na složitost:
 * Mít méně znaků
 * Má horní znaky
 * Mít číslici
-* Má speciální znak (porovnávání regulárního výrazu [\W_])
+* Mají speciální znak (porovnávání regulárního výrazu [\ W_])
 
 Následující hesla nejsou povolena:
 
@@ -98,7 +98,7 @@ Následující hesla nejsou povolena:
         <td style="text-align:center">P @ $ $w 0rd</td>
         <td style="text-align:center">P@ssw0rd</td>
         <td style="text-align:center">P@ssword123</td>
-        <td style="text-align:center">Pa$$word</td>
+        <td style="text-align:center">PA $ $word</td>
     </tr>
     <tr>
         <td style="text-align:center">pass@word1</td>

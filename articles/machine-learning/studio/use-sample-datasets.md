@@ -1,6 +1,6 @@
 ---
 title: Použít ukázkové datové sady
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Popisy datových sad použitých v ukázkových modelech, které jsou součástí Machine Learning Studio (Classic). Tyto ukázkové datové sady můžete použít pro vaše experimenty.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: f22d27f7900ce9dda3a8e65451acb9b743a25811
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 84ac2b43c9ec2e46bcd2967cf411f1bb1f60f42a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73618907"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839407"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Použití ukázkových datových sad v Azure Machine Learning Studio (klasický)
 [top]: #machine-learning-sample-datasets
@@ -127,21 +127,21 @@ Datová sada obsahuje další informace pro každou podezřelou oblast obrazu na
 <tr>
   <td>Appetency popisky CRM – sdílené</td>
   <td>
-Štítky z konference KDD (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels">orange_small_train_appetency. labels</a>) na vytvářené problémy s předpovědí vztahů se zákazníky 2009.
+Štítky z konference KDD (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels">orange_small_train_appetency. labels</a>2009) – výzva pro předpověď vztahů se zákazníky.
   </td>
 </tr>
 
 <tr>
   <td>Sdílené změny v CRM</td>
   <td>
-Štítky z konference KDD (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels">orange_small_train_churn. labels</a>) na vytvářené problémy s předpovědí vztahů se zákazníky 2009.
+Štítky z konference KDD (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels">orange_small_train_churn. labels</a>2009) – výzva pro předpověď vztahů se zákazníky.
   </td>
 </tr>
 
 <tr>
   <td>Sdílená datová sada CRM</td>
   <td>
-Tato data pocházejí z konference KDD (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip">orange_small_train. data. zip</a>), která vychází ze seznamu 2009 vztahů se zákazníky.
+Tato data pocházejí z konference KDD (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip">orange_small_train. data. zip</a>) s 2009.
 <p></p>
 Datová sada obsahuje zákazníky 50 tis z francouzské telekomunikační společnosti oranžová. Každý zákazník má 230 funkcí Anonyme, 190 z nich je numerická a 40 jsou kategorií. Funkce jsou velmi zhuštěné.
   </td>
@@ -150,7 +150,7 @@ Datová sada obsahuje zákazníky 50 tis z francouzské telekomunikační spole�
 <tr>
   <td>Sdílení popisků pro CRM</td>
   <td>
-Štítky z konference KDD (<a href="http://www.sigkdd.org/site/2009/files/orange_large_train_upselling.labels">orange_large_train_upselling. labels</a>) na vytvářené problémy s předpovědí vztahů se zákazníky 2009.
+Štítky z konference KDD (<a href="http://www.sigkdd.org/site/2009/files/orange_large_train_upselling.labels">orange_large_train_upselling. labels</a>2009) – výzva pro předpověď vztahů se zákazníky.
   </td>
 </tr>
 
@@ -397,7 +397,7 @@ Přiřazení témat pro články s příspěvky v datové sadě RCV1-v2 pro zpr�
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a></td>
   <td>
-Tato data pocházejí z konference KDDu pro testování výkonu studenta 2010 (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">vyhodnocení výkonu studenta</a>). Použitá data jsou Algebra_2008_2009 sady školení (razítko, J., NICULESCU-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebraický I 2008-2009. Datová sada výzvy z konference KDD 2010 – výzva k dolování dat vzdělávání. Najdete ho na adrese <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads. jsp</a>.
+Tato data pocházejí z konference KDDu pro testování výkonu studenta 2010 (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">vyhodnocení výkonu studenta</a>). Použitá data jsou Algebra_2008_2009 sada školení (razítko, J. NICULESCU-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebraický I 2008-2009. Datová sada výzvy z konference KDD 2010 – výzva k dolování dat vzdělávání. Najdete ho na adrese <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads. jsp</a>.
 <p></p>
 Datová sada byla stažena a uložena v úložišti objektů BLOB v Azure (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a>) a obsahuje soubory protokolu ze systému student výukovými. Dodávané funkce zahrnují ID problému a jeho stručný popis, ID studenta, časové razítko a počet pokusů o vydaný studenta před vyřešením problému správným způsobem. Původní datová sada má 8,9 M záznamů; Tato datová sada byla vyrozdělena do vzorků na první 100 tisíc řádky. Datová sada má 23 sloupců oddělených tabulátorem různých typů: číselná, kategorií a timestamp.
   </td>

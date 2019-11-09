@@ -8,12 +8,12 @@ ms.date: 12/08/2016
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: 33123c823a2e0d6044e3419f62a512f3e84f953f
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 17d02d8df96927aa506683fef94899e5c5114684
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302997"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839026"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>Používání úložiště Queue z Javy
 
@@ -48,7 +48,7 @@ import com.microsoft.azure.storage.queue.*;
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Nastavení připojovacího řetězce služby Azure Storage
 
-Klient úložiště Azure používá připojovací řetězec úložiště k uložení koncových bodů a přihlašovacích údajů pro přístup ke službám správy dat. Při spuštění klientské aplikace musíte zadat připojovací řetězec úložiště v následujícím formátu a jako hodnoty *AccountName* a *AccountKey* použít název a primární přístupový klíč vašeho účtu úložiště uvedené na webu [Azure Portal](https://portal.azure.com). Tento příklad ukazuje deklaraci statického pole pro uložení připojovacího řetězce:
+Klient úložiště Azure používá připojovací řetězec úložiště k uložení koncových bodů a přihlašovacích údajů pro přístup ke službám správy dat. Při spuštění klientské aplikace musíte zadat připojovací řetězec úložiště v následujícím formátu a jako hodnoty [AccountName](https://portal.azure.com) a *AccountKey* použít název a primární přístupový klíč vašeho účtu úložiště uvedené na webu *Azure Portal*. Tento příklad ukazuje deklaraci statického pole pro uložení připojovacího řetězce:
 
 ```java
 // Define the connection-string with your values.
@@ -58,7 +58,7 @@ public static final String storageConnectionString =
     "AccountKey=your_storage_account_key";
 ```
 
-V aplikaci spuštěné v rámci role v Microsoft Azure lze tento řetězec Uložit do konfiguračního souboru služby *ServiceConfiguration. cscfg*a lze k němu přidružit volání metody **RoleEnvironment. getConfigurationSettings** . Tady je příklad získání připojovacího řetězce *StorageConnectionString* z elementu **Settings** (Nastavení) v konfiguračním souboru služby:
+V aplikaci spuštěné v rámci role v Microsoft Azure lze tento řetězec Uložit do konfiguračního souboru služby *ServiceConfiguration. cscfg*a lze k němu přidružit volání metody **RoleEnvironment. getConfigurationSettings** . Tady je příklad získání připojovacího řetězce **StorageConnectionString** z elementu *Settings* (Nastavení) v konfiguračním souboru služby:
 
 ```java
 // Retrieve storage account from connection-string.
@@ -402,6 +402,6 @@ Teď, když jste se naučili základní informace o službě Queue Storage, zís
 [Azure SDK for Java]: https://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[Referenční informace ke klientské sadě SDK služby Azure Storage]: http://dl.windowsazure.com/storage/javadoc/
+[Referenční informace ke klientské sadě SDK služby Azure Storage]: https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html
 [Azure Storage Services REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage Team Blog]: https://blogs.msdn.com/b/windowsazurestorage/

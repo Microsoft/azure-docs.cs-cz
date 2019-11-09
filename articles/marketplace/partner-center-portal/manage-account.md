@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 2962f6c5032ba317f9eb8f10c2abddb566aad904
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2edc644f003af2b33054a5cbdbaee81c9baa38cd
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825510"
+ms.locfileid: "73847451"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Jak spravovat účet komerčního tržiště v partnerském centru 
 
@@ -145,6 +145,11 @@ Vytváření sestav se provádí na základě hodnoty partnera (ID partnera Micr
 Další informace najdete v tématu [sledování zákaznického využití Azure pomocí nejčastějších dotazů k identifikátorům GUID](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution#faq).
 
 
+## <a name="establish-a-billing-profile"></a>Vytvoření fakturačního profilu
+
+Pokud publikujete [dynamics 365 pro zákaznickou zapojení & Power Apps](./create-new-customer-engagement-offer.md) nebo [Dynamics 365 for Operations](./create-new-operations-offer.md) nabídka, musíte dokončit svůj **Fakturační profil**.
+
+Fakturační adresa je předem vyplněná z vašeho ID MPN a tuto adresu můžete později aktualizovat. Pole DPH a ID DPH jsou volitelná.  Název země a název společnosti nelze upravovat.
 
 ## <a name="multi-user-account-management"></a>Správa účtů s více uživateli
 

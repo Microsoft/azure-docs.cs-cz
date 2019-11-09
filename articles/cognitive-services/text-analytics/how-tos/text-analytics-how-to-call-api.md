@@ -1,7 +1,7 @@
 ---
 title: Volání rozhraní Text Analytics API
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak volat Analýza textu REST API.
+description: Tento článek vysvětluje, jak můžete volat službu Azure Cognitive Services Analýza textu REST API a post.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 14d3864f654dac42566441b3729de0cf88482295
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 5697ae4c8864e0b9c4cbfc9e1e1048e1c3d60f77
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697862"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837214"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Způsob volání Analýza textu REST API
 
 Volání **rozhraní API pro analýzu textu** jsou volání http post/Get, která lze formulovat v libovolném jazyce. V tomto článku k předvedení klíčových konceptů používáme REST a [post](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) .
 
-Každý požadavek musí zahrnovat váš přístupový klíč a koncový bod HTTP. Koncový bod určuje oblast, kterou jste zvolili při registraci, adresu URL služby a prostředek, který se používá na žádosti `sentiment`: `keyphrases`, `languages`, a `entities`. 
+Každý požadavek musí zahrnovat váš přístupový klíč a koncový bod HTTP. Koncový bod určuje oblast, kterou jste zvolili při registraci, adresu URL služby a prostředek, který se používá na žádosti: `sentiment`, `keyphrases`, `languages`a `entities`. 
 
 Odvolání tohoto Analýza textu je bezstavové, takže neexistují žádné datové assety, které by bylo možné spravovat. Váš text se nahraje, analyzuje se po přijetí a výsledky se vrátí hned do volající aplikace.
 
@@ -40,11 +40,11 @@ Vstup musí být JSON v nezpracovaném nestrukturovaném textu. KÓD XML není p
 
 V současné době můžete pro všechny operace Analýza textu odeslat stejné dokumenty: mínění, klíčová fráze, rozpoznávání jazyka a identifikace entit. (Schéma se může v budoucnu lišit pro každou analýzu.)
 
-| Prvek | Platné hodnoty | Požadováno? | Použití |
+| Prvek | Platné hodnoty | Povinné? | Využití |
 |---------|--------------|-----------|-------|
-|`id` |Datovým typem je řetězec, ale v praxi se ID dokumentů považují za celá čísla. | Požadováno | Systém používá ID, která zadáte k strukturování výstupu. Pro každé ID v žádosti jsou vygenerovány kódy jazyka, klíčové fráze a výsledky mínění.|
-|`text` | Nestrukturovaný nezpracovaný text, maximálně 5 120 znaků. | Požadováno | V případě detekce jazyka lze text vyjádřit v jakémkoli jazyce. Pro analýzu mínění, extrakci klíčových frází a identifikaci entit musí být text v [podporovaném jazyce](../text-analytics-supported-languages.md). |
-|`language` | 2 – znakový kód [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) pro [podporovaný jazyk](../text-analytics-supported-languages.md) | Různé | Vyžaduje se pro analýzu míněníí, extrakci klíčových frází a propojení entit. volitelné pro detekci jazyka. Pokud vyloučíte, nedošlo k žádné chybě, ale analýza je bez něj oslabena. Kód jazyka by měl odpovídat `text` vašemu zadání. |
+|`id` |Datovým typem je řetězec, ale v praxi se ID dokumentů považují za celá čísla. | Požaduje se | Systém používá ID, která zadáte k strukturování výstupu. Pro každé ID v žádosti jsou vygenerovány kódy jazyka, klíčové fráze a výsledky mínění.|
+|`text` | Nestrukturovaný nezpracovaný text, maximálně 5 120 znaků. | Požaduje se | V případě detekce jazyka lze text vyjádřit v jakémkoli jazyce. Pro analýzu mínění, extrakci klíčových frází a identifikaci entit musí být text v [podporovaném jazyce](../text-analytics-supported-languages.md). |
+|`language` | 2 – znakový kód [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) pro [podporovaný jazyk](../text-analytics-supported-languages.md) | Různé | Vyžaduje se pro analýzu míněníí, extrakci klíčových frází a propojení entit. volitelné pro detekci jazyka. Pokud vyloučíte, nedošlo k žádné chybě, ale analýza je bez něj oslabena. Kód jazyka by měl odpovídat `text`, který zadáte. |
 
 Další informace o omezeních najdete v tématu [Analýza textu přehled >ch omezení dat](../overview.md#data-limits). 
 
@@ -91,12 +91,12 @@ Služba přijme požadavek o velikosti až 1 MB. Pokud používáte metodu post 
 
    V poli post se odpověď zobrazuje v následujícím okně jako jeden dokument JSON s položkou pro každé ID dokumentu, které je v požadavku k dispozici.
 
-## <a name="see-also"></a>Viz také: 
+## <a name="see-also"></a>Viz také 
 
  [Přehled rozhraní API pro analýzu textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Zjistit jazyk](text-analytics-how-to-language-detection.md)

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: rajanaki
-ms.openlocfilehash: 68881d57f251d2f26996b2a837780106326ec1d3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c126d72720c16d4ba869156e86a6e60110b2c31b
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492289"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847482"
 ---
 # <a name="upcoming-deprecation-of-dr-between-customer-owned-sites-using-hyper-v-and-between-sites-managed-by-scvmm-to-azure"></a>Nadcházející vyřazení DR mezi weby vlastněné zákazníkem pomocí technologie Hyper-V a mezi lokalitami spravovanými SCVMM do Azure
 
@@ -43,7 +43,7 @@ Níže jsou uvedené možnosti, které zákazník potřebuje k zajištění, aby
 - Vyberte, [že chcete začít používat Azure jako cíl Dr pro virtuální počítače na hostitelích Hyper-V](hyper-v-azure-tutorial.md).
 
 > [!IMPORTANT]
-> Upozorňujeme, že vaše místní prostředí může mít pořád SCVMMM, ale konfigurujete ASR pomocí odkazů jenom na hostitele Hyper-V.
+> Mějte na paměti, že vaše místní prostředí může mít stále SCVMM, ale konfigurujete ASR pomocí odkazů jenom na hostitele Hyper-V.
 
 - Vyberte, pokud chcete pokračovat v replikaci mezi lokalitami, ale s využitím základního [řešení repliky technologie Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica), ale nebude možné spravovat konfigurace DR pomocí Azure Site Recovery v Azure Portal. 
 

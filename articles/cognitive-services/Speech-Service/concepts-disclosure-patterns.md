@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: angle
-ms.openlocfilehash: fde4a73dd4a95028f23563fb6a8ae36c0142fd39
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dfa05ff114ea0976cb8d57f711eaacc016ea53cc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507316"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836995"
 ---
 # <a name="disclosure-design-patterns"></a>Vzory návrhu zpřístupnění
 Teď, když&#39;jste zjistili správnou [úroveň zveřejnění](concepts-disclosure-guidelines.md#disclosure-assessment) pro syntetické hlasové zážitky, je&#39;vhodný čas na prozkoumání potenciálních vzorů návrhu.
@@ -239,7 +239,7 @@ Vyzrazení můžete využít jako příležitost k řádnému selhání.
 
 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 - [Pokyny pro Microsoft bot](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
 - [Pokyny pro návrh Cortany](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
 - [Pokyny pro návrh mluveného slova pro Microsoft Windows UWP](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
@@ -247,11 +247,11 @@ Vyzrazení můžete využít jako příležitost k řádnému selhání.
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
-* [Poznámka transparentnosti](https://aka.ms/neural-tts-transparency-note)
+* [Zveřejnění pro hlasový talentů](https://aka.ms/disclosure-voice-talent)
 * [Pokyny pro zodpovědnost nasazení syntetické hlasové technologie](concepts-guidelines-responsible-deployment-synthetic.md)
 * [Přehled o uzavírání](concepts-gating-overview.md)
 * [Jak zveřejnit](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Poznámka transparentnosti](https://aka.ms/neural-tts-transparency-note)
+* [Zveřejnění pro hlasový talentů](https://aka.ms/disclosure-voice-talent)

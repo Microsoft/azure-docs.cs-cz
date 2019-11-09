@@ -1,7 +1,7 @@
 ---
 title: Migrace na V3-Translator Text API
 titleSuffix: Azure Cognitive Services
-description: Naučte se migrovat z verze V2 na V3 Translator Text API.
+description: Tento článek popisuje kroky, které vám pomůžou s migrací z verze V2 na verzi 3 služby Azure Cognitive Services Translator Text API.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 9ce9dc330ec1b0c32ce045437fadb5d8c191529e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: eb43d549d3e0cd449c865d533fc8701c4c3912fd
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595240"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837311"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Migrace Translator Text API v2 na V3
 
@@ -61,7 +61,7 @@ Následující seznam metod v2 a V3 identifikuje metody v3 a rozhraní API, kter
 
 Microsoft Translator Text překlad v2 přijal a vrátil data ve formátu XML. Ve verzi V3 všechna data odesílaná a přijímaná pomocí rozhraní API jsou ve formátu JSON. Soubor XML již nebude přijat ani vrácen v v3.
 
-Tato změna bude mít vliv na několik aspektů aplikace napsané pro rozhraní API pro překlad textu v2. Jako příklad: Rozhraní API jazyků vrací jazykové informace pro překlad textu, pro převod na více jazyků a dvě Slovníkové metody. Můžete požadovat všechny informace o jazycích pro všechny metody v jednom volání nebo si je vyžádat jednotlivě.
+Tato změna bude mít vliv na několik aspektů aplikace napsané pro rozhraní API pro překlad textu v2. Příklad: rozhraní API jazyků vrací jazykové informace pro překlad textu, pro převod na více jazyků a dvě Slovníkové metody. Můžete požadovat všechny informace o jazycích pro všechny metody v jednom volání nebo si je vyžádat jednotlivě.
 
 Metoda languages nevyžaduje ověřování; Kliknutím na následující odkaz můžete zobrazit všechny informace o jazyce pro v3 ve formátu JSON:
 
@@ -80,7 +80,7 @@ Microsoft Translator V3 se účtuje stejným způsobem jako ceny v2; za znak, v�
 | `Languages`     | Nebyly odeslány žádné znaky, žádné se nepočítají, bez poplatků.          |
 | `Translate`     | Počet je založen na tom, kolik znaků je odesláno pro překlad, a kolik jazyků jsou přeloženy znaky. 50 odeslaných znaků a 5 požadovaných jazyků bude 50x5.           |
 | `Transliterate`     | Počítá se počet znaků odeslaných pro účely překládání.         |
-| `Dictionary lookup & example`     | Se počítají počet znaků, odešle ke slovníku lookup a examples.         |
+| `Dictionary lookup & example`     | Počítá se počet znaků odeslaných pro vyhledávání slovníku a příklady.         |
 | `BreakSentence`     | Bez poplatků.       |
 | `Detect`     | Bez poplatků.      |
 
@@ -143,7 +143,7 @@ Pokud používáte koncový bod api.cognitive.microsofttranslator.com, použív�
 * [Microsoft Azure právní informace](https://azure.microsoft.com/support/legal)
 * [Online služby – požadavky](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Dokumentace k zobrazení V 3.0](reference/v3-0-reference.md)

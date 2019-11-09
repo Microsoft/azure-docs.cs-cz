@@ -1,6 +1,6 @@
 ---
 title: Správa webových služeb pomocí API Management
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Příručka ukazující, jak spravovat webové služby AzureML pomocí API Management. Pomocí definování uživatelského přístupu, omezování využívání a monitorování řídicího panelu Spravujte své koncové body REST API.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 227a7205788194cc507dcd9dab7e5cad57abc7f9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 084f3a1ecc7e44dc404d63a75b4561f8d5cb57cb
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671577"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839809"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Správa webových služeb Azure Machine Learning Studio (Classic) pomocí API Management
 ## <a name="overview"></a>Přehled
@@ -29,7 +29,7 @@ K dokončení této příručky potřebujete:
 
 * Účet Azure.
 * Účet AzureML.
-* Pracovní prostor, služba a api_key experimentu AzureML nasazeného jako webová služba. Podrobnosti o tom, jak vytvořit experiment AzureML, najdete v tématu [rychlý Start studia](create-experiment.md). Informace o tom, jak nasadit experiment (klasický) Studio jako webovou službu, najdete v tématu [nasazení studia](deploy-a-machine-learning-web-service.md) , které popisuje, jak nasadit experimenty AzureML jako webovou službu. Případně příloha A obsahuje pokyny, jak vytvořit a otestovat jednoduchý experiment AzureML a nasadit ho jako webovou službu.
+* Pracovní prostor, služba a api_key pro experiment AzureML nasazený jako webová služba. Podrobnosti o tom, jak vytvořit experiment AzureML, najdete v tématu [rychlý Start studia](create-experiment.md). Informace o tom, jak nasadit experiment (klasický) Studio jako webovou službu, najdete v tématu [nasazení studia](deploy-a-machine-learning-web-service.md) , které popisuje, jak nasadit experimenty AzureML jako webovou službu. Případně příloha A obsahuje pokyny, jak vytvořit a otestovat jednoduchý experiment AzureML a nasadit ho jako webovou službu.
 
 ## <a name="create-an-api-management-instance"></a>Vytvoření instance služby API Management
 
@@ -38,12 +38,12 @@ Webovou službu Azure Machine Learning můžete spravovat s instancí API Manage
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **+ Vytvořit prostředek**.
 3. Do vyhledávacího pole zadejte "API Management" a pak vyberte prostředek API Management.
-4. Klikněte na možnost **Vytvořit**.
+4. Klikněte na **Vytvořit**.
 5. Hodnota **název** se použije k vytvoření jedinečné adresy URL (v tomto příkladu se používá "demoazureml").
 6. Vyberte **předplatné**, **skupinu prostředků**a **umístění** pro instanci služby.
 7. Zadejte hodnotu pro **název organizace** (Tento příklad používá "demoazureml").
 8. Zadejte **e-mailovou zprávu správce** – tento e-mail se bude používat pro oznámení z API Managementho systému.
-9. Klikněte na možnost **Vytvořit**.
+9. Klikněte na **Vytvořit**.
 
 Vytvoření nové služby může trvat až 30 minut.
 
@@ -198,7 +198,7 @@ Jako **hodnotu hash bitsize**zadejte **3** . Tím se vytvoří 8 (23) sloupců.
 
 V tomto okamžiku můžete chtít otestovat experiment kliknutím na tlačítko **Spustit** .
 
-![Spouštěl](./media/manage-web-service-endpoints-using-api-management/run.png)
+![spouštěl](./media/manage-web-service-endpoints-using-api-management/run.png)
 
 ### <a name="create-a-web-service"></a>Vytvoření webové služby
 Nyní vytvořte webovou službu. Rozbalte položku **Webová služba** a přetáhněte **vstup** do experimentu. Připojte **vstup** k **algoritmu hashování funkcí**. Také přetáhněte **výstup** do experimentu. Připojte **výstup** k **funkcím hashování funkcí**.
@@ -216,7 +216,7 @@ Pro publikování experimentu klikněte na tlačítko **Ano** .
 ### <a name="test-the-web-service"></a>Testování webové služby
 Webová služba AzureML se skládá z koncových bodů RSS (Request/response Service) a BES (služba Batch Execution). RSS slouží k synchronnímu provedení. BES je pro provádění asynchronních úloh. Pokud chcete otestovat webovou službu pomocí níže uvedeného ukázkového zdroje Pythonu, možná budete muset stáhnout a nainstalovat sadu Azure SDK pro Python (viz: [Jak nainstalovat Python](/azure/python/python-sdk-azure-install)).
 
-Také budete potřebovat **pracovní prostor**, **službu**a **api_key** experimentu pro zdroj ukázek níže. Pracovní prostor a službu můžete najít tak, že na řídicím panelu webové služby kliknete buď na **žádost, odpověď** , nebo na **provedení dávky** .
+K níže uvedenému zdroji ukázek budete potřebovat **pracovní prostor**, **službu**a **api_key** svého experimentu. Pracovní prostor a službu můžete najít tak, že na řídicím panelu webové služby kliknete buď na **žádost, odpověď** , nebo na **provedení dávky** .
 
 ![najít – pracovní prostor a službu](./media/manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
 
@@ -241,7 +241,7 @@ Zobrazí se něco podobného
 ##### <a name="sample-code"></a>Vzorový kód
 Dalším způsobem, jak testovat záznamy o prostředcích, je z vašeho klientského kódu. Pokud na řídicím panelu kliknete na **požadavek/odpověď** a posuňte se k dolnímu okraji, C#zobrazí se ukázka kódu pro, Python a R. Zobrazí se také syntaxe žádosti o záznamy o prostředku, včetně identifikátoru URI, hlaviček a textu žádosti.
 
-Tato příručka ukazuje pracovní pythonový příklad. Budete ho muset upravit pomocí **pracovního prostoru**, **služby**a **api_key** experimentu.
+Tato příručka ukazuje pracovní pythonový příklad. Budete ho muset upravit pomocí **pracovního prostoru**, **služby**a **api_key** svého experimentu.
 
     import urllib2
     import json
@@ -273,7 +273,7 @@ Tato příručka ukazuje pracovní pythonový příklad. Budete ho muset upravit
 #### <a name="test-bes-endpoint"></a>Koncový bod testovacího BESu
 Na řídicím panelu klikněte na **spuštění dávky** a posuňte se k dolnímu. Zobrazí se vzorový kód pro C#, Python a R. Zobrazí se také syntaxe požadavků BES k odeslání úlohy, spuštění úlohy, získání stavu nebo výsledků úlohy a odstranění úlohy.
 
-Tato příručka ukazuje pracovní pythonový příklad. Musíte ho upravit pomocí **pracovního prostoru**, **služby**a **api_key** experimentu. Kromě toho je potřeba upravit **název účtu úložiště**, **klíč účtu úložiště**a **název kontejneru úložiště**. Nakonec budete muset změnit umístění **vstupního souboru** a umístění **výstupního souboru**.
+Tato příručka ukazuje pracovní pythonový příklad. Musíte ho upravit pomocí **pracovního prostoru**, **služby**a **api_key** svého experimentu. Kromě toho je potřeba upravit **název účtu úložiště**, **klíč účtu úložiště**a **název kontejneru úložiště**. Nakonec budete muset změnit umístění **vstupního souboru** a umístění **výstupního souboru**.
 
     import urllib2
     import json

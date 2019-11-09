@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/08/2019
-ms.openlocfilehash: 24a2b8a3c190ed440684ea3aa0ab35ebbf93fca0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0a6322edccc2047ffd9d67e4e3ed113e668898da
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161972"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834692"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Řešení potíží s Azure Diagnostics
 Tento článek popisuje informace o odstraňování potíží, které souvisí s používáním Azure Diagnostics. Další informace o diagnostice Azure najdete v tématu [přehled Azure Diagnostics](diagnostics-extension-overview.md).
@@ -22,7 +22,7 @@ Tento článek popisuje informace o odstraňování potíží, které souvisí s
 
 **Modul plug-in diagnostiky (DiagnosticsPlugin. exe)** : konfiguruje, spouští a spravuje dobu života agenta monitorování. Jedná se o hlavní proces, který spouští spouštěč.
 
-**Agent monitorování (MonAgent \*. exe procesy)** : monitoruje, shromažďuje a převádí diagnostická data.  
+**Agent monitorování (MonAgent\*. exe procesy)** : monitoruje, shromažďuje a převádí diagnostická data.  
 
 ## <a name="logartifact-paths"></a>Cesty log/artefaktů
 Níže jsou uvedeny cesty k některým důležitým protokolům a artefaktům. Na tyto informace odkazujeme během zbývající části dokumentu.
@@ -31,33 +31,33 @@ Níže jsou uvedeny cesty k některým důležitým protokolům a artefaktům. N
 | Artefakt | Cesta |
 | --- | --- |
 | **Konfigurační soubor Azure Diagnostics** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<verze > \Config.txt |
-| **Soubory protokolu** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version > \ |
-| **Místní úložiště pro diagnostická data** | C:\Resources\Directory \<CloudServiceDeploymentID >. \<RoleName >. DiagnosticStore\WAD0107\Tables |
-| **Konfigurační soubor agenta monitorování** | C:\Resources\Directory \<CloudServiceDeploymentID >. \<RoleName >. DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
+| **Soubory protokolu** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<verze > \ |
+| **Místní úložiště pro diagnostická data** | > C:\Resources\Directory\<CloudServiceDeploymentID.\<RoleName >. DiagnosticStore\WAD0107\Tables |
+| **Konfigurační soubor agenta monitorování** | > C:\Resources\Directory\<CloudServiceDeploymentID.\<RoleName >. DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
 | **Balíček rozšíření Azure Diagnostics** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<verze > |
 | **Cesta k nástroji pro shromažďování protokolů** | %SystemDrive%\Packages\GuestAgent\ |
 | **Soubor protokolu MonAgentHost** | > C:\Resources\Directory\<CloudServiceDeploymentID.\<RoleName >. DiagnosticStore\WAD0107\Configuration\MonAgentHost. < seq_num >. log |
 
-### <a name="virtual-machines"></a>Virtuální počítače
+### <a name="virtual-machines"></a>Virtual Machines
 | Artefakt | Cesta |
 | --- | --- |
-| **Konfigurační soubor Azure Diagnostics** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version > \RuntimeSettings |
-| **Soubory protokolu** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion > \ |
-| **Místní úložiště pro diagnostická data** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion > \WAD0107\Tables |
-| **Konfigurační soubor agenta monitorování** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion > \WAD0107\Configuration\MaConfig.xml |
-| **Stavový soubor** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version > \Status |
-| **Balíček rozšíření Azure Diagnostics** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion >|
+| **Konfigurační soubor Azure Diagnostics** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<verze > \RuntimeSettings |
+| **Soubory protokolu** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \ |
+| **Místní úložiště pro diagnostická data** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Tables |
+| **Konfigurační soubor agenta monitorování** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Configuration\MaConfig.xml |
+| **Stavový soubor** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<verze > \Status |
+| **Balíček rozšíření Azure Diagnostics** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion >|
 | **Cesta k nástroji pro shromažďování protokolů** | C:\WindowsAzure\Logs\WaAppAgent.log |
 | **Soubor protokolu MonAgentHost** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Configuration\MonAgentHost. < seq_num >. log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Data metriky se nezobrazí v Azure Portal
-Azure Diagnostics poskytuje data metrik, která se dají zobrazit v Azure Portal. Pokud máte problémy se zobrazením dat na portálu, podívejte se do tabulky WADMetrics \* v účtu úložiště Azure Diagnostics a podívejte se, jestli tam jsou odpovídající záznamy metriky.
+Azure Diagnostics poskytuje data metrik, která se dají zobrazit v Azure Portal. Pokud máte problémy se zobrazením dat na portálu, podívejte se do tabulky WADMetrics\* v účtu úložiště Azure Diagnostics a podívejte se, jestli tam jsou odpovídající záznamy metriky.
 
 Tady je **PartitionKey** tabulky ID prostředku, virtuální počítač nebo sada škálování virtuálních počítačů. **RowKey** je název metriky (označuje se také jako název čítače výkonu).
 
-Pokud ID prostředku není správné, zkontrolujte konfiguraci **diagnostiky**  > **metriky**  > **ResourceID** a zjistěte, jestli je ID prostředku správně nastavené.
+Pokud ID prostředku není správné, zkontrolujte konfiguraci **diagnostiky** > **metriky** > **ResourceID** a zjistěte, jestli je ID prostředku správně nastavené.
 
-Pokud nejsou k dispozici žádná data pro specifickou metriku, zkontrolujte **konfiguraci diagnostiky**  > **PerformanceCounter** a zjistěte, jestli je zahrnutá metrika (čítač výkonu). Ve výchozím nastavení povolíme následující čítače:
+Pokud nejsou k dispozici žádná data pro specifickou metriku, zkontrolujte **konfiguraci diagnostiky** > **PerformanceCounter** a zjistěte, jestli je zahrnutá metrika (čítač výkonu). Ve výchozím nastavení povolíme následující čítače:
 - \Processor(_Total)\% Processor Time
 - \Memory\Available Bytes
 - \ ASP.NET aplikace (__celkem__) \ požadavky za sekundu
@@ -126,9 +126,9 @@ Konfigurace diagnostiky obsahuje pokyny pro shromáždění konkrétního typu d
 - **Protokoly trasování**: vzdálený přístup k virtuálnímu počítači a přidání TextWriterTraceListener do konfiguračního souboru aplikace.  Chcete-li nastavit naslouchací proces textu, přečtěte si téma https://msdn.microsoft.com/library/sk36c28t.aspx.  Ujistěte se, že `<trace>` element má `<trace autoflush="true">`.<br />
 Pokud nevidíte vygenerované protokoly trasování, přečtěte si další informace o chybějících protokolech trasování.
 
-- **Trasování událostí pro Windows**: vzdálený přístup k virtuálnímu počítači a instalace PerfView.  V PerfView spusťte příkaz **File**  > **User Command**  > **Poslouchejte etwprovder1**  > **etwprovider2**atd. Příkaz **Listen** rozlišuje velká a malá písmena a mezi čárkami oddělený seznam zprostředkovatelů trasování událostí pro Windows nemůže být mezera. Pokud se příkaz nepovede spustit, můžete vybrat tlačítko **protokolu** v pravém dolním rohu nástroje PerfView, abyste viděli, co se pokusilo spustit, a jaký byl výsledek.  Za předpokladu, že je vstup správný, otevře se nové okno. Během několika sekund začnete zobrazovat trasování ETW.
+- **Trasování událostí pro Windows**: vzdálený přístup k virtuálnímu počítači a instalace PerfView.  V PerfView spusťte příkaz **File** > **User Command** > **Poslouchejte etwprovder1** > **etwprovider2**atd. Příkaz **Listen** rozlišuje velká a malá písmena a mezi čárkami oddělený seznam zprostředkovatelů trasování událostí pro Windows nemůže být mezera. Pokud se příkaz nepovede spustit, můžete vybrat tlačítko **protokolu** v pravém dolním rohu nástroje PerfView, abyste viděli, co se pokusilo spustit, a jaký byl výsledek.  Za předpokladu, že je vstup správný, otevře se nové okno. Během několika sekund začnete zobrazovat trasování ETW.
 
-- **Protokoly událostí**: vzdálený přístup k virtuálnímu počítači. Otevřete `Event Viewer` a ověřte, zda existují události.
+- **Protokoly událostí**: vzdálený přístup k virtuálnímu počítači. Otevřete `Event Viewer`a ověřte, zda existují události.
 
 #### <a name="is-data-getting-captured-locally"></a>Jsou data zachycena lokálně?
 Potom se ujistěte, že se data budou zaznamenávat místně.
@@ -216,7 +216,7 @@ Tento kód generuje čtyři tabulky:
 ## <a name="references"></a>Odkazy
 
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>Postup kontroly konfigurace rozšíření diagnostiky
-Nejjednodušší způsob, jak ověřit konfiguraci rozšíření, je přejít na [Azure Resource Explorer](http://resources.azure.com)a pak přejít na virtuální počítač nebo na cloudovou službu, kde je rozšíření Azure Diagnostics (IaaSDiagnostics/PaaDiagnostics).
+Nejjednodušší způsob, jak ověřit konfiguraci rozšíření, je přejít na [Azure Resource Explorer](https://resources.azure.com)a pak přejít na virtuální počítač nebo na cloudovou službu, kde je rozšíření Azure Diagnostics (IaaSDiagnostics/PaaDiagnostics).
 
 Alternativně se do počítače zobrazí Vzdálená plocha a Prohlédněte si konfigurační soubor Azure Diagnostics, který je popsaný v části cesta artefaktů protokolů.
 
@@ -260,7 +260,7 @@ Agent monitorování shromažďuje protokoly a artefakty jako soubory `.tsf`. So
 Nový soubor s názvem `<relevantLogFile>.csv` se vytvoří ve stejné cestě jako odpovídající soubor `.tsf`.
 
 >[!NOTE]
-> Tento nástroj je nutné spustit pouze proti hlavnímu souboru. TSF (například PerformanceCountersTable. TSF). Budou automaticky zpracovány doprovodné soubory (například PerformanceCountersTables_\*\*001. TSF, PerformanceCountersTables_\*\*002. TSF atd.).
+> Tento nástroj je nutné spustit pouze proti hlavnímu souboru. TSF (například PerformanceCountersTable. TSF). Doprovodné soubory (například PerformanceCountersTables_\*\*001. TSF, PerformanceCountersTables_\*\*002. TSF atd.) jsou automaticky zpracovány.
 
 ### <a name="more-about-missing-trace-logs"></a>Další informace o chybějících protokolech trasování
 
@@ -295,7 +295,7 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 
 Prostředí portálu ve virtuálních počítačích zobrazuje určité čítače výkonu ve výchozím nastavení. Pokud nevidíte čítače výkonu a víte, že se data generují, protože jsou k dispozici v úložišti, zkontrolujte následující:
 
-- Určuje, jestli data v úložišti mají názvy čítačů v angličtině. Pokud názvy čítačů nejsou v angličtině, graf metriky portálu ho nedokáže rozpoznat. **Omezení rizik**: změňte jazyk počítače na angličtinu pro systémové účty. Provedete to tak, že vyberete **Ovládací panely**  > **oblasti**  > **správce**  > **kopírování nastavení**. Pak zrušte výběr **uvítací obrazovky a systémových účtů** , aby se vlastní jazyk nepoužíval na účet System.
+- Určuje, jestli data v úložišti mají názvy čítačů v angličtině. Pokud názvy čítačů nejsou v angličtině, graf metriky portálu ho nedokáže rozpoznat. **Omezení rizik**: změňte jazyk počítače na angličtinu pro systémové účty. Provedete to tak, že vyberete **Ovládací panely** > **oblasti** > **správce** > **kopírování nastavení**. Pak zrušte výběr **uvítací obrazovky a systémových účtů** , aby se vlastní jazyk nepoužíval na účet System.
 
 - Pokud ve svém názvu čítače výkonu používáte zástupné znaky (\*), portál nebude moci korelovat nakonfigurovaný a shromážděný čítač, když jsou čítače výkonu odesílány do jímky Azure Storage. **Zmírnění**: abyste měli jistotu, že budete používat zástupné znaky a chcete, aby portál rozšířil (\*), přesměrujte čítače výkonu do [jímky "Azure monitor"](diagnostics-extension-schema.md#diagnostics-extension-111).
 

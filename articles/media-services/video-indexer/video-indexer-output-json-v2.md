@@ -1,6 +1,6 @@
 ---
 title: Kontrola výstupu Azure Media Services Video Indexer vypracovaného rozhraním API v2
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: Toto téma prověřuje výstup Video Indexer vytvořený pomocí rozhraní API v2.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: juliako
-ms.openlocfilehash: 20a973e5386cd9cad7d090236f021ced9a64cafc
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 0a42c2dce3976a1bf83c85644f56f4c1d8abc9c8
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300929"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839541"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Kontrola výstupu Video Indexer vytvořeného rozhraním API
 
@@ -23,7 +23,7 @@ Když zavoláte rozhraní API pro **získání indexu videa** a stav odpovědi j
 
 Můžete také vizuálně zkoumat souhrnné přehledy videa stisknutím tlačítka **Přehrát** na videu na webu [video indexer](https://www.videoindexer.ai/) . Další informace najdete v tématu [zobrazení a Úprava videí s přehledem](video-indexer-view-edit.md).
 
-![Poznatky](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
+![Insights](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
 Tento článek prověřuje obsah JSON vrácený rozhraním API **získat index videa** . 
 
@@ -33,7 +33,7 @@ Tento článek prověřuje obsah JSON vrácený rozhraním API **získat index v
 
 ## <a name="root-elements"></a>Kořenové elementy
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |ID|ID účtu v seznamu testů|
 |id|ID seznamu testů.|
@@ -93,7 +93,7 @@ V této části se zobrazuje souhrn přehledů.
 
 ## <a name="videos"></a>videa
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |ID|ID účtu videa VI|
 |id|ID videa|
@@ -149,7 +149,7 @@ Přehledy představují sadu dimenzí (například přepisové řádky, plošky,
 
 Ploška může mít ID, název, miniaturu, další metadata a seznam jeho dočasná instance (například: 00:00:05 – 00:00:10, 00:01:00-00:02:30 a 00:41:21 – 00:41:49). Každá dočasná instance může mít další metadata. Například souřadnice obdélníku plochy (20230, 60, 60).
 
-|Version|Verze kódu|
+|Verze|Verze kódu|
 |---|---|
 |sourceLanguage|Zdrojový jazyk videa (za předpokladu, že se jedná o jeden hlavní jazyk). Ve formě řetězce [BCP-47](https://tools.ietf.org/html/bcp47) .|
 |language|Jazyk Insights (přeložený ze zdrojového jazyka). Ve formě řetězce [BCP-47](https://tools.ietf.org/html/bcp47) .|
@@ -198,7 +198,7 @@ instance|Seznam časových rozsahů tohoto bloku|
 
 #### <a name="transcript"></a>záznamy
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |id|ID řádku|
 |text|Samotný přepis.|
@@ -236,7 +236,7 @@ Příklad:
 
 #### <a name="ocr"></a>OCR
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |id|ID řádku OCR|
 |text|Text OCR|
@@ -271,7 +271,7 @@ Příklad:
 
 #### <a name="keywords"></a>klíčov
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |id|ID klíčového slova.|
 |text|Text klíčového slova|
@@ -302,7 +302,7 @@ Příklad:
 
 #### <a name="faces"></a>emotikon
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |id|ID obličeje|
 |jméno|Název obličeje. Může to být neznámý #0, identifikovaný celebrit nebo osoba školená zákazníkem.|
@@ -347,7 +347,7 @@ Příklad:
 
 #### <a name="labels"></a>popisky
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |id|ID popisku|
 |jméno|Název popisku (například "Computer", "TV").|
@@ -406,7 +406,7 @@ Příklad:
 
 #### <a name="scenes"></a>pozadí
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |id|ID scény|
 |instance|Seznam časových rozsahů této scény (scéna může mít jenom 1 instanci).|
@@ -439,7 +439,7 @@ Příklad:
 
 #### <a name="shots"></a>řizování
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |id|ID snímku|
 |Klíčové snímky|Seznam klíčových snímků v rámci snímku (každý má ID a seznam časových rozsahů instancí). Každá instance klíčového snímku má pole thumbnailId, které obsahuje ID miniatury klíčového snímku.|
@@ -489,14 +489,14 @@ Příklad:
 
 Názvy značek firmy a produktu zjištěné v řeči pro přepis textu a/nebo video optického rozpoznávání. Nezahrnuje vizuální rozpoznávání značek nebo rozpoznávání loga.
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |id|ID značky|
 |jméno|Název značek.|
 |referenceId | Přípona adresy URL Wikipedii značky Například "Target_Corporation" je přípona [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |referenceUrl | Adresa URL Wikipedii značky, pokud existuje. Příklad: [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |description|Popis značek|
-|tags|Seznam předdefinovaných značek, které byly přidruženy k této značce.|
+|značek|Seznam předdefinovaných značek, které byly přidruženy k této značce.|
 |jistotou|Hodnota spolehlivosti Video Indexerho detektoru značky (0-1).|
 |instance|Seznam časových rozsahů této značky. Každá instance má brandType, který označuje, zda se tato značka objevila v přepisu nebo v OCR.|
 
@@ -548,7 +548,7 @@ Názvy značek firmy a produktu zjištěné v řeči pro přepis textu a/nebo vi
 
 #### <a name="statistics"></a>týkají
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |CorrespondenceCount|Počet korespondencí ve videu.|
 |SpeakerWordCount|Počet slov na mluvčí.|
@@ -556,9 +556,9 @@ Názvy značek firmy a produktu zjištěné v řeči pro přepis textu a/nebo vi
 |SpeakerLongestMonolog|Nejdelší monolog mluvčího. Pokud mluvčí obsahuje tiché v monolog, je součástí. Odstraní se tiché na začátku a na konci monolog.| 
 |SpeakerTalkToListenRatio|Výpočet vychází z doby strávené monologem mluvčího (bez ticha v mezi) dělený celkovým časem videa. Čas se zaokrouhluje na třetí desetinnou čárku.|
 
-#### <a name="a-idaudioeffectsaudioeffects"></a>@no__t – 0audioEffects
+#### <a name="a-idaudioeffectsaudioeffects"></a><a id="audioEffects"/>audioEffects
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |id|ID zvukového efektu|
 |type|Typ zvukového efektu (například Clapping, řeč, tichá).|
@@ -587,7 +587,7 @@ Názvy značek firmy a produktu zjištěné v řeči pro přepis textu a/nebo vi
 
 Zabarvení jsou agregované podle jejich sentimentType pole (kladné/neutrální/záporné). Například 0-0,1, 0,1-0,2.
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |id|ID mínění|
 |averageScore |Průměr všech skóre všech instancí tohoto typu mínění-kladný/neutrální/záporný|
@@ -626,7 +626,7 @@ Blok visualContentModeration obsahuje časové rozsahy, které Video Indexer nal
 
 K dispozici jsou videa, která se nacházejí v obsahu pro dospělé nebo pikantní, a to pouze pro privátní zobrazení. Uživatelé mají možnost Odeslat žádost o revizi obsahu. v takovém případě bude atribut pro dospělé obsahovat výsledek lidské recenze.
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |id|ID moderování vizuálního obsahu.|
 |adultScore|Skóre dospělého (od moderátora obsahu).|
@@ -662,7 +662,7 @@ K dispozici jsou videa, která se nacházejí v obsahu pro dospělé nebo pikant
 
 #### <a name="textualcontentmoderation"></a>textualContentModeration 
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |id|ID moderování textového obsahu|
 |bannedWordsCount |Počet zakázaných slov.|
@@ -672,7 +672,7 @@ K dispozici jsou videa, která se nacházejí v obsahu pro dospělé nebo pikant
 
 Video Indexer identifikuje emoce na základě hlasových a zvukových pomůcek. Identifikující emoce můžou být: radost, smutek, hněv nebo strach.
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |id|ID emoce|
 |type|Moment, který byl identifikován v závislosti na řeči a zvukové pomůcky. Emoce můžou být: radost, smutek, hněv nebo strach.|
@@ -762,7 +762,7 @@ Video Indexer identifikuje emoce na základě hlasových a zvukových pomůcek. 
 
 Video Indexer vytváří odvození hlavních témat z přepisů. Pokud je to možné, je zahrnutá taxonomie [IPTC](https://iptc.org/standards/media-topics/) na druhé úrovni. 
 
-|Name (Název)|Popis|
+|Název|Popis|
 |---|---|
 |id|ID tématu|
 |jméno|Název tématu, například: "farmaceutické".|

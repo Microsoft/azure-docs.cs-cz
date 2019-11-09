@@ -1,23 +1,20 @@
 ---
-title: Začínáme s Azure Data Lake Storage Gen1 pomocí Powershellu | Dokumentace Microsoftu
-description: Pomocí prostředí Azure PowerShell k vytvoření účtu Azure Data Lake Storage Gen1 a provádění základních operací
-services: data-lake-store
-documentationcenter: ''
+title: Začínáme s Azure Data Lake Storage Gen1 – PowerShell | Microsoft Docs
+description: Pomocí Azure PowerShell můžete vytvořit účet Azure Data Lake Storage Gen1 a provádět základní operace.
 author: twooley
-manager: mtillman
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 5bec627f114a20033ca4364c39c048763df36b67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 42ddab6991b418af3e41da9966cdab69ded87461
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66161435"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837896"
 ---
-# <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Powershellu
+# <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Začínáme s Azure Data Lake Storage Gen1 pomocí Azure PowerShell
+
 > [!div class="op_single_selector"]
 > * [Azure Portal](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -27,7 +24,7 @@ ms.locfileid: "66161435"
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 
-Zjistěte, jak pomocí prostředí Azure PowerShell k vytvoření účtu Azure Data Lake Storage Gen1 a provádění základních operací, jako je vytváření složek, nahrávání a stahování datových souborů, odstranění účtu atd. Další informace o Data Lake Storage Gen1 najdete v tématu [přehled nástroje Data Lake Storage Gen1](data-lake-store-overview.md).
+Naučte se, jak pomocí Azure PowerShell vytvořit účet Azure Data Lake Storage Gen1 a provádět základní operace, jako je vytváření složek, nahrávání a stahování datových souborů, odstranění účtu atd. Další informace o Data Lake Storage Gen1 najdete v tématu [přehled Data Lake Storage Gen1](data-lake-store-overview.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -36,93 +33,138 @@ Zjistěte, jak pomocí prostředí Azure PowerShell k vytvoření účtu Azure D
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure PowerShell 1.0 nebo vyšší**. Viz téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
 
-## <a name="authentication"></a>Authentication
-Tento článek používá jednodušší přístup ověřování s Data Lake Storage Gen1 ve kterém se výzva k zadání přihlašovacích údajů k účtu Azure. Úroveň přístupu k Data Lake Storage Gen1 účtu a systému souborů se pak řídí úrovní přístupu přihlášeného uživatele. Existují však další přístupy také k ověřování ve službě Data Lake Storage Gen1, které jsou **ověřování koncového uživatele** nebo **ověřování služba služba**. Pokyny a další informace o ověřování najdete v tématu [Ověřování koncových uživatelů](data-lake-store-end-user-authenticate-using-active-directory.md) nebo [Ověřování služba-služba](data-lake-store-authenticate-using-active-directory.md).
+## <a name="authentication"></a>Ověřování
+
+Tento článek používá jednodušší přístup k ověřování s Data Lake Storage Gen1, kde se zobrazí výzva k zadání přihlašovacích údajů k účtu Azure. Úroveň přístupu k účtu Data Lake Storage Gen1 a systému souborů se pak řídí úrovní přístupu přihlášeného uživatele. Existují však i další přístupy k ověřování pomocí Data Lake Storage Gen1, což jsou ověřování koncového uživatele nebo ověřování služba-služba. Pokyny a další informace o ověřování najdete v tématu [Ověřování koncových uživatelů](data-lake-store-end-user-authenticate-using-active-directory.md) nebo [Ověřování služba-služba](data-lake-store-authenticate-using-active-directory.md).
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Vytvoření účtu Data Lake Storage Gen1
-1. Otevřete na ploše nové okno Windows PowerShellu. Zadejte následující fragment kódu a přihlaste se ke svému účtu Azure, nastavte předplatné a zaregistrujte poskytovatele Data Lake Storage Gen1. Po zobrazení výzvy k přihlášení, ujistěte se, že se že přihlásíte jako jeden ze správců/vlastník předplatného:
 
-        # Log in to your Azure account
-        Connect-AzAccount
+1. Otevřete na ploše nové okno Windows PowerShellu. Zadejte následující fragment kódu, abyste se přihlásili ke svému účtu Azure, nastavili odběr a zaregistrovali poskytovatele Data Lake Storage Gen1. Po zobrazení výzvy k přihlášení se ujistěte, že jste přihlášeni jako jeden ze správce nebo vlastníka předplatného:
 
-        # List all the subscriptions associated to your account
-        Get-AzSubscription
+    ```PowerShell
+    # Log in to your Azure account
+    Connect-AzAccount
 
-        # Select a subscription
-        Set-AzContext -SubscriptionId <subscription ID>
+    # List all the subscriptions associated to your account
+    Get-AzSubscription
 
-        # Register for Azure Data Lake Storage Gen1
-        Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
-2. Účet Data Lake Storage Gen1 souvisí s skupiny prostředků Azure. Začněte vytvořením skupiny prostředků Azure.
+    # Select a subscription
+    Set-AzContext -SubscriptionId <subscription ID>
 
-        $resourceGroupName = "<your new resource group name>"
-        New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
+    # Register for Azure Data Lake Storage Gen1
+    Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
+    ```
+
+1. Účet Data Lake Storage Gen1 je přidružený ke skupině prostředků Azure. Začněte vytvořením skupiny prostředků.
+
+    ```PowerShell
+    $resourceGroupName = "<your new resource group name>"
+    New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
+    ```
 
     ![Vytvoření skupiny prostředků Azure](./media/data-lake-store-get-started-powershell/ADL.PS.CreateResourceGroup.png "Vytvoření skupiny prostředků Azure")
-3. Vytvoření účtu Data Lake Storage Gen1. Zadaný název musí obsahovat jenom malá písmena a číslice.
 
-        $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 account name>"
-        New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
+1. Vytvořte účet Data Lake Storage Gen1. Zadaný název musí obsahovat jenom malá písmena a číslice.
 
-    ![Vytvoření účtu Data Lake Storage Gen1](./media/data-lake-store-get-started-powershell/ADL.PS.CreateADLAcc.png "vytvoření účtu Data Lake Storage Gen1")
-4. Ověřte, že se účet úspěšně vytvořil.
+    ```PowerShell
+    $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 account name>"
+    New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
+    ```
 
-        Test-AzDataLakeStoreAccount -Name $dataLakeStorageGen1Name
+    ![Vytvoření účtu Data Lake Storage Gen1](./media/data-lake-store-get-started-powershell/ADL.PS.CreateADLAcc.png "Vytvoření účtu Data Lake Storage Gen1")
+
+1. Ověřte, že se účet úspěšně vytvořil.
+
+    ```PowerShell
+    Test-AzDataLakeStoreAccount -Name $dataLakeStorageGen1Name
+    ```
 
     Výstup této rutiny by měl být **True** (pravda).
 
-## <a name="create-directory-structures-in-your-data-lake-storage-gen1-account"></a>Vytváření struktur adresářů v účtu Data Lake Storage Gen1
-V rámci účtu Data Lake Storage Gen1 ke správě a ukládání dat můžete vytvářet adresáře.
+## <a name="create-directory-structures"></a>Vytvořit adresářové struktury
+
+Můžete vytvořit adresáře pod účtem Data Lake Storage Gen1, abyste mohli spravovat a ukládat data.
 
 1. Zadejte kořenový adresář.
 
-        $myrootdir = "/"
-2. V zadaném kořenovém adresáři vytvořte nový adresář s názvem **mynewdirectory**.
+    ```PowerShell
+    $myrootdir = "/"
+    ```
 
-        New-AzDataLakeStoreItem -Folder -AccountName $dataLakeStorageGen1Name -Path $myrootdir/mynewdirectory
-3. Ověřte, že se nový adresář úspěšně vytvořil.
+1. V zadaném kořenovém adresáři vytvořte nový adresář s názvem **mynewdirectory**.
 
-        Get-AzDataLakeStoreChildItem -AccountName $dataLakeStorageGen1Name -Path $myrootdir
+    ```PowerShell
+    New-AzDataLakeStoreItem -Folder -AccountName $dataLakeStorageGen1Name -Path $myrootdir/mynewdirectory
+    ```
+
+1. Ověřte, že se nový adresář úspěšně vytvořil.
+
+    ```PowerShell
+    Get-AzDataLakeStoreChildItem -AccountName $dataLakeStorageGen1Name -Path $myrootdir
+    ```
 
     Měl by se zobrazit výstup jako na následujícím snímku obrazovky:
 
-    ![Ověření adresáře](./media/data-lake-store-get-started-powershell/ADL.PS.Verify.Dir.Creation.png "Ověření adresáře")
+    ![Ověřit adresář](./media/data-lake-store-get-started-powershell/ADL.PS.Verify.Dir.Creation.png "Ověření adresáře")
 
-## <a name="upload-data-to-your-data-lake-storage-gen1-account"></a>Nahrání dat do účtu Data Lake Storage Gen1
-Data můžete nahrát do Data Lake Storage Gen1 přímo na úrovni kořenového adresáře nebo do adresáře, který jste vytvořili v rámci účtu. Fragmenty kódu v této části ukazují, jak nahrát ukázková data do adresáře (**mynewdirectory**), který jste vytvořili v předchozí části.
+## <a name="upload-data"></a>Nahrání dat
+
+Data můžete do Data Lake Storage Gen1 nahrát přímo na úrovni kořenového adresáře nebo do adresáře, který jste v rámci účtu vytvořili. Fragmenty kódu v této části ukazují, jak nahrát ukázková data do adresáře (**mynewdirectory**), který jste vytvořili v předchozí části.
 
 Pokud hledáte ukázková data, která byste mohli nahrát, můžete použít složku **Ambulance Data** z [úložiště Git Azure Data Lake](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData). Stáhněte si tento soubor a uložte ho do místního adresáře v počítači, například C:\sampledata\.
 
-    Import-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path "C:\sampledata\vehicle1_09142014.csv" -Destination $myrootdir\mynewdirectory\vehicle1_09142014.csv
+```PowerShell
+Import-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name `
+   -Path "C:\sampledata\vehicle1_09142014.csv" `
+   -Destination $myrootdir\mynewdirectory\vehicle1_09142014.csv
+```
 
+## <a name="rename-download-and-delete-data"></a>Přejmenování, stažení a odstranění dat
 
-## <a name="rename-download-and-delete-data-from-your-data-lake-storage-gen1-account"></a>Přejmenování, stažení a odstranění dat z účtu Data Lake Storage Gen1
 Pokud chcete přejmenovat soubor, použijte tento příkaz:
 
-    Move-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path $myrootdir\mynewdirectory\vehicle1_09142014.csv -Destination $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
+```PowerShell
+Move-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name `
+    -Path $myrootdir\mynewdirectory\vehicle1_09142014.csv `
+    -Destination $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
+```
 
 Pokud chcete stáhnout soubor, použijte tento příkaz:
 
-    Export-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv -Destination "C:\sampledata\vehicle1_09142014_Copy.csv"
+```PowerShell
+Export-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name `
+    -Path $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv `
+    -Destination "C:\sampledata\vehicle1_09142014_Copy.csv"
+```
 
 Pokud chcete odstranit soubor, použijte tento příkaz:
 
-    Remove-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Paths $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
+```PowerShell
+Remove-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name `
+    -Paths $myrootdir\mynewdirectory\vehicle1_09142014_Copy.csv
+```
 
 Po zobrazení výzvy zadejte **Y**, a položku tak odstraňte. Pokud chcete odstranit více souborů, můžete zadat všechny požadované cesty oddělené čárkou.
 
-    Remove-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Paths $myrootdir\mynewdirectory\vehicle1_09142014.csv, $myrootdir\mynewdirectoryvehicle1_09142014_Copy.csv
+```PowerShell
+Remove-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name `
+    -Paths $myrootdir\mynewdirectory\vehicle1_09142014.csv, $myrootdir\mynewdirectoryvehicle1_09142014_Copy.csv
+```
 
-## <a name="delete-your-data-lake-storage-gen1-account"></a>Odstranění účtu Data Lake Storage Gen1
-Použijte následující příkaz k odstranění účtu Data Lake Storage Gen1.
+## <a name="delete-your-account"></a>Odstranění účtu
 
-    Remove-AzDataLakeStoreAccount -Name $dataLakeStorageGen1Name
+Pomocí následujícího příkazu Odstraňte svůj Data Lake Storage Gen1 účet.
+
+```PowerShell
+Remove-AzDataLakeStoreAccount -Name $dataLakeStorageGen1Name
+```
 
 Po zobrazení výzvy zadejte **Y**, a účet tak odstraňte.
 
-## <a name="next-steps"></a>Další postup
-* [Průvodce laděním výkonu pro použití Powershellu s Azure Data Lake Storage Gen1](data-lake-store-performance-tuning-powershell.md)
-* [Použití Azure Data Lake Storage Gen1 pro potřeby velkého objemu dat](data-lake-store-data-scenarios.md) 
+## <a name="next-steps"></a>Další kroky
+
+* [Pokyny k ladění výkonu pro použití PowerShellu s Azure Data Lake Storage Gen1](data-lake-store-performance-tuning-powershell.md)
+* [Použití Azure Data Lake Storage Gen1 pro požadavky na velké objemy dat](data-lake-store-data-scenarios.md)
 * [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Použití Azure Data Lake Analytics s Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Použití Azure HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

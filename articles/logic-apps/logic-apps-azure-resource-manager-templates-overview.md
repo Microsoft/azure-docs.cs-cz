@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: f2c6676284e8ed58f1626ab824aa7a7c9c456a31
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: bc61e39a02d16827521758ca8248488e46c109b5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494463"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838103"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Přehled: Automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager
 
@@ -84,10 +84,10 @@ Pro šablonu aplikace logiky, primárně pracujete s těmito objekty šablony:
 Šablona aplikace logiky má více `parameters` objektů, které existují na různých úrovních a provádějí různé funkce. Například na nejvyšší úrovni můžete deklarovat [parametry šablony](../azure-resource-manager/resource-group-authoring-templates.md#parameters) pro hodnoty, které chcete přijmout a použít při nasazení při vytváření a nasazování prostředků v Azure, například:
 
 * Vaše aplikace logiky
-* Připojení, která vaše logika používá pro přístup k dalším službám a [](../connectors/apis-list.md) systémům prostřednictvím spravovaných konektorů
+* Připojení, která vaše logika používá pro přístup k dalším službám a systémům prostřednictvím [spravovaných konektorů](../connectors/apis-list.md)
 * Další prostředky, které vaše aplikace logiky potřebuje k nasazení
 
-  Například pokud vaše aplikace logiky používá [integrační účet](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) pro scénáře B2B (Business-to-Business), objekt nejvyšší úrovně `parameters` šablony deklaruje parametr, který přijímá ID prostředku pro tento účet integrace.
+  Například pokud vaše aplikace logiky používá [integrační účet](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) pro scénáře B2B (Business-to-Business), objekt `parameters` nejvyšší úrovně šablony deklaruje parametr, který přijímá ID prostředku pro tento účet integrace.
 
 Zde je obecná struktura a syntaxe pro definici parametru, která je plně popsána [parametry-správce prostředků strukturou šablony a syntaxí](../azure-resource-manager/resource-group-authoring-templates.md#parameters):
 
@@ -146,7 +146,7 @@ Tento příklad ukazuje jenom parametry šablony pro hodnoty používané k vytv
 }
 ```
 
-S výjimkou parametrů, které zpracovávají citlivé hodnoty, nebo musí být zabezpečené, jako jsou uživatelská jména, hesla a tajné klíče, všechny tyto parametry `defaultValue` obsahují atributy, i když v některých případech jsou výchozí hodnoty prázdné hodnoty. Hodnoty nasazení, které se mají použít pro tyto parametry šablony, jsou k dispozici v souboru ukázkových [parametrů](#template-parameter-files) popsaných dále v tomto tématu.
+S výjimkou parametrů, které zpracovávají citlivé hodnoty, nebo musí být zabezpečené, jako jsou uživatelská jména, hesla a tajné klíče, všechny tyto parametry zahrnují `defaultValue` atributy, i když v některých případech jsou výchozí hodnoty prázdné hodnoty. Hodnoty nasazení, které se mají použít pro tyto parametry šablony, jsou k dispozici v souboru ukázkových [parametrů](#template-parameter-files) popsaných dále v tomto tématu.
 
 Chcete-li zabezpečit parametry šablony, přečtěte si tato témata:
 
@@ -158,7 +158,7 @@ Jiné objekty šablon často odkazují na parametry šablony, aby mohli použít
 
 * [Objekt prostředků šablony](#template-resources), popsaný dále v tomto tématu, definuje všechny prostředky v Azure, které chcete vytvořit a nasadit, například [definici prostředků vaší aplikace logiky](#logic-app-resource-definition). Tyto prostředky často používají hodnoty parametrů šablony, jako je název a umístění aplikace logiky a informace o připojení.
 
-* V hlubší úrovni definice prostředků vaší aplikace logiky [objekt parametrů definice pracovního postupu](#workflow-definition-parameters) deklaruje parametry pro hodnoty, které se mají použít v modulu runtime vaší aplikace logiky. Můžete například deklarovat parametry definice pracovního postupu pro uživatelské jméno a heslo, které Trigger HTTP používá pro ověřování. Pokud chcete zadat hodnoty pro parametry definice pracovního postupu, použijte `parameters` objekt, který je *mimo* vaši definici pracovního postupu, ale ještě *v* definici prostředků vaší aplikace logiky. V tomto vnějším `parameters` objektu můžete odkazovat na dříve deklarované parametry šablony, které mohou přijmout hodnoty při nasazení ze souboru parametrů.
+* V hlubší úrovni definice prostředků vaší aplikace logiky [objekt parametrů definice pracovního postupu](#workflow-definition-parameters) deklaruje parametry pro hodnoty, které se mají použít v modulu runtime vaší aplikace logiky. Můžete například deklarovat parametry definice pracovního postupu pro uživatelské jméno a heslo, které Trigger HTTP používá pro ověřování. Pokud chcete zadat hodnoty pro parametry definice pracovního postupu, použijte objekt `parameters`, který je *mimo* vaši definici pracovního postupu, ale ještě *v* definici prostředků vaší aplikace logiky. V tomto vnějším `parameters` objekt můžete odkazovat na dříve deklarované parametry šablony, které mohou přijmout hodnoty při nasazení ze souboru parametrů.
 
 Při odkazování na parametry používají výrazy šablony a funkce odlišnou syntaxi a chovají se jinak než výrazy a funkce definice pracovního postupu. Další informace o těchto rozdílech naleznete v části [odkazy na parametry](#parameter-references) dále v tomto tématu.
 
@@ -170,7 +170,7 @@ Tady je několik osvědčených postupů pro definování parametrů:
 
 * Deklarovat parametry pouze pro hodnoty, které se liší v závislosti na potřebách nasazení. Nedeklarujte parametry pro hodnoty, které zůstávají stejné napříč různými požadavky na nasazení.
 
-* Zahrňte `defaultValue` atribut, který může zadat prázdné hodnoty pro všechny parametry s výjimkou hodnot, které jsou citlivé nebo musí být zabezpečené. Pro uživatelská jména, hesla a tajné klíče vždy používejte zabezpečené parametry. Pokud chcete skrýt nebo chránit citlivé hodnoty parametrů, postupujte podle pokynů v těchto tématech:
+* Zahrňte atribut `defaultValue`, který může zadat prázdné hodnoty pro všechny parametry s výjimkou hodnot, které jsou citlivé nebo musí být zabezpečené. Pro uživatelská jména, hesla a tajné klíče vždy používejte zabezpečené parametry. Pokud chcete skrýt nebo chránit citlivé hodnoty parametrů, postupujte podle pokynů v těchto tématech:
 
   * [Doporučení zabezpečení pro parametry šablony](../azure-resource-manager/template-best-practices.md#parameters)
 
@@ -178,7 +178,7 @@ Tady je několik osvědčených postupů pro definování parametrů:
 
   * [Předání hodnot zabezpečeného parametru pomocí Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)
 
-* Chcete-li odlišit názvy parametrů šablony z názvů parametrů definice pracovního postupu, můžete použít například názvy parametrů popisné šablony, například:`TemplateFabrikamPassword`
+* Chcete-li odlišit názvy parametrů šablony z názvů parametrů definice pracovního postupu, můžete použít názvy parametrů popisné šablony, například: `TemplateFabrikamPassword`
 
 Další doporučené postupy pro šablonu najdete v tématu [osvědčené postupy pro parametry šablon](../azure-resource-manager/template-best-practices.md#parameters).
 
@@ -188,8 +188,8 @@ Další doporučené postupy pro šablonu najdete v tématu [osvědčené postup
 
 Chcete-li zadat hodnoty parametrů šablony, uložte tyto hodnoty do [souboru parametrů](../azure-resource-manager/resource-group-template-deploy.md#parameter-files). Tímto způsobem můžete použít různé soubory parametrů v závislosti na potřebách nasazení. Tady je formát názvu souboru, který se má použít:
 
-* Název souboru šablony aplikace logiky:  **< *Logic-App-Name*>. JSON**
-* Název souboru parametrů:  **< *Logic-App-Name*>. Parameters. JSON**
+* Název souboru šablony aplikace logiky: **<*Logic-App-Name*>. JSON**
+* Název souboru parametrů: **<*Logic-App-Name*>. Parameters. JSON**
 
 Tady je struktura v souboru parametrů, která obsahuje odkaz na Trezor klíčů pro [předání hodnoty zabezpečeného parametru s Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md):
 
@@ -240,7 +240,7 @@ Tento příklad souboru parametrů určuje hodnoty pro parametry šablony deklar
 
 ## <a name="template-resources"></a>Prostředky šablon
 
-Vaše šablona má `resources` objekt, což je pole, které obsahuje definice jednotlivých prostředků pro vytvoření a nasazení v Azure, jako je [definice prostředků vaší aplikace logiky](#logic-app-resource-definition), jakékoli [definice prostředků připojení](#connection-resource-definitions)a všechny další prostředky. vaše aplikace logiky potřebuje k nasazení.
+Vaše šablona obsahuje objekt `resources`, což je pole, které obsahuje definice jednotlivých prostředků pro vytvoření a nasazení v Azure, jako je [definice prostředků vaší aplikace logiky](#logic-app-resource-definition), všechny [definice prostředků připojení](#connection-resource-definitions)a všechny další prostředky, které vaše aplikace logiky potřebuje k nasazení.
 
 ```json
 {
@@ -277,12 +277,12 @@ Obecné informace o prostředcích šablon a jejich atributech najdete v těchto
 
 ### <a name="logic-app-resource-definition"></a>Definice prostředků aplikace logiky
 
-Definice prostředků vaší aplikace logiky začíná `properties` objektem, který obsahuje tyto informace:
+Definice prostředků vaší aplikace logiky začíná objektem `properties`, který obsahuje tyto informace:
 
 * Stav vaší aplikace logiky při nasazení
 * ID pro libovolný účet pro integraci, který používá aplikace logiky
 * Definice pracovního postupu vaší aplikace logiky
-* `parameters` Objekt, který nastaví hodnoty, které se mají použít za běhu
+* Objekt `parameters`, který nastaví hodnoty, které se mají použít za běhu
 * Další informace o zdroji vaší aplikace logiky, jako je název, typ, umístění atd.
 
 ```json
@@ -322,13 +322,13 @@ Definice prostředků vaší aplikace logiky začíná `properties` objektem, kt
 
 Tady jsou atributy, které jsou specifické pro vaši definici prostředků aplikace logiky:
 
-| Atribut | Požadováno | Typ | Popis |
+| Atribut | Požaduje se | Typ | Popis |
 |-----------|----------|------|-------------|
-| `state` | Ano | Řetězec | Stav vaší aplikace logiky při nasazení, `Enabled` kde je vaše aplikace logiky živá `Disabled` a to znamená, že vaše aplikace logiky je neaktivní. Pokud například nejste připraveni k tomu, aby vaše aplikace logiky přešla do provozu, ale chcete nasadit koncept verze, můžete použít `Disabled` možnost. |
-| `integrationAccount` | Ne | Object | Pokud vaše aplikace logiky používá účet pro integraci, který ukládá artefakty pro scénáře B2B (Business-to-Business), tento objekt obsahuje `id` atribut, který určuje ID pro účet pro integraci. |
-| `definition` | Ano | Object | Základní definice pracovního postupu aplikace logiky, což je stejný objekt, který se zobrazuje v zobrazení kódu a je plně popsán v tématu [Referenční dokumentace schématu pro jazyk definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md) . V této definici `parameters` pracovního postupu objekt deklaruje parametry pro hodnoty, které mají být použity v prostředí Logic App runtime. Další informace najdete v tématu [definice a parametry pracovního postupu](#workflow-definition-parameters). <p><p>Chcete-li zobrazit atributy v definici pracovního postupu vaší aplikace logiky, přepněte z "zobrazení návrhu" na "zobrazení kódu" v Azure Portal nebo v aplikaci Visual Studio nebo pomocí nástroje, jako je například [Azure Resource Explorer](http://resources.azure.com). |
-| `parameters` | Ne | Object | [Hodnoty parametrů definice pracovního postupu](#workflow-definition-parameters) , které se mají použít v prostředí Logic App runtime Definice parametrů těchto hodnot se zobrazí uvnitř [objektu parametrů definice pracovního postupu](#workflow-definition-parameters). Také Pokud vaše aplikace logiky používá [spravované konektory](../connectors/apis-list.md) pro přístup k jiným službám a systémům, tento `$connections` objekt obsahuje objekt, který nastaví hodnoty připojení, které se mají použít za běhu. |
-| `accessControl` | Ne | Object | Pro zadání atributů zabezpečení pro vaši aplikaci logiky, jako je například omezení přístupu IP k aktivačním událostem žádosti nebo vstupy a výstupy historie spouštění. Další informace najdete v tématu [zabezpečený přístup k Logic Apps](../logic-apps/logic-apps-securing-a-logic-app.md). |
+| `state` | Ano | Řetězec | Stav vaší aplikace logiky při nasazení, kde `Enabled` znamená, že vaše aplikace logiky je živá a `Disabled` znamená, že vaše aplikace logiky je neaktivní. Pokud například nejste připraveni k tomu, aby aplikace logiky byla v provozu, ale chcete nasadit koncept verze, můžete použít možnost `Disabled`. |
+| `integrationAccount` | Ne | Objekt | Pokud vaše aplikace logiky používá účet pro integraci, který ukládá artefakty pro scénáře B2B (Business-to-Business), tento objekt zahrnuje atribut `id`, který určuje ID pro účet pro integraci. |
+| `definition` | Ano | Objekt | Základní definice pracovního postupu aplikace logiky, což je stejný objekt, který se zobrazuje v zobrazení kódu a je plně popsán v tématu [Referenční dokumentace schématu pro jazyk definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md) . V této definici pracovního postupu objekt `parameters` deklaruje parametry pro hodnoty, které se mají použít při běhu aplikace logiky. Další informace najdete v tématu [definice a parametry pracovního postupu](#workflow-definition-parameters). <p><p>Chcete-li zobrazit atributy v definici pracovního postupu vaší aplikace logiky, přepněte z "zobrazení návrhu" na "zobrazení kódu" v Azure Portal nebo v aplikaci Visual Studio nebo pomocí nástroje, jako je například [Azure Resource Explorer](https://resources.azure.com). |
+| `parameters` | Ne | Objekt | [Hodnoty parametrů definice pracovního postupu](#workflow-definition-parameters) , které se mají použít v prostředí Logic App runtime Definice parametrů těchto hodnot se zobrazí uvnitř [objektu parametrů definice pracovního postupu](#workflow-definition-parameters). Také Pokud vaše aplikace logiky používá [spravované konektory](../connectors/apis-list.md) pro přístup k jiným službám a systémům, tento objekt obsahuje objekt `$connections`, který nastaví hodnoty připojení, které se mají použít za běhu. |
+| `accessControl` | Ne | Objekt | Pro zadání atributů zabezpečení pro vaši aplikaci logiky, jako je například omezení přístupu IP k aktivačním událostem žádosti nebo vstupy a výstupy historie spouštění. Další informace najdete v tématu [zabezpečený přístup k Logic Apps](../logic-apps/logic-apps-securing-a-logic-app.md). |
 ||||
 
 Informace o prostředcích šablon specifických pro Logic Apps, účty pro integraci a artefakty integračních účtů najdete v tématu [typy prostředků Microsoft. Logic](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions).
@@ -337,13 +337,13 @@ Informace o prostředcích šablon specifických pro Logic Apps, účty pro inte
 
 ## <a name="workflow-definition-and-parameters"></a>Definice a parametry pracovního postupu
 
-Definice pracovního postupu vaší aplikace logiky se zobrazí `definition` v objektu, který se zobrazí `properties` v objektu v definici prostředků vaší aplikace logiky. Tento `definition` objekt je stejný objekt, který se zobrazí v zobrazení kódu a je plně popsán v tématu [reference schématu pro jazyk definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md) . Definice pracovního postupu zahrnuje vnitřní `parameters` objekt deklarace, kde můžete definovat nové nebo upravit existující parametry pro hodnoty, které jsou použity vaší definicí pracovního postupu za běhu. Pak můžete odkazovat na tyto parametry uvnitř triggeru nebo akcí v pracovním postupu. Ve výchozím nastavení je `parameters` tento objekt prázdný, pokud aplikace logiky nevytváří připojení k jiným službám a systémům prostřednictvím [spravovaných konektorů](../connectors/apis-list.md).
+Definice pracovního postupu vaší aplikace logiky se zobrazí v objektu `definition`, který se zobrazí v objektu `properties` v definici prostředků vaší aplikace logiky. Tento objekt `definition` je stejný objekt, který se zobrazí v zobrazení kódu a je plně popsán v tématu [reference schématu pro jazyk definice pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md) . Definice pracovního postupu zahrnuje vnitřní objekt deklarace `parameters`, kde můžete definovat nové nebo upravit existující parametry pro hodnoty, které jsou používány vaší definicí pracovního postupu za běhu. Pak můžete odkazovat na tyto parametry uvnitř triggeru nebo akcí v pracovním postupu. Ve výchozím nastavení je tento objekt `parameters` prázdný, pokud aplikace logiky nevytváří připojení k jiným službám a systémům prostřednictvím [spravovaných konektorů](../connectors/apis-list.md).
 
-Pokud chcete nastavit hodnoty pro parametry definice pracovního postupu, použijte `parameters` objekt, který je *mimo* vaši definici pracovního postupu, ale ještě *v* definici prostředků vaší aplikace logiky. V tomto vnějším `parameters` objektu pak můžete odkazovat na dříve deklarované parametry šablony, které mohou přijmout hodnoty při nasazení ze souboru parametrů.
+Pokud chcete nastavit hodnoty pro parametry definice pracovního postupu, použijte objekt `parameters`, který je *mimo* vaši definici pracovního postupu, ale ještě *v* definici prostředků vaší aplikace logiky. V tomto vnějším `parameters` objektu pak můžete odkazovat na dříve deklarované parametry šablony, které mohou přijmout hodnoty při nasazení ze souboru parametrů.
 
 > [!TIP]
 >
-> V souladu s osvědčeným postupem neodkazujte přímo na parametry šablony, které jsou vyhodnocovány při nasazení, a to v rámci definice pracovního postupu. Místo toho deklarujte parametr definice pracovního postupu, který pak můžete nastavit v `parameters` objektu, který je *mimo* vaši definici pracovního postupu, ale ještě *v* definici prostředků vaší aplikace logiky. Další informace naleznete v tématu [odkazy na parametry](#parameter-references).
+> V souladu s osvědčeným postupem neodkazujte přímo na parametry šablony, které jsou vyhodnocovány při nasazení, a to v rámci definice pracovního postupu. Místo toho deklarujte parametr definice pracovního postupu, který pak můžete nastavit v objektu `parameters`, který je *mimo* vaši definici pracovního postupu, ale ještě *v* definici prostředků vaší aplikace logiky. Další informace naleznete v tématu [odkazy na parametry](#parameter-references).
 
 Tato syntaxe ukazuje, kde můžete deklarovat parametry na úrovni šablony i definice pracovního postupu spolu s tím, kde můžete nastavit tyto hodnoty parametrů odkazem na parametry šablony a definice pracovního postupu:
 
@@ -410,9 +410,9 @@ Tato syntaxe ukazuje, kde můžete deklarovat parametry na úrovni šablony i de
 
 ### <a name="secure-workflow-definition-parameters"></a>Parametry definice zabezpečeného pracovního postupu
 
-Pro parametr definice pracovního postupu, který zpracovává citlivé informace, hesla, přístupové klíče nebo tajné klíče za běhu, deklarujte nebo upravte parametr pro použití `securestring` typu `secureobject` parametru nebo. Na tento parametr můžete odkazovat v rámci definice pracovního postupu. Na nejvyšší úrovni šablony deklarujte parametr, který má stejný typ pro zpracování těchto informací při nasazení.
+Pro parametr definice pracovního postupu, který zpracovává citlivé informace, hesla, přístupové klíče nebo tajné klíče za běhu, deklarujte nebo upravte parametr pro použití `securestring` nebo `secureobject` typu parametru. Na tento parametr můžete odkazovat v rámci definice pracovního postupu. Na nejvyšší úrovni šablony deklarujte parametr, který má stejný typ pro zpracování těchto informací při nasazení.
 
-Pokud chcete nastavit hodnotu parametru definice pracovního postupu, použijte `parameters` objekt, který je *mimo* vaši definici pracovního postupu, ale ještě *v* definici prostředků vaší aplikace logiky se odkazuje na parametr šablony. Nakonec, pokud chcete předat hodnotu parametru šablony při nasazení, uložte tuto hodnotu do [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) a odkazujte na tento trezor klíčů v [souboru parametrů](#template-parameter-files) , který je použit vaší šablonou při nasazení.
+Pokud chcete nastavit hodnotu parametru definice pracovního postupu, použijte objekt `parameters`, který je *mimo* vaši definici pracovního postupu, ale ještě *v* definici prostředků vaší aplikace logiky se odkazuje na parametr šablony. Nakonec, pokud chcete předat hodnotu parametru šablony při nasazení, uložte tuto hodnotu do [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) a odkazujte na tento trezor klíčů v [souboru parametrů](#template-parameter-files) , který je použit vaší šablonou při nasazení.
 
 Tato příklad šablony ukazuje, jak můžete tyto úlohy dokončit definováním zabezpečených parametrů v případě potřeby, abyste mohli ukládat jejich hodnoty do Azure Key Vault:
 
@@ -553,7 +553,7 @@ Tato příklad šablony ukazuje, jak můžete tyto úlohy dokončit definování
 
 Abyste se ujistili, že návrhář aplikace logiky může správně zobrazit parametry definice pracovního postupu, použijte tyto osvědčené postupy:
 
-* Zahrňte `defaultValue` atribut, který může zadat prázdné hodnoty pro všechny parametry s výjimkou hodnot, které jsou citlivé nebo musí být zabezpečené.
+* Zahrňte atribut `defaultValue`, který může zadat prázdné hodnoty pro všechny parametry s výjimkou hodnot, které jsou citlivé nebo musí být zabezpečené.
 
 * Pro uživatelská jména, hesla a tajné klíče vždy používejte zabezpečené parametry. Pokud chcete skrýt nebo chránit citlivé hodnoty parametrů, postupujte podle pokynů v těchto tématech:
 
@@ -569,7 +569,7 @@ Další informace o parametrech definice pracovního postupu najdete v tématu [
 
 ## <a name="connection-resource-definitions"></a>Definice prostředků připojení
 
-Když aplikace logiky vytvoří a použije připojení k ostatním službám a systému pomocí [spravovaných konektorů](../connectors/apis-list.md), `resources` objekt šablony obsahuje definice prostředků pro tato připojení.
+Když aplikace logiky vytvoří a použije připojení k ostatním službám a systému pomocí [spravovaných konektorů](../connectors/apis-list.md), objekt `resources` vaší šablony obsahuje definice prostředků pro tato připojení.
 
 ```json
 {
@@ -651,13 +651,13 @@ Tady je příklad definice prostředků pro připojení Office 365 Outlook a odp
 
 Definice prostředků vaší aplikace logiky funguje také s definicemi prostředků připojení v těchto způsobech:
 
-* V rámci definice `parameters` pracovního postupu objekt deklaruje `$connections` parametr pro hodnoty připojení, které se mají použít v prostředí Logic App runtime. Aktivační událost nebo akce, která vytváří připojení, používá také odpovídající hodnoty, které přejdou pomocí `$connections` tohoto parametru.
+* V rámci definice pracovního postupu objekt `parameters` deklaruje `$connections` parametr pro hodnoty připojení, které se mají použít v prostředí Logic App runtime. Aktivační událost nebo akce, která vytváří připojení, používá také odpovídající hodnoty, které přecházejí z tohoto parametru `$connections`.
 
-* *Mimo* definici pracovního postupu, ale pořád i *v* definici prostředků vaší aplikace logiky `parameters` , další objekt nastaví hodnoty, `$connections` které se mají použít za běhu pro parametr odkazem na odpovídající parametry šablony. Tyto hodnoty pomocí výrazů šablony odkazují na prostředky, které bezpečně ukládají metadata pro připojení ve vaší aplikaci logiky.
+* *Mimo* definici pracovního postupu, ale pořád i *v* definici prostředků vaší aplikace logiky, další objekt `parameters` nastaví hodnoty, které se mají použít za běhu pro `$connections` parametr odkazem na odpovídající parametry šablony. Tyto hodnoty pomocí výrazů šablony odkazují na prostředky, které bezpečně ukládají metadata pro připojení ve vaší aplikaci logiky.
 
   Metadata můžou například zahrnovat připojovací řetězce a přístupové tokeny, které můžete ukládat v [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md). Chcete-li tyto hodnoty předat parametrům šablony, odkazujte na tento trezor klíčů v [souboru parametrů](#template-parameter-files) , který je použit vaší šablonou při nasazení. Další informace o rozdílech v referenčních parametrech naleznete v tématu [odkazy na parametry](#parameter-references) dále v tomto tématu.
 
-  Když otevřete definici pracovního postupu aplikace logiky v zobrazení kód prostřednictvím Azure Portal nebo sady Visual Studio, `$connections` objekt se zobrazí mimo vaši definici pracovního postupu, ale na stejné úrovni. Toto řazení v zobrazení kódu usnadňuje odkazování těchto parametrů při ruční aktualizaci definice pracovního postupu:
+  Když otevřete definici pracovního postupu aplikace logiky v zobrazení kód prostřednictvím Azure Portal nebo sady Visual Studio, objekt `$connections` se zobrazí mimo vaši definici pracovního postupu, ale na stejné úrovni. Toto řazení v zobrazení kódu usnadňuje odkazování těchto parametrů při ruční aktualizaci definice pracovního postupu:
 
   ```json
   {
@@ -666,9 +666,9 @@ Definice prostředků vaší aplikace logiky funguje také s definicemi prostře
   }
   ```
 
-* Definice prostředků vaší aplikace logiky obsahuje `dependsOn` objekt, který určuje závislosti na připojeních, která vaše aplikace logiky používá.
+* Definice prostředků vaší aplikace logiky obsahuje objekt `dependsOn`, který určuje závislosti na připojeních, která vaše aplikace logiky používá.
 
-Každé vytvořené připojení má v Azure jedinečný název. Když vytvoříte několik připojení ke stejné službě nebo systému, každý název připojení se připojí s číslem, které se zvýší u každého nového vytvořeného připojení, `office365` `office365-1`například, a tak dále.
+Každé vytvořené připojení má v Azure jedinečný název. Když vytvoříte několik připojení ke stejné službě nebo systému, každý název připojení se připojí s číslem, které se zvýší u každého nového vytvořeného připojení, například `office365`, `office365-1`atd.
 
 Tento příklad ukazuje interakce mezi definicí prostředků vaší aplikace logiky a definicí prostředků připojení pro Office 365 Outlook:
 
@@ -747,7 +747,7 @@ Tento příklad ukazuje interakce mezi definicí prostředků vaší aplikace lo
 
 ### <a name="secure-connection-parameters"></a>Parametry zabezpečeného připojení
 
-Pro parametr připojení, který zpracovává citlivé informace, hesla, přístupové klíče a tajné kódy, zahrnuje `parameterValues` definice prostředků připojení objekt, který určuje tyto hodnoty ve formátu dvojice název-hodnota. Chcete-li skrýt tyto informace, můžete deklarovat nebo upravit parametry šablony pro tyto hodnoty pomocí `securestring` typů parametrů nebo. `secureobject` Tyto informace pak můžete uložit v [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md). Chcete-li tyto hodnoty předat parametrům šablony, odkazujte na tento trezor klíčů v [souboru parametrů](#template-parameter-files) , který je použit vaší šablonou při nasazení.
+Pro parametr připojení, který zpracovává citlivé informace, hesla, přístupové klíče a tajné kódy, zahrnuje definice prostředků připojení `parameterValues` objekt, který určuje tyto hodnoty ve formátu dvojice název-hodnota. Chcete-li skrýt tyto informace, můžete deklarovat nebo upravit parametry šablony pro tyto hodnoty pomocí typů parametrů `securestring` nebo `secureobject`. Tyto informace pak můžete uložit v [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md). Chcete-li tyto hodnoty předat parametrům šablony, odkazujte na tento trezor klíčů v [souboru parametrů](#template-parameter-files) , který je použit vaší šablonou při nasazení.
 
 Tady je příklad, který poskytuje název účtu a přístupový klíč pro připojení k Azure Blob Storage:
 
@@ -913,7 +913,7 @@ Tady je příklad, který poskytuje název účtu a přístupový klíč pro př
 
 Po nasazení aplikace logiky funguje na konci až po platné parametry. Přesto však musíte autorizovat všechna připojení OAuth pro vygenerování platných přístupových tokenů pro [ověřování vašich přihlašovacích údajů](../active-directory/develop/authentication-scenarios.md). Další informace najdete v tématu [autorizace připojení OAuth](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections).
 
-Některá připojení podporují použití [instančního objektu služby](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory (Azure AD) k autorizaci připojení pro aplikaci logiky, která je zaregistrovaná [ve službě Azure AD](../active-directory/develop/quickstart-register-app.md). Například tato definice prostředku Azure Data Lake připojení ukazuje, jak odkazovat na parametry šablony, které zpracovávají informace o instančním objektu a jak šablona deklaruje tyto parametry:
+Některá připojení podporují použití [instančního objektu služby](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory (Azure AD) k autorizaci připojení pro aplikaci logiky, která je [zaregistrovaná ve službě Azure AD](../active-directory/develop/quickstart-register-app.md). Například tato definice prostředku Azure Data Lake připojení ukazuje, jak odkazovat na parametry šablony, které zpracovávají informace o instančním objektu a jak šablona deklaruje tyto parametry:
 
 **Definice prostředků připojení**
 
@@ -949,7 +949,7 @@ Některá připojení podporují použití [instančního objektu služby](../ac
 
 **Definice parametrů šablony**
 
-Objekt nejvyšší úrovně `parameters` šablony deklaruje tyto parametry pro příklad připojení:
+Objekt `parameters` nejvyšší úrovně šablony deklaruje tyto parametry pro příklad připojení:
 
 ```json
 {
@@ -1030,7 +1030,7 @@ Místo toho postupujte podle těchto obecných kroků k deklaraci a odkazování
 
 1. V definici pracovního postupu deklarujte parametry pro hodnoty, které se mají přijmout a použít za běhu. Pak můžete na tyto hodnoty odkazovat v rámci definice pracovního postupu a.
 
-1. V objektu, který je *mimo* vaši definici pracovního postupu, *ale ještě v* definici prostředků vaší aplikace logiky, nastavte hodnoty pro parametry definice pracovního postupu odkazem na odpovídající parametry šablony. `parameters` Tímto způsobem můžete hodnoty parametrů šablony předat do parametrů definice pracovního postupu.
+1. V objektu `parameters`, který je *mimo* vaši definici pracovního postupu, ale ještě *v* definici prostředků vaší aplikace logiky, nastavte hodnoty pro parametry definice pracovního postupu odkazem na odpovídající parametry šablony. Tímto způsobem můžete hodnoty parametrů šablony předat do parametrů definice pracovního postupu.
 
 1. V souboru parametrů zadejte hodnoty pro šablonu, která se má použít při nasazení.
 

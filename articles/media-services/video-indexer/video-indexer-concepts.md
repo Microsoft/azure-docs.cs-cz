@@ -1,7 +1,7 @@
 ---
-title: Koncepty služby video Indexer
-titlesuffix: Azure Media Services
-description: Toto téma popisuje některé pojmy služby Video Indexer.
+title: Video Indexer koncepty
+titleSuffix: Azure Media Services
+description: Toto téma popisuje některé koncepty služby Video Indexer.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,33 +10,33 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 156eceba856bf159d4821360639a0641d3ed02be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3795b699f5518efdbef117fb24d118041ed3e78
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799054"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839581"
 ---
-# <a name="video-indexer-concepts"></a>Koncepty služby video Indexer
+# <a name="video-indexer-concepts"></a>Video Indexer koncepty
  
-Tento článek popisuje některé pojmy služby Video Indexer.
+Tento článek popisuje některé koncepty služby Video Indexer.
     
-## <a name="summarized-insights"></a>Souhrnný přehled
+## <a name="summarized-insights"></a>Shrnuté přehledy
 
-Souhrnný přehled obsahuje souhrnné zobrazení dat: tváří, témata a emocí. Například namísto prostřednictvím všech tisíce časových rozsahů a kontrola tváří, které jsou v ní, obsahuje souhrnný přehled všech ploch a pro každé z nich, časových rozsahů, které se zobrazí v a % doby se zobrazí.
+Shrnuté přehledy obsahují agregované zobrazení dat: plošky, témata a emoce. Například místo toho, aby se načetly jednotlivé tisíce časových rozsahů a kontrolovaly, které plošky jsou v něm, shrnuté přehledy obsahují všechny plošky a pro každý z nich, časové rozsahy, ve kterých se zobrazuje, a% času, ve kterém se zobrazí.
 
-## <a name="time-range-vs-adjusted-time-range"></a>časový rozsah a upravené časové rozmezí
+## <a name="time-range-vs-adjusted-time-range"></a>časový rozsah vs. upravený časový rozsah
 
-TimeRange je časový rozsah v původního videa. AdjustedTimeRange je časový rozsah vzhledem k aktuálního seznamu testů. Vzhledem k tomu, že můžete vytvořit seznam stop z různých odvětví různých videa, můžete trvat video 1 hodinu a používat jenom 1 řádek z něj, třeba 10:00-10:15. V takovém případě budete mít seznam testů s 1 řádek, kde časový rozsah je 10:00-10:15, ale adjustedTimeRange je 00:00-00:15.
+TimeRange je časovým rozsahem v původním videu. AdjustedTimeRange je časový rozsah relativní k aktuálnímu seznamu testů. Vzhledem k tomu, že můžete vytvořit seznam stop z různých řádků různých videí, můžete použít 1 hodiny videa a použít na něj pouze 1 čáru, například 10:00-10:15. V takovém případě budete mít seznam stop s 1 řádkem, kde časový rozsah je 10:00-10:15, ale adjustedTimeRange je 00:00-00:15.
  
-## <a name="blocks"></a>bloky
+## <a name="blocks"></a>Čeká
 
-Bloky jsou určené k usnadnění procházení data. Blok může být rozdělený třeba podle toho, jak se mění přednášející, nebo když nastane dlouhá pauza.
+Jsou určeny k tomu, aby bylo snazší projít data. Blok může být rozdělený třeba podle toho, jak se mění přednášející, nebo když nastane dlouhá pauza.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak začít, najdete v části [postup registrace a nahrání prvního videa](video-indexer-get-started.md).
+Informace o tom, jak začít, najdete v tématu [jak se zaregistrovat a nahrát své první video](video-indexer-get-started.md).
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 [Přehled Video Indexeru](video-indexer-overview.md)

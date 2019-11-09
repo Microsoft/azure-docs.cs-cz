@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 3ae3c3f66ce7301023217a91cd8c79783f3ef833
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2952f7f24e92b952daafa682eee9d4605537a37b
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501775"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839528"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Vytvoření testu pomocí rozhraní příkazového řádku (Preview) pro Internet Analyzer
 
@@ -79,7 +79,7 @@ Rozhraní příkazového řádku pro Internet Analyzer zpřístupňuje následuj
     az internet-analyzer test create --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile" --endpoint-a-name "contoso" --endpoint-a-endpoint "www.contoso.com/some/path/to/trans.gif" --endpoint-b-name "microsoft" --endpoint-b-endpoint "www.microsoft.com/another/path/to/trans.gif" --name "MyFirstInternetAnalyzerTest" --enabled-state Enabled
     ```
 
-    Výše uvedený příkaz předpokládá, že www.contoso.com i www.microsoft.com hostují obrázek s jedním pixelem ([trans. gif](https://fpc.msedge.net/apc/trans.gif)) v rámci vlastních cest. Pokud není cesta k objektu explicitně zadaná, služba Internet Analyzer ve výchozím nastavení použije `/apc/trans.gif` jako cestu k objektu, což je umístění předkonfigurovaných koncových bodů, které jsou hostiteli z obrazových bodů. Všimněte si také, že není nutné zadávat schéma (HTTPS/HTTP); Nástroj Internet Analyzer podporuje pouze koncové body HTTPS, takže se předpokládá protokol HTTPS.
+    Výše uvedený příkaz předpokládá, že `www.contoso.com` i `www.microsoft.com` v rámci vlastních cest hostují obrázek s jedním pixelem ([trans. gif](https://fpc.msedge.net/apc/trans.gif)). Pokud není cesta k objektu explicitně zadaná, služba Internet Analyzer ve výchozím nastavení použije `/apc/trans.gif` jako cestu k objektu, což je umístění předkonfigurovaných koncových bodů, které jsou hostiteli z obrazových bodů. Všimněte si také, že není nutné zadávat schéma (HTTPS/HTTP); Nástroj Internet Analyzer podporuje pouze koncové body HTTPS, takže se předpokládá protokol HTTPS.
 
 11. Nový test by měl být zobrazen pod profilem nástroje Internet Analyzer:
     ```azurecli-interactive

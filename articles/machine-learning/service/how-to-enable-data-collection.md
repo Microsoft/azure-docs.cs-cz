@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2ca091a1bbf56e2d2850a464d0109020b06483d0
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 20bc148e392900aecb63ad393ec6e90cda65585a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576698"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839105"
 ---
 # <a name="collect-data-for-models-in-production"></a>Shromažďování dat pro modely v produkčním prostředí
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ Po povolení vám tato data, která shromáždíte, pomůže:
 Shromažďovat lze následující data:
 * Model **vstupních** dat z webových služeb nasazených v clusteru Azure KUBERNETES (AKS) (hlas, obrázky a **video se neshromažďují)** 
   
-* Předpovědi modelu s použitím vstupních produkčních dat.
+* Předpovědi modelu s použitím vstupních produkčních dat
 
 > [!Note]
 > Předběžná agregace nebo předběžná kalkulace těchto dat v tuto chvíli není součástí služby.   
@@ -59,20 +59,20 @@ Cesta k výstupním datům v objektu BLOB se řídí touto syntaxí:
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-- Azure Machine Learning pracovní prostor, místní adresář obsahující vaše skripty a nainstalovanou sadu Azure Machine Learning SDK pro Python. Naučte se tyto požadavky získat pomocí [postupu konfigurace dokumentu vývojového prostředí](how-to-configure-environment.md) .
+- Azure Machine Learning pracovní prostor, místní adresář obsahující vaše skripty a nainstalovanou sadu Azure Machine Learning SDK pro Python. Informace o tom, jak tyto požadavky získat pomocí [postupu konfigurace dokumentu vývojového prostředí](how-to-configure-environment.md)
 
 - Školený model strojového učení, který se má nasadit do služby Azure Kubernetes (AKS). Pokud ho nemáte, přečtěte si kurz pro [model klasifikace imagí v výukovém](tutorial-train-models-with-aml.md) programu.
 
-- Cluster služby Azure Kubernetes. Informace o tom, jak vytvořit a nasadit do jednoho, najdete v tématu [nasazení a umístění](how-to-deploy-and-where.md) dokumentu.
+- Cluster služby Azure Kubernetes. Informace o tom, jak vytvořit a nasadit na jeden, najdete v tématu [nasazení a umístění](how-to-deploy-and-where.md) dokumentu.
 
-- [Nastavte prostředí](how-to-configure-environment.md) a nainstalujte [sadu monitoring SDK](https://aka.ms/aml-monitoring-sdk).
+- [Nastavení prostředí](how-to-configure-environment.md) a instalace [sady monitoring SDK](https://aka.ms/aml-monitoring-sdk)
 
 ## <a name="enable-data-collection"></a>Povolení shromažďování dat
 Shromažďování dat lze povolit bez ohledu na model, který je nasazen prostřednictvím Azure Machine Learning nebo jiných nástrojů. 
 
 Pokud ho chcete povolit, musíte:
 
-1. Otevřete soubor bodování. 
+1. Otevřít soubor bodování
 
 1. Do horní části souboru přidejte [následující kód](https://aka.ms/aml-monitoring-sdk) :
 
@@ -90,7 +90,7 @@ Pokud ho chcete povolit, musíte:
 
     *ID korelace* je nepovinný parametr, nemusíte ho nastavovat, pokud ho model nevyžaduje. Máte-li na místě ID korelace, může vám to usnadnit mapování s ostatními daty. (Příklady zahrnují: LoanNumber, CustomerId atd.)
     
-    *Identifikátor* se později používá k vytvoření struktury složek v objektu blob, dá se použít k rozdělení nezpracovaných dat vs.
+    *Identifikátor* se později používá k vytvoření struktury složek v objektu blob, dá se použít k rozdělení nezpracovaných dat versus zpracovaných.
 
 3.  Do funkce `run(input_df)` přidejte následující řádky kódu:
 
@@ -116,40 +116,40 @@ Pokud ho chcete povolit, musíte:
 
 Pokud již máte v souboru **prostředí** a v **souboru bodování**nainstalovanou službu se závislostmi, povolte shromažďování dat pomocí:
 
-1. Přejít na [Azure Machine Learning Studio](https://ml.azure.com).
+1. Přejít na [Azure Machine Learning Studio](https://ml.azure.com)
 
 1. Otevřete pracovní prostor.
 
-1. Přejít na **nasazení** -> **Vybrat službu** -> **Upravit**.
+1. Přejít na **nasazení** -> **Vybrat službu** -> **Upravit**
 
    ![Upravit službu](media/how-to-enable-data-collection/EditService.PNG)
 
-1. V **upřesňujících nastaveních**vyberte **Povolit shromažďování dat modelu**. 
+1. V **upřesňujících nastaveních**vyberte **Povolit shromažďování dat modelu**
 
     [![shromažďování dat kontroly](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
 
-   V tomto okně můžete také vybrat možnost Povolit diagnostiku Appinsights a sledovat stav služby.  
+   V tomto okně můžete také vybrat možnost Povolit diagnostiku Appinsights a sledovat stav služby.
 
-1. Pokud chcete změnu použít, vyberte **aktualizovat** .
+1. Vyberte **aktualizovat** , aby se změna projevila.
 
 
 ## <a name="disable-data-collection"></a>Zakázat shromažďování dat
 Shromažďování dat můžete kdykoli zastavit. K zakázání shromažďování dat použijte kód Pythonu nebo Azure Machine Learning Studio.
 
 + Možnost 1 – zakázat v Azure Machine Learning Studiu: 
-  1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com).
+  1. Přihlášení k [Azure Machine Learning Studiu](https://ml.azure.com)
 
   1. Otevřete pracovní prostor.
 
-  1. Přejít na **nasazení** -> **Vybrat službu** -> **Upravit**.
+  1. Přejít na **nasazení** -> **Vybrat službu** -> **Upravit**
 
      [![– možnost úprav](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
-  1. V **rozšířeném nastavení**zrušte výběr možnosti **Povolit shromažďování dat modelu**. 
+  1. V **rozšířeném nastavení**zrušte výběr možnosti **Povolit shromažďování dat modelu** .
 
      [![zrušit kontrolu shromažďování dat](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
 
-  1. Pokud chcete změnu použít, vyberte **aktualizovat** .
+  1. Vyberte **aktualizovat** , aby se změna projevila.
 
   K těmto nastavením můžete získat přístup také v [Azure Machine Learning Studiu](https://ml.azure.com)v pracovním prostoru.
 
@@ -164,10 +164,11 @@ Shromažďování dat můžete kdykoli zastavit. K zakázání shromažďování
 Můžete vybrat libovolný nástroj z vaší předvolby a analyzovat data shromážděná do objektu blob Azure.
 
 Rychlý přístup k datům z objektu BLOB:
-1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com).
+
+1. Přihlášení k [Azure Machine Learning Studiu](https://ml.azure.com)
 
 1. Otevřete pracovní prostor.
-1. Klikněte na **úložiště**.
+1. Klikněte na **úložiště** .
 
     [![úložiště](media/how-to-enable-data-collection/StorageLocation.png)](./media/how-to-enable-data-collection/StorageLocation.png#lightbox)
 
@@ -183,22 +184,22 @@ Rychlý přístup k datům z objektu BLOB:
 
 1. Stáhnout a otevřít [Power BI Desktop](https://www.powerbi.com)
 
-1. Vyberte **získat data** a klikněte na [**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources).
+1. Vyberte **získat data** a klikněte na [**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources)
 
     [nastavení ![PBI BLOB](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
 
-1. Přidejte název svého účtu úložiště a zadejte svůj klíč úložiště. Tyto informace najdete v **Nastavení** objektu blob > > přístupových klíčích. 
+1. Přidejte název svého účtu úložiště a zadejte svůj klíč úložiště. Tyto informace najdete v **Nastavení** objektu blob > > přístupových klíčích.
 
-1. Vyberte kontejner **modeldata** a klikněte na **Upravit**. 
+1. Vyberte kontejner **modeldata** a klikněte na **Upravit** .
 
     [![PBI Navigator](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
 1. V editoru dotazů klikněte pod sloupcem název a přidejte svůj účet úložiště 1. Cesta k modelu do filtru. Poznámka: Pokud chcete hledat pouze soubory z konkrétního roku nebo měsíce, stačí rozšířit cestu filtru. Například stačí najít data v březnu:/modeldata/SubscriptionId >/ResourceGroupName >/workspacename >/WebServiceName >/ModelName >/modelversion >/Designation > za rok >/3
 
-1. Vyfiltrujte data, která jsou pro vás důležitá na základě **názvu**. Pokud jste uložili **předpovědi** a **vstupy**, budete si muset vytvořit dotaz pro každý z nich.
+1. Vyfiltrujte data, která jsou pro vás důležitá na základě **názvu**. Pokud jste uložili **předpovědi** a **vstupy**, budete muset pro každý z nich vytvořit dotaz.
 
-1. Kliknutím na šipku vedle sloupce **obsah** spojíte soubory. 
+1. Kliknutím na šipku vedle sloupce **obsah** spojíte soubory.
 
     [![PBI obsahu](media/how-to-enable-data-collection/pbiContent.png)](./media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
@@ -208,22 +209,22 @@ Rychlý přístup k datům z objektu BLOB:
 
 1. Nyní můžete kliknout na **Zavřít a použít** .
 
-1.  Pokud jste přidali vstupy a předpovědi, budou se tabulky automaticky korelovat podle **RequestId**.
+1.  Pokud jste přidali vstupy a předpovědi, budou se tabulky automaticky korelovat podle **RequestId** .
 
-1. Začněte vytvářet vlastní sestavy pro data modelu.
+1. Začněte vytvářet vlastní sestavy pro data modelu
 
 
 ### <a name="analyzing-model-data-using-databricks"></a>Analýza dat modelu pomocí datacihlů
 
-1. Vytvořte [pracovní prostor datacihly](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). 
+1. Vytvoření [pracovního prostoru datacihly](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)
 
-1. Přejdete do pracovního prostoru datacihly. 
+1. Přejít k pracovnímu prostoru datacihly
 
-1. V pracovním prostoru datacihly vyberte **Odeslat data**.
+1. V pracovním prostoru datacihly vyberte **Odeslat data** .
 
     [nahrání ![DB](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
 
-1. Vytvořte novou tabulku a vyberte **jiné zdroje dat** – > Azure Blob Storage-> vytvořit tabulku v poznámkovém bloku.
+1. Vytvořit novou tabulku a vybrat **jiné zdroje dat** – > Azure Blob Storage-> vytvořit tabulku v poznámkovém bloku
 
     [Tabulka ![DB](media/how-to-enable-data-collection/dbtable.PNG)](./media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 
@@ -236,7 +237,7 @@ Rychlý přístup k datům z objektu BLOB:
  
     [![nástroj DBSetup](media/how-to-enable-data-collection/dbsetup.png)](./media/how-to-enable-data-collection/dbsetup.png#lightbox)
 
-1. Pokud chcete zobrazit a analyzovat data, postupujte podle kroků uvedených v šabloně. 
+1. Pokud chcete zobrazit a analyzovat data, postupujte podle kroků uvedených v šabloně.
 
 ## <a name="example-notebook"></a>Příklad poznámkového bloku
 

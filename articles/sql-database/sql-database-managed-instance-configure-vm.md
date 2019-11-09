@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: a455607b1459ebc9e37b1df70b454feea76d1f2f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7273c7b1dbf5eb6c855b95a8661f38bd4bd14af7
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822781"
+ms.locfileid: "73839050"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Rychlý Start: konfigurace virtuálního počítače Azure pro připojení k spravované instanci Azure SQL Database
 
@@ -46,7 +46,7 @@ Následující kroky vytvoří novou podsíť ve virtuální síti spravované i
 
    | Nastavení| Navrhovaná hodnota | Popis |
    | ---------------- | ----------------- | ----------- |
-   | **Název** | Libovolné platné jméno|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).|
+   | **Název** | Libovolné platné jméno|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming).|
    | **Rozsah adres (blok CIDR)** | Platný rozsah | Výchozí hodnota je pro tento rychlý Start vhodná.|
    | **Skupina zabezpečení sítě** | Žádný | Výchozí hodnota je pro tento rychlý Start vhodná.|
    | **Směrovací tabulka** | Žádný | Výchozí hodnota je pro tento rychlý Start vhodná.|
@@ -78,8 +78,8 @@ Nejjednodušší způsob, jak vytvořit klientský virtuální počítač se vš
    | **Předplatné** | Platné předplatné | Musí se jednat o předplatné, ve kterém máte oprávnění k vytváření nových prostředků. |
    | **Skupina prostředků** |Skupina prostředků, kterou jste zadali v rychlém startu [Vytvoření spravované instance](sql-database-managed-instance-get-started.md) .|Tato skupina prostředků musí být ta, ve které virtuální síť existuje.|
    | **Umístění** | Umístění pro skupinu prostředků | Tato hodnota se naplní na základě vybrané skupiny prostředků. |
-   | **Název virtuálního počítače**  | Libovolné platné jméno | Platné názvy najdete v tématu [Pravidla a omezení pojmenování](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).|
-   |**Uživatelské jméno správce**|Jakékoli platné uživatelské jméno|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging). Nepoužívejte "serveradmin", protože to je vyhrazená role na úrovni serveru.<br>Toto uživatelské jméno použijete při každém [připojení k virtuálnímu počítači](#connect-to-virtual-machine).|
+   | **Název virtuálního počítače**  | Libovolné platné jméno | Platné názvy najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming).|
+   |**Uživatelské jméno správce**|Jakékoli platné uživatelské jméno|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). Nepoužívejte "serveradmin", protože to je vyhrazená role na úrovni serveru.<br>Toto uživatelské jméno použijete při každém [připojení k virtuálnímu počítači](#connect-to-virtual-machine).|
    |**Heslo**|Libovolné platné heslo|Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).<br>Toto heslo použijete při každém [připojení k virtuálnímu počítači](#connect-to-virtual-machine).|
    | **Velikost virtuálního počítače** | Libovolná platná velikost | Výchozí hodnota v této šabloně **Standard_B2s** je pro tento rychlý Start dostačující. |
    | **Umístění**|[resourceName (). Location].| Tuto hodnotu neměňte. |

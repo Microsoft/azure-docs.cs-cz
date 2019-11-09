@@ -1,6 +1,6 @@
 ---
 title: Nahrání videa na server a jeho indexování pomocí Video Indexeru
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: Toto téma ukazuje, jak nahrát video na server a indexovat ho pomocí Video Indexeru s využitím rozhraní API.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
-ms.openlocfilehash: d6338f3840b6f8afe21f8115304ba00bba90c6ea
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 255c98965026266348a66bb98a1741eaf04a1d38
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372378"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839141"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
@@ -61,22 +61,22 @@ Adresa URL, která se používá k upozornění na zákazníka (pomocí žádost
 - Změna stavu indexování: 
     - Vlastnosti    
     
-        |Name (Název)|Popis|
+        |Název|Popis|
         |---|---|
         |id|ID videa|
         |state|Stav videa|  
-    - Příklad: https: \//test. com/notifyme? projectName = MyProject & ID = 1234abcd & stav = zpracováno
+    - Příklad: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - Osoba identifikovaná ve videu:
   - Vlastnosti
     
-      |Name (Název)|Popis|
+      |Název|Popis|
       |---|---|
       |id| ID videa|
       |faceId|ID obličeje, které se zobrazí v indexu videa|
       |knownPersonId|Jedinečné ID osoby v rámci modelu obličeje|
       |personName|Jméno osoby|
         
-    - Příklad: https: \//test. com/notifyme? projectName = MyProject & ID = 1234abcd & FaceID = 12 & knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5 & jméno osoby = Inigo_Montoya 
+    - Příklad: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
 #### <a name="notes"></a>Poznámky
 

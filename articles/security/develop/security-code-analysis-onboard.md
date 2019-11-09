@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8936bc21af951cbabb90188b6a31d610caf80395
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: aaf59de2425e0725958847477f1043a5b7fac68a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241774"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839345"
 ---
 # <a name="onboarding-and-installing"></a>Připojování a instalace
 
@@ -51,7 +51,7 @@ Požadavky na Začínáme s analýzou kódu zabezpečení Microsoftu:
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>Instalace rozšíření Microsoft Security Code Analysis Extension
 
-1. Po sdílení rozšíření s vaší organizací Azure DevOps můžete přejít na stránku organizace Azure DevOps. Ukázková adresa URL pro takovou stránku je http://dev.azure.com/contoso.
+1. Po sdílení rozšíření s vaší organizací Azure DevOps můžete přejít na stránku organizace Azure DevOps. Příklad adresy URL pro takovou stránku je `https://dev.azure.com/contoso`.
 1. Vyberte ikonu nákupního balíčku v pravém horním rohu vedle svého jména a pak vyberte **Spravovat rozšíření**.
 1. Vyberte rozšíření Microsoft Security Code Analysis Extension a pak otevřete Průvodce uživatelským rozhraním Azure DevOps a spusťte instalaci.
 1. V rozevíracím seznamu vyberte organizaci Azure DevOps, na kterou chcete rozšíření nainstalovat.
@@ -65,10 +65,10 @@ Po instalaci rozšíření budou úkoly pro bezpečné vytváření sestavení v
 ## <a name="adding-specific-build-tasks-to-your-azure-devops-pipeline"></a>Přidání konkrétních úloh sestavení do kanálu Azure DevOps
 
 1. Z vaší organizace Azure DevOps otevřete týmový projekt.
-1. Vyberte**sestavení** **kanálů** > .
+1. Vyberte **kanály** > **sestavení**.
 1. Vyberte kanál, do kterého chcete přidat úlohy sestavení rozšíření:
-   - Nový kanál: Vyberte **Nový** a postupujte podle podrobných pokynů pro vytvoření nového kanálu.
-   - Upravit kanál: Vyberte existující kanál a pak vyberte **Upravit** . tím zahájíte úpravy kanálu.
+   - Nový kanál: vyberte **Nový** a pomocí podrobných kroků vytvořte nový kanál.
+   - Upravit kanál: Vyberte existující kanál a pak výběrem **Upravit** zahajte úpravy kanálu.
 1. Vyberte **+** a přejít do podokna **Přidat úlohy** .
 1. Ze seznamu nebo pomocí vyhledávacího pole vyhledejte úkol sestavení, který chcete přidat. Vyberte **Přidat**.
 1. Zadejte parametry potřebné pro úlohu.
@@ -84,7 +84,7 @@ Po instalaci rozšíření budou úkoly pro bezpečné vytváření sestavení v
 > - Některé úlohy sestavení Azure DevOps se při spuštění prostřednictvím kanálu vydání nepodporují. Konkrétně Azure DevOps nepodporuje úlohy, které publikují artefakty v rámci kanálu vydání.
 > - Seznam předdefinovaných proměnných ve službě Azure DevOps Team Build, které můžete zadat jako parametry, najdete v tématu [proměnné sestavení Azure DevOps](https://docs.microsoft.com/azure/devops/pipelines/build/variables?tabs=batch&view=vsts).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o konfiguraci úloh sestavení najdete v našem [Průvodci konfigurací](security-code-analysis-customize.md).
 

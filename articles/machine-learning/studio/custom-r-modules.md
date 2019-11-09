@@ -1,6 +1,6 @@
 ---
 title: Definovat vlastní moduly R
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Toto téma popisuje, jak vytvořit a nasadit vlastní R Studio (Classic). Vysvětluje, jaké vlastní moduly R jsou a jaké soubory se používají k jejich definování.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: dba1b092d9a12f189ce7b4a207c362cad2bf8858
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 6c81cd927ac26779cab042d1d4e54f2e8c02918c
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619492"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838883"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Definování vlastních modulů R pro Azure Machine Learning Studio (Classic)
 

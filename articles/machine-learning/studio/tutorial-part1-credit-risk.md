@@ -1,6 +1,6 @@
 ---
 title: 'Kurz 1: předpověď úvěrového rizika'
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Podrobný kurz, který ukazuje, jak vytvořit řešení prediktivní analýzy pro posuzování úvěrového rizika v klasické verzi Azure Machine Learning Studio. Tento kurz je první částí série kurzů se třemi částmi.  Ukazuje, jak vytvořit pracovní prostor, nahrát data a vytvořit experiment.
 keywords: úvěrové riziko,řešení prediktivní analýzy,posouzení rizika
 author: sdgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 78092bd4ad4da896cd2fd36768f181764335ee85
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e8c1eea097fc3ea2704acfae198eb493943b6ccf
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619185"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838852"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Kurz 1: předpověď úvěrového rizika – Azure Machine Learning Studio (Classic)
 

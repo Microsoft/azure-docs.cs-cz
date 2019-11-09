@@ -1,18 +1,18 @@
 ---
 title: Postup připojení úložiště objektů BLOB v Azure jako systému souborů na platformě Linux | Microsoft Docs
 description: Připojení kontejneru úložiště objektů BLOB v Azure s pojistkou v systému Linux
-author: normesta
+author: rishabpoh
 ms.service: storage
 ms.topic: conceptual
 ms.date: 2/1/2019
-ms.author: normesta
+ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: 88002999baacf38b4afd40b574686457c48546e4
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 35a4313d10231aec74685069a67d803ea32e68b1
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845016"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847545"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Postup připojení úložiště objektů BLOB jako systému souborů pomocí blobfuse
 
@@ -42,7 +42,7 @@ Například na distribuci Enterprise Linux 6:
 sudo rpm -Uvh https://packages.microsoft.com/config/rhel/6/packages-microsoft-prod.rpm
 ```
 
-Podobně změňte adresu URL tak `.../rhel/7/...` , aby odkazovala na distribuci Enterprise Linux 7.
+Podobně změňte adresu URL tak, aby `.../rhel/7/...` odkazovalo na distribuci Enterprise Linux 7.
 
 Další příklad pro distribuci Ubuntu 14,04:
 ```bash
@@ -51,7 +51,7 @@ sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```
 
-Podobně změňte adresu URL na `.../ubuntu/16.04/...` nebo `.../ubuntu/18.04/...` na odkaz na jinou verzi Ubuntu.
+Podobně změňte adresu URL na `.../ubuntu/16.04/...` nebo `.../ubuntu/18.04/...`, aby odkazovala na jinou verzi Ubuntu.
 
 ### <a name="install-blobfuse"></a>Nainstalovat blobfuse
 
@@ -97,7 +97,7 @@ accountName myaccount
 accountKey storageaccesskey
 containerName mycontainer
 ```
-`accountName` Je předponou pro váš účet úložiště – ne úplnou adresu URL.
+`accountName` je předpona pro váš účet úložiště – ne úplnou adresu URL.
 
 Vytvořit tento soubor pomocí:
 
@@ -111,7 +111,7 @@ chmod 600 fuse_connection.cfg
 ```
 
 > [!NOTE]
-> Pokud jste v systému Windows vytvořili konfigurační soubor, nezapomeňte spustit `dos2unix` program, který upraví a převede soubor na formát systému UNIX. 
+> Pokud jste v systému Windows vytvořili konfigurační soubor, nezapomeňte spustit `dos2unix` pro úpravu a převod souboru do formátu systému UNIX. 
 >
 
 ### <a name="create-an-empty-directory-for-mounting"></a>Vytvořit prázdný adresář pro připojení
@@ -119,19 +119,19 @@ chmod 600 fuse_connection.cfg
 mkdir ~/mycontainer
 ```
 
-## <a name="mount"></a>Připojit
+## <a name="mount"></a>Připojení
 
 > [!NOTE]
 > Úplný seznam možností připojení najdete [v úložišti blobfuse](https://github.com/Azure/azure-storage-fuse#mount-options).  
 > 
 
-Pro připojení blobfuse spusťte následující příkaz s vaším uživatelem. Tento příkaz připojí kontejner zadaný v '/path/to/fuse_connection.cfg ' do umístění '/myContainer '.
+Pro připojení blobfuse spusťte následující příkaz s vaším uživatelem. Tento příkaz připojí kontejner určený v souboru '/path/to/fuse_connection. cfg ' do umístění '/myContainer '.
 
 ```bash
 sudo blobfuse ~/mycontainer --tmp-path=/mnt/resource/blobfusetmp  --config-file=/path/to/fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120
 ```
 
-Nyní byste měli mít přístup k objektům blob bloku prostřednictvím běžných rozhraní API systému souborů. Uživatel, který je připojuje k adresáři, je jediná osoba, která k němu má přístup, který ve výchozím nastavení přistupuje k zabezpečení přístupu. Pokud chcete přístup všem uživatelům dovolit, můžete se připojit prostřednictvím možnosti ```-o allow_other```. 
+Nyní byste měli mít přístup k objektům blob bloku prostřednictvím běžných rozhraní API systému souborů. Uživatel, který je připojuje k adresáři, je jediná osoba, která k němu má přístup, který ve výchozím nastavení přistupuje k zabezpečení přístupu. Pokud chcete přístup všem uživatelům zpřístupnit, můžete se připojit prostřednictvím možnosti ```-o allow_other```. 
 
 ```bash
 cd ~/mycontainer
@@ -139,7 +139,7 @@ mkdir test
 echo "hello world" > test/blob.txt
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Domovská stránka Blobfuse](https://github.com/Azure/azure-storage-fuse#blobfuse)
 * [Nahlásit problémy blobfuse](https://github.com/Azure/azure-storage-fuse/issues) 

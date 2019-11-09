@@ -1,6 +1,6 @@
 ---
 title: Posílání a přijímání událostí pomocí .NET Core – Azure Event Hubs | Microsoft Docs
-description: Tento článek poskytuje návod pro vytvoření aplikace .NET Core, která zasílá události do služby Azure Event Hubs.
+description: Tento článek popisuje návod pro vytvoření aplikace .NET Core, která odesílá události do služby Azure Event Hubs.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -15,12 +15,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: 736612398861cc7a168fd24e83bc28e3815a8a28
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 1d3f6357faa8626d48e2aac0efe86e22222c9ba6
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742153"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73846677"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core"></a>Odesílání událostí do nebo příjem událostí z Azure Event Hubs pomocí .NET Core
 Event Hubs je služba, která zpracovává velké objemy dat událostí (telemetrie) z připojených zařízení a aplikací. Data, která shromáždíte pomocí služby Event Hubs, můžete uložit pomocí úložného clusteru nebo transformovat pomocí zprostředkovatele datové analýzy v reálném čase. Schopnost shromažďovat a zpracovávat velké množství událostí je klíčovou komponentou moderních aplikačních architektur, například internetu věcí (Internet of Things – IoT). Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
@@ -34,7 +34,7 @@ V tomto kurzu se dozvíte, jak vytvářet aplikace C# .NET Core v pro odesílán
 
 - [Microsoft Visual Studio 2019](https://www.visualstudio.com).
 - [Nástroje .NET Core pro sadu Visual Studio 2015 nebo 2017](https://www.microsoft.com/net/core). 
-- **Vytvoří obor názvů Event Hubs a centrum událostí**. Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centra událostí, postupujte podle pokynů v [v tomto článku](event-hubs-create.md). Pak Získejte **připojovací řetězec pro obor názvů centra událostí** podle pokynů uvedených v článku: [Získá připojovací řetězec](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Připojovací řetězec použijete později v tomto kurzu.
+- **Vytvoří obor názvů Event Hubs a centrum událostí**. Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md). Pak Získejte **připojovací řetězec pro obor názvů centra událostí** podle pokynů uvedených v článku [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Připojovací řetězec použijete později v tomto kurzu.
 
 ## <a name="send-events"></a>Odesílání událostí 
 V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core pro odesílání událostí do centra událostí. 
@@ -47,7 +47,7 @@ Spusťte Visual Studio. V nabídce **Soubor** klikněte na položku **Nový** a 
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Přidání balíčku NuGet služby Event Hubs
 
-Přidat [ `Microsoft.Azure.EventHubs` ](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) balíček NuGet knihovny .NET Core do svého projektu pomocí následujících kroků: 
+Pomocí následujících kroků přidejte do projektu balíček NuGet knihovny [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) .NET Core: 
 
 1. Klikněte pravým tlačítkem na nově vytvořený projekt a vyberte možnost **Spravovat balíčky NuGet**.
 2. Klikněte na kartu **Procházet**, vyhledejte Microsoft.Azure.EventHubs a pak vyberte balíček **Microsoft.Azure.EventHubs**. Klikněte na **Instalovat** a dokončete instalaci, pak zavřete dialogové okno.
@@ -70,7 +70,7 @@ Přidat [ `Microsoft.Azure.EventHubs` ](https://www.nuget.org/packages/Microsoft
     private const string EventHubName = "{Event Hub path/name}";
     ```
 
-3. Do třídy `Program` přidejte následujícím způsobem novou metodu `MainAsync`:
+3. Do třídy `MainAsync` přidejte následujícím způsobem novou metodu `Program`:
 
     ```csharp
     private static async Task MainAsync(string[] args)
@@ -94,7 +94,7 @@ Přidat [ `Microsoft.Azure.EventHubs` ](https://www.nuget.org/packages/Microsoft
     }
     ```
 
-4. Do třídy `Program` přidejte následujícím způsobem novou metodu `SendMessagesToEventHub`:
+4. Do třídy `SendMessagesToEventHub` přidejte následujícím způsobem novou metodu `Program`:
 
     ```csharp
     // Uses the event hub client to send 100 messages to the event hub.
@@ -285,7 +285,7 @@ Pomocí následujícího postupu do svého projektu přidejte balíčky NuGet kn
     private static readonly string StorageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", StorageAccountName, StorageAccountKey);
     ```   
 
-3. Do třídy `Program` přidejte následujícím způsobem novou metodu `MainAsync`:
+3. Do třídy `MainAsync` přidejte následujícím způsobem novou metodu `Program`:
 
     ```csharp
     private static async Task MainAsync(string[] args)
@@ -364,7 +364,7 @@ Pomocí následujícího postupu do svého projektu přidejte balíčky NuGet kn
 4. Spusťte program a zkontrolujte, že nejsou žádné chyby.
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přečtěte si následující články:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)

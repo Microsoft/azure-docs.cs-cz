@@ -11,12 +11,12 @@ ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5ae6844cf11ffa095f56c429e17b9c39ad0c76aa
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5272d9aa77f78d0cef316f9f227f9e269ab7e186
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822904"
+ms.locfileid: "73839903"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Kurz: Načtení dat do služby Azure SQL Data Warehouse
 
@@ -61,7 +61,7 @@ Pomocí těchto kroků můžete vytvořit prázdnou SQL Data Warehouse.
    | ------- | --------------- | ----------- | 
    | **Název databáze** | SampleDW | Platné názvy databází najdete v tématu [Identifikátory databází](/sql/relational-databases/databases/database-identifiers). | 
    | **Předplatné** | Vaše předplatné  | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
-   | **Skupina prostředků** | SampleRG | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging). |
+   | **Skupina prostředků** | SampleRG | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
    | **Výběr zdroje** | Prázdná databáze | Určuje, že se má vytvořit prázdná databáze. Poznámka: datový sklad je jedním z typů databáze.|
 
     ![vytvoření datového skladu](media/load-data-wideworldimportersdw/create-data-warehouse.png)
@@ -70,7 +70,7 @@ Pomocí těchto kroků můžete vytvořit prázdnou SQL Data Warehouse.
 
     | Nastavení | Navrhovaná hodnota | Popis | 
     | ------- | --------------- | ----------- |
-    | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging). | 
+    | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). | 
     | **Přihlašovací jméno správce serveru** | Libovolné platné jméno | Platná přihlašovací jména najdete v tématu [Identifikátory databází](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers).|
     | **Heslo** | Libovolné platné heslo | Heslo musí mít alespoň osm znaků a musí obsahovat znaky ze tří z následujících kategorií: velká písmena, malá písmena, číslice a jiné než alfanumerické znaky. |
     | **Umístění** | Libovolné platné umístění | Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/). |

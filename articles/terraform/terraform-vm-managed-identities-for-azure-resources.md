@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: e00b674df35516da559339af8028c1ca1845b0db
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.date: 11/07/2019
+ms.openlocfilehash: 233012d6caf1280914a6d2439ae856d69570fff7
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969788"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838038"
 ---
 # <a name="tutorial-create-a-linux-vm-with-a-managed-identity-from-the-azure-marketplace-image-using-terraform"></a>Kurz: Vytvoření virtuálního počítače se systémem Linux se spravovanou identitou z Azure Marketplace Image pomocí Terraformu
 
@@ -23,7 +23,7 @@ Za tuto image virtuálního počítače Terraform se neúčtují žádné poplat
 
 Další informace o výpočetních poplatcích najdete na [stránce s cenami za virtuální počítače Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Než budete moct vytvořit virtuální počítač se systémem Linux Terraformu, musíte mít předplatné Azure. Pokud ho ještě nemáte, přejděte na stránku [Vytvořte si bezplatný účet Azure ještě dnes](https://azure.microsoft.com/free/).  
 
 ## <a name="create-your-terraform-vm"></a>Vytvoření virtuálního počítače s Terraformu 
@@ -99,4 +99,4 @@ Po vytvoření virtuálního počítače proveďte následující kroky:
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Terraformu v Azure](/azure/ansible/)
+> [Další informace o používání Terraformu v Azure](/azure/terraform)

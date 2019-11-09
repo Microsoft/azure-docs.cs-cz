@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: thweiss
-ms.openlocfilehash: 34b54459629560ba80e6a38d10edbab32ea44778
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3f987b9e05bcdcda9afe26a1eb1354e5e2450ac5
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820157"
+ms.locfileid: "73846537"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account-preview"></a>Konfigurace privátního odkazu Azure pro účet Azure Cosmos (Preview)
 
@@ -39,7 +39,7 @@ Pomocí následujícího postupu můžete vytvořit privátní odkaz pro existuj
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte skupinu prostředků.|
     | **Podrobnosti instance** |  |
-    | Name (Název) | Zadejte libovolný název vašeho privátního koncového bodu; Pokud se tento název povede, vytvořte jedinečný. |
+    | Název | Zadejte libovolný název vašeho privátního koncového bodu; Pokud se tento název povede, vytvořte jedinečný. |
     |Region (Oblast)| Vyberte oblast, do které chcete nasadit privátní propojení. Privátní koncový bod by měl být vytvořen ve stejném umístění, kde existuje vaše virtuální síť.|
     |||
 1. Vyberte **Další: prostředek**.
@@ -86,7 +86,7 @@ Následující tabulka ukazuje mapování mezi různými typy rozhraní API úč
 
 ### <a name="fetch-the-private-ip-addresses"></a>Načtení privátních IP adres
 
-Po zřízení privátního koncového bodu můžete zadat dotaz na IP adresy. Pro zobrazení IP adres z Azure Portal. Vyberte **všechny prostředky**, vyhledejte privátní koncový bod, který jste vytvořili dříve v tomto případě je to "dbPrivateEndpoint3" a vyberte kartu Přehled, abyste viděli nastavení DNS a IP adresy:
+Po zřízení privátního koncového bodu můžete zadat dotaz na IP adresy. Pokud chcete zobrazit IP adresy z Azure Portal, vyberte **všechny prostředky**, vyhledejte privátní koncový bod, který jste vytvořili dříve v tomto případě je to "dbPrivateEndpoint3" a vyberte kartu Přehled, abyste viděli nastavení DNS a IP adresy:
 
 ![Privátní IP adresy v Azure Portal](./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png)
 
@@ -354,7 +354,7 @@ Přidání nebo odebrání oblastí pro účet Azure Cosmos vyžaduje, abyste p�
 
 Například pokud nasadíte účet Azure Cosmos ve třech oblastech: "Západní USA", "Střed USA" a "Západní Evropa". Při vytváření privátního koncového bodu pro svůj účet jsou v podsíti vyhrazené 4 privátní IP adresy. Jednu pro každou oblast, která se počítá jako celkem 3 a jedna pro koncový bod Global/region-nezávislá.
 
-Později, pokud do účtu Azure Cosmos přidáte novou oblast, například "Východní USA". Ve výchozím nastavení není nová oblast dostupná z existujícího privátního koncového bodu. Správce účtu Azure Cosmos by měl aktualizovat připojení privátního koncového bodu před tím, než bude formulář přistupovat k nové oblasti. 
+Později, pokud do účtu Azure Cosmos přidáte novou oblast, například "Východní USA". Ve výchozím nastavení není nová oblast dostupná z existujícího privátního koncového bodu. Správce účtu Azure Cosmos by měl aktualizovat připojení privátního koncového bodu předtím, než k němu přistupuje z nové oblasti. 
 
 Při spuštění příkazu ` Get-AzPrivateEndpoint -Name <your private endpoint name> -ResourceGroupName <your resource group name>` obsahuje výstup příkazu `actionsRequired` parametr, který je nastaven na hodnotu "znovu vytvořit". Tato hodnota označuje, že by se měl aktualizovat privátní koncový bod. Potom správce účtu Azure Cosmos spustí příkaz `Set-AzPrivateEndpoint`, který aktivuje aktualizaci privátního koncového bodu.
 

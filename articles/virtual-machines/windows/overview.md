@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 47ad2346f4574b10d12c46c1f72394225e014854
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0f2929218b3a304099b1eb009df8e93d0e43c103
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102567"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839880"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Přehled virtuálních počítačů s Windows v Azure
 
@@ -47,8 +47,8 @@ Při sestavování infrastruktury aplikace v Azure vždy existuje velké množst
 * Konfigurace virtuálního počítače po jeho spuštění
 * Související prostředky, které virtuální počítač potřebuje
 
-### <a name="naming"></a>pojmenování
-Virtuální počítač má přiřazený [název](/azure/architecture/best-practices/naming-conventions) a název počítače má nakonfigurovaný jako součást operačního systému. Název virtuálního může být až 15 znaků dlouhý.
+### <a name="naming"></a>Pojmenování
+Virtuální počítač má přiřazený [název](/azure/architecture/best-practices/resource-naming) a název počítače má nakonfigurovaný jako součást operačního systému. Název virtuálního může být až 15 znaků dlouhý.
 
 Pokud k vytvoření disku operačního systému použijete Azure, název počítače a název virtuálního počítače budou stejné. Pokud [nahrajete a použijete vlastní image](upload-generalized-managed.md), která obsahuje dříve nakonfigurovaný operační systém, a použijete ji k vytvoření virtuálního počítače, mohou se tyto názvy lišit. Když nahráváte vlastní soubor s imagí, doporučujeme použít stejný název počítače v operačním systému jako název virtuálního počítače.
 
@@ -82,7 +82,7 @@ Tato tabulka ukazuje několik způsobů, jak můžete najít informace o imagi.
 | Metoda | Popis |
 | --- | --- |
 | portál Azure |Hodnoty se pro vás zadají automaticky, když vyberete image, která se má použít. |
-| Azure PowerShell |[Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) – umístění umístění<BR>[Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) – umístění umístění – Vydavatel vydavatele<BR>[Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) – umístění umístění – Vydavatel vydavatele – nabídka nabídky |
+| Azure PowerShell |[Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) – umístění *umístění*<BR>[Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) *– umístění umístění –* Vydavatel *vydavatele*<BR>[Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) *– umístění umístění –* Vydavatel *vydavatele – nabídka* nabídky |
 | Rozhraní REST API |[Vypsat vydavatele imagí](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[Vypsat nabídky imagí](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[Vypsat skladové jednotky (SKU) imagí](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
 | Azure CLI |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) --location *umístění*<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) --location *umístění* --publisher *název_vydavatele*<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest) --location *umístění* --publisher *název_vydavatele* --offer *název_nabídky*|
 
@@ -100,7 +100,7 @@ Pomocí rozšíření můžete provádět tyto běžné úlohy:
 ### <a name="related-resources"></a>Související prostředky
 Prostředky v této tabulce používá virtuální počítač a je nutné, aby existovaly nebo byly vytvořeny při vytváření virtuálního počítače.
 
-| Prostředek | Požadováno | Popis |
+| Prostředek | Požaduje se | Popis |
 | --- | --- | --- |
 | [Skupina prostředků](../../azure-resource-manager/resource-group-overview.md) |Ano |Virtuální počítač musí být součástí skupiny prostředků. |
 | [Účet úložiště](../../storage/common/storage-create-storage-account.md) |Ano |Virtuální počítač potřebuje účet úložiště k ukládání svých virtuálních pevných disků. |
@@ -150,6 +150,6 @@ Aby se na vaše nasazení vztahovala záruka 99,95% dostupnosti virtuálního po
 ### <a name="back-up-the-vm"></a>Zálohování virtuálního počítače
 [Trezor služby Recovery Services](../../backup/backup-introduction-to-azure-backup.md) slouží k ochraně dat a assetů ve službě Backup a službách Azure Site Recovery. Pomocí trezoru služby Recovery Services můžete [nasadit a spravovat zálohy virtuálních počítačů nasazených Resource Managerem pomocí prostředí PowerShell](../../backup/backup-azure-vms-automation.md). 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Pokud máte v úmyslu pracovat s virtuálními počítači s Linuxem, podívejte se na téma [Azure a Linux](../linux/overview.md).
 * Další informace o pokynech ohledně nastavení infrastruktury najdete v tématu [Průvodce ukázkovou infrastrukturou Azure](infrastructure-example.md).

@@ -1,6 +1,6 @@
 ---
 title: Zaregistrujte se do Video Indexer a nahrajte své první video – Azure
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: Zjistěte, jak se zaregistrovat a nahrát na server svoje první video pomocí portálu Video Indexer.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: juliako
-ms.openlocfilehash: 9d89247740852b7bfc185fbcf864947efe30ef0f
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 957acc25c3218069a20e90fe83e00e441b6303d6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372335"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839564"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Rychlý Start: jak se zaregistrovat a nahrát své první video
 
@@ -35,7 +35,7 @@ Pokud chcete začít s vývojem pomocí Video Indexeru, přejděte na web [Video
 1. Přihlaste se k webu [Video Indexer](https://www.videoindexer.ai/).
 2. Pokud chcete nahrát video na server, stiskněte tlačítko nebo odkaz **Upload** (Nahrát).
 
-    ![Nahrávání](./media/video-indexer-get-started/video-indexer-upload.png)
+    ![Odeslat](./media/video-indexer-get-started/video-indexer-upload.png)
 
     Když se vaše video nahraje na server, začne ho Video Indexer indexovat a analyzovat.
 
@@ -47,7 +47,7 @@ Pokud chcete začít s vývojem pomocí Video Indexeru, přejděte na web [Video
 
 Teď můžete použít web [video indexer](video-indexer-view-edit.md) nebo portál pro [vývojáře video indexer](video-indexer-use-apis.md) k zobrazení přehledů videa. 
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 [Přehled Video Indexeru](video-indexer-overview.md)
 

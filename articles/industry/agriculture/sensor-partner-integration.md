@@ -5,21 +5,22 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e7de815b7254fb071b3094f9ae636b712b38684b
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 7a85ed93d9ee01255d809cce84ebe24e6c3f71d1
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797683"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847396"
 ---
 # <a name="sensor-partner-integration"></a>Integrace partnerů senzorů
-Tento článek poskytuje informace o komponentě **překladače** Azure FarmBeats.
+
+Tento článek poskytuje informace o komponentě **překladače** Azure FarmBeats, která umožňuje integraci partnera snímače.
 
 Pomocí této součásti můžou partneři vyvíjet senzory, které se integrují se službou FarmBeats, využitím našeho rozhraní API a posíláním dat a telemetrie zákaznických zařízení do datového centra FarmBeats. Data se vizuálně používají v akcelerátoru FarmBeats. Data se dají použít pro datovou syntézu a pro vytváření modelů počítačů a umělých analytických modelů.
 
 ## <a name="link-farmbeats-account"></a>Propojit účet FarmBeats
 
-Jakmile si zákazníci zakoupili a nasadili zařízení/senzory, budou mít přístup k datům a telemetrie zařízení na portálu SaaS (software jako služba). Partneři zařízení musí umožnit zákazníkům propojit svůj účet s instancí FarmBeats v Azure. K vyplnění uživateli/SI musí být k dispozici následující přihlašovací údaje:
+Jakmile si zákazníci zakoupili a nasadili zařízení/senzory, budou mít přístup k datům a telemetrie zařízení na portálu SaaS (software jako služba). Partneři zařízení musí umožnit zákazníkům propojit svůj účet s instancí FarmBeats v Azure. K vyplnění pomocí integrátoru zákazníka/systému jsou vyžadovány následující přihlašovací údaje:
 
    - Zobrazovaný název (volitelné pole pro uživatele k definování názvu pro tuto integraci)
    - Koncový bod rozhraní API
@@ -41,14 +42,11 @@ Zákazníci mají možnost odpojit stávající integraci FarmBeats. Zrušení p
 
 ## <a name="edit-farmbeats-integration"></a>Upravit integraci FarmBeats
 
-Zákazník může upravit integraci FarmBeats. Primární scénář pro úpravy je, když se změní tajný kód klienta nebo připojovací řetězec z důvodu vypršení platnosti, v tomto případě zákazník může upravovat jenom následující pole.
+Zákazník může upravit nastavení integrace FarmBeats, pokud se změní tajný kód klienta nebo připojovací řetězec. V takovém případě může zákazník upravovat jenom tato pole:
 
    - Zobrazované jméno (Pokud je k dispozici)
    - Tajný kód klienta (měl by se zobrazit ve formátu "2x8 * * * * * * * * * * *" nebo Zobrazit/skrýt funkci místo nešifrovaný text)
    - Připojovací řetězec (měl by se zobrazit ve formátu "2x8 * * * * * * * * * * *" nebo Zobrazit/skrýt funkci místo nešifrovaný text)
-
-   > [!NOTE]
-   > Edit by neměl přerušit vytváření objektů metadat.
 
 ## <a name="view-last-telemetry-sent"></a>Zobrazit poslední odeslané telemetrie
 
@@ -162,7 +160,7 @@ FarmBeats data hub má následující rozhraní API, která partnerům zařízen
   **Zařízení** | **Zařízení odpovídá fyzickému zařízení přítomnému ve farmě. Každé zařízení má jedinečné ID zařízení.** |
 DeviceModelId  |ID přidruženého modelu zařízení |
 hardwareId   |Jedinečné ID zařízení, například adresa MAC atd.  |
-reportingInterval |Interval generování sestav v sekundách |
+ReportingInterval |Interval generování sestav v sekundách |
 Umístění    |Zeměpisná šířka zařízení (-90 až + 90)/longitude (-180 až 180)/Elevation (v metrech) |
 ParentDeviceId | ID nadřazeného zařízení, ke kterému je připojeno toto zařízení Například. Uzel připojený k bráně; uzel bude mít parentDeviceID jako bránu. |
   Název  | Název, který identifikuje prostředek.  Partneři zařízení budou muset Odeslat název, který je konzistentní s názvem zařízení na straně partnera zařízení. Pokud je název zařízení definovaný uživatelem na straně partnera zařízení, stejný uživatelsky definovaný název by měl být šířen na FarmBeats  |
@@ -172,7 +170,7 @@ ParentDeviceId | ID nadřazeného zařízení, ke kterému je připojeno toto za
   Typ (analogové, digitální)  |Zmínky o analogovém nebo digitálním senzoru|
   výrobců  | jméno výrobce |
   ProductCode  | Kód produktu nebo název/číslo modelu Například RS-CO2-N01  |
-  Název > SensorMeasures  | Název míry senzoru Podporuje se jenom malá písmena. Pro měření z různých hloubek Určete hloubku. Například soil_moisture_15cm tento název musí být v souladu s daty telemetrie. |
+  Název > SensorMeasures  | Název míry senzoru Podporuje se jenom malá písmena. Pro měření z různých hloubek Určete hloubku. Například soil_moisture_15cm tento název musí být konzistentní s daty telemetrie. |
   SensorMeasures > datový typ  | Datový typ telemetrie. Aktuálně je podporován typ Double.  |
   Typ > sensorMeasures  | Typ měření dat telemetrie senzorů. Níže jsou uvedené typy systému: AmbientTemperature, CO2, Hloubka, ElectricalConductivity, LeafWetness, Length, LiquidLevel, dusičnan, O2, PH, fosforečnan, PointInTime, draselný, tlak, RainGauge, RelativeHumidity, slanost, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, evapotranspiration, PAR. Pokud chcete přidat víc, podívejte se na/ExtendedType API.
   Jednotka > SensorMeasures | Jednotka dat telemetrie snímačů. Níže jsou uvedené jednotky definované systémem: jednotka jednotek, Celsia, Fahrenheita, Kelviny, Rankine, Pascal, rtuť, Psí, milimetry, centimetry, měřiče, palce, nohy, míle, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, stupeň, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, procenta, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, litr, MilliLiter, sekundy, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour, další informace najdete na/ Rozhraní API pro ExtendedType
@@ -192,7 +190,7 @@ ParentDeviceId | ID nadřazeného zařízení, ke kterému je připojeno toto za
   description  | Zadejte smysluplný popis.
   properties  | Další vlastnosti od výrobce
 
- Informace o jednotlivých objektech a jejich vlastnostech naleznete v [Swagger](httpa://aka.ms/FarmBeatsDatahubSwagger).
+ Informace o jednotlivých objektech a jejich vlastnostech naleznete v [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
 
  > [!NOTE]
  > Rozhraní API vrací jedinečná ID pro každou vytvořenou instanci. Toto ID musí být zachováno překladatelem pro správu zařízení a synchronizaci metadat.

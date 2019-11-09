@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 068ae6fd581a55892c115f3a7e38d10304f057d8
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 95b7644ab8e0254a53eb4a0872a5af98a0894aec
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170211"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839242"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Nejčastější dotazy týkající se Windows Virtual Machines
 Tento článek popisuje některé běžné dotazy k virtuálním počítačům s Windows vytvořeným v Azure pomocí modelu nasazení Správce prostředků. Verzi tohoto tématu pro Linux najdete v tématu [Nejčastější dotazy o Linux Virtual Machines](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -75,10 +75,10 @@ Ano. Postup pro rychlé vytvoření virtuálního počítače se systémem Linux
 Ano, teď je to možné. Nejdřív je potřeba zastavit navráceného virtuálního počítače. Pak můžete přidat nebo odebrat síťovou kartu (Pokud se nejedná o poslední síťovou kartu na VIRTUÁLNÍm počítači). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>Existují nějaké požadavky na název počítače?
-Ano. Název počítače může mít délku maximálně 15 znaků. Další informace o pojmenování prostředků najdete v tématu [pravidla a omezení konvence pojmenování](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#sample-naming-convention) .
+Ano. Název počítače může mít délku maximálně 15 znaků. Další informace o pojmenování prostředků najdete v tématu [pravidla a omezení konvence pojmenování](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#sample-naming-convention) .
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>Existují nějaké požadavky na název skupiny prostředků?
-Ano. Název skupiny prostředků může mít délku maximálně 90 znaků. Další informace o skupinách prostředků najdete v tématu [pravidla a omezení konvence pojmenování](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming) .
+Ano. Název skupiny prostředků může mít délku maximálně 90 znaků. Další informace o skupinách prostředků najdete v tématu [pravidla a omezení konvence pojmenování](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming) .
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>Jaké jsou požadavky na uživatelské jméno při vytváření virtuálního počítače?
 
@@ -108,7 +108,7 @@ Existují různé požadavky na délku hesla, a to v závislosti na použitém n
 * Mít méně znaků
 * Má horní znaky
 * Mít číslici
-* Má speciální znak (porovnávání regulárního výrazu [\W_])
+* Mají speciální znak (porovnávání regulárního výrazu [\ W_])
 
 Následující hesla nejsou povolena:
 

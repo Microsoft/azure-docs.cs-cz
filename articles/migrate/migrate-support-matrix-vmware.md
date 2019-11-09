@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 2a8a19dfd2cdc7a64a5ea90b96808963b19f73bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4b07252aed2205917f6b43e3e09a2877663e5bab
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498640"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838913"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Matice podpory pro vyhodnocení a migraci VMware
 
@@ -40,7 +40,7 @@ Tabulka shrnuje podporované scénáře pro virtuální počítače VMware.
 
 **Zeměpisné oblasti** | **Umístění úložiště metadat**
 --- | ---
-Azure Government | USA – Virginie
+Azure Government | USA (Gov) – Virginia
 Asie a Tichomoří | Východní Asie nebo jihovýchodní Asie
 Austrálie | Austrálie – východ nebo Austrálie – jihovýchod
 Brazílie | Brazílie – jih
@@ -112,7 +112,7 @@ dc.services.visualstudio.com | Nahrávat protokoly aplikací používané pro in
 *.servicebus.windows.net | Komunikace mezi zařízením a službou Azure Migrate.
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | Připojte se k adresám URL služby Azure Migrate.
 *.blob.core.windows.net | Nahrajte data do účtů úložiště.
-http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | Používá se k aktualizaci Azure Migrate zařízení.
+https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | Používá se k aktualizaci Azure Migrate zařízení.
 
 ## <a name="assessment-port-requirements"></a>Posouzení – požadavky na port
 
@@ -215,7 +215,7 @@ dc.services.visualstudio.com | Nahrávat protokoly aplikací používané pro in
 *.servicebus.windows.net | Komunikace mezi zařízením a službou Azure Migrate.
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | Připojte se k adresám URL služby Azure Migrate.
 *.blob.core.windows.net | Nahrajte data do účtů úložiště.
-http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | Používá se k aktualizaci Azure Migrate zařízení.
+https://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/download | Používá se k aktualizaci Azure Migrate zařízení.
 
 
 ## <a name="agentless-migration-port-requirements"></a>Migrace bez agentů – požadavky na porty
@@ -271,7 +271,7 @@ Role Windows Serveru | Nepovolujte tyto role: <br> – Active Directory Domain S
 Zásady skupiny | Nepovolujte tyto zásady skupiny: <br> – Zabraňte přístupu k příkazovému řádku. <br> – Zabraňte přístup k nástrojům pro úpravu registru. <br> – Logika vztahu důvěryhodnosti pro přílohy souborů. <br> -Zapnout provádění skriptu. <br> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | -Žádný předdefinovaný výchozí web <br> -Žádný existující web nebo aplikace nenaslouchá na portu 443. <br>-Povolit [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Povolit nastavení [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)
 **Nastavení sítě** |
-Typ IP adresy | Statický
+Typ IP adresy | Statická
 Porty | 443 (orchestrace řídicího kanálu)<br>9443 (přenos dat)
 Typ síťové karty | VMXNET3
 
@@ -326,7 +326,7 @@ Stažení a instalace v Azure Migrate | Po instalaci zařízení a zobrazení v�
 **NFS** | Svazky NFS připojené jako svazky na virtuálních počítačích se nebudou replikovat.
 cíle iSCSI | Virtuální počítače s cíli iSCSI nejsou podporované pro migraci bez agenta.
 **Multipath v/v** | Nepodporuje se.
-**VMotion úložiště** | Podporováno
+**VMotion úložiště** | Podporuje se
 **Seskupené síťové adaptéry** | Nepodporuje se.
 **Protokolů** | Nepodporuje se.
 
@@ -369,7 +369,7 @@ Všechny místní virtuální počítače replikované do Azure musí splňovat 
 Hostovaný operační systém | Ověřte podporované operační systémy pro [virtuální počítače VMware pomocí replikace bez agentů](#agentless-migration-vmware-vm-requirements)a pro [virtuální počítače VMware pomocí replikace založené na agentech](#agent-based-migration-vmware-vm-requirements).<br/> Můžete migrovat libovolné úlohy běžící v podporovaném operačním systému. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Architektura hostovaného operačního systému | 64-bit. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Velikost disku operačního systému | Až 2 048 GB. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-Počet disků operačního systému | 1\. místo | Pokud je tato operace Nepodporovaná, ověřte chybu.
+Počet disků operačního systému | 1 | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Počet datových disků | 64 nebo méně. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Velikost datového disku | Až 4 095 GB | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Síťové adaptéry | Podporuje se několik adaptérů. |
@@ -377,7 +377,7 @@ Sdílený virtuální pevný disk | Nepodporuje se. | Pokud je tato operace Nepo
 Disk FC | Nepodporuje se. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 BitLocker | Nepodporuje se. | Před povolením replikace pro počítač musí být BitLocker zakázán.
 název virtuálního počítače | Od 1 do 63 znaků.<br/> Pouze písmena, číslice a pomlčky.<br/><br/> Název počítače musí začínat a končit písmenem nebo číslicí. |  Aktualizujte hodnotu ve vlastnostech počítače v Site Recovery.
-Připojit po migraci – Windows | Připojení k virtuálním počítačům Azure s Windows po migraci:<br/> – Před migrací povolí RDP na místním virtuálním počítači. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je pro všechny profily povolený protokol RDP.<br/> V případě přístupu typu Site-to-site k síti VPN Povolte protokol RDP a Povolte protokol RDP v **bráně Windows Firewall** -> **povolené aplikace a funkce** pro **domény a privátní** sítě. Dále ověřte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](prepare-for-migration.md). |
+Připojit po migraci – Windows | Připojení k virtuálním počítačům Azure s Windows po migraci:<br/> – Před migrací povolí RDP na místním virtuálním počítači. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je pro všechny profily povolený protokol RDP.<br/> V případě přístupu typu Site-to-site k síti VPN Povolte protokol RDP a Povolte protokol RDP v **bráně Windows Firewall** -> **povolené aplikace a funkce** pro **domény a privátní** sítě. Dále ověřte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](prepare-for-migration.md) |
 Připojit po migraci – Linux | Připojení k virtuálním počítačům Azure po migraci pomocí SSH:<br/> Před migrací na místním počítači ověřte, že je služba Secure Shell nastavená na Start a že pravidla brány firewall umožňují připojení SSH.<br/> Po převzetí služeb při selhání povolte na virtuálním počítači Azure příchozí připojení k portu SSH pro pravidla skupiny zabezpečení sítě na virtuálním počítači, u kterého došlo k převzetí služeb při selhání, a pro podsíť Azure, ke které je připojený. Kromě toho přidejte veřejnou IP adresu pro virtuální počítač. |  
 
 

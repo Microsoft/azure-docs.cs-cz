@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: cd7b8c3de46cb88833f27cbebb7d07f944a711e4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 335e3c3ddabbf5bc267458fc1c55fef0e551583e
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580841"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833780"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a informace o konfiguraci Azure Logic Apps
 
@@ -77,11 +77,11 @@ Tady jsou omezení pro jeden běh aplikace logiky:
 
 | Název | škálování | Poznámky |
 | ---- | ----- | ----- |
-| Souběžnost triggeru | * Neomezeno, pokud je řízení souběžnosti vypnuto <p><p>* 25 je výchozím limitem při zapnutí řízení souběžnosti, které nelze vrátit zpět po zapnutí ovládacího prvku. Výchozí hodnotu můžete změnit na hodnotu v rozmezí 1 až 50 (včetně). | Toto omezení popisuje nejvyšší počet instancí aplikace logiky, které mohou běžet současně, nebo paralelně. <p><p>Pokud chcete změnit výchozí limit na hodnotu v rozmezí 1 až 50 (včetně), přečtěte si téma [Změna limitu souběžnosti triggeru](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) nebo [instancí triggerů postupně](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
+| Souběžnost triggeru | * Neomezeno, pokud je řízení souběžnosti vypnuto <p><p>* 25 je výchozím limitem při zapnutí řízení souběžnosti, které nelze vrátit zpět po zapnutí ovládacího prvku. Výchozí hodnotu můžete změnit na hodnotu v rozmezí 1 až 50 (včetně). | Toto omezení popisuje nejvyšší počet instancí aplikace logiky, které mohou běžet současně, nebo paralelně. <p><p>**Poznámka**: když je souběžnost zapnutá, limit SplitOn se signficantly na 100 položek pro [dedávkování polí](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). Pokud počet položek překročí tento limit, funkce SplitOn je zakázaná. <p><p>Pokud chcete změnit výchozí limit na hodnotu v rozmezí 1 až 50 (včetně), přečtěte si téma [Změna limitu souběžnosti triggeru](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) nebo [instancí triggerů postupně](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | Maximální počet čekajících spuštění | Když je řízení souběžnosti zapnuto, minimální počet čekajících spuštění je 10 plus počet souběžných spuštění (aktivační souběžnost). Maximální počet můžete změnit až na 100 včetně. | Toto omezení popisuje nejvyšší počet instancí aplikace logiky, které mohou čekat na spuštění, když aplikace logiky již používá maximální počet souběžných instancí. <p><p>Pokud chcete změnit výchozí limit, přečtěte si téma [Změna limitu čekání na spuštění](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
 | Položky pole foreach | 100 000 | Toto omezení popisuje nejvyšší počet položek pole, které může smyčka for each zpracovat. <p><p>Chcete-li filtrovat větší pole, můžete použít [akci dotazu](../connectors/connectors-native-query.md). |
 | Souběžnost foreach | 20 je výchozím limitem při vypnutém řízení souběžnosti. Výchozí hodnotu můžete změnit na hodnotu v rozmezí 1 až 50 (včetně). | Toto omezení je nejvyšší počet iterací smyčky for each, které lze spustit současně nebo paralelně. <p><p>Chcete-li změnit výchozí limit na hodnotu mezi 1 a 50, přečtěte si téma [Změna "pro každé" omezení souběžnosti](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) nebo [spuštění každé smyčky "pro každou" cyklicky](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
-| SplitOn položky | 100 000 | U triggerů, které vracejí pole, můžete zadat výraz, který používá vlastnost SplitOn, která [rozdělí nebo oddělí dávky polí pole do více instancí pracovního postupu](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) pro zpracování namísto použití smyčky "foreach". Tento výraz odkazuje na pole, které se má použít pro vytvoření a spuštění instance pracovního postupu pro každou položku pole. |
+| SplitOn položky | * 100 000 bez spouštěcí souběžnosti <p><p>* 100 s souběžnou aktivací | U triggerů, které vracejí pole, můžete zadat výraz, který používá vlastnost SplitOn, která [rozdělí nebo oddělí dávky polí pole do více instancí pracovního postupu](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) pro zpracování namísto použití smyčky "foreach". Tento výraz odkazuje na pole, které se má použít pro vytvoření a spuštění instance pracovního postupu pro každou položku pole. <p><p>**Poznámka**: když je souběžnost zapnutá, limit SplitOn se significanly. Pokud počet položek překročí tento limit, SplitOn je zakázané. |
 | Do iterací | 5 000 | |
 ||||
 
@@ -131,7 +131,7 @@ Azure Logic Apps podporuje přes bránu operace zápisu včetně vkládání a a
 
 Tady jsou omezení pro jeden požadavek HTTP nebo synchronní volání konektoru:
 
-#### <a name="timeout"></a>prodlev
+#### <a name="timeout"></a>Prodlev
 
 Některé operace konektoru provádějí asynchronní volání nebo naslouchání požadavkům Webhooku, takže časový limit těchto operací může být delší než tato omezení. Další informace najdete v technických podrobnostech ke konkrétnímu konektoru a také [triggery a akce pracovních postupů](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action).
 
@@ -293,7 +293,7 @@ IP adresy, které Azure Logic Apps používá pro příchozí a odchozí volán�
 | Austrálie – východ | 13.75.153.66, 52.187.231.161, 104.210.89.222, 104.210.89.244 |
 | Austrálie – jihovýchod | 13.73.115.153, 40.115.78.70, 40.115.78.237, 52.189.216.28 |
 | Brazílie – jih | 191.234.166.198, 191.235.86.199, 191.235.94.220, 191.235.95.229 |
-| Střední Kanada | 13.88.249.209, 40.85.241.105, 52.233.29.79, 52.233.30.218 |
+| Kanada – střed | 13.88.249.209, 40.85.241.105, 52.233.29.79, 52.233.30.218 |
 | Kanada – východ | 40.86.202.42, 52.229.125.57, 52.232.129.143, 52.232.133.109 |
 | Střed Indie | 52.172.157.194, 52.172.184.192, 52.172.191.194, 104.211.73.195 |
 | Střední USA | 13.67.236.76, 40.77.31.87, 40.77.111.254, 104.43.243.39 |
@@ -329,7 +329,7 @@ IP adresy, které Azure Logic Apps používá pro příchozí a odchozí volán�
 | Austrálie – východ | 13.75.149.4, 52.187.226.96, 52.187.226.139, 52.187.227.245, 52.187.229.130, 52.187.231.184, 104.210.90.241, 104.210.91.55 | 13.70.72.192 - 13.70.72.207, 13.72.243.10 |
 | Austrálie – jihovýchod | 13.70.159.205, 13.73.114.207, 13.77.3.139, 13.77.56.167, 13.77.58.136, 52.189.214.42, 52.189.220.75, 52.189.222.77 | 13.77.50.240 - 13.77.50.255, 13.70.136.174 |
 | Brazílie – jih | 191.234.161.28, 191.234.161.168, 191.234.162.131, 191.234.162.178, 191.234.182.26, 191.235.82.221, 191.235.91.7, 191.237.255.116 | 191.233.203.192 - 191.233.203.207, 104.41.59.51 | 
-| Střední Kanada | 13.71.184.150, 13.71.186.1, 40.85.250.135, 40.85.250.212, 40.85.252.47, 52.233.29.92, 52.228.39.241, 52.228.39.244 | 13.71.170.208 - 13.71.170.223, 13.71.170.224 - 13.71.170.239, 52.237.24.126 |
+| Kanada – střed | 13.71.184.150, 13.71.186.1, 40.85.250.135, 40.85.250.212, 40.85.252.47, 52.233.29.92, 52.228.39.241, 52.228.39.244 | 13.71.170.208 - 13.71.170.223, 13.71.170.224 - 13.71.170.239, 52.237.24.126 |
 | Kanada – východ | 40.86.203.228, 40.86.216.241, 40.86.217.241, 40.86.226.149, 40.86.228.93, 52.229.120.45, 52.229.126.25, 52.232.128.155 | 40.69.106.240 - 40.69.106.255, 52.242.35.152 |
 | Střed Indie | 52.172.154.168, 52.172.185.79, 52.172.186.159, 104.211.74.145, 104.211.90.162, 104.211.90.169, 104.211.101.108, 104.211.102.62 | 104.211.81.192 - 104.211.81.207, 52.172.211.12 |
 | Střední USA | 13.67.236.125, 23.100.82.16, 23.100.86.139, 23.100.87.24, 23.100.87.56, 40.113.218.230, 40.122.170.198, 104.208.25.27 | 13.89.171.80 - 13.89.171.95, 52.173.245.164 |

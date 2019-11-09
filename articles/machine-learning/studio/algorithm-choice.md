@@ -1,6 +1,6 @@
 ---
 title: Jak zvolit algoritmus
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Jak zvolit Azure Machine Learning Studio (klasické) algoritmy pro dohled nad clustery, klasifikací nebo regresních experimentech a jejich nedohledového studia.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 03/04/2019
-ms.openlocfilehash: e8d296f8752e06e6e47c349be9c900b9d0489ec5
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: c69b4c15397dc13f36a707f932c2464a4ff94ca7
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619762"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838472"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio-classic"></a>Postup výběru algoritmů pro Azure Machine Learning Studio (Classic)
 
