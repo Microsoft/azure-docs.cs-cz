@@ -10,12 +10,12 @@ ms.topic: conceptual
 description: Zkontrolujte a otestujte změny z žádosti o přijetí změn přímo ve službě Azure Kubernetes pomocí akcí GitHubu a Azure Dev Spaces.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, akce GitHubu, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 590d49f4c189ff48f20369d18b17e0f6e4a46fa2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 09dc9440628ac5d808f90d086bd88e4f90765c28
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571596"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889736"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Akce GitHubu & službě Azure Kubernetes (Preview)
 
@@ -92,16 +92,16 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 
 Přejděte do rozvětvené úložiště a klikněte na *Nastavení*. Na levém bočním panelu klikněte na *tajná klíčová* okna. Kliknutím na *Přidat nový tajný klíč* přidejte všechny nové tajné klíče:
 
-1. *AZURE_CREDENTIALS*: celý výstup z vytváření objektu služby.
+1. *AZURE_CREDENTIALS*: celý výstup z vytváření instančního objektu.
 1. *RESOURCE_GROUP*: Skupina prostředků pro cluster AKS, což je v tomto příkladu *MyResourceGroup*.
-1. *CLUSTER_NAME*: název vašeho clusteru AKS, který je v tomto příkladu *MyAKS*.
+1. *CLUSTER_NAME*: název clusteru AKS, který je v tomto příkladu *MyAKS*.
 1. *CONTAINER_REGISTRY*: *loginServer* pro ACR.
-1. *Hostitel*: hostitel pro vývojové místo, který má formu *< MASTER_SPACE >. < APP_NAME >. < HOST_SUFFIX >* , který je v tomto příkladu *dev.bikesharingweb.fedcab0987.EUS.azds.IO*.
-1. *HOST_SUFFIX*: přípona hostitele pro váš prostor pro vývoj, který je v tomto příkladu *fedcab0987.EUS.azds.IO*.
+1. *Hostitel*: hostitel pro vývojové místo, který má formu *< MASTER_SPACE >. < APP_NAME >. < HOST_SUFFIX >* , který v tomto příkladu je *dev.bikesharingweb.fedcab0987.EUS.azds.IO*.
+1. *HOST_SUFFIX*: přípona hostitele pro místo pro vývoj, která je v tomto příkladu *fedcab0987.EUS.azds.IO*.
 1. *IMAGE_PULL_SECRET*: název tajného klíče, který chcete použít, například *ukázkový tajný klíč*.
 1. *MASTER_SPACE*: název vašeho nadřazeného vývojového prostoru, který je v tomto příkladu *vývojem*.
 1. *REGISTRY_USERNAME*: *CLIENTID* z výstupu JSON z vytváření objektu služby.
-1. *REGISTRY_PASSWORD*: *CLIENTSECRET* z výstupu JSON z vytváření objektu služby.
+1. *REGISTRY_PASSWORD*: *CLIENTSECRET* z výstupu JSON z vytváření instančního objektu.
 
 > [!NOTE]
 > Všechny tyto tajné kódy používá akce GitHub a jsou nakonfigurované v [. GitHub/Workflows/Bikes. yml][github-action-yaml].
@@ -145,7 +145,7 @@ Pro vložení nové větve do rozvětvené úložiště použijte `git push`:
 git push origin bike-images
 ```
 
-Po dokončení nahrávání přejděte do rozvětvené úložiště na GitHubu a vytvořte žádost o přijetí změn s *vývojem* ve vašem rozvětvené úložišti jako základní větev v porovnání s větví *Bike-images* .
+Po dokončení nahrávání přejděte do rozvětvené úložiště na GitHubu a vytvořte žádost o přijetí změn s *Hlavní* větví ve vašem rozvětvené úložišti jako základní větev v porovnání s větví *Bike-images* .
 
 Po otevření žádosti o přijetí změn přejděte na kartu *Akce* . Ověřte, zda byla spuštěna nová akce a sestavuje službu *Bikes* .
 
@@ -158,7 +158,7 @@ Po dokončení akce se zobrazí komentář s adresou URL nového podřízeného 
 
 Přejděte do služby *bikesharingweb* tak, že otevřete adresu URL z komentáře. Jako uživatel vyberte *Aurelia Briggs (zákazník)* a pak vyberte kolo k pronajmutí. Ověřte, že se už nezobrazuje zástupný obrázek pro kolo.
 
-Pokud vaše změny sloučíte do *vývojové* větve, spustí se další akce, která znovu sestaví a spustí celou aplikaci v nadřazeném vývojovém prostoru. V tomto příkladu je nadřazená oblast určena pro *vývoj*. Tato akce je nakonfigurovaná ve [. GitHub/Workflows/bikesharing. yml][github-action-bikesharing-yaml].
+Pokud vaše změny sloučíte do *Hlavní* větve ve svém rozvětvení, spustí se další akce, která znovu sestaví a spustí celou aplikaci v nadřazeném vývojovém prostoru. V tomto příkladu je nadřazená oblast určena pro *vývoj*. Tato akce je nakonfigurovaná ve [. GitHub/Workflows/bikesharing. yml][github-action-bikesharing-yaml].
 
 ## <a name="clean-up-your-azure-resources"></a>Vyčištění prostředků Azure
 

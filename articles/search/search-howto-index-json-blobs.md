@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f8ddec95b92121c8dad4a39cf0c7b3f1798ec8ad
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 81e652b90831af0e1e20e716842b4e79f5606d05
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789507"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889881"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Indexování objektů BLOB JSON pomocí indexeru objektů BLOB v Azure Kognitivní hledání
 
@@ -65,17 +65,11 @@ Na stránce **zdroj dat** musí být ve zdroji **BLOB Storage Azure**, a to s n�
 
    ![Definice zdroje dat objektu BLOB](media/search-howto-index-json/import-wizard-json-data-source.png)
 
-### <a name="4---skip-the-add-cognitive-search-page-in-the-wizard"></a>4 – přeskočí stránku přidat vyhledávání rozpoznávání v průvodci.
+### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4 – přeskočí stránku "obohacení obsahu" v Průvodci
 
-Přidání dovedností rozpoznávání není nutné pro import dokumentu JSON. Pokud nemáte konkrétní nutnost [Přidat rozšíření AI](cognitive-search-concept-intro.md) do kanálu indexování, měli byste tento krok přeskočit.
+Přidání dovedností rozpoznávání (nebo obohacení) není požadavkem na import. Pokud nemáte konkrétní nutnost [Přidat rozšíření AI](cognitive-search-concept-intro.md) do kanálu indexování, měli byste tento krok přeskočit.
 
-Chcete-li tento krok přeskočit, nejprve přejděte na další stránku.
-
-   ![Tlačítko Další stránka pro hledání rozpoznávání](media/search-get-started-portal/next-button-add-cog-search.png)
-
-Z této stránky můžete přejít dopředu k přizpůsobení indexu.
-
-   ![Vynechání kroku kognitivních dovedností](media/search-get-started-portal/skip-cog-skill-step.png)
+Chcete-li tento krok přeskočit, klikněte na modré tlačítka v dolní části stránky pro možnost "Další" a "Přeskočit".
 
 ### <a name="5---set-index-attributes"></a>5\. nastavení atributů indexu
 
@@ -411,7 +405,7 @@ Přečtěte si náš ukázkový dokument JSON:
         }
     }
 
-Předpokládejme index vyhledávání s následujícími poli: `text` typu `Edm.String`, `date` typu `Edm.DateTimeOffset` a `tags` typu `Collection(Edm.String)`. Všimněte si rozdílu mezi "datePublished" v poli zdroj a `date` v indexu. K namapování JSON na požadovaný tvar použijte následující mapování polí:
+Předpokládejme index vyhledávání s následujícími poli: `text` typu `Edm.String`, `date` typu `Edm.DateTimeOffset`a `tags` typu `Collection(Edm.String)`. Všimněte si rozdílu mezi "datePublished" v poli zdroj a `date` v indexu. K namapování JSON na požadovaný tvar použijte následující mapování polí:
 
     "fieldMappings" : [
         { "sourceFieldName" : "/article/text", "targetFieldName" : "text" },
@@ -430,7 +424,7 @@ Můžete také odkazovat na jednotlivé prvky pole pomocí indexu založeného n
 >
 >
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 + [Indexery v Azure Kognitivní hledání](search-indexer-overview.md)
 + [Indexování služby Azure Blob Storage s využitím Azure Kognitivní hledání](search-howto-index-json-blobs.md)

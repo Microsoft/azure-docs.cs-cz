@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 457154a797a4b6d9853b1effe0d8121053653a99
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: cd16ee87b213c2bfa4c541c4d3c453a4499855d0
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174772"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887733"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps podporované styly mapy
 Azure Maps podporuje několik různých vestavěných stylů mapy, jak je popsáno níže.
@@ -31,10 +31,10 @@ Mapa **cest** je standardní mapa, která zobrazuje cesty, přirozené a umělé
 
 ## <a name="blank-and-blank_accessible"></a>prázdné a blank_accessible
 
-**Prázdné** a **blank_accessible** styly map poskytují prázdné plátno, na kterém se data vizualizují. Styl **blank_accessible** bude dál poskytovat aktualizace čtečky obrazovky s podrobnostmi o umístění, kde se mapa nachází, i když základní mapa není zobrazená.
+**Prázdné** a **blank_accessible** styly mapy poskytují prázdné plátno, na kterém se data vizualizují. Styl **blank_accessible** bude dál poskytovat aktualizace čtečky obrazovky s podrobnostmi o umístění, kde se mapa nachází, i když základní mapa není zobrazená.
 
 > [!Note]
-> V sadě web SDK můžete změnit barvu pozadí mapy nastavením stylu šablon stylů CSS `background-color` elementu DIV mapy.
+> V sadě web SDK můžete změnit barvu pozadí mapy nastavením stylu CSS `background-color` stylu elementu DIV mapy.
 
 **Platná rozhraní API:**
 * Mapový ovládací prvek sady web SDK
@@ -103,4 +103,4 @@ Tento styl mapy je hybridem cest a popisků, které se překrývají na družico
 Přečtěte si, jak nastavit styl mapy v Azure Maps:
 
 > [!div class="nextstepaction"]
-> [Zvolit styl mapy](https://docs.microsoft.com/en-us/azure/azure-maps/choose-map-style)
+> [Zvolit styl mapy](https://docs.microsoft.com/azure/azure-maps/choose-map-style)

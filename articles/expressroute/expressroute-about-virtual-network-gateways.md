@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 8860a297332a3572890ceb4c843040f530b8a897
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f12f92294a9c30ddedea3c433ff65de4a635fd4d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935540"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889655"
 ---
 # <a name="expressroute-virtual-network-gateway-and-fastpath"></a>Brána virtuální sítě ExpressRoute a FastPath
 Pokud chcete připojit virtuální síť Azure a místní síť přes ExpressRoute, musíte nejdřív vytvořit bránu virtuální sítě. Brána virtuální sítě slouží ke dvěma účelům: Exchange IP trasy mezi sítěmi a směrování síťového provozu. Tento článek vysvětluje typy bran, SKU brány a odhadovaný výkon podle SKU. Tento článek také vysvětluje ExpressRoute [FastPath](#fastpath), funkci, která umožňuje síťovému provozu z vaší místní sítě obejít bránu virtuální sítě, aby se zlepšil výkon.
@@ -34,7 +34,7 @@ Každá virtuální síť může mít pouze jednu bránu virtuální sítě pro 
 Pokud chcete bránu upgradovat na výkonnější SKU brány, ve většině případů můžete použít rutinu prostředí PowerShell změny velikosti AzVirtualNetworkGateway. To bude fungovat pro upgrady na standardní a HighPerformance SKU. Pokud ale chcete upgradovat na UltraPerformance SKU, budete muset bránu znovu vytvořit. Opětovné vytvoření brány má za následek výpadky.
 
 ### <a name="aggthroughput"></a>Odhadované výkony podle SKU brány
-V následující tabulce jsou uvedeny typy bran a odhadované výkony. Tato tabulka platí pro model nasazení Resource Manager i pro klasický model.
+V následující tabulce jsou uvedeny typy bran a odhadované výkony. Tato tabulka platí pro model nasazení Resource Manager a pro model nasazení Classic.
 
 [!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
 
@@ -85,7 +85,7 @@ FastPath je k dispozici na všech okruhech ExpressRoute. Ještě vyžaduje vytvo
 FastPath nepodporuje následující funkce:
 * UDR v podsíti brány: Pokud použijete UDR k podsíti brány vaší virtuální sítě, bude se síťový provoz z vaší místní sítě dál posílat do brány virtuální sítě.
 * Partnerský vztah virtuálních sítí: Pokud máte jiné virtuální sítě s partnerským vztahem, který je připojený k ExpressRoute síťového provozu z vaší místní sítě do ostatních virtuálních sítí (tj. virtuální sítě), bude se dál posílat do virtuální sítě. brány. Alternativním řešením je připojit všechny virtuální sítě k okruhu ExpressRoute přímo.
-* Základní Load Balancer: Pokud nasadíte základní interní nástroj pro vyrovnávání zatížení ve vaší virtuální síti nebo ve službě Azure PaaS, kterou nasadíte ve vaší virtuální síti, použijete základní interní nástroj pro vyrovnávání zatížení, síťový provoz z vaší místní sítě na virtuální IP adresy hostované na Do brány virtuální sítě se pošle základní nástroj pro vyrovnávání zatížení. Řešením je upgradovat základní nástroj pro vyrovnávání zatížení na [standardní nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview).
+* Základní Load Balancer: Pokud nasadíte základní interní nástroj pro vyrovnávání zatížení ve vaší virtuální síti nebo ve službě Azure PaaS, kterou nasadíte ve vaší virtuální síti, použijete základní interní nástroj pro vyrovnávání zatížení, síťový provoz z vaší místní sítě na virtuální IP adresy hostované na Do brány virtuální sítě se pošle základní nástroj pro vyrovnávání zatížení. Řešením je upgradovat základní nástroj pro vyrovnávání zatížení na [standardní nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview).
 * Privátní odkaz: Pokud se připojíte k [privátnímu koncovému bodu](../private-link/private-link-overview.md) ve virtuální síti z místní sítě, připojení projde bránou virtuální sítě.
  
 ## <a name="resources"></a>Rozhraní REST API a rutiny PowerShellu

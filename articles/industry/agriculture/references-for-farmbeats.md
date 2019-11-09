@@ -5,18 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 8e8e4524034f0a296045691309b065f8547bdaa0
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 057037807a75e50eb2305bfab19d1fcff7fe77ce
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797696"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889598"
 ---
 # <a name="references"></a>Odkazy
 
 Níže jsou uvedeny poznámky a pokyny, které popisují rozhraní API služby Azure FarmBeats.
 
-## <a name="rest-api"></a>Rozhraní REST API
+## <a name="rest-api"></a>REST API
 
 Rozhraní API Azure FarmBeats poskytují zemědělský podnik standardizovaným rozhraním RESTful s odpověďmi založenými na standardu JSON, které vám pomůžou využít možnosti Azure FarmBeats:
 
@@ -39,7 +39,7 @@ Zařízení  | Zařízení odpovídá fyzickému zařízení přítomnému ve fa
 deviceModel  | DeviceModel odpovídá metadatům zařízení, jako je výrobce, typ zařízení buď bránu, nebo uzel.
 Elektrické  | Senzor odpovídá fyzickému senzoru, který zaznamenává hodnoty. Senzor se obvykle připojuje k zařízení s ID zařízení.
 SensorModel  | SensorModel odpovídá meta údajům snímačů, jako je výrobce, typ snímače buď analogového, nebo digitálního, měření senzorů, jako je okolní teplota, tlak atd.
-Telemetrie  | Telemetrie nabízí možnost číst zprávy telemetrie pro určitý senzor a časový rozsah.
+Telemetrická data  | Telemetrie nabízí možnost číst zprávy telemetrie pro určitý senzor a časový rozsah.
 Úloha  | Úloha odpovídá jakémukoli pracovnímu postupu aktivity, který se spustí v systému FarmBeats, aby získal požadovaný výstup. Každá úloha je přidružená k ID úlohy a typu úlohy.
 JobType  | JobType odpovídá různým typům úloh, které systém podporuje. To zahrnuje systémy definované & uživatelsky definované typy úloh.
 ExtendedType  | ExtendedType odpovídá seznamu systémových & uživatelsky definované typy v systému. To pomáhá nastavit nový senzor nebo scén nebo Scenefile typ v systému FarmBeats.
@@ -85,7 +85,7 @@ Adresa URL služby API je vaše adresa URL centra dat https://\<yourdatahub-webs
 
 Níže uvedená ukázková žádost slouží k získání seznamu zařízení:
 
-```
+```azurepowershell-interactive
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
 ```
 
@@ -108,7 +108,6 @@ Například při dotazování na seznam zařízení (volání GET na/Device) je 
 
 Rozhraní API služby Azure FarmBeats data hub vrací standardní chyby protokolu HTTP. Nejběžnější kódy chyb jsou následující:
 
-
  |Kód chyby             | Popis |
  |---                    | --- |
  |200                    | Úspěch |
@@ -121,29 +120,29 @@ Rozhraní API služby Azure FarmBeats data hub vrací standardní chyby protokol
 
 Kromě standardních chyb HTTP vrátí rozhraní API služby Azure FarmBeats data hub také interní chyby v následujícím formátu:
 
-```
-{
-  "message": "<More information on the error>",
-  "status": "<error code>”,
-  "code": "<InternalErrorCode>",
-  "moreInfo": "<Details of the error>"
-}
-```
+    ```
+    {
+      "message": "<More information on the error>",
+      "status": "<error code>”,
+      "code": "<InternalErrorCode>",
+      "moreInfo": "<Details of the error>"
+    }
+    ```
 
 Příklad: při vytváření farmy nebyla ve vstupní datové části zadána povinná pole "Name". Výsledná chybová zpráva by byla:
 
-```
-{
-  "message": "Model validation failed",
-  "status": 400,
-  "code": "ModelValidationFailed",
-  "moreInfo": "[\"The Name field is required.\"]"
-}
-```
+    ```json
+    {
+      "message": "Model validation failed",
+      "status": 400,
+      "code": "ModelValidationFailed",
+      "moreInfo": "[\"The Name field is required.\"]"
+    }
+    ```
 
 ## <a name="adding-users-or-app-registrations-to-azure-active-directory"></a>Přidávání uživatelů nebo registrace aplikací do Azure Active Directory
 
- K rozhraním API služby Azure FarmBeats se dá přistup uživatel nebo registrace aplikace v Azure Active Directory. Pokud chcete na svém Azure Active Directory vytvořit registraci aplikace, postupujte podle následujících kroků:  
+K rozhraním API služby Azure FarmBeats se dá přistup uživatel nebo registrace aplikace v Azure Active Directory. Pokud chcete na svém Azure Active Directory vytvořit registraci aplikace, postupujte podle následujících kroků:  
 
 1. Přejít na [Azure Portal](https://portal.azure.com) **Azure Active Directory, registrace aplikací**> **nové registrace**. Případně můžete použít existující účet.
 2. Pro nový účet se ujistěte, že jste dokončili následující kroky:

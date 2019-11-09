@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 41da5b59c7d9429a068ecd483aa96edb1141b727
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 0657d3d5aec414b867e85b627fcf77174c8ce789
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719963"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889894"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Jak indexovat data Cosmos DB pomocí indexeru v Azure Kognitivní hledání 
 
@@ -78,17 +78,11 @@ Na stránce **zdroj dat** musí být zdroj **Cosmos DB**, a to s následujícím
 
    ![Cosmos DB definice zdroje dat](media/search-howto-index-cosmosdb/cosmosdb-datasource.png "Cosmos DB definice zdroje dat")
 
-### <a name="4---skip-the-add-cognitive-search-page-in-the-wizard"></a>4 – přeskočí stránku přidat vyhledávání rozpoznávání v průvodci.
+### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4 – přeskočí stránku "obohacení obsahu" v Průvodci
 
-Přidání dovedností rozpoznávání není pro import dokumentu nutné. Pokud nemáte konkrétní nutnost [Přidat rozšíření AI](cognitive-search-concept-intro.md) do kanálu indexování, měli byste tento krok přeskočit.
+Přidání dovedností rozpoznávání (nebo obohacení) není požadavkem na import. Pokud nemáte konkrétní nutnost [Přidat rozšíření AI](cognitive-search-concept-intro.md) do kanálu indexování, měli byste tento krok přeskočit.
 
-Chcete-li tento krok přeskočit, nejprve přejděte na další stránku.
-
-   ![Tlačítko Další stránka pro přidání dovedností](media/search-get-started-portal/next-button-add-cog-search.png)
-
-Z této stránky můžete přejít dopředu k přizpůsobení indexu.
-
-   ![Vynechání kroku kognitivních dovedností](media/search-get-started-portal/skip-cog-skill-step.png)
+Chcete-li tento krok přeskočit, klikněte na modré tlačítka v dolní části stránky pro možnost "Další" a "Přeskočit".
 
 ### <a name="5---set-index-attributes"></a>5\. nastavení atributů indexu
 

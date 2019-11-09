@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
-ms.openlocfilehash: 217a1d94a4a5235fc5886f34986ffcb3aef60873
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/07/2019
+ms.openlocfilehash: f2479d9f3e278d23d62275b667f78d1fd70dd151
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949255"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889691"
 ---
 # <a name="routing-events-and-messages"></a>Směrování událostí a zpráv
 
@@ -29,9 +29,11 @@ Funkce digitálních vláken Azure nabízí dva způsoby, jak propojit události
 
 Uživatelé mohou zadat jeden nebo více koncových bodů odchozích zpráv pro odeslání událostí nebo přeposílat zprávy. Události a zprávy budou odesílány do koncových bodů podle těchto předdefinovaných předvoleb směrování. Jinými slovy uživatelé můžou určit určitý koncový bod pro příjem událostí operací grafu, další pro příjem událostí telemetrie zařízení a tak dále.
 
-[Směrování událostí digitálních vláken @no__t 1Azure](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
+[Směrování událostí ![digitálních vláken Azure](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
 
-Směrování do Event Hubs udržuje pořadí, ve kterém se odesílají zprávy telemetrie. Proto dorazí na koncový bod ve stejném pořadí, ve kterém byly původně přijaty. Event Grid a Service Bus nezaručují, že koncové body budou přijímat události ve stejném pořadí, ve kterém se objevily. Schéma událostí však zahrnuje časové razítko, které lze použít k identifikaci pořadí po doručení událostí do koncového bodu.
+Směrování do Event Hubs udržuje pořadí, ve kterém se odesílají zprávy telemetrie. Proto dorazí na koncový bod ve stejném pořadí, ve kterém byly původně přijaty. 
+
+Event Grid a Service Bus nezaručují, že koncové body budou přijímat události ve stejném pořadí, ve kterém se objevily. Schéma událostí však zahrnuje časové razítko, které lze použít k identifikaci pořadí po doručení událostí do koncového bodu.
 
 ## <a name="route-implementation"></a>Implementace trasy
 
@@ -55,9 +57,9 @@ Digitální vlákna Azure v současné době podporují následující **EventTy
 
 |             | DeviceMessages | TopologyOperation | SpaceChange | SensorChange | UdfCustom |
 | ----------- | -------------- | ----------------- | ----------- | ------------ | --------- |
-| EventHub|     X          |         X         |     X       |      X       |   X       |
-| ServiceBus|              |         X         |     X       |      X       |   X       |
-| EventGrid|               |         X         |     X       |      X       |   X       |
+| Centrum událostí|     ×          |         ×         |     ×       |      ×       |   ×       |
+| ServiceBus|              |         ×         |     ×       |      ×       |   ×       |
+| EventGrid|               |         ×         |     ×       |      ×       |   ×       |
 
 >[!NOTE]  
 >Další informace o vytváření koncových bodů a příkladů "schématu událostí" najdete v tématu [výstupní informace a koncové body](how-to-egress-endpoints.md).

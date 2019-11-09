@@ -1,7 +1,7 @@
 ---
 title: Referenční dokumentace k Translator Text API V 3.0
 titleSuffix: Azure Cognitive Services
-description: Referenční dokumentace pro Translator Text API V 3.0
+description: Referenční dokumentace pro Translator Text API V 3.0 Verze 3 Translator Text API poskytuje moderní webové rozhraní API založené na formátu JSON.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: a441ca83230a1c715aadda79683964aaab6d6213
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: c07673e7b170170de4723a1232d2e7281feaaf99
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72252968"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888079"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v 3.0
 
-## <a name="whats-new"></a>Co je nového
+## <a name="whats-new"></a>Co je nového?
 
 Verze 3 Translator Text API poskytuje moderní webové rozhraní API založené na formátu JSON. Zlepšuje použitelnost a výkon tím, že konsoliduje stávající funkce do menšího počtu operací a poskytuje nové funkce.
 
@@ -41,7 +41,7 @@ Požadavky na Microsoft Translator Text API jsou ve většině případů zpraco
 
 Pokud chcete vynutit zpracování žádosti konkrétními geografickými oblastmi Azure, změňte globální koncový bod v požadavku rozhraní API na požadovaný oblastní koncový bod:
 
-|Description|Geografické Azure|Základní adresa URL|
+|Popis|Geografické Azure|Základní adresa URL|
 |:--|:--|:--|
 |Azure|Globální (mimo oblast)|   api.cognitive.microsofttranslator.com|
 |Azure|Spojené státy|   api-nam.cognitive.microsofttranslator.com|
@@ -54,7 +54,7 @@ Přihlaste se k odběru služby Translator Text API nebo [Cognitive Services](ht
 
 K ověření předplatného můžete použít tři hlavičky. Tato tabulka popisuje, jak se používají jednotlivé tyto funkce:
 
-|Hlavičky|Description|
+|Hlavičky|Popis|
 |:----|:----|
 |OCP-APIM-Subscription-Key|Pokud předáváte *tajný klíč, použijte u předplatného Cognitive Services*.<br/>Hodnota je tajný klíč Azure pro vaše předplatné Translator Text API.|
 |Autorizace|*Pokud předáváte ověřovací token, použijte u předplatného Cognitive Services.*<br/>Hodnota je nosný token: `Bearer <token>`.|
@@ -64,9 +64,9 @@ K ověření předplatného můžete použít tři hlavičky. Tato tabulka popis
 První možností je ověřit pomocí hlavičky `Ocp-Apim-Subscription-Key`. Přidejte do žádosti hlavičku `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>`.
 
 ### <a name="authorization-token"></a>Autorizační token
-Alternativně můžete pro přístupový token vyměňovat svůj tajný klíč. Tento token je součástí každé žádosti jako hlavička `Authorization`. Pokud chcete získat autorizační token, udělejte na následující adrese URL požadavek `POST`:
+Alternativně můžete pro přístupový token vyměňovat svůj tajný klíč. Tento token je součástí každé žádosti jako `Authorization` záhlaví. Pokud chcete získat autorizační token, udělejte `POST` požadavek na následující adresu URL:
 
-| Hlediska     | Adresa URL ověřovací služby                                |
+| Prostředí     | Adresa URL ověřovací služby                                |
 |-----------------|-----------------------------------------------------------|
 | Azure           | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
 
@@ -98,7 +98,7 @@ Když použijete tajný klíč s více službami, musíte do své žádosti zahr
 
 Pro předplatné rozhraní API pro více služeb text je vyžadována oblast. Oblast, kterou jste vybrali, je jediná oblast, kterou můžete použít pro překlad textu při použití klíče předplatného s více službami a musí se jednat o stejnou oblast, jakou jste zvolili při registraci k předplatnému více služeb prostřednictvím Azure Portal.
 
-Dostupné oblasti jsou `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centralus`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `francecentral`, 0, 2, 3, 4, 5, 6, 8, 9, 0 @no__t t-21 a 2.
+Dostupné oblasti jsou `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centralus`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `japaneast`, `japanwest`, `koreacentral`, `northcentralus`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, `westus2`a `southafricanorth`.
 
 Pokud předáte tajný klíč v řetězci dotazu s parametrem `Subscription-Key`, je nutné zadat oblast s parametrem dotazu `Subscription-Region`.
 
@@ -124,7 +124,7 @@ Například zákazník s bezplatným zkušebním předplatným může po vyčerp
 ```
 Kód chyby je číslo na 6 číslic, ve kterém se kombinují stavový kód HTTP s kódem, za nímž následuje 3 číslice a další kategorizace chyby. Běžné kódy chyb:
 
-| Kód | Description |
+| Kód | Popis |
 |:----|:-----|
 | 400000| Jeden ze vstupů požadavku není platný.|
 | 400001| Parametr scope je neplatný.|

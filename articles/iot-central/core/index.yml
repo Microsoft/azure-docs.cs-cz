@@ -10,90 +10,88 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: 2bf497152f17796011abba04d39a6a1ad1d7bdd9
-  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.openlocfilehash: ff8f5772880f047bbe0b0d798c944b38da486468
+  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73583192"
+  ms.lasthandoff: 11/09/2019
+  ms.locfileid: "73888800"
 landingContent:
 - title: Informace o službě Azure IoT Central
   linkLists:
   - linkListType: overview
     links:
     - text: Co je Azure IoT Central?
-      url: overview-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: overview-iot-central.md
     - text: Možnosti řešení IoT
-      url: overview-iot-central-tour-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: overview-iot-central-tour.md
     - text: Prohlídka uživatelského rozhraní
-      url: overview-iot-central-tour-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: overview-iot-central-tour.md
   - linkListType: architecture
     links:
     - text: Architektura služby Azure IoT Central
-      url: concepts-architecture-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: concepts-architecture.md
   - linkListType: quickstart
     links:
     - text: Vytvoření nové aplikace
-      url: quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: quick-deploy-iot-central.md
 - title: Připojování
   linkLists:
   - linkListType: tutorial
     links:
     - text: Nastavení šablony zařízení
-      url: howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: howto-set-up-template.md
     - text: Připojení zařízení IoT Plug and Play
-      url: tutorial-add-device.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: tutorial-add-device.md
   - linkListType: how-to-guide
     links:
     - text: Příprava a připojení sady MX Chip IoT DevKit
-      url: howto-connect-devkit-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: howto-connect-devkit.md
     - text: Připojení dalších cloudů IoT
       url: howto-build-iotc-device-bridge.md
 - title: Stálé připojení
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Použití skupin zařízení
-      url: tutorial-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Použití sad zařízení
+      url: howto-use-device-sets.md
   - linkListType: how-to-guide
     links:
     - text: správu zařízení
-      url: howto-manage-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: howto-manage-devices.md
     - text: Spuštění úlohy
-      url: howto-run-a-job.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: howto-run-a-job.md
     - text: Analýza dat zařízení
-      url: howto-create-analytics.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: howto-create-analytics.md
 - title: Transformace
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Vytvoření pravidla
-      url: quick-configure-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - text: Vytvoření pravidel telemetrie
-      url: tutorial-create-telemetry-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: howto-create-telemetry-rules.md
     - text: Export do Blob Storage
-      url: howto-export-data-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: howto-export-data-blob-storage.md
   - linkListType: how-to-guide
     links:
     - text: Vytvoření vlastních rolí
-      url: howto-create-custom-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: howto-create-custom-rules.md
     - text: Vytvoření vlastní analýzy
-      url: howto-create-custom-analytics-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: howto-create-custom-analytics.md
 - title: Správa
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Správa vaší aplikace
-      url: howto-administer-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: howto-administer.md
     - text: Správa uživatelů a skupin
-      url: howto-manage-users-roles-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: howto-manage-users-roles.md
     - text: Zobrazení vašeho vyúčtování
-      url: howto-view-bill-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: howto-view-bill.md
     - text: Přizpůsobení uživatelského rozhraní aplikací
-      url: howto-customize-ui-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: howto-customize-ui.md
     - text: Konfigurace osobních řídicích panelů
-      url: howto-create-personal-dashboards.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: howto-create-personal-dashboards.md
     - text: Použití dlaždic řídicího panelu
-      url: howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: howto-add-tiles-to-your-dashboard.md
     - text: Použití šablon aplikací
-      url: howto-use-app-templates-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      url: howto-use-app-templates.md

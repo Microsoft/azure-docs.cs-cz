@@ -10,19 +10,18 @@ ms.topic: overview
 description: Úvod do Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: e166cb9368a14590cbeaabda05d05696032dd94f
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: c87aee26f5f9a4c3f919150a22a8b2f5a7b57352
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73061312"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889754"
 ---
 # <a name="azure-dev-spaces"></a>Azure Dev Spaces
 
-Azure Dev Spaces je rychlé a iterativní vývojové prostředí Kubernetes pro týmy v clusterech Azure Kubernetes Service (AKS). Ve sdíleném clusteru AKS můžete spolupracovat se svým týmem. Azure Dev Spaces také umožňuje testovat všechny součásti aplikace v AKS bez replikování nebo napodobování závislostí. Můžete iterativní spouštění a ladění kontejnerů přímo v AKS s minimálním nastavením vývojového počítače.
+Azure Dev Spaces poskytuje rychlé a iterativní vývojové prostředí Kubernetes pro týmy v clusterech Azure Kubernetes Service (AKS). Azure Dev Spaces také umožňuje ladit a testovat všechny součásti aplikace v AKS s minimálním nastavením vývojového počítače, aniž by se musely replikovat nebo napodobovat závislosti.
 
 ![](media/azure-dev-spaces/collaborate-graphic.gif)
-
 
 ## <a name="how-azure-dev-spaces-simplifies-kubernetes-development"></a>Jak Azure Dev Spaces zjednodušuje vývoj na platformě Kubernetes
 
@@ -43,7 +42,7 @@ Další informace o tom, jak Azure Dev Spaces funguje, najdete v tématu [Jak fu
 
 ## <a name="supported-regions-and-configurations"></a>Podporované oblasti a konfigurace
 
-Azure Dev Spaces podporuje jenom clustery AKS ve **východní USA**, **východní USA 2**, **střed USA**, **střed USA – jih**, **západní USA 2**, **Severní Evropa**, **západní Evropa**, **Velká Británie – jih**, **východní Asie**,  **Jihovýchodní Asie**, **Austrálie – východ**, **Kanada – střed**a **Kanada – východ** . Azure Dev Spaces podporuje použití [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo editoru [Visual Studio Code](https://code.visualstudio.com/download) s [rozšířením Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) nainstalovaným v systému Linux, MacOS nebo Windows 8 nebo novějším pro sestavování a provoz vašich aplikací v AKS. Podporuje také používání sady [Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) nainstalované ve Windows 8 nebo novějším. V případě sady Visual Studio 2019 budete potřebovat úlohu vývoj pro Azure. V případě sady Visual Studio 2017 budete potřebovat úlohu vývoje webu a [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools).
+Azure Dev Spaces podporuje jenom clustery AKS v rámci **východní USA**, **východní USA 2**, **střed USA**, **střed USA – jih**, **západní USA 2**, **Severní Evropa**, **západní Evropa**, **Velká Británie – jih**, **východní Asie**, **jihovýchodní Asie**, Austrálie – **východ**, **Kanada – střed**a **Kanada – východ** . Azure Dev Spaces podporuje použití [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo editoru [Visual Studio Code](https://code.visualstudio.com/download) s [rozšířením Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) nainstalovaným v systému Linux, MacOS nebo Windows 8 nebo novějším pro sestavování a provoz vašich aplikací v AKS. Podporuje také používání sady [Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) nainstalované ve Windows 8 nebo novějším. V případě sady Visual Studio 2019 budete potřebovat úlohu vývoj pro Azure. V případě sady Visual Studio 2017 budete potřebovat úlohu vývoje webu a [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools).
 
 ## <a name="next-steps"></a>Další kroky
 

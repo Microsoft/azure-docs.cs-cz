@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6fc70b55b3e672ecc67eb1145bb751de33d998a1
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: e6bd9b5c09e1af5ec587e1f0e52ab25d21d2293b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847441"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889617"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Ingestovat historická data telemetrie
 
@@ -50,11 +50,14 @@ Vygenerujte je podle následujících kroků:
 
     ![Beats farmy projektu](./media/for-tutorials/power-shell-two-1.png)
 
-5. Přejít do adresáře, kam se nahrály soubory (ve výchozím nastavení se nahrají do domovského adresáře/home/username/.
+5. Přejít do adresáře, kam se nahrály soubory
+
+   >[!NOTE]
+   > Ve výchozím nastavení se soubor odešle do domovského adresáře/home/username/.
 6. Spusťte skript pomocí příkazu:  
 
     ```azurepowershell-interactive
-    PS> ./generateCredentials.ps1
+    ./generateCredentials.ps1
     ```
 
 7. Dokončete postup podle pokynů na obrazovce.
@@ -77,7 +80,7 @@ Vygenerujte je podle následujících kroků:
 |          Výrobce            |         2 hvězdičky     |
 |  ProductCode                    |  Kód produktu zařízení nebo název/číslo modelu. Například EnviroMonitor # 6800.  |
 |            Porty          |     Název a typ portu (digitální/analogový)
-|     Název                 |  Název, který identifikuje prostředek. Například název modelu/název produktu.
+|     Name (Název)                 |  Název, který identifikuje prostředek. Například název modelu/název produktu.
       Popis     | Zadejte smysluplný popis modelu.
 |    Vlastnosti          |    Další vlastnosti od výrobce   |
 |    **Zařízení**             |                      |
@@ -86,7 +89,7 @@ Vygenerujte je podle následujících kroků:
 |  ReportingInterval        |   Interval generování sestav v sekundách
 |  Umístění            |  Zeměpisná šířka zařízení (-90 až + 90)/longitude (-180 až 180)/Elevation (v metrech)   
 |ParentDeviceId       |    ID nadřazeného zařízení, ke kterému je připojeno toto zařízení Například uzel připojený k bráně. Uzel bude mít parentDeviceId jako bránu.  |
-|    Název            | Název, který identifikuje prostředek. Partneři zařízení musí odeslat název, který je konzistentní s názvem zařízení na straně partnera. Pokud je název partnerského zařízení definovaný uživatelem, je potřeba rozšířit stejný uživatelsky definovaný název na FarmBeats.|
+|    Name (Název)            | Název, který identifikuje prostředek. Partneři zařízení musí odeslat název, který je konzistentní s názvem zařízení na straně partnera. Pokud je název partnerského zařízení definovaný uživatelem, je potřeba rozšířit stejný uživatelsky definovaný název na FarmBeats.|
 |     Popis       |      Zadejte smysluplný popis.  |
 |     Vlastnosti    |  Další vlastnosti od výrobce
 |     **Model senzorů**        |          |
@@ -98,16 +101,16 @@ Vygenerujte je podle následujících kroků:
 |    Typ > sensorMeasures    |Typ měření dat telemetrie senzorů. Níže jsou uvedené typy systému: AmbientTemperature, CO2, Hloubka, ElectricalConductivity, LeafWetness, Length, LiquidLevel, dusičnan, O2, PH, fosforečnan, PointInTime, draselný, tlak, RainGauge, RelativeHumidity, slanost, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, evapotranspiration, PAR. Pokud chcete přidat další informace, podívejte se na/ExtendedType API.|
 |        Jednotka > SensorMeasures              | Jednotka dat telemetrie snímačů. Níže jsou uvedené jednotky definované systémem: jednotka jednotek, Celsia, Fahrenheita, Kelviny, Rankine, Pascal, rtuť, Psí, milimetry, centimetry, měřiče, palce, nohy, míle, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, stupeň, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, procenta, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, litr, MilliLiter, sekundy, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour, další informace najdete na/ Rozhraní ExtendedType API.|
 |    SensorMeasures > aggregationType    |  Hodnoty mohou být None, Average, Max, minima nebo StandardDeviation.  |
-|          Název            | Název, který identifikuje prostředek. Například název modelu/název produktu.  |
+|          Name (Název)            | Název, který identifikuje prostředek. Například název modelu/název produktu.  |
 |    Popis        | Zadejte smysluplný popis modelu.  |
 |   Vlastnosti       |  Další vlastnosti od výrobce  |
 |    **Elektrické**      |          |
 | hardwareId          |   Jedinečné ID pro senzory nastavené výrobcem |
-|  sensorModelId     |    ID přidruženého modelu senzoru   |
+|  SensorModelId     |    ID přidruženého modelu senzoru   |
 | location          |  Zeměpisná šířka (-90 až + 90)/longitude (-180 až 180)/Elevation (v metrech)|
 |   název > portu        |  Název a typ portu, ke kterému je senzor připojen na zařízení. Tento název musí být stejný jako definovaný v modelu zařízení. |
 |    DeviceID  |    ID zařízení, ke kterému je senzor připojený     |
-| Název            |   Název, který identifikuje prostředek. Například název snímače/název produktu a číslo modelu/kód produktu.|
+| Name (Název)            |   Název, který identifikuje prostředek. Například název snímače/název produktu a číslo modelu/kód produktu.|
 |    Popis      | Zadejte smysluplný popis. |
 |    Vlastnosti        |Další vlastnosti od výrobce |
 
@@ -127,7 +130,9 @@ FarmBeats data hub používá ověřování pomocí nosiče, které potřebuje n
 
 Pomocí výše uvedených přihlašovacích údajů může volající požádat o přístupový token, který se musí poslat v následujících žádostech o rozhraní API v části záhlaví, jak je znázorněno níže:
 
-Headers = *{"Authorization": "nosič" + access_token,...}*
+```
+headers = *{"Authorization": "Bearer " + access_token, …}*
+```
 
 **Hlavičky požadavku HTTP**:
 
@@ -161,8 +166,10 @@ Tady jsou nejčastější hlavičky požadavků, které je potřeba zadat při v
     "additionalProp3": {}
   }
 }
+```
 
-Device
+Zařízení
+
 ```json
 {
   "deviceModelId": "string",
@@ -242,7 +249,7 @@ Elektrické
 ```
 Níže uvedená ukázková žádost slouží k vytvoření zařízení (obsahuje vstupní JSON jako datovou část s textem žádosti).  
 
-```
+```azurepowershell-interactive
 curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
 "accept: application/json" -H  "Content-Type: application/json" -H
 "Authorization: Bearer <Access-Token>" -d "
@@ -266,6 +273,7 @@ Pro zpracování musíte odeslat telemetrii do Azure Event hub. Azure EventHub j
 
 Jakmile máte připojení navázané jako klient EventHub, můžete odesílat zprávy na EventHub jako JSON.  
 Převeďte historický formát dat ze senzorů na Kanonický formát, který Azure FarmBeats rozumí. Formát kanonické zprávy je následující:  
+
 
 
  ```

@@ -2,18 +2,18 @@
 title: Vytvoření indexu vyhledávání v Azure Portal
 titleSuffix: Azure Cognitive Search
 description: Průvodce importem dat slouží k vytvoření, načtení a dotazování prvního indexu vyhledávání v Azure Kognitivní hledání.
-author: lobrien
+author: HeidiSteen
 manager: nitinme
-ms.author: laobri
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 502177519c0e66baa7ae9c1de18a7b41bceb054a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ee4e9bd5487382ebb6f57996aac5d3de1ff6162a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791240"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890033"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Azure Portal
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Pokud jsou nástroje příliš omezené, můžete zvážit [Úvod do programová
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu. 
 
@@ -68,9 +68,7 @@ Pro tento kurz používáme vestavěnou ukázkovou datovou sadu, kterou lze proc
 
 3. Pokračujte na další stránku.
 
-   ![Tlačítko Další stránka pro hledání rozpoznávání](media/search-get-started-portal/next-button-add-cog-search.png)
-
-### <a name="step-2---skip-cognitive-skills"></a>Krok 2 – přeskočení schopností rozpoznávání
+### <a name="step-2---skip-the-enrich-content-page"></a>Krok 2 – přeskočení stránky "obohacení obsahu"
 
 Průvodce podporuje vytvoření [kanálu rozšíření AI](cognitive-search-concept-intro.md) pro zahrnutí algoritmů Cognitive Services AI do indexování. 
 
@@ -104,7 +102,6 @@ Ve výchozím nastavení průvodce vyhledá ve zdroji dat jedinečné identifik�
 
 2. Pokračujte na další stránku.
 
-   ![Další stránka – vytvořit indexer](media/search-get-started-portal/next-button-create-indexer.png)
 
 ### <a name="step-4---configure-indexer"></a>Krok 4 – Konfigurace indexeru
 
@@ -127,6 +124,8 @@ Aby portál mohl aktualizovat stránku, může trvat několik minut, ale v sezna
 ## <a name="view-the-index"></a>Zobrazení indexu
 
 Hlavní stránka služby poskytuje odkazy na prostředky vytvořené ve službě Azure Kognitivní hledání.  Pokud chcete zobrazit právě vytvořený index, klikněte na **indexy** ze seznamu odkazů. 
+
+Počkejte, až se stránka portálu aktualizuje. Po několika minutách by se měl zobrazit index s počtem dokumentů a velikostí úložiště.
 
    ![Seznam indexů na řídicím panelu služby](media/search-get-started-portal/indexes-list.png)
 
@@ -154,7 +153,7 @@ Teď už byste měli mít vyhledávací index, který je připravený na dotazov
 
    ![Příkaz průzkumníka služby Search](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. V rozevíracím seznamu **index** vyberte možnost *hotely-ukázka*. Klikněte na rozevírací seznam **verze rozhraní API** , abyste viděli, která rozhraní REST API jsou k dispozici. Pro následující dotazy použijte všeobecně dostupnou verzi (2019-05-06).
+2. V rozevíracím seznamu **index** vyberte *hotely-Sample-index*. Klikněte na rozevírací seznam **verze rozhraní API** , abyste viděli, která rozhraní REST API jsou k dispozici. Pro následující dotazy použijte všeobecně dostupnou verzi (2019-05-06).
 
    ![Příkazy rozhraní API a index](media/search-get-started-portal/search-explorer-changeindex.png)
 

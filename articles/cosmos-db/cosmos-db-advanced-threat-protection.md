@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: dca653bfaf625ff31e4dd7f43752219b312779d1
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 57303c41d90f6205c284c7de67bb8643aa3cd368
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286762"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888057"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB
 
@@ -32,7 +32,7 @@ V případě úplného šetření výstrah zabezpečení doporučujeme povolit [
 
 ### <a name="set-up-atp-using-the-portal"></a>Nastavení ATP pomocí portálu
 
-1. Spusťte Azure Portal v [https://portal.azure.com](https://portal.azure.com/).
+1. [https://portal.azure.com](https://portal.azure.com/)spusťte Azure Portal.
 
 2. Z účtu Azure Cosmos DB v nabídce **Nastavení** vyberte **Rozšířené zabezpečení**.
 
@@ -61,7 +61,7 @@ Použijte následující rutiny PowerShellu:
 ### <a name="using-azure-resource-manager-templates"></a>Používání šablon Azure Resource Manager
 
 Pomocí šablony Azure Resource Manager můžete nastavit Cosmos DB s povolenou rozšířenou ochranou hrozeb.
-Další informace najdete v tématu [Vytvoření účtu CosmosDB s využitím rozšířené ochrany před internetovými útoky](https://azure.microsoft.com/en-us/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/).
+Další informace najdete v tématu [Vytvoření účtu CosmosDB s využitím rozšířené ochrany před internetovými útoky](https://azure.microsoft.com/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/).
 
 ### <a name="using-azure-policy"></a>Použití Azure Policy
 

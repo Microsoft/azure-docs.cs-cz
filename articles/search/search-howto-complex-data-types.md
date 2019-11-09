@@ -9,16 +9,16 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: af68f232c893259747e6ed106eced70fd8b89351
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: c7578b84fe1d23d2b4d97aa263cac576305db240
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792229"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889922"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Postup modelování komplexních datových typů v Azure Kognitivní hledání
 
-Externí datové sady, které se používají k naplnění indexu služby Azure Kognitivní hledání, můžou být v mnoha tvarech. Někdy zahrnují hierarchické nebo vnořené podstruktury. Příklady mohou zahrnovat několik adres pro jednoho zákazníka, více barev a velikostí pro jednu SKU, více autorů jedné knihy a tak dále. V rámci modelovacích podmínek se tyto struktury můžou zobrazit jako *komplexní*, *složené*, *složené*nebo *agregované* datové typy. Pojem Azure Kognitivní hledání používá pro tento koncept je **komplexní typ**. V Kognitivní hledání rozpoznávání v Azure jsou komplexní typy modelovány pomocí **složitých polí**. Komplexní pole je pole, které obsahuje podřízené položky (podpole), které mohou být libovolného datového typu, včetně jiných složitých typů. Funguje podobným způsobem jako strukturované datové typy v programovacím jazyce.
+Externí datové sady, které se používají k naplnění indexu služby Azure Kognitivní hledání, můžou být v mnoha tvarech. Někdy zahrnují hierarchické nebo vnořené podstruktury. Příklady mohou zahrnovat několik adres pro jednoho zákazníka, více barev a velikostí pro jednu SKU, více autorů jedné knihy a tak dále. V rámci modelovacích podmínek se tyto struktury můžou zobrazit jako *komplexní*, *složené*, *složené*nebo *agregované* datové typy. Pojem Azure Kognitivní hledání používá pro tento koncept je **komplexní typ**. V Azure Kognitivní hledání jsou komplexní typy modelovány pomocí **složitých polí**. Komplexní pole je pole, které obsahuje podřízené položky (podpole), které mohou být libovolného datového typu, včetně jiných složitých typů. Funguje podobným způsobem jako strukturované datové typy v programovacím jazyce.
 
 Složitá pole zastupují buď jeden objekt v dokumentu, nebo pole objektů, v závislosti na datovém typu. Pole typu `Edm.ComplexType` reprezentují jednotlivé objekty, zatímco pole typu `Collection(Edm.ComplexType)` reprezentují pole objektů.
 

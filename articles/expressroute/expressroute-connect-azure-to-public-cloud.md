@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 07/24/2019
 ms.author: osamaz
-ms.openlocfilehash: a496b91ab8ec14ce859df0da93e0ad5d87c50982
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: b8a454c2a104dfe8545cf734bf0b020b8f749bb1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71019019"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889630"
 ---
 # <a name="connecting-azure-with-public-clouds"></a>Propojení Azure s veřejnými cloudy
 
@@ -58,14 +58,14 @@ Zákazníci můžou využít Internet k připojení svých instancí v Azure k o
 
 Síť Site-to-Site VPN není považována za vysoce propustnost a řešení s nízkou latencí. Dá se ale použít jako záložní pro fyzické připojení.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další otázky k připojení ExpressRoute a virtuální sítě najdete v tématu [ExpressRoute – nejčastější][ER-FAQ] dotazy.
 
 Další informace najdete v tématu [Nastavení přímého připojení mezi Azure a Oracle cloudem][ER-OCI] pro připojení mezi Azure a Oracle.
 
 <!--Link References-->
 [ER-FAQ]: https://docs.microsoft.com/azure/expressroute/expressroute-faqs
-[ER-OCI]: https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/oracle/configure-azure-oci-networking
+[ER-OCI]: https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-azure-oci-networking
 
 
 

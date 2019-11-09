@@ -1,0 +1,99 @@
+### YamlMime:Landing
+title: Dokumentace ke službě Azure IoT Central
+summary: Azure IoT Central je plně spravované řešení SaaS (software jako služba), které usnadňuje propojení, monitorování a správu vašich prostředků IoT ve velkém měřítku. Azure IoT Central zjednodušuje počáteční nastavení vašeho řešení IoT a snižuje zátěž související se správou, provozními náklady a režií obvyklou pro projekty IoT. Naše rychlé starty a kurzy vás naučí vytvářet, přizpůsobovat, spravovat a využívat aplikace Azure IoT Central.
+metadata:
+  title: Dokumentace ke službě Azure IoT Central
+  description: Azure IoT Central je plně spravované řešení SaaS (software jako služba), které usnadňuje propojení, monitorování a správu vašich prostředků IoT ve velkém měřítku. Azure IoT Central zjednodušuje počáteční nastavení vašeho řešení IoT a snižuje zátěž související se správou, provozními náklady a režií obvyklou pro projekty IoT. Naše rychlé starty a kurzy vás naučí vytvářet, přizpůsobovat, spravovat a využívat aplikace Azure IoT Central.
+  services: iot-central
+  ms.service: iot-central
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 10/25/2019
+  ms.openlocfilehash: d769b906324c1022baffff198fea6e4e44821757
+  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 11/09/2019
+  ms.locfileid: "73891801"
+landingContent:
+- title: Informace o službě Azure IoT Central
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure IoT Central?
+      url: overview-iot-central.md
+    - text: Možnosti řešení IoT
+      url: overview-iot-central-tour.md
+    - text: Prohlídka uživatelského rozhraní
+      url: overview-iot-central-tour.md
+  - linkListType: architecture
+    links:
+    - text: Architektura služby Azure IoT Central
+      url: concepts-architecture.md
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření nové aplikace
+      url: quick-deploy-iot-central.md
+- title: Připojování
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Nastavení šablony zařízení
+      url: howto-set-up-template.md
+    - text: Připojení zařízení IoT Plug and Play
+      url: tutorial-connect-pnp-device.md
+  - linkListType: how-to-guide
+    links:
+    - text: Příprava a připojení sady MX Chip IoT DevKit
+      url: howto-connect-devkit.md
+    - text: Připojení dalších cloudů IoT
+      url: ../core/howto-build-iotc-device-bridge.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+- title: Stálé připojení
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Použití skupin zařízení
+      url: tutorial-use-device-groups.md
+  - linkListType: how-to-guide
+    links:
+    - text: správu zařízení
+      url: howto-manage-devices.md
+    - text: Spuštění úlohy
+      url: ../core/howto-run-a-job.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+    - text: Analýza dat zařízení
+      url: howto-create-analytics.md
+- title: Transformace
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření pravidla
+      url: quick-configure-rules.md
+    - text: Vytvoření pravidel telemetrie
+      url: tutorial-create-telemetry-rules.md
+    - text: Export do Blob Storage
+      url: howto-export-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření vlastních rolí
+      url: howto-create-custom-rules.md
+    - text: Vytvoření vlastní analýzy
+      url: howto-create-custom-analytics.md
+- title: Správa
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Správa vaší aplikace
+      url: howto-administer.md
+    - text: Správa uživatelů a skupin
+      url: howto-manage-users-roles.md
+    - text: Zobrazení vašeho vyúčtování
+      url: howto-view-bill.md
+    - text: Přizpůsobení uživatelského rozhraní aplikací
+      url: howto-customize-ui.md
+    - text: Konfigurace osobních řídicích panelů
+      url: ../core/howto-create-personal-dashboards.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+    - text: Použití dlaždic řídicího panelu
+      url: ../core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+    - text: Použití šablon aplikací
+      url: howto-use-app-templates.md

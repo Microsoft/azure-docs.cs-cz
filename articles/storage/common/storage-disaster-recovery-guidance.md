@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3717199d2fa342fff5996d97bc5cdaf6da6e9880
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: b265ff8831275a9f4b84f7dac28b82ae75630f8b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595206"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889791"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Zotavení po havárii a převzetí služeb při selhání účtu úložiště (Preview) v Azure Storage
 
@@ -47,8 +47,8 @@ Mezi další Azure Storage možnosti redundance patří úložiště redundantn�
 
 Je důležité navrhnout aplikaci pro zajištění vysoké dostupnosti od začátku. Pokyny pro návrh aplikace a plánování zotavení po havárii najdete v těchto prostředcích Azure:
 
-* [Návrh odolných aplikací pro Azure](https://docs.microsoft.com/azure/architecture/resiliency/): Přehled klíčových konceptů pro navrhování vysoce dostupných aplikací v Azure.
-* [Kontrolní seznam dostupnosti](https://docs.microsoft.com/azure/architecture/checklist/availability): kontrolní seznam pro ověření, že vaše aplikace implementuje osvědčené postupy návrhu pro vysokou dostupnost.
+* [Návrh odolných aplikací pro Azure](/azure/architecture/checklist/resiliency-per-service): Přehled klíčových konceptů pro navrhování vysoce dostupných aplikací v Azure.
+* [Kontrolní seznam dostupnosti](/azure/architecture/checklist/resiliency-per-service): kontrolní seznam pro ověření, že vaše aplikace implementuje osvědčené postupy návrhu pro vysokou dostupnost.
 * [Návrh aplikací s vysokou dostupností pomocí RA-GRS](storage-designing-ha-apps-with-ragrs.md): pokyny k návrhu pro vytváření aplikací, které využívají výhod RA-GRS.
 * [Kurz: vytvoření vysoce dostupné aplikace s využitím úložiště objektů BLOB](../blobs/storage-create-geo-redundant-storage.md): kurz, který ukazuje, jak vytvořit vysoce dostupnou aplikaci, která automaticky přepíná mezi koncovými body jako se selháním a obnovením se simulují. 
 
@@ -180,13 +180,13 @@ Pro převzetí služeb při selhání účtu verze Preview nejsou podporované t
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Kopírování dat jako alternativu k převzetí služeb při selhání
 
-Pokud je váš účet úložiště nakonfigurovaný pro RA-GRS, máte k datům přístup pro čtení pomocí sekundárního koncového bodu. Pokud v případě výpadku v primární oblasti nechcete převzít služby při selhání, můžete pomocí nástrojů, jako jsou [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md)nebo [knihovny pro přesun dat Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) , kopírovat data z účtu úložiště v sekundární oblasti do jiné. účet úložiště v neovlivněné oblasti. Pak můžete své aplikace nasměrovat na tento účet úložiště pro čtení i zápis.
+Pokud je váš účet úložiště nakonfigurovaný pro RA-GRS, máte k datům přístup pro čtení pomocí sekundárního koncového bodu. Pokud v případě výpadku v primární oblasti nechcete převzít služby při selhání, můžete pomocí nástrojů, jako jsou [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md)nebo [knihovny pro přesun dat Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) , kopírovat data z účtu úložiště v sekundární oblasti do jiného účtu úložiště v neovlivněné oblasti. Pak můžete své aplikace nasměrovat na tento účet úložiště pro čtení i zápis.
 
 ## <a name="microsoft-managed-failover"></a>Převzetí služeb při selhání spravované Microsoftem
 
 V extrémních situacích, kdy dojde ke ztrátě oblasti z důvodu významné havárie, může společnost Microsoft zahájit místní převzetí služeb při selhání. V takovém případě není nutná žádná akce s vaší částí. Dokud neproběhne převzetí služeb při selhání spravované Microsoftem, nebudete mít k účtu úložiště přístup pro zápis. Vaše aplikace se můžou číst ze sekundární oblasti, pokud je váš účet úložiště nakonfigurovaný pro RA-GRS. 
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 * [Iniciovat převzetí služeb při selhání účtu (Preview)](storage-initiate-account-failover.md)
 * [Návrh aplikací s vysokou dostupností pomocí RA-GRS](storage-designing-ha-apps-with-ragrs.md)

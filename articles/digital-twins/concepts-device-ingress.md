@@ -7,15 +7,15 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
-ms.openlocfilehash: 6c61bc6075b3f0713dd790f1b3aa1a47af9d8e6c
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/07/2019
+ms.openlocfilehash: 723fe14db9089e1127f39eae3ed7b10bbddf70bf
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950020"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889715"
 ---
-# <a name="device-connectivity-and-telemetry-ingress"></a>Připojení zařízení a příchozí telemetrie
+# <a name="device-connectivity-and-telemetry-ingress"></a>Možnosti připojení zařízení a příchozí přenos telemetrických dat
 
 Data telemetrie odesílaná zařízeními a snímači tvoří páteřní síť řešení IoT. Způsob reprezentace těchto různých prostředků a jejich správa v kontextu umístění jsou hlavními aspekty vývoje aplikací pro IoT. Funkce digitálních vláken Azure zjednodušuje proces vývoje řešení IoT pomocí jednotkových zařízení a senzorů pomocí grafu prostorových informací.
 
@@ -45,7 +45,7 @@ Pokud chcete získat připojovací řetězec IoT Hub zařízení, proveďte v ro
 YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_GUID?includes=ConnectionString
 ```
 
-| Parametr | Nahradit |
+| Parametr | Nahradit hodnotou |
 | --- | --- |
 | *YOUR_DEVICE_GUID* | ID zařízení |
 
@@ -53,7 +53,7 @@ YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_GUID?includes=ConnectionString
 YOUR_MANAGEMENT_API_URL/devices?HardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=ConnectionString
 ```
 
-| Hodnota parametru | Nahradit |
+| Hodnota parametru | Nahradit hodnotou |
 | --- | --- |
 | *YOUR_DEVICE_HARDWARE_ID* | ID hardwaru zařízení |
 
@@ -65,14 +65,14 @@ Formát a datovou část svého zařízení můžete přizpůsobit tak, aby vyho
 
 ### <a name="telemetry-properties"></a>Vlastnosti telemetrie
 
- Obsah datové části **zprávy** může být libovolná data o velikosti až 256 KB. Pro vlastnosti typu [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) se očekává několik požadavků. V tabulce jsou uvedeny požadované a volitelné vlastnosti, které systém podporuje.
+ Obsah datové části **zprávy** může být libovolná data o velikosti až 256 KB. Pro vlastnosti [`Message.Properties`ho](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) typu se očekává několik požadavků. V tabulce jsou uvedeny požadované a volitelné vlastnosti, které systém podporuje.
 
-| Název vlastnosti | Hodnota | Požadováno | Popis |
+| Název vlastnosti | Hodnota | Požaduje se | Popis |
 |---|---|---|---|
 | **DigitalTwins – telemetrie** | 1.0 | Ano | Konstantní hodnota, která identifikuje zprávu pro systém. |
-| **DigitalTwins-SensorHardwareId** | `string(72)` | Ano | Jedinečný identifikátor senzoru, který **zprávu**odesílá. Tato hodnota musí odpovídat vlastnosti **HardwareId** objektu, aby ji systém mohl zpracovat. Například `00FF0643BE88-CO2`. |
-| **CreationTimeUtc** | `string` | Ne | Řetězec formátovaného data [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , který identifikuje dobu vzorkování datové části. Například `2018-09-20T07:35:00.8587882-07:00`. |
-| **ID** | `string` | Ne | Identifikátor UUID, který se používá k trasování událostí v rámci systému. Například `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
+| **DigitalTwins-SensorHardwareId** | `string(72)` | Ano | Jedinečný identifikátor senzoru, který **zprávu**odesílá. Tato hodnota musí odpovídat vlastnosti **HardwareId** objektu, aby ji systém mohl zpracovat. například `00FF0643BE88-CO2`. |
+| **CreationTimeUtc** | `string` | Ne | Řetězec formátovaného data [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , který identifikuje dobu vzorkování datové části. například `2018-09-20T07:35:00.8587882-07:00`. |
+| **ID** | `string` | Ne | Identifikátor UUID, který se používá k trasování událostí v rámci systému. například `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
 
 ### <a name="send-your-message-to-digital-twins"></a>Odeslání zprávy do digitálních vláken
 

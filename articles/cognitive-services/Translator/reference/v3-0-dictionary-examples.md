@@ -1,7 +1,7 @@
 ---
 title: Příklady Translator Text API slovníku
 titleSuffix: Azure Cognitive Services
-description: Použijte příklady Translator Text API slovníku.
+description: Příklady Translator Text API slovníku obsahují příklady, které ukazují, jak se výrazy ve slovníku používají v kontextu.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: 419e11862b2c584686922cfc8d1db72ee4751a03
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: daa3ff7cb9006a0ec940a57a4db31746dcb0550a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934034"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888096"
 ---
-# <a name="translator-text-api-30-dictionary-examples"></a>Translator Text API 3,0: Příklady slovníku
+# <a name="translator-text-api-30-dictionary-examples"></a>Translator Text API 3,0: příklady slovníku
 
 Obsahuje příklady, které ukazují, jak jsou výrazy ve slovníku použity v kontextu. Tato operace se používá společně s [vyhledáváním slovníku](./v3-0-dictionary-lookup.md).
 
 ## <a name="request-url"></a>Adresa URL požadavku
 
-`POST` Odeslat požadavek na:
+Odeslat žádost o `POST`:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0
@@ -37,23 +37,23 @@ Parametry žádosti předané řetězci dotazu jsou:
   <th width="20%">Parametr dotazu</th>
   <th>Popis</th>
   <tr>
-    <td>api-version</td>
+    <td>verze API-Version</td>
     <td>*Povinný parametr*.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být `3.0`.</td>
   </tr>
   <tr>
-    <td>from</td>
-    <td>*Povinný parametr*.<br/>Určuje jazyk vstupního textu. Zdrojový jazyk musí být jeden z [podporovaných jazyků](./v3-0-languages.md) zahrnutých v `dictionary` oboru.</td>
+    <td>Výsledkem</td>
+    <td>*Povinný parametr*.<br/>Určuje jazyk vstupního textu. Zdrojový jazyk musí být jeden z [podporovaných jazyků](./v3-0-languages.md) , které jsou zahrnuté v oboru `dictionary`.</td>
   </tr>
   <tr>
     <td>na</td>
-    <td>*Povinný parametr*.<br/>Určuje jazyk výstupního textu. Cílový jazyk musí být jeden z [podporovaných jazyků](./v3-0-languages.md) zahrnutých v `dictionary` oboru.</td>
+    <td>*Povinný parametr*.<br/>Určuje jazyk výstupního textu. Cílový jazyk musí být jeden z [podporovaných jazyků](./v3-0-languages.md) , které jsou zahrnuté v oboru `dictionary`.</td>
   </tr>
 </table>
 
 Hlavičky požadavku zahrnují:
 
 <table width="100%">
-  <th width="20%">Záhlaví</th>
+  <th width="20%">Hlavičky</th>
   <th>Popis</th>
   <tr>
     <td>Ověřovací hlavičky (y)</td>
@@ -68,7 +68,7 @@ Hlavičky požadavku zahrnují:
     <td>*Požadovaná hlavička žádosti*<br/>Délka textu žádosti</td>
   </tr>
   <tr>
-    <td>X-ClientTraceId</td>
+    <td>X – ClientTraceId</td>
     <td>*Volitelné*.<br/>Identifikátor GUID generovaný klientem pro jednoznačnou identifikaci požadavku. Tuto hlavičku můžete vynechat, pokud zahrnete ID trasování do řetězce dotazu pomocí parametru dotazu s názvem `ClientTraceId`.</td>
   </tr>
 </table> 
@@ -77,9 +77,9 @@ Hlavičky požadavku zahrnují:
 
 Tělo požadavku je pole JSON. Každý prvek pole je objekt JSON s následujícími vlastnostmi:
 
-  * `Text`: Řetězec určující termín, který má být hledán. Mělo by se jednat o hodnotu `normalizedText` pole ze zpětných překladů předchozího požadavku na [vyhledávání slovníku](./v3-0-dictionary-lookup.md) . Může to být také hodnota `normalizedSource` pole.
+  * `Text`: řetězec určující termín, který se má vyhledat. Mělo by se jednat o hodnotu `normalizedText` pole z back-vrácených předchozích požadavků na [vyhledávání slovníku](./v3-0-dictionary-lookup.md) . Může to být také hodnota pole `normalizedSource`.
 
-  * `Translation`: Řetězec určující přeložený text, který dříve vrátila operace [vyhledávání slovníku](./v3-0-dictionary-lookup.md) . Mělo by se jednat o hodnotu z `normalizedTarget` pole `translations` v seznamu odpovědi [vyhledávání slovníku](./v3-0-dictionary-lookup.md) . Služba vrátí příklady pro určitý textový pár v cílovém zdroji.
+  * `Translation`: řetězec určující přeložený text, který dříve vrátila operace [vyhledávání slovníku](./v3-0-dictionary-lookup.md) . Mělo by se jednat o hodnotu z pole `normalizedTarget` v seznamu `translations` odpovědi [vyhledávání slovníku](./v3-0-dictionary-lookup.md) . Služba vrátí příklady pro určitý textový pár v cílovém zdroji.
 
 Příklad:
 
@@ -94,34 +94,34 @@ Platí následující omezení:
 * Pole může mít maximálně 10 prvků.
 * Textová hodnota prvku pole nesmí být delší než 100 znaků včetně mezer.
 
-## <a name="response-body"></a>Text odpovědi
+## <a name="response-body"></a>Tělo odpovědi
 
 Úspěšná odpověď je pole JSON s jedním výsledkem pro každý řetězec ve vstupním poli. Objekt výsledku obsahuje následující vlastnosti:
 
-  * `normalizedSource`: Řetězec, který poskytuje normalizovanou formu zdrojového termínu. Obecně platí, že by mělo být stejné jako hodnota `Text` pole v indexu odpovídajícího seznamu v těle požadavku.
+  * `normalizedSource`: řetězec, který poskytuje normalizovanou formu zdrojového výrazu. Obecně platí, že by se mělo shodovat s hodnotou pole `Text` v seznamu odpovídajícího indexu v těle požadavku.
     
-  * `normalizedTarget`: Řetězec, který poskytuje normalizovanou formu cílového období. Obecně platí, že by mělo být stejné jako hodnota `Translation` pole v indexu odpovídajícího seznamu v těle požadavku.
+  * `normalizedTarget`: řetězec, který poskytuje normalizovanou formu cílového období. Obecně platí, že by se mělo shodovat s hodnotou pole `Translation` v seznamu odpovídajícího indexu v těle požadavku.
   
-  * `examples`: Seznam příkladů pro dvojici (zdrojový termín, cílový termín). Každý prvek seznamu je objekt s následujícími vlastnostmi:
+  * `examples`: seznam příkladů pro dvojici (zdrojový termín, cílový termín). Každý prvek seznamu je objekt s následujícími vlastnostmi:
 
-    * `sourcePrefix`: Řetězec, který se má zřetězit _před_ hodnotou `sourceTerm` pro vytvoření úplného příkladu. Nepřidávat mezeru, protože je již tam, kde by měla být. Tato hodnota může být prázdný řetězec.
+    * `sourcePrefix`: řetězec, který se má zřetězit _před_ hodnotou `sourceTerm` pro vytvoření kompletního příkladu. Nepřidávat mezeru, protože je již tam, kde by měla být. Tato hodnota může být prázdný řetězec.
 
-    * `sourceTerm`: Řetězec, který se rovná skutečnému vyhledanému výrazu. Řetězec je přidán s `sourcePrefix` a `sourceSuffix` pro vytvoření kompletního příkladu. Jeho hodnota je oddělená, takže se dá označit v uživatelském rozhraní, třeba pomocí tučného písma.
+    * `sourceTerm`: řetězec, který se rovná skutečnému vyhledanému výrazu. Řetězec je přidán s `sourcePrefix` a `sourceSuffix` k vytvoření kompletního příkladu. Jeho hodnota je oddělená, takže se dá označit v uživatelském rozhraní, třeba pomocí tučného písma.
 
-    * `sourceSuffix`: Řetězec, který má být zřetězen _po_ hodnotě `sourceTerm` pro vytvoření úplného příkladu. Nepřidávat mezeru, protože je již tam, kde by měla být. Tato hodnota může být prázdný řetězec.
+    * `sourceSuffix`: řetězec, který se má zřetězit _za_ hodnotou `sourceTerm`, která vytvoří úplný příklad. Nepřidávat mezeru, protože je již tam, kde by měla být. Tato hodnota může být prázdný řetězec.
 
-    * `targetPrefix`: Řetězec podobný `sourcePrefix` řetězci, ale pro cíl.
+    * `targetPrefix`: řetězec podobný `sourcePrefix`, ale pro cíl.
 
-    * `targetTerm`: Řetězec podobný `sourceTerm` řetězci, ale pro cíl.
+    * `targetTerm`: řetězec podobný `sourceTerm`, ale pro cíl.
 
-    * `targetSuffix`: Řetězec podobný `sourceSuffix` řetězci, ale pro cíl.
+    * `targetSuffix`: řetězec podobný `sourceSuffix`, ale pro cíl.
 
     > [!NOTE]
-    > Pokud slovník neobsahuje žádné příklady, odpověď je 200 (ok), ale `examples` seznam je prázdný seznam.
+    > Pokud slovník neobsahuje žádné příklady, odpověď je 200 (OK), ale seznam `examples` je prázdný seznam.
 
 ## <a name="examples"></a>Příklady
 
-Tento příklad ukazuje, jak vyhledat příklady pro pár, který se skládá z anglického termínu `fly` a jeho španělského překladu. `volar`
+Tento příklad ukazuje, jak vyhledat příklady pro pár, který se skládá z anglického termínu `fly` a jeho Španělská `volar`překladu.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly', 'Translation':'volar'}]"

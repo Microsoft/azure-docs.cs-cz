@@ -1,7 +1,7 @@
 ---
 title: Počty znaků – Translator Text API
 titleSuffix: Azure Cognitive Services
-description: Způsob, jakým Translator Text API počítá znaky.
+description: Tento článek vysvětluje, jak Translator Text API Cognitive Services Azure počítá znaky, abyste mohli pochopit, jak ingestuje obsah.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: e3a16d9272e75f9a94f5381c1681c036d177e0f6
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cb70b8624ac0d909511032622948f14f8764b153
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595987"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888158"
 ---
 # <a name="how-the-translator-text-api-counts-characters"></a>Jak Translator Text API počítá znaky
 
@@ -24,16 +24,16 @@ Translator Text API počítá každý bod kódu Unicode vstupního textu jako zn
 Jaké počty jsou:
 
 * Text předaný do Translator Text API v těle žádosti
-   * `Text`Při použití metod překladu, přepisu a slovníku vyhledávání
-   * `Text`a `Translation` při použití metody Dictionary Examples
-* Všechny značky: HTML, značky XML atd. v textovém poli textu žádosti. Zápis JSON použitý k vytvoření žádosti (například text:) se nepočítá.
+   * `Text` při použití metod překladu, přepisu a slovníku vyhledávání
+   * `Text` a `Translation` při použití metody Dictionary Examples
+* Všechny značky: HTML, XML tagy atd. v textovém poli textu žádosti. Zápis JSON použitý k vytvoření žádosti (například text:) se nepočítá.
 * Jednotlivá písmena
-* Interpunkce
+* Oddělovač
 * Mezera, tabulátor, značka a libovolný druh prázdného znaku
 * Každý bod kódu definovaný v kódování Unicode
 * Opakovaný překlad, i když jste dříve přeložili stejný text
 
-Pro skripty založené na ideograms, jako je například čínština a japonština kanji, bude Translator Text API stále počítat počet kódových bodů Unicode, jeden znak na ideogram. Výjimka: Náhrada Unicode se počítá jako dva znaky.
+Pro skripty založené na ideograms, jako je například čínština a japonština kanji, bude Translator Text API stále počítat počet kódových bodů Unicode, jeden znak na ideogram. Výjimka: náhrada Unicode se počítá jako dva znaky.
 
 Počet požadavků, slov, bajtů nebo vět není v počtu znaků podstatný.
 

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b9d2dda589cc59be24b73ce16dcdcbbe79b31aef
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 7be5e814d8092b523fa69fdd84f0e1476736fda2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259178"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887716"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Řešení potíží s konfigurací požadovaného stavu (DSC)
 
@@ -24,7 +24,7 @@ Tento článek poskytuje informace o řešení problémů s požadovanou konfigu
 
 Pokud máte chyby při kompilaci nebo nasazování konfigurací v konfiguraci stavu Azure, najdete tady několik kroků, které vám pomůžou problém diagnostikovat.
 
-1. **Ujistěte se, že se konfigurace úspěšně zkompiluje na místním počítači:**  Konfigurace stavu Azure je postavená na PowerShell DSC. Dokumentaci k jazyku DSC a syntaxi najdete v dokumentaci k [PowerShellu DSC](https://docs.microsoft.com/en-us/powershell/scripting/overview).
+1. **Ujistěte se, že se konfigurace úspěšně zkompiluje na místním počítači:**  Konfigurace stavu Azure je postavená na PowerShell DSC. Dokumentaci k jazyku DSC a syntaxi najdete v dokumentaci k [PowerShellu DSC](https://docs.microsoft.com/powershell/scripting/overview).
 
    Zkompilováním konfigurace DSC na místním počítači můžete zjišťovat a řešit běžné chyby, jako například:
 
@@ -45,7 +45,7 @@ Pokud máte chyby při kompilaci nebo nasazování konfigurací v konfiguraci st
 
 ## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Běžné chyby při práci s konfigurací požadovaného stavu (DSC)
 
-### <a name="unsupported-characters"></a>Případě Na portálu nejde odstranit konfiguraci se speciálními znaky.
+### <a name="unsupported-characters"></a>Scénář: na portálu nejde odstranit konfiguraci se speciálními znaky.
 
 #### <a name="issue"></a>Problém
 
@@ -65,11 +65,11 @@ Tato chyba je dočasný problém, který se plánuje vyřešit.
 * Dokumentace k této rutině se ještě neaktualizovala.  Do té doby se v dokumentaci k modulu AzureRM Podívejte.
   * [Remove-AzureRmAutomationDSCConfiguration](/powershell/module/azurerm.automation/Remove-AzureRmAutomationDscConfiguration)
 
-### <a name="failed-to-register-agent"></a>Případě Nepovedlo se zaregistrovat agenta DSC.
+### <a name="failed-to-register-agent"></a>Scénář: registrace agenta DSC se nezdařila
 
 #### <a name="issue"></a>Problém
 
-Při pokusu o spuštění `Set-DscLocalConfigurationManager` nebo jinou rutinu DSC se zobrazí chyba:
+Při pokusu o spuštění `Set-DscLocalConfigurationManager` nebo jiné rutiny DSC se zobrazí chyba:
 
 ```error
 Registration of the Dsc Agent with the server
@@ -90,7 +90,7 @@ Tato chyba je obvykle způsobena bránou firewall, počítač je za proxy server
 
 Ověřte, že váš počítač má přístup ke správným koncovým bodům pro Azure Automation DSC, a zkuste to znovu. Seznam potřebných portů a adres najdete v tématu [Plánování sítě](../automation-dsc-overview.md#network-planning) .
 
-### <a name="failed-not-found"></a>Případě Uzel je v neúspěšném stavu s chybou "Nenalezeno".
+### <a name="failed-not-found"></a>Scénář: uzel je v neúspěšném stavu s chybou "Nenalezeno".
 
 #### <a name="issue"></a>Problém
 
@@ -112,7 +112,7 @@ K této chybě obvykle dochází v případě, že je uzel přiřazen k názvu k
   * Chcete-li přiřadit konfiguraci uzlu uzlu pomocí Azure Portal, otevřete stránku **uzly DSC** a pak vyberte uzel a klikněte na tlačítko **přiřadit konfiguraci uzlu** .
   * Pokud chcete přiřadit konfiguraci uzlu k uzlu pomocí rutiny prostředí PowerShell, použijte rutinu **set-AzureRmAutomationDscNode** .
 
-### <a name="no-mof-files"></a>Případě Při kompilaci konfigurace se nevytvořily žádné konfigurace uzlů (soubory MOF).
+### <a name="no-mof-files"></a>Scénář: při kompilaci konfigurace nevytvořily se žádné konfigurace uzlů (soubory MOF).
 
 #### <a name="issue"></a>Problém
 
@@ -124,7 +124,7 @@ Compilation completed successfully, but no node configuration.mofs were generate
 
 #### <a name="cause"></a>Příčina
 
-Pokud je výraz následující po klíčovém slově **uzlu** v konfiguraci DSC vyhodnocen `$null`jako, nebudou vytvořeny žádné konfigurace uzlů.
+Pokud je výraz následující po klíčovém slově **uzlu** v konfiguraci DSC vyhodnocen jako `$null`, nebudou vytvořeny žádné konfigurace uzlů.
 
 #### <a name="resolution"></a>Řešení
 
@@ -133,7 +133,7 @@ Problém vyřeší některá z následujících řešení:
 * Ujistěte se, že výraz vedle klíčového slova **Node** v definici konfigurace není vyhodnocen jako $null.
 * Pokud předáváte ConfigurationData při kompilování konfigurace, ujistěte se, že předáváte očekávané hodnoty, které konfigurace vyžaduje od [ConfigurationData](../automation-dsc-compile.md).
 
-### <a name="dsc-in-progress"></a>Případě Sestava uzlu DSC se zablokuje ve stavu probíhá.
+### <a name="dsc-in-progress"></a>Scénář: sestava uzlu DSC se zablokuje ve stavu probíhá.
 
 #### <a name="issue"></a>Problém
 
@@ -151,7 +151,7 @@ Provedli jste upgrade verze WMF a máte poškozenou službu WMI.
 
 Pokud chcete problém vyřešit, postupujte podle pokynů v článku [známé problémy a omezení DSC](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc) .
 
-### <a name="issue-using-credential"></a>Případě Nejde použít přihlašovací údaje v konfiguraci DSC.
+### <a name="issue-using-credential"></a>Scénář: nejde použít přihlašovací údaje v konfiguraci DSC.
 
 #### <a name="issue"></a>Problém
 
@@ -169,7 +169,7 @@ V konfiguraci jste použili přihlašovací údaje, ale neposkytli správné **C
 
 * Nezapomeňte předat správný **ConfigurationData** a nastavit **PSDscAllowPlainTextPassword** na hodnotu true pro každou konfiguraci uzlu uvedenou v konfiguraci. Další informace najdete v tématu [assety in Azure Automation DSC](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation).
 
-### <a name="failure-processing-extension"></a>Případě Při připojování z rozšíření DSC se chyba při neúspěšném rozšíření zpracování
+### <a name="failure-processing-extension"></a>Scénář: Chyba při připojování z rozšíření DSC, Chyba při neúspěšném rozšíření pro zpracování
 
 #### <a name="issue"></a>Problém
 
@@ -188,7 +188,7 @@ K této chybě obvykle dochází v případě, že se k uzlu přiřadí název k
 * Ujistěte se, že přiřazujete uzel s názvem konfigurace uzlu, který přesně odpovídá názvu ve službě.
 * Můžete zvolit, že nebudete zahrnovat název konfigurace uzlu, což bude mít za následek připojování uzlu, ale ne přiřazení konfigurace uzlu.
 
-### <a name="failure-linux-temp-noexec"></a>Případě Při použití konfigurace v systému Linux dojde k selhání s obecnou chybou.
+### <a name="failure-linux-temp-noexec"></a>Scénář: použití konfigurace v systému Linux, při obecné chybě dojde k selhání.
 
 #### <a name="issue"></a>Problém
 
@@ -200,13 +200,13 @@ This event indicates that failure happens when LCM is processing the configurati
 
 #### <a name="cause"></a>Příčina
 
-Zjistili jsme, že pokud `/tmp` je umístění nastavené na `noexec`, aktuální verze DSC se nepodaří použít konfigurace.
+Zákazníci zjistili, že pokud je `/tmp` umístění nastavené na `noexec`, aktuální verze DSC se nepodaří použít konfigurace.
 
 #### <a name="resolution"></a>Řešení
 
-* `noexec` Odeberte možnost`/tmp` z umístění.
+* Z umístění `/tmp` odeberte možnost `noexec`.
 
-### <a name="compilation-node-name-overlap"></a>Případě Názvy konfigurací uzlů, které se překrývají, by mohly vést k chybné verzi.
+### <a name="compilation-node-name-overlap"></a>Scénář: názvy konfigurací uzlů, které se překrývají, by mohly vést k chybné verzi.
 
 #### <a name="issue"></a>Problém
 

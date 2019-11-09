@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 65a257cc4613fb9e4dece09a2544de2e78779ab4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 305de556cc6e50af21cb38aa1b8073b420efbf43
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577066"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887752"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: třídění distribuovaných aplikací
 
@@ -234,7 +234,7 @@ Alternativně může být **instance cloudové** role užitečná ve scénáří
 
 Situaci, kdy byste mohli chtít přepsat hodnotu pro instanci cloudové role, může být, pokud vaše aplikace běží v prostředí s kontejnerem, kde stačí jenom vědět, že jednotlivý server nemusí být k dispozici dostatek informací, aby mohl najít daný problém.
 
-Další informace o tom, jak přepsat vlastnost název cloudové role pomocí inicializátorů telemetrie, najdete v tématu věnovaném [Přidání vlastností: ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer).
+Další informace o tom, jak přepsat vlastnost název cloudové role pomocí inicializátorů telemetrie, najdete v tématu věnovaném [Přidání vlastností: ITelemetryInitializer](api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/23/2018
-ms.openlocfilehash: 0bb32486ea3fcfd37337b18b02f4f432effa8f75
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 857188ebb5ddc3c24f6a225819c47fc1643417e6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678331"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887522"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Chybí některé moje telemetrie.
@@ -113,7 +113,7 @@ Klíč instrumentace v souboru ApplicationInsights. config ovládá, kde se tele
 
 Opravit
 
-* V Průzkumník řešení klikněte pravým tlačítkem myši na projekt a vyberte možnost Application Insights, konfigurace Application Insights. V dialogovém okně můžete buď Odeslat telemetrii do existujícího prostředku, nebo vytvořit novou. ani
+* V Průzkumník řešení klikněte pravým tlačítkem myši na projekt a vyberte možnost Application Insights, konfigurace Application Insights. V dialogovém okně můžete buď Odeslat telemetrii do existujícího prostředku, nebo vytvořit novou. Ani
 * Otevřete prostředek přímo. Přihlaste se k [Azure Portal](https://portal.azure.com), na levém navigačním panelu klikněte na Application Insights a pak vyberte svou aplikaci.
 
 ## <a name="where-do-i-find-my-telemetry"></a>Kde najdu telemetrii?
@@ -174,7 +174,7 @@ Můžete ho zakázat, ale nedoporučuje se to. Vzorkování je navrženo tak, ab
 Od února 5 2018 jsme oznámili, že jsme odebrali protokolování IP adresy klienta. To nemá vliv na geografickou polohu.
 
 > [!NOTE]
-> Pokud potřebujete první 3 oktety IP adresy, můžete k přidání vlastního atributu použít [inicializátor telemetrie](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer) .
+> Pokud potřebujete první 3 oktety IP adresy, můžete k přidání vlastního atributu použít [inicializátor telemetrie](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer) .
 > Toto nemá vliv na data shromážděná před 5. únorem 2018.
 
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>Nesprávná geografická data v telemetrie uživatelů

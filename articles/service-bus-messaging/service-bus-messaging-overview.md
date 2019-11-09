@@ -8,38 +8,40 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: overview
-ms.date: 09/22/2018
+ms.date: 11/04/2019
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: 0f3995e8904396dbb0bcbeeea1f993913d68587e
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: e2460ab760811a3db39058eac74d519ca09046c6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013119"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889815"
 ---
 # <a name="what-is-azure-service-bus"></a>Co je Azure Service Bus?
 
-Microsoft Azure Service Bus je plně spravovaný zprostředkovatel zpráv [](https://azure.com/integration) Enterprise Integration. Service Bus se nejčastěji používá k vzájemnému oddělení aplikací a služeb a je spolehlivou a bezpečnou platformou pro přenos asynchronních dat a stavu. Data se mezi různými aplikacemi a službami přenáší pomocí *zpráv*. Zpráva je v binárním formátu, který může obsahovat JSON, XML nebo jenom text. 
+Microsoft Azure Service Bus je plně spravovaný zprostředkovatel zpráv podnikové integrace. Service Bus může oddělit aplikace a služby. Service Bus nabízí spolehlivou a bezpečnou platformu pro asynchronní přenos dat a stavu.
+
+Data se mezi různými aplikacemi a službami přenáší pomocí *zpráv*. Zpráva je v binárním formátu a může obsahovat JSON, XML nebo jenom text. Další informace najdete v tématu [integrační služby](https://azure.com/integration).
 
 Mezi běžné scénáře zasílání zpráv patří:
 
-* Zasílání zpráv: umožňuje přenášení podnikových dat, jako jsou například prodeje nebo nákupní objednávky, deníky nebo přesuny zásob.
-* Oddělení aplikací: vylepšuje spolehlivost a škálovatelnost aplikací a služeb (klient a služba nemusí být online ve stejnou dobu).
-* Témata a předplatná: povoluje vztahy 1:*n* mezi vydavateli a odběrateli.
-* Relace zpráv: implementuje pracovní postupy, které vyžadují řazení zpráv nebo odložení zpráv.
+* *Zasílání zpráv.* Přenos obchodních dat, jako jsou prodejní nebo nákupní objednávky, deníky nebo pohyby inventáře.
+* *Oddělit aplikace*. Zlepšení spolehlivosti a škálovatelnosti aplikací a služeb. Klient a služba nemusí být online ve stejnou dobu.
+* *Témata a odběry*. Povolit vztah 1:*n* mezi vydavateli a předplatiteli.
+* *Relace zpráv*. Implementujte pracovní postupy, které vyžadují řazení zpráv nebo odložení zpráv.
 
-## <a name="namespaces"></a>Názvové prostory
+## <a name="namespaces"></a>Obory názvů
 
-Obor názvů je kontejner oboru pro všechny součásti zasílání zpráv. Součástí jednoho oboru názvů může být několik front a témat, přičemž obory názvů často slouží jako kontejnery aplikací.
+Obor názvů je kontejner pro všechny součásti zasílání zpráv. V jednom oboru názvů může být několik front a témat a obory názvů často slouží jako kontejnery aplikací.
 
 ## <a name="queues"></a>Fronty
 
-Zprávy se odesílají do *front* a přijímají se z nich. Fronty umožňují uložit zprávy, dokud není přijímající aplikace dostupná pro jejich příjem a zpracování.
+Zprávy se odesílají do *front* a přijímají se z nich. Fronty uchovávají zprávy, dokud nebude přijímající aplikace k dispozici pro příjem a zpracování.
 
 ![Fronta](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-Zprávy ve frontách jsou seřazené a mají časové razítko při příjezdu. Jakmile je zpráva přijata, uchovává se bezpečně v redundantním úložišti. Zprávy jsou doručovány v režimu *Pull* , který doručuje zprávy na vyžádání.
+Zprávy ve frontách jsou seřazené a mají časové razítko při příjezdu. Jakmile je zpráva přijata, uchovává se bezpečně v redundantním úložišti. Zprávy jsou doručovány v režimu *Pull* , pouze doručování zpráv v případě vyžádání.
 
 ## <a name="topics"></a>Témata
 
@@ -47,61 +49,62 @@ K odesílání a přijímání zpráv můžete také použít *témata*. Zatímc
 
 ![Téma](./media/service-bus-messaging-overview/about-service-bus-topic.png)
 
-Témata mohou mít několik nezávislých odběrů. Odběratel tématu může přijímat kopie všech zpráv zaslaných do daného tématu. Odběry jsou pojmenované entity, které jsou vytvořené jako trvalé, ale jejich platnost může vypršet nebo se mohou automaticky odstranit.
+Témata mohou mít několik nezávislých odběrů. Odběratel tématu může přijímat kopie všech zpráv zaslaných do daného tématu. Předplatná jsou pojmenovány entity. Předplatná jsou trvalá, ale můžou vypršet platnost nebo se může autoodstranit.
 
-V některých scénářích nemusíte chtít, aby jednotlivé odběry přijímaly všechny zprávy odeslané do tématu. Pokud tomu tak je, můžete použít [pravidla a filtry](topic-filters.md) a definovat podmínky, které vyvolají volitelné [akce](topic-filters.md#actions), filtrují zadané zprávy a nastavují nebo upravují vlastnosti zpráv.
+Nesmíte chtít, aby jednotlivá předplatná přijímala všechny zprávy odeslané do tématu. Pokud ano, můžete pomocí *pravidel* a *filtrů* definovat podmínky, které aktivují volitelné *Akce*. Můžete filtrovat zadané zprávy a nastavit nebo upravit vlastnosti zprávy. Další informace najdete v tématu [filtry a akce tématu](topic-filters.md).
 
 ## <a name="advanced-features"></a>Pokročilé funkce
 
-Service Bus má také pokročilé funkce, které vám umožní řešit složitější problémy týkající se zasílání zpráv. Následující části popisují tyto klíčové funkce:
+Service Bus zahrnují pokročilé funkce, které vám umožní řešit složitější problémy se zasíláním zpráv. V následujících částech jsou popsány některé z těchto funkcí.
 
 ### <a name="message-sessions"></a>Relace zpráv
 
-Pokud chcete ve službě Service Bus zajistit použití metody FIFO (first in first out), použijte relace. [Relace zpráv](message-sessions.md) umožňují společné a seřazené zpracování sekvencí souvisejících zpráv bez vazby. 
+Chcete-li v Service Bus vytvořit záruku typu first-in, First-out (FIFO), použijte relace. Relace zpráv umožňují společné a seřazené zpracování neohraničených sekvencí souvisejících zpráv. Další informace najdete v tématu [relace zpráv: první v, první (FIFO)](message-sessions.md).
 
-### <a name="auto-forwarding"></a>Automatické přeposílání
+### <a name="autoforwarding"></a>Autopřesměrovává
 
-Funkce [automatického přeposílání](service-bus-auto-forwarding.md) umožňuje zřetězit frontu nebo odběr do jiné fronty nebo tématu, které jsou součástí stejného oboru názvů. Pokud je automatické přeposílání povoleno, Service Bus automaticky odebere zprávy, které jsou umístěné v první frontě nebo odběru (zdroj) a vloží je do druhé fronty nebo tématu (cíl).
+Funkce dopředně zřetězí frontu nebo předplatné do jiné fronty nebo tématu. Musí být součástí stejného oboru názvů. Díky automatickému přeposílání Service Bus automaticky odebere zprávy z fronty nebo předplatného a umístí je do jiné fronty nebo tématu. Další informace najdete v tématu [zřetězení Service Bus entit pomocí procesu autopřesměrovávání](service-bus-auto-forwarding.md).
 
-### <a name="dead-lettering"></a>Ukládání nedoručených zpráv
+### <a name="dead-letter-queue"></a>Fronta nedoručených zpráv
 
-Service Bus podporuje [frontu nedoručených zpráv](service-bus-dead-letter-queues.md) (DLQ) k ukládání zpráv, které nemohou být doručeny jakémukoli příjemci, nebo zpráv, které nejdou zpracovat. Zprávy pak můžete z DLQ odebrat a prozkoumat je.
+Service Bus podporuje frontu nedoručených zpráv (DLQ). DLQ obsahuje zprávy, které nemohou být doručeny žádnému příjemci. Obsahuje zprávy, které nelze zpracovat. Service Bus umožňuje odebrat zprávy z DLQ a zkontrolovat je. Další informace najdete v tématu [přehled Service Bus front nedoručených zpráv](service-bus-dead-letter-queues.md).
 
 ### <a name="scheduled-delivery"></a>Naplánované doručení
 
-Zprávy můžete odeslat do fronty nebo tématu [pro zpožděné zpracování](message-sequencing.md#scheduled-messages). Můžete třeba naplánovat úlohu, která bude systému pro zpracování dostupná v konkrétní čas.
+Pro zpožděné zpracování můžete odesílat zprávy do fronty nebo tématu. Můžete naplánovat úlohu, která bude k dispozici pro zpracování systémem v určitou dobu. Další informace najdete v tématu [naplánované zprávy](message-sequencing.md#scheduled-messages).
 
 ### <a name="message-deferral"></a>Odložení zpráv
 
-Pokud klient fronty nebo odběru přijme zprávu, kterou je ochoten zpracovat, ale jejíž zpracování momentálně není možné z důvodu zvláštních okolností v aplikaci, má entita možnost [odložit načtení zprávy](message-deferral.md) na pozdější čas. Zpráva zůstane ve frontě nebo odběru, ale odloží se bokem.
+Klient fronty nebo předplatného může odložit načtení zprávy do pozdějšího času. Tato odložení může být způsobena zvláštními okolnostmi v aplikaci. Zpráva zůstane ve frontě nebo předplatném, ale je vyhrazená. Další informace najdete v tématu [odložení zprávy](message-deferral.md).
 
 ### <a name="batching"></a>Dávkování
 
-[Dávkování na straně klienta](service-bus-performance-improvements.md#client-side-batching) umožňuje, aby klient fronty nebo tématu zpozdil odeslání zprávy po určené časové období. Pokud během tohoto časového období klient odešle další zprávy, přenese zprávy v jedné dávce. 
+Dávkování na straně klienta umožňuje klientovi nebo tématu klienta zpozdit odeslání zprávy po určitou dobu. Pokud během tohoto časového období klient odešle další zprávy, přenese zprávy v jedné dávce. Další informace najdete v tématu [dávkování na straně klienta](service-bus-performance-improvements.md#client-side-batching).
 
 ### <a name="transactions"></a>Transakce
 
-Skupiny [transakcí](service-bus-transactions.md) seskupují dvě nebo více operací do rozsahu provádění. Service Bus podporuje operace seskupení u jedné entity zasílání zpráv (fronty, tématu, odběru) v rámci oboru transakce.
+Transakce seskupí dvě nebo více operací dohromady do *oboru provádění*. Service Bus podporuje operace seskupení na jedné entitě zasílání zpráv v rámci jedné transakce. Entita zprávy může být frontou, tématem nebo předplatným. Další informace najdete v tématu [Přehled zpracování transakcí Service Bus](service-bus-transactions.md).
 
 ### <a name="filtering-and-actions"></a>Filtrování a akce
 
-Odběratelé mohou definovat zprávy, které chtějí z tématu přijímat. Tyto zprávy se určují ve formě jednoho nebo více [pojmenovaných pravidel odběru](topic-filters.md). Pro každou odpovídající podmínku pravidla odběr vytvoří kopii zprávy, která může pro každé odpovídající pravidlo obsahovat jiné poznámky.
+Odběratelé mohou definovat zprávy, které chtějí z tématu přijímat. Tyto zprávy jsou určeny ve formě jednoho nebo více pojmenovaných pravidel předplatného. U každé vyhovující podmínky pravidla vytvoří předplatné kopii zprávy, která může být pro každé pravidlo pro porovnání poznámkou jinak. Další informace najdete v tématu [filtry a akce tématu](topic-filters.md).
 
-### <a name="auto-delete-on-idle"></a>Automatické odstranění v případě nečinnosti
+### <a name="autodelete-on-idle"></a>Autodelete při nečinnosti
 
-[Automatické odstranění v případě nečinnosti](/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle) umožňuje zadat interval nečinnosti, po jehož uplynutí se fronta automaticky odstraní. Minimální doba trvání je 5 minut.
+Automatické odstranění při nečinnosti umožňuje zadat interval nečinnosti, po kterém se fronta automaticky odstraní. Minimální doba trvání je 5 minut. Další informace najdete v tématu [vlastnost QueueDescription. AutoDeleteOnIdle](/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle).
 
 ### <a name="duplicate-detection"></a>Vyhledávání duplicit
 
-Pokud dojde k chybě, která způsobí, že klient bude mít pochybnosti o výsledku operace odeslání, zjistí [duplicity](duplicate-detection.md) nejisté pochybnosti, že odesílatel může znovu odeslat stejnou zprávu, a fronta nebo téma zruší jakékoli duplicity. zkopíruje.
+Chyba by mohla způsobit pochybnosti o výsledku operace odeslání. Zjišťování duplicitních dat umožňuje odesílateli znovu odeslat stejnou zprávu. Další možností je, že se ve frontě nebo tématu zahodí všechny duplicitní kopie. Další informace najdete v tématu [zjištění duplicit](duplicate-detection.md).
 
-### <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>SAS, RBAC a spravované identity pro prostředky Azure
+### <a name="security-protocols"></a>Protokoly zabezpečení
+<a name="sas-rbac-and-managed-identities-for-azure-resources"></a>
 
 Service Bus podporuje protokoly zabezpečení, jako jsou [sdílené přístupové podpisy](service-bus-sas.md) (SAS), [řízení přístupu na základě role](authenticate-application.md) (RBAC) a [spravované identity pro prostředky Azure](service-bus-managed-service-identity.md).
 
 ### <a name="geo-disaster-recovery"></a>Geografické zotavení po havárii
 
-Pokud v oblastech nebo datových centrech Azure dojde k výpadku, [geografické zotavení po havárii](service-bus-geo-dr.md) umožní, aby zpracování dat pokračovalo v jiné oblasti nebo datovém centru.
+Když oblasti nebo datová centra Azure nezpůsobují výpadek, umožňuje geografické zotavení po havárii zpracování dat v jiné oblasti nebo datacentru. Další informace najdete v tématu [Azure Service Busho geografického zotavení po havárii](service-bus-geo-dr.md).
 
 ### <a name="security"></a>Zabezpečení
 
@@ -109,24 +112,24 @@ Service Bus podporuje standardní protokoly [AMQP 1.0](service-bus-amqp-overview
 
 ## <a name="client-libraries"></a>Klientské knihovny
 
-Service Bus podporuje klientské knihovny pro [.NET](https://github.com/Azure/azure-service-bus-dotnet/tree/master), [Javu](https://github.com/Azure/azure-service-bus-java/tree/master), [JMS](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client).
+Service Bus podporuje klientské knihovny pro [.NET](https://github.com/Azure/azure-service-bus-dotnet/tree/master), [Java](https://github.com/Azure/azure-service-bus-java/tree/master)a [JMS](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client).
 
 ## <a name="integration"></a>Integrace
 
 Service Bus umožňuje úplnou integraci s následujícími službami Azure:
 
-- [Event Grid](https://azure.microsoft.com/services/event-grid/) 
-- [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
-- [Functions](https://azure.microsoft.com/services/functions/) 
-- [Dynamics 365](https://dynamics.microsoft.com)
-- [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
- 
-## <a name="next-steps"></a>Další postup
+* [Event Grid](https://azure.microsoft.com/services/event-grid/)
+* [Logic Apps](https://azure.microsoft.com/services/logic-apps/)
+* [Azure Functions](https://azure.microsoft.com/services/functions/)
+* [Dynamics 365](https://dynamics.microsoft.com)
+* [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
+
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete začít používat zasílání zpráv služby Service Bus, podívejte se na následující články:
 
-* [Porovnání služeb Azure pro zasílání zpráv](../event-grid/compare-messaging-services.md?toc=%2fazure%2fservice-bus-messaging%2ftoc.json&bc=%2fazure%2fservice-bus-messaging%2fbreadcrumb%2ftoc.json)
-* Přečtěte si další informace o úrovních [Standard a Premium](https://azure.microsoft.com/pricing/details/service-bus/) služby Azure Service Bus a jejich cenách.
-* [Výkon a latence úrovně Premium služby Azure Service Bus](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Premium-Messaging-How-fast-is-it/ba-p/370722)
-* Vyzkoušejte rychlé starty v [.NET](service-bus-dotnet-get-started-with-queues.md), [Javě](service-bus-java-how-to-use-queues.md) nebo [JMS](service-bus-java-how-to-use-jms-api-amqp.md).
-* [Správa prostředků Service Bus pomocí Průzkumníka Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
+* Pokud chcete porovnat službu Azure Messaging Services, přečtěte si téma [porovnání služeb](../event-grid/compare-messaging-services.md?toc=%2fazure%2fservice-bus-messaging%2ftoc.json&bc=%2fazure%2fservice-bus-messaging%2fbreadcrumb%2ftoc.json).
+* Vyzkoušejte rychlé starty pro [.NET](service-bus-dotnet-get-started-with-queues.md), [Java](service-bus-java-how-to-use-queues.md)nebo [JMS](service-bus-java-how-to-use-jms-api-amqp.md).
+* Pokud chcete spravovat prostředky Service Bus, přečtěte si téma [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/releases).
+* Další informace o úrovních Standard a Premium a jejich cenách najdete v tématu [Service Bus ceny](https://azure.microsoft.com/pricing/details/service-bus/).
+* Další informace o výkonu a latenci pro úroveň Premium najdete v tématu [zasílání zpráv](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Premium-Messaging-How-fast-is-it/ba-p/370722)na úrovni Premium.

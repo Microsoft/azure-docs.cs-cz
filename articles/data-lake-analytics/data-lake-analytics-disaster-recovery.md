@@ -1,6 +1,6 @@
 ---
 title: Pokyny pro zotavení po havárii pro Azure Data Lake Analytics
-description: Zjistěte, jak naplánovat zotavení po havárii pro vaše účty Azure Data Lake Analytics.
+description: Naučte se naplánovat zotavení po havárii pro účty Azure Data Lake Analytics.
 services: data-lake-analytics
 author: MikeRys
 ms.author: mrys
@@ -8,41 +8,41 @@ ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: ea1d4020aa9be23b4839690ae0b386d35bce8a23
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9b22e6b806f76189134ec63c83d48f48bf95587
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66498886"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889766"
 ---
 # <a name="disaster-recovery-guidance-for-azure-data-lake-analytics"></a>Pokyny pro zotavení po havárii pro Azure Data Lake Analytics
 
-Azure Data Lake Analytics je služba analytických úloh na vyžádání, která zjednodušuje práci s velkými objemy dat. Namísto nasazení, konfigurace a ladění hardwaru můžete psát dotazy, transformovat data a extrahovat cenné informace. Analytická služba dokáže okamžitě zpracovávat úlohy libovolného rozsahu – stačí nastavit, jaký výkon potřebujete. Za úlohu platíte jenom tehdy, když je spuštěná, což je nákladově efektivní. Tento článek obsahuje pokyny o tom, jak chránit úlohy z výjimečných výjimečnými výpadky celé oblasti nebo nechtěným odstraněním.
+Azure Data Lake Analytics je služba analytických úloh na vyžádání, která zjednodušuje práci s velkými objemy dat. Namísto nasazení, konfigurace a ladění hardwaru můžete psát dotazy, transformovat data a extrahovat cenné informace. Analytická služba dokáže okamžitě zpracovávat úlohy libovolného rozsahu – stačí nastavit, jaký výkon potřebujete. Za úlohu platíte jenom tehdy, když je spuštěná, což je nákladově efektivní. Tento článek poskytuje informace o tom, jak chránit vaše úlohy před vzácnými výpadky nebo neúmyslnými odstraněními v rámci oblastí.
 
 ## <a name="disaster-recovery-guidance"></a>Pokyny pro zotavení po havárii
 
-Při použití Azure Data Lake Analytics, je důležité si můžete připravit své vlastní plán zotavení po havárii. Tento článek pomůže vás k sestavení plánu zotavení po havárii. Existují další prostředky, které vám pomůžou vytvářet vlastní plán:
+Při použití Azure Data Lake Analytics je důležité připravit svůj vlastní plán zotavení po havárii. Tento článek vám pomůže s vytvořením plánu zotavení po havárii. K dispozici jsou další zdroje informací, které vám pomohou vytvořit vlastní plán:
 - [Selhání a zotavení po havárii pro aplikace Azure](/azure/architecture/reliability/disaster-recovery)
-- [Technické pokyny k odolnosti Azure](/azure/architecture/reliability)
+- [Technické pokyny k odolnosti Azure](/azure/architecture/checklist/resiliency-per-service)
 
-## <a name="best-practices-and-scenario-guidance"></a>Osvědčené postupy a pokyny případě
+## <a name="best-practices-and-scenario-guidance"></a>Doporučené postupy a doprovodné materiály k scénářům
 
-Opakovaná úloha U-SQL můžete spustit v rámci účtu ADLA v oblasti, která čte a zapisuje tabulky U-SQL, jakož i nestrukturovaná data.  Příprava na havárii pomocí následujících kroků:
+Můžete spustit opakující se úlohu U-SQL v účtu ADLA v oblasti, která čte a zapisuje tabulky U-SQL a také nestrukturovaná data.  Příprava na havárii pomocí následujících kroků:
 
-1. Vytvoření účtů ADLA a ADLS v sekundární oblasti, který se použije během výpadků.
-
-   > [!NOTE]
-   > Vzhledem k tomu, že názvy účtů jsou globálně jedinečné, použijte konzistentní schéma pojmenování, určující účtu, který je sekundární.
-
-2. Pro Nestrukturovaná data, odkazovat [pokyny pro zotavení po havárii pro data ve službě Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
-
-3. Pro strukturovaná data uložená v ADLA tabulek a databází vytvořte kopie metadat artefakty, jako jsou databáze, tabulky, funkce vracející tabulku a sestavení. Je potřeba pravidelně znovu synchronizujte tyto artefakty, když dojde k změnám v produkčním prostředí. Například nově vloženou data mají replikovat do sekundární oblasti tak, že kopírování dat a vkládání do sekundární tabulky.
+1. Vytvořte účty ADLA a ADLS v sekundární oblasti, která se bude používat při výpadku.
 
    > [!NOTE]
-   > Tyto názvy objektů jsou omezená na sekundární účet a nejsou globálně jedinečný, takže mají stejné názvy jako primární produkčního účtu.
+   > Vzhledem k tomu, že názvy účtů jsou globálně jedinečné, použijte jednotné schéma pojmenování, které určuje, který účet je sekundární.
 
-Během výpadku je potřeba aktualizovat skripty tak, že vstupní cesta bodu na sekundární koncový bod. Uživatelé pak odešlete své úlohy do i účet ADLA v sekundární oblasti. Výstup úlohy se poté zapíšou do účtu ADLA a ADLS v sekundární oblasti.
+2. Pro nestrukturovaná data referenční [pokyny pro zotavení po havárii pro data v Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
 
-## <a name="next-steps"></a>Další postup
+3. Pro strukturovaná data uložená v tabulkách a databázích ADLA vytvořte kopie artefaktů metadat, jako jsou databáze, tabulky, funkce vracející tabulku a sestavení. Pokud dojde ke změnám v produkčním prostředí, je potřeba pravidelně znovu synchronizovat tyto artefakty. Například nově vložená data musí být replikována do sekundární oblasti zkopírováním dat a vložením do sekundární tabulky.
 
-[Pokyny pro zotavení po havárii pro data ve službě Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
+   > [!NOTE]
+   > Tyto názvy objektů jsou vymezeny na sekundární účet a nejsou globálně jedinečné, takže můžou mít stejné názvy jako v primárním produkčním účtu.
+
+Během výpadku je potřeba aktualizovat skripty tak, aby vstupní cesty odkazovaly na sekundární koncový bod. Uživatelé pak odešlou své úlohy do účtu ADLA v sekundární oblasti. Výstup úlohy se pak zapíše do účtu ADLA a ADLS v sekundární oblasti.
+
+## <a name="next-steps"></a>Další kroky
+
+[Pokyny pro zotavení po havárii pro data v Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
