@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 659c4cb3a6f0d50176875b76eeb2784c711eafd1
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 84a46e66bb6c36950a84fbeb2dacc3a8d6bcc241
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967145"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833374"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Vygenerování certifikátu podepsaného svým držitelem Azure Application Gateway s vlastní kořenovou certifikační autoritou
 
@@ -40,7 +40,7 @@ V tomto článku se dozvíte, jak:
 
 - **SKU Application Gateway v2**
    
-  Pokud nemáte existující Aplikační bránu, přečtěte si [rychlý Start: Směrování webového provozu s využitím Azure Application Gateway](quick-create-portal.md)-Azure Portal.
+  Pokud nemáte existující Aplikační bránu, přečtěte si [rychlý Start: přímý webový provoz pomocí Azure Application Gateway-Azure Portal](quick-create-portal.md).
 
 ## <a name="create-a-root-ca-certificate"></a>Vytvoření kořenového certifikátu certifikační autority
 
@@ -87,7 +87,7 @@ K vygenerování klíče pro certifikát serveru použijte následující přík
 CSR je veřejný klíč, který se udělí certifikační autoritě při žádosti o certifikát. Certifikační autorita vydá certifikát pro tento konkrétní požadavek.
 
 > [!NOTE]
-> CN (běžný název) pro certifikát serveru musí být jiný než doména vystavitele. V tomto případě je například CN pro vystavitele www.contoso.com a CN certifikát serveru je www.fabrikam.com.
+> CN (běžný název) pro certifikát serveru musí být jiný než doména vystavitele. V tomto případě je například CN pro vystavitele `www.contoso.com` a CN je `www.fabrikam.com`certifikátu serveru.
 
 
 1. K vygenerování CSR použijte následující příkaz:
@@ -96,7 +96,7 @@ CSR je veřejný klíč, který se udělí certifikační autoritě při žádos
    openssl req -new -sha256 -key fabrikam.key -out fabrikam.csr
    ```
 
-1. Po zobrazení výzvy zadejte heslo pro kořenový klíč a informace o organizaci pro vlastní certifikační autoritu: Země, stát, org, OU a plně kvalifikovaný název domény. Toto je doména webu a měla by se lišit od vystavitele.
+1. Po zobrazení výzvy zadejte heslo pro kořenový klíč a informace o organizaci pro vlastní certifikační autoritu: země, stát, org, OU, OU a plně kvalifikovaný název domény. Toto je doména webu a měla by se lišit od vystavitele.
 
    ![Certifikát serveru](media/self-signed-certificates/server-cert.png)
 
@@ -130,7 +130,7 @@ Na webovém serveru nakonfigurujte SSL pomocí souborů Fabrikam. CRT a Fabrikam
 
 ### <a name="iis"></a>IIS
 
-Pokyny k importu certifikátu a jejich nahrání jako certifikátu serveru ve službě IIS najdete v tématu [How to: Nainstalujte importované certifikáty na webový server ve Windows serveru 2003](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server).
+Pokyny k importu certifikátu a jejich nahrání jako certifikátu serveru ve službě IIS najdete v tématu [Postup: instalace importovaných certifikátů na webový server ve Windows serveru 2003](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server).
 
 Pokyny k vytvoření vazby SSL najdete v tématu [jak nastavit SSL na IIS 7](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1).
 
@@ -268,7 +268,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
     ![Test HTTPS](media/self-signed-certificates/https-probe.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o SSL\TLS v Application Gateway najdete v tématu [Přehled ukončení protokolu SSL a koncového šifrování protokolu SSL s Application Gateway](ssl-overview.md).
 

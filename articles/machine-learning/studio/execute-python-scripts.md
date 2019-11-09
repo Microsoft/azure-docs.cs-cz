@@ -1,5 +1,6 @@
 ---
 title: Spouštění skriptů Pythonu
+titleSuffix: ML Studio (classic) - Azure
 description: Naučte se používat modul spouštěného skriptu Pythonu pro použití kódu Pythonu v Machine Learning Studio (klasických) experimentech a webových službách.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: dea8fd7971f0572350306ea11ee1f9d897438d11
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6079f904002f00a39d3ee9d70dedd9d261e2825f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684874"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837638"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Spouštění skriptů strojového učení v jazyce Python v Azure Machine Learning Studio (Classic)
 
@@ -132,7 +133,7 @@ K vygenerování imagí z MatplotLib je třeba provést následující kroky:
 1. Získejte osu a vygenerujte do ní všechny.
 1. Uložte obrázek do souboru PNG.
 
-Tento proces je znázorněn v následujících obrázcích, které tvoří matici bodového grafu pomocí funkce scatter_matrix v PANDAS.
+Tento proces je znázorněný v následujících obrázcích, které vytvoří matici typu bodový graf pomocí funkce scatter_matrix v PANDAS.
 
 ![Kód pro uložení MatplotLibch obrázků do imagí](./media/execute-python-scripts/figure-v1-8.png)
 

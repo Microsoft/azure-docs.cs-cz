@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 09/26/2019
-ms.openlocfilehash: 072fafac7294757afb26511af569ea75ace0d20a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: df857fb938ade329a971578ac206f16f1357d7e5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811938"
+ms.locfileid: "73838762"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Vytvoření účtu obchodního tržiště v partnerském centru
 
@@ -137,7 +137,7 @@ Až se přihlásíte, dokončete nastavení svého účtu pomocí následující
 
 1. V partnerském centru vyberte **nastavení** > **nastavení pro vývojáře** > **programy** > **Začínáme**a zadejte svou pracovní e-mailovou adresu.
 2. Vyplňte podrobnosti na stránce profilu vydavatele.
-3. Přečtěte si podmínky a ujednání ve [smlouvě Microsoft Marketplace vydavatele](http://go.microsoft.com/fwlink/?LinkID=699560)a pak vyberte **přijmout a pokračovat** pro dokončení registrace.
+3. Přečtěte si podmínky a ujednání ve [smlouvě Microsoft Marketplace vydavatele](https://go.microsoft.com/fwlink/?LinkID=699560)a pak vyberte **přijmout a pokračovat** pro dokončení registrace.
 
     >[!Important]
     >*Abyste mohli přijmout tyto podmínky, musíte být oprávněni jednat jménem vaší společnosti.*

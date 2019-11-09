@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 293a90591a77825279c8ebbae64516b6126d8621
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a7a9efbf6fd9c3dbe6b16d12a54f743d5b0820ba
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73588262"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838217"
 ---
 # <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>Nasazení Azure Průzkumník dat do Virtual Network (Preview)
 
@@ -104,7 +104,7 @@ Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nast
 | Austrálie – východ | 40.82.217.84 |
 | Austrálie – jihovýchod | 20.40.161.39 |
 | BrazilSouth | 191.233.25.183 |
-| Střední Kanada | 40.82.188.208 |
+| Kanada – střed | 40.82.188.208 |
 | Kanada – východ | 40.80.255.12 |
 | Střed Indie | 40.81.249.251 |
 | Střední USA | 40.67.188.68 |
@@ -143,7 +143,7 @@ Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nast
 | Austrálie – východ | 191.239.64.128 |
 | Austrálie – jihovýchod | 191.239.160.47 |
 | Brazílie – jih | 23.98.145.105 |
-| Střední Kanada | 168.61.212.201 |
+| Kanada – střed | 168.61.212.201 |
 | Kanada – východ | 168.61.212.201 |
 | Střed Indie | 23.99.5.162 |
 | Střední USA | 168.61.212.201 |
@@ -220,30 +220,32 @@ Pomocí ExpressRoute se připojte k Virtual Network Azure k místní síti. Bě�
 
 Pokud chcete zabezpečit odchozí přenosy pomocí [Azure firewall](/azure/firewall/overview) nebo libovolného virtuálního zařízení pro omezení názvů domén, musí být v bráně firewall povolené tyto plně kvalifikované názvy domény (FQDN).
 
-* prod.warmpath.msftcloudes.com:443
-* production.diagnostics.monitoring.core.windows.net:443
-* graph.windows.net:443
-* *. update.microsoft.com:443
-* shavamanifestcdnprod1.azureedge.net:443
-* login.live.com:443
-* wdcp.microsoft.com:443
-* login.microsoftonline.com:443
-* azureprofilerfrontdoor.cloudapp.net:443
-* *. core.windows.net:443
-* *. servicebus.windows.net:443
-* shoebox2.metrics.nsatc.net:443
-* production.diagnostics.monitoring.core.windows.net:443
-* prod-dsts.dsts.core.windows.net:443
-* ocsp.msocsp.com:80
-* *. windowsupdate.com:80
-* ocsp.digicert.com:80
-* go.microsoft.com:80
-* dmd.metaservices.microsoft.com:80
-* www.msftconnecttest.com:80
-* crl.microsoft.com:80
-* www.microsoft.com:80
-* adl.windows.com:80
-* crl3.digicert.com:80
+```
+prod.warmpath.msftcloudes.com:443
+production.diagnostics.monitoring.core.windows.net:443
+graph.windows.net:443
+*.update.microsoft.com:443
+shavamanifestcdnprod1.azureedge.net:443
+login.live.com:443
+wdcp.microsoft.com:443
+login.microsoftonline.com:443
+azureprofilerfrontdoor.cloudapp.net:443
+*.core.windows.net:443
+*.servicebus.windows.net:443
+shoebox2.metrics.nsatc.net:443
+production.diagnostics.monitoring.core.windows.net:443
+prod-dsts.dsts.core.windows.net:443
+ocsp.msocsp.com:80
+*.windowsupdate.com:80
+ocsp.digicert.com:80
+go.microsoft.com:80
+dmd.metaservices.microsoft.com:80
+www.msftconnecttest.com:80
+crl.microsoft.com:80
+www.microsoft.com:80
+adl.windows.com:80
+crl3.digicert.com:80
+```
 
 Je také potřeba definovat [směrovací tabulku](/azure/virtual-network/virtual-networks-udr-overview) v podsíti s [adresami pro správu](#azure-data-explorer-management-ip-addresses) a [adresami monitorování stavu](#health-monitoring-addresses) s dalším segmentem směrování *Internetu* , aby se předešlo problémům s asymetrickými trasami.
 

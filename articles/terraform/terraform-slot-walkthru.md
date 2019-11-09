@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: 209bc23c6f8e96734506e3017ed2b16e51c77a00
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.date: 11/07/2019
+ms.openlocfilehash: 0bfd10325f1a62e74f0d3573f052d114069491a3
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969276"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838061"
 ---
 # <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>Kurz: zřízení infrastruktury pomocí slotů nasazení Azure pomocí Terraformu
 
@@ -19,7 +19,7 @@ ms.locfileid: "72969276"
 
 Tento článek vám použití slotů nasazení ukáže na nasazením dvou aplikací prostřednictvím GitHubu a Azure. Jedna aplikace je hostovaná v produkčním slotu. Druhá aplikace je hostovaná v přípravném slotu. (Názvy "produkční" a "fázování" jsou libovolné. Můžou to být libovolná vhodná pro váš scénář.) Až nakonfigurujete sloty nasazení, použijete Terraformu k proměně mezi oběma sloty podle potřeby.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
@@ -104,7 +104,7 @@ Tento článek vám použití slotů nasazení ukáže na nasazením dvou aplika
     }
     ```
 
-1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
+1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
 
 1. Když máte soubor vytvořený, ověřte jeho obsah.
 
@@ -260,7 +260,7 @@ Chcete-li otestovat záměnu těchto dvou slotů nasazení, proveďte následuj�
     }
     ```
 
-1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
+1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
 
 1. Inicializujte Terraform.
 
@@ -297,4 +297,4 @@ Po prohození aplikace uvidíte původní konfiguraci.
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Terraformu v Azure](/azure/ansible/)
+> [Další informace o používání Terraformu v Azure](/azure/terraform)

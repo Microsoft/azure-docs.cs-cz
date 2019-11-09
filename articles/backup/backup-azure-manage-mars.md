@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: 68c991396c92e6f288d1cc17d6b7dcf1ec79343f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 88a914a2a4d3d62918b01674d6d21f2f011e2c2e
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165482"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834305"
 ---
 # <a name="manage-microsoft-azure-recovery-services-agent-backups-by-using-the-azure-backup-service"></a>Správa záloh agenta Microsoft Azure Recovery Services pomocí služby Azure Backup
 
@@ -181,7 +181,7 @@ Existují dva způsoby, jak zabránit ochraně zálohování souborů a složek:
 
     ![Zastavte naplánované zálohování.](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. Zobrazí se výzva k zadání bezpečnostního kódu PIN (osobní identifikační číslo), které musíte vygenerovat ručně. Abyste to mohli udělat, nejdřív se přihlaste k Azure Portal.
-5. Přejít na **Recovery Services trezoru** > **nastavení**–**vlastnosti** > .
+5. Přejít do > **Recovery Services trezoru** **Nastavení** > **vlastnosti**.
 6. V části **bezpečnostní kód PIN**vyberte **Generovat**. Zkopírujte tento kód PIN. PIN kód je platný jenom po dobu pěti minut.
 7. V konzole pro správu vložte kód PIN a pak vyberte **OK**.
 
@@ -209,4 +209,4 @@ Pokud jste zastavili ochranu při zachování dat a rozhodli jste se obnovit och
 ## <a name="next-steps"></a>Další kroky
 
 - Informace o podporovaných scénářích a omezeních najdete v části [support Matrix pro Mars](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent).
-- Přečtěte si další informace o [chování uchovávání zásad zálohování ad hoc](https://docs.microsoft.com/azure/backup/backup-configure-vault#ad-hoc-backup-policy-retention-behavior.md).
+- Přečtěte si další informace o [chování uchovávání zásad zálohování ad hoc](backup-configure-vault.md#ad-hoc-backup-policy-retention-behavior).

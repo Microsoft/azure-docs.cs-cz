@@ -1,6 +1,6 @@
 ---
 title: Automatické určení mluveného jazyka pomocí Video Indexer – Azure
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: Tento článek popisuje, jak se Video Indexer model identifikace jazyka používá k automatické identifikaci mluveného jazyka ve videu.
 services: media-services
 author: juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: ellbe
-ms.openlocfilehash: 729ac9fc7c8ec6a85b3497c51888d3b5a6fc8558
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: ce3e488a6387f9a823d7c1b514b52af24944776b
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147190"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838997"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automaticky identifikovat mluvený jazyk pomocí modelu identifikace jazyka
 
@@ -23,7 +23,7 @@ Video Indexer podporuje automatickou identifikaci jazyka (víka), což je proces
 
 ## <a name="choosing-auto-language-identification-on-indexing"></a>Výběr automatické identifikace jazyka při indexování
 
-Při indexování nebo [opětovném indexování](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) videa pomocí rozhraní API vyberte `auto detect` možnost v `sourceLanguage` parametru.
+Při indexování nebo [opětovném indexování](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) videa pomocí rozhraní API vyberte v parametrech `sourceLanguage` možnost `auto detect`.
 
 Když používáte portál, přejděte na **video o účtu** na domovské stránce [video indexer](https://www.videoindexer.ai/) a najeďte myší na název videa, které chcete znovu indexovat. V pravém dolním rohu klikněte na tlačítko znovu indexovat. V dialogovém okně **znovu indexovat video** vyberte v rozevíracím seznamu **jazyk zdrojové video** možnost *automaticky rozpoznat* .
 
@@ -31,9 +31,9 @@ Když používáte portál, přejděte na **video o účtu** na domovské strán
 
 ## <a name="model-output"></a>Výstup modelu
 
-Pokud je `> 0.6`spolehlivost pro daný jazyk, video indexer video transcribes podle nejpravděpodobnějšího jazyka. Pokud jazyk nelze identifikovat s jistotou, předpokládá se, že mluvený jazyk je angličtina. 
+Pokud je spolehlivost tohoto jazyka `> 0.6`, Video Indexer video transcribes podle nejpravděpodobnějšího jazyka. Pokud jazyk nelze identifikovat s jistotou, předpokládá se, že mluvený jazyk je angličtina. 
 
-Převládající jazyk modelu je k dispozici ve formátu JSON Insights `sourceLanguage` jako atribut (pod položkou root/video/Insights). Odpovídající hodnocení spolehlivosti je také k dispozici v `sourceLanguageConfidence` atributu.
+Jazyk dominantního modelu je k dispozici ve formátu JSON Insights jako atribut `sourceLanguage` (pod položkou root/video/Insights). Odpovídající hodnocení spolehlivosti je také k dispozici v atributu `sourceLanguageConfidence`.
 
 ```json
 "insights": {
@@ -51,7 +51,7 @@ Převládající jazyk modelu je k dispozici ve formátu JSON Insights `sourceLa
 
 * Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (zjednodušená), japonština, ruština a brazilská portugalština.
 * Pokud zvuk obsahuje jiné jazyky než seznam podporované, výsledek je neočekávaný.
-* Pokud video indexer nemůže identifikovat jazyk s dostatečnou spolehlivostí (`>0.6`), je záložní jazyk angličtina.
+* Pokud Video Indexer nemůže určit jazyk s dostatečnou spolehlivostí (`>0.6`), je záložní jazyk angličtina.
 * Neexistuje žádná aktuální podpora pro soubor se smíšenými jazyky. Pokud zvuk obsahuje smíšené jazyky, výsledek je neočekávaný. 
 * Zvuk nízké kvality může mít vliv na výsledky modelu.
 * Model vyžaduje ve zvukovém zařízení alespoň jednu minutu řeči.

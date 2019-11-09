@@ -1,7 +1,7 @@
 ---
-title: Přizpůsobení modelu značky – Azure pomocí webových stránek Video Indexer
-titlesuffix: Azure Media Services
-description: Tento článek ukazuje, jak upravit značky model s webem Video Indexer.
+title: Použití Video Indexer webu k přizpůsobení modelu značek – Azure
+titleSuffix: Azure Media Services
+description: Tento článek popisuje, jak přizpůsobit model značek pomocí webu Video Indexer.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,85 +10,85 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 721fde63aeae8704761b3c21f489dcad77cb89e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4b2f7a8b43c1723beb0dd8da82814f74cd7b135
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799598"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838351"
 ---
-# <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Přizpůsobení modelu značky s webem Video Indexer
+# <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Přizpůsobení modelu značek pomocí Video Indexer webu
 
-Video Indexer podporuje značky zjišťování z pro zpracování řeči a vizuální textu během indexování a přeindexování z obrazový a zvukový obsah. Funkce detekce značka identifikuje zmínky produktů, služeb, a společnosti navrhl Bingu značky databáze. Například pokud Microsoft je uveden v videa nebo zvukový obsah nebo pokud se zobrazí ve visual textu ve videu, Video Indexer rozpozná jako značku v obsahu. Vlastního modelu značky vám umožní vybrat, jestli je Video Indexer bude zjišťovat značky z Bingu nebo ne značky databáze, vyloučit určité značky nebudou zjištěny (v podstatě vytváření černého seznam značek) a obsahovat značky, které by měly být součástí modelu který nemusí být v databázi značky Bingu (v podstatě vytvoří prázdný seznam značek).
+Video Indexer podporuje rozpoznávání značek od mluvené řeči a vizuálního textu během indexování a přeindexování videa a zvukového obsahu. Funkce detekce značky identifikuje zmínky o produktech, službách a společnostech, které navrhla databáze značek Bingu. Například pokud se Microsoft zmiňuje v obrazovém nebo zvukovém obsahu nebo pokud se zobrazuje v vizuálním textu ve videu, Video Indexer ho detekuje jako značku v obsahu. Vlastní model značek umožňuje vybrat, jestli Video Indexer budou rozpoznávat značky z databáze značek Bingu, vyloučit některé značky z detekce (v podstatě vytváření černého seznamu značek) a zahrnout značky, které by měly být součástí vašeho modelu. to nemusí být v databázi značek Bingu (v podstatě vytváření bílého seznamu značek).
 
-Podrobnější přehled najdete v části [přehled](customize-brands-model-overview.md).
+Podrobný přehled najdete v tématu [Přehled](customize-brands-model-overview.md).
 
-Video Indexer webu můžete vytvářet, používat a upravovat vlastní modely značky zjistil ve videu, jak je popsáno v tomto tématu. Můžete také použít rozhraní API, jak je popsáno v [značky přizpůsobení modelu pomocí rozhraní API](customize-brands-model-with-api.md).
+Web Video Indexer můžete použít k vytváření, používání a úpravám vlastních značek, které byly zjištěny ve videu, jak je popsáno v tomto tématu. Můžete také použít rozhraní API, jak je popsáno v tématu [Přizpůsobení modelu značek pomocí rozhraní API](customize-brands-model-with-api.md).
 
-## <a name="edit-the-settings-of-the-brands-model"></a>Upravit nastavení tohoto modelu značky  
+## <a name="edit-the-settings-of-the-brands-model"></a>Úprava nastavení modelu značek  
 
-Máte možnost nastavit, jestli chcete, aby značky z databáze značky Bingu detekovanou. V takovém případě musíte upravit nastavení tohoto modelu značky.
+Máte možnost nastavit, jestli chcete, aby se zjistily značky z databáze značek Bingu. V takovém případě je nutné upravit nastavení modelu značek.
 
 1. Přejděte na web [Video Indexer](https://www.videoindexer.ai/) a přihlaste se.
-2. Přizpůsobení modelu ve vašem účtu, klikněte na **obsahu přizpůsobení modelu** tlačítko v pravém horním rohu stránky.
+2. Pokud chcete ve svém účtu přizpůsobit model, klikněte na tlačítko **Přizpůsobení modelu obsahu** v pravém horním rohu stránky.
  
    ![Přizpůsobení modelu obsahu](./media/content-model-customization/content-model-customization.png) 
-3. Chcete-li upravit značky, vyberte **značky** kartu.
+3. Chcete-li upravit značky, vyberte kartu **značky** .
 
-    ![Přizpůsobení modelu značky](./media/customize-brand-model/customize-brand-model.png)
-4. Zkontrolujte **zobrazit značky navrhl Bingu** možnost, pokud chcete použít pro Video Indexer zahrnout značky navrhl Bingu. Tuto možnost nechte možnost nezaškrtnutou Pokud nechcete, aby Video Indexer ke zjištění značky navrhl Bingu ve vašem obsahu. 
+    ![Přizpůsobení modelu značek](./media/customize-brand-model/customize-brand-model.png)
+4. Pokud chcete, aby Video Indexer zahrnula značky navržené v rámci Bingu, přečtěte si možnost **Zobrazit značky navržené podle Bingu** . Tuto možnost nechte nezaškrtnuté, pokud nechcete, Video Indexer ke zjištění značek navrhovaných bingem v obsahu. 
 
-## <a name="include-brands-in-the-model"></a>Zahrnout značky v modelu
+## <a name="include-brands-in-the-model"></a>Zahrnutí značek do modelu
 
-**Obsahovat značky** oddíl představuje vlastní značky, které chcete použít pro Video Indexer ke zjišťování i v případě, že nejsou navrhl Bingu.  
+Oddíl **include** Tags reprezentuje vlastní značky, které chcete video indexer rozpoznat, i když je služba Bing nenavrhuje.  
 
-### <a name="add-a-brand"></a>Přidání značek
+### <a name="add-a-brand"></a>Přidat značku
 
-1. Klikněte na tlačítko "+ Přidat značky".
+1. Klikněte na + Přidat značku.
 
-    ![Přizpůsobení modelu značky](./media/customize-brand-model/add-brand.png)
+    ![Přizpůsobení modelu značek](./media/customize-brand-model/add-brand.png)
 
-    Zadejte název (povinné), kategorie (volitelné), popis (nepovinné) a odkazovat na adresu URL (nepovinné).
-    Pole kategorie je určena při označení vašich značek. Toto pole ukazovat značku *značky* při použití rozhraní Video Indexer API. Například značku "Azure" můžete příznakem nebo klasifikovány jako "Cloud".
+    Zadejte název (povinné), kategorii (volitelné), popis (nepovinné) a adresu URL odkazu (volitelné).
+    Pole kategorie je určeno, aby vám pomohly označit značky. Toto pole se zobrazuje jako *značka* značky při použití video indexer rozhraní API. Například značka "Azure" může být označená nebo Kategorizovaná jako "Cloud".
 
-    Do pole Adresa URL odkazu může být jakékoli webu odkaz pro značku jít například o odkaz na stránku jeho encyklopedii Wikipedia.
-2. Klikněte na tlačítko "Přidat značky" a uvidíte, že značka se přidala **obsahovat značky** seznamu.
+    Pole Adresa URL odkazu může být libovolný referenční web pro značku, jako je například odkaz na svou Wikipedii stránku.
+2. Klikněte na Přidat značku a uvidíte, že se do seznamu **Zahrnutí značek** přidala značka.
 
-### <a name="edit-a-brand"></a>Úprava značek
+### <a name="edit-a-brand"></a>Úprava značky
 
-1. Klikněte na ikonu tužky vedle značku, kterou chcete upravit.
+1. Klikněte na ikonu tužky vedle značky, kterou chcete upravit.
 
-    Můžete aktualizovat kategorii, popis a adresa URL odkazu značek. Název značky nemůže změnit, protože názvy značek musí být jedinečné. Pokud potřebujete změnit název značky, odstranit celý značky (viz další část) a vytvořte novou značku s novým názvem.
-2. Klikněte na tlačítko **aktualizovat** tlačítko Aktualizovat značku novými informacemi.
+    Můžete aktualizovat kategorii, popis nebo adresu URL odkazu na značku. Nemůžete změnit název značky, protože názvy značek jsou jedinečné. Pokud potřebujete změnit název značky, odstraňte celou značku (viz další část) a vytvořte novou značku s novým názvem.
+2. Kliknutím na tlačítko **aktualizovat** aktualizujte značku novými informacemi.
 
-### <a name="delete-a-brand"></a>Odstranění značek
+### <a name="delete-a-brand"></a>Odstranění značky
 
-1. Klikněte na ikonu koše vedle značku, kterou chcete odstranit.
-2. Klikněte na možnost "Odstranit" a značka se nebude zobrazovat ve vašich *obsahovat značky* seznamu.
+1. Klikněte na ikonu koše vedle značky, kterou chcete odstranit.
+2. Klikněte na Odstranit a značka se už nebude zobrazovat v seznamu *zahrnutých značek* .
 
 ## <a name="exclude-brands-from-the-model"></a>Vyloučení značek z modelu
 
-**Vyloučení značek** oddíl představuje značky, které chcete použít pro Video Indexer nechcete zjišťovat.
+Část **vyloučení značek** představuje značky, které chcete, aby se video indexer nerozpoznaly.
 
-### <a name="add-a-brand"></a>Přidání značek
+### <a name="add-a-brand"></a>Přidat značku
 
-1. Klikněte na tlačítko "+ Přidat značky".
+1. Klikněte na + Přidat značku.
 
-    Zadejte název (povinné), kategorie (volitelné).
-2. Klikněte na tlačítko "Přidat značky" a uvidíte, že značka se přidala *vyloučení značek* seznamu.
+    Zadejte název (povinné), kategorii (volitelné).
+2. Klikněte na Přidat značku a uvidíte, že se do seznamu *vyloučení značek* přidala značka.
 
-### <a name="edit-a-brand"></a>Úprava značek
+### <a name="edit-a-brand"></a>Úprava značky
 
-1. Klikněte na ikonu tužky vedle značku, kterou chcete upravit.
+1. Klikněte na ikonu tužky vedle značky, kterou chcete upravit.
 
-    Lze aktualizovat pouze kategorii značek. Název značky nemůže změnit, protože názvy značek musí být jedinečné. Pokud potřebujete změnit název značky, odstranit celý značky (viz další část) a vytvořte novou značku s novým názvem.
-2. Klikněte na tlačítko **aktualizovat** tlačítko Aktualizovat značku novými informacemi.
+    Můžete aktualizovat pouze kategorii značky. Nemůžete změnit název značky, protože názvy značek jsou jedinečné. Pokud potřebujete změnit název značky, odstraňte celou značku (viz další část) a vytvořte novou značku s novým názvem.
+2. Kliknutím na tlačítko **aktualizovat** aktualizujte značku novými informacemi.
 
-### <a name="delete-a-brand"></a>Odstranění značek
+### <a name="delete-a-brand"></a>Odstranění značky
 
-1. Klikněte na ikonu koše vedle značku, kterou chcete odstranit.
-2. Klikněte na možnost "Odstranit" a značka se nebude zobrazovat ve vašich *vyloučení značek* seznamu.
+1. Klikněte na ikonu koše vedle značky, kterou chcete odstranit.
+2. Klikněte na Odstranit a značka se už nebude zobrazovat v seznamu *vyloučených značek* .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Upravit značky modelu s použitím rozhraní API](customize-brands-model-with-api.md)
+[Přizpůsobení modelu značek pomocí rozhraní API](customize-brands-model-with-api.md)

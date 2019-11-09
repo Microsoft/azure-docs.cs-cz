@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: b451597d2d91117e11b1becd8b4ab96f981dade8
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ce0b917f34cab31227e721e119c72cd5d1f99bff
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931318"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832006"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Nejčastější dotazy k řešení Network Performance Monitor
 
@@ -31,7 +31,7 @@ Další informace o různých funkcích podporovaných nástrojem [Network Perfo
 ### <a name="what-are-the-platform-requirements-for-the-nodes-to-be-used-for-monitoring-by-npm"></a>Jaké jsou požadavky na platformu pro uzly, které se mají použít k monitorování pomocí NPM?
 Níže jsou uvedené požadavky na platformu pro různé možnosti NPM:
 
-- Funkce monitorování výkonu a monitorování výkonu služby NPM podporují desktopové a klientské operační systémy Windows Server i Windows. Podporované verze operačního systému Windows Server jsou 2008 SP1 nebo novější. Podporovány jsou stolní počítače a verze klientů Windows, Windows 10, Windows 8.1, Windows 8 a Windows 7. 
+- Funkce monitorování výkonu a monitorování výkonu služby NPM podporují desktopové a klientské operační systémy Windows Server i Windows. Podporované verze operačního systému Windows Server jsou 2008 SP1 nebo novější. Podporovány jsou stolní počítače a verze klientů Windows ve Windows 10, Windows 8.1, Windows 8 a Windows 7. 
 - Funkce monitorování ExpressRoute pro NPM podporuje jenom operační systém Windows Server (2008 SP1 nebo novější).
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Můžu počítače se systémem Linux použít jako uzly monitorování v NPM?
@@ -48,7 +48,7 @@ Pro funkci monitorování ExpressRoute by uzly Azure měly být připojené pouz
 ### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>Který protokol mezi TCP a ICMP by měl být zvolen pro monitorování?
 Pokud sledujete síť pomocí uzlů založených na Windows serveru, doporučujeme, abyste jako monitorovací protokol používali TCP, protože poskytuje lepší přesnost. 
 
-Protokol ICMP se doporučuje u klientských počítačů s operačním systémem Windows nebo klientských uzlů. Tato platforma does'nt umožňuje odesílat data TCP přes nezpracované sokety, které NPM používá ke zjišťování síťové topologie.
+Protokol ICMP se doporučuje u klientských počítačů s operačním systémem Windows nebo klientských uzlů. Tato platforma neumožňuje odesílat data TCP přes nezpracované sokety, které NPM používá ke zjišťování síťové topologie.
 
 Můžete získat další podrobnosti o relativních výhodách [jednotlivých protokolů.](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol)
 
@@ -69,7 +69,7 @@ Pro každou podsíť, kterou chcete monitorovat, byste měli použít aspoň jed
 ### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>Jaký je maximální počet agentů, které můžu použít, nebo se zobrazuje chyba... dosáhli jste limitu konfigurace?
 NPM omezuje počet IP adres na jeden pracovní prostor na 5000. Pokud má uzel adresy IPv4 i IPv6, bude se tento uzel počítat jako 2 IP adresy. Proto tento limit 5000 IP adres určí horní limit počtu agentů. Neaktivních agentů můžete odstranit na kartě uzly v NPM > > nakonfigurovat. NPM také udržuje historii všech IP adres, které byly někdy přiřazeny k virtuálnímu počítači, který je hostitelem agenta, a každá z nich se počítá jako samostatná IP adresa přispívající k tomuto hornímu limitu 5000 IP adres. Pokud chcete pro svůj pracovní prostor uvolnit IP adresy, můžete pomocí stránky uzly odstranit IP adresy, které se nepoužívají.
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 ### <a name="how-are-loss-and-latency-calculated"></a>Jak se počítají ztráty a latence
 Zdrojové agenti odesílají žádosti TCP SYN (Pokud je zvolen protokol TCP jako protokol pro monitorování) nebo požadavky na ODEZVu ICMP (Pokud je protokol ICMP zvolen jako protokol pro monitorování) do cílové IP adresy v pravidelných intervalech, aby se zajistilo, že všechny cesty mezi zdrojovým cílovým IP serverem je pokryta kombinace. Procento přijatých paketů a doba odezvy přenosu paketů se měří k výpočtu ztráty a latence každé cesty. Tato data se agreguje v intervalu cyklického dotazování a přes všechny cesty, aby se získaly agregované hodnoty ztráty a latence pro danou kombinaci IP adres pro konkrétní interval dotazování.
@@ -98,6 +98,42 @@ NPM používá mechanismus pravděpodobnostní pro přiřazení pravděpodobnost
 ### <a name="how-can-i-create-alerts-in-npm"></a>Jak můžu vytvářet upozornění v NPM?
 Podrobné pokyny najdete [v části s výstrahami v dokumentaci](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor#alerts) .
 
+### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>Jaké jsou výchozí Log Analytics dotazy na výstrahy
+Dotaz na sledování výkonu
+
+    NetworkMonitoring 
+     | where (SubType == "SubNetwork" or SubType == "NetworkPath") 
+     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and RuleName == "<<your rule name>>"
+    
+Dotaz na monitorování připojení služby
+
+    NetworkMonitoring                 
+     | where (SubType == "EndpointHealth" or SubType == "EndpointPath")
+     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or ServiceResponseHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and TestName == "<<your test name>>"
+    
+ExpressRoute monitorovat dotazy: dotaz na okruhy
+
+    NetworkMonitoring
+    | where (SubType == "ERCircuitTotalUtilization") and (UtilizationHealthState == "Unhealthy") and CircuitResourceId == "<<your circuit resource ID>>"
+
+Soukromý partnerský vztah
+
+    NetworkMonitoring 
+     | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ExpressRoutePath")   
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == "<<your circuit name>>" and VirtualNetwork == "<<vnet name>>"
+
+Partnerský vztah Microsoftu
+
+    NetworkMonitoring 
+     | where (SubType == "ExpressRoutePeering" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == ""<<your circuit name>>" and PeeringType == "MicrosoftPeering"
+
+Společný dotaz   
+
+    NetworkMonitoring
+    | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") 
+
 ### <a name="can-npm-monitor-routers-and-servers-as-individual-devices"></a>Můžou NPM monitorovat směrovače a servery jako jednotlivá zařízení?
 NPM identifikuje jenom IP adresu a název hostitele pro základní síťové směrování (přepínače, směrovače, servery atd.) mezi zdrojovou a cílovou IP adresou. Také identifikuje latenci mezi těmito identifikovanými segmenty směrování. Nemonitoruje jednotlivě tyto segmenty směrování.
 
@@ -110,17 +146,23 @@ Využití šířky pásma je celkovým počtem příchozích a odchozích šíř
 ### <a name="can-we-get-incoming-and-outgoing-bandwidth-information-for-the-expressroute"></a>Můžeme získat informace o příchozích a odchozích šířkách šířky pásma pro ExpressRoute?
 Je možné zachytit příchozí a odchozí hodnoty pro primární i sekundární šířku pásma.
 
-Pro informace o úrovni partnerských vztahů použijte níže uvedený dotaz v hledání v protokolu.
+Pro informace o úrovni partnerského vztahu MS použijte níže uvedený dotaz v hledání v protokolu.
 
     NetworkMonitoring 
-    | where SubType == "ExpressRoutePeeringUtilization"
-    | project CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+     | where SubType == "ERMSPeeringUtilization"
+     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+    
+Informace o úrovni privátního partnerského vztahu najdete níže uvedeným dotazem v hledání v protokolu.
+
+    NetworkMonitoring 
+     | where SubType == "ERVNetConnectionUtilization"
+     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
   
-Pro informace o úrovni okruhu použijte níže uvedený dotaz 
+Pro informace o úrovni okruhu použijte níže uvedený dotaz v hledání v protokolu
 
     NetworkMonitoring 
-    | where SubType == "ExpressRouteCircuitUtilization"
-    | project CircuitName,PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+        | where SubType == "ERCircuitTotalUtilization"
+        | project CircuitName, PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Které oblasti jsou podporovány pro monitor výkonu NPM?
 NPM může monitorovat propojení mezi sítěmi v jakékoli části světa, od pracovního prostoru hostovaného v některé z [podporovaných oblastí](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) .
@@ -139,11 +181,11 @@ NPM používá upravenou verzi traceroute ke zjištění topologie ze zdrojovéh
 Segment směrování nemusí reagovat na traceroute v jednom nebo několika následujících scénářích:
 
 * Směrovače byly nakonfigurovány tak, aby neodhalily svoji identitu.
-* Síťová zařízení nepovolují provoz ICMP_TTL_EXCEEDED.
-* Brána firewall blokuje odpověď ICMP_TTL_EXCEEDED ze síťového zařízení.
+* Síťová zařízení nepovolují ICMP_TTL_EXCEEDED provoz.
+* Brána firewall blokuje ICMP_TTL_EXCEEDED reakci ze síťového zařízení.
 
-### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy-"></a>Zobrazují se upozornění na špatné testy, ale v grafu ztrát a latence se nezobrazuje vysoké hodnoty NPM. Návody zjistit, co není v pořádku?
-NPM vygeneruje výstrahu v případě, že koncová latence mezi zdrojem a cílem překračuje threshhold pro libovolnou cestu mezi nimi. Některé sítě mají více než jednu cestu připojující stejný zdroj a cíl. NPM vyvolá výstrahu, že některá cesta není v pořádku. Ztráta a latence zaznamenané v grafech jsou průměrnou hodnotou všech cest, takže se nemusí zobrazit přesnou hodnotu jedné cesty. Chcete-li zjistit, kde došlo k porušení prahové hodnoty, vyhledejte ve výstraze sloupec "podtyp". Pokud je problém způsoben cestou, hodnota podtypu bude Síťovácesta (pro testy sledování výkonu), EndpointPath (pro testy monitorování dostupnosti služby) a ExpressRoutePath (pro testy ExpressRotue monitor). 
+### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>Zobrazují se upozornění na špatné testy, ale v grafu ztrát a latence se nezobrazuje vysoké hodnoty NPM. Návody zjistit, co není v pořádku?
+NPM vygeneruje výstrahu v případě, že koncová latence mezi zdrojem a cílem překračuje prahovou hodnotu pro libovolnou cestu mezi nimi. Některé sítě mají více cest připojujících se ke stejnému zdroji a cíli. NPM vyvolá výstrahu, že některá cesta není v pořádku. Ztráta a latence zaznamenané v grafech jsou průměrnou hodnotou všech cest, takže se nemusí zobrazit přesnou hodnotu jedné cesty. Chcete-li zjistit, kde došlo k porušení prahové hodnoty, vyhledejte ve výstraze sloupec "podtyp". Pokud je problém způsoben cestou, hodnota podtypu bude Síťovácesta (pro testy sledování výkonu), EndpointPath (pro testy monitorování dostupnosti služby) a ExpressRoutePath (pro testy ExpressRotue monitor). 
 
 Vzorový dotaz, který se má najít, je cesta není v pořádku:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: afbf77014ece981568d4123db7820a2fa0a8f60d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: e1b513344b6ea16c25d829939e64cd5ca1063c87
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749104"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838896"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuální počítače v šabloně Azure Resource Manager
 
@@ -282,7 +282,7 @@ Chcete-li nastavit tuto vlastnost, musí existovat síťové rozhraní. Proto po
 Při definování prostředku virtuálního počítače se používá několik prvků profilu. Některé jsou povinné a některé jsou volitelné. Například prvky položka hardwareprofile, osProfile, storageProfile a networkProfile jsou požadovány, ale diagnosticsProfile je nepovinný. Tyto profily definují nastavení, jako například:
    
 - [hodnota](sizes.md)
-- [název](/azure/architecture/best-practices/naming-conventions) a přihlašovací údaje
+- [název](/azure/architecture/best-practices/resource-naming) a přihlašovací údaje
 - nastavení disku a [operačního systému](cli-ps-findimage.md)
 - [síťové rozhraní](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
 - Diagnostika spouštění
@@ -360,7 +360,7 @@ Pokud chcete vytvořit virtuální počítač ze spravované image, změňte ele
 
 ### <a name="attach-data-disks"></a>Připojit datové disky
 
-Volitelně můžete přidat datové disky k virtuálním počítačům. [Počet disků](sizes.md) závisí na velikosti disku operačního systému, který používáte. S velikostí virtuálních počítačů nastavených na Standard_DS1_v2 je maximální počet datových disků, které se dají do nich přidat, dva. V příkladu se do každého virtuálního počítače přidávají jeden spravovaný datový disk:
+Volitelně můžete přidat datové disky k virtuálním počítačům. [Počet disků](sizes.md) závisí na velikosti disku operačního systému, který používáte. V případě, že je velikost virtuálních počítačů nastavená na Standard_DS1_v2, maximální počet datových disků, které se dají do nich přidat, je dva. V příkladu se do každého virtuálního počítače přidávají jeden spravovaný datový disk:
 
 ```
 "dataDisks": [

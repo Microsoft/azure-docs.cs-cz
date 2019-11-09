@@ -8,12 +8,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 8/13/2018
 ms.author: victorh
-ms.openlocfilehash: 6e85bd6ec51cff27fed6d0b2d9e73f94325e4d4f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: df7897e5b0941f1763f1a10e51d49827bd2ca63d
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60194182"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839266"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>Vytvoření testovacího prostředí brány Azure Firewall
 
@@ -21,20 +21,20 @@ Tento ukázkový skript vytvoří bránu firewall a testovací síťové prostř
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Brána firewall je v podsíti AzureFirewallSubnet a je nakonfigurovaná kolekcí pravidel aplikace s jediným pravidlem, které umožňuje přístup k www.microsoft.com.
+Brána firewall je ve AzureFirewallSubnet a je nakonfigurovaná pomocí kolekce pravidel aplikace s jedním pravidlem, které umožňuje přístup k `www.microsoft.com`.
 
 Vytvoří se trasa definovaná uživatelem, která odkazuje síťový provoz z podsítě ServersSubnet přes bránu firewall, kde se používají její pravidla.
 
 Skript můžete spustit ve službě Azure [Cloud Shell](https://shell.azure.com/powershell) nebo v místně nainstalovaném PowerShellu. 
 
-Při spuštění PowerShell místně, vyžaduje tento skript Azure Powershellu. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. 
+Pokud spustíte prostředí PowerShell místně, vyžaduje tento skript Azure PowerShell. Nainstalovanou verzi zjistíte spuštěním rutiny `Get-Module -ListAvailable Az`. 
 
 Pokud potřebujete PowerShell upgradovat můžete použít modul `PowerShellGet`, který je integrovaný ve Windows 10 a Windows Serveru 2016.
 
 > [!NOTE]
 >V ostatních verzích Windows musíte modul `PowerShellGet` nejprve nainstalovat, než ho budete moct použít. Zda máte modul v systému nainstalovaný zjistíte příkazem `Get-Module -Name PowerShellGet -ListAvailable | Select-Object -Property Name,Version,Path`. Pokud je výstup prázdný, musíte nainstalovat nejnovější [Windows Management framework](https://www.microsoft.com/download/details.aspx?id=54616).
 
-Další informace najdete v tématu [instalace Azure Powershellu](/powershell/azure/install-Az-ps)
+Další informace najdete v tématu [instalace Azure PowerShell](/powershell/azure/install-Az-ps) .
 
 Každá přítomná instalace prostředí Azure PowerShell provedená instalačním programem webové platformy způsobí konflikt s instalací modulu PowerShellGet, takže ji musíte odstranit.
 
@@ -77,7 +77,7 @@ Tento skript k vytvoření skupiny prostředků, virtuální sítě a skupin zab
 |[New-AzFirewallApplicationRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallapplicationrule)|Vytvoří nové pravidlo aplikace Azure Firewall.|
 |[Set-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/set-azfirewall)|Potvrdí změny objektu služby Azure Firewall.|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

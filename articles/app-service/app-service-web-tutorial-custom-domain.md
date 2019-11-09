@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 52394eb150a4206b7fb31cdf4b801762511e1a8c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fa8acbab8179eea752607c4410851d74ae4e9444
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471366"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835861"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Kurz: mapování stávajícího vlastního názvu DNS na Azure App Service
 
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 > * Přesměrovat výchozí adresu URL do vlastního adresáře
 > * Automatizovat mapování domén pomocí skriptů
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků v tomto kurzu je potřeba:
 
@@ -330,7 +330,7 @@ V dolní části stránky kořenový virtuální adresář `/` odkazuje ve vých
 
 ![Přizpůsobení virtuálního adresáře](./media/app-service-web-tutorial-custom-domain/customize-virtual-directory.png)
 
-Po dokončení této operace by vaše aplikace měla na kořenové cestě (například http://contoso.com) ) vracet správnou stránku.
+Po dokončení operace by vaše aplikace měla vrátit pravou stránku na kořenové cestě (například `http://contoso.com`).
 
 ## <a name="automate-with-scripts"></a>Automatizace pomocí skriptů
 

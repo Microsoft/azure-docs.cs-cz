@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: c764460fb65287dab0031b27291d2f332cec3b3d
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ceb3b7315439aced7f781e8de5e62b49fd83818c
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756550"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833816"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Použití ovládacího prvku Azure Maps mapa
 
@@ -174,7 +174,7 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
 
 8. Otevřete soubor ve webovém prohlížeči a zobrazte vykreslenou mapu. Měl by vypadat jako v následujícím kódu:
 
-    <iframe height="700" style="width: 100%;" scrolling="no" title="Jak používat mapový ovládací prvek" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">Přečtěte si pero, <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>jak použít mapový ovládací prvek</a> Azure Maps (<a href='https://codepen.io/azuremaps'> @azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+    <iframe height="700" style="width: 100%;" scrolling="no" title="Jak používat mapový ovládací prvek" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">Přečtěte si pero, <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>jak použít mapový ovládací prvek</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
     </iframe>
 
 ## <a name="localizing-the-map"></a>Lokalizace mapy
@@ -183,7 +183,7 @@ Azure Maps poskytuje dva různé způsoby nastavení jazyka a regionálního zob
 
 ```javascript
 atlas.setLanguage('fr-FR');
-atlas.setView('auto');
+atlas.setView('Auto');
 ```
 
 Druhá možnost je předat tyto informace do možností mapy při načítání mapy jako:
@@ -191,7 +191,7 @@ Druhá možnost je předat tyto informace do možností mapy při načítání m
 ```javascript
 map = new atlas.Map('myMap', {
     language: 'fr-FR',
-    view: 'auto',
+    view: 'Auto',
 
     authOptions: {
         authType: 'aad',

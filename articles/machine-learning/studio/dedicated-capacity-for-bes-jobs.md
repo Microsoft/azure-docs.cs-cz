@@ -1,6 +1,6 @@
 ---
 title: Úlohy služby Azure Batch
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Přehled služby Azure Batch Services pro úlohy Machine Learning Studio (Classic). Zpracování fondu Batch umožňuje vytvořit fondy, na kterých můžete odesílat dávkové úlohy.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio (classic) | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: a0e829f61117df25f8643301a0acdadeafd7c267
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ad3ae99b04d5386172c9598f35cbe7d64fddcd36
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684815"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837707"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-classic-jobs"></a>Služba Azure Batch pro úlohy Azure Machine Learning Studio (Classic)
 

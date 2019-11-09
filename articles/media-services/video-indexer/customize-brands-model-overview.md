@@ -1,7 +1,7 @@
 ---
-title: Přizpůsobení modelu značky v Video Indexer – Azure
-titlesuffix: Azure Media Services
-description: Tento článek poskytuje přehled o jaký je model značky v Video Indexer a jak ji přizpůsobit.
+title: Přizpůsobení modelu značek v Video Indexer – Azure
+titleSuffix: Azure Media Services
+description: Tento článek poskytuje přehled toho, co je model značek v Video Indexer a jak ho přizpůsobit.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,31 +10,31 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 863dbd9a6044ee33ae39ac9693a7d4f74382b9c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca3d825fb2f4184448cc279d9408f47ad4ad004a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799682"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838362"
 ---
-# <a name="customize-a-brands-model-in-video-indexer"></a>Přizpůsobení modelu značky v Video Indexer
+# <a name="customize-a-brands-model-in-video-indexer"></a>Přizpůsobení modelu značek v Video Indexer
 
-Video Indexer podporuje značky zjišťování z pro zpracování řeči a vizuální textu během indexování a přeindexování z obrazový a zvukový obsah. Funkce detekce značka identifikuje zmínky produktů, služeb, a společnosti navrhl Bingu značky databáze. Například pokud Microsoft je uveden v videa nebo zvukový obsah nebo pokud se zobrazí ve visual textu ve videu, Video Indexer rozpozná jako značku v obsahu. Značky jsou jednoznačně rozlišit z jiné podmínky použití kontextu.
+Video Indexer podporuje rozpoznávání značek od mluvené řeči a vizuálního textu během indexování a přeindexování videa a zvukového obsahu. Funkce detekce značky identifikuje zmínky o produktech, službách a společnostech, které navrhla databáze značek Bingu. Například pokud se Microsoft zmiňuje v obrazovém nebo zvukovém obsahu nebo pokud se zobrazuje v vizuálním textu ve videu, Video Indexer ho detekuje jako značku v obsahu. Značky jsou nejednoznačné z jiných podmínek pomocí kontextu.
 
-Detekce značky je užitečné pro širokou škálu obchodních scénářů, jako je například obsah archivu a zjišťování, kontextové reklamy, analýza sociálních médií, maloobchodní soutěžit analýzy a mnoho dalších. Detekce značky video Indexer umožňuje zmínky značky index pro zpracování řeči a vizuální text, pomocí Bingu značky databáze a přizpůsobení vytvořením vlastního modelu značky pro každý účet služby Video Indexer. Funkce modelu vlastní značky vám umožní vybrat, zda Video Indexer bude zjišťovat značky z Bingu značky databáze, vyloučit určité značky nebudou zjištěny (v podstatě vytváření černého seznam značek) a zahrnují značek, které by měla být součástí vaší model, který nemusí být v databázi značky Bingu (v podstatě vytvoří prázdný seznam značek). Vlastní značky model, který vytvoříte budou k dispozici pouze v rámci účtu, ve které jste vytvořili modelu.
+Detekce značek je užitečná v nejrůznějších podnikových scénářích, jako jsou obsah archivace a zjišťování, kontextové reklamy, analýza sociálních médií, analýza maloobchodních soutěží a spousta dalších. Video Indexer rozpoznávání značek vám umožní indexovat značky v podobě řeči a vizuálního textu pomocí služby Bingu a také pomocí přizpůsobení tím, že vytváří vlastní model značek pro každý účet Video Indexer. Funkce modelu vlastních značek umožňuje vybrat, zda Video Indexer detekuje značky z databáze Bing relektory, vyloučit některé značky z detekce (v podstatě vytváření černého seznamu značek) a zahrnout značky, které by měly být součástí vašeho model, který nemusí být v databázi značek Bingu (v podstatě vytvoření bílého seznamu značek). Vlastní model značek, který vytvoříte, bude k dispozici pouze v účtu, ve kterém jste model vytvořili.
 
-## <a name="out-of-the-box-detection-example"></a>Nedostatek detekce příklad pole
+## <a name="out-of-the-box-detection-example"></a>Příklad detekce v poli
 
-V [2. den Microsoft Build 2017](https://www.videoindexer.ai/media/ed6ede78ad/) prezentace, značky "Microsoft Windows", zobrazí se více než jednou. Někdy v přepisu, někdy jako vizuální text a nikdy jako doslovný. Video Indexer zjistí s vysokou přesností, že termín, který je skutečně značky na základě kontextu, pokrývající více než 90k značky z pole a neustále aktualizuje. 02:25 Video Indexer zjistí značky z řeči a potom znovu na 02:40 z visual textu, které je součástí sady windows logo.
+V prezentaci [Microsoft Build 2017 Day 2](https://www.videoindexer.ai/media/ed6ede78ad/) se značka "Microsoft Windows" objevuje víckrát. Někdy v přepisu, někdy jako vizuální text a nikdy jako doslovné. Video Indexer detekuje s vysokou přesností, že termín je ve skutečnosti značkou na základě kontextu, který překrývá přes 90k a průběžně aktualizuje. V 02:25 Video Indexer detekuje značku od rozpoznávání řeči a pak ji znovu v 02:40 z vizuálního textu, který je součástí loga Windows.
 
 ![Přehled značek](./media/content-model-customization/brands-overview.png)
 
-Mluví o časových obdobích v kontextu konstrukce nerozpozná slovo "Windows" jako značek a stejné pole, Apple, Fox, atd., podle pokročilých algoritmů strojového učení, které už víte, jak k rozlišení z kontextu. Značka zjišťování funguje pro všechny naše podporované jazyky. Kliknutím sem získáte [úplná video s hlavním Vystoupením 2. den Microsoft Build 2017 a index](https://www.videoindexer.ai/media/ed6ede78ad/).
+V souvislosti se systémem Windows v kontextu konstrukce nebude rozpoznáno slovo "Windows" jako značka a totéž pro box, Apple, Fox atd., a to na základě pokročilých Machine Learning algoritmů, které znají, jak jednoznačně odstranit z kontextu. Detekce značek funguje pro všechny naše podporované jazyky. Kliknutím sem získáte [kompletní video a index Microsoft Build 2017 dne 2 vystoupení](https://www.videoindexer.ai/media/ed6ede78ad/).
 
-Chcete-li přineste vlastní značky, přečtěte si další kroky.
+Chcete-li uvést vlastní značky, Projděte si další kroky.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Upravit značky modelu s použitím rozhraní API](customize-brands-model-with-api.md)
+[Přizpůsobení modelu značek pomocí rozhraní API](customize-brands-model-with-api.md)
 
-[Upravit značky model na webu](customize-brands-model-with-website.md)
+[Přizpůsobení modelu značek pomocí webu](customize-brands-model-with-website.md)

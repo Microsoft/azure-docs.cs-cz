@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: c5a07d8b52e83215b2fdc220d76557ca45e1eae9
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: e2f1747b8ae98ce53ce570422044a2f172c1a526
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286026"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834478"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI
 
@@ -37,9 +37,11 @@ K nasazení do **předplatného**použijte [AZ Deployment Create](/cli/azure/dep
 az deployment create --location <location> --template-file <path-to-template>
 ```
 
-V současné době se nasazení skupin pro správu podporují jenom prostřednictvím REST API. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Správce prostředků REST API](resource-group-template-deploy-rest.md).
+Další informace o nasazeních na úrovni předplatného najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
 
-Příklady v tomto článku používají nasazení skupin prostředků. Další informace o nasazeních předplatných najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
+V současné době se nasazení skupin pro správu podporují jenom prostřednictvím REST API. Další informace o nasazení na úrovni skupiny pro správu najdete v tématu věnovaném [vytvoření prostředků na úrovni skupiny pro správu](deploy-to-management-group.md).
+
+Příklady v tomto článku používají nasazení skupin prostředků.
 
 ## <a name="deploy-local-template"></a>Nasadit místní šablonu
 
@@ -151,7 +153,7 @@ az group deployment create \
 
 ## <a name="handle-extended-json-format"></a>Zpracovat rozšířený formát JSON
 
-Chcete-li nasadit šablonu s víceřádkovými řetězci nebo komentáři, je nutné použít přepínač `--handle-extended-json-format`.  Například:
+Chcete-li nasadit šablonu s víceřádkovými řetězci nebo komentáři, je nutné použít přepínač `--handle-extended-json-format`.  Příklad:
 
 ```json
 {

@@ -1,6 +1,6 @@
 ---
 title: Správa webových služeb
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Spravujte své Machine Learning nové a klasické webové služby pomocí portálu Microsoft Azure Machine Learning Web Services. Vzhledem k tomu, že klasické webové služby a nové webové služby jsou založené na různých základních technologiích, máte u každého z nich poněkud různé možnosti správy.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: cf24c45cb00dfcffa085272a26e401abf78524c2
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 2e72c8a363ee7f58630b1c0d8d0f00434c2e2b7e
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73618928"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838793"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Správa webové služby pomocí portálu Web Services Azure Machine Learning Studio (Classic)
 Pomocí portálu Microsoft Azure Machine Learning Web Services můžete spravovat Machine Learning nové a klasické webové služby. Vzhledem k tomu, že klasické webové služby a nové webové služby jsou založené na různých základních technologiích, máte u každého z nich poněkud různé možnosti správy.

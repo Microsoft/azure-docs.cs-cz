@@ -1,17 +1,17 @@
 ---
 title: Šablony Azure Resource Manager pro Azure Cosmos DB
 description: K vytvoření a konfiguraci Azure Cosmos DB použijte šablony Azure Resource Manager.
-author: markjbrown
+author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.author: mjbrown
-ms.openlocfilehash: ecdfe89e899e0d416784ae32a0d66b335c09e2b6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/07/2019
+ms.author: thvankra
+ms.openlocfilehash: 7c508d736c7c04cc6df2b42e0a90a2906052adbc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582814"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835524"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Šablony Azure Resource Manager pro Azure Cosmos DB
 
@@ -37,8 +37,6 @@ Následující tabulky obsahují odkazy na šablony Azure Resource Manager pro A
 |**Šablona**|**Popis**|
 |---| ---|
 |[Vytvoření účtu Azure Cosmos, místa na místě, tabulky](manage-cassandra-with-resource-manager.md#create-resource) | Tato šablona vytvoří účet rozhraní API Cassandra ve dvou oblastech s povoleným více hlavními servery. Účet Azure Cosmos bude mít dvě tabulky, které sdílejí propustnost na úrovni klíčů. |
-|[Aktualizace propustnosti (RU/s) pro místo na disku](manage-cassandra-with-resource-manager.md#keyspace-ru-update) | Tato šablona aktualizuje propustnost pro místo v rozhraní API Cassandram účtu. |
-|[Aktualizace propustnosti (RU/s) pro tabulku](manage-cassandra-with-resource-manager.md#table-ru-update) | Tato šablona aktualizuje propustnost pro tabulku v rozhraní API Cassandram účtu. |
 
 ## <a name="gremlin-api"></a>Rozhraní Gremlin API
 

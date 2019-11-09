@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 08/29/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: b686ceace3679d1541e8f1a74bca7e99b81ba932
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a2dc6aeb7dc2a62c543a58c322c23c9661c6940a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68598892"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832745"
 ---
-# <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Kurz: Nasazení aplikace typu kontejner pomocí CI/CD do clusteru Service Fabric
+# <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Kurz: Nasazení aplikace typu kontejner s CI/CD do clusteru Service Fabric
 
 Tento kurz je druhou částí série a popisuje, jak nastavit průběžnou integraci a nasazování pro aplikaci Azure Service Fabric Container pomocí sady Visual Studio a Azure DevOps.  Je zapotřebí existující aplikace Service Fabric; jako příklad se používá aplikace vytvořená v článku [Nasazení aplikace .NET v kontejneru Windows do Azure Service Fabric](service-fabric-host-app-in-a-container.md).
 
@@ -65,15 +65,15 @@ Ověřte svůj e-mail a v rozevíracím seznamu **účet** vyberte svou organiza
 
 Publikováním úložiště se ve vašem účtu vytvoří nový týmový projekt se stejným názvem jako místní úložiště. Pokud chcete úložiště vytvořit v existujícím týmovém projektu, klikněte na **Upřesnit** vedle **názvu úložiště** a vyberte týmový projekt. Svůj kód můžete zobrazit na webu výběrem možnosti **Podívejte se na webu**.
 
-## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Nakonfigurujte průběžné doručování s Azure kanály
+## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Konfigurace průběžného doručování s Azure Pipelines
 
 Definice sestavení Azure DevOps popisuje pracovní postup, který se skládá ze sady kroků sestavení, které jsou spouštěny sekvenčně. Vytvořte definici sestavení, která vytvoří balíček aplikace Service Fabric a další artefakty pro nasazení do clusteru Service Fabric. Přečtěte si další informace o [definicích sestavení](https://www.visualstudio.com/docs/build/define/create)Azure DevOps. 
 
 Definice vydané verze Azure DevOps popisuje pracovní postup, který nasadí balíček aplikace do clusteru. Při společném použití definice sestavení a definice verze provedou celý pracovní postup od zdrojových souborů až po spuštění aplikace v clusteru. Přečtěte si další informace o [definicích verzí](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)Azure DevOps.
 
-### <a name="create-a-build-definition"></a>Vytvořte definici sestavení
+### <a name="create-a-build-definition"></a>Vytvoření definice sestavení
 
-Otevřete nový týmový projekt tak, že přejdete https://dev.azure.com na webový prohlížeč a vyberete svou organizaci a potom nový projekt. 
+Otevřete nový týmový projekt tak, že přejdete na https://dev.azure.com ve webovém prohlížeči a vyberete svou organizaci a potom nový projekt. 
 
 Na levém panelu vyberte možnost **kanály** a pak klikněte na **Nový kanál**.
 
@@ -110,7 +110,7 @@ Kliknutím na **Uložit a zařadit do fronty** v dialogu **Uložit kanál buildu
 
 ![Výběr triggerů][save-and-queue]
 
-Sestavení se aktivují také pro nasdílení změn nebo vrácení se změnami. Pokud chcete zkontrolovat průběh sestavení, přepněte na kartu **Sestavení**.  Jakmile ověříte, že se sestavení úspěšně provádí, nadefinujte definici verze, která nasadí vaši aplikaci do clusteru.
+Sestavení se aktivují také pro nasdílení změn nebo vrácení se změnami. Chcete-li zjistit průběh sestavení, přepněte na kartu **sestavení** .  Jakmile ověříte, že se sestavení úspěšně spustí, definujte definici verze, která nasadí vaši aplikaci do clusteru.
 
 ### <a name="create-a-release-definition"></a>Vytvoření definice verze
 
@@ -147,7 +147,7 @@ Povolte trigger průběžného nasazování, aby se po dokončení sestavení au
 
 Výběrem **+ Vydání** -> **Vytvořit vydání** -> **Vytvořit** ručně vytvořte vydání. Průběh vydání můžete sledovat na kartě **Vydání**.
 
-Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte na adresu [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170616.3.
+Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte na `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170616.3.
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>Potvrzení a nasdílení změn, aktivace vydání
 
@@ -167,7 +167,7 @@ Nasdílením změn do Azure DevOps se automaticky aktivuje build.  Po úspěšn�
 
 Pokud chcete zkontrolovat průběh sestavení, přepněte v **Team Exploreru** v sadě Visual Studio na kartu **Sestavení**.  Jakmile ověříte, že se sestavení úspěšně provádí, nadefinujte definici verze, která nasadí vaši aplikaci do clusteru.
 
-Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte na adresu [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170815.3.
+Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte na `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170815.3.
 
 ![Service Fabric Explorer][sfx1]
 
@@ -183,7 +183,7 @@ Upgrade aplikace může trvat několik minut. Po dokončení upgradu bude aplika
 
 ![Service Fabric Explorer][sfx3]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

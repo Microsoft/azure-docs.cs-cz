@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e14a3ba50d75161afa3325b3b7bcbfe96ea24cc3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f2890948dd15fa972104e4ef11001e83a2abd4f8
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325633"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73846584"
 ---
-# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Kurz: Nasazení aplikace typu kontejner pro Azure Container Instances
+# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Kurz: nasazení aplikace typu kontejner do Azure Container Instances
 
 Toto je poslední kurz třídílné série. V předchozích částech série se [vytvářela image kontejneru](container-instances-tutorial-prepare-app.md) a [odesílala se do služby Azure Container Registry](container-instances-tutorial-prepare-acr.md). Tento článek sérii uzavírá nasazením kontejneru do služby Azure Container Instances.
 
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > * Zobrazit spuštěnou aplikaci v prohlížeči
 > * Zobrazit protokoly kontejneru
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
@@ -37,7 +37,9 @@ V této části budete používat Azure CLI k nasazení image sestavené v [prvn
 
 ### <a name="get-registry-credentials"></a>Získání přihlašovacích údajů registru
 
-Když nasadíte image, která je hostovaná v soukromém registru kontejnerů, jako je ta vytvořená v [druhém kurzu](container-instances-tutorial-prepare-acr.md), musíte zadat přihlašovací údaje pro přístup k registru. Jak je znázorněno v [Azure Container Registry v Azure Container Instances](../container-registry/container-registry-auth-aci.md), osvědčeným postupem pro mnoho scénářů je vytvořit a nakonfigurovat Azure Active Directory instančního objektu s oprávněním k *vyžádání* pro váš registr. Ukázkové skripty pro vytvoření instančního objektu s potřebnými oprávněními najdete v tomto článku. Poznamenejte si ID instančního objektu a heslo objektu služby. Tyto přihlašovací údaje použijete při nasazení kontejneru.
+Když nasadíte image, která je hostovaná v privátním registru kontejneru Azure, jako je ta vytvořená v [druhém kurzu](container-instances-tutorial-prepare-acr.md), musíte zadat přihlašovací údaje pro přístup k registru. 
+
+Osvědčeným postupem pro mnoho scénářů je vytvořit a nakonfigurovat instanční objekt Azure Active Directory s oprávněním pro *vyžádání* obsahu pro váš registr. Ukázkové skripty pro vytvoření instančního objektu s potřebnými oprávněními najdete v tématu [ověřování pomocí Azure Container Registry z Azure Container Instances](../container-registry/container-registry-auth-aci.md) . Poznamenejte si *ID instančního objektu* a *heslo objektu služby*. Tyto přihlašovací údaje použijete pro přístup k registru při nasazení kontejneru.
 
 Také potřebujete úplný název přihlašovacího serveru registru kontejneru (nahraďte `<acrName>` názvem vašeho registru):
 
@@ -47,7 +49,7 @@ az acr show --name <acrName> --query loginServer
 
 ### <a name="deploy-container"></a>Nasazení kontejneru
 
-Nyní pomocí příkazu [AZ Container Create][az-container-create] nasaďte kontejner. Nahraďte `<acrLoginServer>` hodnotou, kterou jste získali z předchozího příkazu. `<service-principal-ID>` Nahraďte `<service-principal-password>` a pomocí ID a hesla instančního objektu, který jste vytvořili pro přístup k registru. Nahraďte `<aciDnsLabel>` požadovaným názvem DNS.
+Nyní pomocí příkazu [AZ Container Create][az-container-create] nasaďte kontejner. Nahraďte `<acrLoginServer>` hodnotou, kterou jste získali z předchozího příkazu. Nahraďte `<service-principal-ID>` a `<service-principal-password>` pomocí ID a hesla instančního objektu, který jste vytvořili pro přístup k registru. Nahraďte `<aciDnsLabel>` požadovaným názvem DNS.
 
 ```azurecli
 az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <service-principal-ID> --registry-password <service-principal-password> --dns-name-label <aciDnsLabel> --ports 80
@@ -63,7 +65,7 @@ Chcete-li zobrazit stav nasazení, použijte příkaz [AZ Container show][az-con
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query instanceView.state
 ```
 
-Opakujte příkaz [AZ Container show][az-container-show] , dokud se nezmění stav  z nedokončené na *spuštěno*, což by mělo trvat až minutu. Až bude kontejneru ve stavu *Spuštěno*, přejděte k dalšímu kroku.
+Opakujte příkaz [AZ Container show][az-container-show] , dokud se nezmění stav z *nedokončené* na *spuštěno*, což by mělo trvat až minutu. Až bude kontejneru ve stavu *Spuštěno*, přejděte k dalšímu kroku.
 
 ## <a name="view-the-application-and-container-logs"></a>Zobrazení aplikace a protokolů kontejneru
 

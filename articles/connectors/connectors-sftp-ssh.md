@@ -10,12 +10,12 @@ ms.reviewer: divswa, klam, LADocs
 ms.topic: article
 ms.date: 06/18/2019
 tags: connectors
-ms.openlocfilehash: a48ba0d2d691314a1ca7c91ac7ae27b62fbb379b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f52fc91d218e1a5448f6e6e7465f6416a04fd67d
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825238"
+ms.locfileid: "73837135"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorování, vytváření a Správa souborů SFTP pomocí SSH a Azure Logic Apps
 
@@ -49,7 +49,9 @@ Tady jsou další klíčové rozdíly mezi konektorem SFTP-SSH a konektorem SFTP
 
 * Používá [knihovnu SSH.NET](https://github.com/sshnet/SSH.NET), což je open-source Secure Shell (SSH) Library podporující rozhraní .NET.
 
-* Ve výchozím nastavení můžou akce SFTP-SSH číst nebo zapisovat soubory o *velikosti 1 GB* , ale jenom v *15 MB* bloků dat. Aby bylo možné zpracovat soubory větší než 15 MB, může protokol SFTP – akce protokolu SSH používat [bloky zpráv](../logic-apps/logic-apps-handle-large-messages.md). Pro nahrání velkých souborů budete potřebovat i oprávnění ke čtení i zápisu. Akce kopírovat soubor však podporuje pouze 15 MB souborů, protože tato akce nepodporuje vytváření bloků zpráv. Protokol SFTP – triggery SSH nepodporují vytváření bloků dat.
+* Ve výchozím nastavení můžou akce SFTP-SSH číst nebo zapisovat soubory o *velikosti 1 GB* , ale jenom v *15 MB* bloků dat.
+
+  Aby bylo možné zpracovat soubory větší než 15 MB, může protokol SFTP – akce protokolu SSH používat [bloky zpráv](../logic-apps/logic-apps-handle-large-messages.md). Akce kopírovat soubor však podporuje pouze 15 MB souborů, protože tato akce nepodporuje vytváření bloků zpráv. Protokol SFTP – triggery SSH nepodporují vytváření bloků dat. Pro nahrání velkých souborů potřebujete oprávnění ke čtení i zápisu pro kořenovou složku na vašem serveru SFTP.
 
 * Poskytuje akci **vytvořit složku** , která vytvoří složku v zadané cestě na serveru SFTP.
 
@@ -61,7 +63,7 @@ Tady jsou další klíčové rozdíly mezi konektorem SFTP-SSH a konektorem SFTP
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-* Vaše adresa serveru SFTP a přihlašovací údaje účtu, které vaší aplikaci logiky umožní přístup k vašemu účtu SFTP. Potřebujete také přístup k privátnímu klíči SSH a k heslu privátního klíče SSH. Pokud chcete při nahrávání velkých souborů použít bloky dat, potřebujete oprávnění ke čtení i zápisu.
+* Vaše adresa serveru SFTP a přihlašovací údaje účtu, které vaší aplikaci logiky umožní přístup k vašemu účtu SFTP. Potřebujete také přístup k privátnímu klíči SSH a k heslu privátního klíče SSH. Pokud chcete při nahrávání velkých souborů použít bloky dat, potřebujete oprávnění ke čtení i zápisu pro kořenovou složku na vašem serveru SFTP. V opačném případě se zobrazí chyba "401 neautorizované".
 
   > [!IMPORTANT]
   >

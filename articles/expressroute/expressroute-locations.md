@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 851fbf52571b12b60345a78af3e26a875919fb14
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: fa152bb4cfb7ab59daababf267d3da26170119c0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585233"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838148"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -237,9 +237,9 @@ Pokud jste vzdáleně a nemáte připojení k vláknu nebo chcete prozkoumat dal
 | **[Chief](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** | Equinix | Hongkong – zvláštní správní oblast |
 | **[Cinia](https://www.cinia.fi/en/services/connectivity-services/direct-public-cloud-connection.html)** | Equinix, Megaport | Frankfurt, Hamburk |
 | **[CloudXpress](https://www2.telenet.be/fr/business/produits-services/internet/cloudxpress/)** | Equinix | Amsterdam | 
-| **[CMC Telecom]( https://cmctelecom.vn/san-pham/value-added-service-and-it/cmc-telecom-cloud-express-en/)** | Equinix | Singapur | 
+| **[CMC Telecom](https://cmctelecom.vn/san-pham/value-added-service-and-it/cmc-telecom-cloud-express-en/)** | Equinix | Singapur | 
 | **[APTUM technologie](https://aptum.com/services/cloud/managed-azure/)**| Equinix | Montreal, Toronto |
-| **[CoreAzure](http://coreazure.com/expressroute)**| Equinix | Londýn |
+| **[CoreAzure](https://coreazure.com/expressroute)**| Equinix | Londýn |
 | **[Cox Business](https://www.cox.com/business/networking/cloud-connectivity.html)**| Equinix | Dallas, Silicon Valley, Washington DC |
 | **[Castle na koruna](https://fiber.crowncastle.com/solutions/added/cloud-connect)**| Equinix | Brno, Chicago, Praha, Los Angeles, New York, Washington DC |
 | **[Data Foundry](https://www.datafoundry.com/services/cloud-connect)** | Megaport | Dallas |

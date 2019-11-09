@@ -1,6 +1,6 @@
 ---
-title: Správa Azure Data Lake Analytics pomocí webu Azure portal
-description: Tento článek popisuje, jak pomocí webu Azure portal ke správě účtů Data Lake Analytics, zdroje dat, uživatele a úlohy.
+title: Správa Azure Data Lake Analytics pomocí Azure Portal
+description: Tento článek popisuje, jak použít Azure Portal ke správě účtů Data Lake Analytics, zdrojů dat, uživatelů a & úloh.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -9,17 +9,17 @@ ms.reviewer: jasonwhowell
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 8b2f16f45be1d095e9be8042611de328af36f064
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a6b7cb3fd45e17b84519efcaa826b569083e156
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813447"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839465"
 ---
-# <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Správa Azure Data Lake Analytics pomocí webu Azure portal
+# <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Správa Azure Data Lake Analytics pomocí Azure Portal
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Tento článek popisuje, jak spravovat účty, zdroje dat, uživatele a úlohy Azure Data Lake Analytics pomocí webu Azure portal.
+Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje dat, uživatele a úlohy pomocí Azure Portal.
 
 
 <!-- ################################ -->
@@ -30,23 +30,23 @@ Tento článek popisuje, jak spravovat účty, zdroje dat, uživatele a úlohy A
 ### <a name="create-an-account"></a>Vytvoření účtu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Klikněte na tlačítko **vytvořit prostředek** > **inteligence a analýza** > **Data Lake Analytics**.
+2. Klikněte na **vytvořit prostředek** > **Intelligence + Analytics** > **Data Lake Analytics**.
 3. Vyberte hodnoty pro následující položky: 
-   1. **Název**: Název účtu Data Lake Analytics.
-   2. **Předplatné**: Předplatné Azure použité pro účet.
-   3. **Skupina prostředků**: Skupiny prostředků Azure, ve kterém chcete vytvořit účet. 
-   4. **Umístění**: Datové centrum Azure pro účet Data Lake Analytics. 
-   5. **Data Lake Store**: Výchozí úložiště, který má být použit pro účet Data Lake Analytics. Účet Azure Data Lake Store a účet Data Lake Analytics musí být ve stejném umístění.
-4. Klikněte na možnost **Vytvořit**. 
+   1. **Název**: název účtu Data Lake Analytics.
+   2. **Předplatné**: předplatné Azure použité pro tento účet.
+   3. **Skupina prostředků**: Skupina prostředků Azure, ve které se má účet vytvořit. 
+   4. **Umístění**: datové centrum Azure pro účet Data Lake Analytics. 
+   5. **Data Lake Store**: výchozí úložiště, které se má použít pro účet Data Lake Analytics. Účet Azure Data Lake Store a účet Data Lake Analytics musí být ve stejném umístění.
+4. Klikněte na **Vytvořit**. 
 
-### <a name="delete-a-data-lake-analytics-account"></a>Odstranění účtu Data Lake Analytics
+### <a name="delete-a-data-lake-analytics-account"></a>Odstranit účet Data Lake Analytics
 
-Před odstraněním účtu Data Lake Analytics, odstraňte jeho výchozí účet Data Lake Store.
+Než odstraníte účet Data Lake Analytics, odstraňte jeho výchozí účet Data Lake Store.
 
-1. Na webu Azure Portal přejděte k vašemu účtu Data Lake Analytics.
-2. Klikněte na tlačítko **odstranit**.
+1. V Azure Portal přejít na účet Data Lake Analytics.
+2. Klikněte na **Odstranit**.
 3. Zadejte název účtu.
-4. Klikněte na tlačítko **odstranit**.
+4. Klikněte na **Odstranit**.
 
 <!-- ################################ -->
 <!-- ################################ -->
@@ -58,66 +58,66 @@ Data Lake Analytics podporuje následující zdroje dat:
 * Data Lake Store
 * Azure Storage
 
-Průzkumník dat můžete použít k procházení zdroje dat a provádění operací správy základního souboru. 
+Průzkumník dat můžete použít k procházení zdrojů dat a provádění základních operací správy souborů. 
 
-### <a name="add-a-data-source"></a>Přidání zdroje dat
+### <a name="add-a-data-source"></a>Přidat zdroj dat
 
-1. Na webu Azure Portal přejděte k vašemu účtu Data Lake Analytics.
-2. Klikněte na tlačítko **zdroje dat**.
-3. Klikněte na tlačítko **přidat zdroj dat**.
+1. V Azure Portal přejít na účet Data Lake Analytics.
+2. Klikněte na **zdroje dat**.
+3. Klikněte na **Přidat zdroj dat**.
     
-   * Přidat účet Data Lake Store, budete potřebovat název účtu a přístup k účtu a mít možnost provádět dotazy ho.
-   * Přidání úložiště objektů Blob v Azure, budete potřebovat účet úložiště a klíč účtu. Je najít, přejděte na účet úložiště na portálu.
+   * Pokud chcete přidat účet Data Lake Store, budete potřebovat název účtu a přístup k tomuto účtu, abyste se mohli dotazovat.
+   * Pokud chcete přidat úložiště objektů BLOB v Azure, potřebujete účet úložiště a klíč účtu. Pokud je chcete najít, na portálu se podívejte na účet úložiště.
 
 ## <a name="set-up-firewall-rules"></a>Nastavení pravidel brány firewall
 
-Data Lake Analytics můžete použít k další uzamčení přístupu k vašemu účtu Data Lake Analytics na úrovni sítě. Můžete povolit bránu firewall, zadejte IP adresu nebo definovat rozsah IP adres pro důvěryhodného klienty. Po povolení těchto opatření můžete pouze klienti, kteří mají IP adresy v definovaném rozsahu připojit k úložišti.
+Pomocí Data Lake Analytics můžete dál uzamknout přístup k vašemu účtu Data Lake Analytics na úrovni sítě. Můžete povolit bránu firewall, zadat IP adresu nebo definovat rozsah IP adres pro důvěryhodné klienty. Po povolení těchto měr se ke Storu můžou připojit jenom klienti, kteří mají IP adresy v definovaném rozsahu.
 
-Pokud dalšími službami Azure, jako je Azure Data Factory nebo virtuální počítače, připojit k účtu Data Lake Analytics, ujistěte se, že **povolit službám Azure** zapnuté **na**. 
+Pokud se k účtu Data Lake Analytics připojí jiné služby Azure, například Azure Data Factory nebo virtuální počítače, ujistěte se, že **je zapnutá**možnost **Povolit služby Azure** . 
 
 ### <a name="set-up-a-firewall-rule"></a>Nastavení pravidla brány firewall
 
-1. Na webu Azure Portal přejděte k vašemu účtu Data Lake Analytics.
-2. V nabídce na levé straně klikněte na tlačítko **brány Firewall**.
+1. V Azure Portal přejít na účet Data Lake Analytics.
+2. V nabídce na levé straně klikněte na **firewall**.
 
-## <a name="add-a-new-user"></a>Přidání nového uživatele
+## <a name="add-a-new-user"></a>Přidat nového uživatele
 
-Můžete použít **Průvodce přidáním uživatele** snadno zřizovat noví uživatelé Data Lake.
+**Průvodce přidáním uživatele** můžete použít ke snadnému zřízení nových uživatelů Data Lake.
 
-1. Na webu Azure Portal přejděte k vašemu účtu Data Lake Analytics.
-2. Na levé straně v části **Začínáme**, klikněte na tlačítko **Průvodce přidáním uživatele**.
-3. Vyberte uživatele a pak klikněte na tlačítko **vyberte**.
-4. Vyberte roli a potom klikněte na tlačítko **vyberte**. Chcete-li nastavit nový vývojář použití Azure Data Lake, vyberte **Data Lake Analytics Developer** role.
-5. Vyberte seznamy řízení přístupu (ACL) pro databáze U-SQL. Jakmile budete spokojeni s vaší volby, klikněte na tlačítko **vyberte**.
-6. Vyberte seznamy ACL pro soubory. Pro výchozí úložiště neměnit seznamy ACL pro kořenovou složku "/" a složky/System. Klikněte na **Vybrat**.
-7. Zkontrolujte všechny vybrané změny a klikněte na **spustit**.
-8. Po dokončení průvodce klikněte na tlačítko **provádí**.
+1. V Azure Portal přejít na účet Data Lake Analytics.
+2. Na levé straně v části **Začínáme**klikněte na možnost **Průvodce přidáním uživatele**.
+3. Vyberte uživatele a pak klikněte na **Vybrat**.
+4. Vyberte roli a pak klikněte na **Vybrat**. Pokud chcete nastavit nového vývojáře pro použití Azure Data Lake, vyberte roli **vývojář Data Lake Analytics** .
+5. Vyberte seznamy řízení přístupu (ACL) pro databáze U-SQL. Až budete s vašimi možnostmi spokojeni, klikněte na **Vybrat**.
+6. Vyberte seznamy ACL pro soubory. U výchozího úložiště neměňte seznamy ACL pro kořenovou složku "/" a složku/. Klikněte na **Vybrat**.
+7. Zkontrolujte všechny vybrané změny a pak klikněte na **Spustit**.
+8. Po dokončení průvodce klikněte na **Hotovo**.
 
-## <a name="manage-role-based-access-control"></a>Správa řízení přístupu na základě rolí
+## <a name="manage-role-based-access-control"></a>Správa Access Control na základě rolí
 
-Stejně jako ostatní služby Azure můžete použít řízení přístupu na základě Role (RBAC) k řízení, jak uživatelé komunikovat se službou.
+Stejně jako jiné služby Azure můžete použít Access Control na základě rolí (RBAC) k řízení interakce uživatelů se službou.
 
-Standardní role RBAC mít k dispozici následující možnosti:
-* **Vlastník**: Můžete odesílat úlohy, monitorování úloh, zrušit úlohy od libovolného uživatele a konfiguraci účtu.
-* **Přispěvatel**: Můžete odesílat úlohy, monitorování úloh, zrušit úlohy od libovolného uživatele a konfiguraci účtu.
-* **Reader**: Můžete monitorovat úlohy.
+Standardní role RBAC mají následující možnosti:
+* **Vlastník**: může odesílat úlohy, monitorovat úlohy, rušit úlohy od libovolného uživatele a nakonfigurovat účet.
+* **Přispěvatel**: může odesílat úlohy, monitorovat úlohy, rušit úlohy od libovolného uživatele a konfigurovat účet.
+* **Čtecí modul**: může monitorovat úlohy.
 
-Pomocí Data Lake Analytics Developer role a umožňuje vývojářům U-SQL pro použití služby Data Lake Analytics. Můžete použít roli vývojář Data Lake Analytics:
-* Odesílání úloh.
-* Monitorování stavu úlohy a průběh úlohy odeslané žádný uživatel.
-* Podívejte se skripty U-SQL z úlohy odeslané žádný uživatel.
-* Zrušte pouze své vlastní úlohy.
+Pomocí vývojářské role Data Lake Analytics můžete povolit vývojářům U-SQL používat službu Data Lake Analytics. Roli vývojáře Data Lake Analytics můžete použít k těmto akcím:
+* Odešlete úlohy.
+* Monitoruje stav úlohy a průběh úloh odeslaných libovolným uživatelem.
+* Podívejte se na skripty U-SQL z úloh odeslaných libovolným uživatelem.
+* Zruší pouze vaše vlastní úlohy.
 
-### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>Přidání uživatele nebo skupiny zabezpečení do účtu Data Lake Analytics
+### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>Přidání uživatelů nebo skupin zabezpečení k účtu Data Lake Analytics
 
-1. Na webu Azure Portal přejděte k vašemu účtu Data Lake Analytics.
-2. Klikněte na tlačítko **řízení přístupu (IAM)**  > **přidat přiřazení role**.
+1. V Azure Portal přejít na účet Data Lake Analytics.
+2. Klikněte na **řízení přístupu (IAM)**  > **Přidat přiřazení role**.
 3. Vyberte roli.
 4. Přidejte uživatele.
-5. Klikněte na **OK**.
+5. Klikněte na tlačítko **OK**.
 
 >[!NOTE]
->Pokud uživatel nebo skupina zabezpečení je potřeba odesílat úlohy, potřebují také oprávnění u účtu úložiště. Další informace najdete v tématu [zabezpečení dat uložených v Data Lake Store](../data-lake-store/data-lake-store-secure-data.md).
+>Pokud uživatel nebo skupina zabezpečení potřebuje odesílat úlohy, potřebují taky oprávnění k účtu Store. Další informace najdete v tématu [zabezpečení dat uložených v Data Lake Store](../data-lake-store/data-lake-store-secure-data.md).
 >
 
 <!-- ################################ -->
@@ -125,44 +125,44 @@ Pomocí Data Lake Analytics Developer role a umožňuje vývojářům U-SQL pro 
 
 ## <a name="manage-jobs"></a>Správa úloh
 
-### <a name="submit-a-job"></a>Odeslání úlohy
+### <a name="submit-a-job"></a>Odeslat úlohu
 
-1. Na webu Azure Portal přejděte k vašemu účtu Data Lake Analytics.
+1. V Azure Portal přejít na účet Data Lake Analytics.
 
-2. Klikněte na tlačítko **nová úloha**. Pro každou úlohu konfigurace:
+2. Klikněte na **Nová úloha**. Pro každou úlohu nakonfigurujte:
 
-    1. **Název úlohy**: Název úlohy.
-    2. **Priorita**: Nižší hodnoty mají vyšší prioritu. Pokud dvě úlohy se zařadí do fronty, spustí první kategorií s nižší hodnotou priority.
-    3. **Paralelismus**: Maximální počet výpočetních procesů vyhradit pro tuto úlohu.
+    1. **Název úlohy**: název úlohy.
+    2. **Priorita**: nižší čísla mají vyšší prioritu. Pokud jsou dvě úlohy zařazené do fronty, spustí se jako první hodnota s nižší prioritou.
+    3. **Paralelismus**: maximální počet výpočetních procesů, které se mají pro tuto úlohu vyhradit.
 
 3. Klikněte na **Odeslat úlohu**.
 
 ### <a name="monitor-jobs"></a>Monitorování úloh
 
-1. Na webu Azure Portal přejděte k vašemu účtu Data Lake Analytics.
-2. Klikněte na tlačítko **zobrazit všechny úlohy**. Seznam všech aktivních a nedávno dokončené úlohy v rámci účtu se zobrazí.
-3. Případně můžete kliknout **filtr** vám pomůžou najít úlohy podle **časový rozsah**, **název úlohy**, a **Autor** hodnoty. 
+1. V Azure Portal přejít na účet Data Lake Analytics.
+2. Klikněte na **Zobrazit všechny úlohy**. Zobrazí se seznam všech aktivních a nedávno dokončených úloh v účtu.
+3. V případě potřeby můžete kliknout na tlačítko **Filtr** , což vám umožní najít úlohy podle **časového rozsahu**, **názvu úlohy**a hodnot **autora** . 
 
 ### <a name="monitoring-pipeline-jobs"></a>Monitorování úloh kanálu
-Úlohy, které jsou součástí kanálu fungují společně, obvykle postupně provádět konkrétní scénář. Například můžete mít kanál, který vyčistí, extrahuje, transformuje, agreguje využití přehledů zákazníků. Úlohy kanálu jsou označeny pomocí vlastnosti "Kanál", pokud úloha byla odeslána. Tato vlastnost naplní se mají automaticky úlohy naplánovat pomocí ADF V2. 
+Úlohy, které jsou součástí kanálu, jsou většinou sekvenční, k dosažení konkrétního scénáře. Můžete mít například kanál, který vyčistí, extrahuje, transformuje a agreguje využití pro zákaznické poznatky. Úlohy kanálu se při odeslání úlohy identifikují pomocí vlastnosti kanálu. U úloh naplánovaných pomocí ADF v2 se tato vlastnost naplní automaticky. 
 
-Chcete-li zobrazit seznam úloh U-SQL, které jsou součástí kanály: 
+Zobrazení seznamu úloh U-SQL, které jsou součástí kanálů: 
 
-1. Na webu Azure Portal přejděte na vaše účty Data Lake Analytics.
-2. Klikněte na tlačítko **úlohy Insights**. Na kartě "Všechny úlohy" bude nastavena jako výchozí, zobrazujícím seznam spuštění ve frontě a ukončení úlohy.
-3. Klikněte na tlačítko **úloh kanálu** kartu. Zobrazí se seznam úloh kanálu spolu s agregované statistiky pro každý kanál.
+1. V Azure Portal přejdete na účty Data Lake Analytics.
+2. Klikněte na **přehledy úloh**. Karta všechny úlohy se nastaví na výchozí hodnotu, která zobrazí seznam spuštěných, zařazených do fronty a ukončených úloh.
+3. Klikněte na kartu **úlohy kanálu** . Zobrazí se seznam úloh kanálu společně s agregovanými statistikami pro každý kanál.
 
-### <a name="monitoring-recurring-jobs"></a>Opakující se úlohy monitorování
-Opakovaná úloha je ten, který má stejné obchodní logiku, ale používá jiné vstupní data pokaždé, když ji spustí. V ideálním případě opakujících se úloh by měl vždy úspěšně a mají relativně stabilními doba provádění; monitorování těchto projevů vám pomůže zajistit, že úloha je v pořádku. Opakující se úlohy jsou označeny pomocí vlastnosti "Opakování". Tato vlastnost naplní se mají automaticky úlohy naplánovat pomocí ADF V2.
+### <a name="monitoring-recurring-jobs"></a>Monitorování opakujících se úloh
+Opakovaná úloha je ta, která má stejnou obchodní logiku, ale při každém spuštění používá jiná vstupní data. V ideálním případě by opakované úlohy měly být vždy úspěšné a měly poměrně stabilní dobu provádění; monitorování tohoto chování pomůže zajistit, aby byla úloha v pořádku. Opakující se úlohy se identifikují pomocí vlastnosti opakování. U úloh naplánovaných pomocí ADF v2 se tato vlastnost naplní automaticky.
 
-Chcete-li zobrazit seznam úloh U-SQL, které jsou opakování: 
+Chcete-li zobrazit seznam úloh U-SQL, které jsou opakované: 
 
-1. Na webu Azure Portal přejděte na vaše účty Data Lake Analytics.
-2. Klikněte na tlačítko **úlohy Insights**. Na kartě "Všechny úlohy" bude nastavena jako výchozí, zobrazujícím seznam spuštění ve frontě a ukončení úlohy.
-3. Klikněte na tlačítko **opakované úlohy** kartu. Seznam opakující se úlohy se zobrazí spolu s agregované statistiky pro každou úlohu opakované.
+1. V Azure Portal přejdete na účty Data Lake Analytics.
+2. Klikněte na **přehledy úloh**. Karta všechny úlohy se nastaví na výchozí hodnotu, která zobrazí seznam spuštěných, zařazených do fronty a ukončených úloh.
+3. Klikněte na kartu **opakované úlohy** . Zobrazí se seznam opakujících se úloh spolu s agregovanou statistikou pro každou opakovanou úlohu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Přehled služby Azure Data Lake Analytics](data-lake-analytics-overview.md)
-* [Správa Azure Data Lake Analytics pomocí Azure Powershellu](data-lake-analytics-manage-use-powershell.md)
-* [Správa Azure Data Lake Analytics pomocí zásad](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-policies)
+* [Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md)
+* [Správa Azure Data Lake Analytics pomocí Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
+* [Správa Azure Data Lake Analytics pomocí zásad](data-lake-analytics-account-policies.md)

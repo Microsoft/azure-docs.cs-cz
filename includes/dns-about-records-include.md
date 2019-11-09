@@ -4,24 +4,24 @@ ms.service: dns
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
-ms.openlocfilehash: f7fa018225d82e2db4a3c51b333aea6fcb9a1514
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 261ae22348cd82b129727261c619727917e19c96
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175637"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832057"
 ---
 ### <a name="record-names"></a>Názvy záznamů
 
-V Azure DNS se záznamy zadávají pomocí relativních názvů. „Plně kvalifikovaný“ *název* domény (FQDN) obsahuje název zóny, zatímco „relativní“ název ho *neobsahuje.* Například relativní název záznamu „www“ v zóně „contoso.com“ dává plně kvalifikovaný název záznamu www.contoso.com.
+V Azure DNS se záznamy zadávají pomocí relativních názvů. „Plně kvalifikovaný“ *název* domény (FQDN) obsahuje název zóny, zatímco „relativní“ název ho *neobsahuje.* Například relativní název záznamu `www` v zóně `contoso.com` poskytuje plně kvalifikovaný název záznamu `www.contoso.com`.
 
-Záznam *„vrcholu“* je záznam DNS v kořeni (nebo *„vrcholu“* ) zóny DNS. Například v zóně DNS nazvané „contoso.com“ má název vrcholu také plně kvalifikovaný název „contoso.com“ (někdy se označuje jako *základní* doména).  Podle konvence, relativní název '\@' slouží k vyjádření záznamů vrcholu.
+Záznam „vrcholu“ je záznam DNS v kořeni (nebo „vrcholu“) zóny DNS. Například v zóně DNS `contoso.com`záznam vrcholu má také plně kvalifikovaný název `contoso.com` (Toto se někdy označuje *jako doména s* názvem).  Podle konvence používá relativní název '\@' k reprezentaci záznamů vrcholů.
 
 ### <a name="record-types"></a>Typy záznamů
 
 Každý záznam DNS má název a typ. Záznamy jsou uspořádány do různých typů podle dat, která obsahují. Nejběžnějším typem je záznam „A“, který mapuje název na adresu IPv4. Dalším běžným typem záznamu je „MX“, který mapuje název na poštovní server.
 
-Azure DNS podporuje všechny běžné typy záznamů DNS: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV, and TXT. [Záznamy SPF se vyjadřují pomocí záznamů TXT](../articles/dns/dns-zones-records.md#spf-records).
+Azure DNS podporuje všechny běžné typy záznamů DNS: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV a TXT. [Záznamy SPF se vyjadřují pomocí záznamů TXT](../articles/dns/dns-zones-records.md#spf-records).
 
 ### <a name="record-sets"></a>Sady záznamů
 

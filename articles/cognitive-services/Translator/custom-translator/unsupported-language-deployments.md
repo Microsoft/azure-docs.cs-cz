@@ -1,7 +1,7 @@
 ---
-title: Nepodporovaný jazyk nasazení – vlastní Translator
+title: Nepodporovaná nasazení jazyků – vlastní Překladatel
 titleSuffix: Azure Cognitive Services
-description: Jak nasadit dvojice nepodporovaný jazyk v Translatoru Custom.
+description: V tomto článku se dozvíte, jak nasadit nepodporované páry jazyků v Azure Cognitive Services vlastního překladatele.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,51 +10,51 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: 284a7e98c088edb73a2c770a4c14bb0a479a6621
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3c5c74fc853b5a2425a58e1704aad43350cba212
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436073"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837451"
 ---
 # <a name="unsupported-language-deployments"></a>Nasazení nepodporovaného jazyka
 
 <!--Custom Translator provides the highest-quality translations possible using the latest techniques in neural machine learning. While Microsoft intends to make neural training available in all languages, there are some limitations that prevent us from being able to offer neural machine translation in all language pairs.-->  
 
-Se chystá vyřazení centra Microsoft Translator bude Microsoft undeploying všechny modely, které jsou aktuálně nasazené prostřednictvím centra. Řada z vás má modelů nasazení v centru, jehož páry jazyk nepodporuje vlastní překladač.  Jsme nechcete, aby uživatelé v této situaci žádné obrátit pro převod jejich obsah.
+Díky nadcházejícímu vyřazení centra Microsoft Translator bude Microsoft odsazovat všechny modely aktuálně nasazené prostřednictvím centra. Mnoho z nich má nasazené modely v centru, jejichž páry jazyků nejsou ve vlastním překladateli podporované.  Nechcete, aby uživatelé v této situaci neměli žádné žádné další pro překlad jejich obsahu.
 
-Nyní je k dispozici proces, který vám umožní nasadit nepodporované modelů prostřednictvím vlastní překladač.  Tento proces umožní vám pokračujte pro převod obsahu pomocí nejnovější rozhraní API V3.  Tyto modely bude hostována, dokud se rozhodnete zrušit je nasazení nebo dvojici jazyků bude k dispozici ve vlastní Translator.  Tento článek vysvětluje postup nasazení modelů s páry nepodporovaný jazyk.
+Nyní máme proces, který umožňuje nasadit nepodporované modely prostřednictvím vlastního překladatele.  Tento proces vám umožní pokračovat v překladu obsahu pomocí nejnovějšího rozhraní API v3.  Tyto modely budou hostovány, dokud se nerozhodnete je zrušit nebo že se dvojice jazyků bude k dispozici ve vlastním překladateli.  Tento článek vysvětluje proces nasazení modelů s nepodporovanými páry jazyků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Aby vlastní modely a jednat o kandidáty na nasazení musí splňovat následující kritéria:
-* Projekt, který obsahuje model musí se migrovaly z centra pro vlastní Translator, pomocí nástroje migrace.  Proces migrace projektů a pracovní prostory můžete najít [tady](how-to-migrate.md).
-* Model musí být v nasazeném stavu, pokud dojde k migraci.  
-* Pár jazyk modelu musí být páru nepodporovaný jazyk v Translatoru Custom.  Dvojice jazyků, ve kterých jazyk se podporuje do nebo z angličtina, ale pár samotné nezahrnuje angličtina, jsou kandidáty pro nasazení nepodporovaný jazyk.  Například považuje model rozbočovače pro francouzštinu, němčinu spárovat nepodporovaný jazyk pár dokonce i když francouzské pro angličtinu a angličtině německé jsou podporované jazykové páru.
+Aby byly vaše modely kandidátem na nasazení, musí splňovat následující kritéria:
+* Projekt obsahující model musí být z centra migrován do vlastního překladatele pomocí nástroje pro migraci.  Proces migrace projektů a pracovních prostorů najdete [tady](how-to-migrate.md).
+* Model musí být v nasazeném stavu, když dojde k migraci.  
+* Dvojice jazyka modelu musí být ve vlastním překladateli nepodporovanou dvojici jazyků.  Páry jazyků, ve kterých je jazyk podporovaný nebo z angličtiny, ale samotná dvojice nezahrnuje angličtinu, jsou kandidátem na Nepodporovaná nasazení jazyků.  Například model rozbočovače pro pár francouzštiny a němčiny se považuje za nepodporovaný pár jazyků, a to i v případě, že je angličtina až angličtina a angličtina až němčina, podporuje dvojice jazyků.
 
 ## <a name="process"></a>Proces
-Po migraci modely z centra, které jsou kandidáty pro nasazení, najdete je tak, že přejdete **nastavení** pro váš pracovní prostor a posouvání na konec stránky, kde se zobrazí stránka **nepodporováno Překladač rozbočovače školení** oddílu.  Tato část se zobrazí, jenom Pokud máte projekty, které splňují požadavky uvedenými výše.
+Po migraci modelů z centra, které jsou kandidáty na nasazení, je můžete najít tak, že přejdete na stránku **Nastavení** pro váš pracovní prostor a přejdete na konec stránky, kde se zobrazí **Nepodporovaná část školení centra překladatelů** .  Tato část se zobrazí pouze v případě, že máte projekty, které splňují výše zmíněné požadavky.
 
-![Jak migrovat z centra](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
+![Postup migrace z centra](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
 
-V rámci **nepodporované Translator Centrum školení** stránka pro výběr, **nevyžádanou školení** karta obsahuje modely, které jsou vhodné pro nasazení.  Vyberte modely, které chcete nasadit a odešlete žádost.   Před 30. dubna konečný termín nasazení můžete vybrat libovolný počet modelů, kolik chcete, aby pro nasazení.
+Na stránce s výběrem **nepodporovaného výběru školení centra překladatelů** obsahuje karta **nežadatelé školení** modely, které mají nárok na nasazení.  Vyberte modely, které chcete nasadit, a odešlete žádost.   Před uplynutím 30. dubna můžete vybrat tolik modelů, kolik chcete pro nasazení.
  
-![Jak migrovat z centra](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
+![Postup migrace z centra](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
 
-Po odeslání modelu již nebude k dispozici na **nevyžádanou školení** kartu a zobrazí se místo toho na **požadované školení** kartu.  Kdykoli můžete zobrazit požadované školení.
+Po odeslání nebude model na kartě **nevyžádaných** **školení** dostupný a místo toho se zobrazí na kartě požadované školení.  Požadované školení můžete kdykoli zobrazit.
 
-![Jak migrovat z centra](media/unsupported-language-deployments/request-unsupported-trainings.jpg) 
+![Postup migrace z centra](media/unsupported-language-deployments/request-unsupported-trainings.jpg) 
 
 ## <a name="whats-next"></a>Co dále?
 
-Modelů, které jste vybrali pro nasazení se uloží, jakmile dojde k deaktivaci centra a jsou všechny modely nasazení.  Je nutné do 24 může odesílat požadavky na nasazení nepodporované modelů.  Nasadíme těchto modelů na 15. červnem. v tomto okamžiku budou přístupné prostřednictvím rozhraní Translator API V3.  Kromě toho budou k dispozici prostřednictvím rozhraní API V2 až do 1 dne.  
+Modely, které jste vybrali pro nasazení, se uloží až po vyřazení centra a všechny modely se odsadí.  Dokud nebudete moct odesílat žádosti o nasazení nepodporovaných modelů, budete muset 24.  Tyto modely budeme nasazovat do 15. června, od tohoto okamžiku budou přístupné prostřednictvím rozhraní API pro překladatele v3.  Kromě toho budou k dispozici prostřednictvím rozhraní v2 API až do 1. července.  
 
-Další informace o důležitá data v vyřazení kontroly centra [tady](https://www.microsoft.com/translator/business/hub/).
-Jakmile nasazené, normální hostování budou poplatky.  Zobrazit [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) podrobnosti.  
+Další informace o důležitých datech v vyřazení centra najdete [tady](https://www.microsoft.com/translator/business/hub/).
+Po nasazení budou platit normální poplatky za hostování.  Podrobnosti najdete v tématu [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) .  
 
-Na rozdíl od standardních Translator vlastní modely modely centra budou k dispozici pouze v jedné oblasti a tak se nevztahuje hostitelské nákladů ve více oblastech.  Po nasazení, bude moct zrušení modelu centra kdykoli přes migrovaného projektu vlastní překladač.
+Na rozdíl od standardních vlastních modelů překladatelů budou modely rozbočovačů dostupné jenom v jedné oblasti, takže poplatky za hostování ve více oblastech se nepoužijí.  Po nasazení budete moct model rozbočovače kdykoli nasadit pomocí migrovaného projektu vlastního překladatele.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Trénování modelu](how-to-train-model.md).
-- Začněte používat váš model nasazený vlastní překlad prostřednictvím [Microsoft Translator Text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).
+- [Výuka modelu](how-to-train-model.md).
+- Začněte používat nasazený vlastní model překladu přes [Microsoft Translator text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).

@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: c010b1acbf1b8f0a05ffda05bddfd8a9145dee8d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6b0ac017704c599e96543ed36a13ff5d3ddef9fc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825429"
+ms.locfileid: "73838576"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Kurz: vytvoření vysoce dostupné aplikace s úložištěm BLOB
 
@@ -74,12 +74,12 @@ Podle těchto kroků můžete vytvořit účet geograficky redundantního úlož
    | Nastavení       | Navrhovaná hodnota | Popis |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Název** | mystorageaccount | Jedinečná hodnota pro váš účet úložiště |
-   | **Model nasazení** | Resource Manager  | Resource Manager obsahuje nejnovější funkce.|
+   | **Model nasazení** | Správce prostředků  | Resource Manager obsahuje nejnovější funkce.|
    | **Druh účtu** | StorageV2 | Podrobnosti o typech účtů najdete v tématu [Typy účtů úložiště](../common/storage-introduction.md#types-of-storage-accounts). |
    | **Výkon** | Standard | Pro ukázkový scénář stačí Standard. |
    | **Replikace**| Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) | To je nezbytné, aby ukázka fungovala. |
    |**Předplatné** | Vaše předplatné |Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.azure.com/Subscriptions). |
-   |**ResourceGroup** | myResourceGroup |Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging). |
+   |**ResourceGroup** | myResourceGroup |Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
    |**Umístění** | Východ USA | Zvolte umístění. |
 
 ![Vytvoření účtu úložiště](media/storage-create-geo-redundant-storage/createragrsstracct.png)

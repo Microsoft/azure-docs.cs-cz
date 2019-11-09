@@ -1,31 +1,31 @@
 ---
-title: Hostování více webů ve službě Azure Application Gateway
-description: Tento článek poskytuje přehled podpory více webů Azure Application Gateway.
+title: Hostování více webů v Azure Application Gateway
+description: Tento článek poskytuje přehled podpory Azure Application Gateway více lokalit.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.date: 1/17/2019
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: 335545f86c9c23feefb6ac21ca9cc5c8fcb5e7fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61184fc7415de3c142b460710cceefed61a25af3
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60715837"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835343"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Hostování více webů ve službě Application Gateway
 
-Hostování více webů umožňuje konfigurovat více než jednu webovou aplikaci ve stejné instanci služby Application Gateway. Tato funkce umožňuje nakonfigurovat efektivnější topologii vašich nasazení tak, že přidáte až 100 webů do jedné služby application gateway. Každou stránku lze přesměrovat na vlastní back-endový fond. V následujícím příkladu služba Application Gateway obsluhuje provoz pro contoso.com a fabrikam.com ze dvou fondů back-endového serveru s názvy FondServeruContoso a FondServeruFabrikam.
+Hostování více webů umožňuje konfigurovat více než jednu webovou aplikaci ve stejné instanci služby Application Gateway. Tato funkce umožňuje nakonfigurovat efektivnější topologii nasazení přidáním až 100 webů do jedné aplikační brány. Každou stránku lze přesměrovat na vlastní back-endový fond. V následujícím příkladu služba Application Gateway obsluhuje provoz pro contoso.com a fabrikam.com ze dvou fondů back-endového serveru s názvy FondServeruContoso a FondServeruFabrikam.
 
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 
 > [!IMPORTANT]
 > Pravidla se zpracovávají v pořadí, v jakém jsou uvedena na portálu. Důrazně doporučujeme nakonfigurovat naslouchací procesy pro více webů před konfigurací základního naslouchacího procesu.  Tím se zajistí směrování provozu do správného back-endu. Pokud je základní naslouchací proces uveden jako první a odpovídá příchozímu požadavku, požadavek se zpracuje tímto naslouchacím procesem.
 
-Požadavky na adresu http://contoso.com se směrují na ContosoServerPool a požadavky na adresu http://fabrikam.com na FabrikamServerPool.
+Žádosti na adresu `http://contoso.com` se směrují na ContosoServerPool a žádosti na adresu `http://fabrikam.com` na FabrikamServerPool.
 
-Podobně lze ve stejném nasazení služby Application Gateway hostovat dvě poddomény stejné nadřazené domény. Příklady použití subdomén můžou zahrnovat adresy http://blog.contoso.com a http://app.contoso.com hostované v jednom nasazení aplikační brány.
+Podobně lze ve stejném nasazení služby Application Gateway hostovat dvě poddomény stejné nadřazené domény. Příklady použití subdomén můžou zahrnovat adresy `http://blog.contoso.com` a `http://app.contoso.com` hostované v jednom nasazení aplikační brány.
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>Hlavičky hostitele a Identifikace názvu serveru (SNI)
 
@@ -120,7 +120,7 @@ V pravidle směrování není požadována žádná změna. Stále byste měli v
 ]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Po získání informací o hostování více webů přejděte k tématu [Vytvoření služby Application Gateway používající hostování více webů](tutorial-multiple-sites-powershell.md) a vytvořte službu Application Gateway se schopností podporovat více než jednu webovou aplikaci.
 

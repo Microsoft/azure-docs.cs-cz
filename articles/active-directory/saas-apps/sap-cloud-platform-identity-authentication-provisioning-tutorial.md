@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Konfigurace ověřování identity cloudové platformy SAP pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
+title: 'Kurz: Konfigurace ověřování identity v cloudové platformě SAP pro Automatické zřizování uživatelů s Azure Active Directory | Microsoft Docs'
 description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřizování uživatelských účtů pro ověřování identity cloudové platformy SAP.
 services: active-directory
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: f570cb6f945f403e77a36374cc9f82edb7b640c9
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 266e68b2378db7148649fd4067f1da6172932367
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174809"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833837"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>Kurz: Konfigurace ověřování identity cloudové platformy SAP pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je Ukázat kroky, které je třeba provést v rámci ověřování identity cloudové platformy SAP a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů a skupin pro SAP Cloud. Ověřování identity platformy.
+Cílem tohoto kurzu je Ukázat kroky, které je třeba provést v rámci ověřování identity cloudové platformy SAP a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD tak, aby automaticky zřídily a zrušily zřizování uživatelů a/nebo skupin pro ověřování identity cloudových platforem SAP.
 
 > [!NOTE]
 > Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../manage-apps/user-provisioning.md).
@@ -80,11 +80,11 @@ Před konfigurací ověřování identity cloudové platformy SAP pro Automatick
 
 2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
-    ![V okně podnikové aplikace](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
 3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
-    ![Tlačítko nové aplikace](common/add-new-app.png)
+    ![Tlačítko Nová aplikace](common/add-new-app.png)
 
 4. Do vyhledávacího pole zadejte **SAP Cloud Platform ověřování identity**, na panelu výsledků vyberte **ověřování identity cloudové platformy SAP** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
@@ -115,13 +115,13 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Karta zřizování](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte `https://<tenantID>.accounts.ondemand.com/service/scim ` **adresu URL tenanta**. Zadejte hodnoty **ID uživatele** a **hesla** načtené dříve v **uživatelském jménu správce** a v části **heslo správce** . Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k ověřování identity cloudové platformy SAP. Pokud se připojení nepovede, ujistěte se, že váš účet pro ověřování identity cloudové platformy SAP má oprávnění správce, a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte `https://<tenantID>.accounts.ondemand.com/service/scim ` na **adrese URL tenanta**. Zadejte hodnoty **ID uživatele** a **hesla** načtené dříve v **uživatelském jménu správce** a v části **heslo správce** . Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k ověřování identity cloudové platformy SAP. Pokud se připojení nepovede, ujistěte se, že váš účet pro ověřování identity cloudové platformy SAP má oprávnění správce, a zkuste to znovu.
 
     ![Adresa URL tenanta + token](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/testconnection.png)
 
-6. V poli **e-mail** s oznámením zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
+6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
-    ![Oznamovací e-mail](common/provisioning-notification-email.png)
+    ![E-mail s oznámením](common/provisioning-notification-email.png)
 
 7. Klikněte na **Uložit**.
 
@@ -149,7 +149,11 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD při ověřování identity cloudové platformy SAP.
 
-Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+
+## <a name="connector-limitations"></a>Omezení konektoru
+
+* Koncový bod SCIM ověřování identity cloudové platformy SAP vyžaduje, aby určité atributy byly specifického formátu. Další informace o těchto atributech a jejich konkrétním formátu můžete získat [tady](https://help.sap.com/viewer/6d6d63354d1242d185ab4830fc04feb1/Cloud/en-US/b10fc6a9a37c488a82ce7489b1fab64c.html#).
 
 ## <a name="additional-resources"></a>Další zdroje
 

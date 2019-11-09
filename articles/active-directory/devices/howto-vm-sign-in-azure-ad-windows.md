@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6f0d732917a6587307e6d60581e0189687cc7e9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: dd50ca8b81b933a61a67ac36db6a656791a8121f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164767"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832857"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -33,7 +33,7 @@ K přihlášení k virtuálním počítačům s Windows v Azure přinášíme sp
 - Už nemusíte spravovat účty místních správců.
 - Azure RBAC vám umožňuje udělit odpovídající přístup k virtuálním počítačům podle potřeby a odebrat je, když už nepotřebujete.
 - Než povolíte přístup k virtuálnímu počítači, podmíněný přístup Azure AD může vynutil další požadavky, jako třeba: 
-   - Multi-Factor Authentication
+   - Ověřování pomocí služby Multi-Factor Authentication
    - Riziko přihlášení
 - Automatizujte a škálujte službu Azure AD JOIN pro virtuální počítače s Windows na bázi Azure.
 
@@ -166,7 +166,7 @@ Po chvíli se objektu zabezpečení přiřadí role ve vybraném oboru.
 
 ### <a name="using-the-azure-cloud-shell-experience"></a>Použití prostředí Azure Cloud Shell
 
-V následujícím příkladu se pomocí funkce [AZ role Assignment Create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) přiřadí k virtuálnímu počítači role přihlášení správce virtuálního počítače pro aktuálního uživatele Azure. Uživatelské jméno vašeho aktivního účtu Azure se získá pomocí [AZ Account show](https://docs.microsoft.com/cli/azure/account#az-account-show)a obor se nastaví na virtuální počítač vytvořený v předchozím kroku pomocí [AZ VM show](https://docs.microsoft.com/cli/azure/vm#az-vm-show). Obor se taky dá přiřadit na úrovni skupiny prostředků nebo předplatného a použít normální oprávnění dědičnosti RBAC. Další informace najdete v tématu [řízení přístupu na základě rolí](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control).
+V následujícím příkladu se pomocí funkce [AZ role Assignment Create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) přiřadí k virtuálnímu počítači role přihlášení správce virtuálního počítače pro aktuálního uživatele Azure. Uživatelské jméno vašeho aktivního účtu Azure se získá pomocí [AZ Account show](https://docs.microsoft.com/cli/azure/account#az-account-show)a obor se nastaví na virtuální počítač vytvořený v předchozím kroku pomocí [AZ VM show](https://docs.microsoft.com/cli/azure/vm#az-vm-show). Obor se taky dá přiřadit na úrovni skupiny prostředků nebo předplatného a použít normální oprávnění dědičnosti RBAC. Další informace najdete v tématu [řízení přístupu na základě rolí](../../virtual-machines/linux/login-using-aad.md).
 
 ```AzureCLI
 username=$(az account show --query user.name --output tsv)
@@ -223,24 +223,24 @@ Aby virtuální počítač dokončil proces připojení k Azure AD, musí se ús
 
    | Příkaz, který se má spustit | Očekávaný výstup |
    | --- | --- |
-   | Metadata typu kudrlinkou-H: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01 " | Správné informace o virtuálním počítači Azure |
-   | Metadata typu kudrlinkou-H: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01 " | Platné ID tenanta přidružené k předplatnému Azure |
-   | Metadata typu kudrlinkou-H: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01 " | Platný přístupový token vydaný Azure Active Directory pro spravovanou identitu, která je přiřazená k tomuto virtuálnímu počítači |
+   | Metadata typu kudrlinkou-H: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | Správné informace o virtuálním počítači Azure |
+   | Metadata typu kudrlinkou-H: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | Platné ID tenanta přidružené k předplatnému Azure |
+   | Metadata typu kudrlinkou-H: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | Platný přístupový token vydaný Azure Active Directory pro spravovanou identitu, která je přiřazená k tomuto virtuálnímu počítači |
 
    > [!NOTE]
    > Přístupový token se dá dekódovat pomocí nástroje, jako je [http://calebb.net/](http://calebb.net/). Ověřte, že "AppID" v přístupovém tokenu odpovídá spravované identitě přiřazené k virtuálnímu počítači.
 
 1. Ujistěte se, že požadované koncové body jsou dostupné z virtuálního počítače pomocí příkazového řádku:
    
-   - kudrlinkou https://login.microsoftonline.com/ -D –
-   - kudrlinkou https://login.microsoftonline.com/`<TenantID>` /-D –
+   - kudrlinkou https://login.microsoftonline.com/-D –
+   - kudrlinkou https://login.microsoftonline.com/`<TenantID>`/-D –
 
    > [!NOTE]
    > Nahraďte `<TenantID>` číslem tenanta Azure AD, který je přidružený k předplatnému Azure.
 
-   - kudrlinkou https://enterpriseregistration.windows.net/ -D –
-   - kudrlinkou https://device.login.microsoftonline.com/ -D –
-   - kudrlinkou https://pas.windows.net/ -D –
+   - kudrlinkou https://enterpriseregistration.windows.net/-D –
+   - kudrlinkou https://device.login.microsoftonline.com/-D –
+   - kudrlinkou https://pas.windows.net/-D –
 
 1. Stav zařízení lze zobrazit spuštěním `dsregcmd /status`. Cílem je stav zařízení, který se má zobrazit jako `AzureAdJoined : YES`.
 
@@ -263,19 +263,19 @@ Tento ukončovací kód se přeloží na DSREG_E_MSI_TENANTID_UNAVAILABLE, proto
 
 #### <a name="issue-2-aadloginforwindows-extension-fails-to-install-with-exit-code--2145648607"></a>Problém 2: rozšíření AADLoginForWindows se nemůže nainstalovat s ukončovacím kódem:-2145648607
 
-Tento ukončovací kód se převede na DSREG_AUTOJOIN_DISC_FAILED, protože rozšíření nemůže kontaktovat koncový bod https://enterpriseregistration.windows.net.
+Tento ukončovací kód se přeloží na DSREG_AUTOJOIN_DISC_FAILED, protože rozšíření nemůže kontaktovat koncový bod https://enterpriseregistration.windows.net.
 
 1. Ověřte dostupnost požadovaných koncových bodů z virtuálního počítače pomocí příkazového řádku:
 
-   - kudrlinkou https://login.microsoftonline.com/ -D –
-   - kudrlinkou https://login.microsoftonline.com/`<TenantID>` /-D –
+   - kudrlinkou https://login.microsoftonline.com/-D –
+   - kudrlinkou https://login.microsoftonline.com/`<TenantID>`/-D –
    
    > [!NOTE]
    > Nahraďte `<TenantID>` číslem tenanta Azure AD, který je přidružený k předplatnému Azure. Pokud potřebujete najít ID tenanta, můžete ukazatel myši umístit na název účtu a získat tak ID adresáře nebo tenanta, nebo v Azure Portal vybrat Azure Active Directory > vlastností > ID adresáře.
 
-   - kudrlinkou https://enterpriseregistration.windows.net/ -D –
-   - kudrlinkou https://device.login.microsoftonline.com/ -D –
-   - kudrlinkou https://pas.windows.net/ -D –
+   - kudrlinkou https://enterpriseregistration.windows.net/-D –
+   - kudrlinkou https://device.login.microsoftonline.com/-D –
+   - kudrlinkou https://pas.windows.net/-D –
 
 1. Pokud některý z příkazů selhává s příkazem "nelze přeložit hostitel `<URL>`", zkuste spustit tento příkaz, který určí server DNS, který je používán virtuálním počítačem.
    
@@ -312,7 +312,7 @@ Pokud se při inicializaci připojení ke vzdálené ploše na virtuální poč�
 
 ![Váš účet je nakonfigurovaný tak, aby vám zabránil v používání tohoto zařízení.](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
 
-Ověřte, že jste [nakonfigurovali zásady RBAC](https://docs.microsoft.com/azure/virtual-machines/linux/login-using-aad#configure-rbac-policy-for-the-virtual-machine) pro virtuální počítač, který uděluje uživateli přihlašovací jméno správce virtuálního počítače nebo uživatelskou roli pro přihlášení k virtuálnímu počítači:
+Ověřte, že jste [nakonfigurovali zásady RBAC](../../virtual-machines/linux/login-using-aad.md) pro virtuální počítač, který uděluje uživateli přihlašovací jméno správce virtuálního počítače nebo uživatelskou roli pro přihlášení k virtuálnímu počítači:
  
 #### <a name="unauthorized-client"></a>Neautorizovaný klient
 

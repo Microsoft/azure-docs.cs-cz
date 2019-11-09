@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
 ms.date: 10/30/2019
-ms.openlocfilehash: 87e1995a84ae2b598b8097d4910914831a75a318
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7574f5c17c1b4598336b8db3108946164dc203f2
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162013"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847285"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor
 
@@ -26,7 +26,7 @@ Log Analytics brána je předávací proxy HTTP, který podporuje tunelování H
 
 Brána Log Analytics podporuje:
 
-* Informujte se o stejné čtyři agenty Log Analytics pracovních prostorů, které jsou za ním a které jsou nakonfigurované s Azure Automation procesy Hybrid Runbook Worker.  
+* Probíhá hlášení až do stejných Log Analytics pracovních prostorů nakonfigurovaných u každého agenta za ním a nakonfigurovaných pomocí Azure Automation procesů Hybrid Runbook Worker.  
 * Počítače se systémem Windows, na kterých je Microsoft Monitoring Agent přímo připojen k pracovnímu prostoru Log Analytics v Azure Monitor.
 * Počítače se systémem Linux, ve kterých je agent Log Analytics pro Linux přímo připojen k pracovnímu prostoru Log Analytics v Azure Monitor.  
 * System Center Operations Manager 2012 SP1 s UR7, Operations Manager 2012 R2 s UR3 nebo skupinu pro správu v Operations Manager 2016 nebo novější, která je integrovaná s Log Analytics.  
@@ -99,7 +99,7 @@ Následující tabulka uvádí, kolik agentů může komunikovat se serverem br�
 |brána |Podporovaná agenti (přibližná)|  
 |--------|----------------------------------|  
 |Procesor: procesor Intel Xeon E5-2660 V3 \@ 2,6 GHz 2 jádra<br> Paměť: 4 GB<br> Šířka pásma sítě: 1 GB/s| 600|  
-|Procesor: procesor Intel Xeon E5-2660 V3 \@ 2,6 GHz 4 jádra<br> Paměť: 8 GB<br> Šířka pásma sítě: 1 GB/s| 1 000|  
+|Procesor: procesor Intel Xeon E5-2660 V3 \@ 2,6 GHz 4 jádra<br> Paměť: 8 GB<br> Šířka pásma sítě: 1 GB/s| 1000|  
 
 ## <a name="download-the-log-analytics-gateway"></a>Stažení Log Analytics brány
 
@@ -137,7 +137,7 @@ Chcete-li nainstalovat bránu pomocí Průvodce instalací, postupujte podle tě
 
    b. Pokud server, na kterém je brána nainstalovaná, potřebuje komunikovat prostřednictvím proxy serveru, zadejte adresu proxy serveru, kam se musí brána připojit. Zadejte například `http://myorgname.corp.contoso.com:80`.  Pokud toto pole necháte prázdné, brána se pokusí připojit přímo k Internetu.  Pokud vaše proxy server vyžaduje ověření, zadejte uživatelské jméno a heslo.
 
-   c. Vyberte **Další**.
+   c. Vyberte **Next** (Další).
 
    ![Snímek obrazovky s konfigurací proxy serveru brány](./media/gateway/gateway-wizard02.png)
 
@@ -199,7 +199,7 @@ Informace o tom, jak navrhnout a nasadit cluster programu pro vyrovnávání zat
 
     ![Správce vyrovnávání zatížení sítě – přidat hostitele do clusteru: připojit](./media/gateway/nlb03.png) 
 
-### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
+### <a name="azure-load-balancer"></a>Azure Load Balancer
 Informace o tom, jak navrhnout a nasadit Azure Load Balancer, najdete v tématu [co je Azure Load Balancer?](../../load-balancer/load-balancer-overview.md). Pokud chcete nasadit základní nástroj pro vyrovnávání zatížení, postupujte podle kroků uvedených v tomto [rychlém](../../load-balancer/quickstart-create-basic-load-balancer-portal.md) startu s výjimkou kroků uvedených v části **Vytvoření back-endové serverů**.   
 
 > [!NOTE]

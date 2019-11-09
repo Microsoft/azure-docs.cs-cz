@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/27/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 76648428e6adcaed579b0e4f1896fdf83e11a8b6
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 8ce949ac997ba7ee38cb057752d89f4b4d22388f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348858"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838704"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Přesunutí účtu Azure Storage do jiné oblasti
 
@@ -51,11 +51,11 @@ Tato šablona obsahuje nastavení, která popisují váš účet úložiště.
 
 Export šablony pomocí Azure Portal:
 
-1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **všechny prostředky** a pak vyberte svůj účet úložiště.
 
-3. Vyberte > **Nastavení** > **Exportovat šablonu**.
+3. Vyberte > **nastavení** > **Exportovat šablonu**.
 
 4. V okně **Exportovat šablonu** vyberte **Stáhnout** .
 
@@ -137,7 +137,7 @@ Nasazení šablony pomocí Azure Portal:
          "location": "centralus"
          }]          
     ```
-    Pokud chcete získat kódy umístění oblastí, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/).  Kód oblasti je název oblasti bez mezer, **střed USA** = **centralus**.
+    Pokud chcete získat kódy umístění oblastí, přečtěte si téma [umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/).  Kód oblasti je název oblasti bez mezer **Střed USA** = **centralus**.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -186,11 +186,11 @@ Nasaďte šablonu pro vytvoření nového účtu úložiště v cílové oblasti
 
 2. Zadejte nebo vyberte hodnoty vlastností:
 
-- **Předplatné:** Vyberte předplatné služby Azure.
+- **Předplatné:** Vyberte předplatné Azure.
 
-- **Skupina prostředků**: Vyberte **vytvořit novou** a zadejte název skupiny prostředků.
+- **Skupina prostředků**: Vyberte **Vytvořit novou** a zadejte název nové skupiny prostředků.
 
-- **Umístění**: Vyberte umístění Azure.
+- **Umístění**: vyberte umístění Azure.
 
 3. Klikněte na **Souhlasím s výše uvedenými podmínkami a ujednáními** a pak klikněte na tlačítko **Vybrat nákup** .
 
@@ -234,19 +234,19 @@ Následující tabulka uvádí tyto funkce spolu s pokyny pro jejich přidání 
 
 Tady je několik způsobů, jak přesouvat data.
 
-:heavy_check_mark: **Azure Storage Explorer**
+: heavy_check_mark: **Průzkumník služby Azure Storage**
 
   Je to snadno použitelné a vhodné pro malé datové sady. Kontejnery a sdílené složky můžete kopírovat a pak je vložit do cílového účtu.
 
   Viz [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/);
 
-:heavy_check_mark: **AzCopy**
+: heavy_check_mark: **AzCopy**
 
   Toto je preferovaný přístup. Je optimalizovaná pro výkon.  Jedním ze způsobů, jak je to rychlejší, je to, že se data zkopírují přímo mezi servery úložiště, takže AzCopy nepoužívá šířku pásma sítě vašeho počítače. Použijte AzCopy na příkazovém řádku nebo jako součást vlastního skriptu.
 
   Viz Začínáme [s AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-:heavy_check_mark: **Azure Data Factory** 
+: heavy_check_mark: **Azure Data Factory** 
 
   Tento nástroj použijte pouze v případě, že potřebujete funkcionalitu, která není v aktuální verzi AzCopy podporována. Například v aktuální verzi AzCopy nemůžete kopírovat objekty blob mezi účty, které mají hierarchický obor názvů. AzCopy také nezachová seznam řízení přístupu k souborům ani časová razítka souborů (například: vytvořit a upravit časová razítka). 
 

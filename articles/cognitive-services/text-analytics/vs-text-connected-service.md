@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Připojení ke službě Analýza textu s připojenými službami v aplikaci Visual Studio'
+title: 'Kurz: připojení ke službě Analýza textu s připojenými službami v aplikaci Visual Studio'
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak se připojit k Analýza textu z webové aplikace ASP.NET Core.
+description: Tento článek a jeho doprovodné články obsahují podrobnosti k použití funkce připojené služby sady Visual Studio pro službu Analýza textu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: ff4c703070d6a7ebd545de3043e5f59b764fe4c9
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: b094a6917892dfff58c49435de4dc42551be19df
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478465"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837186"
 ---
-# <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>Kurz: Připojení ke službě Analýza textu s připojenými službami v aplikaci Visual Studio
+# <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>Kurz: připojení ke službě Analýza textu s připojenými službami v aplikaci Visual Studio
 
 Pomocí služby analýzy textu se dá extrahovat velké množství dat, které je možné využít ke kategorizaci a zpracování vizuálních dat a také k usnadnění správy služeb díky moderování obrázků s podporou počítače.
 
@@ -153,7 +153,7 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
     }
     ```
     
-    Kód zahrnuje `GetTextAnalyzeClient` pro získání objektu klienta pro volání rozhraní API pro analýzu textu a obslužnou rutinu žádosti, která volá operaci DetectLanguage na daný text.
+    Kód zahrnuje `GetTextAnalyzeClient` pro získání objektu klienta pro volání rozhraní API pro analýzu textu a obslužné rutiny žádosti, která volá operaci DetectLanguage na daný text.
 
 1. Přidejte třídu pomocné rutiny MyHandler, kterou používá předcházející kód.
 
@@ -193,7 +193,7 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
     }
     ```
 
-1. Přidejte zobrazení pro zobrazení analyzovaného textu, určovaný jazyk a skóre, které reprezentuje úroveň spolehlivosti analýzy. To uděláte tak, že pravým tlačítkem myši kliknete na složku **Zobrazení** a zvolíte **Přidat** a potom **Zobrazení**. V zobrazeném dialogovém okně zadejte název _TextAnalyzeResult_, ve složce **Zobrazení** potvrďte výchozí hodnoty pro přidání nového souboru s názvem _TextAnalyzeResult.cshtml_ a zkopírujte do něj tento obsah:
+1. Přidejte zobrazení pro zobrazení analyzovaného textu, určovaný jazyk a skóre, které reprezentuje úroveň spolehlivosti analýzy. To uděláte tak, že pravým tlačítkem myši kliknete na složku **Zobrazení** a zvolíte **Přidat** a potom **Zobrazení**. V zobrazeném dialogovém okně zadejte název _TextAnalyzeResult_, ve složce _Zobrazení_ potvrďte výchozí hodnoty pro přidání nového souboru s názvem **TextAnalyzeResult.cshtml** a zkopírujte do něj tento obsah:
     
     ```cshtml
     @using System
@@ -259,7 +259,7 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
    
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už ji nepotřebujete, odstraňte skupinu prostředků. Tím se odstraní služba Cognitive Services a související prostředky. Odstranění skupiny prostředků přes portál:
+Odstraňte skupinu prostředků, pokud ji už nepotřebujete. Tím se odstraní kognitivní služba a související prostředky. Odstranění skupiny prostředků přes portál:
 
 1. Do pole Hledat v horní části portálu zadejte název vaší skupiny prostředků. Až se ve výsledcích hledání zobrazí skupina prostředků použitá v tomto kurzu, vyberte ji.
 2. Vyberte **Odstranit skupinu prostředků**.

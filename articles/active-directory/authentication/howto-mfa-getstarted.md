@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d80ac949dea3c9d6c3d28d2a343c4ed7bad8983
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 22e3131a204589a506b2d5f1e2508c37ad3b4100
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474306"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847205"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Plánování cloudového nasazení Azure Multi-Factor Authentication
 
@@ -24,7 +24,7 @@ Uživatelé se připojují k prostředkům organizace ve stále složitějších
 
 [Azure Multi-Factor Authentication (MFA)](concept-mfa-howitworks.md) pomáhá chránit přístup k datům a aplikacím. Poskytuje další úroveň zabezpečení s použitím druhé formy ověřování. Organizace můžou pomocí [podmíněného přístupu](../conditional-access/overview.md) zajistit, aby řešení vyhovovalo konkrétním potřebám.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s nasazením Azure Multi-Factor Authentication, jsou k dispozici nezbytné položky, které byste měli vzít v úvahu.
 
@@ -209,6 +209,9 @@ function Set-MfaState {
 Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
+> [!NOTE]
+> V nedávné době jsme změnili chování a skript PowerShellu. Dříve byl skript uložen mimo metody MFA, zakázal MFA a obnovil metody. Už to není nutné, když výchozí chování pro Disable nevymaže tyto metody.
+
 ## <a name="plan-conditional-access-policies"></a>Plánování zásad podmíněného přístupu
 
 Pokud chcete naplánovat strategii zásad podmíněného přístupu, která určí, kdy se vyžadují MFA a jiné ovládací prvky, přečtěte si téma [co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md).
@@ -344,7 +347,7 @@ Sestavy pro Azure MFA
 
 Azure Multi-Factor Authentication poskytuje sestavy prostřednictvím Azure Portal:
 
-| Zpráva | Umístění | Popis |
+| Sestava | Umístění | Popis |
 | --- | --- | --- |
 | Používání a výstrahy týkající se podvodů | Přihlášení > Azure AD | Poskytuje informace o celkovém využití, souhrnu uživatelů a podrobnostech uživatelů. a také historii výstrah podvodů odeslaných během zadaného rozsahu dat. |
 

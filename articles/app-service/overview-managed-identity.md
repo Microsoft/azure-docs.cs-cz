@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: a5176f74964e0809cea39aa160943cc6f3451237
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: a2f6d7f881e404e9e4dbdb8087cabf25f67d561b
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176524"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847307"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravovaných identit pro App Service a Azure Functions
 
@@ -41,7 +41,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, nejdřív vytvořte apli
 
 2. Pokud používáte aplikaci Function App, přejděte k **funkcím platformy**. U ostatních typů aplikací se posuňte dolů ke skupině **Nastavení** v levém navigačním panelu.
 
-3. Vyberte **spravovanou identitu**.
+3. Vyberte **Identita**.
 
 4. V rámci karty **přiřazené systémem** přepněte **stav** na **zapnuto**. Klikněte na **Uložit**.
 
@@ -168,11 +168,11 @@ Nejdřív budete muset vytvořit prostředek identity přiřazené uživatelem.
 
 3. Pokud používáte aplikaci Function App, přejděte k **funkcím platformy**. U ostatních typů aplikací se posuňte dolů ke skupině **Nastavení** v levém navigačním panelu.
 
-4. Vyberte **spravovanou identitu**.
+4. Vyberte **Identita**.
 
 5. Na kartě **přiřazené uživatelem** klikněte na tlačítko **Přidat**.
 
-6. Vyhledejte identitu, kterou jste vytvořili dříve, a vyberte ji. Klikněte na tlačítko **Přidat**.
+6. Vyhledejte identitu, kterou jste vytvořili dříve, a vyberte ji. Klikněte na **Přidat**.
 
     ![Spravovaná identita v App Service](media/app-service-managed-service-identity/msi-blade-user.png)
 
@@ -193,7 +193,7 @@ Libovolný prostředek typu `Microsoft.Web/sites` lze vytvořit s identitou, a t
 > [!NOTE] 
 > Aplikace může mít současně přiřazené i uživatelsky přiřazené identity. V tomto případě by byla vlastnost `type` `SystemAssigned,UserAssigned`
 
-Přidání uživatelem přiřazeného typu a spolusděluje Azure pro vytvoření a správu identity pro vaši aplikaci.
+Když se přidá uživatelem přiřazený typ, sdělí Azure, aby používal identitu přiřazenou uživateli zadanou pro vaši aplikaci.
 
 Webová aplikace může například vypadat takto:
 ```json
@@ -429,7 +429,7 @@ Identitu přiřazenou systémem je možné odebrat tak, že ji zakážete pomoc�
 Odebrání identity přiřazené systémem tímto způsobem ji odstraní také z AAD. Identity přiřazené systémem se při odstranění prostředku aplikace taky automaticky odeberou z AAD.
 
 > [!NOTE]
-> K dispozici je také nastavení aplikace, které lze nastavit, WEBSITE_DISABLE_MSI, které jednoduše zakáže místní službu tokenů. Ale ponechá identitu na místě a nástroj bude stále zobrazovat spravovanou identitu jako zapnuto nebo povoleno. V důsledku toho se použití tohoto nastavení nedoporučuje.
+> Existuje také nastavení aplikace, které lze nastavit, WEBSITE_DISABLE_MSI, což zakazuje pouze místní službu tokenů. Ale ponechá identitu na místě a nástroj bude stále zobrazovat spravovanou identitu jako zapnuto nebo povoleno. V důsledku toho se použití tohoto nastavení nedoporučuje.
 
 ## <a name="next-steps"></a>Další kroky
 

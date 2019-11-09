@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: bcd1fff61e1612cc3361548527e5ed13affa3ba5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9073893ebfcfea1a7f4e2a00bf82babcb8841122
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501369"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838521"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Kurz: výuka a nasazení prvního modelu v jazyce R s Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ V tomto kurzu se seznámíte s následujícími úlohami:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. Postupujte podle [pokynů k instalaci](https://azure.github.io/azureml-sdk-for-r/articles/installation.html) :
     + Nainstalovat Anaconda
@@ -155,7 +155,7 @@ upload_files_to_datastore(ds,
 ```
 
 
-## <a name="train-a-model"></a>Trénování modelu
+## <a name="train-a-model"></a>Učení modelu
 
 Pro tento kurz si nahráli model logistické regrese pro nahraná data pomocí vzdáleného výpočetního clusteru. K odeslání úlohy potřebujete:
 
@@ -167,7 +167,7 @@ Pro tento kurz si nahráli model logistické regrese pro nahraná data pomocí v
 Ve stejném adresáři jako tento kurz jste zadali školicí skript s názvem `accidents.R`. Všimněte si následujících podrobností v **školicím skriptu** , které byly provedeny k využití služby Azure ml pro školení:
 
 * Školicí skript přebírá argument `-d` pro nalezení adresáře, který obsahuje školicí data. Při pozdějším definování a odeslání úlohy odkazujete na úložiště dat pro tento argument. Služba Azure ML připojí složku úložiště ke vzdálenému clusteru pro úlohu školení.
-* Školicí skript zaznamená konečnou přesnost jako metriku pro záznam spuštění v Azure ML pomocí `log_metric_to_run()`. Sada Azure ML SDK poskytuje sadu protokolovacích rozhraní API pro protokolování různých metrik během školicích běhů. Tyto metriky se zaznamenávají a ukládají v záznamu experimentálního spuštění. Metriky je pak možné kdykoli otevřít nebo zobrazit na stránce Podrobnosti o spuštění v [Azure Machine Learning Studiu](http://ml.azure.com). [Další informace naleznete v tématu](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) úplná sada metod protokolování `log_*()`.
+* Školicí skript zaznamená konečnou přesnost jako metriku pro záznam spuštění v Azure ML pomocí `log_metric_to_run()`. Sada Azure ML SDK poskytuje sadu protokolovacích rozhraní API pro protokolování různých metrik během školicích běhů. Tyto metriky se zaznamenávají a ukládají v záznamu experimentálního spuštění. Metriky je pak možné kdykoli otevřít nebo zobrazit na stránce Podrobnosti o spuštění v [Azure Machine Learning Studiu](https://ml.azure.com). [Další informace naleznete v tématu](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) úplná sada metod protokolování `log_*()`.
 * Školicí skript uloží model do adresáře s názvem **výstupy**. Složka `./outputs` přijímá zvláštní zacházení pomocí Azure ML. Během školení se soubory zapsané do `./outputs` automaticky odešlou do záznamu o spuštění pomocí Azure ML a uloží se jako artefakty. Po uložení školicího modelu do `./outputs`budete moci získat přístup k souboru modelu a načíst ho i po skončení běhu a už nebudete mít přístup ke vzdálenému školicímu prostředí.
 
 ### <a name="create-an-estimator"></a>Vytvoření estimátoru

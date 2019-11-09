@@ -1,7 +1,7 @@
 ---
-title: Vyhledání určitých momentů ve videích – Video Indexer
-titlesuffix: Azure Media Services
-description: Toto téma popisuje způsob vyhledání určitých momentů ve videích použití nástroje Video Indexer.
+title: Vyhledání přesného momentu v videích – Video Indexer
+titleSuffix: Azure Media Services
+description: Toto téma ukazuje, jak najít přesný moment v rámci videí pomocí Video Indexer.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,50 +10,50 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 93376059dac2a8336e581269d8289d893779b291
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ebf7606d1a0932cc2254e14a40a2fff550fd35f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799096"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833795"
 ---
 # <a name="find-exact-moments-within-videos"></a>Vyhledání určitých momentů ve videích
 
-Toto téma ukazuje možnosti hledání, které vám umožní vyhledání určitých momentů ve videích.
+Toto téma vám ukáže možnosti hledání, které vám umožní najít v videích přesný moment.
 
 1. Přejděte na web [Video Indexer](https://www.videoindexer.ai/) a přihlaste se.
-2. Prohledávat všechna videa ve vašem účtu.
+2. Prohledejte všechna videa ve vašem účtu.
 
-    V následujícím příkladu jsme vyhledávání pro všechna videa, které mluvit o zabezpečení a která Satya se zobrazí,
+    V následujícím příkladu vyhledáme všechna videa, která se domluví o zabezpečení a kde se Satya zobrazí,
 
-    ![Search](./media/video-indexer-search/video-indexer-search01.png)
-3. Hledejte souhrnný poznatky o videu.
+    ![Hledání](./media/video-indexer-search/video-indexer-search01.png)
+3. Prohledejte souhrnné přehledy videa.
 
-    Můžete vyhledávat ve videu kliknutím **Přehrát** na video. Potom můžete hledat ve videu výběrem **hledání** kartu. 
+    Kliknutím na tlačítko **Přehrát** ve videu můžete hledat v rámci videa. Pak můžete hledat ve videu výběrem karty **Hledat** . 
 
-    V následujícím příkladu jsme vyhledejte "Secure (zabezpečeno) uvnitř vybrané videa.
+    V následujícím příkladu hledáme ve vybraném videu "Secure".
 
-    ![Search](./media/video-indexer-search/video-indexer-search02.png)
+    ![Hledání](./media/video-indexer-search/video-indexer-search02.png)
 
-    Pokud kliknete na některý z výsledků, hráč přináší je na daném okamžiku videa. Ve vaší aplikaci můžete dosáhnout zobrazení player a přehledy a synchronizace. Další informace najdete v tématu [vložit Video Indexer widgetů do aplikace](video-indexer-embed-widgets.md). 
-4. Vyhledejte podrobný přehled videa.
+    Pokud kliknete na jeden z výsledků, přehrávač vám do tohoto momentu zařadí. V aplikaci můžete dosáhnout zobrazení a synchronizace pro Player/Insights. Další informace najdete v tématu [vložení video indexer widgetů do aplikace](video-indexer-embed-widgets.md). 
+4. Prohledejte podrobný rozpis videa.
     
-    Pokud chcete vytvořit vlastní galerie založené na video, které jste našli, stiskněte **upravit** tlačítko. Této stránce se zobrazují videa spolu s jeho insights jako filtry. Další informace najdete v tématu [zobrazení a úprava přehledů funkce Video Indexer](video-indexer-view-edit.md). 
+    Pokud chcete vytvořit vlastní klip založený na videu, které jste našli, stiskněte tlačítko **Upravit** . Na této stránce se zobrazuje video spolu s jejími přehledy jako s filtry. Další informace najdete v tématu [zobrazení a úprava video indexer Insights](video-indexer-view-edit.md). 
 
-    Můžete hledat ve videu, aby se zobrazily pouze řádky zajímají a insights na straně použít k filtrování částí, které chcete zobrazit. Když dokončíte, můžete zobrazit náhled klipu a stiskněte klávesu **publikovat** k vytvoření nové galerie, která se zobrazí v galerii.
+    Můžete hledat v videu, abyste zobrazili jenom ty řádky, které vás zajímají, a pomocí vedlejších přehledů vyfiltrujte části, které chcete zobrazit. Po dokončení můžete zobrazit náhled svého klipu a stisknutím tlačítka **publikovat** vytvořit nový klip, který se zobrazí v galerii.
     
-    V následujícím příkladu jsme hledali text "smíšené reality". Můžeme také použít další filtry, jak je znázorněno na následující obrazovce.
+    V následujícím příkladu jsme vyhledali text "Mixed reality". Použili jsme také další filtry, jak je znázorněno na následující obrazovce.
     
-    ![Search](./media/video-indexer-search/video-indexer-search03.png)
+    ![Hledání](./media/video-indexer-search/video-indexer-search03.png)
 
-## <a name="next-steps"></a>Další postup 
+## <a name="next-steps"></a>Další kroky 
 
-Po nalezení videa, kterou chcete pracovat, můžete pokračovat, zpracování videa, jak je popsáno v některém z těchto témat: 
+Jakmile najdete video, se kterým chcete pracovat, můžete pokračovat ve zpracování videa, jak je popsáno v některém z těchto témat: 
 
-- [Použít podrobný přehled videí](use-editor-create-project.md)
+- [Využijte hloubkové přehledy videí](use-editor-create-project.md)
 - [Zpracování obsahu pomocí rozhraní REST API služby Video Indexer](video-indexer-use-apis.md)
 - [Vložení vizuálních widgetů do vaší aplikace](video-indexer-embed-widgets.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 [Přehled Video Indexeru](video-indexer-overview.md)

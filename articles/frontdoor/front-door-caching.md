@@ -1,6 +1,6 @@
 ---
-title: Služba Azure branou – ukládání do mezipaměti | Dokumentace Microsoftu
-description: Tento článek vám pomůže pochopit, jak služba Azure branou monitoruje stav vaší back-EndY
+title: Služba front-dveří Azure – ukládání do mezipaměti | Microsoft Docs
+description: Tento článek vám pomůže pochopit, jak služba Azure front-endu monitoruje stav back-endu.
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,110 +11,110 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 42ee1dea8c9735592f6d6c9e0542ca094a6be383
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 70ee0af0b39e80aa90d143303b3c522fbb3cc780
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962913"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839225"
 ---
-# <a name="caching-with-azure-front-door-service"></a>Ukládání do mezipaměti službou Azure přední dveře
-Následující dokument pro branou určuje chování pomocí pravidel směrování, které mají povolené ukládání do mezipaměti.
+# <a name="caching-with-azure-front-door-service"></a>Ukládání do mezipaměti ve službě Azure front-dveří
+Následující dokument určuje chování před dveřmi pomocí pravidel směrování s povoleným ukládáním do mezipaměti.
 
-## <a name="delivery-of-large-files"></a>Doručování velkých souborů
-Služba Azure branou přináší velké soubory bez limitu velikosti souboru. Přední dveře pomocí techniky označované jako objekt bloků. Když služba Front Door přijme požadavek na velký soubor, načte z back-endu menší části daného souboru. Po přijetí požadavku na úplný soubor nebo rozsah bajtů souboru si prostředí služby Front Door vyžádá soubor z back-endu v blocích dat o velikosti 8 MB.
+## <a name="delivery-of-large-files"></a>Doručení velkých souborů
+Služba front-dveří Azure poskytuje velké soubory bez Cap k velikosti souborů. Přední dvířka používají techniku nazvanou bloků objektů. Když služba Front Door přijme požadavek na velký soubor, načte z back-endu menší části daného souboru. Po přijetí požadavku na úplný soubor nebo rozsah bajtů souboru si prostředí služby Front Door vyžádá soubor z back-endu v blocích dat o velikosti 8 MB.
 
-</br>Po bloku dat dorazí prostředí branou, je uložit do mezipaměti a okamžitě obsluhovat uživateli. Přední dveře pak předem načte další blok paralelně. Tento před načtením zajistí, že obsah zůstane jeden blok před časem uživatele, což snižuje latence. Tento proces pokračuje, dokud se celý soubor se stáhne (je-li požadovány), všechny rozsahů bajtů jsou k dispozici (je-li požadovány), nebo klient ukončí připojení.
+</br>Po doručení bloku dat do prostředí front-dveří je tato část ukládána do mezipaměti a okamžitě se dodrží uživateli. Přední dveře potom předem načítají další blok. Toto předběžné načtení zajišťuje, že obsah zůstane jeden blok před uživatelem, což snižuje latenci. Tento proces pokračuje, dokud nebude stažen celý soubor (Pokud se požaduje), jsou dostupné všechny rozsahy bajtů (Pokud se požaduje), nebo klient připojení ukončí.
 
-</br>Další informace o žádosti o rozsah bajtů, najdete v článku [RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html).
-Přední dveře ukládá do mezipaměti všechny bloky dat po přijetí, a proto není nutné uložit do mezipaměti, základem je mezipaměť branou celý soubor. Odeslání dalších žádostí o souboru nebo bajt rozsahy se obsluhují z mezipaměti. Není-li všechny bloky dat jsou uložené v mezipaměti, předběžného načítání slouží k vyžádání bloků dat z back-endu. Tato optimalizace se spoléhá na schopnost back-endu podporovat požadavky na zjištění rozsahu bajtů; Pokud back-endu nepodporuje požadavky na zjištění rozsahu bajtů, optimalizací není platná.
+</br>Pokud chcete získat další informace o požadavku na rozsah bajtů, přečtěte si [dokument RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html).
+Přední dveře ukládá do mezipaměti všechny bloky, jak jsou přijaty, a takže celý soubor není nutné ukládat do mezipaměti na front-dveřích. Následné požadavky na rozsahy souborů nebo bajtů jsou obsluhovány z mezipaměti. Pokud nejsou všechny bloky dat uložené v mezipaměti, pro vyžádání bloků dat z back-endu se používá předběžné načítání. Tato optimalizace spoléhá na schopnost back-endu podporovat požadavky na rozsah bajtů; Pokud back-end nepodporuje požadavky na rozsah bajtů, tato optimalizace se neprojeví.
 
 ## <a name="file-compression"></a>Komprese souborů
-Vstupní brána lze dynamicky Komprimovat obsah na hraničních zařízeních, výsledkem jsou menší a rychlejší reakci na vaši klienti. Všechny soubory jsou způsobilé pro kompresi. Soubor ale musí být typu MIME to nárok komprese seznamu. Přední dveře v současné době neumožňuje tento seznam se změnit. Aktuální seznam je:</br>
-- "application/eot"
-- "application/písmo"
-- "application/písma – sfnt"
-- "application/javascript"
-- "application/json"
-- "application/opentype"
-- "application/otf"
-- "application/pkcs7-mime"
-- "application/truetype"
-- "application/písem ttf",
-- "application/vnd.ms-fontobject"
-- "application/xhtml+xml"
-- "application/xml"
-- "application/xml rss plus (+)
-- "application/x-font-opentype"
-- "application/x-font-truetype"
-- "application/x-font-písem ttf"
-- "application/x-httpd-cgi"
+Přední dvířka můžou dynamicky Komprimovat obsah na hranici, což vede k menší a rychlejší reakci na vaše klienty. Všechny soubory mají nárok na kompresi. Soubor musí mít ale typ MIME, který je vhodný pro seznam komprese. V současné době přední dveře neumožňují změnu tohoto seznamu. Aktuální seznam je:</br>
+- "Application/EOT"
+- "Application/Font"
+- "Application/Font-sfnt"
+- "Application/JavaScript"
+- "Application/JSON"
+- "Application/OpenType"
+- "Application/OTF"
+- "Application/PKCS7-MIME"
+- "Application/TrueType"
+- "Application/TTF",
+- "application/vnd. MS-fontobject"
+- "Application/XHTML + XML"
+- "Application/XML"
+- "Application/XML + RSS"
+- "application/x-Font-OpenType"
+- "application/x-Font-TrueType"
+- "application/x-Font-TTF"
+- "application/x-httpd-CGI"
 - "application/x-mpegurl"
-- "application/x-opentype"
-- "application/x-otf"
+- "application/x-OpenType"
+- "application/x-OTF"
 - "application/x-perl"
-- "application/x-písem ttf"
-- "application/x-javascript"
-- "písmo/eot"
-- "písem a písem ttf"
-- "písmo/otf"
-- "písmo/opentype"
-- "image/svg+xml"
-- "text/css"
-- "text/csv"
-- "text/html"
-- "text/javascript"
-- "text/js", "text/plain"
-- "text/richtext"
-- "text/tab-separated-values"
-- "text/xml"
-- "text/x-script"
-- "text/x-component"
-- "text/x-java-source"
+- "application/x-TTF"
+- "application/x-JavaScript"
+- Font/EOT
+- Font/TTF
+- Font/OTF
+- Font/OpenType
+- Image/SVG + XML
+- text/CSS
+- text/CSV
+- text/HTML
+- text/JavaScript
+- "text/js", "text/prostý"
+- text/RTF
+- "text/tabulátor – oddělené hodnoty"
+- text/XML
+- "text/x-Script"
+- "text/x-Component"
+- "text/x-Java-Source"
 
-Kromě toho soubor musí také být mezi 1 KB a 8 MB velikosti, včetně.
+Kromě toho musí mít soubor také velikost od 1 KB do 8 MB (včetně).
 
 Tyto profily podporují následující kódování komprese:
-- [GZIP (GNU zip)](https://en.wikipedia.org/wiki/Gzip)
+- [Gzip (GNU zip)](https://en.wikipedia.org/wiki/Gzip)
 - [Brotli](https://en.wikipedia.org/wiki/Brotli)
 
-Pokud žádost o podporuje gzip a provádí kompresi, Brotli, komprese Brotli přednost.</br>
-Když žádost pro určitý prostředek určuje komprese a výsledky požadavku v neúspěšnému přístupu do mezipaměti, branou provádí kompresi majetku přímo na serveru POP. Následně komprimovaný soubor se načítají z mezipaměti. Vrátí se výsledná položka transfer-encoding: rozdělený do bloků dat.
+Pokud požadavek podporuje kompresi gzip a Brotli, má přednost komprese Brotli.</br>
+Když požadavek na prostředek určí kompresi a výsledkem požadavku dojde k neúspěšnému vytvoření mezipaměti, přední dveře provádí kompresi assetu přímo na serveru POP. Následně bude komprimovaný soubor obsluhován z mezipaměti. Výsledná položka se vrátí s kódováním transferu: v bloku.
 
-## <a name="query-string-behavior"></a>Chování řetězců dotazu
-S branou můžete řídit, jak jsou soubory uložené v mezipaměti pro webový požadavek, který obsahuje řetězec dotazu. Řetězec dotazu v webový požadavek s řetězcem dotazu, je část žádosti, které je pozdější otazník (?). Řetězec dotazu může obsahovat jeden nebo více párů klíč hodnota, ve kterých název pole a jeho hodnota jsou odděleny znaménkem rovná se (=). Každý pár klíč hodnota je oddělených ampersandem (&). Například, http://www.contoso.com/content.mov?field1=value1&field2=value2. Pokud existuje více než jeden pár klíč hodnota v řetězci dotazu požadavku, jejich pořadí není důležitá.
-- **Ignorovat řetězce dotazů**: Výchozí režim. V tomto režimu branou předává řetězce dotazu z žadatel back-endu na první požadavek a uloží do mezipaměti assetu. Všechny následné požadavky assetu, které se obsluhují z prostředí branou ignorovat řetězce dotazu do vypršení platnosti mezipaměti asset.
+## <a name="query-string-behavior"></a>Chování řetězce dotazu
+S předními dvířky můžete řídit, jak jsou soubory ukládány do mezipaměti pro webový požadavek, který obsahuje řetězec dotazu. V rámci webové žádosti s řetězcem dotazu je řetězec dotazu ta část požadavku, která se vyskytuje po otazníku (?). Řetězec dotazu může obsahovat jednu nebo více párů klíč-hodnota, ve kterých je název pole a jeho hodnota oddělená symbolem rovná se (=). Jednotlivé páry klíč-hodnota jsou oddělené znakem ampersand (&). například `http://www.contoso.com/content.mov?field1=value1&field2=value2`. Pokud je v řetězci dotazu požadavku více než jedna dvojice klíč-hodnota, nezáleží na jejich pořadí.
+- **Ignorovat řetězce dotazů**: výchozí režim. V tomto režimu předá přední dvířka řetězce dotazů od žadatele k back-endu na první požadavek a uloží Asset do mezipaměti. Všechny následné požadavky na prostředky, které jsou obsluhovány z prostředí front-dveří, ignorují řetězce dotazu do vypršení platnosti prostředku uloženého v mezipaměti.
 
-- **Ukládat do mezipaměti každou jedinečnou adresu URL**: V tomto režimu se každý požadavek s jedinečnou adresu URL, včetně řetězce dotazu, je považován za jedinečný prostředek s vlastní mezipaměti. Například odpověď z back-endu pro žádost o `www.example.ashx?q=test1` se ukládají do mezipaměti na branou prostředí a vrátil pro následné mezipaměti s stejný řetězec dotazu. Žádost o `www.example.ashx?q=test2` se uloží do mezipaměti jako samostatný prostředek s vlastní nastavení time to live.
+- **Ukládat do mezipaměti každou jedinečnou adresu URL**: v tomto režimu se každý požadavek s jedinečnou adresou URL, včetně řetězce dotazu, považuje za jedinečný prostředek s vlastní mezipamětí. Například odpověď z back-endu pro požadavek na `www.example.ashx?q=test1` je uložená v mezipaměti v prostředí front-endu a vrátila se pro následné mezipaměti se stejným řetězcem dotazu. Požadavek na `www.example.ashx?q=test2` se ukládá do mezipaměti jako samostatný prostředek s vlastním nastavením Time to Live.
 
-## <a name="cache-purge"></a>Vymazání mezipaměti
-Přední dveře ukládá prostředky do vypršení platnosti prostředku time to live (TTL). Po vypršení platnosti TTL prostředku, když klient požádá o prostředek, branou prostředí budou načítat nové aktualizovanou kopii prostředku obsluhovat žádosti klienta a úložiště aktualizovat mezipaměť.
-</br>Osvědčeným postupem zajistit, aby vaši uživatelé vždy získat nejnovější verzi vaše prostředky se vaše prostředky pro každou aktualizaci na verzi a publikujte je jako nové adresy URL. Přední dveře okamžitě budou načítat nové prostředky pro další požadavky klienta. Někdy můžete chtít Vyprázdnit obsah uložený v mezipaměti ze všech hraničních uzlů a vynuťte jejich všechny k načtení nové materiály aktualizované. To může být způsobeno aktualizace do vaší webové aplikace, a rychle aktualizace prostředky, které obsahují nesprávné informace.
+## <a name="cache-purge"></a>Vyprázdnění mezipaměti
+Přední dveře budou prostředky ukládat do mezipaměti, dokud nevyprší hodnota TTL (Time to Live) prostředku. Po vypršení hodnoty TTL prostředku, když si klient vyžádá prostředek, prostředí front-dveří načte novou aktualizovanou kopii assetu, která bude obsluhovat požadavek klienta a uloží mezipaměť do úložiště.
+</br>Osvědčeným postupem je zajistit, aby vaši uživatelé měli vždycky přístup k nejnovější kopii vašich assetů, aby si mohli každou aktualizaci nastavovat vaše prostředky a publikovat je jako nové adresy URL. Přední dvířka okamžitě načtou nové prostředky pro další požadavky klientů. Někdy možná budete chtít vyprázdnit obsah uložený v mezipaměti ze všech hraničních uzlů a pokaždé, když budou všechny získávat nové aktualizované prostředky. Důvodem může být aktualizace webové aplikace nebo rychlé aktualizace prostředků, které obsahují nesprávné informace.
 
-</br>Vyberte prostředky, které chcete vyprázdnit z hraničních uzlů. Pokud chcete vymazat všechny prostředky, klikněte na tlačítko k vyprázdnění všech zaškrtávací políčko. V opačném případě zadejte cestu k každý prostředek, který chcete vyprázdnit v textovém poli cesta. Následující formáty jsou podporovány v cestě.
-1. **Vyprázdnění jedné adresy URL**: Odstranit jednotlivý prostředek tak, že zadáte úplnou adresu URL s příponou souboru, například /pictures/strasbourg.png;
-2. **Zástupné vyprázdnění**: Hvězdička (\*) může sloužit jako zástupný znak. Vyprázdnit všechny složky, podsložky a soubory v koncovém bodě s /\* v cestě nebo vymazat všechny podsložky a soubory v rámci konkrétní složky tak, že zadáte složce následovaný /\*, třeba /obrazky/\*.
-3. **Kořenové domény vyprázdnění**: Vyprázdnit kořenový koncový bod s "/" v cestě.
+</br>Vyberte prostředky, které chcete vymazat z hraničních uzlů. Pokud chcete vymazat všechny prostředky, klikněte na zaškrtávací políčko Odstranit vše. V opačném případě zadejte cestu každého assetu, který chcete vyprázdnit, do textového pole cesta. Následující formáty jsou v cestě podporované.
+1. **Vyprázdnit jednu adresu URL**: vyprázdnit jednotlivé assety zadáním úplné adresy URL s příponou souboru, například/Pictures/Strasbourg.png;
+2. **Zástupné znaky**: hvězdička (\*) se dá použít jako zástupný znak. Vyprázdnit všechny složky, podsložky a soubory v rámci koncového bodu s/\* v cestě nebo vyprázdnit všechny podsložky a soubory v konkrétní složce zadáním složky, kterou následují/\*, například/Pictures/\*.
+3. **Kořenová doména vyprázdnění**: vyprázdní kořen koncového bodu znakem "/" v cestě.
 
-Vymazat mezipaměť na branou jsou malá a velká písmena. Kromě toho jsou nezávislá na řetězec dotazu, což znamená, že vyprazdňování adresy URL se vymažou všechny varianty je řetězec dotazu. 
+Mezipaměť vyprázdnění na frontách v mezipaměti nerozlišuje velká a malá písmena. Kromě toho jsou dotazy řetězce nezávislá, což znamená, že při vymazání adresy URL se odstraní všechny variace řetězce dotazu. 
 
-## <a name="cache-expiration"></a>Doba vypršení platnosti mezipaměti
-Následující pořadí záhlaví se používá k určení, jak dlouho bude položka uložená v našich mezipaměti:</br>
-1. Cache-Control: s-maxage=\<seconds>
-2. Cache-Control: max-age =\<sekund >
-3. Vypršení platnosti: \<http datum >
+## <a name="cache-expiration"></a>Vypršení platnosti mezipaměti
+Následující pořadí hlaviček se používá k určení, jak dlouho bude položka uložená v naší mezipaměti:</br>
+1. Cache-Control: s-maxage =\<sekund >
+2. Řízení mezipaměti: max-age =\<sekund >
+3. Konec platnosti: \<http-Date >
 
-Hlavičky Cache-Control odpovědi, které označují, že odpověď nebudou zapisována do mezipaměti jako je například Cache-Control: privátní, Cache-Control: no-cache a Cache-Control: no-store jsou zachované. Pokud na serveru POP pro stejnou adresu URL jsou vydávaných za pochodu více požadavků, jsou však může sdílet odpovědi. Pokud je k dispozici žádné Cache-Control výchozí chování je, že AFD bude ukládat do mezipaměti prostředků pro X doba kde X je náhodně vyberou se mezi 1 až 3 dny.
+Hlavičky odpovědí, které určují, že odpověď nebude ukládána do mezipaměti, jako je například řízení mezipaměti: soukromé, Cache-Control: no-cache a Cache-Control: No-Store se nerespektuje. Pokud je ale pro stejnou adresu URL víc požadavků za letu na jednom místě, můžou tuto odpověď sdílet. Pokud není k dispozici žádný ovládací prvek Cache-Control, znamená to, že AFD bude prostředek ukládat do mezipaměti za X dobu, kdy je X náhodně vyskladněno mezi 1 až 3 dny.
 
 
 ## <a name="request-headers"></a>Hlavičky požadavku
 
-Následující hlavičky požadavku do back-end se nepředají při použití ukládání do mezipaměti.
+Následující hlavičky žádosti nebudou předány do back-endu při použití ukládání do mezipaměti.
 - Autorizace
 - Content-Length
-- Transfer-Encoding
+- Přenos – kódování
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si, jak [vytvořit službu Front Door](quickstart-create-front-door.md).
+- Přečtěte si, jak [vytvořit Front Door](quickstart-create-front-door.md).
 - Přečtěte si, [jak služba Front Door funguje](front-door-routing-architecture.md).

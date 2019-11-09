@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 5ababe9eb1f680378e882970df2d0b008287a7c4
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6aa721ee6cf6680518a28d050c22d8649f0f531f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241715"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833173"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Rychlý Start: nasazení šablony řešení Ansible pro Azure do CentOS
 
@@ -23,7 +23,7 @@ ms.locfileid: "72241715"
 - **Rozhraní příkazového řádku Azure (CLI) 2,0** – [Azure CLI 2,0](/cli/azure/?view=azure-cli-latest) je prostředí příkazového řádku pro různé platformy pro správu prostředků Azure. 
 - **spravované identity pro prostředky Azure** – funkce [spravované identity pro prostředky Azure](/azure/active-directory/managed-identities-azure-resources/overview) řeší potíže se zabezpečením přihlašovacích údajů ke cloudovým aplikacím.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 
@@ -33,14 +33,14 @@ ms.locfileid: "72241715"
 
 1. Vyberte **získat hned**.
 
-1. Zobrazí se okno s informacemi o podmínek použití, zásadách ochrany osobních údajů a použití podmínek Azure Marketplace. Vyberte **pokračovat**.
+1. Zobrazí se okno s informacemi o podmínek použití, zásadách ochrany osobních údajů a použití podmínek Azure Marketplace. Vyberte **Pokračovat**.
 
 1. Zobrazí se Azure Portal a zobrazí stránku Ansible, která popisuje šablonu řešení. Vyberte **Vytvořit**.
 
 1. Na stránce **vytvořit Ansible** se zobrazí několik karet. Na kartě **základy** zadejte požadované informace:
 
-   - **Název** – zadejte název vaší instance Ansible. Pro účely ukázky je použit název `ansiblehost`.
-   - **Uživatelské jméno:** – zadejte uživatelské jméno, které bude mít přístup k instanci Ansible. Pro účely ukázky je použit název `ansibleuser`.
+   - **Název** – zadejte název vaší instance Ansible. Pro účely ukázky se používá název `ansiblehost`.
+   - **Uživatelské jméno:** – zadejte uživatelské jméno, které bude mít přístup k instanci Ansible. Pro účely ukázky se používá název `ansibleuser`.
    - **Typ ověřování:** – vyberte možnost **heslo** nebo **veřejný klíč SSH**. Pro demonstrační účely je vybrán **veřejný klíč SSH** .
    - **Heslo** a **potvrzení hesla** – Pokud pro **typ ověřování**vyberete **heslo** , zadejte pro tyto hodnoty heslo.
    - **Veřejný klíč SSH** – Pokud vyberete možnost **veřejný klíč SSH** pro **typ ověřování**, zadejte svůj veřejný klíč RSA v jednořádkovém formátu – počínaje `ssh-rsa`.
@@ -56,10 +56,10 @@ ms.locfileid: "72241715"
 
    - **Size** – Azure Portal standardně standardní velikost. Pokud chcete zadat jinou velikost, která bude vyhovovat vašemu konkrétnímu scénáři, vyberte šipku pro zobrazení seznamu různých velikostí.
    - **Typ disku virtuálního počítače** – vyberte buď **SSD** (Solid-State disk), nebo **HDD** (pevný disk). Pro účely ukázky se pro své výhody výkonu vybere jednotka **SSD** . Další informace o jednotlivých typech diskového úložiště najdete v následujících článcích:
-       - [Vysoce výkonné Premium Storage a spravované disky pro virtuální počítače](/azure/virtual-machines/windows/premium-storage)
+       - [Vysoce výkonná služba Premium Storage a spravované disky pro virtuální počítače](/azure/virtual-machines/windows/premium-storage)
        - [Managed Disks SSD úrovně Standard pro úlohy virtuálních počítačů Azure](/azure/virtual-machines/windows/disks-standard-ssd)
    - **Veřejná IP adresa** – toto nastavení zadejte, pokud chcete s virtuálním počítačem komunikovat mimo virtuální počítač. Výchozí je nová veřejná IP adresa, která má název `ansible-pip`. Pokud chcete zadat jinou IP adresu, vyberte šipku zadat atributy, jako je název, SKU a přiřazení této IP adresy. 
-   - **Popisek názvu domény** – zadejte název veřejné domény virtuálního počítače. Název musí být jedinečný a splňovat požadavky na pojmenování. Další informace o tom, jak zadat název pro virtuální počítač, najdete v tématu zásady [vytváření názvů pro prostředky Azure](/azure/architecture/best-practices/naming-conventions).
+   - **Popisek názvu domény** – zadejte název veřejné domény virtuálního počítače. Název musí být jedinečný a splňovat požadavky na pojmenování. Další informace o tom, jak zadat název pro virtuální počítač, najdete v tématu zásady [vytváření názvů pro prostředky Azure](/azure/architecture/best-practices/resource-naming).
    - **Ansible verze** – zadejte buď číslo verze, nebo hodnotu `latest` pro nasazení nejnovější verze. Kliknutím na informační ikonu vedle **Ansible verze** zobrazíte další informace o dostupných verzích.
 
      ![Karta Azure Portal pro další nastavení Ansible](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-tab-2.png)

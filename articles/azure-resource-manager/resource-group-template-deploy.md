@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 88aabb676d3a15dd2efff3acd751818301519ae1
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 0634b069c79495ad6de536b27ebd9981eeb36128
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972712"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837100"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu
 
@@ -33,11 +33,13 @@ K nasazení do **předplatného**použijte [New-AzDeployment](/powershell/module
 New-AzDeployment -Location <location> -TemplateFile <path-to-template>
 ```
 
-V současné době se nasazení skupin pro správu podporují jenom prostřednictvím REST API. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Správce prostředků REST API](resource-group-template-deploy-rest.md).
+Další informace o nasazeních na úrovni předplatného najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
 
-Příklady v tomto článku používají nasazení skupin prostředků. Další informace o nasazeních předplatných najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
+V současné době se nasazení skupin pro správu podporují jenom prostřednictvím REST API. Další informace o nasazení na úrovni skupiny pro správu najdete v tématu věnovaném [vytvoření prostředků na úrovni skupiny pro správu](deploy-to-management-group.md).
 
-## <a name="prerequisites"></a>Předpoklady
+Příklady v tomto článku používají nasazení skupin prostředků.
+
+## <a name="prerequisites"></a>Požadavky
 
 K nasazení budete potřebovat šablonu. Pokud ho ještě nemáte, Stáhněte si a uložte [ukázkovou šablonu](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) z úložiště šablon Azure pro rychlý Start. Místní název souboru, který se používá v tomto článku, je **c:\MyTemplates\azuredeploy.JSON**.
 
@@ -82,7 +84,7 @@ Předchozí příklad vyžaduje pro šablonu veřejně přístupný identifikát
 
 K nasazení šablony můžete použít [Azure Cloud Shell](https://shell.azure.com) . Chcete-li nasadit externí šablonu, zadejte identifikátor URI šablony. Pokud chcete nasadit místní šablonu, musíte nejdřív načíst šablonu do účtu úložiště pro vaši Cloud Shell. Chcete-li odeslat soubory do prostředí, vyberte v okně prostředí ikonu nabídky **nahrát/stáhnout soubory** .
 
-Cloud Shell otevřete tak, že přejdete na [https://shell.azure.com](https://shell.azure.com)nebo vyberete **try-it** z následujícího oddílu kódu:
+Chcete-li otevřít Cloud Shell, vyhledejte [https://shell.azure.com](https://shell.azure.com)nebo vyberte **příkaz try-it** z následujícího oddílu kódu:
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -101,7 +103,7 @@ K předání hodnot parametrů můžete použít buď vložené parametry, nebo 
 
 ### <a name="inline-parameters"></a>Vložené parametry
 
-Chcete-li předat vložené parametry, zadejte názvy parametru pomocí příkazu `New-AzResourceGroupDeployment`. Například pro předání řetězce a pole do šablony použijte:
+Chcete-li předat vložené parametry, zadejte název parametru pomocí příkazu `New-AzResourceGroupDeployment`. Například pro předání řetězce a pole do šablony použijte:
 
 ```powershell
 $arrayParam = "value1", "value2"

@@ -9,12 +9,12 @@ ms.service: storage
 custom: jenkins
 ms.date: 08/13/2019
 ms.subservice: common
-ms.openlocfilehash: dc62696700a5c34c28f5f8c4f347dbb4c5183cab
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 72756bd3eb12ca80f419a0d53db76e6637d884fc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986531"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839132"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Použití Azure Storage s řešením Jenkinse Continuous Integration
 
@@ -45,10 +45,10 @@ Výhody použití Blob service k hostování artefaktů sestavení agilního vý
      
       `java -jar jenkins.war`
 
-  3. V prohlížeči otevřete `http://localhost:8080/` řídicí panel Jenkinse, který budete používat k instalaci a konfiguraci modulu plug-in Azure Storage.
+  3. V prohlížeči otevřete `http://localhost:8080/` a otevřete řídicí panel Jenkinse, který budete používat k instalaci a konfiguraci modulu plug-in Azure Storage.
      
       I když by bylo typické řešení CI Jenkinse nastaveno tak, aby běželo jako služba, bude pro tento kurz stačit spuštění Jenkinse War na příkazovém řádku.
-* Účet Azure. Účet Azure si můžete zaregistrovat na adrese <https://www.azure.com>.
+* Účet Azure. Účet Azure si můžete zaregistrovat na <https://www.azure.com>.
 * Účet úložiště Azure. Pokud ještě nemáte účet úložiště, můžete ho vytvořit pomocí postupu v části [Vytvoření účtu úložiště](../common/storage-quickstart-create-account.md).
 * Řešení Jenkinse CI se doporučuje, ale není nutné, protože následující obsah bude používat základní příklad, který vám ukáže, jaké kroky potřebujete při použití Blob service jako úložiště pro artefakty sestavení Jenkinse CI.
 
@@ -60,7 +60,7 @@ Pokud chcete použít Blob service s Jenkinse, budete muset nainstalovat modul p
 2. Na stránce **Spravovat Jenkinse** vyberte **Spravovat moduly plug-in**.
 3. Vyberte kartu **Available** (K dispozici).
 4. V části pro **odesílání artefaktů** se podívejte **Microsoft Azure Storage modul plug-in**.
-5. Vyberte možnost **instalovat bez restartování** nebo **Stáhnout a nainstalovat po**restartu.
+5. Vyberte možnost **instalovat bez restartování** nebo **Stáhnout a nainstalovat po restartu**.
 6. Restartujte Jenkinse.
 
 ## <a name="how-to-configure-the-azure-storage-plugin-to-use-your-storage-account"></a>Jak nakonfigurovat modul plug-in Azure Storage pro použití vašeho účtu úložiště
@@ -92,15 +92,15 @@ Pro instruktážní účely musíte nejprve vytvořit úlohu, která vytvoří n
 
 5. V části **akce po sestavení** v konfiguraci úlohy vyberte **přidat akci po sestavení** a vyberte **Odeslat artefakty do úložiště objektů BLOB v Azure**.
 6. V poli **název účtu úložiště**vyberte účet úložiště, který se má použít.
-7. Jako **název kontejneru**zadejte název kontejneru. (Kontejner bude vytvořen, pokud ještě neexistuje, když jsou nahrány artefakty sestavení.) Můžete použít proměnné prostředí, takže pro tento příklad zadejte `${JOB_NAME}` jako název kontejneru.
+7. Jako **název kontejneru**zadejte název kontejneru. (Kontejner bude vytvořen, pokud ještě neexistuje, když jsou nahrány artefakty sestavení.) Můžete použít proměnné prostředí, takže pro tento příklad zadejte jako název kontejneru `${JOB_NAME}`.
    
     **Tip**
    
     Pod oddílem **příkazu** , kde jste zadali skript pro **příkaz Spustit dávku Windows** , je odkaz na proměnné prostředí rozpoznané nástrojem Jenkinse. Kliknutím na tento odkaz získáte informace o názvech a popisech proměnných prostředí. Proměnné prostředí, které obsahují speciální znaky, jako je například proměnná prostředí **BUILD_URL** , nejsou povoleny jako název kontejneru nebo běžná virtuální cesta.
 8. V tomto příkladu vyberte **nastavit nový kontejner jako Public** . (Pokud chcete použít privátní kontejner, budete muset vytvořit sdílený přístupový podpis, který umožní přístup, což je nad rámec tohoto článku. Další informace o podpisech sdíleného přístupu najdete v [používání sdílených přístupových podpisů (SAS)](storage-sas-overview.md).)
 9. Volitelné Před **odesláním vyberte vyčistit kontejner** , pokud chcete, aby kontejner vymazal obsah před odesláním artefaktů sestavení (Pokud nechcete vyčistit obsah kontejneru, nechejte nezaškrtnuté).
-10. **Seznam artefaktů, které se mají nahrát**, `text/*.txt`získáte zadáním.
-11. Pro účely tohoto kurzu zadejte `${BUILD\_ID}/${BUILD\_NUMBER}`pro **běžnou virtuální cestu pro nahrané artefakty**.
+10. **Do seznamu artefaktů, které se mají nahrát**, zadejte `text/*.txt`.
+11. Pro účely tohoto kurzu zadejte v případě **běžné virtuální cesty pro nahrané artefakty**`${BUILD\_ID}/${BUILD\_NUMBER}`.
 12. Vyberte **Uložit** a uložte nastavení.
 13. V řídicím panelu Jenkinse vyberte **vytvořit** a spusťte **MyJob**. Projděte si výstup konzoly pro stav. Stavové zprávy pro Azure Storage budou zahrnuty do výstupu konzoly, když akce po sestavení začne nahrávat artefakty sestavení.
 14. Po úspěšném dokončení úlohy můžete artefakty sestavení prošetřit otevřením veřejného objektu BLOB.
@@ -108,9 +108,9 @@ Pro instruktážní účely musíte nejprve vytvořit úlohu, která vytvoří n
     2. Vyberte **Úložiště**.
     3. Vyberte název účtu úložiště, který jste použili pro Jenkinse.
     4. Vyberte **kontejnery**.
-    5. Vyberte kontejner s názvem **MYJOB**, což je malá a Velká verze názvu úlohy, kterou jste přiřadili při vytváření úlohy Jenkinse. Názvy kontejnerů a názvy objektů BLOB jsou malá a velká písmena (rozlišují se malá a velká písmena) ve službě Azure Storage. V seznamu objektů BLOB pro kontejner s názvem **MYJOB**byste měli vidět Hello **. txt** a **Date. txt**. Zkopírujte adresu URL některé z těchto položek a otevřete ji v prohlížeči. Zobrazí se textový soubor, který byl nahrán jako artefakt sestavení.
+    5. Vyberte kontejner s názvem **MYJOB**, což je malá a Velká verze názvu úlohy, kterou jste přiřadili při vytváření úlohy Jenkinse. Názvy kontejnerů a názvy objektů BLOB jsou malá a velká písmena (rozlišují se malá a velká písmena) ve službě Azure Storage. V seznamu objektů BLOB pro kontejner s názvem **MYJOB**byste měli vidět **Hello. txt** a **Date. txt**. Zkopírujte adresu URL některé z těchto položek a otevřete ji v prohlížeči. Zobrazí se textový soubor, který byl nahrán jako artefakt sestavení.
 
-Pro každou úlohu se dá vytvořit jenom jedna akce po sestavení, která nahrává artefakty do úložiště objektů BLOB v Azure. Jedna akce po sestavení pro nahrání artefaktů do úložiště objektů BLOB v Azure může určovat různé soubory (včetně zástupných znaků) a cesty k souborům v **seznamu artefaktů, které se budou nahrávat** středníkem jako oddělovač. Například pokud vaše sestavení Jenkinse vytvoří soubory JAR a soubory TXT ve složce **sestavení** pracovního prostoru a chcete je nahrát do úložiště objektů BLOB v Azure, použijte následující hodnotu pro **seznam artefaktů pro nahrání** možnosti: `build/\*.jar;build/\*.txt`. K určení cesty k použití v názvu objektu blob můžete použít také syntaxi typu Double-dvojtečka. Pokud třeba chcete, aby se jar nahrály pomocí binárních souborů v cestě objektu BLOB a soubory TXT, které se nahrály pomocí **oznámení** v cestě objektu blob, použijte následující hodnotu, kterou se zobrazí v **seznamu artefaktů pro nahrání** možnosti:. `build/\*.jar::binaries;build/\*.txt::notices`
+Pro každou úlohu se dá vytvořit jenom jedna akce po sestavení, která nahrává artefakty do úložiště objektů BLOB v Azure. Jedna akce po sestavení pro nahrání artefaktů do úložiště objektů BLOB v Azure může určovat různé soubory (včetně zástupných znaků) a cesty k souborům v **seznamu artefaktů, které se budou nahrávat** středníkem jako oddělovač. Například pokud vaše sestavení Jenkinse vytvoří soubory JAR a soubory TXT ve složce **sestavení** pracovního prostoru a chcete je nahrát do úložiště objektů BLOB v Azure, použijte následující hodnotu pro **seznam artefaktů pro nahrání** možnosti: `build/\*.jar;build/\*.txt`. K určení cesty k použití v názvu objektu blob můžete použít také syntaxi typu Double-dvojtečka. Pokud třeba chcete, aby se jar nahrály pomocí **binárních** souborů v cestě objektu BLOB a soubory TXT, které se nahrály pomocí **oznámení** v cestě objektu blob, použijte následující hodnotu, kterou se zobrazí v **seznamu artefaktů pro nahrání** možnosti: `build/\*.jar::binaries;build/\*.txt::notices`.
 
 ## <a name="how-to-create-a-build-step-that-downloads-from-azure-blob-storage"></a>Postup vytvoření kroku sestavení, který se stáhne ze služby Azure Blob Storage
 Následující postup ukazuje, jak nakonfigurovat krok sestavení pro stažení položek z úložiště objektů BLOB v Azure, což je užitečné, pokud chcete zahrnout položky do sestavení. Příkladem použití tohoto modelu je jar, který je možné zachovat v úložišti objektů BLOB v Azure.
@@ -128,16 +128,16 @@ Po spuštění sestavení můžete zkontrolovat výstup konzoly historie sestave
 ## <a name="components-used-by-the-blob-service"></a>Součásti používané Blob service
 Tato část poskytuje přehled komponent Blob service.
 
-* **Účet úložiště**: Veškerý přístup k Azure Storage se provádí prostřednictvím účtu úložiště. Účet úložiště je nejvyšší úroveň oboru názvů pro přístup k objektům blob. Účet může obsahovat neomezený počet kontejnerů, pokud je jeho celková velikost menší než 100 TB.
-* **Kontejner**: Kontejner poskytuje seskupení sady objektů BLOB. Všechny objekty blob musí být v kontejneru. Účet může obsahovat neomezený počet kontejnerů. Kontejner můžete pojmout neomezený počet objektů blob.
-* **Blob**: Soubor libovolného typu a velikosti. Existují dva typy objektů blob, které mohou být uloženy v Azure Storage: objekty blob bloku a stránky. Většina souborů je objekty blob bloku. Jeden objekt blob bloku může mít velikost až 200 GB. Tento kurz používá objekty blob bloku. Objekty blob stránky, jiný typ objektu blob, můžou mít velikost až 1 TB a jsou efektivnější, pokud se často upravují rozsahy bajtů v souboru. Další informace o objektech blob najdete v tématu [Principy objektů blob bloku, doplňovacích objektů BLOB a objektů blob stránky](https://msdn.microsoft.com/library/azure/ee691964.aspx).
-* **Formát adresy URL**: Objekty blob jsou adresovatelné v následujícím formátu adresy URL:
+* **Účet služby Storage:** Veškerý přístup ke službě Azure Storage se provádí prostřednictvím účtu úložiště. Účet úložiště je nejvyšší úroveň oboru názvů pro přístup k objektům blob. Účet může obsahovat neomezený počet kontejnerů, pokud je jeho celková velikost menší než 100 TB.
+* **Kontejner**: kontejner poskytuje seskupení sady objektů BLOB. Všechny objekty blob musí být v kontejneru. Účet může obsahovat neomezený počet kontejnerů. Kontejner můžete pojmout neomezený počet objektů blob.
+* **Objekt BLOB**: soubor libovolného typu a velikosti. Existují dva typy objektů blob, které mohou být uloženy v Azure Storage: objekty blob bloku a stránky. Většina souborů je objekty blob bloku. Jeden objekt blob bloku může mít velikost až 200 GB. Tento kurz používá objekty blob bloku. Objekty blob stránky, jiný typ objektu blob, můžou mít velikost až 1 TB a jsou efektivnější, pokud se často upravují rozsahy bajtů v souboru. Další informace o objektech blob najdete v tématu [Principy objektů blob bloku, doplňovacích objektů BLOB a objektů blob stránky](https://msdn.microsoft.com/library/azure/ee691964.aspx).
+* **Formát adresy URL**: objekty blob jsou adresovatelné v následujícím formátu adresy URL:
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
   
     (Výše uvedený formát se vztahuje na globální cloud Azure. Pokud používáte jiný cloud Azure, určete koncový bod adresy URL pomocí koncového bodu v rámci [Azure Portal](https://portal.azure.com) .)
   
-    Ve výše uvedeném `storageaccount` formátu představuje název vašeho účtu úložiště, `container_name` představuje název vašeho kontejneru a `blob_name` představuje název vašeho objektu BLOB v uvedeném pořadí. V rámci názvu kontejneru můžete mít více cest oddělených lomítkem, **/** . Vzorový název kontejneru použitý pro tento kurz byl **MyJob**a pro běžnou virtuální cestu se použilo **\_$ {Build ID\_}/$ {Number}** . Výsledkem je, že objekt BLOB má adresu URL následujícího formátu:
+    Ve výše uvedeném formátu `storageaccount` představuje název vašeho účtu úložiště, `container_name` představuje název vašeho kontejneru a `blob_name` představuje název objektu blob, v uvedeném pořadí. V rámci názvu kontejneru můžete mít více cest oddělených lomítkem, **/** . Vzorový název kontejneru použitý pro tento kurz byl **MyJob**a pro běžnou virtuální cestu se použilo **$ {Build\_ID}/$ {Build\_Number}** . Výsledkem je, že objekt BLOB má adresu URL následujícího formátu:
   
     `http://example.blob.core.windows.net/myjob/2014-04-14_23-57-00/1/hello.txt`
 
@@ -145,10 +145,10 @@ Tato část poskytuje přehled komponent Blob service.
 
 Pokud v modulech plug-in Jenkinse narazíte na nějaké chyby, založte problém na stránce [Jenkins JIRA](https://issues.jenkins-ci.org/) pro konkrétní komponentu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * [Splnění Jenkinse](https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins)
 * [Azure Storage SDK pro jazyk Java](https://github.com/azure/azure-storage-java)
-* [Referenční informace ke klientské sadě SDK služby Azure Storage](http://dl.windowsazure.com/storage/javadoc/)
+* [Referenční informace ke klientské sadě SDK služby Azure Storage](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
 * [REST API služby Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Blog týmu Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/)
 

@@ -1,6 +1,6 @@
 ---
 title: Galerie Azure AI
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Sdílení a zjišťování prostředků analýzy a další informace v Azure AI Gallery. Přečtěte si od ostatních a udělejte své vlastní příspěvky komunitě.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 3f02c7377242dc031cd2d21d2b57bbd5f839eec3
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 9fe52fc16b763a03738442bb49a4969244a1d3c6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619146"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837584"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Sdílení a zjišťování prostředků v Azure AI Gallery
 

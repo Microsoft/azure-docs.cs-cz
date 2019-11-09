@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: angle
-ms.openlocfilehash: d3b3f90be7dda28db9a27aa96282acee61e6c8fc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7dffa3d9f6e96adc6146a1059e7360c77926ece3
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507338"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837382"
 ---
 # <a name="disclosure-design-guidelines"></a>Pokyny pro návrh zpřístupnění
 Naučte se vytvářet a udržovat vztahy důvěryhodnosti se zákazníky transparentním z hlediska syntetické povahy hlasového prostředí.
@@ -76,7 +76,7 @@ Pomocí následujícího diagramu zjistíte, jestli vaše syntetické hlasové p
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
-* [Poznámka transparentnosti](https://aka.ms/neural-tts-transparency-note)
+* [Zveřejnění pro hlasový talentů](https://aka.ms/disclosure-voice-talent)
 * [Pokyny pro zodpovědnost nasazení syntetické hlasové technologie](concepts-guidelines-responsible-deployment-synthetic.md)
 * [Přehled o uzavírání](concepts-gating-overview.md)
 

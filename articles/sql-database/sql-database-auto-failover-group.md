@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 10/23/2019
-ms.openlocfilehash: 88bcee1cbb23bf298c5ad3920a7744d8da6ce3fb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/07/2019
+ms.openlocfilehash: 16fc15a574655f20e3e6e37f164773b41ffe0b78
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821952"
+ms.locfileid: "73839342"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 
@@ -246,7 +246,7 @@ Pokud vaše aplikace používá spravovanou instanci jako datovou vrstvu, postup
 
 - **Potvrzení známých omezení skupin převzetí služeb při selhání**
 
-  Přejmenování databáze a změna velikosti instance se u instancí ve skupině převzetí služeb při selhání nepodporují. Aby bylo možné tyto akce provést, budete muset dočasně odstranit skupinu převzetí služeb při selhání.
+  Přejmenování databáze není u instancí ve skupině převzetí služeb při selhání podporováno. Aby bylo možné databázi přejmenovat, budete muset dočasně odstranit skupinu převzetí služeb při selhání.
 
 ## <a name="failover-groups-and-network-security"></a>Skupiny převzetí služeb při selhání a zabezpečení sítě
 
@@ -296,7 +296,7 @@ Při nastavování skupiny převzetí služeb při selhání mezi primárními a
    > [!IMPORTANT]
    > Nesprávně nakonfigurovaná pravidla zabezpečení NSG vede k zablokování operací kopírování databáze.
 
-7. Sekundární instance je nakonfigurovaná se správným ID zóny DNS. Zóna DNS je vlastnost spravované instance a její ID je zahrnuté v adrese názvu hostitele. ID zóny se generuje jako náhodný řetězec, když se v každé virtuální síti vytvoří první spravovaná instance a stejné ID se přiřadí ke všem ostatním instancím ve stejné podsíti. Po přiřazení se zóna DNS nedá změnit. Spravované instance zahrnuté do stejné skupiny převzetí služeb při selhání musí sdílet zónu DNS. Toho dosáhnete tak, že při vytváření sekundární instance předáte ID zóny primární instance jako hodnotu parametru DnsZonePartner. 
+7. Sekundární instance je nakonfigurovaná se správným ID zóny DNS. Zóna DNS je vlastnost spravované instance a virtuálního clusteru a její ID je obsaženo v adrese názvu hostitele. ID zóny se generuje jako náhodný řetězec, když se v každé virtuální síti vytvoří první spravovaná instance a stejné ID se přiřadí ke všem ostatním instancím ve stejné podsíti. Po přiřazení se zóna DNS nedá změnit. Spravované instance zahrnuté do stejné skupiny převzetí služeb při selhání musí sdílet zónu DNS. Toho dosáhnete tak, že při vytváření sekundární instance předáte ID zóny primární instance jako hodnotu parametru DnsZonePartner. 
 
    > [!NOTE]
    > Podrobný kurz týkající se konfigurace skupin převzetí služeb při selhání pomocí spravované instance najdete v tématu [Přidání spravované instance do skupiny převzetí služeb při selhání](sql-database-managed-instance-failover-group-tutorial.md).

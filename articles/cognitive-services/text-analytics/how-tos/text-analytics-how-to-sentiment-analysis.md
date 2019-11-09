@@ -1,7 +1,7 @@
 ---
-title: Analýza mínění pomocí REST API Analýza textu z Azure Cognitive Services
+title: Provedení analýzy mínění s využitím Analýza textu REST API
 titleSuffix: Azure Cognitive Services
-description: Naučte se detekovat mínění pomocí REST API Analýza textu.
+description: V tomto článku se dozvíte, jak zjistit mínění v textu pomocí Analýza textu REST API služby Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: d246b14a5bd6e60a7b6facae73c68d7449e2e097
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a930a22472dd4329c555539704747af9a2359c33
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494458"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837162"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Příklad: zjištění mínění pomocí Analýza textu
 

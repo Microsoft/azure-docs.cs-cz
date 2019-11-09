@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b81060bc3d8409a9ccb74ba85c85e6f779650ffd
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: b18e9688141ee64eb7dfcb82ce58db198e324b5b
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792421"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847533"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>Upgrade verzí sady Azure Search .NET Management SDK
 
@@ -46,7 +46,5 @@ Pokud sestavení selhalo, může to být způsobeno tím, že jste implementoval
 
 Jakmile opravíte jakékoli chyby sestavení, můžete v aplikaci provádět změny, abyste mohli využít nové funkce, pokud chcete. Nové funkce v sadě SDK jsou podrobně popsané v části [co je nového ve verzi 2](#WhatsNew).
 
-## <a name="conclusion"></a>Závěr
-Vaše názory na sadu SDK jsme uvítá. Pokud narazíte na problémy, požádejte nás o pomoc na [Azure Search Fórum MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch). Pokud narazíte na chybu, můžete založit problém v [úložišti GitHub Azure .NET SDK](https://github.com/Azure/azure-sdk-for-net/issues). Ujistěte se, že název problému bude předponou "[Azure Search]".
-
-Děkujeme, že používáte Azure Search!
+## <a name="next-steps"></a>Další kroky
+Vaše názory na sadu SDK jsme uvítá. Pokud narazíte na problémy, pošlete prosím své dotazy na [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cognitive-search?tab=Newest). Pokud narazíte na chybu, můžete založit problém v [úložišti GitHub Azure .NET SDK](https://github.com/Azure/azure-sdk-for-net/issues). Ujistěte se, že název problému bude označovat text "[Search]".

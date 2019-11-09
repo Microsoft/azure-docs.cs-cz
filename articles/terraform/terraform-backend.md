@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: f024fd7886ec6f192c440cca6951e3aeb66ad22d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.date: 11/07/2019
+ms.openlocfilehash: cb85897e0a7d281eca4ad3f42e8ef28c9e3fdb7b
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177810"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833532"
 ---
 # <a name="tutorial-store-terraform-state-in-azure-storage"></a>Kurz: uložení stavu Terraformu do Azure Storage
 
@@ -57,7 +57,7 @@ Poznamenejte si název účtu úložiště, název kontejneru a přístupový kl
 
 Back-end stavu Terraformu je nakonfigurován při spuštění příkazu `terraform init`. ke konfiguraci stavu back-endu se vyžadují tato data:
 
-- storage_account_name – název účtu Azure Storage.
+- storage_account_name – název Azure Storage účtu.
 - container_name – název kontejneru objektů BLOB.
 - klíč – název souboru úložiště stavu, který se má vytvořit.
 - access_key – přístupový klíč k úložišti
@@ -125,4 +125,4 @@ Další informace o šifrování Azure Storage najdete v části [Azure Storage 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Terraformu v Azure](/azure/ansible/)
+> [Další informace o používání Terraformu v Azure](/azure/terraform)

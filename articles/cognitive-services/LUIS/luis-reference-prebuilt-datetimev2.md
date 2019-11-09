@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 4c16953d3c708516edbe0b3c13b091dc3181b187
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 75d1f2b6facd438e329555d8595fe159565dbb74
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73465075"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837372"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2 předem vytvořenou entitu pro aplikaci LUIS
 
@@ -147,13 +147,13 @@ Každý prvek `values` pole může obsahovat následující pole:
 |--|--|
 |Timex|čas, datum nebo rozsah dat vyjádřený ve formátu TIMEX, který následuje po [standardu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , a TIMEX3 atributů pro anotaci pomocí jazyka TimeML. Tato poznámka je popsaná v [zásadách TIMEX](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf).|
 |type|Podtyp může být jedna z následujících položek: `datetime`, `date`, `time`, `daterange`, `timerange`, `datetimerange`, `duration`, `set`.|
-|hodnota|**Volitelné.** Objekt DateTime ve formátu RRRR: MM: DD (datum), HH: mm: SS (Time) rrrr: MM: DD HH: mm: SS (DateTime). Pokud je `type` `duration`, hodnota je počet sekund (trvání). <br/> Používá se pouze v případě, že je `type` `datetime` nebo `date`, `time`nebo Duration.|
+|hodnota|**Volitelné.** Objekt DateTime ve formátu RRRR-MM-DD (datum), HH: mm: SS (Time) RRRR-MM-DD HH: mm: SS (DateTime). Pokud je `type` `duration`, hodnota je počet sekund (trvání). <br/> Používá se pouze v případě, že je `type` `datetime` nebo `date`, `time`nebo Duration.|
 
 ## <a name="valid-date-values"></a>Platné hodnoty data
 
 **DatetimeV2** podporuje data mezi následujícími rozsahy:
 
-| Minimum | Max. |
+| Minimum | Maximum |
 |----------|-------------|
 | 1\. ledna 1900   | 31. prosince 2099 |
 

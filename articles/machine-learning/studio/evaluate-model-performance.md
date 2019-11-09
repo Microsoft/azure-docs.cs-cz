@@ -1,7 +1,7 @@
 ---
 title: Vyhodnocení výkonu modelu
-titleSuffix: ML Studio (classic) Azure
-description: Tento článek ukazuje, jak vyhodnotit výkon modelu v Azure Machine Learning Studio (Classic) a poskytuje stručné vysvětlení metrik dostupných pro tuto úlohu.
+titleSuffix: ML Studio (classic) - Azure
+description: Přečtěte si, jak vyhodnotit výkon modelu v Azure Machine Learning Studio (Classic) a o metrikách dostupných pro tuto úlohu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 0a3ceb8c46c883e76c06053e395dca1310a86419
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: b37844ff93ed1cfb631c2d8da12d0729f61f44ed
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621728"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837653"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Postup vyhodnocení výkonu modelu v Azure Machine Learning Studio (Classic)
 
@@ -23,7 +23,7 @@ Tento článek ukazuje, jak vyhodnotit výkon modelu v Azure Machine Learning St
 
 * Nevýhody
 * Binární klasifikace 
-* Klasifikace s více třídami
+* klasifikace s více třídami
 
 
 
@@ -34,14 +34,14 @@ Azure Machine Learning Studio (Classic) podporuje hodnocení modelu prostřednic
 ## <a name="evaluation-vs-cross-validation"></a>Vyhodnocení vs. vzájemné ověřování
 Vyhodnocení a vzájemné ověřování představují standardní způsoby měření výkonu modelu. Generují metriky vyhodnocení, které můžete kontrolovat nebo porovnávat s nimi i s ostatními modely.
 
-[Vyhodnotit model][evaluate-model] očekává jako vstup datovou sadu s skóre (nebo 2 pro případ, že byste chtěli porovnat výkon dvou různých modelů). To znamená, že před vyhodnocením výsledků je potřeba, abyste svůj model provedli pomocí modulu [výuka modelu][train-model] a předpovědi na některé datové sadě pomocí modulu [skóre modelu][score-model] . Vyhodnocování vychází z popisků nebo pravděpodobností s použitím hodnot true, z nichž všechny jsou výstupem modulu určení [skóre modelu][score-model] .
+[Vyhodnotit model][evaluate-model] očekává jako vstup datovou sadu s skóre (nebo dvě pro případ, že chcete porovnat výkon dvou různých modelů). Proto budete muset svůj model prodávat pomocí modulu [výuka modelu][train-model] a před vyhodnocením výsledků použít modul předpovědi pro určitou datovou sadu pomocí modulu [skóre modelu][score-model] . Vyhodnocování vychází z popisků nebo pravděpodobností s použitím hodnot true, z nichž všechny jsou výstupem modulu určení [skóre modelu][score-model] .
 
 Alternativně můžete použít křížové ověřování k provedení několika operací vyhodnocení výukového skóre (10 skládání) automaticky v různých podmnožinách vstupních dat. Vstupní data jsou rozdělená na 10 částí, kde jedna je vyhrazena pro testování, a druhý 9 pro školení. Tento proces se opakuje desetkrát a průměrné metriky se vyhodnocuje. To pomáhá určit, jak dobře má model zobecnit do nových datových sad. Modul pro [křížové ověřování modelu][cross-validate-model] přebírá v nevýukovém modelu a některém datové sadě s popisky a vypisuje výsledky vyhodnocení každého 10 přeložení, a to kromě průměrných výsledků.
 
 V následujících částech sestavíme jednoduché modely regrese a klasifikace a vyhodnocujeme jejich výkon pomocí [modelu vyhodnocení][evaluate-model] i modulů [modelu křížové validace][cross-validate-model] .
 
 ## <a name="evaluating-a-regression-model"></a>Vyhodnocení regresního modelu
-Předpokládejme, že chceme předpovědět cenu auta pomocí některých funkcí, jako jsou dimenze, aut, specifikace stroje atd. Toto je typický problém regrese, kde Cílová proměnná (*Price*) je souvislá číselná hodnota. Můžeme přizpůsobit jednoduchý model lineární regrese, který vzhledem k hodnotám funkcí určitého automobilu může odhadnout cenu tohoto auta. Tento model regrese se dá použít k určení skóre stejné datové sady, kterou jsme si vyškole. Jakmile budeme mít předpovězené ceny za všechna vozidla, můžeme vyhodnotit výkon modelu tím, že si vyhledáte, kolik předpovědi se odchyluje od skutečných cen v průměru. K tomu je potřeba použít *datovou sadu dat auto (RAW)* , která je k dispozici v části **uložené datové sady** v klasické verzi Azure Machine Learning Studio.
+Předpokládejme, že chceme předpovědět cenu auta pomocí funkcí, jako jsou dimenze, aut, specifikace stroje atd. Toto je typický problém regrese, kde Cílová proměnná (*Price*) je souvislá číselná hodnota. Můžeme přizpůsobit lineární regresní model, který s ohledem na hodnoty funkcí určitého automobilu může odhadnout cenu tohoto auta. Tento model regrese se dá použít k určení skóre stejné datové sady, kterou jsme si vyškole. Jakmile budeme mít předpovězené ceny za automobil, můžeme vyhodnotit výkon modelu tím, že si vyhledáte, kolik předpovědi se odchyluje od skutečných cen v průměru. K tomu je potřeba použít *datovou sadu dat auto (RAW)* , která je k dispozici v části **uložené datové sady** v ml Studio (Classic).
 
 ### <a name="creating-the-experiment"></a>Vytvoření experimentu
 Do svého pracovního prostoru přidejte následující moduly v klasické verzi Azure Machine Learning Studio:
@@ -83,7 +83,7 @@ Po spuštění experimentu můžete zkontrolovat výsledky vyhodnocení kliknut�
 Obrázek 4. Výsledky křížového ověřování modelu regrese.
 
 ## <a name="evaluating-a-binary-classification-model"></a>Vyhodnocení binárního klasifikačního modelu
-V binárním scénáři klasifikace má cílová proměnná pouze dva možné výsledky, například: {0, 1} nebo {false, true}, {negatived, kladný}. Předpokládejme, že máte datovou sadu zaměstnanců z dospělého s některými demografickými a pracovními proměnnými a že jste požádáni o předpověď úrovně příjmů, binární proměnnou s hodnotami {"< = 50 K", "> 50 K"}. Jinými slovy, záporná třída představuje zaměstnance, kteří činí méně než nebo rovno 50 K za rok, a kladná třída reprezentuje všechny ostatní zaměstnance. Stejně jako ve scénáři regrese by bylo potřeba vytvořit model, určit skóre dat a vyhodnotit výsledky. Hlavní rozdíl je v tomto případě volbou metricsthe Classic verze Azure Machine Learning Studio výpočetní a výstupní. K ilustraci scénáře předpovědi úrovně příjmů použijeme datovou sadu pro [dospělé](https://archive.ics.uci.edu/ml/datasets/Adult) k vytvoření studia (klasického) a vyhodnocení výkonu pro model logistické regrese se dvěma třídami, což je běžně používaný binární klasifikátor.
+V binárním scénáři klasifikace má cílová proměnná pouze dva možné výsledky, například: {0, 1} nebo {false, true}, {negatived, kladný}. Předpokládejme, že máte datovou sadu zaměstnanců z dospělého s některými demografickými a pracovními proměnnými a že jste požádáni o předpověď úrovně příjmů, binární proměnnou s hodnotami {"< = 50 K", "> 50 K"}. Jinými slovy, záporná třída představuje zaměstnance, kteří činí méně než nebo rovno 50 K za rok, a kladná třída reprezentuje všechny ostatní zaměstnance. Stejně jako ve scénáři regrese by bylo potřeba vytvořit model, určit skóre dat a vyhodnotit výsledky. Hlavní rozdíl je v tomto případě volbou metriky klasické verze Azure Machine Learning Studio COMPUTE a výstupy. K ilustraci scénáře předpovědi úrovně příjmů použijeme datovou sadu pro [dospělé](https://archive.ics.uci.edu/ml/datasets/Adult) k vytvoření studia (klasického) a vyhodnocení výkonu pro model logistické regrese se dvěma třídami, což je běžně používaný binární klasifikátor.
 
 ### <a name="creating-the-experiment"></a>Vytvoření experimentu
 Do svého pracovního prostoru přidejte následující moduly v klasické verzi Azure Machine Learning Studio:
@@ -105,13 +105,13 @@ Po spuštění experimentu můžete kliknout na výstupní port modulu [vyhodnoc
 
 Přesnost je pouze poměr správně klasifikovaných instancí. Obvykle je první metrikou, kterou se zobrazí při vyhodnocování klasifikátoru. Nicméně, pokud jsou testovací data nevyvážená (kde většina instancí patří do jedné z tříd), nebo máte více zajímat výkon v obou třídách, přesnost nezachycuje efektivitu klasifikátoru. V případě klasifikace na úrovni příjmů se předpokládá, že testujete data, kde 99% instancí představuje lidi, kteří získají méně než 50 tis za rok. Je možné dosáhnout přesnosti 0,99, protože pro všechny instance odhadnete třídu "< = 50 tis". Třídění v tomto případě zdá se, že se jedná o dobrý úkol, ale ve skutečnosti se nepovede klasifikovat žádné fyzické jednotlivce (1%). správně.
 
-Z tohoto důvodu je vhodné vypočítat další metriky, které zachycují konkrétnější aspekty vyhodnocení. Než se pustíte do podrobností o takových metrikách, je důležité pochopit nejasnou matrici binárního vyhodnocení klasifikace. Popisky tříd v sadě školení mohou přijmout pouze 2 možné hodnoty, které obvykle odkazujete na kladné nebo záporné. Kladné a záporné instance, které jsou v klasifikátoru předpověď správně, se nazývají true pozitivních hodnot (TP) a pravdivé záporné hodnoty (TN), v uvedeném pořadí. Podobně nesprávně klasifikované instance se nazývají falešně pozitivní (FP) a falešně negativní (FN). Nejasná matice je jednoduše Tabulka zobrazující počet instancí spadajících do každé z těchto 4 kategorií. Klasická verze Azure Machine Learning Studio automaticky rozhoduje o tom, která ze dvou tříd v datové sadě je pozitivní třída. Pokud jsou popisky třídy logické nebo celé číslo, přiřadí se kladné třídě instance "true" nebo "1" popsaných instancí. Pokud jsou popisky řetězce, jako v případě datové sady příjmů jsou popisky seřazeny abecedně a první úroveň se považuje za zápornou třídu, zatímco druhá úroveň je pozitivní třída.
+Z tohoto důvodu je vhodné vypočítat další metriky, které zachycují konkrétnější aspekty vyhodnocení. Než se pustíte do podrobností o takových metrikách, je důležité pochopit nejasnou matrici binárního vyhodnocení klasifikace. Popisky tříd v sadě školení mohou převzít pouze dvě možné hodnoty, které obvykle odkazujete na kladné nebo záporné. Kladné a záporné instance, které jsou v klasifikátoru předpověď správně, se nazývají true pozitivních hodnot (TP) a pravdivé záporné hodnoty (TN), v uvedeném pořadí. Podobně nesprávně klasifikované instance se nazývají falešně pozitivní (FP) a falešně negativní (FN). Nejasná matice je jednoduše Tabulka zobrazující počet instancí spadajících do každé z těchto čtyř kategorií. Klasická verze Azure Machine Learning Studio automaticky rozhoduje o tom, která ze dvou tříd v datové sadě je pozitivní třída. Pokud jsou popisky třídy logické nebo celé číslo, přiřadí se kladné třídě instance "true" nebo "1" popsaných instancí. Pokud jsou popisky řetězce, například s datovou datovou hodnotou, popisky jsou seřazeny abecedně a první úroveň je zvolena jako záporná třída, zatímco druhá úroveň je pozitivní třída.
 
 ![Nejasná matice binární klasifikace](./media/evaluate-model-performance/6a.png)
 
 Obrázek 6. Matice nedorozumění pro binární klasifikaci
 
-Když se vrátíte k problému s klasifikací příjmů, chceme požádat o několik otázek hodnocení, které nám pomůžou pochopit výkon klasifikátoru, který se používá. Velmi přirozenou otázkou je: "z jednotlivců, které model předpovídá, aby se dostal > 50 tis (TP + FP), kolik byl správně klasifikovaný (TP)? Na tuto otázku se dá odpovědět tak, že se podíváme na **přesnost** modelu, což je poměr pozitivních hodnot, které jsou klasifikované správně: transakční/(TP + FP). Dalším běžným dotazem je "vycházející ze všech zaměstnanců s vysokou mírou využívání s příjmem > 50 tis (TP + FN), kolik znamenalo třídění podle správného zařazení do klasifikačního systému (TP). To je ve skutečnosti **odvolání**nebo pravdivá kladová sazba: TP/(TP + FN) třídění. Můžete si všimnout, že mezi přesností a odvoláním je zřejmé kompromis. Například s ohledem na poměrně vyváženou datovou sadu by třídění, který předpovídá hlavně pozitivních instancí, mělo vysoké odvolání, ale spíše nízká přesnost, jakou má mnoho negativních instancí, bylo chybné klasifikování, což vedlo k velkému počtu falešně pozitivních hodnot. Pokud se chcete podívat, jak se tyto dvě metriky liší, můžete na stránce výstup výsledků hodnocení kliknout na křivku **přesnost/odvolání** (v levé horní části obrázku 7).
+Když se vrátíte k problému s klasifikací příjmů, chceme požádat o několik otázek hodnocení, které nám pomůžou pochopit výkon klasifikátoru, který se používá. Přírodní otázka je: "z jednotlivců, které model předpovídá, aby se dostal > 50 K (TP + FP), kolik byl správně klasifikovaný (TP)? Na tuto otázku se dá odpovědět tak, že se podíváme na **přesnost** modelu, což je poměr pozitivních hodnot, které jsou klasifikované správně: transakční/(TP + FP). Dalším běžným dotazem je "vycházející ze všech zaměstnanců s vysokou mírou využívání s příjmem > 50 tis (TP + FN), kolik znamenalo třídění podle správného zařazení do klasifikačního systému (TP). To je ve skutečnosti **odvolání**nebo pravdivá kladová sazba: TP/(TP + FN) třídění. Můžete si všimnout, že mezi přesností a odvoláním je zřejmé kompromis. Například s ohledem na poměrně vyváženou datovou sadu by třídění, který předpovídá hlavně pozitivních instancí, mělo vysoké odvolání, ale spíše nízká přesnost, jakou má mnoho negativních instancí, bylo chybné klasifikování, což vedlo k velkému počtu falešně pozitivních hodnot. Pokud se chcete podívat, jak se tyto dvě metriky liší, můžete na stránce výstup výsledků hodnocení kliknout na křivku **přesnost/odvolání** (v levé horní části obrázku 7).
 
 ![Výsledky vyhodnocení binární klasifikace](./media/evaluate-model-performance/7.png)
 
@@ -122,7 +122,7 @@ Další související metrikou, která se často používá, je **skóre F1**, k
 Kromě toho může jedna kontrolovat skutečnou kladnou míru vs. falešně pozitivní míra v křivce s **provozní charakteristikou (Roc)** a odpovídající **oblast pod hodnotou křivka (AUC)** . Nablíže tuto křivku k levému hornímu rohu, lepší výkon třídění je (což maximalizuje skutečnou kladnou sazbu při minimalizaci falešně pozitivních sazeb). Křivky, které jsou blízko diagonálního vykreslení, jsou výsledkem klasifikátorů, které mají za následek vytváření předpovědi, které jsou blízko náhodného odhadování.
 
 ### <a name="using-cross-validation"></a>Použití vzájemného ověřování
-Stejně jako v příkladu regrese můžeme provést vzájemné ověřování, abyste opakovaně provedli výuku, bodování a vyhodnotili různé podmnožiny dat automaticky. Podobně můžeme použít modul [modelu křížové validace][cross-validate-model] , nevýukový model logistické regrese a datovou sadu. Sloupec popisku musí být nastaven na hodnotu *výnosy* ve vlastnostech modulu [křížové validace modelu][cross-validate-model] . Po spuštění experimentu a kliknutí na správný výstupní port modulu [model křížové validace][cross-validate-model] se vám pro každé skládání zobrazí hodnoty binární klasifikace klasifikace, kromě středníku a směrodatné odchylky každého. 
+Stejně jako v příkladu regrese můžeme provést vzájemné ověřování, abyste opakovaně provedli výuku, hodnocení a vyhodnotili různé podmnožiny dat automaticky. Podobně můžeme použít modul [modelu křížové validace][cross-validate-model] , nevýukový model logistické regrese a datovou sadu. Sloupec popisku musí být nastaven na hodnotu *výnosy* ve vlastnostech modulu [křížové validace modelu][cross-validate-model] . Po spuštění experimentu a kliknutí na správný výstupní port modulu [model křížové validace][cross-validate-model] se vám pro každé skládání zobrazí hodnoty binární klasifikace klasifikace, kromě středníku a směrodatné odchylky každého. 
 
 ![Křížové ověření modelu binární klasifikace](./media/evaluate-model-performance/8.png)
 
@@ -133,7 +133,7 @@ Obrázek 8. Křížové ověřování modelu binární klasifikace.
 Obrázek 9. Výsledky křížového ověřování binárního třídění.
 
 ## <a name="evaluating-a-multiclass-classification-model"></a>Vyhodnocení modelu klasifikace s více třídami
-V tomto experimentu použijeme oblíbenou datovou sadu [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "Iris") , která obsahuje instance 3 různých typů (tříd) rostliny Iris. Pro každou instanci jsou 4 hodnoty funkcí (sepal délka/šířka a Petal délka/šířka). V předchozích experimentech jsme provedli a otestovali modely pomocí stejných datových sad. V tomto příkladu použijeme modul [rozdělit data][split] k vytvoření 2 podmnožiny dat, výuku na první a skóre a vyhodnocení v druhé. Datová sada Iris je veřejně dostupná v [úložišti UCI Machine Learning](https://archive.ics.uci.edu/ml/index.html)a je možné ji stáhnout pomocí modulu [Import dat][import-data] .
+V tomto experimentu použijeme oblíbenou datovou sadu [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "Iris") , která obsahuje instance tří různých typů (tříd) Iris. Pro každou instanci jsou k dispozici čtyři hodnoty funkcí (sepal Length/Width a Petal Length/Width). V předchozích experimentech jsme provedli a otestovali modely pomocí stejných datových sad. V tomto příkladu použijeme modul [rozdělení dat][split] k vytvoření dvou podmnožiny dat, výuku prvního a skóre a vyhodnocení za sekundu. Datová sada Iris je veřejně dostupná v [úložišti UCI Machine Learning](https://archive.ics.uci.edu/ml/index.html)a je možné ji stáhnout pomocí modulu [Import dat][import-data] .
 
 ### <a name="creating-the-experiment"></a>Vytvoření experimentu
 Do svého pracovního prostoru přidejte následující moduly v klasické verzi Azure Machine Learning Studio:
@@ -158,14 +158,14 @@ Nastavte zlomek instancí, které se mají použít pro školení v modulu [Spli
 Obrázek 10. Vyhodnocení třídění s více třídami
 
 ### <a name="inspecting-the-evaluation-results"></a>Kontrola výsledků hodnocení
-Spusťte experiment a klikněte na výstupní port [vyhodnoceného modelu][evaluate-model]. Výsledky hodnocení jsou uvedeny ve formě nejasné matrice v tomto případě. Tato matice zobrazuje skutečné a předpovídané instance pro všechny 3 třídy.
+Spusťte experiment a klikněte na výstupní port [vyhodnoceného modelu][evaluate-model]. Výsledky hodnocení jsou uvedeny ve formě nejasné matrice v tomto případě. Matice zobrazuje skutečné vs. předpovězené instance pro všechny tři třídy.
 
 ![Výsledky vyhodnocení klasifikace na více třídách](./media/evaluate-model-performance/11.png)
 
 Obrázek 11. Výsledky vyhodnocení klasifikace na více třídách.
 
 ### <a name="using-cross-validation"></a>Použití vzájemného ověřování
-Jak bylo zmíněno dříve, můžete automaticky provádět opakované školení, bodování a vyhodnocení pomocí modulu [model křížové validace][cross-validate-model] . Potřebovali jste datovou sadu, nevlakový model a modul pro [křížové ověřování modelů][cross-validate-model] (viz obrázek níže). Znovu je třeba nastavit sloupec popisku modulu [model křížové validace][cross-validate-model] (index sloupce 5 v tomto případě). Po spuštění experimentu a kliknutí na správný výstupní port [modelu křížové validace][cross-validate-model]můžete zkontrolovat hodnoty metriky pro každé přeložení a také střední a směrodatnou odchylku. Metriky, které jsou zde zobrazeny, jsou podobné těm, které jsou popsány v binárním případu klasifikace. Nicméně Všimněte si, že v klasifikaci s více třídami, výpočet skutečných kladných hodnot nebo záporných hodnot a falešně pozitivních hodnot se provádí pomocí počítání na základě třídy, protože neexistuje žádná kladná nebo záporná třída. Například při výpočtu přesnosti nebo odvolání třídy Iris-setosa se předpokládá, že se jedná o pozitivní třídu a všechny ostatní jsou záporné.
+Jak bylo zmíněno dříve, můžete automaticky provádět opakované školení, bodování a hodnocení pomocí modulu [model křížové validace][cross-validate-model] . Potřebovali jste datovou sadu, nevlakový model a modul pro [křížové ověřování modelů][cross-validate-model] (viz obrázek níže). Znovu je třeba nastavit sloupec popisku modulu [model křížové validace][cross-validate-model] (index sloupce 5 v tomto případě). Po spuštění experimentu a kliknutí na správný výstupní port [modelu křížové validace][cross-validate-model]můžete zkontrolovat hodnoty metriky pro každé přeložení a také střední a směrodatnou odchylku. Metriky, které jsou zde zobrazeny, jsou podobné těm, které jsou popsány v binárním případu klasifikace. V klasifikaci s více třídami, výpočet skutečných kladných hodnot nebo záporných hodnot a falešně pozitivních hodnot je však provedeno napočítáním na základě třídy, protože neexistuje žádná kladná nebo záporná třída. Například při výpočtu přesnosti nebo odvolání třídy Iris-setosa se předpokládá, že se jedná o pozitivní třídu a všechny ostatní jsou záporné.
 
 ![Křížové ověření modelu klasifikace s více třídami](./media/evaluate-model-performance/12.png)
 
@@ -185,4 +185,3 @@ Obrázek 13. Výsledky křížového ověřování modelu klasifikace s více t�
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 [two-class-logistic-regression]: https://msdn.microsoft.com/library/azure/b0fd7660-eeed-43c5-9487-20d9cc79ed5d/
-

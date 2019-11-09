@@ -1,5 +1,5 @@
 ---
-title: Plány údržby Azure (Preview) | Microsoft Docs
+title: Plány údržby Azure
 description: Plánování údržby umožňuje zákazníkům plánovat z nezbytných plánovaných událostí údržby, které služba Azure SQL Data Warehouse používá k zavedení nových funkcí, upgradů a oprav.
 services: sql-data-warehouse
 author: antvgski
@@ -7,35 +7,34 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 07/16/2019
+ms.date: 11/07/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e5df583112bbb6db9651004e5deaceb6b5b9d12
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: e9d5a137247c072516c0b25d7f6147ef48fec248
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958899"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839797"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Použití plánů údržby ke správě aktualizací a údržby služby
 
-Plány údržby jsou nyní k dispozici ve všech oblastech Azure SQL Data Warehouse. Funkce plán údržby integruje Service Health plánovaná oznámení o údržbě, Resource Health kontrolu monitorování a službu Azure SQL Data Warehouse plánování údržby.
+Funkce plán údržby integruje Service Health plánovaná oznámení o údržbě, Resource Health kontrolu monitorování a službu Azure SQL Data Warehouse plánování údržby.
 
-Pomocí plánování údržby můžete zvolit časový interval, kdy je vhodné dostávat nové funkce, upgrady a opravy. V rámci sedmi dnů zvolíte primární a sekundární časové období údržby. Chcete-li použít tuto funkci, je nutné určit primární a sekundární okno v rámci samostatného denního rozsahu.
+Pro výběr časového okna byste měli použít plánování údržby, pokud je vhodné dostávat nové funkce, upgrady a opravy. V rámci sedmi dnů budete muset zvolit primární a sekundární časové období údržby, každé okno musí být v různých dnech.
 
-Například můžete naplánovat primární okno sobotu 22:00 na neděli 01:00 a potom naplánovat sekundární okno z středy 19:00 na 22:00. Pokud SQL Data Warehouse nemůže provést údržbu během primárního okna údržby, pokusí se o údržbu znovu během sekundárního časového období údržby. Údržba služby by mohla probíhat během primárního i sekundárního okna. Aby se zajistilo rychlé dokončení všech operací údržby, DW400 (c) a nižší úrovně datového skladu mohou dokončit údržbu mimo určené časové období údržby.
+Například můžete naplánovat primární okno sobotu 22:00 na neděli 01:00 a potom naplánovat sekundární okno z středy 19:00 na 22:00. Pokud SQL Data Warehouse nemůže provést údržbu během primárního okna údržby, pokusí se o údržbu znovu během sekundárního časového období údržby. V primárním i sekundárním systému Windows může dojít k údržbě služeb. Aby se zajistilo rychlé dokončení všech operací údržby, DW400c a nižší úrovně datového skladu mohly dokončit údržbu mimo určené časové období údržby.
 
 Všechny nově vytvořené Azure SQL Data Warehouse instance budou mít během nasazování použit plán údržby definovaný systémem. Plán se dá upravit hned po dokončení nasazení.
 
-Každé časové období údržby může být tři až osm hodin. K údržbě může dojít kdykoli v rámci okna. Při spuštění údržby se zruší všechny aktivní relace a nepotvrzené transakce se vrátí zpět. V připojení byste měli očekávat několik krátkých ztrát, protože služba do datového skladu nasadí nový kód. Po dokončení údržby datového skladu budete upozorněni okamžitě.
+I když může být časový interval pro správu a údržbu mezi třemi a osmi hodinami, znamená to, že datový sklad bude po dobu až do stavu offline. K údržbě může dojít kdykoli v rámci tohoto okna a v průběhu tohoto intervalu byste měli očekávat jedno odpojení. ~ 5 -6 minut, protože služba nasadí nový kód do datového skladu. DW400c a nižší můžou v různých časech během časového období údržby docházet k několika krátkým ztrátám v připojení. Při spuštění údržby se zruší všechny aktivní relace a nepotvrzené transakce se vrátí zpět. Chcete-li minimalizovat prostoje instance, ujistěte se, že datový sklad neobsahuje žádné dlouhotrvající transakce před zvoleným obdobím údržby.
 
- Všechny operace údržby by se měly dokončit v plánovaných oknech údržby. Žádná údržba se neprovádí mimo zadaná časová období údržby bez předchozího oznámení. Pokud je váš datový sklad pozastaven během plánované údržby, bude aktualizován během operace obnovení. 
+Všechny operace údržby by se měly dokončit v zadaném časovém období údržby, pokud není nutné nasadit aktualizaci s časovým rozlišením. Pokud je váš datový sklad pozastaven během plánované údržby, bude aktualizován během operace obnovení. Po dokončení údržby datového skladu budete upozorněni okamžitě.
 
 ## <a name="alerts-and-monitoring"></a>Výstrahy a monitorování
 
-Integrace s Service Healthmi oznámeními a monitorováním Resource Health kontroly umožňuje zákazníkům průběžně informovat o hrozící činnosti údržby. Nové automatické automatizace využívají Azure Monitor. Můžete rozhodnout, jak chcete být upozorňováni na hrozící události údržby. Můžete také zvolit, které automatizované toky vám pomůžou spravovat výpadky a minimalizovat provozní dopad.
-
-24hodinové předběžné oznámení předchází všem událostem údržby, které nejsou pro DWC400c a nižší úrovně. Chcete-li minimalizovat prostoje instance, ujistěte se, že datový sklad neobsahuje žádné dlouhotrvající transakce před zvoleným obdobím údržby.
+Integrace s Service Healthmi oznámeními a monitorováním Resource Health kontroly umožňuje zákazníkům průběžně informovat o hrozící činnosti údržby. Tato automatizace využívá Azure Monitor. Můžete rozhodnout, jak chcete být upozorňováni na hrozící události údržby. Můžete také zvolit, které automatizované toky vám pomůžou spravovat výpadky a minimalizovat provozní dopad.
+24hodinové předběžné oznámení předchází všem událostem údržby, které nejsou pro DWC400c a nižší úrovně.
 
 > [!NOTE]
 > V případě, že je nutné nasadit časově důležitou aktualizaci, může být rozšířená doba oznámení výrazně omezená.
@@ -50,13 +49,13 @@ I když ve zvolené oblasti není k dispozici plánování údržby, můžete pl
 
 ## <a name="view-a-maintenance-schedule"></a>Zobrazit plán údržby 
 
-### <a name="portal"></a>Bran
+### <a name="portal"></a>Portál
 
-Ve výchozím nastavení mají všechny nově vytvořené Azure SQL Data Warehouse instance během nasazování po dobu osmi hodin primární a sekundární okno údržby. Jak je uvedeno výše, můžete změnit Windows tak, jak brzo nasazování je dokončeno. Žádná údržba se neprovádí mimo zadaná časová období údržby bez předchozího oznámení.
+Ve výchozím nastavení se pro všechny nově vytvořené instance služby Azure SQL Data Warehouse během nasazování používá osmihodinové primární a sekundární časové období údržby. Jak je uvedeno výše, můžete změnit Windows tak, jak brzo nasazování je dokončeno. Mimo zadaná časová období údržby nedojde bez předchozího upozornění k žádné údržbě.
 
-Chcete-li zobrazit plán údržby, který byl použit pro datový sklad, proveďte následující kroky:
+Pokud chcete zobrazit plán údržby použitý pro váš datový sklad, postupujte následovně:
 
-1.  Přihlaste se k [Azure Portal](https://portal.azure.com/).
+1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2.  Vyberte datový sklad, který chcete zobrazit. 
 3.  Vybraný datový sklad se otevře v okně Přehled. Plán údržby, který se použije pro datový sklad, se zobrazí pod **plánem údržby**.
 
@@ -64,7 +63,7 @@ Chcete-li zobrazit plán údržby, který byl použit pro datový sklad, proveď
 
 ## <a name="change-a-maintenance-schedule"></a>Změna plánu údržby 
 
-### <a name="portal"></a>Bran
+### <a name="portal"></a>Portál
 Plán údržby lze kdykoli aktualizovat nebo změnit. Pokud vybraná instance projde aktivním cyklem údržby, nastavení se uloží. Budou aktivní během další identifikované doby údržby. [Přečtěte si další informace](https://docs.microsoft.com/azure/service-health/resource-health-overview) o monitorování datového skladu během aktivní události údržby. 
 
 ### <a name="identifying-the-primary-and-secondary-windows"></a>Určení primárního a sekundárního okna
@@ -72,7 +71,7 @@ Plán údržby lze kdykoli aktualizovat nebo změnit. Pokud vybraná instance pr
 Primární a sekundární systém Windows musí mít oddělené rozsahy dnů. Příkladem je primární okno úterý – čtvrtek a sekundární okno v sobotu – neděle.
 
 Chcete-li změnit plán údržby pro datový sklad, proveďte následující kroky:
-1.  Přihlaste se k [Azure Portal](https://portal.azure.com/).
+1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2.  Vyberte datový sklad, který chcete aktualizovat. Otevře se stránka s přehledem. 
 3.  Otevřete stránku nastavení plánu údržby výběrem odkazu **Souhrn plánu údržby (Preview)** v okně Přehled. Případně vyberte možnost **plán údržby** v nabídce na levé straně prostředku.  
 

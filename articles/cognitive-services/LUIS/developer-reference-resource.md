@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: b2b32d6ccca69f330cfe15faa1446aa91fdb687a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d59646a87727409d759cc1903046fb3cdeade2e0
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73465724"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847380"
 ---
 # <a name="developer-resources-for-language-understanding"></a>Materiály pro vývojáře pro Language Understanding
 
@@ -41,12 +41,14 @@ Přečtěte si o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
 
 Rozhraní API pro vytváření obsahu a předpovědi jsou dostupná z rozhraní REST API:
 
-* Vytváření [Referenční dokumentace](https://go.microsoft.com/fwlink/?linkid=2092087)
-* [Referenční dokumentace](https://go.microsoft.com/fwlink/?linkid=2092356) modulu runtime předpovědi
+|Typ|Verze|
+|--|--|
+|Vytváření obsahu|[2](https://go.microsoft.com/fwlink/?linkid=2092087)<br>[Preview verze 3](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview)|
+|Předpovědi|[2](https://go.microsoft.com/fwlink/?linkid=2092356)<br>[Technologie](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/)|
 
 ### <a name="language-based-sdks"></a>Sady SDK založené na jazyce
 
-|Jazyk |Referenční dokumentace|Balíček|Ukázky|Rychlé starty|
+|Jazyk |Referenční dokumentace|Balíček|Ukázky|Šablony Rychlý start|
 |--|--|--|--|--|
 |C#|[Vytváření obsahu](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Předpověď](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[Vytváření balíčků NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[Předpověď NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[Ukázky sady .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS)|[Vytvoření a Správa aplikace](sdk-csharp-quickstart-authoring-app.md)<br>[Koncový bod prediktivního dotazování](sdk-csharp-quickstart-query-prediction-endpoint.md)|
 |Go|[Vytváření a předpověď](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[Sada SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)|[Vytváření obsahu](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/go)<br>[Předpověď](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/go)|[Vytváření obsahu pomocí REST](luis-get-started-go-add-utterance.md)<br>[Předpověď pomocí REST](luis-get-started-go-get-intent.md)|
@@ -55,7 +57,7 @@ Rozhraní API pro vytváření obsahu a předpovědi jsou dostupná z rozhraní 
 |Python|[Vytváření a předpověď](sdk-python-quickstart-authoring-app.md)|[PIP](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Vytváření obsahu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[Vytváření obsahu](sdk-python-quickstart-authoring-app.md)<br>[Předpověď pomocí REST](luis-get-started-python-get-intent.md)
 
 
-### <a name="containers"></a>Containers
+### <a name="containers"></a>Kontejnery
 
 Language Understanding (LUIS) poskytuje [kontejner](luis-container-howto.md) pro poskytování místních a obsažených verzí vaší aplikace. 
 

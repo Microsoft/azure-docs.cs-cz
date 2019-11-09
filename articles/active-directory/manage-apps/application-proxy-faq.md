@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 9743f25d89bed4e54b3deed815d1cf29030caff6
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 612b6caf47ec4764aa2bbef162592100198ed0c4
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955468"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832217"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)
 
@@ -66,14 +66,14 @@ Neexistuje žádný důvod. Bude fungovat jakýkoli účet správce globálních
 K dispozici jsou čítače sledování výkonu, které jsou nainstalovány spolu s konektorem. K jejich zobrazení:  
 
 1. Vyberte **Start**, zadejte "perfmon" a stiskněte klávesu ENTER.
-2. Vyberte **sledování výkonu** a klikněte na ikonu zeleného **@no__t – 2** .
+2. Vyberte **sledování výkonu** a klikněte na ikonu zeleného **+** .
 3. Přidejte čítače **Microsoft AAD Application proxy Connector** , které chcete monitorovat.
 
 ### <a name="does-the-azure-ad-application-proxy-connector-have-to-be-on-the-same-subnet-as-the-resource"></a>Musí být konektor Azure Proxy aplikací služby AD ve stejné podsíti jako prostředek?
 
 Konektor se nemusí nacházet ve stejné podsíti. Nicméně potřebuje překlad názvů (DNS, soubor hostitelů) k prostředku a nezbytné síťové připojení (směrování do prostředku, porty otevřené v prostředku atd.). Doporučení najdete v tématu [požadavky na topologii sítě při použití proxy aplikací služby Azure Active Directory](application-proxy-network-topology.md).
 
-## <a name="application-configuration"></a>Konfigurace aplikace
+## <a name="application-configuration"></a>Konfigurace aplikací
 
 ### <a name="what-is-the-length-of-the-default-and-long-back-end-timeout-can-the-timeout-be-extended"></a>Jaká je délka výchozího a "dlouhého" back-endu časového limitu? Může být časový limit prodloužen?
 
@@ -95,7 +95,7 @@ Metoda PrincipalsAllowedToDelegateToAccount se používá v případě, že serv
 Pokud jsou servery konektorů a účet služby webové aplikace ve stejné doméně, můžete použít modul Uživatelé a počítače služby Active Directory ke konfiguraci nastavení delegování na každém účtu počítače konektoru, který jim umožní delegovat na cílový hlavní název služby.
 
 Pokud jsou servery konektorů a účet služby webové aplikace v různých doménách, používá se delegování na základě prostředků. Oprávnění k delegování jsou nakonfigurovaná na cílovém webovém serveru a účtu služby webové aplikace. Tato metoda omezeného delegování je relativně nová. Tato metoda byla představena v systému Windows Server 2012, který podporuje delegování mezi doménami tím, že umožňuje vlastníkovi prostředků (webové služby) určit, které počítače a účty služeb se k němu mohou delegovat. Pro pomoc s touto konfigurací není k dispozici žádné uživatelské rozhraní, takže budete muset použít PowerShell.
-Další informace najdete v dokumentu White Paper [Principy omezeného delegování protokolu Kerberos pomocí proxy aplikace](http://aka.ms/kcdpaper).
+Další informace najdete v dokumentu White Paper [Principy omezeného delegování protokolu Kerberos pomocí proxy aplikace](https://aka.ms/kcdpaper).
 
 ## <a name="pass-through-authentication"></a>Předávací ověřování
 

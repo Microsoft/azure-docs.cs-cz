@@ -1,7 +1,7 @@
 ---
-title: Upgrade na Azure Search .NET SDK verze 10
+title: Upgrade na Azure Kognitivní hledání .NET SDK verze 10
 titleSuffix: Azure Cognitive Search
-description: Migruje kód do sady Azure Search .NET SDK verze 10 ze starších verzí. Zjistěte, co je nového a kdy se vyžadují změny kódu.
+description: Migruje kód do Azure Kognitivní hledání .NET SDK verze 10 ze starších verzí. Zjistěte, co je nového a kdy se vyžadují změny kódu.
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
@@ -9,30 +9,30 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4a8550a7f9c6a684a172da6f384039c6050797f6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ad912eb0b26354d40a654a1c8782dfcb960235e5
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793041"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847527"
 ---
-# <a name="upgrade-to-azure-search-net-sdk-version-10"></a>Upgrade na Azure Search .NET SDK verze 10
+# <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Upgrade na Azure Kognitivní hledání .NET SDK verze 10
 
 Pokud používáte [sadu Azure Search .NET SDK](https://aka.ms/search-sdk)verze 9,0 nebo starší, Tento článek vám pomůže při upgradu aplikace na použití verze 10.
 
-Obecnější návod k sadě SDK, včetně příkladů, najdete v tématu [použití Azure Search z aplikace .NET](search-howto-dotnet-sdk.md).
+Azure Search se přejmenuje na Azure Kognitivní hledání ve verzi 10, ale obory názvů a názvy balíčků se nemění. Předchozí verze sady SDK (9,0 a starší) nadále používají dřívější název. Další informace o používání sady SDK, včetně příkladů, najdete v tématu [Jak používat Azure kognitivní hledání z aplikace .NET](search-howto-dotnet-sdk.md).
 
 Verze 10 přináší několik funkcí a oprav chyb a přináší tak stejnou úroveň funkčnosti jako nejnovější verzi REST API `2019-05-06`. V případech, kdy změna přeruší existující kód, Vás provedeme [kroky potřebnými k vyřešení tohoto problému](#UpgradeSteps).
 
 > [!NOTE]
 > Pokud používáte verzi 8,0-Preview nebo starší, měli byste nejdřív upgradovat na verzi 9 a pak upgradovat na verzi 10. Pokyny najdete v tématu [upgrade na sadu Azure Search .NET SDK verze 9](search-dotnet-sdk-migration-version-9.md) .
 >
-> Vaše instance služby Azure Search podporuje několik verzí REST API, včetně nejnovějšího. Můžete i nadále používat verzi, pokud již není nejnovější, ale doporučujeme, abyste si kód migrovali na používání nejnovější verze. Při použití REST API musíte v každé žádosti zadat verzi rozhraní API přes parametr verze API. Pokud používáte sadu .NET SDK, verze sady SDK, kterou používáte, určí odpovídající verzi REST API. Pokud používáte starší sadu SDK, můžete pokračovat ve spuštění tohoto kódu bez změny, i když je služba upgradována na podporu novější verze rozhraní API.
+> Vaše instance služby Search Service podporuje několik REST API verzí, včetně nejnovějšího. Můžete i nadále používat verzi, pokud již není nejnovější, ale doporučujeme, abyste si kód migrovali na používání nejnovější verze. Při použití REST API musíte v každé žádosti zadat verzi rozhraní API přes parametr verze API. Pokud používáte sadu .NET SDK, verze sady SDK, kterou používáte, určí odpovídající verzi REST API. Pokud používáte starší sadu SDK, můžete pokračovat ve spuštění tohoto kódu bez změny, i když je služba upgradována na podporu novější verze rozhraní API.
 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-10"></a>Co je nového ve verzi 10
-Verze 10 sady Azure Search .NET SDK cílí na nejnovější všeobecně dostupnou verzi Azure Search REST API (`2019-05-06`) s těmito aktualizacemi:
+Verze 10 sady Azure Kognitivní hledání .NET SDK cílí na nejnovější všeobecně dostupnou verzi REST API (`2019-05-06`) s těmito aktualizacemi:
 
 * Seznámení se dvěma novými dovednostmi – [podmíněná](cognitive-search-skill-conditional.md) dovednost a [dovednost překladu textu](cognitive-search-skill-text-translation.md)
 * [Shapery odbornosti](cognitive-search-skill-shaper.md) byly restrukturované, aby vyhovovaly konsolidaci z vnořených kontextů. Další informace najdete v tomto [příkladu definice JSON](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts).
@@ -62,7 +62,7 @@ Verze 10 sady Azure Search .NET SDK cílí na nejnovější všeobecně dostupno
 K dispozici je několik zásadních změn ve verzi 10, které mohou vyžadovat změny kódu navíc k opakovanému sestavování aplikace.
 
 > [!NOTE]
-> Níže uvedený seznam změn není vyčerpávající. Některé změny by nejspíš nevedly k chybám sestavení, ale budou se technicky rušit, protože přerušují binární kompatibilitu se sestaveními, která jsou závislá na dřívějších verzích Azure Search .NET SDK. Důležité změny, které spadají do této kategorie, jsou uvedeny také spolu s doporučeními. Sestavte prosím aplikaci znovu při upgradu na verzi 10, abyste se vyhnuli problémům s binární kompatibilitou.
+> Níže uvedený seznam změn není vyčerpávající. Některé změny by nejspíš nevedly k chybám sestavení, ale budou se technicky rušit, protože přerušují binární kompatibilitu se sestaveními, která jsou závislá na dřívějších verzích sestavení Azure Kognitivní hledání .NET SDK. Důležité změny, které spadají do této kategorie, jsou uvedeny také spolu s doporučeními. Sestavte prosím aplikaci znovu při upgradu na verzi 10, abyste se vyhnuli problémům s binární kompatibilitou.
 
 ### <a name="custom-web-api-skill-definition"></a>Definice dovednosti vlastního webového rozhraní API
 
@@ -139,7 +139,7 @@ var skillset = new Skillset()
 }
 ```
 
-`SentimentSkill` je přiřazen název `#1`, `WebApiSkill` `#2`přiřazen `ShaperSkill` a tak dále.
+`SentimentSkill` je přiřazen název `#1`, `WebApiSkill` `#2`přiřazen `ShaperSkill` a tak dále.`#3`
 
 Pokud se rozhodnete identifikovat dovednosti podle vlastního názvu, nezapomeňte nejdřív aktualizovat všechny instance klientů na verzi 10 sady SDK. V opačném případě může klient, který používá starší verzi sady SDK, `null` vlastnost `Name` dovednosti, což způsobí, že se klient vrátí k výchozímu schématu pojmenování.
 

@@ -8,12 +8,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
-ms.openlocfilehash: 47043b9f4416ec61cf25ea92504c0c653b7d5408
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: eab5714cb43816c617190fc394f6156ab08ff51d
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819201"
+ms.locfileid: "73838732"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Rychlý start: Spuštění pracovního postupu ve službě Microsoft Genomics
 
@@ -39,8 +39,8 @@ Nastavte v účtu Genomics následující údaje, viz předchozí obrázek.
  |**Nastavení**          |  **Navrhovaná hodnota**  | **Popis pole** |
  |:-------------       |:-------------         |:----------            |
  |Předplatné         | Název vašeho předplatného|Toto je fakturační jednotka pro vaše služby Azure – podrobnosti o vašem předplatném najdete v části [Předplatná](https://account.azure.com/Subscriptions) |      
- |Skupina prostředků       | MyResourceGroup       |  Skupiny prostředků umožňují sdružení několika prostředků Azure (účet úložiště, účet Genomics atd.) do jedné skupiny pro zjednodušení správy. Další informace najdete v tématu [Skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups). Platné názvy skupin prostředků najdete v tématu [Pravidla pojmenování](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging). |
- |Název účtu         | MyGenomicsAccount     |Zvolte jedinečný identifikátor účtu. Informace o platných názvech najdete v části [Pravidla pojmenování](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) |
+ |Skupina prostředků       | MyResourceGroup       |  Skupiny prostředků umožňují sdružení několika prostředků Azure (účet úložiště, účet Genomics atd.) do jedné skupiny pro zjednodušení správy. Další informace najdete v tématu [Skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups). Platné názvy skupin prostředků najdete v tématu [Pravidla pojmenování](/azure/architecture/best-practices/resource-naming). |
+ |Název účtu         | MyGenomicsAccount     |Zvolte jedinečný identifikátor účtu. Informace o platných názvech najdete v části [Pravidla pojmenování](/azure/architecture/best-practices/resource-naming) |
  |Umístění                   | Západní USA 2                    |    Služba je dostupná v oblastech Západní USA 2, Západní Evropa a Jihovýchodní Asie |
 
 
@@ -118,8 +118,8 @@ Nastavte v účtu Storage následující údaje, viz předchozí obrázek. Použ
  |**Nastavení**          |  **Navrhovaná hodnota**  | **Popis pole** |
  |:-------------------------       |:-------------         |:----------            |
  |Předplatné         | Vaše předplatné Azure |Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.azure.com/Subscriptions). |      
- |Skupina prostředků       | MyResourceGroup       |  Můžete vybrat stejnou skupinu prostředků, ve které je váš účet Genomics. Platné názvy skupin prostředků najdete v tématu [Pravidla pojmenování](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging). |
- |Název účtu úložiště         | MyStorageAccount     |Zvolte jedinečný identifikátor účtu. Informace o platných názvech najdete v části [Pravidla pojmenování](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) |
+ |Skupina prostředků       | MyResourceGroup       |  Můžete vybrat stejnou skupinu prostředků, ve které je váš účet Genomics. Platné názvy skupin prostředků najdete v tématu [Pravidla pojmenování](/azure/architecture/best-practices/resource-naming). |
+ |Název účtu úložiště         | MyStorageAccount     |Zvolte jedinečný identifikátor účtu. Informace o platných názvech najdete v části [Pravidla pojmenování](/azure/architecture/best-practices/resource-naming) |
  |Umístění                  | Západní USA 2                  | Použijte stejné umístění, jaké má účet Genomics, abyste se vyhnuli poplatkům za přenosy dat a vyšší latenci.  | 
  |Výkon                  | Standard                   | Výchozí nastavení je Standard. Další podrobnosti o účtech úložiště úrovně Standard a Premium najdete v tématu [Úvod do Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction).    |
  |Account kind (Druh účtu)       | Blob Storage       |  Úložiště objektů blob nabízí 2–5× rychlejší stahování a nahrávání než úložiště pro obecné účely. |

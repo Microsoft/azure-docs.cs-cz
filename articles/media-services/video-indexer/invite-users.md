@@ -1,6 +1,6 @@
 ---
 title: Pozvání uživatelů k Video Indexer – Azure
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: Tento článek popisuje, jak pozvat uživatele k Video Indexer.
 services: media-services
 author: ReutAmior
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 740b03179fad91e9042a54f8e74a622b3125b832
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: c1395bc3b329630a1ecbd479d275c30c9c787bb1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950184"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839016"
 ---
 # <a name="quickstart-invite-users-to-video-indexer"></a>Rychlý Start: pozvání uživatelů k Video Indexer
 
@@ -26,7 +26,7 @@ Pokud chcete spolupracovat s kolegy, můžete je pozvat na účet Video Indexer.
 
 ## <a name="invite-new-users"></a>Pozvat nové uživatele
 
-1. Přihlaste se na web [video indexer](https://www.videoindexer.ai/) . Ujistěte se, že jste připojení k účtu správce.
+1. Přihlaste se k webu [Video Indexer](https://www.videoindexer.ai/). Ujistěte se, že jste připojení k účtu správce.
 1. V horní nabídce klikněte na tlačítko **pozvat jiné** :
 
    ![Pozvat nové uživatele](./media/invite-users/invite-users.png)
@@ -47,7 +47,7 @@ Pokud chcete spolupracovat s kolegy, můžete je pozvat na účet Video Indexer.
 
 Pokud chcete odebrat uživatele, kteří mají přístup k vašemu účtu, můžete kliknout na symbol **X** vedle jeho jména:
 
-![Odebrat uživatele](./media/invite-users/remove-users.png)
+![Odebrání uživatelů](./media/invite-users/remove-users.png)
 
 Uživatelé neobdrží oznámení po odebrání. Po odebrání nebudou uživatelé oprávněni přihlásit se.
 
@@ -55,8 +55,8 @@ Uživatelé neobdrží oznámení po odebrání. Po odebrání nebudou uživatel
 
 Teď můžete použít [web video indexer](video-indexer-view-edit.md) nebo portál pro [vývojáře video indexer](video-indexer-use-apis.md) k zobrazení přehledů videa.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
-- [Přehled Video Indexer](video-indexer-overview.md)
+- [Přehled Video Indexeru](video-indexer-overview.md)
 - [Jak se zaregistrovat a nahrát své první video](video-indexer-get-started.md)
 - [Začínáme používat rozhraní API](video-indexer-use-apis.md)

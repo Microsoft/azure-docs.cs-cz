@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: b815776b8ff6dddf74c8aaa31a489b56751c0c73
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.date: 11/07/2019
+ms.openlocfilehash: 1bfeef729bdb3f07fe2cc64cee4fd4f27c49ef67
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162333"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833613"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Kurz: Vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service pomocí Terraformu
 
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte, jak provádět následující úlohy:
 > * Použití Terraformu a AKS k vytvoření clusteru Kubernetes
 > * Použití nástroje kubectl k otestování dostupnosti clusteru Kubernetes
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
@@ -82,7 +82,7 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele 
     }
     ```
 
-1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
+1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
 
 ## <a name="define-a-kubernetes-cluster"></a>Definování clusteru Kubernetes
 
@@ -173,7 +173,7 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro clu
 
     Se službou AKS platíte jenom za pracovní uzly. Záznam `agent_pool_profile` nakonfiguruje podrobnosti pro tyto pracovní uzly. `agent_pool_profile record` obsahuje počet pracovních uzlů, které se mají vytvořit, a typ pracovních uzlů. Pokud potřebujete v budoucnu horizontální navýšení nebo snížení kapacity clusteru, upravte hodnotu `count` v tomto záznamu.
 
-1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
+1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
 
 ## <a name="declare-the-variables"></a>Deklarování proměnných
 
@@ -228,7 +228,7 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro clu
    }
     ```
 
-1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
+1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
 
 ## <a name="create-a-terraform-output-file"></a>Vytvoření výstupního souboru Terraformu
 
@@ -272,7 +272,7 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro clu
     }
     ```
 
-1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
+1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
 
 ## <a name="set-up-azure-storage-to-store-terraform-state"></a>Nastavení služby Azure Storage k uložení stavu Terraformu
 
@@ -398,4 +398,4 @@ Při vytvoření clusteru AKS se povolilo monitorování za účelem zachycován
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Terraformu v Azure](/azure/ansible/)
+> [Další informace o používání Terraformu v Azure](/azure/terraform)

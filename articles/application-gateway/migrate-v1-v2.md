@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/10/2019
 ms.author: victorh
-ms.openlocfilehash: c4bc0ec2bf15a29962909f14f55854c06f0a6561
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e32443e01e8b44ff5a891afc76378a53b13d7ddd
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932498"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833322"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrace služby Azure Application Gateway a firewall webových aplikací z verze V1 na verzi 2
 
@@ -29,8 +29,8 @@ Tento článek popisuje migraci konfigurace. Migrace provozu klientů se liší 
 
 K dispozici je skript Azure PowerShell, který provede následující akce:
 
-* Vytvoří novou bránu Standard_v2 nebo WAF_v2 v podsíti virtuální sítě, kterou zadáte.
-* Bez problémů zkopíruje konfiguraci spojenou s bránou v1 Standard nebo WAF na nově vytvořenou bránu Standard_V2 nebo WAF_V2.
+* Vytvoří novou Standard_v2 nebo WAF_v2 bránu v podsíti virtuální sítě, kterou zadáte.
+* Bez problémů zkopíruje konfiguraci spojenou s bránou v1 Standard nebo WAF na nově vytvořenou Standard_V2 nebo WAF_V2 bránu.
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
@@ -49,10 +49,10 @@ Stáhněte si skript migrace z [Galerie prostředí PowerShell](https://www.powe
 
 V závislosti na nastaveních a preferencích místního prostředí PowerShellu jsou k dispozici dvě možnosti:
 
-* Pokud nemáte nainstalované moduly AZ pro Azure nebo si nejste připustili odinstalaci modulů AZ pro Azure, nejlepší možností je použít `Install-Script` možnost ke spuštění skriptu.
+* Pokud nemáte nainstalované moduly AZ pro Azure nebo si nejste odinstalovali odinstalaci modulů AZ pro Azure, nejlepší možností je použít pro spuštění skriptu možnost `Install-Script`.
 * Pokud potřebujete zachovat moduly Azure AZ, nejlepším řešením je stáhnout skript a spustit ho přímo.
 
-Pokud chcete zjistit, jestli máte nainstalované moduly Azure AZ, spusťte `Get-InstalledModule -Name az`. Pokud nevidíte žádné nainstalované moduly AZ, můžete použít `Install-Script` metodu.
+Pokud chcete zjistit, jestli máte nainstalované moduly Azure AZ, spusťte `Get-InstalledModule -Name az`. Pokud nevidíte žádné nainstalované moduly AZ, můžete použít metodu `Install-Script`.
 
 ### <a name="install-using-the-install-script-method"></a>Instalace pomocí metody install-Script
 
@@ -70,11 +70,11 @@ Pokud máte nainstalované některé moduly Azure AZ a nemůžete je odinstalova
 
 Spuštění skriptu:
 
-1. Slouží `Connect-AzAccount` k připojení k Azure.
+1. Pro připojení k Azure použijte `Connect-AzAccount`.
 
-1. Pomocí `Import-Module Az` nástroje importujte moduly AZ.
+1. Pomocí `Import-Module Az` importujte moduly AZ.
 
-1. Pro `Get-Help AzureAppGWMigration.ps1` prohlédnutí požadovaných parametrů spusťte příkaz:
+1. Spusťte `Get-Help AzureAppGWMigration.ps1` pro prohlédnutí požadovaných parametrů:
 
    ```
    AzureAppGwMigration.ps1
@@ -89,7 +89,7 @@ Spuštění skriptu:
    ```
 
    Parametry skriptu:
-   * **resourceId: [String]: Požadováno** – Toto je ID prostředku Azure pro stávající bránu Standard v1 nebo WAF v1. Tuto řetězcovou hodnotu zjistíte tak, že přejdete na Azure Portal, vyberete svůj prostředek Application Gateway nebo WAF a kliknete na odkaz **vlastnosti** pro bránu. ID prostředku se nachází na dané stránce.
+   * **ResourceID: [String]: požadováno** – Toto je ID prostředku Azure pro stávající bránu Standard v1 nebo WAF v1. Tuto řetězcovou hodnotu zjistíte tak, že přejdete na Azure Portal, vyberete svůj prostředek Application Gateway nebo WAF a kliknete na odkaz **vlastnosti** pro bránu. ID prostředku se nachází na dané stránce.
 
      K získání ID prostředku můžete také spustit následující příkazy Azure PowerShell:
 
@@ -98,9 +98,9 @@ Spuštění skriptu:
      $appgw.Id
      ```
 
-   * **subnetAddressRange: [řetězec]:  Požadováno** – jedná se o adresní prostor IP adres, který jste přiřadili (nebo chcete přidělit) pro novou podsíť, která obsahuje novou bránu v2. Toto musí být zadáno v zápisu CIDR. Příklad: 10.0.0.0/24. Tuto podsíť nemusíte vytvářet předem. Skript ji vytvoří za vás, pokud neexistuje.
-   * **appgwName: [řetězec]: Volitelné**. Toto je řetězec, který zadáte pro použití jako název nové brány Standard_v2 nebo WAF_v2. Pokud tento parametr není zadaný, použije se název vaší stávající brány V1 s příponou *_V2* , která se připojila.
-   * **sslCertificates: [PSApplicationGatewaySslCertificate]: Volitelné**.  Seznam objektů PSApplicationGatewaySslCertificate oddělených čárkami, které vytvoříte pro reprezentaci certifikátů SSL z vaší brány V1, se musí nahrát do nové brány v2. Pro každý z vašich certifikátů SSL nakonfigurovaných pro bránu Standard v1 nebo WAF v1 můžete vytvořit nový objekt PSApplicationGatewaySslCertificate pomocí příkazu, který `New-AzApplicationGatewaySslCertificate` se tady zobrazuje. Budete potřebovat cestu k vašemu souboru certifikátu SSL a heslu.
+   * **subnetAddressRange: [String]: Required** – jedná se o adresní prostor IP adres, který jste přiřadili (nebo chcete přidělit) pro novou podsíť, která obsahuje novou bránu v2. Toto musí být zadáno v zápisu CIDR. Například: 10.0.0.0/24. Tuto podsíť nemusíte vytvářet předem. Skript ji vytvoří za vás, pokud neexistuje.
+   * **appgwName: [řetězec]: volitelné**. Toto je řetězec, který zadáte pro použití jako název nové Standard_v2 nebo WAF_v2 bránu. Pokud tento parametr není zadaný, použije se název vaší stávající brány V1 s příponou *_V2* připojena.
+   * **sslCertificates: [PSApplicationGatewaySslCertificate]: volitelné**.  Seznam objektů PSApplicationGatewaySslCertificate oddělených čárkami, které vytvoříte pro reprezentaci certifikátů SSL z vaší brány V1, se musí nahrát do nové brány v2. Pro každý z vašich certifikátů SSL nakonfigurovaných pro vaši standardní bránu v1 nebo WAF v1 můžete vytvořit nový objekt PSApplicationGatewaySslCertificate pomocí příkazu `New-AzApplicationGatewaySslCertificate`, který se tady zobrazuje. Budete potřebovat cestu k vašemu souboru certifikátu SSL a heslu.
 
        Tento parametr je volitelný jenom v případě, že nemáte naslouchací procesy protokolu HTTPS nakonfigurované pro bránu v1 nebo WAF. Pokud máte aspoň jedno nastavení naslouchacího procesu HTTPS, musíte zadat tento parametr.
 
@@ -114,14 +114,14 @@ Spuštění skriptu:
         -Password $password
       ```
 
-      V předchozím příkladu můžete `$mySslCert1, $mySslCert2` předat (oddělené čárkami) jako hodnoty pro tento parametr ve skriptu.
-   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: Volitelné**. Čárkami oddělený seznam objektů PSApplicationGatewayTrustedRootCertificate, které vytvoříte pro reprezentaci [důvěryhodných kořenových certifikátů](ssl-overview.md) pro ověřování instancí back-endu z vaší brány v2.  
+      V předchozím příkladu můžete předat `$mySslCert1, $mySslCert2` (oddělený čárkami) jako hodnoty pro tento parametr ve skriptu.
+   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: volitelné**. Čárkami oddělený seznam objektů PSApplicationGatewayTrustedRootCertificate, které vytvoříte pro reprezentaci [důvěryhodných kořenových certifikátů](ssl-overview.md) pro ověřování instancí back-endu z vaší brány v2.  
 
       Chcete-li vytvořit seznam objektů PSApplicationGatewayTrustedRootCertificate, přečtěte si téma [New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
-   * **privateIpAddress: [řetězec]: Volitelné**. Konkrétní privátní IP adresa, kterou chcete přidružit k nové bráně v2.  Tato hodnota musí být ze stejné virtuální sítě, kterou přidělíte pro novou bránu v2. Pokud tato hodnota není zadaná, skript přidělí privátní IP adresu pro bránu v2.
-    * **publicIpResourceId: [řetězec]: Volitelné**. Identifikátor resourceId prostředku veřejné IP adresy (Standard SKU) ve vašem předplatném, který chcete přidělit nové bráně v2. Pokud tento parametr nezadáte, skript přidělí novou veřejnou IP adresu ve stejné skupině prostředků. Název je název brány v2 s připojením *-IP* .
-   * **validateMigration: [přepínač]: Volitelné**. Tento parametr použijte v případě, že chcete, aby skript po vytvoření brány v2 a kopii konfigurace provedl některé základní ověřování v porovnání s konfigurací. Ve výchozím nastavení se neprovádí žádné ověření.
-   * **enableAutoScale: [přepínač]: Volitelné**. Tento parametr použijte, pokud chcete, aby skript po vytvoření nové brány v2 povolil automatické škálování na nové bráně v2. Ve výchozím nastavení je automatické škálování zakázané. Vždycky je můžete kdykoli později aktivovat na nově vytvořené bráně v2.
+   * **privateIpAddress: [řetězec]: volitelné**. Konkrétní privátní IP adresa, kterou chcete přidružit k nové bráně v2.  Tato hodnota musí být ze stejné virtuální sítě, kterou přidělíte pro novou bránu v2. Pokud tato hodnota není zadaná, skript přidělí privátní IP adresu pro bránu v2.
+    * **publicIpResourceId: [řetězec]: volitelné**. Identifikátor resourceId prostředku veřejné IP adresy (Standard SKU) ve vašem předplatném, který chcete přidělit nové bráně v2. Pokud tento parametr nezadáte, skript přidělí novou veřejnou IP adresu ve stejné skupině prostředků. Název je název brány v2 s připojením *-IP* .
+   * **validateMigration: [přepínač]: volitelné**. Tento parametr použijte v případě, že chcete, aby skript po vytvoření brány v2 a kopii konfigurace provedl některé základní ověřování v porovnání s konfigurací. Ve výchozím nastavení se neprovádí žádné ověření.
+   * **enableAutoScale: [přepínač]: volitelné**. Tento parametr použijte, pokud chcete, aby skript po vytvoření nové brány v2 povolil automatické škálování na nové bráně v2. Ve výchozím nastavení je automatické škálování zakázané. Vždycky je můžete kdykoli později aktivovat na nově vytvořené bráně v2.
 
 1. Spusťte skript s použitím příslušných parametrů. Dokončení může trvat pět až 7 minut.
 
@@ -149,14 +149,14 @@ Tady je několik scénářů, kdy vaše aktuální Aplikační brána (Standard)
 
 * **Vlastní zóna DNS (například contoso.com), která odkazuje na IP adresu front-endu (pomocí záznamu A) přidruženého k bráně Standard v1 nebo WAF v1**.
 
-    Můžete aktualizovat svůj záznam DNS tak, aby odkazoval na front-end IP nebo popisek DNS přidružený ke službě Standard_v2 Application Gateway. V závislosti na hodnotě TTL nakonfigurované na záznamu DNS může chvíli trvat, než se veškerý provoz klienta migruje na novou bránu v2.
+    Můžete aktualizovat svůj záznam DNS tak, aby odkazoval na front-end IP nebo popisek DNS přidružený k vaší Standard_v2 aplikační bráně. V závislosti na hodnotě TTL nakonfigurované na záznamu DNS může chvíli trvat, než se veškerý provoz klienta migruje na novou bránu v2.
 * **Vlastní zóna DNS (například contoso.com), která odkazuje na popisek DNS (například: *myappgw.eastus.cloudapp.Azure.com* pomocí záznamu CNAME) přidruženého k vaší bráně v1**.
 
    Máte dvě možnosti:
 
   * Pokud ve své aplikační bráně používáte veřejné IP adresy, můžete provést řízenou a podrobnou migraci pomocí Traffic Manager profilu pro přírůstkové směrování provozu (metoda váženého směrování provozu) do nové brány v2.
 
-    Můžete to udělat tak, že přidáte popisky DNS aplikačních bran V1 a v2 do [profilu Traffic Manager](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)a CNAME svůj vlastní záznam DNS (například www.contoso.com) do domény Traffic Manager (například contoso.trafficmanager.NET). .
+    Můžete to udělat tak, že přidáte popisky DNS aplikačních bran V1 a v2 do [profilu Traffic Manager](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)a CNAME svůj vlastní záznam DNS (například `www.contoso.com`) do domény Traffic Manager (například na contoso.trafficmanager.NET).
   * Nebo můžete aktualizovat záznam DNS pro vlastní doménu tak, aby odkazoval na popisek DNS nové aplikační brány v2. V závislosti na hodnotě TTL nakonfigurované na záznamu DNS může chvíli trvat, než se veškerý provoz klienta migruje na novou bránu v2.
 * **Vaši klienti se připojují k IP adrese front-endu vaší aplikační brány**.
 
@@ -192,6 +192,6 @@ Ne. V současné době skript nepodporuje certifikáty v trezoru klíčů. To se
   
 Můžete odeslat e-mail appgwmigrationsup@microsoft.com, otevřít případ podpory s podporou Azure nebo obojí.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Další informace o Application Gateway v2](application-gateway-autoscaling-zone-redundant.md)

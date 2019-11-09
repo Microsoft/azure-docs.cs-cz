@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 12976e2b2dd37b640efe1823fc8d2ca7048ebcdb
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 005e93837d1d420526f6fb33e79d25a94da6fab7
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73097360"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838534"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Řešení potíží se soubory Azure v systému Linux
 
@@ -34,7 +34,7 @@ Mezi běžné příčiny tohoto problému patří:
 | RHEL | 7 + | 7.5 + |
 | CentOS | 7 + |  7.5 + |
 | Debian | 8 + |   |
-| openSUSE | 13.2 + | 42.3 + |
+| openSUSE | 13.2 + | 42.3+ |
 | SUSE Linux Enterprise Server | 12 | 12 SP3 + |
 
 - V klientovi nejsou nainstalované nástroje CIFS (CIFS-util).
@@ -60,7 +60,7 @@ Pokud chcete tento problém vyřešit, použijte [Nástroj pro řešení potíž
 
 Z bezpečnostních důvodů se připojení ke sdíleným složkám Azure blokují, když komunikační kanál není šifrovaný a když k pokusu o připojení nedošlo ze stejného datacentra, ve kterém se sdílená složka Azure nachází. Nešifrovaná připojení ze stejného datacentra se můžou blokovat také v případě, že je pro účet úložiště povolené nastavení [Vyžadovat zabezpečený přenos](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer). Šifrovaný komunikační kanál je k dispozici pouze v případě, že klientský operační systém uživatele podporuje šifrování protokolu SMB.
 
-Další informace najdete v části [Požadavky na připojení sdílené složky Azure v Linuxu s využitím balíčku cifs-utils](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-linux#prerequisites-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package). 
+Další informace najdete v části [Požadavky na připojení sdílené složky Azure v Linuxu s využitím balíčku cifs-utils](storage-how-to-use-files-linux.md#prerequisites). 
 
 ### <a name="solution-for-cause-1"></a>Řešení 1. příčiny
 
@@ -111,7 +111,7 @@ Chcete-li zavřít otevřené popisovače pro sdílenou složku, adresář nebo 
     - Open Source nástroje třetích stran, jako jsou:
         - [GNU Parallel](https://www.gnu.org/software/parallel/).
         - [Fpart](https://github.com/martymac/fpart) – seřadí soubory a zabalí je do oddílů.
-        - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) – používá Fpart a nástroj pro kopírování k vytvoření více instancí k migraci dat z src_dir na dst_url.
+        - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) – používá Fpart a nástroj pro kopírování k vytvoření více instancí k migraci dat z src_dir do dst_url.
         - [Více](https://github.com/pkolano/mutil) vláken CP a md5sum s více vlákny založené na systému GNU coreutils.
 - Nastavení velikosti souboru předem. místo toho, aby bylo možné zapisovat do zápisu, pomáhá vylepšit rychlost kopírování ve scénářích, kde je známá velikost souboru. Pokud se vyžaduje rozšíření zápisů, můžete nastavit velikost cílového souboru pomocí příkazu `truncate - size <size><file>`. Poté `dd if=<source> of=<target> bs=1M conv=notrunc`příkaz zkopíruje zdrojový soubor, aniž by bylo nutné opakovaně aktualizovat velikost cílového souboru. Můžete například nastavit velikost cílového souboru pro každý soubor, který chcete zkopírovat (předpokládá se, že je sdílená složka připojená pod/mnt/share):
     - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`

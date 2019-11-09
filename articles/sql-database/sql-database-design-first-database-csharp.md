@@ -10,12 +10,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
 ms.date: 07/29/2019
-ms.openlocfilehash: 201f90ae1ee7309f0271d046f341729c79749421
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6c4a99367c7fc6a864f6a16bc614e4c10663d0ff
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825189"
+ms.locfileid: "73837182"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>Kurz: návrh relační databáze v jedné databázi v rámci Azure SQL Database C&#x23; a ADO.NET
 
@@ -55,14 +55,14 @@ Pomocí těchto kroků můžete vytvořit prázdnou jedinou databázi.
     | ------------ | ------------------ | ------------------------------------------------- |
     | **Název databáze** | *yourDatabase* | Platné názvy databází najdete v tématu [identifikátory databáze](/sql/relational-databases/databases/database-identifiers). |
     | **Předplatné** | *yourSubscription*  | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
-    | **Skupina prostředků** | *yourResourceGroup* | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/naming-conventions). |
+    | **Skupina prostředků** | *yourResourceGroup* | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
     | **Výběr zdroje** | Prázdná databáze | Určuje, že se má vytvořit prázdná databáze. |
 
 4. Klikněte na **Server** , pokud chcete použít existující databázový server, nebo vytvořte a nakonfigurujte nový databázový server. Buď vyberte existující server, nebo klikněte na **vytvořit nový server** a vyplňte formulář **nového serveru** pomocí následujících informací:
 
     | Nastavení       | Navrhovaná hodnota | Popis |
     | ------------ | ------------------ | ------------------------------------------------- |
-    | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/naming-conventions). |
+    | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
     | **Přihlašovací jméno správce serveru** | Libovolné platné jméno | Platná přihlašovací jména najdete v tématu [identifikátory databáze](/sql/relational-databases/databases/database-identifiers). |
     | **Heslo** | Libovolné platné heslo | Heslo musí mít alespoň osm znaků a musí obsahovat znaky ze tří z následujících kategorií: velká písmena, malá písmena, číslice a jiné než alfanumerické znaky. |
     | **Umístění** | Libovolné platné umístění | Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/). |

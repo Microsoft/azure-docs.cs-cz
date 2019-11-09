@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat mezi Azure Data Lake Storage Gen1 a Azure SQL Database s využitím Sqoop | Microsoft Docs
+title: Kopírování dat mezi Data Lake Storage Gen1 a Azure SQL-Sqoop | Microsoft Docs
 description: Kopírování dat mezi Azure SQL Database pomocí Sqoop a Azure Data Lake Storage Gen1
 services: data-lake-store
 author: twooley
@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: 22789deca0934a9d4e88d587cd24aacacc9b12c6
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: cf3893706afcb4c4cc5b90dd3d2431ecedc71d0a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620007"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839063"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Kopírování dat mezi Data Lake Storage Gen1 a Azure SQL Database pomocí Sqoop
 
@@ -69,7 +69,7 @@ Než začnete, musíte mít následující:
 
 ## <a name="use-sqoop-from-an-hdinsight-cluster-with-access-to-data-lake-storage-gen1"></a>Použití Sqoop z clusteru HDInsight s přístupem k Data Lake Storage Gen1
 
-Pro An HDInsight cluster již jsou k dispozici balíčky Sqoop. Pokud jste nakonfigurovali cluster HDInsight tak, aby používal Data Lake Storage Gen1 jako další úložiště, můžete k importu a exportu dat mezi relační databází, jako je například Azure SQL Database, použít Sqoop (bez změn konfigurace) a účet Data Lake Storage Gen1 .
+Pro An HDInsight cluster již jsou k dispozici balíčky Sqoop. Pokud jste nakonfigurovali cluster HDInsight, aby používal Data Lake Storage Gen1 jako další úložiště, můžete k importu a exportu dat mezi relační databází, jako je například Azure SQL Database, použít Sqoop (bez jakýchkoli změn konfigurace) a účet Data Lake Storage Gen1.
 
 1. Pro účely tohoto článku předpokládáme, že jste vytvořili cluster pro Linux, abyste se mohli připojit ke clusteru pomocí SSH. Viz [připojení ke clusteru HDInsight se systémem Linux](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -81,7 +81,7 @@ Pro An HDInsight cluster již jsou k dispozici balíčky Sqoop. Pokud jste nakon
 
 ### <a name="import-data-from-azure-sql-database-into-data-lake-storage-gen1"></a>Import dat z Azure SQL Database do Data Lake Storage Gen1
 
-1. Přejděte do adresáře, kde jsou k dispozici balíčky Sqoop. Obvykle toto umístění je `/usr/hdp/<version>/sqoop/bin`.
+1. Přejděte do adresáře, kde jsou k dispozici balíčky Sqoop. Toto umístění je obvykle `/usr/hdp/<version>/sqoop/bin`.
 
 1. Importujte data ze služby **Tabulka1** do účtu Data Lake Storage Gen1. Použijte následující syntaxi:
 
@@ -89,7 +89,7 @@ Pro An HDInsight cluster již jsou k dispozici balíčky Sqoop. Pokud jste nakon
 
    Zástupný symbol **SQL-Database-Server-Name** představuje název serveru, na kterém běží databáze SQL Azure. zástupný symbol **SQL-Database-Name** představuje skutečný název databáze.
 
-   Například
+   Například:
 
        sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
 
@@ -113,7 +113,7 @@ Pro An HDInsight cluster již jsou k dispozici balíčky Sqoop. Pokud jste nakon
 
        sqoop-export --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table2 --export-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
 
-   Například
+   Například:
 
        sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
 

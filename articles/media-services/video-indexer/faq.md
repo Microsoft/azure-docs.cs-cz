@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy ohledně Video Indexer – Azure
-titlesuffix: Azure Media Services
+title: Nejčastější dotazy týkající se Video Indexer – Azure
+titleSuffix: Azure Media Services
 description: Získejte odpovědi na nejčastější dotazy týkající se Video Indexer.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: f20d718d0b1d3bbdf117e502a380897c79a7905f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95f2af1b192564290551f9ed31f0fe158b4536f6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799504"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838235"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -25,148 +25,148 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Video
 
 ### <a name="what-is-video-indexer"></a>Co je Video Indexer?
 
-Video Indexer je služba umělé inteligence, který je součástí Microsoft Azure Media Services. Video Indexer, poskytuje orchestraci více modelů strojového učení, které vám umožní snadno extrahovat podrobné informace z videa. Poskytnout přehled pokročilé a přesné, Video Indexer umožňuje použít více kanálů videa: zvuk, řeč nebo vizuál. Insights video Indexer lze použít v mnoha způsoby, jako jsou vylepšení obsahu objevitelnosti a dostupnosti, vytváření nových příležitostí finanční zhodnocení, nebo vytváření nového prostředí, která používat přehledy. Video Indexer poskytuje webové rozhraní pro testování, konfigurace a přizpůsobení sad modely ve vašem účtu. Vývojáři pomocí rozhraní API založené na REST integrovat funkce Video Indexer do produkčního systému. 
+Video Indexer je umělá služba inteligentních informací, která je součástí Microsoft Azure Media Services. Video Indexer poskytuje orchestraci více modelů strojového učení, které vám umožní snadno extrahovat podrobný přehled z videa. Aby bylo možné poskytovat rozšířené a přesné přehledy, Video Indexer využívá více kanálů videa: zvuk, řeč a vizuál. Přehledy Video Indexer můžou být používány mnoha způsoby, jako je vylepšení zjistitelnosti obsahu a usnadnění přístupu, vytváření nových příležitostí finanční zhodnocení nebo vytváření nových prostředí, která využívají přehledy. Video Indexer poskytuje webové rozhraní pro testování, konfiguraci a přizpůsobení modelů ve vašem účtu. Vývojáři mohou použít rozhraní API založené na REST k integraci Video Indexer do produkčního systému. 
 
-### <a name="what-can-i-do-with-video-indexer"></a>Co můžu dělat s Video Indexer?
+### <a name="what-can-i-do-with-video-indexer"></a>Co se dá dělat s Video Indexer?
 
-Operace, které můžete provádět funkce Video Indexer na mediálních souborů patří:
+Mezi operace, které Video Indexer můžou provádět na médiích soubory, patří:
 
-* Identifikace a extrahování řeči a identifikaci mluvčích.
-* Identifikace a extrahování na obrazovce text ve videu.
+* Identifikace a extrakce řeči a identifikace mluvčích.
+* Identifikace a extrakce textu na obrazovce ve videu.
 * Zjišťování objektů v souboru videa.
-* Identifikujte značky (například: Microsoft) z zvukové stopy a na obrazovce text ve videu.
-* Detekce a rozpoznávání tváře z databáze celebrit a uživatelem definované databázové tváří.
-* Extrahování témata popsána, ale ne nutně podle audio a video obsahu.
-* Vytváření z zvukové stopy titulků.
+* Identifikujte značky (např. Microsoft) ze zvukových stop a textu na obrazovce ve videu.
+* Zjišťování a rozpoznávání plošek z databáze celebrit a uživatelsky definované databáze ploch.
+* Extrahování témat, která jsou popsána, ale nejsou nutně zmíněná ve zvukovém a obrazovém obsahu
+* Vytváření titulků nebo titulků ze zvukové stopy.
 
-Další informace a další funkce Video Indexer, naleznete v tématu [přehled](video-indexer-overview.md).
+Další informace a další Video Indexer funkce najdete v tématu [Přehled](video-indexer-overview.md).
 
-### <a name="how-do-i-get-started-with-video-indexer"></a>Jak můžu začít pracovat s Video Indexer?
+### <a name="how-do-i-get-started-with-video-indexer"></a>Návody začít s Video Indexer?
 
-Video Indexer zahrnuje bezplatné zkušební verze služeb, který vám poskytne 600 minut – webové rozhraní a 2 400 několika minut prostřednictvím rozhraní API. Je možné [přihlášení k webové rozhraní Video Indexer](https://www.videoindexer.ai/) a vyzkoušejte si to sami pomocí libovolné identitě webové a bez nutnosti nastavení předplatného služby Azure. 
+Video Indexer zahrnuje bezplatnou zkušební nabídku, která vám poskytne 600 minut v rámci webového rozhraní a 2 400 minut přes rozhraní API. Můžete se [přihlásit k video Indexer webovému rozhraní](https://www.videoindexer.ai/) a vyzkoušet si ho pro vlastní webovou identitu a bez nutnosti nastavovat předplatné Azure. 
 
-Rejstřík videí a zvukových čarou ve velkém měřítku Video Indexer se můžete připojit k placeným předplatným Microsoft Azure. Můžete najít další informace o cenách na [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/) stránky.
+K indexování videí a zvukových letí ve velkém měřítku můžete Video Indexer připojit k placenému Microsoft Azuremu předplatnému. Další informace o cenách najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/) .
 
-Můžete najít další informace o zahájení práce [Začínáme](video-indexer-get-started.md).
+Další informace o tom, jak [začít, najdete](video-indexer-get-started.md)v článku Začínáme.
 
-### <a name="do-i-need-coding-skills-to-use-video-indexer"></a>Je třeba použít Video Indexer dovednosti kódování?
+### <a name="do-i-need-coding-skills-to-use-video-indexer"></a>Potřebuji pro použití Video Indexer znalosti kódování?
 
-Webové rozhraní Video Indexer můžete použít k vyhodnocení, konfigurovat a spravovat váš účet s **bez nutnosti kódování**.  Až budete připravení k vývoji složitějších aplikací, můžete použít [Video Indexer API](https://api-portal.videoindexer.ai/) Video Indexer integrovat do vlastních aplikací, webů, nebo [vlastních pracovních postupů pomocí technologie bez serveru, jako jsou Azure Logic Apps](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) nebo Azure Functions.
+Pomocí Video Indexer webového rozhraní můžete vyhodnotit, konfigurovat a spravovat váš účet **bez nutnosti kódování**.  Až budete připraveni k vývoji složitějších aplikací, můžete použít [rozhraní video indexer API](https://api-portal.videoindexer.ai/) k integraci video indexer do vlastních aplikací, webů nebo [vlastních pracovních postupů pomocí technologií bez serveru, jako je Azure Logic Apps](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) nebo Azure Functions.
 
-### <a name="do-i-need-machine-learning-skills-to-use-video-indexer"></a>Je třeba machine learning dovednosti: pište Video Indexer použít?
+### <a name="do-i-need-machine-learning-skills-to-use-video-indexer"></a>Potřebuji pro použití Video Indexer dovednosti strojového učení?
 
-Ne, Video Indexer umožňuje integraci několika modelech strojového učení do jednoho kanálu. Indexování videa nebo zvukový soubor prostřednictvím Video Indexer načte kompletní sadu insights extrahovala na jedné sdílené osy bez jakékoli strojového učení dovednosti a znalosti algoritmy potřeby v části zákazníka.
+Ne, Video Indexer poskytuje integraci více modelů strojového učení do jednoho kanálu. Indexování videa nebo zvukového souboru prostřednictvím Video Indexer načte celou sadu přehledů extrahovaných na jednu sdílenou časovou osu bez dovedností strojového učení nebo znalostí o algoritmech potřebných v části zákazníka.
 
-### <a name="what-media-formats-does-video-indexer-support"></a>Video Indexer Podpora formátů médií podporuje?
+### <a name="what-media-formats-does-video-indexer-support"></a>Jaké formáty médií Video Indexer podporují?
 
-Video Indexer podporuje nejběžnější formáty multimédií. Odkazovat [Azure Media Encoderu standard formáty](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats) seznamu další podrobnosti.
+Video Indexer podporuje většinu běžných formátů médií. Další podrobnosti najdete v seznamu [formátů Azure Media Encoder Standard](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats) .
 
-### <a name="how-to-do-i-upload-a-media-into-video-indexer"></a>Jak provést budu při nahrávání média do Video Indexer?
+### <a name="how-to-do-i-upload-a-media-into-video-indexer"></a>Jak nahrát médium do Video Indexer?
 
-V Video Indexer webový portál, můžete nahrát soubor média pomocí dialogu pro nahrání souboru nebo najetím myší na adresu URL, která přímo hostuje zdrojový soubor (viz [příklad](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)). Libovolnou adresu URL, která nebude fungovat hostitele média obsahu pomocí elementu iFrame nebo kód pro vložení (viz [příklad](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)). Video Indexer API je potřeba zadat vstupní soubor prostřednictvím adresy URL nebo s polem bajtů. Odesílání prostřednictvím adresy URL pomocí rozhraní API jsou omezené na 10 GB, ale nemají doba trvání časového limitu. Další informace, přečtěte si tento [Příručka](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos).
+Ve webovém portálu Video Indexer můžete nahrát soubor médií pomocí dialogového okna pro nahrání souboru nebo tak, že přejdete na adresu URL, která přímo hostuje zdrojový soubor (viz [příklad](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)). Žádná adresa URL, která hostuje mediální obsah pomocí elementu iFrame nebo kódu pro vložení, nebude fungovat (viz [příklad](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)). Rozhraní Video Indexer API vyžaduje, abyste zadali vstupní soubor přes adresu URL nebo pole bajtů. Nahrávání prostřednictvím adresy URL prostřednictvím rozhraní API je omezené na 10 GB, ale nemá omezení doby trvání. Další informace najdete v tomto [Průvodci](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos).
 
-### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Jak dlouho trvá Video Indexer k extrahování přehledů z média?
+### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Jak dlouho trvá Video Indexer k extrakci přehledů z médií?
 
-Množství čas potřebný k indexování videa nebo zvukový soubor, pomocí rozhraní Video Indexer API a webové rozhraní Video Indexer, závisí na několika parametrů, třeba soubor délky a kvality, počet přehledů, které se nacházejí v souboru, počet [jednotky rezervované pro](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview) k dispozici a zda [koncový bod streamování](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview) je nebo není povolená. Doporučujeme spustit několik testovacích souborů s vlastním obsahem a využijte průměr získat lepší představu.
+Doba potřebná k indexování videosouboru nebo zvukového souboru, a to pomocí rozhraní Video Indexer API i Video Indexer webového rozhraní, závisí na několika parametrech, jako je třeba délka souboru a kvalita, počet přehledů nalezených v souboru, počet dostupných [rezervovaných jednotek](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview) a zda je povolen [koncový bod streamování](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview) . Doporučujeme, abyste spustili několik testovacích souborů s vlastním obsahem a získali průměrnou představu, abyste měli lepší představu.
 
-### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Můžete vytvořit vlastní pracovní postupy pro automatizaci procesů pomocí funkce Video Indexer
+### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Můžu vytvořit vlastní pracovní postupy pro automatizaci procesů pomocí Video Indexer?
 
-Ano, můžete integrovat funkce Video Indexer do technologiích bez serverů jako Logic Apps, Flow a [Azure Functions](https://azure.microsoft.com/services/functions/). Další podrobnosti najdete v [aplikace logiky](https://azure.microsoft.com/services/logic-apps/) a [tok](https://flow.microsoft.com/en-us/) konektory pro Video Indexer [tady](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/). 
+Ano, Video Indexer můžete integrovat do technologií bez serveru, jako jsou Logic Apps, flow a [Azure Functions](https://azure.microsoft.com/services/functions/). Další podrobnosti o [aplikaci logiky](https://azure.microsoft.com/services/logic-apps/) a konektorech [Flow](https://flow.microsoft.com/en-us/) pro video indexer najdete [zde](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/). 
 
-### <a name="in-which-azure-regions-is-video-indexer-available"></a>V které oblasti Azure je Video indexer dostupný?
+### <a name="in-which-azure-regions-is-video-indexer-available"></a>Ve kterých oblastech Azure je video indexer k dispozici?
 
-Můžete zjistit, které oblasti Azure Video Indexer je k dispozici na [oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all) stránky.
+Můžete vidět, které oblasti Azure Video Indexer k dispozici na stránce [oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all) .
 
-### <a name="what-is-the-sla-for-video-indexer"></a>Co je smlouva SLA pro Video Indexer?
+### <a name="what-is-the-sla-for-video-indexer"></a>Jaká je smlouva SLA pro Video Indexer?
 
-Mediálních službách Azure SLA vztahuje Video Indexer a můžete najít na [SLA](https://azure.microsoft.com/support/legal/sla/media-services/v1_2/) stránky. Smlouvy SLA pouze platí do nástroje Video Indexer placené účtů a se nevztahují na bezplatná zkušební verze.
+Smlouva SLA pro Azure Media Service pokrývá Video Indexer a najdete je na stránce věnované [smlouvě SLA](https://azure.microsoft.com/support/legal/sla/media-services/v1_2/) . Smlouva SLA platí jenom pro Video Indexer placené účty a nevztahuje se na bezplatnou zkušební verzi.
 
-## <a name="privacy-questions"></a>Otázek ochrany osobních údajů
+## <a name="privacy-questions"></a>Otázky týkající se ochrany osobních údajů
 
-### <a name="are-video-and-audio-files-indexed-by-video-indexer-stored"></a>Indexovaných videí a zvukových souborů nástrojem Video Indexer uložené?
+### <a name="are-video-and-audio-files-indexed-by-video-indexer-stored"></a>Jsou videosoubory a zvukové soubory indexované Video Indexer uloženy?
 
-Ano, není-li odstranit soubor z Video Indexer, buď pomocí webu pro Video Indexer nebo rozhraní API, videí a zvukových souborů jsou uložené. Pro bezplatnou zkušební verzi, videa a zvuku soubory, které jsou uloženy indexu v oblasti Azure USA – východ. V opačném případě videí a zvukových souborů jsou uložené v účtu úložiště vašeho předplatného Azure.
+Ano, pokud soubor neodstraníte z Video Indexer, a to buď pomocí Video Indexer webu nebo rozhraní API, jsou vaše videosoubory a zvukové soubory uložené. Pro bezplatnou zkušební verzi se videosoubory a zvukové soubory, které index najdete, ukládají v oblasti Azure Východní USA. V opačném případě se vaše video a zvukové soubory ukládají do účtu úložiště vašeho předplatného Azure.
 
-### <a name="can-i-delete-my-files-that-are-stored-in-video-indexer-portal"></a>Můžete odstranit soubory, které jsou uložené na Video Indexer portálu?
+### <a name="can-i-delete-my-files-that-are-stored-in-video-indexer-portal"></a>Můžu odstranit moje soubory uložené na portálu Video Indexer?
 
-Ano, můžete vždy odstranit vaše video a zvukové soubory a metadata a přehledy z nich extrahovaná modulem Video Indexer. Po odstranění souboru z Video Indexer, souboru a jeho metadat a informací díky jsou trvale odstraněn z Video Indexer. Nicméně pokud jste implementovali vlastní řešení zálohování ve službě Azure storage, soubor zůstane ve službě Azure storage.
+Ano, video a zvukové soubory můžete vždycky odstranit, stejně jako všechna metadata a přehledy z nich extrahovat Video Indexer. Po odstranění souboru z Video Indexer se soubor a jeho metadata a přehledy trvale odeberou z Video Indexer. Pokud jste ale ve službě Azure Storage implementovali vlastní řešení zálohování, zůstane soubor ve službě Azure Storage.
 
-### <a name="can-i-control-user-access-to-my-video-indexer-account"></a>Můžete řídit přístup uživatelů k Můj účet služby Video Indexer
+### <a name="can-i-control-user-access-to-my-video-indexer-account"></a>Můžu řídit přístup uživatelů k mému Video Indexer účtu?
 
-Ano, jenom správce účtu může pozvat a zrušit pozvání uživatelů ke svým účtům, jakož i přiřadit, kdo má oprávnění pro úpravy a kdo má přístup jen pro čtení.
+Ano, jenom správci účtu můžou pozvat a Zrušit pozvání uživatelů ke svým účtům a také přiřadit oprávnění k úpravám a kdo má přístup jen pro čtení.
 
-### <a name="who-has-access-to-my-video-and-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Kdo má přístup k souborům videa a zvuku, které byly indexované nebo uložit Video Indexer a metadat a přehledy, které byly extrahovány?
+### <a name="who-has-access-to-my-video-and-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Kdo má přístup k mým videosouborům a zvukům, které byly indexovány nebo uloženy pomocí Video Indexer a metadata a přehledy, které byly extrahovány?
 
-Vaše videa nebo zvukový obsah, které mají veřejné jako jeho nastavení ochrany osobních údajů je přístupný každému, kdo má odkaz na vaše videa nebo zvukový obsah a jeho insights. Vaše videa nebo zvukový obsah, který se mají soukromé jako jeho nastavení ochrany osobních údajů je přístupný pouze uživatelé, kteří byli pozváni do účtu videa nebo zvukový obsah. Nastavení ochrany osobních údajů obsah platí také pro metadata a přehledy, které se extrahuje Video Indexer. Přiřadíte nastavení ochrany osobních údajů při nahrávání videa nebo zvukový soubor. Můžete také změnit nastavení ochrany osobních údajů po indexování.
+Obsah vašeho videa nebo zvuku, který je veřejný jako jeho nastavení ochrany osobních údajů, může přistupovat kdokoli, kdo má odkaz na vaše video nebo zvukový obsah a jeho přehledy. Váš obsah videa nebo zvuku, který má soukromé jako své nastavení ochrany osobních údajů, může být k dispozici pouze uživatelům, kteří byli pozváni na účet videa nebo zvukového obsahu. Nastavení ochrany osobních údajů obsahu se vztahuje také na metadata a přehledy, které Video Indexer extrahují. Nastavení ochrany osobních údajů přiřadíte při nahrávání videa nebo zvukového souboru. Můžete také změnit nastavení ochrany osobních údajů po indexování.
 
-### <a name="what-access-does-microsoft-have-to-my-video-or-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Moje videa nebo zvukový souborů, které byly indexované nebo uložit Video Indexer a metadat a přehledy, které byly extrahovány jaký přístup má Microsoft?
+### <a name="what-access-does-microsoft-have-to-my-video-or-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Jaký přístup má společnost Microsoft na své video nebo zvukové soubory, které byly indexovány nebo uloženy pomocí Video Indexer a metadata a přehledy, které byly extrahovány?
 
-Za [podmínky Online služeb Azure](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) zcela vlastní obsah (OST) a Microsoft se jenom přístup k obsahu a metadat a přehledy, které funkce Video Indexer extrahuje ze svého obsahu podle úložiště offline a Microsoft Prohlášení o ochraně osobních údajů.
+Na základě [podmínek Azure Online Services](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (OST) jste celý obsah sami a Microsoft bude mít přístup jenom k vašemu obsahu a metadatům a přehledům, které video indexer extrahuje z vašeho obsahu v závislosti na OST a prohlášení Microsoftu o zásadách ochrany osobních údajů.
 
-### <a name="are-the-custom-models-that-i-build-in-my-video-indexer-account-available-to-other-accounts"></a>Jsou vlastní modely, které vytvářím Můj účet služby Video Indexer jako dostupné pro jiné účty?
+### <a name="are-the-custom-models-that-i-build-in-my-video-indexer-account-available-to-other-accounts"></a>Jsou vlastní modely, které jsou vytvořeny v mém účtu Video Indexer k dispozici pro jiné účty?
 
- Ne, vlastní modely, které vytvoříte ve svém účtu nejsou k dispozici na jiný účet. Video Indexer aktuálně umožňuje vytvářet vlastní [značky](customize-brands-model-overview.md), [jazyk](customize-language-model-overview.md), a [osoba](customize-person-model-overview.md) modely ve vašem účtu. Tyto modely jsou dostupné jenom v účtu, ve kterém jste vytvořili modely.
+ Ne, vlastní modely, které vytvoříte ve vašem účtu, nejsou k dispozici pro žádný jiný účet. Video Indexer v současné době umožňuje vytváření vlastních [značek](customize-brands-model-overview.md), [jazyků](customize-language-model-overview.md)a modelů [uživatelů](customize-person-model-overview.md) v účtu. Tyto modely jsou k dispozici pouze v účtu, ve kterém jste modely vytvořili.
   
-### <a name="is-the-content-indexed-by-video-indexer-kept-within-the-azure-region-where-i-am-using-video-indexer"></a>Indexované Video Indexer uchovávat v rámci oblasti Azure, kde používám Video Indexer obsah?
+### <a name="is-the-content-indexed-by-video-indexer-kept-within-the-azure-region-where-i-am-using-video-indexer"></a>Je obsah indexovaný Video Indexer uložený v oblasti Azure, kde používám Video Indexer?
 
-Ano, obsah a jeho insights uchovávají v rámci oblasti Azure bez ruční konfigurace ve vašem předplatném Azure, která používá víc oblastí Azure. 
+Ano, obsah a jeho přehledy se uchovávají v rámci oblasti Azure, pokud nemáte v předplatném Azure ruční konfiguraci, která používá více oblastí Azure. 
 
-### <a name="what-is-the-privacy-policy-for-video-indexer"></a>Co jsou zásady ochrany osobních údajů pro Video Indexer?
+### <a name="what-is-the-privacy-policy-for-video-indexer"></a>Jaké jsou zásady ochrany osobních údajů pro Video Indexer?
 
-Video Indexer se bude vztahovat [prohlášení o ochraně osobních údajů Microsoft](https://privacy.microsoft.com/privacystatement). Prohlášení o ochraně osobních údajů vysvětluje osobní údaje, které Microsoft zpracovává, jak Microsoft procesy a pro jaké účely Microsoft zpracovává je. Další informace o ochraně osobních údajů, najdete [Microsoft Trust Center](https://www.microsoft.com/trustcenter).
+Na Video Indexer se vztahuje [prohlášení o zásadách ochrany osobních údajů společnosti Microsoft](https://privacy.microsoft.com/privacystatement). Prohlášení o zásadách ochrany osobních údajů vysvětluje osobní údaje procesů Microsoftu, jak je Microsoft zpracovává a pro jaké účely ji Microsoft zpracuje. Další informace o ochraně osobních údajů najdete na webu [Microsoft Trust Center](https://www.microsoft.com/trustcenter).
 
-### <a name="what-certifications-does-video-indexer-have"></a>Jaké certifikace Video Indexer máte?
+### <a name="what-certifications-does-video-indexer-have"></a>Jaké certifikace Video Indexer mají?
 
-Video Indexer nyní má hlavní certifikace SOC. Zkontrolujte certifikační Video Indexer, najdete [Microsoft Trust Center](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure).
+Video Indexer aktuálně má certifikaci SOC. Pokud si chcete projít certifikaci Video Indexer, přečtěte si prosím [Centrum zabezpečení Microsoftu](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure).
 
-## <a name="api-questions"></a>Dotazy rozhraní API
+## <a name="api-questions"></a>Dotazy k rozhraní API
 
-### <a name="what-apis-does-video-indexer-offer"></a>Rozhraní API, jejichž Video Indexer nabízí?
+### <a name="what-apis-does-video-indexer-offer"></a>Jaká rozhraní API Video Indexer nabídku nabízí?
 
-Rozhraní API pro video Indexer umožňuje indexování, extrahování metadat, správu majetku, překlad, vkládání, přizpůsobení těchto modelů a informace. Pokud chcete najdete podrobnější informace o používání rozhraní Video Indexer API, přečtěte si [portál pro vývojáře Video Indexer](https://api-portal.videoindexer.ai/).
+Rozhraní API Video Indexer umožňují indexování, extrakci metadat, správu prostředků, překlad, vkládání, přizpůsobení modelů a další. Podrobnější informace o používání rozhraní Video Indexer API najdete v [video indexer portálu pro vývojáře](https://api-portal.videoindexer.ai/).
 
-### <a name="what-client-sdks-does-video-indexer-offer"></a>Jaké klientské sady SDK nabízí funkce Video Indexer?
+### <a name="what-client-sdks-does-video-indexer-offer"></a>Jaké klientské sady SDK nabízí Video Indexer nabídky?
 
-Aktuálně neexistují žádné klienta, kterou nabízí sady SDK. Video Indexer tým pracuje na sady SDK a plány, které ho doručujte brzy.
+Aktuálně nejsou k dispozici žádné klientské sady SDK. Tým Video Indexer pracuje na sadách SDK a plánuje je brzy doručovat.
 
-### <a name="how-do-i-get-started-with-video-indexers-api"></a>Jak můžu začít pracovat s rozhraním API pro Video Indexer?
+### <a name="how-do-i-get-started-with-video-indexers-api"></a>Návody Začínáme s rozhraním API Video Indexer?
 
-Postupujte podle [kurz: Začínáme s rozhraním API pro Video Indexer](video-indexer-use-apis.md).
+Sledujte [kurz: Začínáme s rozhraním video indexer API](video-indexer-use-apis.md).
 
-### <a name="what-is-the-difference-between-the-video-indexer-api-and-the-azure-media-service-v3-api"></a>Jaký je rozdíl mezi Video Indexer API a rozhraní API v3 mediálních služeb Azure?
+### <a name="what-is-the-difference-between-the-video-indexer-api-and-the-azure-media-service-v3-api"></a>Jaký je rozdíl mezi rozhraním API Video Indexer a rozhraním API služby Azure Media Service V3?
 
-Aktuálně nejsou některé překrytí v funkcí, které nabízí rozhraní Video Indexer API a rozhraní API v3 mediálních služeb Azure. Další informace o tom, jak porovnat obě služby [tady](compare-video-indexer-with-media-services-presets.md).
+V současné době dochází k překrytí funkcí, které nabízí rozhraní Video Indexer API a rozhraní API pro Azure Media Service v3. Další informace o tom, jak porovnat obě služby, najdete [tady](compare-video-indexer-with-media-services-presets.md).
 
-### <a name="what-is-an-api-access-token-and-why-do-i-need-it"></a>Co je přístupový token rozhraní API a proč to potřebujete?
+### <a name="what-is-an-api-access-token-and-why-do-i-need-it"></a>Co je přístupový token rozhraní API a proč ho potřebuji?
 
-Video Indexer API obsahuje rozhraní API autorizace a operace rozhraní API. Povolení rozhraní API obsahuje volání, které vám poskytnou přístupový token. Každé volání do API Operations by mělo být přidružené k přístupovému tokenu s odpovídajícím oborem autorizace volání.
+Rozhraní Video Indexer API obsahuje rozhraní API pro autorizaci a rozhraní Operations API. Autorizační rozhraní API obsahuje volání, která vám umožní přístup k tokenu. Každé volání do API Operations by mělo být přidružené k přístupovému tokenu s odpovídajícím oborem autorizace volání.
 
-K použití rozhraní Video Indexer API z bezpečnostních důvodů jsou požadována přístupové tokeny. Tím se zajistí, že všechna volání pocházejí od vás nebo uživatelům, kteří mají oprávnění k přístupu k účtu. 
+Přístupové tokeny jsou potřebné k používání rozhraní Video Indexer API pro účely zabezpečení. Tím se zajistí, že přijdete o všechna volání, nebo na uživatele, kteří mají oprávnění k přístupu k vašemu účtu. 
 
-### <a name="what-is-the-difference-between-account-access-token-user-access-token-and-video-access-token"></a>Jaký je rozdíl mezi Video přístupový token, přístupový token účtu a přístupový token uživatele?
+### <a name="what-is-the-difference-between-account-access-token-user-access-token-and-video-access-token"></a>Jaký je rozdíl mezi přístupovými tokeny účtu, tokenem uživatele a přístupovým tokenem?
 
-* Úroveň účtu – tokenů úroveň přístupu účtu vám umožní provádět operace na úrovni účtu nebo videa. Například nahrát video, seznam všech videí, získat nové poznatky z videí.
-* Uživatelů level – tokeny uživatele úroveň přístupu vám umožní provádět operace na úrovni uživatele. Třeba získat přidružené účty.
-* Úrovni videa – tokeny přístupu na úrovni videa umožňují provádět operace s konkrétní videa. Třeba získat nové přehledy z videa, stáhnout titulky, získat widgety apod.
+* Úroveň účtu – přístupové tokeny na úrovni účtu vám umožní provádět operace na úrovni účtu nebo na úrovni videa. Můžete například nahrát video, vypsat všechna videa a získat přehled o videích.
+* Přístupové tokeny na úrovni uživatele umožňují provádět operace na úrovni uživatele. Třeba získat přidružené účty.
+* Úroveň videa – přístupové tokeny na úrovni videa umožňují provádět operace na konkrétním videu. Třeba získat nové přehledy z videa, stáhnout titulky, získat widgety apod.
 
-### <a name="how-often-do-i-need-to-get-a-new-access-token-when-do-access-tokens-expire"></a>Jak často je potřeba získat nový přístupový token? Po vypršení platnosti tokenů přístupu?
+### <a name="how-often-do-i-need-to-get-a-new-access-token-when-do-access-tokens-expire"></a>Jak často je potřeba získat nový přístupový token? Kdy vyprší platnost přístupových tokenů?
 
-Přístupové tokeny vyprší každou hodinu, takže je potřeba vygenerovat nový přístupový token každou hodinu. 
+Přístupové tokeny vyprší každou hodinu, takže musíte každou hodinu vygenerovat nový přístupový token. 
 
 ## <a name="billing-questions"></a>Dotazy k fakturaci
 
-### <a name="how-much-does-video-indexer-cost"></a>Kolik stojí Video Indexer
+### <a name="how-much-does-video-indexer-cost"></a>Kolik se Video Indexer náklady?
 
-Video Indexer využívá jednoduchou s průběžnými platbami cenový model založený na době trvání obsahu vstupu, který je index. Další se můžou vztahovat poplatky pro kódování, streamování, úložiště, využití sítě a média rezervovaných jednotek. Další informace najdete v tématu [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/) stránky.
+Video Indexer používá jednoduchý cenový model s průběžnými platbami podle aktuálního využití, který je založený na době trvání indexu. Další poplatky můžou platit pro kódování, streamování, ukládání, využití sítě a rezervované jednotky médií. Další informace najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/) .
 
-### <a name="when-am-i-billed-for-using-video-indexer"></a>Když se mi bude účtovat pro použití nástroje Video Indexer?
+### <a name="when-am-i-billed-for-using-video-indexer"></a>Kdy se mi účtuje použití Video Indexer?
 
 Při odesílání videa k indexování bude uživatel definovat, jestli se použije analýza videa, analýza zvuku, nebo oboje. Tím se určí, které jednotky SKU se budou účtovat. Pokud během zpracování dojde k chybě kritické úrovně, jako odpověď se vrátí chybový kód. V takovém případě se nic neúčtuje.  Kritická chyba může být způsobená chybou v našem kódu nebo kritickým selháním v interní závislosti této služby. Chyby typu chybné identifikace nebo extrakce přehledů se nepovažují za kritické a bude vrácena odpověď. Účtovat se bude ve všech případech, kdy je vrácena platná odpověď (jiný než chybový kód).
  
-### <a name="does-video-indexer-offer-a-free-trial"></a>Nabízí funkce Video Indexer bezplatnou zkušební verzi?
+### <a name="does-video-indexer-offer-a-free-trial"></a>Nabízí Video Indexer bezplatnou zkušební verzi?
 
-Ano, Video Indexer nabízí bezplatnou zkušební verzi, která poskytuje kompletní a funkce rozhraní API. Používá se kvóta 600 minut za videa pro uživatele webové rozhraní a 2 400 minut, než se uživatelé rozhraní API. 
+Ano, Video Indexer nabízí bezplatnou zkušební verzi, která poskytuje úplnou funkčnost služby a rozhraní API. Pro uživatele rozhraní API je k dispozici kvóta s 600 minutami pro webové uživatele a 2 400 minut. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Přehled](video-indexer-overview.md)

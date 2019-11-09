@@ -1,7 +1,7 @@
 ---
 title: Translator Text API metoda Detect
 titleSuffix: Azure Cognitive Services
-description: Použijte metodu Translator Text API Detect.
+description: Identifikujte jazyk části textu pomocí metody zjišťování Translator Text API Azure Cognitive Services.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: ba73b75e30639dd3f5cf5523124c926ea3442fa1
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 370f3b14c12fc05f181d6497b7069bbf1cf3c9cc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932026"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837296"
 ---
-# <a name="translator-text-api-30-detect"></a>Translator Text API 3,0: Detect
+# <a name="translator-text-api-30-detect"></a>Translator Text API 3,0: zjištění
 
 Určuje jazyk části textu.
 
 ## <a name="request-url"></a>Adresa URL požadavku
 
-`POST` Odeslat požadavek na:
+Odeslat žádost o `POST`:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
@@ -37,7 +37,7 @@ Parametry žádosti předané řetězci dotazu jsou:
   <th width="20%">Parametr dotazu</th>
   <th>Popis</th>
   <tr>
-    <td>api-version</td>
+    <td>verze API-Version</td>
     <td>*Povinný parametr*.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být `3.0`.</td>
   </tr>
 </table> 
@@ -45,7 +45,7 @@ Parametry žádosti předané řetězci dotazu jsou:
 Hlavičky požadavku zahrnují:
 
 <table width="100%">
-  <th width="20%">Záhlaví</th>
+  <th width="20%">Hlavičky</th>
   <th>Popis</th>
   <tr>
     <td>Ověřovací hlavičky (y)</td>
@@ -60,14 +60,14 @@ Hlavičky požadavku zahrnují:
     <td>*Požadovaná hlavička žádosti*<br/>Délka textu žádosti</td>
   </tr>
   <tr>
-    <td>X-ClientTraceId</td>
+    <td>X – ClientTraceId</td>
     <td>*Volitelné*.<br/>Identifikátor GUID generovaný klientem pro jednoznačnou identifikaci požadavku. Všimněte si, že tuto hlavičku můžete vynechat, pokud zahrnete ID trasování do řetězce dotazu pomocí parametru dotazu s názvem `ClientTraceId`.</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>Text požadavku
 
-Tělo požadavku je pole JSON. Každý prvek pole je objekt JSON s vlastností řetězce s názvem `Text`. Rozpoznávání jazyka je použito pro hodnotu `Text` vlastnosti. Vzorový text žádosti vypadá nějak takto:
+Tělo požadavku je pole JSON. Každý prvek pole je objekt JSON s vlastností řetězce s názvem `Text`. Rozpoznávání jazyka se použije na hodnotu vlastnosti `Text`. Vzorový text žádosti vypadá nějak takto:
 
 ```json
 [
@@ -81,19 +81,19 @@ Platí následující omezení:
 * Textová hodnota prvku pole nesmí být delší než 10 000 znaků včetně mezer.
 * Celý text zahrnutý v požadavku nesmí být delší než 50 000 znaků včetně mezer.
 
-## <a name="response-body"></a>Text odpovědi
+## <a name="response-body"></a>Tělo odpovědi
 
 Úspěšná odpověď je pole JSON s jedním výsledkem pro každý řetězec ve vstupním poli. Objekt výsledku obsahuje následující vlastnosti:
 
-  * `language`: Kód zjištěného jazyka.
+  * `language`: kód zjištěného jazyka.
 
-  * `score`: Hodnota typu float označující důvěru ve výsledku. Skóre je v rozsahu 0 až 1 a nízké skóre indikuje nízkou důvěru.
+  * `score`: hodnota typu float označující důvěru ve výsledku. Skóre je v rozsahu 0 až 1 a nízké skóre indikuje nízkou důvěru.
 
-  * `isTranslationSupported`: Logická hodnota, která má hodnotu true, pokud zjištěný jazyk je jedním z jazyků podporovaných pro překlad textu.
+  * `isTranslationSupported`: logická hodnota, která má hodnotu true, pokud zjištěný jazyk je jedním z jazyků podporovaných pro překlad textu.
 
-  * `isTransliterationSupported`: Logická hodnota, která má hodnotu true, pokud zjištěný jazyk je jedním z jazyků podporovaných pro účely přepočtu.
+  * `isTransliterationSupported`: logická hodnota, která má hodnotu true, pokud zjištěný jazyk je jedním z jazyků podporovaných pro účely přepočtu.
   
-  * `alternatives`: Pole dalších možných jazyků. Každý prvek pole je `language`další objekt se stejnými vlastnostmi `isTranslationSupported` , které jsou uvedeny výše: `score`, a `isTransliterationSupported`.
+  * `alternatives`: pole dalších možných jazyků. Každý prvek pole je další objekt se stejnými vlastnostmi, které jsou uvedeny výše: `language`, `score`, `isTranslationSupported` a `isTransliterationSupported`.
 
 Příklad odpovědi JSON:
 
@@ -125,7 +125,7 @@ Příklad odpovědi JSON:
 ## <a name="response-headers"></a>Hlavičky odpovědi
 
 <table width="100%">
-  <th width="20%">Záhlaví</th>
+  <th width="20%">Hlavičky</th>
   <th>Popis</th>
   <tr>
     <td>X-RequestId</td>
@@ -142,7 +142,7 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
   <th>Popis</th>
   <tr>
     <td>200</td>
-    <td>Úspěšné</td>
+    <td>Úspěch</td>
   </tr>
   <tr>
     <td>400</td>
@@ -150,7 +150,7 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
   </tr>
   <tr>
     <td>401</td>
-    <td>Žádost nešlo ověřit. Ověřte, jestli jsou přihlašovací údaje zadané a platné.</td>
+    <td>Požadavek nebylo možné ověřit. Ověřte, jestli jsou přihlašovací údaje zadané a platné.</td>
   </tr>
   <tr>
     <td>403</td>
@@ -162,11 +162,11 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
   </tr>
   <tr>
     <td>500</td>
-    <td>Došlo k neočekávané chybě. Pokud chyba přetrvává, ohlaste ji pomocí: datum a čas selhání, identifikátor požadavku z hlavičky `X-RequestId`odpovědi a identifikátor klienta z hlavičky `X-ClientTraceId`požadavku.</td>
+    <td>Došlo k neočekávané chybě. Pokud chyba přetrvává, ohlaste ji pomocí: datum a čas selhání, identifikátor požadavku z hlavičky odpovědi `X-RequestId`a identifikátor klienta z hlavičky žádosti `X-ClientTraceId`.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Server je dočasně nedostupný. Opakujte požadavek. Pokud chyba přetrvává, ohlaste ji pomocí: datum a čas selhání, identifikátor požadavku z hlavičky `X-RequestId`odpovědi a identifikátor klienta z hlavičky `X-ClientTraceId`požadavku.</td>
+    <td>Server je dočasně nedostupný. Opakujte požadavek. Pokud chyba přetrvává, ohlaste ji pomocí: datum a čas selhání, identifikátor požadavku z hlavičky odpovědi `X-RequestId`a identifikátor klienta z hlavičky žádosti `X-ClientTraceId`.</td>
   </tr>
 </table> 
 

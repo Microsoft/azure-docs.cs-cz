@@ -1,7 +1,7 @@
 ---
 title: Migrovat pracovní prostor a projekty služby Microsoft Translator hub? – Vlastní Překladatel
 titleSuffix: Azure Cognitive Services
-description: Migrujte pracovní prostor a projekty centra do vlastního překladatele.
+description: Tento článek vysvětluje, jak migrovat pracovní prostor a projekty centra do Azure Cognitive Services vlastního překladatele.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,19 +9,19 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 9c97eaef30a08123605ed4c01810745e312d6aa0
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 7ea7b48e1fc36399a0ca173f9068faf8b88849d5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675500"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836579"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrace pracovního prostoru centra a projektů do vlastního překladatele
 
 Pracovní prostor a projekty [centra Microsoft Translator](https://hub.microsofttranslator.com/) můžete snadno migrovat do vlastního překladatele. Migrace se spouští z centra Microsoftu tak, že se vybere pracovní prostor nebo projekt, pak se vybere pracovní prostor ve vlastním překladateli a pak se vybere školení, která chcete přenést. Po zahájení migrace se vybraná nastavení školení přenesou se všemi relevantními dokumenty. Nasazené modely jsou učené a po dokončení se dají nasadit.
 
 Tyto akce se provádějí během migrace:
-* Všechny definice dokumentů a projektů budou mít přenesené názvy s přidáním předpony "hub_" s názvem. Automaticky generovaný test a data optimalizace budou mít název hub_systemtune_ \<modelid > nebo hub_systemtest_ \<modelid >.
+* Všechny definice dokumentů a projektů budou mít přenesené názvy s předponou "hub_" s názvem. Automaticky generované testy a data ladění budou pojmenovány hub_systemtune_\<ModelID > nebo hub_systemtest_\<> ModelID.
 * Všechna školení, která byla v nasazeném stavu, když migrace proběhne, budou automaticky vyškolena pomocí dokumentů školení centra. Toto školení se nebude účtovat vašemu předplatnému. Pokud jste pro migraci vybrali možnost automatické nasazení, bude se po dokončení nasadit model trained. Použijí se pravidelné poplatky za hostování.
 * Všechny migrované kurzy, které nebyly v nasazeném stavu, budou vloženy do migrovaného konceptu. V tomto stavu budete mít možnost školení modelu s migrovaných definicí, ale budou platit pravidelné poplatky za školení.
 * Skóre BLEU migrováno z školení centra můžete kdykoli najít na stránce TrainingDetails modelu v záhlaví "Bleu skóre v MT hub".

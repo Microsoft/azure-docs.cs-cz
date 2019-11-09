@@ -7,18 +7,18 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 76f995901814c90ff9fd78585c98d56b3478e8b4
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: ca3486610d6cf71ba315e407b58a2a2551ad6ee1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612757"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837485"
 ---
 # <a name="get-labels-for-data"></a>Získat popisky pro data
 
 Popisování velkých objemů dat je často starostí v projektech strojového učení. Projekty ML s komponentou pro počítačové zpracování obrazu, jako je například klasifikace obrázku nebo detekce objektu, obecně vyžadují tisíce imagí a odpovídající popisky. 
  
-Azure Machine Learning Studio poskytuje centrální umístění pro vytváření, správu a sledování projektů označování. Označování projektů usnadňuje koordinaci dat, popisků a členů týmu, což vám umožní efektivněji spravovat úlohy označování. Aktuálně podporované úlohy jsou klasifikace obrázku, a to buď pomocí ohraničených polí, nebo s více třídami, nebo s identifikací objektů.
+Azure Machine Learning poskytuje centrální umístění pro vytváření, správu a sledování projektů označování. Označování projektů usnadňuje koordinaci dat, popisků a členů týmu, což vám umožní efektivněji spravovat úlohy označování. Aktuálně podporované úlohy jsou klasifikace obrázku, a to buď pomocí ohraničených polí, nebo s více třídami, nebo s identifikací objektů.
 
 Azure sleduje průběh a udržuje frontu neúplných úloh označování. Nálepky nevyžadují, aby se účet Azure účastnil. Po ověření pomocí svého účtu Microsoft (MSA) nebo [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)můžou dělat tolik a méně popisků, kolik to čas povoluje. Pomocí klávesových zkratek můžou popisky přiřazovat a měnit. 
 
@@ -43,7 +43,7 @@ V tomto článku se dozvíte, jak:
 
 ## <a name="create-a-labeling-project"></a>Vytvoření projektu s popisem
 
-Označování projektů je spravováno z [Azure Machine Learning studia](https://ml.azure.com/). Stránka s **popisem projektů** vám umožní spravovat projekty, týmy a lidi. K projektu je přiřazen jeden nebo více týmů a tým má přiřazeného jednoho nebo více lidí. 
+Označování projektů je spravováno z [Azure Machine Learning](https://ml.azure.com/). Stránka s **popisem projektů** vám umožní spravovat projekty, týmy a lidi. K projektu je přiřazen jeden nebo více týmů a tým má přiřazeného jednoho nebo více lidí. 
 
 Pokud jsou vaše data už uložená v úložišti objektů BLOB v Azure, měli byste je před vytvořením projektu s popisem zpřístupnit jako úložiště dat. Informace najdete v tématu [Vytvoření a registrace úložišť dat](https://docs.microsoft.com/azure/machine-learning/service/how-to-access-data#create-and-register-datastores). 
 
@@ -149,7 +149,7 @@ Data můžete označit přímo ze stránky **Project Details (podrobnosti projek
 
 V každém okamžiku můžete exportovat data popisku pro experimentování ve službě Machine Learning. Popisky obrázků je možné exportovat ve [formátu díky Coco](http://cocodataset.org/#format-data) nebo jako datovou sadu Azure ml. Tlačítko **exportovat** najdete na stránce Project **Details (podrobnosti projektu** ) vašeho projektu s popisem.
 
-Soubor díky Coco se vytvoří ve výchozím úložišti objektů BLOB pracovního prostoru Azure ML ve složce v rámci **exportu/díky Coco**. Exportovanou datovou sadu Azure ML můžete zpřístupnit v části datové **sady** sady Studio. Stránka s podrobnostmi datové sady také poskytuje vzorový kód pro přístup k popiskům z Pythonu.
+Soubor díky Coco se vytvoří ve výchozím úložišti objektů BLOB pracovního prostoru Azure ML ve složce v rámci **exportu/díky Coco**. Exportovanou datovou sadu Azure ML můžete zpřístupnit v části datové **sady** v Azure Machine Learning. Stránka s podrobnostmi datové sady také poskytuje vzorový kód pro přístup k popiskům z Pythonu.
 
 ![Exportovaná datová sada](media/how-to-create-labeling-projects/exported-dataset.png)
 

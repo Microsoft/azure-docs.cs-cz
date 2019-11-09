@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
-ms.openlocfilehash: 8ca24e8556ee53e9d12eaea8fd9eddb07ebed490
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3260bbbd858fecc8cc305a9fcab0b551fdf182dc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826399"
+ms.locfileid: "73834114"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Kurz: Vytvoření tabulky výsledků s principem s doplňováním mezipaměti aplikací v ASP.NET
 
@@ -671,7 +671,7 @@ V této části zřídíte novou databázi SQL Azure pro aplikaci, která se bud
 
    | Nastavení       | Navrhovaná hodnota | Popis |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging). |
+   | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
    | **Přihlašovací jméno správce serveru** | Libovolné platné jméno | Platná přihlašovací jména najdete v tématu [Identifikátory databází](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers). |
    | **Heslo** | Libovolné platné heslo | Heslo musí mít alespoň 8 znaků a musí obsahovat znaky ze tří z následujících kategorií: velká písmena, malá písmena, číslice a jiné než alfanumerické znaky. |
    | **Umístění** | *USA – východ* | Vyberte stejnou oblast, ve které jste vytvořili mezipaměť a App Service. |

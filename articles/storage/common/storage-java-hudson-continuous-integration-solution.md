@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: tarcher
 ms.subservice: common
-ms.openlocfilehash: 10bfc3ce4666ee1653110099a3c8d22a58d80f35
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 75b0ea106be04cd77b18bfed8487edb6a7b7f65b
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985303"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839186"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Použití Azure Storage s řešením Hudson Continuous Integration
 ## <a name="overview"></a>Přehled
@@ -48,11 +48,11 @@ K použití Blob service s řešením CI v Hudson budete potřebovat následují
       `java -jar hudson-3.1.2.war`
 
   3. V prohlížeči otevřete `http://localhost:8080/`. Otevře se řídicí panel Hudson.
-  4. Při prvním použití Hudson proveďte počáteční nastavení v `http://localhost:8080/`.
-  5. Po dokončení počátečního nastavení zrušte spuštěnou instanci Hudson War, znovu spusťte Hudson War a znovu otevřete řídicí panel `http://localhost:8080/`Hudson, který použijete k instalaci a konfiguraci modulu plug-in Azure Storage.
+  4. Při prvním použití Hudson dokončete počáteční nastavení v `http://localhost:8080/`.
+  5. Po dokončení počátečního nastavení zrušte spuštěnou instanci Hudson WAR, znovu spusťte Hudson WAR a znovu otevřete řídicí `http://localhost:8080/`panel Hudson, který budete používat k instalaci a konfiguraci modulu plug-in Azure Storage.
      
       I když by bylo typické řešení CI Hudson nastaveno tak, aby běželo jako služba, bude pro tento kurz stačit spuštění Hudson War na příkazovém řádku.
-* Účet Azure. Účet Azure si můžete zaregistrovat na adrese <https://www.azure.com>.
+* Účet Azure. Účet Azure si můžete zaregistrovat na <https://www.azure.com>.
 * Účet úložiště Azure. Pokud ještě nemáte účet úložiště, můžete ho vytvořit pomocí postupu v části [Vytvoření účtu úložiště](../common/storage-quickstart-create-account.md).
 * Řešení Hudson CI se doporučuje, ale není nutné, protože následující obsah bude používat základní příklad, který vám ukáže, jaké kroky potřebujete při použití Blob service jako úložiště pro artefakty sestavení Hudson CI.
 
@@ -65,7 +65,7 @@ Pokud chcete použít Blob service s Hudson, budete muset nainstalovat modul plu
 3. Klikněte na kartu **dostupné** .
 4. Klikněte na **Další**.
 5. V části pro **nahrávání artefaktů** vyberte **Microsoft Azure Storage modul plug-in**.
-6. Klikněte na tlačítko **nainstalovat**.
+6. Klikněte na **Instalovat**.
 7. Po dokončení instalace restartujte Hudson.
 
 ## <a name="how-to-configure-the-azure-storage-plugin-to-use-your-storage-account"></a>Jak nakonfigurovat modul plug-in Azure Storage pro použití vašeho účtu úložiště
@@ -83,7 +83,7 @@ Pokud chcete použít Blob service s Hudson, budete muset nainstalovat modul plu
    
     e. Volitelné Pokud máte další účty úložiště, které chcete zpřístupnit pro Hudson CI, klikněte na **Přidat další účty úložiště**.
    
-    f. Klikněte na tlačítko **Uložit** uložte nastavení.
+    f. Uložte nastavení kliknutím na **Uložit** .
 
 ## <a name="how-to-create-a-post-build-action-that-uploads-your-build-artifacts-to-your-storage-account"></a>Jak vytvořit akci po sestavení, která odešle artefakty sestavení do vašeho účtu úložiště
 Pro účely instrukcí nejdřív budeme muset vytvořit úlohu, která vytvoří několik souborů, a pak do akce po sestavení přidat soubory k nahrání souborů do účtu úložiště.
@@ -111,8 +111,8 @@ Pro účely instrukcí nejdřív budeme muset vytvořit úlohu, která vytvoří
 8. V tomto příkladu klikněte na **nastavit nový kontejner jako Public** . (Pokud chcete použít privátní kontejner, budete muset pro povolení přístupu vytvořit sdílený přístupový podpis. Mimo rámec tohoto článku. Další informace o podpisech sdíleného přístupu najdete v [používání sdílených přístupových podpisů (SAS)](storage-sas-overview.md).)
 9. Volitelné Klikněte na tlačítko **vyčistit kontejner před odesláním** , pokud chcete, aby kontejner vymazal obsah před odesláním artefaktů sestavení (nechte nezaškrtnuté, pokud nechcete vyčistit obsah kontejneru).
 10. **Seznam artefaktů, které se mají nahrát**, získáte zadáním **textu/*. txt**.
-11. Pro **společnou virtuální cestu pro**nahrané artefakty zadejte **$ {\_ID buildu}/$\_{číslo sestavení}** .
-12. Klikněte na tlačítko **Uložit** uložte nastavení.
+11. Pro **společnou virtuální cestu pro nahrané artefakty**zadejte **$ {Build\_ID}/$ {Build\_Number}** .
+12. Uložte nastavení kliknutím na **Uložit** .
 13. V řídicím panelu Hudson klikněte na **sestavit** a spusťte **MyJob**. Projděte si výstup konzoly pro stav. Stavové zprávy pro Azure Storage budou zahrnuty do výstupu konzoly, když akce po sestavení začne nahrávat artefakty sestavení.
 14. Po úspěšném dokončení úlohy můžete artefakty sestavení prošetřit otevřením veřejného objektu BLOB.
     
@@ -126,7 +126,7 @@ Pro účely instrukcí nejdřív budeme muset vytvořit úlohu, která vytvoří
     
     e. Klikněte na kontejner s názvem **MYJOB**, což je malá nebo Velká verze názvu úlohy, kterou jste přiřadili při vytváření úlohy Hudson. Názvy kontejnerů a názvy objektů BLOB jsou malými písmeny (a rozlišuje velká a malá písmena) v Azure Storage. V seznamu objektů BLOB pro kontejner s názvem **MYJOB** byste měli vidět **Hello. txt** a **Date. txt**. Zkopírujte adresu URL některé z těchto položek a otevřete ji v prohlížeči. Zobrazí se textový soubor, který byl nahrán jako artefakt sestavení.
 
-Pro každou úlohu se dá vytvořit jenom jedna akce po sestavení, která nahrává artefakty do úložiště objektů BLOB v Azure. Jedna akce po sestavení pro nahrání artefaktů do úložiště objektů BLOB v Azure může určovat různé soubory (včetně zástupných znaků) a cesty k souborům v **seznamu artefaktů, které se budou nahrávat** středníkem jako oddělovač. Například pokud vaše sestavení Hudson vytváří soubory. txt a soubory TXT ve složce **sestavení** pracovního prostoru a chcete je nahrát do úložiště objektů BLOB v Azure, použijte následující **seznam artefaktů** pro nahrání hodnoty: **Build/\*. jar; Build/\*. txt**. K určení cesty k použití v názvu objektu blob můžete použít také syntaxi typu Double-dvojtečka. Například pokud chcete, aby se jar nahrál pomocí binárních souborů v cestě objektů BLOB a souborů txt, aby se nahrály pomocí **oznámení** v cestě objektu blob, použijte následující **seznam artefaktů** pro nahrání hodnoty: **Build/\*. jar: : binární soubory; Build/\*. txt:: oznámení**.
+Pro každou úlohu se dá vytvořit jenom jedna akce po sestavení, která nahrává artefakty do úložiště objektů BLOB v Azure. Jedna akce po sestavení pro nahrání artefaktů do úložiště objektů BLOB v Azure může určovat různé soubory (včetně zástupných znaků) a cesty k souborům v **seznamu artefaktů, které se budou nahrávat** středníkem jako oddělovač. Například pokud vaše sestavení Hudson vytváří soubory. TXT a soubory TXT ve složce **sestavení** pracovního prostoru a chcete je nahrát do úložiště objektů BLOB v Azure, použijte následující **seznam artefaktů pro nahrání** hodnoty: **Build/\*. jar; Build/\*. txt**. K určení cesty k použití v názvu objektu blob můžete použít také syntaxi typu Double-dvojtečka. Například pokud chcete, aby se jar nahrál pomocí **binárních** souborů v cestě objektů BLOB a souborů txt, aby se nahrály pomocí **oznámení** v cestě objektu blob, použijte následující **seznam artefaktů pro nahrání** hodnoty: **Build/\*. jar:: binární soubory, Build/\*. txt:: oznámení**.
 
 ## <a name="how-to-create-a-build-step-that-downloads-from-azure-blob-storage"></a>Postup vytvoření kroku sestavení, který se stáhne ze služby Azure Blob Storage
 Následující kroky ukazují, jak nakonfigurovat krok sestavení ke stažení položek z úložiště objektů BLOB v Azure. To je užitečné, pokud chcete zahrnout položky do sestavení, například jar, které zachováte v úložišti objektů BLOB v Azure.
@@ -144,23 +144,23 @@ Po spuštění sestavení můžete zkontrolovat výstup konzoly historie sestave
 ## <a name="components-used-by-the-blob-service"></a>Součásti používané Blob service
 V následující části najdete přehled komponent Blob service.
 
-* **Účet úložiště**: Veškerý přístup k Azure Storage se provádí prostřednictvím účtu úložiště. Toto je nejvyšší úroveň oboru názvů pro přístup k objektům blob. Účet může obsahovat neomezený počet kontejnerů, pokud je jeho celková velikost menší než 100 TB.
-* **Kontejner**: Kontejner poskytuje seskupení sady objektů BLOB. Všechny objekty blob musí být v kontejneru. Účet může obsahovat neomezený počet kontejnerů. Kontejner můžete pojmout neomezený počet objektů blob.
-* **Blob**: Soubor libovolného typu a velikosti. Existují dva typy objektů blob, které mohou být uloženy v Azure Storage: objekty blob bloku a stránky. Většina souborů je objekty blob bloku. Jeden objekt blob bloku může mít velikost až 200 GB. Tento kurz používá objekty blob bloku. Objekty blob stránky, jiný typ objektu blob, můžou mít velikost až 1 TB a jsou efektivnější, pokud se často upravují rozsahy bajtů v souboru. Další informace o objektech blob najdete v tématu [Principy objektů blob bloku, doplňovacích objektů BLOB a objektů blob stránky](https://msdn.microsoft.com/library/azure/ee691964.aspx).
-* **Formát adresy URL**: Objekty blob jsou adresovatelné v následujícím formátu adresy URL:
+* **Účet úložiště**: veškerý přístup k Azure Storage se provádí prostřednictvím účtu úložiště. Toto je nejvyšší úroveň oboru názvů pro přístup k objektům blob. Účet může obsahovat neomezený počet kontejnerů, pokud je jeho celková velikost menší než 100 TB.
+* **Kontejner**: kontejner poskytuje seskupení sady objektů BLOB. Všechny objekty blob musí být v kontejneru. Účet může obsahovat neomezený počet kontejnerů. Kontejner můžete pojmout neomezený počet objektů blob.
+* **Objekt BLOB**: soubor libovolného typu a velikosti. Existují dva typy objektů blob, které mohou být uloženy v Azure Storage: objekty blob bloku a stránky. Většina souborů je objekty blob bloku. Jeden objekt blob bloku může mít velikost až 200 GB. Tento kurz používá objekty blob bloku. Objekty blob stránky, jiný typ objektu blob, můžou mít velikost až 1 TB a jsou efektivnější, pokud se často upravují rozsahy bajtů v souboru. Další informace o objektech blob najdete v tématu [Principy objektů blob bloku, doplňovacích objektů BLOB a objektů blob stránky](https://msdn.microsoft.com/library/azure/ee691964.aspx).
+* **Formát adresy URL**: objekty blob jsou adresovatelné v následujícím formátu adresy URL:
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
   
     (Výše uvedený formát se vztahuje na globální cloud Azure. Pokud používáte jiný cloud Azure, určete koncový bod adresy URL pomocí koncového bodu v rámci [Azure Portal](https://portal.azure.com) .)
   
-    Ve výše uvedeném `storageaccount` formátu představuje název vašeho účtu úložiště, `container_name` představuje název vašeho kontejneru a `blob_name` představuje název vašeho objektu BLOB v uvedeném pořadí. V rámci názvu kontejneru můžete mít více cest oddělených lomítkem, **/** . Vzorový název kontejneru v tomto kurzu byl **MyJob**a pro běžnou virtuální cestu se použilo **\_$ {Build ID\_}/$ {Number}** . Výsledkem je, že objekt BLOB má adresu URL následujícího formátu:
+    Ve výše uvedeném formátu `storageaccount` představuje název vašeho účtu úložiště, `container_name` představuje název vašeho kontejneru a `blob_name` představuje název objektu blob, v uvedeném pořadí. V rámci názvu kontejneru můžete mít více cest oddělených lomítkem, **/** . Vzorový název kontejneru v tomto kurzu byl **MyJob**a pro běžnou virtuální cestu se použilo **$ {Build\_ID}/$ {Build\_}** . Výsledkem je, že objekt BLOB má adresu URL následujícího formátu:
   
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 
 ## <a name="next-steps"></a>Další kroky
-* [Meet Hudson](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
+* [Splnění Hudson](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
 * [Azure Storage SDK pro jazyk Java](https://github.com/azure/azure-storage-java)
-* [Referenční informace ke klientské sadě SDK služby Azure Storage](http://dl.windowsazure.com/storage/javadoc/)
+* [Referenční informace ke klientské sadě SDK služby Azure Storage](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
 * [REST API služby Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Blog týmu Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/)
 

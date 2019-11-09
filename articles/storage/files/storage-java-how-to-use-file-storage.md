@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 00130114b793b5f4d4459eee3404fc4adaf6a8b4
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 28a280ea7c3bf9ef84a1fff05da5090ed526fb12
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699412"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837458"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Vývoj pro soubory Azure pomocí Java
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -165,7 +165,7 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 }
 ```
 
-## <a name="upload-a-file"></a>Nahrát soubor
+## <a name="upload-a-file"></a>Nahrání souboru
 V této části se dozvíte, jak nahrát soubor z místního úložiště do kořenového adresáře sdílené složky.
 
 Prvním krokem při nahrávání souboru je získání odkazu na adresář, ve kterém by měl být umístěný. Provedete to tak, že zavoláte metodu **getRootDirectoryReference** objektu Share.
@@ -185,7 +185,7 @@ Teď, když máte odkaz na kořenový adresář sdílené složky, můžete do n
         cloudFile.uploadFromFile(filePath);
 ```
 
-## <a name="download-a-file"></a>Stáhnout soubor
+## <a name="download-a-file"></a>Stažení souboru
 Jednou z častých operací, které v Azure Files provedete, je stažení souborů. V následujícím příkladu kód stáhne SampleFile. txt a zobrazí jeho obsah.
 
 ```java
@@ -221,13 +221,13 @@ if ( file.deleteIfExists() ) {
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Pokud se chcete dozvědět víc o dalších rozhraních API služby Azure Storage, postupujte podle těchto odkazů.
 
 * [Azure pro vývojáře v jazyce Java](/java/azure)/)
 * [Azure Storage SDK pro jazyk Java](https://github.com/azure/azure-storage-java)
 * [Sada Azure Storage SDK pro Android](https://github.com/azure/azure-storage-android)
-* [Referenční informace ke klientské sadě SDK služby Azure Storage](http://dl.windowsazure.com/storage/javadoc/)
+* [Referenční informace ke klientské sadě SDK služby Azure Storage](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
 * [REST API služby Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Blog týmu Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/)
 * [Přenos dat pomocí nástroje příkazového řádku AzCopy](../common/storage-use-azcopy.md)

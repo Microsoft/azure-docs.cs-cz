@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 4/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 494beb6ba2bf8a9409962b4418089cdad0e182e1
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 7f48012ca1f97c2e28380d95da37863c4bc17f63
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114784"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73831844"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Nasazení a konfigurace Azure Firewall pomocí Azure PowerShell
 
@@ -38,10 +38,10 @@ V tomto článku získáte informace o těchto tématech:
 > [!div class="checklist"]
 > * Nastavit testovací síťové prostředí
 > * Nasadit bránu firewall
-> * Vytvořit výchozí trasu
+> * Vytvoření výchozí trasy
 > * Konfigurace pravidla použití pro povolení přístupu k www.google.com
 > * Nakonfigurovat pravidlo sítě pro povolení přístupu k externím serverům DNS
-> * Otestovat bránu firewall
+> * Testovat bránu firewall
 
 Pokud budete chtít, můžete tento postup dokončit pomocí [Azure Portal](tutorial-firewall-deploy-portal.md).
 
@@ -137,7 +137,7 @@ $AzfwPrivateIP
 
 Poznamenejte si privátní IP adresu. Budete ji potřebovat později při vytváření výchozí trasy.
 
-## <a name="create-a-default-route"></a>Vytvořit výchozí trasu
+## <a name="create-a-default-route"></a>Vytvoření výchozí trasy
 
 Vytvoření tabulky se zakázaným šířením trasy protokolu BGP
 
@@ -210,7 +210,7 @@ $NIC.DnsSettings.DnsServers.Add("209.244.0.4")
 $NIC | Set-AzNetworkInterface
 ```
 
-## <a name="test-the-firewall"></a>Otestovat bránu firewall
+## <a name="test-the-firewall"></a>Testovat bránu firewall
 
 Nyní otestujte bránu firewall a potvrďte, že funguje podle očekávání.
 
@@ -220,7 +220,7 @@ Nyní otestujte bránu firewall a potvrďte, že funguje podle očekávání.
    $NIC.IpConfigurations.PrivateIpAddress
    ```
 
-1. Připojte vzdálenou plochu k virtuálnímu počítači s odkazem na **SRV** a přihlaste se. Odtud otevřete připojení ke vzdálené ploše k privátní IP adrese **SRV** a přihlaste se.
+1. Připojte vzdálenou plochu k virtuálnímu počítači s **odkazem na SRV** a přihlaste se. Odtud otevřete připojení ke vzdálené ploše k privátní IP adrese **SRV** a přihlaste se.
 
 3. V nabídce **SRV – práci**otevřete okno PowerShellu a spusťte následující příkazy:
 
@@ -241,7 +241,7 @@ Nyní otestujte bránu firewall a potvrďte, že funguje podle očekávání.
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   Žádosti www.google.com by měly být úspěšné a žádosti www.microsoft.com by měly selhat. To ukazuje, že pravidla brány firewall fungují podle očekávání.
+   Žádosti `www.google.com` by měly být úspěšné a žádosti `www.microsoft.com` by měly selhat. To ukazuje, že pravidla brány firewall fungují podle očekávání.
 
 Takže teď ověříte, že pravidla brány firewall fungují:
 
@@ -256,6 +256,6 @@ Prostředky brány firewall můžete zachovat pro další kurz, nebo pokud už j
 Remove-AzResourceGroup -Name Test-FW-RG
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Kurz: Monitorování protokolů Azure Firewall](./tutorial-diagnostics.md)
+* [Kurz: Monitorování protokolů brány Azure Firewall](./tutorial-diagnostics.md)

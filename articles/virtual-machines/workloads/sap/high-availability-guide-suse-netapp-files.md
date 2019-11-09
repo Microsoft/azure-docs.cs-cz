@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/30/2019
+ms.date: 11/07/2019
 ms.author: radeltch
-ms.openlocfilehash: 3764ae9ff3a20de6d31f0438b73597933080e372
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 910ffc1a94b78fec259dcf30a3c7284716809355
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791737"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832588"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP
 
@@ -96,7 +96,7 @@ Nyní je možné dosáhnout dostupnosti SAP NetWeaver HA pomocí sdíleného úl
 
 ![Přehled vysoké dostupnosti SAP NetWeaver](./media/high-availability-guide-suse-anf/high-availability-guide-suse-anf.PNG)
 
-SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver OLAJÍCÍCH a databáze SAP HANA používají virtuální název hostitele a virtuální IP adresy. V Azure se [Nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) vyžaduje k použití virtuální IP adresy. Následující seznam uvádí konfiguraci (A) SCS a nástroj pro vyrovnávání zatížení OLAJÍCÍCH.
+SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver OLAJÍCÍCH a databáze SAP HANA používají virtuální název hostitele a virtuální IP adresy. V Azure se [Nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) vyžaduje k použití virtuální IP adresy. Doporučujeme použít službu [Load Balancer úrovně Standard](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal). Následující seznam uvádí konfiguraci (A) SCS a nástroj pro vyrovnávání zatížení OLAJÍCÍCH.
 
 > [!IMPORTANT]
 > Clustering s více identifikátory SID pro SAP ASCS/OLAJÍCÍCH s SUSE Linux jako hostovaný operační systém ve virtuálních počítačích **Azure se nepodporuje.** Clustering s více SID popisuje instalaci více instancí SAP ASCS/OLAJÍCÍCH s různými identifikátory SID v jednom clusteru Pacemaker.
@@ -111,13 +111,15 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver OLAJÍCÍCH a databáze SAP
 * Port testu paměti
   * Port 620<strong>&lt;nr&gt;</strong>
 * Pravidla vyrovnávání zatížení
-  * 32<strong>&lt;nr&gt;</strong> TCP
-  * 36<strong>&lt;nr&gt;</strong> TCP
-  * 39<strong>&lt;nr&gt;</strong> TCP
-  * 81<strong>&lt;nr&gt;</strong> TCP
-  * 5<strong>&lt;nr&gt;</strong>13 TCP
-  * 5<strong>&lt;nr&gt;</strong>14 TCP
-  * 5<strong>&lt;nr&gt;</strong>16 TCP
+  * Pokud používáte Standard Load Balancer, vyberte **porty ha** .
+  * Pokud používáte základní Load Balancer, vytvořte pravidla vyrovnávání zatížení pro následující porty.
+    * 32<strong>&lt;nr&gt;</strong> TCP
+    * 36<strong>&lt;nr&gt;</strong> TCP
+    * 39<strong>&lt;nr&gt;</strong> TCP
+    * 81<strong>&lt;nr&gt;</strong> TCP
+    * 5<strong>&lt;nr&gt;</strong>13 TCP
+    * 5<strong>&lt;nr&gt;</strong>14 TCP
+    * 5<strong>&lt;nr&gt;</strong>16 TCP
 
 ### <a name="ers"></a>OLAJÍCÍCH
 
@@ -128,11 +130,13 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver OLAJÍCÍCH a databáze SAP
 * Port testu paměti
   * Port 621<strong>&lt;nr&gt;</strong>
 * Pravidla vyrovnávání zatížení
-  * 32<strong>&lt;nr&gt;</strong> TCP
-  * 33<strong>&lt;nr&gt;</strong> TCP
-  * 5<strong>&lt;nr&gt;</strong>13 TCP
-  * 5<strong>&lt;nr&gt;</strong>14 TCP
-  * 5<strong>&lt;nr&gt;</strong>16 TCP
+  * Pokud používáte Standard Load Balancer, vyberte **porty ha** .
+  * Pokud používáte základní Load Balancer, vytvořte pravidla vyrovnávání zatížení pro následující porty.
+    * 32<strong>&lt;nr&gt;</strong> TCP
+    * 33<strong>&lt;nr&gt;</strong> TCP
+    * 5<strong>&lt;nr&gt;</strong>13 TCP
+    * 5<strong>&lt;nr&gt;</strong>14 TCP
+    * 5<strong>&lt;nr&gt;</strong>16 TCP
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>Nastavení infrastruktury Azure NetApp Files 
 
@@ -207,7 +211,42 @@ V tomto příkladu byly prostředky nasazeny ručně prostřednictvím [Azure Po
 
 Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální počítače. Následně vytvoříte Nástroj pro vyrovnávání zatížení a použijete virtuální počítače ve fondech back-endu.
 
-1. Vytvořit Load Balancer (interní)  
+1. Vytvořit nástroj pro vyrovnávání zatížení (interní, standardní):  
+   1. Vytvoření IP adresy front-endu
+      1. IP adresa 10.1.1.20 pro ASCS
+         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte front-end IP fond a klikněte na Přidat.
+         1. Zadejte název nového fondu IP adres front-endu (například **front-end. QAS. ASCS**)
+         1. Nastavte přiřazení na statické a zadejte IP adresu (například **10.1.1.20**).
+         1. Klikněte na OK.
+      1. 10.1.1.21 IP adres pro ASCS OLAJÍCÍCH
+         * Opakujte výše uvedené kroky v části a a vytvořte tak IP adresu pro OLAJÍCÍCH (například **10.1.1.21** a **front-end. QAS. OLAJÍCÍCH**)
+   1. Vytvoření back-end fondů
+      1. Vytvoření fondu back-endu pro ASCS
+         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte fondy back-endu a klikněte na Přidat.
+         1. Zadejte název nového back-end fondu (například **back-end. QAS**)
+         1. Klikněte na Přidat virtuální počítač.
+         1. Vybrat virtuální počítač
+         1. Vyberte virtuální počítače v clusteru (A) SCS a jejich IP adresy.
+         1. Klikněte na tlačítko Přidat.
+   1. Vytvoření sond stavu
+      1. Port 620**00** pro ASCS
+         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
+         1. Zadejte název nového testu stavu (například **stav). QAS. ASCS**)
+         1. Vybrat TCP as Protocol, port 620**00**, zachovat interval 5 a špatný práh 2
+         1. Klikněte na OK.
+      1. Port 621**01** pro ASCS olajících
+            * Opakujte výše uvedené kroky v části "c", chcete-li vytvořit sondu stavu pro OLAJÍCÍCH (například 621**01** a **stav). QAS. OLAJÍCÍCH**)
+   1. Pravidla vyrovnávání zatížení
+      1. Vytvoření fondu back-endu pro ASCS
+         1. Otevřete nástroj pro vyrovnávání zatížení, vyberte pravidla vyrovnávání zatížení a klikněte na Přidat.
+         1. Zadejte název nového pravidla nástroje pro vyrovnávání zatížení (například **kg. QAS. ASCS**)
+         1. Vyberte front-end IP adresu pro ASCS, fond back-endu a test stavu, který jste vytvořili dříve (například **front-end. QAS. ASCS**, **back-end. QAS** a **stav. QAS. ASCS**)
+         1. Vybrat **porty ha**
+         1. Prodloužit časový limit nečinnosti na 30 minut
+         1. **Ujistěte se, že jste povolili plovoucí IP adresu.**
+         1. Klikněte na OK.
+         * Opakujte výše uvedené kroky a vytvořte tak pravidla vyrovnávání zatížení pro OLAJÍCÍCH (například **kg. QAS. OLAJÍCÍCH**)
+1. Případně, pokud váš scénář vyžaduje základní nástroj pro vyrovnávání zatížení (interní), postupujte podle následujících kroků:  
    1. Vytvoření IP adresy front-endu
       1. IP adresa 10.1.1.20 pro ASCS
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte front-end IP fond a klikněte na Přidat.
@@ -246,8 +285,11 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
       1. Další porty pro ASCS OLAJÍCÍCH
          * Opakujte výše uvedené kroky v části "d" pro porty 33**01**, 5**01**13, 5**01**14, 5**01**16 a TCP pro ASCS olajících
 
+> [!Note]
+> Pokud se virtuální počítače bez veřejných IP adres nacházejí v back-end fondu interní služby pro vyrovnávání zatížení (bez veřejné IP adresy), nebude žádné odchozí připojení k Internetu, pokud se neprovede další konfigurace, která umožní směrování na veřejné koncové body. Podrobnosti o tom, jak dosáhnout odchozího připojení, najdete v tématu [připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích s vysokou dostupností SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)  
+
 > [!IMPORTANT]
-> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. TCP _timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+> Nepovolujte časová razítka TCP na virtuálních počítačích Azure umístěných za Azure Load Balancer. Povolení časových razítek TCP způsobí selhání sond stavu. Nastavte parametr **net. IPv4. tcp_timestamps** na **hodnotu 0**. Podrobnosti najdete v tématu [Load Balancer sondy stavu](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
 
 ### <a name="create-pacemaker-cluster"></a>Vytvoření clusteru Pacemaker
 
@@ -265,7 +307,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    > [!NOTE]
    > V hostitelských uzlech uzlů clusteru nepoužívejte pomlčky. V opačném případě nebude cluster fungovat. Jedná se o známé omezení a SUSE pracuje na opravě. Oprava se uvolní jako oprava balíčku SAP-SUSE-Cloud-Connector.
 
-   Ujistěte se, že jste nainstalovali novou verzi konektoru SAP SUSE cluster. Stará se o název sap_suse_cluster_connector a nová se nazývá **SAP-SUSE-cluster-Connector**.
+   Ujistěte se, že jste nainstalovali novou verzi konektoru SAP SUSE cluster. Stará se o to, že se navolala sap_suse_cluster_connector a ta nového se nazývá **SAP-SUSE-cluster-Connector**.
 
    <pre><code>sudo zypper info sap-suse-cluster-connector
    
@@ -296,7 +338,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    <pre><code>&lt;parameter name="IS_ERS" unique="0" required="0"&gt;
    </code></pre>
 
-   Pokud příkaz grep nenalezne parametr IS_ERS, musíte nainstalovat opravu uvedenou na [stránce pro stažení SUSE](https://download.suse.com/patch/finder/#bu=suse&familyId=&productId=&dateRange=&startDate=&endDate=&priority=&architecture=&keywords=resource-agents) .
+   Pokud příkaz grep nenajde parametr IS_ERS, je nutné nainstalovat opravu uvedenou na [stránce pro stažení SUSE](https://download.suse.com/patch/finder/#bu=suse&familyId=&productId=&dateRange=&startDate=&endDate=&priority=&architecture=&keywords=resource-agents) .
 
    <pre><code># example for patch for SLES 12 SP1
    sudo zypper in -t patch SUSE-SLE-HA-12-SP1-2017-885=1
@@ -434,9 +476,9 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
   
 2. **[1]** instalace SAP NetWeaver ASCS  
 
-   Nainstalujte SAP NetWeaver ASCS jako kořen v prvním uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu nástroje pro vyrovnávání zatížení pro ASCS, například <b>anftstsapvh</b>, <b>10.1.1.20</b> a číslo instance, kterou jste použili pro sonda nástroje pro vyrovnávání zatížení, například <b>00</b>.
+   Nainstalujte SAP NetWeaver ASCS jako kořen v prvním uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu služby Vyrovnávání zatížení pro ASCS, například <b>anftstsapvh</b>, <b>10.1.1.20</b> a číslo instance, kterou jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>00</b>.
 
-   Můžete použít parametr sapinst SAPINST_REMOTE_ACCESS_USER, který umožňuje, aby se uživatel, který není kořenový, připojit k sapinst. Pomocí parametru SAPINST_USE_HOSTNAME můžete nainstalovat SAP pomocí virtuálního hostitele.
+   Pomocí parametru sapinst SAPINST_REMOTE_ACCESS_USER můžete pro uživatele, který není rootem, připojovat se k sapinst. Pomocí parametru SAPINST_USE_HOSTNAME můžete nainstalovat SAP pomocí virtuálního hostitele.
 
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b> SAPINST_USE_HOSTNAME=<b>virtual_hostname</b>
    </code></pre>
@@ -495,9 +537,9 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
 
 4. **[2]** instalace SAP NetWeaver olajících
 
-   Nainstalujte SAP NetWeaver OLAJÍCÍCH jako kořenovou složku na druhém uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu služby Vyrovnávání zatížení pro OLAJÍCÍCH, například <b>anftstsapers</b>, <b>10.1.1.21</b> a číslo instance, kterou jste použili pro sonda nástroje pro vyrovnávání zatížení, například <b>01</b>.
+   Nainstalujte SAP NetWeaver OLAJÍCÍCH jako kořenovou složku na druhém uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu služby Vyrovnávání zatížení pro OLAJÍCÍCH, například <b>anftstsapers</b>, <b>10.1.1.21</b> a číslo instance, které jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>01</b>.
 
-   Můžete použít parametr sapinst SAPINST_REMOTE_ACCESS_USER, který umožňuje, aby se uživatel, který není kořenový, připojit k sapinst. Pomocí parametru SAPINST_USE_HOSTNAME můžete nainstalovat SAP pomocí virtuálního hostitele.
+   Pomocí parametru sapinst SAPINST_REMOTE_ACCESS_USER můžete pro uživatele, který není rootem, připojovat se k sapinst. Pomocí parametru SAPINST_USE_HOSTNAME můžete nainstalovat SAP pomocí virtuálního hostitele.
 
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b> SAPINST_USE_HOSTNAME=<b>virtual_hostname</b>
    </code></pre>
@@ -796,7 +838,7 @@ V tomto příkladu je SAP NetWeaver nainstalovaný na SAP HANA. Pro tuto instala
 
    Nainstalujte instanci databáze SAP NetWeaver jako kořenovou složku pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu nástroje pro vyrovnávání zatížení pro databázi.
 
-   Můžete použít parametr sapinst SAPINST_REMOTE_ACCESS_USER, který umožňuje, aby se uživatel, který není kořenový, připojit k sapinst.
+   Pomocí parametru sapinst SAPINST_REMOTE_ACCESS_USER můžete pro uživatele, který není rootem, připojovat se k sapinst.
 
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
@@ -809,7 +851,7 @@ Pomocí těchto kroků nainstalujete aplikační Server SAP.
 
 2. **[A]** instalace aplikačního serveru SAP NetWeaver instalace primárního nebo dalšího serveru aplikace SAP NetWeaver.
 
-   Můžete použít parametr sapinst SAPINST_REMOTE_ACCESS_USER, který umožňuje, aby se uživatel, který není kořenový, připojit k sapinst.
+   Pomocí parametru sapinst SAPINST_REMOTE_ACCESS_USER můžete pro uživatele, který není rootem, připojovat se k sapinst.
 
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>

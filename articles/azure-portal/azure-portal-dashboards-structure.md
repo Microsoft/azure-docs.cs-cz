@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: kfollis
-ms.openlocfilehash: dccf1550052910269efe156b999882234669d7dc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5933521993b598ae3758df6e2e7dbf61bf424779
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815705"
+ms.locfileid: "73832795"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Struktura řídicích panelů Azure
 Tento dokument projde strukturu řídicího panelu Azure pomocí následujícího řídicího panelu jako příklad:
@@ -295,7 +295,7 @@ Pojďme rozdělit relevantní části JSON.  Vlastnosti nejvyšší úrovně, __
 
 ### <a name="the-id-property"></a>Vlastnost ID
 
-ID prostředku Azure, se kterým se vztahují zásady [vytváření názvů prostředků Azure](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging). Když portál vytvoří řídicí panel, obvykle zvolí ID ve formě identifikátoru GUID, ale při jejich vytváření programově můžete použít libovolný platný název. 
+ID prostředku Azure, se kterým se vztahují zásady [vytváření názvů prostředků Azure](/azure/architecture/best-practices/resource-naming). Když portál vytvoří řídicí panel, obvykle zvolí ID ve formě identifikátoru GUID, ale při jejich vytváření programově můžete použít libovolný platný název. 
 
 ### <a name="the-name-property"></a>Vlastnost Name
 Název je segmentem ID prostředku, které neobsahuje informace o předplatném, typu prostředku ani skupině prostředků. V podstatě je to poslední segment ID prostředku.

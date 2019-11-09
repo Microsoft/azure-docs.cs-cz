@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2019
+ms.date: 11/07/2019
 ms.author: juliako
-ms.openlocfilehash: c402381534087f1e8cdab711bd1b2a34c78417f4
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 7b4e2d14e8719808db138a4f2607b19cece401a6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675727"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839587"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Nakonfigurovat metodu post pro Media Services REST API volání
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak nakonfigurovat **metodu post** , aby ji bylo m
 
 Než začnete s vývojem, přečtěte si téma [vývoj s rozhraními api Media Services V3](media-services-apis-overview.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Vytvořte účet Media Services](create-account-cli-how-to.md). Nezapomeňte si pamatovat název skupiny prostředků a název účtu Media Services. 
 - Získání informací potřebných pro [přístup k rozhraním API](access-api-cli-how-to.md)
@@ -92,7 +92,12 @@ Než začnete pracovat s prostředky AMS v3, potřebujete získat a nastavit tok
 
     ![Získání tokenu AAD](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="troubleshooting"></a>Řešení potíží 
+
+* Pokud se vaše aplikace nezdařila s protokolem HTTP 504: časový limit brány, ujistěte se, že proměnná umístění nebyla explicitně nastavena na jinou hodnotu než očekávané umístění účtu Media Services. 
+* Pokud se zobrazí chyba "účet nebyl nalezen", zkontrolujte také, zda je vlastnost umístění v těle zprávy JSON nastavena na umístění, ve kterém je účet Media Services. 
+
+## <a name="see-also"></a>Viz také
 
 - [Nahrání souborů do účtu Media Services – REST](upload-files-rest-how-to.md)
 - [Vytváření filtrů pomocí Media Services – REST](filters-dynamic-manifest-rest-howto.md)

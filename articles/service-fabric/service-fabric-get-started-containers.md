@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 771a4ffde9f3929a55ee8ce48c2b38e16b83ad49
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 4fd6de848756cedf21d7bb1f7f1be31175de6627
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650683"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838240"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Vytvoření první aplikace Service Fabric typu kontejner v systému Windows
 
@@ -27,7 +27,7 @@ ms.locfileid: "69650683"
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric nevyžaduje žádné změny aplikace. Tento článek vás provede vytvořením bitové kopie Docker obsahující webovou aplikaci [](http://flask.pocoo.org/) v Pythonu a její nasazení do clusteru Service Fabric spuštěného na místním počítači. Kontejnerizovanou aplikaci budete také sdílet prostřednictvím služby [Azure Container Registry](/azure/container-registry/). Tento článek předpokládá základní znalost Dockeru. Informace o Dockeru najdete v článku [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Přehled Dockeru).
+Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric nevyžaduje žádné změny aplikace. Tento článek vás provede vytvořením bitové kopie Docker [obsahující webovou aplikaci](http://flask.pocoo.org/) v Pythonu a její nasazení do clusteru Service Fabric spuštěného na místním počítači. Kontejnerizovanou aplikaci budete také sdílet prostřednictvím služby [Azure Container Registry](/azure/container-registry/). Tento článek předpokládá základní znalost Dockeru. Informace o Dockeru najdete v článku [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Přehled Dockeru).
 
 > [!NOTE]
 > Tento článek se týká prostředí pro vývoj ve Windows.  Modul runtime clusteru Service Fabric a modul runtime Docker musí být spuštěný ve stejném operačním systému.  Kontejnery Windows nelze spouštět v clusteru se systémem Linux.
@@ -46,7 +46,7 @@ Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric
 
   V tomto článku se verze (sestavení) Windows serveru s kontejnery běžícími na uzlech clusteru musí shodovat s tím, že se nachází na vašem vývojovém počítači. Důvodem je to, že na svém vývojovém počítači sestavíte image Docker a že existují omezení kompatibility mezi verzemi operačního systému kontejneru a hostitelského operačního systému, na kterém je nasazený. Další informace najdete v tématu [věnovaném systému Windows Server Container OS a kompatibility s hostitelským operačním systémem](#windows-server-container-os-and-host-os-compatibility). 
   
-Pokud chcete zjistit verzi Windows serveru s kontejnery, které potřebujete pro svůj cluster, spusťte `ver` příkaz z příkazového řádku Windows na vašem vývojovém počítači:
+Pokud chcete zjistit verzi Windows serveru s kontejnery, které potřebujete pro svůj cluster, spusťte příkaz `ver` z příkazového řádku Windows na vašem vývojovém počítači:
 
 * Pokud verze obsahuje *x. x. 14323. x*, vyberte pro operační systém při [vytváření clusteru](service-fabric-cluster-creation-via-portal.md) *windowsserver 2016 – Datacenter-with-Containers* .
   * Pokud verze obsahuje *x. x. 16299. x*, vyberte *WindowsServerSemiAnnual Datacenter-Core-1709-with-Containers* pro operační systém při [vytváření clusteru](service-fabric-cluster-creation-via-portal.md).
@@ -177,7 +177,7 @@ docker rm my-web-site
 
 Po ověření, že se kontejner spustí na vývojovém počítači, nahrajte image do vašeho registru ve službě Azure Container Service.
 
-Spusťte ``docker login`` , abyste se k registru kontejneru přihlásili pomocí [přihlašovacích údajů registru](../container-registry/container-registry-authentication.md).
+Spusťte ``docker login`` a přihlaste se k registru kontejneru pomocí svých [přihlašovacích údajů do registru](../container-registry/container-registry-authentication.md).
 
 Následující příklad předá ID a heslo [instančního objektu](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory. Instanční objekt jste k registru mohli přiřadit například pro účely scénáře automatizace. Nebo se můžete přihlásit pomocí uživatelského jména a hesla registru.
 
@@ -281,7 +281,7 @@ Systém Windows podporuje pro kontejnery dva režimy izolace: procesy a Hyper-V.
    >
 
 ## <a name="configure-resource-governance"></a>Konfigurace zásad správného řízení prostředků
-[Zásady správného řízení prostředků](service-fabric-resource-governance.md) omezují prostředky, které kontejner může použít na hostiteli. Element `ResourceGovernancePolicy`, který je zadaný v manifestu aplikace, slouží k deklaraci omezení prostředků pro balíček kódu služby. Omezení prostředků lze nastavit pro následující prostředky: Paměť, MemorySwap, CpuShares (relativní váha procesoru), MemoryReservationInMB, BlkioWeight (relativní relativní váha). V tomto příkladu balíček služby Guest1Pkg získá jedno jádro na uzlech clusteru, kde je umístěný. Omezení paměti jsou absolutní, takže balíček kódu je omezený na 1024 MB paměti (a má tuto paměť softwarově vyhrazenou). Balíčky kódu (kontejnery a procesy) nejsou schopné přidělit víc paměti, než je toto omezení, a případný pokus o takové přidělení má za následek výjimku z důvodu nedostatku paměti. Aby vynucení omezení prostředků fungovala, musí být omezení paměti zadaná pro všechny balíčky kódu v rámci balíčku služby.
+[Zásady správného řízení prostředků](service-fabric-resource-governance.md) omezují prostředky, které kontejner může použít na hostiteli. Element `ResourceGovernancePolicy`, který je zadaný v manifestu aplikace, slouží k deklaraci omezení prostředků pro balíček kódu služby. Omezení prostředků je možné nastavit pro tyto prostředky: Memory, MemorySwap, CpuShares (relativní váha CPU), MemoryReservationInMB, BlkioWeight (relativní váha BlockIO). V tomto příkladu balíček služby Guest1Pkg získá jedno jádro na uzlech clusteru, kde je umístěný. Omezení paměti jsou absolutní, takže balíček kódu je omezený na 1024 MB paměti (a má tuto paměť softwarově vyhrazenou). Balíčky kódu (kontejnery a procesy) nejsou schopné přidělit víc paměti, než je toto omezení, a případný pokus o takové přidělení má za následek výjimku z důvodu nedostatku paměti. Aby vynucení omezení prostředků fungovala, musí být omezení paměti zadaná pro všechny balíčky kódu v rámci balíčku služby.
 
 ```xml
 <ServiceManifestImport>
@@ -294,9 +294,9 @@ Systém Windows podporuje pro kontejnery dva režimy izolace: procesy a Hyper-V.
 ```
 ## <a name="configure-docker-healthcheck"></a>Konfigurace dockeru HEALTHCHECK 
 
-Počínaje v6.1 Service Fabric automaticky integruje události [dockeru HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) do sestavy stavu systému. To znamená, že pokud váš kontejner má **HEALTHCHECK** povolený, Service Fabric oznámí stav vždy, když se změní stav kontejneru (nahlášený Dockerem). Pokud *health_status* je *healthy*, v [Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md) se zobrazí sestava stavu **OK**. Pokud *health_status* je *unhealthy*, zobrazí se **UPOZORNĚNÍ**. 
+Počínaje v6.1 Service Fabric automaticky integruje události [dockeru HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) do sestavy stavu systému. To znamená, že pokud váš kontejner má **HEALTHCHECK** povolený, Service Fabric oznámí stav vždy, když se změní stav kontejneru (nahlášený Dockerem). Pokud **health_status** je [healthy](service-fabric-visualizing-your-cluster.md), v *Service Fabric Exploreru* se zobrazí sestava stavu *OK*. Pokud **health_status** je *unhealthy*, zobrazí se *UPOZORNĚNÍ*. 
 
-Počínaje nejnovější verzí aktualizace v 6.4 máte možnost určit, že se mají tato hodnocení Docker HEALTHCHECK hlásit jako chyba. Pokud je tato možnost povolená,zobrazí se zpráva o stavu **OK** , pokud je *health_status* *v pořádku* a **Chyba** se zobrazí, když *health_status* není v pořádku.
+Počínaje nejnovější verzí aktualizace v 6.4 máte možnost určit, že se mají tato hodnocení Docker HEALTHCHECK hlásit jako chyba. Pokud je tato možnost povolená, zobrazí se zpráva o stavu **OK** , když *health_status* je *v pořádku* a zobrazí se **Chyba** , když *health_status* není v *pořádku*.
 
 Pokyn **HEALTHCHECK** odkazující na aktuální kontrolu, která se provede pro monitorování stavu kontejneru, musí být uvedený v souboru Dockerfile použitém při generování image kontejneru.
 
@@ -320,7 +320,7 @@ Chování **HEALTHCHECK** pro jednotlivé kontejnery můžete nakonfigurovat zad
     </Policies>
 </ServiceManifestImport>
 ```
-Ve výchozím nastavení je *IncludeDockerHealthStatusInSystemHealthReport* nastaveno na **hodnotu true**, hodnota *RestartContainerOnUnhealthyDockerHealthStatus* je nastavena na **hodnotu false**a vlastnost *TreatContainerUnhealthyStatusAsError* je nastavena na **hodnotu false.** . 
+Ve výchozím nastavení je *IncludeDockerHealthStatusInSystemHealthReport* nastaveno na **hodnotu true**, hodnota *RestartContainerOnUnhealthyDockerHealthStatus* je nastavena na **hodnotu false**a vlastnost *TreatContainerUnhealthyStatusAsError* je nastavena na **hodnotu false**. 
 
 Pokud je pro *RestartContainerOnUnhealthyDockerHealthStatus* nastavená hodnota **true**, kontejner, který je opakovaně nahlášený ve špatném stavu, se restartuje (potenciálně na jiných uzlech).
 
@@ -331,15 +331,15 @@ Pokud chcete zakázat integraci **HEALTHCHECK** pro celý cluster Service Fabric
 ## <a name="deploy-the-container-application"></a>Nasazení aplikace typu kontejner
 Uložte všechny provedené změny a sestavte aplikaci. Pokud chcete aplikaci publikovat, klikněte pravým tlačítkem na **MyFirstContainer** v Průzkumníku řešení a vyberte **Publikovat**.
 
-Do pole **Koncový bod připojení** zadejte koncový bod správy pro příslušný cluster. Příklad: containercluster.westus2.cloudapp.azure.com:19000. Koncový bod připojení klienta najdete na kartě Přehled pro váš cluster na webu [Azure Portal](https://portal.azure.com).
+Do pole **Koncový bod připojení** zadejte koncový bod správy pro příslušný cluster. například `containercluster.westus2.cloudapp.azure.com:19000`. Koncový bod připojení klienta najdete na kartě Přehled pro váš cluster na webu [Azure Portal](https://portal.azure.com).
 
-Klikněte na tlačítko **publikovat**.
+Klikněte na **Publikovat**.
 
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) je webový nástroj pro kontrolu a správu aplikací a uzlů v clusteru Service Fabric. Otevřete prohlížeč, přejděte na adresu http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/ a postupujte podle pokynů k nasazení aplikace. Aplikace se nasadí, ale je v chybovém stavu, dokud se image nestáhne na uzlech clusteru (což může nějakou dobu trvat v závislosti na velikosti obrázku): ![Chyba][1]
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) je webový nástroj pro kontrolu a správu aplikací a uzlů v clusteru Service Fabric. Otevřete prohlížeč, přejděte na adresu `http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/` a postupujte podle pokynů k nasazení aplikace. Aplikace se nasadí, ale bude v chybovém stavu, dokud se image nestáhne na uzlech clusteru (což v závislosti na velikosti image může nějakou dobu trvat): ![Chyba][1]
 
-Aplikace je připravena, když je ve ```Ready``` stavu: ![K][2]
+Aplikace je připravena, když je ve stavu ```Ready```: ![Připraveno][2]
 
-Otevřete prohlížeč a přejděte do http://containercluster.westus2.cloudapp.azure.com:8081. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
+Otevřete prohlížeč a přejděte na adresu `http://containercluster.westus2.cloudapp.azure.com:8081`. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
 
 ## <a name="clean-up"></a>Vyčištění
 
@@ -379,7 +379,7 @@ Doporučujeme, abyste se ujistili, že se kontejnery na Service Fabricovém clus
  
 ## <a name="specify-os-build-specific-container-images"></a>Zadání imagí kontejneru pro konkrétní sestavení operačního systému 
 
-Kontejnery Windows serveru nemusí být kompatibilní napříč různými verzemi operačního systému. Například kontejnery Windows serveru sestavené pomocí Windows serveru 2016 nefungují na Windows serveru verze 1709 v režimu izolace procesů. Proto pokud jsou uzly clusteru aktualizovány na nejnovější verzi, služba kontejneru vytvořená pomocí předchozích verzí operačního systému může selhat. Chcete-li obejít tento postup s verzí 6,1 modulu runtime a novějším, Service Fabric podporuje určení více imagí operačního systému na kontejner a jejich označení s verzemi sestavení operačního systému v manifestu aplikace. Verzi buildu operačního systému můžete získat spuštěním `winver` příkazu na příkazovém řádku systému Windows. Nejprve aktualizujte manifesty aplikací a zadejte přepsání image pro jednotlivé verze operačního systému a teprve potom aktualizujte operační systém na uzlech. Následující fragment kódu ukazuje, jak v manifestu aplikace **ApplicationManifest.xml** zadat několik imagí kontejneru:
+Kontejnery Windows serveru nemusí být kompatibilní napříč různými verzemi operačního systému. Například kontejnery Windows serveru sestavené pomocí Windows serveru 2016 nefungují na Windows serveru verze 1709 v režimu izolace procesů. Proto pokud jsou uzly clusteru aktualizovány na nejnovější verzi, služba kontejneru vytvořená pomocí předchozích verzí operačního systému může selhat. Chcete-li obejít tento postup s verzí 6,1 modulu runtime a novějším, Service Fabric podporuje určení více imagí operačního systému na kontejner a jejich označení s verzemi sestavení operačního systému v manifestu aplikace. Verzi buildu operačního systému můžete získat spuštěním `winver` na příkazovém řádku Windows. Nejprve aktualizujte manifesty aplikací a zadejte přepsání image pro jednotlivé verze operačního systému a teprve potom aktualizujte operační systém na uzlech. Následující fragment kódu ukazuje, jak v manifestu aplikace **ApplicationManifest.xml** zadat několik imagí kontejneru:
 
 
 ```xml
@@ -507,7 +507,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ## <a name="configure-time-interval-before-container-is-force-terminated"></a>Konfigurace časového intervalu před vynuceným ukončením kontejneru
 
-Můžete nakonfigurovat časový interval, který určuje, jak dlouho modul runtime počká před odebráním kontejneru po zahájení odstraňování služby (nebo jejího přesunu do jiného uzlu). Konfigurací časového intervalu se do kontejneru odešle příkaz `docker stop <time in seconds>`.  Další podrobnosti najdete v dokumentaci k příkazu [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). Časový interval pro čekání se zadává v části `Hosting`. `Hosting` Oddíl lze přidat při vytváření clusteru nebo později v upgradu konfigurace. Následující fragment manifestu clusteru ukazuje nastavení intervalu čekání:
+Můžete nakonfigurovat časový interval, který určuje, jak dlouho modul runtime počká před odebráním kontejneru po zahájení odstraňování služby (nebo jejího přesunu do jiného uzlu). Konfigurací časového intervalu se do kontejneru odešle příkaz `docker stop <time in seconds>`.  Další podrobnosti najdete v dokumentaci k příkazu [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). Časový interval pro čekání se zadává v části `Hosting`. Oddíl `Hosting` lze přidat při vytváření clusteru nebo později v upgradu konfigurace. Následující fragment manifestu clusteru ukazuje nastavení intervalu čekání:
 
 ```json
 "fabricSettings": [
@@ -606,7 +606,7 @@ V modulu runtime Service Fabric verze 6.2 a novější můžete spustit démona 
 ]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Další informace o spouštění [kontejnerů v Service Fabric](service-fabric-containers-overview.md).
 * Přečtěte si kurz [Nasazení aplikace .NET v kontejneru](service-fabric-host-app-in-a-container.md).
 * Informace o [životním cyklu aplikace](service-fabric-application-lifecycle.md) Service Fabric.

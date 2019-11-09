@@ -1,7 +1,7 @@
 ---
 title: Co je nového v rozhraní API pro analýzu textu
-titlesuffix: Text Analytics - Azure Cognitive Services
-description: Seznamte se s novým vývojem pomocí služby Analýza textu.
+titleSuffix: Text Analytics - Azure Cognitive Services
+description: Tento článek obsahuje informace o nových verzích a funkcích pro Azure Cognitive Services Analýza textu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: aahi
-ms.openlocfilehash: 44ef6fb118be4d1110a693faded6c57bc8b4e2fd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7e4eb8f7f9077ce04ee8138580a836637b89cf8c
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499955"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835599"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co je nového v rozhraní API pro analýzu textu?
 
@@ -44,7 +44,7 @@ Další verze Analýza mínění je teď dostupná ve verzi Public Preview a př
 * Automatické označování pro různé zabarvení v textu
 * Mínění analýzy a výstupy na úrovni dokumentu a věty. 
 
-Podporuje angličtinu (`en`), japonštinu (`ja`), zjednodušenou čínštinu (`zh-Hans`), tradiční čínštinu (`zh-Hant`), francouzština (`fr`), italština (`it`), španělština (`es`), holandština (`nl`), portugalština (`pt`) a němčina (`de`), a je k dispozici v následujících oblastech: `Australia East`, `Central Canada`, `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US`, `UK South`, `West Europe`a `West US 2`.
+Podporuje angličtinu (`en`), japonštinu (`ja`), zjednodušená čínština (`zh-Hans`), tradiční čínština (`zh-Hant`), francouzština (`fr`), italština (`it`), španělština (`es`), holandština (`nl`), portugalština (`pt`) a němčina (`de`) a je k dispozici v těchto oblastech: `Australia East`, `Central Canada`, `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US`, `UK South`, `West Europe`a `West US 2`.
 
 > [!div class="nextstepaction"]
 > [Další informace o Analýza mínění V3](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-v3-public-preview)

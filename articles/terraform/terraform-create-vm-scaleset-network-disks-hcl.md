@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: 205cf7610bd9f86bf36fc738ced71fc8175ccdc9
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.date: 11/07/2019
+ms.openlocfilehash: e2b7d816a02eaf47ef50bfd2d814f7b26a813446
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969458"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838404"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>Kurz: vytvoření sady škálování virtuálních počítačů Azure pomocí Terraformu
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte, jak pomocí [Azure Cloud Shell](/azure/cloud-shell/o
 > [!NOTE]
 > Nejnovější verze konfiguračních souborů Terraformu používaných v tomto článku se nachází v [úložišti Super terraformu na GitHubu](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
@@ -96,7 +96,7 @@ V Azure Cloud Shell proveďte následující kroky:
    }
    ```
 
-1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
+1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
 
 ## <a name="create-the-output-definitions-file"></a>Vytvoření výstupního souboru definic
 V této části vytvoříte soubor, který po nasazení popisuje výstup.
@@ -118,7 +118,7 @@ V Azure Cloud Shell proveďte následující kroky:
     }
    ```
 
-1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
+1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
 
 ## <a name="define-the-network-infrastructure-in-a-template"></a>Definování infrastruktury sítě v šabloně
 V této části vytvoříte v nové skupině prostředků Azure následující síťovou infrastrukturu:
@@ -176,7 +176,7 @@ V Azure Cloud Shell proveďte následující kroky:
    }
    ```
 
-1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
+1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
 
 ## <a name="provision-the-network-infrastructure"></a>Zřízení síťové infrastruktury
 Pomocí Azure Cloud Shell z adresáře, ve kterém jste vytvořili konfigurační soubory (. TF), proveďte následující kroky:
@@ -377,7 +377,7 @@ V Cloud Shell proveďte následující kroky:
     }
     ```
 
-1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
+1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
 
 1. Vytvořte plán Terraformu k vizualizaci nasazení škálovací sady virtuálních počítačů. (Budete muset zadat vlastní heslo a umístění pro vaše prostředky.)
 
@@ -496,7 +496,7 @@ V Cloud Shell proveďte následující kroky:
    }
    ```
 
-1. Uložte soubor ( **&lt;Ctrl > S**) a ukončete editor ( **&lt;Ctrl > Q**).
+1. Uložte soubor ( **&lt;ctrl >** ) a ukončete editor ( **&lt;CTRL > Q**).
 
 1. Nasaďte jumpbox.
 
@@ -524,4 +524,4 @@ Odstranění můžete trvat i několik minut.
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Terraformu v Azure](/azure/ansible/)
+> [Další informace o používání Terraformu v Azure](/azure/terraform)

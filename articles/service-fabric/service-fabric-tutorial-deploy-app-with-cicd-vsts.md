@@ -1,6 +1,6 @@
 ---
-title: Nasazení aplikace Service Fabric s využitím průběžné integrace a kanály Azure ve službě Azure | Dokumentace Microsoftu
-description: V tomto kurzu se dozvíte, jak nastavit průběžnou integraci a nasazování pro aplikaci Service Fabric pomocí Azure kanálů.
+title: Nasazení aplikace Service Fabric s průběžnou integrací a Azure Pipelines v Azure | Microsoft Docs
+description: V tomto kurzu se naučíte, jak nastavit průběžnou integraci a nasazování pro aplikaci Service Fabric pomocí Azure Pipelines.
 services: service-fabric
 documentationcenter: .net
 author: athinanthny
@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 184c57c0d9160cedef4be417f16c52c8635a1eb4
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 13411e813e96a1548b912c024f75404dd856fee1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68385287"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838955"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Kurz: Nasazení aplikace s CI/CD do clusteru Service Fabric
 
-Tento kurz je čtvrtou částí série a popisuje, jak nastavit průběžnou integraci a nasazování pro aplikaci Azure Service Fabric s využitím Azure kanály.  Potřebujete existující aplikaci Service Fabric. Jako příklad se používá aplikace vytvořená v tématu [Sestavení aplikace .NET](service-fabric-tutorial-create-dotnet-app.md).
+Tento kurz je čtvrtou částí série a popisuje, jak nastavit průběžnou integraci a nasazování pro aplikaci Azure Service Fabric pomocí Azure Pipelines.  Potřebujete existující aplikaci Service Fabric. Jako příklad se používá aplikace vytvořená v tématu [Sestavení aplikace .NET](service-fabric-tutorial-create-dotnet-app.md).
 
 Ve třetí části této série se naučíte:
 
@@ -50,7 +50,7 @@ Než začnete s tímto kurzem:
 * [Nainstalujte Visual Studio 2019](https://www.visualstudio.com/) a nainstalujte úlohy vývoje pro vývoj a vývoj pro **Azure** a vývoj **webů** .
 * [Nainstalujte sadu Service Fabric SDK](service-fabric-get-started.md).
 * Vytvořte v Azure cluster Service Fabric s Windows, například [podle tohoto kurzu](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
-* Vytvořte [organizaci Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student). To vám umožňuje vytvoření projektu v Azure DevOps a používat Azure kanály.
+* Vytvořte [organizaci Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student). To vám umožní vytvořit projekt ve službě Azure DevOps a použít Azure Pipelines.
 
 ## <a name="download-the-voting-sample-application"></a>Stažení ukázkové aplikace Voting
 
@@ -62,7 +62,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="prepare-a-publish-profile"></a>Příprava profilu publikování
 
-Teď, když jste [vytvořili aplikaci](service-fabric-tutorial-create-dotnet-app.md) a [nasadili jste tuto aplikaci do Azure](service-fabric-tutorial-deploy-app-to-party-cluster.md), jste připraveni nastavit průběžnou integraci.  Nejprve připravte profil publikování v rámci vaší aplikace pro použití, proces nasazení, který se spustí v rámci Azure kanály.  Profil publikování by měl být nakonfigurovaný tak, aby cílil na cluster, který jste předtím vytvořili.  Spusťte sadu Visual Studio a otevřete existující projekt aplikace Service Fabric.  V **Průzkumníku řešení** klikněte pravým tlačítkem na aplikaci a vyberte **Publikovat...**
+Teď, když jste [vytvořili aplikaci](service-fabric-tutorial-create-dotnet-app.md) a [nasadili jste tuto aplikaci do Azure](service-fabric-tutorial-deploy-app-to-party-cluster.md), jste připraveni nastavit průběžnou integraci.  Nejprve Připravte profil publikování v rámci aplikace pro použití procesem nasazení, který se provádí v rámci Azure Pipelines.  Profil publikování by měl být nakonfigurovaný tak, aby cílil na cluster, který jste předtím vytvořili.  Spusťte sadu Visual Studio a otevřete existující projekt aplikace Service Fabric.  V **Průzkumníku řešení** klikněte pravým tlačítkem na aplikaci a vyberte **Publikovat...**
 
 Zvolte v rámci projektu aplikace cílový profil, který se použije pro pracovní postup průběžné integrace, například Cloud.  Zadejte koncový bod připojení clusteru.  Zaškrtněte políčko **Upgradovat aplikaci**, aby se vaše aplikace upgradovala pro každé nasazení v Azure DevOps.  Kliknutím na hypertextový odkaz **Uložit** uložte nastavení do profilu publikování a pak kliknutím na **Zrušit** zavřete dialogové okno.
 
@@ -84,41 +84,41 @@ Ověřte svůj e-mail a v rozevíracím seznamu **Doména Azure DevOps** vyberte
 
 Publikováním úložiště se ve vašem účtu vytvoří nový projekt se stejným názvem jako místní úložiště. Pokud chcete úložiště vytvořit v existujícím projektu, klikněte na **Upřesnit** vedle **názvu úložiště** a vyberte projekt. Svůj kód můžete zobrazit na webu výběrem možnosti **Podívejte se na webu**.
 
-## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Nakonfigurujte průběžné doručování s Azure kanály
+## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Konfigurace průběžného doručování s Azure Pipelines
 
 Azure Pipelines kanál sestavení popisuje pracovní postup, který se skládá ze sady kroků sestavení, které jsou spouštěny postupně. Vytvořte kanál buildu, který vytvoří balíček aplikace Service Fabric a další artefakty pro nasazení do clusteru Service Fabric. Přečtěte si další informace o [kanálech buildu Azure Pipelines](https://www.visualstudio.com/docs/build/define/create). 
 
-Kanál verze Azure Pipelines popisuje pracovní postup, který nasadí balíček aplikace do clusteru. Při společném použití provedou kanál buildu a kanál verze celý pracovní postup od zdrojových souborů až po spuštění aplikace v clusteru. Další informace o [Azure kanály vydávání kanálů](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
+Kanál verze Azure Pipelines popisuje pracovní postup, který nasadí balíček aplikace do clusteru. Při společném použití provedou kanál buildu a kanál verze celý pracovní postup od zdrojových souborů až po spuštění aplikace v clusteru. Přečtěte si další informace o [Azure Pipelinesch kanálech vydávání verzí](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
 
 ### <a name="create-a-build-pipeline"></a>Vytvoření kanálu buildu
 
 Otevřete webový prohlížeč a přejděte do nového projektu na adrese: [https://&lt;váš_účet&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting).
 
-Vyberte **kanály** kartě pak **sestavení**, pak klikněte na tlačítko **nový kanál**.
+Vyberte kartu **kanály** a pak **sestavení**a pak klikněte na **Nový kanál**.
 
 ![Nový kanál][new-pipeline]
 
-Vyberte **úložiště Git v Azure** jako zdroj, **Voting** týmový projekt, **Voting** úložiště, a **hlavní** výchozí větev pro ruční a Plánovaná sestavení.  Pak klikněte na **Pokračovat**.
+Vyberte **Azure Repos Git** jako zdroj, **hlasovací** týmový projekt, **hlasovací** úložiště a **hlavní** výchozí větev pro ruční a plánovaná sestavení.  Pak klikněte na **Pokračovat**.
 
-![Vyberte úložiště][select-repo]
+![Vybrat úložiště][select-repo]
 
 V části **Vybrat šablonu** vyberte šablonu **Aplikace Azure Service Fabric** a klikněte na **Použít**.
 
 ![Výběr šablony sestavení][select-build-template]
 
-V **úlohy**, zadejte "Hostované VS2017" jako **fondu Agentských**.
+Do pole **úlohy**zadejte "hostované VS2017" jako **fond agentů**.
 
 ![Výběr úloh][save-and-queue]
 
-V části **Triggery** povolte průběžnou integraci zaškrtnutím políčka **Povolit průběžnou integraci**. V rámci **filtry větví**, **větev specifikace** výchozí hodnota je **hlavní**. Pokud chcete ručně spustit sestavení, vyberte **Uložit a zařadit do fronty**.
+V části **Triggery** povolte průběžnou integraci zaškrtnutím políčka **Povolit průběžnou integraci**. Ve **filtrech větví**je **specifikace větve** standardně **hlavní**. Pokud chcete ručně spustit sestavení, vyberte **Uložit a zařadit do fronty**.
 
 ![Výběr triggerů][save-and-queue2]
 
-Sestavení se aktivují také pro nasdílení změn nebo vrácení se změnami. Pokud chcete zkontrolovat průběh sestavení, přepněte na kartu **Sestavení**.  Jakmile ověříte, že se build úspěšně spouští, definujte kanál verze, který nasadí vaši aplikaci do clusteru.
+Sestavení se aktivují také pro nasdílení změn nebo vrácení se změnami. Chcete-li zjistit průběh sestavení, přepněte na kartu **sestavení** .  Jakmile ověříte, že se sestavení úspěšně spustí, definujte kanál verze, který nasadí vaši aplikaci do clusteru.
 
 ### <a name="create-a-release-pipeline"></a>Vytvoření kanálu verze
 
-Vyberte **kanály** kartě pak **verze**, pak **+ nový kanál**.  V části **Vybrat šablonu** vyberte ze seznamu šablonu **Nasazení Azure Service Fabric** a pak klikněte na **Použít**.
+Vyberte kartu **kanály** a pak **verze**a potom **+ Nový kanál**.  V části **Vybrat šablonu** vyberte ze seznamu šablonu **Nasazení Azure Service Fabric** a pak klikněte na **Použít**.
 
 ![Výběr šablony vydání][select-release-template]
 
@@ -144,7 +144,7 @@ Povolte trigger průběžného nasazování, aby se po dokončení sestavení au
 
 Výběrem **+ Vydání** -> **Vytvořit vydání** -> **Vytvořit** ručně vytvořte vydání. Průběh vydání můžete sledovat na kartě **Vydání**.
 
-Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte na adresu [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170616.3.
+Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte na `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170616.3.
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>Potvrzení a nasdílení změn, aktivace vydání
 
@@ -156,15 +156,15 @@ V zobrazení **Změny** v Team Exploreru přidejte zprávu s popisem vaší aktu
 
 ![Potvrdit vše][changes]
 
-Vyberte ikonu nepublikovaných změn (![Nepublikované změny][unpublished-changes]) na stavovém řádku nebo zobrazení Synchronizace v Team Exploreru. Vyberte **Push** a aktualizujte svůj kód v kanálech Azure.
+Vyberte ikonu nepublikovaných změn (![Nepublikované změny][unpublished-changes]) na stavovém řádku nebo zobrazení Synchronizace v Team Exploreru. Vyberte možnost **push** a aktualizujte kód v Azure Pipelines.
 
 ![Nasdílení změn][push]
 
-Nasdílením změn do kanálů Azure automaticky aktivuje sestavení.  Po úspěšném dokončení kanálu buildu se automaticky vytvoří verze a začne se upgradovat aplikace v clusteru.
+Vložení změn do Azure Pipelines automaticky aktivuje sestavení.  Po úspěšném dokončení kanálu buildu se automaticky vytvoří verze a začne se upgradovat aplikace v clusteru.
 
 Pokud chcete zkontrolovat průběh sestavení, přepněte v **Team Exploreru** v sadě Visual Studio na kartu **Sestavení**.  Jakmile ověříte, že se build úspěšně spouští, definujte kanál verze, který nasadí vaši aplikaci do clusteru.
 
-Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte na adresu [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170815.3.
+Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte na `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170815.3.
 
 ![Service Fabric Explorer][sfx1]
 
@@ -180,7 +180,7 @@ Upgrade aplikace může trvat několik minut. Po dokončení upgradu bude aplika
 
 ![Service Fabric Explorer][sfx3]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

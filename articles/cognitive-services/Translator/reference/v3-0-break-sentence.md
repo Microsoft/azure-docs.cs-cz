@@ -1,7 +1,7 @@
 ---
 title: Translator Text API metoda BreakSentence
 titleSuffix: Azure Cognitive Services
-description: Použijte metodu Translator Text API BreakSentence.
+description: Metoda Translator Text API BreakSentence určuje umístění hranic věty v části textu.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 184677589b3aa777ec556215455f8018e0d71f3f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: b4eb083b0f98112274a5d00631af8662ff5c063a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934045"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835887"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Translator Text API 3,0: BreakSentence
 
@@ -23,7 +23,7 @@ Určuje umístění vět v části textu.
 
 ## <a name="request-url"></a>Adresa URL požadavku
 
-`POST` Odeslat požadavek na:
+Odeslat žádost o `POST`:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
@@ -37,15 +37,15 @@ Parametry žádosti předané řetězci dotazu jsou:
   <th width="20%">Parametr dotazu</th>
   <th>Popis</th>
   <tr>
-    <td>api-version</td>
+    <td>verze API-Version</td>
     <td>*Požadovaný parametr dotazu*.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být `3.0`.</td>
   </tr>
   <tr>
-    <td>jazyk</td>
+    <td>language</td>
     <td>*Volitelný parametr dotazu*.<br/>Značka jazyka identifikující jazyk vstupního textu. Pokud není zadán kód, použije se automatické rozpoznávání jazyka.</td>
   </tr>
   <tr>
-    <td>script</td>
+    <td>.</td>
     <td>*Volitelný parametr dotazu*.<br/>Značka skriptu identifikující skript používaný vstupním textem Pokud není zadán skript, předpokládá se výchozí skript jazyka.</td>
   </tr>
 </table> 
@@ -53,7 +53,7 @@ Parametry žádosti předané řetězci dotazu jsou:
 Hlavičky požadavku zahrnují:
 
 <table width="100%">
-  <th width="20%">Záhlaví</th>
+  <th width="20%">Hlavičky</th>
   <th>Popis</th>
   <tr>
     <td>Ověřovací hlavičky (y)</td>
@@ -68,14 +68,14 @@ Hlavičky požadavku zahrnují:
     <td>*Požadovaná hlavička žádosti*<br/>Délka textu žádosti</td>
   </tr>
   <tr>
-    <td>X-ClientTraceId</td>
+    <td>X – ClientTraceId</td>
     <td>*Volitelné*.<br/>Identifikátor GUID generovaný klientem pro jednoznačnou identifikaci požadavku. Všimněte si, že tuto hlavičku můžete vynechat, pokud zahrnete ID trasování do řetězce dotazu pomocí parametru dotazu s názvem `ClientTraceId`.</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>Text požadavku
 
-Tělo požadavku je pole JSON. Každý prvek pole je objekt JSON s vlastností řetězce s názvem `Text`. Pro hodnotu `Text` vlastnosti jsou vypočítány hranice věty. Vzorový text žádosti s jedním textem vypadá nějak takto:
+Tělo požadavku je pole JSON. Každý prvek pole je objekt JSON s vlastností řetězce s názvem `Text`. Pro hodnotu vlastnosti `Text` jsou vypočítány hranice věty. Vzorový text žádosti s jedním textem vypadá nějak takto:
 
 ```json
 [
@@ -88,21 +88,21 @@ Platí následující omezení:
 * Pole může mít maximálně 100 prvků.
 * Textová hodnota prvku pole nesmí být delší než 10 000 znaků včetně mezer.
 * Celý text zahrnutý v požadavku nesmí být delší než 50 000 znaků včetně mezer.
-* Je-li zadán parametr dotazu,všechnyprvkypolemusíbýtvestejnémjazyce.`language` V opačném případě se automatické zjišťování jazyka aplikuje na každý prvek pole nezávisle.
+* Pokud je zadán parametr dotazu `language`, všechny prvky pole musí být ve stejném jazyce. V opačném případě se automatické zjišťování jazyka aplikuje na každý prvek pole nezávisle.
 
-## <a name="response-body"></a>Text odpovědi
+## <a name="response-body"></a>Tělo odpovědi
 
 Úspěšná odpověď je pole JSON s jedním výsledkem pro každý řetězec ve vstupním poli. Objekt výsledku obsahuje následující vlastnosti:
 
-  * `sentLen`: Pole celých čísel reprezentující délky vět v textovém elementu. Délka pole je počet vět a hodnoty jsou délkou jednotlivých vět. 
+  * `sentLen`: pole celých čísel představující délky vět v textovém elementu. Délka pole je počet vět a hodnoty jsou délkou jednotlivých vět. 
 
-  * `detectedLanguage`: Objekt popisující zjištěný jazyk prostřednictvím následujících vlastností:
+  * `detectedLanguage`: objekt popisující zjištěný jazyk prostřednictvím následujících vlastností:
 
-     * `language`: Kód zjištěného jazyka.
+     * `language`: kód zjištěného jazyka.
 
-     * `score`: Hodnota typu float označující důvěru ve výsledku. Skóre je v rozsahu 0 až 1 a nízké skóre indikuje nízkou důvěru.
+     * `score`: hodnota typu float označující důvěru ve výsledku. Skóre je v rozsahu 0 až 1 a nízké skóre indikuje nízkou důvěru.
      
-    Všimněte si, `detectedLanguage` že vlastnost je přítomna pouze v objektu výsledek, pokud je požadováno automatické zjišťování jazyka.
+    Všimněte si, že vlastnost `detectedLanguage` je přítomna pouze v objektu Result, pokud je požadováno automatické zjišťování jazyka.
 
 Příklad odpovědi JSON:
 
@@ -121,7 +121,7 @@ Příklad odpovědi JSON:
 ## <a name="response-headers"></a>Hlavičky odpovědi
 
 <table width="100%">
-  <th width="20%">Záhlaví</th>
+  <th width="20%">Hlavičky</th>
   <th>Popis</th>
   <tr>
     <td>X-RequestId</td>
@@ -138,7 +138,7 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
   <th>Popis</th>
   <tr>
     <td>200</td>
-    <td>Úspěšné</td>
+    <td>Úspěch</td>
   </tr>
   <tr>
     <td>400</td>
@@ -146,7 +146,7 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
   </tr>
   <tr>
     <td>401</td>
-    <td>Žádost nešlo ověřit. Ověřte, jestli jsou přihlašovací údaje zadané a platné.</td>
+    <td>Požadavek nebylo možné ověřit. Ověřte, jestli jsou přihlašovací údaje zadané a platné.</td>
   </tr>
   <tr>
     <td>403</td>
@@ -158,11 +158,11 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
   </tr>
   <tr>
     <td>500</td>
-    <td>Došlo k neočekávané chybě. Pokud chyba přetrvává, ohlaste ji pomocí: datum a čas selhání, identifikátor požadavku z hlavičky `X-RequestId`odpovědi a identifikátor klienta z hlavičky `X-ClientTraceId`požadavku.</td>
+    <td>Došlo k neočekávané chybě. Pokud chyba přetrvává, ohlaste ji pomocí: datum a čas selhání, identifikátor požadavku z hlavičky odpovědi `X-RequestId`a identifikátor klienta z hlavičky žádosti `X-ClientTraceId`.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Server je dočasně nedostupný. Opakujte požadavek. Pokud chyba přetrvává, ohlaste ji pomocí: datum a čas selhání, identifikátor požadavku z hlavičky `X-RequestId`odpovědi a identifikátor klienta z hlavičky `X-ClientTraceId`požadavku.</td>
+    <td>Server je dočasně nedostupný. Opakujte požadavek. Pokud chyba přetrvává, ohlaste ji pomocí: datum a čas selhání, identifikátor požadavku z hlavičky odpovědi `X-RequestId`a identifikátor klienta z hlavičky žádosti `X-ClientTraceId`.</td>
   </tr>
 </table> 
 

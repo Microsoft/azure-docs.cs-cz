@@ -1,7 +1,7 @@
 ---
-title: Správa účet služby Video Indexer
-titlesuffix: Azure Media Services
-description: Tento článek ukazuje, jak spravovat připojení k Azure účet služby Video Indexer.
+title: Správa účtu Video Indexer
+titleSuffix: Azure Media Services
+description: Tento článek popisuje, jak spravovat účet Video Indexer připojený k Azure.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,72 +10,72 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 37aef7c0ae06aefc69b8a72a80c8ade3951e8b0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8221cdcf7afe82ee969f645d7f459c69519711d
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799521"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838972"
 ---
-# <a name="manage-a-video-indexer-account-connected-to-azure"></a>Správa připojení k Azure účet služby Video Indexer
+# <a name="manage-a-video-indexer-account-connected-to-azure"></a>Správa účtu Video Indexer připojeného k Azure
 
-Tento článek ukazuje, jak spravovat účet služby Video Indexer, který je připojený ke svému předplatnému Azure a účet Azure Media Services.
+Tento článek ukazuje, jak spravovat účet Video Indexer, který je připojený k vašemu předplatnému Azure a účet Azure Media Services.
 
 > [!NOTE]
-> Musíte být vlastníkem účtu Video Indexer účtu udělat změny konfigurace, které jsou popsané v tomto tématu.
+> Musíte být vlastníkem účtu Video Indexer, abyste mohli provádět úpravy konfigurace účtu popsané v tomto tématu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Připojení k Azure, váš účet služby Video Indexer, jak je popsáno v [připojení k Azure](connect-to-azure.md). 
+Připojte svůj účet Video Indexer k Azure, jak je popsáno v tématu [připojení k Azure](connect-to-azure.md). 
 
-Ujistěte se, že chcete postupovat podle [požadavky](connect-to-azure.md#prerequisites) a zkontrolujte [aspekty](connect-to-azure.md#considerations) v následujícím článku.
+Ujistěte se, že [splňujete požadavky](connect-to-azure.md#prerequisites) a Projděte si [pokyny](connect-to-azure.md#considerations) v článku.
 
-## <a name="examine-account-settings"></a>Zkontrolujte nastavení účtu
+## <a name="examine-account-settings"></a>Kontrola nastavení účtu
 
-Tento oddíl se zabývá nastavení váš účet služby Video Indexer.
+Tato část prověřuje nastavení účtu Video Indexer.
 
-Chcete-li zobrazit nastavení:
+Zobrazení nastavení:
 
-1. Klikněte na ikonu uživatele v pravém horním rohu a vyberte **nastavení**.
+1. Klikněte na ikonu uživatele v pravém horním rohu a vyberte **Nastavení**.
 
     ![Nastavení](./media/manage-account-connected-to-azure/select-settings.png)
 
-2. Na **nastavení** stránky, vyberte **účet** kartu.
+2. Na stránce **Nastavení** vyberte kartu **účet** .
 
-Pokud váš účet služby video Indexer je připojená k Azure, najdete tady:
+Pokud je váš účet indexeru videí připojený k Azure, zobrazí se následující:
 
-* Název základního účtu Azure Media Services.
-* Počet úlohách indexování spuštěná a zařazeny do fronty.
-* Počet a typ přidělené rezervovaných jednotek.
+* Název podkladového účtu Azure Media Services.
+* Počet spuštěných úloh indexování a zařazených do fronty.
+* Počet a typ přidělených rezervovaných jednotek.
 
-Pokud váš účet potřebuje některé změny, zobrazí se příslušné chyby a upozornění o konfiguraci vašeho účtu na **nastavení** stránky. Zprávy obsahují odkazy na přesné místa na webu Azure portal, kde je potřeba provést změny. Další informace najdete v tématu [chyby a upozornění](#errors-and-warnings) v následující části.
+Pokud váš účet potřebuje nějaké úpravy, zobrazí se na stránce **Nastavení** relevantní chyby a upozornění týkající se konfigurace vašeho účtu. Zprávy obsahují odkazy na přesná místa v Azure Portal, kde je třeba provést změny. Další informace najdete v části [chyby a upozornění](#errors-and-warnings) , která následují.
 
-## <a name="auto-scale-reserved-units"></a>Automatické škálování rezervované jednotky
+## <a name="auto-scale-reserved-units"></a>Jednotky rezervované pro automatické škálování
 
-**Nastavení** stránky umožňuje, aby nastavení automatického škálování o rezervované jednotky médií (RU). Pokud je daná možnost **na**, můžete přidělit maximální počet jednotek ru a ujistěte se, že Video Indexer zastavení/spuštění ru automaticky. Pomocí této možnosti neplaťte peníze navíc za dobu nečinnosti, ale také nechcete čekat indexování úloh dokončete delší dobu při indexování je vysoké.
+Stránka **Nastavení** vám umožní nastavit automatické škálování rezervovaných jednotek médií (ru). Pokud je tato možnost **zapnutá**, můžete přidělit maximální počet ru a ujistit se, že video indexer zastaví nebo spustí ru automaticky. Pomocí této možnosti neplatíte za dobu nečinnosti další peníze, ale nečekáte na dokončení úloh indexování, pokud je zatížení indexu vysoké.
 
-Automatické škálování nejsou adekvátní pod 1 RU nebo nad výchozí omezení účtu Media Services. Pokud chcete zvýšit limit, vytvořte žádost o službu. Informace o omezení a kvóty a tom, jak vytvořit lístek podpory najdete v tématu [kvóty a omezení](../../media-services/previous/media-services-quotas-and-limitations.md).
+Automatické škálování nemění škálu pod 1 RU nebo vyšší než výchozí limit Media Services účtu. Aby bylo možné tento limit zvýšit, vytvořte žádost o služby. Informace o kvótách a omezeních a o tom, jak otevřít lístek podpory, najdete v tématu [kvóty a omezení](../../media-services/previous/media-services-quotas-and-limitations.md).
 
 ![Registrace](./media/manage-account-connected-to-azure/autoscale-reserved-units.png)
 
 ## <a name="errors-and-warnings"></a>Chyby a upozornění
 
-Pokud váš účet potřebuje některé změny, se zobrazí relevantní chyby a upozornění o konfiguraci vašeho účtu na **nastavení** stránky. Zprávy obsahují odkazy na přesné místa na webu Azure portal, kde je potřeba provést změny. Tato část poskytuje další podrobnosti o chybě a upozornění.
+Pokud váš účet potřebuje nějaké úpravy, zobrazí se na stránce **Nastavení** relevantní chyby a upozornění týkající se konfigurace vašeho účtu. Zprávy obsahují odkazy na přesná místa v Azure Portal, kde je třeba provést změny. Tato část obsahuje další podrobnosti o chybách a upozorněních.
 
 * Event Grid
 
-    Je nutné provést registraci poskytovatele prostředků EventGrid pomocí webu Azure portal. V [webu Azure portal](https://portal.azure.com/), přejděte na stránku **předplatná** > [předplatné] > **ResourceProviders** > **Microsoft.EventGrid**. Pokud není v **registrované** stavu, klikněte na tlačítko **zaregistrovat**. Trvá několik minut, než se registrace. 
+    Je nutné zaregistrovat poskytovatele prostředků EventGrid pomocí Azure Portal. V [Azure Portal](https://portal.azure.com/)přejít na **předplatná** > [předplatné] > **ResourceProviders** > **Microsoft. EventGrid**. Pokud není v **zaregistrovaném** stavu, klikněte na **zaregistrovat**. Registrace může trvat několik minut. 
 
 * Koncový bod streamování
 
-    Ujistěte se, že podkladového účtu Media Services má výchozí **koncový bod streamování** ve spuštěném stavu. V opačném případě nebude možné sledovat videa z tohoto účtu Media Services nebo v Video Indexer.
+    Ujistěte se, že základní účet Media Services má výchozí **koncový bod streamování** v počátečním stavu. V opačném případě nebudete moci sledovat videa z tohoto Media Services účtu nebo v Video Indexer.
 
 * Rezervované jednotky médií 
 
-    Je třeba přiřadit rezervovaných jednotek médií pro váš prostředek mediálních služeb v pořadí pro index videa. Pro zajištění optimálního výkonu indexování doporučuje se přidělit minimálně 10 rezervovaných jednotek S3. Informace o cenách najdete v části Nejčastější dotazy týkající [ceny služby Media Services](https://azure.microsoft.com/pricing/details/media-services/) stránky.   
+    Aby bylo možné indexovat videa, musíte v prostředku Media Service přidělit rezervované jednotky médií. Pro zajištění optimálního výkonu indexování doporučujeme přidělit aspoň 10 rezervovaných jednotek S3. Informace o cenách najdete v části Nejčastější dotazy stránky s [cenami Media Services](https://azure.microsoft.com/pricing/details/media-services/) .   
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Můžete pracovat prostřednictvím kódu programu pomocí zkušebního účtu nebo s Video Indexer účty, které jsou připojené do azure pomocí následujících pokynů: [Použití rozhraní API](video-indexer-use-apis.md).
+Můžete programově spolupracovat s vaším zkušebním účtem a/nebo s účty Video Indexer, které jsou připojené k Azure, podle pokynů v části: [použití rozhraní API](video-indexer-use-apis.md).
 
-Měli byste použít stejné uživatele Azure AD, který jste použili při připojování ke službě Azure.
+Měli byste použít stejného uživatele Azure AD, kterého jste použili při připojování k Azure.

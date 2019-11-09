@@ -8,19 +8,19 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 10/15/2019
-ms.openlocfilehash: 31c3cd944651b9ba4ca4fcaa275e5b0ccedd947c
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 11/06/2019
+ms.openlocfilehash: ded95800c482d43fcaf27993869f1e71eee68f47
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72559434"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73831825"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Plánování kanálů strojového učení pomocí sady Azure Machine Learning SDK pro Python
 
 V tomto článku se dozvíte, jak programově naplánovat spuštění kanálu v Azure. Můžete zvolit vytvoření plánu na základě uplynulého času nebo změny systému souborů. Plány založené na čase se dají využít k zajištění běžné úlohy, jako je monitorování pro posun dat. Plány založené na změnách lze použít k reakci na nepředvídatelné nebo nepředvídatelné změny, například na nahrávání nových dat nebo při úpravách starých dat. Po získání informací o tom, jak vytvořit plány, se dozvíte, jak je načíst a deaktivovat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 
@@ -54,7 +54,7 @@ pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 
 ## <a name="create-a-schedule"></a>Vytvořit plán
 
-Pro opakované spuštění kanálu vytvoříte plán. @No__t_0 přidruží kanál, experiment a Trigger. Trigger může být buď `ScheduleRecurrence`, který popisuje čekání mezi běhy nebo cestou úložiště dat, která určuje adresář, ve kterém se mají sledovat změny. V obou případech budete potřebovat identifikátor kanálu a název experimentu, ve kterém chcete plán vytvořit.
+Pro opakované spuštění kanálu vytvoříte plán. `Schedule` přidruží kanál, experiment a Trigger. Trigger může být buď`ScheduleRecurrence`, který popisuje čekání mezi běhy nebo cestou úložiště dat, která určuje adresář, ve kterém se mají sledovat změny. V obou případech budete potřebovat identifikátor kanálu a název experimentu, ve kterém chcete plán vytvořit.
 
 ### <a name="create-a-time-based-schedule"></a>Vytvoření plánu založeného na čase
 
@@ -94,9 +94,9 @@ Kromě výše popsaných argumentů můžete nastavit argument `status`, aby `"D
 
 ## <a name="view-your-scheduled-pipelines"></a>Zobrazit naplánované kanály
 
-Ve webovém prohlížeči přejděte do pracovního prostoru služby Machine Learning. V části **assets (prostředky** ) v navigačním panelu vyberte **kanály**. Tento odkaz vás přesměruje na seznam kanálů publikovaných v pracovním prostoru.
+Ve webovém prohlížeči přejděte na Azure Machine Learning. V části **koncové body** v navigačním panelu vyberte možnost **koncové body kanálu**. Tím přejdete na seznam kanálů publikovaných v pracovním prostoru.
 
-![Stránka s kanály v pracovním prostoru](media/how-to-schedule-a-pipeline/pipelines-list.png)
+![Stránka kanálů v AML](media/how-to-schedule-pipelines/scheduled-pipelines.png)
 
 Na této stránce si můžete prohlédnout souhrnné informace o všech kanálech v pracovním prostoru: názvy, popisy, stav a tak dále. Kliknutím na svůj kanál přejděte k podrobnostem. Na výsledné stránce jsou k dispozici další podrobnosti o vašem kanálu a můžete přejít k podrobnostem o jednotlivých spuštěních.
 
@@ -134,7 +134,7 @@ Pokud pak znovu spustíte `Schedule.list(ws)`, měli byste získat prázdný sez
 
 V tomto článku jste použili sadu SDK Azure Machine Learning pro Python k naplánování kanálu dvěma různými způsoby. Jeden plán se opakuje na základě uplynulých časových taktů. Druhý plán se spustí, pokud je soubor změněn v zadaném `Datastore` nebo v adresáři v tomto úložišti. Zjistili jste, jak použít portál k prohlédnutí kanálu a jednotlivých spuštění. Nakonec jste zjistili, jak zakázat plán, aby kanál přestal běžet.
 
-Další informace:
+Další informace naleznete v tématu:
 
 > [!div class="nextstepaction"]
 > [Použití Azure Machine Learningch kanálů pro dávkové vyhodnocování](tutorial-pipeline-batch-scoring-classification.md)

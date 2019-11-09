@@ -1,7 +1,7 @@
 ---
 title: Použití rozpoznávání entit s rozhraní API pro analýzu textu
 titleSuffix: Azure Cognitive Services
-description: Naučte se rozpoznávat entity pomocí Analýza textu REST API.
+description: Zjistěte, jak identifikovat a odstranit identitu entity, která se nachází v textu s Analýza textu REST API.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: aahi
-ms.openlocfilehash: e51e5945df8b08ec81db0c85416b31b3ec788ffd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b139f473bb20dbecde75c3b08dd92371849f096e
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488646"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835670"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
@@ -25,7 +25,7 @@ ms.locfileid: "73488646"
 
 Koncový bod Analýza textu `entities` podporuje rozpoznávání pojmenovaných entit (NER) i propojení entit.
 
-### <a name="entity-linking"></a>Propojování entit
+### <a name="entity-linking"></a>Propojení entit
 Propojení entit je schopnost identifikovat a odstranit identitu entity nalezenou v textu (například určit, zda je služba Mars používána jako globálním nebo jako Římská jsou of War). Tento proces vyžaduje přítomnost znalostní báze, ke které jsou propojené entity připojené – Wikipedii se používá jako znalostní báze Analýza textu koncového bodu `entities`.
 
 ### <a name="named-entity-recognition-ner"></a>Rozpoznávání pojmenovaných entit (NER)
@@ -99,9 +99,9 @@ Propojení entit
 > [!NOTE]
 > Následující entity jsou podporovány funkcí rozpoznávání pojmenovaných entit (NER) verze 2. [Ner V3](#named-entity-recognition-v3-public-preview) je ve verzi Public Preview a významně rozšiřuje počet a hloubku entit rozpoznaných v textu.   
 
-| Typ  | Podtyp | Příklad: |
+| Typ  | Podtyp | Příklad |
 |:-----------   |:------------- |:---------|
-| Osoba        | Není k dispozici\*         | Jan, vyúčtování Branch     |
+| Person (Osoba)        | Není k dispozici\*         | Jan, vyúčtování Branch     |
 | Umístění      | Není k dispozici\*         | "Redmond, Washington", "Paříž"  |
 | Organizace  | Není k dispozici\*         | "Microsoft"   |
 | Množství      | Číslo        | "6", "šest"     |
@@ -111,15 +111,15 @@ Propojení entit
 | Množství      | Měna      | "10,99 USD"     |
 | Množství      | Dimenze     | "10 mil", "40 cm"     |
 | Množství      | Teplota   | "32 stupňů"    |
-| Datum a čas      | Není k dispozici\*         | "4. února 2012 – 18:30"      |
-| Datum a čas      | Datum          | "2. května 2017", "2. 5. 2017"   |
-| Datum a čas      | Time          | "8:00", "8:00"  |
-| Datum a čas      | Rozsah dat     | "2. května až 5. května"    |
-| Datum a čas      | Časový rozsah     | "18:00 až 19:00"     |
-| Datum a čas      | Délka      | "1 minuta a 45 sekund"   |
-| Datum a čas      | Sada           | "každé úterý"     |
-| Adresa URL           | Není k dispozici\*         | "https:\//www.bing.com"    |
-| E-mail         | Není k dispozici\*         | support@contoso.com |
+| DateTime      | Není k dispozici\*         | "4. února 2012 – 18:30"      |
+| DateTime      | Datum          | "2. května 2017", "2. 5. 2017"   |
+| DateTime      | Time          | "8:00", "8:00"  |
+| DateTime      | Rozsah dat     | "2. května až 5. května"    |
+| DateTime      | Časový rozsah     | "18:00 až 19:00"     |
+| DateTime      | Doba trvání      | "1 minuta a 45 sekund"   |
+| DateTime      | Sada           | "každé úterý"     |
+| zprostředkovatele identity           | Není k dispozici\*         | "https:\//www.bing.com"    |
+| Email         | Není k dispozici\*         | support@contoso.com |
 
 \* v závislosti na vstupních a extrahovaných entitách, mohou některé entity vynechat `SubType`.  Všechny uvedené podporované typy entit jsou k dispozici pouze pro jazyky anglické, zjednodušené, francouzštiny, němčiny a španělštiny.
 

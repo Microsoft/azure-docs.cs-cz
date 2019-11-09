@@ -7,21 +7,21 @@ ms.topic: reference
 author: rboucher
 ms.author: robb
 ms.date: 09/20/2018
-ms.openlocfilehash: 1d378571a02f30c223338eef5c7d142ed02ff4c8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 3d79fe6a415b7d1f862797bf41caed89bfe50a41
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555551"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834750"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure Diagnostics 1,3 a novější schéma konfigurace
 > [!NOTE]
 > Rozšíření Azure Diagnostics je komponenta používaná ke shromažďování čítačů výkonu a dalších statistik z:
 > - Azure Virtual Machines
-> - Virtual Machine Scale Sets
+> - Škálovací sady virtuálních počítačů
 > - Service Fabric
 > - Cloud Services
-> - Skupiny zabezpečení sítě
+> - Network Security Groups (Skupiny zabezpečení sítě)
 >
 > Tato stránka je relevantní pouze v případě, že používáte některou z těchto služeb.
 
@@ -411,7 +411,7 @@ Přidáno ve verzi 1,3.
 Element nejvyšší úrovně konfiguračního souboru diagnostiky.  
 
 **Atribut** xmlns-obor názvů XML pro konfigurační soubor diagnostiky je:  
-http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration  
+`http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration`
 
 
 |Podřízené elementy|Popis|  
@@ -516,8 +516,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**Absolutně**|Absolutní cesta k adresáři, který se má monitorovat Jsou vyžadovány následující atributy:<br /><br /> **cesta** -  – absolutní cesta k adresáři, který se má monitorovat<br /><br /> - **expandEnvironment** – konfiguruje, zda jsou proměnné prostředí v cestě rozbaleny.|  
-|**LocalResource**|Cesta relativní k místnímu prostředku, který se má monitorovat Požadované atributy jsou:<br /><br /> **název** -  – místní prostředek, který obsahuje adresář, který se má monitorovat<br /><br /> - **RelativePath** – cesta relativní k názvu, který obsahuje adresář, který se má monitorovat|  
+|**Absolutně**|Absolutní cesta k adresáři, který se má monitorovat Jsou vyžadovány následující atributy:<br /><br /> **cesta** - – absolutní cesta k adresáři, který se má monitorovat<br /><br /> - **expandEnvironment** – konfiguruje, zda jsou proměnné prostředí v cestě rozbaleny.|  
+|**LocalResource**|Cesta relativní k místnímu prostředku, který se má monitorovat Požadované atributy jsou:<br /><br /> **název** - – místní prostředek, který obsahuje adresář, který se má monitorovat<br /><br /> - **RelativePath** – cesta relativní k názvu, který obsahuje adresář, který se má monitorovat|  
 
 
 
@@ -560,7 +560,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Umožňuje vygenerovat tabulku čítače výkonu, která je optimalizována pro rychlé dotazy. Každý čítač výkonu, který je definován v elementu **čítače výkonu** , je uložen v tabulce metrik společně s tabulkou čítače výkonu.  
 
- Atribut **ResourceID** je povinný.  ID prostředku virtuálního počítače nebo sady škálování virtuálních počítačů, do které nasazujete Azure Diagnostics. Získá **ResourceID** z [Azure Portal](https://portal.azure.com). Vyberte **procházet**  -> **skupiny prostředků**  ->  **< název \>** . Klikněte na dlaždici **vlastnosti** a zkopírujte hodnotu z pole **ID** .  
+ Atribut **ResourceID** je povinný.  ID prostředku virtuálního počítače nebo sady škálování virtuálních počítačů, do které nasazujete Azure Diagnostics. Získá **ResourceID** z [Azure Portal](https://portal.azure.com). Vyberte **procházet** -> **skupiny prostředků** ->  **< název\>** . Klikněte na dlaždici **vlastnosti** a zkopírujte hodnotu z pole **ID** .  
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
@@ -579,7 +579,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Podřízený element|Popis|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|Jsou vyžadovány následující atributy:<br /><br /> - **counterSpecifier** – název čítače výkonu. Například, `\Processor(_Total)\% Processor Time`. Chcete-li získat seznam čítačů výkonu na hostiteli, spusťte příkaz `typeperf`.<br /><br /> - **sampleRate** – jak často se má čítač vzorkovat.<br /><br /> Volitelný atribut:<br /><br /> **jednotka** – Měrná jednotka čítače.|
+|**PerformanceCounterConfiguration**|Jsou vyžadovány následující atributy:<br /><br /> - **counterSpecifier** – název čítače výkonu. například `\Processor(_Total)\% Processor Time`. Chcete-li získat seznam čítačů výkonu na hostiteli, spusťte příkaz `typeperf`.<br /><br /> - **sampleRate** – jak často se má čítač vzorkovat.<br /><br /> Volitelný atribut:<br /><br /> **jednotka** – Měrná jednotka čítače.|
 |**jímky** | Přidáno v 1,5. Volitelné. Odkazuje na umístění jímky, aby bylo možné také odeslat diagnostická data. Například Azure Monitor nebo Event Hubs.|    
 
 
@@ -594,7 +594,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Podřízený element|Popis|  
 |-------------------|-----------------|  
-|**Datového**|Protokoly událostí systému Windows, které mají být shromažďovány. Požadovaný atribut:<br /><br /> **název** – dotaz XPath popisující události systému Windows, které mají být shromažďovány. Například:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Chcete-li shromáždit všechny události, zadejte "*"|  
+|**Datového**|Protokoly událostí systému Windows, které mají být shromažďovány. Požadovaný atribut:<br /><br /> **název** – dotaz XPath popisující události systému Windows, které mají být shromažďovány. Příklad:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Chcete-li shromáždit všechny události, zadejte "*"|  
 
 
 
@@ -640,12 +640,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
-|**Jméno**|string|Řetězec identifikující jímku.|  
+|**Jméno**|řetězec|Řetězec identifikující jímku.|  
 
-|Element|Typ|Popis|  
+|Prvek|Typ|Popis|  
 |-------------|----------|-----------------|  
-|**Application Insights**|string|Používá se pouze při odesílání dat do Application Insights. Obsahuje klíč instrumentace pro aktivní účet Application Insights, ke kterému máte přístup.|  
-|**Barev**|string|Jedno pro každé další filtrování, které je datového proudu|  
+|**Application Insights**|řetězec|Používá se pouze při odesílání dat do Application Insights. Obsahuje klíč instrumentace pro aktivní účet Application Insights, ke kterému máte přístup.|  
+|**Barev**|řetězec|Jedno pro každé další filtrování, které je datového proudu|  
 
 ## <a name="channels-element"></a>Element Channels  
  *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-jímka – kanály*
@@ -654,9 +654,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Definuje filtry pro streamování dat protokolu procházející jímkou.  
 
-|Element|Typ|Popis|  
+|Prvek|Typ|Popis|  
 |-------------|----------|-----------------|  
-|**Kanál**|string|Viz popis jinde na této stránce.|  
+|**Kanál**|řetězec|Viz popis jinde na této stránce.|  
 
 ## <a name="channel-element"></a>Element kanálu
  *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-jímka-kanály-kanál*
@@ -676,13 +676,13 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Přidáno ve verzi 1,3.  
 
- Volitelné  
+ Nepovinné  
 
  Ukládá soukromé údaje o účtu úložiště (název, klíč a koncový bod). Tyto informace se odesílají do virtuálního počítače, ale nedají se z něho načíst.  
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**StorageAccount**|Účet úložiště, který se má použít. Jsou vyžadovány následující atributy.<br /><br /> **název** -  – název účtu úložiště.<br /><br /> - **Key** – klíč k účtu úložiště.<br /><br /> - **koncový bod** – koncový bod pro přístup k účtu úložiště. <br /><br /> -**sasToken** (přidání 1.8.1) – v privátní konfiguraci můžete místo klíče účtu úložiště zadat token SAS. Pokud je zadaný, klíč účtu úložiště se ignoruje. <br />Požadavky na token SAS: <br />– Podporuje jenom token SAS účtu. <br />jsou požadovány typy služeb - *b*, *t* . <br /> - *a*, *c*, *u*, se vyžadují oprávnění *w* . <br /> -  jsou požadovány *typy prostředků* *c*. <br /> – Podporuje jenom protokol HTTPS. <br /> – Čas zahájení a vypršení platnosti musí být platný.|  
+|**StorageAccount**|Účet úložiště, který se má použít. Jsou vyžadovány následující atributy.<br /><br /> **název** - – název účtu úložiště.<br /><br /> - **Key** – klíč k účtu úložiště.<br /><br /> - **koncový bod** – koncový bod pro přístup k účtu úložiště. <br /><br /> -**sasToken** (přidání 1.8.1) – v privátní konfiguraci můžete místo klíče účtu úložiště zadat token SAS. Pokud je zadaný, klíč účtu úložiště se ignoruje. <br />Požadavky na token SAS: <br />– Podporuje jenom token SAS účtu. <br />jsou požadovány typy služeb - *b*, *t* . <br /> - *a*, *c*, *u*, se vyžadují oprávnění *w* . <br /> - jsou požadovány *typy prostředků* *c*. <br /> – Podporuje jenom protokol HTTPS. <br /> – Čas zahájení a vypršení platnosti musí být platný.|  
 
 
 ## <a name="isenabled-element"></a>Nepovolený element  

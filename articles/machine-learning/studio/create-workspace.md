@@ -1,6 +1,6 @@
 ---
 title: Vytvoření pracovního prostoru
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Pokud chcete použít Azure Machine Learning Studio (Classic), musíte mít pracovní prostor Machine Learning Studio (Classic). Tento pracovní prostor obsahuje nástroje potřebné k vytváření, správě a publikování experimentů.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: c5aa5a0ea4a74c2047e600fa3c46e226d12f69c0
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1652febf6c3eb906990b2405590274911a45348e
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647101"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839918"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>Vytvoření a sdílení pracovního prostoru Azure Machine Learning Studio (Classic)
 
@@ -41,7 +41,7 @@ Pokud chcete použít Azure Machine Learning Studio (Classic), musíte mít prac
 
      ![Vytvořit nový pracovní prostor studia (Classic)](./media/create-workspace/create-new-workspace.png)
 
-5. Klikněte na možnost **Vytvořit**.
+5. Klikněte na **Vytvořit**.
 
 > [!NOTE]
 > Machine Learning Studio (Classic) spoléhá na účet služby Azure Storage, který poskytnete k uložení zprostředkujících dat při spuštění pracovního postupu. Po vytvoření pracovního prostoru, pokud se odstraní účet úložiště, nebo pokud se přístupové klíče změní, pracovní prostor přestane fungovat a všechny experimenty v tomto pracovním prostoru selžou.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 06/12/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 4bdf482357789b71b2f87bb74afd76d9ebc7f7d1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 299e1f3bc5915d547c4b463e770427d480836179
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476767"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834295"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Rychlý start: Vytvoření a nasazení šablony Azure Resource Manageru pomocí portálu Azure Portal
 
@@ -49,7 +49,7 @@ Mnohé zkušení vývojáři šablon používají tuto metodu k vygenerování �
     |Name (Název)|Hodnota|
     |----|----|
     |**Skupina prostředků**|Vyberte **vytvořit novou**a zadejte název skupiny prostředků podle svého výběru. Na snímku obrazovky má skupina prostředků název *mystorage1016rg*. Skupina prostředků je kontejner pro prostředky Azure. Skupina prostředků usnadňuje správu prostředků Azure. |
-    |**Název**|Dejte účtu úložiště jedinečný název. Název účtu úložiště musí být jedinečný v rámci všech Azure a může obsahovat jenom malá písmena a číslice. Název musí být dlouhý 3 až 24 znaků. Pokud se zobrazí chybová zpráva oznamující, že název účtu úložiště mystorage1016 se už používá, zkuste použít **&lt;your název > &lt;Today datum úložiště v MMDD >** , například **johndolestorage1016**. Další informace najdete v tématu [pravidla a omezení pojmenování](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming).|
+    |**Název**|Dejte účtu úložiště jedinečný název. Název účtu úložiště musí být jedinečný v rámci všech Azure a může obsahovat jenom malá písmena a číslice. Název musí být dlouhý 3 až 24 znaků. Pokud se zobrazí chybová zpráva oznamující, že název účtu úložiště mystorage1016 se už používá, zkuste použít **&lt;vaše jméno > úložiště&lt;dnešní datum v > MMDD**, například **johndolestorage1016**. Další informace najdete v tématu [pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming).|
 
     Pro zbývající vlastnosti můžete použít výchozí hodnoty.
 
@@ -63,7 +63,7 @@ Mnohé zkušení vývojáři šablon používají tuto metodu k vygenerování �
 
     ![Vygenerování šablony na portálu](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template.png)
 
-    Šablona se zobrazí v hlavním podokně. Jedná se o soubor JSON, který má šest prvků na nejvyšší úrovni – `schema`, `contentVersion`, `parameters`, `variables`, `resources` a `output`. Další informace najdete v článku, který se zabývá [strukturou a syntaxí šablon Azure Resource Manageru](./resource-group-authoring-templates.md).
+    Šablona se zobrazí v hlavním podokně. Jedná se o soubor JSON se šesti elementy nejvyšší úrovně – `schema`, `contentVersion`, `parameters`, `variables`, `resources`a `output`. Další informace najdete v článku, který se zabývá [strukturou a syntaxí šablon Azure Resource Manageru](./resource-group-authoring-templates.md).
 
     Existuje šest definovaných parametrů. Jeden z nich má název **storageAccountName**. Druhá zvýrazněná část na předchozím snímku obrazovky ukazuje, jak odkazovat na tento parametr v šabloně. V další části upravíte šablonu tak, aby používala vygenerovaný název účtu úložiště.
 
@@ -83,14 +83,14 @@ Na webu Azure Portal je možné provádět několik základních úprav šablon.
 > [!IMPORTANT]
 > Nasazení šablon poskytuje rozhraní pro testování jednoduchých šablon. Tuto funkci nedoporučujeme používat v produkčním prostředí. Místo toho uložte své šablony do účtu služby Azure Storage nebo do úložiště zdrojového kódu, jako je GitHub.
 
-Azure vyžaduje, aby každá služba Azure měla jedinečný název. Nasazení může selhat, pokud jste zadali název účtu úložiště, který už existuje. Chcete-li se tomuto problému vyhnout, upravte šablonu tak, aby používala volání funkce šablony `uniquestring()` pro vygenerování jedinečného názvu účtu úložiště.
+Azure vyžaduje, aby každá služba Azure měla jedinečný název. Nasazení může selhat, pokud jste zadali název účtu úložiště, který už existuje. Chcete-li se tomuto problému vyhnout, upravte šablonu tak, aby používala volání funkce šablony `uniquestring()` k vygenerování jedinečného názvu účtu úložiště.
 
 1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**.
 2. Do pole **Hledat na Marketplace** zadejte **template deployment** a stiskněte **ENTER**.
 3. Vyberte **Template deployment**.
 
     ![Knihovna šablon Azure Resource Manageru](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-library.png)
-4. Vyberte **Create** (Vytvořit).
+4. Vyberte **Vytvořit**.
 5. Vyberte **Vytvořit vlastní šablonu v editoru**.
 6. Vyberte **Načíst soubor** a pak podle pokynů načtěte soubor template.json, který jste stáhli v předchozí části.
 7. Proveďte následující tři změny v šabloně:
@@ -157,14 +157,14 @@ Azure vyžaduje, aby každá služba Azure měla jedinečný název. Nasazení m
        "outputs": {}
      }
      ```
-8. Vyberte **Save** (Uložit).
+8. Vyberte **Uložit**.
 9. Zadejte následující hodnoty:
 
     |Name (Název)|Hodnota|
     |----|----|
     |**Skupina prostředků**|Vyberte název skupiny prostředků, který jste vytvořili v poslední části. |
     |**Umístění**|Vyberte umístění pro účet úložiště. Například **střed USA**. |
-    |**Typ účtu**|Pro tento rychlý Start zadejte **Standard_LRS** . |
+    |**Typ účtu**|Zadejte **Standard_LRS** pro tento rychlý Start. |
     |**Plnění**|Pro tento rychlý Start zadejte **StorageV2** . |
     |**Úroveň přístupu**|Pro tento rychlý Start zadejte **Hot** . |
     |**Provoz HTTPS je povolený jenom**| V tomto rychlém startu vyberte **true**. |

@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3dc439c352bb3e6e56fae4b83d783da94720bfe1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4af18eaa0dc5622dcc52603e6fb4e569f505feeb
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818400"
+ms.locfileid: "73838115"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -411,14 +411,14 @@ response = requests.post(published_pipeline1.endpoint,
 ### <a name="view-results-of-a-published-pipeline"></a>Zobrazení výsledků publikovaného kanálu
 
 Podívejte se na seznam všech publikovaných kanálů a jejich podrobnosti o spuštění:
-1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com).
+1. Přihlaste se k [Azure Machine Learning](https://ml.azure.com).
 
 1. [Zobrazte svůj pracovní prostor](how-to-manage-workspace.md#view) a najděte seznam kanálů.
  ![seznam kanálů strojového učení](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. Výběrem konkrétního kanálu zobrazíte výsledky spuštění.
 
-Tyto výsledky jsou také k dispozici ve vašem pracovním prostoru v [Azure Machine Learning Studiu]] (https://ml.azure.com).
+Tyto výsledky jsou také k dispozici ve vašem pracovním prostoru v [Azure Machine Learning](https://ml.azure.com).
 
 ### <a name="disable-a-published-pipeline"></a>Zakázání publikovaného kanálu
 

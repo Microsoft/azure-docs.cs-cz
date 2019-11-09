@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: shlo
-ms.openlocfilehash: c0a097c17a24c68f7ebe4ec06a01b9ab7d9943b0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 73e6e4e69a245485ca473f048bbeafef21dbbf37
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507140"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836794"
 ---
 # <a name="custom-neural-voice-gating-overview"></a>Přehled Neuronovéch vstupů vlastního hlasu
 
@@ -28,7 +28,7 @@ V rámci snahy Microsoftu o návrh zodpovědného AI jsme shromáždili sadu mat
 ### <a name="guidance-for-deploying-custom-neural-voice"></a>Pokyny pro nasazení vlastního hlasu neuronové
 
 - [Pokyny pro zodpovědné nasazení](concepts-guidelines-responsible-deployment-synthetic.md): naše nejdůležitější doporučení na základě našeho výzkumu
-- [Neuronové poznámky k průhlednosti textu na řeč](https://aka.ms/neural-tts-transparency-note): co potřebujete vědět o technologii pro použití IT zodpovědnou
+- [Zveřejnění hlasových talentů](https://aka.ms/disclosure-voice-talent): co potřebujete znát a informovat o tom hlasové talentů o technologii pro její použití zodpovědnou
 - [Návrh zpřístupnění](concepts-disclosure-guidelines.md): jak navrhovat prostředí, aby uživatelé věděli, kdy se používá syntetické hlasové hovory a důvěřují vaší službě.
 
 ### <a name="why-custom-neural-voice-is-a-gated-technology"></a>Proč vlastní neuronové hlas je ověřovaná technologie
@@ -41,11 +41,11 @@ Pokud chcete získat přístup k vlastnímu neuronové hlasu, budete muset zač�
 
 Přístup ke službě Custom neuronové Voice Service se může vztahovat jenom na základě našich kritérií způsobilosti, dozvíte ČSFD procesu a dostupnosti pro podporu omezeného počtu zákazníků v rámci této ověřované verze Preview.
 
-V rámci procesu aplikace budete muset před vytvořením hlasového písma, které zahrnuje sdílení [poznámky transparentnosti neuronové TTS](https://aka.ms/neural-tts-transparency-note), potvrdit zapsané oprávnění od hlasových talentů. Je také nutné souhlasit s tím, že při nasazování hlasového písma vaše implementace [zveřejňuje syntetickou povahu](concepts-disclosure-guidelines.md) služby pro uživatele, poskytne službě Microsoft syntetického hlasového oddělení vaše podmínky a bude podporovat kanál pro zpětnou vazbu. Díky tomu mohou uživatelé služby nahlásit problémy a sdílet podrobnosti s Microsoftem. Přečtěte si další informace o našich [pojmech použití.](https://aka.ms/neural-tts-transparency-note)
+V rámci procesu aplikace budete muset před vytvořením hlasového písma, aby bylo možné získat explicitní zapsané oprávnění od hlasové talentů, a to včetně sdílení [zpřístupnění pro hlasový talentů](https://aka.ms/disclosure-voice-talent). Je také nutné souhlasit s tím, že při nasazování hlasového písma vaše implementace [zveřejňuje syntetickou povahu](concepts-disclosure-guidelines.md) služby pro uživatele, poskytne službě Microsoft syntetického hlasového oddělení své podmínky a bude podporovat kanál pro zpětnou vazbu, který umožňuje uživatelům služby nahlásit problémy a sdílet podrobnosti s Microsoftem. Přečtěte si další informace o našich [pojmech použití.](https://aka.ms/custom-neural-code-of-conduct)
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
-* [Poznámka transparentnosti](https://aka.ms/neural-tts-transparency-note)
+* [Zveřejnění pro hlasový talentů](https://aka.ms/disclosure-voice-talent)
 * [Pokyny pro zodpovědnost nasazení syntetické hlasové technologie](concepts-guidelines-responsible-deployment-synthetic.md)
 * [Jak zveřejnit](concepts-disclosure-guidelines.md)
 

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 97265a83a73d45f45a4bd1183df61521f4ca29bf
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: e660db5db3d1afc14a3c895e6786d1b6a8b82c13
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989691"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832410"
 ---
 # <a name="data-querying"></a>Dotazování dat
 
@@ -39,9 +39,9 @@ Podporují se následující základní rozhraní API.
 
 K dispozici jsou následující rozhraní API prostředí:
 
-* [Získat rozhraní API prostředí](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environments-api): vrátí seznam prostředí, ke kterým má volající oprávnění k přístupu.
-* [Získat rozhraní API dostupnosti prostředí](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environment-availability-api): vrátí distribuci počtu událostí přes časové razítko události `$ts`. Toto rozhraní API pomáhá určit, jestli se v časovém razítku vyskytují nějaké události, a to tak, že vrátí počet událostí, pokud existují.
-* [Získat rozhraní API pro schéma událostí](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-event-schema-api): vrátí metadata schématu události pro daný rozsah hledání. Toto rozhraní API pomáhá načíst všechna metadata a vlastnosti, které jsou ve schématu k dispozici pro daný rozsah hledání.
+* [Získat rozhraní API prostředí](/rest/api/time-series-insights/management/environments/get): vrátí seznam prostředí, ke kterým má volající oprávnění k přístupu.
+* [Získat rozhraní API dostupnosti prostředí](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability): vrátí distribuci počtu událostí přes časové razítko události `$ts`. Toto rozhraní API pomáhá určit, jestli se v časovém razítku vyskytují nějaké události, a to tak, že vrátí počet událostí, pokud existují.
+* [Získat rozhraní API pro schéma událostí](/rest/api/time-series-insights/dataaccess(preview)/query/geteventschema): vrátí metadata schématu události pro daný rozsah hledání. Toto rozhraní API pomáhá načíst všechna metadata a vlastnosti, které jsou ve schématu k dispozici pro daný rozsah hledání.
 
 ## <a name="time-series-model-query-tsm-q-apis"></a>Rozhraní API pro Time Series model – Query (TSM-Q)
 
@@ -58,16 +58,16 @@ K dispozici jsou následující modely časových řad – rozhraní API pro dot
 
 K dispozici jsou následující rozhraní API pro dotazování časové řady. Tato rozhraní API jsou dostupná pro všechna podporovaná úložiště s více vrstvami v Time Series Insights. Parametry adresy URL dotazu slouží k určení [typu úložiště](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters) , na kterém by se měl dotaz spouštět:
 
-* [Získat rozhraní API pro události](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-events-api): umožňuje dotazování a načítání Time Series Insights dat z událostí tak, jak jsou zaznamenána v Time Series Insights ze zprostředkovatele zdroje. Toto rozhraní API umožňuje načtení nezpracovaných událostí pro dané ID časové řady a rozsah hledání. Toto rozhraní API podporuje stránkování, aby bylo možné načíst úplnou datovou sadu pro vybraný vstup. 
+* [Získat rozhraní API pro události](/rest/api/time-series-insights/dataaccess(preview)/query/execute#getevents): umožňuje dotazování a načítání Time Series Insights dat z událostí tak, jak jsou zaznamenána v Time Series Insights ze zprostředkovatele zdroje. Toto rozhraní API umožňuje načtení nezpracovaných událostí pro dané ID časové řady a rozsah hledání. Toto rozhraní API podporuje stránkování, aby bylo možné načíst úplnou datovou sadu pro vybraný vstup. 
 
-* [Získat rozhraní API pro řady](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-series-api): umožňuje dotazování a načítání Time Series Insights dat ze zaznamenaných událostí pomocí dat zaznamenaných na lince. Vrácené hodnoty jsou založeny na proměnných, které byly definovány v modelu nebo zadány jako vložené. Toto rozhraní API podporuje stránkování, aby bylo možné načíst úplnou datovou sadu pro vybraný vstup. Toto rozhraní API pomáhá definovat počítané vlastnosti nebo sloupce.
+* [Získat rozhraní API pro řady](/rest/api/time-series-insights/dataaccess(preview)/query/execute#getseries): umožňuje dotazování a načítání Time Series Insights dat ze zaznamenaných událostí pomocí dat zaznamenaných na lince. Vrácené hodnoty jsou založeny na proměnných, které byly definovány v modelu nebo zadány jako vložené. Toto rozhraní API podporuje stránkování, aby bylo možné načíst úplnou datovou sadu pro vybraný vstup. Toto rozhraní API pomáhá definovat počítané vlastnosti nebo sloupce.
 
     >[!NOTE]
     > Klauzule agregace se ignoruje i v případě, že je zadaná v modelu nebo je zadaná jako vložená.
 
   Rozhraní API pro získání řady vrátí hodnotu časové řady pro každou proměnnou pro každý interval. Hodnota časové řady je formát, který Time Series Insights používá pro výstup JSON z dotazu. Vrácené hodnoty jsou založené na ID časové řady a sadě zadaných proměnných.
 
-* [Rozhraní API pro agregaci řad](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#aggregate-series-api): umožňuje dotazování a načítání dat Time Series Insights z zachycených událostí vzorkováním a agregací zaznamenaných dat. Toto rozhraní API podporuje plynulé spouštění pomocí [tokenů pro pokračování](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#queryresultpage).
+* [Rozhraní API pro agregaci řad](/rest/api/time-series-insights/dataaccess(preview)/query/execute#aggregatevariable): umožňuje dotazování a načítání dat Time Series Insights z zachycených událostí vzorkováním a agregací zaznamenaných dat. Toto rozhraní API podporuje plynulé spouštění pomocí [tokenů pro pokračování](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#queryresultpage).
 
   Rozhraní API pro agregaci řad vrací hodnotu časové řady pro každou proměnnou pro každý interval. Hodnoty jsou založené na ID časové řady a sadě zadaných proměnných. Rozhraní API pro agregaci řad dosahuje snížení pomocí proměnných uložených v modelu časové řady nebo poskytnutých jako vložené do agregovaných nebo ukázkových dat.
 

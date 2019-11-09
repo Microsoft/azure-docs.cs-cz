@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/23/2016
-ms.openlocfilehash: 1e02e227180bb0082dd87ab8f5d2fe64e19b60f2
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 550ac9ff3b425e682fdda16501613aa41a80d765
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677809"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847250"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filtrování a předzpracování telemetrie v sadě Application Insights SDK
 
@@ -25,11 +25,11 @@ Můžete napsat a nakonfigurovat moduly plug-in pro sadu Application Insights SD
 
 Než začnete, potřebujete:
 
-* Nainstalujte příslušnou sadu SDK pro vaši aplikaci: [ASP.NET](asp-net.md), [ASP.NET Core](asp-net-core.md), [non http/Worker pro .NET/.NET Core](worker-service.md)nebo [Java](../../azure-monitor/app/java-get-started.md).
+* Instalace příslušné sady SDK pro vaši aplikaci: [ASP.NET](asp-net.md), [ASP.NET Core](asp-net-core.md), [non http/Worker pro .NET/.NET Core](worker-service.md), [Java](../../azure-monitor/app/java-get-started.md) nebo [JavaScript](javascript.md)
 
 <a name="filtering"></a>
 
-## <a name="filtering-itelemetryprocessor"></a>Filtrování: ITelemetryProcessor
+## <a name="filtering"></a>Filtrování
 
 Tento postup vám poskytne přímou kontrolu nad tím, co je zahrnuto nebo vyloučeno z datového proudu telemetrie. Filtrování lze použít k vyřazení položek telemetrie z odeslání do Application Insights. Můžete ji použít ve spojení s vzorkováním nebo samostatně.
 
@@ -119,7 +119,7 @@ TelemetryClients vytvořené po tomto okamžiku budou používat vaše procesory
 > [!NOTE]
 > Přidání procesoru pomocí `ApplicationInsights.config` nebo použití `TelemetryConfiguration.Active` není platné pro ASP.NET Core aplikace nebo pokud používáte sadu Microsoft. ApplicationInsights. WorkerService SDK.
 
-V případě aplikací napsaných pomocí [ASP.NET Core](asp-net-core.md#adding-telemetry-processors) nebo [WorkerService](worker-service.md#adding-telemetry-processors)je přidání nového `TelemetryProcessor` provedeno pomocí metody rozšíření `AddApplicationInsightsTelemetryProcessor` v `IServiceCollection`, jak je znázorněno níže. Tato metoda se volá v metodě `ConfigureServices` vaší třídy `Startup.cs`.
+V případě aplikací napsaných pomocí [ASP.NET Core](asp-net-core.md#adding-telemetry-processors) nebo [WorkerService](worker-service.md#adding-telemetry-processors)je přidání nového `TelemetryProcessor` provedeno pomocí metody rozšíření `AddApplicationInsightsTelemetryProcessor` na `IServiceCollection`, jak je znázorněno níže. Tato metoda je volána v `ConfigureServices` metodě vaší `Startup.cs` třídy.
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -198,13 +198,36 @@ public void Process(ITelemetry item)
 
 <a name="add-properties"></a>
 
-## <a name="add-properties-itelemetryinitializer"></a>Přidat vlastnosti: ITelemetryInitializer
+### <a name="javascript-web-applications"></a>Webové aplikace v jazyce JavaScript
+
+**Filtrování pomocí ITelemetryInitializer**
+
+1. Vytvoří funkci zpětného volání inicializátoru telemetrie. Funkce zpětného volání přebírá `ITelemetryItem` jako parametr, což je událost, která je zpracovávána. Vrácení `false` z tohoto zpětného volání má za následek vyfiltrování položky telemetrie.  
+
+   ```JS
+   var filteringFunction = (envelope) => {
+     if (envelope.data.someField === 'tobefilteredout') {
+        return false;
+     }
+  
+     return true;
+   };
+   ```
+
+2. Přidejte zpětné volání inicializátoru telemetrie:
+
+   ```JS
+   appInsights.addTelemetryInitializer(filteringFunction);
+   ```
+
+## <a name="addmodify-properties-itelemetryinitializer"></a>Přidat nebo upravit vlastnosti: ITelemetryInitializer
+
 
 Použijte Inicializátory telemetrie k obohacení telemetrie o další informace a/nebo k přepsání vlastností telemetrie nastavených standardními moduly telemetrie.
 
 Například Application Insights pro webový balíček shromažďuje telemetrii o požadavcích HTTP. Ve výchozím nastavení se označí jako neúspěšné všechny žádosti s kódem odpovědi > = 400. Pokud ale chcete považovat 400 za úspěch, můžete poskytnout inicializátor telemetrie, který nastaví vlastnost success.
 
-Pokud zadáte inicializátor telemetrie, je volána při každém volání jakékoli metody Track * (). To zahrnuje metody `Track()` volané standardními moduly telemetrie. Podle konvence tyto moduly nenastaví žádnou vlastnost, která již byla nastavena inicializátorem. Inicializátory telemetrie se volají před voláním procesorů telemetrie. Takže jakákoli rozšíření prováděná Inicializátory jsou viditelná pro procesory.
+Pokud zadáte inicializátor telemetrie, je volána při každém volání jakékoli metody Track * (). To zahrnuje `Track()` metody, které jsou volány standardními moduly telemetrie. Podle konvence tyto moduly nenastaví žádnou vlastnost, která již byla nastavena inicializátorem. Inicializátory telemetrie se volají před voláním procesorů telemetrie. Takže jakákoli rozšíření prováděná Inicializátory jsou viditelná pro procesory.
 
 **Definovat inicializátor**
 
@@ -276,9 +299,9 @@ protected void Application_Start()
 **ASP.NET Core/aplikace služby pracovního procesu: načíst inicializátor**
 
 > [!NOTE]
-> Přidání inicializátoru pomocí `ApplicationInsights.config` nebo pomocí `TelemetryConfiguration.Active` není platné pro ASP.NET Core aplikace nebo pokud používáte sadu Microsoft. ApplicationInsights. WorkerService SDK.
+> Přidání inicializátoru pomocí `ApplicationInsights.config` nebo použití `TelemetryConfiguration.Active` není platné pro ASP.NET Core aplikace nebo pokud používáte sadu Microsoft. ApplicationInsights. WorkerService SDK.
 
-U aplikací napsaných pomocí [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) nebo [WorkerService](worker-service.md#adding-telemetryinitializers)se přidání nového `TelemetryInitializer` provede přidáním do kontejneru vkládání závislostí, jak je znázorněno níže. To se provádí v metodě `Startup.ConfigureServices`.
+U aplikací napsaných pomocí [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) nebo [WorkerService](worker-service.md#adding-telemetryinitializers)je přidání nového `TelemetryInitializer` provedeno přidáním do kontejneru vkládání závislostí, jak je znázorněno níže. To se provádí v `Startup.ConfigureServices` metoda.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;

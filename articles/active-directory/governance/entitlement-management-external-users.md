@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9107471448a58dc7866fb2cd6052abf168437d2b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e76e5c5d2cfcfd983f2b5cdc279f0c13fa6706e4
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174173"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832706"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Řízení přístupu pro externí uživatele ve správě nároků Azure AD
 
@@ -97,7 +97,7 @@ Aby uživatelé mimo vaši organizaci mohli žádat o přístup k balíčkům a 
 
 ### <a name="review-your-sharepoint-online-external-sharing-settings"></a>Kontrola nastavení externího sdílení SharePointu Online
 
-- Pokud chcete zahrnout weby SharePointu Online do balíčků pro přístup externích uživatelů, ujistěte se, že nastavení externí sdílení na úrovni vaší organizace je nastavené na hodnotu **kdokoli** (uživatelé nepotřebují přihlášení) nebo **noví a stávající hosté** (hosté se musí přihlásit. v nebo zadejte ověřovací kód). Další informace najdete v tématu [Zapnutí nebo vypnutí externí sdílení](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+- Pokud chcete zahrnout weby SharePointu Online do balíčků pro přístup externích uživatelů, ujistěte se, že nastavení externího sdílení na úrovni vaší organizace je nastavené na hodnotu **kdokoli** (uživatelé nepotřebují přihlášení) nebo **noví a stávající hosté** (hosté se musí přihlásit nebo zadat ověřovací kód). Další informace najdete v tématu [Zapnutí nebo vypnutí externí sdílení](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
 - Pokud chcete omezit jakékoli externí sdílení mimo správu nároků, můžete nastavit externí nastavení sdílení na **stávající hosty**. Pak budou moci získat přístup k těmto webům pouze noví uživatelé pozvaní prostřednictvím správy nároků. Další informace najdete v tématu [Zapnutí nebo vypnutí externí sdílení](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
@@ -113,7 +113,7 @@ Aby uživatelé mimo vaši organizaci mohli žádat o přístup k balíčkům a 
 
 ### <a name="review-your-teams-sharing-settings"></a>Kontrola nastavení sdílení týmů
 
-- Pokud chcete zahrnout týmy do balíčků pro přístup externích uživatelů, zajistěte, aby byl **povolen přístup k hostům v Microsoft Teams** **, aby povoloval** přístup hostů. Další informace najdete v tématu [Konfigurace přístupu hosta v centru pro správu Microsoft Teams](https://docs.microsoft.com/microsoftteams/set-up-guests#configure-guest-access-in-the-microsoft-teams-admin-center).
+- Pokud chcete zahrnout týmy do balíčků pro přístup externích uživatelů, zajistěte, aby byl **povolen přístup k hostům v Microsoft Teams** **, aby povoloval** přístup hostů. Další informace najdete v tématu [Konfigurace přístupu hosta v centru pro správu Microsoft Teams](/microsoftteams/set-up-guests#configure-guest-access-in-the-teams-admin-center).
 
 ## <a name="manage-the-lifecycle-of-external-users"></a>Správa životního cyklu externích uživatelů
 

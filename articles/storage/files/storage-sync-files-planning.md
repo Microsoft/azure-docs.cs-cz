@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e1f7aeb5615c1a22c1970f118c24c996ac936870
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3c70d2086fc5866b07c31966343397f8ccc809be
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826823"
+ms.locfileid: "73846732"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -169,7 +169,7 @@ Všimněte si, že úspory svazku se vztahují jenom na server. vaše data ve sd
 > Odstranění duplicitních dat a vrstvení cloudu se na stejném svazku na serveru 2019 aktuálně nepodporují kvůli chybě, která bude opravena v budoucí aktualizaci.
 
 **Windows Server 2012 R2**  
-Azure File Sync nepodporuje odstranění duplicitních dat a vrstvení cloudu na stejném svazku. Pokud je u svazku povolené odstranění duplicitních dat, musí být vrstva cloudu zakázaná. 
+Azure File Sync nepodporuje odstranění duplicitních dat a vrstvení cloudu na stejném svazku na Windows Serveru 2012 R2. Pokud je u svazku povolené odstranění duplicitních dat, musí být vrstva cloudu zakázaná. 
 
 **Poznámky**
 - Pokud se odstranění duplicitních dat nainstaluje před instalací agenta Azure File Sync, vyžaduje se restart k podpoře odstranění duplicitních dat a vrstvení cloudu na stejném svazku.
@@ -252,7 +252,7 @@ Azure File Sync je k dispozici pouze v následujících oblastech:
 | Austrálie – východ | Nový Jižní Wales |
 | Austrálie – jihovýchod | Victoria |
 | Brazílie – jih | Sao Paulo – stát |
-| Střední Kanada | Toronto |
+| Kanada – střed | Toronto |
 | Kanada – východ | Québec |
 | Střed Indie | Puné |
 | Střední USA | Iowa |
@@ -301,8 +301,8 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 | Austrálie – východ      | Austrálie – jihovýchod|
 | Austrálie – jihovýchod | Austrálie – východ     |
 | Brazílie – jih        | Středojižní USA   |
-| Střední Kanada      | Kanada – východ        |
-| Kanada – východ         | Střední Kanada     |
+| Kanada – střed      | Kanada – východ        |
+| Kanada – východ         | Kanada – střed     |
 | Střed Indie       | Indie – jih        |
 | Střední USA          | Východ USA 2          |
 | Východní Asie           | Jihovýchodní Asie     |
