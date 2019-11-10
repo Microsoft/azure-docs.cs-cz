@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: ffe0d3a85006bbaad53e471a10b10fb1bbea89b1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7ea4762684a41e06687adcca91b13872a0c9f740
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664464"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73897484"
 ---
 Tento článek obsahuje přehled funkcí dostupnosti virtuálních počítačů Azure (VM).
 
@@ -82,5 +82,5 @@ Virtuální počítače v rámci skupiny dostupnosti jsou taky automaticky distr
 ![Skupiny dostupnosti](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 
 ## <a name="next-steps"></a>Další kroky
-Teď můžete tyto funkce pro zajištění redundance a dostupnosti začít používat a vytvořit prostředí Azure. Informace o doporučených postupech najdete v tématu věnovaném [osvědčeným postupům pro zajištění dostupnosti v Azure](../articles/best-practices-availability-checklist.md).
+Teď můžete tyto funkce pro zajištění redundance a dostupnosti začít používat a vytvořit prostředí Azure. Informace o doporučených postupech najdete v tématu věnovaném [osvědčeným postupům pro zajištění dostupnosti v Azure](/azure/architecture/checklist/resiliency-per-service).
 
