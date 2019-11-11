@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2019
 ms.author: aschhab
-ms.openlocfilehash: 9a2d25aba03156d6d14fe5ef9aa58b3748033b85
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 25b0c14fb94cba611dfa9fa9bece1b728f39a905
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72296382"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73585211"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>Výjimky Service Bus Správce prostředků
 
@@ -72,3 +72,20 @@ Tato třída chyb indikuje, že prostředek nebyl nalezen.
 | Nenalezeno | Žádná | Nenalezeno. Operace neexistuje. | Operace, kterou se pokoušíte provést, neexistuje. | Ověřte operaci a zkuste to znovu. |
 | Nenalezeno | Žádná | Příchozí žádost není rozpoznaná jako požadavek PUT zásady oboru názvů. | Text příchozího požadavku má hodnotu null, a proto jej nelze provést jako požadavek PUT. | Zkontrolujte text žádosti, abyste se ujistili, že není null. | 
 | Nenalezeno | Žádná | Entita zasílání zpráv *' název entity '* nebyla nalezena. | Entita, u které se pokoušíte provést operaci, nebyla nalezena. | Zkontrolujte prosím, zda entita existuje, a operaci opakujte. |
+
+## <a name="error-code-internal-server-error"></a>Kód chyby: interní chyba serveru
+
+Tato třída chyb indikuje, že došlo k vnitřní chybě serveru.
+
+| Kód chyby | Chybový kód | Chybová zpráva | Popis | Doporučení |
+| ---------- | ------------- | ------------- | ----------- | -------------- |
+| Vnitřní chyba serveru | 50000 | Subcode = 50000. Vnitřní chyba serveru| K tomu může dojít z různých důvodů. Některé příznaky jsou- <ul> <li> Požadavek nebo tělo klienta je poškozené a vede k chybě. </li> <li> Časový limit žádosti klienta vypršel kvůli problémům se zpracováním služby. </li> </ul> | Pro vyřešení tohoto problému <ul> <li> Ujistěte se, že parametry požadavků nemají hodnotu null nebo jsou chybné. </li> <li> Opakujte požadavek. </li> </ul> |
+
+## <a name="error-code-unauthorized"></a>Kód chyby: Neautorizováno
+
+Tato třída chyb označuje absenci autorizace pro spuštění příkazu.
+
+| Kód chyby | Chybový kód | Chybová zpráva | Popis | Doporučení |
+| ---------- | ------------- | ------------- | ----------- | -------------- |
+| Neautorizováno | Žádná | Neplatná operace na sekundárním oboru názvů. Sekundární obor názvů je jen pro čtení. | Operace byla provedena proti sekundárnímu oboru názvů, který je nastaven jako obor názvů jen pro čtení. | Opakujte příkaz s primárním oborem názvů. Další informace o [sekundárním oboru názvů](service-bus-geo-dr.md) |
+| Neautorizováno | Žádná | MissingToken: autorizační hlavička se nenašla. | K této chybě dochází, pokud má autorizace hodnotu null nebo jsou nesprávné hodnoty. | Ujistěte se, že hodnota tokenu uvedená v autorizační hlavičce je správná a není null. |

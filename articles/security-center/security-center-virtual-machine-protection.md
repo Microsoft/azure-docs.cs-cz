@@ -1,5 +1,5 @@
 ---
-title: Ochrana počítačů a aplikací v Azure Security Center | Microsoft Docs
+title: Chraňte své počítače a aplikace v Azure Security Center
 description: Tento dokument popisuje doporučení v Security Center, která vám pomůžou chránit vaše virtuální počítače a počítače a vaše webové aplikace a App Service prostředí.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 2317d0206e3fc4a342606d17c172ac42cbe82870
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 803e64c9df1b52a33a1b50714f77b005032bf200
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520676"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686354"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Ochrana počítačů a aplikací v Azure Security Center
 Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure, serverů mimo Azure a virtuálních počítačů. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení, která vás provedou procesem konfigurace potřebných ovládacích prvků. Doporučení se vztahují na typy prostředků Azure: virtuální počítače a počítače, aplikace, sítě, SQL a identita a přístup.
@@ -47,7 +47,7 @@ V části **výpočetní & aplikace**jsou k dispozici následující karty:
 
 Pokud chcete pokračovat, vyberte **compute & aplikace** v části **hygiena zabezpečení prostředků**.
 
-![Služby Compute](./media/security-center-virtual-machine-recommendations/compute.png)
+![Compute](./media/security-center-virtual-machine-recommendations/compute.png)
 
 Na každé kartě můžete mít několik částí a v každé části můžete vybrat jednotlivé možnosti, abyste zobrazili další podrobnosti o doporučeném postupu k vyřešení konkrétního problému.
 
@@ -74,7 +74,7 @@ Každé doporučení obsahuje sadu akcí, které můžete provést po jeho výb�
     - **Střední**: ohrožení zabezpečení by se mělo řešit, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení nejsou doporučení s nízkou závažností uváděny, ale pokud je chcete zobrazit, je možné je vyfiltrovat.)
 
 
-- **STAV**: Aktuální stav doporučení:
+- **STATE** (Stav): Aktuální stav doporučení:
 
     - **Otevřené**: Doporučení dosud nebylo řešeno.
     - **Probíhá**: Doporučení se aktuálně na tyto prostředky používá a není třeba provádět žádnou akci.
@@ -110,10 +110,10 @@ Pokud chcete přejít k podrobnostem o zabezpečení pro každý virtuální po�
 Tady vidíte podrobnosti zabezpečení pro virtuální počítač nebo počítač. V dolní části vidíte doporučenou akci a závažnost každého problému.
 ![Cloudové služby](./media/security-center-virtual-machine-recommendations/recommendation-list.png)
 
-### <a name="cloud-services"></a>Cloudové služby
+### <a name="cloud-services"></a>Cloud Services
 Pro cloudové služby se vytvoří doporučení, když je verze operačního systému zastaralá.
 
-![Cloudové služby](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig1-new006-2017.png)
+![Cloud Services](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig1-new006-2017.png)
 
 V případě, kdy máte doporučení (což není případ předchozího příkladu), musíte postupovat podle kroků v doporučení a aktualizovat verzi operačního systému. Když je k dispozici aktualizace, obdržíte výstrahu (červenou nebo oranžovou – v závislosti na závažnosti problému). Když vyberete tuto výstrahu v WebRole1 (spouští Windows Server s vaší webovou aplikací automaticky nasazenou do služby IIS) nebo WorkerRole1 (spouští Windows Server s vaší webovou aplikací automaticky nasazenou do služby IIS), zobrazí se další podrobnosti o tomto doporučení.
 
@@ -153,7 +153,7 @@ V tomto seznamu jsou zastoupeny tři typy ikon:
 
 2. Vyberte doporučení, abyste zobrazili popis doporučení a seznam špatných prostředků, zdravých prostředků a nekontrolovaných prostředků.
 
-   - Ve sloupci **předaná vyhodnocení** je seznam předaných vyhodnocení.  Závažnost těchto hodnocení je vždycky zelená.
+   - Ve sloupci **předaná vyhodnocení** je seznam předaných vyhodnocení. Závažnost těchto hodnocení je vždycky zelená.
 
    - V seznamu vyberte úspěšné posouzení, seznam stavů, které jsou v pořádku, a v seznamu nekontrolovaných prostředků. Pro prostředky, které nejsou v pořádku, je k dispozici karta, ale tento seznam je vždy prázdný, protože hodnocení bylo úspěšné.
 
@@ -189,7 +189,7 @@ Pokud chcete nastavit všechny existující sady škálování pro instalaci Mic
 |App Service|10|Nepovolit všem (' * ') prostředkům přístup k aplikaci| Nepovolujte u parametru WEBSITE_LOAD_CERTIFICATES hodnotu "". Nastavením parametru na ' ' znamená, že všechny certifikáty budou načteny do osobního úložiště certifikátů vaší webové aplikace. To může vést k zneužití principu nejnižší úrovně oprávnění, protože je pravděpodobné, že lokalita potřebuje mít přístup ke všem certifikátům za běhu.|
 |App Service|20|CORS by neměl umožňovat každému prostředku přístup k vašim webovým aplikacím|Povoluje interakci jenom požadovaných domén s webovou aplikací. Sdílení prostředků mezi zdroji (CORS) by nemělo umožňovat přístup k vaší webové aplikaci všem doménám.|
 |App Service|20|CORS by neměl umožňovat každému prostředku přístup k vašemu Function App| Povoluje interakci jenom požadovaných domén s vaší aplikací funkcí. Sdílení prostředků mezi zdroji (CORS) by nemělo umožňovat všem doménám přístup k vaší aplikaci funkcí.|
-|Výpočetní prostředky (Batch)|1\. místo|Pravidla upozornění na metriky by měly být nakonfigurovaná na účtech Batch.|Nakonfigurujte pravidla upozornění metrik na účtu Batch a povolte události odstranit kompletní události a odstranit fond. události spuštění odstranění fondu|
+|Výpočetní prostředky (Batch)|1|Pravidla upozornění na metriky by měly být nakonfigurovaná na účtech Batch.|Nakonfigurujte pravidla upozornění metrik na účtu Batch a povolte události odstranit kompletní události a odstranit fond. události spuštění odstranění fondu|
 |Výpočetní prostředky (Service Fabric)|10|Clustery Service Fabric by se měly používat jenom Azure Active Directory pro ověřování klientů.|Ověřování klienta provádějte pouze prostřednictvím Azure Active Directory v Service Fabric.|
 |Výpočetní prostředky (účet Automation)|5|Proměnné účtu Automation by se měly šifrovat.|Povoluje šifrování prostředků proměnných účtu služby Automation při ukládání citlivých dat.|
 |Výpočetní prostředky (hledání)|5|Auditovat povolení diagnostických protokolů pro služby vyhledávání|Povolte protokoly a zachovejte je po celý rok. To umožňuje znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě. |
@@ -198,9 +198,9 @@ Pokud chcete nastavit všechny existující sady škálování pro instalaci Mic
 |Výpočetní prostředky (Batch)|5|Povolení diagnostických protokolů v účtech Batch|Povolte protokoly a zachovejte je po celý rok. To umožňuje znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě. |
 |Výpočetní prostředky (centrum událostí)|5|Měly by být povolené diagnostické protokoly v centru událostí.|Povolte protokoly a zachovejte je po celý rok. To umožňuje znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě. |
 |Výpočetní prostředky (Logic Apps)|5|Povolit diagnostické protokoly v Logic Apps|Povolte protokoly a zachovejte je po celý rok. To umožňuje znovu vytvořit stopy aktivity pro účely šetření, pokud dojde k bezpečnostnímu incidentu nebo dojde k ohrožení zabezpečení vaší sítě. |
-|Výpočetní prostředky (Service Fabric)|15|Nastavte vlastnost ClusterProtectionLevel na EncryptAndSign v Service Fabric|Service Fabric poskytuje tři úrovně ochrany (žádné, podpisové a EncryptAndSign) pro komunikaci mezi uzly pomocí primárního certifikátu clusteru.  Nastavte úroveň ochrany tak, aby bylo zajištěno, že všechny zprávy mezi uzly budou šifrovány a digitálně podepsány. |
-|Výpočetní prostředky (Service Bus)|1\. místo|Odebrat všechna autorizační pravidla s výjimkou RootManageSharedAccessKey z oboru názvů Service Bus |Klienti Service Bus by neměli používat zásady přístupu na úrovni oboru názvů, které poskytují přístup ke všem frontám a tématům v oboru názvů. K zajištění souladu s modelem zabezpečení s minimálními oprávněními byste měli vytvořit zásady přístupu na úrovni entity pro fronty a témata, abyste měli přístup jenom ke konkrétní entitě.|
-|Výpočetní prostředky (centrum událostí)|1\. místo|Všechna autorizační pravidla s výjimkou RootManageSharedAccessKey by měla být odebrána z oboru názvů centra událostí.|Klienti centra událostí by neměli používat zásady přístupu na úrovni oboru názvů, které poskytují přístup ke všem frontám a tématům v oboru názvů. K zajištění souladu s modelem zabezpečení s minimálními oprávněními byste měli vytvořit zásady přístupu na úrovni entity pro fronty a témata, abyste měli přístup jenom ke konkrétní entitě.|
+|Výpočetní prostředky (Service Fabric)|15|Nastavte vlastnost ClusterProtectionLevel na EncryptAndSign v Service Fabric|Service Fabric poskytuje tři úrovně ochrany (žádné, podpisové a EncryptAndSign) pro komunikaci mezi uzly pomocí primárního certifikátu clusteru. Nastavte úroveň ochrany tak, aby bylo zajištěno, že všechny zprávy mezi uzly budou šifrovány a digitálně podepsány. |
+|Výpočetní prostředky (Service Bus)|1|Odebrat všechna autorizační pravidla s výjimkou RootManageSharedAccessKey z oboru názvů Service Bus |Klienti Service Bus by neměli používat zásady přístupu na úrovni oboru názvů, které poskytují přístup ke všem frontám a tématům v oboru názvů. K zajištění souladu s modelem zabezpečení s minimálními oprávněními byste měli vytvořit zásady přístupu na úrovni entity pro fronty a témata, abyste měli přístup jenom ke konkrétní entitě.|
+|Výpočetní prostředky (centrum událostí)|1|Všechna autorizační pravidla s výjimkou RootManageSharedAccessKey by měla být odebrána z oboru názvů centra událostí.|Klienti centra událostí by neměli používat zásady přístupu na úrovni oboru názvů, které poskytují přístup ke všem frontám a tématům v oboru názvů. K zajištění souladu s modelem zabezpečení s minimálními oprávněními byste měli vytvořit zásady přístupu na úrovni entity pro fronty a témata, abyste měli přístup jenom ke konkrétní entitě.|
 |Výpočetní prostředky (centrum událostí)|5|Měla by být definovaná autorizační pravidla pro entitu centra událostí.|Auditujte autorizační pravidla v entitě centra událostí, abyste udělili přístup s minimálním oprávněním.|
 |Počítač|50|Instalace agenta monitorování do počítačů|Nainstalujte agenta monitorování, aby bylo možné na každém počítači povolit shromažďování dat, kontrolu aktualizací, kontrolu základních hodnot a službu Endpoint Protection.|
 |Počítač|50|Povolení automatického zřizování a shromažďování dat pro vaše předplatná |Povolením automatického zřizování a shromažďování dat pro počítače ve vašich předplatných umožníte shromažďování dat, kontrolu aktualizací, kontrolu standardních hodnot a službu Endpoint Protection na každém počítači přidávaném do vašich předplatných.|
@@ -220,7 +220,7 @@ Pokud chcete nastavit všechny existující sady škálování pro instalaci Mic
 |Počítač|15|Přidání brány firewall webových aplikací| Nasazením řešení Firewall webových aplikací (WAF) zabezpečíte své webové aplikace. |
 |Počítač|30|Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.|Virtuální počítače, pro které je nasazené řešení zabezpečení od jiných výrobců, se průběžně vyhodnocuje proti chybám zabezpečení aplikací a operačních systémů. Pokaždé, když jsou taková ohrožení zabezpečení zjištěná, jsou k dispozici pro další informace jako součást doporučení.|
 |Počítač|30|Instalace řešení pro posouzení ohrožení zabezpečení na virtuálních počítačích|Instalace řešení pro posouzení ohrožení zabezpečení na virtuálních počítačích|
-|Počítač|1\. místo|Virtuální počítače by měly být migrovány do nových prostředků AzureRM|Použijte Azure Resource Manager pro vaše virtuální počítače k zajištění vylepšení zabezpečení, jako je: silnější řízení přístupu (RBAC), lepší auditování, nasazení Správce prostředků a zásady správného řízení, přístup ke spravovaným identitám, přístup k trezoru klíčů pro tajné klíče, Ověřování a podpora založené na Azure AD pro značky a skupiny prostředků pro snadnější správu zabezpečení. |
+|Počítač|1|Virtuální počítače by měly být migrovány do nových prostředků AzureRM|Použijte Azure Resource Manager pro vaše virtuální počítače k zajištění vylepšení zabezpečení, jako je: silnější řízení přístupu (RBAC), lepší auditování, nasazení Správce prostředků a zásady správného řízení, přístup ke spravovaným identitám, přístup k trezoru klíčů pro tajné klíče, Ověřování a podpora založené na Azure AD pro značky a skupiny prostředků pro snadnější správu zabezpečení. |
 |Počítač|30|Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.|Virtuální počítače, pro které je nasazené řešení zabezpečení od jiných výrobců, se průběžně vyhodnocuje proti chybám zabezpečení aplikací a operačních systémů. Pokaždé, když jsou taková ohrožení zabezpečení zjištěná, jsou k dispozici pro další informace jako součást doporučení.|
 |Škálovací sada virtuálních počítačů |4|Měly by být povolené diagnostické protokoly v Virtual Machine Scale Sets.|Povolte protokoly a zachovejte je po dobu až do roku. To umožňuje znovu vytvořit stopy aktivity pro účely šetření. To je užitečné v případě, že dojde k incidentu zabezpečení nebo dojde k ohrožení bezpečnosti sítě.|
 |Škálovací sada virtuálních počítačů|35|V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.|Opravte chyby zabezpečení v konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů, abyste je chránili před útoky. |

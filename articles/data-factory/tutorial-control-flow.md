@@ -1,5 +1,5 @@
 ---
-title: Větvení v kanálu Azure Data Factory | Dokumentace Microsoftu
+title: 'Větvení v kanálu Azure Data Factory '
 description: Zjistěte, jak řídit tok dat v Azure Data Factory prostřednictvím větvení a řetězení aktivit.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 9/27/2019
-ms.openlocfilehash: d8ea5a507cc110c92bb74491c3376f7b671638d9
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 0a7e5f56fe71c174c78f1363e403ae41a2ec90a6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176011"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683671"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
 
@@ -42,7 +42,7 @@ Tento kurz používá .NET SDK. K interakci s Azure Data Factory můžete použ�
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure Storage. Úložiště objektů BLOB použijete jako zdrojové úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
 * Průzkumník služby Azure Storage. Pokud chcete tento nástroj nainstalovat, přečtěte si téma [Průzkumník služby Azure Storage](https://storageexplorer.com/).
@@ -77,7 +77,7 @@ Vytvořit konzolovou aplikaci C# .NET:
 
 ### <a name="install-nuget-packages"></a>Instalace balíčků NuGet
 
-1. Vyberte **nástroje** > **správce balíčků NuGet** > **Konzola správce balíčků**.
+1. Vyberte **nástroje** > **správce balíčků NuGet** > **konzole správce balíčků**.
 1. V **konzole správce balíčků**spusťte následující příkazy pro instalaci balíčků. Podrobnosti najdete v [balíčku NuGet pro Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) .
 
    ```powershell
@@ -195,7 +195,7 @@ Vytvořit konzolovou aplikaci C# .NET:
    }
    ```
 
-1. Přidejte následující řádek do metody `Main` vytvářející Azure Storage propojenou službu:
+1. Do metody `Main` přidejte následující řádek, který vytvoří propojenou službu Azure Storage:
 
    ```csharp
    client.LinkedServices.CreateOrUpdate(resourceGroup, dataFactoryName, storageLinkedServiceName, StorageLinkedServiceDefinition(client));
@@ -232,7 +232,7 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 }
 ```
 
-Definujete datovou sadu, která představuje zdroj dat ve službě Azure Blob. Tato datová sada objektů BLOB odkazuje na propojenou službu Azure Storage, která je v předchozím kroku podporovaná. Datová sada objektů BLOB popisuje umístění objektu blob, ze kterého se mají kopírovat: *FolderPath* a *filename*.
+Nadefinujete datovou sadu, která představuje zdrojová data v objektu blob Azure. Tato datová sada objektů BLOB odkazuje na propojenou službu Azure Storage, která je v předchozím kroku podporovaná. Datová sada objektů BLOB popisuje umístění objektu blob, ze kterého se mají kopírovat: *FolderPath* a *filename*.
 
 Všimněte si použití parametrů pro *FolderPath*. `sourceBlobContainer` je název parametru a výraz je nahrazen hodnotami předanými při spuštění kanálu. Syntaxe pro definování parametrů je `@pipeline().parameters.<parameterName>`
 
@@ -332,7 +332,7 @@ Váš pracovní postup vypadá podobně jako v následujícím příkladu:
 
 ![Pracovní postup pro e-maily s informací o úspěchu](media/tutorial-control-flow/success-email-workflow-trigger.png)
 
-Tento obsah JSON se zarovnává se třídou `EmailRequest`, kterou jste vytvořili v předchozí části.
+Tento obsah JSON se zarovnává s `EmailRequest`ou třídou, kterou jste vytvořili v předchozí části.
 
 Přidejte akci `Office 365 Outlook – Send an email`. V případě akce **Odeslat e-mail** upravte způsob, jakým chcete e-maily naformátovat, pomocí vlastností předaných v rámci schématu JSON pro **tělo** požadavku. Tady je příklad:
 
@@ -468,7 +468,7 @@ Parameters = new Dictionary<string, ParameterSpecification>
 
 ### <a name="web-activity"></a>Aktivita webu
 
-Aktivita webu umožňuje volání libovolného koncového bodu REST. Další informace o aktivitě najdete v tématu [Webová aktivita v Azure Data Factory](control-flow-web-activity.md). Tento kanál používá aktivitu webu pro volání pracovního postupu Logic Appsho e-mailu. Vytvoříte dvě webové aktivity: jednu, která volá pracovní postup `CopySuccessEmail` a jednu, která volá `CopyFailWorkFlow`.
+Aktivita webu umožňuje volání libovolného koncového bodu REST. Další informace o aktivitě najdete v tématu [Webová aktivita v Azure Data Factory](control-flow-web-activity.md). Tento kanál používá aktivitu webu pro volání pracovního postupu Logic Appsho e-mailu. Vytvoříte dvě webové aktivity: jeden, který volá pracovní postup `CopySuccessEmail` a druhý, který volá `CopyFailWorkFlow`.
 
 ```csharp
         new WebActivity
@@ -488,10 +488,10 @@ Aktivita webu umožňuje volání libovolného koncového bodu REST. Další inf
         }
 ```
 
-Do vlastnosti `Url` vložte koncové body **adresy http post** z vašich Logic Apps pracovních postupů. Ve vlastnosti `Body` předejte instanci třídy `EmailRequest`. Obsahuje následující vlastnosti:
+Do vlastnosti `Url` vložte koncové body **adresy URL http post** z pracovních postupů vaší Logic Apps. Ve vlastnosti `Body` předejte instanci `EmailRequest` třídy. Obsahuje následující vlastnosti:
 
 * Zpráva. Předává hodnotu `@{activity('CopyBlobtoBlob').output.dataWritten`. Přistupuje k vlastnosti předchozí aktivity kopírování a předá hodnotu `dataWritten`. V případě neúspěchu předejte výstup chyby místo `@{activity('CopyBlobtoBlob').error.message`.
-* Název Data Factory Předává hodnotu `@{pipeline().DataFactory}`. Tato systémová proměnná vám umožní přístup k odpovídajícímu názvu datové továrny. Seznam systémových proměnných najdete v tématu [systémové proměnné](control-flow-system-variables.md).
+* Název Data Factory Předává hodnotu `@{pipeline().DataFactory}` Tato systémová proměnná umožňuje přístup k odpovídajícímu názvu datové továrny. Seznam systémových proměnných najdete v tématu [systémové proměnné](control-flow-system-variables.md).
 * Název kanálu Předává hodnotu `@{pipeline().Pipeline}`. Tato systémová proměnná umožňuje přístup k odpovídajícímu názvu kanálu.
 * Pozorování. Předává hodnotu `"@pipeline().parameters.receiver"`. Přistupuje k parametrům kanálu.
 
@@ -499,7 +499,7 @@ Tento kód vytvoří novou závislost aktivity, která závisí na předchozí a
 
 ## <a name="create-a-pipeline-run"></a>Vytvoření spuštění kanálu
 
-Do metody `Main` přidejte následující kód, který spustí spuštění kanálu.
+Do metody `Main`, která aktivuje spuštění kanálu, přidejte následující kód.
 
 ```csharp
 // Create a pipeline run
@@ -517,7 +517,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 ## <a name="main-class"></a>Hlavní třída
 
-Konečná metoda `Main` by měla vypadat takto.
+Vaše finální `Main` metoda by měla vypadat takto.
 
 ```csharp
 // Authenticate and create a data factory management client
@@ -570,7 +570,7 @@ Sestavte a spusťte program pro aktivaci spuštění kanálu!
 
     Tento kód průběžně kontroluje stav spuštění, dokud nedokončí kopírování dat.
 
-1. Do metody `Main` přidejte následující kód, který načte podrobnosti o spuštění aktivity kopírování, například velikost načtených/zapsaných dat:
+1. Přidejte následující kód do metody `Main`, který načte podrobnosti o spuštění aktivity kopírování, například velikost načtených/zapsaných dat:
 
     ```csharp
     // Check the copy activity run details

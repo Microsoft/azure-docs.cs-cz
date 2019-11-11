@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 31d7299b0c14b35aad7a29c875630d8a7fa4827e
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: d8d5ecd64ba689dc9cce342513702d8359038162
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200588"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682259"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Plánování kapacity pro clustery HDInsight
 
@@ -31,13 +31,13 @@ Klíčovým dotazem pro plánování kapacity jsou:
 
 Oblast Azure určuje, kde se cluster fyzicky zřídí. Aby se minimalizovala latence čtení a zápisu, měl by cluster být blízko vašich dat.
 
-HDInsight je k dispozici v mnoha oblastech Azure. Pokud chcete najít nejbližší oblast, přečtěte si téma [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=hdinsight/).
+HDInsight je k dispozici v mnoha oblastech Azure. Pokud chcete najít nejbližší oblast, přečtěte si téma [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=hdinsight).
 
 ## <a name="choose-storage-location-and-size"></a>Zvolit umístění a velikost úložiště
 
 ### <a name="location-of-default-storage"></a>Umístění výchozího úložiště
 
-Výchozí úložiště, buď účet Azure Storage, nebo Azure Data Lake Storage, musí být ve stejném umístění jako váš cluster. Azure Storage je k dispozici ve všech umístěních. Data Lake Storage Gen1 je k dispozici v některých oblastech – viz aktuální [dostupnost Data Lake Storage](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=storage).
+Výchozí úložiště, buď účet Azure Storage, nebo Azure Data Lake Storage, musí být ve stejném umístění jako váš cluster. Azure Storage je k dispozici ve všech umístěních. Data Lake Storage Gen1 je k dispozici v některých oblastech – viz aktuální [dostupnost Data Lake Storage](https://azure.microsoft.com/global-infrastructure/services/?products=storage).
 
 ### <a name="location-of-existing-data"></a>Umístění stávajících dat
 
@@ -94,7 +94,7 @@ K chybám může dojít v důsledku paralelního spouštění více map a sníž
 
 Po určení velikosti virtuálního počítače clusteru, škálování a typu ověřte aktuální limity kapacity vašeho předplatného. Pokud dosáhnete limitu kvóty, možná nebudete moct nasadit nové clustery nebo škálovat existující clustery přidáním dalších pracovních uzlů. Jedinou omezenou kvótou je kvóta PROCESORových jader, která existuje na úrovni oblasti pro každé předplatné. Například vaše předplatné může mít v Východní USA oblasti 30 jader omezení. Pokud potřebujete požádat o zvýšení kvóty, proveďte následující kroky:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. V levé dolní části stránky vyberte **help + support** .
 1. Vyberte **Nová žádost o podporu**.
 1. Na stránce **Nová žádost o podporu** na kartě **základy** vyberte následující možnosti:

@@ -7,16 +7,19 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 56e49ab60733c9c0a813ca6e46712bcd8052a2ef
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 902e89305aa24e8cbb6d2dd84d6a61c710d11637
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518148"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715374"
 ---
 # <a name="support-matrix-for-physical-server-assessment-and-migration"></a>Matice podpory pro posouzení fyzického serveru a jejich migraci
 
 [Službu Azure Migrate](migrate-overview.md) můžete použít k vyhodnocení a migraci počítačů do Microsoft Azure cloudu. Tento článek shrnuje nastavení podpory a omezení pro vyhodnocení a migraci místních fyzických serverů.
+
+> [!NOTE]
+> Pokud jsou zde uvedené funkce, které se ještě nezobrazuje na portálu Azure Migrate, počkejte. Budou zobrazeny v průběhu příštího týdne.
 
 
 ## <a name="physical-server-scenarios"></a>Scénáře fyzického serveru
@@ -39,7 +42,7 @@ Tabulka shrnuje podporované scénáře pro fyzické servery.
 
   **Zeměpisné oblasti** | **Umístění úložiště metadat**
   --- | ---
-  Azure Government | USA – Virginie
+  Azure Government | USA (Gov) – Virginia
   Asie a Tichomoří | Východní Asie nebo jihovýchodní Asie
   Austrálie | Austrálie – východ nebo Austrálie – jihovýchod
   Brazílie | Brazílie – jih
@@ -48,7 +51,7 @@ Tabulka shrnuje podporované scénáře pro fyzické servery.
   Francie | Francie – střed
   Indie | Střed Indie nebo Jižní Indie
   Japonsko |  Japonsko – východ nebo Japonsko – západ
-  Korea | Korea – střed nebo Korea – jih
+  Jižní Korea | Korea – střed nebo Korea – jih
   Spojené království | Velká Británie – jih nebo Velká Británie – západ
   Spojené státy | Střed USA nebo Západní USA 2
 

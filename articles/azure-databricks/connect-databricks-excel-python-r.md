@@ -1,6 +1,6 @@
 ---
-title: 'Připojení k Azure Databricks z Excelu, Python nebo R '
-description: Zjistěte, jak použít ovladač Simba pro připojení Azure Databricks do aplikace Excel, Python nebo R.
+title: 'Připojení k Azure Databricks z Excelu, Pythonu nebo R '
+description: Naučte se, jak pomocí ovladače Simba připojit Azure Databricks k Excelu, Pythonu nebo R.
 services: azure-databricks
 author: mamccrea
 ms.reviewer: jasonh
@@ -9,107 +9,107 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
-ms.openlocfilehash: 1805f04d7833dea180847defadd865cb23e9df62
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: f7494d36cf9b16ac6c7a1287a6ff96dd2285c6e2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340860"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601951"
 ---
-# <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Připojení k Azure Databricks z Excelu, Python nebo R
+# <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Připojení k Azure Databricks z Excelu, Pythonu nebo R
 
-V tomto článku se dozvíte, jak použít ovladač Databricks ODBC pro připojení k Azure Databricks pomocí aplikace Microsoft Excel, Python nebo R jazyka. Po vytvoření připojení můžete přístup k datům v Azure Databricks od klientů aplikace Excel, Python nebo R. Klienty můžete použít také pokud chcete hlouběji analyzovat data. 
+V tomto článku se dozvíte, jak pomocí ovladače ODBC datacihly připojit Azure Databricks k jazyku Microsoft Excelu, Pythonu nebo R. Po navázání připojení můžete k datům v Azure Databricks přistupovat z klientů Excel, Python nebo R. K další analýze dat můžete také použít klienty. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Musíte mít pracovní prostor služby Azure Databricks, Spark cluster a ukázková data spojená s vaším clusterem. Pokud již nemáte tyto požadavky, projděte si rychlý start na [spuštění úlohy Spark job v Azure Databricks pomocí webu Azure portal](quickstart-create-databricks-workspace-portal.md).
+* Musíte mít Azure Databricks pracovní prostor, cluster Spark a ukázková data přidružená k vašemu clusteru. Pokud tyto požadavky ještě nemáte, dokončete rychlý Start v článku [spuštění úlohy Spark na Azure Databricks pomocí Azure Portal](quickstart-create-databricks-workspace-portal.md).
 
-* Stáhnout ovladač Databricks ODBC z [stránka pro stahování ovladačů Databricks](https://databricks.com/spark/odbc-driver-download). 32bitové nebo 64bitové verze v závislosti na aplikaci nainstalujte z ve které chcete připojit k Azure Databricks. Například pro připojení z aplikace Excel, instalaci 32bitové verze ovladače. Pro připojení z jazyků R a Python, nainstalujte 64bitovou verzi ovladače.
+* Stáhněte si ovladač ODBC ovladače datacihly ze [stránky pro stažení ovladače datacihly](https://databricks.com/spark/odbc-driver-download). Nainstalujte 32 nebo 64 bitovou verzi v závislosti na aplikaci, ze které se chcete připojit k Azure Databricks. Například pro připojení z aplikace Excel nainstalujte 32 verzi ovladače. Pokud se chcete připojit z R a Pythonu, nainstalujte 64 verzi ovladače.
 
-* Nastavte osobní přístupový token v Databricks. Pokyny najdete v tématu [Token správu](https://docs.azuredatabricks.net/api/latest/authentication.html#token-management).
+* Nastavení osobního přístupového tokenu v datacihlech Pokyny najdete v tématu [Správa tokenů](/azure/databricks/dev-tools/api/latest/authentication).
 
 ## <a name="set-up-a-dsn"></a>Nastavení názvu DSN
 
-Název zdroje dat (DSN) obsahuje informace o konkrétní zdroj. Ovladač ODBC musí tento název zdroje dat pro připojení ke zdroji dat. V této části nastavíte názvu DSN, který je možné pomocí ovladače Databricks ODBC pro připojení k Azure Databricks od klientů, jako je Microsoft Excel, Python nebo R.
+Název zdroje dat (DSN) obsahuje informace o konkrétním zdroji dat. Ovladač ODBC potřebuje tento název DSN pro připojení ke zdroji dat. V této části nastavíte název DSN, který se dá použít s ovladačem ODBC datacihly pro připojení k Azure Databricks z klientů, jako je Microsoft Excel, Python nebo R.
 
-1. V pracovním prostoru Azure Databricks přejděte ke clusteru Databricks.
+1. V pracovním prostoru Azure Databricks přejděte do clusteru datacihly.
 
-    ![Otevřít Databricks pro cluster](./media/connect-databricks-excel-python-r/open-databricks-cluster.png "otevřít Databricks pro cluster")
+    ![Otevřít cluster datacihly](./media/connect-databricks-excel-python-r/open-databricks-cluster.png "Otevřít cluster datacihly")
 
-2. V části **konfigurace** klikněte na tlačítko **JDBC/ODBC** kartu a zkopírujte hodnoty **název hostitele serveru** a **cesta HTTP**. Tyto hodnoty k dokončení kroků v tomto článku budete potřebovat.
+2. Na kartě **Konfigurace** klikněte na kartu **JDBC/ODBC** a zkopírujte hodnoty pro **název hostitele serveru** a **cestu http**. Tyto hodnoty budete potřebovat k dokončení kroků v tomto článku.
 
-    ![Získat konfiguraci Databricks](./media/connect-databricks-excel-python-r/get-databricks-jdbc-configuration.png "Databricks získat konfiguraci")
+    ![Získat konfiguraci datacihlů](./media/connect-databricks-excel-python-r/get-databricks-jdbc-configuration.png "Získat konfiguraci datacihlů")
 
-3. Na počítači, spusťte **zdroje dat ODBC** aplikace (32bitová nebo 64bitová verze) v závislosti na aplikaci. Pro připojení z Excelu, použijte 32bitovou verzi. Pro připojení z jazyků R a Python, použijte 64bitovou verzi.
+3. V počítači spusťte v závislosti na aplikaci aplikace **zdroje dat ODBC** (32-bit nebo 64-bit). K připojení z Excelu použijte 32 verzi. Pokud se chcete připojit z R a Pythonu, použijte 64 verzi.
 
-    ![Spuštění rozhraní ODBC](./media/connect-databricks-excel-python-r/launch-odbc-app.png "spuštění aplikace rozhraní ODBC")
+    ![Spustit rozhraní ODBC](./media/connect-databricks-excel-python-r/launch-odbc-app.png "Spuštění aplikace ODBC")
 
-4. V části **uživatelské DSN** klikněte na tlačítko **přidat**. V **vytvořit nový zdroj dat** dialogové okno, vyberte **ovladač ODBC Spark Simba**a potom klikněte na tlačítko **Dokončit**.
+4. Na kartě **uživatelský název DSN** klikněte na **Přidat**. V dialogovém okně **vytvořit nový zdroj dat** vyberte **ovladač Simba Spark ODBC**a pak klikněte na **Dokončit**.
 
-    ![Spuštění rozhraní ODBC](./media/connect-databricks-excel-python-r/add-new-user-dsn.png "spuštění aplikace rozhraní ODBC")
+    ![Spustit rozhraní ODBC](./media/connect-databricks-excel-python-r/add-new-user-dsn.png "Spuštění aplikace ODBC")
 
-5. V **ovladač ODBC Spark Simba** dialogového okna zadejte následující hodnoty:
+5. V dialogovém okně **ovladač Simba Spark ODBC** zadejte následující hodnoty:
 
-    ![Konfigurace názvu DSN](./media/connect-databricks-excel-python-r/odbc-dsn-setup.png "konfigurace DSN")
+    ![Konfigurace DSN](./media/connect-databricks-excel-python-r/odbc-dsn-setup.png "Konfigurace DSN")
 
-    Následující tabulka obsahuje informace na tyto hodnoty zadat v dialogovém okně.
+    Následující tabulka obsahuje informace o hodnotách, které mají být uvedeny v dialogovém okně.
     
-    |Pole  | Value  |
+    |Pole  | Hodnota  |
     |---------|---------|
-    |**Název zdroje dat**     | Zadejte název datového zdroje.        |
-    |**Hostitele**     | Zadejte hodnotu, kterou jste zkopírovali z pracovního prostoru Databricks pro *název hostitele serveru*.        |
+    |**Název zdroje dat**     | Zadejte název zdroje dat.        |
+    |**Hostitelé:**     | Zadejte hodnotu, kterou jste zkopírovali z pracovního prostoru datacihly pro *název hostitele serveru*.        |
     |**Port**     | Zadejte *443*.        |
-    |**Ověřování** > **mechanismus**     | Vyberte *uživatelské jméno a heslo*.        |
+    |**Ověřovací** > **mechanismus**     | Vyberte *uživatelské jméno a heslo*.        |
     |**Uživatelské jméno**     | Zadejte *token*.        |
-    |**Heslo**     | Zadejte hodnotu tokenu, který jste zkopírovali z pracovního prostoru Databricks. |
+    |**Heslo**     | Zadejte hodnotu tokenu, kterou jste zkopírovali z pracovního prostoru datacihly. |
     
-    V dialogovém okně Nastavení názvu zdroje dat proveďte následující kroky.
+    V dialogovém okně nastavení DSN proveďte následující další kroky.
     
-    * Klikněte na tlačítko **HTTP Options**. V dialogovém okně, které se otevře, vložte tuto hodnotu pro *cesta HTTP* , který jste zkopírovali z pracovního prostoru Databricks. Klikněte na **OK**.
-    * Klikněte na tlačítko **možnosti SSL**. V dialogovém okně, které se otevře, vyberte **povolit šifrování SSL** zaškrtávací políčko. Klikněte na **OK**.
-    * Klikněte na tlačítko **testování** chcete otestovat připojení k Azure Databricks. Nastavení uložíte kliknutím na **OK**.
-    * V **správce zdrojů dat ODBC** dialogové okno, klikněte na tlačítko **OK**.
+    * Klikněte na možnost **http možnosti**. V dialogovém okně, které se otevře, vložte hodnotu pro *cestu http* , kterou jste zkopírovali z pracovního prostoru datacihly. Klikněte na tlačítko **OK**.
+    * Klikněte na **Možnosti SSL**. V dialogu, který se otevře, zaškrtněte políčko **Povolit protokol SSL** . Klikněte na tlačítko **OK**.
+    * Kliknutím na **test** otestujte připojení k Azure Databricks. Konfiguraci uložíte kliknutím na **OK** .
+    * V dialogovém okně **Správce zdrojů dat ODBC** klikněte na tlačítko **OK**.
 
-Teď máte vaše DSN nastavení. V následujících částech použijte tento název zdroje dat pro připojení k Azure Databricks z aplikace Excel, Python nebo R.
+Teď máte nastavený název DSN. V dalších částech se tento název DSN používá pro připojení k Azure Databricks z Excelu, Pythonu nebo R.
 
-## <a name="connect-from-microsoft-excel"></a>Připojení z aplikace Microsoft Excel
+## <a name="connect-from-microsoft-excel"></a>Připojit z aplikace Microsoft Excel
 
-V této části si vyžádat data z Azure Databricks do aplikace Microsoft Excel pomocí DSN, který jste vytvořili dříve. Než začnete, ujistěte se, že máte v počítači nainstalovanou aplikaci Microsoft Excel. Můžete použít zkušební verzi aplikace Excel z [odkaz zkušební verze Microsoft Excelu](https://products.office.com/excel).
+V této části vyžádáte data z Azure Databricks do Microsoft Excelu pomocí DSN, který jste vytvořili dříve. Než začnete, ujistěte se, že máte v počítači nainstalovanou aplikaci Microsoft Excel. Můžete použít zkušební verzi aplikace Excel z [zkušebního připojení aplikace Microsoft Excel](https://products.office.com/excel).
 
-1. Prázdný sešit otevřete v aplikaci Microsoft Excel. Z **Data** pásu karet, klikněte na tlačítko **získat Data**. Klikněte na tlačítko **z jiných zdrojů** a potom klikněte na tlačítko **z rozhraní ODBC**.
+1. Otevřete prázdný sešit v aplikaci Microsoft Excel. Na pásu karet **data** klikněte na **získat data**. Klikněte na **z jiných zdrojů** a pak klikněte na **z ODBC**.
 
-    ![Spuštění rozhraní ODBC z aplikace Excel](./media/connect-databricks-excel-python-r/launch-odbc-from-excel.png "spuštění ODBC z Excelu")
+    ![Spuštění ODBC z Excelu](./media/connect-databricks-excel-python-r/launch-odbc-from-excel.png "Spuštění ODBC z Excelu")
 
-2. V **z rozhraní ODBC** dialogové okno, vyberte název zdroje dat, který jste vytvořili dříve a pak klikněte na tlačítko **OK**.
+2. V dialogovém okně **z ODBC** vyberte název DSN, který jste vytvořili dříve, a pak klikněte na **OK**.
 
-    ![Vyberte název zdroje dat](./media/connect-databricks-excel-python-r/excel-select-dsn.png "vyberte název zdroje dat")
+    ![Vybrat DSN](./media/connect-databricks-excel-python-r/excel-select-dsn.png "Vybrat DSN")
 
-3. Pokud se výzva k zadání přihlašovacích údajů, uživatelské jméno zadejte **token**. Zadání hesla zadejte hodnotu tokenu, který jste získali z pracovního prostoru Databricks.
+3. Pokud se zobrazí výzva k zadání přihlašovacích údajů, zadejte do tohoto uživatelského jména **token**. Pro heslo zadejte hodnotu tokenu, kterou jste získali z pracovního prostoru datacihly.
 
-    ![Zadejte přihlašovací údaje pro Databricks](./media/connect-databricks-excel-python-r/excel-databricks-token.png "vyberte název zdroje dat")
+    ![Zadání přihlašovacích údajů pro datacihly](./media/connect-databricks-excel-python-r/excel-databricks-token.png "Vybrat DSN")
 
-4. V okně Navigátor vyberte tabulku, ve službě Databricks, který chcete načíst do Excelu a potom klikněte na **načíst**. 
+4. V okně navigátor vyberte tabulku v datacihlách, kterou chcete načíst do Excelu, a pak klikněte na **načíst**. 
 
-    ![Načtení do aplikace Excel dta](./media/connect-databricks-excel-python-r/excel-load-data.png "dta načíst do Excelu")
+    ![Načíst do Excelu odložených dolů](./media/connect-databricks-excel-python-r/excel-load-data.png "Načíst do Excelu odložených dolů")
 
-Jakmile budete mít data v Excelovém sešitu, můžete provádět analytičtější operace v něm.
+Jakmile budete mít data v excelovém sešitu, můžete na něm provádět analytické operace.
 
-## <a name="connect-from-r"></a>Připojení z jazyka R
+## <a name="connect-from-r"></a>Připojit z R
 
 > [!NOTE]
-> Tato část obsahuje informace o tom, jak integrovat klientem R Studio spuštěná v počítači s Azure Databricks. Pokyny, jak používat R Studio v Azure Databricks pro cluster sám najdete v tématu [R Studio v Azure Databricks](https://docs.azuredatabricks.net/spark/latest/sparkr/rstudio.html).
+> V této části najdete informace o tom, jak integrovat klienta R studia běžícího na ploše s Azure Databricks. Pokyny k použití R studia na samotném Azure Databricks clusteru najdete v tématu [R Studio v Azure Databricks](/azure/databricks/spark/latest/sparkr/rstudio).
 
-V této části pomocí jazyka R integrované vývojové prostředí s referenčními daty, které jsou k dispozici v Azure Databricks. Než začnete, musíte mít nainstalovaný v počítači.
+V této části použijete prostředí IDE jazyka R k odkazování na data, která jsou k dispozici v Azure Databricks. Než začnete, musíte mít na počítači nainstalovanou následující.
 
-* Integrované vývojové prostředí jazyka R. Tento článek používá RStudio Desktop. Můžete nainstalovat z [stažení sady R Studio](https://www.rstudio.com/products/rstudio/download/).
-* Pokud používáte přihlašovací stránce RStudio pro Desktop jako prostředí (IDE), také nainstalovat Microsoft R Client z [ https://aka.ms/rclient/ ](https://aka.ms/rclient/). 
+* Rozhraní IDE pro jazyk R. Tento článek používá RStudio pro Desktop. Můžete ji nainstalovat z [webu R Studio Download](https://www.rstudio.com/products/rstudio/download/).
+* Pokud používáte RStudio pro desktop jako integrované vývojové prostředí (IDE), nainstalujte také Microsoft R Client z [https://aka.ms/rclient/](https://aka.ms/rclient/). 
 
 Otevřete RStudio a proveďte následující kroky:
 
-- Odkaz `RODBC` balíčku. To umožňuje připojení k Azure Databricks pomocí DSN, který jste vytvořili dříve.
-- Připojení pomocí DSN.
-- Spusťte dotaz SQL na data v Azure Databricks. V následujícím fragmentu kódu *radio_sample_data* je tabulka, která již existuje v Azure Databricks.
-- Provádění některých operací u dotazu k ověření výstupu. 
+- Odkázat na balíček `RODBC`. To vám umožní připojit se k Azure Databricks pomocí DSN, který jste vytvořili dříve.
+- Navažte připojení pomocí DSN.
+- Spusťte dotaz SQL na datech v Azure Databricks. V následujícím fragmentu kódu je *radio_sample_data* tabulka, která již existuje v Azure Databricks.
+- Provedením některých operací s dotazem ověřte výstup. 
 
 Následující fragment kódu provádí tyto úlohy:
 
@@ -130,20 +130,20 @@ Následující fragment kódu provádí tyto úlohy:
 
 ## <a name="connect-from-python"></a>Připojení z Pythonu
 
-V této části použijete Python IDE (například IDLE) s referenčními daty, které jsou k dispozici v Azure Databricks. Než začnete, zajistěte splnění následujících požadavků:
+V této části použijete prostředí Python IDE (například nečinné) k odkazování na data dostupná v Azure Databricks. Než začnete, dokončete následující požadavky:
 
-* Instalace Pythonu z [tady](https://www.python.org/downloads/). Instalace Pythonu z tohoto odkazu se nainstaluje taky nečinnosti.
+* Nainstalujte Python odsud [.](https://www.python.org/downloads/) Instalace Pythonu z tohoto odkazu nainstaluje taky nečinné.
 
-* Z příkazového řádku na počítači, nainstalujte `pyodbc` balíčku. Spusťte následující příkaz:
+* Z příkazového řádku v počítači nainstalujte balíček `pyodbc`. Spusťte následující příkaz:
 
       pip install pyodbc
 
-Otevřete nečinný a proveďte následující kroky:
+Otevřete nečinné a proveďte následující kroky:
 
-- Import `pyodbc` balíčku. To umožňuje připojení k Azure Databricks pomocí DSN, který jste vytvořili dříve.
-- Připojení pomocí DSN, který jste vytvořili dříve.
--  Spustíte dotaz SQL pomocí připojení, že kterou jste vytvořili. V následujícím fragmentu kódu *radio_sample_data* je tabulka, která již existuje v Azure Databricks.
-- Provádění operací na dotaz k ověření výstupu.
+- Importujte balíček `pyodbc`. To vám umožní připojit se k Azure Databricks pomocí DSN, který jste vytvořili dříve.
+- Navažte připojení pomocí DSN, který jste vytvořili dříve.
+-  Spusťte dotaz SQL pomocí připojení, které jste vytvořili. V následujícím fragmentu kódu je *radio_sample_data* tabulka, která již existuje v Azure Databricks.
+- Provede operace s dotazem k ověření výstupu.
 
 Následující fragment kódu provádí tyto úlohy:
 
@@ -163,8 +163,8 @@ for row in cursor.fetchall():
     print(row)
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Další informace o zdrojích ve kterém můžete importovat data do Azure Databricks najdete v tématu [zdroje dat pro Azure Databricks](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html#)
+* Další informace o zdrojích, ze kterých můžete importovat data do Azure Databricks, najdete v tématu [zdroje dat pro Azure Databricks](/azure/databricks/data/data-sources/index)
 
 

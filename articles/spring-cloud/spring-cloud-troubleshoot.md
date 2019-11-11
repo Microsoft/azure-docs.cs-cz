@@ -1,20 +1,17 @@
 ---
 title: Průvodce odstraňováním potíží pro jarní cloud Azure | Microsoft Docs
 description: Průvodce odstraňováním potíží pro jarní cloud Azure
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
-ms.date: 10/07/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 546c97421fdb3a581a22e34f6110986a1a0732b6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.topic: troubleshooting
+ms.date: 11/04/2019
+ms.author: jeconnoc
+ms.openlocfilehash: 9603f4a687b55f45be2875ccaa7b801c0c5589c9
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929151"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607628"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>Průvodce odstraňováním potíží pro běžné problémy
 
@@ -70,7 +67,7 @@ Pokud chcete potvrdit, která situace je,
 
 1. Přejděte do části _Metriky_ a vyberte `Service CPU Usage Percentage` nebo `Service Memory Used`.
 2. Přidejte filtr `App=` a zadejte, kterou aplikaci chcete monitorovat, a
-3. Rozdělte metriky o `Instance`.
+3. Rozdělte metriky podle `Instance`.
 
 Pokud u všech instancí dochází k vysokému zatížení procesoru nebo paměti, je potřeba buď škálovat aplikaci, nebo škálovat procesor nebo paměť. Další podrobnosti najdete na stránce [škálování aplikací](spring-cloud-tutorial-scale-manual.md) .
 
@@ -105,7 +102,7 @@ Pokud se ale pokusíte zřídit instanci služby _jarní cloudovou službu Azure
 * Skupina prostředků pro instanci je už vytvořená.
 * Název prostředku odpovídá pravidlu pojmenování. (Může obsahovat jenom malá písmena, číslice a spojovníky. Prvním znakem musí být písmeno. Posledním znakem musí být písmeno nebo číslice. Hodnota musí být dlouhá 2 až 32 znaků.)
 
-Pokud se pokusíte zřídit instanci služby _jarní cloudovou službu Azure_ pomocí šablony Správce prostředků, navštivte https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates a zkontrolujte syntaxi šablony.
+Pokud se pokusíte zřídit instanci služby _jarní cloudovou službu Azure_ pomocí šablony Správce prostředků, navštivte prosím https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates a zkontrolujte syntaxi šablony.
 
 Název instance služby _jarní cloudová služba Azure_ se použije pro vyžádání názvu subdomény v rámci `azureapps.io`, takže pokud je název v konfliktu s existujícím názvem, nepodaří se mu. Další podrobnosti najdete v protokolech aktivit.
 
@@ -156,7 +153,7 @@ Proměnné prostředí informují cloudové cloudové rozhraní Azure, které za
 
 1. Přejděte na tuto adresu URL: `https://<your application test endpoint>/actuator/health`.  
     - Odpověď podobná `{"status":"UP"}` indikuje, že byl koncový bod povolen.
-    - Pokud je odpověď záporná, zahrňte do `POM.xml` následující závislost:
+    - Pokud je odpověď záporná, zahrňte do `POM.xml`následující závislost:
 
         ```xml
             <dependency>
@@ -194,7 +191,7 @@ Vyhledejte podřízený uzel s názvem `systemEnvironment`.  Tento uzel obsahuje
 
 Pokud chcete _zajistit, aby_byla aplikace _spuštěná_ , klikněte na _Správa aplikací_ .
 
-Pokud vidíte metriky z _JVM_ , ale žádné metriky od _Tomcat_, zkontrolujte, jestli je v balíčku aplikace povolená závislost `spring-boot-actuator` a úspěšně se spustí.
+Pokud vidíte metriky z _JVM_ , ale žádné metriky od _Tomcat_, zkontrolujte, jestli je v balíčku aplikace povolená závislost`spring-boot-actuator` a úspěšně se spustí.
 
 ```xml
 <dependency>

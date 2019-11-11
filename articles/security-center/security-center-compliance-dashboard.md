@@ -1,5 +1,5 @@
 ---
-title: Zlepšení dodržování předpisů pomocí Azure Security Center | Microsoft Docs
+title: Kontroly dodržování předpisů v legislativě – Azure Security Center
 description: 'Kurz: Naučte se, jak vylepšit dodržování legislativních předpisů pomocí Azure Security Center.'
 services: security-center
 documentationcenter: na
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 2961474e84930cf548a1ef23b19fcd1be443b151
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: c448697339948b30d73e88c183211e7a1154fe77
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520925"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686436"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Kurz: zlepšení dodržování legislativních předpisů
 ---
 
 Azure Security Center pomáhá zjednodušit proces splnění požadavků na dodržování legislativních předpisů pomocí **řídicího panelu dodržování předpisů regulativního předpisu**. Na řídicím panelu Security Center poskytuje přehledy o dodržování předpisů stav na základě průběžného posouzení prostředí Azure. V souladu s osvědčenými postupy zabezpečení Security Center analyzuje rizikové faktory v hybridním cloudovém prostředí. Tato posouzení jsou namapována na řízení dodržování předpisů z podporované sady standardů. Na řídicím panelu dodržování předpisů můžete zobrazit stav všech posouzení v rámci vašeho prostředí v kontextu určitého standardu nebo nařízení. Při rozhodování o doporučeních a omezení rizikových faktorů ve vašem prostředí vylepšuje stav dodržování předpisů.
 
-V tomto kurzu se naučíte, jak:
+V tomto kurzu se naučíte:
 
 -   Vyhodnocení dodržování předpisů pomocí řídicího panelu dodržování předpisů
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte, jak:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro krokování s funkcemi popsanými v tomto kurzu musíte mít standardní cenovou úroveň Security Center. Můžete vyzkoušet Security Center Standard bez jakýchkoli nákladů.
 Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/). Článek Rychlý Start: [Onboarding předplatného Azure na Security Center Standard](https://docs.microsoft.com/azure/security-center/security-center-get-started) vás provede postupem upgradu na úroveň Standard.

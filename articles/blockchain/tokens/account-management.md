@@ -5,15 +5,15 @@ services: azure-blockchain
 author: PatAltimore
 ms.author: patricka
 ms.date: 11/04/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: brendal
-ms.openlocfilehash: b396b359585c8865c3b08284f4398076f37c7a6e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91dcadd3c7704b7b8c6cab45005bc83e1bba18bb
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512961"
+ms.locfileid: "73579761"
 ---
 # <a name="azure-blockchain-tokens-account-management"></a>Správa účtů tokenů Azure blockchain
 

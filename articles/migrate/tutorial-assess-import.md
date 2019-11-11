@@ -7,14 +7,17 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 86d61dbd75363f68ee4651bfb36f940810909c00
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 856f7f7735435579ac14918ee8026f27b222773e
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501845"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715513"
 ---
 # <a name="assess-servers-using-imported-data"></a>Vyhodnocování serverů pomocí importovaných dat
+
+> [!NOTE]
+> Pokud tuto funkci na portále Azure Migrate ještě nevidíte, počkejte prosím. Zobrazí se za příští týden.
 
 Tento článek vysvětluje, jak vyhodnotit místní servery s [Azure Migrate: posouzení serveru](migrate-services-overview.md#azure-migrate-server-assessment-tool)pomocí importu metadat serveru pomocí CSV. Pomocí této metody vyhodnocení není nutné nastavovat zařízení Azure Migrate, abyste mohli vytvořit posouzení. To je užitečné v případě, že: 
 
@@ -295,7 +298,7 @@ Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úlo�
 
 ## <a name="supported-operating-system-names"></a>Podporované názvy operačních systémů
 
-Name (Název) | Name (Název)
+Název | Název
 --- | ---
 **A-H** | 
 Apple Mac OS X 10 | Asianux 3<br/>Asianux 4<br/>Asianux 5
@@ -310,7 +313,7 @@ SCO OpenServer 5<br/>SCO OpenServer 6<br/>SCO UnixWare 7 | Serenity systémy eCo
 Systém Sun Microsystems Solaris 8<br/>Sun Microsystems Solaris 9 | SUSE Linux Enterprise 10<br/> SUSE Linux Enterprise 11<br/>SUSE Linux Enterprise 12<br/>SUSE Linux Enterprise 8/9<br/>SUSE Linux Enterprise 11<br/>SUSE openSUSE
 **U-Z** | 
 Ubuntu Linux | VMware ESXi 4<br/>VMware ESXi 5<br/>VMware ESXi 6
-Windows 10<br/>Systém Windows 2000<br/>Systém Windows 3<br/>Windows 7<br/>Windows 8<br/>Systém Windows 95<br/>Systém Windows 98<br/>Systém Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003 | Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Prahová hodnota pro Windows Server<br/>Windows Vista<br/>Webový server Windows 2008 R2<br/>Systém Windows XP Professional
+Windows 10<br/>Systém Windows 2000<br/>Systém Windows 3<br/>Windows 7<br/>Windows 8<br/>Systém Windows 95<br/>Systém Windows 98<br/>Systém Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003 | Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Prahová hodnota pro Windows Server<br/>Windows Vista<br/>Webový server Windows 2008 R2<br/>Systém Windows XP Professional
     
 
 ## <a name="next-steps"></a>Další kroky

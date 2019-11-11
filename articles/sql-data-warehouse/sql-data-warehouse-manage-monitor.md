@@ -1,5 +1,5 @@
 ---
-title: Monitorování úloh pomocí zobrazení dynamické správy | Microsoft Docs
+title: Monitorování vaší úlohy pomocí DMV
 description: Naučte se monitorovat vaše úlohy pomocí zobrazení dynamické správy.
 services: sql-data-warehouse
 author: ronortloff
@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 08/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 1d1af13eb54daf060f0172a0506370ca459f2ece
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: e1a754747ae5c0fb7c50653f4881b67a81e011ef
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018951"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645667"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitorování vaší úlohy pomocí DMV
 Tento článek popisuje, jak pomocí zobrazení dynamické správy (zobrazení dynamické správy) monitorovat vaše úlohy. To zahrnuje šetření provádění dotazů v Azure SQL Data Warehouse.
@@ -45,7 +45,7 @@ Všechny dotazy spouštěné v SQL Data Warehouse jsou protokolovány do [Sys. D
 
 Tady je postup pro prošetření plánů provádění dotazů a časů pro konkrétní dotaz.
 
-### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>KROK 1: Identifikujte dotaz, který chcete prozkoumat.
+### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>Krok 1: určení dotazu, který chcete prozkoumat
 ```sql
 -- Monitor active queries
 SELECT * 
@@ -63,7 +63,7 @@ ORDER BY total_elapsed_time DESC;
 
 Z předchozích výsledků dotazu **si poznamenejte ID žádosti** o dotaz, který chcete prozkoumat.
 
-Dotazy v pozastaveném stavu lze zařadit do fronty z důvodu velkého počtu aktivních spuštěných dotazů. Tyto dotazy se také zobrazí v [Sys. DM _pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) , který čeká na dotaz typu UserConcurrencyResourceType. Informace o omezeních souběžnosti najdete v tématech [úrovně výkonu](performance-tiers.md) nebo [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md). Dotazy mohou také čekat na jiné důvody, například na zámky objektů.  Pokud dotaz čeká na prostředek, prostudujte si další informace v tomto článku v tématu [zkoumání dotazů, které čekají na prostředky][Investigating queries waiting for resources] .
+Dotazy v **pozastaveném** stavu lze zařadit do fronty z důvodu velkého počtu aktivních spuštěných dotazů. Tyto dotazy se také zobrazí v [Sys. DM _pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) , který čeká na dotaz typu UserConcurrencyResourceType. Informace o omezeních souběžnosti najdete v tématech [úrovně výkonu](performance-tiers.md) nebo [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md). Dotazy mohou také čekat na jiné důvody, například na zámky objektů.  Pokud dotaz čeká na prostředek, prostudujte si další informace v tomto článku v tématu [zkoumání dotazů, které čekají na prostředky][Investigating queries waiting for resources] .
 
 Chcete-li zjednodušit vyhledávání dotazů v tabulce [Sys. DM _pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) , použijte [popisek][LABEL] k přiřazení komentáře k dotazu, který lze vyhledat v zobrazení sys. DM _pdw_exec_requests.
 
@@ -81,7 +81,7 @@ FROM    sys.dm_pdw_exec_requests
 WHERE   [label] = 'My Query';
 ```
 
-### <a name="step-2-investigate-the-query-plan"></a>KROK 2: Prozkoumat plán dotazu
+### <a name="step-2-investigate-the-query-plan"></a>Krok 2: prozkoumání plánu dotazů
 Pomocí ID žádosti načtěte plán SQL (DSQL) pro dotaz z [Sys. DM _pdw_request_steps][sys.dm_pdw_request_steps].
 
 ```sql
@@ -97,10 +97,10 @@ Pokud plán DSQL trvá déle, než se čekalo, může být příčinou složitý
 
 Chcete-li prozkoumat další podrobnosti o jednom kroku, sloupec *operation_type* dlouhého kroku dotazu a poznamenejte si **Krok index**:
 
-* Pokračujte krokem 3a pro **operace SQL**: Operace RemoteOperation, ReturnOperation.
+* Pokračujte krokem 3a pro **operace SQL**: operace s RemoteOperation, ReturnOperation.
 * Pokračujte krokem 3B pro **operace přesunu dat**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
-### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>Krok 3a: Prozkoumat SQL pro distribuované databáze
+### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>Krok 3a: Prozkoumejte SQL pro distribuované databáze
 Použijte ID žádosti a krok index k načtení podrobností z [Sys. DM _pdw_sql_requests][sys.dm_pdw_sql_requests], který obsahuje informace o spuštění kroku dotazu ve všech distribuovaných databázích.
 
 ```sql
@@ -120,7 +120,7 @@ Když je spuštěný krok dotazu, můžete použít [příkaz DBCC PDW_SHOWEXECU
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>Krok 3B: Prozkoumat přesun dat v distribuovaných databázích
+### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>Krok 3B: prozkoumání přesunu dat v distribuovaných databázích
 K načtení informací o kroku přesunu dat běžícímu na každé distribuci z [Sys. DM _pdw_dms_workers][sys.dm_pdw_dms_workers]použijte ID žádosti a krokový index.
 
 ```sql
@@ -289,7 +289,7 @@ ORDER BY
     gb_processed desc;
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Další informace o zobrazení dynamické správy najdete v tématu [Systémová zobrazení][System views].
 
 

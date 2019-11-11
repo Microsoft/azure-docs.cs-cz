@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: b5b3ca127aba62b39bd7236412d4c6a542347db3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 11eaafec750b2ca35933b431866def51c25e8961
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476197"
+ms.locfileid: "73582476"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Kurz: analýza prvního modelu ML
 
@@ -31,11 +31,11 @@ V tomto kurzu se seznámíte s následujícími úlohami:
 > * Zobrazení výsledků školení na portálu
 > * Načíst nejlepší model
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Jediným předpokladem je spuštění první části tohoto kurzu, [nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
 
-V této části kurzu spustíte kód v ukázkovém poznámkovém bloku Jupyter `tutorials/tutorial-1st-experiment-sdk-train.ipynb` otevřený na konci části 1. Tento článek vás provede stejným kódem, který je v poznámkovém bloku.
+V této části kurzu spustíte kód v ukázkovém poznámkovém bloku Jupyter `tutorials/tutorial-1st-experiment-sdk-train.ipynb` otevřeli na konci části 1. Tento článek vás provede stejným kódem, který je v poznámkovém bloku.
 
 ## <a name="open-the-notebook"></a>Otevření poznámkového bloku
 
@@ -45,7 +45,7 @@ V této části kurzu spustíte kód v ukázkovém poznámkovém bloku Jupyter `
 
 
 > [!Warning]
-> Nevytvářejte *Nový* Poznámkový blok v rozhraní Jupyter. Poznámkový blok `tutorials/tutorial-1st-experiment-sdk-train.ipynb` zahrnuje **veškerý kód a data potřebná** pro účely tohoto kurzu.
+> Nevytvářejte *Nový* Poznámkový blok v rozhraní Jupyter. `tutorials/tutorial-1st-experiment-sdk-train.ipynb` poznámkového bloku zahrnuje **veškerý kód a data potřebná** pro účely tohoto kurzu.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Připojit pracovní prostor a vytvořit experiment
 
@@ -87,7 +87,7 @@ y_df = x_df.pop("Y")
 X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=66)
 ```
 
-## <a name="train-a-model"></a>Trénování modelu
+## <a name="train-a-model"></a>Učení modelu
 
 Výuku jednoduchého scikit modelu se dá snadno udělat místně pro účely malého měřítka, ale při školení mnoha iterací s desítkami různých funkcí a nastaveními parametrů je snadné sledovat, které modely jste si naučili a jak vám školení. Následující vzor návrhu ukazuje, jak pomocí sady SDK snadno sledovat vaše školení v cloudu.
 
@@ -127,13 +127,13 @@ Výše uvedený kód provede následující:
 1. V dalším kroku je model každého spuštění serializován a nahrán do běhu. To vám umožní stáhnout soubor modelu z běhu na portálu.
 1. Na konci každé iterace se spuštění dokončí voláním `run.complete()`.
 
-Po dokončení školení zavolejte proměnnou `experiment`, která načte odkaz na experiment na portálu.
+Po dokončení školení zavolejte `experiment` proměnnou, která načte odkaz na experiment na portálu.
 
 ```python
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name (Název)</th><th>Pracovní prostor</th><th>Stránka sestavy</th><th>Stránka docs</th></tr><tr><td>diabetes – experiment</td><td>vaše pracovní prostor – název</td><td>Odkaz na Azure Portal</td><td>Odkaz na dokumentaci</td></tr></table>
+<table style="width:100%"><tr><th>Název</th><th>Pracovní prostor</th><th>Stránka sestavy</th><th>Stránka docs</th></tr><tr><td>diabetes – experiment</td><td>vaše pracovní prostor – název</td><td>Odkaz na Azure Portal</td><td>Odkaz na dokumentaci</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Zobrazit výsledky školení na portálu
 
@@ -143,7 +143,7 @@ Když procházíte modely ve velkém množství přes stovky a tisíce samostatn
 
 ![Stránka hlavní experiment na portálu](./media/tutorial-quickstart/experiment-main.png)
 
-Kliknutím na odkaz číslo spuštění ve sloupci `RUN NUMBER` přejdete na stránku pro každé jednotlivé spuštění. Výchozí karta **Podrobnosti** Zobrazí podrobnější informace o každém spuštění. Přejděte na kartu **výstupy** a zobrazí se soubor `.pkl` pro model, který byl nahrán do běhu během každé školicí iterace. Tady si můžete stáhnout soubor modelu a nemusíte ho přesměrovat ručně.
+Kliknutím na odkaz číslo spuštění ve sloupci `RUN NUMBER` přejdete na stránku pro každé jednotlivé spuštění. Výchozí karta **Podrobnosti** Zobrazí podrobnější informace o každém spuštění. Přejděte na kartu **výstupy** a uvidíte soubor `.pkl` pro model, který byl nahrán do běhu při každé výuce cvičení. Tady si můžete stáhnout soubor modelu a nemusíte ho přesměrovat ručně.
 
 ![Stránka podrobností o spuštění na portálu](./media/tutorial-quickstart/model-download.png)
 
@@ -177,7 +177,7 @@ print("Best run_id rmse: " + str(minimum_rmse))
     Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
     Best run_id rmse: 57.234760283951765
 
-Použijte nejlepší ID běhu k načtení jednotlivého běhu pomocí konstruktoru `Run` spolu s objektem experiment. Potom zavolejte `get_file_names()` pro zobrazení všech souborů, které jsou k dispozici ke stažení z tohoto spuštění. V tomto případě jste během školení nahráli jenom jeden soubor pro každé spuštění.
+Použijte nejlepší ID běhu k načtení jednotlivého spuštění pomocí konstruktoru `Run` společně s objektem experimentu. Potom zavolejte `get_file_names()` pro zobrazení všech souborů, které jsou k dispozici ke stažení z tohoto spuštění. V tomto případě jste během školení nahráli jenom jeden soubor pro každé spuštění.
 
 ```python
 from azureml.core import Run
@@ -197,7 +197,7 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 Tuto část neprovádějte, pokud máte v plánu spouštět jiné kurzy Azure Machine Learning.
 
-### <a name="stop-the-compute-instance"></a>Zastavení výpočetní instance
+### <a name="stop-the-notebook-vm"></a>Zastavení virtuálního počítače poznámkového bloku
 
 [!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 

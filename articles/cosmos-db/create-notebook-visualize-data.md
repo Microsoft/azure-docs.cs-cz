@@ -1,24 +1,24 @@
 ---
-title: Vytvoření poznámkového bloku v Azure Cosmos DB pro analýzu a vizualizaci dat
-description: Naučte se používat vestavěné notebooky Jupyter k importu dat do Azure Cosmos DB, analýze dat a vizualizaci výstupu.
+title: 'Kurz: vytvoření poznámkového bloku v Azure Cosmos DB pro analýzu a vizualizaci dat'
+description: 'Kurz: Naučte se používat vestavěné notebooky Jupyter k importu dat do Azure Cosmos DB, analýze dat a vizualizaci výstupu.'
 author: deborahc
 ms.topic: tutorial
 ms.service: cosmos-db
-ms.date: 09/25/2019
+ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 679887ca6e9ad7713480899d1b40fddf9923c4c0
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 45dd4e8dcfd74cdb5d96b935e239b9f4b5094a7c
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931501"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720922"
 ---
-# <a name="create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Vytvoření poznámkového bloku v Azure Cosmos DB pro analýzu a vizualizaci dat
+# <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Kurz: vytvoření poznámkového bloku v Azure Cosmos DB pro analýzu a vizualizaci dat
 
 Tento článek popisuje, jak pomocí integrovaných poznámkových bloků Jupyter importovat ukázková maloobchodní data do Azure Cosmos DB. Uvidíte, jak použít příkazy SQL a Azure Cosmos DB Magic ke spouštění dotazů, analýze dat a vizualizaci výsledků.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Povolit podporu poznámkových bloků při vytváření účtu Azure Cosmos](enable-notebooks.md)
 
@@ -121,7 +121,7 @@ Před spuštěním dotazů k analýze dat můžete načíst data z kontejneru do
 {Query text}
 ```
 
-Další informace najdete v tématu [integrované příkazy a funkce poznámkového bloku v článku Azure Cosmos DB](use-notebook-features-and-commands.md) . Spustí se dotaz-`SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`. Výsledky budou uloženy do PANDAS dataframe s názvem df_cosmos. Do nové buňky poznámkového bloku vložte následující příkaz a spusťte ho:
+Další informace najdete v tématu [integrované příkazy a funkce poznámkového bloku v článku Azure Cosmos DB](use-notebook-features-and-commands.md) . Spustíte dotaz-`SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`. Výsledky budou uloženy do PANDAS dataframe s názvem df_cosmos. Do nové buňky poznámkového bloku vložte následující příkaz a spusťte ho:
 
 ```python
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos

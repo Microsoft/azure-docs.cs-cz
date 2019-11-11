@@ -1,5 +1,5 @@
 ---
-title: Přírůstkové kopírování více tabulek pomocí Azure Data Factory | Microsoft Docs
+title: 'Přírůstkové kopírování více tabulek pomocí Azure Data Factory '
 description: V tomto kurzu vytvoříte kanál Azure Data Factory, který přírůstkově kopíruje rozdílová data z několika tabulek v místní databázi SQL Serveru do databáze Azure SQL.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: b7de8b164fcd818fba1f999ea7b67f11de646ccd
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: b841acf45c20320fada895f20dfc4065837d5add
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533222"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683399"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Přírůstkové načtení dat z více tabulek v SQL Serveru do databáze Azure SQL
 V tomto kurzu vytvoříte Azure Data Factory s kanálem, který načítá rozdílová data z několika tabulek v místním SQL Serveru do databáze Azure SQL.    
@@ -31,7 +31,7 @@ V tomto kurzu provedete následující kroky:
 > * Vytvoření propojených služeb 
 > * Vytvoření zdroje, jímky a datových sad mezí
 > * Vytvoření a spuštění kanálu a jeho monitorování
-> * Kontrola výsledků
+> * Zkontrolujte výsledky.
 > * Přidání nebo aktualizace dat ve zdrojových tabulkách
 > * Opakované spuštění kanálu a jeho monitorování
 > * Kontrola konečných výsledků
@@ -60,9 +60,9 @@ Tady jsou důležité kroky pro vytvoření tohoto řešení:
     ![Přírůstkové načtení dat](media/tutorial-incremental-copy-multiple-tables-powershell/high-level-solution-diagram.png)
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 * **SQL Server**. V tomto kurzu použijete místní databázi SQL Serveru jako zdrojové úložiště dat. 
 * **Azure SQL Database**. Použijete databázi SQL jako úložiště dat jímky. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze Azure SQL](../sql-database/sql-database-get-started-portal.md), kde najdete kroky pro její vytvoření. 
 
@@ -350,7 +350,7 @@ V tomto kroku s datovou továrnou propojíte místní databázi SQL Serveru.
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerLinkedService" -File ".\SqlServerLinkedService.json"
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     LinkedServiceName : SqlServerLinkedService
@@ -360,7 +360,7 @@ V tomto kroku s datovou továrnou propojíte místní databázi SQL Serveru.
     ```
 
 ### <a name="create-the-sql-database-linked-service"></a>Vytvoření propojené služby databáze SQL
-1. Ve složce ve c:\adftutorials\inccopymultitabletutorial vytvořte soubor JSON s názvem **AzureSQLDatabaseLinkedService. JSON** s následujícím obsahem. (Pokud ještě neexistuje, vytvořte si ADF složky.) Než soubor uložíte, nahraďte &lt;servername &gt;, &lt;database název &gt;, &lt;user název &gt; a &lt;password &gt; s názvem vaší databáze SQL Server, názvem databáze, uživatelským jménem a heslem. 
+1. Ve složce ve c:\adftutorials\inccopymultitabletutorial vytvořte soubor JSON s názvem **AzureSQLDatabaseLinkedService. JSON** s následujícím obsahem. (Pokud ještě neexistuje, vytvořte si ADF složky.) Nahraďte &lt;servername&gt;, &lt;název databáze&gt;, &lt;uživatelské jméno&gt;a &lt;hesla&gt; s názvem vaší databáze SQL Server, názvem vaší databáze, uživatelským jménem a heslo před uložením souboru. 
 
     ```json
     {  
@@ -382,7 +382,7 @@ V tomto kroku s datovou továrnou propojíte místní databázi SQL Serveru.
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
     ```
 
-    Tady je ukázkový výstup:
+    Zde je ukázkový výstup:
 
     ```json
     LinkedServiceName : AzureSQLDatabaseLinkedService
@@ -753,7 +753,7 @@ Tento kanál dostává jako parametr seznam tabulek. **Aktivita foreach** proch�
    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
    ``` 
 
-   Tady je ukázkový výstup: 
+   Zde je ukázkový výstup: 
 
    ```json
     PipelineName      : IncrementalCopyPipeline
@@ -794,7 +794,7 @@ Tento kanál dostává jako parametr seznam tabulek. **Aktivita foreach** proch�
 
 ## <a name="monitor-the-pipeline"></a>Monitorování kanálu
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Vyberte **Všechny služby**, spusťte hledání pomocí klíčového slova *Datové továrny* a vyberte **Datové továrny**. 
 
@@ -803,7 +803,7 @@ Tento kanál dostává jako parametr seznam tabulek. **Aktivita foreach** proch�
 1. Na stránce **Datová továrna** vyberte **vytvořit & monitorování** a spusťte Azure Data Factory na samostatné kartě.
 
 1. Na stránce **Začínáme** vyberte **monitor** na levé straně. 
-![Pipeline spouští ](media/doc-common-process/get-started-page-monitor-button.png)    
+![spuštění kanálu](media/doc-common-process/get-started-page-monitor-button.png)    
 
 1. Zobrazí se všechna spuštění kanálů a jejich stavy. Všimněte si, že stav spuštění kanálu v následujícím příkladu je **Úspěšně**. Parametry předané kanálu můžete zkontrolovat kliknutím na odkaz ve sloupci **Parametry**. Pokud došlo k chybě, uvidíte odkaz ve sloupci **Chyba**.
 
@@ -965,7 +965,7 @@ V tomto kurzu jste provedli následující kroky:
 > * Vytvoření propojených služeb 
 > * Vytvoření zdroje, jímky a datových sad mezí
 > * Vytvoření a spuštění kanálu a jeho monitorování
-> * Kontrola výsledků
+> * Zkontrolujte výsledky.
 > * Přidání nebo aktualizace dat ve zdrojových tabulkách
 > * Opakované spuštění kanálu a jeho monitorování
 > * Kontrola konečných výsledků

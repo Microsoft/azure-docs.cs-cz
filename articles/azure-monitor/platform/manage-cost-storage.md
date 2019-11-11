@@ -11,20 +11,23 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/17/2019
+ms.date: 11/05/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 1480418a70166887e7327452d407f78c2c992378
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: ae49a84dba01047d85ea0dbb854d1a7a59318567
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597305"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647653"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitor
 
 > [!NOTE]
 > Tento článek popisuje, jak pochopit a řídit náklady na protokoly Azure Monitor. Související článek, [sledování využití a odhadované náklady](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) popisuje, jak zobrazit využití a odhadované náklady napříč více funkcemi monitorování Azure pro různé cenové modely.
+
+> [!NOTE]
+> Všechny ceny a náklady uvedené v tomto článku jsou třeba jenom pro účely. 
 
 Protokoly Azure Monitor jsou určené ke škálování a podpoře shromažďování, indexování a ukládání velkých objemů dat za den z libovolného zdroje v podniku nebo v Azure, které jsou nasazené v Azure.  I když to může být primárním ovladačem pro vaši organizaci, náklady na efektivitu jsou nakonec základní ovladače. V tomto případě je důležité pochopit, že náklady na Log Analytics pracovní prostor nejsou založené jenom na objemu shromažďovaných dat, ale také závisí na vybraném plánu a na tom, jak dlouho jste se rozhodli ukládat data generovaná z připojených zdrojů.  
 
@@ -38,17 +41,18 @@ Výchozí ceny pro Log Analytics jsou Model průběžných **plateb** na základ
   - Počet monitorovaných virtuálních počítačů
   - Typ dat shromažďovaných z každého monitorovaného virtuálního počítače 
   
-Kromě modelu průběžných plateb jsme zavedli **rezervace kapacity** pro Log Analytics, které vám umožní v porovnání s průběžnými platbami ušetřit až 25%. Cena za rezervaci kapacity vám umožní koupit rezervaci od 100 GB za den. Veškeré využití nad úrovní rezervace se bude účtovat podle tarifu průběžných plateb. [Přečtěte si další informace](https://azure.microsoft.com/pricing/details/monitor/) o cenách Log Analytics s průběžnými platbami a rezervací kapacity. 
+Kromě modelu průběžných plateb Log Analytics má vrstvy **rezervace kapacity** , které vám umožní ve srovnání s průběžnými platbami ušetřit až 25%. Cena za rezervaci kapacity vám umožní koupit rezervaci od 100 GB za den. Veškeré využití nad úrovní rezervace se bude účtovat podle tarifu průběžných plateb. Úrovně rezervace kapacity mají 31 dnů v období závazku. Během období závazku můžete přejít na úroveň rezervace kapacity vyšší úrovně (čímž se restartuje 31. období závazku), ale nemůžete přejít zpět na průběžné platby nebo na nižší úroveň rezervace kapacity až po období závazku. píše. 
+[Přečtěte si další informace](https://azure.microsoft.com/pricing/details/monitor/) o cenách Log Analytics s průběžnými platbami a rezervací kapacity. 
 
-Všimněte si, že některá řešení, například [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/) a [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/), mají svůj vlastní cenový model. 
+Všimněte si také, že některá řešení, například [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/) a [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/), mají svůj vlastní cenový model. 
 
 ## <a name="estimating-the-costs-to-manage-your-environment"></a>Odhad nákladů na správu prostředí 
 
-Pokud protokoly Azure Monitor ještě nepoužíváte, můžete pomocí [cenové kalkulačky Azure monitor](https://azure.microsoft.com/pricing/calculator/?service=monitor) odhadnout náklady na používání Log Analytics. Začněte zadáním "Azure Monitor" do vyhledávacího pole a kliknutím na výslednou Azure Monitor dlaždici. Posuňte se dolů na stránku Azure Monitor a v rozevíracím seznamu Typ vyberte Log Analytics.  Tady můžete zadat počet virtuálních počítačů a GB dat, která se mají z každého virtuálního počítače shromažďovat. Typcially 1 až 3 GB datového měsíce se ingestují z typických virtuálních počítačů Azure. Pokud už vyhodnocujete Azure Monitor protokoly, můžete použít statistiku dat z vlastního prostředí. Níže najdete informace o tom, jak určit [Počet monitorovaných virtuálních počítačů](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-nodes-sending-data) a objem dat, na které [váš pracovní prostor pracuje](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume). 
+Pokud protokoly Azure Monitor ještě nepoužíváte, můžete pomocí [cenové kalkulačky Azure monitor](https://azure.microsoft.com/pricing/calculator/?service=monitor) odhadnout náklady na používání Log Analytics. Začněte zadáním "Azure Monitor" do vyhledávacího pole a kliknutím na výslednou Azure Monitor dlaždici. Posuňte se dolů na stránku Azure Monitor a v rozevíracím seznamu Typ vyberte Log Analytics.  Tady můžete zadat počet virtuálních počítačů a GB dat, která se mají z každého virtuálního počítače shromažďovat. Z typického virtuálního počítače Azure se typicky ingestují 1 až 3 GB datového měsíce. Pokud už vyhodnocujete Azure Monitor protokoly, můžete použít statistiku dat z vlastního prostředí. Níže najdete informace o tom, jak určit [Počet monitorovaných virtuálních počítačů](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-nodes-sending-data) a objem dat, na které [váš pracovní prostor pracuje](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume). 
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Pochopení nákladů na využití a odhadované náklady
 
-Pokud nyní používáte protokoly Azure Monitor, je snadné pochopit, jaké náklady jsou pravděpodobně založené na nedávných vzorech použití. K tomu použijte **Log Analytics využití a odhadované náklady** na kontrolu a analýzu využití dat. Zobrazuje množství dat shromažďovaných jednotlivými řešeními, množství uchovávaných dat a odhad nákladů na základě množství přijatých dat a dalších uchování nad rámec zahrnutého množství.
+Pokud nyní používáte protokoly Azure Monitor, je snadné pochopit, jaké náklady jsou pravděpodobně založené na nedávných vzorech použití. K tomu použijte **Log Analytics využití a odhadované náklady** na kontrolu a analýzu využití dat. Ukazuje, kolik dat je každé řešení shromažďováno, kolik dat se zachovává, a odhad nákladů na základě množství přijatých dat a dalšího uchovávání nad rámec zahrnutého množství.
 
 ![Využití a odhadované náklady](media/manage-cost-storage/usage-estimated-cost-dashboard-01.png)
 
@@ -64,50 +68,32 @@ Do faktury Azure se přidají poplatky za Log Analytics. Podrobnosti o fakturaci
 
 Azure poskytuje skvělou užitečnou funkci centra [Azure cost management + fakturace](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) . Například funkce "cost Analysis" umožňuje zobrazit vaše výdaje na prostředky Azure. Přidání filtru podle typu prostředku (do Microsoft. operationalinsights/Workspace for Log Analytics) vám umožní sledovat vaše výdaje.
 
-Lepší porozumění vašemu využití najdete [na webu Azure Portal stažením vašeho využití](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal). Ve stažených tabulkách vidíte využití podle prostředku Azure (např. Log Analytics pracovní prostor) za den. V této excelové tabulce můžete využití vašich Log Analytics pracovních prostorů najít při prvním filtrování ve sloupci měřiče měření, aby se zobrazila zpráva "Insights and Analytics" (používané některými staršími cenovými úrovněmi) a "Log Analytics" a následně jste přidali filtr do instance. ID – sloupec, který obsahuje pracovní prostor. Využití se zobrazí ve sloupci "spotřebované množství" a jednotka pro každou položku je zobrazena ve sloupci Měrná jednotka.  K dispozici jsou další podrobnosti, které vám pomůžou [pochopit Microsoft Azureovou fakturaci](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
+Lepší porozumění vašemu využití můžete získat [stažením vašeho využití z Azure Portal](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal). Ve stažených tabulkách vidíte využití podle prostředku Azure (např. Log Analytics pracovní prostor) za den. V této excelové tabulce můžete využití vašich Log Analytics pracovních prostorů najít při prvním filtrování ve sloupci měřiče měření, aby se zobrazila zpráva "Insights and Analytics" (používané některými staršími cenovými úrovněmi) a "Log Analytics" a následně jste přidali filtr do instance. ID – sloupec, který obsahuje pracovní prostor. Využití se zobrazí ve sloupci "spotřebované množství" a jednotka pro každou položku je zobrazena ve sloupci Měrná jednotka.  K dispozici jsou další podrobnosti, které vám pomůžou [pochopit Microsoft Azureovou fakturaci](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
 
-## <a name="manage-your-maximum-daily-data-volume"></a>Správa maximálního denního objemu dat
+## <a name="changing-pricing-tier"></a>Změna cenové úrovně
 
-Můžete nakonfigurovat denní limit a omezit každodenní ingestování pro váš pracovní prostor, ale pečlivě používejte, protože by váš cíl neměl mít denní limit.  Jinak ztratíte data zbývajícího dne, což může mít vliv na další služby a řešení Azure, jejichž funkce můžou záviset na dostupnosti dat v pracovním prostoru.  Výsledkem je, že schopnost sledovat a přijímat výstrahy, když jsou ovlivněny stavové stavy prostředků, které podporují IT služby.  Denní limit je určený k použití jako způsob, jak spravovat neočekávané zvýšení objemu dat ze spravovaných prostředků a zůstat v rámci vašeho limitu, nebo pokud chcete omezit neplánované poplatky pro váš pracovní prostor.  
+Pokud chcete změnit Log Analytics cenové úrovně vašeho pracovního prostoru, 
 
-Po dosažení denního limitu se pro zbytek dne zastaví shromažďování fakturovatelných datových typů. V horní části stránky se zobrazí banner s upozorněním pro vybraný Log Analytics pracovní prostor a událost operace se odešle do tabulky *Operation* v kategorii **LogManagement** . Shromažďování dat se obnoví po uplynutí doby obnovení definované v rámci *denního limitu*. Doporučujeme definovat pravidlo výstrahy na základě této události operace, která je nakonfigurována tak, aby po dosažení denního limitu dat upozornila na oznámení. 
+1. V Azure Portal otevřete z pracovního prostoru **využití a odhadované náklady** , kde se zobrazí seznam všech cenových úrovní dostupných pro tento pracovní prostor.
+
+2. Projděte si odhadované náklady na jednotlivé cenové úrovně. Tento odhad vychází z posledních 31 dnů od použití, takže tento odhad nákladů se spoléhá na posledních 31 dní, které jsou součástí typického využití. V následujícím příkladu vidíte, jak na základě vzorů dat během posledních 31 dnů bude tento pracovní prostor méně levnější v rámci vrstvy s průběžnými platbami (#1) v porovnání s úrovní rezervace kapacity 100 GB/den (#2).  
+
+    ![Cenové úrovně](media/manage-cost-storage/pricing-tier-estimated-costs.png)
+
+3. Po kontrole odhadovaných nákladů na základě posledních 31 dnů využití se rozhodnete změnit cenovou úroveň kliknutím na **Vybrat**.  
+
+[Cenovou úroveň můžete také nastavit prostřednictvím Azure Resource Manager](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) pomocí parametru `sku` (`pricingTier` v šabloně Azure Resource Manager). 
+
+## <a name="legacy-pricing-tiers"></a>Starší cenové úrovně
+
+Předplatná, která má Log Analytics pracovní prostor nebo prostředek Application Insights před 2. dubna 2018 nebo jsou propojeny s smlouva Enterprise, které začaly před 1. února 2019, budou mít nadále přístup k používání starších verzí cenové úrovně: **Free**, **Standalone (za GB)** a **per Node (OMS)** .  Pracovní prostory v bezplatné cenové úrovni budou mít denní příjem dat omezený na 500 MB (kromě datových typů zabezpečení shromažďovaných v Azure Security Center) a uchovávání dat je omezeno na 7 dní. Cenová úroveň Free je určena pouze pro účely vyhodnocení. Pracovní prostory v cenové úrovni samostatného nebo jednotlivých uzlů mají uživatelsky konfigurovatelné uchovávání až po 2 roky. 
+
+Pracovní prostory vytvořené před dubna 2016 mají přístup také k původním cenovým úrovním **Standard** a **Premium** , které mají pevnou dobu uchovávání dat 30 a 365 dnů v uvedeném pořadí. Nové pracovní prostory nelze vytvořit v cenové úrovni **Standard** nebo **Premium** a pokud je pracovní prostor přesunut z těchto úrovní, nelze jej přesunout zpět. 
+
+Další podrobnosti o omezeních cenové úrovně jsou k dispozici [zde](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces).
 
 > [!NOTE]
-> Denní limit nezastaví shromažďování dat z Azure Security Center, s výjimkou pracovních prostorů, ve kterých Azure Security Center byl nainstalován před 19. června 2017. 
-
-### <a name="identify-what-daily-data-limit-to-define"></a>Určete, který denní limit dat se má definovat.
-
-Přečtěte si [Log Analytics využití a odhadované náklady](usage-estimated-costs.md) , abyste porozuměli trendům příjmu dat a jaký je denní zakončení pro definování. Mělo by se brát v úvahu opatrně, protože po dosažení limitu už nebudete moct monitorovat vaše prostředky. 
-
-### <a name="set-the-daily-cap"></a>Nastavení denního limitu
-
-Následující postup popisuje, jak nakonfigurovat limit pro správu objemu dat, který Log Analytics pracovní prostor ingestovat za den.  
-
-1. V levém podokně vašeho pracovního prostoru vyberte **Využití a odhadované náklady**.
-2. Na stránce **využití a odhadované náklady** pro vybraný pracovní prostor klikněte v horní části stránky na možnost **Správa objemu dat** . 
-3. Denní limit je ve výchozím nastavení **vypnutý** – Pokud ho chcete povolit, klikněte na **zapnout** a pak nastavte limit počtu dat v GB za den.
-
-    ![Log Analytics konfiguraci omezení dat](media/manage-cost-storage/set-daily-volume-cap-01.png)
-
-### <a name="alert-when-daily-cap-reached"></a>Výstraha při denním limitu
-
-Když při splnění prahové hodnoty limitu dat prezentujeme Azure Portal vizuální sestavování, toto chování se nemusí nutně sjednotit na to, jak budete spravovat provozní problémy, které vyžadují okamžitou pozornost.  Chcete-li dostávat oznámení o výstrahách, můžete v Azure Monitor vytvořit nové pravidlo výstrahy.  Další informace najdete v tématu [jak vytvářet, zobrazovat a spravovat výstrahy](alerts-metric.md).
-
-Pokud chcete začít, tady je doporučené nastavení pro tuto výstrahu:
-
-- Cíl: Vyberte prostředek Log Analytics
-- Měřítk 
-   - Název signálu: prohledávání vlastního protokolu
-   - Vyhledávací dotaz: operace | kde detail má ' překročení kvóty '
-   - Podle: počet výsledků
-   - Podmínka: je větší než
-   - Prahová hodnota: 0
-   - Období: 5 (minuty)
-   - Frekvence: 5 (minuty)
-- Název pravidla výstrahy: dosáhlo se denního limitu dat.
-- Závažnost: upozornění (závažnost 1)
-
-Po definování výstrahy a dosažení limitu se aktivuje výstraha a bude provedena odpověď definovaná ve skupině akcí. Může váš tým informovat prostřednictvím e-mailu a textových zpráv nebo automatizovat akce pomocí webhooků, runbooků pro automatizaci nebo [integrací s externím řešením ITSM](itsmc-overview.md#create-itsm-work-items-from-azure-alerts). 
+> Pokud chcete použít nároky, které pocházejí z nákupu sady OMS E1 Suite, OMS E2 Suite nebo doplňku OMS pro System Center, vyberte cenovou úroveň Log Analytics pro *jednotlivé uzly* .
 
 ## <a name="change-the-data-retention-period"></a>Změnit dobu uchovávání dat
 
@@ -117,15 +103,15 @@ Následující postup popisuje, jak nakonfigurovat, jak dlouho budou data protok
 
 Pokud chcete nastavit výchozí dobu uchovávání pro váš pracovní prostor, 
  
-1. Na webu Azure Portal v pracovním prostoru vyberte v levém podokně **využití a odhadované náklady** .
+1. V Azure Portal v pracovním prostoru v levém podokně vyberte **využití a odhadované náklady** .
 2. V horní části stránky **Využití a odhadované náklady** klikněte na **Správa objemu dat**.
 3. V podokně přesunutím posuvníku zvyšte nebo snižte počet dní a potom klikněte na tlačítko **OK**.  Pokud jste na *bezplatné* úrovni, nebudete moct upravit dobu uchovávání dat a abyste mohli řídit toto nastavení, musíte upgradovat na placenou úroveň.
 
     ![Změnit nastavení uchovávání dat pracovního prostoru](media/manage-cost-storage/manage-cost-change-retention-01.png)
     
-Uchovávání lze také [nastavit prostřednictvím Azure Resource Manager](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) pomocí parametru `retentionInDays`. Pokud navíc nastavíte uchovávání dat na 30 dní, můžete spustit okamžité vymazání starších dat pomocí parametru `immediatePurgeDataOn30Days`, který může být užitečný pro scénáře související s dodržováním předpisů. Tato funkce se zveřejňuje jenom prostřednictvím Azure Resource Manager. 
+Uchovávání lze také [nastavit prostřednictvím Azure Resource Manager](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) pomocí parametru `retentionInDays`. Pokud navíc nastavíte uchovávání dat na 30 dní, můžete spustit okamžitou mazání starších dat pomocí parametru `immediatePurgeDataOn30Days`, který může být užitečný pro scénáře související s dodržováním předpisů. Tato funkce se zveřejňuje jenom prostřednictvím Azure Resource Manager. 
 
-Dva datové typy--`Usage` a `AzureActivity`--jsou ve výchozím nastavení uchovány po dobu 90 dnů a za toto 90 dne se neúčtují žádné poplatky. Tyto datové typy jsou také zdarma z poplatků za příjem dat. 
+Dva typy dat – `Usage` a `AzureActivity`--ve výchozím nastavení uchovávají 90 dní a za tento 90 dnů se neúčtují žádné poplatky. Tyto datové typy jsou také zdarma z poplatků za příjem dat. 
 
 ### <a name="retention-by-data-type"></a>Uchovávání dat podle datového typu
 
@@ -170,48 +156,48 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 > [!NOTE]
 > Nastavení uchovávání pro jednotlivé datové typy lze použít ke snížení nákladů na uchovávání dat.  Pro data shromážděná od října 2019 (při vydání této funkce) snížení doby uchování některých datových typů může snížit náklady na uchovávání dat v průběhu času.  U dříve shromážděných dat nastavení nižšího uchování pro jednotlivý typ nebude mít vliv na náklady na uchování.  
 
-## <a name="legacy-pricing-tiers"></a>Starší cenové úrovně
+## <a name="manage-your-maximum-daily-data-volume"></a>Správa maximálního denního objemu dat
 
-Předplatná, která má Log Analytics pracovní prostor nebo prostředek Application Insights před 2. dubna 2018 nebo jsou propojeny s smlouva Enterprise, které začaly před 1. února 2019, budou mít nadále přístup k používání starších verzí cenové úrovně: **Free**, **Standalone (za GB)** a **per Node (OMS)** .  Pracovní prostory v bezplatné cenové úrovni budou mít denní příjem dat omezený na 500 MB (kromě datových typů zabezpečení shromažďovaných v Azure Security Center) a uchovávání dat je omezeno na 7 dní. Cenová úroveň Free je určena pouze pro účely vyhodnocení. Pracovní prostory v cenové úrovni samostatného nebo jednotlivých uzlů mají uživatelsky konfigurovatelné uchovávání až po 2 roky. 
+Můžete nakonfigurovat denní limit a omezit každodenní ingestování pro váš pracovní prostor, ale pečlivě používejte, protože by váš cíl neměl mít denní limit.  Jinak ztratíte data zbývajícího dne, což může mít vliv na další služby a řešení Azure, jejichž funkce můžou záviset na dostupnosti dat v pracovním prostoru.  Výsledkem je, že schopnost sledovat a přijímat výstrahy, když jsou ovlivněny stavové stavy prostředků, které podporují IT služby.  Denní limit je určený k použití jako způsob, jak spravovat neočekávané zvýšení objemu dat ze spravovaných prostředků a zůstat v rámci vašeho limitu, nebo pokud chcete omezit neplánované poplatky pro váš pracovní prostor.  
 
-Pracovní prostory vytvořené před dubna 2016 mají přístup také k původním cenovým úrovním **Standard** a **Premium** , které mají pevnou dobu uchovávání dat 30 a 365 dnů v uvedeném pořadí. Nové pracovní prostory nelze vytvořit v cenové úrovni **Standard** nebo **Premium** a pokud je pracovní prostor přesunut z těchto úrovní, nelze jej přesunout zpět. 
-
-Další podrobnosti o omezeních cenové úrovně jsou k dispozici [zde](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces).
+Po dosažení denního limitu se pro zbytek dne zastaví shromažďování fakturovatelných datových typů. V horní části stránky se zobrazí banner s upozorněním pro vybraný Log Analytics pracovní prostor a událost operace se odešle do tabulky *Operation* v kategorii **LogManagement** . Shromažďování dat se obnoví po uplynutí doby obnovení definované v rámci *denního limitu*. Doporučujeme definovat pravidlo výstrahy na základě této události operace, která je nakonfigurována tak, aby po dosažení denního limitu dat upozornila na oznámení. 
 
 > [!NOTE]
-> Pokud chcete použít nároky, které pocházejí z nákupu sady OMS E1 Suite, OMS E2 Suite nebo doplňku OMS pro System Center, vyberte cenovou úroveň Log Analytics pro *jednotlivé uzly* .
+> Denní limit nezastaví shromažďování dat z Azure Security Center, s výjimkou pracovních prostorů, ve kterých Azure Security Center byl nainstalován před 19. června 2017. 
 
+### <a name="identify-what-daily-data-limit-to-define"></a>Určete, který denní limit dat se má definovat.
 
-## <a name="changing-pricing-tier"></a>Změna cenové úrovně
+Přečtěte si [Log Analytics využití a odhadované náklady](usage-estimated-costs.md) , abyste porozuměli trendům příjmu dat a jaký je denní zakončení pro definování. Mělo by se brát v úvahu opatrně, protože po dosažení limitu už nebudete moct monitorovat vaše prostředky. 
 
-Pokud má váš Log Analytics pracovní prostor přístup ke starším cenovým úrovním, aby se mohlo změnit mezi staršími cenovými úrovněmi:
+### <a name="set-the-daily-cap"></a>Nastavení denního limitu
 
-1. V Azure Portal v podokně Log Analytics odběry vyberte pracovní prostor.
+Následující postup popisuje, jak nakonfigurovat limit pro správu objemu dat, který Log Analytics pracovní prostor ingestovat za den.  
 
-2. V podokně pracovního prostoru v části **Obecné**vyberte **cenová úroveň**.  
+1. V levém podokně vašeho pracovního prostoru vyberte **Využití a odhadované náklady**.
+2. Na stránce **využití a odhadované náklady** pro vybraný pracovní prostor klikněte v horní části stránky na možnost **Správa objemu dat** . 
+3. Denní limit je ve výchozím nastavení **vypnutý** – Pokud ho chcete povolit, klikněte na **zapnout** a pak nastavte limit počtu dat v GB za den.
 
-3. V části **cenová úroveň**vyberte cenovou úroveň a pak klikněte na **Vybrat**.  
-    ![Selected cenového plánu ](media/manage-cost-storage/workspace-pricing-tier-info.png)
+    ![Log Analytics konfiguraci omezení dat](media/manage-cost-storage/set-daily-volume-cap-01.png)
 
-[Cenovou úroveň](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) můžete také nastavit pomocí Azure Resource Manager parametrem `sku` (`pricingTier` v šabloně ARM). 
+### <a name="alert-when-daily-cap-reached"></a>Výstraha při denním limitu
 
-## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Řešení potíží s tím, proč Log Analytics už neshromažďuje data
+Když při splnění prahové hodnoty limitu dat prezentujeme Azure Portal vizuální sestavování, toto chování se nemusí nutně sjednotit na to, jak budete spravovat provozní problémy, které vyžadují okamžitou pozornost.  Chcete-li dostávat oznámení o výstrahách, můžete v Azure Monitor vytvořit nové pravidlo výstrahy.  Další informace najdete v tématu [jak vytvářet, zobrazovat a spravovat výstrahy](alerts-metric.md).
 
-Pokud používáte starší verzi bezplatné cenové úrovně a v den jste poslali více než 500 MB dat, zastaví se shromažďování dat pro zbytek dne. Dosažení denního limitu je běžný důvod, proč Log Analytics zastaví shromažďování dat, nebo se zdá, že data chybí.  Log Analytics vytvoří událost typu operace při spuštění a zastavení shromažďování dat. Spuštěním následujícího dotazu v hledání ověřte, jestli se vám dosáhlo denního limitu a chybějících dat: 
+Pokud chcete začít, tady je doporučené nastavení pro tuto výstrahu:
 
-```kusto
-Operation | where OperationCategory == 'Data Collection Status'
-```
+- Cíl: Vyberte prostředek Log Analytics
+- Měřítk 
+   - Název signálu: prohledávání vlastního protokolu
+   - Vyhledávací dotaz: operace | kde detail má ' překročení kvóty '
+   - Podle: počet výsledků
+   - Podmínka: je větší než
+   - Prahová hodnota: 0
+   - Období: 5 (minuty)
+   - Frekvence: 5 (minuty)
+- Název pravidla výstrahy: dosáhlo se denního limitu dat.
+- Závažnost: upozornění (závažnost 1)
 
-Po zastavení shromažďování dat je stav operationstatus **Upozornění**. Když se spustí shromažďování dat, stav operationstatus se **podařilo**. Následující tabulka popisuje důvody, proč se shromažďování dat zastaví, a navrhovanou akci pro pokračování shromažďování dat:  
-
-|Kolekce důvodů – zastavení| Řešení| 
-|-----------------------|---------|
-|Dosáhlo se denního limitu starší verze bezplatné cenové úrovně. |Počkejte prosím, než se automaticky restartuje kolekce, nebo se změní na placenou cenovou úroveň.|
-|Dosáhlo se denního limitu pracovního prostoru.|Počkejte na automatické restartování kolekce nebo zvyšte počet denních objemů dat popsaných v tématu Správa maximálního denního objemu dat. Doba obnovení denního limitu se zobrazí na stránce **Správa objemu dat** . |
-|Předplatné Azure je v pozastaveném stavu z důvodu:<br> Zkušební verze skončila.<br> Platnost Azure Pass vypršela.<br> Dosáhlo se limitu měsíčního útraty (například na předplatném MSDN nebo Visual Studio).|Převod na placené předplatné<br> Odebrat limit nebo počkat na obnovení limitu|
-
-Chcete-li být upozorněni na zastavení shromažďování dat, postupujte podle kroků popsaných v části *Vytvoření výstrahy denního datového zakončení* , která bude oznámena při zastavení shromažďování dat. Pomocí kroků popsaných v tématu [Vytvoření skupiny akcí](action-groups.md) nakonfigurujte akci e-mailu, Webhooku nebo Runbooku pro pravidlo výstrahy. 
+Po definování výstrahy a dosažení limitu se aktivuje výstraha a bude provedena odpověď definovaná ve skupině akcí. Může váš tým informovat prostřednictvím e-mailu a textových zpráv nebo automatizovat akce pomocí webhooků, runbooků pro automatizaci nebo [integrací s externím řešením ITSM](itsmc-overview.md#create-itsm-work-items-from-azure-alerts). 
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Řešení potíží způsobujících větší využití, než se čekalo
 
@@ -250,7 +236,7 @@ union withsource = tt *
 ```
 
 > [!NOTE]
-> Tyto dotazy `union withsource = tt *` můžete obsloužit zřídka, protože vyhledávání napříč datovými typy je náročné na spouštění. Tento dotaz nahrazuje starý způsob, jak zadávat dotazy na informace o počítačích s datovým typem využití.  
+> Tyto `union withsource = tt *` dotazy můžete použít zřídka, protože kontroly napříč datovými typy jsou náročné na spouštění. Tento dotaz nahrazuje starý způsob, jak zadávat dotazy na informace o počítačích s datovým typem využití.  
 
 Přesnější výpočet toho, co se skutečně bude účtovat, je získání počtu počítačů za hodinu, které odesílají Fakturovatelné datové typy. (Pro pracovní prostory ve starších cenových úrovních jednotlivých uzlů Log Analytics vypočítá počet uzlů, které se musí účtovat po hodinách.) 
 
@@ -300,7 +286,7 @@ Chcete-li **Zobrazit počet fakturovaných událostí** zpracovaných na počít
 union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
-| summarize eventCount=count() by computerName  | sort by count_ nulls last
+| summarize eventCount=count() by computerName  | sort by eventCount nulls last
 ```
 
 Pokud chcete zobrazit počty pro Fakturovatelné datové typy, které odesílají data do konkrétního počítače, použijte:
@@ -332,7 +318,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
 ```
 
-Změna `subscriptionId` na `resourceGroup` zobrazí fakturovatelný příjmový objem dat skupinou prostředků Azure. 
+Změnou `subscriptionId` na `resourceGroup` se zobrazí fakturovatelný příjmový objem dat skupinou prostředků Azure. 
 
 
 > [!NOTE]
@@ -479,6 +465,25 @@ Pokud obdržíte upozornění, pomocí kroků v následující části můžete 
 ## <a name="data-transfer-charges-using-log-analytics"></a>Poplatky za přenos dat pomocí Log Analytics
 
 Odesílání dat do Log Analytics může mít za následek poplatky za šířku pásma dat. Jak je popsáno na [stránce ceny za Azure šířku pásma](https://azure.microsoft.com/pricing/details/bandwidth/), přenos dat mezi službami Azure v rámci dvou oblastí se v normální sazbě účtuje jako odchozí přenos dat. Příchozí přenos dat je zdarma. Tento poplatek je však velmi malý (několik%) v porovnání s náklady na Log Analytics přijímání dat. V důsledku toho se řídí náklady na Log Analytics se musí soustředit na přijatý objem dat a máme vám Rady, jak to porozumět [.](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume)   
+
+
+## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Řešení potíží s tím, proč Log Analytics už neshromažďuje data
+
+Pokud používáte starší verzi bezplatné cenové úrovně a v den jste poslali více než 500 MB dat, zastaví se shromažďování dat pro zbytek dne. Dosažení denního limitu je běžný důvod, proč Log Analytics zastaví shromažďování dat, nebo se zdá, že data chybí.  Log Analytics vytvoří událost typu operace při spuštění a zastavení shromažďování dat. Spuštěním následujícího dotazu v hledání ověřte, jestli se vám dosáhlo denního limitu a chybějících dat: 
+
+```kusto
+Operation | where OperationCategory == 'Data Collection Status'
+```
+
+Po zastavení shromažďování dat je stav operationstatus **Upozornění**. Když se spustí shromažďování dat, stav operationstatus se **podařilo**. Následující tabulka popisuje důvody, proč se shromažďování dat zastaví, a navrhovanou akci pro pokračování shromažďování dat:  
+
+|Kolekce důvodů – zastavení| Řešení| 
+|-----------------------|---------|
+|Dosáhlo se denního limitu starší verze bezplatné cenové úrovně. |Počkejte prosím, než se automaticky restartuje kolekce, nebo se změní na placenou cenovou úroveň.|
+|Dosáhlo se denního limitu pracovního prostoru.|Počkejte na automatické restartování kolekce nebo zvyšte počet denních objemů dat popsaných v tématu Správa maximálního denního objemu dat. Doba obnovení denního limitu se zobrazí na stránce **Správa objemu dat** . |
+|Předplatné Azure je v pozastaveném stavu z důvodu:<br> Zkušební verze skončila.<br> Platnost Azure Pass vypršela.<br> Dosáhlo se limitu měsíčního útraty (například na předplatném MSDN nebo Visual Studio).|Převod na placené předplatné<br> Odebrat limit nebo počkat na obnovení limitu|
+
+Chcete-li být upozorněni na zastavení shromažďování dat, postupujte podle kroků popsaných v části *Vytvoření výstrahy denního datového zakončení* , která bude oznámena při zastavení shromažďování dat. Pomocí kroků popsaných v tématu [Vytvoření skupiny akcí](action-groups.md) nakonfigurujte akci e-mailu, Webhooku nebo Runbooku pro pravidlo výstrahy. 
 
 ## <a name="limits-summary"></a>Souhrn omezení
 

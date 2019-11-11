@@ -1,6 +1,6 @@
 ---
-title: Optimalizace vaší mezipaměti Gen2 | Dokumentace Microsoftu
-description: Další informace o monitorování Gen2 mezipaměti pomocí webu Azure portal.
+title: Optimalizace mezipaměti Gen2
+description: Naučte se monitorovat mezipaměť Gen2 pomocí Azure Portal.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,47 +10,47 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 26791aecb2ca57b31358d3385d07230c73c84904
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b33f7cedca4ef130eefa28c1dbaaedd82d11a9e4
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61474389"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645768"
 ---
-# <a name="how-to-monitor-the-gen2-cache"></a>Jak monitorovat Gen2 cache
-Architektura úložiště Gen2 automaticky rozprostírá nejčastěji dotazované columnstore segmenty v mezipaměti na NVMe, které jsou založené na SSD určená pro datové sklady Gen2. Vyšší výkon začne vyplácet, když vaše dotazy načítají segmenty, které je umístěný v mezipaměti. Tento článek popisuje, jak monitorovat a řešení potíží s výkonem pomalých dotazů tak, že určíte, jestli vaše úlohy optimální využití mezipaměti Gen2.  
-## <a name="troubleshoot-using-the-azure-portal"></a>Řešení potíží pomocí webu Azure portal
-Pokud chcete zobrazit metriky mezipaměti Gen2 řešení potíží s výkonem dotazů můžete použít Azure Monitor. Nejprve přejděte na web Azure Portal a klikněte na monitorování:
+# <a name="how-to-monitor-the-gen2-cache"></a>Jak monitorovat mezipaměť Gen2
+Architektura úložiště Gen2 automaticky vychází z nejčastěji dotazovaných segmentů columnstore v mezipaměti, která je umístěná v NVMe na SSD, která je určená pro Gen2 datové sklady. Vyšší výkon je realizován, když dotazy načítají segmenty, které jsou umístěny v mezipaměti. Tento článek popisuje, jak monitorovat a řešit potíže s pomalým výkonem dotazů tím, že určíte, jestli vaše zatížení optimálně využívá Gen2 cache.  
+## <a name="troubleshoot-using-the-azure-portal"></a>Řešení potíží pomocí Azure Portal
+Pomocí Azure Monitor můžete zobrazit metriky mezipaměti Gen2 a řešit potíže s výkonem dotazů. Nejprve přejděte na Azure Portal a klikněte na monitorování:
 
 ![Azure Monitor](./media/sql-data-warehouse-cache-portal/cache_0.png)
 
-Klikněte na tlačítko metriky a vyplňte **předplatné**, **prostředků** **skupiny**, **typ prostředku**, a **prostředků název** datového skladu.
+Vyberte tlačítko metriky a vyplňte **předplatné**, **skupinu** **prostředků** , **typ prostředku**a **název prostředku** datového skladu.
 
-Jsou klíčové metriky pro řešení potíží s mezipaměti Gen2 **procenta přístupů do mezipaměti** a **mezipaměti použít procento**. Konfigurace Azure grafu metriky zobrazíte tyto dvě metriky.
+Klíčovou metrikou pro řešení potíží s mezipamětí Gen2 je **Procento přístupů do mezipaměti** a **procento využití mezipaměti**. Nakonfigurujte graf metrik Azure tak, aby zobrazoval tyto dvě metriky.
 
 ![Metriky mezipaměti](./media/sql-data-warehouse-cache-portal/cache_1.png)
 
 
-## <a name="cache-hit-and-used-percentage"></a>Přístupů do mezipaměti a použít procento
-Matice níže popisuje scénáře na základě hodnot metriky mezipaměti:
+## <a name="cache-hit-and-used-percentage"></a>Počet přístupů do mezipaměti a použité procento
+Následující matice popisuje scénáře v závislosti na hodnotách metrik mezipaměti:
 
-|                                | **Procento úspěšnosti vysokou mezipaměti** | **Procenta přístupů do mezipaměti s nízkou** |
+|                                | **Procento přístupů do vysoké mezipaměti** | **Procento přístupů do mezipaměti v nízkém rozsahu** |
 | :----------------------------: | :---------------------------: | :--------------------------: |
-| **Vysoké procento použitá mezipaměť** |          Scénář 1           |          Scénář 2          |
-| **Použita mezipaměť nízké procentuální**  |          Scénář 3           |          Scénář 4          |
+| **Procento využité vysoké mezipaměti** |          Scénář 1           |          Scénář 2          |
+| **Procento využité mezipaměti nízké úrovně**  |          Scénář 3           |          Scénář 4          |
 
-**Scénář 1:** Používání mezipaměti optimální. [Řešení potíží s](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) další oblasti, které mohou být zpomalení vaše dotazy.
+**Scénář 1:** Používáte svou mezipaměť optimálně. [Řešení potíží s](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) ostatními oblastmi, které mohou zpomalovat vaše dotazy.
 
-**Scénář 2:** Aktuální pracovní sady dat nelze umístit do mezipaměti, což způsobí, že s nízkým procento z důvodu fyzických čtení přístupů do mezipaměti. Zvažte možnost škálování nahoru úroveň výkonu a znovu spusťte úlohy k naplnění mezipaměti.
+**Scénář 2:** Vaše aktuální pracovní sada dat se nemůže vejít do mezipaměti, která způsobuje nedostatečné procento přístupů do mezipaměti z důvodu fyzických čtení. Zvažte možnost škálovat úroveň výkonu a znovu spustit úlohu, abyste mohli naplnit mezipaměť.
 
-**Scénář 3:** Je pravděpodobné, že váš dotaz běží pomalu z nějakého důvodu nesouvisející do mezipaměti. [Řešení potíží s](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) další oblasti, které mohou být zpomalení vaše dotazy. Můžete taky zvážit možnost [škálování instance](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) snížit velikost mezipaměti pro úsporu nákladů. 
+**Scénář 3:** Je možné, že dotaz běží pomalu z důvodů, které nesouvisí s mezipamětí. [Řešení potíží s](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) ostatními oblastmi, které mohou zpomalovat vaše dotazy. Můžete také zvážit horizontální snížení kapacity [instance](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) , aby se snížila velikost mezipaměti, aby se ušetřily náklady. 
 
-**Scénář 4:** Jste měli studenou mezipaměť, která může být důvod, proč bylo pomalé v sítích vašich dotazů. Vezměte v úvahu opětovné spuštění dotazu jako datovou sadu pracovních by měl nyní v mezipaměti. 
+**Scénář 4:** Měli byste mít studenou mezipaměť, což by mohlo být důvod, proč byl dotaz pomalý. Zkuste dotaz znovu spustit, protože pracovní sada dat by měla být teď v mezipaměti. 
 
-**Důležité: Pokud procento úspěšnosti mezipaměti nebo mezipaměť používaná procento není aktualizaci po opětným spuštěním úlohy, můžete pracovní sada už načtených do paměti. Mějte na paměti pouze Clusterované columnstore, které tabulek jsou uložené v mezipaměti.**
+**Důležité: Pokud procento přístupů do mezipaměti nebo procento využité mezipaměti neaktualizujete po spuštění úlohy, může být vaše pracovní sada už umístěná v paměti. Poznámka: pouze clusterované tabulky columnstore jsou uloženy v mezipaměti.**
 
-## <a name="next-steps"></a>Další postup
-Další informace o ladění výkonu obecný dotaz, naleznete v tématu [monitorování provádění dotazů](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor#monitor-query-execution).
+## <a name="next-steps"></a>Další kroky
+Další informace o obecném ladění výkonu dotazů najdete v tématu [monitorování provádění dotazů](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor#monitor-query-execution).
 
 
 <!--Image references-->

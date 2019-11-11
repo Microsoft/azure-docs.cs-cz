@@ -1,20 +1,20 @@
 ---
-title: Vytváření mobilních aplikací s Xamarinem a Azure Cosmos DB
-description: Kurz, ve kterém se vytvoří aplikace Xamarin iOS, aplikace pro Android nebo formulářová aplikace s využitím Azure Cosmos DB. Azure Cosmos DB je rychlá cloudová databáze v globálním měřítku pro mobilní aplikace.
+title: 'Kurz: sestavování mobilních aplikací pomocí Xamarin a Azure Cosmos DB'
+description: 'Kurz: kurz, který vytváří aplikaci pro Xamarin iOS, Android nebo Forms pomocí Azure Cosmos DB. Azure Cosmos DB je rychlá cloudová databáze v globálním měřítku pro mobilní aplikace.'
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/15/2018
+ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 4a9c0fe09bee553f53c90c9833922746aad35d14
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 40f7de4b4feb2b312705238abd30402edb635ea9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615075"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720886"
 ---
-# <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Vytváření mobilních aplikací s Xamarinem a Azure Cosmos DB
+# <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Kurz: sestavování mobilních aplikací pomocí Xamarin a Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -45,7 +45,7 @@ Azure Cosmos DB poskytuje vývojářům mobilních aplikací následující klí
 Následující kurz ukazuje, jak vytvořit mobilní aplikaci s využitím Xamarinu a služby Azure Cosmos DB. Kompletní zdrojový kód pro tento kurz najdete v úložišti [Xamarin a Azure Cosmos DB na GitHubu](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin).
 
 ### <a name="get-started"></a>Začínáme
-Začít se službou Azure Cosmos DB je snadné. Přejděte na web Azure Portal a vytvořte si nový účet služby Azure Cosmos DB. Klikněte na kartu **Rychlý start**. Stáhněte si ukázku seznamu úkolů Xamarin Forms, která je již propojená s vaším účtem služby Azure Cosmos DB. 
+Začít se službou Azure Cosmos DB je snadné. Přejděte na web Azure Portal a vytvořte si nový účet služby Azure Cosmos DB. Klikněte na kartu **rychlý Start** . Stáhněte si ukázku seznamu úkolů Xamarin Forms pro, který je už připojený k vašemu Azure Cosmos DB účtu. 
 
 ![Azure Cosmos DB pro mobilní aplikace – Rychlý start](media/mobile-apps-with-xamarin/cosmos-db-quickstart.png)
 
@@ -101,7 +101,7 @@ S ohledem na rostoucí oblíbenost aplikace můžete získávat uživatele po ce
 
 Blahopřejeme. Dokončili jste řešení a máte mobilní aplikaci s Xamarinem a Azure Cosmos DB. Podle podobných pokynů můžete vytvářet aplikace Cordova s využitím sady SDK služby Azure Cosmos DB pro JavaScript a nativní aplikace pro iOS nebo Android s využitím rozhraní REST API služby Azure Cosmos DB.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 * Prohlédněte si zdrojový kód ukázky pro [Xamarin a Azure Cosmos DB na GitHubu](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin).
 * Stáhněte si [sadu SDK služby Azure Cosmos DB pro .NET Core](sql-api-sdk-dotnet-core.md).
 * Prohlédněte si další vzorové kódy [aplikací .NET](sql-api-dotnet-samples.md).

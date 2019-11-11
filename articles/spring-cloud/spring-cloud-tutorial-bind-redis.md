@@ -1,20 +1,17 @@
 ---
 title: Postup vytvoření vazby mezipaměti Azure pro Redis do vaší aplikace pro jarní Cloud v Azure | Microsoft Docs
 description: Naučte se navazovat Azure cache pro Redis do vaší aplikace pro jarní cloudy v Azure.
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
-ms.date: 10/06/2019
-ms.author: v-vasuke
-ms.openlocfilehash: d8fa31207baecc80674fb11b492927800676b8a2
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.topic: tutorial
+ms.date: 10/31/2019
+ms.author: jeconnoc
+ms.openlocfilehash: a901e4194909df85f53799d5937515e42ea87a69
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038941"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607577"
 ---
 # <a name="tutorial-bind-azure-services-to-your-azure-spring-cloud-application-azure-cache-for-redis"></a>Kurz: vázání služeb Azure na svoji cloudovou aplikaci Azure na jaře: Azure cache pro Redis
 
@@ -26,18 +23,11 @@ Pomocí Azure jaře cloudu můžete automaticky navazovat vybrané služby Azure
 * Služba Azure cache pro instanci služby Redis
 * Rozšíření Azure jaře Cloud pro rozhraní příkazového řádku Azure
 
-V případě potřeby nainstalujte rozšíření Azure jaře Cloud pro rozhraní příkazového řádku Azure pomocí následujícího příkazu:
-
-```azurecli
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
-```
-
->[!TIP]
-> Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít ke spuštění kroků v tomto článku.  Má předinstalované běžné nástroje Azure, včetně nejnovějších verzí Git, JDK, Maven a Azure CLI. Pokud jste přihlášeni ke svému předplatnému Azure, spusťte [Azure Cloud Shell](https://shell.azure.com) z Shell.Azure.com.  Další informace o Azure Cloud Shell najdete v [naší dokumentaci](../cloud-shell/overview.md) .
+Pokud nemáte nasazenou instanci Azure jaře cloudu, postupujte podle kroků v tomto [rychlém](spring-cloud-quickstart-launch-app-portal.md) startu a nasaďte svou první jarní cloudovou aplikaci.
 
 ## <a name="bind-azure-cache-for-redis"></a>Vytvoření vazby mezipaměti Azure pro Redis
 
-1. Přidejte následující závislost do @no__t projektu-0
+1. Do `pom.xml` projektu přidejte následující závislost.
 
     ```xml
     <dependency>

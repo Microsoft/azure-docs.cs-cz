@@ -1,5 +1,5 @@
 ---
-title: Kurz pro Azure Security Center – Reakce na incidenty zabezpečení | Dokumentace Microsoftu
+title: Kurz reakce na incidenty – Azure Security Center
 description: Kurz pro Azure Security Center – Reakce na incidenty zabezpečení
 services: security-center
 documentationcenter: na
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: 11c2543de2b5456d253e7e905065eea14810877a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: cd3f99fe82c9a8e5e760aa3be3bed1ad5d9bd5e9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200605"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663646"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Kurz: Reakce na incidenty zabezpečení
-Security Center nepřetržitě analyzuje vaše hybridní cloudové úlohy pomocí pokročilých analytických algoritmů a inteligentního rozpoznávání hrozeb a upozorní vás na škodlivé aktivity. Kromě toho můžete do Security Center integrovat výstrahy z jiných bezpečnostních produktů a služeb a vytvořit vlastní výstrahy na základě definovaných indikátorů nebo zdroje informací. Jakmile je vygenerována výstraha, je pro prozkoumání a nápravu nutná rychlá akce. V tomto kurzu se naučíte, jak:
+Security Center nepřetržitě analyzuje vaše hybridní cloudové úlohy pomocí pokročilých analytických algoritmů a inteligentního rozpoznávání hrozeb a upozorní vás na škodlivé aktivity. Kromě toho můžete do Security Center integrovat výstrahy z jiných bezpečnostních produktů a služeb a vytvořit vlastní výstrahy na základě definovaných indikátorů nebo zdroje informací. Jakmile je vygenerována výstraha, je pro prozkoumání a nápravu nutná rychlá akce. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Analyzovat výstrahy zabezpečení
@@ -66,7 +66,7 @@ Security Center poskytuje jednotné zobrazení všech výstrah zabezpečení. V�
 
 1. V hlavní nabídce služby Security Center vyberte v části **DETEKCE** možnost **Výstrahy zabezpečení**:
 
-   ![Výstrahy zabezpečení](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)  
+   ![Výstrahy zabezpečení](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)
 
 2. V seznamu výstrah kliknutím na incident zabezpečení, který je kolekcí výstrah, zobrazte další informace o tomto incidentu. Otevře se stránka **Byl zjištěn incident zabezpečení**.
 

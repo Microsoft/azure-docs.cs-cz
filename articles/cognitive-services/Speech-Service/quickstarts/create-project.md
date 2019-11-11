@@ -1,26 +1,26 @@
 ---
 title: 'Rychlý Start: vytvoření projektu'
 titleSuffix: Azure Cognitive Services
-description: Bude doplněno
+description: V tomto rychlém startu vytvoříte prázdný projekt pro preferovaný programovací jazyk, který použijete k dokončení rychlého startu nebo vytvoření aplikace.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 11/04/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-three
-ms.openlocfilehash: 25d6e8f7642db05663082414f013b2b11bff46da
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 276dbcdfe3f40122b6a7a14e78aeee4d6ab2fbe9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504043"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721008"
 ---
-# <a name="quickstart-create-an-empty-project"></a>Rychlý Start: Vytvořte prázdný projekt.
+# <a name="quickstart-create-a-project"></a>Rychlý Start: vytvoření projektu
 
-V tomto průvodci se dozvíte, jak vytvořit prázdný projekt pro použití v jiných rychlých startech.
+V tomto rychlém startu vytvoříte prázdný projekt pro preferovaný programovací jazyk, který použijete k dokončení rychlého startu nebo vytvoření aplikace.
 
 ::: zone pivot="programming-language-csharp"
 **Volba cílového prostředí**
@@ -54,6 +54,9 @@ V této ukázce budeme kompilovat s g + +, takže k prázdnému projektu stačí
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
+
+V případě rychlých startů založených na Pythonu budete muset vytvořit soubor s názvem `helloworld.py` s oblíbeným textovým editorem nebo IDE.
+
 ::: zone-end
 
 ## <a name="next-steps"></a>Další kroky
@@ -63,4 +66,3 @@ V této ukázce budeme kompilovat s g + +, takže k prázdnému projektu stačí
 - [Rychlý Start: Převod řeči na text](translate-speech-to-text.md)
 - [Rychlý Start: syntetizace řeči na text](text-to-speech.md)
 - [Rychlý Start: rozpoznávání záměrů](intent-recognition.md)
-

@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
-ms.openlocfilehash: 1186fec8d50d7e986d1c613cd96f741c34ca181a
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.date: 11/05/2019
+ms.openlocfilehash: 65e9e6235fd974a7731fa5e86322793f1b680ad9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372617"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721321"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Informace o objektových modelech a grafu prostorové Intelligence pro digitální vlákna
 
@@ -23,7 +23,7 @@ Klíčové modely digitálních vláken popisují koncepty, kategorie a vlastnos
 
 U digitálních vláken objektů a Ontology je možné naplnit _prostorový graf_. Prostorové grafy jsou virtuální reprezentace mnoha vztahů mezi mezerami, zařízeními a lidmi, které jsou relevantní pro řešení IoT. Tento diagram znázorňuje příklad prostorového grafu, který používá Ontology inteligentního sestavování.
 
-[vytváření prostorových grafů @no__t 1Digital](media/concepts/digital-twins-spatial-graph-building.png)](media/concepts/digital-twins-spatial-graph-building.png#lightbox)
+[vytváření prostorových grafů ![ch digitálních vláken](media/concepts/digital-twins-spatial-graph-building.png)](media/concepts/digital-twins-spatial-graph-building.png#lightbox)
 
 Prostorový graf se skládá z prostorů, zařízení, senzorů a uživatelů. Každá je propojená dohromady způsobem, který modeluje reálný svět. V této ukázce má místo 43 čtyři podlahová místa, z nichž každá má mnoho různých oblastí. Uživatelé jsou přidružení ke svým pracovním stanicím a mají přístup k částem grafu. Správce má oprávnění provádět změny prostorového grafu, zatímco návštěvník má práva pouze k zobrazení určitých dat o sestavách.
 
@@ -31,7 +31,7 @@ Prostorový graf se skládá z prostorů, zařízení, senzorů a uživatelů. K
 
 Digitální vlákna objektových modelů podporují tyto hlavní kategorie objektů:
 
-- **Mezery** jsou virtuální nebo fyzická umístění, například `Tenant`, `Customer`, `Region` a `Venue`.
+- **Mezery** jsou virtuální nebo fyzická umístění, například `Tenant`, `Customer`, `Region`a `Venue`.
 - **Zařízení** jsou virtuální nebo fyzická zařízení, například `AwesomeCompany Device` a `Raspberry Pi 3`.
 - **Senzory** jsou objekty, které zjišťují události, například `AwesomeCompany Temperature Sensor` a `AwesomeCompany Presence Sensor`.
 - **Uživatelé** identifikují osoby a jejich charakteristiky.
@@ -39,11 +39,11 @@ Digitální vlákna objektových modelů podporují tyto hlavní kategorie objek
 Další kategorie objektů jsou:
 
 - **Prostředky** jsou připojené k prostoru a obvykle představují prostředky Azure, které budou používat objekty v prostorovém grafu, například `IoTHub`.
-- Objekty **BLOB** jsou připojené k objektům (například k prostorům, zařízením, senzorům a uživatelům). Používají se jako soubory typu MIME a metadata, například `maps`, `pictures` a `manuals`.
+- Objekty **BLOB** jsou připojené k objektům (například k prostorům, zařízením, senzorům a uživatelům). Používají se jako soubory typu MIME a metadata, například `maps`, `pictures`a `manuals`.
 - **Rozšířené typy** jsou rozšiřitelné výčty, které rozšiřují entity o konkrétní charakteristiky, například `SpaceType` a `SpaceSubtype`.
-- **Ontologie** představuje sadu rozšířených typů, například `Default`, `Building`, `BACnet` a `EnergyGrid`.
+- **Ontologie** představuje sadu rozšířených typů, například `Default`, `Building`, `BACnet`a `EnergyGrid`.
 - **Klíče a hodnoty vlastností** jsou vlastní charakteristiky mezer, zařízení, senzorů a uživatelů. Dají se použít společně s vestavěnými charakteristikami, například `DeltaProcessingRefreshTime` jako klíč a `10` jako hodnota.
-- **Role** jsou sady oprávnění přiřazené uživatelům a zařízením v prostorovém grafu, například `Space Administrator`, `User Administrator` a `Device Administrator`.
+- **Role** jsou sady oprávnění přiřazené uživatelům a zařízením v prostorovém grafu, například `Space Administrator`, `User Administrator`a `Device Administrator`.
 - **Přiřazení rolí** jsou přidružení mezi rolí a objektem v prostorovém grafu. Například uživateli nebo instančnímu objektu může být uděleno oprávnění ke správě prostoru v prostorovém grafu.
 - **Úložiště klíčů zabezpečení** poskytují klíče zabezpečení pro všechna zařízení v hierarchii v rámci daného objektu prostor, aby bylo možné zařízení bezpečně komunikovat s digitálními podmnožinami.
 - **Uživatelsky definované funkce** (UDF) umožňují přizpůsobitelné zpracování telemetrie senzorů v prostorovém grafu. Systém UDF může například:
@@ -52,7 +52,7 @@ Další kategorie objektů jsou:
   - Připojte metadata k prostoru.
   - Odeslat oznámení, pokud jsou splněny předdefinované podmínky. V současné době je možné UDF zapisovat do JavaScriptu.
 - **Shody** jsou objekty, které určují, které UDF jsou spouštěny pro danou zprávu telemetrie.
-- **Koncové body** jsou umístění, kde se dají směrovat zprávy telemetrie a události digitálních vláken, například `Event Hub`, `Service Bus` a `Event Grid`.
+- **Koncové body** jsou umístění, kde lze směrovat zprávy telemetrie a události digitálních vláken, například `Event Hub`, `Service Bus`a `Event Grid`.
 
 ## <a name="spatial-intelligence-graph"></a>Graf prostorové inteligence
 
@@ -78,14 +78,14 @@ Po nasazení digitálních vláken z [Azure Portal](https://portal.azure.com)se 
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Name (Název) | Nahradit hodnotou |
+| Název | Nahradit hodnotou |
 | --- | --- |
 | YOUR_INSTANCE_NAME | Název instance digitálního vlákna |
 | YOUR_LOCATION | Které oblasti serveru vaše instance hostuje |
 
  V tomto obrázku se zobrazí úplný formát adresy URL.
 
-[@no__t – rozhraní API pro správu 1Digitalch vláken](media/concepts/digital-twins-spatial-graph-management-api-url.png)](media/concepts/digital-twins-spatial-graph-management-api-url.png#lightbox)
+[rozhraní API pro správu portálu ![Digital vlákna](media/concepts/digital-twins-spatial-graph-management-api-url.png)](media/concepts/digital-twins-spatial-graph-management-api-url.png#lightbox)
 
 Další informace o tom, jak používat grafy prostorových informací, najdete v tématu rozhraní API pro správu digitálních vláken Azure vás zajímá ve verzi Preview.
 

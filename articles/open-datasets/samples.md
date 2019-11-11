@@ -1,5 +1,5 @@
 ---
-title: Příklad poznámkových bloků Jupyter s využitím otevřené datové sady NOAA
+title: Příklady Jupyter poznámkových bloků pomocí dat NOAA
 titleSuffix: Azure Open Datasets
 description: Pomocí ukázkových poznámkových bloků Jupyter pro Azure Open DataSets se naučíte načíst otevřené datové sady a použít je k obohacení ukázkových dat. Mezi techniky patří použití Sparku a PANDAS ke zpracování dat.
 ms.service: open-datasets
@@ -7,12 +7,12 @@ ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 11/04/2019
-ms.openlocfilehash: 2ccdb7adcae40d22a36fbfb47fba6e4c87b3349a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8b96a35db91a282be1fb5e4c6143e6bd0a0203f2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496566"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606147"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>Příklady Jupyter poznámkových bloků ukazují, jak rozšířit data pomocí otevřených datových sad 
 Příklady Jupyter poznámkových bloků pro Azure Open DataSet ukazují, jak načíst otevřené datové sady a používat je k obohacení ukázkových dat. Mezi techniky patří použití Apache Spark a PANDAS ke zpracování dat.
@@ -40,6 +40,6 @@ Příklady Jupyter poznámkových bloků pro Azure Open DataSet ukazují, jak na
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Kurz: regresní modelování pomocí automatizovaného strojového učení a otevřené datové sady](tutorial-opendatasets-automl.md)
+* [Kurz: regresní modelování pomocí automatizovaného strojového učení a otevřené datové sady](/azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [Python SDK pro otevřené datové sady](/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)
 * [Katalog otevřených datových sad pro Azure](https://azure.microsoft.com/services/open-datasets/catalog/)

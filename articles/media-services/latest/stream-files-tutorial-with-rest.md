@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/21/2019
+ms.date: 11/05/2019
 ms.author: juliako
-ms.openlocfilehash: 3f065f77c6843b135554e61f5887655114571b08
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 128513c3af5ce6c0853b63d86959e4c3c35de93c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750250"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685106"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Kurz: kódování vzdáleného souboru na základě adresy URL a streamu pro video
 
@@ -25,13 +25,13 @@ Azure Media Services umožňuje kódování mediálních souborů ve formátech,
 
 V tomto kurzu se dozvíte, jak zakódovat soubor na základě adresy URL a streamu videa s Azure Media Services pomocí REST. 
 
-![Přehrát video](./media/stream-files-tutorial-with-api/final-video.png)
+![Přehrávání videa](./media/stream-files-tutorial-with-api/final-video.png)
 
 V tomto kurzu získáte informace o následujících postupech:    
 
 > [!div class="checklist"]
 > * Vytvoření účtu Media Services
-> * Přístupu k rozhraní Media Services API
+> * Přístup k rozhraní API služby Media Services
 > * Stažení souborů nástroje Postman
 > * Konfigurace nástroje Postman
 > * Odesílání požadavků pomocí nástroje Postman
@@ -40,7 +40,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - [Vytvořte účet Media Services](create-account-cli-how-to.md).
 
@@ -215,7 +215,7 @@ Můžete použít předdefinovanou předvolbu EncoderNamedPreset, nebo si vytvo�
 
 [Úloha](https://docs.microsoft.com/rest/api/media/jobs) je vlastní požadavek na službu Media Services, aby vytvořenou **transformaci** použila na daný vstupní videoobsah nebo zvukový obsah. **Úloha** určuje informace, jako je umístění vstupního videa a umístění pro výstup.
 
-V tomto příkladu je vstup úlohy založen na adrese URL HTTPS ("https: \//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/").
+V tomto příkladu je vstup úlohy založen na adrese URL HTTPS ("https:\//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/").
 
 1. V levém okně aplikace po vybírání kódování a analýzy.
 2. Pak vyberte „Create or Update Job“ (Vytvořit nebo aktualizovat úlohu).
@@ -248,7 +248,7 @@ V tomto příkladu je vstup úlohy založen na adrese URL HTTPS ("https: \//nimb
         }
         ```
 
-Úloze chvíli trvá, než se dokončí, a když k tomu dojde, budete na to pravděpodobně chtít upozornit. K zobrazení průběhu úlohy doporučujeme použít službu Event Grid. Ta je navržená s ohledem na vysokou dostupnost, stabilní výkon a dynamické škálování. Díky službě Event Grid můžou vaše aplikace naslouchat událostem a reagovat na ně, ať už pochází v podstatě z jakékoli služby Azure nebo vlastních zdrojů. Jednoduché, reaktivní zpracování událostí založené na protokolu HTTP pomáhá sestavovat efektivní řešení prostřednictvím inteligentního filtrování a směrování událostí.  Další informace najdete v článku [Směrování událostí na vlastní webový koncový bod](job-state-events-cli-how-to.md).
+Úloze chvíli trvá, než se dokončí, a když k tomu dojde, budete na to pravděpodobně chtít upozornit. K zobrazení průběhu úlohy doporučujeme použít službu Event Grid. Ta je navržená s ohledem na vysokou dostupnost, stabilní výkon a dynamické škálování. Díky službě Event Grid můžou vaše aplikace naslouchat událostem a reagovat na ně, ať už pocházejí z kterékoli služby Azure. Události můžou pocházet i z vlastních zdrojů. Jednoduché, reaktivní zpracování událostí založené na protokolu HTTP pomáhá sestavovat efektivní řešení prostřednictvím inteligentního filtrování a směrování událostí.  Další informace najdete v článku [Směrování událostí na vlastní webový koncový bod](job-state-events-cli-how-to.md).
 
 **Úloha** obvykle prochází následujícími stavy: **Naplánováno**, **Ve frontě**, **Zpracovávání** a **Dokončeno** (konečný stav). Pokud během provádění úlohy dojde k chybě, přejde úloha do stavu **Chyba**. Když úlohu zrušíte, změní se její stav na **Rušení** a potom na **Zrušeno**.
 
@@ -258,34 +258,36 @@ Viz [kódy chyb](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode
 
 ### <a name="create-a-streaming-locator"></a>Vytvoření lokátoru streamování
 
-Po dokončení úlohy kódování je dalším krokem vytvoření videa ve výstupním **prostředku** pro klienty k přehrávání. To můžete provést ve dvou krocích: Nejdřív vytvořte [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators)a druhý, sestavte adresy URL streamování, které můžou klienti používat. 
+Po dokončení úlohy kódování je dalším krokem vytvoření videa ve výstupním **prostředku** pro klienty k přehrávání. Video můžete zpřístupnit ve dvou krocích: nejdřív vytvořte streamovací lokátor ([StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators)) a pak adresy URL pro streamování, které budou klienti používat. 
 
-Proces vytvoření **lokátoru streamování** se nazývá publikování. Ve výchozím nastavení je **Lokátor streamování** platný hned po volání rozhraní API a trvá až do odstranění, pokud nenastavíte volitelné počáteční a koncové časy. 
+Proces vytvoření lokátoru streamování se nazývá publikování. Ve výchozím nastavení je Lokátor streamování platný hned po volání rozhraní API a trvá až do odstranění, pokud nenastavíte volitelné počáteční a koncové časy. 
 
-Při vytváření [lokátoru streamování](https://docs.microsoft.com/rest/api/media/streaminglocators)je potřeba zadat požadované **StreamingPolicyName**. V tomto příkladu budete zasílat streamování (nebo nešifrovaných) obsahu, takže se použije předdefinovaná zásada pro zrušení streamování "Predefined_ClearStreamingOnly".
+Když vytváříte streamovací lokátor [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators), je potřeba zadat požadovaný název zásady streamování **StreamingPolicyName**. V tomto příkladu budete zasílat streamování (nebo nešifrovaných) obsahu, takže se použije předdefinovaná zásada pro zrušení streamování "Predefined_ClearStreamingOnly".
 
 > [!IMPORTANT]
 > Pokud chcete definovat vlastní [zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies), doporučujeme navrhnout pro účet služby Media Service omezený počet takovýchto zásad a používat je opakovaně pro streamovací lokátory, kdykoli potřebujete stejné protokoly a možnosti šifrování. 
 
-Váš účet Media Service má kvótu pro počet položek **zásad streamování** . Pro každý **Lokátor streamování**byste neměli vytvářet nové **zásady streamování** .
+Váš účet Media Service má kvótu pro počet položek **zásad streamování** . Pro každý Lokátor streamování byste neměli vytvářet nové **zásady streamování** .
 
-1. V levém okně aplikace pro odesílání vyberte možnost Zásady streamování.
-2. Potom vyberte možnost „Create a Streaming Locator“ (Vytvořit lokátor streamování).
+1. V levém okně aplikace po tomto výběru vyberte zásady streamování a lokátory.
+2. Pak vyberte vytvořit Lokátor streamování (Vymazat).
 3. Stiskněte **Odeslat**.
 
     * Odešle se následující operace **PUT**.
 
         ```
-        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingPolicies/:streamingPolicyName?api-version={{api-version}}
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingLocators/:streamingLocatorName?api-version={{api-version}}
         ```
     * Operace obsahuje následující text:
 
         ```json
         {
-            "properties":{
-            "assetName": "{{assetName}}",
-            "streamingPolicyName": "{{streamingPolicyName}}"
-            }
+          "properties": {
+            "streamingPolicyName": "Predefined_ClearStreamingOnly",
+            "assetName": "testAsset1",
+            "contentKeys": [],
+            "filters": []
+         }
         }
         ```
 

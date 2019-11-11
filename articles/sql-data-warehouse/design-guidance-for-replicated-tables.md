@@ -1,5 +1,5 @@
 ---
-title: Pokyny k návrhu replikovaných tabulek – Azure SQL Data Warehouse | Microsoft Docs
+title: Pokyny k návrhu replikovaných tabulek
 description: Doporučení pro návrh replikovaných tabulek ve schématu Azure SQL Data Warehouse. 
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c622edc6c3a37b2bc71323cf0e2c155f7aec6e33
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 18577cb729c9f17a112979cd1ebb763af38b9ca2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479310"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693042"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Pokyny k návrhu pro použití replikovaných tabulek v Azure SQL Data Warehouse
 Tento článek obsahuje doporučení pro návrh replikovaných tabulek ve schématu SQL Data Warehouse. Pomocí těchto doporučení můžete zlepšit výkon dotazů tím, že snížíte pohyb dat a složitost dotazů.
@@ -95,7 +96,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 Replikovaná tabulka nevyžaduje žádné přesuny dat pro spojení, protože celá tabulka je již na každém výpočetním uzlu přítomna. Pokud jsou tabulky dimenzí distribuované kruhové dotazování, připojí se tabulka Dimension v plném rozsahu ke každému výpočetnímu uzlu. K přesunu dat plán dotazu obsahuje operaci nazvanou BroadcastMoveOperation. Tento typ operace přesunu dat zpomaluje dotazování a eliminuje se pomocí replikovaných tabulek. Chcete-li zobrazit kroky plánu dotazu, použijte zobrazení katalogu [Sys. DM _pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) System Catalog. 
 
-Například v následujících dotazech na schéma AdventureWorks je tabulka rozložená `FactInternetSales` pomocí algoritmu hash. Tabulky `DimDate` a`DimSalesTerritory` jsou menší tabulky dimenzí. Tento dotaz vrátí celkový prodej v Severní Amerika pro fiskální rok 2004:
+Například v následujících dotazech na schéma AdventureWorks je tabulka `FactInternetSales` distribuovaná pomocí algoritmu hash. Tabulky `DimDate` a `DimSalesTerritory` jsou menší tabulky dimenzí. Tento dotaz vrátí celkový prodej v Severní Amerika pro fiskální rok 2004:
 
 ```sql
 SELECT [TotalSalesAmount] = SUM(SalesAmount)
@@ -178,7 +179,7 @@ Chcete-li spustit opětovné sestavení, spusťte následující příkaz u kaž
 SELECT TOP 1 * FROM [ReplicatedTable]
 ``` 
  
-## <a name="next-steps"></a>Další postup 
+## <a name="next-steps"></a>Další kroky 
 Chcete-li vytvořit replikovanou tabulku, použijte jeden z následujících příkazů:
 
 - [CREATE TABLE (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)

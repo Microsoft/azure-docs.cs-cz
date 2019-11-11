@@ -1,6 +1,6 @@
 ---
-title: Schéma událostí služby Azure Event Grid
-description: Popisuje vlastnosti, které jsou k dispozici pro události pomocí služby Azure Event Grid
+title: Azure Event Grid schéma událostí
+description: Popisuje vlastnosti, které jsou k dispozici pro události s Azure Event Grid
 services: event-grid
 author: banisadr
 manager: timlt
@@ -8,29 +8,29 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/20/2019
 ms.author: babanisa
-ms.openlocfilehash: 8a8193d21bbc1d0af933657705e605ce31589cbf
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 44cc611a9a7d71a3ac4ac7b0d779b18778d0aacd
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785855"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607612"
 ---
-# <a name="azure-event-grid-event-schema"></a>Schéma událostí služby Azure Event Grid
+# <a name="azure-event-grid-event-schema"></a>Azure Event Grid schéma událostí
 
-Tento článek popisuje vlastnosti a schéma, které jsou k dispozici pro všechny události. Události obsahují sadu pěti řetězec požadované vlastnosti a objekt požadovaná data. Vlastnosti jsou společné pro všechny události z libovolného vydavatele. Datový objekt obsahuje vlastnosti, které jsou specifické pro každý vydavatele. Témata systému tyto vlastnosti jsou specifické pro poskytovatele prostředků, jako je například Azure Storage nebo Azure Event Hubs.
+Tento článek popisuje vlastnosti a schéma, které jsou k dispozici pro všechny události. Události se skládají ze sady pěti požadovaných vlastností řetězce a požadovaného datového objektu. Vlastnosti jsou společné pro všechny události od libovolného vydavatele. Datový objekt má vlastnosti, které jsou specifické pro každého vydavatele. Pro systémová témata jsou tyto vlastnosti specifické pro poskytovatele prostředků, jako je Azure Storage nebo Azure Event Hubs.
 
-Zdroje událostí v poli, který může mít několik objektů událostí odesílání událostí do služby Azure Event Grid. Při odesílání událostí do téma event gridu, může pole mít celková velikost až 1 MB. Každá událost v poli je omezena na 64 KB (obecná dostupnost) nebo 1 MB (preview). Pokud událost nebo pole je větší než omezení velikosti, obdržíte odpověď **413 datové části příliš velké**.
+Zdroje událostí odesílají události do Azure Event Grid v poli, které mohou mít několik objektů událostí. Při odesílání událostí do tématu Event gridu může mít pole celkovou velikost až 1 MB. Každá událost v poli je omezená na 64 KB (Obecná dostupnost) nebo 1 MB (Preview). Pokud je událost nebo pole větší než omezení velikosti, obdržíte **příliš velkou datovou část odpovědi 413**.
 
 > [!NOTE]
-> Událost o velikosti až 64 KB se věnujeme v obecné dostupnosti (GA) služeb úroveň smlouvy (SLA). Podpora pro událost o velikosti až 1 MB je aktuálně ve verzi preview. Události více než 64 KB se účtují v přírůstcích po 64 KB. 
+> K události velikosti až 64 KB se vztahuje Obecná dostupnost (GA) smlouva SLA (SLA). Podpora pro událost velikosti až 1 MB je v současnosti ve verzi Preview. Události větší než 64 KB se účtují v přírůstcích po 64 až KB. 
 
-Event Grid odesílá události odběratelům pole, které má jednu událost. Toto chování se může v budoucnu změnit.
+Event Grid odesílá události předplatitelům v poli, které obsahuje jednu událost. Toto chování se může v budoucnu změnit.
 
-Můžete najít schéma JSON pro události Event gridu a každý Azure vydavatele datová část [schématu události úložiště](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventgrid/data-plane).
+Můžete najít schéma JSON pro událost Event Grid a každou datovou část dat vydavatele Azure v [úložišti schématu událostí](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventgrid/data-plane).
 
 ## <a name="event-schema"></a>Schéma událostí
 
-Následující příklad ukazuje vlastnosti, které jsou používány všechny zdroje událostí:
+Následující příklad ukazuje vlastnosti, které jsou používány všemi vydavateli událostí:
 
 ```json
 [
@@ -49,7 +49,7 @@ Následující příklad ukazuje vlastnosti, které jsou používány všechny z
 ]
 ```
 
-Schéma publikována pro událost Azure Blob storage je například:
+Například schéma publikované pro událost úložiště objektů BLOB v Azure je:
 
 ```json
 [
@@ -81,20 +81,20 @@ Schéma publikována pro událost Azure Blob storage je například:
 
 ## <a name="event-properties"></a>Vlastnosti události
 
-Všechny události mají stejné nejvyšší úrovně následující data:
+Všechny události mají stejné následující data nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| topic | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| subject | string | Vydavatel definované cesta předmět události. |
-| eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
-| eventTime | string | Vygenerování události podle času UTC poskytovatele. |
-| id | string | Jedinečný identifikátor pro událost. |
-| data | object | Data události specifické pro poskytovatele prostředků. |
-| dataVersion | string | Verze schématu datového objektu. Vydavatel Určuje verzi schématu. |
-| metadataVersion | string | Verze schématu metadat události. Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nejde zapisovat. Tuto hodnotu poskytuje Event Grid. |
+| Závislosti | řetězec | Cesta definovaná vydavatelem k předmětu události |
+| Typ | řetězec | Jeden z registrovaných typů událostí pro tento zdroj události. |
+| Čas události | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
+| id | řetězec | Jedinečný identifikátor události |
+| data | objekt | Data události specifická pro poskytovatele prostředků. |
+| dataverze | řetězec | Verze schématu datového objektu. Vydavatel definuje verzi schématu. |
+| Verze metadataversion | řetězec | Verze schématu metadat události. Event Grid definuje schéma vlastností nejvyšší úrovně. Tuto hodnotu poskytuje Event Grid. |
 
-Další informace o vlastnosti datového objektu, naleznete v tématu zdroje událostí:
+Další informace o vlastnostech v datovém objektu najdete v tématu zdroj události:
 
 * [Předplatná Azure (operace správy)](event-schema-subscriptions.md)
 * [Container Registry](event-schema-container-registry.md)
@@ -104,15 +104,16 @@ Další informace o vlastnosti datového objektu, naleznete v tématu zdroje ud�
 * [Media Services](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 * [Skupiny prostředků (operace správy)](event-schema-resource-groups.md)
 * [Service Bus](event-schema-service-bus.md)
-* [Azure SignalR](event-schema-azure-signalr.md)
+* [Signál Azure](event-schema-azure-signalr.md)
+* [Azure Machine Learning](event-schema-machine-learning.md)
 
-Zdroj události pro vlastní témata, určuje datový objekt. Nejvyšší úrovně dat by měl mít stejné pole jako standardní událostí definovaných prostředků.
+Pro vlastní témata Vydavatel události Určuje datový objekt. Data nejvyšší úrovně by měla mít stejná pole jako standardní události definované prostředky.
 
-Při publikování událostí do vlastní témata, vytvořte předměty pro události, které usnadňují předplatitelům vědět, jestli máte zájem o události. Předplatitelé využít subjektu k filtrování a směrování událostí. Vezměte v úvahu zajišťující cesta kde k události došlo, takže předplatitelé můžete filtrovat podle segmentů cesty. Cesta umožňuje předplatitelům úzce nebo široce filtrovat události. Například, pokud zadáváte cestu tři segmentu jako `/A/B/C` v předmětu, můžete filtrovat předplatitele první segment `/A` zobrazíte široké škály události. Tyto předplatitelé získají události s popsány oblasti jako `/A/B/C` nebo `/A/D/E`. Ostatní účastníky můžete filtrovat podle `/A/B` zobrazíte užší sadu událostí.
+Při publikování událostí pro vlastní témata vytvořte předměty pro události, které předplatitelům umožní snadno zjistit, jestli se o událost zajímá. Předplatitelé používají subjekt k filtrování a směrování událostí. Zvažte zadání cesty, kde došlo k události, takže předplatitelé mohou filtrovat segmenty této cesty. Cesta umožňuje předplatitelům zúžit nebo široce filtrovat události. Pokud například zadáte cestu se třemi segmenty, například `/A/B/C` v předmětu, mohou předplatitelé filtrovat podle prvního segmentu `/A` a získat tak širokou škálu událostí. Tyto předplatitelé získávají události s předměty, jako je `/A/B/C` nebo `/A/D/E`. Jiní předplatitelé mohou filtrovat podle `/A/B` a získat tak užší sadu událostí.
 
-Někdy vašich vztahuje potřebuje více podrobností o co se stalo. Například **účty úložiště** vydavatele poskytuje předmět `/blobServices/default/containers/<container-name>/blobs/<file>` při přidání souboru do kontejneru. Může předplatitel filtrovat podle cesty `/blobServices/default/containers/testcontainer` zobrazíte všechny události pro tohoto kontejneru, ale ne další kontejnery v účtu úložiště. Může také filtrovat předplatitele nebo trasy podle přípony `.txt` pracovat pouze s textovými soubory.
+Někdy váš předmět potřebuje více podrobností o tom, co se stalo. Například Vydavatel **účtů úložiště** poskytuje předmět `/blobServices/default/containers/<container-name>/blobs/<file>`, když se do kontejneru přidá soubor. Předplatitel může filtrovat podle `/blobServices/default/containers/testcontainer` cesty, aby získal všechny události pro tento kontejner, ale ne jiné kontejnery v účtu úložiště. Předplatitel může také filtrovat nebo směrovat podle přípony `.txt` jenom pro práci s textovými soubory.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Úvod do služby Azure Event Grid najdete v tématu [novinky služby Event Grid?](overview.md)
-* Další informace o vytváření předplatného služby Azure Event Grid najdete v tématu [schéma předplatného služby Event Grid](subscription-creation-schema.md).
+* Úvod do Azure Event Grid najdete v tématu [co je Event Grid?](overview.md)
+* Další informace o vytváření předplatného Azure Event Grid najdete v tématu [schéma předplatného Event Grid](subscription-creation-schema.md).

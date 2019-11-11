@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: takamath
-ms.openlocfilehash: 22d7afa889994068c3f906d0b9adbc1a74bc4839
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 1bb5d979ff7c9fe6e2afec4c7ebd81649b4488e3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642588"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581237"
 ---
 # <a name="connect-to-your-virtual-machines-through-a-browser"></a>Připojení k virtuálním počítačům přes prohlížeč 
 
@@ -26,8 +26,6 @@ DevTest Labs se integruje s [Azure bastionu](https://docs.microsoft.com/azure/ba
 
 Po povolení *připojení prohlížeče* k virtuálním počítačům můžou uživatelé testovacího prostředí přistupovat přes prohlížeč.  
 
-> [!NOTE]
-> Povolení připojení prohlížeče na virtuálních počítačích testovacího prostředí je ve verzi Preview.
 
 ## <a name="create-a-lab-virtual-machine"></a>Vytvořit virtuální počítač testovacího prostředí
 

@@ -1,5 +1,5 @@
 ---
-title: Správa uživatelských dat nalezených v šetření Azure Security Center | Microsoft Docs
+title: Správa uživatelských dat nalezených v Azure Security Center šetření
 description: " Naučte se spravovat uživatelská data zjištěná ve vyšetřovací funkci Azure Security Center. "
 services: operations-management-suite
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
-ms.openlocfilehash: 8b6bde69f233fee9fe20b260e392966298f13a9a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 059ca2a26e50128d6bc4313dad9f995e97c06378
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202038"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686400"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Správa uživatelských dat nalezených v Azure Security Center šetření
 Tento článek poskytuje informace o tom, jak spravovat uživatelská data zjištěná v rámci vyšetřovací funkce Azure Security Center. Data o vyšetřování jsou uložená v [protokolech Azure monitor](../log-analytics/log-analytics-overview.md) a zpřístupněna v Security Center. Správa uživatelských dat zahrnuje možnost odstraňovat nebo exportovat data.
@@ -38,21 +38,21 @@ Další informace o rolích čtenářů, vlastníků a přispěvatelů najdete v
 ## <a name="deleting-personal-data"></a>Odstraňování osobních údajů
 Uživatel Security Center přiřazený k roli vlastníka, přispěvatele nebo správce účtu může odstranit informace o šetření.
 
-Chcete-li odstranit šetření, můžete odeslat `DELETE` žádost na Azure Resource Manager REST API:
+Chcete-li odstranit šetření, můžete odeslat žádost o `DELETE` do Azure Resource Manager REST API:
 
 ```HTTP
 DELETE
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/features/security/incidents/{incidentName}
 ```
 
-Vstup lze najít výpisem všech incidentů `GET` pomocí žádosti: `incidentName`
+Vstup `incidentName` lze najít zobrazením všech incidentů pomocí `GET` žádosti:
 
 ```HTTP
 GET
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/features/security/incidents
 ```
 
-## <a name="exporting-personal-data"></a>Exportování osobních údajů
+## <a name="exporting-personal-data"></a>Export osobních údajů
 Security Center uživatel, kterému byla přiřazena role vlastníka, přispěvatel nebo správce účtu, může exportovat informace o šetření. Pokud chcete exportovat informace o šetření, klikněte na kartu **entity** a zkopírujte a vložte relevantní informace.
 
 ## <a name="next-steps"></a>Další kroky

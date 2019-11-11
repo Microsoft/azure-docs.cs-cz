@@ -7,35 +7,31 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 09/07/2019
+ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7b5e811daecbb7687abe7a37b75e2730d7830c2c
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: cf160b767ee82701bad4c88d3b83951a3b875296
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983623"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614649"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Dílčí orchestrace v Durable Functions (Azure Functions)
 
-Kromě volání funkcí aktivity mohou funkce Orchestrator volat jiné funkce nástroje Orchestrator. Můžete například vytvořit větší orchestraci z knihovny funkcí nástroje Orchestrator. Nebo můžete souběžně spustit více instancí funkce nástroje Orchestrator.
+Kromě volání funkcí aktivity mohou funkce Orchestrator volat jiné funkce nástroje Orchestrator. Například můžete vytvořit větší orchestraci z knihovny menších funkcí nástroje Orchestrator. Nebo můžete souběžně spustit více instancí funkce nástroje Orchestrator.
 
-Funkce Orchestrator může volat jinou funkci nástroje Orchestrator voláním metody [CallSubOrchestratorAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorAsync_) nebo [CallSubOrchestratorWithRetryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorWithRetryAsync_) v rozhraní .NET nebo `callSubOrchestrator` metod nebo `callSubOrchestratorWithRetry` v jazyce JavaScript. Další informace o automatickém opakování najdete v článku o [zpracování chyb & kompenzaci](durable-functions-error-handling.md#automatic-retry-on-failure) .
+Funkce Orchestrator může volat další funkci Orchestrator pomocí `CallSubOrchestratorAsync` nebo `CallSubOrchestratorWithRetryAsync` metod v rozhraní .NET nebo `callSubOrchestrator` nebo `callSubOrchestratorWithRetry`ch metod v JavaScriptu. Další informace o automatickém opakování najdete v článku o [zpracování chyb & kompenzaci](durable-functions-error-handling.md#automatic-retry-on-failure) .
 
 Funkce dílčího nástroje Orchestrator se chovají stejně jako funkce aktivity z perspektivy volajícího. Mohou vracet hodnotu, vyvolat výjimku a může být očekávána nadřazenou funkcí Orchestrator. 
-
-> [!NOTE]
-> V současné době je nutné zadat `instanceId` hodnotu argumentu rozhraní API pro podorchestraci v JavaScriptu.
-
 ## <a name="example"></a>Příklad
 
-Následující příklad znázorňuje scénář IoT ("Internet věcí"), kde je více zařízení, které je třeba zřídit. K dispozici je konkrétní orchestrace, kterou je třeba provést pro každé zařízení, což může vypadat nějak takto:
+Následující příklad znázorňuje scénář IoT ("Internet věcí"), kde je více zařízení, které je třeba zřídit. Následující funkce představuje pracovní postup zřizování, který je třeba spustit pro každé zařízení:
 
 ### <a name="c"></a>C#
 
 ```csharp
 public static async Task DeviceProvisioningOrchestration(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     string deviceId = context.GetInput<string>();
 
@@ -52,7 +48,7 @@ public static async Task DeviceProvisioningOrchestration(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
+### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -73,7 +69,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Tato funkce Orchestrator se dá použít jako pro jednorázové zřizování zařízení nebo může být součástí větší orchestrace. V druhém případě může nadřazená funkce Orchestrator naplánovat instance `DeviceProvisioningOrchestration` `CallSubOrchestratorAsync` pomocí rozhraní API (C#) nebo `callSubOrchestrator` (JavaScript).
+Tato funkce Orchestrator se dá použít jako pro jednorázové zřizování zařízení nebo může být součástí větší orchestrace. V druhém případě může nadřazená funkce Orchestrator naplánovat instance `DeviceProvisioningOrchestration` pomocí rozhraní API `CallSubOrchestratorAsync` (.NET) nebo `callSubOrchestrator` (JavaScript).
 
 Tady je příklad, který ukazuje, jak paralelně spustit více funkcí nástroje Orchestrator.
 
@@ -82,7 +78,7 @@ Tady je příklad, který ukazuje, jak paralelně spustit více funkcí nástroj
 ```csharp
 [FunctionName("ProvisionNewDevices")]
 public static async Task ProvisionNewDevices(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     string[] deviceIds = await context.CallActivityAsync<string[]>("GetNewDeviceIds");
 
@@ -100,7 +96,10 @@ public static async Task ProvisionNewDevices(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (jenom funkce 2. x)
+> [!NOTE]
+> Předchozí C# příklady jsou pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` namísto `IDurableOrchestrationContext`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+
+### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -127,7 +126,7 @@ module.exports = df.orchestrator(function*(context) {
 > [!NOTE]
 > Dílčí orchestrace musí být definovaná ve stejné aplikaci Function App jako nadřazená orchestrace. Pokud potřebujete zavolat a počkat na orchestraci v jiné aplikaci Function App, zvažte použití integrované podpory rozhraní HTTP API a vzoru příjemce cyklického dotazování HTTP 202. Další informace najdete v tématu [funkce protokolu HTTP](durable-functions-http-features.md) .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Přečtěte si, jak nastavit vlastní stav orchestrace.](durable-functions-custom-orchestration-status.md)

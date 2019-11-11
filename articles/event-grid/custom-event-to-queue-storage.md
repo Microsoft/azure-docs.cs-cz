@@ -1,22 +1,22 @@
 ---
-title: Odesílání vlastních události do fronty úložiště – Event Grid, Azure CLI
-description: Pomocí Azure Event Gridu a Azure CLI můžete publikovat téma a přihlásit se k odběru příslušné události. Pro koncový bod se používá fronta úložiště.
+title: 'Rychlý Start: odesílání vlastních událostí do fronty úložiště – Event Grid, Azure CLI'
+description: 'Rychlý Start: pomocí Azure Event Grid a Azure CLI můžete publikovat téma a přihlásit se k odběru této události. Pro koncový bod se používá fronta úložiště.'
 services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 01/07/2019
+ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 9d1d9caccac0fcdeb4e1d2dae40e677f36de40ea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 44ffa570cfda39c186966866ee5755ab090083a5
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66170262"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721450"
 ---
-# <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Rychlý start: Směrování vlastních událostí do Azure Queue Storage pomocí Azure CLI a Event Gridu
+# <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Rychlý Start: směrování vlastních událostí do Azure Queue Storage pomocí rozhraní příkazového řádku Azure a Event Grid
 
 Azure Event Grid je služba zpracování událostí pro cloud. Azure Queue Storage je jednou z podporovaných obslužných rutin události. V tomto článku vytvoříte pomocí Azure CLI vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Události odešlete do Queue Storage.
 
@@ -24,12 +24,12 @@ Azure Event Grid je služba zpracování událostí pro cloud. Azure Queue Stora
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud používáte prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure v místním počítači namísto použití Cloud Shell na webu Azure Portal, ujistěte se, že máte následující verze rozhraní příkazového řádku Azure a Azure Powershellu. 
+Pokud používáte Azure CLI nebo Azure PowerShell na svém místním počítači místo použití Cloud Shell v Azure Portal, ujistěte se, že máte následující verze rozhraní příkazového řádku Azure CLI a Azure PowerShell. 
 
-- Azure CLI verze 2.0.56 nebo vyšší. Pokyny k instalaci nejnovější verze Azure CLI najdete v tématu [instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli). 
-- Azure PowerShell verze 1.1.0 nebo vyšší. Stáhněte si nejnovější verzi Azure Powershellu na svém počítači s Windows z [stažení Azure – nástroje pro příkazový řádek](https://azure.microsoft.com/downloads/). 
+- Azure CLI verze 2.0.56 nebo vyšší. Pokyny k instalaci nejnovější verze rozhraní příkazového řádku Azure najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). 
+- Azure PowerShell verze 1.1.0 nebo novější. Stáhněte si nejnovější verzi Azure PowerShell na počítači s Windows ze složky [Azure downloads – nástroje příkazového řádku](https://azure.microsoft.com/downloads/). 
 
-Tento článek obsahuje příkazy pro pomocí Azure CLI. 
+Tento článek obsahuje příkazy pro použití rozhraní příkazového řádku Azure CLI. 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -67,7 +67,7 @@ az storage queue create --name $queuename --account-name $storagename
 
 ## <a name="subscribe-to-a-custom-topic"></a>Přihlášení k odběru vlastního tématu
 
-K odběru vlastního tématu se přihlašujete, aby služba Event Grid věděla, které události chcete sledovat. Následující příklad se přihlásí k odběru vlastního tématu, které jste vytvořili, a předá ID prostředku služby Queue Storage pro koncový bod. Pomocí Azure CLI předáte ID Queue Storage jako koncový bod. Koncový bod je ve formátu:
+Přihlásíte se k odběru vlastního tématu, které informuje Event Grid události, které chcete sledovat. Následující příklad přihlásí k odběru vlastního tématu, které jste vytvořili, a předá ID prostředku úložiště fronty pro koncový bod. Pomocí Azure CLI předáte ID Queue Storage jako koncový bod. Koncový bod je ve formátu:
 
 `/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/queueservices/default/queues/<queue-name>`
 
@@ -131,7 +131,7 @@ Pokud chcete pokračovat v práci s touto událostí, nevyčišťujte prostředk
 az group delete --name gridResourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Když teď víte, jak vytvářet témata a odběry událostí, zjistěte, s čím vám služba Event Grid ještě může pomoct:
 

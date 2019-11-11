@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: be639a67f70ab40f8d7dcc0f3793cbbd4a2ec4a3
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e2ea934140322a13f07a90f4246bacd3f9dbe6c9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436805"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721090"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Vytváření kontejnerů s velkým klíčem oddílu
 
@@ -33,7 +33,7 @@ Pokud chcete vytvořit kontejner s podporou klíče velkých oddílů, přejdět
 
 ## <a name="create-a-large-partition-key-net-sdk"></a>Vytvoření klíče s velkým oddílem (.NET SDK)
 
-Pokud chcete vytvořit kontejner s velkým klíčem oddílu pomocí sady .NET SDK, zadejte vlastnost `PartitionKeyDefinitionVersion.V2`. Následující příklad ukazuje, jak určit vlastnost verze v objektu PartitionKeyDefinition a nastavit ji na PartitionKeyDefinitionVersion. v2.
+Chcete-li vytvořit kontejner s velkým klíčem oddílu pomocí sady .NET SDK, zadejte vlastnost `PartitionKeyDefinitionVersion.V2`. Následující příklad ukazuje, jak určit vlastnost verze v objektu PartitionKeyDefinition a nastavit ji na PartitionKeyDefinitionVersion. v2.
 
 ### <a name="v3-net-sdk"></a>V3 .NET SDK
 
@@ -71,7 +71,8 @@ V následujících minimálních verzích sad SDK jsou podporovány klíče s ve
 |.NET     |    1,18     |
 |Synchronizace Java     |   2.4.0      |
 |Java Async   |  2.5.0        |
-| Rozhraní REST API | verze vyšší než `2017-05-03` pomocí hlavičky žádosti `x-ms-version`.|
+| REST API | verze vyšší než `2017-05-03` pomocí hlavičky žádosti `x-ms-version`.|
+| Šablona Resource Manageru | verze 2 pomocí vlastnosti `"version":2` v rámci objektu `partitionKey`. |
 
 V současné době nelze v nástroji Power BI a Azure Logic Apps použít kontejnery s velkým klíčem oddílu. Z těchto aplikací můžete použít kontejnery bez klíče oddílu.
 

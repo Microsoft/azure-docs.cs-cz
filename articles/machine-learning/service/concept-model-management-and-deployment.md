@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 10/25/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8741a9a362a10dfdb0150c9dc0dfddeed54594a7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0d0e567198fd25243b89245d54bbed5a658cc663
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497444"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716597"
 ---
 # <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps: Správa, nasazení a monitorování modelů pomocí Azure Machine Learning
 
@@ -121,12 +121,12 @@ Modely se zařízeními IoT můžete používat prostřednictvím **Azure IoT Ed
 
 Další informace najdete v tématu [nasazení modelů](how-to-deploy-and-where.md).
 
-### <a name="analytics"></a>Analýzy
+### <a name="analytics"></a>Analýza
 
 Microsoft Power BI podporuje používání modelů strojového učení pro analýzu dat. Další informace najdete v tématu [integrace Azure Machine Learning v Power BI (Preview)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 
 
-## <a name="monitor-ml-applications-for-operational-and-ml-related-issues"></a>Monitorování aplikací ML na problémy související s provozními a ML
+## <a name="monitor-for-operational--ml-issues"></a>Monitorování problémů s provozní & ML
 
 Monitorování vám umožní pochopit, jaká data jsou odesílána do modelu, a předpovědi, který vrátí.
 
@@ -135,16 +135,16 @@ Tyto informace vám pomohou pochopit, jak je model používán. Shromážděná 
 Další informace najdete v tématu [Jak povolit shromažďování dat modelu](how-to-enable-data-collection.md).
 
 
-## <a name="capture-an-end-to-end-audit-trail-of-the-ml-lifecycle"></a>Zachytit záznam koncového auditu v průběhu životního cyklu ML
+## <a name="audit-trail-of-the-ml-lifecycle"></a>Záznam auditu pro životní cyklus ML
 
-Azure ML vám nabízí možnost sledovat záznam o všech svých prostředcích ML na konci auditu. Zejména:
+Azure ML vám nabízí možnost sledovat záznam o všech svých prostředcích ML na konci auditu. Konkrétně:
 
 - Azure ML [se integruje s Git](how-to-set-up-training-targets.md#gitintegration) , aby mohla sledovat informace o tom, ze kterého úložiště, větvení a potvrzení kódu pochází.
 - Datové [sady Azure ml](how-to-create-register-datasets.md) vám pomůžou sledovat a data verze.
 - Historie spuštění Azure ML ukládá snímek kódu, data a výpočetní prostředky, které se používají pro výuku modelu.
 - Registr modelu Azure ML zachycuje všechna metadata přidružená k vašemu modelu (které experiment vyškole, pokud je nasazený, pokud je jeho nasazení v pořádku).
 
-## <a name="automate-the-end-to-end-ml-lifecycle"></a>Automatizace životního cyklu celého ML na konci 
+## <a name="automate-the-ml-lifecycle"></a>Automatizace životního cyklu ML 
 
 Pomocí GitHubu a Azure Pipelines můžete vytvořit proces průběžné integrace, který bude navlakovat do modelu. Když se v typickém scénáři zkontroluje data v úložišti Git pro projekt, kanál Azure spustí školicí běh. Výsledky spuštění je pak možné zkontrolovat, aby se zobrazily výkonnostní charakteristiky vyučeného modelu. Můžete také vytvořit kanál, který nasadí model jako webovou službu.
 
@@ -157,8 +157,18 @@ Další informace o použití Azure Pipelines s Azure Machine Learning najdete v
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [tom, jak a kde můžete nasadit modely](how-to-deploy-and-where.md) pomocí Azure Machine Learning. Příklad nasazení najdete v tématu [kurz: nasazení modelu klasifikace imagí v Azure Container Instances](tutorial-deploy-models-with-aml.md).
+Další informace najdete v tématu o tom, jak číst a prozkoumat následující zdroje:
 
-Naučte se vytvářet [průběžnou integraci a nasazování modelů ml pomocí Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning). 
++ [Postup & nasazení modelů](how-to-deploy-and-where.md) pomocí Azure Machine Learning
 
-Naučte se vytvářet klientské aplikace a služby, které [využívají model nasazený jako webovou službu](how-to-consume-web-service.md).
++ [Kurz: nasazení modelu klasifikace image v ACI](tutorial-deploy-models-with-aml.md).
+
++ [Ucelené příklady MLOps úložiště](https://github.com/microsoft/MLOps)
+
++ [CI/CD modelů ML s Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning)
+
++ Vytváření klientů využívajících [nasazený model](how-to-consume-web-service.md)
+
++ [Strojové učení ve velkém měřítku](/architecture/data-guide/big-data/machine-learning-at-scale)
+
++ [Referenční architektury Azure AI & zástupce osvědčených postupů](https://github.com/microsoft/AI)

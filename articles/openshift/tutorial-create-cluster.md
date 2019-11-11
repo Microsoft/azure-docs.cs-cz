@@ -7,13 +7,13 @@ ms.author: jzim
 manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
-ms.date: 05/14/2019
-ms.openlocfilehash: 01319de8fd72875ca35bb7a869a6eaedee62f2a7
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.date: 11/04/2019
+ms.openlocfilehash: 4a09a0fe4aa1f04e665aeb71ebece17a8b368090
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285533"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582392"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Kurz: Vytvoření clusteru Azure Red Hat OpenShift
 
@@ -30,12 +30,10 @@ V této sérii kurzů se naučíte:
 > * [Škálování clusteru Azure Red Hat OpenShift](tutorial-scale-cluster.md)
 > * [Odstranění clusteru Azure Red Hat OpenShift](tutorial-delete-cluster.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!IMPORTANT]
 > Tento kurz vyžaduje 2.0.65 verze Azure CLI.
->    
-> Než budete moct použít Azure Red Hat OpenShift, musíte si koupit aspoň čtyři uzly rezervované aplikace Azure Red Hat OpenShift, jak je popsáno v tématu [Nastavení vývojového prostředí Azure Red Hat OpenShift](howto-setup-environment.md#purchase-azure-red-hat-openshift-application-nodes-reserved-instances).
 
 Než začnete s tímto kurzem:
 
@@ -48,13 +46,13 @@ Ujistěte se, že jste [nastavili vývojové prostředí](howto-setup-environmen
 
 ## <a name="step-1-sign-in-to-azure"></a>Krok 1: přihlášení k Azure
 
-Pokud používáte Azure CLI místně, otevřete příkazové okno bash a spuštěním `az login` se přihlaste k Azure.
+Pokud používáte Azure CLI místně, otevřete příkazové prostředí bash a spusťte `az login` pro přihlášení k Azure.
 
 ```bash
 az login
 ```
 
- Pokud máte přístup k několika předplatným, spusťte `az account set -s {subscription ID}` a nahraďte `{subscription ID}` předplatným, které chcete použít.
+ Pokud máte přístup k několika předplatným, spusťte `az account set -s {subscription ID}` nahrazující `{subscription ID}` s předplatným, které chcete použít.
 
 ## <a name="step-2-create-an-azure-red-hat-openshift-cluster"></a>Krok 2: Vytvoření clusteru Azure Red Hat OpenShift
 
@@ -136,7 +134,7 @@ Pokud svůj cluster **nechcete** navázat na virtuální síť, použijte násle
 az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID
 ```
 
-Pokud **vytváříte partnerský vztah** ke clusteru virtuální sítě, použijte následující příkaz, který přidá příznak `--vnet-peer`:
+Pokud **vytváříte partnerské vztahy** clusteru s virtuální sítí, použijte následující příkaz, který přidá příznak `--vnet-peer`:
  
 ```bash
 az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --vnet-peer $VNET_ID
@@ -155,9 +153,9 @@ Spuštěním následujícího příkazu Získejte adresu URL pro přihlášení 
 az openshift show -n $CLUSTER_NAME -g $CLUSTER_NAME
 ```
 
-Ve výstupu vyhledejte `publicHostName`, například: `"publicHostname": "openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io"`.
+Vyhledejte `publicHostName` ve výstupu, například: `"publicHostname": "openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io"`
 
-Adresa URL pro přihlášení ke clusteru bude `https://` následovaný hodnotou `publicHostName`.  Například: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`.  V dalším kroku použijete tento identifikátor URI jako součást identifikátoru URI přesměrování registrace aplikace.
+Adresa URL pro přihlášení ke clusteru bude `https://` následovaná `publicHostName` hodnotou.  Například: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`.  V dalším kroku použijete tento identifikátor URI jako součást identifikátoru URI přesměrování registrace aplikace.
 
 ## <a name="step-3-update-your-app-registration-redirect-uri"></a>Krok 3: aktualizujte identifikátor URI pro přesměrování registrace aplikace.
 
@@ -176,7 +174,7 @@ Nyní jste připraveni se přihlásit ke konzole OpenShift pro nový cluster. [W
 Budete potřebovat novou instanci prohlížeče, která neukládá do mezipaměti identitu, kterou běžně používáte pro přihlášení k Azure Portal.
 
 1. Otevřete okno *anonymním* (Chrome) nebo okno *InPrivate* (Microsoft Edge).
-2. Přejděte na přihlašovací adresu URL, kterou jste získali výše, například: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`.
+2. Přejděte na adresu URL pro přihlášení, kterou jste získali výše, například: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`
 
 Přihlaste se pomocí uživatelského jména, které jste vytvořili v kroku 3 v části [Vytvoření nového uživatele Azure Active Directory](howto-aad-app-configuration.md#create-a-new-azure-active-directory-user).
 
@@ -199,7 +197,7 @@ V konzole OpenShift klikněte na otazník v pravém horním rohu podle přihlaš
 >
 > Alternativně můžete stáhnout také [rozhraní příkazového řádku oC](https://www.okd.io/download.html) přímo.
 
-Stránka **nástroje příkazového řádku** poskytuje příkaz formuláře `oc login https://<your cluster name>.<azure region>.cloudapp.azure.com --token=<token value>`.  Kliknutím na tlačítko *Kopírovat do schránky* zkopírujte tento příkaz.  V okně terminálu [nastavte cestu](https://docs.okd.io/latest/cli_reference/get_started_cli.html#installing-the-cli) tak, aby zahrnovala místní instalaci nástrojů oC. Pak se přihlaste ke clusteru pomocí příkazu oC CLI, který jste zkopírovali.
+Stránka **nástroje příkazového řádku** poskytuje příkaz `oc login https://<your cluster name>.<azure region>.cloudapp.azure.com --token=<token value>`formuláře.  Kliknutím na tlačítko *Kopírovat do schránky* zkopírujte tento příkaz.  V okně terminálu [nastavte cestu](https://docs.okd.io/latest/cli_reference/get_started_cli.html#installing-the-cli) tak, aby zahrnovala místní instalaci nástrojů oC. Pak se přihlaste ke clusteru pomocí příkazu oC CLI, který jste zkopírovali.
 
 Pokud jste nedokázali získat hodnotu tokenu pomocí výše uvedených kroků, Získejte hodnotu tokenu z: `https://<your cluster name>.<azure region>.cloudapp.azure.com/oauth/token/request`.
 

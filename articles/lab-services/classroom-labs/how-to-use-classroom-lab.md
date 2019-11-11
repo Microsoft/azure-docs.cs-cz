@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 10813600621293e9f559129230193f81ea0c505a
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 2ac9e8b8d0635eceb7d4f85ad867b102f7d064f5
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161523"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73585162"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Jak získat přístup k testovacímu prostředí v učebně v Azure Lab Services
 Tento článek popisuje, jak se zaregistrovat do testovacího prostředí, Zobrazit všechny laboratoře, ke kterým máte přístup, jak spustit nebo zastavit virtuální počítač v testovacím prostředí a jak se připojit k virtuálnímu počítači. 
@@ -63,13 +63,13 @@ Tento článek popisuje, jak se zaregistrovat do testovacího prostředí, Zobra
 ## <a name="connect-to-a-vm-using-rdp-on-a-mac"></a>Připojení k virtuálnímu počítači pomocí protokolu RDP na Macu
 V této části se dozvíte, jak se student může připojit k virtuálnímu počítači z Mac pomocí protokolu RDP.
 
-### <a name="step-1-install-microsoft-remote-desktop-on-a-mac"></a>Krok 1: Instalace Vzdálená plocha Microsoft na Macu
+### <a name="step-1-install-microsoft-remote-desktop-on-a-mac"></a>Krok 1: instalace Vzdálená plocha Microsoft na Macu
 1. Otevřete App Store na Macu a vyhledejte **Vzdálená plocha Microsoft**.
 
     ![Vzdálená plocha Microsoft](../media/how-to-use-classroom-lab/install-ms-remote-desktop.png)
 1. Nainstalujte nejnovější verzi Vzdálená plocha Microsoft. 
 
-### <a name="step-2-access-the-vm-from-your-mac-using-rdp"></a>Krok 2: Přístup k virtuálnímu počítači z Mac pomocí protokolu RDP
+### <a name="step-2-access-the-vm-from-your-mac-using-rdp"></a>Krok 2: přístup k virtuálnímu počítači z počítače Mac pomocí protokolu RDP
 1. Otevřete soubor **RDP** , který je stažený na počítači s nainstalovaným **Vzdálená plocha Microsoft** . Mělo by se začít připojovat k virtuálnímu počítači. 
 
     ![Připojení k virtuálnímu počítači](../media/how-to-use-classroom-lab/connect-linux-vm.png)
@@ -107,7 +107,7 @@ Po registraci do testovacích prostředí se můžete podívat na všechny labor
 2. Přihlaste se ke službě pomocí uživatelského účtu, který jste použili k registraci do testovacího prostředí. 
 3. Ověřte, že se zobrazí všechny laboratoře, ke kterým máte přístup. 
 
-    ![Zobrazit všechna testovací prostředí](../media/how-to-use-classroom-lab/all-labs.png)
+    ![Zobrazit všechna testovací prostředí](../media/how-to-manage-classroom-labs/all-labs.png)
 
 
 ## <a name="next-steps"></a>Další kroky

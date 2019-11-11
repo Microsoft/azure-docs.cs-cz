@@ -1,5 +1,5 @@
 ---
-title: Tenant virtuálních počítačů s Windows a vytváření fondů hostitelů – Azure
+title: Vytvoření fondu hostitelů tenanta virtuálních počítačů s Windows – Azure
 description: Řešení potíží a řešení problémů s fondem klientů a hostitelů během instalace prostředí klienta virtuální plochy Windows.
 services: virtual-desktop
 author: Heidilohr
@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: e2d2da5e2c8c0236a4f42bc69a521891616df0d4
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b53bf80774a0715c7a02d837975284e985958635
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163299"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607440"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Vytvoření tenanta a fondu hostitelů
 
 Tento článek popisuje problémy při počátečním nastavení tenanta virtuální plochy Windows a související infrastruktury fondu hostitelů relací.
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 
 Navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , kde můžete diskutovat o službě Virtual Desktop v systému Windows pomocí produktového týmu a aktivních členů komunity.
 

@@ -1,7 +1,7 @@
 ---
 title: Vylepšení znalostní báze Knowledge Base – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Aktivní učení vám umožní vylepšit kvalitu znalostní báze tím, že navrhuje alternativní otázky na základě počtu uživatelů, a to na pár otázek a odpovědí. Tyto návrhy si můžete prohlédnout, buď je přidáte do existujících otázek, nebo je odmítnete. Vaše znalostní báze se nemění automaticky. Aby se změny projevily, musíte přijmout návrhy. Tyto návrhy přidávají otázky, ale nemění ani neodstraňují stávající otázky.
+description: Vylepšete kvalitu znalostní báze s aktivním učením. Zkontrolujte, přijměte nebo odmítněte, přidejte bez odebrání nebo změny existujících otázek.
 author: diberry
 manager: nitinme
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 83d60487922e3355aab8e34f6a8409c529901d14
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: add4bbead880fb9b74d342abc1d4b3c0e9475fad
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72328031"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721173"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Využití aktivního učení k vylepšení vaší znalostní báze
 
@@ -71,7 +71,7 @@ Aktivní učení je ve výchozím nastavení vypnuté. Zapněte ho, aby se zobra
 
 1. Vyhledejte službu QnA Maker a potom přepněte **aktivní učení**. 
 
-    [@no__t – 1On na stránce nastavení služby přepněte na funkci Active Learning. Pokud nemůžete funkci zapnout, možná budete muset upgradovat službu.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
+    [![na stránce nastavení služby přepněte na funkci aktivního učení. Pokud nemůžete funkci zapnout, možná budete muset upgradovat službu.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
 
     > [!Note]
     > Přesná verze na předchozím obrázku se zobrazí jenom jako příklad. Vaše verze se může lišit. 
@@ -84,15 +84,15 @@ Aktivní učení mění znalostní bázi nebo Search Service, když schválíte 
 
 1. Chcete-li zobrazit navrhované otázky, na stránce **Upravit** znalostní bázi vyberte možnost **Zobrazit možnosti**a pak vyberte možnost **Zobrazit návrhy aktivního učení**. 
 
-    [@no__t – v části pro úpravy portálu vyberte možnost Zobrazit návrhy, aby se zobrazily nové alternativy otázek aktivního učení.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
+    [![v části Upravit na portálu vyberte možnost Zobrazit návrhy, aby se zobrazily nové alternativy otázek aktivního učení.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
 1. Vyfiltrujte znalostní bázi dvojice otázek a odpovědí, abyste zobrazili jenom návrhy, a to tak, že vyberete **filtrovat podle návrhů**.
 
-    [@no__t – 1Use můžete pomocí přepínače filtrovat podle návrhů zobrazit jenom navrhované alternativní otázky pro aktivní učení.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
+    [![pomocí přepínače filtrovat podle návrhů zobrazit jenom navrhované alternativy otázky aktivního učení.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
-1. Každý pár QnA navrhuje nové alternativy k otázce zaškrtnutí, `✔`, pokud chcete potvrdit dotaz, nebo `x` pro zamítnutí návrhů. Kliknutím na značku zaškrtnutí přidejte otázku. 
+1. Každý pár QnA navrhuje nové alternativy k otázce zaškrtnutí, `✔`, pro přijetí otázky nebo `x` k zamítnutí návrhů. Kliknutím na značku zaškrtnutí přidejte otázku. 
 
-    [@no__t – 1Select nebo odmítnout alternativy navrhovaných dotazů aktivního učení, a to tak, že vyberete zelenou značku zaškrtnutí nebo červenou značku DELETE.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
+    [výběrem zelené značky zaškrtnutí nebo červeného odstranění ![zamítnout vybrané alternativy otázek pro aktivní učení.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
     _Všechny návrhy_ můžete přidat nebo odstranit výběrem možnosti **Přidat vše** nebo **Odmítnout vše** na kontextovém panelu nástrojů.
 
@@ -109,7 +109,7 @@ Aktivní učení mění znalostní bázi nebo Search Service, když schválíte 
 
 Robot nebo jiná klientská aplikace by se měli pomocí tohoto toku architektury použít k používání aktivního učení:
 
-* Robot [získá odpověď ze znalostní báze](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) s rozhraním API GenerateAnswer pomocí vlastnosti `top` a získá tak několik odpovědí.
+* Robot [získá odpověď ze znalostní báze](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) s rozhraním API GenerateAnswer pomocí vlastnosti `top` k získání počtu odpovědí.
 * Robot určí explicitní zpětnou vazbu:
     * Pomocí vlastní [obchodní logiky](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)vyfiltrujte nízká skóre.
     * V robotu nebo klientské aplikaci můžete zobrazit seznam možných odpovědí na uživatele a získat zvolenou odpověď uživatele.
@@ -186,12 +186,12 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|Vlastnost požadavku HTTP|Name (Název)|Typ|Účel|
+|Vlastnost požadavku HTTP|Název|Typ|Účel|
 |--|--|--|--|
-|Parametr trasy adresy URL|ID znalostní báze|string|Identifikátor GUID znalostní báze|
-|Vlastní subdoména|Název prostředku Qnamakerem|string|Název prostředku se používá jako vlastní subdoména pro váš QnA Maker. Tato možnost je k dispozici na stránce nastavení po publikování znalostní báze. Je uveden jako `host`.|
-|Hlavička|Typ obsahu|string|Typ média těla odesílaného do rozhraní API Výchozí hodnota je: `application/json`|
-|Hlavička|Autorizace|string|Klíč koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
+|Parametr trasy adresy URL|ID znalostní báze|řetězec|Identifikátor GUID znalostní báze|
+|Vlastní subdoména|Název prostředku Qnamakerem|řetězec|Název prostředku se používá jako vlastní subdoména pro váš QnA Maker. Tato možnost je k dispozici na stránce nastavení po publikování znalostní báze. Je uveden jako `host`.|
+|Hlavička|Typ obsahu|řetězec|Typ média těla odesílaného do rozhraní API Výchozí hodnota je: `application/json`|
+|Hlavička|Autorizace|řetězec|Klíč koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
 |Tělo příspěvku|Objekt JSON|JSON|Váš názor na školení|
 
 Tělo JSON má několik nastavení:
@@ -199,8 +199,8 @@ Tělo JSON má několik nastavení:
 |Vlastnost těla zprávy JSON|Typ|Účel|
 |--|--|--|--|
 |`feedbackRecords`|pole|Seznam zpětné vazby|
-|`userId`|string|ID uživatele osoby, která přijímá navrhované otázky. Formát ID uživatele je až vám. Například e-mailová adresa může být platným ID uživatele ve vaší architektuře. Volitelné.|
-|`userQuestion`|string|Přesný text dotazu uživatele. Povinná hodnota.|
+|`userId`|řetězec|ID uživatele osoby, která přijímá navrhované otázky. Formát ID uživatele je až vám. Například e-mailová adresa může být platným ID uživatele ve vaší architektuře. Volitelné.|
+|`userQuestion`|řetězec|Přesný text dotazu uživatele. Povinná hodnota.|
 |`qnaID`|číslo|ID otázky nalezené v [odpovědi GenerateAnswer](metadata-generateanswer-usage.md#generateanswer-response-properties) |
 
 Ukázkový text JSON vypadá takto:
@@ -370,7 +370,7 @@ async callTrain(stepContext){
 
 Když má aplikace aktivní učení a exportujete aplikaci, sloupec `SuggestedQuestions` v souboru TSV uchová aktivní výuková data. 
 
-Sloupec `SuggestedQuestions` je objekt JSON s informacemi o implicitních, `autosuggested` a explicitní zpětné vazbě `usersuggested`. Příklad tohoto objektu JSON pro jednu otázku odeslanou uživatelem `help` je:
+`SuggestedQuestions` sloupec je objekt JSON s informacemi o implicitní, `autosuggested`a explicitní `usersuggested` zpětnou vazbu. Příkladem tohoto objektu JSON pro jednu otázku odeslanou uživatelem `help` je:
 
 ```JSON
 [

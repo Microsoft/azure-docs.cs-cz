@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: ab543ee8e379b89aaa9a1133bb75387ed9904002
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.date: 11/04/2019
+ms.openlocfilehash: 67ca6aa36166e8ae08bedec82441e45930976b80
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598400"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604003"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Monitorování výkonu Azure Database for MariaDB s využitím úložiště dotazů
 
 **Platí pro:** Azure Database for MariaDB 10,2
-
-> [!IMPORTANT]
-> Úložiště dotazů je ve verzi Preview.
 
 Funkce úložiště dotazů v Azure Database for MariaDB poskytuje způsob, jak sledovat výkon dotazů v čase. Úložiště dotazů zjednodušuje řešení potíží s výkonem tím, že vám pomůže rychle najít nejdelší běžící a většinu dotazů náročných na prostředky. Úložiště dotazů automaticky zachycuje historii dotazů a statistik za běhu a zachovává je pro vaši kontrolu. Odděluje data podle časových oken, takže můžete vidět vzory využití databáze. Data pro všechny uživatele, databáze a dotazy se ukládají do databáze schématu **MySQL** v instanci Azure Database for MariaDB.
 
@@ -175,9 +172,9 @@ Toto zobrazení vrátí data událostí čekání v úložišti dotazů. Pro ka�
 ## <a name="limitations-and-known-issues"></a>Omezení a známé problémy
 
 - Pokud má server MariaDB parametr `default_transaction_read_only` na, nemůže úložiště dotazů zachytit data.
-- Funkce úložiště dotazů se dá přerušit, pokud dojde k dlouhým dotazům v kódování Unicode (\> = 6000 bajtů).
+- Funkce úložiště dotazů se dá přerušit, pokud dojde k dlouhým dotazům v kódování Unicode (\>= 6000 bajtů).
 - Doba uchování pro statistiku čekání je 24 hodin.
-- Statistika čekání používá ukázkovou hodnotu ČŘ a zachycuje z nich zlomek událostí. Četnost lze upravit pomocí `query_store_wait_sampling_frequency` parametru.
+- Statistika čekání používá ukázkovou hodnotu ČŘ a zachycuje z nich zlomek událostí. Četnost lze upravit pomocí `query_store_wait_sampling_frequency`parametru.
 
 ## <a name="next-steps"></a>Další kroky
 
