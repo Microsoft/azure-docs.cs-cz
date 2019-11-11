@@ -1,7 +1,7 @@
 ---
 title: Co je služba Rozpoznávání formulářů?
 titleSuffix: Azure Cognitive Services
-description: Naučte se používat nástroj pro rozpoznávání formulářů k analýze dat formuláře a tabulky.
+description: Nástroj pro rozpoznávání formulářů Azure Cognitive Services umožňuje identifikovat a extrahovat páry klíč/hodnota a tabulková data z dokumentů formuláře.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: b07201556f08bde4ef8c7a7904c6619a126d7765
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 86e0494ded84e9711b2283ae5fad77ff626cf792
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594542"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904488"
 ---
 # <a name="what-is-form-recognizer"></a>Co je služba Rozpoznávání formulářů?
 
@@ -49,7 +49,7 @@ Vstupní požadavky pro model příjemky se mírně liší.
 * Rozměry PDF musí být maximálně 17 × 17 palců, které odpovídají zákonným nebo a3 velikosti papíru a menšímu.
 * Pro PDF a TIFF se zpracovávají jenom první 200 stránky (s předplatným úrovně Free, zpracovávají se jenom první dvě stránky).
 
-## <a name="request-access"></a>Vyžádat si přístup
+## <a name="request-access"></a>Vyžádání přístup
 
 Nástroj pro rozpoznávání formulářů je k dispozici ve verzi Preview s omezeným přístupem. Chcete-li získat přístup k verzi Preview, vyplňte a odešlete formulář [žádosti o přístup pro rozpoznávání formulářů](https://aka.ms/FormRecognizerRequestAccess) . Formulář požaduje informace o vás, vaší společnosti a scénáři uživatele, pro které budete používat nástroj pro rozpoznávání formulářů. Pokud je váš požadavek schválen týmem Azure Cognitive Services, obdržíte e-mail s pokyny pro přístup ke službě.
 
@@ -58,10 +58,10 @@ Nástroj pro rozpoznávání formulářů je k dispozici ve verzi Preview s omez
 **Krok 1:** Vytvořte prostředek pro rozpoznávání formulářů v Azure Portal.
 
 **Krok 2:** Postupujte podle rychlého startu a použijte REST API:
-* [Rychlé zprovoznění: Výuka modelu pro rozpoznávání formulářů a extrakce dat formuláře pomocí REST API s kudrlinkou](quickstarts/curl-train-extract.md)
-* [Rychlé zprovoznění: Výuka modelu pro rozpoznávání formulářů a extrakce dat formuláře pomocí REST API s Pythonem](quickstarts/python-train-extract.md)
-* [Rychlé zprovoznění: Extrakce dat příjmu pomocí oblé](quickstarts/curl-receipts.md)
-* [Rychlé zprovoznění: Extrakce dat příjmu pomocí Pythonu](quickstarts/python-receipts.md)
+* [Rychlý Start: výuka modelu pro rozpoznávání formulářů a extrakce dat formuláře pomocí REST API s kudrlinkou](quickstarts/curl-train-extract.md)
+* [Rychlý Start: výuka modelu pro rozpoznávání formulářů a extrakce dat formuláře pomocí REST API s Pythonem](quickstarts/python-train-extract.md)
+* [Rychlý Start: extrakce dat příjmu pomocí oblé](quickstarts/curl-receipts.md)
+* [Rychlý Start: extrakce údajů o příjemcích pomocí Pythonu](quickstarts/python-receipts.md)
 
 Při učení technologie doporučujeme používat bezplatnou službu. Mějte na paměti, že počet bezplatných stránek je omezený na 500 za měsíc.
 
@@ -81,6 +81,6 @@ Další informace najdete v [referenční dokumentaci k REST API](https://aka.ms
 
 Tato služba se nabízí jako [verze Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) služby Azure pod [podmínkami online služby](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31). Stejně jako u všech služeb rozpoznávání by měli vývojáři, kteří používají službu pro rozpoznávání formulářů, znát zásady Microsoftu u zákaznických dat. Další informace najdete na [stránce Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) v centru zabezpečení Microsoftu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Dokončete [rychlý Start](quickstarts/curl-train-extract.md) , abyste mohli začít s [rozhraními API pro rozpoznávání formulářů](https://aka.ms/form-recognizer/api).

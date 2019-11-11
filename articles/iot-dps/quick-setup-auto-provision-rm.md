@@ -1,22 +1,22 @@
 ---
-title: Nastavení služby Device Provisioning pomocí šablony Azure Resource Manageru | Microsoft Docs
+title: 'Rychlý Start: nastavení zřizování zařízení pomocí šablony Azure Resource Manager'
 description: Rychlý start Azure – Nastavení služby Azure IoT Hub Device Provisioning pomocí šablony
 author: wesmc7777
 ms.author: wesmc
-ms.date: 06/18/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3360bfa7eed15f72fb78f698e837d887e9c8aa85
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: fdc75424c5c99e80c13ac086229da93411e3ce83
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126473"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903363"
 ---
-# <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Nastavení služby IoT Hub Device Provisioning pomocí šablony Azure Resource Manageru
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Rychlý Start: nastavení IoT Hub Device Provisioning Service pomocí šablony Azure Resource Manager
 
 Pomocí [Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) můžete prostřednictvím kódu programu nastavit cloudové prostředky Azure potřebné ke zřizování zařízení. Tyto kroky ukazují, jak vytvořit centrum IoT, novou službu IoT Hub Device Provisioning a vzájemně tyto dvě služby propojit pomocí šablony Azure Resource Manageru. V tomto rychlém startu se k provedení kroků potřebných k vytvoření skupiny prostředků a nasazení šablony používá [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli), ale můžete k tomu snadno použít i [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), .NET, Ruby nebo jiné programovací jazyky. 
 
@@ -39,7 +39,7 @@ Přihlaste se ke svému účtu Azure a vyberte své předplatné.
 
     Postupujte podle pokynů pro ověření pomocí kódu a přihlaste se ke svému účtu Azure ve webovém prohlížeči.
 
-2. Pokud máte více předplatných Azure, přihlášením k Azure získáte přístup ke všem účtům Azure přidruženým k vašim přihlašovacím údajům. Pomocí následujícího [příkazu zobrazte výpis účtů Azure][lnk-az-account-command], které můžete použít:
+2. Pokud máte více předplatných Azure, přihlášením k Azure získáte přístup ke všem účtům Azure přidruženým k vašim přihlašovacím údajům. Pomocí následujícího [příkazu můžete zobrazit seznam účtů Azure][lnk-az-account-command] , které jsou k dispozici pro použití:
     
     ```azurecli
     az account list 
@@ -51,7 +51,7 @@ Přihlaste se ke svému účtu Azure a vyberte své předplatné.
     az account set --subscription {your subscription name or id}
     ```
 
-3. Když vytváříte cloudové prostředky Azure, jako jsou centra IoT a služby zřizování, vytváříte je ve skupině prostředků. Použijte existující skupinu prostředků, nebo spusťte následující [příkaz pro vytvoření skupiny prostředků][lnk-az-resource-command]:
+3. Když vytváříte cloudové prostředky Azure, jako jsou centra IoT a služby zřizování, vytváříte je ve skupině prostředků. Buď použijte existující skupinu prostředků, nebo spusťte následující [příkaz pro vytvoření skupiny prostředků][lnk-az-resource-command]:
     
     ```azurecli
      az group create --name {your resource group name} --location westus
@@ -321,7 +321,7 @@ Pomocí následujících příkazů Azure CLI nasaďte své šablony a ověřte 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Další rychlé starty v této kolekci jsou postavené na tomto rychlém startu. Pokud chcete pokračovat v práci s dalšími rychlými starty nebo kurzy, nevyčišťujte prostředky vytvořené v rámci tohoto rychlého startu. Pokud pokračovat nechcete, můžete pomocí Azure CLI [odstranit jednotlivé prostředky][lnk-az-resource-command], jako je centrum IoT nebo služba zřizování, nebo odstranit skupinu prostředků a všechny její prostředky.
+Další rychlé starty v této kolekci jsou postavené na tomto rychlém startu. Pokud chcete pokračovat v práci s dalšími rychlými starty nebo kurzy, nevyčišťujte prostředky vytvořené v rámci tohoto rychlého startu. Pokud pokračovat nechcete, můžete pomocí Azure CLI [odstranit jednotlivý prostředek][lnk-az-resource-command], třeba Centrum IoT nebo službu zřizování, nebo odstranit skupinu prostředků a všechny její prostředky.
 
 Pokud chcete odstranit službu zřizování, spusťte následující příkaz:
 
@@ -342,7 +342,7 @@ az group delete --name {your resource group name}
 
 Skupiny prostředků i jednotlivé prostředky můžete odstranit také pomocí webu Azure Portal, PowerShellu nebo rozhraní REST API nebo podporovaných sad SDK platformy pro Azure Resource Manager nebo službu IoT Hub Device Provisioning.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste nasadili centrum IoT a instanci služby Device Provisioning a propojili jste tyto dva prostředky. Pokud chcete zjistit, jak pomocí tohoto nastavení zřídit simulované zařízení, pokračujte k rychlému startu pro vytvoření simulovaného zařízení.
 

@@ -1,23 +1,23 @@
 ---
-title: Registrace zařízení X.509 do služby Azure Device Provisioning Service pomocí Javy | Microsoft Docs
+title: 'Rychlý Start: registrace zařízení X. 509 do služby Azure Device Provisioning pomocí jazyka Java'
 description: V tomto rychlém startu se používají skupinové i jednotlivé registrace. V tomto rychlém startu zaregistrujete zařízení X.509 do služby Azure IoT Hub Device Provisioning pomocí Javy.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 12/20/2017
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 3eec6628ca7dbc16e0cc01701620f1699ba8d368
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 8a1accf232b022bc3028f91d2151c00b98969f1f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126524"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904768"
 ---
-# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning pomocí Javy
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning Service pomocí Javy
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
@@ -58,7 +58,7 @@ Následující kroky ukazují, jak do vzorového kódu přidat podrobnosti o zř
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
     ```
 
-2. Ve staženém zdrojovém kódu přejděte do složky s ukázkou **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_**. Otevřete soubor **_/src/main/java/samples/com/microsoft/azure/sdk/iot/ServiceEnrollmentGroupSample.java_** v libovolném editoru a přidejte následující podrobnosti:
+2. Ve staženém zdrojovém kódu přejděte do složky s ukázkou **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_** . Otevřete soubor **_/src/main/java/samples/com/microsoft/azure/sdk/iot/ServiceEnrollmentGroupSample.java_** v libovolném editoru a přidejte následující podrobnosti:
 
     1. Následujícím způsobem přidejte `[Provisioning Connection String]` pro vaši službu zřizování z portálu:
         1. Přejděte k vaší službě zřizování na webu [Azure Portal](https://portal.azure.com). 
@@ -74,7 +74,7 @@ Následující kroky ukazují, jak do vzorového kódu přidat podrobnosti o zř
             ```
 
     2. Přidejte kořenový certifikát pro skupinu zařízení. Pokud potřebujete ukázkový kořenový certifikát, použijte nástroj _Generátor certifikátů X.509_ následujícím způsobem:
-        1. V příkazovém okně přejděte do složky **_azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator_**.
+        1. V příkazovém okně přejděte do složky **_azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator_** .
         2. Sestavte nástroj spuštěním následujícího příkazu:
 
                 ```cmd\sh
@@ -90,7 +90,7 @@ Následující kroky ukazují, jak do vzorového kódu přidat podrobnosti o zř
 
         5. Po zobrazení výzvy můžete volitelně zadat _běžný název_ pro vaše certifikáty.
         6. Tento nástroj místně vygeneruje **Klientský certifikát** (Client Cert), **Privátní klíč klientského certifikátu** (Client Cert Private Key) a **Kořenový certifikát** (Root Cert).
-        7. Zkopírujte **kořenový certifikát** včetně řádků **_-----BEGIN CERTIFICATE-----_** a **_-----END CERTIFICATE-----_**. 
+        7. Zkopírujte **kořenový certifikát** včetně řádků **_-----BEGIN CERTIFICATE-----_** a **_-----END CERTIFICATE-----_** . 
         8. Přiřaďte hodnotu **kořenového certifikátu** k parametru **PUBLIC_KEY_CERTIFICATE_STRING**, jak je znázorněno níže:
 
                 ```Java
@@ -109,7 +109,7 @@ Následující kroky ukazují, jak do vzorového kódu přidat podrobnosti o zř
                         "-----END CERTIFICATE-----\n";
                 ```
 
-        9. Zavřete příkazové okno nebo po zobrazení výzvy k zadání *ověřovacího kódu* zadejte **n**. 
+        9. Zavřete příkazové okno nebo po zobrazení výzvy k zadání **ověřovacího kódu** zadejte *n*. 
  
     3. Volitelně můžete svou službu zřizování nakonfigurovat pomocí vzorového kódu:
         - Pokud chcete do ukázky přidat tuto konfiguraci, postupujte následovně:
@@ -142,7 +142,7 @@ Následující kroky ukazují, jak do vzorového kódu přidat podrobnosti o zř
 
 ## <a name="build-and-run-sample-group-enrollment"></a>Sestavení a spuštění ukázkové skupinové registrace
 
-1. Otevřete příkazové okno a přejděte do složky **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_**.
+1. Otevřete příkazové okno a přejděte do složky **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_** .
 
 2. Sestavte vzorový kód pomocí tohoto příkazu:
 
@@ -199,7 +199,7 @@ Pokud chcete zaregistrovat jediné zařízení X.509, upravte následujícím zp
     Attestation attestation = X509Attestation.createFromClientCertificates(PUBLIC_KEY_CERTIFICATE_STRING);
     ```
 
-4. Pomocí postupu v části [Sestavení a spuštění vzorového kódu pro jednotlivou registraci](quick-enroll-device-tpm-java.md#runjavasample) uložte, sestavte a spusťte soubor s ukázkou *jednotlivé registrace*.
+4. Pomocí postupu v části *Sestavení a spuštění vzorového kódu pro jednotlivou registraci* uložte, sestavte a spusťte soubor s ukázkou [jednotlivé registrace](quick-enroll-device-tpm-java.md#runjavasample).
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -207,9 +207,9 @@ Pokud chcete prozkoumat ukázku služby v Javě, neprovádějte čištění pros
 
 1. Zavřete na svém počítači okno výstupu ukázky v Javě.
 1. Zavřete na svém počítači okno _Generátoru certifikátů X.509_.
-1. Přejděte k vaší službě Device Provisioning na webu Azure Portal, klikněte na **Správa registrací** a pak vyberte kartu **Skupiny registrací**. Vyberte *NÁZEV SKUPINY* pro zařízení X.509, která jste zaregistrovali v rámci tohoto rychlého startu, a klikněte na tlačítko **Odstranit** v horní části okna.  
+1. V Azure Portal přejděte na svou službu Device Provisioning, klikněte na **Správa**registrací a pak vyberte kartu **skupiny** registrací. Vyberte *název skupiny* pro zařízení X. 509, které jste zaregistrovali v rámci tohoto rychlého startu, a klikněte na tlačítko **Odstranit** v horní části okna.  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto rychlém startu jste do své služby Device Provisioning zaregistrovali skupinu simulovaných zařízení X.509. Pokud se chcete se zřizováním zařízení seznámit podrobněji, pokračujte ke kurzu nastavení služby Device Provisioning na webu Azure Portal. 
 
 > [!div class="nextstepaction"]

@@ -1,23 +1,23 @@
 ---
-title: Registrace zařízení TPM do služby Azure Device Provisioning pomocí jazyka C# | Microsoft Docs
+title: 'Rychlý Start: registrace zařízení TPM do služby Azure Device Provisioning pomocíC#'
 description: Rychlý Start Azure – registrace zařízení TPM do Azure IoT Hub Device Provisioning Service C# pomocí sady SDK služby V tomto rychlém startu se používají jednotlivé registrace.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 01/16/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: dcb9d2000ff9432f4360dab7f7df28b5b32482bf
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 70f9c9d2ec488854a1b386b872f10e4f54c45a1c
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035736"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904734"
 ---
-# <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Registrace zařízení TPM do služby IoT Hub Device Provisioning pomocí sady SDK služby pro jazyk C#
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Rychlý Start: registrace zařízení TPM pro IoT Hub Device Provisioning Service C# pomocí sady SDK služby
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
@@ -64,14 +64,14 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core, která
 
    Tento krok stáhne a nainstaluje balíček NuGet [klientské sady SDK služby zřizování pro Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) a jeho závislosti a přidá se na něj odkaz.
 
-1. Přidejte následující `using` příkazy za další `using` příkazy v horní části `Program.cs`:
+1. Po ostatních příkazech `using` na začátku `Program.cs`přidejte následující příkazy `using`:
   
    ```csharp
    using System.Threading.Tasks;
    using Microsoft.Azure.Devices.Provisioning.Service;
    ```
 
-1. Přidejte do `Program` třídy následující pole a proveďte uvedené změny.
+1. Přidejte následující pole do třídy `Program` a proveďte uvedené změny.
 
    ```csharp
    private static string ProvisioningConnectionString = "{Your provisioning service connection string}";
@@ -88,13 +88,13 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core, která
    private const ProvisioningStatus OptionalProvisioningStatus = ProvisioningStatus.Enabled;
    ```
 
-   * Nahraďte `ProvisioningConnectionString` hodnotu zástupného symbolu připojovacím řetězcem služby zřizování, pro kterou chcete vytvořit registraci.
+   * Nahraďte hodnotu zástupného symbolu `ProvisioningConnectionString` připojovacím řetězcem služby zřizování, pro kterou chcete vytvořit registraci.
 
    * Volitelně můžete změnit ID registrace, ověřovací klíč, ID zařízení i stav zřizování.
 
-   * Pokud používáte tento rychlý Start společně s [vytvořením a zřízení simulovaného zařízení TPM pomocí C# sady SDK pro zařízení](quick-create-simulated-device-tpm-csharp.md) . rychlý Start k zřízení simulovaného zařízení, nahraďte ověřovací klíč a ID registrace hodnotami, které jste si poznamenali v této části. rychlý Start. ID zařízení můžete nahradit hodnotou navrhovanou v tomto rychlém startu, použít vlastní hodnotu nebo použít výchozí hodnotu v této ukázce.
+   * Pokud používáte tento rychlý Start společně s [vytvořením a zřízení simulovaného zařízení TPM pomocí C# sady SDK pro zařízení](quick-create-simulated-device-tpm-csharp.md) . rychlý Start k zřízení simulovaného zařízení, nahraďte ověřovací klíč a ID registrace hodnotami, které jste si poznamenali v tomto rychlém startu. ID zařízení můžete nahradit hodnotou navrhovanou v tomto rychlém startu, použít vlastní hodnotu nebo použít výchozí hodnotu v této ukázce.
 
-1. Do `Program` třídy přidejte následující metodu.  Tento kód vytvoří jednotlivou položku registrace a pak zavolá `CreateOrUpdateIndividualEnrollmentAsync` metodu `ProvisioningServiceClient` pro přidání jednotlivé registrace do služby zřizování.
+1. Přidejte následující metodu do třídy `Program`.  Tento kód vytvoří jednotlivou položku registrace a pak zavolá metodu `CreateOrUpdateIndividualEnrollmentAsync` v `ProvisioningServiceClient` a přidá jednotlivé registrace do služby zřizování.
 
    ```csharp
    public static async Task RunSample()
@@ -129,7 +129,7 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core, která
    }
    ```
 
-1. Nakonec nahraďte tělo `Main` metody následujícími řádky:
+1. Nakonec nahraďte text metody `Main` následujícími řádky:
 
    ```csharp
    RunSample().GetAwaiter().GetResult();

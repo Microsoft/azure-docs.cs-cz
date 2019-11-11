@@ -1,23 +1,23 @@
 ---
-title: Registrace zařízení X.509 do služby Azure Device Provisioning Service pomocí C# | Microsoft Docs
+title: 'Rychlý Start: jak zaregistrovat zařízení X. 509 do služby Azure Device Provisioning pomocíC#'
 description: V tomto rychlém startu se používají skupinové registrace. V tomto rychlém startu zaregistrujete zařízení X. 509 do Azure IoT Hub Device Provisioning Service C#pomocí.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 15bce340b257b5c221192a6ace5c5f0eac30f85a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: e43448337f787115c479f2f53ca57b7a20120108
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036015"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903437"
 ---
-# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Rychlý start: Registrace zařízení X. 509 do služby Device Provisioning pomocíC#
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning Service pomocí C#
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
@@ -92,7 +92,7 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core, která
 
    Tento krok stáhne a nainstaluje balíček NuGet [klientské sady SDK služby zřizování pro Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) a jeho závislosti a přidá se na něj odkaz.
 
-1. Přidejte následující `using` příkazy za další `using` příkazy v horní části `Program.cs`:
+1. Po ostatních příkazech `using` na začátku `Program.cs`přidejte následující příkazy `using`:
 
    ```csharp
    using System.Security.Cryptography.X509Certificates;
@@ -100,7 +100,7 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core, která
    using Microsoft.Azure.Devices.Provisioning.Service;
    ```
 
-1. Přidejte do `Program` třídy následující pole a proveďte uvedené změny.  
+1. Přidejte následující pole do třídy `Program` a proveďte uvedené změny.  
 
    ```csharp
    private static string ProvisioningConnectionString = "{Your provisioning service connection string}";
@@ -108,11 +108,11 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core, která
    private static string X509RootCertPath = @"{Path to a .cer or .pem file for a verified root CA or intermediate CA X.509 certificate}";
    ```
 
-   * Nahraďte `ProvisioningConnectionString` hodnotu zástupného symbolu připojovacím řetězcem služby zřizování, pro kterou chcete vytvořit registraci.
+   * Nahraďte hodnotu zástupného symbolu `ProvisioningConnectionString` připojovacím řetězcem služby zřizování, pro kterou chcete vytvořit registraci.
 
-   * Nahraďte `X509RootCertPath` hodnotu zástupného symbolu cestou k souboru. pem nebo. cer. Tento soubor představuje veřejnou část certifikátu X. 509 zprostředkujícího nebo kořenového certifikačního úřadu, který se dřív nahrál a ověřil pomocí vaší služby zřizování.
+   * Nahraďte hodnotu zástupného symbolu `X509RootCertPath` cestou k souboru. pem nebo. cer. Tento soubor představuje veřejnou část certifikátu X. 509 zprostředkujícího nebo kořenového certifikačního úřadu, který se dřív nahrál a ověřil pomocí vaší služby zřizování.
 
-   * Volitelně můžete změnit `EnrollmentGroupId` hodnotu. Řetězec může obsahovat pouze malá písmena a pomlčky.
+   * Případně můžete změnit hodnotu `EnrollmentGroupId`. Řetězec může obsahovat pouze malá písmena a pomlčky.
 
    > [!IMPORTANT]
    > V případě produkčního kódu mějte na paměti následující aspekty zabezpečení:
@@ -120,7 +120,7 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core, která
    > * Uložení připojovacího řetězce pro správce služby zřizování v kódu je v rozporu s osvědčenými postupy zabezpečení. Místo toho by se měl připojovací řetězec uchovávat zabezpečeným způsobem, například v zabezpečeném konfiguračním souboru nebo v registru.
    > * Nezapomeňte nahrát pouze veřejnou část podpisového certifikátu. Nikdy nenahrávejte soubory .pfx (PKCS12) ani .pem obsahující privátní klíče ke službě zřizování.
 
-1. Do `Program` třídy přidejte následující metodu. Tento kód vytvoří položku skupiny registrací a pak zavolá `CreateOrUpdateEnrollmentGroupAsync` `ProvisioningServiceClient` metodu pro přidání skupiny registrací do služby zřizování.
+1. Přidejte následující metodu do třídy `Program`. Tento kód vytvoří položku skupiny registrací a potom zavolá metodu `CreateOrUpdateEnrollmentGroupAsync` v `ProvisioningServiceClient`, aby přidala skupinu registrací do služby zřizování.
 
    ```csharp
    public static async Task RunSample()
@@ -156,7 +156,7 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core, která
    }
    ```
 
-1. Nakonec nahraďte tělo `Main` metody následujícími řádky:
+1. Nakonec nahraďte text metody `Main` následujícími řádky:
 
    ```csharp
    RunSample().GetAwaiter().GetResult();

@@ -1,6 +1,6 @@
 ---
-title: Vytvoření vlákna bezpečnostního modulu pro Azure Security Center pro IoT | Microsoft Docs
-description: Naučte se vytvářet Azure Security Center pro práci s modulem IoT pro použití s Azure Security Center pro IoT.
+title: 'Rychlý Start: vytvoření vlákna bezpečnostního modulu pro Azure Security Center pro IoT'
+description: V tomto rychlém startu se dozvíte, jak vytvořit Azure Security Center pro práci s modulem IoT pro použití s Azure Security Center for IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 92bf79aa5ae55bad16d68a26dc13d292285a4d46
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b362130c2b717f813a6332f81a3c8179bea4166a
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597072"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904169"
 ---
-# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Rychlý start: Vytvoření vlákna modulu azureiotsecurity
+# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Rychlý Start: vytvoření vlákna modulu azureiotsecurity
 
 V tomto rychlém startu se dozvíte, jak vytvořit jednotlivé _azureiotsecurityy_ modulu pro nová zařízení a vytvořit z něj vlákna pro všechna zařízení v IoT Hub.  
 
@@ -35,7 +35,7 @@ Azure Security Center pro integraci IoT se dosahuje tím, že využívá mechani
 
 Další informace o obecném konceptu vláken v modulech Azure IoT Hub najdete v tématu [vlákna IoT Hubch modulů](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) . 
  
-Azure Security Center pro IoT využívá modul s dvojitou zátěží a udržuje v modulu zabezpečení pro každé  vaše zařízení dvojitou azureiotsecurityi.
+Azure Security Center pro IoT využívá modul s dvojitou zátěží a udržuje v modulu zabezpečení pro každé vaše zařízení dvojitou _azureiotsecurityi_ .
 
 Modul zabezpečení obsahuje všechny informace týkající se zabezpečení zařízení pro každé vaše zařízení. 
  
@@ -58,7 +58,7 @@ K ručnímu vytvoření nového vlákna modulu _azureiotsecurity_ pro zařízen�
 1. Klikněte na své zařízení a pak na **Přidat identitu modulu**.
 1. Do pole **název identity modulu** zadejte **azureiotsecurity**.
 
-1. Klikněte na **Uložit**. 
+1. Klikněte na možnost **Uložit**. 
 
 ## <a name="verify-creation-of-a-module-twin"></a>Ověření vytvoření vlákna modulu
 
@@ -66,10 +66,10 @@ Ověření, jestli pro konkrétní zařízení existuje nějaký modul zabezpeč
 
 1. V IoT Hub Azure vyberte v nabídce **průzkumníky** možnost **zařízení IoT** .    
 1. Zadejte ID zařízení nebo vyberte možnost v **poli dotazovací zařízení** a klikněte na **dotazovat zařízení**. 
-    ![Dotazování na zařízení](./media/quickstart/verify-security-module-twin.png)
+    ![dotazování na zařízení](./media/quickstart/verify-security-module-twin.png)
 1. Vyberte zařízení nebo dvakrát klikněte na něj a otevřete stránku s podrobnostmi o zařízení. 
 1. Vyberte nabídku **identity modulu** a v seznamu identit modulu přidružených k danému zařízení potvrďte existenci modulu **azureiotsecurity** . 
-    ![Moduly přidružené k zařízení](./media/quickstart/verify-security-module-twin-3.png)
+    ![moduly přidružené k zařízení](./media/quickstart/verify-security-module-twin-3.png)
 
 
 Další informace o přizpůsobení vlastností Azure Security Center pro vlákna modulu IoT najdete v tématu [Konfigurace agenta](how-to-agent-configuration.md).

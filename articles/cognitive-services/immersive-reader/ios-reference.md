@@ -1,7 +1,7 @@
 ---
 title: Referenční dokumentace sady moderní čtečky pro iOS
 titleSuffix: Azure Cognitive Services
-description: Referenční dokumentace pro sadu iOS SDK pro moderní čtečku
+description: Moderní čtečka SDK pro iOS je CocoaPod, která umožňuje integrovat moderní čtečku do vaší aplikace pro iOS.
 services: cognitive-services
 author: metanMSFT
 ms.service: cognitive-services
@@ -9,20 +9,20 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 08/01/2019
 ms.author: metan
-ms.openlocfilehash: 1f85740c358bd0949fed9c954537f0926538995d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 67d6b8c22c5635bd789078a7f91b02f8b07e5e70
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388118"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903128"
 ---
 # <a name="immersive-reader-sdk-reference-for-ios"></a>Referenční dokumentace sady pro moderní čtečku pro iOS
 
 Moderní čtečka SDK pro iOS je CocoaPod, která umožňuje integrovat moderní čtečku do vaší aplikace pro iOS.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkce
 
-Sada SDK zpřístupňuje jedinou funkci `launchImmersiveReader(navController, token, subdomain, content, options, onSuccess, onFailure)`.
+Sada SDK zpřístupňuje jednu funkci `launchImmersiveReader(navController, token, subdomain, content, options, onSuccess, onFailure)`.
 
 ### <a name="launchimmersivereader"></a>launchImmersiveReader
 
@@ -34,7 +34,7 @@ public func launchImmersiveReader(navController: UINavigationController, token: 
 
 #### <a name="parameters"></a>Parametry
 
-| Name (Název) | Typ | Popis |
+| Název | Typ | Popis |
 | ---- | ---- |------------ |
 | `navController` | UINavigationController | Navigační kontroler pro aplikaci iOS, ze které se volá funkce |
 | `token` | Řetězec | Ověřovací token Azure AD. Podívejte se na [postupy ověřování Azure AD](./azure-active-directory-authentication.md). |
@@ -44,7 +44,7 @@ public func launchImmersiveReader(navController: UINavigationController, token: 
 | `onSuccess` | ()-> void | Uzávěr, který je vyvolán při úspěšném spuštění moderního čtecího zařízení. |
 | `onFailure` | (chyba _: [Chyba](#error))-> void | Uzávěr, který je vyvolán, když se nepovede načíst moderní čtecí zařízení. Tento uzávěr vrátí objekt [`Error`](#error) , který představuje kód chyby a chybovou zprávu přidruženou k selhání. Další informace najdete v tématu [kódy chyb](#error-codes). |
 
-## <a name="types"></a>Druhy
+## <a name="types"></a>Typy
 
 ### <a name="content"></a>Obsah
 
@@ -62,7 +62,7 @@ struct Content: Encodable {
 | Typ MIME | Popis |
 | --------- | ----------- |
 | Text/prostý | Prostý text. |
-| Application/MathML + XML | Jazyk MathML (Matematická Markup Language). [Další informace](https://developer.mozilla.org/en-US/docs/Web/MathML).
+| Application/MathML + XML | Jazyk MathML (Matematická Markup Language). [Další informace](https://developer.mozilla.org/en-US/docs/Web/MathML)
 
 ### <a name="options"></a>Možnosti
 
@@ -90,8 +90,8 @@ struct Error {
 
 | Kód | Popis |
 | ---- | ----------- |
-| BadArgument | Zadaný argument je neplatný, podrobnosti naleznete `message`. |
-| prodlev | V rámci zadaného časového limitu se nepovedlo načíst moderní čtečku. |
+| BadArgument | Zadaný argument je neplatný, podrobnosti najdete v `message`. |
+| Prodlev | V rámci zadaného časového limitu se nepovedlo načíst moderní čtečku. |
 | TokenExpired | Platnost zadaného tokenu vypršela. |
 | Omezené | Překročilo se omezení četnosti volání. |
 | InternalError | Došlo k vnitřní chybě v rámci kontroleru zobrazení moderního čtečky. Podrobnosti najdete v tématu `message`.|

@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 7113914fe8681ca099fc0f3fc1e4a7d064c19480
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 22734d29973f0d7102307aa9038b6ebe7cc2521b
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000250"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903309"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Pochopení a používání sad SDK pro Azure IoT Hub
 
@@ -23,7 +23,7 @@ Pro práci s IoT Hub jsou k dispozici dvě kategorie sad SDK pro vývoj softwaru
 
 * Sady **SDK pro IoT Hub služby** umožňují vytvářet back-endové aplikace pro správu služby IoT Hub a volitelně odesílat zprávy, plánovat úlohy, volat přímé metody nebo odesílat požadované aktualizace vlastností zařízením nebo modulům IoT.
 
-Kromě toho poskytujeme také sadu sad SDK pro práci se [službou Device](../iot-dps/about-iot-dps.md)Provisioning.
+Kromě toho poskytujeme také sadu sad SDK pro práci se [službou Device Provisioning](../iot-dps/about-iot-dps.md).
 * **Zřizování sad SDK pro zařízení** vám umožní sestavovat aplikace, které běží na zařízeních IoT ke komunikaci se službou Device Provisioning.
 
 * Sady **SDK služby zřizování** umožňují vytvářet back-endové aplikace pro správu registrací ve službě Device Provisioning.
@@ -129,7 +129,7 @@ Sada Azure IoT Hub Service SDK pro iOS:
 
 ## <a name="microsoft-azure-provisioning-sdks"></a>Microsoft Azure zřizování sad SDK
 
-Sady **SDK pro Microsoft Azure zřizování** vám umožní zřídit zařízení pro IoT Hub pomocí [služby Device](../iot-dps/about-iot-dps.md)Provisioning.
+Sady **SDK pro Microsoft Azure zřizování** vám umožní zřídit zařízení pro IoT Hub pomocí [služby Device Provisioning](../iot-dps/about-iot-dps.md).
 
 Zřizování Azure pro zařízení a sady SDK pro C#služby pro:
 
@@ -160,11 +160,11 @@ Sady SDK pro zařízení a služby pro Python pro zřizování Azure:
 * [Zdrojový kód](https://github.com/Azure/azure-iot-device)
 * Stažení [sady SDK pro zařízení](https://pypi.org/project/azure-iot-device/) a [sady SDK služby](https://pypi.org/project/azure-iothub-provisioningserviceclient/) z PIP
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Sady SDK Azure IoT také poskytují sadu nástrojů, které vám pomůžou s vývojem:
 * [iothub-Diagnostics](https://github.com/Azure/iothub-diagnostics): nástroj příkazového řádku pro různé platformy, který vám umožní diagnostikovat problémy související s připojením IoT Hub.
-* [Device-Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer): aplikace klasické pracovní plochy systému Windows pro připojení k vašemu IoT Hub.
+* [Azure-IoT-Explorer](https://github.com/Azure/azure-iot-explorer): desktopová aplikace pro různé platformy pro připojení k vašemu IoT Hub a přidání/Správa/komunikace se zařízeními IoT.
 
 Relevantní dokumentace týkající se vývoje pomocí sad SDK služby Azure IoT:
 * Přečtěte si, [jak spravovat připojení a spolehlivé zasílání zpráv](iot-hub-reliability-features-in-sdks.md) pomocí sad IoT Hub SDK.

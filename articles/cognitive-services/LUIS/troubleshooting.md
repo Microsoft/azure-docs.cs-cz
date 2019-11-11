@@ -9,20 +9,20 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 6a17993d7bc4ff54b3d55fa5b5bb141463896e32
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5824b835b3debb33386c0d1f86581c6bb91b14ae
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488696"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904199"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Nejčastější dotazy Language Understanding
 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Language Understanding (LUIS).
 
-## <a name="whats-new"></a>Novinky
+## <a name="whats-new"></a>Co je nového
 
 [Přečtěte si další](whats-new.md) informace o tom, co je nového v Language Understanding.
 
@@ -74,7 +74,7 @@ Na portálu LUIS můžete označit text pro přesně entitu, které vás zajím�
 
 ### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Pokusili jste se importovat soubor aplikace nebo verze, ale zobrazila se chyba, co se stalo? 
 
-Přečtěte si další informace o [chybách importu verzí](luis-how-to-manage-versions.md#import-errors) a [chybách importu aplikací](luis-how-to-start-new-app.md#import-errors).
+Přečtěte si další informace o [chybách importu verzí](luis-how-to-manage-versions.md#import-errors).
 
 <a name="luis-collaborating"></a>
 
@@ -113,7 +113,7 @@ Mezi řešení patří:
 * Pokud vaše využití přesáhne nejvyšší cenovou úroveň, přidejte další Language Understanding prostředky s nástrojem pro vyrovnávání zatížení před nimi. K tomu může pomáhat [kontejner Language Understanding](luis-container-howto.md) s Kubernetes nebo Docker Compose.
 * Pomocí [zásady opakování](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) , kterou sami implementujete, můžete své požadavky na klientskou aplikaci vymezit tak, že se zobrazí tento stavový kód. 
 
-### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Dotaz na koncový bod vrátil neočekávané výsledky. Co mám dělat?
+### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Dotaz na koncový bod vrátil neočekávané výsledky. Co bych měl/a dělat?
 
 Neočekávané výsledky předpovědi dotazu jsou založené na stavu publikovaného modelu. Pokud chcete model opravit, možná budete muset model, vlak a publikování znovu změnit. 
 
@@ -158,11 +158,11 @@ Viz [zabezpečení koncového bodu](luis-concept-keys.md#securing-the-endpoint).
 ### <a name="what-is-the-maximum-number-of-intents-and-entities-that-a-luis-app-can-support"></a>Jaký je maximální počet záměrů a entit, které může aplikace LUIS podporovat?
 Podívejte se na odkaz [hranice](luis-boundaries.md) .
 
-### <a name="i-want-to-build-a-luis-app-with-more-than-the-maximum-number-of-intents-what-should-i-do"></a>Chci vytvořit aplikaci LUIS s více než maximálním počtem záměrů. Co mám dělat?
+### <a name="i-want-to-build-a-luis-app-with-more-than-the-maximum-number-of-intents-what-should-i-do"></a>Chci vytvořit aplikaci LUIS s více než maximálním počtem záměrů. Co bych měl/a dělat?
 
 Podívejte se [na osvědčené postupy pro záměry](luis-concept-intent.md#if-you-need-more-than-the-maximum-number-of-intents).
 
-### <a name="i-want-to-build-an-app-in-luis-with-more-than-the-maximum-number-of-entities-what-should-i-do"></a>Chci v LUIS vytvořit aplikaci s více než maximálním počtem entit. Co mám dělat?
+### <a name="i-want-to-build-an-app-in-luis-with-more-than-the-maximum-number-of-entities-what-should-i-do"></a>Chci v LUIS vytvořit aplikaci s více než maximálním počtem entit. Co bych měl/a dělat?
 
 Zobrazit [osvědčené postupy pro entity](luis-concept-entity-types.md#if-you-need-more-than-the-maximum-number-of-entities)
 
@@ -264,7 +264,7 @@ Váš kód pro vytváření/počáteční klíč je povolený jenom 1000 dotazov
 
 ## <a name="bots"></a>Roboti
 
-### <a name="my-luis-bot-isnt-working-what-do-i-do"></a>LUIS robot nepracuje. Co mám dělat?
+### <a name="my-luis-bot-isnt-working-what-do-i-do"></a>LUIS robot nepracuje. Co mám udělat?
 
 Prvním problémem je izolovat, jestli problém souvisí s LUIS nebo nastane mimo middleware LUIS. 
 

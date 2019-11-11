@@ -1,6 +1,6 @@
 ---
-title: Vytváření vlastních výstrah pro Azure Security Center pro IoT | Microsoft Docs
-description: Vytvořte a přiřaďte vlastní výstrahy zařízení pro Azure Security Center pro IoT.
+title: 'Rychlý Start: vytvoření vlastních výstrah pro Azure Security Center pro IoT'
+description: V tomto rychlém startu vytvoříte a přiřadíte vlastní výstrahy zařízení Azure Security Center pro IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: ed10cbf89f878f8d27b43476d26ac93dd373ed66
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: eca5d69efb04cf8210b0b2aa502bcee5cd4f5264
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597002"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904123"
 ---
-# <a name="quickstart-create-custom-alerts"></a>Rychlý start: Vytváření vlastních výstrah
+# <a name="quickstart-create-custom-alerts"></a>Rychlý Start: vytvoření vlastních výstrah
 
 
 Pomocí vlastních skupin zabezpečení a výstrah aplikace plně využívá kompletní informace o zabezpečení a znalosti zařízení kategorií, aby bylo zajištěno lepší zabezpečení v rámci řešení IoT. 
@@ -39,7 +39,7 @@ Skupiny zabezpečení umožňují definovat logické skupiny zařízení a sprav
 
 Tyto skupiny můžou představovat zařízení s konkrétním hardwarem, zařízeními nasazenými v určitém umístění nebo v jakékoli jiné skupině vhodné pro vaše konkrétní potřeby.
 
-Skupiny zabezpečení jsou definovány pomocí vlastnosti značky zařízení s názvem **Security**. Ve výchozím nastavení má každé řešení IoT na IoT Hub jednu skupinu zabezpečení s názvem **Default**. Změňte hodnotu vlastnosti Securitycollection  , aby se změnila skupina zabezpečení zařízení.
+Skupiny zabezpečení jsou definovány pomocí vlastnosti značky zařízení s názvem **Security**. Ve výchozím nastavení má každé řešení IoT na IoT Hub jednu skupinu zabezpečení s názvem **Default**. Změňte hodnotu vlastnosti **securitycollection** , aby se změnila skupina zabezpečení zařízení.
  
 Příklad:
 
@@ -82,7 +82,7 @@ Skupiny zabezpečení použijte k seskupení zařízení do logických kategori�
 Následující tabulka poskytuje souhrn výstrah dostupných pro přizpůsobení.
 
 
-| severity | Name | Zdroj dat | Popis | Navrhovaná náprava|
+| Severity | Název | Zdroj dat | Popis | Navrhovaná náprava|
 |---|---|---|---|---|
 | Nízká      | Vlastní upozornění – počet zpráv v cloudu na zařízení v protokolu AMQP je mimo povolený rozsah.          | IoT Hub     | Počet zpráv z cloudu na zařízení (AMQP Protocol) v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah.||
 | Nízká      | Vlastní upozornění – počet odmítnutých zpráv v cloudu na zařízení v protokolu AMQP je mimo povolený rozsah. | IoT Hub     | Počet zpráv z cloudu na zařízení (Protokol AMQP) zamítnutý zařízením v rámci určitého časového období je mimo aktuálně nakonfigurovaný a povolený rozsah.||
@@ -106,7 +106,7 @@ Následující tabulka poskytuje souhrn výstrah dostupných pro přizpůsobení
 |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V dalším článku se dozvíte, jak nasadit agenta zabezpečení...
 

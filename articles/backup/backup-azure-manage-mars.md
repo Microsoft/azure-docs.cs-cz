@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: 88a914a2a4d3d62918b01674d6d21f2f011e2c2e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 049b09f7927da2cc841130a0adeaa90768037db8
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834305"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903219"
 ---
 # <a name="manage-microsoft-azure-recovery-services-agent-backups-by-using-the-azure-backup-service"></a>Správa záloh agenta Microsoft Azure Recovery Services pomocí služby Azure Backup
 
@@ -62,7 +62,7 @@ Vytvořte zásadu následujícím způsobem:
             -Zálohy provedené v sobotu v posledním týdnu v měsíci s půlnocí a 6:00 PM se uchovávají po dobu 12 měsíců.
             -Zálohy provedené na sobotu v minulém týdnu v březnu se uchovávají po dobu 10 let.
 
-           ![Retention example](./media/backup-configure-vault/retention-example.png)
+    ![Příklad uchování](./media/backup-configure-vault/retention-example.png)
 
 11. V části **zvolit typ prvotní zálohy** rozhodněte, jestli chcete provést prvotní zálohování přes síť, nebo použít offline zálohování (Další informace o offline zálohování najdete v tomto [článku](backup-azure-backup-import-export.md)). Chcete-li provést prvotní zálohování sítě, vyberte možnost **automaticky přes síť** a klikněte na tlačítko **Další**.
 
@@ -165,7 +165,7 @@ Existují dva způsoby, jak zabránit ochraně zálohování souborů a složek:
     ![upravit nebo zastavit naplánované zálohování.](./media/backup-azure-manage-mars/mars-actions.png)
 1. Na stránce **Vybrat položku zásady** vyberte možnost **Upravit plán zálohování pro soubory a složky** klikněte na **Další**.
     ![upravit nebo zastavit naplánované zálohování.](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
-1. Na stránce **změnit nebo zastavit naplánované zálohování** vyberte možnost **Zastavit používání tohoto plánu zálohování, ale uložte uložené zálohy do doby, kdy bude plán znovu aktivován**. Pak vyberte **Next** (Další).  
+1. Na stránce **změnit nebo zastavit naplánované zálohování** vyberte možnost **zastavit použití tohoto plánu zálohování, ale uložte uložené zálohy, dokud nebude plán znovu aktivován**. Pak vyberte **Next** (Další).  
     ![upravit nebo zastavit naplánované zálohování.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
 1. V části **pozastavit naplánované zálohování** zkontrolujte informace kliknutím na **Dokončit** ![upravit nebo zastavit naplánované zálohování.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
 1. v nástroji **upravit proces zálohování** ověřte úspěšnost stavu pozastavení zálohování a klikněte na tlačítko **Zavřít** a dokončete akci.

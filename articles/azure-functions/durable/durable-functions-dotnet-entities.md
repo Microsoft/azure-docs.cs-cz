@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: a59e5443c80c9372f646edfdae2261157a41acc9
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: d854f41ffc883b40f9159a7dacdde0fb3bb7240f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614891"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904063"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>Příručka pro vývojáře k odolným entitám v .NET
 
@@ -117,7 +117,7 @@ Můžete například upravit entitu čítače, aby spustila orchestraci, když p
 
 ## <a name="accessing-entities-directly"></a>Přímý přístup k entitám
 
-K entitám založeným na třídě lze získat přímý pøístup pomocí explicitních řetězcových názvů pro entitu a její operace. Níže uvádíme několik příkladů; Podrobnější vysvětlení základních konceptů (jako jsou signály vs. volání) najdete v diskuzi v tématu věnovaném [přístupu k entitám](durable-functions-entities.md#accessing-entities). 
+K entitám založeným na třídě lze získat přímý pøístup pomocí explicitních řetězcových názvů pro entitu a její operace. Níže uvádíme několik příkladů; Podrobnější vysvětlení základních konceptů (jako jsou signály vs. volání) najdete v tématu diskuze v části věnované [přístupu](durable-functions-entities.md#access-entities). 
 
 > [!NOTE]
 > Pokud je to možné, doporučujeme přistoupit [k entitám prostřednictvím rozhraní](#accessing-entities-through-interfaces), protože poskytuje další kontrolu typu.

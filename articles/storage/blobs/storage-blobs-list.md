@@ -1,23 +1,25 @@
 ---
 title: Výpis objektů BLOB pomocí .NET-Azure Storage
-description: Přečtěte si, jak vypsat objekty BLOB v kontejneru ve vašem Azure Storage účtu pomocí klientské knihovny .NET.
+description: Přečtěte si, jak vypsat objekty BLOB v kontejneru ve vašem Azure Storage účtu pomocí klientské knihovny .NET. Příklady kódu ukazují, jak zobrazit seznam objektů BLOB v nestrukturovaném seznamu nebo jak zobrazit seznam objektů BLOB hierarchicky, jako kdyby byly uspořádány do adresářů nebo složek.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: bf9d2d59e993de3807a10a6c39f88b2063024bfc
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4b6dc9d80cfe96e501e575d265b9fa383b1c4d2c
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72599926"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73902003"
 ---
 # <a name="list-blobs-with-net"></a>Výpis objektů BLOB pomocí .NET
 
-Při výpisu objektů BLOB z kódu můžete zadat několik možností pro správu způsobu, jakým jsou vráceny výsledky z Azure Storage. Tento článek ukazuje, jak zobrazit seznam objektů BLOB pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage/client).  
+Při výpisu objektů BLOB z kódu můžete zadat několik možností pro správu způsobu, jakým jsou vráceny výsledky z Azure Storage. Můžete zadat počet výsledků, které se mají vrátit v každé sadě výsledků, a pak načíst následné sady. Můžete zadat předponu pro návrat objektů blob, jejichž názvy začínají daným znakem nebo řetězcem. A můžete vytvořit seznam objektů BLOB ve strukturách s plochým výpisem nebo hierarchicky. Hierarchický výpis vrátí objekty blob, jako kdyby byly uspořádány do složek. 
+
+Tento článek ukazuje, jak zobrazit seznam objektů BLOB pomocí [klientské knihovny Azure Storage pro .NET](/dotnet/api/overview/azure/storage/client).  
 
 ## <a name="understand-blob-listing-options"></a>Vysvětlení možností výpisu objektů BLOB
 
@@ -53,7 +55,7 @@ Pokud chcete vracet metadata objektu BLOB s výsledky, zadejte hodnotu **metadat
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>Plochý výpis versus hierarchický výpis
 
-Objekty BLOB v Azure Storage jsou uspořádány do plochého paradigma, nikoli z hierarchického paradigmata (jako klasický systém souborů). Můžete však uspořádat objekty blob do *virtuálních adresářů* , aby bylo možné napodobovat hierarchické paradigma. Virtuální adresář je součástí názvu objektu blob, který je ohraničen znakem oddělovače.
+Objekty BLOB v Azure Storage jsou uspořádány do plochého paradigma, nikoli z hierarchického paradigmata (jako klasický systém souborů). Můžete ale uspořádat objekty blob do *virtuálních adresářů* , aby se napodobly struktuře složek. Virtuální adresář tvoří část názvu objektu BLOB a je označen znakem oddělovače.
 
 K uspořádání objektů blob do virtuálních adresářů použijte v názvu objektu BLOB znak oddělovače. Výchozím znakem oddělovače je lomítko (/), ale můžete zadat libovolný znak jako oddělovač.
 

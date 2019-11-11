@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 383cade6e8bb5f66aa240564912056ec345a1ee6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 83fd06078500be7b5bd58e9ea92d957f9d77f892
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500186"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904212"
 ---
 # <a name="language-and-region-support-for-luis"></a>Podpora jazyků a oblastí pro LUIS
 
@@ -206,4 +206,4 @@ Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersi
 
 K tokenizace dochází na úrovni aplikace. Neexistuje žádná podpora pro tokeny na úrovni verze. 
 
-[Importujte soubor jako novou aplikaci](luis-how-to-start-new-app.md#import-an-app-from-file)místo verze. Tato akce znamená, že nová aplikace má jiné ID aplikace, ale používá verzi provádějících tokenizaci zadanou v souboru. 
+[Importujte soubor jako novou aplikaci](luis-how-to-start-new-app.md)místo verze. Tato akce znamená, že nová aplikace má jiné ID aplikace, ale používá verzi provádějících tokenizaci zadanou v souboru. 

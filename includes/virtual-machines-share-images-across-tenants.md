@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: cf05468af17a4fafa7c81c7ad8bc89b3306a54af
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: f74d4cbc17e49345534a37e9e6612a36e19be295
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68286231"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903708"
 ---
-Galerie sdílených imagí vám umožňují sdílet Image pomocí RBAC. Ke sdílení imagí v rámci tenanta a dokonce i jednotlivcům mimo vašeho tenanta můžete použít RBAC. Pokud ale chcete sdílet image mimo vašeho tenanta Azure, měli byste při škálování vytvořit registraci aplikace, která usnadňuje sdílení.  Použití registrace aplikace může umožnit složitější scénáře sdílení, třeba: 
+Pokud ale chcete sdílet image mimo vašeho tenanta Azure, měli byste při škálování vytvořit registraci aplikace, která usnadňuje sdílení.  Použití registrace aplikace může umožnit složitější scénáře sdílení, třeba: 
 
 * Správa sdílených imagí, když jedna společnost získá jiný a infrastruktura Azure se rozprostře mezi samostatné klienty. 
 * Partneři Azure spravují jménem svých zákazníků infrastrukturu Azure. Přizpůsobení imagí se provádí v tenantovi partnerů, ale k nasazení infrastruktury dojde v tenantovi zákazníka. 
@@ -28,7 +28,7 @@ Vytvořte registraci aplikace, kterou budou používat oba klienti ke sdílení 
 1. V nabídce v horní části stránky vyberte **Nová registrace** .
 1. Do **název**zadejte *myGalleryApp*.
 1. V **podporovaných typech účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
-1. V seznamu **identifikátor URI**pro *https://www.microsoft.com* přesměrování zadejte a pak vyberte **Registrovat**. Po vytvoření registrace aplikace se otevře stránka s přehledem.
+1. Do příkazového **URI pro přesměrování**zadejte *https://www.microsoft.com* a pak vyberte **Registrovat**. Po vytvoření registrace aplikace se otevře stránka s přehledem.
 1. Na stránce Přehled zkopírujte **ID aplikace (klienta)** a uložte se pro použití později.   
 1. Vyberte **certifikáty & tajných**kódů a pak vyberte **nový tajný klíč klienta**.
 1. V **popisu**zadejte do *Galerie sdílených imagí cloudový klíč aplikace pro více tenantů*.
@@ -46,7 +46,7 @@ Udělte registraci aplikace oprávnění používat galerii sdílených imagí.
 
 ## <a name="give-tenant-2-access"></a>Udělit Tenantovi 2 přístup
 
-Udělte Tenantovi 2 přístup k aplikaci tím, že požádá o přihlášení pomocí prohlížeče. Nahraďte  *\<Tenant2 ID >* ID tenanta pro tenanta, se kterým chcete galerii imagí sdílet. Nahraďte  *\<ID aplikace (klienta) >* ID aplikace, kterou jste vytvořili pro registraci aplikace. Až změny dokončíte, vložte adresu URL do prohlížeče a postupujte podle výzev k přihlášení a přihlaste se ke klientovi 2.
+Udělte Tenantovi 2 přístup k aplikaci tím, že požádá o přihlášení pomocí prohlížeče. Nahraďte *\<TENANT2 id >* ID tenanta pro tenanta, se kterým chcete galerii imagí sdílet. Nahraďte *ID aplikace\<(klienta) >* ID aplikace, kterou jste vytvořili pro registraci aplikace. Až změny dokončíte, vložte adresu URL do prohlížeče a postupujte podle výzev k přihlášení a přihlaste se ke klientovi 2.
 
 ```
 https://login.microsoftonline.com/<Tenant 2 ID>/oauth2/authorize?client_id=<Application (client) ID>&response_type=code&redirect_uri=https%3A%2F%2Fwww.microsoft.com%2F 

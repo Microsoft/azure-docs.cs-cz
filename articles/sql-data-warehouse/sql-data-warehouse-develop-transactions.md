@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 09fc0f7cee38f799322a1914848a5176e9a223a1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 376b7b8a734e5064713237e9250542a4c5cc18f1
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692783"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903076"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>Použití transakcí v SQL Data Warehouse
 Tipy pro implementaci transakcí v Azure SQL Data Warehouse pro vývoj řešení.
@@ -78,7 +78,7 @@ Limit velikosti transakce je použit na transakci nebo operaci. Není aplikován
 Pokud chcete optimalizovat a minimalizovat množství dat zapsaných do protokolu, přečtěte si článek věnované [osvědčeným postupům pro transakce](sql-data-warehouse-develop-best-practices-transactions.md) .
 
 > [!WARNING]
-> Maximální velikost transakce lze dosáhnout pouze pro distribuované tabulky HASH nebo ROUND_ROBIN, kde je rozprostření dat sudé. Pokud transakce zapisuje data šikmým způsobem na rozdělení, je pravděpodobně dosaženo limitu před maximální velikostí transakce.
+> Maximální velikost transakce lze dosáhnout pouze pro hodnoty HASH nebo ROUND_ROBIN distribuované tabulky, kde je rozprostření dat sudé. Pokud transakce zapisuje data šikmým způsobem na rozdělení, je pravděpodobně dosaženo limitu před maximální velikostí transakce.
 > <!--REPLICATED_TABLE-->
 > 
 > 
@@ -87,7 +87,7 @@ Pokud chcete optimalizovat a minimalizovat množství dat zapsaných do protokol
 SQL Data Warehouse používá funkci XACT_STATE () k ohlášení neúspěšné transakce pomocí hodnoty 2. Tato hodnota znamená, že transakce se nezdařila a je označena pouze pro vrácení zpět.
 
 > [!NOTE]
-> Použití-2 funkcí XACT_STATE k označení neúspěšné transakce představuje odlišné chování pro SQL Server. SQL Server používá hodnotu-1 pro reprezentaci transakce nesvěřené. SQL Server může tolerovat některé chyby v transakci, aniž by bylo nutné je označit jako nepotvrzené. Například `SELECT 1/0` by způsobil chybu, ale nevynutila transakci do nepotvrzeného stavu. SQL Server také povoluje čtení v nesvěřené transakci. SQL Data Warehouse to ale neumožňuje. Pokud dojde k chybě uvnitř SQL Data Warehouse transakce, automaticky vstoupí do stavu-2 a dokud se příkaz nevrátí zpět, nebude možné provést žádné další příkazy SELECT. Proto je důležité zkontrolovat, zda kód aplikace používá XACT_STATE (), protože může být nutné provést úpravy kódu.
+> Použití-2 funkcí XACT_STATE k označení neúspěšné transakce představuje jiné chování pro SQL Server. SQL Server používá hodnotu-1 pro reprezentaci transakce nesvěřené. SQL Server může tolerovat některé chyby v transakci, aniž by bylo nutné je označit jako nepotvrzené. Například `SELECT 1/0` by způsobil chybu, ale nevynutila transakci do nepotvrzeného stavu. SQL Server také povoluje čtení v nesvěřené transakci. SQL Data Warehouse to ale neumožňuje. Pokud dojde k chybě uvnitř SQL Data Warehouse transakce, automaticky vstoupí do stavu-2 a dokud se příkaz nevrátí zpět, nebude možné provést žádné další příkazy SELECT. Je proto důležité zkontrolovat, zda kód aplikace používá XACT_STATE (), protože může být nutné provést úpravy kódu.
 > 
 > 
 
@@ -133,7 +133,7 @@ Předchozí kód obsahuje následující chybovou zprávu:
 
 Msg 111233, úroveň 16, stav 1, řádek 1 111233; Aktuální transakce byla přerušena a všechny probíhající změny byly vráceny zpět. Příčina: transakce ve stavu vrácení zpět nebyla explicitně vrácena zpět před příkazem DDL, DML nebo SELECT.
 
-Nebudete mít výstup funkcí ERROR_ *.
+Výstup funkcí ERROR_ * se nezobrazuje.
 
 V SQL Data Warehouse musí být kód mírně pozměněn:
 
@@ -151,8 +151,8 @@ BEGIN TRAN
 
         IF @@TRANCOUNT > 0
         BEGIN
-            PRINT 'ROLLBACK';
             ROLLBACK TRAN;
+            PRINT 'ROLLBACK';
         END
 
         SELECT  ERROR_NUMBER()    AS ErrNumber

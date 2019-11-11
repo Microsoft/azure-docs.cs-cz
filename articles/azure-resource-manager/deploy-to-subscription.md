@@ -4,14 +4,14 @@ description: Popisuje postup vytvoření skupiny prostředků v Azure Resource M
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 11/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: d8b1be1d79ae0426d73c45408dd3c4f4f4660afb
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 04a46700b68bcf498956f93c96ce2dccf1b555fe
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532187"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832715"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Vytvoření skupin prostředků a prostředků na úrovni předplatného
 
@@ -23,7 +23,7 @@ Pokud chcete nasadit šablony na úrovni předplatného, použijte rozhraní př
 
 Na úrovni předplatného můžete nasadit následující typy prostředků:
 
-* [nasazení](/azure/templates/microsoft.resources/deployments) 
+* [nasazení](/azure/templates/microsoft.resources/deployments)
 * [peerAsns](/azure/templates/microsoft.peering/peerasns)
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
@@ -36,10 +36,16 @@ Na úrovni předplatného můžete nasadit následující typy prostředků:
 
 Schéma, které používáte pro nasazení na úrovni předplatného, se liší od schématu pro nasazení skupin prostředků.
 
-Pro schéma použijte:
+Pro šablony použijte:
 
 ```json
 https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#
+```
+
+Pro soubory parametrů použijte:
+
+```json
+https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#
 ```
 
 ## <a name="deployment-commands"></a>Příkazy nasazení
@@ -76,14 +82,14 @@ Pro nasazení na úrovni předplatného musíte zadat umístění pro nasazení.
 
 Můžete zadat název nasazení nebo použít výchozí název nasazení. Výchozí název je název souboru šablony. Například nasazení šablony s názvem **azuredeploy. JSON** vytvoří výchozí název nasazení **azuredeploy**.
 
-Pro každý název nasazení je umístění neměnné. Nasazení nelze vytvořit v jednom umístění, pokud existuje existující nasazení se stejným názvem, ale s jiným umístěním. Pokud se zobrazí kód chyby `InvalidDeploymentLocation`, buď použijte jiný název nebo stejné umístění jako předchozí nasazení pro daný název.
+Pro každý název nasazení je umístění neměnné. Nasazení nelze vytvořit v jednom umístění, pokud existuje existující nasazení se stejným názvem v jiném umístění. Pokud se zobrazí kód chyby `InvalidDeploymentLocation`, buď použijte jiný název nebo stejné umístění jako předchozí nasazení pro tento název.
 
 ## <a name="use-template-functions"></a>Použití funkcí šablon
 
 U nasazení na úrovni předplatného se při používání funkcí šablon vyskytly důležité předpoklady:
 
 * Funkce [Resource ()](resource-group-template-functions-resource.md#resourcegroup) **není podporována.**
-* Funkce [ResourceID ()](resource-group-template-functions-resource.md#resourceid) je podporována. Použijte ho k získání ID prostředku pro prostředky, které se používají v nasazeních na úrovni předplatného. Můžete například získat ID prostředku pro definici zásady s `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`.
+* Funkce [ResourceID ()](resource-group-template-functions-resource.md#resourceid) je podporována. Použijte ho k získání ID prostředku pro prostředky, které se používají v nasazeních na úrovni předplatného. Můžete například získat ID prostředku pro definici zásady s `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`. Nebo použijte funkci [subscriptionResourceId ()](resource-group-template-functions-resource.md#subscriptionresourceid) k získání ID prostředku na úrovni předplatného.
 * Funkce [Reference ()](resource-group-template-functions-resource.md#reference) a [list ()](resource-group-template-functions-resource.md#list) jsou podporovány.
 
 ## <a name="create-resource-groups"></a>Vytvoření skupin prostředků

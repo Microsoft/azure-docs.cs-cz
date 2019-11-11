@@ -6,14 +6,14 @@ author: axayjo
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 05/06/2019
-ms.author: akjosh; cynthn
+ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 9a564bf7f633903c58a5719327216baee2df6550
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 18c85995c545e1b603333fd6788b70cd863865ce
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026167"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73905015"
 ---
 Galerie sdílených imagí je služba, která pomáhá sestavovat strukturu a organizaci kolem spravovaných imagí. Galerie sdílených imagí poskytují:
 
@@ -33,9 +33,10 @@ Funkce Galerie sdílených imagí má více typů prostředků:
 
 | Prostředek | Popis|
 |----------|------------|
-| **Spravovaná image** | Základní image, která se dá použít samostatně nebo použít k vytvoření **verze image** v galerii imagí. Spravované image se vytvářejí z zobecněných virtuálních počítačů. Spravovaná bitová kopie je speciální typ VHD, který se dá použít k vytvoření více virtuálních počítačů a dá se teď použít k vytváření verzí sdílených imagí. |
+| **Spravovaná image** | Základní image, která se dá použít samostatně nebo použít k vytvoření **verze image** v galerii imagí. Spravované image se vytvářejí z [zobecněných](#generalized-and-specialized-images) virtuálních počítačů. Spravovaná bitová kopie je speciální typ VHD, který se dá použít k vytvoření více virtuálních počítačů a dá se teď použít k vytváření verzí sdílených imagí. |
+| **Snímek** | Kopie VHD, která se dá použít k vytvoření **Image verze** Snímky se dají považovat ze [specializovaného](#generalized-and-specialized-images) virtuálního počítače (který se nezobecněný) pak použít samostatně, nebo se snímky datových disků, aby se vytvořila specializovaná verze image.
 | **Galerie imagí** | Podobně jako u Azure Marketplace je **Galerie imagí** úložiště pro správu a sdílení imagí, ale Vy řídíte, kdo má přístup. |
-| **Definice obrázku** | Image jsou definované v rámci Galerie a obsahují informace o imagi a požadavcích na jejich použití v rámci vaší organizace. Můžete zahrnout informace, jako je například to, jestli se jedná o Windows nebo Linux, minimální a maximální požadavky na paměť a poznámky k verzi. Je definicí typu obrázku. |
+| **Definice obrázku** | Image jsou definované v rámci Galerie a obsahují informace o imagi a požadavcích na jejich použití v rámci vaší organizace. Můžete zahrnout informace, jako je například to, zda je obrázek zobecněný nebo specializovaný, operační systém, minimální a maximální požadavky na paměť a poznámky k verzi. Je definicí typu obrázku. |
 | **Verze image** | **Verze image** je to, co použijete k vytvoření virtuálního počítače při použití galerie. V případě potřeby můžete mít v prostředí k dispozici více verzí bitové kopie. Podobně jako u spravované image při použití **verze image** k vytvoření virtuálního počítače se verze image používá k vytvoření nových disků pro virtuální počítač. Verze bitové kopie lze použít několikrát. |
 
 <br>
@@ -48,7 +49,7 @@ Definice obrázků jsou logické seskupení pro verze image. Definice image obsa
 
 Existují tři parametry pro každou definici obrázku, které jsou používány v kombinaci – **Vydavatel**, **Nabídka** a **SKU**. Slouží k vyhledání konkrétní definice obrázku. Můžete mít verze bitové kopie, které sdílejí jednu nebo dvě, ale ne všechny tři hodnoty.  Tady jsou například tři definice obrázků a jejich hodnoty:
 
-|Definice image|Vydavatel|Nabídka|SKU|
+|Definice image|Vydavatel|Nabídka|Skladová jednotka (SKU)|
 |---|---|---|---|
 |myImage1|Contoso|Finance|Back-end|
 |myImage2|Contoso|Finance|Endy|
@@ -58,7 +59,7 @@ Všechny tři z nich mají jedinečné sady hodnot. Formát je podobný jako př
 
 Níže jsou uvedené další parametry, které je možné nastavit v definici image, abyste mohli snadněji sledovat své prostředky:
 
-* Stav operačního systému – stav operačního systému můžete nastavit na generalizované nebo specializované, ale v současné době se podporuje jenom zobecněné. Image se musí vytvořit z virtuálních počítačů, které se zobecněny pomocí nástroje Sysprep pro Windows, nebo `waagent -deprovision` pro Linux.
+* Stav operačního systému – stav operačního systému můžete nastavit na [generalizované nebo specializované](#generalized-and-specialized-images).
 * Operační systém může být buď Windows, nebo Linux.
 * Popis – použijte popis k poskytnutí podrobnějších informací o tom, proč existuje definice obrázku. Můžete mít například definici image pro front-end Server, ve kterém je aplikace předem nainstalovaná.
 * Smlouva EULA – dá se použít k odkazování na licenční smlouvu s koncovým uživatelem, která je specifická pro definici image.
@@ -68,21 +69,43 @@ Níže jsou uvedené další parametry, které je možné nastavit v definici im
 * Minimální a maximální doporučení pro vCPU a paměť – Pokud má vaše image doporučení vCPU a paměti, můžete tyto informace připojit k definici image.
 * Nepovolené typy disků – můžete zadat informace o požadavcích na úložiště pro váš virtuální počítač. Pokud například bitová kopie není vhodná pro disky se standardním pevným diskem, přidáte je do seznamu zakázat.
 
+## <a name="generalized-and-specialized-images"></a>Generalizované a specializované image
+
+Galerie sdílených imagí podporuje dva stavy operačních systémů. Image obvykle vyžadují, aby byl virtuální počítač použitý k vytvoření image zobecněný předtím, než Image převezme. Generalizace je proces, který z virtuálního počítače odebere informace specifické pro počítač a uživatele. V systému Windows se používá také nástroj Sysprep. Pro Linux můžete použít parametry [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` nebo `-deprovision+user`.
+
+Specializované virtuální počítače neprošly procesem odebrání informací a účtů specifických pro konkrétní počítač. Virtuální počítače vytvořené z specializovaných imagí navíc nemají k sobě přidružené `osProfile`. To znamená, že speciální obrázky budou mít určitá omezení.
+
+- Účty, které se dají použít k přihlášení k virtuálnímu počítači, se dají použít taky na jakémkoli virtuálním počítači vytvořeném pomocí specializované image, která se vytvoří z tohoto virtuálního počítače.
+- Virtuální počítače budou mít **název počítače** , ze kterého se image povedla. Měli byste změnit název počítače, aby se předešlo kolizím.
+- `osProfile` je způsob, jakým se k virtuálnímu počítači předávají nějaké citlivé informace pomocí `secrets`. To může způsobit problémy s využitím trezoru klíčů, WinRM a dalších funkcí, které v `osProfile`používají `secrets`. V některých případech můžete tato omezení obejít pomocí identit spravované služby (MSI).
+
+> [!IMPORTANT]
+> Specializované obrázky jsou momentálně ve verzi Public Preview.
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>
+> **Známá omezení verze Preview** Virtuální počítače se dají vytvářet jenom z specializovaných imagí pomocí portálu nebo rozhraní API. Pro verzi Preview není podporována podpora rozhraní příkazového řádku nebo PowerShellu.
+
+
 ## <a name="regional-support"></a>Místní podpora
 
 Zdrojové oblasti jsou uvedené v následující tabulce. Všechny veřejné oblasti můžou být cílové oblasti, ale pokud je chcete replikovat do Austrálie Central a Austrálie – střed 2, musíte mít své předplatné na seznamu povolených. Pokud chcete požádat o přidávání do seznamu povolených adres, přečtěte si: https://azure.microsoft.com/global-infrastructure/australia/contact/
 
-| Zdrojové oblasti |
-|---------------------|-----------------|------------------|-----------------|
-| Austrálie – střed   | Střed USA EUAP | Korea – střed    | Středozápadní USA |
-| Austrálie – střed 2 | Východní Asie       | Korea – jih      | Západní Evropa     |
-| Austrálie – východ      | USA – východ         | Středoseverní USA | Indie – západ      |
-| Austrálie – jihovýchod | Východ USA 2       | Severní Evropa     | Západ USA         |
-| Brazílie – jih        | Východní USA 2 EUAP  | Středojižní USA | Západ USA 2       |
-| Kanada – střed      | Francie – střed  | Indie – jih      | Čína – východ      |
-| Kanada – východ         | Francie – jih    | Jihovýchodní Asie   | Čína – východ 2    |
-| Indie – střed       | Japonsko – východ      | Velká Británie – jih         | Čína – sever     |
-| Střední USA          | Japonsko – západ      | Velká Británie – západ          | Čína – sever 2   |
+
+| Zdrojové oblasti        |                   |                    |                    |
+| --------------------- | ----------------- | ------------------ | ------------------ |
+| Austrálie – střed     | Čína – východ        | Indie – jih        | Západní Evropa        |
+| Austrálie – střed 2   | Čína – východ 2      | Jihovýchodní Asie     | Spojené království – jih           |
+| Austrálie – východ        | Čína – sever       | Japonsko – východ         | Spojené království – západ            |
+| Austrálie – jihovýchod   | Čína – sever 2     | Japonsko – západ         | US DoD – střed     |
+| Brazílie – jih          | Východní Asie         | Jižní Korea – střed      | US DoD – východ        |
+| Střední Kanada        | Východní USA           | Korea – jih        | USA (Gov) – Arizona     |
+| Východní Kanada           | Východ USA 2         | Středoseverní USA   | USA (Gov) – Texas       |
+| Střed Indie         | Východní USA 2 EUAP    | Severní Evropa       | USA (Gov) – Virginia    |
+| Střední USA            | Francie – střed    | Středojižní USA   | Indie – západ         |
+| Střed USA EUAP       | Francie – jih      | Středozápadní USA    | Západní USA            |
+|                       |                   |                    | Západní USA 2          |
+
+
 
 ## <a name="limits"></a>Omezení 
 
@@ -120,20 +143,20 @@ Oblasti, do kterých se replikuje verze sdíleného obrázku, se dá po vytvoře
 
 ![Obrázek znázorňující, jak můžete replikovat image](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Přístup
+## <a name="access"></a>Access
 
 Vzhledem k tomu, že je galerie sdílených imagí, definice obrázku a verze image, všechny prostředky, můžou se sdílet pomocí integrovaných nativních ovládacích prvků Azure RBAC. Pomocí RBAC můžete tyto prostředky sdílet ostatním uživatelům, instančním objektům a skupinám. Můžete dokonce sdílet přístup jednotlivcům mimo klienta, kterého vytvořili v rámci. Jakmile má uživatel přístup ke sdílené imagi verze, může nasadit virtuální počítač nebo sadu škálování virtuálního počítače.  Tady je tabulka sdílení, která pomáhá pochopit, k čemu uživatel přistupuje:
 
-| Sdíleno s uživatelem     | Galerie sdílených imagí | Definice image | Verze image |
+| Sdíleno s uživatelem     | Sdílená galerie obrázků | Definice image | Verze image |
 |----------------------|----------------------|--------------|----------------------|
-| Galerie sdílených imagí | Ano                  | Ano          | Ano                  |
+| Sdílená galerie obrázků | Ano                  | Ano          | Ano                  |
 | Definice image     | Ne                   | Ano          | Ano                  |
 
 Pro nejlepší prostředí doporučujeme sdílení na úrovni galerie. Nedoporučujeme sdílet jednotlivé verze imagí. Další informace o RBAC najdete v tématu [Správa přístupu k prostředkům Azure pomocí RBAC](../articles/role-based-access-control/role-assignments-portal.md).
 
 Image je také možné sdílet, ve velkém měřítku, a to i v rámci klientů pomocí registrace aplikace s více klienty. Další informace o sdílení imagí napříč klienty najdete v tématu [sdílení imagí virtuálních počítačů galerie v rámci tenantů Azure](../articles/virtual-machines/linux/share-images-across-tenants.md).
 
-## <a name="billing"></a>Vyúčtování
+## <a name="billing"></a>Fakturace
 Za použití služby galerie sdílených obrázků se neúčtují žádné poplatky navíc. Budou se vám účtovat tyto prostředky:
 - Náklady na úložiště pro ukládání verzí sdílených imagí Náklady závisí na počtu replik verze image a na počtu oblastí, na které se má verze replikovat. Pokud máte například 2 bitové kopie a obě jsou replikovány do 3 oblastí, bude změněno pro 6 spravovaných disků na základě jejich velikosti. Další informace najdete v tématu [Managed disks ceny](https://azure.microsoft.com/pricing/details/managed-disks/).
 - Poplatky za síťové přenosy za replikaci první verze image ze zdrojové oblasti do replikovaných oblastí. Další repliky se zpracovávají v rámci této oblasti, takže se neúčtují žádné další poplatky. 
@@ -198,7 +221,7 @@ Prostředek Galerie sdílených imagí můžete vytvořit pomocí šablon. K dis
 
 Pokud chcete zobrazit seznam všech prostředků Galerie sdílených imagí v rámci předplatných, ke kterým máte přístup v Azure Portal, postupujte podle následujících kroků:
 
-1. Otevřete web [Azure Portal](https://portal.azure.com).
+1. Otevřete [portál Azure](https://portal.azure.com).
 1. Přejít na **všechny prostředky**.
 1. Vyberte všechna předplatná, pod kterými chcete zobrazit seznam všech prostředků.
 1. Vyhledejte prostředky typu **privátní Galerie**.
@@ -217,15 +240,16 @@ Ano. Existují tři scénáře založené na typech imagí, které máte pravdě
 
  Scénář 1: Pokud máte spravovanou bitovou kopii, můžete z ní vytvořit definici image a její verzi.
 
- Scénář 2: Pokud máte nespravovanou zobecněnou bitovou kopii, můžete z ní vytvořit spravovanou bitovou kopii a pak z ní vytvořit definici image a verzi image. 
+ Scénář 2: Pokud máte nespravovanou bitovou kopii, můžete z ní vytvořit spravovanou image a pak z ní vytvořit definici image a její verzi. 
 
- Scénář 3: Pokud máte v místním systému souborů virtuální pevný disk, je potřeba nahrát VHD, vytvořit spravovanou image a pak z ní můžete vytvořit definici image a image.
-- Pokud virtuální pevný disk má virtuální počítač s Windows, přečtěte si téma [nahrání zobecněného virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed).
+ Scénář 3: Pokud máte v místním systému souborů virtuální pevný disk, budete muset virtuální pevný disk nahrát do spravované image a pak z něj můžete vytvořit definici image a verzi image.
+
+- Pokud virtuální pevný disk má virtuální počítač s Windows, přečtěte si téma [nahrání virtuálního pevného disku](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed).
 - Pokud je virtuální pevný disk pro virtuální počítač se systémem Linux, přečtěte si téma [nahrání VHD](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>Můžu vytvořit verzi image z specializovaného disku?
 
-Ne, v současné době nepodporujeme jako image specializované disky. Pokud máte specializovaný disk, budete muset [vytvořit virtuální počítač z virtuálního pevného](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk) disku připojením specializovaného disku k NOVÉmu virtuálnímu počítači. Jakmile budete mít spuštěný virtuální počítač, musíte postupovat podle pokynů k vytvoření spravované image z virtuálního počítače s [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) nebo [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). Jakmile budete mít zobecněnou spravovanou bitovou kopii, můžete spustit proces pro vytvoření popisu a verze image sdíleného obrazu.
+Ano, podpora specializovaných disků jako imagí je ve verzi Preview. Virtuální počítač můžete vytvořit jenom z specializované Image pomocí portálu ([Windows](../articles/virtual-machines/linux/shared-images-portal.md) nebo [Linux](../articles/virtual-machines/linux/shared-images-portal.md)) a rozhraní API. Pro verzi Preview neexistuje žádná podpora prostředí PowerShell.
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Můžu po vytvoření přesunout prostředek Galerie sdílených imagí do jiného předplatného?
 
@@ -235,7 +259,7 @@ Ne, prostředek Galerie sdílených imagí nemůžete přesunout do jiného pře
 
 Ne, verze imagí nelze replikovat napříč cloudy.
 
-### <a name="can-i-replicate-my-image-versions-across-subscriptions"></a>Můžu replikovat verze imagí v rámci předplatných? 
+### <a name="can-i-replicate-my-image-versions-across-subscriptions"></a>Můžu replikovat verze imagí v rámci předplatných?
 
 Ne, v rámci předplatného můžete replikovat verze imagí do různých oblastí a použít je v jiných předplatných prostřednictvím RBAC.
 
@@ -266,7 +290,7 @@ Chcete-li určit počet místních replik, předejte umístění spolu s počtem
 
 Pokud se pro každé umístění nezadá počet místních replik, bude výchozí počet replik stejný jako společný počet replik, který jste zadali. 
 
-Chcete-li v rozhraní příkazového řádku zadat společný počet replik, použijte v příkazu `az sig image-version create` argument **--počet replik-Count** .
+Chcete-li určit společný počet replik v rozhraní příkazového řádku, použijte v příkazu `az sig image-version create` argument **--Replica-Count** .
 
 ### <a name="can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version"></a>Je možné galerii sdílených imagí vytvořit v jiném umístění než u definice image a verze image?
 

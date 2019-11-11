@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74c95ed62bcfec8792aaa465d27f539c02188713
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d092dcf6fa9942f7b3283d1d77157b1f291a5062
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891434"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73905047"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -120,6 +120,7 @@ Informace o integraci služeb Azure do komponent SAP najdete v těchto tématech
 
 
 ## <a name="change-log"></a>Protokol změn
+- 11/08/2019: změny [vysoké dostupnosti SAP HANA na virtuálních počítačích Azure v SUSE Linux Enterprise Server](sap-hana-high-availability.md), [nastavení SAP HANA systémové replikace na virtuálních počítačích azure](sap-hana-high-availability-rhel.md), [Azure Virtual Machines vysoká dostupnost pro SAP NetWeaver v SUSE Linux Enterprise Server pro aplikace](high-availability-guide-suse.md) [SAP, Azure Virtual Machines vysoká](high-availability-guide-suse-netapp-files.md)dostupnost pro SAP [NetWeaver v SUSE Linux Enterprise Server ](high-availability-guide-rhel.md), [Azure Virtual Machines vysoké dostupnosti pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files](high-availability-guide-rhel-netapp-files.md), [vysokou dostupností pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](high-availability-guide-suse-nfs.md), [GlusterFS na virtuálních počítačích Azure na Red Hat Enterprise Linux pro SAP NetWeaver](high-availability-guide-rhel-glusterfs.md) , které doporučují Azure Standard Load Balancer.  
 - 11/08/2019: změny v [kontrolním seznamu plánování úloh SAP a nasazení](sap-deployment-checklist.md) k objasnění doporučení pro šifrování  
 - 11/04/2019: změny v [Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](high-availability-guide-suse-pacemaker.md) pro vytvoření clusteru přímo s konfigurací jednosměrového vysílání  
 - 10/29/2019: vydání [připojení k veřejnému koncovému bodu pro Virtual Machines s využitím Azure Standard Load Balancer ve scénářích služby SAP pro vysokou dostupnost](high-availability-guide-standard-load-balancer-outbound-connections.md)

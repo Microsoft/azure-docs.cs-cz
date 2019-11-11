@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 71ccdb7ac6666cde1841599cdaf95b67bc54e6a5
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 73a3359955bf50929f083d542e6a0583b356a280
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800033"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903751"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Co je Apache Storm ve službě Azure HDInsight?
 
@@ -70,7 +70,7 @@ Výchozí konfigurace pro clustery Apache Storm může obsahovat pouze jeden uze
 
 V HDInsight můžete vytvořit nový cluster Storm během několika minut. Další informace o vytvoření clusteru s více podmnožinami najdete v tématu [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
-## <a name="ease-of-use"></a>Snadné použití
+## <a name="ease-of-use"></a>Snadné používání
 
 * __Připojení Secure Shell (SSH)__ : Hlavní uzly clusteru Storm jsou přístupné z internetu prostřednictvím SSH. Příkazy můžete spouštět přímo v clusteru prostřednictvím SSH.
 
@@ -113,10 +113,10 @@ Následují některé obvyklé scénáře, pro které můžete použít Storm v 
 * Sociální analýzy
 * Extrakce, transformace a načítání (ETL)
 * Monitorování sítě
-* Hledat
+* Search
 * Mobile engagement
 
-Informace o reálných scénářích najdete v tématu [jak společnosti používají Apache Storm](https://storm.apache.org/documentation/Powered-By.html) dokumentu.
+Informace o reálných scénářích najdete v tématu [jak společnosti používají Apache Storm](https://storm.apache.org/Powered-By.html) dokumentu.
 
 ## <a name="development"></a>Vývoj
 

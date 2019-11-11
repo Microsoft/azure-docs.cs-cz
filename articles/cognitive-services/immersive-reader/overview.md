@@ -1,7 +1,7 @@
 ---
 title: Co je rozhraní API pro moderní čtečku?
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si o rozhraní API pro moderní čtečku.
+description: Rozhraní API pro moderní čtečku je nástroj, který se dá použít k obnově informací o rozdílech učení nebo k novým čtenářům a nástrojům pro jazyky.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: f84804fbad07357706e786fc449fce9e42a5ec4a
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 3e6889cd5d26b88cedd6b110510cb89777252f54
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688329"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904364"
 ---
 # <a name="what-is-immersive-reader"></a>Co je Asistivní čtečka?
 
@@ -53,9 +53,9 @@ Moderní čtečka je navržená tak, aby pro každého mohla být přičtená.
 
 ## <a name="how-does-immersive-reader-work"></a>Jak funguje moderní čtečka?
 
-Moderní čtečka je samostatná webová aplikace, která při vyvolání pomocí sady SDK pro moderní čtečku se zobrazuje na vaší stávající webové aplikaci přes `iframe`. Když zavoláte rozhraní API za účelem spuštění moderního čtecího modulu, zadáte obsah, který chcete zobrazit v moderní čtečce. Naše sada SDK zpracovává vytváření a stylování `iframe` a komunikaci s back-end službou pro moderní čtečku, která zpracovává obsah pro části řeči, převod textu na řeč, překlad atd.
+Moderní čtečka je samostatná webová aplikace, která při vyvolání pomocí sady SDK pro moderní čtečku se zobrazuje na vaší stávající webové aplikaci prostřednictvím `iframe`. Když zavoláte rozhraní API za účelem spuštění moderního čtecího modulu, zadáte obsah, který chcete zobrazit v moderní čtečce. Naše sada SDK zpracovává vytváření a stylování `iframe` a komunikaci se službou moderního čtecího zařízení, která zpracovává obsah pro části řeči, převod textu na řeč, překlad atd.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Začínáme s Asistivní čtečkou:
 

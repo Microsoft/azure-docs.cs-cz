@@ -1,6 +1,6 @@
 ---
-title: Konfigurace Azure Security Center pro řešení IoT | Microsoft Docs
-description: Naučte se, jak nakonfigurovat komplexní řešení IoT pomocí Azure Security Center pro IoT.
+title: 'Rychlý Start: konfigurace Azure Security Center pro řešení IoT'
+description: V tomto rychlém startu se dozvíte, jak nakonfigurovat komplexní řešení IoT pomocí Azure Security Center pro IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/25/2019
+ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: a546d153c6fe4f14ccc8c21308bd4a33385870c3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e670df359cc33c9eaca089d0ed8f9614ef8c0468
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299689"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904154"
 ---
-# <a name="quickstart-configure-your-iot-solution"></a>Rychlý start: Konfigurace řešení IoT
+# <a name="quickstart-configure-your-iot-solution"></a>Rychlý Start: konfigurace řešení IoT
 
 Tento článek poskytuje vysvětlení, jak provést počáteční konfiguraci řešení zabezpečení IoT pomocí Azure Security Center pro IoT. 
 

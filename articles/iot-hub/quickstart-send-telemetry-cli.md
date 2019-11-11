@@ -9,12 +9,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: d926f1c286c4288784d429f13b22436d7c8ae7e5
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 8ebcc863c1812081e6198ff9c684934642e1dc41
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73849273"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904560"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub a jejich sledování pomocí Azure CLI
 
@@ -74,7 +74,7 @@ V této části pomocí Azure CLI vytvoříte skupinu prostředků a IoT Hub.  S
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. Spuštěním příkazu [AZ IoT Hub Create](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-create) vytvořte centrum IoT.
+1. Spuštěním příkazu [AZ IoT Hub Create](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-create) vytvořte centrum IoT. Vytvoření centra IoT může trvat několik minut. 
 
     *YourIotHubName*. Nahraďte tento zástupný symbol níže názvem, který jste zvolili pro Centrum IoT. Název centra IoT musí být v Azure globálně jedinečný. Tento zástupný symbol se používá ve zbývající části tohoto rychlého startu k vyjádření názvu služby IoT Hub.
 
@@ -141,15 +141,15 @@ V této části použijete druhou relaci CLI k odeslání zprávy na simulované
 
     ![Cloud Shell zpráv z cloudu na zařízení](media/quickstart-send-telemetry-cli/cloud-shell-receive-message.png)
 
-1. Po zobrazení zprávy zavřete obě relace rozhraní příkazového řádku. 
+1. Po zobrazení zprávy Zavřete druhou relaci CLI. Nechejte první relaci rozhraní příkazového řádku otevřenou. Použijete ho k vyčištění prostředků v pozdějším kroku.
 
 ## <a name="view-messaging-metrics-in-the-portal"></a>Zobrazit metriky zasílání zpráv na portálu
 Azure Portal vám umožní spravovat všechny aspekty IoT Hub a zařízení. V typické IoT Hub aplikaci, která ingestuje telemetrii ze zařízení, můžete chtít monitorovat zařízení nebo zobrazovat metriky v telemetrie zařízení. 
 
 Chcete-li vizualizovat metriky zasílání zpráv v Azure Portal:
-1. Na **domovské** stránce portálu vyberte **všechny prostředky**. 
+1. V navigační nabídce vlevo na portálu vyberte **všechny prostředky**. Zobrazí se seznam všech prostředků ve vašem předplatném, včetně služby IoT Hub, kterou jste vytvořili. 
 
-1. V seznamu skupin prostředků vyberte Centrum IoT, které jste vytvořili. 
+1. Ve službě IoT Hub, kterou jste vytvořili, klikněte na odkaz. Portál zobrazí stránku Přehled pro centrum.
 
 1. V levém podokně IoT Hub vyberte **metriky** . 
 

@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: 9c14afb22d95493deaf3552cb8c7392c3fc5a679
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a993c71e362a61b6861e001dfb5d6eca24873293
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934022"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903273"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Přidání nebo odebrání certifikátů pro cluster Service Fabric v Azure
 Doporučujeme, abyste se seznámili s tím, jak Service Fabric využívá certifikáty X. 509 a znáte [scénáře zabezpečení clusteru](service-fabric-cluster-security.md). Než budete pokračovat, musíte pochopit, co je certifikát clusteru a k čemu se používá.
 
-Výchozí chování při načítání certifikátů v sadě SDK služby Azure Service Fabric je nasazení a používání definovaného certifikátu s datem vypršení platnosti nejdálení do budoucna. bez ohledu na definici primární nebo sekundární konfigurace. Návrat k klasickému chování je nedoporučenou pokročilou akcí a vyžaduje nastavení hodnoty parametru "UseSecondaryIfNewer" na hodnotu false v rámci vaší konfigurace prostředků infrastruktury.
+Výchozí chování při načítání certifikátů v sadě SDK služby Azure Service Fabric je nasazení a používání definovaného certifikátu s nejpozdějším datem vypršení platnosti. bez ohledu na definici primární nebo sekundární konfigurace. Návrat k klasickému chování je nedoporučovaná rozšířená akce a vyžaduje nastavení hodnoty parametru "UseSecondaryIfNewer" na hodnotu false v konfiguraci `Fabric.Code`.
 
 Service Fabric umožňuje zadat dva certifikáty clusteru, primární a sekundární, když konfigurujete zabezpečení certifikátu během vytváření clusteru, kromě klientských certifikátů. Podrobnosti o jejich nastavení v době vytvoření najdete v tématu [Vytvoření clusteru Azure prostřednictvím portálu](service-fabric-cluster-creation-via-portal.md) nebo [Vytvoření clusteru Azure prostřednictvím Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) . Pokud zadáte pouze jeden certifikát clusteru v čase vytvoření, bude použit jako primární certifikát. Po vytvoření clusteru můžete přidat nový certifikát jako sekundární.
 
@@ -63,7 +63,7 @@ Pro snadné provedení následujících ukázek 5-VM-1-NodeTypes-Secure_Step2. J
 
 **Ujistěte se, že provedete všechny kroky.**
 
-1. Otevřete šablonu Správce prostředků, kterou jste použili k nasazení clusteru. (Pokud jste si stáhli ukázku z předchozího úložiště, pak pomocí 5-VM-1-NodeTypes-Secure_Step1. JSON nasaďte zabezpečený cluster a pak otevřete tuto šablonu).
+1. Otevřete šablonu Správce prostředků, kterou jste použili k nasazení clusteru. (Pokud jste si stáhli ukázku z předchozího úložiště, pomocí 5-VM-1-NodeTypes-Secure_Step1. JSON nasaďte zabezpečený cluster a pak otevřete tuto šablonu.
 
 2. Přidejte **dva nové parametry** "secCertificateThumbprint" a "secCertificateUrlValue" typu "String" do oddílu parametru vaší šablony. Následující fragment kódu můžete zkopírovat a přidat ho do šablony. V závislosti na zdroji šablony už možná máte tato definovaná definice, pokud se tak chcete přesunout k dalšímu kroku. 
  
@@ -287,6 +287,10 @@ můžete zadat libovolný počet klientských certifikátů. Každé přidání 
 ### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>Odstranění klientských certifikátů – správce nebo jen pro čtení pomocí portálu
 
 Chcete-li odebrat sekundární certifikát ze systému, který se používá pro zabezpečení clusteru, přejděte do části zabezpečení a vyberte možnost odstranit z kontextové nabídky u konkrétního certifikátu.
+
+## <a name="adding-application-certificates-to-a-virtual-machine-scale-set"></a>Přidání certifikátů aplikace do sady škálování virtuálních počítačů
+
+Pokud chcete nasadit certifikát, který používáte pro vaše aplikace do clusteru, podívejte se do [tohoto ukázkového skriptu PowerShellu](scripts/service-fabric-powershell-add-application-certificate.md).
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o správě clusterů najdete v těchto článcích:

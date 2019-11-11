@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 835024f7c8d77d67a2f6321df658c2f5c2007e62
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1ff70a8a794cbc4c201512a0cf578eb0a890a5e4
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647103"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904421"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Co se stalo s aplikací Azure Machine Learning Workbench?
 
@@ -99,8 +99,8 @@ Seznamte se s [nejnovější architekturou pro Azure Machine Learning](concept-a
 Pokud chcete zobrazit přehled služby, přečtěte si téma [co je Azure Machine Learning?](overview-what-is-azure-ml.md).
 
 Vytvořte svůj první experiment s upřednostňovanou metodou:
-  + [Použití poznámkových bloků Pythonu k učení & nasazení modelů ML](tutorial-1st-experiment-sdk-setup.md)
-  + [Použití R Markdown ke školení & nasazení modelů ML]( tutorial-1st-r-experiment.md) 
-  + [Použití automatizovaného strojového učení ke studiu & nasazení modelů ML](ui-tutorial-automobile-price-train-score.md) 
-  + [Použití možností přetažení & designeru pro výuku & nasazení](tutorial-first-experiment-automated-ml.md) 
-  + [Použití rozhraní příkazového učení pro strojové učení ke školení a nasazení modelu](tutorial-train-deploy-model-cli.md)
+  + [Použití poznámkových bloků Pythonu](tutorial-1st-experiment-sdk-setup.md)
+  + [Použít R Markdown]( tutorial-1st-r-experiment.md) 
+  + [Použití automatizovaného strojového učení](ui-tutorial-automobile-price-train-score.md) 
+  + [Použití možností přetažení &ho návrháře](tutorial-first-experiment-automated-ml.md) 
+  + [Použít rozšíření ML pro rozhraní příkazového řádku](tutorial-train-deploy-model-cli.md)

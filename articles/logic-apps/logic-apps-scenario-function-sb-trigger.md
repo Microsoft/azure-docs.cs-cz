@@ -8,19 +8,19 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: jehollan, klam, LADocs
 ms.topic: article
-ms.date: 06/04/2019
-ms.openlocfilehash: 2ab6ace7c30c3dd385928b6b0ae8000485d5f495
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.date: 11/08/2019
+ms.openlocfilehash: c65a0464bbad6dbaca51dbc5bbc0d84adbd605d7
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680147"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904661"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Volání nebo spuštění Logic Apps pomocí Azure Functions a Azure Service Bus
 
 Můžete použít [Azure Functions](../azure-functions/functions-overview.md) pro aktivaci aplikace logiky, pokud potřebujete nasadit dlouhodobě spuštěný naslouchací proces nebo úlohu. Můžete například vytvořit funkci Azure, která naslouchá ve frontě [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) a hned spustí aplikaci logiky jako Trigger push.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -32,13 +32,13 @@ Můžete použít [Azure Functions](../azure-functions/functions-overview.md) pr
 
 ## <a name="create-logic-app"></a>Vytvoření aplikace logiky
 
-V tomto scénáři máte funkci spouštějící jednotlivé aplikace logiky, které chcete aktivovat. Nejdřív vytvořte aplikaci logiky, která začíná triggerem požadavku HTTP. Tato funkce volá koncový bod při každém přijetí zprávy fronty.  
+V tomto scénáři máte funkci spouštějící jednotlivé aplikace logiky, které chcete aktivovat. Nejdřív vytvořte aplikaci logiky, která začíná triggerem požadavku HTTP. Tato funkce volá koncový bod při každém přijetí zprávy fronty.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com)a vytvořte prázdnou aplikaci logiky.
 
    Pokud s Logic Apps začínáte, Projděte si [rychlý Start: Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Do vyhledávacího pole zadejte "požadavek HTTP". V seznamu triggery vyberte tuto aktivační událost: **když se přijme požadavek HTTP** .
+1. Do vyhledávacího pole zadejte `http request`. V seznamu triggery vyberte aktivační událost **při přijetí požadavku HTTP** .
 
    ![Vybrat aktivační událost](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger.png)
 
@@ -52,7 +52,7 @@ V tomto scénáři máte funkci spouštějící jednotlivé aplikace logiky, kte
 
    1. V triggeru žádosti vyberte **použít ukázkovou datovou část k vygenerování schématu**.
 
-   1. V části **Zadejte nebo vložte ukázkovou datovou část JSON**zadejte datovou část ukázky a pak zvolte **Hotovo**.
+   1. V části **Zadejte nebo vložte ukázkovou datovou část JSON**zadejte datovou část ukázky a potom vyberte **Hotovo**.
 
       ![Zadat ukázkovou datovou část](./media/logic-apps-scenario-function-sb-trigger/enter-sample-payload.png)
 
@@ -102,9 +102,9 @@ Dále vytvořte funkci, která funguje jako Trigger a naslouchat do fronty.
 
 1. V Azure Portal otevřete a rozbalte aplikaci Function App, pokud ještě není otevřená. 
 
-1. V části název aplikace Function App rozbalte **funkce**. V podokně **funkce** klikněte na možnost **Nová funkce**.
+1. V části název aplikace Function App rozbalte **funkce**. V podokně **funkce** vyberte možnost **Nová funkce**.
 
-   ![Rozbalte položku funkce a klikněte na možnost Nová funkce.](./media/logic-apps-scenario-function-sb-trigger/create-new-function.png)
+   ![Rozbalte položku funkce a vyberte možnost Nová funkce.](./media/logic-apps-scenario-function-sb-trigger/add-new-function-to-function-app.png)
 
 1. Tuto šablonu vyberte na základě toho, jestli jste vytvořili novou aplikaci Function App, kde jste vybrali .NET jako zásobník modulu runtime, nebo používáte existující aplikaci Function App.
 
@@ -116,9 +116,17 @@ Dále vytvořte funkci, která funguje jako Trigger a naslouchat do fronty.
 
      ![Vybrat šablonu pro existující aplikaci Function App](./media/logic-apps-scenario-function-sb-trigger/legacy-add-queue-trigger-template.png)
 
-1. V podokně **aktivační událost fronty Azure Service Bus** zadejte název triggeru a nastavte **připojení Service Bus** pro frontu, která používá `OnMessageReceive()` naslouchací proces sady Azure Service Bus SDK, a pak vyberte **vytvořit**.
+1. V podokně **aktivace fronty Azure Service Bus** zadejte název triggeru a nastavte **připojení Service Bus** pro frontu, která používá `OnMessageReceive()` naslouchací proces sady Azure Service Bus SDK, a vyberte **vytvořit**.
 
-1. Napište základní funkci pro volání dříve vytvořeného koncového bodu aplikace logiky pomocí zprávy Queue jako triggeru. V tomto příkladu se používá typ obsahu zprávy `application/json`, ale tento typ můžete podle potřeby změnit. Pokud je to možné, znovu použijte instanci klientů protokolu HTTP. Další informace najdete v tématu [Správa připojení v Azure Functions](../azure-functions/manage-connections.md).
+1. Napište základní funkci pro volání dříve vytvořeného koncového bodu aplikace logiky pomocí zprávy Queue jako triggeru. Před psaním funkce si Projděte tyto požadavky:
+
+   * V tomto příkladu se používá typ obsahu zprávy `application/json`, ale tento typ můžete podle potřeby změnit.
+   
+   * Z důvodu možného souběžného spouštění funkcí, velkých objemů nebo velkého zatížení se vyhnete vytvoření instance [třídy HTTPClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) pomocí příkazu `using` a přímém vytváření instancí HTTPClient na požadavek. Další informace najdete v tématu [použití HttpClientFactory k implementaci odolných požadavků HTTP](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core).
+   
+   * Pokud je to možné, znovu použijte instanci klientů protokolu HTTP. Další informace najdete v tématu [Správa připojení v Azure Functions](../azure-functions/manage-connections.md).
+
+   Tento příklad používá [metodu`Task.Run`](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run) v [asynchronním](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async) režimu. Další informace naleznete v tématu [asynchronní programování s Async a await](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/).
 
    ```CSharp
    using System;
@@ -126,17 +134,16 @@ Dále vytvořte funkci, která funguje jako Trigger a naslouchat do fronty.
    using System.Net.Http;
    using System.Text;
 
-   // Callback URL for previously created Request trigger
+   // Can also fetch from App Settings or environment variable
    private static string logicAppUri = @"https://prod-05.westus.logic.azure.com:443/workflows/<remaining-callback-URL>";
 
-   // Reuse the instance of HTTP clients if possible
+   // Reuse the instance of HTTP clients if possible: https://docs.microsoft.com/azure/azure-functions/manage-connections
    private static HttpClient httpClient = new HttpClient();
 
-   public static void Run(string myQueueItem, ILogger log)
+   public static async Task Run(string myQueueItem, TraceWriter log) 
    {
-       log.LogInformation($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
-
-       var response = httpClient.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")).Result;
+      log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+      var response = await httpClient.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")); 
    }
    ```
 
@@ -146,4 +153,4 @@ Dále vytvořte funkci, která funguje jako Trigger a naslouchat do fronty.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Volání, Trigger nebo vnoření pracovních postupů pomocí koncových bodů HTTP](../logic-apps/logic-apps-http-endpoint.md)
+* [Volání, Trigger nebo vnoření pracovních postupů pomocí koncových bodů HTTP](../logic-apps/logic-apps-http-endpoint.md)

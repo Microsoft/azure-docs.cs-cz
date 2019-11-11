@@ -6,15 +6,15 @@ author: dlepow
 manager: gwallace
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 11/01/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: cc9b11ba5fe0cd015d0879f28b9e85fb46b11955
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: a785ecbfa09c54d3affa97c220d4808f9fe8d90b
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178574"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904454"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Skupiny kontejnerů v Azure Container Instances
 
@@ -51,15 +51,17 @@ Pokud chcete zachovat konfiguraci skupiny kontejnerů, můžete tuto konfiguraci
 
 Azure Container Instances přiděluje prostředky, jako jsou CPU, paměť a volitelně [GPU][gpus] (Preview), do skupiny kontejnerů přidáním [požadavků na prostředky][resource-requests] instancí ve skupině. Pokud jako příklad vytvoříte skupinu kontejnerů se dvěma instancemi, každý z nich bude mít každý požadavek 1 procesor, skupina kontejnerů se přidělí 2 procesory.
 
-Maximální počet prostředků, které jsou k dispozici pro skupinu kontejnerů, závisí na [oblasti Azure][region-availability] používané pro nasazení.
+### <a name="resource-usage-by-instances"></a>Využití prostředků podle instancí
 
-### <a name="container-resource-requests-and-limits"></a>Požadavky a omezení prostředků kontejneru
+Každá instance kontejneru má přidělené prostředky, které jsou zadány v žádosti o prostředky. Využití prostředků v instanci kontejneru ve skupině ale závisí na tom, jak nakonfigurujete její volitelnou vlastnost [limitu prostředků][resource-limits] .
 
-* Ve výchozím nastavení sdílí instance kontejnerů ve skupině požadované prostředky skupiny. Ve skupině se dvěma instancemi každý, který požaduje 1 procesor, má skupina jako celek přístup k 2 procesorům. Každá instance může využívat až 2 procesorů a instance můžou být v době, kdy je spuštěná, konkurenční pro prostředky procesoru.
+* Pokud nezadáte omezení prostředků, maximální využití prostředků instance je stejné jako jeho požadavek na prostředek.
 
-* Pokud chcete omezit využití prostředků instancí ve skupině, volitelně nastavte pro instanci [limit prostředků][resource-limits] . V případě skupiny se dvěma instancemi požadujících 1 procesor může jeden z vašich kontejnerů vyžadovat více procesorů, než je druhý.
+* Pokud pro instanci zadáte omezení prostředků, můžete pro její úlohu upravit využití prostředků instance, buď snížit nebo zvýšit využití vzhledem k žádosti o prostředky. Maximální počet prostředků, které můžete nastavit, je celkový počet prostředků přidělených skupině.
+    
+    Například ve skupině se dvěma instancemi požadujících 1 procesor může jeden z vašich kontejnerů spustit úlohu, která vyžaduje více procesorů pro spuštění než druhá.
 
-  V tomto scénáři můžete nastavit limit prostředků 0,5 procesor pro jednu instanci a limit 2 procesorů pro druhý. Tato konfigurace omezuje využití prostředků prvního kontejneru na 0,5 procesor, což umožňuje, aby druhý kontejner používal až plný 2 procesory, pokud jsou k dispozici.
+    V tomto scénáři můžete nastavit limit prostředků 0,5 procesor pro jednu instanci a limit 2 procesorů pro druhý. Tato konfigurace omezuje využití prostředků prvního kontejneru na 0,5 procesor, což umožňuje, aby druhý kontejner používal až plný 2 procesory, pokud jsou k dispozici.
 
 Další informace naleznete v tématu vlastnost [ResourceRequirements][resource-requirements] ve skupinách kontejneru REST API.
 
@@ -75,7 +77,7 @@ Skupiny kontejnerů sdílejí IP adresu a obor názvů portu na této IP adrese.
 
 Volitelně nasaďte skupiny kontejnerů do služby [Azure Virtual Network][virtual-network] (Preview), abyste kontejnerům umožnili zabezpečenou komunikaci s ostatními prostředky ve virtuální síti.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 Můžete zadat externí svazky, které se připojí v rámci skupiny kontejnerů. Tyto svazky můžete namapovat na konkrétní cesty v rámci jednotlivých kontejnerů ve skupině.
 

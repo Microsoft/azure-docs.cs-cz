@@ -1,5 +1,5 @@
 ---
-title: Nasazení s nulovým výpadkem pro Durable Functions
+title: Nasazení s nulovou dobou výpadku pro Durable Functions
 description: Naučte se, jak povolit orchestraci Durable Functions pro nasazení s nulovými výpadky.
 services: functions
 author: tsushi
@@ -8,29 +8,31 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b47604f2c8703ba587e98d68dc30552e5944f562
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: af19f8cdcc26d1459bc024f00b963f04bd8d763b
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614502"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904046"
 ---
-# <a name="zero-downtime-deployment-for-durable-functions"></a>Nasazení s nulovým výpadkem pro Durable Functions
+# <a name="zero-downtime-deployment-for-durable-functions"></a>Nasazení s nulovou dobou výpadku pro Durable Functions
 
-[Model spolehlivého spuštění](durable-functions-checkpointing-and-replay.md) Durable Functions vyžaduje, aby orchestrace byly deterministické, což vytvoří další výzvu, která je potřeba zvážit při nasazování aktualizací. Pokud nasazení obsahuje změny signatur funkcí aktivity nebo logiky nástroje Orchestrator, instance orchestrace v rámci letu selžou. Tato situace je obzvláště problémem pro instance dlouhotrvajících orchestrací, což může představovat hodiny nebo dny v práci.
+[Model spolehlivého spuštění](durable-functions-checkpointing-and-replay.md) Durable Functions vyžaduje, aby orchestrace byly deterministické, což vytvoří další výzvu, která se při nasazení aktualizací zváží. Pokud nasazení obsahuje změny signatur funkcí aktivity nebo logiky nástroje Orchestrator, instance orchestrace v rámci letu selžou. Tato situace je obzvláště problémem pro instance dlouhotrvajících orchestrací, což může představovat hodiny nebo dny v práci.
 
-Aby nedošlo k těmto chybám, musíte buď zpozdit nasazení, dokud se nedokončí všechny spuštěné instance orchestrace, nebo zajistit, aby všechny spuštěné instance orchestrace používaly stávající verze vašich funkcí. Další informace o tom, jak se správou verzí, najdete [v tématu Správa verzí v Durable Functions](durable-functions-versioning.md).
+Aby nedošlo k těmto selháním, máte dvě možnosti: 
+- Nastavte zpoždění nasazení, dokud se nedokončí všechny spuštěné instance orchestrace.
+- Zajistěte, aby všechny spuštěné instance orchestrace používaly stávající verze vašich funkcí. 
 
 > [!NOTE]
-> Tento článek poskytuje pokyny pro aplikace Functions cílené na Durable Functions 1. x. Ještě nebyla aktualizována na účet pro změny, které byly zavedeny v Durable Functions 2. x. Další informace o rozdílech mezi verzemi rozšíření naleznete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Tento článek poskytuje pokyny pro aplikace Functions, které cílí na Durable Functions 1. x. Nebyla aktualizována na účet pro změny, které byly zavedeny v Durable Functions 2. x. Další informace o rozdílech mezi verzemi rozšíření naleznete v tématu [Durable Functions verze](durable-functions-versions.md).
 
 Následující graf porovnává tři hlavní strategie, abyste dosáhli nasazení s nulovými výpadky pro Durable Functions: 
 
 | Strategie |  Kdy je použít | IT | Nevýhody |
 | -------- | ------------ | ---- | ---- |
-| **[Správa verzí](#versioning)** |  Aplikace, u kterých nedochází k častým [změnám.](durable-functions-versioning.md) | Jednoduchá implementace. |  Zvýšení velikosti aplikace funkcí v paměti a počtu funkcí<br/>Duplikace kódu. |
-| **[Stavová kontrolu pomocí slotu](#status-check-with-slot)** | Systém, který nemá dlouhotrvající orchestraci trvající více než 24 hodin nebo často překrývající orchestrace. | Základ jednoduchého kódu.<br/>Nevyžaduje další správu aplikací Function App. | Vyžaduje další účet úložiště nebo správu centra úloh.<br/>Vyžaduje časové období, kdy nejsou spuštěny žádné orchestrace. |
-| **[Směrování aplikace](#application-routing)** | Systém, který nemá časová období, když orchestrace nejsou spuštěny, například ty, které mají orchestraci trvající více než 24 hodin nebo často překrývající orchestrace. | Zpracovává nové verze systémů s nepřetržitým spouštěním orchestrace, které mají zásadní změny. | Vyžaduje inteligentní směrovač aplikace.<br/>Může se jednat o maximální počet aplikací Function App povolených vaším předplatným (výchozí 100). |
+| [Správa verzí](#versioning) |  Aplikace, u kterých nedochází k častým [změnám.](durable-functions-versioning.md) | Jednoduchá implementace. |  Zvýšení velikosti aplikace funkcí v paměti a počtu funkcí<br/>Duplikace kódu. |
+| [Stavová kontrolu pomocí slotu](#status-check-with-slot) | Systém, který nemá dlouhodobě běžící orchestraci trvající více než 24 hodin nebo často překrývající orchestrace. | Základ jednoduchého kódu.<br/>Nevyžaduje další správu aplikací Function App. | Vyžaduje další účet úložiště nebo správu centra úloh.<br/>Vyžaduje časové období, kdy nejsou spuštěny žádné orchestrace. |
+| [Směrování aplikace](#application-routing) | Systém, který nemá časová období, pokud orchestrace nejsou spuštěny, například tato časová období s orchestrací, která byla za posledních více než 24 hodin nebo často překrývající orchestrace. | Zpracovává nové verze systémů s nepřetržitým spouštěním orchestrace, které mají zásadní změny. | Vyžaduje inteligentní směrovač aplikace.<br/>Může se jednat o maximální počet aplikací Function App povolených vaším předplatným. Výchozí hodnota je 100. |
 
 ## <a name="versioning"></a>Správa verzí
 
@@ -38,34 +40,34 @@ Definujte nové verze vašich funkcí a ve své aplikaci Function App ponechte s
 
 ![Strategie správy verzí](media/durable-functions-zero-downtime-deployment/versioning-strategy.png)
 
-V této strategii je nutné zkopírovat každou funkci a její odkazy na jiné aktualizované funkce. To můžete usnadnit psaním skriptu. Tady je [ukázkový projekt](https://github.com/TsuyoshiUshio/DurableVersioning) se skriptem migrace.
+V této strategii je nutné zkopírovat každou funkci a její odkazy na jiné funkce musí být aktualizovány. To můžete usnadnit psaním skriptu. Tady je [ukázkový projekt](https://github.com/TsuyoshiUshio/DurableVersioning) se skriptem migrace.
 
 >[!NOTE]
 >Tato strategie využívá sloty nasazení, aby nedocházelo k výpadkům během nasazení. Podrobnější informace o tom, jak vytvořit a používat nové sloty nasazení, najdete v tématu [Azure Functions sloty nasazení](../functions-deployment-slots.md).
 
 ## <a name="status-check-with-slot"></a>Stavová kontrolu pomocí slotu
 
-Zatímco aktuální verze vaší aplikace Function App běží v produkčním slotu, nasaďte novou verzi aplikace Function App do přípravného slotu. Než provedete prohození produkčních a přípravných slotů, zkontrolujte, jestli jsou spuštěné instance orchestrace. Po dokončení všech instancí orchestrace můžete provést prohození. Tato strategie funguje, když máte předvídatelné období, kdy nejsou žádné instance orchestrace v letu. Toto je nejlepší přístup, pokud vaše orchestrace nejsou dlouhotrvající a když se vaše orchestrace nemění často.
+Zatímco aktuální verze vaší aplikace Function App běží v produkčním slotu, nasaďte novou verzi aplikace Function App do přípravného slotu. Než provedete prohození produkčních a přípravných slotů, zkontrolujte, jestli nejsou spuštěné instance orchestrace. Po dokončení všech instancí orchestrace můžete provést prohození. Tato strategie funguje, když máte předvídatelné doby, kdy se v letu neúčtují žádné instance orchestrace. Toto je nejlepší přístup, pokud vaše orchestrace nejsou dlouhotrvající a když se vaše orchestrace nemění často.
 
 ### <a name="function-app-configuration"></a>Konfigurace aplikace Function App
 
-Tento scénář můžete nastavit pomocí následujícího postupu:
+Tento scénář nastavíte pomocí následujícího postupu.
 
 1. [Přidejte sloty nasazení](../functions-deployment-slots.md#add-a-slot) do aplikace Function App pro přípravu a výrobu.
 
-1. U každého slotu nastavte [nastavení aplikace AzureWebJobsStorage](../functions-app-settings.md#azurewebjobsstorage) na připojovací řetězec sdíleného účtu úložiště. Tato akce bude používána modulem runtime Azure Functions. Tento účet bude používán modulem runtime Azure Functions a bude spravovat klíče funkce.
+1. U každého slotu nastavte [nastavení aplikace AzureWebJobsStorage](../functions-app-settings.md#azurewebjobsstorage) na připojovací řetězec sdíleného účtu úložiště. Tento připojovací řetězec účtu úložiště používá modul runtime Azure Functions. Tento účet je používán modulem runtime Azure Functions a spravuje klíče funkce.
 
-1. Pro každou slot vytvořte nové nastavení aplikace (např. DurableManagementStorage) a nastavte jeho hodnotu na připojovací řetězec různých účtů úložiště. Tyto účty úložiště bude používat rozšíření Durable Functions pro [spolehlivé provádění](durable-functions-checkpointing-and-replay.md). Pro jednotlivé sloty použijte samostatný účet úložiště. Toto nastavení neoznačujte jako nastavení slotu nasazení.
+1. Pro každou slot vytvořte nové nastavení aplikace, například `DurableManagementStorage`. Nastavte jeho hodnotu na připojovací řetězec různých účtů úložiště. Tyto účty úložiště používá rozšíření Durable Functions pro [spolehlivé provádění](durable-functions-checkpointing-and-replay.md). Pro jednotlivé sloty použijte samostatný účet úložiště. Toto nastavení neoznačujte jako nastavení slotu nasazení.
 
-1. V [části durableTask souboru Host. JSON](durable-functions-bindings.md#hostjson-settings)aplikace Function App zadejte azureStorageConnectionStringName jako název nastavení aplikace, které jste vytvořili v kroku 3.
+1. V [části durableTask souboru Host. JSON](durable-functions-bindings.md#hostjson-settings)aplikace Function app zadejte `azureStorageConnectionStringName` jako název nastavení aplikace, které jste vytvořili v kroku 3.
 
-Následující diagram znázorňuje popis konfigurace slotů nasazení a účtů úložiště. V tomto potenciálním scénáři předběžného nasazení je verze 2 aplikace Function App spuštěná v produkčním slotu, zatímco verze 1 zůstává v přípravném slotu.
+Následující diagram znázorňuje popsanou konfiguraci slotů pro nasazení a účtů úložiště. V tomto potenciálním scénáři přednasazení je verze 2 aplikace Function App spuštěná v produkčním slotu, zatímco verze 1 zůstává v přípravném slotu.
 
-![Slot nasazení](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
+![Sloty nasazení a účty úložiště](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
 
 ### <a name="hostjson-examples"></a>Příklady Host. JSON
 
-Následující fragmenty JSON jsou příklady nastavení připojovacího řetězce v souboru Host. JSON.
+Následující fragmenty JSON jsou příklady nastavení připojovacího řetězce v souboru *Host. JSON* .
 
 #### <a name="functions-20"></a>Funkce 2,0
 
@@ -121,7 +123,7 @@ Azure Pipelines kontroluje, jestli aplikace Function App běží na instancích 
 
 Teď je potřeba nasadit novou verzi vaší aplikace Function App do přípravného slotu.
 
-![Slot nasazení](media/durable-functions-zero-downtime-deployment/deployment-slot-2.png)
+![Přípravný slot](media/durable-functions-zero-downtime-deployment/deployment-slot-2.png)
 
 Nakonec Proměňte sloty. 
 
@@ -129,19 +131,19 @@ Nastavení aplikace, která nejsou označená jako nastavení slotu nasazení, s
 
 ![Slot nasazení](media/durable-functions-zero-downtime-deployment/deployment-slot-3.png)
 
-Chcete-li pro oba sloty použít stejný účet úložiště, můžete změnit názvy Center úloh. V takovém případě musíte spravovat stav vašich slotů a nastavení HubName vašich aplikací. Další informace najdete v tématu [centra úloh v Durable Functions](durable-functions-task-hubs.md).
+Chcete-li pro oba sloty použít stejný účet úložiště, můžete změnit názvy Center úloh. V takovém případě musíte spravovat stav vašich slotů a nastavení HubName vaší aplikace. Další informace najdete v tématu [centra úloh v Durable Functions](durable-functions-task-hubs.md).
 
 ## <a name="application-routing"></a>Směrování aplikace
 
 Tato strategie je nejsložitější. Dá se ale použít pro aplikace Function App, které nemají čas mezi běžícími orchestrací.
 
-Pro tuto strategii musíte před Durable Functions vytvořit *směrovač aplikace* . Tento směrovač může být implementován pomocí Durable Functions a má následující zodpovědnosti:
+Pro tuto strategii musíte před Durable Functions vytvořit *směrovač aplikace* . Tento směrovač se dá implementovat s Durable Functions. Směrovač má odpovědnost za:
 
-* Nasazuje se aplikace Function App.
+* Nasaďte aplikaci Function App.
 * Správa verze Durable Functions. 
-* Požadavky orchestrace směrování do aplikací Function App.
+* Žádosti orchestrace směrování na aplikace Function App.
 
-Při prvním přijetí žádosti o orchestraci provede směrovač úkoly:
+Při prvním přijetí žádosti o orchestraci provede směrovač následující úlohy:
 
 1. Vytvoří novou aplikaci Function App v Azure.
 2. Nasadí kód aplikace Function App do nové aplikace Function App v Azure.
@@ -151,23 +153,23 @@ Směrovač spravuje stav, ve kterém je nasazená verze kódu vaší aplikace, d
 
 ![Směrování aplikací (první čas)](media/durable-functions-zero-downtime-deployment/application-routing.png)
 
-Směrovač směruje požadavky na nasazení a orchestraci na příslušnou aplikaci funkcí na základě `version` poslaných s požadavkem a ignoruje verzi opravy.
+Směrovač nasměruje požadavky na nasazení a orchestraci na příslušnou aplikaci Function App na základě verze odeslané s požadavkem. Ignoruje verzi opravy.
 
-Když nasadíte novou verzi aplikace *bez* zásadní změny, můžete zvýšit verzi opravy. Směrovač se nasadí do vaší stávající aplikace Function App a odešle požadavky na starou a nové verze kódu se směruje do stejné aplikace Function App.
+Když nasadíte novou verzi aplikace bez zásadní změny, můžete zvýšit verzi opravy. Směrovač se nasadí do vaší stávající aplikace Function App a pošle žádosti o starou a novou verzi kódu, které jsou směrované do stejné aplikace Function App.
 
 ![Směrování aplikace (beze změny)](media/durable-functions-zero-downtime-deployment/application-routing-2.png)
 
-Když nasadíte novou verzi aplikace s zásadní změnou, můžete zvýšit hlavní nebo dílčí verzi. Pak směrovač aplikace vytvoří novou aplikaci Function App v Azure, nasadí ji do IT a směruje požadavky na novou verzi vaší aplikace. V diagramu níže jsou spuštěné orchestrace v 1.0.1 verzi aplikace i nadále spuštěné, ale požadavky na verzi 1.1.0 se směrují do nové aplikace Function App.
+Když nasadíte novou verzi aplikace s zásadní změnou, můžete zvýšit hlavní nebo dílčí verzi. Pak směrovač aplikace vytvoří novou aplikaci Function App v Azure, nasadí ji do IT a směruje požadavky na novou verzi vaší aplikace. V následujícím diagramu jsou spuštěné orchestrace v 1.0.1 verzi aplikace i nadále spuštěné, ale požadavky na verzi 1.1.0 se směrují do nové aplikace Function App.
 
 ![Směrování aplikace (Průlomová změna)](media/durable-functions-zero-downtime-deployment/application-routing-3.png)
 
-Směrovač monitoruje stav orchestrací ve verzi 1.0.1 a odebere aplikace po dokončení všech orchestrací.  
+Směrovač monitoruje stav orchestrací ve verzi 1.0.1 a odebírá aplikace po dokončení všech orchestrací. 
 
 ### <a name="tracking-store-settings"></a>Nastavení úložiště sledování
 
-Každá aplikace Function app by měla používat samostatné fronty plánování, případně samostatné účty úložiště. Pokud ale chcete zadat dotaz na všechny instance orchestrace napříč všemi verzemi vaší aplikace, můžete sdílet tabulky instancí a historie napříč vašimi aplikacemi Function App. Tabulky můžete sdílet tak, že nakonfigurujete `trackingStoreConnectionStringName` a `trackingStoreNamePrefix` v souboru [Nastavení Host. JSON](durable-functions-bindings.md#host-json) tak, aby všechny používaly stejné hodnoty.
+Každá aplikace Function app by měla používat samostatné fronty plánování, případně samostatné účty úložiště. Pokud chcete zadat dotaz na všechny instance orchestrace napříč všemi verzemi vaší aplikace, můžete sdílet tabulky instancí a historie napříč vašimi aplikacemi Function App. Tabulky můžete sdílet konfigurací nastavení `trackingStoreConnectionStringName` a `trackingStoreNamePrefix` v souboru [Nastavení Host. JSON](durable-functions-bindings.md#host-json) tak, aby všechny používaly stejné hodnoty.
 
-Další podrobnosti najdete [v Durable Functions v Azure](durable-functions-instance-management.md).
+Další informace najdete v tématu [Správa instancí v Durable Functions v Azure](durable-functions-instance-management.md).
 
 ![Nastavení úložiště sledování](media/durable-functions-zero-downtime-deployment/tracking-store-settings.png)
 

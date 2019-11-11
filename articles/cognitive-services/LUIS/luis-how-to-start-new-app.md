@@ -9,33 +9,33 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 227efcdbcb7d8e776dd77b38c5d1dedd54d71b6b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d3f8696388a33a8ea112aae438c6bbe9af520c61
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500313"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904284"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Vytvoření nové aplikace LUIS na portálu LUIS
-Existuje několik způsobů, jak vytvořit aplikaci LUIS. Aplikaci LUIS můžete vytvořit na portálu [Luis](https://www.luis.ai) nebo prostřednictvím [rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)pro vytváření Luis.
+Existuje několik způsobů, jak vytvořit aplikaci LUIS. Aplikaci LUIS můžete vytvořit na portálu LUIS nebo prostřednictvím [rozhraní API](developer-reference-resource.md)pro vytváření Luis.
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="using-the-luis-portal"></a>Používání portálu LUIS
 
-Novou aplikaci můžete na portálu LUIS vytvořit několika způsoby:
+Novou aplikaci můžete vytvořit na portálu Preview několika způsoby:
 
 * Začněte s prázdnou aplikací a vytvořte záměry, projevy a entity.
 * Začněte s prázdnou aplikací a přidejte [předem vytvořenou doménu](luis-how-to-use-prebuilt-domains.md).
-* Importujte aplikaci LUIS ze souboru JSON, který už obsahuje záměry, projevy a entity.
+* Importujte aplikaci LUIS z `.lu` nebo `.json` souboru, který už obsahuje záměry, projevy a entity.
 
 ## <a name="using-the-authoring-apis"></a>Použití rozhraní API pro vytváření obsahu
 Novou aplikaci s rozhraními API pro vytváření obsahu můžete vytvořit několika způsoby:
 
-* [Začněte](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) s prázdnou aplikací a vytvořte záměry, projevy a entity.
-* [Začněte](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/59104e515aca2f0b48c76be5) předem vytvořenou doménou.  
+* [Přidat aplikaci](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c2f) – začněte s prázdnou aplikací a vytvořte záměry, projevy a entity.
+* [Přidejte předem vytvořenou aplikaci](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/59104e515aca2f0b48c76be5) – začněte s předem vytvořenou doménou, včetně záměrů, projevyů a entit.  
 
 
 <a name="export-app"></a>
@@ -47,51 +47,36 @@ Novou aplikaci s rozhraními API pro vytváření obsahu můžete vytvořit něk
 
 ## <a name="create-new-app-in-luis"></a>Vytvoření nové aplikace v LUIS
 
-1. Na stránce **Moje aplikace** vyberte **+ vytvořit**.
+1. Na stránce **Moje aplikace** vyberte své předplatné a vytvořte prostředek a potom **+ vytvořit**. Pokud používáte bezplatný zkušební klíč, přečtěte si, jak [vytvořit prostředek pro vytváření obsahu](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal).
 
-    ![Seznam aplikací LUIS](./media/luis-create-new-app/apps-list.png)
+    ![Seznam aplikací LUIS](./media/create-app-in-portal.png)
 
 
-2. Do dialogového okna zadejte název aplikace "TravelAgent".
+1. Do dialogového okna zadejte název vaší aplikace, například `Pizza Tutorial`.
 
-    ![Dialogové okno vytvořit novou aplikaci](./media/luis-create-new-app/create-app.png)
+    ![Dialogové okno vytvořit novou aplikaci](./media/create-pizza-tutorial-app-in-portal.png)
 
-3. Zvolte jazykovou verzi vaší aplikace (pro aplikaci TravelAgent zvolte angličtinu) a potom vyberte **Hotovo**. 
+1. Zvolte jazykovou verzi vaší aplikace a potom vyberte **Hotovo**. Popis a předpověď prostředku jsou v tuto chvíli volitelné. V části **Spravovat** portálu můžete kdykoli nastavit.
 
     > [!NOTE]
     > Jakmile se aplikace vytvoří, nemůžete změnit její jazykovou verzi. 
 
-## <a name="import-an-app-from-file"></a>Import aplikace ze souboru
+    Po vytvoření aplikace se na portálu LUIS zobrazí seznam **záměrů** s již vytvořeným záměrem `None`. Teď máte prázdnou aplikaci. 
+    
+    > [!div class="mx-imgBorder"]
+    > seznam záměrů ![s žádnými záměry vytvořenými bez příkladu projevy.](media/pizza-tutorial-new-app-empty-intent-list.png)
 
-1. Na stránce **Moje aplikace** vyberte **importovat novou aplikaci**.
-1. V místním dialogovém okně Vyberte platný soubor JSON aplikace a potom vyberte **Hotovo**.
+## <a name="other-actions-available"></a>Další dostupné akce
 
-### <a name="import-errors"></a>Chyby importu
+Panel nástrojů kontextu poskytuje další akce:
 
-Možné chyby: 
-
-* Aplikace s tímto názvem již existuje. Pokud to chcete opravit, znovu naimportujte aplikaci a nastavte **volitelný název** na nový název. 
-
-## <a name="export-app-for-backup"></a>Exportovat aplikaci pro zálohování
-
-1. Na stránce **Moje aplikace** vyberte **exportovat**.
-1. Vyberte **exportovat jako JSON**. Prohlížeč stáhne aktivní verzi aplikace.
-1. Přidejte tento soubor do zálohovacího systému, abyste mohli model archivovat.
-
-## <a name="export-app-for-containers"></a>Exportovat aplikaci pro kontejnery
-
-1. Na stránce **Moje aplikace** vyberte **exportovat**.
-1. Vyberte **exportovat jako kontejner** a potom vyberte, která publikovaná pozice (výroba nebo fáze) chcete exportovat.
-1. Tento soubor použijte s [kontejnerem Luis](luis-container-howto.md). 
-
-    Pokud vás zajímá export výukového, ale dosud nepublikovaného modelu, který se má použít s kontejnerem LUIS, klikněte na stránku **verze** a exportujte si ho z tohoto webu. 
-
-## <a name="delete-app"></a>Odstranit aplikaci
-
-1. Na stránce **Moje aplikace** vyberte tři tečky (...) na konci řádku aplikace.
-1. V nabídce vyberte **Odstranit** .
-1. V potvrzovacím okně vyberte **OK** .
+* Přejmenovat aplikaci
+* Import ze souboru pomocí `.lu` nebo `.json`
+* Exportovat aplikaci jako `.lu` (pro [LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)), `.json`nebo `.zip` (pro [kontejner Luis](luis-container-howto.md))
+* Umožňuje importovat protokoly koncových bodů kontejneru a zkontrolovat projevy koncového bodu.
+* Exportovat protokoly koncových bodů jako `.csv`pro offline analýzu
+* Odstranit aplikaci
 
 ## <a name="next-steps"></a>Další kroky
 
-Prvním úkolem v aplikaci je [Přidat záměry](luis-how-to-add-intents.md).
+Pokud návrh aplikace zahrnuje detekci záměrů, [vytvořte nové záměry](luis-how-to-add-intents.md)a přidejte příklad projevy. Pokud je návrh aplikace pouze extrahování dat, přidejte příklad projevy k záměru None, pak [vytvořte entity](luis-how-to-add-example-utterances.md)a označte příklad projevy s těmito entitami. 

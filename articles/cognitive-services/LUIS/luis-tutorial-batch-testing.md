@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Batch test-LUIS'
+title: 'Kurz: dávkové testování pro vyhledání problémů – LUIS'
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu se dozvíte, jak pomocí dávkového testování najít ve vaší aplikaci problémy předpovědi utterance a opravit je.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: ac88931d79df6c2527a2a5fd72b440baeb463115
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 68a0016e034f4642c4e4ff166a1456f7ecf1ee3c
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499063"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904233"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Kurz: dávkové test sady dat
 
@@ -34,7 +34,7 @@ Pokud používáte jinou aplikaci než tento kurz, *nepoužívejte ukázkový* p
 
 [!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-**V tomto kurzu se naučíte:**
+**Co se v tomto kurzu naučíte:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -57,7 +57,7 @@ Použijte k tomu následující postup:
 
 2. Naimportujte soubor JSON do nové aplikace.
 
-3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `batchtest`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL. 
+3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `batchtest`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto může obsahovat jenom znaky podporované v adresách URL. 
 
 4. Trénujte aplikaci.
 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.topic: article
 ms.date: 10/01/2019
 ms.reviewer: klam, LADocs
-ms.openlocfilehash: 275d02219087d07a058f486c263d1886839dd4cf
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 5b946e36c5da9f122adce1f8e3b99523a789a66f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799756"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901075"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Volání služby Azure Functions z Azure Logic Apps
 
@@ -29,7 +29,7 @@ Chcete-li spustit fragmenty kódu bez vytváření Azure Functions, přečtěte 
 > [!NOTE]
 > Integrace mezi Logic Apps a Azure Functions v současnosti nefunguje s povolenými sloty.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -114,7 +114,7 @@ Než budete moct vytvořit funkci Azure, která začíná zevnitř aplikace logi
 
    * Mezi stávajícími kroky v pracovním postupu vaší aplikace logiky přesuňte ukazatel myši na šipku, vyberte znaménko plus (+) a pak vyberte **přidat akci**.
 
-1. Do vyhledávacího pole zadejte jako filtr "Azure Functions". V seznamu akce vyberte tuto akci: **Zvolte funkci Azure** .
+1. Do vyhledávacího pole zadejte jako filtr "Azure Functions". V seznamu akce vyberte akci **Azure Function** , například:
 
    ![Najít Azure Functions](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
@@ -126,24 +126,24 @@ Než budete moct vytvořit funkci Azure, která začíná zevnitř aplikace logi
 
    1. Do pole **název funkce** zadejte název funkce.
 
-   1. V poli **kód** přidejte svůj kód do šablony funkce, včetně odpovědi a datové části, kterou chcete vrátit do vaší aplikace logiky poté, co byla funkce dokončena.
+   1. V poli **kód** přidejte svůj kód do šablony funkce, včetně odpovědi a datové části, kterou chcete vrátit do vaší aplikace logiky poté, co byla funkce dokončena. Až to budete mít, vyberte **Vytvořit**.
 
-      ![Definovat funkci](./media/logic-apps-azure-functions/function-definition.png)
+   Příklad:
 
-      V kódu šablony *objekt`context`* odkazuje na zprávu, kterou aplikace logiky posílá v pozdějším kroku v poli **Text žádosti** . Chcete-li získat přístup k vlastnostem objektu `context` zevnitř funkce, použijte tuto syntaxi:
+   ![Definovat funkci](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
-      `context.body.<property-name>`
+   V kódu šablony *objekt`context`* odkazuje na zprávu, kterou aplikace logiky posílá v pozdějším kroku v poli **Text žádosti** . Chcete-li získat přístup k vlastnostem objektu `context` zevnitř funkce, použijte tuto syntaxi:
 
-      Chcete-li například odkazovat na vlastnost `content` uvnitř objektu `context`, použijte tuto syntaxi:
+   `context.body.<property-name>`
 
-      `context.body.content`
+   Chcete-li například odkazovat na vlastnost `content` uvnitř objektu `context`, použijte tuto syntaxi:
 
-      Kód šablony obsahuje také `input` proměnnou, která ukládá hodnotu z parametru `data`, aby funkce mohla provádět operace s touto hodnotou. V rámci funkcí JavaScriptu je proměnná `data` také zástupce pro `context.body`.
+   `context.body.content`
 
-      > [!NOTE]
-      > Vlastnost `body` se vztahuje na objekt `context` a není shodná s tokenem **těla** z výstupu akce, který můžete také předat do funkce.
+   Kód šablony obsahuje také `input` proměnnou, která ukládá hodnotu z parametru `data`, aby funkce mohla provádět operace s touto hodnotou. V rámci funkcí JavaScriptu je proměnná `data` také zástupce pro `context.body`.
 
-   1. Až to budete mít, vyberte **Vytvořit**.
+   > [!NOTE]
+   > Vlastnost `body` se vztahuje na objekt `context` a není shodná s tokenem **těla** z výstupu akce, který můžete také předat do funkce.
 
 1. Do pole **Text žádosti** zadejte vstup funkce, který musí být naformátován jako objekt JavaScript Object Notation (JSON).
 
@@ -167,7 +167,7 @@ Pokud chcete volat existující služby Azure Functions z aplikací logiky, mů�
 
 1. V kroku, kam chcete funkci přidat, vyberte **Nový krok**.
 
-1. V části **Vybrat akci**do vyhledávacího pole zadejte jako filtr "Azure Functions". V seznamu akce vyberte tuto akci: **Zvolte funkci Azure** .
+1. V části **Vybrat akci**do vyhledávacího pole zadejte jako filtr "Azure Functions". V seznamu akce vyberte akci **použít funkci Azure** .
 
    ![Najít Azure Functions](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 

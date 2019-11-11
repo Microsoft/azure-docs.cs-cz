@@ -1,18 +1,18 @@
 ---
 title: Problémy s ověřováním ve službě Azure HDInsight
 description: Problémy s ověřováním ve službě Azure HDInsight
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 08/09/2019
-ms.openlocfilehash: 3d2ba5965fef19a36faa8b9bbef235fd4117c20f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 11/08/2019
+ms.openlocfilehash: 17bc9f1ea93b0afa4f53443a53d294acb9e94b2e
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71071940"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901402"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Problémy s ověřováním ve službě Azure HDInsight
 
@@ -34,11 +34,11 @@ Reason: Bad Request, Detailed Response: {"error":"invalid_grant","error_descript
 
 ### <a name="cause"></a>Příčina
 
-Kód chyby Azure AD 50126 znamená, `AllowCloudPasswordValidation` že klient nestavil zásady.
+Kód chyby Azure AD 50126 znamená, že tenant nestavil zásady `AllowCloudPasswordValidation`.
 
 ### <a name="resolution"></a>Řešení
 
-Správce společnosti tenanta Azure AD by měl povolit, aby služba Azure AD používala pro uživatele v AD FS hodnoty hash hesel.  Použijte, `AllowCloudPasswordValidationPolicy` jak je uvedeno v článku [použití balíček zabezpečení podniku ve službě HDInsight](../domain-joined/apache-domain-joined-architecture.md).
+Správce společnosti tenanta Azure AD by měl povolit, aby služba Azure AD používala pro uživatele v AD FS hodnoty hash hesel.  Použijte `AllowCloudPasswordValidationPolicy`, jak je znázorněno v článku [použití balíček zabezpečení podniku ve službě HDInsight](../domain-joined/apache-domain-joined-architecture.md).
 
 ---
 
@@ -106,11 +106,11 @@ Změňte heslo v Azure Portal (v místním systému) a potom počkejte 30 minut,
 
 ### <a name="issue"></a>Problém
 
-Zobrazí se chybová `interaction_required`zpráva.
+`interaction_required`se zobrazí chybová zpráva.
 
 ### <a name="cause"></a>Příčina
 
-Zásada podmíněného přístupu nebo MFA se aplikují na uživatele. Vzhledem k tomu, že interaktivní ověřování ještě není podporované, musí být uživatel nebo cluster vyloučený z MFA/podmíněného přístupu. Pokud se rozhodnete vyloučit cluster (zásady výjimky na základě IP adresy), ujistěte se, že je služba `ServiceEndpoints` AD pro tuto virtuální síť povolená.
+Pro uživatele platí zásady podmíněného přístupu nebo vícefaktorové ověřování. Vzhledem k tomu, že interaktivní ověřování se zatím nepodporuje, je potřeba daného uživatele nebo cluster vyloučit z vícefaktorového ověřování nebo podmíněného přístupu. Pokud se rozhodnete vyloučit cluster (zásady výjimky na základě IP adresy), ujistěte se, že je služba AD `ServiceEndpoints` pro tuto virtuální síť povolená.
 
 ### <a name="resolution"></a>Řešení
 
@@ -148,9 +148,9 @@ Se liší.
 
 ### <a name="resolution"></a>Řešení
 
-Aby kinit bylo úspěšné, musíte znát `sAMAccountName` (Jedná se o krátký název účtu bez sféry). `sAMAccountName`je obvykle předpona účtu (například Bob in `bob@contoso.com`). Pro některé uživatele se může lišit. Abyste se dozvěděli `sAMAccountName`, budete potřebovat možnost Procházet adresář a vyhledat si ho.
+Aby kinit bylo úspěšné, musíte znát `sAMAccountName` (Toto je krátký název účtu bez sféry). `sAMAccountName` je obvykle předpona účtu (například Bob v `bob@contoso.com`). Pro některé uživatele se může lišit. Abyste se dozvěděli `sAMAccountName`, budete potřebovat možnost Procházet adresář a hledat v něm.
 
-Způsoby, jak `sAMAccountName`najít:
+Způsoby, jak najít `sAMAccountName`:
 
 * Pokud se můžete přihlásit k Ambari pomocí místního správce Ambari, podívejte se na seznam uživatelů.
 
@@ -158,7 +158,7 @@ Způsoby, jak `sAMAccountName`najít:
 
 * Z hlavního uzlu můžete k hledání použít příkazy služby SAMBA. To vyžaduje platnou relaci protokolu Kerberos (úspěšné kinit). NET ADS Search "(userPrincipalName = Bob *)"
 
-    Výsledky hledání nebo procházení by měly ukazovat na `sAMAccountName` atribut. Také se můžete podívat na další atributy `pwdLastSet` `userPrincipalName` , například, `badPasswordTime`atd., pokud se tyto vlastnosti shodují s očekávaným způsobem.
+    Výsledky hledání a procházení by vám měly Ukázat `sAMAccountName` atribut. Také se můžete podívat na další atributy, například `pwdLastSet`, `badPasswordTime`, `userPrincipalName` atd. zjistíte, zda tyto vlastnosti odpovídají očekávání.
 
 ---
 
@@ -166,7 +166,7 @@ Způsoby, jak `sAMAccountName`najít:
 
 ### <a name="issue"></a>Problém
 
-Kinit selže s `Preauthentication` chybou.
+Kinit selže s chybou `Preauthentication`.
 
 ### <a name="cause"></a>Příčina
 
@@ -174,7 +174,7 @@ Nesprávné uživatelské jméno nebo heslo.
 
 ### <a name="resolution"></a>Řešení
 
-Ověřte uživatelské jméno a heslo. Také se podívejte na další vlastnosti popsané výše. Pokud chcete povolit podrobné ladění, spusťte `export KRB5_TRACE=/tmp/krb.log` z relace před tím, než zkusíte kinit.
+Ověřte uživatelské jméno a heslo. Také se podívejte na další vlastnosti popsané výše. Chcete-li povolit podrobné ladění, před pokusem o kinit spusťte z relace `export KRB5_TRACE=/tmp/krb.log`.
 
 ---
 
@@ -182,7 +182,7 @@ Ověřte uživatelské jméno a heslo. Také se podívejte na další vlastnosti
 
 ### <a name="issue"></a>Problém
 
-Příkaz Job/HDFS se `TokenNotFoundException`z důvodu nezdařil.
+Příkaz Job/HDFS se nezdařil z důvodu `TokenNotFoundException`.
 
 ### <a name="cause"></a>Příčina
 
@@ -194,12 +194,30 @@ Ujistěte se, že jste se úspěšně přihlásili k portálu Ambari, a to pomoc
 
 ---
 
+## <a name="error-fetching-access-token"></a>Chyba při načítání přístupového tokenu
+
+### <a name="issue"></a>Problém
+
+Uživatel obdrží chybovou zprávu `Error fetching access token`.
+
+### <a name="cause"></a>Příčina
+
+K této chybě dochází občas, když se uživatelé pokusí o přístup k ADLS Gen2 pomocí seznamů ACL a platnost tokenu protokolu Kerberos vypršela.
+
+### <a name="resolution"></a>Řešení
+
+* V případě Azure Data Lake Storage Gen1 vyčistěte mezipaměť prohlížeče a znovu se přihlaste do Ambari.
+
+* Pro Azure Data Lake Storage Gen2 spusťte `/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>` pro uživatele, se kterým se uživatel pokouší přihlásit.
+
+---
+
 ## <a name="next-steps"></a>Další kroky
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Součástí předplatného Microsoft Azure je přístup ke správě předplatného a podpora fakturace. Technická podpora se poskytuje prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
