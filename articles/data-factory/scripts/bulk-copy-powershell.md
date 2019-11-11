@@ -1,6 +1,6 @@
 ---
-title: 'Skript prostředí PowerShell: Hromadné kopírování dat pomocí služby Azure Data Factory | Dokumentace Microsoftu'
-description: Tento skript prostředí PowerShell ukazuje, jak pomocí Azure Data Factory pro kopírování dat ze zdrojového úložiště dat do cílového úložiště dat, hromadné.
+title: 'PowerShellový skript: hromadné kopírování dat pomocí Azure Data Factory '
+description: Tento skript PowerShellu ukazuje, jak použít Azure Data Factory ke kopírování dat ze zdrojového úložiště dat do cílového úložiště dat hromadně.
 services: data-factory
 author: linda33wj
 manager: craigg
@@ -11,38 +11,38 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: jingwang
-ms.openlocfilehash: d2db5bced78a00c8acabc150752fe65e9515dff1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ab373d049e34a6a5528a4e0a3418a3304835d4b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60480634"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684430"
 ---
-# <a name="powershell-script---copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Prostředí PowerShell script – hromadné kopírování několika tabulek pomocí Azure Data Factory
+# <a name="powershell-script---copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Skript PowerShellu – hromadné kopírování více tabulek pomocí Azure Data Factory
 
-Tento ukázkový skript Powershellu kopíruje data z více tabulek v databázi Azure SQL do služby Azure SQL data warehouse.
+Tento ukázkový skript PowerShellu kopíruje data z několika tabulek ve službě Azure SQL Database do služby Azure SQL Data Warehouse.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-Zobrazit [kurz: hromadně Kopírovat](../tutorial-bulk-copy.md#prerequisites) předpoklady pro spuštěním této ukázky.
+Viz [kurz: hromadné kopírování](../tutorial-bulk-copy.md#prerequisites) požadavků pro spuštění této ukázky.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
 > [!IMPORTANT]
-> Tento skript vytvoří soubory JSON, které definují entity služby Data Factory (propojené služby, datové sady a kanál) na váš pevný disk do složky c:\.
+> Tento skript vytvoří soubory JSON, které definují Data Factory entit (propojená služba, datová sada a kanál) na pevném disku v c:\. složky.
 
 [!code-powershell[main](../../../powershell_scripts/data-factory/bulk-copy-from-sql-databse-to-sql-data-warehouse/bulk-copy-from-sql-database-to-sql-data-warehouse.ps1 "Bulk copy from Azure SQL Database => Azure SQL Data Warehouse")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Po spuštění ukázkového skriptu můžete k odebrání skupiny prostředků a všechny prostředky, které s ním spojená následující příkaz:
+Po spuštění ukázkového skriptu můžete pomocí následujícího příkazu odebrat skupinu prostředků a všechny k ní přidružené prostředky:
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 ```
-Chcete-li odebrat objekt pro vytváření dat ze skupiny prostředků, spusťte následující příkaz: 
+Pokud chcete datovou továrnu ze skupiny prostředků odebrat, spusťte následující příkaz: 
 
 ```powershell
 Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
@@ -56,16 +56,16 @@ Tento skript používá následující příkazy:
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-azdatafactoryv2) | Vytvoření datové továrny |
-| [Set-AzDataFactoryV2LinkedService](/powershell/module/az.datafactory/set-azdatafactoryv2linkedservice) | Vytvoření propojené služby ve službě data factory. Propojená služba propojuje úložiště dat nebo výpočetní výkon s datovou továrnou. |
-| [Set-AzDataFactoryV2Dataset](/powershell/module/az.datafactory/set-azdatafactoryv2dataset) | Vytvoří datovou sadu ve službě data factory. Datová sada představuje vstup/výstup pro aktivitu v kanálu. | 
-| [Set-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/set-azdatafactoryv2pipeline) | Ve službě data factory vytvoří kanál. Kanál obsahuje jednu nebo víc aktivit, které provádí určité operace. U tohoto kanálu aktivita kopírování kopíruje data z jednoho umístění do jiného umístění ve službě Azure Blob Storage. |
-| [Invoke-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/invoke-azdatafactoryv2pipeline) | Vytvoří spuštění kanálu. Jinými slovy spouští kanál. |
-| [Get-AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-azdatafactoryv2activityrun) | Načte podrobnosti o spuštění aktivit (spuštění aktivit) v kanálu. 
+| [Set-AzDataFactoryV2LinkedService](/powershell/module/az.datafactory/set-azdatafactoryv2linkedservice) | Vytvoří propojenou službu v datové továrně. Propojená služba propojuje úložiště dat nebo výpočetní prostředky s datovou továrnou. |
+| [Set-AzDataFactoryV2Dataset](/powershell/module/az.datafactory/set-azdatafactoryv2dataset) | Vytvoří datovou sadu v datové továrně. Datová sada představuje vstup/výstup aktivity v kanálu. | 
+| [Set-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/set-azdatafactoryv2pipeline) | Vytvoří v datové továrně kanál. Kanál obsahuje jednu nebo více aktivit, které provádějí určitou operaci. V tomto kanálu aktivita kopírování kopíruje data z jednoho umístění do jiného umístění v Azure Blob Storage. |
+| [Invoke – AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/invoke-azdatafactoryv2pipeline) | Vytvoří běh pro kanál. Jinými slovy, spouští kanál. |
+| [Get-AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-azdatafactoryv2activityrun) | Získá podrobnosti o spuštění aktivity (spuštění aktivity) v kanálu. 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 
-Další ukázkové skripty Azure Powershellu objekt pro vytváření dat najdete v [skripty Powershellu pro Azure Data Factory](../samples-powershell.md).
+Další Azure Data Factory ukázkových skriptech PowerShellu najdete v [Azure Data Factory skriptech PowerShellu](../samples-powershell.md).
