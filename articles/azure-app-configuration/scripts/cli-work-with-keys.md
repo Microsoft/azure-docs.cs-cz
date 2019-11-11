@@ -1,29 +1,29 @@
 ---
-title: Ukázkový skript Azure CLI – práce s hodnotami klíče do Azure App Configuration Store | Dokumentace Microsoftu
-description: Poskytuje informace o práci s hodnotami klíče v úložišti konfigurace aplikace pro Azure
+title: Ukázkový skript Azure CLI – práce s klíčovými hodnotami v úložišti konfigurace aplikace Azure | Microsoft Docs
+description: Poskytuje informace o práci s klíčovými hodnotami v úložišti konfigurace aplikace Azure.
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
-manager: balans
+author: lisaguthrie
+manager: maiye
 editor: ''
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: azure-app-configuration
-ms.date: 02/24/2019
-ms.author: yegu
+ms.date: 11/08/2019
+ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 9288ea08da6335dd29e7a15a9bc871b76c1ce7e9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d89fa4c067e511e6210e8c1473bf1856297fc1de
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60235158"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904082"
 ---
-# <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Práce s hodnoty klíče v úložišti konfigurace aplikace pro Azure
+# <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Práce s klíčovými hodnotami v úložišti konfigurace aplikace Azure
 
-Tento ukázkový skript vytvoří nový klíč hodnota v úložišti konfigurace aplikace pro Azure, jsou uvedeny všechny existující hodnoty klíče, aktualizuje hodnotu na nově vytvořený klíč a nakonec odstraní.
+Tento ukázkový skript vytvoří novou klíčovou hodnotu v úložišti konfigurace aplikace Azure, vypíše všechny existující hodnoty klíčů, aktualizuje hodnotu nově vytvořeného klíče a poslední odstraní.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -31,7 +31,7 @@ Tento ukázkový skript vytvoří nový klíč hodnota v úložišti konfigurace
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-Je třeba nejprve nainstalovat rozšíření Azure App konfigurace rozhraní příkazového řádku spuštěním následujícího příkazu:
+Nejdřív musíte nainstalovat rozšíření rozhraní příkazového řádku Azure App Configuration, a to spuštěním následujícího příkazu:
 
         az extension add -n appconfig
 
@@ -42,6 +42,9 @@ Je třeba nejprve nainstalovat rozšíření Azure App konfigurace rozhraní př
 
 appConfigName=myTestAppConfigStore
 newKey="TestKey"
+refKey="KeyVaultReferenceTestKey"
+uri="[URL to value stored in Key Vault]"
+uri2="[URL to another value stored in Key Vault]"
 
 # Create a new key-value 
 az appconfig kv set --name $appConfigName --key $newKey --value "Value 1"
@@ -50,13 +53,28 @@ az appconfig kv set --name $appConfigName --key $newKey --value "Value 1"
 az appconfig kv list --name $appConfigName
 
 # Update new key's value
-az appconfig kv set --name $appConfigName --value "Value 2"
+az appconfig kv set --name $appConfigName --key $newKey --value "Value 2"
+
+# List current key-values
+az appconfig kv list --name $appConfigName
+
+# Create a new key-value referencing a value stored in Azure Key Vault
+az appconfig kv set --name $appConfigName --key $refKey --content-type "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8" --value "{\"uri\":\"$uri\"}"
+
+# List current key-values
+az appconfig kv list --name $appConfigName
+
+# Update Key Vault reference
+az appconfig kv set --name $appConfigName --key $refKey --value "{\"uri\":\"$uri2\"}"
 
 # List current key-values
 az appconfig kv list --name $appConfigName
 
 # Delete new key
 az appconfig kv delete  --name $appConfigName --key $newKey
+
+# Delete Key Vault reference
+az appconfig kv delete --name $appConfigName --key $refKey
 
 # List current key-values
 az appconfig kv list --name $appConfigName
@@ -66,16 +84,16 @@ az appconfig kv list --name $appConfigName
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy pracovat na klíč hodnota v obchodě s aplikacemi konfigurace. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript používá následující příkazy pro práci s klíčovými hodnotami v úložišti konfigurace aplikace. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
-| [Sada kv appconfig az](/cli/azure/ext/appconfig/appconfig) | Vytvoří nebo aktualizuje páru klíč hodnota. |
-| [seznam kv appconfig az](/cli/azure/ext/appconfig/appconfig) | Uvádí klíč hodnota v obchodě s aplikacemi konfigurace. |
-| [AZ appconfig kv delete](/cli/azure/ext/appconfig/appconfig) | Odstraní páru klíč hodnota. |
+| [AZ appconfig KV set](/cli/azure/ext/appconfig/appconfig) | Vytvoří nebo aktualizuje klíčovou hodnotu. |
+| [AZ appconfig KV list](/cli/azure/ext/appconfig/appconfig) | Uvádí klíčové hodnoty v úložišti konfigurace aplikace. |
+| [AZ appconfig KV DELETE](/cli/azure/ext/appconfig/appconfig) | Odstraní klíčovou hodnotu. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
-Další ukázkové skripty rozhraní příkazového řádku konfiguraci aplikace najdete v [dokumentaci Azure aplikace konfigurační](../cli-samples.md).
+Další ukázkové skripty rozhraní příkazového řádku pro konfiguraci aplikace najdete v [dokumentaci ke konfiguraci aplikace Azure](../cli-samples.md).

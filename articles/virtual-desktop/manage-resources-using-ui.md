@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 06/04/2019
+ms.date: 11/09/2019
 ms.author: helohr
-ms.openlocfilehash: 175c5173091bee85a5c9fc4a50e9df5d3f73da13
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c7ef648dd2610c337bc9146e7a52c04d91907c8e
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300915"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904914"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>Kurz: nasazení nástroje pro správu
 
@@ -56,15 +56,15 @@ Pomocí těchto pokynů nasaďte šablonu Azure Resource Management:
     - Pokud nasazujete v rámci předplatného poskytovatele Cloud Solution Provider, při nasazení do Azure postupujte podle těchto pokynů:
         1. Posuňte se dolů a klikněte pravým tlačítkem myši na **nasadit do Azure**a pak vyberte **Kopírovat umístění odkazu**.
         2. Otevřete textový editor, jako je Poznámkový blok, a vložte odkaz sem.
-        3. Hned po <https://portal.azure.com/> a před hashtagem (#) zadejte znak po (@) následovaný názvem domény klienta. Tady je příklad formátu: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
+        3. Hned po <https://portal.azure.com/> a před hashtagem (#) zadejte znak hvězdička (@) následovaný názvem domény klienta. Tady je příklad formátu: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
         4. Přihlaste se k Azure Portal jako uživatel s oprávněním správce/Přispěvatel k předplatnému poskytovatele Cloud Solution Provider.
         5. Vložte odkaz, který jste zkopírovali do textového editoru, do adresního řádku.
 
 ### <a name="guidance-for-template-parameters"></a>Doprovodné materiály k parametrům šablon
 Tady je postup, jak zadat parametry pro konfiguraci nástroje:
 
-- Toto je adresa URL zprostředkovatele VP: https: \//rdbroker. WVD. Microsoft. com/
-- Toto je adresa URL prostředku: https: \//MRS-prod. ázev. GBL/paní-RDInfra-prod
+- Toto je adresa URL zprostředkovatele VP: https:\//rdbroker.wvd.microsoft.com/
+- Toto je adresa URL prostředku: https:\//mrs-prod.ame.gbl/mrs-RDInfra-prod
 - K přihlášení do Azure použijte přihlašovací údaje AAD s povoleným MFA. Podívejte se, [co potřebujete ke spuštění šablony Azure Resource Manager](#what-you-need-to-run-the-azure-resource-manager-template).
 - Pro nástroj pro správu použijte jedinečný název aplikace, který se zaregistruje ve vašem Azure Active Directory. například Apr3UX.
 
@@ -103,9 +103,14 @@ Při spuštění nástroje postupujte podle těchto pokynů:
 1. Vyberte prostředek služby Azure App Services s názvem, který jste zadali v šabloně (například Apr3UX), a přejděte na adresu URL, která je k ní přidružená. například <https://rdmimgmtweb-210520190304.azurewebsites.net>.
 2. Přihlaste se pomocí svých přihlašovacích údajů k virtuálnímu počítači s Windows.
 3. Po zobrazení výzvy k výběru skupiny tenantů vyberte v rozevíracím seznamu **výchozí skupinu tenantů** .
+4. Když vyberete výchozí skupinu tenantů, měla by se zobrazit nabídka na pravé straně okna. V této nabídce najděte název skupiny tenantů a vyberte ji.
 
 > [!NOTE]
 > Pokud máte vlastní skupinu tenantů, zadejte název ručně místo volby v rozevíracím seznamu.
+
+## <a name="report-issues"></a>Nahlásit problémy
+
+Pokud narazíte na nějaké problémy s nástrojem pro správu nebo jinými nástroji pro virtuální počítače s Windows, pořiďte si pokyny v [šablonách ARM pro vzdálenou plochu](https://github.com/Azure/RDS-Templates/blob/master/README.md) , abyste je nahlásili na GitHubu.
 
 ## <a name="next-steps"></a>Další kroky
 

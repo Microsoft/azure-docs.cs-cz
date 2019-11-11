@@ -14,34 +14,70 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 89094dc959f3a258370afc3cfb720aa3b101d1b7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 04cd13efd198f0a4875c0ede525d10cf45220989
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036135"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901507"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Přidání certifikátu aplikace do clusteru Service Fabric
 
-Tento ukázkový skript vytvoří v zadaném trezoru klíčů Azure certifikát podepsaný svým držitelem a nainstaluje ho do všech uzlů clusteru Service Fabric. Certifikát se také stáhne do místní složky. Název staženého certifikátu je stejný jako název certifikátu v trezoru klíčů. Podle potřeby upravte parametry.
+Tento ukázkový skript vás provede vytvořením certifikátu v Key Vault a jeho nasazením na jeden ze sad škálování virtuálních počítačů, na kterých je cluster spuštěný. Tento scénář nepoužívá Service Fabric přímo, ale místo toho závisí na Key Vault a na Virtual Machine Scale Sets.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](/powershell/azure/overview) a pak spuštěním příkazu `Connect-AzAccount` vytvořte připojení k Azure. 
 
-## <a name="sample-script"></a>Ukázkový skript
+## <a name="create-a-certificate-in-key-vault"></a>Vytvoření certifikátu v Key Vault
 
-[!code-powershell[main](../../../powershell_scripts/service-fabric/add-application-certificate/add-new-application-certificate.ps1 "Add an application certificate to a cluster")]
+```powershell
+$VaultName = ""
+$CertName = ""
+$SubjectName = "CN="
+
+$policy = New-AzKeyVaultCertificatePolicy -SubjectName $SubjectName -IssuerName Self -ValidityInMonths 12
+Add-AzKeyVaultCertificate -VaultName $VaultName -Name $CertName -CertificatePolicy $policy
+```
+
+## <a name="update-virtual-machine-scale-sets-profile-with-certificate"></a>Aktualizovat profil Virtual Machine Scale Sets pomocí certifikátu
+
+```powershell
+$ResourceGroupName = ""
+$VMSSName = ""
+$CertStore = "My" # Update this with the store you want your certificate placed in, this is LocalMachine\My
+
+$CertConfig = New-AzVmssVaultCertificateConfig -CertificateUrl (Get-AzKeyVaultCertificate -VaultName $VaultName -Name $CertName).SecretId -CertificateStore $CertStore
+$VMSS = Get-AzVmss -ResourceGroupName $ResourceGroupName -VMScaleSetName $VMSSName
+
+# If this KeyVault is already known by the virtual machine scale set, for example if the cluster certificate is deployed from this keyvault, use
+$VMSS.virtualmachineprofile.osProfile.secrets[0].vaultCertificates.Add($certConfig)
+
+# Otherwise use
+$VMSS = Add-AzVmssSecret -VirtualMachineScaleSet $VMSS -SourceVaultId (Get-AzKeyVault -VaultName $VaultName).ResourceId  -VaultCertificate $CertConfig
+```
+
+## <a name="update-the-virtual-machine-scale-set"></a>Aktualizovat sadu škálování virtuálního počítače
+```powershell
+Update-AzVmss -ResourceGroupName $ResourceGroupName -VirtualMachineScaleSet $VMSS -VMScaleSetName $VMSSName
+```
+
+> Chcete-li, aby byl certifikát umístěn do více typů uzlů v clusteru, druhá a třetí část tohoto skriptu by měla být opakována pro každý typ uzlu, který by měl mít certifikát.
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
 Tento skript používá následující příkazy: Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
-| [Add-AzServiceFabricApplicationCertificate](/powershell/module/az.servicefabric/Add-azServiceFabricApplicationCertificate) | Přidá nový certifikát aplikace do škálovací sady virtuálních počítačů, která tvoří cluster.  |
+| [New-AzKeyVaultCertificatePolicy](/powershell/module/az.keyvault/New-AzKeyVaultCertificatePolicy) | Vytvoří zásadu v paměti, která představuje certifikát. |
+| [Add-AzKeyVaultCertificate](/powershell/module/az.keyvault/Add-AzKeyVaultCertificate)| Nasadí zásadu pro Key Vault |
+| [New-AzVmssVaultCertificateConfig](/powershell/module/az.compute/New-AzVmssVaultCertificateConfig) | Vytvoří konfiguraci v paměti, která představuje certifikát ve virtuálním počítači. |
+| [Get-AzVmss](/powershell/module/az.compute/Get-AzVmss) |  |
+| [Add-AzVmssSecret](/powershell/module/az.compute/Add-AzVmssSecret) | Přidá certifikát do definice v paměti sady škálování virtuálního počítače. |
+| [Update – AzVmss](/powershell/module/az.compute/Update-AzVmss) | Nasadí novou definici sady škálování virtuálních počítačů. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 
