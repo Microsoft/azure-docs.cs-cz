@@ -1,6 +1,6 @@
 ---
 title: Detekce hrozeb pro datové služby v Azure Security Center | Microsoft Docs
-description: Toto téma představuje výstrahy datových služeb dostupné v Azure Security Center.
+description: Tento článek uvádí výstrahy datových služeb, které jsou dostupné v Azure Security Center.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -10,20 +10,20 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: memildin
-ms.openlocfilehash: c69352b8ff11edfce8bd800a0d3aad4584557572
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: d23d9d2712923f37b3ab9da5ae5369342cd82f5d
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621349"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906993"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Detekce hrozeb pro datové služby v Azure Security Center
 
- Azure Security Center analyzuje protokoly služeb datových úložišť a vyvolá upozornění, když detekuje hrozbu pro vaše datové prostředky. V tomto tématu jsou uvedeny výstrahy, které Security Center generuje pro následující služby:
+ Azure Security Center analyzuje protokoly služeb datových úložišť a vyvolá upozornění, když detekuje hrozbu pro vaše datové prostředky. V tomto článku jsou uvedené výstrahy, které Security Center generuje pro následující služby:
 
 * [Azure SQL Database a Azure SQL Data Warehouse](#data-sql)
 * [Azure Storage](#azure-storage)
-* [Azure Cosmos DB](#cosmos-db)
+* [Databáze Azure Cosmos](#cosmos-db)
 
 ## SQL Database a SQL Data Warehouse<a name="data-sql"></a>
 
@@ -53,7 +53,7 @@ Security Center analyzuje diagnostické protokoly žádostí o čtení, zápis a
 
 |Výstrahy|Popis|
 |---|---|
-|**Neobvyklá anomálie přístupu k poloze**|Ukázková Analýza provozu v síti zjistila komunikaci neobvyklé odchozího protokol RDP (Remote Desktop Protocol) (RDP), která pochází z prostředku ve vašem nasazení. Tato aktivita se pro toto prostředí považuje za neobvyklou. Může to znamenat, že došlo k ohrožení zabezpečení prostředku a teď se používá k útoku hrubou silou na externí koncový bod RDP. Tento typ aktivity může způsobit, že vaše IP adresa bude označená jako škodlivá externími entitami.|
+|**Přístup z neobvyklého umístění**|Indikuje, že došlo ke změně vzoru přístupu k účtu Azure Storage. Někdo k tomuto účtu přistupoval z IP adresy považované za neznámou, pokud je v porovnání s poslední aktivitou. Buď útočník získal přístup k účtu, nebo byl oprávněný uživatel připojen z nového nebo neobvyklého zeměpisného umístění. Příkladem druhé z nich je Vzdálená údržba z nové aplikace nebo vývojáře.|
 |**Anomálie přístupu k aplikacím**|Indikuje, že se k tomuto účtu úložiště přistupovala neobvyklá aplikace. Možnou příčinou je, že útočník získal k vašemu účtu úložiště pomocí nové aplikace.|
 |**Anomálie anonymního přístupu**|Indikuje, že došlo ke změně vzoru přístupu k účtu úložiště. K účtu se například přistupuje anonymně (bez ověřování), které se ve srovnání s nedávným vzorem přístupu na tomto účtu neočekávalo. Možnou příčinou je, že útočník zneužije veřejný přístup pro čtení kontejneru, který obsahuje úložiště objektů BLOB.|
 |**Anomálie pro mandát**|Indikuje, že se tento účet úspěšně přistupoval z IP adresy, která se označuje jako aktivní odesílací uzel systému (anonymizace proxy server). Závažnost této výstrahy je považována za použitý typ ověřování (pokud existuje) a zda se jedná o první případ takového přístupu. Možnou příčinou může být útočník, který získal účet úložiště pomocí systému pro práci, nebo legitimního uživatele, který získal účet úložiště pomocí systému.|

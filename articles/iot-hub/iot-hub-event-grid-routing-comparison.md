@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 067293f76ac4894ca73f4e74cb01db65ae8d1fba
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 877467b65d346c871dd93f4b3f96b2c1664fa4b9
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876918"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906785"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>Porovnat směrování zpráv a Event Grid IoT Hub
 
@@ -21,9 +21,9 @@ Azure IoT Hub poskytuje možnost streamovat data z připojených zařízení a i
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-**[IoT Hub směrování zpráv](iot-hub-devguide-messages-d2c.md)** : Tato funkce IoT Hub umožňuje uživatelům směrovat zprávy typu zařízení-Cloud do koncových bodů služby, jako jsou Azure Storage kontejnery, Event Hubs, fronty Service Bus a Service Bus témata. Směrování také poskytuje možnost dotazování pro filtrování dat před jejich směrováním do koncových bodů. Kromě dat telemetrie zařízení můžete také odesílat [události bez telemetrie](iot-hub-devguide-messages-d2c.md#non-telemetry-events) , které se dají použít ke spuštění akcí. 
+**[IoT Hub směrování zpráv](iot-hub-devguide-messages-d2c.md)** : tato funkce IoT Hub umožňuje uživatelům směrovat zprávy typu zařízení-Cloud do koncových bodů služby, jako jsou kontejnery Azure Storage, Event Hubs, Service Bus fronty a Service Bus témata. Směrování také poskytuje možnost dotazování pro filtrování dat před jejich směrováním do koncových bodů. Kromě dat telemetrie zařízení můžete také odesílat [události bez telemetrie](iot-hub-devguide-messages-d2c.md#non-telemetry-events) , které se dají použít ke spuštění akcí. 
 
-**IoT Hub integrace s Event Grid**: Azure Event Grid je plně spravovaná služba Směrování událostí, která používá model publikování a odběru. IoT Hub a Event Grid vzájemně spolupracují a [integrují IoT Hub události do služeb Azure a mimo Azure, a](iot-hub-event-grid.md)to téměř v reálném čase. IoT Hub zveřejňuje [události zařízení](iot-hub-event-grid.md#event-types), které jsou všeobecně dostupné a teď také publikují události telemetrie, které jsou ve verzi Public Preview.
+**IoT Hub integrace s Event Grid**: Azure Event Grid je plně spravovaná služba Směrování událostí, která používá model publikování a odběru. IoT Hub a Event Grid vzájemně spolupracují a [integrují IoT Hub události do služeb Azure a mimo Azure, a](iot-hub-event-grid.md)to téměř v reálném čase. IoT Hub publikuje [události zařízení](iot-hub-event-grid.md#event-types) i události telemetrie.
 
 ## <a name="differences"></a>Rozdíly
 
@@ -33,8 +33,8 @@ Jak směrování zpráv, tak Event Grid povolit konfiguraci výstrah, existují 
 | ------- | --------------- | ---------- |
 | **Zprávy a události zařízení** | Ano, směrování zpráv se dá použít pro data telemetrie, sestavu nedokončených změn zařízení, události životního cyklu zařízení a události s digitálními událostmi změny (součást [IoT technologie Plug and Play Public Preview](../iot-pnp/overview-iot-plug-and-play.md)). | Ano, Event Grid lze použít pro data telemetrie, ale také při vytvoření, odstranění, připojení a odpojení zařízení z IoT Hub |
 | **Třídění** | Ano, řazení událostí je zachováno.  | Ne, pořadí událostí není zaručeno. | 
-| **Filtrování** | Bohatá filtrování vlastností aplikace zprávy, vlastností systému zpráv, textu zprávy, dvojitých značek zařízení a vlastností, které jsou v zařízení. Filtrování není aplikováno na události změny digitálního vlákna. Příklady najdete v tématu [syntaxe dotazu směrování zpráv](iot-hub-devguide-routing-query-syntax.md). | Filtrování na základě typu události, typu subjektu a atributů v každé události. Příklady najdete v tématu [porozumění událostem filtrování v Předplatných Event Grid](../event-grid/event-filtering.md). Při přihlášení k odběru událostí telemetrie můžete pro data použít další filtry pro filtrování vlastností zpráv, textu zprávy a vlákna zařízení v IoT Hub před publikováním do Event Grid. Viz [jak filtrovat události](../iot-hub/iot-hub-event-grid.md#filter-events). |
-| **Bod** | <ul><li>Event Hubs</li> <li>Azure Blob Storage</li> <li>Fronta služby Service Bus</li> <li>Témata služby Service Bus</li></ul><br>Placené IoT Hub SKU (S1, S2 a S3) jsou omezené na 10 vlastních koncových bodů. na IoT Hub lze vytvořit trasy 100. | <ul><li>Azure Functions</li> <li>Azure Automation</li> <li>Event Hubs</li> <li>Logic Apps</li> <li>Storage Blob</li> <li>Vlastní témata</li> <li>Queue Storage</li> <li>Microsoft Flow</li> <li>Služby třetích stran prostřednictvím webhooků</li></ul><br>jsou podporovány koncové body 500 na IoT Hub. Nejaktuálnější seznam koncových bodů naleznete v tématu [Event Grid obslužných rutin událostí](../event-grid/overview.md#event-handlers). |
+| **Jakou** | Bohatá filtrování vlastností aplikace zprávy, vlastností systému zpráv, textu zprávy, dvojitých značek zařízení a vlastností, které jsou v zařízení. Filtrování není aplikováno na události změny digitálního vlákna. Příklady najdete v tématu [syntaxe dotazu směrování zpráv](iot-hub-devguide-routing-query-syntax.md). | Filtrování na základě typu události, typu subjektu a atributů v každé události. Příklady najdete v tématu [porozumění událostem filtrování v Předplatných Event Grid](../event-grid/event-filtering.md). Při přihlášení k odběru událostí telemetrie můžete pro data použít další filtry pro filtrování vlastností zpráv, textu zprávy a vlákna zařízení v IoT Hub před publikováním do Event Grid. Viz [jak filtrovat události](../iot-hub/iot-hub-event-grid.md#filter-events). |
+| **Bod** | <ul><li>Event Hubs</li> <li>Azure Blob Storage</li> <li>Fronta Service Bus</li> <li>Service Bus Topics</li></ul><br>Placené IoT Hub SKU (S1, S2 a S3) jsou omezené na 10 vlastních koncových bodů. na IoT Hub lze vytvořit trasy 100. | <ul><li>Azure Functions</li> <li>Azure Automation</li> <li>Event Hubs</li> <li>Logic Apps</li> <li>Storage Blob</li> <li>Vlastní témata</li> <li>Queue Storage</li> <li>Microsoft Flow</li> <li>Služby třetích stran prostřednictvím webhooků</li></ul><br>jsou podporovány koncové body 500 na IoT Hub. Nejaktuálnější seznam koncových bodů naleznete v tématu [Event Grid obslužných rutin událostí](../event-grid/overview.md#event-handlers). |
 | **Náklady** | Za směrování zpráv se neúčtují žádné samostatné poplatky. Účtují se jenom příchozí telemetrie do IoT Hub. Pokud je například zpráva směrována do tří různých koncových bodů, bude se vám účtovat jenom jedna zpráva. | IoT Hub se neúčtují žádné poplatky. Event Grid poskytuje zdarma první 100 000 operací za měsíc a potom $0,60 za milion operací. |
 
 ## <a name="similarities"></a>Podobnosti
@@ -44,11 +44,11 @@ IoT Hub směrování zpráv a Event Grid mají podobné podobnosti, některé z 
 | Funkce | Směrování zpráv IoT Hub | IoT Hub integrace s Event Grid |
 | ------- | --------------- | ---------- |
 | **Maximální velikost zprávy** | 256 KB, ze zařízení do cloudu | 256 KB, ze zařízení do cloudu |
-| **Spolehlivost** | Maximální Doručí každou zprávu do koncového bodu alespoň jednou pro každou trasu. Vyprší platnost všech zpráv, které nejsou doručeny do jedné hodiny. | Maximální Doručí každou zprávu na Webhook alespoň jednou pro každé předplatné. Vyprší platnost všech událostí, které nejsou dodány do 24 hodin. | 
-| **Škálovatelnost** | Maximální Optimalizováno pro podporu milionů současně připojených zařízení, která odesílají miliardy zpráv. | Maximální Schopnost směrování 10 000 000 událostí za sekundu na oblast. |
-| **Latence** | Slab Téměř v reálném čase. | Slab Téměř v reálném čase. |
+| **Spolehlivost** | Vysoká: každý pro každou trasu dodá každé zprávě na koncový bod aspoň jednou. Vyprší platnost všech zpráv, které nejsou doručeny do jedné hodiny. | Vysoká: každý odběr zajišťuje každou zprávu pro Webhook alespoň jednou. Vyprší platnost všech událostí, které nejsou dodány do 24 hodin. | 
+| **Škálovatelnost** | Vysoká: optimalizováno pro podporu milionů současně připojených zařízení, která odesílají miliardy zpráv. | Vysoká: podporuje směrování 10 000 000 událostí za sekundu na oblast. |
+| **Latence** | Nízká: téměř v reálném čase. | Nízká: téměř v reálném čase. |
 | **Odeslat do více koncových bodů** | Ano, odeslat jednu zprávu do více koncových bodů. | Ano, odeslat jednu zprávu do více koncových bodů.  
-| **Zabezpečení** | IoT Hub poskytuje identitu jednotlivých zařízení a řízení přístupu odvolatelné. Další informace najdete v tématu [řízení přístupu IoT Hub](iot-hub-devguide-security.md). | Event Grid poskytuje ověřování tři body: odběry událostí, publikování událostí a doručování událostí Webhooku. Další informace najdete v tématu [ověřování a zabezpečení služby Event Grid](../event-grid/security-authentication.md). |
+| **Zabezpečení** | IoT Hub poskytuje identitu jednotlivých zařízení a řízení přístupu odvolatelné. Další informace najdete v tématu [řízení přístupu IoT Hub](iot-hub-devguide-security.md). | Event Grid poskytuje ověřování tři body: odběry událostí, publikování událostí a doručování událostí Webhooku. Další informace najdete v tématu [Event Grid zabezpečení a ověřování](../event-grid/security-authentication.md). |
 
 ## <a name="how-to-choose"></a>Jak zvolit
 

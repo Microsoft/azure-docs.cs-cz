@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2019
+ms.date: 11/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 1a479b4928631f27d5453d462a59fe7fed09a88c
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 1f312e8a5034d238e4802e9323bc1b5ac5cdae21
+ms.sourcegitcommit: f226cdd6406372b5693d46b6d04900f2f0cda4e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302757"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906233"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Vytvoření svazku NFS pro Azure NetApp Files
 
@@ -34,7 +34,7 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 ## <a name="considerations"></a>Požadavky 
 
 > [!IMPORTANT] 
-> Přístup k funkci NFSv 4.1 vyžaduje přidávání do seznamu povolených.  Pokud chcete požádat o přidávání do seznamu povolených žádostí, odešlete žádost o <anffeedback@microsoft.com>. 
+> Přístup k funkci NFSv 4.1 vyžaduje přidávání do seznamu povolených.  Pokud chcete požádat o přidávání na seznam povolených, odešlete žádost, která se <anffeedback@microsoft.com>. 
 
 * Rozhodnutí o tom, která verze systému souborů NFS se má použít  
   NFSv3 dokáže zvládnout širokou škálu případů použití a je běžně nasazená ve většině podnikových aplikací. Měli byste ověřit, jakou verzi (NFSv3 nebo NFSv 4.1) vaše aplikace vyžaduje, a vytvořit svazek s použitím příslušné verze. Pokud například používáte [Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave), doporučuje se zamykání souborů s nfsv 4.1 nad NFSv3. 
@@ -43,7 +43,7 @@ Podsíť musí být delegovaná na Azure NetApp Files.
   Podpora pro režim systému UNIX (čtení, zápis a spouštění) je k dispozici pro NFSv3 a NFSv 4.1. Přístup na úrovni kořenového adresáře se vyžaduje v klientovi NFS, aby bylo možné připojit svazky systému souborů NFS.
 
 * Podpora místního uživatele/skupiny a protokolu LDAP pro NFSv 4.1  
-  NFSv 4.1 v současné době podporuje kořenový přístup pouze ke svazkům. 
+  NFSv 4.1 v současné době podporuje kořenový přístup pouze ke svazkům. Přečtěte si téma [Konfigurace výchozí domény nfsv 4.1 pro Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md). 
 
 ## <a name="best-practice"></a>Osvědčený postup
 
@@ -115,6 +115,7 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 
 ## <a name="next-steps"></a>Další kroky  
 
+* [Nakonfigurujte výchozí doménu NFSv 4.1 pro Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md)
 * [Připojení nebo odpojení svazku pro virtuální počítače se systémem Windows nebo Linux](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Konfigurace zásad exportu pro svazek NFS](azure-netapp-files-configure-export-policy.md)
 * [Omezení prostředků pro službu Azure NetApp Files](azure-netapp-files-resource-limits.md)

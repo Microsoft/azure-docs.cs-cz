@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2b30b6463ed3d58ec1565f3c49f98388ad09ed4
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: a43c5849dcd037915a46de182064b3e630a663ec
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186287"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907181"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit auditu na portálu Azure Active Directory 
 
@@ -42,7 +42,7 @@ Tento článek vám poskytne přehled o sestavě auditu.
 ## <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 
 * Uživatelé v rolích **Správce zabezpečení**, **Čtenář zabezpečení**, **Čtenář sestav** nebo **globální role správce**
-* Všichni uživatelé (bez správců) můžou navíc zobrazit vlastní aktivity auditu.
+* U všech uživatelů (bez správců) se navíc můžou zobrazit vlastní přihlašovací aktivity.
 
 ## <a name="audit-logs"></a>Protokoly auditu
 
@@ -81,8 +81,8 @@ Data auditu můžete filtrovat v následujících polích:
 - Služba
 - Kategorie
 - Aktivita
-- Stav
-- Target
+- Status
+- Výběr cílového umístění
 - Spustil(a) (činitel)
 - Rozsah dat
 
@@ -90,7 +90,7 @@ Data auditu můžete filtrovat v následujících polích:
 
 Filtr **služby** umožňuje vybrat z rozevíracího seznamu následující služby:
 
-- Vše
+- Všechno
 - Kontroly přístupu
 - Zřizování účtů 
 - Jednotné přihlašování aplikace
@@ -101,19 +101,19 @@ Filtr **služby** umožňuje vybrat z rozevíracího seznamu následující slu�
 - Správa nároků
 - Identity Protection
 - Pozvaní uživatelé
-- PIM
+- OSOBNÍCH
 - Samoobslužná správa skupin
 - Samoobslužná správa hesel
-- Podmínkami použití
+- Podmínky použití
 
 Filtr **kategorie** umožňuje vybrat jeden z následujících filtrů:
 
-- Vše
+- Všechno
 - AdministrativeUnit
 - ApplicationManagement
 - Ověřování
-- Authorization
-- Kontakt
+- Autorizace
+- Kontaktovat
 - Zařízení
 - DeviceConfiguration
 - DirectoryManagement
@@ -127,20 +127,20 @@ Filtr **kategorie** umožňuje vybrat jeden z následujících filtrů:
 
 Filtr **aktivity** je založen na typu kategorie a prostředku aktivity, kterou provedete. Můžete vybrat konkrétní aktivitu, kterou chcete zobrazit, nebo zvolit všechny. 
 
-Seznam všech aktivit auditu můžete získat pomocí Graph API:`https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
+Seznam všech aktivit auditu můžete získat pomocí Graph API: `https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
 
 Filtr **stavu** vám umožňuje filtrovat na základě stavu operace auditu. Stav může být jedna z následujících:
 
-- Vše
+- Všechno
 - Úspěch
-- Chyba
+- Selhání
 
 **Cílový** filtr vám umožní vyhledat konkrétní cíl podle názvu nebo hlavního názvu uživatele (UPN). Název cíle a hlavní název uživatele (UPN) rozlišují velká a malá písmena. 
 
 Filtr **iniciovaná pomocí** filtru umožňuje definovat jméno objektu actor nebo univerzální hlavní název uživatele (UPN). Název a hlavní název uživatele (UPN) rozlišují malá a velká písmena.
 
 Filtr **rozsahu data** umožňuje definovat časový rámec pro vracená data.  
-Možné hodnoty jsou:
+Možné hodnoty:
 
 - 1 měsíc
 - 7 dní
@@ -208,7 +208,7 @@ Protokoly aktivit Office 365 můžete zobrazit v centru pro [správu Microsoft 3
 
 Přístup k protokolům aktivit Office 365 můžete také programově pomocí [rozhraní API pro správu sady office 365](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Referenční informace o aktivitě auditu Azure AD](reference-audit-activities.md)
 - [Referenční informace o uchovávání sestav Azure AD](reference-reports-data-retention.md)

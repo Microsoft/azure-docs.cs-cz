@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 4ac6ac52d6d950d814a37e94ea2801c2ba8e4170
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 45a27be400753b56c42310a340334feba8a420c5
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521212"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906861"
 ---
 # <a name="working-with-security-policies"></a>Práce se zásadami zabezpečení
 
@@ -37,7 +37,7 @@ Security Center nabízí následující možnosti pro práci se zásadami zabezp
 
 * **Přidat vlastní zásady** – Pokud chcete přizpůsobit iniciativy zabezpečení použité pro vaše předplatné, můžete to udělat v rámci Security Center. Pak se dostanou doporučení, pokud vaše počítače nevyhovují vytvořeným zásadám. Pokyny k sestavování a přiřazování vlastních zásad najdete v tématu [použití vlastních zásad zabezpečení](custom-security-policies.md).
 
-* **Přidání zásad dodržování předpisů regulativních** předpisů – řídicí panel dodržování legislativních předpisů Security Center zobrazuje stav všech posouzení v rámci vašeho prostředí v kontextu určitého standardu nebo nařízení (například Azure SNS, NIST SP 800-53 R4, SWIFT CSP CSCF-v2020). Další informace najdete v tématu [zlepšení dodržování legislativních předpisů](security-center-compliance-dashboard.md).
+* **Přidání zásad dodržování předpisů regulativního** úřadu – řídicí panel dodržování předpisů v Security Center zobrazuje stav všech posouzení v rámci vašeho prostředí v kontextu určitého standardu nebo nařízení (například Azure SNS, NIST SP 800-53 R4, SWIFT CSP CSCF-v2020). Další informace najdete v tématu [Vylepšené dodržování legislativních předpisů](security-center-compliance-dashboard.md).
 
 
 ## <a name="managing-your-security-policies"></a>Správa zásad zabezpečení
@@ -105,6 +105,10 @@ Další informace o doporučeních najdete v tématu [Správa doporučení zabez
    > [!NOTE]
    > Pamatujte, že skupina pro správu použije své zásady na své odběry. Proto pokud zakážete zásady předplatného a předplatné patří do skupiny pro správu, která stále používá stejné zásady, pak budou doporučení k zásadám dál dostávat. Zásada bude i nadále použita z úrovně správy a doporučení budou vygenerována.
 
+1. Klikněte na **Zobrazit efektivní zásady**.
+
+   ![zakázat zásadu](./media/tutorial-security-policy/view-effective-policy.png)
+
 1. Klikněte na přiřazenou zásadu.
 
    ![zakázat zásadu](./media/tutorial-security-policy/security-policy.png)
@@ -113,7 +117,7 @@ Další informace o doporučeních najdete v tématu [Správa doporučení zabez
 
    ![zakázat zásadu](./media/tutorial-security-policy/disable-policy.png)
 
-1. Klikněte na **Uložit**.
+1. Klikněte na možnost **Uložit**.
 
    > [!NOTE]
    > Změny zásad, které se projeví, můžou trvat až 12 hodin.

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
 ms.reviewer: vinigam
-ms.openlocfilehash: 831e75ba2d3f6af62496d437da3d1413dc612594
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 91fb4551f4651f44a1f7358951c5d4cc0ff70644
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686549"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907153"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -63,8 +63,8 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
 
 * Střední Kanada
 * Středozápadní USA
-* Východ USA
-* Východ USA 2
+* Východní USA
+* Východní USA 2
 * Středoseverní USA
 * Středojižní USA
 * Střední USA
@@ -93,15 +93,19 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
 Pracovní prostor Log Analytics musí existovat v následujících oblastech:
 * Střední Kanada
 * Středozápadní USA
-* Východ USA
-* Východ USA 2
+* Východní USA
+* Východní USA 2
+* Středoseverní USA
 * Středojižní USA
+* Střední USA
 * Západní USA
 * Západní USA 2
 * Střední USA
 * Francie – střed
-* Severní Evropa
 * Západní Evropa
+* Severní Evropa
+* Brazílie – jih
+* Spojené království – západ
 * Spojené království – jih
 * Austrálie – východ
 * Austrálie – jihovýchod
@@ -121,7 +125,7 @@ Váš účet musí být členem jedné z následujících [předdefinovaných ro
 
 |Model nasazení   | Role                   |
 |---------          |---------               |
-|Resource Manager   | Vlastník                  |
+|Správce prostředků   | Vlastník                  |
 |                   | Přispěvatel            |
 |                   | Čtenář                 |
 |                   | Přispěvatel sítě    |

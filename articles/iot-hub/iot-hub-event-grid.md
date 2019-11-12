@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 7d5a232d92c37a94ff427a3bf203f6f20764060e
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: a2bb961989d5bb1cc879b197e45d25b566c56e83
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748575"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906774"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reakce na události IoT Hub pomocí Event Grid k aktivaci akcí
 
@@ -25,7 +25,7 @@ Služba Azure IoT Hub se integruje s Azure Event Grid, takže můžete posílat 
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
-Integrace Event Grid je dostupná pro centra IoT umístěná v oblastech, kde je podpora Event Grid podporovaná. Všechny události zařízení s výjimkou událostí telemetrie zařízení jsou všeobecně dostupné. Událost telemetrie zařízení je ve verzi Public Preview a je dostupná ve všech oblastech kromě Východní USA, Západní USA, Západní Evropa, [Azure Government](/azure/azure-government/documentation-government-welcome), [Azure Čína 21Vianet](/azure/china)a [Azure Německo](https://azure.microsoft.com/global-infrastructure/germany/). Nejnovější seznam oblastí najdete v [úvodu k Azure Event Grid](../event-grid/overview.md).
+Integrace Event Grid je dostupná pro centra IoT umístěná v oblastech, kde je podpora Event Grid podporovaná. Nejnovější seznam oblastí najdete v [úvodu k Azure Event Grid](../event-grid/overview.md).
 
 ## <a name="event-types"></a>Typy událostí
 

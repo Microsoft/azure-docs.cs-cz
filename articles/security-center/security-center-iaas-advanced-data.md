@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/11/2019
 ms.author: memildin
-ms.openlocfilehash: 93e52b393db288f5b19afde4a31e08d0bb91b471
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 068fb9f61b7dcb3948e4f03c284ddfa680522c85
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571557"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907057"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Pokročilé zabezpečení dat pro SQL servery na Azure Virtual Machines (Preview)
 Rozšířené zabezpečení dat pro SQL Server v Azure Virtual Machines je jednotný balíček pro pokročilé funkce zabezpečení SQL. Tato funkce Preview zahrnuje funkce pro identifikaci a zmírnění potenciálních chyb zabezpečení databáze a zjišťování neobvyklé aktivit, které by mohly označovat hrozby pro vaši databázi. 
@@ -54,7 +54,7 @@ Povolit pokročilé zabezpečení dat pro SQL servery na Virtual Machines na úr
     Pokročilá zabezpečení dat pro SQL Server se povolí na všech serverech SQL připojených k vybranému pracovnímu prostoru nebo k výchozímu pracovnímu prostoru vybraného předplatného.
 
     >[!NOTE]
-    > Řešení bude aktivní po prvním restartování SQL Server. 
+    > Po prvním restartování SQL Server řešení bude zcela aktivní. 
 
 Pokud chcete vytvořit nový pracovní prostor, postupujte podle pokynů v tématu [Vytvoření pracovního prostoru Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
@@ -72,7 +72,7 @@ Můžete nastavit seznam příjemců, na které se dostanete e-mailové oznámen
 1. V nabídce nastavení klikněte na **e-mailová oznámení**. 
 1. Do textového pole **e-mailová adresa** zadejte e-mailové adresy pro příjem oznámení. Můžete zadat více než jednu e-mailovou adresu tak, že e-mailové adresy oddělíte čárkou (,).  Například admin1@mycompany.comadmin2@mycompany.comadmin3@mycompany.com
 
-      ![Nastavení e-mailu](./media/security-center-advanced-iaas-data/email-settings.png)
+    ![Nastavení e-mailu](./media/security-center-advanced-iaas-data/email-settings.png)
 
 1. V nastavení **e-mailových oznámení** nastavte následující možnosti:
   
@@ -88,29 +88,27 @@ Můžete nastavit seznam příjemců, na které se dostanete e-mailové oznámen
 
 Řídicí panel posouzení ohrožení zabezpečení poskytuje přehled výsledků hodnocení napříč všemi vašimi databázemi. Distribuci databází můžete zobrazit podle SQL Server verze, spolu se shrnutím selhání v porovnání s předáváním databází a celkovým shrnutím neúspěšných kontrol v závislosti na rozdělení rizika.
 
-Výsledky posouzení ohrožení zabezpečení a sestavy můžete zobrazit přímo z Log Analytics.
+Výsledky posouzení ohrožení zabezpečení můžete zobrazit přímo z Security Center.
 
-1. Přejděte do svého pracovního prostoru Log Analytics s pokročilým řešením zabezpečení dat.
-1. Přejděte na **řešení** a vyberte řešení **posouzení ohrožení zabezpečení SQL** .
-1. V podokně **Souhrn** klikněte na **Zobrazit souhrn** a vyberte **sestavu posouzení ohrožení zabezpečení SQL**.
+1. Z postranního panelu Security Center v části HYGIENa zabezpečení prostředků vyberte **Data & úložiště**.
 
-    ![Sestava SQL Assessment](./media/security-center-advanced-iaas-data/ads-sql-server-1.png)
+1. Vyberte, jak se **mají opravit ohrožení zabezpečení vašich databází SQL na virtuálních počítačích (Preview)** . Další informace najdete v tématu [Security Center doporučení](security-center-recommendations.md). 
 
-    Řídicí panel sestavy se načte. Zajistěte, aby byl časový interval nastavený alespoň na **posledních 7 dnů** od doby, kdy se kontroly ohrožení zabezpečení spouští v databázích s pevným plánem na sedm dní.
+    [u vašich databází SQL na virtuálních počítačích by se měla opravit ![* * ohrožení zabezpečení (Preview) * * doporučení](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png)](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png#lightbox)
 
-    ![Nastaveno posledních 7 dní](./media/security-center-advanced-iaas-data/ads-sql-server-2.png)
+    Zobrazí se podrobné zobrazení tohoto doporučení.
 
-1. Chcete-li přejít k podrobnostem a zobrazit další podrobnosti, klikněte na některý z prvků na řídicím panelu. Příklad:
+    [Podrobnější zobrazení ![* * na vašich databázích SQL na virtuálních počítačích by mělo být opravené (Preview) * * doporučení](media/security-center-advanced-iaas-data/all-servers-view.png)](media/security-center-advanced-iaas-data/all-servers-view.png#lightbox)
 
-   1. Pokud chcete zobrazit Log Analytics tabulku s výsledky pro tuto kontrolu napříč všemi databázemi, klikněte na kontrolu ohrožení zabezpečení v části **Souhrn neúspěšných kontrol** . Ty, které mají výsledky, jsou uvedeny jako první.
+1. Další podrobnosti najdete v podrobnostech:
 
-   1. Potom kliknutím na Procházet zobrazíte podrobnosti o každé chybě zabezpečení, včetně popisu ohrožení zabezpečení a dopadu, stavu, přidruženého rizika a skutečných výsledků v této databázi. Můžete si také prohlédnout vlastní dotaz, který byl spuštěn, aby provedl tuto kontrolu, a informace o nápravě pro řešení tohoto ohrožení zabezpečení.
+    * Chcete-li zobrazit přehled naskenovaných prostředků (databáze) a seznam kontrol zabezpečení, které byly testovány, klikněte na server, který vás zajímá.
+    [![zabezpečení seskupené podle SQL serveru](media/security-center-advanced-iaas-data/single-server-view.png)](media/security-center-advanced-iaas-data/single-server-view.png#lightbox)
 
-    ![Výběr pracovního prostoru](./media/security-center-advanced-iaas-data/ads-sql-server-3.png)
+    * Přehled chyb, které jsou seskupeny podle konkrétní databáze SQL, získáte kliknutím na databázi, která je zajímavá.
+    [![zabezpečení seskupené podle SQL serveru](media/security-center-advanced-iaas-data/single-database-view.png)](media/security-center-advanced-iaas-data/single-database-view.png#lightbox)
 
-    ![Výběr pracovního prostoru](./media/security-center-advanced-iaas-data/ads-sql-server-4.png)
-
-1. Můžete spustit jakékoli Log Analytics dotazy na data výsledků posouzení ohrožení zabezpečení, rozdělit a indexovat data podle vašich potřeb.
+    V každém zobrazení jsou kontroly zabezpečení seřazené podle **závažnosti**. Kliknutím na konkrétní kontrolu zabezpečení zobrazíte podokno podrobností s **popisem**, postupem jeho **opravte** a dalšími souvisejícími informacemi, jako je třeba **dopad** nebo **Srovnávací test**.
 
 ## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>Rozšířená ochrana před internetovými útoky pro servery SQL na virtuálních počítačích Azure – výstrahy
 Výstrahy jsou generovány neobvyklými a potenciálně škodlivými pokusy o přístup k serverům SQL nebo jejich zneužití. Tyto události mohou aktivovat následující výstrahy:
