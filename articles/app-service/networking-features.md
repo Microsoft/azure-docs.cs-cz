@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 102f3e131b20534dc2f192b6485a3fdc95070315
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 801692c53ef268f15edc60d31743aefa6a247a78
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470258"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928507"
 ---
 # <a name="app-service-networking-features"></a>Funkce App Service sítě
 
@@ -34,7 +34,7 @@ Azure App Service je distribuovaný systém. Role, které zpracovávají přích
 | Příchozí funkce | Odchozí funkce |
 |---------------------|-------------------|
 | Adresa přiřazená aplikaci | Hybridní připojení |
-| Omezení přístupu | požadovaná brána Integration VNet |
+| Omezení přístupu | Požadovaná brána Integration VNet |
 | Koncové body služeb | Integrace virtuální sítě (Preview) |
 
 Pokud není uvedeno jinak, lze použít všechny funkce společně. Můžete kombinovat funkce a vyřešit různé problémy.
@@ -60,7 +60,7 @@ Následující případy odchozího použití ukazují, jak používat funkce Ap
 | Případy odchozího použití | Funkce |
 |---------------------|-------------------|
 | Přístup k prostředkům v Azure Virtual Network ve stejné oblasti | Integrace virtuální sítě </br> ASE |
-| Přístup k prostředkům v Azure Virtual Network v jiné oblasti | požadovaná brána Integration VNet </br> Pomocného a virtuálním počítačem |
+| Přístup k prostředkům v Azure Virtual Network v jiné oblasti | Požadovaná brána Integration VNet </br> Pomocného a virtuálním počítačem |
 | Přístup k prostředkům zabezpečeným pomocí koncových bodů služby | Integrace virtuální sítě </br> ASE |
 | Přístup k prostředkům v privátní síti nepřipojené k Azure | Hybridní připojení |
 | Přístup k prostředkům napříč okruhy ExpressRoute | Integrace virtuální sítě (v současnosti je omezená na RFC 1918 adres) </br> ASE | 
@@ -91,7 +91,7 @@ Pomocí kurzu [Konfigurace protokolu SSL založeného na protokolu IP][appassign
 
 ### <a name="access-restrictions"></a>Omezení přístupu 
 
-Funkce omezení přístupu umožňuje filtrovat **příchozí** požadavky na základě IP adresy původce. Akce filtrování probíhá na front-end rolích, které jsou od pracovních procesů, kde jsou aplikace spuštěné, na nejvyšší úrovni. Vzhledem k tomu, že role front-endu jsou z pracovních procesů nadřazené, může být schopnost omezení přístupu považovat za ochranu na úrovni sítě pro vaše aplikace. Tato funkce umožňuje vytvořit seznam bloků adres povolování a odepření, které jsou vyhodnocovány v pořadí podle priority. Podobá se funkci skupiny zabezpečení sítě (NSG), která existuje v sítích Azure.  Tuto funkci můžete použít v pomocném modulu pro čtení nebo ve službě pro více tenantů. Při použití s pomocným mechanismem interního nástroje můžete omezit přístup z privátních bloků adres.
+Funkce omezení přístupu umožňuje filtrovat **příchozí** požadavky na základě IP adresy původce. Akce filtrování probíhá na front-end rolích, které jsou od rolí pracovních procesů, kde běží vaše aplikace, v nadřazeném umístění. Vzhledem k tomu, že role front-endu jsou z pracovních procesů nadřazené, může být schopnost omezení přístupu považovat za ochranu na úrovni sítě pro vaše aplikace. Tato funkce umožňuje vytvořit seznam bloků adres povolování a odepření, které jsou vyhodnocovány v pořadí podle priority. Podobá se funkci skupiny zabezpečení sítě (NSG), která existuje v sítích Azure.  Tuto funkci můžete použít v pomocném modulu pro čtení nebo ve službě pro více tenantů. Při použití s pomocným mechanismem interního nástroje můžete omezit přístup z privátních bloků adres.
 
 ![Omezení přístupu](media/networking-features/access-restrictions.png)
 
@@ -137,11 +137,11 @@ Vzhledem k tomu, že tato funkce umožňuje přístup k místním prostředkům 
 
 I když je Hybrid Connections populární pro vývoj, používá se také v mnoha produkčních aplikacích. Je ideální pro přístup k webové službě nebo databázi, ale není vhodná pro situace zahrnující vytváření mnoha připojení. 
 
-### <a name="gateway-required-vnet-integration"></a>požadovaná brána Integration VNet 
+### <a name="gateway-required-vnet-integration"></a>Požadovaná brána Integration VNet 
 
 Funkce Brána App Service Integration VNet umožňuje vaší aplikaci vytvářet **odchozí** požadavky do Azure Virtual Network. Funkce funguje připojením hostitele, na kterém je aplikace spuštěná, do Virtual Network brány ve vaší virtuální síti pomocí sítě VPN typu Point-to-site. Když nakonfigurujete funkci, aplikace získá jednu z adres Point-to-site přiřazených k jednotlivým instancím. Tato funkce umožňuje přístup k prostředkům v klasickém nebo Správce prostředků virtuální sítě v libovolné oblasti. 
 
-![požadovaná brána Integration VNet](media/networking-features/gw-vnet-integration.png)
+![Požadovaná brána Integration VNet](media/networking-features/gw-vnet-integration.png)
 
 Tato funkce řeší potíže s přístupem k prostředkům v jiných virtuální sítě a je možné ji dokonce použít k připojení přes virtuální síť k jiným virtuální sítě nebo dokonce i místnímu. Nefunguje s ExpressRoute připojenými virtuální sítě, ale s propojenými sítěmi VPN typu Site-to-site. Tato funkce se obvykle nedoporučuje používat z aplikace v App Service Environment (pomocného mechanismu), protože je už ve vaší virtuální síti. Případy použití, které tato funkce řeší:
 
@@ -163,7 +163,7 @@ Funkce vyžadovat integraci virtuální sítě pro bránu je velmi užitečná, 
 
 Tato funkce je ve verzi Preview a neměla by se používat pro produkční úlohy. Další informace o této funkci najdete v článku věnovaném [integraci virtuální sítě App Service][vnetintegration].
 
-## <a name="app-service-environment"></a>Prostředí App Service 
+## <a name="app-service-environment"></a>App Service Environment 
 
 App Service Environment (pomocným mechanismem) je nasazení jednoho tenanta Azure App Service, které ve vaší virtuální síti běží. Pomocí pomocného mechanismu můžete použít případy použití jako:
 

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5d4c549eaded78c69d3e7fa7173b5ad9b1d82f2f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 9c4ba09c7e3eca4482ed56b0b337124aeec5b838
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333144"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928258"
 ---
 # <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>Kurz: vytvoření vlastních pravidel pro analytiky k detekci podezřelých hrozeb
 
-Po [připojení zdrojů dat](quickstart-onboard.md) To Azure Sentinel můžete vytvořit vlastní pravidla, která budou vyhledávat konkrétní kritéria napříč vaším prostředím, a generovat incidenty, když se kritéria shodují, abyste je mohli prozkoumat. Tento kurz vám pomůže vytvořit vlastní pravidla pro detekci hrozeb pomocí služby Azure Sentinel.
+Po [připojení zdrojů dat](quickstart-onboard.md) ke službě Azure Sentinel můžete vytvořit vlastní pravidla, která budou vyhledávat konkrétní kritéria napříč vaším prostředím, a generovat incidenty, když se kritéria shodují, abyste je mohli prozkoumat. Tento kurz vám pomůže vytvořit vlastní pravidla pro detekci hrozeb pomocí služby Azure Sentinel.
 
 Tento kurz vám pomůže detekovat hrozby pomocí služby Azure Sentinel.
 > [!div class="checklist"]
@@ -56,7 +56,7 @@ Můžete vytvořit vlastní analytická pravidla, která vám pomůžou vyhledat
     \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
 
    > [!NOTE]
-   > Délka dotazu by měla být mezi 1 a 1 000 znaky a nesmí obsahovat "Search \*" nebo "Union \*".
+   > Délka dotazu by měla být mezi 1 a 10 000 znaky a nesmí obsahovat "Search \*" ani "Union \*".
 
     1. V části **plánování dotazů**nastavte následující parametry:
 

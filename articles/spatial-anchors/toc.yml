@@ -85,6 +85,8 @@
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/'
 - name: Zdroje a prostředky
   items:
+    - name: Poznámky k verzi
+      href: 'https://github.com/Azure/azure-spatial-anchors-samples/releases'
     - name: Rozhraní REST API správy prostředků služby Azure Mixed Reality
       href: 'https://docs.microsoft.com/rest/api/mixedreality/'
     - name: Nejčastější dotazy

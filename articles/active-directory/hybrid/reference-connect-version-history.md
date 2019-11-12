@@ -16,12 +16,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38235e90ccf79cf1322ce0f26ed426d8c3a693cc
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 52e15aa62043ba394ae6e8cfe2cc7f27709c7d33
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847179"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927454"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydání verze
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -43,9 +43,18 @@ Stáhnout | [Stáhněte si Azure AD Connect](https://go.microsoft.com/fwlink/?Li
 I když procházíme tímto procesem, číslo verze vydaných verzí se zobrazí s číslem "X" v umístění vedlejší verze, jako v "1.3. X. 0" – to znamená, že poznámky k verzi v tomto dokumentu jsou platné pro všechny verze začínající znakem "1,3". Po dokončení procesu vydávání verzí bude číslo vydané verze aktualizováno na nejnovější vydanou verzi a stav vydání bude aktualizován na hodnotu Vydáno ke stažení a automatický upgrade.
 Pro automatický upgrade nebudou zpřístupněny všechny verze Azure AD Connect. Stav vydání označuje, zda je vydaná verze dostupná pro automatický upgrade nebo pouze pro stažení. Pokud byl na Azure AD Connect serveru povolen automatický upgrade, server se automaticky upgraduje na nejnovější verzi Azure AD Connect vydanou pro automatický upgrade. Všimněte si, že ne všechny konfigurace Azure AD Connect mají nárok na automatický upgrade. Další informace o [automatickém upgradu](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade) získáte pomocí tohoto odkazu.
 
+## <a name="14320"></a>1.4.32.0
+### <a name="release-status"></a>Stav verze
+08/11/2019: vydáno ke stažení. Není k dispozici pro automatický upgrade
+
+>[!IMPORTANT]
+>Z důvodu interní změny schématu v této verzi Azure AD Connect, pokud spravujete nastavení konfigurace vztahu důvěryhodnosti ADFS pomocí prostředí MSOnline PowerShell, musíte aktualizovat modul MSOnline PowerShellu na verzi 1.1.183.57 nebo vyšší.
+### <a name="fixed-issues"></a>Oprava potíží
+
+Tato verze opravuje problém se stávajícími zařízeními připojenými k hybridní službě Azure AD. Tato verze obsahuje nové pravidlo synchronizace zařízení, které tento problém vyřeší.
+Všimněte si, že tato změna pravidla může způsobit odstranění zastaralých zařízení z Azure AD. Nejedná se o příčinu obav, protože tyto objekty zařízení služba Azure AD během autorizace podmíněného přístupu nepoužívá. Počet zařízení, která se budou pomocí této změny pravidla odstraňovat u některých zákazníků, může překročit prahovou hodnotu pro odstranění. Pokud se vám v Azure AD zobrazuje odstranění objektů zařízení, než je prahová hodnota pro odstranění exportu, doporučuje se, aby se odstranění procházela. [Postup při překročení prahové hodnoty odstranění do toku při odstraňování](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-sync-feature-prevent-accidental-deletes)
+
 ## <a name="14250"></a>1.4.25.0
-
-
 
 ### <a name="release-status"></a>Stav verze
 9/28/2019: vydaná pro automatický upgrade pro výběr klientů. Není k dispozici ke stažení.
@@ -465,7 +474,7 @@ Pomocí následujících změn oprávnění v místní službě AD Zablokujte p�
 *   Odebere všechny položky ACE u konkrétního objektu s výjimkou položek ACE specifických pro sebe. Chceme, aby výchozí oprávnění zůstala beze změny, když se dostane do sebe.
 *   Přiřaďte tato konkrétní oprávnění:
 
-Typ     | Název                          | Přístup               | Platí pro
+Typ     | Název                          | Access               | Platí pro
 ---------|-------------------------------|----------------------|--------------|
 Povolit    | SOUBORŮ                        | Úplné řízení         | Tento objekt  |
 Povolit    | Enterprise Admins             | Úplné řízení         | Tento objekt  |

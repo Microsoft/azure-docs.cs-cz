@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e07136eed9c14eb4b6eda49ef635171aaf543445
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 21f1da8738946078cb625c76e11ce1bfd62d97ac
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809265"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927164"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Typy aplikací pro platformu Microsoft Identity Platform
 
@@ -59,7 +59,7 @@ V tomto toku aplikace obdrží tokeny přímo z koncového bodu autorizace platf
 
 Pokud se chcete podívat na tento scénář v akci, zkuste v části [Začínáme s Microsoft Identity platformou začít](v2-overview.md#getting-started) jeden z ukázkových kódu aplikace na jedné stránce.
 
-## <a name="web-apps"></a>Web Apps
+## <a name="web-apps"></a>Webové aplikace
 
 Pro webové aplikace (.NET, PHP, Java, Ruby, Python, Node), ke kterým uživatel přistupuje přes prohlížeč, můžete k přihlášení uživatele použít [OpenID Connect](active-directory-v2-protocols.md) . V OpenID Connect webová aplikace obdrží token ID. Token ID je token zabezpečení, který ověřuje identitu uživatele a poskytuje informace o uživateli v podobě deklarací identity:
 
@@ -76,7 +76,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 }
 ```
 
-Další podrobnosti o různých typech tokenů použitých na koncovém bodu platformy Microsoft Identity Platform jsou k dispozici v odkazu [přístupového tokenu](access-tokens.md) a na [id_token reference](id-tokens.md) .
+Další podrobnosti o různých typech tokenů použitých v koncovém bodu platformy Microsoft Identity Platform jsou k dispozici v odkazu [přístupového tokenu](access-tokens.md) a v [id_token odkazech](id-tokens.md) .
 
 V aplikacích webového serveru přebírá tok ověřování při přihlašování tyto kroky vysoké úrovně:
 
@@ -90,7 +90,7 @@ Kromě jednoduchého přihlašování může aplikace webového serveru vyžadov
 
 ## <a name="web-apis"></a>Webová rozhraní API
 
-Pomocí koncového bodu Microsoft Identity Platform můžete zabezpečit webové služby, například webové rozhraní API RESTful vaší aplikace. Místo tokenů ID a souborů cookie relací používá webové rozhraní API přístupový token OAuth 2,0 k zabezpečení svých dat a ověřování příchozích požadavků. Volající webového rozhraní API připojí přístupový token v autorizační hlavičce požadavku HTTP, třeba takto:
+Pomocí koncového bodu Microsoft Identity Platform můžete zabezpečit webové služby, například webové rozhraní API RESTful vaší aplikace. Webová rozhraní API je možné implementovat na různých platformách a jazycích. Můžete je taky implementovat pomocí triggerů HTTP v Azure Functions. Místo tokenů ID a souborů cookie relací používá webové rozhraní API přístupový token OAuth 2,0 k zabezpečení svých dat a ověřování příchozích požadavků. Volající webového rozhraní API připojí přístupový token v autorizační hlavičce požadavku HTTP, třeba takto:
 
 ```
 GET /api/items HTTP/1.1
@@ -100,7 +100,7 @@ Accept: application/json
 ...
 ```
 
-Webové rozhraní API používá přístupový token k ověření identity volajícího rozhraní API a extrakci informací o volajícím z deklarací identity, které jsou zakódované v přístupovém tokenu. Další podrobnosti o různých typech tokenů použitých na koncovém bodu platformy Microsoft Identity Platform jsou k dispozici v odkazu [přístupového tokenu](access-tokens.md) a na [id_token reference](id-tokens.md) .
+Webové rozhraní API používá přístupový token k ověření identity volajícího rozhraní API a extrakci informací o volajícím z deklarací identity, které jsou zakódované v přístupovém tokenu. Další podrobnosti o různých typech tokenů použitých v koncovém bodu platformy Microsoft Identity Platform jsou k dispozici v odkazu [přístupového tokenu](access-tokens.md) a v [id_token odkazech](id-tokens.md) .
 
 Webové rozhraní API může uživatelům povolit, aby se mohli rozhodnout nebo odhlásit konkrétní funkce nebo data tím, že zveřejňuje oprávnění, označované taky jako [obory](v2-permissions-and-consent.md). Aby volající aplikace získala oprávnění k oboru, uživatel musí během toku souhlasit s rozsahem. Koncový bod platformy Microsoft Identity žádá uživatele o oprávnění a pak zaznamená oprávnění ve všech přístupových tokenech, které webové rozhraní API obdrží. Webové rozhraní API ověřuje přístupové tokeny, které přijímá při každém volání, a provádí kontroly autorizace.
 

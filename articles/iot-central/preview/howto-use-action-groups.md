@@ -8,14 +8,14 @@ ms.date: 10/21/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: b4dbf94d4b0063eadaa900a684a31e5288ff50f9
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e51a2fc7e3af9a56b90a66935ef01ac907ebce3b
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895615"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929901"
 ---
-# <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>Seskupit více akcí ke spuštění z jednoho nebo více pravidel
+# <a name="group-multiple-actions-to-run-from-one-or-more-rules-preview-features"></a>Seskupit více akcí ke spuštění z jednoho nebo více pravidel (funkce ve verzi Preview)
 
 *Tento článek se týká tvůrců a správců.*
 

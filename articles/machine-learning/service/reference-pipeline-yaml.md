@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: sanpil
 author: sanpil
-ms.date: 10/15/2019
-ms.openlocfilehash: a98a0e75c7a03baa663ccb4215e918a87bcc5df7
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.date: 11/11/2019
+ms.openlocfilehash: 474a184b24ca3318a33adb89b25640939a814474
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821772"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929516"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>Definování kanálů strojového učení v YAML
 
@@ -47,8 +47,6 @@ Definice kanálu používá následující klíče, které odpovídají třídě
 | `data_reference` | Definuje, jak a kde mají být data zpřístupněna při spuštění. |
 | `default_compute` | Výchozí výpočetní cíl, ve kterém se spouští všechny kroky v kanálu |
 | `steps` | Kroky použité v kanálu. |
-
-Následující YAML je ukázková definice kanálu:
 
 ## <a name="parameters"></a>Parametry
 
@@ -104,15 +102,15 @@ pipeline:
 
 ## <a name="steps"></a>Kroky
 
-Kroky definují výpočetní prostředí spolu se soubory, které se mají spustit v prostředí. Definice YAML představuje následující kroky:
+Kroky definují výpočetní prostředí spolu se soubory, které se mají spustit v prostředí. Pro definování typu kroku použijte `type` klíč:
 
-| YAML klíč | Popis |
+| Typ kroku | Popis |
 | ----- | ----- |
-| `adla_step` | Spustí skript U-SQL s Azure Data Lake Analytics. Odpovídá třídě [AdlaStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep?view=azure-ml-py) . |
-| `azurebatch_step` | Spouští úlohy pomocí Azure Batch. Odpovídá třídě [AzureBatchStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep?view=azure-ml-py) . |
-| `databricks_step` | Přidá Poznámkový blok datacihly, skript Pythonu nebo JAR. Odpovídá třídě [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?view=azure-ml-py) . |
-| `data_transfer_step` | Přenáší data mezi možnostmi úložiště. Odpovídá třídě [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) . |
-| `python_script_step` | Spustí skript Pythonu. Odpovídá třídě [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) . |
+| `AdlaStep` | Spustí skript U-SQL s Azure Data Lake Analytics. Odpovídá třídě [AdlaStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep?view=azure-ml-py) . |
+| `AzureBatchStep` | Spouští úlohy pomocí Azure Batch. Odpovídá třídě [AzureBatchStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep?view=azure-ml-py) . |
+| `DatabricsStep` | Přidá Poznámkový blok datacihly, skript Pythonu nebo JAR. Odpovídá třídě [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?view=azure-ml-py) . |
+| `DataTransferStep` | Přenáší data mezi možnostmi úložiště. Odpovídá třídě [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) . |
+| `PythonScriptStep` | Spustí skript Pythonu. Odpovídá třídě [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) . |
 
 ### <a name="adla-step"></a>Krok ADLA
 
@@ -146,15 +144,15 @@ pipeline:
     default_compute: adlacomp
     steps:
         Step1:
-            runconfig: "yaml/default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            adla_step:
-                name: "AdlaStep"
-                script_name: "sample_script.usql"
-                source_directory: "helloworld"
+            type: "AdlaStep"
+            name: "MyAdlaStep"
+            script_name: "sample_script.usql"
+            source_directory: "D:\\scripts\\Adla"
             inputs:
                 employee_data:
                     source: employee_data
@@ -198,18 +196,18 @@ pipeline:
     default_compute: testbatch
     steps:
         Step1:
-            runconfig: "D:\\AzureMlCli\\cli_testing\\default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            azurebatch_step:
-                name: "AzureBatchStep"
-                pool_id: "MyPoolName"
-                create_pool: true
-                executable: "azurebatch.cmd"
-                source_directory: "D:\\AzureMlCli\\cli_testing"
-                allow_reuse: false
+            type: "AzureBatchStep"
+            name: "MyAzureBatchStep"
+            pool_id: "MyPoolName"
+            create_pool: true
+            executable: "azurebatch.cmd"
+            source_directory: "D:\\scripts\\AureBatch"
+            allow_reuse: false
             inputs:
                 input:
                     source: input
@@ -251,18 +249,18 @@ pipeline:
     default_compute: mydatabricks
     steps:
         Step1:
-            runconfig: "D:\\AzureMlCli\\cli_testing\\default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            databricks_step:
-                name: "Databrickstep"
-                run_name: "DatabrickRun"
-                python_script_name: "train-db-local.py"
-                source_directory: "D:\\AzureMlCli\\cli_testing\\databricks_train"
-                num_workers: 1
-                allow_reuse: true
+            type: "DatabricksStep"
+            name: "MyDatabrickStep"
+            run_name: "DatabricksRun"
+            python_script_name: "train-db-local.py"
+            source_directory: "D:\\scripts\\Databricks"
+            num_workers: 1
+            allow_reuse: true
             inputs:
                 blob_test_data:
                     source: blob_test_data
@@ -301,14 +299,14 @@ pipeline:
     default_compute: adftest
     steps:
         Step1:
-            runconfig: "yaml/default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            data_transfer_step:
-                name: "DataTransferStep"
-                adla_compute_name: adftest
+            type: "DataTransferStep"
+            name: "MyDataTransferStep"
+            adla_compute_name: adftest
             source_data_reference:
                 adls_test_data:
                     source: adls_test_data
@@ -345,16 +343,16 @@ pipeline:
     default_compute: cpu-cluster
     steps:
         Step1:
-            runconfig: "yaml/default_runconfig.yml"
+            runconfig: "D:\\Yaml\\default_runconfig.yml"
             parameters:
                 NUM_ITERATIONS_2:
                     source: PipelineParam1
                 NUM_ITERATIONS_1: 7
-            python_script_step:
-                name: "PythonScriptStep"
-                script_name: "train.py"
-                allow_reuse: True
-                source_directory: "helloworld"
+            type: "PythonScriptStep"
+            name: "MyPythonScriptStep"
+            script_name: "train.py"
+            allow_reuse: True
+            source_directory: "D:\\scripts\\PythonScript"
             inputs:
                 InputData:
                     source: DataReference1
@@ -408,7 +406,7 @@ Při definování **opakovaného plánu**použijte následující klíče v rám
 | `time_zone` | Časové pásmo pro čas spuštění. Pokud není zadáno žádné časové pásmo, bude použit čas UTC. |
 | `hours` | Pokud je `frequency` `"Day"` nebo `"Week"`, můžete zadat jedno nebo více celých čísel od 0 do 23, které jsou odděleny čárkami, jako hodiny dne, kdy se má kanál spustit. Lze použít pouze `time_of_day` nebo `hours` a `minutes`. |
 | `minutes` | Pokud je `frequency` `"Day"` nebo `"Week"`, můžete zadat jedno nebo více celých čísel od 0 do 59, které jsou odděleny čárkami, jako minuty hodiny, kdy se má kanál spustit. Lze použít pouze `time_of_day` nebo `hours` a `minutes`. |
-| `time_of_day` | Pokud je `frequency` `"Day"` nebo `"Week"`, můžete zadat denní dobu, kdy se má plán spustit. Formát řetězce hodnoty je `hh:mm`. Lze použít pouze `time_of_day` nebo `hours` a `minutes`. |zzs
+| `time_of_day` | Pokud je `frequency` `"Day"` nebo `"Week"`, můžete zadat denní dobu, kdy se má plán spustit. Formát řetězce hodnoty je `hh:mm`. Lze použít pouze `time_of_day` nebo `hours` a `minutes`. |
 | `week_days` | Pokud je `frequency` `"Week"`, můžete zadat jeden nebo více dní oddělené čárkami, kdy se má plán spustit. Platné hodnoty jsou `"Monday"`, `"Tuesday"`, `"Wednesday"`, `"Thursday"`, `"Friday"`, `"Saturday"`a `"Sunday"`. |
 
 Následující příklad obsahuje definici pro opakovaný plán:

@@ -1,5 +1,5 @@
 ---
-title: Zabezpečit s použitím SSL
+title: Zabezpečení webových služeb pomocí protokolu SSL
 titleSuffix: Azure Machine Learning
 description: Naučte se, jak povolit protokol HTTPS v pořadí, v jakém jsou webové služby nasazené prostřednictvím Azure Machine Learning.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1455ec17898e82ed0f39fea66c44d2e9b4f57280
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f1021ad1983f78252d924a5d3cb674419732d66e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489544"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932064"
 ---
 # <a name="use-ssl-to-secure-a--through-azure-machine-learning"></a>Použití SSL k zabezpečení prostřednictvím Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -81,7 +81,7 @@ Chcete-li nasadit (nebo znovu nasadit) službu s povoleným protokolem SSL, nast
 Při nasazení na AKS můžete vytvořit nový cluster AKS nebo připojit existující. Další informace o vytvoření nebo připojení clusteru najdete v tématu [nasazení modelu do clusteru služby Azure Kubernetes](how-to-deploy-azure-kubernetes-service.md).
   
 -  Pokud vytvoříte nový cluster, použijete **[AksCompute. provisionining_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none-)** .
-- Pokud připojíte existující cluster, použijete **[AksCompute. attach_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** . Vrátí objekt konfigurace, který obsahuje metodu **Enable_ssl** .
+- Pokud připojíte existující cluster, použijete **[AksCompute. attach_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** . Vrátí objekt konfigurace, který má metodu **Enable_ssl** .
 
 Metoda **Enable_ssl** může používat certifikát, který poskytuje společnost Microsoft nebo certifikát, který si koupíte.
 
@@ -105,7 +105,7 @@ Metoda **Enable_ssl** může používat certifikát, který poskytuje společnos
     attach_config.enable_ssl(leaf_domain_label = "myservice")
     ```
 
-  * Když použijete *certifikát, který jste zakoupili*, použijete parametry *ssl_cert_pem_file*, *ssl_key_pem_file*a *ssl_cname* . Následující příklad ukazuje, jak pomocí souborů *. pem* vytvořit konfiguraci, která používá certifikát SSL, který jste zakoupili:
+  * Když použijete *zakoupený certifikát*, použijete parametry *ssl_cert_pem_file*, *ssl_key_pem_file*a *ssl_cname* . Následující příklad ukazuje, jak pomocí souborů *. pem* vytvořit konfiguraci, která používá certifikát SSL, který jste zakoupili:
 
     ```python
     from azureml.core.compute import AksCompute
@@ -133,7 +133,7 @@ aci_config = AciWebservice.deploy_configuration(
     ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
 ```
 
-Další informace najdete v tématu [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-).
+Další informace naleznete v tématu [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-).
 
 ## <a name="update-your-dns"></a>Aktualizace DNS
 
@@ -148,7 +148,7 @@ Dál je potřeba aktualizovat DNS tak, aby odkazoval na.
 + **Pro AKS:**
 
   > [!WARNING]
-  > Pokud jste službu *leaf_domain_label* použili k vytvoření služby pomocí certifikátu od Microsoftu, neaktualizujte ručně hodnotu DNS clusteru. Hodnota by měla být nastavena automaticky.
+  > Pokud jste použili *leaf_domain_label* k vytvoření služby pomocí certifikátu od Microsoftu, neaktualizujte ručně hodnotu DNS clusteru. Hodnota by měla být nastavena automaticky.
 
   Aktualizujte DNS veřejné IP adresy clusteru AKS na kartě **Konfigurace** v části **Nastavení** v levém podokně. (Podívejte se na následující obrázek.) Veřejná IP adresa je typ prostředku, který se vytvoří v rámci skupiny prostředků, která obsahuje uzly agenta AKS a další síťové prostředky.
 
@@ -248,6 +248,6 @@ aks_target.update(update_config)
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Získáte informace o těchto tématech:
+Naučte se:
 + [Využití modelu strojového učení nasazeného jako](how-to-consume-web-service.md)
 + [Zabezpečené spouštění experimentů a odvození v rámci virtuální sítě Azure](how-to-enable-virtual-network.md)

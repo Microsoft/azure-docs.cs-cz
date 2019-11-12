@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: efdb2f51058eca456d622afda390dee17fffea0b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b949a0edff7ed6341d10518bc1c38afe2f7efad0
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819334"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929184"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Pravidelné zálohování a obnovení v Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -117,19 +117,7 @@ Nejdřív musíte ve svém clusteru povolit _službu zálohování a obnovení_ 
 
 4. Po aktualizaci konfiguračního souboru clusteru předchozími změnami je použijte a nechejte nasazení nebo upgrade dokončeno. Po dokončení se _Služba zálohování a obnovení_ spustí v clusteru. Identifikátor URI této služby je `fabric:/System/BackupRestoreService` a služba se může nacházet v části systémová služba v Průzkumníkovi Service Fabric. 
 
-### <a name="using-service-fabric-explorer"></a>Použití Service Fabric Explorer
 
-1. Ujistěte se, že je povolený rozšířený režim.
-
-    ![Povolit rozšířený režim][2]
-
-2. Vyberte aplikaci a pokračujte na akci. Klikněte na povolit nebo aktualizovat zálohu aplikace.
-
-    ![Povolit zálohování aplikací][3] 
-
-3. Nakonec vyberte požadovanou zásadu a klikněte na povolit zálohování.
-
-    ![Vybrat zásadu][4]
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Povolení pravidelného zálohování pro spolehlivou stavovou službu a Reliable Actors
 Podívejme se na postupy, které umožňují pravidelné zálohování pro spolehlivou stavovou službu a Reliable Actors. Tyto kroky předpokládají
@@ -207,6 +195,16 @@ $url = "http://localhost:19080/Applications/SampleApp/$/EnableBackup?api-version
 
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ``` 
+
+#### <a name="using-service-fabric-explorer"></a>Použití Service Fabric Explorer
+
+1. Vyberte aplikaci a pokračujte na akci. Klikněte na povolit nebo aktualizovat zálohu aplikace.
+
+    ![Povolit zálohování aplikací][3] 
+
+2. Nakonec vyberte požadovanou zásadu a klikněte na povolit zálohování.
+
+    ![Vybrat zásadu][4]
 
 ### <a name="verify-that-periodic-backups-are-working"></a>Ověřte, jestli fungují pravidelné zálohy.
 
@@ -292,8 +290,6 @@ Chcete-li zobrazit zálohy v Service Fabric Explorer, přejděte do oddílu a vy
 - [Odkaz na REST API obnovení zálohy](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/partition-backedup-health-event.png
-[2]: ./media/service-fabric-backuprestoreservice/advanced-mode.png
 [3]: ./media/service-fabric-backuprestoreservice/enable-app-backup.png
 [4]: ./media/service-fabric-backuprestoreservice/enable-application-backup.png
 [5]: ./media/service-fabric-backuprestoreservice/backup-enumeration.png
-

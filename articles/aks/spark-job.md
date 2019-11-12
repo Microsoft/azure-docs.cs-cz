@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: c4fca9b8f4c8a01124074396985b1ec3f1c896c6
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 5ecfa1853479c1cdc705a1a465a1de6318917a72
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675148"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929002"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Spouštění úloh Apache Spark v AKS
 
 [Apache Spark][apache-spark] je rychlý modul pro zpracování velkých objemů dat. Od [verze Spark 2.3.0][spark-latest-release]Apache Spark podporuje nativní integraci s clustery Kubernetes. Služba Azure Kubernetes Service (AKS) je spravované prostředí Kubernetes běžící v Azure. Tento dokument popisuje přípravu a spouštění úloh Apache Spark v clusteru služby Azure Kubernetes (AKS).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků v tomto článku budete potřebovat následující.
 
@@ -49,7 +49,7 @@ Vytvořte instanční objekt pro cluster. Po vytvoření budete pro další př�
 az ad sp create-for-rbac --name SparkSP
 ```
 
-Vytvořte cluster AKS s uzly, které mají velikost `Standard_D3_v2` a hodnoty appId a Password předané jako parametry služby-Principal a Client-Secret.
+Vytvořte cluster AKS s uzly, které mají velikost `Standard_D3_v2`a hodnoty appId a Password předané jako parametry služby-Principal a Client-Secret.
 
 ```azurecli
 az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>
@@ -92,7 +92,7 @@ Spuštěním následujícího příkazu Sestavte zdrojový kód Spark s podporou
 ./build/mvn -Pkubernetes -DskipTests clean package
 ```
 
-Následující příkazy vytvoří image kontejneru Spark a nahrajte je do registru imagí kontejneru. Nahraďte `registry.example.com` názvem vašeho registru kontejneru a `v1` značkou, kterou dáváte přednost při použití. Pokud používáte Docker Hub, tato hodnota je název registru. Pokud používáte Azure Container Registry (ACR), je tato hodnota název přihlašovacího serveru ACR.
+Následující příkazy vytvoří image kontejneru Spark a nahrajte je do registru imagí kontejneru. Nahraďte `registry.example.com` názvem vašeho registru kontejneru a `v1` značku, kterou preferujete použít. Pokud používáte Docker Hub, tato hodnota je název registru. Pokud používáte Azure Container Registry (ACR), je tato hodnota název přihlašovacího serveru ACR.
 
 ```bash
 REGISTRY_NAME=registry.example.com
@@ -126,7 +126,7 @@ Vytvoří nový projekt Scala ze šablony.
 sbt new sbt/scala-seed.g8
 ```
 
-Po zobrazení výzvy zadejte pro název projektu `SparkPi`.
+Po zobrazení výzvy zadejte `SparkPi` pro název projektu.
 
 ```bash
 name [Scala Seed Project]: SparkPi
@@ -204,7 +204,7 @@ az storage blob upload --container-name $CONTAINER_NAME --file $FILE_TO_UPLOAD -
 jarUrl=$(az storage blob url --container-name $CONTAINER_NAME --name $BLOB_NAME | tr -d '"')
 ```
 
-Proměnná `jarUrl` nyní obsahuje veřejně přístupnou cestu k souboru jar.
+Proměnná `jarUrl` nyní obsahuje veřejně dostupnou cestu k souboru jar.
 
 ## <a name="submit-a-spark-job"></a>Odeslat Sparkovou úlohu
 
@@ -259,7 +259,7 @@ I když je úloha spuštěná, můžete taky získat přístup k uživatelskému
 kubectl port-forward spark-pi-2232778d0f663768ab27edc35cb73040-driver 4040:4040
 ```
 
-Chcete-li získat přístup k uživatelskému rozhraní Spark, otevřete adresu `127.0.0.1:4040` v prohlížeči.
+Pokud chcete získat přístup k uživatelskému rozhraní Spark, otevřete adresu `127.0.0.1:4040` v prohlížeči.
 
 ![ROZHRANÍ Spark](media/aks-spark-job/spark-ui.png)
 
@@ -294,7 +294,7 @@ Pi is roughly 3.152155760778804
 
 V předchozím příkladu se soubor JAR Spark nahrál do služby Azure Storage. Další možností je zabalit soubor JAR do vlastních imagí Docker.
 
-Provedete to tak, že vyhledáte `dockerfile` pro Image Sparku umístěnou v adresáři `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/`. Přidejte příkaz `ADD` pro úlohu Spark `jar` někde mezi deklaracemi `WORKDIR` a `ENTRYPOINT`.
+Provedete to tak, že vyhledáte `dockerfile` pro Image Sparku umístěnou v adresáři `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/`. Přidat příkaz `ADD` am pro úlohu Spark `jar` mezi `WORKDIR` a `ENTRYPOINT`mi deklaracemi.
 
 Aktualizujte cestu jar na umístění souboru `SparkPi-assembly-0.1.0-SNAPSHOT.jar` ve vývojovém systému. Můžete také použít vlastní soubor JAR.
 
@@ -322,6 +322,7 @@ Při spuštění úlohy místo označení vzdálené adresy URL JAR se dá použ
     --name spark-pi \
     --class org.apache.spark.examples.SparkPi \
     --conf spark.executor.instances=3 \
+    --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
     --conf spark.kubernetes.container.image=<spark-image> \
     local:///opt/spark/work-dir/<your-jar-name>.jar
 ```

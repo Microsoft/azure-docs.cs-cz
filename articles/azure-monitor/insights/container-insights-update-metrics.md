@@ -6,15 +6,16 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/06/2019
-ms.openlocfilehash: dd1618151b97ab4f958bfd5d50333b9551014f0f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 11/11/2019
+ms.openlocfilehash: b513408f551a255facc897b7ba83c68e2befe282
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554068"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928264"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Postup aktualizace Azure Monitor pro kontejnery pro povolení metrik
+
 Azure Monitor for Containers zavádí podporu shromažďování metrik z uzlů clusterů Azure Kubernetes Services (AKS) a lusků a jejich zápis do úložiště Azure Monitorch metrik. Tato změna má poskytovat vylepšenou časovou osu při vytváření agregačních výpočtů (střední, Count, Max, min, Sum) v grafech výkonu, podpora připnutí grafů výkonu v Azure Portal řídicích panelech a podpora upozornění na metriky.
 
 V rámci této funkce jsou povoleny následující metriky:
@@ -28,20 +29,25 @@ Aktualizace clusteru tak, aby podporovala tyto nové funkce, se dá provádět z
 
 Buď proces přiřadí roli **vydavatele metrik monitorování** k instančnímu objektu clusteru, aby data shromážděná agentem mohla být publikována do vašeho prostředku clusterů. Vydavatel monitorování metrik má oprávnění pouze k odeslání metrik do prostředku, nemůže změnit žádný stav, aktualizovat prostředek ani číst žádná data. Další informace o roli najdete v tématu [monitorování role vydavatele metrik](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
 
-## <a name="prerequisites"></a>Předpoklady 
-Než začnete, ujistěte se, že jste členem role **[vlastníka](../../role-based-access-control/built-in-roles.md#owner)** v prostředku clusteru AKS, aby bylo možné povolit shromažďování uzlů a pod vlastním metriku výkonu. 
+## <a name="prerequisites"></a>Požadavky
+
+Než začnete, zkontrolujte následující:
+
+* Vlastní metriky jsou dostupné jenom v podmnožině oblastí Azure. [Tady](../platform/metrics-custom-overview.md#supported-regions)je popsán seznam podporovaných oblastí.
+* Jste členem role **[vlastníka](../../role-based-access-control/built-in-roles.md#owner)** v prostředku clusteru AKS, aby bylo možné povolit shromažďování uzlů a pod vlastním metriku výkonu. 
 
 Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.59 nebo novější. Pro identifikaci vaší verze spusťte `az --version`. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Upgrade clusteru z Azure Portal
 
-Pro existující clustery AKS monitorované službou Azure Monitor for Containers po výběru clusteru k zobrazení jeho stavu z zobrazení více clusterů v Azure Monitor nebo přímo z clusteru výběrem možnosti **přehledy** v levém podokně by se měla zobrazit banner v horní části portálu.
+V případě existujících AKS clusterů monitorovaných službou Azure Monitor for Containers po výběru clusteru k zobrazení jeho stavu z zobrazení více clusterů v Azure Monitor nebo přímo z clusteru výběrem možnosti **přehledy** v levém podokně by se v horní části portálu měla zobrazit banner.
 
 ![Upgradovat banner clusteru AKS v Azure Portal](./media/container-insights-update-metrics/portal-banner-enable-01.png)
 
 Kliknutím na **Povolit** zahájíte proces upgradu clusteru. Dokončení tohoto procesu může trvat několik sekund a průběh můžete sledovat v části oznámení z nabídky.
 
 ## <a name="upgrade-all-clusters-using-bash-in-azure-command-shell"></a>Upgrade všech clusterů pomocí bash ve službě Azure Command Shell
+
 Provedením následujících kroků aktualizujte všechny clustery ve vašem předplatném pomocí bash ve službě Azure Command Shell.
 
 1. Spusťte následující příkaz pomocí Azure CLI.  Upravte hodnotu **SubscriptionId** pomocí hodnoty ze stránky **přehledu AKS** pro cluster AKS.
@@ -59,6 +65,7 @@ Provedením následujících kroků aktualizujte všechny clustery ve vašem př
     ```
 
 ## <a name="upgrade-per-cluster-using-azure-cli"></a>Upgrade na cluster pomocí Azure CLI
+
 Provedením následujících kroků aktualizujete konkrétní cluster v předplatném pomocí Azure CLI.
 
 1. Spusťte následující příkaz pomocí Azure CLI. Upravte hodnoty pro **SubscriptionId**, **resourceGroupName**a **název_clusteru** pomocí hodnot na stránce **Přehled AKS** pro cluster AKS.  Chcete-li získat hodnotu **clientIdOfSPN**, je vrácena při spuštění příkazu `az aks show`, jak je znázorněno v následujícím příkladu.
@@ -71,6 +78,7 @@ Provedením následujících kroků aktualizujete konkrétní cluster v předpla
     ``` 
 
 ## <a name="upgrade-all-clusters-using-azure-powershell"></a>Upgrade všech clusterů pomocí Azure PowerShell
+
 Provedením následujících kroků aktualizujte všechny clustery v rámci předplatného pomocí Azure PowerShell.
 
 1. Zkopírujte následující skript a vložte ho do souboru:
@@ -326,6 +334,7 @@ Provedením následujících kroků aktualizujte všechny clustery v rámci pře
     ```
 
 ## <a name="upgrade-per-cluster-using-azure-powershell"></a>Upgradovat na cluster pomocí Azure PowerShell
+
 Provedením následujících kroků aktualizujte konkrétní cluster pomocí Azure PowerShell.
 
 1. Zkopírujte následující skript a vložte ho do souboru:
@@ -576,4 +585,5 @@ Provedením následujících kroků aktualizujte konkrétní cluster pomocí Azu
     ```
 
 ## <a name="verify-update"></a>Ověřit aktualizaci 
+
 Po zahájení aktualizace pomocí jedné z výše popsaných metod můžete použít Azure Monitor Průzkumníku metrik a ověřit z **oboru názvů metriky** , na které je **Přehled** uvedený. Pokud je to, znamená to, že můžete pokračovat a začít nastavovat [výstrahy metriky](../platform/alerts-metric.md) nebo připínat grafy k [řídicím panelům](../../azure-portal/azure-portal-dashboards.md).  

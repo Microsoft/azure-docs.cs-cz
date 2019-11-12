@@ -1,5 +1,5 @@
 ---
-title: Použití šablony Azure Resource Manager k vytvoření pracovního prostoru
+title: Vytvoření pracovního prostoru s Azure Resource Manager šablonou
 titleSuffix: Azure Machine Learning
 description: Naučte se používat šablonu Azure Resource Manager k vytvoření nového pracovního prostoru Azure Machine Learning.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: f20c7955856e2e848d331d857d2564649c837bb0
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 8bcfb80d42e7cd1fad6ff4c04415bd8627a3293e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847465"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932142"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -217,7 +217,7 @@ Další informace o šablonách najdete v následujících článcích:
 
 Další informace najdete v tématu [nasazení prostředků z vlastní šablony](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 
-## <a name="use-azure-powershell"></a>Použití Azure PowerShellu
+## <a name="use-azure-powershell"></a>Použití Azure Powershell
 
 V tomto příkladu se předpokládá, že jste šablonu uložili do souboru s názvem `azuredeploy.json` v aktuálním adresáři:
 

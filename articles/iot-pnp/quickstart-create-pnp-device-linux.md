@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 203725ba109922a8704c0e31a6e61dc6eadf6bd9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 087f1d76aaab4b05425262e0c1fb87b168c99b95
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586632"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931223"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-linux"></a>Rychlý Start: použití modelu schopností zařízení k vytvoření zařízení IoT technologie Plug and Play Preview (Linux)
 
@@ -57,11 +57,11 @@ _Připojovací řetězec úložiště modelů společnosti_ můžete najít na p
 
 ## <a name="prepare-an-iot-hub"></a>Příprava služby IoT Hub
 
-K dokončení tohoto rychlého startu potřebujete Azure IoT Hub v rámci vašeho předplatného Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+K dokončení tohoto rychlého startu budete také potřebovat službu Azure IoT Hub v rámci vašeho předplatného Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. Pokud Centrum IoT nemáte, tady najdete postup, jak ho vytvořit.
 
 Pokud používáte Azure CLI místně, `az` verze by měla být **2.0.75** nebo novější, Azure Cloud Shell používá nejnovější verzi. Pomocí příkazu `az --version` ověřte verzi nainstalovanou na vašem počítači.
 
-Přidejte Microsoft Azure rozšíření IoT pro Azure CLI:
+Spuštěním následujícího příkazu přidejte do instance Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure:
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
@@ -69,11 +69,11 @@ az extension add --name azure-cli-iot-ext
 
 Postup v tomto rychlém startu vyžaduje rozšíření **0.8.5** nebo novější. Pomocí příkazu `az extension list` ověřte verzi, kterou jste nainstalovali, a příkaz `az extension update`, který se v případě potřeby aktualizuje.
 
-Pokud nemáte centrum IoT, vytvořte ho pomocí následujících příkazů a nahraďte `{YourIoTHubName}` jedinečným názvem podle vašeho výběru. Pokud tyto příkazy spouštíte lokálně, přihlaste se ke svému předplatnému Azure pomocí `az login`. Pokud tyto příkazy spouštíte ve službě Azure Cloud Shell, jste přihlášeni automaticky:
+Pokud nemáte centrum IoT, vytvořte ho pomocí následujících příkazů a nahraďte `<YourIoTHubName>` jedinečným názvem podle vašeho výběru. Pokud tyto příkazy spouštíte lokálně, přihlaste se ke svému předplatnému Azure pomocí `az login`. Pokud tyto příkazy spouštíte ve službě Azure Cloud Shell, jste přihlášeni automaticky:
 
   ```azurecli-interactive
   az group create --name pnpquickstarts_rg --location centralus
-  az iot hub create --name {YourIoTHubName} \
+  az iot hub create --name <YourIoTHubName> \
     --resource-group pnpquickstarts_rg --sku S1
   ```
 
@@ -82,23 +82,23 @@ Předchozí příkazy vytvoří skupinu prostředků s názvem `pnpquickstarts_r
 > [!IMPORTANT]
 > Během veřejné verze Preview jsou funkce IoT technologie Plug and Play dostupné jenom v centrech IoT vytvořených v oblastech **střed USA**, **Severní Evropa**a **Japonsko – východ** .
 
-Spuštěním následujícího příkazu vytvořte identitu zařízení pro zařízení s názvem `mypnpdevice` ve službě IoT Hub. Zástupný text `{YourIoTHubName}` nahraďte názvem vašeho centra IoT:
+Spuštěním následujícího příkazu vytvořte identitu zařízení ve službě IoT Hub. Zástupné symboly **YourIoTHubName** a **YourDevice** nahraďte vašimi skutečnými názvy.
 
 ```azurecli-interactive
-az iot hub device-identity create --hub-name {YourIoTHubName} --device-id mypnpdevice
+az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDevice>
 ```
 
-Spuštěním následujících příkazů Získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali. Tento připojovací řetězec budete potřebovat později v tomto rychlém startu:
+Spuštěním následujících příkazů Získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali.
 
 ```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id mypnpdevice --output table
+az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDevice> --output table
 ```
 
 ## <a name="author-your-model"></a>Vytváření modelu
 
 V tomto rychlém startu použijete existující Vzorový model zařízení a přidružená rozhraní.
 
-1. Vytvořte `pnp_app` adresář v domovském adresáři. Tuto složku použijete pro soubory modelů zařízení a pro zástupné kódy zařízení.
+1. Vytvořte `pnp_app` adresář na místním disku. Tuto složku použijete pro soubory modelů zařízení a pro zástupné kódy zařízení.
 
     ```bash
     cd ~
@@ -121,16 +121,16 @@ V tomto rychlém startu použijete existující Vzorový model zařízení a př
 
 ## <a name="generate-the-c-code-stub"></a>Generovat zástupný kód kódu jazyka C
 
-Teď máte modul DCM a jeho přidružená rozhraní, můžete vygenerovat kód zařízení, který model implementuje. Chcete-li vygenerovat zástupnou proceduru kódu C v VS Code:
+Teď, když máte modul DCM a jeho přidružená rozhraní, můžete vygenerovat kód zařízení, který model implementuje. Chcete-li vygenerovat zástupnou proceduru kódu C v VS Code:
 
-1. Když je složka `pnp_app` otevřená v sadě VS Code, pomocí **kombinace kláves CTRL + SHIFT + P** otevřete paletu příkazů, zadejte **IoT technologie Plug and Play**a vyberte **vygenerovat zástupnou proceduru pro kód zařízení**.
+1. Když je složka `pnp_app` v VS Code otevřená, pomocí **kombinace kláves CTRL + SHIFT + P** otevřete paletu příkazů, zadejte **IoT technologie Plug and Play**a vyberte **Generovat zástupný kód zařízení**.
 
     > [!NOTE]
-    > Když použijete nástroj pro generátor kódu IoT technologie Plug and Play poprvé, bude stažení trvat několik sekund.
+    > Při prvním použití nástroje IoT technologie Plug and Play Code Generator, trvá několik sekund na stažení a instalaci automaticky.
 
-1. Vyberte soubor **SampleDevice. capabilitymodel. JSON** , který se použije k vygenerování zástupné procedury kódu zařízení.
+1. Vyberte soubor **SampleDevice. capabilitymodel. JSON** , který se použije k vygenerování zástupné procedury pro kód zařízení.
 
-1. Zadejte název projektu **sample_device**, bude to název vaší aplikace zařízení.
+1. Zadejte název projektu **sample_device**. Toto bude název aplikace vašeho zařízení.
 
 1. Jako jazyk vyberte **ANSI C** .
 
@@ -138,9 +138,9 @@ Teď máte modul DCM a jeho přidružená rozhraní, můžete vygenerovat kód z
 
 1. Jako šablonu projektu vyberte **projekt cmake v systému Linux** .
 
-1. Vyberte **zdrojový kód** jako způsob, jak zahrnout sadu SDK.
+1. Jako způsob, jak zahrnout sadu SDK pro zařízení, vyberte **prostřednictvím zdrojového kódu** .
 
-1. VS Code otevře nové okno s generovanými zástupnými soubory kódu zařízení.
+1. Nová složka s názvem **sample_device** se vytvoří ve stejném umístění jako soubor DCM a v takovém případě se jedná o vygenerované soubory zástupných procedur kódu zařízení. VS Code otevře nové okno, ve kterém se zobrazí.
     ![kód zařízení](media/quickstart-create-pnp-device-linux/device-code.png)
 
 ## <a name="build-and-run-the-code"></a>Sestavit a spustit kód
@@ -154,7 +154,7 @@ Zdrojový kód sady SDK pro zařízení slouží k sestavení zástupné procedu
     git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
     ```
 
-1. Vytvořte složku buildu **cmake** pro aplikaci **sample_device** :
+1. Vytvořte složku buildu **cmake** pro **sample_device** aplikaci:
 
     ```bash
     cd ~/pnp_app/sample_device
@@ -173,7 +173,7 @@ Zdrojový kód sady SDK pro zařízení slouží k sestavení zástupné procedu
 
     ```sh
     cd ~/pnp_app/sample_device/cmake
-    ./sample_device "{IoT Hub device connection string}"
+    ./sample_device "<device connection string>"
     ```
 
 1. Aplikace zařízení spouští odesílání dat do IoT Hub.
@@ -195,25 +195,25 @@ Chcete-li ověřit kód zařízení pomocí **AZ** CLI, je nutné publikovat sou
     > [!NOTE]
     > Připojovací řetězec je vyžadován pouze při prvním připojení k úložišti.
 
-1. V okně výstup VS Code a oznámení můžete ověřit, zda byly soubory úspěšně publikovány.
+1. V okně výstup VS Code a oznámení můžete ověřit, že soubory byly úspěšně publikovány.
 
     > [!NOTE]
     > Pokud při publikování souborů modelů zařízení dojde k chybám, můžete zkusit použít příkaz **IoT technologie Plug and Play:** odhlaste se a Projděte si kroky znovu.
 
 ### <a name="use-the-azure-iot-cli-to-validate-the-code"></a>Použití rozhraní příkazového řádku Azure IoT k ověření kódu
 
-Po spuštění ukázky klienta zařízení můžete zjistit, jestli funguje s Azure CLI.
+Po spuštění ukázkového klienta zařízení můžete zjistit, jestli funguje s rozhraním příkazového řádku Azure CLI.
 
 Pomocí následujícího příkazu můžete zobrazit telemetrii, kterou ukázkové zařízení odesílá. Před zobrazením jakékoli telemetrie ve výstupu možná budete muset počkat jednu nebo dvě minuty:
 
 ```azurecli-interactive
-az iot dt monitor-events --hub-name {your IoT hub} --device-id mypnpdevice
+az iot dt monitor-events --hub-name <YourIoTHubNme> --device-id <YourDevice>
 ```
 
 Pomocí následujícího příkazu zobrazte všechny vlastnosti odesílané zařízením:
 
 ```azurecli-interactive
-az iot dt list-properties --device-id mypnpdevice --hub-name {Your IoT hub name} --source private --repo-login "{Your company model repository connection string}"
+az iot dt list-properties --device-id <YourDevice> --hub-name <YourIoTHubNme> --source private --repo-login "<Your company model repository connection string>"
 ```
 
 ## <a name="next-steps"></a>Další kroky
@@ -223,4 +223,4 @@ V tomto rychlém startu jste zjistili, jak vytvořit zařízení IoT technologie
 Pokud chcete získat další informace o DCMs a vytváření vlastních modelů, pokračujte v kurzu:
 
 > [!div class="nextstepaction"]
-> [Kurz: Vytvoření testovacího modelu schopností zařízení pomocí Visual Studio Code](tutorial-pnp-visual-studio-code.md)
+> [Kurz: vytvoření a otestování modelu schopností zařízení pomocí Visual Studio Code](tutorial-pnp-visual-studio-code.md)

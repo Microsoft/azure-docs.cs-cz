@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edb6d96dfdca63f1bacf45ab0af01d18aafcf302
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0b4aa4fbff4e1b89b87dd05e0547db8e14ae5835
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73667876"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927141"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Oprávnění a souhlas koncového bodu Microsoft Identity Platform
 
@@ -89,9 +89,9 @@ Pokud aplikace provede přihlášení pomocí [OpenID Connect](active-directory-
 
 Obor `email` lze použít s oborem `openid` a všemi ostatními. Umožňuje aplikaci přístup k primární e-mailové adrese uživatele ve formě deklarace identity `email`. Deklarace `email` je obsažena v tokenu, pouze pokud je k uživatelskému účtu přidružena e-mailová adresa, která není vždy v případě případu. Pokud používá obor `email`, vaše aplikace by měla být připravená na zpracování případu, ve kterém deklarace identity `email` v tokenu neexistuje.
 
-### <a name="profile"></a>Profilu
+### <a name="profile"></a>profilu
 
-Obor `profile` lze použít s oborem `openid` a všemi ostatními. Poskytuje aplikaci přístup k podstatnému množství informací o uživateli. K informacím, ke kterým může přistupovat, patří, ale nejsou omezené na jméno, příjmení, upřednostňované uživatelské jméno a ID objektu uživatele. Úplný seznam deklarací identity, které jsou k dispozici v parametru id_tokens pro konkrétního uživatele, najdete v [referenčních informacích k`id_tokens`](id-tokens.md).
+Obor `profile` lze použít s oborem `openid` a všemi ostatními. Poskytuje aplikaci přístup k podstatnému množství informací o uživateli. K informacím, ke kterým může přistupovat, patří, ale nejsou omezené na jméno, příjmení, upřednostňované uživatelské jméno a ID objektu uživatele. Úplný seznam deklarací identity, které jsou dostupné v parametru id_tokens pro konkrétního uživatele, najdete v [referenčních informacích k`id_tokens`](id-tokens.md).
 
 ### <a name="offline_access"></a>offline_access
 
@@ -186,18 +186,18 @@ Až budete připraveni požádat o oprávnění od správce vaší organizace, m
 
 ```
 // Line breaks are for legibility only.
-    GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
+  GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
   client_id=6731de76-14a6-49ae-97bc-6eba6914391e
   &state=12345
   &redirect_uri=http://localhost/myapp/permissions
-    &scope=
-    https://graph.microsoft.com/calendars.read 
-    https://graph.microsoft.com/mail.send
+  &scope=
+  https://graph.microsoft.com/calendars.read 
+  https://graph.microsoft.com/mail.send
 ```
 
 
 | Parametr     | Podmínka     | Popis                                                                               |
-|--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
+|:--------------|:--------------|:-----------------------------------------------------------------------------------------|
 | `tenant` | Požaduje se | Tenant adresáře, ze kterého chcete požádat o oprávnění. Dá se poskytnout ve formátu GUID nebo popisného názvu nebo obecně odkazované pomocí `common`, jak je vidět v příkladu. |
 | `client_id` | Požaduje se | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
 | `redirect_uri` | Požaduje se |Identifikátor URI přesměrování, kde má být odeslána odpověď pro zpracování vaší aplikace. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu pro registraci aplikací. |

@@ -16,16 +16,16 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1c054bf354b5cdc5e0803ba6849af19fab40f3c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 1fd72bba6e8c01644adebaa333c8fe588c35b8c7
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174157"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927321"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Co je správa nároků Azure AD?
 
-Správa nároků na Azure Active Directory (Azure AD) je funkce [zásad správného řízení identity](identity-governance-overview.md) , která organizacím umožňuje spravovat životní cyklus identit a přístupu, a to díky automatizaci pracovních postupů pro přístup k žádostem o přístup, přiřazení přístupu, kontrolám a vypršení platnosti.
+Správa nároků na Azure Active Directory (Azure AD) je funkce [zásad správného řízení identity](identity-governance-overview.md) , která organizacím umožňuje spravovat životní cyklus identit a přístupu, a to díky automatizaci pracovních postupů pro žádosti o přístup, přiřazení přístupu, revizí a vypršení platnosti.
 
 Zaměstnanci v organizacích potřebují k provádění svých úloh přístup k různým skupinám, aplikacím a webům. Správa tohoto přístupu je náročná, protože se mění požadavky – přidávají se nové aplikace nebo uživatelé potřebují další přístupová práva.  Tento scénář je při spolupráci s externími organizacemi složitější – nevíte, kdo v jiné organizaci potřebuje přístup k prostředkům vaší organizace, a neinformuje o tom, jaké aplikace, skupiny nebo weby vaše organizace používá.
 
@@ -38,7 +38,7 @@ Podnikové organizace často čelí problémům při správě přístupu zaměst
 - Uživatelé nemusí znát, jaký má mít přístup, a i když mají, můžou mít potíže při hledání příslušných jednotlivců ke schválení přístupu.
 - Jakmile uživatelé naleznou a získají přístup k prostředku, můžou mít přístup k delšímu, než je nutné pro obchodní účely.
 
-Tyto problémy jsou složené pro uživatele, kteří potřebují přístup z jiné organizace, jako jsou externí uživatelé, kteří pocházejí z organizací dodavatelských řetězců nebo jiných obchodních partnerů. Například:
+Tyto problémy jsou složené pro uživatele, kteří potřebují přístup z jiné organizace, jako jsou externí uživatelé, kteří pocházejí z organizací dodavatelských řetězců nebo jiných obchodních partnerů. Příklad:
 
 - Nikdo z nich nemusí znát všechny konkrétní uživatele v adresářích jiných organizací, aby je mohl pozvat.
 - I když byli schopni pozvat tyto uživatele, nikdo z těchto organizací nemusí pamatovat na správu všech přístupů uživatele konzistentně.
@@ -71,7 +71,7 @@ Správa nároků zavádí do Azure AD koncept *balíčku pro přístup*. Balíč
 - Přiřazení k podnikovým aplikacím Azure AD, včetně aplikací SaaS a aplikací integrovaných s vlastními, které podporují federaci, jednotné přihlašování a/nebo zřizování
 - Členství na webech SharePointu Online
 
-Můžete také řídit přístup k dalším prostředkům, které spoléhají na skupiny zabezpečení Azure AD nebo skupiny Office 365.  Například:
+Můžete také řídit přístup k dalším prostředkům, které spoléhají na skupiny zabezpečení Azure AD nebo skupiny Office 365.  Příklad:
 
 - Uživatelům můžete udělit licence pro systém Microsoft Office 365 pomocí skupiny zabezpečení Azure AD v balíčku přístupu a konfigurací [licencování na základě skupin](../users-groups-roles/licensing-groups-assign.md) pro tuto skupinu.
 - Uživatelům můžete udělit přístup ke správě prostředků Azure pomocí skupiny zabezpečení Azure AD v balíčku pro přístup a vytvoření [přiřazení role Azure](../../role-based-access-control/role-assignments-portal.md) pro tuto skupinu.
@@ -114,7 +114,7 @@ Přístupové balíčky nenahrazují jiné mechanismy pro přiřazení přístup
 
 Chcete-li lépe pochopit správu nároků a její dokumentaci, můžete se vrátit k následujícímu seznamu podmínek.
 
-| Doba účinnosti | Popis |
+| Označení | Popis |
 | --- | --- |
 | přístup k balíčku | Sada prostředků, které tým nebo projekt potřebuje a řídí se zásadami. Přístupový balíček je vždycky obsažený v katalogu. Vytvořili jste nový balíček pro přístup pro scénář, ve kterém uživatelé potřebují požádat o přístup.  |
 | žádost o přístup | Žádost o přístup k prostředkům v balíčku pro přístup Požadavek obvykle prochází schvalovacím pracovním postupem.  V případě schválení obdrží žádající uživatel přiřazení balíčku přístupu. |

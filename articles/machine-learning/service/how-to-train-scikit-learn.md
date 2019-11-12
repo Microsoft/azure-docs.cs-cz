@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: ea466486509c4b5dadc48ef830c9f05ec42ab5b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6d71ea59b7094134cc70b9eeea6da89feacb3a14
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814858"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931055"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Sestavujte modely scikit s využitím škálování pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -177,20 +177,47 @@ import joblib
 joblib.dump(svm_model_linear, 'model.joblib')
 ```
 
-Zaregistrujte model do svého pracovního prostoru pomocí následujícího kódu.
+Zaregistrujte model do svého pracovního prostoru pomocí následujícího kódu. Zadáním parametrů `model_framework`, `model_framework_version`a `resource_configuration`bude k dispozici nasazení modelu bez kódu. To vám umožní přímo nasadit model jako webovou službu z registrovaného modelu a objekt `ResourceConfiguration` definuje výpočetní prostředek pro webovou službu.
 
 ```Python
-model = run.register_model(model_name='sklearn-iris', model_path='model.joblib')
+from azureml.core import Model
+from azureml.core.resource_configuration import ResourceConfiguration
+
+model = run.register_model(model_name='sklearn-iris', 
+                           model_path='model.joblib',
+                           model_framework=Model.Framework.SCIKITLEARN,
+                           model_framework_version='0.19.1',
+                           resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5))
 ```
+
+## <a name="deployment"></a>Nasazení
+
+Model, který jste právě zaregistrovali, lze nasadit stejným způsobem jako jakýkoli jiný registrovaný model v Azure Machine Learning, bez ohledu na to, který Estimator jste použili pro školení. Postup nasazení obsahuje část týkající se registrace modelů, ale můžete přeskočit přímo na [Vytvoření výpočetního cíle](how-to-deploy-and-where.md#choose-a-compute-target) pro nasazení, protože již máte registrovaný model.
+
+### <a name="preview-no-code-model-deployment"></a>Tisk Nasazení modelu bez kódu
+
+Místo tradičního postupu nasazení můžete také použít funkci nasazení bez kódu (Preview) pro scikit-učení. Nasazení modelu bez kódu se nepodporuje pro všechny integrované typy modelů scikit-učení. Registrací modelu, jak je uvedeno výše, pomocí parametrů `model_framework`, `model_framework_version`a `resource_configuration` můžete jednoduše použít statickou funkci `deploy()` k nasazení modelu.
+
+```python
+web_service = Model.deploy(ws, "scikit-learn-service", [model])
+```
+
+Poznámka: tyto závislosti jsou součástí předem připraveného kontejneru scikit-učení.
+
+```yaml
+    - azureml-defaults
+    - inference-schema[numpy-support]
+    - scikit-learn
+    - numpy
+```
+
+Úplný [postup](how-to-deploy-and-where.md) pokrývá nasazení v Azure Machine Learning s větší hloubkou.
+
 
 ## <a name="next-steps"></a>Další kroky
 
+V tomto článku jste si naučili a zaregistrovali model scikit-učení a seznámili jste se s možnostmi nasazení. Další informace o Azure Machine Learning najdete v těchto článcích.
 
-V tomto článku jste si vyškole a zaregistrovali Keras model na Azure Machine Learning. Pokud se chcete dozvědět, jak model nasadit, pokračujte na náš článek nasazení modelu.
-
-> [!div class="nextstepaction"]
-> [Jak a kde nasadit modely](how-to-deploy-and-where.md)
 * [Sledovat metriky spuštění během školení](how-to-track-experiments.md)
 * [Ladit parametry](how-to-tune-hyperparameters.md)
-* [Nasazení trained model](how-to-deploy-and-where.md)
 * [Referenční architektura distribuovaného školení pro hloubkové učení v Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

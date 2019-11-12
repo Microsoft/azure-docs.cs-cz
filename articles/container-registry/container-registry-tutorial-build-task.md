@@ -1,5 +1,5 @@
 ---
-title: Kurz – automatizace sestavení imagí kontejneru – úlohy Azure Container Registry
+title: Kurz – sestavení bitové kopie při potvrzení kódu – úlohy Azure Container Registry
 description: V tomto kurzu se naučíte konfigurovat úlohu Azure Container Registry, která automaticky aktivuje sestavení imagí kontejneru v cloudu při potvrzení zdrojového kódu do úložiště Git.
 services: container-registry
 author: dlepow
@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 05/04/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 25a0ef528d67deb5ea71720d2ff8e4d62b3b98a5
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: d01863979f4cf74d544ef2b1ff121022abb8d4f6
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744574"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931431"
 ---
-# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Kurz: Automatizace sestavení imagí kontejneru v cloudu při potvrzení zdrojového kódu
+# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Kurz: automatizace sestavení imagí kontejneru v cloudu při potvrzení zdrojového kódu
 
 Kromě [Rychlé úlohy](container-registry-tutorial-quick-task.md)ACR úlohy podporují automatické sestavení imagí kontejneru Docker v cloudu, když potvrdíte zdrojový kód do úložiště Git.
 
-V tomto kurzu vaše úloha ACR sestaví a nahraje jednu Image kontejneru určenou v souboru Dockerfile při potvrzení zdrojového kódu do úložiště Git. Postup vytvoření [úlohy s více kroky](container-registry-tasks-multi-step.md) , která používá soubor YAML k definování kroků pro sestavení, vložení a volitelně testování více kontejnerů při potvrzení kódu, najdete v [tématu Kurz: Když potvrdíte zdrojový kód](container-registry-tutorial-multistep-task.md), spusťte v cloudu pracovní postup kontejneru s více kroky. Přehled úloh ACR najdete v tématu [Automatizace oprav operačního systému a architektury s úlohami ACR](container-registry-tasks-overview.md) .
+V tomto kurzu vaše úloha ACR sestaví a nahraje jednu Image kontejneru určenou v souboru Dockerfile při potvrzení zdrojového kódu do úložiště Git. Pokud chcete vytvořit [úlohu s více kroky](container-registry-tasks-multi-step.md) , která používá soubor YAML k definování kroků pro sestavování, nasdílení a volitelně testování více kontejnerů při potvrzení kódu, přečtěte si téma [kurz: spuštění pracovního postupu s více kroky v cloudu při potvrzení zdrojového kódu](container-registry-tutorial-multistep-task.md). Přehled úloh ACR najdete v tématu [Automatizace oprav operačního systému a architektury s úlohami ACR](container-registry-tasks-overview.md) .
 
 V tomto kurzu:
 
@@ -63,9 +63,9 @@ az acr task create \
 ```
 
 > [!IMPORTANT]
-> Pokud jste dříve vytvořili úkoly ve verzi Preview pomocí `az acr build-task` příkazu, je nutné tyto úlohy znovu vytvořit pomocí příkazu [AZ ACR Task][az-acr-task] .
+> Pokud jste dříve vytvořili úkoly v rámci verze Preview pomocí příkazu `az acr build-task`, je nutné tyto úlohy znovu vytvořit pomocí příkazu [AZ ACR Task][az-acr-task] .
 
-Tato úloha určuje, že kdykoli se do *hlavní* větve úložiště určeného parametrem `--context` potvrdí kód, služba ACR Tasks z kódu v této větvi sestaví image kontejneru. K sestavení image se `--file` používá souboru Dockerfile určený z kořenu úložiště. Argument `--image` určuje parametrizovanou hodnotu `{{.Run.ID}}` pro část verze značky image a zajišťuje tak, že sestavená image koreluje s konkrétním sestavením a je jedinečným způsobem označená.
+Tato úloha určuje, že kdykoli se do *hlavní* větve úložiště určeného parametrem `--context` potvrdí kód, služba ACR Tasks z kódu v této větvi sestaví image kontejneru. K sestavení image se používá souboru Dockerfile určený `--file` z kořenového adresáře úložiště. Argument `--image` určuje parametrizovanou hodnotu `{{.Run.ID}}` pro část verze značky image a zajišťuje tak, že sestavená image koreluje s konkrétním sestavením a je jedinečným způsobem označená.
 
 Výstup úspěšného příkazu [AZ ACR Task Create][az-acr-task-create] je podobný následujícímu:
 
@@ -270,7 +270,7 @@ da2       taskhelloworld  Linux       Succeeded  Manual      2018-09-17T22:50:59
 da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59Z  00:00:57
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak pomocí úlohy automaticky aktivovat sestavení image kontejneru v Azure při potvrzení zdrojového kódu do úložiště Git. Přejděte k dalšímu kurzu, ve kterém se naučíte vytvářet úlohy, které aktivují sestavení při aktualizaci základní image kontejneru.
 

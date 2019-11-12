@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 057037807a75e50eb2305bfab19d1fcff7fe77ce
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: efd294910531509d736dbda274406bd7c801c124
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889598"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931198"
 ---
 # <a name="references"></a>Odkazy
 
@@ -36,7 +36,7 @@ Toto je souhrn všech objektů a prostředků v FarmBeats datových rozbočovač
 Sdílených | Farma odpovídá fyzickému umístění zájmu v rámci systému FarmBeats. Každá farma má název farmy a jedinečné ID farmy.
 --- | ---|
 Zařízení  | Zařízení odpovídá fyzickému zařízení přítomnému ve farmě. Každé zařízení má jedinečné ID zařízení. Zařízení je obvykle zřízené pro farmu s ID farmy.
-deviceModel  | DeviceModel odpovídá metadatům zařízení, jako je výrobce, typ zařízení buď bránu, nebo uzel.
+DeviceModel  | DeviceModel odpovídá metadatům zařízení, jako je výrobce, typ zařízení buď bránu, nebo uzel.
 Elektrické  | Senzor odpovídá fyzickému senzoru, který zaznamenává hodnoty. Senzor se obvykle připojuje k zařízení s ID zařízení.
 SensorModel  | SensorModel odpovídá meta údajům snímačů, jako je výrobce, typ snímače buď analogového, nebo digitálního, měření senzorů, jako je okolní teplota, tlak atd.
 Telemetrická data  | Telemetrie nabízí možnost číst zprávy telemetrie pro určitý senzor a časový rozsah.
@@ -85,7 +85,7 @@ Adresa URL služby API je vaše adresa URL centra dat https://\<yourdatahub-webs
 
 Níže uvedená ukázková žádost slouží k získání seznamu zařízení:
 
-```azurepowershell-interactive
+```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
 ```
 
@@ -93,7 +93,7 @@ Většina volání GET, POST a PUT vyžaduje tělo požadavku JSON.
 
 Níže uvedená ukázková žádost slouží k vytvoření zařízení (obsahuje vstupní kód JSON s textem žádosti).
 
-```json
+```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 
@@ -120,25 +120,25 @@ Rozhraní API služby Azure FarmBeats data hub vrací standardní chyby protokol
 
 Kromě standardních chyb HTTP vrátí rozhraní API služby Azure FarmBeats data hub také interní chyby v následujícím formátu:
 
-    ```
+```json
     {
       "message": "<More information on the error>",
       "status": "<error code>”,
       "code": "<InternalErrorCode>",
       "moreInfo": "<Details of the error>"
     }
-    ```
+```
 
 Příklad: při vytváření farmy nebyla ve vstupní datové části zadána povinná pole "Name". Výsledná chybová zpráva by byla:
 
-    ```json
+ ```json    
     {
       "message": "Model validation failed",
       "status": 400,
       "code": "ModelValidationFailed",
       "moreInfo": "[\"The Name field is required.\"]"
     }
-    ```
+  ```
 
 ## <a name="adding-users-or-app-registrations-to-azure-active-directory"></a>Přidávání uživatelů nebo registrace aplikací do Azure Active Directory
 

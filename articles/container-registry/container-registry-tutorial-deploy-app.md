@@ -1,5 +1,5 @@
 ---
-title: Kurz – nasazení aplikace z geograficky replikovaného registru Docker v Azure
+title: Kurz – nasazení aplikace z geograficky replikované Azure Container Registry
 description: Nasazení webové aplikace se systémem Linux do dvou různých oblastí Azure pomocí Image kontejneru z geograficky replikovaného registru kontejnerů Azure. Druhá část třídílné série.
 services: container-registry
 author: dlepow
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 08/20/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ac4d78147820c2cf56549abbec7e1fbc873ea260
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 0aebc31e1b8e6849d4cc0aeccc0e0a79edf0e65d
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146944"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931417"
 ---
-# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Kurz: Nasazení webové aplikace z geograficky replikovaného registru kontejnerů Azure
+# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Kurz: nasazení webové aplikace z geograficky replikovaného registru kontejnerů Azure
 
 Toto je druhá část z třídílné série kurzů. V [první části](container-registry-tutorial-prepare-registry.md) jste vytvořili privátní, geograficky replikovaný registr kontejneru a ze zdroje jste sestavili image kontejneru, kterou jste vložili do registru. V tomto článku nasadíte kontejner do instancí webových aplikací ve dvou různých oblastech Azure a využijete tak aspekt blízkosti sítě u geograficky replikovaného registru. Každá instance pak načte image kontejneru z nejbližšího registru.
 
@@ -50,12 +50,12 @@ Pokud je možnost Nasadit do webové aplikace zakázaná, pravděpodobně jste n
 
 V části **Web App for Containers**, která se zobrazí po výběru možnosti Nasadit do webové aplikace, zadejte u jednotlivých nastavení následující hodnoty:
 
-| Nastavení | Value |
+| Nastavení | Hodnota |
 |---|---|
 | **Název lokality** | Globálně jedinečný název webové aplikace. V tomto příkladu používáme formát `<acrName>-westus`, abychom mohli snadno identifikovat, ze kterého registru a oblasti je webová aplikace nasazená. |
 | **Skupina prostředků** | **Použít existující** > `myResourceGroup` |
 | **Plán služby App Service / umístění** | Vytvořte nový plán s názvem `plan-westus` v oblasti **Západní USA**. |
-| **Obrázek** | `acr-helloworld:v1` |
+| **Image** | `acr-helloworld:v1` |
 | **Operační systém** | Linux |
 
 > [!NOTE]
@@ -83,12 +83,12 @@ Po nasazení image Dockeru z geograficky replikovaného registru kontejneru se v
 
 Podle postupu uvedeného v předchozí části nasaďte druhou webovou aplikaci do oblasti *USA – východ*. V části **Web App for Containers** zadejte následující hodnoty:
 
-| Nastavení | Value |
+| Nastavení | Hodnota |
 |---|---|
 | **Název lokality** | Globálně jedinečný název webové aplikace. V tomto příkladu používáme formát `<acrName>-eastus`, abychom mohli snadno identifikovat, ze kterého registru a oblasti je webová aplikace nasazená. |
 | **Skupina prostředků** | **Použít existující** > `myResourceGroup` |
 | **Plán služby App Service / umístění** | Vytvořte nový plán s názvem `plan-eastus` v oblasti **USA – východ**. |
-| **Obrázek** | `acr-helloworld:v1` |
+| **Image** | `acr-helloworld:v1` |
 | **Operační systém** | Linux |
 
 Vyberte **Vytvořit** a webovou aplikaci zřiďte v oblasti *USA – východ*.

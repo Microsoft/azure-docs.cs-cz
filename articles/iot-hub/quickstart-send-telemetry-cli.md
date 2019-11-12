@@ -9,12 +9,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 8ebcc863c1812081e6198ff9c684934642e1dc41
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 948dfd25881a6a90dd441ad640091d88812cc298
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904560"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931820"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub a jejich sledování pomocí Azure CLI
 
@@ -47,7 +47,7 @@ Spuštění Cloud Shell:
     ![Vybrat prostředí CLI](media/quickstart-send-telemetry-cli/cloud-shell-environment.png)
 
 ## <a name="prepare-two-cli-sessions"></a>Příprava dvou relací rozhraní příkazového řádku
-V této části připravíte dvě relace Azure CLI. V Cloud Shell spustíte dvě relace na samostatných kartách prohlížeče. V místním klientovi CLI spustíte dvě samostatné instance CLI. První relaci použijete jako simulované zařízení a druhou relaci pro monitorování a posílání zpráv. Pokud chcete spustit příkaz, vyberte **Kopírovat** a zkopírujte blok kódu v tomto rychlém startu, vložte ho do relace prostředí a spusťte ho.
+V této části připravíte dvě relace Azure CLI. Pokud používáte Cloud Shell, spustíte tyto dvě relace na samostatných kartách prohlížeče. Pokud používáte místní klienta CLI, spustíte dvě samostatné instance rozhraní příkazového řádku. První relaci použijete jako simulované zařízení a druhou relaci pro monitorování a posílání zpráv. Pokud chcete spustit příkaz, vyberte **Kopírovat** a zkopírujte blok kódu v tomto rychlém startu, vložte ho do relace prostředí a spusťte ho.
 
 Azure CLI vyžaduje, abyste se přihlásili ke svému účtu Azure. Veškerá komunikace mezi relací prostředí Azure CLI a službou IoT Hub je ověřená a šifrovaná. V důsledku toho tento rychlý Start nepotřebuje další ověřování, které byste použili u reálného zařízení, jako je například připojovací řetězec.
 
@@ -149,7 +149,7 @@ Azure Portal vám umožní spravovat všechny aspekty IoT Hub a zařízení. V t
 Chcete-li vizualizovat metriky zasílání zpráv v Azure Portal:
 1. V navigační nabídce vlevo na portálu vyberte **všechny prostředky**. Zobrazí se seznam všech prostředků ve vašem předplatném, včetně služby IoT Hub, kterou jste vytvořili. 
 
-1. Ve službě IoT Hub, kterou jste vytvořili, klikněte na odkaz. Portál zobrazí stránku Přehled pro centrum.
+1. Vyberte odkaz ve službě IoT Hub, kterou jste vytvořili. Portál zobrazí stránku Přehled pro centrum.
 
 1. V levém podokně IoT Hub vyberte **metriky** . 
 

@@ -1,6 +1,6 @@
 ---
-title: Rychlý Start – vytvoření privátního registru Docker v Azure – Azure Portal
-description: Rychle se naučíte, jak vytvořit privátní registr Dockeru pomocí webu Azure Portal.
+title: Rychlý Start – vytvoření registru na portálu – Azure Container Registry
+description: Rychle se naučíte, jak vytvořit privátní registr Docker v Azure Container Registry pomocí Azure Portal.
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c9e8c7fe4d32a44e8c0831154f02eda1f82aaff3
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: bcf0874266aa83a4b4b932670557854c4688d400
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68309474"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931630"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Rychlý start: Vytvoření soukromého registru kontejnerů pomocí Azure Portal
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure Portal
 
 Registr kontejnerů Azure je privátním registrem Dockeru v Azure, kde můžete ukládat a spravovat privátní image kontejnerů Dockeru. V tomto rychlém startu vytvoříte registr kontejnerů pomocí webu Azure Portal. Pak pomocí příkazů Docker nahrajte image kontejneru do registru a nakonec si vydejte a spusťte image z registru.
 
@@ -34,7 +34,7 @@ Vyberte **Vytvořit prostředek** > **Kontejnery** > **Container Registry**.
 
 ![Vytvoření registru kontejnerů na webu Azure Portal][qs-portal-01]
 
-Zadejte odpovídající hodnoty pro **Název registru** a **Skupina prostředků**. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. Pro účely tohoto rychlého startu vytvořte novou skupinu prostředků `myResourceGroup` v umístění `West US` a jako **skladovou položku** vyberte Basic. Vyberte **Vytvořit** a nasaďte instanci služby ACR.
+Zadejte odpovídající hodnoty pro **Název registru** a **Skupina prostředků**. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. Pro účely tohoto rychlého startu vytvořte novou skupinu prostředků `West US` v umístění `myResourceGroup` a jako **skladovou položku** vyberte Basic. Vyberte **Vytvořit** a nasaďte instanci služby ACR.
 
 ![Vytvoření registru kontejneru v Azure Portal][qs-portal-03]
 
@@ -60,9 +60,9 @@ Příkaz po dokončení vrátí zprávu `Login Succeeded` (Přihlášení bylo �
 
 ## <a name="list-container-images"></a>Výpis imagí kontejnerů
 
-Pokud chcete zobrazit seznam imagí v registru, přejděte na portálu na svůj registr a vyberte úložištěa pak vyberte úložiště, pomocí `docker push`kterého jste vytvořili.
+Pokud chcete zobrazit seznam imagí v registru, přejděte na portálu na svůj registr a vyberte úložiště a pak vyberte **úložiště, které**jste vytvořili pomocí `docker push`.
 
-V tomto příkladu vybereme úložiště **Hello-World** a v části `v1` **značky**se zobrazí obrázek označený příznakem.
+V tomto příkladu vybereme úložiště **Hello World** a v části **značky**se zobrazí obrázek označený `v1`.
 
 ![Výpis imagí kontejneru v Azure Portal][qs-portal-09]
 
@@ -74,7 +74,7 @@ Pokud chcete prostředky vyčistit, přejděte do skupiny prostředků **myResou
 
 ![Odstranění skupiny prostředků na webu Azure Portal][qs-portal-08]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili Azure Container Registry s Azure Portal, nahráli jste image kontejneru a z registru jste vyžádali a spustili image. Pokračujte Azure Container Registry výukové kurzy, kde najdete hlubší přehled na ACR.
 

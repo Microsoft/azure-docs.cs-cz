@@ -1,18 +1,18 @@
 ---
-title: Integrace partnerů senzorů
+title: Integrace partnerských řešení pro senzory
 description: Popisuje integraci partnera se senzory.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e90284ce2f8ea37eb9249822e38cef04e1356f59
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1e819c94732e1cbc2de39e6400f8305b7df5aca1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889585"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927655"
 ---
-# <a name="sensor-partner-integration"></a>Integrace partnerů senzorů
+# <a name="sensor-partner-integration"></a>Integrace partnerských řešení pro senzory
 
 Tento článek poskytuje informace o komponentě **překladače** Azure FarmBeats, která umožňuje integraci partnera snímače.
 
@@ -79,7 +79,7 @@ FarmBeats data hub používá ověřování pomocí nosiče, které potřebuje n
 
 Pomocí výše uvedených přihlašovacích údajů může volající požádat o přístupový token, který se musí poslat v následujících žádostech o rozhraní API v části záhlaví, jak je znázorněno níže:
 
-```json
+```
 headers = {"Authorization": "Bearer " + access_token, …} 
 ```
 
@@ -124,14 +124,14 @@ Volitelně můžete zahrnout parametry dotazu pro volání funkce GET k filtrov�
 
 Níže uvedená ukázková žádost slouží k získání seznamu zařízení:
 
-```azurepowershell-interactive
-curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
+```bash
+curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>"
 ```
 Většina volání GET, POST a PUT vyžaduje tělo požadavku JSON.
 
 Níže uvedená ukázková žádost je vytvořit zařízení (Tato ukázka obsahuje vstupní kód JSON s textem žádosti).
 
-```azurepowershell-interactive
+```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 
@@ -154,7 +154,7 @@ FarmBeats data hub má následující rozhraní API, která partnerům zařízen
   Výrobce  | 2 hvězdičky |
   ProductCode  | Kód produktu zařízení nebo název/číslo modelu. Například EnviroMonitor # 6800 |
   Porty  | Název a typ portu (digitální/analogový)  |
-  Name (Název)  | Název, který identifikuje prostředek. Například název modelu/název produktu |
+  Název  | Název, který identifikuje prostředek. Například název modelu/název produktu |
   Popis  | Zadejte smysluplný popis modelu. |
   Vlastnosti  | Další vlastnosti od výrobce |
   **Zařízení** | **Zařízení odpovídá fyzickému zařízení přítomnému ve farmě. Každé zařízení má jedinečné ID zařízení.** |
@@ -163,7 +163,7 @@ hardwareId   |Jedinečné ID zařízení, například adresa MAC atd.  |
 ReportingInterval |Interval generování sestav v sekundách |
 Umístění    |Zeměpisná šířka zařízení (-90 až + 90)/longitude (-180 až 180)/Elevation (v metrech) |
 ParentDeviceId | ID nadřazeného zařízení, ke kterému je připojeno toto zařízení Například. Uzel připojený k bráně; uzel bude mít parentDeviceID jako bránu. |
-  Name (Název)  | Název, který identifikuje prostředek.  Partneři zařízení budou muset Odeslat název, který je konzistentní s názvem zařízení na straně partnera zařízení. Pokud je název zařízení definovaný uživatelem na straně partnera zařízení, stejný uživatelsky definovaný název by měl být šířen na FarmBeats  |
+  Název  | Název, který identifikuje prostředek.  Partneři zařízení budou muset Odeslat název, který je konzistentní s názvem zařízení na straně partnera zařízení. Pokud je název zařízení definovaný uživatelem na straně partnera zařízení, stejný uživatelsky definovaný název by měl být šířen na FarmBeats  |
   Popis  | Zadejte smysluplný popis.  |
   Vlastnosti  |Další vlastnosti od výrobce  |
   **Model senzorů** | SensorModel odpovídá metadatům senzorů, jako je výrobce, typ snímače buď analogového, nebo digitálního, měření senzorů, jako je například pokojová teplota, tlak atd. |
@@ -243,27 +243,26 @@ Formát kanonické zprávy je následující:
 
 ```json
 {
-“deviceid”: “<id of the Device created>”,
- "timestamp": "<timestamp in ISO 8601 format>",
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
 "version" : "1",
 "sensors": [
     {
-      "id": "<id of the sensor created>”
+      "id": "<id of the sensor created>",
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": value
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": value
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }
+ ]
 }
-
 ```
-
 Všechny názvy klíčů v kódu JSON telemetrie by měly být malá, například DeviceID, sensordata atd.
 
 Například zpráva telemetrie:

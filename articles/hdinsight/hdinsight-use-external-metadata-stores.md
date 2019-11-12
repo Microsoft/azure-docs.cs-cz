@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/29/2019
-ms.openlocfilehash: 33302f3760cc750bfc41386aaf17368abc15ba5d
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 18e03b6828922b3444d9461bef394b5c6682c238
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063294"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930315"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Použití externích úložišť metadat ve službě Azure HDInsight
 
@@ -56,6 +56,18 @@ HDInsight podporuje také vlastní metaúložiště, které se doporučují pro 
 * Metastore můžete škálovat podle potřeby.
 
 ![Případ použití úložiště metadat podregistru HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
+
+### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>Vytvoření a konfigurace Azure SQL Database pro vlastní metastore
+
+Než nastavíte vlastní metastore Hive pro cluster HDInsight, musíte vytvořit nebo mít existující Azure SQL Database.  Další informace najdete v tématu [rychlý Start: vytvoření izolované databáze ve službě Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal).
+
+Aby se zajistilo, že cluster HDInsight bude mít přístup k připojeným Azure SQL Database, nakonfigurujte Azure SQL Database pravidla brány firewall tak, aby umožňovala službám a prostředkům Azure přístup k serveru.
+
+Tuto možnost můžete povolit v Azure Portal kliknutím na **nastavit bránu firewall serveru**a kliknutím **na** pod položkou **Povolit službám a prostředkům Azure přístup k tomuto serveru** pro Azure SQL Database Server nebo databázi. Další informace najdete v tématu [Vytvoření a Správa pravidel brány firewall protokolu IP](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) .
+
+![tlačítko nastavit bránu firewall serveru](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
+
+![povolení přístupu ke službám Azure](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png)
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>Vybrat vlastní metastore při vytváření clusteru
 

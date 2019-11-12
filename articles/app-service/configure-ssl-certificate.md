@@ -13,12 +13,12 @@ ms.date: 10/25/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 4f0c8078a502d0332b02d95c0c46d9dbcc53a884
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 48c8390eff52466d11f781447c448d04ba567f31
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886868"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907136"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Přidat certifikát SSL v Azure App Service
 
@@ -69,6 +69,10 @@ Bezplatný App Service spravovaný certifikát představuje řešení pro zabezp
 - Nepodporuje holé domény.
 - Nelze exportovat.
 
+> [!NOTE]
+> Bezplatný certifikát vystaví DigiCert. U některých domén nejvyšší úrovně musíte explicitně dovolit DigiCert jako vystavitele certifikátu vytvořením [záznamu domény CAA](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) s hodnotou: `0 issue digicert.com`.
+> 
+
 Chcete-li vytvořit bezplatný App Service spravovaný certifikát:
 
 V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>v nabídce vlevo vyberte **App Services** >  **\<název aplikace >** .
@@ -114,7 +118,7 @@ Pomocí následující tabulky můžete nakonfigurovat certifikát. Jakmile bude
 
 | Nastavení | Popis |
 |-|-|
-| Name (Název) | Popisný název certifikátu App Service. |
+| Název | Popisný název certifikátu App Service. |
 | Název hostitele holé domény | Sem zadejte kořenovou doménu. Vydaný certifikát zabezpečuje kořenovou *doménu i* subdoménu `www`. V vystaveném certifikátu obsahuje pole společné jméno kořenovou doménu a pole Alternativní název subjektu obsahuje doménu `www`. Chcete-li zabezpečit všechny subdomény, zadejte plně kvalifikovaný název domény, například `mysubdomain.contoso.com`).|
 | Předplatné | Datacentrum, které je hostitelem webové aplikace. |
 | Skupina prostředků | Skupina prostředků, která obsahuje certifikát. Můžete použít novou skupinu prostředků nebo vybrat stejnou skupinu prostředků jako aplikace App Service, například. |
@@ -135,7 +139,7 @@ Na stránce **stav Key Vault** klikněte na **úložiště Key Vault** a vytvoř
 
 | Nastavení | Popis |
 |-|-|
-| Name (Název) | Jedinečný název, který se skládá pro alfanumerické znaky a pomlčky. |
+| Název | Jedinečný název, který se skládá pro alfanumerické znaky a pomlčky. |
 | Skupina prostředků | Jako doporučení vyberte stejnou skupinu prostředků jako certifikát App Service. |
 | Umístění | Vyberte stejné umístění jako aplikace App Service. |
 | Cenová úroveň | Informace najdete v tématu informace [o cenách Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/). |

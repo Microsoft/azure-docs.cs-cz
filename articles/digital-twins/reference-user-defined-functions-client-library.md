@@ -1,5 +1,5 @@
 ---
-title: Služba Azure Digital nepracuje s uživatelem definovanými funkcemi – reference klientské knihovny | Microsoft Docs
+title: Referenční informace k uživatelem definovaným funkcím Azure pro digitální vlákna | Microsoft Docs
 description: Azure Digital se vypracuje s odkazem na klientskou knihovnu funkcí definovaných uživatelem.
 ms.author: alinast
 author: alinamstanciu
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: article
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 36fb8a5588321426ccae7d6c6577fb4b48f3a4db
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: daab63067087267c12cef75178b5f974043e0fd9
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948908"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931241"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>Uživatelsky definované funkce – reference klientské knihovny
 
@@ -32,7 +32,7 @@ Pomocí identifikátoru prostoru načte tato funkce prostor z grafu.
 
 | Parametr  | Typ                | Popis  |
 | ---------- | ------------------- | ------------ |
-| *id*  | `guid` | Identifikátor prostoru |
+| *účet*  | `guid` | Identifikátor prostoru |
 
 ### <a name="getsensormetadataid--sensor"></a>getSensorMetadata (ID) ⇒ `sensor`
 
@@ -42,7 +42,7 @@ Pomocí identifikátoru senzoru Tato funkce načte senzor z grafu.
 
 | Parametr  | Typ                | Popis  |
 | ---------- | ------------------- | ------------ |
-| *id*  | `guid` | Identifikátor senzoru |
+| *účet*  | `guid` | Identifikátor senzoru |
 
 ### <a name="getdevicemetadataid--device"></a>getDeviceMetadata (ID) ⇒ `device`
 
@@ -52,7 +52,7 @@ Pomocí identifikátoru zařízení Tato funkce načte zařízení z grafu.
 
 | Parametr  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| *id* | `guid` | Identifikátor zařízení |
+| *účet* | `guid` | Identifikátor zařízení |
 
 ### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue (sensorId, datový typ) ⇒ `value`
 
@@ -65,7 +65,7 @@ Pomocí identifikátoru senzoru a jeho datového typu načte tato funkce aktuál
 | *sensorId*  | `guid` | Identifikátor senzoru |
 | *Programátor*  | `string` | Datový typ senzoru |
 
-### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue (spaceId, valueName) ⇒ `value`
+### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue (spaceId, Název_hodnoty) – ⇒ `value`
 
 Při zadání identifikátoru mezery a názvu hodnoty Tato funkce načte aktuální hodnotu pro danou vlastnost Space.
 
@@ -98,7 +98,7 @@ Při zadání identifikátoru mezery a názvu hodnoty Tato funkce načte histori
 | *spaceId* | `guid` | Identifikátor prostoru |
 | *Hodnoty* | `string` | Název vlastnosti prostoru |
 
-### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces (spaceId) ⇒ @no__t – 0
+### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces (spaceId) ⇒ `space[]`
 
 Pomocí identifikátoru prostoru načte tato funkce podřízené mezery pro daný nadřazený prostor.
 
@@ -108,7 +108,7 @@ Pomocí identifikátoru prostoru načte tato funkce podřízené mezery pro dan�
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Identifikátor prostoru |
 
-### <a name="getspacechildsensorsspaceid--sensor"></a>getSpaceChildSensors (spaceId) ⇒ @no__t – 0
+### <a name="getspacechildsensorsspaceid--sensor"></a>getSpaceChildSensors (spaceId) ⇒ `sensor[]`
 
 Při zadání identifikátoru mezery načte tato funkce podřízené senzory pro daný nadřazený prostor.
 
@@ -118,7 +118,7 @@ Při zadání identifikátoru mezery načte tato funkce podřízené senzory pro
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Identifikátor prostoru |
 
-### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices (spaceId) ⇒ @no__t – 0
+### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices (spaceId) ⇒ `device[]`
 
 Při zadání identifikátoru mezery Tato funkce načte podřízená zařízení pro tento nadřazený prostor.
 
@@ -138,7 +138,7 @@ Pomocí identifikátoru zařízení načte tato funkce podřízené senzory pro 
 | ------ | ------------------- | ------------ |
 | *deviceId* | `guid` | Identifikátor zařízení |
 
-### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace (childSpaceId) ⇒ @no__t – 0
+### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace (childSpaceId) ⇒ `space`
 
 Pomocí identifikátoru prostoru načte tato funkce svůj nadřazený prostor.
 
@@ -148,7 +148,7 @@ Pomocí identifikátoru prostoru načte tato funkce svůj nadřazený prostor.
 | ------ | ------------------- | ------------ |
 | *childSpaceId* | `guid` | Identifikátor prostoru |
 
-### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace (childSensorId) ⇒ @no__t – 0
+### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace (childSensorId) ⇒ `space`
 
 Když tato funkce Získá identifikátor senzoru, načte jeho nadřazený prostor.
 
@@ -158,7 +158,7 @@ Když tato funkce Získá identifikátor senzoru, načte jeho nadřazený prosto
 | ------ | ------------------- | ------------ |
 | *childSensorId* | `guid` | Identifikátor senzoru |
 
-### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace (childDeviceId) ⇒ @no__t – 0
+### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace (childDeviceId) ⇒ `space`
 
 Když tato funkce Získá identifikátor zařízení, načte jeho nadřazený prostor.
 
@@ -168,7 +168,7 @@ Když tato funkce Získá identifikátor zařízení, načte jeho nadřazený pr
 | ------ | ------------------- | ------------ |
 | *childDeviceId* | `guid` | Identifikátor zařízení |
 
-### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice (childSensorId) ⇒ @no__t – 0
+### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice (childSensorId) ⇒ `space`
 
 Pomocí identifikátoru senzoru Tato funkce načte své nadřazené zařízení.
 
@@ -232,7 +232,7 @@ Tato funkce nastaví hodnotu objektu Space s daným datovým typem.
 | Parametr  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Identifikátor prostoru |
-| *Programátor* | `string` | Datový typ |
+| *Programátor* | `string` | Data type |
 | *value* | `string` | Hodnota |
 
 ### <a name="logmessage"></a>protokol (zpráva)
@@ -243,7 +243,7 @@ Tato funkce zaznamená následující zprávu v rámci uživatelsky definované 
 
 | Parametr  | Typ                | Popis  |
 | ------ | ------------------- | ------------ |
-| *message* | `string` | Zpráva, která má být zaznamenána |
+| *Zpráva* | `string` | Zpráva, která má být zaznamenána |
 
 ### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification (topologyObjectId, topologyObjectType, datová část)
 
@@ -261,7 +261,7 @@ Tato funkce pošle vlastní oznámení odesílané do odesílání.
 
 Modely odpovědí vrácené pomocí pomocných metod klientských referencí jsou popsány níže.
 
-### <a name="space"></a>Místo
+### <a name="space"></a>Kosmické aktivity
 
 ```JSON
 {
@@ -276,7 +276,7 @@ Modely odpovědí vrácené pomocí pomocných metod klientských referencí jso
 
 ### <a name="space-methods"></a>Metody prostoru
 
-#### <a name="parent--space"></a>Parent () ⇒ `space`
+#### <a name="parent--space"></a>Nadřazený objekt () `space` ⇒
 
 Tato funkce vrací nadřazený prostor aktuálního prostoru.
 
@@ -340,7 +340,7 @@ Tato funkce pošle oznámení se zadanou datovou částí.
 
 ### <a name="device-methods"></a>Metody zařízení
 
-#### <a name="parent--space"></a>Parent () ⇒ `space`
+#### <a name="parent--space"></a>Nadřazený objekt () `space` ⇒
 
 Tato funkce vrací nadřazený prostor aktuálního zařízení.
 
@@ -388,7 +388,7 @@ Tato funkce pošle oznámení se zadanou datovou částí.
 
 ### <a name="sensor-methods"></a>Metody snímače
 
-#### <a name="space--space"></a>Space () ⇒ `space`
+#### <a name="space--space"></a>Space () `space` ⇒
 
 Tato funkce vrací nadřazený prostor aktuálního senzoru.
 
@@ -408,7 +408,7 @@ Tato funkce vrací rozšířenou vlastnost a její hodnotu pro aktuální senzor
 
 Tato funkce vrací hodnotu aktuálního senzoru.
 
-#### <a name="history--value"></a>History () ⇒ `value[]`
+#### <a name="history--value"></a>History () `value[]` ⇒
 
 Tato funkce vrací historické hodnoty aktuálního senzoru.
 

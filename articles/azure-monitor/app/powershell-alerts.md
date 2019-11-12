@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/31/2016
-ms.openlocfilehash: 0771079eb338c2f22cb0b1f31c48b0b9f80a3ff5
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: cf03fa0055710dde86a0f74cd58344575494faf1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819089"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928570"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Použití prostředí PowerShell k nastavení výstrahy v nástroji Application Insights
 
@@ -130,8 +130,8 @@ Metriky jsou odesílány různými moduly telemetrie:
 ## <a name="webhooks"></a>Webhooky
 [Odpověď na výstrahu můžete automatizovat](../../azure-monitor/platform/alerts-webhooks.md). Když se vygeneruje výstraha, Azure zavolá webovou adresu dle vašeho výběru.
 
-## <a name="see-also"></a>Další informace najdete v tématech
-* [Skript pro konfiguraci Application Insights](powershell-script-create-resource.md)
+## <a name="see-also"></a>Viz také
+* [Skript pro konfiguraci Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
 * [Vytvoření prostředků Application Insights a webového testu ze šablon](powershell.md)
 * [Automatizace Diagnostika Microsoft Azure Application Insights](powershell-azure-diagnostics.md)
 * [Automatizace odpovědi na výstrahu](../../azure-monitor/platform/alerts-webhooks.md)

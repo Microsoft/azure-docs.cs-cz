@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ab2180c54f07ff5009e2c57d8522f2eb0b81aad
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c0a73f5257bf763633052aab89f92ea0e5d5c000
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718379"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927114"
 ---
 # <a name="authentication-basics"></a>Základy ověřování
 
@@ -74,7 +74,7 @@ Je to až aplikace, pro kterou se token vygeneroval, webovou aplikaci, která se
 
 Tokeny jsou platné pouze po omezené množství času. Služba STS obvykle poskytuje dvojici tokenů: přístupový token pro přístup k aplikaci nebo chráněnému prostředku a obnovovací token, který se používá k aktualizaci přístupového tokenu, když je přístupový token blízko vypršení platnosti. 
 
-Přístupové tokeny se předávají webovému rozhraní API jako nosný token v hlavičce `Authenticate`. Aplikace může službě STS poskytnout obnovovací token a pokud se uživatel k aplikaci neodvolává, vrátí nový přístupový token a nový obnovovací token. To je způsob, jakým se zpracovává scénář někoho, kdo opouští podnik. Když STS obdrží obnovovací token, nevydá jiný platný přístupový token, pokud už uživatel není autorizovaný.
+Přístupové tokeny se předávají webovému rozhraní API jako nosný token v hlavičce `Authorization`. Aplikace může službě STS poskytnout obnovovací token a pokud se uživatel k aplikaci neodvolává, vrátí nový přístupový token a nový obnovovací token. To je způsob, jakým se zpracovává scénář někoho, kdo opouští podnik. Když STS obdrží obnovovací token, nevydá jiný platný přístupový token, pokud už uživatel není autorizovaný.
 
 ## <a name="application-model"></a>Aplikační model
 

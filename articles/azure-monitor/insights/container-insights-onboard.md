@@ -6,17 +6,17 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: dd58ec08c6ec372cf53a79b75162748cfe336b23
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/11/2019
+ms.openlocfilehash: f2a33f96f77678e02c5b72c36563781e7d7ac334
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73477124"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928286"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Postup povolení Azure Monitor pro kontejnery
 
-Tento článek poskytuje přehled možností, které jsou k dispozici pro nastavení Azure Monitor pro kontejnery pro monitorování výkonu úloh, které jsou nasazeny do prostředí Kubernetes a hostované ve [službě Azure Kubernetes](https://docs.microsoft.com/azure/aks/), AKS Engine v [Azure Stack ](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)nebo Kubernetes nasazená místně.
+Tento článek poskytuje přehled možností, které jsou k dispozici pro nastavení Azure Monitor pro kontejnery pro monitorování výkonu úloh, které jsou nasazeny v prostředích Kubernetes a hostované ve [službě Azure Kubernetes](https://docs.microsoft.com/azure/aks/), AKS Engine v [Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) nebo Kubernetes nasazených místně.
 
 Azure Monitor pro kontejnery lze povolit pro nové nebo jedno nebo více existujících nasazení AKS pomocí následujících podporovaných metod:
 
@@ -25,7 +25,7 @@ Azure Monitor pro kontejnery lze povolit pro nové nebo jedno nebo více existuj
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte následující:
 
@@ -42,6 +42,13 @@ Než začnete, ujistěte se, že máte následující:
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 * Metriky Prometheus nejsou ve výchozím nastavení shromažďovány. Před [konfigurací agenta](container-insights-prometheus-integration.md) pro jejich shromáždění je důležité si projít [dokumentaci](https://prometheus.io/) k Prometheus, abyste zjistili, co můžete definovat.
+
+## <a name="supported-configurations"></a>Podporované konfigurace
+
+Následující je oficiálně podporovaná s Azure Monitor pro kontejnery.
+
+- Prostředí: Kubernetes místně, AKS Engine v Azure a Azure Stack. Další informace najdete v tématu [AKS Engine on Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
+- Verze Kubernetes a zásad podpory jsou stejné jako verze [podporovaných AKS](../../aks/supported-kubernetes-versions.md). 
 
 ## <a name="network-firewall-requirements"></a>Požadavky na bránu firewall sítě
 

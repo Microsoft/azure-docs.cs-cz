@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: dcdc9c6a22f5d291b3773da02a79cc5ceebc3db1
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 9ac22461e04b447fe34d5647eb5ec7847d25a09d
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73101458"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931269"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Zřízení propustnosti u kontejnerů a databází
 
@@ -28,7 +28,7 @@ Propustnost zřízená v kontejneru Azure Cosmos je exkluzivně vyhrazena pro te
 
 Nastavení zřízené propustnosti kontejneru je nejčastěji používaná možnost. Propustnost pro kontejner můžete elasticky škálovat tím, že zřizujete množství propustnosti pomocí [jednotek žádostí (ru)](request-units.md). 
 
-Za předpokladu dobrého klíče oddílu, který rovnoměrně distribuuje logické oddíly mezi fyzickými oddíly, je propustnost rovnoměrně rozložena napříč všemi logickými oddíly kontejneru. Nemůžete selektivně zadat propustnost pro logické oddíly. Vzhledem k tomu, že jeden nebo více logických oddílů kontejneru je hostován fyzickým oddílem, fyzické oddíly patří výhradně do kontejneru a podporují propustnost zajištěná v kontejneru. 
+Propustnost zřízená pro kontejner je rovnoměrně rozdělená mezi své fyzické oddíly a předpokládá se dobrý klíč oddílu, který distribuuje logické oddíly rovnoměrně mezi fyzické oddíly. propustnost se také rovnoměrně distribuuje napříč všemi. logické oddíly kontejneru. Nemůžete selektivně zadat propustnost pro logické oddíly. Vzhledem k tomu, že jeden nebo více logických oddílů kontejneru je hostován fyzickým oddílem, fyzické oddíly patří výhradně do kontejneru a podporují propustnost zajištěná v kontejneru. 
 
 Pokud zatížení, které běží na logickém oddílu, spotřebovává více než propustnost, která byla přidělena tomuto logickému oddílu, operace získají omezené sazby. Pokud dojde k omezení rychlosti, můžete buď zvýšit zřízenou propustnost celého kontejneru, nebo operaci zopakovat. Další informace o dělení najdete v tématu [logické oddíly](partition-data.md).
 
@@ -122,7 +122,7 @@ Zřízenou propustnost kontejneru nebo databáze můžete kdykoli škálovat. P�
 |Ru přiřazený nebo dostupný ke konkrétnímu kontejneru|Žádné záruky. Ru přiřazený k danému kontejneru závisí na vlastnostech. Vlastnosti mohou být volbou klíčů oddílů kontejnerů, které sdílejí propustnost, distribuci zatížení a počet kontejnerů. |Všechny ru nakonfigurované na kontejneru jsou výhradně vyhrazené pro kontejner.|
 |Maximální úložiště pro kontejner|Počet.|Počet.|
 |Maximální propustnost na logický oddíl kontejneru|10 000 ru|10 000 ru|
-|Maximální velikost úložiště (data + index) na logický oddíl kontejneru|10 GB|10 GB|
+|Maximální velikost úložiště (data + index) na logický oddíl kontejneru|10 GB|10 GB|
 
 ## <a name="next-steps"></a>Další kroky
 

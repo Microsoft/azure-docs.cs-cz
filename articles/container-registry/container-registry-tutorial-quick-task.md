@@ -1,5 +1,5 @@
 ---
-title: Kurz – sestavení imagí kontejnerů v cloudových Azure Container Registry úlohách
+title: Kurz – rychlé vytváření imagí kontejnerů – Azure Container Registry úlohy
 description: V tomto kurzu zjistíte, jak sestavit image kontejneru Dockeru v Azure pomocí Azure Container Registry Tasks (ACR Tasks) a pak ji nasadit do služby Azure Container Instances.
 services: container-registry
 author: dlepow
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 091c1a4c9e6adae69ec1c8b3e507624b9f5e6a96
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 0b62ef1fa05138b1d5c0a3aacb570f5d577176fe
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057502"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931395"
 ---
-# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Kurz: Sestavování a nasazování imagí kontejneru v cloudu s využitím Azure Container Registrych úloh
+# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Kurz: sestavování a nasazování imagí kontejneru v cloudu s využitím Azure Container Registrych úloh
 
 **ACR Tasks** je sada funkcí ve službě Azure Container Registry, která poskytuje zjednodušená a efektivní sestavení imagí kontejnerů Dockeru v Azure. V tomto článku se dozvíte, jak používat funkci *rychlé úlohy* služby ACR Tasks.
 
@@ -207,7 +207,7 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-Argument v předchozím příkazu nakonfiguruje instanční objekt pomocí role acrpull, která uděluje přístup pouze pro získání přístupu k registru. `--role` Chcete-li udělit přístup push i Pull, změňte `--role` argument na *acrpush*.
+Argument `--role` v předchozím příkazu nakonfiguruje instanční objekt pomocí role *acrpull* , která mu udělí přístup jenom pro získání přístupu k registru. Chcete-li udělit přístup push i Pull, změňte argument `--role` na *acrpush*.
 
 V dalším kroku uložte *appId* instančního objektu v trezoru. Jedná se o **uživatelské jméno**, které předáte službě Azure Container Registry pro ověření:
 
@@ -221,8 +221,8 @@ az keyvault secret set \
 
 Vytvořili jste Azure Key Vault a uložili jste do něj dva tajné kódy:
 
-* `$ACR_NAME-pull-usr`: ID instančního objektu, který se použije jako **uživatelské jméno**registru kontejneru.
-* `$ACR_NAME-pull-pwd`: Heslo instančního objektu pro použití jako **heslo**registru kontejneru.
+* `$ACR_NAME-pull-usr`: ID instančního objektu, které se bude používat jako **uživatelské jméno** registru kontejneru.
+* `$ACR_NAME-pull-pwd`: heslo instančního objektu, které se bude používat jako **heslo** registru kontejneru.
 
 Teď můžete na tyto tajné kódy odkazovat názvem, když vy nebo vaše aplikace a služby budou načítat image z tohoto registru.
 
@@ -308,7 +308,7 @@ az group delete --resource-group $RES_GROUP
 az ad sp delete --id http://$ACR_NAME-pull
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď, když jste pomocí rychlé úlohy otestovali vnitřní smyčku, můžete nakonfigurovat **úlohu sestavení**, která aktivuje sestavení imagí kontejnerů při potvrzení zdrojového kódu do úložiště Git:
 

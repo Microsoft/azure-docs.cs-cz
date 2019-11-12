@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01ed7383515a725816679acb405b2ff3b1dc8e92
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 84c94675ac5c69055cd2811df206f81af55d3c1e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817242"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927192"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity Platform Code Samples (koncový bod verze 2.0)
 
@@ -86,7 +86,7 @@ Následující ukázky ukazují aplikaci, která přistupuje k rozhraní Microso
 
 | Klientská aplikace | Platforma | Tok a udělení | Volání Microsoft Graph |
 | ------------------ | -------- | ---------- | -------------------- |
-| Console | ![Tento obrázek ukazuje logo .NET Core](media/sample-v2-code/logo_NETcore.png)</p> ASP.NET  | [Pověření klienta](msal-authentication-flows.md#client-credentials) | [dotnetcore-démon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2) |
+| Konzola | ![Tento obrázek ukazuje logo .NET Core](media/sample-v2-code/logo_NETcore.png)</p> ASP.NET  | [Pověření klienta](msal-authentication-flows.md#client-credentials) | [dotnetcore-démon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2) |
 | Webová aplikace | ![Na tomto obrázku vidíte logo ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | [Pověření klienta](msal-authentication-flows.md#client-credentials) | [dotnet-démon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2) |
 
 ## <a name="headless-applications"></a>Bezobslužné aplikace
@@ -106,11 +106,23 @@ Následující ukázky ukazují, jak chránit webové rozhraní API pomocí konc
 | ![Tento obrázek ukazuje logo ASP.NET Core.](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2,2 | ASP.NET Core webové rozhraní API (služba) [dotnet-Native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph)  |
 | ![Na tomto obrázku vidíte logo ASP.NET](media/sample-v2-code/logo_NET.png)</p>ASP.NET MVC | Webové rozhraní API (služba) [MS-identity-ASPNET-WebApi-OnBehalfOf](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof) |
 
+## <a name="azure-functions-as-web-apis"></a>Azure Functions jako webová rozhraní API
+
+Následující ukázky ukazují, jak chránit funkci Azure pomocí HttpTrigger a vystavit webové rozhraní API s koncovým bodem Microsoft Identity Platform a voláním rozhraní API pro příjem dat z webového rozhraní API.
+
+| Platforma | Ukázka |
+| -------- | ------------------- |
+| ![Tento obrázek ukazuje logo ASP.NET Core.](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2,2 | ASP.NET Core rozhraní Web API (služba) Azure function of [dotnet-Native-aspnetcore-v2](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)  |
+| ![Tento obrázek ukazuje logo Node. js.](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | Webové rozhraní API (služba) služby [NodeJS a Passport-Azure-AD](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions) |
+| ![Tento obrázek ukazuje logo Pythonu.](media/sample-v2-code/logo_python.png)</p>Python | Webové rozhraní API (služba) [Pythonu](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions) |
+| ![Tento obrázek ukazuje logo Node. js.](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | Webové rozhraní API (služba) pro [NodeJS a Passport – Azure-AD s využitím jménem](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions) |
+
+
 ## <a name="other-microsoft-graph-samples"></a>Další ukázky Microsoft Graph
 
 Další informace o [ukázkách](https://github.com/microsoftgraph/msgraph-community-samples/tree/master/samples#aspnet) a kurzech, které ukazují různé způsoby používání rozhraní Microsoft Graph API, včetně ověřování pomocí Azure AD, najdete v tématu [Microsoft Graph komunitních ukázek & kurzy](https://github.com/microsoftgraph/msgraph-community-samples).
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 - [Příručka pro vývojáře Azure Active Directory (v 1.0)](v1-overview.md)
 - [Azure AD Graph API koncepční a referenční dokumentace](https://msdn.microsoft.com/library/azure/hh974476.aspx)

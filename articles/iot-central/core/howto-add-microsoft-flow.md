@@ -1,5 +1,5 @@
 ---
-title: Vytváření pracovních postupů pomocí konektoru Azure IoT Central v Microsoft Flow | Microsoft Docs
+title: Použití konektoru Azure IoT Central v Microsoft Flow | Microsoft Docs
 description: Pomocí konektoru IoT Central v Microsoft Flow můžete aktivovat pracovní postupy a vytvářet, získávat, aktualizovat, odstraňovat zařízení a spouštět příkazy v pracovních postupech.
 services: iot-central
 author: viv-liu
@@ -8,12 +8,12 @@ ms.date: 08/26/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: 258020c8ccd690c524460873387293e73fc89125
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f1912b90df75f3d85f6ba5d730c723cf42803237
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951728"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930381"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Vytváření pracovních postupů pomocí konektoru IoT Central v Microsoft Flow
 
@@ -30,7 +30,7 @@ Použijte Microsoft Flow k automatizaci pracovních postupů napříč mnoha apl
 
 Podívejte se na [tyto Microsoft Flow šablony](https://aka.ms/iotcentralflowtemplates) , které se připojují IoT Central k jiným službám, jako jsou například mobilní oznámení a Microsoft Teams.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Aplikace s průběžnými platbami
 - Osobní nebo pracovní nebo školní účet Microsoftu pro použití Microsoft Flow (další[informace o Microsoft Flowch plánech](https://aka.ms/microsoftflowplans))

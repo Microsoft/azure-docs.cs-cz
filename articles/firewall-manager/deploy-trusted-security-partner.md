@@ -7,14 +7,14 @@ ms.service: firewall-manager
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: fe733b686f2b56beee26a6c33c4d6264d621e627
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bcea9a8674e4b1979698b7d28eb4192172b0dc11
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516341"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931302"
 ---
-# <a name="deploy-a-trusted-security-partner-preview"></a>Nasazení důvěryhodného partnera zabezpečení (Preview)
+# <a name="deploy-a-trusted-security-partner-preview"></a>Nasazení důvěryhodného partnera pro zabezpečení (Preview)
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
@@ -24,7 +24,7 @@ Další informace o podporovaných scénářích a návodech k osvědčeným pos
 
 Podporovaní partneři zabezpečení jsou **ZScaler** a **iboss** pro tuto verzi Preview. Podporované oblasti jsou WestCentralUS, NorthCentralUS, WestUS, WestUS2 a EastUS.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!IMPORTANT]
 > Ukázková verze Azure Firewall Manageru musí být explicitně povolená pomocí příkazu `Register-AzProviderFeature` PowerShellu.
@@ -53,7 +53,7 @@ Dokončení registrace funkce trvá až 30 minut. Spusťte následující přík
 8. Pokud chcete nasadit pouze poskytovatele zabezpečení třetí strany v centru, vyberte **Azure firewall: povoleno/zakázáno** a nastavte jej na **zakázáno**. 
 9. Vyberte **Další: důvěryhodní partneři zabezpečení**.
 10. Vyberte **důvěryhodný partner zabezpečení** a nastavte jej na **povoleno**. Vyberte partnera. 
-11. Vyberte **Další**. 
+11. Vyberte **Next** (Další). 
 12. Zkontrolujte obsah a pak vyberte **vytvořit**.
 
 Nasazení brány VPN může trvat déle než 30 minut.
@@ -83,12 +83,11 @@ Pokud chcete nastavit tunely na VPN Gateway svého virtuálního rozbočovače, 
 
    > [!NOTE]
    > Přístup můžete omezit jenom na vaši skupinu prostředků, abyste měli podrobnější kontrolu.
-3. Postupujte podle pokynů uvedených v následujícím odkazu.
+3. Postupujte podle pokynů [ZScaler: konfigurace Microsoft Azure instrukcí pro integraci virtuální sítě WAN](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration) na:
 
-   - Pokud se chcete přihlásit k portálu pro partnery, přidejte svoje přihlašovací údaje a udělte tak důvěryhodnému partnerovi přístup k zabezpečenému centru.
-   - Po ověření přihlašovacích údajů pro ověřování Azure AD použijte následující pokyny k synchronizaci virtuálních Center na portálu pro partnery a nastavte tunelové propojení pro virtuální rozbočovač.
-
-   [ZScaler: Konfigurace Microsoft Azure integrace virtuální sítě WAN](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration)
+   - Přihlaste se na portál pro partnery a přidejte svoje přihlašovací údaje, abyste měli důvěryhodného partnera přístup k zabezpečenému centru.
+   - Synchronizujte virtuální rozbočovače na portálu pro partnery a nastavte tunelové propojení na virtuální rozbočovač. Můžete to udělat až po ověření přihlašovacích údajů pro ověřování Azure AD.
+   
 4. Na portálu Azure Virtual WAN v Azure se můžete podívat na stav vytvoření tunelu. Jakmile se tunely **připojí** na Azure i na portálu pro partnery, pokračujte dalšími kroky nastavení tras pro výběr směrování a virtuální sítě by měly odesílat internetové přenosy partnerovi.
 
 ## <a name="configure-route-settings"></a>Konfigurovat nastavení tras

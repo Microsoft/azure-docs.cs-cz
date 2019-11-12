@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 723fe14db9089e1127f39eae3ed7b10bbddf70bf
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 4e7a179980abb164754941f345d2ee9ae7f5c9de
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889715"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930396"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Možnosti připojení zařízení a příchozí přenos telemetrických dat
 
@@ -70,9 +70,9 @@ Formát a datovou část svého zařízení můžete přizpůsobit tak, aby vyho
 | Název vlastnosti | Hodnota | Požaduje se | Popis |
 |---|---|---|---|
 | **DigitalTwins – telemetrie** | 1.0 | Ano | Konstantní hodnota, která identifikuje zprávu pro systém. |
-| **DigitalTwins-SensorHardwareId** | `string(72)` | Ano | Jedinečný identifikátor senzoru, který **zprávu**odesílá. Tato hodnota musí odpovídat vlastnosti **HardwareId** objektu, aby ji systém mohl zpracovat. například `00FF0643BE88-CO2`. |
-| **CreationTimeUtc** | `string` | Ne | Řetězec formátovaného data [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , který identifikuje dobu vzorkování datové části. například `2018-09-20T07:35:00.8587882-07:00`. |
-| **ID** | `string` | Ne | Identifikátor UUID, který se používá k trasování událostí v rámci systému. například `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
+| **DigitalTwins-SensorHardwareId** | `string(72)` | Ano | Jedinečný identifikátor senzoru, který **zprávu**odesílá. Tato hodnota musí odpovídat vlastnosti **HardwareId** objektu, aby ji systém mohl zpracovat. Například, `00FF0643BE88-CO2`. |
+| **CreationTimeUtc** | `string` | Ne | Řetězec formátovaného data [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) , který identifikuje dobu vzorkování datové části. Například, `2018-09-20T07:35:00.8587882-07:00`. |
+| **ID** | `string` | Ne | Identifikátor UUID, který se používá k trasování událostí v rámci systému. Například, `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
 
 ### <a name="send-your-message-to-digital-twins"></a>Odeslání zprávy do digitálních vláken
 

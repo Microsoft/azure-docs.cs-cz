@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 10/04/2019
-ms.openlocfilehash: c1f4b3d60c0b8af96d851ce54c2aac57c76335a7
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: b44d624db419919823ec85bcb599007fb75c92b9
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73633638"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929625"
 ---
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí přihlašovacích údajů předplatného Azure. 
 
@@ -32,15 +32,15 @@ ms.locfileid: "73633638"
 
    Pole|Popis 
    ---|---
-   Název pracovního prostoru |Zadejte jedinečný název, který identifikuje váš pracovní prostor. V tomto příkladu používáme **docs-WS**. Názvy musí být v rámci skupiny prostředků jedinečné. Použijte název, který se dá snadno vyvolat a odlišit z pracovních prostorů vytvořených jinými uživateli.  
+   Název pracovního prostoru |Zadejte jedinečný název, který identifikuje váš pracovní prostor. V tomto příkladu používáme **docs-WS**. Názvy musí být v rámci skupiny prostředků jedinečné. Použijte název, který se dá snadno vyvolat a odlišit z pracovních prostorů vytvořených jinými uživateli. 
    Předplatné |Vyberte předplatné Azure, které chcete použít.
    Skupina prostředků | Ve svém předplatném použijte existující skupinu prostředků nebo zadejte název pro vytvoření nové skupiny prostředků. Skupina prostředků obsahuje související prostředky pro řešení Azure. V tomto příkladu používáme **docs-AML**. 
    Umístění | Vyberte umístění, které je nejblíže vašim uživatelům a datovým prostředkům, abyste mohli vytvořit pracovní prostor.
-   Edice pracovního prostoru | Vyberte **Enterprise**.  Tento kurz vyžaduje použití edice Enterprise.  Edice Enterprise je ve verzi Preview a momentálně nepřidává žádné další náklady.  
+   Edice pracovního prostoru | Vyberte **Enterprise**. Tento kurz vyžaduje použití edice Enterprise. Edice Enterprise je ve verzi Preview a momentálně nepřidává žádné další náklady. 
 
 1. Po dokončení konfigurace pracovního prostoru vyberte **vytvořit**. 
 
-   > [!Warning] 
+   > [!WARNING] 
    > Vytvoření pracovního prostoru v cloudu může trvat několik minut.
 
    Po dokončení procesu se zobrazí zpráva o úspěšném nasazení. 

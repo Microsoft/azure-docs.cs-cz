@@ -1,6 +1,6 @@
 ---
 title: Plánování úloh Azure Container Registry
-description: Nastavte časovače pro spuštění úlohy Azure Container Registry podle definovaného plánu.
+description: Přečtěte si, jak spustit úlohu Azure Container Registry podle definovaného plánu tím, že nastavíte jednu nebo víc triggerů časovače.
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: a4a1099d90b619be383d440067a692c51a2430ac
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 6272b5467aff10171814152eb4188554a22c7a51
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509067"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931470"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Spuštění úlohy ACR podle definovaného plánu
 
@@ -31,7 +31,7 @@ Příklady v tomto článku můžete spustit pomocí Azure Cloud Shell nebo mís
 
 * **Aktivační událost s výrazem cron** – aktivační událost časovače pro úlohu používá *výraz cron*. Výraz je řetězec s pěti poli, které určují minuty, hodinu, den, měsíc a den v týdnu, kdy se má úkol aktivovat. Frekvence se podporuje až jednou za minutu.
 
-  Výraz `"0 12 * * Mon-Fri"` například aktivuje úlohu v poledne standardu UTC každého dne v týdnu. Další [](#cron-expressions) informace najdete v části dále v tomto článku.
+  Například výraz `"0 12 * * Mon-Fri"` aktivuje úkol v poledne UTC v každém týdnu. Další [informace najdete v části dále](#cron-expressions) v tomto článku.
 * **Více triggerů časovače** – přidávání více časovačů k úkolu je povoleno, pokud se plány liší.
     * Při vytváření úlohy zadejte více triggerů časovače nebo je přidejte později.
     * Volitelně můžete pojmenovat triggery pro snadnější správu, jinak budou ACR úlohy poskytovat výchozí názvy aktivačních událostí.
@@ -40,9 +40,9 @@ Příklady v tomto článku můžete spustit pomocí Azure Cloud Shell nebo mís
 
 ## <a name="create-a-task-with-a-timer-trigger"></a>Vytvoření úlohy pomocí triggeru časovače
 
-Při vytváření úlohy pomocí příkazu [AZ ACR Task Create][az-acr-task-create] můžete volitelně přidat Trigger časovače. `--schedule` Přidejte parametr a předejte výraz cron pro časovač.
+Při vytváření úlohy pomocí příkazu [AZ ACR Task Create][az-acr-task-create] můžete volitelně přidat Trigger časovače. Přidejte parametr `--schedule` a předejte výraz cron pro časovač.
 
-Jednoduchým příkladem je následující příkaz `hello-world` , který spouští image z Docker Hub každý den v 21:00 UTC. Úloha se spustí bez kontextu zdrojového kódu.
+Jednoduchým příkladem je následující příkaz, který spouští `hello-world` image z Docker Hub každý den v 21:00 UTC. Úloha se spustí bez kontextu zdrojového kódu.
 
 ```azurecli
 az acr task create \
@@ -170,17 +170,17 @@ ACR úlohy používají knihovnu [NCronTab](https://github.com/atifaziz/NCrontab
 Časové pásmo používané s výrazy cron je koordinovaný světový čas (UTC). Hodiny jsou ve 24hodinovém formátu.
 
 > [!NOTE]
-> ACR úkoly nepodporují `{second}` pole ani `{year}` ve výrazech cron. Pokud zkopírujete výraz cron používaný v jiném systému, nezapomeňte tato pole odebrat, pokud se používají.
+> ACR úkoly nepodporují pole `{second}` nebo `{year}` ve výrazech cron. Pokud zkopírujete výraz cron používaný v jiném systému, nezapomeňte tato pole odebrat, pokud se používají.
 
 Každé pole může mít jeden z následujících typů hodnot:
 
-|type  |Příklad  |Při aktivaci  |
+|Typ  |Příklad  |Při aktivaci  |
 |---------|---------|---------|
 |Konkrétní hodnota |<nobr>`"5 * * * *"`</nobr>|každou hodinu 5 minut po hodině|
 |Všechny hodnoty (`*`)|<nobr>`"* 5 * * *"`</nobr>|každou minutu hodiny začínající 5:00 UTC (60 krát den)|
-|Rozsah (`-` operátor)|<nobr>`"0 1-3 * * *"`</nobr>|3 časy za den, v 1:00, 2:00 a 3:00 UTC|
-|Sada hodnot (`,` operator)|<nobr>`"20,30,40 * * * *"`</nobr>|3 časy za hodinu, 20 minut, 30 minut a 40 minut po hodině|
-|Hodnota intervalu (`/` operátor)|<nobr>`"*/10 * * * *"`</nobr>|6 časů za hodinu, 10 minut, 20 minut atd., po celou hodinu
+|Rozsah (operátor`-`)|<nobr>`"0 1-3 * * *"`</nobr>|3 časy za den, v 1:00, 2:00 a 3:00 UTC|
+|Sada hodnot (operátor`,`)|<nobr>`"20,30,40 * * * *"`</nobr>|3 časy za hodinu, 20 minut, 30 minut a 40 minut po hodině|
+|Hodnota intervalu (operátor`/`)|<nobr>`"*/10 * * * *"`</nobr>|6 časů za hodinu, 10 minut, 20 minut atd., po celou hodinu
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
@@ -197,7 +197,7 @@ Každé pole může mít jeden z následujících typů hodnot:
 |`"30 9 * Jan Mon"`|v 9:30 UTC každé pondělí v lednu|
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Příklad použití naplánované úlohy k vyčištění úložišť v registru najdete v tématu [Automatické vymazání imagí z služby Azure Container Registry](container-registry-auto-purge.md).
 

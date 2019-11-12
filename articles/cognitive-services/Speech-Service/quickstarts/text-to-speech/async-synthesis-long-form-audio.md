@@ -10,16 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 2c1e6ef84a472ccec5116b12e18ad80c92b68960
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d308623a323fecd39efa90639da71fb981936fe5
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681887"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930577"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Rychlý Start: asynchronní Shrnutí pro dlouhý formát zvuku v Pythonu (Preview)
 
 V tomto rychlém startu použijete dlouhé zvukové rozhraní API k asynchronnímu převodu textu na řeč a načtete zvukový výstup z identifikátoru URI, který poskytuje služba. Tato REST API je ideální pro poskytovatele obsahu, kteří potřebují převést textové soubory o více než 10 000 znaků nebo 50 odstavcích na syntetizované řeč. Další informace najdete v tématu [dlouhé zvukové rozhraní API](../../long-audio-api.md).
+
+> [!NOTE]
+> Asynchronní Shrnutí pro dlouhý formát zvuku se dá použít jenom s [vlastními hlasy neuronové](../../how-to-custom-voice.md#custom-neural-voices).
 
 ## <a name="prerequisites"></a>Požadavky
 

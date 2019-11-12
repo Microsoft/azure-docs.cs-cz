@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3d5a61b93175559bce92a17e27602a4f79d88ad
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 4a055e039e8d7629f3ff1c20c6ce9e4f1533b6b9
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603960"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931037"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Vytvářejte TensorFlow model hloubkového učení ve velkém měřítku pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -183,10 +183,17 @@ Po spuštění se spustí v následujících fázích:
 
 ## <a name="register-or-download-a-model"></a>Registrace nebo stažení modelu
 
-Po proškolení modelu ho můžete zaregistrovat do svého pracovního prostoru. Registrace modelu umožňuje ukládat a modelovat vaše modely do svého pracovního prostoru, aby bylo možné zjednodušit [správu modelů a nasazení](concept-model-management-and-deployment.md).
+Po proškolení modelu ho můžete zaregistrovat do svého pracovního prostoru. Registrace modelu umožňuje ukládat a modelovat vaše modely do svého pracovního prostoru, aby bylo možné zjednodušit [správu modelů a nasazení](concept-model-management-and-deployment.md). Zadáním parametrů `model_framework`, `model_framework_version`a `resource_configuration`bude k dispozici nasazení modelu bez kódu. To vám umožní přímo nasadit model jako webovou službu z registrovaného modelu a objekt `ResourceConfiguration` definuje výpočetní prostředek pro webovou službu.
 
 ```Python
-model = run.register_model(model_name='tf-dnn-mnist', model_path='outputs/model')
+from azureml.core import Model
+from azureml.core.resource_configuration import ResourceConfiguration
+
+model = run.register_model(model_name='tf-dnn-mnist', 
+                           model_path='outputs/model',
+                           model_framework=Model.Framework.TENSORFLOW,
+                           model_framework_version='1.13.0',
+                           resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5))
 ```
 
 Místní kopii modelu můžete také stáhnout pomocí objektu run. Ve školicím skriptu `mnist-tf.py`objekt spořiče TensorFlow udržuje model do místní složky (místní do výpočetního cíle). Kopii můžete stáhnout pomocí objektu spustit.
@@ -292,13 +299,24 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ```
 
+## <a name="deployment"></a>Nasazení
+
+Model, který jste právě zaregistrovali, lze nasadit stejným způsobem jako jakýkoli jiný registrovaný model v Azure Machine Learning, bez ohledu na to, který Estimator jste použili pro školení. Postup nasazení obsahuje část týkající se registrace modelů, ale můžete přeskočit přímo na [Vytvoření výpočetního cíle](how-to-deploy-and-where.md#choose-a-compute-target) pro nasazení, protože již máte registrovaný model.
+
+### <a name="preview-no-code-model-deployment"></a>Tisk Nasazení modelu bez kódu
+
+Místo tradičního postupu nasazení můžete také použít funkci nasazení bez kódu (Preview) pro Tensorflow. Registrací modelu, jak je uvedeno výše, pomocí parametrů `model_framework`, `model_framework_version`a `resource_configuration` můžete jednoduše použít statickou funkci `deploy()` k nasazení modelu.
+
+```python
+service = Model.deploy(ws, "tensorflow-web-service", [model])
+```
+
+Úplný [postup](how-to-deploy-and-where.md) pokrývá nasazení v Azure Machine Learning s větší hloubkou.
+
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste si vyškole a zaregistrovali model TensorFlow. Pokud chcete zjistit, jak nasadit model do clusteru s podporou GPU, pokračujte na náš článek nasazení modelu GPU.
+V tomto článku jste si naučili a zaregistrovali model TensorFlow a seznámili jste se s možnostmi nasazení. Další informace o Azure Machine Learning najdete v těchto článcích.
 
-> [!div class="nextstepaction"]
-> [Jak a kde nasadit modely](how-to-deploy-and-where.md)
 * [Sledovat metriky spuštění během školení](how-to-track-experiments.md)
 * [Ladit parametry](how-to-tune-hyperparameters.md)
-* [Nasazení trained model](how-to-deploy-and-where.md)
 * [Referenční architektura distribuovaného školení pro hloubkové učení v Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

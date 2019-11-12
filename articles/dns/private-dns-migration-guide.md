@@ -7,25 +7,31 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: 870f8f43fb37f3f58fc19f2fd544e77b1a3a3967
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 9f52a568d42fa23a40a396311955626a1fa0073b
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960556"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931262"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Migrace starších Azure DNS privátních zón do nového modelu prostředků
 
-Stávající Azure DNS privátních zón poskytuje nové funkce a odebírá několik omezení a omezení počáteční verze Public Preview. Tyto výhody však nejsou k dispozici na privátních zónách DNS, které byly vytvořeny pomocí rozhraní API verze Preview. Pokud chcete získat výhody nové verze, musíte migrovat staré prostředky zóny DNS do nového modelu prostředků. Proces migrace je jednoduchý a poskytujeme PowerShellový skript pro automatizaci tohoto procesu. Tato příručka poskytuje podrobné pokyny k migraci Azure DNS privátních zón do nového modelu prostředků.
+Během veřejné verze Preview se privátní zóny DNS vytvořily pomocí prostředku "dnszones" s vlastností "zoneType" nastavenou na "Private". Tyto zóny nebudou podporovány po 31. prosinci 2019 a musí být migrovány do modelu prostředků GA, který využívá typ prostředku "privateDnsZones" místo "dnszones". Proces migrace je jednoduchý a poskytujeme PowerShellový skript pro automatizaci tohoto procesu. Tato příručka poskytuje podrobné pokyny k migraci Azure DNS privátních zón do nového modelu prostředků.
+
+Zjištění prostředků dnszones, které vyžadují migraci; v Azure CLI spusťte níže uvedený příkaz.
+```azurecli
+az account set --subscription <SubscriptionId>
+az network dns zone list --query "[?zoneType=='Private']"
+```
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ujistěte se, že máte nainstalovanou nejnovější verzi Azure PowerShell. Další informace o Azure PowerShell (AZ) a o tom, jak ji nainstalovat, najdete https://docs.microsoft.com/powershell/azure/new-azureps-module-az.
+Ujistěte se, že máte nainstalovanou nejnovější verzi Azure PowerShell. Další informace o Azure PowerShell (AZ) a o tom, jak ji nainstalovat, najdete v článku https://docs.microsoft.com/powershell/azure/new-azureps-module-az
 
 Ujistěte se, že jste pro Azure PowerShell nainstalovanou modul AZ. PrivateDns. Pokud chcete tento modul nainstalovat, otevřete okno PowerShellu se zvýšenými oprávněními (režim správy) a zadejte následující příkaz.
 
 ```powershell
-Install-Module -Name Az.PrivateDns -AllowPrerelease
+Install-Module -Name Az.PrivateDns
 ```
 
 >[!IMPORTANT]
@@ -43,7 +49,10 @@ Po zobrazení výzvy k instalaci skriptu zadejte "A".
 
 ![Instalace skriptu](./media/private-dns-migration-guide/install-migration-script.png)
 
-Nejnovější verzi skriptu PowerShellu můžete také ručně získat na https://www.powershellgallery.com/packages/PrivateDnsMigrationScript.
+Nejnovější verzi skriptu PowerShellu můžete také ručně získat na https://www.powershellgallery.com/packages/PrivateDnsMigrationScript
+
+>[!IMPORTANT]
+>Migrační skript se nesmí spouštět ve službě Azure Cloud Shell a musí se spustit na VIRTUÁLNÍm počítači nebo místním počítači připojeném k Internetu.
 
 ## <a name="running-the-script"></a>Spuštění skriptu
 
@@ -59,7 +68,7 @@ PrivateDnsMigrationScript.ps1
 
 Zobrazí se výzva k zadání ID předplatného obsahujícího privátní zóny DNS, které chcete migrovat. Zobrazí se výzva, abyste se přihlásili ke svému účtu Azure. Dokončete přihlášení, aby skript mohl přistupovat k prostředkům privátní zóny DNS v předplatném.
 
-![Přihlášení do Azure](./media/private-dns-migration-guide/login-migration-script.png)
+![Přihlášení k Azure](./media/private-dns-migration-guide/login-migration-script.png)
 
 ### <a name="select-the-dns-zones-you-want-to-migrate"></a>Vyberte zóny DNS, které chcete migrovat.
 
@@ -92,7 +101,7 @@ Pokud zjistíte, že dotazy DNS nejsou vyřešeny, počkejte několik minut a op
 
 Tento krok odstraní starší zóny DNS a měl by se provádět až po ověření, že překlad DNS funguje podle očekávání. Zobrazí se výzva k odstranění všech privátních zón DNS. Po ověření správného fungování překladu názvů DNS pro tyto zóny zadejte ' Y ' při každé výzvě.
 
-![Vyčistit](./media/private-dns-migration-guide/cleanup-migration-script.png)
+![Vyčištění](./media/private-dns-migration-guide/cleanup-migration-script.png)
 
 ## <a name="update-your-automation"></a>Aktualizace automatizace
 
@@ -116,4 +125,4 @@ Pokud potřebujete další pomoc s procesem migrace nebo z jakéhokoli důvodu, 
 
 * Seznamte se s informacemi o zónách a záznamech DNS návštěvou [přehledu zón a záznamů DNS](dns-zones-records.md).
 
-* Přečtěte si o některých dalších klíčových [možnostech sítě](../networking/networking-overview.md) v Azure.
+* Informace o některých dalších klíčových [možnostech sítě](../networking/networking-overview.md) v Azure.

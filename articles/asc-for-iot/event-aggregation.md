@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: b1a14cf4c8aec2f3dbfa7bc4fd0800d9fd1fb0aa
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: ca1d1a5761e62b2838a474dcb83f450987972998
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327319"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928961"
 ---
 # <a name="azure-security-center-for-iot-event-aggregation"></a>Azure Security Center pro agregaci událostí IoT
 
@@ -44,7 +44,7 @@ Aby se snížilo nároky na paměť agenta, pokaždé, když agent shromáždí 
 
 Události se považují za identické jenom v případě, že jsou splněné následující podmínky: 
 
-* ProcessCreate události – když je **příkazový řádek**, **spustitelný soubor**, * * username a **UserID** , stejné
+* ProcessCreate události – když je **příkazový řádek**, **spustitelný soubor**, **username**a **UserID** , je stejný
 * ConnectionCreate události – když se příkaz **CommandLine**, **userId**, **směr**, **místní adresa**, **Vzdálená adresa**, * * protokol a **cílový port** shodují
 * ProcessTerminate události – když je stav **spustitelného souboru** a **ukončení** shodný
 
@@ -66,11 +66,11 @@ Proveďte změny v konfiguraci Azure Security Center pro agregaci událostí IoT
 
 | Název konfigurace | Možné hodnoty | Podrobnosti | Poznámky |
 |:-----------|:---------------|:--------|:--------|
-| aggregationEnabledProcessCreate | boolean | Povolit/zakázat agregaci události pro události vytvoření procesu |
+| aggregationEnabledProcessCreate | Boolean | Povolit/zakázat agregaci události pro události vytvoření procesu |
 | aggregationIntervalProcessCreate | Řetězec ISO8601 TimeSpan | Interval agregace pro události vytvoření procesu |
-| aggregationEnabledConnectionCreate | boolean| Povolit/zakázat agregaci události pro události vytvoření připojení |
+| aggregationEnabledConnectionCreate | Boolean| Povolit/zakázat agregaci události pro události vytvoření připojení |
 | aggregationIntervalConnectionCreate | Řetězec ISO8601 TimeSpan | Interval agregace pro události vytvoření připojení |
-| aggregationEnabledProcessTerminate | boolean | Povolit/zakázat agregaci události pro události ukončení procesu | Pouze Windows|
+| aggregationEnabledProcessTerminate | Boolean | Povolit/zakázat agregaci události pro události ukončení procesu | Pouze Windows|
 | aggregationIntervalProcessTerminate | Řetězec ISO8601 TimeSpan | Interval agregace pro události ukončení procesu | Pouze Windows|
 |
 
@@ -78,11 +78,11 @@ Proveďte změny v konfiguraci Azure Security Center pro agregaci událostí IoT
 
 | Název konfigurace | Výchozí hodnoty |
 |:-----------|:---------------|
-| aggregationEnabledProcessCreate | true |
+| aggregationEnabledProcessCreate | true (pravda) |
 | aggregationIntervalProcessCreate | PT1H|
-| aggregationEnabledConnectionCreate | true |
+| aggregationEnabledConnectionCreate | true (pravda) |
 | aggregationIntervalConnectionCreate | PT1H|
-| aggregationEnabledProcessTerminate | true |
+| aggregationEnabledProcessTerminate | true (pravda) |
 | aggregationIntervalProcessTerminate | PT1H|
 |
 

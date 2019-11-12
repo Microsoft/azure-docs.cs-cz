@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/15/2017
-ms.openlocfilehash: bcf741e82e247a5b79a478ef1015a70cccb4d274
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c4d029de782ae408b83c265322a865db7b166c1e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899918"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928300"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Oddělení telemetrie od vývoje, testování a produkce
 
@@ -51,7 +51,7 @@ Nastavte klíč v inicializační metodě, jako je například global.aspx.cs ve
 V tomto příkladu jsou instrumentační klíče pro různé prostředky umístěny v různých verzích konfiguračního souboru webu. Výměna konfiguračního souboru webu, který můžete provést jako součást skriptu pro vydání, zahodí cílový prostředek.
 
 ### <a name="web-pages"></a>Webové stránky
-IKey se také používá na webových stránkách vaší aplikace ve [skriptu, který jste získali z okna rychlý Start](../../azure-monitor/app/javascript.md). Místo toho, aby se do skriptu nahlásilo, vygeneruje ho ze stavu serveru. Například v aplikaci ASP.NET:
+IKey se také používá na webových stránkách vaší aplikace ve [skriptu, který jste dostali z okna rychlý Start](../../azure-monitor/app/javascript.md). Místo toho, aby se do skriptu nahlásilo, vygeneruje ho ze stavu serveru. Například v aplikaci ASP.NET:
 
 *JavaScript v Razor*
 
@@ -81,7 +81,7 @@ Do [Portal.Azure.com](https://portal.azure.com)přidejte prostředek Application
 
 Vytvoření prostředku trvá několik sekund. Po dokončení se zobrazí výstraha.
 
-(Můžete napsat [skript prostředí PowerShell](../../azure-monitor/app/powershell-script-create-resource.md) pro automatické vytvoření prostředku.)
+(Můžete napsat [skript prostředí PowerShell](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) pro automatické vytvoření prostředku.)
 
 ### <a name="getting-the-instrumentation-key"></a>Získávání klíče instrumentace
 Klíč instrumentace identifikuje prostředek, který jste vytvořili. 
@@ -134,7 +134,7 @@ Vlastnost verze aplikace se nastavuje několika různými způsoby.
     Pokud chcete, aby nástroj MSBuild vygeneroval čísla verzí, nastavte verzi, například `1.0.*` v AssemblyReference.cs.
 
 ## <a name="version-and-release-tracking"></a>Sledování verzí a vydání
-Pokud chcete sledovat verzi aplikace, ujistěte se, že proces Microsoft Build Engine vygeneroval soubor `buildinfo.config`. Do souboru .csproj přidejte:  
+Pokud chcete sledovat verzi aplikace, ujistěte se, že proces Microsoft Build Engine vygeneroval soubor `buildinfo.config`. Do souboru `.csproj` přidejte:  
 
 ```XML
 
@@ -145,7 +145,7 @@ Pokud chcete sledovat verzi aplikace, ujistěte se, že proces Microsoft Build E
 
 Pokud obsahuje informace o sestavení, webový modul Application Insights automaticky přidá položku **Verze aplikace** jako vlastnost pro každý předmět telemetrie. Díky tomu můžete při provádění [diagnostických hledání](../../azure-monitor/app/diagnostic-search.md) nebo při [zkoumání metrik](../../azure-monitor/app/metrics-explorer.md) filtrovat podle verze.
 
-Všimněte si však, že číslo verze sestavení je generováno pouze pomocí procesu Microsoft Build Engine, ne sestavením vývojáře v sadě Visual Studio.
+Všimněte si však, že číslo verze sestavení je generováno pouze pomocí Microsoft Build Engine, nikoli vývojářem Build ze sady Visual Studio.
 
 ### <a name="release-annotations"></a>Poznámky k verzi
 Pokud používáte Azure DevOps, můžete při každém vydání nové verze [získat značku poznámky](../../azure-monitor/app/annotations.md) přidanou do vašich grafů. Následující obrázek ukazuje, jak se tato značka zobrazuje.

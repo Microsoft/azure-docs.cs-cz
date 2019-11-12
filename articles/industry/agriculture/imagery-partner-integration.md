@@ -1,18 +1,18 @@
 ---
-title: Integrace partnerů z snímků
+title: Integrace partnerských řešení pro snímky
 description: Popisuje integraci partnerských serverů pro satelitní navýšení.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 2b15cc56cb4f804fac0b047819ccf166950e1cf3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 232ade55350ad1ac85612cf8c69117c19cb20d0c
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890971"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927794"
 ---
-# <a name="imagery-partner-integration"></a>Integrace partnerů z snímků
+# <a name="imagery-partner-integration"></a>Integrace partnerských řešení pro snímky
 
 Tento článek popisuje, jak pomocí komponenty překladače Azure FarmBeats posílat data z snímků do FarmBeats. Data ze zemědělských snímků můžou být z různých zdrojů, včetně více spektrálních kamer, satelitů a DRONY zachraňují životy. Partneři zemědělských snímků se mohou integrovat s FarmBeats a poskytovat zákazníkům s vlastními mapami generovanými pro své farmy.
 
@@ -97,7 +97,7 @@ Volitelně můžete zahrnout parametry dotazu pro volání funkce GET k filtrov�
 
 Níže uvedená ukázková žádost slouží k získání seznamu zařízení:
 
-```azurepowershell-interactive
+```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 "Content-Type: application/json" -H
 "Authorization: Bearer <Access-Token>”
@@ -108,7 +108,7 @@ Většina volání GET, POST a PUT vyžaduje tělo požadavku JSON.
 Níže uvedená ukázková žádost slouží k vytvoření zařízení (obsahuje vstupní kód JSON s textem žádosti).
 
 
-```azurepowershell-interactive
+```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  
 "accept: application/json" -H  
 "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d
@@ -326,6 +326,7 @@ Hodnoty definované systémem jsou následující:
   ]
 }
 ```
+
 Jedná se o jednorázovou instalaci a rozsah této nové scenetype je omezený na předplatné, ve kterém je nasazený projekt FarmBeats.
 
 Příklad: Chcete-li přidat SceneSource: "SlantRange", je třeba zadat ID/ExtendedType s klíčovým řetězcem: "SceneSource" vstupní datové části:

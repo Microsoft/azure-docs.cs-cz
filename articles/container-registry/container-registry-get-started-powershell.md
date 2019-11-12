@@ -1,6 +1,6 @@
 ---
-title: Rychlý Start – vytvoření privátního registru Docker v Azure – PowerShell
-description: Rychle se naučíte, jak vytvořit privátní registr kontejneru Dockeru v Azure pomocí PowerShellu.
+title: Rychlý Start – vytvoření registru-PowerShell-Azure Container Registry
+description: Rychle se naučíte, jak vytvořit privátní registr Docker v Azure Container Registry pomocí prostředí PowerShell.
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: f99b4ee6dd11a109d1c563c84debc2157cb03337
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: b337c28efc3db7d4bec4408b5da1f8a5e1d87094
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68309502"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931609"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Rychlý start: Vytvoření soukromého registru kontejnerů pomocí Azure PowerShell
+# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure PowerShell
 
 Azure Container Registry je spravovaná privátní služba registru kontejneru Dockeru, která se používá k vytváření, ukládání a obsluze imagí kontejnerů Dockeru. V tomto rychlém startu se naučíte vytvořit registr kontejneru Azure pomocí PowerShellu. Pak pomocí příkazů Docker nahrajte image kontejneru do registru a nakonec si vydejte a spusťte image z registru.
 
@@ -46,7 +46,7 @@ Až budete s Azure ověřeni, vytvořte skupinu prostředků pomocí [New-AzReso
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-## <a name="create-container-registry"></a>Vytvořit registr kontejneru
+## <a name="create-container-registry"></a>Vytvoření registru kontejneru
 
 V dalším kroku vytvořte v nové skupině prostředků registr kontejneru pomocí příkazu [New-AzContainerRegistry][New-AzContainerRegistry] .
 

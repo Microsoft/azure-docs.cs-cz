@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/17/2019
-ms.openlocfilehash: 5ae043c356559b2e675f05af3eb7eb61973eb170
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 2f59b66bacbd0105e5a543b019a5c6646e010c48
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621939"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928520"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Správa prostředků Application Insights pomocí prostředí PowerShell
 
@@ -595,7 +595,7 @@ Azure by měl nastavit prostředky v přísném pořadí. Chcete-li zajistit, ab
 ## <a name="next-steps"></a>Další kroky
 Další články o automatizaci:
 
-* [Vytvořte rychlou metodu Application Insights prostředků](powershell-script-create-resource.md) bez použití šablony.
+* [Vytvořte rychlou metodu Application Insights prostředků](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) bez použití šablony.
 * [Nastavení výstrah](powershell-alerts.md)
 * [Vytváření webových testů](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Odesílání Diagnostiky Azure do Application Insights](powershell-azure-diagnostics.md)

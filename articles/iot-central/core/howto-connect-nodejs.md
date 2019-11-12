@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 76ab6a229de14af1e3808326c62a7bdbbd188e81
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 87dbd7ab4d75150d09a8c26db50ce2e3b1a085db
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951364"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930236"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Připojení Obecné klientské aplikace k aplikaci Azure IoT Central (Node. js)
 
@@ -36,11 +36,11 @@ V aplikaci Azure IoT Central budete potřebovat šablonu zařízení s následuj
 
 Přidejte na stránku **měření** následující telemetrii:
 
-| Zobrazovaný název | Název pole  | Jednotky | Minimum | Max. | Desetinná místa |
+| Zobrazovaný název | Název pole  | Jednotky | Minimum | Maximum | Desetinná místa |
 | ------------ | ----------- | ----- | --- | --- | -------------- |
-| Teplota  | teplota | F     | 60  | 110 | 0              |
+| Teplota  | Teplota | F     | 60  | 110 | 0              |
 | Vlhkost     | vlhkost    | %     | 0   | 100 | 0              |
-| Citlivost     | tlak    | kPa   | 80  | 110 | 0              |
+| Citlivost     | pressure    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
 > Datový typ měření telemetrie je číslo s plovoucí desetinnou čárkou.
@@ -53,7 +53,7 @@ Na stránce **měření** přidejte následující stav:
 
 | Zobrazovaný název | Název pole  | Hodnota 1 | Zobrazovaný název | Hodnota 2 | Zobrazovaný název |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
-| Režim ventilátoru     | fanmode     | 1\. místo       | Spuštěno      | 0       | Zastaveno      |
+| Režim ventilátoru     | fanmode     | 1       | Spuštěno      | 0       | Zastaveno      |
 
 > [!NOTE]
 > Datový typ měření stavu je řetězec.
@@ -64,7 +64,7 @@ Zadejte názvy polí přesně tak, jak jsou uvedeny v tabulce, do šablony zař�
 
 Na stránce **měření** přidejte následující událost:
 
-| Zobrazovaný název | Název pole  | Závažnost |
+| Zobrazovaný název | Název pole  | Severity |
 | ------------ | ----------- | -------- |
 | Přehřívání  | overheat    | Chyba    |
 
@@ -98,7 +98,7 @@ Zadejte názvy polí přesně tak, jak je uvedeno v tabulce, do šablony zaříz
 
 Na stránce **Nastavení** přidejte následující **číslo** nastavení:
 
-| Zobrazovaný název    | Název pole     | Jednotky | desetinných míst | Minimum | Max.  | Pořizovací |
+| Zobrazovaný název    | Název pole     | Jednotky | desetinných míst | Minimum | Maximum  | Pořizovací |
 | --------------- | -------------- | ----- | -------- | --- | ---- | ------- |
 | Rychlost ventilátoru       | fanSpeed       | /min   | 0        | 0   | 3000 | 0       |
 | Nastavená teplota | setTemperature | F     | 0        | 20  | 200  | 80      |

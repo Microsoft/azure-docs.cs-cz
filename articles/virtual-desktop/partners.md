@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 11/05/2019
 ms.author: helohr
-ms.openlocfilehash: b62351f1d99ef54d2416a2427264aea225afc5a8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: dc93480807f34a79ee02f628f7b6f090c7efa428
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171601"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931706"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integrace s partnery virtuálních počítačů s Windows
 
@@ -22,9 +22,9 @@ V tomto článku jsou uvedeni partneři virtuálního klienta Windows.
 
 ![Logo Citrix](./media/partners/citrix.png)
 
-Citrix je schválený poskytovatel, který nabízí firmám centralizované hybridní správu virtuálních aplikací a úloh stolních počítačů v Azure, a to vedle sebe s místními nasazeními. Pracovní prostor Citrix s virtuálními aplikacemi a pracovními plochami umožňuje uživatelům přístup k aplikacím a plochám z libovolného zařízení, který využívá pokročilý protokol Citrix HDX k poskytování možností vysokého rozsahu z libovolného místa.
+Citrix je schváleným poskytovatelem, který nabízí podnikům centralizovanou hybridní správu virtuálních aplikací a úloh stolních počítačů v Azure vedle sebe s místními nasazeními. Pracovní prostor Citrix s virtuálními aplikacemi a pracovními plochami umožňuje uživatelům přístup k aplikacím a plochám z libovolného zařízení, který využívá pokročilý protokol Citrix HDX k poskytování možností vysokého rozsahu z libovolného místa.
 
-Citrix rozšiřuje hodnotu virtuální plochy Windows pomocí robustních podnikových nástrojů, aby vylepšila hustotu a výkon uživatelů, zřídila zatížení na vyžádání a zjednodušila správu obrázků a aplikací. Může optimalizovat náklady pomocí nástrojů inteligentního škálování, zatímco zajišťuje nenáročné prostředí koncového uživatele, které bylo testováno proti nezkušeným aplikacím v celém odvětví.
+Citrix rozšiřuje hodnotu virtuální plochy Windows pomocí robustních podnikových nástrojů, aby vylepšila hustotu a výkon uživatelů, zřídila zatížení na vyžádání a zjednodušila správu obrázků a aplikací. Může optimalizovat náklady pomocí nástrojů inteligentního škálování a zároveň doručovat nenáročné uživatelské prostředí, které je testováno proti nejpohodlnější aplikaci v rámci odvětví. Spravované desktopy Citrix navíc představují desktopový program s podporou virtuálních počítačů s Windows, který poskytuje jednoduché cloudové řešení správy pro doručování virtuálních aplikací a stolních počítačů do libovolného zařízení.
 
 - [Přejít na web partnera](https://more.citrix.com/wvd).
 
@@ -44,7 +44,7 @@ V rámci schváleného poskytovatele se výhody virtuálního klienta Windows ro
 
 ![Logo CloudJumper](./media/partners/cloudjumper.png)
 
-CloudJumper je poskytovatel služeb s přidanými hodnotami pro virtuální počítače s Windows, který vybaví poskytovatele řešení a podnik IT se softwarem, aby komplexní zřizování a správu prostředí virtuálních počítačů s Windows. Pomocí CloudJumper softwaru může spravovat každou vrstvu nasazení virtuálních klientů Windows. Doručování úloh a aplikací je automatizované, což zajišťuje, aby uživatelé mohli rychle získat přístup k jejich ploše kdekoli na jakémkoli zařízení.
+CloudJumper je poskytovatel služeb s přidanými hodnotami pro virtuální počítače s Windows, který vybaví poskytovatele řešení a podnik IT se softwarem pro zřizování a správu prostředí virtuálních ploch Windows komplexní. Pomocí CloudJumper softwaru může spravovat každou vrstvu nasazení virtuálních klientů Windows. Doručování úloh a aplikací je automatizované, což zajišťuje, aby uživatelé mohli rychle získat přístup k jejich ploše kdekoli na jakémkoli zařízení.
 
 CloudJumper software, sada cloudových pracovních prostorových aplikací rozšiřuje hodnotu virtuálních klientů Windows tím, že zjednodušuje úlohy nasazení a průběžné správy v Azure. Z jednoho podokna ze skla může zřídit, spravovat a optimalizovat infrastrukturu pro pracovní prostory uživatelů. CloudJumper je jednoduchý skript spouštějící modul, který se integruje s platformami služeb IT za účelem automatizace úloh zapojených do zřizování virtuálních klientů Windows. Kromě toho rozhraní API CloudJumper umožňují další rozšiřitelnost a integraci s jinými podnikovými systémy, jako je ServiceNow a BMC připravené.
 
@@ -55,22 +55,32 @@ CloudJumper software, sada cloudových pracovních prostorových aplikací rozš
 
 ![Logo ControlUp](./media/partners/controlup.png)
 
-ControlUp je poskytovatel služeb s přidanými hodnotami pro virtuální počítače s Windows, který umožňuje IT týmům monitorovat, řešit potíže, analyzovat a napravovat problémy v místních, hybridních cloudových a cloudových infrastruktuře v reálném čase z jediné konzoly. Analytická a řídicí platforma ControlUp také umožňuje proaktivní automatizaci oprav pro rychle rostoucí sadu případů použití.
+ControlUp je poskytovatel služeb s přidanou hodnotou pro virtuální počítače s Windows, který umožňuje týmům IT v reálném čase monitorovat, řešit, analyzovat a napravovat problémy v místních, hybridních cloudových a cloudových infrastruktuře v reálném čase z jediné konzoly. Analytická a řídicí platforma ControlUp také umožňuje proaktivní automatizaci oprav pro rychle rostoucí sadu případů použití.
 
 Při použití s virtuálním počítačem s Windows poskytuje ControlUp další možnosti pro optimalizaci prostředí virtuálních počítačů s Windows a prostředí koncových uživatelů. Z konzoly ControlUp získá přehled prostředí koncových uživatelů a efektivně monitoruje a řeší problémy s výkonem. Intuitivní řídicí panel poskytuje přehledy a analýzy pro nasazení virtuálních ploch a také možnosti pro automatizované generování sestav obohacených pomocí srovnávacích standardů komunity. ControlUp může spravovat více zdrojů dat a typů a organizovat je do vysoce výkonných datových sad agregovaných napříč výpočetními, úložnými a virtuálními infrastrukturami virtuálních počítačů s Windows a umožňuje tak detailní viditelnost z jednoho podokna skla.
 
-- [Podívejte se na stručné řešení připojení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
+- [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
 - [Přejít na web partnera](https://www.controlup.com/solutions/ms_wvd/).
 
 ## <a name="devicetrust"></a>deviceTRUST
 
 ![Logo deviceTRUST](./media/partners/devicetrust.png)
 
-deviceTRUST je poskytovatel služeb s přidanou hodnotou pro virtuální počítače s Windows, který contextualizes podnikovým podnikem a umožňuje uživatelům volnost přístupu ke svému virtuálnímu počítači s Windows z libovolného místa na libovolném zařízení, a to prostřednictvím libovolné sítě. oddělení informací a ovládacích prvků, které potřebují ke splnění požadavků zásad správného řízení. 
+deviceTRUST je poskytovatel služeb s hodnotou "Windows Virtual Desktop-added", který contextualizes podnikovou firmu. Umožňuje uživatelům volnost přístupu ke svému virtuálnímu počítači s Windows z libovolného místa na jakémkoli zařízení, přes jakoukoli síť a zároveň jim poskytnout informace a kontrolu, které potřebují ke splnění svých požadavků na zásady správného řízení. 
 
 deviceTRUST rozšiřuje hodnotu virtuálního klienta Windows s jejich kontextovou technologií zabezpečení. deviceTRUST umožňuje podmíněný přístup pro zabezpečený přístup k virtuálním plochám Windows, podmíněný přístup k aplikacím v rámci virtuálních ploch Windows a k aplikování podmíněné zásady virtuálních počítačů s Windows bez jakékoli další infrastruktury. Použití deviceTRUST umožňuje mobilní a flexibilní pracovní prostor, který splňuje všechny požadavky na zabezpečení, dodržování předpisů a předpisy. 
 
 - [Přejít na web partnera](https://devicetrust.com/wvd).
+
+## <a name="igel"></a>IGEL
+
+![Logo IGEL](./media/partners/igel.png)
+
+IGEL je schválený a ověřený partner služby Microsoft Azure a Windows Virtual Desktop. IGEL nabízí IGEL operační systém, což je další – gen hraniční operační systém pro cloudové pracovní prostory, které slouží k přístupu k virtuálním aplikacím, plochám a pracovním prostorům cloudu z jednoho nebo několika uživatelských zařízení s odlehčeným, jednoduchým a zabezpečeným koncovým bodem se systémem Linux. Softwarové řešení nezávislé na platformě, IGEL operační systém a jeho serverový software pro správu a řízení, IGEL Universal Management Suite (UMS), tvoří řešení pro správu a řízení koncového bodu, které podnikům uvolňuje plné využití Azure cloudové instance a virtuální desktopové plochy Windows, včetně úsporného virtuálního počítače s Windows pro více relací, při snižování hardwarových a provozních zařízení a nákladů na provoz koncových bodů.
+ 
+IGEL OS podporuje všechny oblíbené virtuální aplikace, stolní počítače a klientské protokoly v cloudovém pracovním prostoru od Citrix, Microsoftu a VMware. Zahrnuje integrované technologie od partnerů periferních zařízení, rozhraní a protokolů 85, které organizacím umožňují rychle přijímat služby Windows Virtual Desktop Services do vlastních jedinečných uživatelských prostředí. IGEL OS je modulární koncový bod, který je jen pro čtení, který pomáhá chránit před manipulací. Teď také obsahuje úplný "řetězec důvěryhodnosti", který ověřuje integritu všech klíčových hlavních procesů spuštěných v koncovém bodu, od hardwaru koncového bodu (některé vybrané modely) nebo procesu UEFI až po služby Azure Cloud a Windows Virtual Desktop. S operačním systémem IGEL se podniky můžou přihlásit k odběru virtuálního klienta Windows z cloudu Azure s plnou jistotou v rámci integrity, zabezpečení a spravovatelnosti svých zařízení koncových bodů uživatelů.
+
+- [Přejít na web partnera.](https://www.igel.com/igel-os-universal-desktop-operating-system/)
 
 ## <a name="ivanti"></a>Ivanti
 
@@ -137,7 +147,7 @@ Hlavní případy použití pro PolicyPak jsou odebrání oprávnění místníh
 
 ![Logo PrinterLogic](./media/partners/printerlogic.png)
 
-PrinterLogic je platforma pro poskytovatele služeb s přidanou hodnotou pro virtuální počítače s Windows, která umožňuje odborníkům v oblasti IT eliminovat všechny tiskové servery a doručovat vysoce dostupnou tiskovou infrastrukturu bez serveru. PrinterLogic rozšiřuje hodnotu virtuální plochy Windows a Azure tím, že usnadňuje centrální správu a nasazování objektů tiskáren na všechny tiskárny nebo operační systémy Endpoint.   
+PrinterLogic je platforma pro poskytovatele služeb s přidanou hodnotou pro virtuální počítače s Windows, která pomáhá odborníkům v oblasti IT eliminovat všechny tiskové servery a doručovat vysoce dostupnou tiskovou infrastrukturu bez serveru. PrinterLogic rozšiřuje hodnotu virtuálních počítačů s Windows a Azure tím, že usnadňuje správu centrálně a nasazují objekty tiskárny na všechny tiskárny nebo operační systémy koncových bodů.   
 
 PrinterLogic platforma, která je k dispozici jako SaaS nebo jako webový zásobník ve vlastním privátním cloudu, zajišťuje, aby uživatelé měli vždy správné tiskárny, které potřebují ve svých virtuálních relacích na základě ID uživatele, názvu zařízení nebo umístění. Tato funkce je doplněná celou sadou funkcí správy tiskáren Enterprise, jako je sledování tisku, vytváření sestav, mobilní tisk a tisk přes bezpečnostní vydání. 
 
@@ -147,9 +157,9 @@ PrinterLogic platforma, která je k dispozici jako SaaS nebo jako webový zásob
 
 ![Logo Numecent](./media/partners/numecent.png)
 
-Numecent je poskytovatel služeb s přidanou hodnotou pro virtuální počítače s Windows, který významně snižuje celkové provozní náklady díky rychlé registraci a migraci složitých nebo nekompatibilních aplikací pro Windows v prostředích virtuálních počítačů s Windows. Numecent také minimalizuje množství konfiguračních uživatelů, které musí dělat, zmenšuje aktualizace aplikací a zjednodušuje složité procesy. Vzhledem k tomu, že Numecent Cloudpaging podporuje více aplikací bez problémů s jakýmkoli jiným nástrojem pro doručování aplikací, zkracuje čas a pracovní zatížení v prostředích s různou sadou aplikací. 
+Numecent je poskytovatel služeb s přidanou hodnotou pro virtuální počítače s Windows, který významně snižuje celkové provozní náklady díky rychlé registraci a migraci složitých nebo nekompatibilních aplikací pro Windows v prostředích virtuálních počítačů s Windows. Numecent také minimalizuje množství konfigurace, které uživatelé potřebují, zmenšuje aktualizace aplikací a zjednodušuje složité procesy. Vzhledem k tomu, že Numecent Cloudpaging podporuje více aplikací bez problémů s jakýmkoli jiným nástrojem pro doručování aplikací, zkracuje čas a pracovní zatížení v prostředích s různou sadou aplikací. 
 
-Při použití s virtuálním počítačem s Windows Cloudpaging dále snižuje náklady tím, že v nasazení dokončí životní cyklus softwarového assetu pro upgrade, měření a odebírání aplikací. Cloudpaging zjednodušuje správu imagí tím, že je v reálném čase pro nasazení virtuálních klientů Windows dynamicky zřizovat aplikace podle potřeby. Cloudpaging pomáhá aplikacím běžet bez nutnosti správy nebo zásahu prostřednictvím pravidelných aktualizací Windows 10. Cloudpaging také snižuje náklady na náklad na nákladné aplikace tím, že umožňuje efektivnější nasazení a používání těchto aplikací. 
+Při použití s virtuálním počítačem s Windows Cloudpaging dále snižuje náklady tím, že v nasazení dokončí životní cyklus softwarového assetu pro upgrade, měření a odebírání aplikací. Cloudpaging zjednodušuje správu imagí tím, že se v reálném čase dynamicky zřídí aplikace podle potřeby pro nasazení virtuálních ploch Windows. Cloudpaging pomáhá aplikacím běžet bez nutnosti správy nebo zásahu prostřednictvím pravidelných aktualizací Windows 10. Cloudpaging také snižuje náklady na náklad na nákladné aplikace tím, že umožňuje efektivnější nasazení a používání těchto aplikací. 
 
 - [Přejít na web partnera](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
 

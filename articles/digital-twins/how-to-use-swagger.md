@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 06cbdf6fbba89b6666e6fe3162fd591e93dffecd
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 6a99693c3f88e94c093910da6ba4a305c26fe39d
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958874"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931345"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Referenční dokumentace k sadě Swagger pro Azure Digital revlákens
 
@@ -42,15 +42,15 @@ Automaticky vygenerovaný referenční materiál Swagger poskytuje rychlý přeh
 
 Stručné shrnutí popisují rozhraní API.
 
-[@no__t – 1Swagger nahoru](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
+[![Swagger Top](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
 
 Jsou uvedeny také modely objektů rozhraní API pro správu.
 
-[modely @no__t – 1Swagger](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
+[![modely Swagger](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
 
 Každý uvedený objektový model můžete vybrat pro podrobnější souhrn klíčových atributů.
 
-[@no__t – model 1Swagger](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
+[![model Swagger](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
 
 Vygenerované objektové modely Swagger jsou vhodné k zobrazení všech dostupných [objektů a rozhraní API](./concepts-objectmodel-spatialgraph.md)pro Azure Digital revlákens. Vývojáři můžou tento prostředek použít při vytváření řešení pro digitální vlákna Azure.
 
@@ -64,7 +64,7 @@ Každý uvedený koncový bod obsahuje také požadované informace o požadavku
 * Požadované datové typy parametrů.
 * Metoda HTTP pro přístup k prostředku.
 
-[@no__t – koncové body 1Swagger](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
+[![koncové body Swagger](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
 
 Pokud chcete zobrazit podrobnější přehled, vyberte jednotlivé prostředky.
 
@@ -74,11 +74,11 @@ Jednou z výkonných funkcí Swagger je schopnost otestovat koncový bod rozhran
 
 Po výběru konkrétního koncového bodu se zobrazí výzva **vyzkoušet si ho**.
 
-[@no__t – 1Swagger try](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
+[pokus o ![Swagger](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
 
 Rozbalením této části zobrazíte vstupní pole pro každý povinný a volitelný parametr. Zadejte správné hodnoty a vyberte **provést**.
 
-[@no__t – pokus o 1Swagger](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
+[pokus o ![Swagger](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
 
 Po provedení testu můžete ověřit data odpovědi.
 
@@ -86,7 +86,7 @@ Po provedení testu můžete ověřit data odpovědi.
 
 Každý uvedený koncový bod obsahuje také data textu odpovědi pro ověření vývoje a testů. Tyto příklady zahrnují stavové kódy a JSON, které chcete zobrazit pro úspěšné požadavky HTTP.
 
-[@no__t – odpověď 1Swagger](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
+[![odpověď Swagger](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
 
 Příklady také obsahují chybové kódy, které vám pomůžou ladit nebo vylepšit selhání testů.
 
@@ -95,14 +95,14 @@ Příklady také obsahují chybové kódy, které vám pomůžou ladit nebo vyle
 > [!NOTE]
 > * Objekt zabezpečení uživatele, který vytvořil prostředek digitálních vláken Azure, bude mít přiřazenou roli správce prostoru a bude moct vytvořit další přiřazení rolí pro ostatní uživatele. Tito uživatelé a jejich role mohou být autorizováni pro volání rozhraní API.
 
-1. Postupujte podle kroků v [tomto rychlém](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) startu nebo si [Zaregistrujte aplikaci Azure Digital revlákens s Azure Active Directory starším](./how-to-use-legacy-aad.md) a vytvořte a nakonfigurujte aplikaci Azure AD. Alternativně můžete znovu použít stávající registraci aplikace.
+1. Pokud chcete vytvořit a nakonfigurovat aplikaci Azure AD, postupujte podle kroků v [tomto rychlém](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) startu. Alternativně můžete znovu použít stávající registraci aplikace.
 
 1. Do registrace aplikace přidejte následující adresu URL odpovědi:
 
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
     ```
-    | Name  | Nahradit | Příklad |
+    | Název  | Nahradit hodnotou | Příklad |
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | Adresa URL vašeho REST API pro správu se našla na portálu.  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
@@ -112,15 +112,15 @@ Po dokončení registrace Azure Active Directory:
 
 1. Na stránce Swagger vyberte tlačítko **autorizovat** .
 
-    [@no__t – 1Select tlačítko pro autorizaci Swagger](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
+    [![vyberte tlačítko pro autorizaci Swagger.](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
 1. Vložte ID aplikace do pole **client_id** .
 
-    [pole ![Swagger client_id](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
+    [![pole client_id Swagger](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
 
 1. Pak budete přesměrováni na následující modální pole úspěch.
 
-    [@no__t – modální 1Swagger přesměrování](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
+    [![modálního přesměrování Swagger](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
 
 Další informace o interaktivním testování žádostí chráněných přes OAuth 2,0 najdete v [oficiální dokumentaci](https://swagger.io/docs/specification/authentication/oauth2/).
 

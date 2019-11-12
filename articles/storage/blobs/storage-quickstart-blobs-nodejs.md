@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 28a75158b161e680f857b986bcb754f1f99e8fab
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 90ef1be4366205b1f655a0b93619a897d6d1f25d
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825301"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929499"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V12 pro JavaScript
 
@@ -118,7 +118,7 @@ Z adresáře projektu:
 
 Když ukázková aplikace odešle požadavek na Azure Storage, musí být ověřena. K autorizaci žádosti přidejte do aplikace přihlašovací údaje účtu úložiště jako připojovací řetězec. Přihlašovací údaje účtu úložiště zobrazíte pomocí následujícího postupu:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 2. Vyhledejte svůj účet úložiště.
 3. V části **Nastavení** v přehledu účtu úložiště vyberte **Přístupové klíče**. Tady se zobrazí přístupové klíče vašeho účtu a úplný připojovací řetězec pro jednotlivé klíče.
 4. V části **key1** vyhledejte hodnotu **Připojovací řetězec** a výběrem tlačítka **Kopírovat** zkopírujte připojovací řetězec. V dalším kroku přidáte hodnotu připojovacího řetězce do proměnné prostředí.
@@ -203,7 +203,7 @@ const CONNECT_STR = process.env.CONNECT_STR;
 Určete název nového kontejneru. Následující kód připojí hodnotu UUID k názvu kontejneru, aby bylo zajištěno, že je jedinečný.
 
 > [!IMPORTANT]
-> Názvy kontejnerů musí obsahovat jen malá písmena. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+> Názvy kontejnerů musí být malými písmeny. Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
 Vytvořte instanci třídy [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient) voláním metody [fromConnectionString](/javascript/api/@azure/storage-blob/blobserviceclient#fromconnectionstring-string--newpipelineoptions-) . Pak zavolejte metodu [getContainerClient](/javascript/api/@azure/storage-blob/blobserviceclient#getcontainerclient-string-) a získejte odkaz na kontejner. Nakonec voláním metody [Create](/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) vytvořte kontejner ve svém účtu úložiště.
 
@@ -351,7 +351,7 @@ V tomto rychlém startu jste zjistili, jak nahrávat, stahovat a vypisovat objek
 Pokud chcete zobrazit ukázkové aplikace služby Blob Storage, pokračujte:
 
 > [!div class="nextstepaction"]
-> [Ukázky V12 JavaScriptu pro Azure Blob Storage SDK](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/azure-storage-blob/samples)
+> [Ukázky V12 JavaScriptu pro Azure Blob Storage SDK](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
 
 * Další informace najdete v tématu [sada Azure SDK pro JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/README.md).
 * Kurzy, ukázky, rychlé starty a další dokumentace najdete v [dokumentaci k sadě Azure SDK pro JavaScript](/azure/javascript/).

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: spelluru
-ms.openlocfilehash: d1dd059f1a6f9ce96b27d4fe1f214978dfc06a8f
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: a4ba4206c01e492f2ae980c5806de1e72c7051c3
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815989"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931159"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Použití spravovaných identit Azure k nasazení prostředí v testovacím prostředí 
 Jako vlastník testovacího prostředí můžete pomocí spravované identity nasadit prostředí v testovacím prostředí. Tato funkce je užitečná ve scénářích, kde prostředí obsahuje nebo obsahuje odkazy na prostředky Azure, jako jsou například trezory klíčů, Galerie sdílených imagí a sítě, které jsou pro skupinu prostředků tohoto prostředí externí. Umožňuje vytváření prostředí izolovaného prostoru, které není omezené na skupinu prostředků tohoto prostředí.
@@ -24,7 +24,7 @@ Jako vlastník testovacího prostředí můžete pomocí spravované identity na
 > [!NOTE]
 > V současné době je v rámci testovacího prostředí podporována jediná uživatelsky přiřazená identita. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - [Umožňuje vytvořit, vypsat, odstranit nebo přiřadit roli k spravované identitě přiřazené uživatelem pomocí Azure Portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). 
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
@@ -54,7 +54,7 @@ Pokud chcete změnit uživatelsky spravovanou identitu přiřazenou k testovací
 1. Po vytvoření identity si poznamenejte ID prostředku této identity. Měl by vypadat jako v následující ukázce: 
 
     `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`.
-1. Proveďte metodu PUT protokolu HTTPS pro přidání nového prostředku @no__t 0 do testovacího prostředí podobně jako v následujícím příkladu. Prostředek spouštěče služeb je prostředek proxy serveru pro správu a řízení spravovaných identit v DevTest Labs. Název spouštěče služeb může být libovolný platný název, ale doporučujeme použít název spravovaného prostředku identity. 
+1. Proveďte metodu PUT protokolu HTTPS pro přidání nového prostředku `ServiceRunner` do testovacího prostředí podobně jako v následujícím příkladu. Prostředek spouštěče služeb je prostředek proxy serveru pro správu a řízení spravovaných identit v DevTest Labs. Název spouštěče služeb může být libovolný platný název, ale doporučujeme použít název spravovaného prostředku identity. 
  
     ```json
     PUT https://management.azure.com/subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Devtestlab/labs/{yourlabname}/serviceRunners/{serviceRunnerName}
@@ -67,6 +67,10 @@ Pokud chcete změnit uživatelsky spravovanou identitu přiřazenou k testovací
                 "[userAssignedIdentityResourceId]":{}
             }
         }
+        "properties":{
+            "identityUsageType":"Environment"
+                     }
+          
     }
     ```
  
@@ -83,6 +87,9 @@ Pokud chcete změnit uživatelsky spravovanou identitu přiřazenou k testovací
                 "/subscriptions/0000000000-0000-0000-0000-000000000000000/resourceGroups/exampleRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuseridentity":{}
             }
         }
+        "properties":{
+            "identityUsageType":"Environment"
+                     }
     }
     ```
  

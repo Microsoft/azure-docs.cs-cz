@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 59f2db8ec4dd8affe1c87ca2bb85a7ff7b8a4d7c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b073c4244d2a7abc7c2c066c3fad036f0caa5faa
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485390"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929543"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Datové vědy s Data Science Virtual Machine pro Linux v Azure
 
@@ -24,14 +24,14 @@ V tomto návodu se dozvíte, jak dokončit několik běžných úloh pro datové
 
 V tomto návodu analyzujeme datovou sadu [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) . Spambase je sada e-mailů, které jsou označené buď spam, nebo HAM (nikoli spam). Spambase také obsahuje statistiku o obsahu e-mailů. V tomto návodu budeme mluvit o statistice později.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct použít DSVM pro Linux, musíte mít následující požadavky:
 
 * **Předplatné Azure**. Pokud chcete získat předplatné Azure, přečtěte si téma [Vytvoření bezplatného účtu Azure ještě dnes](https://azure.microsoft.com/free/).
 * [**Data Science Virtual Machine Linux**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Informace o zřizování virtuálního počítače najdete v tématu [zřízení Data Science Virtual Machine pro Linux](linux-dsvm-intro.md).
 * V počítači je nainstalovaná [**X2Go**](https://wiki.x2go.org/doku.php) s otevřenou relací desktop Xfce. Další informace najdete v tématu [instalace a konfigurace klienta X2Go](linux-dsvm-intro.md#x2go).
-* Chcete-li plynule přepínat, ve webovém prohlížeči DSVM na webu Firefox přepněte příznak `gfx.xrender.enabled` v `about:config`. [Další informace](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Zvažte také nastavení `mousewheel.enable_pixel_scrolling` `False`. [Další informace](https://support.mozilla.org/questions/981140).
+* Chcete-li plynule přepínat, ve webovém prohlížeči DSVM na webu Firefox přepněte příznak `gfx.xrender.enabled` v `about:config`. [Další informace](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/) Zvažte také nastavení `mousewheel.enable_pixel_scrolling` `False`. [Další informace](https://support.mozilla.org/questions/981140)
 * **Účet Azure Machine Learning**. Pokud ho ještě nemáte, zaregistrujte si nový účet na [domovské stránce Azure Machine Learning](https://azure.microsoft.com/free/services/machine-learning//).
 
 ## <a name="download-the-spambase-dataset"></a>Stáhnout datovou sadu spambase
@@ -58,8 +58,8 @@ Pak zřetězení dvou souborů dohromady:
 
 Datová sada obsahuje několik typů statistik pro každý e-mail:
 
-* Sloupce jako **word\_frekvence\_* Word*** označují procento slov v e-mailu, které odpovídají *Wordu*. Pokud je například **word\_frekvence\_** **1**, pak *se vytvořilo*1% všech slov v e-mailu.
-* Sloupce jako **char\_frekvence\_* char*** označují procento všech znaků v e-mailu, které jsou typu *char*.
+* Sloupce jako **word\_frekvence\__Word_**  označují procento slov v e-mailu, které odpovídají *Wordu*. Pokud je například **word\_frekvence\_** **1**, pak *se vytvořilo*1% všech slov v e-mailu.
+* Sloupce jako **char\_frekvence\__char_**  označují procento všech znaků v e-mailu, které jsou typu *char*.
 * **velká\_spustit\_délku\_nejdelší** je nejdelší délka posloupnosti velkých písmen.
 * **kapitálový\_run\_délka\_průměr** je průměrná délka všech velkých písmen.
 * **kapitálový\_spustit\_délku\_celková** délka všech sekvencí velkých písmen.
@@ -381,7 +381,7 @@ Prozkoumat data:
 Můžete také použít kartu **prozkoumat** k vygenerování přehlednéch ploch. Vykreslení histogramu dat:
 
 1. Vyberte **distribuce**.
-1. V případě **word_freq_remove** a **word_freq_you**vyberte **histogram**.
+1. Pro **word_freq_remove** a **word_freq_you**vyberte **histogram**.
 1. Vyberte **Provést**. V jednom okně grafu _by se měla_ zobrazit jak zobrazení hustoty, kde je jasné, že se v e-mailech zdá mnohem častěji, než je třeba _Odebrat_.
 
 Tato **korelace** je také zajímavá. Vytvoření grafu:

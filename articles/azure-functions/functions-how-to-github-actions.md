@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 483ac9380fa8d58f294112cb6c80e0393fa01589
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 486033ef4120d721458add7f23cdf9b78a44a388
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028961"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928355"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Průběžné doručování pomocí akce GitHubu
 
@@ -23,7 +23,7 @@ ms.locfileid: "72028961"
 
 [Pracovní postup](https://help.github.com/articles/about-github-actions#workflow) v akcích GitHub je automatizovaný proces, který definujete v úložišti GitHub. Tento proces oznamuje GitHubu, jak sestavit a nasadit projekt Function App na GitHubu. 
 
-Pracovní postup je definovaný souborem YAML (. yml) v cestě `/.github/workflows/` v úložišti. Tato definice obsahuje různé kroky a parametry, které tvoří pracovní postup. 
+Pracovní postup je definovaný souborem YAML (. yml) v cestě `/.github/workflows/` ve vašem úložišti. Tato definice obsahuje různé kroky a parametry, které tvoří pracovní postup. 
 
 V případě pracovního postupu Azure Functions má soubor tři části: 
 
@@ -32,6 +32,9 @@ V případě pracovního postupu Azure Functions má soubor tři části:
 | **Ověřování** | <ol><li>Definujte instanční objekt.</li><li>Stáhnout profil publikování.</li><li>Vytvořte tajný klíč GitHubu.</li></ol>|
 | **Budování** | <ol><li>Nastavte prostředí.</li><li>Sestavte aplikaci Function App.</li></ol> |
 | **Nasazení** | <ol><li>Nasaďte aplikaci Function App.</li></ol>|
+
+> [!NOTE]
+> Pokud se rozhodnete použít profil publikování pro ověřování, nemusíte vytvářet instanční objekt.
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
@@ -42,9 +45,6 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 ```
 
 V tomto příkladu Nahraďte zástupné symboly v prostředku ID vašeho předplatného, skupiny prostředků a názvu aplikace Function App. Výstupem jsou přihlašovací údaje přiřazení role, které poskytují přístup k vaší aplikaci Function App. Zkopírujte tento objekt JSON, který můžete použít k ověření z GitHubu.
-
-> [!NOTE]
-> Pokud se rozhodnete použít profil publikování pro ověřování, nemusíte vytvářet instanční objekt.
 
 > [!IMPORTANT]
 > Je vždy dobrým zvykem udělit minimální přístup. To je důvod, proč je obor v předchozím příkladu omezený na konkrétní aplikaci Function App, a ne na celou skupinu prostředků.
@@ -59,11 +59,11 @@ Zkopírujte obsah souboru.
 
 ## <a name="configure-the-github-secret"></a>Konfigurace tajného kódu GitHubu
 
-1. V [GitHubu](https://github.com)přejděte do úložiště, vyberte **Nastavení** > **tajné klíče** > **Přidat nový tajný klíč**.
+1. V [GitHubu](https://github.com)přejděte do úložiště, vyberte **Nastavení** > **tajných** kódů > **přidejte nový tajný kód**.
 
    ![Přidat tajný kód](media/functions-how-to-github-actions/add-secret.png)
 
-1. Pokud vyberete možnost **Přidat tajný klíč**, pro **název** a kopírovaný výstup příkazu použijte **hodnotu**`AZURE_CREDENTIALS`. Pokud používáte profil publikování, jako **název** a obsah souboru pro **hodnotu**použijte `SCM_CREDENTIALS`.
+1. Pokud pak vyberete **Přidat tajný klíč**, použijte `AZURE_CREDENTIALS` pro **název** a zkopírovaný výstup příkazu pro **hodnotu**. Pokud používáte profil publikování, použijte `SCM_CREDENTIALS` pro **název** a obsah souboru pro **hodnotu**.
 
 GitHub se teď může ověřit pro vaši aplikaci Function App v Azure.
 
@@ -198,7 +198,7 @@ Následující příklady znázorňují část pracovního postupu, který vytv�
 
 ## <a name="deploy-the-function-app"></a>Nasazení aplikace funkcí
 
-Pokud chcete nasadit váš kód do aplikace Function App, budete muset použít akci `Azure/functions-action`. Tato akce má dva parametry:
+K nasazení kódu do aplikace Function App budete muset použít akci `Azure/functions-action`. Tato akce má dva parametry:
 
 |Parametr |Vysvětlení  |
 |---------|---------|
@@ -218,7 +218,7 @@ V následujícím příkladu je použita verze 1 `functions-action`:
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete zobrazit úplný pracovní postup. yaml, podívejte se na jeden ze souborů na webu [Azure Actions Workflow Samples úložiště](https://github.com/Azure/actions-workflow-samples) , které má v názvu `functionapp`. Tyto ukázky můžete použít jako výchozí bod pro pracovní postup.
+Pokud chcete zobrazit kompletní pracovní postup. yaml, podívejte se na jeden ze souborů na webu [Azure Actions Workflow Samples](https://github.com/Azure/actions-workflow-samples) , který má v názvu `functionapp`. Tyto ukázky můžete použít jako výchozí bod pro pracovní postup.
 
 > [!div class="nextstepaction"]
 > [Další informace o akcích GitHubu](https://help.github.com/en/articles/about-github-actions)

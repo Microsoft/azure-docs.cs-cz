@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 8ebd91f8f02ad7eacd8440b34a31b78f5cac5741
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c2d652b31c264d7b17fcf303564c327d09d416f9
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472615"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929133"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Použití nástroje pro vyrovnávání zatížení Standard SKU ve službě Azure Kubernetes (AKS)
 
@@ -64,7 +64,7 @@ az aks update \
 
 Výše uvedený příklad nastaví počet spravovaných odchozích veřejných IP adres na *2* pro cluster *myAKSCluster* v *myResourceGroup*. 
 
-K nastavení počátečního počtu spravovaných odchozích veřejných IP adres při vytváření clusteru pomocí parametru `--load-balancer-managed-outbound-ip-count` a jeho nastavení na požadovanou hodnotu můžete použít taky parametr *služby Vyrovnávání zatížení – spravovaná IP-Count* . Výchozí počet spravovaných odchozích veřejných IP adres je 1.
+K nastavení počátečního počtu spravovaných odchozích veřejných IP adres při vytváření clusteru pomocí parametru `--load-balancer-managed-outbound-ip-count` a jeho nastavení na požadovanou hodnotu můžete použít taky parametr *Managed-IP-Count nástroje pro vyrovnávání zatížení* . Výchozí počet spravovaných odchozích veřejných IP adres je 1.
 
 ## <a name="provide-your-own-public-ips-or-prefixes-for-egress"></a>Poskytněte vlastní veřejné IP adresy nebo předpony pro odchozí přenosy
 
@@ -148,6 +148,25 @@ az aks create \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
 
+## <a name="show-the-outbound-rule-for-your-load-balancer"></a>Zobrazit odchozí pravidlo pro nástroj pro vyrovnávání zatížení
+
+Pokud chcete zobrazit odchozí pravidlo vytvořené v nástroji pro vyrovnávání zatížení, použijte příkaz [AZ Network Outbound-rule list][az-network-lb-outbound-rule-list] a zadejte skupinu prostředků uzlu clusteru AKS:
+
+```azurecli-interactive
+NODE_RG=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+az network lb outbound-rule list --resource-group $NODE_RG --lb-name kubernetes -o table
+```
+
+Předchozí příkazy zobrazí seznam odchozích pravidel pro nástroj pro vyrovnávání zatížení, například:
+
+```console
+AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name             Protocol    ProvisioningState    ResourceGroup
+------------------------  ----------------  ----------------------  ---------------  ----------  -------------------  -------------
+0                         True              30                      aksOutboundRule  All         Succeeded            MC_myResourceGroup_myAKSCluster_eastus  
+```
+
+V příkladu výstupu je *AllocatedOutboundPorts* 0. Hodnota pro *AllocatedOutboundPorts* znamená, že se přidělení portu SNAT vrátí na automatické přiřazení na základě velikosti fondu back-endu. Další podrobnosti najdete v tématu [Load Balancer odchozích pravidel][azure-lb-outbound-rules] a [odchozích připojení v Azure][azure-lb-outbound-connections] .
+
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o službách Kubernetes Services najdete v [dokumentaci ke službám Kubernetes][kubernetes-services].
@@ -176,11 +195,14 @@ Další informace o službách Kubernetes Services najdete v [dokumentaci ke slu
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-group-create]: /cli/azure/group#az-group-create
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[az-network-lb-outbound-rule-list]: /cli/azure/network/lb/outbound-rule?view=azure-cli-latest#az-network-lb-outbound-rule-list
 [az-network-public-ip-show]: /cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-show
 [az-network-public-ip-prefix-show]: /cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [azure-lb]: ../load-balancer/load-balancer-overview.md
 [azure-lb-comparison]: ../load-balancer/load-balancer-overview.md#skus
+[azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-rules-overview.md#snatports
+[azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#snat
 [install-azure-cli]: /cli/azure/install-azure-cli
 [internal-lb-yaml]: internal-lb.md#create-an-internal-load-balancer
 [kubernetes-concepts]: concepts-clusters-workloads.md

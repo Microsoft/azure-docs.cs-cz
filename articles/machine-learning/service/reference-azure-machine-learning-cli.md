@@ -1,7 +1,7 @@
 ---
-title: Rozšíření pro Machine Learning CLI
+title: Rozšíření CLI
 titleSuffix: Azure Machine Learning
-description: Přečtěte si o rozšíření Azure Machine Learning CLI pro rozhraní příkazového řádku Azure CLI. Azure CLI je nástroj příkazového řádku pro různé platformy, který umožňuje pracovat s prostředky v cloudu Azure. Machine Learning rozšíření vám umožní pracovat s Azure Machine Learning.
+description: Přečtěte si o rozšíření Azure Machine Learning CLI pro rozhraní příkazového řádku Azure CLI. Azure CLI je nástroj příkazového řádku pro různé platformy, který umožňuje pracovat s prostředky v cloudu Azure. Machine Learning rozšíření vám umožní pracovat s Azure Machine Learning. Rozhraní příkazového řádku s příponou ML vytvoří a spravuje prostředky, jako je váš pracovní prostor, úložiště dat, datové sady, kanály, modely a nasazení.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 11/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 20ff7d2cb6c185f574494871a986e1bce63536ba
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e775689da93b5197d1c2f7d130466c2afc8391e4
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619958"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932079"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>Pro Azure Machine Learning použít rozšíření CLI
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

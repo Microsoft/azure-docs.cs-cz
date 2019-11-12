@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 1ec241e261a7710b7a5b92d88f147ce8d148602b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 230b79a5062262a85d3090e15ed52d67c38ed3e9
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554042"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928473"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Monitorování prostředků Azure pomocí Azure Monitor
 Pokud máte důležité aplikace a obchodní procesy spoléhající se na prostředky Azure, budete chtít tyto prostředky sledovat pro jejich dostupnost, výkon a provoz. Tento článek popisuje data monitorování vygenerovaná prostředky Azure a o tom, jak můžete pomocí funkcí Azure Monitor analyzovat tato data a upozorňovat na ně.
@@ -62,11 +62,19 @@ Prostředky v Azure generují [protokoly](../platform/data-platform-logs.md) a [
 
 
 ## <a name="configuration-requirements"></a>Požadavky na konfiguraci
+
+### <a name="configure-monitoring"></a>Konfigurace sledování
 Některá data monitorování se shromažďují automaticky, ale možná budete muset provést nějakou konfiguraci v závislosti na vašich požadavcích. V níže uvedených informacích najdete konkrétní informace pro každý typ dat monitorování.
 
 - [Metriky platforem](../platform/data-platform-metrics.md) – metriky platformy se shromažďují automaticky do [Azure monitor metrik](../platform/data-platform-metrics.md) bez nutnosti konfigurace. Vytvořte nastavení diagnostiky, které odešle položky do protokolů Azure Monitor nebo je přesměruje mimo Azure.
 - [Protokoly prostředků](../platform/resource-logs-overview.md) – protokoly prostředků se automaticky generují pomocí prostředků Azure, ale neshromažďují se bez nastavení diagnostiky.  Vytvořte nastavení diagnostiky, které odešle položky do protokolů Azure Monitor nebo je přesměruje mimo Azure.
 - [Protokol aktivit](../platform/activity-logs-overview.md) – protokol aktivit je shromažďován automaticky bez nutnosti konfigurace a může být zobrazen v Azure Portal. Vytvořte nastavení diagnostiky, které se zkopíruje do protokolů Azure Monitor nebo je předají mimo Azure.
+
+### <a name="log-analytics-workspace"></a>Pracovní prostor Log Analytics
+Shromažďování dat do protokolů Azure Monitor vyžaduje pracovní prostor Log Analytics. Můžete rychle začít monitorovat službu tím, že vytvoříte nový pracovní prostor, ale v pracovním prostoru, který shromažďuje data z jiných služeb, může dojít k hodnotě. V tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../learn/quick-create-workspace.md) najdete podrobné informace o vytváření pracovního prostoru a [návrhu nasazení Azure Monitorch protokolů](../platform/design-logs-deployment.md) , které vám pomůžou určit nejlepší návrh pracovního prostoru pro vaše požadavky. Pokud používáte existující pracovní prostor ve vaší organizaci, budete potřebovat příslušná oprávnění, jak je popsáno v tématu [Správa přístupu k datům protokolů a pracovním prostorům v Azure monitor](../platform/manage-access.md). 
+
+
+
 
 
 ## <a name="diagnostic-settings"></a>Nastavení diagnostiky
@@ -76,26 +84,33 @@ Nastavení diagnostiky definují, kam se mají odesílat protokoly prostředků 
 - [Centra událostí](../platform/resource-logs-stream-event-hubs.md) pro streamování dat do externích systémů, jako jsou systémů Siem třetích stran a další řešení Log Analytics. 
 - [Účet služby Azure Storage](../platform/resource-logs-collect-storage.md) , který je vhodný pro audit, statickou analýzu nebo zálohování.
 
-Pomocí postupu v části [Vytvoření nastavení diagnostiky Shromážděte protokoly a metriky platforem v Azure](../platform/diagnostic-settings.md) , abyste mohli vytvořit a spravovat nastavení diagnostiky prostřednictvím Azure Portal. Informace najdete v tématu [Vytvoření nastavení diagnostiky v Azure pomocí šablony Správce prostředků](../platform/diagnostic-settings-template.md) k jejich definování v šabloně a povolení kompletního monitorování prostředku při jeho vytvoření.
+Pomocí postupu v části [Vytvoření nastavení diagnostiky Shromážděte protokoly a metriky platforem v Azure](../platform/diagnostic-settings.md) , abyste mohli vytvořit a spravovat nastavení diagnostiky prostřednictvím Azure Portal. V tématu [Vytvoření nastavení diagnostiky v Azure použijte šablonu správce prostředků](../platform/diagnostic-settings-template.md) k jejich definování v šabloně a povolení kompletního monitorování prostředku při jeho vytvoření.
 
 
 ## <a name="monitoring-in-the-azure-portal"></a>Monitorování v Azure Portal
  Data monitorování pro většinu prostředků Azure můžete získat z nabídky prostředku v Azure Portal. Díky tomu budete mít přístup k datům jednoho prostředku pomocí standardních Azure Monitorch nástrojů. Některé služby Azure budou poskytovat různé možnosti, takže byste měli v dokumentaci k příslušné službě odkazovat na Další informace. Pomocí nabídky **Azure monitor** můžete analyzovat data ze všech monitorovaných prostředků. 
 
+### <a name="overview"></a>Přehled
 Mnoho služeb bude obsahovat data monitorování na stránce s **přehledem** jako rychlý přehled jejich provozu. Tato akce bude typicky založena na podmnožině metrik platforem uložených v Azure Monitorch metrik. Další možnosti monitorování budou obvykle k dispozici v části **monitorování** služeb. nabídce.
 
 ![Stránka Přehled](media/monitor-azure-resource/overview-page.png)
 
-## <a name="analyzing-metrics"></a>Analýza metrik
-Analyzujte jednotlivé metriky a korelujte několik metrik a Identifikujte korelace a trendy pomocí [Průzkumníka metrik](../platform/metrics-getting-started.md). Některé služby poskytují přizpůsobené prostředí pro práci s metrikami při otevření **metrik** z nabídky prostředků.
+
+### <a name="insights-and-solutions"></a>Přehledy a řešení 
+Některé služby budou poskytovat nástroje nad rámec standardních funkcí Azure Monitor. [Přehledy](../insights/insights-overview.md) poskytují přizpůsobené prostředí pro monitorování založené na Azure monitor datovou platformu a standardní funkce. [Řešení](../insights/solutions.md) poskytují předdefinované logiky monitorování založené na protokolech Azure monitor. 
+
+Pokud má služba Azure Monitor přehled, můžete k ní přistupovat z **monitorování** v nabídce každého prostředku. Přístup ke všem přehledům a řešením z nabídky **Azure monitor** .
+
+![Insights](media/monitor-azure-resource/insights.png)
+
+### <a name="metrics"></a>Metriky
+Analyzujte metriky v Azure Portal pomocí [Průzkumníka metrik](../platform/metrics-getting-started.md) , který je k dispozici z položky nabídky **metriky** pro většinu služeb. Tento nástroj umožňuje pracovat s jednotlivými metrikami nebo kombinovat více a identifikovat korelace a trendy. 
 
 - Základy používání Průzkumníka metrik najdete v tématu [Začínáme s Azure Průzkumník metrik](../platform/metrics-getting-started.md) .
 - V tématu [Pokročilé funkce služby Azure Průzkumník metrik](../platform/metrics-charts.md) najdete pokročilé funkce Průzkumníka metrik, jako je například použití několika metrik a použití filtrů a rozdělení.
 
 ![Metriky](media/monitor-azure-resource/metrics.png)
 
-
-## <a name="analyzing-logs"></a>Analýza protokolů
 
 ### <a name="activity-log"></a>Protokol aktivit 
 Umožňuje zobrazit položky v protokolu aktivit v Azure Portal pomocí počátečního filtru nastaveného na aktuální prostředek. Zkopírujte protokol aktivit do pracovního prostoru Log Analytics, abyste k němu měli přístup, abyste ho mohli použít v protokolových dotazech a sešitech. 
@@ -110,7 +125,6 @@ Protokoly Azure Monitor konsolidují protokoly a metriky z několika služeb a d
 
 [Log Analytics](../log-query/get-started-portal.md) vám umožní pracovat s [dotazy protokolu](../log-query/log-query-overview.md), což je výkonná funkce Azure monitor, která umožňuje provádět pokročilou analýzu dat protokolu pomocí plně funkčního dotazovacího jazyka. Otevřete Log Analytics z **protokolů** v nabídce **monitorování** pro prostředek Azure pro práci s dotazy protokolu pomocí prostředku jako [oboru dotazu](../log-query/scope.md#query-scope). To vám umožní analyzovat data napříč několika tabulkami pouze pro daný prostředek. K získání přístupu k protokolům pro všechny prostředky použijte **protokoly** z nabídky Azure monitor. 
 
-- Návod k použití Log Analytics k zápisu dotazu a práci s výsledky najdete [v tématu Začínáme s Log Analytics v Azure monitor](../log-query/get-started-portal.md) .
 - Kurz týkající se použití dotazovacího jazyka použitého k zápisu dotazů protokolu najdete v tématu Začínáme [s dotazy protokolu v Azure monitor](../log-query/get-started-queries.md) .
 - Informace o tom, jak se protokoly o prostředcích shromažďují v Azure Monitor protokolech a podrobnosti o tom, jak k nim přistupovat v dotazu, najdete v tématu [shromáždění protokolů prostředků Azure v pracovním prostoru Log Analytics v Azure monitor](../platform/resource-logs-collect-workspace.md) .
 - Vysvětlení způsobu strukturování dat protokolu prostředků v Azure Monitorch protokolech najdete v části [režim shromažďování](../platform/resource-logs-collect-workspace.md#collection-mode) .
@@ -118,6 +132,19 @@ Protokoly Azure Monitor konsolidují protokoly a metriky z několika služeb a d
 
 ![Protokoly](media/monitor-azure-resource/logs.png)
 
+## <a name="monitoring-from-command-line"></a>Monitorování z příkazového řádku
+Data monitorování shromážděná z vašeho prostředku můžete získat z příkazového řádku nebo je zahrnout do skriptu pomocí [Azure PowerShell](/powershell/azure/) nebo [rozhraní příkazového řádku Azure](/cli/azure/). 
+
+- Informace o přístupu k datům metrik z CLI najdete v tématu Referenční informace k [metrikám CLI](/cli/azure/monitor/metrics) .
+- V tématu Referenční informace o rozhraní příkazového [řádku Log Analytics](/cli/azure/ext/log-analytics/monitor/log-analytics) pro přístup k datům Azure monitor protokolů pomocí dotazu protokolu z CLI.
+- V tématu Referenční informace o [metrikách](/powershell/module/azurerm.insights/get-azurermmetric) pro přístup k datům metriky z Azure PowerShell najdete Azure PowerShell.
+- V tématu Referenční informace o [dotazech protokolu Azure PowerShell](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery) pro přístup k datům Azure monitor protokolů pomocí dotazu protokolu z Azure PowerShell.
+
+## <a name="monitoring-from-rest-api"></a>Monitorování z REST API
+Zahrňte data monitorování shromážděná z vašeho prostředku ve vlastní aplikaci pomocí REST API.
+
+- Podrobnosti o přístupu k metrikám z REST API Azure Monitor najdete v tématu [návod pro monitorování Azure REST API](../platform/rest-api-walkthrough.md) .
+- Informace o přístupu k datům Azure Monitor protokolů pomocí dotazu protokolu z Azure PowerShell najdete v tématu [Azure Log Analytics REST API](https://dev.loganalytics.io/) .
 
 ## <a name="alerts"></a>Výstrahy
 [Výstrahy](../platform/alerts-overview.md) proaktivně informují a můžou provádět akce, když se ve vašich datech monitorování zjistí důležité podmínky. Vytvoříte pravidlo upozornění, které definuje cíl výstrahy, podmínky, jestli se má vytvořit výstraha, a všechny akce, které se mají provést v reakci.
@@ -133,14 +160,7 @@ Pomocí **Upozornění** z nabídky prostředku můžete zobrazit výstrahy a sp
 - Podrobnosti o vytváření pravidel výstrah najdete v článcích o různých typech výstrah výše.
 - Podrobnosti o vytvoření skupiny akcí, která vám umožní spravovat odpovědi na výstrahy, najdete v tématu [Vytvoření a Správa skupin akcí v Azure Portal](../platform/action-groups.md) .
 
-## <a name="insights-and-solutions"></a>Přehledy a řešení 
-Některé služby budou poskytovat nástroje nad rámec standardních funkcí Azure Monitor. [Řešení](../insights/solutions.md) poskytují předdefinované logiky monitorování, které jsou postavené na standardních funkcích Azure monitor. [Přehledy](../insights/insights-overview.md) poskytují přizpůsobené prostředí pro monitorování založené na Azure monitor datovou platformu a standardní funkce.
 
-Pokud je v prostředku dostupný přehled, můžete k němu **přistupovat z přehledu** v nabídce prostředků. Přístup ke všem přehledům a řešením z nabídky Azure Monitor.
-
-- V dokumentaci monitorování pro každou službu zjistíte, jestli jsou dostupné nějaké poznatky nebo řešení.
-
-![Poznatky](media/monitor-azure-resource/insights.png)
 
 ## <a name="next-steps"></a>Další kroky
 

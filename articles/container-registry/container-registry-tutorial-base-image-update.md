@@ -1,5 +1,5 @@
 ---
-title: Kurz – automatizace sestavení imagí kontejneru při aktualizaci základní image – Azure Container Registry úlohy
+title: Kurz – spuštění image pro sestavení na základě aktualizace základního obrázku – Azure Container Registry
 description: V tomto kurzu se naučíte konfigurovat úlohu Azure Container Registry pro automatické spouštění sestavení imagí kontejneru v cloudu, když se aktualizuje základní image.
 services: container-registry
 author: dlepow
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 6b9a74ee6530d8fc195490b0f1414e6348e855f6
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 1beb66d8491b7dac84e9531558f8967e22086575
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743594"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931689"
 ---
-# <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Kurz: Automatizace sestavení imagí kontejneru, když se v registru kontejnerů Azure aktualizuje základní image 
+# <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Kurz: automatizace sestavení imagí kontejneru při aktualizaci základní image ve službě Azure Container Registry 
 
 ACR Tasks podporuje automatizované spouštění sestavení při aktualizaci základní image, například při opravě operačního systému nebo architektury aplikace v jedné ze základních imagí. V tomto kurzu zjistíte, jak v ACR Tasks vytvořit úlohu, která aktivuje sestavení v cloudu, když se do vašeho registru odešle základní image kontejneru.
 
@@ -79,11 +79,11 @@ Když se základní image aktualizuje, budete muset znovu sestavit jakékoli ima
   * Veřejné úložiště v Docker Hub 
   * Veřejné úložiště v Microsoft Container Registry
 
-   Pokud se základní bitová kopie zadaná `FROM` v příkazu nachází v jednom z těchto umístění, úloha ACR přidá vidlici, aby se zajistilo, že se image znovu vytvoří, kdykoli se aktualizuje její základ.
+   Pokud se základní bitová kopie zadaná v příkazu `FROM` nachází v jednom z těchto umístění, úloha ACR přidá vidlici, aby se zajistilo, že se image znovu vytvoří, kdykoli se aktualizuje její základ.
 
 * V současné době ACR úlohy pouze sleduje základní aktualizace obrázků pro aplikace (*běhové*image). Nesleduje aktualizace základních imagí pro mezilehlé (*BuildTime*) image používané ve více fázích fázemi.  
 
-* Když vytvoříte úlohu ACR pomocí příkazu [AZ ACR Task Create][az-acr-task-create] , ve výchozím nastavení je úloha *povolená* pro aktivaci pomocí základní aktualizace image. To znamená, `base-image-trigger-enabled` že vlastnost je nastavena na hodnotu true. Pokud chcete toto chování v úloze zakázat, aktualizujte vlastnost na false. Například spusťte následující příkaz [AZ ACR Task Update][az-acr-task-update] :
+* Když vytvoříte úlohu ACR pomocí příkazu [AZ ACR Task Create][az-acr-task-create] , ve výchozím nastavení je úloha *povolená* pro aktivaci pomocí základní aktualizace image. To znamená, že vlastnost `base-image-trigger-enabled` je nastavena na hodnotu true. Pokud chcete toto chování v úloze zakázat, aktualizujte vlastnost na false. Například spusťte následující příkaz [AZ ACR Task Update][az-acr-task-update] :
 
   ```azurecli
   az acr task update --myregistry --name mytask --base-image-trigger-enabled False
@@ -97,9 +97,9 @@ Když se základní image aktualizuje, budete muset znovu sestavit jakékoli ima
 
 Tento kurz vás provede scénářem aktualizace základní image. [Ukázka kódu][code-sample] zahrnuje dva fázemi: obrázek aplikace a obrázek, který určuje jako základní. V následujících částech vytvoříte úlohu ACR, která automaticky aktivuje sestavení image aplikace, když je do stejného registru kontejneru vložena nová verze základní image.
 
-[Dockerfile-app][dockerfile-app]: Malá webová aplikace Node. js, která vykreslí statickou webovou stránku se zobrazením verze Node. js, na které je založena. Řetězec verze je simulovaný: zobrazuje obsah proměnné prostředí `NODE_VERSION`, která je definovaná v základní imagi.
+[Souboru Dockerfile-App][dockerfile-app]: malá webová aplikace Node. js, která vykreslí statickou webovou stránku se zobrazením verze Node. js, na které je založena. Řetězec verze je simulovaný: zobrazuje obsah proměnné prostředí `NODE_VERSION`, která je definovaná v základní imagi.
 
-[Souboru Dockerfile-Base][dockerfile-base]: Obrázek, který `Dockerfile-app` určuje jako základní. Je sám o sobě založená na imagi [uzlu][base-node] a obsahuje `NODE_VERSION` proměnnou prostředí.
+[Souboru Dockerfile-Base][dockerfile-base]: obrázek, který `Dockerfile-app` určuje jako základní. Je sám o sobě založená na imagi [uzlu][base-node] a obsahuje proměnnou prostředí `NODE_VERSION`.
 
 V následujících částech vytvoříte úlohu, aktualizujete hodnotu `NODE_VERSION` v souboru Dockerfile základní image a potom použijete ACR Tasks k sestavení základní image. Když úloha ACR odešle do registru novou základní image, automaticky aktivuje sestavení image aplikace. Volitelně můžete spustit image kontejneru aplikace místně, abyste se mohli podívat na různé řetězce verze v sestavených imagích.
 
@@ -129,9 +129,9 @@ az acr task create \
 ```
 
 > [!IMPORTANT]
-> Pokud jste dříve vytvořili úkoly ve verzi Preview pomocí `az acr build-task` příkazu, je nutné tyto úlohy znovu vytvořit pomocí příkazu [AZ ACR Task][az-acr-task] .
+> Pokud jste dříve vytvořili úkoly v rámci verze Preview pomocí příkazu `az acr build-task`, je nutné tyto úlohy znovu vytvořit pomocí příkazu [AZ ACR Task][az-acr-task] .
 
-Tato úloha je podobná rychlé úloze vytvořené v [předchozím kurzu](container-registry-tutorial-build-task.md). Dává službě ACR Tasks pokyn aktivovat sestavení image, když se do úložiště určeného parametrem `--context` odešlou potvrzení. Zatímco souboru Dockerfile použitý k sestavení image v předchozím kurzu určuje veřejnou základní Image (`FROM node:9-alpine`), souboru Dockerfile v této úloze, [souboru Dockerfile-App][dockerfile-app], určí základní image ve stejném registru:
+Tato úloha je podobná rychlé úloze vytvořené v [předchozím kurzu](container-registry-tutorial-build-task.md). Dává službě ACR Tasks pokyn aktivovat sestavení image, když se do úložiště určeného parametrem `--context` odešlou potvrzení. Zatímco souboru Dockerfile použitý k sestavení image v předchozím kurzu určuje veřejnou základní Image (`FROM node:9-alpine`), souboru Dockerfile v této úloze [souboru Dockerfile-App][dockerfile-app]určuje základní image ve stejném registru:
 
 ```Dockerfile
 FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
@@ -149,7 +149,7 @@ az acr task run --registry $ACR_NAME --name taskhelloworld
 
 Jakmile se úloha dokončí, poznamenejte si **ID spuštění** (například „da6“), pokud chcete provést následující volitelný krok.
 
-### <a name="optional-run-application-container-locally"></a>Volitelné: Místní spuštění kontejneru aplikace
+### <a name="optional-run-application-container-locally"></a>Volitelné: Spuštění kontejneru aplikace místně
 
 Pokud pracujete místně (nejste v Cloud Shellu) a máte nainstalovaný Docker, spusťte kontejner, abyste zobrazili aplikaci vykreslenou ve webovém prohlížeči dříve, než opětovně sestavíte její základní image. Pokud Cloud Shell používáte, tuto část přeskočte (Cloud Shell nepodporuje `az acr login` ani `docker run`).
 
@@ -159,7 +159,7 @@ Nejprve proveďte ověření ve vašem registru kontejneru pomocí [AZ ACR Login
 az acr login --name $ACR_NAME
 ```
 
-Teď pomocí `docker run` spusťte kontejner místně. Nahraďte **\<run-id\>** za ID spuštění z výstupu z předchozího kroku (například „da6“). Tento příklad pojmenuje `myapp` kontejner a `--rm` obsahuje parametr pro odebrání kontejneru při jeho zastavení.
+Teď pomocí `docker run` spusťte kontejner místně. Nahraďte **\<run-id\>** za ID spuštění z výstupu z předchozího kroku (například „da6“). V tomto příkladu je pojmenován kontejner `myapp` a obsahuje parametr `--rm`, který kontejner při zastavení odebere.
 
 ```bash
 docker run -d -p 8080:80 --name myapp --rm $ACR_NAME.azurecr.io/helloworld:<run-id>
@@ -241,7 +241,7 @@ da1                       Linux       Succeeded  Manual        2018-09-17T22:29:
 
 Pokud chcete provést následující volitelný krok, kterým je spuštění nově sestaveného kontejneru, abyste se mohli podívat na aktualizované číslo verze, poznamenejte si hodnotu **ID spuštění** pro sestavení aktivované pomocí Image Update (v předchozím výstupu to bylo „da8“).
 
-### <a name="optional-run-newly-built-image"></a>Volitelné: Spustit nově sestavenou image
+### <a name="optional-run-newly-built-image"></a>Volitelné: Spuštění nově sestavené image
 
 Pokud pracujete místně (nejste v Cloud Shellu) a máte nainstalovaný Docker, spusťte novou image aplikace, jakmile se její sestavení dokončí. `<run-id>` nahraďte hodnotou ID spuštění, kterou jste získali v předchozím kroku. Pokud Cloud Shell používáte, tuto část přeskočte (Cloud Shell nepodporuje `docker run`).
 

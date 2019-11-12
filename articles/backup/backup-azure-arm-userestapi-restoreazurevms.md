@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: dacurwin
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 364b6ab589cc0fa50953a71d55adeccc79462eed
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: eecee01ffc78ec8cc0e60b517e9d5b4f0e6baa25
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747532"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929149"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Obnovení virtuálních počítačů Azure pomocí REST API
 
@@ -28,7 +28,7 @@ Pro všechny operace obnovení je nutné nejprve identifikovat příslušný bod
 Dostupné body obnovení zálohované položky mohou být uvedeny pomocí [REST APIho bodu obnovení seznamu](https://docs.microsoft.com/rest/api/backup/recoverypoints/list). Jedná se o jednoduchou operaci *Get* se všemi relevantními hodnotami.
 
 ```http
-GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2016-12-01
+GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13
 ```
 
 `{containerName}` a `{protectedItemName}` jsou sestaveny [zde](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1). `{fabricName}` je "Azure".
@@ -37,7 +37,7 @@ Identifikátor URI *Get* má všechny požadované parametry. Není potřeba ž�
 
 ### <a name="responses"></a>Odezvy
 
-|Name (Název)  |Typ  |Popis  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |200 OK     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
@@ -128,7 +128,7 @@ Pokud je potřeba přizpůsobit vytvoření virtuálního počítače ze zálož
 Aktivace disků pro obnovení je požadavek *post* . Pokud chcete získat další informace o operaci obnovení disků, přečtěte si [téma "Trigger Restore" REST API](https://docs.microsoft.com/rest/api/backup/restores/trigger).
 
 ```http
-POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2016-12-01
+POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
 ```
 
 `{containerName}` a `{protectedItemName}` jsou sestaveny [zde](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1). `{fabricName}` je "Azure" a `{recoveryPointId}` je `{name}` pole bodu obnovení uvedeného [výše](#example-response).
@@ -137,7 +137,7 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 Pokud chcete aktivovat obnovení disku ze zálohy virtuálního počítače Azure, níže jsou uvedené součásti textu žádosti.
 
-|Name (Název)  |Typ  |Popis  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -171,7 +171,7 @@ Aktivace disku pro obnovení je [asynchronní operace](https://docs.microsoft.co
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Name (Název)  |Typ  |Popis  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |202 přijato     |         |     Přijata    |
 
@@ -183,7 +183,7 @@ Jakmile odešlete identifikátor *URI* pro aktivaci disků pro obnovení, počá
 HTTP/1.1 202 Accepted
 Pragma: no-cache
 Retry-After: 60
-Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2016-12-01
+Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13
 X-Content-Type-Options: nosniff
 x-ms-request-id: 893fe372-8d6c-4c56-b589-45a95eeef95f
 x-ms-client-request-id: a15ce064-25bd-4ac6-87e5-e3bc6ec65c0b; a15ce064-25bd-4ac6-87e5-e3bc6ec65c0b
@@ -193,14 +193,14 @@ x-ms-correlation-request-id: 893fe372-8d6c-4c56-b589-45a95eeef95f
 x-ms-routing-request-id: SOUTHINDIA:20180604T130003Z:893fe372-8d6c-4c56-b589-45a95eeef95f
 Cache-Control: no-cache
 Date: Mon, 04 Jun 2018 13:00:03 GMT
-Location: https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2016-12-01
+Location: https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13
 X-Powered-By: ASP.NET
 ```
 
 Pak Sledujte výslednou operaci pomocí záhlaví umístění nebo hlavičky Azure-AsyncOperation s jednoduchým příkazem *Get* .
 
 ```http
-GET https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2016-12-01
+GET https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13
 ```
 
 Po dokončení operace vrátí 200 (OK) ID výsledné úlohy obnovení v těle odpovědi.
@@ -253,7 +253,7 @@ Následující text žádosti definuje vlastnosti vyžadované k aktivaci obnove
         "containerName": "IaasVMContainer;iaasvmcontainerv2;testRG;testVM",
         "protectedItemName": "VM;iaasvmcontainerv2;testRG;testVM",
         "recoveryPointId": "348916168024334",
-        "api-version": "2016-12-01",
+        "api-version": "2019-05-13",
       "parameters": {
         "properties": {
           "objectType":  "IaasVMRestoreRequest",

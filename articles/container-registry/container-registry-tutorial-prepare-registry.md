@@ -1,5 +1,5 @@
 ---
-title: Kurz – vytvoření geograficky replikovaného registru Docker v Azure
+title: Kurz – vytvoření geograficky replikované Azure Container Registry
 description: Vytvořte registr kontejnerů Azure, nakonfigurujte geografickou replikaci, připravte image Dockeru a nasaďte ji do registru. První část třídílné série.
 services: container-registry
 author: dlepow
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 87746bd39e624699612bf5221258ad757cd462b3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5a2aedfe93aa27f839c416c27ac028db1e650295
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68309574"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931356"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Kurz: Příprava geograficky replikovaného registru kontejnerů Azure
 
@@ -30,7 +30,7 @@ V tomto kurzu, který je první částí třídílné série, se naučíte:
 
 V dalších kurzech nasadíte kontejner ze svého privátního registru do webové aplikace spuštěné ve dvou oblastech Azure. Pak aktualizujete kód aplikace a pomocí jediného příkazu `docker push` pro váš registr aktualizujete obě instance webové aplikace.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Tento kurz vyžaduje místní instalaci Azure CLI (verze 2.0.31 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -42,7 +42,7 @@ Azure Cloud Shell neobsahuje součásti Dockeru nutné pro dokončení všech kr
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
 Vyberte **Vytvořit prostředek** > **Kontejnery** > **Azure Container Registry**.
 
@@ -50,8 +50,8 @@ Vyberte **Vytvořit prostředek** > **Kontejnery** > **Azure Container Registry*
 
 Nakonfiguruje nový registr pomocí následujících nastavení:
 
-* **Název registru**: Vytvoří název registru, který je globálně jedinečný v rámci Azure, a obsahuje 5-50 alfanumerických znaků.
-* **Skupina prostředků**: **Vytvořit nový** > `myResourceGroup`
+* **Název registru:** Vytvořte název registru, který je globálně jedinečný v rámci Azure a obsahuje 5 až 50 alfanumerických znaků.
+* **Skupina prostředků:** **Vytvořit novou** > `myResourceGroup`
 * **Umístění:** `West US`
 * **Uživatel s rolí správce:** `Enable` (vyžadováno službou Web App for Containers ke stahování imagí)
 * **Skladová položka:** `Premium` (vyžadováno pro geografickou replikaci)
@@ -111,13 +111,13 @@ git clone https://github.com/Azure-Samples/acr-helloworld.git
 cd acr-helloworld
 ```
 
-Pokud nemáte nainstalované, můžete [stáhnout archiv zip][acr-helloworld-zip] přímo z GitHubu. `git`
+Pokud nemáte `git` nainstalované, můžete [stáhnout archiv zip][acr-helloworld-zip] přímo z GitHubu.
 
 ## <a name="update-dockerfile"></a>Aktualizace souboru Dockerfile
 
 Soubor Dockerfile, který je součástí ukázky, ukazuje postup sestavení kontejneru. Spustí se z oficiální image [aspnetcore][dockerhub-aspnetcore], zkopíruje soubory aplikace do kontejneru, nainstaluje závislosti, zkompiluje výstup pomocí oficiální image [aspnetcore-build][dockerhub-aspnetcore-build] a nakonec sestaví optimalizovanou image aspnetcore.
 
-[Souboru Dockerfile][dockerfile] se nachází `./AcrHelloworld/Dockerfile` v naklonovaném zdroji.
+[Souboru Dockerfile][dockerfile] se nachází v `./AcrHelloworld/Dockerfile` v naklonovaném zdroji.
 
 ```Dockerfile
 FROM microsoft/aspnetcore:2.0 AS base
@@ -210,7 +210,7 @@ Potom pomocí příkazu `docker push` nasdílejte image *acr-helloworld* do své
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-Vzhledem k tomu, že jste pro registr nakonfigurovali geografickou replikaci, vaše image se pomocí tohoto jediného příkazu `docker push` automaticky replikuje do oblasti *Západní USA* i *Východní USA*.
+Vzhledem k tomu, že jste pro registr nakonfigurovali geografickou replikaci, vaše image se pomocí tohoto jediného příkazu *automaticky replikuje do oblasti*Západní USA*i*Východní USA`docker push`.
 
 ```console
 $ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1
@@ -225,7 +225,7 @@ a75caa09eb1f: Pushed
 v1: digest: sha256:0799014f91384bda5b87591170b1242bcd719f07a03d1f9a1ddbae72b3543970 size: 1792
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste vytvořili privátní a geograficky replikovaný registr kontejnerů, sestavili jste image kontejneru a pak jste image nasdíleli do svého registru.
 

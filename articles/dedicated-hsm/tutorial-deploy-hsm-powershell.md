@@ -1,6 +1,6 @@
 ---
-title: Kurz nasazení do existující virtuální sítě s použitím prostředí PowerShell – vyhrazené modulu hardwarového zabezpečení Azure | Dokumentace Microsoftu
-description: Kurz ukazuje, jak nasadit vyhrazený modulu HSM do existující virtuální sítě pomocí Powershellu
+title: Kurz se nasazuje do existující virtuální sítě pomocí PowerShellu – vyhrazený modul HARDWAROVÉho zabezpečení Azure | Microsoft Docs
+description: Kurz ukazující, jak nasadit vyhrazený modul HARDWAROVÉho zabezpečení pomocí prostředí PowerShell do existující virtuální sítě
 services: dedicated-hsm
 documentationcenter: na
 author: msmbaldwin
@@ -11,81 +11,81 @@ ms.topic: tutorial
 ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2018
+ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 53fb4fa344839957a3f98275d174bbb787fa5e38
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 2f605d5adda913fa465b43a85bd027458959c122
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881001"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928100"
 ---
-# <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Kurz – moduly hardwarového zabezpečení nasazení do existující virtuální sítě pomocí Powershellu
+# <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Kurz – nasazení HSM do existující virtuální sítě pomocí prostředí PowerShell
 
-HSM služby Azure Dedicated poskytuje fyzické zařízení pro použití výhradně zákazník, s kompletní správu kontroly a odpovědnosti úplné řízení. Kvůli zajištění fyzického hardwaru, musíte Microsoft řídit, jak tato zařízení jsou přiděleny Ujistěte se, že je efektivně spravovat kapacity. V důsledku toho v rámci předplatného Azure vyhrazené HSM nebude služba obvykle viditelná jenom pro zřizování prostředků. Žádné zákazníků Azure, které vyžadují přístup ke službě vyhrazené HSM nutné kontaktovat příslušného manažera účtu Microsoft k žádosti o registraci pro službu vyhrazené modulu hardwarového zabezpečení. Pouze po úspěšném dokončení tohoto procesu bude zřizování možné.
-V tomto kurzu, zaměřuje zobrazíte typický proces zřizování kde:
+Vyhrazená služba HSM v Azure poskytuje fyzické zařízení pro použití výhradně pro zákazníky s úplnou správou a plnou zodpovědností na správu. Z důvodu poskytnutí fyzického hardwaru musí Microsoft určit, jak jsou tato zařízení přidělená, aby bylo zajištěno, že se kapacita bude efektivně spravovat. V důsledku toho se vyhrazená služba HSM v rámci předplatného Azure nebude normálně zobrazovat pro zřizování prostředků. Každý zákazník Azure, který vyžaduje přístup k vyhrazené službě HSM, musí nejdřív kontaktovat svého účet Microsoftho vedoucího, aby požádal o registraci vyhrazené služby HSM. Jenom po úspěšném dokončení tohoto procesu bude zřízení možné.
+Tento kurz má za cíl zobrazit typický proces zřizování, kde:
 
-- Zákazník má virtuální síť už
-- Mají virtuálního počítače
-- Je třeba přidat prostředky modulu HSM do existujícího prostředí.
+- Zákazník už má virtuální síť.
+- Mají virtuální počítač
+- Musí do tohoto stávajícího prostředí přidávat prostředky HSM.
 
-Typická, vysokou dostupnost, architektura nasazení ve více oblastech může vypadat takto:
+Typická, vysoká dostupnost, architektura nasazení ve více oblastech, může vypadat takto:
 
-![Nasazení s více oblastmi](media/tutorial-deploy-hsm-powershell/high-availability.png)
+![nasazení ve více oblastech](media/tutorial-deploy-hsm-powershell/high-availability.png)
 
-Tento kurz se zaměřuje na pár moduly hardwarového zabezpečení a vyžaduje bránu ExpressRoute (viz výše 1 podsítě) je integrované do existující virtuální síť (viz výše 1 virtuální síť).  Všechny ostatní prostředky jsou standardní prostředky Azure. Stejný postup integrace lze použít pro moduly hardwarového zabezpečení v podsíti 4 na virtuální síť 3 výše.
+Tento kurz se zaměřuje na pár HSM a požadovanou bránu ExpressRoute (viz podsíť 1 výše), která se integruje do existující virtuální sítě (viz virtuální síť 1 výše).  Všechny ostatní prostředky jsou standardní prostředky Azure. Stejný proces integrace lze použít pro HSM v podsíti 4 ve virtuální síti 3 výše.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-Azure vyhrazené HSM není aktuálně k dispozici na webu Azure Portal, proto veškerou interakci se službou bude prostřednictvím příkazového řádku nebo pomocí prostředí PowerShell. V tomto kurzu pomocí prostředí PowerShell ve službě Azure Cloud Shell. Pokud prostředí PowerShell začínáte, postupujte podle pokynů v části Začínáme: [Azure PowerShell Začínáme](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+Vyhrazený modul HARDWAROVÉho zabezpečení Azure není v Azure Portal aktuálně k dispozici, takže veškerá interakce se službou bude prostřednictvím příkazového řádku nebo pomocí PowerShellu. V tomto kurzu použijete PowerShell v Azure Cloud Shell. Pokud prostředí PowerShell začínáte, postupujte podle pokynů v části Začínáme: [Azure PowerShell Začínáme](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
-Předpoklady:
+Použité
 
-- Mají se prostřednictvím procesu registrace vyhrazené modulu hardwarového zabezpečení Azure a schválený pro použití služby. Pokud ne, obraťte se na obchodního zástupce společnosti Microsoft pro podrobnosti. 
-- Vytvoříte skupinu prostředků pro tyto prostředky a nové nasazení v tomto kurzu se připojí k této skupině.
-- Jste již vytvořili nezbytné virtuální síť, podsíť a virtuální počítače podle diagramu výše a teď chcete integrovat nasazení 2 moduly hardwarového zabezpečení.
+- Procházeli jste prostřednictvím vyhrazeného procesu registrace HSM Azure a bylo schváleno pro používání služby. Pokud ne, požádejte o další informace svého zástupce účet Microsoft. 
+- Vytvořili jste skupinu prostředků pro tyto prostředky a nově nasazená v tomto kurzu se připojí k této skupině.
+- Už jste vytvořili potřebnou virtuální síť, podsíť a virtuální počítače podle diagramu výše a teď chcete do tohoto nasazení integrovat 2 HSM.
 
-Všechny následující pokyny předpokládají, že už jste přešli na webu Azure portal a máte otevřený službě Cloud Shell (vyberte "\>\_" směrem k horním pravém rohu portálu).
+Všechny níže uvedené pokyny předpokládají, že už jste přešli na Azure Portal a jste otevřeli Cloud Shell (vyberte\>\_k pravé horní části portálu).
 
-## <a name="provisioning-a-dedicated-hsm"></a>Zřizování vyhrazené HSM
+## <a name="provisioning-a-dedicated-hsm"></a>Zřizování vyhrazeného modulu HSM
 
-Zřizování moduly hardwarového zabezpečení a integraci do existující virtuální sítě přes bránu ExpressRoute se ověří pomocí ssh nástroj příkazového řádku k zajištění dostupnosti a základní dostupnosti modulu hardwarového zabezpečení zařízení pro libovolné další aktivity konfigurace. Následující příkazy použije šablonu Resource Manageru k vytvoření prostředků modulu hardwarového zabezpečení a přidružené síťové prostředky.
+Zřizování HSM a integrace do existující virtuální sítě prostřednictvím brány ExpressRoute se ověří pomocí nástroje příkazového řádku SSH, aby se zajistila dostupnost a základní dostupnost zařízení HSM pro všechny další konfigurační aktivity. Následující příkazy použijí šablonu Správce prostředků k vytvoření prostředků HSM a přidružených síťových prostředků.
 
-### <a name="validating-feature-registration"></a>Ověřuje se registrace funkce
+### <a name="validating-feature-registration"></a>Ověřování registrace funkce
 
-Jak je uvedeno výše, žádné zřizovací aktivita vyžaduje, aby služba Dedicated modulu hardwarového zabezpečení je registrována pro vaše předplatné. Pro ověření, spusťte následující příkaz Powershellu v portálu Azure cloud shell. 
+Jak je uvedeno výše, všechny aktivity zřizování vyžadují, aby byla pro vaše předplatné zaregistrovaná vyhrazená služba HSM. Pokud to chcete ověřit, spusťte následující příkaz prostředí PowerShell ve službě Azure Portal Cloud Shell. 
 
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.HardwareSecurityModules -FeatureName AzureDedicatedHsm
 ```
 
-Následující příkaz ověří síťové funkce potřebné pro službu vyhrazené modulu hardwarového zabezpečení.
+Následující příkaz ověří síťové funkce vyžadované pro vyhrazenou službu HSM.
 
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowBaremetalServers
 ```
 
-Oba příkazy by měl vrátit ve stavu "Registrováno" (jak je vidět níže) předtím, než budete pokračovat, některé.  Pokud potřebujete k registraci pro tuto službu, obraťte se na obchodního zástupce společnosti Microsoft.
+Oba příkazy by měly vrátit stav "registrováno" (jak je vidět níže), než budete pokračovat dál.  Pokud se pro tuto službu potřebujete zaregistrovat, obraťte se na svého zástupce účet Microsoft.
 
-![stav odběru](media/tutorial-deploy-hsm-powershell/subscription-status.png)
+![stav předplatného](media/tutorial-deploy-hsm-powershell/subscription-status.png)
 
-### <a name="creating-hsm-resources"></a>Vytváří se prostředky modulu hardwarového zabezpečení
+### <a name="creating-hsm-resources"></a>Vytváření prostředků HSM
 
-Zařízení s HSM se zřizuje do virtuální sítě zákazníků. To znamená požadavek pro určitou podsíť. Závislost pro modul hardwarového zabezpečení k umožnění komunikace mezi virtuální sítí a fyzickým zařízením je bránu ExpressRoute a nakonec virtuální počítač vyžaduje přístup k modulu hardwarového zabezpečení zařízení pomocí klientského softwaru Gemalto. Tyto prostředky byly shromážděny do souboru šablony, s odpovídající soubor parametrů pro snadné použití. Soubory jsou k dispozici kontaktujete společnost Microsoft přímo na HSMrequest@Microsoft.com.
+Zařízení HSM se zřídí do virtuální sítě zákazníků. To předpokládá požadavek na podsíť. Závislost modulu HARDWAROVÉho zabezpečení, která umožňuje komunikaci mezi virtuální sítí a fyzickým zařízením, je bránou ExpressRoute a nakonec je pro přístup k zařízení HSM pomocí klientského softwaru identita Gemalto potřeba virtuální počítač. Tyto prostředky byly shromážděny do souboru šablony s odpovídajícím souborem parametrů pro snadné použití. Soubory jsou k dispozici při kontaktování Microsoftu přímo na HSMrequest@Microsoft.com.
 
-Jakmile budete mít soubory, musíte upravit soubor parametrů pro vložení upřednostňované názvy pro prostředky. To znamená úpravy řádky s "value": "".
+Jakmile budete mít soubory, musíte upravit soubor parametrů a vložit tak preferované názvy prostředků. To znamená, že se upravují řádky s hodnotou:.
 
-- `namingInfix` Předpona pro názvy prostředků modulu hardwarového zabezpečení
-- `ExistingVirtualNetworkName` Název virtuální sítě pro moduly hardwarového zabezpečení
-- `DedicatedHsmResourceName1` Název prostředku modulu hardwarového zabezpečení v datovém centru razítko 1
-- `DedicatedHsmResourceName2` Název prostředku modulu hardwarového zabezpečení v datovém centru razítko 2
-- `hsmSubnetRange` Rozsah IP adres podsítě pro moduly hardwarového zabezpečení
-- `ERSubnetRange` Rozsah IP adres podsítě brány virtuální sítě
+- `namingInfix` prefix názvů prostředků HSM
+- `ExistingVirtualNetworkName` název virtuální sítě použité pro HSM
+- `DedicatedHsmResourceName1` název prostředku HSM v razítku Datacenter 1
+- `DedicatedHsmResourceName2` název prostředku HSM v datovém razítku Datacenter 2
+- `hsmSubnetRange` rozsah IP adres podsítě pro HSM
+- `ERSubnetRange` rozsah IP adres podsítě pro bránu virtuální sítě
 
-Příkladem těchto změn je následujícím způsobem:
+Příklad těchto změn je následující:
 
 ```json
 {
@@ -114,23 +114,23 @@ Příkladem těchto změn je následujícím způsobem:
 }
 ```
 
-Přidružený soubor šablony Resource Manageru vytvoříte 6 prostředky s těmito informacemi:
+Přidružený soubor šablony Správce prostředků vytvoří 6 prostředků s těmito informacemi:
 
-- Podsíť pro moduly hardwarového zabezpečení v zadané virtuální sítě
+- Podsíť pro HSM v zadané virtuální síti
 - Podsíť pro bránu virtuální sítě 
-- Brány virtuální sítě, která se připojuje virtuální sítě do modulu hardwarového zabezpečení zařízení
-- Veřejnou IP adresu pro bránu
-- Modul hardwarového zabezpečení v razítku 1
-- Modul hardwarového zabezpečení v razítku 2
+- Brána virtuální sítě, která připojuje virtuální síť k zařízením HSM
+- Veřejná IP adresa brány
+- HSM v razítku 1
+- HSM na razítku 2
 
-Po nastavení hodnoty parametrů jsou soubory budete muset nahrát do sdílené složky prostředí cloudu Azure portal k použití. Na webu Azure Portal, klikněte "\>\_" cloud shell symbol pravé horní části a to způsobí, že dolní části obrazovky příkazového prostředí. Možnosti pro to jsou BASH a PowerShell a jste by měl vybrat BASH, pokud nebude již nastaven.
+Po nastavení hodnot parametrů je potřeba odeslat soubory do Azure Portal sdílené složky Cloud Shell pro použití. V Azure Portal klikněte v pravém horním rohu na symbol "\>\_" Cloud Shell a tím se v dolní části obrazovky zobrazí prostředí příkazového řádku. Možnosti pro toto jsou BASH a PowerShell a pokud ještě nejsou nastavené, měli byste vybrat BASH.
 
-Příkazové okno má možnost nahrávání a stahování na panelu nástrojů a vyberte tento postup nahrání souborů šablonu a parametry do sdílené složky:
+Příkazové prostředí má na panelu nástrojů možnost odeslat/stáhnout a tuto šablonu byste měli vybrat k nahrání šablony a souborů parametrů do sdílené složky:
 
-![sdílené složky](media/tutorial-deploy-hsm-powershell/file-share.png)
+![sdílení souborů](media/tutorial-deploy-hsm-powershell/file-share.png)
 
-Jakmile soubory odešlete, jste připraveni k vytváření prostředků.
-Před vytvořením nového modulu hardwarového zabezpečení jsou prostředky, které existují některé požadovaného prostředky, by měl zajistit na místě. Musí mít virtuální síť s rozsahy adres podsítě pro výpočty, moduly hardwarového zabezpečení a brány. Následující příkazy slouží jako příklad co byste vytvořit virtuální síť.
+Po nahrání souborů jste připraveni k vytváření prostředků.
+Před vytvořením nových prostředků HSM jsou k dispozici některé nezbytné prostředky, které byste měli zajistit. Musíte mít virtuální síť s rozsahy podsítí pro výpočetní výkon, HSM a bránu. Následující příkazy slouží jako příklad toho, co by vytvořilo takovou virtuální síť.
 
 ```powershell
 $compute = New-AzVirtualNetworkSubnetConfig `
@@ -173,9 +173,9 @@ New-AzVirtualNetwork `
 ```
 
 >[!NOTE]
->Nejdůležitější konfigurace mějte na paměti pro virtuální síť je, že podsíť pro zařízení HSM musí mít delegování nastavena na "Microsoft.HardwareSecurityModules/dedicatedHSMs".  Zřizování modulu hardwarového zabezpečení nebude fungovat bez něj.
+>Nejdůležitější konfigurace, která se má poznamenat pro virtuální síť, je, že podsíť pro zařízení HSM musí mít delegování nastavené na Microsoft. HardwareSecurityModules/dedicatedHSMs.  Zřizování modulu HSM nebude bez tohoto použití fungovat.
 
-Jakmile jsou všechny požadavky na místě, spusťte následující příkaz pro použití šablony Resource Manageru zajistit aktualizaci hodnoty s jedinečnými názvy (nejméně název skupiny prostředků):
+Až budou všechny požadavky splněné, spusťte následující příkaz, který bude používat šablonu Správce prostředků, a ujistěte se, že máte aktualizované hodnoty s jedinečnými názvy (aspoň název skupiny prostředků):
 
 ```powershell
 
@@ -186,15 +186,15 @@ New-AzResourceGroupDeployment -ResourceGroupName myRG `
 
 ```
 
-Tento příkaz by měl trvat přibližně 20 minut. "-Verbose" možnost použít zajistí průběžně se zobrazí stav.
+Dokončení tohoto příkazu by mělo trvat přibližně 20 minut. Použije se možnost-verbose, aby se stav průběžně zobrazoval.
 
 ![Stav zřizování](media/tutorial-deploy-hsm-powershell/progress-status.png)
 
-Po úspěšném dokončení se zobrazí jako "provisioningState": "Úspěch", můžete se přihlásit ke stávajícímu virtuálnímu počítači a použít SSH k zajištění dostupnosti zařízení HSM.
+Po úspěšném dokončení se zobrazí zpráva "provisioningState": "úspěch", můžete se přihlásit ke stávajícímu virtuálnímu počítači a použít SSH k zajištění dostupnosti zařízení HSM.
 
-## <a name="verifying-the-deployment"></a>Ověření nasazení
+## <a name="verifying-the-deployment"></a>Ověřování nasazení
 
-Pokud chcete ověřit zařízení se zřizují a naleznete v tématu atributy zařízení, spusťte následující sady příkazů. Ujistěte se nastaví skupinu prostředků a název prostředku je přesně tak, jak máte v souboru parametrů.
+Pokud chcete ověřit zřízení zařízení a zobrazit atributy zařízení, spusťte následující sadu příkazů. Ujistěte se, že je správně nastavená skupina prostředků a že je název prostředku přesně stejný jako v souboru parametrů.
 
 ```powershell
 
@@ -205,63 +205,59 @@ Get-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGroupNa
 
 ```
 
-![Stav zřizování](media/tutorial-deploy-hsm-powershell/progress-status2.png)
+![stav zřizování](media/tutorial-deploy-hsm-powershell/progress-status2.png)
 
-Nyní také moct zobrazit prostředky pomocí [Azure resource Exploreru](https://resources.azure.com/).   Jednou v Průzkumníku rozbalte "předplatné" na levé straně, rozšířit vaše konkrétní předplatné pro vyhrazené modulu hardwarového zabezpečení, rozbalte položku "skupiny prostředků", rozbalte skupinu prostředků, které jste použili a nakonec vyberte položku "resources".
+Nyní budete moci zobrazit prostředky pomocí [Průzkumníka prostředků Azure](https://resources.azure.com/).   V Průzkumníkovi rozbalte na levé straně předplatná, rozbalte konkrétní předplatné pro vyhrazený modul HSM, rozbalte položku skupiny prostředků, rozbalte skupinu prostředků, kterou jste použili, a nakonec vyberte položku prostředky.
 
 ## <a name="testing-the-deployment"></a>Testování nasazení
 
-Testování nasazení se nestane, připojení k virtuálnímu počítači s přístupem HSM(s) a následným připojením přímo do modulu hardwarového zabezpečení zařízení. Tyto akce bude potvrďte, že modul hardwarového zabezpečení je dostupný.
-Ssh nástroj se používá k připojení k virtuálnímu počítači. Bude podobný následujícímu příkazu, ale pomocí jména správce a název dns, který jste zadali v parametru.
+Testování nasazení je případ, kdy se připojujete k virtuálnímu počítači, který má přístup k modulům HSM a pak se připojuje přímo k zařízení HSM. Tyto akce potvrdí, že modul HARDWAROVÉho zabezpečení bude dostupný.
+Nástroj SSH se používá pro připojení k virtuálnímu počítači. Příkaz bude podobný následujícímu, ale s názvem správce a názvem DNS, který jste zadali v parametru.
 
 `ssh adminuser@hsmlinuxvm.westus.cloudapp.azure.com`
 
-Heslo pro použití je v souboru parametrů.
-Po přihlášení k virtuálnímu počítači se systémem Linux se můžete přihlásit k modulu HSM pomocí privátní IP adresy, kterou najdete na portálu, pro \<předponu prostředku > hsm_vnic.
+Heslo, které se má použít, je ten ze souboru parametrů.
+Po přihlášení k virtuálnímu počítači se systémem Linux se můžete přihlásit k modulu HSM pomocí privátní IP adresy, která se nachází na portálu pro > hsm_vnic \<předpona prostředku.
 
 ```powershell
 
 (Get-AzResource -ResourceGroupName myRG -Name HSMdeploy -ExpandProperties).Properties.networkProfile.networkInterfaces.privateIpAddress
 
 ```
-Až budete mít adresu IP, spusťte následující příkaz:
+Po zadání IP adresy spusťte následující příkaz:
 
 `ssh tenantadmin@<ip address of HSM>`
 
-V případě úspěchu zobrazí výzva k zadání hesla. Výchozí heslo je heslo. Modul hardwarového zabezpečení se zeptá, aby vám heslo změnil tak nastavte silné heslo a použít libovolné mechanismus, vaše organizace preferuje k uložení hesla a zabránit ztrátě.  
+V případě úspěchu se zobrazí výzva k zadání hesla. Výchozí heslo je heslo. Modul HARDWAROVÉho zabezpečení vás vyzve, abyste změnili heslo, takže si nastavili silné heslo a použijete jakýkoliv mechanismus, který vaše organizace upřednostňuje k uložení hesla a zabránění ztrátám.  
 
 >[!IMPORTANT]
->Pokud ztratíte heslo, bude nutné resetovat modul hardwarového zabezpečení a to znamená, že došlo ke ztrátě klíče.
+>Pokud toto heslo ztratíte, bude nutné modul HARDWAROVÉho zabezpečení resetovat a to znamená ztrátu vašich klíčů.
 
-Pokud jste připojeni k modulu hardwarového zabezpečení zařízení pomocí ssh, spusťte následující příkaz k zajištění, že modul hardwarového zabezpečení je funkční.
+Když jste se připojili k zařízení HSM pomocí SSH, spusťte následující příkaz, aby se zajistilo fungování modulu HARDWAROVÉho zabezpečení.
 
 `hsm show`
 
-Výstup by měl vypadat jako na následujícím obrázku:
+Výstup by měl vypadat jako obrázek uvedený níže:
 
-![Stav zřizování](media/tutorial-deploy-hsm-powershell/output.png)
+![stav zřizování](media/tutorial-deploy-hsm-powershell/output.png)
 
-V tomto okamžiku jste přidělili všechny prostředky s vysokou dostupností, dvě nasazení modulu hardwarového zabezpečení a ověřeného přístupu a provozní stav. Další konfigurace nebo testování zahrnuje další práci samotného zařízení HSM. V takovém případě postupujte podle pokynů v kapitole Gemalto Luna sítě HSM 7 příručka věnovaná 7 k inicializaci modulu HSM a vytvoření oddílů. Všechny dokumentaci a softwarové jsou k dispozici přímo z Gemalto ke stažení, jakmile jsou registrované na portálu Gemalto Zákaznická podpora a mají ID zákazníka. Stáhněte klientský Software verze 7.2 zobrazíte všechny požadované součásti.
+V tuto chvíli jste přidělili všechny prostředky pro vysoce dostupný, dva nasazení HSM a ověřený přístup a provozní stav. Jakákoli další konfigurace nebo testování zahrnuje více práce se samotným zařízením HSM. V takovém případě byste měli postupovat podle pokynů v tématu Identita Gemalto Luna Network HSM 7 Kapitola 7 a inicializovat modul HSM a vytvořit oddíly. Veškerá dokumentace a software jsou k dispozici přímo z identita Gemalto ke stažení, jakmile se zaregistrujete na portálu zákaznické podpory identita Gemalto a máte ID zákazníka. Stáhněte si klientský software verze 7,2, abyste získali všechny požadované součásti.
 
-## <a name="delete-or-clean-up-resources"></a>Odstranit nebo vyčištění prostředků
+## <a name="delete-or-clean-up-resources"></a>Odstranění nebo vyčištění prostředků
 
-Pokud budete hotovi s zařízení HSM, potom může být jako prostředek odstranit a vrátit do volného fondu. Ze zřejmých problém při tomto postupu je citlivá zákaznická data, která je na zařízení. K odebrání citlivých zákazníka by měl být data zařízení pomocí klienta Gemalto obnovit tovární nastavení. V příručce správce Gemalto 7 Luna SafeNet síťových zařízení a zvažte následující příkazy v pořadí.
+Pokud jste hotovi s pouze zařízením HSM, pak ho můžete odstranit jako prostředek a vrátit se do bezplatného fondu. Zjevné obavy při tom, že se jedná o veškerá citlivá zákaznická data, která jsou na zařízení. Pokud chcete odebrat citlivá zákaznická data, zařízení by mělo mít obnovení továrního nastavení pomocí klienta identita Gemalto. Přečtěte si příručku identita Gemalto Administrators pro zařízení SafeNet Network Luna 7 a zvažte následující příkazy v uvedeném pořadí.
 
 1. `hsm factoryReset -f`
 2. `sysconf config factoryReset -f -service all`
-3. `network interface delete -device eth0`
-4. `network interface delete -device eth1`
-5. `network interface delete -device eth2`
-6. `network interface delete -device eth3`
-7. `my file clear -f`
-8. `my public-key clear -f`
-9. `syslog rotate`
+3. `my file clear -f`
+4. `my public-key clear -f`
+5. `syslog rotate`
 
 
 > [!NOTE]
-> Pokud máte potíže s konfigurací zařízení jakékoli Gemalto měli byste požádat [Gemalto zákaznickou podporu](https://safenet.gemalto.com/technical-support/).
+> Pokud máte problém s libovolnou konfigurací zařízení identita Gemalto, měli byste kontaktovat [zákaznickou podporu identita Gemalto](https://safenet.gemalto.com/technical-support/).
 
-Pokud budete hotovi s prostředky v této skupině prostředků, můžete ho odebrat pomocí následujícího příkazu:
+Pokud jste dokončili práci s prostředky v této skupině prostředků, můžete je odebrat pomocí následujícího příkazu:
 
 ```powershell
 
@@ -272,9 +268,9 @@ Remove-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGrou
 
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Po dokončení kroků v tomto kurzu, jsou vyhrazené HSM prostředky zřízená a dostupná ve službě virtual network. Teď jste na pozici pro toto nasazení s více prostředky podle potřeby podle preferované nasazení architektury návrzích. Další informace pomáhající při plánování nasazení najdete v dokumentech koncepty. Návrh s použitím dva moduly hardwarového zabezpečení v primární oblasti adresování dostupnost na úrovni racku a dva moduly hardwarového zabezpečení v sekundární oblasti adresování regionální dostupnosti se doporučuje. Soubor šablony použité v tomto kurzu můžete jednoduše použít jako základ pro dvě nasazení modulu hardwarového zabezpečení, ale musí mít jeho parametry upravit tak, aby splňovaly vaše požadavky.
+Po dokončení kroků v tomto kurzu jsou vyhrazené prostředky HSM zřízené a dostupné ve vaší virtuální síti. Nyní jste na pozici, abyste si toto nasazení vyžádali o další prostředky, jak je vyžaduje upřednostňovaná architektura nasazení. Další informace o pomoc při plánování nasazení najdete v tématu koncepty dokumentů. Návrh se dvěma Hsmy v primární oblasti, která adresuje dostupnost na úrovni racku, a dvě HSM v sekundární oblasti, která řeší dostupnost pro regionální účely, se doporučuje. Soubor šablony použitý v tomto kurzu se dá snadno použít jako základ pro dvě nasazení HSM, ale musí mít změněné své parametry, aby splňovaly vaše požadavky.
 
 * [Vysoká dostupnost](high-availability.md)
 * [Fyzické zabezpečení](physical-security.md)

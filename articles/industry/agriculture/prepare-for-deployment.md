@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 55b59802116eb10d2e7eeb3b13ecb3da2d475c6d
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: acc64486ac8bd15a9abab1f2010ea56b752a1e86
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73906985"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927674"
 ---
 # <a name="deploy-farmbeats"></a>Nasazení FarmBeats
 
@@ -35,7 +35,7 @@ Nasazení Azure FarmBeats vytvoří níže uvedené prostředky v rámci vašeho
 
 |Zdroj č.  |Název prostředku  |Komponenta Azure FarmBeats  |
 |---------|---------|---------|
-|1  |       Databáze Azure Cosmos   |  Datové centrum       |
+|1  |       Azure Cosmos DB   |  Datové centrum       |
 |2  |    Application Insights      |     Datové centrum/akcelerátor     |
 |3  |Azure Cache for Redis   |Datové centrum   |
 |4  |       Trezor klíčů Azure    |  Datové centrum/akcelerátor        |
@@ -60,8 +60,8 @@ Pomocí těchto kroků můžete na webu Marketplace vytvořit nabídku Azure Far
 1. Přihlaste se k Azure Portal a v pravém horním rohu vyberte svůj účet a přepněte se do tenanta Azure AD, kde chcete nasadit Microsoft Azure FarmBeats.
 2. Azure FarmBeats je k dispozici na adrese Azure Marketplace. Na stránce Marketplace vyberte možnost "získat IT nyní".
 3. Vyberte vytvořit a zadejte následující informace:
-  - název předplatného
-  - existující název skupiny prostředků (jenom prázdné skupiny prostředků) nebo vytvořte novou skupinu prostředků pro nasazení služby Azure FarmBeats. Tuto skupinu prostředků si poznamenejte v dalších oddílech.
+    - název předplatného
+    - existující název skupiny prostředků (jenom prázdné skupiny prostředků) nebo vytvořte novou skupinu prostředků pro nasazení služby Azure FarmBeats. Tuto skupinu prostředků si poznamenejte v dalších oddílech.
 4. Oblast, do které chcete nainstalovat službu Azure FarmBeats. V současné době FarmBeats následující oblasti: Střed USA, Západní Evropa, Východní USA 2, Severní Evropa, Západní USA, jihovýchodní Asie, Východní USA, Austrálie – východ, Západní USA 2.
 5. Vyberte **OK**.
 Zobrazí se stránka Podmínky použití. Přečtěte si standardní údaje na webu Marketplace nebo vyberte hypertextový odkaz pro kontrolu podmínek použití.
@@ -131,7 +131,7 @@ Ke spuštění registračního skriptu aplikace služby Azure AD použijte násl
 
 V rámci instalace vytvořte soubor Input. JSON následujícím způsobem:
 
-    ```
+```json
     {  
        "sku":"both",
        "subscriptionId":"da9xxxec-dxxf-4xxc-xxx21-xxx3ee7xxxxx",
@@ -144,7 +144,7 @@ V rámci instalace vytvořte soubor Input. JSON následujícím způsobem:
        "notificationEmailAddress":"dummy@yourorg.com",
        "updateIfExists":true
     }
-    ```
+```
 
 Tento soubor je vstupním souborem, který Azure Cloud Shell a parametry, jejichž hodnoty se při instalaci používají. Všechny parametry ve formátu JSON musí být nahrazeny příslušnými hodnotami nebo odebrány. Po odebrání instalační program zobrazí výzvu během instalace.
 
@@ -210,9 +210,9 @@ Ukázka vstupu JSON:
 4. Přejít do domovského adresáře ve službě cloud Shell. Ve výchozím nastavení je to/Home/<username>
 5. Do Cloud Shell zadejte nebo vložte následující příkaz. Nezapomeňte změnit cestu k zadání. Soubor JSON a stiskněte klávesu ENTER.
 
-      ```azurepowershell-interactive
+   ```bash
       wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
-     ```
+    ```
      Instalační program automaticky stáhne všechny závislosti a vytvoří nástroj pro nasazení. Zobrazí se výzva k vyjádření souhlasu s licenční smlouvou s koncovým uživatelem (EULA) pro Azure FarmBeats.
 
      - Pokud souhlasíte a přejdete k dalšímu kroku, zadejte ' Y '.
@@ -266,7 +266,7 @@ Postupujte podle zbývajících kroků:
 4. Přejít do domovského adresáře ve službě cloud Shell. Ve výchozím nastavení je to/Home/<username>
 5. Do Cloud Shell zadejte nebo vložte následující příkaz. Nezapomeňte změnit cestu k zadání. Soubor JSON a stiskněte klávesu ENTER.
 
-    ```azurepowershell-interactive
+    ```bash
     wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
     ```
 
@@ -324,7 +324,7 @@ Postup upgradu je podobný jako při první instalaci. Postupujte následovně:
 5. Nahrajte soubor Input. JSON do Azure Cloud Shell.
 6. Do Cloud Shell zadejte nebo vložte následující dva příkazy. Ujistěte se, že jste změnili cestu k souboru Input. JSON a stisknete klávesu ENTER.
 
-    ```azurepowershell-interactive
+    ```bash
     wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
     ```
 Postupujte podle pokynů na obrazovce:

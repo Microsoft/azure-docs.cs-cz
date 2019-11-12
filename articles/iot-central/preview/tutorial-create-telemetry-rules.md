@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: ddf5b81f7269b02ebdc6777fd1bee126157141ff
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: df6c4afc0da50c5b4b32923f24370b9c959b1af7
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893428"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929619"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application-preview-features"></a>Kurz: vytvoření pravidla a nastavení oznámení v aplikaci Azure IoT Central (funkce ve verzi Preview)
 
@@ -113,7 +113,7 @@ Teď, když jste se seznámili s vytvářením pravidel v aplikaci Azure IoT Cen
 
 ## <a name="next-steps"></a>Další kroky
 
->>>>>>> fa07415cf19e8cdb02d570edb3785780bfa97a7c:articles/IoT-Central/Preview/tutorial-Create-telemetrie-Rules. MD v tomto kurzu jste se dozvěděli, jak:
+V tomto kurzu jste se naučili:
 
 * Vytvoření pravidla založeného na telemetrii
 * Přidání akce
@@ -121,5 +121,4 @@ Teď, když jste se seznámili s vytvářením pravidel v aplikaci Azure IoT Cen
 Teď, když jste definovali pravidlo na základě prahové hodnoty, je navržený další krok, ve kterém se dozvíte, jak:
 
 > [!div class="nextstepaction"]
-
 > [Nakonfigurujte průběžný export dat](./howto-export-data.md).

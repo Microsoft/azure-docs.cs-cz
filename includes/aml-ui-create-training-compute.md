@@ -9,14 +9,14 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 10/09/2019
-ms.openlocfilehash: f7cdfb8b9edbce5ef2b094cf6a603904d39a7404
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1ee90e0c99234497b072bbee0b92d76129baea48
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493584"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929654"
 ---
-Kanál se spouští na výpočetním cíli, což je výpočetní prostředek, který je připojený k vašemu pracovnímu prostoru. Jakmile vytvoříte cílový výpočetní výkon, můžete ho znovu použít pro budoucí spuštění.
+Kanál běží na výpočetním cíli, což je výpočetní prostředek, který je připojený k vašemu pracovnímu prostoru. Po vytvoření cíle výpočetní služby ho můžete znovu použít pro budoucí spuštění.
 
 1. Kanál spustíte tak, že v horní části plátna vyberete **Spustit** .
 
@@ -25,7 +25,7 @@ Kanál se spouští na výpočetním cíli, což je výpočetní prostředek, kt
     Pokud už máte dostupný cíl výpočtů, můžete ho vybrat ke spuštění tohoto kanálu.
 
     > [!NOTE]
-    > Návrhář může spouštět experimenty na Výpočetní prostředky služby Machine Learningch cílech. Další cíle výpočtů nebudou zobrazeny.
+    > Návrhář může spouštět experimenty pouze na Azure Machine Learning výpočetním cíli. Ostatní výpočetní cíle se nezobrazí.
 
 1. Zadejte název výpočetního prostředku.
 
@@ -35,18 +35,18 @@ Kanál se spouští na výpočetním cíli, což je výpočetní prostředek, kt
 
 1. Vyberte **Run** (Spustit).
 
-1. V dialogovém okně **nastavit spuštění kanálu** vyberte **+ nový experiment** pro **experiment** .
+1. V dialogovém okně **nastavit spuštění kanálu** vyberte **+ nový experiment** pro **experiment**.
 
     > [!NOTE]
     > Experimenty seskupují podobný kanál společně. Pokud kanál spouštíte několikrát, můžete vybrat stejný experiment pro po sobě jdoucí běhy.
 
-    * Zadejte popisný **název experimentu** .
+    1. Zadejte popisný název pro **název experimentu**.
 
-    * Vyberte **Spustit** .
+    1. Vyberte **Run** (Spustit).
     
     Stav spuštění a podrobnosti můžete zobrazit v pravém horním rohu plátna.
 
     > [!NOTE]
-    > Vytvoření výpočetního prostředku trvá přibližně 5 minut. Po vytvoření prostředku ho můžete znovu použít a tuto dobu čekání přeskočit pro budoucí spuštění.
+    > Vytvoření výpočetního prostředku trvá přibližně pět minut. Po vytvoření prostředku ho můžete znovu použít a tuto dobu čekání přeskočit pro budoucí spuštění.
     >
-    > Výpočetní prostředek se automaticky škáluje na 0 uzlů, pokud je nečinný, aby se ušetřily náklady.  Když ho znovu použijete po uplynutí určité prodlevy, můžete znovu narazit přibližně 5 minut čekací doby, než se škáluje.
+    > Výpočetní prostředek se automaticky škáluje na nulové uzly, pokud je nečinný úspora nákladů. Když ho znovu použijete po uplynutí určité prodlevy, může se při škálování na pozadí vyskytnout přibližně pět minut čekací doby.

@@ -1,5 +1,5 @@
 ---
-title: Kurz – úlohy kontejneru s více kroky – Azure Container Registry úlohy
+title: Kurz – pracovní postup úloh pro více kroků – úlohy Azure Container Registry
 description: V tomto kurzu se naučíte konfigurovat úlohu Azure Container Registry, která automaticky aktivuje pracovní postup s více kroky pro vytváření, spouštění a vkládání imagí kontejnerů v cloudu při potvrzení zdrojového kódu do úložiště Git.
 services: container-registry
 author: dlepow
@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 913f535cb7fa07832a272c1cb9d02ab3e885f52c
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: dd7dd6f78087a40de93a5ab47936806076fc562a
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743582"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931454"
 ---
-# <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Kurz: Spuštění víceúrovňového pracovního postupu kontejneru v cloudu při potvrzení zdrojového kódu
+# <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Kurz: spuštění víceúrovňového pracovního postupu kontejneru v cloudu při potvrzení zdrojového kódu
 
 Kromě [Rychlé úlohy](container-registry-tutorial-quick-task.md)ACR úlohy podporují více než více kontejnerů, které se můžou automaticky aktivovat při potvrzení zdrojového kódu do úložiště Git. 
 
-V tomto kurzu se naučíte, jak pomocí ukázkových souborů YAML definovat úlohy s více kroky, které sestavují, spouštějí a nadávají do registru jednu nebo více imagí kontejneru při potvrzení zdrojového kódu. Chcete-li vytvořit úkol, který automatizuje pouze jeden obrázek sestavení při potvrzení kódu, přečtěte si téma [kurz: Automatizujte sestavení imagí kontejneru v cloudu při potvrzení zdrojového kódu](container-registry-tutorial-build-task.md). Přehled úloh ACR najdete v tématu [Automatizace oprav operačního systému a architektury s úlohami ACR](container-registry-tasks-overview.md),
+V tomto kurzu se naučíte, jak pomocí ukázkových souborů YAML definovat úlohy s více kroky, které sestavují, spouštějí a nadávají do registru jednu nebo více imagí kontejneru při potvrzení zdrojového kódu. Chcete-li vytvořit úkol, který automatizuje pouze jedno sestavení image při potvrzení kódu, přečtěte si [kurz: automatizace sestavení imagí kontejneru v cloudu při potvrzení zdrojového kódu](container-registry-tutorial-build-task.md). Přehled úloh ACR najdete v tématu [Automatizace oprav operačního systému a architektury s úlohami ACR](container-registry-tasks-overview.md),
 
 V tomto kurzu:
 
@@ -66,9 +66,9 @@ steps:
 
 Tato úloha s více kroky provede následující akce:
 
-1. `build` Spustí krok pro sestavení image z souboru Dockerfile v pracovním adresáři. Image cílí na `Run.Registry`, registr, ve kterém je úloha spuštěná, a je označený jedinečným ID spuštění ACR úloh. 
-1. `cmd` Spustí krok pro spuštění image v dočasném kontejneru. Tento příklad spustí dlouhodobě běžící kontejner na pozadí a vrátí ID kontejneru a potom zastaví kontejner. V reálných scénářích můžete zahrnout kroky pro otestování spuštěného kontejneru, aby se zajistilo jeho správné spuštění.
-1. `push` V kroku se nahraje image, která se vytvořila v registru spuštění.
+1. Spustí `build` krok pro sestavení image z souboru Dockerfile v pracovním adresáři. Obrázek cílí na `Run.Registry`, registr, ve kterém je úloha spuštěná, a je označený jedinečným ID spuštění úloh ACR. 
+1. Spustí `cmd` krok pro spuštění bitové kopie v dočasném kontejneru. Tento příklad spustí dlouhodobě běžící kontejner na pozadí a vrátí ID kontejneru a potom zastaví kontejner. V reálných scénářích můžete zahrnout kroky pro otestování spuštěného kontejneru, aby se zajistilo jeho správné spuštění.
+1. V `push` kroku nahraje image, která se vytvořila v registru spuštění.
 
 ### <a name="task-command"></a>Příkaz úkolu
 
@@ -91,7 +91,7 @@ az acr task create \
     --git-access-token $GIT_PAT
 ```
 
-Tato úloha určuje, že jakýkoliv kód času je potvrzen do *Hlavní* větve v úložišti určeném nástrojem `--context`, úlohy ACR spustí úlohu s více kroky z kódu v této větvi. Tento postup definuje soubor YAML `--file` určený z kořenového adresáře úložiště. 
+Tato úloha určuje, že každý kód času je potvrzen do *Hlavní* větve v úložišti určeném `--context`, úlohy ACR spustí úlohu s více kroky z kódu v této větvi. Tento postup definuje soubor YAML určený `--file` z kořenového adresáře úložiště. 
 
 Výstup úspěšného příkazu [AZ ACR Task Create][az-acr-task-create] je podobný následujícímu:
 
@@ -287,13 +287,13 @@ cf19      example1   linux       Succeeded  Manual     2019-05-03T03:03:30Z  00:
 
 ACR úlohy ve výchozím nastavení mají oprávnění k odesílání nebo vyžádání imagí z registru, ve kterém je úloha spuštěná. Je možné, že budete chtít spustit úlohu s více kroky, která cílí na jeden nebo více registrů kromě registru Run. Například může být potřeba sestavit image v jednom registru a ukládat image s různými značkami v druhém registru, ke kterému se přistupovalo z produkčního systému. V tomto příkladu se dozvíte, jak vytvořit takovou úlohu a zadat přihlašovací údaje pro jiný registr.
 
-Pokud ještě nemáte druhý registr, vytvořte ho pro tento příklad. Pokud potřebujete registr, přečtěte si [předchozí kurz](container-registry-tutorial-quick-task.md)nebo [rychlý Start: Vytvoření registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md).
+Pokud ještě nemáte druhý registr, vytvořte ho pro tento příklad. Pokud potřebujete registr, podívejte se na [předchozí kurz](container-registry-tutorial-quick-task.md) nebo článek [Rychlý start: Vytvoření registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md).
 
 Chcete-li vytvořit úlohu, budete potřebovat název přihlašovacího serveru registru, který má formu *mycontainerregistrydate.azurecr.IO* (všechna malá písmena). V tomto příkladu použijete druhý registr k ukládání imagí označených datem sestavení.
 
 ### <a name="yaml-file"></a>Soubor YAML
 
-Druhý příklad úlohy s více kroky pro tento kurz je definován v souboru `taskmulti-multiregistry.yaml`, který je v kořenovém adresáři úložiště GitHub, který jste naklonoval:
+Druhý příklad úlohy s více kroky pro tento kurz je definován v souboru `taskmulti-multiregistry.yaml`, který je v kořenovém adresáři úložiště GitHub, který jste naklonováni:
 
 ```yml
 version: v1.0.0
@@ -316,10 +316,10 @@ steps:
 Tato úloha s více kroky provede následující akce:
 
 1. Spustí dva `build` kroky pro sestavení imagí z souboru Dockerfile v pracovním adresáři:
-    * První cílí na `Run.Registry`, registr, ve kterém je úloha spuštěná, a je označený ID běhu ACR úloh. 
-    * Druhý cílí na registr identifikovaný hodnotou `regDate`, kterou jste nastavili při vytváření úlohy (nebo zadání prostřednictvím předaného `az acr task create`externího `values.yaml` souboru). Tento obrázek je označený jako datum spuštění.
-1. `cmd` Spustí krok pro spuštění jednoho ze sestavených kontejnerů. Tento příklad spustí dlouhodobě běžící kontejner na pozadí a vrátí ID kontejneru a potom zastaví kontejner. Ve scénáři reálného světa můžete otestovat spuštěný kontejner, aby se zajistilo jeho správné spuštění.
-1. V kroku jsou vloženy obrázky, které byly vytvořeny, první do registru spuštění, druhý k registru, který `regDate`identifikuje. `push`
+    * První cílí na `Run.Registry`, registr, ve kterém je úloha spuštěná, a je označený ID spuštění úloh ACR. 
+    * Druhý cílí na registr identifikovaný hodnotou `regDate`, kterou jste nastavili při vytváření úlohy (nebo zadáním externího `values.yaml` souboru předaného do `az acr task create`). Tento obrázek je označený jako datum spuštění.
+1. Spustí `cmd` krok pro spuštění jednoho ze sestavených kontejnerů. Tento příklad spustí dlouhodobě běžící kontejner na pozadí a vrátí ID kontejneru a potom zastaví kontejner. Ve scénáři reálného světa můžete otestovat spuštěný kontejner, aby se zajistilo jeho správné spuštění.
+1. V `push`m kroku vloží image, které byly vytvořeny, první do registru Run, druhý do registru identifikovaného `regDate`.
 
 ### <a name="task-command"></a>Příkaz úkolu
 
@@ -337,11 +337,11 @@ az acr task create \
 
 ### <a name="add-task-credential"></a>Přidat pověření úkolu
 
-Pro vložení imagí do registru identifikovaného hodnotou `regDate`pomocí příkazu [AZ ACR Task Credential Add][az-acr-task-credential-add] přidejte přihlašovací údaje pro tento registr do úlohy.
+Pokud chcete vložit image do registru identifikovaného hodnotou `regDate`, pomocí příkazu [AZ ACR Task Credential Add][az-acr-task-credential-add] přidejte přihlašovací údaje pro tento registr do úlohy.
 
 V tomto příkladu doporučujeme vytvořit [instanční objekt](container-registry-auth-service-principal.md) s přístupem k registru vymezenému na roli *AcrPush* . Pokud chcete vytvořit instanční objekt, přečtěte si tento [skript Azure CLI](https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh).
 
-V následujícím `az acr task credential add` příkazu předejte ID aplikace a heslo objektu služby.
+V následujícím příkazu `az acr task credential add` předat ID a heslo aplikace instančního objektu:
 
 ```azurecli-interactive
 az acr task credential add --name example2 \
@@ -459,7 +459,7 @@ The push refers to repository [mycontainerregistrydate.azurecr.io/hello-world]
 Run ID: cf1g was successful after 46s
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste zjistili, jak vytvořit vícenásobné úlohy založené na více kontejnerech, které se automaticky aktivují při potvrzení zdrojového kódu do úložiště Git. Pokročilé funkce pro úlohy s více kroky, včetně spuštění paralelního a závislého kroku, najdete v tématu [ACR Tasks YAML reference](container-registry-tasks-reference-yaml.md). Přejděte k dalšímu kurzu, ve kterém se naučíte vytvářet úlohy, které aktivují sestavení při aktualizaci základní image kontejneru.
 

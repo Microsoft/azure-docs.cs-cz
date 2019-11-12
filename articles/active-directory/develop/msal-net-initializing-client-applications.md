@@ -18,19 +18,19 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f15f6480c2dc77fb1f6e229b62a0114f0f6fb735
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: a8cf7b7004097ef5a4d915d8fdff60cc9606c5be
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802834"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927082"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Inicializace klientských aplikací pomocí MSAL.NET
 Tento článek popisuje inicializaci veřejného klienta a důvěrných klientských aplikací pomocí knihovny Microsoft Authentication Library pro .NET (MSAL.NET).  Další informace o typech klientských aplikací a možnostech konfigurace aplikací najdete v [přehledu](msal-client-applications.md).
 
 Pomocí MSAL.NET 3. x je doporučený způsob vytvoření instance aplikace pomocí tvůrců aplikací: `PublicClientApplicationBuilder` a `ConfidentialClientApplicationBuilder`. Nabízí účinný mechanismus pro konfiguraci aplikace buď z kódu, nebo z konfiguračního souboru, nebo i smícháním obou přístupů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Před inicializací aplikace je nejprve nutné [ji zaregistrovat](quickstart-register-app.md) , aby bylo možné aplikaci integrovat s platformou Microsoft identity.  Po registraci možná budete potřebovat následující informace (které najdete v Azure Portal):
 
 - ID klienta (řetězec představující GUID)
@@ -101,7 +101,7 @@ V fragmentech kódu pomocí tvůrců aplikací lze použít několik metod `.Wit
 
 Modifikátory, které můžete nastavit ve veřejném klientovi nebo v nástroji pro vytváření důvěrných klientských aplikací, jsou tyto:
 
-|Parametr | Popis|
+|Upravující | Popis|
 |--------- | --------- |
 |`.WithAuthority()` 7 – přepsání | Nastaví výchozí autoritu aplikace na autoritu Azure AD s možností výběru cloudu Azure, cílové skupiny, tenanta (ID tenanta nebo názvu domény) nebo poskytnutí přímo identifikátoru URI autority.|
 |`.WithAdfsAuthority(string)` | Nastaví výchozí autoritu aplikace jako autoritu služby ADFS.|
@@ -120,7 +120,7 @@ Modifikátory, které můžete nastavit ve veřejném klientovi nebo v nástroji
 
 Modifikátory, které můžete nastavit na tvůrci veřejné klientské aplikace v Xamarin. iOS, jsou:
 
-|Parametr | Popis|
+|Upravující | Popis|
 |--------- | --------- |
 |`.WithIosKeychainSecurityGroup()` | **Jenom Xamarin. iOS**: nastaví skupinu zabezpečení řetězu klíčů pro iOS (pro trvalost mezipaměti).|
 
@@ -128,7 +128,7 @@ Modifikátory, které můžete nastavit na tvůrci veřejné klientské aplikace
 
 V Tvůrci důvěrných klientských aplikací můžete nastavit Modifikátory:
 
-|Parametr | Popis|
+|Upravující | Popis|
 |--------- | --------- |
 |`.WithCertificate(X509Certificate2 certificate)` | Nastaví certifikát identifikující aplikaci pomocí Azure AD.|
 |`.WithClientSecret(string clientSecret)` | Nastaví tajný klíč klienta (heslo aplikace) identifikující aplikaci pomocí Azure AD.|

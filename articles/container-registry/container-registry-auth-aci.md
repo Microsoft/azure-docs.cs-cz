@@ -1,5 +1,5 @@
 ---
-title: Ověřování pomocí Azure Container Registry z Azure Container Instances
+title: Přístup k Azure Container Registry z Container Instances
 description: Naučte se, jak poskytnout přístup k obrázkům v privátním registru kontejneru z Azure Container Instances pomocí instančního objektu služby Azure Active Directory.
 services: container-registry
 author: dlepow
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: danlep
-ms.openlocfilehash: b11f88cbb29016032cbf536a2c970573eda82152
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 53cdca72587dafd39abd3f13ad488dcb460bf622
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72262859"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931675"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Ověřování pomocí Azure Container Registry z Azure Container Instances
 
@@ -33,7 +33,7 @@ Instanční objekty by se měly používat i v případě, že je [uživatel spr
 
 ## <a name="authenticate-using-the-service-principal"></a>Ověřování pomocí instančního objektu
 
-Pokud chcete spustit kontejner v Azure Container Instances pomocí instančního objektu, zadejte jeho ID pro `--registry-username` a heslo pro `--registry-password`.
+Pokud chcete spustit kontejner v Azure Container Instances pomocí instančního objektu, zadejte jeho ID pro `--registry-username`a heslo pro `--registry-password`.
 
 ```azurecli-interactive
 az container create \
@@ -49,7 +49,7 @@ az container create \
 
 Předchozí ukázkové skripty pro Azure CLI najdete na GitHubu a také ve verzích pro Azure PowerShell:
 
-* [Rozhraní příkazového řádku Azure][acr-scripts-cli]
+* [Azure CLI][acr-scripts-cli]
 * [Azure PowerShell][acr-scripts-psh]
 
 ## <a name="next-steps"></a>Další kroky

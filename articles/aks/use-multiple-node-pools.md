@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 3495d62c7447ba50d9ffe48e68b15dbe36867ac9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9c8bae879c5e28914981eec34afb0759dd963004
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73662597"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928983"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
 
@@ -36,7 +36,7 @@ Při vytváření a správě clusterů AKS, které podporují více fondů uzlů
 * Cluster AKS musí používat standardní nástroj pro vyrovnávání zatížení SKU pro použití více fondů uzlů, ale funkce nástroje pro vyrovnávání zatížení Basic SKU není podporována.
 * Cluster AKS musí pro uzly používat sadu škálování virtuálních počítačů.
 * Nemůžete přidat ani odstranit fondy uzlů pomocí existující šablony Správce prostředků jako u většiny operací. Místo toho [použijte šablonu samostatného správce prostředků](#manage-node-pools-using-a-resource-manager-template) k provádění změn v fondech uzlů v clusteru AKS.
-* Název fondu uzlů musí začínat malým písmenem a může obsahovat jenom alfanumerické znaky. U fondů uzlů se systémem Linux musí být délka v rozmezí od 1 do 12 znaků, v případě fondů uzlů systému Windows musí být délka mezi 1 a 6 znaky.
+* Název fondu uzlů může obsahovat jenom malé alfanumerické znaky a musí začínat malým písmenem. U fondů uzlů se systémem Linux musí být délka v rozmezí od 1 do 12 znaků, v případě fondů uzlů systému Windows musí být délka mezi 1 a 6 znaky.
 * Cluster AKS může mít maximálně osm fondů uzlů.
 * Cluster AKS může mít maximálně 400 uzlů v těchto osmi fondech uzlů.
 * Všechny fondy uzlů se musí nacházet ve stejné podsíti.
@@ -46,7 +46,7 @@ Při vytváření a správě clusterů AKS, které podporují více fondů uzlů
 Začněte tím, že vytvoříte cluster AKS s jedním fondem uzlů. Následující příklad používá příkaz [AZ Group Create][az-group-create] k vytvoření skupiny prostředků s názvem *myResourceGroup* v oblasti *eastus* . Pomocí příkazu [AZ AKS Create][az-aks-create] se pak vytvoří cluster AKS s názvem *myAKSCluster* . A *--Kubernetes-verze* *1.13.10* se používá k zobrazení způsobu aktualizace fondu uzlů v následujícím kroku. Můžete zadat libovolnou [podporovanou verzi Kubernetes][supported-versions].
 
 > [!NOTE]
-> Při použití více fondů uzlů není podporována *základní* Load balanacer SKU. Ve výchozím nastavení se clustery AKS s použitím služby Load Balancer *úrovně Standard* (SKU) z Azure CLI a Azure Portal vytvoří.
+> SKU nástroje Load Balancer úrovně *Basic* není při použití více fondů uzlů **podporována** . Ve výchozím nastavení se clustery AKS s použitím služby Load Balancer *úrovně Standard* (SKU) z Azure CLI a Azure Portal vytvoří.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -191,28 +191,34 @@ V rámci osvědčeného postupu byste měli upgradovat všechny fondy uzlů v cl
 ## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Upgrade řídicí plochy clusteru s více fondy uzlů
 
 > [!NOTE]
-> Kubernetes používá standardní [sémantickou](https://semver.org/) verzi schématu správy verzí. Číslo verze se vyjádří jako *x. y. z*, kde *x* je hlavní verze, *y* je podverze a *z* je verze opravy. Například ve verzi *1.12.6*je 1 hlavní verze, 12 je dílčí verze a 6 je verze opravy. Při vytváření clusteru je nastavená verze Kubernetes řídicí roviny i počáteční fond uzlů. Všechny další fondy uzlů mají svou verzi Kubernetes nastavenou při jejich přidání do clusteru. Verze Kubernetes se mohou lišit mezi fondy uzlů i mezi fondem uzlů a rovinou ovládacího prvku, ale platí následující omezení:
-> 
-> * Verze fondu uzlů musí mít stejnou hlavní verzi jako rovina ovládacího prvku.
-> * Verze fondu uzlů může být jedna podverze nižší než verze řídicí roviny.
-> * Verze fondu uzlů může být libovolná verze opravy, pokud jsou dodržena jiná dvě omezení.
+> Kubernetes používá standardní [sémantickou](https://semver.org/) verzi schématu správy verzí. Číslo verze se vyjádří jako *x. y. z*, kde *x* je hlavní verze, *y* je podverze a *z* je verze opravy. Například ve verzi *1.12.6*je 1 hlavní verze, 12 je dílčí verze a 6 je verze opravy. Při vytváření clusteru je nastavená verze Kubernetes řídicí roviny a počáteční fond uzlů. Všechny další fondy uzlů mají svou verzi Kubernetes nastavenou při jejich přidání do clusteru. Verze Kubernetes se mohou lišit mezi fondy uzlů i mezi fondem uzlů a rovinou ovládacího prvku.
 
-Cluster AKS má dva objekty prostředků clusteru s přidruženými verzemi Kubernetes. První je Kubernetes verze řídicí roviny. Druhým je fond agentů s verzí Kubernetes. Rovina ovládacího prvku se mapuje na jeden nebo více fondů uzlů. Chování operace upgradu závisí na použitém příkazu rozhraní příkazového řádku Azure.
+Cluster AKS má dva objekty prostředků clusteru s přidruženými verzemi Kubernetes.
 
-* Upgrade roviny ovládacího prvku vyžaduje použití `az aks upgrade`.
-   * Tím se upgraduje verze řídicí roviny a všechny fondy uzlů v clusteru.
-   * Předáním `az aks upgrade` s příznakem `--control-plane-only` se upgraduje jenom Řídicí rovina clusteru a žádný z přidružených fondů uzlů se nemění.
-* Upgrade fondů jednotlivých uzlů vyžaduje použití `az aks nodepool upgrade`.
-   * Tato inovace se upgraduje jenom na cílový fond uzlů s určenou verzí Kubernetes.
+1. Verze Kubernetes roviny ovládacího prvku clusteru
+2. Fond uzlů s verzí Kubernetes
 
-Vztah mezi verzemi Kubernetes uchovávanými fondy uzlů musí také následovat po sadě pravidel.
+Rovina ovládacího prvku se mapuje na jeden nebo více fondů uzlů. Chování operace upgradu závisí na použitém příkazu rozhraní příkazového řádku Azure.
 
-* Nelze downgradovat rovinu ovládacího prvku ani Kubernetes verzi fondu uzlů.
-* Pokud není zadána verze Kubernetes fondu uzlů, závisí chování na používaném klientovi. V případě deklarace v šabloně Správce prostředků se používá existující verze definovaná pro fond uzlů, pokud není nastavená žádná verze řídicí roviny.
-* Můžete buď upgradovat, nebo škálovat úroveň ovládacího prvku nebo fondu uzlů v daném čase, nelze odeslat obě operace současně.
-* Verze Kubernetes fondu uzlů musí být stejná hlavní verze jako plocha ovládacího prvku.
-* Verze Kubernetes fondu uzlů může být nejvýše dvě (2) menší verze menší než Řídicí rovina, nikdy větší.
-* Fond uzlů může být libovolná verze opravy Kubernetes, která je menší nebo rovna rovině ovládacího prvku, nikdy větší.
+Upgrade roviny ovládacího prvku AKS vyžaduje použití `az aks upgrade`. Tím se upgraduje verze řídicí roviny a všechny fondy uzlů v clusteru. 
+
+Vydání příkazu `az aks upgrade` s příznakem `--control-plane-only` upgraduje pouze plochu ovládacího prvku clusteru. Žádný z přidružených fondů uzlů v clusteru se nemění.
+
+Upgrade fondů jednotlivých uzlů vyžaduje použití `az aks nodepool upgrade`. Tato inovace se upgraduje jenom na cílový fond uzlů s určenou verzí Kubernetes.
+
+### <a name="validation-rules-for-upgrades"></a>Ověřovací pravidla pro upgrady
+
+Platné upgrady pro verze Kubernetes držené řídicí rovinou clusteru nebo fondy uzlů jsou ověřovány následujícími sadami pravidel.
+
+* Pravidla pro platné verze, na které se má upgradovat:
+   * Verze fondu uzlů musí mít stejnou *Hlavní* verzi jako rovina ovládacího prvku.
+   * Verze fondu uzlů může *mít dvě* podverze nižší než verze řídicí roviny.
+   * Verze fondu uzlů může být dvě verze *opravy* menší než verze řídicí roviny.
+
+* Pravidla pro odeslání operace upgradu:
+   * Nelze downgradovat plochu ovládacího prvku nebo Kubernetes verzi fondu uzlů.
+   * Pokud není zadána verze Kubernetes fondu uzlů, závisí chování na používaném klientovi. Deklarace v šablonách Správce prostředků se vrátí do existující verze definované pro fond uzlů, pokud se použije, pokud není nastavená žádná hodnota řídicí roviny, která se použije k vrácení zpět.
+   * Můžete buď upgradovat, nebo škálovat plochu ovládacího prvku nebo fondu uzlů v daném čase, nemůžete současně odeslat více operací na jeden řídicí rovinu nebo prostředek fondu uzlů.
 
 ## <a name="scale-a-node-pool-manually"></a>Ruční škálování fondu uzlů
 
@@ -450,11 +456,11 @@ V uzlech v *gpunodepool*se dají naplánovat jenom lusky, které mají tuto chut
 
 ## <a name="manage-node-pools-using-a-resource-manager-template"></a>Správa fondů uzlů pomocí šablony Správce prostředků
 
-Když použijete šablonu Azure Resource Manager k vytváření a správě prostředků, můžete obvykle aktualizovat nastavení v šabloně a znovu nasadit, aby se prostředek aktualizoval. U fondů uzlů v AKS nelze počáteční profil fondu uzlů aktualizovat po vytvoření clusteru AKS. Toto chování znamená, že nemůžete aktualizovat existující šablonu Správce prostředků, provést změnu v fondech uzlů a znovu nasadit. Místo toho je nutné vytvořit samostatnou šablonu Správce prostředků, která aktualizuje pouze fondy agentů pro existující cluster AKS.
+Když použijete šablonu Azure Resource Manager k vytváření a správě prostředků, můžete obvykle aktualizovat nastavení v šabloně a znovu nasadit, aby se prostředek aktualizoval. U fondů uzlů v AKS nelze počáteční profil fondu uzlů aktualizovat po vytvoření clusteru AKS. Toto chování znamená, že nemůžete aktualizovat existující šablonu Správce prostředků, provést změnu v fondech uzlů a znovu nasadit. Místo toho je nutné vytvořit samostatnou šablonu Správce prostředků, která aktualizuje pouze fondy uzlů pro existující cluster AKS.
 
 Vytvořte šablonu, například `aks-agentpools.json` a vložte následující vzorový manifest. Tato příklad šablony konfiguruje následující nastavení:
 
-* Aktualizuje fond agentů pro *Linux* s názvem *myagentpool* , aby běžel tři uzly.
+* Aktualizuje fond uzlů pro *Linux* s názvem *myagentpool* , aby se spouštěly tři uzly.
 * Nastaví uzly ve fondu uzlů tak, aby běžely Kubernetes verze *1.13.10*.
 * Definuje velikost uzlu jako *Standard_DS2_v2*.
 

@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: e0709143f1beb9726fc79eb837d59d7db7cf00d7
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 986e146e2129d26aa6accd747c89e12462d46667
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888583"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931141"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -23,7 +23,54 @@ V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referen
 
 Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde se dozvíte o známých chybách a alternativním řešení.
 
+## <a name="2019-11-11"></a>2019-11-11
 
+### <a name="azure-machine-learning-sdk-for-python-v1074"></a>Sada SDK Azure Machine Learning pro Python v 1.0.74
+ 
+  + **Funkce ve verzi Preview**
+    + **AzureML-contrib-DataSet**
+      + Po importu AzureML-contrib-DataSet můžete volat `Dataset.Labeled.from_json_lines` místo `._Labeled` vytvořit datovou sadu s popisky.
+      + Při volání `to_pandas_dataframe` u s popsánou datovou sadou s možností stažení teď můžete určit, jestli se mají stávající soubory přepsat nebo ne.
+      + Při volání `keep_columns` nebo `drop_columns`, které vedou k vyřazení sloupce časové řady, Label nebo Image, se pro datovou sadu zahodí i odpovídající funkce.
+      + Opravili jsme problémy s PyTorch zavaděčem při volání `dataset.to_torchvision()`.
+
++ **Opravy chyb a vylepšení**
+  + **Azure-CLI-ml**
+    + Přidání profilování modelu do rozhraní příkazového řádku Preview
+    + Opravuje zásadní změnu v Azure Storage způsobující selhání AzureML CLI.
+    + Přidání typu Load Balancer do MLC pro AKS typy
+  + **AzureML-automl – jádro**
+    + Opravili jsme problém s detekcí maximálního horizontu v časové řadě, pro které chybí hodnoty a násobky zrn.
+    + Opravili jsme problém s chybami při generování kruhu pro rozdělení mezi ověřeními.
+    + Nahraďte tuto část zprávou ve formátu Markdownu, která se zobrazí v poznámkách k verzi: – vylepšené zpracování krátkých zrn v sadách dat prognózy.
+    + Opravili jsme problém s maskou některých informací o uživatelích během protokolování. – Vylepšené protokolování chyb během spuštění prognózování.
+    + Přidání psutil jako závislosti conda do automaticky generovaného souboru YML nasazení.
+  + **AzureML-contrib-Mir**
+    + Opravuje zásadní změnu v Azure Storage způsobující selhání AzureML CLI.
+  + **azureml-core**
+    + Opravuje chybu, která způsobila, že modely nasazené v Azure Functions vytvořily 500.
+    + Opravili jsme problém, kdy se soubor amlignore na snímcích nepoužil.
+    + Bylo přidáno nové rozhraní API amlcompute. get_active_runs, které vrací generátor pro spuštění a spuštění ve frontě na daném amlcompute.
+    + Do MLC pro typy AKS byl přidán typ Load Balancer.
+    + Byl přidán append_prefix parametr bool pro download_files v run.py a download_artifacts_from_prefix v artifacts_client. Tento příznak se používá k selektivnímu navýšení cesty k původnímu souboru, takže se do output_directory přidá jenom název souboru nebo složky.
+    + Opravte problém deserializace pro `run_config.yml` s využitím datové sady.
+    + Při volání `keep_columns` nebo `drop_columns`, které vedou k vyřazení sloupce časové řady, se pro datovou sadu zahodí i odpovídající funkce.
+  + **AzureML-interpretace**
+    + Aktualizovaná verze interpretu – komunita 0.1.0.3
+  + **azureml-train-automl**
+    + Opravili jsme problém, kdy automl_step nemusí tisknout problémy při ověřování.
+    + Opravená register_model úspěšná i v případě, že v prostředí modelu chybí závislosti místně.
+    + Opravili jsme problém, kdy některé vzdálené běhy nepovolily Docker.
+    + Přidejte protokolování výjimky, která způsobuje, že místní spuštění selže předčasně.
+  + **azureml-train-core**
+    + Vezměte v úvahu resume_from běhy při výpočtu automatizovaného ladění parametrů nejlepšího podřízeného běhu.
+  + **azureml-pipeline-core**
+    + Pevné zpracování parametrů v konstrukci argumentů kanálu.
+    + Byl přidán parametr popis kanálu a typ kroku YAML.
+    + Nový formát YAML pro krok kanálu a přidání upozornění na zastaralost pro starý formát.
+    
+    
+  
 ## <a name="2019-11-04"></a>2019-11-04
 
 ### <a name="web-experience"></a>Webové prostředí 
@@ -34,7 +81,7 @@ Z studia můžete provádět výukové, testovací, nasazování a správu Azure
 
 Z studia získáte přístup k následujícím webovým nástrojům pro vytváření obsahu:
 
-| Webový nástroj | Popis | Edice |
+| Webový nástroj | Popis | Edition (Edice) |
 |-|-|-|
 | Virtuální počítač poznámkového bloku (Preview) | Plně spravovaná cloudová pracovní stanice | Basic & Enterprise |
 | [Automatizované Machine Learning](tutorial-first-experiment-automated-ml.md) (Preview) | Neexistují žádné zkušenosti s kódem pro automatizaci vývoje modelů strojového učení. | Enterprise |
@@ -46,7 +93,7 @@ Z studia získáte přístup k následujícím webovým nástrojům pro vytvář
 + Dříve označované jako vizuální rozhraní 
 +   11 nových [modulů](../algorithm-module-reference/module-reference.md) , včetně doporučení, klasifikátorů a školicích nástrojů, včetně techniků, ověřování a transformace dat.
 
-### <a name="r-sdk"></a>SADA R SDK 
+### <a name="r-sdk"></a>R SDK 
  
 Odborníci přes data a vývojáři AI používají [Azure Machine Learning SDK pro R](tutorial-1st-r-experiment.md) k sestavování a spouštění pracovních postupů strojového učení pomocí Azure Machine Learning.
 

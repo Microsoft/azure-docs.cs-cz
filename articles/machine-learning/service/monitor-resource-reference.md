@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/06/2019
-ms.openlocfilehash: 178c60d82c8337987e9858a409fcdef7063c9559
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 743007d3636516a39dd36caf3d44d3edb650c030
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684907"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929527"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Referenční informace o monitorování služby Azure Machine Learning
 
@@ -37,7 +37,7 @@ V následující tabulce jsou uvedeny vlastnosti Azure Machine Learningch protok
 | experiment | Název experimentu |
 | customerSubscriptionId | SubscriptionId, kde se povedl experiment a úloha |
 | workspaceName | Název pracovního prostoru Machine Learning |
-| clusterName | Název clusteru |
+| ClusterName | Název clusteru |
 | ProvisioningState | Stav odeslání úlohy |
 | ResourceGroupName | Název skupiny prostředků |
 | JobName | Název úlohy |
@@ -62,11 +62,11 @@ V následující tabulce jsou uvedeny vlastnosti Azure Machine Learningch protok
 | OperationName | Název operace přidružené k události protokolu |
 | Kategorie | Název události protokolu, AmlComputeClusterNodeEvent |
 | ProvisioningState | Stav zřizování clusteru |
-| clusterName | Název clusteru |
-| clusterType | Typ clusteru |
+| ClusterName | Název clusteru |
+| ClusterType | Typ clusteru |
 | CreatedBy | Uživatel, který vytvořil cluster |
 | CoreCount | Počet jader v clusteru |
-| vmSize | Velikost virtuálního počítače v clusteru |
+| VmSize | Velikost virtuálního počítače v clusteru |
 | VmPriority | Priorita uzlů vytvořených v rámci vyhrazeného/LowPriority clusteru |
 | ScalingType | Typ ručního a automatického škálování clusteru |
 | InitialNodeCount | Počáteční počet uzlů clusteru |
@@ -76,7 +76,7 @@ V následující tabulce jsou uvedeny vlastnosti Azure Machine Learningch protok
 | Vydavatel | Vydavatel typu clusteru |
 | Nabídka | Nabídka, se kterou je cluster vytvořený |
 | Skladová jednotka (SKU) | SKU uzlu nebo virtuálního počítače vytvořeného v rámci clusteru |
-| Verze | Verze image, která se používá při vytváření uzlu nebo virtuálního počítače |
+| Version | Verze image, která se používá při vytváření uzlu nebo virtuálního počítače |
 | SubnetId | SubnetId clusteru |
 | AllocationState | Stav přidělení clusteru |
 | CurrentNodeCount | Aktuální počet uzlů clusteru |
@@ -104,15 +104,15 @@ V následující tabulce jsou uvedeny vlastnosti Azure Machine Learningch protok
 | TimeGenerated | Čas, kdy byla vygenerována položka protokolu |
 | OperationName | Název operace přidružené k události protokolu |
 | Kategorie | Název události protokolu, AmlComputeClusterNodeEvent |
-| clusterName | Název clusteru |
+| ClusterName | Název clusteru |
 | NodeId | ID vytvořeného uzlu clusteru |
-| vmSize | Velikost virtuálního počítače uzlu |
+| VmSize | Velikost virtuálního počítače uzlu |
 | VmFamilyName | Rodina virtuálních počítačů, do které uzel patří |
 | VmPriority | Priorita uzlu, který byl vytvořen jako vyhrazený/LowPriority |
 | Vydavatel | Vydavatel image virtuálního počítače, třeba Microsoft-dsvm |
 | Nabídka | Nabídka přidružená k vytvoření virtuálního počítače |
 | Skladová jednotka (SKU) | SKU vytvořeného uzlu nebo virtuálního počítače |
-| Verze | Verze image, která se používá při vytváření uzlu nebo virtuálního počítače |
+| Version | Verze image, která se používá při vytváření uzlu nebo virtuálního počítače |
 | ClusterCreationTime | Čas, kdy byl cluster vytvořen |
 | ResizeStartTime | Doba, po kterou bylo spuštěno navýšení nebo snížení kapacity clusteru |
 | ResizeEndTime | Čas, kdy bylo ukončeno horizontální navýšení kapacity clusteru |
@@ -128,7 +128,7 @@ V následujících tabulkách jsou uvedeny metriky platforem shromážděné pro
 
 **Vzorový**
 
-| Model | Jednotka | Popis |
+| Metrika | Jednotka | Popis |
 | ----- | ----- | ----- |
 | Nasazení modelu selhalo. | Počet | Počet nasazení modelů, které selhaly. |
 | Nasazení modelu začalo | Počet | Počet spuštěných nasazení modelu |

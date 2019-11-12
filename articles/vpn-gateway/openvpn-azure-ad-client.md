@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: alzam
-ms.openlocfilehash: da863144da5ec4361673c913392495d3d622f5a9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 714cabc204c9ec9a0c3bbc93be287957c91d1936
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837971"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932339"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication-preview"></a>Konfigurace klienta VPN pro připojení protokolu P2S OpenVPN: ověřování Azure AD (Preview)
 
@@ -24,7 +24,11 @@ Tento článek vám pomůže nakonfigurovat klienta VPN pro připojení k virtu�
 
 ## <a name="profile"></a>Práce s profily klienta
 
-Abyste se mohli připojit, je potřeba [Stáhnout](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) klienta Azure VPN a nakonfigurovat profil klienta VPN na každém počítači, který se chce připojit k virtuální síti. Můžete vytvořit profil klienta na počítači, exportovat ho a pak ho naimportovat do dalších počítačů.
+Abyste se mohli připojit, musíte si stáhnout klienta Azure VPN (Preview) a nakonfigurovat profil klienta VPN na každém počítači, který se chce připojit k virtuální síti. Můžete vytvořit profil klienta na počítači, exportovat ho a pak ho naimportovat do dalších počítačů.
+
+### <a name="to-download-the-azure-vpn-client"></a>Stažení klienta Azure VPN
+
+Pomocí tohoto [odkazu](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) si stáhněte klienta Azure VPN (Preview).
 
 ### <a name="cert"></a>Vytvoření profilu klienta založeného na certifikátech
 
@@ -52,23 +56,23 @@ Jakmile budete mít funkční profil a potřebujete ho distribuovat ostatním u�
 
 1. Na stránce vyberte **importovat**.
 
-    ![Importovat](./media/openvpn-azure-ad-client/import/import1.jpg)
+    ![importovat](./media/openvpn-azure-ad-client/import/import1.jpg)
 
 2. Přejděte k souboru XML profilu a vyberte ho. Když je vybraný soubor, vyberte **otevřít**.
 
-    ![Importovat](./media/openvpn-azure-ad-client/import/import2.jpg)
+    ![importovat](./media/openvpn-azure-ad-client/import/import2.jpg)
 
 3. Zadejte název profilu a vyberte **Uložit**.
 
-    ![Importovat](./media/openvpn-azure-ad-client/import/import3.jpg)
+    ![importovat](./media/openvpn-azure-ad-client/import/import3.jpg)
 
 4. Vyberte **připojit** a připojte se k síti VPN.
 
-    ![Importovat](./media/openvpn-azure-ad-client/import/import4.jpg)
+    ![importovat](./media/openvpn-azure-ad-client/import/import4.jpg)
 
 5. Po připojení se ikona změní na zelenou a znamená se **připojit**.
 
-    ![Importovat](./media/openvpn-azure-ad-client/import/import5.jpg)
+    ![importovat](./media/openvpn-azure-ad-client/import/import5.jpg)
 
 ### <a name="delete"></a>Odstranění profilu klienta
 

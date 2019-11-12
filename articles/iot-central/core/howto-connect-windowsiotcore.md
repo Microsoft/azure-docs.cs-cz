@@ -1,5 +1,5 @@
 ---
-title: Připojení zařízení s Windows IoT Core k aplikaci Azure IoT Central | Microsoft Docs
+title: Připojení Windows IoT Core k aplikaci Azure IoT Central | Microsoft Docs
 description: Jako vývojář zařízení se naučíte připojit zařízení MXChip IoT DevKit k vaší aplikaci Azure IoT Central.
 author: miriambrus
 ms.author: miriamb
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d880130e114b2bd3e4f978c2ae3fc7bacf0648c4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 43e99c54249738436f24369ed3525e78ff971a12
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953899"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930214"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Připojení zařízení s Windows IoT Core k aplikaci Azure IoT Central
 
@@ -90,7 +90,7 @@ Po několika minutách můžete v aplikaci IoT Central zobrazit telemetrii ze sv
 [Portál zařízení s Windows](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) obsahuje nástroje, které můžete použít k řešení potíží s vaším zařízením:
 
 - Stránka **Správce aplikací** vám umožní řídit aplikace běžící na vašem zařízení.
-- Pokud nemáte monitor připojený k vašemu zařízení, můžete na stránce **nastavení zařízení** zachytit snímky obrazovky ze svého zařízení. Například:
+- Pokud nemáte monitor připojený k vašemu zařízení, můžete na stránce **nastavení zařízení** zachytit snímky obrazovky ze svého zařízení. Příklad:
 
     ![Snímek obrazovky aplikace](media/howto-connect-windowsiotcore/iot-hub-foreground-client.png)
 
@@ -108,7 +108,7 @@ Aplikace vytvořená v ukázkové šabloně aplikace **Devkits** zahrnuje šablo
 | -------------- | ------ | ------- | ------- | -------------- |
 | vlhkost       | %      | 0       | 100     | 0              |
 | názvem           | 7C     | -40     | 120     | 0              |
-| tlak       | hPa    | 260     | 1260    | 0              |
+| pressure       | hPa    | 260     | 1260    | 0              |
 
 ### <a name="settings"></a>Nastavení
 
@@ -116,14 +116,14 @@ Aplikace vytvořená v ukázkové šabloně aplikace **Devkits** zahrnuje šablo
 
 | Zobrazované jméno | Název pole | Jednotky | Desetinná místa | Minimální | Maximum | Pořizovací |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| Rychlost ventilátoru    | fanSpeed   | /MIN   | 0              | 0       | 1 000    | 0       |
+| Rychlost ventilátoru    | fanSpeed   | /MIN   | 0              | 0       | 1000    | 0       |
 
 ### <a name="properties"></a>Vlastnosti
 
 | Typ            | Zobrazované jméno | Název pole | Data type |
 | --------------- | ------------ | ---------- | --------- |
 | Vlastnost zařízení | Číslo Die   | dieNumber  | číslo    |
-| Text            | Umístění     | location   | Nevztahuje se       |
+| Text            | Umístění     | location   | neuvedeno       |
 
 ## <a name="next-steps"></a>Další kroky
 

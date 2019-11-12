@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/04/2017
-ms.openlocfilehash: 28881403e4938376cc1912227bdff51aa5f069cf
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 61bd5898c494018a2bacbd894d4dc2aac97f53b4
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817369"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928424"
 ---
 # <a name="how-do-i--in-application-insights"></a>Jak mám udělat ... pomocí Application Insights?
 ## <a name="get-an-email-when-"></a>Získat e-mail, když...
@@ -39,7 +39,7 @@ Výstrahy je možné nastavit na [vlastní metriky](../../azure-monitor/app/api-
 
     telemetry.TrackMetric("Alarm", 10);
 
-ani
+Ani
 
     var measurements = new Dictionary<string,double>();
     measurements ["Alarm"] = 10;
@@ -72,12 +72,12 @@ Některé body ke zvážení:
 [Použití PowerShellu k vytváření nových výstrah](../../azure-monitor/app/alerts.md#automation)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>Použití PowerShellu ke správě Application Insights
-* [Vytvoření nových prostředků](../../azure-monitor/app/powershell-script-create-resource.md)
+* [Vytvoření nových prostředků](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
 * [Vytvořit nové výstrahy](../../azure-monitor/app/alerts.md#automation)
 
 ## <a name="separate-telemetry-from-different-versions"></a>Samostatná telemetrie z různých verzí
 
-* Více rolí v aplikaci: použijte jeden prostředek Application Insights a vyfiltrujte [cloud_Rolename](../../azure-monitor/app/app-map.md).
+* Více rolí v aplikaci: použijte jeden prostředek Application Insights a filtrujte [cloud_Rolename](../../azure-monitor/app/app-map.md).
 * Oddělení vývoje, testování a verzí vydání: použijte jiné prostředky Application Insights. Vyzvedněte klíče instrumentace ze souboru Web. config. [Další informace](../../azure-monitor/app/separate-resources.md)
 * Verze sestavení pro vytváření sestav: přidejte vlastnost pomocí inicializátoru telemetrie. [Další informace](../../azure-monitor/app/separate-resources.md)
 
@@ -91,7 +91,7 @@ Některé body ke zvážení:
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>Řídicí panel s daty z jiných zdrojů a Application Insights
 * [Exportujte telemetrii do Power BI](../../azure-monitor/app/export-power-bi.md ).
 
-nebo
+Nebo
 
 * Použijte SharePoint jako řídicí panel, který zobrazuje data ve webových částech SharePointu. K [exportu do SQL použijte průběžný export a Stream Analytics](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md).  K prohlédnutí databáze použijte PowerView a vytvořte webovou část služby SharePoint pro PowerView.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 95e38cee8f6995e09dbbb2194cd5a9d0ebc301c1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 32e7e79465b68caca9a636019f65b9f08284fc72
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498656"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928220"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Připojení dat z Microsoft Cloud App Security 
 
@@ -27,10 +27,10 @@ ms.locfileid: "73498656"
 
 Pomocí jediného kliknutí můžete streamovat protokoly z [Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) do Azure Sentinel. Toto připojení umožňuje streamovat výstrahy z Cloud App Security do Azure Sentinel. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Uživatel s oprávněními globálního správce nebo správce zabezpečení
-- Pokud chcete streamovat Cloud Discovery protokoly do Azure Sentinel, [Povolte jako Siem v Microsoft Cloud App Security možnost Sentinel Azure](aka.ms. https://aka.ms/AzureSentinelMCAS).
+- Pokud chcete streamovat Cloud Discovery protokoly do Azure Sentinel, [Povolte jako Siem v Microsoft Cloud App Security možnost Sentinel Azure](https://aka.ms/AzureSentinelMCAS).
 
 > [!IMPORTANT]
 > Přijímání protokolů Cloud Discovery je v současnosti ve verzi Public Preview.

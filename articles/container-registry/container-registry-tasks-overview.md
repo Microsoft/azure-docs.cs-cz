@@ -1,5 +1,5 @@
 ---
-title: Automatizace sestavování a opravování imagí kontejneru pomocí Azure Container Registrych úloh (úlohy ACR)
+title: Úkoly Azure Container Registry – přehled
 description: Úvod k ACR úlohám, sadě funkcí v Azure Container Registry, která poskytuje zabezpečené, automatizované vytváření imagí kontejnerů, správu a opravy v cloudu.
 services: container-registry
 author: dlepow
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: danlep
-ms.openlocfilehash: e2686dcd5615c42abf78cbf4575bab6008024718
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 45fdd68273ed2cd5cfccf37765935ce9f7bfdc13
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001401"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931473"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatizace sestavení a údržby imagí kontejneru pomocí úloh ACR
 
@@ -27,7 +27,7 @@ Kontejnery poskytují nové úrovně virtualizace a izolují závislosti aplikac
 
 Úlohy ACR podporují několik scénářů pro sestavování a správu imagí kontejneru a další artefakty. Podrobnosti najdete v následujících částech tohoto článku.
 
-* **[Rychlé úlohy](#quick-task)** – Sestavte a nahrajte jednu Image kontejneru do registru kontejneru na vyžádání v Azure, aniž byste museli instalovat místní modul Docker. Vezměte v úvahu `docker build`, `docker push` v cloudu.
+* **[Rychlé úlohy](#quick-task)** – Sestavte a nahrajte jednu Image kontejneru do registru kontejneru na vyžádání v Azure, aniž byste museli instalovat místní modul Docker. Promyslete `docker build``docker push` v cloudu.
 * **Automaticky aktivované úlohy** – povolením jedné nebo více *triggerů* sestavíte Image:
   * **[Aktivovat při aktualizaci zdrojového kódu](#trigger-task-on-source-code-update)** 
   * **[Aktivovat aktualizaci základní image](#automate-os-and-framework-patching)** 
@@ -44,7 +44,7 @@ Cyklus vývoje vnitřních smyček, iterativní proces psaní kódu, sestavován
 
 Než začnete s prvním řádkem kódu, funkce [Rychlé úlohy](container-registry-tutorial-quick-task.md) ACR úkoly může poskytovat integrované vývojové prostředí tím, že převede přesměrování sestavení imagí kontejneru do Azure. Pomocí rychlých úloh můžete ověřit své automatizované definice sestavení a zachytit potenciální problémy před potvrzením kódu.
 
-Pomocí známého formátu @no__t 0 převezme příkaz [AZ ACR Build][az-acr-build] v Azure CLI [kontext](#context-locations) (sadu souborů k sestavení), odešle úlohy ACR IT a ve výchozím nastavení po dokončení vloží do svého registru vytvořenou image.
+Pomocí známého `docker build` formátu přebírá příkaz [AZ ACR Build][az-acr-build] v Azure CLI [kontext](#context-locations) (sadu souborů k sestavení), odesílá úlohy ACR a ve výchozím nastavení po dokončení vloží do svého registru vytvořenou image.
 
 Úvod najdete v tématu rychlý Start k [sestavení a spuštění image kontejneru](container-registry-quickstart-task-cli.md) v Azure Container Registry.  
 
@@ -61,9 +61,9 @@ Aktivovat sestavení image kontejneru nebo úlohu s více kroky, když se kód p
 
 Úlohy ACR podporují následující triggery při nastavení úložiště Git jako kontextu úkolu:
 
-| Signálu | Ve výchozím nastavení povoleno |
+| Trigger | Ve výchozím nastavení povoleno |
 | ------- | ------------------ |
-| Potvrzuj | Ano |
+| Potvrzení | Ano |
 | Žádost o získání dat | Ne |
 
 Pokud chcete aktivační událost nakonfigurovat, poskytněte úlohu token (PAT) pro nastavení Webhooku v úložišti GitHubu nebo Azure DevOps.
@@ -99,7 +99,7 @@ Volitelně můžete naplánovat úlohu nastavením jedné nebo více *triggerů 
 
 ## <a name="multi-step-tasks"></a>Úlohy s více kroky
 
-Úlohy s více kroky poskytují definice úloh založené na kroku a provádění pro vytváření, testování a opravy imagí kontejnerů v cloudu. Kroky úlohy definované v [souboru YAML](container-registry-tasks-reference-yaml.md) určují jednotlivé operace sestavení a nabízených oznámení pro Image kontejneru nebo jiné artefakty. Mohou také definovat provedení jednoho nebo více kontejnerů, přičemž každý krok používá kontejner jako své spouštěcí prostředí.
+Úlohy s více kroky poskytují definice úloh založené na kroku a provádění pro vytváření, testování a opravy imagí kontejnerů v cloudu. Kroky úlohy definované v [souboru YAML](container-registry-tasks-reference-yaml.md) určují jednotlivé operace sestavení a nabízených oznámení pro Image kontejneru nebo jiné artefakty. Mohou také definovat spuštění jednoho nebo více kontejnerů, u každého kroku pomocí kontejneru jako prostředí pro spuštění.
 
 Můžete například vytvořit úlohu s více kroky, která automatizuje následující:
 
@@ -108,7 +108,7 @@ Můžete například vytvořit úlohu s více kroky, která automatizuje násled
 1. Sestavení image testu webové aplikace
 1. Spusťte testovací kontejner webové aplikace, který provádí testy proti běžícímu kontejneru aplikace.
 1. Pokud testy projde, sestavte balíček pro archivaci grafu Helm.
-1. Provedení `helm upgrade` pomocí nového balíčku pro archivaci grafu Helm
+1. Provedení `helm upgrade` pomocí nového balíčku archivu grafu Helm
 
 Úlohy s více kroky umožňují rozdělit sestavování, spouštění a testování obrázku do více sestavených kroků s podporou mezikrokových závislostí. Díky úlohám s více kroky v ACR úlohám máte podrobnější kontrolu nad vytvářením, testováním a pracovními postupy při opravách imagí.
 
@@ -131,10 +131,10 @@ Následující tabulka ukazuje několik příkladů podporovaných umístění k
 
 Ve výchozím nastavení ACR úlohy vytváří image pro Linux OS a amd64. Zadejte značku `--platform` pro vytváření imagí Windows nebo imagí Linux pro jiné architektury. Zadejte operační systém a volitelně podporovanou architekturu ve formátu operačního systému/architektury (například `--platform Linux/arm`). U architektur ARM můžete volitelně zadat variantu ve formátu OS/Architecture/variant (například `--platform Linux/arm64/v8`):
 
-| JINÉHO | Architektura|
+| Operační systém | Architektura|
 | --- | ------- | 
-| Linux | amd64<br/>ARM<br/>arm64<br/>386 |
-| Windows | amd64 |
+| Linux | AMD<br/>ARM<br/>arm64<br/>386 |
+| Windows | AMD |
 
 ## <a name="view-task-logs"></a>Zobrazit protokoly úloh
 

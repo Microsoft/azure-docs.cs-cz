@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: bfe44e552618dfbee13e8c85ef424f52d4b7ae5f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a7c19486fe6787c4548a77dcdd93a92a92c97d8c
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814993"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931096"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Škálujte a Registrujte modely řetězení ve velkém měřítku pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -193,7 +193,7 @@ model = run.register_model(model_name='chainer-dnn-mnist', model_path='outputs/m
 ```
 
 > [!TIP]
-> Pokud se zobrazí chyba, že model nebyl nalezen, dejte mu minutu a akci opakujte.  Někdy existuje mírné prodleva mezi koncem školicího běhu a dostupností modelu v adresáři výstupy.
+> Model, který jste právě zaregistrovali, je nasazen stejným způsobem jako jakýkoli jiný registrovaný model v Azure Machine Learning, bez ohledu na to, který Estimator jste použili pro školení. Postup nasazení obsahuje část týkající se registrace modelů, ale můžete přeskočit přímo na [Vytvoření výpočetního cíle](how-to-deploy-and-where.md#choose-a-compute-target) pro nasazení, protože již máte registrovaný model.
 
 Můžete si také stáhnout místní kopii modelu. To může být užitečné pro místní práci s ověřováním modelu. Ve školicím skriptu `chainer_mnist.py`objekt spořiče uchovává model do místní složky (místní k cíli výpočtů). Pomocí objektu spustit můžete stáhnout kopii z úložiště dat.
 

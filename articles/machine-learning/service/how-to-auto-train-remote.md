@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4276a713e62f96cc5340fc7be0e8391939d32342
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5104e6e037341c41a032f80287c6d56d17361d4c
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497323"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932196"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Výuka modelů pomocí automatizovaného strojového učení v cloudu
 
@@ -103,7 +103,7 @@ y = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/y_train.csv'))
 
 ## <a name="create-run-configuration"></a>Vytvořit konfiguraci spuštění
 
-Aby byly k dispozici závislosti pro skript get_data. py, definujte objekt `RunConfiguration` s definovaným `CondaDependencies`. Použijte tento objekt pro parametr `run_configuration` v `AutoMLConfig`.
+Aby byly k dispozici závislosti pro skript get_data. py, definujte `RunConfiguration` objekt s definovaným `CondaDependencies`. Použijte tento objekt pro parametr `run_configuration` v `AutoMLConfig`.
 
 ```python
 from azureml.core.runconfig import RunConfiguration
@@ -148,24 +148,6 @@ automl_config = AutoMLConfig(task='classification',
                              X = X,
                              y = y,
                              **automl_settings,
-                             )
-```
-
-### <a name="enable-model-explanations"></a>Povolit vysvětlení modelu
-
-Nastavte volitelný parametr `model_explainability` v konstruktoru `AutoMLConfig`. Kromě toho musí být objekt dataframe ověřování předán jako parametr `X_valid` pro použití funkce vysvětlení modelu.
-
-```python
-automl_config = AutoMLConfig(task='classification',
-                             debug_log='automl_errors.log',
-                             path=project_folder,
-                             compute_target=compute_target,
-                             run_configuration=run_config,
-                             X = X,
-                             y = y,
-                             **automl_settings,
-                             model_explainability=True,
-                             X_valid=X_test
                              )
 ```
 
@@ -237,59 +219,13 @@ remote_run.get_portal_url()
 
 Ve vašem pracovním prostoru jsou k dispozici stejné informace.  Další informace o těchto výsledcích najdete v tématu [vysvětlení výsledků automatizovaného strojového učení](how-to-understand-automated-ml.md).
 
-### <a name="view-logs"></a>Zobrazení protokolů
+## <a name="example"></a>Příklad
 
-Vyhledejte v DSVM protokoly v části `/tmp/azureml_run/{iterationid}/azureml-logs`.
-
-## <a name="explain"></a>Nejlepší vysvětlení modelu
-
-Získání podrobných informací o modelech vám umožní zobrazit podrobné informace o modelech a zvýšit tak transparentnost na to, co běží na back-endu. V tomto příkladu můžete spustit vysvětlení modelu pouze pro model nejlépe vyhovující. Pokud spustíte pro všechny modely v kanálu, bude to mít za následek významnou dobu běhu. Informace o vysvětlení modelu zahrnují:
-
-* shap_values: Vysvětlení informací generovaných nástrojem Shap lib.
-* expected_values: očekávaná hodnota modelu použitá pro sadu dat X_train.
-* overall_summary: hodnoty důležitosti funkcí na úrovni modelu seřazené v sestupném pořadí.
-* overall_imp: názvy funkcí seřazené ve stejném pořadí jako v overall_summary.
-* per_class_summary: hodnoty důležitosti funkce na úrovni třídy jsou seřazené v sestupném pořadí. K dispozici pouze pro případ klasifikace.
-* per_class_imp: názvy funkcí seřazené ve stejném pořadí jako v per_class_summary. K dispozici pouze pro případ klasifikace.
-
-Použijte následující kód k výběru nejlepšího kanálu z iterací. Metoda `get_output` vrátí nejlepší běh a namontovaný model pro poslední vyvolání.
-
-```python
-best_run, fitted_model = remote_run.get_output()
-```
-
-Naimportujte funkci `retrieve_model_explanation` a spusťte na nejvhodnějším modelu.
-
-```python
-from azureml.train.automl.automlexplainer import retrieve_model_explanation
-
-shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
-    retrieve_model_explanation(best_run)
-```
-
-Vytiskněte výsledky `best_run` proměnných vysvětlení, které chcete zobrazit.
-
-```python
-print(overall_summary)
-print(overall_imp)
-print(per_class_summary)
-print(per_class_imp)
-```
-
-Tisk `best_run` vysvětlení souhrnných proměnných vede k následujícímu výstupu.
-
-![Výstup konzoly pro vysvětlení modelu](./media/how-to-auto-train-remote/expl-print.png)
-
-Můžete také vizualizovat důležitost funkcí prostřednictvím uživatelského rozhraní widgetu nebo ve vašem pracovním prostoru v [Azure Machine Learning Studiu](https://ml.azure.com). 
-
-![Uživatelské rozhraní pro vysvětlení modelu](./media/how-to-auto-train-remote/model-exp.png)
-
-## <a name="example"></a>Příklad:
-
-Poznámkový blok [How-to-use-AzureML/Automated-Machine-Learning/Remote-amlcompute/auto-ml-Remote-amlcompute. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) ukazuje koncepty v tomto článku.
+Následující [Poznámkový blok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression/auto-ml-regression.ipynb) znázorňuje koncepty v tomto článku.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte [se konfigurovat nastavení pro automatické školení](how-to-configure-auto-train.md).
+* Naučte [se konfigurovat nastavení pro automatické školení](how-to-configure-auto-train.md).
+* Další informace [najdete v tématu](how-to-machine-learning-interpretability-automl.md) povolení funkcí interpretace modelu v rámci automatizovaných experimentů ml.

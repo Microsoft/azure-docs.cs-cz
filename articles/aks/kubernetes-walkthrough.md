@@ -14,12 +14,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - seo-python-october2019
-ms.openlocfilehash: ae67ed5e6b23d9d2fae3f3d6e73597876bf7315c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: f7e7804b2fc60976ef0ec9af9dcd22e2a2bd9db0
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592966"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929116"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>Rychlý Start: nasazení clusteru služby Azure Kubernetes pomocí Azure CLI
 
@@ -37,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.64 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
-> [!Note]
+> [!NOTE]
 > Pokud se příkazy v tomto rychlém startu spouštějí místně (místo Azure Cloud Shell), ujistěte se, že jste příkazy spustili jako správce.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
@@ -69,7 +69,8 @@ Následující příklad výstupu ukazuje, že skupina prostředků byla úspě�
 
 Pomocí příkazu [AZ AKS Create][az-aks-create] vytvořte cluster AKS. Následující příklad vytvoří cluster *myAKSCluster* s jedním uzlem. Kromě toho se dá pomocí parametru *--enable-addons monitoring* povolit Azure Monitor pro kontejnery.  Dokončení této akce bude trvat několik minut.
 
-> ZNAČTE Při vytváření clusteru AKS se automaticky vytvoří druhá skupina prostředků, která bude ukládat prostředky AKS. Další informace najdete v tématu [Proč jsou dvě skupiny prostředků vytvořené pomocí AKS?](https://docs.microsoft.com/azure/aks/faq#why-are-two-resource-groups-created-with-aks)
+> [!NOTE]
+> Při vytváření clusteru AKS se automaticky vytvoří druhá skupina prostředků pro ukládání prostředků AKS. Další informace najdete v tématu [Proč jsou dvě skupiny prostředků vytvořené pomocí AKS?](https://docs.microsoft.com/azure/aks/faq#why-are-two-resource-groups-created-with-aks)
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys
@@ -79,7 +80,7 @@ Po několika minutách se příkaz dokončí a vrátí informace o clusteru ve f
 
 ## <a name="connect-to-the-cluster"></a>Připojení ke clusteru
 
-Ke správě clusteru Kubernetes použijete klienta příkazového řádku Kubernetes [kubectl][kubectl]. Pokud používáte Azure Cloud Shell, je už nainstalovaná `kubectl`. Pokud chcete `kubectl` nainstalovat místně, použijte příkaz [AZ AKS Install-CLI][az-aks-install-cli] :
+Ke správě clusteru Kubernetes použijete klienta příkazového řádku Kubernetes [kubectl][kubectl]. Pokud používáte Azure Cloud Shell, `kubectl` už je nainstalovaný. Pokud chcete `kubectl` nainstalovat místně, použijte příkaz [AZ AKS Install-CLI][az-aks-install-cli] :
 
 ```azurecli
 az aks install-cli
@@ -230,7 +231,7 @@ NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-Pokud se *IP* adresa změní z *čeká* na skutečnou veřejnou ip adresu, použijte `CTRL-C` a zastavte tak proces kukátka `kubectl`. Následující příklad výstupu ukazuje platnou veřejnou IP adresu přiřazenou ke službě:
+Pokud se *IP* adresa změní z *čekání* na skutečnou veřejnou IP adresu, použijte k zastavení procesu sledování `kubectl` `CTRL-C`. Následující příklad výstupu ukazuje platnou veřejnou IP adresu přiřazenou ke službě:
 
 ```output
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
@@ -253,7 +254,7 @@ az group delete --name myResourceGroup --yes --no-wait
 > [!NOTE]
 > Při odstranění clusteru se neodebere instanční objekt služby Azure Active Directory používaný clusterem AKS. Postup odebrání instančního objektu najdete v tématu [AKS a informace o instančním objektu a jejich odstranění][sp-delete].
 
-## <a name="get-the-code"></a>Získat kód
+## <a name="get-the-code"></a>Získání kódu
 
 V tomto rychlém startu se k vytvoření nasazení Kubernetes použily předem vytvořené image kontejneru. Související kód aplikace, soubor Dockerfile a soubor manifestu Kubernetes jsou k dispozici na GitHubu.
 

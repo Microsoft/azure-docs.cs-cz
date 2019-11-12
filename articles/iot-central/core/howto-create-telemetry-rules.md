@@ -1,5 +1,5 @@
 ---
-title: Vytváření a Správa pravidel telemetrie v aplikaci Azure IoT Central | Microsoft Docs
+title: Použití pravidel telemetrie ve vaší aplikaci Azure IoT Central | Microsoft Docs
 description: Pravidla telemetrie Azure IoT Central umožňují monitorovat zařízení téměř v reálném čase a automaticky vyvolávat akce, jako je odeslání e-mailu, když se pravidlo aktivuje.
 author: ankitgupta
 ms.author: ankitgup
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d586f899a46a1404af6e798eda4d783a5a7ead85
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3b2fff84b70c5c5e37d14faa87143e5dacc82bce
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953782"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930181"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Vytvoření pravidla telemetrie a nastavení oznámení v aplikaci Azure IoT Central
 

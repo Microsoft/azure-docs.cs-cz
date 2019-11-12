@@ -1,18 +1,18 @@
 ---
-title: Ověřování mezi registry v úloze Azure Container Registry
-description: Povolte spravovanou identitu pro prostředky Azure v úloze Azure Container Registry (ACR), která umožňuje úloze přístup k jinému privátnímu registru kontejneru.
+title: Ověřování mezi registry z Azure Container Registry úlohy
+description: Konfigurace úlohy Azure Container Registry (úloha ACR) pro přístup k jinému privátnímu registru služby Azure Container Registry pomocí spravované identity pro prostředky Azure
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: danlep
-ms.openlocfilehash: 07fa7f3df5274ae88c93deac75093ead3f32f036
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f2ffb42ce109f5e6f7186461f931b7f8da57ff32
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509090"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931519"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Ověřování mezi registry v úloze ACR pomocí identity spravované službou Azure 
 
@@ -39,7 +39,7 @@ Pro tento článek potřebujete dva služby Azure Container Registry:
 
 Nahraďte vlastními názvy registru v pozdějších krocích.
 
-Pokud ještě nemáte potřebné registry kontejnerů Azure, přečtěte si [téma rychlý Start: Vytvoření soukromého registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md). Image ještě nemusíte vkládat do registru.
+Pokud ještě nemáte potřebné registry kontejnerů Azure, přečtěte si téma [rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md). Image ještě nemusíte vkládat do registru.
 
 ## <a name="prepare-base-registry"></a>Příprava základního registru
 
@@ -56,7 +56,7 @@ az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file D
 
 ## <a name="define-task-steps-in-yaml-file"></a>Definování kroků úkolu v souboru YAML
 
-Kroky pro tento příklad [úlohy s více kroky](container-registry-tasks-multi-step.md) jsou definovány v [souboru YAML](container-registry-tasks-reference-yaml.md). V místním pracovním adresáři `helloworldtask.yaml` vytvořte soubor s názvem a vložte následující obsah. Aktualizujte hodnotu `REGISTRY_NAME` v kroku sestavení s názvem serveru vašeho základního registru.
+Kroky pro tento příklad [úlohy s více kroky](container-registry-tasks-multi-step.md) jsou definovány v [souboru YAML](container-registry-tasks-reference-yaml.md). V místním pracovním adresáři vytvořte soubor s názvem `helloworldtask.yaml` a vložte následující obsah. Aktualizujte hodnotu `REGISTRY_NAME` v kroku sestavení s názvem serveru vašeho základního registru.
 
 ```yml
 version: v1.0.0
@@ -66,17 +66,17 @@ steps:
   - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
 ```
 
-Krok sestavení používá `Dockerfile-app` soubor v úložišti [Azure-Samples/ACR-Build-HelloWorld-Node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) k sestavení image. `--build-arg` Odkazuje na základní registr pro získání základní image. Po úspěšném sestavení se obrázek vloží do registru, který se používá ke spuštění úlohy.
+Krok sestavení používá soubor `Dockerfile-app` v úložišti [Azure-Samples/ACR-Build-HelloWorld-Node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) k sestavení image. `--build-arg` odkazuje na základní registr, aby bylo možné načíst základní image. Po úspěšném sestavení se obrázek vloží do registru, který se používá ke spuštění úlohy.
 
-## <a name="option-1-create-task-with-user-assigned-identity"></a>Možnost 1: Vytvořit úlohu s identitou přiřazenou uživatelem
+## <a name="option-1-create-task-with-user-assigned-identity"></a>Možnost 1: vytvoření úlohy s identitou přiřazenou uživatelem
 
-Kroky v této části vytvoří úlohu a umožní uživateli přiřazenou identitu. Pokud místo toho chcete povolit identitu přiřazenou systémem, přečtěte si [část možnost 2: Vytvoří úlohu s identitou](#option-2-create-task-with-system-assigned-identity)přiřazenou systémem. 
+Kroky v této části vytvoří úlohu a umožní uživateli přiřazenou identitu. Pokud místo toho chcete povolit identitu přiřazenou systémem, přečtěte si část [možnost 2: vytvoření úlohy s identitou přiřazenou systémem](#option-2-create-task-with-system-assigned-identity). 
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 
 ### <a name="create-task"></a>Vytvořit úlohu
 
-Vytvořte úlohu *helloworldtask* spuštěním následujícího příkazu [AZ ACR Task Create][az-acr-task-create] . Úloha se spouští bez kontextu zdrojového kódu a příkaz odkazuje na soubor `helloworldtask.yaml` v pracovním adresáři. `--assign-identity` Parametr předá ID prostředku identity přiřazené uživatelem. 
+Vytvořte úlohu *helloworldtask* spuštěním následujícího příkazu [AZ ACR Task Create][az-acr-task-create] . Úloha se spouští bez kontextu zdrojového kódu a příkaz odkazuje na soubor `helloworldtask.yaml` v pracovním adresáři. Parametr `--assign-identity` předává ID prostředku identity přiřazené uživatelem. 
 
 ```azurecli
 az acr task create \
@@ -89,13 +89,13 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
-## <a name="option-2-create-task-with-system-assigned-identity"></a>Možnost 2: Vytvořit úlohu s identitou přiřazenou systémem
+## <a name="option-2-create-task-with-system-assigned-identity"></a>Možnost 2: vytvoření úlohy s identitou přiřazenou systémem
 
-Kroky v této části vytvoří úlohu a povolí identitu přiřazenou systémem. Pokud místo toho chcete povolit uživatelsky přiřazenou identitu, přečtěte [si část možnost 1: Vytvoří úlohu s uživatelem přiřazenou identitou](#option-1-create-task-with-user-assigned-identity). 
+Kroky v této části vytvoří úlohu a povolí identitu přiřazenou systémem. Pokud místo toho chcete povolit uživatelsky přiřazenou identitu, přečtěte si část [možnost 1: vytvoření úlohy s identitou přiřazenou uživatelem](#option-1-create-task-with-user-assigned-identity). 
 
 ### <a name="create-task"></a>Vytvořit úlohu
 
-Vytvořte úlohu *helloworldtask* spuštěním následujícího příkazu [AZ ACR Task Create][az-acr-task-create] . Úloha se spouští bez kontextu zdrojového kódu a příkaz odkazuje na soubor `helloworldtask.yaml` v pracovním adresáři. `--assign-identity` Parametr bez hodnoty umožňuje systémem přiřazenou identitu daného úkolu. 
+Vytvořte úlohu *helloworldtask* spuštěním následujícího příkazu [AZ ACR Task Create][az-acr-task-create] . Úloha se spouští bez kontextu zdrojového kódu a příkaz odkazuje na soubor `helloworldtask.yaml` v pracovním adresáři. Parametr `--assign-identity` bez hodnoty umožňuje pro tuto úlohu přiřadit identitu systému. 
 
 ```azurecli
 az acr task create \
@@ -125,7 +125,7 @@ az role assignment create --assignee $principalID --scope $baseregID --role acrp
 
 ## <a name="add-target-registry-credentials-to-task"></a>Přidat do úlohy přihlašovací údaje pro cílový registr
 
-Teď pomocí příkazu [AZ ACR Task Credential Add][az-acr-task-credential-add] přidejte přihlašovací údaje identity k úloze, aby se mohla ověřit u základního registru. Spusťte příkaz odpovídající typu spravované identity, který jste povolili v úloze. Pokud jste povolili identitu přiřazenou uživatelem, předejte jí `--use-identity` ID klienta identity. Pokud jste povolili identitu přiřazenou systémem, předejte `--use-identity [system]`.
+Teď pomocí příkazu [AZ ACR Task Credential Add][az-acr-task-credential-add] přidejte přihlašovací údaje identity k úloze, aby se mohla ověřit u základního registru. Spusťte příkaz odpovídající typu spravované identity, který jste povolili v úloze. Pokud jste povolili uživatelem přiřazenou identitu, předejte `--use-identity` s ID klienta identity. Pokud jste povolili systémově přiřazenou identitu, předejte `--use-identity [system]`.
 
 ```azurecli
 # Add credentials for user-assigned identity to the task
@@ -214,7 +214,7 @@ Příklad výstupu:
 cf10
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o [Povolení spravované identity v ACR úloze](container-registry-tasks-authentication-managed-identity.md).
 * Další informace najdete v tématu [ACR Tasks YAML reference](container-registry-tasks-reference-yaml.md)

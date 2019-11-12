@@ -1,96 +1,154 @@
 ---
-title: Migrace z Azure Container Service (ACS) do služby Azure Kubernetes Service (AKS)
-description: Migrujte z Azure Container Service (ACS) do služby Azure Kubernetes Service (AKS).
+title: Migrace do služby Azure Kubernetes (AKS)
+description: Migrujte do služby Azure Kubernetes Service (AKS).
 services: container-service
-author: noelbundick
-manager: jeconnoc
+author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 06/13/2018
-ms.author: nobun
+ms.date: 11/07/2018
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 84e0af89e2b3247bc922ab84286a79a0934323a8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0c243d216e00adf49a6425e5b7be0d38caeef043
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473001"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929047"
 ---
-# <a name="migrate-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Migrace z Azure Container Service (ACS) do služby Azure Kubernetes Service (AKS)
+# <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrace do služby Azure Kubernetes (AKS)
 
-Tento článek vám pomůže naplánovat a provést úspěšnou migraci mezi Azure Container Service (ACS) pomocí služby Kubernetes a Azure Kubernetes Service (AKS). Tato příručka podrobně popisuje rozdíly mezi ACS a AKS a poskytuje přehled o procesu migrace.
+Tento článek vám pomůže s plánováním a spuštěním úspěšné migrace do služby Azure Kubernetes Service (AKS). V této příručce najdete podrobné informace o aktuálně Doporučené konfiguraci pro AKS, která vám pomůže při rozhodování. Tento článek se nezabývá každým scénářem a v případě potřeby obsahuje odkazy na podrobnější informace pro plánování úspěšné migrace.
 
-## <a name="differences-between-acs-and-aks"></a>Rozdíly mezi ACS a AKS
+Tento dokument se dá použít k podpoře následujících scénářů:
 
-Služby ACS a AKS se v některých klíčových oblastech, které mají vliv na migraci, liší. Před migrací byste měli zkontrolovat a naplánovat, aby se vyřešily následující rozdíly:
+* Migrace clusteru AKS s využitím [skupin dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) na [Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)
+* Migrace clusteru AKS na použití [standardního nástroje pro vyrovnávání zatížení SKU](https://docs.microsoft.com/azure/aks/load-balancer-standard)
+* Migrace z [Azure Container Service (ACS) – vyřazení z 31. ledna 2020](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/) do AKS
+* Migrace z [modulu AKS](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) na AKS
+* Migrace z clusterů Kubernetes založených na jiných než Azure na AKS
 
-* Uzly AKS používají [spravované disky](../virtual-machines/windows/managed-disks-overview.md).
-    * Než budete moct tyto nespravované disky připojit k AKS uzlům, je nutné je převést.
-    * Vlastní `StorageClass` objekty pro disky Azure se musí změnit z `unmanaged` na `managed`.
-    * Všechny `PersistentVolumes` by měly používat `kind: Managed`.
-* AKS podporuje [více fondů uzlů](https://docs.microsoft.com/azure/aks/use-multiple-node-pools).
-* Uzly založené na Windows serveru jsou momentálně ve [verzi Preview v AKS](https://azure.microsoft.com/blog/kubernetes-on-azure/).
-* AKS podporuje omezené sady [oblastí](https://docs.microsoft.com/azure/aks/quotas-skus-regions).
-* AKS je spravovaná služba s hostovanou rovinou ovládacího prvku Kubernetes. Pokud jste předtím změnili konfiguraci vašich hlavních serverů ACS, možná budete muset aplikace upravit.
+Při migraci zajistěte, aby vaše cílová verze Kubernetes byla v podporovaném okně pro AKS. Pokud používáte starší verzi, nemusí být v podporovaném rozsahu a vyžadovat, aby byly upgradované verze AKS podporovány. Další informace najdete v tématu [podporované verze Kubernetes pro AKS](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions) .
 
-## <a name="differences-between-kubernetes-versions"></a>Rozdíly mezi verzemi Kubernetes
+Pokud migrujete na novější verzi Kubernetes, zkontrolujte [zásady podpory pro verzi Kubernetes a zkosit](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-versions).
 
-Pokud migrujete na novější verzi Kubernetes, přečtěte si následující zdroje, abyste porozuměli strategiím správy verzí Kubernetes:
+Vaše migrace může pomáhat několik open-source nástrojů v závislosti na vašem scénáři:
 
-* [Zásady podpory pro zkosení verze Kubernetes a verze](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-versions)
+* [Velero](https://velero.io/) (vyžaduje Kubernetes 1.7 +)
+* [Rozšíření CLI Azure Kube](https://github.com/yaron2/azure-kube-cli)
+* [Posunutí](https://github.com/mhausenblas/reshifter)
 
-## <a name="migration-considerations"></a>Požadavky na migraci
+V tomto článku shrnujeme podrobnosti o migraci pro:
 
-### <a name="agent-pools"></a>Fondy agentů
+> [!div class="checklist"]
+> * AKS s Standard Load Balancer a Virtual Machine Scale Sets
+> * Existující připojené služby Azure
+> * Zajištění platných kvót
+> * Vysoká dostupnost a provozní kontinuita
+> * Požadavky na bezstavové aplikace
+> * Požadavky na stavové aplikace
+> * Nasazení konfigurace clusteru
 
-I když AKS spravuje rovinu ovládacího prvku Kubernetes, stále definujete velikost a počet uzlů, které chcete zahrnout do nového clusteru. Za předpokladu, že chcete, aby bylo mapování 1:1 z ACS na AKS, budete chtít zachytit existující informace o uzlu ACS. Tato data použijte při vytváření nového clusteru AKS.
+## <a name="aks-with-standard-load-balancer-and-virtual-machine-scale-sets"></a>AKS s Standard Load Balancer a Virtual Machine Scale Sets
 
-Příklad:
+AKS je spravovaná služba, která nabízí jedinečné možnosti s nižšími nároky na správu. V důsledku toho, že se jedná o spravovanou službu, musíte vybrat ze sady [oblastí](https://docs.microsoft.com/azure/aks/quotas-skus-regions) , které podporuje AKS. Přechod ze stávajícího clusteru do AKS může vyžadovat úpravu stávajících aplikací, aby zůstaly v dobrém stavu na rovině spravovaného řízení AKS.
 
-| Name (Název) | Počet | Velikost virtuálního počítače | Operační systém |
-| --- | --- | --- | --- |
-| agentpool0 | 3 | Standard_D8_v2 | Linux |
-| agentpool1 | 1\. místo | Standard_D2_v2 | Windows |
+Pro zajištění funkcí, jako je [více fondů uzlů](https://docs.microsoft.com/azure/aks/use-multiple-node-pools), [zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview), [autorizovaných rozsahů IP adres](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges), [automatického škálování clusteru](https://docs.microsoft.com/azure/aks/cluster-autoscaler), [Azure Policy pro AKS](https://docs.microsoft.com/azure/governance/policy/concepts/rego-for-aks)a dalších nových funkcí, doporučujeme používat clustery AKS, které jsou založené na [Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets) a [Azure Standard Load Balancer](https://docs.microsoft.com/azure/aks/load-balancer-standard) .   
 
-Vzhledem k tomu, že během migrace budou do svého předplatného nasazené další virtuální počítače, měli byste ověřit, že vaše kvóty a limity jsou pro tyto prostředky dostatečné. 
+AKS clustery zajištěné [sadami dostupnosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machine-scale-sets/availability#availability-sets) neobsahují podporu pro mnohé z těchto funkcí.
+
+Následující příklad vytvoří cluster AKS s jediným fondem uzlů zálohovaným sadou škálování virtuálního počítače. Používá standardní nástroj pro vyrovnávání zatížení. Povoluje taky automatické škálování clusteru ve fondu uzlů pro cluster a nastavuje minimálně *1* a maximálně *3* uzly:
+
+```azurecli-interactive
+# First create a resource group
+az group create --name myResourceGroup --location eastus
+
+# Now create the AKS cluster and enable the cluster autoscaler
+az aks create \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --node-count 1 \
+  --vm-set-type VirtualMachineScaleSets \
+  --load-balancer-sku standard \
+  --enable-cluster-autoscaler \
+  --min-count 1 \
+  --max-count 3
+```
+
+## <a name="existing-attached-azure-services"></a>Existující připojené služby Azure
+
+Při migraci clusterů máte pravděpodobně připojené externí služby Azure. Ty nevyžadují opětovné vytvoření prostředků, ale budou vyžadovat aktualizaci připojení z předchozích na nové clustery, aby bylo možné zachovat funkčnost.
+
+* Azure Container Registry
+* Log Analytics
+* Application Insights
+* Traffic Manager
+* Účet úložiště
+* Externí databáze
+
+## <a name="ensure-valid-quotas"></a>Zajištění platných kvót
+
+Vzhledem k tomu, že během migrace budou do svého předplatného nasazené další virtuální počítače, měli byste ověřit, že vaše kvóty a limity jsou pro tyto prostředky dostatečné. Možná budete muset požádat o zvýšení [kvóty vCPU](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
+
+Možná budete muset požádat o zvýšení [kvót sítě](https://docs.microsoft.com/azure/azure-supportability/networking-quota-requests) , abyste se ujistili, že nevyčerpáte IP adresy. Další informace najdete v tématu [sítě a rozsahy IP adres pro AKS](https://docs.microsoft.com/azure/aks/configure-kubenet) .
 
 Další informace najdete v tématu [omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-subscription-service-limits). Pokud chcete zjistit aktuální kvóty, v Azure Portal v okně pro [předplatné](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)vyberte své předplatné a pak vyberte **využití + kvóty**.
 
-### <a name="networking"></a>Sítě
+## <a name="high-availability-and-business-continuity"></a>Vysoká dostupnost a provozní kontinuita
+
+Pokud vaše aplikace nemůže zvládnout výpadky, budete muset dodržovat osvědčené postupy pro scénáře migrace s vysokou dostupností.  Osvědčené postupy pro komplexní plánování kontinuity podnikových procesů, zotavení po havárii a maximalizaci doby provozu jsou nad rámec tohoto dokumentu.  Další informace o [osvědčených postupech pro zajištění kontinuity podnikových procesů a zotavení po havárii ve službě Azure Kubernetes Service (AKS) získáte v článku o osvědčených postupech](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region) .
 
 U složitých aplikací se obvykle provádí migrace v čase, nikoli najednou. To znamená, že stará a nová prostředí můžou potřebovat komunikovat přes síť. Aplikace, které dřív používaly `ClusterIP` služby ke komunikaci, můžou být nutné vystavit jako `LoadBalancer` typu a správně zabezpečit.
 
 K dokončení migrace budete chtít klienty nasměrovat na nové služby, které běží na AKS. Pro přesměrování provozu doporučujeme, abyste provedli aktualizaci DNS tak, aby odkazovaly na Load Balancer, která je umístěná před clusterem AKS.
 
-### <a name="stateless-applications"></a>Bezstavové aplikace
+Služba [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) může směrovat zákazníky na požadovaný cluster Kubernetes a instanci aplikace.  Traffic Manager je nástroj pro vyrovnávání zatížení pro provoz založený na DNS, který může distribuovat síťový provoz napříč oblastmi.  Abyste dosáhli nejlepšího výkonu a redundance, přesměrujte veškerý provoz aplikací prostřednictvím Traffic Manager před tím, než přejdete do clusteru AKS.  V nasazení s více clustery by se zákazníci měli připojit k Traffic Manager názvu DNS, který odkazuje na služby na jednotlivých clusterech AKS. Tyto služby definujte pomocí koncových bodů Traffic Manager. Každý koncový bod je *IP adresa nástroje pro vyrovnávání zatížení služby*. Pomocí této konfigurace můžete směrovat síťový provoz z Traffic Manager koncového bodu v jedné oblasti do koncového bodu v jiné oblasti.
 
-Nestavová migrace aplikace je nejjednodušším případem. Vaše definice YAML se aplikují na nový cluster, ujistěte se, že vše funguje podle očekávání, a přesměrujte provoz na aktivaci nového clusteru.
+![AKS s Traffic Manager](media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png)
 
-### <a name="stateful-applications"></a>Stavové aplikace
+[Služba front-dveří Azure](https://docs.microsoft.com/azure/frontdoor/front-door-overview) je další možností pro směrování provozu pro clustery AKS.  Služba Azure Front Door vám umožňuje definovat, spravovat a monitorovat globální směrování webového provozu tím, že provádí optimalizaci pro nejlepší výkon a poskytuje okamžité globální převzetí služeb při selhání, aby byla zajištěna vysoká dostupnost. 
+
+### <a name="considerations-for-stateless-applications"></a>Požadavky na bezstavové aplikace 
+
+Nestavová migrace aplikace je nejjednodušším případem. Použijte definice prostředků (YAML nebo Helm) na nový cluster, ujistěte se, že vše funguje podle očekávání, a přesměrujte provoz na aktivaci nového clusteru.
+
+### <a name="considers-for-stateful-applications"></a>Vyvažovat za stavové aplikace
 
 Pečlivě naplánujte migraci stavových aplikací, abyste se vyhnuli ztrátě dat nebo neočekávanému výpadku.
 
-#### <a name="highly-available-applications"></a>Vysoce dostupné aplikace
+Pokud používáte soubory Azure, můžete sdílenou složku připojit jako svazek do nového clusteru:
+* [Připojit statické soubory Azure jako svazek](https://docs.microsoft.com/azure/aks/azure-files-volume#mount-the-file-share-as-a-volume)
 
-V konfiguraci vysoké dostupnosti můžete nasazovat některé stavové aplikace. Tyto aplikace mohou kopírovat data mezi replikami. Pokud tento způsob nasazení aktuálně používáte, může být možné vytvořit nového člena v novém clusteru AKS a pak migrovat s minimálním účinkem na volajících. Obecně platí postup migrace pro tento scénář:
+Pokud používáte Azure Managed Disks, můžete disk připojit pouze v případě, že je nepřipojen k žádnému virtuálnímu počítači:
+* [Připojit statický disk Azure jako svazek](https://docs.microsoft.com/azure/aks/azure-disk-volume#mount-disk-as-volume)
 
-1. Vytvoří novou sekundární repliku v AKS.
-2. Počkejte na replikaci dat.
-3. Převzetí služeb při selhání za účelem vytvoření sekundární repliky jako nového primárního.
-4. Nasměrujte provoz do clusteru AKS.
+Pokud ani jeden z těchto přístupů nefunguje, můžete použít možnosti zálohování a obnovení:
+* [Velero v Azure](https://github.com/heptio/velero/blob/master/site/docs/master/azure-config.md)
+
+#### <a name="azure-files"></a>Soubory Azure
+
+Na rozdíl od disků je možné soubory Azure připojit k více hostitelům současně. V clusteru AKS vám Azure a Kubernetes nebrání v vytváření pod tím, že váš cluster ACS stále používá. Aby nedošlo ke ztrátě dat a neočekávanému chování, zajistěte, aby clustery nepsaly do stejných souborů současně.
+
+Pokud vaše aplikace může hostovat několik replik, které odkazují na stejnou sdílenou složku, postupujte podle kroků migrace bez stavů a nasaďte definice YAML do nového clusteru. Pokud ne, jeden z možných způsobů migrace zahrnuje následující kroky:
+
+* Ověřte, že aplikace funguje správně.
+* Nasměrujte svůj živý provoz do nového clusteru AKS.
+* Odpojte původní cluster.
+
+Pokud chcete začít s prázdnou sdílenou složkou a vytvořit kopii zdrojových dat, můžete k migraci dat použít [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) příkazy.
+
 
 #### <a name="migrating-persistent-volumes"></a>Migrace trvalých svazků
 
 Pokud migrujete existující trvalé svazky na AKS, obecně postupujte podle těchto kroků:
 
-1. Neuvést do stavu zápisy do aplikace. (Tento krok je nepovinný a vyžaduje výpadek.)
-2. Pořizovat snímky disků.
-3. Vytvořte nové spravované disky ze snímků.
-4. Vytvořte v AKS trvalé svazky.
-5. V případě, že chcete [použít existující svazky](https://docs.microsoft.com/azure/aks/azure-disk-volume) místo PersistentVolumeClaims (statické zřizování), aktualizujte specifikace pod.
-6. Nasaďte aplikaci do AKS.
-7. Oproti.
-8. Nasměrujte provoz do clusteru AKS.
+* Neuvést do stavu zápisy do aplikace. (Tento krok je nepovinný a vyžaduje výpadek.)
+* Pořizovat snímky disků.
+* Vytvořte nové spravované disky ze snímků.
+* Vytvořte v AKS trvalé svazky.
+* V případě, že chcete [použít existující svazky](https://docs.microsoft.com/azure/aks/azure-disk-volume) místo PersistentVolumeClaims (statické zřizování), aktualizujte specifikace pod.
+* Nasaďte aplikaci do AKS.
+* Ověřte, že aplikace funguje správně.
+* Nasměrujte svůj živý provoz do nového clusteru AKS.
 
 > [!IMPORTANT]
 > Pokud se rozhodnete neuvést zápisy do nečinnosti, bude nutné replikovat data do nového nasazení. V opačném případě nebudete mít data, která byla napsána po provedení snímků disku.
@@ -100,51 +158,24 @@ Některé open source nástroje vám pomůžou vytvořit spravované disky a mig
 * [Rozšíření kopírování disku Azure CLI](https://github.com/noelbundick/azure-cli-disk-copy-extension) : zkopíruje a převede disky mezi skupinami prostředků a oblastmi Azure.
 * [Rozšíření Azure Kube CLI](https://github.com/yaron2/azure-kube-cli) vyčísluje svazky Kubernetes ACS a migruje je do clusteru AKS.
 
-#### <a name="azure-files"></a>Azure Files
 
-Na rozdíl od disků je možné soubory Azure připojit k více hostitelům současně. V clusteru AKS vám Azure a Kubernetes nebrání v vytváření pod tím, že váš cluster ACS stále používá. Aby nedošlo ke ztrátě dat a neočekávanému chování, zajistěte, aby clustery nepsaly do stejných souborů současně.
+### <a name="deployment-of-your-cluster-configuration"></a>Nasazení konfigurace clusteru
 
-Pokud vaše aplikace může hostovat několik replik, které odkazují na stejnou sdílenou složku, postupujte podle kroků migrace bez stavů a nasaďte definice YAML do nového clusteru. Pokud ne, jeden z možných způsobů migrace zahrnuje následující kroky:
+Doporučujeme použít stávající kanál průběžné integrace (CI) a průběžné doručování (CD) k nasazení známé konfigurace do AKS. Pomocí Azure Pipelines můžete [vytvářet a nasazovat své aplikace, abyste AKS](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops) klonování stávajících úloh nasazení a zajistili, že `kubeconfig` odkazuje na nový cluster AKS.
 
-1. Nasaďte aplikaci do AKS s počtem replik 0.
-2. Škálovat aplikaci na ACS na 0. (Tento krok vyžaduje výpadek.)
-3. Škálujte aplikaci na AKS až na 1.
-4. Oproti.
-5. Nasměrujte provoz do clusteru AKS.
-
-Pokud chcete začít s prázdnou sdílenou složkou a vytvořit kopii zdrojových dat, můžete k migraci dat použít [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) příkazy.
-
-### <a name="deployment-strategy"></a>Strategie nasazení
-
-Pro nasazení známé konfigurace do AKS doporučujeme použít stávající kanál CI/CD. Naklonujte stávající úlohy nasazení a zajistěte, aby `kubeconfig` odkazovaly na nový cluster AKS.
-
-Pokud to není možné, exportujte definice prostředků z ACS a pak je použijte na AKS. K exportu objektů můžete použít `kubectl`.
+Pokud to není možné, exportujte definice prostředků ze stávajícího clusteru Kubernetes a pak je použijte na AKS. K exportu objektů můžete použít `kubectl`.
 
 ```console
 kubectl get deployment -o=yaml --export > deployments.yaml
 ```
 
-V závislosti na potřebách nasazení může pomáhat několik open-source nástrojů:
+V tomto článku jsme shrnuti podrobnosti o migraci pro:
 
-* [Velero](https://github.com/heptio/ark) (Tento nástroj vyžaduje Kubernetes 1,7.)
-* [Rozšíření CLI Azure Kube](https://github.com/yaron2/azure-kube-cli)
-* [Posunutí](https://github.com/mhausenblas/reshifter)
-
-## <a name="migration-steps"></a>Kroky migrace
-
-1. [Vytvořte cluster AKS](https://docs.microsoft.com/azure/aks/create-cluster) prostřednictvím Azure Portal, Azure CLI nebo šablony Azure Resource Manager.
-
-   > [!NOTE]
-   > V úložišti [Azure/AKS](https://github.com/Azure/AKS/tree/master/examples/vnet) na GitHubu najdete ukázku šablon Azure Resource Manager pro AKS.
-
-2. Proveďte potřebné změny v definicích YAML. `apps/v1beta1` například nahraďte `apps/v1` pro `Deployments`.
-
-3. [Migrujte svazky](#migrating-persistent-volumes) (volitelné) z vašeho clusteru ACS do clusteru AKS.
-
-4. K nasazení aplikací do AKS použijte svůj systém CI/CD. Nebo použijte kubectl k použití definicí YAML.
-
-5. Oproti. Ujistěte se, že vaše aplikace fungují podle očekávání a že se přesunula veškerá migrovaná data.
-
-6. Přesměrování provozu. Aktualizujte DNS tak, aby odkazovaly na klienty na nasazení AKS.
-
-7. Dokončete úkoly po migraci. Pokud jste migrovali svazky a neuvedli do nečinnosti zápisy, zkopírujte tato data do nového clusteru.
+> [!div class="checklist"]
+> * AKS s Standard Load Balancer a Virtual Machine Scale Sets
+> * Existující připojené služby Azure
+> * Zajištění platných kvót
+> * Vysoká dostupnost a provozní kontinuita
+> * Požadavky na bezstavové aplikace
+> * Požadavky na stavové aplikace
+> * Nasazení konfigurace clusteru

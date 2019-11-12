@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: sandeep.pujar
-ms.openlocfilehash: 0969ee6dbc035ffa105dd54d34f3b4711d4915cf
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e46d4f99075a0d3fa326c84e17792b8959e23517
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951208"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930221"
 ---
 # <a name="connect-sensortilebox-device-to-your-azure-iot-central-application"></a>Připojení zařízení SensorTile. box k aplikaci Azure IoT Central
 
@@ -84,22 +84,22 @@ V této části se dozvíte, jak připojit SensorTile. box do mobilní aplikace 
 
 Aplikace vytvořená v šabloně zařízení SensorTile. box s následujícími charakteristikami:
 
-### <a name="telemetry"></a>Telemetrie
+### <a name="telemetry"></a>Telemetrická data
 
 | Název pole     | Jednotky  | Minimální | Maximum | Desetinná místa |
 | -------------- | ------ | ------- | ------- | -------------- |
-| vlhkost       | %      | 30       | 90     | 1\. místo              |
-| názvem           | 7C     | 0     | 40     | 1\. místo              |
-| tlak       | mbar    | 900     | 1100    | 2              |
-| magnetometerX  | mgauss | -1000   | 1 000    | 0              |
-| magnetometerY  | mgauss | -1000   | 1 000    | 0              |
-| magnetometerZ  | mgauss | -1000   | 1 000    | 0              |
+| vlhkost       | %      | 30       | 90     | 1              |
+| názvem           | 7C     | 0     | 40     | 1              |
+| pressure       | mbar    | 900     | 1100    | 2              |
+| magnetometerX  | mgauss | -1000   | 1000    | 0              |
+| magnetometerY  | mgauss | -1000   | 1000    | 0              |
+| magnetometerZ  | mgauss | -1000   | 1000    | 0              |
 | accelerometerX | mg/Nm3     | -2000   | 2000    | 0              |
 | akcelerometr | mg/Nm3     | -2000   | 2000    | 0              |
 | accelerometerZ | mg/Nm3     | -2000   | 2000    | 0              |
-| gyroscopeX     | DPS   | -3276   | 3276    | 1\. místo              |
-| gyroscopeY     | DPS   | -3276   | 3276    | 1\. místo              |
-| gyroscopeZ     | DPS   | -3276   | 3276    | 1\. místo              |
+| gyroscopeX     | DPS   | -3276   | 3276    | 1              |
+| gyroscopeY     | DPS   | -3276   | 3276    | 1              |
+| gyroscopeZ     | DPS   | -3276   | 3276    | 1              |
 | FFT_X     |    |    |     |               |
 | FFT_Y     |    |    |     |               |
 | FFT_Z     |    |    |     |               |

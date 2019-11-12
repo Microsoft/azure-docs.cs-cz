@@ -1,5 +1,5 @@
 ---
-title: Omezení přístupu ke službě Azure Container Registry z virtuální sítě
+title: Omezení přístupu k Azure Container Registry pomocí virtuální sítě
 description: Povolte přístup ke službě Azure Container Registry jenom z prostředků ve službě Azure Virtual Network nebo z rozsahů veřejných IP adres.
 services: container-registry
 author: dlepow
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: 3050a52da4d39657bd7b2fb38e235b9bd418faf4
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 5ba5c180def9539c486fb8727a0a78b4f98fa185
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619879"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931323"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Omezení přístupu ke službě Azure Container Registry pomocí virtuální sítě Azure nebo pravidel brány firewall
 
@@ -42,7 +42,7 @@ Pokud místo toho potřebujete nastavit pravidla přístupu pro prostředky, aby
 
 * K používání kroků Azure CLI v tomto článku se vyžaduje Azure CLI verze 2.0.58 nebo novější. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli].
 
-* Pokud ještě nemáte registr kontejneru, vytvořte si ho (vyžaduje se Premium SKU) a nahrajte do něj ukázkovou image `hello-world` , jako je například Docker Hub. K vytvoření registru použijte například [Azure Portal][quickstart-portal] nebo rozhraní příkazového [řádku Azure][quickstart-cli] . 
+* Pokud ještě nemáte registr kontejneru, vytvořte si ho (vyžaduje se Premium SKU) a nahrajte do něj ukázkovou image, jako je například `hello-world` z Docker Hub. K vytvoření registru použijte například [Azure Portal][quickstart-portal] nebo rozhraní příkazového [řádku Azure][quickstart-cli] . 
 
 * Pokud chcete omezit přístup k registru pomocí virtuální sítě v jiném předplatném Azure, musíte zaregistrovat poskytovatele prostředků pro Azure Container Registry v tomto předplatném. Příklad:
 
@@ -54,7 +54,7 @@ Pokud místo toho potřebujete nastavit pravidla přístupu pro prostředky, aby
 
 ## <a name="about-network-rules-for-a-container-registry"></a>O síťových pravidlech pro Registry kontejneru
 
-Služba Azure Container Registry ve výchozím nastavení přijímá připojení přes Internet z hostitelů v libovolné síti. Pomocí virtuální sítě můžete pro zabezpečený přístup k registru použít jenom prostředky Azure, jako je cluster AKS nebo virtuální počítač Azure, aniž byste museli přepracovat přes hranici sítě. Můžete také nakonfigurovat pravidla brány firewall sítě tak, aby byly povolené konkrétní veřejné rozsahy IP adres Internetu. 
+Služba Azure Container Registry ve výchozím nastavení přijímá připojení přes Internet z hostitelů v libovolné síti. Pomocí virtuální sítě můžete pro zabezpečený přístup k registru použít jenom prostředky Azure, jako je cluster AKS nebo virtuální počítač Azure, aniž byste museli přepracovat přes hranici sítě. Můžete také nakonfigurovat pravidla brány firewall sítě tak, aby povolovala jenom specifické rozsahy veřejných internetových IP adres. 
 
 Chcete-li omezit přístup k registru, nejprve změňte výchozí akci registru tak, aby odepřela všechna síťová připojení. Pak přidejte pravidla přístupu k síti. Klienti s uděleným přístupem přes Síťová pravidla musí pokračovat [v ověřování v registru kontejnerů](https://docs.microsoft.com/azure/container-registry/container-registry-authentication) a mít oprávnění k přístupu k datům.
 
@@ -62,7 +62,7 @@ Chcete-li omezit přístup k registru, nejprve změňte výchozí akci registru 
 
 Pro povolení přístupu z podsítě ve virtuální síti musíte přidat [koncový bod služby](../virtual-network/virtual-network-service-endpoints-overview.md) pro službu Azure Container Registry. 
 
-Víceklientské služby, jako je Azure Container Registry, používají jednu sadu IP adres pro všechny zákazníky. Koncový bod služby přiřadí koncový bod pro přístup k registru. Tento koncový bod poskytuje přenos optimální trasy k prostředku prostřednictvím páteřní sítě Azure. Identity virtuální síť a podsíť také přenášejí spolu s každou žádostí.
+Víceklientské služby, jako je Azure Container Registry, používají jednu sadu IP adres pro všechny zákazníky. Koncový bod služby přiřadí koncový bod pro přístup k registru. Tento koncový bod poskytuje přenos optimální trasy k prostředku prostřednictvím páteřní sítě Azure. Identity virtuální sítě a podsítě jsou také přenášeny s každým požadavkem.
 
 ### <a name="firewall-rules"></a>Pravidla brány firewall
 
@@ -89,7 +89,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Vytvoření virtuálního počítače trvá několik minut. Po dokončení příkazu si poznamenejte `publicIpAddress` zobrazené v Azure CLI. Tato adresa slouží k vytvoření připojení SSH k virtuálnímu počítači a volitelně pro pozdější nastavení pravidel brány firewall.
+Vytvoření virtuálního počítače trvá několik minut. Když se příkaz dokončí, poznamenejte si `publicIpAddress` zobrazované rozhraním Azure CLI. Tato adresa slouží k vytvoření připojení SSH k virtuálnímu počítači a volitelně pro pozdější nastavení pravidel brány firewall.
 
 ### <a name="install-docker-on-the-vm"></a>Instalace Docker na virtuálním počítači
 
@@ -218,7 +218,7 @@ Ve výchozím nastavení umožňuje služba Azure Container Registry připojení
 
 1. Na portálu přejděte do registru kontejneru.
 1. V části **Nastavení**vyberte **Brána firewall a virtuální sítě**.
-1. Ve výchozím nastavení odepření přístupu, zvolit povolení přístupu z **vybrané sítě**. 
+1. Chcete-li odepřít přístup ve výchozím nastavení, vyberte možnost povolit přístup z **vybraných sítí**. 
 1. Vyberte **Přidat existující virtuální síť**a vyberte virtuální síť a podsíť, kterou jste nakonfigurovali pomocí koncového bodu služby. Vyberte **Přidat**.
 1. Vyberte **Uložit**.
 
@@ -310,7 +310,7 @@ Až několik minut počkejte, než se konfigurace aktualizuje, ověřte, že vir
 az acr login --name mycontainerregistry
 ```
 
-Můžete provést operace v registru, jako je `docker pull` třeba spustit, a načíst z registru ukázkový obraz. Nahraďte image a hodnotu značky, která je vhodná pro váš registr, s předponou názvu přihlašovacího serveru registru (všechna malá písmena):
+Můžete provést operace v registru, jako je třeba spustit `docker pull`, a načíst z registru ukázkovou image. Nahraďte image a hodnotu značky, která je vhodná pro váš registr, s předponou názvu přihlašovacího serveru registru (všechna malá písmena):
 
 ```bash
 docker pull mycontainerregistry.azurecr.io/hello-world:v1
@@ -318,7 +318,7 @@ docker pull mycontainerregistry.azurecr.io/hello-world:v1
 
 Docker úspěšně načte image do virtuálního počítače.
 
-Tento příklad ukazuje, že máte přístup k privátnímu registru kontejneru prostřednictvím pravidla přístupu k síti. K registru ale nelze přistupovat z jiného hostitele přihlášení, který nemá nakonfigurováno pravidlo přístupu k síti. Pokud se pokusíte přihlásit z jiného hostitele pomocí `az acr login` příkazu nebo `docker login` příkazu, výstup je podobný následujícímu:
+Tento příklad ukazuje, že máte přístup k privátnímu registru kontejneru prostřednictvím pravidla přístupu k síti. K registru ale nelze přistupovat z jiného hostitele přihlášení, který nemá nakonfigurováno pravidlo přístupu k síti. Pokud se pokusíte přihlásit z jiného hostitele pomocí příkazu `az acr login` nebo příkazu `docker login`, výstup je podobný následujícímu:
 
 ```Console
 Error response from daemon: login attempt to https://xxxxxxx.azurecr.io/v2/ failed with status: 403 Forbidden
@@ -355,7 +355,7 @@ az acr network-rule remove \
   --ip-address 23.45.1.0/24
 ```
 
-#### <a name="allow-access"></a>Povolit přístup
+#### <a name="allow-access"></a>Povolení přístupu
 
 Název registru nahraďte následujícím příkazem [AZ ACR Update][az-acr-update] :
 ```azurecli
@@ -381,7 +381,7 @@ az group delete --name myResourceGroup
 
 Pokud chcete prostředky vyčistit na portálu, přejděte do skupiny prostředků myResourceGroup. Po načtení skupiny prostředků klikněte na **Odstranit skupinu prostředků** a odeberte skupinu prostředků a prostředky, které jsou tam uložené.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto článku jsme popisovali několik prostředků virtuální sítě a funkcí, ale krátce. Dokumentace k Azure Virtual Network zahrnuje i rozsáhlá témata:
 

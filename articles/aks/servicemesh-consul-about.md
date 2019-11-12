@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: 7bf979e4f828b6971603d31ba5ba9e8bc791f799
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 7ffbd2386cd0e50cec8976e6bdd6c5778aa014d7
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530690"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928431"
 ---
 # <a name="consul"></a>Consul
 
@@ -36,7 +36,7 @@ Následující diagram architektury znázorňuje, jak různé komponenty v rovin
 
 ## <a name="selection-criteria"></a>Kritéria výběru
 
-Při hodnocení linkeru pro vaše úlohy je důležité pochopit a zvážit následující oblasti:
+Při vyhodnocování Consul pro vaše úlohy je důležité pochopit a vzít v úvahu následující oblasti:
 
 - [Principy Consul](#consul-principles)
 - [Vestavěn](#capabilities)
