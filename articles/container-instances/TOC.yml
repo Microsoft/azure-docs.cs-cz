@@ -91,6 +91,8 @@
       items:
         - name: Konfigurace testů aktivity
           href: container-instances-liveness-probe.md
+        - name: Konfigurace testů připravenosti
+          href: container-instances-readiness-probe.md
         - name: Zastavení a spuštění kontejnerů
           href: container-instances-stop-start.md
         - name: Aktualizace spuštěných kontejnerů

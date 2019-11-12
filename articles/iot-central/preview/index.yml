@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Dokumentace ke službě Azure IoT Central
+title: Dokumentace k řešení Azure IoT Central (funkce Preview)
 summary: Azure IoT Central je plně spravované řešení SaaS (software jako služba), které usnadňuje propojení, monitorování a správu vašich prostředků IoT ve velkém měřítku. Azure IoT Central zjednodušuje počáteční nastavení vašeho řešení IoT a snižuje zátěž související se správou, provozními náklady a režií obvyklou pro projekty IoT. Naše rychlé starty a kurzy vás naučí vytvářet, přizpůsobovat, spravovat a využívat aplikace Azure IoT Central.
 metadata:
   title: Dokumentace ke službě Azure IoT Central
@@ -10,14 +10,14 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: d769b906324c1022baffff198fea6e4e44821757
-  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+  ms.openlocfilehash: 90faa0b7422814011096a10164a6f2bdfceba4d5
+  ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 11/09/2019
-  ms.locfileid: "73891801"
+  ms.lasthandoff: 11/12/2019
+  ms.locfileid: "73929851"
 landingContent:
-- title: Informace o službě Azure IoT Central
+- title: Informace o službě Azure IoT Central (funkce Preview)
   linkLists:
   - linkListType: overview
     links:

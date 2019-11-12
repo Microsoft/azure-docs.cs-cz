@@ -150,6 +150,8 @@
               href: check-cluster-health.md
         - name: Databáze
           items:
+            - name: Následnické databáze
+              href: follower.md
             - name: Správa databázových oprávnění
               href: manage-database-permissions.md
             - name: Zásady

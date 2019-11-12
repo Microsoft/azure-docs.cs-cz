@@ -1,6 +1,6 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure SQL Database – funkce
+title: Funkce
 metadata:
   document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
   title: Azure SQL Database – funkce
@@ -17,34 +17,34 @@ metadata:
 sections:
   - items:
       - type: paragraph
-        text: 'Azure SQL Database je větší než classic relačním databázovém stroji, který umožňuje dotazování dat pomocí jazyka SQL. Funkce databáze ve službě Azure SQL Database umožňují provádět další operace výkonných a implementace pokročilých scénářů.'
+        text: 'Azure SQL Database není jenom klasický relační databázový stroj, který vám umožňuje dotazování dat s využitím jazyka SQL. Databázové funkce v Azure SQL Database umožňují provádět výkonnější operace a implementovat pokročilé scénáře.'
       - type: list
         style: cards
         className: cardsM
         columns: 3
         items:
-          - title: V začleňování paměťových technologií
+          - title: Paměťové technologie
             href: /azure/sql-database/sql-database-in-memory
-            html: <p>Implementujte vysoce výkonné aplikace pomocí technologií v paměti.</p>
+            html: <p>Implementace vysoce výkonných aplikací s využitím paměťových technologií</p>
           - title: Možnosti s více modely
             href: /azure/sql-database/sql-database-multi-model-features
-            html: '<p>Další informace o grafu, JSON, XML, prostorových funkcí ve službě Azure SQL Database.</p>'
+            html: '<p>Další informace o funkcích Graph, JSON, XML a prostorových funkcí v Azure SQL Database</p>'
           - title: Transakční replikace
             href: /azure/sql-database/sql-database-managed-instance-transactional-replication
-            html: <p>Replikujte data mezi tabulky Azure SQL Database a SQL Server.</p>
+            html: <p>Replikace dat mezi tabulkami služby Azure SQL Database a SQL Serveru</p>
           - title: Synchronizace dat
             href: /azure/sql-database/sql-database-sync-data
-            html: <p>Synchronizace dat mezi několika databázemi SQL a instance systému SQL Server.</p>
+            html: <p>Synchronizace dat napříč několika databázemi SQL a instancemi SQL Serveru</p>
           - title: Automatizace úloh
             href: /azure/sql-database/sql-database-job-automation-overview
-            html: <p>Naplánujte opakované úlohy pomocí agenta SQL a elastické úlohy.</p>
+            html: <p>Plánování opakujících se úloh pomocí agenta SQL a elastických úloh</p>
           - title: Dočasné tabulky
             href: /azure/sql-database/sql-database-temporal-tables
-            html: <p>Sledovat a analyzovat kompletní historii změn ve vašich datech.</p>
-  - title: Další materiály
+            html: <p>Sledování a analýza úplné historie změn ve vašich datech</p>
+  - title: Další zdroje informací
     items:
       - type: list
         style: ordered
         items:
-          - html: Další informace o <a href="/azure/sql-database/sql-database-features">rozdíly mezi SQL serverem a Azure SQL database funkce</a>.
-          - html: Další informace o použití těchto funkcí v <a href="/azure/sql-database/sql-database-howto">postupy vodítka</a>.
+          - html: Projděte si další informace o <a href="/azure/sql-database/sql-database-features">rozdílech mezi funkcemi SQL Serveru a služby Azure SQL Database</a>.
+          - html: Informace o využití těchto funkcí najdete v <a href="/azure/sql-database/sql-database-howto">praktických průvodcích</a>.

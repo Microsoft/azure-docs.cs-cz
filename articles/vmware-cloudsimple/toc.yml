@@ -134,6 +134,8 @@
               href: azure-expressroute-connection.md
             - name: Konfigurace překladu názvů DNS
               href: on-premises-dns-setup.md
+            - name: Konfigurace vysoce dostupných připojení site-to-site VPN
+              href: high-availability-vpn-connection.md
         - name: Platforma VMware
           items:
             - name: Seznámení s modelem oprávnění privátního cloudu

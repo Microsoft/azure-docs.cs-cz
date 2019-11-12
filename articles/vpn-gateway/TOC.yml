@@ -134,18 +134,18 @@
               href: point-to-site-vpn-client-configuration-radius.md
             - name: Integrace ověřování P2S VPN RADIUS s využitím serveru NPS
               href: vpn-gateway-radiuis-mfa-nsp.md
+        - name: Ověřování Azure AD
+          items:
+            - name: Konfigurace tenanta
+              href: openvpn-azure-ad-tenant.md
+            - name: Konfigurace klienta VPN
+              href: openvpn-azure-ad-client.md
         - name: OpenVPN
           items:
             - name: Konfigurace OpenVPN pro připojení typu point-to-site
               href: vpn-gateway-howto-openvpn.md
             - name: Konfigurace klientů OpenVPN
               href: vpn-gateway-howto-openvpn-clients.md
-            - name: OpenVPN – ověřování Azure Active Directory
-              items:
-                - name: Konfigurace tenanta Azure AD
-                  href: openvpn-azure-ad-tenant.md
-                - name: Konfigurace klienta VPN – Azure AD
-                  href: openvpn-azure-ad-client.md
         - name: Přechod na certifikát veřejné brány CA pro P2S
           href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: Konfigurace tunelu zařízení VPN AlwaysOn

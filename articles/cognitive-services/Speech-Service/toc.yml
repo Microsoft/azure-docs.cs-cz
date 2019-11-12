@@ -39,6 +39,10 @@
           href: how-to-automatic-language-detection.md
         - name: Použití komprimovaných formátů zvukového vstupu
           href: how-to-use-codec-compressed-audio-input-streams.md
+        - name: Použití komprimovaných formátů zvukového vstupu (iOS)
+          href: how-to-use-codec-compressed-audio-input-streams-ios.md
+        - name: Použití komprimovaných formátů zvukového vstupu (Android)
+          href: how-to-use-codec-compressed-audio-input-streams-android.md
         - name: Použití rozpoznávání řeči s kontejnery Docker
           href: speech-container-howto.md?tabs=stt
     - name: Referenční informace
@@ -200,11 +204,11 @@
     - name: Přehled
       items:
         - name: Co je přepis konverzace?
-          href: conversation-transcription-service.md
+          href: conversation-transcription.md
     - name: Návody
       items:
         - name: Přepis konverzace v reálném čase
-          href: how-to-use-conversation-transcription-service.md
+          href: how-to-use-conversation-transcription.md
         - name: Asynchronní přepis konverzace
           href: how-to-async-conversation-transcription.md
     - name: Referenční informace
@@ -330,6 +334,11 @@
 - name: Speech Service
   expanded: false
   items:
+    - name: Scénáře
+      items:
+        - name: Call centra
+          href: get-started.md
+          displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
     - name: Návody
       items:
         - name: Vyzkoušení služby Speech zdarma

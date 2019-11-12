@@ -16,7 +16,7 @@ metadata:
   ms.date: 03/11/2019
   ms.author: juliako
 abstract:
-  description: 'Video Indexer služby Azure Media Services je cloudová aplikace sestavená s využitím služeb Azure Media Analytics, Azure Search a Cognitive Services (jako jsou rozhraní API pro rozpoznávání tváře, Microsoft Translator, rozhraní API pro počítačové zpracování obrazu a služba Custom Speech). Umožňuje extrahovat přehledy z videí pomocí zvukových modelů a videomodelů Video Indexeru.<br/>Informace o tom, kdy je vhodnější použít Video Indexer a kdy předvolby analyzátoru Media Services, najdete v <a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">dokumentu, který je porovnává</a>.'
+  description: 'Video Indexer služby Azure Media Services je cloudová aplikace sestavená s využitím služeb Azure Media Analytics, Azure Cognitive Search a Cognitive Services (jako jsou rozhraní API pro rozpoznávání tváře, Microsoft Translator, rozhraní API pro počítačové zpracování obrazu a služba Custom Speech). Umožňuje extrahovat přehledy z videí pomocí zvukových modelů a videomodelů Video Indexeru.<br/>Informace o tom, kdy je vhodnější použít Video Indexer a kdy předvolby analyzátoru Media Services, najdete v <a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">dokumentu, který je porovnává</a>.'
 sections:
   - items:
       - type: list

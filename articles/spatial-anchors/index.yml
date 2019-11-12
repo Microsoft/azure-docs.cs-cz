@@ -85,3 +85,7 @@ sections:
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-use-cosmos-db-to-store-anchors">Trvalé sdílení s využitím Azure Cosmos DB</a>
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-new-unity-hololens-app">Spuštění nové aplikace Unity HoloLens</a>
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-new-android-app">Spuštění nové aplikace pro Android</a>
+  - title: Poznámky k verzi
+    items:
+      - type: paragraph
+        text: '<a href="https://github.com/Azure/azure-spatial-anchors-samples/releases">Projděte si poznámky k verzi na GitHubu.</a>'

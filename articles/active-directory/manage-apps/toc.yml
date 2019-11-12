@@ -353,6 +353,10 @@
               href: application-sign-in-problem-on-premises-application-proxy.md
             - name: Problémy s CORS v proxy aplikací
               href: application-proxy-understand-cors-issues.md
+    - name: Zabezpečený hybridní přístup (cloud a místní prostředí)
+      items:
+        - name: Zabezpečení aplikací starší verze s využitím kontrolerů doručování aplikací nebo sítí
+          href: secure-hybrid-access.md
 - name: Referenční informace
   items:
     - name: Zřizování aplikací (SCIM)

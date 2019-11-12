@@ -876,6 +876,8 @@
       href: service-fabric-common-questions.md
     - name: Fórum MSDN
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric'
+    - name: Ochranné mantinely nasazení Azure Resource Manageru
+      href: service-fabric-azure-resource-manager-guardrails.md
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/service-fabric/'
     - name: Cenová kalkulačka

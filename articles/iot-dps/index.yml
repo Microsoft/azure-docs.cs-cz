@@ -3,9 +3,8 @@ documentType: LandingData
 title: Dokumentace ke službě Azure IoT Hub Device Provisioning
 metadata:
   title: 'Dokumentace ke službě Azure IoT Hub Device Provisioning – kurzy, reference k rozhraní API'
-  description: Přehled služby Azure IoT Hub Device Provisioning Service
+  description: 'Azure IoT Hub Device Provisioning Service – kurzy, rychlá zprovoznění, postupy a reference k rozhraní API'
   author: nberdy
-  manager: briz
   ms.service: iot-dps
   services: iot-dps
   ms.topic: landing-page

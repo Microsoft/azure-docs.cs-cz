@@ -175,12 +175,93 @@
               href: app/ilogger.md
             - name: Java
               items:
-                - name: Metriky založené na protokolech a agregované předem
-                  href: app/pre-aggregated-metrics-log-metrics.md
-                - name: Definice metrik založených na protokolech
-                  href: platform/app-insights-metrics.md
-                - name: Klasický průzkumník metrik
-                  href: app/metrics-explorer.md
+                - name: Webové aplikace
+                  displayname: java
+                  href: app/java-get-started.md
+                - name: Aplikace v Dockeru
+                  href: app/docker.md
+                - name: Trasování protokolů
+                  href: app/java-trace-logs.md
+                - name: Unixové metriky
+                  href: app/java-collectd.md
+                - name: Závislosti
+                  href: app/java-agent.md
+                - name: Filtrování telemetrie
+                  href: app/java-filter-telemetry.md
+                - name: Metriky v mikrometrech
+                  displayname: java
+                  href: app/micrometer-java.md
+                - name: Aplikace Spring Boot
+                  displayname: java
+                  href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
+                - name: Řešení potíží
+                  href: app/java-troubleshoot.md
+            - name: Node.js
+              href: app/nodejs.md
+            - name: Python
+              items:
+                - name: Přehled
+                  displayname: 'python, Python, OpenCenus, OpenTelemetry, py'
+                  href: app/opencensus-python.md
+                - name: Závislosti
+                  href: app/opencensus-python-dependency.md
+                - name: Žádosti
+                  href: app/opencensus-python-request.md
+            - name: Webové stránky
+              items:
+                - name: JavaScript na straně klienta
+                  href: app/javascript.md
+            - name: Souhrn rozhraní API Application Insights
+              displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
+              href: app/api-custom-events-metrics.md
+            - name: Řešení potíží s ASP.NET
+              href: app/asp-net-troubleshoot-no-data.md
+        - name: Monitorování bez kódu
+          items:
+            - name: Škálovací sada a virtuální počítač Azure
+              href: app/azure-vm-vmss-apps.md
+            - name: Azure App Service
+              displayname: 'App Service, web app, PaaS, Azure web app'
+              href: app/azure-web-apps.md
+            - name: Azure Cloud Services
+              displayname: 'cloud, cloud services, PaaS'
+              href: app/cloudservices.md
+            - name: Azure Functions
+              displayname: 'functions, monitor functions, automation'
+              href: ../azure-functions/functions-monitoring.md
+            - name: Aplikace Kubernetes
+              displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
+              href: app/kubernetes.md
+            - name: Monitorování stavu (starší verze)
+              displayname: 'IIS monitoring, on premises monitoring, on prem,'
+              href: app/monitor-performance-live-website-now.md
+            - name: Místní servery
+              items:
+                - name: Přehled
+                  displayname: 'IIS monitoring, on premises monitoring, on prem,'
+                  href: app/status-monitor-v2-overview.md
+                - name: Začínáme
+                  href: app/status-monitor-v2-get-started.md
+                - name: Podrobné pokyny
+                  href: app/status-monitor-v2-detailed-instructions.md
+                - name: Řešení potíží a známé problémy
+                  href: app/status-monitor-v2-troubleshoot.md
+                - name: API Disable-InstrumentationEngine
+                  href: app/status-monitor-v2-api-disable-instrumentation-engine.md
+                - name: API Disable-ApplicationInsightsMonitoring
+                  href: app/status-monitor-v2-api-disable-monitoring.md
+                - name: API Enable-InstrumentationEngine
+                  href: app/status-monitor-v2-api-enable-instrumentation-engine.md
+                - name: API Enable-ApplicationInsightsMonitoring
+                  href: app/status-monitor-v2-api-enable-monitoring.md
+                - name: API Get-ApplicationInsightsMonitoringConfig
+                  href: app/status-monitor-v2-api-get-config.md
+                - name: API Get-ApplicationInsightsMonitoringStatus
+                  href: app/status-monitor-v2-api-get-status.md
+                - name: API Set-ApplicationInsightsMonitoringConfig
+                  href: app/status-monitor-v2-api-set-config.md
+                - name: API Start-ApplicationInsightsMonitoringTrace
+                  href: app/status-monitor-v2-api-start-trace.md
             - name: Search
               href: app/diagnostic-search.md
             - name: Profiler
@@ -297,84 +378,6 @@
                 - name: Trasování protokolů
                   href: app/asp-net-trace-logs.md
                 - name: Unixové metriky
-                  href: app/java-collectd.md
-                - name: Závislosti
-                  href: app/java-agent.md
-                - name: Filtrování telemetrie
-                  href: app/java-filter-telemetry.md
-                - name: Metriky v mikrometrech
-                  displayname: java
-                  href: app/micrometer-java.md
-                - name: Aplikace Spring Boot
-                  displayname: java
-                  href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
-                - name: Řešení potíží
-                  href: app/java-troubleshoot.md
-            - name: Node.js
-              href: app/nodejs.md
-            - name: Python
-              items:
-                - name: Přehled
-                  href: app/opencensus-python.md
-                - name: Závislosti
-                  href: app/opencensus-python-dependency.md
-                - name: Žádosti
-                  href: app/opencensus-python-request.md
-            - name: Webové stránky
-              items:
-                - name: JavaScript na straně klienta
-                  href: app/javascript.md
-            - name: Souhrn rozhraní API Application Insights
-              displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
-              href: app/api-custom-events-metrics.md
-            - name: Řešení potíží s ASP.NET
-              href: app/asp-net-troubleshoot-no-data.md
-        - name: Monitorování bez kódu
-          items:
-            - name: Škálovací sada a virtuální počítač Azure
-              href: app/azure-vm-vmss-apps.md
-            - name: Azure App Service
-              displayname: 'App Service, web app, PaaS, Azure web app'
-              href: app/azure-web-apps.md
-            - name: Azure Cloud Services
-              displayname: 'cloud, cloud services, PaaS'
-              href: app/cloudservices.md
-            - name: Azure Functions
-              displayname: 'functions, monitor functions, automation'
-              href: ../azure-functions/functions-monitoring.md
-            - name: Aplikace Kubernetes
-              displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
-              href: app/kubernetes.md
-            - name: Monitorování stavu (starší verze)
-              displayname: 'IIS monitoring, on premises monitoring, on prem,'
-              href: app/monitor-performance-live-website-now.md
-            - name: Místní servery
-              items:
-                - name: Přehled
-                  displayname: 'IIS monitoring, on premises monitoring, on prem,'
-                  href: app/status-monitor-v2-overview.md
-                - name: Začínáme
-                  href: app/status-monitor-v2-get-started.md
-                - name: Podrobné pokyny
-                  href: app/status-monitor-v2-detailed-instructions.md
-                - name: Řešení potíží a známé problémy
-                  href: app/status-monitor-v2-troubleshoot.md
-                - name: API Disable-InstrumentationEngine
-                  href: app/status-monitor-v2-api-disable-instrumentation-engine.md
-                - name: API Disable-ApplicationInsightsMonitoring
-                  href: app/status-monitor-v2-api-disable-monitoring.md
-                - name: API Enable-InstrumentationEngine
-                  href: app/status-monitor-v2-api-enable-instrumentation-engine.md
-                - name: API Enable-ApplicationInsightsMonitoring
-                  href: app/status-monitor-v2-api-enable-monitoring.md
-                - name: API Get-ApplicationInsightsMonitoringConfig
-                  href: app/status-monitor-v2-api-get-config.md
-                - name: API Get-ApplicationInsightsMonitoringStatus
-                  href: app/status-monitor-v2-api-get-status.md
-                - name: API Set-ApplicationInsightsMonitoringConfig
-                  href: app/status-monitor-v2-api-set-config.md
-                - name: API Start-ApplicationInsightsMonitoringTrace
-                  href: app/status-monitor-v2-api-start-trace.md
         - name: Vytvoření prostředku
           href: app/create-new-resource.md
         - name: Řídicí panel aplikací
@@ -848,6 +851,8 @@
               href: insights/cosmosdb-insights-overview.md
         - name: Sítě
           items:
+            - name: Azure Monitor pro sítě
+              href: insights/network-insights-overview.md
             - name: Analýza sítě
               href: insights/azure-networking-analytics.md
             - name: DNS

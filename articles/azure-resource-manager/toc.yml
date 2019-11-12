@@ -138,6 +138,8 @@
           href: resource-group-create-multiple.md
         - name: Prostředky na úrovni předplatného
           href: deploy-to-subscription.md
+        - name: Prostředky na úrovni skupiny pro správu
+          href: deploy-to-management-group.md
     - name: Nasazení šablon
       items:
         - name: Nasazení – portál

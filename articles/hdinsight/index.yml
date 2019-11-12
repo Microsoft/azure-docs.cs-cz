@@ -11,12 +11,12 @@ metadata:
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 08/30/2019
-  ms.openlocfilehash: 8227f36ecaeb868f022ad036cf727fee8448da75
-  ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+  ms.openlocfilehash: 277036368f9bd5f7b0afb8131cfc61c8a7d8f233
+  ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/30/2019
-  ms.locfileid: "73063171"
+  ms.lasthandoff: 11/12/2019
+  ms.locfileid: "73931193"
 landingContent:
 - title: Informace o HDInsightu
   linkLists:
@@ -28,6 +28,8 @@ landingContent:
     links:
     - text: Verze a komponenty HDInsightu
       url: ./hdinsight-component-versioning.md
+    - text: Volba vhodné velikosti virtuálního počítače
+      url: ./hdinsight-selecting-vm-size.md
     - text: Typy virtuálních počítačů podporované HDInsightem
       url: ./hdinsight-supported-node-configuration.md
     - text: Porovnání možností úložiště

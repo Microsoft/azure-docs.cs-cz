@@ -326,7 +326,7 @@
               href: shared-images.md
             - name: Portál
               href: shared-images-portal.md
-            - name: Sdílení imagí napříč tenanty
+            - name: Registrace aplikace pro sdílení
               href: share-images-across-tenants.md
             - name: Řešení potíží se sdílenými imagemi
               href: troubleshooting-shared-images.md

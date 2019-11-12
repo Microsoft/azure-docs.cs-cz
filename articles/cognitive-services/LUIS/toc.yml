@@ -39,12 +39,15 @@
           href: get-started-get-model-rest-apis.md
 - name: Kurzy
   items:
+    - name: Sestavení rozložitelné aplikace
+      items:
+        - name: 1. Určení záměrů uživatele
+          href: tutorial-intents-only.md
+        - name: 2. Extrakce dat uživatelů
+          href: tutorial-machine-learned-entity.md
+          displayName: 'n-depth, constraint, descriptor, phrase list, entity'
     - name: Sestavování aplikací
       items:
-        - name: Určení záměrů uživatele
-          href: tutorial-intents-only.md
-        - name: Identifikace běžných uživatelských dat s využitím předem připravených modelů
-          href: luis-tutorial-prebuilt-intents-entities.md
         - name: Zjištění mínění z projevů uživatele
           href: luis-quickstart-intent-and-sentiment-analysis.md
         - name: Získání správně formátovaných dat s využitím regulárních výrazů
