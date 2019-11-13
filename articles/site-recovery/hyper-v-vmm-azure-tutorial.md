@@ -1,18 +1,18 @@
 ---
-title: Nastavení zotavení po havárii pro místní virtuální počítače Hyper-V v cloudech VMM do Azure pomocí Site Recovery
+title: Nastavení technologie Hyper-V (s nástrojem VMM) zotavení po havárii pomocí Azure Site Recovery
 description: Naučte se, jak nastavit zotavení po havárii místních virtuálních počítačů Hyper-V v cloudech System Center VMM do Azure pomocí Site Recovery.
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: f686a02e363025daa5d0c3b3d4e53e07da636544
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fdf6d9674305ca13af51f3f7b97e0a40568738b6
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933833"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953972"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Nastavení zotavení po havárii místních virtuálních počítačů Hyper-V v cloudech VMM do Azure
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 > Kurzy ukazují nejjednodušší cestu k nasazení scénáře. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Podrobné pokyny najdete v článcích v [dokumentaci k Site Recovery](https://docs.microsoft.com/azure/site-recovery)v části **návody** .
 
 > [!WARNING]
-> Upozorňujeme, že podpora ASR pro použití konfigurace SCVMM v účtu bude brzy zastaralá a proto doporučujeme, abyste si před pokračováním přečetli podrobnosti o [zastaralosti](scvmm-site-recovery-deprecation.md) .
+> Podpora zotavení po havárii virtuálních počítačů Hyper-V s využitím nástroje System Center VMM se v blízké budoucnosti už nepoužívá. Než budete pokračovat, doporučujeme přečíst si podrobnosti o [zastaralosti](scvmm-site-recovery-deprecation.md) .
 
 
 ## <a name="before-you-begin"></a>Než začnete

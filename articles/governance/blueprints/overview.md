@@ -1,17 +1,14 @@
 ---
-title: Přehled Azure Blueprints
+title: Přehled služby Azure Blueprint
 description: Pochopte, jak služba Azure Modrotiskys umožňuje vytvářet, definovat a nasazovat artefakty v prostředí Azure.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/26/2019
 ms.topic: overview
-ms.service: blueprints
-ms.openlocfilehash: 86f58594ce1af91b19f70cbdb1114a90180e3b4f
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 3005bf171c5297048978d090d0f253a8690242cd
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981715"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960326"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Přehled služby Azure modrotisky
 
@@ -123,12 +120,12 @@ Pokud tyto předdefinované role nevyhovují vašim požadavkům na zabezpečen�
 
 Pro určitá pole existují následující omezení:
 
-|Objekt|Pole|Povolené znaky|Nejvýše k Délka|
+|Objekt|Pole|Povolené znaky|Max. Délka|
 |-|-|-|-|
-|Podrobného plánu|Name (Název)|písmena, číslice, spojovníky a tečky|48|
+|Podrobného plánu|Název|písmena, číslice, spojovníky a tečky|48|
 |Podrobného plánu|Version|písmena, číslice, spojovníky a tečky|20|
-|Přiřazení podrobného plánu|Name (Název)|písmena, číslice, spojovníky a tečky|90|
-|Artefakt podrobného plánu|Name (Název)|písmena, číslice, spojovníky a tečky|48|
+|Přiřazení podrobného plánu|Název|písmena, číslice, spojovníky a tečky|90|
+|Artefakt podrobného plánu|Název|písmena, číslice, spojovníky a tečky|48|
 
 ## <a name="video-overview"></a>Video – přehled
 

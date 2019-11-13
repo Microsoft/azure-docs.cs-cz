@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: c6b49e794011d915f8cd7b29e6317e80391f2675
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 13481788bce22876fa13080d0be34db29e2a72cb
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747381"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961582"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -186,7 +186,8 @@ V následující tabulce je uvedena kompatibilita mezi operačním systémem ser
 
 |Operační systém serveru | Kompatibilní klientský operační systém  |
 | --------------- | ---- |
-| Windows Server 2016    | Windows 10 |
+| Windows Server 2019    | Windows 10 |
+| Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
 | Windows Server 2008 R2 | Windows 7   |
@@ -212,11 +213,11 @@ V systému Linux musí operační systém počítače používaného k obnovení
 
 Skript také vyžaduje, aby byly součásti Python a bash spouštěny a bezpečně připojeny k bodu obnovení.
 
-|Komponenta | Verze  |
+|Komponenta | Version  |
 | --------------- | ---- |
 | bash | 4 a vyšší |
-| python | 2.6.6 a vyšší  |
-| PROTOKOLY | 1,2 by měla být podporovaná.  |
+| Python | 2.6.6 a vyšší  |
+| TLS | 1,2 by měla být podporovaná.  |
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Obnovení souborů ze záloh virtuálních počítačů s velkými disky
 
@@ -242,7 +243,7 @@ Vzhledem k tomu, že proces obnovy souborů připojí všechny disky ze zálohy,
 
 - Pokud je server pro obnovení virtuálním počítačem se systémem Linux
   - V souboru/etc/iSCSI/iscsid.conf změňte nastavení z
-    - Node. [0]. Timeo. noop_out_timeout = 5 to Node. [0]. Timeo. noop_out_timeout = 30
+    - Node. [0]. Timeo. noop_out_timeout = 5 na Node. Timeo. [0]. noop_out_timeout = 30
 - Po provedení následujícího skriptu teď skript spusťte znovu. U těchto změn je vysoce pravděpodobné, že se obnovení souboru zdaří.
 - Pokaždé, když uživatel stáhne skript, Azure Backup zahájí proces přípravy bodu obnovení ke stažení. U velkých disků to bude trvat značnou dobu. Pokud dojde k následným nárůstům požadavků, cílová Příprava přejde ke stažení spirály. Proto se doporučuje stáhnout skript z portálu/PowerShell/CLI, počkat až 20-30 minut (Heuristická) a pak ji spustit. V tuto chvíli se očekává, že cíl bude připravený pro připojení ze skriptu.
 - Po obnovení souboru se ujistěte, že se vrátíte na portál a kliknete na odpojit disky pro body obnovení, u kterých jste nedokázali připojit svazky. V podstatě tento krok vyčistí všechny existující procesy a relace a zvýší pravděpodobnost obnovení.

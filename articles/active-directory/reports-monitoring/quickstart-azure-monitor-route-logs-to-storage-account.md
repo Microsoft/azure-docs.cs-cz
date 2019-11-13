@@ -3,7 +3,7 @@ title: Kurz – archivace protokolů adresářů do účtu úložiště | Micros
 description: Přečtěte si, jak nastavit Azure Diagnostics pro odesílání Azure Active Directory protokolů do účtu úložiště.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 045f94b3-6f12-407a-8e9c-ed13ae7b43a3
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bce2c032eaa5ec77544477ff75e22492d70a650e
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: fa2cac7c89a2cb1bd99675727bcd51e82c4a18ef
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895088"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007859"
 ---
 # <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Kurz: archivace protokolů služby Azure AD do účtu služby Azure Storage
 
 V tomto kurzu se dozvíte, jak nastavit diagnostiku ve službě Azure Monitor na směrování protokolů Azure Active Directory (Azure AD) do účtu úložiště Azure.
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 Pokud chcete používat tuto funkci, potřebujete tyto položky:
 
@@ -38,7 +38,7 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
 
 ## <a name="archive-logs-to-an-azure-storage-account"></a>Archivace protokolů do účtu úložiště Azure
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com). 
 
 2. Vyberte **Azure Active Directory** > **Aktivita** > **Protokoly auditu**. 
 

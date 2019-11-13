@@ -1,6 +1,6 @@
 ---
-title: Vytvoření prostředí Azure Time Series Insights | Dokumentace Microsoftu
-description: Tento článek popisuje, jak pomocí Azure Portal vytvořit nové prostředí Time Series Insights.
+title: Vytvoření prostředí – Azure Time Series Insights | Microsoft Docs
+description: Naučte se, jak pomocí Azure Portal vytvořit nové prostředí Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1b51931385eb7e2e0bf2a1baf5cc4c3379eab2df
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: fc3f21c95ad6f4bb033336018dddb9e966e9cc9a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991238"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006902"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Vytvoření nového prostředí Time Series Insights na webu Azure Portal
 
@@ -28,7 +28,7 @@ Time Series Insights vám umožňuje začít vizualizovat a dotazovat tok dat do
 
 Pomocí těchto kroků vytvořte prostředí:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
 1. Vyberte tlačítko **+ vytvořit prostředek** .
 
@@ -49,7 +49,7 @@ Pomocí těchto kroků vytvořte prostředí:
    Skupina prostředků | Vytvořit nový nebo použít existující | Skupina prostředků je kolekce společně používaných prostředků Azure. Můžete vybrat existující skupinu prostředků, například tu, která obsahuje vaše centrum událostí nebo IoT Hub. Nebo můžete vytvořit nový, pokud tento prostředek nesouvisí s ostatními prostředky.
    Umístění | Nejbližší zdroji události | V takovém případě můžete zvolit stejné umístění datového centra, které obsahuje vaše data zdroje událostí, a vyhnout se tak nákladům na šířku pásma mezi oblastí a mezi zónami a přidáním latence při přesunu dat mimo oblast.
    Cenová úroveň | S1 | Vyberte potřebnou propustnost. Pro nejnižší náklady a počáteční kapacitu vyberte S1.
-   Kapacita | 1\. místo | Kapacita je násobitel, který se vztahuje na rychlost příchozího přenosu dat, kapacitu úložiště a náklady spojené s vybranou SKU.  Kapacitu prostředí můžete po vytvoření změnit. Pro nejnižší náklady vyberte kapacitu 1. 
+   Kapacita | 1 | Kapacita je násobitel, který se vztahuje na rychlost příchozího přenosu dat, kapacitu úložiště a náklady spojené s vybranou SKU.  Kapacitu prostředí můžete po vytvoření změnit. Pro nejnižší náklady vyberte kapacitu 1. 
   
 1. Vyberte **vytvořit** a zahajte proces zřizování. Může to trvat několik minut.
 
@@ -69,6 +69,6 @@ Pomocí těchto kroků vytvořte prostředí:
 
 * [Přidejte zdroj události centra událostí](time-series-insights-how-to-add-an-event-source-eventhub.md) do prostředí Azure Time Series Insights.
 
-* [Odešle události](time-series-insights-send-events.md) do zdroje událostí.
+* [Odesílání událostí](time-series-insights-send-events.md) ke zdroji události.
 
 * Zobrazte si prostředí v [průzkumníkovi Time Series Insights](https://insights.timeseries.azure.com).

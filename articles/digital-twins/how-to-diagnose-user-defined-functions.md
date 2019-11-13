@@ -1,6 +1,6 @@
 ---
-title: Jak ladit UDF v Azure Digital provlákna | Microsoft Docs
-description: Základní informace o tom, jak ladit UDF v digitálních prozdvojeních Azure.
+title: Jak ladit UDF – digitální vlákna Azure | Microsoft Docs
+description: Přečtěte si o doporučených přístupech k ladění uživatelsky definovaných funkcí v digitálních Vlákenách Azure.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b122df279ecde8ed9ed49b5a89251073f3feda7
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 130250156f0fae3e6c40742278479b5d4612657b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949887"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005936"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Jak ladit uživatelsky definované funkce v digitálních prostředníkech Azure
 
@@ -35,7 +35,7 @@ Digitální vlákna Azure podporuje robustní protokolování, monitorování a 
 
 * Pro konfiguraci protokolování specificky pro digitální vlákna Azure si přečtěte, [jak nakonfigurovat monitorování a protokolování](./how-to-configure-monitoring.md).
 * V přehledu [Azure monitor](../azure-monitor/overview.md) najdete informace o výkonném nastavení protokolu povoleném prostřednictvím Azure monitor.
-* Přečtěte si článek [shromáždění a využití dat protokolu z vašich prostředků Azure](../azure-monitor/platform/resource-logs-overview.md) ke konfiguraci nastavení diagnostického protokolu v digitálních prostředcích Azure pomocí webu Azure Portal, Azure CLI nebo PowerShellu.
+* Přečtěte si článek [shromáždění a využití dat protokolu z vašich prostředků Azure](../azure-monitor/platform/resource-logs-overview.md) ke konfiguraci nastavení diagnostického protokolu v digitálních prostředcích azure pomocí Azure Portal, Azure CLI nebo PowerShellu.
 
 Po nakonfigurování budete moct vybrat všechny kategorie protokolů, metriky a používat Azure Monitor výkonné pracovní prostory Log Analytics pro podporu vašeho úsilí o ladění.
 
@@ -52,7 +52,7 @@ AzureDiagnostics
 | where CorrelationId == 'YOUR_CORRELATION_IDENTIFIER'
 ```
 
-| Hodnota dotazu | Nahradit |
+| Hodnota dotazu | Nahradit hodnotou |
 | --- | --- |
 | YOUR_CORRELATION_IDENTIFIER | ID korelace, které bylo zadáno pro data události |
 
@@ -88,7 +88,7 @@ Ověřte, jestli pro vaši uživatelsky definovanou funkci prostřednictvím roz
 GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_USER_DEFINED_FUNCTION_ID
 ```
 
-| Hodnota parametru | Nahradit |
+| Hodnota parametru | Nahradit hodnotou |
 | --- | --- |
 | YOUR_USER_DEFINED_FUNCTION_ID | ID uživatelsky definované funkce, pro kterou se mají načíst přiřazení rolí|
 
@@ -102,12 +102,12 @@ S následujícím voláním rozhraní API pro správu instancí digitálních vl
 GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSOR_IDENTIFIER?enableLogging=true
 ```
 
-| Parametr | Nahradit |
+| Parametr | Nahradit hodnotou |
 | --- | --- |
 | *YOUR_MATCHER_IDENTIFIER* | ID shody, kterou chcete vyhodnotit |
 | *YOUR_SENSOR_IDENTIFIER* | ID senzoru, který chcete vyhodnotit |
 
-Základě
+Odpověď:
 
 ```JavaScript
 {
@@ -126,11 +126,11 @@ S následujícím voláním rozhraní API pro správu digitálních vláken Azur
 GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=UserDefinedFunctions
 ```
 
-| Parametr | Nahradit |
+| Parametr | Nahradit hodnotou |
 | --- | --- |
 | *YOUR_SENSOR_IDENTIFIER* | ID snímače, který má být odeslán telemetrie |
 
-Základě
+Odpověď:
 
 ```JavaScript
 [
@@ -185,7 +185,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Sensor", JSON.stringify(customNotification));
 ```
 
-Nejjednodušší způsob, jak tento problém vyřešit, je použít metodu `Notify` u objektu metadat.
+Nejjednodušší způsob, jak tento problém vyřešit, je použití metody `Notify` u objektu metadata.
 
 Příklad:
 

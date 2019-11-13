@@ -1,5 +1,5 @@
 ---
-title: 'Premium Storage Azure: Návrh pro výkon na virtuálních počítačích s Windows | Microsoft Docs'
+title: 'Azure Premium Storage: návrh pro výkon na virtuálních počítačích s Windows | Microsoft Docs'
 description: Navrhněte vysoce výkonné aplikace s využitím Azure Premium Storage. Premium Storage nabízí podporu vysoce výkonných disků s nízkou latencí pro úlohy náročné na vstupně-výstupní operace běžící na Azure Virtual Machines.
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,13 +7,14 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 7fbeb12f5b221685aad5cac5352318db10bd69a7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 073b0f0b0078f8e1159fad5e4eb6a70543c81700
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036263"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012366"
 ---
+# <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: návrh pro vysoký výkon
 [!INCLUDE [virtual-machines-common-premium-storage-introduction](../../../includes/virtual-machines-common-premium-storage-introduction.md)]
 
 > [!NOTE]
@@ -29,7 +30,7 @@ Než začnete, pokud s Premium Storage teprve začínáte, nejdříve si přečt
 
 Pokud chcete otestovat srovnávací test disku, přečtěte si náš článek o [testování disku](disks-benchmarks.md).
 
-Další informace o dostupných typech disků: [Vybrat typ disku](disks-types.md)  
+Další informace o dostupných typech disků: [Vyberte typ disku](disks-types.md) .  
 
 Informace o SQL Server uživatelů najdete v článcích o osvědčených postupech výkonu pro SQL Server:
 

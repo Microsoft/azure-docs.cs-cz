@@ -3,7 +3,7 @@ title: Kurz rozhraní API pro vytváření sestav AD s certifikáty | Microsoft 
 description: V tomto kurzu se dozvíte, jak pomocí rozhraní API pro vytváření sestav Azure AD s přihlašovacími údaji k certifikátu získat data z adresářů bez zásahu uživatele.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: ''
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fe5f2a6d1957a544c63cb8a7c223ba9734786f8
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 4d723af5d994006c4ae4f90905ede73fa87326bf
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895134"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014271"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Kurz: získání dat pomocí rozhraní API pro vytváření sestav Azure Active Directory s certifikáty
 
@@ -29,7 +29,7 @@ ms.locfileid: "72895134"
 
 V tomto kurzu se dozvíte, jak pomocí testovacího certifikátu získat přístup k MS Graph API pro vytváření sestav. Nedoporučujeme používat testovací certifikáty v produkčním prostředí. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. Chcete-li získat přístup k přihlašovacím datům, ujistěte se, že máte klienta Azure Active Directory s licencí Premium (P1/P2). Pokud chcete upgradovat edici Azure Active Directory, přečtěte si téma [Začínáme se Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) . Všimněte si, že pokud jste před upgradem nedostali žádná data, bude trvat několik dní, než se data zobrazí v sestavách po upgradu na licenci Premium. 
 
@@ -87,7 +87,7 @@ V tomto kurzu se dozvíte, jak pomocí testovacího certifikátu získat příst
   
 7. Nyní můžete získat přístupový token pro aplikaci MS Graph API pomocí tohoto certifikátu. Pomocí rutiny **Get-MSCloudIdMSGraphAccessTokenFromCert** z modulu MSCloudIdUtils PowerShellu předejte ID aplikace a kryptografický otisk, který jste získali v předchozím kroku. 
 
-   ![Portál Azure](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
+   ![portál Azure](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
 8. Pomocí přístupového tokenu ve skriptu PowerShellu se můžete dotazovat na Graph API. Pomocí rutiny **Invoke-MSCloudIdMSGraphQuery** z MSCloudIDUtils můžete vytvořit výčet koncového bodu nenašla a directoryAudits. Tato rutina zpracovává vícestránkové výsledky a odesílá výsledky do kanálu PowerShellu.
 

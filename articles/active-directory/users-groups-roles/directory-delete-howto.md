@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7993810343f6bd925afd54cc38a8302420d6aec
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 47a60ed44ddf057ef983f8f76f23fd784bc3efd5
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72439349"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961819"
 ---
 # <a name="delete-a-directory-in-azure-active-directory"></a>Odstranění adresáře v Azure Active Directory
 
@@ -67,7 +67,7 @@ Zrušeno zřízení (30 dní po zakázání) | Odstraněná data (automaticky sm
 
 Předplatné můžete vložit do stavu **zrušeno zřízení** , který bude odstraněn během tří dnů pomocí centra pro správu Microsoft 365.
 
-1. Přihlaste se k [centru pro správu Microsoft 365](https://admin.microsoft.com) pomocí účtu, který je globálním správcem vaší organizace. Pokud se pokoušíte odstranit adresář contoso s počáteční výchozí doménou contoso.onmicrosoft.com, přihlaste se pomocí hlavního názvu uživatele (UPN), jako je například admin@contoso.onmicrosoft.com.
+1. Přihlaste se k [centru pro správu Microsoft 365](https://admin.microsoft.com) pomocí účtu, který je globálním správcem vaší organizace. Pokud se pokoušíte odstranit adresář contoso, který má počáteční výchozí doménu contoso.onmicrosoft.com, přihlaste se pomocí hlavního názvu uživatele (UPN), jako je například admin@contoso.onmicrosoft.com.
 
 2. Zobrazte si náhled nového centra pro správu Microsoft 365 tím, že zajistěte, aby byl povolený přepínač **vyzkoušení nového centra pro správu** .
 
@@ -97,7 +97,7 @@ Předplatné můžete vložit do stavu **zrušeno zřízení** , který bude ods
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Mám zkušební předplatné, které blokuje odstranění
 
-K dispozici jsou [samoobslužné produkty pro registraci](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , jako je Microsoft Power BI, Rights Management Services, Microsoft Power apps nebo Dynamics 365, se můžou zaregistrovat jednotliví uživatelé pomocí Office 365, který taky vytvoří uživatele typu Host pro ověřování ve vašem adresáři Azure AD. . Tyto samoobslužné produkty blokují odstranění adresáře, dokud nebudou zcela odstraněny z adresáře, aby nedošlo ke ztrátě dat. Můžou je odstranit jenom správce Azure AD, ať už se uživatel zaregistroval individuálně nebo mu byl přiřazený produkt.
+K dispozici jsou [samoobslužné produkty pro registraci](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , jako je Microsoft Power BI, Rights Management Services, Microsoft Power apps nebo Dynamics 365, které se můžou zaregistrovat pomocí Office 365. tím se také vytvoří uživatel typu Host pro ověřování v adresáři služby Azure AD. Tyto samoobslužné produkty blokují odstranění adresáře, dokud nebudou zcela odstraněny z adresáře, aby nedošlo ke ztrátě dat. Můžou je odstranit jenom správce Azure AD, ať už se uživatel zaregistroval individuálně nebo mu byl přiřazený produkt.
 
 Existují dva typy samoobslužných registračních produktů ve způsobu jejich přiřazení: 
 
@@ -108,24 +108,24 @@ Když zahájíte odstranění samoobslužného registračního produktu, akce tr
 
 Další informace o aktuálně dostupných samoobslužných produktech a službách pro registraci najdete v tématu [dostupné samoobslužné programy](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs).
 
-V následující tabulce najdete informace o tom, co očekávat, když vyprší platnost zkušební verze předplatného Office 365 (včetně placeného partnera/CSP, smlouva Enterprise nebo multilicenčního programu). Další informace o uchovávání dat a životní cyklus předplatného Office 365 najdete v tématu [co se stane s daty a přístup, když předplatné Office 365 pro firmy skončí?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
+V následující tabulce najdete informace o tom, co očekávat, když vyprší platnost zkušební verze předplatného Office 365 (včetně placeného partnera/CSP, smlouva Enterprise nebo multilicenčního programu). Další informace o uchovávání dat a životní cyklus předplatného Office 365 najdete v tématu [co se stane s daty a přístup, když předplatné Office 365 pro firmy skončí?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
 
 Stav produktu | Data | Přístup k datům
 ------------- | ---- | --------------
 Aktivní (30 dní pro zkušební období) | Data přístupná všem | Uživatelé mají normální přístup k samoobslužnému registračnímu produktu, souborům nebo aplikacím.<br>Správci mají normální přístup k Microsoft 365 centrum pro správu a prostředky.
-Odstraněno | Data odstraněna | Uživatelé nemají přístup k samoobslužnému registračnímu produktu, souborům nebo aplikacím.<br>Správci mají přístup k centru pro správu Microsoft 365 k nákupu a správě dalších předplatných.
+Odstranění | Data odstraněna | Uživatelé nemají přístup k samoobslužnému registračnímu produktu, souborům nebo aplikacím.<br>Správci mají přístup k centru pro správu Microsoft 365 k nákupu a správě dalších předplatných.
 
 ## <a name="how-can-i-delete-a-self-service-sign-up-product-in-the-azure-portal"></a>Jak mohu v Azure Portal odstranit samoobslužný produkt pro registraci?
 
 Můžete vložit samoobslužný produkt pro registraci, jako je Microsoft Power BI nebo Azure Rights Management Services, do stavu **odstranění** , který se okamžitě odstraní na portálu Azure AD.
 
-1. Přihlaste se do [centra pro správu Azure AD](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)@no__t – 1with účet, který je globálním správcem organizace. Pokud se pokoušíte odstranit adresář contoso, který má počáteční výchozí doménu contoso.onmicrosoft.com, přihlaste se pomocí hlavního názvu uživatele (UPN), jako je například admin@contoso.onmicrosoft.com.
+1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) pomocí účtu, který je globálním správcem v organizaci. Pokud se pokoušíte odstranit adresář contoso, který má počáteční výchozí doménu contoso.onmicrosoft.com, přihlaste se pomocí hlavního názvu uživatele (UPN), jako je například admin@contoso.onmicrosoft.com.
 
-2. Vyberte **licence**a pak vyberte **samoobslužné registrace produktů**. Všechny samoobslužné produkty pro registraci se zobrazí odděleně od předplatných založených na pracovních stanicích. Vyberte produkt, který chcete trvale odstranit. Tady je příklad v Microsoft Power BI:
+2. Vyberte **licence**a pak vyberte **samoobslužné registrace produktů**. Všechny samoobslužné produkty pro registraci se zobrazí odděleně od předplatných založených na pracovních stanicích. Vyberte produkt, který chcete trvale odstranit. Tady je příklad v Microsoft Power BI:
 
     ![uživatelské jméno je netypové nebo se nenašlo.](./media/directory-delete-howto/licenses-page.png)
 
-3. Vyberte **odstranit** To odstranit produkt a přijměte podmínky, že se data odstraňují hned a neodvolatelně. Tato akce odstranění odstraní všechny uživatele a odebere přístup organizace k produktu. Kliknutím na tlačítko Ano přesunete vpřed s odstraněním.  
+3. Vyberte **Odstranit** , pokud chcete produkt odstranit, a přijměte podmínky, že se data odstraňují okamžitě a nevratně. Tato akce odstranění odstraní všechny uživatele a odebere přístup organizace k produktu. Kliknutím na tlačítko Ano přesunete vpřed s odstraněním.  
 
     ![uživatelské jméno je netypové nebo se nenašlo.](./media/directory-delete-howto/delete-product.png)
 

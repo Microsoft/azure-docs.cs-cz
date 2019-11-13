@@ -3,7 +3,7 @@ title: Kurz – streamování protokolů do centra událostí Azure | Microsoft 
 description: Přečtěte si, jak nastavit Azure Diagnostics pro odesílání Azure Active Directory protokolů do centra událostí.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 045f94b3-6f12-407a-8e9c-ed13ae7b43a3
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5a790358b0b5c5f301cd53f0cd564a36f66049b
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: eba44252672248b983d7f6e0c843f638e5f73447
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817503"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007660"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Kurz: streamování Azure Active Directorych protokolů do centra událostí Azure
 
 V tomto kurzu se naučíte nastavit Azure Monitor nastavení diagnostiky pro streamování protokolů Azure Active Directory (Azure AD) do centra událostí Azure. Tento mechanismus můžete použít k integraci svých protokolů s nástroji pro správu akcí a informací o zabezpečení (SIEM) třetích stran, jako je Splunk nebo QRadar.
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 Pokud chcete používat tuto funkci, potřebujete tyto položky:
 
@@ -39,9 +39,9 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
 
 ## <a name="stream-logs-to-an-event-hub"></a>Streamování protokolů do centra událostí
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com). 
 
-2. Vyberte **Azure Active Directory** > **monitorování**–**protokoly auditu** > . 
+2. Vyberte **Azure Active Directory** > **monitorování** > **protokoly auditu**. 
 
 3. Vyberte **Exportovat nastavení**.  
     
