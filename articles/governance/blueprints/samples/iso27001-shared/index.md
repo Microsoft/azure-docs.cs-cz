@@ -1,17 +1,14 @@
 ---
 title: 'Ukázka podrobného plánu ISO 27001: Sdílené služby – přehled'
 description: 'Přehled a architektura ukázky podrobného plánu ISO 27001: Sdílené služby Tento ukázkový podrobný plán pomáhá zákazníkům vyhodnotit konkrétní kontroly ISO 27001.'
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: 970d8d27dd59d0e2839d41cdf22d88ea197527c5
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 70c3b7838a2635b6befe4e7f624c505255f43998
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200707"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038361"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Přehled ukázky podrobného plánu ISO 27001: Sdílené služby
 

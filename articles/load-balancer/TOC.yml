@@ -141,27 +141,6 @@
       items:
         - name: Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
           href: load-balancer-troubleshoot.md
-    - name: Články věnované modelu nasazení Classic
-      items:
-        - name: Odchozí připojení (Classic)
-          href: load-balancer-outbound-connections-classic.md
-        - name: Konfigurace více virtuálních IP adres cloudové služby
-          href: load-balancer-multivip.md
-          items:
-            - name: Konfigurace interního nástroje pro vyrovnávání zatížení pro Cloud Services
-              href: load-balancer-get-started-ilb-classic-cloud.md
-              items:
-                - name: Konfigurace interního nástroje pro vyrovnávání zatížení pro Cloud Services (PowerShell)
-                  href: load-balancer-get-started-ilb-classic-ps.md
-                - name: Konfigurace interního nástroje pro vyrovnávání zatížení pro Cloud Services (CLI)
-                  href: load-balancer-get-started-ilb-classic-cli.md
-            - name: Konfigurace veřejného nástroje pro vyrovnávání zatížení (PowerShell Classic)
-              href: load-balancer-get-started-internet-classic-ps.md
-              items:
-                - name: Konfigurace veřejného nástroje pro vyrovnávání zatížení (cloud Classic)
-                  href: load-balancer-get-started-internet-classic-cloud.md
-                - name: Konfigurace veřejného nástroje pro vyrovnávání zatížení (CLI Classic)
-                  href: load-balancer-get-started-internet-classic-cli.md
 - name: Referenční informace
   items:
     - name: Ukázky kódů
