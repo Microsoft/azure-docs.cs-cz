@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: 3b957181015cba06eb361272ca1004ba3e7a7008
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2d0a05c763b21b0cf22a724f9a5faa9d70b5b557
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579687"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010646"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Časté otázky týkající se řeči na text
 
@@ -71,26 +71,31 @@ Odpověď **: model**můžete škálovat v přírůstcích po 20 souběžných p
 
 Pokud požadujete vyšší měřítko, kontaktujte [podporu řeči](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text) .
 
-Pro zvýšení souběžnosti pro vlastní model potřebujeme následující informace:
+Pro zvýšení souběžnosti pro ***vlastní model***potřebujeme následující informace:
 
-- Oblast, ve které je model nasazen.
-- ID koncového bodu nasazeného modelu.
+- Oblast, ve které je model nasazený,
+- ID koncového bodu nasazeného modelu:
+  - Máte [Custom Speech portálu](https://aka.ms/customspeech),
+  - přihlásit (v případě potřeby)
+  - Vyberte svůj projekt a nasazení,
+  - Vyberte koncový bod, pro který potřebujete zvýšení souběžnosti,
+  - Zkopírujte `Endpoint ID`.
 
-Pro zvýšení souběžnosti pro základní modely potřebujeme následující informace:
+Pro zvýšení souběžnosti pro ***základní model***potřebujeme následující informace:
 
 - Oblast vaší služby,
 
 a buď
 
-- přístupový token pro vás subrscription (viz [tady](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)),
+- přístupový token pro vaše předplatné (viz [tady](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)),
 
 nebo
 
 - ID prostředku pro vaše předplatné:
-  - Přejít na https://portal.azure.com,
+  - Přejít na [Azure Portal](https://portal.azure.com),
   - Vyberte `Cognitive Services` do vyhledávacího pole,
   - ze zobrazených služeb vyberte službu rozpoznávání řeči, pro kterou chcete, aby se souběžnost zvýšila,
-  - Zobrazit vlastnosti této služby,
+  - Zobrazit `Properties` pro tuto službu,
   - Zkopírujte kompletní `Resource ID`.
 
 **Otázka: můžu stáhnout svůj model a spustit ho místně?**
@@ -107,7 +112,7 @@ Odpověď **: REST API**omezuje požadavky na 25 za 5 sekund. Podrobnosti najdet
 
 **Otázka: jak se mi účtuje zvuk Dual Channel?**
 
-**O**: Pokud odesíláte každý kanál samostatně (každý kanál ve vlastním souboru), bude se vám účtovat po dobu trvání každého souboru. Pokud odešlete jeden soubor s každým multiplexem kanálu, bude se vám účtovat doba trvání jednoho souboru.
+**O**: Pokud odesíláte každý kanál samostatně (každý kanál ve vlastním souboru), bude se vám účtovat po dobu trvání souboru. Pokud odešlete jeden soubor s každým multiplexem kanálu, bude se vám účtovat doba trvání jednoho souboru.
 
 > [!IMPORTANT]
 > Pokud máte k dispozici další aspekty ochrany osobních údajů, které vám zabrání v používání služby Custom Speech Service, obraťte se na jeden z kanálů podpory.
@@ -184,8 +189,8 @@ Odpověď: nahráním seznamu slov budou do slovníku přidána slova, ale nezp�
  
 **Otázka: Jaké prostředí pro rozpoznávání řeči vylepšuje model tenanta?**
 
-**A:** Když je model tenanta povolený, vytvořený a publikovaný, používá se ke zlepšení rozpoznávání pro všechny podnikové aplikace vytvořené pomocí služby Speech. Tím se také předají token AAD uživatele, který indikuje členství v podniku. 
- 
+**A:** Když je model tenanta povolený, vytvořený a publikovaný, používá se ke zlepšení rozpoznávání pro všechny podnikové aplikace vytvořené pomocí služby Speech. Tím se také předává token AAD uživatele, který indikuje členství v podniku.
+
 Prostředí pro rozpoznávání řeči, která jsou integrovaná do Office 365, jako je například popis diktování a aplikace PowerPoint, se při vytváření modelu tenanta pro aplikace služby Speech nemění.
 
 ## <a name="next-steps"></a>Další kroky

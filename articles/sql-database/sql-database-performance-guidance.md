@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 6e42911d05f387ea47b56b913e9a1868100c1b3c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0dc3a121b30f33d533b1079d9c81501130487017
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821368"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009102"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>Ruční ladění výkonu dotazů v Azure SQL Database
 
@@ -253,7 +253,7 @@ Pokud používáte architekturu se škálováním na více instancí v Azure SQL
 
 Pro aplikace, které přistupují k datům s využitím vysokého objemu, častého dotazování ad hoc, se v síťové komunikaci mezi aplikační vrstvou a Azure SQL Database vrstvou stráví značnou dobou odezvy. I když jsou aplikace i Azure SQL Database ve stejném datovém centru, latence sítě mezi těmito dvěma místy může být zvětšena velkým počtem operací přístupu k datům. Chcete-li snížit síťové odezvy pro operace přístupu k datům, zvažte použití možnosti pro dávkování dotazů ad hoc nebo jejich kompilování jako uložených procedur. Pokud vytváříte dávkování dotazů ad hoc, můžete do Azure SQL Database odeslat více dotazů jako jednu velkou dávku v rámci jedné cesty. Pokud kompilujete ad hoc dotazy v uložené proceduře, můžete dosáhnout stejného výsledku, jako kdybyste je vyřadíte do dávky. Použití uložené procedury vám také umožní zvýšit pravděpodobnost ukládání plánů dotazů do mezipaměti v Azure SQL Database, abyste mohli uloženou proceduru použít znovu.
 
-Některé aplikace jsou náročné na zápis. V některých případech můžete snížit celkový počet vstupně-výstupních operací v databázi tím, že se posuzujete, jak dávkové zápisy. Často je to jednoduché jako použití explicitních transakcí namísto transakcí automatického potvrzení v uložených procedurách a dávkách ad hoc. Pro vyhodnocení různých technik, které můžete použít, najdete informace [v tématu techniky dávkování pro SQL Database aplikací v Azure](https://msdn.microsoft.com/library/windowsazure/dn132615.aspx). Vyzkoušejte si vlastní úlohu a Najděte si správný model pro dávkování. Nezapomeňte pochopit, že model může mít mírně odlišné záruky konzistence transakcí. Vyhledání správné úlohy, která minimalizuje využití prostředků, vyžaduje vyhledání správné kombinace kompromisů v konzistenci a výkonu.
+Některé aplikace jsou náročné na zápis. V některých případech můžete snížit celkový počet vstupně-výstupních operací v databázi tím, že se posuzujete, jak dávkové zápisy. Často je to jednoduché jako použití explicitních transakcí namísto transakcí automatického potvrzení v uložených procedurách a dávkách ad hoc. Pro vyhodnocení různých technik, které můžete použít, najdete informace [v tématu techniky dávkování pro SQL Database aplikací v Azure](sql-database-use-batching-to-improve-performance.md). Vyzkoušejte si vlastní úlohu a Najděte si správný model pro dávkování. Nezapomeňte pochopit, že model může mít mírně odlišné záruky konzistence transakcí. Vyhledání správné úlohy, která minimalizuje využití prostředků, vyžaduje vyhledání správné kombinace kompromisů v konzistenci a výkonu.
 
 ### <a name="application-tier-caching"></a>Ukládání do mezipaměti aplikační vrstvy
 

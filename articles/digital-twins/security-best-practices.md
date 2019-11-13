@@ -8,14 +8,14 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: ba10a6105972eddc8474841b234d2eeddc994f5d
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 9f3f98863f9a7cd0e6328ddc75b1154ee933fe0b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948916"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009241"
 ---
-# <a name="security-best-practices"></a>Osvědčené postupy zabezpečení
+# <a name="azure-digital-twins-security-best-practices"></a>Osvědčené postupy zabezpečení u digitálních vláken Azure
 
 Zabezpečení digitálních vláken Azure umožňuje přesný přístup ke konkrétním prostředkům a akcím v grafu IoT. K tomu připadá prostřednictvím podrobné správy rolí a oprávnění označovaného jako [řízení přístupu na základě role](./security-role-based-access-control.md).
 

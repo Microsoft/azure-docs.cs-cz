@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: dacurwin
-ms.openlocfilehash: a59ac45d157f8674374c894a280e51392038524b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: abd4e91b8fd3332191b58acf38daed06d03801be
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747411"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012840"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Řešení potíží s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -77,7 +77,7 @@ Doporučujeme, abyste před zahájením řešení potíží s agentem služby Az
 
 | Chyba  | Možná příčina | Doporučené akce |
 | ---     | ---     | ---    |
-| <br /><ul><li>Agent Microsoft Azure Recovery Services se nemohl připojit k Microsoft Azure Backup. (ID: 100050) Zkontrolujte nastavení sítě a ujistěte se, že se můžete připojit k Internetu.<li>(407) je vyžadováno ověřování proxy serveru. |Proxy blokuje připojení. |  <ul><li>V Internet Exploreru přejdete na **nástroje** > **Možnosti internetu** > **zabezpečení** > **Internetu**. Vyberte **vlastní úroveň** a přejděte dolů k části **Stažení souboru** . Vyberte **Povolit**.<p>Je také možné, že budete muset přidat do důvěryhodných webů v aplikaci Internet Explorer [adresy URL a IP adresy](backup-configure-vault.md#verify-internet-access) .<li>Změňte nastavení na použití proxy server. Pak zadejte podrobnosti o proxy server.<li> Pokud má počítač omezený přístup k Internetu, zajistěte, aby nastavení brány firewall na počítači nebo proxy umožňovalo tyto [adresy URL a IP adresy](backup-configure-vault.md#verify-internet-access). <li>Pokud máte na serveru nainstalovaný antivirový software, vylučte tyto soubory z antivirového vyhledávání: <ul><li>Souboru cbengine. exe (místo souboru DPMRA. exe).<li>CSC. exe (související s .NET Framework). Pro každou verzi .NET Framework nainstalovanou na serveru je k dispozici soubor CSC. exe. Vylučte soubory CSC. exe pro všechny verze .NET Framework na příslušném serveru. <li>Umístění pomocné složky nebo mezipaměti. <br>Výchozí umístění pro pomocnou složku nebo cestu k mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch.<li>Složka Bin v adresáři C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
+| <br /><ul><li>Agent Microsoft Azure Recovery Services se nemohl připojit k Microsoft Azure Backup. (ID: 100050) Zkontrolujte nastavení sítě a ujistěte se, že se můžete připojit k Internetu.<li>(407) je vyžadováno ověřování proxy serveru. |Proxy blokuje připojení. |  <ul><li>V Internet Exploreru přejdete na **nástroje** > **Možnosti internetu** > **zabezpečení** > **Internetu**. Vyberte **vlastní úroveň** a přejděte dolů k části **Stažení souboru** . Vyberte **povolit**.<p>Je také možné, že budete muset přidat do důvěryhodných webů v aplikaci Internet Explorer [adresy URL a IP adresy](backup-configure-vault.md#verify-internet-access) .<li>Změňte nastavení na použití proxy server. Pak zadejte podrobnosti o proxy server.<li> Pokud má počítač omezený přístup k Internetu, zajistěte, aby nastavení brány firewall na počítači nebo proxy umožňovalo tyto [adresy URL a IP adresy](backup-configure-vault.md#verify-internet-access). <li>Pokud máte na serveru nainstalovaný antivirový software, vylučte tyto soubory z antivirového vyhledávání: <ul><li>Souboru cbengine. exe (místo souboru DPMRA. exe).<li>CSC. exe (související s .NET Framework). Pro každou verzi .NET Framework nainstalovanou na serveru je k dispozici soubor CSC. exe. Vylučte soubory CSC. exe pro všechny verze .NET Framework na příslušném serveru. <li>Umístění pomocné složky nebo mezipaměti. <br>Výchozí umístění pro pomocnou složku nebo cestu k mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch.<li>Složka Bin v adresáři C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
 
 ## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>Nepovedlo se nastavit šifrovací klíč pro zabezpečené zálohy.
 
@@ -119,11 +119,13 @@ Pokud se naplánované zálohy nespouštějí automaticky, ale ruční zálohov�
 
   `<MARS agent installation path>\Microsoft Azure Recovery Services Agent\bin\Modules\MSOnlineBackup`
 
-- Pokud je zásada spouštění PowerShellu pro `LocalMachine` nastavená na omezený, může se stát, že rutina PowerShellu, která spustí úlohu zálohování, selže. Spusťte tyto příkazy v režimu zvýšené úrovně, abyste kontrolovali a nastavili zásady spouštění buď `Unrestricted` nebo `RemoteSigned`:
+- Pokud je zásada spouštění PowerShellu pro `LocalMachine` nastavená na `restricted`, rutina PowerShellu, která spustí úlohu zálohování, může selhat. Spusťte tyto příkazy v režimu zvýšené úrovně, abyste kontrolovali a nastavili zásady spouštění buď `Unrestricted` nebo `RemoteSigned`:
 
-  `PS C:\WINDOWS\system32> Get-ExecutionPolicy -List`
+ ```PowerShell
+ Get-ExecutionPolicy -List
 
-  `PS C:\WINDOWS\system32> Set-ExecutionPolicy Unrestricted`
+Set-ExecutionPolicy Unrestricted
+```
 
 - Zajistěte, aby nebyly k dispozici žádné nebo poškozené soubory MSOnlineBackup modulu PowerShellu. V případě chybějících nebo poškozených souborů proveďte tyto kroky:
 
@@ -165,9 +167,9 @@ Pokud obnovení ještě neproběhne úspěšně, restartujte server nebo klienta
 
 ## <a name="troubleshoot-cache-problems"></a>Řešení potíží s mezipamětí
 
-Operace zálohování může selhat, pokud je složka mezipaměti (také označovaná jako pomocná složka) nesprávně nakonfigurovaná, chybí požadované součásti nebo má omezený přístup.
+Operace zálohování může selhat, pokud je složka mezipaměti (také označovaná jako pomocná složka) nesprávně nakonfigurovaná, chybějící předpoklady nebo má omezený přístup.
 
-### <a name="pre-requisites"></a>Požadavky
+### <a name="prerequisites"></a>Požadavky
 
 Aby operace agenta MARS uspěly ve složce mezipaměti, musí splňovat následující požadavky:
 
@@ -215,13 +217,13 @@ Agentovi Microsoft Azure Recovery Services se nepodařilo získat přístup k po
 
 Chybová zpráva | Doporučená akce |
 -- | --
-Zálohování se nepovedlo kvůli nedostatku úložiště na svazku, kde se nachází pomocná složka. | Chcete-li tento problém vyřešit, ověřte níže uvedené kroky a opakujte operaci:<br/>- [zajistěte, aby byl agent Mars nejnovější](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [ověřit a vyřešit problémy úložiště, které mají vliv na pomocné místo zálohy](#pre-requisites)
+Zálohování se nepovedlo kvůli nedostatku úložiště na svazku, kde se nachází pomocná složka. | Chcete-li tento problém vyřešit, ověřte níže uvedené kroky a opakujte operaci:<br/>- [zajistěte, aby byl agent Mars nejnovější](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [ověřit a vyřešit problémy úložiště, které mají vliv na pomocné místo zálohy](#prerequisites)
 
 ### <a name="salbitmaperror"></a>SalBitmapError
 
 Chybová zpráva | Doporučená akce |
 -- | --
-Nepodařilo se najít změny v souboru. Důvodů může být několik. Zkuste operaci zopakovat. | Chcete-li tento problém vyřešit, ověřte níže uvedené kroky a opakujte operaci:<br/> - [zajistěte, aby byl agent Mars nejnovější](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [ověřit a vyřešit problémy úložiště, které mají vliv na pomocné místo zálohy](#pre-requisites)
+Nepodařilo se najít změny v souboru. Důvodů může být několik. Zkuste operaci zopakovat. | Chcete-li tento problém vyřešit, ověřte níže uvedené kroky a opakujte operaci:<br/> - [zajistěte, aby byl agent Mars nejnovější](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [ověřit a vyřešit problémy úložiště, které mají vliv na pomocné místo zálohy](#prerequisites)
 
 ## <a name="next-steps"></a>Další kroky
 
