@@ -307,8 +307,8 @@
               href: concepts-gating-overview.md
             - name: Nasazení syntetické technologie
               href: concepts-guidelines-responsible-deployment-synthetic.md
-            - name: Poznámka k transparentnosti pro Vlastní hlas
-              href: 'https://aka.ms/neural-tts-transparency-note'
+            - name: Zveřejnění informací o mluvčím
+              href: 'https://aka.ms/disclosure-voice-talent'
             - name: Zpřístupnění pokynů pro návrh
               href: concepts-disclosure-guidelines.md
             - name: Zpřístupnění způsobů návrhu

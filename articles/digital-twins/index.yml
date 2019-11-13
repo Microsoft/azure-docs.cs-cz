@@ -3,7 +3,7 @@ title: Dokumentace ke službě Azure Digital Twins Preview
 summary: Naučte se využívat Azure Digital Twins k propojování osob, míst a věcí a sestavování řešení IoT s využitím prostorové inteligence. Projděte si rychlé zprovoznění a kurzy, ve kterých můžete monitorovat imaginární inteligentní budovu, seznámit se podrobně s koncepcí a vytvořit řešení IoT další generace, které modeluje vaše fyzické prostředí.
 metadata:
   title: Dokumentace ke službě Azure Digital Twins Preview – kurzy, reference k rozhraní API | Microsoft Docs
-  description: Azure Digital Twins můžete využít k vytváření inteligentních prostorových řešení.
+  description: Naučte se využívat Azure Digital Twins k propojování osob, míst a věcí a sestavování řešení IoT s využitím inteligentních prostorových analýz.
   services: digital-twins
   ms.service: digital-twins
   ms.subservice: digital-twins
@@ -12,12 +12,12 @@ metadata:
   author: KingdomOfEnds
   ms.author: v-adgera
   ms.date: 09/03/2019
-  ms.openlocfilehash: b5a449d09b1068dbf874828b9e65b1ac318b58fd
-  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.openlocfilehash: 3d55dcfc4b57d0179ca6e02bae50bf3d37dc70f3
+  ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 09/24/2019
-  ms.locfileid: "71219724"
+  ms.lasthandoff: 11/13/2019
+  ms.locfileid: "74009297"
 landingContent:
 - title: Informace o službě Azure Digital Twins
   linkLists:

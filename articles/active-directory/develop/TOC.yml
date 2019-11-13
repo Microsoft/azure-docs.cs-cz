@@ -392,9 +392,9 @@
               href: active-directory-configurable-token-lifetimes.md
         - name: Konfigurace aplikací
           items:
-            - name: Průvodce školením registrace aplikací na webu Azure Portal (starší verze)
+            - name: Přechod z Registrace aplikací (starší verze) na nové prostředí Registrace aplikací na webu Azure Portal
               href: app-registrations-training-guide-for-app-registrations-legacy-users.md
-            - name: Průvodce registrací aplikací na portálu pro registraci aplikací
+            - name: Přechod z portálu pro registraci aplikací na nové prostředí Registrace aplikací na webu Azure Portal
               href: app-registration-portal-training-guide.md
             - name: Převedení aplikace pro jednoho tenanta na aplikaci pro více tenantů
               href: howto-convert-app-to-be-multi-tenant.md

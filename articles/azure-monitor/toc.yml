@@ -1183,19 +1183,17 @@
               href: platform/autoscale-webhook-email.md
         - name: PowerShell
           items:
-            - name: Ukázky Azure PowerShellu
+            - name: Správa s využitím PowerShellu
               href: platform/powershell-quickstart-samples.md
-            - name: Rutiny prostředí PowerShell
+            - name: Vytváření upozornění
+              href: app/powershell-alerts.md
+            - name: Správa Log Analytics
               href: platform/powershell-workspace-configuration.md
-            - name: Aplikace
+            - name: Application Insights
               items:
-                - name: Vytvoření prostředků Application Insights
+                - name: Správa Application Insights
                   href: app/powershell.md
-                - name: Vytvoření prostředků
-                  href: app/powershell-script-create-resource.md
-                - name: Nastavení upozornění
-                  href: app/powershell-alerts.md
-                - name: Získání diagnostiky Azure
+                - name: Správa Azure Cloud Services
                   href: app/powershell-azure-diagnostics.md
         - name: Ukázky Azure CLI
           href: platform/cli-samples.md

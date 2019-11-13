@@ -1,0 +1,147 @@
+- name: Reference k modulu návrháře služby Azure Machine Learning
+  href: module-reference.md
+- name: Dokumentace ke službě Azure Machine Learning
+  href: ../index.yml
+- name: Kategorie modulu
+  expanded: true
+  items:
+    - name: Vstup a výstup dat
+      items:
+        - name: Import dat
+          href: import-data.md
+        - name: Ruční zadávání dat
+          href: enter-data-manually.md
+        - name: Export dat
+          href: export-data.md
+    - name: Transformace dat
+      items:
+        - name: Přidání sloupců
+          href: add-columns.md
+        - name: Přidání řádků
+          href: add-rows.md
+        - name: Použití transformace SQL
+          href: apply-sql-transformation.md
+        - name: Převod na C
+          href: convert-to-csv.md
+        - name: Převod na datovou sadu
+          href: convert-to-dataset.md
+        - name: Vyčištění chybějících dat
+          href: clean-missing-data.md
+        - name: Úpravy metadat
+          href: edit-metadata.md
+        - name: Spojení dat
+          href: join-data.md
+        - name: Normalizace dat
+          href: normalize-data.md
+        - name: Odebrání duplicitních řádků
+          href: remove-duplicate-rows.md
+        - name: Transformace pro výběr sloupců
+          href: select-columns-transform.md
+        - name: Výběr sloupců v datové sadě
+          href: select-columns-in-dataset.md
+    - name: Vzorkování
+      items:
+        - name: Křížové ověření modelu
+          href: cross-validate-model.md
+        - name: Rozdělení a ukázky
+          href: partition-and-sample.md
+        - name: SMOTE
+          href: smote.md
+        - name: Rozdělení dat
+          href: split-data.md
+    - name: Výběr funkcí
+      items:
+        - name: Výběr funkcí na základě filtrů
+          href: filter-based-feature-selection.md
+        - name: Důležitost funkce permutací
+          href: permutation-feature-importance.md
+    - name: Python a R
+      items:
+        - name: Vytvoření modelu Pythonu
+          href: create-python-model.md
+        - name: Spouštění skriptů Pythonu
+          href: execute-python-script.md
+        - name: Spouštění skriptů R
+          href: execute-r-script.md
+    - name: Analýza textu
+      items:
+        - name: Extrakce funkcí n-gramů z textu
+          href: extract-n-gram-features-from-text.md
+        - name: Hashování funkcí
+          href: feature-hashing.md
+        - name: Předzpracování textu
+          href: preprocess-text.md
+    - name: Algoritmy strojového učení
+      items:
+        - name: Classification
+          items:
+            - name: Rozhodovací les s více třídami
+              href: multiclass-decision-forest.md
+            - name: Posílený rozhodovací strom s několika třídami
+              href: multiclass-boosted-decision-tree.md
+            - name: Logistická regrese s více třídami
+              href: multiclass-logistic-regression.md
+            - name: Neurální síť s více třídami
+              href: multiclass-neural-network.md
+            - name: One vs. All Multiclass
+              href: one-vs-all-multiclass.md
+            - name: Logistická regrese se dvěma třídami
+              href: two-class-logistic-regression.md
+            - name: Zprůměrovaný perceptron se dvěma třídami
+              href: two-class-averaged-perceptron.md
+            - name: Posílený rozhodovací strom se dvěma třídami
+              href: two-class-boosted-decision-tree.md
+            - name: Rozhodovací les se dvěma třídami
+              href: two-class-decision-forest.md
+            - name: Neurální síť se dvěma třídami
+              href: two-class-neural-network.md
+            - name: Support Vector Machine (SVM) se dvěma třídami
+              href: two-class-support-vector-machine.md
+        - name: Clustering
+          items:
+            - name: Clustering K-Means
+              href: k-means-clustering.md
+        - name: Regrese
+          items:
+            - name: Posílená regrese rozhodovacího stromu
+              href: boosted-decision-tree-regression.md
+            - name: Regrese rozhodovacího lesa
+              href: decision-forest-regression.md
+            - name: Lineární regrese
+              href: linear-regression.md
+            - name: Regrese neurální sítě
+              href: neural-network-regression.md
+        - name: Doporučovací systém
+          items:
+            - name: Trénování doporučovacího systému SVD
+              href: train-svd-recommender.md
+    - name: Trénování modelu
+      items:
+        - name: Trénování modelu
+          href: train-model.md
+        - name: Trénování modelu clusteringu
+          href: train-clustering-model.md
+        - name: Ladění hyperparametrů modelů
+          href: tune-model-hyperparameters.md
+    - name: Vyhodnocení modelu
+      items:
+        - name: Vyhodnocení modelu
+          href: evaluate-model.md
+        - name: Vyhodnocení doporučovacího systému
+          href: evaluate-recommender.md
+    - name: Určení skóre modelu
+      items:
+        - name: Použití transformace
+          href: apply-transformation.md
+        - name: Přiřazení dat do clusterů
+          href: assign-data-to-clusters.md
+        - name: Určení skóre modelu
+          href: score-model.md
+        - name: Určení skóre doporučovacího systému SVD
+          href: score-svd-recommender.md
+    - name: Statistické funkce
+      items:
+        - name: Použití matematických operací
+          href: apply-math-operation.md
+        - name: Sumarizace dat
+          href: summarize-data.md

@@ -165,8 +165,8 @@
               href: concepts-data-flow-monitoring.md
             - name: Výkon toku dat
               href: concepts-data-flow-performance.md
-            - name: Přesun uzlů
-              href: concepts-data-flow-move-nodes.md
+            - name: Správa grafu
+              href: concepts-data-flow-manage-graph.md
             - name: Tvůrce výrazů
               href: concepts-data-flow-expression-builder.md
             - name: Jazyk výrazů
@@ -616,6 +616,8 @@
           href: connector-troubleshoot-guide.md
         - name: Řešení potíží se správou Azure-SSIS IR
           href: ssis-integration-runtime-management-troubleshoot.md
+        - name: Řešení potíží s místním prostředím IR
+          href: self-hosted-integration-runtime-troubleshoot-guide.md
         - name: Řešení potíží se spuštěním balíčku v prostředí Azure-SSIS IR
           href: ssis-integration-runtime-ssis-activity-faq.md
         - name: Řešení potíží s toky dat
@@ -646,6 +648,8 @@
           href: scenario-ssis-migration-ssisdb-mi.md
 - name: Referenční informace
   items:
+    - name: Skript toku dat
+      href: data-flow-script.md
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.datafactory
     - name: PowerShell

@@ -154,6 +154,8 @@
         - name: Nasazení – REST API
           displayName: deployment
           href: resource-group-template-deploy-rest.md
+        - name: Nasazení What-If
+          href: template-deploy-what-if.md
         - name: Opětovné nasazení při chybě
           displayName: rollback
           href: rollback-on-error.md

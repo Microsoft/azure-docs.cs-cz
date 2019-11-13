@@ -166,9 +166,7 @@
       items:
         - name: Přidání záměru
           href: luis-how-to-add-intents.md
-        - name: Přidání entity do promluvy
-          href: luis-how-to-add-example-utterances.md
-        - name: Přidání entity bez promluvy
+        - name: Přidání entity pro extrakci dat
           href: luis-how-to-add-entities.md
           displayName: 'roles, import'
         - name: Použití předem připravených modelů
@@ -306,6 +304,8 @@
       displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
     - name: Referenční informace k vlastním entitám
       items:
+        - name: Strojově naučená entita
+          href: reference-entity-machine-learned-entity.md
         - name: Složená entita
           href: reference-entity-composite.md
         - name: Entita seznamu
@@ -316,6 +316,8 @@
           href: reference-entity-regular-expression.md
         - name: Jednoduchá entita
           href: reference-entity-simple.md
+    - name: Syntaxe vzoru
+      href: reference-pattern-syntax.md
     - name: Mínění
       href: luis-reference-prebuilt-sentiment.md
     - name: Materiály pro vývojáře
