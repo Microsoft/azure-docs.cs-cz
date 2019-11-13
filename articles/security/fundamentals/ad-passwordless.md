@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 0fbd8404e326ecc6fabef8c89991009809b1448b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 78f8b7097060f1091bfed30722c9ea456feed384
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820517"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007275"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>World bez hesel s Azure Active Directory
 
@@ -24,7 +24,7 @@ Tři typy útoků, které se běžně používají k ohrožení uživatelských 
 
 Tento článek představuje začátek vaší cesty, který vám pomůže pochopit a implementovat řešení nejenom v heslech od Microsoftu a pomůže vám vybrat jednu nebo více z těchto možností:
 
-* **Windows Hello pro firmy**. Ve Windows 10 nahrazuje Windows Hello pro firmy hesla se silným dvojúrovňovém ověřováním na počítačích a mobilních zařízeních. Toto ověřování se skládá z nového typu uživatelských přihlašovacích údajů, které jsou vázané na zařízení, a používá biometriku nebo PIN.
+* **Windows Hello pro firmy**. Ve Windows 10 nahrazuje Windows Hello pro firmy hesla se silným dvojúrovňovém ověřováním na počítačích a mobilních zařízeních. Toto ověřování se skládá z nového typu přihlašovacích údajů uživatele, které jsou svázané se zařízením a používá biometrické rozpoznávání nebo PIN.
 
 * **Přihlášení bez hesla pomocí Microsoft Authenticator**. Aplikaci Microsoft Authenticator můžete použít k přihlášení k účtu Azure AD bez použití hesla. Podobně jako technologie Windows Hello pro firmy používá Microsoft Authenticator k povolení přihlašovacích údajů uživatele, které jsou vázané na zařízení, a používá biometriku nebo PIN kód.
 

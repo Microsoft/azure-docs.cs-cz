@@ -1,17 +1,14 @@
 ---
 title: Odstraňování běžných chyb
 description: Naučte se řešit problémy s dotazem na prostředky Azure pomocí Azure Resource graphu.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: troubleshooting
-ms.service: resource-graph
-ms.openlocfilehash: 030fe26a0aa8fc4ed855fb7744e576366f4fd2e2
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e8f42650265b1ca400731365203408eeb22a4e4c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389703"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958526"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Řešení chyb pomocí Azure Resource graphu
 
@@ -33,7 +30,7 @@ Zákazníci, kteří mají přístup k více než 1000 předplatným, včetně p
 
 Azure CLI a PowerShell předávají jenom prvních 1000 předplatných do Azure Resource graphu. REST API pro Azure Resource Graph přijímá maximální počet odběrů, na kterých se má dotaz provést.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
 Dávkové zpracování požadavků pro dotaz s podmnožinou předplatných, které mají zůstat v rámci limitu předplatného 1000. Řešení používá parametr **předplatného** v prostředí PowerShell.
 
@@ -68,11 +65,11 @@ Zákazníci, kteří se dotazují do grafu prostředků Azure REST API obdrží 
 
 #### <a name="cause"></a>Příčina
 
-Graf prostředků Azure REST API podporuje jenom `Content-Type` **aplikace nebo JSON**. Některé nástroje nebo agenti REST mají výchozí hodnotu **Text/prostý**, což REST API nepodporuje.
+Graf prostředků Azure REST API podporuje jenom `Content-Type` **Application/JSON**. Některé nástroje nebo agenti REST mají výchozí hodnotu **Text/prostý**, což REST API nepodporuje.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
-Ověřte, že nástroj nebo agent, který používáte k dotazování na Azure Resource Graph, má hlavičku REST API `Content-Type` nakonfigurovaná pro **Application/JSON**.
+Ověřte, že nástroj nebo agent, který používáte k dotazování na Azure Resource Graph, má REST API záhlaví `Content-Type` nakonfigurovaná pro **Application/JSON**.
 
 ### <a name="rest-403"></a>Scénář: žádné oprávnění ke čtení pro všechna předplatná v seznamu
 
@@ -84,7 +81,7 @@ Zákazníci, kteří explicitně předají seznam předplatných s dotazem na Az
 
 Pokud zákazník nemá oprávnění ke čtení pro všechna poskytnutá předplatná, je žádost zamítnuta z důvodu nedostatku příslušných zabezpečovacích práv.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
 V seznamu předplatných uveďte aspoň jedno předplatné, ke kterému má zákazník, který dotaz spouští, oprávnění ke čtení. Další informace najdete v tématu [oprávnění v Azure Resource graphu](../overview.md#permissions-in-azure-resource-graph).
 

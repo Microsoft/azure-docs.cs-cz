@@ -1,5 +1,5 @@
 ---
-title: Jak diagnostikovat chyby u připojené služby Azure Active Directory
+title: Diagnostikování chyb pomocí Azure Active Directory připojené služby
 description: Služba Active Directory Connect zjistila nekompatibilní typ ověřování.
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e544942029532fdbe998c36917e688d70ce4ed5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 26f25daa01288959c38520f9713d35eb975d2df2
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851982"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73941381"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Diagnostikování chyb pomocí Azure Active Directory připojené služby
 
@@ -27,7 +27,7 @@ Aby bylo možné správně zjistit předchozí ověřovací kód v projektu, mus
 
 ## <a name="project-types"></a>Typy projektů
 
-Připojená služba kontroluje typ projektu, který vyvíjíte, aby mohl vložit správnou logiku ověřování do projektu. Pokud existuje nějaký kontroler, který je odvozen `ApiController` z projektu, projekt je považován za projekt WebAPI. Pokud jsou pouze řadiče, které jsou odvozeny z `MVC.Controller` projektu, projekt je považován za projekt MVC. Připojená služba nepodporuje žádný jiný typ projektu.
+Připojená služba kontroluje typ projektu, který vyvíjíte, aby mohl vložit správnou logiku ověřování do projektu. Pokud existuje nějaký kontroler, který je odvozen od `ApiController` v projektu, projekt se považuje za projekt WebAPI. Pokud jsou v projektu pouze řadiče odvozené z `MVC.Controller`, projekt se považuje za projekt MVC. Připojená služba nepodporuje žádný jiný typ projektu.
 
 ## <a name="compatible-authentication-code"></a>Kompatibilní ověřovací kód
 
@@ -54,7 +54,7 @@ Nakonec se připojená služba pokusí zjistit verze ověřovacího kódu, kter�
 * Jednotlivé uživatelské účty
 * Účty organizace
 
-K detekci ověřování systému Windows v projektu MVC je připojen vzhled `authentication` prvku `web.config` v souboru.
+K detekci ověřování systému Windows v projektu MVC je připojení vyhledáno elementu `authentication` v souboru `web.config`.
 
 ```xml
 <configuration>
@@ -64,7 +64,7 @@ K detekci ověřování systému Windows v projektu MVC je připojen vzhled `aut
 </configuration>
 ```
 
-K detekci ověřování systému Windows v projektu webového rozhraní API je připojená služba hledat `IISExpressWindowsAuthentication` prvek v `.csproj` souboru projektu:
+K detekci ověřování systému Windows v projektu webového rozhraní API je připojená služba Hledat element `IISExpressWindowsAuthentication` v souboru `.csproj` projektu:
 
 ```xml
 <Project>
@@ -74,7 +74,7 @@ K detekci ověřování systému Windows v projektu webového rozhraní API je p
 </Project>
 ```
 
-Aby bylo možné detekovat individuální ověřování uživatelských účtů, bude připojená služba hledat prvek balíčku v `packages.config` souboru.
+Aby bylo možné detekovat individuální ověřování uživatelských účtů, bude připojená služba hledat prvek balíčku v souboru `packages.config`.
 
 ```xml
 <packages>

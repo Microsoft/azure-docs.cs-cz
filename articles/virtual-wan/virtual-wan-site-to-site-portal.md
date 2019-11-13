@@ -1,5 +1,5 @@
 ---
-title: Vytvoření připojení typu site-to-site k Azure pomocí virtuální sítě WAN Azure | Microsoft Docs
+title: 'Azure Virtual WAN: vytvoření připojení typu Site-to-site'
 description: V tomto kurzu se naučíte vytvořit připojení VPN typu site-to-site k Azure pomocí služby Azure Virtual WAN.
 services: virtual-wan
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 8824111edff23b8bdc93a64707cf5198288b3a6b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 82f662dd00805cf53c0581fb0a2b3322a0207a11
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488851"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005712"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Kurz: Vytvoření připojení typu site-to-site pomocí služby Azure Virtual WAN
 
@@ -35,7 +35,7 @@ Co se v tomto kurzu naučíte:
 > Pokud máte hodně lokalit, doporučujeme využít k vytvoření této konfigurace [partnera pro Virtual WAN](https://aka.ms/virtualwan). Pokud se ale vyznáte ve vytváření sítí a umíte nakonfigurovat vlastní zařízení VPN, můžete tuto konfiguraci vytvořit sami.
 >
 
-![Diagram virtuální sítě WAN](./media/virtual-wan-about/virtualwan.png)
+![Diagram služby Virtual WAN](./media/virtual-wan-about/virtualwan.png)
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -57,7 +57,7 @@ V prohlížeči přejděte na Azure Portal a přihlaste se pomocí svého účtu
 2. Z výsledků vyberte **virtuální síť WAN** . Na stránce virtuální síť WAN kliknutím na **vytvořit** otevřete stránku vytvořit síť WAN.
 3. Na stránce **vytvořit síť WAN** na kartě **základy** vyplňte následující pole:
 
-   ![Virtual WAN](./media/virtual-wan-site-to-site-portal/vwan.png)
+   ![Virtuální síť WAN](./media/virtual-wan-site-to-site-portal/vwan.png)
 
    * **Subscription** (Předplatné) – vyberte předplatné, které chcete použít.
    * **Skupina prostředků** – vytvořte nové nebo použijte existující.

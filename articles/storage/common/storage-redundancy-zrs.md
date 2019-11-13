@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e075091461949639fc36ffb9feab69ac5399ae61
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0196e6fb4b2cd52fd66a26e07e8d4ce71983bc16
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491986"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013197"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Zóna – redundantní úložiště (ZRS) pro vytváření vysoce dostupných Azure Storagech aplikací
 
@@ -24,7 +24,7 @@ ms.locfileid: "73491986"
 
 ZRS aktuálně podporuje typy účtů úložiště úrovně Standard pro obecné účely v2 a úložiště. Další informace o typech účtů úložiště najdete v tématu [Přehled účtu Azure Storage](storage-account-overview.md).
 
-ZRS je k dispozici pro objekty blob bloku, objekty blob stránky mimo disk, soubory, tabulky a fronty.
+ZRS je k dispozici pro objekty blob bloku, objekty blob stránky mimo disk, standardní sdílené složky, tabulky a fronty.
 
 Pro účty pro obecné účely v2 je ZRS všeobecně dostupná v následujících oblastech:
 
@@ -39,7 +39,7 @@ Pro účty pro obecné účely v2 je ZRS všeobecně dostupná v následujícíc
 - USA – východ 2
 - USA – západ 2
 
-Pro účty úložiště ZRS je všeobecně dostupná v následujících oblastech:
+Pro účty úložiště souborů (prémiové sdílené složky) je ZRS všeobecně dostupná v následujících oblastech:
 
 - Evropa – západ
 - USA – východ
@@ -98,16 +98,16 @@ Při migraci za provozu Pamatujte na následující omezení:
 Migraci za provozu si můžete vyžádat prostřednictvím [portálu podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Na portálu vyberte účet úložiště, který chcete převést na ZRS.
 1. Vybrat **novou žádost o podporu**
 2. Dokončete **základy** na základě informací o účtu. V části **Služba** vyberte **Správa účtu úložiště** a prostředek, který chcete převést na ZRS. 
-3. Vyberte **Další**. 
+3. Vyberte **Next** (Další). 
 4. V části **problém** zadejte následující hodnoty: 
     - **Závažnost**: ponechte výchozí hodnotu tak, jak je.
     - **Typ problému**: vyberte **migrace dat**.
     - **Kategorie**: vyberte **migrovat do ZRS**.
     - **Title**: zadejte popisný název, například **migrace účtu ZRS**.
     - **Podrobnosti**: v poli **podrobností** zadejte další podrobnosti, například chci migrovat na ZRS z [LRS, GRS] v oblasti \_\_. 
-5. Vyberte **Další**.
+5. Vyberte **Next** (Další).
 6. Ověřte, že kontaktní informace jsou správné v okně **kontaktní údaje** .
-7. Vyberte **Create** (Vytvořit).
+7. Vyberte **Vytvořit**.
 
 Pracovník podpory vás bude kontaktovat a poskytne vám pomoc, kterou potřebujete.
 
@@ -163,7 +163,7 @@ Pokud chcete upgradovat na ZRS pomocí rozhraní příkazového řádku, použij
 az storage account update -g <resource_group> -n <storage_account> --set kind=StorageV2
 ```
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 - [Účet replikace Azure Storage](storage-redundancy.md)
 - [Místně redundantní úložiště (LRS): redundance dat s nízkými náklady pro Azure Storage](storage-redundancy-lrs.md)
 - [Geograficky redundantní úložiště (GRS): replikace mezi různými oblastmi pro Azure Storage](storage-redundancy-grs.md)

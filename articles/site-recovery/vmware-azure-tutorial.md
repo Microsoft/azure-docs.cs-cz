@@ -1,19 +1,19 @@
 ---
-title: Nastavení zotavení po havárii do Azure pro místní virtuální počítače VMware pomocí Azure Site Recovery
+title: Nastavení zotavení po havárii virtuálních počítačů VMware do Azure pomocí Azure Site Recovery
 description: Zjistěte, jak nastavit zotavení po havárii do Azure pro místní virtuální počítače VMware pomocí Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: e07b1d7e01d743bb46c8d5a21664bf68184c97dd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cfdb39fd3585eeeb2afb27749b42b0eaed1dfc33
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488460"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953630"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Nastavení zotavení po havárii do Azure pro místní virtuální počítače VMware
 
@@ -41,7 +41,7 @@ Dokončete předchozí kurzy:
 3. V tomto kurzu si ukážeme, jak replikovat jeden virtuální počítač. Pokud nasazujete více virtuálních počítačů VMware, měli byste použít [nástroj Plánovač nasazení](https://aka.ms/asr-deployment-planner). [Přečtěte si další informace](site-recovery-deployment-planner.md) o tomto nástroji.
 4. V tomto kurzu se používá několik možností, které byste mohli chtít udělat jinak:
     - V tomto kurzu se pomocí šablony vajíček vytvoří virtuální počítač VMware konfiguračního serveru. Pokud to z nějakého důvodu nemůžete udělat, postupujte podle [těchto pokynů](physical-manage-configuration-server.md) a nastavte konfigurační server ručně.
-    - V tomto kurzu Site Recovery automaticky stáhne a nainstaluje MySQL na konfigurační server. Pokud chcete, můžete ho místo toho nastavit ručně. [Další informace](vmware-azure-deploy-configuration-server.md#configure-settings).
+    - V tomto kurzu Site Recovery automaticky stáhne a nainstaluje MySQL na konfigurační server. Pokud chcete, můžete ho místo toho nastavit ručně. [Další informace](vmware-azure-deploy-configuration-server.md#configure-settings)
 
 
 
@@ -158,7 +158,7 @@ Vyberte a zkontrolujte cílové prostředky.
 
 ## <a name="create-a-replication-policy"></a>Vytvoření zásady replikace
 
-1. Otevřete web [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte **trezory Recovery Services**.
+1. Otevřete [portál Azure](https://portal.azure.com). Vyhledejte a vyberte **trezory Recovery Services**.
 2. Vyberte trezor služby Recovery Services (v tomto kurzu **ContosoVMVault**).
 3. Zásadu replikace vytvoříte tak, že vyberete **Infrastruktura Site Recovery** > **Zásady replikace** >  **+ Zásada replikace**.
 4. V části **Vytvoření zásady replikace** zadejte název zásady. Používáme **VMwareRepPolicy**.

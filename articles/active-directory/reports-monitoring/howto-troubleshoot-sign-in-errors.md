@@ -3,7 +3,7 @@ title: Řešení potíží se zprávami o chybách přihlášení | Microsoft Do
 description: Přečtěte si, jak řešit chyby při přihlašování pomocí sestav Azure Active Directory v Azure Portal
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 692fd2034fb70feffe02320eea5cdb9a3d163475
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: ec5fe7f62e8537a7f687202d365eb37d43b48b78
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819708"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008065"
 ---
 # <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Postupy: řešení chyb při přihlašování pomocí sestav Azure Active Directory
 
@@ -32,7 +32,7 @@ ms.locfileid: "72819708"
 
 Kromě toho sestava přihlášení také může pomoct při odstraňování potíží s přihlášením pro uživatele ve vaší organizaci. V této příručce se dozvíte, jak v sestavě přihlášení izolovat selhání při přihlašování a jak je použít k pochopení hlavní příčiny selhání.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat:
 

@@ -1,6 +1,6 @@
 ---
-title: Diagnostika, řešení potíží a řešení problémů v Azure Time Series Insights | Microsoft Docs
-description: Tento článek popisuje, jak diagnostikovat, řešit problémy a řešit běžné problémy, se kterými se můžete setkat v prostředí Azure Time Series Insights.
+title: Diagnostika, řešení potíží a řešení problémů – Azure Time Series Insights | Microsoft Docs
+description: Tento článek popisuje, jak diagnostikovat, řešit problémy a řešit běžné problémy v prostředí Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7c9dcdf43e819e20126f948fa08f4f8f476036ac
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: ca38ebb015552042591fb4cc6b7edfe99527e79f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991258"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007051"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Diagnostikujte a řešte problémy v prostředí Time Series Insights.
 
@@ -34,13 +34,13 @@ V [průzkumníkovi Azure Time Series Insights](https://insights.timeseries.azure
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>Příčina: zdrojová data události nejsou ve formátu JSON.
 
-Azure Time Series Insights podporuje pouze data JSON. Ukázky JSON najdete v tématu [podporované tvary JSON](./how-to-shape-query-json.md).
+Azure Time Series Insights podporuje pouze data JSON. Ukázky JSON najdete v tématu [tvary JSON nepodporuje](./how-to-shape-query-json.md).
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Příčina B: ve zdrojovém klíči události chybí požadovaná oprávnění.
 
 * Pro službu IoT Hub v Azure IoT Hub musíte zadat klíč, který má oprávnění **služby Connect** . Obě zásady **iothubowner** nebo **služby** budou fungovat, protože obě mají oprávnění **k připojení ke službě** .
 
-   [oprávnění k připojení služby![IoT Hub](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
+   [oprávnění k připojení služby ![IoT Hub](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
 * V případě centra událostí v Azure Event Hubs musíte zadat klíč, který má oprávnění k **naslouchání** . Obě zásady **pro čtení** nebo **správu** budou fungovat, protože obě mají oprávnění k **naslouchání** .
 
@@ -69,7 +69,7 @@ Omezení omezování se vynutilo na základě typu SKU a kapacity prostředí. V
 
 Následující obrázek ukazuje Time Series Insights prostředí, které má SKU S1 a kapacitu 3. Může to mít až 3 000 000 událostí za den.
 
-[aktuální kapacita SKU![prostředí](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
+[aktuální kapacita SKU ![prostředí](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
 
 Předpokládejme například, že prostředí přijímá zprávy z centra událostí. Frekvence denních přenosů je ~ 67 000 zpráv. Tato rychlost překládá na přibližně 46 zpráv každou minutu. 
 

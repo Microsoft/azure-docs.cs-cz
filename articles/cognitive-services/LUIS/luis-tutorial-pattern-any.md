@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 43ad6558b685d3959562be720f7494b3d2a7334e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c118a74e273e153746240465692b1c712bd25f47
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499432"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953607"
 ---
 # <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Kurz: extrakce dat z volných formulářů pomocí vzoru. libovolná entita
 
@@ -24,7 +24,7 @@ V tomto kurzu použijete entitu Pattern.any k extrakci dat ze správně naformá
 
 [!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-**V tomto kurzu se naučíte:**
+**Co se v tomto kurzu naučíte:**
 
 > [!div class="checklist"]
 > * Importovat ukázkovou aplikaci
@@ -72,7 +72,7 @@ Různá délka promluv zahrnuje slova, která můžou službě LUIS komplikovat 
 
 1. Na stránce **Moje aplikace** na [portálu Luis](https://www.luis.ai)importujte JSON do nové aplikace.
 
-1. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `patt-any`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
+1. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `patt-any`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto může obsahovat jenom znaky podporované v adresách URL.
 
 ## <a name="add-example-utterances"></a>Přidat ukázkové promluvy 
 
@@ -138,7 +138,7 @@ Entita Pattern.any extrahuje entity různé délky. Funguje pouze ve vzoru, prot
 
 ## <a name="using-an-explicit-list"></a>Použití explicitního seznamu
 
-Pokud zjistíte, že váš vzor zahrnující entitu Pattern.any neextrahuje entity správně, můžete tento problém opravit pomocí [explicitního seznamu](luis-concept-patterns.md#explicit-lists).
+Pokud zjistíte, že váš vzor zahrnující entitu Pattern.any neextrahuje entity správně, můžete tento problém opravit pomocí [explicitního seznamu](reference-pattern-syntax.md#explicit-lists).
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

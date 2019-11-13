@@ -1,6 +1,7 @@
 ---
-title: Průvodce školením pro registraci aplikace Portál registrace aplikací – Microsoft Identity Platform | Azure
-description: Registrace aplikací v Azure Portal pro uživatele, kteří znají portál pro registraci aplikací
+title: Přechod z portálu pro registraci aplikací na nové prostředí Registrace aplikací v Azure Portal
+titleSuffix: Microsoft identity platform
+description: Úvod k novému prostředí pro registraci aplikací v Azure Portal
 services: active-directory
 documentationcenter: ''
 author: archieag
@@ -17,14 +18,14 @@ ms.author: aragra
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1974616c0331203a803e4f13a19297940fb5d42e
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 0e9c09ce2d997c58e2725c411fff0b87a0f5071b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905469"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013028"
 ---
-# <a name="training-guide-using-app-registrations-in-the-azure-portal-instead-of-application-registration-portal"></a>Průvodce školením: použití Registrace aplikací v Azure Portal namísto portálu pro registraci aplikací
+# <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Přechod z portálu pro registraci aplikací na nové prostředí Registrace aplikací v Azure Portal
 
 Nové prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) v Azure Portal přináší mnoho vylepšení. Pokud jste obeznámeni s prostředím portál pro registraci aplikací (apps.dev.microsoft.com) pro registraci nebo správu sblížených aplikací, které se označují jako staré, pomůže vám tato výuková příručka začít používat nové prostředí.
 
@@ -83,7 +84,7 @@ Nové prostředí v Azure Portal představuje tyto funkce na samostatných strá
 
 V novém prostředí byly **tajné klíče aplikace** přejmenovány na **certifikáty & tajných**kódů. **Veřejné klíče** se navíc označují jako **certifikáty** a **hesla** se označují jako **tajné klíče klienta**. Tuto funkci jsme se rozhodli z důvodu zabezpečení nepoužívat společně s novým prostředím, takže už nemůžete vygenerovat nový pár klíčů.
 
-## <a name="platformsauthentication---reply-urlsredirect-uris"></a>Platformy/ověřování – adresy URL odpovědí/identifikátory URI pro přesměrování
+## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformy/ověřování: adresy URL odpovědí/identifikátory URI pro přesměrování
 Ve starém prostředí obsahovala aplikace platformy pro web, nativní a webové rozhraní API ke konfiguraci adres URL pro přesměrování, adresy URL pro odhlášení a implicitního toku.
 
 V novém prostředí se adresy URL odpovědí dají najít v části ověřování aplikace\'s. Kromě toho se označují jako identifikátory URI přesměrování a změna formátu identifikátorů URI pro přesměrování se změnila. Musí být přidružené k typu aplikace (webový nebo veřejný klient – mobilní zařízení a Desktop). [Další informace](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)

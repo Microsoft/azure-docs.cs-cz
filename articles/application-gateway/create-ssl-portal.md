@@ -1,18 +1,18 @@
 ---
-title: Kurz – konfigurace služby Application Gateway s ukončením protokolu SSL – Azure Portal
+title: 'Kurz: Konfigurace ukončení SSL na portálu – Azure Application Gateway'
 description: V tomto kurzu se naučíte konfigurovat Aplikační bránu a přidat certifikát pro ukončení protokolu SSL pomocí Azure Portal.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 09/27/2019
+ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: afdb5d256c33042655c122e9c84a4ab07c94f14c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b4278fc6d44f32921713681cb094b659901cc87c
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470034"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012310"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Kurz: Konfigurace aplikační brány s ukončením protokolu SSL pomocí Azure Portal
 
@@ -69,7 +69,7 @@ Export-PfxCertificate `
   -Password $pwd
 ```
 
-## <a name="create-an-application-gateway"></a>Vytvoření Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
 1. V levé nabídce Azure Portal vyberte **vytvořit prostředek** . Zobrazí se **nové** okno.
 
@@ -131,7 +131,7 @@ Back-end fond slouží ke směrování požadavků na servery back-end, které o
 
 4. Na kartě **back-endy** vyberte **Další: Konfigurace**.
 
-### <a name="configuration-tab"></a>Karta konfigurace
+### <a name="configuration-tab"></a>Karta Konfigurace
 
 Na kartě **Konfigurace** se připojíte k front-endovému a back-endovému fondu, který jste vytvořili pomocí pravidla směrování.
 
@@ -242,7 +242,7 @@ V tomto příkladu nainstalujete službu IIS na virtuální počítače jenom k 
 
     ![Přidání back-endových serverů](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
 
-6. Vyberte **Save** (Uložit).
+6. Vyberte **Uložit**.
 
 7. Než budete pokračovat k dalšímu kroku, počkejte na dokončení nasazení.
 
@@ -260,7 +260,7 @@ V tomto příkladu nainstalujete službu IIS na virtuální počítače jenom k 
 
     Potom se zobrazí váš zabezpečený web služby IIS, jak je znázorněno v následujícím příkladu:
 
-    ![Testování základní adresy URL v bráně Application Gateway](./media/create-ssl-portal/application-gateway-iistest.png)
+    ![Testování základní adresy URL v aplikační bráně](./media/create-ssl-portal/application-gateway-iistest.png)
 
 ## <a name="next-steps"></a>Další kroky
 

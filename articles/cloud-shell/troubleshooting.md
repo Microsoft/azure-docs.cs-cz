@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 91dc87cd6bda93663fb4b4eae3d498ae56ba4b3e
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 5af73e166f3caa4997851ae4b17d8377550bf40a
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169595"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961550"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Řešení potíží s omezeními & Azure Cloud Shell
 
@@ -36,7 +36,7 @@ Známá řešení potíží s Azure Cloud Shell zahrnují:
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>Zakázání Cloud Shell v uzamčeném síťovém prostředí
 
-- **Podrobnosti**: Správci můžou chtít zakázat přístup k Cloud Shell pro své uživatele. Cloud Shell využívá přístup k doméně `ux.console.azure.com`, která může být zamítnuta, zastavení jakéhokoli přístupu ke vstupním parametrům Cloud Shell, včetně portal.azure.com, shell.azure.com, Visual Studio Code rozšíření účtu Azure a docs.microsoft.com.
+- **Podrobnosti**: Správci můžou chtít zakázat přístup k Cloud Shell pro své uživatele. Cloud Shell využívá přístup k doméně `ux.console.azure.com`, která může být zamítnutá, zastavení jakéhokoli přístupu ke vstupním parametrům Cloud Shell, včetně portal.azure.com, shell.azure.com, Visual Studio Code rozšíření účtu Azure a docs.microsoft.com.
 - **Řešení**: Omezte přístup k `ux.console.azure.com` prostřednictvím nastavení sítě do vašeho prostředí. Ikona Cloud Shell bude i nadále existovat v portal.azure.com, ale nebude se k této službě úspěšně připojovat.
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Dialog úložiště – chyba: 403 RequestDisallowedByPolicy
@@ -49,7 +49,7 @@ Známá řešení potíží s Azure Cloud Shell zahrnují:
 - **Podrobnosti**: při použití předplatného Azure Active Directory nemůžete vytvořit úložiště.
 - **Řešení**: použijte předplatné Azure, které podporuje vytváření prostředků úložiště. Předplatná Azure AD nemůžou vytvářet prostředky Azure.
 
-### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>Výstup terminálu – Chyba: nepovedlo se připojit terminál: WebSocket se nedá navázat. Znovu se připojíte stisknutím `Enter`.
+### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>Výstup terminálu – Chyba: nepovedlo se připojit terminál: WebSocket se nedá navázat. Znovu se připojte stisknutím `Enter`.
 - **Podrobnosti**: Cloud Shell vyžaduje, aby bylo možné navázat připojení protokolu WebSocket k Cloud Shell infrastruktuře.
 - **Řešení**: Ověřte, že jste nakonfigurovali nastavení sítě tak, aby umožňovalo posílání požadavků https a požadavků protokolu WebSocket do domén v umístění *. Console.Azure.com.
 
@@ -76,24 +76,30 @@ Známá řešení potíží s Azure Cloud Shell zahrnují:
 > Virtuální počítače Azure musí mít veřejnou IP adresu.
 
 - **Podrobnosti**: vzhledem k výchozímu nastavení brány Windows Firewall pro WinRM se uživateli může zobrazit následující chyba: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- **Řešení**: spuštěním `Enable-AzVMPSRemoting` povolíte všechny aspekty vzdálené komunikace prostředí PowerShell v cílovém počítači.
+- **Řešení**: Spusťte `Enable-AzVMPSRemoting` pro povolení všech aspektů vzdálené komunikace PowerShellu na cílovém počítači.
 
-### <a name="dir-does-not-update-the-result-in-azure-drive"></a>@no__t – 0 neaktualizuje výsledek v jednotce Azure.
+### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` neaktualizuje výsledek na jednotce Azure
 
-- **Podrobnosti**: ve výchozím nastavení optimalizuje činnost koncového uživatele tak, aby se výsledky `dir` ukládaly do mezipaměti v jednotce Azure.
+- **Podrobnosti**: ve výchozím nastavení se pro optimalizaci uživatelského prostředí, výsledky `dir` ukládají do mezipaměti v jednotce Azure.
 - **Řešení**: po vytvoření, aktualizaci nebo odebrání prostředku Azure spusťte `dir -force` a aktualizujte výsledky na jednotce Azure.
 
 ## <a name="general-limitations"></a>Obecná omezení
 
 Azure Cloud Shell má tato známá omezení:
 
+### <a name="quota-limitations"></a>Omezení kvóty
+
+Azure Cloud Shell má limit 20 souběžných uživatelů na jeden tenant a oblast. Pokud se pokusíte otevřít víc souběžných relací, než je limit, zobrazí se chyba "uživatel klienta nad kvótou". Pokud máte legitimní potřebu mít otevřeno více relací, než je to (například pro školicí cvičení), obraťte se na podporu předem s předpokládaným využitím a vyžádejte si zvýšení kvóty.
+
+Cloud Shell poskytujeme jako bezplatnou službu a je navržená tak, aby se dala použít ke konfiguraci prostředí Azure, ne jako výpočetní platformy pro obecné účely. Nadměrné automatizované použití se může považovat za porušení podmínek služby Azure a může vést k zablokování Cloud Shellho přístupu.
+
 ### <a name="system-state-and-persistence"></a>Stav systému a trvalost
 
 Počítač, který poskytuje vaši relaci Cloud Shell, je dočasný a bude recyklován po neaktivním spuštění relace po dobu 20 minut. Cloud Shell vyžaduje, aby byla připojena sdílená složka Azure. V důsledku toho musí být vaše předplatné schopné nastavit prostředky úložiště pro přístup k Cloud Shell. Mezi další okolnosti patří:
 
-- V případě připojeného úložiště jsou trvalé pouze změny v adresáři `clouddrive`. V bash je váš adresář `$HOME` také trvale uložený.
+- V případě připojeného úložiště jsou trvalé pouze změny v adresáři `clouddrive`. V bash je také trvalý `$HOME` adresář.
 - Sdílené složky Azure je možné připojit pouze v rámci [přiřazené oblasti](persisting-shell-storage.md#mount-a-new-clouddrive).
-  - V bash spusťte `env`, abyste našli oblast nastavenou jako `ACC_LOCATION`.
+  - V bash spusťte `env`, abyste našli vaši oblast nastavenou jako `ACC_LOCATION`.
 - Soubory Azure podporují jenom místně redundantní úložiště a geograficky redundantní účty úložiště.
 
 ### <a name="browser-support"></a>Podpora prohlížeče
@@ -107,15 +113,15 @@ Cloud Shell podporuje nejnovější verze následujících prohlížečů:
 - Apple Safari
   - Prohlížeč Safari v privátním režimu není podporován.
 
-### <a name="copy-and-paste"></a>Kopírovat a vložit
+### <a name="copy-and-paste"></a>Kopírování a vkládání
 
 [!INCLUDE [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
-### <a name="usage-limits"></a>Omezení využití
+### <a name="usage-limits"></a>Limity využití
 
 Cloud Shell je určena pro interaktivní případy použití. V důsledku toho jsou všechny dlouho běžící neinteraktivní relace ukončeny bez upozornění.
 
-### <a name="user-permissions"></a>Oprávnění uživatele
+### <a name="user-permissions"></a>Uživatelská oprávnění
 
 Oprávnění se nastaví jako běžné uživatele bez přístupu k sudo. Žádná instalace mimo váš `$Home` adresář není trvalá.
 
@@ -129,11 +135,11 @@ Při úpravách. bashrc buďte opatrní. v takovém případě může dojít k n
 
 ### <a name="preview-version-of-azuread-module"></a>Verze Preview modulu AzureAD
 
-V současné době je k dispozici `AzureAD.Standard.Preview` verze Preview modulu založeného na .NET Standard. Tento modul nabízí stejné funkce jako `AzureAD`.
+V současné době je k dispozici `AzureAD.Standard.Preview`verze Preview .NET Standard modul. Tento modul nabízí stejné funkce jako `AzureAD`.
 
 ### <a name="sqlserver-module-functionality"></a>funkce modulu `SqlServer`
 
-Modul `SqlServer` zahrnutý v Cloud Shell obsahuje jenom předprodejní podporu pro PowerShell Core. Konkrétně `Invoke-SqlCmd` zatím není k dispozici.
+Modul `SqlServer` zahrnutý v Cloud Shell obsahuje jenom předprodejní podporu pro PowerShell Core. Konkrétně `Invoke-SqlCmd` ještě není k dispozici.
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>Výchozí umístění souboru při vytvoření z jednotky Azure
 
@@ -145,7 +151,7 @@ Pokud je PSReadline EditMode uživatele nastaven na hodnotu (Emacs), uživatel s
 
 ### <a name="large-gap-after-displaying-progress-bar"></a>Velká mezera po zobrazení indikátoru průběhu
 
-Pokud se na základě příkazu nebo uživatele zobrazí indikátor průběhu, na kterém se dokončí, zatímco na jednotce `Azure:`, je možné, že kurzor není správně nastavený a mezera se zobrazí tam, kde byl indikátor průběhu dříve.
+Pokud se na základě příkazu nebo uživatele zobrazí indikátor průběhu, na které se v `Azure:` jednotce dokončí, pak je možné, že se kurzor nenastaví správně a mezera se zobrazí tam, kde byl indikátor průběhu dříve.
 
 ### <a name="random-characters-appear-inline"></a>Náhodné znaky se zobrazí jako vložené
 
@@ -160,7 +166,7 @@ Azure Cloud Shell převezme vaše osobní údaje, budou se data zachycená a ulo
 ### <a name="export"></a>Export
 Chcete-li **exportovat** nastavení uživatele Cloud Shell Uložit pro vás, jako je preferované prostředí, velikost písma a typ písma, spusťte následující příkazy.
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Spustit Azure Cloud Shell")](https://shell.azure.com)
+1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
 2. Spusťte následující příkazy v bash nebo PowerShellu:
 
 Bash
@@ -170,7 +176,7 @@ Bash
   curl https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -H Authorization:"$token" -s | jq
   ```
 
-Prostředí
+PowerShell:
 
   ```powershell
   $token= ((Invoke-WebRequest -Uri "$env:MSI_ENDPOINT`?resource=https://management.core.windows.net/" -Headers @{Metadata='true'}).content |  ConvertFrom-Json).access_token
@@ -183,7 +189,7 @@ Chcete-li **Odstranit** nastavení uživatele Cloud Shell uloží, například u
 >[!Note]
 > Pokud odstraníte nastavení uživatele, skutečná sdílená složka souborů Azure se neodstraní. Tuto akci dokončete tak, že přejdete do svých souborů Azure.
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Spustit Azure Cloud Shell")](https://shell.azure.com)
+1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
 2. Spusťte následující příkazy v bash nebo PowerShellu:
 
 Bash
@@ -193,7 +199,7 @@ Bash
   curl -X DELETE https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -H Authorization:"$token"
   ```
 
-Prostředí
+PowerShell:
 
   ```powershell
   $token= ((Invoke-WebRequest -Uri "$env:MSI_ENDPOINT`?resource=https://management.core.windows.net/" -Headers @{Metadata='true'}).content |  ConvertFrom-Json).access_token

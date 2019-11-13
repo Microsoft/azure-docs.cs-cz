@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: d9c4169176707f98181f2a479e470cf89ff2e04f
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 25105847b7134b7119252a66ac7e8502771ce5db
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72988230"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961279"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Pochopení a úprava jednotek streamování
 
@@ -62,10 +62,10 @@ Všimněte si, že úloha se složitou logikou dotazů by mohla mít vysoké pro
 
 Využití SU% se může po krátké době před návratem na očekávané úrovně náhle přetáhnout na 0. K tomu dochází kvůli přechodným chybám nebo upgradům iniciované systémem. Zvýšení počtu jednotek streamování pro úlohu se nemusí snížit, pokud váš dotaz není [plně paralelní](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization).
 
-## <a name="stateful-query-logicin-temporal-elements"></a>Logika stavových dotazů v dočasnách prvcích
-Jednou z jedinečných možností Azure Stream Analytics úlohy je provádět stavové zpracování, jako jsou například agregovaná okna, dočasná spojení a dočasné analytické funkce. Každý z těchto operátorů uchovává informace o stavu. Maximální velikost okna pro tyto prvky dotazu je sedm dní. 
+## <a name="stateful-query-logicin-temporal-elements"></a>Stavových dotazů logiky v elementech dočasné
+Jeden jedinečné funkce úlohy Azure Stream Analytics je stavové zpracování, jako jsou agregace v okně, dočasné spojení a dočasné analytických funkcí. Každý z těchto operátorů uchovává informace o stavu. Maximální velikost okna pro tyto prvky dotazu je sedm dní. 
 
-Koncept dočasného okna se zobrazí v několika Stream Analyticsch prvcích dotazu:
+Koncept dočasné okno se zobrazí v několika elementy dotazu Stream Analytics:
 1. Okna agregace: seskupení podle bubnu, skákající a posuvných oken
 
 2. Dočasná spojení: spojení s funkcí DATEDIFF
@@ -86,7 +86,7 @@ Například v následujícím dotazu je číslo přidružené k `clusterid` mohu
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-Aby bylo možné zmírnit problémy způsobené vysokou mohutnosti v předchozím dotazu, můžete odesílat události do centra událostí, které je rozdělené `clusterid`, a škálovat dotaz tím, že systému umožníte, aby každý vstupní oddíl zpracoval samostatně pomocí **oddílu podle** uvedeného postupu. v následujícím příkladu:
+Aby bylo možné zmírnit problémy způsobené vysokou mohutnosti v předchozím dotazu, můžete odesílat události do centra událostí, které je rozdělené `clusterid`, a škálovat dotaz tím, že systému umožníte, aby každý vstupní oddíl zpracoval samostatně pomocí **oddílu podle** toho, jak je znázorněno v následujícím příkladu:
 
    ```sql
    SELECT count(*) 

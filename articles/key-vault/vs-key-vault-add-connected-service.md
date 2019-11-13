@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 9331f13bd85d9df0d47f8fa9d0964974764691f7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4cbc4044b5d1270cecd1a271d2a1db02801650dd
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815102"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012772"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Přidání Key Vault do webové aplikace pomocí připojených služeb sady Visual Studio
 
@@ -129,11 +129,26 @@ Spusťte aplikaci místně tak, že přejdete na stránku o produktu. Měli byst
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Odstraňte skupinu prostředků, pokud ji už nepotřebujete. Tím se odstraní Key Vault a související prostředky. Odstranění skupiny prostředků přes portál:
+Pokud už ji nepotřebujete, odstraňte skupinu prostředků. Tím se odstraní Key Vault a související prostředky. Odstranění skupiny prostředků přes portál:
 
 1. Do pole Hledat v horní části portálu zadejte název vaší skupiny prostředků. Jakmile se ve výsledcích hledání zobrazí skupina prostředků použitá v tomto rychlém startu, vyberte ji.
 2. Vyberte **Odstranit skupinu prostředků**.
 3. Do pole **Zadejte název skupiny prostředků:** zadejte název skupiny prostředků a vyberte **Odstranit**.
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+Pokud je váš Trezor klíčů spuštěný na jiném účet Microsoft než ten, který jste přihlásili do sady Visual Studio (například Trezor klíčů je spuštěný ve vašem pracovním účtu, ale Visual Studio používá váš privátní účet), zobrazí se v souboru Program.cs chyba. , že Visual Studio nemůže získat přístup k trezoru klíčů. Pokud chcete tento problém vyřešit:
+
+1. Přejít na [Azure Portal](https://portal.azure.com) a otevřete Key Vault.
+
+1. Zvolte **zásady přístupu**, pak **Přidat zásady přístupu**a zvolte účet, ke kterému jste přihlášeni jako objekt zabezpečení.
+
+1. V aplikaci Visual Studio vyberte **soubor** > **Nastavení účtu**.
+V části **všechny účty** vyberte **Přidat účet** . Přihlaste se pomocí účtu, který jste zvolili jako objekt zabezpečení vašich zásad přístupu.
+
+1. Vyberte **nástroje** > **Možnosti**a vyhledejte **ověřování služby Azure**. Pak vyberte účet, který jste právě přidali do sady Visual Studio.
+
+Nyní při ladění aplikace se Visual Studio připojí k účtu, na kterém je uložený Trezor klíčů.
 
 ## <a name="how-your-aspnet-core-project-is-modified"></a>Jak se upraví váš ASP.NET Core projekt
 
@@ -145,7 +160,7 @@ Má vliv na soubor projektu .NET References a odkazy na balíček NuGet.
 
 | Typ | Referenční informace |
 | --- | --- |
-| NuGet | Microsoft. AspNetCore. AzureKeyVault. HostingStartup |
+| NuGet | Microsoft.AspNetCore.AzureKeyVault.HostingStartup |
 
 ### <a name="added-files-for-aspnet-core"></a>Přidané soubory pro ASP.NET Core
 
@@ -181,10 +196,10 @@ Má vliv na soubor projektu .NET References a `packages.config` (odkazy NuGet).
 
 | Typ | Referenční informace |
 | --- | --- |
-| Pohyby NuGet | Microsoft. Azure. webtrezor |
-| Pohyby NuGet | Microsoft. Azure. webtrezor. WebKey |
-| Pohyby NuGet | Microsoft.Rest.ClientRuntime |
-| Pohyby NuGet | Microsoft.Rest.ClientRuntime.Azure |
+| .NET; NuGet | Microsoft.Azure.KeyVault |
+| .NET; NuGet | Microsoft.Azure.KeyVault.WebKey |
+| .NET; NuGet | Microsoft.Rest.ClientRuntime |
+| .NET; NuGet | Microsoft.Rest.ClientRuntime.Azure |
 
 ### <a name="added-files-for-aspnet-framework"></a>Přidané soubory pro ASP.NET Framework
 

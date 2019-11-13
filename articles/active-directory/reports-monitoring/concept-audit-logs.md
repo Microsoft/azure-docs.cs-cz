@@ -3,7 +3,7 @@ title: Sestavy aktivit auditu na portálu Azure Active Directory | Dokumentace M
 description: Seznámení se sestavami aktivit auditu na portálu Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: a1f93126-77d1-4345-ab7d-561066041161
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 07/17/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a43c5849dcd037915a46de182064b3e630a663ec
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 8883e3ade7e5d52f3a62346bf8be51ac36042f82
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907181"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008544"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit auditu na portálu Azure Active Directory 
 
@@ -42,7 +42,6 @@ Tento článek vám poskytne přehled o sestavě auditu.
 ## <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 
 * Uživatelé v rolích **Správce zabezpečení**, **Čtenář zabezpečení**, **Čtenář sestav** nebo **globální role správce**
-* U všech uživatelů (bez správců) se navíc můžou zobrazit vlastní přihlašovací aktivity.
 
 ## <a name="audit-logs"></a>Protokoly auditu
 
@@ -82,7 +81,7 @@ Data auditu můžete filtrovat v následujících polích:
 - Kategorie
 - Aktivita
 - Status
-- Výběr cílového umístění
+- Cíl
 - Spustil(a) (činitel)
 - Rozsah dat
 
@@ -90,7 +89,7 @@ Data auditu můžete filtrovat v následujících polích:
 
 Filtr **služby** umožňuje vybrat z rozevíracího seznamu následující služby:
 
-- Všechno
+- Vše
 - Kontroly přístupu
 - Zřizování účtů 
 - Jednotné přihlašování aplikace
@@ -101,14 +100,14 @@ Filtr **služby** umožňuje vybrat z rozevíracího seznamu následující slu�
 - Správa nároků
 - Identity Protection
 - Pozvaní uživatelé
-- OSOBNÍCH
+- PIM
 - Samoobslužná správa skupin
 - Samoobslužná správa hesel
 - Podmínky použití
 
 Filtr **kategorie** umožňuje vybrat jeden z následujících filtrů:
 
-- Všechno
+- Vše
 - AdministrativeUnit
 - ApplicationManagement
 - Ověřování
@@ -131,7 +130,7 @@ Seznam všech aktivit auditu můžete získat pomocí Graph API: `https://graph.
 
 Filtr **stavu** vám umožňuje filtrovat na základě stavu operace auditu. Stav může být jedna z následujících:
 
-- Všechno
+- Vše
 - Úspěch
 - Selhání
 

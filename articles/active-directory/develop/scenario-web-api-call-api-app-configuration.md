@@ -15,12 +15,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 529665a03d2203dcb501b59d7647f4390bdaeb78
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 5bae9f565dd37fbd3bcae38833662e13e0b7ac6d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936745"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960650"
 ---
 # <a name="web-api-that-calls-web-apis---code-configuration"></a>Webové rozhraní API, které volá rozhraní Web API – konfigurace kódu
 
@@ -65,18 +65,18 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
 }
 ```
 
-## <a name="on-behalf-of-flow"></a>Tok za běhu
+## <a name="on-behalf-of-flow"></a>Tok On-Behalf-Of
 
 Metoda AddAccountToCacheFromJwt () potřebuje:
 
 - Vytvoří instanci klientské aplikace důvěrné pro MSAL.
-- Voláním `AcquireTokenOnBehalf` můžete vyměňovat nosný token, který získal klient pro webové rozhraní API, a to proti nosiči s nosným tokenem pro stejného uživatele, ale pro naše rozhraní API pro volání rozhraní API pro příjem dat.
+- Zavolejte `AcquireTokenOnBehalf` k výměně nosných tokenů, který získal klient pro webové rozhraní API, proti nosnému tokenu pro stejného uživatele, ale pro naše rozhraní API pro volání rozhraní API pro příjem dat.
 
 ### <a name="instantiate-a-confidential-client-application"></a>Vytvoření instance aplikace důvěrného klienta
 
-Tento tok je dostupný jenom v důvěrném toku klienta, aby chráněné webové rozhraní API poskytovalo přihlašovací údaje klienta (tajný klíč klienta nebo certifikát) k [ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) prostřednictvím metod `WithClientSecret` nebo `WithCertificate` v uvedeném pořadí.
+Tento tok je k dispozici pouze v důvěrném toku klienta, aby chráněné webové rozhraní API poskytovalo přihlašovací údaje klienta (tajný klíč klienta nebo certifikát) do [ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) prostřednictvím `WithClientSecret` nebo `WithCertificate`ch metod, v uvedeném pořadí.
 
-![obrázek](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
+![image](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
 ```CSharp
 IConfidentialClientApplication app;
@@ -99,11 +99,11 @@ Tento rozšířený scénář je podrobně popsán v [kontrolním výrazu klient
 
 ### <a name="how-to-call-on-behalf-of"></a>Jak volat jménem
 
-Volání on-of (OBO) se provádí voláním metody [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) na rozhraní `IConfidentialClientApplication`.
+Volání on-of (OBO) je provedeno voláním metody [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) na rozhraní `IConfidentialClientApplication`.
 
-@No__t-0 je sestaven z nosných tokenů přijatých webovým rozhraním API ze svých vlastních klientů. Existují [dva konstruktory](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet), které přebírají NOSNÝ token JWT, a druhý, který přijímá libovolný druh kontrolního výrazu (jiný druh tokenu zabezpečení, který typ je pak uveden v dalším parametru s názvem `assertionType`).
+`UserAssertion` je sestaven z nosných tokenů přijatých webovým rozhraním API ze svých vlastních klientů. Existují [dva konstruktory](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet), které přebírají NOSNÝ token JWT, a jeden, který přijímá libovolný druh kontrolního výrazu (jiný druh tokenu zabezpečení, který typ je pak uveden v dalším parametru s názvem `assertionType`).
 
-![obrázek](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
+![image](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
 
 V praxi se tok OBO často používá k získání tokenu pro rozhraní API pro příjem dat a jeho uložení do mezipaměti tokenů uživatele MSAL.NET, aby ostatní části webového rozhraní API mohly později zavolat na [přepsání](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) ``AcquireTokenOnSilent`` pro volání rozhraní API pro příjem dat. Toto volání má vliv na obnovení tokenů, pokud je to potřeba.
 
@@ -141,7 +141,9 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
 }
 ```
 
-## <a name="protocol"></a>Protokol
+Můžete se také podívat na příklad pro implementaci toku v [NodeJS a Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61).
+
+## <a name="protocol"></a>Protocol (Protokol)
 
 Další informace o protokolu na úrovni služby najdete v článku [Microsoft Identity Platform a OAuth 2,0 na základě toku](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow).
 

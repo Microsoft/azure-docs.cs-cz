@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 247dee2cfbb00b185e941fde05c2198459a05e20
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 73dc95260e7beb306834d094957518f36106b0f4
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815744"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73945754"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifikace a řešení problémů s přiřazením licencí pro skupinu v Azure Active Directory
 
@@ -29,11 +29,6 @@ Licencování na základě skupin v Azure Active Directory (Azure AD) zavádí k
 Pokud přiřadíte licence přímo jednotlivým uživatelům, bez použití licencování na základě skupin, operace přiřazení může selhat. Například když spustíte rutinu PowerShellu `Set-MsolUserLicense` v uživatelském systému, rutina může selhat z mnoha důvodů, které souvisejí s obchodní logikou. Může se například jednat o nedostatečný počet licencí nebo o konflikt mezi dvěma plány služeb, které se nedají přiřadit ve stejnou dobu. Problém se okamžitě nahlásí zpátky.
 
 Pokud používáte licencování na základě skupin, může dojít k těmto chybám, ale dojde na pozadí, zatímco služba Azure AD přiřazuje licence. Z tohoto důvodu chyby nemůžete okamžitě sdělit. Místo toho se zaznamenávají na objekt uživatele a pak se nahlásí prostřednictvím portálu pro správu. Původní záměr na licenci uživatele není nikdy ztracen, ale je zaznamenán v chybovém stavu pro budoucí šetření a řešení.
-
-## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>LicenseAssignmentAttributeConcurrencyException v protokolech auditu
-
-**Problém:** Uživatel má LicenseAssignmentAttributeConcurrencyException pro přiřazení licence v protokolech auditu.
-Když se licencování na základě skupiny pokusí zpracovat souběžné přiřazení licence stejné licence uživateli, tato výjimka se zaznamená na uživatele. K tomu obvykle dochází v případě, že je uživatel členem více skupin se stejnou přiřazenou licencí. Služba AZure AD se znovu pokusí zpracovat uživatelskou licenci a tento problém se vyřeší. Od zákazníka není vyžadována žádná akce k vyřešení tohoto problému.
 
 ## <a name="find-license-assignment-errors"></a>Najít Chyby přiřazení licencí
 
@@ -122,6 +117,11 @@ Po vyřešení všech problémů s adresou proxy pro ovlivněné uživatele neza
 
 Aktualizace přiřazení licence u uživatele způsobí aktivaci výpočtu adres proxy, což může měnit atributy uživatele. Chcete-li pochopit přesný důvod změny a vyřešit tento problém, přečtěte si článek o [tom, jak se ve službě Azure AD naplní atribut proxyAddresses](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
 
+## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>LicenseAssignmentAttributeConcurrencyException v protokolech auditu
+
+**Problém:** Uživatel má LicenseAssignmentAttributeConcurrencyException pro přiřazení licence v protokolech auditu.
+Když se licencování na základě skupiny pokusí zpracovat souběžné přiřazení licence stejné licence uživateli, tato výjimka se zaznamená na uživatele. K tomu obvykle dochází v případě, že je uživatel členem více skupin se stejnou přiřazenou licencí. Služba AZure AD se znovu pokusí zpracovat uživatelskou licenci a tento problém se vyřeší. Od zákazníka není vyžadována žádná akce k vyřešení tohoto problému.
+
 ## <a name="more-than-one-product-license-assigned-to-a-group"></a>Pro skupinu se přiřadilo víc než jedna licence k produktu.
 
 Skupině můžete přiřadit více než jednu licenci na produkt. Můžete například přiřadit sadu Office 365 Enterprise E3 a Enterprise Mobility + Security skupině a snadno tak povolit všechny zahrnuté služby pro uživatele.
@@ -180,6 +180,6 @@ Další informace o dalších scénářích správy licencí prostřednictvím s
 * [Co je licencování na základě skupin v Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
 * [Přiřazení licencí ke skupině v Azure Active Directory](licensing-groups-assign.md)
 * [Postup migrace jednotlivě licencovaných uživatelů na licencování na základě skupin v Azure Active Directory](licensing-groups-migrate-users.md)
-* [Postup migrace uživatelů mezi licencemi k produktu pomocí licencování na základě skupin v Azure Active Directory](licensing-groups-change-licenses.md)
+* [Migrace uživatelů mezi licencemi produktů pomocí licencování pro skupiny ve službě Azure Active Directory](licensing-groups-change-licenses.md)
 * [Další scénáře licencování na základě skupin v Azure Active Directory](licensing-group-advanced.md)
-* [Příklady prostředí PowerShell pro licencování na základě skupin v Azure Active Directory](licensing-ps-examples.md)
+* [Příklady prostředí PowerShell pro licencování na základě skupiny v Azure Active Directory](licensing-ps-examples.md)

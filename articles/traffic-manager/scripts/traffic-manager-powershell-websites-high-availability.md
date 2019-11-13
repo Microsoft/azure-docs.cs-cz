@@ -1,10 +1,10 @@
 ---
-title: Ukázkový skript Azure Powershellu – směrování provozu pro zajištění vysoké dostupnosti aplikací | Dokumentace Microsoftu
-description: Ukázkový skript Azure Powershellu – směrování provozu pro zajištění vysoké dostupnosti aplikace
+title: Směrování provozu pro HA aplikací – Azure PowerShell-Traffic Manager
+description: Ukázka skriptu Azure PowerShell – směrování provozu pro vysokou dostupnost aplikací
 services: traffic-manager
 documentationcenter: traffic-manager
 author: asudbring
-manager: twooley
+manager: kumudD
 editor: ''
 tags: azure-infrastructure
 ms.assetid: ''
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
 ms.author: allensu
-ms.openlocfilehash: 1c04859e2fe8841eb679f0b3e22b54ce71f88230
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bd81ef459d4b3a60d5da3dff9fff4119392ac8cd
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050970"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014637"
 ---
-# <a name="route-traffic-for-high-availability-of-applications-using-azure-powershell"></a>Směrování provozu pro zajištění vysoké dostupnosti aplikací pomocí Azure Powershellu
+# <a name="route-traffic-for-high-availability-of-applications-using-azure-powershell"></a>Směrování provozu pro vysokou dostupnost aplikací pomocí Azure PowerShell
 
-Tento skript vytvoří skupinu prostředků, dva plány služby app service, dvě webové aplikace, profil služby traffic manager a dva koncové body traffic Manageru. Traffic Manager směruje provoz do aplikace v jedné oblasti jako primární oblasti a do sekundární oblasti, když je k dispozici aplikace v primární oblasti. Před spuštěním skriptu, musíte změnit hodnoty MyWebApp, MyWebAppL1 a MyWebAppL2 na jedinečné hodnoty v Azure. Po spuštění skriptu, můžete přístup k aplikaci v primární oblasti s mywebapp.trafficmanager.net adresy URL.
+Tento skript vytvoří skupinu prostředků, dva plány služby App Service, dvě webové aplikace, profil služby Traffic Manager a dva koncové body Traffic Manageru. Traffic Manager směruje provoz do aplikace v jedné oblasti jako primární oblast a do sekundární oblasti, když aplikace v primární oblasti není k dispozici. Před spuštěním skriptu musíte změnit hodnoty MyWebApp, MyWebAppL1 a MyWebAppL2 na jedinečné hodnoty v rámci Azure. Po spuštění skriptu máte přístup k aplikaci v primární oblasti s adresou URL mywebapp.trafficmanager.net.
 
 V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](/powershell/azure) a pak spuštěním rutiny `Connect-AzAccount` vytvořte připojení k Azure.
 
@@ -49,16 +49,16 @@ Remove-AzResourceGroup -Name myResourceGroup2
 
 Tento skript k vytvoření skupiny prostředků, webové aplikace, profilu služby Traffic Manager a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)  | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Vytvoří plán služby App Service. Podobá se trochu serverové farmy pro vaši webovou aplikaci Azure. |
-| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Vytvoří webovou aplikaci Azure v rámci plánu služby App Service. |
-| [Set-AzResource](/powershell/module/az.resources/new-azresource) | Vytvoří webovou aplikaci Azure v rámci plánu služby App Service. |
+| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Vytvoří plán služby App Service. Toto je jako serverová farma pro webovou aplikaci Azure. |
+| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Vytvoří webovou aplikaci Azure v rámci plánu App Service. |
+| [Set-AzResource](/powershell/module/az.resources/new-azresource) | Vytvoří webovou aplikaci Azure v rámci plánu App Service. |
 | [New-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile) | Vytvoří profil služby Azure Traffic Manager. |
 | [New-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) | Přidá do profilu služby Azure Traffic Manager koncový bod. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/overview).
 

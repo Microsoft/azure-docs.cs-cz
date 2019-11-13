@@ -7,29 +7,33 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 09/30/2019
+ms.date: 11/11/2019
 ms.custom: include file
-ms.openlocfilehash: 3ad4a3391a8d0174a0a031920f40a47464753767
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 414fa10774c755c7837d2e1a2fd87b412c7a05a8
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903948"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014119"
 ---
 >[!NOTE]
->V této části najdete pokyny pro [novou registraci aplikace služby Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app). Pokud máte i nadále starší registraci nativních aplikací, můžete ji použít, pokud je podporovaná. Kromě toho, pokud z nějakého důvodu nový způsob registrace aplikace nefunguje v nastavení, můžete se pokusit vytvořit starší verzi nativní aplikace AAD. Další pokyny najdete v tématu [Registrace aplikace Azure Digital Revlákens pomocí Azure Active Directory starší verze](../articles/digital-twins/how-to-use-legacy-aad.md) . 
+>V této části najdete pokyny k [registraci aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
 
-1. V [Azure Portal](https://portal.azure.com)otevřete **Azure Active Directory** v nabídce rozbalitelné vlevo a otevřete podokno **Registrace aplikací** . Klikněte na tlačítko **Nová registrace** .
+1. V [Azure Portal](https://portal.azure.com)otevřete **Azure Active Directory** v nabídce rozbalitelné vlevo a otevřete podokno **Registrace aplikací** . 
 
-    [zaregistrovaná aplikace ![](./media/digital-twins-permissions/aad-app-register.png)](./media/digital-twins-permissions/aad-app-register.png#lightbox)
+    [![výběr podokna Azure Active Directory](./media/digital-twins-permissions/select-aad-pane.png)](./media/digital-twins-permissions/select-aad-pane.png#lightbox)
+
+1. Klikněte na tlačítko **+ Nová registrace** .
+
+    [![klikněte na tlačítko Nová registrace.](./media/digital-twins-permissions/aad-app-register.png)](./media/digital-twins-permissions/aad-app-register.png#lightbox)
 
 1. Zadejte popisný název pro registraci této aplikace v poli **název** . V části **identifikátor URI přesměrování (volitelné)** vyberte v rozevírací nabídce na levé straně možnost **veřejný klient/nativní (mobilní & plocha)** a do textového pole napravo zadejte `https://microsoft.com`. Vyberte **Zaregistrovat**.
 
     [![vytvořit podokno](./media/digital-twins-permissions/aad-app-reg-create.png)](./media/digital-twins-permissions/aad-app-reg-create.png#lightbox)
 
-1. Abyste se ujistili, že [je aplikace zaregistrovaná jako *nativní aplikace*](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration), otevřete podokno **ověřování** pro registraci vaší aplikace a posuňte se v tomto podokně dolů. V části **výchozí typ klienta** zvolte možnost **Ano** pro **považovat aplikaci za veřejného klienta**a stiskněte **Uložit**.
+1. Abyste se ujistili, že [je aplikace zaregistrovaná jako **veřejný klient**](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration), otevřete podokno **ověřování** pro registraci vaší aplikace a posuňte se v tomto podokně dolů. V části **výchozí typ klienta** zvolte možnost **Ano** pro **považovat aplikaci za veřejného klienta**a stiskněte **Uložit**.
 
-    [![výchozí nativní](./media/digital-twins-permissions/aad-app-default-native.png)](./media/digital-twins-permissions/aad-app-default-native.png#lightbox)
+    [![nastavení konfigurace veřejného klienta](./media/digital-twins-permissions/aad-public-client.png)](./media/digital-twins-permissions/aad-public-client.png#lightbox)
 
 1.  Otevřete podokno **Přehled** vaší registrované aplikace a zkopírujte hodnoty následujících entit do dočasného souboru. Tyto hodnoty použijete ke konfiguraci ukázkové aplikace v následujících oddílech.
 
@@ -38,7 +42,7 @@ ms.locfileid: "73903948"
 
     [ID aplikace ![Azure Active Directory](./media/digital-twins-permissions/aad-app-reg-app-id.png)](./media/digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
 
-1. Otevřete podokno **oprávnění rozhraní API** pro registraci vaší aplikace. Vyberte tlačítko **Přidat oprávnění** . V podokně **oprávnění API pro vyžádání** vyberte **rozhraní API moje organizace používá** kartu a pak vyhledejte jednu z následujících možností:
+1. Otevřete podokno **oprávnění rozhraní API** pro registraci vaší aplikace. Klikněte na tlačítko **+ Přidat oprávnění** . V podokně **oprávnění API pro vyžádání** vyberte **rozhraní API moje organizace používá** kartu a pak vyhledejte jednu z následujících možností:
     
     1. `Azure Digital Twins`. Vyberte rozhraní API **digitálních vláken Azure** .
 
@@ -57,7 +61,8 @@ ms.locfileid: "73903948"
 
     [![Přidání oprávnění rozhraní API](./media/digital-twins-permissions/aad-app-req-permissions.png)](./media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
-1. V závislosti na nastaveních vaší organizace možná budete muset provést další kroky, abyste tomuto rozhraní API udělili přístup správce. Pro další informace se obraťte na správce. Po schválení přístupu správce bude mít sloupec **požadovaný souhlas správce** v podokně **oprávnění API** pro vaše rozhraní API podobný následujícímu:
+1. V závislosti na nastaveních vaší organizace možná budete muset provést další kroky, abyste tomuto rozhraní API udělili přístup správce. Pro další informace se obraťte na správce. Po schválení přístupu správce se v podokně **oprávnění API** zobrazí sloupec **požadováno souhlasu správce** , ve kterém se zobrazí vaše oprávnění. 
 
-    [![Přidání oprávnění rozhraní API](./media/digital-twins-permissions/aad-app-admin-consent.png)](./media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
+    [schválení souhlasu správce ![](./media/digital-twins-permissions/aad-app-admin-consent.png)](./media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 
+    Ověřte, že se zobrazí **digitální vlákna Azure** .

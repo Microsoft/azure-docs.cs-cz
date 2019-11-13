@@ -1,40 +1,65 @@
 ---
 title: Seznam typů entit – LUIS
 titleSuffix: Azure Cognitive Services
-description: Seznam entit představuje pevně uzavřenou sadu příbuzných slov spolu s jejich synonymy. LUIS nezjistí další hodnoty pro entity seznamu. Pomocí funkce doporučit můžete zobrazit návrhy nových slov na základě aktuálního seznamu.
+description: Seznam entit představuje pevně uzavřenou sadu příbuzných slov spolu s jejich synonymy. Služba LUIS nevyhledává další hodnoty pro seznam entit. Pomocí funkce doporučit můžete zobrazit návrhy nových slov na základě aktuálního seznamu.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 09/29/2019
+ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 1757faf8ab2be0b62956b6939ee068929f9275a4
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 1307e6cfca0debe7623eb775c69527a74584033d
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695239"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011991"
 ---
-# <a name="list-entity"></a>Seznam entit 
+# <a name="list-entity"></a>Entita seznamu 
 
-Seznam entit představuje pevně uzavřenou sadu příbuzných slov spolu s jejich synonymy. LUIS nezjistí další hodnoty pro entity seznamu. Pomocí funkce **doporučit** můžete zobrazit návrhy nových slov na základě aktuálního seznamu. Pokud existuje více než jedna entita seznamu se stejnou hodnotou, Každá entita se vrátí v dotazu koncového bodu. 
+Seznam entit představuje pevně uzavřenou sadu příbuzných slov spolu s jejich synonymy. Služba LUIS nevyhledává další hodnoty pro seznam entit. Použití **doporučujeme** funkce návrhy pro nové slova na základě aktuálního seznamu. Pokud existuje více než jednu entitu seznamu se stejnou hodnotou, je každá entita vrácené dotazem koncový bod. 
 
-Entita seznamu není zjištěna počítačem. Je to přesně shoda textu. LUIS označí jakoukoli shodu s položkou v libovolném seznamu jako entitu v odpovědi. 
+Entita seznamu není zjištěna počítačem. Se neshoduje přesný text. Služba LUIS označí všechny shody jako položka v seznamu jako entity v odpovědi. 
 
 **Entita je vhodná, když jsou textová data:**
 
 * Jsou známá sada.
 * Nemění se často. Pokud potřebujete seznam často změnit, nebo chcete, aby se seznam automaticky rozšířil, je lepší volbou jednoduchá entita se seznamem frází. 
-* Sada nepřekračuje maximální [hranice](luis-boundaries.md) Luis pro tento typ entity.
-* Text v utterance je přesná shoda s synonymem nebo kanonickým názvem. LUIS nepoužívá seznam nad rámec přesně vyhovujících textů. Přibližná shoda, nerozlišování velkých a malých písmen, odvozování, plural a jiné varianty nejsou vyřešeny entitou seznamu. Chcete-li spravovat variace, zvažte použití [vzoru](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) s volitelnou syntaxí textu.
+* Tato sada nepřekračuje maximální [hranice](luis-boundaries.md) aplikace LUIS pro tento typ entity.
+* Text promluvy se přesně shoduje se synonymem nebo názvem v kanonickém tvaru. LUIS nepoužívá seznam nad rámec přesně vyhovujících textů. Přibližná shoda, nerozlišování velkých a malých písmen, odvozování, plural a jiné varianty nejsou vyřešeny entitou seznamu. Chcete-li spravovat variace, zvažte použití [vzoru](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) s volitelnou syntaxí textu.
 
-![Seznam entit](./media/luis-concept-entities/list-entity.png)
+![seznam entit](./media/luis-concept-entities/list-entity.png)
 
-## <a name="example-json"></a>Ukázkový kód JSON
+## <a name="example-json-to-import-into-list-entity"></a>Příklad: JSON pro import do seznamu entit
 
-Předpokládejme, že aplikace obsahuje seznam s názvem `Cities`, který umožňuje variace názvů měst včetně města letiště (mořských TAC), kódu letiště (moře), poštovního směrovacího čísla (98101) a kódu telefonní oblasti (206).
+  Hodnoty můžete importovat do existující entity seznamu pomocí následujícího formátu. JSON:
+
+  ```JSON
+  [
+      {
+          "canonicalForm": "Blue",
+          "list": [
+              "navy",
+              "royal",
+              "baby"
+          ]
+      },
+      {
+          "canonicalForm": "Green",
+          "list": [
+              "kelly",
+              "forest",
+              "avacado"
+          ]
+      }
+  ]  
+  ```
+
+## <a name="example-json-response"></a>Příklad odpovědi JSON
+
+Předpokládejme, že aplikace má seznam s názvem `Cities`, což každodenně názvy měst včetně město letiště (Sea hrají), kód letiště (SEA), poštovní směrovací číslo poštovní směrovací (98101) a phone oblasti kódu (206).
 
 |Položka seznamu|Synonyma položky|
 |---|---|
@@ -43,7 +68,7 @@ Předpokládejme, že aplikace obsahuje seznam s názvem `Cities`, který umož�
 
 `book 2 tickets to paris`
 
-V předchozím utterance je slovo `paris` namapováno na Paříž položku jako součást entity seznamu `Cities`. Entita seznamu odpovídá normalizovanému názvu položky i synonymům položky.
+V předchozím utterance slovo `paris` je namapována na Paříž položky jako součást `Cities` seznam entit. Seznam entit odpovídá normalizovaný název položky i synonyma položky.
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
@@ -66,7 +91,7 @@ V předchozím utterance je slovo `paris` namapováno na Paříž položku jako 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
 
 
-Toto je JSON, pokud je v řetězci dotazu nastavená hodnota `verbose=false`:
+Toto je JSON, pokud je v řetězci dotazu nastavená `verbose=false`:
 
 ```json
 "entities": {
@@ -78,7 +103,7 @@ Toto je JSON, pokud je v řetězci dotazu nastavená hodnota `verbose=false`:
 }
 ```
 
-Toto je JSON, pokud je v řetězci dotazu nastavená hodnota `verbose=true`:
+Toto je JSON, pokud je v řetězci dotazu nastavená `verbose=true`:
 
 ```json
 "entities": {

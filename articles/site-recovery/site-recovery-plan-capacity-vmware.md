@@ -1,5 +1,5 @@
 ---
-title: Plánování kapacity a škálování pro zotavení po havárii VMware do Azure pomocí Azure Site Recovery | Microsoft Docs
+title: Plánování kapacity pro zotavení po havárii VMware pomocí Azure Site Recovery
 description: Tento článek vám může pomoci při plánování kapacity a škálování při nastavování zotavení po havárii virtuálních počítačů VMware do Azure pomocí Azure Site Recovery.
 author: nsoneji
 manager: garavd
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 0bf1b34295d827124198206e743bc21d5f7eb904
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747899"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961355"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Plánování kapacity a škálování pro zotavení po havárii VMware do Azure
 
@@ -24,7 +24,7 @@ Pokud se chcete dozvědět víc o Azure Site Recovery požadavcích na infrastru
 
 Site Recovery Plánovač nasazení poskytuje sestavu s úplnými informacemi o kompatibilních a nekompatibilních virtuálních počítačích, discích na virtuálním počítači a četnosti změn dat na disk. Nástroj také shrnuje požadavky na šířku pásma sítě tak, aby splňovaly cílovou RPO a infrastrukturu Azure, která je potřebná pro úspěšnou replikaci a testovací převzetí služeb při selhání.
 
-## <a name="capacity-considerations"></a>Požadavky na kapacitu
+## <a name="capacity-considerations"></a>Důležité informace o kapacity
 
 Komponenta | Podrobnosti
 --- | ---
@@ -42,7 +42,7 @@ Procesor | Memory (Paměť) | Velikost disku mezipaměti | Frekvence změny dat 
 12 vCPU (2 sokety × 6 jader \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB až 1 TB | Použijte k replikaci počítačů s 100 až 150.
 16 vCPU (2 sokety × 8 jader \@ 2,5 GHz) | 32 GB | 1 TB | > 1 TB až 2 TB | Použijte k replikaci počítačů s 151 až 200.
 Nasazení jiného konfiguračního serveru pomocí [šablony OVF](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template) | | | | Pokud provádíte replikaci více než 200 počítačů, nasaďte nový konfigurační server.
-Nasaďte jiný [procesový Server](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | > 2 TB| Nasazení nového procesového serveru se škálováním na více instancí, pokud je celková rychlost denních změn dat větší než 2 TB.
+Nasaďte jiný [procesový Server](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | >2 TB| Nasazení nového procesového serveru se škálováním na více instancí, pokud je celková rychlost denních změn dat větší než 2 TB.
 
 V těchto konfiguracích:
 
@@ -79,8 +79,8 @@ Po použití [Site Recovery Plánovač nasazení](site-recovery-deployment-plann
 
 * **Omezení šířky pásma**: provoz VMware, který se replikuje do Azure, prochází přes konkrétní procesový Server. Šířku pásma můžete omezit na počítačích, které jsou spuštěny jako procesové servery.
 * **Vliv na šířku pásma**: šířku pásma, která se používá pro replikaci, můžete ovlivnit pomocí několika klíčů registru:
-  * Hodnota registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM** určuje počet vláken, která se používají pro přenos dat (počáteční nebo rozdílovou replikaci) disku. Vyšší hodnota zvyšuje šířku pásma sítě, která se používá pro replikaci.
-  * Hodnota registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\DownloadThreadsPerVM** určuje počet vláken, která se použijí pro přenos dat během navrácení služeb po obnovení.
+  * Hodnota registru **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Replication\UploadThreadsPerVM** určuje počet vláken, která se používají pro přenos dat (počáteční nebo rozdílovou replikaci) disku. Vyšší hodnota zvyšuje šířku pásma sítě, která se používá pro replikaci.
+  * Hodnota registru **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Replication\DownloadThreadsPerVM** určuje počet vláken, která se mají při navrácení služeb po obnovení použít pro přenos dat.
 
 ### <a name="throttle-bandwidth"></a>Omezení šířky pásma
 
@@ -102,7 +102,7 @@ Pro nastavení omezování můžete také použít rutinu [Set OBMachineSetting]
 
 ### <a name="alter-the-network-bandwidth-for-a-vm"></a>Změna šířky pásma sítě pro virtuální počítač
 
-1. V registru virtuálního počítače, přejít na **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication**.
+1. V registru virtuálního počítače navštivte **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Replication**.
    * Pokud chcete změnit provoz šířky pásma na replikačním disku, upravte hodnotu **UploadThreadsPerVM**. Pokud klíč neexistuje, vytvořte ho.
    * Pokud chcete změnit šířku pásma pro překlopení provozu z Azure, upravte hodnotu **DownloadThreadsPerVM**.
 2. Výchozí hodnota pro každý klíč je **4**. V síti s „nadměrným zřízením“ je třeba tyto klíče registru změnit z výchozích hodnot. Maximální hodnota, kterou můžete použít, je **32**. Monitorováním provozu hodnotu optimalizujte.

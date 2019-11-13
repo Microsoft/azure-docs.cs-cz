@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 7547db502056304307094541dcfd2474eda999d8
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: c8aa3fb124420c933e17b0e9f7e52b7f114a7f61
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620425"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012913"
 ---
 # <a name="access-and-customize-developer-portal"></a>Přístup a přizpůsobení portálu pro vývojáře
 
@@ -38,7 +38,7 @@ Další podrobnosti najdete na portálu pro vývojáře v článku [Přehled por
 
 > [!WARNING]
 > Portál pro vývojáře se v tuto chvíli zavádí na API Management služby.
-> Pokud je vaše služba nově vytvořená nebo se jedná o službu vrstvy vývojářů, měli byste už mít nejnovější verzi. V opačném případě může docházet k problémům (například s funkcí publikování). Zavedení funkce bude dokončeno v pondělí 11. listopadu 2019. 
+> Pokud je vaše služba nově vytvořená nebo se jedná o službu vrstvy vývojářů, měli byste už mít nejnovější verzi. V opačném případě může docházet k problémům (například s funkcí publikování). Zavedení funkce se očekává až do pátku v pátek listopadu 22 2019. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -101,7 +101,7 @@ Než zpřístupníte portál návštěvníkům, měli byste přizpůsobit automa
 
 Výchozí **Domovská** stránka je vyplněna fiktivním obsahem. Můžete buď odebrat všechny části s obsahem, nebo zachovat strukturu a upravit prvky jednu po jedné. Vygenerovaný text a obrázky nahraďte vlastními a ujistěte se, že odkazy odkazují na požadovaná umístění.
 
-### <a name="layouts"></a>Klávesnice
+### <a name="layouts"></a>Rozložení
 
 V navigačním panelu nahraďte automaticky vygenerované logo vlastním obrázkem.
 

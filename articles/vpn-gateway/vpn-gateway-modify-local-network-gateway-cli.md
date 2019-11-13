@@ -1,6 +1,6 @@
 ---
-title: Upravit předpony IP adresy brány místní sítě a adresy IP adresa brány sítě VPN | Azure | ROZHRANÍ PŘÍKAZOVÉHO ŘÁDKU | Dokumentace Microsoftu
-description: Tento článek vás provede změna předpony IP adres pro bránu místní sítě pomocí Azure CLI.
+title: 'VPN Gateway: Úprava nastavení IP adresy brány: Azure CLI'
+description: Tento článek vás provede změnou předpon IP adres pro bránu místní sítě pomocí Azure CLI.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/29/2017
 ms.author: cherylmc
-ms.openlocfilehash: 20e8269f0ee7463dcff9a5f66e46ebd81cb3df84
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 26462f73680d35371c6a03c3224742626e8f2090
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60652842"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014970"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-cli"></a>Úprava nastavení místní síťové brány pomocí Azure CLI
 
-Někdy změnit nastavení pro bránu místní sítě předpony adres nebo IP adresu brány. Tento článek ukazuje, jak upravit nastavení brány místní sítě. Můžete také upravit tato nastavení pomocí jiné metody tak, že vyberete jinou možnost z následujícího seznamu:
+Někdy se nastavení pro předponu adresy brány místní sítě nebo IP adresy brány změní. V tomto článku se dozvíte, jak upravit nastavení místní síťové brány. Tato nastavení můžete také upravit pomocí jiné metody výběrem jiné možnosti z následujícího seznamu:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-modify-local-network-gateway-portal.md)
@@ -35,11 +35,11 @@ Někdy změnit nastavení pro bránu místní sítě předpony adres nebo IP adr
 
 ## <a name="before"></a>Než začnete
 
-Nainstalujte nejnovější verzi příkazů rozhraní příkazového řádku (2.0 nebo novější). Informace o instalaci příkazů rozhraní příkazového řádku najdete v tématu [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Nainstalujte nejnovější verzi příkazů rozhraní příkazového řádku (2,0 nebo novější). Informace o instalaci příkazů rozhraní příkazového řádku najdete v tématu [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 [!INCLUDE [CLI-login](../../includes/vpn-gateway-cli-login-include.md)]
 
-## <a name="ipaddprefix"></a>Úprava předpon IP adres
+## <a name="ipaddprefix"></a>Upravit předpony IP adres
 
 [!INCLUDE [modify-prefix](../../includes/vpn-gateway-modify-ip-prefix-cli-include.md)]
 
@@ -47,7 +47,7 @@ Nainstalujte nejnovější verzi příkazů rozhraní příkazového řádku (2.
 
 [!INCLUDE [modify-gateway-IP](../../includes/vpn-gateway-modify-lng-gateway-ip-cli-include.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Můžete ověřit připojení k bráně. Zobrazit [ověření připojení brány](vpn-gateway-verify-connection-resource-manager.md).
+Můžete ověřit připojení brány. Viz [ověření připojení brány](vpn-gateway-verify-connection-resource-manager.md).
 

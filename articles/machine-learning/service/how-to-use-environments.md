@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: f733e29fc5fbce764fef9a713747d6793d2ebd43
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 62f298e0efb5c54efdcd15cf470ed4640f720058
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489314"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73957845"
 ---
-# <a name="create-and-manage-reusable-environments-for-training-and-deployment-with-azure-machine-learning"></a>Vytvářejte a spravujte opakovaně použitelná prostředí pro školení a nasazení pomocí Azure Machine Learning.
+# <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>Použití prostředí pro školení & nasazení pomocí Azure Machine Learning.
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se dozvíte, jak vytvářet a spravovat Azure Machine Learning [prostředí](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) , abyste mohli sledovat a reprodukuje závislosti softwaru projektů při jejich vývojech.
@@ -51,7 +51,7 @@ V případě prostředí spravovaného uživatelem zodpovídáte za nastavení v
 
 Prostředí spravovaná systémem se používají, když chcete, aby [conda](https://conda.io/docs/) spravovat prostředí Pythonu a závislosti skriptů za vás. Služba ve výchozím nastavení předpokládá tento typ prostředí kvůli jeho užitečnosti pro vzdálené výpočetní cíle, které se nedají ručně konfigurovat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Sada Azure Machine Learning SDK pro Python je [nainstalována](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
@@ -150,7 +150,7 @@ run = myexp.submit(config=runconfig)
 run.wait_for_completion(show_output=True)
 ```
 
-Podobně pokud použijete objekt [`Estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) pro školení, můžete instanci Estimator odeslat přímo jako běh bez nutnosti určení prostředí. Objekt `Estimator` již zapouzdřuje prostředí a cíl výpočtů.
+Podobně pokud použijete [`Estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) objekt pro školení, můžete instanci Estimator odeslat přímo jako běh bez nutnosti určit prostředí. Objekt `Estimator` už zapouzdřuje prostředí a cíl výpočtů.
 
 
 ## <a name="add-packages-to-an-environment"></a>Přidání balíčků do prostředí
@@ -217,7 +217,7 @@ Zobrazte prostředí v pracovním prostoru pomocí [`Environment.list(workspace=
 #### <a name="get-environment-by-name"></a>Získat prostředí podle názvu
 
 Konkrétní prostředí můžete také získat podle názvu a verze.
-Následující kód používá metodu [Get ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#get-workspace--name--version-none-) pro načtení verze `1` prostředí, `myenv` v pracovním prostoru `ws`.
+Následující kód používá metodu [Get ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#get-workspace--name--version-none-) pro načtení `1` verzí prostředí `myenv` v pracovním prostoru `ws`.
 
 ```python
 restored_environment = Environment.get(workspace=ws,name="myenv",version="1")
@@ -250,7 +250,7 @@ build.wait_for_completion(show_output=True)
 
 ## <a name="docker-and-environments"></a>Docker a prostředí
 
- Azure Machine Learning [DockerSection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py) třídy `Environments` umožňuje přizpůsobení a řízení podrobností o hostovaném operačním systému, ve kterém se vaše školení spouští.
+ [DockerSection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py) třídy Azure Machine Learning `Environments` vám umožní přizpůsobit a řídit si podrobnosti o hostovaném operačním systému, ve kterém se vaše školení spustí.
 
 Když `enable` Docker, služba vytvoří image Docker a vytvoří prostředí Python s vašimi specifikacemi v rámci tohoto kontejneru Docker. To poskytuje další izolaci a reprodukovatelnost pro vaše školicí běhy.
 
@@ -259,7 +259,7 @@ Když `enable` Docker, služba vytvoří image Docker a vytvoří prostředí Py
 myenv.docker.enabled = True
 ```
 
-Po vytvoření se obrázek Docker zobrazí v Azure Container Registry, který je k pracovnímu prostoru přidružen, ve výchozím nastavení.  Název úložiště má formu *\<\>UUID azureml_* . Součást jedinečného identifikátoru (*UUID*) odpovídá hodnotě hash vypočítané z konfigurace prostředí. Díky tomu může služba určit, jestli image odpovídající danému prostředí už existuje pro opakované použití.
+Po vytvoření se obrázek Docker zobrazí v Azure Container Registry, který je k pracovnímu prostoru přidružen, ve výchozím nastavení.  Název úložiště má *\<\>UUID ve formátu AzureML/azureml_* . Součást jedinečného identifikátoru (*UUID*) odpovídá hodnotě hash vypočítané z konfigurace prostředí. Díky tomu může služba určit, jestli image odpovídající danému prostředí už existuje pro opakované použití.
 
 Služba navíc automaticky používá jednu z [základních imagí](https://github.com/Azure/AzureML-Containers)založených na Ubuntu Linux a nainstaluje zadané balíčky Pythonu. Základní image má verze procesoru a GPU. Azure Machine Learning automaticky zjišťuje, která verze se má použít.
 
@@ -270,7 +270,7 @@ myenv.docker.base_image_registry="your_registry_location"
 ```
 
 > [!NOTE]
-> Pokud zadáte `environment.python.user_managed_dependencies=False` při použití vlastní image Docker, služba sestaví prostředí conda v imagi a spustí běh v tomto prostředí namísto použití knihoven Pythonu, které jste mohli nainstalovat na základní image. Nastavte parametr na hodnotu `True`, aby se používaly vlastní nainstalované balíčky.
+> Pokud zadáte `environment.python.user_managed_dependencies=False` při použití vlastní image Docker, služba sestaví prostředí conda v imagi a spustí běh v tomto prostředí namísto použití knihoven Pythonu, které jste mohli nainstalovat na základní image. Nastavte parametr na `True`, aby používal vaše vlastní nainstalované balíčky.
 
 ## <a name="using-environments-for-training"></a>Použití prostředí pro školení
 
@@ -305,7 +305,7 @@ run = exp.submit(runconfig)
 
 Pokud v konfiguraci spuštění nezadáte prostředí, služba při odeslání vašeho spuštění vytvoří výchozí prostředí.
 
-### <a name="train-with-an-estimator"></a>Výuka s Estimator
+### <a name="train-with-an-estimator"></a>Trénování s odhadu
 
 Pokud používáte [Estimator](how-to-train-ml-models.md) pro školení, můžete jednoduše odeslat instanci Estimator přímo, protože už zapouzdřuje prostředí a cíl výpočtů.
 
@@ -359,7 +359,7 @@ service = Model.deploy(
     deployment_config = deployment_config)
 ```
 
-## <a name="example-notebooks"></a>Ukázkové poznámkové bloky
+## <a name="example-notebooks"></a>Příklad poznámkové bloky
 
 Tento [ukázkový Poznámkový blok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments) se rozbalí na základě konceptů a metod popsaných v tomto článku.
 

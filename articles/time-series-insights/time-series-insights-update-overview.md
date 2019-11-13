@@ -1,6 +1,6 @@
 ---
-title: 'Přehled: Azure Time Series Insights Preview | Microsoft Docs'
-description: Přehled Azure Time Series Insights Preview.
+title: 'Přehled: co je Azure Time Series Insights Preview? -Azure Time Series Insights | Microsoft Docs'
+description: Přečtěte si o klíčových vylepšeních v Azure Time Series Insights Preview.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 10/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 05f4c64adad184e761e2b5a01b8c033c024dbc49
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: cde846152ff183db857b8a0549fafd24700ffff9
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585253"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014744"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Co je Azure Time Series Insights ve verzi Preview?
 
@@ -45,7 +45,7 @@ Následující obrázek znázorňuje typický tok dat IoT.
 
 [![toku dat IoT](media/v2-update-overview/overview-one.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-## <a name="azure-time-series-insights-for-industrial-iot"></a>Azure Time Series Insights pro průmyslový IoT
+## <a name="azure-time-series-insights-for-industrial-iot"></a>Azure Time Series Insights pro průmyslového IoT
 
 Technologie IoT na šířku je odlišná se zákazníky, kteří se týkají nejrůznějších průmyslových segmentů, včetně výroby, automobilového prostředí, energie, nástrojů, inteligentních budov a konzultací. V rámci této široké škály podnikového trhu IoT jsou nativní řešení cloudu, která poskytují komplexní analýzy zaměřené na rozsáhlá data IoT, stále vyvíjí. 
 
@@ -83,7 +83,7 @@ Díky zavedení těchto klíčových funkcí pro průmyslové účely IoT Time S
 | Plynulá a kontinuální integrace s jinými datovými řešeními | Data v Time Series Insights chladírenských skladů se [ukládají](./time-series-insights-update-storage-ingress.md) do souborů Apache Parquet v otevřeném zdroji. To umožňuje integraci dat s jinými datovými řešeními, 1. nebo třetí stranou, pro scénáře, které zahrnují business intelligence, pokročilé Machine Learning a prediktivní analýzy. |
 | Zkoumání dat téměř v reálném čase | Prostředí [Preview aplikace Azure Time Series Insights Explorer](./time-series-insights-update-explorer.md) poskytuje vizualizaci pro všechna streamování dat prostřednictvím kanálu přijímání. Po připojení zdroje událostí můžete zobrazit, prozkoumat a dotazovat data událostí. Tímto způsobem můžete ověřit, jestli zařízení vysílá data podle očekávání. Můžete také monitorovat prostředek IoT pro stav, produktivitu a celkovou efektivitu. | 
 | Rozšiřitelnost a integrace | Integrace konektoru Azure Time Series Insights Power BI je k dispozici přímo v uživatelském prostředí Průzkumníka časových řad prostřednictvím možnosti **exportovat** , což zákazníkům umožňuje exportovat dotazy časových řad, které vytvoří v uživatelském prostředí přímo. do Power BI plochy a zobrazit grafy časových řad spolu s dalšími analýzami BI. Tím se otevře dvířka nové třídy scénářů pro podniky IoT v průmyslu, které investovaly do Power BI tím, že v různých zdrojích dat, včetně časových řad IoT, poskytneme jedno podokno ze skleněných zdrojů. | 
-| Vlastní aplikace založené na Time Series Insights platformě | Time Series Insights podporuje [sadu JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md). Sada SDK poskytuje bohatý ovládací prvky a zjednodušený přístup k dotazům. Pomocí sady SDK můžete sestavovat vlastní aplikace IoT nad Time Series Insights tak, aby vyhovovaly vašim obchodním potřebám. [Rozhraní API pro Time Series Insights dotazování](./time-series-insights-update-tsq.md) můžete použít také přímo k pohonu dat do vlastních aplikací IoT. |
+| Vlastní aplikace založené na Time Series Insights platformě | Time Series Insights podporuje [sadu JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md). Sada SDK poskytuje bohaté ovládací prvky a zjednodušený přístup na dotazy. Pomocí sady SDK můžete sestavovat vlastní aplikace IoT nad Time Series Insights tak, aby vyhovovaly vašim obchodním potřebám. [Rozhraní API pro Time Series Insights dotazování](./time-series-insights-update-tsq.md) můžete použít také přímo k pohonu dat do vlastních aplikací IoT. |
 
 ## <a name="next-steps"></a>Další kroky
 

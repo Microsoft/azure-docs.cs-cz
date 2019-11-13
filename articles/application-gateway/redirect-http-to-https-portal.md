@@ -1,18 +1,18 @@
 ---
-title: Vytvoření služby application gateway s protokolem HTTP na HTTPS přesměrování pomocí webu Azure portal
+title: Přesměrování HTTP na HTTPS na portálu – Azure Application Gateway
 description: Informace o vytvoření služby application gateway s přesměrované přenosy z HTTP na HTTPS pomocí webu Azure portal.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 12/7/2018
+ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 17eef2fc2608ca4ccbabff8179cd63798d275582
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d67270896792ea506d2df04dcc3745a43d3d8251
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62101453"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012866"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Vytvoření služby application gateway s protokolem HTTP na HTTPS přesměrování pomocí webu Azure portal
 
@@ -21,7 +21,7 @@ Na webu Azure portal můžete použít k vytvoření [služba application gatewa
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+> * Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 > * Nastavit síť
 > * Vytvořit aplikační bránu s certifikátem
 > * Přidat pravidlo naslouchací proces a přesměrování
@@ -31,9 +31,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Tento kurz vyžaduje modul Azure PowerShell verze 1.0.0 nebo novějším na vytvořit certifikát a nainstalovat službu IIS. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Ke spuštění příkazů v tomto kurzu, budete také muset spustit `Login-AzAccount` vytvořit připojení k Azure.
+Tento kurz vyžaduje, aby modul Azure PowerShell verze 1.0.0 nebo novější vytvořil certifikát a nainstaloval službu IIS. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Ke spuštění příkazů v tomto kurzu, budete také muset spustit `Login-AzAccount` vytvořit připojení k Azure.
 
-## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+## <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 
 Použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem. Pro účely tohoto kurzu vytvoříte certifikát podepsaný svým držitelem (self-signed certificate) pomocí rutiny [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate). K exportu souboru pfx z certifikátu můžete použít rutinu [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) s vráceným kryptografickým otiskem.
 
@@ -130,7 +130,7 @@ Nejprve přidejte naslouchací proces s názvem *myListener* pro port 80.
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Vytvoření škálovací sady virtuálních počítačů
 
-V tomto příkladu vytvoříte škálovací sadu virtuálních počítačů, která v aplikační bráně poskytuje servery back-endového fondu.
+V tomto příkladu vytvoříte škálovací sadu virtuálních počítačů, která v aplikační bráně bude poskytovat servery pro back-endový fond.
 
 1. Na portálu levého horního rohu, vyberte **+ vytvořit prostředek**.
 2. Vyberte **Compute**.
@@ -208,7 +208,7 @@ Po změně instance se službou IIS, je nutné znovu upgradovat škálovací sad
 3. Vyberte obě instance a pak vyberte **upgradovat**.
 4. Odstranění potvrďte výběrem **Ano**.
 
-## <a name="test-the-application-gateway"></a>Otestování aplikační brány
+## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
 
 Veřejnou IP adresu aplikace můžete získat z stránka s přehledem application gateway.
 
@@ -221,8 +221,8 @@ Veřejnou IP adresu aplikace můžete získat z stránka s přehledem applicatio
 
 4. Pokud chcete přijímat upozornění zabezpečení v případě použití certifikátu podepsaného svým držitelem (self-signed certificate), vyberte **Podrobnosti** a potom **Pokračovat na web**. Potom se zobrazí váš zabezpečený web služby IIS, jak je znázorněno v následujícím příkladu:
 
-   ![Otestování základní adresy URL v aplikační bráně](./media/redirect-http-to-https-powershell/application-gateway-iistest.png)
+   ![Testování základní adresy URL v aplikační bráně](./media/redirect-http-to-https-powershell/application-gateway-iistest.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Zjistěte, jak [vytvoření služby application gateway s interním přesměrování](redirect-internal-site-powershell.md).

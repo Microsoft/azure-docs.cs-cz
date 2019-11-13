@@ -3,7 +3,7 @@ title: Azure Active Directory detekci rizik | Microsoft Docs
 description: Tento artice poskytuje podrobný přehled o tom, jaké detekci rizik jsou.
 services: active-directory
 keywords: Azure Active Directory Identity Protection, zabezpečení, riziko, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 523ae8e1ba31a4fe2c9683007f717149dfdc3bc6
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: e1f3755d61b5fa082665cfdb9aa91d1e31e2d4e4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127327"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014464"
 ---
 # <a name="azure-active-directory-risk-detections"></a>Azure Active Directory detekce rizik
 
@@ -47,7 +47,7 @@ V současné době Azure Active Directory detekuje šest typů detekcí rizik:
 ![Detekce rizik](./media/concept-risk-events/91.png)
 
 > [!IMPORTANT]
-> V případě, že se v [sestavě přihlášení](concept-sign-ins.md)může vyhledat riziko bez odpovídající položky přihlášení. Je to proto, že Identity Protection vyhodnocuje riziko pro **interaktivní** i neinteraktivní přihlášení, zatímco sestava přihlášení zobrazuje jenom interaktivní přihlášení.
+> V případě, že se v [sestavě přihlášení](concept-sign-ins.md)může vyhledat riziko bez odpovídající položky přihlášení. Je to proto, že Identity Protection vyhodnocuje riziko pro **interaktivní** i **neinteraktivní** přihlášení, zatímco sestava přihlášení zobrazuje jenom interaktivní přihlášení.
 
 Přehled, který získáte pro zjištění zjištěného rizika, je svázán s vaším předplatným služby Azure AD. 
 
@@ -65,7 +65,7 @@ Průběžné investice společnosti Microsoft do procesu zjišťování vedou k 
 - Vylepšení přesnosti detekce stávajících detekcí rizik 
 - Nové typy detekce rizik, které budou v budoucnu přidány
 
-### <a name="leaked-credentials"></a>Uniklé přihlašovací údaje
+### <a name="leaked-credentials"></a>Nevrácená pověření
 
 Pokud cybercriminals ohrozit platná hesla legitimních uživatelů, často tyto přihlašovací údaje sdílejí. To se obvykle provádí publikováním veřejně na tmavém webu nebo vložením webů nebo obchodováním nebo prodejem přihlašovacích údajů na černém trhu. Služba nevrácených přihlašovacích údajů Microsoftu získává páry uživatelského jména a hesla, protože sleduje veřejné a tmavé weby a pracuje s těmito službami:
 
@@ -74,7 +74,7 @@ Pokud cybercriminals ohrozit platná hesla legitimních uživatelů, často tyto
 - Týmy zabezpečení v Microsoftu
 - Jiné důvěryhodné zdroje 
 
-Když služba získá páry uživatelské jméno a heslo, jsou zkontrolovány proti aktuálním platným přihlašovacím údajům uživatele AAD. Pokud je nalezena shoda, znamená to, že došlo k ohrožení zabezpečení hesla uživatele a je vytvořeno nevrácené **riziko odhalení přihlašovacích údajů** .
+Když služba získá páry uživatelské jméno a heslo, jsou zkontrolovány proti aktuálním platným přihlašovacím údajům uživatele AAD. Pokud je nalezena shoda, znamená to, že došlo k ohrožení zabezpečení hesla uživatele a je vytvořeno **nevrácené riziko odhalení přihlašovacích údajů** .
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Přihlášení z anonymních IP adres
 
@@ -108,19 +108,19 @@ Následující tabulka uvádí dobu potřebnou pro zobrazení typu detekce v sou
 | Typ detekce | Latence generování sestav |
 | --- | --- |
 | V reálném čase | 5 až 10 minut |
-| Offline | 2 až 4 hodiny |
+| V režimu offline | 2 až 4 hodiny |
 
 
 U typů detekce rizik Azure Active Directory detekuje typy detekce:
 
 | Typ detekce rizika | Typ detekce |
 | :-- | --- | 
-| [Uživatelé s nevrácenými přihlašovacími údaji](#leaked-credentials) | Offline |
+| [Uživatelé s nevrácenými přihlašovacími údaji](#leaked-credentials) | V režimu offline |
 | [Přihlášení z anonymních IP adres](#sign-ins-from-anonymous-ip-addresses) | V reálném čase |
-| [Nemožná cesta do netypických míst](#impossible-travel-to-atypical-locations) | Offline |
+| [Nemožná cesta do netypických míst](#impossible-travel-to-atypical-locations) | V režimu offline |
 | [Přihlášení z neznámých míst](#sign-in-from-unfamiliar-locations) | V reálném čase |
-| [Přihlášení z nakažených zařízení](#sign-ins-from-infected-devices) | Offline |
-| [Přihlášení z IP adres s podezřelou aktivitou](#sign-ins-from-ip-addresses-with-suspicious-activity) | Offline|
+| [Přihlášení z nakažených zařízení](#sign-ins-from-infected-devices) | V režimu offline |
+| [Přihlášení z IP adres s podezřelou aktivitou](#sign-ins-from-ip-addresses-with-suspicious-activity) | V režimu offline|
 
 
 ## <a name="risk-level"></a>Úroveň rizika
@@ -129,17 +129,17 @@ Vlastnost úroveň rizika detekce rizik je indikátorem (**Vysoká**, **středn�
 
 Závažnost detekce rizik představuje sílu signálu jako prediktivního ohrožení zabezpečení identity. Jistota je indikátorem pro možnost falešně pozitivních hodnot. 
 
-Například 
+Například: 
 
-* **Vysoká**: Vysoká důvěra a Vysoká závažnost rizika. Tyto události jsou silné indikátory, že došlo k ohrožení identity uživatele, a všechny ovlivněné uživatelské účty by měly být opraveny okamžitě.
+* **Vysoká**: vysoká důvěra a Vysoká závažnost rizika. Tyto události jsou silné indikátory, že došlo k ohrožení identity uživatele, a všechny ovlivněné uživatelské účty by měly být opraveny okamžitě.
 
 * **Střední**: Vysoká závažnost, ale nižší spolehlivost detekce rizik nebo naopak. Tyto události jsou potenciálně rizikové a všechny ovlivněné uživatelské účty by měly být opravené.
 
-* **Nízká úroveň**: Nízká spolehlivost a zjišťování rizik s nízkou závažností. Tato událost nemusí vyžadovat okamžitou akci, ale v kombinaci s jinými detekci rizika může poskytovat silný údaj o ohrožení identity.
+* **Nízká**: nízká spolehlivost a rozpoznání rizika s nízkou závažností. Tato událost nemusí vyžadovat okamžitou akci, ale v kombinaci s jinými detekci rizika může poskytovat silný údaj o ohrožení identity.
 
 ![Úroveň rizika](./media/concept-risk-events/01.png)
 
-### <a name="leaked-credentials"></a>Uniklé přihlašovací údaje
+### <a name="leaked-credentials"></a>Nevrácená pověření
 
 Detekce rizika nevrácených pověření jsou klasifikována jako **Vysoká**, protože poskytují jasné označení toho, že uživatelské jméno a heslo jsou k dispozici útočníkovi.
 
@@ -153,7 +153,7 @@ Detekce rizika nevrácených pověření jsou klasifikována jako **Vysoká**, p
 Nemožná cesta je obvykle dobrý indikátor, že se hacker mohl úspěšně přihlásit. Falešné – kladné hodnoty se ale můžou vyskytnout, když se uživatel na cestách na cestách pomocí nového zařízení nebo přes VPN, které obvykle nepoužívá jiní uživatelé v organizaci. Dalším zdrojem falešně pozitivních aplikací jsou aplikace, které nesprávně předávají IP adresy serveru jako klientské IP adresy. to může mít za výsledek přihlášení z datového centra, kde se hostuje back-end aplikace (často se jedná o datová centra Microsoftu, která může dát přednost zobrazení přihlášení z IP adres vlastněných společností Microsoft. V důsledku těchto falešně pozitivních rizik je úroveň rizika pro toto zjišťování rizik **střední**.
 
 > [!TIP]
-> Můžete snížit množství hlášených falešně pozitivních hodnot pro tento typ detekce rizika konfigurací pojmenovaných [umístění](../active-directory-named-locations.md). 
+> Můžete snížit množství hlášených falešně pozitivních hodnot pro tento typ detekce rizika konfigurací [pojmenovaných umístění](../active-directory-named-locations.md). 
 
 ### <a name="sign-in-from-unfamiliar-locations"></a>Přihlášení z neznámých umístění
 

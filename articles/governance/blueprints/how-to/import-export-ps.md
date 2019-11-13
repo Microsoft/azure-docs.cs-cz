@@ -1,17 +1,14 @@
 ---
 title: Import a export definic podrobných plánů pomocí PowerShellu
 description: Naučte se pracovat s definicemi podrobného plánu jako s kódem. Sdílení, Správa zdrojového kódu a jejich správa pomocí příkazů exportu a importu.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/03/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 30e734c99a87364acfba9a58d83fe9a377958607
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: ca756ed093d5d423f6f83e5ca3953a8ecfce7d5a
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978446"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960373"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Import a export definic podrobných plánů pomocí PowerShellu
 
@@ -24,9 +21,9 @@ Plány Azure je možné plně spravovat prostřednictvím Azure Portal. Protože
   - Automatizované testování definic podrobných plánů v testovacích prostředích
   - Podpora kanálů průběžné integrace a průběžného nasazování (CI/CD)
 
-Bez ohledu na vaše důvody a Správa definic podrobných plánů jako kód přináší výhody. V tomto článku se dozvíte, jak v modulu [AZ. Details](https://powershellgallery.com/packages/Az.Blueprint/) použít příkazy `Import-AzBlueprintWithArtifact` a `Export-AzBlueprintWithArtifact`.
+Bez ohledu na vaše důvody a Správa definic podrobných plánů jako kód přináší výhody. V tomto článku se dozvíte, jak používat příkazy `Import-AzBlueprintWithArtifact` a `Export-AzBlueprintWithArtifact` v modulu [AZ. detail](https://powershellgallery.com/packages/Az.Blueprint/) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že jsou v Azure modrotisky mírné znalosti. Pokud jste to ještě neudělali, Projděte si následující články:
 
@@ -72,7 +69,7 @@ Postup exportu definice podrobného plánu je jednoduchý. Export definice podro
 - **Verze** (volitelné)
   - Určuje verzi pro **výstup, pokud referenční objekt** podrobného plánu obsahuje odkazy na více než jednu verzi.
 
-1. Získejte odkaz na definici podrobného plánu pro export z předplatného reprezentovaného jako `{subId}`:
+1. Získejte odkaz na definici podrobného plánu pro export z předplatného, které je reprezentované jako `{subId}`:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell

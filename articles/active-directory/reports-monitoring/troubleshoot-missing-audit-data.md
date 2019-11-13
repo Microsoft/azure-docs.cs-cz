@@ -3,7 +3,7 @@ title: Řešení potíží s chybějícími daty v protokolech aktivit | Microso
 description: Nabízí řešení pro chybějící data v protokolech aktivit Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 7cbe4337-bb77-4ee0-b254-3e368be06db7
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 01/15/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7aeac1180292ea5200e9eabc30ee01db05b67e75
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 9c335a4d30846f7c1b4dbd6b6aedc4d100a9b43a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820853"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014292"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Řešení potíží: Chybějící data v protokolech aktivit Azure Active Directory 
 
@@ -32,7 +32,7 @@ ms.locfileid: "72820853"
 
 Provedl jsem nějaké akce na webu Azure Portal a očekával jsem pro tyto akce zobrazení protokolu auditu v okně `Activity logs > Audit Logs`, ale nemůžu je najít.
 
- ![Generování sestav](./media/troubleshoot-missing-audit-data/01.png)
+ ![Vytváření sestav](./media/troubleshoot-missing-audit-data/01.png)
  
 ### <a name="cause"></a>Příčina
 
@@ -43,7 +43,7 @@ Akce se v protokolech aktivit nezobrazí okamžitě. V následující tabulce js
 | Audit adresáře | &nbsp; | 2 minuty | 5 minut |
 | Aktivita přihlášení | &nbsp; | 2 minuty | 5 minut | 
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Počkejte 15 minut až dvě hodiny a pak se podívejte, jestli se akce v protokolu zobrazily. Pokud se protokoly ani po dvou hodinách nezobrazí, [vytvořte lístek podpory](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) a my se na to podíváme.
 
@@ -53,7 +53,7 @@ Počkejte 15 minut až dvě hodiny a pak se podívejte, jestli se akce v protoko
 
 Nedávno jsem se přihlásil/a k webu Azure Portal a očekával/a jsem, že se pro tyto akce zobrazí protokoly přihlášení v okně `Activity logs > Sign-ins`, ale nemůžu je najít.
 
- ![Generování sestav](./media/troubleshoot-missing-audit-data/02.png)
+ ![Vytváření sestav](./media/troubleshoot-missing-audit-data/02.png)
  
 ### <a name="cause"></a>Příčina
 
@@ -64,7 +64,7 @@ Akce se v protokolech aktivit nezobrazí okamžitě. V následující tabulce js
 | Audit adresáře | &nbsp; | 2 minuty | 5 minut |
 | Aktivita přihlášení | &nbsp; | 2 minuty | 5 minut | 
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Počkejte 15 minut až dvě hodiny a pak se podívejte, jestli se akce v protokolu zobrazily. Pokud se protokoly ani po dvou hodinách nezobrazí, [vytvořte lístek podpory](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) a my se na to podíváme.
 
@@ -74,7 +74,7 @@ Počkejte 15 minut až dvě hodiny a pak se podívejte, jestli se akce v protoko
 
 Na webu Azure Portal nemůžu zobrazit data přihlášení a auditu za více než 30 dnů. Proč? 
 
- ![Generování sestav](./media/troubleshoot-missing-audit-data/03.png)
+ ![Vytváření sestav](./media/troubleshoot-missing-audit-data/03.png)
 
 ### <a name="cause"></a>Příčina
 
@@ -87,7 +87,7 @@ V závislosti na vaší licenci akce služby Azure Active Directory ukládají s
 
 Další informace najdete v tématu [Zásady uchovávání sestav Azure Active Directory](reference-reports-data-retention.md).  
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Pokud chcete data uchovávat déle než 30 dnů, máte dvě možnosti. Pomocí [rozhraní API pro generování sestav v Azure AD](concept-reporting-api.md) můžete data načíst prostřednictvím kódu programu a uložit je do databáze. Případně můžete protokoly auditu integrovat do systému SIEM třetí strany, jako je Splunk nebo Sumo Logic.
 

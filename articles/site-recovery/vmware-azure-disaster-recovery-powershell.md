@@ -1,32 +1,32 @@
 ---
-title: Nastavení zotavení po havárii virtuálních počítačů VMware do Azure pomocí prostředí PowerShell ve službě Azure Site Recovery | Dokumentace Microsoftu
-description: Zjistěte, jak nastavit replikaci a převzetí služeb při selhání do Azure pro zotavení po havárii virtuálních počítačů VMware pomocí prostředí PowerShell ve službě Azure Site Recovery.
+title: Nastavení zotavení po havárii VMware pomocí prostředí PowerShell ve službě Azure Site Revoery
+description: Naučte se, jak nastavit replikaci a převzetí služeb při selhání do Azure za účelem zotavení po havárii virtuálních počítačů VMware pomocí PowerShellu v Azure Site Recovery.
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.date: 06/30/2019
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: 7c13bb8586995a82ee240df39a9c95a67743e2a8
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 9546ae590918cdf6f3a6a95b9a68e9208054dcee
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503336"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953935"
 ---
-# <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Nastavení zotavení po havárii virtuálních počítačů VMware do Azure pomocí Powershellu
+# <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Nastavení zotavení po havárii virtuálních počítačů VMware do Azure pomocí PowerShellu
 
-V tomto článku uvidíte, jak provádět replikaci a převzetí služeb při selhání virtuálních počítačů VMware do Azure pomocí Azure Powershellu.
+V tomto článku se můžete podívat, jak replikovat virtuální počítače VMware a převzít služby při selhání do Azure pomocí Azure PowerShell.
 
 Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> - Vytvořte trezor služby Recovery Services a nastavte kontext trezoru.
-> - Ověření registrace serveru v trezoru.
-> - Nastavení replikace, včetně zásad replikace. Přidání serveru vCenter a zjištění virtuálních počítačů.
+> - Vytvořte Trezor Recovery Services a nastavte kontext trezoru.
+> - Ověřte registraci serveru v trezoru.
+> - Nastavte replikaci, včetně zásad replikace. Přidejte Server vCenter a vyhledejte virtuální počítače.
 > - Přidání serveru vCenter a zjišťování
-> - Vytvoření účtů úložiště pro protokoly replikace nebo data a replikovat virtuální počítače.
-> - Převzetí služeb při selhání Konfigurace nastavení převzetí služeb při selhání, proveďte nastavení pro replikaci virtuálních počítačů.
+> - Vytvořte účty úložiště pro ukládání protokolů replikace nebo dat a replikujte virtuální počítače.
+> - Převzetí služeb při selhání Nakonfigurujte nastavení převzetí služeb při selhání, proveďte nastavení pro replikaci virtuálních počítačů.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -37,23 +37,23 @@ Než začnete, potřebujete:
 
 - Ujistěte se, že rozumíte [komponentám a architektuře řešení](vmware-azure-architecture.md).
 - Zkontrolujte [požadavky na podporu](site-recovery-support-matrix-to-azure.md) pro všechny komponenty.
-- Máte Azure PowerShell `Az` modulu. Pokud potřebujete instalaci nebo upgrade prostředí Azure PowerShell, postupujte podle to [příručce k instalaci a konfiguraci prostředí Azure PowerShell](/powershell/azure/install-az-ps).
+- Máte modul Azure PowerShell `Az`. Pokud potřebujete nainstalovat nebo upgradovat Azure PowerShell, postupujte podle pokynů v tomto [Průvodci a nainstalujte a nakonfigurujte Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="log-into-azure"></a>Přihlášení k Azure
 
-Přihlaste se pomocí rutiny Connect-AzAccount vašeho předplatného Azure:
+Přihlaste se k předplatnému Azure pomocí rutiny Connect-AzAccount:
 
 ```azurepowershell
 Connect-AzAccount
 ```
-Vyberte předplatné Azure, které chcete replikovat virtuální počítače VMware na. Použijte rutinu Get-AzSubscription zobrazíte seznam předplatných Azure, ke kterým máte přístup k. Vyberte předplatné Azure pro práci s díky rutině Select AzSubscription.
+Vyberte předplatné Azure, do kterého chcete replikovat virtuální počítače VMware. Pomocí rutiny Get-AzSubscription Získejte seznam předplatných Azure, ke kterým máte přístup. Vyberte předplatné Azure, se kterým chcete pracovat pomocí rutiny Select-AzSubscription.
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 ```
 ## <a name="set-up-a-recovery-services-vault"></a>Nastavte trezor služby Recovery Services.
 
-1. Vytvořte skupinu prostředků, ve kterém chcete vytvořit trezor služby Recovery Services. V následujícím příkladu skupina prostředků má název VMwareDRtoAzurePS a je vytvořené v oblasti východní Asie.
+1. Vytvořte skupinu prostředků, ve které chcete vytvořit trezor Recovery Services. V následujícím příkladu má skupina prostředků název VMwareDRtoAzurePS a je vytvořená v oblasti Východní Asie.
 
    ```azurepowershell
    New-AzResourceGroup -Name "VMwareDRtoAzurePS" -Location "East Asia"
@@ -66,7 +66,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
    ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/VMwareDRtoAzurePS
    ```
 
-2. Vytvoření trezoru služby Recovery services. V následujícím příkladu trezor služby Recovery services je s názvem VMwareDRToAzurePs a je vytvořen v oblasti východní Asie a ve skupině prostředků vytvořili v předchozím kroku.
+2. Vytvořte Trezor služby Recovery Services. V následujícím příkladu je trezor služby Recovery Services nazvaný VMwareDRToAzurePs a je vytvořen v oblasti Východní Asie a ve skupině prostředků vytvořené v předchozím kroku.
 
    ```azurepowershell
    New-AzRecoveryServicesVault -Name "VMwareDRToAzurePs" -Location "East Asia" -ResourceGroupName "VMwareDRToAzurePs"
@@ -81,7 +81,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
    Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
    ```
 
-3. Stáhněte si registrační klíč trezoru pro trezor. Registrační klíč trezoru se používá k registraci místní konfigurační Server do trezoru. Registrace je součástí procesu instalace softwaru konfiguračního serveru.
+3. Stáhněte si registrační klíč trezoru pro trezor. Registrační klíč trezoru se používá k registraci místního konfiguračního serveru do tohoto trezoru. Registrace je součástí procesu instalace softwaru konfiguračního serveru.
 
    ```azurepowershell
    #Get the vault object by name and resource group and save it to the $vault PowerShell variable 
@@ -96,18 +96,18 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
    C:\Work\VMwareDRToAzurePs_2017-11-23T19-52-34.VaultCredentials
    ```
 
-4. Pomocí registračního klíče stažený trezor a postupujte podle pokynů v článcích uvedených níže pro dokončení instalace a registrace konfiguračního serveru.
-   - [Volba cílů ochrany](vmware-azure-set-up-source.md#choose-your-protection-goals)
+4. Použijte stažený registrační klíč trezoru a podle kroků uvedených v článcích dokončete instalaci a registraci konfiguračního serveru.
+   - [Výběr cílů ochrany](vmware-azure-set-up-source.md#choose-your-protection-goals)
    - [Nastavení zdrojového prostředí](vmware-azure-set-up-source.md#set-up-the-configuration-server)
 
-### <a name="set-the-vault-context"></a>Nastavte kontext trezoru
+### <a name="set-the-vault-context"></a>Nastavte kontext trezoru.
 
-Nastavte kontext trezoru pomocí rutiny Set-ASRVaultContext. Po nastavení, následné operace Azure Site Recovery v relaci Powershellu se provádějí v kontextu vybraného trezoru.
+Nastavte kontext trezoru pomocí rutiny Set-ASRVaultContext. Po nastavení se následné operace Azure Site Recovery v relaci PowerShellu provádějí v kontextu vybraného trezoru.
 
 > [!TIP]
-> Modul Powershellu pro Azure Site Recovery (Az.RecoveryServices modul) obsahuje aliasy snadno se používá u většiny rutin. Rutiny v modulu podobu  *\<operace >-**AzRecoveryServicesAsr**\<objektu >* a mají ekvivalentní aliasy, které podobu  *\< Operace >-**Azure Site Recovery**\<objektu >* . Můžete nahradit aliasy rutiny pro snadné použití.
+> Modul Azure Site Recovery PowerShellu (AZ. RecoveryServices Module) obsahuje snadné použití aliasů pro většinu rutin. Rutiny v modulu využívají *\<operací >-**AzRecoveryServicesAsr**\<objektu >* a mají ekvivalentní aliasy, které mají *\<operace >-**ASR**\<objekt >* . Můžete nahradit aliasy rutiny pro snadné použití.
 
-V následujícím příkladu si podrobnosti o trezoru $vault proměnná slouží k určení kontext trezoru pro relaci Powershellu.
+V následujícím příkladu se k určení kontextu trezoru pro relaci PowerShellu použijí podrobnosti trezoru z $vault proměnné.
 
    ```azurepowershell
    Set-ASRVaultContext -Vault $vault
@@ -118,23 +118,23 @@ V následujícím příkladu si podrobnosti o trezoru $vault proměnná slouží
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
 
-Jako alternativu k rutině Set-ASRVaultContext jeden můžete také použít rutinu Import AzRecoveryServicesAsrVaultSettingsFile nastavit kontext trezoru. Zadejte cestu, ve kterém se nachází jako parametr - path do rutiny Import-AzRecoveryServicesAsrVaultSettingsFile soubor registračního klíče trezoru. Příklad:
+Jako alternativu k rutině Set-ASRVaultContext může k nastavení kontextu trezoru použít také rutinu Import-AzRecoveryServicesAsrVaultSettingsFile. Zadejte cestu, ve které je soubor registračního klíče trezoru umístěný jako parametr-Path pro rutinu Import-AzRecoveryServicesAsrVaultSettingsFile. Příklad:
 
    ```azurepowershell
    Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
    Import-AzRecoveryServicesAsrVaultSettingsFile -Path "C:\Work\VMwareDRToAzurePs_2017-11-23T19-52-34.VaultCredentials"
    ```
-Dalších částech tohoto článku se předpokládá, že byl nastaven kontext trezoru pro operace Azure Site Recovery.
+V dalších částech tohoto článku se předpokládá, že je nastavený kontext trezoru pro Azure Site Recovery operace.
 
-## <a name="validate-vault-registration"></a>Ověření registrace trezoru
+## <a name="validate-vault-registration"></a>Ověřit registraci trezoru
 
-V tomto příkladu jsme měli tyto položky:
+V tomto příkladu máme následující:
 
-- Konfigurační server (**ConfigurationServer**) je zaregistrován k tomuto trezoru.
-- Další procesový server (**horizontálním navýšením kapacity server**) po registraci do *ConfigurationServer*
-- Účty (**vCenter_account**, **WindowsAccount**, **LinuxAccount**) nastavený na konfiguračním serveru. Tyto účty se používají k přidání serveru vCenter, ke zjištění virtuálních počítačů a vynucené instalace software služby mobility na Windows a Linuxem serverech, které chcete replikovat.
+- Do tohoto trezoru se zaregistroval konfigurační server (**ConfigurationServer**).
+- Pro *ConfigurationServer* se zaregistroval další procesový Server (**škálování – ProcessServer**).
+- Na konfiguračním serveru se nastavily účty (**vCenter_account**, **WindowsAccount**, **LinuxAccount**). Tyto účty slouží k přidání serveru vCenter, ke zjištění virtuálních počítačů a k instalaci softwaru služby mobility na servery se systémem Windows a Linux, které se mají replikovat.
 
-1. Registrované konfigurační servery jsou reprezentované pomocí objektu prostředků infrastruktury ve službě Site Recovery. Získat seznam prostředků infrastruktury objekty v trezoru a určete konfigurační server.
+1. Registrované konfigurační servery jsou reprezentovány objektem Fabric v Site Recovery. Získejte seznam objektů prostředků infrastruktury v trezoru a Identifikujte konfigurační server.
 
    ```azurepowershell
    # Verify that the Configuration server is successfully registered to the vault
@@ -159,7 +159,7 @@ V tomto příkladu jsme měli tyto položky:
    FabricSpecificDetails : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVMWareSpecificDetails
    ```
 
-2. Identifikujte procesových serverů, které je možné replikovat počítače.
+2. Identifikujte procesní servery, které se dají použít k replikaci počítačů.
 
    ```azurepowershell
    $ProcessServers = $ASRFabrics[0].FabricSpecificDetails.ProcessServers
@@ -172,9 +172,9 @@ V tomto příkladu jsme měli tyto položky:
    1     ConfigurationServer
    ```
 
-   Ve výstupu výš ***$ProcessServers [0]*** odpovídá *horizontálním navýšením kapacity server* a ***$ProcessServers [1]*** odpovídá roli procesový Server v *ConfigurationServer*
+   Z výstupu nad ***$ProcessServers [0]*** odpovídá *ProcessServer* a ***$ProcessServers [1]*** odpovídá roli procesového serveru v *ConfigurationServer* .
 
-3. Určete účty, které byly vytvořeny na konfiguračním serveru.
+3. Identifikujte účty, které byly nastaveny na konfiguračním serveru.
 
    ```azurepowershell
    $AccountHandles = $ASRFabrics[0].FabricSpecificDetails.RunAsAccounts
@@ -189,16 +189,16 @@ V tomto příkladu jsme měli tyto položky:
    3         LinuxAccount
    ```
 
-   Ve výstupu výš ***$AccountHandles [0]*** odpovídá účtu *vCenter_account*, ***$AccountHandles [1]*** účet *WindowsAccount*, a ***$AccountHandles [2]*** účet *LinuxAccount*
+   Z výstupu výše ***$AccountHandles [0]*** odpovídá účtu *vCenter_account*, ***$AccountHandles [1]*** k účtu *WindowsAccount*a ***$AccountHandles [2]*** k účtu *LinuxAccount*
 
 ## <a name="create-a-replication-policy"></a>Vytvoření zásady replikace
 
-V tomto kroku se vytvoří dvě zásady replikace. Převzetí služeb při selhání jednu zásadu pro replikaci virtuálních počítačů VMware do Azure a druhý k replikaci virtuálních počítačů spuštěných v Azure zpět do místní lokality VMware.
+V tomto kroku se vytvoří dvě zásady replikace. Jedna zásada pro replikaci virtuálních počítačů VMware do Azure a druhá pro replikaci virtuálních počítačů s podporou převzetí služeb při selhání v Azure zpátky na místní lokalitu VMware.
 
 > [!NOTE]
-> Většinu operací Azure Site Recovery se provedl asynchronně. Při zahájení operace odeslání úlohy služby Azure Site Recovery a úlohy sledování objektu se vrátí. Tato úloha sledování objektů lze použít ke sledování stavu operace.
+> Většina operací Azure Site Recovery prováděna asynchronně. Když zahájíte operaci, odešle se Azure Site Recovery úloha a vrátí se objekt sledování úlohy. Tento objekt sledování úlohy lze použít k monitorování stavu operace.
 
-1. Vytvoření zásady replikace s názvem *ReplicationPolicy* pro replikaci virtuálních počítačů VMware do Azure pomocí zadané vlastnosti.
+1. Vytvořte zásadu replikace s názvem *ReplicationPolicy* pro replikaci virtuálních počítačů VMware do Azure se zadanými vlastnostmi.
 
    ```azurepowershell
    $Job_PolicyCreate = New-AzRecoveryServicesAsrPolicy -VMwareToAzure -Name "ReplicationPolicy" -RecoveryPointRetentionInHours 24 -ApplicationConsistentSnapshotFrequencyInHours 4 -RPOWarningThresholdInMinutes 60
@@ -232,15 +232,15 @@ V tomto kroku se vytvoří dvě zásady replikace. Převzetí služeb při selh�
    Errors           : {}
    ```
 
-2. Vytvoření zásady replikace pro navrácení služeb po obnovení z Azure do místní lokality VMware.
+2. Vytvořte zásadu replikace, která se použije pro navrácení služeb po obnovení z Azure do místní lokality VMware.
 
    ```azurepowershell
    $Job_FailbackPolicyCreate = New-AzRecoveryServicesAsrPolicy -AzureToVMware -Name "ReplicationPolicy-Failback" -RecoveryPointRetentionInHours 24 -ApplicationConsistentSnapshotFrequencyInHours 4 -RPOWarningThresholdInMinutes 60
    ```
 
-   Podrobnosti úlohy v *$Job_FailbackPolicyCreate* ke sledování dokončení operace.
+   Pomocí podrobností o úloze v *$Job _FailbackPolicyCreate* můžete sledovat dokončení operace.
 
-   * Vytvořte mapování kontejnerů ochrany mapovat zásady replikace s konfiguračním serverem.
+   * Vytvořte mapování kontejneru ochrany pro mapování zásad replikace ke konfiguračnímu serveru.
 
    ```azurepowershell
    #Get the protection container corresponding to the Configuration Server
@@ -279,7 +279,7 @@ V tomto kroku se vytvoří dvě zásady replikace. Převzetí služeb při selh�
 
 ## <a name="add-a-vcenter-server-and-discover-vms"></a>Přidání serveru vCenter a zjištění virtuálních počítačů
 
-Přidání serveru vCenter pomocí IP adresy nebo názvu hostitele. **-Port** parametr určuje port, který na serveru vCenter připojit, **– název** parametr určuje popisný název pro vCenter server a **– účet** parametr určuje popisovač účtu na konfiguračním serveru pro virtuální počítače spravované pomocí vCenter serveru.
+Přidejte vCenter Server podle IP adresy nebo názvu hostitele. Parametr **-port** Určuje port na serveru vCenter, který se má připojit k, parametr **-Name** Určuje popisný název, který se má použít pro Server vCenter, a parametr **-account** Určuje popisovač účtu na konfiguračním serveru, který se má použít ke zjišťování virtuálních počítačů spravovaných serverem vCenter.
 
 ```azurepowershell
 # The $AccountHandles[0] variable holds details of vCenter_account
@@ -316,12 +316,12 @@ Errors           : {}
 
 ## <a name="create-storage-accounts-for-replication"></a>Vytvoření účtů úložiště pro replikaci
 
-**Chcete-li zapsat do spravovaného disku, použijte [modulu prostředí Powershell Az.RecoveryServices 2.0.0](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) a vyšší.** Vyžaduje pouze vytvoření účtu úložiště protokolu. Doporučujeme použít standardní účet typ a redundance LRS, protože se používá k ukládání jenom dočasné protokolů. Ujistěte se, že účet úložiště se vytvoří ve stejné oblasti Azure jako trezor.
+**K zápisu na spravovaný disk použijte [PowerShell AZ. RecoveryServices Module 2.0.0](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) a vyšší.** Vyžaduje jenom vytvoření účtu úložiště protokolu. Doporučuje se použít standardní typ účtu a redundanci LRS, protože se používá k ukládání pouze dočasných protokolů. Ujistěte se, že je účet úložiště vytvořený ve stejné oblasti Azure jako trezor.
 
-Pokud používáte verzi starší než 2.0.0 Az.RecoveryServices modul, použijte následující kroky k vytvoření účtů úložiště. Tyto účty úložiště jsou později použít k replikaci virtuálních počítačů. Ujistěte se, že jsou ve stejné oblasti Azure jako trezor vytvoří účty storage. Pokud chcete použít existující účet úložiště pro replikaci, můžete tento krok přeskočit.
+Pokud používáte verzi modulu AZ. RecoveryServices starší než 2.0.0, vytvořte pomocí následujících kroků účty úložiště. Tyto účty úložiště se používají později k replikaci virtuálních počítačů. Zajistěte, aby se účty úložiště vytvořily ve stejné oblasti Azure jako trezor. Pokud plánujete použít existující účet úložiště pro replikaci, můžete tento krok přeskočit.
 
 > [!NOTE]
-> Při replikaci místních virtuálních počítačů na účet úložiště úrovně premium, budete muset zadat další standard storage účtu (účet úložiště protokolů). Účet úložiště protokolů obsahuje protokoly replikace jako zprostředkující úložiště, dokud se dají použít protokoly na cíli úložiště úrovně premium.
+> Při replikaci místních virtuálních počítačů do účtu Premium Storage je nutné zadat další účet úložiště úrovně Standard (účet úložiště protokolu). Účet úložiště protokolu uchovává protokoly replikace jako zprostředkující úložiště, dokud je nebudete moct v cíli úložiště Premium použít.
 >
 
 ```azurepowershell
@@ -335,27 +335,27 @@ $ReplicationStdStorageAccount= New-AzStorageAccount -ResourceGroupName "VMwareDR
 
 ## <a name="replicate-vmware-vms"></a>Replikace virtuálních počítačů VMware
 
-Trvá asi 15 až 20 minut, než virtuální počítače mají být zjišťované ze serveru vCenter. Po zjištění, je vytvořen objekt chránitelnou položku ve službě Azure Site Recovery pro každé zjištěné virtuální počítač. V tomto kroku tři zjištěné virtuální počítače se replikují do Azure Storage účty vytvořené v předchozím kroku.
+Zjištění virtuálních počítačů ze serveru vCenter trvá přibližně 15-20 minut. Po zjištění se v Azure Site Recovery vytvoří nechráněný objekt položky pro každý zjištěný virtuální počítač. V tomto kroku se tři ze zjištěných virtuálních počítačů replikují na účty Azure Storage vytvořené v předchozím kroku.
 
-Budete potřebovat následující podrobnosti, které chcete chránit zjištěné virtuální počítač:
+K ochraně zjištěného virtuálního počítače budete potřebovat následující informace:
 
-* Chránitelnou položku se musí replikovat.
-* Účet úložiště pro replikaci virtuálního počítače (pouze v případě, že se replikují do účtu úložiště). 
-* Ukládání protokolů je potřeba k ochraně virtuálních počítačů na účet premium storage nebo do spravovaného disku.
-* Procesový Server má být použit pro replikaci. Načíst a uloží do seznamu k dispozici procesových serverů ***$ProcessServers [0]***  *(škálování aplikace server)* a ***$ProcessServers [1]*** *(ConfigurationServer)* proměnné.
-* Účet, který se má použít pro vynucené instalace software služby Mobility na počítače. Byla načten a uložené v seznamu dostupných účtů ***$AccountHandles*** proměnné.
-* Mapování kontejnerů ochrany pro zásady replikace pro replikaci.
-* Skupina prostředků, ve kterém musí být vytvořen virtuální počítače na převzetí služeb při selhání.
-* Volitelně můžete virtuální síť Azure a podsíť, ke které se přes virtuální počítač by měl být připojen.
+* Chráněná položka, která má být replikována.
+* Účet úložiště, do kterého se má virtuální počítač replikovat (jenom v případě, že se replikuje do účtu úložiště). 
+* Úložiště protokolu je potřeba k ochraně virtuálních počítačů s účtem Premium Storage nebo se spravovaným diskem.
+* Procesový Server, který se má použít pro replikaci. Načíst a uloží do seznamu k dispozici procesových serverů ***$ProcessServers [0]***  *(škálování aplikace server)* a ***$ProcessServers [1]*** *(ConfigurationServer)* proměnné.
+* Účet, který se má použít k instalaci softwaru služby mobility do počítačů. Seznam dostupných účtů byl načten a uložen v proměnné ***$AccountHandles*** .
+* Mapování kontejneru ochrany pro zásady replikace, které se má použít pro replikaci.
+* Skupina prostředků, ve které se musí vytvořit virtuální počítače při převzetí služeb při selhání.
+* Volitelně by se měla připojit virtuální síť Azure a podsíť, ke které se virtuální počítač převezme služby při selhání.
 
-Teď replikujte pomocí nastavení uvedená v této tabulce následujících virtuálních počítačů
+Teď replikujte následující virtuální počítače pomocí nastavení zadaných v této tabulce.
 
 
-|Virtuální počítač  |Procesový Server        |Účet úložiště              |Účet úložiště protokolů  |Zásada           |Účet pro instalaci služby Mobility|Cílová skupina prostředků  | Cílová virtuální síť  |Cílová podsíť  |
+|Virtuální počítač  |Procesový Server        |Účet úložiště              |Účet úložiště protokolů  |Zásada           |Účet pro instalaci služby mobility|Cílová skupina prostředků  | Cílová virtuální síť  |Cílová podsíť  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
-|CentOSVM1       |ConfigurationServer   |neuvedeno| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
-|Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
-|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| neuvedeno                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
+|CentOSVM1       |ConfigurationServer   |neuvedeno| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |
+|Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |   
+|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| neuvedeno                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |   
 
 
 ```azurepowershell
@@ -390,9 +390,9 @@ $Job_EnableReplication3 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMw
 
 ```
 
-Po úspěšném dokončení úlohy replikace povolit spuštění počáteční replikace pro virtuální počítače. Počáteční replikace může chvíli trvat v závislosti na množství dat se musí replikovat a dostupné šířky pásma pro replikaci. Po dokončení počáteční replikace virtuálního počítače přejde do chráněném stavu. Jakmile se virtuální počítač dosáhne chráněném stavu, které můžete provést testovací převzetí služeb virtuálního počítače, přidejte jej do plánů obnovení atd.
+Po úspěšném dokončení úlohy povolit replikaci se pro virtuální počítače spustí počáteční replikace. Počáteční replikace může chvíli trvat, v závislosti na množství dat, která se mají replikovat, a šířce pásma dostupnou pro replikaci. Po dokončení počáteční replikace se virtuální počítač přesune do chráněného stavu. Jakmile virtuální počítač dosáhne chráněného stavu, můžete provést testovací převzetí služeb při selhání pro virtuální počítač, přidat ho do plánů obnovení atd.
 
-Můžete zkontrolovat stav replikace a stav replikace virtuálního počítače pomocí rutiny Get-ASRReplicationProtectedItem.
+Stav replikace a stav replikace virtuálního počítače můžete zjistit pomocí rutiny Get-ASRReplicationProtectedItem.
 
 ```azurepowershell
 Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $ProtectionContainer | Select FriendlyName, ProtectionState, ReplicationHealth
@@ -407,15 +407,15 @@ Win2K12VM1   Protected                       Normal
 
 ## <a name="configure-failover-settings"></a>Konfigurace nastavení převzetí služeb při selhání
 
-Nastavení převzetí služeb při selhání u chráněných počítačů můžete aktualizovat pomocí rutiny Set-ASRReplicationProtectedItem. Zde jsou některé z nastavení, která jde aktualizovat prostřednictvím této rutiny:
-* Název virtuálního počítače, který má být vytvořena na převzetí služeb při selhání
-* Velikost virtuálního počítače pro virtuální počítač má být vytvořena na převzetí služeb při selhání
-* Virtuální síť Azure a podsíť, která by měla připojené síťové karty virtuálního počítače na převzetí služeb při selhání
+Nastavení převzetí služeb při selhání pro chráněné počítače je možné aktualizovat pomocí rutiny Set-ASRReplicationProtectedItem. Některá nastavení, která je možné aktualizovat prostřednictvím této rutiny:
+* Název virtuálního počítače, který se má vytvořit při převzetí služeb při selhání
+* Velikost virtuálního počítače, který se má vytvořit při převzetí služeb při selhání
+* Virtuální síť Azure a podsíť, ke kterým by se měly síťové karty virtuálního počítače připojit při převzetí služeb při selhání
 * Převzetí služeb při selhání na spravované disky
-* Použít program Azure Hybrid Use Benefit
-* Přiřadíte statickou IP adresu z cílová virtuální síť má být přiřazena k virtuálnímu počítači na převzetí služeb při selhání.
+* Použít zvýhodněné hybridní využití Azure
+* Přiřadit statickou IP adresu z cílové virtuální sítě, která se má přiřadit k virtuálnímu počítači při převzetí služeb při selhání.
 
-V tomto příkladu aktualizujeme velikost virtuálního počítače z virtuálního počítače na převzetí služeb při selhání pro virtuální počítač vytvořit *Win2K12VM1* a určit, že virtuální počítač použít spravované disky na převzetí služeb při selhání.
+V tomto příkladu aktualizujeme velikost virtuálního počítače, který má být vytvořen při převzetí služeb při selhání pro virtuální počítač *Win2K12VM1* , a určíte, že virtuální počítač použije při převzetí služeb při selhání spravované disky.
 
 ```azurepowershell
 $ReplicatedVM1 = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName "Win2K12VM1" -ProtectionContainer $ProtectionContainer
@@ -444,7 +444,7 @@ Errors           : {}
 
 ## <a name="run-a-test-failover"></a>Spuštění testovacího převzetí služeb při selhání
 
-1. Spusťte postup zotavení po Havárii (testovací převzetí služeb) následujícím způsobem:
+1. Spusťte postup zotavení po havárii (testovací převzetí služeb při selhání) následujícím způsobem:
 
    ```azurepowershell
    #Test failover of Win2K12VM1 to the test virtual network "V2TestNetwork"
@@ -455,9 +455,9 @@ Errors           : {}
    #Start the test failover operation
    $TFOJob = Start-AzRecoveryServicesAsrTestFailoverJob -ReplicationProtectedItem $ReplicatedVM1 -AzureVMNetworkId $TestFailovervnet.Id -Direction PrimaryToRecovery
    ```
-2. Po úspěšném dokončení úlohy převzetí služeb při selhání testu, všimnete si, že virtuální počítač doplněny *"-Test"* (Win2K12VM1 a testování v tomto případě) k názvu se vytvoří v Azure.
-3. Teď můžete připojit k testovací převzetí služeb virtuálního počítače při selhání a ověření testu převzetí služeb.
-4. Vyčistěte testovací převzetí služeb pomocí rutiny Start-ASRTestFailoverCleanupJob. Tato operace odstraní virtuální počítač vytvořený jako součást operace převzetí služeb při selhání testu.
+2. Jakmile se úloha testovacího převzetí služeb při selhání úspěšně dokončí, všimnete si, že se v Azure vytvoří virtuální počítač s příponou *"-test"* (Win2K12VM1-test v tomto případě) na jeho název.
+3. Nyní se můžete připojit k testu při selhání virtuálního počítače a ověřit testovací převzetí služeb při selhání.
+4. Vyčistěte testovací převzetí služeb při selhání pomocí rutiny Start-ASRTestFailoverCleanupJob. Tato operace odstraní virtuální počítač vytvořený jako součást operace testovacího převzetí služeb při selhání.
 
    ```azurepowershell
    $Job_TFOCleanup = Start-AzRecoveryServicesAsrTestFailoverCleanupJob -ReplicationProtectedItem $ReplicatedVM1
@@ -465,9 +465,9 @@ Errors           : {}
 
 ## <a name="fail-over-to-azure"></a>Převzetí služeb při selhání do Azure
 
-V tomto kroku jsme převzetí služeb při selhání virtuálního počítače Win2K12VM1 konkrétní bod obnovení.
+V tomto kroku provedeme převzetí služeb při selhání virtuálního počítače Win2K12VM1 na určitý bod obnovení.
 
-1. Získáte seznam dostupných bodů obnovení pro převzetí služeb:
+1. Získat seznam dostupných bodů obnovení, které se mají použít pro převzetí služeb při selhání:
    ```azurepowershell
    # Get the list of available recovery points for Win2K12VM1
    $RecoveryPoints = Get-AzRecoveryServicesAsrRecoveryPoint -ReplicationProtectedItem $ReplicatedVM1
@@ -490,7 +490,7 @@ V tomto kroku jsme převzetí služeb při selhání virtuálního počítače W
    Succeeded
    ```
 
-2. Po selhání, úspěšně jste můžete potvrzení operace převzetí služeb při selhání a zadejte zpětné replikace z Azure zpět do místní lokality VMware.
+2. Po úspěšném selhání můžete operaci převzetí služeb při selhání potvrdit a nastavit zpětnou replikaci z Azure zpátky na místní lokalitu VMware.
 
-## <a name="next-steps"></a>Další postup
-Zjistěte, jak automatizovat pomocí další úlohy [Powershellu pro Azure Site Recovery odkaz](https://docs.microsoft.com/powershell/module/Az.RecoveryServices).
+## <a name="next-steps"></a>Další kroky
+Naučte se automatizovat další úlohy pomocí [Azure Site Recovery referenčních informací prostředí PowerShell](https://docs.microsoft.com/powershell/module/Az.RecoveryServices).

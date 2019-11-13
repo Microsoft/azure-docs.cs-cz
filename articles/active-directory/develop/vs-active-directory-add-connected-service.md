@@ -1,5 +1,5 @@
 ---
-title: Přidání Azure Active Directory pomocí připojených služeb v aplikaci Visual Studio | Azure
+title: Přidání Azure Active Directory pomocí připojených služeb | Azure
 description: Přidání Azure Active Directory pomocí dialogového okna Přidat připojené služby v aplikaci Visual Studio
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04c8b6bfeaabfa20b9b9b884584d40de7f09e9ac
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 36827401060e330d57b6afac3db0abbde0c27dc2
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802470"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73941932"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Přidání Azure Active Directory pomocí připojených služeb v aplikaci Visual Studio
 
@@ -27,7 +27,7 @@ Tento článek a jeho doprovodné články obsahují podrobné informace o použ
 
 Služba Active Directory Connected v současné době nepodporuje ASP.NET Core aplikace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure: Pokud ještě nemáte účet Azure, můžete si [zaregistrovat bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) nebo [aktivovat výhody pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 - **Visual Studio 2015** nebo novější. [Stáhněte si Visual Studio hned teď](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
@@ -65,7 +65,7 @@ Služba Active Directory Connected v současné době nepodporuje ASP.NET Core a
 
 1. Doménu služby Active Directory můžete zobrazit také na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-## <a name="how-your-project-is-modified"></a>Způsob úpravy projektu
+## <a name="how-your-project-is-modified"></a>Jak se váš projekt změnil
 
 Když přidáte připojenou službu průvodce, Visual Studio přidá Azure Active Directory a přidružené odkazy na váš projekt. Konfigurační soubory a soubory kódu v projektu jsou také upraveny tak, aby přidaly podporu pro Azure AD. Konkrétní změny, které Visual Studio provede, závisí na typu projektu. Podrobnosti najdete v následujících článcích:
 

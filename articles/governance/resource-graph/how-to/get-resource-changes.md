@@ -1,18 +1,14 @@
 ---
 title: Získání změn prostředků
 description: Zjistěte, jak najít, kdy byl prostředek změněn, a získejte seznam vlastností, které se změnily.
-services: resource-graph
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/09/2019
 ms.topic: conceptual
-ms.service: resource-graph
-ms.openlocfilehash: 44e7bbde40dbd4b79a6ce3735ab5a1ac81421d3b
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 25d900276518e51e80021d1fdb1ac80945eb2d5c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622564"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958761"
 ---
 # <a name="get-resource-changes"></a>Získání změn prostředků
 
@@ -48,7 +44,7 @@ Koncový bod **resourceChanges** akceptuje v textu požadavku následující par
 - **interval** \[požadovaných\]: vlastnost s _počátečním_ a _koncovým_ datem, kdy se má kontrolovat událost změny pomocí **Zulu časového pásma (Z)** .
 - **fetchPropertyChanges** (volitelné): logická vlastnost, která nastavuje, zda objekt Response obsahuje změny vlastností.
 
-Příklad textu žádosti:
+Text požadavku příkladu:
 
 ```json
 {
@@ -167,7 +163,7 @@ Koncový bod **resourceChangeDetails** vyžaduje v textu žádosti dva parametry
 - **ResourceID**: prostředek Azure pro porovnání změn v.
 - **changeId**: jedinečná událost změny pro ID služby **ResourceID** shromážděná z **resourceChanges**.
 
-Příklad textu žádosti:
+Text požadavku příkladu:
 
 ```json
 {

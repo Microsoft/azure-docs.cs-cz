@@ -1,5 +1,5 @@
 ---
-title: Přesun virtuálních počítačů Azure IaaS do jiné oblasti Azure pomocí služby Azure Site Recovery | Microsoft Docs
+title: Přesuňte virtuální počítače Azure do jiné oblasti pomocí Azure Site Recovery
 description: Pomocí Azure Site Recovery můžete přesunout virtuální počítače Azure IaaS z jedné oblasti Azure do jiné.
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: df64575039e08292da5aed5b611ac54d625634a6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 00fc836f098f3c03afc9adebe2450f00750eb5ff
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933877"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954108"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Přesun virtuálních počítačů Azure do jiné oblasti
 
@@ -34,7 +34,7 @@ V tomto kurzu provedete následující:
 > [!NOTE]
 > V tomto kurzu se dozvíte, jak přesunout virtuální počítače Azure z jedné oblasti do jiné, jak je to. Pokud potřebujete zlepšit dostupnost tím, že přesunete virtuální počítače ve skupině dostupnosti na virtuální počítače připojené k zóně v jiné oblasti, přečtěte si [kurz přesunutí virtuálních počítačů Azure do zóny dostupnosti](move-azure-vms-avset-azone.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Ujistěte se, že virtuální počítače Azure jsou v oblasti Azure, ze které chcete přejít.
 - Ověřte, zda [je podporována kombinace zdrojové oblasti a cílové](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)oblasti, a proveďte odpovídající rozhodnutí o cílové oblasti.
@@ -77,7 +77,7 @@ V tomto kurzu provedete následující:
 
 
 
-## <a name="prepare"></a>Připravit
+## <a name="prepare"></a>Příprava
 Následující postup ukazuje, jak připravit virtuální počítač pro přesunutí pomocí Azure Site Recovery jako řešení. 
 
 ### <a name="create-the-vault-in-any-region-except-the-source-region"></a>Vytvoření trezoru v libovolné oblasti s výjimkou zdrojové oblasti
@@ -99,7 +99,7 @@ Site Recovery načte seznam virtuálních počítačů, které jsou přidružen�
 
 1. V dalším kroku vyberte virtuální počítač, který chcete přesunout, a pak vyberte **OK**.
 1. V **Nastavení**vyberte **zotavení po havárii**.
-1. V části **Konfigurovat zotavení po havárii** > **cílovou oblast**vyberte cílovou oblast, do které budete replikovat.
+1. V části **Konfigurovat zotavení po havárii** > **Cílová oblast** vyberte cílovou oblast, do které chcete replikaci provést.
 1. U ostatních nastavení přijměte pro účely tohoto kurzu výchozí hodnoty.
 1. Vyberte **Povolit replikaci**. Tento krok spustí úlohu, která povolí replikaci pro virtuální počítač.
 

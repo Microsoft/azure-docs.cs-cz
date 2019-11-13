@@ -1,6 +1,6 @@
 ---
 title: Vytváření a správa přiřazení rolí – digitální vlákna Azure | Microsoft Docs
-description: Seznamte se s vytvářením a správou přiřazení rolí v digitálních autovlákenách Azure.
+description: Seznamte se s vytvářením a správou přiřazení rolí v rámci digitálních vláken Azure.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 68714a06f72a522df0245d9c044bb6ff6557d52f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 45ce22f208ee31b7202705eb4e42c38bedf09a8b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949830"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013993"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Vytváření a správa přiřazení rolí v digitálních prozdvojeních Azure
 
@@ -36,13 +36,13 @@ Každé přiřazení role odpovídá následující definici:
 
 Následující tabulka popisuje jednotlivé atributy:
 
-| Atribut | Name | Požadováno | Typ | Popis |
+| Atribut | Název | Požaduje se | Typ | Popis |
 | --- | --- | --- | --- | --- |
-| roleId | Identifikátor definice role | Ano | String | Jedinečné ID požadovaného přiřazení role Vyhledejte definice rolí a jejich identifikátor pomocí dotazu na následující tabulku rozhraní API systému nebo revize. |
-| Objektu | Identifikátor objektu | Ano | String | ID Azure Active Directory, ID objektu zabezpečení služby nebo název domény. K čemu přiřazení role je přiřazeno. Přiřazení role musí být formátováno podle jeho přidruženého typu. Pro `DomainName` objectIdType musí objectId začínat znakem `“@”`. |
-| objectIdType | Typ identifikátoru objektu | Ano | String | Typ použitého identifikátoru objektu. Viz článek **podporované ObjectIdTypes** níže. |
-| cesta | Cesta k prostoru | Ano | String | Úplná cesta k objektu `Space`. Příklad je `/{Guid}/{Guid}`. Pokud identifikátor potřebuje přiřazení role pro celý graf, zadejte `"/"`. Tento znak určuje kořenový adresář, ale jeho použití se nedoporučuje. Vždy postupujte podle principu nejnižší úrovně oprávnění. |
-| tenantId | Identifikátor tenanta | Se liší | String | Ve většině případů Azure Active Directory ID tenanta. Zakázáno pro `DeviceId` a `TenantId` ObjectIdTypes. Vyžaduje se pro `UserId` a `ServicePrincipalId` ObjectIdTypes. Volitelné pro domainname ObjectIdType. |
+| roleId | Identifikátor definice role | Ano | Řetězec | Jedinečné ID požadovaného přiřazení role Vyhledejte definice rolí a jejich identifikátor pomocí dotazu na následující tabulku rozhraní API systému nebo revize. |
+| ID objektu | Identifikátor objektu | Ano | Řetězec | ID Azure Active Directory, ID objektu zabezpečení služby nebo název domény. K čemu přiřazení role je přiřazeno. Přiřazení role musí být formátováno podle jeho přidruženého typu. Pro `DomainName` objectIdType musí objectId začínat znakem `“@”`. |
+| objectIdType | Typ identifikátoru objektu | Ano | Řetězec | Typ použitého identifikátoru objektu. Viz článek **podporované ObjectIdTypes** níže. |
+| path | Cesta k prostoru | Ano | Řetězec | Úplná cesta pro přístup k objektu `Space`. Příklad: `/{Guid}/{Guid}`. Pokud identifikátor potřebuje přiřazení role pro celý graf, zadejte `"/"`. Tento znak určuje kořenový adresář, ale jeho použití se nedoporučuje. Vždy postupujte podle principu nejnižší úrovně oprávnění. |
+| tenantId | Identifikátor tenanta | Různé | Řetězec | Ve většině případů Azure Active Directory ID tenanta. Zakázáno pro `DeviceId` a `TenantId` ObjectIdTypes. Vyžaduje se pro `UserId` a `ServicePrincipalId` ObjectIdTypes. Volitelné pro domainname ObjectIdType. |
 
 ### <a name="supported-role-definition-identifiers"></a>Podporované identifikátory definice rolí
 
@@ -60,7 +60,7 @@ Dřív byl zavedený atribut **objectIdType** .
 
 Funkce digitálních vláken Azure podporuje úplné operace *Vytvoření*, *čtení*a *odstranění* pro přiřazení rolí. Operace *aktualizace* jsou zpracovávány přidáním přiřazení rolí, odebráním přiřazení rolí nebo úpravou uzlů [grafu prostorové Intelligence](./concepts-objectmodel-spatialgraph.md) , ke kterým mají přiřazení role přístup.
 
-[@no__t – koncové body přiřazení 1Role](media/security-roles/roleassignments.png)](media/security-roles/roleassignments.png#lightbox)
+[koncové body přiřazení role ![](media/security-roles/role-assignments.png)](media/security-roles/role-assignments.png#lightbox)
 
 Dodaná Referenční dokumentace k Swagger obsahuje další informace o všech dostupných koncových bodech rozhraní API, operacích požadavků a definicích.
 
@@ -112,7 +112,7 @@ S následujícím textem JSON:
 
 ### <a name="retrieve-all-roles"></a>Načíst všechny role
 
-[role @no__t – 1System](media/security-roles/system.png)](media/security-roles/system.png#lightbox)
+[![systémové role](media/security-roles/system-api.png)](media/security-roles/system-api.png#lightbox)
 
 Pokud chcete zobrazit seznam všech dostupných rolí (definice rolí), proveďte ověřený požadavek HTTP GET na:
 
@@ -161,14 +161,14 @@ Pokud chcete zkontrolovat přiřazení konkrétní role, proveďte ověřený po
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
 ```
 
-| **Hodnota parametru** | **Požadovanou** |  **Textový** |  **Popis** |
+| **Hodnota parametru** | **Požadováno** |  **Typ** |  **Popis** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  Podmínka | String |   Identifikátor objectId pro identifikátor UserId objectIdType |
-| YOUR_PATH | Podmínka | String |   Vybraná cesta pro kontrolu přístupu. |
-| YOUR_ACCESS_TYPE |  Podmínka | String |   *Číst*, *vytvořit*, *aktualizovat*nebo *Odstranit* |
-| YOUR_RESOURCE_TYPE | Podmínka | String |  *Zařízení*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *ExtendedType*, *koncový bod*, *úložiště klíčů*, *Shoda*, *Ontology*, *Sestava*,  *Rutiny roledefinition*, *snímač*, *SensorExtendedProperty*, *Space*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *systém* , *UerDefinedFunction*, *User*, *UserBlobMetadata*nebo *UserExtendedProperty* |
+| YOUR_USER_ID |  Pravda | Řetězec |   Identifikátor objectId pro identifikátor UserId objectIdType |
+| YOUR_PATH | Pravda | Řetězec |   Vybraná cesta pro kontrolu přístupu. |
+| YOUR_ACCESS_TYPE |  Pravda | Řetězec |   *Číst*, *vytvořit*, *aktualizovat*nebo *Odstranit* |
+| YOUR_RESOURCE_TYPE | Pravda | Řetězec |  *Zařízení*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *ExtendedType*, *koncový bod*, *úložiště klíčů*, *Shoda*, *Ontology*, *Sestava*, *rutiny roledefinition*, *senzor*, *SensorExtendedProperty*, *prostor*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *systém*,  *UerDefinedFunction*, *User*, *UserBlobMetadata*nebo *UserExtendedProperty* |
 
-Úspěšný požadavek vrátí logickou hodnotu `true` nebo `false` k označení, zda byl k dané cestě a prostředku přiřazen daný typ přístupu uživateli.
+Úspěšný požadavek vrátí logickou `true` nebo `false` k označení, zda byl k dané cestě a prostředku přiřazen daný typ přístupu uživateli.
 
 ### <a name="get-role-assignments-by-path"></a>Získat přiřazení rolí podle cesty
 
@@ -178,7 +178,7 @@ Pokud chcete pro cestu získat všechna přiřazení rolí, proveďte ověřený
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
-| Hodnota | Nahradit |
+| Hodnota | Nahradit hodnotou |
 | --- | --- |
 | YOUR_PATH | Úplná cesta k prostoru |
 
@@ -204,7 +204,7 @@ Pokud chcete odvolat oprávnění od příjemce, odstraňte přiřazení role t�
 YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 ```
 
-| Parametr | Nahradit |
+| Parametr | Nahradit hodnotou |
 | --- | --- |
 | *YOUR_ROLE_ASSIGNMENT_ID* | **ID** přiřazení role, které se má odebrat |
 

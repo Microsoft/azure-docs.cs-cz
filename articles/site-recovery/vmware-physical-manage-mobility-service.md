@@ -1,5 +1,5 @@
 ---
-title: Správa agenta mobility na serverech pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů s Azure Site Recovery | Microsoft Docs
+title: Správa agenta mobility pro VMware/fyzické servery pomocí Azure Site Recovery
 description: Spravujte agenta služby mobility pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí služby Azure Site Recovery.
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 0a8b3a8bcfc2aa8270d7be140a94e5b83973f3e5
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: e6e7beeb4c10098f36636aad2709e03d1a1a0fea
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972134"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953646"
 ---
-# <a name="manage-mobility-agent-on-protected-machines"></a>Správa agenta mobility na chráněných počítačích
+# <a name="manage-the-mobility-agent"></a>Správa agenta mobility 
 
 Na serveru můžete nastavit agenta mobility, když používáte Azure Site Recovery pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure. Agent mobility koordinuje komunikaci mezi vaším chráněným počítačem, konfiguračním serverem nebo procesovým serverem se škálováním na více systémů a spravuje replikaci dat. Tento článek shrnuje běžné úlohy pro správu agenta mobility po jeho nasazení.
 
@@ -24,7 +24,7 @@ Na serveru můžete nastavit agenta mobility, když používáte Azure Site Reco
 ## <a name="update-mobility-service-from-azure-portal"></a>Aktualizovat službu mobility z Azure Portal
 
 1. Než začnete aktualizovat službu mobility na chráněných počítačích, ujistěte se, že se konfigurační server, procesové servery se škálováním na více instancí a všechny hlavní cílové servery, které jsou součástí vašeho nasazení, aktualizují.
-2. Na portálu otevřete trezor > replikované **položky**.
+2. Na portálu otevřete trezor > **replikované položky**.
 3. Pokud má konfigurační server nejnovější verzi, zobrazí se oznámení, že je k dispozici nová aktualizace agenta replikace služby Site Recovery. Kliknutím nainstalujete.
 
      ![Okno replikované položky](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
@@ -53,7 +53,7 @@ Když nasadíte Site Recovery a povolíte nabízenou instalaci služby mobility,
 
 Odinstalujte z uživatelského rozhraní nebo z příkazového řádku.
 
-- **Z uživatelského rozhraní**: V ovládacím panelu počítače vyberte **programy**. Vyberte **Microsoft Azure odinstalace služby mobility Site Recovery nebo hlavního cílového serveru** > .
+- **Z uživatelského rozhraní**: v Ovládacích panelech počítače vyberte **programy**. Vyberte **Microsoft Azure Site Recovery mobility nebo hlavní cílový server** > **odinstalujte**.
 - **Z příkazového řádku**: Otevřete okno příkazového řádku jako správce v počítači. Spusťte následující příkaz: 
     ```
     MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"

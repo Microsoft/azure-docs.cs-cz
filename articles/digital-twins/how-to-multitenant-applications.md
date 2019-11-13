@@ -1,5 +1,5 @@
 ---
-title: Povolení víceklientské aplikací s využitím digitálních vláken Azure | Microsoft Docs
+title: Povolit víceklientské aplikace – digitální vlákna Azure | Microsoft Docs
 description: Jak nakonfigurovat víceklientské Azure Active Directory aplikace pro digitální vlákna Azure
 ms.author: alinast
 author: alinamstanciu
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 070b04b27982b84f101ee4d6f85f4e5b82760092
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 6394d519b93b55358ef9d528f89978d5a3cf3007
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958786"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005917"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Povolení víceklientské aplikací s využitím digitálních vláken Azure
 
@@ -57,13 +57,13 @@ K vyřešení předchozího scénáře problému je potřeba k vytvoření insta
   1. Otevřete **odběry**.
   1. Vyberte předplatné, které má klienta Azure Active Directory použít v aplikaci **vývojáře**.
 
-     [předplatná služby Active Directory @no__t 1Azure](media/multitenant/ad-subscriptions.png)](media/multitenant/ad-subscriptions.png#lightbox)
+     [předplatná ![Azure Active Directory](media/multitenant/ad-subscriptions.png)](media/multitenant/ad-subscriptions.png#lightbox)
 
   1. Vyberte **poskytovatelé prostředků**.
   1. Vyhledejte **Microsoft. IoTSpaces**.
-  1. Vyberte **Registrovat**.
+  1. Vyberte **Zaregistrovat**.
 
-     [poskytovatelé prostředků služby Active Directory pro @no__t 1Azure](media/multitenant/ad-resource-providers.png)](media/multitenant/ad-resource-providers.png#lightbox)
+     [poskytovatelé prostředků ![Azure Active Directory](media/multitenant/ad-resource-providers.png)](media/multitenant/ad-resource-providers.png#lightbox)
   
 ## <a name="next-steps"></a>Další kroky
 

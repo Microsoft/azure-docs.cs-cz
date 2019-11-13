@@ -1,106 +1,105 @@
 ---
-title: Přesun virtuálních počítačů Azure IaaS do jiné oblasti Azure pomocí služby Azure Site Recovery | Dokumentace Microsoftu
-description: Pomocí Azure Site Recovery pro přesun virtuálních počítačů Azure IaaS z jedné oblasti Azure do jiného.
-services: site-recovery
+title: Přesunout Azure MS do jiné oblasti pomocí Azure Site Recovery
+description: Pomocí Azure Site Recovery můžete přesunout virtuální počítače Azure IaaS z jedné oblasti Azure do jiné.
 author: rajani-janaki-ram
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: dc49b33fd3e6d582b31af5fe0507884e60205757
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e3a3db66b4833a8ba21dc9d3c1938f645919221c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60791473"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954167"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Přesun virtuálních počítačů Azure do jiné oblasti
 
-Azure roste společně s zákazník základní a přidává podporu pro nové oblasti drží neustále se zvyšující požadavky. Nové funkce jsou také přidány měsíčně napříč službami. Můžete chtít vaše virtuální počítače (VM) přesunout do jiné oblasti nebo do zóny dostupnosti a zvyšují dostupnost.
+Azure se rozrůstá spolu se zákaznickou základnou a přidává podporu pro nové oblasti, která vám umožní udržet tempo s rostoucími nároky. Nové možnosti se také přidávají měsíčně napříč službami. Virtuální počítače můžete chtít přesunout do jiné oblasti nebo do Zóny dostupnosti, abyste zvýšili dostupnost.
 
-Tento kurz popisuje různé scénáře, ve kterých chcete přesunout virtuální počítače. Také popisuje, jak nakonfigurovat architekturu v cílové oblasti, abyste dosáhli vysoké dostupnosti. 
+V tomto kurzu se dozvíte o různých scénářích, ve kterých byste chtěli přesunout virtuální počítače. Také popisuje, jak nakonfigurovat architekturu v cílové oblasti, abyste dosáhli vyšší dostupnosti. 
 
-V tomto kurzu se naučíte:
+V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > 
 > * Důvody pro přesun virtuálních počítačů
 > * Typické architektury
-> * Přesun virtuálních počítačů, protože je v cílové oblasti
-> * Přesun virtuálních počítačů a zvyšují dostupnost
+> * Přesun virtuálních počítačů do cílové oblasti
+> * Přesun virtuálních počítačů za účelem zvýšení dostupnosti
 
 ## <a name="reasons-to-move-azure-vms"></a>Důvody pro přesun virtuálních počítačů Azure
 
-Můžou přesunout virtuální počítače z následujících důvodů:
+Virtuální počítače se můžou přesunout z následujících důvodů:
 
-- Již nasazené v jedné oblasti a jsme přidali nové oblasti podporu, který je blíž ke koncovým uživatelům vaší aplikace nebo služby. V tomto scénáři chcete přesunout virtuální počítače jako nové oblasti pro snížení latence. Pokud chcete konsolidovat předplatná, nebo jestli neexistují nějaké zásady správného řízení nebo organizace pravidel, která vyžadují, abyste přesunout, použijte stejný přístup.
-- Váš počítač byl nasazený jako virtuálního počítače s jednou instancí nebo v rámci skupiny dostupnosti. Pokud chcete zvýšit dostupnost smlouvy o úrovni služeb, můžete přesunout virtuální počítače v zóně dostupnosti.
+- Již jste nasadili v jedné oblasti a byla přidána podpora nové oblasti, která je blíže koncovým uživatelům vaší aplikace nebo služby. V tomto scénáři byste chtěli přesunout své virtuální počítače tak, aby se snížila latence, protože se jedná o novou oblast. Stejný přístup použijte v případě, že chcete konsolidovat odběry nebo pokud existují pravidla zásad správného řízení nebo organizace, která vyžadují přesunutí.
+- Váš virtuální počítač byl nasazený jako virtuální počítač s jednou instancí nebo jako součást skupiny dostupnosti. Pokud chcete zvýšit SLA dostupnosti, můžete virtuální počítače přesunout do zóny dostupnosti.
 
 ## <a name="steps-to-move-azure-vms"></a>Postup přesunutí virtuálních počítačů Azure
 
 Přesun virtuálních počítačů zahrnuje následující kroky:
 
 1. Ověřte požadavky.
-2. Příprava zdrojové virtuální počítače.
-3. Připravte cílové oblasti.
-4. Kopírování dat do cílové oblasti. Použijte replikační technologii Azure Site Recovery ke kopírování dat ze zdrojového virtuálního počítače do cílové oblasti.
-5. Otestujte konfiguraci. Po dokončení replikace testovací převzetí služeb při selhání pro nevýrobní prostředí sítě Otestujte konfiguraci.
-6. Provedení přesunu.
-7. Zahoďte prostředky ve zdrojové oblasti.
+2. Připravte zdrojové virtuální počítače.
+3. Připravte cílovou oblast.
+4. Kopírovat data do cílové oblasti. Použijte technologii replikace Azure Site Recovery ke kopírování dat ze zdrojového virtuálního počítače do cílové oblasti.
+5. Otestujte konfiguraci. Po dokončení replikace otestujte konfiguraci provedením testovacího převzetí služeb při selhání do jiné než produkční sítě.
+6. Proveďte přesun.
+7. Zahodí prostředky ve zdrojové oblasti.
 
 > [!NOTE]
-> Podrobnosti o těchto krocích, které jsou k dispozici v následujících částech.
+> Podrobnosti o těchto krocích jsou uvedené v následujících oddílech.
 > [!IMPORTANT]
-> V současné době Azure Site Recovery podporuje přesun virtuálních počítačů z jedné oblasti do jiného, ale nepodporuje přesun v rámci oblasti.
+> V současné době Azure Site Recovery podporuje přesun virtuálních počítačů z jedné oblasti do druhé, ale nepodporuje přesun v rámci oblasti.
 
-## <a name="typical-architectures-for-a-multi-tier-deployment"></a>Typických architekturách vícevrstvých nasazení
+## <a name="typical-architectures-for-a-multi-tier-deployment"></a>Typická architektura pro nasazení ve více vrstvách
 
-Tato část popisuje nejběžnější nasazení architektury pro vícevrstvou aplikaci v Azure. V příkladu je třívrstvá aplikace s veřejnou IP adresu. Každý z úrovní (web, aplikace a databáze) má dva virtuální počítače každý a jsou připojeni pomocí služby Azure load balancer do dalších vrstev. Databázová vrstva je replikace SQL serveru Always On mezi virtuálními počítači pro zajištění vysoké dostupnosti.
+Tato část popisuje nejběžnější architektury nasazení pro vícevrstvou aplikaci v Azure. Příkladem je tři vrstvená aplikace s veřejnou IP adresou. Každá z vrstev (web, aplikace a databáze) má dva virtuální počítače a připojuje se pomocí nástroje pro vyrovnávání zatížení Azure k ostatním vrstvám. Databázová vrstva má pro vysokou dostupnost trvale SQL Server replikaci mezi virtuálními počítači.
 
-* **Jednou instancí virtuálních počítačů nasazených na různých úrovních**: Každý virtuální počítač ve vrstvě je nakonfigurovaný jako virtuálního počítače s jednou instancí a je připojen pomocí nástroje pro vyrovnávání zatížení do dalších vrstev. Tato konfigurace je nejjednodušší přijmout.
+* **Virtuální počítače s jednou instancí nasazené napříč různými úrovněmi**: každý virtuální počítač ve vrstvě je nakonfigurovaný jako virtuální počítač s jednou instancí a je připojený pomocí nástrojů pro vyrovnávání zatížení k ostatním vrstvám. Tato konfigurace je nejjednodušší k přijetí.
 
-     ![Nasazení jednou instancí virtuálních počítačů ve vrstvách](media/move-vm-overview/regular-deployment.png)
+     ![Nasazení virtuálních počítačů s jednou instancí napříč úrovněmi](media/move-vm-overview/regular-deployment.png)
 
-* **Virtuální počítače v každé úrovni nasazené ve skupinách dostupnosti**: Každý virtuální počítač ve vrstvě je nakonfigurován ve skupině dostupnosti. [Skupiny dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) zajišťují distribuci virtuálních počítačů nasazených v Azure napříč několika izolovanými hardwarovými uzly v clusteru. Tím se zajistí, že pokud selhání hardwaru nebo softwaru v rámci Azure se stane, se vztahuje pouze dílčí část vašich virtuálních počítačů a vaše celkové řešení zůstane dostupné a funkční.
+* **Virtuální počítače v každé vrstvě nasazené napříč**skupinami dostupnosti: každý virtuální počítač v úrovni je nakonfigurovaný v sadě dostupnosti. [Skupiny dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) zajišťují, že virtuální počítače, které nasazujete v Azure, jsou distribuované napříč několika izolovanými hardwarovými uzly v clusteru. Tím se zajistí, že pokud dojde k selhání hardwaru nebo softwaru v rámci Azure, ovlivní to jenom podmnožinu vašich virtuálních počítačů a vaše celkové řešení zůstane dostupné a funkční.
 
-     ![Nasazení virtuálního počítače v skupinách dostupnosti](media/move-vm-overview/avset.png)
+     ![Nasazení virtuálních počítačů napříč skupinami dostupnosti](media/move-vm-overview/avset.png)
 
-* **Virtuální počítače v jednotlivých vrstvách nasazení napříč zónami dostupnosti**: Každý virtuální počítač ve vrstvě je nakonfigurovaný přes [zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview). Zónu dostupnosti, do oblasti Azure je kombinace doména selhání a aktualizační doména. Například pokud vytvoříte tři nebo více virtuálních počítačů napříč zónami tři v oblasti Azure, vaše virtuální počítače jsou účinně rozloženy na tři domény selhání a aktualizačních doménách tři. Platforma Azure rozpoznává této distribuce napříč aktualizační domény, abyste měli jistotu, že virtuální počítače v různých oblastech nejsou aktualizovány ve stejnou dobu.
+* **Virtuální počítače v každé vrstvě nasazené napříč zóny dostupnosti**: každý virtuální počítač v úrovni je nakonfigurovaný přes [zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview). Zóna dostupnosti v oblasti Azure je kombinací domény selhání a aktualizační domény. Pokud například vytvoříte tři nebo více virtuálních počítačů ve třech zónách v oblasti Azure, budou vaše virtuální počítače efektivně distribuovány mezi tři domény selhání a tři aktualizační domény. Platforma Azure tuto distribuci rozpoznává mezi aktualizačními doménami, aby se zajistilo, že se virtuální počítače v různých zónách neaktualizují současně.
 
-     ![Zóna dostupnosti nasazení](media/move-vm-overview/zone.png)
+     ![Nasazení zóny dostupnosti](media/move-vm-overview/zone.png)
 
-## <a name="move-vms-as-is-to-a-target-region"></a>Přesunout virtuální počítače, protože je v cílové oblasti
+## <a name="move-vms-as-is-to-a-target-region"></a>Přesunutí virtuálních počítačů do cílové oblasti
 
-Na základě [architektury](#typical-architectures-for-a-multi-tier-deployment) již bylo zmíněno dříve, tady je nasazení bude vypadat po provedení přesunutí jako cílové oblasti.
+V závislosti na tom, jaké [architektury](#typical-architectures-for-a-multi-tier-deployment) jsou zmíněné dříve, bude nasazení vypadat podobně, jako když provedete přesun do cílové oblasti.
 
-* **Jednou instancí virtuálních počítačů nasazených na různých úrovních**
+* **Virtuální počítače s jednou instancí nasazené napříč různými úrovněmi**
 
-     ![Nasazení jednou instancí virtuálních počítačů ve vrstvách](media/move-vm-overview/single-zone.png)
+     ![Nasazení virtuálních počítačů s jednou instancí napříč úrovněmi](media/move-vm-overview/single-zone.png)
 
-* **Virtuální počítače v každé úrovni nasazené ve skupinách dostupnosti**
+* **Virtuální počítače v každé vrstvě nasazené napříč skupinami dostupnosti**
 
-     ![Pro různé sady dostupnosti oblast](media/move-vm-overview/crossregionaset.png)
+     ![Skupiny dostupnosti pro různé oblasti](media/move-vm-overview/crossregionaset.png)
 
-* **Virtuální počítače v jednotlivých vrstvách nasazení napříč zónami dostupnosti**
+* **Virtuální počítače v každé vrstvě nasazené napříč Zóny dostupnosti**
 
-     ![Nasazení virtuálních počítačů napříč zónami dostupnosti](media/move-vm-overview/azonecross.png)
+     ![Nasazení virtuálních počítačů v rámci Zóny dostupnosti](media/move-vm-overview/azonecross.png)
 
-## <a name="move-vms-to-increase-availability"></a>Přesuňte virtuální počítače, které zvyšují dostupnost
+## <a name="move-vms-to-increase-availability"></a>Přesunutí virtuálních počítačů za účelem zvýšení dostupnosti
 
-* **Jednou instancí virtuálních počítačů nasazených na různých úrovních**
+* **Virtuální počítače s jednou instancí nasazené napříč různými úrovněmi**
 
-     ![Nasazení jednou instancí virtuálních počítačů ve vrstvách](media/move-vm-overview/single-zone.png)
+     ![Nasazení virtuálních počítačů s jednou instancí napříč úrovněmi](media/move-vm-overview/single-zone.png)
 
-* **Virtuální počítače v každé úrovni nasazené ve skupinách dostupnosti**: Můžete konfigurovat vaše virtuální počítače ve skupině dostupnosti do samostatných zón dostupnosti při povolení replikace pro virtuální počítač pomocí Azure Site Recovery. Po dokončení operace přesunutí, bude smlouva SLA pro dostupnost 99,9 %.
+* **Virtuální počítače v každé vrstvě nasazené napříč**skupinami dostupnosti: virtuální počítače můžete nakonfigurovat v sadě dostupnosti na samostatné zóny dostupnosti, když pro virtuální počítač povolíte replikaci pomocí Azure Site Recovery. Smlouva SLA pro dostupnost bude po dokončení operace přesunutí 99,9%.
 
-     ![Nasazení virtuálního počítače přes skupiny dostupnosti a zóny dostupnosti](media/move-vm-overview/aset-azone.png)
+     ![Nasazení virtuálních počítačů v rámci skupin dostupnosti a Zóny dostupnosti](media/move-vm-overview/aset-azone.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > 
-> * [Přesuňte virtuální počítače Azure do jiné oblasti](azure-to-azure-tutorial-migrate.md)
+> * [Přesun virtuálních počítačů Azure do jiné oblasti](azure-to-azure-tutorial-migrate.md)
 > 
-> * [Přesuňte virtuální počítače Azure do zóny dostupnosti](move-azure-vms-avset-azone.md)
+> * [Přesun virtuálních počítačů Azure do zón dostupnosti](move-azure-vms-avset-azone.md)
 

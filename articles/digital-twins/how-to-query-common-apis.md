@@ -1,6 +1,6 @@
 ---
-title: Běžné vzory dotazů v Azure – digitální vlákna | Microsoft Docs
-description: Seznamte se s běžnými způsoby dotazování rozhraní API pro správu digitálních vláken Azure.
+title: Běžné vzory dotazů – digitální vlákna Azure | Microsoft Docs
+description: Přečtěte si několik běžných vzorů dotazování rozhraní API pro rozhraní API pro správu digitálních vláken Azure.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/27/2019
-ms.openlocfilehash: ef9e7a41f1de05e4d21a9ad7b45ed2b99885b6b8
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: c821524b344c8b741047ba415127cffe59a74ca2
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044438"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005896"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Dotazování rozhraní API digitálních vláken Azure na běžné úlohy
 

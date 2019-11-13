@@ -1,6 +1,6 @@
 ---
 title: Jak nakonfigurovat monitorování – digitální vlákna Azure | Microsoft Docs
-description: Jak nakonfigurovat monitorování v digitálních Vlákenách Azure.
+description: Naučte se konfigurovat možnosti monitorování a protokolování pro digitální vlákna Azure.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7d81636bfb60c2d5fa059da01ac535e09b829f4
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 38d55df5f705aa3639540c4731c4c17c61c9b9ac
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950000"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005965"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Jak nakonfigurovat monitorování v digitálních prozdvojeních Azure
 
@@ -40,17 +40,17 @@ Protokolování aktivit pro digitální vlákna Azure je ve výchozím nastaven�
 1. Vybírá se instance digitálního vlákna Azure.
 1. Výběr **protokolu aktivit** pro zobrazení panelu zobrazení:
 
-    [@no__t – protokol 1Activity](media/how-to-configure-monitoring/activity-log.png)](media/how-to-configure-monitoring/activity-log.png#lightbox)
+    [Protokol aktivit ![](media/how-to-configure-monitoring/activity-log.png)](media/how-to-configure-monitoring/activity-log.png#lightbox)
 
 Pro rozšířené protokolování aktivit:
 
 1. Výběrem možnosti **protokoly** zobrazíte **Activity Log Analytics přehled**:
 
-    [@no__t – 1Selection](media/how-to-configure-monitoring/activity-log-select.png)](media/how-to-configure-monitoring/activity-log-select.png#lightbox)
+    [![výběr](media/how-to-configure-monitoring/activity-log-select.png)](media/how-to-configure-monitoring/activity-log-select.png#lightbox)
 
 1. **Přehled Activity Log Analytics** shrnuje data základních protokolů aktivit:
 
-    [@no__t – přehled 1Activity Log Analytics]( media/how-to-configure-monitoring/log-analytics-overview.png)]( media/how-to-configure-monitoring/log-analytics-overview.png#lightbox)
+    [Přehled analýzy protokolů aktivit ![]( media/how-to-configure-monitoring/log-analytics-overview.png)]( media/how-to-configure-monitoring/log-analytics-overview.png#lightbox)
 
 >[!TIP]
 >**Protokoly aktivit** se používají pro rychlé přehledy událostí na úrovni předplatného.
@@ -70,12 +70,12 @@ Povolení diagnostických protokolů pro instanci:
 1. Uveďte prostředek v Azure Portal.
 1. Vyberte **nastavení diagnostiky**:
 
-    [@no__t – 1Diagnostic nastavení 1](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
+    [![nastavení diagnostiky 1](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
 
 1. Vyberte **zapnout diagnostiku** pro shromažďování dat (Pokud jste předtím nepovolili).
 1. Vyplňte požadovaná pole a vyberte, jak a kam se budou data ukládat:
 
-    [@no__t – nastavení 1Diagnostic – dvě](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
+    [![nastavení diagnostiky dvě](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
 
     Diagnostické protokoly se často ukládají pomocí [Azure File Storage](../storage/files/storage-files-deployment-guide.md) a sdílí se s [protokoly Azure monitor](../azure-monitor/log-query/get-started-portal.md). Lze vybrat obě možnosti.
 
@@ -99,15 +99,15 @@ Příklady použití zahrnují:
 1. Vyhledejte **Log Analytics** v Azure Portal.
 1. Zobrazí se vaše dostupné **Log Analytics instance pracovních prostorů** . Vyberte jednu z **protokolů** pro dotazování:
 
-    [@no__t – analýza 1Log](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
+    [![Log Analytics](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
 1. Pokud ještě instanci **pracovního prostoru Log Analytics** nemáte, můžete si vytvořit pracovní prostor tak, že vyberete tlačítko **Přidat** :
 
-    [@no__t – 1Create OMS](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
+    [![vytvoření OMS](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
 
 Po zřízení instance **pracovního prostoru Log Analytics** můžete použít výkonné dotazy pro hledání záznamů v protokolech více než v protokolu nebo hledání pomocí určitých kritérií pomocí **správy protokolů**:
 
-   [@no__t – Správa 1Log](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
+   [Správa protokolu ![](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
 
 Další informace o výkonných operacích dotazů najdete v tématu [Začínáme s dotazy](../azure-monitor/log-query/get-started-queries.md).
 
@@ -116,7 +116,7 @@ Další informace o výkonných operacích dotazů najdete v tématu [Začínám
 
 Protokoly Azure Monitor také poskytují výkonné služby chyb a výstrah, které lze zobrazit výběrem možnosti **diagnostikovat a řešit problémy**:
 
-   [@no__t – 1Alert a chybové oznámení](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
+   [upozornění a oznámení o chybách ![](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
 
 >[!TIP]
 >Použijte **Log Analytics pracovní prostor** k dotazování na Historie protokolu pro více funkcí, předplatných nebo služeb aplikací.

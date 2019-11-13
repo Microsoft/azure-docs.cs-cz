@@ -1,5 +1,5 @@
 ---
-title: Správa zařízení Azure IoT pomocí Průzkumníka cloudu pro Visual Studio | Microsoft Docs
+title: Správa zařízení Azure IoT w/Visual Studio Cloud Explorer
 description: Použijte Průzkumníka cloudu pro Visual Studio pro službu Azure IoT Hub Správa zařízení, která nabízí přímé metody a možnosti správy požadovaných vlastností.
 author: shizn
 ms.service: iot-hub
@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: e05ba421a4535e6e424e65a1f2271d19f9d9abf4
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048681"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953183"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Použití Průzkumníka cloudu pro Visual Studio pro správu zařízení IoT Hub Azure
 
@@ -22,14 +22,14 @@ ms.locfileid: "70048681"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| Možnost správy          | Úloha                    |
+| Možnost správy          | Úkol                    |
 |----------------------------|--------------------------------|
 | Přímé metody             | Udělejte zařízení jako takové, jako je spuštění nebo zastavení odesílání zpráv nebo restartování zařízení.                                        |
 | Čtení z vlákna zařízení           | Načte stav nahlášeného zařízení. Například zařízení nahlásí, že indikátor LED právě bliká.                                    |
 | Aktualizovat dvojitou dvojici zařízení         | Vložte zařízení do určitých stavů, jako je například nastavení indikátoru LED na zelenou nebo nastavení intervalu odesílání telemetrie na 30 minut.         |
 | Zprávy typu cloud zařízení   | Odesílání oznámení do zařízení. Například "je velmi pravděpodobnost, že už ještě nejste v dnešní době deště. Nezapomeňte uvést deštník. "              |
 
-Podrobnější vysvětlení rozdílů a pokynů k používání těchto možností najdete v tématu [pokyny k komunikaci mezi zařízeními](iot-hub-devguide-d2c-guidance.md) a cloudem a [pokyny pro komunikaci z cloudu na zařízení](iot-hub-devguide-c2d-guidance.md).
+Podrobnější vysvětlení rozdílů a pokynů k používání těchto možností najdete v tématu [pokyny k komunikaci mezi zařízeními a cloudem](iot-hub-devguide-d2c-guidance.md) a [pokyny pro komunikaci z cloudu na zařízení](iot-hub-devguide-c2d-guidance.md).
 
 Vlákna zařízení jsou dokumenty JSON, které ukládají informace o stavu zařízení, včetně metadat, konfigurací a podmínek. IoT Hub přetrvává pro každé zařízení, které se k němu připojuje. Další informace o nevlákenách zařízení najdete v tématu [Začínáme s dvojitými zprávami](iot-hub-node-node-twin-getstarted.md)o zařízení.
 
@@ -59,7 +59,7 @@ Součást Průzkumníka cloudu z Instalační program pro Visual Studio pro Visu
 
 ## <a name="sign-in-to-access-your-hub"></a>Přihlaste se, abyste měli přístup ke svému centru.
 
-1. V aplikaci Visual Studio vyberte **Zobrazit** > **Průzkumníka cloudu** a otevřete Průzkumníka cloudu.
+1. V aplikaci Visual Studio vyberte **zobrazit** > **Průzkumník cloudu** a otevřete Průzkumníka cloudu.
 
 1. Vyberte ikonu Správa účtů a zobrazte si Vaše předplatná.
 

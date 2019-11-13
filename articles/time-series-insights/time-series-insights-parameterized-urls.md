@@ -1,6 +1,6 @@
 ---
-title: Sdílení vlastních zobrazení Azure Time Series Insights pomocí parametrizovaných adres URL | Dokumentace Microsoftu
-description: Tento článek popisuje vývoj parametrizovaných adres URL ve službě Azure Time Series Insights za účelem snadného sdílení zobrazení zákazníka.
+title: Sdílení vlastních zobrazení s parametrizovanými adresami URL – Azure Time Series Insights | Microsoft Docs
+description: Naučte se vyvíjet parametrizované adresy URL v Azure Time Series Insights, abyste mohli snadno sdílet přizpůsobená zobrazení.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 10/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: e62455a0c8412a579c0fab9d7fabd6016f47dbf3
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 145af35f8c36d7f4659c3937209cb0d4d5b221a3
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991113"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006379"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Sdílení vlastního zobrazení pomocí parametrizovaných adres URL
 
@@ -33,7 +33,7 @@ Parametr `environmentId=<guid>` určuje ID cílového prostředí. Je to součá
 
 Příkladem parametru ID prostředí je `?environmentId=10000000-0000-0000-0000-100000000108`.
 
-## <a name="time"></a>Time
+## <a name="time"></a>Čas
 
 V parametrizované adrese URL můžete zadat absolutní nebo relativní časové hodnoty.
 
@@ -69,7 +69,7 @@ Parametr `timeSeriesDefinitions=<collection of term objects>` určuje Time Serie
 
 | Parametr | Položka URL | Popis |
 | --- | --- | --- |
-| **Jméno** | `\<string>` | Název *podmínky*. |
+| **name** | `\<string>` | Název *podmínky*. |
 | **splitBy** | `\<string>` | Název sloupce, podle kterého se bude *rozdělovat*. |
 | **measureName** | `\<string>` | Název sloupce obsahujícího *míru*. |
 | **predikát** | `\<string>` | Klauzule *kde* pro filtrování na straně serveru. |
@@ -117,7 +117,7 @@ Výše uvedená adresa URL popisuje a vytvoří zobrazení Průzkumníka Time Se
 
 Úplné zobrazení (včetně grafu):
 
-[zobrazení grafu![](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
+[zobrazení grafu ![](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
 
 ## <a name="next-steps"></a>Další kroky
 

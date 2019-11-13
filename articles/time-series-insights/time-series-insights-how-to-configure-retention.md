@@ -1,6 +1,6 @@
 ---
-title: Postup konfigurace uchovávání v prostředí Azure Time Series Insights | Microsoft Docs
-description: Tento článek popisuje, jak nakonfigurovat uchovávání v prostředí Azure Time Series Insights.
+title: Postup konfigurace uchovávání ve vašem prostředí – Azure Time Series Insights | Microsoft Docs
+description: Naučte se konfigurovat uchovávání v prostředí Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff4d326af691ae27894dc94d7581ba68951f090e
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: aa905d1686939346827d07419a62fd6f299387ec
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990060"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012598"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Konfigurace uchovávání v Time Series Insights
 
@@ -34,9 +34,9 @@ Podrobné informace o tom, jak tato nastavení lépe pochopit, najdete [v Time S
 
 ## <a name="configure-data-retention"></a>Konfigurace uchovávání dat
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
-1. Vyhledejte existující Time Series Insights prostředí. Vyberte **všechny prostředky** v nabídce na levé straně Azure Portal. Vyberte vaše prostředí Time Series Insights.
+1. Vyhledejte existující prostředí Time Series Insights. Vyberte **všechny prostředky** v nabídce na levé straně Azure Portal. Vyberte vaše prostředí Time Series Insights.
 
 1. V záhlaví **Nastavení** vyberte **Konfigurovat**.
 

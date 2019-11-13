@@ -1,5 +1,5 @@
 ---
-title: Integrace Azure ExpressRoute s zotavením po havárii pro virtuální počítače Azure pomocí služby Azure Site Recovery | Microsoft Docs
+title: Integrace zotavení po havárii virtuálního počítače Azure s ExpressRoute pomocí Azure Site Recovery
 description: Popisuje, jak nastavit zotavení po havárii pro virtuální počítače Azure pomocí Azure Site Recovery a Azure ExpressRoute.
 services: site-recovery
 author: mayurigupta13
@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 0974e2ed78e557168357c51b5c77a94de2f56dc5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: bf12a5b7850a56d945e1082be6c522c31738669c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722108"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954085"
 ---
-# <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrace Azure ExpressRoute s zotavením po havárii pro virtuální počítače Azure
+# <a name="integrate-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrace ExpressRoute s zotavením po havárii pro virtuální počítače Azure
 
 
 Tento článek popisuje, jak integrovat Azure ExpressRoute s [Azure Site Recovery](site-recovery-overview.md)při nastavování zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure.
@@ -28,11 +28,11 @@ Site Recovery umožňuje zotavení po havárii virtuálních počítačů Azure 
 
 ExpressRoute umožňuje rozšiřování místních sítí do cloudu Microsoft Azure přes privátní připojení, které usnadňuje poskytovatel připojení. Pokud máte nakonfigurovanou ExpressRoute, integruje se Site Recovery následujícím způsobem:
 
-- **Během replikace mezi oblastmi Azure**: Provoz replikace pro zotavení po havárii virtuálního počítače Azure je jenom v Azure a ExpressRoute není potřeba ani se nepoužívá pro replikaci. Pokud se ale připojujete z místní lokality k virtuálním počítačům Azure v primární lokalitě Azure, při nastavování zotavení po havárii pro tyto virtuální počítače Azure máte vědět několik problémů.
+- **Během replikace mezi oblastmi Azure**: provoz replikace pro zotavení po havárii virtuálního počítače Azure je jenom v Azure a ExpressRoute není potřeba ani se nepoužívá pro replikaci. Pokud se ale připojujete z místní lokality k virtuálním počítačům Azure v primární lokalitě Azure, při nastavování zotavení po havárii pro tyto virtuální počítače Azure máte vědět několik problémů.
 - **Převzetí služeb při selhání mezi oblastmi Azure**: Pokud dojde k výpadku, dojde při selhání virtuálních počítačů Azure z primární do sekundární oblasti Azure. Po převzetí služeb při selhání do sekundární oblasti existuje několik kroků, které je potřeba provést, abyste měli přístup k virtuálním počítačům Azure v sekundární oblasti pomocí ExpressRoute.
 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Než začnete, ujistěte se, že rozumíte následujícím koncepcím:
 
@@ -87,8 +87,8 @@ Podniková nasazení obvykle mají rozdělení úloh v několika virtuální sí
 
 - **Oblast**. Aplikace se nasazují v oblasti Azure Východní Asie.
 - **Paprskový virtuální sítě**. Aplikace se nasazují ve dvou paprskových virtuální sítě:
-    - **VNet1 zdroje**: 10.1.0.0/24.
-    - **VNet2 zdroje**: 10.2.0.0/24.
+    - **Zdroj vNet1**: 10.1.0.0/24.
+    - **Zdroj vNet2**: 10.2.0.0/24.
     - Každá virtuální síť paprsků je připojená k **virtuální síti centra**.
 - **Virtuální síť centra** Existuje **virtuální síť rozbočovače zdroje**virtuální sítě: 10.10.10.0/24.
   - Tato virtuální síť centra funguje jako server gatekeeper.
@@ -106,10 +106,10 @@ Podniková nasazení obvykle mají rozdělení úloh v několika virtuální sí
 
 **Směr** | **Nastavení** | **Stav**
 --- | --- | ---
-Od paprsku k centru | Povolení adresy virtuální sítě | Enabled
-Od paprsku k centru | Povolit přesměrovaný přenos | Enabled
-Od paprsku k centru | Povolit průchod bránou | Zakázáno
-Od paprsku k centru | Použít odebrání bran | Enabled
+Od paprsku k centru | Povolení adresy virtuální sítě | Povoleno
+Od paprsku k centru | Povolení přesměrovaného provozu | Povoleno
+Od paprsku k centru | Povolení přenosu brány | Zakázáno
+Od paprsku k centru | Použít odebrání bran | Povoleno
 
  ![Konfigurace partnerského vztahu paprsků k rozbočovači](./media/azure-vm-disaster-recovery-with-expressroute/spoke-to-hub-peering-configuration.png)
 
@@ -117,9 +117,9 @@ Od paprsku k centru | Použít odebrání bran | Enabled
 
 **Směr** | **Nastavení** | **Stav**
 --- | --- | ---
-Od centra k paprsku | Povolení adresy virtuální sítě | Enabled
-Od centra k paprsku | Povolit přesměrovaný přenos | Enabled
-Od centra k paprsku | Povolit průchod bránou | Enabled
+Od centra k paprsku | Povolení adresy virtuální sítě | Povoleno
+Od centra k paprsku | Povolení přesměrovaného provozu | Povoleno
+Od centra k paprsku | Povolení přenosu brány | Povoleno
 Od centra k paprsku | Použít odebrání bran | Zakázáno
 
  ![Konfigurace partnerského vztahu mezi rozbočovači a paprsky](./media/azure-vm-disaster-recovery-with-expressroute/hub-to-spoke-peering-configuration.png)
@@ -136,7 +136,7 @@ V našem příkladu by se při povolování replikace virtuálních počítačů
 
 ## <a name="fail-over-azure-vms-when-using-expressroute"></a>Převzetí služeb při selhání virtuálních počítačů Azure při použití ExpressRoute
 
-Po selhání virtuálních počítačů Azure přes cílovou oblast Azure pomocí Site Recovery můžete k nim přistupovat pomocí privátního partnerského [vztahu](../expressroute/expressroute-circuit-peerings.md#privatepeering)ExpressRoute.
+Po selhání virtuálních počítačů Azure přes cílovou oblast Azure pomocí Site Recovery můžete k nim přistupovat pomocí [privátního partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#privatepeering)ExpressRoute.
 
 - Musíte připojit ExpressRoute k cílové virtuální síti s novým připojením. Existující připojení ExpressRoute se automaticky nepřenáší.
 - Způsob, jakým nastavíte připojení ExpressRoute k cílové virtuální síti, závisí na vaší topologii ExpressRoute.

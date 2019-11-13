@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 49c5fc4a9d4fed2176baf220e3fcc8f887757a36
-ms.sourcegitcommit: f226cdd6406372b5693d46b6d04900f2f0cda4e6
+ms.openlocfilehash: 4cd3bc7e4f95869d3efd2d92a7cdf1addc7ce5b2
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73906230"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953100"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Připojování nebo odpojování svazku pro virtuální počítače s Windows nebo Linuxem 
 
@@ -36,4 +36,7 @@ Pokud používáte NFSv 4.1, připojte systém souborů pomocí následujícího
 
 `sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`  
 
-Přečtěte si téma [Konfigurace výchozí domény nfsv 4.1 pro Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md).
+## <a name="next-steps"></a>Další kroky
+
+* [Nakonfigurujte výchozí doménu NFSv 4.1 pro Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md)
+* Další informace najdete v tématu [Nejčastější dotazy k systému](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#nfs-faqs) souborů NFS, které se automaticky připevní, když se spustí nebo restartuje virtuální počítač Azure.

@@ -1,19 +1,19 @@
 ---
-title: Nastavení zotavení po havárii pro virtuální počítač Azure IaaS do sekundární oblasti Azure
-description: Tento rychlý start obsahuje kroky potřebné k zotavení po havárii virtuálního počítače Azure IaaS mezi oblastmi Azure pomocí služby Azure Site Recovery.
+title: Nastavení zotavení po havárii virtuálního počítače Azure do sekundární oblasti pomocí Azure Site Recovery
+description: K rychlému nastavení zotavení po havárii do jiné oblasti Azure pro virtuální počítač Azure použijte službu Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 08/28/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b06cae5bcb07831ba79b805802a7851c2b6ad2b3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91674d6335ae95993bcdd59250658d562302b1dc
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467962"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954129"
 ---
 # <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Nastavení zotavení po havárii do sekundární oblasti Azure pro virtuální počítač Azure        
 
@@ -34,7 +34,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 1. V nabídce Azure Portal vyberte **virtuální počítače**, nebo na libovolné stránce vyhledejte a vyberte *virtuální počítače* . Vyberte virtuální počítač, který chcete replikovat.
 2. V části **Operace** vyberte **Zotavení po havárii**.
-3. V části **Konfigurovat zotavení po havárii** > **Cílová oblast** vyberte cílovou oblast, do které chcete replikaci provést.
+3. V části **Konfigurace zotavení po havárii** > **Cílová oblast** vyberte cílovou oblast, do které chcete replikaci provést.
 4. Pro účely tohoto rychlého startu přijměte výchozí nastavení.
 5. Vyberte **zkontrolovat a spustit replikaci**. Pak výběrem **spustit replikaci** spusťte úlohu, která povolí replikaci pro virtuální počítač.
 

@@ -7,17 +7,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/12/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 178628db11b95fbd345e94111ebf15809da3fc35
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 55abdab6a427547ee8bd498500deee94b8f67453
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684295"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954727"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>Konfigurace místního prostředí IR jako proxy pro Azure-SSIS IR v ADF
 Tento článek popisuje, jak spouštět balíčky služba SSIS (SQL Server Integration Services) (SSIS) v Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF) s místním prostředím IR nakonfigurovaným jako proxy.  Tato funkce umožňuje přístup k datům místně bez [připojení Azure-SSIS IR k virtuální síti](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).  To je užitečné v případě, že vaše podniková síť má příliš složitou zásadu konfigurace/omezující zásady, která umožňuje vložit do ní Azure-SSIS IR.
@@ -87,10 +87,10 @@ Druhý pracovní úkol, který běží na vašem Azure-SSIS IR, se nebude účto
 
 ## <a name="current-limitations"></a>Aktuální omezení
 
-- V současné době jsou podporovány pouze správci připojení souborů OLEDB a plochý soubor a zdroje OLEDB/ploché soubory. 
+- V současné době jsou podporovány pouze úlohy toku dat se správci připojení souborů ODBC/OLEDB/Flat File a ODBC/OLEDB/ploché soubory. 
 - V současné době jsou podporovány pouze propojené služby Azure Blob Storage nakonfigurované s **klíčem účtu**/**identifikátor URI SAS**/ověřování **instančního objektu** .
 - V současné době je podporována pouze místní prostředí IR zřízené v rámci stejného ADF, kde je zajištěna vaše Azure-SSIS IR.
-- Použití parametrů nebo proměnných SSIS ve vlastnostech zdrojů OLEDB/plochých souborů a správců připojení se nepodporuje.
+- Použití parametrů nebo proměnných SSIS ve vlastnostech zdrojů ODBC/OLEDB/plochých souborů a správců připojení není aktuálně podporováno.
 
 ## <a name="next-steps"></a>Další kroky
 Po nakonfigurování místního prostředí IR jako proxy serveru pro Azure-SSIS IR můžete nasadit a spustit balíčky pro přístup k datům v místním prostředí, jak spouštět aktivity balíčků SSIS v kanálech ADF, v tématu [spouštění balíčků SSIS jako provádění aktivit balíčku SSIS v kanálech ADF. ](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).

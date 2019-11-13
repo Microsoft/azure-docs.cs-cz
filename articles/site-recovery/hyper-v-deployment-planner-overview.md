@@ -1,5 +1,5 @@
 ---
-title: O Plánovač nasazení služby Azure Site Recovery pro zotavení po havárii virtuálních počítačů Hyper-V do Azure | Microsoft Docs
+title: Plánovač nasazení pro zotavení po havárii technologie Hyper-V s využitím Azure Site Recovery
 description: Přečtěte si o Plánovač nasazení služby Azure Site Recovery zotavení po havárii Hyper-V do Azure.
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: 6e7da548eb2cc6e314d446270cc04d1c57be7ae3
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 72b1311227f5c9f9efc35b2940d3c843a21dc261
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618832"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954014"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Informace o Plánovač nasazení služby Azure Site Recovery zotavení po havárii technologie Hyper-V do Azure
 
@@ -84,7 +84,7 @@ Nástroj má pro Hyper-V tři hlavní fáze: získání seznamu virtuálních po
 
 | Požadavek na server | Popis |
 |---|---|
-|Získání seznamu virtuálních počítačů, profilace a měření propustnosti |<ul><li>Operační systém: Microsoft Windows Server 2016 nebo Microsoft Windows Server 2012 R2 </li><li>Konfigurace počítače: 8 vCPU, 16 GB paměti RAM, 300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Microsoft Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internetový přístup k Azure z tohoto serveru</li><li>Účet služby Azure Storage</li><li>Přístup správce na server</li><li>Volné místo na disku alespoň 100 GB (za předpokladu 1 000 virtuálních počítačů, každý průměrně se 3 disky a profilovaný po dobu 30 dnů)</li><li>Virtuální počítač, ze kterého spouštíte nástroj Plánovač nasazení služby Azure Site Recovery, musí být přidaný do seznamu TrustedHosts všech serverů Hyper-V.</li><li>Všechny servery Hyper-V, které mají být profilování, musí být přidány do seznamu TrustedHosts virtuálního počítače klienta, ze kterého se nástroj spouští. [Další informace o přidání serverů do seznamu TrustedHosts](#steps-to-add-servers-into-trustedhosts-list) </li><li> Nástroj by měl být spuštěný pomocí oprávnění pro správu z PowerShellu nebo konzoly příkazového řádku na klientovi.</ul></ul>|
+|Získání seznamu virtuálních počítačů, profilace a měření propustnosti |<ul><li>Operační systém: Microsoft Windows Server 2016 nebo Microsoft Windows Server 2012 R2 </li><li>Konfigurace počítače: 8 virtuálních CPU, 16 GB paměti RAM, 300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Microsoft Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internetový přístup k Azure z tohoto serveru</li><li>Účet služby Azure Storage</li><li>Přístup správce na server</li><li>Volné místo na disku alespoň 100 GB (za předpokladu 1 000 virtuálních počítačů, každý průměrně se 3 disky a profilovaný po dobu 30 dnů)</li><li>Virtuální počítač, ze kterého spouštíte nástroj Plánovač nasazení služby Azure Site Recovery, musí být přidaný do seznamu TrustedHosts všech serverů Hyper-V.</li><li>Všechny servery Hyper-V, které mají být profilování, musí být přidány do seznamu TrustedHosts virtuálního počítače klienta, ze kterého se nástroj spouští. [Další informace o přidání serverů do seznamu TrustedHosts](#steps-to-add-servers-into-trustedhosts-list) </li><li> Nástroj by měl být spuštěný pomocí oprávnění pro správu z PowerShellu nebo konzoly příkazového řádku na klientovi.</ul></ul>|
 | Generování sestav | Počítač s Windows nebo Windows Server s aplikací Microsoft Excel 2013 nebo novější |
 | Uživatelská oprávnění | Účet správce pro přístup ke clusteru Hyper-V / hostiteli Hyper-V během operací získání seznamu virtuálních počítačů a profilace<br>Všichni hostitelé, pro které je potřeba provést profilaci, by měli mít účet správce domény se stejnými přihlašovacími údaji, tj. uživatelským jménem a heslem.
  |
@@ -110,12 +110,12 @@ Nástroj má pro Hyper-V tři hlavní fáze: získání seznamu virtuálních po
 Nástroje je zabalený ve složce .zip. Stejný nástroj podporuje scénáře zotavení po havárii jak z VMware do Azure, tak i z Hyper-V do Azure. Tento nástroj můžete použít i pro scénář zotavení po havárii z Hyper-V do sekundární lokality, ale ignorujte doporučení infrastruktury Azure ze sestavy.
 
 1.  Zkopírujte složku .zip na Windows Server, ze kterého chcete nástroj spustit. Nástroj můžete spustit na Windows Serveru 2012 R2 nebo Windows Serveru 2016. Server musí mít přístup k síti, aby se připojil ke clusteru Hyper-V nebo hostiteli Hyper-V, kde jsou profilované virtuální počítače. Doporučujeme, abyste měli stejnou hardwarovou konfiguraci virtuálního počítače, kde chcete nástroj spustit, jako toho serveru Hyper-V, který chcete chránit. Taková konfigurace zajistí, že dosažená propustnost, kterou nástroj hlásí, bude odpovídat skutečné propustnosti, které může Azure Site Recovery dosáhnout během replikace. Výpočet propustnosti závisí na dostupné šířce pásma sítě na serveru a na konfiguraci hardwaru (CPU, úložiště atd.) serveru. Propustnost je počítána ze serveru, na kterém je nástroj spuštěný, do Azure. Pokud se konfigurace hardwaru tohoto serveru liší od serveru Hyper-V, dosažená propustnost, kterou nástroj hlásí, nebude přesná.
-Doporučená konfigurace virtuálního počítače: 8 vCPU, 16 GB paměti RAM, 300 GB HDD.
+Doporučená konfigurace virtuálního počítače: 8 virtuálních CPU, 16 GB paměti RAM, 300 GB HDD.
 
 1.  Rozbalte složku .zip.
 Složka obsahuje několik souborů a podsložek. Spustitelný soubor je ASRDeploymentPlanner.exe v nadřazené složce.
 
-Příklad: Zkopírujte soubor .zip na jednotku E:\ a rozbalte jej. Nasazení E:\ASR Planner_v 2.3. zip
+Příklad: Zkopírujte soubor .zip na jednotku E:\ a rozbalte jej. Nasazení E:\ASR Planner_v2.3. zip
 
 E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
 

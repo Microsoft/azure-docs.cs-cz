@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
-ms.date: 06/28/2019
-ms.openlocfilehash: 272dbbbc335574456feebfb85e4c5eafd544f8d6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/08/2019
+ms.openlocfilehash: fc8159b3deba373948f513cb11540695362ecaf1
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574297"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954567"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Vizualizace běhů experimentů a metrik pomocí TensorBoard a Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,16 +41,18 @@ Způsob spuštění TensorBoard s Azure Machine Learning experimenty závisí na
 
         * Dokončete [kurz: instalační prostředí a pracovní prostor](tutorial-1st-experiment-sdk-setup.md) pro vytvoření vyhrazeného serveru poznámkového bloku předem načteného se sadou SDK a s ukázkovým úložištěm.
 
-        * Ve složce Samples na serveru poznámkového bloku najděte dva dokončené a rozšířené poznámkové bloky tak, že přejdete do tohoto adresáře: **postupy-použití-azureml > školení – s využitím hloubkového učení**.
-        * Export-Run-History-to-run-History. ipynb
-        * tensorboard. ipynb
+        * Ve složce Samples na serveru poznámkového bloku najděte dva dokončené a rozšířené poznámkové bloky tak, že přejdete na tyto adresáře:
+            * **How-to-> Training – s hloubkovým učením > Export-Run-History to-tensorboard > Export-Run-History-to-tensorboard. ipynb**
+
+            * **Postup použití-AzureML > sledování a monitorování – experimenty > tensorboard. ipynb**
 
     * Váš vlastní server Juptyer notebook
-          * [Instalace sady Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) s `tensorboard` navíc
-          * [Vytvořte pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).  
-          * [Vytvořte konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).
+       * [Instalace sady Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) s `tensorboard` navíc
+        * [Vytvořte pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).  
+        * [Vytvořte konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).
   
 <a name="direct"></a>
+
 ## <a name="option-1-directly-view-run-history-in-tensorboard"></a>Možnost 1: přímo zobrazit historii spuštění v TensorBoard
 
 Tato možnost je vhodná pro experimenty, které nativně výstupují soubory protokolu TensorBoard, jako je PyTorch, chainer a TensorFlow experimenty. Pokud to není případ vašeho experimentu, použijte místo toho [metodu `export_to_tensorboard()`](#export) .
@@ -85,9 +87,9 @@ tf_code = requests.get("https://raw.githubusercontent.com/tensorflow/tensorflow/
 with open(os.path.join(exp_dir, "mnist_with_summaries.py"), "w") as file:
     file.write(tf_code.text)
 ```
-V celém souboru s MNIST ručně zapsaných kódem mnist_with_summaries. py si všimněte, že existují řádky, které volají `tf.summary.scalar()`, `tf.summary.histogram()`, `tf.summary.FileWriter()` atd. Tyto metody seskupují, protokolují a klíčová metriky značek svých experimentů do historie spuštění. `tf.summary.FileWriter()` je obzvláště důležité při serializaci dat z metriky protokolovaných experimentů, což umožňuje, aby TensorBoard z nich vygenerovala vizualizace.
+V celém souboru kódu MNIST ručně zapsaných mnist_with_summaries. py, Všimněte si, že existují řádky, které volají `tf.summary.scalar()`, `tf.summary.histogram()``tf.summary.FileWriter()` atd. Tyto metody seskupují, protokolují a klíčová metriky značek svých experimentů do historie spuštění. `tf.summary.FileWriter()` je obzvláště důležité při serializaci dat z metriky protokolovaných experimentů, což umožňuje, aby TensorBoard z nich vygenerovala vizualizace.
 
- ### <a name="configure-experiment"></a>Konfigurovat experiment
+ ### <a name="configure-experiment"></a>Konfigurace testu
 
 V následujícím příkladu nakonfigurujeme náš experiment a nastavíme adresáře pro protokoly a data. Tyto protokoly se nahrají do služby artefaktu, která TensorBoard přistupuje později.
 

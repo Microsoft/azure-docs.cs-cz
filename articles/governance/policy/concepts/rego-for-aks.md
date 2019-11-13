@@ -1,17 +1,14 @@
 ---
 title: Informace Azure Policy pro službu Azure Kubernetes
 description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů ve službě Azure Kubernetes.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 248f96b4385e97605986b53bd94fd83236ec8f08
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dbac1ee762066fb59cd57c04839666026a2bd89b
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480910"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959803"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Vysvětlení Azure Policy pro službu Azure Kubernetes
 
@@ -32,7 +29,7 @@ Pokud chcete povolit a používat Azure Policy pro AKS s clusterem AKS, proveďt
 
 ## <a name="opt-in-for-preview"></a>Výslovný souhlas pro verzi Preview
 
-Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby musí vaše předplatné umožňovat poskytovatele prostředků **Microsoft. ContainerService** a poskytovatele prostředků **Microsoft. PolicyInsights** . pak bude schváleno. Připojte se k verzi Preview. Pokud se chcete připojit k verzi Preview, postupujte podle těchto kroků v Azure Portal nebo pomocí rozhraní příkazového řádku Azure CLI:
+Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby musí vaše předplatné umožňovat poskytovatele prostředků **Microsoft. ContainerService** a poskytovatele prostředků **Microsoft. PolicyInsights** a pak být schválené pro připojení k verzi Preview. Pokud se chcete připojit k verzi Preview, postupujte podle těchto kroků v Azure Portal nebo pomocí rozhraní příkazového řádku Azure CLI:
 
 - Azure Portal:
 
@@ -50,7 +47,7 @@ Před instalací doplňku Azure Policy nebo povolením kterékoli funkce služby
 
   1. V horní části seznamu předplatných vyberte tlačítko pro **výslovný souhlas** .
 
-- Rozhraní příkazového řádku Azure:
+- Azure CLI:
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell
@@ -92,7 +89,7 @@ _Doplněk Azure Policy_ pro Kubernetes připojuje službu Azure Policy k řadič
 
 ### <a name="installing-the-add-on"></a>Instalace doplňku
 
-#### <a name="prerequisites"></a>Předpoklady
+#### <a name="prerequisites"></a>Požadavky
 
 Před instalací doplňku v clusteru AKS je nutné nainstalovat rozšíření Preview. Tento krok se provádí pomocí Azure CLI:
 
@@ -120,13 +117,13 @@ Před instalací doplňku v clusteru AKS je nutné nainstalovat rozšíření Pr
    ```
 
    > [!NOTE]
-   > Pokud jste dříve nainstalovali rozšíření _AKS-Preview_ , nainstalujte všechny aktualizace pomocí příkazu `az extension update --name aks-preview`.
+   > Pokud jste již dříve nainstalovali rozšíření _AKS-Preview_ , nainstalujte všechny aktualizace pomocí příkazu `az extension update --name aks-preview`.
 
 #### <a name="installation-steps"></a>Instalační kroky
 
 Až se požadavky dokončí, nainstalujte doplněk Azure Policy v clusteru AKS, který chcete spravovat.
 
-- Portál Azure
+- portál Azure
 
   1. Spusťte v Azure Portal službu AKS kliknutím na **všechny služby**a pak vyhledejte a vyberte **služby Kubernetes**.
 
@@ -209,7 +206,7 @@ Pokud chcete zobrazit protokoly z kontejnerů gatekeeper, postupujte podle krok�
 
 Pokud chcete odebrat doplněk Azure Policy z clusteru AKS, použijte Azure Portal nebo rozhraní příkazového řádku Azure:
 
-- Portál Azure
+- portál Azure
 
   1. Spusťte v Azure Portal službu AKS kliknutím na **všechny služby**a pak vyhledejte a vyberte **služby Kubernetes**.
 

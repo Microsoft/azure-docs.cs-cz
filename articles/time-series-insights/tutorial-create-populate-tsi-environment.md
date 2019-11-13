@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: vytvoření prostředí Azure Time Series Insights | Microsoft Docs'
-description: V tomto kurzu se dozvíte, jak vytvořit prostředí Time Series Insights, které je naplněné daty z simulovaných zařízení.
+title: 'Kurz: vytvoření prostředí – Azure Time Series Insights | Microsoft Docs'
+description: Naučte se vytvořit prostředí Time Series Insights, které je naplněné daty z simulovaných zařízení.
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
@@ -9,19 +9,19 @@ ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9ca60b876272df15d306ac7fba2dc61875db6d06
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: fad850da6a7fccb6b97b86532a8d246049942a8b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989654"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014660"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Kurz: Vytvoření prostředí Azure Time Series Insights
 
 Tento kurz vás provede procesem vytvoření Azure Time Series Insights prostředí, které je naplněné daty z simulovaných zařízení. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvořte Time Series Insights prostředí.
+> * Vytvoření prostředí Time Series Insights.
 > * Vytvořte řešení pro simulaci zařízení, které obsahuje centrum IoT.
 > * Připojte prostředí Time Series Insights ke službě IoT Hub.
 > * Spusťte simulaci zařízení pro streamování dat do prostředí Time Series Insights.
@@ -89,7 +89,7 @@ Za druhé vytvořte v předplatném Azure Time Series Insights prostředí.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí svého účtu předplatného Azure. 
 1. Vlevo nahoře vyberte **+ Vytvořit prostředek**. 
-1. Vyberte kategorii **Internet věcí** a pak vyberte **Time Series Insights**. 
+1. Vyberte **Internet of Things** kategorie a pak vyberte **Time Series Insights**. 
 
    [![Výběr prostředku prostředí Time Series Insights](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi.png#lightbox)
 
@@ -189,7 +189,7 @@ Z nabídky na levé straně Azure Portal:
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Vytvořte Time Series Insights prostředí.
+> * Vytvoření prostředí Time Series Insights.
 > * Vytvořte řešení pro simulaci zařízení, které obsahuje centrum IoT.
 > * Připojte prostředí Time Series Insights ke službě IoT Hub.
 > * Spusťte simulaci zařízení pro streamování dat do prostředí Time Series Insights.

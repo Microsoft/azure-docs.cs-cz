@@ -3,7 +3,7 @@ title: Začínáme s rozhraním API pro vytváření sestav Azure AD | Microsoft
 description: Jak začít s rozhraním API pro vytváření sestav Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 8813b911-a4ec-4234-8474-2eef9afea11e
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28c64653ee0f9135e6da4c3768b89f9a0b25b2ef
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c841195cacd8c8d7698f69435572587bf04c3d67
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127356"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008360"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Začínáme s rozhraním API pro vytváření sestav Azure Active Directory
 
@@ -39,7 +39,7 @@ Pokud narazíte na problémy, přečtěte si téma [Jak získat podporu pro Azur
 Pokud chcete získat přístup k rozhraní API pro vytváření sestav s zásahem uživatele nebo bez něj, musíte:
 
 1. Přiřazení rolí (čtecí modul zabezpečení, správce zabezpečení, globální správce)
-2. Zaregistrovat aplikaci
+2. Registrace aplikace
 3. Udělení oprávnění
 4. Shromáždit nastavení konfigurace
 
@@ -47,12 +47,12 @@ Podrobné pokyny najdete v tématu [požadavky pro přístup k rozhraní API pro
 
 ## <a name="api-endpoints"></a>Koncové body rozhraní API 
 
-Koncový bod rozhraní API Microsoft Graph pro protokoly auditu `https://graph.microsoft.com/beta/auditLogs/directoryAudits` je a koncovým bodem rozhraní Microsoft Graph API pro přihlášení `https://graph.microsoft.com/beta/auditLogs/signIns`je. Další informace najdete v referenční příručce rozhraní API pro [audit](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) a Reference k [rozhraní API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn)pro přihlašování.
+Koncovým bodem rozhraní Microsoft Graph API pro protokoly auditu je `https://graph.microsoft.com/beta/auditLogs/directoryAudits` a Microsoft Graph koncový bod rozhraní API pro přihlášení `https://graph.microsoft.com/beta/auditLogs/signIns`. Další informace najdete v referenční příručce rozhraní API pro [audit](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) a Reference k [rozhraní API pro přihlašování](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn).
 
 Kromě toho můžete pomocí [rozhraní API detekce rizik ochrany identity](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) získat programový přístup k detekcím zabezpečení pomocí Microsoft Graph. Další informace najdete v tématu [Začínáme s Azure Active Directory Identity Protection a Microsoft Graph](../identity-protection/graph-get-started.md). 
 
 > [!NOTE]
->  Koncový bod **https\/:\/Graph.Windows.NETtenant-\/namesestavje\/ zastaralý.\>\/\<** K programovému přístupu k aktivitám a sestavám zabezpečení použijte nové koncové body rozhraní API, které jsou popsané výše.
+>  **Protokol https:\/\/graph.windows.net\/\<název tenanta\>\/sestav\/** koncový bod je zastaralý. K programovému přístupu k aktivitám a sestavám zabezpečení použijte nové koncové body rozhraní API, které jsou popsané výše.
   
 ## <a name="apis-with-graph-explorer"></a>Rozhraní API pomocí Graph Exploreru
 
@@ -68,7 +68,7 @@ Rozhraní API pro vytváření sestav Azure AD s certifikáty použijte v příp
 
 Podrobné pokyny najdete v tématu [získání dat pomocí rozhraní API pro vytváření sestav Azure AD s certifikáty](tutorial-access-api-with-certificates.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
  * [Požadavky pro přístup k rozhraní API pro vytváření sestav](howto-configure-prerequisites-for-reporting-api.md) 
  * [Získání dat pomocí rozhraní API pro vytváření sestav Azure AD s certifikáty](tutorial-access-api-with-certificates.md)

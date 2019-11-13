@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sngun
-ms.openlocfilehash: 80a0a3440a7fb5d056d1d76fb9d82931721b6e16
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 32595e561736b5f22f109d0caff1f3990300d2bc
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514209"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007337"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Připojení soukromě k účtu Azure Cosmos pomocí privátního odkazu Azure
 
@@ -35,7 +35,7 @@ V této části vytvoříte virtuální síť a podsíť pro hostování virtuá
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Name (Název) | Zadejte *MyVirtualNetwork*. |
+    | Název | Zadejte *MyVirtualNetwork*. |
     | Adresní prostor | Zadejte *10.1.0.0/16*. |
     | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK**. |
@@ -48,7 +48,7 @@ V této části vytvoříte virtuální síť a podsíť pro hostování virtuá
 
 ### <a name="create-the-virtual-machine"></a>Vytvoření virtuálního počítače
 
-1. V levé horní části obrazovky v Azure Portal vyberte **vytvořit prostředek** > **výpočetní** > **virtuální počítač**.
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit prostředek** > **výpočetní** > **virtuální počítač**.
 
 1. V nástroji **vytvořit virtuální počítač základy**zadejte nebo vyberte tyto informace:
 
@@ -59,9 +59,9 @@ V této části vytvoříte virtuální síť a podsíť pro hostování virtuá
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.  |
     | **PODROBNOSTI INSTANCE** |  |
     | Název virtuálního počítače | Zadejte *myVm*. |
-    | Oblast | Vyberte **WestCentralUS**. |
+    | Region (Oblast) | Vyberte **WestCentralUS**. |
     | Možnosti dostupnosti | Nechte výchozí nastavení **bez nutnosti redundance infrastruktury**. |
-    | Obrázek | Vyberte **Windows Server 2019 Datacenter**. |
+    | Image | Vyberte **Windows Server 2019 Datacenter**. |
     | Velikost | Ponechte výchozí hodnotu **Standard DS1 v2**. |
     | **ÚČET SPRÁVCE** |  |
     | Uživatelské jméno | Zadejte uživatelské jméno podle vašeho výběru. |
@@ -99,7 +99,7 @@ Vytvořte [účet rozhraní SQL API služby Azure Cosmos](../cosmos-db/create-co
 
 ## <a name="create-a-private-endpoint-for-your-azure-cosmos-account"></a>Vytvoření privátního koncového bodu pro účet Azure Cosmos
 
-Vytvořte privátní odkaz na účet Azure Cosmos, jak je popsáno v části [Vytvoření privátního odkazu](../cosmos-db/how-to-configure-private-endpoints.md#create-a-private-link-using-the-azure-portal) v článku věnovaném použití Azure Portal v odkazovaném článku.
+Vytvořte privátní odkaz na účet Azure Cosmos, jak je popsáno v části [Vytvoření privátního odkazu](../cosmos-db/how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-the-azure-portal) v článku věnovaném použití Azure Portal v odkazovaném článku.
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Připojení k virtuálnímu počítači z internetu
 
@@ -109,7 +109,7 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
 
 1. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
 
-1. Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
+1. Vyberte **stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
 
 1. Otevřete stažený soubor *. RDP* .
 
@@ -154,7 +154,7 @@ V této části se připojíte soukromě k účtu Azure Cosmos pomocí privátn�
 
 1. Vložte připojovací řetězec vložením dříve zkopírovaných informací.
 
-1. Vyberte **Další**.
+1. Vyberte **Next** (Další).
 
 1. Vyberte **Connect** (Připojit).
 
@@ -172,7 +172,7 @@ Až budete hotovi s použitím privátního koncového bodu, účtu Azure Cosmos
 
 1. Vyberte **Odstranit skupinu prostředků**.
 
-1. Zadejte *myResourceGroup* FOR **Zadejte název skupiny prostředků** a vyberte **Odstranit**.
+1. Zadejte *myResourceGroup* pro **typ název skupiny prostředků** a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

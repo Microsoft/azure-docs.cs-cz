@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 60d0425a7dbc532e856c7bf3c91065d2548c9b9a
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 45168c23964c735a4bd51ba11c2340d4ff95fed4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601387"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012433"
 ---
-# <a name="what-disk-types-are-available-in-azure"></a>Jaké typy disků jsou k dispozici v Azure?
-
 Služba Azure Managed disks v současné době nabízí čtyři typy disků. každý typ je zaměřený na konkrétní scénáře zákazníků.
 
 ## <a name="disk-comparison"></a>Porovnání disků
@@ -28,8 +26,8 @@ V následující tabulce najdete porovnání disků Ultra, Premium Solid-State-D
 |Typ disku   |SSD   |SSD   |SSD   |HDD   |
 |Scénář   |Úlohy náročné na v/v, jako jsou [SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), databáze nejvyšší úrovně (například SQL, Oracle) a další úlohy náročné na transakce.   |Úlohy v produkčním prostředí a úlohy, u kterých záleží na výkonu   |Webové servery, lehce používané podnikové aplikace a vývoj a testování   |Zálohování, Nekritická, zřídka přístup   |
 |Maximální velikost disku   |65 536 gibibajt (GiB)    |32 767 GiB    |32 767 GiB   |32 767 GiB   |
-|Maximální propustnost   |soubory MiB 2 000/s    |soubory MiB 900/s   |soubory MiB 750/s   |soubory MiB 500/s   |
-|Maximální IOPS   |160 000    |20 000   |6 000   |2 000   |
+|Maximální propustnost   |soubory MiB 2 000/s    |900 MiB/s   |750 MiB/s   |500 MiB/s   |
+|Maximální IOPS   |160 000    |20,000   |6,000   |2,000   |
 
 ## <a name="ultra-disk"></a>Ultra disk
 
@@ -50,15 +48,15 @@ Mezi klíčové funkce Ultra diskù patří:
 
 |Velikost disku (GiB)  |Limit IOPS  |Limit propustnosti (MB/s)  |
 |---------|---------|---------|
-|4     |1 200         |300         |
-|8     |2 400         |600         |
-|16     |4 800         |1 200         |
-|32     |9 600         |2 000         |
-|64     |19 200         |2 000         |
-|128     |38 400         |2 000         |
-|256     |76 800         |2 000         |
-|512     |80 000         |2 000         |
-|1024 – 65536 (velikosti v tomto rozsahu se zvyšují v přírůstcích po 1 TiB)     |160 000         |2 000         |
+|4     |1,200         |300         |
+|8     |2,400         |600         |
+|16     |4,800         |1,200         |
+|32     |9 600         |2,000         |
+|64     |19 200         |2,000         |
+|128     |38 400         |2,000         |
+|256     |76 800         |2,000         |
+|512     |80,000         |2,000         |
+|1024 – 65536 (velikosti v tomto rozsahu se zvyšují v přírůstcích po 1 TiB)     |160 000         |2,000         |
 
 ### <a name="ga-scope-and-limitations"></a>Rozsah a omezení GA
 

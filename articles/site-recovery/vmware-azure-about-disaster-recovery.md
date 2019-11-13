@@ -1,18 +1,17 @@
 ---
-title: O zotavení po havárii virtuálních počítačů VMware do Azure pomocí Azure Site Recovery | Microsoft Docs
+title: Zotavení po havárii VMware pomocí Azure Site Recovery
 description: Tento článek poskytuje přehled zotavení po havárii virtuálních počítačů VMware do Azure pomocí služby Azure Site Recovery.
-author: raynew
+author: rayne-wiselman
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
-ms.date: 9/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: dca8174caabf4799c338d780a78ba58f1af5a2f1
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 589dda80d68fba73a729da4b6e59270cc09c18cb
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814310"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954396"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>O zotavení po havárii virtuálních počítačů VMware do Azure
 
@@ -88,16 +87,16 @@ V místním prostředí je to, co je potřeba udělat:
 Jakmile budete mít k dispozici svoji místní infrastrukturu Azure a místní infrastruktury, můžete nastavit zotavení po havárii.
 
 1. Abyste pochopili komponenty, které budete muset nasadit, Projděte si [architekturu VMware to Azure](vmware-azure-architecture.md)a [fyzickou do architektury Azure](physical-azure-architecture.md). K dispozici je celá řada součástí, takže je důležité pochopit, jak se všechny vejdou dohromady.
-2. **Zdrojové prostředí**: V prvním kroku nasazení nastavíte zdrojové prostředí replikace. Určete, co chcete replikovat, a kam se chcete replikovat.
-3. **Konfigurační server**: Je potřeba nastavit konfigurační server v místním zdrojovém prostředí:
+2. **Zdrojové prostředí**: jako první krok nasazení nastavíte zdrojové prostředí replikace. Určete, co chcete replikovat, a kam se chcete replikovat.
+3. **Konfigurační server**: musíte nastavit konfigurační server v místním zdrojovém prostředí:
     - Konfigurační server je jeden místní počítač. Pro zotavení po havárii VMware doporučujeme, abyste ho nasadili jako virtuální počítač VMware, který se dá nasadit ze šablony OVF ke stažení.
     - Konfigurační server koordinuje komunikaci mezi místními prostředími a Azure.
     - Na počítači konfiguračního serveru běží několik dalších komponent.
         - Procesový server přijímá, optimalizuje a odesílá data replikace do účtu úložiště mezipaměti v Azure. Také zpracovává automatickou instalaci služby mobility na počítačích, které chcete replikovat, a provádí automatické zjišťování virtuálních počítačů na serverech VMware.
         - Hlavní cílový server zpracovává replikační data během navrácení služeb z Azure po obnovení.
     - Nastavení zahrnuje registraci konfiguračního serveru v trezoru, stahování serveru MySQL a VMware PowerCLI a určení účtů vytvořených pro automatické zjišťování a instalaci služby mobility.
-4. **Cílové prostředí**: Vaše cílové prostředí Azure nastavíte tak, že zadáte svoje předplatné Azure a nastavení sítě.
-5. **Zásady replikace**: Určete, jak se má replikace provádět. Nastavení zahrnuje jak často se vytvářejí a ukládají body obnovení a jestli se mají vytvářet snímky konzistentní vzhledem k aplikacím.
+4. **Cílové prostředí**: nastavíte cílové prostředí Azure tak, že zadáte své předplatné Azure a nastavení sítě.
+5. **Zásady replikace**: určujete, jak se má replikace provádět. Nastavení zahrnuje jak často se vytvářejí a ukládají body obnovení a jestli se mají vytvářet snímky konzistentní vzhledem k aplikacím.
 6. **Povolte replikaci**. Povolíte replikaci pro místní počítače. Pokud jste vytvořili účet pro instalaci služby mobility, nainstaluje se, až povolíte replikaci pro daný počítač. 
 
 *Potřebujete další pomoc?*

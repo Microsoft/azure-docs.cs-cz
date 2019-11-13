@@ -1,6 +1,6 @@
 ---
-title: Naplánování rozsahu Azure Time Series Insights prostředí | Microsoft Docs
-description: Tento článek popisuje, jak postupovat podle osvědčených postupů při plánování Azure Time Series Insightsho prostředí. Mezi oblasti, které se týkají, patří kapacita úložiště, uchovávání dat, kapacita příchozího provozu, monitorování a provozní kontinuita a zotavení po havárii (BCDR).
+title: Plánování prostředí GA – Azure Time Series Insights | Microsoft Docs
+description: Seznamte se s osvědčenými postupy, které je třeba dodržovat při plánování prostředí GA.
 services: time-series-insights
 ms.service: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 649ff31e40bf612f1b70f81e895920f7fc21f082
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 2dd3b79e931464e83264433a923e9078b2f62525
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991242"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006958"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Plánování prostředí Azure Time Series Insights GA
 
@@ -46,7 +46,7 @@ Chcete-li nejlépe naplánovat Time Series Insights prostředí pro dlouhodobou 
 
 Ve výchozím nastavení Time Series Insights uchovává data na základě velikosti úložiště, které zřizujete (jednotkové &#215; množství úložiště na jednotku) a příchozího přenosu dat.
 
-## <a name="data-retention"></a>Uchování dat
+## <a name="data-retention"></a>Uchovávání dat
 
 Nastavení **doby uchovávání dat** můžete změnit v prostředí Azure Time Series Insights. Můžete povolit až 400 dnů uchovávání. 
 

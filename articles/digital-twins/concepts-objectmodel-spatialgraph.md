@@ -1,5 +1,5 @@
 ---
-title: Pochopení objektových modelů a grafu prostorové logiky Azure pro digitální vlákna | Microsoft Docs
+title: Principy modelů objektů a prostorových informací v grafu – digitální vlákna Azure | Microsoft Docs
 description: Využijte novou službu Azure Digital Twins k modelování vztahů mezi lidmi, místy a zařízeními
 ms.author: alinast
 author: alinamstanciu
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/05/2019
-ms.openlocfilehash: da345c0cf039e3cc2f7f8828a0769b6e65048571
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 85fb67248a69a2726fef99ebe4749d61807631e4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930414"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010087"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Informace o objektových modelech a grafu prostorové Intelligence pro digitální vlákna
 
@@ -80,8 +80,8 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 
 | Název | Nahradit hodnotou |
 | --- | --- |
-| YOUR_INSTANCE_NAME | Název instance digitálního vlákna |
-| YOUR_LOCATION | Které oblasti serveru vaše instance hostuje |
+| YOUR_INSTANCE_NAME | Název instance digitální dvojče |
+| YOUR_LOCATION | Jaké oblasti serveru vaší instance je hostován aplikací |
 
  V tomto obrázku se zobrazí úplný formát adresy URL.
 

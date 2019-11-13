@@ -1,5 +1,5 @@
 ---
-title: Vytvoření aplikace .NET pro Service Fabric v Azure | Microsoft Docs
+title: Rychlé vytvoření aplikace .NET v Service Fabric v Azure
 description: V tomto rychlém startu vytvoříte aplikaci .NET pro Azure s využitím ukázkové aplikace Service Fabric Reliable Services.
 services: service-fabric
 documentationcenter: .net
@@ -15,14 +15,14 @@ ms.workload: azure-vs
 ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 02c77d1a34a4dec8732b5fa2edb4d7a55e079c28
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: dfc8890d58763bd193f6a0b4137fc972d26beb9f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68225199"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013212"
 ---
-# <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Rychlý start: Nasazení aplikace Reliable Services .NET pro Service Fabric
+# <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Rychlý start: Nasazení aplikace spolehlivých služeb v .NET do Service Fabric
 
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu škálovatelných a spolehlivých mikroslužeb a kontejnerů.
 
@@ -36,7 +36,7 @@ Pomocí této aplikace se naučíte:
 * Použití ASP.NET Core jako webového front-endu
 * Ukládání dat aplikace do stavové služby
 * Místní ladění aplikace
-* Škálování aplikace na více instancí napříč několika uzly
+* Škálovat aplikaci na více instancí napříč několika uzly.
 * Provedení upgradu aplikace se zajištěním provozu
 
 ## <a name="prerequisites"></a>Požadavky
@@ -98,7 +98,7 @@ Pokud chcete aplikaci nasadit, stiskněte **F5**.
 > [!NOTE]
 > V okně výstupu sady Visual Studio se zobrazí zpráva "adresa URL aplikace není nastavená, nebo se nejedná o adresu URL protokolu HTTP/HTTPS, takže prohlížeč nebude otevřen v aplikaci."  Tato zpráva neznačí chybu, pouze informuje, že se prohlížeč nespustí automaticky.
 
-Po dokončení nasazení spusťte prohlížeč a otevřete `http://localhost:8080` aplikaci, abyste zobrazili webový front-end aplikace.
+Po dokončení nasazení spusťte prohlížeč a otevřete `http://localhost:8080`, abyste zobrazili webový front-end aplikace.
 
 ![Front-end aplikace](./media/service-fabric-quickstart-dotnet/application-screenshot-new.png)
 
@@ -173,7 +173,7 @@ Pokud chcete upgradovat aplikaci, postupujte následovně:
 
     ![Dialogové okno pro publikování – nastavení upgradu](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
 
-10. Klikněte na tlačítko **publikovat**.
+10. Klikněte na **Publikovat**.
 
     V průběhu upgradu můžete aplikaci dál používat. Vzhledem k tomu, že v clusteru máte spuštěné dvě instance služby, můžou některé požadavky přicházet do upgradované verze aplikace, zatímco jiné můžou stále přicházet do staré verze.
 
@@ -191,7 +191,7 @@ V tomto rychlém startu jste se naučili:
 * Použití ASP.NET Core jako webového front-endu
 * Ukládání dat aplikace do stavové služby
 * Místní ladění aplikace
-* Škálování aplikace na více instancí napříč několika uzly
+* Škálovat aplikaci na více instancí napříč několika uzly.
 * Provedení upgradu aplikace se zajištěním provozu
 
 Další informace o Service Fabric a .NET najdete v tomto kurzu:

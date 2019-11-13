@@ -1,18 +1,18 @@
 ---
-title: Architektura pro zotavení po havárii Hyper-V do sekundární místní lokality pomocí Azure Site Recovery
+title: Architektura – zotavení po havárii technologie Hyper-V do sekundární lokality s Azure Site Recovery
 description: Tento článek poskytuje přehled architektury pro zotavení po havárii místních virtuálních počítačů Hyper-V do sekundární lokality System Center VMM s Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 98cc20ee8a6308350ffc142a13413bd26567a3e1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 716f8e053ad05ba701b3415946cd8d3a56044e62
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933508"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953985"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Architektura – replikace Hyper-V do sekundární lokality
 

@@ -1,17 +1,14 @@
 ---
 title: Procházení prostředků Azure
 description: Naučte se používat jazyk dotazů grafu prostředků k prozkoumání vašich prostředků a zjištění způsobu jejich připojení.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
-ms.service: resource-graph
-ms.openlocfilehash: 58eb5abc9a8857b81ada65c96eb7deaaa5cc5aeb
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e489a4eafdbbd838c4850d67fcd8ec40f76f290c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622665"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959241"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Zkoumání prostředků Azure pomocí služby Resource Graph
 
@@ -168,7 +165,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 ### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Virtuální počítače připojené k diskům spravovaným na úrovni Premium
 
-Pokud jsme chtěli získat podrobné informace o discích spravovaných na úrovni Premium, které jsou připojené k těmto virtuálním počítačům s **Standard_B2s** , můžeme rozšířit dotaz a poskytnout nám ID prostředku těchto spravovaných disků.
+Pokud jsme chtěli získat podrobnosti o discích spravovaných na úrovni Premium, které jsou k těmto **Standard_B2sm** virtuálním počítačům připojené, můžeme dotaz rozšířit a poskytnout nám ID prostředků těchto spravovaných disků.
 
 ```kusto
 Resources

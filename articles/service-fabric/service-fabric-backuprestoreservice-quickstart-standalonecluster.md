@@ -1,5 +1,5 @@
 ---
-title: Periodické zálohování a obnovení v Azure Service Fabric | Microsoft Docs
+title: Pravidelné zálohování a obnovování v samostatných Service Fabricch Azure
 description: Použijte funkci periodického zálohování a obnovení Service Fabric k povolení pravidelného zálohování dat aplikací.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: b949a0edff7ed6341d10518bc1c38afe2f7efad0
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 559f6cce7044d57c0a17fc3fe17f1c61f710913a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929184"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013332"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Pravidelné zálohování a obnovení v Azure Service Fabric
 > [!div class="op_single_selector"]

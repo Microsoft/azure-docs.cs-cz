@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 95fe5471789b66c253aa21d73433f5192cd01e6b
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 92aa28c131d81c41d515762ac2a346048c143790
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612039"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008579"
 ---
-# <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy k diskům virtuálních počítačů Azure IaaS a spravovaným a nespravovaným prémiovým diskům
-
 Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se Azure Managed Disks a Azure SSD úrovně Premium disků.
 
 ## <a name="managed-disks"></a>Spravované disky
@@ -254,7 +252,7 @@ Kompletní příklad vytvoření SSD úrovně Standard disku pomocí šablony na
 
 **Můžu převést existující disky na SSD úrovně Standard?**
 Ano, je to možné. Přečtěte si téma [Převod úložiště Azure Managed disks z úrovně Standard na Premium a naopak](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) pro obecné pokyny k převodu Managed disks. Pomocí následující hodnoty můžete aktualizovat typ disku na SSD úrovně Standard.
-– AccountType StandardSSD_LRS
+-AccountType StandardSSD_LRS
 
 **Jaká je výhoda použití SSD úrovně Standard disků místo HDD?**
 SSD úrovně Standard disky dodávají lepší latenci, konzistenci, dostupnost a spolehlivost v porovnání s disky HDD. Úlohy aplikací běží na SSD úrovně Standard mnohem plynule. Upozorňujeme, že SSD úrovně Premium disky jsou doporučeným řešením pro většinu produkčních úloh náročných na vstupně-výstupní operace.
@@ -350,18 +348,6 @@ Ne. Pokud ale exportujete VHD na zašifrovaný účet úložiště ze zašifrova
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>Disky úrovně Premium: spravované a nespravované
 
-**Které oblasti podporují možnosti shlukování pro platnou velikost disku SSD úrovně Premium?**
-
-Funkce shlukování se v současnosti podporuje v Azure Středozápadní USA.
-
-**Jaké oblasti jsou 4/8/16 GiB spravované velikosti disků (P1/P2/P3, E1/E2/E3), které jsou podporovány v?**
-
-Tyto nové velikosti disků se v současnosti v Azure Středozápadní USA podporují.
-
-**Jsou velikosti disků P1/P2/P3 podporované pro nespravované disky nebo objekty blob stránky?**
-
-Ne, podporuje se jenom u SSD úrovně Premium Managed Disks. 
-
 **Pokud virtuální počítač používá řadu velikostí, která podporuje SSD úrovně Premium disky, jako je DSv2, můžu připojit datové disky Premium i Standard?** 
 
 Ano.
@@ -391,6 +377,22 @@ Místní jednotka SSD je dočasné úložiště, které je součástí Managed D
 K použití OŘEZÁVÁNÍ na discích Azure na discích úrovně Premium nebo Standard neexistuje žádný nevýhodou.
 
 ## <a name="new-disk-sizes-managed-and-unmanaged"></a>Nové velikosti disků: spravované a nespravované
+
+**Které oblasti podporují možnosti shlukování pro platnou velikost disku SSD úrovně Premium?**
+
+Funkce shlukování se v současnosti podporuje v Azure Středozápadní USA.
+
+**Jaké oblasti jsou 4/8/16 GiB spravované velikosti disků (P1/P2/P3, E1/E2/E3), které jsou podporovány v?**
+
+Tyto nové velikosti disků se v současnosti v Azure Středozápadní USA podporují.
+
+**Jsou velikosti disků P1/P2/P3 podporované pro nespravované disky nebo objekty blob stránky?**
+
+Ne, podporuje se jenom na discích se systémem Premium SSD. 
+
+**Podporují se velikosti disků E1/E2/E3 pro nespravované disky nebo objekty blob stránky?**
+
+Ne, standardní disky SSD na libovolné velikosti se nedají použít u nespravovaných disků nebo objektů blob stránky.
 
 **Jaká je největší velikost spravovaného disku podporovaná pro operační systém a datové disky?**
 

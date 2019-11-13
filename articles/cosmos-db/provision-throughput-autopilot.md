@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e0c3c88119c3d064326442881854920b411f5ed4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 0e9f909aba11d35307e02a98a41ffa04e36e4db2
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748383"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953125"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Vytvoření kontejnerů a databází Azure Cosmos v režimu autopilotu (Preview)
 
@@ -24,7 +24,7 @@ Kromě ručního zřizování propustnosti teď můžete nakonfigurovat kontejne
 
 Už nebudete muset ručně spravovat zřízenou propustnost nebo zvládnout problémy s omezením četnosti. Kontejnery Azure Cosmos nakonfigurované v režimu autopilotu je možné okamžitě škálovat v reakci na zatížení, aniž by to mělo vliv na dostupnost, latenci, propustnost nebo výkon pro globální úlohy. V případě vysokého využití můžou být kontejnery Azure Cosmos nakonfigurované v režimu autopilotního navýšení nebo snížení kapacity, aniž by to mělo dopad na probíhající operace.
 
-Při konfiguraci kontejnerů a databází v režimu autopilotu je třeba zadat maximální propustnost `Tmax` nemusíte překročit. Kontejnery se pak můžou okamžitě škálovat na základě potřeb úloh v rozsahu `0.1*Tmax < T < Tmax`. Jinými slovy, kontejnery a databáze se okamžitě škálují podle potřeb úloh, od až do 10% maximální hodnoty propustnosti, kterou jste nakonfigurovali, a až po nakonfigurovanou maximální propustnost. V jakémkoli okamžiku v čase můžete změnit nastavení maximální propustnosti (tmax) pro autopilotskou databázi nebo kontejner.
+Při konfiguraci kontejnerů a databází v režimu autopilotu je třeba zadat maximální propustnost `Tmax` nemusíte překročit. Kontejnery se pak můžou okamžitě škálovat na základě potřeb úloh v rozsahu `0.1*Tmax < T < Tmax`. Jinými slovy, kontejnery a databáze se okamžitě škálují podle potřeb úloh, od až do 10% maximální hodnoty propustnosti, kterou jste nakonfigurovali, a až po nakonfigurovanou maximální propustnost. V jakémkoli okamžiku v čase můžete změnit nastavení maximální propustnosti (tmax) pro autopilotskou databázi nebo kontejner. S možností autopilotu se už neplatí minimální propustnost 400 RU/s na jeden kontejner nebo databáze.
 
 V rámci verze Preview nástroje autopilot pro zadanou maximální propustnost na kontejneru nebo databázi umožňuje systém pracovat v rámci počítaného limitu úložiště. Pokud dojde k překročení limitu úložiště, pak se maximální propustnost automaticky upraví na vyšší hodnotu. Při použití propustnosti na úrovni databáze v režimu autopilotu je počet kontejnerů povolených v rámci databáze vypočítán jako: (0,001 * maximální propustnost). Pokud například zřídíte 20 000 autopilot RU/s, databáze může mít 20 kontejnerů.
 

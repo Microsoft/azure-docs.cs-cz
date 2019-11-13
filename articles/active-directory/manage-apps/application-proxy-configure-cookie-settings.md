@@ -12,12 +12,12 @@ ms.date: 01/16/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca5f1b41e345caafdc465872c948be76c31d55e8
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7287e32fbeff751bddf91bed32afeeae84f9378c
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928876"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014520"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Nastavení souborů cookie pro přístup k místním aplikacím v Azure Active Directory
 
@@ -34,9 +34,9 @@ Azure Active Directory (Azure AD) mají přístup a soubory cookie relace pro p�
 | Použít trvalý soubor cookie | **Ne** | Hodnota **Ano** povolí proxy aplikace, aby při zavření webového prohlížeče nastavily soubory cookie pro přístup do vypršení platnosti. Trvalost trvá, dokud nevyprší platnost přístupového tokenu, nebo dokud uživatel neodstraní trvalé soubory cookie ručně. | Nepoužívejte **žádnou** z důvodu bezpečnostního rizika spojeného s udržením ověřených uživatelů.<br></br><br></br>Pro starší aplikace, které nemůžou sdílet soubory cookie mezi procesy, doporučujeme použít jenom **Ano** . Je lepší aktualizovat aplikaci tak, aby zpracovávala soubory cookie sdílení mezi procesy namísto použití trvalých souborů cookie. Můžete například potřebovat trvalé soubory cookie, které uživateli umožňují otevírat dokumenty Office v zobrazení Průzkumník z webu služby SharePoint. Bez trvalých souborů cookie Tato operace může selhat, pokud soubory cookie přístupu nejsou sdíleny mezi prohlížečem, procesem Průzkumníka a procesem Office. |
 
 ## <a name="samesite-cookies"></a>Soubory cookie SameSite
-Od verze [Chrome 80](https://support.google.com/chrome/a/answer/7679408?hl=en) a nakonec v prohlížečích využívajících [chrom](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html), soubory cookie, které nespecifikují atribut [SameSite](https://web.dev/samesite-cookies-explained) , budou považovány za, jako kdyby byly nastaveny na **SameSite = LAX**. Atribut SameSite deklaruje, jak by měly být soubory cookie omezeny na kontext stejného serveru. Když se nastaví na LAX, soubor cookie se pošle jenom do požadavků na stejnou lokalitu nebo do navigace na nejvyšší úrovni. Proxy aplikace ale vyžaduje, aby se tyto soubory cookie zachovaly v kontextu třetí strany, aby se uživatelé mohli při jejich relaci správně přihlásit. Z tohoto důvodu provádíme aktualizace přístupu k proxy aplikací a souborů cookie relace, aby se zabránilo nepříznivému dopadu této změny. Mezi tyto aktualizace patří:
+Od verze Chrome 80 a nakonec v prohlížečích využívajících chrom, soubory cookie, které nespecifikují atribut [SameSite](https://web.dev/samesite-cookies-explained) , budou považovány za, jako kdyby byly nastaveny na **SameSite = LAX**. Atribut SameSite deklaruje, jak by měly být soubory cookie omezeny na kontext stejného serveru. Když se nastaví na LAX, soubor cookie se pošle jenom do požadavků na stejnou lokalitu nebo do navigace na nejvyšší úrovni. Proxy aplikace ale vyžaduje, aby se tyto soubory cookie zachovaly v kontextu třetí strany, aby se uživatelé mohli při jejich relaci správně přihlásit. Z tohoto důvodu provádíme aktualizace přístupu k proxy aplikací a souborů cookie relace, aby se zabránilo nepříznivému dopadu této změny. Mezi tyto aktualizace patří:
 
-* Nastavení atributu **SameSite** na **hodnotu None**– umožňuje, aby se soubory cookie přístupu k proxy aplikací a jejich relací správně odesílaly v kontextu třetí strany.
+* Nastavení atributu **SameSite** na **hodnotu None**. To umožňuje, aby se soubory cookie přístupu a relací proxy aplikací správně odesílaly v kontextu třetí strany.
 * Nastavení **použít zabezpečený soubor cookie** pro použití výchozí hodnoty **Ano** . Chrom také vyžaduje, aby soubory cookie určovaly zabezpečený příznak, nebo bude odmítnut. Tato změna se bude vztahovat na všechny existující aplikace publikované prostřednictvím proxy aplikací. Všimněte si, že soubory cookie pro přístup k proxy aplikacím jsou vždycky nastavené na zabezpečení a přenášejí se přes HTTPS. Tato změna se bude vztahovat pouze na soubory cookie relace.
 
 Tyto změny souborů cookie aplikace proxy se budou zavádět v průběhu příštích několika týdnů před datem vydání verze Chrome 80.
@@ -48,12 +48,12 @@ Navíc platí, že pokud vaše back-end aplikace obsahuje soubory cookie, které
 ## <a name="set-the-cookie-settings---azure-portal"></a>Nastavení souborů cookie – Azure Portal
 Nastavení souborů cookie pomocí Azure Portal:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com). 
 2. Přejděte na **Azure Active Directory** > **podnikových aplikací** > **všech aplikacích**.
 3. Vyberte aplikaci, pro kterou chcete povolit nastavení souborů cookie.
 4. Klikněte na **proxy aplikace**.
 5. V části **Další nastavení**nastavte nastavení souborů cookie na **Ano** nebo **ne**.
-6. Změny aplikujte kliknutím na **Uložit** . 
+6. Klikněte na tlačítko **Uložit** změny. 
 
 ## <a name="view-current-cookie-settings---powershell"></a>Zobrazit aktuální nastavení souborů cookie – PowerShell
 

@@ -1,19 +1,19 @@
 ---
-title: Migrace místních serverů s Windows Serverem 2008 do Azure pomocí Azure Site Recovery | Microsoft Docs
+title: Migrace serverů s Windows Serverem 2008 do Azure pomocí Azure Site Recovery
 description: Tento článek popisuje migraci místních počítačů s Windows Serverem 2008 do Azure pomocí Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d0d5c482e2faf5e4a2c2918a64bd56e4aa814323
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 20fe29a6588891c35520db01ac0403fb5b3a85d7
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814502"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936140"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Migrace serverů s Windows Serverem 2008 do Azure
 
@@ -30,7 +30,7 @@ V tomto kurzu se dozvíte, jak migrovat místní servery s Windows Serverem 2008
 V části Omezení a známé problémy najdete několik omezení a alternativních řešení známých problémů, se kterými se můžete setkat při migraci počítačů s Windows Serverem 2008 do Azure. 
 
 > [!NOTE]
-> Teď můžete migrovat z místního prostředí do Azure pomocí služby Azure Migrate. [Další informace](../migrate/migrate-services-overview.md).
+> Teď můžete migrovat z místního prostředí do Azure pomocí služby Azure Migrate. [Další informace](../migrate/migrate-services-overview.md)
 
 
 ## <a name="supported-operating-systems-and-environments"></a>Podporované operační systémy a prostředí
@@ -93,7 +93,7 @@ Provedením následujících úloh připravte předplatné Azure a VMware v mís
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) > **Recovery Services**.
-2. Klikněte **na vytvořit** > **nástroje** > pro správu prostředků**zálohování a Site Recovery**.
+2. Klikněte na **vytvořit prostředek** > **nástroje pro správu** > **zálohování a Site Recovery**.
 3. Do pole **Název** zadejte popisný název **W2K8-migration**. Pokud máte více předplatných, vyberte příslušné předplatné.
 4. Vytvořte skupinu prostředků **w2k8migrate**.
 5. Zadejte oblast Azure. Informace o tom, které oblasti jsou podporované, najdete v části s geografickou dostupností v tématu s [podrobnostmi o cenách Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
@@ -131,7 +131,7 @@ Tato zásada se automaticky přidruží ke konfiguračnímu serveru.
 > [!WARNING]
 > Ujistěte se, že v nastavení Frekvence pořizování snímků konzistentních vzhledem k aplikacím v zásadě replikace zadáte **VYPNUTO**. Při replikaci serverů s Windows Serverem 2008 se podporují pouze body obnovení konzistentní vzhledem k selháním. Zadáním jakékoli jiné hodnoty frekvence snímků konzistentní vzhledem k aplikacím dojde k nepravdivým výstrahám, protože stav replikace je kritický pro server z důvodu nedostatku bodů obnovení konzistentního vzhledem k aplikacím.
 
-   ![Vytvoření zásad replikace](media/migrate-tutorial-windows-server-2008/create-policy.png)
+   ![Vytvoření zásady replikace](media/migrate-tutorial-windows-server-2008/create-policy.png)
 
 ## <a name="enable-replication"></a>Povolení replikace
 
@@ -150,7 +150,7 @@ Spusťte [testovací převzetí služeb při selhání](tutorial-dr-drill-azure.
    ![Testovací převzetí služeb při selhání](media/migrate-tutorial-windows-server-2008/testfailover.png)
 
 
-## <a name="migrate-to-azure"></a>Migrovat do Azure
+## <a name="migrate-to-azure"></a>Migrace do Azure
 
 Spusťte převzetí služeb při selhání pro počítače, které chcete migrovat.
 
@@ -163,8 +163,8 @@ Spusťte převzetí služeb při selhání pro počítače, které chcete migrov
     - Dokončí proces migrace, zastaví replikaci serveru a zastaví Site Recovery fakturace pro obsluhu.
     - Tento krok vyčistí data replikace. Migrované virtuální počítače se neodstraňují.
 
-   ![Dokončit migraci](media/migrate-tutorial-windows-server-2008/complete-migration.png)
+   ![Dokončení migrace](media/migrate-tutorial-windows-server-2008/complete-migration.png)
 
 
 > [!WARNING]
-> **Nerušit probíhající převzetí služeb při selhání**: Před spuštěním převzetí služeb při selhání se zastaví replikace serveru. Pokud zrušíte probíhající převzetí služeb při selhání, převzetí služeb při selhání se zastaví, ale server nebude nadále replikovat.
+> **Nezrušit probíhající převzetí služeb při selhání**: replikace serveru se zastavila před spuštěním převzetí služeb při selhání. Pokud zrušíte probíhající převzetí služeb při selhání, převzetí služeb při selhání se zastaví, ale server nebude nadále replikovat.

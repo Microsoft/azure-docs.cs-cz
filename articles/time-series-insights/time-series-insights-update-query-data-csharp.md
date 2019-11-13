@@ -1,6 +1,6 @@
 ---
-title: Dotazování dat z prostředí Azure Time Series Insights Preview pomocí C# kódu | Microsoft Docs
-description: Tento článek popisuje, jak zadávat dotazy na data z Azure Time Series Insights prostředí pomocí kódování vlastní aplikace napsané v C# jazyce .NET (C-Sharp).
+title: Dotazování dat z prostředí verze Preview C# pomocí-Azure Time Series Insights | Microsoft Docs
+description: Naučte se, jak zadávat dotazy na data z Azure Time Series Insights prostředí pomocí aplikace napsané v C#.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 46ade3ed6e8712a074974c81e51b2dd6c834db26
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 806460e5e4336624c6b0ead59dd5632e730c69e5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989668"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014721"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>Dotazování dat z prostředí Azure Time Series Insights Preview pomocíC#
 

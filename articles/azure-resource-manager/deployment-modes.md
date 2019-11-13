@@ -4,18 +4,18 @@ description: Popisuje, jak určit, jestli se má použít kompletní nebo přír
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 11/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 10a9917d8ed763b133fbd33aedd16da399a224b2
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 762b0e74e8da20d1b48703385853765d5cc643af
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881641"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953233"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Režimy nasazení Azure Resource Manager
 
-Při nasazování prostředků určíte, že nasazení je přírůstková nebo kompletní aktualizace.  Hlavním rozdílem mezi těmito dvěma režimy je způsob, jakým Správce prostředků zpracovává stávající prostředky ve skupině prostředků, která není v šabloně. Výchozí režim je přírůstkový.
+Při nasazování prostředků určíte, že nasazení je přírůstková nebo kompletní aktualizace.  Rozdíl mezi těmito dvěma režimy spočívá v tom, že Správce prostředků zpracovává stávající prostředky ve skupině prostředků, která není v šabloně. Výchozí režim je přírůstkový.
 
 V obou režimech se Správce prostředků pokusí vytvořit všechny prostředky, které jsou uvedené v šabloně. Pokud prostředek ve skupině prostředků už existuje a jeho nastavení se nezměnilo, pro tento prostředek se nebere žádná operace. Pokud změníte hodnoty vlastností prostředku, prostředek se aktualizuje o tyto nové hodnoty. Pokud se pokusíte aktualizovat umístění nebo typ existujícího prostředku, nasazení dojde k chybě. Místo toho nasaďte nový prostředek s umístěním nebo typem, který potřebujete.
 
@@ -26,6 +26,8 @@ V režimu úplné Správce prostředků **odstraní** prostředky, které existu
 Pokud vaše šablona obsahuje prostředek, který není nasazený, protože [Podmínka](conditional-resource-deployment.md) je vyhodnocena jako NEPRAVDA, výsledek závisí na tom, která REST API verze, kterou použijete k nasazení šablony. Pokud používáte verzi starší než 2019-05-10, prostředek se **neodstraní**. Při 2019-05-10 nebo novějším se prostředek **odstraní**. Nejnovější verze Azure PowerShell a Azure CLI odstraní prostředek.
 
 Použití kompletního režimu s [kopírováním smyček](resource-group-create-multiple.md)vám bude opatrní. Všechny prostředky, které nejsou zadány v šabloně po vyřešení smyčky kopírování, jsou odstraněny.
+
+Pokud nasadíte do [více než jedné skupiny prostředků v šabloně](resource-manager-cross-resource-group-deployment.md), prostředky ve skupině prostředků zadané v rámci operace nasazení mají nárok na odstranění. Prostředky v sekundárních skupinách prostředků se neodstraňují.
 
 Existují určité rozdíly ve způsobu, jakým typy prostředků zpracovávají kompletní odstranění režimu. Nadřazené prostředky se odstraní automaticky, když nejsou v šabloně, která je nasazena v úplném režimu. Některé podřízené prostředky nejsou automaticky odstraněny, pokud nejsou v šabloně. Tyto podřízené prostředky se ale odstraní, pokud se odstraní nadřazený prostředek. 
 

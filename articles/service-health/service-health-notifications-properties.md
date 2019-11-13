@@ -1,80 +1,78 @@
 ---
-title: Jaké jsou oznámení o stavu služby Azure?
-description: Oznámení o stavu služby umožňují zobrazit zprávy služby service health publikování Microsoft Azure.
-author: dkamstra
+title: Co jsou oznámení o službě Azure Service Health?
+description: Oznámení o stavu služby umožňují zobrazit zprávy o stavu služby publikované pomocí Microsoft Azure.
+author: stephbaron
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 4/12/2018
-ms.author: dukek
+ms.author: stbaron
 ms.subservice: logs
-ms.openlocfilehash: 87efa7442b0c67f2ee5f83b6b3e8ac8530ce5285
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b41c2cdc54ab5eecdc4503cbd98e69932c901a3d
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079545"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007091"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Zobrazení oznámení o stavu služby s využitím webu Azure Portal
 
-Oznámení o stavu služby k publikování aplikací Azure a obsahují informace o prostředcích v rámci vašeho předplatného. Tato oznámení jsou dílčí třídy aktivity protokolu události a můžete také najít v protokolu aktivit. Oznámení o stavu služby může být informační nebo praktické, v závislosti na třídě.
+Oznámení o stavu služby jsou publikována v Azure a obsahují informace o prostředcích v rámci vašeho předplatného. Tato oznámení jsou podtřídou událostí protokolu aktivit a lze je také najít v protokolu aktivit. Oznámení o stavu služby můžou být informativní nebo napadnutelná v závislosti na třídě.
 
 Existují různé třídy oznámení o stavu služby:  
 
-- **Požaduje se akce:** Azure si všimnout něco neobvyklého dojít u vašeho účtu a ve spolupráci s to napravit. Azure vám pošle oznámení, buď s podrobnostmi o akce, které je potřeba provést nebo kontaktování Azure engineering nebo podpory.  
-- **S asistencí obnovení:** Došlo k události a technici ujistíte, že i nadále dochází k dopad. Azure engineering musí spolupracovat s vámi přímo k obnovení úplné stavu vašich služeb.  
-- **Incident:** Událost, která ovlivňuje službu aktuálně ovlivňuje nejméně jeden z prostředků ve vašem předplatném.  
-- **Údržba:** Aktivity plánované údržby, který může mít vliv na jeden nebo více prostředků v rámci vašeho předplatného.  
-- **Informace:** Potenciální optimalizace, které může pomoct vylepšit váš prostředek použít. 
-- **Zabezpečení:** Naléhavá související se zabezpečením informace týkající se řešení, které běží na Azure.
+- **Požaduje se akce:** Azure si může všimnout, že váš účet má něco neobvyklého, a můžete s ním pracovat, abyste ho napravili. Azure vám pošle oznámení, a to buď s podrobnostmi o akcích, které potřebujete, nebo o tom, jak kontaktovat technickou podporu a technickou podporu Azure.  
+- **Incident:** Událost, která ovlivňuje službu, v současné době ovlivňuje jeden nebo více prostředků v rámci vašeho předplatného.  
+- **Údržba:** Plánovaná aktivita údržby, která může mít vliv na jeden nebo více prostředků v rámci vašeho předplatného.  
+- **Informace:** Potenciální optimalizace, které mohou pomoci zlepšit využití prostředků. 
+- **Zabezpečení:** Naléhavé informace související se zabezpečením týkající se řešení, která běží na Azure.
 
-Každý oznámení o stavu služby obsahuje podrobnosti o rozsah a dopad na vaše prostředky. Podrobnosti zahrnují:
+Každé oznámení o stavu služby zahrnuje podrobnosti o rozsahu a dopadu na vaše prostředky. Podrobnosti zahrnují:
 
 Název vlastnosti | Popis
 -------- | -----------
-kanály | Jeden z následujících hodnot: **Správce** nebo **operace**.
-correlationId | Obvykle GUID ve formátu řetězce. Události, které obvykle patří do stejné akce sdílejí stejné ID korelace.
-eventDataId | Jedinečný identifikátor události.
-eventName | Název události.
-level | Úroveň události
-resourceProviderName | Název poskytovatele prostředků pro ovlivněných prostředků.
-Typ prostředku| Typ prostředku ovlivněných prostředků.
-Podřízený stav | Stavový kód HTTP odpovídající REST obvykle volat, ale může také obsahovat jiných řetězců s popisem substatus. Příklad: OK (kód stavu HTTP: 200), vytvořit (kód stavu HTTP: 201), přijato (kód stavu HTTP: 202), žádný obsah (kód stavu HTTP: 204), chybná žádost (kód stavu HTTP: 400), nebyl nalezen (kód stavu HTTP: 404), konflikt (kód stavu HTTP: 409), se interní chyba serveru (kód stavu HTTP: 500), služba není k dispozici (kód stavu HTTP: 503) a časový limit brány (kód stavu HTTP: 504).
-eventTimestamp | Časové razítko události vygenerované službou Azure zpracování požadavku odpovídající události.
-submissionTimestamp | Časové razítko, kdy je k dispozici pro dotazování na události.
-subscriptionId | Předplatné Azure, ve kterém se tato událost byla zaznamenána.
-status | Řetězec popisující stav operace. Některé běžné hodnoty jsou: **Spuštění**, **probíhá**, **úspěšné**, **se nezdařilo**, **Active**, a **přeložit**.
+barev | Jedna z následujících hodnot: **admin** nebo **Operation**.
+correlationId | Obvykle identifikátor GUID ve formátu řetězce. Události, které patří do stejné akce, obvykle sdílejí stejné ID korelace.
+eventDataId | Jedinečný identifikátor události
+eventName | Název události
+úroveň | Úroveň události
+resourceProviderName | Název poskytovatele prostředků pro ovlivněný prostředek.
+resourceType| Typ prostředku ovlivněného prostředku.
+subStatus | Obvykle stavový kód HTTP odpovídajícího volání REST, ale může také obsahovat další řetězce popisující dílčí stav. Příklad: OK (kód stavu HTTP: 200), Vytvořeno (kód stavu HTTP: 201), přijato (kód stavu HTTP: 202), žádný obsah (kód stavu HTTP: 204), chybný požadavek (kód stavu HTTP: 400), nenalezen (Stavový kód HTTP: 404), konflikt (Stavový kód HTTP: 409), interní server Chyba (kód stavu HTTP: 500), nedostupná služba (kód stavu HTTP: 503) a časový limit brány (kód stavu HTTP: 504).
+EventTimestamp | Časové razítko, kdy se událost vygenerovala službou Azure, zpracování žádosti odpovídající události
+submissionTimestamp | Časové razítko, kdy se událost stala k dispozici pro dotazování
+subscriptionId | Předplatné Azure, ve kterém se tato událost zaznamenala.
+status | Řetězec popisující stav operace. Mezi běžné hodnoty patří: **spuštěno**, **probíhá**, **úspěšné**, **neúspěšné**, **aktivní**a **vyřešené**.
 operationName | Název operace.
 category | Tato vlastnost je vždy **ServiceHealth**.
-resourceId | ID prostředku ovlivněných prostředků.
-Properties.Title | Lokalizovaný název pro tuto komunikaci. Výchozí hodnota je angličtina.
-Properties.communication | Lokalizované podrobnosti o komunikaci s značka jazyka HTML. Výchozí hodnota je angličtina.
-Properties.incidentType | Jeden z následujících hodnot: **Je vyžadována akce**, **informační**, **Incident**, **údržby**, nebo **zabezpečení**.
-Properties.trackingId | Incident, ke kterému tato událost je přidružena. Použijte ke korelaci událostí souvisejících s incidentem.
-Properties.impactedServices | Uvozený uvozovacím znakem blob JSON, s popisem služby a oblasti vliv incident. Vlastnost obsahuje seznam služeb, z nichž každá má **ServiceName**a seznam ovlivněných oblastí, z nichž každá má **RegionName**.
+resourceId | ID prostředku ovlivněného prostředku.
+Properties. title | Lokalizovaný název této komunikace. Výchozím nastavením je angličtina.
+Properties.communication | Lokalizované podrobnosti komunikace s označením HTML. Výchozím nastavením je angličtina.
+Properties.incidentType | Jedna z následujících hodnot: **je vyžadována akce**, **informativní**, **incident**, **Údržba**nebo **zabezpečení**.
+Properties.trackingId | Incident, ke kterému je přidružena tato událost Tento postup použijte ke korelaci událostí souvisejících s incidentem.
+Properties.impactedServices | Řídicí objekt BLOB JSON, který popisuje služby a oblasti, na které se incidenty ovlivňují. Vlastnost obsahuje seznam služeb, z nichž každý má **ServiceName**, a seznam ovlivněných oblastí, z nichž každý má **RegionName**.
 Properties.defaultLanguageTitle | Komunikace v angličtině.
-Properties.defaultLanguageContent | Komunikace v angličtině jako značka jazyka HTML nebo prostého textu.
-Properties.Stage | Možné hodnoty parametru **Incident**, a **zabezpečení** jsou **aktivní,** **Vyřešeno** nebo **RCA**. Pro **je vyžadována akce** nebo **informativní** je jediná hodnota **aktivní.** Pro **údržby** jsou: **Aktivní**, **plánované**, **InProgress**, **zrušena**, **přeplánovat**, **přeložit**, nebo **kompletní**.
-Properties.communicationId | Komunikace, ke kterému tato událost je přidružena.
+Properties.defaultLanguageContent | Komunikace v angličtině buď jako kód HTML, nebo jako prostý text.
+Vlastnosti. Stage | Možné hodnoty pro **incidenty**a **zabezpečení** jsou **aktivní,** **vyřešené** nebo **RCA**. Pro **je vyžadována akce** nebo **informativní** je jedinou hodnotou **aktivní.** V případě **údržby** : **aktivní**, **plánovaná**, **Nedokončená**, **zrušená**, **přeplánovaná**, **vyřešená**nebo **Dokončená**.
+Properties.communicationId | Komunikace, ke které je tato událost přidružena.
 
-### <a name="details-on-service-health-level-information"></a>Podrobné informace o stavu úrovni služby
+### <a name="details-on-service-health-level-information"></a>Podrobnosti o úrovni stavu služby
 
-**Požaduje se akce** (properties.incidentType == je vyžadována akce)
-- Informativní – akce správce vyžaduje, aby se zabránilo dopadu na stávající služby
+**Požaduje se akce** (Properties. incidentType = = je vyžadována akce)
+- Informační – akce správce je nutná k tomu, aby se zabránilo dopadu na stávající služby.
     
-**Údržba** (properties.incidentType == udržování)
-- Upozornění: Nouzový údržby
-- Informační - standard plánovaná údržba
+**Údržba** (vlastnosti. incidentType = = údržba)
+- Upozornění – údržba v nouzi
+- Informativní – standardní plánovaná údržba
 
-**Information** (properties.incidentType == Information)
-- Informační – správce může být nutné zabránilo dopadu na stávající služby
+**Informace** (vlastnosti. incidentType = = informace)
+- Informační – správce může být nutný k tomu, aby se zabránilo dopadu na stávající služby.
 
-**Security** (properties.incidentType == Security)
-- Chyba – rozšířených problémy s přístupem k více služeb napříč několika oblastmi mají vliv na široké škále zákazníků.
-- Upozornění: problémy s přístupem k určité služby a/nebo konkrétní oblasti mají vliv na podmnožinu zákazníků.
-- Informativní – problémy vliv na operace správy nebo latence, bez dopadu na dostupnost služeb.
+**Zabezpečení** (vlastnosti. incidentType = = zabezpečení)
+- Upozornění – informační zpravodaj zabezpečení, který ovlivňuje stávající služby a může vyžadovat akci správce.
+- Informační zpravodaj zabezpečení, který má vliv na stávající služby.
 
-**Služba problémy** (properties.incidentType == Incident)
-- Chyba – rozšířených problémy s přístupem k více služeb napříč několika oblastmi mají vliv na široké škále zákazníků.
-- Upozornění: problémy s přístupem k určité služby a/nebo konkrétní oblasti mají vliv na podmnožinu zákazníků.
-- Informativní – problémy vliv na operace správy nebo latence, bez dopadu na dostupnost služeb.
+**Problémy se službou** (Properties. incidentType = = incident)
+- Chyba: rozšířené problémy s přístupem k více službám v různých oblastech mají vliv na širokou škálu zákazníků.
+- Upozornění – problémy při přístupu ke konkrétním službám a/nebo konkrétním oblastem mají vliv na podmnožinu zákazníků.
+- Informativní – problémy, které mají vliv na operace správy a/nebo latenci, nemají vliv na dostupnost služby.

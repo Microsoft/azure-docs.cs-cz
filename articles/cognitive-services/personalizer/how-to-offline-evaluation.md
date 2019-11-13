@@ -1,7 +1,7 @@
 ---
 title: Jak provádět přizpůsobování offline vyhodnocení
 titleSuffix: Azure Cognitive Services
-description: Naučte se analyzovat výukovou smyčku pomocí offline vyhodnocení.
+description: V tomto článku se dozvíte, jak používat offline testování k měření efektivity vaší aplikace a k analýze studijních smyček.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 9d7336fb933ee5e9781d15214fa3e59446aa5b6a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c2aec0db2d1f9865188f2749a0eeb765a14d04ed
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490715"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73952998"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>Analýza výukové smyčky pomocí offline vyhodnocení
 
@@ -26,7 +26,7 @@ Vyhodnocení v režimu offline umožňuje měřit, jak efektivní přizpůsoben�
 Další informace najdete v článku o [hodnoceních offline](concepts-offline-evaluation.md) .
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nakonfigurované smyčka přizpůsobeného přizpůsobování
 * Smyčka přizpůsobování musí mít reprezentativní množství dat – jako jen ve svých protokolech doporučujeme minimálně 50 000 událostí pro smysluplné výsledky vyhodnocení. Volitelně můžete také dříve exportovat soubory _zásad učení_ , které můžete porovnat a testovat ve stejném vyhodnocení.

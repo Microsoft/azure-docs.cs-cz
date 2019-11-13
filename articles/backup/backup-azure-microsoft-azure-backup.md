@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 789cc1d835024babb2482b2601503dbaf7247fc2
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 5b1e417ecd41f93d7919b67ebdd3faf32521d8a4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747418"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012931"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
 
@@ -56,7 +56,7 @@ Ochrana úloh pomocí Azure Backup Server má spoustu drobné odlišnosti. Tento
 
 Pokud nechcete spustit základní server v Azure, můžete server spustit na virtuálním počítači Hyper-V, na virtuálním počítači VMware nebo na fyzickém hostiteli. Doporučené minimální požadavky na hardware serveru jsou dvě jádra a 8 GB paměti RAM. Podporované operační systémy jsou uvedené v následující tabulce:
 
-| Operační systém | Platforma | Skladová jednotka (SKU) |
+| Operační systém | Platforma | Skladová položka |
 |:--- | --- |:--- |
 | Windows Server 2019 |64bitová verze |Standard, Datacenter, Essentials |
 | Windows Server 2016 a nejnovější aktualizace service packu |64bitová verze |Standard, Datacenter, Essentials  |
@@ -95,7 +95,7 @@ Chcete-li upravit nastavení replikace úložiště:
 
 ### <a name="downloading-the-software-package"></a>Stažení softwarového balíčku
 
-1. Přihlásit se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 2. Pokud už máte otevřený trezor Recovery Services, pokračujte krokem 3. Pokud nemáte otevřený trezor Recovery Services, ale nachází se v Azure Portal, v hlavní nabídce klikněte na tlačítko **Procházet**.
 
    * V seznamu prostředků zadejte **Služby zotavení**.
@@ -185,14 +185,14 @@ Po dokončení procesu extrakce zaškrtněte políčko pro spuštění programu 
 
     Pro konfiguraci služby SSRS použijte následující hodnoty:
     * Účet služby: použít předdefinovaný účet by měl být síťová služba
-    * Adresa URL webové služby: virtuální adresář by měl být ReportServer_<SQLInstanceName>
-    * Databáze: DatabaseName by měl být ReportServer $<SQLInstanceName>
-    * Adresa URL webového portálu: virtuální adresář by měl být Reports_<SQLInstanceName>
+    * Adresa URL webové služby: virtuální adresář by měl být ReportServer_\<SQLInstanceName >
+    * Databáze: DatabaseName by měla být ReportServer $\<SQLInstanceName >
+    * Adresa URL webového portálu: virtuální adresář by měl být Reports_\<SQLInstanceName >
 
     [Přečtěte si další informace](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) o konfiguraci služby SSRS.
 
     > [!NOTE]
-    > Licencování pro SQL Server používané jako databáze pro MABS se řídí [podmínkami služeb Microsoft Online Services](https://www.microsoft.com/en-us/licensing/product-licensing/products) (OST). V závislosti na formátu OST je SQL Server balíčkům s MABS použít jenom jako databázi pro MABS.
+    > Licencování pro SQL Server používané jako databáze pro MABS se řídí [podmínkami služeb Microsoft Online Services](https://www.microsoft.com/licensing/product-licensing/products) (OST). V závislosti na formátu OST je SQL Server balíčkům s MABS použít jenom jako databázi pro MABS.
 
 4. Zadejte umístění instalace souborů Microsoft Azure Backup serveru a klikněte na tlačítko **Další**.
 
@@ -220,7 +220,7 @@ Po dokončení procesu extrakce zaškrtněte políčko pro spuštění programu 
     ![Azure Backup Server PreReq2](./media/backup-azure-microsoft-azure-backup/mars/04.png)
 9. Po úspěšném dokončení registrace Microsoft Azure Backup serveru přejde průvodce celkovým nastavením na instalaci a konfiguraci SQL Server a Azure Backup Server komponenty. Po dokončení instalace součásti SQL Server se nainstalují Azure Backup Server součásti.
 
-    ![Azure Backup Server](./media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
+    ![Server Azure Backup](./media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
 
 Po dokončení instalace se vytvoří taky ikony na ploše produktu. Stačí dvakrát kliknout na ikonu a spustit produkt.
 
@@ -290,11 +290,11 @@ Jakmile budete znát stav připojení Azure a předplatného Azure, můžete pom
 
 | Stav připojení | předplatné Azure | Zálohování do Azure | Zálohovat na disk | Obnovení z Azure | Obnovení z disku |
 | --- | --- | --- | --- | --- | --- |
-| Připojeno |Aktivní |Povolené |Povolené |Povolené |Povolené |
-| Připojeno |Platnost vypršela |Zastaveno |Zastaveno |Povolené |Povolené |
+| Připojeno |Aktivní |Povoleno |Povoleno |Povoleno |Povoleno |
+| Připojeno |Platnost vypršela |Zastaveno |Zastaveno |Povoleno |Povoleno |
 | Připojeno |Zajištění zrušeno |Zastaveno |Zastaveno |Zastaveno a body obnovení Azure byly odstraněny |Zastaveno |
-| Ztracené připojení > 15 dní |Aktivní |Zastaveno |Zastaveno |Povolené |Povolené |
-| Ztracené připojení > 15 dní |Platnost vypršela |Zastaveno |Zastaveno |Povolené |Povolené |
+| Ztracené připojení > 15 dní |Aktivní |Zastaveno |Zastaveno |Povoleno |Povoleno |
+| Ztracené připojení > 15 dní |Platnost vypršela |Zastaveno |Zastaveno |Povoleno |Povoleno |
 | Ztracené připojení > 15 dní |Zajištění zrušeno |Zastaveno |Zastaveno |Zastaveno a body obnovení Azure byly odstraněny |Zastaveno |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Obnovování ze ztráty připojení
@@ -304,8 +304,8 @@ Pokud máte bránu firewall nebo proxy server, který brání přístupu k Azure
 * `http://www.msftncsi.com/ncsi.txt`
 * \*.Microsoft.com
 * \*.WindowsAzure.com
-* \*.microsoftonline.com
-* \*.windows.net
+* \*. microsoftonline.com
+* \*. windows.net
 
 Po obnovení připojení k Azure na Azure Backup Server počítač se operace, které jde provést, stanoví ve stavu předplatného Azure. Výše uvedená tabulka obsahuje podrobnosti o operacích, které jsou povolené, když je počítač připojený.
 
@@ -336,7 +336,7 @@ K upgradu MABS použijte následující postup:
    >
    > Neukončujte během upgradu instance SQL, ukončení odinstaluje instanci generování sestav SQL, a proto se pokus o opětovné provedení upgradu MABS nezdaří.
 
-   Důležité informace, které je potřeba vzít v paměti:
+
 
    > [!IMPORTANT]
    >
@@ -346,7 +346,7 @@ K upgradu MABS použijte následující postup:
 
 3. Aktualizujte agenty ochrany na chráněných serverech.
 4. Zálohování by mělo pokračovat bez nutnosti restartovat provozní servery.
-5. Teď můžete začít chránit svoje data. Pokud provádíte upgrade na Moderní úložiště zálohování a zároveň chráníte, můžete také vybrat svazky, ve kterých chcete ukládat zálohy, a v části zřízené místo ověřit. [Další informace](backup-mabs-add-storage.md).
+5. Teď můžete začít chránit svoje data. Pokud provádíte upgrade na Moderní úložiště zálohování a zároveň chráníte, můžete také vybrat svazky, ve kterých chcete ukládat zálohy, a v části zřízené místo ověřit. [Další informace](backup-mabs-add-storage.md)
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

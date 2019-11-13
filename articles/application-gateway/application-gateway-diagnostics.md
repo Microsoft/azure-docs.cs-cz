@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: 9e1fe0e5bae462715a8cb2950cca100f0f409325
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: fa930d4ab420708e6abfdf1765703afbe20fa25e
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718726"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958264"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Stav back-endu a diagnostické protokoly pro Application Gateway
 
@@ -33,7 +33,7 @@ Application Gateway poskytuje možnost monitorování stavu jednotlivých člen�
 Zpráva o stavu back-endu odráží výstup Application Gateway sondy stavu do back-endové instance. Když je zjišťování úspěšné a back-end může přijímat přenosy, považuje se za dobrý stav. V opačném případě se považuje za není v pořádku.
 
 > [!IMPORTANT]
-> Pokud je v Application Gateway podsíti skupina zabezpečení sítě (NSG), otevřete rozsahy portů 65503-65534 v podsíti Application Gateway pro příchozí provoz. Tento rozsah portů je nutný pro komunikaci s infrastrukturou Azure. Jsou chráněny (uzamknuty) s použitím certifikátů Azure. Bez správných certifikátů nebudou externí entity, včetně zákazníků těchto bran, moci na těchto koncových bodech iniciovat žádné změny.
+> Pokud je v Application Gateway podsíti skupina zabezpečení sítě (NSG), otevřete rozsahy portů 65503-65534 pro SKU V1 a 65200-65535 pro skladové jednotky V2 v podsíti Application Gateway pro příchozí provoz. Tento rozsah portů je nutný pro komunikaci s infrastrukturou Azure. Jsou chráněny (uzamknuty) s použitím certifikátů Azure. Bez správných certifikátů nebudou externí entity, včetně zákazníků těchto bran, moci na těchto koncových bodech iniciovat žádné změny.
 
 
 ### <a name="view-back-end-health-through-the-portal"></a>Zobrazení stavu back-endu prostřednictvím portálu
@@ -166,13 +166,13 @@ Protokol přístupu se vygeneruje jenom v případě, že jste ho povolili na ka
 |requestUri     | Identifikátor URI přijatého požadavku        |
 |RequestQuery     | **Směrováno serverem**: instance fondu back-end, která odeslala požadavek.</br>**X-AzureApplicationGateway-log-ID**: ID korelace použité pro požadavek. Dá se použít k řešení problémů s přenosem na back-endové servery. </br>**Stav serveru**: kód odpovědi HTTP, který Application Gateway přijatý od back-endu.       |
 |UserAgent     | Uživatelský agent z hlavičky požadavku HTTP.        |
-|Stavu protokolu http     | Stavový kód HTTP se vrátil klientovi z Application Gateway.       |
+|httpStatus     | Stavový kód HTTP se vrátil klientovi z Application Gateway.       |
 |httpVersion     | Verze protokolu HTTP požadavku.        |
 |receivedBytes     | Velikost přijatého paketu (v bajtech)        |
 |sentBytes| Velikost odeslaného paketu (v bajtech).|
 |timeTaken| Doba (v milisekundách), kterou vyžaduje zpracování žádosti a odpověď, která má být odeslána. Počítá se jako interval od času, kdy Application Gateway přijme první bajt požadavku HTTP do doby, kdy se dokončí operace odeslání odpovědi. Je důležité si uvědomit, že časové pole obvykle zahrnuje dobu, po kterou se pakety požadavků a odpovědí cestují po síti. |
 |sslEnabled| Zda komunikace s back-end fondy používala protokol SSL. Platné hodnoty jsou zapnuté a vypnuté.|
-|Provoz| Název hostitele, se kterým se odeslal požadavek na back-end Server. Pokud je přepsán back-end hostname, tento název bude odpovídat.|
+|host| Název hostitele, se kterým se odeslal požadavek na back-end Server. Pokud je přepsán back-end hostname, tento název bude odpovídat.|
 |originalHost| Název hostitele, se kterým Application Gateway požadavek přijal z klienta.|
 ```json
 {
@@ -209,7 +209,7 @@ V případě Application Gateway a WAF v2 se v protokolech zobrazí další info
 |httpMethod     | Metoda HTTP, kterou požadavek používá       |
 |requestUri     | Identifikátor URI přijatého požadavku        |
 |UserAgent     | Uživatelský agent z hlavičky požadavku HTTP.        |
-|Stavu protokolu http     | Stavový kód HTTP se vrátil klientovi z Application Gateway.       |
+|httpStatus     | Stavový kód HTTP se vrátil klientovi z Application Gateway.       |
 |httpVersion     | Verze protokolu HTTP požadavku.        |
 |receivedBytes     | Velikost přijatého paketu (v bajtech)        |
 |sentBytes| Velikost odeslaného paketu (v bajtech).|
@@ -220,7 +220,7 @@ V případě Application Gateway a WAF v2 se v protokolech zobrazí další info
 |serverRouted| Back-end Server, na který Aplikační brána směruje požadavek.|
 |serverStatus| Stavový kód HTTP back-end serveru.|
 |serverResponseLatency| Latence odpovědi ze serveru back-end.|
-|Provoz| Adresa uvedená v hlavičce hostitele žádosti.|
+|host| Adresa uvedená v hlavičce hostitele žádosti.|
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -263,7 +263,7 @@ Protokol výkonu je vygenerován pouze v případě, že jste jej povolili na ka
 |requestCount     | Počet zpracovaných požadavků.        |
 |latence | Průměrná latence (v milisekundách) požadavků z instance do back-endu, který obsluhuje požadavky. |
 |failedRequestCount| Počet neúspěšných žádostí|
-|zvyšují| Průměrná propustnost od posledního protokolu měřená v bajtech za sekundu|
+|Propustnost| Průměrná propustnost od posledního protokolu měřená v bajtech za sekundu|
 
 ```json
 {
@@ -298,18 +298,18 @@ Protokol brány firewall je vygenerován pouze v případě, že jste jej povoli
 |IP adresa klienta     |   Původní IP adresa pro požadavek.      |
 |clientPort     |  Původní port pro požadavek.       |
 |requestUri     | Adresa URL přijatého požadavku       |
-|Typ rulesettype     | Typ sady pravidel Dostupná hodnota je OWASP.        |
+|ruleSetType     | Typ sady pravidel Dostupná hodnota je OWASP.        |
 |ruleSetVersion     | Použitá verze sady pravidel Dostupné hodnoty jsou 2.2.9 a 3,0.     |
 |ruleId     | ID pravidla události triggeru        |
 |zpráva     | Uživatelsky přívětivá zpráva pro aktivační událost. Další podrobnosti najdete v části Podrobnosti.        |
 |action     |  Akce prováděná na žádosti Dostupné hodnoty jsou blokované a povolené.      |
 |webovém     | Lokalita, pro kterou se protokol vygeneroval. V současné době se v seznamu zobrazí pouze globální, protože pravidla jsou globální.|
-|Zobrazí     | Podrobnosti události aktivace.        |
+|details     | Podrobnosti události aktivace.        |
 |Podrobnosti. zpráva     | Popis pravidla        |
-|Podrobnosti. data     | V žádosti, která se shodovala s pravidlem, se našla konkrétní data.         |
+|details.data     | V žádosti, která se shodovala s pravidlem, se našla konkrétní data.         |
 |details. File     | Konfigurační soubor, který obsahoval pravidlo.        |
 |details. line     | Číslo řádku v konfiguračním souboru, který spustil událost.       |
-|Název hostitele   | Název hostitele nebo IP adresa Application Gateway.    |
+|název hostitele   | Název hostitele nebo IP adresa Application Gateway.    |
 |transactionId  | Jedinečné ID pro danou transakci, které pomáhá seskupovat více porušení pravidel, ke kterým došlo v rámci stejné žádosti.   |
 
 ```json

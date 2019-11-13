@@ -1,17 +1,14 @@
 ---
 title: Použití parametrů k vytváření dynamických modrotisky
 description: Přečtěte si o statických a dynamických parametrech a o tom, jak je použijete k vytváření dynamických modrotisky
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/12/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 2bb38e0698d7504ba1bb139ca1bd5e3b14e5cdd4
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: da0670bdc880c47c3b715dc8344896a6c695924c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981061"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960514"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Vytváření dynamických modrotisky prostřednictvím parametrů
 
@@ -184,7 +181,7 @@ Opakem statického parametru je **dynamický parametr**. Tento parametr není de
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Nastavení dynamických parametrů z REST API
 
-Nastavení **dynamických parametrů** během přiřazování je provedeno přímým zadáním hodnoty. Namísto použití funkce, jako jsou například [parametry ()](../reference/blueprint-functions.md#parameters), je poskytnutá hodnota vhodný řetězec. Artefakty pro skupinu prostředků jsou definované s vlastnostmi název šablony, **název**a **umístění** . Všechny ostatní parametry zahrnutého artefaktu jsou definovány v rámci **parametrů** s dvojicí **\<name @ no__t-3** a klíčovou **hodnotou** . Pokud je podrobný plán konfigurován pro dynamický parametr, který není k dispozici během přiřazení, přiřazení se nezdaří.
+Nastavení **dynamických parametrů** během přiřazování je provedeno přímým zadáním hodnoty. Namísto použití funkce, jako jsou například [parametry ()](../reference/blueprint-functions.md#parameters), je poskytnutá hodnota vhodný řetězec. Artefakty pro skupinu prostředků jsou definované s vlastnostmi název šablony, **název**a **umístění** . Všechny ostatní parametry zahrnutého artefaktu jsou definovány v části **parametry** s **názvem\<\>** a dvojici klíčů **hodnot** . Pokud je podrobný plán konfigurován pro dynamický parametr, který není k dispozici během přiřazení, přiřazení se nezdaří.
 
 - Identifikátor URI v REST API
 

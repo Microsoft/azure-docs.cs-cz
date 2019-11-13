@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: nastavení prostředí pro náhled Azure Time Series Insights | Microsoft Docs'
-description: Přečtěte si, jak nastavit prostředí v Azure Time Series Insights Preview.
+title: 'Kurz: nastavení prostředí verze Preview – Azure Time Series Insights | Microsoft Docs'
+description: Přečtěte si, jak nastavit prostředí pro Azure Time Series Insights ve verzi Preview.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,14 +10,14 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 25571dbd87e4d01645a3a7a991588a3a943b3e4d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 2dd08af518be9b3fec84e756edf9532ef669f22f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719377"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012663"
 ---
-# <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Kurz: nastavení prostředí pro Azure Time Series Insights Preview
+# <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Kurz: Nastavení prostředí Azure čas Series Insights ve verzi Preview
 
 Tento kurz vás provede procesem vytvoření náhledu prostředí s průběžnými platbami v Azure Time Series Insights Preview (PAYG).
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Vytvořte prostředí Azure Time Series Insights Preview.
 > * Připojte prostředí Azure Time Series Insights Preview k IoT Hub.
 > * Spusťte ukázku akcelerátoru řešení pro streamování dat do prostředí Azure Time Series Insights Preview.
-> * Proveďte základní analýzu dat.
+> * Proveďte základní analýzy na data.
 > * Definujte typ modelu časové řady a hierarchii a přidružte je k vašim instancím.
 > * Použijte konektor Power BI a Vizualizujte data v Power BI.
 
@@ -73,7 +73,7 @@ V této části vytvoříte tři simulovaná zařízení, která odesílají dat
 
 Tato část popisuje, jak vytvořit prostředí Azure Time Series Insights Preview a připojit ho ke službě IoT Hub vytvořené pomocí akcelerátoru řešení IoT pomocí [Azure Portal](https://portal.azure.com/).
 
-1. Přihlaste se k Azure Portal pomocí svého účtu předplatného.
+1. Přihlaste se k webu Azure portal pomocí svého účtu předplatného.
 
 1. Vyberte **vytvořit prostředek** > **Internet věcí** > **Time Series Insights**.
 
@@ -372,7 +372,7 @@ V tomto kurzu jste se naučili:
 * Vytvořte PAYG prostředí Azure Time Series Insights ve verzi Preview.
 * Připojte prostředí Azure Time Series Insights Preview ke službě IoT Hub.
 * Spusťte ukázku akcelerátoru řešení pro streamování dat do prostředí Azure Time Series Insights Preview.
-* Provede základní analýzu dat.
+* Proveďte analýzu základní data.
 * Definujte typ modelu časové řady a hierarchii a přidružte je k vašim instancím.
 
 Teď, když víte, jak vytvořit vlastní prostředí pro Azure Time Series Insights Preview, získáte další informace o klíčových konceptech v Azure Time Series Insights.
@@ -380,9 +380,9 @@ Teď, když víte, jak vytvořit vlastní prostředí pro Azure Time Series Insi
 Přečtěte si o konfiguraci úložiště Azure Time Series Insights:
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights a příchozí úložiště ve verzi Preview](./time-series-insights-update-storage-ingress.md)
+> [Azure storage čas Series Insights ve verzi Preview a příchozího přenosu dat](./time-series-insights-update-storage-ingress.md)
 
-Další informace o modelech časových řad:
+Další informace o modelech řady čas:
 
 > [!div class="nextstepaction"]
-> [Modelování dat ve verzi Preview Azure Time Series Insights](./time-series-insights-update-tsm.md)
+> [Modelování dat Azure čas Series Insights ve verzi Preview](./time-series-insights-update-tsm.md)

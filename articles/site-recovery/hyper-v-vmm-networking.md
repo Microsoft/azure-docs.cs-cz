@@ -1,18 +1,18 @@
 ---
-title: Nastavení IP adresování pro připojení k sekundární místní lokalitě po převzetí služeb při selhání pomocí Azure Site Recovery
+title: Nastavení IP adres po převzetí služeb při selhání do sekundární lokality s Azure Site Recovery
 description: Popisuje postup nastavení IP adres pro připojení k virtuálním počítačům v sekundární místní lokalitě po zotavení po havárii a převzetí služeb při selhání pomocí Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: f158c6b71bb53d6b683577401e625e24808eb7eb
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: a61f7ff69e648262eb721eb61a98b09dbbee924c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813681"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961426"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Nastavení IP adresování pro připojení k sekundárnímu místnímu webu po převzetí služeb při selhání
 
@@ -22,8 +22,8 @@ Po převzetí služeb při selhání virtuálních počítačů Hyper-V v cloude
 
 Po převzetí služeb při selhání existuje několik způsobů, jak zpracovávat IP adresy pro virtuální počítače repliky: 
 
-- **Po převzetí služeb při selhání zachovat stejnou IP adresu**: V tomto scénáři má replikovaný virtuální počítač stejnou IP adresu jako primární virtuální počítač. Tato činnost zjednodušuje problémy související se sítí po převzetí služeb při selhání, ale vyžaduje určitou práci v infrastruktuře.
-- **Po převzetí služeb při selhání použít jinou IP adresu**: V tomto scénáři po převzetí služeb při selhání Získá virtuální počítač novou IP adresu. 
+- **Po převzetí služeb při selhání zachovat stejnou IP adresu**: v tomto scénáři má REPLIKOVANÝ virtuální počítač stejnou IP adresu jako primární virtuální počítač. Tato činnost zjednodušuje problémy související se sítí po převzetí služeb při selhání, ale vyžaduje určitou práci v infrastruktuře.
+- **Po převzetí služeb při selhání použít jinou IP adresu**: v tomto scénáři po převzetí služeb při selhání Získá virtuální počítač novou IP adresu. 
  
 
 ## <a name="retain-the-ip-address"></a>Zachovat IP adresu

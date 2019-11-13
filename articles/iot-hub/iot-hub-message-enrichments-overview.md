@@ -1,6 +1,6 @@
 ---
 title: Přehled rozšíření zpráv IoT Hub Azure
-description: Přehled rozšíření zpráv pro zprávy Azure IoT Hub
+description: V tomto článku se dozvíte o rozšířeních zpráv, která IoT Hub schopnost zasílat zprávy s dalšími informacemi ještě předtím, než se zprávy odešlou do určeného koncového bodu.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 40ce5c4f73daac2b88d3a59e46d43dba10db0954
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 83114023eb35221bfa53e3ce4de8a861948c7a3a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177996"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005831"
 ---
-# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Rozšíření zpráv pro zprávy ze zařízení na Cloud IoT Hub (Preview)
+# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Rozšíření zpráv pro zprávy ze zařízení na Cloud IoT Hub
 
 *Rozšiřování zpráv* je schopnost IoT Hub k *razítku* zpráv s dalšími informacemi, než se zprávy odešlou do určeného koncového bodu. Jedním z důvodů použití rozšíření zpráv je zahrnutí dat, která je možné použít ke zjednodušení zpracování po směru. Například obohacení zpráv telemetrie zařízení pomocí značky s dvojitou silou zařízení může snížit zatížení zákazníky, aby pro tyto informace volalo volání rozhraní API zařízení.
 
@@ -81,10 +81,6 @@ Informace o tom, jak vyzkoušet rozšiřování zpráv, najdete v [kurzu rozší
 ## <a name="pricing"></a>Ceny
 
 Rozšíření zpráv je k dispozici bez dalších poplatků. V současné době se vám budou účtovat poplatky za odeslání zprávy do IoT Hub. U této zprávy se účtují jenom jednou, a to i v případě, že zpráva přejde do více koncových bodů.
-
-## <a name="availability"></a>Dostupnost
-
-Tato funkce je dostupná ve verzi Preview a je dostupná ve všech oblastech kromě Východní USA, Západní USA, Západní Evropa, [Azure Government](/azure/azure-government/documentation-government-welcome), [Azure Čína 21Vianet](/azure/china)a [Azure Německo](https://azure.microsoft.com/global-infrastructure/germany/).
 
 ## <a name="next-steps"></a>Další kroky
 

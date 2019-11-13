@@ -1,25 +1,24 @@
 ---
-title: Přesun virtuálních počítačů Azure IaaS mezi Azure Government a veřejnými oblastmi pomocí služby Azure Site Recovery | Microsoft Docs
-description: Pomocí Azure Site Recovery můžete přesunout virtuální počítače Azure IaaS mezi Azure Government & veřejné oblasti.
-services: site-recovery
+title: Přesun virtuálních počítačů Azure mezi státními a veřejnými regiony pomocí Azure Site Recovery
+description: K přesunutí virtuálních počítačů Azure mezi vládou Azure a veřejnými regiony použijte Azure Site Recovery.
 author: rajani-janaki-ram
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: bff6268507c0d2ec0aa1eac0c7e2e9d2513ded58
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 2a749e9345fec0e91751641cd15805d7f7d62d95
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376129"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961418"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Přesun virtuálních počítačů Azure mezi Azure Government a veřejnými regiony 
 
 Můžete chtít přesunout virtuální počítače s IaaS mezi Azure Government a veřejnými oblastmi a zvýšit tak dostupnost stávajících virtuálních počítačů, zlepšit spravovatelnost nebo pro účely správy, jak je popsáno [zde](azure-to-azure-move-overview.md).
 
-Kromě používání služby [Azure Site Recovery](site-recovery-overview.md) ke správě a orchestraci zotavení po havárii místních počítačů a virtuálních počítačů Azure za účelem zajištění provozní kontinuity a zotavení po havárii (BCDR), můžete ke správě Azure použít taky Site Recovery. Virtuální počítače do sekundární oblasti.       
+Kromě používání služby [Azure Site Recovery](site-recovery-overview.md) ke správě a orchestraci zotavení po havárii místních počítačů a virtuálních počítačů Azure pro účely kontinuity podnikových prostředí a zotavení po havárii (BCDR), můžete pomocí Site Recovery spravovat přesun virtuálních počítačů Azure do sekundární oblasti.       
 
 V tomto kurzu se dozvíte, jak přesunout virtuální počítače Azure mezi Azure Government a veřejnými oblastmi pomocí Azure Site Recovery. Stejný postup je možné rozšířit tak, aby se přesunuly virtuální počítače mezi páry oblastí, které nejsou v rámci stejného geografického clusteru. V tomto kurzu se naučíte:
 
@@ -79,8 +78,8 @@ Nastavte [účet úložiště Azure](../storage/common/storage-quickstart-create
 Na každém serveru, který chcete replikovat, musí být nainstalovaná služba mobility. Site Recovery tuto službu nainstaluje automaticky, když povolíte replikaci pro server. K automatické instalaci musíte připravit účet, který Site Recovery použít pro přístup k serveru.
 
 - Můžete použít doménový nebo místní účet.
-- Pokud v případě virtuálních počítačů s Windows nepoužíváte doménový účet, zakažte na místním počítači vzdálené řízení přístupu uživatele. To provedete tak, že v registru pod **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System**přidáte položku typu DWORD **LocalAccountTokenFilterPolicy**s hodnotou 1.
-- Chcete-li přidat položku registru pro zakázání nastavení z rozhraní příkazového řádku, zadejte:``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
+- Pokud v případě virtuálních počítačů s Windows nepoužíváte doménový účet, zakažte na místním počítači vzdálené řízení přístupu uživatele. To provedete tak, že v registru v části **HKEY_LOCAL_MACHINE \software\microsoft\windows\currentversion\policies\system**přidáte položku typu DWORD **LocalAccountTokenFilterPolicy**s hodnotou 1.
+- Chcete-li přidat položku registru pro zakázání nastavení z rozhraní příkazového řádku, zadejte: ``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
 - Pro Linux by měl být účet rootem na zdrojovém serveru Linux.
 
 
@@ -111,23 +110,23 @@ Následující kroky vám pomohou použít Azure Site Recovery ke kopírování 
 ### <a name="create-the-vault-in-any-region-except-the-source-region"></a>V libovolné oblasti (s výjimkou zdrojové oblasti) vytvořte trezor.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) > **Recovery Services**.
-2. Klikněte **na vytvořit** > **nástroje** > pro správu prostředků**zálohování a Site Recovery**.
+2. Klikněte na **vytvořit prostředek** > **nástroje pro správu** > **zálohování a Site Recovery**.
 3. Do pole **Název** zadejte popisný název **ContosoVMVault**. Pokud máte více než jeden. Vyberte příslušný odběr.
 4. Vytvořte skupinu prostředků **ContosoRG**.
 5. Zadejte oblast Azure. Informace o tom, které oblasti jsou podporované, najdete v části s geografickou dostupností v tématu s [podrobnostmi o cenách Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
-6. V Recovery Services trezorů klikněte na **Přehled** > **ConsotoVMVault** >  **+ replikovat** .
-7. Výběr **do Azure** > **není virtualizovaný/jiný**.
+6. V Recovery Services trezorů klikněte na **přehled** > **ConsotoVMVault** >  **+ replikovat** .
+7. Vyberte **do Azure** > **nevirtualizované/jiné**.
 
 ### <a name="set-up-the-configuration-server-to-discover-vms"></a>Nastavte konfigurační server pro zjišťování virtuálních počítačů.
 
 
 Nastavte konfigurační server, zaregistrujte ho v trezoru a vyhledejte virtuální počítače.
 
-1. Klikněte na **Site Recovery** > **připravit** > **zdroj**infrastruktury.
+1. Klikněte na **Site Recovery** > připravit **zdroj** **infrastruktury** > .
 2. Pokud nemáte konfigurační server, klikněte na **+ konfigurační server**.
 3. V nástroji **Přidat server**ověřte, že se **konfigurační server** zobrazuje v **typu serveru**.
 4. Stáhněte instalační soubor sjednocené instalace Site Recovery.
-5. Stáhnout registrační klíč trezoru Budete ho potřebovat při spuštění sjednocené instalace. Klíč je platný pět dní od jeho vygenerování.
+5. Stáhněte registrační klíč trezoru. Budete ho potřebovat při spuštění sjednocené instalace. Klíč je platný pět dní od jeho vygenerování.
 
    ![Nastavení zdroje](./media/physical-azure-disaster-recovery/source-environment.png)
 
@@ -154,7 +153,7 @@ Chcete-li nainstalovat konfigurační server, spusťte sjednocené nastavení ja
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
-Po dokončení registrace se konfigurační server zobrazí na stránce **Nastavení** > **serverů** v trezoru.
+Po dokončení registrace se konfigurační server zobrazí na stránce **nastavení** > **servery** v trezoru.
 
 ### <a name="configure-target-settings-for-replication"></a>Konfigurace nastavení cíle pro replikaci
 
@@ -164,7 +163,7 @@ Vyberte a zkontrolujte cílové prostředky.
 2. Zadejte cílový model nasazení.
 3. Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a účet úložiště Azure.
 
-   ![Target](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![Cíl](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ### <a name="create-a-replication-policy"></a>Vytvoření zásady replikace
@@ -198,22 +197,22 @@ Tato zásada se automaticky přidruží ke konfiguračnímu serveru. Ve výchoz�
    > [!WARNING]
    > Musíte zadat IP adresu virtuálního počítače Azure, který máte v úmyslu přesunout.
 
-10. V části **vlastnosti** > **Konfigurace vlastností**vyberte účet, který bude procesový Server používat k automatické instalaci služby mobility na počítači.
+10. V okně **vlastnosti** > **Konfigurovat vlastnosti**vyberte účet, který bude procesový Server používat k automatické instalaci služby mobility na počítači.
 11. V části **Nastavení replikace** > **Konfigurace nastavení replikace** zkontrolujte, jestli je vybraná správná zásada replikace. 
 12. Klikněte na **Povolit replikaci**. Průběh úlohy **Povolení ochrany** můžete sledovat tady: **Nastavení** > **Úlohy** > **Úlohy Site Recovery**. Po spuštění úlohy **Dokončit ochranu** je počítač připravený k převzetí služeb při selhání.
 
 
-Chcete-li monitorovat servery, které jste přidali, můžete zjistit čas poslední zjištěné konfigurace v části **konfigurační servery** > **Poslední kontakt na**. Chcete-li přidat počítače bez čekání na naplánovaný čas zjišťování, zvýrazněte konfigurační server (neklikejte na něj) a klikněte na tlačítko **aktualizovat**.
+Chcete-li monitorovat servery, které přidáte, můžete kontrolovat čas poslední zjištěné **konfigurace v konfiguračních serverech** > **Poslední kontakt na**. Chcete-li přidat počítače bez čekání na naplánovaný čas zjišťování, zvýrazněte konfigurační server (neklikejte na něj) a klikněte na tlačítko **aktualizovat**.
 
 ## <a name="test-the-configuration"></a>Otestování konfigurace
 
 
-1. Přejděte do trezoru, v **Nastavení** > **replikované položky**klikněte na virtuální počítač, který chcete přesunout do cílové oblasti, klikněte na ikonu **+ testovat převzetí služeb při selhání** .
+1. Přejděte do trezoru, v **nastavení** > **replikované položky**klikněte na virtuální počítač, který chcete přesunout do cílové oblasti, klikněte na tlačítko **+ testovat převzetí služeb při selhání** .
 2. V části **Testovací převzetí služeb při selhání** vyberte bod obnovení, který se má pro převzetí služeb při selhání použít:
 
-   - **Poslední zpracovaná**: Virtuální počítač se nezdařil do posledního bodu obnovení, který zpracovala služba Site Recovery. Časové razítko je vidět. S touto možností se neztrácí žádný čas zpracováním dat, takže poskytuje nízkou plánovanou dobu obnovení (RTO).
-   - **Nejnovější konzistentní vzhledem k aplikacím**: Tato možnost převezme všechny virtuální počítače na nejnovější bod obnovení konzistentní vzhledem k aplikacím. Časové razítko je vidět.
-   - **Vlastní**: Vyberte libovolný bod obnovení.
+   - **Nejnovější zpracovaný:** Vrátí virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Zobrazí se časové razítko. S touto možností se neztrácí žádný čas zpracováním dat, takže poskytuje nízkou plánovanou dobu obnovení (RTO).
+   - **Nejnovější konzistentní vzhledem k aplikacím:** Tato možnost vrátí všechny virtuální počítače k nejnovějšímu bodu obnovení konzistentnímu vzhledem k aplikacím. Zobrazí se časové razítko.
+   - **Vlastní:** Vyberete si libovolný bod obnovení.
 
 3. Vyberte cílovou virtuální síť Azure, do které chcete virtuální počítače Azure přesunout a otestovat konfiguraci. 
 
@@ -226,7 +225,7 @@ Chcete-li monitorovat servery, které jste přidali, můžete zjistit čas posle
 
 ## <a name="perform-the-move-to-the-target-region-and-confirm"></a>Proveďte přesun do cílové oblasti a potvrďte.
 
-1. Přejděte do trezoru, v části **Nastavení** > **replikované položky**klikněte na virtuální počítač a pak klikněte na **převzetí služeb při selhání**.
+1. Přejděte do trezoru, v části **nastavení** > **replikované položky**klikněte na virtuální počítač a pak klikněte na **převzetí služeb při selhání**.
 2. V okně **Převzetí služeb při selhání** vyberte **Nejnovější**. 
 3. Vyberte **Před spuštěním převzetí služeb při selhání vypnout počítač**. Služba Site Recovery se před aktivací převzetí služeb při selhání pokusí zdrojový virtuální počítač vypnout. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**. 
 4. Po dokončení úlohy ověřte, že se virtuální počítač zobrazuje v cílové oblasti Azure podle očekávání.
@@ -246,7 +245,7 @@ V případě, že nemáte žádné plány k opakovanému použití některého z
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste přesunuli virtuální počítač Azure do jiné oblasti Azure. Nyní můžete pro přesunutý virtuální počítač nakonfigurovat zotavení po havárii.
 

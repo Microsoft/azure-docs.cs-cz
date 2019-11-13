@@ -1,5 +1,5 @@
 ---
-title: Ukázky v Azure CLI pro DNS
+title: Ukázky v Azure CLI pro DNS – Azure DNS
 description: Ukázky v Azure CLI pro DNS
 services: dns
 author: vhorne
@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: e51b198bc92afdf22269478b96e364934e63c191
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: ddfc025f9bea809e21fbc457b41645ef6e93ae0b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154705"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005881"
 ---
 # <a name="azure-cli-examples-for-azure-dns"></a>Příklady Azure CLI pro Azure DNS
 

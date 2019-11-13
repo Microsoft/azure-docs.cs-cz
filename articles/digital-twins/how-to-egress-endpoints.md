@@ -1,6 +1,6 @@
 ---
-title: Odchozí a koncové body v Azure Digital provlákna | Microsoft Docs
-description: Pokyny pro vytváření koncových bodů pomocí digitálních vláken Azure
+title: Odchozí a koncové body – digitální vlákna Azure | Microsoft Docs
+description: Naučte se vytvářet a zamezit koncové body událostí v digitálních prozdvojeních Azure.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,14 +8,14 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 9a5e060d6248d3144720930fe960e0a371a73d6e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 33e8a6a281fbc6620a4608c7b0821b196043423e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822272"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010057"
 ---
-# <a name="egress-and-endpoints"></a>Odchozí a koncové body
+# <a name="egress-and-endpoints-in-azure-digital-twins"></a>Odchozí a koncové body v digitálních prozdvojeních Azure
 
 *Koncové body* digitálních vláken Azure reprezentují zprávu nebo zprostředkovatele událostí v rámci předplatného Azure uživatele. Události a zprávy je možné odesílat do Event Hubs Azure, Azure Event Grid a Azure Service Bus témata.
 
@@ -50,12 +50,12 @@ Události se odesílají pomocí objektů IoT (jako jsou zařízení a senzory) 
 | Atribut | Typ | Popis |
 | --- | --- | --- |
 | id | řetězec | Jedinečný identifikátor události |
-| závislosti | řetězec | Cesta definovaná vydavatelem k předmětu události |
+| subject | řetězec | Cesta definovaná vydavatelem k předmětu události |
 | data | objekt | Data události specifická pro poskytovatele prostředků. |
-| Typ | řetězec | Jeden z registrovaných typů událostí pro tento zdroj události. |
-| Čas události | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
-| dataverze | řetězec | Verze schématu datového objektu. Vydavatel definuje verzi schématu. |
-| Verze metadataversion | řetězec | Verze schématu metadat události. Event Grid definuje schéma vlastností nejvyšší úrovně. Tuto hodnotu poskytuje Event Grid. |
+| eventType | řetězec | Jeden z registrovaných typů událostí pro tento zdroj události. |
+| eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
+| dataVersion | řetězec | Verze schématu datového objektu. Vydavatel definuje verzi schématu. |
+| metadataVersion | řetězec | Verze schématu metadat události. Event Grid definuje schéma vlastností nejvyšší úrovně. Tuto hodnotu poskytuje Event Grid. |
 | téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nejde zapisovat. Tuto hodnotu poskytuje Event Grid. |
 
 Další informace o schématu Event Grid události:
@@ -84,8 +84,8 @@ Formáty událostí pro každý typ události jsou dále popsány v následujíc
 - DeviceExtendedProperty
 - ExtendedPropertyKey
 - ExtendedType
-- Úložiště klíčů
-- Sestava
+- KeyStore
+- Zpráva
 - Rutiny roledefinition
 - Elektrické
 - SensorBlobMetadata

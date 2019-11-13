@@ -1,6 +1,6 @@
 ---
-title: Jak škálovat Azure Time Series Insights prostředí | Microsoft Docs
-description: Tento článek popisuje, jak škálovat Azure Time Series Insights prostředí. Pomocí Azure Portal můžete přidat nebo odečíst kapacitu v rámci cenové jednotky.
+title: Jak škálovat prostředí – Azure Time Series Insights | Microsoft Docs
+description: Naučte se škálovat Azure Time Series Insights prostředí pomocí Azure Portal.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3f03f5ed75c720c9b0daf30d721ef4d2aee9749c
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: b17cdb2ec27676d5d20d6f12bad309368fe32aa3
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991170"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006806"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Postup škálování Time Series Insightsho prostředí
 
@@ -40,7 +40,7 @@ Změna SKU cenové úrovně ale není povolená. Například prostředí s cenov
 
 1. Nastavením posuvníku **kapacity** můžete vybrat kapacitu, která splňuje požadavky na míry příchozího přenosu dat a kapacitu úložiště. Všimněte si, že míra příchozího **přenosu**dat, **kapacita úložiště**a **Odhadovaná cena** se dynamicky aktualizuje, aby se zobrazil dopad změny.
 
-   [Posuvník![](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
+   [Posuvník ![](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
 
    Alternativně můžete do textového pole napravo od posuvníku zadat číslo multiplikátoru kapacity.
 

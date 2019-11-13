@@ -1,19 +1,18 @@
 ---
-title: Vyloučení disků z replikace při nastavování zotavení po havárii pomocí služby Azure Site Recovery | Dokumentace Microsoftu
+title: Vyloučení disků z replikace při zotavení po havárii pomocí Azure Site Recovery
 description: Popisuje, jak vyloučit disky virtuálních počítačů z replikace během zotavení po havárii do Azure.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
-ms.date: 01/19/2019
+ms.date: 11/12/2019
 ms.author: mayg
-ms.openlocfilehash: f86ded99ef5280a4e6929c39a9fd323d1b61f6f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12304067e1a92559c2313fd7382f271249a8c784
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773893"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961442"
 ---
 # <a name="exclude-disks-from-replication"></a>Vyloučení disků z replikace
 Tento článek popisuje, jak vyloučit disky z replikace. Takové vyloučení může optimalizovat jak využití šířky pásma potřebné pro replikaci, tak i prostředků využívaných na cílové straně těmito disky.
@@ -73,7 +72,7 @@ Na zdrojovém virtuálním počítači jsou následující disky:
 DB-Disk0-OS | DISK0 | C:\ | Disk operačním systému
 DB-Disk1| Disk1 | D:\ | Databáze systému SQL a uživatelská databáze 1
 DB-Disk2 (disk vyloučený z ochrany) | Disk2 | E:\ | Dočasné soubory
-DB-Disk3 (disk vyloučený z ochrany) | Disk3 | F:\ | SQL databáze tempdb (cesta ke složce (F:\MSSQL\Data\) <br /> <br />Poznamenejte si cestu ke složce před převzetí služeb při selhání.
+DB-Disk3 (disk vyloučený z ochrany) | Disk3 | F:\ | SQL databáze tempdb (cesta ke složce (F:\MSSQL\Data\) <br /> <br />Před převzetím služeb při selhání zapište cestu ke složce.
 DB Disk4 | Disk4 |G:\ |Uživatelská databáze 2
 
 Protože časté změny dat na dvou discích virtuálního počítače jsou dočasné, při ochraně virtuálního počítače SalesDB vylučte Disk2 a Disk3 z replikace. Azure Site Recovery nebude tyto disky replikovat. Po převzetí služeb při selhání tyto disky nebudou na cílovém virtuálním počítači v Azure připojené.
@@ -83,7 +82,7 @@ Ve virtuálním počítači Azure budou po převzetí služeb při selhání tyt
 **Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku**
 --- | --- | ---
 DISK0 | C:\ | Disk operačním systému
-Disk1 | E:\ | Dočasné úložiště<br /> <br />Azure tento disk přidá a přiřadí první dostupné písmeno jednotky.
+Disk1 | E:\ | Dočasné úložiště<br /> <br />Azure přidá tento disk a přiřadí první dostupné písmeno jednotky.
 Disk2 | D:\ | Databáze systému SQL a uživatelská databáze 1
 Disk3 | G:\ | Uživatelská databáze 2
 
@@ -147,7 +146,7 @@ V předchozím příkladu vypadá konfigurace disků virtuálního počítače A
 **Označení disku v hostovaném operačním systému** | **Písmeno jednotky** | **Typ dat na disku**
 --- | --- | ---
 DISK0 | C:\ | Disk operačním systému
-Disk1 | E:\ | Dočasné úložiště<br /> <br />Azure tento disk přidá a přiřadí první dostupné písmeno jednotky.
+Disk1 | E:\ | Dočasné úložiště<br /> <br />Azure přidá tento disk a přiřadí první dostupné písmeno jednotky.
 Disk2 | D:\ | Databáze systému SQL a uživatelská databáze 1
 Disk3 | G:\ | Uživatelská databáze 2
 
@@ -197,7 +196,7 @@ Tady je nastavení stránkovacího souboru na virtuálním počítači Azure:
 
 ![Nastavení stránkovacího souboru na virtuálním počítači Azure](./media/hyper-v-exclude-disk/pagefile-on-Azure-vm-after-failover.png)
 
-### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>Případ 2: Stránkovací soubor je nakonfigurován na jiné jednotce (než je D:)
+### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>Případ 2: Stránkovací soubor je nakonfigurovaný na jiné jednotce (než je D:)
 
 Tady je konfigurace disků zdrojového virtuálního počítače:
 
@@ -227,5 +226,5 @@ Tady je nastavení stránkovacího souboru na virtuálním počítači Azure:
 
 ![Nastavení stránkovacího souboru na virtuálním počítači Azure](./media/hyper-v-exclude-disk/pagefile-on-Azure-vm-after-failover-2.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Po nasazení a zprovoznění nasazení si můžete přečíst [další informace](site-recovery-failover.md) o různých typech převzetí služeb při selhání.

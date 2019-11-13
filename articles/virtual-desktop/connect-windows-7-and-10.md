@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 11/12/2019
 ms.author: helohr
-ms.openlocfilehash: 2552fcbd860a0cc98aa7e2a6c7f92796a8d588ca
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 420978e79da99847f16e5c85b2d2510083ca97a7
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605789"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006234"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Připojení s desktopovým klientem Windows
 
@@ -28,8 +28,8 @@ K prostředkům virtuálních klientů Windows se můžete dostat na zařízení
 Vyberte klienta, který odpovídá vaší verzi Windows:
 
 - [Windows 64 – bit](https://go.microsoft.com/fwlink/?linkid=2068602)
-- [Windows 32 – bitová verze Preview](https://go.microsoft.com/fwlink/?linkid=2098960)
-- [Windows ARM64 Preview](https://go.microsoft.com/fwlink/?linkid=2098961)
+- [Windows 32 – bit](https://go.microsoft.com/fwlink/?linkid=2098960)
+- [ARM64 Windows](https://go.microsoft.com/fwlink/?linkid=2098961)
 
 Klienta můžete nainstalovat pro aktuálního uživatele, který nevyžaduje oprávnění správce, nebo může správce nainstalovat a nakonfigurovat klienta tak, aby k němu měli přístup všichni uživatelé zařízení.
 

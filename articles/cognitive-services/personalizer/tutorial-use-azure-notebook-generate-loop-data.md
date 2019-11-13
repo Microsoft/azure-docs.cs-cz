@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: program pro přizpůsobování notebooků Azure'
 titleSuffix: Azure Cognitive Services
-description: V tomto kurzu se simuluje smyčka přizpůsobeného _systemu v poznámkovém bloku Azure, který navrhuje typ kávy, který si zákazník může objednat. Uživatelé a jejich předvolby jsou uloženy v uživatelské datové sadě. Informace o kávě jsou také k dispozici a uloženy v datové sadě kávy.
+description: V tomto kurzu se simuluje smyčka přizpůsobeného _system v poznámkovém bloku Azure, který navrhuje typ kávy, který si zákazník může objednat. Uživatelé a jejich předvolby jsou uloženy v uživatelské datové sadě. Informace o kávě jsou také k dispozici a uloženy v datové sadě kávy.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6bc306551d158d4b996002de0bb5ab991a0bcbd9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 669ebbf595629e8093c51d76b0816edeb5f80f93
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467244"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007604"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Kurz: použití přizpůsobeného úložiště v Azure poznámkovém bloku
 
@@ -29,7 +29,7 @@ Poznámkový blok vybere náhodného uživatele, denní dobu a typ počasí z da
 
 |Zákazníci – kontextové funkce|Denní doba|Typy počasí|
 |--|--|--|
-|Náležící<br>Bobem<br>Cathy<br>Dave|Označení<br>Celkem<br>Celkem|Slunečné<br>RAINY<br>Bílá| 
+|Alice<br>Bob<br>Cathy<br>Dave|Označení<br>Celkem<br>Celkem|Slunečné<br>RAINY<br>Bílá| 
 
 Aby se usnadnilo přizpůsobování učení, v průběhu času správný výběr kávy pro jednotlivé uživatele ví, že _systém_ také zná údaje o kavárně.
 
@@ -589,7 +589,7 @@ Pokud chcete najít lepší zásady učení na základě vašich dat na rozhran�
 1. Zadejte požadovaná data zkušebního názvu a rozsah dat pro vyhodnocení smyčky. Rozsah kalendářních dat by měl obsahovat jenom dny, na které se zaměřujete pro vyhodnocení. 
     ![v Azure Portal otevřete stránku vyhodnocení prostředku přizpůsobeného pro přizpůsobení. Vyberte vytvořit vyhodnocení. Zadejte název vyhodnocení a rozsah dat.](./media/tutorial-azure-notebook/create-offline-evaluation.png)
 
-    Účelem spuštění tohoto testování v režimu offline je určit, jestli jsou k dispozici lepší zásady učení pro funkce a akce použité v této smyčce. Pokud chcete zjistit, jestli jsou zásady optimalizace zapnuté, ujistěte se, že jsou zapnuté **zásady optimalizace** .
+    Účelem spuštění tohoto testování v režimu offline je určit, jestli jsou k dispozici lepší zásady učení pro funkce a akce použité v této smyčce. Aby se zajistilo, že se mají lepší zásady učení, ujistěte se, že je zapnuté **zjišťování optimalizace** .
 
 1. Kliknutím na **OK** zahajte vyhodnocení. 
 1. Tato stránka **hodnocení** obsahuje nové vyhodnocení a aktuální stav. V závislosti na tom, kolik dat máte, může toto vyhodnocení trvat delší dobu. Po několika minutách se můžete vrátit k této stránce a zobrazit výsledky. 

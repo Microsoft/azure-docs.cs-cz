@@ -1,5 +1,5 @@
 ---
-title: Začínáme s identitou modulu a dvojčetem modulu služby Azure IoT Hub (portál a .NET) | Microsoft Docs
+title: Vlákna & modulu identity modulu Azure IoT Hub (portál a .NET)
 description: Zjistěte, jak vytvořit identitu modulu a aktualizovat dvojče modulu pomocí portálu a .NET.
 author: robinsh
 manager: philmea
@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 395b1fd3301925db0607f775c6b7367979ba367b
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 289c269100eb6ab672bb8d60562c1fa77d8d091a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147436"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954605"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Začínáme s identitou modulu a dvojčetem modulu služby IoT Hub pomocí portálu a zařízení .NET
 
@@ -82,7 +82,7 @@ Chcete-li vytvořit aplikaci, která aktualizuje nedokončené hlášené vlastn
 
 Identita modulu a modul s dvojitou identitou jsou ve verzi Public Preview. Je k dispozici pouze v sadách IoT Hub předběžných vydání sady SDK pro zařízení. Pokud ho chcete nainstalovat, postupujte následovně:
 
-1. V aplikaci Visual Studio otevřete **nástroje** >  > **Správce balíčků NuGet** **Spravovat balíčky NuGet pro řešení**.
+1. V aplikaci Visual Studio otevřete **nástroje** > **správce balíčků NuGet** > **Spravovat balíčky NuGet pro řešení**.
 
 1. Vyberte **Procházet**a pak vyberte **Zahrnout předprodejní verze**. Vyhledejte *Microsoft. Azure. Devices. Client*. Vyberte nejnovější verzi a nainstalujte.
 
@@ -94,7 +94,7 @@ Identita modulu a modul s dvojitou identitou jsou ve verzi Public Preview. Je k 
 
 Pro konzolovou aplikaci potřebujete připojovací řetězec modulu. Postupujte následovně:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 
 1. Přejděte do svého centra IoT a vyberte **zařízení IoT**. Otevřete **myFirstDevice** a uvidíte, že **myFirstModule** se úspěšně vytvořil.
 
@@ -106,7 +106,7 @@ Pro konzolovou aplikaci potřebujete připojovací řetězec modulu. Postupujte 
 
 K vytvoření aplikace použijte následující postup:
 
-1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
+1. Do horní části souboru `using`Program.cs**přidejte následující příkazy**:
 
   ```csharp
   using Microsoft.Azure.Devices.Client;

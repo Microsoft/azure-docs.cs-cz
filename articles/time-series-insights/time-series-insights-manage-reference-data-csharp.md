@@ -1,6 +1,6 @@
 ---
-title: Správa referenčních dat v prostředí Azure Time Series Insights C# pomocí | Microsoft Docs
-description: Tento článek popisuje, jak spravovat referenční data pro prostředí Azure Time Series Insights vytvořením vlastní aplikace napsané v jazyce .NET C# (c-Sharp).
+title: Správa referenčních dat ve vašem prostředí GA C# pomocí-Azure Time Series Insights | Microsoft Docs
+description: Naučte se spravovat referenční data pro prostředí GA vytvořením vlastní aplikace napsané v C#.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4eb8a22ee56203fe84df6ee1cff779e3f3bdf491
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: a32bf00d21311a1a8041a901f70b9b400a49ab76
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990048"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012572"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Správa referenčních dat GA pro Azure Time Series Insights prostředí pomocíC#
 

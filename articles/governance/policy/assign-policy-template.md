@@ -1,26 +1,23 @@
 ---
 title: Vytvoření přiřazení pomocí šablony Správce prostředků
 description: Tento článek vás provede jednotlivými kroky použití šablony Správce prostředků k vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/13/2019
 ms.topic: quickstart
-ms.service: azure-policy
-ms.openlocfilehash: 842b29160e3abaea5edc4bfb4f2e1c345e3ffc85
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 0695f0b5993f996ff35296be609d9978f57907f1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254813"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960151"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Rychlý Start: vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, pomocí šablony Správce prostředků
 
-Prvním krokem při porozumění dodržování předpisů v Azure je určení stavu vašich prostředků.
-Tento rychlý Start vás provede procesem vytvoření přiřazení zásady pro identifikaci virtuálních počítačů, které nepoužívají spravované disky.
+Prvním krokem k porozumění dodržování předpisů v Azure je zjištění stavu vašich prostředků.
+Tento rychlý start vás provede procesem vytvoření přiřazení zásady pro identifikaci virtuálních počítačů, které nepoužívají spravované disky.
 
-Na konci tohoto procesu úspěšně identifikujete virtuální počítače, které nepoužívají spravované disky. Neodpovídají přiřazení zásad.
+Na konci tohoto procesu úspěšně identifikujete virtuální počítače, které nepoužívají spravované disky. *Neodpovídají* přiřazení zásad.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="create-a-policy-assignment"></a>Vytvoření přiřazení zásady
 
@@ -36,21 +33,21 @@ Tady je kopie šablony:
 
 1. Vyberte následující obrázek pro přihlášení do Azure Portal a otevřete šablonu:
 
-   [@no__t – 1Deploy šablony zásad do Azure](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
+   [![nasadit šablonu zásad do Azure](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
 
 1. Vyberte nebo zadejte následující hodnoty:
 
-   | Jméno | Hodnota |
+   | Název | Hodnota |
    |------|-------|
    | Předplatné | Vyberte své předplatné Azure. |
-   | Skupina prostředků | Vyberte **vytvořit novou**, zadejte název a pak vyberte **OK**. Na snímku obrazovky je název skupiny prostředků *mypolicyquickstart @ no__t-1Date v MMDD > RG*. |
-   | Umístění | Vyberte oblast. Například **střed USA**. |
+   | Skupina prostředků | Vyberte **vytvořit novou**, zadejte název a pak vyberte **OK**. Název skupiny prostředků na snímku obrazovky je *mypolicyquickstart\<datum v MMDD > RG*. |
+   | Umístění | Vyberte oblast. Například **USA (střed)** . |
    | Název přiřazení zásady | Zadejte název přiřazení zásady. Pokud chcete, můžete použít zobrazení definice zásad. Například proveďte **audit virtuálních počítačů, které nepoužívají spravované disky**. |
    | Název RG | Zadejte název skupiny prostředků, ke které chcete zásadu přiřadit. V tomto rychlém startu použijte výchozí hodnotu **[resourceName (). name]** . Skupina prostředků **[()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)** je šablonou funkce, která načítá skupinu prostředků. |
    | ID definice zásady | Zadejte **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4C19-b460-a2d36003525a**. |
    | Souhlasím s podmínkami a ujednáními uvedenými nahoře | Vybrali |
 
-1. Vyberte **koupit**.
+1. Vyberte **Koupit**.
 
 Některé další zdroje informací:
 
@@ -61,19 +58,19 @@ Některé další zdroje informací:
 
 ## <a name="identify-non-compliant-resources"></a>Identifikace prostředků, které nedodržují předpisy
 
-Na levé straně stránky vyberte **dodržování předpisů** . Pak vyhledejte **auditované virtuální počítače, které nepoužívají přiřazení zásad spravovaných disků** , které jste vytvořili.
+Vyberte **dodržování předpisů** v levé části stránky. Vyhledejte **Audit virtuálních počítačů, které nepoužívají spravované disky** přiřazení zásady, které jste vytvořili.
 
 ![Stránka s přehledem dodržování zásad](./media/assign-policy-template/policy-compliance.png)
 
-Pokud nějaké existující prostředky nedodržují předpisy tohoto nového přiřazení, zobrazí se v části **nekompatibilní prostředky**.
+Pokud existují nějaké stávající prostředky, které nedodržují předpisy tohoto nového přiřazení, zobrazí se pod **nekompatibilní prostředky**.
 
 Další informace najdete v tématu [Jak funguje dodržování předpisů](./how-to/get-compliance-data.md#how-compliance-works).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-K odebrání vytvořeného přiřazení použijte následující postup:
+Odebrat přiřazení vytvořené, postupujte podle těchto kroků:
 
-1. Na levé straně stránky Azure Policy vyberte **dodržování předpisů** (nebo **přiřazení**) a vyhledejte **auditované virtuální počítače, které nepoužívají přiřazení zásad spravované disky** , které jste vytvořili.
+1. Na levé straně stránky služby Azure Policy vyberte **Dodržování předpisů** (nebo **Přiřazení**) a vyhledejte přiřazení zásady **Audit virtuálních počítačů, které nepoužívají spravované disky**, které jste vytvořili.
 
 1. Klikněte pravým tlačítkem na **Auditovat virtuální počítače, které nepoužívají správu zásad spravovaných disků** , a vyberte **Odstranit přiřazení**.
 
@@ -81,9 +78,9 @@ K odebrání vytvořeného přiřazení použijte následující postup:
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste přiřadili integrovanou definici zásady k oboru a vyhodnotili sestavu dodržování předpisů. Definice zásady ověří, že všechny prostředky v oboru jsou v souladu s předpisy, a určí, které z nich nejsou.
+V tomto rychlém startu jste přiřadili integrovanou definici zásady k oboru a vyhodnotili sestavu dodržování předpisů. Definice zásad ověří, že všechny prostředky v příslušném oboru jsou kompatibilní a určuje ty, které nejsou.
 
-Další informace o přiřazování zásad k ověření, že jsou nové prostředky kompatibilní, najdete v tomto kurzu:
+Další informace o přiřazování zásad pro ověření, že nové prostředky jsou kompatibilní, i nadále najdete v tomto kurzu:
 
 > [!div class="nextstepaction"]
-> [Vytváření a Správa zásad](./tutorials/create-and-manage.md)
+> [Vytváření a správa zásad](./tutorials/create-and-manage.md)

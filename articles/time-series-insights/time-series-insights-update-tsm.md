@@ -1,6 +1,6 @@
 ---
-title: Model časové řady v Azure Time Series Insights Preview | Microsoft Docs
-description: Principy Azure Time Series Insightsho modelu časových řad.
+title: Model časové řady – Azure Time Series Insights | Microsoft Docs
+description: Přečtěte si o modelu časové řady v Azure Time Series Insights Preview.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,14 +10,14 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c9bface359df020cea0bfff8f82e25e25efbc47
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a550643640afeefeb4cf79e35265f13557b6ffb0
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585251"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014695"
 ---
-# <a name="time-series-model"></a>Model služby Time Series
+# <a name="time-series-model-in-azure-time-series-insights-preview"></a>Model časové řady v Azure Time Series Insights Preview
 
 Tento článek popisuje model časových řad, možnosti a způsob, jak začít sestavovat a aktualizovat vlastní modely v prostředí Azure Time Series Insights Preview.
 
@@ -210,7 +210,7 @@ Vzhledem k polím instance použitým v předchozí definici a několika časov�
 | ID časové řady | Pole instance |
 | --- | --- |
 | ID1 | "sestavování" = "1000", "patra" = "10", "místnost" = "55"  |
-| ID 2 | "sestavování" = "1000", "místnost" = "55" |
+| ID2 | "sestavování" = "1000", "místnost" = "55" |
 | ID3 | "Floor" = "10" |
 | ID4 | "sestavování" = "1000", "patra" = "10"  |
 | ID5 | Není nastaven žádný z "budova", "patra" ani "místnost". |

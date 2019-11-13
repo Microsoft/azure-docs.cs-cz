@@ -1,60 +1,60 @@
 ---
-title: Nastavení zotavení po havárii fo vícevrstvé aplikace webové služby IIS pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Zjistěte, jak replikovat IIS webové farmy virtuálních počítačů pomocí Azure Site Recovery.
+title: Nastavení zotavení po havárii pro webovou aplikaci IIS pomocí Azure Site Recovery
+description: Přečtěte si, jak replikovat virtuální počítače webové farmy služby IIS pomocí Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 66b9342f1a67c4c9d35fda447a297cc64d048c1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 513a0f28fc03cbf24e35112245c9756d5ce00783
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480293"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954665"
 ---
-# <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Nastavení zotavení po havárii pro vícevrstvou aplikaci webové služby IIS
+# <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Nastavení zotavení po havárii pro webovou aplikaci založenou na službě IIS
 
-Aplikační software je modul obchodní produktivity v organizaci. Různé webové aplikace může v organizaci slouží k jiným účelům. Některé aplikace, jako jsou aplikace pro zpracování mezd, finanční aplikace a weby určených pro zákazníky, může být nezbytné k organizaci. Aby se zabránilo ztrátě produktivitu, je důležité pro organizaci, aby tyto aplikace průběžně rychle zprovoznit. Důležitější je mají tyto aplikace stále k dispozici může zabránit poškození značku nebo image organizace.
+Aplikační software je provozní produktivita v organizaci. Různé webové aplikace mohou v organizaci sloužit k různým účelům. Některé aplikace, jako například aplikace používané pro zpracování mezd, finanční aplikace a weby s přístupem zákazníka, můžou být pro organizaci zásadní. Aby nedošlo ke ztrátě produktivity, je důležité, aby tato aplikace byla neustále v provozu. Důležitější je, že tyto aplikace jsou stále k dispozici, což může zabránit poškození značky nebo image organizace.
 
-Důležité webové aplikace jsou obvykle nastaveny jako vícevrstvých aplikací: web, databáze a aplikace jsou v různých úrovních. Kromě se šíří přes různé vrstvy, aplikace může také používají více serverů v každé úrovni k vyrovnávání zatížení provozu. Mapování mezi různými úrovněmi a na webovém serveru. Kromě toho může být založen na statické IP adresy. Na převzetí služeb při selhání některé z těchto mapování potřeba aktualizovat, zejména v případě, že jsou nakonfigurované více webů na webovém serveru. Pokud webové aplikace pomocí protokolu SSL, je nutné aktualizovat vazby certifikátu.
+Kritické webové aplikace se obvykle nastavují jako vícevrstvé aplikace: web, databáze a aplikace jsou na různých úrovních. Kromě rozmístění napříč různými úrovněmi můžou aplikace při vyrovnávání zatížení v jednotlivých vrstvách použít taky několik serverů. Kromě toho může být mapování mezi různými úrovněmi a webovým serverem založené na statických IP adresách. Při převzetí služeb při selhání je potřeba některé z těchto mapování aktualizovat, zejména v případě, že je na webovém serveru nakonfigurované víc webů. Pokud webové aplikace používají protokol SSL, je nutné aktualizovat vazby certifikátu.
 
-Obnovení tradiční metody, které nejsou založené na replikaci zahrnovat zálohování různých konfigurační soubory, nastavení registru, vazby, vlastních komponent (COM nebo rozhraní .NET), obsah a certifikáty. Soubory se dají obnovit přes sadu vyžadováno provedení ručních kroků. Metody tradiční obnovení zálohování a obnovení souborů ručně jsou náročné, problematických a není škálovatelné. Například může snadno zapomenete zálohování certifikáty. Po převzetí služeb při selhání že zůstane se žádná volba, ale kupovat nové certifikáty pro server.
+Tradiční metody obnovení, které nejsou založené na replikaci, zahrnují zálohování různých konfiguračních souborů, nastavení registru, vazeb, vlastních komponent (COM nebo .NET), obsahu a certifikátů. Soubory se obnovují prostřednictvím sady ručních kroků. Tradiční metody obnovení zálohování a ruční obnovování souborů jsou náročné, náchylné k chybám a Neškálovatelné. Například je možné, že se můžete k zálohování certifikátů snadno zapomenout. Po převzetí služeb při selhání zůstanete bez výběru, ale budete moct koupit nové certifikáty pro server.
 
-Podporuje řešení pro zotavení po havárii dobré modelování obnovení plány komplexních aplikačních architektur. Musíte mít také možnost přidávat vlastní kroky do plánu obnovení ke zpracování aplikací mapování mezi vrstvami. Pokud dojde k havárii, mapování aplikací poskytují jedním kliknutím, že snímek řešení, která pomáhá vést k nižší RTO.
+Dobré řešení pro zotavení po havárii podporuje plány obnovení modelování pro komplexní architektury aplikací. Měli byste být také schopni do plánu obnovení přidat vlastní kroky pro zpracování mapování aplikací mezi vrstvami. Pokud dojde k havárii, mapování aplikací poskytuje řešení pro zajištění jediného kliknutí, které pomáhá vést k nižším RTOům.
 
-Tento článek popisuje, jak chránit webové aplikace, která je založena na Internetové informační služby (IIS) s použitím [Azure Site Recovery](site-recovery-overview.md). Tento článek se zabývá osvědčenými postupy pro replikaci třívrstvé, založené na službě IIS webové aplikace do Azure, jak provést zotavení po havárii a jak převzít služby při selhání aplikace do Azure.
+Tento článek popisuje, jak chránit webovou aplikaci, která je založená na Internetová informační služba (IIS) pomocí [Azure Site Recovery](site-recovery-overview.md). Tento článek se zabývá osvědčenými postupy pro replikaci webové aplikace založené na službě IIS do Azure, jak provést postup zotavení po havárii a jak převzít služby při selhání z aplikace do Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že budete vědět, jak provádět následující úlohy:
+Než začnete, ujistěte se, že víte, jak provádět následující úlohy:
 
-* [Replikace virtuálních počítačů do Azure](vmware-azure-tutorial.md)
-* [Návrh sítě pro zotavení](site-recovery-network-design.md)
-* [Provést testovací převzetí služeb do Azure](site-recovery-test-failover-to-azure.md)
-* [Proveďte převzetí služeb při selhání do Azure](site-recovery-failover.md)
+* [Replikace virtuálního počítače do Azure](vmware-azure-tutorial.md)
+* [Návrh sítě pro obnovení](site-recovery-network-design.md)
+* [Provedení testovacího převzetí služeb při selhání do Azure](site-recovery-test-failover-to-azure.md)
+* [Provedení převzetí služeb při selhání do Azure](site-recovery-failover.md)
 * [Replikace řadiče domény](site-recovery-active-directory.md)
 * [Replikace SQL Serveru](site-recovery-sql.md)
 
-## <a name="deployment-patterns"></a>Modely nasazení
-Aplikace založené na službě IIS obvykle následuje jedna z následujících vzorů nasazení:
+## <a name="deployment-patterns"></a>Vzory nasazení
+Webová aplikace založená na službě IIS obvykle následuje po jednom z následujících vzorů nasazení:
 
-**Model nasazení 1**
+**Vzor nasazení 1**
 
-Založené na službě IIS webové farmy se žádost o směrování žádostí na aplikace, server služby IIS a SQL Server.
+Webová farma založená na službě IIS s směrováním žádostí na aplikace (ARR), serverem služby IIS a SQL Server.
 
-![Diagram, který má tři úrovně farmy webové služby IIS](./media/site-recovery-iis/deployment-pattern1.png)
+![Diagram webové farmy založené na službě IIS, která má tři úrovně](./media/site-recovery-iis/deployment-pattern1.png)
 
-**Model nasazení 2**
+**Vzor nasazení 2**
 
-Založené na službě IIS webové farmy se směrováním žádostí na aplikace, server služby IIS, aplikační server a SQL Server.
+Webová farma založená na službě IIS s ARR, serverem IIS, aplikačním serverem a SQL Server.
 
-![Diagram založené na službě IIS webové farmy, která má čtyři vrstvy](./media/site-recovery-iis/deployment-pattern2.png)
+![Diagram webové farmy založené na službě IIS, která má čtyři úrovně](./media/site-recovery-iis/deployment-pattern2.png)
 
 ## <a name="site-recovery-support"></a>Podpora Site Recovery
 
-U příkladů v tomto článku používáme virtuální počítače VMware s IIS 7.5 na Windows Server 2012 R2 Enterprise. Protože replikace Site Recovery není specifická pro aplikaci, doporučení v tomto článku předpokládá použití ve scénářích uvedené v následující tabulce a pro různé verze služby IIS.
+V příkladech v tomto článku používáme virtuální počítače VMware se službou IIS 7,5 v systému Windows Server 2012 R2 Enterprise. Vzhledem k tomu, že Site Recovery replikace není specifická pro konkrétní aplikaci, doporučení v tomto článku se budou uplatňovat ve scénářích uvedených v následující tabulce a v různých verzích služby IIS.
 
 ### <a name="source-and-target"></a>Zdroj a cíl
 
@@ -67,40 +67,40 @@ Azure|Není k dispozici|Ano
 
 ## <a name="replicate-virtual-machines"></a>Replikace virtuálních počítačů
 
-Ke spuštění replikace všech IIS webové farmy virtuálních počítačů do Azure, postupujte podle pokynů v [testovací převzetí služeb při selhání do Azure v Site Recovery](site-recovery-test-failover-to-azure.md).
+Pokud chcete začít replikovat všechny virtuální počítače webové farmy služby IIS do Azure, postupujte podle pokynů v části [testovací převzetí služeb při selhání do Azure v Site Recovery](site-recovery-test-failover-to-azure.md).
 
-Pokud používáte statické IP adresy, můžete zadat IP adresu, která má virtuální počítač má provést. Pokud chcete nastavit IP adresu, přejděte na **výpočty a síť nastavení** > **CÍLOVÁ IP adresa**.
+Pokud používáte statickou IP adresu, můžete zadat IP adresu, kterou má virtuální počítač převzít. IP adresu nastavíte tak, že přejdete na **Nastavení výpočty a síť** > **cílová IP**adresa.
 
-![Snímek obrazovky, který ukazuje, jak nastavit cílová IP adresa v podokně Compute obnovení lokality a sítě](./media/site-recovery-active-directory/dns-target-ip.png)
+![Snímek obrazovky, který ukazuje, jak nastavit cílovou IP adresu v podokně Site Recovery výpočty a síť](./media/site-recovery-active-directory/dns-target-ip.png)
 
 ## <a name="create-a-recovery-plan"></a>Vytvoření plánu obnovení
-Plán obnovení podporuje sekvencování různé úrovně v vícevrstvou aplikaci při selhání. Klasifikace se usnadní zachování konzistence aplikace. Když vytvoříte plán obnovení pro vícevrstvou webovou aplikaci, dokončete kroky popsané v tématu [vytvořit plán obnovení s využitím Site Recovery](site-recovery-create-recovery-plans.md).
+Plán obnovení podporuje sekvencování různých vrstev v vícevrstvé aplikaci během převzetí služeb při selhání. Sekvence pomáhá udržovat konzistenci aplikací. Při vytváření plánu obnovení pro vícevrstvé webové aplikace proveďte kroky popsané v tématu [Vytvoření plánu obnovení pomocí Site Recovery](site-recovery-create-recovery-plans.md).
 
-### <a name="add-virtual-machines-to-failover-groups"></a>Přidávání virtuálních počítačů do skupiny převzetí služeb při selhání
-Typické vícevrstvé webové aplikace služby IIS se skládá z následujících součástí:
+### <a name="add-virtual-machines-to-failover-groups"></a>Přidání virtuálních počítačů do skupin s podporou převzetí služeb při selhání
+Typická Vícevrstvá webová aplikace IIS se skládá z následujících součástí:
 * Databázová vrstva, která obsahuje virtuální počítače SQL.
-* Webová vrstva, která se skládá ze serveru se službou IIS a aplikační vrstvy. 
+* Webová vrstva, která se skládá ze serveru služby IIS a aplikační vrstvy. 
 
-Přidávání virtuálních počítačů do jiné skupiny založené na úrovni:
+Přidejte virtuální počítače do různých skupin na základě této vrstvy:
 
-1. Vytvoření plánu obnovení. Přidáte virtuální počítače úrovně databáze v 1 skupině. Tím se zajistí, že databáze úroveň virtuální počítače vypnout poslední a spouštět automaticky po první.
-1. Přidáte virtuální počítače vrstvy aplikace v 2. skupina. Tím se zajistí, že aplikace vrstvy virtuálního počítače se aktivují po byly aktualizovány na úrovni databáze.
-1. Přidáte virtuální počítače webové vrstvy do 3. skupina. Tím se zajistí, že virtuální počítače webové vrstvy se aktivují po se aktivují aplikační vrstvy.
-1. Přidáte zatížení virtuálních počítačů ve skupině 4. Tím se zajistí, že zatížení virtuálních počítačů se aktivují po se aktivují webové vrstvy.
+1. Vytvořte plán obnovení. Přidejte virtuální počítače databázové vrstvy do skupiny 1. Tím se zajistí, že se virtuální počítače vrstvy databáze vypnou jako poslední a napoprvé se zanesou.
+1. Přidejte virtuální počítače aplikační vrstvy do skupiny 2. Tím se zajistí, že se virtuální počítače vrstvy aplikace po zastavování databázové vrstvy zanesou.
+1. Přidejte virtuální počítače webové vrstvy do skupiny 3. Tím se zajistí, že se virtuální počítače webové vrstvy zanesou po zastavování aplikační vrstvy.
+1. Přidejte virtuální počítače pro vyrovnávání zatížení ve skupině 4. Tím se zajistí, že se virtuální počítače pro vyrovnávání zatížení zanesou po zastavování webové vrstvy.
 
-Další informace najdete v tématu [přizpůsobit plán obnovení](site-recovery-runbook-automation.md#customize-the-recovery-plan).
+Další informace najdete v tématu [přizpůsobení plánu obnovení](site-recovery-runbook-automation.md#customize-the-recovery-plan).
 
 
-### <a name="add-a-script-to-the-recovery-plan"></a>Přidat skript do plánu obnovení
-Pro webové farmy IIS fungoval správně může být nutné provést některé operace virtuálních počítačích Azure post-převzetí služeb při selhání nebo během testovacího převzetí služeb. Můžete automatizovat některé operace post-převzetí služeb při selhání. Můžete například aktualizaci položky DNS, změnit vazbu webu nebo změnit připojovací řetězec tak, že přidáte příslušných skriptů do plánu obnovení. [Skript přidáte tak nástroj VMM do plánu obnovení](site-recovery-how-to-add-vmmscript.md) popisuje, jak vytvořit automatizované úlohy pomocí skriptu.
+### <a name="add-a-script-to-the-recovery-plan"></a>Přidání skriptu do plánu obnovení
+Aby webová farma služby IIS fungovala správně, možná budete muset provést některé operace na virtuálním počítači Azure po převzetí služeb při selhání nebo během testovacího převzetí služeb při selhání. Některé operace po převzetí služeb při selhání můžete automatizovat. Můžete například aktualizovat položku DNS, změnit vazbu webu nebo změnit připojovací řetězec přidáním odpovídajících skriptů do plánu obnovení. [Přidání skriptu VMM do plánu obnovení](site-recovery-how-to-add-vmmscript.md) popisuje, jak nastavit automatizované úlohy pomocí skriptu.
 
-#### <a name="dns-update"></a>Aktualizace DNS.
-Pokud je nakonfigurovaný DNS pro aktualizaci dynamického serveru DNS, virtuálních počítačů obvykle aktualizovat DNS novou IP adresu při jejich spuštění. Pokud chcete přidat explicitní krok aktualizace DNS pomocí nové IP adresy virtuálních počítačů, přidejte [skript pro aktualizaci IP ve službě DNS](https://aka.ms/asr-dns-update) jako akce post-převzetí služeb při selhání na skupiny plánu obnovení.  
+#### <a name="dns-update"></a>Aktualizace DNS
+Pokud je pro dynamickou aktualizaci DNS nakonfigurovaný DNS, virtuální počítače při jejich spuštění obvykle aktualizují DNS novou IP adresou. Pokud chcete přidat explicitní krok pro aktualizaci DNS s novými IP adresami virtuálních počítačů, přidejte [skript, který aktualizuje IP adresu v DNS](https://aka.ms/asr-dns-update) jako akci po převzetí služeb při selhání u skupin plánů obnovení.  
 
-#### <a name="connection-string-in-an-applications-webconfig"></a>Připojovací řetězec v souboru web.config aplikace.
-Připojovací řetězec Určuje databázi, která komunikuje se službou Web. Pokud připojovací řetězec představuje název virtuálního počítače databáze, nejsou žádné další kroky potřebné post-převzetí služeb při selhání. Aplikace můžou automaticky komunikovat s databází. Navíc pokud IP adresu pro virtuální počítač databáze se uchovávají, není ji muset aktualizovat připojovací řetězec. 
+#### <a name="connection-string-in-an-applications-webconfig"></a>Připojovací řetězec v souboru Web. config aplikace
+Připojovací řetězec Určuje databázi, se kterou web komunikuje. Pokud připojovací řetězec přenese název databázového virtuálního počítače, po převzetí služeb při selhání už nejsou potřeba žádné další kroky. Aplikace může automaticky komunikovat s databází. Pokud je navíc IP adresa pro virtuální počítač databáze zachována, není nutné aktualizovat připojovací řetězec. 
 
-Připojovací řetězec odkazuje na virtuální počítač databázi s použitím IP adresy, musí být aktualizované post-převzetí služeb při selhání. Například následující body řetězec připojení k databázi pomocí IP adres 127.0.1.2:
+Pokud připojovací řetězec odkazuje na virtuální počítač databáze pomocí IP adresy, je nutné aktualizovat po převzetí služeb při selhání. Například následující připojovací řetězec odkazuje na databázi s IP adresou 127.0.1.2:
 
         <?xml version="1.0" encoding="utf-8"?>
         <configuration>
@@ -109,54 +109,54 @@ Připojovací řetězec odkazuje na virtuální počítač databázi s použití
         </connectionStrings>
         </configuration>
 
-Chcete-li aktualizovat připojovací řetězec z webové vrstvy, přidejte [skript pro aktualizaci služby IIS připojení](https://gallery.technet.microsoft.com/Update-IIS-connection-2579aadc) po 3. skupina v plánu obnovení.
+Chcete-li aktualizovat připojovací řetězec ve webové vrstvě, přidejte [skript aktualizace připojení služby IIS](https://gallery.technet.microsoft.com/Update-IIS-connection-2579aadc) za skupinu 3 v plánu obnovení.
 
 #### <a name="site-bindings-for-the-application"></a>Vazby webu pro aplikaci
-Každý server se skládá z informace o vazbě. Informace o vazbě obsahuje typ vazby, IP adresa, jakou server služby IIS čeká na požadavky serveru, číslo portu a názvy hostitelů pro lokalitu. Během převzetí služeb při selhání může být nutné aktualizovat tyto vazby, pokud dojde ke změně IP adresy, který je spojen s nimi.
+Každá lokalita se skládá z informací o vazbě. Informace o vazbě zahrnují typ vazby, IP adresu, na které server IIS naslouchá požadavkům na lokalitu, číslo portu a názvy hostitelů pro daný web. V průběhu převzetí služeb při selhání možná budete muset aktualizovat tyto vazby, pokud dojde ke změně IP adresy, která je k nim přidružená.
 
 > [!NOTE]
 >
-> Pokud nastavíte vazby webu na **všechny nepřiřazené**, není potřeba aktualizovat tato vazba post-převzetí služeb při selhání. Navíc pokud IP adresa spojená s webem nebude změněné post-převzetí služeb při selhání, není nutné aktualizovat vazbu webu. (Zachování IP adresy závisí na architekturu sítě a podsítě přidělené k lokalitám primárními a obnovovacími. Aktualizace je nemusí být vhodná pro vaši organizaci.)
+> Pokud nastavíte vazbu webu na **Všechny nepřiřazené**, nemusíte tuto vazbu aktualizovat po převzetí služeb při selhání. Také pokud se IP adresa přidružená k lokalitě nemění po převzetí služeb při selhání, nemusíte Aktualizovat vazbu webu. (Uchování IP adresy závisí na architektuře sítě a podsítích, které jsou přiřazené primární lokalitě a lokalitě pro obnovení. Aktualizace nemusí být proveditelná pro vaši organizaci.)
 
-![Snímek obrazovky zobrazující nastavení vazby SSL](./media/site-recovery-iis/sslbinding.png)
+![Snímek obrazovky, který zobrazuje nastavení vazby SSL](./media/site-recovery-iis/sslbinding.png)
 
-Pokud přidružené IP adresu s lokalitou, aktualizujte všechny vazby webu s novou IP adresu. Chcete-li změnit vazby webu, přidejte [služby IIS Webová vrstva aktualizační skript](https://aka.ms/asr-web-tier-update-runbook-classic) po 3. skupina v plánu obnovení.
+Pokud jste přidružili IP adresu k lokalitě, aktualizujte všechny vazby webu novou IP adresou. Chcete-li změnit vazby webu, přidejte [skript aktualizace webové vrstvy služby IIS](https://aka.ms/asr-web-tier-update-runbook-classic) za skupinu 3 v plánu obnovení.
 
-#### <a name="update-the-load-balancer-ip-address"></a>Aktualizovat IP adresu nástroje pro vyrovnávání zatížení
-Pokud máte směrování žádostí na aplikace virtuální počítač, k aktualizaci IP adresy, přidejte [směrování žádostí na aplikace služby IIS převzetí služeb při selhání skriptu](https://aka.ms/asr-iis-arrtier-failover-script-classic) po 4 skupiny.
+#### <a name="update-the-load-balancer-ip-address"></a>Aktualizace IP adresy nástroje pro vyrovnávání zatížení
+Pokud máte virtuální počítač s ARR, abyste aktualizovali IP adresu, přidejte po skupině 4 [skript pro převzetí služeb při selhání se službou IIS ARR](https://aka.ms/asr-iis-arrtier-failover-script-classic) .
 
-#### <a name="ssl-certificate-binding-for-an-https-connection"></a>Vazba certifikátu protokolu SSL pro připojení HTTPS
-Web může mít přidružený certifikát SSL, který pomáhá zajistit zabezpečenou komunikaci mezi webovým serverem a webového prohlížeče. Pokud web má připojení HTTPS a také související webu vazbu HTTPS na IP adresu serveru služby IIS vazby certifikátu SSL, je nutné přidat nové vazby webu pro certifikát IP adresou IIS virtuálního počítače post-převzetí služeb při selhání.
+#### <a name="ssl-certificate-binding-for-an-https-connection"></a>Vazba certifikátu SSL pro připojení HTTPS
+Web může mít přidružený certifikát SSL, který pomáhá zajistit zabezpečenou komunikaci mezi webovým serverem a prohlížečem uživatele. Pokud má web připojení HTTPS a má přidruženou vazbu serveru HTTPS k IP adrese serveru IIS s vazbou certifikátu SSL, je nutné přidat novou vazbu webu pro certifikát s IP adresou po převzetí služeb při selhání virtuálního počítače služby IIS.
 
-Certifikát SSL může být vydaný pro tyto součásti:
+Certifikát SSL je možné vystavit pro tyto komponenty:
 
 * Plně kvalifikovaný název domény webu.
 * Název serveru.
-* Certifikát se zástupným znakem pro název domény.  
-* IP adresa. Pokud je certifikát SSL vydaný pro IP adresu serveru služby IIS, jiný certifikát SSL musí být vydaný pro IP adresu serveru služby IIS na webu Azure. Další vazby SSL pro tento certifikát je potřeba vytvořit. Z tohoto důvodu nedoporučujeme používat certifikát SSL vydaný pro IP adresu. Tato možnost je méně často se využívá a brzy přestanou používat v souladu se nové změny fórum certifikátu autority a prohlížeče.
+* Certifikát se zástupnými znaky pro název domény.  
+* IP adresa. Pokud je certifikát SSL vydaný na základě IP adresy serveru služby IIS, je nutné vystavit jiný certifikát SSL na základě IP adresy serveru služby IIS na webu Azure. Je potřeba vytvořit další vazbu SSL pro tento certifikát. Z tohoto důvodu nedoporučujeme používat certifikát SSL vydaný pro IP adresu. Tato možnost se nepoužívá méně často a bude brzy zastaralá v souladu s novými změnami certifikační autority nebo fóra prohlížeče.
 
-#### <a name="update-the-dependency-between-the-web-tier-and-the-application-tier"></a>Aktualizovat závislosti mezi webovou vrstvu a aplikační vrstvy
-Pokud máte specifické pro aplikaci závislostí, založené na IP adresu virtuálních počítačů, je nutné aktualizovat tuto závislost post-převzetí služeb při selhání.
+#### <a name="update-the-dependency-between-the-web-tier-and-the-application-tier"></a>Aktualizace závislosti mezi webovou vrstvou a aplikační vrstvou
+Pokud máte závislost specifickou pro aplikaci, která je založená na IP adrese virtuálních počítačů, musíte tuto závislost aktualizovat po převzetí služeb při selhání.
 
 ## <a name="run-a-test-failover"></a>Spuštění testovacího převzetí služeb při selhání
 
-1. Na webu Azure Portal vyberte svůj trezor služby Recovery Services.
-2. Vyberte plán obnovení, který jste vytvořili pro webové farmy služby IIS.
+1. V Azure Portal vyberte svůj trezor Recovery Services.
+2. Vyberte plán obnovení, který jste vytvořili pro webovou farmu služby IIS.
 3. Vyberte **Testovací převzetí služeb při selhání**.
-4. Chcete-li spustit proces testovacího převzetí služeb při selhání, vyberte bod obnovení a virtuální síť Azure.
-5. Pokud je sekundární prostředí, můžete provést ověření.
-6. Po dokončení ověření se vyčistit testovací převzetí služeb při selhání prostředí, vyberte **dokončení ověření**.
+4. Pokud chcete spustit proces testovacího převzetí služeb při selhání, vyberte bod obnovení a virtuální síť Azure.
+5. Když je sekundární prostředí nahoru, můžete provádět ověřování.
+6. Po dokončení ověření pro vyčištění prostředí testovacího převzetí služeb při selhání vyberte **ověřování dokončeno**.
 
-Další informace najdete v tématu [testovací převzetí služeb při selhání do Azure v Site Recovery](site-recovery-test-failover-to-azure.md).
+Další informace najdete v tématu [testování převzetí služeb při selhání do Azure v Site Recovery](site-recovery-test-failover-to-azure.md).
 
 ## <a name="run-a-failover"></a>Spuštění převzetí služeb při selhání
 
-1. Na webu Azure Portal vyberte svůj trezor služby Recovery Services.
-1. Vyberte plán obnovení, který jste vytvořili pro webové farmy služby IIS.
+1. V Azure Portal vyberte svůj trezor Recovery Services.
+1. Vyberte plán obnovení, který jste vytvořili pro webovou farmu služby IIS.
 1. Vyberte **Převzetí služeb při selhání**.
-1. Chcete-li zahájit proces převzetí služeb při selhání, vyberte bod obnovení.
+1. Chcete-li spustit proces převzetí služeb při selhání, vyberte bod obnovení.
 
 Další informace najdete v tématu [převzetí služeb při selhání v Site Recovery](site-recovery-failover.md).
 
-## <a name="next-steps"></a>Další postup
-* Další informace o [replikace jiných aplikací](site-recovery-workload.md) pomocí Site Recovery.
+## <a name="next-steps"></a>Další kroky
+* Další informace o [replikaci dalších aplikací](site-recovery-workload.md) pomocí Site Recovery.

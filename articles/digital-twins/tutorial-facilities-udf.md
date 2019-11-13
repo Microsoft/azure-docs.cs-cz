@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: sledování prostoru pomocí digitálních vláken Azure | Microsoft Docs'
+title: 'Kurz: monitorování prostoru – digitální vlákna Azure Microsoft Docs'
 description: Pomocí kroků v tomto kurzu se dozvíte, jak zřídit prostorové prostředky a monitorovat pracovní podmínky pomocí digitálních vláken Azure.
 services: digital-twins
 ms.author: alinast
@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/20/2019
-ms.openlocfilehash: 74e3c46b2b1427c27923ed91846755797b8da690
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 4e7136c5689bf37e0ca1db33f4838373d59a0901
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949087"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013927"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Kurz: zřízení a sledování pracovních podmínek pomocí Azure Digital Workers Preview
 
@@ -33,38 +33,38 @@ V tomto kurzu se naučíte:
 V tomto kurzu se předpokládá, že jste [dokončili nastavení digitálních vláken Azure](tutorial-facilities-setup.md). Než budete pokračovat, ujistěte se, že máte následující:
 
 - [Účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Instance digitálních vláken je spuštěná. 
-- Ukázky digitálních vláken se stáhly a extrahují na vašem pracovním počítači. [ C# ](https://github.com/Azure-Samples/digital-twins-samples-csharp) 
+- Spuštěná instance služby Digital Twins. 
+- Pracovní počítač se staženými a extrahovanými [ukázkami služby Digital Twins v jazyce C#](https://github.com/Azure-Samples/digital-twins-samples-csharp). 
 - [.NET Core SDK verze 2.1.403 nebo novější](https://www.microsoft.com/net/download) ve vývojovém počítači pro sestavení a spuštění ukázky. Spusťte `dotnet --version` a ověřte, zda je nainstalovaná správná verze. 
-- [Visual Studio Code](https://code.visualstudio.com/) k prozkoumávání ukázkového kódu. 
+- [Visual Studio Code](https://code.visualstudio.com/) pro zkoumání vzorového kódu. 
 
 > [!TIP]
 > Pokud zřizujete novou instanci, použijte jedinečný název instance digitálního vlákna.
 
-## <a name="define-conditions-to-monitor"></a>Definování podmínek, které se mají monitorovat
+## <a name="define-conditions-to-monitor"></a>Definice podmínek, které se mají monitorovat
 
 Můžete definovat sadu specifických podmínek, které se mají monitorovat v datech zařízení nebo senzoru, označovaných jako *shody*. Pak můžete definovat funkce označované jako *uživatelsky definované funkce*. Uživatelsky definované funkce spouštějí vlastní logiku pro data, která pocházejí z vašich prostorů a zařízení, když dojde k podmínkám zadaným pro tyto shody. Další informace najdete v tématu [zpracování dat a uživatelsky definované funkce](concepts-user-defined-functions.md). 
 
-V ukázkovém projektu **obsazenost – rychlý Start** otevřete soubor **src\actions\provisionSample.yaml** v Visual Studio Code. Všimněte si oddílu, který začíná **porovnáváním**typů. Každá položka v rámci tohoto typu vytvoří koshodě se zadaným **názvem**. Koshodě bude monitorovat senzor typu **dataTypeValue**. Všimněte si, jak souvisí s prostorem s názvem *Room místnost a1*, který má uzel **zařízení** , který obsahuje několik senzorů. Aby se zajistilo, že se bude porovnávat jeden z těchto senzorů, ujistěte se, že jeho **dataTypeValue** odpovídá **datovému typu**senzoru. 
+V ukázkovém projektu **obsazenost – rychlý Start** otevřete soubor **src\actions\provisionSample.yaml** v Visual Studio Code. Všimněte si části, která začíná typem **matchers** (Pravidla shody). Každá položka v rámci tohoto typu vytvoří koshodě se zadaným **názvem**. Koshodě bude monitorovat senzor typu **dataTypeValue**. Všimněte si, jak souvisí s prostorem s názvem *Room místnost a1*, který má uzel **zařízení** , který obsahuje několik senzorů. Aby se zajistilo, že se bude porovnávat jeden z těchto senzorů, ujistěte se, že jeho **dataTypeValue** odpovídá **datovému typu**senzoru. 
 
-Přidejte následující shodu pod existující shody. Ujistěte se, že jsou klíče zarovnané a mezery nejsou nahrazené kartami. Tyto řádky jsou také k dispozici v souboru *provisionSample. yaml* jako řádky s komentářem. Můžete je odkomentovat odebráním znaku @no__t 0 před každým řádkem.
+Přidejte následující shodu pod existující shody. Ujistěte se, že jsou klíče zarovnané a mezery nejsou nahrazené kartami. Tyto řádky jsou také k dispozici v souboru *provisionSample. yaml* jako řádky s komentářem. Můžete je odkomentovat odebráním znaku `#` před každým řádkem.
 
 ```yaml
       - name: Matcher Temperature
         dataTypeValue: Temperature
 ```
 
-Tato shoda bude sledovat senzor `SAMPLE_SENSOR_TEMPERATURE`, který jste přidali v [prvním kurzu](tutorial-facilities-setup.md). 
+Tento shodný program sleduje senzor `SAMPLE_SENSOR_TEMPERATURE`, který jste přidali v [prvním kurzu](tutorial-facilities-setup.md). 
 
-## <a name="create-a-user-defined-function"></a>Vytvoření uživatelsky definované funkce
+## <a name="create-a-user-defined-function"></a>Vytvoření uživatelem definované funkce
 
 K přizpůsobení zpracování dat senzorů můžete použít uživatelsky definované funkce. Jedná se o vlastní kód JavaScriptu, který může běžet v instanci digitálních vláken Azure, když dojde k určitým podmínkám popsaným v odpovídajících sestavách. Pro každý senzor, který chcete monitorovat, můžete vytvořit odpovídající a uživatelsky definované funkce. Další informace najdete v tématu [zpracování dat a uživatelsky definované funkce](concepts-user-defined-functions.md). 
 
-V ukázkovém souboru *provisionSample. yaml* vyhledejte oddíl, který začíná textem **UserDefinedFunctions**. Tato část zřídí uživatelsky definovanou funkci se zadaným **názvem**. Tato UDF funguje na seznamu shod v rámci **matcherNames**. Všimněte si, jak můžete jako **skript**zadat vlastní soubor JAVASCRIPTU pro UDF.
+V ukázkovém souboru *provisionSample. yaml* vyhledejte oddíl, který začíná textem **UserDefinedFunctions**. Tato část zřídí uživatelsky definovanou funkci se zadaným **názvem**. Tato UDF funguje na seznamu shod v rámci **matcherNames**. Všimněte si, že pro uživatelem definovanou funkci můžete v elementu **script** zadat vlastní soubor JavaScriptu.
 
-Také si poznamenejte část s názvem **RoleAssignments**. Přiřadí roli správce prostoru k uživatelsky definované funkci. Tato role umožňuje IT přístup k událostem, které pocházejí z kteréhokoliv zřízeného prostoru. 
+Všimněte si také části **roleassignments**. Přiřadí roli správce prostoru k uživatelsky definované funkci. Tato role umožňuje IT přístup k událostem, které pocházejí z kteréhokoliv zřízeného prostoru. 
 
-1. Nakonfigurujte systém souborů UDF tak, aby zahrnoval teplotní teplotu přidáním nebo zrušením komentáře na následující řádek v uzlu `matcherNames` v souboru *provisionSample. yaml* :
+1. Nakonfigurujte uživatelem definovanou funkci tak, aby zahrnovala pravidlo shody teploty. Provedete to přidáním následujícího řádku do uzlu `matcherNames` v souboru *provisionSample.yaml* (případně zrušením komentáře u tohoto řádku):
 
     ```yaml
             - Matcher Temperature
@@ -75,16 +75,16 @@ Také si poznamenejte část s názvem **RoleAssignments**. Přiřadí roli spr�
    Upravte soubor JavaScriptu pro monitorování teploty a dalších podmínek. Přidejte následující řádky kódu, aby hledaly podmínky, když v místnosti není zjištěn žádný pohyb, úrovně oxidu uhličitého jsou nižší než 1 000 ppm a teplota je nižší než 78 stupňů Fahrenheita.
 
    > [!NOTE]
-   > V této části se upraví soubor *src\actions\userDefinedFunctions\availability.js* , takže se můžete podrobněji dozvědět, jak napsat uživatelsky definovanou funkci. Můžete se ale rozhodnout přímo použít soubor [src\actions\userDefinedFunctions\availabilityForTutorial.js](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) v instalačním programu. Tento soubor obsahuje všechny změny požadované pro tento kurz. Pokud tento soubor použijete místo toho, ujistěte se, že jste pro klíč **skriptu** v [src\actions\provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml)použili správný název souboru.
+   > V této části se upraví soubor *src\actions\userDefinedFunctions\availability.js* , takže se můžete podrobněji dozvědět, jak napsat uživatelsky definovanou funkci. Můžete se ale rozhodnout přímo použít soubor [src\actions\userDefinedFunctions\availabilityForTutorial.js](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) v instalačním programu. Tento soubor obsahuje všechny potřebné změny pro tento kurz. Pokud tento soubor použijete místo toho, ujistěte se, že jste pro klíč **skriptu** v [src\actions\provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml)použili správný název souboru.
 
-    a. V horní části souboru přidejte následující řádky za teplotu pod komentářem `// Add your sensor type here`:
+    a. Na začátek souboru přidejte pod komentář `// Add your sensor type here` následující řádky pro senzor teploty:
 
     ```JavaScript
         var temperatureType = "Temperature";
         var temperatureThreshold = 78;
     ```
 
-    b. Přidejte následující řádky za příkaz definující `var motionSensor` pod komentářem `// Add your sensor variable here`:
+    b. Přidejte následující řádky za příkaz definující `var motionSensor`pod komentářem `// Add your sensor variable here`:
 
      ```JavaScript
         var temperatureSensor = otherSensors.find(function(element) {
@@ -92,13 +92,13 @@ Také si poznamenejte část s názvem **RoleAssignments**. Přiřadí roli spr�
         });
     ```
 
-    r. Přidejte následující řádek za příkaz definující `var carbonDioxideValue` pod komentářem `// Add your sensor latest value here`:
+    c. Přidejte následující řádek za příkaz definující `var carbonDioxideValue`pod komentářem `// Add your sensor latest value here`:
 
     ```JavaScript
         var temperatureValue = getFloatValue(temperatureSensor.Value().Value);
     ```
 
-    trojrozměrné. Z komentáře `// Modify this line to monitor your sensor value` odeberte následující řádky kódu:
+    d. Odeberte následující řádky kódu pod komentářem `// Modify this line to monitor your sensor value`:
 
      ```JavaScript
         if(carbonDioxideValue === null || motionValue === null) {
@@ -116,7 +116,7 @@ Také si poznamenejte část s názvem **RoleAssignments**. Přiřadí roli spr�
         }
     ```
 
-    cerebrální. Z komentáře `// Modify these lines as per your sensor` odeberte následující řádky kódu:
+    e. Odeberte následující řádky kódu pod komentářem `// Modify these lines as per your sensor`:
 
     ```JavaScript
         var availableFresh = "Room is available and air is fresh";
@@ -130,7 +130,7 @@ Také si poznamenejte část s názvem **RoleAssignments**. Přiřadí roli spr�
         var noAlert = "Either room is occupied, or working conditions are not right.";
     ```
 
-    FJ. Odeberte následující blok kódu *if-else* za komentářem `// Modify this code block for your sensor`:
+    f. Odeberte následující blok kódu *if-else* pod komentářem `// Modify this code block for your sensor`:
 
     ```JavaScript
         // If carbonDioxide less than threshold and no presence in the room => log, notify and set parent space computed value
@@ -147,7 +147,7 @@ Také si poznamenejte část s názvem **RoleAssignments**. Přiřadí roli spr�
         }
     ```
 
-    A nahraďte ho následujícím blokem *if-else* :
+    A nahraďte ho následujícím blokem *if-else*:
 
     ```JavaScript
         // If sensor values are within range and room is available
@@ -168,9 +168,9 @@ Také si poznamenejte část s názvem **RoleAssignments**. Přiřadí roli spr�
         }
     ```
 
-    Upravená UDF bude hledat podmínku, kde bude místnost k dispozici a má oxid uhličitý a teplotu v přípustných mezích. Vygeneruje oznámení s příkazem `parentSpace.Notify(JSON.stringify(alert));`, pokud je tento stav splněn. Nastaví hodnotu monitorovaného prostoru bez ohledu na to, zda je podmínka splněna, spolu s odpovídající zprávou.
+    Upravená uživatelem definovaná funkce bude hledat podmínku, kdy se místnost stane dostupnou a bude mít úroveň oxidu uhličitého a teplotu v rámci přípustných mezí. Když dojde ke splnění této podmínky, pomocí příkazu `parentSpace.Notify(JSON.stringify(alert));` vygeneruje oznámení. Bez ohledu na splnění podmínky nastaví hodnotu monitorovaného prostoru s odpovídající zprávou.
 
-    věcn. Uložte soubor.
+    g. Uložte soubor.
 
 1. Otevřete příkazové okno a přejdete do složky **Occupancy-quickstart\src**. Spusťte následující příkaz, který zřídí graf prostorové logiky a uživatelsky definovanou funkci:
 
@@ -179,24 +179,24 @@ Také si poznamenejte část s názvem **RoleAssignments**. Přiřadí roli spr�
     ```
 
    > [!IMPORTANT]
-   > Aby se zabránilo neoprávněnému přístupu k rozhraní API pro správu digitálních vláken, **vyžaduje se přihlášení** pomocí přihlašovacích údajů k účtu Azure. Ukládá vaše přihlašovací údaje po krátkou dobu, takže se při každém spuštění nemusíte přihlašovat. Při prvním spuštění tohoto programu a po vypršení platnosti vašich uložených přihlašovacích údajů vám aplikace přesměruje na přihlašovací stránku a zadá na ni kód specifický pro relaci. Podle pokynů se přihlaste pomocí účtu Azure.
+   > Aby se zabránilo neoprávněnému přístupu k rozhraní API pro správu digitálních vláken, **vyžaduje se přihlášení** pomocí přihlašovacích údajů k účtu Azure. Ukládá vaše přihlašovací údaje po krátkou dobu, takže se při každém spuštění nemusíte přihlašovat. Při prvním spuštění tohoto programu a po vypršení platnosti vašich uložených přihlašovacích údajů vám aplikace přesměruje na přihlašovací stránku a zadá na ni kód specifický pro relaci. Podle pokynů se přihlaste pomocí svého účtu Azure.
 
 1. Po ověření účtu se v aplikaci spustí vytvoření ukázkového prostorového grafu, jak je nakonfigurováno v *provisionSample. yaml*. Počkejte, než se zřizování dokončí. Bude to trvat několik minut. Potom Sledujte zprávy v příkazovém okně a Všimněte si, jak se vytvořil prostorový graf. Všimněte si, jak aplikace vytvoří centrum IoT v kořenovém uzlu nebo `Venue`.
 
-1. Z výstupu v příkazovém okně Zkopírujte hodnotu `ConnectionString` v části `Devices` do schránky. Tuto hodnotu budete potřebovat pro simulaci připojení zařízení v další části.
+1. Z výstupu v příkazovém okně Zkopírujte hodnotu `ConnectionString`v části `Devices` do schránky. Tuto hodnotu budete potřebovat pro simulaci připojení zařízení v další části.
 
-    [Ukázka @no__t – 1Provision](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
+    [Ukázka zřízení ![](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
 > [!TIP]
 > Pokud se zobrazí chybová zpráva podobná operaci vstupně-výstupní operace byla přerušena z důvodu ukončení vlákna nebo žádosti o aplikaci (uprostřed zřizování), zkuste příkaz spustit znovu. K tomu může dojít, pokud u klienta HTTP vypršel časový limit problému se sítí.
 
-## <a name="simulate-sensor-data"></a>Simulace dat senzorů
+## <a name="simulate-sensor-data"></a>Simulace dat ze senzorů
 
-V této části použijete projekt s názvem *zařízení-připojení* v ukázce. Data snímače budete simulovat pro detekci pohybu, teploty a oxidu uhličitého. Tento projekt generuje náhodné hodnoty senzorů a odesílá je do služby IoT Hub pomocí připojovacího řetězce zařízení.
+V této části použijete projekt s názvem *zařízení-připojení* v ukázce. Data snímače budete simulovat pro detekci pohybu, teploty a oxidu uhličitého. Tento projekt generuje náhodné hodnoty senzorů a s použitím připojovacího řetězce zařízení odesílá je do centra IoT.
 
 1. V samostatném příkazovém okně přejdete do ukázky digitálních vláken Azure a potom do složky pro **připojení zařízení** .
 
-1. Spusťte tento příkaz, abyste se ujistili, že jsou závislosti pro projekt správné:
+1. Spuštěním tohoto příkazu se ujistěte, že jsou správně závislosti projektu:
 
     ```cmd/sh
     dotnet restore
@@ -204,9 +204,9 @@ V této části použijete projekt s názvem *zařízení-připojení* v ukázce
 
 1. V editoru otevřete soubor [appSettings. JSON](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) a upravte následující hodnoty:
 
-   a. **DeviceConnectionString**: přiřaďte hodnotu `ConnectionString` v okně výstup z předchozí části. Tento řetězec zkopírujte v uvozovkách, aby se simulátor mohl správně připojit ke službě IoT Hub.
+   a. **DeviceConnectionString:** Přiřaďte hodnotu `ConnectionString` z okna výstupu z předchozí části. Tento řetězec zkopírujte v uvozovkách, aby se simulátor mohl správně připojit ke službě IoT Hub.
 
-   b. **HardwareId** v rámci pole **senzory** : protože simulujete události ze senzorů zřízených vaší instancí digitálních vláken Azure, ID hardwaru a názvy senzorů v tomto souboru by měly odpovídat uzlu `sensors` v  *soubor provisionSample. yaml* .
+   b. **HardwareId** v rámci pole **senzory** : protože simulujete události ze senzorů zřízených vaší instancí digitálních vláken Azure, ID hardwaru a názvy senzorů v tomto souboru by měly odpovídat `sensors`mu uzlu souboru *provisionSample. yaml* .
 
       Přidejte novou položku pro senzor teploty. Uzel **senzory** v souboru *appSettings. JSON* by měl vypadat takto:
 
@@ -223,7 +223,7 @@ V této části použijete projekt s názvem *zařízení-připojení* v ukázce
       }]
       ```
 
-1. Spusťte tento příkaz a začněte simulovat události zařízení pro teplotu, pohyb a oxid uhličitý:
+1. Spuštěním tohoto příkazu zahajte simulaci událostí zařízení pro teplotu, pohyb a úroveň oxidu uhličitého:
 
     ```cmd/sh
     dotnet run
@@ -234,11 +234,11 @@ V této části použijete projekt s názvem *zařízení-připojení* v ukázce
 
 ## <a name="get-results-of-the-user-defined-function"></a>Získání výsledků uživatelsky definované funkce
 
-Uživatelem definovaná funkce se spustí pokaždé, když vaše instance přijme data ze zařízení a snímačů. Tato část se dotazuje na instanci digitálního vlákna Azure, aby získala výsledky uživatelsky definované funkce. Zobrazí se téměř v reálném čase, pokud je k dispozici místnost, vzduchem je čerstvá a teplota je pravá. 
+Uživatelem definovaná funkce se spustí pokaždé, když vaše instance přijme data ze senzorů a zařízení. Tato část se dotazuje na instanci digitálního vlákna Azure, aby získala výsledky uživatelsky definované funkce. Zobrazí se téměř v reálném čase, pokud je k dispozici místnost, vzduchem je čerstvá a teplota je pravá. 
 
 1. Otevřete okno příkazového řádku, které jste použili k zřízení ukázky, nebo nové příkazové okno a znovu se zajděte do složky **Occupancy-quickstart\src** v ukázce.
 
-1. Spusťte následující příkaz a přihlaste se po zobrazení výzvy:
+1. Spusťte následující příkaz a po zobrazení výzvy se přihlaste:
 
     ```cmd/sh
     dotnet run GetAvailableAndFreshSpaces
@@ -246,18 +246,18 @@ Uživatelem definovaná funkce se spustí pokaždé, když vaše instance přijm
 
 Okno výstup ukazuje, jak uživatelsky definovaná funkce běží a zachycuje události z simulace zařízení. 
 
-   [@no__t – 1Output pro systém souborů UDF](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
+   [Výstup ![pro systém souborů UDF](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
 
 Pokud je splněna monitorovaná podmínka, uživatelsky definovaná funkce nastaví hodnotu prostoru s příslušnou zprávou, jak jsme viděli [dříve](#create-a-user-defined-function). Funkce `GetAvailableAndFreshSpaces` vytiskne zprávu v konzole nástroje.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete přestat zkoumat digitální vlákna Azure v tomto okamžiku, můžete odstranit prostředky vytvořené v tomto kurzu:
+Pokud chcete zastavit v tuto chvíli seznámení digitální dvojče Azure, bez obav odstraňte prostředky vytvořené v tomto kurzu:
 
-1. V nabídce vlevo v [Azure Portal](https://portal.azure.com)vyberte **všechny prostředky**, vyberte skupinu prostředků vaše digitální vlákna a vyberte **Odstranit**.
+1. V levé nabídce v [webu Azure portal](https://portal.azure.com)vyberte **všechny prostředky**, vyberte skupinu prostředků digitální dvojče a vyberte **odstranit**.
 
     > [!TIP]
-    > Pokud jste narazili na potíže s odstraněním instance digitálního vlákna, aktualizovala se aktualizace služby s touto opravou. Zkuste prosím instanci znovu odstranit.
+    > Pokud zaznamenal/zaznamenala jste potíže odstraníte instanci digitální dvojče, aktualizace služby se týká jenom s opravou. Zkuste to prosím znovu odstraníte instanci.
 
 2. V případě potřeby odstraňte ukázkové aplikace v pracovním počítači.
 
@@ -266,7 +266,7 @@ Pokud chcete přestat zkoumat digitální vlákna Azure v tomto okamžiku, můž
 Teď, když jste zřídili své prostory a vytvořili jste rozhraní, abyste mohli aktivovat vlastní oznámení, můžete přejít do některého z následujících kurzů:
 
 > [!div class="nextstepaction"]
-> [Kurz: přijímání oznámení z digitálních vláken Azure pomocí Logic Apps](tutorial-facilities-events.md)
+> [Kurz: Příjem oznámení z prostorů Azure Digital Twins pomocí Logic Apps](tutorial-facilities-events.md)
 
 > [!div class="nextstepaction"]
-> [Kurz: vizualizace a analýza událostí z digitálních vláken Azure pomocí Time Series Insights](tutorial-facilities-analyze.md)
+> [Kurz: Vizualizace a analýza událostí z prostorů Azure Digital Twins s využitím služby Time Series Insights](tutorial-facilities-analyze.md)

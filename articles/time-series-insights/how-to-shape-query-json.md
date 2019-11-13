@@ -1,6 +1,6 @@
 ---
-title: Osvědčené postupy pro tvarování JSON v Azure Time Series Insights dotazy | Microsoft Docs
-description: Přečtěte si, jak vylepšit efektivitu dotazů Azure Time Series Insights.
+title: Osvědčené postupy pro tvarování dotazů JSON Azure Time Series Insights | Microsoft Docs
+description: Naučte se, jak vylepšit efektivitu vašich Azure Time Series Insights dotazů podle tvarování formátu JSON.
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: article
 ms.date: 10/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 09090354012d2cd3ba050ff9c94593947f27b006
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 386d10c8e4bd7d5f46d2081d5a26371fb37ff30f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990285"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007001"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>Formát JSON obrazce pro maximalizaci výkonu dotazů 
 
@@ -30,7 +30,7 @@ V tomto článku najdete pokyny k tomu, jak můžete tvarovat JSON a maximalizov
 
 Zamyslete se nad tím, jak odesíláte události do Time Series Insights. Konkrétně je to vždy:
 
-1. Co nejefektivněji odesílejte data přes síť.
+1. co možná posílat data přes síť.
 1. Ujistěte se, že vaše data jsou ukládána způsobem, aby bylo možné provádět agregace vhodné pro váš scénář.
 1. Ujistěte se, že nedosáhnete Time Series Insights maximálních limitů vlastností pro:
    - 600 vlastnosti (sloupce) pro prostředí S1.
@@ -42,11 +42,11 @@ Zamyslete se nad tím, jak odesíláte události do Time Series Insights. Konkr�
 Následující doprovodné materiály pomáhají zajistit nejlepší možný výkon dotazů:
 
 1. Nepoužívejte dynamické vlastnosti, jako je například ID značky, jako název vlastnosti. Toto použití přispívá k dosažení maximálního limitu vlastností.
-1. Neodesílat nepotřebné vlastnosti. Pokud se vlastnost dotazu nepožaduje, je vhodné ji Neodesílat. Tímto způsobem se vyhnete omezením úložiště.
+1. Neposílat zbytečné vlastnosti. Pokud se vlastnost dotazu nepožaduje, je vhodné ji Neodesílat. Tímto způsobem se vyhnete omezením úložiště.
 1. Použijte [referenční data](time-series-insights-add-reference-data-set.md) , abyste se vyhnuli posílání statických dat přes síť.
 1. Sdílejte vlastnosti dimenze mezi více událostmi, aby bylo možné data v síti rychleji posílat efektivněji.
-1. Nepoužívejte vnořování hlubokých polí. Time Series Insights podporuje až dvě úrovně vnořených polí, která obsahují objekty. Time Series Insights sloučí pole ve zprávách do více událostí s páry hodnot vlastností.
-1. Pokud pro všechny nebo většinu událostí existuje jenom několik měr, je lepší posílat tyto míry jako samostatné vlastnosti v rámci stejného objektu. Jejich odeslání samostatně snižuje počet událostí a může zlepšit výkon dotazů, protože je potřeba zpracovat méně událostí. Když existuje několik měr, jejich odeslání jako hodnot do jedné vlastnosti minimalizuje možnost dosažení maximálního limitu vlastností.
+1. Nepoužívejte vnoření hloubkové pole. Time Series Insights podporuje až dvě úrovně vnořených polí, která obsahují objekty. Time Series Insights sloučí pole ve zprávách do více událostí s páry hodnot vlastností.
+1. Pokud jenom pár opatření existovat pro všechny nebo většina události, je lepší odesílat tyto míry jako samostatné vlastnosti v rámci stejného objektu. Jejich odeslání samostatně snižuje počet událostí a může zlepšit výkon dotazů, protože je potřeba zpracovat méně událostí. Když existuje několik měr, jejich odeslání jako hodnot do jedné vlastnosti minimalizuje možnost dosažení maximálního limitu vlastností.
 
 ## <a name="example-overview"></a>Příklad přehledu
 
@@ -95,24 +95,24 @@ Vezměte v úvahu následující datovou část JSON odeslanou do prostředí Ti
 
 * Tabulka referenčních dat, která má klíčovou vlastnost **deviceId**:
 
-   | deviceId | Parametr | deviceLocation |
+   | deviceId | messageId | deviceLocation |
    | --- | --- | --- |
-   | FXXX | ŘÁDKová\_ová DATA | EU |
-   | FYYY | ŘÁDKová\_ová DATA | USA |
+   | FXXX | LINE\_DATA | EU |
+   | FYYY | LINE\_DATA | USA |
 
 * Time Series Insights tabulka událostí po sloučení:
 
-   | deviceId | Parametr | deviceLocation | časové razítko | řadu. Rychlost toku ft3/s | řadu. Psí tlak v oleji motoru |
+   | deviceId | messageId | deviceLocation | časové razítko | řada. Míra tok ft3/s | řada. Modul ropy tlak psi |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | ŘÁDKová\_ová DATA | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
-   | FXXX | ŘÁDKová\_ová DATA | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
-   | FYYY | ŘÁDKová\_ová DATA | USA | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
+   | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
+   | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
+   | FYYY | LINE\_DATA | USA | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
 
 > [!NOTE]
 > - Sloupec **deviceId** slouží jako záhlaví sloupce pro různá zařízení v rámci loďstva. Když hodnota **deviceId** nastaví svůj název vlastní vlastnosti, omezí se celkový počet zařízení na 595 (pro prostředí S1) nebo 795 (pro prostředí S2) s dalšími pěti sloupci.
 > - Nepotřebné vlastnosti jsou vyloučeny (například informace o značka a modelu). Vzhledem k tomu, že se vlastnosti v budoucnu nedotazují, jejich vyloučení umožní lepší efektivitu sítě a úložiště.
 > - Referenční data se používají ke snížení počtu bajtů přenesených přes síť. Dva atributy **MessageID** a **deviceLocation** jsou spojeny pomocí **deviceId**vlastnosti klíče. Tato data jsou propojena s daty telemetrie v době vstupu a jsou pak uložena v Time Series Insights pro dotazování.
-> - Používají se dvě vrstvy vnoření, což je maximální množství vnořování podporovaného Time Series Insights. Je důležité vyhnout se hluboko vnořeným polím.
+> - Používají se dvě vrstvy vnoření, což je maximální množství vnořování podporovaného Time Series Insights. Je důležité, aby se zabránilo hluboce vnořených polí.
 > - Míry jsou odesílány jako samostatné vlastnosti v rámci stejného objektu, protože existuje několik měr. Tady, **řady. Rozhraní psi a řady toků toku** **. Ft3/s tlakového oleje v motoru** jsou jedinečné sloupce.
 
 ## <a name="scenario-two-several-measures-exist"></a>Scénář 2: existuje několik měr
@@ -165,23 +165,23 @@ Příklad datové části JSON:
 
 * Tabulka referenčních dat, která má vlastnosti klíče **deviceId** a **Series. tagId**:
 
-   | deviceId | Series. tagId | Parametr | deviceLocation | type | jednotce |
+   | deviceId | series.tagId | messageId | deviceLocation | type | jednotce |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | ŘÁDKová\_ová DATA | EU | Rychlost toku | ft3/s |
-   | FXXX | oilPressure | ŘÁDKová\_ová DATA | EU | Tlak v oleji motoru | psi |
-   | FYYY | pumpRate | ŘÁDKová\_ová DATA | USA | Rychlost toku | ft3/s |
-   | FYYY | oilPressure | ŘÁDKová\_ová DATA | USA | Tlak v oleji motoru | psi |
+   | FXXX | pumpRate | LINE\_DATA | EU | Rychlost toku | ft3/s |
+   | FXXX | oilPressure | LINE\_DATA | EU | Tlak v oleji motoru | psi |
+   | FYYY | pumpRate | LINE\_DATA | USA | Rychlost toku | ft3/s |
+   | FYYY | oilPressure | LINE\_DATA | USA | Tlak v oleji motoru | psi |
 
 * Time Series Insights tabulka událostí po sloučení:
 
-   | deviceId | Series. tagId | Parametr | deviceLocation | type | jednotce | časové razítko | Series. Value |
+   | deviceId | series.tagId | messageId | deviceLocation | type | jednotce | časové razítko | Series. Value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | ŘÁDKová\_ová DATA | EU | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
-   | FXXX | oilPressure | ŘÁDKová\_ová DATA | EU | Tlak v oleji motoru | psi | 2018-01-17T01:17:00Z | 34,7 |
-   | FXXX | pumpRate | ŘÁDKová\_ová DATA | EU | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | oilPressure | ŘÁDKová\_ová DATA | EU | Tlak v oleji motoru | psi | 2018-01-17T01:17:00Z | 49,2 |
-   | FYYY | pumpRate | ŘÁDKová\_ová DATA | USA | Rychlost toku | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-   | FYYY | oilPressure | ŘÁDKová\_ová DATA | USA | Tlak v oleji motoru | psi | 2018-01-17T01:18:00Z | 22,2 |
+   | FXXX | pumpRate | LINE\_DATA | EU | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | oilPressure | LINE\_DATA | EU | Tlak v oleji motoru | psi | 2018-01-17T01:17:00Z | 34.7 |
+   | FXXX | pumpRate | LINE\_DATA | EU | Rychlost toku | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | oilPressure | LINE\_DATA | EU | Tlak v oleji motoru | psi | 2018-01-17T01:17:00Z | 49.2 |
+   | FYYY | pumpRate | LINE\_DATA | USA | Rychlost toku | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+   | FYYY | oilPressure | LINE\_DATA | USA | Tlak v oleji motoru | psi | 2018-01-17T01:18:00Z | 22.2 |
 
 > [!NOTE]
 > - Sloupce **deviceId** a **Series. tagId** slouží jako záhlaví sloupců pro různá zařízení a značky v rámci loďstva. Použití každého vlastního atributu omezí dotaz na 594 (pro prostředí S1) nebo 794 (pro prostředí S2) celkem zařízení s ostatními šesti sloupci.

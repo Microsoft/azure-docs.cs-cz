@@ -1,6 +1,6 @@
 ---
-title: Diagnostika a řešení potíží s Azure Time Series Insights Preview | Microsoft Docs
-description: Naučte se diagnostikovat a řešit potíže s Azure Time Series Insights Preview.
+title: Diagnostika a řešení potíží s prostředím verze Preview – Azure Time Series Insights | Microsoft Docs
+description: Naučte se diagnostikovat a řešit potíže s prostředím Azure Time Series Insights ve verzi Preview.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,14 +10,14 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6b65edbd808abd6ff660ef00a8a680b4d3f0846c
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: df8300e84309a874faa4b1c06891a4c5b549fce6
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989889"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014785"
 ---
-# <a name="diagnose-and-troubleshoot"></a>Diagnostika a řešení potíží
+# <a name="diagnose-and-troubleshoot-a-preview-environment"></a>Diagnostika a řešení potíží s prostředím verze Preview
 
 Tento článek shrnuje několik běžných problémů, se kterými se můžete setkat při práci s prostředím Azure Time Series Insights ve verzi Preview. Tento článek také popisuje možné příčiny a řešení jednotlivých problémů.
 
@@ -39,7 +39,7 @@ K dispozici je několik běžných důvodů, proč se data v Průzkumníkovi slu
 
 - Vaše zdrojová data události nejsou ve formátu JSON.
 
-    Time Series Insights podporuje pouze data JSON. Ukázky JSON najdete v tématu [podporované tvary JSON](./how-to-shape-query-json.md).
+    Time Series Insights podporuje pouze data JSON. Ukázky JSON najdete v tématu [tvary JSON nepodporuje](./how-to-shape-query-json.md).
 
 - V klíči zdroje událostí chybí požadovaná oprávnění.
 
@@ -74,10 +74,10 @@ Můžete odesílat data bez ID časové řady.
 
 ## <a name="problem-my-event-sources-timestamp-property-name-doesnt-work"></a>Problém: název vlastnosti časového razítka zdroje události nefunguje
 
-Ujistěte se, že název a hodnota odpovídají následujícím pravidlům:
+Ujistěte se, že název a hodnotu v souladu s těmito pravidly:
 
 * V názvu vlastnosti časového razítka se rozlišují malá a velká písmena.
-* Hodnota vlastnosti časového razítka, která pochází ze zdroje události jako řetězec JSON, má formát `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`. Příklad takového řetězce je `“2008-04-12T12:53Z”`.
+* Hodnota vlastnosti časového razítka, která pochází ze zdroje události jako řetězec JSON, má formát `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`. Příkladem takových řetězec je `“2008-04-12T12:53Z”`.
 
 Nejjednodušší způsob, jak zajistit, aby byl název vlastnosti časového razítka zachycen a správně fungoval, je použít Průzkumníka služby Time Series Insights Preview. V Průzkumníku služby Time Series Insights Preview pomocí grafu vyberte časový úsek po zadání názvu vlastnosti časového razítka. Klikněte pravým tlačítkem na výběr a vyberte možnost **prozkoumat události** . Záhlaví prvního sloupce je název vlastnosti časového razítka. Mělo by mít `($ts)` vedle `Timestamp`Wordu místo:
 
@@ -98,7 +98,7 @@ Pokud není explicitně zadaná vlastnost timestamp, použije se jako výchozí 
 
    Modely časových řad se podporují jenom v prostředí s průběžnými platbami. Další informace o tom, jak získat přístup k prostředí S1 nebo S2 z Průzkumníka Time Series Insights Preview, najdete v tématu [vizualizace dat v Průzkumníkovi](./time-series-insights-update-explorer.md).
 
-   [Přístup k ![](media/v2-update-diagnose-and-troubleshoot/access.png)](media/v2-update-diagnose-and-troubleshoot/access.png#lightbox)
+   [![Access](media/v2-update-diagnose-and-troubleshoot/access.png)](media/v2-update-diagnose-and-troubleshoot/access.png#lightbox)
 
 - Možná nemáte oprávnění k zobrazení a úpravě modelu.
 

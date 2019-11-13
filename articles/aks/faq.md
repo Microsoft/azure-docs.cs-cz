@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 2f24f5cacb8b6e115d7fe91c6ef0a7a333676ae1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e68ce5a198165c4187cbad9e86ce61f67694a82d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472836"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961593"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy týkající se služby Azure Kubernetes (AKS)
 
@@ -64,11 +64,11 @@ AKS se sestavuje na několika prostředcích infrastruktury Azure, včetně slu�
 Pro povolení této architektury zahrnuje každé nasazení AKS dvě skupiny prostředků:
 
 1. Vytvoříte první skupinu prostředků. Tato skupina obsahuje pouze prostředek služby Kubernetes. Poskytovatel prostředků AKS během nasazování automaticky vytvoří druhou skupinu prostředků. Příkladem druhé skupiny prostředků je *MC_myResourceGroup_myAKSCluster_eastus*. Informace o tom, jak zadat název této druhé skupiny prostředků, najdete v další části.
-1. Druhá skupina prostředků, označovaná jako *Skupina prostředků uzlu*, obsahuje všechny prostředky infrastruktury přidružené ke clusteru. Mezi tyto prostředky patří virtuální počítače uzlu Kubernetes, virtuální síť a úložiště. Ve výchozím nastavení má skupina prostředků uzlu název, jako je *MC_myResourceGroup_myAKSCluster_eastus*. AKS automaticky odstraní prostředek uzlu, když se cluster odstraní, takže by se měl používat jenom pro prostředky, které sdílejí životní cyklus clusteru.
+1. Druhá skupina prostředků, označovaná jako *Skupina prostředků uzlu*, obsahuje všechny prostředky infrastruktury přidružené ke clusteru. Mezi tyto prostředky patří virtuální počítače uzlu Kubernetes, virtuální síť a úložiště. Ve výchozím nastavení má skupina prostředků uzlu název, jako *MC_myResourceGroup_myAKSCluster_eastus*. AKS automaticky odstraní prostředek uzlu, když se cluster odstraní, takže by se měl používat jenom pro prostředky, které sdílejí životní cyklus clusteru.
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Můžu pro skupinu prostředků uzlu AKS zadat vlastní název?
 
-Ano. Ve výchozím nastavení pojmenuje AKS skupinu prostředků uzlu *MC_resourcegroupname_clustername_location*, ale můžete také zadat vlastní název.
+Ano. Ve výchozím nastavení AKS pojmenuje skupinu prostředků uzlu *MC_resourcegroupname_clustername_location*, ale můžete také zadat vlastní název.
 
 Pokud chcete zadat vlastní název skupiny prostředků, nainstalujte rozšíření Azure CLI [AKS-Preview][aks-preview-cli] verze *0.3.2* nebo novější. Při vytváření clusteru AKS pomocí příkazu [AZ AKS Create][az-aks-create] použijte parametr *--Node-Resource-Group* a zadejte název skupiny prostředků. Pokud k nasazení clusteru AKS [použijete šablonu Azure Resource Manager][aks-rm-template] , můžete definovat název skupiny prostředků pomocí vlastnosti *nodeResourceGroup* .
 
@@ -126,10 +126,10 @@ V AKS můžete nastavit hodnotu `maxPods` při vytváření clusteru pomocí Azu
 
 | Sítě | Minimální | Maximum |
 | -- | :--: | :--: |
-| CNI Azure | 30 | 250 |
+| Azure CNI | 30 | 250 |
 | Kubenet | 30 | 110 |
 
-Vzhledem k tomu, že AKS je spravovaná služba, nasadíme a spravujeme doplňky a lusky jako součást clusteru. V minulosti mohli uživatelé definovat hodnotu `maxPods` nižší, než je hodnota, kterou spravované lusky vyžadují ke spuštění (například 30). AKS nyní vypočítá minimální počet lusků pomocí tohoto vzorce: ((maxPods nebo (maxPods * vm_count)) > minimálního spravovaného doplňku.
+Vzhledem k tomu, že AKS je spravovaná služba, nasadíme a spravujeme doplňky a lusky jako součást clusteru. V minulosti mohli uživatelé definovat hodnotu `maxPods` nižší, než je hodnota, kterou spravované lusky vyžadují ke spuštění (například 30). AKS nyní vypočítá minimální počet lusků pomocí tohoto vzorce: ((maxPods nebo (maxPods * vm_count)) > spravovaného doplňku minimálních hodnot lusky.
 
 Uživatelé nemohou přepsat minimální `maxPods` ověřování.
 
@@ -194,7 +194,6 @@ I když AKS má mechanismy odolnosti k vyvýšení těchto konfigurací a obnove
 [aks-regions]: ./quotas-skus-regions.md#region-availability
 [aks-upgrade]: ./upgrade-cluster.md
 [aks-cluster-autoscale]: ./autoscaler.md
-[virtual-kubelet]: virtual-kubelet.md
 [aks-advanced-networking]: ./configure-azure-cni.md
 [aks-rbac-aad]: ./azure-ad-integration.md
 [node-updates-kured]: node-updates-kured.md

@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: f9a3c4875f01c650485034fe46f53bb5aa1fd75b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: cb7ebe5d9519f1a3967a29f4c883c420a892817f
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722652"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958003"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps pokrytí provozu
 
-Azure Maps poskytuje podrobné informace o provozu ve formě **toku** a incidentůprovozu. Tato data je možné vyhodnotit na mapách nebo použít ke generování inteligentnějších tras, které měří v reálném podmínkách řízení.
+Azure Maps poskytuje podrobné informace o provozu ve formě **toku** a **incidentů**provozu. Tato data je možné vyhodnotit na mapách nebo použít ke generování inteligentnějších tras, které měří v reálném podmínkách řízení.
 
-Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti. Následující tabulka poskytuje informace o tom, jaké informace o přenosech si můžete vyžádat z jednotlivých oblastí: 
+Mapy ale nemají stejnou úroveň informací a přesnost pro všechny země nebo oblasti. V následující tabulce najdete informace o tom, jaké informace o přenosech si můžete vyžádat od jednotlivých zemí nebo oblastí: 
 
 ## <a name="americas"></a>Amerika
 
-|Země nebo oblast  |Incidenty  |Tok  |
+|Země/oblast  |Incidenty  |Tok  |
 |---------|:---------:|:---------:|
 |Argentina      |✓         |✓         |
 |Brazílie     |✓         |✓         |
@@ -39,14 +39,14 @@ Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti. N
 
 ## <a name="asia-pacific"></a>Asie a Tichomoří
 
-|Země nebo oblast   |Incidenty  |Tok  |
+|Země/oblast   |Incidenty  |Tok  |
 |---------|:---------:|:---------:|
 |Austrálie     |✓         |✓        |
-|Brunej   |✓         |✓        |
+|Sultanát   |✓         |✓        |
 |Hongkong – zvláštní správní oblast     |✓         |✓         |
 |Indie   |✓         |✓         |
 |Indonésie     |✓         |✓         |
-|Macao – zvláštní administrativní oblast     |✓         |✓         |
+|Macao – zvláštní správní oblast     |✓         |✓         |
 |Malajsie     |✓         |✓         |
 |Nový Zéland     |✓         |✓         |
 |Filipíny  |✓         |✓         |
@@ -58,7 +58,7 @@ Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti. N
 
 ## <a name="europe"></a>Evropa
 
-|Země nebo oblast   |Incidenty  |Tok  |
+|Země/oblast   |Incidenty  |Tok  |
 |---------|:---------:|:---------:|
 |Andorra   |✓         |✓         |
 |Rakousko     |✓         |✓         |
@@ -116,9 +116,9 @@ Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti. N
 
 ## <a name="middle-east-and-africa"></a>Střední východ a Afrika
 
-|Země nebo oblast |Incidenty  |Tok  |
+|Země/oblast |Incidenty  |Tok  |
 |---------|:---------:|:---------:|
-|Bahrain     |✓         |✓         |
+|Bahrajn     |✓         |✓         |
 |Egypt     |✓         |✓         |
 |Izrael     |✓         |✓         |
 |Keňa     |✓         |✓         |
@@ -132,6 +132,6 @@ Mapy ale nemají stejnou úroveň informací a přesnost pro všechny oblasti. N
 |Jižní Afrika     |✓         |✓         |
 |Spojené arabské emiráty  |✓         |✓         |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure Maps dat provozu najdete na referenčních stránkách [provozu](https://docs.microsoft.com/rest/api/maps/traffic) .

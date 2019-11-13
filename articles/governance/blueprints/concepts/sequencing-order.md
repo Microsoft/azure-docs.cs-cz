@@ -1,17 +1,14 @@
 ---
 title: Pochopení pořadí sekvence nasazení
 description: Seznamte se s životním cyklem, na který odkazuje definice podrobného plánu, a podrobnosti o jednotlivých fázích.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/22/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: bda7a6caea931a993a6ddd6731688792bf0b3948
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 87eff48f977f0308fea563090a44ff0b301909a9
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981016"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960435"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Porozumění sekvenci nasazení v Azure modrotisky
 
@@ -55,7 +52,7 @@ Při sestavování velkých podrobných definic podrobného plánu může být p
 
 ### <a name="example---ordered-resource-group"></a>Příklad – seřazená skupina prostředků
 
-Tato příklad definice podrobného plánu má skupinu prostředků, která definovala vlastní pořadí sekvencování, deklarováním hodnoty pro `dependsOn` spolu se standardní skupinou prostředků. V tomto případě se artefakt s názvem **assignPolicyTags** zpracuje před **seřazenou** skupinou prostředků RG.
+Tato příklad definice podrobného plánu má skupinu prostředků, která definovala vlastní pořadí sekvencování, deklarováním hodnoty pro `dependsOn`společně se standardní skupinou prostředků. V tomto případě se artefakt s názvem **assignPolicyTags** zpracuje před **seřazenou** skupinou prostředků RG.
 **Standard-RG** se zpracuje podle výchozího pořadí sekvencování.
 
 ```json
@@ -140,7 +137,7 @@ Artefakt šablony na úrovni předplatného v závislosti na skupině prostředk
 
 Během procesu vytváření se k vytvoření grafu závislostí artefaktů modrotisky používá topologické řazení. Tato kontrolu zajišťuje, aby se podporovaly jednotlivé úrovně závislostí mezi skupinami prostředků a artefakty.
 
-Pokud je deklarována závislost artefaktu, která by nezměnila výchozí pořadí, nebude provedena žádná změna. Příkladem je skupina prostředků, která závisí na zásadě na úrovni předplatného. Dalším příkladem je přiřazení podřízené zásady skupiny prostředků ' standard-RG ', které závisí na přiřazení podřízené role skupiny prostředků ' standard-RG '. V obou případech `dependsOn` nezměnila výchozí pořadí sekvencování a neudělaly se žádné změny.
+Pokud je deklarována závislost artefaktu, která by nezměnila výchozí pořadí, nebude provedena žádná změna. Příkladem je skupina prostředků, která závisí na zásadě na úrovni předplatného. Dalším příkladem je přiřazení podřízené zásady skupiny prostředků ' standard-RG ', které závisí na přiřazení podřízené role skupiny prostředků ' standard-RG '. V obou případech `dependsOn` nezměnili výchozí pořadí sekvencování a neudělaly se žádné změny.
 
 ## <a name="next-steps"></a>Další kroky
 

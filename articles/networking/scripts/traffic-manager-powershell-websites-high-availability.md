@@ -1,5 +1,5 @@
 ---
-title: Ukázka skriptu Azure PowerShell – směrování provozu pro vysokou dostupnost aplikací | Microsoft Docs
+title: Směrování provozu pro HA aplikací – Azure PowerShell-Traffic Manager
 description: Ukázka skriptu Azure PowerShell – směrování provozu pro vysokou dostupnost aplikací
 services: traffic-manager
 documentationcenter: traffic-manager
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 05/16/2017
 ms.author: allensu
-ms.openlocfilehash: 2f3b4ef9abdfae2c0400f54a90694db468470c94
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 99768afa9de22767d73576143a5c747be6a3bef9
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889495"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013374"
 ---
 # <a name="route-traffic-for-high-availability-of-applications"></a>Směrování provozu pro vysokou dostupnost aplikací
 
@@ -46,7 +46,7 @@ Remove-AzResourceGroup -Name myResourceGroup2
 
 Tento skript k vytvoření skupiny prostředků, webové aplikace, profilu služby Traffic Manager a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)  | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Vytvoří plán služby App Service. Toto je jako serverová farma pro webovou aplikaci Azure. |

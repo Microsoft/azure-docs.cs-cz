@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 07/17/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 565620f477382ff81f854336dbee7bdb1ad06f01
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 781203cec8d85abd74aa439b5595e8d00ed36745
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469700"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961690"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Rychlý start: Směrování webového provozu pomocí služby Azure Application Gateway – Azure Portal
 
@@ -28,7 +28,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého účtu Azure.
 
-## <a name="create-an-application-gateway"></a>Vytvoření Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
 1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**. Zobrazí se **nové** okno.
 
@@ -65,7 +65,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého ú�
 
 1. Na kartě **front-endu** ověřte, že **typ IP adresy front-end** je nastavený na **veřejné**. <br>Front-end IP adresu můžete nakonfigurovat tak, aby byla veřejná nebo soukromá jako na základě vašeho případu použití. V tomto příkladu zvolíte veřejnou front-end IP adresu.
    > [!NOTE]
-   > V případě SKU Application Gateway v2 můžete zvolit jenom **veřejnou** konfiguraci IP adresy front-endu. V tuto chvíli není u této SKU verze V2 povolená soukromá konfigurace IP adresy front-endu.
+   > V případě SKU Application Gateway v2 můžete zvolit jenom **veřejnou** konfiguraci IP adresy front-endu. V tuto chvíli není u této SKU verze V2 povolená jenom soukromá konfigurace IP adresy front-endu. Můžete mít konfiguraci veřejné i privátní IP adresy front-endu.
 
 2. Zvolte **vytvořit nový** pro **veřejnou IP adresu** a jako název veřejné IP adresy zadejte *myAGPublicIPAddress* a pak vyberte **OK**. 
 
@@ -90,7 +90,7 @@ Back-end fond slouží ke směrování požadavků na servery back-end, které o
 
 4. Na kartě **back-endy** vyberte **Další: Konfigurace**.
 
-### <a name="configuration-tab"></a>Karta konfigurace
+### <a name="configuration-tab"></a>Karta Konfigurace
 
 Na kartě **Konfigurace** se připojíte k front-endovému a back-endovému fondu, který jste vytvořili pomocí pravidla směrování.
 
@@ -188,7 +188,7 @@ V tomto příkladu nainstalujete službu IIS na virtuální počítače jenom k 
 
     ![Přidání back-endových serverů](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
 
-6. Vyberte **Save** (Uložit).
+6. Vyberte **Uložit**.
 
 7. Než budete pokračovat k dalšímu kroku, počkejte na dokončení nasazení.
 
@@ -196,7 +196,7 @@ V tomto příkladu nainstalujete službu IIS na virtuální počítače jenom k 
 
 I když služba IIS není nutná k vytvoření aplikační brány, nainstalovali jste se v tomto rychlém startu, abyste ověřili, jestli Azure úspěšně vytvořil Aplikační bránu. Použijte službu IIS k otestování služby Application Gateway:
 
-1. Na stránce s **přehledem** vyhledejte veřejnou IP adresu pro aplikační bránu.![záznam veřejné IP adresy aplikační brány](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) nebo můžete vybrat možnost **všechny prostředky**, do vyhledávacího pole zadejte *myAGPublicIPAddress* a potom ji vybrat ve výsledcích hledání. Azure zobrazí veřejnou IP adresu na stránce **Přehled** .
+1. přehledem vyhledejte veřejnou IP adresu pro aplikační **Na stránce** bránu.![Zaznamenejte si veřejnou IP adresu](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) aplikační brány nebo vyberte **všechny prostředky**, do vyhledávacího pole zadejte *myAGPublicIPAddress* a potom ho vyberte ve výsledcích hledání. Azure zobrazí veřejnou IP adresu na stránce **Přehled** .
 2. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 3. Ověřte odpověď. Platná odpověď ověří, že se služba Application Gateway úspěšně vytvořila, a může se úspěšně připojit k back-endu.![Otestování aplikační brány](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 

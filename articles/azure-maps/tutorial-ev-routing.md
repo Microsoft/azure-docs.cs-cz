@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9cc7fc1ba8c7f55700505ea8fca0dea4f836e333
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9628e34b752abc8d77225a612f9f6daaf02fcbf7
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243290"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010935"
 ---
 # <a name="route-electric-vehicles-by-using-azure-notebooks-python"></a>Směrování elektrických vozidel pomocí Azure Notebooks (Python)
 
@@ -24,7 +24,7 @@ Rozhraní REST API pro Azure Maps se dají volat z jazyků, jako je Python a R, 
 
 V tomto kurzu se seznámíte se scénářem, který vám může pomoci strojvedoucímu, který má za následek nízké zatížení baterie elektrického vozidla, na základě času jednotky z umístění vozidla.
 
-V tomto kurzu provedete tyto kroky:
+V tomto kurzu provedete následující:
 
 > [!div class="checklist"]
 > * Vytvořte a spusťte Poznámkový blok Jupyter v [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) v cloudu.
@@ -35,19 +35,19 @@ V tomto kurzu provedete tyto kroky:
 > * Najděte a vizualizujte trasu k nejbližší elektrické stanici zpoplatnění elektrického vozidla na základě času na disku.
 
 
-## <a name="prerequisites"></a>Požadované součásti 
+## <a name="prerequisites"></a>Požadavky 
 
 Abyste mohli tento kurz dokončit, musíte nejdřív vytvořit účet Azure Maps a získat primární klíč (klíč předplatného). 
 
 Pokud chcete vytvořit předplatné účtu Azure Maps v cenové úrovni S1, postupujte podle pokynů v části [Správa účtu Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account). 
 
-Pokud chcete získat primární klíč předplatného pro svůj účet, postupujte podle pokynů v tématu [Hledání okolních bodů zájmu pomocí Azure Maps](./tutorial-search-location.md#getkey) .
+Pokud chcete získat primární klíč předplatného pro svůj účet, postupujte podle pokynů v části [Vytvoření účtu a získání klíče](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-and-get-your-key).
 
 ## <a name="create-an-azure-notebook"></a>Vytvoření poznámkového bloku Azure
 
 Pokud chcete postupovat podle tohoto kurzu, musíte vytvořit projekt Azure notebook a stáhnout a spustit soubor poznámkového bloku Jupyter. Soubor poznámkového bloku obsahuje kód Pythonu, který implementuje scénář v tomto kurzu. Pokud chcete vytvořit projekt pro notebook Azure a nahrát do něj dokument Jupyter poznámkového bloku, udělejte toto:
 
-1. Přejít na [Azure Notebooks](https://notebooks.azure.com) a přihlásit se. Další informace najdete v tématu [rychlý Start: přihlášení a nastavení ID uživatele](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
+1. Přejděte na [poznámkových bloků Azure](https://notebooks.azure.com) a přihlaste se. Další informace najdete v tématu [rychlý Start: přihlášení a nastavení ID uživatele](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
 1. V horní části stránky veřejného profilu vyberte **Moje projekty**.
 
     ![Tlačítko Moje projekty](./media/tutorial-ev-routing/myproject.png)
@@ -76,20 +76,20 @@ Abychom vám pomohli lépe porozumět funkcím, které jsou implementované v so
 
   ![Tlačítko spustit](./media/tutorial-ev-routing/run.png)
 
-## <a name="install-project-level-packages"></a>Instalovat balíčky na úrovni projektu
+## <a name="install-project-level-packages"></a>Instalace balíčků na úrovni projektu
 
 Chcete-li spustit kód v poznámkovém bloku, nainstalujte balíčky na úrovni projektu následujícím způsobem:
 
 1. Stáhněte si soubor [*požadavky. txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) z [úložiště poznámkového bloku Azure Maps Jupyter](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)a pak ho nahrajte do svého projektu.
-1. Na řídicím panelu projekt vyberte **nastavení projektu**. 
+1. Na řídicím panelu Projekt, vyberte **nastavení projektu**. 
 1. V podokně **nastavení projektu** vyberte kartu **prostředí** a pak vyberte **Přidat**.
 1. V části **nastavení prostředí**proveďte následující kroky:   
     a. V prvním rozevíracím seznamu vyberte možnost **požadavky. txt**.  
-    b) V druhém rozevíracím seznamu vyberte soubor vašich požadavků. *txt* .  
+    b. V druhém rozevíracím seznamu vyberte soubor vašich požadavků. *txt* .  
     c. V třetím rozevíracím seznamu vyberte v části vaše verze **Python verze 3,6** .
 1. Vyberte **Uložit**.
 
-    ![Nainstalovat balíčky](./media/tutorial-ev-routing/install-packages.png)
+    ![Instalace balíčků](./media/tutorial-ev-routing/install-packages.png)
 
 ## <a name="load-the-required-modules-and-frameworks"></a>Načíst požadované moduly a architektury
 
@@ -281,7 +281,7 @@ display(Image(poiRangeMap))
 
 Jakmile určíte všechny potenciální stanice zpoplatnění v dosahu dostupného rozsahu, budete chtít zjistit, ke kterému z nich se dá získat minimální čas. 
 
-Následující skript volá [rozhraní API pro směrování matrice](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)Azure Maps, které se vrátí pro zadané umístění vozidla. Doba cesty a vzdálenost ke každé stanici zpoplatnění. Skript v další buňce analyzuje odpověď, aby vyhledal nejbližší dostupnou stanici zpoplatnění s ohledem na čas.
+Následující skript volá [rozhraní API pro směrování matrice](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)Azure Maps, které se vrátí pro zadané umístění vozidla. Doba cesty a vzdálenost ke každé stanici zpoplatnění. Skript v další buňce analyzuje odpověď, aby vyhledal nejbližší dostupnou stanici zpoplatnění s ohledem na čas.
 
 Pokud chcete najít nejbližší dosažitelnou stanici, ke které se dá získat přístup v nejmenším množství času, spusťte skript v následující buňce:
 
@@ -395,7 +395,7 @@ Pokud chcete prozkoumat rozhraní API Azure Maps používaná v tomto kurzu, př
 * [Po vyhledání v geometrii](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)
 * [Nahrávání dat](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)
 * [Vykreslení – získat obrázek mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Vyjednaná matice směrování](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)
+* [Vyjednaná matice směrování](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
 * [Získat směr směrování](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
 
 Úplný seznam Azure Maps rozhraní REST API najdete v tématu [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/#reference).

@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 11/11/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect find a Virtual WAN partner
-ms.openlocfilehash: 985823e5aa806244596277c982cc129554d890f2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 44ce62f957dbdd71a41962ae7257cbc6e048e03c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489064"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953328"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtuální partneři sítě WAN a umístění virtuálních rozbočovačů
 
@@ -40,7 +40,7 @@ Někteří partneři pro připojení můžou automatizovat automatizaci, aby zah
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-Následující partneři jsou plánované pro náš budoucí plán: Arista, F5 Networks, Velocloud.
+Následující partneři jsou plánované pro náš budoucí plán: Arista, Aruba HPE, Cisco Systems, F5 Networks, Open Systems a VMWare Velocloud.
 
 ## <a name="locations"></a>Polohy
 

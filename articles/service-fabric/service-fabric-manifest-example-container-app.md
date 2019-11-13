@@ -1,5 +1,5 @@
 ---
-title: Příklady manifestu aplikace služby Azure Service Fabric Container | Microsoft Docs
+title: Příklady manifestu aplikace Azure Service Fabric Container
 description: Přečtěte si, jak nakonfigurovat nastavení manifestu aplikace a služby pro aplikaci Service Fabric více kontejnerů.
 services: service-fabric
 documentationcenter: na
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2018
 ms.author: pepogors
-ms.openlocfilehash: ece0b763a2dbe501b0f46d026c59e1294a448c59
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 2d79f7dbf492b9473bcff147891df308674a8cf0
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650610"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013251"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Příklady manifestu služeb a vícekontejnerové aplikace
-Níže jsou uvedeny příklady manifestů aplikace a služby pro aplikaci Service Fabric více kontejnerů. Účelem těchto příkladů je Ukázat, jaká nastavení jsou k dispozici a jak je používat. Tyto manifesty aplikací a služeb jsou založené na ukázkových manifestech kontejnerů pro [Windows Server 2016](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) .
+Níže jsou uvedeny příklady manifestů aplikace a služby pro aplikaci Service Fabric více kontejnerů. Účelem těchto příkladů je Ukázat, jaká nastavení jsou k dispozici a jak je používat. Tyto manifesty aplikací a služeb jsou založené na [ukázkových manifestech kontejnerů pro Windows Server 2016](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) .
 
 Zobrazí se následující funkce:
 
 |Manifest|Funkce|
 |---|---|
-|[Manifest aplikace](#application-manifest)| [přepsat proměnné prostředí](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [nakonfigurovat mapování portů kontejneru na hostitele](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery), [Konfigurovat ověřování registrů kontejnerů](service-fabric-get-started-containers.md#configure-container-repository-authentication), zásady [správného řízení prostředků](service-fabric-resource-governance.md), [nastavit režim izolace](service-fabric-get-started-containers.md#configure-isolation-mode), [zadat kontejner specifický pro sestavení operačního systému bitové kopie](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
+|[Manifest aplikace](#application-manifest)| [přepsat proměnné prostředí](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [nakonfigurovat mapování portů kontejneru na hostitele](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery), [Konfigurovat ověřování registrů kontejnerů](service-fabric-get-started-containers.md#configure-container-repository-authentication), zásady [správného řízení prostředků](service-fabric-resource-governance.md), [nastavit režim izolace](service-fabric-get-started-containers.md#configure-isolation-mode), [zadat image kontejneru specifické pro sestavení operačního systému](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
 |[Manifest služby FrontEndService](#frontendservice-service-manifest)| [nastavení proměnných prostředí](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [Konfigurace koncového bodu](service-fabric-get-started-containers.md#configure-communication), předávání příkazů do kontejneru, [Import certifikátu do kontejneru](service-fabric-securing-containers.md)| 
 |[Manifest služby BackEndService](#backendservice-service-manifest)|[nastavení proměnných prostředí](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [Konfigurace koncového bodu](service-fabric-get-started-containers.md#configure-communication), [Konfigurace ovladače svazku](service-fabric-containers-volume-logging-drivers.md)| 
 
@@ -351,7 +351,7 @@ Spustitelný soubor určený parametrem EntryPoint je obvykle dlouhodobě běž�
  Další informace naleznete v tématu [ContainerHost element](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>ImageName Element
-Úložiště a obrázek na https://hub.docker.com nebo Azure Container Registry. Další informace naleznete v tématu [ImageName element](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+Úložiště a obrázek v https://hub.docker.com nebo Azure Container Registry. Další informace naleznete v tématu [ImageName element](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="environmentvariables-element"></a>Element EnvironmentVariables
 Předání proměnných prostředí kontejneru nebo exe.  Další informace naleznete v tématu [EnvironmentVariables element](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
@@ -366,7 +366,7 @@ Deklaruje složku, která je pojmenována atributem Name, který obsahuje soubor
 Deklaruje složku, která je pojmenována atributem Name, který obsahuje soubory statických dat. Service Fabric bude recyklovat všechny exe a DLLHOSTs zadané v hostitelích a balíčky podpory, pokud jsou všechny datové balíčky uvedené v manifestu služby upgradovány. Další informace naleznete v tématu [element DataPackage](service-fabric-service-model-schema-elements.md#DataPackageElementDataPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedDataPackageelement) .
 
 ### <a name="resources-element"></a>Resources – element
-Popisuje prostředky používané touto službou, které mohou být deklarovány bez úprav zkompilovaného kódu a při nasazení služby změněny. Přístup k těmto prostředkům se řídí pomocí sekcí objekty zabezpečení a zásady v manifestu aplikace. Další informace naleznete v tématu Resources – [element](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
+Popisuje prostředky používané touto službou, které mohou být deklarovány bez úprav zkompilovaného kódu a při nasazení služby změněny. Přístup k těmto prostředkům se řídí pomocí sekcí objekty zabezpečení a zásady v manifestu aplikace. Další informace naleznete v tématu [Resources – element](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
 
 ### <a name="endpoints-element"></a>Element Endpoints
 Definuje koncové body pro službu. Další informace naleznete v tématu [element Endpoints](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType)
@@ -395,7 +395,7 @@ Spustitelný soubor určený parametrem EntryPoint je obvykle dlouhodobě běž�
 Další informace naleznete v tématu [ContainerHost element](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>ImageName Element
-Úložiště a obrázek na https://hub.docker.com nebo Azure Container Registry. Další informace naleznete v tématu [ImageName element](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+Úložiště a obrázek v https://hub.docker.com nebo Azure Container Registry. Další informace naleznete v tématu [ImageName element](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="commands-element"></a>Command – element
 Předat kontejneru čárkami oddělený seznam příkazů. Další informace naleznete v tématu [element Commands](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
@@ -410,7 +410,7 @@ Proměnná prostředí. Další informace naleznete v tématu [objekt Environmen
 Deklaruje složku, která je pojmenována atributem Name, který obsahuje soubor Settings. XML. Tento soubor obsahuje oddíly nastavení páru klíč-hodnota definované uživatelem, které lze v průběhu běhu číst. Pokud se během upgradu změnila jenom verze ConfigPackage, spuštěný proces se nerestartuje. Místo toho zpětné volání upozorní proces, že došlo ke změně nastavení konfigurace, aby bylo možné je znovu načíst dynamicky. Další informace naleznete v tématu [ConfigPackage element](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
 
 ### <a name="resources-element"></a>Resources – element
-Popisuje prostředky používané touto službou, které mohou být deklarovány bez úprav zkompilovaného kódu a při nasazení služby změněny. Přístup k těmto prostředkům se řídí pomocí sekcí objekty zabezpečení a zásady v manifestu aplikace. Další informace naleznete v tématu Resources – [element](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
+Popisuje prostředky používané touto službou, které mohou být deklarovány bez úprav zkompilovaného kódu a při nasazení služby změněny. Přístup k těmto prostředkům se řídí pomocí sekcí objekty zabezpečení a zásady v manifestu aplikace. Další informace naleznete v tématu [Resources – element](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
 
 ### <a name="endpoints-element"></a>Element Endpoints
 Definuje koncové body pro službu. Další informace naleznete v tématu [element Endpoints](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType)

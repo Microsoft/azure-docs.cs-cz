@@ -1,6 +1,6 @@
 ---
-title: Prozkoumat data pomocí Průzkumníka Azure Time Series Insights | Microsoft Docs
-description: Tento článek popisuje, jak pomocí Průzkumníka Azure Time Series Insights ve webovém prohlížeči rychle zobrazit globální zobrazení velkých objemů dat a ověřit prostředí IoT.
+title: Prozkoumejte data pomocí Průzkumníka – Azure Time Series Insights | Microsoft Docs
+description: Naučte se používat Azure Time Series Insights Explorer k zobrazení dat IoT.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 25f2c07678217b69699b881d53ee9d5f92f84be1
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: df895f99b64d30506bc9457fb5bdc54a2182b5fe
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990108"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012631"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Průzkumník Azure Time Series Insights
 
@@ -41,7 +41,7 @@ Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládán�
 
 Než budete moct použít Time Series Insights Explorer, musíte:
 
-- Vytvořte Time Series Insights prostředí. Další informace najdete v tématu [jak začít s Time Series Insights](./time-series-insights-get-started.md).
+- Vytvoření prostředí Time Series Insights. Další informace najdete v tématu [jak začít s Time Series Insights](./time-series-insights-get-started.md).
 - [Poskytněte](time-series-insights-data-access.md) v prostředí přístup k vašemu účtu.
 - Přidejte do něj zdroj události služby [IoT Hub](time-series-insights-how-to-add-an-event-source-iothub.md) nebo [centra událostí](time-series-insights-how-to-add-an-event-source-eventhub.md) .
 
@@ -69,13 +69,13 @@ Během několika minut od připojení zdroje událostí k vašemu Time Series In
 
         [panel editoru ![ch podmínek](media/time-series-insights-explorer/explorer2.png)](media/time-series-insights-explorer/explorer2.png#lightbox)
 
-      - **Predikát**: pomocí predikátu můžete rychle filtrovat události pomocí sady operandů uvedených v následující tabulce. Pokud hledání provádíte tak, že vyberete nebo kliknete, predikát se na základě tohoto hledání automaticky aktualizuje. Mezi podporované typy operandů patří:
+      - **Predikát**: pomocí predikátu můžete rychle filtrovat události pomocí sady operandů uvedených v následující tabulce. Pokud hledání provádíte tak, že vyberete nebo kliknete, predikát se na základě tohoto hledání automaticky aktualizuje. Operand podporované typy patří:
 
-         |Operace  |Podporované typy  |Poznámky  |
+         |Operace  |Podporované typy  |Poznámky:  |
          |---------|---------|---------|
-         |`<`, `>` `<=`, `>=`     |  Double, DateTime, TimeSpan       |         |
-         |`=`, `!=`, `<>`     | String, bool, Double, DateTime, TimeSpan, NULL        |         |
-         |IN     | String, bool, Double, DateTime, TimeSpan, NULL        |  Všechny operandy by měly být stejného typu nebo mít nulovou konstantu.        |
+         |`<`, `>`, `<=`, `>=`     |  Double, DateTime, časový interval       |         |
+         |`=`, `!=`, `<>`     | Řetězec, logická hodnota, Double, DateTime, časový interval, s hodnotou NULL        |         |
+         |IN     | Řetězec, logická hodnota, Double, DateTime, časový interval, s hodnotou NULL        |  Všechny operandy musí být stejného typu nebo konstanta NULL.        |
          |MÁ     | Řetězec        |  Na pravé straně jsou povoleny pouze konstantní řetězcové literály. Prázdný řetězec a hodnota NULL nejsou povoleny.       |
 
       - **Příklady dotazů**

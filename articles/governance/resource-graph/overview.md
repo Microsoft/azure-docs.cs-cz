@@ -1,17 +1,14 @@
 ---
 title: Přehled služby Azure Resource Graph
 description: Pochopte, jak služba Azure Resource Graph umožňuje složitou dotazování na prostředky ve velkém měřítku.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: overview
-ms.service: resource-graph
-ms.openlocfilehash: 41663ec04e194bcc4380f46f1e5cc5a6867e53fc
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: f75a2b65b59a9f0367a6c52c2a1cf058df5b59c3
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622534"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958730"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Přehled služby Azure Resource Graph
 
@@ -68,7 +65,7 @@ Pokud chcete používat Resource Graph, musíte mít odpovídající oprávněn�
 Azure CLI a Azure PowerShell používají předplatná, ke kterým má uživatel přístup. Při přímém použití REST API se seznam předplatných poskytuje uživateli. Pokud má uživatel přístup k jakémukoli předplatnému v seznamu, vrátí se výsledky dotazu pro předplatná, ke kterým má uživatel přístup. Toto chování je stejné jako při volání [skupin prostředků – seznam](/rest/api/resources/resourcegroups/list) \- získat skupiny prostředků, ke kterým máte přístup, bez indikace, že výsledek může být částečný.
 Pokud v seznamu odběrů nejsou žádná předplatná, ke kterým má uživatel příslušná práva, odpověď je _403_ (zakázáno).
 
-## <a name="throttling"></a>Throttling
+## <a name="throttling"></a>Omezování
 
 V rámci bezplatné služby jsou dotazy do grafu prostředků omezené, aby poskytovaly nejlepší prostředí a dobu odezvy pro všechny zákazníky. Pokud chce vaše organizace používat Graph API prostředků pro rozsáhlé a časté dotazy, použijte na [stránce portálu pro grafy prostředků](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/ResourceGraph)možnost zpětné vazby na portálu.
 Zadejte svůj obchodní případ a v případě, že vás tým bude kontaktovat, vyberte zaškrtávací políčko Microsoft vás může poslat e-mailem o zpětné vazbě.

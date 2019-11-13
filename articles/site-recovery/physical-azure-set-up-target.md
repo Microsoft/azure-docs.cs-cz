@@ -1,43 +1,43 @@
 ---
-title: Nastavení cílového prostředí pro zotavení po havárii místních fyzických serverů do Azure | Dokumentace Microsoftu
-description: Tento článek popisuje, jak nastavit cílové prostředí Azure pro zotavení po havárii fyzických serverů požíváním Azure Site Recovery.
+title: Nastavení cílového prostředí pro fyzické servery v Azure Site Recovery
+description: Tento článek popisuje, jak nastavit cílové prostředí Azure pro zotavení po havárii fyzických serverů pomocí Azure Site Recovery.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 41220ccdca945610d7d8ca87af0857114e2cef85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 685f04b27cd315b04ef5c45e155e825eebe2747b
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60949069"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953905"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>Připravit cíl (z VMware do Azure)
 
-Tento článek popisuje, jak připravit prostředí Azure ke spuštění replikace fyzických serverů (x 64) s Windows nebo Linuxem do Azure.
+Tento článek popisuje, jak připravit prostředí Azure tak, aby se spustila replikace fyzických serverů (x64) se systémem Windows nebo Linux do Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek předpokládá:
-- Vytvoříte trezor služby Recovery Services pro ochranu fyzických serverů. Můžete vytvořit z trezoru služby Recovery Services [webu Azure portal](https://portal.azure.com "webu Azure portal").
-- Máte [nastavení v místním prostředí](physical-azure-disaster-recovery.md) pro replikaci fyzických serverů do Azure.
+Článek předpokládá:
+- Vytvořili jste Recovery Services trezor pro ochranu fyzických serverů. Z [Azure Portal](https://portal.azure.com "portál Azure")můžete vytvořit trezor Recovery Services.
+- Máte [nastavené místní prostředí](physical-azure-disaster-recovery.md) pro replikaci fyzických serverů do Azure.
 
 ## <a name="prepare-target"></a>Připravit cíl
 
-Po dokončení **cíl ochrany krok 1: vyberte** a **krok 2: Příprava zdroje**, budete přesměrováni na **krok 3: Cíl**
+Po dokončení **kroku 1: Vyberte cíl ochrany** a **Krok 2: připravit zdroj**. provedete to **krokem 3: Target**
 
 ![Připravit cíl](./media/physical-azure-set-up-target/prepare-target-physical-to-azure.png)
 
-1. **Předplatné:** Z rozevírací nabídky vyberte předplatné, které chcete replikovat fyzické servery.
-2. **Model nasazení:** Vyberte model nasazení (Classic nebo Resource Manager)
+1. **Předplatné:** V rozevírací nabídce vyberte předplatné, do kterého chcete replikovat fyzické servery.
+2. **Model nasazení:** Vyberte model nasazení (Classic nebo Správce prostředků).
 
-Na základě zvolené nasazení modelu, abyste měli jistotu, že máte aspoň jeden kompatibilní účet úložiště a virtuální sítě v cílovém předplatném pro replikaci a převzetí služeb při selhání vaší fyzické servery do spuštění ověřování.
+Na základě zvoleného modelu nasazení se spustí ověřování, aby se zajistilo, že budete mít aspoň jeden kompatibilní účet úložiště a virtuální síť v cílovém předplatném pro replikaci a převzetí služeb při selhání fyzických serverů na.
 
-Po ověření úspěšně dokončit, klikněte na tlačítko OK přejdete k dalšímu kroku.
+Po úspěšném ověření se kliknutím na tlačítko OK přejděte k dalšímu kroku.
 
-Pokud nemáte k dispozici kompatibilní účet úložiště Resource Manageru nebo virtuální sítě, můžete vytvořit kliknutím **+ účet úložiště** nebo **+ síť** tlačítka v horní části stránky.
+Pokud nemáte kompatibilní účet úložiště Správce prostředků nebo virtuální síť, můžete ho vytvořit kliknutím na tlačítko **+ účet úložiště** nebo **+ síť** v horní části stránky.
 
-## <a name="next-steps"></a>Další postup
-[Konfigurace nastavení replikace](vmware-azure-set-up-replication.md).
+## <a name="next-steps"></a>Další kroky
+[Nakonfigurujte nastavení replikace](vmware-azure-set-up-replication.md).

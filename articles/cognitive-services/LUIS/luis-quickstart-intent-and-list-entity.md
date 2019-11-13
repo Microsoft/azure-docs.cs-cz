@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 9531e86e63fa8d944aa216fddd0c8215b73038a9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a8021885bf51ab6d44bc8576b9fdd69f1bdd270a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492710"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953720"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Kurz: získání přesného textu se shodnými daty z utterance
 
@@ -24,7 +24,7 @@ V tomto kurzu se seznámíte s tím, jak získat data entity, která odpovídaj�
 
 [!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-**V tomto kurzu se naučíte:**
+**Co se v tomto kurzu naučíte:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -33,7 +33,7 @@ V tomto kurzu se seznámíte s tím, jak získat data entity, která odpovídaj�
 > * Přidání entity seznamu 
 > * Trénování 
 > * Publikování
-> * Získat záměry a entity z koncového bodu
+> * Zjistit záměry a entity z koncového bodu
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
@@ -49,7 +49,7 @@ Entita seznamu je vhodná pro tento typ dat, když platí následující:
 
 * Hodnoty dat jsou známou sadou.
 * Tato sada nepřekračuje maximální [hranice](luis-boundaries.md) aplikace LUIS pro tento typ entity.
-* Text promluvy se přesně shoduje se synonymem nebo názvem v kanonickém tvaru. LUIS nepoužívá seznam nad rámec přesně vyhovujících textů. Odvozování, plural a další variace se nevyřešily pouze entitou seznamu. Chcete-li spravovat variace, zvažte použití [vzoru](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) s volitelnou syntaxí textu. 
+* Text promluvy se přesně shoduje se synonymem nebo názvem v kanonickém tvaru. LUIS nepoužívá seznam nad rámec přesně vyhovujících textů. Odvozování, plural a další variace se nevyřešily pouze entitou seznamu. Chcete-li spravovat variace, zvažte použití [vzoru](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) s volitelnou syntaxí textu. 
 
 ## <a name="create-a-new-app"></a>Vytvoření nové aplikace
 
@@ -92,7 +92,7 @@ Primární, _kanonický_název pro každou položku je název oddělení. Přík
 
 |Kanonický název|Synonyma|
 |--|--|
-|Účetnictví|účtu<br>accting<br>3456|
+|Účtárna|účtu<br>accting<br>3456|
 |Operace vývoje|Vývoj a provoz<br>4949|
 |Inženýrství|ENG<br>modulu<br>4567|
 |Finance|–<br>2020|
@@ -178,7 +178,7 @@ Primární, _kanonický_název pro každou položku je název oddělení. Přík
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste vytvořili nový záměr, přidali jste ukázkové promluvy a pak jste vytvořili entitu seznamu určenou k extrakci shodného textu ze záznamů. Po natrénování a publikování aplikace jste dotazem adresovaným koncovému bodu zjistili záměr a vrátili extrahovaná data.
+V tomto kurzu jste vytvořili nový záměr, přidali jste ukázkové promluvy a pak jste vytvořili entitu seznamu určenou k extrakci shodného textu ze záznamů. Dotaz na koncový bod po trénování a publikování aplikace identifikoval záměr a vrátil extrahovaná data.
 
 Pokračujte v této aplikaci a [přidejte složenou entitu](luis-tutorial-composite-entity.md).
 

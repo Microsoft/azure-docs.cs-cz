@@ -3,7 +3,7 @@ title: Sestavy aktivit přihlašování na portálu Azure Active Directory | Dok
 description: Seznámení se sestavami aktivit přihlašování na portálu Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 10/28/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 553d882600203d0fa01cd876562d9ced7985d7a8
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 778353621491f912d3237900785e6dee17bf975e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043813"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014491"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
@@ -37,7 +37,7 @@ Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) s
 
 Tento článek obsahuje přehled sestavy přihlášení.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 
@@ -105,13 +105,13 @@ Filtr **Aplikace** umožňuje určit název aplikace, o kterou vám jde.
 
 Filtr **Stav přihlášení** umožňuje vybrat jednu z následujících možností:
 
-- Všechno
+- Vše
 - Úspěch
 - Selhání
 
 Filtr **podmíněného přístupu** umožňuje vybrat stav zásad certifikační autority pro přihlášení:
 
-- Všechno
+- Vše
 - Nepoužito
 - Úspěch
 - Selhání
@@ -129,7 +129,7 @@ Když vyberete vlastní časový rámec, můžete nakonfigurovat počáteční a
 Pokud do svého zobrazení přihlášení přidáte další pole, tato pole se automaticky přidají do seznamu filtrů. Například přidáním pole **Klientská aplikace** do vašeho seznamu získáte také další možnost filtru, která vám umožní nastavit následující filtry:  
 ![Přihlašovací aktivita](./media/concept-sign-ins/12.png "Aktivita přihlášení")
 
-- **Prohlížeee**  
+- **Prohlížeč**  
     Tento filtr zobrazuje všechny události, u kterých došlo k pokusu o přihlášení pomocí toků prohlížeče.
 - **Exchange ActiveSync (podporováno)**  
     Tento filtr zobrazuje všechny pokusy o přihlášení, u kterých došlo k pokusu o spuštění protokolu Exchange ActiveSync (EAS) z podporovaných platforem, jako je iOS, Android a Windows Phone.
@@ -138,13 +138,13 @@ Pokud do svého zobrazení přihlášení přidáte další pole, tato pole se a
 - **Klienti Mobile Apps a desktopových klientů** Filtr zobrazuje všechny pokusy o přihlášení, které nepoužívaly toky prohlížeče. Například mobilní aplikace z jakékoli platformy pomocí libovolného protokolu nebo klientských aplikací klasické pracovní plochy, jako je Office ve Windows nebo MacOS.
   
 - **Ostatní klienti**
-    - **BÝVAJÍ**  
+    - **IMAP**  
         Starší verze poštovního klienta, který používá IMAP k načtení e-mailu.
     - **MAPI**  
         Office 2013, kde je povolena ADAL a používá rozhraní MAPI.
     - **Stará klienti Office**  
         Sada Office 2013 v její výchozí konfiguraci, kde není povolená knihovna ADAL a kterou používá rozhraní MAPI, nebo Office 2016, kde je ADAL zakázaná
-    - **VÝSTRAH**  
+    - **POP**  
         Starší verze poštovního klienta pomocí protokolu POP3 k načtení e-mailu.
     - **SMTP**  
         Starší verze poštovního klienta pomocí protokolu SMTP k odeslání e-mailu.
@@ -153,7 +153,7 @@ Pokud do svého zobrazení přihlášení přidáte další pole, tato pole se a
 
 Klikněte na možnost **Stáhnout** a vytvořte soubor CSV nebo soubor JSON s nejnovějšími záznamy 250 000. Začněte [stažením přihlašovacích údajů](quickstart-download-sign-in-report.md) , pokud chcete s ní pracovat mimo Azure Portal.  
 
-![Stáhnout](./media/concept-sign-ins/71.png "Ke stažení")
+![Stáhnout](./media/concept-sign-ins/71.png "Stáhnout")
 
 > [!IMPORTANT]
 > Počet záznamů, které si můžete stáhnout, je omezený o [Azure Active Directory zásady uchovávání sestav](reference-reports-data-retention.md).  
@@ -222,7 +222,7 @@ Grafy využití aplikace týdenní agregovaná přihlášení k vašim horním t
 
 Pokud chcete, můžete se zaměřit na konkrétní aplikaci.
 
-![Vytváření sestav](./media/concept-sign-ins/single-app-usage-graph.png "Generování sestav")
+![Vytváření sestav](./media/concept-sign-ins/single-app-usage-graph.png "Vytváření sestav")
 
 Když v grafu využívání aplikací kliknete na konkrétní den, zobrazí se podrobný seznam aktivit přihlašování.
 

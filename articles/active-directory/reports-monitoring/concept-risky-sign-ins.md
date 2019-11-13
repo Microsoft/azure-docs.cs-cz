@@ -2,7 +2,7 @@
 title: Sestava rizikových přihlášení na portálu | Microsoft Docs
 description: Informace o sestavách rizikových přihlášení na portálu Azure Active Directory
 services: active-directory
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: 7728fcd7-3dd5-4b99-a0e4-949c69788c0f
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 10/28/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7bb0cd2c98d0133b0eaffce1730fb9f7cb74bf60
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 3f19744e6c860ae315b681f5eb090cba23b153af
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043545"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008343"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Sestavy rizikových přihlášení na portálu Azure Active Directory
 
@@ -30,7 +30,7 @@ K sestavám zabezpečení můžete přistupovat z [Azure Portal](https://portal.
 
 Existují dvě různé sestavy zabezpečení, které jsou vypočítány na základě detekce rizik:
 
-- **Riziková přihlášení** – Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu.
+- **Riziková přihlášení** –Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu.
 
 - **Uživatelé označení příznakem rizika** – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. 
 
@@ -81,7 +81,7 @@ Na základě vašeho šetření rizikového přihlášení můžete službě Azu
 
 Tato sestava také nabízí možnost:
 
-- Hledat prostředky
+- Prohledávat prostředky
 - Stáhnout data sestavy
 
 ![Riziková přihlášení](./media/concept-risky-sign-ins/93.png)

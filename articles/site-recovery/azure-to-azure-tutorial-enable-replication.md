@@ -1,20 +1,19 @@
 ---
-title: Nastavení zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure pomocí Azure Site Recovery
+title: Nastavení zotavení po havárii virtuálního počítače Azure pomocí Azure Site Recovery
 description: Zjistěte, jak nastavit zotavení po havárii pro virtuální počítače Azure do jiné oblasti Azure pomocí služby Azure Site Recovery.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/05/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e46bc9e4fbb2b573338b8be43c38e658ebde05a8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 502f71365d78bd8fd949d17fe8907817394586b2
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468024"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961502"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Nastavení zotavení po havárii pro virtuální počítače Azure
 
@@ -31,9 +30,9 @@ V tomto kurzu se dozvíte, jak nastavit zotavení po havárii pro virtuální po
 > [!NOTE]
 > Tento článek poskytuje pokyny pro nasazení zotavení po havárii s nejjednodušším nastavením. Pokud se chcete dozvědět o přizpůsobených nastaveních, přečtěte si články v části [postupy](azure-to-azure-how-to-enable-replication.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
 - Prostudujte si [architekturu a komponenty scénáře](concepts-azure-to-azure-architecture.md).
 - Než začnete, přečtěte si [požadavky na podporu](site-recovery-support-matrix-azure-to-azure.md) .
@@ -86,7 +85,7 @@ Pokud chcete řídit odchozí připojení pomocí IP adres místo adres URL, pov
   - [Adresy URL a rozsahy IP adres pro Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
   - [IP adresy koncových bodů služby Site Recovery](https://aka.ms/site-recovery-public-ips)
 
-Pokud používáte NSG, můžete pro zdrojovou oblast vytvořit pravidla pro NSG značky služby Storage. [Další informace](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges).
+Pokud používáte NSG, můžete pro zdrojovou oblast vytvořit pravidla pro NSG značky služby Storage. [Další informace](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)
 
 ## <a name="verify-azure-vm-certificates"></a>Ověření certifikátů virtuálních počítačů Azure
 
@@ -124,7 +123,7 @@ Přečtěte si další informace o [předdefinovaných rolích Azure RBAC](../ro
 Site Recovery načte seznam virtuálních počítačů přidružených k předplatnému a skupinu prostředků nebo cloudovou službu.
 
 1. V části **Virtuální počítače** vyberte virtuální počítače, které chcete replikovat.
-2. Klikněte na **OK**.
+2. Klikněte na tlačítko **OK**.
 
 ### <a name="configure-replication-settings"></a>Konfigurace nastavení replikace
 

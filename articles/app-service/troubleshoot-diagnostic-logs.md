@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4f5344259767aaad9ed58ded1da86ae7ee3c03e7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 21600036302050aeea3e2ea989d86e18b208c087
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470104"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958054"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky pro aplikace v Azure App Service
 ## <a name="overview"></a>Přehled
@@ -26,7 +26,7 @@ Azure poskytuje integrovanou diagnostiku, která vám pomůže s laděním [apli
 Tento článek používá [Azure Portal](https://portal.azure.com) a Azure CLI pro práci s diagnostickými protokoly. Informace o práci s diagnostickými protokoly pomocí sady Visual Studio najdete v tématu [řešení potíží s Azure v aplikaci Visual Studio](troubleshoot-dotnet-visual-studio.md).
 
 > [!NOTE]
-> Kromě pokynů k protokolování v tomto článku je k dispozici nová integrovaná funkce protokolování s monitorováním Azure. Tuto funkci najdete na stránce [protokoly a v části nastavení diagnostiky (Preview)](https://aka.ms/appsvcblog-azmon). 
+> Kromě pokynů k protokolování v tomto článku je k dispozici nová integrovaná funkce protokolování s monitorováním Azure. Další informace o této funkci najdete v části [odeslání protokolů do Azure monitor (Preview)](#send-logs-to-azure-monitor-preview) . 
 >
 >
 
@@ -64,13 +64,13 @@ Možnost **systému souborů** je určena pro dočasné účely ladění a sama 
 
 Vyberte **úroveň**nebo úroveň podrobností, které se mají protokolovat. V následující tabulce jsou uvedeny kategorie protokolů, které jsou součástí jednotlivých úrovní:
 
-| Úroveň | Zahrnuté kategorie |
+| Level | Zahrnuté kategorie |
 |-|-|
-|**Disabled** (Zakázáno) | Žádné |
+|**Disabled** (Zakázáno) | Žádný |
 |**Chyba** | Chyba, kritická |
 |**Upozornění** | Upozornění, chyba, kritická|
-|**Informace** | Informace, varování, chyba, kritické|
-|**Podrobné** | Trasování, ladění, informace, varování, chyba, kritická (všechny kategorie) |
+|**Informace o** | Informace, varování, chyba, kritické|
+|**Verbose** | Trasování, ladění, informace, varování, chyba, kritická (všechny kategorie) |
 
 Po dokončení vyberte **Uložit**.
 
@@ -112,9 +112,9 @@ Oba typy protokolů jsou uloženy v App Service systému souborů. Zachovají se
 
 ## <a name="add-log-messages-in-code"></a>Přidat protokolové zprávy v kódu
 
-V kódu aplikace používáte obvyklá Protokolovací zařízení k posílání zpráv protokolu do protokolů aplikací. Například:
+V kódu aplikace používáte obvyklá Protokolovací zařízení k posílání zpráv protokolu do protokolů aplikací. Příklad:
 
-- ASP.NET aplikace mohou použít třídu [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) k protokolování informací do protokolu nástroje Application Diagnostics. Například:
+- ASP.NET aplikace mohou použít třídu [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) k protokolování informací do protokolu nástroje Application Diagnostics. Příklad:
 
     ```csharp
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
@@ -142,12 +142,12 @@ Pokud chcete streamovat živé vysílání v [Cloud Shell](../cloud-shell/overvi
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-Chcete-li filtrovat konkrétní události, jako jsou například chyby, použijte parametr **--Filter** . Například:
+Chcete-li filtrovat konkrétní události, jako jsou například chyby, použijte parametr **--Filter** . Příklad:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 ```
-Chcete-li filtrovat konkrétní typy protokolů, jako je například HTTP, použijte parametr **--path** . Například:
+Chcete-li filtrovat konkrétní typy protokolů, jako je například HTTP, použijte parametr **--path** . Příklad:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --path http
@@ -178,7 +178,28 @@ V případě aplikací pro Windows soubor ZIP obsahuje obsah adresáře *D:\Home
 | **Protokoly webového serveru** | */LogFiles/http/RawLogs/* | Obsahuje textové soubory formátované pomocí [rozšířeného formátu souboru protokolu W3C](/windows/desktop/Http/w3c-logging). Tyto informace lze číst pomocí textového editoru nebo nástroje, jako je například [analyzátor protokolů](https://go.microsoft.com/fwlink/?LinkId=246619).<br/>App Service nepodporuje pole `s-computername`, `s-ip`ani `cs-version`. |
 | **Protokoly nasazení** | */Logfiles/Git/* a */Deployments/* | Obsahují protokoly generované interními procesy nasazení a protokoly pro nasazení Git. |
 
+## <a name="send-logs-to-azure-monitor-preview"></a>Odeslat protokoly do Azure Monitor (Preview)
+
+S novou [integrací Azure monitor](https://aka.ms/appsvcblog-azmon)můžete [vytvořit nastavení diagnostiky (Preview)](https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html#create-a-diagnostic-setting) k odesílání protokolů do účtů úložiště Event Hubs a Log Analytics. 
+
+> [!div class="mx-imgBorder"]
+> ![nastavení diagnostiky (Preview)](media/troubleshoot-diagnostic-logs/diagnostic-settings-page.png)
+
+### <a name="supported-log-types"></a>Podporované typy protokolů
+
+Následující tabulka uvádí podporované typy a popisy protokolů: 
+
+| Typ protokolu | Podpora Windows | Podpora Linuxu | Popis |
+|-|-|-|
+| AppServiceConsoleLogs | TBA | Ano | Standardní výstup a standardní chyba |
+| AppServiceHTTPLogs | Ano | Ano | Protokoly webového serveru |
+| AppServiceEnvironmentPlatformLogs | Ano | Ano | App Service Environment: škálování, změny konfigurace a protokoly stavu|
+| AppServiceAuditLogs | Ano | Ano | Přihlašovací aktivita prostřednictvím FTP a Kudu |
+| AppServiceFileAuditLogs | TBA | TBA | Změny souborů prostřednictvím FTP a Kudu |
+| AppServiceAppLogs | TBA | Java SE & Tomcat | Protokoly aplikací |
+
 ## <a name="nextsteps"></a> Další kroky
+* [Dotazování protokolů pomocí Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
 * [Jak monitorovat Azure App Service](web-sites-monitor.md)
 * [Řešení potíží s Azure App Service v aplikaci Visual Studio](troubleshoot-dotnet-visual-studio.md)
 * [Analýza protokolů aplikací v HDInsight](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

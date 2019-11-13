@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: kasing
 ms.custom: include file
-ms.openlocfilehash: c4f9334a91e99c92e74af060d84308a8aaccc6e7
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: c8629975d375dda32fdd9aee42b4ae09069a2049
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671261"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005422"
 ---
-# <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>Nejčastější dotazy ohledně migrace z modelu Classic na Azure Resource Manager
-
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Má tento plán migrace vliv na některé stávající služby nebo aplikace spuštěné na virtuálních počítačích Azure? 
 
 Ne. Virtuální počítače (Classic) jsou plně podporované a obecně dostupné služby. I nadále můžete tyto prostředky používat k rozšíření vaší působnosti v systému Microsoft Azure.
@@ -49,24 +47,24 @@ Ne. Nedávno jsme povolili [přesun okruhů ExpressRoute z modelu nasazení Clas
 
 Během migrace se prostředky transformují z modelu Classic na Resource Manager. Proto doporučujeme naplánovat aktualizace zásad řízení přístupu na základě role, které je třeba provést, až po migraci.
 
-## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Jsem zálohoval svoje klasické virtuální počítače v trezoru. Můžu migrovat svoje virtuální počítače z klasického režimu do režimu Resource Manageru a chránit je pomocí trezoru služby Recovery Services?
+## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Tyto klasické virtuální počítače jsem zálohoval do trezoru. Můžu migrovat svoje virtuální počítače z klasického režimu do režimu Resource Manageru a chránit je pomocí trezoru služby Recovery Services?
 
-<a name="vault">Když</a> přesun virtuálního počítače z modelu nasazení classic do režimu Resource Manager, zálohy pořízené před migrací nebudou migrovat do nově vydaný, migrovaný virtuální počítač Resource Manageru. Ale pokud budete chtít zachovat záloh klasických virtuálních počítačů, postupujte podle těchto kroků před migrací. 
+<a name="vault">Když</a> přesunete virtuální počítač z klasického do režimu správce prostředků, zálohy provedené před migrací se nebudou migrovat na nově migrovaný správce prostředků virtuální počítač. Pokud ale chcete zachovat zálohy klasických virtuálních počítačů, postupujte před migrací pomocí těchto kroků. 
 
-1. V trezoru služby Recovery Services, pokračujte **chráněné položky** kartě a vyberte virtuální počítač. 
-2. Klikněte na tlačítko Ukončit ochranu. Políčko *Delete associated backup data* (Odstranit přidružená data záloh) ponechte **nezaškrtnuté**.
+1. V trezoru Recovery Services otevřete kartu **chráněné položky** a vyberte virtuální počítač. 
+2. Klikněte na Zastavit ochranu. Políčko *Delete associated backup data* (Odstranit přidružená data záloh) ponechte **nezaškrtnuté**.
 
 > [!NOTE]
-> Účtuje se náklady na zálohování instanci až uchovávat data. Záložní kopie se vyřazují podle rozsahu uchování. Dokud explicitně odstranit zálohovaná data však vždy uchovávat poslední zálohy. Doporučujeme zkontrolovat rozsah uchování virtuálního počítače a aktivační události "Odstranit zálohovaná Data" na chráněné položky v trezoru, když je rozsah uchování nad. 
+> Náklady na instanci zálohy se vám budou účtovat, dokud si zachováte data. Záložní kopie se vyřadí jako rozsah pro uchování dat. Poslední záložní kopie je ale vždycky zachovaná, dokud data zálohy explicitně neodstraníte. Po překročení rozsahu uchování doporučujeme, abyste zkontrolovali rozsah uchování virtuálního počítače a aktivovali v chráněné položce v trezoru možnost odstranit data zálohy. 
 >
 >
 
-K migraci virtuálního počítače do režimu Resource Manageru 
+Chcete-li migrovat virtuální počítač do režimu Správce prostředků, 
 
 1. Odstraňte z virtuálního počítače zálohu/rozšíření snímků.
 2. Proveďte migraci virtuálního počítače z klasického režimu do režimu Resource Manageru. Ověřte, že se do režimu Resource Manager migruje také úložiště a informace o síti odpovídající tomuto virtuálnímu počítači.
 
-Kromě toho pokud chcete zálohovat migrovaný virtuální počítač, přejděte na okno správy virtuálního počítače do [povolit zálohování](../articles/backup/quick-backup-vm-portal.md#enable-backup-on-a-vm).
+Pokud navíc chcete zálohovat migrovaný virtuální počítač, v okně Správa virtuálního počítače [Povolte zálohování](../articles/backup/quick-backup-vm-portal.md#enable-backup-on-a-vm).
 
 ## <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-migration"></a>Je možné ověřit, jestli jsou prostředky nebo předplatné schopné migrace? 
 
@@ -88,6 +86,6 @@ Všechny prostředky, pro které jste explicitně zadali název v modelu nasazen
 
 Okruhy ExpressRoute používající autorizační odkazy mezi předplatnými není možné automaticky migrovat bez výpadku. Nabízíme doprovodné materiály popisující ruční postup jejich migrace. Postup a další informace najdete v článku [Migrace okruhů ExpressRoute a přidružených virtuálních sítí z modelu nasazení Classic na Resource Manager](../articles/expressroute/expressroute-migration-classic-resource-manager.md).
 
-## <a name="i-got-the-message-vm-is-reporting-the-overall-agent-status-as-not-ready-hence-the-vm-cannot-be-migrated-ensure-that-the-vm-agent-is-reporting-overall-agent-status-as-ready-or-vm-contains-extension-whose-status-is-not-being-reported-from-the-vm-hence-this-vm-cannot-be-migrated"></a>Zobrazila se zpráva *"virtuální počítač hlásí celkový stav agenta jako není připraven. Virtuální počítač proto není možné migrovat. Ujistěte se, že je Agent virtuálního počítače hlásí celkový stav agenta jako připraven"* nebo *"virtuální počítač obsahuje rozšíření, jehož stav se nehlásí z virtuálního počítače. Proto tento virtuální počítač nejde migrovat."*
+## <a name="i-got-the-message-vm-is-reporting-the-overall-agent-status-as-not-ready-hence-the-vm-cannot-be-migrated-ensure-that-the-vm-agent-is-reporting-overall-agent-status-as-ready-or-vm-contains-extension-whose-status-is-not-being-reported-from-the-vm-hence-this-vm-cannot-be-migrated"></a>Zobrazila se mi zpráva *"virtuální počítač hlásí celkový stav agenta jako Nepřipraveno. Virtuální počítač proto nelze migrovat. Ujistěte se, že agent virtuálního počítače hlásí celkový stav agenta jako připravený nebo zda* *obsahuje rozšíření, jehož stav není hlášený z virtuálního počítače. Proto tento virtuální počítač nejde migrovat. "*
 
 Tato zpráva se zobrazí v případě, že virtuální počítač nemá odchozí připojení k internetu. Agent virtuálního počítače se pomocí odchozího připojení spojuje s účtem služby Azure Storage, aby každých pět minut aktualizoval stav agenta.

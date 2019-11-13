@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 8b74621f2c5a9c91ece58c8118cd2bc952c3a464
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 0dd6c410040eea9eb4039ab5da183cc0b6799493
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809698"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005792"
 ---
-# <a name="tutorial-using-azure-iot-hub-message-enrichments-preview"></a>Kurz: používání rozšíření zpráv Azure IoT Hub (Preview)
+# <a name="tutorial-using-azure-iot-hub-message-enrichments"></a>Kurz: používání rozšíření zpráv Azure IoT Hub
 
 *Rozšiřování zpráv* je schopnost IoT Hub k *razítku* zpráv s dalšími informacemi, než se zprávy odešlou do určeného koncového bodu. Jedním z důvodů použití rozšíření zpráv je zahrnutí dat, která je možné použít ke zjednodušení zpracování po směru. Například obohacení zpráv telemetrie zařízení pomocí značky s dvojitou silou zařízení může snížit zatížení zákazníky, aby pro tyto informace volalo volání rozhraní API zařízení. Další informace najdete v tématu [Přehled rozšíření zpráv](iot-hub-message-enrichments-overview.md).
 
@@ -30,7 +30,7 @@ Tady jsou úkoly, které provedete k dokončení tohoto kurzu:
 > * Spusťte aplikaci, která simuluje zařízení IoT odesílající zprávy do centra.
 > * Podívejte se na výsledky a ověřte, že rozšíření zprávy fungují podle očekávání.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Mít předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -42,7 +42,7 @@ Tady jsou úkoly, které provedete k dokončení tohoto kurzu:
 
 Stáhněte si [simulaci zařízení IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) a rozbalte ho. Toto úložiště obsahuje několik aplikací, včetně toho, který budete používat k posílání zpráv do centra IoT.
 
-Tento soubor ke stažení obsahuje také skript pro vytváření prostředků používaných k testování obohacení zpráv. Skript je v/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli.azcli. Prozatím si můžete prohlédnout skript a použít ho. Skript můžete také zkopírovat přímo z článku.
+Tento soubor ke stažení obsahuje také skript pro vytváření prostředků používaných k testování obohacení zpráv. Skript je v/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli. azcli. Prozatím si můžete prohlédnout skript a použít ho. Skript můžete také zkopírovat přímo z článku.
 
 Až budete připraveni začít s testováním, budete k posílání zpráv do služby IoT Hub používat aplikaci pro simulaci zařízení od tohoto stažení.
 
@@ -69,11 +69,11 @@ Pokud jste to ještě neudělali, otevřete [Cloud Shell okno](https://shell.azu
 
 Tady jsou zdroje vytvořené skriptem. **Obohaceno** znamená, že prostředek je pro zprávy s obohacením. **Původní** znamená, že prostředek je pro zprávy, které nejsou obohaceny.
 
-| Name (Název) | Hodnota |
+| Název | Hodnota |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
-| Název kontejneru | Původně  |
-| Název kontejneru | Vylepšené  |
+| název kontejneru | Původně  |
+| název kontejneru | Vylepšené  |
 | Název zařízení IoT | Contoso-test-zařízení |
 | Název IoT Hub | ContosoTestHubMsgEn |
 | Název účtu úložiště | contosostorage |
@@ -241,7 +241,7 @@ V tuto chvíli jsou prostředky všechny nastavené a směrování je nakonfigur
 
 ### <a name="view-routing-and-configure-the-message-enrichments"></a>Zobrazení směrování a konfigurace rozšíření zpráv
 
-1. Vyberte **skupiny prostředků**a pak vyberte skupinu prostředků nastavenou pro tento kurz (**ContosoResources_MsgEn**), a to tak, že vyberete své IoT Hub. Vyhledejte IoT Hub v seznamu a vyberte ji. Vyberte **směrování zpráv pro službu** IoT Hub.
+1. Vyberte **skupiny prostředků**a vyberte skupinu prostředků nastavenou pro tento kurz (**ContosoResources_MsgEn**), které chcete IoT Hub. Vyhledejte IoT Hub v seznamu a vyberte ji. Vyberte **směrování zpráv pro službu** IoT Hub.
 
    ![Vybrat směrování zpráv](./media/tutorial-message-enrichments/select-iot-hub.png)
 
@@ -251,11 +251,11 @@ V tuto chvíli jsou prostředky všechny nastavené a směrování je nakonfigur
 
 2. Tyto hodnoty přidejte do seznamu pro koncový bod ContosoStorageEndpointEnriched.
 
-   | Name (Název) | Hodnota | Koncový bod (rozevírací seznam) |
+   | Klíč | Hodnota | Koncový bod (rozevírací seznam) |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
-   | deviceLocation | $twin. Tags. Location | AzureStorageContainers > ContosoStorageEndpointEnriched |
-   |ID | 6ce345b8-1e4a-411E-9398-d34587459a3a | AzureStorageContainers > ContosoStorageEndpointEnriched |
+   | deviceLocation | $twin.tags.location | AzureStorageContainers > ContosoStorageEndpointEnriched |
+   |ID | 6ce345b8-1e4a-411e-9398-d34587459a3a | AzureStorageContainers > ContosoStorageEndpointEnriched |
 
    > [!NOTE]
    > Pokud vaše zařízení nemá dvojitou hodnotu, hodnota, kterou zde zadáte, bude označena jako řetězec pro hodnotu v rozšířeních zprávy. Chcete-li zobrazit informace o tom, že se zařízení zobrazuje, přejděte do svého centra na portálu, vyberte **zařízení IoT**, vyberte zařízení a potom v horní části stránky vyberte možnost v **zařízení** .

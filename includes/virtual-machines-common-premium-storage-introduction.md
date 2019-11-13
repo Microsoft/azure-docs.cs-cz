@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b1287f9c7e946c7b4d035b2ad6301947ffad3cea
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 86d03e980a233a60e4f3a6541462264dae0862af
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73522623"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005562"
 ---
-# <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: návrh pro vysoký výkon
-
 Tento článek poskytuje pokyny pro vytváření aplikací s vysokým výkonem pomocí Azure Premium Storage. Pokyny uvedené v tomto dokumentu můžete použít v kombinaci s osvědčenými postupy pro výkon, které platí pro technologie používané vaší aplikací. Pro ilustraci pokynů jsme použili SQL Server spuštěnou v Premium Storage jako příklad v celém tomto dokumentu.
 
 I když řešíte scénáře výkonu pro vrstvu úložiště v tomto článku, budete muset optimalizovat aplikační vrstvu. Pokud například hostete farmu služby SharePoint v Azure Premium Storage, můžete použít příklady SQL Server z tohoto článku k optimalizaci databázového serveru. Kromě toho Optimalizujte webový server farmy služby SharePoint a aplikační server, abyste získali maximální výkon.

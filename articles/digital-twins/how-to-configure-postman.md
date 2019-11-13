@@ -1,6 +1,6 @@
 ---
-title: Jak nakonfigurovat metodu post pro digitální vlákna Azure | Microsoft Docs
-description: Jak nakonfigurovat metodu post pro digitální vlákna Azure.
+title: Jak nakonfigurovat post-Azure digitální vlákna | Microsoft Docs
+description: Naučte se konfigurovat a používat metodu post pro testování rozhraní API digitálních vláken Azure.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: 14e6a52f86586eaae019d9658c2f813a15fc3474
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 5a357a246f2ba6c294b107e447218f386623f5c5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949214"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014182"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Jak nakonfigurovat metodu post pro digitální vlákna Azure
 
@@ -39,11 +39,11 @@ Nakonfigurujte aplikaci Azure Active Directory tak, aby používala tok implicit
     
     1. `Azure Digital Twins`. Vyberte rozhraní API **digitálních vláken Azure** .
 
-        [@no__t – rozhraní 1Search API nebo digitální vlákna Azure](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
+        [rozhraní API pro vyhledávání ![nebo digitální vlákna Azure](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 
-    1. Případně můžete vyhledat @no__t – 0. Vyberte rozhraní API **služby Azure Smart Spaces** .
+    1. Případně vyhledejte `Azure Smart Spaces Service`. Vyberte rozhraní API **služby Azure Smart Spaces** .
 
-        [@no__t – rozhraní 1Search API pro inteligentní prostory Azure](../../includes/media/digital-twins-permissions/aad-app-search-api.png)](../../includes/media/digital-twins-permissions/aad-app-search-api.png#lightbox)
+        [rozhraní API pro hledání ![pro inteligentní prostory Azure](../../includes/media/digital-twins-permissions/aad-app-search-api.png)](../../includes/media/digital-twins-permissions/aad-app-search-api.png#lightbox)
 
     > [!IMPORTANT]
     > Název a ID rozhraní API služby Azure AD, které se zobrazí, závisí na vašem tenantovi:
@@ -52,24 +52,24 @@ Nakonfigurujte aplikaci Azure Active Directory tak, aby používala tok implicit
 
 1. Vybrané rozhraní API se zobrazí jako **digitální vlákna Azure** ve stejném PODOKNĚ **oprávnění API pro žádosti** . Vyberte rozevírací seznam **načíst (1)** a potom zaškrtněte políčko **číst. zapsat** . Klikněte na tlačítko **Přidat oprávnění** .
 
-    [@no__t – oprávnění rozhraní API pro 1Add](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
+    [![Přidání oprávnění rozhraní API](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
 1. V závislosti na nastaveních vaší organizace možná budete muset provést další kroky, abyste tomuto rozhraní API udělili přístup správce. Pro další informace se obraťte na správce. Po schválení přístupu správce se sloupec **požadováno souhlasu správce** v podokně **oprávnění API** zobrazí jako pro vaše rozhraní API podobně jako u následujících:
 
-    [@no__t – oprávnění rozhraní API pro 1Add](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
+    [schválení souhlasu správce ![](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 
 
 1. Vyberte **manifest** pro otevření manifestu aplikace pro vaši aplikaci. Nastavte *oauth2AllowImplicitFlow* na `true`.
 
-    [implicitní tok @no__t 1Azure Active Directory](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
+    [implicitní tok ![Azure Active Directory](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
 
 1. Nakonfigurujte **adresu URL odpovědi** na `https://www.getpostman.com/oauth2/callback`.
 
-    [Adresa URL odpovědi pro @no__t 1Azure Active Directory](media/how-to-configure-postman/reply-url.png)](media/how-to-configure-postman/reply-url.png#lightbox)
+    [Adresa URL odpovědi ![Azure Active Directory](media/how-to-configure-postman/reply-url.png)](media/how-to-configure-postman/reply-url.png#lightbox)
 
 1. Zkopírujte a zachovejte **ID aplikace** vaší aplikace Azure Active Directory. Používá se v následujících krocích.
 
-   [@no__t – ID aplikace služby Active Directory pro 1Azure](../../includes/media/digital-twins-permissions/aad-app-reg-app-id.png)](../../includes/media//digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
+   [ID aplikace ![Azure Active Directory](../../includes/media/digital-twins-permissions/aad-app-reg-app-id.png)](../../includes/media//digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
 
 
 ## <a name="obtain-an-oauth-20-token"></a>Získání tokenu OAuth 2,0
@@ -85,7 +85,7 @@ Nastavte a nakonfigurujte metodu post pro získání tokenu Azure Active Directo
     https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     ```
 
-    | Name  | Nahradit | Příklad |
+    | Název  | Nahradit hodnotou | Příklad |
     |---------|---------|---------|
     | YOUR_AZURE_TENANT | Název vašeho tenanta nebo organizace | `microsoft` |
 
@@ -97,13 +97,13 @@ Nastavte a nakonfigurujte metodu post pro získání tokenu Azure Active Directo
     | Adresa URL zpětného volání | `https://www.getpostman.com/oauth2/callback` |
     | Adresa URL ověření | Použijte **autorizační adresu URL** z **kroku 2** . |
     | ID klienta | Použijte **ID aplikace** pro aplikaci Azure Active Directory, která se vytvořila nebo znovu použila z předchozí části. |
-    | Rozsah | Ponechat prázdné |
-    | Stav | Ponechat prázdné |
+    | Rozsah | Ponechte prázdné |
+    | Stav | Ponechte prázdné |
     | Ověřování klienta | `Send as Basic Auth header` |
 
 1. Klient by teď měl vypadat takto:
 
-    [Příklad klienta @no__t – 1Postman](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
+    [Příklad ![klienta po straně](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
 
 1. Vyberte **token žádosti**.
 
@@ -119,14 +119,14 @@ Po dokončení předchozích kroků nakonfigurujte metodu post, aby se ověřil 
 
 1. Na kartě **záhlaví** přidejte klíč HLAVIČKY požadavku HTTP **– typ obsahu** s hodnotou `multipart/mixed`.
 
-   [@no__t – 1Content typ multipart/Mixed](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
+   [![typ obsahu multipart/Mixed](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
 
 1. Serializace jiných než textových dat do souborů. Data JSON by se uložila jako soubor JSON.
 1. Na kartě **tělo** vyberte `form-data`. 
 1. Přidejte každý soubor tak, že mu přiřadíte název **klíče** a vyberete `file`.
 1. Pak vyberte jednotlivé soubory pomocí tlačítka **zvolit soubor** .
 
-   [Příklad klienta @no__t – 1Postman](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
+   [Příklad ![klienta po straně](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
 
    >[!NOTE]
    > * Klient po straně klienta nevyžaduje, aby bloky částí v částech měly ručně přiřazený **typ obsahu** nebo **Content-Disposition**.

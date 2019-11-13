@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 270dbb24d851645ff7a7f0bcf5f78bfb95bcd095
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 5ae97f18bb15b5ab2fe092a1e3b857ea3ef0aed0
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73604729"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012967"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -23,7 +23,7 @@ Když vytváříte nebo spravujete clustery Azure Kubernetes Service (AKS), mů�
 Vyzkoušejte si [oficiální Průvodce odstraňováním potíží s clustery Kubernetes](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/).
 Je zde také [Průvodce odstraňováním potíží](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md), který publikoval pracovník Microsoftu pro řešení potíží s lusky, uzly, clustery a dalšími funkcemi.
 
-## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Zobrazuje se chyba překročení kvóty při vytváření nebo upgradu. Co mám dělat? 
+## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Zobrazuje se chyba překročení kvóty při vytváření nebo upgradu. Co bych měl/a dělat? 
 
 Musíte [požádat o jádra](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
@@ -32,7 +32,7 @@ Musíte [požádat o jádra](https://docs.microsoft.com/azure/azure-supportabili
 Pokud nasadíte cluster AKS do Azure Portal, je nastavení maximálního počtu lusků na jeden uzel ve výchozím nastavení 30.
 Pokud nasadíte cluster AKS v rozhraní příkazového řádku Azure, je nastavení maximálního počtu lusků na jeden uzel standardně 110. (Ujistěte se, že používáte nejnovější verzi rozhraní příkazového řádku Azure CLI). Toto výchozí nastavení lze změnit pomocí příznaku `–-max-pods` v příkazu `az aks create`.
 
-## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Při nasazování clusteru AKS s pokročilými sítěmi se zobrazuje chyba insufficientSubnetSize. Co mám dělat?
+## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Při nasazování clusteru AKS s pokročilými sítěmi se zobrazuje chyba insufficientSubnetSize. Co bych měl/a dělat?
 
 Pokud se používá Azure CNI (pokročilé sítě), AKS přiděluje IP adresy na základě "Max-lusků" na uzel nakonfigurovaný. V závislosti na nastaveném maximálním počtu lusků na uzel musí být velikost podsítě větší než součin počtu uzlů a nastavení maximálního počtu pod na uzel. Následující rovnice popisuje toto:
 
@@ -40,7 +40,7 @@ Velikost podsítě > počet uzlů v clusteru (berou v úvahu budoucí požadavky
 
 Další informace najdete v tématu [plánování adresování IP adres pro váš cluster](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
-## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Můj pod je zablokovaný v CrashLoopBackOff režimu. Co mám dělat?
+## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Můj pod je zablokovaný v CrashLoopBackOff režimu. Co bych měl/a dělat?
 
 V tomto režimu mohou být v případě, že se zablokuje, k dispozici různé důvody. Můžete se podívat na:
 
@@ -53,17 +53,17 @@ Další informace o řešení problémů v nástroji najdete v tématu [ladění
 
 V současné době bohužel není podporováno povolení řízení přístupu na základě role (RBAC) u existujících clusterů. Je nutné explicitně vytvořit nové clustery. Pokud použijete rozhraní příkazového řádku, bude ve výchozím nastavení povolena možnost RBAC. Pokud použijete portál AKS, je k dispozici přepínací tlačítko pro povolení RBAC v pracovním postupu vytváření.
 
-## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Vytvořili jste cluster s povolenou RBAC pomocí rozhraní příkazového řádku Azure s výchozími hodnotami nebo Azure Portal a teď se na řídicím panelu Kubernetes zobrazí mnoho upozornění. Řídicí panel, který se používá pro práci bez upozornění. Co mám dělat?
+## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Vytvořili jste cluster s povolenou RBAC pomocí rozhraní příkazového řádku Azure s výchozími hodnotami nebo Azure Portal a teď se na řídicím panelu Kubernetes zobrazí mnoho upozornění. Řídicí panel, který se používá pro práci bez upozornění. Co bych měl/a dělat?
 
 Důvodem upozornění na řídicím panelu je to, že cluster je teď povolený pomocí RBAC a přístup k němu je ve výchozím nastavení zakázaný. Obecně platí, že tento přístup je dobrým zvykem, protože výchozí expozicí řídicího panelu všem uživatelům clusteru může vést k bezpečnostním hrozbám. Pokud přesto chcete řídicí panel povolit, postupujte podle kroků v [tomto blogovém příspěvku](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/).
 
-## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nemůžu se připojit k řídicímu panelu. Co mám dělat?
+## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nemůžu se připojit k řídicímu panelu. Co bych měl/a dělat?
 
 Nejjednodušší způsob, jak získat přístup ke službě mimo cluster, je spustit `kubectl proxy`, které požadavky proxy odesílají na port místního hostitele 8001 na Server API Kubernetes. Odtud může Server API na vaši službu proxy: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
 
 Pokud řídicí panel Kubernetes nevidíte, zkontrolujte, jestli je v oboru názvů `kube-system` spuštěná `kube-proxy` pod. Pokud není ve spuštěném stavu, odstraňte ho a restartuje se.
 
-## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nemůžu získat protokoly pomocí protokolů kubectl nebo se nemůžu připojit k serveru rozhraní API. Zobrazuje se chyba ze serveru: Chyba při vytáčení back-endu: vytočit TCP... Co mám dělat?
+## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nemůžu získat protokoly pomocí protokolů kubectl nebo se nemůžu připojit k serveru rozhraní API. Zobrazuje se chyba ze serveru: Chyba při vytáčení back-endu: vytočit TCP... Co bych měl/a dělat?
 
 Ujistěte se, že výchozí skupina zabezpečení sítě není upravená a že jsou pro připojení k serveru rozhraní API otevřené porty 22 a 9000. Pomocí příkazu `kubectl get pods --namespace kube-system` ověřte, zda `tunnelfront` pod ním běží v oboru názvů *Kube-System* . Pokud ne, vynutí odstranění položky pod a restartuje se.
 
@@ -118,6 +118,7 @@ Abyste mohli správně vytvořit cluster *AKS, postupujte* podle pokynů v pří
 
 Omezení pojmenování jsou implementovaná platformou Azure i AKS. Pokud název prostředku nebo parametr zruší jedno z těchto omezení, bude vrácena chyba s výzvou k zadání jiného vstupu. Platí následující obecné pokyny pro pojmenovávání:
 
+* Názvy clusterů musí být 1-63 znaků. Jediné povolené znaky jsou písmena, číslice, pomlčky a podtržítka. První a poslední znak musí být písmeno nebo číslo.
 * Název skupiny prostředků AKS *MC_* kombinuje název skupiny prostředků a název prostředku. Automaticky generovaná syntaxe `MC_resourceGroupName_resourceName_AzureRegion` nesmí být větší než 80 znaků. V případě potřeby snižte délku názvu skupiny prostředků nebo názvu clusteru AKS.
 * *Pole dnsprefix* musí začínat a končit alfanumerickými hodnotami. Mezi platné znaky patří alfanumerické hodnoty a spojovníky (-). *Pole dnsprefix* nemůže obsahovat speciální znaky, jako je například tečka (.).
 
@@ -192,7 +193,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | -- | :--: |
 | 1,10 | 1.10.2 nebo novější |
 | 1,11 | 1.11.0 nebo novější |
-| 1,12 a novější | Není dostupné. |
+| 1,12 a novější | neuvedeno |
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Při nastavování UID a GID v mountOptions pro disk Azure došlo k chybě.
 
@@ -266,7 +267,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1,11 | 1.11.5 nebo novější |
 | 1,12 | 1.12.3 nebo novější |
 | 1,13 | 1.13.0 nebo novější |
-| 1,14 a novější | Není dostupné. |
+| 1,14 a novější | neuvedeno |
 
 Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici, můžete problém zmírnit tím, že počkáte několik minut a zkusíte to znovu.
 
@@ -287,7 +288,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1,11 | 1.11.6 nebo novější |
 | 1,12 | 1.12.4 nebo novější |
 | 1,13 | 1.13.0 nebo novější |
-| 1,14 a novější | Není dostupné. |
+| 1,14 a novější | neuvedeno |
 
 Pokud používáte verzi Kubernetes, která nemá opravu tohoto problému, můžete problém zmírnit tím, že vyzkoušíte následující:
 
@@ -308,7 +309,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1,11 | 1.11.9 nebo novější |
 | 1,12 | 1.12.7 nebo novější |
 | 1,13 | 1.13.4 nebo novější |
-| 1,14 a novější | Není dostupné. |
+| 1,14 a novější | neuvedeno |
 
 Pokud používáte verzi Kubernetes, která nemá opravu tohoto problému, můžete tento problém zmírnit ručním odpojením disku.
 
@@ -323,7 +324,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1,12 | 1.12.9 nebo novější |
 | 1,13 | 1.13.6 nebo novější |
 | 1,14 | 1.14.2 nebo novější |
-| 1,15 a novější | Není dostupné. |
+| 1,15 a novější | neuvedeno |
 
 Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici, a váš virtuální počítač uzlu má zastaralý seznam disků, můžete problém zmírnit tím, že z virtuálního počítače odpojíte všechny neexistující disky jako jedinou hromadnou operaci. **Samostatné odpojení neexistujících disků může selhat.**
 
@@ -343,7 +344,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1,12 | 1.12.10 nebo novější |
 | 1,13 | 1.13.8 nebo novější |
 | 1,14 | 1.14.4 nebo novější |
-| 1,15 a novější | Není dostupné. |
+| 1,15 a novější | neuvedeno |
 
 Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici, a virtuální počítač uzlu je ve stavu selhání, můžete problém zmírnit tím, že ručně aktualizujete stav virtuálního počítače pomocí jedné z níže uvedených akcí:
 
@@ -460,7 +461,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | -- | :--: |
 | 1,12 | 1.12.6 nebo novější |
 | 1,13 | 1.13.4 nebo novější |
-| 1,14 a novější | Není dostupné. |
+| 1,14 a novější | neuvedeno |
 
 ### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>Připojení k souborům Azure selhalo kvůli změně klíče účtu úložiště.
 

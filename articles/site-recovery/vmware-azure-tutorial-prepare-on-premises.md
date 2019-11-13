@@ -1,19 +1,19 @@
 ---
-title: Příprava místních serverů VMware na zotavení po havárii virtuálních počítačů VMware do Azure | Microsoft Docs
+title: Příprava na zotavení po havárii virtuálního počítače VMware pomocí Azure Site Recovery
 description: Zjistěte, jak připravit místní servery VMware na zotavení po havárii do Azure pomocí služby Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/22/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 0f62ee1a79126f456b993c7caf2de3741637f710
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: c82f8130340dfc3848159a6f88db0a304a3ab149
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147806"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953747"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Příprava místních serverů VMware na zotavení po havárii do Azure
 
@@ -68,8 +68,8 @@ Připravte účet následujícím způsobem:
 
 Připravte účet domény nebo místní účet s oprávněními k instalaci na virtuální počítač.
 
-- **Virtuální počítače s Windows**: Pokud chcete nainstalovat na virtuální počítače s Windows, pokud nepoužíváte doménový účet, zakažte na místním počítači vzdálené řízení přístupu uživatele. Provedete to tak, že v registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** přidáte položku DWORD **LocalAccountTokenFilterPolicy** s hodnotou 1.
-- **Virtuální počítače se systémem Linux**: Pokud chcete instalaci provést na virtuální počítače s Linuxem, připravte na zdrojovém serveru s Linuxem kořenový účet.
+- **Virtuální počítače s Windows**: Pokud chcete instalaci provést na virtuální počítače s Windows a nepoužíváte účet domény, zakažte na místním počítači vzdálené řízení přístupu uživatele. Provedete to tak, že v registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** přidáte položku DWORD **LocalAccountTokenFilterPolicy** s hodnotou 1.
+- **Virtuální počítače s Linuxem**: Pokud chcete instalaci provést na virtuální počítače s Linuxem, připravte na zdrojovém serveru s Linuxem kořenový účet.
 
 
 ## <a name="check-vmware-requirements"></a>Kontrola požadavků na VMware
@@ -94,7 +94,7 @@ Pokud se po převzetí služeb při selhání chcete připojit k virtuálním po
 - **Přístup k S2S (Site-to-site) VPN**:
     - Před převzetím služeb při selhání povolte na místním počítači protokol RDP.
     - Protokol RDP musí být povolený v části **Brána Windows Firewall** -> **Povolené aplikace a funkce** pro **doménovou a privátní** síť.
-    - Zkontrolujte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](https://support.microsoft.com/kb/3031135).
+    - Zkontrolujte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](https://support.microsoft.com/kb/3031135)
 - Při aktivaci převzetí služeb při selhání by na virtuálním počítači neměly být žádné čekající aktualizace Windows. V takovém případě se k virtuálnímu počítači nebudete moct přihlásit, dokud se aktualizace nedokončí.
 - Po převzetí služeb při selhání na virtuálním počítači Azure s Windows zkontrolujte **diagnostiku spuštění**, kde se zobrazí snímek obrazovky virtuálního počítače. Pokud se nemůžete připojit, zkontrolujte, že je virtuální počítač spuštěný, a přečtěte si tyto [tipy pro řešení potíží](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
@@ -112,9 +112,9 @@ Pokud máte v úmyslu navrátit služby po obnovení do místní lokality, je k 
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Nastavte zotavení po havárii. Pokud provádíte replikaci více virtuálních počítačů, naplánujte kapacitu.
 > [!div class="nextstepaction"]
-> [Nastavte zotavení po havárii do Azure pro virtuální počítače](vmware-azure-tutorial.md)
-> VMware, které[provádějí plánování kapacity](site-recovery-deployment-planner.md).
+> [Nastavení zotavení po havárii do Azure pro virtuální počítače VMware](vmware-azure-tutorial.md)
+> [provádění plánování kapacity](site-recovery-deployment-planner.md).

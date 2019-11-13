@@ -1,71 +1,72 @@
 ---
-title: Správa síťových rozhraní ve službě Azure Site Recovery pro místní zotavení po havárii do Azure | Dokumentace Microsoftu
-description: Popisuje, jak Správa síťových rozhraní pro místní zotavení po havárii do Azure pomocí Azure Site Recovery
+title: Správa síťových adaptérů pro obnovení místních havárií pomocí Azure Site Recovery
+description: Popisuje, jak spravovat síťová rozhraní pro místní zotavení po havárii do Azure pomocí Azure Site Recovery
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 5d5dd7bc3f6b60c2f9d7c2179f2bd356ca101dc4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a4752b501e40f9e8a4f3bc82cb2533c11f9e526
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61471744"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954589"
 ---
-# <a name="manage-virtual-machine-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Správa síťových rozhraní virtuálního počítače, místní zotavení po havárii do Azure
-Virtuální počítač (VM) v Azure musí mít aspoň jedno síťové rozhraní k němu připojená. Může mít jak velký počet síťových rozhraní připojených k němu jako podporuje velikost virtuálního počítače.
+# <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Správa síťových rozhraní virtuálních počítačů pro zotavení místních havárií do Azure
 
-Ve výchozím nastavení je první síťové rozhraní připojené k virtuálnímu počítači Azure definováno jako primární síťové rozhraní. Všechna další síťová rozhraní virtuálního počítače se sekundárními síťovými rozhraními. Také ve výchozím nastavení, veškerý odchozí provoz z virtuálního počítače bude odeslaná IP adresu, která je přiřazena primární konfigurace IP primárního síťového rozhraní.
+Virtuální počítač (VM) v Azure musí mít připojené aspoň jedno síťové rozhraní. Může mít k němu připojené tolik síťových rozhraní, jako podporuje velikost virtuálního počítače.
 
-V místním prostředí může mít několik síťových rozhraní pro různé sítě v prostředí virtuálních počítačů nebo serverů. Různé sítě se obvykle používají pro provádění určitých operací, jako je například upgrady, Údržba a přístup k Internetu. Při migraci nebo převzetí služeb při selhání do Azure z místního prostředí, mějte na paměti, aby síťová rozhraní ve stejném virtuálním počítači musí všechny připojené ke stejné virtuální síti.
+Ve výchozím nastavení je první síťové rozhraní připojené k virtuálnímu počítači Azure definované jako primární síťové rozhraní. Všechna ostatní síťová rozhraní ve virtuálním počítači jsou sekundární síťová rozhraní. Ve výchozím nastavení se veškerý odchozí provoz z virtuálního počítače odesílá taky IP adresa, která je přiřazená k primární konfiguraci protokolu IP primárního síťového rozhraní.
 
-Ve výchozím nastavení Azure Site Recovery vytvoří velký počet síťových rozhraní na virtuálním počítači Azure, jako jsou připojené k místnímu serveru. Vytváření redundantních síťových rozhraní během migrace nebo převzetí služeb při selhání tak, že upravíte nastavení síťového rozhraní v části Nastavení replikovaný virtuální počítač se můžete vyhnout.
+V místním prostředí můžou mít virtuální počítače nebo servery více síťových rozhraní pro různé sítě v rámci prostředí. Různé sítě se obvykle používají k provádění konkrétních operací, jako jsou například upgrady, údržba a přístup k Internetu. Při migraci nebo převzetí služeb při selhání v Azure z místního prostředí Pamatujte na to, že síťová rozhraní ve stejném virtuálním počítači musí být připojená ke stejné virtuální síti.
 
-## <a name="select-the-target-network"></a>Vyberte cílovou síť
+Ve výchozím nastavení Azure Site Recovery vytvoří tolik síťových rozhraní na virtuálním počítači Azure, jako jsou připojené k místnímu serveru. Při migraci nebo převzetí služeb při selhání se můžete vyhnout vytváření redundantních síťových rozhraní úpravou nastavení síťového rozhraní v nastavení pro replikovaný virtuální počítač.
 
-Pro VMware a fyzických počítačů a virtuálních počítačů Hyper-V (bez System Center Virtual Machine Manager) můžete určit cílovou virtuální sítí pro jednotlivé virtuální počítače. Pro virtuální počítače Hyper-V spravované pomocí Virtual Machine Manager, použijte [mapování sítě](site-recovery-network-mapping.md) mapování sítě virtuálních počítačů na zdrojovém serveru Virtual Machine Manager a cílovými sítěmi Azure.
+## <a name="select-the-target-network"></a>Vyberte cílovou síť.
 
-1. V části **replikované položky** v trezoru služby Recovery Services, vyberte všechny replikované položky pro přístup k nastavení pro tuto replikovanou položku.
+Pro VMware a fyzické počítače a pro virtuální počítače Hyper-V (bez System Center Virtual Machine Manager) můžete zadat cílovou virtuální síť pro jednotlivé virtuální počítače. U virtuálních počítačů Hyper-V spravovaných pomocí Virtual Machine Manager použijte [mapování sítě](site-recovery-network-mapping.md) pro mapování sítí virtuálních počítačů na zdrojovém serveru Virtual Machine Manager a cílové sítě Azure.
 
-2. Vyberte **výpočty a síť** kartu pro přístup k nastavení sítě pro replikovanou položku.
+1. V části **replikované položky** v Recovery Servicesovém trezoru vyberte jakoukoli replikovanou položku pro přístup k nastavení této replikované položky.
 
-3. V části **vlastnosti sítě**, zvolte virtuální síť v seznamu dostupných síťových rozhraní.
+2. Vyberte kartu **výpočty a síť** pro přístup k nastavení sítě pro replikovanou položku.
+
+3. V části **Vlastnosti sítě**vyberte virtuální síť ze seznamu dostupných síťových rozhraní.
 
     ![Nastavení sítě](./media/site-recovery-manage-network-interfaces-on-premises-to-azure/compute-and-network.png)
 
-Změna cílové síti má vliv na všech síťových rozhraní pro tento konkrétní virtuální počítač.
+Změna cílové sítě má vliv na všechna síťová rozhraní pro konkrétní virtuální počítač.
 
-Upravuje se mapování sítě pro cloudy Virtual Machine Manager, ovlivňuje všechny virtuální počítače a jejich síťová rozhraní.
+U Virtual Machine Managerch cloudů má změna mapování sítě vliv na všechny virtuální počítače a jejich síťová rozhraní.
 
-## <a name="select-the-target-interface-type"></a>Vyberte cílový typ rozhraní
+## <a name="select-the-target-interface-type"></a>Vyberte typ cílového rozhraní.
 
-V části **síťová rozhraní** část **výpočty a síť** podokně můžete zobrazit a upravit nastavení síťového rozhraní. Můžete také zadat typ cílového síťového rozhraní.
+V části **Síťová rozhraní** v podokně **výpočty a síť** můžete zobrazit a upravit nastavení síťového rozhraní. Můžete také zadat cílový typ síťového rozhraní.
 
-- A **primární** síťové rozhraní se ale vyžaduje pro převzetí služeb při selhání.
-- Všechny vybrané síťové rozhraní, pokud jsou **sekundární** síťová rozhraní.
-- Vyberte **nepoužívejte** chcete vyloučit z vytvoření při převzetí služeb při selhání síťového rozhraní.
+- Pro převzetí služeb při selhání se vyžaduje **primární** síťové rozhraní.
+- Všechna ostatní vybraná síťová rozhraní jsou v případě **sekundárních** síťových rozhraní.
+- Vyberte **Nepoužívat** k vyloučení síťového rozhraní před vytvořením při převzetí služeb při selhání.
 
-Ve výchozím nastavení Pokud se povolení replikace, Site Recovery vybere všech zjištěných síťových rozhraní na místním serveru. Označí jako jeden **primární** a všechny ostatní jako **sekundární**. Všechny následující rozhraní přidat na místním serveru, jsou označeny **nepoužívejte** ve výchozím nastavení. Když přidáváte více síťových rozhraní, ujistěte se, že je vybraná velikost cíle správné virtuálních počítačů Azure tak, aby vyhovovaly všechna požadovaná síťová rozhraní.
+Ve výchozím nastavení, když povolujete replikaci, Site Recovery vybere všechna zjištěná síťová rozhraní na místním serveru. Označuje jednu jako **primární** a všechny ostatní jako **sekundární**. Všechna další rozhraní přidaná na místním serveru jsou označena jako **nepoužívá** se ve výchozím nastavení. Když přidáváte více síťových rozhraní, ujistěte se, že je vybraná správná velikost cílového virtuálního počítače Azure, aby se vešla všechna požadovaná síťová rozhraní.
 
 ## <a name="modify-network-interface-settings"></a>Upravit nastavení síťového rozhraní
 
-Můžete upravit podsíť a IP adresy pro síťová rozhraní replikované položky. Pokud IP adresa není zadaná, Site Recovery přiřadí další dostupnou IP adresu z podsítě k síťovému rozhraní při převzetí služeb při selhání.
+Můžete upravit podsíť a IP adresu pro síťová rozhraní replikované položky. Pokud není zadaná IP adresa, Site Recovery přiřadí další dostupnou IP adresu z podsítě k síťovému rozhraní při převzetí služeb při selhání.
 
-1. Vyberte jakékoli dostupných síťových rozhraní, otevřete nastavení síťového rozhraní.
+1. Výběrem libovolného dostupného síťového rozhraní otevřete nastavení síťového rozhraní.
 
-2. Vyberte požadované podsítě ze seznamu dostupných podsítí.
+2. Vyberte požadovanou podsíť ze seznamu dostupných podsítí.
 
 3. Zadejte požadovanou IP adresu (podle potřeby).
 
     ![Nastavení síťového rozhraní](./media/site-recovery-manage-network-interfaces-on-premises-to-azure/network-interface-settings.png)
 
-4. Vyberte **OK** s úpravami hotovi a vraťte **výpočty a síť** podokně.
+4. Výběrem **OK** dokončete úpravy a vraťte se do podokna **výpočty a síť** .
 
-5. Opakujte kroky 1 až 4 pro jiné síťová rozhraní.
+5. Opakujte kroky 1-4 pro další síťová rozhraní.
 
-6. Vyberte **Uložit** uložte všechny změny.
+6. Vyberte **Uložit** a uložte všechny změny.
 
-## <a name="next-steps"></a>Další postup
-  [Další informace](../virtual-network/virtual-network-network-interface-vm.md) o síťových rozhraních pro virtuální počítače Azure.
+## <a name="next-steps"></a>Další kroky
+  [Přečtěte si další informace](../virtual-network/virtual-network-network-interface-vm.md) o síťových rozhraních pro virtuální počítače Azure.

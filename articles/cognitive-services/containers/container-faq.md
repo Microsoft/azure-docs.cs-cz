@@ -7,22 +7,22 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 11/11/2019
 ms.author: dapine
-ms.openlocfilehash: 6e218f33bdc33708cef0c94eb85298abf2b8927c
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 33b99d50db4384c7de818a7dd0bb8492c86bef97
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316627"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961893"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Cognitive Services Containers (FAQ)
 
 ## <a name="general-questions"></a>Obecné otázky
 
-**Otázka: Co je k dispozici?**
+**Otázka: co je k dispozici?**
 
-**Odpověď:** [Podpora kontejnerů v azure Cognitive Services](../cognitive-services-container-support.md) umožňuje vývojářům používat stejné inteligentní rozhraní API, která jsou k dispozici v Azure, ale s [výhodami](../cognitive-services-container-support.md#features-and-benefits) kontejnerů. Podpora kontejnerů je v současnosti k dispozici ve verzi Preview pro podmnožinu Cognitive Services Azure, včetně částí:
+Odpověď **:** [Podpora kontejnerů v Azure Cognitive Services](../cognitive-services-container-support.md) umožňuje vývojářům používat stejné inteligentní rozhraní API, která jsou k dispozici v Azure, ale s [výhodami](../cognitive-services-container-support.md#features-and-benefits) kontejnerů. Podpora kontejnerů je v současnosti k dispozici ve verzi Preview pro podmnožinu Cognitive Services Azure, včetně částí:
 
 > [!div class="checklist"]
 > * [Detektor anomálií][ad-containers]
@@ -32,28 +32,27 @@ ms.locfileid: "71316627"
 > * [Language Understanding (LUIS)][lu-containers]
 > * [Rozhraní API služby Speech][sp-containers]
 > * [Analýza textu][ta-containers]
-<!-- > * [Translator Text][tt-containers] -->
 
-**Otázka: Existuje nějaký rozdíl mezi Cognitive Services cloudem a kontejnery?**
+**Otázka: existuje nějaký rozdíl mezi Cognitive Services cloudem a kontejnery?**
 
-**Odpověď:** Kontejnery Cognitive Services jsou alternativou ke cloudu Cognitive Services. Kontejnery nabízejí stejné možnosti jako odpovídající cloudové služby. Zákazníci můžou kontejnery nasazovat místně nebo v Azure. Základní technologie AI, cenové úrovně, klíče rozhraní API a signatura rozhraní API jsou stejné mezi kontejnerem a odpovídajícími cloudovou službou. Tady jsou [funkce a výhody](../cognitive-services-container-support.md#features-and-benefits) pro výběr kontejnerů přes svůj ekvivalent cloudové služby.
+**A:** Kontejnery Cognitive Services jsou alternativou ke cloudu Cognitive Services. Kontejnery nabízejí stejné možnosti jako odpovídající cloudové služby. Zákazníci můžou kontejnery nasazovat místně nebo v Azure. Základní technologie AI, cenové úrovně, klíče rozhraní API a signatura rozhraní API jsou stejné mezi kontejnerem a odpovídajícími cloudovou službou. Tady jsou [funkce a výhody](../cognitive-services-container-support.md#features-and-benefits) pro výběr kontejnerů přes svůj ekvivalent cloudové služby.
 
-**Otázka: Budou kontejnery k dispozici pro všechny Cognitive Services a jaké jsou další sady kontejnerů, které bychom měli očekávat?**
+**Otázka: budou kontejnery k dispozici pro všechny Cognitive Services a jaké jsou další sady kontejnerů, které bychom měli očekávat?**
 
-**Odpověď:** Rádi bychom Cognitive Services k dispozici jako nabídky kontejnerů. Pokud chcete získat aktualizace nových verzí kontejnerů a dalších oznámení Cognitive Services, kontaktujte svého místního správce účet Microsoft.
+**A:** Rádi bychom Cognitive Services k dispozici jako nabídky kontejnerů. Pokud chcete získat aktualizace nových verzí kontejnerů a dalších oznámení Cognitive Services, kontaktujte svého místního správce účet Microsoft.
 
-**Otázka: Co bude smlouva SLA (Service-level agreement) pro kontejnery Cognitive Services?**
+**Otázka: co bude smlouva SLA (Service-level agreement) pro kontejnery Cognitive Services?**
 
-**Odpověď:** Cognitive Services kontejnery nemají smlouvu SLA.
+**A:** Cognitive Services kontejnery nemají smlouvu SLA.
 
 Cognitive Services konfigurace kontejnerů prostředků se řídí zákazníky, takže Microsoft nenabídne smlouvu SLA pro obecnou dostupnost (GA). Zákazníkům je zdarma nasazovat kontejnery, takže definují prostředí hostitele.
 
 > [!IMPORTANT]
 > Další informace o Cognitive Services smluv o úrovni služeb [najdete na naší stránce věnované smlouvě SLA](https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/).
 
-**Otázka: Jsou tyto kontejnery k dispozici v cloudech z svrchovaného místa?**
+**Otázka: jsou tyto kontejnery k dispozici v cloudech z svrchovaného místa?**
 
-**Odpověď:** S termínem "svrchovaného cloudu" nemusíte mít všechny uživatele, takže začneme s definicí:
+**A:** S termínem "svrchovaného cloudu" nemusíte mít všechny uživatele, takže začneme s definicí:
 
 > "Svrchovaná Cloud" se skládá z cloudů [Azure Government](../../azure-government/documentation-government-welcome.md), [Azure Německo](../../germany/germany-welcome.md)a [Azure Čína 21Vianet](https://docs.microsoft.com/azure/china/overview-operations) .
 
@@ -61,31 +60,31 @@ Kontejnery Cognitive Services v cloudech svrchovaného *nativně nepodporují.* 
 
 ### <a name="versioning"></a>Správa verzí
 
-**Otázka: Jak se kontejnery aktualizují na nejnovější verzi?**
+**Otázka: jak jsou kontejnery aktualizovány na nejnovější verzi?**
 
-**Odpověď:** Zákazníci si můžou vybrat, kdy se mají aktualizovat kontejnery, které nasadili. Kontejnery budou označeny standardními [značkami Docker](https://docs.docker.com/engine/reference/commandline/tag/) , jako `latest` je například, aby označovaly nejnovější verzi. Zákazníkům doporučujeme, aby při jejich vydávání vyčetli nejnovější verzi kontejnerů, zaregistrujte [Azure Container Registry webhooků](../../container-registry/container-registry-webhook.md) , abyste získali podrobnosti o tom, jak se při aktualizaci obrázku zobrazí oznámení.
+**A:** Zákazníci si můžou vybrat, kdy se mají aktualizovat kontejnery, které nasadili. Kontejnery budou označeny standardními [značkami Docker](https://docs.docker.com/engine/reference/commandline/tag/) , jako je například `latest`, aby označovaly nejnovější verzi. Zákazníkům doporučujeme, aby při jejich vydávání vyčetli nejnovější verzi kontejnerů, zaregistrujte [Azure Container Registry webhooků](../../container-registry/container-registry-webhook.md) , abyste získali podrobnosti o tom, jak se při aktualizaci obrázku zobrazí oznámení.
  
 **Otázka: Jaké verze budou podporovány?**
 
-**Odpověď:** Bude podporována aktuální a poslední hlavní verze kontejneru. Doporučujeme však zákazníkům, aby si získali nejnovější technologii.
+**A:** Bude podporována aktuální a poslední hlavní verze kontejneru. Doporučujeme však zákazníkům, aby si získali nejnovější technologii.
  
-**Otázka: Jak se verze aktualizují?**
+**Otázka: jak se verze aktualizují?**
 
-**Odpověď:** Hlavní změny verze znamenají, že došlo k zásadní změně podpisu rozhraní API. Předpokládáme, že se obecně shoduje se změnami hlavní verze v odpovídající nabídce cloudové služby pro rozpoznávání. Změny podverze označují opravy chyb, aktualizace modelů nebo nové funkce, které nedělají zásadní změnu v signatuře rozhraní API.
+**A:** Hlavní změny verze znamenají, že došlo k zásadní změně podpisu rozhraní API. Předpokládáme, že se obecně shoduje se změnami hlavní verze v odpovídající nabídce cloudové služby pro rozpoznávání. Změny podverze označují opravy chyb, aktualizace modelů nebo nové funkce, které nedělají zásadní změnu v signatuře rozhraní API.
 
 ## <a name="technical-questions"></a>Technické dotazy
 
-**Otázka: Jak mám spustit Cognitive Services kontejnery na zařízeních IoT?**
+**Otázka: Jak mám spustit kontejnery Cognitive Services na zařízeních IoT?**
 
 Bez ohledu na to, jestli nemáte spolehlivé připojení k Internetu, nebo pokud chcete ušetřit náklady na šířku pásma. Nebo pokud mají požadavky na nízkou latenci nebo pracujete s citlivými daty, která je potřeba analyzovat na pracovišti, [Azure IoT Edge s kontejnery Cognitive Services](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/) poskytuje konzistenci s cloudem.
 
-**Otázka: Návody poskytnout zpětnou vazbu k produktu a doporučení funkcí?**
+**Otázka: Návody poskytovat zpětnou vazbu k produktu a doporučení funkcí?**
 
-**Odpověď:** Zákazníkům se doporučuje [hlasovat své obavy](https://cognitive.uservoice.com/) veřejně a hlasovat pro ostatní, kteří provedli stejný postup jako při překrytí potenciálních problémů. Nástroj pro telefonování uživatelů se dá použít pro zpětnou vazbu k produktu i pro doporučení funkcí.
+**A:** Zákazníkům se doporučuje [hlasovat své obavy](https://cognitive.uservoice.com/) veřejně a hlasovat pro ostatní, kteří provedli stejný postup jako při překrytí potenciálních problémů. Nástroj pro telefonování uživatelů se dá použít pro zpětnou vazbu k produktu i pro doporučení funkcí.
 
-**Otázka: Koho se mám obrátit na podporu?**
+**Otázka: koho se mám obrátit na podporu?**
 
-**Odpověď:** Kanály zákaznické podpory jsou stejné jako u cloudové nabídky Cognitive Services. Všechny kontejnery Cognitive Services zahrnují funkce protokolování, které nám pomůžou a komunita podpory pro zákazníky. Další podporu najdete v následujících možnostech.
+**A:** Kanály zákaznické podpory jsou stejné jako u cloudové nabídky Cognitive Services. Všechny kontejnery Cognitive Services zahrnují funkce protokolování, které nám pomůžou a komunita podpory pro zákazníky. Další podporu najdete v následujících možnostech.
 
 ### <a name="customer-support-plan"></a>Plán zákaznické podpory
 
@@ -106,7 +105,7 @@ Seznamte se s případnými otázkami a odpověďmi, které odpovídají vašim 
 
 **Otázka: Jak funguje fakturace?**
 
-**Odpověď:** Zákazníkům se účtují na základě spotřeby, podobně jako u Cognitive Servicesho cloudu. Kontejnery je potřeba nakonfigurovat tak, aby odesílaly data měření do Azure, a odpovídajícím způsobem se účtují transakce. Prostředky používané v rámci hostovaných a místních služeb se budou přidávat k jedné kvótě s vrstvenými cenami a počítají se v obou použitích. Další podrobnosti najdete na stránce s cenami odpovídající nabídky.
+**A:** Zákazníkům se účtují na základě spotřeby, podobně jako u Cognitive Servicesho cloudu. Kontejnery je potřeba nakonfigurovat tak, aby odesílaly data měření do Azure, a odpovídajícím způsobem se účtují transakce. Prostředky používané v rámci hostovaných a místních služeb se budou přidávat k jedné kvótě s vrstvenými cenami a počítají se v obou použitích. Další podrobnosti najdete na stránce s cenami odpovídající nabídky.
 
 * [Detektor anomálií][ad-containers-billing]
 * [Počítačové zpracování obrazu][cv-containers-billing]
@@ -115,26 +114,25 @@ Seznamte se s případnými otázkami a odpověďmi, které odpovídají vašim 
 * [Language Understanding (LUIS)][lu-containers-billing]
 * [Rozhraní API služby Speech][sp-containers-billing]
 * [Analýza textu][ta-containers-billing]
-<!-- * [Translator Text][tt-containers-billing] -->
 
 > [!IMPORTANT]
 > Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Kontejnery Cognitive Services neodesílají zákaznická data společnosti Microsoft.
  
-**Otázka: Jaká je aktuální záruka podpory pro kontejnery?**
+**Otázka: jaká je aktuální záruka podpory kontejnerů?**
 
-**Odpověď:** Pro verze Preview není k dispozici žádná záruka. Standardní záruka společnosti Microsoft pro podnikový software se použije, pokud jsou kontejnery formálně vyhlášené jako obecně dostupné (GA).
+**A:** Pro verze Preview není k dispozici žádná záruka. Standardní záruka společnosti Microsoft pro podnikový software se použije, pokud jsou kontejnery formálně vyhlášené jako obecně dostupné (GA).
  
-**Otázka: Co se stane s Cognitive Services kontejnery, když dojde ke ztrátě připojení k Internetu?**
+**Otázka: co se stane s Cognitive Services kontejnery, když dojde ke ztrátě připojení k Internetu?**
 
-**Odpověď:** Nemusíte spouštět kontejnery Cognitive Services bez připojení k Azure pro měření. Zákazníci musí povolit kontejnerům nepřetržitě komunikovat se službou měření dat.
+**A:** Nemusíte spouštět kontejnery Cognitive Services bez připojení k Azure pro měření. Zákazníci musí povolit kontejnerům nepřetržitě komunikovat se službou měření dat.
 
-**Otázka: Jak dlouho může kontejner fungovat bez připojení k Azure?**
+**Otázka: jak dlouho může kontejner fungovat bez připojení k Azure?**
 
-**Odpověď:** Nemusíte spouštět kontejnery Cognitive Services bez připojení k Azure pro měření. Zákazníci musí povolit kontejnerům nepřetržitě komunikovat se službou měření dat.
+**A:** Nemusíte spouštět kontejnery Cognitive Services bez připojení k Azure pro měření. Zákazníci musí povolit kontejnerům nepřetržitě komunikovat se službou měření dat.
  
-**Otázka: Co je aktuální hardware potřebný ke spuštění těchto kontejnerů?**
+**Otázka: co je aktuální hardware potřebný ke spuštění těchto kontejnerů?**
 
-**Odpověď:** Kontejnery Cognitive Services jsou kontejnery založené na platformě x64, které můžou spouštět libovolný kompatibilní uzel Linux, virtuální počítač a hraniční zařízení, které podporují kontejnery Docker platformy x64 Linux. Všechny vyžadují procesorové procesory. Minimální a doporučené konfigurace pro jednotlivé nabídky kontejnerů jsou k dispozici níže:
+**A:** Kontejnery Cognitive Services jsou kontejnery založené na platformě x64, které můžou spouštět libovolný kompatibilní uzel Linux, virtuální počítač a hraniční zařízení, které podporují kontejnery Docker platformy x64 Linux. Všechny vyžadují procesorové procesory. Minimální a doporučené konfigurace pro jednotlivé nabídky kontejnerů jsou k dispozici níže:
 
 * [Detektor anomálií][ad-containers-recommendations]
 * [Počítačové zpracování obrazu][cv-containers-recommendations]
@@ -143,27 +141,26 @@ Seznamte se s případnými otázkami a odpověďmi, které odpovídají vašim 
 * [Language Understanding (LUIS)][lu-containers-recommendations]
 * [Rozhraní API služby Speech][sp-containers-recommendations]
 * [Analýza textu][ta-containers-recommendations]
-<!-- * [Translator Text][tt-containers-recommendations] -->
  
-**Otázka: Jsou tyto kontejnery aktuálně podporované ve Windows?**
+**Otázka: jsou tyto kontejnery aktuálně podporovány ve Windows?**
 
-**Odpověď:** Kontejnery Cognitive Services jsou kontejnery pro Linux, ale v systému Windows je k dispozici podpora kontejnerů pro Linux. Další informace o kontejnerech Linux ve Windows najdete v [dokumentaci k Docker](https://blog.docker.com/2017/09/preview-linux-containers-on-windows/).
+**A:** Kontejnery Cognitive Services jsou kontejnery pro Linux, ale v systému Windows je k dispozici podpora kontejnerů pro Linux. Další informace o kontejnerech Linux ve Windows najdete v [dokumentaci k Docker](https://blog.docker.com/2017/09/preview-linux-containers-on-windows/).
  
-**Otázka: Návody zjistit kontejnery?**
+**Otázka: Návody zjišťování kontejnerů?**
 
-**Odpověď:** Kontejnery Cognitive Services jsou k dispozici v různých umístěních, jako je Azure Portal, centrum Docker a Registry kontejnerů Azure. Pro nejnovější umístění kontejnerů se podívejte na [úložiště kontejnerů a image](../cognitive-services-container-support.md#container-repositories-and-images).
+**A:** Kontejnery Cognitive Services jsou k dispozici v různých umístěních, jako je Azure Portal, centrum Docker a Registry kontejnerů Azure. Pro nejnovější umístění kontejnerů se podívejte na [úložiště kontejnerů a image](../cognitive-services-container-support.md#container-repositories-and-images).
 
-**Otázka: Jak se Cognitive Services kontejnery porovnávají s AWS a Google nabídkami?**
+**Otázka: jak se Cognitive Services kontejnery porovnávají s AWS a Google nabídkami?**
 
-**Odpověď:** Microsoft je prvním poskytovatelem cloudu, který umožňuje přesunout své předem připravené modely AI do kontejnerů s jednoduchou fakturací na transakci, jako by zákazníci používali cloudovou službu. Microsoft se domnívá, že hybridní cloud nabízí zákazníkům více možností.
+**A:** Microsoft je prvním poskytovatelem cloudu, který umožňuje přesunout své předem připravené modely AI do kontejnerů s jednoduchou fakturací na transakci, jako by zákazníci používali cloudovou službu. Microsoft se domnívá, že hybridní cloud nabízí zákazníkům více možností.
 
-**Otázka: Jaké certifikace dodržování předpisů mají kontejnery?**
+**Otázka: Jaké certifikáty pro certifikace dodržování předpisů mají kontejnery?**
 
-**Odpověď:** Kontejnery služby pro rozpoznávání neobsahují žádné certifikace dodržování předpisů.
+**A:** Kontejnery služby pro rozpoznávání neobsahují žádné certifikace dodržování předpisů.
 
-**Otázka: Ve kterých oblastech jsou Cognitive Services kontejnery k dispozici?**
+**Otázka: Jaké oblasti jsou Cognitive Services kontejnery k dispozici v nástroji?**
 
-**Odpověď:** Kontejnery je možné spustit kdekoli v libovolné oblasti, ale potřebují klíč a zavolat zpátky do Azure pro měření. Všechny podporované oblasti pro cloudovou službu se podporují pro volání měření kontejneru.
+**A:** Kontejnery je možné spustit kdekoli v libovolné oblasti, ale potřebují klíč a zavolat zpátky do Azure pro měření. Všechny podporované oblasti pro cloudovou službu se podporují pro volání měření kontejneru.
 
 [!INCLUDE [Containers next steps](includes/containers-next-steps.md)]
 
@@ -174,7 +171,6 @@ Seznamte se s případnými otázkami a odpověďmi, které odpovídají vašim 
 [lu-containers]: ../luis/luis-container-howto.md
 [sp-containers]: ../speech-service/speech-container-howto.md
 [ta-containers]: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md
-<!-- [tt-containers]: ../translator/how-to-install-containers.md -->
 
 [ad-containers-billing]: ../anomaly-Detector/anomaly-detector-container-howto.md#billing
 [cv-containers-billing]: ../computer-vision/computer-vision-how-to-install-containers.md#billing
@@ -183,7 +179,6 @@ Seznamte se s případnými otázkami a odpověďmi, které odpovídají vašim 
 [lu-containers-billing]: ../luis/luis-container-howto.md#billing
 [sp-containers-billing]: ../speech-service/speech-container-howto.md#billing
 [ta-containers-billing]: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md#billing
-<!-- [tt-containers-billing]: ../translator/how-to-install-containers.md#billing -->
 
 [ad-containers-recommendations]: ../anomaly-Detector/anomaly-detector-container-howto.md#container-requirements-and-recommendations
 [cv-containers-recommendations]: ../computer-vision/computer-vision-how-to-install-containers.md#container-requirements-and-recommendations
@@ -192,4 +187,3 @@ Seznamte se s případnými otázkami a odpověďmi, které odpovídají vašim 
 [lu-containers-recommendations]: ../luis/luis-container-howto.md#container-requirements-and-recommendations
 [sp-containers-recommendations]: ../speech-service/speech-container-howto.md#container-requirements-and-recommendations
 [ta-containers-recommendations]: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md#container-requirements-and-recommendations
-<!-- [tt-containers-recommendations]: ../translator/how-to-install-containers.md#container-requirements-and-recommendations -->

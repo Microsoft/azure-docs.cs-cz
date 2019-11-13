@@ -1,17 +1,14 @@
 ---
 title: Jak pracovat se skupinami pro správu – zásady správného řízení Azure
 description: Naučte se zobrazovat, udržovat, aktualizovat a odstraňovat hierarchii skupin pro správu.
-author: rthorn17
-ms.service: governance
 ms.date: 05/22/2019
-ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 57695157119b81580777c0581adccb267e7e9faa
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 90f4bacf462ed5f2590f51d15b6b660057c51738
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255926"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960242"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Správa prostředků pomocí skupin pro správu
 
@@ -43,7 +40,7 @@ Název skupiny pro správu můžete změnit pomocí portálu, PowerShellu nebo r
 
    ![Přejmenovat skupinu pro správu přejmenováním podokna skupiny](./media/rename_context.png)
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 ### <a name="change-the-name-in-powershell"></a>Změna názvu v PowerShellu
 
@@ -249,7 +246,7 @@ Chcete-li zjistit, jaká oprávnění máte v Azure Portal, vyberte skupinu pro 
 
    ![Přesune podokno pro změnu nadřazené skupiny.](./media/move_small_context.png)
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 ### <a name="move-subscriptions-in-powershell"></a>Přesunout předplatná v PowerShellu
 
@@ -300,7 +297,7 @@ Když přesunete nadřazenou skupinu pro správu, přesune se k ní hierarchie v
 
    ![Přesunout skupinu pro správu do nové nebo existující skupiny](./media/add_context_MG.png)
 
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 ### <a name="move-management-groups-in-powershell"></a>Přesunutí skupin pro správu v PowerShellu
 

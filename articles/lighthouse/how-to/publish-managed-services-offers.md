@@ -4,15 +4,15 @@ description: Naučte se publikovat nabídku spravované služby, která zákazn�
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 10/17/2019
+ms.date: 11/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 4b2ce1253fd4421b36105fdbae68c6e89173a3c6
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: ee8f0f88f1e60c6e8b5da34a165757694f52dcbb
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615469"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005394"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Publikování nabídky spravovaných služeb pro Azure Marketplace
 
@@ -81,10 +81,10 @@ Nakonec do svého plánu přidejte jednu nebo více **autorizačních** položek
 
 Pro každou **autorizaci**musíte zadat následující. Pak můžete vybrat **nové autorizace** tolikrát, kolikrát je potřeba, a přidat tak další uživatele a definice rolí.
 
-  - **ID objektu Azure AD**: identifikátor Azure AD uživatele, skupiny uživatelů nebo aplikace, kterým budou udělena určitá oprávnění (jak je popsáno v definici role) s prostředky vašich zákazníků.
-  - **Zobrazovaný název objektu Azure AD**: popisný název, který zákazníkovi pomůže pochopit účel této autorizace. Zákazník uvidí tento název při delegování prostředků.
-  - **Definice role**: v seznamu vyberte jednu z dostupných předdefinovaných rolí Azure AD. Tato role určuje oprávnění, která bude mít uživatel v poli **ID objektu Azure AD** v materiálech vašich zákazníků. Popisy těchto rolí najdete v tématu [předdefinované role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) a [Podpora rolí pro správu delegovaných prostředků Azure](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management) .
-  - **Přiřaditelné role**: to se vyžaduje jenom v případě, že jste pro tuto autorizaci vybrali správce přístupu uživatele v **definici role** . Pokud ano, musíte sem přidat jednu nebo více rolí, které lze přiřadit. Uživatel v poli **ID objektu Azure AD** bude moct přiřadit tyto **role** ke [spravovaným identitám](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), které se vyžadují k [nasazení zásad, které se dají opravit](deploy-policy-remediation.md). Pro tohoto uživatele se nepoužijí žádná jiná oprávnění, která se běžně nevztahují k roli správce přístupu uživatele. Pokud tady nevyberete jednu nebo víc rolí, odeslání se nepředá. (Pokud jste nevybrali správce přístupu uživatele pro definici role tohoto uživatele, toto pole nemá žádný vliv.)
+- **ID objektu Azure AD**: identifikátor Azure AD uživatele, skupiny uživatelů nebo aplikace, kterým budou udělena určitá oprávnění (jak je popsáno v definici role) s prostředky vašich zákazníků.
+- **Zobrazovaný název objektu Azure AD**: popisný název, který zákazníkovi pomůže pochopit účel této autorizace. Zákazník uvidí tento název při delegování prostředků.
+- **Definice role**: v seznamu vyberte jednu z dostupných předdefinovaných rolí Azure AD. Tato role určuje oprávnění, která bude mít uživatel v poli **ID objektu Azure AD** v materiálech vašich zákazníků. Popisy těchto rolí najdete v tématu [předdefinované role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) a [Podpora rolí pro správu delegovaných prostředků Azure](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management) .
+- **Přiřaditelné role**: to se vyžaduje jenom v případě, že jste pro tuto autorizaci vybrali správce přístupu uživatele v **definici role** . Pokud ano, musíte sem přidat jednu nebo více rolí, které lze přiřadit. Uživatel v poli **ID objektu Azure AD** bude moct přiřadit tyto **role** ke [spravovaným identitám](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), které se vyžadují k [nasazení zásad, které se dají opravit](deploy-policy-remediation.md). Pro tohoto uživatele se nepoužijí žádná jiná oprávnění, která se běžně nevztahují k roli správce přístupu uživatele. Pokud tady nevyberete jednu nebo víc rolí, odeslání se nepředá. (Pokud jste nevybrali správce přístupu uživatele pro definici role tohoto uživatele, toto pole nemá žádný vliv.)
 
 > [!TIP]
 > Ve většině případů budete chtít přiřadit oprávnění k skupině uživatelů nebo instančnímu objektu služby Azure AD, a ne k řadě jednotlivých uživatelských účtů. To vám umožní přidat nebo odebrat přístup pro jednotlivé uživatele bez nutnosti aktualizace a opětovného publikování plánu, když se změní vaše požadavky na přístup. Další doporučení najdete v tématu [klienti, role a uživatelé ve scénářích Azure Lighthouse](../concepts/tenants-users-roles.md).
@@ -143,62 +143,15 @@ Po dokončení všech oddílů je dalším krokem publikování nabídky Azure M
 
 ## <a name="the-customer-onboarding-process"></a>Proces zprovoznění zákazníků
 
-Když zákazník přidá vaši nabídku, bude moct [delegovat jedno nebo několik konkrétních předplatných nebo skupin prostředků](view-manage-service-providers.md#delegate-resources) , které se pak budou připravovat pro správu delegovaných prostředků Azure. Pokud zákazník nabídku přijal, ale ještě nedelegoval žádné prostředky, uvidí v **horní části stránky** poskytovatelé [**služeb**](view-manage-service-providers.md) v Azure Portal poznámku. Pokud uživatel v tenantovi zákazníka nemůže toto delegování provést, je to pravděpodobně proto, že nemá roli vlastníka pro předplatné. Pokud chcete najít uživatele, kteří můžou delegovat předplatné, může uživatel vybrat předplatné v Azure Portal, otevřít **řízení přístupu (IAM)** a [Zobrazit všechny uživatele s rolí vlastníka](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
+Jakmile zákazník vaši nabídku přidá, bude moct [delegovat jedno nebo několik konkrétních předplatných nebo skupin prostředků](view-manage-service-providers.md#delegate-resources), které se pak budou zakládat pro správu delegovaných prostředků Azure. Pokud zákazník nabídku přijal, ale ještě nedelegoval žádné prostředky, uvidí v **horní části stránky** poskytovatelé [**služeb**](view-manage-service-providers.md) v Azure Portal poznámku.
 
-Předtím, než bude možné připojit předplatné (nebo skupiny prostředků v rámci předplatného), musí být odběr autorizovaný k registraci tím, že ručně zaregistruje poskytovatele prostředků **Microsoft. ManagedServices** . Uživatel v tenantovi zákazníka s rolí přispěvatel nebo vlastník může postupovat podle kroků uvedených v části [poskytovatelé a typy prostředků Azure](../../azure-resource-manager/resource-manager-supported-services.md).
+> [!IMPORTANT]
+> Delegování musí provést účet bez hosta v tenantovi zákazníka, který má [předdefinovanou roli](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) předplatného pro odběr (nebo který obsahuje skupiny prostředků, které jsou připojené). Pokud chcete zobrazit všechny uživatele, kteří můžou delegovat předplatné, uživatel v tenantovi zákazníka může vybrat předplatné ve Azure Portal, otevřít **řízení přístupu (IAM)** a [Zobrazit všechny uživatele s rolí vlastníka](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
 
-Zákazník pak může potvrdit, že předplatné je připravené k registraci, jedním z následujících způsobů.
+Po tom, co zákazník deleguje předplatné (nebo jednu nebo více skupin prostředků v rámci předplatného), bude pro toto předplatné zaregistrovaný poskytovatel prostředků **Microsoft. ManagedServices** a uživatelé ve vašem tenantovi budou mít přístup k delegovaným prostředkům v závislosti na autorizacích vaší nabídky.
 
-### <a name="azure-portal"></a>Portál Azure
-
-1. V Azure Portal vyberte předplatné.
-1. Vyberte **Poskytovatelé prostředků**.
-1. Potvrďte, že se **Microsoft. ManagedServices** zobrazí jako **zaregistrované**.
-
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell-interactive
-# Log in first with Connect-AzAccount if you're not using Cloud Shell
-
-Set-AzContext -Subscription <subscriptionId>
-Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
-```
-
-Výsledek by měl vypadat přibližně takto:
-
-```output
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationDefinitions}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationAssignments}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {operations}
-Locations         : {}
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-```azurecli-interactive
-# Log in first with az login if you're not using Cloud Shell
-
-az account set –subscription <subscriptionId>
-az provider show --namespace "Microsoft.ManagedServices" --output table
-```
-
-Výsledek by měl vypadat přibližně takto:
-
-```output
-Namespace                  RegistrationState
--------------------------  -------------------
-Microsoft.ManagedServices  Registered
-```
+> [!NOTE]
+> V tuto chvíli není možné delegovat předplatná (nebo skupiny prostředků v rámci předplatného), pokud předplatné používá Azure Databricks. Podobně platí, že pokud už bylo delegované předplatné (nebo skupiny prostředků v rámci předplatného), v současné době není možné v tomto předplatném vytvořit pracovní prostory datacihly.
 
 ## <a name="next-steps"></a>Další kroky
 

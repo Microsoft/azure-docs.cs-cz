@@ -1,6 +1,6 @@
 ---
-title: Osvědčené postupy pro výběr ID časové řady v Azure Time Series Insights Preview | Microsoft Docs
-description: Porozumět osvědčeným postupům při výběru ID časové řady v Azure Time Series Insights Preview.
+title: Osvědčené postupy pro výběr ID časových řad – Azure Time Series Insights | Microsoft Docs
+description: Seznamte se s osvědčenými postupy při volbě ID časové řady v Azure Time Series Insights Preview.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,20 +10,20 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 48f1fb542f5e28c7b8130d03cd86442390a8ad56
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: cf826c47c61e3714a05dd81fe3eea4e6ee0b03f4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989944"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012501"
 ---
-# <a name="best-practices-for-choosing-a-time-series-id"></a>Osvědčené postupy pro výběr ID časové řady
+# <a name="best-practices-for-choosing-a-time-series-id"></a>Osvědčené postupy pro výběr ID řady času
 
 Tento článek shrnuje důležitost ID časových řad pro prostředí Azure Time Series Insights Preview a osvědčené postupy pro jejich výběr.
 
 ## <a name="choose-a-time-series-id"></a>Volba ID služby Time Series
 
-Výběr ID časové řady je například volba klíče oddílu pro databázi. Je potřeba ji vybrat při vytváření prostředí Time Series Insights Preview. Jedná se o *neměnitelnou* vlastnost. To znamená, že po vytvoření prostředí Time Series Insights ve verzi Preview s ID časové řady už ho pro toto prostředí nemůžete změnit. 
+Volba ID řady času je třeba zvolit klíč oddílu pro databázi. Je potřeba ji vybrat při vytváření prostředí Time Series Insights Preview. Jedná se o *neměnitelnou* vlastnost. To znamená, že po vytvoření prostředí Time Series Insights ve verzi Preview s ID časové řady už ho pro toto prostředí nemůžete změnit. 
 
 > [!IMPORTANT]
 > V ID časové řady se rozlišují malá a velká písmena.
@@ -31,7 +31,7 @@ Výběr ID časové řady je například volba klíče oddílu pro databázi. Je
 Výběr vhodného ID časové řady je kritický. Tady jsou některé z osvědčených postupů, které můžete sledovat:
 
 * Vyberte klíč oddílu s velkým počtem jedinečných hodnot (například stovky nebo tisíce). V mnoha případech to může být ID zařízení, ID senzoru nebo ID značky ve formátu JSON.
-* ID časové řady by mělo být jedinečné na úrovni uzlu na úrovni listu [modelu časové řady](./time-series-insights-update-tsm.md).
+* ID řady čas musí být jedinečný na úrovni uzel typu list vaše [modelu časové řady](./time-series-insights-update-tsm.md).
 * Pokud je zdrojem událostí centrum IoT, ID vaší časové řady bude pravděpodobně *iothub-ID zařízení-připojení*.
 * Omezení počtu znaků pro řetězec názvu vlastnosti časové řady je 128. Pro hodnotu vlastnosti ID časové řady je limit znaků 1 024.
 * Pokud hodnota jedinečné vlastnosti pro ID časové řady chybí, bude zpracována jako hodnota null a bude se jednat o stejné pravidlo omezení jedinečnosti.
@@ -51,7 +51,7 @@ Následující scénáře popisují výběr více než jedné vlastnosti klíče
 
 ### <a name="example-2-time-series-id-with-a-composite-key"></a>Příklad 2: ID časové řady se složeným klíčem
 
-* Vyžadujete, aby více vlastností bylo v rámci stejného loďstva prostředků jedinečné. 
+* Budete potřebovat více vlastností být jedinečný v rámci stejného počtu prostředků. 
 * Jste výrobcem inteligentních budov a nasadili snímače v každé místnosti. V každé místnosti jsou obvykle stejné hodnoty pro **sensorId**. Příklady jsou **sensor1**, **sensor2**a **sensor3**.
 * Vaše budova má překrývající se čísla podlah a místností napříč lokalitami ve vlastnosti **flrRm**. Tato čísla mají hodnoty jako **1a**, **2b**a **3a**.
 * Máte vlastnost, **umístění**, která obsahuje hodnoty, jako je například **Redmond**, **Barceloně**a **Tokio**. Chcete-li vytvořit jedinečnost, určete následující tři vlastnosti jako klíče ID časové řady: **sensorId**, **flrRm**a **Location**.

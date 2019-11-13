@@ -1,17 +1,14 @@
 ---
 title: Ochrana nových prostředků pomocí zámků podrobného plánu
 description: V tomto kurzu se naučíte používat možnosti zámků prostředků Azure modrotisky jen pro čtení a neodstraňujte je k ochraně nově nasazených prostředků.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/28/2019
 ms.topic: tutorial
-ms.service: blueprints
-ms.openlocfilehash: 2f66677df7cd1c6fbde9c0467b4d7f2094509ee8
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: e2adbb1e47222055753d4b3690646daa83b32bf1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297011"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960254"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Kurz: ochrana nových prostředků pomocí zámků prostředků Azure modrotisky
 
@@ -26,7 +23,7 @@ V tomto kurzu provedete tyto kroky:
 > - Kontrola nové skupiny prostředků
 > - Zrušení přiřazení podrobného plánu k odebrání zámků
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -156,8 +153,8 @@ Po publikování definice podrobného plánu ji můžete přiřadit k předplatn
 
      |Název artefaktu|Typ artefaktu|Název parametru|Hodnota|Popis|
      |-|-|-|-|-|
-     |Skupina prostředků RGtoLock|Skupina prostředků|Name (Název)|TestingBPLocks|Definuje název nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
-     |Skupina prostředků RGtoLock|Skupina prostředků|Umístění|Západ USA 2|Definuje umístění nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
+     |Skupina prostředků RGtoLock|Skupina prostředků|Název|TestingBPLocks|Definuje název nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
+     |Skupina prostředků RGtoLock|Skupina prostředků|Umístění|USA – západ 2|Definuje umístění nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
      |StorageAccount|Šablona Resource Manageru|storageAccountType (StorageAccount)|Standard_GRS|SKU úložiště. Výchozí hodnota je _Standard_LRS_.|
 
 1. Po zadání všech parametrů vyberte **přiřadit** v dolní části stránky.
@@ -190,7 +187,7 @@ Přiřazením se vytvoří skupina prostředků _TestingBPLocks_ a účet úlož
 
 1. Vyberte přiřazení odepřít a na levé straně vyberte stránku **Zamítnutá oprávnění** .
 
-   Přiřazení zamítnutí brání všem operacím s konfigurací **\*** a **akcí** , ale umožňuje přístup pro čtení vyloučením **\*/čtení** prostřednictvím **NotActions**.
+   Přiřazení zamítnutí brání všem operacím s konfigurací **\*** a **Akce** , ale umožňuje přístup pro čtení vyloučením **\*/Read** prostřednictvím **NotActions**.
 
 1. V Azure Portal s popisem cesty vyberte **TestingBPLocks-Access Control (IAM)** . Pak na levé straně vyberte stránku **Přehled** a pak klikněte na tlačítko **Odstranit skupinu prostředků** . Zadáním názvu **TestingBPLocks** potvrďte odstranění a potom v dolní části podokna vyberte **Odstranit** .
 

@@ -10,31 +10,24 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: aahi
-ms.openlocfilehash: 32728b5c1ede303cc4000ef8c10e4456e784df9b
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 81a2cb7ece775bfaffaf1b1932feb12b2da5f08f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882468"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012030"
 ---
 # <a name="featured-user-generated-content-for-the-anomaly-detector-api"></a>Doporučený uživatelem generovaný obsah pro rozhraní API detektoru anomálií
 
-V tomto článku zjistíte, jak si jiní zákazníci myslí o a používání rozhraní API detektoru anomálií. Následující prostředky vytvořila komunita uživatelů detektoru anomálií. Zahrnují technické Blogy, open source projekty a další příspěvky vytvořené uživateli společnosti Microsoft i třetích stran. Některé z následujících odkazů jsou hostovány na websites, které jsou externí pro společnost Microsoft a společnost Microsoft není zodpovědná za obsah. Při odkazování na tyto prostředky použijte volitelné rozhodnutí.
-
-## <a name="demos"></a>Ukázky
-
-* [Interaktivní ukázka s animací](https://aka.ms/adDemo)
-* [Ukázka poznámkového bloku Azure](https://aka.ms/adNotebook)
+V tomto článku zjistíte, jak si jiní zákazníci myslí o a používání rozhraní API detektoru anomálií. Následující prostředky vytvořila komunita uživatelů detektoru anomálií. Zahrnují open source projekty a další příspěvky vytvořené uživateli společnosti Microsoft i třetích stran. Některé z následujících odkazů jsou hostovány na websites, které jsou externí pro společnost Microsoft a společnost Microsoft není zodpovědná za obsah. Při odkazování na tyto prostředky použijte volitelné rozhodnutí.
 
 ## <a name="technical-blogs"></a>Technické Blogy
 
-* [Představujeme rozhraní API pro detekci anomálií Azure](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162)
-* [Probíhá pokus o službu pro rozpoznávání: Rozhraní API detektoru anomálií (v japonštině)](https://azure-recipe.kc-cloud.jp/2019/04/cognitive-service-anomaly-detector-api/)
+* [Pokus o službu pro rozpoznávání: rozhraní API detektoru anomálií (v japonštině)](https://azure-recipe.kc-cloud.jp/2019/04/cognitive-service-anomaly-detector-api/)
 
 ## <a name="open-source-projects"></a>Open-source projekty
 
-* [Oficiální ukázky kódu pro rozhraní API detektoru anomálií a sadu SDK](https://github.com/Azure-Samples/AnomalyDetector)
 * [Jupyter notebook, který demonstruje detekci anomálií a streamování Power BI](https://github.com/marvinbuss/MS-AnomalyFinder)
 
 Pokud chcete určit název prostředku, vyplňte [krátký tvar](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxSkyhztUNZCtaivu8nmhd1UMENTMEJWTkRORkRGQUtGQzlWQ1dSV1JLTS4u).
-Pokud AnomalyDetector@microsoft.com chcete, abychom mohli obsah odebrat, kontaktujte nebo vyvolejte problém na GitHubu.
+Pokud chcete odebrat obsah, kontaktujte AnomalyDetector@microsoft.com nebo vyvolejte problém na GitHubu.

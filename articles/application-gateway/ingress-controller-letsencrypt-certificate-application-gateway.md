@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 2e91a888d0dc98a4f94b956e15336d75291f733e
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 92e9747865f1a0910c8bae4001cc597ae9ea3da6
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795915"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73957974"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>Použití certifikátů s LetsEncrypt.org na Application Gateway pro clustery AKS
 
@@ -130,8 +130,12 @@ Použijte následující postup a nainstalujte si [Správce certifikátů](https
     Po několika sekundách můžete ke službě `guestbook` přistupovat přes Application Gateway adresu URL HTTPS pomocí automatického vystavení `Lets Encrypt`ho certifikátu pro **přípravu** .
     Prohlížeč vás může upozorňovat na neplatnou certifikační autoritu. Pracovní certifikát je vydaný pomocí `CN=Fake LE Intermediate X1`. Označuje, že systém fungoval podle očekávání a že jste připravení na produkční certifikát.
 
-4. Provozní certifikát: po úspěšném dokončení instalace se můžete přepnout na produkční server, který je k disfázi:
+4. Provozní certifikát
+
+    Po úspěšném dokončení instalace můžete přepnout na produkční server, který je k instalaci:
     1. Nahraďte pracovní anotaci prostředku příchozího přenosu pomocí: `certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
     1. Odstraňte stávající pracovní `ClusterIssuer`, které jste vytvořili v předchozím kroku, a vytvořte nový, a to tak, že nahradíte ACME Server z YAML ClusterIssuer výše pomocí `https://acme-v02.api.letsencrypt.org/directory`
 
-5. Vypršení platnosti certifikátu a obnovení před vypršením platnosti certifikátu `Lets Encrypt` `cert-manager` automaticky aktualizuje certifikát v úložišti tajného kódu Kubernetes. V tomto okamžiku Application Gateway řadič příchozího přenosu dat použije aktualizovaný tajný klíč odkazovaný v prostředcích příchozího přenosu dat, který používá ke konfiguraci Application Gateway.
+5. Vypršení platnosti a obnovení certifikátu
+
+    Před vypršením platnosti certifikátu `Lets Encrypt` `cert-manager` automaticky aktualizuje certifikát v úložišti tajného kódu Kubernetes. V tomto okamžiku Application Gateway řadič příchozího přenosu dat použije aktualizovaný tajný klíč odkazovaný v prostředcích příchozího přenosu dat, který používá ke konfiguraci Application Gateway.

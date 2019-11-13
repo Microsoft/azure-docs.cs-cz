@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: edd9ca4b00031351c5cfcc8e6971653df267268d
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 22e8e8a482888e8bfc72a1a5ed229799c25ef3dd
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516058"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008573"
 ---
+# <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy k diskům virtuálních počítačů Azure IaaS a spravovaným a nespravovaným prémiovým diskům
 [!INCLUDE [virtual-machines-faq-for-disks](../../../includes/virtual-machines-faq-for-disks.md)]

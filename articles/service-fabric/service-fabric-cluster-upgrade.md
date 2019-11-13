@@ -1,5 +1,5 @@
 ---
-title: Upgrade clusteru Azure Service Fabric | Microsoft Docs
+title: Upgrade clusteru Azure Service Fabric
 description: Přečtěte si informace o upgradu verze nebo konfigurace clusteru Azure Service Fabric.  Tento článek popisuje nastavení režimu aktualizace clusteru, upgrade certifikátů, přidání portů aplikace, provádění oprav operačního systému a to, co můžete očekávat při provádění upgradu.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: atsenthi
-ms.openlocfilehash: 2c8465a3aba4a21efaa20a118807d739dd501b09
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 161c720fbcc9370aaf273b241e88a7184f47371b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599779"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013309"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Upgrade a aktualizace clusteru Azure Service Fabric
 
@@ -36,7 +36,7 @@ Cluster můžete nastavit tak, aby přijímal automatické upgrady prostředků 
 ## <a name="fabric-upgrade-behavior-during-automatic-upgrades"></a>Chování upgradu prostředků infrastruktury během automatických upgradů
 Společnost Microsoft udržuje kód a konfiguraci prostředků infrastruktury, které běží v clusteru Azure. Automatické monitorované upgrady na software provádíme v závislosti na potřebách. Tyto upgrady můžou být kód, konfigurace nebo obojí. Abychom se ujistili, že vaše aplikace neutrpěla žádný dopad nebo minimální dopad vyplývající z těchto upgradů, provedeme upgrady v následujících fázích:
 
-### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>Fáze 1: Upgrade se provádí pomocí všech zásad stavu clusteru.
+### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>Fáze 1: upgrade se provádí pomocí všech zásad stavu clusteru.
 V průběhu této fáze budou upgrady dál používat jednu doménu upgradu a aplikace, které byly spuštěny v clusteru, budou i nadále běžet bez výpadků. Zásady stavu clusteru (kombinace stavu uzlu a stavu všech aplikací spuštěných v clusteru) jsou v průběhu upgradu dodrženy.
 
 Pokud nejsou splněny zásady stavu clusteru, upgrade se vrátí zpět. Pak se pošle e-mailem vlastníkovi předplatného. E-mail obsahuje následující informace:
@@ -49,7 +49,7 @@ Zkusíme provést stejný upgrade několikrát pro případ, že se z důvodů i
 
 Pokud jsou splněné zásady stavu clusteru, upgrade se považuje za úspěšný a označený jako úplný. K tomu může dojít během prvotního upgradu nebo při každém spuštění upgradu v této fázi. Neexistují žádné e-mailové potvrzení úspěšného spuštění. Neposíláte tím příliš mnoho e-mailů – příjem e-mailu by se měl zobrazit jako výjimka pro normální. Očekáváme, že většina upgradů clusteru bude úspěšná, aniž by to ovlivnilo dostupnost vaší aplikace.
 
-### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>Fáze 2: Upgrade se provádí jenom pomocí výchozích zásad stavu.
+### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>Fáze 2: upgrade se provádí jenom pomocí výchozích zásad stavu.
 Zásady stavu v této fázi se nastavují tak, aby počet aplikací, které byly na začátku upgradu v pořádku, zůstal po dobu trvání procesu upgradu stejný. Stejně jako ve fázi 1 budou upgrady fáze 2 pokračovat v jednom upgradu domény a aplikace spuštěné v clusteru budou i nadále běžet bez jakéhokoli výpadku. Zásady stavu clusteru (kombinace stavu uzlu a stavu všech aplikací spuštěných v clusteru) se řídí po dobu trvání upgradu.
 
 Pokud nejsou splněny zásady stavu clusteru, upgrade se vrátí zpět. Pak se pošle e-mailem vlastníkovi předplatného. E-mail obsahuje následující informace:
@@ -62,7 +62,7 @@ Zkusíme provést stejný upgrade několikrát pro případ, že se z důvodů i
 
 Pokud jsou splněné zásady stavu clusteru, upgrade se považuje za úspěšný a označený jako úplný. K tomu může dojít během prvotního upgradu nebo při každém spuštění upgradu v této fázi. Neexistují žádné e-mailové potvrzení úspěšného spuštění.
 
-### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>Fáze 3: Upgrade se provádí pomocí agresivních zásad stavu.
+### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>Fáze 3: upgrade se provádí pomocí agresivních zásad stavu.
 Tyto zásady stavu v této fázi jsou zaměřeny na dokončení upgradu, nikoli na stav aplikací. V této fázi skončí několik upgradů clusteru. Pokud se váš cluster dostane do této fáze, je velmi pravděpodobné, že se vaše aplikace stane v pořádku nebo ztratí dostupnost.
 
 Podobně jako v ostatních dvou fázích upgrady fáze 3 v jednom okamžiku překročí jednu upgradovací doménu.
@@ -102,8 +102,8 @@ V clusteru je možné přizpůsobit mnoho různých nastavení konfigurace, jako
 Aplikace orchestrace oprav (POA) je Service Fabric aplikace, která automatizuje opravy operačního systému v clusteru Service Fabric bez výpadků. [Aplikace orchestrace oprav pro Windows](service-fabric-patch-orchestration-application.md) se dá nasadit do clusteru a instalovat opravy do Orchestrace a zároveň přitom zachovat dostupné služby.
 
 
-## <a name="next-steps"></a>Další postup
-* Informace o tom, jak přizpůsobit některá [nastavení prostředků infrastruktury Service Fabric](service-fabric-cluster-fabric-settings.md) pro clustery
+## <a name="next-steps"></a>Další kroky
+* Informace o tom, jak přizpůsobit některá [nastavení prostředků infrastruktury Service Fabric pro clustery](service-fabric-cluster-fabric-settings.md)
 * Přečtěte si, jak [škálovat cluster na úrovni a ven](service-fabric-cluster-scale-up-down.md) .
 * Další informace o [upgradech aplikací](service-fabric-application-upgrade.md)
 

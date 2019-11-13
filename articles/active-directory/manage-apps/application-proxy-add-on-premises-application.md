@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72678a67b1bc9845eae2bca658f35a05c9bcf659
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f0399f084e663ab891d59384af263a7faac2f42e
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73883978"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73943819"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory
 
@@ -40,14 +40,14 @@ K přidání místní aplikace do služby Azure AD potřebujete:
 * Účet správce aplikace
 * Identity uživatelů se musí synchronizovat z místního adresáře nebo vytvářet přímo v klientech Azure AD. Synchronizace identity umožňuje službě Azure AD předem ověřit uživatele předtím, než jim udělí přístup k aplikacím publikovaným v proxy aplikaci, a bude mít potřebné informace o uživatelském identifikátoru k provedení jednotného přihlašování (SSO).
 
-### <a name="windows-server"></a>Windows Server
+### <a name="windows-server"></a>Windows server
 
 Pokud chcete použít proxy aplikace, potřebujete Windows Server se systémem Windows Server 2012 R2 nebo novějším. Nainstalujete konektor proxy aplikace na server. Tento server konektoru se musí připojit k aplikačním proxy službám v Azure a místním aplikacím, které plánujete publikovat.
 
 Pro zajištění vysoké dostupnosti v produkčním prostředí doporučujeme mít více než jeden Windows Server. Pro tento kurz stačí jeden Windows Server.
 
 > [!IMPORTANT]
-> Pokud instalujete konektor na Windows Server 2019, existuje omezení HTTP2. Chcete-li úspěšně použít konektor v této verzi, přidejte následující klíč registru a restartujte server:
+> Pokud instalujete konektor na Windows Server 2019, existuje omezení HTTP2. Alternativním řešením pro použití konektoru v této verzi je přidání následujícího klíče registru a restartování serveru. Poznámka: Jedná se o klíč v registru pro všechny počítače. 
     ```
     HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
     ```
@@ -64,7 +64,7 @@ Pro zajištění vysoké dostupnosti v produkčním prostředí doporučujeme m�
 
 Než nainstalujete konektor proxy aplikace, musí mít server Windows Connector povolený protokol TLS 1,2.
 
-Povolení TLS 1,2:
+Povolení protokolu TLS 1.2:
 
 1. Nastavte následující klíče registru:
     
@@ -99,11 +99,11 @@ Pokud brána firewall vynutila provoz na základě pocházejících uživatelů,
 
 Povolte přístup k následujícím adresám URL:
 
-| zprostředkovatele identity | Jak se používá |
+| Adresa URL | Jak se používá |
 | --- | --- |
-| \*. msappproxy.net<br>\*. servicebus.windows.net | Komunikace mezi konektorem a cloudovou službou proxy aplikací |
+| \*.msappproxy.net<br>\*.servicebus.windows.net | Komunikace mezi konektorem a cloudovou službou proxy aplikací |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure tyto adresy URL používá k ověření certifikátů. |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*. microsoftonline-p.com<br>\*. msauth.net<br>\*. msauthimages.net<br>\*. msecnd.net<br>\*. msftauth.net<br>\*. msftauthimages.net<br>\*. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | Konektor tyto adresy URL používá během procesu registrace. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*. microsoftonline.com<br>\*. microsoftonline-p.com<br>\*. msauth.net<br>\*. msauthimages.net<br>\*. msecnd.net<br>\*. msftauth.net<br>\*. msftauthimages.net<br>\*. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | Konektor tyto adresy URL používá během procesu registrace. |
 
 Připojením můžete \*. msappproxy.net a \*. servicebus.windows.net, pokud vám brána firewall nebo proxy umožní nakonfigurovat seznamy povolených serverů DNS. V takovém případě je potřeba zpřístupnit přístup k [rozsahům IP adres Azure a veřejným cloudům](https://www.microsoft.com/download/details.aspx?id=56519). Rozsahy IP adres se aktualizují každý týden.
 

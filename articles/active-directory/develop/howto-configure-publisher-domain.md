@@ -18,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26ef28be328e01f8edcf898f123db55f262f286c
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 3558e589004e0488e5b96b0e39bd3f5ceea69658
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803344"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013064"
 ---
-# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Postupy: Konfigurace domény vydavatele aplikace (Preview)
+# <a name="how-to-configure-an-applications-publisher-domain"></a>Postupy: Konfigurace domény vydavatele aplikace
 
 Doména vydavatele aplikace se zobrazí uživatelům na [výzvu k vyjádření souhlasu aplikace](application-consent-experience.md) a umožní uživatelům, aby věděli, kde jsou odesílány informace. Víceklientské aplikace registrované po 21. května 2019, které nemají doménu vydavatele zobrazeno jako **Neověřeno** Víceklientské aplikace jsou aplikace, které podporují účty mimo jeden adresář organizace. například podporují všechny účty Azure AD nebo podporují všechny účty Azure AD a osobní účty Microsoft.
 

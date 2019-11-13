@@ -1,5 +1,5 @@
 ---
-title: Jak přidat referenční datovou sadu do prostředí Azure Time Series Insights | Microsoft Docs
+title: Postup přidání referenční sady dat do prostředí – Azure Time Series Insights | Microsoft Docs
 description: Tento článek popisuje, jak přidat referenční datovou sadu pro rozšíření dat v prostředí Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3aca1f64d469ce228a4b2738c72c0b4bc1956051
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 31ae271a4ad6aa1370828640884a54eb2669804d
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991279"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012723"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Vytvoření referenční sady dat pro prostředí Time Series Insights pomocí Azure Portal
 
@@ -34,7 +34,7 @@ Referenční data se nepřipojí zpětně. Proto budou odpovídat jenom aktuáln
 
 ## <a name="add-a-reference-data-set"></a>Přidání referenční sady dat
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
 1. Vyhledejte existující Azure Time Series Insights prostředí. Vyberte **všechny prostředky** v nabídce na levé straně Azure Portal. Vyberte vaše prostředí Time Series Insights.
 
@@ -94,7 +94,7 @@ Referenční data se nepřipojí zpětně. Proto budou odpovídat jenom aktuáln
 
 1. Pokud chcete data nahrát, vyberte tlačítko **Odeslat řádky** .
 
-    [Nahrávání![](media/add-reference-data-set/upload-rows.png)](media/add-reference-data-set/upload-rows.png#lightbox)
+    [Nahrávání ![](media/add-reference-data-set/upload-rows.png)](media/add-reference-data-set/upload-rows.png#lightbox)
 
     Na stránce se potvrdí dokončení nahrávání a zobrazí se zpráva, že **datová sada se úspěšně nahrála**.
 

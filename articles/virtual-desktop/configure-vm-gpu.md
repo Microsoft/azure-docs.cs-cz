@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 1059dd463529f4c357038225f2f9ef11d0092802
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a0965dc4011b449e617f6dbaeafb68bfa796b620
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679590"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953954"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Konfigurace akcelerace GPU (Graphics Processing Unit) pro virtuální počítače s Windows
 
@@ -35,9 +35,6 @@ Virtuální počítač s Windows podporuje vykreslování a kódování GPU v n�
 
 Musíte taky nakonfigurovat skupinu aplikací nebo použít výchozí skupinu desktopových aplikací (nazvanou "skupina desktopových aplikací"), která se automaticky vytvoří při vytváření nového fondu hostitelů. Pokyny najdete v tématu [kurz: Správa skupin aplikací pro virtuální počítač s Windows](/azure/virtual-desktop/manage-app-groups).
 
->[!NOTE]
->Virtuální desktop Windows podporuje jenom typ skupiny aplikace Desktop pro fondy hostitelů s podporou GPU. Skupiny aplikací typu RemoteApp nejsou podporované pro fondy hostitelů s povoleným GPU.
-
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>Instalace podporovaných grafických ovladačů ve vašem virtuálním počítači
 
 Pokud chcete využívat možnosti GPU pro virtuální počítače řady Azure N-Series na virtuálním počítači s Windows, musíte nainstalovat ovladače grafiky NVIDIA. Podle pokynů v tématu [instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series s Windows](/azure/virtual-machines/windows/n-series-driver-setup) nainstalujte ovladače, a to buď ručně, nebo pomocí [rozšíření ovladače NVIDIA GPU](/azure/virtual-machines/extensions/hpccompute-gpu-windows).
@@ -52,7 +49,7 @@ Ve výchozím nastavení se aplikace a počítače běžící v konfiguracích s
 
 1. Připojte se k ploše virtuálního počítače pomocí účtu s oprávněními místního správce.
 2. Otevřete nabídku Start a zadáním příkazu gpedit. msc otevřete Editor Zásady skupiny.
-3. Procházení stromu do **Konfigurace počítače** >  @no__t**šablony pro správu** **součásti systému Windows** > **Vzdálená plocha** > **hostitel relace vzdálené plochy** > **Remote Prostředí relace**.
+3. Procházejte stromovou **konfigurací počítače** > **šablony pro správu** > **součásti systému Windows** > **vzdálené plochy** > **hostitel relace vzdálené plochy** > **prostředí vzdálené relace**.
 4. Vyberte zásady **použít pro všechny relace vzdálené plochy výchozí grafický adaptér hardwaru** a nastavte tuto zásadu na **povoleno** , aby se povolilo vykreslování GPU ve vzdálené relaci.
 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>Konfigurace kódování rámce akcelerovaného GPU

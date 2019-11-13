@@ -1,19 +1,19 @@
 ---
-title: Nastavení zotavení po havárii pro místní virtuální počítače Hyper-V (bez VMM) do Azure s Site Recovery | Microsoft Docs
+title: Nastavení zotavení po havárii technologie Hyper-V pomocí Azure Site Recovery
 description: Přečtěte si, jak nastavit zotavení po havárii místních virtuálních počítačů Hyper-V (bez VMM) do Azure pomocí Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/07/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 446c870ba60d7931fafb9f9b1c7e8fc017f60e4d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2270cd8ace347992f6a5a1166986b878404fc7fe
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933873"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954036"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Nastavení zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 

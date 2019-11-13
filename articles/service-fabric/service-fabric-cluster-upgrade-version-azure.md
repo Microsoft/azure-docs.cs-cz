@@ -1,5 +1,5 @@
 ---
-title: Upgrade clusteru Azure Service Fabric | Microsoft Docs
+title: Upgrade verze Azure Service Fabric v clusteru
 description: Upgradujte Service Fabric kód nebo konfiguraci, která spouští Cluster Service Fabric, včetně nastavení režimu aktualizace clusteru, upgradu certifikátů, přidávání portů aplikací, provádění oprav operačního systému a tak dále. Co můžete očekávat při provádění upgradů?
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: atsenthi
-ms.openlocfilehash: 03fd5f2950349f0dc76021d28845e383c0ba6a64
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 067bf654928240ffe9651d4acf1933a81e631146
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599810"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013344"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>Upgrade verze Service Fabric clusteru
 
@@ -119,8 +119,8 @@ Output:
                 }
 ```
 
-## <a name="next-steps"></a>Další postup
-* Informace o tom, jak přizpůsobit některá [nastavení prostředků infrastruktury Service Fabric](service-fabric-cluster-fabric-settings.md) pro clustery
+## <a name="next-steps"></a>Další kroky
+* Informace o tom, jak přizpůsobit některá [nastavení prostředků infrastruktury Service Fabric pro clustery](service-fabric-cluster-fabric-settings.md)
 * Přečtěte si, jak [škálovat cluster na úrovni a ven](service-fabric-cluster-scale-up-down.md) .
 * Další informace o [upgradech aplikací](service-fabric-application-upgrade.md)
 

@@ -3,17 +3,17 @@ title: Koncepty architektury v Azure IoT Central | Microsoft Docs
 description: Tento článek představuje klíčové koncepty týkající se architektury Azure IoT Central
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/15/2019
+ms.date: 11/12/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: cb2ca8fe227abd107daa60a0f7d31ba5dc4e7c1b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 66792d9d0a8b1cd72ef8f22481016a35f37a1597
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73895329"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013853"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Architektura Azure IoT Central (funkce ve verzi Preview)
 
@@ -33,6 +33,68 @@ Zařízení vyměňují data v aplikaci Azure IoT Central. Zařízení může:
 V Azure IoT Central se data, která zařízení můžou vyměňovat s vaší aplikací, zadává v šabloně zařízení. Další informace o šablonách zařízení najdete v tématu [Správa metadat](#metadata-management).
 
 Další informace o tom, jak se zařízení připojují k aplikaci Azure IoT Central, najdete v tématu [připojení zařízení](overview-iot-central-get-connected.md).
+
+## <a name="azure-iot-edge-devices"></a>Zařízení Azure IoT Edge
+
+I zařízení vytvořená pomocí [sad SDK služby Azure IoT](https://github.com/Azure/azure-iot-sdks)můžete také připojit [zařízení Azure IoT Edge](../../iot-edge/about-iot-edge.md) k aplikaci IoT Central. IoT Edge umožňuje spustit cloudovou logiku a vlastní logiku přímo na zařízeních IoT spravovaných pomocí IoT Central. Modul runtime IoT Edge umožňuje:
+
+- Instalace a aktualizace úloh na zařízení.
+- Udržujte na zařízení standardy zabezpečení IoT Edge.
+- Ujistěte se, že moduly IoT Edge jsou vždycky spuštěné.
+- Oznamte stav modulu v cloudu pro vzdálené monitorování.
+- Spravujte komunikaci mezi moduly pro příjem a IoT Edge zařízení, mezi moduly v zařízení IoT Edge a mezi IoT Edgem zařízením a cloudem.
+
+![IoT Central Azure s Azure IoT Edge](./media/concepts-architecture/iotedge.png)
+
+IoT Central povoluje pro IoT Edge zařízení následující funkce:
+
+- Šablony zařízení, které popisují možnosti IoT Edgeho zařízení, například:
+  - Možnost nahrávání manifestu nasazení, která pomáhá spravovat manifest pro loďstva zařízení.
+  - Moduly, které se spouštějí na zařízení IoT Edge.
+  - Telemetrii každý modul odesílá.
+  - Vlastnosti každého modulu hlásí.
+  - Příkazy, na které každý modul reaguje.
+  - Vztahy mezi modelem schopností zařízení IoT Edge brány a modelem schopností pro příjem dat z libovolného zařízení.
+  - Vlastnosti cloudu, které nejsou uložené na zařízení IoT Edge.
+  - Vlastní nastavení, řídicí panely a formuláře, které jsou součástí vaší aplikace IoT Central.
+
+  Další informace najdete v tématu [vytvoření IoT Edgeho kurzu pro šablonu zařízení](./tutorial-define-edge-device-type.md) .
+
+- Možnost zřídit ve velkém měřítku IoT Edge zařízení pomocí služby Azure IoT Device Provisioning
+- Pravidla a akce.
+- Vlastní řídicí panely a analýzy.
+- Průběžný export dat telemetrie ze zařízení IoT Edge.
+
+### <a name="iot-edge-device-types"></a>IoT Edge typy zařízení
+
+IoT Central klasifikuje IoT Edge typy zařízení následujícím způsobem:
+
+- Zařízení typu list. Zařízení IoT Edge může mít zařízení pro příjem dat, ale tato zařízení nejsou zřízená v IoT Central.
+- Zařízení brány se zařízeními pro příjem dat. Zařízení brány i zařízení pro příjem dat jsou zřízena v IoT Central
+
+![IoT Central s přehledem IoT Edge](./media/concepts-architecture/gatewayedge.png)
+
+### <a name="iot-edge-patterns"></a>Vzory IoT Edge
+
+IoT Central podporuje následující vzory IoT Edge zařízení:
+
+#### <a name="iot-edge-as-leaf-device"></a>IoT Edge jako zařízení na list
+
+![IoT Edge jako zařízení na list](./media/concepts-architecture/edgeasleafdevice.png)
+
+Zařízení IoT Edge se zřídí v IoT Central a všechna zařízení s příchozím výstupem a jejich telemetrie se reprezentují jako přicházející ze zařízení IoT Edge. Podřízená zařízení připojená k IoT Edge zařízení nejsou zřízená v IoT Central.
+
+#### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity"></a>Zařízení IoT Edge brány připojené k zařízením pro příjem dat s identitou
+
+![IoT Edge s identitou pro osobní zařízení](./media/concepts-architecture/edgewithdownstreamdeviceidentity.png)
+
+Zařízení IoT Edge se zřizuje v IoT Central společně se zařízeními pro příjem dat, která jsou připojená ke IoT Edge zařízení. Podpora modulu runtime pro zřizování podřízených zařízení přes bránu není momentálně podporovaná.
+
+#### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity-provided-by-the-iot-edge-gateway"></a>Zařízení IoT Edge brány připojené k zařízením pro příjem dat pomocí identity poskytované IoT Edge bránou
+
+![IoT Edge se zařízením pro příjem dat bez identity](./media/concepts-architecture/edgewithoutdownstreamdeviceidentity.png)
+
+Zařízení IoT Edge se zřizuje v IoT Central společně se zařízeními pro příjem dat, která jsou připojená ke IoT Edge zařízení. Běhová podpora brány, která poskytuje identitu pro podřízená zařízení a zřizování zařízení pro příjem dat, se v tuto chvíli nepodporuje. Pokud přenesete vlastní modul překladu identity, IoT Central může tento model podporovat.
 
 ## <a name="cloud-gateway"></a>Cloudová brána
 
@@ -57,7 +119,7 @@ Azure IoT Central ukládá data aplikací v cloudu. Uložená data aplikací zah
 
 Azure IoT Central využívá úložiště časových řad k měření dat odesílaných z vašich zařízení. Data časové řady ze zařízení, která služba Analytics používá.
 
-## <a name="analytics"></a>Analýza
+## <a name="analytics"></a>Analýzy
 
 Služba analýzy zodpovídá za generování vlastních dat sestav, která aplikace zobrazuje. Operátor může [přizpůsobit analýzy](howto-create-analytics.md) zobrazené v aplikaci. Analytická služba je postavená na [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/) a zpracovává data měření odesílaná z vašich zařízení.
 

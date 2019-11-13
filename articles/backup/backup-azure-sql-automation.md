@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 229d960f7851b5fab8504b6c2a109bece6c7b31f
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 34a8b27442fc3f755cbe33f61857aa13d3be700b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969096"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012820"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Zálohování a obnovení databází SQL ve virtuálních počítačích Azure pomocí PowerShellu
 
@@ -24,6 +24,7 @@ Tento článek popisuje, jak použít Azure PowerShell k zálohování a obnoven
 Tento kurz vysvětluje následující postupy:
 
 > [!div class="checklist"]
+>
 > * Nastavte PowerShell a zaregistrujte poskytovatele služby Azure Recovery Services.
 > * Vytvořte trezor služby Recovery Services.
 > * Konfigurace zálohování databáze SQL na virtuálním počítači Azure.
@@ -43,7 +44,7 @@ Hierarchie objektů je shrnuta v následujícím diagramu.
 
 ![Recovery Services hierarchie objektů](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-Přečtěte si referenční informace k [rutině](/powershell/module/az.recoveryservices) **AZ. RecoveryServices** v knihovně Azure.
+Přečtěte si referenční informace k rutině **AZ. RecoveryServices** [cmdlet reference](/powershell/module/az.recoveryservices) v knihovně Azure.
 
 ### <a name="set-up-and-install"></a>Nastavení a instalace
 
@@ -270,10 +271,10 @@ Po uvedení záměru AutoProtection se dotaz do počítače pro načtení nově 
 
 Azure Backup může obnovit databáze SQL Server, které běží na virtuálních počítačích Azure, takto:
 
-1. Obnovení na konkrétní datum nebo čas (do druhé) pomocí záloh protokolu transakcí. Azure Backup automaticky určí odpovídající úplné rozdílové zálohování a řetěz záloh protokolů, které jsou nutné k obnovení na základě vybraného času.
-2. Obnovení konkrétního úplného nebo rozdílového zálohování pro obnovení do konkrétního bodu obnovení.
+* Obnovení na konkrétní datum nebo čas (do druhé) pomocí záloh protokolu transakcí. Azure Backup automaticky určí odpovídající úplné rozdílové zálohování a řetěz záloh protokolů, které jsou nutné k obnovení na základě vybraného času.
+* Obnovení konkrétního úplného nebo rozdílového zálohování pro obnovení do konkrétního bodu obnovení.
 
-Před obnovením SQL databáze [Ověřte zmíněné](restore-sql-database-azure-vm.md#prerequisites) požadavky.
+Před obnovením SQL [](restore-sql-database-azure-vm.md#prerequisites) databáze se podívejte na zmíněné požadavky.
 
 Nejdřív načtěte relevantní zálohovanou databázi SQL pomocí rutiny [Get-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS.
 
@@ -335,9 +336,9 @@ Výše uvedený výstup znamená, že uživatel může obnovit nějaký časový
 
 V případě obnovení databáze SQL se podporují následující scénáře obnovení.
 
-1. Přepsání zálohované databáze SQL pomocí dat z jiného bodu obnovení – OriginalWorkloadRestore
-2. Obnova databáze SQL DB jako nové databáze ve stejné instanci SQL – AlternateWorkloadRestore
-3. Obnovení databáze SQL Database jako nové databáze v jiné instanci SQL v jiném virtuálním počítači SQL – AlternateWorkloadRestore
+* Přepsání zálohované databáze SQL pomocí dat z jiného bodu obnovení – OriginalWorkloadRestore
+* Obnova databáze SQL DB jako nové databáze ve stejné instanci SQL – AlternateWorkloadRestore
+* Obnovení databáze SQL Database jako nové databáze v jiné instanci SQL v jiném virtuálním počítači SQL – AlternateWorkloadRestore
 
 Po načtení relevantního bodu obnovení (DISTINCT nebo log-in-time) pomocí rutiny [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) PS načtěte objekt konfigurace obnovení podle požadovaného plánu obnovení.
 
@@ -560,12 +561,12 @@ V případě skupin dostupnosti Always On SQL nezapomeňte [zaregistrovat všech
 
 Předpokládejme například, že SQL AG má dva uzly: SQL-Server-0 a SQL-Server-1 a 1 SQL AG DB. Jakmile jsou oba tyto uzly registrovány, zobrazí uživatel [seznam chráněných položek](#fetching-sql-dbs)pomocí následujících součástí
 
-1. Typ položky, která je chráněna objektem SQL AG jako SQLAvailabilityGroup
-2. Typ položky, která je chráněná databází SQL AG DB jako SQLDatabase
-3. SQL-Server-0 – chráněná typ položky jako SQLInstance
-4. SQL-Server-1-chráněná typ položky jako SQLInstance
-5. Všechny výchozí SQL databáze (Master, model, msdb) v rámci SQL-Server-0-Protected typu položky jako SQLDatabase
-6. Všechny výchozí SQL databáze (Master, model, msdb) v části SQL-Server-Protected typ položky jako SQLDatabase
+* Typ položky, která je chráněna objektem SQL AG jako SQLAvailabilityGroup
+* Typ položky, která je chráněná databází SQL AG DB jako SQLDatabase
+* SQL-Server-0 – chráněná typ položky jako SQLInstance
+* SQL-Server-1-chráněná typ položky jako SQLInstance
+* Všechny výchozí SQL databáze (Master, model, msdb) v rámci SQL-Server-0-Protected typu položky jako SQLDatabase
+* Všechny výchozí SQL databáze (Master, model, msdb) v části SQL-Server-Protected typ položky jako SQLDatabase
 
 SQL-Server-0, SQL Server-1 bude při [výpisu zálohovacích kontejnerů](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0)v seznamu obsahovat také "AzureVMAppContainer".
 

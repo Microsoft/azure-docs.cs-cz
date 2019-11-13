@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: mayg
-ms.openlocfilehash: 611213f6cf0f51a8b6c6f7f89a795b2daa94a38a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 044e5c5df8e0af67e4717b864de1e31fc2520408
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693208"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953280"
 ---
-# <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Spuštění Plánovač nasazení služby Azure Site Recovery pro zotavení po havárii VMware do Azure
+# <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>Spuštění Plánovač nasazení pro zotavení po havárii VMware
 Tento článek představuje uživatelskou příručku k nástroji Azure Site Recovery Deployment Planner pro produkční nasazení VMware do Azure.
 
 
@@ -80,7 +80,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Port|(Volitelné) Číslo portu pro připojení k hostiteli vCenter/ESXi. Výchozí port je 443.|
 |-Protocol| (Volitelné) Určuje protokol (http nebo https) pro připojení k serveru vCenter. Výchozím protokolem je https.|
 | -StorageAccountName | (Volitelné) Název účtu úložiště, který se použije k zjištění dosažitelné propustnost pro replikaci místních dat do Azure. Nástroj vypočítává propustnost tak, že do tohoto účtu úložiště nahrává testovací data. Účet úložiště musí být typu Univerzální v1 (GPv1). |
-| -StorageAccountKey | (Volitelné) Klíč účtu úložiště, který se použije pro přístup k účtu úložiště. Přejděte na web Azure Portal > Účty úložiště > <*název účtu služby Storage*> > Nastavení > Přístupové klíče > Klíč1. |
+| -StorageAccountKey | (Volitelné) Klíč účtu úložiště, který se použije pro přístup k účtu úložiště. Přejděte na Azure Portal > Účty úložiště > <*název účtu služby Storage*> > Nastavení > Přístupové klíče > Klíč1. |
 | -Environment | (Volitelné) Toto je vaše cílové prostředí účtu Azure Storage. Může to být jedna ze tří hodnot – AzureCloud, AzureUSGovernment a AzureChinaCloud. Výchozí hodnota je AzureCloud. Tento parametr použijte, pokud vaše cílová oblast Azure je buď Azure USA (státní správa), nebo Azure Čína 21Vianet. |
 
 
@@ -206,7 +206,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Serve
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware -Server vCenter1.contoso.com -Directory “E:\vCenter1_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -DesiredRPO 5
 ```
 
-#### <a name="example-7-generate-a-report-for-south-india-azure-region-with-indian-rupee-and-specific-offer-id"></a>Příklad 7: Vygenerování sestavy pro oblast Azure Indie – jih s indickými rupiemi a konkrétním ID nabídky
+#### <a name="example-7-generate-a-report-for-south-india-azure-region-with-indian-rupee-and-specific-offer-id"></a>Příklad 7: Generování sestavy pro oblast Azure Indie – jih s indickými rupiemi a konkrétním ID nabídky
 
 Všimněte si, že ID předplatného se vyžaduje k vygenerování sestavy nákladů v konkrétní měně.
 ```

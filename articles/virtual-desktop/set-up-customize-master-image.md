@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 7a0cce6b72240b95943fbece08cfbf61eaee3524
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 30895af3e973fd5c9ae0de559df440f18cec1563
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891706"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013148"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobení hlavní image VHD
 
@@ -101,28 +101,6 @@ Spusťte tento příkaz a určete tak počáteční rozložení počítačů s W
 
 ```batch
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
-```
-
-### <a name="configure-session-timeout-policies"></a>Konfigurace zásad časového limitu relace
-
-Zásady vzdálené relace je možné vyhovět na úrovni Zásady skupiny, protože všechny virtuální počítače ve fondu hostitelů jsou součástí stejné skupiny zabezpečení.
-
-Konfigurace zásad vzdálené relace:
-
-1. Přejděte na **Šablony pro správu** > **součásti systému Windows** > **služba Vzdálená plocha** > **hostitel relace vzdálené plochy** > **časový limit relace**.
-2. Na panelu na pravé straně vyberte **nastavení časového limitu pro aktivní, ale nečinné zásady relací vzdálené plochy služby Vzdálená plocha** .
-3. Po zobrazení modálního okna změňte možnost zásady z **není nakonfigurovaná** na **povoleno** , aby se zásady aktivovaly.
-4. V rozevírací nabídce pod možností zásady nastavte hodnotu doba na **3 hodiny**.
-
-Zásady vzdálené relace můžete nakonfigurovat také ručně spuštěním následujících příkazů:
-
-```batch
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fResetBroken /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxConnectionTime /t REG_DWORD /d 10800000 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxDisconnectionTime /t REG_DWORD /d 5000 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxIdleTime /t REG_DWORD /d 10800000 /f
 ```
 
 ### <a name="set-up-time-zone-redirection"></a>Nastavení přesměrování časového pásma

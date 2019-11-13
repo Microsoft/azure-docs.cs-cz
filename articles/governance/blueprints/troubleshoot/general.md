@@ -1,17 +1,14 @@
 ---
 title: Odstraňování běžných chyb
 description: Přečtěte si, jak řešit problémy při vytváření, přiřazování a odebírání modrotisky.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 12/11/2018
 ms.topic: troubleshooting
-ms.service: blueprints
-ms.openlocfilehash: b99e94bfdcbf12e82a094f14995b6b93aa3354ed
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: b6f1d6c40f7268e90f09457e680a3ef33996c341
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978229"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960292"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Řešení chyb pomocí Azure modrotisky
 
@@ -46,7 +43,7 @@ Zásada může být v konfliktu s nasazením z několika důvodů:
 - Vytvářený prostředek je omezený zásadami (obvykle se jedná o omezení umístění SKU nebo místa).
 - Nasazení je nastavené pole, která jsou nakonfigurovaná pomocí zásad (společné pomocí značek).
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
 Změňte podrobný plán tak, aby nedošlo ke konfliktu se zásadami v podrobnostech o chybě. Pokud tuto změnu nemůžete udělat, je alternativním parametrem, že se změní rozsah přiřazení zásady, takže podrobný plán už není v konfliktu se zásadami.
 
@@ -60,7 +57,7 @@ Parametry podrobného plánu, které jsou funkce, jsou zpracovány před předá
 
 Předáním parametru podrobného plánu, který používá funkci, jako je například `[resourceGroup().tags.myTag]`, do výsledku artefaktu dojde ke zpracování výsledku funkce, která je nastavena na artefaktu namísto dynamické funkce.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
 Chcete-li funkci předat jako parametr, zařídí celý řetězec `[` tak, aby parametr podrobného plánu vypadal jako `[[resourceGroup().tags.myTag]`. Řídicí znak způsobí, že při zpracování podrobného plánu bude v sestavách zpracována hodnota jako řetězec. Modrotisky pak umístí funkci na artefakt, což umožňuje, aby byl dynamický, jak bylo očekáváno. Další informace najdete v tématu [syntaxe a výrazy v šablonách Azure Resource Manager](../../../azure-resource-manager/template-expressions.md).
 

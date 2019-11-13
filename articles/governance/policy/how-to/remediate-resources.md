@@ -1,35 +1,32 @@
 ---
 title: Oprava prostředků, které nevyhovují předpisům
 description: Tato příručka vás provede opravou prostředků, které nedodržují zásady v Azure Policy.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/09/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 219a3c56f9e4e4c9e132fa759b017fac63ade766
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 53ca21e4b8a1f3e7973706acd10601593efc3448
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977993"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959508"
 ---
-# <a name="remediate-non-compliant-resources-with-azure-policy"></a>Napravit nekompatibilní prostředky pomocí Azure Policy
+# <a name="remediate-non-compliant-resources-with-azure-policy"></a>Opravit nekompatibilní prostředky službou Azure Policy
 
 Prostředky, které nejsou kompatibilní se zásadami **deployIfNotExists** nebo **Modify** , je možné do stavu, který je v souladu s **nápravou**, předávat do odpovídajícího stavu. Nápravu je možné provést tak, že na základě pokynů Azure Policy spustíte efekt **deployIfNotExists** nebo **operace** značky přiřazené zásady u stávajících prostředků. Tento článek popisuje kroky potřebné k pochopení a provedení nápravy Azure Policy.
 
-## <a name="how-remediation-security-works"></a>Jak funguje Oprava zabezpečení
+## <a name="how-remediation-security-works"></a>Jak funguje opravy zabezpečení
 
 Když Azure Policy spustí šablonu v definici zásady **deployIfNotExists** , použije [spravovanou identitu](../../../active-directory/managed-identities-azure-resources/overview.md).
-Azure Policy vytvoří spravovanou identitu pro každé přiřazení, ale musí obsahovat podrobnosti o rolích, které mají udělit spravovanou identitu. Pokud ve spravované identitě chybí role, zobrazí se tato chyba při přiřazování zásady nebo k iniciativě. Při použití portálu Azure Policy po spuštění přiřazení automaticky udělit spravované identitě uvedené role.
+Azure Policy vytvoří spravovanou identitu pro každé přiřazení, ale musí obsahovat podrobnosti o rolích, které mají udělit spravovanou identitu. Pokud spravovaná identita chybí role, zobrazí se tato chyba během přiřazení zásady nebo iniciativa. Při použití portálu Azure Policy po spuštění přiřazení automaticky udělit spravované identitě uvedené role.
 
-![Spravovaná identita – chybějící role](../media/remediate-resources/missing-role.png)
+![Spravovaná identita - chybějící role](../media/remediate-resources/missing-role.png)
 
 > [!IMPORTANT]
-> Pokud se prostředek upravený pomocí **deployIfNotExists** nebo **Upravit** nachází mimo rozsah přiřazení zásady nebo šablona přistupuje k vlastnostem na prostředcích mimo obor přiřazení zásady, spravovaná identita přiřazení musí být [. Ruční udělení přístupu](#manually-configure-the-managed-identity) nebo nasazení opravy se nezdaří.
+> Pokud se prostředek upravený pomocí **deployIfNotExists** nebo **Upravit** nachází mimo rozsah přiřazení zásady nebo šablona přistupuje k vlastnostem na prostředcích mimo obor přiřazení zásady, musí se spravované identitě přiřazení [ručně udělit přístup](#manually-configure-the-managed-identity) , jinak se nasazení opravy nezdaří.
 
-## <a name="configure-policy-definition"></a>Konfigurace definice zásad
+## <a name="configure-policy-definition"></a>Nakonfigurovat definici zásad
 
-Prvním krokem je definování rolí, které **deployIfNotExists** a **mění** v definici zásady, aby se úspěšně nasadil obsah šablony, která je k dispozici. Ve vlastnosti **Details** přidejte vlastnost **roleDefinitionIds** . Tato vlastnost je pole řetězců, které se shodují s rolemi ve vašem prostředí. Úplný příklad najdete v [příkladech deployIfNotExists](../concepts/effects.md#deployifnotexists-example) nebo v příkladech pro [Úpravy](../concepts/effects.md#modify-examples).
+Prvním krokem je definování rolí, které **deployIfNotExists** a **mění** v definici zásady, aby se úspěšně nasadil obsah šablony, která je k dispozici. V části **podrobnosti** vlastnost, přidejte **roleDefinitionIds** vlastnost. Tato vlastnost je pole řetězců, které odpovídají role ve vašem prostředí. Úplný příklad najdete v [příkladech deployIfNotExists](../concepts/effects.md#deployifnotexists-example) nebo v příkladech pro [Úpravy](../concepts/effects.md#modify-examples).
 
 ```json
 "details": {
@@ -41,26 +38,26 @@ Prvním krokem je definování rolí, které **deployIfNotExists** a **mění** 
 }
 ```
 
-Vlastnost **roleDefinitionIds** používá úplný identifikátor prostředku a nebere v úvahu krátký **roleName** role. K získání ID pro roli Přispěvatel ve vašem prostředí použijte následující kód:
+Vlastnost **roleDefinitionIds** používá úplný identifikátor prostředku a nebere v úvahu krátký **roleName** role. Chcete-li získat ID pro roli "Přispěvatel" ve vašem prostředí, použijte následující kód:
 
 ```azurecli-interactive
 az role definition list --name 'Contributor'
 ```
 
-## <a name="manually-configure-the-managed-identity"></a>Ruční konfigurace spravované identity
+## <a name="manually-configure-the-managed-identity"></a>Ručně nakonfigurovat spravované identity
 
-Při vytváření přiřazení pomocí portálu Azure Policy generuje spravovanou identitu a udělí jí role definované v **roleDefinitionIds**. V následujících podmínkách je nutné provést kroky pro vytvoření spravované identity a přiřazení oprávnění k tomuto účelu ručně:
+Při vytváření přiřazení pomocí portálu Azure Policy generuje spravovanou identitu a udělí jí role definované v **roleDefinitionIds**. Za těchto podmínek je třeba provést postup pro vytvoření spravované identity a přiřadit oprávnění ručně:
 
-- Při použití sady SDK (například Azure PowerShell)
-- Když šablona upraví prostředek mimo obor přiřazení
-- Když šablona čte prostředek mimo obor přiřazení
+- Při používání sady SDK (jako je Azure PowerShell)
+- Když se upraví prostředek mimo rozsah přiřazení pomocí šablony
+- Pokud je prostředek mimo rozsah přiřazení čteného šablonou
 
 > [!NOTE]
-> Azure PowerShell a .NET jsou jediné sady SDK, které tuto funkci aktuálně podporují.
+> Azure PowerShell a rozhraní .NET jsou pouze sady SDK, které aktuálně podporují tuto funkci.
 
-### <a name="create-managed-identity-with-powershell"></a>Vytvoření spravované identity pomocí PowerShellu
+### <a name="create-managed-identity-with-powershell"></a>Vytvořte spravovanou identitu pomocí Powershellu
 
-Aby bylo možné vytvořit spravovanou identitu během přiřazování zásady, **umístění** musí být definováno a **AssignIdentity** použito. Následující příklad získá definici předdefinované zásady **nasadit transparentní šifrování dat SQL DB**, nastaví cílovou skupinu prostředků a pak vytvoří přiřazení.
+Chcete-li vytvořit spravovanou identitu při přiřazování zásady, **umístění** musí být definován a **AssignIdentity** použít. Následující příklad získá definic předdefinovaných zásad **nasadit SQL DB transparentní šifrování dat**, nastaví cílová skupina prostředků a pak vytvoří přiřazení.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -75,11 +72,11 @@ $resourceGroup = Get-AzResourceGroup -Name 'MyResourceGroup'
 $assignment = New-AzPolicyAssignment -Name 'sqlDbTDE' -DisplayName 'Deploy SQL DB transparent data encryption' -Scope $resourceGroup.ResourceId -PolicyDefinition $policyDef -Location 'westus' -AssignIdentity
 ```
 
-Proměnná `$assignment` nyní obsahuje ID objektu zabezpečení spravované identity společně se standardními hodnotami vrácenými při vytváření přiřazení zásady. Dá se k němu přistupovat prostřednictvím `$assignment.Identity.PrincipalId`.
+`$assignment` Proměnná nyní obsahuje ID objektu zabezpečení spravovanou identitu spolu se standardní hodnoty vrácená při vytváření přiřazení zásad. Je přístupný prostřednictvím `$assignment.Identity.PrincipalId`.
 
-### <a name="grant-defined-roles-with-powershell"></a>Udělení definovaných rolí pomocí PowerShellu
+### <a name="grant-defined-roles-with-powershell"></a>Udělení definované role pomocí prostředí PowerShell
 
-Nová spravovaná identita musí dokončit replikaci prostřednictvím Azure Active Directory před tím, než bude možné udělit potřebné role. Po dokončení replikace následující příklad provede iteraci definice zásady v `$policyDef` pro **roleDefinitionIds** a pomocí [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) udělí nové spravované identitě role.
+Nové spravovanou identitu, musíte dokončit replikace prostřednictvím Azure Active Directory lze udělit potřebná role. Po dokončení replikace následující příklad provede iteraci definice zásady v `$policyDef` pro **roleDefinitionIds** a pomocí [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) udělí nové spravované identitě role.
 
 ```azurepowershell-interactive
 # Use the $policyDef to get to the roleDefinitionIds array
@@ -94,73 +91,73 @@ if ($roleDefinitionIds.Count -gt 0)
 }
 ```
 
-### <a name="grant-defined-roles-through-portal"></a>Udělení definovaných rolí prostřednictvím portálu
+### <a name="grant-defined-roles-through-portal"></a>Udělení definované role prostřednictvím portálu
 
-Existují dva způsoby, jak udělit spravované identitě přiřazení definované role pomocí portálu, pomocí **řízení přístupu (IAM)** nebo úpravou přiřazení zásad nebo iniciativ a kliknutím na **Uložit**.
+Existují dva způsoby, jak udělit definované role pomocí portálu, pomocí spravované identity přiřazení **řízení přístupu (IAM)** nebo úpravou přiřazení zásady nebo iniciativa a kliknutím na **Uložit**.
 
-Chcete-li přidat roli ke spravované identitě přiřazení, postupujte podle následujících kroků:
+Přidání role pro toto přiřazení spravovanou identitu, postupujte podle těchto kroků:
 
 1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
 
 1. Na levé straně stránky služby Azure Policy vyberte **Přiřazení**.
 
-1. Vyhledejte přiřazení, které má spravovanou identitu, a klikněte na název.
+1. Vyhledejte přiřazení, která má spravovanou identitu a klikněte na název.
 
-1. Na stránce pro úpravy vyhledejte vlastnost **ID přiřazení** . ID přiřazení bude vypadat nějak takto:
+1. Najít **ID přiřazení** vlastnost na stránky pro úpravu. ID přiřazení bude vypadat:
 
    ```output
    /subscriptions/{subscriptionId}/resourceGroups/PolicyTarget/providers/Microsoft.Authorization/policyAssignments/2802056bfc094dfb95d4d7a5
    ```
 
-   Název spravované identity je poslední částí ID prostředku přiřazení, která je v tomto příkladu `2802056bfc094dfb95d4d7a5`. Zkopírujte tuto část ID prostředku přiřazení.
+   Název spravované identity je poslední část přiřazení ID prostředku, který je `2802056bfc094dfb95d4d7a5` v tomto příkladu. Zkopírujte tuto část ID přiřazení prostředku.
 
-1. Přejděte do prostředku nebo do nadřazeného kontejneru prostředky (skupina prostředků, předplatné, skupina pro správu), která potřebuje ruční přidání definice role.
+1. Přejděte na prostředek nebo prostředky nadřazeného kontejneru (skupinu prostředků, předplatné, skupina pro správu), který se musí ručně přidat definice role.
 
-1. Klikněte na odkaz **řízení přístupu (IAM)** na stránce prostředky a v horní části stránky řízení přístupu klikněte na **+ Přidat přiřazení role** .
+1. Klikněte na tlačítko **řízení přístupu (IAM)** odkaz na stránce prostředků a klikněte na tlačítko **+ přidat přiřazení role** v horní části stránku řízení přístupu.
 
-1. Vyberte odpovídající roli, která odpovídá **roleDefinitionIds** z definice zásady.
-   Ponechte možnost **přiřadit přístup k** nastavení na výchozí hodnotu uživatel, skupina nebo aplikace služby Azure AD. Do pole **Vybrat** vložte nebo zadejte část ID prostředku přiřazení, která se nachází dříve. Po dokončení hledání klikněte na objekt se stejným názvem a vyberte položku ID a klikněte na **Uložit**.
+1. Vyberte vhodnou roli, která odpovídá **roleDefinitionIds** z definice zásady.
+   Ponechte **přiřadit přístup k** nastavenou na výchozí hodnotu "Azure AD uživatele, skupiny nebo aplikace". V **vyberte** pole, vložte nebo napište část ID prostředku přiřazení dříve nachází. Po dokončení hledání, klikněte na objekt se stejným názvem vyberte ID a klikněte na **Uložit**.
 
-## <a name="create-a-remediation-task"></a>Vytvoření úlohy nápravy
+## <a name="create-a-remediation-task"></a>Vytvořte úlohu nápravy
 
 ### <a name="create-a-remediation-task-through-portal"></a>Vytvoření úlohy nápravy prostřednictvím portálu
 
-Během hodnocení určuje přiřazení zásad s **deployIfNotExists** nebo **úpravou** efektů, jestli existují nekompatibilní prostředky. Pokud jsou nalezeny nekompatibilní prostředky, podrobnosti jsou k dispozici na stránce **nápravy** . Společně se seznamem zásad, které mají nekompatibilní prostředky, je možnost aktivovat **úlohu nápravy**. Tato možnost vytvoří nasazení ze šablony **deployIfNotExists** nebo operace **Úpravy** .
+Během hodnocení určuje přiřazení zásad s **deployIfNotExists** nebo **úpravou** efektů, jestli existují nekompatibilní prostředky. Po nalezení nekompatibilní prostředky jsou podrobné informace jsou k dispozici na **nápravy** stránky. Společně se seznamem zásad, které mají nekompatibilní prostředky je možnosti k aktivaci **úloha opravy**. Tato možnost vytvoří nasazení ze šablony **deployIfNotExists** nebo operace **Úpravy** .
 
-Chcete-li vytvořit **úlohu nápravy**, postupujte podle následujících kroků:
+Chcete-li vytvořit **úloha opravy**, postupujte podle těchto kroků:
 
 1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
 
    ![Vyhledat zásady ve všech službách](../media/remediate-resources/search-policy.png)
 
-1. Na levé straně stránky Azure Policy vyberte **náprava** .
+1. Vyberte **nápravy** na levé straně na stránku služby Azure Policy.
 
    ![Výběr nápravy na stránce zásad](../media/remediate-resources/select-remediation.png)
 
-1. Všechna přiřazení zásad **deployIfNotExists** a **Upravit** s nekompatibilními prostředky jsou obsažená v **zásadách, které se mají opravit** na kartě a v tabulce dat. Klikněte na zásadu s prostředky, které nedodržují předpisy. Otevře se stránka **Nová úloha nápravy** .
+1. Všechna přiřazení zásad **deployIfNotExists** a **Upravit** s nekompatibilními prostředky jsou obsažená v **zásadách, které se mají opravit** na kartě a v tabulce dat. Klikněte na příslušnou zásadu s prostředky, které jsou nekompatibilní. **Nová úloha opravy** otevře se stránka.
 
    > [!NOTE]
-   > Alternativní způsob, jak otevřít stránku **nápravné úlohy** , je najít a kliknout na zásadu na stránce **dodržování předpisů** a pak kliknout na tlačítko **vytvořit úlohu nápravy** .
+   > Alternativní způsob, jak otevírat **úloha opravy** stránky je najít a klikněte na zásadu z **dodržování předpisů** stránce a potom klikněte na **vytvořit úlohu nápravy** tlačítko.
 
-1. Na stránce **Nová úloha nápravy** vyfiltrujte prostředky, které se mají opravit, pomocí teček **oboru** a vyberte podřízené prostředky, ze kterých je zásada přiřazena (včetně směrem k jednotlivým objektům prostředku). Kromě toho použijte rozevírací seznam **umístění** k dalšímu filtrování prostředků. Budou opraveny pouze prostředky uvedené v tabulce.
+1. Na **nová úloha opravy** stránce, filtrovat prostředky pomocí řešení **oboru** tři tečky a vyberte podřízené prostředky z kde přiřazené zásady (včetně na jednotlivé prostředky objekty). Kromě toho pomocí **umístění** rozevíracího seznamu a dále filtrovat prostředky. Pouze prostředky uvedené v tabulce bude opraven.
 
    ![Opravit – vyberte prostředky, které se mají opravit.](../media/remediate-resources/select-resources.png)
 
-1. Spusťte úlohu nápravy, jakmile se prostředky vyfiltrují kliknutím na **opravit**. Na kartě **úlohy opravy** se otevře stránka kompatibilita zásad, ve které se zobrazí stav průběhu úkolů.
+1. Začátek nápravy úlohy po prostředků se vyfiltrovaly kliknutím **napravit**. Otevře se stránka zásad dodržování předpisů pro **nápravy úlohy** kartu k zobrazení stavu průběh úlohy.
 
    ![Opravit – průběh úloh nápravy](../media/remediate-resources/task-progress.png)
 
-1. Kliknutím na **úlohu nápravy** ze stránky dodržování zásad získáte podrobnosti o průběhu. Filtrování použité pro úlohu se zobrazí spolu se seznamem prostředků, které jsou opraveny.
+1. Klikněte na **úloha opravy** ze stránky zásad dodržování předpisů se získat podrobnosti o průběhu. Filtrování používá pro úlohy se zobrazí spolu s seznam prostředků je opravit.
 
-1. Na stránce **úloha nápravy** klikněte pravým tlačítkem na prostředek a zobrazte buď nasazení úlohy opravy, nebo prostředek. Kliknutím na **související události** na konci řádku zobrazíte podrobnosti, jako je například chybová zpráva.
+1. Z **úloha opravy** stránky, klikněte pravým tlačítkem na prostředek můžete zobrazit buď nasazení úloh opravy nebo prostředek. Na konci řádku, klikněte na **událostí souvisejících s** zobrazíte podrobnosti, jako je chybová zpráva.
 
-   ![Opravit – kontextová nabídka úkolu prostředku](../media/remediate-resources/resource-task-context-menu.png)
+   ![Napravit - prostředků úkolu kontextové nabídky](../media/remediate-resources/resource-task-context-menu.png)
 
-Prostředky nasazené prostřednictvím **nápravné úlohy** se přidají na kartě **nasazené prostředky** na stránce dodržování zásad.
+Prostředky nasazené prostřednictvím **úloha opravy** jsou přidány do **nasazené prostředky** karty na stránce zásady dodržování předpisů.
 
 ### <a name="create-a-remediation-task-through-azure-cli"></a>Vytvoření úlohy nápravy pomocí Azure CLI
 
-Pokud chcete vytvořit **úlohu nápravy** pomocí Azure CLI, použijte příkazy `az policy remediation`. Hodnotu `{subscriptionId}` nahraďte ID předplatného a `{myAssignmentId}` s vaším **deployIfNotExists** nebo **upravte** ID přiřazení zásad.
+Pokud chcete vytvořit **úlohu nápravy** pomocí Azure CLI, použijte příkazy `az policy remediation`. Nahraďte `{subscriptionId}` IDENTIFIKÁTORem předplatného a `{myAssignmentId}` **deployIfNotExists** nebo **upravte** ID přiřazení zásad.
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -173,7 +170,7 @@ Další příkazy a příklady pro nápravu najdete v tématu [AZ Policy reoprav
 
 ### <a name="create-a-remediation-task-through-azure-powershell"></a>Vytvoření úlohy nápravy pomocí Azure PowerShell
 
-Chcete-li vytvořit **úlohu nápravy** pomocí Azure PowerShell, použijte příkazy `Start-AzPolicyRemediation`. Hodnotu `{subscriptionId}` nahraďte ID předplatného a `{myAssignmentId}` s vaším **deployIfNotExists** nebo **upravte** ID přiřazení zásad.
+Chcete-li vytvořit **úlohu nápravy** pomocí Azure PowerShell, použijte příkazy `Start-AzPolicyRemediation`. Nahraďte `{subscriptionId}` IDENTIFIKÁTORem předplatného a `{myAssignmentId}` **deployIfNotExists** nebo **upravte** ID přiřazení zásad.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell

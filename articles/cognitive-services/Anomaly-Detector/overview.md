@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 09/05/2019
 ms.author: aahi
-ms.openlocfilehash: 3bd60ff1e732940bbb13c2e224084cf7e331266b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 706bd9c141b191632acee1c04745d64baaf50ee5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934861"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012060"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Co je rozhraní API Detektoru anomálií?
 
@@ -52,8 +52,8 @@ Chcete-li spustit Poznámkový blok, proveďte následující kroky:
 1. Před dokončením operace klonování zrušte v dialogovém okně možnost Public. v opačném případě bude veřejný Poznámkový blok, včetně všech klíčů předplatného.
 1. Klikněte na **Spustit na bezplatné výpočetní** prostředky
 1. Vyberte jeden z poznámkových bloků.
-1. Do `subscription_key` proměnné přidejte svůj platný klíč předplatného rozhraní API detektoru anomálií. 
-1. `endpoint` Změňte proměnnou na koncový bod. Příklad: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
+1. Do proměnné `subscription_key` přidejte svůj platný klíč předplatného rozhraní API detektoru anomálií. 
+1. Změňte `endpoint` proměnnou na koncový bod. Příklad: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
 1. V horním řádku nabídek klikněte na **buňka**a pak na **Spustit vše**.
 
 ## <a name="workflow"></a>Pracovní postup
@@ -72,18 +72,18 @@ Po registraci:
 
 ## <a name="algorithms"></a>Algoritmy
 
-* Podívejte se prosím na tento technický blog, který [zavádí rozhraní API pro detekci anomálií Azure](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162) o algoritmech v digestoři.
+* Přečtěte si technické Blogy, které [zavádějí rozhraní API pro detekci anomálií Azure](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162) , a [Přehled algoritmu SR-CNN v Azure anomáliích detektor](https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798) o algoritmech v digestoři.
 * Informace o algoritmech SR-CNN, které vyvinul Microsoft, najdete v této [službě pro detekci anomálií](https://arxiv.org/abs/1906.03821) pro konference KDD 2019.
 
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
 
-## <a name="join-the-anomaly-detector-community"></a>Připojte se ke komunitě detektoru anomálií.
+## <a name="join-the-anomaly-detector-community"></a>Zapojení do komunity Detektoru anomálií
 
 * Připojit se ke [skupině poradců pro detekci anomálií v Microsoft Teams](https://aka.ms/AdAdvisorsJoin)
 * Zobrazit vybraný [obsah generovaný uživatelem](user-generated-content.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Rychlé zprovoznění: Detekci anomálií v datech časových řad pomocí REST API detektoru anomálií](quickstarts/detect-data-anomalies-csharp.md)
+* [Rychlý Start: zjištění anomálií v datech časových řad pomocí REST API detektoru anomálií](quickstarts/detect-data-anomalies-csharp.md)
 * [Online ukázka](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector) rozhraní API pro detekci anomálií
 * [Referenční informace o REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect) detektoru anomálií

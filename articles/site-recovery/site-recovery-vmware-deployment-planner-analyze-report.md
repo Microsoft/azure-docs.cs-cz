@@ -1,20 +1,20 @@
 ---
-title: Analýza sestavy Plánovač nasazení služby Azure Site Recovery pro zotavení po havárii VMware do Azure | Microsoft Docs
-description: Tento článek popisuje, jak analyzovat sestavu vygenerovanou Plánovač nasazení služby Azure Site Recovery pro zotavení po havárii VMware do Azure.
+title: Analýza sestavy Plánovač nasazení pro zotavení po havárii VMware pomocí Azure Site Recovery
+description: Tento článek popisuje, jak analyzovat sestavu vygenerovanou Plánovač nasazení pro zotavení po havárii VMware do Azure pomocí Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/21/2019
+ms.date: 11/4/2019
 ms.author: mayg
-ms.openlocfilehash: 4240e17320cc62dc1a0e74db2f40a452a63f2982
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: b6ac10b47a8bbc987eb1e338991100ee17eacd61
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690731"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961374"
 ---
-# <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analýza sestavy Plánovač nasazení služby Azure Site Recovery pro zotavení po havárii VMware do Azure
+# <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analýza sestavy Plánovač nasazení pro zotavení po havárii VMware do Azure
 
 Vygenerovaná sestava aplikace Microsoft Excel obsahuje následující listy:
 ## <a name="on-premises-summary"></a>On-premises summary (Přehled místního prostředí)
@@ -178,7 +178,7 @@ Může nastat situace, kdy víte, že pro účely replikace Site Recovery nemů�
 
 **VM Name:** Název nebo IP adresa virtuálního počítače, které se použily v souboru VMListFile při generování sestavy. V tomto sloupci jsou uvedeny také disky (VMDK) připojené k virtuálním počítačům. Aby se rozlišily virtuální počítače vCenter s duplicitními názvy nebo IP adresami, je součástí názvů i název hostitele ESXi. Uvedený hostitel ESXi je ten, na kterém byl virtuální počítač umístěn při zjištění nástrojem během období profilace.
 
-**VM Compatibility** (Kompatibilita virtuálního počítače): Hodnoty jsou **Yes** (Ano) a **Yes**\* (Ano). **Ano** \* je pro instance, ve kterých je virtuální počítač vhodný pro [Premium SSD](../virtual-machines/windows/disks-types.md). V takovém případě profilovaný disk s vysokou četností změn nebo vysokým počtem IOPS spadá do kategorie P20 nebo P30, ale kvůli velikosti se disk mapuje na nižší kategorii P10 nebo P20. Účet úložiště určuje, na jaký disk služby Premium Storage se disk bude mapovat, na základě jeho velikosti. Například:
+**VM Compatibility** (Kompatibilita virtuálního počítače): Hodnoty jsou **Yes** (Ano) a **Yes**\* (Ano). **Ano**\* je pro instance, ve kterých je virtuální počítač vhodný pro [Premium SSD](../virtual-machines/windows/disks-types.md). V takovém případě profilovaný disk s vysokou četností změn nebo vysokým počtem IOPS spadá do kategorie P20 nebo P30, ale kvůli velikosti se disk mapuje na nižší kategorii P10 nebo P20. Účet úložiště určuje, na jaký disk služby Premium Storage se disk bude mapovat, na základě jeho velikosti. Příklad:
 * Menší než 128 GB je P10.
 * 128 GB až 256 GB je P15.
 * 256 GB až 512 GB je P20.
@@ -233,8 +233,6 @@ Pokud se například díky charakteristikám úloh disk umístil do kategorie P2
 
 * Průměrná četnost změn dat překračuje Site Recovery podporované omezení četnosti přenosů dat, které je 20 MB/s, pro průměrnou velikost vstupně-výstupních operací disku.
 
-* Průměrná četnost změn dat překračuje podporované omezení Site Recovery pro četnost změn dat, které je 25 MB/s pro průměrnou velikost vstupně-výstupních operací na virtuální počítač (součet četností všech disků).
-
 * Četnost změn dat ve špičce na všech discích virtuálního počítače překračuje maximální podporované omezení Site Recovery pro četnost změn dat, které je 54 MB/s na virtuální počítač.
 
 * Average effective write IOPS exceeds the supported Site Recovery IOPS limit of 840 for disk (Průměrný počet efektivních vstupně-výstupních operací zápisu za sekundu překračuje podporované omezení Site Recovery pro počet IOPS – 840 na disk).
@@ -277,7 +275,7 @@ Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 16 kB nebo větší | 20 
 **Četnost změn dat zdroje** | **Maximální omezení**
 ---|---
 Četnost změn dat ve špičce napříč všemi disky virtuálního počítače | 54 MB/s
-Maximální četnost změn dat za den s podporou procesového serveru | 2 TB
+Maximální četnost změn dat za den s podporou procesového serveru | 2 TB
 
 Toto jsou průměrné hodnoty za předpokladu, že se vstupně-výstupní operace z 30 % překrývají. Služba Site Recovery je schopna zpracovávat větší propustnost v závislosti na poměru překrývání, větší velikosti zápisů a skutečného chování vstupně-výstupních operací úloh. Předchozí čísla předpokládají typický backlog přibližně 5 minut. To znamená, že zpracování nahrávaných dat a vytvoření bodu obnovení proběhne do pěti minut od nahrání.
 

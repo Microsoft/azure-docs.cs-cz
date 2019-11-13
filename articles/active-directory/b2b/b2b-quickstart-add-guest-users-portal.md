@@ -1,25 +1,25 @@
 ---
-title: 'Rychlý start: Přidat uživatele typu Host na portálu Azure – Azure Active Directory'
+title: 'Rychlý Start: Přidání uživatelů typu Host v Azure Portal-Azure Active Directory'
 description: Použijte tento rychlý start, abyste se dozvěděli, jak můžou správci Azure AD přidávat uživatele typu host B2B na webu Azure Portal, a abyste si prošli pracovní postup pozvání B2B.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: quickstart
-ms.date: 07/02/2018
+ms.date: 11/12/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b91ec337a3237e1bde54b42463d97a803f113c7c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 064af4f54f3d3069c7e04a66cc7248dbfaa7ba0b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65813141"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008556"
 ---
-# <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>Rychlý start: Přidat uživatele typu Host do adresáře na webu Azure Portal
+# <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>Rychlý start: Přidání uživatelů typu host do adresáře pomocí webu Azure Portal
 
 Ke spolupráci s vaší organizací můžete pozvat kohokoli. Stačí, když je přidáte do adresáře jako uživatele typu host. Pak jim můžete buď poslat uvítací e-mail s odkazem na přijetí pozvánky nebo jim můžete poslat přímý odkaz na aplikaci, kterou chcete sdílet. Uživatelé typu host se můžou přihlásit pomocí pracovní, školní nebo sociální identity.
 
@@ -40,15 +40,19 @@ K dokončení scénáře v tomto kurzu budete potřebovat:
 2. V levém podokně vyberte **Azure Active Directory**.
 3.  V části **Spravovat** vyberte **Uživatele**.
 
-    ![Snímek obrazovky znázorňující, kde vyberte možnost uživatelé](media/quickstart-add-users-portal/quickstart-users-portal-user.png)
+    ![Snímek obrazovky s informacemi o tom, kde vybrat možnost uživatelů](media/quickstart-add-users-portal/quickstart-users-portal-user.png)
 
 4.  Vyberte **Nový uživatel typu host**.
 
-    ![Snímek obrazovky znázorňující, kde vyberte možnost Nový uživatel typu Host](media/quickstart-add-users-portal/quickstart-users-portal-user-3.png)
+    ![Snímek obrazovky znázorňující, kde vybrat novou možnost uživatele typu Host](media/quickstart-add-users-portal/quickstart-users-portal-user-3.png)
 
-5.  V části **Uživatelské jméno** zadejte e-mailovou adresu externího uživatele. V části **Přiložit k pozvánce osobní zprávu** zadejte uvítací zprávu. 
+5. Na stránce **Nový uživatel** vyberte **pozvat uživatele** a pak přidejte informace o uživateli typu Host. 
 
-    ![Snímek obrazovky znázorňující, kde zadejte zprávu pozvání uživatele typu Host](media/quickstart-add-users-portal/quickstart-users-portal-user-4.png)
+   - **Jméno.** Křestní jméno a příjmení uživatele typu Host.
+   - **E-mailová adresa (povinné)** . E-mailová adresa uživatele typu Host
+   - **Osobní zpráva (volitelné)** Přidejte do uživatele typu Host osobní uvítací zprávu.
+   - **Skupiny**: uživatele typu Host můžete přidat do jedné nebo více existujících skupin nebo ho můžete provést později.
+   - **Role adresáře**: Pokud pro uživatele požadujete oprávnění správce Azure AD, můžete je přidat do role Azure AD. 
 
 6. Výběrem možnosti **Pozvat** automaticky odešlete uživateli typu host pozvánku. V pravém horním rohu se zobrazí oznámení se zprávou **Uživatel je úspěšně pozvaný**. 
 7.  Po odeslání e-mailové pozvánky se uživatelský účet automaticky přidá do adresáře jako uživatel typu host.
@@ -60,7 +64,7 @@ Přidejte do svého testovacího tenanta aplikaci Salesforce a přiřaďte k ní
 3.  Vyberte **Nová aplikace**.
 4. V části **Přidat z galerie** vyhledejte aplikaci **Salesforce** a vyberte ji.
 
-    ![Snímek obrazovky zobrazující přidat z Galerie vyhledávacího pole](media/quickstart-add-users-portal/quickstart-users-portal-select-salesforce.png)
+    ![Snímek obrazovky s polem přidat z Galerie hledání](media/quickstart-add-users-portal/quickstart-users-portal-select-salesforce.png)
 5. Vyberte **Přidat**.
 6. V části **Spravovat** vyberte **Jednotné přihlašování** a v části **Režim jednotného přihlašování** vyberte **Přihlašování pomocí hesel** a klikněte na **Uložit**.
 7. V části **Spravovat** vyberte **Uživatelé a skupiny** > **Přidat uživatele** > **Uživatelé a skupiny**.
@@ -72,11 +76,11 @@ Teď se přihlásíte jako uživatel typu host, abyste viděli pozvánku.
 1.  Přihlaste se k e-mailovému účtu testovacího uživatele typu host.
 2.  V doručené poště vyhledejte e-mail „You're invited“ (Zveme vás).
 
-    ![Snímek obrazovky s e-mailová pozvánka B2B](media/quickstart-add-users-portal/quickstart-users-portal-email-small.png)
+    ![Snímek obrazovky s e-mailem pozvánky B2B](media/quickstart-add-users-portal/quickstart-users-portal-email-small.png)
 
 3.  V těle e-mailu vyberte **Get Started** (Začínáme). V prohlížeči se otevře stránka **Zkontrolovat oprávnění**. 
 
-    ![Snímek obrazovky zobrazující stránku zkontrolujte oprávnění](media/quickstart-add-users-portal/quickstart-users-portal-accept.png)
+    ![Snímek obrazovky se stránkou pro kontrolu oprávnění](media/quickstart-add-users-portal/quickstart-users-portal-accept.png)
 
 4. Vyberte **Přijmout**. Otevře se Přístupový panel s aplikacemi, ke kterým má uživatel typu host přístup.
 
@@ -90,5 +94,5 @@ Testovacího uživatele typu host a testovací aplikaci můžete odstranit, poku
 6.  V části **Spravovat** vyberte **Uživatele**.
 7.  Vyberte testovacího uživatele a potom vyberte **Odstranit uživatele**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste na webu Azure Portal vytvořili uživatele typu host a odeslali jste pozvánku, která sdílí aplikaci. Potom jste si prohlédli proces přijetí pozvánky z pohledu uživatele typu host a ověřili jste, že se aplikace na Přístupovém panelu uživatele zobrazila. Další informace o přidávání uživatelů typu host ke spolupráci najdete v článku o [přidávání uživatelů pro spolupráci B2B služby Azure Active Directory na webu Azure Portal](add-users-administrator.md).

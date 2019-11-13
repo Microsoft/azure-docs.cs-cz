@@ -1,5 +1,5 @@
 ---
-title: Nasaďte existující spustitelný soubor do Azure Service Fabric | Microsoft Docs
+title: Zabalit existující spustitelný soubor do Azure Service Fabric | Microsoft Docs
 description: Přečtěte si o sbalení existující aplikace jako spustitelného souboru hosta, aby ji bylo možné nasadit do clusteru Service Fabric.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/15/2018
 ms.author: atsenthi
-ms.openlocfilehash: 521c7a198d9085cdc93d325e63ad9d46cc4c7928
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: bd6984db67a8a7b9c38988558ada51e12d337f52
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599458"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013256"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Nasaďte existující spustitelný soubor pro Service Fabric
 Můžete spustit libovolný typ kódu, jako je Node. js, Java nebo C++ v Azure Service Fabric jako služba. Service Fabric odkazuje na tyto typy služeb jako spustitelné soubory typu Host.
@@ -33,9 +33,9 @@ Pro spuštění spustitelného souboru hosta v Service Fabric clusteru je k disp
 * Sledování stavu. Service Fabric monitoring stavu zjistí, jestli je aplikace spuštěná, a když dojde k selhání, poskytne diagnostické informace.   
 * Správa životního cyklu aplikací. Kromě poskytování upgradů bez výpadků nabízí Service Fabric automatické vrácení zpět předchozí verzi, pokud dojde k chybné události stavu hlášené během upgradu.    
 * Výsadb. V clusteru můžete spustit několik aplikací, což eliminuje nutnost spuštění každé aplikace na vlastním hardwaru.
-* Zjistitelnost Pomocí REST můžete zavolat službu pojmenování Service Fabric a najít další služby v clusteru. 
+* Zjistitelnost: použití REST můžete zavolat službu pojmenování Service Fabric a najít další služby v clusteru. 
 
-## <a name="samples"></a>Ukázky kódu
+## <a name="samples"></a>Ukázky
 * [Ukázka balení a nasazení hostovaného spustitelného souboru](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Ukázka dvou spustitelných souborů hostaC# (a NodeJS), které komunikují přes službu pojmenování pomocí REST](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
@@ -69,11 +69,11 @@ ApplicationPackageRoot obsahuje soubor souboru ApplicationManifest. XML, který 
 * *Data*. Toto je další adresář pro ukládání dalších místních dat, která může služba potřebovat. Data by se měla používat k ukládání pouze dočasných dat. Service Fabric nekopíruje ani nereplikuje změny v adresáři dat, pokud je potřeba přemístění služby (například během převzetí služeb při selhání).
 
 > [!NOTE]
-> Pokud je nepotřebujete, `config` nemusíte vytvářet adresáře a `data` .
+> Pokud je nepotřebujete, nemusíte vytvářet `config` a `data` adresáře.
 >
 >
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Související informace a úlohy najdete v následujících článcích.
 * [Nasazení hostujícího spustitelného souboru](service-fabric-deploy-existing-app.md)
 * [Nasazení několika hostujících spustitelných souborů](service-fabric-deploy-multiple-apps.md)
