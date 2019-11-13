@@ -1,5 +1,5 @@
 ---
-title: Objednat události připojení zařízení z Azure IoT Hub pomocí Azure Cosmos DB | Microsoft Docs
+title: Objednat události připojení zařízení fr Azure IoT Hub w/Azure Cosmos DB
 description: Tento článek popisuje, jak objednat a zaznamenat události připojení zařízení z Azure IoT Hub pomocí Azure Cosmos DB udržovat nejnovější stav připojení.
 services: iot-hub
 ms.service: iot-hub
@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: a020221d841682d1e18d2b728a732ec4dfc35ef3
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 210c2e74305ba99b4ac3a12625d0b7f5fc47ba43
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67988288"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954259"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Objednat události připojení zařízení z Azure IoT Hub pomocí Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Pořadové číslo je řetězcové vyjádření šestnáctkového čísla. K ide
 
 Nejdřív vytvořte uloženou proceduru a nastavte ji tak, aby běžela logika, která porovnává pořadová čísla příchozích událostí a zaznamenává poslední událost na zařízení v databázi.
 
-1. V Cosmos DB rozhraní SQL API vyberte **Průzkumník dat** > **položky** > **Nová uložená procedura**.
+1. V Cosmos DB rozhraní API SQL vyberte **Průzkumník dat** > **položky** > **nové uložené procedury**.
 
    ![Vytvořit uloženou proceduru](./media/iot-hub-how-to-order-connection-state-events/create-stored-procedure.png)
 
@@ -220,7 +220,7 @@ V pracovním postupu aplikace logiky můžou podmínky po předání této konkr
 
    **ID databáze**: ToDoList
 
-   **ID kolekce**: Položky
+   **ID kolekce**: položky
 
    **ID sproc**: LatestDeviceConnectionState
 
@@ -232,7 +232,7 @@ V pracovním postupu aplikace logiky můžou podmínky po předání této konkr
 
    ![naplnit akci aplikace logiky](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
 
-7. V horní části podokna, kde je **uvedeno, v**části **vyberte výstup z předchozích kroků**se ujistěte, že je vybráno **tělo** IT.
+7. V horní části **podokna, kde je uvedeno, v**části **vyberte výstup z předchozích kroků**se ujistěte, že je vybráno **tělo** IT.
 
    ![naplnění aplikace logiky pro každý](./media/iot-hub-how-to-order-connection-state-events/logicapp-foreach-body.png)
 
@@ -264,13 +264,13 @@ V této části nakonfigurujete v IoT Hubu publikování událostí, když k nim
 
    ![Vytvoření nového odběru události](./media/iot-hub-how-to-order-connection-state-events/event-subscription.png)
 
-4. Vyplňte **Podrobnosti odběru události**: Zadejte popisný název a vyberte **Event Grid schéma**.
+4. Vyplňte **Podrobnosti odběru události**: zadejte popisný název a vyberte **Event Grid schéma**.
 
 5. Vyplňte pole **typy událostí** . V rozevíracím seznamu vyberte v nabídce možnost **připojené zařízení** a **zařízení odpojeno** . Kliknutím kamkoli jinam na obrazovce zavřete seznam a uložíte vybrané možnosti.
 
    ![Nastavte typy událostí, které se mají hledat.](./media/iot-hub-how-to-order-connection-state-events/set-event-types.png)
 
-6. V části **Podrobnosti o koncovém bodu**vyberte typ koncového bodu jako Webhook, klikněte na vybrat koncový bod a vložte adresu URL, kterou jste zkopírovali z aplikace logiky, a potvrďte výběr.
+6. V části **Podrobnosti o koncovém bodu**vyberte typ koncového bodu jako **Webhook** , klikněte na vybrat koncový bod a vložte adresu URL, kterou jste zkopírovali z aplikace logiky, a potvrďte výběr.
 
    ![Vyberte adresu URL koncového bodu.](./media/iot-hub-how-to-order-connection-state-events/endpoint-select.png)
 
@@ -362,7 +362,7 @@ Pokud nechcete přijít o práci na aplikaci logiky, místo odstranění ji zaka
 
 Pokud chcete účet Azure Cosmos DB z Azure Portal odebrat, klikněte pravým tlačítkem na název účtu a klikněte na **Odstranit účet**. Přečtěte si podrobné pokyny k [odstranění účtu Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/manage-account).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o tom [, jak IoT Hub události pomocí Event Grid aktivovat akce](../iot-hub/iot-hub-event-grid.md) .
 

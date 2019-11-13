@@ -3,7 +3,7 @@ title: Azure Active Directory latencí hlášení | Microsoft Docs
 description: Přečtěte si, jak dlouho trvá generování sestav událostí v Azure Portal
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 9b88958d-94a2-4f4b-a18c-616f0617a24e
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 05/13/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce62a5059304fe83d933a46ae69f4b8e0c276ba7
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 6d031546bb4f1f05e9ea2abb5b74fe911b0b507f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127040"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007708"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory latencí hlášení
 
@@ -59,7 +59,7 @@ Existují dva typy sestav zabezpečení:
 
 V následující tabulce jsou uvedeny informace o latenci pro sestavy zabezpečení.
 
-| Zpráva | Minimální | Average | Maximum |
+| Zpráva | Minimální | Průměr | Maximum |
 | :-- | --- | --- | --- |
 | Ohrožení uživatelé          | 5 minut   | 15 minut  | 2 hodiny  |
 | Riziková přihlášení         | 5 minut   | 15 minut  | 2 hodiny  |
@@ -70,7 +70,7 @@ Azure AD pomocí adaptivních algoritmů strojového učení a heuristiky deteku
 
 V následující tabulce jsou uvedeny informace o latenci pro detekci rizik.
 
-| Zpráva | Minimální | Average | Maximum |
+| Zpráva | Minimální | Průměr | Maximum |
 | :-- | --- | --- | --- |
 | Přihlášení z anonymních IP adres |5 minut |15 minut |2 hodiny |
 | Přihlášení z neznámých míst |5 minut |15 minut |2 hodiny |
@@ -80,7 +80,7 @@ V následující tabulce jsou uvedeny informace o latenci pro detekci rizik.
 | Přihlášení z IP adres s podezřelou aktivitou |2 hodiny |4 hodiny |8 hodin  |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Přehled sestav Azure AD](overview-reports.md)
 * [Programový přístup k sestavám Azure AD](concept-reporting-api.md)

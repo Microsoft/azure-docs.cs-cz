@@ -1,17 +1,14 @@
 ---
 title: Vysvětlení uzamykání prostředků
 description: Přečtěte si o možnostech uzamykání k ochraně prostředků při přiřazování podrobného plánu.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 04/24/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 5c62fdb698dddf293d339904fd0c854052d636eb
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 754b9d7f73c6111abf7505e222a1ca5a8712ae45
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981052"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960472"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Vysvětlení uzamykání prostředků v semodrotiskych Azure
 
@@ -24,7 +21,7 @@ Blokovací režimy se ale nedají změnit mimo plány.
 
 Prostředky vytvořené artefakty v přiřazení podrobného plánu mají čtyři stavy: **Neuzamčeno**, jen **pro čtení**, **nelze je upravit nebo odstranit**nebo **nelze odstranit**. Každý typ artefaktu může být ve stavu **Neuzamčeno** . K určení stavu prostředku lze použít následující tabulku:
 
-|Režim|Typ prostředku artefaktu|Stav|Popis|
+|Mode|Typ prostředku artefaktu|Stav|Popis|
 |-|-|-|-|
 |Nezamknout|*|Neuzamčeno|Prostředky nejsou chráněny pomocí modrotisky. Tento stav se používá také pro prostředky přidané do **pouze pro čtení** nebo **neodstraňují** artefakt skupiny prostředků z vnějšího přiřazení podrobného plánu.|
 |Jen pro čtení|Skupina prostředků|Nelze upravit/odstranit|Skupina prostředků je jen pro čtení a značky ve skupině prostředků nejde upravovat. Do této skupiny prostředků se dají přidat, přesunout, změnit nebo odstranit prostředky, **které nejsou zamčené** .|
@@ -54,10 +51,10 @@ Pokud přiřazení vybere možnost **jen pro čtení** nebo **neodstraní** , je
 
 [Vlastnosti přiřazení odepřít](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) pro každý režim jsou následující:
 
-|Režim |Oprávnění. akce |Oprávnění. NotActions |Objekty zabezpečení [i]. Textový |ExcludePrincipals [i]. Účet | DoNotApplyToChildScopes |
+|Mode |Oprávnění. akce |Oprávnění. NotActions |Principals[i].Type |ExcludePrincipals [i]. Účet | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Jen pro čtení |**\*** |**\*/čtení** |SystemDefined (všichni) |přiřazení podrobného plánu a uživatelsky definované v **excludedPrincipals** |Skupina prostředků – _pravda_; Prostředek – _NEPRAVDA_ |
-|Neodstraňovat |**\*/odstranit** | |SystemDefined (všichni) |přiřazení podrobného plánu a uživatelsky definované v **excludedPrincipals** |Skupina prostředků – _pravda_; Prostředek – _NEPRAVDA_ |
+|Jen pro čtení |**\*** |**\*/Read** |SystemDefined (všichni) |přiřazení podrobného plánu a uživatelsky definované v **excludedPrincipals** |Skupina prostředků – _pravda_; Prostředek – _NEPRAVDA_ |
+|Neodstraňovat |**\*/DELETE** | |SystemDefined (všichni) |přiřazení podrobného plánu a uživatelsky definované v **excludedPrincipals** |Skupina prostředků – _pravda_; Prostředek – _NEPRAVDA_ |
 
 > [!IMPORTANT]
 > Azure Resource Manager ukládá do mezipaměti Podrobnosti přiřazení role po dobu až 30 minut. V důsledku toho nemusí být přiřazení zamítnutí akcí Odepřít u prostředků podrobného plánu okamžitě platit. Během této doby může být možné odstranit prostředek určený k ochraně pomocí zámků podrobného plánu.

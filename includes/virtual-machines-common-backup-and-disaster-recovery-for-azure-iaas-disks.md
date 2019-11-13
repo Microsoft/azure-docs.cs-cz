@@ -8,20 +8,18 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ca55d49721f9c22f35ba79e819efa354a660d92a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9332079cd77c4dcc972059071165ba0631135b5c
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72302296"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012538"
 ---
-# <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Zálohování a zotavení po havárii pro disky Azure IaaS
-
 Tento článek vysvětluje, jak naplánovat zálohování a zotavení po havárii (DR) virtuálních počítačů s IaaS (VM) a disků v Azure. Tento dokument pokrývá spravované i nespravované disky.
 
 Nejdřív zabereme integrované funkce odolnosti proti chybám na platformě Azure, které pomáhají chránit před místními chybami. Potom se podíváme na scénáře havárie, které nejsou plně pokryté integrovanými funkcemi. Zobrazujeme také několik příkladů scénářů úloh, které mohou být použity v různých ohledech na zálohování a zotavení po havárii. Pak si projdeme možná řešení pro zotavení po havárii IaaS disků.
 
-## <a name="introduction"></a>Představení
+## <a name="introduction"></a>Úvod
 
 Platforma Azure využívá různé metody pro redundanci a odolnost proti chybám, které vám pomůžou ochránit zákazníky před lokalizovanými chybami hardwaru. K místním selháním můžou patřit problémy s Azure Storage serverového počítače, které ukládají část dat pro virtuální disk nebo chyby SSD nebo HDD na tomto serveru. K takovým izolovaným selháním hardwarových součástí může dojít během normálního provozu.
 
@@ -121,7 +119,7 @@ Vysoká dostupnost se nejlépe splní pomocí spravovaných disků v sadě dostu
 
 Vaše volby pro vysokou dostupnost, zálohování a zotavení po havárii na úrovni aplikace nebo infrastruktury můžou být reprezentovány takto:
 
-| Úroveň |   Vysoká dostupnost   | Zálohování nebo zotavení po havárii |
+| Level |   Vysoká dostupnost   | Zálohování nebo zotavení po havárii |
 | --- | --- | --- |
 | Aplikace | SQL Server AlwaysOn | Azure Backup |
 | Infrastruktura    | Skupina dostupnosti  | Geograficky redundantní úložiště s konzistentními snímky |
@@ -148,7 +146,7 @@ Pomocí následujícího postupu můžete povolit zálohování virtuálních po
 
     b. V nabídce **Recovery Services trezory** klikněte na **Přidat** a postupujte podle pokynů pro vytvoření nového trezoru ve stejné oblasti jako virtuální počítač. Pokud je například váš virtuální počítač v oblasti Západní USA, vyberte pro trezor Západní USA.
 
-1.  Ověřte replikaci úložiště pro nově vytvořený trezor. V části **trezory Recovery Services** otevřete trezor a přejděte na **vlastnosti** > **Konfigurace zálohování** > **aktualizace**. Ujistěte se, že je ve výchozím nastavení vybraná možnost **geograficky redundantního úložiště** . Tato možnost zajistí, že se váš trezor automaticky replikuje do sekundárního datacentra. Například váš trezor v Západní USA je automaticky replikován do Východní USA.
+1.  Ověřte replikaci úložiště pro nově vytvořený trezor. Přístup k trezoru v části **Recovery Services trezory** a přejděte na **vlastnosti** > **zálohování konfigurace** > **aktualizace**. Ujistěte se, že je ve výchozím nastavení vybraná možnost **geograficky redundantního úložiště** . Tato možnost zajistí, že se váš trezor automaticky replikuje do sekundárního datacentra. Například váš trezor v Západní USA je automaticky replikován do Východní USA.
 
 1.  Nakonfigurujte zásady zálohování a vyberte virtuální počítač ze stejného uživatelského rozhraní.
 

@@ -1,23 +1,18 @@
 ---
-title: Vytvoření aplikační brány s přesměrováním externích přenosů – Azure CLI | Microsoft Docs
+title: Přesměrování externího provozu pomocí CLI – Azure Application Gateway
 description: Naučte se, jak vytvořit Aplikační bránu, která přesměruje vnitřní webový provoz do příslušného fondu pomocí Azure CLI.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/24/2018
+ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: e1fb25a9d5bfe6538d081169d163d7b280733cc1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: fc955b4959bb20628463f7699a0b66ec2b89a393
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382017"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011598"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Vytvoření aplikační brány s externím přesměrování pomocí Azure CLI
 
@@ -48,7 +43,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků 
 
-Pomocí příkazu [az network vnet create](/cli/azure/network/vnet) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*. Tyto prostředky slouží k síťovému připojení k aplikační bráně a jejím přidruženým prostředkům.
+Pomocí příkazu *az network vnet create* vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem [myAGSubnet](/cli/azure/network/vnet). Pomocí příkazu *az network public-ip create* vytvořte veřejnou IP adresu s názvem [myAGPublicIPAddress](/cli/azure/network/public-ip). Pomocí těchto prostředků se bude poskytovat síťové připojení k bráně Application Gateway a jejím přidruženým prostředkům.
 
 ```azurecli-interactive
 az network vnet create \
@@ -65,7 +60,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-K vytvoření aplikační brány s názvem *myAppGateway* použijte příkaz [az network application-gateway create](/cli/azure/network/application-gateway). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Aplikační brána je přiřazena k *myAGSubnet* a *myPublicIPAddress* , které jste vytvořili dříve. 
+K vytvoření aplikační brány s názvem [myAppGateway](/cli/azure/network/application-gateway) použijte příkaz *az network application-gateway create*. Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Aplikační brána je přiřazena k *myAGSubnet* a *myPublicIPAddress* , které jste vytvořili dříve. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -93,7 +88,7 @@ Vytvoření aplikační brány může trvat několik minut. Po vytvoření aplik
 
 ### <a name="add-the-redirection-configuration"></a>Přidat konfiguraci přesměrování
 
-Přidejte konfiguraci přesměrování, která odesílá provoz z *webové\.služby consoto.org* do naslouchacího procesu pro službu *www\.contoso.com* na službu Application Gateway pomocí funkce [AZ Network Application-Gateway redirect-config Create. ](/cli/azure/network/application-gateway/redirect-config).
+Přidejte konfiguraci přesměrování, která odesílá provoz ze služby *www\.consoto.org* do naslouchacího procesu pro službu *www\.contoso.com* do aplikační brány pomocí funkce [AZ Network Application-Gateway redirect-config Create](/cli/azure/network/application-gateway/redirect-config).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -129,13 +124,13 @@ az network application-gateway rule create \
   --redirect-config myredirect
 ```
 
-## <a name="test-the-application-gateway"></a>Otestování aplikační brány
+## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
 
 K získání veřejné IP adresy aplikační brány můžete použít příkaz [az network public-ip show](/cli/azure/network/public-ip). Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 
 V prohlížeči by se měla zobrazit *Bing.com* .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 

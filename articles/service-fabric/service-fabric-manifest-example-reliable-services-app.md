@@ -1,5 +1,5 @@
 ---
-title: Příklady manifestu aplikace Azure Service Fabric Reliable Services | Microsoft Docs
+title: Příklady manifestu aplikace Azure Service Fabric Reliable Services
 description: Přečtěte si, jak nakonfigurovat nastavení manifestu aplikace a služby pro spolehlivé služby Service Fabric aplikaci.
 services: service-fabric
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: a5678b4c4c0f7a9d8d3f3cf6e838580de2059a8f
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 9cc79610b6dc9f9d2869a41e0b483168087368cc
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035646"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013229"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Příklady manifestu služeb a aplikace Reliable Services
 Níže jsou uvedeny příklady manifestů aplikace a služby pro Service Fabric aplikaci s ASP.NET Core webový front-end a stavový back-end. Účelem těchto příkladů je Ukázat, jaká nastavení jsou k dispozici a jak je používat. Tyto manifesty aplikací a služeb jsou založené na manifestech [rychlý Start pro Service Fabric .NET](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) .
@@ -27,7 +27,7 @@ Zobrazí se následující funkce:
 
 |Manifest|Funkce|
 |---|---|
-|[Manifest aplikace](#application-manifest)| zásady [správného řízení prostředků](service-fabric-resource-governance.md), [Spusťte službu jako účet místního správce](service-fabric-application-runas-security.md), [použijte výchozí zásadu pro všechny balíčky kódu služby](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages), [vytvořte objekty zabezpečení uživatelů a skupin](service-fabric-application-runas-security.md), sdílejte Datový balíček mezi instancemi služby, [přepsat službu koncové body](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
+|[Manifest aplikace](#application-manifest)| zásady [správného řízení prostředků](service-fabric-resource-governance.md), [Spusťte službu jako účet místního správce](service-fabric-application-runas-security.md), [použijte výchozí zásadu pro všechny balíčky kódu služby](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages), [vytvořte objekty zabezpečení uživatelů a skupin](service-fabric-application-runas-security.md), sdílejte Datový balíček mezi instancemi služby a [potlačením koncových bodů služby](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml) .| 
 |Manifest služby FrontEndService| [Spuštění skriptu při spuštění služby](service-fabric-run-script-at-service-startup.md), [Definování KONCOVÉho bodu https](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest) | 
 |Manifest služby BackEndService| [Deklarace konfiguračního balíčku](service-fabric-application-and-service-manifests.md), [deklarace datového balíčku](service-fabric-application-and-service-manifests.md), [Konfigurace koncového bodu](service-fabric-service-manifest-resources.md)| 
 
@@ -416,7 +416,7 @@ Spustitelný soubor určený parametrem EntryPoint je obvykle dlouhodobě běž�
 Deklaruje složku, která je pojmenována atributem Name, v části PackageRoot, která obsahuje soubor Settings. XML. Tento soubor obsahuje oddíly nastavení páru klíč-hodnota definované uživatelem, které lze v průběhu běhu číst. Pokud se během upgradu změnila jenom verze ConfigPackage, spuštěný proces se nerestartuje. Místo toho zpětné volání upozorní proces, že došlo ke změně nastavení konfigurace, aby bylo možné je znovu načíst dynamicky. Další informace naleznete v tématu [ConfigPackage element](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
 
 ### <a name="resources-element"></a>Resources – element
-Popisuje prostředky používané touto službou, které mohou být deklarovány bez úprav zkompilovaného kódu a při nasazení služby změněny. Přístup k těmto prostředkům se řídí pomocí sekcí objekty zabezpečení a zásady v manifestu aplikace. Další informace naleznete v tématu Resources – [element](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
+Popisuje prostředky používané touto službou, které mohou být deklarovány bez úprav zkompilovaného kódu a při nasazení služby změněny. Přístup k těmto prostředkům se řídí pomocí sekcí objekty zabezpečení a zásady v manifestu aplikace. Další informace naleznete v tématu [Resources – element](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
 
 ### <a name="endpoints-element"></a>Element Endpoints
 Definuje koncové body pro službu. Další informace naleznete v tématu [element Endpoints](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType)
@@ -458,7 +458,7 @@ Deklaruje složku, která je pojmenována atributem Name, v části PackageRoot,
 Deklaruje složku, která je pojmenována atributem Name v rámci PackageRoot, který obsahuje soubory statických dat, které mají být zpracovány procesem v době běhu. Service Fabric bude recyklovat všechny exe a DLLHOSTs zadané v hostitelích a balíčky podpory, pokud jsou všechny datové balíčky uvedené v manifestu služby upgradovány. Další informace naleznete v tématu [element DataPackage](service-fabric-service-model-schema-elements.md#DataPackageElementDataPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedDataPackageelement) .
 
 ### <a name="resources-element"></a>Resources – element
-Popisuje prostředky používané touto službou, které mohou být deklarovány bez úprav zkompilovaného kódu a při nasazení služby změněny. Přístup k těmto prostředkům se řídí pomocí sekcí objekty zabezpečení a zásady v manifestu aplikace. Další informace naleznete v tématu Resources – [element](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
+Popisuje prostředky používané touto službou, které mohou být deklarovány bez úprav zkompilovaného kódu a při nasazení služby změněny. Přístup k těmto prostředkům se řídí pomocí sekcí objekty zabezpečení a zásady v manifestu aplikace. Další informace naleznete v tématu [Resources – element](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)
 
 ### <a name="endpoints-element"></a>Element Endpoints
 Definuje koncové body pro službu. Další informace naleznete v tématu [element Endpoints](service-fabric-service-model-schema-elements.md#EndpointsElementanonymouscomplexTypeComplexTypeDefinedInResourcesTypecomplexType)

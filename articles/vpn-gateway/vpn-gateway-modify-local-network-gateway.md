@@ -1,6 +1,6 @@
 ---
-title: Upravit předpony IP adresy brány místní sítě a adresy IP adresa brány sítě VPN | Azure | Prostředí PowerShell | Dokumentace Microsoftu
-description: Tento článek vás provede s Změna předpony IP adres pro bránu místní sítě pomocí Powershellu
+title: 'VPN Gateway: Upravte nastavení IP adresy brány: Azure PowerShell'
+description: Tento článek vás provede změnou předpon IP adres pro bránu místní sítě pomocí PowerShellu.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: cherylmc
-ms.openlocfilehash: 923c478909e0393f36da06802023b3f40ee63a3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6aae2c87615ae0e250d7f9460bde483e3448c46e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723897"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014891"
 ---
 # <a name="modify-local-network-gateway-settings-using-powershell"></a>Úprava nastavení místní síťové brány pomocí PowerShellu
 
-Někdy změnit nastavení pro bránu místní sítě AddressPrefix nebo GatewayIPAddress. Tento článek ukazuje, jak upravit nastavení brány místní sítě. Můžete také upravit tato nastavení pomocí jiné metody tak, že vyberete jinou možnost z následujícího seznamu:
+Někdy se nastavení pro bránu místní sítě AddressPrefix nebo GatewayIPAddress změní. V tomto článku se dozvíte, jak upravit nastavení místní síťové brány. Tato nastavení můžete také upravit pomocí jiné metody výběrem jiné možnosti z následujícího seznamu:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-modify-local-network-gateway-portal.md)
@@ -37,7 +37,7 @@ Někdy změnit nastavení pro bránu místní sítě AddressPrefix nebo GatewayI
 
 Nainstalujte nejnovější verzi rutin PowerShellu pro Azure Resource Manager. Další informace o instalaci rutin prostředí PowerShell najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azureps-cmdlets-docs).
 
-## <a name="ipaddprefix"></a>Úprava předpon IP adres
+## <a name="ipaddprefix"></a>Upravit předpony IP adres
 
 [!INCLUDE [vpn-gateway-modify-ip-prefix-rm](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
 
@@ -45,6 +45,6 @@ Nainstalujte nejnovější verzi rutin PowerShellu pro Azure Resource Manager. D
 
 [!INCLUDE [vpn-gateway-modify-lng-gateway-ip-rm](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Můžete ověřit připojení k bráně. Zobrazit [ověření připojení brány](vpn-gateway-verify-connection-resource-manager.md).
+Můžete ověřit připojení brány. Viz [ověření připojení brány](vpn-gateway-verify-connection-resource-manager.md).

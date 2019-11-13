@@ -3,7 +3,7 @@ title: Rutiny Azure AD PowerShellu pro vytváření sestav | Microsoft Docs
 description: Reference k rutinám Azure AD PowerShellu pro vytváření sestav.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: a1f93126-77d1-4345-ab7d-561066041161
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 07/12/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd1d4f86b6223abd3de8fab618e5975ebd33f892
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f962cd9bc8c975ccaef90f61f20eea4cf1e4935e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73885280"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014339"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Rutiny Azure AD PowerShellu pro vytváření sestav
 

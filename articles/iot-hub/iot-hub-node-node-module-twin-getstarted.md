@@ -1,5 +1,5 @@
 ---
-title: Začínáme s identitou modulu Azure IoT Hub a modulem bez vlákna (Node. js) | Microsoft Docs
+title: Začínáme s identitou modulu Azure IoT Hub identity modulu & modulu (Node. js)
 description: Přečtěte si, jak vytvořit identitu modulu a aktualizovat modul s dvojitou identitou pomocí sad IoT SDK pro Node. js.
 author: wesmc7777
 manager: philmea
@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: 0fc676fd32c585324bac0024655765ebd628385a
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: bf80925a2dc5c6d06ba14fe1c0d72a2fc1f88d51
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72165898"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953866"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>Začínáme s identitou modulu IoT Hub a modulem bez vlákna (Node. js)
 
@@ -32,13 +32,13 @@ Na konci tohoto kurzu máte dvě aplikace Node. js:
 > [!NOTE]
 > Informace o sadách Azure IoT SDK, které můžete použít k vytváření aplikací pro spouštění na zařízeních a back-endu vašeho řešení, najdete v tématu sady [SDK Azure IoT](iot-hub-devguide-sdks.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Node. js verze 10.0. x nebo novější. [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) popisuje, jak nainstalovat Node. js pro tento kurz v systému Windows nebo Linux.
 
 * Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .)
 
-## <a name="create-an-iot-hub"></a>Vytvoření IoT Hubu
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -56,10 +56,10 @@ V této části vytvoříte aplikaci Node. js, která vytvoří identitu zaříz
 
 2. V tomto adresáři Nejdřív spusťte **npm init-y** , aby se vytvořil prázdný soubor Package. JSON s výchozími hodnotami. Toto je soubor projektu pro váš kód.
 
-3. Spusťte **npm Install-S Azure-iothub @ no__t-1modules-Preview** a nainstalujte sadu SDK služby do podadresáře **node_modules** .
+3. Spusťte **npm Install-S Azure-iothub\@modules-Preview** a nainstalujte sadu SDK služby do podadresáře **node_modules** .
 
     > [!NOTE]
-    > Název podadresáře node_modules používá modul aplikace Word k označení "knihovna uzlů". Doba, kterou tady dělá, nemůže dělat IoT Hub moduly.
+    > Název podadresáře node_modules používá modul Word k označení "knihovna uzlů". Doba, kterou tady dělá, nemůže dělat IoT Hub moduly.
 
 4. Vytvořte v adresáři následující soubor. js. Zavolejte ho **Add. js**. Zkopírujte a vložte připojovací řetězec a název centra.
 
@@ -133,7 +133,7 @@ V této části vytvoříte aplikaci Node. js na simulovaném zařízení, kter�
 
    ![Podrobnosti o modulu na webu Azure Portal](./media/iot-hub-node-node-module-twin-getstarted/module-detail.png)
 
-2. Podobně jako v předchozím kroku vytvoříte adresář pro váš kód zařízení a pomocí NPM ho inicializujete a nainstalujete sadu SDK pro zařízení (**npm Install-S Azure-IoT-Device-AMQP @ no__t-1modules-Preview**).
+2. Podobně jako v předchozím kroku vytvoříte adresář pro váš kód zařízení a pomocí NPM ho inicializujete a nainstalujete sadu SDK pro zařízení (**npm Install-S Azure-IoT-Device-amqp\@modules-Preview**).
 
    > [!NOTE]
    > Příkaz pro instalaci npm se může považovat za pomalý. Je to pacient, který z úložiště balíčků vybírá spoustu kódu.

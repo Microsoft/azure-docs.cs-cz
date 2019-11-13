@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 996006c60e754437f8f863c7e7a72c929ed77f2c
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 0dc1c52e65090acd5f63d1b23d8da6f37e3cf567
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166213"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960724"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Nasazení aplikace ve službě Virtual Machine Scale Sets
 
@@ -37,7 +37,7 @@ Pokud chcete omezit správu a dobu konfigurace virtuálního počítače, může
 
 
 ## <a name="already-provisioned"></a>Instalace aplikace pomocí rozšíření vlastních skriptů
-Rozšíření vlastních skriptů stahuje a spouští skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalaci softwaru nebo jakékoli jiné úlohy konfigurace nebo správy. Skripty si můžete stáhnout z úložiště Azure nebo z GitHubu, případně je za běhu rozšíření najdete na webu Azure Portal. Další informace o tom, jak vytvořit a použít vlastní image virtuálního počítače se sadou škálování, najdete v následujících kurzech:
+Rozšíření vlastních skriptů stahuje a spouští skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalaci softwaru nebo jakékoli jiné úlohy konfigurace nebo správy. Skripty si můžete stáhnout z úložiště Azure nebo z GitHubu, případně je za běhu rozšíření najdete na webu Azure Portal. Další informace o tom, jak nainstalovat aplikaci pomocí rozšíření vlastních skriptů, najdete v následujících kurzech:
 
 - [Azure CLI](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
@@ -45,12 +45,12 @@ Rozšíření vlastních skriptů stahuje a spouští skripty na virtuálních p
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Instalace aplikace do virtuálního počítače s Windows pomocí prostředí PowerShell DSC
-[Konfigurace požadovaného stavu PowerShellu (DSC)](/powershell/scripting/dsc/overview/overview) je platforma pro správu, která definuje konfiguraci cílových počítačů. Konfigurace DSC definují, co se má nainstalovat na počítač a jak se má nakonfigurovat hostitel. Místní Configuration Manager modul (LCM) běží na každém cílovém uzlu, který zpracovává požadované akce na základě nabízených konfigurací.
+[Prostředí PowerShell Desired State Configuration (DSC)](/powershell/scripting/dsc/overview/overview) je platforma pro správu k definování konfigurace cílových počítačích. Konfigurace DSC definovat, co se má nainstalovat na počítač a jak nakonfigurovat hostitele. Modul místního Configuration Manageru (LCM) běží na každý cílový uzel, který zpracovává nabízená konfigurace požadované akce.
 
 Rozšíření PowerShell DSC umožňuje přizpůsobit instance virtuálních počítačů v sadě škálování pomocí PowerShellu. Následující příklad:
 
-- Vydá pokyn instancím virtuálních počítačů ke stažení balíčku DSC z GitHubu- *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip* .
-- Nastaví rozšíření pro spuštění instalačního skriptu-`configure-http.ps1`.
+- Vydá pokyn instancím virtuálních počítačů ke stažení balíčku DSC z GitHubu – *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
+- Nastaví rozšíření pro spuštění instalačního skriptu – `configure-http.ps1`
 - Načte informace o škálované sadě pomocí rutiny [Get-AzVmss](/powershell/module/az.compute/get-azvmss) .
 - Aplikuje rozšíření na instance virtuálních počítačů pomocí [Update-AzVmss](/powershell/module/az.compute/update-azvmss) .
 

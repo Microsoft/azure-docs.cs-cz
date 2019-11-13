@@ -1,23 +1,22 @@
 ---
-title: Architektura pro zotavení po havárii VMware/fyzického serveru do sekundární lokality s Azure Site Recovery | Microsoft Docs
+title: Architektura – VMware/fyzické zotavení po havárii do sekundární lokality s Azure Site Recovery
 description: Tento článek poskytuje přehled komponent a architektury používaných při zotavení po havárii místních virtuálních počítačů VMware nebo fyzických serverech s Windows/Linux do sekundární lokality VMware s Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 0c00e26e6c12835db96c192400c3fe8652534dd4
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: b0a46dcf8fe298494a53713f122b1bda8ce07e5e
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972117"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954572"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architektura pro replikaci VMware/fyzických serverů do sekundární místní lokality
 
-Tento článek popisuje architekturu a procesy používané při nastavení replikace, převzetí služeb při selhání a obnovení místních virtuálních počítačů VMware do sekundární lokality VMware pomocí [Azure Site Recovery ](site-recovery-overview.md).
+Tento článek popisuje architekturu a procesy používané při nastavení replikace, převzetí služeb při selhání a obnovení místních virtuálních počítačů VMware do sekundární lokality VMware pomocí [Azure Site Recovery](site-recovery-overview.md).
 
 
 ## <a name="architectural-components"></a>Komponenty architektury
@@ -27,7 +26,7 @@ Tento článek popisuje architekturu a procesy používané při nastavení repl
 **Azure** | Tento scénář nasadíte pomocí nástroje InMage Scout. | K získání nástroje InMage Scout potřebujete předplatné Azure.<br/><br/> Po vytvoření trezoru služby Recovery Services si stáhnete InMage Scout a nainstalujete nejnovější aktualizace pro nastavení nasazení.
 **Procesový server** | Umístěný v primární lokalitě | Procesový server nasadíte, aby se staral o ukládání do mezipaměti, kompresi a optimalizaci dat.<br/><br/> Také obstará nabízenou instalaci nástroje Unified Agent na počítače, které chcete chránit.
 **Konfigurační server** | Umístěný v sekundární lokalitě | Konfigurační server spravuje, konfiguruje a monitoruje nasazení – buď pomocí webu pro správu, nebo konzoly vContinuum.
-**Server vContinuum** | Volitelný parametr. Instaluje se do stejné lokality jako konfigurační server. | Poskytuje konzoli pro správu a monitorování chráněného prostředí.
+**Server vContinuum** | Volitelné. Instaluje se do stejné lokality jako konfigurační server. | Poskytuje konzoli pro správu a monitorování chráněného prostředí.
 **Hlavní cílový server** | Umístěný v sekundární lokalitě | Na hlavní cílový server se ukládají replikovaná data. Přijímá data z procesního serveru, vytváří repliku počítače v sekundární lokalitě a ukládá body pro uchovávání dat.<br/><br/> Počet hlavních cílových serverů, které potřebujete, závisí na počtu počítačů, které chráníte.<br/><br/> Pokud chcete po obnovení vrátit služby do primární lokality, potřebujete hlavní cílový server i tam. Na tento server je třeba nainstalovat Unified Agent.
 **VMware ESX/ESXi a server vCenter** |  Virtuální počítače jsou hostované na hostitelích ESX nebo ESXi. Hostitelé se spravují pomocí serveru vCenter. | Pro replikaci virtuálních počítačů VMware budete potřebovat infrastrukturu VMware.
 **Virtuální počítače / fyzické servery** |  Nástroj Unified Agent nainstalovaný na virtuálních počítačích nebo fyzických serverech VMware, které chcete replikovat. | Agent funguje jako zprostředkovatel komunikace mezi všemi součástmi.
@@ -38,7 +37,7 @@ Tento článek popisuje architekturu a procesy používané při nastavení repl
 2. Po počáteční replikaci odesílá agent na každém počítači na procesní server rozdílové replikační změny.
 3. Procesní server tato data optimalizuje a přenese je na hlavní cílový server v sekundární lokalitě. Konfigurační server spravuje replikační proces.
 
-**Obrázek 6: Replikace z VMware do VMware**
+**Obr. 6: Replikace z VMware do VMware**
 
 ![Z VMware do VMware](./media/site-recovery-components/vmware-to-vmware.png)
 

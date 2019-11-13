@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c82cad30fcc2aa80eea52ab13f60fc0c4da33cd1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 55ba5a193e15ac4e8bd83ac046deeac1f12d61d0
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471324"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961960"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Kurz: Komplexní ověřování a autorizace uživatelů v Azure App Service
 
@@ -51,11 +51,11 @@ Podle kroků v tomto kurzu můžete postupovat v systémech macOS, Linux a Windo
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
-* [Nainstalovat Git](https://git-scm.com/).
+* [Nainstalovat Git](https://git-scm.com/)
 * [Nainstalovat .NET Core](https://www.microsoft.com/net/core/).
 
 ## <a name="create-local-net-core-app"></a>Vytvoření místní aplikace .NET Core
@@ -80,7 +80,7 @@ ASP.NET Core můžete kdykoli zastavit stisknutím `Ctrl+C` v terminálu.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="deploy-apps-to-azure"></a>Nasazení aplikací na platformu Azure
+## <a name="deploy-apps-to-azure"></a>Nasazení aplikací do Azure
 
 V tomto kroku nasadíte projekt do dvou aplikací App Service. Jedna je front-endová aplikace a druhá je back-endová aplikace.
 
@@ -269,7 +269,7 @@ Teď, když jste povolili ověřování a autorizaci pro obě své aplikace, vyu
 
 1. Vyberte **Přidat oprávnění**a pak vyberte **moje rozhraní API** >  **\<back-end-App-Name >** .
 
-1. Na stránce **oprávnění rozhraní API** pro back-endové aplikace vyberte **delegovaná oprávnění** a **user_impersonation**a pak vyberte **Přidat oprávnění**.
+1. Na stránce **požádat o oprávnění API** pro back-endové aplikace vyberte **delegovaná oprávnění** a **user_impersonation**a pak vyberte **Přidat oprávnění**.
 
    ![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/app-service-web-tutorial-auth-aad/select-permission-front-end.png)
 
@@ -281,7 +281,7 @@ Přihlaste se k [Azure Resource Exploreru](https://resources.azure.com). V horn�
 
 ![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/app-service-web-tutorial-auth-aad/resources-enable-write.png)
 
-V levém prohlížeči klikněte na **předplatné** >  **_\<předplatné >_**  > **resourceGroups** > **MyAuthResourceGroup** > **poskytovatelé** > **Microsoft. Web.**  > **weby** >  **_\<front-end-app-Name >_**  > **config** > **authsettings**.
+V levém prohlížeči klikněte na **předplatné** >  **_\<předplatné >_**  > **resourceGroups** > **MyAuthResourceGroup** > **poskytovatelé** > **Microsoft. Web** > **weby** >  **_\<front-end-App-Name >_**  > **config** > **authsettings**.
 
 V zobrazení **authsettings** (nastavení ověřování) klikněte na **Edit** (Upravit). Pomocí ID klienta, které jste zkopírovali, nastavte `additionalLoginParams` na následující řetězec JSON. 
 
@@ -401,7 +401,7 @@ $routeProvider.when("/Home", {
 }).otherwise({ redirectTo: "/Home" });
 ```
 
-Tato nová změna přidá mapování `revolve`, které zavolá `/.auth/me` a nastaví přístupový token. Před vytvořením instance kontroleru `todoListCtrl` se ujistí, že máte přístupový token. Díky tomu všechna volání rozhraní API kontrolerem zahrnují token.
+Tato nová změna přidá mapování `resolve`, které zavolá `/.auth/me` a nastaví přístupový token. Před vytvořením instance kontroleru `todoListCtrl` se ujistí, že máte přístupový token. Díky tomu všechna volání rozhraní API kontrolerem zahrnují token.
 
 ### <a name="deploy-updates-and-test"></a>Nasazení aktualizací a test
 

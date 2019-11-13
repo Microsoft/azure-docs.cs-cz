@@ -1,6 +1,6 @@
 ---
-title: Modelování dat v Azure Time Series Insights Preview | Microsoft Docs
-description: Pochopení modelování dat v Azure Time Series Insights Preview.
+title: Modelování dat v prostředích ve verzi Preview – Azure Time Series Insights | Microsoft Docs
+description: Přečtěte si o modelování dat v Azure Time Series Insights ve verzi Preview.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81c2c2af78f5f066e1b27e14fa774df04d7c5868
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: fb1bfb30d531f8b93489c8fc1dfbc6b8172339a3
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063988"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006464"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Modelování dat v Azure Time Series Insights Preview
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak pracovat s modelem časových řad ve službě Azur
 
 Pokud se chcete dozvědět víc o použití aktualizace, přečtěte si téma [Azure Time Series Insights Průzkumník Preview](./time-series-insights-update-explorer.md).
 
-## <a name="types"></a>Druhy
+## <a name="types"></a>Typy
 
 ### <a name="create-a-single-type"></a>Vytvoření jednoho typu
 
@@ -76,7 +76,7 @@ Pokud se chcete dozvědět víc o použití aktualizace, přečtěte si téma [A
 
 1. Zadejte podrobnosti hierarchie a vyberte **vytvořit**.
 
-    [Podrobnosti ![hieararchy a tlačítko "vytvořit"](media/v2-update-how-to-tsm/portal-nine.png)](media/v2-update-how-to-tsm/portal-nine.png#lightbox)
+    [Podrobnosti ![hierarchie a tlačítko "vytvořit"](media/v2-update-how-to-tsm/portal-nine.png)](media/v2-update-how-to-tsm/portal-nine.png#lightbox)
 
 ### <a name="bulk-upload-one-or-more-hierarchies"></a>Hromadně nahrát jednu nebo více hierarchií
 

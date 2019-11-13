@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: mlearned
-ms.openlocfilehash: aa0cf1ef3f758d7aba4639d779bde90249d039cb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6fc1af356d035c4db73f761ce679f7ad16126d4f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815678"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013003"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Zabezpečený přístup k serveru rozhraní API pomocí rozsahů povolených IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -21,7 +21,7 @@ V Kubernetes Server rozhraní API přijímá požadavky na provádění akcí v 
 V tomto článku se dozvíte, jak pomocí rozsahů povolených IP adres serveru API omezit, které IP adresy a CIDRs můžou získat přístup k rovině řízení.
 
 > [!IMPORTANT]
-> V nových clusterech se rozsahy povolených IP adres serveru API podporují jenom v nástroji pro vyrovnávání zatížení *Standard* SKU. Stávající clustery s nakonfigurovanými rozsahy služby Load Balancer *základní* skladové položky a povolenými rozsahy IP adres serveru API budou dál fungovat tak, jak jsou. Existující clusers můžou být také upgradované a budou fungovat i nadále.
+> V nových clusterech se rozsahy povolených IP adres serveru API podporují jenom v nástroji pro vyrovnávání zatížení *Standard* SKU. Stávající clustery s nakonfigurovanými rozsahy služby Load Balancer *základní* skladové položky a povolenými rozsahy IP adres serveru API budou dál fungovat tak, jak jsou. Tyto existující clustery je také možné upgradovat a budou fungovat i nadále.
 
 ## <a name="before-you-begin"></a>Než začnete
 

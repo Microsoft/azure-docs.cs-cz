@@ -1,17 +1,14 @@
 ---
 title: Vyhodnocení dopadu nové zásady Azure
 description: Pochopení procesu, který se má provést při zavedení nové zásady do prostředí Azure
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 2aee31d3e874f709d5ec30ed4ddc0ba0445d4130
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 6c1a3ea764aedec7de5eab1f564176eaafead70b
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980766"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959824"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy"></a>Vyhodnocení dopadu nové zásady Azure
 
@@ -37,7 +34,7 @@ Z tohoto důvodu by měly být definice zásad pevně definované a zaměřené 
 ## <a name="audit-existing-resources"></a>Auditovat stávající prostředky
 
 Než budete chtít spravovat nové nebo aktualizované prostředky pomocí nové definice zásad, je nejlepší zjistit, jak vyhodnocuje omezené podmnožiny stávajících prostředků, jako je například testovací skupina prostředků. Pro přiřazení zásad použijte [režim vynucení](./assignment-structure.md#enforcement-mode)
-_zakázaný_ (DoNotEnforce), aby se zabránilo tomu, že se [projeví](./effects.md) spuštění nebo záznam v protokolu aktivit.
+_zakázáno_ (DoNotEnforce), aby se zabránilo tomu, že se [projeví](./effects.md) spuštění nebo záznam z protokolu aktivit.
 
 Tento krok vám umožní vyhodnotit výsledky dodržování předpisů pro nové zásady u existujících prostředků, aniž by to ovlivnilo pracovní tok. Ověřte, že žádné kompatibilní prostředky nejsou označené jako nevyhovující (_falešně pozitivní_) a že všechny prostředky, které očekáváte nedodržující předpisy, jsou správně označeny.
 Po počáteční podmnožině prostředků se ověří podle očekávání, pomalu Rozšiřte vyhodnocení na všechny stávající prostředky.

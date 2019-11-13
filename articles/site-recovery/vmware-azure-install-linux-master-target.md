@@ -1,5 +1,5 @@
 ---
-title: Instalace hlavního cílového serveru Linux pro navrácení služeb po obnovení do místní lokality | Microsoft Docs
+title: Instalace hlavního cílového serveru pro navrácení služeb po obnovení virtuálního počítače se systémem Linux pomocí Azure Site Recovery
 description: Přečtěte si, jak nastavit hlavní cílový server Linux pro navrácení služeb po obnovení do místní lokality během zotavení po havárii virtuálních počítačů VMware do Azure pomocí Azure Site Recovery.
 author: mayurigupta13
 services: site-recovery
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 5b4b3f5025edef242b87215665fd65f131157943
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 5b4d625d28584bb601905e9439c112c845219e54
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904398"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954383"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalace hlavního cílového serveru Linux pro navrácení služeb po obnovení
 Po převzetí služeb při selhání virtuálních počítačů do Azure můžete navrátit služby virtuálních počítačů na místní lokalitu. Pro navrácení služeb po obnovení musíte virtuální počítač znovu ochránit z Azure do místní lokality. Pro tento proces budete potřebovat místní hlavní cílový server pro příjem provozu. 
@@ -41,9 +41,9 @@ Komentáře nebo dotazy vystavte na konci tohoto článku nebo na [fóru Azure R
 ## <a name="sizing-guidelines-for-creating-master-target-server"></a>Pokyny pro změnu velikosti pro vytvoření hlavního cílového serveru
 
 Vytvořte hlavní cíl podle následujících pokynů pro změnu velikosti:
-- **PAMĚŤ RAM**: minimálně 6 GB
+- **RAM**: 6 GB nebo více
 - **Velikost disku operačního systému**: 100 GB nebo více (pro instalaci operačního systému)
-- **Další velikost disku pro jednotku pro uchovávání informací**: 1 TB
+- **Další velikost disku pro jednotku pro uchovávání dat**: 1 TB
 - **Jádra procesoru**: 4 jádra nebo víc
 
 Podporovány jsou následující jádra Ubuntu.
@@ -67,7 +67,7 @@ V jednotce DVD ponechte Ubuntu 16.04.2 s minimální 64 bitovou kopií ISO a spu
 
 1.  Jako preferovaný jazyk vyberte **angličtinu** a pak vyberte **ENTER**.
     
-    ![Vybrat jazyk](./media/vmware-azure-install-linux-master-target/image1.png)
+    ![Výběr jazyka](./media/vmware-azure-install-linux-master-target/image1.png)
 1. Vyberte **instalovat server Ubuntu**a pak vyberte **ENTER**.
 
     ![Výběr instalace serveru Ubuntu](./media/vmware-azure-install-linux-master-target/image2.png)
@@ -160,13 +160,13 @@ Chcete-li získat ID pro každý pevný disk SCSI ve virtuálním počítači se
 
 3. Vyberte kartu **Možnosti** .
 
-4. V levém podokně vyberte možnost **Upřesnit** > **Obecné**a potom v pravé dolní části obrazovky vyberte tlačítko **parametry konfigurace** .
+4. V levém podokně vyberte **upřesnit** > **Obecné**a potom v pravé dolní části obrazovky vyberte tlačítko **parametry konfigurace** .
 
     ![Otevřít konfigurační parametr](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
 
     Možnost **parametry konfigurace** není k dispozici, když je počítač spuštěný. Chcete-li nastavit tuto kartu jako aktivní, vypněte virtuální počítač.
 
-5. Podívejte se, jestli řádek s diskem není **. EnableUUID** už existuje.
+5. Podívejte se, jestli řádek s **diskem není. EnableUUID** už existuje.
 
    - Pokud hodnota existuje a je nastavená na **false**, změňte hodnotu na **true**. (Hodnoty nerozlišují velká a malá písmena.)
 
@@ -240,11 +240,11 @@ K vytvoření disku pro uchovávání informací použijte následující postup
 
 1. Připojte k virtuálnímu počítači s hlavním serverem Linux nový disk o 1 TB a spusťte počítač.
 
-2. Pomocí příkazu s více cestami se dozvíte víc s ID disku pro uchovávání informací: více cest
+2. Pomocí příkazu **s** více cestami se dozvíte víc s ID disku pro uchovávání **informací:** více cest
 
     ![ID více cest](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Naformátujte jednotku a pak na nové jednotce vytvořte systém souborů: **mkfs. ext4/dev/Mapper/\<s více >.**
+3. Naformátujte jednotku a pak na nové jednotce vytvořte systém souborů: **mkfs. ext4/dev/mapper/\<. >** .
     
     ![Systém souborů](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -261,7 +261,7 @@ K vytvoření disku pro uchovávání informací použijte následující postup
     
     Vyberte **Vložit** a začněte upravovat soubor. Vytvořte nový řádek a vložte následující text. Upravte na základě zvýrazněného IDENTIFIKÁTORu Multipath z předchozího příkazu více než na disku.
 
-    **/dev/Mapper/\<pro uchovávání informací – Multipath ID >/mnt/retention ext4 RW 0 0**
+    **/dev/Mapper/\<pro uchovávání disků – Multipath ID >/mnt/retention ext4 RW 0 0**
 
     Vyberte **ESC**a potom zadejte **: WQ** (Write and quit), čímž zavřete okno editoru.
 
@@ -342,7 +342,7 @@ Spusťte instalační program. Automaticky zjistí, že je agent nainstalovaný 
 
 Uvidíte, že pole **verze** obsahuje číslo verze hlavního cíle.
 
-## <a name="common-issues"></a>Běžné potíže
+## <a name="common-issues"></a>Běžné problémy
 
 * Ujistěte se, že jste vMotion úložiště nepnuli na žádné součásti pro správu, jako je například hlavní cíl. Pokud se hlavní cíl přesune po úspěšném opětovném zapnutí ochrany, disky virtuálních počítačů (VMDK) se nedají odpojit. V tomto případě se navrácení služeb po obnovení nezdařilo.
 
@@ -353,7 +353,7 @@ Uvidíte, že pole **verze** obsahuje číslo verze hlavního cíle.
     * Při spuštění = Ano
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Po dokončení instalace a registrace hlavního cíle se zobrazí hlavní cíl v sekci **hlavní cíl** v **Site Recovery infrastruktury**v části Přehled konfiguračního serveru.
 
 Nyní můžete pokračovat v [reprotection](vmware-azure-reprotect.md)a potom navrácení služeb po obnovení.

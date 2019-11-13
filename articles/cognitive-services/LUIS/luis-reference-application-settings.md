@@ -1,7 +1,7 @@
 ---
 title: Nastavení aplikace – LUIS
 titleSuffix: Azure Cognitive Services
-description: Pochopení nastavení aplikací pro jazyk porozumění aplikacím
+description: Nastavení aplikací pro porozumění aplikacím v Azure Cognitive Services se ukládají do aplikace a portálu.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,27 +9,27 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: 6d516590b90efd937789fa0847b707d2521f6459
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: bae4f09b539e26ca8c0d4ce97999776dc0911601
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932581"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961794"
 ---
 # <a name="application-settings"></a>Nastavení aplikace
 
 Tato nastavení aplikace jsou uložená v [exportované](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) aplikaci a [aktualizovaná](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) pomocí rozhraní REST API. Změna nastavení verze aplikace obnoví stav školení aplikace na neučení.
 
-|Nastavení|Výchozí hodnota|Poznámky|
+|Nastavení|Výchozí hodnota|Poznámky:|
 |--|--|--|
 |NormalizePunctuation|Pravda|Odebere interpunkci.|
 |NormalizeDiacritics|Pravda|Odebere diakritická znaménka.|
 
 ## <a name="diacritics-normalization"></a>Normalizace diakritiky 
 
-V `settings` parametru zapněte normalizaci utterance pro diakritická znaménka na váš soubor aplikace Luis JSON.
+V parametru `settings` zapněte normalizaci utterance pro diakritická znaménka na váš soubor aplikace LUIS JSON.
 
 ```JSON
 "settings": [
@@ -46,7 +46,7 @@ Následující projevy ukazuje, jakým způsobem normalizace diakritiky ovlivňu
 
 ### <a name="language-support-for-diacritics"></a>Jazyková podpora pro diakritická znaménka
 
-#### <a name="brazilian-portuguese-pt-br-diacritics"></a>Brazilské brazilská `pt-br` diakritika
+#### <a name="brazilian-portuguese-pt-br-diacritics"></a>Brazilské portugalštiny `pt-br` diakritiky
 
 |Diakritická znaménka nastavena na hodnotu false|Diakritická znaménka nastavená na true|
 |-|-|
@@ -64,7 +64,7 @@ Následující projevy ukazuje, jakým způsobem normalizace diakritiky ovlivňu
 |`ú`|`u`| 
 |||
 
-#### <a name="dutch-nl-nl-diacritics"></a>Nizozemská `nl-nl` diakritická znaménka
+#### <a name="dutch-nl-nl-diacritics"></a>Nizozemská `nl-nl` diakritika
 
 |Diakritická znaménka nastavena na hodnotu false|Diakritická znaménka nastavená na true|
 |-|-|
@@ -81,7 +81,7 @@ Následující projevy ukazuje, jakým způsobem normalizace diakritiky ovlivňu
 |`ü`|`u`|
 |||
 
-#### <a name="french-fr--diacritics"></a>Francouzské `fr-` diakritiky
+#### <a name="french-fr--diacritics"></a>`fr-` diakritiky ve francouzštině
 
 To zahrnuje francouzské i kanadské jazykové kultury.
 
@@ -110,7 +110,7 @@ To zahrnuje francouzské i kanadské jazykové kultury.
 |`ö`|`o`| 
 |`ü`|`u`| 
 
-#### <a name="italian-it-it-diacritics"></a>Nizozemská `it-it` diakritická znaménka
+#### <a name="italian-it-it-diacritics"></a>`it-it` diakritiky pro italštinu
 
 |Diakritická znaménka nastavena na hodnotu false|Diakritická znaménka nastavená na true|
 |--|--|
@@ -125,7 +125,7 @@ To zahrnuje francouzské i kanadské jazykové kultury.
 |`ù`|`u`|
 |`ú`|`u`|
 
-#### <a name="spanish-es--diacritics"></a>Španělská `es-` diakritika
+#### <a name="spanish-es--diacritics"></a>Španělština `es-` diakritiky
 
 To zahrnuje jak španělštinu, tak i kanadskou mexický.
 
@@ -142,7 +142,7 @@ To zahrnuje jak španělštinu, tak i kanadskou mexický.
 
 ## <a name="punctuation-normalization"></a>Normalizace interpunkce
 
-Zapněte normalizaci utterance pro interpunkci do souboru aplikace Luis JSON v `settings` parametru.
+Zapněte normalizaci utterance pro interpunkci do souboru aplikace LUIS JSON v parametru `settings`.
 
 ```JSON
 "settings": [
@@ -150,16 +150,16 @@ Zapněte normalizaci utterance pro interpunkci do souboru aplikace Luis JSON v `
 ] 
 ```
 
-Následující projevy ukazuje, jak mají diakritická znaménka vliv na projevy:
+Následující projevy ukazuje, jak interpunkce má vliv na projevy:
 
-|S diakritikou nastavenou na hodnotu false|S diakritikou nastavenou na hodnotu true|
+|S interpunkčním znaménkem nastaveným na false|S interpunkčním znaménkem nastaveným na true|
 |--|--|
 |`Hmm..... I will take the cappuccino`|`Hmm I will take the cappuccino`|
 |||
 
 ### <a name="punctuation-removed"></a>Odebraná interpunkce
 
-Následující interpunkční znaménko je odebráno s `NormalizePunctuation` nastavením na hodnotu true.
+Následující interpunkční znaménko se odebere s `NormalizePunctuation` je nastavená na hodnotu true.
 
 |Interpunkce|
 |--|

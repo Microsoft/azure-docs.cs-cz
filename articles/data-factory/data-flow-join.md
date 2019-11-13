@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 4680804017a9b08248bb41ff999c6ba6371e99c8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: aae502b350f2cf2e98849b2b6e25543516a0c547
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675914"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961838"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Transformace spojení v toku dat mapování
 
@@ -36,7 +36,7 @@ Pravé vnější spojení vrátí všechny řádky z pravého proudu a odpovída
 
 ### <a name="full-outer"></a>Úplné vnější
 
-Plné vnější spojení vyprodukuje výstup všech sloupců a řádků z obou stran s hodnotami NULL pro sloupce se neshodují.
+Úplné vnější spojení vyprodukuje všechny sloupce a řádky z obou stran s hodnotami NULL pro sloupce, které se neshodují.
 
 ### <a name="cross-join"></a>Vzájemné spojení
 

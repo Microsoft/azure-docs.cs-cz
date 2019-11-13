@@ -1,19 +1,18 @@
 ---
-title: Použití plánů obnovení při zotavení po havárii pomocí Azure Site Recovery
+title: O plánech obnovení v Azure Site Recovery
 description: Přečtěte si o použití plánů obnovení pro zotavení po havárii pomocí služby Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
-services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 9e45787e7ae39b62605f5d8a54afd4ad95c9cca7
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 640f7258821718c5d406dd581d1f9c503e0d41c2
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331904"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953878"
 ---
 # <a name="about-recovery-plans"></a>Plány obnovení
 
@@ -63,11 +62,11 @@ V takovém případě se toto přizpůsobení stane při spuštění převzetí 
 
 Obnovování rozsáhlých aplikací může být složitý úkol. Ruční kroky činí proces náchylný k chybě a osoba, která přebírá převzetí služeb při selhání, nemusí vědět o všech složitými rozhraními App. Plán obnovení můžete použít k vytvoření objednávky a automatizaci akcí potřebných v každém kroku, a to pomocí Azure Automation Runbooky pro převzetí služeb při selhání do Azure nebo skriptů. Pro úlohy, které nemůžou být automatizované, můžete do plánů obnovení vložit pauzy pro ruční akce. Existuje několik typů úloh, které můžete nakonfigurovat:
 
-* **Úlohy na virtuálním počítači Azure po převzetí služeb při selhání**: když převezmete služby do Azure, obvykle je potřeba provést akce, abyste se mohli k virtuálnímu počítači připojit po převzetí služeb při selhání. Například: 
+* **Úlohy na virtuálním počítači Azure po převzetí služeb při selhání**: když převezmete služby do Azure, obvykle je potřeba provést akce, abyste se mohli k virtuálnímu počítači připojit po převzetí služeb při selhání. Příklad: 
     * Vytvořte veřejnou IP adresu na virtuálním počítači Azure.
     * Přiřaďte skupinu zabezpečení sítě k síťovému adaptéru virtuálního počítače Azure.
     * Přidejte Nástroj pro vyrovnávání zatížení do skupiny dostupnosti.
-* **Úkoly v rámci virtuálního počítače po převzetí služeb při selhání**: tyto úlohy obvykle překonfigurují aplikaci běžící na počítači, aby i nadále fungovala správně v novém prostředí. Například:
+* **Úkoly v rámci virtuálního počítače po převzetí služeb při selhání**: tyto úlohy obvykle překonfigurují aplikaci běžící na počítači, aby i nadále fungovala správně v novém prostředí. Příklad:
     * Upravte připojovací řetězec databáze v počítači.
     * Změňte konfiguraci nebo pravidla webového serveru.
 
@@ -84,7 +83,7 @@ K aktivaci testovacího převzetí služeb při selhání můžete použít plá
 
     ![Snímek obrazovky s příkladem plánu testovacího obnovení v Site Recovery](./media/recovery-plan-overview/rptest.png)
 
-## <a name="watch-the-video"></a>Podívejte se na video.
+## <a name="watch-the-video"></a>Přehrát video
 
 Podívejte se na video s rychlým příkladem, ve kterém se při převzetí služeb při selhání podíváte na oboustrannou aplikaci WordPress.
     

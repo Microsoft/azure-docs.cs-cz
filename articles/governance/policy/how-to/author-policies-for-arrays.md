@@ -1,17 +1,14 @@
 ---
 title: Vytváření zásad pro vlastnosti polí u prostředků
 description: Naučte se vytvořit parametry pole, vytvořit pravidla pro výrazy jazyka Array, vyhodnotit alias [*] a přidat prvky do existujícího pole s pravidly Azure Policy definice.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/06/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 33607d790f564075623d6f61d1b7b8b70a119f98
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: f28cffcf928f9c4da6b2dae2a0811200397c1f0d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255809"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959714"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Vytváření zásad pro vlastnosti pole v prostředcích Azure
 
@@ -19,7 +16,7 @@ Vlastnosti Azure Resource Manager jsou běžně definovány jako řetězce a log
 
 - Typ [parametru definice](../concepts/definition-structure.md#parameters), který poskytuje více možností
 - Součást [pravidla zásad](../concepts/definition-structure.md#policy-rule) s použitím podmínek **v** nebo **notIn**
-- Součást pravidla zásad, které vyhodnocuje [alias \[ @ no__t-2 @ no__t-3](../concepts/definition-structure.md#understanding-the--alias) k vyhodnocení konkrétních scénářů, jako je **none**, **Any**nebo **All**
+- Součást pravidla zásad, které vyhodnocuje [\[\*\] alias](../concepts/definition-structure.md#understanding-the--alias) pro vyhodnocení konkrétních scénářů, jako jsou **none**, **Any**nebo **All**
 - V [efektu připojit](../concepts/effects.md#append) , který se má nahradit nebo přidat k existujícímu poli
 
 Tento článek se zabývá každým použitím Azure Policy a poskytuje několik ukázkových definic.
@@ -104,8 +101,8 @@ Chcete-li použít tento řetězec pro každou sadu SDK, použijte následujíc�
 
 ### <a name="array-conditions"></a>Podmínky pole
 
-[Podmínky](../concepts/definition-structure.md#conditions) pravidla zásad, které je možné použít jako**typ** parametru _Array_
-, jsou omezené na `in` a `notIn`. Následující definici zásad proveďte s podmínkou `equals` jako příklad:
+[Podmínky](../concepts/definition-structure.md#conditions) pravidla zásad, které je možné použít jako **typ** parametru _Array_
+, jsou omezené na `in` a `notIn`. Jako příklad proveďte následující definici zásady s podmínkou `equals`:
 
 ```json
 {
@@ -137,14 +134,14 @@ Při pokusu o vytvoření této definice zásady prostřednictvím Azure Portal 
 
 - Zásady {GUID} nešlo parametrizované kvůli chybám ověření. Zkontrolujte prosím, jestli jsou parametry zásad správně definované. Výsledek vyhodnocení vnitřní výjimky pro výraz jazyka [Parameters (' allowedLocations ')] je typu Array, očekával se typ String.
 
-Očekávaný **typ** podmínky `equals` je _řetězec_. Vzhledem k tomu, že **allowedLocations** je definován jako _pole_ **typu** , modul zásad vyhodnotí výraz jazyka a vyvolá chybu. V případě podmínky `in` a `notIn` vyočekává modul zásad ve výrazu jazyka _pole_ **typu** . Chcete-li tuto chybovou zprávu vyřešit, změňte `equals` na buď `in`, nebo `notIn`.
+Očekávaným **typem** podmínky `equals` je _řetězec_. Vzhledem k tomu, že **allowedLocations** je definován jako _pole_ **typu** , modul zásad vyhodnotí výraz jazyka a vyvolá chybu. V případě `in` a `notIn` podmínky očekává modul zásad ve výrazu jazyka _pole_ typu. Chcete-li tuto chybovou zprávu vyřešit, změňte `equals` na `in` nebo `notIn`.
 
 ### <a name="evaluating-the--alias"></a>Vyhodnocení aliasu [*]
 
-Aliasy, které mají **[\*]** připojené k jejich názvu, označují, že **typ** je _pole_. Místo vyhodnocování hodnoty celého pole **[\*]** je možné vyhodnotit každý prvek pole. Existují tři scénáře, které jsou pro vyhodnocení každé položky užitečné: žádné, žádné a všechny.
+Aliasy, které mají **[\*]** připojené k jejich názvu, označují, že **typ** je _pole_. Místo vyhodnocení hodnoty celého pole, **[\*]** , umožňuje vyhodnotit každý prvek pole. Existují tři scénáře, které jsou pro vyhodnocení každé položky užitečné: žádné, žádné a všechny.
 
 Modul zásad aktivuje **efekt** v **a pak** jenom v případě, že se pravidlo **if** vyhodnotí jako true.
-Tento fakt je důležitý pro pochopení v kontextu způsobu, jakým **[\*]** vyhodnocuje každý jednotlivý prvek pole.
+Tento fakt je důležité pochopit v kontextu způsobu, jakým **[\*]** vyhodnocuje každý jednotlivý prvek pole.
 
 Příklad pravidla zásad pro tabulku scénář:
 
@@ -180,11 +177,11 @@ Pole **ipRules** je pro následující tabulku scénář následující:
 ]
 ```
 
-U každého příkladu podmínky nahraďte `<field>` pomocí `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`.
+U každého příkladu podmínky nahraďte `<field>` `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`.
 
 Následující výsledky jsou výsledkem kombinace podmínky a ukázkového pravidla zásad a pole stávajících hodnot výše:
 
-|Podmínka |Zaznamenaný |Vysvětlení |
+|Podmínka |Výsledek |Vysvětlení |
 |-|-|-|
 |`{<field>,"notEquals":"127.0.0.1"}` |Žádným |Jeden prvek pole se vyhodnotí jako false (127.0.0.1! = 127.0.0.1) a jeden jako true (127.0.0.1! = 192.168.1.1), takže podmínka **notEquals** je _nepravdivá_ a efekt se neaktivuje. |
 |`{<field>,"notEquals":"10.0.4.1"}` |Vliv na zásady |Obě prvky pole se vyhodnocují jako true (10.0.4.1! = 127.0.0.1 a 10.0.4.1! = 192.168.1.1), takže podmínka **notEquals** je _pravdivá_ a výsledek se aktivuje. |
@@ -197,18 +194,18 @@ Následující výsledky jsou výsledkem kombinace podmínky a ukázkového prav
 
 ## <a name="the-append-effect-and-arrays"></a>Efekt připojení a pole
 
-[Efekt připojení](../concepts/effects.md#append) se chová odlišně v závislosti na tom, zda je v **poli details. field** alias **[\*]** , nebo ne.
+[Efekt připojení](../concepts/effects.md#append) se chová odlišně v závislosti na tom, zda je v **poli podrobnosti** alias **[\*]** .
 
 - Pokud se nejedná o alias **[\*]** , příkaz append nahradí celé pole vlastností **Value** .
-- Když alias **[\*]** připojí, přidá vlastnost **Value** do existujícího pole nebo vytvoří nové pole.
+- Když alias **[\*]** přidá vlastnost **Value** do existujícího pole nebo vytvoří nové pole.
 
 Další informace najdete v [příkladech připojení](../concepts/effects.md#append-examples).
 
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si příklady na [Azure Policy Samples](../samples/index.md).
-- Zkontrolujte [strukturu definice Azure Policy](../concepts/definition-structure.md).
-- Přečtěte si téma [Principy efektů zásad](../concepts/effects.md).
+- Projděte si [strukturu definic Azure Policy](../concepts/definition-structure.md).
+- Projděte si [Vysvětlení efektů zásad](../concepts/effects.md).
 - Zjistěte, jak [programově vytvářet zásady](programmatically-create.md).
 - Přečtěte si, jak [opravit prostředky, které nedodržují předpisy](remediate-resources.md).
 - Seznamte se s tím, co skupina pro správu [organizuje vaše prostředky pomocí skupin pro správu Azure](../../management-groups/overview.md).

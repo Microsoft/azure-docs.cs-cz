@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 9af85d8d9b181d619d8895542f142708626649d1
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 594534f64c984f4afb986d3366f388e412bde27c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620836"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961471"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Matice podpory pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 
@@ -91,21 +91,21 @@ Akcelerované síťové služby | Ne | Ne
 
 ## <a name="hyper-v-host-storage"></a>Úložiště hostitele technologie Hyper-V
 
-**Úložiště** | **Hyper-V s Virtual Machine Manager** | **Hyper-V bez Virtual Machine Manager**
+**Storage** | **Hyper-V s Virtual Machine Manager** | **Hyper-V bez Virtual Machine Manager**
 --- | --- | --- 
 NFS | Není k dispozici | Není k dispozici
 SMB 3.0 | Ano | Ano
 SÍŤ SAN (ISCSI) | Ano | Ano
-Multipath (multi-Path). Testováno pomocí:<br></br> Microsoft DSM, EMC PowerPath 5,7 SP4<br/><br/> EMC PowerPath DSM pro CLARiiON | Ano | Ano
+Multipath (multi-Path). Testováno pomocí:<br></br> Microsoft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM pro CLARiiON | Ano | Ano
 
 ## <a name="hyper-v-vm-guest-storage"></a>Úložiště hostů virtuálních počítačů Hyper-V
 
-**Úložiště** | **Hyper-V s Virtual Machine Manager** | **Hyper-V bez Virtual Machine Manager**
+**Storage** | **Hyper-V s Virtual Machine Manager** | **Hyper-V bez Virtual Machine Manager**
 --- | --- | ---
-FORMÁTU | Není k dispozici | Není k dispozici
+VMDK | Není k dispozici | Není k dispozici
 VHD/VHDX | Ano | Ano
 Virtuální počítač 2. generace | Ano | Ano
-ROZHRANÍ EFI/UEFI| Ano | Ano
+ROZHRANÍ EFI/UEFI<br></br>Migrovaný virtuální počítač v Azure se automaticky převede na spouštěcí virtuální počítač se systémem BIOS. Na virtuálním počítači by měl běžet jenom Windows Server 2012 a novější. Disk s operačním systémem by měl mít až pět oddílů nebo méně a velikost disku s operačním systémem by měla být menší než 300 GB.| Ano | Ano
 Disk sdíleného clusteru | Ne | Ne
 Zašifrovaný disk | Ne | Ne
 NFS | Není k dispozici | Není k dispozici
@@ -132,6 +132,7 @@ Studené úložiště | Ne | Ne
 Horké úložiště| Ne | Ne
 Objekty blob bloku | Ne | Ne
 Šifrování v klidovém prostředí (SSE)| Ano | Ano
+Šifrování v klidovém umístění (CMK)| Ne | Ne
 Premium Storage | Ano | Ano
 Služba import/export | Ne | Ne
 Účty úložiště Azure s povolenou bránou firewall | Ano. Pro cílové úložiště a mezipaměť. | Ano. Pro cílové úložiště a mezipaměť.
@@ -161,7 +162,7 @@ Velikost virtuálního pevného disku datového disku | Až 4 095 GB | Nepodporo
 Síťové adaptéry | Podporuje se více adaptérů |
 Sdílený virtuální pevný disk | Nepodporuje se | Nepodporovaná Chyba kontroly požadovaných součástí
 Disk FC | Nepodporuje se | Nepodporovaná Chyba kontroly požadovaných součástí
-Formát pevného disku | VIRTUÁLNÍHO <br/><br/> DISKU | Při převzetí služeb při selhání do Azure Site Recovery automaticky převede VHDX na VHD. Po navrácení služeb po obnovení do místního nasazení budou virtuální počítače nadále používat formát VHDX.
+Formát pevného disku | VIRTUÁLNÍHO <br/><br/> VHDX | Při převzetí služeb při selhání do Azure Site Recovery automaticky převede VHDX na VHD. Po navrácení služeb po obnovení do místního nasazení budou virtuální počítače nadále používat formát VHDX.
 BitLocker | Nepodporuje se | Aby bylo možné povolit replikaci virtuálního počítače, musí být nástroj BitLocker zakázán.
 název virtuálního počítače | 1 až 63 znaků. Pouze písmena, číslice a pomlčky. Název virtuálního počítače musí začínat a končit písmenem nebo číslicí. | Aktualizujte hodnotu ve vlastnostech virtuálního počítače v Site Recovery.
 Typ virtuálního počítače | Generace 1<br/><br/> Generace 2 – Windows | Virtuální počítače 2. generace s typem disku operačního systému Basic (obsahující jeden nebo dva datové svazky formátované jako VHDX) a jsou podporované méně než 300 GB místa na disku.<br></br>Virtuální počítače se systémem Linux generace 2 nejsou podporovány. [Další informace](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)|

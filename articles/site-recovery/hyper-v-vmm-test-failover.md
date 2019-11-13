@@ -1,5 +1,5 @@
 ---
-title: Spuštění postupu zotavení po havárii pro virtuální počítače Hyper-V do sekundární lokality pomocí Azure Site Recovery | Microsoft Docs
+title: Spuštění postupu zotavení po havárii NHyper-V na sekundární lokalitu pomocí Azure Site Recovery
 description: Přečtěte si, jak spustit postup zotavení po havárii pro virtuální počítače Hyper-V v cloudech VMM do sekundárního místního datacentra pomocí Azure Site Recovery.
 author: rajani-janaki-ram
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: ef8504f3f79d23fa0d59493c06cfbe133e1c4113
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 444868f1716ae55f1851e50c057b172f5e3eb3d1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933457"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961402"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Spuštění postupu zotavení po havárii pro virtuální počítače Hyper-V do sekundární lokality
 
@@ -49,7 +49,7 @@ Při spuštění testovacího převzetí služeb při selhání se zobrazí výz
 
 | **Možnost** | **Podrobnosti** | |
 | --- | --- | --- |
-| **NTato** | Testovací virtuální počítač se vytvoří na hostiteli, na kterém je umístěný virtuální počítač repliky. Není přidaný do cloudu a není připojený k žádné síti.<br/><br/> Počítač můžete po vytvoření připojit k síti virtuálních počítačů.| |
+| **Žádné** | Testovací virtuální počítač se vytvoří na hostiteli, na kterém je umístěný virtuální počítač repliky. Není přidaný do cloudu a není připojený k žádné síti.<br/><br/> Počítač můžete po vytvoření připojit k síti virtuálních počítačů.| |
 | **Použít existující** | Testovací virtuální počítač se vytvoří na hostiteli, na kterém je umístěný virtuální počítač repliky. Není přidaný do cloudu.<br/><br/>Vytvořte síť virtuálních počítačů, která je izolovaná od produkční sítě.<br/><br/>Pokud používáte síť na bázi VLAN, doporučujeme pro tento účel vytvořit samostatnou logickou síť (nepoužitou v produkčním prostředí). Tato logická síť slouží k vytváření sítí virtuálních počítačů pro testovací převzetí služeb při selhání.<br/><br/>Logická síť by měla být přidružená alespoň k jednomu ze síťových adaptérů všech serverů Hyper-V, které jsou hostiteli virtuálních počítačů.<br/><br/>U logických sítí VLAN by se měly izolované síťové lokality, které přidáte do logické sítě.<br/><br/>Pokud používáte logickou síť založenou na virtualizaci sítě Windows, Azure Site Recovery automaticky vytvoří izolované sítě virtuálních počítačů. | |
 | **Vytvoření sítě** | Dočasná testovací síť je vytvořena automaticky na základě nastavení, které zadáte v **logické síti** a v příslušných síťových lokalitách.<br/><br/> Převzetí služeb při selhání kontroluje, jestli jsou virtuální počítače vytvořené.<br/><br/> Tuto možnost byste měli použít, pokud plán obnovení používá více než jednu síť virtuálních počítačů.<br/><br/> Pokud používáte sítě virtualizace sítě Windows, tato možnost umožňuje automaticky vytvořit sítě virtuálních počítačů se stejnými nastaveními (podsítě a fondy IP adres) v síti virtuálního počítače repliky. Tyto sítě virtuálních počítačů se vyčistí automaticky po dokončení testovacího převzetí služeb při selhání.<br/><br/> Testovací virtuální počítač se vytvoří na hostiteli, na kterém existuje virtuální počítač repliky. Není přidaný do cloudu.|
 

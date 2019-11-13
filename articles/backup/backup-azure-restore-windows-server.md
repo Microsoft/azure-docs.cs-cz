@@ -1,6 +1,6 @@
 ---
-title: Obnovení dat v Azure na počítač se systémem Windows Server nebo Windows
-description: Naučte se, jak obnovit data uložená v Azure do počítače s Windows serverem nebo Windows.
+title: Obnovení dat v Azure na Windows Server – Azure Backup
+description: V tomto článku se dozvíte, jak obnovit data uložená v Azure do počítače s Windows serverem nebo Windows pomocí agenta Microsoft Azure Recovery Services (MARS).
 ms.reviewer: saurse
 author: dcurwin
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.author: dacurwin
-ms.openlocfilehash: 4c0686fc72bfcafdfee650822aece15b8f3fb766
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 4d9ab47d83caadda9046481c15dfb6af18aee146
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210336"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012193"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Obnovení souborů do Windows pomocí modelu nasazení Azure Resource Manager
 
@@ -25,7 +25,7 @@ Tento článek vysvětluje, jak obnovit data z trezoru služby Backup. Chcete-li
 Pomocí funkce okamžitého obnovení můžete připojit zapisovatelný zapisovatelný snímek bodu obnovení jako svazek pro obnovení. Pak můžete prozkoumat svazek pro obnovení a kopírovat soubory do místního počítače, a tak selektivně obnovovat soubory.
 
 > [!NOTE]
-> Pokud chcete k obnovení dat použít okamžité obnovení, je potřeba [aktualizace z ledna 2017 Azure Backup](https://support.microsoft.com/en-us/help/3216528?preview) . Zálohovaná data musí být také chráněna v trezorech v místních prostředích uvedených v článku podpory. Nejnovější seznam národních prostředí, která podporují okamžité obnovení, najdete v [2017. Azure Backup aktualizace](https://support.microsoft.com/en-us/help/3216528?preview) .
+> Pokud chcete k obnovení dat použít okamžité obnovení, je potřeba [aktualizace z ledna 2017 Azure Backup](https://support.microsoft.com/help/3216528?preview) . Zálohovaná data musí být také chráněna v trezorech v místních prostředích uvedených v článku podpory. Nejnovější seznam národních prostředí, která podporují okamžité obnovení, najdete v [2017. Azure Backup aktualizace](https://support.microsoft.com/help/3216528?preview) .
 >
 
 Pomocí okamžitého obnovení s Recovery Services trezory v Azure Portal. Pokud jste data ukládali v trezorech služby Backup, byly převedeny na Recovery Services trezory. Pokud chcete použít okamžité obnovení, Stáhněte aktualizaci MARS a postupujte podle pokynů pro okamžité obnovení.
@@ -44,16 +44,16 @@ Pokud jste omylem odstranili soubor a chcete ho obnovit do stejného počítače
 
     ![Snímek obrazovky Azure Backup se zvýrazněnou možností obnovit data](./media/backup-azure-restore-windows-server/recover.png)
 
-3. Na stránce **Začínáme** pro obnovení dat na stejném serveru nebo počítači vyberte >  **Tento server (`<server name>`)** **Další**.
+3. Chcete-li obnovit data na stejném serveru nebo počítači, vyberte na stránce **Začínáme** možnost **tento server (`<server name>`)**  > **Další**.
 
     ![Snímek obrazovky s Začínáme stránku Průvodce obnovením dat](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
-4. Na stránce **Vybrat režim obnovení** vyberte **jednotlivé soubory a složky** > **Další**.
+4. Na stránce **Vybrat režim obnovení** zvolte **jednotlivé soubory a složky** > **Další**.
 
     ![Snímek obrazovky Průvodce obnovením dat – výběr stránky režimu obnovení](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
    > [!IMPORTANT]
    > Možnost obnovení jednotlivých souborů a složek vyžaduje .NET Framework 4.5.2 nebo novější. Pokud nevidíte možnost **jednotlivé soubory a složky** , musíte upgradovat .NET Framework na verzi 4.5.2 nebo novější. potom to zkuste znovu.
-
+ 
    > [!TIP]
    > Možnost **jednotlivé soubory a složky** umožňuje rychlý přístup k datům bodů obnovení. Je vhodný pro obnovení jednotlivých souborů, jejichž velikost celkově nepřekračuje 80 GB, a během obnovování nabízí rychlost přenosu nebo kopírování až 6 MB/s. Možnost **svazek** obnoví všechna zálohovaná data v zadaném svazku. Tato možnost nabízí rychlejší přenosovou rychlost (až 60 MB/s), která je ideální pro obnovování velkých objemů dat nebo celých svazků.
 
@@ -71,11 +71,9 @@ Pokud jste omylem odstranili soubor a chcete ho obnovit do stejného počítače
 
     ![Snímek obrazovky se stránkou Průvodce obnovením dat procházení a obnovení souborů](./media/backup-azure-restore-windows-server/samemachine_browserecover_instantrestore.png)
 
-
 8. V Průzkumníku Windows zkopírujte soubory a složky, které chcete obnovit, a vložte je do libovolného umístění na serveru nebo v místním počítači. Soubory můžete otevřít nebo zasílat přímo ze svazku pro obnovení a ověřit, jestli obnovujete správné verze.
 
     ![Snímek obrazovky Průzkumníka Windows se zvýrazněnou možností kopírovat](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
-
 
 9. Až budete hotovi, na stránce **Procházet a obnovit soubory** vyberte **Odpojit**. Pak vyberte **Ano** a potvrďte tak, že chcete odpojit svazek.
 
@@ -85,16 +83,15 @@ Pokud jste omylem odstranili soubor a chcete ho obnovit do stejného počítače
     > Pokud nevyberete **Odpojit**, svazek pro obnovení zůstane připojený po dobu 6 hodin od okamžiku, kdy byl připojen. Doba připojení se ale v případě probíhajícího kopírování souborů prodlouží na 24 hodin. Během připojení svazku se nespustí žádné operace zálohování. Jakákoli zálohovací operace naplánovaná ke spuštění v době, kdy je svazek připojen, se spustí po odpojení svazku pro obnovení.
     >
 
-
 ## <a name="use-instant-restore-to-restore-data-to-an-alternate-machine"></a>Obnovení dat na alternativním počítači pomocí okamžitého obnovení
-Pokud dojde ke ztrátě celého serveru, můžete i nadále obnovit data z Azure Backup na jiný počítač. Následující kroky ilustrují pracovní postup.
 
+Pokud dojde ke ztrátě celého serveru, můžete i nadále obnovit data z Azure Backup na jiný počítač. Následující kroky ilustrují pracovní postup.
 
 Tyto kroky zahrnují následující terminologii:
 
 * *Zdrojový počítač* – původní počítač, ze kterého byla provedena záloha, a který není momentálně k dispozici.
 * *Cílový počítač* – počítač, na který se data obnovují.
-* *Vzorový trezor* – Recovery Services trezor, ke kterému jsou zaregistrované zdrojový počítač a cílový počítač. <br/>
+* *Vzorový trezor* – Recovery Services trezor, ke kterému jsou zaregistrované zdrojový počítač a cílový počítač.
 
 > [!NOTE]
 > Zálohy nelze obnovit do cílového počítače, na kterém je spuštěna dřívější verze operačního systému. Například zálohování z počítače se systémem Windows 7 lze obnovit v počítači se systémem Windows 7 (nebo novějším). Zálohu pořízenou z počítače se systémem Windows 8 nelze obnovit do počítače se systémem Windows 7.
@@ -116,7 +113,6 @@ Tyto kroky zahrnují následující terminologii:
 5. Zadejte soubor s přihlašovacími údaji úložiště, který odpovídá trezoru ukázek, a vyberte **Další**.
 
     Pokud je soubor přihlašovacích údajů trezoru neplatný (nebo vypršela jeho platnost), Stáhněte si nový soubor s přihlašovacími údaji trezoru z trezoru ukázek v Azure Portal. Po zadání platného pověření trezoru se zobrazí název odpovídajícího úložiště záloh.
-
 
 6. Na stránce **Vybrat záložní server** vyberte zdrojový počítač ze seznamu zobrazených počítačů a zadejte heslo. Pak vyberte **Další**.
 
@@ -150,5 +146,6 @@ Tyto kroky zahrnují následující terminologii:
     > Pokud nevyberete **Odpojit**, svazek pro obnovení zůstane připojený po dobu 6 hodin od okamžiku, kdy byl připojen. Doba připojení se ale v případě probíhajícího kopírování souborů prodlouží na 24 hodin. Během připojení svazku se nespustí žádné operace zálohování. Jakákoli zálohovací operace naplánovaná ke spuštění v době, kdy je svazek připojen, se spustí po odpojení svazku pro obnovení.
     >
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
+
 Teď, když jste obnovili své soubory a složky, můžete [Spravovat zálohy](backup-azure-manage-windows-server.md).

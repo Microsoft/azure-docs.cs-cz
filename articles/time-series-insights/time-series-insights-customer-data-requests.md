@@ -1,6 +1,6 @@
 ---
-title: Funkce žádosti o zákaznická data v Azure Time Series Insights | Microsoft Docs
-description: Souhrn Azure Time Series Insights funkcí žádosti o zákaznická data
+title: Funkce žádosti o zákaznická data – Azure Time Series Insights | Microsoft Docs
+description: Přečtěte si o funkcích zákaznických údajů o zákaznících v Azure Time Series Insights.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: ba883ec3ce8f8ca4491b8576e6633ba2837bb5b2
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: d134c7cbe220e6aa6b1471b50aa23e17d09734d5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990093"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007027"
 ---
-# <a name="summary-of-customer-data-request-features"></a>Shrnutí funkcí žádosti o data zákazníků
+# <a name="summary-of-customer-data-request-features"></a>Souhrnné informace o zákaznická data žádosti o funkce
 
 Azure Time Series Insights je spravovaná cloudová služba s komponentami pro úložiště, analýzu a vizualizace, která usnadňuje ingestování, ukládání, prozkoumávání a analýzu miliard událostí současně.
 
@@ -28,7 +28,7 @@ Pokud chcete zobrazit, exportovat a odstranit osobní údaje, které mohou podl�
 
 Azure Time Series Insights považují osobní údaje za data přidružená správcům a uživatelům Time Series Insights. Time Series Insights ukládá Azure Active Directory objektu – ID uživatelů s přístupem k prostředí. Azure Portal zobrazí e-mailové adresy uživatelů, ale tyto e-mailové adresy se v Time Series Insights neukládají, dynamicky se vyhledá pomocí Azure Active Directory objektu-ID v Azure Active Directory.
 
-## <a name="deleting-customer-data"></a>Odstraňují se zákaznická data
+## <a name="deleting-customer-data"></a>Odstraňuje se zákaznická data
 
 Správce klienta může odstranit zákaznická data pomocí Azure Portal.
 

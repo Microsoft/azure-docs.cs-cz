@@ -1,5 +1,5 @@
 ---
-title: Informace o používání služby Azure ExpressRoute s Azure Site Recovery pro zotavení po havárii a jejich migraci | Microsoft Docs
+title: O použití ExpressRoute s Azure Site Recovery
 description: Popisuje, jak používat Azure ExpressRoute se službou Azure Site Recovery pro zotavení po havárii a pro migraci.
 services: site-recovery
 author: mayurigupta13
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 97aea824fac60f8bed71971a416f12e8df0e5e64
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: dcc5105fcf2ad7b6a9f0695b3086dc2956a76a50
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333053"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954074"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute s Azure Site Recovery
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak můžete použít Azure ExpressRoute s Azure Site R
 
 ## <a name="expressroute-circuits"></a>Okruhy ExpressRoute
 
-Okruh ExpressRoute představuje logické propojení mezi vaší místní infrastrukturou a cloudovou službou Microsoftu prostřednictvím poskytovatele připojení. Můžete objednat více okruhů ExpressRoute. Každý okruh může být ve stejné nebo jiné oblasti a může být připojen k vašemu prostoru prostřednictvím různých poskytovatelů připojení. Další informace o okruhech ExpressRoute [najdete tady](../expressroute/expressroute-circuit-peerings.md).
+Okruh ExpressRoute představuje logické propojení mezi vaši infrastrukturou v místním a cloudovým službám Microsoftu prostřednictvím poskytovatele připojení. Můžete si objednat víc okruhů ExpressRoute. Každý okruh může být v jedné nebo několika oblastech a jde připojit k místním prostřednictvím poskytovatelů jiné připojení. Další informace o okruhech ExpressRoute [najdete tady](../expressroute/expressroute-circuit-peerings.md).
 
 K okruhu ExpressRoute je přidruženo více domén směrování. Další informace o a porovnání domén směrování ExpressRoute [najdete tady](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
 
@@ -46,7 +46,7 @@ Tím se zajistí, že se během komunikace prostřednictvím proxy serveru proch
 
 Po převzetí služeb při selhání virtuálních počítačů nebo serverů do služby Azure Virtual Network můžete k nim přistupovat pomocí [privátního partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#privatepeering). 
 
-Kombinovaný scénář je reprezentován v následujícím diagramu: ![On-premises-to-Azure s ExpressRoute @ no__t-1
+Kombinovaný scénář je reprezentován v následujícím diagramu: ![on-premises-to-Azure with ExpressRoute](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
 
 ## <a name="azure-to-azure-replication-with-expressroute"></a>Replikace z Azure do Azure pomocí ExpressRoute
 

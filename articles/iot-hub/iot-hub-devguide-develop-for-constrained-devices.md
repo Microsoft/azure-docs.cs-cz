@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub vyvíjet pro omezená zařízení pomocí IoT Hub C SDK | Microsoft Docs
+title: Azure IoT Hub vyvíjet pro omezená zařízení pomocí IoT Hub C SDK
 description: Příručka pro vývojáře – pokyny k vývoji používání sad SDK Azure IoT pro omezená zařízení.
 author: robinsh
 ms.service: iot-hub
@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: robinsh
-ms.openlocfilehash: d69fe6b845d3af04e42ee91daa9359dcb9a88fc5
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a1918a99efcdcc5764140093ad422f7887ca3c88
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880970"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954704"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Vývoj pro omezená zařízení pomocí sady Azure IoT C SDK
 
@@ -33,7 +33,7 @@ Postupujte podle pokynů v [Průvodci nastavením sady c SDK](https://github.com
 
 ### <a name="remove-additional-protocol-libraries"></a>Odebrat další knihovny protokolů
 
-Sada C SDK podporuje dnes pět protokolů: MQTT, MQTT přes WebSocket, AMQPs, AMQP přes WebSocket a HTTPS. Většina scénářů vyžaduje jeden až dva protokoly běžící na klientovi, proto můžete z SDK odebrat knihovnu protokolů, kterou nepoužíváte. Další informace o výběru vhodného komunikačního protokolu pro váš scénář najdete v části [Výběr komunikačního protokolu IoT Hub](iot-hub-devguide-protocols.md). MQTT je například odlehčený protokol, který je často lépe vhodný pro omezená zařízení.
+C SDK podporuje dnes pět protokolů: MQTT, MQTT přes WebSocket, AMQPs, AMQP přes WebSocket a HTTPS. Většina scénářů vyžaduje jeden až dva protokoly běžící na klientovi, proto můžete z SDK odebrat knihovnu protokolů, kterou nepoužíváte. Další informace o výběru vhodného komunikačního protokolu pro váš scénář najdete v části [Výběr komunikačního protokolu IoT Hub](iot-hub-devguide-protocols.md). MQTT je například odlehčený protokol, který je často lépe vhodný pro omezená zařízení.
 
 Knihovny AMQP a HTTP můžete odebrat pomocí následujícího příkazu cmake:
 
@@ -75,11 +75,11 @@ Sada C SDK má volitelný [serializátor jazyka c SDK](https://github.com/Azure/
 
 ### <a name="use-the-lower-layer-_ll_"></a>Použít nižší vrstvu (_chny_)
 
-Sada C SDK podporuje dva programovací modely. Jedna sada má rozhraní API s _ll_ vpony, která představuje nižší vrstvu. Tato sada rozhraní API je světlejší o váhu a neprovádí se žádná pracovní vlákna, což znamená, že uživatel musí ručně řídit plánování. Například pro klienta zařízení lze rozhraní API najít v tomto [hlavičkovém souboru](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client_ll.h). 
+Sada C SDK podporuje dva programovací modely. Jedna sada má rozhraní API s _ll_ vpony, která představuje nižší vrstvu. Tato sada rozhraní API je světlejší o váhu a neprovádí se žádná pracovní vlákna, což znamená, že uživatel musí ručně řídit plánování. Například pro klienta zařízení lze _rozhraní API najít_ v tomto [hlavičkovém souboru](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client_ll.h). 
 
-Další sadou rozhraní API bez indexu _ll_ se říká výhodná vrstva, kde je pracovní vlákno automaticky prospuninstelné. Například rozhraní API vrstvy pro usnadnění pro klienta zařízení najdete v tomto [hlavičkovém souboru klienta zařízení IoT](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client.h). U omezených zařízení, kde může každé dodatečné vlákno probírat značné procento systémových prostředků, zvažte použití rozhraní API pro všechny.
+Další sadou rozhraní API bez indexu _ll_ se říká výhodná vrstva, kde je pracovní vlákno automaticky prospuninstelné. Například rozhraní API vrstvy pro usnadnění pro klienta zařízení najdete v tomto [hlavičkovém souboru klienta zařízení IoT](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client.h). U omezených zařízení, kde může každé dodatečné vlákno probírat značné procento systémových prostředků, _zvažte použití rozhraní_ API pro všechny.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o architektuře sady SDK Azure IoT C:
 -   [Zdrojový kód sady SDK Azure IoT C](https://github.com/Azure/azure-iot-sdk-c/)

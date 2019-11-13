@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: bdcd7cbd24ca7023070585df46aa8cea7bdc70eb
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 7716fba7a16b393143ffb9c97e7203e15bc07d82
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747288"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012941"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalace Azure Backup Serveru v Azure Stacku
 
@@ -124,7 +124,7 @@ Chcete-li upravit nastavení replikace úložiště:
 
 ## <a name="download-azure-backup-server-installer"></a>Stažení instalačního programu Azure Backup Server
 
-Existují dva způsoby, jak stáhnout instalační službu Azure Backup Server. Instalační program Azure Backup Server můžete stáhnout z webu [služby Stažení softwaru](https://www.microsoft.com/en-us/download/details.aspx?id=55269). Můžete si také stáhnout instalační program Azure Backup Server, když konfigurujete Recovery Services trezor. Následující kroky vás provedou stažením instalačního programu z Azure Portal při konfiguraci trezoru Recovery Services.
+Existují dva způsoby, jak stáhnout instalační službu Azure Backup Server. Instalační program Azure Backup Server můžete stáhnout z webu [služby Stažení softwaru](https://www.microsoft.com/download/details.aspx?id=55269). Můžete si také stáhnout instalační program Azure Backup Server, když konfigurujete Recovery Services trezor. Následující kroky vás provedou stažením instalačního programu z Azure Portal při konfiguraci trezoru Recovery Services.
 
 1. Z Azure Stack virtuálního počítače se [přihlaste ke svému předplatnému Azure v Azure Portal](https://portal.azure.com/).
 2. V nabídce na levé straně vyberte **všechny služby**.
@@ -332,11 +332,11 @@ Jakmile budete znát stav připojení Azure a předplatného Azure, můžete pom
 
 | Stav připojení | předplatné Azure | Zálohování do Azure | Zálohovat na disk | Obnovení z Azure | Obnovení z disku |
 | --- | --- | --- | --- | --- | --- |
-| Připojeno |Aktivní |Povolené |Povolené |Povolené |Povolené |
-| Připojeno |Platnost vypršela |Zastaveno |Zastaveno |Povolené |Povolené |
+| Připojeno |Aktivní |Povoleno |Povoleno |Povoleno |Povoleno |
+| Připojeno |Platnost vypršela |Zastaveno |Zastaveno |Povoleno |Povoleno |
 | Připojeno |Zajištění zrušeno |Zastaveno |Zastaveno |Zastaveno a body obnovení Azure byly odstraněny |Zastaveno |
-| Ztracené připojení > 15 dní |Aktivní |Zastaveno |Zastaveno |Povolené |Povolené |
-| Ztracené připojení > 15 dní |Platnost vypršela |Zastaveno |Zastaveno |Povolené |Povolené |
+| Ztracené připojení > 15 dní |Aktivní |Zastaveno |Zastaveno |Povoleno |Povoleno |
+| Ztracené připojení > 15 dní |Platnost vypršela |Zastaveno |Zastaveno |Povoleno |Povoleno |
 | Ztracené připojení > 15 dní |Zajištění zrušeno |Zastaveno |Zastaveno |Zastaveno a body obnovení Azure byly odstraněny |Zastaveno |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Obnovování ze ztráty připojení
@@ -346,8 +346,8 @@ Pokud brána firewall nebo proxy server brání v přístupu k Azure, přidejte 
 - `http://www.msftncsi.com/ncsi.txt`
 - \*.Microsoft.com
 - \*.WindowsAzure.com
-- \*.microsoftonline.com
-- \*.windows.net
+- \*. microsoftonline.com
+- \*. windows.net
 
 Po obnovení připojení k Azure do Azure Backup Server stav předplatného Azure určí operace, které je možné provést. Po **připojení**serveru použijte tabulku v [Možnosti připojení k síti](backup-mabs-install-azure-stack.md#network-connectivity) , abyste viděli dostupné operace.
 

@@ -1,5 +1,5 @@
 ---
-title: Opětovné zapnutí ochrany virtuálních počítačů z Azure do místní lokality během zotavení po havárii virtuálních počítačů VMware a fyzických serverů | Microsoft Docs
+title: Znovu nastavte ochranu virtuálních počítačů VMware nebo fyzických serverů na místní lokalitu pomocí Azure Site Recovery
 description: Po převzetí služeb při selhání do Azure během zotavení po havárii virtuálních počítačů VMware a fyzických serverů se dozvíte, jak navrátit služby po obnovení z Azure do místní lokality.
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: mayg
-ms.openlocfilehash: cf1ccdf953781ca9b9bd17152f2cf32677997d12
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f3d5f38d940b99c6a74d784f174c91d4127353dc
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791807"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961344"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Po převzetí služeb při selhání do Azure znovu nastavit ochranu a navrácení počítačů po obnovení do místní lokality
 
@@ -63,7 +63,7 @@ Postup nasazení procesového serveru v Azure:
 Hlavní cílový server přijímá data navrácení služeb po obnovení. Ve výchozím nastavení běží hlavní cílový server na místním konfiguračním serveru. V závislosti na objemu neúspěšných přenosů ale možná budete muset vytvořit samostatný hlavní cílový server pro navrácení služeb po obnovení. Tady je postup, jak ho vytvořit:
 
 * [Vytvořte hlavní cílový server se systémem Linux](vmware-azure-install-linux-master-target.md) pro navrácení služeb po obnovení virtuálních počítačů se systémem Linux. To je povinné. Všimněte si, že hlavní cílový server na LVM není podporován.
-* Volitelně můžete vytvořit samostatný hlavní cílový server pro navrácení služeb po obnovení virtuálního počítače s Windows. Provedete to tak, že znovu spustíte Unified Setup a vyberete vytvořit hlavní cílový server. [Další informace](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers). 
+* Volitelně můžete vytvořit samostatný hlavní cílový server pro navrácení služeb po obnovení virtuálního počítače s Windows. Provedete to tak, že znovu spustíte Unified Setup a vyberete vytvořit hlavní cílový server. [Další informace](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers) 
 
 Po vytvoření hlavního cílového serveru proveďte následující úlohy:
 
@@ -81,7 +81,7 @@ Po vytvoření hlavního cílového serveru proveďte následující úlohy:
     - Výchozí svazek pro uchovávání dat pro Linux je svazek/mnt/retention.
 - Pokud používáte existující počítač procesového serveru/konfiguračního serveru nebo počítač se serverem nebo hlavním cílovým serverem, je nutné přidat novou jednotku. Nová jednotka musí splňovat předchozí požadavky. Pokud jednotka pro uchovávání dat není k dispozici, nezobrazí se v rozevíracím seznamu výběr na portálu. Po přidání jednotky do místního hlavního cíle může trvat až 15 minut, než se jednotka objeví ve výběru na portálu. Konfigurační server můžete aktualizovat i v případě, že se jednotka nezobrazí po 15 minutách.
 - Na hlavním cílovém serveru nainstalujte nástroje VMware nebo otevřít-VM-Tools. Bez nástrojů nelze zjistit úložiště dat na hostiteli ESXi hlavního cíle.
-- Nastavte nastavení `disk.EnableUUID=true` v parametrech konfigurace hlavního cílového počítače ve VMware. Pokud tento řádek neexistuje, přidejte jej. Toto nastavení je nutné k poskytnutí konzistentního identifikátoru UUID pro VMDK, aby bylo správně připojeno.
+- Nastavte `disk.EnableUUID=true` nastavení v parametrech konfigurace hlavního cílového počítače ve VMware. Pokud tento řádek neexistuje, přidejte jej. Toto nastavení je nutné k poskytnutí konzistentního identifikátoru UUID pro VMDK, aby bylo správně připojeno.
 - Hostitel ESX, na kterém je vytvořen hlavní cíl, musí mít připojen alespoň jeden úložiště dat systému souborů VMFS (Virtual Machine File System). Pokud nejsou k dispozici žádná úložiště VMFS DataStore, vstup **úložiště dat** na stránce pro opětovné provedení ochrany je prázdný a nemůžete pokračovat.
 - Hlavní cílový server nemůže obsahovat snímky na discích. Pokud jsou k dispozici snímky, dojde k selhání ochrany a navrácení služeb po obnovení.
 - Hlavní cíl nemůže mít řadič SCSI Paravirtual. Kontroler může být jenom řadič LSI Logic. Bez kontroleru adaptéru LSI Logic se chyba ochrany nezdařila.
@@ -122,7 +122,7 @@ Všimněte si následujících informací:
 - Pokud se nemůžete připojit ke konfiguračnímu serveru z procesového serveru, pomocí programu Telnet ověřte připojení ke konfiguračnímu serveru na portu 443. Můžete se také pokusit testovat konfigurační server z procesového serveru z procesu. Procesový Server by měl mít také prezenční signál, pokud je připojený ke konfiguračnímu serveru.
 - Server s Windows Serverem 2008 R2 SP1, který je chráněný jako fyzický místní server, se nedá vrátit z Azure do místní lokality.
 - Nemůžete navrátit služby po obnovení v následujících případech:
-    - Migrovali jste počítače do Azure. [Další informace](migrate-overview.md#what-do-we-mean-by-migration).
+    - Migrovali jste počítače do Azure. [Další informace](migrate-overview.md#what-do-we-mean-by-migration)
     - Přesunuli jste virtuální počítač do jiné skupiny prostředků.
     - Odstranili jste virtuální počítač Azure.
     - Zakázali jste ochranu virtuálního počítače.

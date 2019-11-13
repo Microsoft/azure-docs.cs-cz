@@ -1,5 +1,5 @@
 ---
-title: IoT DevKit do cloudu – připojení IoT MXChip DevKit k Azure IoT Hub | Microsoft Docs
+title: Připojení MXChip IoT DevKit k Azure IoT Hub vzdálené monitorování
 description: V tomto kurzu se dozvíte, jak odeslat stav senzorů v IoT DevKit AZ3166 do akcelerátoru řešení vzdáleného monitorování Azure IoT.
 author: liydu
 manager: jeffya
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 24e31bfa916df969368dce736cf841ed4fdfe2c5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9eab035d494892671a2451866311ca06599ec030
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73484046"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953721"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Připojení MXChip IoT DevKit k akcelerátoru řešení vzdáleného monitorování Azure IoT
 
@@ -54,7 +54,7 @@ Aktivní předplatné Azure. Pokud ho nemáte, můžete se zaregistrovat přes j
 
    ![Řídicí panel](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-new-solution-created.png)
   
-   ![Console](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-console.png)
+   ![Konzola](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-console.png)
 
 5. Klikněte na **Přidat zařízení**.
 

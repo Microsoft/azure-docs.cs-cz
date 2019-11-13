@@ -7,13 +7,14 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 5f06af41f2ad75d704836944e9d8d8d180aed730
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 768fa075d4114f467697a23709a3f7d7d4c25f45
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606588"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012437"
 ---
+# <a name="what-disk-types-are-available-in-azure"></a>Jaké typy disků jsou k dispozici v Azure?
 [!INCLUDE [virtual-machines-disk-types](../../../includes/virtual-machines-managed-disks-types-overview.md)]
 
 Pokud chcete začít používat disky Ultra, přečtěte si náš článek na předmětu: [použití disků Azure Ultra](disks-enable-ultra-ssd.md).

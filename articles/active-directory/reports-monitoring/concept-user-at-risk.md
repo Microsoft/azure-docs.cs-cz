@@ -2,7 +2,7 @@
 title: Sestava zabezpečení Uživatelé označení příznakem rizika na portálu Azure Active Directory | Dokumentace Microsoftu
 description: Přečtěte si o sestavě zabezpečení Uživatelé označení příznakem rizika na portálu Azure Active Directory
 services: active-directory
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 01/17/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e6b79c7d5c2ed9744dc00eb1588c35f8ea94a76
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 894d8dfb7f870ec4a2a11f1d75ee0376b25d8c7f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127639"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014456"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Sestava uživatelů označených příznakem rizika v Azure Portal
 
@@ -61,7 +61,7 @@ Když se vybere uživatel, zobrazí se přihlašovací údaje. U ohrožených u�
 V tomto dialogovém okně máte možnost:
 
 - Stáhnout sestavu
-- Hledat uživatele
+- Vyhledávat uživatele
 
     ![Riziková přihlášení](./media/concept-user-at-risk/16.png)
 
@@ -98,7 +98,7 @@ Pokud chcete zjistit detekci rizik, vyberte ji ze seznamu a otevřete okno **Pod
 ![Riziková přihlášení](./media/concept-user-at-risk/325.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Jak nakonfigurovat zásady rizik uživatelů](../identity-protection/howto-user-risk-policy.md)
 - [Jak nakonfigurovat zásady pro nápravu rizik](../identity-protection/howto-user-risk-policy.md)

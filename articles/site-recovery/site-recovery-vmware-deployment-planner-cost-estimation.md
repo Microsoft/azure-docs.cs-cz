@@ -1,20 +1,20 @@
 ---
-title: Zkontrolujte sestavu odhad nákladů v Plánovač nasazení služby Azure Site Recovery | Microsoft Docs
-description: V tomto článku se dozvíte, jak zkontrolovat sestavu odhadu nákladů v Plánovač nasazení služby Azure Site Recovery pro zotavení po havárii z VMware do Azure.
+title: Kontrola odhadů nákladů v Plánovač nasazení služby Azure Site Recovery
+description: V tomto článku se dozvíte, jak zkontrolovat odhad nákladů v Plánovač nasazení služby Azure Site Recovery pro zotavení po havárii VMware.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: 1f825b67baf36c9a1a9187d555522f5a5955d1c7
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 27678fff1c0322f9755e7726026c73934810d5d6
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620072"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953340"
 ---
-# <a name="review-the-cost-estimation-report-in-the-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Přečtěte si sestavu odhad nákladů v Site Recovery Plánovač nasazení pro zotavení po havárii VMware do Azure.
+# <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>Kontrola odhadů nákladů v Plánovač nasazení VMware 
 
 Sestava plánovače nasazení obsahuje souhrn odhadu nákladů na listech [Recommendations](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) (Doporučení) a podrobnou analýzu nákladů na listu Cost Estimation (Odhad nákladů). Obsahuje podrobnou analýzu nákladů na virtuální počítač. 
 
@@ -31,13 +31,13 @@ Tento souhrn pomáhá porozumět nákladům, které budete muset platit za úlo�
  
 Náklady můžete zobrazit po měsících nebo letech. Další informace o [podporovaných cílových oblastech](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions) a [podporovaných měnách](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies)
 
-**Náklady podle komponent** Celkové náklady na zotavení po havárii se dělí do čtyř komponent: Náklady na výpočetní prostředky, úložiště, síť a Azure Site Recovery licence. Náklady se počítají na základě spotřeby, ke které dojde během replikace a v průběhu nácviku zotavení po havárii pro výpočetní funkce, úložiště (Premium a Standard), síť ExpressRoute nebo VPN, která je nakonfigurovaná mezi místní lokalitou a Azure, a licence Azure Site Recovery.
+**Náklady podle komponent** Celkové náklady na zotavení po havárii se dělí do čtyř komponent: výpočetní služby, úložiště, síť a licenční náklady na Azure Site Recovery. Náklady se počítají na základě spotřeby, ke které dojde během replikace a v průběhu nácviku zotavení po havárii pro výpočetní funkce, úložiště (Premium a Standard), síť ExpressRoute nebo VPN, která je nakonfigurovaná mezi místní lokalitou a Azure, a licence Azure Site Recovery.
 
 **Náklady podle stavu** Celkové náklady na zotavení po havárii jsou rozdělené do kategorií na základě dvou různých stavů – replikace a nácvik zotavení po havárii. 
 
-**Náklady na replikaci**:  Náklady, které budou účtovány během replikace. Zahrnují náklady na úložiště, síť a licence Azure Site Recovery. 
+**Náklady na replikaci:** Náklady, které vzniknou během replikace. Zahrnují náklady na úložiště, síť a licence Azure Site Recovery. 
 
-**Náklady na postup zotavení po havárii**: Náklady, které budou účtovány během testovacího převzetí služeb při selhání. Během testovacího převzetí služeb při selhání Azure Site Recovery rozjede virtuální počítače. Náklady na nácvik zotavení po havárii zahrnují náklady na výpočetní funkce a úložiště spuštěných virtuálních počítačů. 
+**Náklady na nácvik zotavení po havárii:** Náklady, které vzniknou během testovacího převzetí služeb při selhání. Během testovacího převzetí služeb při selhání Azure Site Recovery rozjede virtuální počítače. Náklady na nácvik zotavení po havárii zahrnují náklady na výpočetní funkce a úložiště spuštěných virtuálních počítačů. 
 
 **Náklady na úložiště Azure za měsíc a rok:** Celkové náklady na úložiště, které vzniknou pro úložiště úrovně Standard a Premium při replikaci a nácviku zotavení po havárii.
 
@@ -52,19 +52,19 @@ Buňky označené v této sestavě šedě jsou jen pro čtení. Bílé buňky je
 ### <a name="overall-dr-cost-by-components"></a>Celkové náklady na zotavení po havárii podle komponent
 První část ukazuje celkové náklady na zotavení po havárii podle komponent a náklady na zotavení po havárii podle stavů. 
 
-**Výpočetní**prostředí: Náklady na virtuální počítače s IaaS, které běží v Azure pro potřeby zotavení po havárii. Zahrnují virtuální počítače, které Azure Site Recovery vytvoří během nácviků zotavení po havárii (testovací převzetí služeb při selhání), a virtuální počítače spuštěné v Azure jako SQL Server se skupinami dostupnosti AlwaysOn a řadiče domény / servery DNS.
+**Compute:** Náklady na virtuální počítače IaaS, které jsou spuštěné v Azure pro potřeby zotavení po havárii. Zahrnují virtuální počítače, které Azure Site Recovery vytvoří během nácviků zotavení po havárii (testovací převzetí služeb při selhání), a virtuální počítače spuštěné v Azure jako SQL Server se skupinami dostupnosti AlwaysOn a řadiče domény / servery DNS.
 
-**Úložiště**: Náklady na spotřebu úložiště Azure pro potřeby zotavení po havárii. Zahrnují spotřebu úložiště pro replikaci a během nácviků zotavení po havárii.
-Sítě ExpressRoute a cena sítě na síť VPN pro potřeby zotavení po havárii. 
+**Storage:** Náklady na spotřebu úložiště Azure pro potřeby zotavení po havárii. Zahrnují spotřebu úložiště pro replikaci a během nácviků zotavení po havárii.
+Network: Náklady na ExpressRoute a S2S VPN pro potřeby zotavení po havárii. 
 
-**Licence ASR**: Azure Site Recovery náklady na licenci pro všechny kompatibilní virtuální počítače. Pokud jste do tabulky s podrobnou analýzou nákladů ručně zadali virtuální počítač, budou v ní také zahrnuté náklady na licence Azure Site Recovery pro tento virtuální počítač.
+**ASR license:** Náklady na licence Azure Site Recovery pro všechny kompatibilní virtuální počítače. Pokud jste do tabulky s podrobnou analýzou nákladů ručně zadali virtuální počítač, budou v ní také zahrnuté náklady na licence Azure Site Recovery pro tento virtuální počítač.
 
 ### <a name="overall-dr-cost-by-states"></a>Celkové náklady na zotavení po havárii podle stavů
 Celkové náklady na zotavení po havárii jsou rozdělené do kategorií na základě dvou různých stavů – replikace a nácvik zotavení po havárii.
 
-**Náklady na replikaci**: Náklady vznikly v době replikace. Zahrnují náklady na úložiště, síť a licence Azure Site Recovery. 
+**Replication cost:** Náklady, které vzniknou během replikace. Zahrnují náklady na úložiště, síť a licence Azure Site Recovery. 
 
-**Náklady na postup zotavení po havárii**: Náklady vznikly v době přechodu zotavení po havárii. Během nácviků zotavení po havárii Azure Site Recovery rozjede virtuální počítače. Náklady na nácvik zotavení po havárii zahrnují náklady na výpočetní funkce a úložiště spuštěných virtuálních počítačů.
+**DR-Drill cost:** Náklady, které vzniknou během nácviků zotavení po havárii. Během nácviků zotavení po havárii Azure Site Recovery rozjede virtuální počítače. Náklady na nácvik zotavení po havárii zahrnují náklady na výpočetní funkce a úložiště spuštěných virtuálních počítačů.
 Celková doba nácviků zotavení po havárii za rok = počet nácviků zotavení po havárii x doba trvání jednotlivých nácviků (dny) Průměrná doba nácviků zotavení po havárii (za měsíc) = celková doba nácviků zotavení po havárii / 12
 
 ### <a name="storage-cost-table"></a>Tabulka nákladů na úložiště:
@@ -73,11 +73,11 @@ Tato tabulka zobrazuje náklady na úložiště úrovně Standard a Premium pro 
 ### <a name="site-to-azure-network"></a>Síť z lokality do Azure
 Vyberte odpovídající nastavení podle vašich požadavků. 
 
-**ExpressRoute**: Ve výchozím nastavení nástroj vybere nejbližší plán ExpressRoute, který odpovídá požadované šířce pásma sítě pro rozdílovou replikaci. Tento plán můžete změnit podle vašich požadavků.
+**ExpressRoute:** Nástroj ve výchozím nastavení vybere nejbližší plán ExpressRoute, který odpovídá požadované šířce pásma pro rozdílovou replikaci. Tento plán můžete změnit podle vašich požadavků.
 
-**VPN Gateway**: Vyberte VPN Gateway, pokud máte ve svém prostředí. Ve výchozím nastavení je NA.
+**VPN Gateway:** Možnost VPN Gateway vyberte, pokud máte tuto bránu ve vašem prostředí. Ve výchozím nastavení je NA.
 
-**Cílová oblast**: Zadaná oblast Azure pro zotavení po havárii Ceny použité v této sestavě pro výpočetní funkce, úložiště, síť a licence jsou založené na cenách Azure pro příslušnou oblast. 
+**Target Region:** Zadaná oblast Azure pro zotavení po havárii. Ceny použité v této sestavě pro výpočetní funkce, úložiště, síť a licence jsou založené na cenách Azure pro příslušnou oblast. 
 
 ### <a name="vm-running-on-azure"></a>Virtuální počítač spuštěný v Azure
 Pokud máte řadič domény nebo virtuální počítač DNS nebo virtuální počítač s SQL Serverem se skupinami dostupnosti Always On spuštěnými v Azure pro zotavení po havárii, můžete zadat počet virtuálních počítačů a jejich velikost, aby se jejich výpočetní náklady braly v úvahu při výpočtu celkových nákladů na zotavení po havárii. 
@@ -90,7 +90,7 @@ Tato tabulka zobrazuje počet virtuálních počítačů s Windows a virtuální
 
 ### <a name="settings"></a>Nastavení 
 
-**Měna**: Měna, ve které se sestava generuje Doba trvání nákladů:  Můžete si Zobrazit všechny náklady buď za měsíc, nebo za celý rok. 
+**Currency:** Měna, ve které se sestava generuje. Cost duration: Můžete zobrazit náklady buď pro měsíc, nebo pro celý rok. 
 
 ## <a name="detailed-cost-analysis-table"></a>Tabulka podrobné analýzy nákladů
 ![Detailed cost analysis](media/site-recovery-hyper-v-deployment-planner-cost-estimation/detailed-cost-analysis-h2a.png) Tato tabulka uvádí rozdělení nákladů pro jednotlivé kompatibilní virtuální počítače. Tuto tabulku můžete také použít k získání odhadovaných nákladů na zotavení po havárii Azure pro neprofilované virtuální počítače, a to ručním přidáním virtuálních počítačů. Je užitečná v případech, kdy potřebujete bez podrobné profilace odhadnout náklady Azure pro nové nasazení zotavení po havárii.
@@ -112,35 +112,35 @@ Ruční přidání virtuálních počítačů:
 
 1. Kliknutím na Re-calculate cost (Přepočítat náklady) aktualizujte náklady.
 
-**Název virtuálního počítače**: Název virtuálního počítače
+**VM Name:** Název virtuálního počítače.
 
-**Počet virtuálních počítačů**: Počet virtuálních počítačů, které odpovídají konfiguraci. Počet existujících virtuálních počítačů můžete aktualizovat, pokud virtuální počítače podobné konfigurace nejsou profilované, ale budou chráněné.
+**Number of VMs:** Počet virtuálních počítačů, které odpovídají konfiguraci. Počet existujících virtuálních počítačů můžete aktualizovat, pokud virtuální počítače podobné konfigurace nejsou profilované, ale budou chráněné.
 
-**Velikost IaaS (doporučení)** : Je to velikost role virtuálního počítače pro kompatibilní virtuální počítač, který nástroj doporučuje. 
+**IaaS size (Recommendation):** Velikost role virtuálního počítače pro kompatibilní virtuální počítač, který nástroj doporučuje. 
 
-**Velikost IaaS (váš výběr)** : Ve výchozím nastavení je stejná jako doporučená velikost role virtuálního počítače. Roli můžete na základě vašich požadavků změnit. Náklady na výpočetní výkon jsou založené na vybrané velikosti role virtuálního počítače.
+**IaaS size (Your selection):** Ve výchozím nastavení je to stejná hodnota jako doporučená velikost role virtuálního počítače. Roli můžete na základě vašich požadavků změnit. Náklady na výpočetní výkon jsou založené na vybrané velikosti role virtuálního počítače.
 
-**Typ úložiště**: Typ úložiště, který je používán virtuálním počítačem. Je to Storage úrovně Standard nebo Premium.
+**Storage type:** Typ úložiště, který virtuální počítač využívá. Je to Storage úrovně Standard nebo Premium.
 
-**Celková velikost úložiště virtuálního počítače (GB)** : Celková velikost úložiště zdrojového virtuálního počítače.
+**Virtuální počítač celková velikost úložiště (GB)** : Celková velikost úložiště zdrojového virtuálního počítače.
 
-**Počet podrobná cvičení pro zotavení po havárii za rok**: Počet pokusů o provedení zotavení po havárii za rok. Ve výchozím nastavení je to 4krát do roka. Můžete změnit období pro konkrétní virtuální počítače nebo použít novou hodnotu pro všechny virtuální počítače, a to zadáním požadované hodnoty do horního řádku a kliknutím na tlačítko Apply to all (Použít u všech). Na základě počtu nácviků zotavení po havárii za rok a délce trvání jednotlivých nácviků se vypočtou celkové náklady na nácvik zotavení po havárii.  
+**Number of DR-Drills in a year:** Počet, kolikrát za rok provedete nácvik zotavení po havárii. Ve výchozím nastavení je to 4krát do roka. Můžete změnit období pro konkrétní virtuální počítače nebo použít novou hodnotu pro všechny virtuální počítače, a to zadáním požadované hodnoty do horního řádku a kliknutím na tlačítko Apply to all (Použít u všech). Na základě počtu nácviků zotavení po havárii za rok a délce trvání jednotlivých nácviků se vypočtou celkové náklady na nácvik zotavení po havárii.  
 
-**Doba trvání jednotlivých postupů zotavení po havárii (dny)** : Doba trvání jednotlivých postupů zotavení po havárii. Ve výchozím nastavení je to 7 dnů vždy po 90 dnech, v souladu s [výhodou Disaster Recovery programu Software Assurance](https://azure.microsoft.com/pricing/details/site-recovery). Můžete změnit období pro konkrétní virtuální počítače nebo použít novou hodnotu pro všechny virtuální počítače, a to zadáním této hodnoty do horního řádku a kliknutím na tlačítko Apply to all (Použít u všech). Celkové náklady na nácvik zotavení po havárii se vypočtou na základě počtu nácviků zotavení po havárii za rok a délce trvání jednotlivých nácviků.
+**Each DR-Drill duration (Days):** Doba trvání jednotlivých nácviků zotavení po havárii ve dnech. Ve výchozím nastavení je to 7 dnů vždy po 90 dnech, v souladu s [výhodou Disaster Recovery programu Software Assurance](https://azure.microsoft.com/pricing/details/site-recovery). Můžete změnit období pro konkrétní virtuální počítače nebo použít novou hodnotu pro všechny virtuální počítače, a to zadáním této hodnoty do horního řádku a kliknutím na tlačítko Apply to all (Použít u všech). Celkové náklady na nácvik zotavení po havárii se vypočtou na základě počtu nácviků zotavení po havárii za rok a délce trvání jednotlivých nácviků.
   
-**Typ operačního systému**: Typ operačního systému virtuálního počítače. Je to Windows nebo Linux. Pokud je jako typ operačního systému nastavený systém Windows, je pro příslušný počítač možné využít Zvýhodněné hybridní využití Azure. 
+**OS Type:** Typ operačního systému virtuálního počítače. Je to Windows nebo Linux. Pokud je jako typ operačního systému nastavený systém Windows, je pro příslušný počítač možné využít Zvýhodněné hybridní využití Azure. 
 
-**Redundance dat**: Může to být jedna z následujících místně redundantního úložiště (LRS), geograficky redundantního úložiště (GRS) nebo geograficky redundantního úložiště s přístupem pro čtení (RA-GRS). Výchozí nastavení je LRS. Můžete změnit typ na základě vašeho účtu úložiště nebo použít nový typ pro všechny virtuální počítače, a to zadáním změnou typu v horním řádku a kliknutím na tlačítko Apply to all (Použít u všech).  Náklady na úložiště pro replikaci se počítají na základě ceny pro redundanci dat, kterou jste vybrali. 
+**Data redundancy:** Může to být jedna z následujících hodnot: Locally redundant storage (LRS), Geo-redundant storage (GRS) nebo Read-access geo-redundant storage (RA-GRS). Výchozí nastavení je LRS. Můžete změnit typ na základě vašeho účtu úložiště nebo použít nový typ pro všechny virtuální počítače, a to zadáním změnou typu v horním řádku a kliknutím na tlačítko Apply to all (Použít u všech).  Náklady na úložiště pro replikaci se počítají na základě ceny pro redundanci dat, kterou jste vybrali. 
 
-**Zvýhodněné hybridní využití Azure**: V případě potřeby můžete Zvýhodněné hybridní využití Azure použít na virtuální počítače s Windows.  Výchozí hodnota je Yes (Ano). Můžete změnit nastavení pro konkrétní virtuální počítače nebo aktualizovat všechny virtuální počítače kliknutím na tlačítko Apply to all (Použít u všech).
+**Zvýhodněné hybridní využití Azure:** Pro virtuální počítače s Windows můžete využít program Zvýhodněné hybridní využití Azure, pokud je k dispozici.  Výchozí hodnota je Yes (Ano). Můžete změnit nastavení pro konkrétní virtuální počítače nebo aktualizovat všechny virtuální počítače kliknutím na tlačítko Apply to all (Použít u všech).
 
-**Celková spotřeba Azure**: Zahrnuje náklady na výpočetní prostředky, úložiště a Azure Site Recovery pro vaše zotavení po havárii. Na základě vašeho výběru se náklady zobrazují jako měsíční nebo roční.
+**Total Azure consumption:** Náklady na výpočetní funkce, úložiště a licence Azure Site Recovery pro vaše zotavení po havárii. Na základě vašeho výběru se náklady zobrazují jako měsíční nebo roční.
 
-**Náklady na replikaci stabilního stavu**: Zahrnuje náklady na úložiště pro replikaci.
+**Steady state replication cost:** Náklady na úložiště pro replikaci.
 
-**Celkové náklady na postup zotavení po havárii (průměr)** : Zahrnuje náklady na výpočetní prostředky a úložiště pro zotavení po havárii.
+**Total DR-Drill cost (average):** Náklady na výpočetní funkce a úložiště pro nácvik zotavení po havárii.
 
-**Náklady na licenci ASR**: Azure Site Recovery náklady na licenci.
+**ASR license cost:** Náklady na licence Azure Site Recovery.
 
 ## <a name="supported-target-regions"></a>Podporované cílové oblasti
 Plánovač nasazení Azure Site Recovery poskytuje odhad nákladů pro následující oblasti Azure. Pokud vaše oblast není uvedená níže, můžete použít některou z následujících oblastí, jejichž ceny jsou nejblíže vaší oblasti.
@@ -150,7 +150,7 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Podporované měny
 Plánovač nasazení Azure Site Recovery může vygenerovat sestavu nákladů s libovolnou z následujících měn.
 
-|Currency|Name||Currency|Name||Currency|Name|
+|Měna|Název||Měna|Název||Měna|Název|
 |---|---|---|---|---|---|---|---|
 |ARS|Argentinské peso ($)||AUD|Australský dolar ($)||BRL|Brazilský real (R$)|
 |CAD|Kanadský dolar ($)||CHF|Švýcarský frank (chf)||DKK|Dánská koruna (kr)|

@@ -1,5 +1,5 @@
 ---
-title: Co jsou Zóny dostupnosti Azure? | Microsoft Docs
+title: Co jsou Zóny dostupnosti Azure? | Dokumenty Microsoft
 description: Pokud chcete vytvářet vysoce dostupné a odolné aplikace v Azure, Zóny dostupnosti poskytovat fyzicky samostatná umístění, která můžete použít ke spouštění svých prostředků.
 services: ''
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 10/17/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cfe7374525486f7b4fc1b6cb89e40f2eaeff6737
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 1733493c88129f465782af8ac5e6c4914fd213ca
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027160"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73957950"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Co jsou v Azure Zóny dostupnosti?
 Zóny dostupnosti je nabídka s vysokou dostupností, která chrání vaše aplikace a data při selhání datacentra. Zóny dostupnosti jsou jedinečná fyzická umístění uvnitř oblasti Azure. Každou zónu tvoří jedno nebo několik datacenter vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech. Fyzické oddělení Zóny dostupnosti v rámci oblasti chrání aplikace a data před selháními datových center. Redundantní služby v zóně replikují aplikace a data napříč Zóny dostupnosti, aby se chránily před jednotlivými chybami. Díky Zóny dostupnosti Azure nabízí nejlepší smlouvu SLA 99,99% provozu virtuálního počítače. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) vysvětluje garantovanou dostupnost Azure jako celku.
@@ -38,7 +38,7 @@ Pro zajištění komplexní provozní kontinuity v Azure Sestavte architekturu a
 ![koncepční zobrazení jedné zóny v oblasti](./media/az-overview/az-graphic-two.png)
 
 > [!IMPORTANT]
-> Identifikátory zóny dostupnosti (čísla 1, 2 a 3 na obrázku výše) jsou logicky mapovány na skutečné fyzické zóny pro každé předplatné nezávisle na sobě. To znamená, že dostupnost Zóna 1 v daném předplatném může odkazovat na jinou fyzickou zónu než Zóna 1 dostupnosti v jiném předplatném. V důsledku toho se pro umístění virtuálního počítače doporučuje nemusíte přenášet identifikátory zón dostupnosti napříč různými předplatnými.
+> Identifikátory zóny dostupnosti (čísla 1, 2 a 3 na obrázku výše) jsou logicky mapovány na skutečné fyzické zóny pro každé předplatné nezávisle na sobě. To znamená, že dostupnost Zóna 1 v daném předplatném může odkazovat na jinou fyzickou zónu než Zóna 1 dostupnosti v jiném předplatném. V důsledku toho se doporučuje nespoléhat na ID zón dostupnosti napříč různými předplatnými pro umístění virtuálního počítače.
 
 ## <a name="services-support-by-region"></a>Podpora služeb podle oblasti
 
@@ -47,7 +47,7 @@ Kombinace služeb a oblastí Azure, které podporují Zóny dostupnosti:
 
 |                                 |Amerika |              |           |           | Evropa |              |          |              | Asie a Tichomoří |                 |
 |----------------------------|----------|----------|---------|---------|--------------|------------|--------|----------|----------|-------------|
-|          |Střední USA|USA – východ|Východ USA 2|Západní USA 2|Francie – střed|Severní Evropa|Velká Británie – jih|Západní Evropa|Japonsko – východ|Jihovýchodní Asie|
+|          |Střední USA|Východní USA|Východní USA 2|USA – západ 2|Francie – střed|Severní Evropa|Velká Británie – jih|Západní Evropa|Japonsko – východ|Jihovýchodní Asie|
 | **Compute**                         |            |              |           |           |                |              |          |             |            |                |
 | Linux Virtual Machines          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | Windows Virtual Machines        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
@@ -55,18 +55,18 @@ Kombinace služeb a oblastí Azure, které podporují Zóny dostupnosti:
 | **Storage**   |            |              |           |           |                |              |          |             |            |                |
 | Spravované disky                   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | Zóna – redundantní úložiště          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
-| **Networking**                     |            |              |           |           |                |              |          |             |            |                |
+| **Sítě**                     |            |              |           |           |                |              |          |             |            |                |
 | Standardní IP adresa        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | Load Balancer úrovně Standard     | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
 | VPN Gateway            | &#10003;   |  &#10003;    | &#10003;  | &#10003;  | &#10003;       | &#10003;     |  &#10003;  | &#10003;    |  &#10003;   | &#10003;       |
 | ExpressRoute bránu   | &#10003;   |  &#10003;    | &#10003;  | &#10003;  | &#10003;       | &#10003;     |  &#10003;  | &#10003;    |  &#10003;   | &#10003;       |
 | Application Gateway (v2)    | &#10003;   |  &#10003;    | &#10003;  | &#10003;  | &#10003;       | &#10003;     |  &#10003;  | &#10003;    |  &#10003;   | &#10003;       |
-| Azure Firewall           | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |  &#10003;       | &#10003;       |
+| Brána Azure Firewall           | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |  &#10003;       | &#10003;       |
 | **Databáze**                     |            |              |           |           |                |              |          |             |            |                |
 | Průzkumník dat Azure                   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;        | &#10003;       |
-| Databáze SQL                    | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;Tisk      | &#10003;       |
+| SQL Database                    | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;Tisk      | &#10003;       |
 | Azure Cache for Redis           | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |  &#10003;       | &#10003;       |
-| Azure Cosmos DB                    | &#10003;   |  &#10003;  |  &#10003; | &#10003; |       |     | &#10003; |  &#10003;   |            | &#10003;       |
+| Databáze Azure Cosmos                    | &#10003;   |  &#10003;  |  &#10003; | &#10003; |       |     | &#10003; |  &#10003;   |            | &#10003;       |
 | **Analýzy**                       |            |              |           |           |                |              |          |             |            |                |
 | Event Hubs                      | &#10003;   |   &#10003; | &#10003;  | &#10003;  | &#10003; | &#10003; | &#10003; | &#10003; | &#10003; | &#10003;       |
 | **Spolupráci**                     |            |              |           |           |                |              |          |             |            |                |

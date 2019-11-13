@@ -1,17 +1,14 @@
 ---
 title: Vytvoření podrobného plánu pomocí PowerShellu
 description: Pomocí Azure modrotisky můžete vytvářet, definovat a nasazovat artefakty pomocí PowerShellu.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/21/2019
 ms.topic: quickstart
-ms.service: blueprints
-ms.openlocfilehash: 6a1ef5aece030ac359e9c5811c815bec5ed57d27
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 4cc181a7e0b07448d6dd538cfb1621d1efa43a80
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978520"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960431"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Rychlý Start: definování a přiřazení Azure Blueprint s využitím PowerShellu
 
@@ -27,7 +24,7 @@ Seznamte se s principy vytváření a přiřazování podrobných plánů, abyst
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě není nainstalovaná, nainstalujte a ověřte modul **AZ. detail** z Galerie prostředí PowerShell podle pokynů v tématu [Přidání modulu AZ. detail](./how-to/manage-assignments-ps.md#add-the-azblueprint-module) .
 
@@ -316,7 +313,7 @@ Hodnota `{BlueprintVersion}` představuje řetězec složený z písmen, čísli
 
 Po publikování podrobného plánu pomocí PowerShellu ho můžete přiřadit k předplatnému. Přiřaďte vytvořený podrobný plán některému z předplatných v hierarchii skupiny pro správu. Pokud je podrobný plán uložen v předplatném, může být přiřazen pouze k tomuto předplatnému. Parametr podrobného plánu **určuje plán,** který se má přiřadit. Pokud chcete zadat parametry názvu, umístění, identity, zámku a podrobného plánu, použijte pro rutinu `New-AzBlueprintAssignment` odpovídajícího parametru PowerShellu nebo je poskytněte v souboru JSON s parametrem **AssignmentFile** .
 
-1. Spusťte nasazení podrobného plánu tím, že ho přiřadíte k předplatnému. Jelikož parametry **přispěvatelé** a **vlastníci** vyžadují, aby bylo přiřazení role uděleno pole objectID objektů zabezpečení, použijte [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) pro shromáždění identifikátorů objectID pro použití v **AssignmentFile** pro vlastní uživatelé, skupiny nebo instanční objekty.
+1. Spusťte nasazení podrobného plánu tím, že ho přiřadíte k předplatnému. Protože parametry **přispěvatelé** a **vlastníci** vyžadují, aby bylo přiřazení role uděleno pole objectID objektů zabezpečení, použijte [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) pro shromáždění identifikátorů objectID pro použití v **AssignmentFile** pro vlastní uživatele, skupiny nebo instanční objekty.
 
    - Soubor JSON – blueprintAssignment. JSON
 
@@ -371,7 +368,7 @@ Po publikování podrobného plánu pomocí PowerShellu ho můžete přiřadit k
    - Spravovaná identita přiřazená uživatelem
 
      Přiřazení podrobného plánu může také používat [uživatelsky přiřazenou spravovanou identitu](../../active-directory/managed-identities-azure-resources/overview.md).
-     V takovém případě se část **identity** souboru přiřazení JSON mění takto. V uvedeném pořadí nahraďte `{tenantId}`, `{subscriptionId}`, `{yourRG}` a `{userIdentity}` pomocí svého tenantId, subscriptionId, názvu skupiny prostředků a názvu vaší spravované identity přiřazené uživatelem.
+     V takovém případě se část **identity** souboru přiřazení JSON mění takto. V uvedeném pořadí nahraďte `{tenantId}`, `{subscriptionId}`, `{yourRG}`a `{userIdentity}` pomocí tenantId, subscriptionId, názvu skupiny prostředků a názvu vaší spravované identity přiřazené uživatelem.
 
      ```json
      "identity": {
@@ -388,7 +385,7 @@ Po publikování podrobného plánu pomocí PowerShellu ho můžete přiřadit k
      > [!IMPORTANT]
      > Modrotisky nespravují spravovanou identitu přiřazenou uživatelem. Uživatelé zodpovídají za přiřazení dostatečných rolí a oprávnění nebo přiřazení podrobného plánu se nezdaří.
 
-## <a name="unassign-a-blueprint"></a>Zrušení přiřazení podrobného plánu
+## <a name="unassign-a-blueprint"></a>Zrušení přiřazení plánu
 
 Podrobný plán můžete odebrat z předplatného. Odebrání se často provádí v případě, že už nepotřebujete prostředky artefaktů. Po odebrání podrobného plánu zůstanou přiřazené artefakty, které byly jeho součástí. Chcete-li odebrat přiřazení podrobného plánu, použijte rutinu `Remove-AzBlueprintAssignment`:
 

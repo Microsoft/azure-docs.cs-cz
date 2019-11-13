@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 62657134775d21ad6aabdf8f02a1e001de0a6094
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 55a9cbcfdb9766c6adc6d10f975fa4d074ec3aaf
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176844"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011673"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Jak autorizovat vývojářské účty pomocí Azure Active Directory B2C v Azure API Management
 
 ## <a name="overview"></a>Přehled
 
-Azure Active Directory B2C je cloudové řešení pro správu identit pro webové a mobilní aplikace, které čelí spotřebiteli. Můžete ji použít ke správě přístupu k portálu pro vývojáře. V této příručce se dozvíte, jak ve službě API Management Service, která se má integrovat s Azure Active Directory B2C, na konfiguraci. Informace o povolení přístupu k portálu pro vývojáře pomocí klasického Azure Active Directory najdete v tématu [Postup autorizace vývojářských účtů pomocí Azure Active Directory].
+Azure Active Directory B2C je cloudové řešení správy identit pro zákaznické webové a mobilní aplikace. Můžete ji použít ke správě přístupu k portálu pro vývojáře. V této příručce se dozvíte, jak ve službě API Management Service, která se má integrovat s Azure Active Directory B2C, na konfiguraci. Informace o povolení přístupu k portálu pro vývojáře pomocí klasického Azure Active Directory najdete v tématu [Postup autorizace vývojářských účtů pomocí Azure Active Directory].
 
 > [!NOTE]
 > Chcete-li dokončit kroky v této příručce, je nutné nejprve mít klienta Azure Active Directory B2C, aby bylo možné vytvořit aplikaci v nástroji. Také musíte mít připravená registrace a přihlášení k zásadám. Další informace najdete v tématu [přehled Azure Active Directory B2C].
@@ -87,11 +87,11 @@ Azure Active Directory B2C je cloudové řešení pro správu identit pro webov�
 
 ## <a name="developer-portal---add-azure-ad-b2c-account-authentication"></a>Portál pro vývojáře – přidání ověřování účtu Azure AD B2C
 
-Pokud chcete povolit přihlašování pomocí AAD B2C na portálu pro vývojáře, musíte do formuláře pro přihlášení přidat pomůcku **tlačítek OAuth** .
+Na portálu pro vývojáře je možné přihlašovat pomocí AAD B2C s pomůckou pro **tlačítka OAuth** . Pomůcka už je součástí přihlašovací stránky výchozího obsahu portálu pro vývojáře.
 
 ![Pomůcka tlačítek AAD](./media/api-management-howto-aad/portal-oauth-widget.png)
 
-I když se nový účet automaticky vytvoří, když se přihlásí nový uživatel pomocí AAD B2C, můžete zvážit přidání stejného widgetu do formuláře pro registraci.
+I když se nový účet automaticky vytvoří, když se přihlásí nový uživatel pomocí AAD B2C, můžete zvážit přidání stejného widgetu do registrační stránky.
 
 ## <a name="legacy-developer-portal---how-to-sign-up-with-azure-ad-b2c"></a>Starší portál pro vývojáře – jak se zaregistrovat pomocí Azure AD B2C
 
@@ -110,7 +110,7 @@ I když se nový účet automaticky vytvoří, když se přihlásí nový uživa
    > [!NOTE]
    > Pokud je Azure Active Directory B2C jedinou možností, která je povolená na kartě **identity** na portálu vydavatele, budete přesměrováni přímo na zásadu registrace.
 
-   ![Vývojářský portál][api-management-howto-aad-b2c-dev-portal-b2c-options]
+   ![Portál pro vývojáře][api-management-howto-aad-b2c-dev-portal-b2c-options]
 
    Po dokončení registrace se budete přesměrováni zpět na portál pro vývojáře. Nyní jste přihlášeni k portálu pro vývojáře pro vaši instanci služby API Management.
 

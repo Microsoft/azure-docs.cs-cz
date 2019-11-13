@@ -1,5 +1,5 @@
 ---
-title: Přidání ID korelace do zpráv IoT s distribuovaným trasováním (Preview)
+title: Přidat ID korelace do zpráv IoT s nedistribuovaným trasováním (před)
 description: Naučte se používat distribuované trasování, které umožňuje sledovat zprávy IoT v rámci služeb Azure, které vaše řešení používá.
 author: jlian
 manager: briz
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: a6e7d2dc9b6274c07fda011bff8ec9dc59f74f95
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 835a359d3b5781ad814e423e4a69e8d60379c97b
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889449"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953159"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Trasování zpráv ze zařízení do cloudu Azure IoT pomocí distribuované trasování (Preview)
 
@@ -197,7 +197,7 @@ Chcete-li změnit procento zpráv, které mají být trasovány z cloudu, je nut
 
 1. Vyberte **vzorkovací frekvenci** mezi 0 a 100%.
 
-1. Klikněte na **Uložit**.
+1. Klikněte na možnost **Uložit**.
 
 1. Počkejte několik sekund a pak stiskněte tlačítko **aktualizovat**. po úspěšném potvrzení zařízení se zobrazí ikona synchronizace se symbolem zaškrtnutí.
 
@@ -263,11 +263,11 @@ AzureDiagnostics
 
 Příklady protokolů, jak je znázorněno Log Analytics:
 
-| TimeGenerated | OperationName | Kategorie | Úroveň | CorrelationId | Trvání v MS | Vlastnosti |
+| TimeGenerated | OperationName | Kategorie | Level | CorrelationId | Trvání v MS | Vlastnosti |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| 2018-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | DistributedTracing | Informační | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId": "AZ3166", "messageSize": "96", "callerLocalTimeUtc": "2018-02-22T03:27:28.633 Z", "calleeLocalTimeUtc": "2018-02-22T03:27:28.687 Z"} |
-| 2018-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | DistributedTracing | Informační | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled": "false"; "parentSpanId": "0144d2590aacd909"} |
-| 2018-02-22T03:28:48.633 Z | DiagnosticIoTHubEgress | DistributedTracing | Informační | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType": "EventHub"; "koncový bod": "myEventHub", "parentSpanId": "0144d2590aacd909"} |
+| 2018-02-22T03:28:28.633Z | DiagnosticIoTHubD2C | DistributedTracing | Informační | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId":"AZ3166","messageSize":"96","callerLocalTimeUtc":"2018-02-22T03:27:28.633Z","calleeLocalTimeUtc":"2018-02-22T03:27:28.687Z"} |
+| 2018-02-22T03:28:38.633Z | DiagnosticIoTHubIngress | DistributedTracing | Informační | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled":"false","parentSpanId":"0144d2590aacd909"} |
+| 2018-02-22T03:28:48.633Z | DiagnosticIoTHubEgress | DistributedTracing | Informační | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 23 | {"endpointType": "EventHub"; "koncový bod": "myEventHub", "parentSpanId": "0144d2590aacd909"} |
 
 Informace o různých typech protokolů najdete v tématu [diagnostické protokoly Azure IoT Hub](iot-hub-monitor-resource-health.md#distributed-tracing-preview).
 

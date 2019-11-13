@@ -1,19 +1,19 @@
 ---
-title: Plánování kapacity pro zotavení po havárii technologie Hyper-V pomocí Azure Site Recovery | Microsoft Docs
+title: Plánování kapacity pro zotavení po havárii technologie Hyper-V pomocí Azure Site Recovery
 description: Tento článek použijte k odhadu kapacity při nastavování zotavení po havárii pomocí služby Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 7501982f90cd145e0fc918bf976a840323a31127
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 843d5da26d6791cea880e5dfb654fe27b74f5d9f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972576"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936045"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Plánování kapacity pro zotavení po havárii virtuálního počítače Hyper-V 
 
@@ -33,8 +33,8 @@ K analýze zdrojového prostředí a úloh použijte Site Recovery Capacity Plan
 
 Nástroj můžete spustit ve dvou režimech:
 
-* **Rychlé plánování**: Poskytuje projekce sítě a serveru na základě průměrného počtu virtuálních počítačů, disků, úložiště a frekvence změn.
-* **Podrobné plánování**: Poskytuje podrobnosti o jednotlivých úlohách na úrovni virtuálního počítače. Analyzujte kompatibilitu virtuálních počítačů a získejte projekce ze sítě a serveru.
+* **Rychlé plánování**: poskytuje projektové a serverové projekce založené na průměrném počtu virtuálních počítačů, disků, úložišť a četnosti změn.
+* **Podrobné plánování**: poskytuje podrobné informace o jednotlivých úlohách na úrovni virtuálního počítače. Analyzujte kompatibilitu virtuálních počítačů a získejte projekce ze sítě a serveru.
 
 ## <a name="before-you-start"></a>Než začnete
 
@@ -65,17 +65,17 @@ Nástroj můžete spustit ve dvou režimech:
 
 4. Po zadání hodnot pro zdrojové prostředí obsahuje zobrazený výstup:
 
-   * **Požadovaná šířka pásma pro rozdílovou replikaci (v MB/s)** : Šířka pásma sítě pro rozdílovou replikaci se počítá podle průměrné denní míry změny dat.
-   * **Požadovaná šířka pásma pro počáteční replikaci (v MB/s)** : Šířka pásma sítě pro počáteční replikaci se počítá podle hodnot počáteční replikace, které zadáte.
-   * **Vyžadováno úložiště (v GB)** : Vyžaduje se celková velikost úložiště Azure.
-   * **Celkový počet IOPS ve standardním úložišti**: Číslo se vypočítá na základě velikosti jednotky 8K IOPS v celkových standardních účtech úložiště. Pro rychlé plánování se číslo vypočítá na základě všech disků zdrojového virtuálního počítače a rychlosti denních změn dat. V podrobném plánovači se číslo vypočítá na základě celkového počtu virtuálních počítačů, které jsou namapované na standardní virtuální počítače Azure a četnosti změn dat na těchto virtuálních počítačích.
-   * **Vyžaduje se počet standardních účtů úložiště**: Celkový počet standardních účtů úložiště potřebných k ochraně virtuálních počítačů. Účet úložiště úrovně Standard může obsahovat až 20 000 IOPS napříč všemi virtuálními počítači ve službě Storage úrovně Standard. Na disk se podporuje maximálně 500 IOPS.
-   * **Požadovaný počet disků objektů BLOB**: Počet disků, které jsou vytvořeny ve službě Azure Storage.
-   * **Počet požadovaných účtů Premium**: Celkový počet účtů služby Premium Storage potřebných k ochraně virtuálních počítačů. Zdrojový virtuální počítač s vysokým počtem vstupně-výstupních operací (větším než 20 000) vyžaduje účet Premium Storage. Účet Premium Storage může obsahovat až 80 000 IOPS.
-   * **Celkový počet IOPS na Premium Storage**: Číslo se vypočítá na základě velikosti jednotky 256 IOPS v celkových účtech Premium Storage. Pro rychlé plánování se číslo vypočítá na základě všech disků zdrojového virtuálního počítače a rychlosti denních změn dat. V podrobném plánovači se číslo vypočítá na základě celkového počtu virtuálních počítačů, které jsou namapované na virtuální počítače Azure úrovně Premium (DS a GS Series), a frekvence změny dat na těchto virtuálních počítačích.
-   * **Požadovaný počet konfiguračních serverů**: Ukazuje, kolik konfiguračních serverů je pro nasazení potřeba.
-   * **Počet požadovaných dalších procesových serverů**: Zobrazuje, zda jsou kromě procesového serveru, který běží na konfiguračním serveru, ve výchozím nastavení vyžadovány další procesní servery.
-   * **100% dodatečné úložiště na zdroji**: Ukazuje, jestli je ve zdrojovém umístění potřeba další úložiště.
+   * **Požadovaná šířka pásma pro rozdílovou replikaci (v MB/s)** : šířka pásma sítě pro rozdílovou replikaci se počítá podle průměrné denní frekvence změny dat.
+   * **Požadovaná šířka pásma pro počáteční replikaci (v MB/s)** : šířka pásma sítě pro počáteční replikaci se počítá podle hodnot počáteční replikace, které zadáte.
+   * **Vyžadováno úložiště (v GB)** : vyžaduje se celkové úložiště Azure.
+   * **Celkový počet IOPS ve standardním úložišti**: číslo se vypočítá na základě velikosti jednotky 8K IOPS v celkových standardních účtech úložiště. Pro rychlé plánování se číslo vypočítá na základě všech disků zdrojového virtuálního počítače a rychlosti denních změn dat. V podrobném plánovači se číslo vypočítá na základě celkového počtu virtuálních počítačů, které jsou namapované na standardní virtuální počítače Azure a četnosti změn dat na těchto virtuálních počítačích.
+   * **Vyžaduje se počet standardních účtů úložiště**: celkový počet standardních účtů úložiště potřebných k ochraně virtuálních počítačů. Účet úložiště úrovně Standard může obsahovat až 20 000 IOPS napříč všemi virtuálními počítači ve službě Storage úrovně Standard. Na disk se podporuje maximálně 500 IOPS.
+   * **Počet požadovaných disků objektů BLOB**: počet disků, které jsou vytvořeny v Azure Storage.
+   * **Počet požadovaných účtů Premium**: celkový počet účtů služby Premium Storage potřebných k ochraně virtuálních počítačů. Zdrojový virtuální počítač s vysokým počtem vstupně-výstupních operací (větším než 20 000) vyžaduje účet Premium Storage. Účet Premium Storage může obsahovat až 80 000 IOPS.
+   * **Celkový počet IOPS v Premium Storage**: číslo se počítá na základě velikosti jednotky 256 IOPS v celkových účtech Premium Storage. Pro rychlé plánování se číslo vypočítá na základě všech disků zdrojového virtuálního počítače a rychlosti denních změn dat. V podrobném plánovači se číslo vypočítá na základě celkového počtu virtuálních počítačů, které jsou namapované na virtuální počítače Azure úrovně Premium (DS a GS Series), a frekvence změny dat na těchto virtuálních počítačích.
+   * **Požadovaný počet konfiguračních serverů**: zobrazuje, kolik konfiguračních serverů je pro nasazení vyžadováno.
+   * **Počet požadovaných dalších procesových serverů**: zobrazuje, jestli jsou nutné další procesové servery, kromě procesového serveru, který běží na konfiguračním serveru ve výchozím nastavení.
+   * **100% další úložiště na zdroji**: zobrazuje, zda je v umístění zdroje vyžadováno další úložiště.
 
       ![Výstup](./media/site-recovery-capacity-planner/output.png)
 
@@ -146,5 +146,5 @@ Po zadání všech informací vyberte **Odeslat data do nástroje Planner** a ot
 
    ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 [Přečtěte si, jak spustit](site-recovery-capacity-planning-for-hyper-v-replication.md) Nástroj pro plánování kapacity.

@@ -1,17 +1,14 @@
 ---
 title: Podrobnosti struktury přiřazení zásad
 description: Popisuje definici přiřazení zásad, kterou používá Azure Policy k přidružení definic a parametrů zásad k prostředkům pro vyhodnocení.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: a75c64ebb6ba3eeffeccd98cf41365fe96218573
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 500e40b8d3a5943c7f64f5b190223cb1dc7b4c92
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255890"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960038"
 ---
 # <a name="azure-policy-assignment-structure"></a>Struktura přiřazení Azure Policy
 
@@ -19,11 +16,11 @@ Přiřazení zásad používají Azure Policy k definování prostředků, kter�
 
 K vytvoření přiřazení zásady použijte JSON. Přiřazení zásady obsahuje prvky pro:
 
-- zobrazované jméno
+- Zobrazovaný název
 - description
 - zprostředkovatele identity
 - režim vynucení
-- Definice zásad
+- definice zásad
 - parameters
 
 Například následující JSON zobrazuje přiřazení zásady v režimu _DoNotEnforce_ s dynamickými parametry:
@@ -52,7 +49,7 @@ Například následující JSON zobrazuje přiřazení zásady v režimu _DoNotE
 
 Všechny ukázky Azure Policy jsou na [Azure Policy Samples](../samples/index.md).
 
-## <a name="display-name-and-description"></a>Zobrazované jméno a popis
+## <a name="display-name-and-description"></a>Zobrazovaný název a popis
 
 K identifikaci přiřazení zásad a zadání kontextu pro jeho použití s konkrétní sadou prostředků použijte **DisplayName** a **Description** . hodnota **DisplayName** má maximální délku _128_ znaků a **popis** nesmí být delší než _512_ znaků.
 
@@ -62,10 +59,10 @@ Vlastnost **enforcementMode** poskytuje zákazníkům možnost Testovat výslede
 
 Tato vlastnost má následující hodnoty:
 
-|Režim |Hodnota JSON |Typ |Opravit ručně |Položka protokolu aktivit |Popis |
+|Mode |Hodnota JSON |Typ |Opravit ručně |Položka protokolu aktivit |Popis |
 |-|-|-|-|-|-|
-|Povoleno |Výchozí |string |Ano |Ano |Účinek zásad se vynutil při vytváření nebo aktualizaci prostředku. |
-|Zakázáno |DoNotEnforce |string |Ano |Ne | Při vytváření nebo aktualizaci prostředku není uplatněna zásada. |
+|Povoleno |Výchozí |řetězec |Ano |Ano |Účinek zásad se vynutil při vytváření nebo aktualizaci prostředku. |
+|Zakázáno |DoNotEnforce |řetězec |Ano |Ne | Při vytváření nebo aktualizaci prostředku není uplatněna zásada. |
 
 Pokud není v definici zásady nebo iniciativy zadaný **enforcementMode** , použije se _výchozí_ hodnota. Pro zásady [deployIfNotExists](./effects.md#deployifnotexists) se dají spouštět [úlohy nápravy](../how-to/remediate-resources.md) , a to i v případě, že **EnforcementMode** je nastavená na _DoNotEnforce_.
 

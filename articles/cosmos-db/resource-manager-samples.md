@@ -4,14 +4,14 @@ description: K vytvoření a konfiguraci Azure Cosmos DB použijte šablony Azur
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 11/08/2019
 ms.author: thvankra
-ms.openlocfilehash: 7c508d736c7c04cc6df2b42e0a90a2906052adbc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7b08ca98f25b079d831033b9393effd4ee4b65e3
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835524"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961861"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Šablony Azure Resource Manager pro Azure Cosmos DB
 
@@ -29,8 +29,6 @@ Následující tabulky obsahují odkazy na šablony Azure Resource Manager pro A
 |**Šablona**|**Popis**|
 |---| ---|
 |[Vytvoření účtu Azure Cosmos, databáze, kolekce](manage-mongodb-with-resource-manager.md#create-resource) | Tato šablona vytvoří účet s použitím rozhraní Azure Cosmos DB API pro MongoDB ve dvou oblastech s povoleným více hlavními servery. Účet Azure Cosmos bude mít dva kontejnery, které sdílejí propustnost na úrovni databáze. |
-|[Aktualizace propustnosti (RU/s) pro databázi](manage-mongodb-with-resource-manager.md#database-ru-update) | Tato šablona aktualizuje propustnost pro databázi v účtu rozhraní MongoDB API. |
-|[Aktualizace propustnosti (RU/s) pro kolekci](manage-mongodb-with-resource-manager.md#collection-ru-update) | Tato šablona aktualizuje propustnost kontejneru v účtu rozhraní MongoDB API. |
 
 ## <a name="cassandra-api"></a>Rozhraní Cassandra API
 
@@ -43,17 +41,14 @@ Následující tabulky obsahují odkazy na šablony Azure Resource Manager pro A
 |**Šablona**|**Popis**|
 |---| ---|
 |[Vytvoření účtu Azure Cosmos, databáze, grafu](manage-gremlin-with-resource-manager.md#create-resource) | Tato šablona vytvoří účet rozhraní Gremlin API ve dvou oblastech s povoleným více hlavními servery. Účet Azure Cosmos bude mít dva grafy, které sdílejí propustnost na úrovni databáze. |
-|[Aktualizace propustnosti (RU/s) pro databázi](manage-gremlin-with-resource-manager.md#database-ru-update) | Tato šablona aktualizuje propustnost pro databázi v účtu rozhraní Gremlin API. |
-|[Aktualizace propustnosti (RU/s) pro graf](manage-gremlin-with-resource-manager.md#graph-ru-update) | Tato šablona aktualizuje propustnost grafu v účtu rozhraní Gremlin API. |
 
 ## <a name="table-api"></a>Rozhraní Table API
 
 |**Šablona**|**Popis**|
 |---| ---|
 |[Vytvoření účtu Azure Cosmos, tabulky](manage-table-with-resource-manager.md#create-resource) | Tato šablona vytvoří účet rozhraní API pro tabulky ve dvou oblastech s povoleným více hlavními servery. Účet Azure Cosmos bude mít jednu tabulku. |
-|[Aktualizace propustnosti (RU/s) pro tabulku](manage-table-with-resource-manager.md#table-ru-update) | Tato šablona aktualizuje propustnost pro tabulku v rozhraní API pro tabulkym účtu. |
 
 > [!TIP]
 > Pokud chcete povolit sdílenou propustnost při použití rozhraní API pro tabulky, povolte propustnost na úrovni účtu na webu Azure Portal.
 
-Referenční dokumentaci najdete v tématu [Referenční dokumentace ARM pro stránku Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions) .
+Referenční dokumentaci najdete v tématu [Azure Resource Manager reference for Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions) Page.

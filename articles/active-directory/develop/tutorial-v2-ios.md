@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cfb61f417597abe52910b012ce3fb79ba48ce97
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 0e3892a03ffe097a51f294e698168f00e1359f92
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73902838"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960669"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Přihlaste se uživatelům a zavolejte Microsoft Graph z aplikace pro iOS nebo macOS.
 
@@ -33,7 +33,7 @@ Po dokončení průvodce bude aplikace přijímat přihlašovacíky osobních ú
 
 Aplikace v tomto kurzu se bude přihlašovat uživatelům a získat data jménem.  Tato data budou k dispozici prostřednictvím chráněného rozhraní API (Microsoft Graph API v tomto případě), které vyžaduje autorizaci a jsou chráněny platformou Microsoft identity.
 
-A to konkrétně:
+A konkrétně:
 
 * Vaše aplikace se přihlásí k uživateli přes prohlížeč nebo Microsoft Authenticator.
 * Koncový uživatel bude akceptovat oprávnění, která vaše aplikace požadovala.
@@ -48,7 +48,7 @@ Tento kurz se týká aplikací pro iOS i macOS. Všimněte si, že některé kro
 ## <a name="prerequisites"></a>Požadavky
 
 - K sestavení aplikace v této příručce se vyžaduje XCode verze 10. x nebo vyšší. XCode si můžete stáhnout z [webu iTunes](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "Adresa URL pro stažení XCode").
-- Knihovna Microsoft Authentication Library ([MSAL. Framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)). Můžete použít Správce závislostí nebo přidat knihovnu ručně. Níže uvedené pokyny vám ukážou, jak.
+- Microsoft Authentication Library ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)). Můžete použít Správce závislostí nebo přidat knihovnu ručně. Níže uvedené pokyny vám ukážou, jak.
 
 V tomto kurzu se vytvoří nový projekt. Pokud chcete stáhnout dokončený kurz místo toho, Stáhněte si kód:
 - [Ukázkový kód iOS](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
@@ -105,7 +105,7 @@ github "AzureAD/microsoft-authentication-library-for-objc" "master"
 
 V okně terminálu ve stejném adresáři jako aktualizované `Cartfile`spusťte následující příkaz, který Carthage aktualizuje závislosti ve vašem projektu.
 
-iOS
+iOS:
 
 ```bash
 carthage update --platform iOS
@@ -142,7 +142,7 @@ let kScopes: [String] = ["https://graph.microsoft.com/user.read"] // request per
 let kAuthority = "https://login.microsoftonline.com/common" // this authority allows a personal Microsoft account and a work or school account in any organization’s Azure AD tenant to sign in
 var accessToken = String()
 var applicationContext : MSALPublicClientApplication?
-var webViewParamaters : MSALWebviewParameters?
+var webViewParameters : MSALWebviewParameters?
 ```
 
 Jedinou hodnotou, kterou je třeba upravit výše, je hodnota přiřazená `kClientID`jako [ID aplikace](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-id-client-id). Tato hodnota je součástí dat konfigurace MSAL, která jste uložili během kroku na začátku tohoto kurzu, abyste aplikaci zaregistrovali v Azure Portal.
@@ -322,7 +322,7 @@ Přidejte následující po `initMSAL` metodě do `ViewController` třídy.
 
 ```swift
 func initWebViewParams() {
-        self.webViewParamaters = MSALWebviewParameters(parentViewController: self)
+        self.webViewParameters = MSALWebviewParameters(parentViewController: self)
     }
 ```
 
@@ -330,8 +330,8 @@ func initWebViewParams() {
 
 ```swift
 func initWebViewParams() {
-        self.webViewParamaters = MSALWebviewParameters()
-        self.webViewParamaters?.webviewType = .wkWebView
+        self.webViewParameters = MSALWebviewParameters()
+        self.webViewParameters?.webviewType = .wkWebView
     }
 ```
 
@@ -425,7 +425,7 @@ Do třídy `ViewController` přidejte následující kód.
 func acquireTokenInteractively() {
         
     guard let applicationContext = self.applicationContext else { return }
-    guard let webViewParameters = self.webViewParamaters else { return }
+    guard let webViewParameters = self.webViewParameters else { return }
         
     // #1
     let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParameters: webViewParameters)

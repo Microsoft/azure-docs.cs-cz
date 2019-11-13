@@ -1,5 +1,5 @@
 ---
-title: Příklady manifestu aplikace služby Azure Service Fabric Container | Microsoft Docs
+title: Příklady manifestu aplikace Azure Service Fabric
 description: Naučte se konfigurovat nastavení manifestu aplikace a služby pro Service Fabric aplikaci.
 services: service-fabric
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: dc3384821ddfba0a137a74297bc44903b6ed5d1d
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 969f15ecb45164e3b3f26c22f756a022e55782ed
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650583"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013179"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Příklady manifestu aplikace a služby Service Fabric
 Tato část obsahuje příklady manifestů aplikace a služby. Tyto příklady nejsou určeny k zobrazení důležitých scénářů, ale k zobrazení různých nastavení, která jsou k dispozici a jak je používat. 

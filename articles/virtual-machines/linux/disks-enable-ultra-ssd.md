@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 681b73e34e5b207ac92d6233ade1b50acf006783
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: d3d2fdf07748038c8821e001e17ce72b1c4a3306
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516023"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013751"
 ---
+# <a name="using-azure-ultra-disks"></a>Použití disků Azure Ultra
 [!INCLUDE [virtual-machines-disks-ultra-ssd](../../../includes/virtual-machines-disks-getting-started-ultra-ssd.md)]

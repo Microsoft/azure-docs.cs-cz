@@ -1,5 +1,5 @@
 ---
-title: O sítích v Azure do Azure – zotavení po havárii pomocí Azure Site Recovery | Microsoft Docs
+title: O sítích v zotavení po havárii virtuálních počítačů Azure pomocí Azure Site Recovery
 description: Poskytuje přehled o sítích pro replikaci virtuálních počítačů Azure pomocí Azure Site Recovery.
 services: site-recovery
 author: sujayt
@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5c2cd96ccfa3a26a9009188ad424eefaaeb7ce48
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 09cd814ade25be438a17b83fb73e74b89c14e22f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73906838"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954209"
 ---
-# <a name="about-networking-in-azure-to-azure-replication"></a>O sítích v Azure do replikace Azure
+# <a name="about-networking-in-azure-vm-disaster-recovery"></a>O sítích v zotavení po havárii virtuálního počítače Azure
 
 
 
@@ -60,8 +60,8 @@ Pokud používáte proxy server brány firewall založený na protokolu IP nebo 
 - Všechny rozsahy IP adres, které odpovídají účtům úložiště ve zdrojové oblasti
     - Vytvořte pravidlo NSG založené na [značce služby úložiště](../virtual-network/security-overview.md#service-tags) pro zdrojovou oblast.
     - Povolte tyto adresy, aby bylo možné do účtu úložiště mezipaměti zapsat data z virtuálního počítače.
-- Vytvořit pravidlo NSG založené na [značce služby pro Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) pro povolení přístupu ke všem IP adresám, které odpovídají AAD
-    - Pokud v budoucnu přidáte do Azure Active Directory (AAD) nové adresy, budete muset vytvořit nová pravidla NSG.
+- Vytvoření [značky služby Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) na základě pravidel skupiny zabezpečení sítě umožňující přístup ke všem IP adresám v odpovídající službě AAD
+    - Pokud do Azure Active Directory (AAD) se přidají nové adresy v budoucnu, musíte vytvořit nová pravidla skupiny zabezpečení sítě.
 - Site Recovery IP adresy koncového bodu služby – k dispozici v [souboru XML](https://aka.ms/site-recovery-public-ips) a závisí na cílovém umístění. 
 - Doporučujeme, abyste vytvořili požadovaná pravidla NSG na NSG testu a ověřili, že neexistují žádné problémy předtím, než vytvoříte pravidla na produkčním NSG.
 
@@ -87,16 +87,16 @@ Site Recovery rozsahy IP adres jsou následující:
    Brazílie – jih | 191.234.185.172 | 23.97.97.36
    Austrálie – východ | 104.210.113.114 | 191.239.64.144
    Austrálie – jihovýchod | 13.70.159.158 | 191.239.160.45
-   Střední Kanada | 52.228.36.192 | 40.85.226.62
-   Východní Kanada | 52.229.125.98 | 40.86.225.142
+   Kanada – střed | 52.228.36.192 | 40.85.226.62
+   Kanada – východ | 52.229.125.98 | 40.86.225.142
    Středozápadní USA | 52.161.20.168 | 13.78.149.209
-   Západní USA 2 | 52.183.45.166 | 13.66.228.204
+   USA – západ 2 | 52.183.45.166 | 13.66.228.204
    Spojené království – západ | 51.141.3.203 | 51.141.14.113
-   Spojené království – jih | 51.140.43.158 | 51.140.189.52
+   Velká Británie – jih | 51.140.43.158 | 51.140.189.52
    Velká Británie – jih 2 | 13.87.37.4| 13.87.34.139
    Velká Británie – sever | 51.142.209.167 | 13.87.102.68
    Jižní Korea – střed | 52.231.28.253 | 52.231.32.85
-   Korea – jih | 52.231.198.185 | 52.231.200.144
+   Jižní Korea – jih | 52.231.198.185 | 52.231.200.144
    Francie – střed | 52.143.138.106 | 52.143.136.55
    Francie – jih | 52.136.139.227 |52.136.136.62
    Austrálie – střed| 20.36.34.70 | 20.36.46.142
@@ -135,7 +135,7 @@ Tento příklad ukazuje, jak nakonfigurovat NSG pravidla pro replikaci virtuáln
 
 2. Vytvořte pravidlo zabezpečení odchozího HTTPS (443) pro "Azureactivedirectory selhala" na NSG, jak je znázorněno na snímku obrazovky níže.
 
-      ![AAD – značka](./media/azure-to-azure-about-networking/aad-tag.png)
+      ![aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
 
 3. Vytvořit odchozí pravidla HTTPS (443) pro Site Recovery IP adresy, které odpovídají cílovému umístění:
 

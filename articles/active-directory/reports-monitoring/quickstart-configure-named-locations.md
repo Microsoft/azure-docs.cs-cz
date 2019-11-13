@@ -3,7 +3,7 @@ title: Konfigurace pojmenovaných umístění ve službě Azure Active Directory
 description: Přečtěte si, jak konfigurovat pojmenovaná umístění.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: f56e042a-78d5-4ea3-be33-94004f2a0fc3
 ms.service: active-directory
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1513dba19221e64d40551ffb13a5e9f33fd9858f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: df45ab0a7b1729ae6c1602c9769cd5b6da26f6ac
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127240"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014344"
 ---
-# <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Rychlý start: Konfigurace pojmenovaných umístění v Azure Active Directory
+# <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Rychlý start: Konfigurace pojmenovaných umístění ve službě Azure Active Directory
 
 Pomocí pojmenovaných umístění můžete označit důvěryhodné rozsahy IP adres ve vaší organizaci. Azure AD používá pojmenovaná umístění ke:
 - Detekuje falešně pozitivní výsledky v [detekcích rizik](concept-risk-events.md). Přihlášení z důvěryhodného umístění snižuje riziko při přihlášení uživatele.   
@@ -41,7 +41,7 @@ K dokončení tohoto rychlého startu je potřeba:
 
 ## <a name="configure-named-locations"></a>Konfigurace pojmenovaných umístění
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
 2. V levém podokně vyberte **Azure Active Directory**a potom v části **zabezpečení** vyberte **podmíněný přístup** .
 
@@ -59,7 +59,7 @@ K dokončení tohoto rychlého startu je potřeba:
     
      ![Nové okno](./media/quickstart-configure-named-locations/61.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace naleznete v tématu:
 

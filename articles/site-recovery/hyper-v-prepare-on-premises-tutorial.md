@@ -1,18 +1,18 @@
 ---
-title: Příprava místních serverů Hyper-V na zotavení po havárii virtuálních počítačů Hyper-V do Azure
-description: Přečtěte si, jak připravit místní virtuální počítače Hyper-V pro zotavení po havárii do Azure pomocí služby Azure Site Recovery.
+title: Příprava na zotavení po havárii virtuálních počítačů Hyper-V do Azure pomocí Azure Site Recovery
+description: Přečtěte si, jak připravit místní virtuální počítače Hyper-V pro zotavení po havárii do Azure pomocí Azure Site Recovery.
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b17e42378daf51543a2664315f2971d15c288611
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: b36e4688ebd6e929a56869a6bb191d98b2f1f432
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813724"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954009"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Příprava místních serverů Hyper-V na zotavení po havárii do Azure
 
@@ -21,7 +21,7 @@ Tento článek popisuje, jak připravit místní infrastrukturu technologie Hype
 
 Toto je druhý kurz v řadě, ve kterém se dozvíte, jak nastavit zotavení po havárii do Azure pro místní virtuální počítače Hyper-V. V prvním kurzu [nastavíme komponenty Azure](tutorial-prepare-azure.md) potřebné pro zotavení po havárii technologie Hyper-V.
 
-V tomto kurzu se naučíte:
+Co se v tomto kurzu naučíte:
 
 > [!div class="checklist"]
 > * Zkontrolujte požadavky technologie Hyper-V a požadavky VMM, pokud jsou hostitelé Hyper-V spravováni nástrojem System Center VMM.
@@ -86,7 +86,7 @@ Pokud se chcete po převzetí služeb při selhání připojit k virtuálním po
 
 1. Pokud chcete mít přístup přes internet, před převzetím služeb při selhání povolte na místním virtuálním počítači protokol RDP. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je povolený protokol RDP pro všechny profily.
 2. Pokud chcete mít přístup přes síť VPN typu Site-to-Site, povolte na místním počítači protokol RDP. Protokol RDP musí být povolený v části **Brána Windows Firewall** -> **Povolené aplikace a funkce** pro **doménovou a privátní** síť.
-   Zkontrolujte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](https://support.microsoft.com/kb/3031135). Při aktivaci převzetí služeb při selhání by na virtuálním počítači neměly být žádné čekající aktualizace Windows. V takovém případě se k virtuálnímu počítači nebudete moct přihlásit, dokud se aktualizace nedokončí.
+   Zkontrolujte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](https://support.microsoft.com/kb/3031135) Při aktivaci převzetí služeb při selhání by na virtuálním počítači neměly být žádné čekající aktualizace Windows. V takovém případě se k virtuálnímu počítači nebudete moct přihlásit, dokud se aktualizace nedokončí.
 3. Po převzetí služeb při selhání na virtuálním počítači Azure s Windows zkontrolujte **diagnostiku spuštění**, kde se zobrazí snímek obrazovky virtuálního počítače. Pokud se nemůžete připojit, zkontrolujte, že je virtuální počítač spuštěný, a přečtěte si tyto [tipy pro řešení potíží](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 Po převzetí služeb při selhání získáte přístup k virtuálním počítačům Azure pomocí stejné IP adresy jako replikovaný místní virtuální počítač nebo jiná IP adresa. [Přečtěte si další informace](concepts-on-premises-to-azure-networking.md) o nastavení adresování IP pro převzetí služeb při selhání.
@@ -94,5 +94,5 @@ Po převzetí služeb při selhání získáte přístup k virtuálním počíta
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Nastavení zotavení po havárii do Azure pro virtuální počítače](tutorial-hyper-v-to-azure.md)
-> Hyper-v[Nastavení zotavení po havárii do Azure pro virtuální počítače Hyper-v v cloudech VMM](tutorial-hyper-v-vmm-to-azure.md)
+> [Nastavení zotavení po havárii do Azure pro virtuální počítače Hyper-v](tutorial-hyper-v-to-azure.md)
+> [Nastavení zotavení po havárii do Azure pro virtuální počítače Hyper-v v cloudech VMM](tutorial-hyper-v-vmm-to-azure.md)

@@ -1,19 +1,19 @@
 ---
-title: Migrace místních počítačů do Azure pomocí Azure Site Recovery
+title: Migrace místních počítačů pomocí Azure Site Recovery
 description: Tento článek popisuje migraci místních počítačů do Azure pomocí Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/29/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5fa0f05f37164c24ba6441d0c4cb2abc59f331d7
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 24015810a295ef88b7d3e63bfc464ddddef6b55f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053049"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73939623"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrace místních počítačů do Azure
 
@@ -115,7 +115,7 @@ Spusťte převzetí služeb při selhání pro počítače, které chcete migrov
 
 
 > [!WARNING]
-> **Nepřerušujte v průběhu proces převzetí služeb při selhání:** Replikace virtuálního počítače se před spuštěním převzetí služeb při selhání zastaví. Pokud převzetí služeb při selhání v průběhu přerušíte, tak se sice zastaví, ale virtuální počítač se nebude znovu replikovat.
+> **Nepřerušujte v průběhu proces převzetí služeb při selhání:** Replikace virtuálního počítače se před spuštěním převzetí služeb při selhání zastaví. Pokud proces převzetí služeb při selhání v průběhu přerušíte, tak se sice zastaví, ale virtuální počítač se znovu nereplikuje.
 
 V některých scénářích vyžaduje převzetí služeb při selhání další zpracování, které trvá asi osm až deset minut. Možná si všimnete delšího testování doby převzetí služeb při selhání pro fyzické servery, počítače se systémem VMware Linux, virtuální počítače VMware, které nemají povolenou službu DHCP, a virtuální počítače VMware, které nemají následující ovladače pro spouštění: storvsc, VMBus, storflt, Intelide, ATAPI.
 
@@ -136,8 +136,8 @@ Některé kroky se dají automatizovat jako součást migračního procesu pomoc
     - Pokud migrujete virtuální počítače Hyper-V do Azure, nainstalujte agenta virtuálního počítače Azure na virtuální počítač Azure po migraci.
 - Ručně odeberte všechny agenty nebo poskytovatele služby Site Recovery z virtuálního počítače. Pokud migrujete virtuální počítače VMware nebo fyzické servery, odinstalujte službu mobility z virtuálního počítače.
 - Pro zvýšení odolnosti:
-    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Další informace]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal).
-    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Další informace](azure-to-azure-quickstart.md).
+    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Další informace]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal)
+    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Další informace](azure-to-azure-quickstart.md)
 - Pro zvýšení zabezpečení:
     - Uzamkněte a omezte přístup příchozího provozu pomocí [správy za běhu]( https://docs.microsoft.com/azure/security-center/security-center-just-in-time) ve službě Azure Security Center.
     - Omezte síťový provoz na koncové body správy pomocí [skupin zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview).
@@ -158,7 +158,7 @@ Některé kroky se dají automatizovat jako součást migračního procesu pomoc
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste migrovali místní virtuální počítače na virtuální počítače Azure. současné
+V tomto kurzu jste migrovali místní virtuální počítače na virtuální počítače Azure. Současné
 
 > [!div class="nextstepaction"]
 > [Nastavte zotavení po havárii](azure-to-azure-replicate-after-migration.md) do sekundární oblasti Azure pro virtuální počítače Azure.

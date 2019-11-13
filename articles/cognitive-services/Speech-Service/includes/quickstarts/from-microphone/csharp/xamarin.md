@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 1f98e4ac6bdc0a9b7a5982b58677732ede1911f7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d0d1cfee535a04203d9ff995b94fcad5d432ed3e
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503602"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960806"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -53,7 +53,7 @@ Běžný projekt HelloWorld obsahuje implementace nezávislé na platformě pro 
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
 
-#### <a name="androidtabandroid"></a>[Android](#tab/android)
+#### <a name="androidtabx-android"></a>[Android](#tab/x-android)
 ## <a name="add-sample-code-for-the-helloworldandroid-project"></a>Přidat vzorový kód pro `helloworld.Android` projekt
 
 Nyní přidejte C# kód, který definuje část aplikace specifickou pro Android.
@@ -99,7 +99,7 @@ Nyní přidejte C# kód, který definuje část aplikace specifickou pro iOS. V 
 
 1. Pokud vytváříte počítač s Windows, navažte připojení k zařízení Mac pro sestavování prostřednictvím **nástrojů** > dvojice > iOS **do počítače Mac**. Postupujte podle pokynů průvodce, který poskytuje Visual Studio, a povolte tak připojení k zařízení Mac.
 
-#### <a name="uwptabhelloworlduwp"></a>[PODPORUJÍ](#tab/helloworlduwp)
+#### <a name="uwptabhelloworlduwp"></a>[UPW](#tab/helloworlduwp)
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Přidat vzorový kód pro `helloworld.UWP` projekt
 
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Přidejte vzorový kód pro HelloWorld. Projekt UWP
@@ -119,7 +119,7 @@ Nyní přidejte C# kód, který definuje část aplikace specifickou pro UWP.
 1. Potom poklikejte na soubor `Package.appxmanifest` pod HelloWorld. Projekt UWP v aplikaci Visual Studio. V části **Možnosti**se ujistěte, že je vybraná možnost **mikrofon** , a uložte soubor.
 
 1. Dále dvakrát klikněte na `Package.appxmanifest` soubor pod projektem `helloworld.UWP` v aplikaci Visual Studio a v části **možnosti** > je zaškrtnuto políčko **mikrofon** a soubor uložte.
-   > Poznámka: pro případ, že se zobrazí upozornění: soubor certifikátu neexistuje: HelloWorld. UWP_TemporaryKey. pfx. Další informace najdete v ukázce [řeči na text](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp) .
+   > Poznámka: pro případ, že se zobrazí upozornění: soubor certifikátu neexistuje: HelloWorld. UWP_TemporaryKey. pfx, další informace najdete v ukázce [řeči na text](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp) .
 
 1. V řádku nabídek vyberte **soubor** > **Uložit vše** a uložte provedené změny.
 

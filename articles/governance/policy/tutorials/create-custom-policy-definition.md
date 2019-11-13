@@ -1,17 +1,14 @@
 ---
 title: Vytvoření vlastní definice zásad
 description: Vytvořte vlastní definici zásad pro Azure Policy pro zajištění vlastních obchodních pravidel.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 04/23/2019
 ms.topic: tutorial
-ms.service: azure-policy
-ms.openlocfilehash: 240d0fa388fbdfdd3d29d735aed708a096440740
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 1a5be5a3e81dec6f4369e6b01dcda3d5de5f6dac
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980358"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959266"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Kurz: Vytvoření vlastní definice zásady
 
@@ -53,14 +50,14 @@ Na základě obchodních požadavků je prostředek Azure, který se bude audito
 
 Existuje mnoho způsobů, jak určit vlastnosti prostředku Azure. Podíváme se na každou z těchto kurzů:
 
-- Šablony Správce prostředků
+- Šablony Resource Manageru
   - Exportovat existující prostředek
   - Prostředí pro vytváření
   - Šablony pro rychlý Start (GitHub)
   - Referenční dokumentace k šablonám
 - Průzkumník prostředků Azure
 
-### <a name="resource-manager-templates"></a>Šablony Správce prostředků
+### <a name="resource-manager-templates"></a>Šablony Resource Manageru
 
 Existuje několik způsobů, jak se podívat na [šablonu správce prostředků](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md) , která obsahuje vlastnost, kterou chcete spravovat.
 
@@ -161,11 +158,11 @@ Existuje několik způsobů, jak určit aliasy pro prostředek Azure. Podíváme
 
 - Azure CLI
 - Azure PowerShell
-- Graf prostředků Azure
+- Azure Resource Graph
 
 ### <a name="azure-cli"></a>Azure CLI
 
-V Azure CLI se ke hledání aliasů prostředků používá skupina příkazů `az provider`. Vyfiltrujeme obor názvů **Microsoft. Storage** na základě detailů, které jsme o prostředku Azure dostali dřív.
+V Azure CLI se skupina příkazů `az provider` používá k hledání aliasů prostředků. Vyfiltrujeme obor názvů **Microsoft. Storage** na základě detailů, které jsme o prostředku Azure dostali dřív.
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -189,7 +186,7 @@ V Azure PowerShell se k hledání aliasů prostředků používá rutina `Get-Az
 
 Podobně jako Azure CLI zobrazuje výsledky aliasy podporované účty úložiště s názvem **supportsHttpsTrafficOnly**.
 
-### <a name="azure-resource-graph"></a>Graf prostředků Azure
+### <a name="azure-resource-graph"></a>Azure Resource Graph
 
 [Azure Resource Graph](../../resource-graph/overview.md) je nová služba ve verzi Preview. Umožňuje další metodu hledání vlastností prostředků Azure. Tady je ukázkový dotaz pro prohlížení jednoho účtu úložiště s grafem prostředků:
 

@@ -1,5 +1,5 @@
 ---
-title: Začínáme s identitou modulu a dvojčetem modulu služby Azure IoT Hub (.NET) | Microsoft Docs
+title: Začínáme s modulem identity IoT Hub identit modulu & modulu (.NET)
 description: Zjistěte, jak vytvořit identitu modulu a aktualizovat dvojče modulu pomocí sad IoT SDK pro .NET.
 author: chrissie926
 ms.service: iot-hub
@@ -8,12 +8,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
-ms.openlocfilehash: abf8b18d13e2990f053dd4273645dd7b9a324c77
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: e728d0ef8f52927687d56bd1d4c64f03c53ef401
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147748"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73947684"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Začínáme s identitou modulu IoT Hub a modulem s dvojitou identitou (.NET)
 
@@ -53,7 +53,7 @@ Na konci tohoto kurzu budete mít dvě konzolové aplikace .NET:
 
 V této části vytvoříte na simulovaném zařízení konzolovou aplikaci .NET, která aktualizuje hlášené vlastnosti dvojčete modulu.
 
-Než začnete, Získejte připojovací řetězec modulu. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). Přejděte do svého centra a vyberte **zařízení IoT**. Vyhledejte **myFirstDevice**. Vyberte **myFirstDevice** a otevřete ho tak, že vyberete **myFirstModule** . V **podrobnostech o identitě modulu**zkopírujte **připojovací řetězec (primární klíč)** , pokud je to potřeba v následujícím postupu.
+Než začnete, Získejte připojovací řetězec modulu. Přihlaste se na web [Azure Portal ](https://portal.azure.com/). Přejděte do svého centra a vyberte **zařízení IoT**. Vyhledejte **myFirstDevice**. Vyberte **myFirstDevice** a otevřete ho tak, že vyberete **myFirstModule** . V **podrobnostech o identitě modulu**zkopírujte **připojovací řetězec (primární klíč)** , pokud je to potřeba v následujícím postupu.
 
    ![Podrobnosti o modulu na webu Azure Portal](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 
@@ -65,13 +65,13 @@ Než začnete, Získejte připojovací řetězec modulu. Přihlaste se k webu [A
 
 1. Vyberte **vytvořit** a vytvořte tak projekt.
 
-1. V aplikaci Visual Studio otevřete **nástroje** >  > **Správce balíčků NuGet** **Spravovat balíčky NuGet pro řešení**. Vyberte kartu **Procházet**.
+1. V aplikaci Visual Studio otevřete **nástroje** > **správce balíčků NuGet** > **Spravovat balíčky NuGet pro řešení**. Vyberte kartu **Procházet**.
 
 1. Vyhledejte a vyberte **Microsoft. Azure. Devices. Client**a pak vyberte **nainstalovat**.
 
     ![Instalace aktuální verze sady Azure IoT Hub .NET Service SDK](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
 
-1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
+1. Do horní části souboru `using`Program.cs**přidejte následující příkazy**:
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
@@ -174,7 +174,7 @@ Nyní můžete aplikace spouštět.
 
 1. Aplikace spustíte stisknutím klávesy **F5** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Chcete-li pokračovat v seznamování se službou IoT Hub a prozkoumat další scénáře IoT, podívejte se na tato témata:
 

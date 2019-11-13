@@ -1,18 +1,18 @@
 ---
-title: Monitorovat Azure Site Recovery pomocí protokolů Azure Monitor (Log Analytics) | Microsoft Docs
+title: Monitorování Azure Site Recovery pomocí protokolů Azure Monitor
 description: Naučte se monitorovat Azure Site Recovery pomocí protokolů Azure Monitor (Log Analytics).
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/13/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 889fa3bee17aa3b0300431b058332c5ec10d9faf
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b5bf568e03d4949b8798dd2e0f4c2d8cbcbbe0c7
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331918"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936089"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Monitorování Site Recovery s využitím protokolů Azure Monitoru
 
@@ -32,11 +32,11 @@ Použití protokolů Azure Monitor s Site Recovery podporuje replikaci z **Azure
 
 ## <a name="before-you-start"></a>Než začnete
 
-Zde je seznam toho, co k tomu potřebujete:
+Zde je, co potřebujete:
 
 - Aspoň jeden počítač chráněný v úložišti Recovery Services.
 - Log Analytics pracovní prostor pro ukládání protokolů Site Recovery. [Přečtěte si o](../azure-monitor/learn/quick-create-workspace.md) nastavení pracovního prostoru.
-- Základní informace o tom, jak zapisovat, spouštět a analyzovat dotazy protokolu v Log Analytics. [Další informace](../azure-monitor/log-query/get-started-portal.md).
+- Základní informace o tom, jak zapisovat, spouštět a analyzovat dotazy protokolu v Log Analytics. [Další informace](../azure-monitor/log-query/get-started-portal.md)
 
 Než začnete, doporučujeme, abyste si přečtěte [běžné otázky týkající se monitorování](monitoring-common-questions.md) .
 

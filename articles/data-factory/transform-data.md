@@ -11,15 +11,16 @@ ms.date: 07/31/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 97077b9f72de8792e6aba1d72ff34b9185b2d998
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0b91d22454d6023094f269b184c845047092b4fb
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683812"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954274"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Transformace dat v Azure Data Factory
 > [!div class="op_single_selector"]
+> * [Mapování toku dat](data-flow-create.md)
 > * [Hive](transform-data-using-hadoop-hive.md)  
 > * [Pig](transform-data-using-hadoop-pig.md)  
 > * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
@@ -34,7 +35,7 @@ ms.locfileid: "73683812"
 > * [Vlastní rozhraní .NET](transform-data-using-dotnet-custom-activity.md)
 
 ## <a name="overview"></a>Přehled
-Tento článek vysvětluje aktivity transformace dat v Azure Data Factory, které můžete použít k transformaci a zpracování nezpracovaných dat do předpovědi a přehledů. Transformační aktivita se spouští v výpočetním prostředí, jako je cluster Azure HDInsight nebo Azure Batch. Obsahuje odkazy na články s podrobnými informacemi o každé aktivitě transformace.
+Tento článek vysvětluje aktivity transformace dat v Azure Data Factory, které můžete použít k transformaci a zpracování nezpracovaných dat do předpovědi a přehledů ve velkém měřítku. Transformační aktivita se spouští v výpočetním prostředí, jako je Azure Databricks nebo Azure HDInsight. Obsahuje odkazy na články s podrobnými informacemi o každé aktivitě transformace.
 
 Data Factory podporuje následující aktivity transformace dat, které je možné přidat do [kanálů](concepts-pipelines-activities.md) jednotlivě nebo zřetězit s jinou aktivitou.
 
@@ -49,6 +50,8 @@ Mapování datových toků je vizuálně navržené transformace dat v Azure Dat
 Tahání datové toky v Azure Data Factory umožňují iterativní přípravu dat bez kódu na úrovni cloudu. Tahání datové toky se integrují s [Power Query online](https://docs.microsoft.com/power-query/) a zpřístupňují Power Query M funkcí pro data tahání v cloudovém měřítku prostřednictvím spuštění Sparku. Další informace najdete v tématu [toky tahání data](wrangling-data-flow-overview.md)flows.
 
 ## <a name="external-transformations"></a>Externí transformace
+
+Volitelně můžete ručně transformovat kód a spravovat externí výpočetní prostředí.
 
 ### <a name="hdinsight-hive-activity"></a>Aktivita v podregistru HDInsight
 Aktivita podregistru HDInsight v Data Factoryovém kanálu spouští dotazy na podregistry ve vašem clusteru HDInsight založeném na systému Windows/Linux nebo na vyžádání. Podrobnosti o této aktivitě najdete v článku o [aktivitě podregistru](transform-data-using-hadoop-hive.md) . 

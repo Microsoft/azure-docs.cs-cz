@@ -7,18 +7,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: dacurwin
-ms.openlocfilehash: c30b918be5e4185d6fb4fdd2fcfc47f8dd4d25ef
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: a77227aca70a48d625f9e20fff9c9fe7df87c000
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969171"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012138"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Běžné dotazy týkající se zálohování souborů a složek
 
 Tento článek obsahuje odpovědi na běžné dotazy Abound zálohování souborů a složek pomocí agenta služby Microsoft Azure Recovery Services (MARS) ve službě [Azure Backup](backup-overview.md) .
-
-## <a name="general"></a>Obecné
 
 ## <a name="configure-backups"></a>Konfigurace zálohování
 
@@ -72,7 +70,7 @@ Při přejmenování počítače se systémem Windows se zastaví všechna aktu�
 
 * Nový název počítače je potřeba zaregistrovat v úložišti záloh.
 * Když zaregistrujete nový název trezoru, první operace je *Úplná* záloha.
-* Pokud potřebujete obnovit data zálohovaná do trezoru se starým názvem serveru, použijte možnost obnovení do alternativního umístění v Průvodci obnovením dat. [Další informace](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
+* Pokud potřebujete obnovit data zálohovaná do trezoru se starým názvem serveru, použijte možnost obnovení do alternativního umístění v Průvodci obnovením dat. [Další informace](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>Jaká je maximální délka cesty k souboru pro zálohování?
 
@@ -113,11 +111,11 @@ Velikost složky mezipaměti určuje množství dat, která zálohujete.
 
 1. Spuštěním tohoto příkazu v příkazovém řádku se zvýšenými oprávněními zastavte modul zálohování:
 
-    ```PS C:\> Net stop obengine```
+    ```Net stop obengine```
 
 2. Pokud jste nakonfigurovali zálohování stavu systému, otevřete správu disků a odpojte disky s názvy ve formátu `"CBSSBVol_<ID>"`.
 3. Nepřesouvat soubory. Místo toho zkopírujte složku místo v mezipaměti na jinou jednotku s dostatkem místa.
-4. Aktualizujte následující položky registru s cestou nové složky mezipaměti.<br/>
+4. Aktualizujte následující položky registru s cestou nové složky mezipaměti.
 
     | Cesta k registru | Klíč registru | Hodnota |
     | --- | --- | --- |
@@ -126,9 +124,11 @@ Velikost složky mezipaměti určuje množství dat, která zálohujete.
 
 5. Restartujte zálohovací stroj na příkazovém řádku se zvýšenými oprávněními:
 
-    ```PS C:\> Net stop obengine```
+  ```command
+  Net stop obengine
 
-    ```PS C:\> Net start obengine```
+  Net start obengine
+  ```
 
 6. Spusťte zálohování ad hoc. Po úspěšném dokončení zálohování pomocí nového umístění můžete odebrat původní složku mezipaměti.
 
@@ -153,7 +153,7 @@ Složka mezipaměti ani virtuální pevný disk s metadaty nemají atributy vyž
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>Existuje způsob, jak upravit šířku pásma používanou pro zálohování?
 
-Ano, pomocí možnosti **změnit vlastnosti** v agentovi Mars můžete upravit šířku pásma a časování. [Další informace](backup-configure-vault.md#enable-network-throttling).
+Ano, pomocí možnosti **změnit vlastnosti** v agentovi Mars můžete upravit šířku pásma a časování. [Další informace](backup-configure-vault.md#enable-network-throttling)
 
 ## <a name="restore"></a>Obnovení
 

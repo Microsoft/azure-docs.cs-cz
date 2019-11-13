@@ -1,17 +1,14 @@
 ---
 title: Vytvořit podrobný plán na portálu
 description: Pomocí Azure modrotisky můžete vytvářet, definovat a nasazovat artefakty prostřednictvím Azure Portal.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/11/2019
 ms.topic: quickstart
-ms.service: blueprints
-ms.openlocfilehash: f4dc13717b65a53b90a68ac48a2281687c157edf
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 1c2d619a0383cc9542bc6dc3a5f5822f0477237c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978558"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960462"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rychlý Start: definování a přiřazení podrobného plánu na portálu
 
@@ -256,7 +253,7 @@ Po publikování se plán dá přiřadit k předplatnému. Přiřaďte podrobný
    > Pro každý artefakt, který jste přidali do skupiny prostředků během definice podrobného plánu, je tento artefakt odsazený tak, aby se zarovnal se skupinou prostředků nebo objektem, pomocí kterého ho nasadíte.
    > Artefakty, které buď nepřebírají parametry, nebo nemají žádné parametry, které by bylo možné definovat v přiřazení, jsou uvedeny pouze pro kontextové informace.
 
-1. V šabloně Azure Resource Manager **StorageAccount**jako parametr **storageAccountType** vyberte **Standard_GRS** .
+1. V šabloně Azure Resource Manager **StorageAccount**vyberte pro parametr **storageAccountType** možnost **Standard_GRS** .
 
 1. Přečtěte si informační pole v dolní části stránky a potom vyberte **přiřadit**.
 
@@ -277,7 +274,7 @@ Po přiřazení podrobného plánu k předplatnému ověřte průběh nasazení:
 
 1. Na stránce **přiřazení** podrobného plánu ověřte, zda byly všechny artefakty úspěšně nasazeny a zda během nasazení nedošlo k chybám. Pokud došlo k chybám, přečtěte si téma [řešení potíží s](./troubleshoot/general.md) podrobnými kroky pro určení, co se stalo.
 
-## <a name="unassign-a-blueprint"></a>Zrušení přiřazení podrobného plánu
+## <a name="unassign-a-blueprint"></a>Zrušení přiřazení plánu
 
 Pokud už přiřazení podrobného plánu nepotřebujete, odeberte ho z předplatného. Podrobný plán mohl být nahrazen novějším plánem s aktualizovanými vzorci, zásadami a návrhy. Po odebrání podrobného plánu zůstanou přiřazené artefakty, které byly jeho součástí. Pokud chcete odebrat přiřazení podrobného plánu, postupujte následovně:
 
@@ -287,7 +284,7 @@ Pokud už přiřazení podrobného plánu nepotřebujete, odeberte ho z předpla
 
 1. Přečtěte si potvrzovací zprávu a pak vyberte **OK**.
 
-## <a name="delete-a-blueprint"></a>Odstranění podrobného plánu
+## <a name="delete-a-blueprint"></a>Smazání podrobného plánu
 
 1. Na levé straně stránky vyberte **definice** podrobného plánu.
 

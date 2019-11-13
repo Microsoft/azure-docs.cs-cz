@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 71a2b73ab3570539a566f708ea8b1a41963d4e81
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: eb8bf1891f5ce96507c20e196d20ae499f30fe34
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747304"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012127"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Řešení potíží se zálohováním stavu systému
 
@@ -45,7 +45,7 @@ Před zahájením odstraňování potíží se zálohováním stavu systému dop
 - Microsoft nedoporučuje obnovování pomocí obnovení stavu systému na jiný hardware.
 - Zálohování stavu systému aktuálně podporuje místní servery Windows, takže tato funkce není dostupná pro virtuální počítače Azure.
 
-## <a name="pre-requisite"></a>Předpoklad
+## <a name="prerequisites"></a>Požadavky
 
 Před odstraňováním potíží se zálohováním stavu systému pomocí Azure Backup proveďte níže uvedenou kontrolu požadavků.  
 
@@ -87,7 +87,7 @@ Pokud chcete nainstalovat Zálohování Windows Serveru pomocí Správce serveru
 5. Na kartě **potvrzení** kliknutím na **instalovat** spusťte proces instalace.
 6. Na kartě **výsledky** se zobrazí funkce zálohování Windows serveru se úspěšně nainstalovala na Windows Server.
 
-    ![vyústit](./media/backup-azure-system-state-troubleshoot/results.jpg)
+    ![výsledek](./media/backup-azure-system-state-troubleshoot/results.jpg)
 
 ### <a name="system-volume-information-permission"></a>Oprávnění k informacím o svazcích systému
 
@@ -99,11 +99,11 @@ Ujistěte se, že níže uvedené služby jsou ve stavu spuštěno:
 
 **Název služby** | **Typ spouštění**
 --- | ---
-Vzdálené volání procedur (RPC) | Automaticky
-Systém událostí COM+ (EventSystem) | Automaticky
-Služba oznamování systémových událostí (SENS) | Automaticky
-Stínová kopie svazku (VSS) | Ruční
-Poskytovatel Microsoft software Stínová kopie (SWPRV) | Ruční
+Vzdálené volání procedur (RPC) | Automatické
+Systém událostí COM+ (EventSystem) | Automatické
+Služba oznamování systémových událostí (SENS) | Automatické
+Stínová kopie svazku (VSS) | Ručně
+Poskytovatel Microsoft software Stínová kopie (SWPRV) | Ručně
 
 ### <a name="validate-windows-server-backup-status"></a>Ověřit stav Zálohování Windows Serveru
 

@@ -1,19 +1,18 @@
 ---
-title: Běžné dotazy – zotavení po havárii Hyper-V do Azure pomocí Azure Site Recovery | Microsoft Docs
+title: Běžné dotazy k zotavení po havárii technologie Hyper-V pomocí Azure Site Recovery
 description: Tento článek shrnuje běžné otázky týkající se nastavení zotavení po havárii pro místní virtuální počítače Hyper-V do Azure pomocí Azure Site Recovery lokality.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 08/07/2019
+ms.date: 11/12/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: f9e5b5a70f7398483d5359a0489d5a6e6b241c6d
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8f3a04c70b88987fc91dbed3c186d04826b75726
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928194"
+ms.locfileid: "73954045"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Běžné dotazy – zotavení po havárii z Hyper-V do Azure
 
@@ -99,7 +98,7 @@ Potřebujete jeden nebo více virtuálních počítačů spuštěných na jednom
 
 ### <a name="can-i-replicate-vms-located-on-a-hyper-v-cluster"></a>Můžu replikovat virtuální počítače umístěné v clusteru Hyper-V?
 
-Ano, Site Recovery podporuje hostitele Hyper-V V clusteru. Poznámky:
+Ano, Site Recovery podporuje hostitele Hyper-V V clusteru. Všimněte si, že:
 
 - Všechny uzly clusteru by měly být zaregistrované ve stejném trezoru.
 - Pokud nepoužíváte VMM, měli byste do stejného webu Hyper-V Přidat všechny hostitele Hyper-V v clusteru.

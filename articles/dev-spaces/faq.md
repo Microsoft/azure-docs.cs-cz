@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.topic: conceptual
 description: Vyhledejte odpovědi na některé běžné otázky týkající se Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: de44bf323b300a4467dc8b30555798f557898494
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 317a942f94f3852cc11b8c0f004ed55097d05bc6
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71305974"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014212"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Nejčastější dotazy týkající se Azure Dev Spaces
 
@@ -44,7 +44,14 @@ Ano, Azure Dev Spaces můžete použít v clusteru AKS, který používá CNI pr
 
 V současné době je Azure Dev Spaces určena ke spouštění pouze v systémech Linux a pouze na uzlech. můžete však spustit Azure Dev Spaces v clusteru AKS s [existujícími kontejnery Windows][windows-containers].
 
+### <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>Můžu použít Azure Dev Spaces u clusterů AKS s povoleným rozsahem IP adres serveru API?
 
+Ano, můžete použít Azure Dev Spaces u clusterů AKS s povolenými [rozsahy IP adres serveru API][aks-auth-range] . Při [vytváření][aks-auth-range-create] clusteru musíte [v závislosti na vaší oblasti zapnout další rozsah][aks-auth-range-ranges]. Můžete také [aktualizovat][aks-auth-range-update] a existující cluster, aby bylo možné tyto další rozsahy.
+
+[aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
+[aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
+[aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
+[aks-auth-range-update]: ../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges
 [dev-spaces-routing]: how-dev-spaces-works.md#how-routing-works
 [ingress-traefik]: how-to/ingress-https-traefik.md#configure-a-custom-traefik-ingress-controller
 [ingress-https-traefik]: how-to/ingress-https-traefik.md#configure-the-traefik-ingress-controller-to-use-https

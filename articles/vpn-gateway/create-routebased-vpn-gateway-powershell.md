@@ -1,24 +1,24 @@
 ---
-title: 'Vytvoření brány Azure VPN založené na směrování: Prostředí PowerShell | Dokumentace Microsoftu'
-description: Rychle vytvořte založené na směrování VPN Gateway pomocí Powershellu
+title: 'Vytvoření brány Azure VPN založené na trasách: PowerShell | Microsoft Docs'
+description: Rychlé vytvoření VPN Gateway založeného na trasách pomocí prostředí PowerShell
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3ad391aae72bec392ae75b333fc3bfc1ff3f95f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a1c34ea25c8ef4bdc3e75e18d6f4a603efc67d5
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66727323"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953836"
 ---
-# <a name="create-a-route-based-vpn-gateway-using-powershell"></a>Vytvoření trasové brány VPN pomocí Powershellu
+# <a name="create-a-route-based-vpn-gateway-using-powershell"></a>Vytvoření brány sítě VPN založené na trasách pomocí prostředí PowerShell
 
-Tento článek vám pomůže rychle vytvořit založené na směrování Azure VPN gateway pomocí Powershellu. Brány VPN se používá při vytváření připojení VPN k místní síti. Bránu sítě VPN můžete použít také k propojení virtuálních sítí.
+Tento článek vám pomůže rychle vytvořit bránu Azure VPN Gateway založenou na trasách pomocí prostředí PowerShell. Brána sítě VPN se používá při vytváření připojení VPN k místní síti. K připojení virtuální sítě můžete použít taky bránu VPN.
 
-Kroky v tomto článku se vytvoří virtuální síť, podsíť, podsítě brány a bránu VPN založenou na směrování (brány virtuální sítě). Po dokončení vytvoření brány můžete pak vytvořit připojení. Tyto kroky vyžadují předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Kroky v tomto článku vytvoří virtuální síť, podsíť, podsíť brány a bránu VPN založenou na směrování (bránu virtuální sítě). Po dokončení vytváření brány můžete vytvořit připojení. Tyto kroky vyžadují předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -34,7 +34,7 @@ New-AzResourceGroup -Name TestRG1 -Location EastUS
 
 ## <a name="vnet"></a>Vytvoření virtuální sítě
 
-Vytvoření virtuální sítě s [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Následující příklad vytvoří virtuální síť s názvem **ze sítě VNet1** v **EastUS** umístění:
+Vytvořte virtuální síť pomocí [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Následující příklad vytvoří virtuální síť s názvem **VNet1** v umístění **EastUS** :
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzVirtualNetwork `
@@ -44,7 +44,7 @@ $virtualNetwork = New-AzVirtualNetwork `
   -AddressPrefix 10.1.0.0/16
 ```
 
-Vytvořte konfiguraci podsítě pomocí [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) rutiny.
+Vytvořte konfiguraci podsítě pomocí rutiny [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) .
 
 ```azurepowershell-interactive
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -53,44 +53,44 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork
 ```
 
-Nastavit konfiguraci podsítě virtuální sítě s využitím [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) rutiny.
+Nastavte konfiguraci podsítě pro virtuální síť pomocí rutiny [set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) .
 
 
 ```azurepowershell-interactive
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-## <a name="gwsubnet"></a>Přidání podsítě brány
+## <a name="gwsubnet"></a>Přidat podsíť brány
 
-Podsíť brány obsahuje vyhrazené IP adresy, které používají služby brány virtuální sítě. Chcete-li přidat podsíť brány použijte následující příklady:
+Podsíť brány obsahuje rezervované IP adresy, které používají služby brány virtuální sítě. K přidání podsítě brány použijte následující příklady:
 
-Nastavte proměnnou pro svoji virtuální síť.
+Nastavte proměnnou pro virtuální síť.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork -ResourceGroupName TestRG1 -Name VNet1
 ```
 
-Vytvořte podsíť brány pomocí [přidat AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Add-azVirtualNetworkSubnetConfig) rutiny.
+Vytvořte podsíť brány pomocí rutiny [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Add-azVirtualNetworkSubnetConfig) .
 
 ```azurepowershell-interactive
 Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $vnet
 ```
 
-Nastavit konfiguraci podsítě virtuální sítě s využitím [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) rutiny.
+Nastavte konfiguraci podsítě pro virtuální síť pomocí rutiny [set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) .
 
 ```azurepowershell-interactive
-$virtualNetwork | Set-AzVirtualNetwork
+$vnet | Set-AzVirtualNetwork
 ```
 
-## <a name="PublicIP"></a>Vyžádejte si veřejnou IP adresu
+## <a name="PublicIP"></a>Vyžádání veřejné IP adresy
 
-Brána VPN musí mít dynamicky přidělené veřejné IP adresy. Při vytváření připojení k bráně VPN, toto je IP adresa, který zadáte. Vyžádejte si veřejnou IP adresu pomocí příkazu v následujícím příkladu:
+Brána sítě VPN musí mít dynamicky přidělenou veřejnou IP adresu. Při vytváření připojení k bráně sítě VPN se jedná o IP adresu, kterou zadáte. Pro vyžádání veřejné IP adresy použijte následující příklad:
 
 ```azurepowershell-interactive
 $gwpip= New-AzPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1 -Location 'East US' -AllocationMethod Dynamic
 ```
 
-## <a name="GatewayIPConfig"></a>Vytvořit konfiguraci IP adresy brány
+## <a name="GatewayIPConfig"></a>Vytvoření konfigurace IP adresy brány
 
 Konfigurace brány definuje podsíť a veřejnou IP adresu, která se bude používat. Podle následujícího příkladu vytvořte vlastní konfiguraci brány:
 
@@ -101,7 +101,7 @@ $gwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $s
 ```
 ## <a name="CreateGateway"></a>Vytvoření brány VPN
 
-Vytvoření brány VPN může trvat 45 minut nebo déle. Po dokončení brány můžete vytvořit připojení mezi virtuální sítí a jiné virtuální síti. Nebo vytvořte připojení mezi virtuální sítí a místního umístění. Vytvoření s použitím brány VPN [New-AzVirtualNetworkGateway](/powershell/module/az.network/New-azVirtualNetworkGateway) rutiny.
+Vytvoření brány VPN může trvat 45 minut nebo déle. Po dokončení brány můžete vytvořit připojení mezi vaší virtuální sítí a jinou virtuální sítí. Nebo vytvořte připojení mezi vaší virtuální sítí a místním umístěním. Pomocí rutiny [New-AzVirtualNetworkGateway](/powershell/module/az.network/New-azVirtualNetworkGateway) vytvořte bránu VPN.
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
@@ -109,15 +109,15 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -VpnType RouteBased -GatewaySku VpnGw1
 ```
 
-## <a name="viewgw"></a>Zobrazení brány sítě VPN
+## <a name="viewgw"></a>Zobrazit bránu VPN
 
-Můžete zobrazit pomocí brány VPN [Get-AzVirtualNetworkGateway](/powershell/module/az.network/Get-azVirtualNetworkGateway) rutiny.
+Bránu VPN můžete zobrazit pomocí rutiny [Get-AzVirtualNetworkGateway](/powershell/module/az.network/Get-azVirtualNetworkGateway) .
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGateway -Name Vnet1GW -ResourceGroup TestRG1
 ```
 
-Výstup bude vypadat nějak takto:
+Výstup bude vypadat podobně jako v tomto příkladu:
 
 ```
 Name                   : VNet1GW
@@ -164,13 +164,13 @@ BgpSettings            : {
 
 ## <a name="viewgwpip"></a>Zobrazení veřejné IP adresy
 
-Chcete-li zobrazit veřejnou IP adresu pro bránu VPN, použijte [Get-AzPublicIpAddress](/powershell/module/az.network/Get-azPublicIpAddress) rutiny.
+Veřejnou IP adresu pro bránu VPN zobrazíte pomocí rutiny [Get-AzPublicIpAddress](/powershell/module/az.network/Get-azPublicIpAddress) .
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1
 ```
 
-V příkladu odpovědi je hodnota IpAddress veřejnou IP adresu.
+V příkladu odpovědi je hodnota IpAddress veřejná IP adresa.
 
 ```
 Name                     : VNet1GWIP
@@ -201,17 +201,17 @@ IpTags                   : {}
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete prostředky, které jste vytvořili, použijte [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) příkazu k odstranění skupiny prostředků. Tím odstraníte skupinu prostředků a všechny prostředky, které obsahuje.
+Když už nepotřebujete prostředky, které jste vytvořili, odstraňte skupinu prostředků pomocí příkazu [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) . Tím odstraníte skupinu prostředků a všechny prostředky, které obsahuje.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name TestRG1
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Po dokončení vytváření brány můžete vytvořit připojení mezi virtuální sítí a jiné virtuální síti. Nebo vytvořte připojení mezi virtuální sítí a místního umístění.
+Po vytvoření brány můžete vytvořit připojení mezi vaší virtuální sítí a jinou virtuální sítí. Nebo vytvořte připojení mezi vaší virtuální sítí a místním umístěním.
 
 > [!div class="nextstepaction"]
-> [Vytvoření připojení site-to-site](vpn-gateway-create-site-to-site-rm-powershell.md)<br><br>
-> [Vytvoření připojení point-to-site](vpn-gateway-howto-point-to-site-rm-ps.md)<br><br>
+> [Vytvoření připojení typu Site-to-site](vpn-gateway-create-site-to-site-rm-powershell.md)<br><br>
+> [Vytvoření připojení typu Point-to-site](vpn-gateway-howto-point-to-site-rm-ps.md)<br><br>
 > [Vytvoření připojení k jiné virtuální síti](vpn-gateway-vnet-vnet-rm-ps.md)

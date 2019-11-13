@@ -1,22 +1,21 @@
 ---
-title: Obdržení e-mailu při otevření dveří pomocí služby SendGrid a Azure Functions | Microsoft Docs
+title: Odeslat e-mail, když se otevřou dvířka pomocí Azure Functions
 description: Monitorujte magnetické senzory a zjistěte, kdy se dvířka otevřou, a použijte Azure Functions k odeslání e-mailového oznámení.
 author: liydu
-manager: jeffya
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 6cbf3f906b511d9d76319f57f5508a2c584213cb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 23607b52f866bb7b0be760e49be7d62d1732d43c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73484063"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954755"
 ---
-# <a name="door-monitor"></a>Monitor dvířek          
+# <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Monitorování dvířek – používání Azure Functions a SendGrid, odesílání e-mailů, když se otevřou dvířka           
 
 MXChip IoT DevKit obsahuje vestavěný magnetický senzor. V tomto projektu zjistíte přítomnost nebo absence nejbližšího magnetického magnetického pole – v tomto případě přichází od malého a trvalého magnetu.
 

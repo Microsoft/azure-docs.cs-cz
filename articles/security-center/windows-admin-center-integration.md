@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 48bf2cc3feb9ea3983200a2ef778669b5cfe36fa
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 842c7c81e3bf9615eb56d50ee2d6fce794845b6e
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521589"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960700"
 ---
-# <a name="integrate-azure-security-center-with-windows-admin-center"></a>Integrace Azure Security Center s centrem pro správu Windows
+# <a name="integrate-azure-security-center-with-windows-admin-center-preview"></a>Integrace Azure Security Center s centrem pro správu Windows (Preview)
 
 Centrum pro správu systému Windows je nástroj pro správu serverů Windows. Pro správce systému je k dispozici jediné místo pro přístup ke většině nejčastěji používaných nástrojů pro správu. V centru pro správu Windows můžete přímo připojit servery na Prem do Azure Security Center. Pak můžete zobrazit souhrn doporučení a výstrah zabezpečení přímo v prostředí centra pro správu systému Windows.
 

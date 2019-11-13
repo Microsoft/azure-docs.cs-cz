@@ -1,5 +1,5 @@
 ---
-title: Začínáme s identitou modulu Azure IoT Hub a modulem s dvojitou ochranou (C) | Microsoft Docs
+title: Začínáme s identitou modulu Azure IoT Hub identity & modulu (C)
 description: Přečtěte si, jak vytvořit identitu modulu a aktualizovat modul na vlákna pomocí sad IoT SDK pro C.
 author: chrissie926
 ms.service: iot-hub
@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
-ms.openlocfilehash: 9bc64a2eefbd268c5d7eae9b32a992ed29151f61
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: e33a7a1360a837df08725b2e592973b465dff38c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813842"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954224"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>Začínáme s identitou modulu IoT Hub a modulem s dvojitou identitou (C)
 
@@ -177,7 +177,7 @@ int main(void)
 }
 ```
 
-Tato aplikace vytvoří identitu zařízení s ID **myFirstDevice** a identitou modulu s ID **MyFirstModule** v části **myFirstDevice**zařízení. (Pokud toto ID modulu již v registru identit existuje, kód jednoduše načte informace o stávajícím modulu.) Aplikace pak zobrazí primární klíč pro danou identitu. Tento klíč v aplikaci simulovaného modulu slouží k připojení k centru IoT.
+Tato aplikace vytvoří identitu zařízení s ID **myFirstDevice** a identitou modulu s ID **MyFirstModule** v části **myFirstDevice**zařízení. (Pokud toto ID modulu již v registru identit existuje, kód jednoduše načte informace o stávajícím modulu.) Aplikace pak zobrazí primární klíč pro tuto identitu. Tento klíč v aplikaci simulovaného modulu slouží k připojení k centru IoT.
 
 > [!NOTE]
 > V registru identit služby IoT Hub se uchovávají identity zařízení a modulů pouze za účelem bezpečného přístupu k centru IoT. Registr identit ukládá ID zařízení a klíče pro použití jako bezpečnostních pověření. Registr identit také ukládá povolené a zakázané příznaky pro jednotlivá zařízení, pomocí kterých můžete zakázat přístup pro dané zařízení. Pokud aplikace potřebuje pro zařízení ukládat další metadata, měla by používat úložiště pro konkrétní aplikaci. Pro identity modulů neexistuje žádný příznak povoleno/zakázáno. Další informace najdete v tématu [IoT Hub příručka pro vývojáře](iot-hub-devguide-identity-registry.md).
@@ -190,7 +190,7 @@ V této části vytvoříte aplikaci v jazyce C na simulovaném zařízení, kte
 
     ![Podrobnosti o modulu na webu Azure Portal](./media/iot-hub-c-c-module-twin-getstarted/module-detail.png)
 
-2. **Vytvoření aplikace UpdateModuleTwinReportedProperties** Do horní části `using` souboru **program.cs** přidejte následující příkazy:
+2. **Vytvoření aplikace UpdateModuleTwinReportedProperties** Do horní části souboru **program.cs** přidejte následující příkazy `using`:
 
     ```C
     #include <stdio.h>
@@ -381,7 +381,7 @@ int main(void)
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Chcete-li pokračovat v seznamování se službou IoT Hub a prozkoumat další scénáře IoT, podívejte se na tato témata:
 

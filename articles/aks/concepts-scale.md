@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 1972a91e1ed8a39bcd467272108e0e772116344e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 26cd2ffc12dfb93f07c2e1755a0dc41cc90da252
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472870"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961639"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Možnosti škálování pro aplikace ve službě Azure Kubernetes (AKS)
 
@@ -81,7 +81,7 @@ Pokud chcete rychle škálovat cluster AKS, můžete ho integrovat s Azure Conta
 
 ![Škálování rozKubernetesho shluku na ACI](media/concepts-scale/burst-scaling.png)
 
-ACI umožňuje rychle nasadit instance kontejnerů bez dalších režijních nákladů na infrastrukturu. Když se připojíte pomocí AKS, ACI se bude zabezpečeným logickým rozšířením vašeho clusteru AKS. Součást Virtual Kubelet je nainstalovaná v clusteru AKS, který prezentuje ACI jako virtuální uzel Kubernetes. Kubernetes může naplánovat lusky spouštěné jako instance ACI prostřednictvím virtuálních uzlů, ne jako lusky na uzlech virtuálních počítačů přímo v clusteru AKS. Virtuální uzly jsou v současnosti ve verzi Preview v AKS.
+ACI umožňuje rychle nasadit instance kontejnerů bez dalších režijních nákladů na infrastrukturu. Když se připojíte pomocí AKS, ACI se bude zabezpečeným logickým rozšířením vašeho clusteru AKS. Součást [virtuálních uzlů][virtual-nodes-cli] , která je založená na [Virtual Kubelet][virtual-kubelet], je nainstalovaná v clusteru AKS, který prezentuje ACI jako virtuální uzel Kubernetes. Kubernetes může naplánovat lusky spouštěné jako instance ACI prostřednictvím virtuálních uzlů, ne jako lusky na uzlech virtuálních počítačů přímo v clusteru AKS. Virtuální uzly jsou v současnosti ve verzi Preview v AKS.
 
 Vaše aplikace nevyžaduje žádné úpravy k použití virtuálních uzlů. Nasazení se můžou škálovat napříč AKS a ACI a bez prodlevy, protože automatické škálování clusteru nasazuje nové uzly v clusteru AKS.
 
@@ -104,6 +104,7 @@ Další informace o základních konceptech Kubernetes a AKS najdete v následuj
 - [Úložiště Kubernetes/AKS][aks-concepts-storage]
 
 <!-- LINKS - external -->
+[virtual-kubelet]: https://virtual-kubelet.io/
 
 <!-- LINKS - internal -->
 [aks-quickstart]: kubernetes-walkthrough.md
@@ -117,3 +118,4 @@ Další informace o základních konceptech Kubernetes a AKS najdete v následuj
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-identity]: concepts-identity.md
 [aks-concepts-network]: concepts-network.md
+[virtual-nodes-cli]: virtual-nodes-cli.md

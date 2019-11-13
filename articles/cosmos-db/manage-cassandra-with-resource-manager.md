@@ -4,32 +4,32 @@ description: Pomocí Azure Resource Manager šablon můžete vytvořit a nakonfi
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: d71847da4b395be230bce5773a5ba7a472a412f4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f09ab6958eb768895a2d16f129354074cb6f00c8
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832685"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961869"
 ---
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Správa prostředků Azure Cosmos DB rozhraní API Cassandra pomocí šablon Azure Resource Manager
 
-Tento článek popisuje, jak provádět různé operace pro automatizaci správy Azure Cosmos DB účtů, databází a kontejnerů pomocí šablon Azure Resource Manager. Tento článek obsahuje příklady jenom pro účty rozhraní SQL API. příklady pro jiné účty typu rozhraní API najdete v tématu: použití Správce prostředků šablon s rozhraním API Azure Cosmos DB pro [SQL](manage-sql-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDB](manage-mongodb-with-resource-manager.md)a [tabulkové](manage-table-with-resource-manager.md) články.
+Tento článek popisuje, jak provádět různé operace pro automatizaci správy Azure Cosmos DB účtů, databází a kontejnerů pomocí šablon Azure Resource Manager. Tento článek obsahuje příklady jenom pro účty rozhraní SQL API. příklady pro jiné účty typu rozhraní API najdete v tématu: použití Azure Resource Manager šablon s rozhraním API Azure Cosmos DB pro [SQL](manage-sql-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDB](manage-mongodb-with-resource-manager.md)a [tabulkové](manage-table-with-resource-manager.md) články.
 
 ## Vytvoření účtu Azure Cosmos, místa a tabulky<a id="create-resource"></a>
 
 Vytvořte Azure Cosmos DB prostředky pomocí šablony Azure Resource Manager. Tato šablona vytvoří účet Azure Cosmos pro rozhraní API Cassandra se dvěma tabulkami, které sdílejí propustnost 400 RU/s na úrovni prostoru. Zkopírujte šablonu a nasazení, jak je znázorněno níže, nebo navštivte [galerii Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra/) a nasaďte z Azure Portal. Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadat místní cestu s parametrem `--template-file`.
 
 > [!NOTE]
-> Název účtu musí být malými písmeny a < 44 znaků.
+> Názvy účtů musí být malé a 44 nebo méně znaků.
 > Chcete-li aktualizovat RU/s, šablonu znovu odešlete s aktualizovanými hodnotami vlastností propustnosti.
 
 [!code-json[create-cosmos-Cassandra](~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json)]
 
-## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
+## <a name="deploy-with-the-azure-cli"></a>Nasazení pomocí Azure CLI
 
-Pokud chcete nasadit šablonu Správce prostředků pomocí rozhraní příkazového řádku Azure, **zkopírujte** skript a vyberte **zkusit,** aby se otevřelo Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit**:
+Pokud chcete nasadit šablonu Azure Resource Manager pomocí rozhraní příkazového řádku Azure, **zkopírujte** skript a vyberte **zkusit,** aby se otevřela Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit**:
 
 ```azurecli-interactive
 
@@ -51,7 +51,7 @@ az group deployment create --resource-group $resourceGroupName \
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
 
-Příkaz `az cosmosdb show` zobrazuje nově vytvořený účet Azure Cosmos po zřízení. Pokud se rozhodnete použít místně nainstalovanou verzi Azure CLI místo používání Cloudshellu, přečtěte si článek [rozhraní příkazového řádku Azure (CLI)](/cli/azure/) .
+Příkaz `az cosmosdb show` zobrazuje nově vytvořený účet Azure Cosmos po zřízení. Pokud se rozhodnete použít místně nainstalovanou verzi rozhraní příkazového řádku Azure CLI místo používání služby Cloud Shell, přečtěte si článek [Azure CLI](/cli/azure/) .
 
 
 ## <a name="next-steps"></a>Další kroky

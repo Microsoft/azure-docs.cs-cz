@@ -1,17 +1,14 @@
 ---
 title: Funkce Azure modrotisky
 description: Popisuje funkce pro použití s definicemi a přiřazeními Azure modrotisky.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 04/15/2019
 ms.topic: reference
-ms.service: blueprints
-ms.openlocfilehash: a3021e79ddfb808db64896d79bb163d42236b295
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 5f4948b55b8889094570574647b7a35ce08f5c12
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978401"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960309"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Funkce pro použití s plány Azure
 
@@ -20,7 +17,7 @@ Azure modrotisky nabízí funkce, které mají dynamičtější definice podrobn
 Podporovány jsou následující funkce:
 
 - [artefakty](#artifacts)
-- [spojuje](#concat)
+- [concat](#concat)
 - [parameters](#parameters)
 - [resourceGroup](#resourcegroup)
 - [resourceGroups](#resourcegroups)
@@ -36,7 +33,7 @@ Vrátí objekt vlastností naplněný pomocí tohoto výstupu artefaktů podrobn
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| artefakt |Ano |string |Název artefaktu podrobného plánu |
+| artefakt |Ano |řetězec |Název artefaktu podrobného plánu |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -76,7 +73,7 @@ Vlastnosti **výstupů** vráceného objektu jsou definovány v rámci šablony 
 }
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 Artefakt šablony Správce prostředků s ID _myTemplateArtifact_ obsahující následující ukázkovou vlastnost output:
 
@@ -108,12 +105,12 @@ Některé příklady načítání dat z ukázky _myTemplateArtifact_ jsou:
 
 | Výraz | Typ | Hodnota |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").outputs.myArray]` | Pole | \[ "First"; "Second" \] |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Pole | \["First", "Second"\] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | Řetězec | první |
 |`[artifacts("myTemplateArtifact").outputs.myString]` | Řetězec | "moje hodnota řetězce" |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Objekt | {"MyProperty": "moje hodnota", "anotherProperty": true} |
 |`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | Řetězec | "moje hodnota" |
-|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Logick | True |
+|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | Pravda |
 
 ## <a name="concat"></a>spojuje
 
@@ -125,8 +122,8 @@ Kombinuje více řetězcových hodnot a vrátí zřetězený řetězec.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| řetězec1 |Ano |string |První hodnota pro zřetězení |
-| Další argumenty |Ne |string |Další hodnoty v sekvenčním pořadí pro zřetězení |
+| string1 |Ano |řetězec |První hodnota pro zřetězení |
+| Další argumenty |Ne |řetězec |Další hodnoty v sekvenčním pořadí pro zřetězení |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -136,7 +133,7 @@ Kombinuje více řetězcových hodnot a vrátí zřetězený řetězec.
 
 Funkce Azure Blueprint se liší od Azure Resource Manager funkce šablony v tom, že funguje pouze s řetězci.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 `concat(parameters('organizationName'), '-vm')`
 
@@ -150,7 +147,7 @@ Vrátí hodnotu parametru podrobného plánu. Zadaný název parametru musí bý
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ano |string |Název parametru, který se má vrátit. |
+| parameterName |Ano |řetězec |Název parametru, který se má vrátit. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -160,7 +157,7 @@ Hodnota zadaného parametru artefaktu podrobného plánu nebo podrobného plánu
 
 Funkce Azure Blueprint se liší od funkce šablony Azure Resource Manager v tom, že funguje pouze s parametry podrobného plánu.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 Definujte parametr _principalIds_ v definici podrobného plánu:
 
@@ -184,7 +181,7 @@ Definujte parametr _principalIds_ v definici podrobného plánu:
 }
 ```
 
-Pak jako argument pro `parameters()` v artefaktu podrobného plánu použijte _principalIds_ :
+Pak použijte _principalIds_ jako argument pro `parameters()` v artefaktu podrobného plánu:
 
 ```json
 {
@@ -203,7 +200,7 @@ Pak jako argument pro `parameters()` v artefaktu podrobného plánu použijte _p
 
 `resourceGroup()`
 
-Vrátí objekt, který představuje aktuální skupinu prostředků.
+Vrátí objekt představující aktuální skupinu prostředků.
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -220,9 +217,9 @@ Vrácený objekt je v následujícím formátu:
 
 Funkce Azure Blueprint se liší od Azure Resource Manager funkce šablony. Funkci `resourceGroup()` nelze použít v artefaktu na úrovni předplatného nebo v definici podrobného plánu. Dá se použít jenom v artefaktech podrobného plánu, které jsou součástí artefaktu skupiny prostředků.
 
-Běžné použití funkce `resourceGroup()` je vytvořit prostředky ve stejném umístění jako artefakt skupiny prostředků.
+Běžné použití funkce `resourceGroup()` je vytváření prostředků ve stejném umístění jako artefakt skupiny prostředků.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 Pokud chcete použít umístění skupiny prostředků, nastavte v definici podrobného plánu nebo v přiřazení jako umístění pro jiný artefakt a v definici podrobného plánu deklarujte zástupný objekt skupiny prostředků. V tomto příkladu je _NetworkingPlaceholder_ názvem zástupného symbolu skupiny prostředků.
 
@@ -240,7 +237,7 @@ Pokud chcete použít umístění skupiny prostředků, nastavte v definici podr
 }
 ```
 
-Pak použijte funkci `resourceGroup()` v kontextu artefaktu podrobného plánu, který cílí na zástupný objekt skupiny prostředků. V tomto příkladu je artefakt šablony nasazený do skupiny prostředků _NetworkingPlaceholder_ a poskytuje parametr _resourceLocation_ dynamicky naplněný pomocí umístění skupiny prostředků _NetworkingPlaceholder_ do vzhledu. Umístění skupiny prostředků _NetworkingPlaceholder_ bylo v definici podrobného plánu definováno staticky nebo dynamicky definované během přiřazení. V obou případech artefakt šablony poskytuje informace jako parametr a používá ho k nasazení prostředků do správného umístění.
+Pak použijte funkci `resourceGroup()` v kontextu artefaktu podrobného plánu, který cílí na zástupný objekt skupiny prostředků. V tomto příkladu je artefakt šablony nasazený do skupiny prostředků _NetworkingPlaceholder_ a poskytuje parametr _resourceLocation_ dynamicky vyplněný umístěním skupiny prostředků _NetworkingPlaceholder_ do šablony. Umístění skupiny prostředků _NetworkingPlaceholder_ bylo v definici podrobného plánu definováno staticky nebo dynamicky definované během přiřazení. V obou případech artefakt šablony poskytuje informace jako parametr a používá ho k nasazení prostředků do správného umístění.
 
 ```json
 {
@@ -271,7 +268,7 @@ Vrátí objekt, který představuje zadaný artefakt skupiny prostředků. Na ro
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| zástupný znak |Ano |string |Zástupný název artefaktu skupiny prostředků, který se má vrátit |
+| zástupný znak |Ano |řetězec |Zástupný název artefaktu skupiny prostředků, který se má vrátit |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -284,7 +281,7 @@ Vrácený objekt je v následujícím formátu:
 }
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 Pokud chcete použít umístění skupiny prostředků, nastavte v definici podrobného plánu nebo v přiřazení jako umístění pro jiný artefakt a v definici podrobného plánu deklarujte zástupný objekt skupiny prostředků. V tomto příkladu je _NetworkingPlaceholder_ názvem zástupného symbolu skupiny prostředků.
 
@@ -302,7 +299,7 @@ Pokud chcete použít umístění skupiny prostředků, nastavte v definici podr
 }
 ```
 
-Pak použijte funkci `resourceGroups()` z kontextu jakéhokoli artefaktu podrobného plánu a získejte odkaz na objekt zástupného objektu skupiny prostředků. V tomto příkladu je artefakt šablony nasazený mimo skupinu prostředků _NetworkingPlaceholder_ a poskytuje parametr _artifactLocation_ dynamicky naplněný pomocí umístění skupiny prostředků _NetworkingPlaceholder_ do vzhledu. Umístění skupiny prostředků _NetworkingPlaceholder_ bylo v definici podrobného plánu definováno staticky nebo dynamicky definované během přiřazení. V obou případech artefakt šablony poskytuje informace jako parametr a používá ho k nasazení prostředků do správného umístění.
+Pak použijte funkci `resourceGroups()` z kontextu jakéhokoli artefaktu podrobného plánu a získejte odkaz na objekt zástupného objektu skupiny prostředků. V tomto příkladu je artefakt šablony nasazený mimo skupinu prostředků _NetworkingPlaceholder_ a poskytuje parametr _artifactLocation_ dynamicky vyplněný umístěním skupiny prostředků _NetworkingPlaceholder_ do šablony. Umístění skupiny prostředků _NetworkingPlaceholder_ bylo v definici podrobného plánu definováno staticky nebo dynamicky definované během přiřazení. V obou případech artefakt šablony poskytuje informace jako parametr a používá ho k nasazení prostředků do správného umístění.
 
 ```json
 {
@@ -342,9 +339,9 @@ Vrácený objekt je v následujícím formátu:
 }
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
-Použijte zobrazované jméno předplatného a funkci `concat()` k vytvoření zásady vytváření názvů předané jako parametr _resourceName_ do artefaktu šablony.
+Pomocí zobrazovaného názvu a funkce `concat()` předplatného vytvořte zásadu vytváření názvů předanou jako parametr _resourceName_ do artefaktu šablony.
 
 ```json
 {

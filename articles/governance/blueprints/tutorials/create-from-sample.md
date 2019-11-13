@@ -1,17 +1,14 @@
 ---
 title: Vytvoření prostředí z ukázky podrobného plánu
 description: Pomocí ukázky podrobného plánu vytvořte definici podrobného plánu, která nastaví dvě skupiny prostředků a nakonfiguruje přiřazení role pro každou z nich.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/05/2019
 ms.topic: tutorial
-ms.service: blueprints
-ms.openlocfilehash: f3250052a7e26b5d8ef7cb1d411f9d9252089875
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: d23e9b7242c58e4da5fcfe5ef4d29d9f9df6f754
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980723"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960273"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Kurz: vytvoření prostředí z ukázky podrobného plánu
 
@@ -26,7 +23,7 @@ V následujícím kurzu se k předvedení různých aspektů služby modrotisky 
 > - Kontrola nasazených prostředků pro přiřazení
 > - Zrušení přiřazení podrobného plánu k odebrání zámků
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -99,15 +96,15 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
    - Parametry artefaktu
 
-     Parametry definované v této části se vztahují na artefakt, ve kterém je definován. Tyto parametry jsou [dynamické parametry](../concepts/parameters.md#dynamic-parameters) , protože jsou definovány během přiřazení podrobného plánu. Pro každý artefakt nastavte hodnotu parametru na to, co je definováno ve sloupci **hodnota** . V případě `{Your ID}` vyberte svůj uživatelský účet Azure.
+     Parametry definované v této části se vztahují na artefakt, ve kterém je definován. Tyto parametry jsou [dynamické parametry](../concepts/parameters.md#dynamic-parameters) , protože jsou definovány během přiřazení podrobného plánu. Pro každý artefakt nastavte hodnotu parametru na to, co je definováno ve sloupci **hodnota** . V případě `{Your ID}`vyberte svůj uživatelský účet Azure.
 
      |Název artefaktu|Typ artefaktu|Název parametru|Hodnota|Popis|
      |-|-|-|-|-|
-     |Skupina prostředků ProdRG|Skupina prostředků|Name (Název)|ProductionRG|Definuje název první skupiny prostředků.|
-     |Skupina prostředků ProdRG|Skupina prostředků|Umístění|Západ USA 2|Nastaví umístění první skupiny prostředků.|
+     |Skupina prostředků ProdRG|Skupina prostředků|Název|ProductionRG|Definuje název první skupiny prostředků.|
+     |Skupina prostředků ProdRG|Skupina prostředků|Umístění|USA – západ 2|Nastaví umístění první skupiny prostředků.|
      |Přispěvatel|Přiřazení role|Uživatel nebo skupina|{ID}|Definuje uživatele nebo skupinu, kterým chcete udělit přiřazení role _přispěvatele_ v rámci první skupiny prostředků.|
-     |Skupina prostředků PreProdRG|Skupina prostředků|Name (Název)|PreProductionRG|Definuje název druhé skupiny prostředků.|
-     |Skupina prostředků PreProdRG|Skupina prostředků|Umístění|Západ USA|Nastaví umístění druhé skupiny prostředků.|
+     |Skupina prostředků PreProdRG|Skupina prostředků|Název|PreProductionRG|Definuje název druhé skupiny prostředků.|
+     |Skupina prostředků PreProdRG|Skupina prostředků|Umístění|Západní USA|Nastaví umístění druhé skupiny prostředků.|
      |Vlastník|Přiřazení role|Uživatel nebo skupina|{ID}|Definuje uživatele nebo skupinu, kterým udělíte přiřazení role _vlastníka_ v rámci druhé skupiny prostředků.|
      |Čtenáři|Přiřazení role|Uživatel nebo skupina|{ID}|Definuje uživatele nebo skupinu pro udělení přiřazení role _čtenáři_ v rámci druhé skupiny prostředků.|
 
@@ -147,7 +144,7 @@ Přiřazení podrobného plánu vytvoří a sleduje artefakty definované v defi
 
 1. Vyberte přiřazení odepřít a pak na levé straně vyberte stránku **Zamítnutá oprávnění** .
 
-   Přiřazení zamítnutí brání všem operacím s konfigurací **\*** a **akcí** , ale umožňuje přístup pro čtení vyloučením **\*/čtení** prostřednictvím **NotActions**.
+   Přiřazení zamítnutí brání všem operacím s konfigurací **\*** a **Akce** , ale umožňuje přístup pro čtení vyloučením **\*/Read** prostřednictvím **NotActions**.
 
 1. Z Azure Portal s popisem cesty vyberte **PreProductionRG-Access Control (IAM)** . Pak na levé straně vyberte stránku **Přehled** a pak klikněte na tlačítko **Odstranit skupinu prostředků** . Zadejte název _PreProductionRG_ a potvrďte odstranění a vyberte **Odstranit** v dolní části podokna.
 
