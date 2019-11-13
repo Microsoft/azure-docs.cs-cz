@@ -1,25 +1,25 @@
 ---
-title: Vytvořte tabulku tras virtuálního rozbočovače Azure Virtual WAN pro řízení do síťové virtuální zařízení | Microsoft Docs
+title: 'Virtuální síť WAN: vytvoření tabulky směrování virtuálního rozbočovače do síťové virtuální zařízení: Azure PowerShell'
 description: Tabulka směrování virtuálních rozbočovačů sítě WAN pro řízení provozu do síťového virtuálního zařízení.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: 18af56f6924484c6267871cf3fed34f80a8f12a4
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 2d8922084dbe30c2dbe494028f2e5a1497fb3759
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744699"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014994"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Vytvoření směrovací tabulky virtuálního centra pro řízení provozu do síťového virtuálního zařízení
 
 V tomto článku se dozvíte, jak řídit provoz z virtuálního rozbočovače do síťového virtuálního zařízení. 
 
-![Diagram virtuální sítě WAN](./media/virtual-wan-route-table/vwanroute.png)
+![Diagram služby Virtual WAN](./media/virtual-wan-route-table/vwanroute.png)
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -30,7 +30,7 @@ V tomto článku získáte informace o těchto tématech:
 * Vytvoření směrovací tabulky
 * Použít směrovací tabulku
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -43,7 +43,7 @@ Ověřte, že splňujete následující kritéria:
 5. Ověřte, že už máte vytvořené 2 virtuální sítě. Budou použity jako paprskový virtuální sítě. V tomto článku jsou adresní prostory ve virtuální síti 10.0.2.0/24 a 10.0.3.0/24. Pokud potřebujete informace o tom, jak vytvořit virtuální síť, přečtěte si téma [vytvoření virtuální sítě pomocí PowerShellu](../virtual-network/quick-create-powershell.md).
 6. Zajistěte, aby v žádném virtuální sítě neexistovaly žádné brány virtuální sítě.
 
-## <a name="signin"></a>1. Přihlášení
+## <a name="signin"></a>1. přihlášení
 
 Ujistěte se, že instalujete nejnovější verzi rutin Správce prostředků PowerShellu. Další informace o instalaci rutin prostředí PowerShell najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/install-az-ps). To je důležité, protože starší verze rutin neobsahují aktuální hodnoty, které potřebujete pro toto cvičení.
 
@@ -63,7 +63,7 @@ Ujistěte se, že instalujete nejnovější verzi rutin Správce prostředků Po
    Select-AzSubscription -SubscriptionName "Name of subscription"
    ```
 
-## <a name="rg"></a>2. Vytvořit prostředky
+## <a name="rg"></a>2. vytváření prostředků
 
 1. Vytvořte skupinu prostředků.
 
@@ -81,7 +81,7 @@ Ujistěte se, že instalujete nejnovější verzi rutin Správce prostředků Po
    New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -Location "West US"
    ```
 
-## <a name="connections"></a>3. Vytvořit připojení
+## <a name="connections"></a>3. vytváření připojení
 
 Vytvořte připojení k virtuální síti rozbočovače z nepřímé virtuální sítě a virtuální sítě DMZ k virtuálnímu rozbočovači.
 
@@ -95,7 +95,7 @@ Vytvořte připojení k virtuální síti rozbočovače z nepřímé virtuální
   New-AzVirtualHubVnetConnection -ResourceGroupName "testRG" -VirtualHubName "westushub" -Name  "testvnetconnection3" -RemoteVirtualNetwork $remoteVirtualNetwork3
   ```
 
-## <a name="route"></a>4. Vytvoření trasy virtuálního rozbočovače
+## <a name="route"></a>4. vytvoření trasy virtuálního rozbočovače
 
 V tomto článku jsou adresní prostory nepřímých virtuálních sítí 10.0.2.0/24 a 10.0.3.0/24 a privátní IP adresa síťového rozhraní DMZ síťové virtuální zařízení je 10.0.4.5.
 
@@ -103,7 +103,7 @@ V tomto článku jsou adresní prostory nepřímých virtuálních sítí 10.0.2
 $route1 = New-AzVirtualHubRoute -AddressPrefix @("10.0.2.0/24", "10.0.3.0/24") -NextHopIpAddress "10.0.4.5"
 ```
 
-## <a name="applyroute"></a>5. Vytvoří tabulku směrování virtuálního rozbočovače.
+## <a name="applyroute"></a>5. vytvoření tabulky směrování virtuálního rozbočovače
 
 Vytvořte tabulku směrování virtuálního rozbočovače a pak na ni použijte vytvořenou trasu.
  
@@ -111,7 +111,7 @@ Vytvořte tabulku směrování virtuálního rozbočovače a pak na ni použijte
 $routeTable = New-AzVirtualHubRouteTable -Route @($route1)
 ```
 
-## <a name="commit"></a>6. Potvrdit změny
+## <a name="commit"></a>6. potvrďte změny.
 
 Potvrďte změny ve virtuálním centru.
 
@@ -119,6 +119,6 @@ Potvrďte změny ve virtuálním centru.
 Update-AzVirtualHub -VirtualWanId $virtualWan.Id -ResourceGroupName "testRG" -Name "westushub" -RouteTable $routeTable
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o službě Virtual WAN najdete v článku [Přehled služby Virtual WAN](virtual-wan-about.md).
