@@ -1,42 +1,42 @@
 ---
-title: Vizualizace dat v Průzkumníku dat Azure pomocí jazyka SQL v Power BI
-description: 'V tomto článku se dozvíte, jak chcete použít jeden z těchto tří možností pro vizualizace dat v Power BI: dotaz SQL proti clusteru služby Průzkumník dat Azure.'
+title: Vizualizace dat z Azure Průzkumník dat pomocí dotazu SQL v Power BI
+description: 'V tomto článku se dozvíte, jak použít jednu ze tří možností pro vizualizaci dat v Power BI: dotaz SQL na clusteru Azure Průzkumník dat.'
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 5378a49ba5a4f3770ec9d9b3f723c063b4ef1a61
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: e4e7858a54f3002a511269a2519135d5ac24ed68
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806417"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024087"
 ---
-# <a name="visualize-data-from-azure-data-explorer-using-a-sql-query-in-power-bi"></a>Vizualizace dat v Průzkumníku dat Azure pomocí jazyka SQL v Power BI
+# <a name="visualize-data-from-azure-data-explorer-using-a-sql-query-in-power-bi"></a>Vizualizace dat z Azure Průzkumník dat pomocí dotazu SQL v Power BI
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Power BI je řešení obchodní analýzy, které umožňuje vizualizovat data a sdílet výsledky v rámci organizace.
 
-Průzkumník služby Azure Data poskytuje tři možnosti připojení k datům v Power BI: použití integrovaného konektoru importovat dotaz v Průzkumníku dat Azure a použít dotaz SQL. V tomto článku se dozvíte, jak získat data a vizualizace v sestavě Power BI pomocí jazyka SQL.
+Azure Průzkumník dat poskytuje tři možnosti pro připojení k datům v Power BI: použijte integrovaný konektor, importujte dotaz z Azure Průzkumník dat nebo použijte dotaz SQL. V tomto článku se dozvíte, jak pomocí dotazu SQL získat data a vizualizovat je v sestavě Power BI.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat k dokončení tohoto článku:
+K dokončení tohoto článku potřebujete následující:
 
-* Účet organizace e-mailu, který je členem skupiny Azure Active directory, abyste se mohli připojit k [clusteru help Průzkumník dat Azure](https://dataexplorer.azure.com/clusters/help/databases/samples).
+* E-mailový účet organizace, který je členem Azure Active Directory, abyste se mohli připojit ke [clusteru azure Průzkumník dat Help](https://dataexplorer.azure.com/clusters/help/databases/samples).
 
-* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (vyberte **DOWNLOAD FREE**)
+* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (vyberte **Stáhnout zdarma**)
 
-## <a name="get-data-from-azure-data-explorer"></a>Získání dat z Průzkumníku dat Azure
+## <a name="get-data-from-azure-data-explorer"></a>Získat data z Azure Průzkumník dat
 
-Nejprve připojte ke clusteru help Průzkumník dat Azure a pak přenést v podmnožinu dat z *StormEvents* tabulky. [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
+Nejprve se připojíte ke clusteru Azure Průzkumník dat Help a pak přenesete podmnožinu dat z tabulky *StormEvents* . [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-Obvykle použijete nativní dotazovací jazyk pomocí Průzkumníku dat Azure, ale také podporuje dotazy SQL, které zde použijete. Průzkumník služby Azure Data překládá příkaz jazyka SQL do nativního dotazu za vás.
+Obvykle používáte nativní dotazovací jazyk s Azure Průzkumník dat, ale podporuje taky dotazy SQL, které tady použijete. Azure Průzkumník dat překládá dotaz SQL na nativní dotaz za vás.
 
-1. V Power BI Desktopu na **Domů** kartu, vyberte možnost **získat Data** pak **Další**.
+1. V Power BI Desktop na kartě **Domů** vyberte **získat data** a pak **Další**.
 
     ![Získání dat](media/power-bi-sql-query/get-data-more.png)
 
@@ -44,18 +44,18 @@ Obvykle použijete nativní dotazovací jazyk pomocí Průzkumníku dat Azure, a
 
     ![Vyhledání a získání dat](media/power-bi-sql-query/search-get-data.png)
 
-1. Na **databáze systému SQL Server** obrazovky, vyplňte formulář s následujícími informacemi.
+1. Na obrazovce **SQL Server databáze** vyplňte formulář následujícími informacemi.
 
-    ![Databáze, tabulky, možnosti dotazu](media/power-bi-sql-query/database-table-query.png)
+    ![Databáze, tabulka, možnosti dotazu](media/power-bi-sql-query/database-table-query.png)
 
     **Nastavení** | **Hodnota** | **Popis pole**
     |---|---|---|
-    | Server | *help.kusto.windows.net* | Adresa URL clusteru help (bez *https://* ). Pro další clustery, adresa URL je ve formě  *\<ClusterName\>.\< Oblast\>. kusto.windows.net*. |
-    | Databáze | *Ukázky* | Ukázkovou databázi, která je hostovaná v clusteru, ke kterému se připojujete. |
-    | Režim připojení dat | *Import* | Určuje, jestli Power BI dokončí import dat nebo připojuje přímo ke zdroji dat. Pomocí tohoto konektoru můžete použít jednu z možností. |
-    | Časový limit příkazu | Ponechte prázdné | Jak dlouho dotaz spustí předtím, než vyvolá vypršení časového limitu. |
-    | Příkaz jazyka SQL | Zkopírujte tento dotaz dál v této tabulce | Příkaz SQL, který překládá Průzkumník dat Azure do nativního dotazu. |
-    | Další možnosti | Ponechte výchozí hodnoty | Možnosti se nevztahují ke clusterům Průzkumník dat Azure. |
+    | Server | *help.kusto.windows.net* | Adresa URL pro cluster s nápovědu (bez *https://* ). Pro jiné clustery je adresa URL ve tvaru *\<název_clusteru\>.\<Region\>. kusto.Windows.NET*. |
+    | Databáze | *Ukázky* | Ukázková databáze, která je hostována v clusteru, ke kterému se připojujete. |
+    | Režim připojení dat | *Import* | Určuje, zda Power BI importuje data nebo se připojí přímo ke zdroji dat. V této spojnici můžete použít jednu z možností. |
+    | Časový limit příkazu | Ponechte prázdné | Doba, po kterou se dotaz spustí, než vygeneruje chybu časového limitu. |
+    | Příkaz SQL | Kopírovat dotaz pod touto tabulkou | Příkaz jazyka SQL, který Azure Průzkumník dat, se přeloží do nativního dotazu. |
+    | Další možnosti | Ponechat jako výchozí hodnoty | Možnosti se nevztahují na clustery Azure Průzkumník dat. |
     | | | |
 
     ```SQL
@@ -64,15 +64,15 @@ Obvykle použijete nativní dotazovací jazyk pomocí Průzkumníku dat Azure, a
     ORDER BY DamageCrops DESC
     ```
 
-1. Pokud ještě nemáte připojení ke clusteru pomoc, přihlaste se. Přihlaste se pomocí účtu Microsoft a pak vyberte **připojit**.
+1. Pokud ještě nemáte připojení ke clusteru podpory, přihlaste se. Přihlaste se pomocí účet Microsoft a pak vyberte **připojit**.
 
     ![Přihlášení](media/power-bi-sql-query/sign-in.png)
 
-1. Na **help.kusto.windows.net: Ukázky** obrazovky, vyberte **zatížení**.
+1. Na obrazovce **help.kusto.Windows.NET: Samples** (načíst) vyberte **načíst**.
 
     ![Načtení dat](media/power-bi-sql-query/load-data.png)
 
-    Tabulka se otevře v hlavního okna Power BI, v zobrazení sestav, kde můžete vytvořit sestavy založené na ukázková data.
+    Tabulka se otevře v hlavním Power BI okně v zobrazení sestav, kde můžete vytvářet sestavy založené na ukázkových datech.
 
 ## <a name="visualize-data-in-a-report"></a>Vizualizace dat v sestavě
 
@@ -80,8 +80,8 @@ Obvykle použijete nativní dotazovací jazyk pomocí Průzkumníku dat Azure, a
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete sestavy, kterou jste vytvořili pro účely tohoto článku, odstraňte soubor Power BI Desktopu (.pbix).
+Pokud už nepotřebujete sestavu, kterou jste vytvořili pro tento článek, odstraňte soubor Power BI Desktop (. pbix).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Vizualizovat data pomocí Průzkumníku dat Azure konektoru pro Power BI](power-bi-connector.md)
+[Vizualizace dat pomocí konektoru služby Azure Průzkumník dat pro Power BI](power-bi-connector.md)
