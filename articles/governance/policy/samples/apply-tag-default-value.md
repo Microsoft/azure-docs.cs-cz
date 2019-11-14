@@ -1,17 +1,14 @@
 ---
 title: Ukázka – použít značku a její výchozí hodnotu
 description: Tato ukázková definice zásad připojí zadaný název značky a hodnotu, pokud není tato značka zadána.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/26/2019
-ms.author: dacoulte
-ms.openlocfilehash: 03c5c1de3713d2d7a2b2914b7b9bff9fa8b01320
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: 0e5bb38b65f4c302fc5a2c4a0a0d3c2da0082a30
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977598"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74071477"
 ---
 # <a name="sample---apply-tag-and-its-default-value"></a>Ukázka – použít značku a její výchozí hodnotu
 
@@ -49,10 +46,10 @@ Kód JSON definující parametry zásady, který se používá Azure CLI a Azure
 
 [!code-json[parameters](../../../../policy-templates/samples/built-in-policy/apply-default-tag-value/azurepolicy.parameters.json "Policy parameters (JSON)")]
 
-|Name (Název) |Typ |Pole |Popis |
+|Název |Typ |Pole |Popis |
 |---|---|---|---|
-|tagName |Řetězec |tags |Název značky, třeba costCenter|
-|tagValue |Řetězec |tags |Hodnota značky, třeba headquarter|
+|tagName |Řetězec |značek |Název značky, třeba costCenter|
+|tagValue |Řetězec |značek |Hodnota značky, třeba headquarter|
 
 Při vytváření přiřazení přes PowerShell nebo Azure CLI je možné předat hodnoty parametrů ve formátu JSON buď v řetězci, nebo prostřednictvím souboru pomocí parametru `-PolicyParameter` (PowerShell) nebo `--params` (Azure CLI).
 PowerShell podporuje také parametr `-PolicyParameterObject`, který vyžaduje, aby se rutině předala zatřiďovací tabulka názvů a hodnot, kde **název** je název parametru a **hodnota** je jedna hodnota nebo pole hodnot, které se předávají během přiřazení.
@@ -70,10 +67,10 @@ V tomto ukázkovém parametru se definuje vlastnost _tagName_ s hodnotou **costC
 }
 ```
 
-## <a name="azure-portal"></a>Portál Azure
+## <a name="azure-portal"></a>portál Azure
 
-[@no__t – 1Deploy vzor zásady do azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
-[![Deploy vzor zásady do Azure gov](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
+[![nasazení ukázky zásad do azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
+[![nasazení ukázky zásad do Azure gov](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -123,7 +120,7 @@ Ve skriptech nasazení a odebrání se používají následující příkazy. Ka
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
-### <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
+### <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
 
 ```azurecli-interactive
 # Create the Policy Definition (Subscription scope)
@@ -163,9 +160,9 @@ az policy definition delete --name `echo $definition | jq '.name' -r`
 
 Při práci s rozhraním REST API Resource Manageru můžete použít několik nástrojů, jako je [ARMClient](https://github.com/projectkudu/ARMClient) nebo PowerShell. Příklad volání rozhraní REST API z PowerShellu najdete v části **Aliasy** v článku věnovaném [struktuře definic zásad](../concepts/definition-structure.md#aliases).
 
-## <a name="rest-api"></a>Rozhraní REST API
+## <a name="rest-api"></a>REST API
 
-### <a name="deploy-with-rest-api"></a>Nasazení pomocí REST API
+### <a name="deploy-with-rest-api"></a>Nasazení pomocí rozhraní REST API
 
 - Vytvořte definici zásady (v oboru předplatného). Jako text požadavku použijte JSON s [definicí zásady](#policy-definition).
 

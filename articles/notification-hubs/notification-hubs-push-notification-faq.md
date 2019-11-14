@@ -17,12 +17,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: ee1bd413894ff5c12883279ccd8a9e9eac3c1790
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: c84a4472789430524cbf5ff3f1ae24ea10d342b9
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048788"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066879"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Nabízená oznámení s Azure Notification Hubs: nejčastější dotazy
 
@@ -30,9 +30,7 @@ ms.locfileid: "74048788"
 
 ### <a name="what-is-the-resource-structure-of-notification-hubs"></a>Jaká je struktura prostředků Notification Hubs?
 
-Azure Notification Hubs má dvě úrovně prostředků: centra a obory názvů. Centrum je jeden prostředek pro nabízení oznámení, který může uchovávat nabízené informace pro různé platformy v jedné aplikaci. Obor názvů je kolekce Center v jedné oblasti.
-
-Doporučené mapování odpovídá jednomu oboru názvů s jednou aplikací. V rámci oboru názvů můžete mít provozní centrum, které funguje s vaší produkční aplikací, testovacím centrem, které funguje s vaší zkušební aplikací, a tak dále.
+Azure Notification Hubs má dvě úrovně prostředků: centra a obory názvů. Centrum je jeden prostředek pro nabízení oznámení, který může uchovávat nabízené informace pro různé platformy v jedné aplikaci. Obor názvů je kolekce Center v jedné oblasti. Doporučené mapování odpovídá jednomu oboru názvů s jednou aplikací. V rámci oboru názvů můžete mít provozní centrum, které funguje s vaší produkční aplikací, testovacím centrem, které funguje s vaší zkušební aplikací, a tak dále.
 
 ### <a name="what-is-the-price-model-for-notification-hubs"></a>Jaký je cenový model pro Notification Hubs?
 
@@ -45,7 +43,7 @@ Nejnovější informace o cenách najdete na stránce s [Ceny Notification Hubs]
 Funkce úrovně Standard:
 
 * **Bohatá telemetrie**: pomocí Notification Hubs telemetrie zpráv můžete sledovat všechny žádosti o nabízené oznámení a systém oznámení platformy zpětnou vazbu pro ladění.
-* **Víceklientská**architektura: můžete pracovat s přihlašovacími údaji systém oznámení platformy na úrovni oboru názvů. Tato možnost umožňuje snadno rozdělit klienty do Center v rámci stejného oboru názvů.
+* **Víceklientská architektura: můžete**pracovat s přihlašovacími údaji systém oznámení platformy na úrovni oboru názvů. Tato možnost umožňuje snadno rozdělit klienty do Center v rámci stejného oboru názvů.
 * **Naplánovaná nabízená**oznámení: můžete naplánovat, aby se oznámení odesílala kdykoli.
 * **Hromadné operace**: umožňuje registraci funkcí exportu/importu, jak je popsáno v dokumentu [Registrace – export/import] .
 
@@ -54,7 +52,7 @@ Funkce úrovně Standard:
 U úrovní Basic a Standard Notification Hubs mohou správně nakonfigurované aplikace odesílat nabízená oznámení nebo provádět operace správy registrace alespoň 99,9% času. Další informace o smlouvě SLA najdete na stránce [Notification HUBS SLA](https://azure.microsoft.com/support/legal/sla/notification-hubs/) .
 
 > [!NOTE]
-> Vzhledem k tomu, že nabízená oznámení závisí na systémech pro oznamování platforem třetích stran (například Apple APN a Google FCM), neplatí pro doručení těchto zpráv žádná záruka SLA. Po Notification Hubs odesílá dávky do systémů oznámení platforem (zaručených smlouvou SLA), zodpovídá za to, že systémy oznámení platformy doručí nabízená oznámení (bez zaručené smlouvy SLA).
+> Vzhledem k tomu, že nabízená oznámení závisí na systémech pro oznamování platforem třetích stran, jako je služba APNs (Apple Push Notification Service) a Google Firebase Cloud Messaging (FCM), není pro doručení těchto zpráv žádná záruka SLA. Po Notification Hubs odesílá dávky do systémů oznámení platforem (zaručených smlouvou SLA), zodpovídá za to, že systémy oznámení platformy doručí nabízená oznámení (bez zaručené smlouvy SLA).
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Návody upgradovat nebo downgradovat můj rozbočovač nebo obor názvů na jinou úroveň?
 
@@ -75,13 +73,7 @@ Nabízená oznámení jsou podporovaná pro [iOS](notification-hubs-ios-apple-pu
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>Podporujete textovou zprávu, e-mail nebo webová oznámení?
 
-Notification Hubs je primárně určený pro posílání oznámení do mobilních aplikací. Neposkytuje možnosti e-mailu nebo textové zprávy. Platformy třetích stran, které poskytují tyto možnosti, je ale možné integrovat s Notification Hubs pro posílání nativních nabízených oznámení pomocí [Mobile Apps].
-
-Notification Hubs také neposkytuje službu doručování nabízených oznámení v prohlížeči. Zákazníci mohou tuto funkci implementovat pomocí nástroje Signal nad podporovanými platformami na straně serveru. 
-
-### <a name="how-are-mobile-apps-and-azure-notification-hubs-related-and-when-do-i-use-them"></a>Jak se Mobile Apps a Azure Notification Hubs souvisejí a kdy je mám použít?
-
-Pokud máte stávající back-end mobilní aplikace a chcete přidat jenom možnost pro posílání nabízených oznámení, můžete použít Azure Notification Hubs. Pokud chcete nastavit back-end mobilní aplikace od začátku, zvažte použití funkce Mobile Apps Azure App Service. Mobilní aplikace automaticky zřídí centrum oznámení, abyste mohli snadno odesílat nabízená oznámení z back-endu mobilní aplikace. Ceny za Mobile Apps zahrnují základní poplatky za centrum oznámení. Platíte jenom tehdy, když překročíte zahrnutá vložení. Další podrobnosti o nákladech najdete na stránce s [Ceny služby App Service] .
+Notification Hubs odesílá oznámení do zařízení s mobilními aplikacemi. Neposkytuje možnosti e-mailu nebo textové zprávy. Notification Hubs také neposkytuje službu doručování nabízených oznámení v prohlížeči. Zákazníci mohou tuto funkci implementovat pomocí nástroje Signal nad podporovanými platformami na straně serveru. 
 
 ### <a name="how-many-devices-can-i-support-if-i-send-push-notifications-via-notification-hubs"></a>Kolik zařízení můžu podporovat při odesílání nabízených oznámení prostřednictvím Notification Hubs?
 
@@ -94,7 +86,7 @@ Pokud potřebujete podporu více než 10 000 000 registrovaných zařízení, je
 V závislosti na vybrané úrovni se Azure Notification Hubs automaticky škáluje podle počtu oznámení, která v systému přecházejí.
 
 > [!NOTE]
-> Celkové náklady na využití se můžou zvýšit v závislosti na počtu obsluhovaných nabízených oznámení. Ujistěte se, že jste si vědomi limitů vrstev popsaných na stránce s [Ceny Notification Hubs] .
+> Celkové náklady na využití se můžou zvýšit na základě počtu odeslaných nabízených oznámení. Ujistěte se, že jste si vědomi limitů vrstev popsaných na stránce s [Ceny Notification Hubs] .
 
 Naši zákazníci používají Notification Hubs k posílání milionů nabízených oznámení denně. Pokud používáte Azure Notification Hubs, nemusíte dělat žádné speciální kroky, abyste mohli škálovat nabízená oznámení.
 
@@ -135,7 +127,7 @@ Obory názvů lze použít pro seskupení nasazení. Můžou se také použít k
 
 #### <a name="geo-distribution"></a>Geografická distribuce
 
-Geografická distribuce není vždy kritická ve scénářích nabízených oznámení. Různé PNSes (například APNS nebo FCM), které doručují nabízená oznámení do zařízení, nejsou rovnoměrně distribuovány.
+Geografická distribuce není vždy kritická ve scénářích nabízených oznámení. Různé PNSes (například APNs nebo FCM), které doručují nabízená oznámení do zařízení, nejsou rovnoměrně distribuovány.
 
 Pokud máte aplikaci, která se používá globálně, můžete vytvořit centra v různých oborech názvů pomocí služby Notification Hubs v různých oblastech Azure po celém světě.
 
@@ -157,7 +149,7 @@ Všechna oznámení se doručují do cílových zařízení PNS platformy. Když
 Všechna připojení, od odesilatele k Azure Notification Hubs do PNS, používají protokol HTTPS.
 
 > [!NOTE]
-> Azure Notification Hubs neprotokoluje datovou část zpráv jakýmkoli způsobem.
+> Azure Notification Hubs neprotokoluje datovou část zpráv.
 
 K posílání citlivých datových částí doporučujeme použít zabezpečený vzor nabízení. Odesílatel doručí oznámení s identifikátorem zprávy pomocí testu na zařízení bez citlivé datové části. Když aplikace v zařízení obdrží datovou část, aplikace volá zabezpečené rozhraní API přímo k načtení podrobností zprávy. Návod, jak tento model implementovat, najdete na stránce [Kurz zabezpečeného nabízení oznámení Notification Hubs] .
 
@@ -207,9 +199,8 @@ Můžete také programově přistupovat k metrikám. Další informace najdete v
 - [Získání metrik a protokolů aktivit pro prostředek](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
 - [Návod k Azure Monitoring REST API](../azure-monitor/platform/rest-api-walkthrough.md)
 
-
 > [!NOTE]
-> Úspěšná oznámení znamenají jednoduše, že nabízená oznámení byla doručena externímu PNS (například APNS pro Apple nebo FCM pro Google). PNS je zodpovědný za doručování oznámení na cílová zařízení. PNS obvykle nevystavuje metriky doručení třetím stranám.  
+> Úspěšná oznámení znamenají jednoduše, že nabízená oznámení byla doručena externímu PNS (například APNs pro iOS a macOS nebo FCM pro zařízení s Androidem). PNS je zodpovědný za doručování oznámení na cílová zařízení. PNS obvykle nevystavuje metriky doručení třetím stranám.  
 
 [Azure Portal]: https://portal.azure.com
 [Ceny Notification Hubs]: https://azure.microsoft.com/pricing/details/notification-hubs/
@@ -226,5 +217,4 @@ Můžete také programově přistupovat k metrikám. Další informace najdete v
 [Registrace – export/import]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
 [Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
-[Mobile Apps]: https://azure.microsoft.com/services/app-service/mobile/
-[Ceny služby App Service]: https://azure.microsoft.com/pricing/details/app-service/
+[App Service Pricing]: https://azure.microsoft.com/pricing/details/app-service/
